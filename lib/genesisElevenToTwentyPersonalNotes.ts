@@ -9,6 +9,7 @@ export type PersonalGenesisPhraseSectionInput = {
 };
 
 const note = (lines: string[]) => lines.join("\n\n");
+const phrase = (title: string, lines: string[]): [string, string] => [title, note(lines)];
 
 type PersonalSectionSplit = {
   startVerse: number;
@@ -1687,7 +1688,2889 @@ const GENESIS_11_PERSONAL_REWRITE_SECTIONS: PersonalGenesisPhraseSectionInput[] 
   },
 ];
 
-export const GENESIS_11_20_PERSONAL_SECTIONS = [
-  ...GENESIS_11_PERSONAL_REWRITE_SECTIONS,
-  ...expandSplitSections(RAW_GENESIS_11_20_PERSONAL_SECTIONS).filter((section) => section.chapter !== 11),
+const GENESIS_12_PERSONAL_REWRITE_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
+  {
+    chapter: 12,
+    startVerse: 1,
+    endVerse: 3,
+    reference: "Genesis 12:1-3",
+    title: "God Calls Abram",
+    icon: "📣",
+    phrases: [
+      [
+        "📣 The LORD Had Said Unto Abram",
+        note([
+          "Genesis 12 begins with God's word.",
+          "Abram's story does not begin with Abram having a dream for himself.",
+          "It begins with the Lord speaking.",
+          "That matters because faith in Genesis is a response to God's initiative.",
+          "Abram is not inventing a spiritual journey.",
+          "He is answering a call.",
+        ]),
+      ],
+      [
+        "🚪 Get Thee Out",
+        note([
+          "God tells Abram to leave.",
+          "This is a command, not just an invitation to consider something new.",
+          "Abram must step away from the familiar world that shaped him.",
+          "Faith begins with movement because God has spoken.",
+          "This does not mean Abram understands everything yet.",
+          "It means God's word is enough for the next step.",
+        ]),
+      ],
+      [
+        "🌍 Thy Country",
+        note([
+          "Country means Abram's homeland.",
+          "A homeland gave people identity, safety, language, customs, and belonging.",
+          "Leaving it was costly.",
+          "Abram is not being asked to make a small religious adjustment.",
+          "He is being called away from the world he knows.",
+          "God's promise will become his new security.",
+        ]),
+      ],
+      [
+        "👪 Thy Kindred",
+        note([
+          "Kindred means relatives or extended family.",
+          "In the ancient world, family networks were protection and survival.",
+          "To leave kindred meant leaving the people who normally helped provide identity and support.",
+          "This shows how deep Abram's call is.",
+          "God is asking him to trust the Lord more than the visible safety of family ties.",
+          "Obedience touches real relationships.",
+        ]),
+      ],
+      [
+        "🏠 Thy Father's House",
+        note([
+          "The father's house was the center of family authority, inheritance, and identity.",
+          "Abram is being called away from the deepest layer of human security.",
+          "Genesis 11 just introduced Terah's household so readers would feel the weight of this command.",
+          "God's call is not abstract.",
+          "It reaches into Abram's home story.",
+          "Faith will mean trusting God beyond the household that formed him.",
+        ]),
+      ],
+      [
+        "🧭 Unto A Land That I Will Shew Thee",
+        note([
+          "God does not hand Abram the full map at the beginning.",
+          "He promises to show him the land.",
+          "That means Abram must move with direction, but without total control.",
+          "This is one of the Bible's classic pictures of faith.",
+          "Faith is not pretending there are no questions.",
+          "Faith is trusting the God who speaks before every detail is visible.",
+        ]),
+      ],
+      [
+        "🏛️ I Will Make Of Thee A Great Nation",
+        note([
+          "This promise sounds impossible because Genesis 11 already said Sarai was barren.",
+          "Abram has no child, yet God promises a nation.",
+          "That tension is important.",
+          "The promise will not be produced by human strength.",
+          "God is promising a future Abram cannot create by himself.",
+          "The nation begins as a word from God before it exists in history.",
+        ]),
+      ],
+      [
+        "🙌 I Will Bless Thee",
+        note([
+          "Blessing in Genesis means life under God's favor, care, provision, and purpose.",
+          "God is not only calling Abram away from something.",
+          "He is calling Abram into blessing.",
+          "That blessing is a gift, not a wage Abram has earned.",
+          "After Babel's self-made name, Genesis shows blessing coming from God.",
+          "The future rests on God's generosity.",
+        ]),
+      ],
+      [
+        "🏷️ Make Thy Name Great",
+        note([
+          "This phrase directly answers Babel.",
+          "Babel said, let us make us a name.",
+          "God says He will make Abram's name great.",
+          "The difference is everything.",
+          "Babel grasps for greatness through pride.",
+          "Abram receives significance through promise.",
+        ]),
+      ],
+      [
+        "🎁 Thou Shalt Be A Blessing",
+        note([
+          "Abram is blessed so that blessing can move through him.",
+          "God's promise is not meant to stop with Abram's private life.",
+          "He becomes a channel of blessing for others.",
+          "This helps readers understand election in Genesis.",
+          "God chooses one family for the sake of many families.",
+          "Blessing is given with mission attached.",
+        ]),
+      ],
+      [
+        "🛡️ I Will Bless Them That Bless Thee",
+        note([
+          "God promises to deal with people according to how they treat Abram and the promise line.",
+          "This does not make Abram powerful by himself.",
+          "It shows that God is guarding His promise.",
+          "The future of Abram's family matters because God's plan will move through them.",
+          "Those who align with God's blessing will be blessed.",
+          "The promise has divine protection around it.",
+        ]),
+      ],
+      [
+        "⚖️ Curse Him That Curseth Thee",
+        note([
+          "To curse here means to oppose, dishonor, or treat with contempt.",
+          "God warns that opposition to Abram will not be ignored.",
+          "This is about God's commitment to His promise.",
+          "Abram will face danger, kings, famine, and conflict.",
+          "But the promise is not fragile.",
+          "God Himself stands behind it.",
+        ]),
+      ],
+      [
+        "🌍 In Thee Shall All Families Of The Earth Be Blessed",
+        note([
+          "This is the global purpose of Abram's call.",
+          "After Babel scatters the nations, God promises blessing for all families of the earth.",
+          "That means Genesis 12 is not a small tribal story.",
+          "God chooses one man with the whole world still in view.",
+          "The rest of the Bible keeps unfolding this promise.",
+          "Christians see its deepest fulfillment in Jesus, the promised blessing for the nations.",
+        ]),
+      ],
+    ],
+  },
+  {
+    chapter: 12,
+    startVerse: 4,
+    endVerse: 6,
+    reference: "Genesis 12:4-6",
+    title: "Abram Enters Canaan",
+    icon: "🚶",
+    phrases: [
+      [
+        "🚶 Abram Departed",
+        note([
+          "Abram responds to God's word by leaving.",
+          "Genesis does not make obedience sound complicated here.",
+          "God speaks, and Abram goes.",
+          "That simple movement is a major act of faith.",
+          "He leaves behind familiar security.",
+          "His trust becomes visible through his steps.",
+        ]),
+      ],
+      [
+        "📣 As The LORD Had Spoken",
+        note([
+          "Abram's departure is tied directly to God's word.",
+          "He is not wandering because he is restless.",
+          "He is moving because the Lord has spoken.",
+          "This phrase teaches that biblical faith is not random risk-taking.",
+          "Faith has a word from God underneath it.",
+          "Abram's obedience is anchored in what God said.",
+        ]),
+      ],
+      [
+        "👥 Lot Went With Him",
+        note([
+          "Lot is Abram's nephew, the son of Haran who died in Genesis 11.",
+          "His presence matters because he will become important in later chapters.",
+          "Abram's obedience affects more than Abram alone.",
+          "Family members are drawn into the journey.",
+          "Lot's choices will later create tension and danger.",
+          "Genesis introduces him early so readers will keep watching him.",
+        ]),
+      ],
+      [
+        "🎂 Seventy And Five Years Old",
+        note([
+          "Abram is seventy-five when he leaves Haran.",
+          "That detail reminds readers that God's call can come late in life.",
+          "Abram is not a young man starting with nothing.",
+          "He has history, family, possessions, and responsibilities.",
+          "Faith does not only belong to the young or unattached.",
+          "God can call someone into a new chapter after many years of ordinary life.",
+        ]),
+      ],
+      [
+        "📍 Out Of Haran",
+        note([
+          "Haran was the place where Terah's family stopped in Genesis 11.",
+          "Abram now leaves that pause point.",
+          "This matters because the journey toward Canaan had begun but stalled.",
+          "God's call moves Abram beyond the unfinished road of his father.",
+          "Haran is not the final destination.",
+          "Faith means continuing when God speaks.",
+        ]),
+      ],
+      [
+        "🐪 All Their Substance",
+        note([
+          "Substance means possessions, goods, livestock, and household resources.",
+          "Abram does not leave as a lone traveler with nothing.",
+          "He moves with a household and real responsibility.",
+          "This helps the reader picture the scale of the journey.",
+          "Obedience includes managing people, animals, supplies, and risk.",
+          "Faith happens in practical life, not only in private feelings.",
+        ]),
+      ],
+      [
+        "👤 The Souls That They Had Gotten",
+        note([
+          "Souls here refers to the people connected to Abram's household.",
+          "This may include servants and dependents gathered in Haran.",
+          "Abram's household is already larger than one small family.",
+          "That matters because his decisions affect many lives.",
+          "The promise journey is communal.",
+          "When Abram obeys, a whole household moves with him.",
+        ]),
+      ],
+      [
+        "🗺️ Into The Land Of Canaan",
+        note([
+          "Canaan is the land God will promise to Abram's descendants.",
+          "The family had already started toward Canaan in Genesis 11 but stopped in Haran.",
+          "Now Abram actually enters the land.",
+          "This is a major step in the promise story.",
+          "The land is not yet possessed.",
+          "But Abram is now standing where God's promise will unfold.",
+        ]),
+      ],
+      [
+        "📍 The Place Of Sichem",
+        note([
+          "Sichem, often called Shechem, is a real location in the land of Canaan.",
+          "It will matter again later in Genesis and in Israel's story.",
+          "Genesis is grounding Abram's faith in actual geography.",
+          "God's promise is not vague spirituality.",
+          "It involves real places, journeys, and land.",
+          "A new reader should notice these place names because they often return later.",
+        ]),
+      ],
+      [
+        "🌳 The Plain Of Moreh",
+        note([
+          "The plain or oak of Moreh was likely a notable landmark near Shechem.",
+          "Large trees often served as recognizable meeting places or markers in the ancient world.",
+          "The location gives the scene a concrete setting.",
+          "Abram arrives at a known place in Canaan.",
+          "Soon the Lord will appear to him there.",
+          "The promise meets Abram in a real landscape.",
+        ]),
+      ],
+      [
+        "👀 The Canaanite Was Then In The Land",
+        note([
+          "This sentence creates tension.",
+          "Abram has reached the land, but other people already live there.",
+          "The promise is real, but it is not simple or immediate.",
+          "Abram must trust God's word while visible obstacles remain.",
+          "Genesis does not hide the difficulty.",
+          "Faith often lives between promise and possession.",
+        ]),
+      ],
+    ],
+  },
+  {
+    chapter: 12,
+    startVerse: 7,
+    endVerse: 9,
+    reference: "Genesis 12:7-9",
+    title: "God Promises The Land",
+    icon: "⛪",
+    phrases: [
+      [
+        "👁️ The LORD Appeared Unto Abram",
+        note([
+          "God does not only speak to Abram from a distance.",
+          "The Lord appears to him in the land.",
+          "This confirms that Abram's journey is under God's personal care.",
+          "The promise is not merely an idea Abram carries.",
+          "God meets him along the way.",
+          "The place of obedience becomes a place of revelation.",
+        ]),
+      ],
+      [
+        "👶 Unto Thy Seed",
+        note([
+          "Seed means offspring or descendants.",
+          "This is striking because Abram still has no child.",
+          "Sarai's barrenness has already been named.",
+          "God speaks about descendants before Abram can see how descendants are possible.",
+          "The promise asks Abram to trust beyond present evidence.",
+          "The future family exists first in God's word.",
+        ]),
+      ],
+      [
+        "🗺️ Will I Give This Land",
+        note([
+          "God promises the land to Abram's descendants.",
+          "The land is gift language.",
+          "Abram does not seize it, buy it here, or conquer it.",
+          "God says He will give it.",
+          "That matters because the promise depends on God's faithfulness.",
+          "Abram must live in the land by faith before his family possesses it.",
+        ]),
+      ],
+      [
+        "⛪ There Builded He An Altar",
+        note([
+          "Abram responds to God's promise with worship.",
+          "An altar is a place of sacrifice, prayer, and surrender.",
+          "Abram is not only traveling through Canaan.",
+          "He is marking the land with worship.",
+          "The altar says that the promise belongs to the Lord.",
+          "Where God speaks, Abram worships.",
+        ]),
+      ],
+      [
+        "✨ Who Appeared Unto Him",
+        note([
+          "Genesis repeats that the Lord appeared to Abram.",
+          "That repetition helps readers connect the altar to the encounter with God.",
+          "Abram is not building an altar to a vague religious feeling.",
+          "He is responding to the Lord who met him.",
+          "Worship in Genesis is grounded in God's self-revelation.",
+          "God acts first, and Abram responds.",
+        ]),
+      ],
+      [
+        "🏠 Bethel On The West",
+        note([
+          "Bethel means house of God, though that name becomes especially important later.",
+          "Here it marks a location near Abram's camp.",
+          "The west side helps place the scene geographically.",
+          "Genesis often uses place details so readers can follow the movement through the land.",
+          "Bethel will become a major worship location in Jacob's story.",
+          "Abram's journey is laying groundwork for later Genesis scenes.",
+        ]),
+      ],
+      [
+        "🏙️ Hai On The East",
+        note([
+          "Hai, often called Ai, is another location near Abram's camp.",
+          "Together with Bethel, it helps readers picture where Abram settled for a time.",
+          "These details may feel small, but they make the promise concrete.",
+          "Abram is walking through actual land.",
+          "Later Israel's story will also move through these places.",
+          "Genesis is quietly building a map for future readers.",
+        ]),
+      ],
+      [
+        "🙏 Called Upon The Name Of The LORD",
+        note([
+          "Calling on the name of the Lord means worship, prayer, and public dependence on God.",
+          "This phrase connects Abram with the worshiping line in Genesis.",
+          "He is not only receiving promises.",
+          "He is learning to live as a worshiper.",
+          "In a land filled with other peoples and gods, Abram calls on the Lord.",
+          "Faith becomes visible in worship.",
+        ]),
+      ],
+      [
+        "🚶 Abram Journeyed",
+        note([
+          "Abram keeps moving through the land.",
+          "The life of faith is not frozen in one moment.",
+          "He receives promise, worships, and continues the journey.",
+          "Genesis shows faith as movement over time.",
+          "Abram is learning the land step by step.",
+          "The promise will unfold through repeated obedience.",
+        ]),
+      ],
+      [
+        "🏜️ Going On Still Toward The South",
+        note([
+          "The south refers to the Negev region, the southern part of the land.",
+          "Abram is moving through Canaan from place to place.",
+          "This helps readers follow the geography of the chapter.",
+          "He is not yet settled permanently.",
+          "He lives as a traveler under promise.",
+          "The next verse will show pressure rising through famine.",
+        ]),
+      ],
+    ],
+  },
+  {
+    chapter: 12,
+    startVerse: 10,
+    endVerse: 13,
+    reference: "Genesis 12:10-13",
+    title: "Abram Acts Out Of Fear",
+    icon: "😨",
+    phrases: [
+      [
+        "🌾 There Was A Famine In The Land",
+        note([
+          "A famine means the land did not have enough food.",
+          "This is surprising because Abram has just entered the land of promise.",
+          "The promised land is real, but it is not immediately easy.",
+          "Obedience does not remove pressure.",
+          "Genesis is showing that faith will be tested.",
+          "Abram must learn to trust God when the land feels hard.",
+        ]),
+      ],
+      [
+        "⬇️ Abram Went Down Into Egypt",
+        note([
+          "Egypt had the Nile River and could often survive famine better than Canaan.",
+          "Going down is partly geographical language.",
+          "It also begins a pattern that will matter later in the Bible.",
+          "Abram goes to Egypt during famine, and later Israel will do the same.",
+          "Egypt can be a place of survival, but also danger.",
+          "This trip becomes a test of Abram's faith and fear.",
+        ]),
+      ],
+      [
+        "⛺ To Sojourn There",
+        note([
+          "To sojourn means to stay temporarily as a foreigner.",
+          "Abram is not moving to Egypt as his permanent home.",
+          "He is seeking survival during famine.",
+          "The word reminds readers that Abram is still a pilgrim.",
+          "He has no settled possession yet.",
+          "His life is marked by movement, dependence, and vulnerability.",
+        ]),
+      ],
+      [
+        "⚠️ The Famine Was Grievous",
+        note([
+          "Grievous means severe or heavy.",
+          "The famine is not a small inconvenience.",
+          "It is serious enough to push Abram toward Egypt.",
+          "This helps readers understand why he goes.",
+          "The pressure is real.",
+          "But real pressure can still expose fear and weak trust.",
+        ]),
+      ],
+      [
+        "🚪 Near To Enter Into Egypt",
+        note([
+          "Abram's fear rises as he gets close to Egypt.",
+          "Sometimes anxiety grows strongest right before entering a risky situation.",
+          "He begins imagining what might happen.",
+          "The coming danger may be real, but Abram's response becomes wrong.",
+          "Genesis lets us watch fear form before the lie is spoken.",
+          "The failure starts in his fearful imagination.",
+        ]),
+      ],
+      [
+        "👩 Fair Woman To Look Upon",
+        note([
+          "Abram says Sarai is beautiful.",
+          "In this situation, her beauty makes him afraid.",
+          "He thinks powerful Egyptians may desire her and kill him to take her.",
+          "The phrase helps explain Abram's fear.",
+          "But it also shows how fear turns Sarai into part of Abram's survival plan.",
+          "Genesis wants readers to feel the danger she is being placed in.",
+        ]),
+      ],
+      [
+        "👀 The Egyptians Shall See Thee",
+        note([
+          "Abram is worried about how the Egyptians will respond when they see Sarai.",
+          "He assumes danger before anything happens.",
+          "Fear often builds a whole future in the mind.",
+          "Abram may be facing real risk, but he does not seek God's direction here.",
+          "Instead, he begins planning through fear.",
+          "This is a turning point in the story.",
+        ]),
+      ],
+      [
+        "🩸 They Will Kill Me",
+        note([
+          "Abram fears for his own life.",
+          "That fear is understandable, but it begins to rule him.",
+          "He has just received promises from God, but danger makes those promises feel distant.",
+          "This is painfully human.",
+          "Faith can be real and still immature under pressure.",
+          "Genesis shows Abram honestly.",
+        ]),
+      ],
+      [
+        "🛡️ They Will Save Thee Alive",
+        note([
+          "Abram believes Sarai will survive while he may be killed.",
+          "That fear leads him to protect himself through deception.",
+          "The plan treats Sarai's safety as secondary to his own.",
+          "This is one of Abram's clearest failures.",
+          "Fear can make people use others as shields.",
+          "Genesis does not excuse that.",
+        ]),
+      ],
+      [
+        "👩 Say, I Pray Thee, Thou Art My Sister",
+        note([
+          "Abram asks Sarai to identify herself as his sister.",
+          "Genesis 20 later shows there is some family connection, but here the statement hides the truth that she is his wife.",
+          "That makes it deceptive.",
+          "A half-truth can still function as a lie.",
+          "Abram is trying to control danger with misleading words.",
+          "His fear places Sarai in danger.",
+        ]),
+      ],
+      [
+        "😟 That It May Be Well With Me",
+        note([
+          "This phrase exposes Abram's motive.",
+          "He wants things to go well for him.",
+          "The problem is that his plan puts Sarai at risk.",
+          "Fear has turned Abram inward.",
+          "Instead of protecting his wife, he asks her to protect him.",
+          "Genesis shows how fear can bend love toward self-preservation.",
+        ]),
+      ],
+      [
+        "💓 My Soul Shall Live Because Of Thee",
+        note([
+          "Soul here means life.",
+          "Abram says his life will be spared because of Sarai.",
+          "That is a heavy burden to place on her.",
+          "He is depending on her deception to keep him alive.",
+          "The phrase reveals how far fear has taken him from trusting God's promise.",
+          "Abram's survival plan is morally broken.",
+        ]),
+      ],
+    ],
+  },
+  {
+    chapter: 12,
+    startVerse: 14,
+    endVerse: 16,
+    reference: "Genesis 12:14-16",
+    title: "Sarai Is Taken Into Pharaoh's House",
+    icon: "🏛️",
+    phrases: [
+      [
+        "👀 The Egyptians Beheld The Woman",
+        note([
+          "Abram's fear starts coming true.",
+          "The Egyptians notice Sarai.",
+          "Genesis shows that his concern was not completely imaginary.",
+          "But the real issue is how he responded to that fear.",
+          "He chose deception instead of trust.",
+          "Now Sarai is exposed to danger.",
+        ]),
+      ],
+      [
+        "✨ Very Fair",
+        note([
+          "Very fair means very beautiful.",
+          "The text repeats Sarai's beauty because it drives the crisis.",
+          "Powerful men notice her.",
+          "Abram's plan does not protect her from being taken.",
+          "It actually helps create the danger.",
+          "Genesis lets readers see the cost of fear-driven choices.",
+        ]),
+      ],
+      [
+        "👑 The Princes Also Of Pharaoh Saw Her",
+        note([
+          "Pharaoh's officials notice Sarai and bring word to the palace.",
+          "This moves the problem from ordinary Egyptians to royal power.",
+          "Abram and Sarai are now caught in a much larger system.",
+          "Pharaoh is the king of Egypt.",
+          "His house has power Abram cannot control.",
+          "The deception has opened a door Abram cannot easily close.",
+        ]),
+      ],
+      [
+        "🗣️ Commended Her Before Pharaoh",
+        note([
+          "To commend her means they praised or recommended her to Pharaoh.",
+          "Sarai is spoken about before the king as desirable.",
+          "This is a frightening moment because she is being moved by other people's decisions.",
+          "Abram's lie has not kept the situation small.",
+          "It has carried Sarai into Pharaoh's attention.",
+          "The promise family is now in danger.",
+        ]),
+      ],
+      [
+        "🏛️ The Woman Was Taken Into Pharaoh's House",
+        note([
+          "This is the crisis point.",
+          "Sarai is taken into Pharaoh's house.",
+          "That means Abram's wife is now inside another man's royal household.",
+          "The promise of descendants is threatened.",
+          "Abram's fear has placed the covenant future in danger.",
+          "God will have to intervene to protect Sarai and the promise.",
+        ]),
+      ],
+      [
+        "🎁 He Entreated Abram Well For Her Sake",
+        note([
+          "Pharaoh treats Abram well because of Sarai.",
+          "Abram receives benefits from the very deception that endangers his wife.",
+          "This makes the scene morally uncomfortable.",
+          "Genesis does not present Abram as heroic here.",
+          "He profits while Sarai is vulnerable.",
+          "The Bible is honest about the failures of its main characters.",
+        ]),
+      ],
+      [
+        "🐑 Sheep, Oxen, Asses, Servants, Camels",
+        note([
+          "These gifts show wealth in the ancient world.",
+          "Livestock, servants, and camels represented status and resources.",
+          "Abram becomes richer in Egypt.",
+          "But the gain comes in a compromised situation.",
+          "This helps readers see that material increase is not always a sign that everything is spiritually healthy.",
+          "Abram needs rescue more than riches here.",
+        ]),
+      ],
+    ],
+  },
+  {
+    chapter: 12,
+    startVerse: 17,
+    endVerse: 20,
+    reference: "Genesis 12:17-20",
+    title: "God Protects Sarai In Egypt",
+    icon: "🛡️",
+    phrases: [
+      [
+        "🛡️ The LORD Plagued Pharaoh",
+        note([
+          "God intervenes directly.",
+          "Abram has failed to protect Sarai, but the Lord protects her.",
+          "The plagues show that Pharaoh's house cannot simply absorb Abram's wife.",
+          "God is guarding the promise line.",
+          "This rescue does not excuse Abram's deception.",
+          "It shows that God's faithfulness is stronger than Abram's fear.",
+        ]),
+      ],
+      [
+        "⚡ Great Plagues",
+        note([
+          "The plagues are serious enough for Pharaoh to realize something is wrong.",
+          "This also foreshadows later Bible history.",
+          "In Exodus, God will again strike Pharaoh's house with plagues to deliver Abram's descendants.",
+          "Genesis is planting an early pattern.",
+          "Egypt, Pharaoh, plagues, and deliverance will return in a bigger way.",
+          "God is already showing Himself as defender of His people.",
+        ]),
+      ],
+      [
+        "👩 Because Of Sarai Abram's Wife",
+        note([
+          "This phrase explains why the plagues come.",
+          "Sarai is Abram's wife, not merely his sister.",
+          "Her true relationship to Abram matters for the promise.",
+          "God's judgment protects her from being kept in Pharaoh's house.",
+          "Genesis centers Sarai's importance here.",
+          "The promise cannot be separated from the woman God will use in Abram's family.",
+        ]),
+      ],
+      [
+        "📣 Pharaoh Called Abram",
+        note([
+          "Pharaoh confronts Abram.",
+          "This is striking because the pagan king speaks the truth Abram avoided.",
+          "Abram is the one called by God, but Pharaoh exposes the deception.",
+          "Genesis does not flatter Abram.",
+          "Sometimes correction comes from an unexpected mouth.",
+          "Abram must face what his fear has done.",
+        ]),
+      ],
+      [
+        "❓ What Is This That Thou Hast Done Unto Me?",
+        note([
+          "Pharaoh asks a question of moral shock.",
+          "Abram's deception has harmed more than his own household.",
+          "It has brought danger onto Pharaoh's house too.",
+          "Sin often spreads consequences beyond the person who chooses it.",
+          "The question forces Abram's actions into the open.",
+          "Fearful secrecy is exposed.",
+        ]),
+      ],
+      [
+        "🤐 Why Didst Thou Not Tell Me That She Was Thy Wife?",
+        note([
+          "Pharaoh names the hidden truth.",
+          "Sarai was Abram's wife.",
+          "Abram's half-truth concealed the most important fact.",
+          "This helps readers understand why half-truths can still be deeply dishonest.",
+          "The missing truth changed how others acted.",
+          "Abram's silence created danger.",
+        ]),
+      ],
+      [
+        "💍 I Might Have Taken Her To Me To Wife",
+        note([
+          "Pharaoh explains how serious the danger was.",
+          "Sarai could have become his wife.",
+          "That would have created a major crisis for Abram's marriage and the promise.",
+          "God's intervention prevented the situation from going further.",
+          "The phrase shows what Abram's fear nearly allowed.",
+          "The promise survives because God steps in.",
+        ]),
+      ],
+      [
+        "👩 Now Therefore Behold Thy Wife",
+        note([
+          "Pharaoh returns Sarai to Abram.",
+          "This is mercy Abram did not deserve.",
+          "Sarai is restored, and the promise line is protected.",
+          "The command also publicly identifies her correctly as Abram's wife.",
+          "The truth is brought back into the open.",
+          "God's rescue restores what fear had endangered.",
+        ]),
+      ],
+      [
+        "👮 Pharaoh Commanded His Men Concerning Him",
+        note([
+          "Pharaoh gives orders about Abram.",
+          "Abram does not leave Egypt because he has managed the situation well.",
+          "He leaves because Pharaoh sends him away.",
+          "This is an uncomfortable rescue.",
+          "Abram is preserved, but he is also exposed.",
+          "God's mercy does not make Abram's actions look noble.",
+        ]),
+      ],
+      [
+        "🚪 They Sent Him Away",
+        note([
+          "Abram leaves Egypt with Sarai and his possessions.",
+          "The episode ends with deliverance, but not with Abram looking heroic.",
+          "He is rescued from danger his own fear helped create.",
+          "This teaches that God's promise is carried by grace.",
+          "Abram will continue learning faith.",
+          "The Lord remains faithful even when Abram is weak.",
+        ]),
+      ],
+    ],
+  },
 ];
+
+const GENESIS_13_PERSONAL_REWRITE_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
+  {
+    chapter: 13,
+    startVerse: 1,
+    endVerse: 7,
+    reference: "Genesis 13:1-7",
+    title: "Abram And Lot Outgrow The Land",
+    icon: "🐑",
+    phrases: [
+      [
+        "🔙 Abram Went Up Out Of Egypt",
+        note([
+          "Abram leaves Egypt and returns toward the land of promise.",
+          "This feels like a recovery movement after the fear and deception of Genesis 12.",
+          "Egypt was the place where Abram compromised.",
+          "Now he is moving back toward the place God called him.",
+          "Genesis does not leave Abram stuck in his failure.",
+          "The story keeps pulling him back toward promise, worship, and trust.",
+        ]),
+      ],
+      [
+        "👩 He And His Wife",
+        note([
+          "Sarai is still with Abram after the danger in Egypt.",
+          "That matters because Genesis 12 placed her in Pharaoh's house through Abram's fear.",
+          "God protected and restored her.",
+          "Now the family leaves Egypt together.",
+          "The phrase quietly shows mercy after a dangerous failure.",
+          "The promise line has been preserved.",
+        ]),
+      ],
+      [
+        "👥 And Lot With Him",
+        note([
+          "Lot continues traveling with Abram.",
+          "He is Abram's nephew, and he has been part of the journey since Haran.",
+          "His presence matters because the next conflict will involve him directly.",
+          "Genesis keeps Lot close in the story so readers can watch his direction.",
+          "He shares Abram's journey for now.",
+          "But Genesis 13 will show their paths beginning to separate.",
+        ]),
+      ],
+      [
+        "🏜️ Into The South",
+        note([
+          "The south refers to the Negev region, the southern part of Canaan.",
+          "Abram is returning through the land after Egypt.",
+          "The place detail helps readers follow his movement.",
+          "He is not wandering in a vague spiritual space.",
+          "He is moving through real geography.",
+          "Faith keeps happening on actual roads.",
+        ]),
+      ],
+      [
+        "💰 Very Rich In Cattle, Silver, And Gold",
+        note([
+          "Abram has become very wealthy.",
+          "Cattle, silver, and gold were major signs of wealth in the ancient world.",
+          "But Genesis is about to show that wealth brings pressure too.",
+          "The problem in this chapter is not famine, but abundance.",
+          "Too much livestock and household growth will strain the land.",
+          "Blessing still requires wisdom.",
+        ]),
+      ],
+      [
+        "🧭 He Went On His Journeys",
+        note([
+          "Abram keeps moving through the land.",
+          "His life is still not settled in one permanent place.",
+          "He is wealthy, but he is still a pilgrim under promise.",
+          "This phrase reminds readers that possessions do not equal arrival.",
+          "Abram has resources, but he still lives by faith.",
+          "The promise is real, but not fully possessed yet.",
+        ]),
+      ],
+      [
+        "🏠 Bethel",
+        note([
+          "Bethel is the place near where Abram had earlier built an altar.",
+          "The name means house of God, and it will become very important later in Genesis.",
+          "Abram's return to this area matters because it brings him back near a worship marker.",
+          "After Egypt, he returns to the place connected with calling on the Lord.",
+          "This feels like a spiritual reset.",
+          "The map is also carrying memory.",
+        ]),
+      ],
+      [
+        "🏙️ Hai",
+        note([
+          "Hai, often called Ai, marks the other side of Abram's camp near Bethel.",
+          "Genesis names both places to locate Abram's return.",
+          "This helps readers see that he is coming back to a known place in the land.",
+          "Small place names often matter later in the Bible.",
+          "They help build the biblical map.",
+          "Abram's worship and movement are tied to real locations.",
+        ]),
+      ],
+      [
+        "⛪ The Place Of The Altar",
+        note([
+          "Abram comes back to the altar he had made earlier.",
+          "That matters after the failure in Egypt.",
+          "The altar represents worship, surrender, and dependence on God.",
+          "Abram does not fix the past by pretending it never happened.",
+          "He returns to the place of worship.",
+          "That is the right direction after failure.",
+        ]),
+      ],
+      [
+        "🙏 Called On The Name Of The LORD",
+        note([
+          "Calling on the name of the Lord means worship, prayer, and dependence.",
+          "Abram had acted out of fear in Egypt.",
+          "Now he is back in a worship posture.",
+          "This phrase shows spiritual recovery.",
+          "Faith is not perfection.",
+          "Faith returns to the Lord after failure.",
+        ]),
+      ],
+      [
+        "🐑 Lot Also Had Flocks, And Herds, And Tents",
+        note([
+          "Lot has grown wealthy too.",
+          "He has animals and tents, which means his household has expanded.",
+          "This sets up the conflict.",
+          "Abram and Lot are both blessed with possessions.",
+          "But their growth creates practical pressure.",
+          "Sometimes increase creates problems that require wisdom.",
+        ]),
+      ],
+      [
+        "🌾 The Land Was Not Able To Bear Them",
+        note([
+          "The land cannot support both Abram's and Lot's households together.",
+          "Too many animals need grazing land and water.",
+          "This is a practical problem, not a mysterious one.",
+          "But practical problems can become spiritual tests.",
+          "Abram must decide how to handle pressure inside the family.",
+          "Genesis is moving from famine pressure to abundance pressure.",
+        ]),
+      ],
+      [
+        "📦 Their Substance Was Great",
+        note([
+          "Substance means possessions and resources.",
+          "Abram and Lot have so much that staying together becomes difficult.",
+          "This phrase shows that blessing can create strain.",
+          "More resources can mean more responsibility, more decisions, and more possible conflict.",
+          "Genesis is realistic about wealth.",
+          "Increase does not automatically make relationships easier.",
+        ]),
+      ],
+      [
+        "⚔️ There Was A Strife",
+        note([
+          "Strife means conflict or quarrel.",
+          "The conflict begins between the herdsmen of Abram and Lot.",
+          "This is not yet Abram and Lot yelling at each other, but tension is growing around them.",
+          "Wise leadership notices conflict before it destroys the relationship.",
+          "Abram will step in before the strife gets worse.",
+          "Faith has to work in ordinary family tension too.",
+        ]),
+      ],
+      [
+        "👀 The Canaanite And The Perizzite Dwelled Then In The Land",
+        note([
+          "Genesis reminds us that Abram and Lot are not alone in the land.",
+          "Other peoples are already living there.",
+          "That means grazing space and settlement space are limited.",
+          "The promise land is occupied and complicated.",
+          "This detail helps explain why the conflict matters.",
+          "Abram must practice faith in a crowded, contested land.",
+        ]),
+      ],
+    ],
+  },
+  {
+    chapter: 13,
+    startVerse: 8,
+    endVerse: 13,
+    reference: "Genesis 13:8-13",
+    title: "Lot Chooses The Plain",
+    icon: "👀",
+    phrases: [
+      [
+        "🤝 Let There Be No Strife",
+        note([
+          "Abram takes initiative to stop the conflict.",
+          "He does not wait for the problem to explode.",
+          "He values peace with Lot more than winning the best land.",
+          "This shows growth after Egypt.",
+          "Fear made Abram self-protective in Genesis 12.",
+          "Trust now makes him open-handed in Genesis 13.",
+        ]),
+      ],
+      [
+        "👨‍👦 We Be Brethren",
+        note([
+          "Abram reminds Lot that they are family.",
+          "The word brethren can refer to close relatives, not only biological brothers.",
+          "This matters because conflict is not only about land.",
+          "It is about preserving relationship.",
+          "Abram refuses to treat Lot like an enemy.",
+          "Family peace matters more than getting the first advantage.",
+        ]),
+      ],
+      [
+        "🗺️ Is Not The Whole Land Before Thee?",
+        note([
+          "Abram gives Lot room to choose.",
+          "This is surprising because Abram is the older man and the one God called.",
+          "He could have insisted on priority.",
+          "Instead, he releases control.",
+          "Abram can be generous because God's promise does not depend on Lot's choice.",
+          "Trust makes him less desperate to grab.",
+        ]),
+      ],
+      [
+        "↔️ Separate Thyself, I Pray Thee, From Me",
+        note([
+          "Abram recognizes that the households need space.",
+          "Separation here is not hatred.",
+          "It is a practical way to preserve peace.",
+          "Sometimes wisdom means creating distance before conflict ruins relationship.",
+          "Abram is not abandoning Lot.",
+          "He is handling a real problem with humility.",
+        ]),
+      ],
+      [
+        "👀 Lot Lifted Up His Eyes",
+        note([
+          "Lot chooses by what he sees.",
+          "The phrase matters because seeing becomes part of the decision.",
+          "He notices the well-watered plain and makes his choice based on visible advantage.",
+          "Genesis is not saying eyesight is evil.",
+          "It is warning that sight without spiritual discernment can mislead.",
+          "Lot sees opportunity, but not the danger attached to it.",
+        ]),
+      ],
+      [
+        "💧 Well Watered Every Where",
+        note([
+          "Water means life, food, pasture, and prosperity.",
+          "For someone with flocks and herds, the well-watered plain would look like the obvious choice.",
+          "Lot's choice makes practical sense on the surface.",
+          "That is what makes the story so useful.",
+          "Not every dangerous choice looks dangerous at first.",
+          "Some choices look fruitful while quietly pulling the heart toward compromise.",
+        ]),
+      ],
+      [
+        "🌿 Like The Garden Of The LORD",
+        note([
+          "This comparison makes the plain sound beautiful and fruitful.",
+          "It reminds readers of Eden.",
+          "Lot sees a place that looks like life, abundance, and blessing.",
+          "But Genesis is about to connect the area with Sodom.",
+          "That contrast is the warning.",
+          "Something can look like Eden and still lead toward danger.",
+        ]),
+      ],
+      [
+        "⬇️ Like The Land Of Egypt",
+        note([
+          "Egypt had just appeared as a place of survival and danger in Genesis 12.",
+          "The comparison makes Lot's choice feel attractive, but also uneasy.",
+          "Egypt was fertile, but Abram's time there was spiritually messy.",
+          "Lot is choosing what looks lush.",
+          "Genesis wants readers to remember that appearance is not the whole story.",
+          "Fruitfulness without discernment can become a trap.",
+        ]),
+      ],
+      [
+        "🏙️ As Thou Comest Unto Zoar",
+        note([
+          "Zoar locates the region Lot is looking toward.",
+          "It will matter later in the story of Sodom and Gomorrah.",
+          "Genesis is quietly placing Lot near the geography of coming judgment.",
+          "A new reader may pass over the name quickly.",
+          "But the location is a clue.",
+          "Lot's choice is moving him toward a dangerous neighborhood.",
+        ]),
+      ],
+      [
+        "🧭 Lot Chose Him All The Plain Of Jordan",
+        note([
+          "Lot chooses the whole plain for himself.",
+          "Abram gave him the first choice, and Lot takes the attractive option.",
+          "The decision reveals what Lot values in the moment.",
+          "He chooses by visible advantage.",
+          "Genesis will show that the best-looking land is not always the safest place for the soul.",
+          "This is the beginning of Lot's drift toward Sodom.",
+        ]),
+      ],
+      [
+        "🌅 Lot Journeyed East",
+        note([
+          "Lot moves east after choosing the plain.",
+          "In Genesis, eastward movement often carries a sense of distance, separation, or movement toward danger.",
+          "Adam and Eve go east of Eden.",
+          "Cain goes east after judgment.",
+          "Babel's people are connected with eastern movement too.",
+          "Lot's eastward journey fits that pattern of spiritual warning.",
+          "The direction is telling us more than where his feet went.",
+        ]),
+      ],
+      [
+        "↔️ They Separated Themselves",
+        note([
+          "Abram and Lot now go different ways.",
+          "The separation solves the immediate strife.",
+          "But it also sets up two different paths.",
+          "Abram remains connected to the promise.",
+          "Lot moves toward the cities of the plain.",
+          "Genesis is contrasting trust and sight-driven choice.",
+        ]),
+      ],
+      [
+        "⛺ Abram Dwelled In The Land Of Canaan",
+        note([
+          "Abram stays in Canaan, the land connected to God's promise.",
+          "He does not chase after the best-looking plain.",
+          "This matters because Abram's future rests on God's word, not on grabbing visible advantage.",
+          "Canaan is still complicated and occupied.",
+          "But it is the land God named.",
+          "Abram remains in the place of promise.",
+        ]),
+      ],
+      [
+        "🏙️ Lot Dwelled In The Cities Of The Plain",
+        note([
+          "Lot settles among the cities of the plain.",
+          "This is a step closer to Sodom.",
+          "Genesis often shows drift before disaster.",
+          "Lot does not begin by being described as wicked.",
+          "He begins by choosing what looks profitable and moving near danger.",
+          "The direction of a choice matters before the destination fully appears.",
+        ]),
+      ],
+      [
+        "⛺ Pitched His Tent Toward Sodom",
+        note([
+          "This is one of the most important warning phrases in the chapter.",
+          "Lot is not yet described as living in Sodom, but his tent is facing that direction.",
+          "His life is oriented toward the city.",
+          "That matters because direction shapes destination.",
+          "Many bad endings begin as small adjustments of direction.",
+          "Genesis is asking readers to notice what Lot is moving toward.",
+        ]),
+      ],
+      [
+        "⚠️ The Men Of Sodom Were Wicked",
+        note([
+          "Genesis gives the reader information Lot does not seem to weigh properly.",
+          "Sodom is not only a city with opportunity.",
+          "It is a place of serious wickedness.",
+          "This warning changes how we read Lot's choice.",
+          "The land may be well-watered, but the moral environment is dangerous.",
+          "Spiritual danger can hide beside material opportunity.",
+        ]),
+      ],
+      [
+        "💔 Sinners Before The LORD Exceedingly",
+        note([
+          "This phrase emphasizes the seriousness of Sodom's sin.",
+          "The issue is not reputation only.",
+          "Their wickedness is before the Lord.",
+          "God sees what is happening in the city.",
+          "Lot's movement toward Sodom is therefore deeply concerning.",
+          "Genesis is preparing the reader for later judgment.",
+        ]),
+      ],
+    ],
+  },
+  {
+    chapter: 13,
+    startVerse: 14,
+    endVerse: 18,
+    reference: "Genesis 13:14-18",
+    title: "God Repeats The Land Promise",
+    icon: "🌍",
+    phrases: [
+      [
+        "📣 The LORD Said Unto Abram",
+        note([
+          "God speaks after Lot separates from Abram.",
+          "That timing matters.",
+          "Abram has just released control and let Lot choose first.",
+          "Now the Lord reminds Abram of the promise.",
+          "Abram's future has not been damaged by generosity.",
+          "God's word still stands.",
+        ]),
+      ],
+      [
+        "👀 Lift Up Now Thine Eyes",
+        note([
+          "God tells Abram to look.",
+          "This contrasts with Lot lifting his eyes earlier.",
+          "Lot looked and chose by visible advantage.",
+          "Abram looks after God speaks.",
+          "Both men see land, but the heart posture is different.",
+          "Faith learns to see through promise.",
+        ]),
+      ],
+      [
+        "🧭 Northward, Southward, Eastward, And Westward",
+        note([
+          "God tells Abram to look in every direction.",
+          "The promise is broad and concrete.",
+          "This is not a vague spiritual feeling.",
+          "It is land with directions, borders, and future history.",
+          "Abram can look around and remember God's word.",
+          "The whole scene teaches promise through geography.",
+        ]),
+      ],
+      [
+        "🌍 All The Land Which Thou Seest",
+        note([
+          "God promises Abram the land he can see.",
+          "This comes after Abram allowed Lot to choose first.",
+          "Abram did not lose the promise by refusing to grasp.",
+          "God's gift is not threatened by Lot's decision.",
+          "The land belongs to God's promise, not Abram's anxiety.",
+          "Faith can be open-handed because God is faithful.",
+        ]),
+      ],
+      [
+        "🎁 To Thee Will I Give It",
+        note([
+          "The land is described as God's gift.",
+          "Abram does not seize it in this moment.",
+          "He receives the promise from the Lord.",
+          "That matters because Genesis keeps contrasting grasping and receiving.",
+          "Babel grasped for a name.",
+          "Lot grasped for the best-looking land.",
+          "Abram learns to receive what God gives.",
+        ]),
+      ],
+      [
+        "👶 To Thy Seed For Ever",
+        note([
+          "God repeats that Abram's descendants will inherit the land.",
+          "This is still remarkable because Abram and Sarai have no child.",
+          "The promise keeps speaking beyond what Abram can currently see.",
+          "Seed means offspring or descendants.",
+          "God is tying land and family together.",
+          "The future is still held by God's word.",
+        ]),
+      ],
+      [
+        "🌫️ As The Dust Of The Earth",
+        note([
+          "Dust is impossible to count.",
+          "God uses that image to describe Abram's future descendants.",
+          "The picture is huge, earthy, and everywhere.",
+          "It stretches Abram's imagination.",
+          "Right now he has no son.",
+          "But God speaks of descendants beyond numbering.",
+        ]),
+      ],
+      [
+        "🚶 Arise, Walk Through The Land",
+        note([
+          "God tells Abram to walk through the land.",
+          "This turns the promise into embodied faith.",
+          "Abram is invited to move through what God has promised.",
+          "He still does not possess it fully.",
+          "But his steps become a way of trusting God's word.",
+          "Faith walks before fulfillment is complete.",
+        ]),
+      ],
+      [
+        "📏 The Length Of It And The Breadth Of It",
+        note([
+          "Length and breadth describe the full scope of the land.",
+          "God is making the promise feel expansive and concrete.",
+          "Abram is not being given a tiny corner in vague terms.",
+          "He is told to walk the land's dimensions.",
+          "The promise has size, space, and future.",
+          "God's word gives Abram a map for hope.",
+        ]),
+      ],
+      [
+        "🌳 The Plain Of Mamre",
+        note([
+          "Mamre becomes an important location in Abram's story.",
+          "Abram settles near the trees of Mamre in Hebron.",
+          "This place will appear again when the Lord visits Abraham in Genesis 18.",
+          "Genesis is planting another location that will matter later.",
+          "Abram's journey is marked by places of promise and encounter.",
+          "The map keeps gathering meaning.",
+        ]),
+      ],
+      [
+        "🏙️ Hebron",
+        note([
+          "Hebron is one of the major places in the patriarch stories.",
+          "It becomes connected with Abraham, Sarah, Isaac, Rebekah, Jacob, and Leah through the family burial place later in Genesis.",
+          "Here it marks Abram's settlement after separating from Lot.",
+          "The place will carry covenant memory.",
+          "A new reader should notice Hebron because it returns with deep family significance.",
+          "Genesis is quietly building future context.",
+        ]),
+      ],
+      [
+        "⛪ Built There An Altar Unto The LORD",
+        note([
+          "Abram ends this section with worship again.",
+          "After Lot chooses, after God repeats the promise, Abram builds an altar.",
+          "This is his better pattern.",
+          "He answers promise with worship.",
+          "He marks the land with dependence on the Lord.",
+          "Abram's life is becoming a journey of tents and altars.",
+        ]),
+      ],
+    ],
+  },
+];
+
+const GENESIS_14_PERSONAL_REWRITE_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
+  {
+    chapter: 14,
+    startVerse: 1,
+    endVerse: 9,
+    reference: "Genesis 14:1-9",
+    title: "Kings Go To War",
+    icon: "⚔️",
+    phrases: [
+      [
+        "👑 Amraphel, Arioch, Chedorlaomer, And Tidal",
+        note([
+          "Genesis 14 opens with a list of kings.",
+          "The names can feel confusing, but they show Abram's world was politically complicated.",
+          "This is not a peaceful empty land.",
+          "There are rulers, alliances, wars, and power struggles.",
+          "Abram's family is living inside real ancient history.",
+          "The promise is unfolding in a messy world.",
+        ]),
+      ],
+      [
+        "📍 Shinar, Ellasar, Elam, And Nations",
+        note([
+          "These place names show that the conflict reaches beyond one small town.",
+          "Shinar connects back to the region of Babel.",
+          "Elam was east of Mesopotamia.",
+          "The word nations may refer to a group of peoples under Tidal.",
+          "Genesis is showing a wider regional war.",
+          "Lot's neighborhood is about to be pulled into something much bigger than itself.",
+        ]),
+      ],
+      [
+        "⚔️ These Made War",
+        note([
+          "This phrase tells us Genesis 14 is a war chapter.",
+          "That may feel sudden after Abram's altars and promises.",
+          "But the promised land is not insulated from violence.",
+          "Faith does not happen in a calm bubble.",
+          "Abram's promise journey will touch conflict, danger, and rescue.",
+          "Genesis is widening the world around him.",
+        ]),
+      ],
+      [
+        "🏙️ Bera King Of Sodom",
+        note([
+          "The king of Sodom enters the story here.",
+          "Sodom has already been described as wicked in Genesis 13.",
+          "Now Sodom is part of a political conflict.",
+          "This matters because Lot has pitched his tent toward Sodom.",
+          "The place Lot moved toward is not only morally dangerous.",
+          "It is also politically unstable.",
+        ]),
+      ],
+      [
+        "🏙️ Sodom, Gomorrah, Admah, Zeboiim, And Bela",
+        note([
+          "These are the cities of the plain involved in the battle.",
+          "Sodom and Gomorrah will become the most famous because of Genesis 19.",
+          "But here they are part of a group of allied cities.",
+          "Genesis is showing the region Lot chose was tied to a network of city power.",
+          "The beautiful plain had danger under the surface.",
+          "Lot's choice is getting more complicated.",
+        ]),
+      ],
+      [
+        "🌊 The Vale Of Siddim, Which Is The Salt Sea",
+        note([
+          "The vale of Siddim is the battle location.",
+          "Genesis identifies it with the Salt Sea region, often connected with the Dead Sea area.",
+          "This helps readers place the story geographically.",
+          "The battle is not abstract.",
+          "It happens in the region near the cities of the plain.",
+          "The place Lot chose is now a battlefield.",
+        ]),
+      ],
+      [
+        "⛓️ Twelve Years They Served Chedorlaomer",
+        note([
+          "The cities of the plain had been under Chedorlaomer's power for twelve years.",
+          "Served here means they were subject to him, likely paying tribute or living under his control.",
+          "This explains why war breaks out.",
+          "The conflict is about domination and rebellion.",
+          "Genesis is not dropping random names.",
+          "It is explaining the pressure behind the battle.",
+        ]),
+      ],
+      [
+        "✊ In The Thirteenth Year They Rebelled",
+        note([
+          "After twelve years of service, the cities rebel.",
+          "That rebellion triggers the military response in the next year.",
+          "The phrase helps readers understand the timeline.",
+          "War comes because power is being challenged.",
+          "Lot is living near a city caught inside that conflict.",
+          "The choice of location now has consequences.",
+        ]),
+      ],
+      [
+        "🗡️ In The Fourteenth Year",
+        note([
+          "The fourteenth year is when Chedorlaomer and his allies strike back.",
+          "This shows the war has a history before the battle near Sodom.",
+          "The invading kings are not wandering randomly.",
+          "They are reasserting control over rebellious territories.",
+          "Genesis gives enough timing to show cause and effect.",
+          "The conflict has been building for years.",
+        ]),
+      ],
+      [
+        "👥 Rephaims, Zuzims, Emims, And Horites",
+        note([
+          "These are peoples defeated by the invading kings before the battle with Sodom's alliance.",
+          "The names may be unfamiliar, but they show how powerful the invading army is.",
+          "They sweep through multiple peoples and regions.",
+          "This builds tension.",
+          "By the time they reach Sodom's area, they have already won several victories.",
+          "Lot is caught near a dangerous military force.",
+        ]),
+      ],
+      [
+        "🌴 Enmishpat, Which Is Kadesh",
+        note([
+          "Genesis gives an older name and a later-known name for the location.",
+          "That helps readers connect ancient place names with places known later.",
+          "Kadesh will matter again in Israel's wilderness story.",
+          "The Bible often preserves these location links because geography carries memory.",
+          "The war path moves through real places.",
+          "Genesis is building a map that later readers can recognize.",
+        ]),
+      ],
+      [
+        "⚔️ The Amalekites And The Amorites",
+        note([
+          "These peoples will matter later in the Old Testament.",
+          "The Amalekites become enemies of Israel in the wilderness period.",
+          "The Amorites become one of the major peoples in the land.",
+          "Genesis is planting names before they become large themes.",
+          "A new reader may not know them yet, but the Bible is building future context.",
+          "The land Abram walks through already contains peoples with long stories ahead.",
+        ]),
+      ],
+    ],
+  },
+  {
+    chapter: 14,
+    startVerse: 10,
+    endVerse: 12,
+    reference: "Genesis 14:10-12",
+    title: "Lot Is Taken Captive",
+    icon: "⛓️",
+    phrases: [
+      [
+        "🛢️ The Vale Of Siddim Was Full Of Slimepits",
+        note([
+          "Slimepits were bitumen pits.",
+          "Bitumen is the same kind of tar-like material connected with ancient building.",
+          "Here the landscape itself becomes dangerous.",
+          "The battlefield is not only full of soldiers.",
+          "It is full of traps in the ground.",
+          "Genesis gives the detail so the defeat feels vivid and real.",
+        ]),
+      ],
+      [
+        "🏃 The Kings Of Sodom And Gomorrah Fled",
+        note([
+          "The kings of Sodom and Gomorrah lose the battle and run.",
+          "The city powers that looked strong cannot protect themselves.",
+          "This matters because Lot had moved toward Sodom's world.",
+          "The strength of that world collapses quickly.",
+          "Genesis is showing the insecurity beneath impressive cities.",
+          "Lot's chosen place cannot save him.",
+        ]),
+      ],
+      [
+        "🕳️ They Fell There",
+        note([
+          "Some of the fleeing men fall into the slimepits.",
+          "The battlefield turns chaotic.",
+          "This small phrase helps readers picture the panic of defeat.",
+          "Human power can unravel fast.",
+          "The kings who rebelled cannot stand against the invading force.",
+          "The scene prepares us for Lot's capture.",
+        ]),
+      ],
+      [
+        "📦 They Took All The Goods Of Sodom And Gomorrah",
+        note([
+          "The victors take the goods of the defeated cities.",
+          "This was common in ancient warfare.",
+          "Conquerors plundered wealth, supplies, and possessions.",
+          "The phrase shows how total the defeat is.",
+          "Sodom and Gomorrah lose not only the battle, but their resources.",
+          "The beautiful plain becomes a place of loss.",
+        ]),
+      ],
+      [
+        "🍞 All Their Victuals",
+        note([
+          "Victuals means food or provisions.",
+          "The invading kings take the supplies too.",
+          "That detail matters because food is survival.",
+          "The cities are stripped of what they need to keep going.",
+          "War in Genesis is not clean or distant.",
+          "It touches homes, tables, and daily life.",
+        ]),
+      ],
+      [
+        "⛓️ They Took Lot",
+        note([
+          "This is the personal crisis in the middle of the war report.",
+          "Lot is captured with the people and goods of Sodom.",
+          "His earlier choice now bears painful fruit.",
+          "He moved toward Sodom, and now Sodom's trouble reaches him.",
+          "Genesis is not saying every hardship is simple punishment.",
+          "But it is showing that direction matters.",
+        ]),
+      ],
+      [
+        "👨‍👦 Abram's Brother's Son",
+        note([
+          "Genesis reminds us Lot is Abram's nephew.",
+          "That family connection matters because Abram will not ignore him.",
+          "Even though Lot separated from Abram, he is still family.",
+          "The phrase pulls the reader's heart back to the relationship.",
+          "This is not only a political capture.",
+          "It is Abram's nephew in danger.",
+        ]),
+      ],
+      [
+        "🏙️ Who Dwelt In Sodom",
+        note([
+          "This is a major step from Genesis 13.",
+          "Lot had pitched his tent toward Sodom.",
+          "Now he is dwelling in Sodom.",
+          "The drift has continued.",
+          "That detail is quietly devastating.",
+          "Lot has moved from facing the city to living inside its trouble.",
+        ]),
+      ],
+    ],
+  },
+  {
+    chapter: 14,
+    startVerse: 13,
+    endVerse: 16,
+    reference: "Genesis 14:13-16",
+    title: "Abram Rescues Lot",
+    icon: "🛡️",
+    phrases: [
+      [
+        "🏃 There Came One That Had Escaped",
+        note([
+          "Someone escapes the battle and brings news to Abram.",
+          "This is how Abram learns Lot has been captured.",
+          "The phrase moves the story from regional war to family rescue.",
+          "Abram was not part of the battle at first.",
+          "But the report draws him in.",
+          "Lot's danger becomes Abram's responsibility.",
+        ]),
+      ],
+      [
+        "🏃 Abram The Hebrew",
+        note([
+          "This is the first time Abram is called the Hebrew.",
+          "The title marks him as distinct among the peoples around him.",
+          "Abram is a stranger in the land, but he is not powerless.",
+          "He belongs to the promise of God.",
+          "The name reminds readers that Abram's identity is different from the kings around him.",
+          "He is not just another local ruler chasing power.",
+        ]),
+      ],
+      [
+        "🌳 The Plain Of Mamre The Amorite",
+        note([
+          "Abram is dwelling near Mamre, an Amorite ally.",
+          "Mamre has already become part of Abram's map in Genesis 13.",
+          "This place will matter again later.",
+          "The detail also shows Abram has relationships in the land.",
+          "He is a sojourner, but not isolated.",
+          "God's promise is unfolding through real places and real neighbors.",
+        ]),
+      ],
+      [
+        "🤝 Confederates With Abram",
+        note([
+          "Mamre, Eshcol, and Aner are allied with Abram.",
+          "A confederate is a covenant ally or partner.",
+          "This helps readers understand how Abram can respond to the crisis.",
+          "He has local support.",
+          "Abram is not a king in this chapter, but he can act with organized strength.",
+          "The promise life includes wise relationships.",
+        ]),
+      ],
+      [
+        "👂 Abram Heard That His Brother Was Taken Captive",
+        note([
+          "Brother here refers to Lot as close family.",
+          "Abram hears, and he acts.",
+          "He does not say Lot made his own choice and deserves the consequences.",
+          "He moves toward rescue.",
+          "This shows loyalty and courage.",
+          "Grace goes after family even after separation.",
+        ]),
+      ],
+      [
+        "🛡️ Armed His Trained Servants",
+        note([
+          "Abram has trained men in his household.",
+          "This shows his household is large, organized, and capable.",
+          "The word trained suggests readiness, not panic.",
+          "Abram is a man of faith, but he also uses practical preparation.",
+          "Trusting God does not mean refusing wise action.",
+          "He gathers what has been entrusted to him for a rescue mission.",
+        ]),
+      ],
+      [
+        "🏠 Born In His Own House",
+        note([
+          "These servants were born within Abram's household.",
+          "That means they are not random hired soldiers picked up at the last moment.",
+          "They belong to his household structure.",
+          "This gives us a picture of Abram's growing community.",
+          "The promise family already includes many lives under Abram's care.",
+          "His household moves, worships, and now fights to rescue Lot.",
+        ]),
+      ],
+      [
+        "🔢 Three Hundred And Eighteen",
+        note([
+          "Genesis gives the exact number of trained men.",
+          "That detail makes the rescue concrete.",
+          "Abram is not leading a giant empire army.",
+          "He has a household force.",
+          "The number also shows how large and organized his household has become.",
+          "God's promise is already giving Abram weight in the land.",
+        ]),
+      ],
+      [
+        "🧭 Pursued Them Unto Dan",
+        note([
+          "Abram pursues the enemy far north.",
+          "Dan is a later-known name for a northern location in the land.",
+          "The pursuit shows courage and urgency.",
+          "Abram does not make a symbolic gesture.",
+          "He goes after Lot until he reaches the enemy.",
+          "The rescue requires distance, risk, and resolve.",
+        ]),
+      ],
+      [
+        "🌙 Divided Himself Against Them By Night",
+        note([
+          "Abram uses a night strategy.",
+          "He divides his forces and attacks when the enemy is vulnerable.",
+          "This shows wisdom and courage together.",
+          "Abram's faith is not passive.",
+          "He thinks, acts, and takes risk.",
+          "The rescue is both brave and strategic.",
+        ]),
+      ],
+      [
+        "🏃 Pursued Them Unto Hobah",
+        note([
+          "Abram keeps pursuing after the first strike.",
+          "He does not stop halfway.",
+          "The detail shows the rescue is thorough.",
+          "Hobah is north of Damascus, showing how far the chase goes.",
+          "Abram is willing to go the distance for Lot.",
+          "Family rescue costs energy and courage.",
+        ]),
+      ],
+      [
+        "🎒 He Brought Back All The Goods",
+        note([
+          "Abram recovers what was taken.",
+          "The rescue is not partial.",
+          "Goods, people, and Lot are brought back.",
+          "This reverses the plundering of Sodom and Gomorrah.",
+          "Abram becomes an instrument of restoration.",
+          "The promised man brings blessing into a broken situation.",
+        ]),
+      ],
+      [
+        "👨‍👦 His Brother Lot",
+        note([
+          "Genesis again calls Lot Abram's brother or close kinsman.",
+          "The family bond is emphasized at the moment of rescue.",
+          "Lot had chosen away from Abram.",
+          "Abram still rescues him.",
+          "That is generous and costly.",
+          "The phrase keeps the rescue personal.",
+        ]),
+      ],
+      [
+        "👩 The Women Also, And The People",
+        note([
+          "Abram rescues more than Lot and the goods.",
+          "Women and other people are also brought back.",
+          "This matters because war captures whole communities, not just leaders.",
+          "Abram's action blesses many people.",
+          "The promise to be a blessing is already being seen in his life.",
+          "His courage brings restoration beyond his own household.",
+        ]),
+      ],
+    ],
+  },
+  {
+    chapter: 14,
+    startVerse: 17,
+    endVerse: 24,
+    reference: "Genesis 14:17-24",
+    title: "Melchizedek Blesses Abram",
+    icon: "🍞",
+    phrases: [
+      [
+        "👑 The King Of Sodom Went Out To Meet Him",
+        note([
+          "After Abram's victory, the king of Sodom comes to meet him.",
+          "This sets up a test after success.",
+          "Abram has just won a great rescue.",
+          "Now he must decide how to handle honor, reward, and influence.",
+          "Victory can test the heart as much as danger can.",
+          "Genesis places two kings before Abram: Sodom's king and Melchizedek.",
+        ]),
+      ],
+      [
+        "📍 The Valley Of Shaveh, Which Is The King's Dale",
+        note([
+          "This is the meeting place after the battle.",
+          "Genesis gives the location so the scene feels public and official.",
+          "Abram is returning as a rescuer.",
+          "Kings now come out to meet him.",
+          "The promise man is being recognized in the land.",
+          "But recognition will bring choices.",
+        ]),
+      ],
+      [
+        "🍞 Melchizedek King Of Salem",
+        note([
+          "Melchizedek appears suddenly in the story.",
+          "He is king of Salem, a name connected with peace.",
+          "His own name is often understood as king of righteousness.",
+          "This makes him stand out from the other kings in the chapter.",
+          "He does not come to exploit Abram.",
+          "He comes with blessing.",
+        ]),
+      ],
+      [
+        "🍷 Brought Forth Bread And Wine",
+        note([
+          "Melchizedek brings bread and wine to Abram.",
+          "These are signs of provision and fellowship.",
+          "After battle, bread and wine feel like refreshment.",
+          "The scene is peaceful after violence.",
+          "Christians often notice later echoes here, though Genesis itself simply presents a priest-king blessing Abram.",
+          "The moment feels holy and generous.",
+        ]),
+      ],
+      [
+        "⛪ Priest Of The Most High God",
+        note([
+          "Melchizedek is both king and priest.",
+          "That is unusual and important.",
+          "He serves the Most High God before Israel's priesthood exists.",
+          "This shows that knowledge of the true God is not limited to Abram's household.",
+          "Later Scripture looks back to Melchizedek as deeply significant.",
+          "Genesis gives us a mysterious priest-king who blesses Abram.",
+        ]),
+      ],
+      [
+        "🙌 Blessed Be Abram",
+        note([
+          "Melchizedek blesses Abram after the rescue.",
+          "The blessing recognizes Abram as connected to the Most High God.",
+          "Abram's victory is not treated as mere military success.",
+          "It is placed under God's authority.",
+          "Blessing reminds Abram where his help comes from.",
+          "Victory should lead to worship, not pride.",
+        ]),
+      ],
+      [
+        "🌌 Possessor Of Heaven And Earth",
+        note([
+          "This title describes God as owner of everything.",
+          "Heaven and earth belong to Him.",
+          "That matters after a chapter full of kings fighting over territory and goods.",
+          "Human rulers battle over land and wealth.",
+          "But the Most High God owns heaven and earth.",
+          "Abram's promise rests under the rule of the true Owner.",
+        ]),
+      ],
+      [
+        "🛡️ Delivered Thine Enemies Into Thy Hand",
+        note([
+          "Melchizedek says God delivered Abram's enemies into his hand.",
+          "That means Abram's victory is credited to God's help.",
+          "Abram acted bravely, but God gave the success.",
+          "This keeps Abram from taking the glory for himself.",
+          "The rescue came through courage, strategy, and divine mercy.",
+          "Faith remembers the Giver after the victory.",
+        ]),
+      ],
+      [
+        "🔟 He Gave Him Tithes Of All",
+        note([
+          "Abram gives Melchizedek a tenth of the recovered goods.",
+          "A tithe means a tenth.",
+          "This act honors Melchizedek's priestly role and acknowledges God Most High.",
+          "Abram responds to blessing with giving.",
+          "The scene happens long before the law of Moses.",
+          "It shows worshipful gratitude before Israel's formal priesthood exists.",
+        ]),
+      ],
+      [
+        "👥 Give Me The Persons, And Take The Goods",
+        note([
+          "The king of Sodom tells Abram to return the people and keep the goods.",
+          "This offer could make Abram richer.",
+          "But it comes from Sodom's king.",
+          "That matters because Sodom has already been marked as wicked.",
+          "Abram must decide whether to receive wealth from that source.",
+          "Not every reward is worth taking.",
+        ]),
+      ],
+      [
+        "✋ I Have Lift Up Mine Hand Unto The LORD",
+        note([
+          "Abram speaks like someone who has made a solemn oath.",
+          "Lifting the hand can signal a serious vow before God.",
+          "Abram is not making a casual preference.",
+          "He is drawing a line before the Lord.",
+          "The victory will not become a way for Sodom to claim him.",
+          "Abram belongs to the Most High God.",
+        ]),
+      ],
+      [
+        "🧵 From A Thread Even To A Shoelatchet",
+        note([
+          "Abram says he will not take even the smallest item.",
+          "A thread and a shoelatchet are tiny things.",
+          "The phrase means he will not take anything for himself from Sodom's goods.",
+          "Abram is being very clear.",
+          "He does not want even a small connection that lets Sodom claim credit.",
+          "Faith sometimes says no down to the smallest detail.",
+        ]),
+      ],
+      [
+        "💰 Lest Thou Shouldest Say, I Have Made Abram Rich",
+        note([
+          "This is Abram's reason for refusing the reward.",
+          "He does not want the king of Sodom to say he made Abram wealthy.",
+          "Abram wants the Lord alone to be known as his provider.",
+          "This is a major contrast with Genesis 12, where Abram received gifts in Egypt during a compromised situation.",
+          "Here Abram shows growth.",
+          "He refuses wealth that would confuse the source of his blessing.",
+        ]),
+      ],
+      [
+        "🍽️ Save Only That Which The Young Men Have Eaten",
+        note([
+          "Abram makes a fair exception for what the men have already eaten.",
+          "He is not being showy or unreasonable.",
+          "Basic provisions used during the mission are allowed.",
+          "This shows practical wisdom.",
+          "Abram refuses personal enrichment without denying legitimate needs.",
+          "Faith can be both principled and fair.",
+        ]),
+      ],
+      [
+        "🤝 Aner, Eshcol, And Mamre",
+        note([
+          "Abram also protects the rights of his allies.",
+          "He refuses a reward for himself, but he does not force his vow onto the men who helped him.",
+          "Aner, Eshcol, and Mamre should receive their portion.",
+          "This shows humility and fairness.",
+          "Abram's conviction is personal, but he honors his partners.",
+          "Good leadership does not use spiritual conviction to cheat others.",
+        ]),
+      ],
+    ],
+  },
+];
+
+const GENESIS_15_20_PERSONAL_REWRITE_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
+  {
+    chapter: 15,
+    startVerse: 1,
+    endVerse: 6,
+    reference: "Genesis 15:1-6",
+    title: "Abram Believes God",
+    icon: "⭐",
+    phrases: [
+      phrase("⏳ After These Things", ["This phrase connects Genesis 15 to the rescue of Lot and Abram's refusal of Sodom's reward.", "Abram has just faced danger, kings, and temptation.", "Now God speaks into the quiet after the crisis.", "Sometimes the deepest questions come after obedience, not before it."]),
+      phrase("📣 The Word Of The LORD Came", ["God's word comes to Abram in a vision.", "Abram's faith is built on God speaking, not on Abram inventing confidence.", "This matters because Genesis keeps showing promise as God's initiative.", "The Lord keeps the conversation alive with Abram."]),
+      phrase("🛡️ Fear Not", ["God tells Abram not to fear because fear is still near him.", "Abram has enemies, no child, and no visible possession of the land.", "God does not shame the fear; He answers it.", "The first word after the battle is comfort from the Lord."]),
+      phrase("🛡️ I Am Thy Shield", ["A shield protects someone in danger.", "God Himself promises to be Abram's protection.", "Abram's safety is not finally in armies, allies, or wealth.", "The Lord is his defense."]),
+      phrase("🎁 Thy Exceeding Great Reward", ["Abram refused Sodom's reward in Genesis 14.", "Now God says He Himself is Abram's reward.", "That is a huge contrast.", "Abram does not lose by refusing corrupted gain; the Lord is better than the reward Sodom offered."]),
+      phrase("❓ Lord GOD, What Wilt Thou Give Me?", ["Abram speaks honestly to God.", "He has promises, wealth, and protection, but still no child.", "This is not fake faith pretending everything is easy.", "It is real faith bringing an unresolved ache to the Lord."]),
+      phrase("👶 I Go Childless", ["Abram names the pain directly.", "God has promised descendants, but Abram has no son.", "The tension is the heart of the Abraham story.", "Faith does not erase the ache of waiting."]),
+      phrase("🏠 Eliezer Of Damascus", ["Eliezer appears as Abram's possible heir.", "In the ancient world, a trusted household servant could inherit if there was no son.", "Abram is thinking through the promise with the reality he can see.", "God will answer with a promise beyond Abram's plan."]),
+      phrase("🏠 One Born In Mine House Is Mine Heir", ["Abram assumes the heir may have to come from inside his household system.", "This shows how impossible the promise feels to him.", "He is not denying God; he is asking how God's word will happen.", "The Lord will clarify that the promised heir will come from Abram's own body."]),
+      phrase("📣 This Shall Not Be Thine Heir", ["God directly rejects Abram's fallback plan.", "Eliezer is not the promised heir.", "The promise will not be fulfilled through a workaround.", "God is narrowing Abram's hope back to what He said."]),
+      phrase("👶 He That Shall Come Forth Out Of Thine Own Bowels", ["This means the heir will be Abram's own physical descendant.", "God is making the promise more specific.", "The future son will not merely be adopted into the household plan.", "He will come from Abram's own line."]),
+      phrase("⭐ Look Now Toward Heaven", ["God takes Abram's eyes upward.", "Abram has been looking at his childlessness; God tells him to look at the stars.", "The sky becomes a classroom of promise.", "God gives Abram an image bigger than his present emptiness."]),
+      phrase("⭐ Tell The Stars", ["Tell here means count.", "The stars are too many for Abram to number.", "God uses the uncountable sky to picture Abram's descendants.", "The promise stretches Abram's imagination past what his house currently contains."]),
+      phrase("👨‍👩‍👧‍👦 So Shall Thy Seed Be", ["Seed means offspring or descendants.", "Abram has no child yet, but God speaks of descendants beyond counting.", "The promise is still invisible, but it is not uncertain.", "God's word creates hope before circumstances explain it."]),
+      phrase("🙌 He Believed In The LORD", ["This is one of the most important faith lines in Scripture.", "Abram trusts the Lord's promise.", "He does not receive the child in this moment; he receives the word.", "Faith rests on God's character before the outcome is visible."]),
+      phrase("⚖️ Counted It To Him For Righteousness", ["God counts Abram's faith as righteousness.", "This becomes a major Bible text for understanding faith and grace.", "Abram is accepted by trusting God, not by proving he can make the promise happen.", "The New Testament returns to this verse when teaching justification by faith."]),
+    ],
+  },
+  {
+    chapter: 17,
+    startVerse: 1,
+    endVerse: 8,
+    reference: "Genesis 17:1-8",
+    title: "God Renames Abram",
+    icon: "🆕",
+    phrases: [
+      phrase("📆 Ninety Years Old And Nine", ["Abram is ninety-nine years old.", "The promised son through Sarah still has not come.", "The age detail makes the promise feel humanly impossible.", "Genesis wants the reader to feel the weight of waiting."]),
+      phrase("🙌 I Am The Almighty God", ["God reveals Himself as Almighty God.", "That title matters because Abram's body and Sarah's barrenness look impossible.", "The promise rests on God's power, not human ability.", "God names His strength before renewing the covenant."]),
+      phrase("🚶 Walk Before Me", ["God calls Abram to live in His presence.", "The promise does not cancel obedience.", "Abram is called to order his life before God.", "Faith is a walk, not a single moment."]),
+      phrase("🕊️ Be Thou Perfect", ["Perfect here means whole, blameless, or complete in covenant faithfulness.", "God is not telling Abram to pretend he has no weakness.", "He is calling him to wholehearted loyalty.", "The covenant life is meant to be undivided."]),
+      phrase("📜 I Will Make My Covenant", ["God speaks of covenant again.", "A covenant is a serious pledged relationship.", "God is binding Abram's future to His promise.", "This is not casual encouragement; it is covenant commitment."]),
+      phrase("🙇 Abram Fell On His Face", ["Abram responds with reverence.", "Falling on the face shows humility before God.", "The Almighty God is speaking, and Abram bows low.", "Promise should produce worship, not arrogance."]),
+      phrase("👨‍👩‍👧‍👦 Father Of Many Nations", ["God expands Abram's identity.", "He will not only father one family line, but many nations.", "This sounds impossible before Isaac is born.", "God names the future before Abram can see it."]),
+      phrase("🆕 Thy Name Shall Be Abraham", ["Abram becomes Abraham.", "The new name is tied to God's promise that he will be father of many nations.", "Identity is being reshaped by God's word.", "Every time the name is spoken, the promise is remembered."]),
+      phrase("👑 Kings Shall Come Out Of Thee", ["God promises royal descendants.", "The Abraham promise will grow into nations and kings.", "This points forward to Israel's monarchy and beyond.", "The family promise has kingdom weight inside it."]),
+      phrase("♾️ An Everlasting Covenant", ["God calls the covenant everlasting.", "The promise is not a short-term arrangement.", "It reaches through generations.", "God is binding Himself to Abraham and his seed after him."]),
+      phrase("🗺️ All The Land Of Canaan", ["The land promise is repeated again.", "Canaan remains central to Abraham's story.", "The promise is spiritual and geographical.", "God's covenant enters real land and history."]),
+      phrase("🙏 I Will Be Their God", ["This is the heart of covenant relationship.", "God promises not only land and descendants, but Himself.", "The deepest gift is belonging to God.", "The covenant is personal before it is political."]),
+    ],
+  },
+  {
+    chapter: 17,
+    startVerse: 9,
+    endVerse: 14,
+    reference: "Genesis 17:9-14",
+    title: "The Sign Of Circumcision",
+    icon: "✂️",
+    phrases: [
+      phrase("🧾 Thou Shalt Keep My Covenant", ["God gives Abraham covenant responsibility.", "Promise and obedience belong together.", "Abraham does not create the covenant, but he must keep its sign.", "Grace calls for faithful response."]),
+      phrase("✂️ Every Man Child Among You Shall Be Circumcised", ["Circumcision becomes the covenant sign for Abraham's household.", "It marks the males as belonging to the promise line.", "The sign is physical because the promise involves bodies, birth, and generations.", "God's covenant is marked into family life."]),
+      phrase("📍 Flesh Of Your Foreskin", ["Genesis is specific because the sign is bodily and concrete.", "The covenant is not only an inward idea.", "It touches real bodies and future descendants.", "This is one reason circumcision becomes such a major identity marker for Israel."]),
+      phrase("🪧 A Token Of The Covenant", ["Token means sign.", "Circumcision points to the covenant God made.", "The sign does not replace faith, but it visibly marks covenant belonging.", "God gives His people a remembered sign."]),
+      phrase("👶 Eight Days Old", ["The sign is given to male children on the eighth day.", "This means covenant identity begins before a child can earn anything.", "The household is marked by God's promise from the beginning.", "The timing shows grace surrounding the next generation."]),
+      phrase("🏠 Born In The House", ["The covenant sign includes those born in Abraham's household.", "The household is larger than Abraham, Sarah, and a future son.", "Many lives are connected to the promise community.", "God's covenant reaches the household structure."]),
+      phrase("💰 Bought With Money", ["Servants bought into the household are also included.", "This means covenant belonging extends beyond biological descent inside Abraham's house.", "Everyone under Abraham's household is marked.", "The promise creates a visible community."]),
+      phrase("♾️ In Your Flesh For An Everlasting Covenant", ["The covenant sign is placed in the flesh.", "It is meant to be remembered across generations.", "God's promise is not vague or invisible only.", "The covenant has a lasting sign in Abraham's family."]),
+      phrase("⚠️ That Soul Shall Be Cut Off", ["Rejecting the covenant sign is serious.", "To be cut off means removed from covenant belonging.", "The sign does not save by itself, but refusing God's command rejects the covenant marker.", "Genesis wants readers to feel the weight of belonging to the Lord."]),
+    ],
+  },
+  {
+    chapter: 17,
+    startVerse: 15,
+    endVerse: 22,
+    reference: "Genesis 17:15-22",
+    title: "Sarah And Isaac Are Promised",
+    icon: "👶",
+    phrases: [
+      phrase("🆕 Thou Shalt Not Call Her Name Sarai", ["God renames Sarai too.", "The covenant promise does not move through Abraham alone.", "Sarah is central to the promised son.", "God gives her a name inside the covenant future."]),
+      phrase("👑 Kings Of People Shall Be Of Her", ["Sarah will be mother of nations and kings.", "This honors her place in the promise.", "Her barrenness is not the final word over her story.", "God speaks fruitfulness over the woman who has waited in pain."]),
+      phrase("😂 Abraham Fell Upon His Face, And Laughed", ["Abraham laughs because the promise sounds impossible.", "He is nearly one hundred, and Sarah is ninety.", "The laughter reveals human shock in front of divine promise.", "God does not cancel the promise because Abraham laughs."]),
+      phrase("👴 Shall A Child Be Born Unto Him That Is An Hundred Years Old?", ["Abraham names the impossibility plainly.", "His body is old, and Sarah is old.", "Genesis does not hide the obstacle.", "The promise will have to be God's miracle."]),
+      phrase("🙏 O That Ishmael Might Live Before Thee", ["Abraham loves Ishmael and asks God to bless him.", "This is not a cold theological conversation.", "A real father is thinking about a real son.", "God will bless Ishmael, but he will not be the covenant heir."]),
+      phrase("👶 Sarah Thy Wife Shall Bear Thee A Son", ["God makes the promise unmistakably specific.", "The son will come through Sarah.", "This corrects every attempt to route the promise another way.", "The impossible promise is now tied to Sarah's own body."]),
+      phrase("📛 Isaac", ["God names the child Isaac before he is born.", "Isaac is connected with laughter.", "The name will carry the memory of impossible joy.", "What sounded laughable will become the child's name."]),
+      phrase("📜 I Will Establish My Covenant With Him", ["Isaac will carry the covenant line.", "Ishmael will be blessed, but Isaac is the promised heir.", "This distinction shapes the rest of Genesis.", "God is clarifying the promise path."]),
+      phrase("🐪 Twelve Princes Shall He Beget", ["God promises blessing for Ishmael too.", "Ishmael will become a great people with leaders of his own.", "God's specific covenant line through Isaac does not erase His care for Ishmael.", "The Lord hears Abraham's concern."]),
+      phrase("📆 At This Set Time In The Next Year", ["God gives a time marker.", "The promise is no longer open-ended in the same way.", "After years of waiting, fulfillment is now near.", "God's timing has arrived."]),
+      phrase("⬆️ God Went Up From Abraham", ["The encounter ends after God gives the covenant word.", "Abraham is left with command, promise, and a time marker.", "Now obedience must follow revelation.", "The next verses show Abraham acting immediately."]),
+    ],
+  },
+  {
+    chapter: 17,
+    startVerse: 23,
+    endVerse: 27,
+    reference: "Genesis 17:23-27",
+    title: "Abraham Obeys The Covenant Sign",
+    icon: "✅",
+    phrases: [
+      phrase("✅ Abraham Took Ishmael His Son", ["Abraham obeys with the son already in his household.", "Ishmael is included in the covenant sign of the household.", "This shows Abraham responding seriously to God's command.", "Obedience begins close to home."]),
+      phrase("🏠 All That Were Born In His House", ["Abraham includes the whole household.", "The covenant sign is not private to Abraham alone.", "Everyone under his care is brought into the command.", "The promise household is visible and communal."]),
+      phrase("⏱️ In The Selfsame Day", ["Abraham obeys the same day God speaks.", "He does not delay or negotiate.", "Immediate obedience shows the weight of the encounter.", "Faith responds when God's word is clear."]),
+      phrase("👴 Abraham Was Ninety Years Old And Nine", ["Genesis repeats Abraham's age.", "Obedience is happening late in life.", "The covenant sign comes when the promise still looks impossible.", "Abraham obeys before Isaac is conceived."]),
+      phrase("👦 Ishmael Was Thirteen Years Old", ["Ishmael's age is also given.", "He is old enough for this moment to be remembered.", "His inclusion matters because he belongs to Abraham's household.", "Genesis keeps Ishmael visible even while clarifying Isaac's future role."]),
+      phrase("✂️ Circumcised With Him", ["The household obeys together.", "The covenant sign marks Abraham, Ishmael, servants, and household males.", "God's command reshapes the whole community.", "The chapter ends with obedience in the flesh."]),
+    ],
+  },
+  {
+    chapter: 18,
+    startVerse: 1,
+    endVerse: 8,
+    reference: "Genesis 18:1-8",
+    title: "Abraham Welcomes The Visitors",
+    icon: "⛺",
+    phrases: [
+      phrase("👁️ The LORD Appeared Unto Him", ["Genesis tells us from the start that this visit is more than ordinary travel.", "The Lord appears to Abraham near Mamre.", "The promise comes close to Abraham's tent.", "God meets him in ordinary daily space."]),
+      phrase("🌳 Plains Of Mamre", ["Mamre is a repeated place in Abraham's story.", "It is where Abraham settled and built an altar.", "Now it becomes the setting for divine visitation.", "Places in Genesis gather memory as God meets people there."]),
+      phrase("🔥 Heat Of The Day", ["Abraham is sitting during the hot part of the day.", "This detail makes the scene feel real and physical.", "Hospitality in such heat would involve care and effort.", "The visit interrupts ordinary rest."]),
+      phrase("👥 Three Men Stood By Him", ["Abraham sees three visitors.", "The scene has mystery because Genesis has already said the Lord appeared.", "The visitors are more than they first seem.", "Abraham responds with honor and urgency."]),
+      phrase("🏃 He Ran To Meet Them", ["Abraham moves quickly to welcome the visitors.", "This shows eagerness and humility.", "A wealthy elder runs to serve.", "Hospitality becomes a sign of reverence."]),
+      phrase("🙇 Bowed Himself Toward The Ground", ["Abraham bows in respect.", "The action shows honor before the visitors.", "Genesis slows down so we feel the seriousness of the meeting.", "Abraham receives the visit with humility."]),
+      phrase("💧 Let A Little Water Be Fetched", ["Water is basic hospitality in a hot land.", "Washing feet refreshed travelers after dusty roads.", "Abraham offers practical care.", "Faith shows up in embodied kindness."]),
+      phrase("🌳 Rest Yourselves Under The Tree", ["Abraham gives them shade and rest.", "Hospitality is not rushed or cold.", "He creates space for weary travelers.", "The tree becomes a place of refreshment and holy conversation."]),
+      phrase("🍞 A Morsel Of Bread", ["Abraham modestly offers bread, but the meal becomes generous.", "Hospitality often speaks humbly while giving richly.", "The visitors are honored with food and care.", "The scene prepares for a promise spoken over a shared meal."]),
+      phrase("🐄 Tender And Good", ["Abraham prepares a calf for the visitors.", "This is more than a snack.", "It is generous hospitality.", "The promised family becomes a household that welcomes and serves."]),
+      phrase("🧈 Butter, Milk, And The Calf", ["The meal includes rich provisions.", "Genesis lets us see the table.", "The visit is spiritual, but also beautifully ordinary.", "God's promise is discussed near food, shade, and household service."]),
+    ],
+  },
+  {
+    chapter: 18,
+    startVerse: 9,
+    endVerse: 15,
+    reference: "Genesis 18:9-15",
+    title: "Sarah Laughs At The Promise",
+    icon: "😂",
+    phrases: [
+      phrase("❓ Where Is Sarah Thy Wife?", ["The visitors ask for Sarah by name.", "This shows the promise concerns her directly.", "Sarah is not background furniture in Abraham's story.", "The Lord's word is coming for her too."]),
+      phrase("⛺ Behold, In The Tent", ["Sarah is nearby in the tent.", "She hears what is spoken.", "The promise enters domestic space.", "God's word reaches the place where she has waited and ached."]),
+      phrase("📆 According To The Time Of Life", ["The promise now has a time frame.", "A son will come at the appointed season.", "The long wait is nearing fulfillment.", "God's timing is becoming specific."]),
+      phrase("👶 Sarah Thy Wife Shall Have A Son", ["The promise is direct: Sarah herself will have a son.", "This removes ambiguity.", "The child will not come through another woman.", "God's promise will touch Sarah's impossible body."]),
+      phrase("👂 Sarah Heard It", ["Sarah hears the promise from the tent door.", "She is not absent from the moment.", "The text lets us watch her internal response.", "God's word is confronting her long disappointment."]),
+      phrase("👵 Abraham And Sarah Were Old", ["Genesis names the obstacle plainly.", "Both Abraham and Sarah are beyond normal childbearing age.", "The miracle is not subtle.", "The promise stands against visible impossibility."]),
+      phrase("🚫 It Ceased To Be With Sarah After The Manner Of Women", ["Sarah is past the years of childbearing.", "This explains why the promise sounds impossible to her.", "Genesis is not asking readers to ignore biology.", "It is showing that God's power exceeds it."]),
+      phrase("😂 Sarah Laughed Within Herself", ["Sarah laughs privately.", "Her laughter comes from years of disappointment and the impossibility of the promise.", "The Bible lets us see the honest reaction.", "God will answer the laugh, not abandon her."]),
+      phrase("❓ Shall I Of A Surety Bear A Child?", ["Sarah's question carries disbelief and ache.", "She is old, and the promise sounds too wonderful to believe.", "This is not cartoon doubt.", "It is the laugh of a woman who has waited too long."]),
+      phrase("💪 Is Any Thing Too Hard For The LORD?", ["This is the central question of the scene.", "The answer is no.", "Sarah's body is impossible ground, but not for the Lord.", "The promise depends on God's power, not human timing."]),
+      phrase("🙈 Sarah Denied", ["Sarah is afraid and denies laughing.", "Fear enters the moment after God exposes her hidden response.", "The Lord gently but firmly tells the truth.", "God's promise can handle honest weakness better than fearful hiding."]),
+    ],
+  },
+  {
+    chapter: 18,
+    startVerse: 16,
+    endVerse: 22,
+    reference: "Genesis 18:16-22",
+    title: "The Lord Reveals Sodom's Judgment",
+    icon: "⚖️",
+    phrases: [
+      phrase("🏙️ Looked Toward Sodom", ["The visitors turn their attention toward Sodom.", "This connects the promise scene with the judgment scene.", "Genesis moves from Sarah's promised son to Sodom's wickedness.", "The chapter holds mercy and judgment side by side."]),
+      phrase("🤔 Shall I Hide From Abraham?", ["The Lord chooses to reveal His plan to Abraham.", "This shows Abraham's covenant relationship with God.", "Abraham is not treated as a stranger to God's purposes.", "The promise brings him into deeper responsibility."]),
+      phrase("🌍 All The Nations Of The Earth Shall Be Blessed In Him", ["God repeats the global purpose of Abraham's calling.", "The Sodom conversation is not separate from mission.", "Abraham's family is meant to learn justice and righteousness for the blessing of nations.", "Election is tied to God's world-sized purpose."]),
+      phrase("🏠 He Will Command His Children And His Household", ["God speaks about Abraham teaching his household.", "The promise is meant to shape generations.", "Faith is not only personal; it becomes family instruction.", "Abraham's house is called to walk in God's way."]),
+      phrase("⚖️ Justice And Judgment", ["These words show what Abraham's family must learn.", "The promise line is not meant to copy Sodom's ways.", "God's people must practice righteousness and justice.", "The chosen family is called to reflect God's character."]),
+      phrase("📣 The Cry Of Sodom And Gomorrah", ["A cry has risen before the Lord.", "This suggests suffering, violence, and serious wrong.", "God is not judging from ignorance.", "He hears what happens in the city."]),
+      phrase("⬇️ I Will Go Down Now", ["God speaks in human terms of investigating Sodom.", "This shows careful justice.", "The Lord does not act carelessly.", "Judgment in Genesis is measured, knowing, and righteous."]),
+      phrase("👣 Abraham Stood Yet Before The LORD", ["The men move toward Sodom, but Abraham remains before the Lord.", "This sets up Abraham's intercession.", "He stands in the space between judgment and mercy.", "The promised man begins pleading for a wicked city."]),
+    ],
+  },
+  {
+    chapter: 18,
+    startVerse: 23,
+    endVerse: 33,
+    reference: "Genesis 18:23-33",
+    title: "Abraham Pleads For Sodom",
+    icon: "🙏",
+    phrases: [
+      phrase("🙏 Abraham Drew Near", ["Abraham approaches the Lord in prayerful boldness.", "He does not run from the subject of judgment.", "He draws near to plead.", "Intercession begins with nearness to God."]),
+      phrase("❓ Wilt Thou Also Destroy The Righteous With The Wicked?", ["Abraham asks whether righteous people will be swept away with the wicked.", "The question is about God's justice.", "Abraham knows the Judge of all the earth must do right.", "His prayer is bold but reverent."]),
+      phrase("🔢 Fifty Righteous", ["Abraham begins with fifty righteous people.", "He asks whether the city would be spared for their sake.", "The number starts the repeated pattern of intercession.", "Abraham is appealing to mercy within justice."]),
+      phrase("⚖️ Shall Not The Judge Of All The Earth Do Right?", ["This is one of Genesis's great statements about God's justice.", "Abraham anchors his plea in God's character.", "The Lord is not a tribal deity or local ruler.", "He is Judge of all the earth."]),
+      phrase("🌫️ Dust And Ashes", ["Abraham calls himself dust and ashes.", "That is humility.", "He is bold in prayer, but he knows he is small before God.", "True intercession can be both courageous and lowly."]),
+      phrase("🔢 Forty And Five, Forty, Thirty, Twenty, Ten", ["Abraham keeps lowering the number.", "The repeated requests show persistent intercession.", "He is not bargaining casually; he is pleading for mercy.", "The rhythm lets readers feel his concern for the city."]),
+      phrase("🕊️ I Will Not Destroy It For Ten's Sake", ["God says He would spare the city for ten righteous people.", "This reveals the Lord's mercy.", "The problem is not that God is eager to destroy.", "The tragedy is that Sodom's corruption is so deep."]),
+      phrase("🚶 The LORD Went His Way", ["The conversation ends when the Lord finishes speaking.", "Abraham's intercession has reached its final number.", "Now the story moves toward Sodom itself.", "Genesis leaves us wondering what will be found there."]),
+    ],
+  },
+  {
+    chapter: 19,
+    startVerse: 1,
+    endVerse: 3,
+    reference: "Genesis 19:1-3",
+    title: "Lot Welcomes The Angels",
+    icon: "🏙️",
+    phrases: [
+      phrase("🌆 There Came Two Angels To Sodom", ["The visitors now arrive in Sodom.", "Genesis 18 had shown them with Abraham; Genesis 19 brings them into the city.", "The investigation has reached the place of judgment.", "The mood changes immediately."]),
+      phrase("🚪 Lot Sat In The Gate", ["The city gate was a place of business, judgment, and public life.", "Lot is no longer merely near Sodom; he is positioned inside its civic space.", "This shows how deeply he has settled there.", "His drift has become involvement."]),
+      phrase("🙇 Lot Rose Up To Meet Them", ["Lot shows hospitality to the visitors.", "This creates contrast between Lot and the city around him.", "He recognizes their vulnerability in Sodom's streets.", "His response shows some righteousness in a dark place."]),
+      phrase("🏠 Turn In, I Pray You, Into Your Servant's House", ["Lot urges the visitors to stay in his house.", "He seems to know the city is unsafe at night.", "Hospitality here is also protection.", "Lot's urgency hints at Sodom's danger before the crowd appears."]),
+      phrase("🌙 Nay; But We Will Abide In The Street All Night", ["The visitors first say they will stay in the street.", "That would expose the city for what it is.", "Lot presses them because he knows the risk.", "The tension rises before the wickedness is openly shown."]),
+      phrase("🍞 He Made Them A Feast", ["Lot provides food and shelter.", "His hospitality echoes Abraham's, but the setting is darker.", "A feast inside the house contrasts with danger outside the door.", "Genesis shows light and darkness very close together."]),
+    ],
+  },
+  {
+    chapter: 19,
+    startVerse: 4,
+    endVerse: 11,
+    reference: "Genesis 19:4-11",
+    title: "Sodom Shows Its Wickedness",
+    icon: "⚠️",
+    phrases: [
+      phrase("🏙️ The Men Of Sodom", ["The city gathers around Lot's house.", "Genesis emphasizes the public nature of the wickedness.", "This is not one hidden private sin.", "The city shows itself openly."]),
+      phrase("👥 Both Old And Young", ["The corruption spans generations.", "Old and young are involved.", "This shows how deep Sodom's wickedness has become.", "The city is not healthy at any level."]),
+      phrase("🚪 Compassed The House Round", ["The crowd surrounds the house.", "The image is threatening and claustrophobic.", "Lot's guests are trapped inside.", "Sodom's danger is now fully visible."]),
+      phrase("❓ Where Are The Men?", ["The crowd demands the visitors.", "Hospitality is being violently attacked.", "The question exposes the city's intent.", "The strangers are not safe in Sodom."]),
+      phrase("💔 That We May Know Them", ["In this context, the phrase points to sexual violence.", "Sodom's sin includes attempted abuse and domination.", "Genesis is showing a city where desire and power have become cruel.", "The scene is meant to horrify the reader."]),
+      phrase("🚪 Lot Went Out At The Door", ["Lot steps outside to speak to the mob.", "He tries to protect the visitors, but he is in a terrible situation.", "His position in Sodom has trapped his family in danger.", "The compromise of location now becomes crisis."]),
+      phrase("🙏 Do Not So Wickedly", ["Lot names the crowd's desire as wicked.", "He still has moral awareness.", "But his influence over the city is almost nothing.", "Sodom does not listen to righteousness."]),
+      phrase("😢 I Have Two Daughters", ["Lot's offer of his daughters is deeply disturbing.", "Genesis records it without approving it.", "The scene shows how broken Lot's judgment has become inside Sodom.", "Trying to manage evil with another evil is not righteousness."]),
+      phrase("👊 This One Fellow Came In To Sojourn", ["The crowd mocks Lot as an outsider.", "Even though Lot sits in the gate, Sodom still treats him as a foreigner when he resists them.", "Compromise has not earned him true belonging.", "The city turns on him quickly."]),
+      phrase("🧑‍🦯 They Smote The Men With Blindness", ["The visitors strike the crowd with blindness.", "This protects Lot and reveals divine power.", "The men of Sodom are physically blinded, but the scene also shows spiritual blindness.", "Even judgment at the door does not soften them."]),
+      phrase("😵 Wearied Themselves To Find The Door", ["The crowd still tries to reach the door after being struck blind.", "That detail is chilling.", "Their desire for evil is stubborn even under judgment.", "Genesis shows why Sodom's judgment is righteous."]),
+    ],
+  },
+  {
+    chapter: 19,
+    startVerse: 12,
+    endVerse: 22,
+    reference: "Genesis 19:12-22",
+    title: "Lot Is Pulled Out Of Sodom",
+    icon: "🏃",
+    phrases: [
+      phrase("👨‍👩‍👧 Hast Thou Here Any Besides?", ["The angels ask about Lot's family.", "Judgment is coming, but mercy is making room for rescue.", "Lot is told to gather those who belong to him.", "God remembers the household in the middle of judgment."]),
+      phrase("🔥 We Will Destroy This Place", ["The angels announce Sodom's destruction.", "The city's wickedness has reached judgment.", "This is not random disaster.", "The Lord has heard the cry against Sodom."]),
+      phrase("📣 The Cry Of Them Is Waxen Great", ["The cry against Sodom has grown great before the Lord.", "This points to victims, violence, and deep corruption.", "God's judgment answers real evil.", "Sodom's sin has not been unseen."]),
+      phrase("😂 He Seemed As One That Mocked", ["Lot warns his sons-in-law, but they think he is joking.", "This is tragic.", "People close to Lot do not take judgment seriously.", "Delay and unbelief sit inside the rescue story."]),
+      phrase("🌅 When The Morning Arose", ["Morning brings urgency.", "Judgment is near.", "The night of danger is ending, but Sodom's final day has come.", "The angels press Lot to leave."]),
+      phrase("⏳ While He Lingered", ["Lot delays even after being warned.", "This is one of the saddest phrases in the chapter.", "He knows enough to leave, but his heart is slow.", "Sodom still has a pull on him."]),
+      phrase("🤝 The Men Laid Hold Upon His Hand", ["The angels physically pull Lot and his family out.", "This is mercy that grabs.", "Lot is not rescued because he moves quickly.", "He is rescued because the Lord is merciful."]),
+      phrase("🕊️ The LORD Being Merciful Unto Him", ["Genesis explains the rescue clearly.", "Mercy is the reason Lot escapes.", "Not strength. Not wisdom. Not quick obedience.", "The Lord's mercy carries him out of the city."]),
+      phrase("🏃 Escape For Thy Life", ["The command is urgent.", "Lot must flee without looking back or stopping.", "Judgment requires separation from the doomed city.", "Half-hearted distance is not enough."]),
+      phrase("⛰️ Escape To The Mountain", ["The mountain is the place of safety.", "Lot is told to flee upward and away.", "The command contrasts with the low plain he chose in Genesis 13.", "The attractive plain has become a place to escape."]),
+      phrase("🏙️ Is It Not A Little One?", ["Lot asks to flee to Zoar instead of the mountain.", "Even in rescue, he negotiates.", "His fear is still shaping him.", "God shows mercy again by allowing the smaller city."]),
+      phrase("📛 Zoar", ["Zoar means small or little.", "The name fits Lot's request.", "It becomes the place where he first escapes.", "Even the place name remembers Lot's plea for a smaller refuge."]),
+    ],
+  },
+  {
+    chapter: 19,
+    startVerse: 23,
+    endVerse: 29,
+    reference: "Genesis 19:23-29",
+    title: "Sodom Falls",
+    icon: "🔥",
+    phrases: [
+      phrase("☀️ The Sun Was Risen", ["The destruction happens in daylight.", "Sodom's final morning arrives like an ordinary day.", "Judgment comes into the real world, not a dream.", "The city that felt secure is about to fall."]),
+      phrase("🔥 Brimstone And Fire", ["Brimstone and fire describe devastating judgment.", "The destruction is from the Lord, not merely human war.", "Sodom's wickedness is answered by holy judgment.", "Genesis wants the reader to feel the seriousness of evil."]),
+      phrase("⬇️ From The LORD Out Of Heaven", ["The source of judgment is the Lord.", "This is divine action after careful investigation and warning.", "Sodom is not destroyed by accident.", "The Judge of all the earth is acting."]),
+      phrase("🏙️ Overthrew Those Cities", ["The cities of the plain are overturned.", "What looked prosperous to Lot in Genesis 13 is now destroyed.", "The reversal is sobering.", "A place can look fruitful and still be headed toward judgment."]),
+      phrase("👀 His Wife Looked Back", ["Lot's wife looks back despite the warning.", "The look reveals attachment to what she was commanded to leave.", "This is a tragic pause between rescue and judgment.", "Her body leaves Sodom, but her heart turns back."]),
+      phrase("🧂 A Pillar Of Salt", ["Lot's wife becomes a pillar of salt.", "The judgment is severe and memorable.", "Genesis turns her backward look into a warning sign.", "Deliverance must not be met with longing for the place of destruction."]),
+      phrase("🌄 Abraham Gat Up Early", ["Abraham returns to the place where he stood before the Lord.", "He had interceded for Sodom.", "Now he looks toward the result.", "The intercessor sees the smoke of judgment."]),
+      phrase("💨 Smoke Of A Furnace", ["The smoke rises like a furnace.", "The image echoes total destruction.", "It also recalls fiery judgment language from Genesis 15.", "The land of Lot's choice is now smoke."]),
+      phrase("🙏 God Remembered Abraham", ["Lot's rescue is connected to God remembering Abraham.", "This does not mean God forgot and then recalled.", "It means God acted in faithfulness to covenant relationship.", "Abraham's intercession mattered."]),
+      phrase("🛡️ Sent Lot Out", ["God sends Lot out before destroying the cities.", "Lot is rescued from the overthrow.", "The mercy is real, even though Lot's life is deeply damaged.", "Judgment and mercy stand side by side."]),
+    ],
+  },
+  {
+    chapter: 19,
+    startVerse: 30,
+    endVerse: 38,
+    reference: "Genesis 19:30-38",
+    title: "Lot's Family Breaks",
+    icon: "💔",
+    phrases: [
+      phrase("⛰️ Lot Went Up Out Of Zoar", ["Lot leaves the small city he asked for.", "Fear drives him into the mountain after all.", "His path is unstable and fearful.", "The man who chose the plain now hides in a cave."]),
+      phrase("🕳️ Dwelt In A Cave", ["Lot ends in a cave with his daughters.", "This is a devastating contrast to the well-watered plain he chose.", "His story has moved from opportunity to isolation.", "Genesis shows the bitter fruit of his direction."]),
+      phrase("🌍 There Is Not A Man In The Earth", ["Lot's daughters believe their family line has no future.", "Their perspective is shaped by fear and isolation.", "They may think the destruction was wider than it was.", "Fear can make the world feel smaller than it is."]),
+      phrase("🍷 Let Us Make Our Father Drink Wine", ["The daughters plan to use wine to control Lot.", "This echoes earlier Genesis scenes where drunkenness leads to shame.", "The family is acting out of desperation, not faith.", "The cave becomes a place of moral collapse."]),
+      phrase("💔 Lie With Him", ["The plan is incestuous and deeply broken.", "Genesis records it without approving it.", "The scene shows how far Lot's family has fallen after Sodom.", "Survival without trust becomes twisted."]),
+      phrase("🌱 Preserve Seed Of Our Father", ["The daughters want to preserve descendants.", "The desire for family continuation is understandable, but the method is sinful and destructive.", "Genesis keeps showing that forcing a future creates wounds.", "Human desperation cannot create righteousness."]),
+      phrase("😶 He Perceived Not", ["Lot is so drunk that he does not understand what happens.", "This shows his passivity and degradation.", "The father who once sat in Sodom's gate is now unaware in a cave.", "The story is heartbreaking, not humorous."]),
+      phrase("👶 Moab", ["Moab becomes the ancestor of the Moabites.", "The origin story is painful and morally broken.", "Moabites will appear later in Israel's story.", "Even broken origins can later be touched by God's mercy, as Ruth the Moabite will show."]),
+      phrase("👶 Benammi", ["Benammi becomes connected with the Ammonites.", "Like Moab, this people group comes from a painful family collapse.", "Genesis is explaining later nations through Lot's broken story.", "The consequences of this cave reach into future history."]),
+    ],
+  },
+  {
+    chapter: 20,
+    startVerse: 1,
+    endVerse: 7,
+    reference: "Genesis 20:1-7",
+    title: "Abraham Repeats The Lie",
+    icon: "🔁",
+    phrases: [
+      phrase("🧭 Abraham Journeyed From Thence", ["Abraham moves again after the Sodom story.", "The promise journey continues.", "But the next scene shows an old weakness returning.", "Movement does not automatically mean growth in every area."]),
+      phrase("📍 Gerar", ["Gerar is in Philistine territory in the southern region.", "Abraham is again living among foreign rulers.", "The setting creates another fear test.", "A new place exposes an old pattern."]),
+      phrase("👩 She Is My Sister", ["Abraham repeats the same kind of deception from Genesis 12.", "This is painful because he has already seen the danger of this lie.", "Old fear can return even after real faith.", "Genesis is honest about repeated weakness."]),
+      phrase("👑 Abimelech King Of Gerar", ["Abimelech is the local king.", "He takes Sarah into his household because Abraham has hidden the truth.", "Another ruler is pulled into danger by Abraham's deception.", "The promise line is threatened again."]),
+      phrase("🌙 God Came To Abimelech In A Dream", ["God intervenes before Abimelech touches Sarah.", "The Lord protects the promise and warns the king.", "This is mercy for Sarah and for Abimelech.", "God acts where Abraham failed to act rightly."]),
+      phrase("⚠️ Thou Art But A Dead Man", ["God's warning is severe.", "Taking Sarah would bring judgment because she is Abraham's wife.", "The seriousness protects the marriage and the promise.", "God does not treat Abraham's lie as harmless."]),
+      phrase("🕊️ In The Integrity Of My Heart", ["Abimelech says he acted without knowing the truth.", "The king's conscience is engaged.", "This is striking because the outsider speaks with moral seriousness.", "Genesis complicates easy assumptions about insiders and outsiders."]),
+      phrase("🛡️ I Withheld Thee From Sinning Against Me", ["God says He kept Abimelech from sinning.", "This shows prevention as mercy.", "Abimelech's restraint was not only his own wisdom; God was protecting him.", "The Lord can guard people from sins they do not fully understand."]),
+      phrase("📣 He Is A Prophet", ["God calls Abraham a prophet despite his failure.", "This is surprising and humbling.", "Abraham's calling is real, but he still needs correction.", "God's gifts do not excuse sin."]),
+      phrase("🙏 He Shall Pray For Thee", ["Abraham must pray for Abimelech.", "The guilty man becomes intercessor by God's command.", "This shows grace and responsibility together.", "Abraham must stand again as prophet after being exposed."]),
+    ],
+  },
+  {
+    chapter: 20,
+    startVerse: 8,
+    endVerse: 13,
+    reference: "Genesis 20:8-13",
+    title: "Abimelech Confronts Abraham",
+    icon: "📣",
+    phrases: [
+      phrase("🌅 Abimelech Rose Early", ["Abimelech responds quickly to God's warning.", "He does not delay.", "The outsider king shows urgency after hearing from God.", "Genesis lets his response challenge Abraham's failure."]),
+      phrase("😨 The Men Were Sore Afraid", ["Abimelech's servants are afraid when they hear the dream.", "They understand the danger is serious.", "The whole court feels the weight of Abraham's deception.", "Sin has spread fear into another household."]),
+      phrase("❓ What Hast Thou Done Unto Us?", ["Abimelech confronts Abraham directly.", "The question echoes Pharaoh's confrontation in Genesis 12.", "Abraham is facing the same failure again.", "Repeated sin often brings repeated exposure."]),
+      phrase("⚠️ A Great Sin", ["Abimelech names the danger as a great sin.", "This is morally clear language from a foreign king.", "Abraham's deception nearly led others into guilt.", "The Bible does not soften the seriousness."]),
+      phrase("❓ What Sawest Thou?", ["Abimelech asks what Abraham saw that made him act this way.", "This question exposes Abraham's fear-based assumptions.", "Abraham judged the place before knowing the people.", "Fear can make us see danger everywhere."]),
+      phrase("😨 Surely The Fear Of God Is Not In This Place", ["Abraham assumed Gerar had no fear of God.", "That assumption was wrong.", "Abimelech has shown more integrity in this chapter than Abraham.", "Genesis challenges Abraham's fear and prejudice."]),
+      phrase("🩸 They Will Slay Me For My Wife's Sake", ["Abraham admits he was afraid of being killed.", "This is the same fear pattern from Egypt.", "The promise has grown, but this fear remains unresolved.", "Genesis shows that God keeps working with flawed people."]),
+      phrase("👩 She Is The Daughter Of My Father", ["Abraham explains the half-truth.", "Sarah is related to him, but she is also his wife.", "The problem is not technical wording only.", "The problem is using partial truth to hide the truth that matters."]),
+      phrase("🧳 When God Caused Me To Wander", ["Abraham describes his life as wandering under God's call.", "The journey has made him vulnerable among foreign peoples.", "But vulnerability does not excuse deception.", "Faith must learn truthfulness on the road."]),
+      phrase("🤝 This Is Thy Kindness", ["Abraham had asked Sarah to show kindness by calling him brother.", "That request placed her in danger for his protection.", "Genesis lets us feel how distorted fear can become.", "What Abraham called kindness became a burden for Sarah."]),
+    ],
+  },
+  {
+    chapter: 20,
+    startVerse: 14,
+    endVerse: 18,
+    reference: "Genesis 20:14-18",
+    title: "Sarah Is Restored",
+    icon: "🛡️",
+    phrases: [
+      phrase("🎁 Sheep, Oxen, Menservants, And Womenservants", ["Abimelech gives gifts to Abraham.", "This echoes Egypt, but the context is correction and restoration.", "The gifts do not make Abraham look heroic.", "They show the complicated mercy of God preserving the promise again."]),
+      phrase("👩 Restored Him Sarah His Wife", ["Sarah is returned to Abraham.", "This is the crucial rescue.", "The promised mother is protected again.", "God preserves Sarah before Isaac's birth in the very next chapter."]),
+      phrase("🗺️ My Land Is Before Thee", ["Abimelech allows Abraham to dwell where he pleases.", "This is generous after Abraham's deception.", "God turns a dangerous situation into protected space.", "Mercy comes through an unexpected ruler."]),
+      phrase("👀 A Covering Of The Eyes", ["This difficult phrase likely refers to a public vindication or settlement that protects Sarah's honor.", "Abimelech gives silver as a visible answer to the wrong done.", "Sarah is not quietly returned as if nothing happened.", "Her restoration is made public."]),
+      phrase("🙏 Abraham Prayed Unto God", ["Abraham prays, and God heals Abimelech's household.", "This is humbling because Abraham caused the crisis.", "Yet God still uses him as an intercessor.", "Grace restores responsibility after exposure."]),
+      phrase("🩺 God Healed Abimelech", ["God removes the judgment from Abimelech's house.", "The healing shows that the warning was real and the mercy is real.", "God protects Sarah and restores the household affected by Abraham's lie.", "The Lord is just and merciful."]),
+      phrase("🚫 The LORD Had Fast Closed Up All The Wombs", ["The closed wombs in Abimelech's house connect sharply with Sarah's long barrenness.", "God controls fertility and protects the promise line.", "Genesis 21 will soon open with Isaac's birth.", "The timing reminds readers that life comes by God's power."]),
+      phrase("👩 Because Of Sarah Abraham's Wife", ["Sarah's true identity matters.", "She is Abraham's wife and the promised mother.", "The whole chapter turns on protecting her place in the covenant story.", "God guards Sarah even when Abraham's fear endangers her."]),
+    ],
+  },
+  {
+    chapter: 15,
+    startVerse: 7,
+    endVerse: 11,
+    reference: "Genesis 15:7-11",
+    title: "Abram Asks For Assurance",
+    icon: "📍",
+    phrases: [
+      phrase("📣 I Am The LORD", ["God identifies Himself before repeating the land promise.", "The promise rests on who God is.", "Abram's assurance begins with the Lord's own name.", "The giver matters as much as the gift."]),
+      phrase("🏙️ Brought Thee Out Of Ur Of The Chaldees", ["God reminds Abram where the journey began.", "Ur was Abram's old homeland in Mesopotamia.", "The call of Genesis 12 was not random; God has been leading from the start.", "Memory becomes fuel for trust."]),
+      phrase("🗺️ To Give Thee This Land", ["God repeats the land promise.", "Abram is in the land, but he does not possess it yet.", "The promise remains future.", "Faith has to hold what God says while waiting for visible fulfillment."]),
+      phrase("❓ Whereby Shall I Know?", ["Abram asks for assurance.", "This is not treated as rebellion.", "He believes God, yet he still asks how he will know the inheritance is secure.", "Faith can ask honest questions in God's presence."]),
+      phrase("🐄 An Heifer, A She Goat, And A Ram", ["God gives Abram animals for a covenant ceremony.", "These are not random animals.", "They belong to a serious oath-making scene.", "God is about to answer Abram's question with covenant, not just explanation."]),
+      phrase("🕊️ A Turtledove, And A Young Pigeon", ["The birds complete the sacrifice list.", "Later Israel's worship laws will also include birds in offerings.", "Genesis is showing ancient sacrificial imagery before Sinai.", "The scene feels solemn because covenant is serious."]),
+      phrase("✂️ Divided Them In The Midst", ["Abram cuts the animals in two and places the pieces opposite each other.", "In ancient covenant ceremonies, passing between cut pieces could symbolize a solemn oath.", "The picture is weighty: covenant promises are not casual words.", "God is preparing a visible sign of commitment."]),
+      phrase("🕊️ The Birds Divided He Not", ["Abram does not cut the birds in half.", "The detail may feel small, but it shows careful obedience to the ceremony God gave.", "Genesis wants us to slow down and see the scene.", "Every part is deliberate."]),
+      phrase("🦅 Fowls Came Down Upon The Carcases", ["Birds of prey descend on the sacrifice.", "The covenant scene is interrupted by threat and decay.", "Abram has to guard what has been prepared.", "The promise will be opposed, but Abram stays watchful."]),
+      phrase("🛡️ Abram Drove Them Away", ["Abram protects the covenant pieces from the birds.", "This small action shows waiting, guarding, and endurance.", "He has asked for assurance, but he must remain present in the process.", "Faith sometimes waits while driving away what would spoil the altar."]),
+    ],
+  },
+  {
+    chapter: 15,
+    startVerse: 12,
+    endVerse: 21,
+    reference: "Genesis 15:12-21",
+    title: "God Cuts The Covenant",
+    icon: "🔥",
+    phrases: [
+      phrase("🌙 A Deep Sleep Fell Upon Abram", ["Abram is placed into a deep sleep as the covenant vision continues.", "He is not the active hero of the ceremony.", "God is about to reveal and pledge what only God can secure.", "Abram receives more than he performs."]),
+      phrase("😨 An Horror Of Great Darkness", ["The scene becomes heavy and frightening.", "God's covenant word includes hard truth, not only comfort.", "Abram is about to hear of future suffering for his descendants.", "Promise does not mean the road will be painless."]),
+      phrase("🧳 Thy Seed Shall Be A Stranger", ["God says Abram's descendants will live as strangers in a land not theirs.", "This points forward to Israel's time in Egypt.", "The promise line will experience displacement before inheritance.", "God tells Abram the hard road ahead before it happens."]),
+      phrase("⛓️ Serve Them", ["Abram's descendants will be enslaved.", "This is one of the earliest previews of the Exodus story.", "Genesis is already preparing readers for Israel's later bondage.", "God's plan includes deliverance, but not instant ease."]),
+      phrase("📆 Four Hundred Years", ["The suffering will last a long time.", "The number shows that God's promise unfolds across generations.", "Abram will not personally see every stage.", "Faith trusts a God whose timeline is larger than one lifetime."]),
+      phrase("⚖️ That Nation Will I Judge", ["God promises to judge the nation that oppresses Abram's descendants.", "This points forward to judgment on Egypt.", "Oppression will not have the final word.", "God sees suffering and holds nations accountable."]),
+      phrase("🎒 Come Out With Great Substance", ["God promises deliverance with provision.", "Israel will later leave Egypt with wealth from the Egyptians.", "The future rescue will reverse the years of oppression.", "God can bring His people out with more than survival."]),
+      phrase("🕊️ Go To Thy Fathers In Peace", ["God tells Abram he will die in peace before these later events unfold.", "Abram will not see the oppression himself.", "His life will end before the full promise is fulfilled.", "The covenant stretches beyond Abram's lifetime."]),
+      phrase("👴 A Good Old Age", ["Abram is promised a long life.", "This is mercy in the middle of a heavy prophecy.", "God's plan for later generations does not erase His care for Abram personally.", "The Lord holds both the man and the future."]),
+      phrase("🔁 In The Fourth Generation", ["God gives a generational marker for return.", "The promise has timing and order.", "Israel's return to the land will not be random.", "God is already ruling the timeline."]),
+      phrase("⚖️ The Iniquity Of The Amorites Is Not Yet Full", ["God delays judgment because the Amorites' sin has not reached its full measure.", "This shows God's patience and justice.", "Israel will not receive the land through random violence.", "Judgment has moral timing under God's rule."]),
+      phrase("🔥 A Smoking Furnace, And A Burning Lamp", ["These fiery images pass between the pieces.", "They represent God's presence in the covenant ceremony.", "Abram does not walk between the pieces; God does.", "The covenant rests on God's own commitment."]),
+      phrase("📜 The LORD Made A Covenant", ["God formally binds Himself to the promise.", "A covenant is a serious pledged relationship.", "This answers Abram's question about assurance.", "The promise is sealed by God's word and oath-like action."]),
+      phrase("🌊 From The River Of Egypt Unto The Great River", ["God describes the scope of the promised land.", "The promise has geography, not just emotion.", "The river of Egypt and Euphrates mark a wide territory.", "God's promise is concrete and historical."]),
+      phrase("🏘️ Kenites, Kenizzites, Kadmonites, And Others", ["The listed peoples show the land is already inhabited.", "God names the peoples connected to the future inheritance.", "This reminds readers that fulfillment will involve real nations and history.", "The promise is specific, not vague."]),
+    ],
+  },
+  {
+    chapter: 16,
+    startVerse: 1,
+    endVerse: 6,
+    reference: "Genesis 16:1-6",
+    title: "Sarai And Abram Try To Force The Promise",
+    icon: "😔",
+    phrases: [
+      phrase("🚫 Sarai Bare Him No Children", ["The chapter opens with the pressure point again.", "God promised descendants, but Sarai still has no child.", "Waiting has become painful.", "The problem is real, but what they do next will wound the household."]),
+      phrase("👩 Hagar The Egyptian", ["Hagar is Sarai's Egyptian handmaid.", "She is a vulnerable person in the household.", "Her nationality may connect back to Abram's time in Egypt.", "Genesis wants us to see her as a person, not a prop."]),
+      phrase("🤲 The LORD Hath Restrained Me From Bearing", ["Sarai recognizes that she has not conceived.", "But her interpretation moves toward control instead of trust.", "She names the pain honestly, then tries to solve it by human arrangement.", "This is waiting under pressure."]),
+      phrase("🛏️ Go In Unto My Maid", ["Sarai proposes that Abram have a child through Hagar.", "This may reflect an ancient household custom, but Genesis shows the damage it creates.", "Cultural permission does not mean spiritual wisdom.", "A shortcut can still be a wound."]),
+      phrase("👂 Abram Hearkened To The Voice Of Sarai", ["Abram listens and agrees.", "The wording echoes earlier Genesis patterns where listening to the wrong voice leads to trouble.", "Abram does not lead the household toward trust here.", "He participates in forcing the promise."]),
+      phrase("📆 Ten Years In The Land Of Canaan", ["A decade has passed since Abram entered Canaan.", "The wait is not small.", "This detail helps readers feel why the pressure is intense.", "Delayed promise can expose impatience and fear."]),
+      phrase("👩‍🍼 Hagar Conceived", ["The plan appears to work at first.", "Hagar becomes pregnant.", "But immediate success does not mean the decision was wise.", "Genesis quickly shows relational damage."]),
+      phrase("👀 Her Mistress Was Despised", ["Hagar looks down on Sarai after conceiving.", "The household order begins to fracture.", "Pain turns into contempt.", "The forced solution creates new bitterness."]),
+      phrase("💔 My Wrong Be Upon Thee", ["Sarai blames Abram for the pain now unfolding.", "The plan was shared, but the wound becomes relational conflict.", "This is how shortcuts often work.", "They promise relief and produce blame."]),
+      phrase("✋ Thy Maid Is In Thy Hand", ["Abram refuses to take strong responsibility.", "He gives Hagar back into Sarai's power.", "The vulnerable person bears the weight of the household's failure.", "Genesis does not make this look noble."]),
+      phrase("😢 Sarai Dealt Hardly With Her", ["Sarai treats Hagar harshly.", "The promised family is now marked by mistreatment.", "Waiting has turned into harm.", "Genesis shows the human cost of trying to control God's promise."]),
+      phrase("🏃 She Fled From Her Face", ["Hagar runs away.", "She is pregnant, vulnerable, and mistreated.", "Her flight shows how broken the household has become.", "But the wilderness will become the place where God sees her."]),
+    ],
+  },
+  {
+    chapter: 16,
+    startVerse: 7,
+    endVerse: 16,
+    reference: "Genesis 16:7-16",
+    title: "God Sees Hagar",
+    icon: "👁️",
+    phrases: [
+      phrase("🌵 The Angel Of The LORD Found Her", ["Hagar runs, but she is not lost to God.", "The Lord's messenger finds her in the wilderness.", "Found is a tender word here.", "God sees the person the household failed to protect."]),
+      phrase("💧 By A Fountain Of Water", ["God meets Hagar near water in the wilderness.", "That location matters because she is pregnant and vulnerable.", "The scene carries mercy.", "God meets her where survival is fragile."]),
+      phrase("❓ Whence Camest Thou? And Whither Wilt Thou Go?", ["The question invites Hagar to name her story.", "God knows, but He lets her speak.", "She is not treated as invisible.", "The Lord addresses her personally."]),
+      phrase("🏃 I Flee From The Face Of My Mistress Sarai", ["Hagar tells the truth about her flight.", "She is running from Sarai's harshness.", "Genesis allows the wounded person to speak.", "Her suffering is not hidden from God."]),
+      phrase("↩️ Return To Thy Mistress", ["This command is difficult to read.", "God sends Hagar back, but not because her suffering is ignored.", "He also gives her promise, identity, and future.", "The text must be handled with tenderness because Hagar's vulnerability is real."]),
+      phrase("👨‍👩‍👧‍👦 I Will Multiply Thy Seed Exceedingly", ["God gives Hagar a promise about descendants.", "She is not the covenant wife, but she is still seen and blessed.", "Her child has a future before God.", "The Lord's care reaches outside the center of the promise line."]),
+      phrase("👶 Thou Shalt Bear A Son", ["God speaks directly about the child Hagar carries.", "Her pregnancy is not invisible to Him.", "The child is named before birth.", "God enters Hagar's future with knowledge and care."]),
+      phrase("📛 Ishmael", ["Ishmael means God hears.", "The name is tied to Hagar's affliction.", "Every time the name is spoken, it testifies that God heard her pain.", "This is one of Genesis's most tender naming moments."]),
+      phrase("👂 The LORD Hath Heard Thy Affliction", ["God hears Hagar's suffering.", "She may have little power in Abram's household, but heaven has heard her.", "This phrase reveals God's compassion.", "Affliction does not disappear into silence before Him."]),
+      phrase("🐎 A Wild Man", ["This describes Ishmael's future as strong, independent, and conflict-marked.", "The words are not a throwaway insult.", "They forecast a hard and rugged life.", "Genesis is telling the reader Ishmael's line will have its own story."]),
+      phrase("👁️ Thou God Seest Me", ["Hagar names God as the God who sees.", "This is remarkable because she is a marginalized Egyptian servant.", "Yet she receives a direct encounter with God's care.", "Her testimony becomes one of the clearest statements of God's personal attention in Genesis."]),
+      phrase("💧 Beerlahairoi", ["The well name is connected to the God who lives and sees.", "Place names in Genesis often preserve encounters with God.", "This location becomes a memory of Hagar's rescue.", "The wilderness has become holy ground."]),
+      phrase("📆 Abram Was Fourscore And Six Years Old", ["Abram is eighty-six when Ishmael is born.", "The timeline matters because the promised son through Sarah still has not come.", "Years are passing.", "Genesis wants readers to feel the long wait and the complicated consequences."]),
+    ],
+  },
+];
+
+function addGenesisElevenTwelveTexture(title: string, content: string) {
+  const lower = title.toLowerCase();
+
+  const add = (lines: string[]) => `${content}\n\n${note(lines)}`;
+
+  if (lower.includes("one language") || lower.includes("one speech")) {
+    return add([
+      "Watch the gift and the danger side by side:",
+      "🗣️ Same words.",
+      "🤝 Same understanding.",
+      "🏗️ Same project.",
+      "⚠️ Same proud direction.",
+      "Unity is powerful, but Genesis wants us to ask what that unity is serving.",
+    ]);
+  }
+
+  if (lower.includes("journeyed") || lower.includes("from the east") || lower.includes("plain") || lower.includes("shinar") || lower.includes("dwelt there")) {
+    return add([
+      "Slow down over the movement:",
+      "🧭 They travel.",
+      "🌾 They find a useful place.",
+      "🏠 They settle.",
+      "🏙️ They start building a world around themselves.",
+      "The geography is doing more than giving directions. It is showing the path toward Babel's heart.",
+    ]);
+  }
+
+  if (lower.includes("brick") || lower.includes("slime") || lower.includes("mortar") || lower.includes("burn them")) {
+    return add([
+      "The materials tell a story:",
+      "🧱 Skill is present.",
+      "🔥 Planning is present.",
+      "🛢️ Strong binding is present.",
+      "💔 Humility is missing.",
+      "That is the ache of Babel: the outside is sturdy, but the inside is proud.",
+    ]);
+  }
+
+  if (lower.includes("city") || lower.includes("tower") || lower.includes("heaven")) {
+    return add([
+      "This is bigger than architecture:",
+      "🏙️ The city says, We can secure ourselves.",
+      "🗼 The tower says, We can rise by ourselves.",
+      "👑 The project says, We can define ourselves.",
+      "Genesis is letting the building expose the heart.",
+    ]);
+  }
+
+  if (lower.includes("make us a name") || lower.includes("make thy name")) {
+    return add([
+      "Put Babel and Abram beside each other:",
+      "👑 Babel: Let us make a name.",
+      "🎁 God: I will make thy name great.",
+      "One grabs identity.",
+      "The other receives identity.",
+      "That contrast is one of the hinges of Genesis 11 and 12.",
+    ]);
+  }
+
+  if (lower.includes("scattered") || lower.includes("confound") || lower.includes("babel")) {
+    return add([
+      "Notice the reversal:",
+      "🌍 They fear scattering.",
+      "🏗️ They build to prevent it.",
+      "🗣️ God touches their speech.",
+      "🚶 The people scatter anyway.",
+      "God's purpose keeps moving, even when human pride tries to hold it back.",
+    ]);
+  }
+
+  if (lower.includes("lord came down") || lower.includes("children of men") || lower.includes("nothing will be restrained") || lower.includes("let us go down")) {
+    return add([
+      "Genesis almost lets you feel the irony:",
+      "⬆️ Humanity builds upward.",
+      "⬇️ The Lord comes down.",
+      "🏗️ The tower looks huge from earth.",
+      "👑 It is small before God.",
+      "The story humbles pride without shouting.",
+    ]);
+  }
+
+  if (lower.includes("generations") || lower.includes("begat") || lower.includes("sons and daughters") || lower.includes("lived after")) {
+    return add([
+      "Genealogies can look quiet, but they are carrying weight:",
+      "👶 Births continue.",
+      "🏠 Families keep forming.",
+      "⏳ Time keeps passing.",
+      "🌱 The promise line keeps moving.",
+      "The Bible is whispering, God has not lost the thread.",
+    ]);
+  }
+
+  if (lower.includes("terah") || lower.includes("abram, nahor") || lower.includes("haran died") || lower.includes("ur of the chaldees") || lower.includes("sarai")) {
+    return add([
+      "This is the family soil under Abram's call:",
+      "🏠 A real household.",
+      "💔 Real grief.",
+      "🚫 Real impossibility.",
+      "🛣️ A real unfinished road.",
+      "God does not call Abram out of a clean, simple background. He calls him from ordinary family complexity.",
+    ]);
+  }
+
+  if (lower.includes("get thee out") || lower.includes("thy country") || lower.includes("thy kindred") || lower.includes("father's house") || lower.includes("land that i will shew")) {
+    return add([
+      "Feel the layers of leaving:",
+      "🌍 Country: the familiar world.",
+      "👪 Kindred: the family network.",
+      "🏠 Father's house: the deepest security.",
+      "🧭 Unknown land: the promise still ahead.",
+      "Abram is not just changing locations. He is learning to let God's word become home.",
+    ]);
+  }
+
+  if (lower.includes("great nation") || lower.includes("i will bless") || lower.includes("be a blessing") || lower.includes("all families")) {
+    return add([
+      "The promise keeps widening:",
+      "👤 One man.",
+      "🏠 One family.",
+      "🏛️ One nation.",
+      "🌍 All families of the earth.",
+      "God narrows the story through Abram so blessing can widen to the world.",
+    ]);
+  }
+
+  if (lower.includes("abram departed") || lower.includes("as the lord had spoken") || lower.includes("lot went") || lower.includes("seventy") || lower.includes("haran") || lower.includes("substance") || lower.includes("souls")) {
+    return add([
+      "Obedience has feet here:",
+      "🚶 Abram goes.",
+      "👥 Lot comes with him.",
+      "🐪 The household moves.",
+      "📦 The possessions move.",
+      "Faith is not just a thought in Abram's heart. It becomes a whole life in motion.",
+    ]);
+  }
+
+  if (lower.includes("canaan") || lower.includes("sichem") || lower.includes("moreh") || lower.includes("canaanite")) {
+    return add([
+      "The land is both promise and pressure:",
+      "🗺️ Abram arrives.",
+      "📍 Real places are named.",
+      "👀 The Canaanite is still there.",
+      "⏳ Fulfillment is not instant.",
+      "Genesis is teaching faith in the gap between God's word and visible possession.",
+    ]);
+  }
+
+  if (lower.includes("appeared") || lower.includes("thy seed") || lower.includes("give this land") || lower.includes("altar") || lower.includes("called upon")) {
+    return add([
+      "This scene has a beautiful rhythm:",
+      "👁️ God appears.",
+      "🎁 God promises.",
+      "⛪ Abram builds.",
+      "🙏 Abram calls.",
+      "Promise leads Abram into worship, not self-importance.",
+    ]);
+  }
+
+  if (lower.includes("bethel") || lower.includes("hai") || lower.includes("south")) {
+    return add([
+      "The place names are not throwaway details:",
+      "📍 They locate Abram's steps.",
+      "🗺️ They build the Bible's map.",
+      "⛺ They show Abram living as a traveler.",
+      "🌱 They prepare places that will matter later.",
+      "Genesis is teaching through geography as well as speech.",
+    ]);
+  }
+
+  if (lower.includes("famine") || lower.includes("egypt") || lower.includes("sojourn")) {
+    return add([
+      "The test comes fast:",
+      "🌾 Promise land.",
+      "⚠️ Real famine.",
+      "⬇️ Egypt for survival.",
+      "😨 Fear close behind.",
+      "Abram's faith is real, but Genesis is honest that real faith can still panic under pressure.",
+    ]);
+  }
+
+  if (lower.includes("fair woman") || lower.includes("egyptians shall see") || lower.includes("kill me") || lower.includes("save thee alive") || lower.includes("my sister") || lower.includes("well with me") || lower.includes("my soul")) {
+    return add([
+      "Fear starts rearranging the room:",
+      "😨 Abram imagines danger.",
+      "🤐 He hides the truth.",
+      "👩 Sarai carries the risk.",
+      "💔 Self-protection wins the moment.",
+      "Genesis lets us feel how fear can make a faithful person act in a deeply harmful way.",
+    ]);
+  }
+
+  if (lower.includes("egyptians beheld") || lower.includes("very fair") || lower.includes("princes") || lower.includes("commended") || lower.includes("pharaoh's house") || lower.includes("entreated") || lower.includes("sheep")) {
+    return add([
+      "The consequences unfold step by step:",
+      "👀 Sarai is noticed.",
+      "🏛️ Pharaoh's house gets involved.",
+      "🎁 Abram receives gain.",
+      "⚠️ Sarai is endangered.",
+      "This is why the story feels uncomfortable. Abram's plan works for Abram, but it puts Sarai in harm's way.",
+    ]);
+  }
+
+  if (lower.includes("plagued pharaoh") || lower.includes("great plagues") || lower.includes("sarah") || lower.includes("sari") || lower.includes("called abram") || lower.includes("what is this") || lower.includes("why didst") || lower.includes("taken her") || lower.includes("behold thy wife") || lower.includes("sent him away")) {
+    return add([
+      "God's rescue is mercy with exposure:",
+      "🛡️ Sarai is protected.",
+      "⚡ Pharaoh is stopped.",
+      "📣 Abram is confronted.",
+      "🚪 The family is sent away.",
+      "The promise survives because God is faithful, not because Abram handled fear well.",
+    ]);
+  }
+
+  if (lower.includes("went up out of egypt") || lower.includes("he and his wife") || lower.includes("lot with him") || lower.includes("into the south")) {
+    return add([
+      "This return has a quiet grace in it:",
+      "⬅️ Abram leaves the place of compromise.",
+      "👩 Sarai is still with him.",
+      "👥 Lot is still on the journey.",
+      "🗺️ The family moves back toward promise.",
+      "Genesis lets failure be real without making it final.",
+    ]);
+  }
+
+  if (lower.includes("very rich") || lower.includes("substance was great") || lower.includes("flocks") || lower.includes("herds") || lower.includes("tents")) {
+    return add([
+      "Abundance brings its own test:",
+      "🐑 More animals.",
+      "⛺ More household movement.",
+      "📦 More possessions.",
+      "⚠️ More pressure.",
+      "Genesis is honest: blessing can create problems that require wisdom.",
+    ]);
+  }
+
+  if (lower.includes("journeys") || lower.includes("bethel") || lower.includes("hai") || lower.includes("place of the altar") || lower.includes("called on the name")) {
+    return add([
+      "Abram is retracing worship ground:",
+      "🗺️ Back through the land.",
+      "⛪ Back near the altar.",
+      "🙏 Back to calling on the Lord.",
+      "🌱 Back toward promise.",
+      "After Egypt, the best direction is not denial. It is return.",
+    ]);
+  }
+
+  if (lower.includes("land was not able") || lower.includes("strife") || lower.includes("canaanite") || lower.includes("perizzite")) {
+    return add([
+      "The pressure is practical and spiritual:",
+      "🌾 Limited land.",
+      "🐑 Many animals.",
+      "👥 Other peoples nearby.",
+      "⚔️ Tension in the household.",
+      "Faith is tested in ordinary logistics as much as in dramatic moments.",
+    ]);
+  }
+
+  if (lower.includes("let there be no strife") || lower.includes("we be brethren") || lower.includes("whole land before thee") || lower.includes("separate thyself")) {
+    return add([
+      "Abram chooses peace with open hands:",
+      "🤝 Relationship over winning.",
+      "🗺️ Space over strife.",
+      "🙌 Trust over control.",
+      "🕊️ Peace before the conflict hardens.",
+      "This is Abram acting more like a man who believes God will provide.",
+    ]);
+  }
+
+  if (lower.includes("lot lifted up") || lower.includes("well watered") || lower.includes("garden of the lord") || lower.includes("land of egypt") || lower.includes("zoar") || lower.includes("plain of jordan")) {
+    return add([
+      "Lot's choice looks good on the surface:",
+      "💧 Watered land.",
+      "🌿 Garden-like beauty.",
+      "👀 Visible opportunity.",
+      "⚠️ Hidden danger.",
+      "Genesis is training readers to ask where a choice is leading, not only how it looks.",
+    ]);
+  }
+
+  if (lower.includes("journeyed east") || lower.includes("separated themselves") || lower.includes("cities of the plain") || lower.includes("pitched his tent") || lower.includes("sodom")) {
+    return add([
+      "Watch the drift:",
+      "👀 Lot sees.",
+      "🧭 Lot chooses.",
+      "🌅 Lot moves east.",
+      "⛺ Lot faces Sodom.",
+      "Small directions can become serious destinations.",
+    ]);
+  }
+
+  if (lower.includes("lord said unto abram") || lower.includes("lift up now thine eyes") || lower.includes("northward") || lower.includes("all the land") || lower.includes("to thee will i give")) {
+    return add([
+      "God answers Abram's open hand with promise:",
+      "📣 God speaks after the separation.",
+      "👀 Abram looks after God speaks.",
+      "🗺️ The land is still promised.",
+      "🎁 The gift is still secure.",
+      "Abram did not lose the future by refusing to grab the present.",
+    ]);
+  }
+
+  if (lower.includes("thy seed") || lower.includes("dust of the earth") || lower.includes("arise, walk") || lower.includes("length") || lower.includes("breadth")) {
+    return add([
+      "The promise gets bigger than Abram's present life:",
+      "👶 Descendants he cannot yet see.",
+      "🌫️ Dust he cannot count.",
+      "🚶 Land he can walk but not yet own.",
+      "📏 Space God promises before Abram possesses it.",
+      "Faith keeps moving inside promises that are still larger than the moment.",
+    ]);
+  }
+
+  if (lower.includes("mamre") || lower.includes("hebron") || lower.includes("built there an altar")) {
+    return add([
+      "Genesis keeps tying promise to place and worship:",
+      "🌳 Mamre becomes a remembered place.",
+      "🏙️ Hebron will matter again.",
+      "⛪ Abram builds another altar.",
+      "🙏 The journey stays centered on the Lord.",
+      "Abram's map is slowly becoming a map of worship.",
+    ]);
+  }
+
+  if (lower.includes("amraphel") || lower.includes("shinar, ellasar") || lower.includes("made war") || lower.includes("bera king") || lower.includes("sodom, gomorrah") || lower.includes("vale of siddim") || lower.includes("chedorlaomer") || lower.includes("rebelled") || lower.includes("fourteenth year") || lower.includes("rephaims") || lower.includes("enmishpat") || lower.includes("amalekites")) {
+    return add([
+      "This war report is setting the stage:",
+      "👑 Kings are competing.",
+      "📍 Regions are colliding.",
+      "⚔️ Power is being challenged.",
+      "🏙️ Sodom is in the middle of it.",
+      "Lot's chosen direction has placed him near a dangerous world.",
+    ]);
+  }
+
+  if (lower.includes("slimepits") || lower.includes("kings of sodom") || lower.includes("fell there") || lower.includes("goods of sodom") || lower.includes("victuals") || lower.includes("they took lot") || lower.includes("brother's son") || lower.includes("dwelt in sodom")) {
+    return add([
+      "The cost of Lot's direction becomes visible:",
+      "🏙️ Sodom loses.",
+      "📦 Goods are taken.",
+      "🍞 Food is taken.",
+      "⛓️ Lot is taken.",
+      "Genesis is showing how a place that looked profitable can pull a person into its trouble.",
+    ]);
+  }
+
+  if (lower.includes("escaped") || lower.includes("abram the hebrew") || lower.includes("plain of mamre") || lower.includes("confederates") || lower.includes("heard that his brother") || lower.includes("trained servants") || lower.includes("born in his own house") || lower.includes("three hundred") || lower.includes("pursued them") || lower.includes("divided himself") || lower.includes("brought back") || lower.includes("women also")) {
+    return add([
+      "Abram's rescue has courage and mercy in it:",
+      "👂 He hears.",
+      "🛡️ He arms trained men.",
+      "🌙 He moves wisely by night.",
+      "⛓️ He rescues Lot.",
+      "🎒 He restores what was taken.",
+      "This is Abram becoming a blessing in the middle of another city's disaster.",
+    ]);
+  }
+
+  if (lower.includes("king of sodom went") || lower.includes("valley of shaveh")) {
+    return add([
+      "Victory brings a new test:",
+      "👑 Kings come out.",
+      "🏆 Abram has honor.",
+      "💰 Rewards are possible.",
+      "⚠️ Motives will be revealed.",
+      "After danger comes the question: who gets credit for Abram's success?",
+    ]);
+  }
+
+  if (lower.includes("melchizedek") || lower.includes("bread and wine") || lower.includes("priest of the most high") || lower.includes("blessed be abram") || lower.includes("possessor of heaven") || lower.includes("delivered thine enemies") || lower.includes("tithes")) {
+    return add([
+      "Melchizedek changes the atmosphere:",
+      "🍞 Provision after battle.",
+      "🍷 Fellowship after violence.",
+      "⛪ Priesthood before Israel's priesthood.",
+      "🙌 Blessing instead of bargaining.",
+      "He helps Abram see the victory under God's hand.",
+    ]);
+  }
+
+  if (lower.includes("give me the persons") || lower.includes("lift up mine hand") || lower.includes("thread") || lower.includes("shoelatchet") || lower.includes("made abram rich") || lower.includes("young men") || lower.includes("aner, eshcol")) {
+    return add([
+      "Abram draws a clean line:",
+      "✋ No personal reward from Sodom.",
+      "🧵 Not even a thread.",
+      "👟 Not even a shoelatchet.",
+      "🙌 The Lord alone gets credit.",
+      "Abram has learned that some gain is not worth the confusion it creates.",
+    ]);
+  }
+
+  if (lower.includes("fear not") || lower.includes("shield") || lower.includes("reward") || lower.includes("childless") || lower.includes("eliezer") || lower.includes("stars") || lower.includes("believed") || lower.includes("righteousness")) {
+    return add([
+      "Genesis 15 lets faith breathe honestly:",
+      "😨 Fear is named.",
+      "👶 Childlessness is named.",
+      "⭐ Promise is repeated.",
+      "🙌 Abram believes.",
+      "Faith here is not loud confidence. It is trust holding onto God's word while the ache is still real.",
+    ]);
+  }
+
+  if (lower.includes("heifer") || lower.includes("covenant") || lower.includes("deep sleep") || lower.includes("stranger") || lower.includes("four hundred") || lower.includes("smoking furnace") || lower.includes("burning lamp") || lower.includes("amorites")) {
+    return add([
+      "The covenant scene is heavy with meaning:",
+      "🔥 God gives assurance.",
+      "🌙 Abram is made still.",
+      "⛓️ Future suffering is named.",
+      "📜 The promise is sealed.",
+      "God is not offering shallow comfort. He is binding Himself to a long, costly promise.",
+    ]);
+  }
+
+  if (lower.includes("hagar") || lower.includes("sarai bare") || lower.includes("restrained") || lower.includes("maid") || lower.includes("hearkened") || lower.includes("conceived") || lower.includes("despised") || lower.includes("dealt hardly") || lower.includes("fled")) {
+    return add([
+      "This is what forced promise does to a household:",
+      "⏳ Waiting hurts.",
+      "🤲 Control takes over.",
+      "👩 Hagar is used.",
+      "💔 Relationships fracture.",
+      "Genesis is not rushing past the damage. It wants us to see the cost of unbelieving shortcuts.",
+    ]);
+  }
+
+  if (lower.includes("angel of the lord") || lower.includes("fountain") || lower.includes("whence") || lower.includes("ishmael") || lower.includes("heard thy affliction") || lower.includes("seest me") || lower.includes("beerlahairoi")) {
+    return add([
+      "Hagar's wilderness becomes a place of mercy:",
+      "🌵 She is alone.",
+      "💧 She is vulnerable.",
+      "👁️ God sees.",
+      "👂 God hears.",
+      "The household may have failed her, but the Lord does not lose sight of her.",
+    ]);
+  }
+
+  if (lower.includes("almighty god") || lower.includes("walk before") || lower.includes("be thou perfect") || lower.includes("abraham") || lower.includes("many nations") || lower.includes("everlasting covenant") || lower.includes("i will be their god")) {
+    return add([
+      "Genesis 17 reshapes identity by promise:",
+      "🙌 God names His power.",
+      "🚶 God calls for faithful walking.",
+      "🆕 God gives a new name.",
+      "♾️ God speaks covenant across generations.",
+      "Abraham is learning to live under a future only God can create.",
+    ]);
+  }
+
+  if (lower.includes("circumcised") || lower.includes("foreskin") || lower.includes("token") || lower.includes("eight days") || lower.includes("born in the house") || lower.includes("bought with money") || lower.includes("cut off")) {
+    return add([
+      "The covenant sign is concrete:",
+      "✂️ Marked in the body.",
+      "👶 Given to the next generation.",
+      "🏠 Applied to the whole household.",
+      "⚠️ Treated seriously.",
+      "God's promise is not an idea floating above life. It marks a people.",
+    ]);
+  }
+
+  if (lower.includes("sarah") || lower.includes("isaac") || lower.includes("laughed") || lower.includes("hundred years") || lower.includes("ishmael might live") || lower.includes("set time")) {
+    return add([
+      "The promise is becoming painfully specific:",
+      "👩 Sarah is named.",
+      "😂 Laughter rises.",
+      "👶 Isaac is promised.",
+      "📆 The time is set.",
+      "God is moving the impossible promise from someday to soon.",
+    ]);
+  }
+
+  if (lower.includes("lord appeared") || lower.includes("mamre") || lower.includes("three men") || lower.includes("ran to meet") || lower.includes("water") || lower.includes("bread") || lower.includes("calf") || lower.includes("butter")) {
+    return add([
+      "The holy visit arrives in ordinary hospitality:",
+      "⛺ A tent.",
+      "🌳 A tree.",
+      "💧 Water.",
+      "🍞 Bread.",
+      "🐄 A meal.",
+      "Genesis lets divine promise sit at a real table.",
+    ]);
+  }
+
+  if (lower.includes("where is sarah") || lower.includes("time of life") || lower.includes("sarah heard") || lower.includes("old") || lower.includes("too hard") || lower.includes("sarah denied")) {
+    return add([
+      "Sarah's laugh is met by God's question:",
+      "👂 She hears.",
+      "😂 She laughs.",
+      "🙈 She hides.",
+      "💪 God asks what is too hard for Him.",
+      "The Lord does not mock her ache. He confronts unbelief with power.",
+    ]);
+  }
+
+  if (lower.includes("sodom") || lower.includes("judge of all") || lower.includes("righteous") || lower.includes("fifty") || lower.includes("dust and ashes") || lower.includes("ten's sake") || lower.includes("cry of sodom")) {
+    return add([
+      "Genesis holds justice and mercy together:",
+      "⚖️ God investigates evil.",
+      "🙏 Abraham pleads.",
+      "🕊️ Mercy is possible.",
+      "🏙️ Sodom is still accountable.",
+      "The Judge of all the earth is not careless with judgment.",
+    ]);
+  }
+
+  if (lower.includes("angels to sodom") || lower.includes("lot sat") || lower.includes("men of sodom") || lower.includes("compassed") || lower.includes("know them") || lower.includes("daughters") || lower.includes("blindness")) {
+    return add([
+      "Sodom's darkness comes into the street:",
+      "🏙️ The city gathers.",
+      "🚪 The house is surrounded.",
+      "💔 Violence is demanded.",
+      "🧑‍🦯 Judgment begins at the door.",
+      "Genesis wants readers to feel why Sodom's judgment is righteous.",
+    ]);
+  }
+
+  if (lower.includes("destroy this place") || lower.includes("mocked") || lower.includes("lingered") || lower.includes("laid hold") || lower.includes("merciful") || lower.includes("escape") || lower.includes("zoar")) {
+    return add([
+      "Lot's rescue is mercy dragging hesitation out of danger:",
+      "🔥 Judgment is near.",
+      "⏳ Lot lingers.",
+      "🤝 Angels take his hand.",
+      "🏃 He is pulled out.",
+      "Sometimes mercy feels like being forced away from what would destroy us.",
+    ]);
+  }
+
+  if (lower.includes("brimstone") || lower.includes("overthrew") || lower.includes("looked back") || lower.includes("pillar of salt") || lower.includes("smoke") || lower.includes("remembered abraham")) {
+    return add([
+      "The plain Lot chose becomes a warning:",
+      "🔥 The cities fall.",
+      "👀 Lot's wife looks back.",
+      "🧂 The warning becomes visible.",
+      "🙏 Abraham is remembered.",
+      "Judgment is real, and mercy is real too.",
+    ]);
+  }
+
+  if (lower.includes("cave") || lower.includes("not a man") || lower.includes("drink wine") || lower.includes("lie with him") || lower.includes("moab") || lower.includes("benammi")) {
+    return add([
+      "Lot's story ends in heartbreak:",
+      "⛰️ Away from the plain.",
+      "🕳️ Inside a cave.",
+      "🍷 Under drunkenness.",
+      "💔 Family brokenness.",
+      "Genesis is showing the bitter harvest of a long drift toward Sodom.",
+    ]);
+  }
+
+  if (lower.includes("gerar") || lower.includes("she is my sister") || lower.includes("abimelech") || lower.includes("dream") || lower.includes("dead man") || lower.includes("integrity") || lower.includes("withheld thee") || lower.includes("prophet")) {
+    return add([
+      "Genesis 20 is painful because the old fear returns:",
+      "🔁 Abraham repeats the lie.",
+      "👑 Another king is endangered.",
+      "🛡️ God protects Sarah.",
+      "📣 Abraham is exposed.",
+      "The promise survives by God's faithfulness, not Abraham's perfect courage.",
+    ]);
+  }
+
+  if (lower.includes("what hast thou done") || lower.includes("great sin") || lower.includes("what sawest") || lower.includes("fear of god") || lower.includes("slay me") || lower.includes("daughter of my father") || lower.includes("kindness")) {
+    return add([
+      "Abimelech's questions uncover Abraham's fear:",
+      "❓ What did you do?",
+      "⚠️ What danger did you bring?",
+      "😨 What did you assume?",
+      "🤐 What truth did you hide?",
+      "Sometimes the outsider sees the believer's compromise more clearly than the believer does.",
+    ]);
+  }
+
+  if (lower.includes("restored") || lower.includes("covering of the eyes") || lower.includes("abraham prayed") || lower.includes("god healed") || lower.includes("closed up all the wombs") || lower.includes("because of sarah")) {
+    return add([
+      "The chapter ends with restoration before Isaac's birth:",
+      "👩 Sarah is returned.",
+      "🛡️ Her place is protected.",
+      "🙏 Abraham prays.",
+      "🩺 God heals.",
+      "The promised mother is guarded by God right before the promised son arrives.",
+    ]);
+  }
+
+  return content;
+}
+
+function addGenesisElevenTwelveSectionTexture(sections: PersonalGenesisPhraseSectionInput[]) {
+  return sections.map((section) => ({
+    ...section,
+    phrases: section.phrases.map(([title, content]) => [title, addGenesisElevenTwelveTexture(title, content)] as [string, string]),
+  }));
+}
+
+export const GENESIS_11_20_PERSONAL_SECTIONS = [
+  ...addGenesisElevenTwelveSectionTexture(GENESIS_11_PERSONAL_REWRITE_SECTIONS),
+  ...addGenesisElevenTwelveSectionTexture(GENESIS_12_PERSONAL_REWRITE_SECTIONS),
+  ...addGenesisElevenTwelveSectionTexture(GENESIS_13_PERSONAL_REWRITE_SECTIONS),
+  ...addGenesisElevenTwelveSectionTexture(GENESIS_14_PERSONAL_REWRITE_SECTIONS),
+  ...addGenesisElevenTwelveSectionTexture(GENESIS_15_20_PERSONAL_REWRITE_SECTIONS),
+  ...expandSplitSections(RAW_GENESIS_11_20_PERSONAL_SECTIONS).filter(
+    (section) => section.chapter < 11 || section.chapter > 20,
+  ),
+].sort((a, b) => a.chapter - b.chapter || a.startVerse - b.startVerse || a.endVerse - b.endVerse);
