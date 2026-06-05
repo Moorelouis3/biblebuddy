@@ -2,6 +2,7 @@ import { GENESIS_11_20_PERSONAL_SECTIONS } from "./genesisElevenToTwentyPersonal
 import { GENESIS_21_30_PERSONAL_SECTIONS } from "./genesisTwentyOneToThirtyPersonalNotes";
 import { GENESIS_31_40_PERSONAL_SECTIONS } from "./genesisThirtyOneToFortyPersonalNotes";
 import { GENESIS_41_50_PERSONAL_SECTIONS } from "./genesisFortyOneToFiftyPersonalNotes";
+import { EXODUS_2_10_PERSONAL_SECTIONS } from "./exodusTwoToTenPersonalNotes";
 
 export type BibleReaderStudyNoteCategory = {
   id: string;
@@ -11805,6 +11806,35 @@ function makePersonalGenesisPhraseSection(section: {
   };
 }
 
+function makePersonalExodusPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    book: "exodus",
+    chapter: section.chapter,
+    startVerse: section.startVerse,
+    endVerse: section.endVerse,
+    reference: section.reference,
+    title: section.title,
+    icon: section.icon,
+    summary: "",
+    categories: [
+      {
+        id: "key-phrases",
+        icon: "ðŸ’¬",
+        title: "Key Phrases",
+        content: section.phrases.map(([heading, body]) => `${heading}\n${body.trim()}`),
+      },
+    ],
+  };
+}
+
 function applyPersonalGenesisFourThroughTenStudySections() {
   const sections: BibleReaderStudySection[] = [
     makePersonalGenesisPhraseSection({
@@ -15519,6 +15549,546 @@ function applyPersonalGenesisFortyOneThroughFiftyStudySections() {
   BIBLE_READER_STUDY_SECTIONS.push(...sections);
 }
 
+function applyPersonalExodusOneStudySections() {
+  const sections: BibleReaderStudySection[] = [
+    makePersonalExodusPhraseSection({
+      chapter: 1,
+      startVerse: 1,
+      endVerse: 7,
+      reference: "Exodus 1:1-7",
+      title: "Israel Multiplies In Egypt",
+      icon: "ðŸŒ±",
+      phrases: [
+        [
+          "ðŸ“œ These Are The Names",
+          `Exodus begins with names.
+
+That matters because this book is not starting a brand-new story from nowhere.
+
+It is continuing Genesis.
+
+ðŸ‘¨ Reuben
+ðŸ‘¨ Simeon
+ðŸ‘¨ Levi
+ðŸ‘¨ Judah
+ðŸ‘¨ Jacob's sons
+
+The family that entered Egypt is remembered person by person.
+
+God's rescue story begins with real people, not a vague crowd.
+
+Before Exodus shows a nation coming out, it reminds us of the family that went in.`,
+        ],
+        [
+          "ðŸ§­ Which Came Into Egypt",
+          `This phrase points backward to Genesis.
+
+Jacob's family came into Egypt because of famine.
+
+Joseph was already there, and God used him to preserve life.
+
+ðŸŒ¾ Famine brought need.
+ðŸš¶ The family traveled.
+ðŸ  Egypt became shelter.
+ðŸ“œ God's promise kept moving.
+
+Egypt began as a place of provision.
+
+But Exodus will show how a place of rescue slowly becomes a place of bondage.`,
+        ],
+        [
+          "ðŸ  Every Man And His Household",
+          `The sons of Jacob did not come alone.
+
+They came with households.
+
+ðŸ‘¨ Fathers
+ðŸ‘© Mothers
+ðŸ‘¶ Children
+ðŸ  Families
+
+This matters because Exodus is not only about one leader named Moses.
+
+It is about households under pressure.
+
+God's deliverance will reach families, children, workers, and homes.`,
+        ],
+        [
+          "ðŸ§® Seventy Souls",
+          `The number seventy gathers Jacob's family into one counted household.
+
+They enter Egypt small enough to be counted.
+
+Later they will leave Egypt as a great multitude.
+
+ðŸ§® Seventy entering
+ðŸŒ± Multiplying in Egypt
+ðŸ‘¥ Becoming a people
+ðŸ“ˆ Promise increasing
+
+This phrase helps readers measure the growth.
+
+Exodus wants us to see that God kept His promise to multiply Abraham's descendants.`,
+        ],
+        [
+          "ðŸŒ¾ Joseph Was In Egypt Already",
+          `Joseph is the bridge between Genesis and Exodus.
+
+He was sold into Egypt through his brothers' sin.
+
+But God used that suffering to preserve the family.
+
+ðŸ•³ï¸ Joseph went down first.
+ðŸŒ¾ Grain was stored.
+ðŸ  The family was saved.
+ðŸ§¬ The promise line survived.
+
+This phrase quietly reminds us that God had already been working in Egypt before slavery began.
+
+The place of future bondage had first been a place where God preserved life.`,
+        ],
+        [
+          "âš°ï¸ Joseph Died",
+          `Joseph's death is a major turning point.
+
+Genesis ended with Joseph in a coffin in Egypt.
+
+Now Exodus says Joseph died, his brothers died, and that whole generation passed away.
+
+âš°ï¸ Joseph died.
+âš°ï¸ His brothers died.
+â³ A generation passed.
+ðŸ“œ God's promise remained.
+
+The people who carried the promise died.
+
+But the promise itself did not die.`,
+        ],
+        [
+          "ðŸŒ± The Children Of Israel Were Fruitful",
+          `This language echoes Genesis.
+
+God told humanity to be fruitful and multiply.
+
+He promised Abraham many descendants.
+
+Now that promise is visible in Egypt.
+
+ðŸŒ± Fruitful
+ðŸ“ˆ Increased abundantly
+ðŸ‘¥ Multiplied
+ðŸ’ª Waxed exceeding mighty
+
+Egypt is not the promised land.
+
+But God's promise can grow even in foreign soil.`,
+        ],
+        [
+          "ðŸŒ The Land Was Filled With Them",
+          `Israel's growth becomes impossible to ignore.
+
+The family has become a people.
+
+ðŸ  Homes are full.
+ðŸ‘¶ Children are being born.
+ðŸŒ± The people are multiplying.
+ðŸŒ The land is filling with them.
+
+This is blessing.
+
+But the next verse shows that Pharaoh will see blessing as a threat.
+
+Exodus 1 turns from multiplication to oppression because fearful power hates what it cannot control.`,
+        ],
+      ],
+    }),
+    makePersonalExodusPhraseSection({
+      chapter: 1,
+      startVerse: 8,
+      endVerse: 14,
+      reference: "Exodus 1:8-14",
+      title: "Pharaoh Turns Blessing Into Bondage",
+      icon: "ðŸ§±",
+      phrases: [
+        [
+          "ðŸ‘‘ There Arose Up A New King",
+          `A new king changes the atmosphere in Egypt.
+
+The story moves from Joseph's favor to Pharaoh's fear.
+
+ðŸ‘‘ New ruler
+ðŸ§  New memory
+ðŸ˜¨ New suspicion
+ðŸ§± New oppression
+
+This matters because leadership can change how a whole nation treats vulnerable people.
+
+Exodus shows how quickly political power can become dangerous when it is ruled by fear instead of justice.`,
+        ],
+        [
+          "ðŸ§  Which Knew Not Joseph",
+          `This does not only mean Pharaoh lacked information.
+
+It means Joseph's service no longer shaped Egypt's treatment of Israel.
+
+Joseph had saved Egypt from famine.
+
+But the new Pharaoh does not honor that history.
+
+ðŸŒ¾ Joseph's wisdom is forgotten.
+ðŸ  Israel's place becomes insecure.
+ðŸ“œ Old mercy is ignored.
+ðŸ˜¨ Fear takes over.
+
+When a people forget mercy, they can begin treating neighbors like threats.`,
+        ],
+        [
+          "ðŸ˜¨ More And Mightier Than We",
+          `Pharaoh looks at Israel's growth and calls it danger.
+
+What God calls blessing, Pharaoh calls a threat.
+
+ðŸŒ± Israel multiplies.
+ðŸ˜¨ Pharaoh fears.
+ðŸ‘¥ The people look numerous.
+ðŸ‘‘ The king wants control.
+
+This phrase shows the heart of oppression forming.
+
+Fear begins telling Pharaoh a story where innocent people must be controlled before they become too strong.`,
+        ],
+        [
+          "ðŸ§  Let Us Deal Wisely With Them",
+          `Pharaoh calls his plan wisdom.
+
+But it is not true wisdom.
+
+It is cruelty dressed up as strategy.
+
+ðŸ§  Calculated control
+ðŸ§± Forced labor
+ðŸ”’ Fear-based policy
+ðŸ’” People treated like a problem
+
+This phrase matters because evil often presents itself as practical.
+
+Pharaoh is not saying, Let us be wicked.
+
+He is saying, Let us be smart.
+
+Exodus exposes the lie.`,
+        ],
+        [
+          "ðŸ§± Taskmasters",
+          `Taskmasters are placed over Israel to afflict them with burdens.
+
+This is organized oppression.
+
+ðŸ‘‰ Someone commands.
+ðŸ§± Someone labors.
+ðŸ¥€ Someone is beaten down.
+ðŸ“‰ Freedom shrinks.
+
+Israel is no longer simply living in Egypt.
+
+They are being controlled by Egypt.
+
+The need for deliverance is becoming painfully clear.`,
+        ],
+        [
+          "ðŸ—ï¸ Treasure Cities",
+          `Israel is forced to build Pharaoh's store cities.
+
+Pithom and Raamses become symbols of slave labor.
+
+ðŸ§± Bricks
+ðŸ—ï¸ Buildings
+ðŸ“¦ Storage
+ðŸ‘‘ Pharaoh's wealth
+
+Egypt's greatness is being built on Israel's suffering.
+
+Exodus wants readers to see the cost underneath empire.`,
+        ],
+        [
+          "ðŸ“ˆ The More They Afflicted Them",
+          `Pharaoh's plan backfires.
+
+The more Egypt afflicts Israel, the more Israel multiplies and grows.
+
+ðŸ§± Affliction increases.
+ðŸŒ± Israel multiplies.
+ðŸ˜¨ Egypt fears more.
+ðŸ” Oppression deepens.
+
+This does not make the suffering good.
+
+It shows that oppression cannot cancel God's promise.
+
+Egypt can hurt Israel, but it cannot erase what God is doing.`,
+        ],
+        [
+          "ðŸ˜£ They Were Grieved Because Of The Children Of Israel",
+          `Israel's existence becomes a source of dread to Egypt.
+
+That is a dark turn.
+
+The people God is blessing are treated like a problem to be managed.
+
+ðŸ‘¥ Israel grows.
+ðŸ˜£ Egypt resents.
+ðŸ‘‘ Pharaoh controls.
+ðŸ§± Slavery intensifies.
+
+This phrase shows how fear can turn a whole society against a people group.`,
+        ],
+        [
+          "ðŸ’” Made Their Lives Bitter",
+          `This phrase wants us to feel the pain of slavery.
+
+Israel's life is made bitter through hard bondage.
+
+ðŸ§± Mortar
+ðŸ§± Brick
+ðŸŒ¾ Field labor
+ðŸ¥€ Rigour
+
+Deliverance will not be rescue from mild inconvenience.
+
+It will be rescue from a system that crushes bodies, families, and hope.`,
+        ],
+        [
+          "ðŸ¥€ With Rigour",
+          `Rigour means harshness, severity, and cruelty.
+
+Egypt does not merely employ Israel.
+
+Egypt grinds Israel down.
+
+ðŸ”¨ Hard labor
+ðŸ˜£ Harsh treatment
+ðŸ”’ No freedom
+ðŸ’” Bitter life
+
+This phrase matters because Exodus begins by making oppression plain.
+
+God's judgment on Egypt will answer real cruelty, not imaginary offense.`,
+        ],
+      ],
+    }),
+    makePersonalExodusPhraseSection({
+      chapter: 1,
+      startVerse: 15,
+      endVerse: 22,
+      reference: "Exodus 1:15-22",
+      title: "The Midwives Fear God",
+      icon: "ðŸ•Šï¸",
+      phrases: [
+        [
+          "ðŸ—£ï¸ The King Of Egypt Spake",
+          `Pharaoh's oppression moves from labor to death.
+
+He speaks directly to the Hebrew midwives.
+
+ðŸ‘‘ A king commands.
+ðŸ‘¶ Babies are targeted.
+ðŸ•Šï¸ Midwives must choose.
+âš–ï¸ God's authority is tested.
+
+This moment shows how evil escalates when control is threatened.
+
+Pharaoh could not stop Israel's growth with hard labor, so now he attacks the children.`,
+        ],
+        [
+          "ðŸ“› Shiphrah And Puah",
+          `The midwives are named.
+
+Pharaoh is only called the king of Egypt here.
+
+That is not an accident.
+
+ðŸ“› Shiphrah is remembered.
+ðŸ“› Puah is remembered.
+ðŸ‘‘ Pharaoh's personal name is not honored.
+ðŸ•Šï¸ Courage gets the spotlight.
+
+Scripture remembers the women who protected life.
+
+Their quiet faithfulness mattered in the story of deliverance.`,
+        ],
+        [
+          "ðŸ‘¶ If It Be A Son",
+          `Pharaoh targets Hebrew boys.
+
+This is not random cruelty.
+
+It is a planned attack on Israel's future.
+
+ðŸ‘¶ Sons threatened.
+ðŸ  Families attacked.
+ðŸ“‰ Future generations targeted.
+ðŸ”’ Pharaoh tries to control the promise.
+
+God promised Abraham descendants.
+
+Pharaoh now tries to choke that promise at birth.`,
+        ],
+        [
+          "ðŸ•Šï¸ The Midwives Feared God",
+          `This is the key line in the midwife story.
+
+They fear God more than Pharaoh.
+
+ðŸ‘‘ Pharaoh has power.
+ðŸ“£ Pharaoh gives orders.
+ðŸ•Šï¸ God has higher authority.
+ðŸ‘¶ Life must be protected.
+
+Fearing God does not mean they are never afraid.
+
+It means God's authority weighs more than the king's command.`,
+        ],
+        [
+          "ðŸš« Did Not As The King Commanded",
+          `The midwives disobey Pharaoh.
+
+This is holy resistance.
+
+ðŸš« They refuse murder.
+ðŸ‘¶ They protect babies.
+ðŸ•Šï¸ They obey God.
+âš–ï¸ They reject evil law.
+
+The Bible is not praising rebellion for selfish reasons.
+
+It is showing that when human authority commands death, God's people must choose life.`,
+        ],
+        [
+          "ðŸŒ± Saved The Men Children Alive",
+          `The midwives preserve life.
+
+The boys Pharaoh wanted dead are allowed to live.
+
+ðŸ‘¶ Breathing babies
+ðŸ  Protected homes
+ðŸŒ± Future generations
+ðŸ“œ Promise still moving
+
+This phrase is beautiful because it shows deliverance beginning before Moses appears.
+
+God is already preserving His people through faithful women.`,
+        ],
+        [
+          "ðŸ¤¥ The Hebrew Women Are Lively",
+          `The midwives answer Pharaoh with wisdom.
+
+They do not hand over the children.
+
+They speak in a way that protects life.
+
+ðŸ§  Wisdom under pressure
+ðŸ•Šï¸ Fear of God
+ðŸ‘¶ Protection of children
+ðŸ‘‘ Resistance to Pharaoh
+
+The passage does not slow down to explain every ethical detail.
+
+But it clearly honors the midwives because they feared God and saved life.`,
+        ],
+        [
+          "ðŸ™Œ God Dealt Well With The Midwives",
+          `God sees what Pharaoh does not value.
+
+He deals well with the midwives.
+
+ðŸ‘€ God sees courage.
+ðŸ•Šï¸ God honors fear of Him.
+ðŸ‘¶ God values protected life.
+ðŸ  God blesses faithful households.
+
+Their work may have looked small beside Pharaoh's throne.
+
+But heaven noticed.`,
+        ],
+        [
+          "ðŸ  He Made Them Houses",
+          `God blesses the midwives with houses.
+
+This likely means He establishes their households.
+
+ðŸ  Stability
+ðŸ‘¥ Family
+ðŸŒ± Continuance
+ðŸ™Œ Blessing
+
+Pharaoh tried to destroy Hebrew households.
+
+God blesses the women who protected them.`,
+        ],
+        [
+          "ðŸŒŠ Cast Into The River",
+          `Pharaoh now commands all his people to throw Hebrew sons into the river.
+
+The violence becomes public policy.
+
+ðŸŒŠ The Nile becomes a weapon.
+ðŸ‘¶ Sons are targeted.
+ðŸ‘¥ All Egypt is involved.
+ðŸ’” Evil escalates.
+
+This sets up Exodus 2.
+
+Pharaoh says Hebrew boys must die in the river.
+
+But God will preserve Moses through the very waters Pharaoh meant for death.`,
+        ],
+        [
+          "ðŸ‘§ Every Daughter Ye Shall Save Alive",
+          `Pharaoh spares the daughters but targets the sons.
+
+He thinks he can weaken Israel by controlling its future.
+
+ðŸ‘¶ Sons killed
+ðŸ‘§ Daughters spared
+ðŸ  Families shattered
+ðŸ”’ Pharaoh grasping for control
+
+But this command will not stop God's promise.
+
+In fact, women will keep appearing as crucial protectors in the deliverance story:
+
+ðŸ•Šï¸ Midwives
+ðŸ‘© Moses' mother
+ðŸ‘§ Moses' sister
+ðŸ‘¸ Pharaoh's daughter`,
+        ],
+      ],
+    }),
+  ];
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "exodus" && section.chapter === 1) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalExodusTwoThroughTenStudySections() {
+  const sections = EXODUS_2_10_PERSONAL_SECTIONS.map(makePersonalExodusPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "exodus" && section.chapter >= 2 && section.chapter <= 10) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
 type ExodusTextureRule = {
   matches: string[];
   lines: string[];
@@ -16238,7 +16808,7 @@ function addExodusTextureToPhrase(content: string, chapter: number) {
 
 function applyPersonalExodusTextureStudySections() {
   for (const section of BIBLE_READER_STUDY_SECTIONS) {
-    if (section.book !== "exodus" || section.chapter < 1 || section.chapter > 40) {
+    if (section.book !== "exodus" || section.chapter < 1 || section.chapter > 40 || section.summary === "") {
       continue;
     }
 
@@ -16258,6 +16828,8 @@ applyPersonalGenesisElevenThroughTwentyStudySections();
 applyPersonalGenesisTwentyOneThroughThirtyStudySections();
 applyPersonalGenesisThirtyOneThroughFortyStudySections();
 applyPersonalGenesisFortyOneThroughFiftyStudySections();
+applyPersonalExodusOneStudySections();
+applyPersonalExodusTwoThroughTenStudySections();
 applyPersonalExodusTextureStudySections();
 enforceStudySectionVerseLimit();
 
