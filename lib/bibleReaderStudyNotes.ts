@@ -3,6 +3,9 @@ import { GENESIS_21_30_PERSONAL_SECTIONS } from "./genesisTwentyOneToThirtyPerso
 import { GENESIS_31_40_PERSONAL_SECTIONS } from "./genesisThirtyOneToFortyPersonalNotes";
 import { GENESIS_41_50_PERSONAL_SECTIONS } from "./genesisFortyOneToFiftyPersonalNotes";
 import { EXODUS_2_10_PERSONAL_SECTIONS } from "./exodusTwoToTenPersonalNotes";
+import { EXODUS_11_20_PERSONAL_SECTIONS } from "./exodusElevenToTwentyPersonalNotes";
+import { EXODUS_21_30_PERSONAL_SECTIONS } from "./exodusTwentyOneToThirtyPersonalNotes";
+import { EXODUS_31_40_PERSONAL_SECTIONS } from "./exodusThirtyOneToFortyPersonalNotes";
 
 export type BibleReaderStudyNoteCategory = {
   id: string;
@@ -16147,6 +16150,45 @@ function applyPersonalExodusTwoThroughTenStudySections() {
   BIBLE_READER_STUDY_SECTIONS.push(...sections);
 }
 
+function applyPersonalExodusElevenThroughTwentyStudySections() {
+  const sections = EXODUS_11_20_PERSONAL_SECTIONS.map(makePersonalExodusPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "exodus" && section.chapter >= 11 && section.chapter <= 20) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalExodusTwentyOneThroughThirtyStudySections() {
+  const sections = EXODUS_21_30_PERSONAL_SECTIONS.map(makePersonalExodusPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "exodus" && section.chapter >= 21 && section.chapter <= 30) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalExodusThirtyOneThroughFortyStudySections() {
+  const sections = EXODUS_31_40_PERSONAL_SECTIONS.map(makePersonalExodusPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "exodus" && section.chapter >= 31 && section.chapter <= 40) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
 type ExodusTextureRule = {
   matches: string[];
   lines: string[];
@@ -16888,6 +16930,9 @@ applyPersonalGenesisThirtyOneThroughFortyStudySections();
 applyPersonalGenesisFortyOneThroughFiftyStudySections();
 applyPersonalExodusOneStudySections();
 applyPersonalExodusTwoThroughTenStudySections();
+applyPersonalExodusElevenThroughTwentyStudySections();
+applyPersonalExodusTwentyOneThroughThirtyStudySections();
+applyPersonalExodusThirtyOneThroughFortyStudySections();
 applyPersonalExodusTextureStudySections();
 enforceStudySectionVerseLimit();
 
