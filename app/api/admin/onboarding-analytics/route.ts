@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
+import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
 type AnswerSummary = {
   answer: string;
@@ -983,6 +983,9 @@ function summarizeTrafficSources(rows: LandingEventRow[]) {
   const landingRows = rows
     .filter((row) => row.event_name === "landing_page_visit" || row.event_name === "landing_page_visited")
     .sort((a, b) => new Date(a.created_at || 0).getTime() - new Date(b.created_at || 0).getTime());
+  const signupRows = rows
+    .filter((row) => row.event_name === "created_free_account" || row.event_name === "created_account_successfully")
+    .sort((a, b) => new Date(a.created_at || 0).getTime() - new Date(b.created_at || 0).getTime());
   const firstVisitByActor = new Map<string, LandingEventRow>();
 
   for (const row of landingRows) {
@@ -992,6 +995,7 @@ function summarizeTrafficSources(rows: LandingEventRow[]) {
   }
 
   const sourceCounts = new Map<string, number>();
+  const signupCounts = new Map<string, number>();
   const visitorsBySource = new Map<string, Array<{
     actorId: string;
     visitorLabel: string;
@@ -1018,11 +1022,28 @@ function summarizeTrafficSources(rows: LandingEventRow[]) {
     });
   }
 
+  const signedUpActors = new Set<string>();
+  for (const row of signupRows) {
+    const actorId = getEventActorId(row);
+    if (!actorId || signedUpActors.has(actorId)) continue;
+    signedUpActors.add(actorId);
+
+    const sessionId = typeof row.session_id === "string" ? row.session_id : "";
+    const userId = typeof row.user_id === "string" ? row.user_id : "";
+    const firstVisit = firstVisitByActor.get(actorId) || (sessionId ? firstVisitByActor.get(sessionId) : undefined) || (userId ? firstVisitByActor.get(userId) : undefined);
+    const rawSource = firstVisit?.source || row.source;
+    const source = typeof rawSource === "string" && rawSource.trim() ? rawSource.trim().replace(/^Direct \/ Unknown$/i, "Direct") : "Direct";
+    signupCounts.set(source, (signupCounts.get(source) || 0) + 1);
+    if (!sourceCounts.has(source)) sourceCounts.set(source, 0);
+  }
+
   const totalVisitors = firstVisitByActor.size;
   const sources = Array.from(sourceCounts.entries())
     .map(([source, visitors]) => ({
       source,
       visitors,
+      signups: signupCounts.get(source) || 0,
+      signupRate: percent(signupCounts.get(source) || 0, visitors),
       percent: percent(visitors, totalVisitors),
       visitorRows: (visitorsBySource.get(source) || [])
         .sort((a, b) => (b.firstSeenAt || "").localeCompare(a.firstSeenAt || ""))
@@ -2686,7 +2707,7 @@ async function loadAllAuthUserSummaries(url: string, serviceKey: string) {
 }
 
 async function buildRegisteredUserAnalytics(
-  adminSupabase: ReturnType<typeof createClient<any>>,
+  adminSupabase: SupabaseClient,
   authUsers: AuthUserSummary[],
 ): Promise<RegisteredUserAnalytics> {
   const profilesByUserId = new Map<string, { displayName: string; accountType: string | null }>();

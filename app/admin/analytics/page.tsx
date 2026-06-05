@@ -4,6 +4,7 @@ import { Fragment, useEffect, useMemo, useState } from "react";
 import { GENESIS_BIBLE_IN_ONE_YEAR_SERIES } from "@/lib/bibleInOneYearPlan";
 import { supabase } from "@/lib/supabaseClient";
 import { applyAppThemeToDocument, readCachedAppTheme } from "@/lib/appThemes";
+import { getCachedAdminAnalytics, loadAdminAnalytics } from "@/lib/adminAnalyticsPreload";
 
 type JourneyWindow = "today" | "yesterday" | "24h" | "7d" | "30d" | "this_month" | "lifetime";
 type AccountFilter = "all" | "guest" | "free" | "pro";
@@ -310,6 +311,8 @@ type AnalyticsResponse = {
     sources: Array<{
       source: string;
       visitors: number;
+      signups: number;
+      signupRate: number;
       percent: number;
       visitorRows?: Array<{
         actorId: string;
@@ -2192,6 +2195,7 @@ function StudyNotesUpgradeCard({ stats }: { stats?: StudyNotesUpgradeAnalytics }
 function TrafficSourcesView({ report }: { report?: AnalyticsResponse["trafficSources"] }) {
   const sources = report?.sources || [];
   const totalVisitors = report?.totalVisitors || 0;
+  const totalSignups = sources.reduce((sum, source) => sum + source.signups, 0);
   const [selectedSource, setSelectedSource] = useState<(typeof sources)[number] | null>(null);
   const selectedRows = selectedSource?.visitorRows || [];
 
@@ -2206,9 +2210,15 @@ function TrafficSourcesView({ report }: { report?: AnalyticsResponse["trafficSou
               Based on unique people/sessions that reached the landing page in the selected time window.
             </p>
           </div>
-          <div className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3">
-            <p className="text-xs font-black uppercase tracking-[0.14em] text-slate-500">Landing Visitors</p>
-            <p className="mt-1 text-3xl font-black text-slate-950">{formatNumber(totalVisitors)}</p>
+          <div className="grid gap-3 sm:grid-cols-2">
+            <div className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3">
+              <p className="text-xs font-black uppercase tracking-[0.14em] text-slate-500">Landing Visitors</p>
+              <p className="mt-1 text-3xl font-black text-slate-950">{formatNumber(totalVisitors)}</p>
+            </div>
+            <div className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3">
+              <p className="text-xs font-black uppercase tracking-[0.14em] text-slate-500">Sign Ups</p>
+              <p className="mt-1 text-3xl font-black text-slate-950">{formatNumber(totalSignups)}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -2228,9 +2238,20 @@ function TrafficSourcesView({ report }: { report?: AnalyticsResponse["trafficSou
                   <div className="min-w-0">
                     <p className="truncate text-xl font-black text-slate-950">{source.source}</p>
                     <p className="mt-1 text-sm font-semibold text-slate-600">{formatNumber(source.visitors)} landing visitors</p>
+                    <p className="mt-0.5 text-sm font-semibold text-slate-700">{formatNumber(source.signups)} sign ups</p>
                   </div>
                   <div className="rounded-full bg-white/80 px-3 py-1 text-sm font-black shadow-sm">
                     {source.percent}%
+                  </div>
+                </div>
+                <div className="mt-4 grid grid-cols-2 gap-2 text-xs font-black text-slate-700">
+                  <div className="rounded-lg bg-white/70 px-3 py-2 ring-1 ring-slate-200">
+                    <p className="uppercase tracking-[0.12em] text-slate-500">Signup Rate</p>
+                    <p className="mt-1 text-base text-slate-950">{source.signupRate}%</p>
+                  </div>
+                  <div className="rounded-lg bg-white/70 px-3 py-2 ring-1 ring-slate-200">
+                    <p className="uppercase tracking-[0.12em] text-slate-500">Sign Ups</p>
+                    <p className="mt-1 text-base text-slate-950">{formatNumber(source.signups)}</p>
                   </div>
                 </div>
                 <div className="mt-5 h-3 overflow-hidden rounded-full bg-white/70 ring-1 ring-slate-200">
@@ -2255,7 +2276,9 @@ function TrafficSourcesView({ report }: { report?: AnalyticsResponse["trafficSou
               <div>
                 <p className="text-xs font-black uppercase tracking-[0.16em] text-blue-600">Traffic Source</p>
                 <h2 className="mt-1 text-2xl font-black text-slate-950">{selectedSource.source}</h2>
-                <p className="mt-1 text-sm font-semibold text-slate-600">{formatNumber(selectedSource.visitors)} landing visitors in this window</p>
+                <p className="mt-1 text-sm font-semibold text-slate-600">
+                  {formatNumber(selectedSource.visitors)} landing visitors, {formatNumber(selectedSource.signups)} sign ups in this window
+                </p>
               </div>
               <button
                 type="button"
@@ -2607,18 +2630,19 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
   useEffect(() => {
     if (!authChecked || !isOwner) return;
     async function loadAnalytics() {
-      setLoading(true);
+      const cached = getCachedAdminAnalytics<AnalyticsResponse>(windowKey);
+      if (cached) {
+        setData(cached);
+        setLoading(false);
+      } else {
+        setLoading(true);
+      }
       setError(null);
       try {
         const { data: sessionData } = await supabase.auth.getSession();
         const token = sessionData.session?.access_token;
         if (!token) throw new Error("Owner session expired. Please sign in again.");
-        const response = await fetch(`/api/admin/onboarding-analytics?window=${windowKey}`, {
-          cache: "no-store",
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        const json = (await response.json()) as AnalyticsResponse;
-        if (!response.ok) throw new Error(json.error || "Could not load analytics.");
+        const json = await loadAdminAnalytics<AnalyticsResponse>(windowKey, token, { force: Boolean(cached) });
         setData(json);
       } catch (loadError) {
         setError(loadError instanceof Error ? loadError.message : "Could not load analytics.");
