@@ -356,7 +356,7 @@ const QUESTION_CONFIG = [
 
 const FUNNEL_CONFIG = [
   { key: "visits", eventName: "landing_page_visit", label: "Landing page visits" },
-  { key: "clickedStart", eventName: "clicked_start_journey", label: "Clicked Start Journey" },
+  { key: "clickedStart", eventName: "clicked_start_journey", label: "Clicked Create Free Account" },
   { key: "startedOnboarding", eventName: "started_onboarding", label: "Started onboarding" },
   { key: "viewedIntro", eventName: "viewed_onboarding_intro", label: "Viewed onboarding intro" },
   { key: "viewedQuestion1", eventName: "viewed_question_1", label: "Viewed Question 1" },
@@ -600,7 +600,6 @@ function buildBibleBuddyFunnelStages(
 
   const accountCreatedActors = mergeActors(["created_free_account", "created_account_successfully"], ["user_signup"]);
   const startJourneyActors = mergeActors(["clicked_start_journey"], ["landing_cta_clicked"]);
-  accountCreatedActors.forEach((actor) => startJourneyActors.add(actor));
 
   function completedDayActors(dayNumber: number) {
     const actors = new Set<string>();
@@ -634,9 +633,9 @@ function buildBibleBuddyFunnelStages(
 
   const stageSets = [
     { key: "landing", label: "Landing Page", actors: mergeActors(["landing_page_visit"], ["landing_page_visited"]) },
-    { key: "clickedStart", label: "Start Your Journey Clicks", actors: startJourneyActors },
+    { key: "clickedStart", label: "Create Free Account Clicks", actors: startJourneyActors },
     { key: "accountsCreated", label: "Accounts Created", actors: accountCreatedActors },
-    { key: "startedOnboarding", label: "Start Journey Clicks", actors: mergeActors(["started_onboarding"], ["onboarding_intro_started"]) },
+    { key: "startedOnboarding", label: "Onboarding Started", actors: mergeActors(["started_onboarding"], ["onboarding_intro_started"]) },
     { key: "finishedOnboarding", label: "Started Journey", actors: mergeActors(["started_guest_journey", "clicked_yes_start_my_journey"], ["onboarding_journey_started"]) },
     { key: "startedDay1", label: "Started Day 1", actors: startedDayActors(1) },
     { key: "completedDay1", label: "Completed Day 1", actors: completedDayActors(1) },
@@ -1351,10 +1350,7 @@ function summarizeAcquisitionWindow(
 
     if (eventName === "created_free_account" || eventName === "created_account_successfully") {
       accountEvents += 1;
-      if (actorId) {
-        accountActors.add(actorId);
-        startActors.add(actorId);
-      }
+      if (actorId) accountActors.add(actorId);
     }
   }
 
@@ -1375,10 +1371,7 @@ function summarizeAcquisitionWindow(
 
     if (actionType === "user_signup") {
       accountEvents += 1;
-      if (actorId) {
-        accountActors.add(actorId);
-        startActors.add(actorId);
-      }
+      if (actorId) accountActors.add(actorId);
     }
   }
 
@@ -1512,14 +1505,14 @@ function getLandingActivityInfo(row: LandingEventRow) {
   if (eventName === "clicked_start_journey") {
     return {
       category: "guestStarts" as LandingActivityCategory,
-      title: "Clicked Start Your Journey",
+      title: "Clicked Create Free Account",
       detail: "Visitor clicked the main landing page CTA.",
     };
   }
   if (eventName === "started_onboarding") {
     return {
       category: "guestStarts" as LandingActivityCategory,
-      title: "Clicked Start Your Journey",
+      title: "Clicked Create Free Account",
       detail: "Visitor moved from the landing page toward signup.",
     };
   }
@@ -1559,7 +1552,7 @@ function getLandingActivityInfo(row: LandingEventRow) {
   if (eventName === "started_guest_journey") {
     return {
       category: "guestStarts" as LandingActivityCategory,
-      title: "Clicked Start Your Journey",
+      title: "Clicked Create Free Account",
       detail: "Visitor entered BibleBuddy and started their journey.",
     };
   }
@@ -1798,7 +1791,7 @@ function getLandingStepStatusLabel(sessionRows: LandingEventRow[], finishedOnboa
     names.has("viewed_results_page") ||
     names.has("reached_results_page") ||
     names.has("viewed_results_loading")
-  ) return "Clicked Start Journey";
+  ) return "Clicked Create Free Account";
   return "Just visited";
 }
 
@@ -1968,7 +1961,7 @@ function getStatusLabel(status: VisitorJourneyStatus) {
   const labels: Record<VisitorJourneyStatus, string> = {
     active: "Active",
     finished_onboarding: "Started journey",
-    onboarding_only: "Clicked Start Journey",
+    onboarding_only: "Clicked Create Free Account",
     day_1_in_progress: "Started Day 1",
     day_1_completed: "Day 1 completed",
     created_account: "Created account",
@@ -2176,7 +2169,7 @@ function buildVisitorJourneys(
         const info = getLandingActivityInfo(row);
         const eventName = row.event_name || "";
         const isStartClick = eventName === "clicked_start_journey" || eventName === "started_onboarding" || eventName === "viewed_onboarding_intro" || eventName === "started_guest_journey";
-        const title = isStartClick ? "Clicked Start Journey" : isAccountEvent(eventName) ? "Created account" : info.title;
+        const title = isStartClick ? "Clicked Create Free Account" : isAccountEvent(eventName) ? "Created account" : info.title;
         return {
           id: `landing-${row.event_name || "event"}-${row.created_at || index}`,
           title,
@@ -2184,7 +2177,7 @@ function buildVisitorJourneys(
           category: row.event_name === "landing_page_visit" ? "landing" as const : isAccountEvent(eventName) ? "account" as const : "landing" as const,
           status: info.category === "dropoff" ? "dropped" as const : "completed" as const,
           timestamp: row.created_at || new Date().toISOString(),
-          detail: isStartClick ? "Visitor clicked Start Your Journey." : isAccountEvent(eventName) ? "Visitor created a Bible Buddy account." : info.detail,
+          detail: isStartClick ? "Visitor clicked Create Free Account." : isAccountEvent(eventName) ? "Visitor created a Bible Buddy account." : info.detail,
           dayNumber: null,
           taskType: null,
         };

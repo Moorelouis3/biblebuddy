@@ -991,7 +991,7 @@ function FounderFunnelSection({
   const overallRate = getRate(signups, landingVisitors);
   const steps = [
     { key: "landing", label: "Landing Page Visitors", value: landingVisitors, rate: null, clickable: false },
-    { key: "clickedStart", label: "Start Journey Clicks", value: startClicks, rate: `${startRate}% from visitors`, clickable: true },
+    { key: "clickedStart", label: "Create Free Account Clicks", value: startClicks, rate: `${startRate}% from visitors`, clickable: true },
     { key: "accountsCreated", label: "Accounts Created", value: signups, rate: `${signupRate}% from clicks`, clickable: true },
     { key: "overall", label: "Overall Conversion", value: `${overallRate}%`, rate: "landing page to account", clickable: false },
   ];
@@ -1002,7 +1002,7 @@ function FounderFunnelSection({
         event.eventName === "clicked_start_journey" ||
         event.eventName === "started_guest_journey" ||
         event.eventName === "started_onboarding" ||
-        event.title === "Clicked Start Journey"
+        event.title === "Clicked Create Free Account"
       ),
     }))
     .filter((item) => item.event)
@@ -1015,7 +1015,7 @@ function FounderFunnelSection({
     .filter((item) => item.row.createdAccountAt || item.event)
     .sort((a, b) => ((b.event?.timestamp || b.row.createdAccountAt || "")).localeCompare(a.event?.timestamp || a.row.createdAccountAt || ""));
   const detailRows = openDetail === "clickedStart" ? startRows : openDetail === "accountsCreated" ? accountRows : [];
-  const detailTitle = openDetail === "clickedStart" ? "Start Journey Clicks Detail" : "Accounts Created Detail";
+  const detailTitle = openDetail === "clickedStart" ? "Create Free Account Clicks Detail" : "Accounts Created Detail";
 
   return (
     <section className="rounded-2xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-5 shadow-[0_18px_44px_rgba(15,23,42,0.08)]">
@@ -1053,7 +1053,7 @@ function FounderFunnelSection({
                   {detailRows.length ? detailRows.map(({ row, event }) => (
                     <div key={`mobile-${openDetail}-${row.id}-${event?.id || row.createdAccountAt || row.lastActiveAt}`} className="border-b border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] px-4 py-3 last:border-b-0">
                       <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">{row.userLabel || row.visitorLabel || "Unknown"}</p>
-                      <p className="mt-1 text-xs font-semibold text-[var(--bb-text-secondary,#334155)]">{event?.title || (openDetail === "accountsCreated" ? "Created account" : "Clicked Start Journey")}</p>
+                      <p className="mt-1 text-xs font-semibold text-[var(--bb-text-secondary,#334155)]">{event?.title || (openDetail === "accountsCreated" ? "Created account" : "Clicked Create Free Account")}</p>
                       <div className="mt-2 flex flex-wrap gap-2 text-xs font-bold text-[var(--bb-text-muted,#64748b)]">
                         <span>{row.accountType}</span>
                         <span>{row.source || "Unknown"}</span>
@@ -1106,7 +1106,7 @@ function FounderFunnelSection({
                     </td>
                     <td className="px-4 py-3 font-semibold text-[var(--bb-text-secondary,#334155)]">{row.source || "Unknown"}</td>
                     <td className="px-4 py-3">
-                      <div className="font-bold text-[var(--bb-text-primary,#101827)]">{event?.title || (openDetail === "accountsCreated" ? "Created account" : "Clicked Start Journey")}</div>
+                      <div className="font-bold text-[var(--bb-text-primary,#101827)]">{event?.title || (openDetail === "accountsCreated" ? "Created account" : "Clicked Create Free Account")}</div>
                       <div className="mt-0.5 text-xs font-semibold text-[var(--bb-text-muted,#64748b)]">{event?.eventName || row.lastEventName}</div>
                     </td>
                     <td className="px-4 py-3 font-semibold text-[var(--bb-text-secondary,#334155)]">{formatDateTime(event?.timestamp || (openDetail === "accountsCreated" ? row.createdAccountAt : row.startedDay1At) || row.lastActiveAt)}</td>
@@ -2085,7 +2085,7 @@ function AudioJourneyFunnel({
 }) {
   const steps = [
     { label: "Landing Page Visitors", value: landingVisitors },
-    { label: "Start Your Journey Clicks", value: startClicks },
+    { label: "Create Free Account Clicks", value: startClicks },
     { label: "Signups Completed", value: signups },
     { label: "Day 1 Plays", value: dayOnePlays },
   ];
@@ -2399,8 +2399,8 @@ function UserJourneyTimeline({ row }: { row: VisitorJourneyRow }) {
 
           <div className="mt-5 grid gap-3 border-t border-[var(--bb-card-border,#d8e3ec)] pt-4 sm:grid-cols-5">
             <div className="rounded-lg bg-[var(--bb-surface-soft,#eef4f8)] p-3">
-              <p className="text-xs font-bold text-[var(--bb-text-muted,#64748b)]">Start Journey</p>
-              <p className="mt-1 text-lg font-black text-[var(--bb-text-primary,#101827)]">{row.timeline.some((event) => event.title === "Clicked Start Journey") ? "Clicked" : "Not clicked"}</p>
+              <p className="text-xs font-bold text-[var(--bb-text-muted,#64748b)]">Create Free Account</p>
+              <p className="mt-1 text-lg font-black text-[var(--bb-text-primary,#101827)]">{row.timeline.some((event) => event.title === "Clicked Create Free Account") ? "Clicked" : "Not clicked"}</p>
             </div>
             <div className="rounded-lg bg-[var(--bb-surface-soft,#eef4f8)] p-3">
               <p className="text-xs font-bold text-[var(--bb-text-muted,#64748b)]">Current Day</p>

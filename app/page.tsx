@@ -1084,7 +1084,7 @@ export default function LandingPage() {
                 Login
               </Link>
               <Link href="/signup" onClick={() => trackStartJourneyClick("header")} className="bb-public-button rounded-lg bg-[#135397] px-6 py-3 text-sm font-black text-white shadow-[0_16px_32px_rgba(19,83,151,0.22)] transition hover:-translate-y-0.5">
-                Start Your Journey
+                Create Free Account
               </Link>
             </div>
             <div className="sm:hidden">
@@ -1128,7 +1128,7 @@ export default function LandingPage() {
               </div>
               <div className="mt-7 sm:mt-9">
                 <Link href="/signup" onClick={() => trackStartJourneyClick("hero")} className="bb-public-button bb-join-pulse inline-flex w-full items-center justify-center gap-3 rounded-lg bg-[#135397] px-6 py-3.5 text-sm font-black text-white shadow-[0_18px_36px_rgba(19,83,151,0.2)] transition hover:-translate-y-0.5 sm:w-auto sm:px-8 sm:py-4 sm:text-base">
-                  Start Your Bible Journey
+                  Create Free Account
                   <LandingLineIcon name="arrow" light />
                 </Link>
                 <p className="mt-3 flex items-center justify-center gap-2 text-xs font-semibold text-[#6d7789] sm:mt-4 sm:justify-start">
@@ -1210,7 +1210,7 @@ export default function LandingPage() {
                   </p>
                   <Link href="/signup" onClick={() => trackStartJourneyClick("middle_cta")} className="bb-public-button mt-5 inline-flex w-full max-w-[520px] items-center justify-center gap-3 rounded-full bg-[#7fb6dc] px-6 py-3.5 text-sm font-black text-white shadow-[0_22px_52px_rgba(127,182,220,0.35)] transition hover:-translate-y-0.5 sm:mt-7 sm:px-8 sm:py-4 sm:text-lg">
                     <span className="text-white">*</span>
-                    Start Your Bible Journey
+                    Create Free Account
                   </Link>
                   <div className="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs font-black text-[#07162f] sm:mt-5 sm:text-sm">
                     <span className="inline-flex items-center gap-2">
@@ -1354,7 +1354,7 @@ export default function LandingPage() {
                   <p className="mt-2 text-base font-semibold text-[#334762]">It only takes 15-30 minutes a day.</p>
                   <Link href="/signup" onClick={() => trackStartJourneyClick("bottom_cta")} className="bb-public-button mt-6 inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#2477f2] px-9 py-4 text-base font-black text-white shadow-[0_22px_48px_rgba(36,119,242,0.26)] transition hover:-translate-y-0.5 sm:w-auto sm:min-w-[420px]">
                     <span className="text-[#ffe08a]">*</span>
-                    Start Your Bible Journey
+                    Create Free Account
                   </Link>
                   <div className="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm font-semibold text-[#315f94]">
                     <span className="inline-flex items-center gap-2"><LandingLineIcon name="shield" small color="#315f94" /> No credit card required</span>
@@ -1567,7 +1567,7 @@ export default function LandingPage() {
                   onClick={() => trackStartJourneyClick("mobile_menu")}
                   className="bb-force-black mt-2 block w-full rounded-2xl border border-[#ece3d7] bg-[#FBF9F4] px-4 py-3 text-center text-sm font-black text-[#0E1A3A]"
                 >
-                  Start Journey
+                  Create Free Account
                 </Link>
               </div>
             ) : null}
@@ -1611,7 +1611,7 @@ export default function LandingPage() {
                 onClick={() => trackStartJourneyClick("legacy_bottom_cta")}
                 className="bb-public-button bb-join-pulse inline-block w-full rounded-2xl bg-[#0E1A3A] px-7 py-4 text-base font-black text-white shadow-[0_16px_34px_rgba(14,26,58,0.18)] transition hover:-translate-y-0.5 hover:bg-[#172654] sm:w-auto sm:min-w-[320px]"
               >
-                Start Your Bible Journey Today
+                Create Free Account
               </Link>
               <p className="bb-force-black mt-4 flex items-center justify-center gap-2 text-sm font-semibold">
                 <svg className="h-4 w-4 shrink-0 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -2225,7 +2225,7 @@ function HowItWorksSection({ onStart }: { onStart: () => void }) {
 
       <div className="mt-8 text-center">
         <button type="button" onClick={onStart} className="bb-public-button bb-join-pulse w-full rounded-2xl bg-[#0E1A3A] px-6 py-4 text-sm font-black text-white sm:w-auto sm:min-w-[320px]">
-          Start Your Bible Journey Today
+          Create Free Account
         </button>
       </div>
     </section>
