@@ -85,7 +85,37 @@ Include:
 - Interesting facts
 - Biblical connections
 
+Do not treat Key Phrases like a short summary list.
+
+Before writing Key Phrases, ask: "What would a brand-new Bible reader ask about in these verses?"
+
+Choose phrases that explain:
+
+- places and locations
+- people and family names
+- objects and materials
+- actions and commands
+- directions and movement
+- symbols and repeated images
+- unusual KJV wording
+- cultural or historical details
+- theological ideas that may not be obvious
+
+Never skip a phrase simply because it seems obvious. If the phrase needs definition, cultural background, geography, Bible connection, or plain-English explanation, include it.
+
+The goal is more needed phrases with meaningful explanations, not fewer phrases with broad summaries.
+
 The reader should feel, "I never knew that."
+
+Genesis 1 is the benchmark for this. The notes slow down over phrases like "In the beginning," "without form, and void," and "the Spirit of God moved" because those are the exact places a new reader would ask questions. Every future chapter should follow that same instinct: identify the important study phrases, not merely the main summary points.
+
+Before finalizing, ask:
+
+```text
+If a brand-new Christian read this passage, what questions would they ask?
+```
+
+If those questions are not answered in Key Phrases or the surrounding notes, the notes are incomplete.
 
 ## Key Truths
 

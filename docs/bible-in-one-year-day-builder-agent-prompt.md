@@ -215,6 +215,21 @@ Deep notes must match the Day 1/Day 5-7 style:
 - add historical/cultural/word context where helpful
 - do not make giant plain-text blocks
 
+Inline Bible Reader Key Phrases must not be treated like summaries.
+
+Before choosing Key Phrases for any verse section, ask what a brand-new Bible reader would wonder about:
+
+- places, regions, and directions
+- people, family names, and titles
+- objects, materials, and measurements
+- actions, commands, and repeated phrases
+- symbols, names, and unusual wording
+- historical, geographical, cultural, and theological details
+
+If a reader might need to Google it or ask a teacher, explain it. Each Key Phrase should usually be 6-12 meaningful lines and should define the phrase, place it in context, explain why it matters, and connect it to the larger Bible story when relevant. The goal is more needed phrases with real explanation, not fewer obvious phrases with broad summary.
+
+This is a required quality gate for day generation, not optional polish. If a day only identifies the biggest summary ideas and leaves normal reader questions unanswered, the day is incomplete. Genesis 1 is the phrase-depth benchmark: explain the important wording, places, people, actions, symbols, and theological ideas inside the text so ordinary readers do not have to guess their way through the passage.
+
 Then wire the new deep notes into `lib/bibleYearDaysContent.ts` by importing the new exports and returning them from `getBibleYearDayDeepNotes` / `getBibleYearDayContent` patterns already in that file.
 
 If chapters need to show approved Bible in One Year notes inside the normal Bible chapter page, also update `lib/bibleYearApprovedDeepStudy.ts`. Currently Day 1 is wired there, so inspect before changing.

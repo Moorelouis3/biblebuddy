@@ -1,6 +1,6 @@
 # Bible Buddy Chapter Notes Framework
 
-Genesis 4 is the standard.
+Genesis 1 is the benchmark for phrase-level study depth, and Genesis 4 is the benchmark for chapter-note structure.
 
 Every Bible Buddy chapter note should feel like the same teacher is walking the reader through the Bible slowly, clearly, and personally. The notes must be deep enough to teach the chapter, but simple enough that a normal reader can follow without feeling buried.
 
@@ -63,6 +63,46 @@ The chapter notes should help the reader:
 The notes should not feel like a sermon outline, a school worksheet, or a robotic AI summary.
 
 They should feel like Louis teaching the Bible with patience, clarity, warmth, and weight.
+
+## Reader Question Standard
+
+Bible Buddy is a study Bible experience, not a summary app.
+
+For inline Bible Reader notes, this means deeper phrase cards inside the Scripture flow. It does not mean adding chapter openings, endings, big lessons, final thoughts, or pause-and-reflect blocks to the Bible reader. Genesis 1-10 are the pattern for the in-Bible notes surface: normal verse text, then focused study cards at the right places.
+
+Before selecting teaching headers or Key Phrases, do not ask only:
+
+```txt
+What are the main points of this passage?
+```
+
+Ask first:
+
+```txt
+What phrases would cause a first-time Bible reader to ask a question?
+```
+
+Every phrase that creates a reasonable reader question should be considered for a note. This includes:
+
+- people, family names, and titles
+- places, regions, and directions
+- names, repeated words, and unusual wording
+- symbols, images, and theological ideas
+- actions, commands, fears, motives, and contrasts
+- objects, materials, measures, and cultural practices
+- historical, geographical, and biblical-background details
+
+Do not collapse those questions into a few broad summary phrases. If a reader might need to ask a teacher, search a study Bible, or pause over the wording, explain it where it appears.
+
+Genesis 1 models this standard: "In the beginning," "created the heaven and the earth," "without form and void," "darkness was upon the face of the deep," and "the Spirit of God moved" each receive attention because each phrase helps ordinary readers understand the text.
+
+The quality check is simple:
+
+```txt
+If a brand-new Christian read this passage, what questions would they ask?
+```
+
+If those questions are not answered somewhere in the notes, the notes are incomplete.
 
 ## Reading Length
 
@@ -778,15 +818,16 @@ Use the chapter notes framework.
 
 That means:
 
-1. Use Genesis 4 as the standard.
+1. Use Genesis 1 as the phrase-depth benchmark and Genesis 4 as the structure benchmark.
 2. Use the structure in this file.
 3. Keep verse groups to 5 verses or fewer.
 4. Give every verse its own KJV callout.
 5. Add multiple `###` emoji teaching headers under every verse group.
 6. Include word meaning, historical meaning, cultural meaning, theology, and application.
 7. Use emoji lists for chapter matter, chapter flow, dense breakdowns, repeated items, and reflection.
-8. Do not seed until the user approves unless the user explicitly says to seed.
+8. Select phrases by asking what a first-time Bible reader would wonder about, not by choosing only the biggest summary points.
+9. Do not seed until the user approves unless the user explicitly says to seed.
 
 ## The Core Rule
 
-If the notes do not look and feel like Genesis 4, they are not done.
+If the notes do not explain reader-question phrases with Genesis 1 depth and Genesis 4 structure, they are not done.
