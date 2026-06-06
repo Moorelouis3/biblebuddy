@@ -613,7 +613,6 @@ const MANAGED_HOME_FEED_CATEGORIES = new Set<string>([
   "weekly_question",
   "update_monday",
   "who_was_this_friday",
-  "bible_study_saturday",
   "prayer_request_sunday",
 ]);
 
@@ -3539,12 +3538,6 @@ export default function GroupChatPage() {
               },
             }),
             fetch(`/api/groups/${group.id}/who-was-this-friday/ensure`, {
-              method: "POST",
-              headers: {
-                Authorization: `Bearer ${accessToken}`,
-              },
-            }),
-            fetch(`/api/groups/${group.id}/bible-study-saturday/ensure`, {
               method: "POST",
               headers: {
                 Authorization: `Bearer ${accessToken}`,

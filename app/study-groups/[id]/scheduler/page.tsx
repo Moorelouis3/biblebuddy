@@ -23,12 +23,10 @@ import {
   normalizeRecurringOverridePayload,
 } from "@/lib/groupRecurringOverrides";
 import {
-  buildBibleStudySaturdayPost,
   buildPrayerRequestSundayPost,
   buildUpdateMondayPost,
   buildWhoWasThisFridayPost,
   getBerlinDateKey,
-  type BibleStudySeriesSnapshot,
 } from "@/lib/groupRecurringSeries";
 import { GROUP_SCHEDULE_TIME_ZONE } from "@/lib/groupScheduleTimeZone";
 import { resolveBibleReference } from "@/lib/bibleTermResolver";
@@ -47,12 +45,6 @@ type GroupBasics = {
   id: string;
   name: string;
   cover_emoji: string | null;
-};
-
-type GroupSeriesRow = {
-  id: string;
-  title: string | null;
-  total_weeks: number | null;
 };
 
 type RecurringPreviewItem = {
@@ -331,10 +323,7 @@ function linkBibleReferencesInHtml(html: string) {
   );
 }
 
-function getRecurringPreviewItem(
-  date: Date,
-  seriesSnapshot: BibleStudySeriesSnapshot | null,
-): RecurringPreviewItem {
+function getRecurringPreviewItem(date: Date): RecurringPreviewItem | null {
   const berlin = getBerlinDateParts(date);
 
   switch (berlin.weekday) {
@@ -458,28 +447,8 @@ function getRecurringPreviewItem(
         endpoint: "who-was-this-friday",
       };
     }
-    case "Sat": {
-      const post = buildBibleStudySaturdayPost(date, seriesSnapshot);
-      return {
-        scheduleId: `bible_study_saturday:${post.weekKey}`,
-        key: "bible_study_saturday",
-        weekKey: post.weekKey,
-        label: "Bible Study Saturday",
-        accent: "#8d5d38",
-        releaseIso: date.toISOString(),
-        isPublished: false,
-        title: post.title,
-        description: post.description,
-        contentHtml: post.contentHtml,
-        defaultOverridePayload: {
-          kind: "series",
-          title: post.title,
-          description: post.description,
-          contentHtml: post.contentHtml,
-        },
-        endpoint: "bible-study-saturday",
-      };
-    }
+    case "Sat":
+      return null;
     case "Sun":
     default: {
       const post = buildPrayerRequestSundayPost(date);
@@ -831,12 +800,12 @@ export default function StudyGroupSchedulerPage() {
   const selectedQueueItem = carouselQueue.find((item) => item.id === selectedQueueItemId) || null;
   const editingQueueItem = carouselQueue.find((item) => item.id === editingQueueItemId) || null;
   const schedulerFeed = useMemo(() => carouselQueue, [carouselQueue]);
-  const [seriesSnapshot, setSeriesSnapshot] = useState<BibleStudySeriesSnapshot | null>(null);
   const recurringFeedItems = useMemo(() => {
     const items: RecurringPreviewItem[] = [];
 
     for (let offset = 0; offset < 21 && items.length < 7; offset += 1) {
-      const baseItem = getRecurringPreviewItem(getBerlinDateWithOffset(offset), seriesSnapshot);
+      const baseItem = getRecurringPreviewItem(getBerlinDateWithOffset(offset));
+      if (!baseItem) continue;
       const overridePayload = recurringOverridesByScheduleId[baseItem.scheduleId];
       const item = overridePayload ? applyRecurringOverrideToItem(baseItem, overridePayload) : baseItem;
       item.isPublished = publishedRecurringIds.has(item.scheduleId);
@@ -845,7 +814,7 @@ export default function StudyGroupSchedulerPage() {
     }
 
     return items;
-  }, [dismissedRecurringIds, publishedRecurringIds, recurringOverridesByScheduleId, seriesSnapshot]);
+  }, [dismissedRecurringIds, publishedRecurringIds, recurringOverridesByScheduleId]);
   const selectedRecurringItem =
     recurringFeedItems.find((item) => item.scheduleId === selectedRecurringItemKey) || null;
   const editingRecurringItem =
@@ -1574,32 +1543,6 @@ export default function StudyGroupSchedulerPage() {
           setGroup(groupData as GroupBasics);
           setDisplayName(profileData?.display_name || "Louis");
           setProfileImageUrl(profileData?.profile_image_url || null);
-        }
-
-        const { data: currentSeries } = await supabase
-          .from("group_series")
-          .select("id, title, total_weeks")
-          .eq("group_id", groupId)
-          .eq("is_current", true)
-          .maybeSingle<GroupSeriesRow>();
-
-        if (currentSeries?.id) {
-          const { data: scheduleData } = await supabase
-            .from("series_schedules")
-            .select("start_at, start_date")
-            .eq("series_id", currentSeries.id)
-            .maybeSingle<{ start_at?: string | null; start_date?: string | null }>();
-
-          if (!cancelled) {
-            setSeriesSnapshot({
-              groupId,
-              seriesTitle: currentSeries.title || "Bible Study Series",
-              seriesStartAt: scheduleData?.start_at || (scheduleData?.start_date ? `${scheduleData.start_date}T00:00:00` : null),
-              totalWeeks: currentSeries.total_weeks ?? null,
-            });
-          }
-        } else if (!cancelled) {
-          setSeriesSnapshot(null);
         }
 
         await Promise.all([

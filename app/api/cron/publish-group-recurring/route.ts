@@ -83,8 +83,11 @@ export async function GET(request: NextRequest) {
         result = await ensureWeeklyGroupSeriesPost(supabaseAdmin, targetGroup.id, "who_was_this_friday", null, now);
         break;
       case "Sat":
-        result = await ensureWeeklyGroupSeriesPost(supabaseAdmin, targetGroup.id, "bible_study_saturday", null, now);
-        break;
+        return NextResponse.json({
+          weekday,
+          skipped: true,
+          reason: "Bible Study Saturday posts are disabled right now.",
+        });
       case "Sun":
       default:
         result = await ensureWeeklyGroupSeriesPost(supabaseAdmin, targetGroup.id, "prayer_request_sunday", null, now);

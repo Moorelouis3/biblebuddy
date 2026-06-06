@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
-import { ensureWeeklyGroupSeriesPost } from "@/lib/weeklyGroupSeriesPostAdmin";
 import { canManageGroupScheduler } from "@/lib/groupSchedulerAccess";
 
 export const runtime = "nodejs";
@@ -49,20 +48,8 @@ export async function POST(
     return NextResponse.json({ error: "Forbidden." }, { status: 403 });
   }
 
-  try {
-    const body = await request.json().catch(() => ({}));
-    const targetDate = typeof body?.targetDate === "string" ? new Date(body.targetDate) : new Date();
-    const result = await ensureWeeklyGroupSeriesPost(
-      supabaseAdmin,
-      groupId,
-      "bible_study_saturday",
-      userData.user.id,
-      targetDate,
-      { force: body?.force === true },
-    );
-    return NextResponse.json(result);
-  } catch (error) {
-    const message = error instanceof Error ? error.message : "Could not ensure Bible Study Saturday.";
-    return NextResponse.json({ error: message }, { status: 500 });
-  }
+  return NextResponse.json({
+    skipped: true,
+    reason: "Bible Study Saturday posts are disabled right now.",
+  });
 }

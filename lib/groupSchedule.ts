@@ -2,8 +2,6 @@ import { buildWeeklyGroupPoll } from "./groupWeeklyPoll";
 import { buildWeeklyGroupQuestion } from "./groupWeeklyQuestion";
 import { buildWeeklyGroupTrivia } from "./groupWeeklyTrivia";
 import {
-  type BibleStudySeriesSnapshot,
-  buildBibleStudySaturdayPost,
   buildPrayerRequestSundayPost,
   buildUpdateMondayPost,
   buildWhoWasThisFridayPost,
@@ -90,7 +88,7 @@ export type GroupScheduleItem = {
 };
 
 type GroupScheduleOptions = {
-  bibleStudySeriesSnapshot?: BibleStudySeriesSnapshot | null;
+  bibleStudySeriesSnapshot?: unknown;
 };
 
 function buildTimeline(
@@ -126,13 +124,13 @@ function buildTimeline(
   };
 }
 
-export function buildGroupSchedule(now = new Date(), options: GroupScheduleOptions = {}): GroupScheduleItem[] {
+export function buildGroupSchedule(now = new Date(), _options: GroupScheduleOptions = {}): GroupScheduleItem[] {
+  void _options;
   const nextMonday = nextBerlinOccurrence(1, 18, 0, now);
   const nextTrivia = nextBerlinOccurrence(2, 18, 0, now);
   const nextPoll = nextBerlinOccurrence(3, 18, 0, now);
   const nextQuestion = nextBerlinOccurrence(4, 18, 0, now);
   const nextFriday = nextBerlinOccurrence(5, 18, 0, now);
-  const nextBibleStudy = nextBerlinOccurrence(6, 18, 0, now);
   const nextPrayer = nextBerlinOccurrence(0, 18, 0, now);
 
   return [
@@ -170,13 +168,6 @@ export function buildGroupSchedule(now = new Date(), options: GroupScheduleOptio
       return {
         title: friday.title,
         description: truncatePreview(stripHtml(friday.contentHtml)),
-      };
-    }),
-    buildTimeline("Bible Study Saturday", "bible_study_saturday", "#8d5d38", nextBibleStudy, (date) => {
-      const saturday = buildBibleStudySaturdayPost(date, options.bibleStudySeriesSnapshot ?? null);
-      return {
-        title: saturday.title,
-        description: saturday.description,
       };
     }),
     buildTimeline("Prayer Request Sunday", "prayer_request_sunday", "#7b5ca8", nextPrayer, (date) => {
