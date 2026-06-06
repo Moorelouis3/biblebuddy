@@ -5409,13 +5409,23 @@ export default function DashboardJourneyExperience({
                   ) : null}
                 </div>
               </div>
-              <button
-                type="button"
-                onClick={() => void loadDashboardGroup(true)}
-                className="rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-2 text-xs font-black text-[var(--bb-accent,#2f7fe8)] transition hover:brightness-95"
-              >
-                Refresh
-              </button>
+              <div className="flex shrink-0 flex-col gap-2 sm:flex-row">
+                {isOwnerDashboard && dashboardGroup?.id ? (
+                  <Link
+                    href={`/study-groups/${dashboardGroup.id}/scheduler`}
+                    className="rounded-full bg-[var(--bb-accent,#2f7fe8)] px-3 py-2 text-center text-xs font-black text-white shadow-sm transition hover:brightness-95"
+                  >
+                    Scheduler
+                  </Link>
+                ) : null}
+                <button
+                  type="button"
+                  onClick={() => void loadDashboardGroup(true)}
+                  className="rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-2 text-xs font-black text-[var(--bb-accent,#2f7fe8)] transition hover:brightness-95"
+                >
+                  Refresh
+                </button>
+              </div>
             </div>
           </div>
 

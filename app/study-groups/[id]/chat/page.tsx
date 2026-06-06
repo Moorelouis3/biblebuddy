@@ -4936,7 +4936,7 @@ export default function GroupChatPage() {
   const modalTopBuddies = topBuddies;
   const isLeader = userRole === "leader";
   const isLeaderOrMod = userRole === "leader" || userRole === "moderator";
-  const isLouisAdmin = userEmail === "moorelouis3@gmail.com";
+  const isLouisAdmin = (userEmail || "").toLowerCase() === "moorelouis3@gmail.com";
   const SAGE = "var(--bb-accent)";
   const displayGroupName = group.name === "Hope Nation" || group.name === "Bible Buddy Study Group" ? "Group" : group.name;
   const selectedSeriesAccent = selectedSeries?.title.toLowerCase().includes("tempt")

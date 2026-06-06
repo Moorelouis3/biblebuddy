@@ -1553,7 +1553,7 @@ export default function StudyGroupSchedulerPage() {
         return;
       }
 
-      if (user.email !== "moorelouis3@gmail.com") {
+      if ((user.email || "").toLowerCase() !== "moorelouis3@gmail.com") {
         router.push(`/study-groups/${groupId}/chat`);
         return;
       }
