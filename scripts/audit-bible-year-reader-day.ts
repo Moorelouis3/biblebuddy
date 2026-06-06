@@ -4,7 +4,6 @@ import { EXODUS_2_10_PERSONAL_SECTIONS } from "../lib/exodusTwoToTenPersonalNote
 import { EXODUS_11_20_PERSONAL_SECTIONS } from "../lib/exodusElevenToTwentyPersonalNotes";
 import { EXODUS_21_30_PERSONAL_SECTIONS } from "../lib/exodusTwentyOneToThirtyPersonalNotes";
 import { EXODUS_31_40_PERSONAL_SECTIONS } from "../lib/exodusThirtyOneToFortyPersonalNotes";
-import { LEVITICUS_1_10_PERSONAL_SECTIONS } from "../lib/leviticusOneToTenPersonalNotes";
 
 type PersonalSection = {
   chapter: number;
@@ -16,7 +15,7 @@ type PersonalSection = {
 };
 
 type DaySpec = {
-  book: "Genesis" | "Exodus" | "Leviticus";
+  book: "Genesis" | "Exodus";
   chapters: number[];
   sections: PersonalSection[];
 };
@@ -42,7 +41,6 @@ const DAY_SPECS: Record<number, DaySpec> = {
   },
   30: { book: "Exodus", chapters: [33, 34, 35, 36], sections: EXODUS_31_40_PERSONAL_SECTIONS },
   31: { book: "Exodus", chapters: [37, 38, 39, 40], sections: EXODUS_31_40_PERSONAL_SECTIONS },
-  32: { book: "Leviticus", chapters: [1, 2, 3, 4], sections: LEVITICUS_1_10_PERSONAL_SECTIONS },
 };
 
 function parseDay() {
