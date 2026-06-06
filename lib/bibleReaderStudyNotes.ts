@@ -52,8 +52,8 @@ function makeGenesisStudySection(section: ReaderStudySectionInput): BibleReaderS
     startVerse: section.startVerse,
     endVerse: section.endVerse,
     reference: section.reference,
-    title: section.title,
-    icon: section.icon,
+    title: repairMojibake(section.title),
+    icon: repairMojibake(section.icon),
     summary: section.summary,
     categories: [
       {
@@ -3831,7 +3831,7 @@ function makePersonalGenesisOneSection(section: {
         id: "key-phrases",
         icon: "💬",
         title: "Key Phrases",
-        content: section.phrases.map(([heading, body]) => `${heading}\n${body.trim()}`),
+        content: section.phrases.map(([heading, body]) => `${repairMojibake(heading)}\n${repairMojibake(body.trim())}`),
       },
     ],
   };
