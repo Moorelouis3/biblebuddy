@@ -2780,11 +2780,572 @@ const DAY_9_RESTRUCTURED_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
   ] },
 ];
 
+function getDay9TeachingTexture(section: PersonalGenesisPhraseSectionInput, heading: string) {
+  const lower = `${section.reference} ${section.title} ${heading}`.toLowerCase();
+
+  if (section.chapter === 21 && section.startVerse <= 7) {
+    return [
+      "📌 Notice: Genesis keeps tying this moment back to what God already said.",
+      "💡 Meaning: Isaac's birth is not just a happy family event; it is proof that God's promise can outlive delay, age, and doubt.",
+      "➡️ Lesson: When the Bible repeats promise language, it is teaching us to trust God's word more than what looks possible in the moment.",
+    ];
+  }
+
+  if (section.chapter === 21 && section.startVerse >= 8 && section.endVerse <= 13) {
+    return [
+      "📌 Notice: the joy around Isaac does not erase the damage already inside Abraham's household.",
+      "💡 Meaning: Genesis is showing both covenant direction and real family pain at the same time.",
+      "➡️ Lesson: God's promise moves forward, but human shortcuts, favoritism, and fear can still leave wounds that must be faced.",
+    ];
+  }
+
+  if (section.chapter === 21 && section.startVerse >= 14 && section.endVerse <= 21) {
+    return [
+      "📌 Notice: Hagar and Ishmael are outside Abraham's tent, but they are not outside God's sight.",
+      "💡 Meaning: the wilderness scene teaches that God hears the vulnerable, the rejected, and the desperate.",
+      "➡️ Lesson: Bible Buddy readers should not rush past this pain; God's mercy here is practical, personal, and life-saving.",
+    ];
+  }
+
+  if (section.chapter === 21) {
+    return [
+      "📌 Notice: wells, oaths, and place names are not random background details in Genesis.",
+      "💡 Meaning: Abraham is learning to live in the promised land through worship, public agreements, and real-world conflict.",
+      "➡️ Lesson: faith is not only private belief; it shapes how God's people handle property, peace, neighbors, and worship.",
+    ];
+  }
+
+  if (section.chapter === 22 && section.endVerse <= 8) {
+    return [
+      "📌 Notice: Genesis slows the test down so the reader feels the weight of every step.",
+      "💡 Meaning: Abraham's faith is being brought into the open through the son he loves most.",
+      "➡️ Lesson: this passage is not about God enjoying pain; it is about whether Abraham trusts the Giver even with the gift.",
+    ];
+  }
+
+  if (section.chapter === 22 && section.startVerse >= 9 && section.endVerse <= 14) {
+    return [
+      "📌 Notice: the scene reaches the edge of loss before God reveals the substitute.",
+      "💡 Meaning: Abraham obeys, but the Lord provides what saves Isaac.",
+      "➡️ Lesson: the point is not heroic self-sufficiency; the mountain teaches that the Lord Himself provides.",
+    ];
+  }
+
+  if (section.chapter === 22 && section.startVerse >= 15 && section.endVerse <= 19) {
+    return [
+      "📌 Notice: after the test, God repeats and strengthens the covenant promise.",
+      "💡 Meaning: the promise is not weakened by Abraham's surrender; it is confirmed by God's own oath.",
+      "➡️ Lesson: God's plan for blessing the nations rests on His faithfulness, not on Abraham controlling the future.",
+    ];
+  }
+
+  if (section.chapter === 22) {
+    return [
+      "📌 Notice: this genealogy is placed right after Isaac is spared.",
+      "💡 Meaning: Genesis is quietly preparing Isaac's future wife before Genesis 24 begins.",
+      "➡️ Lesson: even lists of names can carry story movement when God is preparing the next generation.",
+    ];
+  }
+
+  if (section.chapter === 23 && section.endVerse <= 9) {
+    return [
+      "📌 Notice: Genesis treats Sarah's death, Abraham's grief, and the land question with real care.",
+      "💡 Meaning: Abraham believes God's promise, but he still has to mourn and still has to buy a burial place.",
+      "➡️ Lesson: faith does not make grief fake; it teaches us to grieve while still holding onto God's future.",
+    ];
+  }
+
+  if (section.chapter === 23) {
+    return [
+      "📌 Notice: the purchase details are repeated because legal ownership matters in the promise story.",
+      "💡 Meaning: Abraham's first secured piece of Canaan is a burial place, which ties hope to the land even in death.",
+      "➡️ Lesson: the promise is not fully possessed yet, but Sarah's grave becomes a quiet marker of faith.",
+    ];
+  }
+
+  if (section.chapter === 24 && section.endVerse <= 9) {
+    return [
+      "📌 Notice: Abraham's concern is not only that Isaac gets married, but that the covenant future is protected.",
+      "💡 Meaning: the servant's oath, the family line, and the promised land all matter together.",
+      "➡️ Lesson: Genesis treats marriage as spiritually serious because households shape future faithfulness.",
+    ];
+  }
+
+  if (section.chapter === 24 && section.startVerse >= 10 && section.endVerse <= 21) {
+    return [
+      "📌 Notice: the servant prays, watches, and tests for character, not just appearance.",
+      "💡 Meaning: Rebekah's kindness is shown through ordinary work that costs time and strength.",
+      "➡️ Lesson: God's guidance often becomes clear through prayer, wisdom, timing, and visible character.",
+    ];
+  }
+
+  if (section.chapter === 24 && section.startVerse >= 22 && section.endVerse <= 49) {
+    return [
+      "📌 Notice: the servant keeps retelling the details because he wants the family to recognize God's hand.",
+      "💡 Meaning: answered prayer becomes testimony, and testimony calls for a faithful response.",
+      "➡️ Lesson: when God guides clearly, the right response is worship, honesty, and obedience without manipulation.",
+    ];
+  }
+
+  if (section.chapter === 24 && section.startVerse >= 50 && section.endVerse <= 61) {
+    return [
+      "📌 Notice: Rebekah is not moved like an object; the family asks her, and she answers.",
+      "💡 Meaning: her 'I will go' is a brave step from the familiar into the covenant future.",
+      "➡️ Lesson: faith sometimes sounds simple, but it can require leaving comfort, family, and certainty behind.",
+    ];
+  }
+
+  return [
+    "📌 Notice: this detail is part of the larger covenant movement from Abraham to Isaac.",
+    "💡 Meaning: Genesis is teaching through small phrases, not only through big dramatic scenes.",
+    "➡️ Lesson: slowing down over the phrase helps the reader see promise, character, and consequence more clearly.",
+  ];
+}
+
+function deepenDay9Phrase(section: PersonalGenesisPhraseSectionInput, entry: [string, string]): [string, string] {
+  const [heading, content] = entry;
+  const lines = content.split("\n\n").filter(Boolean);
+  if (lines.length >= 6) return entry;
+
+  const texture = getDay9TeachingTexture(section, heading);
+  const needed = Math.max(0, 6 - lines.length);
+  return [heading, note([...lines, ...texture.slice(0, needed)])];
+}
+
+const DAY_9_FINAL_SECTIONS = DAY_9_RESTRUCTURED_SECTIONS.map((section) => ({
+  ...section,
+  phrases: section.phrases.map((entry) => deepenDay9Phrase(section, entry)),
+}));
+
+const DAY_10_RESTRUCTURED_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
+  { chapter: 25, startVerse: 1, endVerse: 6, reference: "Genesis 25:1-6", title: "Abraham Provides For His Sons", icon: "🎁", phrases: [
+    phrase("👰 Abraham Took A Wife", ["Abraham's story does not end immediately after Sarah's death.", "Keturah enters the family story and Abraham has more children.", "Genesis shows that Abraham becomes the father of many nations in more ways than one."]),
+    phrase("👶 She Bare Him", ["These sons become family lines of their own.", "The names may feel like a list, but they show God's word about Abraham's many descendants taking shape.", "God's promise is becoming history."]),
+    phrase("🎁 Abraham Gave All That He Had Unto Isaac", ["Isaac remains the covenant heir.", "Abraham has other sons, but the promise line is protected through Isaac.", "This keeps Genesis focused on the son God chose."]),
+    phrase("🧭 Sent Them Away From Isaac", ["Abraham gives gifts to his other sons and sends them eastward.", "This creates separation so Isaac's role is clear.", "The family is large, but the covenant line is specific."]),
+    phrase("🌅 Eastward", ["Eastward often signals movement away from the main promise line in Genesis.", "These sons have futures, but the narrative will follow Isaac.", "God can care for many lines while still tracing one covenant story."]),
+  ] },
+  { chapter: 25, startVerse: 7, endVerse: 11, reference: "Genesis 25:7-11", title: "Abraham Dies And Isaac Is Blessed", icon: "🪦", phrases: [
+    phrase("📅 An Hundred Threescore And Fifteen Years", ["Abraham dies at 175.", "Genesis gives the number because his long life matters.", "The man who left home by faith reaches the end of his earthly journey."]),
+    phrase("🌅 A Good Old Age", ["This phrase honors the fullness of Abraham's life.", "His life was not easy, but it was held by God's promise.", "Faithful lives can still include waiting, failure, grief, and blessing."]),
+    phrase("🪦 Gathered To His People", ["This means more than the physical burial that follows.", "Abraham joins those who died before him.", "The covenant story continues, but Abraham's personal journey is complete."]),
+    phrase("🤝 Isaac And Ishmael Buried Him", ["The two sons come together to bury their father.", "After years of family pain, this is a quiet moment of shared honor.", "Genesis does not erase brokenness, but it lets us see this solemn reunion."]),
+    phrase("🕳️ Cave Of Machpelah", ["Abraham is buried in the family burial place he bought for Sarah.", "His body rests in the land of promise.", "Even death is tied to faith in God's future."]),
+    phrase("🙌 God Blessed His Son Isaac", ["After Abraham dies, God's blessing continues with Isaac.", "The promise does not die with the first generation.", "God remains faithful beyond Abraham's lifetime."]),
+  ] },
+  { chapter: 25, startVerse: 12, endVerse: 18, reference: "Genesis 25:12-18", title: "Ishmael's Line Becomes A Nation", icon: "🏕️", phrases: [
+    phrase("📜 Generations Of Ishmael", ["Genesis pauses to record Ishmael's family.", "He is not the covenant line, but he is not forgotten.", "God keeps the promise He made about Ishmael too."]),
+    phrase("👩 Hagar The Egyptian", ["Hagar is named again in connection with Ishmael.", "Her painful wilderness story is not erased.", "The boy God heard becomes the father of a named people."]),
+    phrase("👑 Twelve Princes", ["Ishmael's descendants become twelve leaders.", "This fulfills God's word that Ishmael would become a great nation.", "The rejected child grows into a structured people."]),
+    phrase("🏘️ Towns And Castles", ["Ishmael's line has settlements and places of strength.", "Genesis shows real development, not a vague afterthought.", "God's promises create visible history."]),
+    phrase("🪦 He Gave Up The Ghost And Died", ["Ishmael's life is also brought to a close.", "Genesis honors his line before returning to Isaac.", "The wider Abraham family is acknowledged."]),
+    phrase("⚔️ In The Presence Of All His Brethren", ["This connects back to earlier words about Ishmael's independence and tension.", "His descendants live in relation to surrounding peoples.", "God's word about him unfolds across generations."]),
+  ] },
+  { chapter: 25, startVerse: 19, endVerse: 23, reference: "Genesis 25:19-23", title: "Rebekah Carries Two Nations", icon: "🤰", phrases: [
+    phrase("📜 Generations Of Isaac", ["The story now turns fully to Isaac.", "Abraham's life has closed, and the covenant line moves forward.", "Genesis is handing the focus to the next generation."]),
+    phrase("💔 Rebekah Was Barren", ["The promise line again faces barrenness.", "Like Sarah before her, Rebekah cannot produce the future by human strength.", "The family grows only by God's help."]),
+    phrase("🙏 Isaac Intreated The LORD", ["Isaac prays for his wife.", "This matters because he turns to God instead of forcing the promise through a shortcut.", "The next generation must learn dependence too."]),
+    phrase("👂 The LORD Was Intreated Of Him", ["God answers Isaac's prayer.", "The promised family continues because God responds with mercy.", "Prayer becomes part of how the covenant moves forward."]),
+    phrase("🤼 The Children Struggled Together", ["The conflict begins before birth.", "Jacob and Esau are not simply different personalities later.", "Their struggle is woven into the story from the womb."]),
+    phrase("❓ Why Am I Thus?", ["Rebekah seeks understanding from the Lord.", "Her painful pregnancy drives her to ask God what is happening.", "Confusion becomes a doorway to revelation."]),
+    phrase("🌍 Two Nations Are In Thy Womb", ["Rebekah is carrying more than twins.", "She is carrying the beginnings of two peoples: Israel and Edom.", "One household conflict will become national history."]),
+    phrase("🔄 The Elder Shall Serve The Younger", ["God reverses normal firstborn expectations.", "The promise will not move by ordinary birth order.", "God chooses the younger before either child can earn the role."]),
+  ] },
+  { chapter: 25, startVerse: 24, endVerse: 28, reference: "Genesis 25:24-28", title: "Jacob And Esau Are Born", icon: "👶", phrases: [
+    phrase("👶 There Were Twins", ["The word from God is now visible.", "Rebekah gives birth to two sons who will carry a deep rivalry.", "The story of Jacob and Esau begins at birth."]),
+    phrase("🔴 Red, All Over Like An Hairy Garment", ["Esau's appearance is memorable from the start.", "His name and identity are connected to his physical traits.", "Genesis makes the brothers feel distinct immediately."]),
+    phrase("✋ His Hand Took Hold On Esau's Heel", ["Jacob is born grasping.", "The image fits his later story as one who struggles and supplants.", "Before he speaks, his posture already hints at conflict."]),
+    phrase("📛 His Name Was Called Jacob", ["Jacob's name is connected with heel-grabbing and supplanting.", "The name becomes a window into his story.", "He will spend much of his life grasping for blessing."]),
+    phrase("🏹 Esau Was A Cunning Hunter", ["Esau grows into a skilled man of the field.", "He is active, rugged, and impressive.", "His identity pulls him toward appetite, game, and outdoor strength."]),
+    phrase("⛺ Jacob Was A Plain Man", ["Plain can mean quiet, settled, or complete.", "Jacob lives around the tents.", "The brothers are different in temperament and daily life."]),
+    phrase("🍖 Isaac Loved Esau", ["Isaac's love is tied to venison.", "This exposes favoritism in the household.", "A father's appetite becomes connected to family division."]),
+    phrase("❤️ Rebekah Loved Jacob", ["Rebekah favors Jacob.", "The parents are divided over the sons.", "Genesis is preparing the emotional fracture that explodes in chapter 27."]),
+  ] },
+  { chapter: 25, startVerse: 29, endVerse: 34, reference: "Genesis 25:29-34", title: "Esau Sells The Birthright", icon: "🥣", phrases: [
+    phrase("🥣 Jacob Sod Pottage", ["The scene begins with ordinary food.", "A bowl of stew becomes the setting for a major spiritual failure.", "Genesis often places big decisions inside everyday moments."]),
+    phrase("😩 Esau Came From The Field, And He Was Faint", ["Esau is driven by immediate hunger.", "His body feels urgent, and he lets that urgency lead him.", "The scene tests what he values when appetite is loud."]),
+    phrase("🔴 That Same Red Pottage", ["The red stew connects to Esau's identity and later name Edom.", "The detail makes the moment memorable.", "A meal becomes attached to a family destiny."]),
+    phrase("💰 Sell Me This Day Thy Birthright", ["Jacob exploits Esau's hunger.", "He sees a chance to gain advantage.", "The promised family is already full of grasping and weakness."]),
+    phrase("⚰️ I Am At The Point To Die", ["Esau exaggerates his hunger.", "He treats the present moment as if it is everything.", "Short-term desire makes long-term blessing seem worthless."]),
+    phrase("🤝 He Sold His Birthright", ["The birthright involved inheritance, leadership, and family responsibility.", "In Abraham's family, it also touches the covenant future.", "Esau trades something weighty for something temporary."]),
+    phrase("🥣 Bread And Pottage Of Lentiles", ["The text lists the simple meal so we feel the smallness of the trade.", "Bread and stew are not evil, but they are not worth the birthright.", "Esau's values are exposed."]),
+    phrase("🚫 Esau Despised His Birthright", ["This is the verdict of the passage.", "Esau did not merely lose the birthright; he treated it as small.", "Genesis wants readers to feel the danger of despising holy things."]),
+  ] },
+  { chapter: 26, startVerse: 1, endVerse: 5, reference: "Genesis 26:1-5", title: "God Speaks To Isaac In Famine", icon: "🌾", phrases: [
+    phrase("🌾 There Was A Famine", ["Isaac faces famine just like Abraham did.", "Being in the promise does not mean life becomes problem-free.", "Isaac must learn trust in his own generation."]),
+    phrase("📍 Unto Gerar", ["Isaac moves under pressure.", "The location places him among the Philistines.", "The promise is being tested in a foreign setting."]),
+    phrase("🚫 Go Not Down Into Egypt", ["God gives Isaac a clear boundary.", "Egypt may look like survival, but God calls Isaac to stay where He commands.", "Safety is found in obedience, not just in strategy."]),
+    phrase("⛺ Sojourn In This Land", ["Isaac is to live as a temporary resident in the land.", "He does not yet possess everything, but he must remain present.", "The promise requires patient faith."]),
+    phrase("🙌 I Will Be With Thee", ["God promises presence before explaining outcomes.", "Isaac is not alone in famine.", "The Lord's presence is the foundation of courage."]),
+    phrase("📜 I Will Perform The Oath", ["God ties Isaac's future to the oath made to Abraham.", "The covenant does not restart from zero.", "God keeps promises across generations."]),
+    phrase("⭐ As The Stars Of Heaven", ["The descendant promise is repeated to Isaac.", "God's plan is still expansive.", "Famine cannot cancel fruitfulness promised by God."]),
+    phrase("👂 Abraham Obeyed My Voice", ["God remembers Abraham's obedience.", "Isaac inherits promise, but he is also called into covenant faithfulness.", "The family story is built on hearing and obeying God."]),
+  ] },
+  { chapter: 26, startVerse: 6, endVerse: 11, reference: "Genesis 26:6-11", title: "Isaac Lies About Rebekah", icon: "😨", phrases: [
+    phrase("📍 Isaac Dwelt In Gerar", ["Isaac stays where God told him to sojourn.", "But staying in the right place does not automatically remove fear.", "Obedience and weakness can exist in the same person."]),
+    phrase("❓ The Men Asked Him Of His Wife", ["The pressure becomes personal.", "Isaac must decide whether to trust God's protection.", "The question exposes his fear."]),
+    phrase("😨 She Is My Sister", ["Isaac repeats Abraham's fear pattern.", "He lies because he is afraid of being killed.", "Family weaknesses can repeat when fear is not surrendered to God."]),
+    phrase("👀 Abimelech Looked Out At A Window", ["The deception is discovered by observation.", "Private fear becomes public exposure.", "Sin rarely stays as hidden as people think."]),
+    phrase("❤️ Sporting With Rebekah", ["Abimelech realizes Rebekah is Isaac's wife.", "The lie falls apart through ordinary affection.", "The truth becomes visible."]),
+    phrase("⚠️ What Is This Thou Hast Done?", ["Abimelech rebukes Isaac.", "A foreign king sees the danger of Isaac's lie.", "Genesis is honest when covenant people act wrongly."]),
+    phrase("🛡️ He That Toucheth This Man Or His Wife", ["Rebekah is protected despite Isaac's fear.", "God's mercy keeps the situation from becoming worse.", "The Lord protects the promise even through human weakness."]),
+  ] },
+  { chapter: 26, startVerse: 12, endVerse: 16, reference: "Genesis 26:12-16", title: "Isaac Prospers And Is Envied", icon: "📈", phrases: [
+    phrase("🌱 Isaac Sowed In That Land", ["Isaac plants in the land during a vulnerable season.", "Faith is not passive here.", "He works while trusting the promise."]),
+    phrase("💯 Received An Hundredfold", ["The harvest is extraordinary.", "Genesis directly connects Isaac's increase to God's blessing.", "Famine does not have the final word."]),
+    phrase("🙌 The LORD Blessed Him", ["The blessing is not credited to Isaac's brilliance.", "It is the Lord's favor on the covenant son.", "God's word in verses 3-4 is becoming visible."]),
+    phrase("📈 The Man Waxed Great", ["Isaac becomes increasingly powerful.", "The promise is producing visible abundance.", "God's blessing affects ordinary life and resources."]),
+    phrase("🐑 Possession Of Flocks", ["The text names the wealth so readers can see the scale.", "Isaac's household is becoming large.", "The blessing is tangible."]),
+    phrase("😒 The Philistines Envied Him", ["Blessing brings jealousy.", "The people around Isaac feel threatened by his growth.", "God's favor does not always create peace with others."]),
+    phrase("🚪 Go From Us", ["Abimelech asks Isaac to leave because he has become too mighty.", "Isaac's prosperity creates pressure and displacement.", "The promise continues, but not without conflict."]),
+  ] },
+  { chapter: 26, startVerse: 17, endVerse: 22, reference: "Genesis 26:17-22", title: "Isaac Reopens The Wells", icon: "💧", phrases: [
+    phrase("🏞️ Valley Of Gerar", ["Isaac moves from the city area into the valley.", "He does not respond to conflict by forcing his way back.", "His path forward is patient and practical."]),
+    phrase("💧 Digged Again The Wells", ["Isaac reopens wells from Abraham's days.", "Wells were sources of life in dry land.", "He restores what had been blocked."]),
+    phrase("📛 Called Their Names", ["Isaac keeps the names Abraham gave.", "This honors continuity with his father.", "The covenant story is being carried forward through memory and work."]),
+    phrase("⚔️ Esek", ["The first well is named for contention.", "Provision is met with argument.", "Isaac's life in the promise still includes conflict."]),
+    phrase("⚔️ Sitnah", ["The second well is also disputed.", "The conflict does not end immediately.", "Isaac must keep trusting and moving."]),
+    phrase("🌾 Rehoboth", ["Rehoboth means room or open spaces.", "After conflict, Isaac finally reaches a place without dispute.", "He names the well as testimony that the Lord made room for him."]),
+    phrase("📈 We Shall Be Fruitful In The Land", ["Isaac sees room as a gift from the Lord.", "Fruitfulness is not only about crops; it is about God giving space to live.", "The promise breathes again after pressure."]),
+  ] },
+  { chapter: 26, startVerse: 23, endVerse: 25, reference: "Genesis 26:23-25", title: "God Appears To Isaac At Beersheba", icon: "⛺", phrases: [
+    phrase("📍 Went Up To Beer-sheba", ["Isaac comes to a place already important in Abraham's story.", "The covenant memory of the family continues.", "God meets Isaac in the land of promise."]),
+    phrase("🌙 The Same Night", ["God speaks at a specific moment.", "The timing feels personal after conflict and movement.", "Isaac receives reassurance when he needs it."]),
+    phrase("🛡️ Fear Not", ["God speaks directly to Isaac's fear.", "Fear has shaped Isaac's lie and his pressure among the Philistines.", "God answers the emotion beneath the behavior."]),
+    phrase("🙌 I Am With Thee", ["God repeats the promise of presence.", "Isaac's courage rests on God being with him.", "The Lord does not abandon him after weakness."]),
+    phrase("📜 For My Servant Abraham's Sake", ["God ties Isaac's blessing to the covenant with Abraham.", "Isaac is living inside a promise bigger than himself.", "Grace is carrying the family forward."]),
+    phrase("⛺ He Builded An Altar", ["Isaac responds with worship.", "He continues Abraham's altar-building pattern.", "The covenant line is spiritual before it is social or political."]),
+    phrase("💧 Isaac's Servants Digged A Well", ["Worship and practical life sit side by side.", "Isaac calls on the Lord and his servants dig for water.", "Faith meets daily needs."]),
+  ] },
+  { chapter: 26, startVerse: 26, endVerse: 33, reference: "Genesis 26:26-33", title: "Isaac Makes Peace With Abimelech", icon: "🤝", phrases: [
+    phrase("🧑‍✈️ Abimelech Went To Him", ["The king comes to Isaac with officials.", "Isaac's life has become impossible to ignore.", "Outsiders recognize something weighty about him."]),
+    phrase("❓ Wherefore Come Ye To Me?", ["Isaac remembers that they sent him away.", "He names the tension honestly.", "Peace does not require pretending the past was harmless."]),
+    phrase("👀 We Saw Certainly", ["Abimelech's group admits what they have seen.", "God's presence with Isaac is visible.", "The covenant blessing becomes public witness."]),
+    phrase("🙌 The LORD Was With Thee", ["This repeats a key Genesis theme.", "Outsiders can see God's hand on the promise family.", "Isaac's life points beyond himself."]),
+    phrase("🤝 Let There Be An Oath", ["They seek a formal peace agreement.", "Conflict over land and wells needs covenant structure.", "Faithful living includes wise agreements."]),
+    phrase("🍽️ He Made Them A Feast", ["Isaac receives them peacefully.", "A meal seals the movement from hostility toward peace.", "Hospitality becomes part of reconciliation."]),
+    phrase("💧 We Have Found Water", ["The servants find water after the oath.", "The scene ends with provision.", "Peace, worship, and water all gather at Beersheba."]),
+    phrase("📍 Shebah / Beer-sheba", ["The place name connects oath and well.", "Isaac's story echoes Abraham's earlier Beersheba moment.", "The family memory deepens across generations."]),
+  ] },
+  { chapter: 26, startVerse: 34, endVerse: 35, reference: "Genesis 26:34-35", title: "Esau's Marriages Bring Grief", icon: "💔", phrases: [
+    phrase("👤 Esau Was Forty Years Old", ["Esau is now making adult family decisions.", "His choices matter for the covenant household.", "Genesis places this before the blessing crisis for a reason."]),
+    phrase("👰 Took To Wife", ["Marriage shapes family direction in Genesis.", "It is not treated as a private choice with no spiritual effect.", "Esau's marriages affect the whole household."]),
+    phrase("🏘️ Daughters Of Heth", ["Esau marries Hittite women from the land.", "This contrasts with Abraham's concern that Isaac not marry Canaanite women.", "Esau's choices show distance from the covenant priorities."]),
+    phrase("💔 Grief Of Mind", ["Isaac and Rebekah are deeply troubled.", "The phrase prepares the reader for Genesis 27.", "Family grief is already heavy before the blessing deception begins."]),
+  ] },
+  { chapter: 27, startVerse: 1, endVerse: 4, reference: "Genesis 27:1-4", title: "Isaac Prepares To Bless Esau", icon: "👴", phrases: [
+    phrase("👴 Isaac Was Old", ["Isaac senses the end of life approaching.", "That gives the blessing scene urgency.", "A father's final blessing carried serious weight."]),
+    phrase("👁️ His Eyes Were Dim", ["Isaac's physical blindness shapes the whole chapter.", "But the family also shows moral and spiritual confusion.", "The scene begins in limited sight."]),
+    phrase("👦 Esau His Eldest Son", ["Isaac calls the firstborn son he favors.", "This matters because God already said the elder would serve the younger.", "Isaac's preference is moving against the revealed word."]),
+    phrase("🏹 Take Thy Weapons", ["Isaac sends Esau into the field.", "The blessing is tied to the son Isaac enjoys as hunter.", "Family affection and appetite are tangled together."]),
+    phrase("🍖 Make Me Savoury Meat", ["Food has shaped Isaac's love for Esau since Genesis 25.", "A meal becomes connected to a spiritual blessing.", "Personal preference is clouding a sacred moment."]),
+    phrase("🙏 My Soul May Bless Thee", ["The blessing is not casual.", "Isaac intends to speak family future over Esau.", "This is why the deception that follows is so serious."]),
+  ] },
+  { chapter: 27, startVerse: 5, endVerse: 10, reference: "Genesis 27:5-10", title: "Rebekah Makes A Plan", icon: "🎭", phrases: [
+    phrase("👂 Rebekah Heard", ["Rebekah knows Isaac's plan.", "She also knows God's word about Jacob.", "But she chooses manipulation instead of trust."]),
+    phrase("🗣️ Spake Unto Jacob Her Son", ["Rebekah moves quickly to Jacob.", "The parents' favoritism is visible again: Isaac has Esau, Rebekah has Jacob.", "The household is divided."]),
+    phrase("🍖 Savoury Meat", ["Rebekah plans to imitate Esau's meal.", "The deception uses Isaac's appetite.", "What Isaac loves becomes the doorway for the trick."]),
+    phrase("🎯 That He May Bless Thee", ["Rebekah's goal is the blessing for Jacob.", "The outcome lines up with God's earlier word, but the method is deceit.", "Right outcomes do not make sinful methods faithful."]),
+    phrase("👂 Obey My Voice", ["Rebekah gives Jacob commands that echo obedience language.", "But she is leading him into deception.", "Not every voice demanding obedience is aligned with God's way."]),
+  ] },
+  { chapter: 27, startVerse: 11, endVerse: 17, reference: "Genesis 27:11-17", title: "Jacob Fears Getting Caught", icon: "🐐", phrases: [
+    phrase("🧔 Esau My Brother Is A Hairy Man", ["Jacob immediately sees the practical problem.", "He knows he does not match Esau.", "The plan requires more layers of disguise."]),
+    phrase("🎭 I Shall Seem To Him As A Deceiver", ["Jacob is afraid of being exposed, not clearly grieved over lying.", "His concern is consequence more than righteousness.", "Genesis lets us see the crookedness inside the plan."]),
+    phrase("⚠️ I Shall Bring A Curse", ["Jacob knows the blessing could become a curse if the deception fails.", "He understands the spiritual danger.", "Still, he does not walk away."]),
+    phrase("🙋 Upon Me Be Thy Curse", ["Rebekah takes responsibility, but that does not make the deception clean.", "Her confidence pushes Jacob forward.", "The family is trying to manage God's promise by control."]),
+    phrase("🐐 Two Good Kids Of The Goats", ["The goats become tools of deception.", "Later Genesis will use goats again when Jacob's sons deceive him about Joseph.", "Family deception echoes forward."]),
+    phrase("👕 Goodly Raiment", ["Rebekah dresses Jacob in Esau's clothes.", "Jacob will receive the blessing covered in another man's identity.", "The scene is full of disguise."]),
+    phrase("✋ Skins Upon His Hands", ["The goat skins imitate Esau's hair.", "The trick targets Isaac's weak eyesight.", "Deception grows more deliberate with every detail."]),
+  ] },
+  { chapter: 27, startVerse: 18, endVerse: 25, reference: "Genesis 27:18-25", title: "Jacob Lies To Isaac", icon: "🗣️", phrases: [
+    phrase("🙋 I Am Esau Thy Firstborn", ["Jacob's first words to Isaac are a direct lie.", "He takes Esau's name and status for himself.", "The blessing scene is built on false identity."]),
+    phrase("❓ How Is It That Thou Hast Found It So Quickly?", ["Isaac senses something is unusual.", "The speed raises suspicion.", "Deception often creates details that do not quite fit."]),
+    phrase("🙏 The LORD Thy God Brought It To Me", ["Jacob brings God's name into the lie.", "This makes the deception even darker.", "Using religious language to cover sin is spiritually dangerous."]),
+    phrase("✋ Come Near, That I May Feel Thee", ["Isaac tries to verify the son by touch.", "His sight is weak, so he relies on another sense.", "The disguise is tested."]),
+    phrase("🗣️ The Voice Is Jacob's Voice", ["Isaac hears something true.", "Jacob sounds like Jacob.", "Truth is pressing through the lie."]),
+    phrase("🤲 The Hands Are The Hands Of Esau", ["The disguise wins against Isaac's uncertainty.", "Touch overrules voice.", "The family blessing passes through confusion and deceit."]),
+    phrase("❓ Art Thou My Very Son Esau?", ["Isaac asks one more direct question.", "Jacob has one more opportunity to stop.", "He chooses the lie again."]),
+    phrase("🍽️ He Did Eat", ["The meal seals the deception further.", "Isaac receives the food he desired.", "Appetite and blessing remain tragically tangled."]),
+  ] },
+  { chapter: 27, startVerse: 26, endVerse: 29, reference: "Genesis 27:26-29", title: "Jacob Receives The Blessing", icon: "👑", phrases: [
+    phrase("💋 Come Near Now, And Kiss Me", ["Isaac draws Jacob close.", "The intimacy of the moment makes the deception more painful.", "Family closeness is being used inside a lie."]),
+    phrase("👃 Smelled The Smell Of His Raiment", ["Isaac trusts the scent of Esau's clothes.", "The disguise works because it imitates what Isaac expects.", "The blessing is given under sensory confusion."]),
+    phrase("🌾 Smell Of A Field", ["The smell reminds Isaac of Esau's outdoor life.", "This connects back to Isaac's love for Esau's hunting.", "The father's affection is being manipulated."]),
+    phrase("💧 Dew Of Heaven", ["The blessing asks for provision from above.", "Dew mattered in dry land.", "Isaac speaks abundance over Jacob."]),
+    phrase("🌍 Fatness Of The Earth", ["The blessing includes fruitfulness and land provision.", "It echoes covenant themes of life, place, and abundance.", "Jacob receives words tied to future flourishing."]),
+    phrase("👑 Let People Serve Thee", ["Authority is spoken over Jacob.", "This matches God's earlier word that the elder would serve the younger.", "The promise moves forward, though through a wounded path."]),
+    phrase("🙇 Thy Mother's Sons Bow Down", ["Family rule is included in the blessing.", "This will deepen the conflict with Esau.", "The words Jacob wanted will cost the family dearly."]),
+    phrase("🌍 Blessed Be He That Blesseth Thee", ["This echoes the Abrahamic promise.", "Jacob receives covenant language.", "God's plan continues, even through human failure."]),
+  ] },
+  { chapter: 27, startVerse: 30, endVerse: 33, reference: "Genesis 27:30-33", title: "Esau Returns Too Late", icon: "⏱️", phrases: [
+    phrase("⏱️ As Soon As Isaac Had Made An End", ["The timing is painfully close.", "Jacob leaves and Esau arrives.", "Genesis makes the loss feel immediate."]),
+    phrase("🍖 Savoury Meat", ["Esau brings the meal Isaac asked for.", "He has done what his father requested.", "But the blessing has already been given."]),
+    phrase("❓ Who Art Thou?", ["Isaac's question shows the deception breaking open.", "The truth arrives suddenly.", "The blind father now sees what has happened."]),
+    phrase("😨 Isaac Trembled Very Exceedingly", ["Isaac is shaken deeply.", "He realizes he has blessed Jacob and cannot simply undo it.", "The spiritual weight of the blessing hits him."]),
+    phrase("✅ Yea, And He Shall Be Blessed", ["Isaac confirms the blessing will stand.", "Even though it came through deception, God's earlier word is moving forward.", "Human sin does not overturn God's purpose."]),
+  ] },
+  { chapter: 27, startVerse: 34, endVerse: 40, reference: "Genesis 27:34-40", title: "Esau's Bitter Cry", icon: "😭", phrases: [
+    phrase("😭 Great And Exceeding Bitter Cry", ["Esau's grief is real and intense.", "Genesis does not ask us to laugh at him.", "The pain of lost blessing is devastating."]),
+    phrase("🙏 Bless Me, Even Me Also", ["Esau begs for blessing from his father.", "He now wants what he earlier treated lightly.", "Desire arrives after the main blessing is gone."]),
+    phrase("🎭 Thy Brother Came With Subtilty", ["Isaac names Jacob's deception.", "The blessing was taken through craftiness.", "The family wound is now out in the open."]),
+    phrase("📛 Is Not He Rightly Named Jacob?", ["Esau connects Jacob's name to his actions.", "Jacob has supplanted him twice: birthright and blessing.", "The name becomes accusation."]),
+    phrase("❓ Hast Thou Not Reserved A Blessing?", ["Esau searches for any remaining word.", "His question is full of desperation.", "The scene shows the cost of despising and losing holy things."]),
+    phrase("⚔️ By Thy Sword Shalt Thou Live", ["Esau receives a harder word.", "His line will be marked by struggle and conflict.", "This points toward the later tension between Edom and Israel."]),
+    phrase("🔗 Thou Shalt Break His Yoke", ["Esau's line will not remain under Jacob forever.", "There is future resistance in the word.", "Genesis traces family conflict into national history."]),
+  ] },
+  { chapter: 27, startVerse: 41, endVerse: 46, reference: "Genesis 27:41-46", title: "Jacob Must Flee", icon: "🏃", phrases: [
+    phrase("😡 Esau Hated Jacob", ["Grief turns into hatred.", "The family conflict has moved from rivalry to danger.", "The blessing did not create peace in the home."]),
+    phrase("⚔️ I Will Slay My Brother Jacob", ["Esau plans murder after Isaac dies.", "The story echoes Cain and Abel: brother against brother.", "Sin is again threatening family bloodshed."]),
+    phrase("👂 Rebekah Was Told", ["Rebekah hears the danger and acts again.", "Her earlier plan got Jacob the blessing, but now she must protect him from the consequences.", "Control creates more crisis."]),
+    phrase("🏃 Flee Thou To Laban", ["Jacob must leave home.", "He receives the blessing but loses safety and family closeness.", "Sin often takes more than expected."]),
+    phrase("⏳ A Few Days", ["Rebekah thinks the separation may be short.", "In reality, Jacob will be gone for many years.", "The consequences of deception last longer than she expects."]),
+    phrase("💔 Why Should I Be Deprived Also Of You Both?", ["Rebekah fears losing both sons.", "Her plan has placed the whole family at risk.", "Favoritism has become grief."]),
+    phrase("👰 Daughters Of Heth", ["Rebekah uses Esau's marriages as a reason to send Jacob away.", "This connects back to Genesis 26:34-35.", "Marriage and covenant direction remain central as Jacob exits toward Genesis 28."]),
+  ] },
+];
+
 const GENESIS_25_30_PERSONAL_SECTIONS = RAW_GENESIS_21_30_PERSONAL_SECTIONS.filter(
-  (section) => section.chapter < 21 || section.chapter > 24,
+  (section) => false,
 );
 
+function getDay10Section(reference: string) {
+  const section = DAY_10_RESTRUCTURED_SECTIONS.find((item) => item.reference === reference);
+  if (!section) throw new Error(`Missing Day 10 section: ${reference}`);
+  return section;
+}
+
+function splitDay10Section(
+  sourceReference: string,
+  splits: Array<{
+    startVerse: number;
+    endVerse: number;
+    reference: string;
+    title: string;
+    icon: string;
+    phraseIndexes: number[];
+  }>,
+) {
+  const source = getDay10Section(sourceReference);
+  return splits.map((split): PersonalGenesisPhraseSectionInput => ({
+    chapter: source.chapter,
+    startVerse: split.startVerse,
+    endVerse: split.endVerse,
+    reference: split.reference,
+    title: split.title,
+    icon: split.icon,
+    phrases: split.phraseIndexes.map((index) => source.phrases[index]).filter((phrase): phrase is [string, string] => Boolean(phrase)),
+  }));
+}
+
+const DAY_10_LONG_SECTION_REFERENCES = new Set([
+  "Genesis 25:12-18",
+  "Genesis 26:26-33",
+  "Genesis 27:11-17",
+  "Genesis 27:18-25",
+  "Genesis 27:34-40",
+]);
+
+const DAY_10_FINAL_SECTIONS = [
+  ...DAY_10_RESTRUCTURED_SECTIONS.filter((section) => !DAY_10_LONG_SECTION_REFERENCES.has(section.reference)),
+  ...splitDay10Section("Genesis 25:12-18", [
+    { startVerse: 12, endVerse: 16, reference: "Genesis 25:12-16", title: "Ishmael's Sons Become Princes", icon: "👑", phraseIndexes: [0, 1, 2, 3] },
+    { startVerse: 17, endVerse: 18, reference: "Genesis 25:17-18", title: "Ishmael Dies Before His Brethren", icon: "🪦", phraseIndexes: [4, 5] },
+  ]),
+  ...splitDay10Section("Genesis 26:26-33", [
+    { startVerse: 26, endVerse: 29, reference: "Genesis 26:26-29", title: "Abimelech Seeks Peace With Isaac", icon: "🤝", phraseIndexes: [0, 1, 2, 3, 4] },
+    { startVerse: 30, endVerse: 33, reference: "Genesis 26:30-33", title: "The Oath And The Well At Beersheba", icon: "💧", phraseIndexes: [5, 6, 7] },
+  ]),
+  ...splitDay10Section("Genesis 27:11-17", [
+    { startVerse: 11, endVerse: 13, reference: "Genesis 27:11-13", title: "Jacob Fears The Curse", icon: "⚠️", phraseIndexes: [0, 1, 2, 3] },
+    { startVerse: 14, endVerse: 17, reference: "Genesis 27:14-17", title: "Rebekah Dresses Jacob As Esau", icon: "🐐", phraseIndexes: [4, 5, 6] },
+  ]),
+  ...splitDay10Section("Genesis 27:18-25", [
+    { startVerse: 18, endVerse: 20, reference: "Genesis 27:18-20", title: "Jacob Uses Esau's Name", icon: "🗣️", phraseIndexes: [0, 1, 2] },
+    { startVerse: 21, endVerse: 25, reference: "Genesis 27:21-25", title: "Isaac Tests The Disguise", icon: "✋", phraseIndexes: [3, 4, 5, 6, 7] },
+  ]),
+  ...splitDay10Section("Genesis 27:34-40", [
+    { startVerse: 34, endVerse: 38, reference: "Genesis 27:34-38", title: "Esau Begs For A Blessing", icon: "😭", phraseIndexes: [0, 1, 2, 3, 4] },
+    { startVerse: 39, endVerse: 40, reference: "Genesis 27:39-40", title: "Esau Receives A Hard Word", icon: "⚔️", phraseIndexes: [5, 6] },
+  ]),
+].sort((left, right) => left.chapter - right.chapter || left.startVerse - right.startVerse || left.endVerse - right.endVerse);
+
+const DAY_11_FINAL_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
+  { chapter: 28, startVerse: 1, endVerse: 5, reference: "Genesis 28:1-5", title: "Isaac Sends Jacob Away", icon: "🧳", phrases: [
+    phrase("👴 Isaac Called Jacob", ["This moment is different from the deception scene in Genesis 27.", "Isaac now speaks to Jacob openly and knowingly.", "The blessing is no longer hidden under disguise.", "The father who was deceived now sends Jacob with covenant direction.", "Jacob is leaving home, but he is not leaving without a spoken blessing.", "Promise and consequence are both traveling with him."]),
+    phrase("🚫 Take Not A Wife Of The Daughters Of Canaan", ["Isaac repeats the marriage concern that shaped Abraham's servant mission in Genesis 24.", "The covenant family is not supposed to be absorbed into the surrounding Canaanite way of life.", "Marriage is not treated as a random private choice in Genesis.", "It shapes worship, household direction, and the next generation.", "Jacob needs a wife, but he also needs a household connected to the promise.", "The command protects the future of the covenant family."]),
+    phrase("🏠 Go To Padan-aram", ["Jacob is sent toward Rebekah's family line.", "This is practical because Esau wants to kill him, but it is also covenant-shaped.", "The road away from home becomes the road toward the next stage of the promise.", "God often works through tangled situations without approving the sin that created them.", "Jacob's exile is painful, but it will also become formative.", "The family story is moving eastward for a season."]),
+    phrase("🙌 God Almighty Bless Thee", ["Isaac uses covenant language over Jacob.", "God Almighty is the God powerful enough to fulfill what He promises.", "Jacob is not merely receiving family advice; he is being placed under divine blessing.", "This matters because Jacob is leaving as a flawed man, not a polished hero.", "The promise rests on God's faithfulness, not Jacob's maturity.", "Grace is already ahead of him on the road."]),
+    phrase("🌱 Make Thee Fruitful, And Multiply Thee", ["The old promise of descendants is now spoken over Jacob.", "This reaches back to Abraham and Isaac.", "Jacob is one man leaving home, but God is speaking about a whole people coming from him.", "The lonely road does not cancel the future God has planned.", "The family line will grow through hardship, labor, love, and conflict.", "Genesis keeps showing that God's promise grows in messy soil."]),
+    phrase("📜 The Blessing Of Abraham", ["This phrase makes the covenant connection explicit.", "Jacob is receiving the same promise thread that began with Abraham.", "Land, descendants, and blessing are still the major pieces.", "The blessing is bigger than Jacob's personal success.", "It is about God's plan to bless the nations through this family.", "Jacob carries a holy promise even while carrying family consequences."]),
+  ] },
+  { chapter: 28, startVerse: 6, endVerse: 9, reference: "Genesis 28:6-9", title: "Esau Tries To Respond", icon: "👀", phrases: [
+    phrase("👀 Esau Saw", ["Esau is watching what happens to Jacob.", "He notices the blessing, the command, and the marriage concern.", "This is important because Esau is not completely unaware of the family's values.", "He can see that Canaanite marriages displeased Isaac and Rebekah.", "But seeing the outside problem is not the same as understanding the heart of obedience.", "Genesis shows Esau reacting after the damage is already deep."]),
+    phrase("🚫 Daughters Of Canaan Pleased Not Isaac", ["Esau finally recognizes that his marriages have grieved the household.", "This connects back to Genesis 26, where his Hittite wives were a grief of mind.", "Marriage is again shown as spiritually serious.", "The issue is not merely parental preference.", "The covenant family is being shaped by the people brought into it.", "Esau has been careless with what his family treats as weighty."]),
+    phrase("➕ In Addition To The Wives Which He Had", ["Esau adds another wife instead of truly changing direction.", "That little phrase matters.", "He does not undo the earlier problem; he layers a new action on top of it.", "Sometimes people make a religious-looking adjustment without dealing with the deeper heart issue.", "Esau seems to be trying to repair his standing from the outside in.", "Genesis lets the action feel incomplete."]),
+    phrase("🏕️ Mahalath The Daughter Of Ishmael", ["Esau marries into Ishmael's line, which is closer to Abraham's family than the Canaanites.", "But this still does not make him the covenant heir.", "The move feels like an attempt to regain favor after losing the blessing.", "Ishmael's family is real and significant, but the promise line is moving through Isaac and Jacob.", "Esau is close to the covenant story, yet keeps missing its center.", "The chapter contrasts Jacob leaving under blessing with Esau reacting from regret."]),
+  ] },
+  { chapter: 28, startVerse: 10, endVerse: 12, reference: "Genesis 28:10-12", title: "Jacob Sleeps In The Wilderness", icon: "🪨", phrases: [
+    phrase("🏃 Jacob Went Out From Beer-sheba", ["Jacob leaves the place connected to family, wells, and covenant memory.", "He is not leaving as a calm traveler on vacation.", "He is leaving because the home has fractured and Esau is dangerous.", "The blessing is with him, but peace is not.", "This line begins Jacob's exile.", "The promised heir is now alone on the road."]),
+    phrase("🌙 The Sun Was Set", ["Night comes while Jacob is away from home.", "The detail makes the scene feel lonely and exposed.", "He is not sleeping in a tent surrounded by family protection.", "He has no comfortable bed, no household safety, and no clear idea of what the road will bring.", "Genesis lets the darkness match Jacob's situation.", "This is where God chooses to meet him."]),
+    phrase("🪨 Stones For His Pillows", ["Jacob uses a stone where a pillow should be.", "That one detail tells us how uncomfortable and vulnerable he is.", "He is carrying the blessing, but he is not living in comfort.", "God's promise does not mean the road immediately feels easy.", "The stone also becomes important later, because God will turn the place of discomfort into a memory of worship.", "What begins as a pillow will become a pillar."]),
+    phrase("🪜 A Ladder Set Up On The Earth", ["Jacob sees a stairway connecting earth and heaven.", "The dream shows that heaven is not closed over his lonely road.", "Angels are moving, which means God's activity reaches into Jacob's world.", "Jacob may feel cut off from home, but he is not cut off from God.", "The place that looked ordinary is full of divine presence.", "God is showing Jacob that the covenant is not trapped inside his father's tent."]),
+    phrase("👼 Angels Ascending And Descending", ["The angels move between heaven and earth.", "This pictures connection, care, and divine activity.", "Jacob is not told every detail of what the angels are doing.", "The point is that God's world and Jacob's road are connected.", "Later Scripture will echo this kind of language when Jesus speaks of heaven opened.", "For Jacob, the dream means he is not abandoned in the wilderness."]),
+  ] },
+  { chapter: 28, startVerse: 13, endVerse: 15, reference: "Genesis 28:13-15", title: "God Repeats The Covenant Promise", icon: "📜", phrases: [
+    phrase("🙌 The LORD Stood Above It", ["The dream is not only about angels.", "The Lord Himself speaks to Jacob.", "That matters because Jacob has grown up around the God of Abraham and Isaac, but now God addresses him directly.", "The covenant promise becomes personal on the road.", "Jacob did not climb up to find God.", "God comes near and speaks first."]),
+    phrase("📛 I Am The LORD God Of Abraham", ["God identifies Himself through the covenant family story.", "Jacob is hearing the same Lord who called Abraham and blessed Isaac.", "The promise is not a new religion invented for Jacob's crisis.", "It is the faithful continuation of God's old word.", "Jacob's identity is being anchored in God's covenant, not in his deception.", "The God of his fathers is now meeting him personally."]),
+    phrase("🌍 The Land Whereon Thou Liest", ["God promises Jacob the land beneath his vulnerable body.", "This is powerful because Jacob owns none of it in the moment.", "He is sleeping outside with a stone for a pillow.", "Yet God speaks inheritance over the very ground where he lies.", "The promise is larger than what Jacob can currently hold.", "God names future possession in the place of present weakness."]),
+    phrase("🌫️ As The Dust Of The Earth", ["God promises descendants too many to count.", "Jacob is alone, but God speaks of a multitude.", "The contrast is meant to be felt.", "One displaced man will become the father of tribes.", "The promise is not limited by Jacob's current loneliness.", "God sees generations where Jacob sees only the next step."]),
+    phrase("🌍 All Families Of The Earth", ["The Abrahamic promise widens again to the nations.", "Jacob's family is not blessed only for private comfort.", "God intends blessing to reach all families of the earth through this line.", "That keeps Genesis from becoming a small family success story.", "The covenant is global in purpose.", "Christians hear this as part of the long road toward Christ."]),
+    phrase("🤝 I Am With Thee", ["This is the deeply personal promise in the passage.", "Jacob is leaving home, but not leaving God's reach.", "God does not say Jacob has earned this presence by being wise or honest.", "He says it because He is faithful to His promise.", "Presence is what Jacob needs more than a map.", "The road ahead will be hard, but he will not walk it alone."]),
+    phrase("🛡️ I Will Keep Thee", ["God promises protection wherever Jacob goes.", "This does not mean Jacob will avoid every hardship.", "It means God will preserve him through the road ahead.", "Jacob will face Laban, family tension, labor, fear, and return.", "But God's keeping will hold the story together.", "The promise gives courage before the difficulty is removed."]),
+    phrase("🔙 Bring Thee Again Into This Land", ["God promises Jacob return before Jacob even reaches exile.", "That matters because the covenant land is still central.", "Haran will shape Jacob, but it is not his final home.", "God's promise includes both going and coming back.", "This gives the whole Jacob story a direction.", "The Lord begins by telling Jacob he will not be lost forever."]),
+  ] },
+  { chapter: 28, startVerse: 16, endVerse: 19, reference: "Genesis 28:16-19", title: "Jacob Names The Place Bethel", icon: "📍", phrases: [
+    phrase("😳 Surely The LORD Is In This Place", ["Jacob wakes up with a new awareness.", "The place was holy before he knew it.", "That is the surprise of the scene.", "God was present while Jacob thought he was simply sleeping outdoors.", "This teaches that God's presence is not always obvious at first.", "Sometimes a person only realizes afterward that God was near."]),
+    phrase("❓ I Knew It Not", ["Jacob admits he did not recognize the place for what it was.", "He arrived tired, displaced, and unaware.", "God was not absent because Jacob was unaware.", "This is comforting for readers who look back and realize God was working before they understood.", "Jacob's ignorance did not stop God's mercy.", "The Lord was present before Jacob had language for it."]),
+    phrase("😨 He Was Afraid", ["Jacob's fear here is holy awe, not only terror.", "He realizes he has encountered the living God.", "The ordinary campsite has become overwhelming.", "A true encounter with God does not make Jacob casual.", "It awakens reverence.", "The dream changes how he sees the ground beneath him."]),
+    phrase("🏠 House Of God", ["Jacob calls the place God's house.", "He does not mean there is a building there yet.", "He means God has made Himself known there.", "The name Bethel will become a major memory marker in Jacob's life.", "This place will call him back later.", "A lonely night becomes a holy landmark."]),
+    phrase("🚪 Gate Of Heaven", ["Jacob realizes the place is connected to heaven's activity.", "The dream showed angels moving between heaven and earth.", "Now Jacob names the meaning of what he saw.", "The road is not spiritually empty.", "God's world has opened over Jacob's wilderness.", "The gate language shows access, presence, and awe."]),
+    phrase("🪨 Set It Up For A Pillar", ["The stone that held Jacob's head becomes a memorial.", "What was used in weakness is now set apart for worship.", "Jacob marks the place so he will remember what God did there.", "Bible memory often attaches truth to places, objects, and names.", "The pillar does not contain God.", "It helps Jacob remember God's mercy on the road."]),
+    phrase("🫗 Poured Oil On The Top", ["Pouring oil marks the stone as set apart.", "Jacob is responding physically to a spiritual encounter.", "His faith is still young, but he knows this moment matters.", "The action says, this place is not ordinary to me anymore.", "Worship begins where God reveals Himself.", "Jacob's road now has a holy marker."]),
+  ] },
+  { chapter: 28, startVerse: 20, endVerse: 22, reference: "Genesis 28:20-22", title: "Jacob Makes A Vow", icon: "🤲", phrases: [
+    phrase("🤲 Jacob Vowed A Vow", ["Jacob responds to God's promise with a vow.", "His response is real, but it also shows he is still growing.", "He is not yet the mature Israel he will become.", "He is a fearful man beginning to answer the God who met him.", "That makes the scene feel honest.", "A real encounter can begin transformation without completing it in one night."]),
+    phrase("🍞 Bread To Eat", ["Jacob asks for basic provision.", "After the huge covenant promises, his mind still goes to survival needs.", "That is not hard to understand.", "He is away from home and unsure of the road.", "God's large promises do not erase the need for daily bread.", "Jacob is learning to trust God with both destiny and dinner."]),
+    phrase("👕 Raiment To Put On", ["Jacob asks for clothing too.", "These are ordinary needs, not grand spiritual language.", "The request shows how vulnerable he feels.", "He has received a vision of heaven, but he still needs provision on earth.", "Bible faith is not disconnected from practical life.", "God's care reaches the body as well as the promise."]),
+    phrase("🏠 Come Again To My Father's House In Peace", ["Jacob longs to return home safely.", "This request carries the pain of Genesis 27.", "He left because home was dangerous and broken.", "Jacob wants more than travel success; he wants restoration and peace.", "God has already promised return, and Jacob is beginning to hold onto it.", "The road away is now tied to hope for coming back."]),
+    phrase("🙌 Then Shall The LORD Be My God", ["Jacob's words sound conditional because his faith is still young.", "He is responding to God, but he is still learning what trust means.", "Genesis does not hide that growth takes time.", "God has already committed Himself to Jacob before Jacob fully knows how to commit himself to God.", "That is grace.", "Jacob's vow is a beginning, not the finish line."]),
+    phrase("🔟 I Will Surely Give The Tenth", ["Jacob promises a tenth of what God gives him.", "This is a worship response to God's promised provision.", "He recognizes that what he receives will come from the Lord.", "The vow shows gratitude, but also Jacob's developing faith.", "He is starting to think of his future as something lived before God.", "Bethel becomes the first marker of that awakening."]),
+  ] },
+  { chapter: 29, startVerse: 1, endVerse: 3, reference: "Genesis 29:1-3", title: "Jacob Comes To The Well", icon: "💧", phrases: [
+    phrase("👣 Jacob Went On His Journey", ["After Bethel, Jacob keeps walking.", "The holy dream does not teleport him to the answer.", "He still has to travel the road ahead.", "This matters because spiritual encounters do not remove the need for endurance.", "God promised to be with him, and now Jacob must live forward under that promise.", "Faith continues one step at a time."]),
+    phrase("🌅 People Of The East", ["Jacob arrives in the region connected with his mother's family.", "He is now far from home and entering a new household world.", "The phrase signals a new stage of the story.", "The covenant heir is outside Canaan for a season.", "God's promise is still with him, but the setting has changed.", "This is where Jacob will be shaped through love, labor, and deception."]),
+    phrase("💧 A Well In The Field", ["Once again, a well becomes an important meeting place in Genesis.", "Abraham's servant met Rebekah at a well, and now Jacob comes to a well.", "Wells were places of life, work, and conversation.", "This setting connects Jacob's story to the earlier marriage story.", "But Jacob is not represented by a servant this time.", "He is alone, stepping into his own future."]),
+    phrase("🐑 Three Flocks", ["The flocks show that the well serves a working community.", "This is not a decorative backdrop for romance.", "It is an ordinary place where shepherds manage water and animals.", "Genesis grounds the promise story in daily labor.", "People, animals, stones, and water all matter.", "God's guidance often unfolds in regular work settings."]),
+    phrase("🪨 A Great Stone", ["The large stone controls access to the water.", "It has to be moved before the flocks can drink.", "That detail will matter when Rachel arrives.", "The stone creates a problem in the scene.", "Jacob will soon act with unusual strength and urgency.", "The physical setting prepares the emotional moment."]),
+  ] },
+  { chapter: 29, startVerse: 4, endVerse: 6, reference: "Genesis 29:4-6", title: "Jacob Asks About Laban", icon: "❓", phrases: [
+    phrase("👥 My Brethren", ["Jacob addresses the shepherds warmly.", "He is a stranger, but he seeks connection.", "That matters because Jacob is far from home and looking for family.", "His question opens the way to Laban's household.", "The road from Bethel is becoming specific.", "God's guidance is moving through ordinary conversation."]),
+    phrase("📍 Whence Be Ye?", ["Jacob asks where the shepherds are from.", "This is practical, but it is also how the story narrows toward the right family.", "He is not wandering blindly anymore.", "Step by step, he is getting closer to the people connected to his future.", "God's promise does not cancel practical questions.", "Jacob still has to ask, listen, and learn."]),
+    phrase("🏠 Know Ye Laban?", ["Laban's name enters the scene before Laban appears.", "For Jacob, this is the family connection he has been sent to find.", "For the reader, Laban's name will soon carry both welcome and danger.", "He is family, but he will also become a deceiver.", "Genesis often introduces people before revealing their full character.", "This question opens a complicated chapter in Jacob's life."]),
+    phrase("🕊️ He Is Well", ["The shepherds answer that Laban is well.", "This gives Jacob immediate relief.", "The family he seeks is alive and reachable.", "After fleeing home, even this simple news matters.", "God's keeping is showing up in small confirmations.", "Jacob's road is not random."]),
+    phrase("👧 Rachel His Daughter Cometh", ["Rachel enters before she speaks.", "She is connected directly to Laban's household.", "Her arrival is the answer Jacob needs and the beginning of a major love story.", "But the reader should remember Genesis rarely gives simple romance without family complexity.", "Rachel's appearance brings hope.", "It also brings Jacob to the house where he will be tested."]),
+  ] },
+  { chapter: 29, startVerse: 7, endVerse: 8, reference: "Genesis 29:7-8", title: "Jacob Questions The Shepherds", icon: "🐑", phrases: [
+    phrase("☀️ It Is Yet High Day", ["Jacob notices the work rhythm at the well.", "He questions why the shepherds are waiting instead of watering the flocks.", "This shows Jacob engaging the practical world around him.", "He is not passive on the road.", "The detail also builds tension before Rachel arrives.", "The well is ready, but the stone has not been moved."]),
+    phrase("💧 Water Ye The Sheep", ["Jacob urges the shepherds to water the animals and keep moving.", "He may be confused by their custom or impatient with delay.", "Either way, the line reveals his active personality.", "Jacob is a man who pushes toward outcomes.", "That trait can become useful or dangerous depending on his heart.", "Genesis lets us see his energy in ordinary conversation."]),
+    phrase("🪨 Roll The Stone", ["The shepherds explain that the stone cannot be moved until all the flocks gather.", "The community has a shared water practice.", "The stone is not only heavy; it is part of an agreed system.", "Jacob is entering a world with customs he does not control.", "This matters because Laban's household will also run by customs Jacob does not fully understand.", "The well quietly prepares us for cultural tension."]),
+  ] },
+  { chapter: 29, startVerse: 9, endVerse: 12, reference: "Genesis 29:9-12", title: "Jacob Meets Rachel", icon: "❤️", phrases: [
+    phrase("🐑 Rachel Came With Her Father's Sheep", ["Rachel is introduced while working.", "She is caring for her father's flock.", "Genesis often reveals people through ordinary responsibility before dramatic speeches.", "Rachel is not introduced in a palace.", "She appears in the rhythm of daily labor.", "This is where Jacob's next chapter begins."]),
+    phrase("🏃 Jacob Went Near", ["Jacob acts as soon as Rachel arrives.", "The scene suddenly becomes energetic.", "He has found the family connection he was seeking.", "His movement shows relief, excitement, and urgency.", "The lonely traveler is no longer just asking directions.", "He is meeting his mother's kin."]),
+    phrase("🪨 Rolled The Stone", ["Jacob moves the stone from the well's mouth.", "Earlier the shepherds said they waited until all the flocks gathered.", "Jacob breaks through the delay when Rachel arrives.", "The action shows strength and emotion.", "It also hints that Jacob can be forceful when desire is awakened.", "The well becomes the place where his future opens."]),
+    phrase("💧 Watered The Flock", ["Jacob serves Rachel by watering the sheep.", "This echoes Rebekah's well scene, but with the roles reversed.", "At Isaac's marriage story, Rebekah watered the camels.", "Here Jacob waters Rachel's flock.", "The connection is intentional and memorable.", "Genesis is linking generations through repeated well scenes."]),
+    phrase("😭 Lifted Up His Voice, And Wept", ["Jacob's tears are intense and human.", "He has fled home, traveled far, and finally found family.", "The tears may carry relief, exhaustion, hope, and loneliness all together.", "This moment is not only romantic.", "It is the emotion of a displaced man realizing he has reached the household connected to his future.", "Genesis lets readers feel the human side of the promise story."]),
+    phrase("🗣️ Told Rachel That He Was Her Father's Brother", ["Jacob explains the family connection.", "He is not a random stranger at the well.", "He belongs to the extended family line.", "This matters because kinship gives him a place to be received.", "The promise story is moving into Rebekah's household.", "Rachel now carries the news home."]),
+  ] },
+  { chapter: 29, startVerse: 13, endVerse: 15, reference: "Genesis 29:13-15", title: "Laban Welcomes Jacob", icon: "🏠", phrases: [
+    phrase("🏃 Laban Ran To Meet Him", ["Laban runs when he hears about Jacob.", "The welcome looks warm and eager.", "Readers who remember Laban from Genesis 24 may also sense his interest in opportunity.", "He is family, but Genesis will soon show his complicated character.", "The welcome is real, but it is not the whole story.", "Jacob has entered a house where he will both belong and be used."]),
+    phrase("🤗 Embraced Him, And Kissed Him", ["The gestures show family hospitality.", "Jacob is received into the household after his lonely journey.", "This must have felt like relief after fleeing home.", "But closeness in Genesis does not always mean safety.", "Family love and family manipulation can exist in the same space.", "Jacob is about to learn that painfully."]),
+    phrase("🗣️ Told Laban All These Things", ["Jacob tells Laban his story.", "The text does not record every detail, but Jacob has much to explain.", "He has come from a fractured household with blessing and danger behind him.", "Laban now knows enough to take him in.", "Information creates relationship, but it can also create leverage.", "Jacob's vulnerability is now inside Laban's house."]),
+    phrase("🦴 My Bone And My Flesh", ["Laban claims Jacob as close family.", "The phrase sounds protective and warm.", "But the next verses will show that family language does not prevent exploitation.", "Jacob is kin, not a stranger.", "That makes Laban's later deception feel even heavier.", "The one who should protect him will use him."]),
+    phrase("📅 Abode With Him The Space Of A Month", ["Jacob stays with Laban for a month before wages are discussed.", "This gives time for the household relationship to form.", "It also gives Laban time to observe Jacob's usefulness.", "Jacob has found shelter, but he has also entered dependence.", "The road from Bethel has led to a place of both provision and testing.", "God is with Jacob, but Laban will not be easy."]),
+  ] },
+  { chapter: 29, startVerse: 16, endVerse: 20, reference: "Genesis 29:16-20", title: "Jacob Serves Seven Years For Rachel", icon: "⏳", phrases: [
+    phrase("👭 Laban Had Two Daughters", ["Leah and Rachel are introduced together.", "The family structure matters because both sisters will shape Israel's future.", "Genesis is setting up love, rivalry, grief, and motherhood.", "This is not only Jacob's romance story.", "It is the beginning of a deeply complicated household.", "Two sisters will become central to the tribes of Israel."]),
+    phrase("👀 Leah Was Tender Eyed", ["This phrase has been understood in different ways, but it contrasts Leah with Rachel's beauty.", "Genesis immediately places the sisters in comparison.", "That comparison will become painful.", "Leah will live under the shadow of being less desired.", "The text prepares us to feel her vulnerability.", "God will later see the pain others overlook."]),
+    phrase("✨ Rachel Was Beautiful", ["Rachel's beauty is stated plainly.", "Jacob's love for her becomes the emotional engine of the next scene.", "Beauty is not treated as evil.", "But desire will make Jacob vulnerable to Laban's manipulation.", "Genesis shows how love can be sincere and still exist inside a broken family system.", "Rachel is loved, but that does not mean the household will be healthy."]),
+    phrase("❤️ Jacob Loved Rachel", ["This is direct and tender.", "Jacob's heart is fixed on Rachel.", "After fleeing home, he finds someone he deeply wants.", "Love gives meaning to his labor.", "But the same love also gives Laban power over him.", "Jacob's desire will become the place where he is deceived."]),
+    phrase("🤝 I Will Serve Thee Seven Years", ["Jacob offers labor as the bride price.", "He likely has little wealth after leaving home, so his work becomes the payment.", "Seven years is a serious commitment.", "This shows devotion, but also dependence.", "Jacob is trusting Laban to honor the agreement.", "That trust will be broken."]),
+    phrase("⏳ They Seemed Unto Him But A Few Days", ["Jacob's love changes how he experiences the years.", "The work is long, but affection gives it meaning.", "This is one of the tenderest lines in the chapter.", "Genesis lets the reader feel Jacob's genuine love before the deception hits.", "The beauty of the line makes Laban's later betrayal feel worse.", "Love is real here, even though the household is flawed."]),
+  ] },
+  { chapter: 29, startVerse: 21, endVerse: 25, reference: "Genesis 29:21-25", title: "Laban Deceives Jacob", icon: "🎭", phrases: [
+    phrase("👰 Give Me My Wife", ["Jacob asks for Rachel after completing the seven years.", "He has fulfilled his side of the agreement.", "The request is direct because the time is complete.", "Jacob expects honesty from Laban.", "The deceiver from Genesis 27 is now depending on someone else's truthfulness.", "That irony is about to become painful."]),
+    phrase("🍽️ Laban Made A Feast", ["The wedding feast looks like celebration.", "But the joyful setting becomes the cover for deception.", "Genesis often lets sin happen inside ordinary family events.", "A feast should mark covenant joy.", "Here it becomes the stage for a switch.", "The celebration hides betrayal."]),
+    phrase("🌙 In The Evening", ["The timing matters.", "Evening darkness creates the setting where the deception can happen.", "Jacob once used his father's blindness and disguise to take a blessing.", "Now darkness helps Laban deceive Jacob.", "Genesis lets the poetic justice sit in the story.", "The man who deceived is now deceived."]),
+    phrase("👰 He Took Leah His Daughter", ["Laban gives Leah instead of Rachel.", "Leah is also being placed into a painful situation.", "She is not just a plot device; she is a real woman entering a marriage without being Jacob's chosen bride.", "Laban's deception wounds Jacob, Rachel, and Leah.", "Family manipulation spreads pain in every direction.", "Genesis refuses to make this a simple trick story."]),
+    phrase("😳 In The Morning, Behold, It Was Leah", ["The shock lands in the morning light.", "Jacob discovers that he has been deceived.", "The phrase is famous because it captures sudden reversal.", "Jacob's old sin comes back with forceful irony.", "He knows what it feels like to be tricked in a family blessing/marriage moment.", "The Bible is showing that deception multiplies grief."]),
+    phrase("❓ Wherefore Then Hast Thou Beguiled Me?", ["Jacob names Laban's action as deception.", "The word stings because Jacob himself deceived Isaac.", "He is now tasting the pain from the other side.", "This does not make Laban right.", "It shows that sin creates patterns that come back with bitter force.", "Jacob still has much to learn."]),
+  ] },
+  { chapter: 29, startVerse: 26, endVerse: 30, reference: "Genesis 29:26-30", title: "Jacob Receives Rachel Also", icon: "💔", phrases: [
+    phrase("📜 It Must Not Be So Done In Our Country", ["Laban appeals to local custom after deceiving Jacob.", "He uses a rule Jacob did not know to justify what he did.", "This is manipulation dressed in cultural explanation.", "Jacob has entered a household where the rules can be used against him.", "The excuse does not erase the betrayal.", "It exposes Laban's control."]),
+    phrase("📅 Fulfil Her Week", ["Jacob must complete Leah's wedding week before receiving Rachel.", "Leah is now bound to Jacob in a painful arrangement.", "Rachel is delayed, but not removed.", "The household becomes complicated immediately.", "Genesis shows the emotional cost of arrangements made through deception.", "No one leaves this clean."]),
+    phrase("⏳ Serve With Me Yet Seven Other Years", ["Laban gains another seven years of labor from Jacob.", "The deception gives Laban exactly what benefits him.", "Jacob's love is used as leverage.", "This is exploitation inside family language.", "The one who came seeking refuge is now trapped in obligation.", "God is with Jacob, but Laban is shaping the road through hardship."]),
+    phrase("👰 He Gave Him Rachel", ["Jacob finally receives Rachel too.", "The desired marriage happens, but not in a healthy way.", "The joy is mixed with betrayal, rivalry, and future pain.", "Genesis does not present this as an ideal family structure.", "It shows how broken choices create broken households.", "The promise will move forward through this family, but not because the family is peaceful."]),
+    phrase("❤️ He Loved Also Rachel More Than Leah", ["This phrase sets up years of pain.", "Jacob's love for Rachel is real, but Leah is left wounded by comparison.", "Favoritism has already damaged Jacob's childhood home.", "Now favoritism begins shaping his own household.", "The pattern is repeating.", "Genesis is preparing the birth rivalry that follows."]),
+  ] },
+  { chapter: 29, startVerse: 31, endVerse: 35, reference: "Genesis 29:31-35", title: "God Sees Leah", icon: "👀", phrases: [
+    phrase("👀 The LORD Saw Leah Was Hated", ["Hated here means Leah is unloved or loved less compared with Rachel.", "The Lord sees the pain Jacob's household creates for her.", "Leah may be unwanted by her husband, but she is not invisible to God.", "This matters because Genesis often shows God noticing the overlooked person.", "He saw Hagar in distress, and now He sees Leah in rejection.", "God's compassion reaches the person the family system pushes aside."]),
+    phrase("👶 He Opened Her Womb", ["Children were deeply important in the ancient world.", "They carried family future, security, honor, and inheritance.", "God gives Leah sons in the middle of her pain.", "This does not erase the hurt of being unloved by Jacob.", "But it shows that God is dealing kindly with her.", "The rejected wife becomes a major mother in Israel's story."]),
+    phrase("👁️ Reuben", ["Reuben's name is connected to seeing.", "Leah says the Lord has looked upon her affliction.", "That name is a testimony from a wounded woman.", "She wants Jacob's love, but she also knows God has seen her.", "The child becomes a marker of divine attention.", "God notices what the household overlooks."]),
+    phrase("👂 Simeon", ["Simeon's name is connected to hearing.", "Leah says the Lord heard that she was hated.", "This repeats the theme that God responds to hidden pain.", "People may measure Leah by Jacob's affection, but God hears her grief.", "Her son is named out of sorrow and mercy.", "The family of Israel is being born through complicated tears."]),
+    phrase("🔗 Levi", ["Leah hopes Jacob will now be joined to her.", "The name carries her longing for attachment.", "This is heartbreaking because each birth is mixed with hope for love.", "Leah is not just producing children; she is aching to be wanted.", "Genesis lets readers feel that emotional hunger.", "God will later use Levi's line in priestly service, even though the name begins in pain."]),
+    phrase("🙌 Judah", ["Judah's name is connected to praise.", "With Judah, Leah's words turn toward the Lord in a new way.", "This does not mean all her pain disappears.", "But the naming shifts from chasing Jacob's affection to praising God.", "Judah will become one of the most important tribes in Scripture.", "Kings will come from Judah, and Christians see Jesus coming from Judah's line."]),
+  ] },
+];
+
+const DAY_12_GENESIS_30_FINAL_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
+  { chapter: 30, startVerse: 1, endVerse: 6, reference: "Genesis 30:1-6", title: "Rachel's Pain And Bilhah", icon: "💔", phrases: [
+    phrase("💔 Rachel Envied Her Sister", ["Rachel is loved by Jacob, but Leah has the children Rachel longs for.", "That mix makes the household emotionally painful because each sister has something the other desperately wants.", "Envy turns another person's blessing into a personal wound.", "Genesis is honest enough to show that covenant families can still be full of comparison.", "📌 Notice: Rachel does not only want a child; she feels like Leah's children are proof that she is losing.", "💡 Meaning: blessing without peace can still become rivalry when hearts are measuring themselves against each other."]),
+    phrase("😢 Give Me Children, Or Else I Die", ["Rachel's words sound extreme, but they reveal how deeply motherhood, status, and hope were tied together in her world.", "She feels trapped in the one grief Jacob's love cannot fix.", "The sentence is not calm theology; it is pain speaking at full volume.", "Jacob cannot heal her wound by romance, money, or anger.", "📌 Notice: Genesis lets Rachel sound desperate instead of making her look neatly spiritual.", "➡️ Lesson: people in pain often speak from the ache before they speak from clarity."]),
+    phrase("🔥 Jacob's Anger Burned Against Rachel", ["Jacob gives a true answer in a harsh way.", "He is right that he is not God and cannot open the womb by command.", "But being technically right does not mean he is tender.", "Rachel needs compassion, and Jacob answers like a man frustrated by pressure he cannot control.", "📌 Notice: Genesis shows the limits of Jacob's love here.", "💡 Meaning: truth without gentleness can still wound someone who is already hurting."]),
+    phrase("🙏 Am I In God's Place", ["Jacob recognizes that life comes from God, not from human control.", "That matters because Genesis has already shown God opening and closing wombs in the promise family.", "Still, Jacob's tone exposes how helpless he feels.", "He cannot make the covenant future happen by force.", "📌 Notice: the question points the reader back to God's authority over birth and promise.", "➡️ Lesson: some parts of our lives can only be received from God, not seized from people."]),
+    phrase("👩‍🍼 Behold, My Maid Bilhah", ["Rachel reaches for a household solution that resembles Sarah and Hagar earlier in Genesis.", "In that world, a servant's child could be counted within the mistress's household.", "But Genesis does not pretend this solves the deeper wound.", "It adds another woman and more complexity into a marriage already full of rivalry.", "📌 Notice: human shortcuts keep repeating in the family story.", "💡 Meaning: culturally normal does not always mean spiritually healthy."]),
+    phrase("⚖️ God Has Judged Me", ["Rachel names Dan with the language of judgment and being heard.", "She reads the birth as God answering her side of the conflict.", "But the family atmosphere is still competitive, not healed.", "A baby becomes part of the struggle between sisters instead of simply being received with peace.", "📌 Notice: Rachel uses God-language inside a rivalry.", "➡️ Lesson: we need to be careful not to turn God's gifts into proof that we beat someone else."]),
+  ] },
+  { chapter: 30, startVerse: 7, endVerse: 8, reference: "Genesis 30:7-8", title: "Rachel Names Naphtali", icon: "🥀", phrases: [
+    phrase("🤼 Mighty Wrestlings", ["Naphtali's name comes out of Rachel's feeling that she has wrestled with her sister and prevailed.", "That phrase tells us how Rachel sees the household: not as shared family, but as contest.", "The children are being named inside emotional conflict.", "Genesis slows down enough for us to feel how painful this is.", "📌 Notice: the future tribes of Israel are being born in a home full of tension.", "💡 Meaning: God can work through wounded beginnings without calling the wounds good."]),
+  ] },
+  { chapter: 30, startVerse: 9, endVerse: 13, reference: "Genesis 30:9-13", title: "Leah Gives Zilpah", icon: "👩‍🍼", phrases: [
+    phrase("👀 Leah Saw That She Had Finished Bearing", ["Leah responds to Rachel's move by making a move of her own.", "When her own bearing seems to pause, she gives Zilpah to Jacob.", "The sisters are not simply building a family; they are answering each other.", "Every birth feels like a score in a rivalry that no one is truly winning.", "📌 Notice: insecurity spreads through the whole household.", "➡️ Lesson: comparison rarely stays private; it starts shaping decisions that affect everyone nearby."]),
+    phrase("👩‍🍼 Zilpah Her Servant", ["Zilpah is pulled into the family conflict the way Bilhah was.", "Her body and future are now tied to Leah's attempt to keep standing in the rivalry.", "Genesis names her, which helps us remember she is not just a tool in the story.", "The household system may be ancient, but the emotional cost is very real.", "📌 Notice: the weaker people in the household carry much of the pressure created by the powerful.", "💡 Meaning: sin and insecurity often press hardest on people with the least control."]),
+    phrase("🍀 How Fortunate", ["Leah names Gad with the language of fortune or troop-like increase.", "She sees another son as a sign that her side is gaining strength.", "The birth is good, but the way the birth is interpreted is tangled with rivalry.", "This is one of the sad patterns in Genesis 30: good gifts enter a strained home.", "📌 Notice: more children do not automatically mean more peace.", "➡️ Lesson: family growth is not the same thing as family health."]),
+    phrase("😊 Happy Am I", ["Asher's name is connected to happiness and being called happy by others.", "Leah longs for public recognition, not only private joy.", "She wants others to look at her life and say she is blessed.", "That desire makes sense after years of feeling unwanted by Jacob.", "📌 Notice: Leah's words still carry the ache of wanting to be seen.", "💡 Meaning: people can speak of happiness while still reaching for love they have not received."]),
+  ] },
+  { chapter: 30, startVerse: 14, endVerse: 18, reference: "Genesis 30:14-18", title: "Mandrakes And A Bargain", icon: "🌿", phrases: [
+    phrase("🌾 In The Days Of Wheat Harvest", ["The scene opens in an ordinary season of work and gathering.", "Reuben finds mandrakes in the field, and suddenly a small object becomes loaded with hope.", "Mandrakes were associated in the ancient world with fertility and desire.", "Rachel's request shows how deeply she is still longing for a child.", "📌 Notice: Genesis places emotional pain inside everyday family moments.", "💡 Meaning: ordinary objects can become symbols when people are desperate for what they lack."]),
+    phrase("🌿 Please Give Me Some Of Your Son's Mandrakes", ["Rachel wants the mandrakes because she hopes they might help her conceive.", "The request sounds small, but Leah hears it through years of rejection.", "To Leah, Rachel already has Jacob's heart, and now Rachel wants what Leah's son found.", "The sisters are speaking from wounds that have been building for years.", "📌 Notice: neither woman is emotionally neutral in this conversation.", "➡️ Lesson: unresolved hurt can make even small requests feel like another loss."]),
+    phrase("💬 Is It A Small Matter", ["Leah's answer exposes her grief with sharp honesty.", "She says Rachel has taken her husband, because Leah experiences the marriage as emotional abandonment.", "Even though Leah has children, she does not feel chosen.", "Her words remind us that the household is not only unfair to Rachel.", "📌 Notice: both sisters have real pain, but they are fighting each other instead of naming the broken system around them.", "💡 Meaning: rivalry often hides the fact that more than one person is wounded."]),
+    phrase("🤝 He Will Lie With You Tonight", ["Rachel trades a night with Jacob for the mandrakes.", "That sentence shows how damaged the marriage arrangement has become.", "Jacob is being scheduled between sisters as they negotiate for hope, status, and affection.", "The Bible records this plainly without making it romantic.", "📌 Notice: Genesis does not sanitize the covenant family.", "➡️ Lesson: God's plan can move through messy homes, but the mess still matters."]),
+    phrase("👂 God Listened To Leah", ["The surprising center of this section is not the mandrakes, but God listening.", "Rachel sought fertility through the plant, but Leah conceives because God hears.", "The text quietly shifts attention away from superstition and bargaining.", "Life still comes from the Lord.", "📌 Notice: Leah is not forgotten by God even when she feels unwanted by Jacob.", "💡 Meaning: divine attention reaches the person who feels overlooked in the household."]),
+  ] },
+  { chapter: 30, startVerse: 19, endVerse: 24, reference: "Genesis 30:19-24", title: "God Remembers Rachel", icon: "👶", phrases: [
+    phrase("🎁 God Has Endowed Me", ["Leah names Zebulun with the language of being endowed or honored.", "She still hopes Jacob will finally dwell with her because she has borne him sons.", "Her words are heartbreaking because her blessings have not erased her longing for love.", "She has children, but she still wants her husband to stay.", "📌 Notice: Leah keeps interpreting births through the hope of being valued.", "➡️ Lesson: success in one area does not automatically heal rejection in another."]),
+    phrase("👧 She Bore A Daughter", ["Dinah is named briefly here, but she will matter deeply later in Genesis.", "Her mention reminds us that the family is larger than the sons who become tribes.", "Genesis often plants names before their later significance becomes clear.", "Dinah's presence also keeps the family story personal, not just tribal.", "📌 Notice: a single verse can prepare a future chapter.", "💡 Meaning: the Bible's family lists are not filler; they carry story threads forward."]),
+    phrase("🕊️ God Remembered Rachel", ["This does not mean God had forgotten Rachel and then suddenly recalled her.", "In Genesis, when God remembers, He moves in faithful attention toward someone.", "Rachel's long pain is not invisible to Him.", "The timing has been hard, but the text says God listened and opened her womb.", "📌 Notice: remembrance in the Bible is active compassion, not mental recovery.", "➡️ Lesson: delay is not proof that God has lost sight of a person."]),
+    phrase("👂 God Listened To Her", ["Rachel's story turns because God hears her, not because the mandrakes control the outcome.", "Genesis lets us see the difference between human attempts to manage pain and God's power to answer.", "Rachel is not saved by rivalry, bargaining, or household strategy.", "She receives a child because God acts.", "📌 Notice: the same God who listened to Leah now listens to Rachel.", "💡 Meaning: God's mercy is not trapped inside the sisters' competition."]),
+    phrase("➕ May Yahweh Add Another Son", ["Joseph's name carries both relief and longing.", "Rachel says God has taken away her reproach, but she also asks for another son.", "Even answered prayer does not always end every desire in the heart.", "Joseph will become one of the most important figures in Genesis.", "📌 Notice: a baby born after long waiting becomes central to the next major movement of the story.", "➡️ Lesson: God can answer a private sorrow in a way that later blesses far beyond one household."]),
+  ] },
+  { chapter: 30, startVerse: 25, endVerse: 30, reference: "Genesis 30:25-30", title: "Jacob Asks To Go Home", icon: "🏠", phrases: [
+    phrase("🏠 Send Me Away", ["After Joseph is born, Jacob asks Laban to release him so he can return to his own place and country.", "The birth of Joseph marks a turning point in Jacob's sense of timing.", "He has wives, children, and years of service behind him.", "Now the promise land begins pulling on the story again.", "📌 Notice: Jacob's life in Laban's house was never meant to be permanent.", "💡 Meaning: God can use a season of staying, but covenant direction eventually calls Jacob home."]),
+    phrase("👨‍👩‍👧‍👦 My Wives And My Children", ["Jacob does not ask to leave alone.", "He asks for the family for whom he served Laban.", "This matters because Laban has benefited from Jacob's work and could treat the household as leverage.", "Jacob is naming responsibility for the people now attached to him.", "📌 Notice: leaving Laban is not only a personal move; it is a family move.", "➡️ Lesson: obedience often involves caring for the people God has placed in our charge."]),
+    phrase("🧾 For Whom I Have Served Thee", ["Jacob frames his request around service already completed.", "He has worked many years under Laban's terms.", "The sentence carries both patience and pressure: Jacob has paid what was asked.", "Laban has no moral reason to keep squeezing more from him.", "📌 Notice: Genesis is preparing us to see the unfairness in Laban's household.", "💡 Meaning: faithful service does not mean a person should be endlessly exploited."]),
+    phrase("🔍 I Have Learned By Experience", ["Laban admits that Jacob's presence has brought blessing to his house.", "He recognizes that the Lord has blessed him because of Jacob.", "But his response is not worshipful surrender; it becomes another negotiation.", "Laban sees the benefit and wants to keep it close.", "📌 Notice: Laban can recognize blessing without becoming generous.", "➡️ Lesson: some people value what God brings through you while still trying to control you."]),
+    phrase("📈 The LORD Hath Blessed Thee Since My Coming", ["Jacob also knows Laban's prosperity has increased through his labor.", "He is not bragging; he is stating the reality Laban already admitted.", "God's blessing on Jacob has spilled over into Laban's flocks.", "But now Jacob asks when he can provide for his own house.", "📌 Notice: blessing others does not cancel Jacob's responsibility to his family.", "💡 Meaning: there is a time to serve faithfully and a time to build what God has entrusted to you."]),
+  ] },
+  { chapter: 30, startVerse: 31, endVerse: 36, reference: "Genesis 30:31-36", title: "Jacob Names His Wages", icon: "🐐", phrases: [
+    phrase("💰 What Shall I Give Thee", ["Laban asks about wages because he wants Jacob to stay.", "The question sounds generous, but Laban's history makes us cautious.", "He has already used family custom and labor terms to benefit himself.", "Jacob must answer wisely because this is not a simple friendship conversation.", "📌 Notice: the negotiation happens inside a relationship marked by manipulation.", "➡️ Lesson: when trust is thin, clear terms matter."]),
+    phrase("🙅 Thou Shalt Not Give Me Any Thing", ["Jacob refuses a normal gift or direct payment from Laban.", "Instead, he proposes a system tied to the unusual animals in the flock.", "This reduces Laban's ability to claim he made Jacob rich by generosity.", "Jacob is trying to work in a way that leaves evidence in the animals themselves.", "📌 Notice: Jacob wants wages that can be seen and separated.", "💡 Meaning: wisdom sometimes means arranging work so manipulation has less room to hide."]),
+    phrase("🐑 Speckled And Spotted", ["Jacob names the speckled, spotted, and dark animals as his wages.", "These would be visually distinct from the more common animals Laban keeps.", "The plan creates a built-in way to identify what belongs to Jacob.", "That matters in a house where Laban keeps changing terms.", "📌 Notice: the marks on the animals become a kind of living receipt.", "➡️ Lesson: clear boundaries are important when dealing with someone who benefits from confusion."]),
+    phrase("✅ So Shall My Righteousness Answer For Me", ["Jacob says the flock itself will testify whether he has acted honestly.", "He wants his integrity to be checkable, not merely claimed.", "This is important because Laban is suspicious and controlling.", "Jacob's answer says, let the evidence speak.", "📌 Notice: righteousness here is connected to honest handling of property.", "💡 Meaning: faithfulness includes practical integrity in work, wages, and accountability."]),
+    phrase("🧤 Laban Removed That Day", ["Laban immediately removes the marked animals and puts distance between them and Jacob.", "He is trying to tilt the agreement in his own favor before Jacob even begins.", "The move exposes Laban's heart more clearly than his polite words did.", "Jacob is left working with what looks like a weaker starting point.", "📌 Notice: unfair people may agree out loud while quietly protecting their own advantage.", "➡️ Lesson: Genesis shows God can provide even when someone else stacks the terms against you."]),
+  ] },
+  { chapter: 30, startVerse: 37, endVerse: 39, reference: "Genesis 30:37-39", title: "Jacob Works The Flocks", icon: "🌳", phrases: [
+    phrase("🌳 Jacob Took Him Rods", ["The peeled rods are one of the strangest details in this chapter.", "Jacob uses a breeding practice from his world, and the text reports it without pausing to explain the biology.", "The bigger point is not that readers should imitate the method.", "The bigger point is that Jacob is working inside Laban's unfair system while God is still able to increase him.", "📌 Notice: Genesis often describes ancient practices without making them the main lesson.", "💡 Meaning: the story is about God's providence, not a farming manual."]),
+    phrase("💧 Before The Flocks In The Gutters", ["Jacob places the rods where the flocks come to drink and breed.", "The scene shows him paying close attention to timing, animals, and conditions.", "Jacob is not passive; he works carefully and strategically.", "But Genesis 31 will make clear that God is the deeper reason Jacob prospers.", "📌 Notice: human diligence and divine provision are not enemies in this story.", "➡️ Lesson: trusting God does not mean refusing to work wisely."]),
+  ] },
+  { chapter: 30, startVerse: 40, endVerse: 43, reference: "Genesis 30:40-43", title: "Jacob's Flocks Increase", icon: "📈", phrases: [
+    phrase("💪 The Stronger Cattle", ["Jacob separates the stronger animals from the weaker ones.", "The detail shows that he is building a durable flock, not merely collecting numbers.", "His wealth grows through attention, patience, and repeated practice.", "Laban's unfairness has not stopped Jacob's increase.", "📌 Notice: God can bless Jacob through ordinary work rhythms over time.", "💡 Meaning: provision often comes through repeated faithful labor, not only sudden miracles."]),
+    phrase("🐑 The Feebler Were Laban's", ["The outcome reverses Laban's attempt to control the agreement.", "Laban tried to begin with the advantage, but Jacob's flocks keep strengthening.", "The text does not present Laban as the final power over Jacob's future.", "God's promise is stronger than Laban's strategy.", "📌 Notice: the manipulator does not get the last word.", "➡️ Lesson: unfair systems are real, but they are not bigger than God's ability to provide."]),
+    phrase("📈 The Man Increased Exceedingly", ["Jacob becomes very prosperous with flocks, servants, camels, and donkeys.", "This is a major turn from the lonely man who slept with a stone at Bethel.", "God promised to be with Jacob, and now we see evidence of preservation and provision.", "The increase also creates new tension with Laban's household.", "📌 Notice: blessing can bring pressure as well as relief.", "💡 Meaning: God's provision moves Jacob toward departure, not comfort under Laban forever."]),
+  ] },
+];
+
 export const GENESIS_21_30_PERSONAL_SECTIONS = addGenesisTwentyOneToThirtySectionTexture([
-  ...DAY_9_RESTRUCTURED_SECTIONS,
+  ...DAY_9_FINAL_SECTIONS,
+  ...DAY_10_FINAL_SECTIONS,
+  ...DAY_11_FINAL_SECTIONS,
+  ...DAY_12_GENESIS_30_FINAL_SECTIONS,
   ...expandSplitSections(GENESIS_25_30_PERSONAL_SECTIONS),
 ]);
