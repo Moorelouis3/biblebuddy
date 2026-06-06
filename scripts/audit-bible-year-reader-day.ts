@@ -1,8 +1,10 @@
 import { GENESIS_41_50_PERSONAL_SECTIONS } from "../lib/genesisFortyOneToFiftyPersonalNotes";
+import { GENESIS_21_30_PERSONAL_SECTIONS } from "../lib/genesisTwentyOneToThirtyPersonalNotes";
 import { EXODUS_2_10_PERSONAL_SECTIONS } from "../lib/exodusTwoToTenPersonalNotes";
 import { EXODUS_11_20_PERSONAL_SECTIONS } from "../lib/exodusElevenToTwentyPersonalNotes";
 import { EXODUS_21_30_PERSONAL_SECTIONS } from "../lib/exodusTwentyOneToThirtyPersonalNotes";
 import { EXODUS_31_40_PERSONAL_SECTIONS } from "../lib/exodusThirtyOneToFortyPersonalNotes";
+import { LEVITICUS_1_10_PERSONAL_SECTIONS } from "../lib/leviticusOneToTenPersonalNotes";
 
 type PersonalSection = {
   chapter: number;
@@ -14,12 +16,13 @@ type PersonalSection = {
 };
 
 type DaySpec = {
-  book: "Genesis" | "Exodus";
+  book: "Genesis" | "Exodus" | "Leviticus";
   chapters: number[];
   sections: PersonalSection[];
 };
 
 const DAY_SPECS: Record<number, DaySpec> = {
+  10: { book: "Genesis", chapters: [25, 26, 27], sections: GENESIS_21_30_PERSONAL_SECTIONS },
   21: { book: "Genesis", chapters: [49, 50], sections: GENESIS_41_50_PERSONAL_SECTIONS },
   22: { book: "Exodus", chapters: [1, 2, 3, 4], sections: EXODUS_2_10_PERSONAL_SECTIONS },
   23: { book: "Exodus", chapters: [5, 6, 7, 8], sections: EXODUS_2_10_PERSONAL_SECTIONS },
@@ -38,6 +41,8 @@ const DAY_SPECS: Record<number, DaySpec> = {
     sections: [...EXODUS_21_30_PERSONAL_SECTIONS, ...EXODUS_31_40_PERSONAL_SECTIONS],
   },
   30: { book: "Exodus", chapters: [33, 34, 35, 36], sections: EXODUS_31_40_PERSONAL_SECTIONS },
+  31: { book: "Exodus", chapters: [37, 38, 39, 40], sections: EXODUS_31_40_PERSONAL_SECTIONS },
+  32: { book: "Leviticus", chapters: [1, 2, 3, 4], sections: LEVITICUS_1_10_PERSONAL_SECTIONS },
 };
 
 function parseDay() {
@@ -90,4 +95,3 @@ for (const section of overVerseLimit) {
 if (underPhraseMinimum.length > 0 || overVerseLimit.length > 0) {
   process.exitCode = 1;
 }
-
