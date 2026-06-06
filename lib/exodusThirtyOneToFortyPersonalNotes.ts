@@ -388,21 +388,27 @@ function makeGeneratedExodusPhrase(title: string, body: string, summary: string)
   return phrase(`📌 ${title}`, [
     body,
     summary,
-    "📌 Notice: this phrase is carrying the Exodus story forward, not just filling space.",
-    `💡 Meaning: ${body}`,
-    "🧭 Follow the thread: Exodus is showing bondage, deliverance, worship, covenant, and God's presence.",
-    "➡️ Lesson: read this as part of God's rescue story, where the LORD confronts oppression and forms a people for Himself.",
+    "This phrase matters because Exodus is now focused on God's presence with His people.",
+    "The tabernacle, Sabbath, golden calf, mercy, offerings, and construction details all show what nearness to a holy God requires.",
+    "⛺ Dwelling",
+    "🐂 False worship",
+    "☁️ Glory",
+    "🛠️ Obedient work",
+    "The detail helps a beginner see the difference between worship shaped by God's word and worship shaped by human fear.",
   ]);
 }
 
 function makeBeginnerExodusPhrase(title: string, section: PersonalExodusPhraseSectionInput, focus: string): [string, string] {
   return phrase(title, [
-    `${section.reference} is part of ${section.title}.`,
+    `This card slows down ${section.reference} so the worship scene is easier to follow.`,
     focus,
     "For a beginner, the key is to ask what this detail shows about worship, idolatry, intercession, God's presence, or obedience after failure.",
-    "📌 Notice: Exodus is not only describing objects and events; it is teaching how a holy God can dwell with a rescued but sinful people.",
-    "💡 Meaning: this section belongs to the presence story, where the tabernacle, Sabbath, golden calf, mercy, and renewed obedience all show what nearness to God requires.",
-    "➡️ Lesson: slow down over craftsmanship, tablets, glory, offerings, and repeated commands because they explain worship God's way instead of human control.",
+    "Exodus is teaching how a holy God can dwell with a rescued but sinful people.",
+    "🪨 Tablets",
+    "⛺ Tabernacle",
+    "☁️ Presence",
+    "🙌 Mercy",
+    `In ${section.title}, the detail helps explain worship God's way instead of worship controlled by human fear.`,
   ]);
 }
 

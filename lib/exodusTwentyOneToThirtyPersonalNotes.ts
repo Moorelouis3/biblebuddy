@@ -397,21 +397,27 @@ function makeGeneratedExodusPhrase(title: string, body: string, summary: string)
   return phrase(`📌 ${title}`, [
     body,
     summary,
-    "📌 Notice: this phrase is carrying the Exodus story forward, not just filling space.",
-    `💡 Meaning: ${body}`,
-    "🧭 Follow the thread: Exodus is showing bondage, deliverance, worship, covenant, and God's presence.",
-    "➡️ Lesson: read this as part of God's rescue story, where the LORD confronts oppression and forms a people for Himself.",
+    "This phrase matters because Exodus is now showing what redeemed life protects.",
+    "The laws are not random rule collecting; they teach Israel how not to recreate Egypt among themselves.",
+    "⚖️ Justice",
+    "🏠 Households",
+    "🤝 Neighbor love",
+    "⛺ Holy worship",
+    "The detail helps a beginner see that freedom from Pharaoh becomes responsibility before God and neighbor.",
   ]);
 }
 
 function makeBeginnerExodusPhrase(title: string, section: PersonalExodusPhraseSectionInput, focus: string): [string, string] {
   return phrase(title, [
-    `${section.reference} is part of ${section.title}.`,
+    `This card slows down ${section.reference} so the law or covenant scene is easier to follow.`,
     focus,
-    "For a beginner, the key is to ask what this law shows about justice, worship, neighbor love, holiness, or covenant life after rescue.",
-    "📌 Notice: Exodus law is not random rule collecting; it is teaching a redeemed people how not to recreate Egypt among themselves.",
-    "💡 Meaning: this section belongs to the covenant story, where freedom from Pharaoh becomes responsibility before God and neighbor.",
-    "➡️ Lesson: slow down over case laws, penalties, feasts, and covenant ceremonies because they show what redeemed life is supposed to protect.",
+    "For a beginner, the key is to ask what this law is protecting.",
+    "Exodus brings God's holiness into ordinary life: work, injury, money, courts, rest, feasts, worship, and covenant promises.",
+    "⚖️ What is fair",
+    "🛡️ Who is protected",
+    "🧾 What is required",
+    "🙌 How worship stays holy",
+    `In ${section.title}, God is shaping a rescued people into a community that reflects His justice.`,
   ]);
 }
 

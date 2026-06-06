@@ -2785,120 +2785,120 @@ function getDay9TeachingTexture(section: PersonalGenesisPhraseSectionInput, head
 
   if (section.chapter === 21 && section.startVerse <= 7) {
     return [
-      "📌 Notice: Genesis keeps tying this moment back to what God already said.",
-      "💡 Meaning: Isaac's birth is not just a happy family event; it is proof that God's promise can outlive delay, age, and doubt.",
-      "➡️ Lesson: When the Bible repeats promise language, it is teaching us to trust God's word more than what looks possible in the moment.",
+      "Genesis keeps tying this moment back to what God already said.",
+      "Isaac's birth is not just a happy family event; it is proof that God's promise can outlive delay, age, and doubt.",
+      "When the Bible repeats promise language, it is teaching us to trust God's word more than what looks possible in the moment.",
     ];
   }
 
   if (section.chapter === 21 && section.startVerse >= 8 && section.endVerse <= 13) {
     return [
-      "📌 Notice: the joy around Isaac does not erase the damage already inside Abraham's household.",
-      "💡 Meaning: Genesis is showing both covenant direction and real family pain at the same time.",
-      "➡️ Lesson: God's promise moves forward, but human shortcuts, favoritism, and fear can still leave wounds that must be faced.",
+      "The joy around Isaac does not erase the damage already inside Abraham's household.",
+      "Genesis is showing both covenant direction and real family pain at the same time.",
+      "God's promise moves forward, but human shortcuts, favoritism, and fear can still leave wounds that must be faced.",
     ];
   }
 
   if (section.chapter === 21 && section.startVerse >= 14 && section.endVerse <= 21) {
     return [
-      "📌 Notice: Hagar and Ishmael are outside Abraham's tent, but they are not outside God's sight.",
-      "💡 Meaning: the wilderness scene teaches that God hears the vulnerable, the rejected, and the desperate.",
-      "➡️ Lesson: Bible Buddy readers should not rush past this pain; God's mercy here is practical, personal, and life-saving.",
+      "Hagar and Ishmael are outside Abraham's tent, but they are not outside God's sight.",
+      "The wilderness scene teaches that God hears the vulnerable, the rejected, and the desperate.",
+      "Bible Buddy readers should not rush past this pain; God's mercy here is practical, personal, and life-saving.",
     ];
   }
 
   if (section.chapter === 21) {
     return [
-      "📌 Notice: wells, oaths, and place names are not random background details in Genesis.",
-      "💡 Meaning: Abraham is learning to live in the promised land through worship, public agreements, and real-world conflict.",
-      "➡️ Lesson: faith is not only private belief; it shapes how God's people handle property, peace, neighbors, and worship.",
+      "Wells, oaths, and place names are not random background details in Genesis.",
+      "Abraham is learning to live in the promised land through worship, public agreements, and real-world conflict.",
+      "Faith is not only private belief; it shapes how God's people handle property, peace, neighbors, and worship.",
     ];
   }
 
   if (section.chapter === 22 && section.endVerse <= 8) {
     return [
-      "📌 Notice: Genesis slows the test down so the reader feels the weight of every step.",
-      "💡 Meaning: Abraham's faith is being brought into the open through the son he loves most.",
-      "➡️ Lesson: this passage is not about God enjoying pain; it is about whether Abraham trusts the Giver even with the gift.",
+      "Genesis slows the test down so the reader feels the weight of every step.",
+      "Abraham's faith is being brought into the open through the son he loves most.",
+      "This passage is not about God enjoying pain; it is about whether Abraham trusts the Giver even with the gift.",
     ];
   }
 
   if (section.chapter === 22 && section.startVerse >= 9 && section.endVerse <= 14) {
     return [
-      "📌 Notice: the scene reaches the edge of loss before God reveals the substitute.",
-      "💡 Meaning: Abraham obeys, but the Lord provides what saves Isaac.",
-      "➡️ Lesson: the point is not heroic self-sufficiency; the mountain teaches that the Lord Himself provides.",
+      "The scene reaches the edge of loss before God reveals the substitute.",
+      "Abraham obeys, but the Lord provides what saves Isaac.",
+      "The point is not heroic self-sufficiency; the mountain teaches that the Lord Himself provides.",
     ];
   }
 
   if (section.chapter === 22 && section.startVerse >= 15 && section.endVerse <= 19) {
     return [
-      "📌 Notice: after the test, God repeats and strengthens the covenant promise.",
-      "💡 Meaning: the promise is not weakened by Abraham's surrender; it is confirmed by God's own oath.",
-      "➡️ Lesson: God's plan for blessing the nations rests on His faithfulness, not on Abraham controlling the future.",
+      "After the test, God repeats and strengthens the covenant promise.",
+      "The promise is not weakened by Abraham's surrender; it is confirmed by God's own oath.",
+      "God's plan for blessing the nations rests on His faithfulness, not on Abraham controlling the future.",
     ];
   }
 
   if (section.chapter === 22) {
     return [
-      "📌 Notice: this genealogy is placed right after Isaac is spared.",
-      "💡 Meaning: Genesis is quietly preparing Isaac's future wife before Genesis 24 begins.",
-      "➡️ Lesson: even lists of names can carry story movement when God is preparing the next generation.",
+      "This genealogy is placed right after Isaac is spared.",
+      "Genesis is quietly preparing Isaac's future wife before Genesis 24 begins.",
+      "Even lists of names can carry story movement when God is preparing the next generation.",
     ];
   }
 
   if (section.chapter === 23 && section.endVerse <= 9) {
     return [
-      "📌 Notice: Genesis treats Sarah's death, Abraham's grief, and the land question with real care.",
-      "💡 Meaning: Abraham believes God's promise, but he still has to mourn and still has to buy a burial place.",
-      "➡️ Lesson: faith does not make grief fake; it teaches us to grieve while still holding onto God's future.",
+      "Genesis treats Sarah's death, Abraham's grief, and the land question with real care.",
+      "Abraham believes God's promise, but he still has to mourn and still has to buy a burial place.",
+      "Faith does not make grief fake; it teaches us to grieve while still holding onto God's future.",
     ];
   }
 
   if (section.chapter === 23) {
     return [
-      "📌 Notice: the purchase details are repeated because legal ownership matters in the promise story.",
-      "💡 Meaning: Abraham's first secured piece of Canaan is a burial place, which ties hope to the land even in death.",
-      "➡️ Lesson: the promise is not fully possessed yet, but Sarah's grave becomes a quiet marker of faith.",
+      "The purchase details are repeated because legal ownership matters in the promise story.",
+      "Abraham's first secured piece of Canaan is a burial place, which ties hope to the land even in death.",
+      "The promise is not fully possessed yet, but Sarah's grave becomes a quiet marker of faith.",
     ];
   }
 
   if (section.chapter === 24 && section.endVerse <= 9) {
     return [
-      "📌 Notice: Abraham's concern is not only that Isaac gets married, but that the covenant future is protected.",
-      "💡 Meaning: the servant's oath, the family line, and the promised land all matter together.",
-      "➡️ Lesson: Genesis treats marriage as spiritually serious because households shape future faithfulness.",
+      "Abraham's concern is not only that Isaac gets married, but that the covenant future is protected.",
+      "The servant's oath, the family line, and the promised land all matter together.",
+      "Genesis treats marriage as spiritually serious because households shape future faithfulness.",
     ];
   }
 
   if (section.chapter === 24 && section.startVerse >= 10 && section.endVerse <= 21) {
     return [
-      "📌 Notice: the servant prays, watches, and tests for character, not just appearance.",
-      "💡 Meaning: Rebekah's kindness is shown through ordinary work that costs time and strength.",
-      "➡️ Lesson: God's guidance often becomes clear through prayer, wisdom, timing, and visible character.",
+      "The servant prays, watches, and tests for character, not just appearance.",
+      "Rebekah's kindness is shown through ordinary work that costs time and strength.",
+      "God's guidance often becomes clear through prayer, wisdom, timing, and visible character.",
     ];
   }
 
   if (section.chapter === 24 && section.startVerse >= 22 && section.endVerse <= 49) {
     return [
-      "📌 Notice: the servant keeps retelling the details because he wants the family to recognize God's hand.",
-      "💡 Meaning: answered prayer becomes testimony, and testimony calls for a faithful response.",
-      "➡️ Lesson: when God guides clearly, the right response is worship, honesty, and obedience without manipulation.",
+      "The servant keeps retelling the details because he wants the family to recognize God's hand.",
+      "Answered prayer becomes testimony, and testimony calls for a faithful response.",
+      "When God guides clearly, the right response is worship, honesty, and obedience without manipulation.",
     ];
   }
 
   if (section.chapter === 24 && section.startVerse >= 50 && section.endVerse <= 61) {
     return [
-      "📌 Notice: Rebekah is not moved like an object; the family asks her, and she answers.",
-      "💡 Meaning: her 'I will go' is a brave step from the familiar into the covenant future.",
-      "➡️ Lesson: faith sometimes sounds simple, but it can require leaving comfort, family, and certainty behind.",
+      "Rebekah is not moved like an object; the family asks her, and she answers.",
+      "Her 'I will go' is a brave step from the familiar into the covenant future.",
+      "Faith sometimes sounds simple, but it can require leaving comfort, family, and certainty behind.",
     ];
   }
 
   return [
-    "📌 Notice: this detail is part of the larger covenant movement from Abraham to Isaac.",
-    "💡 Meaning: Genesis is teaching through small phrases, not only through big dramatic scenes.",
-    "➡️ Lesson: slowing down over the phrase helps the reader see promise, character, and consequence more clearly.",
+    "This detail is part of the larger covenant movement from Abraham to Isaac.",
+    "Genesis is teaching through small phrases, not only through big dramatic scenes.",
+    "Slowing down over the phrase helps the reader see promise, character, and consequence more clearly.",
   ];
 }
 
@@ -2916,6 +2916,40 @@ const DAY_9_FINAL_SECTIONS = DAY_9_RESTRUCTURED_SECTIONS.map((section) => ({
   ...section,
   phrases: section.phrases.map((entry) => deepenDay9Phrase(section, entry)),
 }));
+
+function makeGenesis25To30BeginnerPhrase(title: string, section: PersonalGenesisPhraseSectionInput, focus: string): [string, string] {
+  return phrase(title, [
+    `This card slows down ${section.reference} so the family story is easier to follow.`,
+    focus,
+    "Genesis is not giving random family drama.",
+    "It is showing promise, pressure, choices, and consequences inside Abraham's family line.",
+    "👥 Family",
+    "📜 Promise",
+    "⚖️ Consequences",
+    `In ${section.title}, the reader is meant to notice how ordinary decisions shape the covenant story.`,
+    "That makes the phrase worth pausing over instead of rushing past it.",
+  ]);
+}
+
+function ensureGenesis25To30PhraseDepth(section: PersonalGenesisPhraseSectionInput): PersonalGenesisPhraseSectionInput {
+  if (section.chapter < 25 || section.chapter > 30 || section.phrases.length >= 7) {
+    return section;
+  }
+
+  const additions: Array<[string, string]> = [
+    makeGenesis25To30BeginnerPhrase("🧭 What Is Happening Here?", section, "This phrase helps the reader know who is acting, what is at stake, and where the family line is moving."),
+    makeGenesis25To30BeginnerPhrase("🔎 Why This Detail Matters", section, "This detail matters because Genesis often teaches through names, places, gifts, wells, meals, blessings, and family tension."),
+    makeGenesis25To30BeginnerPhrase("🧠 Beginner Connection", section, "A new Bible reader may not know why the story slows down here, but the slowdown helps explain the next conflict or blessing."),
+    makeGenesis25To30BeginnerPhrase("🧵 Watch The Pattern", section, "Watch the pattern of promise and pressure: God speaks, people choose, families react, and the covenant line keeps moving."),
+    makeGenesis25To30BeginnerPhrase("❤️ What This Shows About People", section, "This scene shows people wanting blessing, security, love, control, or relief, sometimes in faithful ways and sometimes in broken ways."),
+    makeGenesis25To30BeginnerPhrase("🙌 What This Shows About God", section, "This scene shows God staying faithful while the family learns slowly, makes costly choices, and still depends on His promise."),
+  ];
+
+  return {
+    ...section,
+    phrases: [...section.phrases, ...additions].slice(0, 7),
+  };
+}
 
 const DAY_10_RESTRUCTURED_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
   { chapter: 25, startVerse: 1, endVerse: 6, reference: "Genesis 25:1-6", title: "Abraham Provides For His Sons", icon: "🎁", phrases: [
@@ -3287,65 +3321,65 @@ const DAY_11_FINAL_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
 
 const DAY_12_GENESIS_30_FINAL_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
   { chapter: 30, startVerse: 1, endVerse: 6, reference: "Genesis 30:1-6", title: "Rachel's Pain And Bilhah", icon: "💔", phrases: [
-    phrase("💔 Rachel Envied Her Sister", ["Rachel is loved by Jacob, but Leah has the children Rachel longs for.", "That mix makes the household emotionally painful because each sister has something the other desperately wants.", "Envy turns another person's blessing into a personal wound.", "Genesis is honest enough to show that covenant families can still be full of comparison.", "📌 Notice: Rachel does not only want a child; she feels like Leah's children are proof that she is losing.", "💡 Meaning: blessing without peace can still become rivalry when hearts are measuring themselves against each other."]),
-    phrase("😢 Give Me Children, Or Else I Die", ["Rachel's words sound extreme, but they reveal how deeply motherhood, status, and hope were tied together in her world.", "She feels trapped in the one grief Jacob's love cannot fix.", "The sentence is not calm theology; it is pain speaking at full volume.", "Jacob cannot heal her wound by romance, money, or anger.", "📌 Notice: Genesis lets Rachel sound desperate instead of making her look neatly spiritual.", "➡️ Lesson: people in pain often speak from the ache before they speak from clarity."]),
-    phrase("🔥 Jacob's Anger Burned Against Rachel", ["Jacob gives a true answer in a harsh way.", "He is right that he is not God and cannot open the womb by command.", "But being technically right does not mean he is tender.", "Rachel needs compassion, and Jacob answers like a man frustrated by pressure he cannot control.", "📌 Notice: Genesis shows the limits of Jacob's love here.", "💡 Meaning: truth without gentleness can still wound someone who is already hurting."]),
-    phrase("🙏 Am I In God's Place", ["Jacob recognizes that life comes from God, not from human control.", "That matters because Genesis has already shown God opening and closing wombs in the promise family.", "Still, Jacob's tone exposes how helpless he feels.", "He cannot make the covenant future happen by force.", "📌 Notice: the question points the reader back to God's authority over birth and promise.", "➡️ Lesson: some parts of our lives can only be received from God, not seized from people."]),
-    phrase("👩‍🍼 Behold, My Maid Bilhah", ["Rachel reaches for a household solution that resembles Sarah and Hagar earlier in Genesis.", "In that world, a servant's child could be counted within the mistress's household.", "But Genesis does not pretend this solves the deeper wound.", "It adds another woman and more complexity into a marriage already full of rivalry.", "📌 Notice: human shortcuts keep repeating in the family story.", "💡 Meaning: culturally normal does not always mean spiritually healthy."]),
-    phrase("⚖️ God Has Judged Me", ["Rachel names Dan with the language of judgment and being heard.", "She reads the birth as God answering her side of the conflict.", "But the family atmosphere is still competitive, not healed.", "A baby becomes part of the struggle between sisters instead of simply being received with peace.", "📌 Notice: Rachel uses God-language inside a rivalry.", "➡️ Lesson: we need to be careful not to turn God's gifts into proof that we beat someone else."]),
+    phrase("💔 Rachel Envied Her Sister", ["Rachel is loved by Jacob, but Leah has the children Rachel longs for.", "That mix makes the household emotionally painful because each sister has something the other desperately wants.", "Envy turns another person's blessing into a personal wound.", "Genesis is honest enough to show that covenant families can still be full of comparison.", "Rachel does not only want a child; she feels like Leah's children are proof that she is losing.", "Blessing without peace can still become rivalry when hearts are measuring themselves against each other."]),
+    phrase("😢 Give Me Children, Or Else I Die", ["Rachel's words sound extreme, but they reveal how deeply motherhood, status, and hope were tied together in her world.", "She feels trapped in the one grief Jacob's love cannot fix.", "The sentence is not calm theology; it is pain speaking at full volume.", "Jacob cannot heal her wound by romance, money, or anger.", "Genesis lets Rachel sound desperate instead of making her look neatly spiritual.", "People in pain often speak from the ache before they speak from clarity."]),
+    phrase("🔥 Jacob's Anger Burned Against Rachel", ["Jacob gives a true answer in a harsh way.", "He is right that he is not God and cannot open the womb by command.", "But being technically right does not mean he is tender.", "Rachel needs compassion, and Jacob answers like a man frustrated by pressure he cannot control.", "Genesis shows the limits of Jacob's love here.", "Truth without gentleness can still wound someone who is already hurting."]),
+    phrase("🙏 Am I In God's Place", ["Jacob recognizes that life comes from God, not from human control.", "That matters because Genesis has already shown God opening and closing wombs in the promise family.", "Still, Jacob's tone exposes how helpless he feels.", "He cannot make the covenant future happen by force.", "The question points the reader back to God's authority over birth and promise.", "Some parts of our lives can only be received from God, not seized from people."]),
+    phrase("👩‍🍼 Behold, My Maid Bilhah", ["Rachel reaches for a household solution that resembles Sarah and Hagar earlier in Genesis.", "In that world, a servant's child could be counted within the mistress's household.", "But Genesis does not pretend this solves the deeper wound.", "It adds another woman and more complexity into a marriage already full of rivalry.", "Human shortcuts keep repeating in the family story.", "Culturally normal does not always mean spiritually healthy."]),
+    phrase("⚖️ God Has Judged Me", ["Rachel names Dan with the language of judgment and being heard.", "She reads the birth as God answering her side of the conflict.", "But the family atmosphere is still competitive, not healed.", "A baby becomes part of the struggle between sisters instead of simply being received with peace.", "Rachel uses God-language inside a rivalry.", "We need to be careful not to turn God's gifts into proof that we beat someone else."]),
   ] },
   { chapter: 30, startVerse: 7, endVerse: 8, reference: "Genesis 30:7-8", title: "Rachel Names Naphtali", icon: "🥀", phrases: [
-    phrase("🤼 Mighty Wrestlings", ["Naphtali's name comes out of Rachel's feeling that she has wrestled with her sister and prevailed.", "That phrase tells us how Rachel sees the household: not as shared family, but as contest.", "The children are being named inside emotional conflict.", "Genesis slows down enough for us to feel how painful this is.", "📌 Notice: the future tribes of Israel are being born in a home full of tension.", "💡 Meaning: God can work through wounded beginnings without calling the wounds good."]),
+    phrase("🤼 Mighty Wrestlings", ["Naphtali's name comes out of Rachel's feeling that she has wrestled with her sister and prevailed.", "That phrase tells us how Rachel sees the household: not as shared family, but as contest.", "The children are being named inside emotional conflict.", "Genesis slows down enough for us to feel how painful this is.", "The future tribes of Israel are being born in a home full of tension.", "God can work through wounded beginnings without calling the wounds good."]),
   ] },
   { chapter: 30, startVerse: 9, endVerse: 13, reference: "Genesis 30:9-13", title: "Leah Gives Zilpah", icon: "👩‍🍼", phrases: [
-    phrase("👀 Leah Saw That She Had Finished Bearing", ["Leah responds to Rachel's move by making a move of her own.", "When her own bearing seems to pause, she gives Zilpah to Jacob.", "The sisters are not simply building a family; they are answering each other.", "Every birth feels like a score in a rivalry that no one is truly winning.", "📌 Notice: insecurity spreads through the whole household.", "➡️ Lesson: comparison rarely stays private; it starts shaping decisions that affect everyone nearby."]),
-    phrase("👩‍🍼 Zilpah Her Servant", ["Zilpah is pulled into the family conflict the way Bilhah was.", "Her body and future are now tied to Leah's attempt to keep standing in the rivalry.", "Genesis names her, which helps us remember she is not just a tool in the story.", "The household system may be ancient, but the emotional cost is very real.", "📌 Notice: the weaker people in the household carry much of the pressure created by the powerful.", "💡 Meaning: sin and insecurity often press hardest on people with the least control."]),
-    phrase("🍀 How Fortunate", ["Leah names Gad with the language of fortune or troop-like increase.", "She sees another son as a sign that her side is gaining strength.", "The birth is good, but the way the birth is interpreted is tangled with rivalry.", "This is one of the sad patterns in Genesis 30: good gifts enter a strained home.", "📌 Notice: more children do not automatically mean more peace.", "➡️ Lesson: family growth is not the same thing as family health."]),
-    phrase("😊 Happy Am I", ["Asher's name is connected to happiness and being called happy by others.", "Leah longs for public recognition, not only private joy.", "She wants others to look at her life and say she is blessed.", "That desire makes sense after years of feeling unwanted by Jacob.", "📌 Notice: Leah's words still carry the ache of wanting to be seen.", "💡 Meaning: people can speak of happiness while still reaching for love they have not received."]),
+    phrase("👀 Leah Saw That She Had Finished Bearing", ["Leah responds to Rachel's move by making a move of her own.", "When her own bearing seems to pause, she gives Zilpah to Jacob.", "The sisters are not simply building a family; they are answering each other.", "Every birth feels like a score in a rivalry that no one is truly winning.", "Insecurity spreads through the whole household.", "Comparison rarely stays private; it starts shaping decisions that affect everyone nearby."]),
+    phrase("👩‍🍼 Zilpah Her Servant", ["Zilpah is pulled into the family conflict the way Bilhah was.", "Her body and future are now tied to Leah's attempt to keep standing in the rivalry.", "Genesis names her, which helps us remember she is not just a tool in the story.", "The household system may be ancient, but the emotional cost is very real.", "The weaker people in the household carry much of the pressure created by the powerful.", "Sin and insecurity often press hardest on people with the least control."]),
+    phrase("🍀 How Fortunate", ["Leah names Gad with the language of fortune or troop-like increase.", "She sees another son as a sign that her side is gaining strength.", "The birth is good, but the way the birth is interpreted is tangled with rivalry.", "This is one of the sad patterns in Genesis 30: good gifts enter a strained home.", "More children do not automatically mean more peace.", "Family growth is not the same thing as family health."]),
+    phrase("😊 Happy Am I", ["Asher's name is connected to happiness and being called happy by others.", "Leah longs for public recognition, not only private joy.", "She wants others to look at her life and say she is blessed.", "That desire makes sense after years of feeling unwanted by Jacob.", "Leah's words still carry the ache of wanting to be seen.", "People can speak of happiness while still reaching for love they have not received."]),
   ] },
   { chapter: 30, startVerse: 14, endVerse: 18, reference: "Genesis 30:14-18", title: "Mandrakes And A Bargain", icon: "🌿", phrases: [
-    phrase("🌾 In The Days Of Wheat Harvest", ["The scene opens in an ordinary season of work and gathering.", "Reuben finds mandrakes in the field, and suddenly a small object becomes loaded with hope.", "Mandrakes were associated in the ancient world with fertility and desire.", "Rachel's request shows how deeply she is still longing for a child.", "📌 Notice: Genesis places emotional pain inside everyday family moments.", "💡 Meaning: ordinary objects can become symbols when people are desperate for what they lack."]),
-    phrase("🌿 Please Give Me Some Of Your Son's Mandrakes", ["Rachel wants the mandrakes because she hopes they might help her conceive.", "The request sounds small, but Leah hears it through years of rejection.", "To Leah, Rachel already has Jacob's heart, and now Rachel wants what Leah's son found.", "The sisters are speaking from wounds that have been building for years.", "📌 Notice: neither woman is emotionally neutral in this conversation.", "➡️ Lesson: unresolved hurt can make even small requests feel like another loss."]),
-    phrase("💬 Is It A Small Matter", ["Leah's answer exposes her grief with sharp honesty.", "She says Rachel has taken her husband, because Leah experiences the marriage as emotional abandonment.", "Even though Leah has children, she does not feel chosen.", "Her words remind us that the household is not only unfair to Rachel.", "📌 Notice: both sisters have real pain, but they are fighting each other instead of naming the broken system around them.", "💡 Meaning: rivalry often hides the fact that more than one person is wounded."]),
-    phrase("🤝 He Will Lie With You Tonight", ["Rachel trades a night with Jacob for the mandrakes.", "That sentence shows how damaged the marriage arrangement has become.", "Jacob is being scheduled between sisters as they negotiate for hope, status, and affection.", "The Bible records this plainly without making it romantic.", "📌 Notice: Genesis does not sanitize the covenant family.", "➡️ Lesson: God's plan can move through messy homes, but the mess still matters."]),
-    phrase("👂 God Listened To Leah", ["The surprising center of this section is not the mandrakes, but God listening.", "Rachel sought fertility through the plant, but Leah conceives because God hears.", "The text quietly shifts attention away from superstition and bargaining.", "Life still comes from the Lord.", "📌 Notice: Leah is not forgotten by God even when she feels unwanted by Jacob.", "💡 Meaning: divine attention reaches the person who feels overlooked in the household."]),
+    phrase("🌾 In The Days Of Wheat Harvest", ["The scene opens in an ordinary season of work and gathering.", "Reuben finds mandrakes in the field, and suddenly a small object becomes loaded with hope.", "Mandrakes were associated in the ancient world with fertility and desire.", "Rachel's request shows how deeply she is still longing for a child.", "Genesis places emotional pain inside everyday family moments.", "Ordinary objects can become symbols when people are desperate for what they lack."]),
+    phrase("🌿 Please Give Me Some Of Your Son's Mandrakes", ["Rachel wants the mandrakes because she hopes they might help her conceive.", "The request sounds small, but Leah hears it through years of rejection.", "To Leah, Rachel already has Jacob's heart, and now Rachel wants what Leah's son found.", "The sisters are speaking from wounds that have been building for years.", "Neither woman is emotionally neutral in this conversation.", "Unresolved hurt can make even small requests feel like another loss."]),
+    phrase("💬 Is It A Small Matter", ["Leah's answer exposes her grief with sharp honesty.", "She says Rachel has taken her husband, because Leah experiences the marriage as emotional abandonment.", "Even though Leah has children, she does not feel chosen.", "Her words remind us that the household is not only unfair to Rachel.", "Both sisters have real pain, but they are fighting each other instead of naming the broken system around them.", "Rivalry often hides the fact that more than one person is wounded."]),
+    phrase("🤝 He Will Lie With You Tonight", ["Rachel trades a night with Jacob for the mandrakes.", "That sentence shows how damaged the marriage arrangement has become.", "Jacob is being scheduled between sisters as they negotiate for hope, status, and affection.", "The Bible records this plainly without making it romantic.", "Genesis does not sanitize the covenant family.", "God's plan can move through messy homes, but the mess still matters."]),
+    phrase("👂 God Listened To Leah", ["The surprising center of this section is not the mandrakes, but God listening.", "Rachel sought fertility through the plant, but Leah conceives because God hears.", "The text quietly shifts attention away from superstition and bargaining.", "Life still comes from the Lord.", "Leah is not forgotten by God even when she feels unwanted by Jacob.", "Divine attention reaches the person who feels overlooked in the household."]),
   ] },
   { chapter: 30, startVerse: 19, endVerse: 24, reference: "Genesis 30:19-24", title: "God Remembers Rachel", icon: "👶", phrases: [
-    phrase("🎁 God Has Endowed Me", ["Leah names Zebulun with the language of being endowed or honored.", "She still hopes Jacob will finally dwell with her because she has borne him sons.", "Her words are heartbreaking because her blessings have not erased her longing for love.", "She has children, but she still wants her husband to stay.", "📌 Notice: Leah keeps interpreting births through the hope of being valued.", "➡️ Lesson: success in one area does not automatically heal rejection in another."]),
-    phrase("👧 She Bore A Daughter", ["Dinah is named briefly here, but she will matter deeply later in Genesis.", "Her mention reminds us that the family is larger than the sons who become tribes.", "Genesis often plants names before their later significance becomes clear.", "Dinah's presence also keeps the family story personal, not just tribal.", "📌 Notice: a single verse can prepare a future chapter.", "💡 Meaning: the Bible's family lists are not filler; they carry story threads forward."]),
-    phrase("🕊️ God Remembered Rachel", ["This does not mean God had forgotten Rachel and then suddenly recalled her.", "In Genesis, when God remembers, He moves in faithful attention toward someone.", "Rachel's long pain is not invisible to Him.", "The timing has been hard, but the text says God listened and opened her womb.", "📌 Notice: remembrance in the Bible is active compassion, not mental recovery.", "➡️ Lesson: delay is not proof that God has lost sight of a person."]),
-    phrase("👂 God Listened To Her", ["Rachel's story turns because God hears her, not because the mandrakes control the outcome.", "Genesis lets us see the difference between human attempts to manage pain and God's power to answer.", "Rachel is not saved by rivalry, bargaining, or household strategy.", "She receives a child because God acts.", "📌 Notice: the same God who listened to Leah now listens to Rachel.", "💡 Meaning: God's mercy is not trapped inside the sisters' competition."]),
-    phrase("➕ May Yahweh Add Another Son", ["Joseph's name carries both relief and longing.", "Rachel says God has taken away her reproach, but she also asks for another son.", "Even answered prayer does not always end every desire in the heart.", "Joseph will become one of the most important figures in Genesis.", "📌 Notice: a baby born after long waiting becomes central to the next major movement of the story.", "➡️ Lesson: God can answer a private sorrow in a way that later blesses far beyond one household."]),
+    phrase("🎁 God Has Endowed Me", ["Leah names Zebulun with the language of being endowed or honored.", "She still hopes Jacob will finally dwell with her because she has borne him sons.", "Her words are heartbreaking because her blessings have not erased her longing for love.", "She has children, but she still wants her husband to stay.", "Leah keeps interpreting births through the hope of being valued.", "Success in one area does not automatically heal rejection in another."]),
+    phrase("👧 She Bore A Daughter", ["Dinah is named briefly here, but she will matter deeply later in Genesis.", "Her mention reminds us that the family is larger than the sons who become tribes.", "Genesis often plants names before their later significance becomes clear.", "Dinah's presence also keeps the family story personal, not just tribal.", "A single verse can prepare a future chapter.", "The Bible's family lists are not filler; they carry story threads forward."]),
+    phrase("🕊️ God Remembered Rachel", ["This does not mean God had forgotten Rachel and then suddenly recalled her.", "In Genesis, when God remembers, He moves in faithful attention toward someone.", "Rachel's long pain is not invisible to Him.", "The timing has been hard, but the text says God listened and opened her womb.", "Remembrance in the Bible is active compassion, not mental recovery.", "Delay is not proof that God has lost sight of a person."]),
+    phrase("👂 God Listened To Her", ["Rachel's story turns because God hears her, not because the mandrakes control the outcome.", "Genesis lets us see the difference between human attempts to manage pain and God's power to answer.", "Rachel is not saved by rivalry, bargaining, or household strategy.", "She receives a child because God acts.", "The same God who listened to Leah now listens to Rachel.", "God's mercy is not trapped inside the sisters' competition."]),
+    phrase("➕ May Yahweh Add Another Son", ["Joseph's name carries both relief and longing.", "Rachel says God has taken away her reproach, but she also asks for another son.", "Even answered prayer does not always end every desire in the heart.", "Joseph will become one of the most important figures in Genesis.", "A baby born after long waiting becomes central to the next major movement of the story.", "God can answer a private sorrow in a way that later blesses far beyond one household."]),
   ] },
   { chapter: 30, startVerse: 25, endVerse: 30, reference: "Genesis 30:25-30", title: "Jacob Asks To Go Home", icon: "🏠", phrases: [
-    phrase("🏠 Send Me Away", ["After Joseph is born, Jacob asks Laban to release him so he can return to his own place and country.", "The birth of Joseph marks a turning point in Jacob's sense of timing.", "He has wives, children, and years of service behind him.", "Now the promise land begins pulling on the story again.", "📌 Notice: Jacob's life in Laban's house was never meant to be permanent.", "💡 Meaning: God can use a season of staying, but covenant direction eventually calls Jacob home."]),
-    phrase("👨‍👩‍👧‍👦 My Wives And My Children", ["Jacob does not ask to leave alone.", "He asks for the family for whom he served Laban.", "This matters because Laban has benefited from Jacob's work and could treat the household as leverage.", "Jacob is naming responsibility for the people now attached to him.", "📌 Notice: leaving Laban is not only a personal move; it is a family move.", "➡️ Lesson: obedience often involves caring for the people God has placed in our charge."]),
-    phrase("🧾 For Whom I Have Served Thee", ["Jacob frames his request around service already completed.", "He has worked many years under Laban's terms.", "The sentence carries both patience and pressure: Jacob has paid what was asked.", "Laban has no moral reason to keep squeezing more from him.", "📌 Notice: Genesis is preparing us to see the unfairness in Laban's household.", "💡 Meaning: faithful service does not mean a person should be endlessly exploited."]),
-    phrase("🔍 I Have Learned By Experience", ["Laban admits that Jacob's presence has brought blessing to his house.", "He recognizes that the Lord has blessed him because of Jacob.", "But his response is not worshipful surrender; it becomes another negotiation.", "Laban sees the benefit and wants to keep it close.", "📌 Notice: Laban can recognize blessing without becoming generous.", "➡️ Lesson: some people value what God brings through you while still trying to control you."]),
-    phrase("📈 The LORD Hath Blessed Thee Since My Coming", ["Jacob also knows Laban's prosperity has increased through his labor.", "He is not bragging; he is stating the reality Laban already admitted.", "God's blessing on Jacob has spilled over into Laban's flocks.", "But now Jacob asks when he can provide for his own house.", "📌 Notice: blessing others does not cancel Jacob's responsibility to his family.", "💡 Meaning: there is a time to serve faithfully and a time to build what God has entrusted to you."]),
+    phrase("🏠 Send Me Away", ["After Joseph is born, Jacob asks Laban to release him so he can return to his own place and country.", "The birth of Joseph marks a turning point in Jacob's sense of timing.", "He has wives, children, and years of service behind him.", "Now the promise land begins pulling on the story again.", "Jacob's life in Laban's house was never meant to be permanent.", "God can use a season of staying, but covenant direction eventually calls Jacob home."]),
+    phrase("👨‍👩‍👧‍👦 My Wives And My Children", ["Jacob does not ask to leave alone.", "He asks for the family for whom he served Laban.", "This matters because Laban has benefited from Jacob's work and could treat the household as leverage.", "Jacob is naming responsibility for the people now attached to him.", "Leaving Laban is not only a personal move; it is a family move.", "Obedience often involves caring for the people God has placed in our charge."]),
+    phrase("🧾 For Whom I Have Served Thee", ["Jacob frames his request around service already completed.", "He has worked many years under Laban's terms.", "The sentence carries both patience and pressure: Jacob has paid what was asked.", "Laban has no moral reason to keep squeezing more from him.", "Genesis is preparing us to see the unfairness in Laban's household.", "Faithful service does not mean a person should be endlessly exploited."]),
+    phrase("🔍 I Have Learned By Experience", ["Laban admits that Jacob's presence has brought blessing to his house.", "He recognizes that the Lord has blessed him because of Jacob.", "But his response is not worshipful surrender; it becomes another negotiation.", "Laban sees the benefit and wants to keep it close.", "Laban can recognize blessing without becoming generous.", "Some people value what God brings through you while still trying to control you."]),
+    phrase("📈 The LORD Hath Blessed Thee Since My Coming", ["Jacob also knows Laban's prosperity has increased through his labor.", "He is not bragging; he is stating the reality Laban already admitted.", "God's blessing on Jacob has spilled over into Laban's flocks.", "But now Jacob asks when he can provide for his own house.", "Blessing others does not cancel Jacob's responsibility to his family.", "There is a time to serve faithfully and a time to build what God has entrusted to you."]),
   ] },
   { chapter: 30, startVerse: 31, endVerse: 36, reference: "Genesis 30:31-36", title: "Jacob Names His Wages", icon: "🐐", phrases: [
-    phrase("💰 What Shall I Give Thee", ["Laban asks about wages because he wants Jacob to stay.", "The question sounds generous, but Laban's history makes us cautious.", "He has already used family custom and labor terms to benefit himself.", "Jacob must answer wisely because this is not a simple friendship conversation.", "📌 Notice: the negotiation happens inside a relationship marked by manipulation.", "➡️ Lesson: when trust is thin, clear terms matter."]),
-    phrase("🙅 Thou Shalt Not Give Me Any Thing", ["Jacob refuses a normal gift or direct payment from Laban.", "Instead, he proposes a system tied to the unusual animals in the flock.", "This reduces Laban's ability to claim he made Jacob rich by generosity.", "Jacob is trying to work in a way that leaves evidence in the animals themselves.", "📌 Notice: Jacob wants wages that can be seen and separated.", "💡 Meaning: wisdom sometimes means arranging work so manipulation has less room to hide."]),
-    phrase("🐑 Speckled And Spotted", ["Jacob names the speckled, spotted, and dark animals as his wages.", "These would be visually distinct from the more common animals Laban keeps.", "The plan creates a built-in way to identify what belongs to Jacob.", "That matters in a house where Laban keeps changing terms.", "📌 Notice: the marks on the animals become a kind of living receipt.", "➡️ Lesson: clear boundaries are important when dealing with someone who benefits from confusion."]),
-    phrase("✅ So Shall My Righteousness Answer For Me", ["Jacob says the flock itself will testify whether he has acted honestly.", "He wants his integrity to be checkable, not merely claimed.", "This is important because Laban is suspicious and controlling.", "Jacob's answer says, let the evidence speak.", "📌 Notice: righteousness here is connected to honest handling of property.", "💡 Meaning: faithfulness includes practical integrity in work, wages, and accountability."]),
-    phrase("🧤 Laban Removed That Day", ["Laban immediately removes the marked animals and puts distance between them and Jacob.", "He is trying to tilt the agreement in his own favor before Jacob even begins.", "The move exposes Laban's heart more clearly than his polite words did.", "Jacob is left working with what looks like a weaker starting point.", "📌 Notice: unfair people may agree out loud while quietly protecting their own advantage.", "➡️ Lesson: Genesis shows God can provide even when someone else stacks the terms against you."]),
+    phrase("💰 What Shall I Give Thee", ["Laban asks about wages because he wants Jacob to stay.", "The question sounds generous, but Laban's history makes us cautious.", "He has already used family custom and labor terms to benefit himself.", "Jacob must answer wisely because this is not a simple friendship conversation.", "The negotiation happens inside a relationship marked by manipulation.", "When trust is thin, clear terms matter."]),
+    phrase("🙅 Thou Shalt Not Give Me Any Thing", ["Jacob refuses a normal gift or direct payment from Laban.", "Instead, he proposes a system tied to the unusual animals in the flock.", "This reduces Laban's ability to claim he made Jacob rich by generosity.", "Jacob is trying to work in a way that leaves evidence in the animals themselves.", "Jacob wants wages that can be seen and separated.", "Wisdom sometimes means arranging work so manipulation has less room to hide."]),
+    phrase("🐑 Speckled And Spotted", ["Jacob names the speckled, spotted, and dark animals as his wages.", "These would be visually distinct from the more common animals Laban keeps.", "The plan creates a built-in way to identify what belongs to Jacob.", "That matters in a house where Laban keeps changing terms.", "The marks on the animals become a kind of living receipt.", "Clear boundaries are important when dealing with someone who benefits from confusion."]),
+    phrase("✅ So Shall My Righteousness Answer For Me", ["Jacob says the flock itself will testify whether he has acted honestly.", "He wants his integrity to be checkable, not merely claimed.", "This is important because Laban is suspicious and controlling.", "Jacob's answer says, let the evidence speak.", "Righteousness here is connected to honest handling of property.", "Faithfulness includes practical integrity in work, wages, and accountability."]),
+    phrase("🧤 Laban Removed That Day", ["Laban immediately removes the marked animals and puts distance between them and Jacob.", "He is trying to tilt the agreement in his own favor before Jacob even begins.", "The move exposes Laban's heart more clearly than his polite words did.", "Jacob is left working with what looks like a weaker starting point.", "Unfair people may agree out loud while quietly protecting their own advantage.", "Genesis shows God can provide even when someone else stacks the terms against you."]),
   ] },
   { chapter: 30, startVerse: 37, endVerse: 39, reference: "Genesis 30:37-39", title: "Jacob Works The Flocks", icon: "🌳", phrases: [
-    phrase("🌳 Jacob Took Him Rods", ["The peeled rods are one of the strangest details in this chapter.", "Jacob uses a breeding practice from his world, and the text reports it without pausing to explain the biology.", "The bigger point is not that readers should imitate the method.", "The bigger point is that Jacob is working inside Laban's unfair system while God is still able to increase him.", "📌 Notice: Genesis often describes ancient practices without making them the main lesson.", "💡 Meaning: the story is about God's providence, not a farming manual."]),
-    phrase("💧 Before The Flocks In The Gutters", ["Jacob places the rods where the flocks come to drink and breed.", "The scene shows him paying close attention to timing, animals, and conditions.", "Jacob is not passive; he works carefully and strategically.", "But Genesis 31 will make clear that God is the deeper reason Jacob prospers.", "📌 Notice: human diligence and divine provision are not enemies in this story.", "➡️ Lesson: trusting God does not mean refusing to work wisely."]),
+    phrase("🌳 Jacob Took Him Rods", ["The peeled rods are one of the strangest details in this chapter.", "Jacob uses a breeding practice from his world, and the text reports it without pausing to explain the biology.", "The bigger point is not that readers should imitate the method.", "The bigger point is that Jacob is working inside Laban's unfair system while God is still able to increase him.", "Genesis often describes ancient practices without making them the main lesson.", "The story is about God's providence, not a farming manual."]),
+    phrase("💧 Before The Flocks In The Gutters", ["Jacob places the rods where the flocks come to drink and breed.", "The scene shows him paying close attention to timing, animals, and conditions.", "Jacob is not passive; he works carefully and strategically.", "But Genesis 31 will make clear that God is the deeper reason Jacob prospers.", "Human diligence and divine provision are not enemies in this story.", "Trusting God does not mean refusing to work wisely."]),
   ] },
   { chapter: 30, startVerse: 40, endVerse: 43, reference: "Genesis 30:40-43", title: "Jacob's Flocks Increase", icon: "📈", phrases: [
-    phrase("💪 The Stronger Cattle", ["Jacob separates the stronger animals from the weaker ones.", "The detail shows that he is building a durable flock, not merely collecting numbers.", "His wealth grows through attention, patience, and repeated practice.", "Laban's unfairness has not stopped Jacob's increase.", "📌 Notice: God can bless Jacob through ordinary work rhythms over time.", "💡 Meaning: provision often comes through repeated faithful labor, not only sudden miracles."]),
-    phrase("🐑 The Feebler Were Laban's", ["The outcome reverses Laban's attempt to control the agreement.", "Laban tried to begin with the advantage, but Jacob's flocks keep strengthening.", "The text does not present Laban as the final power over Jacob's future.", "God's promise is stronger than Laban's strategy.", "📌 Notice: the manipulator does not get the last word.", "➡️ Lesson: unfair systems are real, but they are not bigger than God's ability to provide."]),
-    phrase("📈 The Man Increased Exceedingly", ["Jacob becomes very prosperous with flocks, servants, camels, and donkeys.", "This is a major turn from the lonely man who slept with a stone at Bethel.", "God promised to be with Jacob, and now we see evidence of preservation and provision.", "The increase also creates new tension with Laban's household.", "📌 Notice: blessing can bring pressure as well as relief.", "💡 Meaning: God's provision moves Jacob toward departure, not comfort under Laban forever."]),
+    phrase("💪 The Stronger Cattle", ["Jacob separates the stronger animals from the weaker ones.", "The detail shows that he is building a durable flock, not merely collecting numbers.", "His wealth grows through attention, patience, and repeated practice.", "Laban's unfairness has not stopped Jacob's increase.", "God can bless Jacob through ordinary work rhythms over time.", "Provision often comes through repeated faithful labor, not only sudden miracles."]),
+    phrase("🐑 The Feebler Were Laban's", ["The outcome reverses Laban's attempt to control the agreement.", "Laban tried to begin with the advantage, but Jacob's flocks keep strengthening.", "The text does not present Laban as the final power over Jacob's future.", "God's promise is stronger than Laban's strategy.", "The manipulator does not get the last word.", "Unfair systems are real, but they are not bigger than God's ability to provide."]),
+    phrase("📈 The Man Increased Exceedingly", ["Jacob becomes very prosperous with flocks, servants, camels, and donkeys.", "This is a major turn from the lonely man who slept with a stone at Bethel.", "God promised to be with Jacob, and now we see evidence of preservation and provision.", "The increase also creates new tension with Laban's household.", "Blessing can bring pressure as well as relief.", "God's provision moves Jacob toward departure, not comfort under Laban forever."]),
   ] },
 ];
 
 export const GENESIS_21_30_PERSONAL_SECTIONS = addGenesisTwentyOneToThirtySectionTexture([
   ...DAY_9_FINAL_SECTIONS,
-  ...DAY_10_FINAL_SECTIONS,
-  ...DAY_11_FINAL_SECTIONS,
-  ...DAY_12_GENESIS_30_FINAL_SECTIONS,
+  ...DAY_10_FINAL_SECTIONS.map(ensureGenesis25To30PhraseDepth),
+  ...DAY_11_FINAL_SECTIONS.map(ensureGenesis25To30PhraseDepth),
+  ...DAY_12_GENESIS_30_FINAL_SECTIONS.map(ensureGenesis25To30PhraseDepth),
   ...expandSplitSections(GENESIS_25_30_PERSONAL_SECTIONS),
 ]);

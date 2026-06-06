@@ -387,21 +387,27 @@ function makeGeneratedExodusPhrase(title: string, body: string, summary: string)
   return phrase(`📌 ${title}`, [
     body,
     summary,
-    "📌 Notice: this phrase is carrying the Exodus story forward, not just filling space.",
-    `💡 Meaning: ${body}`,
-    "🧭 Follow the thread: Exodus is showing bondage, deliverance, worship, covenant, and God's presence.",
-    "➡️ Lesson: read this as part of God's rescue story, where the LORD confronts oppression and forms a people for Himself.",
+    "This phrase is carrying the rescue story forward.",
+    "Israel is out of Egypt, but the Lord is still teaching them what freedom, worship, memory, and trust look like.",
+    "🌊 Rescue",
+    "🍞 Provision",
+    "🧭 Guidance",
+    "⛰️ Covenant",
+    "The detail helps a beginner see that deliverance is not only escape from Pharaoh; it is formation under God's care.",
   ]);
 }
 
 function makeBeginnerExodusPhrase(title: string, section: PersonalExodusPhraseSectionInput, focus: string): [string, string] {
   return phrase(title, [
-    `${section.reference} is part of ${section.title}.`,
+    `This card slows down ${section.reference} so the scene is easier to follow.`,
     focus,
-    "For a beginner, the key is to ask what this detail shows about rescue, worship, wilderness testing, God's provision, or Israel learning to trust.",
-    "📌 Notice: Exodus often teaches through repeated patterns: remember the rescue, follow the cloud, fear at the sea, sing after deliverance, and trust God for bread.",
-    "💡 Meaning: this section belongs to the rescue story, where the LORD brings His people out of Egypt and begins teaching them how to live as free people.",
-    "➡️ Lesson: slow down over commands, place names, food, water, and worship because Exodus uses ordinary needs to teach dependence on God.",
+    "For a beginner, the key is to see how ordinary needs become teaching moments.",
+    "The Lord is using roads, water, bread, battle, law, and worship to train a newly rescued people.",
+    "🌊 Fear at the sea",
+    "🎶 Songs after rescue",
+    "🍞 Bread in the wilderness",
+    "⛰️ Meeting with God",
+    `In ${section.title}, Exodus is showing what freedom looks like when God is the one leading.`,
   ]);
 }
 

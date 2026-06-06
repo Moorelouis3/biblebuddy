@@ -395,21 +395,27 @@ function makeGeneratedExodusPhrase(title: string, body: string, summary: string)
   return phrase(`📌 ${title}`, [
     body,
     summary,
-    "📌 Notice: this phrase is carrying the Exodus story forward, not just filling space.",
-    `💡 Meaning: ${body}`,
-    "🧭 Follow the thread: Exodus is showing bondage, deliverance, worship, covenant, and God's presence.",
-    "➡️ Lesson: read this as part of God's rescue story, where the LORD confronts oppression and forms a people for Himself.",
+    "This phrase is worth slowing down over because Exodus is building the rescue step by step.",
+    "The pressure in Egypt is not random suffering; it is the place where God reveals His name, judges oppression, and begins forming a worshiping people.",
+    "⛓️ Bondage",
+    "🔥 Calling",
+    "⚖️ Judgment",
+    "🙌 Deliverance",
+    "The detail helps a beginner see how the Lord is confronting Pharaoh and caring for Israel at the same time.",
   ]);
 }
 
 function makeBeginnerExodusPhrase(title: string, section: PersonalExodusPhraseSectionInput, focus: string): [string, string] {
   return phrase(title, [
-    `${section.reference} is part of ${section.title}.`,
+    `This card slows down ${section.reference} so the scene is easier to follow.`,
     focus,
-    "For a beginner, the key is to ask what this detail shows about Pharaoh, Moses, Israel, worship, judgment, deliverance, or God's name.",
-    "📌 Notice: Exodus often teaches through pressure points: oppression, fear, signs, hard hearts, rescue, and worship.",
-    "💡 Meaning: this section belongs to the rescue story, where the LORD reveals that Pharaoh is not ultimate and God's people are not forgotten.",
-    "➡️ Lesson: slow down over names, commands, signs, and repeated phrases because they explain how God is forming a delivered people.",
+    "A beginner should not have to guess why this moment matters.",
+    "Exodus often teaches through pressure points: oppression, fear, signs, hard hearts, rescue, and worship.",
+    "👑 Pharaoh's pride",
+    "🗣️ God's word",
+    "🧍 Moses' obedience",
+    "🙌 Israel's rescue",
+    `In ${section.title}, the detail helps show that Pharaoh is not ultimate and God's people are not forgotten.`,
   ]);
 }
 

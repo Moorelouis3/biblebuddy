@@ -655,9 +655,9 @@ const deepPhrase = (
   scene,
   notice,
   meaning,
-  "📌 Notice: this phrase is carrying story movement, not decoration.",
-  `💡 Meaning: ${meaning}`,
-  `➡️ Lesson: ${lesson}`,
+  "This phrase is carrying story movement, not decoration.",
+  "It helps the reader see how famine, fear, wisdom, family pain, and blessing are all connected.",
+  lesson,
 ]);
 
 const DAY_17_GENESIS_41_42_FINAL_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
@@ -690,7 +690,7 @@ const DAY_17_GENESIS_41_42_FINAL_SECTIONS: PersonalGenesisPhraseSectionInput[] =
   { chapter: 41, startVerse: 22, endVerse: 24, reference: "Genesis 41:22-24", title: "Pharaoh Retells The Grain Dream", icon: "🌾", phrases: [
     deepPhrase("🤐 None That Could Declare It", "Pharaoh admits his wise men could not explain the dreams.", "This sets Joseph's God-given wisdom apart from Egypt's systems.", "The confession creates space for God to be known in Pharaoh's court.", "Human inability can become a stage for divine clarity."),
   ] },
-  { chapter: 41, startVerse: 25, endVerse: 28, reference: "Genesis 41:25-28", title: "The Dream Is One Message", icon: "💡", phrases: [
+  { chapter: 41, startVerse: 25, endVerse: 28, reference: "Genesis 41:25-28", title: "The Dream Is One Message", icon: "☝️", phrases: [
     deepPhrase("☝️ The Dream Of Pharaoh Is One", "Joseph explains that the two dreams carry one unified message.", "The repetition is confirmation, not confusion.", "God has spoken clearly about what He is about to do.", "Seek the main message before getting lost in details."),
     deepPhrase("🌾 Seven Years Of Great Plenty", "The good cows and good ears mean seven years of abundance.", "God is giving Egypt advance knowledge of a coming season.", "Plenty is not only a gift to enjoy; it is preparation for responsibility.", "Use abundant seasons wisely."),
   ] },
@@ -998,21 +998,28 @@ function makeGeneratedGenesisPhrase(title: string, body: string, summary: string
   return phrase(`📌 ${title}`, [
     body,
     summary,
-    "📌 Notice: this phrase is carrying the story forward, not just filling space.",
-    `💡 Meaning: ${body}`,
-    "🧭 Follow the thread: Genesis is showing promise, character, consequence, and God's hidden providence.",
-    "➡️ Lesson: read this as part of the larger covenant story, where God keeps working through real family pain and real faith.",
+    "This is why the phrase is worth slowing down over.",
+    "It helps explain what God is doing in the middle of famine, fear, family guilt, and blessing.",
+    "🧭 Story movement",
+    "👥 Family pressure",
+    "🙌 God's providence",
+    "Genesis is not asking the reader to memorize a random detail.",
+    "It is helping us see how the promise keeps moving.",
   ]);
 }
 
 function makeBeginnerGenesisPhrase(title: string, section: PersonalGenesisPhraseSectionInput, focus: string): [string, string] {
   return phrase(title, [
-    `${section.reference} is part of ${section.title}.`,
+    `This card slows down ${section.reference} so the scene is easier to follow.`,
     focus,
-    "For a beginner, the key is to ask what this detail reveals about God, people, pressure, and the next step in the story.",
-    "📌 Notice: Genesis often teaches through repeated patterns: dreams, famine, fear, tests, recognition, blessing, and reversal.",
-    "💡 Meaning: this section belongs to Joseph's preservation story, where God turns hidden suffering into wisdom, rescue, reconciliation, and future hope.",
-    "➡️ Lesson: do not skip the small details; they often explain how God is moving the family toward His promise.",
+    "A beginner may not know the family history behind this moment yet.",
+    "Joseph's later story is full of dreams, famine, fear, testing, tears, and blessing.",
+    "🌾 Famine",
+    "👁️ Recognition",
+    "🧪 Testing",
+    "🤲 Blessing",
+    `In ${section.title}, Genesis is helping the reader understand the next step without getting lost.`,
+    "The small detail is there because the family promise is still moving.",
   ]);
 }
 
