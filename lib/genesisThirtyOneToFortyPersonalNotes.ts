@@ -2025,12 +2025,90 @@ const DAY_15_GENESIS_37_38_FINAL_SECTIONS: PersonalGenesisPhraseSectionInput[] =
   ] },
 ];
 
+const deepPhrase = (
+  title: string,
+  scene: string,
+  notice: string,
+  meaning: string,
+  lesson: string,
+): [string, string] => phrase(title, [
+  scene,
+  notice,
+  meaning,
+  "📌 Notice: this detail is not filler; it teaches readers how God's story is moving.",
+  `💡 Meaning: ${meaning}`,
+  `➡️ Lesson: ${lesson}`,
+]);
+
+const DAY_16_GENESIS_39_40_FINAL_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
+  { chapter: 39, startVerse: 1, endVerse: 6, reference: "Genesis 39:1-6", title: "The Lord Is With Joseph In Potiphar's House", icon: "🏠", phrases: [
+    deepPhrase("🇪🇬 Joseph Was Brought Down To Egypt", "Joseph's life has gone down from favored son to slave in a foreign land.", "The text names the descent plainly so readers do not skip the pain.", "God's presence does not mean Joseph avoided betrayal, sale, or displacement.", "God can be with someone even when their circumstances look like loss."),
+    deepPhrase("🤲 The LORD Was With Joseph", "This is the heartbeat of Genesis 39.", "Joseph has lost robe, home, and freedom, but he has not lost the Lord.", "The chapter measures Joseph's life by God's presence more than by Joseph's position.", "Do not judge God's nearness only by whether life feels comfortable."),
+    deepPhrase("📈 He Was A Prosperous Man", "Joseph prospers inside slavery, which is both encouraging and painful.", "The blessing is real, but the bondage is also real.", "Genesis is showing God's favor without pretending the injustice is good.", "God can bear fruit through a faithful person in a hard place."),
+    deepPhrase("👀 His Master Saw", "Potiphar notices that the Lord is with Joseph.", "Joseph's faithfulness becomes visible in ordinary work.", "The blessing on Joseph affects the whole household around him.", "Integrity in hidden labor can become public testimony."),
+    deepPhrase("🔑 Overseer Over His House", "Joseph is entrusted with responsibility because he proves faithful.", "This prepares him for later leadership in Egypt.", "The house becomes a training ground before the palace.", "Small stewardship can prepare a person for larger assignment."),
+  ] },
+  { chapter: 39, startVerse: 7, endVerse: 10, reference: "Genesis 39:7-10", title: "Joseph Refuses Temptation", icon: "🛑", phrases: [
+    deepPhrase("👀 His Master's Wife Cast Her Eyes", "Temptation comes after Joseph has been trusted and elevated.", "The danger is not outside the workplace only; it enters the house where he serves.", "Genesis shows that success can bring new tests.", "Do not assume blessing removes the need for vigilance."),
+    deepPhrase("🛑 He Refused", "Joseph's first response is clear refusal.", "He does not flirt with the boundary or treat sin like a harmless possibility.", "His resistance begins before the pressure becomes repeated.", "Strong obedience often starts with a firm early no."),
+    deepPhrase("🤝 My Master Wotteth Not", "Joseph thinks about the trust Potiphar has placed in him.", "He sees sin as betrayal of both God and neighbor.", "Temptation tries to shrink the moment to desire, but Joseph widens it to responsibility.", "Remembering trust can strengthen resistance."),
+    deepPhrase("🙏 How Then Can I Do This Great Wickedness", "Joseph names the temptation as great wickedness, not private pleasure.", "He refuses to soften sin with excuses.", "His conscience is trained by God's sight even in Egypt.", "Call sin what it is before it teaches you to rename it."),
+    deepPhrase("👂 Day By Day", "The pressure does not happen once; it keeps coming.", "Joseph's faithfulness is repeated obedience under repeated temptation.", "The test is not only dramatic courage but daily endurance.", "Godly character is often proven through consistency."),
+  ] },
+  { chapter: 39, startVerse: 11, endVerse: 12, reference: "Genesis 39:11-12", title: "Joseph Flees", icon: "🏃", phrases: [
+    deepPhrase("🏠 None Of The Men Of The House", "Joseph is isolated when the temptation becomes aggressive.", "The absence of witnesses increases the danger.", "Genesis shows that private moments reveal what a person truly fears.", "Live before God when no one else can see."),
+    deepPhrase("🧥 She Caught Him By His Garment", "Joseph loses another garment in Genesis.", "The robe was taken by brothers; this garment is held by a false accuser.", "Clothing again becomes evidence in someone else's deception.", "People may misuse evidence, but God still knows the truth."),
+    deepPhrase("🏃 He Fled", "Joseph chooses escape over image management.", "He leaves the garment but keeps his integrity.", "Sometimes the holiest choice is not to debate, but to run.", "Do not preserve appearances at the cost of obedience."),
+  ] },
+  { chapter: 39, startVerse: 13, endVerse: 18, reference: "Genesis 39:13-18", title: "Joseph Is Falsely Accused", icon: "🧥", phrases: [
+    deepPhrase("🧥 She Saw That He Had Left His Garment", "The garment becomes the tool of accusation.", "Joseph's righteous flight is twisted into a false story.", "Genesis is painfully honest that doing right can still be misrepresented.", "Faithfulness does not guarantee people will tell the truth about you."),
+    deepPhrase("🗣️ She Called Unto The Men", "Potiphar's wife turns quickly from temptation to public accusation.", "Her speech controls the first version of the story others hear.", "The person who sinned now presents herself as the victim.", "Be slow to believe the loudest narrative without truth."),
+    deepPhrase("⚠️ The Hebrew Servant", "She labels Joseph by ethnicity and status to make him look dangerous and low.", "Her words stir household prejudice and shame.", "Joseph is not only accused; he is framed as an outsider threat.", "Sin often recruits social pressure to protect itself."),
+    deepPhrase("📖 According To These Words", "She repeats the false account to Potiphar.", "The repeated lie becomes the official story in the household.", "Joseph has no recorded defense here, but God remains with him.", "When your voice is not heard, God's witness still stands."),
+  ] },
+  { chapter: 39, startVerse: 19, endVerse: 23, reference: "Genesis 39:19-23", title: "The Lord Is With Joseph In Prison", icon: "⛓️", phrases: [
+    deepPhrase("🔥 His Wrath Was Kindled", "Potiphar becomes angry when he hears his wife's report.", "The text does not give Joseph a courtroom scene.", "A false accusation changes Joseph's life again.", "Injustice can move fast when power believes a lie."),
+    deepPhrase("⛓️ Put Him Into The Prison", "Joseph goes down again, from slavery into prison.", "The dreamer keeps descending, but the Lord does not depart.", "Genesis is preparing readers to see that prison is also part of the path to Pharaoh.", "A low place may become the hallway to God's next door."),
+    deepPhrase("🤲 The LORD Was With Joseph", "The chapter repeats the line from Potiphar's house.", "God's presence is not limited to success or comfort.", "The same Lord is with Joseph in prison as in promotion.", "Measure your situation by God's faithfulness, not only by your chains."),
+    deepPhrase("🗝️ Keeper Of The Prison", "Joseph again receives trust and responsibility.", "His character remains steady even after betrayal and false accusation.", "The prison becomes another place where God trains him to steward people.", "Do not let injustice make you abandon faithfulness."),
+  ] },
+  { chapter: 40, startVerse: 1, endVerse: 4, reference: "Genesis 40:1-4", title: "Two Officers Join Joseph In Prison", icon: "🏛️", phrases: [
+    deepPhrase("🍷 Butler And Baker", "Two royal officers enter Joseph's prison story.", "Their arrival looks like another ordinary prison detail, but it is part of God's hidden setup.", "These men connect Joseph's prison to Pharaoh's court.", "God can bring future doors through people who enter your hard place."),
+    deepPhrase("😠 Pharaoh Was Wroth", "The officers are imprisoned because Pharaoh is angry with them.", "Their fall from court brings them into Joseph's care.", "Human conflict at the palace becomes providence in the prison.", "God can use someone else's disruption to move His plan."),
+    deepPhrase("🤲 Joseph Served Them", "Joseph serves the officers instead of sinking into bitterness.", "He remains attentive to people while carrying his own pain.", "This service becomes the setting for interpreting dreams.", "Faithfulness in another person's need may become part of your calling."),
+  ] },
+  { chapter: 40, startVerse: 5, endVerse: 8, reference: "Genesis 40:5-8", title: "The Prisoners Dream", icon: "💭", phrases: [
+    deepPhrase("💭 They Dreamed A Dream", "Dreams return to Joseph's story inside prison.", "The gift that helped create family hatred now becomes a way to serve others.", "God has not wasted Joseph's earlier dream history.", "The thing connected to your pain may still become ministry."),
+    deepPhrase("😟 Wherefore Look Ye So Sadly", "Joseph notices the sadness on their faces.", "This is remarkable because Joseph is suffering too.", "He is not so consumed by his pain that he cannot see someone else's distress.", "Compassion can remain alive even in confinement."),
+    deepPhrase("🙏 Do Not Interpretations Belong To God", "Joseph gives God the credit before interpreting anything.", "He does not present himself as a magical expert.", "His confidence is in God's ability to reveal meaning.", "Use your gift in a way that points beyond yourself."),
+  ] },
+  { chapter: 40, startVerse: 9, endVerse: 11, reference: "Genesis 40:9-11", title: "The Butler's Dream", icon: "🍷", phrases: [
+    deepPhrase("🍇 A Vine Was Before Me", "The butler's dream uses images from his old work near Pharaoh.", "God speaks in symbols connected to the man's world.", "Joseph listens carefully before giving meaning.", "Pay attention to the details God gives, not only the outcome you want."),
+    deepPhrase("⬆️ Pharaoh Shall Lift Up Thine Head", "Joseph explains that the butler will be restored in three days.", "The interpretation is good news, but it comes from God, not flattery.", "Joseph tells the truth as it has been revealed.", "Faithful encouragement should still be truthful."),
+  ] },
+  { chapter: 40, startVerse: 12, endVerse: 15, reference: "Genesis 40:12-15", title: "Joseph Asks To Be Remembered", icon: "🙏", phrases: [
+    deepPhrase("🙏 Think On Me", "Joseph asks the butler to remember him when restored.", "This is deeply human: Joseph trusts God, but he also longs for justice.", "He names his wrongful kidnapping and imprisonment plainly.", "Faith does not require pretending injustice did not hurt."),
+    deepPhrase("🕳️ I Have Done Nothing", "Joseph speaks the truth about his innocence.", "He was stolen from the land of the Hebrews and imprisoned unjustly.", "The statement matters because patience is not the same as silence about wrong.", "You can trust God and still name the truth of what happened."),
+  ] },
+  { chapter: 40, startVerse: 16, endVerse: 19, reference: "Genesis 40:16-19", title: "The Baker's Dream", icon: "🧺", phrases: [
+    deepPhrase("🧺 Three White Baskets", "The baker also shares a dream with the number three.", "The similar pattern raises expectation, but the meaning is very different.", "Joseph must interpret hard truth, not only comforting truth.", "A servant of God must be faithful with messages people do not want."),
+    deepPhrase("🐦 The Birds Did Eat Them", "The birds eating from the baskets point toward judgment.", "The image is unsettling because the baker's end will not be restoration.", "Genesis places life and death side by side in the prison dreams.", "Not every interpretation brings relief."),
+    deepPhrase("⚖️ Pharaoh Shall Lift Up Thy Head From Off Thee", "The same phrase about lifting the head becomes judgment here.", "Words can sound similar while carrying opposite outcomes.", "Joseph does not soften the meaning to protect himself from discomfort.", "Truth should not be edited to keep everyone comfortable."),
+  ] },
+  { chapter: 40, startVerse: 20, endVerse: 23, reference: "Genesis 40:20-23", title: "The Butler Forgets Joseph", icon: "😔", phrases: [
+    deepPhrase("🎂 Pharaoh's Birthday", "On Pharaoh's birthday, both dreams come true exactly as Joseph said.", "The timing confirms that God truly gave the interpretations.", "Joseph's gift is validated even while Joseph remains imprisoned.", "God's truth can be confirmed before your deliverance arrives."),
+    deepPhrase("🍷 Restored The Chief Butler", "The butler returns to his place in Pharaoh's service.", "Joseph's word of restoration proves true.", "This should have been Joseph's opening, but the chapter delays relief.", "Answered interpretation does not always mean immediate rescue."),
+    deepPhrase("😔 Yet Did Not The Chief Butler Remember Joseph", "The chapter ends with painful forgetfulness.", "Joseph served well, interpreted truly, and asked to be remembered, but he is forgotten.", "The delay feels cruel, yet it keeps Joseph in place until Pharaoh's dreams.", "Being forgotten by people is not the same as being forgotten by God."),
+  ] },
+];
+
 export const GENESIS_31_40_PERSONAL_SECTIONS = addGenesisThirtyOneToFortySectionTexture(
   [
     ...DAY_12_GENESIS_31_FINAL_SECTIONS,
     ...DAY_13_GENESIS_32_33_FINAL_SECTIONS,
     ...DAY_14_GENESIS_34_36_FINAL_SECTIONS,
     ...DAY_15_GENESIS_37_38_FINAL_SECTIONS,
-    ...expandSplitSections(RAW_GENESIS_31_40_PERSONAL_SECTIONS.filter((section) => section.chapter !== 31 && section.chapter !== 32 && section.chapter !== 33 && section.chapter !== 34 && section.chapter !== 35 && section.chapter !== 36 && section.chapter !== 37 && section.chapter !== 38)),
+    ...DAY_16_GENESIS_39_40_FINAL_SECTIONS,
+    ...expandSplitSections(RAW_GENESIS_31_40_PERSONAL_SECTIONS.filter((section) => section.chapter !== 31 && section.chapter !== 32 && section.chapter !== 33 && section.chapter !== 34 && section.chapter !== 35 && section.chapter !== 36 && section.chapter !== 37 && section.chapter !== 38 && section.chapter !== 39 && section.chapter !== 40)),
   ],
 );

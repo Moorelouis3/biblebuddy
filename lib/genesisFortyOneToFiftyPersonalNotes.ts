@@ -9,6 +9,7 @@ export type PersonalGenesisPhraseSectionInput = {
 };
 
 const note = (lines: string[]) => lines.join("\n\n");
+const phrase = (title: string, lines: string[]): [string, string] => [title, note(lines)];
 
 type PersonalTextureRule = {
   matches: string[];
@@ -642,6 +643,343 @@ const RAW_GENESIS_41_50_PERSONAL_SECTIONS: PersonalGenesisPhraseSectionInput[] =
   },
 ];
 
+const deepPhrase = (
+  title: string,
+  scene: string,
+  notice: string,
+  meaning: string,
+  lesson: string,
+): [string, string] => phrase(title, [
+  scene,
+  notice,
+  meaning,
+  "📌 Notice: this phrase is carrying story movement, not decoration.",
+  `💡 Meaning: ${meaning}`,
+  `➡️ Lesson: ${lesson}`,
+]);
+
+const DAY_17_GENESIS_41_42_FINAL_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
+  { chapter: 41, startVerse: 1, endVerse: 4, reference: "Genesis 41:1-4", title: "Pharaoh Dreams Of The Cows", icon: "🐄", phrases: [
+    deepPhrase("⏳ Two Full Years", "Joseph remains in prison two more full years after the butler forgets him.", "The delay is painful because Joseph had asked to be remembered.", "God's timing is not absent just because it is slow.", "Do not confuse waiting with abandonment."),
+    deepPhrase("🌊 Pharaoh Stood By The River", "The Nile setting matters because Egypt's life depended on the river.", "God sends Pharaoh a dream using images from Egypt's own world.", "The coming crisis will touch the very source Egypt trusts for abundance.", "God can speak through the places a culture thinks are secure."),
+    deepPhrase("🐄 Seven Well Favoured Kine", "The healthy cows picture plenty, strength, and visible prosperity.", "At first the dream looks like abundance rising from the river.", "Genesis lets the good years appear before the danger is shown.", "Seasons of plenty should be received with wisdom, not presumption."),
+    deepPhrase("😨 Ill Favoured Kine Did Eat Them", "The thin cows devour the healthy cows, but remain ugly and thin.", "This image makes scarcity feel monstrous and unnatural.", "The dream warns that famine will swallow abundance if Egypt is not prepared.", "Warnings from God are mercy before crisis arrives."),
+  ] },
+  { chapter: 41, startVerse: 5, endVerse: 8, reference: "Genesis 41:5-8", title: "Pharaoh Dreams Of The Ears", icon: "🌾", phrases: [
+    deepPhrase("🌾 Seven Good Ears", "The second dream repeats the message with grain instead of cattle.", "Repetition in Genesis often confirms that God is establishing the matter.", "The dream moves from livestock to harvest, covering Egypt's food system.", "When God repeats a warning, listen carefully."),
+    deepPhrase("🌬️ Blasted With The East Wind", "The thin ears are scorched and destructive.", "The east wind image signals harsh conditions that ruin growth.", "The dream shows abundance being consumed by severe famine.", "Fragile prosperity needs humble planning under God."),
+    deepPhrase("😟 His Spirit Was Troubled", "Pharaoh wakes disturbed because he senses the dream matters.", "Power cannot give him interpretation.", "The ruler of Egypt is helpless before a message from God.", "Human authority still needs divine wisdom."),
+    deepPhrase("📚 Magicians Of Egypt", "Egypt's wise men cannot interpret the dreams.", "The failure prepares the way for Joseph to be called from prison.", "God closes the mouths of experts so His servant can speak truth.", "A closed door for others may be God's opening for hidden faithfulness."),
+  ] },
+  { chapter: 41, startVerse: 9, endVerse: 13, reference: "Genesis 41:9-13", title: "The Butler Remembers Joseph", icon: "🍷", phrases: [
+    deepPhrase("🧠 I Do Remember My Faults", "The butler finally remembers Joseph after two years.", "His memory awakens because Pharaoh's crisis requires what Joseph can give.", "The delay was painful, but the timing places Joseph before the right person.", "God can make forgotten faithfulness resurface at the appointed time."),
+    deepPhrase("⛓️ There Was There With Us A Young Man", "Joseph is described from the butler's prison memory.", "He was young, Hebrew, and imprisoned, yet gifted by God.", "The palace hears about the man hidden in confinement.", "God knows how to bring a buried name into the room."),
+    deepPhrase("✅ It Came To Pass, As He Interpreted", "The butler confirms Joseph's interpretations proved true.", "This gives Pharaoh reason to call Joseph.", "Joseph's prison faithfulness becomes his credential for the palace.", "What you do faithfully in a hidden place can matter later."),
+  ] },
+  { chapter: 41, startVerse: 14, endVerse: 16, reference: "Genesis 41:14-16", title: "Joseph Is Brought Before Pharaoh", icon: "🪒", phrases: [
+    deepPhrase("🏃 Brought Him Hastily Out Of The Dungeon", "Joseph's situation changes suddenly after years of waiting.", "The movement from dungeon to Pharaoh happens in one verse.", "God can shift a person's assignment faster than people expect.", "Long delay does not mean slow deliverance when God's hour comes."),
+    deepPhrase("🪒 Shaved Himself", "Joseph prepares to enter Pharaoh's court according to Egyptian expectations.", "He does not confuse faithfulness with carelessness.", "He honors the setting while remaining loyal to God.", "Wisdom knows how to enter a room without losing identity."),
+    deepPhrase("🙏 It Is Not In Me", "Joseph refuses to take credit for interpretation.", "He points Pharaoh to God before hearing the dream.", "The palace does not make Joseph self-important.", "Use elevation as a place to honor God, not advertise yourself."),
+  ] },
+  { chapter: 41, startVerse: 17, endVerse: 21, reference: "Genesis 41:17-21", title: "Pharaoh Retells The Cow Dream", icon: "📢", phrases: [
+    deepPhrase("📢 Pharaoh Said Unto Joseph", "Pharaoh retells the dreams in detail.", "The most powerful man in Egypt is asking a former prisoner for help.", "God has reversed the social distance without Joseph forcing it.", "God can make powerful people seek wisdom from unlikely servants."),
+    deepPhrase("😨 Such As I Never Saw", "Pharaoh emphasizes how ugly and alarming the thin cows were.", "The dream disturbed him because the image resisted easy dismissal.", "God's warning reached Pharaoh emotionally before it was interpreted intellectually.", "Sometimes God gets our attention before He gives full understanding."),
+  ] },
+  { chapter: 41, startVerse: 22, endVerse: 24, reference: "Genesis 41:22-24", title: "Pharaoh Retells The Grain Dream", icon: "🌾", phrases: [
+    deepPhrase("🤐 None That Could Declare It", "Pharaoh admits his wise men could not explain the dreams.", "This sets Joseph's God-given wisdom apart from Egypt's systems.", "The confession creates space for God to be known in Pharaoh's court.", "Human inability can become a stage for divine clarity."),
+  ] },
+  { chapter: 41, startVerse: 25, endVerse: 28, reference: "Genesis 41:25-28", title: "The Dream Is One Message", icon: "💡", phrases: [
+    deepPhrase("☝️ The Dream Of Pharaoh Is One", "Joseph explains that the two dreams carry one unified message.", "The repetition is confirmation, not confusion.", "God has spoken clearly about what He is about to do.", "Seek the main message before getting lost in details."),
+    deepPhrase("🌾 Seven Years Of Great Plenty", "The good cows and good ears mean seven years of abundance.", "God is giving Egypt advance knowledge of a coming season.", "Plenty is not only a gift to enjoy; it is preparation for responsibility.", "Use abundant seasons wisely."),
+  ] },
+  { chapter: 41, startVerse: 29, endVerse: 32, reference: "Genesis 41:29-32", title: "The Famine Is Established", icon: "⚠️", phrases: [
+    deepPhrase("🕳️ Seven Years Of Famine", "The lean cows and thin ears mean seven years of famine.", "The famine will be severe enough to make the plenty forgotten.", "God is revealing danger before it arrives so lives can be preserved.", "Warnings are gifts when they lead to preparation."),
+    deepPhrase("⚡ The Thing Is Established By God", "Joseph says the repeated dream shows the matter is fixed by God.", "Pharaoh is not dealing with random anxiety.", "God is sovereign over Egypt's future harvests.", "When God establishes a matter, wisdom responds instead of arguing."),
+  ] },
+  { chapter: 41, startVerse: 33, endVerse: 36, reference: "Genesis 41:33-36", title: "Joseph Gives A Wise Plan", icon: "📦", phrases: [
+    deepPhrase("🧠 Discreet And Wise Man", "Joseph moves from interpretation to practical counsel.", "He says Egypt needs wise leadership, not panic.", "God-given insight should produce wise action.", "Spiritual understanding should become practical stewardship."),
+    deepPhrase("📦 Lay Up Corn", "Joseph proposes storing grain during the plenty.", "The plan turns warning into preservation.", "Faith does not ignore logistics; it organizes them.", "Planning can be an act of love when crisis is coming."),
+    deepPhrase("🛟 That The Land Perish Not", "The goal is survival, not personal glory.", "Joseph's wisdom is aimed at preserving life across Egypt.", "God is positioning him to save many people.", "Use wisdom to protect life, not merely gain status."),
+  ] },
+  { chapter: 41, startVerse: 37, endVerse: 40, reference: "Genesis 41:37-40", title: "Pharaoh Recognizes God's Wisdom", icon: "🕊️", phrases: [
+    deepPhrase("👀 The Thing Was Good", "Pharaoh and his servants recognize the wisdom in Joseph's plan.", "Joseph's counsel is publicly received.", "The former prisoner becomes the clearest voice in the room.", "God can make truth recognizable even in foreign courts."),
+    deepPhrase("🕊️ In Whom The Spirit Of God Is", "Pharaoh recognizes something divine in Joseph's wisdom.", "This is a striking confession from Egypt's ruler.", "Joseph's God is being noticed through Joseph's clarity and character.", "Let your gifts make God visible."),
+  ] },
+  { chapter: 41, startVerse: 41, endVerse: 45, reference: "Genesis 41:41-45", title: "Joseph Is Raised Over Egypt", icon: "👑", phrases: [
+    deepPhrase("💍 Pharaoh Took Off His Ring", "The ring gives Joseph authority to act in Pharaoh's name.", "Joseph moves from powerless prisoner to authorized governor.", "This is not luck; it is providence lifting him for preservation.", "God's elevation carries responsibility."),
+    deepPhrase("🏛️ Over All The Land Of Egypt", "Joseph receives authority over Egypt's food future.", "The dreams that made his brothers angry now begin moving toward fulfillment.", "God has placed Joseph where he can save the family that betrayed him.", "God's long plan can be larger than our personal vindication."),
+  ] },
+  { chapter: 41, startVerse: 46, endVerse: 49, reference: "Genesis 41:46-49", title: "Joseph Stores Grain", icon: "🌾", phrases: [
+    deepPhrase("🧑 Thirty Years Old", "Joseph is thirty when he stands before Pharaoh.", "Thirteen years have passed since he was seventeen in Canaan.", "God's preparation took time, suffering, service, and delay.", "Do not despise long formation."),
+    deepPhrase("🏃 Went Out Over All Egypt", "Joseph actively administers the plan across Egypt.", "Elevation does not make him passive; it gives him work to do.", "He turns wisdom into organized action.", "Leadership means carrying responsibility after promotion."),
+    deepPhrase("📚 As The Sand Of The Sea", "The stored grain becomes too abundant to count.", "God's warning is matched by God's provision through wise stewardship.", "The abundance is gathered before famine empties the land.", "Gather well in seasons of supply."),
+  ] },
+  { chapter: 41, startVerse: 50, endVerse: 52, reference: "Genesis 41:50-52", title: "Joseph's Sons Are Born", icon: "👶", phrases: [
+    deepPhrase("👶 Manasseh And Ephraim", "Joseph's sons are born in Egypt before the famine.", "Their names tell the story of pain, forgetting, fruitfulness, and affliction.", "Joseph's family grows in the place where he once suffered.", "God can make fruit grow in the land of affliction."),
+  ] },
+  { chapter: 41, startVerse: 53, endVerse: 57, reference: "Genesis 41:53-57", title: "The Famine Begins", icon: "🍞", phrases: [
+    deepPhrase("⏳ The Seven Years Of Plenteousness Ended", "The good years finish exactly as Joseph said.", "Seasons change, and stored wisdom now matters.", "The end of plenty reveals whether people prepared.", "Use today's abundance with tomorrow's need in mind."),
+    deepPhrase("🌍 The Famine Was In All Lands", "The famine reaches beyond Egypt.", "This widens the story toward Joseph's family in Canaan.", "God's plan for one family is moving through a regional crisis.", "God can use global pressure to move a covenant story."),
+    deepPhrase("🚪 Go Unto Joseph", "Pharaoh directs hungry people to Joseph.", "The rejected brother becomes the provider for nations.", "Joseph's authority now becomes visible through bread.", "God may raise the wounded one to feed others."),
+  ] },
+  { chapter: 42, startVerse: 1, endVerse: 5, reference: "Genesis 42:1-5", title: "Jacob Sends His Sons To Egypt", icon: "🌾", phrases: [
+    deepPhrase("👀 Jacob Saw There Was Corn In Egypt", "The famine reaches Jacob's household in Canaan.", "The family that sold Joseph to Egypt now needs food from Egypt.", "God is drawing the brothers toward the person they tried to remove.", "Need can become the road to truth."),
+    deepPhrase("❓ Why Do Ye Look One Upon Another", "Jacob's question suggests paralysis in the household.", "The brothers know there is grain, but the journey carries unknown weight.", "Egypt is not emotionally neutral because Joseph was sold there.", "Avoidance cannot feed a starving family."),
+    deepPhrase("🧳 Benjamin Went Not", "Jacob keeps Benjamin home because he fears losing Rachel's other son.", "The old wound around Joseph still controls Jacob's decisions.", "Favoritism and grief remain active in the family.", "Unhealed loss can shape present choices."),
+  ] },
+  { chapter: 42, startVerse: 6, endVerse: 9, reference: "Genesis 42:6-9", title: "The Brothers Bow Before Joseph", icon: "🙇", phrases: [
+    deepPhrase("👑 Joseph Was The Governor", "Joseph now stands in authority over Egypt's grain.", "The brother thrown down into a pit is raised over the food supply.", "Genesis is showing reversal through providence.", "God can lift what people tried to bury."),
+    deepPhrase("🙇 Bowed Down Themselves", "The brothers bow before Joseph without recognizing him.", "The dream from Genesis 37 begins to come true.", "They fought the dream, but their hunger brings them into it.", "God's word outlives human resistance."),
+    deepPhrase("🧠 Joseph Remembered The Dreams", "Joseph remembers the dreams when he sees them bow.", "Memory connects the painful past to God's present fulfillment.", "He must now discern how to test them, not simply take revenge.", "Fulfilled promises still require wisdom and character."),
+  ] },
+  { chapter: 42, startVerse: 10, endVerse: 13, reference: "Genesis 42:10-13", title: "The Brothers Claim Honesty", icon: "🔎", phrases: [
+    deepPhrase("🕵️ Ye Are Spies", "Joseph accuses them as part of a test.", "He is not confused about who they are; he is probing who they have become.", "The pressure will expose family truth and force Benjamin into the story.", "Testing can reveal whether repentance is real."),
+    deepPhrase("👥 We Are True Men", "The brothers insist they are honest men.", "The claim is ironic because Joseph knows the lie they have lived for years.", "Their words now have to be tested against their past.", "Integrity cannot be proven by claim alone."),
+  ] },
+  { chapter: 42, startVerse: 14, endVerse: 17, reference: "Genesis 42:14-17", title: "Joseph Presses The Test", icon: "⛓️", phrases: [
+    deepPhrase("👶 One Is Not", "They describe Joseph as the brother who is not.", "They speak about him while standing before him.", "The phrase shows how the family has carried Joseph as absence and secret.", "Hidden sin can remain present through the very words used to bury it."),
+    deepPhrase("⛓️ Put Them All Together Into Ward", "Joseph imprisons them for three days.", "The brothers experience confinement after putting Joseph in a pit.", "The reversal is not random cruelty; it begins awakening memory.", "Sometimes God lets people taste what they once ignored."),
+  ] },
+  { chapter: 42, startVerse: 18, endVerse: 20, reference: "Genesis 42:18-20", title: "Joseph Changes The Terms", icon: "🙏", phrases: [
+    deepPhrase("🙏 I Fear God", "Joseph grounds his test in the fear of God.", "He will not act as a lawless tyrant even with power over them.", "His authority is restrained by reverence.", "Power is safest when it stands under God."),
+  ] },
+  { chapter: 42, startVerse: 21, endVerse: 24, reference: "Genesis 42:21-24", title: "The Brothers Remember Their Guilt", icon: "💔", phrases: [
+    deepPhrase("💔 We Are Verily Guilty", "The brothers finally connect their distress to what they did to Joseph.", "Their conscience wakes under pressure.", "They remember his anguish and their refusal to hear.", "Guilt may sleep for years, but God can awaken it."),
+    deepPhrase("👂 We Would Not Hear", "They admit they heard Joseph's cries and ignored him.", "This is one of the clearest moral reckonings in the Joseph story.", "Their sin was not only selling him, but hardening themselves against his pleading.", "Compassion ignored becomes guilt remembered."),
+    deepPhrase("😭 Joseph Wept", "Joseph turns away and weeps.", "He is testing them, but he is not cold.", "The pain of the past is still alive beneath his Egyptian authority.", "Forgiveness and wisdom can coexist with tears."),
+  ] },
+  { chapter: 42, startVerse: 25, endVerse: 28, reference: "Genesis 42:25-28", title: "Money In The Sacks", icon: "💰", phrases: [
+    deepPhrase("💰 Restore Every Man's Money", "Joseph secretly returns their money in the sacks.", "The act creates fear because they do not understand his mercy or his test.", "A gift feels dangerous to guilty hearts.", "Guilt can make grace feel like a trap."),
+    deepPhrase("😨 Their Heart Failed Them", "When the money is found, the brothers tremble.", "They ask what God has done to them.", "Their fear shows conscience interpreting events as divine pressure.", "God can use unsettling mercy to keep working on the heart."),
+  ] },
+  { chapter: 42, startVerse: 29, endVerse: 34, reference: "Genesis 42:29-34", title: "The Brothers Report To Jacob", icon: "📢", phrases: [
+    deepPhrase("📢 They Came Unto Jacob", "The brothers return and report the Egyptian ruler's demands.", "They must bring the hidden family wound back into Jacob's tent.", "Benjamin is now pulled into the test.", "The past cannot heal while the family keeps avoiding truth."),
+    deepPhrase("🧪 Hereby Shall I Know", "Joseph's demand about Benjamin becomes the test of the brothers' character.", "Will they protect Rachel's son this time or sacrifice him too?", "The test reaches the exact place of their old sin.", "God often heals by revisiting the wound truthfully."),
+  ] },
+  { chapter: 42, startVerse: 35, endVerse: 38, reference: "Genesis 42:35-38", title: "Jacob Refuses To Send Benjamin", icon: "😢", phrases: [
+    deepPhrase("💰 Every Man's Bundle Of Money", "All the money appears in the sacks, increasing fear in the family.", "What Joseph meant as part of the test feels like danger to them.", "The household is shaken because guilt makes events heavy.", "A troubled conscience struggles to receive unexplained mercy."),
+    deepPhrase("😭 Me Have Ye Bereaved", "Jacob speaks from years of grief over Joseph and fear for Benjamin.", "He names Simeon as gone and Benjamin as threatened.", "His love is real, but his despair grips the family.", "Grief can make the future feel impossible."),
+    deepPhrase("🚫 My Son Shall Not Go Down", "Jacob refuses to send Benjamin to Egypt.", "The word down echoes the family's earlier descents into loss.", "He cannot bear another Rachel-son leaving his sight.", "Fear may try to protect what only trust can surrender."),
+  ] },
+];
+
+const DAY_18_GENESIS_43_44_FINAL_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
+  { chapter: 43, startVerse: 1, endVerse: 5, reference: "Genesis 43:1-5", title: "The Famine Presses The Family", icon: "🌾", phrases: [
+    deepPhrase("🌾 The Famine Was Sore", "The hunger grows severe in Canaan.", "Jacob's refusal cannot change the need for food.", "Pressure forces the family back toward Egypt and unresolved truth.", "Need often exposes decisions fear tried to delay."),
+    deepPhrase("⬇️ Go Again", "Jacob tells them to return for food, but the Benjamin condition remains.", "The family cannot go forward without facing what Joseph required.", "The road to bread now runs through trust and risk.", "Some provision is blocked until obedience is faced."),
+  ] },
+  { chapter: 43, startVerse: 6, endVerse: 7, reference: "Genesis 43:6-7", title: "Jacob Questions The Brothers", icon: "❓", phrases: [
+    deepPhrase("❓ Is Your Father Yet Alive", "The brothers explain that the Egyptian ruler asked detailed family questions.", "Those questions were Joseph reaching toward the hidden family story.", "What felt like interrogation was actually personal knowledge under disguise.", "God may be asking questions that lead us toward confession."),
+  ] },
+  { chapter: 43, startVerse: 8, endVerse: 10, reference: "Genesis 43:8-10", title: "Judah Pledges Himself", icon: "🤲", phrases: [
+    deepPhrase("🤲 Send The Lad With Me", "Judah steps forward where the family is stuck.", "He is no longer the same brother who suggested selling Joseph for profit.", "His words begin showing responsibility for Benjamin.", "Grace can change a person from betrayer to pledge-bearer."),
+    deepPhrase("🛡️ I Will Be Surety For Him", "Judah offers himself as guarantee for Benjamin.", "This is a major character turn in Genesis.", "He accepts personal cost to protect the favored son.", "Real repentance becomes responsibility."),
+  ] },
+  { chapter: 43, startVerse: 11, endVerse: 14, reference: "Genesis 43:11-14", title: "Jacob Releases Benjamin", icon: "🙏", phrases: [
+    deepPhrase("🎁 Take Of The Best Fruits", "Jacob sends a gift, balm, honey, spices, and more.", "The family again approaches Egyptian power with gifts, but now Benjamin goes too.", "Jacob combines prudence with surrender.", "Faith can use wise means while entrusting the outcome to God."),
+    deepPhrase("🙏 God Almighty Give You Mercy", "Jacob finally prays and releases Benjamin.", "He cannot control Egypt, Joseph, or the famine.", "His words move from refusal toward entrusting the family to God Almighty.", "Surrender may sound like trembling prayer."),
+  ] },
+  { chapter: 43, startVerse: 15, endVerse: 18, reference: "Genesis 43:15-18", title: "The Brothers Fear Joseph's House", icon: "🏠", phrases: [
+    deepPhrase("🏠 Bring These Men Home", "Joseph orders the brothers brought to his house.", "To Joseph this prepares a meal; to them it feels like danger.", "Guilt changes hospitality into threat.", "The heart's condition shapes how it reads the room."),
+    deepPhrase("😨 The Men Were Afraid", "The brothers fear they are being trapped because of the money in their sacks.", "They assume judgment is coming.", "Their old sin makes them suspicious of kindness.", "Fear can make mercy look like ambush."),
+  ] },
+  { chapter: 43, startVerse: 19, endVerse: 22, reference: "Genesis 43:19-22", title: "The Brothers Explain The Money", icon: "💬", phrases: [
+    deepPhrase("💬 O Sir, We Came Indeed Down", "The brothers quickly explain the money situation.", "They want to clear themselves before accusation comes.", "Their fear pushes them into honesty about what they know.", "Pressure can make hidden anxieties speak."),
+  ] },
+  { chapter: 43, startVerse: 23, endVerse: 25, reference: "Genesis 43:23-25", title: "The Steward Calms The Brothers", icon: "🕊️", phrases: [
+    deepPhrase("🕊️ Peace Be To You", "The steward answers with peace instead of accusation.", "He says their God gave them treasure in their sacks.", "This unexpected word calms the fear they brought to the door.", "God can send peace through an unexpected messenger."),
+    deepPhrase("⛓️ He Brought Simeon Out", "Simeon is restored to them before the meal.", "This shows Joseph's test is moving toward reunion, not destruction.", "The brother held as pledge comes back alive.", "God can return what fear thought was lost."),
+  ] },
+  { chapter: 43, startVerse: 26, endVerse: 30, reference: "Genesis 43:26-30", title: "Joseph Sees Benjamin", icon: "😭", phrases: [
+    deepPhrase("🙇 Bowed Themselves", "The brothers bow again before Joseph.", "The dream continues unfolding in repeated scenes.", "They still do not know the ruler is their brother.", "God's word can be fulfilled before people understand it."),
+    deepPhrase("👶 Is This Your Younger Brother", "Joseph sees Benjamin, Rachel's other son.", "This moment touches the deepest family wound.", "Joseph must hold authority, secrecy, and emotion together.", "Healing often approaches the tenderest part of the story."),
+    deepPhrase("😭 Joseph Made Haste", "Joseph leaves the room to weep.", "His strength in public does not mean the meeting is painless.", "The sight of Benjamin breaks open years of loss.", "Deep reconciliation may begin with hidden tears."),
+  ] },
+  { chapter: 43, startVerse: 31, endVerse: 34, reference: "Genesis 43:31-34", title: "The Brothers Eat Before Joseph", icon: "🍽️", phrases: [
+    deepPhrase("🍽️ Set On Bread", "Joseph returns, controls himself, and orders the meal.", "The brothers once ate while Joseph was in a pit; now they eat at his table.", "The scene reverses the old cruelty with restrained mercy.", "God can transform a table from guilt into testing grace."),
+    deepPhrase("🪑 The Firstborn According To His Birthright", "The brothers are seated in exact birth order.", "They marvel because the ruler knows what he should not know.", "Joseph's hidden knowledge unsettles them.", "God can arrange details that make people wonder."),
+    deepPhrase("🥣 Benjamin's Mess Was Five Times", "Benjamin receives a larger portion, testing whether the brothers still resent favoritism.", "Joseph watches how they respond to Rachel's son being honored.", "The old wound is being pressed carefully.", "Repentance is tested where envy once ruled."),
+  ] },
+  { chapter: 44, startVerse: 1, endVerse: 6, reference: "Genesis 44:1-6", title: "Joseph Places The Cup", icon: "🏆", phrases: [
+    deepPhrase("🏆 Put My Cup In The Sack's Mouth", "Joseph creates a final test involving Benjamin.", "The cup will place the favored younger brother in danger.", "This forces the brothers to choose between saving themselves and protecting him.", "Tests reveal whether old patterns still rule."),
+    deepPhrase("🌅 As Soon As The Morning Was Light", "The brothers leave with relief, but the test follows quickly.", "They think the danger is behind them.", "Genesis creates tension because truth has not fully surfaced yet.", "False peace may be interrupted by necessary testing."),
+    deepPhrase("🏃 Follow After The Men", "Joseph sends his steward after them.", "The pursuit mirrors their fear of being trapped.", "This controlled crisis will expose Judah's heart.", "God can use pressure to bring transformation into the open."),
+  ] },
+  { chapter: 44, startVerse: 7, endVerse: 10, reference: "Genesis 44:7-10", title: "The Brothers Deny The Charge", icon: "⚖️", phrases: [
+    deepPhrase("🙅 God Forbid", "The brothers deny wrongdoing strongly.", "They know they returned the money and believe themselves innocent.", "Their confidence is about to be shaken.", "A test can expose what is true even when a person is not guilty of the specific charge."),
+    deepPhrase("⚖️ Let Him Die", "They speak rashly, not knowing the cup is in Benjamin's sack.", "Like Jacob in Genesis 31, confident words become dangerous without full knowledge.", "The family keeps learning caution through painful setups.", "Do not make severe vows when you do not know all the facts."),
+  ] },
+  { chapter: 44, startVerse: 11, endVerse: 13, reference: "Genesis 44:11-13", title: "The Cup Is Found", icon: "🔎", phrases: [
+    deepPhrase("🔎 The Cup Was Found In Benjamin's Sack", "The worst possible sack contains the cup.", "Benjamin, the son Jacob feared losing, is now the accused one.", "The brothers face the exact test of whether they will abandon Rachel's son again.", "God can bring people back to the place where love must replace envy."),
+    deepPhrase("💔 They Rent Their Clothes", "The brothers tear their garments and return together.", "This is already different from Joseph's sale, where they went home without him.", "They do not leave Benjamin alone.", "Real change begins to show when people refuse the old escape route."),
+  ] },
+  { chapter: 44, startVerse: 14, endVerse: 17, reference: "Genesis 44:14-17", title: "Judah Faces Joseph", icon: "⚖️", phrases: [
+    deepPhrase("🙇 Fell Before Him", "The brothers bow yet again before Joseph.", "The dream reaches another layer, now with guilt and pleading in the room.", "They are not proud men before him anymore.", "God can humble without destroying."),
+    deepPhrase("🙏 God Hath Found Out The Iniquity", "Judah speaks of God exposing their iniquity.", "He knows the cup charge is not the whole story.", "Old guilt over Joseph stands behind the present crisis.", "Sometimes present trouble awakens deeper confession."),
+    deepPhrase("🛑 The Man In Whose Hand The Cup Is Found", "Joseph says only Benjamin must stay.", "This creates the exact moral test.", "The brothers can go free if they abandon him.", "Repentance is proven when the old sin is refused at personal cost."),
+  ] },
+  { chapter: 44, startVerse: 18, endVerse: 23, reference: "Genesis 44:18-23", title: "Judah Retells The Demand", icon: "🗣️", phrases: [
+    deepPhrase("🦁 Judah Came Near", "Judah steps closer to plead.", "The man who once said sell Joseph now becomes the spokesman for rescue.", "His nearness is emotional and courageous.", "God can rewrite a person's role in the family story."),
+    deepPhrase("👴 We Have A Father, An Old Man", "Judah centers Jacob's age and grief.", "He is thinking about his father's heart, not only his own safety.", "This is different from the brothers who once deceived Jacob with Joseph's robe.", "Repentance learns to feel the pain it once caused."),
+    deepPhrase("👶 A Child Of His Old Age", "Judah describes Benjamin in language that echoes Joseph's favored status.", "The test is whether favoritism will again become a reason for hatred.", "Judah now protects the favored son instead of resenting him.", "Grace changes how we treat the person who triggers old jealousy."),
+  ] },
+  { chapter: 44, startVerse: 24, endVerse: 29, reference: "Genesis 44:24-29", title: "Judah Pleads For His Father", icon: "😭", phrases: [
+    deepPhrase("🏠 We Came Up Unto Thy Servant My Father", "Judah retells the conversation at home.", "He is careful to show how deeply Jacob's life is tied to Benjamin.", "The family wound is now spoken in Joseph's hearing.", "Truth must be narrated before healing can land."),
+    deepPhrase("🩸 One Went Out From Me", "Judah repeats Jacob's belief that Joseph was torn in pieces.", "Joseph hears the grief his absence created.", "The false story the brothers created is now being spoken back before him.", "Sin's old lies may have to be heard before mercy answers."),
+    deepPhrase("⚰️ Bring Down My Gray Hairs", "Judah says losing Benjamin would bring Jacob down to the grave in sorrow.", "He now understands the cost of bereaving his father.", "The old cruelty is being reversed by empathy.", "Changed hearts care about the pain their actions would cause."),
+  ] },
+  { chapter: 44, startVerse: 30, endVerse: 34, reference: "Genesis 44:30-34", title: "Judah Offers Himself", icon: "🤲", phrases: [
+    deepPhrase("❤️ His Life Is Bound Up In The Lad's Life", "Judah names Jacob's deep attachment to Benjamin.", "He does not mock the favoritism; he bears responsibility around it.", "This is a major transformation from envy to protection.", "Love may mean protecting someone who receives what you did not."),
+    deepPhrase("🤲 Let Thy Servant Abide Instead", "Judah offers himself in Benjamin's place.", "This is the climax of the brothers' test.", "The one who once sold a brother now offers to become a slave for a brother.", "True repentance moves from taking life to giving oneself."),
+    deepPhrase("👀 How Shall I Go Up To My Father", "Judah cannot bear to return without Benjamin.", "He refuses to repeat the old journey home after losing Joseph.", "This sentence proves the brothers are not who they were.", "Godly change is seen when the old path becomes unbearable."),
+  ] },
+];
+
+const DAY_19_GENESIS_45_46_FINAL_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
+  { chapter: 45, startVerse: 1, endVerse: 3, reference: "Genesis 45:1-3", title: "Joseph Reveals Himself", icon: "😭", phrases: [
+    deepPhrase("😭 Joseph Could Not Refrain Himself", "Judah's offer breaks the final restraint.", "Joseph sees that the brothers have changed.", "The test gives way to tears and revelation.", "Mercy often waits until truth has done its work."),
+    deepPhrase("📢 Cause Every Man To Go Out", "Joseph clears the room before revealing himself.", "The family wound is handled privately and tenderly.", "He does not expose his brothers for Egyptian entertainment.", "Grace can protect dignity while telling the truth."),
+    deepPhrase("🧑 I Am Joseph", "Joseph finally names himself to his brothers.", "The hidden ruler is the brother they sold.", "This sentence collapses years of guilt, grief, and mystery.", "Truth is frightening before it becomes healing."),
+  ] },
+  { chapter: 45, startVerse: 4, endVerse: 8, reference: "Genesis 45:4-8", title: "God Sent Me Before You", icon: "🌱", phrases: [
+    deepPhrase("👂 Come Near To Me", "Joseph invites the terrified brothers closer.", "He does not use the revelation to keep emotional distance.", "Nearness becomes part of mercy.", "Forgiveness can move toward the guilty without denying the wrong."),
+    deepPhrase("💰 Whom Ye Sold Into Egypt", "Joseph names the sin plainly.", "He does not pretend they merely lost him or misunderstood him.", "Grace tells the truth before explaining God's providence.", "Forgiveness is not denial."),
+    deepPhrase("🌱 God Did Send Me Before You", "Joseph sees God's purpose over the brothers' evil action.", "God sent him to preserve life during famine.", "This does not excuse the sale; it reveals a higher mercy.", "God can mean good through what people meant for evil."),
+    deepPhrase("🛟 To Preserve Life", "Joseph's suffering becomes a means of survival for many.", "His story is bigger than personal vindication.", "God positioned him to save Egypt, Canaan, and his own family.", "Pain entrusted to God can become provision for others."),
+  ] },
+  { chapter: 45, startVerse: 9, endVerse: 11, reference: "Genesis 45:9-11", title: "Joseph Sends For Jacob", icon: "🏃", phrases: [
+    deepPhrase("🏃 Haste Ye, And Go Up To My Father", "Joseph urgently sends for Jacob.", "Revelation turns into invitation and rescue.", "The father who thought Joseph dead must hear that he is alive.", "Good news should travel quickly to the grieving."),
+    deepPhrase("🏞️ Thou Shalt Dwell In Goshen", "Joseph provides a place for the family in Egypt.", "Goshen becomes shelter during famine.", "God's preservation includes geography, food, and nearness.", "Mercy often becomes practical provision."),
+  ] },
+  { chapter: 45, startVerse: 12, endVerse: 15, reference: "Genesis 45:12-15", title: "Joseph Embraces His Brothers", icon: "🤗", phrases: [
+    deepPhrase("👀 Your Eyes See", "Joseph tells them they can see he is truly speaking to them.", "The brothers need assurance because the moment is overwhelming.", "Truth becomes embodied in Joseph's face, voice, and tears.", "Healing often needs repeated reassurance."),
+    deepPhrase("😭 He Kissed All His Brethren", "Joseph embraces and kisses the brothers who sold him.", "The scene does not erase the sin, but mercy triumphs over revenge.", "After this, the brothers can finally talk with him.", "Forgiveness can reopen speech where guilt had silenced it."),
+  ] },
+  { chapter: 45, startVerse: 16, endVerse: 20, reference: "Genesis 45:16-20", title: "Pharaoh Sends For Jacob's Family", icon: "🚚", phrases: [
+    deepPhrase("👂 The Fame Thereof Was Heard", "Joseph's family reunion reaches Pharaoh's house.", "The private family story now affects Egypt's royal court.", "Pharaoh responds with generosity instead of suspicion.", "God can give favor in places His people could not control."),
+    deepPhrase("🚚 Take You Wagons", "Pharaoh sends wagons to bring Jacob and the little ones.", "The rescue becomes logistically possible for an aging father and large family.", "God's provision includes transportation, not only emotion.", "Practical help can be part of divine mercy."),
+    deepPhrase("🌍 The Good Of All The Land", "Pharaoh offers the best of Egypt's land and goods.", "The family that faced famine is now invited into abundance.", "Joseph's elevation becomes blessing for his household.", "God can turn one person's faithfulness into provision for many."),
+  ] },
+  { chapter: 45, startVerse: 21, endVerse: 24, reference: "Genesis 45:21-24", title: "Joseph Sends His Brothers Home", icon: "🎁", phrases: [
+    deepPhrase("🎁 Joseph Gave Them Wagons", "Joseph equips the brothers for the return journey.", "He sends visible proof for Jacob and practical help for the move.", "Grace does not send people away empty.", "Forgiveness can become generous action."),
+    deepPhrase("👕 Changes Of Raiment", "Joseph gives garments, a striking reversal after his own garment was taken.", "Clothing once served deception; now clothing becomes gift.", "The story redeems the symbol without pretending the past was harmless.", "God can transform old signs of pain into signs of mercy."),
+    deepPhrase("🛑 See That Ye Fall Not Out By The Way", "Joseph warns the brothers not to quarrel on the road.", "He knows guilt and blame could erupt between them.", "Even after forgiveness, the family must guard unity.", "Reconciliation needs careful walking after the emotional moment."),
+  ] },
+  { chapter: 45, startVerse: 25, endVerse: 28, reference: "Genesis 45:25-28", title: "Jacob Believes Joseph Is Alive", icon: "💓", phrases: [
+    deepPhrase("📢 Joseph Is Yet Alive", "The brothers tell Jacob the impossible news.", "The son he mourned for years is alive and ruling in Egypt.", "The message is almost too much for Jacob to receive.", "Hope can feel unbelievable after long grief."),
+    deepPhrase("💔 Jacob's Heart Fainted", "Jacob's heart goes numb because he does not believe them at first.", "Years of sorrow have trained him not to expect restoration.", "The wagons help carry the truth into his weary heart.", "People may need evidence and patience when hope returns."),
+    deepPhrase("💓 The Spirit Of Jacob Revived", "Jacob's spirit revives when he sees the wagons Joseph sent.", "The visible provision confirms the good news.", "Grief begins turning toward life.", "God can revive what sorrow nearly shut down."),
+  ] },
+  { chapter: 46, startVerse: 1, endVerse: 4, reference: "Genesis 46:1-4", title: "God Speaks To Jacob At Beersheba", icon: "🌙", phrases: [
+    deepPhrase("🐑 Israel Took His Journey", "Jacob begins the journey to Egypt with all that he has.", "This is a major covenant movement, not a small family visit.", "Leaving Canaan could feel frightening because the promise is tied to the land.", "Big obedience often needs fresh reassurance."),
+    deepPhrase("🔥 Offered Sacrifices", "Jacob worships at Beersheba before going down to Egypt.", "He does not rush past God in the excitement of Joseph being alive.", "Worship anchors the journey in covenant trust.", "Pause to seek God before major transitions."),
+    deepPhrase("🌙 God Spake In The Visions Of The Night", "God speaks to Jacob by name in the night.", "The Lord addresses the fear beneath the journey.", "Egypt will be part of God's plan, not a detour outside His care.", "God can meet fear with personal guidance."),
+    deepPhrase("⬇️ Fear Not To Go Down Into Egypt", "God directly tells Jacob not to fear the descent.", "The word down matters because Egypt will become both refuge and later bondage.", "For now, God commands the move and promises presence.", "Go where God sends, even when the direction feels complicated."),
+    deepPhrase("🤲 I Will Go Down With Thee", "God promises to go with Jacob into Egypt and bring him up again.", "The promise holds both presence and future return.", "Egypt is not the final home of the covenant family.", "God's presence makes even foreign places survivable."),
+  ] },
+  { chapter: 46, startVerse: 5, endVerse: 7, reference: "Genesis 46:5-7", title: "Jacob's Household Goes Down To Egypt", icon: "🧳", phrases: [
+    deepPhrase("🧳 Carried Jacob Their Father", "Jacob's sons carry him, the little ones, and the wives in Pharaoh's wagons.", "The move is physical, emotional, and covenantal all at once.", "God's promise travels with a vulnerable family on the road.", "Obedience often includes caring for the weak along the way."),
+    deepPhrase("👨‍👩‍👧‍👦 All His Seed With Him", "Jacob brings his descendants with him into Egypt.", "The family is small enough to move together but large enough to carry the promise.", "This descent prepares the future nation of Israel.", "God can move a whole future through one family journey."),
+  ] },
+  { chapter: 46, startVerse: 8, endVerse: 11, reference: "Genesis 46:8-11", title: "Leah's Older Sons Go To Egypt", icon: "📜", phrases: [
+    deepPhrase("📜 These Are The Names", "The genealogy slows down to name the family entering Egypt.", "These are not faceless migrants; they are covenant descendants.", "God counts the family He is preserving.", "Names matter because people matter."),
+    deepPhrase("👥 Sons Of Reuben", "The list begins with Jacob's firstborn line.", "Even complicated sons remain part of the family record.", "Genesis carries real people with real histories into Egypt.", "God's preservation includes imperfect families."),
+  ] },
+  { chapter: 46, startVerse: 12, endVerse: 15, reference: "Genesis 46:12-15", title: "Judah's Line Goes To Egypt", icon: "🌱", phrases: [
+    deepPhrase("🌱 Pharez And Zerah", "Perez and Zerah from Genesis 38 are included in the Egypt migration list.", "Judah and Tamar's painful chapter is not erased from the family line.", "Promise continues through exposed failure and grace.", "God's records do not need polished stories to show redemption."),
+  ] },
+  { chapter: 46, startVerse: 16, endVerse: 18, reference: "Genesis 46:16-18", title: "Zilpah's Line Goes To Egypt", icon: "👩‍🍼", phrases: [
+    deepPhrase("👩‍🍼 Zilpah", "Zilpah's descendants are named as part of Israel's household.", "The servant-mother lines are not ignored.", "Genesis remembers the whole family, including those born through painful arrangements.", "God sees people the family system might rank lower."),
+  ] },
+  { chapter: 46, startVerse: 19, endVerse: 22, reference: "Genesis 46:19-22", title: "Rachel's Line Goes To Egypt", icon: "💔", phrases: [
+    deepPhrase("💔 Rachel Jacob's Wife", "Rachel's line is named with special emotional weight.", "Joseph and Benjamin carry Jacob's deepest grief and love.", "Now Joseph's Egyptian sons also enter the family story.", "God preserves the line connected to long sorrow."),
+    deepPhrase("🇪🇬 Manasseh And Ephraim", "Joseph's sons born in Egypt are included in Jacob's family movement.", "Egypt is already becoming part of the family's story.", "These sons will later receive special blessing from Jacob.", "God can graft fruit from affliction into covenant blessing."),
+  ] },
+  { chapter: 46, startVerse: 23, endVerse: 27, reference: "Genesis 46:23-27", title: "Seventy Souls Go To Egypt", icon: "🔢", phrases: [
+    deepPhrase("🔢 All The Souls", "Genesis counts the family as souls, not statistics only.", "The number marks the small beginning of what will become a great nation.", "Egypt receives a family, but Exodus will show a people emerging.", "God grows nations from households."),
+    deepPhrase("7️⃣ Threescore And Ten", "The seventy-person total gives shape to the migration.", "It shows the family is still small enough to count, yet large enough to carry promise.", "God's promise to multiply is still unfolding.", "Do not despise the small counted beginning."),
+  ] },
+  { chapter: 46, startVerse: 28, endVerse: 30, reference: "Genesis 46:28-30", title: "Jacob And Joseph Reunite", icon: "🤗", phrases: [
+    deepPhrase("🦁 Judah Before Him", "Jacob sends Judah ahead to Joseph.", "Judah has become a trusted leader after offering himself for Benjamin.", "His transformation continues to matter in the family movement.", "God can turn a failed brother into a guide."),
+    deepPhrase("🤗 Joseph Made Ready His Chariot", "Joseph goes personally to meet Jacob in Goshen.", "The governor of Egypt comes as a son to his father.", "Power does not erase family tenderness.", "Status should not make love cold."),
+    deepPhrase("😭 Fell On His Neck", "Joseph weeps a long time on Jacob's neck.", "Years of grief, loss, and hope pour out in the reunion.", "Genesis gives space to holy emotion.", "Let restoration be felt, not rushed."),
+    deepPhrase("😌 Now Let Me Die", "Jacob says he can die after seeing Joseph alive.", "The grief that once made him refuse comfort has been answered with sight.", "God has restored what Jacob thought was gone forever.", "Hope fulfilled can bring deep peace."),
+  ] },
+  { chapter: 46, startVerse: 31, endVerse: 34, reference: "Genesis 46:31-34", title: "Joseph Prepares Them For Goshen", icon: "🐑", phrases: [
+    deepPhrase("🐑 Thy Servants' Trade Hath Been About Cattle", "Joseph prepares his brothers to answer Pharaoh honestly about their work.", "Their shepherd identity will help locate them in Goshen.", "God uses ordinary vocation to preserve family distinction.", "Tell the truth about who you are when God opens the place."),
+    deepPhrase("🏞️ That Ye May Dwell In The Land Of Goshen", "Joseph aims to settle the family in Goshen.", "The place gives room for flocks and keeps Israel from dissolving into Egypt's center.", "God's preservation includes wise placement.", "Sometimes separation is protection, not rejection."),
+  ] },
+];
+
+const DAY_20_GENESIS_47_48_FINAL_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
+  { chapter: 47, startVerse: 1, endVerse: 6, reference: "Genesis 47:1-6", title: "Jacob's Family Before Pharaoh", icon: "🏛️", phrases: [
+    deepPhrase("🏞️ In The Land Of Goshen", "Joseph presents his family as settled in Goshen.", "The place provides room for shepherds and keeps the family distinct.", "God is preserving Israel inside Egypt without dissolving them into Egypt.", "Provision can include protected space."),
+    deepPhrase("🐑 Thy Servants Are Shepherds", "The brothers honestly identify their work before Pharaoh.", "Their calling is humble compared with royal Egypt.", "Yet God uses this identity to place them in Goshen.", "Do not despise ordinary vocation."),
+    deepPhrase("👑 If Thou Knowest Any Men Of Activity", "Pharaoh offers work for capable men over his cattle.", "The family receives favor and opportunity in Egypt.", "Joseph's integrity opens doors for his household.", "Faithfulness can bless more than the faithful individual."),
+  ] },
+  { chapter: 47, startVerse: 7, endVerse: 12, reference: "Genesis 47:7-12", title: "Jacob Blesses Pharaoh", icon: "🙌", phrases: [
+    deepPhrase("🙌 Jacob Blessed Pharaoh", "Jacob blesses the most powerful ruler in Egypt.", "The old shepherd stands before empire with covenant dignity.", "Power flows differently in God's story.", "Spiritual blessing is not measured by political rank."),
+    deepPhrase("⏳ Few And Evil Have The Days Been", "Jacob summarizes his life as short and troubled.", "He is honest about hardship, deception, grief, and wandering.", "Faith does not require pretending life was easy.", "Tell the truth about sorrow while still trusting God."),
+    deepPhrase("🍞 Joseph Nourished His Father", "Joseph provides bread for Jacob's household.", "The son once sold by his brothers now sustains them all.", "The dream has become family preservation.", "God can turn betrayal into provision without calling betrayal good."),
+  ] },
+  { chapter: 47, startVerse: 13, endVerse: 17, reference: "Genesis 47:13-17", title: "Egypt Trades For Bread", icon: "🍞", phrases: [
+    deepPhrase("🌾 There Was No Bread", "The famine becomes severe across Egypt and Canaan.", "Joseph's stored grain is now the difference between life and death.", "The warning from Pharaoh's dreams is fully real.", "Preparation matters when crisis arrives."),
+    deepPhrase("💰 Joseph Gathered Up All The Money", "The people spend their money for grain.", "The economy bends under famine pressure.", "Genesis shows survival becoming costly and systemic.", "Crisis tests both planning and justice."),
+    deepPhrase("🐄 Give Your Cattle", "When money runs out, livestock becomes payment.", "Joseph continues administering food distribution during severe need.", "The famine strips away layers of security.", "Earthly resources can disappear quickly."),
+  ] },
+  { chapter: 47, startVerse: 18, endVerse: 22, reference: "Genesis 47:18-22", title: "The Land Comes To Pharaoh", icon: "🏜️", phrases: [
+    deepPhrase("🏜️ Buy Us And Our Land", "The Egyptians offer themselves and their land for bread and seed.", "The famine reshapes the social order of Egypt.", "Joseph's administration centralizes land under Pharaoh.", "Survival decisions can carry long-term consequences."),
+    deepPhrase("🌱 Give Us Seed", "The people need seed, not only immediate food.", "They are asking for a future after famine.", "Joseph's role includes keeping tomorrow alive.", "Wise provision thinks beyond today's hunger."),
+    deepPhrase("⛪ Only The Land Of The Priests", "The priests' land is treated differently because they have a portion from Pharaoh.", "Genesis notes the social structure of Egypt without turning aside from the story.", "The famine affects groups differently based on power and provision.", "Pay attention to how systems protect some and expose others."),
+  ] },
+  { chapter: 47, startVerse: 23, endVerse: 26, reference: "Genesis 47:23-26", title: "Joseph Establishes A Fifth", icon: "📜", phrases: [
+    deepPhrase("🌱 Lo, Here Is Seed", "Joseph gives seed back to the people so they can plant.", "This is not only extraction; it enables continued life and agriculture.", "The land can produce again after famine pressure.", "Leadership should preserve future fruitfulness."),
+    deepPhrase("➗ The Fifth Part", "Joseph establishes a policy that a fifth belongs to Pharaoh.", "The arrangement becomes a long-standing law in Egypt.", "The crisis creates a permanent economic structure.", "Emergency decisions can become institutions."),
+    deepPhrase("🛟 Thou Hast Saved Our Lives", "The people acknowledge that Joseph saved their lives.", "Even within a hard economic arrangement, they recognize preservation.", "Genesis holds together provision, power, and complexity.", "Be honest about both mercy and cost."),
+  ] },
+  { chapter: 47, startVerse: 27, endVerse: 31, reference: "Genesis 47:27-31", title: "Jacob Asks To Be Buried In Canaan", icon: "🪦", phrases: [
+    deepPhrase("🌱 Israel Dwelt In Goshen", "Israel settles, grows, and gains possessions in Egypt.", "The family is being preserved and multiplied.", "God's promise is alive even outside Canaan.", "God can grow His people in a temporary place."),
+    deepPhrase("⏳ The Time Drew Nigh", "Jacob senses his death approaching.", "He begins preparing Joseph for his burial request.", "The patriarch's final concerns point back to the promise land.", "Faith thinks about covenant even near death."),
+    deepPhrase("🪦 Bury Me Not In Egypt", "Jacob does not want Egypt to be his final resting place.", "He lives there by God's provision, but his hope remains tied to Canaan.", "His burial request is an act of faith in God's promise.", "Where we place our hope matters at the end."),
+    deepPhrase("🤝 Swear Unto Me", "Jacob asks Joseph to swear to carry him back.", "The oath gives weight to the burial request.", "Jacob is making sure the family remembers where home is.", "Promises help future generations hold direction."),
+  ] },
+  { chapter: 48, startVerse: 1, endVerse: 4, reference: "Genesis 48:1-4", title: "Jacob Remembers God's Promise", icon: "🛏️", phrases: [
+    deepPhrase("🛏️ Thy Father Is Sick", "Joseph comes to Jacob when he hears his father is sick.", "The scene moves from public provision to family blessing.", "Jacob's final words will shape the next generation.", "Do not miss holy moments near the end of life."),
+    deepPhrase("✨ God Almighty Appeared Unto Me", "Jacob remembers God's appearance at Luz/Bethel.", "At the end of life, he anchors blessing in God's old promise.", "His memory is theological, not merely sentimental.", "Pass on what God has spoken, not only what you have felt."),
+  ] },
+  { chapter: 48, startVerse: 5, endVerse: 7, reference: "Genesis 48:5-7", title: "Jacob Claims Joseph's Sons", icon: "👦", phrases: [
+    deepPhrase("👦 Ephraim And Manasseh", "Jacob claims Joseph's sons as his own for inheritance purposes.", "This gives Joseph a double portion through his sons.", "The Egyptian-born boys are pulled into Israel's covenant line.", "God can include children born in foreign places."),
+    deepPhrase("😭 As For Me, Rachel Died By Me", "Jacob remembers Rachel's death on the road.", "The blessing scene carries old grief with it.", "He does not forget the sorrow tied to Joseph and Benjamin's mother.", "Blessing can be spoken through tears remembered."),
+  ] },
+  { chapter: 48, startVerse: 8, endVerse: 12, reference: "Genesis 48:8-12", title: "Jacob Receives Joseph's Sons", icon: "👦", phrases: [
+    deepPhrase("👀 Who Are These", "Jacob's eyes are dim, and he asks about the boys.", "The scene echoes Isaac's old age but moves toward blessing instead of deception.", "Joseph presents his sons openly.", "A family history of deception can be answered with clarity."),
+    deepPhrase("🎁 They Are My Sons, Whom God Hath Given Me", "Joseph describes his sons as gifts from God.", "His words recognize grace in Egypt after years of suffering.", "The boys are living signs of fruitfulness in affliction.", "Name your blessings as gifts, not accidents."),
+    deepPhrase("😘 He Kissed Them, And Embraced Them", "Jacob embraces Joseph's sons before blessing them.", "The old man receives a mercy he never expected when he thought Joseph dead.", "The scene is full of tenderness and restoration.", "God can give more than survival; He can give generational joy."),
+  ] },
+  { chapter: 48, startVerse: 13, endVerse: 16, reference: "Genesis 48:13-16", title: "Jacob Blesses Ephraim And Manasseh", icon: "🙌", phrases: [
+    deepPhrase("✋ Guiding His Hands Wittingly", "Jacob crosses his hands intentionally.", "His weak eyes do not mean confused blessing.", "The reversal is deliberate, continuing Genesis' pattern of unexpected younger-son prominence.", "God's blessing is not bound by human birth order."),
+    deepPhrase("🚶 God Before Whom My Fathers Did Walk", "Jacob blesses by naming the God of Abraham and Isaac.", "He places the boys inside the long covenant walk.", "Their identity is shaped by God's faithfulness across generations.", "Bless the next generation with the story of God's faithfulness."),
+    deepPhrase("🐑 The God Which Fed Me All My Life Long", "Jacob describes God as the shepherd who has fed him all his life.", "This is a beautiful summary after years of wandering, fear, and grief.", "Jacob sees provision across the whole road.", "At the end, remember the Shepherd."),
+    deepPhrase("😇 The Angel Which Redeemed Me", "Jacob speaks of the angel who redeemed him from evil.", "His life has needed rescue again and again.", "The blessing over the boys is grounded in God's preserving mercy.", "Pass on testimony of rescue, not just rules."),
+  ] },
+  { chapter: 48, startVerse: 17, endVerse: 20, reference: "Genesis 48:17-20", title: "The Younger Is Set Before The Older", icon: "🔁", phrases: [
+    deepPhrase("😟 It Displeased Joseph", "Joseph tries to correct Jacob's crossed hands.", "He assumes Manasseh the firstborn should receive the greater blessing.", "Even Joseph has to learn that God's order may surprise him.", "Do not assume tradition always predicts God's choice."),
+    deepPhrase("🙅 I Know It, My Son", "Jacob assures Joseph that he knows what he is doing.", "The reversal is intentional, not senility.", "God's blessing moves according to divine purpose.", "Trust God's wisdom when His order unsettles yours."),
+    deepPhrase("🌊 His Seed Shall Become A Multitude", "Manasseh is blessed, but Ephraim receives the greater prominence.", "The younger surpassing the older echoes Isaac over Ishmael, Jacob over Esau, and Perez over Zerah.", "Genesis keeps teaching that grace is not controlled by birth rank.", "God chooses freely and wisely."),
+  ] },
+  { chapter: 48, startVerse: 21, endVerse: 22, reference: "Genesis 48:21-22", title: "God Will Bring You Again", icon: "🧭", phrases: [
+    deepPhrase("🧭 God Shall Be With You", "Jacob tells Joseph that God will be with the family after his death.", "The promise does not depend on Jacob staying alive.", "God's presence will continue into the next generation.", "Covenant hope outlives leaders."),
+    deepPhrase("🏞️ Bring You Again Unto The Land", "Jacob points beyond Egypt back to the land of the fathers.", "Even while blessing in Egypt, his hope remains tied to God's promise.", "This anticipates the Exodus long before it happens.", "Live in today's provision without forgetting God's final direction."),
+    deepPhrase("🎁 One Portion Above Thy Brethren", "Jacob gives Joseph a special portion.", "Joseph's suffering and faithfulness are honored through inheritance.", "The family story is being ordered for the future tribes.", "God can bring lasting fruit from years of hidden pain."),
+  ] },
+];
+
 export const GENESIS_41_50_PERSONAL_SECTIONS = addGenesisFortyOneToFiftySectionTexture(
-  expandSplitSections(RAW_GENESIS_41_50_PERSONAL_SECTIONS),
+  [
+    ...DAY_17_GENESIS_41_42_FINAL_SECTIONS,
+    ...DAY_18_GENESIS_43_44_FINAL_SECTIONS,
+    ...DAY_19_GENESIS_45_46_FINAL_SECTIONS,
+    ...DAY_20_GENESIS_47_48_FINAL_SECTIONS,
+    ...expandSplitSections(RAW_GENESIS_41_50_PERSONAL_SECTIONS.filter((section) => section.chapter < 41 || section.chapter > 48)),
+  ],
 );
