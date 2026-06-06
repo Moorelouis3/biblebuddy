@@ -16142,7 +16142,7 @@ function applyPersonalExodusTwoThroughTenStudySections() {
 
   for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
     const section = BIBLE_READER_STUDY_SECTIONS[index];
-    if (section.book === "exodus" && section.chapter >= 2 && section.chapter <= 10) {
+    if (section.book === "exodus" && section.chapter >= 1 && section.chapter <= 10) {
       BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
     }
   }

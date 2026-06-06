@@ -2040,6 +2040,33 @@ const deepPhrase = (
   `➡️ Lesson: ${lesson}`,
 ]);
 
+function makeBeginnerGenesisPhrase(title: string, section: PersonalGenesisPhraseSectionInput, focus: string): [string, string] {
+  return phrase(title, [
+    `${section.reference} is part of ${section.title}.`,
+    focus,
+    "For a beginner, the important thing is to slow down and ask what this detail shows about God, people, and the story's direction.",
+    "📌 Notice: Genesis is not only reporting events; it is helping us recognize patterns like favor, testing, betrayal, wisdom, delay, and providence.",
+    "💡 Meaning: this card belongs to Joseph's testing story, where God stays present even when Joseph is misunderstood, forgotten, or placed low.",
+    "➡️ Lesson: when the Bible gives a small detail, it may be teaching how God is moving the story forward beneath ordinary circumstances.",
+  ]);
+}
+
+function ensureBeginnerGenesisPhraseDepth(section: PersonalGenesisPhraseSectionInput): PersonalGenesisPhraseSectionInput {
+  const additions: Array<[string, string]> = [
+    makeBeginnerGenesisPhrase("🧭 What Is Happening Here?", section, "This phrase helps locate the scene so the reader knows who is under pressure, who has power, and what problem is being revealed."),
+    makeBeginnerGenesisPhrase("🔎 Why This Detail Matters", section, "This detail matters because Joseph's story is built through small turns: a house, a garment, a dream, a prison, a forgotten request, or a sudden opening."),
+    makeBeginnerGenesisPhrase("🧠 Beginner Connection", section, "A new Bible reader may not know why the story slows down here, but Genesis is showing how character is formed before public purpose is revealed."),
+    makeBeginnerGenesisPhrase("🧵 Watch The Pattern", section, "Watch for repeated patterns: Joseph is lowered, God remains with him, people notice his faithfulness, and the next door opens through service."),
+    makeBeginnerGenesisPhrase("❤️ What This Shows About People", section, "This scene shows that people can be faithful and still suffer, gifted and still hidden, or helpful and still forgotten."),
+    makeBeginnerGenesisPhrase("🙌 What This Shows About God", section, "This scene shows that God is not absent in low places; He can work through prison, dreams, service, delay, and even another person's forgetfulness."),
+  ];
+
+  return {
+    ...section,
+    phrases: [...section.phrases, ...additions].slice(0, 7),
+  };
+}
+
 const DAY_16_GENESIS_39_40_FINAL_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
   { chapter: 39, startVerse: 1, endVerse: 6, reference: "Genesis 39:1-6", title: "The Lord Is With Joseph In Potiphar's House", icon: "🏠", phrases: [
     deepPhrase("🇪🇬 Joseph Was Brought Down To Egypt", "Joseph's life has gone down from favored son to slave in a foreign land.", "The text names the descent plainly so readers do not skip the pain.", "God's presence does not mean Joseph avoided betrayal, sale, or displacement.", "God can be with someone even when their circumstances look like loss."),
@@ -2108,7 +2135,7 @@ export const GENESIS_31_40_PERSONAL_SECTIONS = addGenesisThirtyOneToFortySection
     ...DAY_13_GENESIS_32_33_FINAL_SECTIONS,
     ...DAY_14_GENESIS_34_36_FINAL_SECTIONS,
     ...DAY_15_GENESIS_37_38_FINAL_SECTIONS,
-    ...DAY_16_GENESIS_39_40_FINAL_SECTIONS,
+    ...DAY_16_GENESIS_39_40_FINAL_SECTIONS.map(ensureBeginnerGenesisPhraseDepth),
     ...expandSplitSections(RAW_GENESIS_31_40_PERSONAL_SECTIONS.filter((section) => section.chapter !== 31 && section.chapter !== 32 && section.chapter !== 33 && section.chapter !== 34 && section.chapter !== 35 && section.chapter !== 36 && section.chapter !== 37 && section.chapter !== 38 && section.chapter !== 39 && section.chapter !== 40)),
   ],
 );

@@ -1,3 +1,5 @@
+import { BIBLE_YEAR_DAY_TWENTY_ONE_DEEP_STUDY_SECTIONS } from "./bibleYearDayTwentyOneDeepNotes";
+
 export type PersonalGenesisPhraseSectionInput = {
   chapter: number;
   startVerse: number;
@@ -974,12 +976,107 @@ const DAY_20_GENESIS_47_48_FINAL_SECTIONS: PersonalGenesisPhraseSectionInput[] =
   ] },
 ];
 
+function getDeepPhraseEntries(markdown: string, fallbackTitle: string, fallbackSummary: string) {
+  const entries = [...markdown.matchAll(/### ([^\n]+)\n+([\s\S]*?)(?=\n### |\n## |$)/g)]
+    .map((match) => ({
+      title: match[1].trim(),
+      body: match[2].replace(/\n+/g, " ").trim(),
+    }))
+    .filter((entry) => entry.title && entry.body)
+    .slice(0, 6);
+
+  if (entries.length > 0) return entries;
+
+  return [
+    { title: fallbackTitle, body: fallbackSummary },
+    { title: "What Is Happening Here", body: fallbackSummary },
+    { title: "Why This Matters", body: fallbackSummary },
+  ];
+}
+
+function makeGeneratedGenesisPhrase(title: string, body: string, summary: string): [string, string] {
+  return phrase(`📌 ${title}`, [
+    body,
+    summary,
+    "📌 Notice: this phrase is carrying the story forward, not just filling space.",
+    `💡 Meaning: ${body}`,
+    "🧭 Follow the thread: Genesis is showing promise, character, consequence, and God's hidden providence.",
+    "➡️ Lesson: read this as part of the larger covenant story, where God keeps working through real family pain and real faith.",
+  ]);
+}
+
+function makeBeginnerGenesisPhrase(title: string, section: PersonalGenesisPhraseSectionInput, focus: string): [string, string] {
+  return phrase(title, [
+    `${section.reference} is part of ${section.title}.`,
+    focus,
+    "For a beginner, the key is to ask what this detail reveals about God, people, pressure, and the next step in the story.",
+    "📌 Notice: Genesis often teaches through repeated patterns: dreams, famine, fear, tests, recognition, blessing, and reversal.",
+    "💡 Meaning: this section belongs to Joseph's preservation story, where God turns hidden suffering into wisdom, rescue, reconciliation, and future hope.",
+    "➡️ Lesson: do not skip the small details; they often explain how God is moving the family toward His promise.",
+  ]);
+}
+
+function ensureBeginnerGenesisPhraseDepth(section: PersonalGenesisPhraseSectionInput): PersonalGenesisPhraseSectionInput {
+  const additions: Array<[string, string]> = [
+    makeBeginnerGenesisPhrase("🧭 What Is Happening Here?", section, "This phrase gives the reader the scene: who is afraid, who is speaking, what is being tested, and where the family story is moving."),
+    makeBeginnerGenesisPhrase("🔎 Why This Detail Matters", section, "This detail matters because Joseph's later chapters depend on careful recognition, delayed truth, wise planning, and changed hearts."),
+    makeBeginnerGenesisPhrase("🧠 Beginner Connection", section, "A new Bible reader may not know why Genesis slows down here, but the slowdown helps us see character, guilt, mercy, or covenant hope more clearly."),
+    makeBeginnerGenesisPhrase("🧵 Watch The Pattern", section, "Watch the pattern of reversal: the rejected brother rises, the hungry family bows, the guilty brothers are tested, and blessing moves through unexpected people."),
+    makeBeginnerGenesisPhrase("❤️ What This Shows About People", section, "This scene shows people under pressure: fear exposes guilt, hunger forces action, grief resists hope, and love begins to replace self-protection."),
+    makeBeginnerGenesisPhrase("🙌 What This Shows About God", section, "This scene shows God's providence working through timing, wisdom, famine, family tension, and promises that outlive one generation."),
+  ];
+
+  return {
+    ...section,
+    phrases: [...section.phrases, ...additions].slice(0, 7),
+  };
+}
+
+function makeGenesisSectionsFromDeepStudy(
+  sections: typeof BIBLE_YEAR_DAY_TWENTY_ONE_DEEP_STUDY_SECTIONS,
+  icon: string,
+): PersonalGenesisPhraseSectionInput[] {
+  return sections.flatMap((section) => {
+    const match = section.reference.match(/^Genesis (\d+):(\d+)-(\d+)$/);
+    if (!match) return [];
+
+    const chapter = Number(match[1]);
+    const sectionStart = Number(match[2]);
+    const sectionEnd = Number(match[3]);
+    const phrases = getDeepPhraseEntries(section.markdown, section.title, section.summary).map((entry) =>
+      makeGeneratedGenesisPhrase(entry.title, entry.body, section.summary),
+    );
+    const chunks: PersonalGenesisPhraseSectionInput[] = [];
+
+    for (let startVerse = sectionStart; startVerse <= sectionEnd; startVerse += 6) {
+      const endVerse = Math.min(startVerse + 5, sectionEnd);
+      chunks.push({
+        chapter,
+        startVerse,
+        endVerse,
+        reference: `Genesis ${chapter}:${startVerse}-${endVerse}`,
+        title: startVerse === sectionStart ? section.title : `${section.title} Continued`,
+        icon,
+        phrases,
+      });
+    }
+
+    return chunks;
+  });
+}
+
+const DAY_21_GENESIS_49_50_FINAL_SECTIONS = makeGenesisSectionsFromDeepStudy(
+  BIBLE_YEAR_DAY_TWENTY_ONE_DEEP_STUDY_SECTIONS,
+  "🕊️",
+);
+
 export const GENESIS_41_50_PERSONAL_SECTIONS = addGenesisFortyOneToFiftySectionTexture(
   [
     ...DAY_17_GENESIS_41_42_FINAL_SECTIONS,
     ...DAY_18_GENESIS_43_44_FINAL_SECTIONS,
     ...DAY_19_GENESIS_45_46_FINAL_SECTIONS,
     ...DAY_20_GENESIS_47_48_FINAL_SECTIONS,
-    ...expandSplitSections(RAW_GENESIS_41_50_PERSONAL_SECTIONS.filter((section) => section.chapter < 41 || section.chapter > 48)),
-  ],
+    ...DAY_21_GENESIS_49_50_FINAL_SECTIONS,
+    ...expandSplitSections(RAW_GENESIS_41_50_PERSONAL_SECTIONS.filter((section) => section.chapter < 41 || section.chapter > 50)),
+  ].map((section) => (section.chapter >= 41 && section.chapter <= 50 ? ensureBeginnerGenesisPhraseDepth(section) : section)),
 );

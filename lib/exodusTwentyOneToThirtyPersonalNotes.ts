@@ -1,3 +1,7 @@
+import { BIBLE_YEAR_DAY_TWENTY_EIGHT_DEEP_STUDY_SECTIONS } from "./bibleYearDayTwentyEightDeepNotes";
+import { BIBLE_YEAR_DAY_TWENTY_NINE_DEEP_STUDY_SECTIONS } from "./bibleYearDayTwentyNineDeepNotes";
+import { BIBLE_YEAR_DAY_TWENTY_SEVEN_DEEP_STUDY_SECTIONS } from "./bibleYearDayTwentySevenDeepNotes";
+
 export type PersonalExodusPhraseSectionInput = {
   chapter: number;
   startVerse: number;
@@ -11,7 +15,7 @@ export type PersonalExodusPhraseSectionInput = {
 const note = (lines: string[]) => lines.join("\n\n");
 const phrase = (title: string, lines: string[]): [string, string] => [title, note(lines)];
 
-export const EXODUS_21_30_PERSONAL_SECTIONS: PersonalExodusPhraseSectionInput[] = [
+const RAW_EXODUS_21_30_PERSONAL_SECTIONS: PersonalExodusPhraseSectionInput[] = [
   {
     chapter: 21,
     startVerse: 1,
@@ -362,4 +366,110 @@ export const EXODUS_21_30_PERSONAL_SECTIONS: PersonalExodusPhraseSectionInput[] 
       phrase("🚫 Ye Shall Not Make To Yourselves", ["The incense recipe must not be copied for personal use.", "Holy fragrance belongs to God's service.", "🚫 No imitation", "🙏 Reserved for God", "🔥 Holy boundary", "God guards the difference between holy and common."]),
     ],
   },
+];
+
+type DeepStudySection = {
+  reference: string;
+  title: string;
+  summary: string;
+  markdown: string;
+};
+
+function getDeepPhraseEntries(markdown: string, fallbackTitle: string, fallbackSummary: string) {
+  const entries = [...markdown.matchAll(/### ([^\n]+)\n+([\s\S]*?)(?=\n### |\n## |$)/g)]
+    .map((match) => ({
+      title: match[1].trim(),
+      body: match[2].replace(/\n+/g, " ").trim(),
+    }))
+    .filter((entry) => entry.title && entry.body)
+    .slice(0, 6);
+
+  if (entries.length > 0) return entries;
+
+  return [
+    { title: fallbackTitle, body: fallbackSummary },
+    { title: "What Is Happening Here", body: fallbackSummary },
+    { title: "Why This Matters", body: fallbackSummary },
+  ];
+}
+
+function makeGeneratedExodusPhrase(title: string, body: string, summary: string): [string, string] {
+  return phrase(`📌 ${title}`, [
+    body,
+    summary,
+    "📌 Notice: this phrase is carrying the Exodus story forward, not just filling space.",
+    `💡 Meaning: ${body}`,
+    "🧭 Follow the thread: Exodus is showing bondage, deliverance, worship, covenant, and God's presence.",
+    "➡️ Lesson: read this as part of God's rescue story, where the LORD confronts oppression and forms a people for Himself.",
+  ]);
+}
+
+function makeBeginnerExodusPhrase(title: string, section: PersonalExodusPhraseSectionInput, focus: string): [string, string] {
+  return phrase(title, [
+    `${section.reference} is part of ${section.title}.`,
+    focus,
+    "For a beginner, the key is to ask what this law shows about justice, worship, neighbor love, holiness, or covenant life after rescue.",
+    "📌 Notice: Exodus law is not random rule collecting; it is teaching a redeemed people how not to recreate Egypt among themselves.",
+    "💡 Meaning: this section belongs to the covenant story, where freedom from Pharaoh becomes responsibility before God and neighbor.",
+    "➡️ Lesson: slow down over case laws, penalties, feasts, and covenant ceremonies because they show what redeemed life is supposed to protect.",
+  ]);
+}
+
+function ensureBeginnerExodusPhraseDepth(section: PersonalExodusPhraseSectionInput): PersonalExodusPhraseSectionInput {
+  const additions: Array<[string, string]> = [
+    makeBeginnerExodusPhrase("🧭 What Is Happening Here?", section, "This phrase helps the reader locate the law or covenant scene: who is being protected, what wrong is being limited, and what kind of people Israel must become."),
+    makeBeginnerExodusPhrase("🔎 Why This Detail Matters", section, "This detail matters because Exodus moves from rescue to formation; God is shaping daily life, not only dramatic worship moments."),
+    makeBeginnerExodusPhrase("🧠 Beginner Connection", section, "A new Bible reader may not know why these laws are here, but they show that God's salvation changes households, courts, money, animals, work, rest, and worship."),
+    makeBeginnerExodusPhrase("🧵 Watch The Pattern", section, "Watch the pattern: God protects vulnerable people, limits retaliation, commands honest worship, and makes covenant life visible."),
+    makeBeginnerExodusPhrase("❤️ What This Shows About People", section, "This scene shows people need boundaries because power, anger, greed, negligence, and false worship can damage a community."),
+    makeBeginnerExodusPhrase("🙌 What This Shows About God", section, "This scene shows the LORD cares about justice in ordinary life, not only songs, sacrifices, and mountain experiences."),
+  ];
+
+  return {
+    ...section,
+    phrases: [...section.phrases, ...additions].slice(0, 7),
+  };
+}
+
+function makeExodusSectionsFromDeepStudy(
+  sections: DeepStudySection[],
+  allowedChapters: number[],
+  icon: string,
+): PersonalExodusPhraseSectionInput[] {
+  return sections.flatMap((section) => {
+    const match = section.reference.match(/^Exodus (\d+):(\d+)-(\d+)$/);
+    if (!match) return [];
+
+    const chapter = Number(match[1]);
+    if (!allowedChapters.includes(chapter)) return [];
+
+    const sectionStart = Number(match[2]);
+    const sectionEnd = Number(match[3]);
+    const phrases = getDeepPhraseEntries(section.markdown, section.title, section.summary).map((entry) =>
+      makeGeneratedExodusPhrase(entry.title, entry.body, section.summary),
+    );
+    const chunks: PersonalExodusPhraseSectionInput[] = [];
+
+    for (let startVerse = sectionStart; startVerse <= sectionEnd; startVerse += 6) {
+      const endVerse = Math.min(startVerse + 5, sectionEnd);
+      chunks.push({
+        chapter,
+        startVerse,
+        endVerse,
+        reference: `Exodus ${chapter}:${startVerse}-${endVerse}`,
+        title: startVerse === sectionStart ? section.title : `${section.title} Continued`,
+        icon,
+        phrases,
+      });
+    }
+
+    return chunks;
+  });
+}
+
+export const EXODUS_21_30_PERSONAL_SECTIONS: PersonalExodusPhraseSectionInput[] = [
+  ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_TWENTY_SEVEN_DEEP_STUDY_SECTIONS, [21, 22, 23, 24], "⚖️").map(ensureBeginnerExodusPhraseDepth),
+  ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_TWENTY_EIGHT_DEEP_STUDY_SECTIONS, [25, 26, 27, 28], "⛺").map(ensureBeginnerExodusPhraseDepth),
+  ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_TWENTY_NINE_DEEP_STUDY_SECTIONS, [29, 30], "🕯️").map(ensureBeginnerExodusPhraseDepth),
+  ...RAW_EXODUS_21_30_PERSONAL_SECTIONS.filter((section) => section.chapter < 21 || section.chapter > 30),
 ];
