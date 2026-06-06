@@ -3549,6 +3549,140 @@ const DAY_11_FINAL_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
   ] },
 ];
 
+const day11Phrase = (title: string, lines: string[]): [string, string] => phrase(title, lines);
+
+const DAY_11_REAL_PHRASE_ADDITIONS: Record<string, Array<[string, string]>> = {
+  "Genesis 28:1-5": [
+    day11Phrase("Blessed Him", ["Isaac blesses Jacob openly this time.", "The blessing is no longer hidden behind goat skins and a borrowed name.", "Jacob leaves home carrying a real spoken blessing, even though the family wound is still fresh."]),
+    day11Phrase("Arise", ["Isaac's command means Jacob cannot stay where the family has broken apart.", "The blessing now sends him onto the road.", "Sometimes the next step of God's story begins with leaving a place that has become dangerous."]),
+    day11Phrase("House Of Bethuel", ["Bethuel is Rebekah's father, so this sends Jacob back into his mother's family line.", "A beginner may miss that this connects directly to Genesis 24.", "Jacob is being sent toward the same household from which Isaac received Rebekah."]),
+    day11Phrase("Daughters Of Laban", ["Laban is Rebekah's brother, so Jacob is being directed toward close kin.", "That sounds safe at first, but Genesis will show Laban as complicated and manipulative.", "The road of obedience will still include testing."]),
+    day11Phrase("A Multitude Of People", ["Isaac speaks a future over Jacob that is much bigger than one man fleeing home.", "The lonely traveler will become the father of a whole people.", "God's promise can speak crowds over a person who currently looks alone."]),
+    day11Phrase("To Thee And To Thy Seed", ["The blessing reaches Jacob and the generations after him.", "Genesis keeps showing that covenant promises are never only private comfort.", "Jacob's choices and God's mercy will shape children, tribes, and nations."]),
+    day11Phrase("Land Wherein Thou Art A Stranger", ["Jacob does not yet own the promised land in the settled way the promise describes.", "He is still a stranger, a pilgrim, and now an exile.", "Faith has to hold God's future while living in present uncertainty."]),
+    day11Phrase("Which God Gave Unto Abraham", ["The land promise is anchored in God's gift to Abraham.", "Jacob is not inventing a new destiny for himself.", "He is being folded into the same covenant story God began before he was born."]),
+  ],
+  "Genesis 28:6-9": [
+    day11Phrase("Isaac Had Blessed Jacob", ["Esau sees that Jacob has received the blessing he wanted.", "This detail keeps the family tension alive after Genesis 27.", "The blessing has moved forward, but the pain around it has not disappeared."]),
+    day11Phrase("Sent Him Away To Padan-aram", ["Esau notices Jacob is being sent away with purpose, not merely running.", "Padan-aram is the region tied to Rebekah's family.", "Jacob's exile is also being shaped into a marriage journey."]),
+    day11Phrase("Jacob Obeyed His Father And His Mother", ["Jacob leaves under his parents' instruction.", "After a chapter filled with deception, obedience is now named directly.", "The story is not saying Jacob is perfect; it is showing him stepping into the next direction."]),
+    day11Phrase("Seeing That The Daughters Of Canaan Pleased Not Isaac", ["Esau finally reads the household grief around his marriages.", "He understands the outside issue, but he does not fully grasp covenant faithfulness.", "Seeing displeasure is not the same thing as having a changed heart."]),
+    day11Phrase("Esau Went Unto Ishmael", ["Esau turns toward Ishmael's family, which is closer to Abraham's line than the Canaanites.", "The move looks like an attempt to fix his standing.", "But it is reaction after loss, not quiet obedience from the beginning."]),
+    day11Phrase("Sister Of Nebajoth", ["Nebajoth was Ishmael's firstborn, so this phrase identifies Mahalath inside Ishmael's line.", "Genesis uses family details to show exactly where Esau is reaching.", "He is trying to attach himself to Abraham's wider family branch."]),
+  ],
+  "Genesis 28:10-12": [
+    day11Phrase("Went Toward Haran", ["Haran is where Jacob is headed to find Rebekah's family.", "It is also the place where his life will be reshaped through labor, love, and conflict.", "The road away from home is becoming the road into his future household."]),
+    day11Phrase("Lighted Upon A Certain Place", ["Jacob arrives at a place that seems ordinary at first.", "He does not yet know it will become holy memory.", "Genesis loves moments where God is present before the person realizes it."]),
+    day11Phrase("Tarried There All Night", ["Jacob stops because night has come.", "The promised heir is sleeping outdoors with no family tent around him.", "The scene feels lonely so the dream of God's presence will feel even more powerful."]),
+    day11Phrase("Took Of The Stones Of That Place", ["Jacob uses what the place provides.", "There is no comfort, only stones and open ground.", "The roughness of the scene makes God's tenderness in the dream stand out."]),
+    day11Phrase("Lay Down In That Place To Sleep", ["Jacob's body rests in the very place God is about to claim with promise.", "He is vulnerable, tired, and unaware.", "God meets him while he is not performing, planning, or proving anything."]),
+    day11Phrase("Top Of It Reached To Heaven", ["The ladder or stairway reaches all the way into heaven.", "This shows connection between God's world and Jacob's lonely ground.", "The exile road is not sealed off from divine care."]),
+  ],
+  "Genesis 28:13-15": [
+    day11Phrase("God Of Isaac", ["God names Isaac too, not only Abraham.", "The covenant has already passed through one generation and now reaches Jacob.", "The Lord is showing that the promise did not die with Abraham or stop with Isaac."]),
+    day11Phrase("Will I Give It", ["God speaks of giving land while Jacob owns none of it in the moment.", "That contrast matters because faith often begins with a word before possession.", "Jacob is lying on promised ground as a homeless traveler."]),
+    day11Phrase("Thou Shalt Spread Abroad", ["God promises expansion in every direction.", "Jacob is one man leaving home, but God sees a people spreading across the land.", "The promise is bigger than Jacob's current fear."]),
+    day11Phrase("To The West, And To The East", ["The promise stretches across directions, not just one small place.", "God is giving Jacob a wide future.", "The lonely campsite is being opened into a horizon."]),
+    day11Phrase("To The North, And To The South", ["The language keeps widening the map.", "Jacob cannot see these generations yet, but God speaks them with certainty.", "Divine promise sees farther than human eyes."]),
+    day11Phrase("Be Blessed In Thee And In Thy Seed", ["The blessing through Jacob is meant to reach beyond Jacob.", "God's covenant is not small family favoritism.", "It is part of His plan to bring blessing to all families of the earth."]),
+    day11Phrase("I Will Not Leave Thee", ["This is mercy for a man who has left home under a cloud of deception and fear.", "God promises presence before Jacob has matured into Israel.", "The Lord's faithfulness is stronger than Jacob's instability."]),
+    day11Phrase("Until I Have Done That Which I Have Spoken", ["God commits Himself to finishing what He promised.", "Jacob's future will include hard years, but God's word will not evaporate.", "The promise has a destination because God Himself guards it."]),
+  ],
+  "Genesis 28:16-19": [
+    day11Phrase("Jacob Awaked Out Of His Sleep", ["Jacob wakes up changed by what he has seen.", "The same ground looks different after God's revelation.", "A place can become holy in a person's memory because God met them there."]),
+    day11Phrase("How Dreadful Is This Place", ["Dreadful here means awe-filled and overwhelming, not evil.", "Jacob feels the holy seriousness of God's presence.", "This is not casual spirituality; it is trembling wonder."]),
+    day11Phrase("This Is None Other", ["Jacob realizes the place is not ordinary.", "What looked like a random overnight stop is connected to heaven.", "God was near before Jacob knew how to name it."]),
+    day11Phrase("Rose Up Early In The Morning", ["Jacob responds quickly after the dream.", "He does not treat the encounter like a strange night he can ignore.", "The morning becomes a moment of worshipful action."]),
+    day11Phrase("Took The Stone", ["The same stone that supported his head becomes a memorial.", "God turns the object of discomfort into a marker of mercy.", "Jacob's hard night becomes something he wants to remember."]),
+    day11Phrase("Called The Name Of That Place Bethel", ["Bethel means house of God.", "Jacob gives the place a name that matches what God revealed there.", "Naming the place helps preserve the encounter for the future."]),
+    day11Phrase("The Name Of That City Was Called Luz", ["Luz was the earlier name of the place.", "Genesis tells us the old name so we feel the transformation.", "God's meeting with Jacob gives the place a new meaning in the covenant story."]),
+  ],
+  "Genesis 28:20-22": [
+    day11Phrase("If God Will Be With Me", ["Jacob repeats the promise of God's presence, but as a young man's vow.", "His faith is real and still developing.", "He is learning to trust the God who has already promised to be with him."]),
+    day11Phrase("Keep Me In This Way", ["Jacob asks God to guard him on the road ahead.", "The way includes travel, danger, Laban's house, and eventual return.", "He needs more than directions; he needs divine keeping."]),
+    day11Phrase("This Stone Which I Have Set For A Pillar", ["Jacob points back to the memorial he just raised.", "The stone becomes a witness to the vow.", "It ties his future response to the place where God met him."]),
+    day11Phrase("Shall Be God's House", ["Jacob marks Bethel as a place of worship and memory.", "He is not building a temple yet, but he is naming the place as belonging to God.", "His lonely campsite has become a holy landmark."]),
+    day11Phrase("Of All That Thou Shalt Give Me", ["Jacob recognizes that future provision will come from God.", "He does not yet have much, but he is already speaking about received gifts.", "Faith learns to see possessions as entrusted, not self-made."]),
+  ],
+  "Genesis 29:1-3": [
+    day11Phrase("Came Into The Land Of The People Of The East", ["Jacob arrives in the broader region where his mother's family lives.", "The phrase signals that he has crossed into a different world.", "The promise is traveling outside the familiar land for a season."]),
+    day11Phrase("Out Of That Well They Watered The Flocks", ["The well is the center of life and work in this scene.", "Without water, the flocks cannot survive.", "God's guidance meets Jacob in a place of ordinary daily need."]),
+    day11Phrase("A Great Stone Was Upon The Well's Mouth", ["The stone blocks access to the water until the right time.", "It creates tension and expectation in the scene.", "When Rachel arrives, this stone will become part of Jacob's emotional response."]),
+    day11Phrase("Gathered All The Flocks", ["The shepherds wait for the full group before opening the well.", "This shows a shared custom and community rhythm.", "Jacob is entering a place with rules and habits he does not yet know."]),
+    day11Phrase("Put The Stone Again Upon The Well's Mouth", ["After watering, the stone is returned to protect the water source.", "This detail shows order and repetition in shepherd life.", "Genesis grounds big covenant events inside real work routines."]),
+  ],
+  "Genesis 29:4-6": [
+    day11Phrase("We Be Of Haran", ["The shepherds answer with the place Jacob is seeking.", "This is a quiet confirmation that he has reached the right region.", "God's keeping is showing up through a simple conversation."]),
+    day11Phrase("The Son Of Nahor", ["Laban is identified through the older family line.", "This connects Jacob's journey back to Abraham's kin.", "The family tree is not background noise; it guides the covenant story."]),
+    day11Phrase("Behold, Rachel His Daughter", ["Rachel appears as the answer to Jacob's search before she even speaks.", "The moment gathers family, future, and emotion into one arrival.", "Jacob is about to meet the woman he will love deeply."]),
+    day11Phrase("Cometh With The Sheep", ["Rachel comes as a shepherdess at work.", "She is introduced through responsibility, not decoration.", "The future family story begins beside ordinary labor."]),
+  ],
+  "Genesis 29:7-8": [
+    day11Phrase("Lo, It Is Yet High Day", ["Jacob notices that much of the workday remains.", "He wonders why the shepherds are waiting instead of watering and grazing.", "The line shows his practical, active nature."]),
+    day11Phrase("Neither Is It Time That The Cattle Should Be Gathered Together", ["Jacob thinks the animals should still be out feeding.", "He is reading the scene through his own expectations.", "A stranger is already trying to understand the customs of a new place."]),
+    day11Phrase("We Cannot", ["The shepherds answer with a boundary Jacob did not know.", "The custom of the well controls what they can do.", "Jacob is learning that this new household world has rules he cannot simply assume."]),
+    day11Phrase("Until All The Flocks Be Gathered Together", ["The well opens when the whole group is present.", "That keeps the water use communal and ordered.", "The detail prepares us for Jacob's surprising action when Rachel arrives."]),
+    day11Phrase("Then We Water The Sheep", ["Watering is the goal of the whole gathering.", "The animals wait, the shepherds wait, and the stone waits.", "The scene builds anticipation before Jacob acts."]),
+  ],
+  "Genesis 29:9-12": [
+    day11Phrase("For She Kept Them", ["Rachel is responsible for her father's sheep.", "This small phrase gives her dignity and agency in the scene.", "She is working when Jacob meets her."]),
+    day11Phrase("Laban His Mother's Brother", ["The phrase repeats the family connection so readers understand Jacob's emotion.", "Rachel is not only beautiful to him; she is kin from his mother's house.", "After exile and loneliness, family is suddenly in front of him."]),
+    day11Phrase("The Sheep Of Laban His Mother's Brother", ["Jacob waters the flock because it belongs to the family he came to find.", "Service becomes his first action toward Laban's house.", "This begins the long story of Jacob working around Laban's animals."]),
+    day11Phrase("Jacob Kissed Rachel", ["The kiss is part family greeting, part emotional overflow, and part the opening of love.", "The scene is intense because Jacob has finally reached his mother's kin.", "Genesis lets this meeting feel human and immediate."]),
+    day11Phrase("Rebekah's Son", ["Jacob identifies himself through his mother.", "That matters because Rebekah is Rachel's aunt and Laban's sister.", "The family connection makes Rachel run with the news."]),
+    day11Phrase("She Ran And Told Her Father", ["Rachel carries the news home quickly.", "The well scene now moves into Laban's house.", "Jacob's private arrival becomes a family event."]),
+  ],
+  "Genesis 29:13-15": [
+    day11Phrase("When Laban Heard The Tidings", ["News of Jacob reaches Laban before Jacob does.", "This echoes Genesis 24, where Laban responded quickly when Abraham's servant came.", "The family welcome begins with information moving fast."]),
+    day11Phrase("He Rehearsed The Matter To Laban", ["Jacob tells the story in detail.", "He likely explains why he has come, what happened at home, and how he found them.", "That vulnerability gives Laban both knowledge and opportunity."]),
+    day11Phrase("Surely Thou Art My Bone And My Flesh", ["Laban's words sound deeply welcoming.", "He claims Jacob as close family.", "But the coming chapters will test whether family language will be matched by faithful treatment."]),
+    day11Phrase("Because Thou Art My Brother", ["Brother here means close relative, not literal brother.", "Laban uses kinship language as he begins discussing Jacob's labor.", "The sentence sounds generous, but it opens the door to wages and control."]),
+    day11Phrase("Serve Me For Nought", ["Laban recognizes Jacob has been working without formal wages.", "The word nought means nothing.", "This sounds fair on the surface, but Laban is already calculating what Jacob's service is worth to him."]),
+    day11Phrase("Tell Me, What Shall Thy Wages Be?", ["Laban asks Jacob to name payment.", "That question shapes the next seven years of Jacob's life.", "A family welcome now becomes a labor negotiation."]),
+  ],
+  "Genesis 29:16-20": [
+    day11Phrase("The Name Of The Elder Was Leah", ["Leah is named first because she is the older daughter.", "That birth order will become Laban's excuse later.", "Genesis places the detail early so the later deception lands with bitter irony."]),
+    day11Phrase("The Name Of The Younger Was Rachel", ["Rachel is the younger daughter, and she is the one Jacob loves.", "The younger/elder pattern has already mattered in Jacob's life.", "Now that same kind of family order will be used against him."]),
+    day11Phrase("Well Favoured", ["This phrase means Rachel was attractive in form and appearance.", "The text highlights why Jacob is drawn to her.", "But beauty also becomes part of the desire Laban can exploit."]),
+    day11Phrase("For Rachel Thy Younger Daughter", ["Jacob names the exact woman he wants.", "He is not making a vague agreement.", "That clarity makes Laban's later switch even more dishonest."]),
+    day11Phrase("It Is Better That I Give Her To Thee", ["Laban's answer sounds agreeable without being fully direct.", "He never plainly says, yes, Rachel will be yours after seven years.", "The careful wording leaves room for the manipulation that follows."]),
+    day11Phrase("Abide With Me", ["Laban keeps Jacob close through the agreement.", "Jacob gains a path toward Rachel, but Laban gains years of labor.", "The household bond is becoming a labor trap."]),
+  ],
+  "Genesis 29:21-25": [
+    day11Phrase("My Days Are Fulfilled", ["Jacob has completed the seven years he promised.", "He comes to Laban with the confidence of a man who kept his word.", "The sentence makes Laban's betrayal feel even sharper."]),
+    day11Phrase("Laban Gathered Together All The Men Of The Place", ["The wedding involves the local community.", "That public setting makes the deception more complex.", "Many people are gathered around a celebration built on hidden betrayal."]),
+    day11Phrase("Brought Her To Him", ["Laban brings Leah to Jacob under cover of the wedding night.", "The wording is simple, but the act is devastating.", "A father uses his daughter and deceives his nephew at the same time."]),
+    day11Phrase("Laban Gave Unto His Daughter Leah Zilpah", ["Zilpah enters the story as Leah's maid.", "This detail matters because Zilpah will later become part of the childbearing rivalry.", "Genesis is planting names that will matter in Israel's family tree."]),
+    day11Phrase("For A Handmaid", ["A handmaid was a female servant attached to the household.", "In this family system, servants could be pulled into the struggles of the main family.", "The phrase prepares the reader for later painful arrangements."]),
+    day11Phrase("Did Not I Serve With Thee For Rachel?", ["Jacob appeals to the original agreement.", "He knows exactly what he worked for.", "The question exposes Laban's deception and Jacob's shock."]),
+  ],
+  "Genesis 29:26-30": [
+    day11Phrase("The Younger Before The Firstborn", ["Laban claims local custom forbids giving the younger daughter first.", "The line is loaded because Jacob, the younger brother, had taken the firstborn blessing.", "Now the younger/firstborn issue returns against him."]),
+    day11Phrase("We Will Give Thee This Also", ["Laban offers Rachel too, but only under more conditions.", "He speaks as if he is being reasonable after creating the crisis.", "Manipulators often present the second trap as a solution to the first wound."]),
+    day11Phrase("For The Service Which Thou Shalt Serve", ["Rachel is tied to another period of labor.", "Jacob's love is turned into seven more years of work.", "Laban's deception becomes a profit system."]),
+    day11Phrase("Seven Other Years", ["The number doubles Jacob's obligation.", "Fourteen years of service now stand behind his marriages.", "The cost of Laban's deception will shape Jacob's whole adult life."]),
+    day11Phrase("Laban Gave To Rachel His Daughter Bilhah", ["Bilhah is introduced as Rachel's maid.", "Like Zilpah, she will later be drawn into the sisters' rivalry.", "Genesis names her now because she will matter in the birth of Israel's tribes."]),
+    day11Phrase("Jacob Did So", ["Jacob accepts the painful terms.", "He has little power in Laban's house and still deeply loves Rachel.", "The sentence carries resignation, desire, and entrapment all at once."]),
+  ],
+  "Genesis 29:31-35": [
+    day11Phrase("Rachel Was Barren", ["Rachel has Jacob's love, but she does not yet have children.", "Leah has children, but not Jacob's full affection.", "Genesis sets up a painful contrast where each sister carries a different ache."]),
+    day11Phrase("Leah Conceived", ["God gives Leah a child in the place of rejection.", "This birth is mercy, but it is also mixed with longing.", "Leah's motherhood begins inside an emotionally divided marriage."]),
+    day11Phrase("The LORD Hath Looked Upon My Affliction", ["Leah names her pain honestly.", "Affliction means distress, misery, or humiliation.", "She believes God has seen what Jacob has not loved."]),
+    day11Phrase("Now Therefore My Husband Will Love Me", ["Leah hopes a son will win Jacob's affection.", "That hope is deeply human and deeply sad.", "The child is a gift, but Leah is still reaching for love."]),
+    day11Phrase("Because The LORD Hath Heard", ["With Simeon, Leah says God heard her pain.", "The Lord is not distant from the unloved wife.", "Her sons become living witnesses that God listens where people overlook."]),
+    day11Phrase("Now This Time Will My Husband Be Joined Unto Me", ["Leah keeps hoping each child will close the emotional distance.", "The line helps readers feel that repeated blessing has not erased her wound.", "She wants attachment, not just children."]),
+    day11Phrase("She Left Bearing", ["The chapter pauses Leah's childbearing after Judah.", "That pause will matter in the next chapter's rivalry.", "Genesis ends the section with Leah praising God, but the family struggle is not finished."]),
+  ],
+};
+
+function deepenDay11PhraseCards(section: PersonalGenesisPhraseSectionInput): PersonalGenesisPhraseSectionInput {
+  const additions = DAY_11_REAL_PHRASE_ADDITIONS[section.reference] ?? [];
+  return {
+    ...section,
+    phrases: [...section.phrases, ...additions],
+  };
+}
+
 const DAY_12_GENESIS_30_FINAL_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
   { chapter: 30, startVerse: 1, endVerse: 6, reference: "Genesis 30:1-6", title: "Rachel's Pain And Bilhah", icon: "💔", phrases: [
     phrase("💔 Rachel Envied Her Sister", ["Rachel is loved by Jacob, but Leah has the children Rachel longs for.", "That mix makes the household emotionally painful because each sister has something the other desperately wants.", "Envy turns another person's blessing into a personal wound.", "Genesis is honest enough to show that covenant families can still be full of comparison.", "Rachel does not only want a child; she feels like Leah's children are proof that she is losing.", "Blessing without peace can still become rivalry when hearts are measuring themselves against each other."]),
@@ -3606,10 +3740,102 @@ const DAY_12_GENESIS_30_FINAL_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
   ] },
 ];
 
+const day12Genesis30Phrase = (title: string, lines: string[]): [string, string] => phrase(title, lines);
+
+const DAY_12_GENESIS_30_REAL_PHRASE_ADDITIONS: Record<string, Array<[string, string]>> = {
+  "Genesis 30:1-6": [
+    day12Genesis30Phrase("Give Me Children", ["Rachel's demand is raw pain spoken out loud.", "She has Jacob's love, but Leah has the children Rachel longs for.", "Genesis lets the reader feel how unmet longing can become pressure placed on another person."]),
+    day12Genesis30Phrase("Or Else I Die", ["Rachel speaks as if life cannot continue without children.", "The sentence is not calm theology; it is despair talking.", "A beginner should feel the emotional weight of barrenness in this family world."]),
+    day12Genesis30Phrase("Am I In God's Stead?", ["Jacob knows he cannot open Rachel's womb.", "The old wording means, am I in God's place?", "He says something true, but the harshness of the moment shows how helplessness can turn into anger."]),
+    day12Genesis30Phrase("Bilhah My Maid", ["Rachel turns to her servant Bilhah as a household solution.", "This echoes Sarah and Hagar earlier in Genesis.", "The family repeats old patterns when pain feels unbearable."]),
+    day12Genesis30Phrase("She Shall Bear Upon My Knees", ["This phrase describes a birth being counted into Rachel's household line.", "It shows an ancient custom that can confuse modern readers.", "Genesis records the custom while still letting us feel the emotional mess underneath it."]),
+    day12Genesis30Phrase("I May Also Have Children By Her", ["Rachel wants Bilhah's child to answer her own grief.", "The child becomes part of a rivalry before he is even born.", "The promise family is growing, but the home is full of wounded desire."]),
+    day12Genesis30Phrase("Dan", ["Dan's name is tied to Rachel's claim that God has judged and heard her.", "She receives the birth as an answer in the struggle with Leah.", "Even the names of the tribes are born inside family pain and prayer language."]),
+  ],
+  "Genesis 30:7-8": [
+    day12Genesis30Phrase("Bilhah Conceived Again", ["Bilhah bears another son for Jacob.", "The family is growing, but through a painful arrangement created by rivalry.", "Genesis is honest about growth that happens inside broken household choices."]),
+    day12Genesis30Phrase("Rachel Said", ["Rachel interprets the birth with her own words.", "The naming speeches reveal the heart of the family conflict.", "A baby is born, but the mother language around him is wrestling and competition."]),
+    day12Genesis30Phrase("Great Wrestlings", ["Rachel describes her life with Leah as a hard contest.", "This is not a peaceful sisterhood; it is emotional combat inside one household.", "The phrase helps a beginner feel how rivalry has taken over the family story."]),
+    day12Genesis30Phrase("I Have Wrestled With My Sister", ["Rachel names Leah as the person she is fighting against.", "The tragedy is that both sisters are wounded by the same broken marriage structure.", "Instead of healing, their pain keeps turning sideways toward each other."]),
+    day12Genesis30Phrase("I Have Prevailed", ["Rachel believes this birth gives her a kind of victory.", "That shows how deeply the household has become a scoreboard.", "Genesis lets the reader see how comparison can twist even good gifts into proof of winning."]),
+    day12Genesis30Phrase("Naphtali", ["Naphtali's name carries the memory of Rachel's wrestling.", "A future tribe begins with a name shaped by sisterly conflict.", "God can work through wounded beginnings without calling the wounds healthy."]),
+  ],
+  "Genesis 30:9-13": [
+    day12Genesis30Phrase("Leah Left Bearing", ["Leah sees that her own childbearing has paused.", "Instead of rest, the pause becomes another trigger in the rivalry.", "The sisters keep responding to each other's moves."]),
+    day12Genesis30Phrase("Zilpah Her Maid", ["Zilpah is drawn into Leah's side of the competition.", "Like Bilhah, she is a servant whose body becomes part of the household struggle.", "Genesis names her so readers remember she is not invisible."]),
+    day12Genesis30Phrase("A Troop Cometh", ["Leah names Gad with language connected to fortune, troop, or increase.", "The phrase sounds like another gain in the family contest.", "Children are being received through the lens of rivalry."]),
+    day12Genesis30Phrase("Gad", ["Gad's name preserves Leah's interpretation of the birth.", "Names in Genesis are little windows into the heart of the moment.", "This son carries a name born in the pressure between sisters."]),
+    day12Genesis30Phrase("The Daughters Will Call Me Blessed", ["Leah longs for public recognition.", "She wants other women to look at her life and call her blessed.", "After years of feeling unwanted, being seen by others matters deeply to her."]),
+    day12Genesis30Phrase("Asher", ["Asher's name is tied to happiness and blessing.", "The name sounds joyful, but the context is still complicated.", "Genesis often gives us joy and ache in the same sentence."]),
+  ],
+  "Genesis 30:14-18": [
+    day12Genesis30Phrase("Mandrakes", ["Mandrakes were plants associated in the ancient world with fertility and desire.", "That is why Rachel wants them so badly.", "The object is small, but it carries huge emotional weight in a home desperate for children."]),
+    day12Genesis30Phrase("Give Me, I Pray Thee", ["Rachel's request sounds polite, but it touches Leah's deepest wound.", "To Leah, Rachel already has Jacob's affection and now wants what Leah's son found.", "Small requests can feel large when old pain is underneath them."]),
+    day12Genesis30Phrase("Thou Hast Taken My Husband", ["Leah speaks from years of feeling displaced in Jacob's heart.", "Even with children, she does not feel chosen.", "The sentence exposes how both sisters are hurting in different ways."]),
+    day12Genesis30Phrase("He Shall Lie With Thee Tonight", ["Rachel trades a night with Jacob for the mandrakes.", "The marriage has become something negotiated between wounded sisters.", "Genesis records this plainly so we feel how damaged the household has become."]),
+    day12Genesis30Phrase("God Hath Given Me My Hire", ["Leah names the birth as wages or hire from God.", "The language is tied to the bargain over Jacob and the mandrakes.", "Even blessing is being interpreted through the strange economy of this home."]),
+    day12Genesis30Phrase("Issachar", ["Issachar's name is connected to reward or hire.", "The name preserves the story of bargaining, longing, and divine hearing.", "A future tribe begins inside a complicated family night."]),
+  ],
+  "Genesis 30:19-24": [
+    day12Genesis30Phrase("Leah Conceived Again", ["Leah continues bearing sons in the household where she still longs for love.", "The births are real gifts, but they do not erase the ache under her words.", "Genesis keeps both mercy and pain in view."]),
+    day12Genesis30Phrase("Zebulun", ["Zebulun's name is tied to honor or dwelling.", "Leah still hopes Jacob will finally dwell with her because she has borne him children.", "The name carries her longing to be valued."]),
+    day12Genesis30Phrase("Afterwards She Bare A Daughter", ["Dinah is named briefly, but she will matter later in Genesis.", "This reminds readers that the family includes daughters too, even when the tribal focus is on sons.", "A short mention can prepare a future chapter."]),
+    day12Genesis30Phrase("God Hearkened To Her", ["God listens to Rachel after long barrenness.", "The text shifts attention from rivalry and mandrakes to divine mercy.", "Rachel's answer comes because God hears, not because the household has figured out control."]),
+    day12Genesis30Phrase("Opened Her Womb", ["This phrase shows God giving life where Rachel could not create it herself.", "Genesis has repeatedly shown that the promise family depends on God's power over the womb.", "The long ache finally turns into birth."]),
+    day12Genesis30Phrase("Taken Away My Reproach", ["Rachel feels her shame lifted through Joseph's birth.", "In her world, childlessness carried public pain and private grief.", "God's mercy meets the place where she felt exposed and diminished."]),
+    day12Genesis30Phrase("Joseph", ["Joseph's name carries both relief and request.", "Rachel rejoices that God has taken away reproach and asks the Lord to add another son.", "This child will become central to the rest of Genesis."]),
+  ],
+  "Genesis 30:25-30": [
+    day12Genesis30Phrase("When Rachel Had Born Joseph", ["Joseph's birth becomes a turning point in Jacob's desire to return home.", "The arrival of this son changes the emotional timing of the story.", "Jacob begins looking back toward the land of promise."]),
+    day12Genesis30Phrase("Mine Own Place", ["Jacob does not see Laban's house as his final home.", "He has lived there for years, but his identity is still tied to the promise land.", "The phrase carries homesickness and covenant direction together."]),
+    day12Genesis30Phrase("Mine Own Country", ["Jacob wants to return to the land connected to Abraham and Isaac.", "This is not just personal preference.", "The covenant story is pulling him home."]),
+    day12Genesis30Phrase("Appoint Me Thy Wages", ["Laban wants Jacob to stay, so he asks him to name wages.", "The question sounds generous, but Laban's history makes it dangerous.", "Jacob must negotiate with a man who benefits from keeping him close."]),
+    day12Genesis30Phrase("I Have Learned By Experience", ["Laban admits he has recognized God's blessing through Jacob.", "The phrase suggests observation, calculation, or divination-like discernment.", "Laban sees the benefit of God's favor, but he wants to keep the benefit under his roof."]),
+    day12Genesis30Phrase("Since My Coming", ["Jacob reminds Laban that the household increased after Jacob arrived.", "He is not bragging; he is naming the fruit of God's blessing on his labor.", "The years with Laban have produced visible increase."]),
+  ],
+  "Genesis 30:31-36": [
+    day12Genesis30Phrase("What Shall I Give Thee?", ["Laban asks again about payment because he wants Jacob's labor to continue.", "The question creates the next agreement between them.", "In this family, wages are never just wages; they become the arena of trust and manipulation."]),
+    day12Genesis30Phrase("Pass Through All Thy Flock", ["Jacob proposes a way to separate his wages from Laban's animals.", "The plan is visual and checkable.", "Marked animals will show what belongs to Jacob."]),
+    day12Genesis30Phrase("All The Speckled And Spotted Cattle", ["The marked animals become Jacob's wages.", "These differences matter because they make ownership visible.", "In a house full of shifting terms, visible boundaries matter."]),
+    day12Genesis30Phrase("Every Brown Cattle Among The Sheep", ["Jacob includes darker animals among the sheep as part of the agreement.", "A beginner may miss that color markings are the whole wage system here.", "The flock itself will become the record."]),
+    day12Genesis30Phrase("Laban Said, Behold, I Would It Might Be According To Thy Word", ["Laban agrees quickly, but his next move shows he is still protecting himself.", "His words sound cooperative while his actions create disadvantage for Jacob.", "Genesis teaches readers to watch what people do after they agree."]),
+    day12Genesis30Phrase("Set Three Days' Journey Betwixt Himself And Jacob", ["Laban creates distance between the marked animals and Jacob.", "That makes Jacob's starting point look weaker.", "The agreement begins with Laban already tilting the field."]),
+  ],
+  "Genesis 30:37-39": [
+    day12Genesis30Phrase("Green Poplar", ["Jacob uses fresh rods from trees in his flock strategy.", "The detail feels strange to modern readers because it comes from ancient shepherding practice.", "Genesis reports the method, but the larger story will point to God's provision."]),
+    day12Genesis30Phrase("Hazel And Chestnut Tree", ["The tree names make the scene concrete and earthy.", "Jacob is working with ordinary materials in the field.", "The Bible's promise story often moves through practical labor, not only altar moments."]),
+    day12Genesis30Phrase("Pilled White Strakes", ["Pilled means peeled, and strakes are streaks or stripes.", "Jacob peels the rods so white streaks show.", "The phrase explains why the rods visually match the streaked animals he hopes to receive."]),
+    day12Genesis30Phrase("Made The White Appear", ["Jacob exposes the lighter wood under the bark.", "The image matters because this whole wage arrangement is about visible markings.", "The scene is strange, but it is deeply tied to what can be seen in the flock."]),
+    day12Genesis30Phrase("Set The Rods Before The Flocks", ["Jacob places the rods where the animals come together.", "He is deliberate, observant, and strategic.", "The story does not present him as passive under Laban's unfairness."]),
+    day12Genesis30Phrase("In The Gutters", ["Gutters are channels or troughs where the flocks drank.", "The setting is the working place of shepherd life.", "Jacob's increase happens around water, animals, timing, and daily labor."]),
+    day12Genesis30Phrase("Watering Troughs", ["The watering troughs are where the flocks gather and breed.", "A beginner should see this as the practical center of the method.", "God's provision is going to work through the ordinary rhythms of the flock."]),
+    day12Genesis30Phrase("The Flocks Conceived", ["The animals breed in the setting Jacob has arranged.", "Genesis 31 will make clear that God is the deeper reason Jacob prospers.", "Human strategy is present, but God's rule is not absent."]),
+    day12Genesis30Phrase("Ringstraked", ["Ringstraked means streaked or striped.", "The word is old and easy to skip.", "It describes the marked animals that will count as Jacob's wages."]),
+    day12Genesis30Phrase("Spotted", ["Spotted animals have visible marks that separate them from the plain-colored flock.", "That matters because the marks prove ownership under the agreement.", "The animals carry the evidence of God's provision under unfair terms."]),
+  ],
+  "Genesis 30:40-43": [
+    day12Genesis30Phrase("Jacob Did Separate The Lambs", ["Jacob keeps his growing flock distinct from Laban's.", "Separation protects the agreement from confusion.", "The man who has lived under manipulation is learning to create visible boundaries."]),
+    day12Genesis30Phrase("Faces Of The Flocks", ["The phrase describes how Jacob positions the animals before the marked ones.", "The scene is visual and practical.", "Jacob is carefully managing what happens in the flocks."]),
+    day12Genesis30Phrase("His Own Flocks", ["Jacob finally has flocks that are clearly his.", "This matters after years of serving another man's house.", "God is building Jacob's household for the return journey."]),
+    day12Genesis30Phrase("The Feebler Were Laban's", ["The weaker animals remain with Laban.", "The outcome reverses Laban's attempt to keep advantage.", "The manipulator does not control the final result."]),
+    day12Genesis30Phrase("The Stronger Jacob's", ["Jacob's flock becomes stronger despite Laban's stacked arrangement.", "The story is preparing us to hear Jacob say God saw and provided.", "Blessing grows under pressure."]),
+    day12Genesis30Phrase("Maidservants, And Menservants", ["Jacob's household now includes servants along with animals.", "His wealth has become a whole traveling camp.", "The lonely man from Bethel is being prepared to return with a large family and household."]),
+    day12Genesis30Phrase("Camels, And Asses", ["Camels and donkeys show the scale of Jacob's increase.", "These animals matter for movement, work, and wealth.", "God's provision is becoming visible enough to provoke Genesis 31's conflict."]),
+  ],
+};
+
+function deepenDay12Genesis30PhraseCards(section: PersonalGenesisPhraseSectionInput): PersonalGenesisPhraseSectionInput {
+  const additions = DAY_12_GENESIS_30_REAL_PHRASE_ADDITIONS[section.reference] ?? [];
+  return {
+    ...section,
+    phrases: [...section.phrases, ...additions],
+  };
+}
+
 export const GENESIS_21_30_PERSONAL_SECTIONS = addGenesisTwentyOneToThirtySectionTexture([
   ...DAY_9_FINAL_SECTIONS,
   ...DAY_10_FINAL_SECTIONS.map(deepenDay10PhraseCards),
-  ...DAY_11_FINAL_SECTIONS.map(ensureGenesis25To30PhraseDepth),
-  ...DAY_12_GENESIS_30_FINAL_SECTIONS.map(ensureGenesis25To30PhraseDepth),
+  ...DAY_11_FINAL_SECTIONS.map(deepenDay11PhraseCards),
+  ...DAY_12_GENESIS_30_FINAL_SECTIONS.map(deepenDay12Genesis30PhraseCards),
   ...expandSplitSections(GENESIS_25_30_PERSONAL_SECTIONS),
 ]);

@@ -1726,6 +1726,123 @@ const DAY_12_GENESIS_31_FINAL_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
   ] },
 ];
 
+const day12Genesis31Phrase = (title: string, lines: string[]): [string, string] => phrase(title, lines);
+
+const DAY_12_GENESIS_31_REAL_PHRASE_ADDITIONS: Record<string, Array<[string, string]>> = {
+  "Genesis 31:1-6": [
+    day12Genesis31Phrase("Of That Which Was Our Father's Hath He Gotten", ["Laban's sons believe Jacob's increase came at their family's expense.", "Their words reveal jealousy and inheritance anxiety.", "They cannot see God's protection of Jacob because resentment is shaping their interpretation."]),
+    day12Genesis31Phrase("All This Glory", ["Glory here points to wealth, weight, and visible honor.", "Jacob's flocks have become impressive enough to change how people look at him.", "Blessing can create pressure when others think your increase should have belonged to them."]),
+    day12Genesis31Phrase("Jacob Beheld The Countenance Of Laban", ["Jacob watches Laban's face and reads the change.", "The relationship has shifted from welcome to suspicion.", "Sometimes God uses a changed atmosphere to show that a season is ending."]),
+    day12Genesis31Phrase("Not Toward Him As Before", ["Laban is not treating Jacob the way he once did.", "The phrase captures relational coldness before open conflict breaks out.", "Jacob knows the house that sheltered him is no longer safe in the same way."]),
+    day12Genesis31Phrase("Unto Thy Kindred", ["God tells Jacob to return to his family line.", "This connects the command to land, identity, and covenant belonging.", "Jacob is not just escaping Laban; he is returning to the story God promised."]),
+    day12Genesis31Phrase("Jacob Sent And Called Rachel And Leah", ["Jacob brings his wives into the decision instead of disappearing without speaking to them first.", "The departure affects them deeply because it means leaving their father's house.", "Obedience becomes a household conversation."]),
+    day12Genesis31Phrase("Ye Know That With All My Power I Have Served", ["Jacob appeals to what Rachel and Leah have seen with their own eyes.", "He has worked hard for their father, not casually or lazily.", "The coming departure is not because Jacob refused responsibility."]),
+  ],
+  "Genesis 31:7-12": [
+    day12Genesis31Phrase("Your Father Hath Deceived Me", ["Jacob names Laban's pattern plainly to Rachel and Leah.", "The man who deceived Isaac has spent years being deceived by Laban.", "Genesis shows consequences and growth without pretending Laban's actions are right."]),
+    day12Genesis31Phrase("Ten Times", ["Ten times means repeatedly and fully, not one small misunderstanding.", "Jacob has lived under changing rules for years.", "The phrase helps a beginner understand the exhaustion of unstable terms."]),
+    day12Genesis31Phrase("If He Said Thus", ["Jacob describes how Laban kept changing the agreement.", "Every new condition should have trapped Jacob, but God kept providing.", "The story turns Laban's manipulation into evidence of God's rule."]),
+    day12Genesis31Phrase("The Ringstraked Shall Be Thy Hire", ["Ringstraked means streaked or striped animals.", "These marked animals become Jacob's wages under one version of Laban's terms.", "The old word matters because it explains the flock dispute."]),
+    day12Genesis31Phrase("The Speckled", ["Speckled animals have scattered markings.", "Laban's wage changes cannot stop God from giving Jacob what the terms require.", "The flock becomes a living answer to unfairness."]),
+    day12Genesis31Phrase("The Grisled", ["Grisled means mixed-colored or streaked with different shades.", "This is another marking category in the flock.", "A beginner needs these words slowed down because they are the whole evidence system in the story."]),
+    day12Genesis31Phrase("The Angel Of God", ["God's messenger speaks into Jacob's dream.", "The conflict over animals is not merely business; heaven is involved.", "God is interpreting Jacob's years of labor and telling him what to do next."]),
+    day12Genesis31Phrase("Lift Up Now Thine Eyes", ["Jacob is told to look and see what God is showing him.", "The dream teaches him to interpret the flock increase as divine provision.", "God helps Jacob see the story beneath the surface."]),
+  ],
+  "Genesis 31:13-16": [
+    day12Genesis31Phrase("Where Thou Vowedst A Vow Unto Me", ["God remembers Jacob's Bethel vow.", "Years have passed, but the vow still matters.", "The God who met Jacob in the wilderness now calls him to complete the return."]),
+    day12Genesis31Phrase("Return Unto The Land Of Thy Kindred", ["The command repeats the direction clearly.", "Jacob must go back to the family and land connected with the covenant.", "God's call is specific, not vague inspiration."]),
+    day12Genesis31Phrase("Is There Yet Any Portion Or Inheritance", ["Rachel and Leah ask whether anything remains for them in Laban's house.", "Their words show they feel cut off by their father.", "They are ready to leave because Laban has treated them like resources, not cherished daughters."]),
+    day12Genesis31Phrase("Are We Not Counted Of Him Strangers?", ["They feel like outsiders in their own father's house.", "That is a painful reversal of what family should be.", "Laban's greed has made his daughters feel sold away and consumed."]),
+    day12Genesis31Phrase("He Hath Sold Us", ["Rachel and Leah see their marriages as something Laban used for gain.", "The bride price and labor have benefited him, not protected them.", "Their father has turned family into transaction."]),
+    day12Genesis31Phrase("All The Riches Which God Hath Taken", ["They recognize God as the one who transferred provision to Jacob's household.", "This matters because they are not only following Jacob's frustration.", "They see God's justice in the situation."]),
+  ],
+  "Genesis 31:17-21": [
+    day12Genesis31Phrase("Set His Sons And His Wives Upon Camels", ["Jacob organizes his household for a major journey.", "This is not a quick walk away; it is a large family migration.", "Obedience has practical weight: children, wives, animals, and belongings must move together."]),
+    day12Genesis31Phrase("Carried Away All His Cattle", ["Jacob takes the flocks God had given him under Laban's changing terms.", "These animals are the visible fruit of years of labor and divine provision.", "They will sustain the family on the return journey."]),
+    day12Genesis31Phrase("For To Go To Isaac His Father", ["Jacob's destination is named through Isaac.", "He is returning to the father he left after deception and danger.", "The road home is covenant-shaped, but emotionally loaded."]),
+    day12Genesis31Phrase("Laban Went To Shear His Sheep", ["Laban's absence creates the moment for departure.", "Sheep-shearing was a busy season and often a festive one.", "Jacob leaves while Laban is occupied, which explains how the escape begins."]),
+    day12Genesis31Phrase("The Images", ["The images are household gods or idols connected to Laban's family religion.", "Rachel's theft is spiritually troubling and narratively dangerous.", "The family is leaving for the God of Bethel while carrying hidden idols."]),
+    day12Genesis31Phrase("Jacob Stole Away Unawares", ["The old phrase means Jacob left secretly without telling Laban.", "It shows fear and strategy after years of manipulation.", "The escape is obedient in direction but messy in execution."]),
+    day12Genesis31Phrase("Mount Gilead", ["Gilead becomes the place where Laban catches up and the boundary covenant is made.", "The location matters because the escape will become a confrontation there.", "The road home includes a mountain meeting before Jacob can move on."]),
+  ],
+  "Genesis 31:22-24": [
+    day12Genesis31Phrase("It Was Told Laban On The Third Day", ["Laban learns after Jacob has a head start.", "The delay shows how secret the departure was.", "But hidden movement does not prevent confrontation forever."]),
+    day12Genesis31Phrase("He Took His Brethren With Him", ["Laban does not come alone.", "He gathers a group strong enough to pursue and pressure Jacob.", "The chase carries the feel of threat, not just family concern."]),
+    day12Genesis31Phrase("Seven Days' Journey", ["Laban pursues for a full week before catching Jacob.", "The length of the chase shows determination.", "Jacob's escape is not easy, even after God commands him to return."]),
+    day12Genesis31Phrase("Take Heed", ["God warns Laban to be careful.", "The words place a divine boundary around the confrontation before it happens.", "God is managing danger ahead of Jacob."]),
+    day12Genesis31Phrase("Speak Not To Jacob Either Good Or Bad", ["Laban is forbidden from manipulating Jacob with either threats or sweet persuasion.", "God shuts down both force and control.", "Jacob's future is not in Laban's hands."]),
+  ],
+  "Genesis 31:25-29": [
+    day12Genesis31Phrase("Jacob Had Pitched His Tent", ["Jacob is camped in the mountain when Laban reaches him.", "The scene becomes a tense face-to-face meeting between two households.", "The road of obedience has stopped at a confrontation point."]),
+    day12Genesis31Phrase("Wherefore Didst Thou Flee Away Secretly?", ["Laban frames Jacob's departure as betrayal.", "He ignores the years of manipulation that made secrecy seem necessary.", "Controlling people often focus on how someone left rather than why they felt they had to leave."]),
+    day12Genesis31Phrase("Stolen Away From Me", ["Laban uses theft language for Jacob's departure.", "The irony is heavy because Rachel actually has stolen the images.", "The scene mixes false accusation, real hidden sin, and family control."]),
+    day12Genesis31Phrase("With Mirth, And With Songs", ["Laban claims he would have sent Jacob away with celebration.", "After twenty years of changing wages, the claim sounds hard to trust.", "His speech tries to make himself look like the wounded generous father."]),
+    day12Genesis31Phrase("Thou Hast Now Done Foolishly", ["Laban accuses Jacob of foolishness.", "He wants to control the moral interpretation of the event.", "But God has already warned Laban, which tells the reader who truly holds authority."]),
+    day12Genesis31Phrase("The God Of Your Father Spake Unto Me", ["Laban admits that Jacob's God confronted him in a dream.", "This confession proves God's protection is real.", "Even Laban has to acknowledge the boundary God placed around him."]),
+  ],
+  "Genesis 31:30-35": [
+    day12Genesis31Phrase("Longedst After Thy Father's House", ["Laban recognizes Jacob's homesickness, but uses it in an accusation.", "Jacob really did long for home.", "The problem is that Laban twists that longing into a speech about betrayal."]),
+    day12Genesis31Phrase("My Gods", ["Laban calls the stolen images his gods.", "The phrase exposes the smallness of idols that can be packed, hidden, and searched for.", "The living God has been guiding Jacob while Laban is looking for missing objects."]),
+    day12Genesis31Phrase("With Whomsoever Thou Findest Thy Gods", ["Jacob makes a severe statement without knowing Rachel has the images.", "His confidence is based on incomplete knowledge.", "The moment warns readers not to speak deadly words before hidden facts are known."]),
+    day12Genesis31Phrase("Before Our Brethren Discern Thou", ["Jacob invites public inspection in front of witnesses.", "He believes transparency will clear him.", "But the secret is not with Jacob; it is hidden under Rachel."]),
+    day12Genesis31Phrase("The Camel's Furniture", ["Rachel hides the images in the camel's saddle or baggage furniture.", "The detail is practical and tense.", "The stolen gods are concealed inside travel equipment as the family leaves Laban's world."]),
+    day12Genesis31Phrase("The Custom Of Women Is Upon Me", ["Rachel says she cannot rise because of her menstrual condition.", "This explanation stops Laban from searching where the images are hidden.", "The scene is clever and uncomfortable, showing hidden sin beneath family conflict."]),
+  ],
+  "Genesis 31:36-37": [
+    day12Genesis31Phrase("Jacob Was Wroth", ["Jacob's anger rises after Laban's search finds nothing.", "Years of unfair treatment now pour into one confrontation.", "The false accusation becomes the spark that lights a long-delayed speech."]),
+    day12Genesis31Phrase("What Is My Sin?", ["Jacob asks Laban to name the actual wrong.", "The question challenges vague suspicion and controlling blame.", "A beginner should notice Jacob is asking for evidence, not just emotional accusation."]),
+    day12Genesis31Phrase("Thou Hast So Hotly Pursued After Me", ["Jacob names the intensity of Laban's chase.", "Laban did not come gently or casually.", "His pursuit shows how strongly he wanted to regain control."]),
+    day12Genesis31Phrase("Set It Here Before My Brethren And Thy Brethren", ["Jacob calls for public evidence in front of both groups.", "He wants the matter judged openly.", "Truth is brought into the light where accusation can be tested."]),
+  ],
+  "Genesis 31:38-42": [
+    day12Genesis31Phrase("Twenty Years Have I Been With Thee", ["Jacob begins with the length of his service.", "Two decades is not a small inconvenience.", "The number helps readers feel the weight of a life season spent under Laban."]),
+    day12Genesis31Phrase("Thy Ewes And Thy She Goats Have Not Cast Their Young", ["Jacob says the animals under his care did not miscarry because of neglect.", "He is defending the quality of his shepherding.", "His work protected Laban's increase."]),
+    day12Genesis31Phrase("The Rams Of Thy Flock Have I Not Eaten", ["Jacob did not use Laban's flock for his own appetite.", "That matters because shepherds could exploit what they managed.", "Jacob claims integrity in the resources entrusted to him."]),
+    day12Genesis31Phrase("That Which Was Torn Of Beasts", ["When predators killed animals, Jacob did not make Laban absorb the loss.", "Shepherding involved danger and real cost.", "Jacob carried responsibility even when losses were not his fault."]),
+    day12Genesis31Phrase("Of My Hand Didst Thou Require It", ["Laban made Jacob pay for losses.", "The phrase shows how hard and demanding the arrangement was.", "Jacob's labor was not only tiring; it was financially risky."]),
+    day12Genesis31Phrase("Stolen By Day, Or Stolen By Night", ["Jacob was held responsible for missing animals at all times.", "The work never truly stopped.", "His life under Laban was constant vigilance."]),
+    day12Genesis31Phrase("The Drought Consumed Me", ["Jacob describes heat draining him during the day.", "This makes his labor physical and exhausting.", "The blessing on Jacob did not mean the work was easy."]),
+    day12Genesis31Phrase("My Sleep Departed From Mine Eyes", ["Jacob lost rest because of the demands of the flock.", "The phrase helps readers feel the long-term cost of faithful labor.", "God saw not only the results, but the sleepless nights behind them."]),
+    day12Genesis31Phrase("Except The God Of My Father", ["Jacob says he would have left empty if God had not been with him.", "His defense finally rests on God's protection, not his own cleverness.", "The Lord is the reason Laban did not get the last word."]),
+    day12Genesis31Phrase("The Fear Of Isaac", ["This title points to the God Isaac reveres.", "Jacob appeals to the God of his father's worship and awe.", "The phrase shows covenant reverence in the middle of a family labor dispute."]),
+    day12Genesis31Phrase("Rebuked Thee Yesternight", ["Jacob interprets Laban's dream warning as God's rebuke.", "God saw the injustice and confronted the man with power.", "The final word over Jacob's twenty years belongs to God."]),
+  ],
+  "Genesis 31:43-48": [
+    day12Genesis31Phrase("All That Thou Seest Is Mine", ["Laban still speaks like everything belongs to him.", "His possessive language reveals how hard it is for him to release control.", "Even after God restrains him, his words cling to ownership."]),
+    day12Genesis31Phrase("What Can I Do This Day?", ["Laban admits the limits of his power.", "He claims the family as his, but he cannot take them back.", "God's boundary has made control give way to covenant."]),
+    day12Genesis31Phrase("Let Us Make A Covenant", ["The covenant creates a formal boundary between Jacob and Laban.", "This is not sentimental reconciliation.", "It is a structured peace after trust has been badly damaged."]),
+    day12Genesis31Phrase("It Shall Be For A Witness", ["The agreement needs a witness because the men do not fully trust one another.", "The heap and pillar will testify to what was promised.", "Genesis makes memory visible through stones."]),
+    day12Genesis31Phrase("Gather Stones", ["Jacob's brethren collect stones for a heap.", "The physical act turns a tense confrontation into a marked agreement.", "Everyone can see the boundary being built."]),
+    day12Genesis31Phrase("They Did Eat There Upon The Heap", ["The meal seals the covenant at the boundary marker.", "Eating together does not erase the past, but it formalizes peace.", "The chapter moves from chase to confrontation to guarded table."]),
+  ],
+  "Genesis 31:49-50": [
+    day12Genesis31Phrase("The LORD Watch Between Me And Thee", ["This phrase is often treated as sweet, but here it comes from distrust.", "Laban wants God to watch because he and Jacob will be separated.", "The words are less a friendship bracelet and more a guarded warning."]),
+    day12Genesis31Phrase("When We Are Absent One From Another", ["The covenant must hold when they cannot monitor each other.", "Distance requires accountability before God.", "The boundary is meant to work even after the emotional pressure of the meeting passes."]),
+    day12Genesis31Phrase("If Thou Shalt Afflict My Daughters", ["Laban warns Jacob about mistreating Leah and Rachel.", "The concern is real, even though Laban himself has hurt them.", "Genesis lets complicated people speak words that still matter."]),
+    day12Genesis31Phrase("No Man Is With Us", ["Laban says human witnesses may not always be present.", "That is why he appeals to God as witness.", "The God who saw Jacob's affliction is now invoked to see Jacob's future behavior too."]),
+  ],
+  "Genesis 31:51-55": [
+    day12Genesis31Phrase("This Heap", ["The heap is the pile of stones marking the covenant.", "It is a visible reminder that the conflict has reached a boundary.", "The stones say the past cannot keep spilling forward without limits."]),
+    day12Genesis31Phrase("This Pillar", ["The pillar stands beside the heap as another witness marker.", "Jacob has used stones before to mark holy moments.", "Here a stone marks separation, accountability, and protected distance."]),
+    day12Genesis31Phrase("I Will Not Pass Over This Heap To Thee", ["Laban promises not to cross the boundary for harm.", "The covenant creates a line neither side should violate.", "Peace here is maintained by distance and clear limits."]),
+    day12Genesis31Phrase("The God Of Abraham", ["The covenant is sworn under the God connected to Abraham's story.", "This brings the family conflict under the larger covenant memory.", "Jacob's messy family road is still being watched by the God of promise."]),
+    day12Genesis31Phrase("The God Of Nahor", ["Nahor connects to Laban's family line.", "The oath language reaches across both sides of the family tree.", "This boundary is between relatives, not strangers."]),
+    day12Genesis31Phrase("Jacob Sware By The Fear Of His Father Isaac", ["Jacob swears by the God Isaac reveres.", "This keeps Jacob's oath tied to the covenant line of Abraham and Isaac.", "The phrase carries holy awe, not casual speech."]),
+    day12Genesis31Phrase("Offered Sacrifice Upon The Mount", ["Jacob worships after the boundary is made.", "The sacrifice marks God's preservation through a dangerous confrontation.", "Conflict closes with worship because God has kept Jacob from Laban's hand."]),
+    day12Genesis31Phrase("Called His Brethren To Eat Bread", ["The shared meal gives the agreement a formal close.", "Eating bread together does not mean deep trust has returned.", "It means the boundary has been recognized and the conflict is being settled."]),
+    day12Genesis31Phrase("Kissed His Sons And His Daughters", ["Laban says goodbye to the family he tried to control.", "The farewell is tender and complicated at the same time.", "Genesis lets even difficult relationships end with real emotion."]),
+    day12Genesis31Phrase("Returned Unto His Place", ["Laban goes back, and Jacob's road forward opens.", "This line closes twenty years of pressure under Laban.", "God has brought Jacob out with family, flocks, and protection."]),
+  ],
+};
+
+function deepenDay12Genesis31PhraseCards(section: PersonalGenesisPhraseSectionInput): PersonalGenesisPhraseSectionInput {
+  const additions = DAY_12_GENESIS_31_REAL_PHRASE_ADDITIONS[section.reference] ?? [];
+  return {
+    ...section,
+    phrases: [...section.phrases, ...additions],
+  };
+}
+
 const DAY_13_GENESIS_32_33_FINAL_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
   { chapter: 32, startVerse: 1, endVerse: 2, reference: "Genesis 32:1-2", title: "God's Army Meets Jacob", icon: "🪽", phrases: [
     phrase("🪽 The Angels Of God Met Him", ["Jacob has just left Laban behind, but he is not walking into the next fear alone.", "Before Esau appears, God's messengers appear.", "That order matters because God gives Jacob a sign of heavenly presence before the human threat becomes visible.", "This connects back to Bethel, where Jacob saw angels as he left the land.", "Angels frame both the leaving and the returning parts of Jacob's journey.", "God is quietly surrounding Jacob's road even when Jacob feels exposed."]),
@@ -1809,6 +1926,127 @@ const DAY_13_GENESIS_32_33_FINAL_SECTIONS: PersonalGenesisPhraseSectionInput[] =
     phrase("💪 El Elohe Israel", ["The altar name means God, the God of Israel.", "This is powerful because Israel is Jacob's new name.", "Jacob is now worshiping the God who renamed him in the night.", "The name ties identity, worship, and covenant together.", "Jacob's new name becomes part of his altar confession.", "The God who changes our walk also teaches us to worship with a changed identity."]),
   ] },
 ];
+
+const day13Phrase = (title: string, lines: string[]): [string, string] => phrase(title, lines);
+
+const DAY_13_REAL_PHRASE_ADDITIONS: Record<string, Array<[string, string]>> = {
+  "Genesis 32:1-2": [
+    day13Phrase("Jacob Went On His Way", ["Jacob keeps moving after the boundary with Laban.", "The road ahead now points toward Esau, the brother he fears.", "Before Jacob sees danger, Genesis shows God meeting him on the way."]),
+    day13Phrase("Jacob Saw Them", ["Jacob does not only receive an invisible promise; he sees God's messengers.", "The sight gives him a reminder that heaven is near his road.", "This matters because fear will soon make him count Esau's men."]),
+  ],
+  "Genesis 32:3-8": [
+    day13Phrase("Before Him To Esau", ["Jacob sends messengers ahead before meeting Esau face to face.", "He is trying to handle an old wound carefully.", "The brother he deceived is now the person he must approach."]),
+    day13Phrase("Land Of Seir", ["Seir locates Esau's region outside Jacob's immediate camp.", "The geography helps readers see that Esau has built his own life and territory.", "Jacob is not returning to a frozen past; years have changed both brothers."]),
+    day13Phrase("Country Of Edom", ["Edom connects Esau to the family line that will become a nation.", "The old red-stew story has grown into geography and people.", "Genesis is already showing family conflict becoming national history."]),
+    day13Phrase("Thus Shall Ye Speak", ["Jacob scripts the message his servants will deliver.", "He knows words matter when fear and guilt sit between brothers.", "The careful speech shows how seriously he takes this meeting."]),
+    day13Phrase("I Have Asses", ["Jacob lists donkeys as part of his wealth.", "This tells Esau he is not coming empty or needy.", "The message quietly says Jacob has been provided for and is not arriving to take from him."]),
+    day13Phrase("I Have Flocks", ["Flocks represent the years of labor under Laban and God's provision through it.", "Jacob is presenting himself as a settled household leader, not a desperate rival.", "The details are meant to reduce Esau's suspicion."]),
+    day13Phrase("Esau Cometh To Meet Thee", ["The answer from the messengers is brief and frightening.", "Esau is coming, but his intentions are not explained.", "That silence lets Jacob's old fear fill in the blanks."]),
+    day13Phrase("Jacob Was Greatly Afraid", ["Jacob's fear is not vague anxiety; it is tied to a real past sin and an unknown future.", "The last clear memory was Esau wanting him dead.", "Genesis lets fear feel honest before showing how God works through it."]),
+    day13Phrase("Distressed", ["Distress adds pressure to fear.", "Jacob is squeezed emotionally and strategically.", "He must protect his family while facing the brother he wronged."]),
+  ],
+  "Genesis 32:9-12": [
+    day13Phrase("God Of My Father Isaac", ["Jacob names Isaac as well as Abraham in prayer.", "The God of the covenant has carried the promise through generations.", "Jacob prays as someone standing inside a family story bigger than his fear."]),
+    day13Phrase("The Least Of All The Mercies", ["Jacob confesses he does not deserve the kindness God has shown him.", "This is humble language from a man once known for grasping.", "Fear has brought him to honest gratitude."]),
+    day13Phrase("All The Truth", ["Truth here means God's faithfulness or reliability.", "Jacob remembers not only mercy, but God's steady keeping of His word.", "The prayer leans on God's character more than Jacob's record."]),
+    day13Phrase("Became Two Bands", ["Jacob compares his small beginning with his present abundance.", "He crossed with a staff and now returns with two camps.", "The phrase turns his fear into a moment of remembering God's provision."]),
+    day13Phrase("Hand Of My Brother", ["Jacob names the threat in family terms.", "The danger is not a stranger; it is his brother Esau.", "That makes the fear personal, emotional, and tied to guilt."]),
+    day13Phrase("The Mother With The Children", ["Jacob fears Esau may strike the whole household.", "The phrase shows that vulnerable women and children are in view.", "His prayer is not only for himself; it is for everyone his choices affect."]),
+    day13Phrase("As The Sand Of The Sea", ["Jacob repeats God's promise of countless descendants.", "The threat from Esau seems to endanger that future.", "Jacob holds God's promise up against the danger in front of him."]),
+  ],
+  "Genesis 32:13-16": [
+    day13Phrase("A Present For Esau His Brother", ["Jacob's gift is aimed at his brother, not a stranger.", "The present carries years of fear, guilt, and hope for peace.", "A costly gift goes ahead where Jacob is afraid to go first."]),
+    day13Phrase("Twenty He Goats", ["The male goats are counted as part of the gift.", "Genesis lists the animals so readers feel the gift's size.", "Jacob is not sending a token; he is sending wealth in waves."]),
+    day13Phrase("Two Hundred Ewes", ["Ewes are female sheep, valuable for future growth of a flock.", "Jacob's gift includes animals that can keep producing.", "His attempt at peace is materially serious."]),
+    day13Phrase("Twenty Rams", ["Rams complete the sheep portion of the gift.", "The male and female animals together make the gift practical and abundant.", "Jacob is thinking in terms of lasting value."]),
+    day13Phrase("Milch Camels", ["Milch camels are nursing camels, listed with their young.", "These are valuable animals for travel, milk, and wealth.", "The unusual phrase helps beginners understand that Jacob is sending real mobile riches."]),
+    day13Phrase("Forty Kine", ["Kine means cows or cattle.", "The old word can be easy to skip, but it adds another layer to the gift.", "Jacob's present reaches across many kinds of livestock."]),
+    day13Phrase("Ten Bulls", ["The bulls belong with the cattle and add breeding strength to the gift.", "The list is deliberate and costly.", "Jacob is trying to make peace with substance, not empty words."]),
+    day13Phrase("Twenty She Asses", ["Female donkeys are another valuable part of the present.", "They could carry loads and support future increase.", "Every category makes the gift heavier and more persuasive."]),
+    day13Phrase("Ten Foals", ["Foals are young donkeys, showing future usefulness as well as present wealth.", "Jacob sends animals that represent ongoing life and value.", "The present is meant to soften Esau before Jacob arrives."]),
+    day13Phrase("Space Betwixt Drove And Drove", ["Jacob spaces the groups apart so Esau receives the gift gradually.", "Each drove becomes another wave of humility.", "The strategy is designed to let mercy build before the face-to-face meeting."]),
+  ],
+  "Genesis 32:17-21": [
+    day13Phrase("He Commanded The Foremost", ["Jacob gives instructions to the first servant group.", "The first words Esau hears will matter.", "Jacob plans the approach carefully because the relationship is fragile."]),
+    day13Phrase("Esau My Brother", ["Jacob keeps calling Esau brother, even while calling him lord.", "The phrase holds both fear and family connection.", "He is not meeting an enemy only; he is meeting the brother he wronged."]),
+    day13Phrase("Whither Goest Thou?", ["Jacob anticipates Esau asking where the servants are headed.", "He wants every answer ready before pressure comes.", "Fear makes Jacob careful with details."]),
+    day13Phrase("Whose Are These Before Thee?", ["This question explains the droves of animals coming ahead.", "Jacob wants Esau to know the gift is intentional.", "The animals are a message of humility before Jacob speaks in person."]),
+    day13Phrase("A Present Sent Unto My Lord Esau", ["The servants are to name the gift clearly as Esau's present.", "Jacob chooses language of respect and submission.", "He is trying to turn away anger through honor."]),
+    day13Phrase("Behold He Is Behind Us", ["Jacob keeps himself behind the gifts.", "He lets generosity and humble words arrive before his face does.", "The order shows both fear and strategy."]),
+    day13Phrase("Present That Goeth Before Me", ["The gift becomes a bridge between Jacob and Esau.", "Before the brothers meet, the present speaks peace.", "Jacob hopes the gift will prepare Esau's heart."]),
+    day13Phrase("Peradventure He Will Accept Of Me", ["Peradventure means perhaps.", "Jacob cannot control Esau's response and knows it.", "The phrase carries the humility and uncertainty of seeking forgiveness."]),
+  ],
+  "Genesis 32:22-25": [
+    day13Phrase("Two Womenservants", ["Jacob moves Bilhah and Zilpah as part of the household crossing.", "These women have been central in the family story, not background figures.", "Their presence reminds readers how large and complicated Jacob's household has become."]),
+    day13Phrase("Eleven Sons", ["Jacob has eleven sons at this point, before Benjamin is born.", "The family promised to Abraham is becoming visible through Jacob.", "The sons cross the river before Jacob's name is changed."]),
+    day13Phrase("Sent Them Over The Brook", ["Jacob sends his family and possessions across the water.", "The crossing separates him from everything he has been managing.", "The scene narrows until Jacob stands alone."]),
+    day13Phrase("Until The Breaking Of The Day", ["The wrestling lasts through the night until dawn.", "The long struggle mirrors Jacob's lifelong striving.", "Morning will come with blessing, pain, and a new name."]),
+    day13Phrase("He Prevailed Not Against Him", ["The mysterious man does not defeat Jacob in the ordinary way.", "Jacob keeps clinging and struggling.", "The scene shows stubborn endurance, but also sets up the touch that changes everything."]),
+    day13Phrase("The Hollow Of His Thigh Was Out Of Joint", ["Jacob's hip is put out of joint by a single touch.", "His strength is undone in a moment.", "He will not walk away unchanged from this encounter."]),
+  ],
+  "Genesis 32:26-29": [
+    day13Phrase("The Day Breaketh", ["Dawn is coming after the long night of wrestling.", "Jacob is at the edge of a new day and a new identity.", "The timing makes the blessing feel like it is born out of darkness."]),
+    day13Phrase("Except Thou Bless Me", ["Jacob will not let go without blessing.", "This time he asks openly instead of stealing by disguise.", "His grasping has become desperate dependence."]),
+    day13Phrase("Israel", ["Israel becomes Jacob's new name.", "The name will become the name of God's people.", "A whole nation will remember this night of struggle, weakness, and blessing."]),
+    day13Phrase("Power With God", ["The phrase describes Jacob's struggle with the divine.", "He has not overpowered God like an equal; he has prevailed by clinging through weakness.", "The blessing comes through dependence, not control."]),
+    day13Phrase("Power With Men", ["Jacob's life has been marked by conflict with Esau, Laban, and others.", "God names the pattern and transforms it.", "The man who wrestled through human conflict is now renamed by God."]),
+    day13Phrase("Hast Prevailed", ["Jacob comes through the struggle blessed, but not untouched.", "Prevailing here looks like a limp and a new name.", "God's victories can look different from human victories."]),
+    day13Phrase("Tell Me, I Pray Thee, Thy Name", ["Jacob wants to know the name of the One who blessed him.", "The question shows holy curiosity and awe.", "The answer remains mysterious because Jacob receives blessing without controlling the encounter."]),
+  ],
+  "Genesis 32:30-32": [
+    day13Phrase("As He Passed Over Penuel", ["Jacob moves on from the place of encounter.", "The story does not end at the holy moment; he must keep walking toward Esau.", "Worshipful encounters prepare us for the road, not escape from it."]),
+    day13Phrase("The Sun Rose Upon Him", ["Sunrise arrives after the night of wrestling.", "The image feels like mercy and new beginning.", "Jacob goes forward in light, but also with a limp."]),
+    day13Phrase("Limped Upon His Thigh", ["Jacob's walk now carries the mark of the encounter.", "He is blessed and weakened at the same time.", "The limp will meet Esau before Jacob's words do."]),
+    day13Phrase("Children Of Israel Eat Not", ["A personal wound becomes a community memory.", "Jacob's descendants remember the place touched in his thigh.", "The people of Israel carry the story of their father's weakness into their practice."]),
+    day13Phrase("Unto This Day", ["The memory continued long after Jacob's night at Peniel.", "Genesis explains why later Israelites observed the custom.", "One man's encounter becomes part of a people's identity."]),
+  ],
+  "Genesis 33:1-4": [
+    day13Phrase("Esau Came", ["The feared brother is finally in view.", "Jacob cannot plan around the meeting anymore.", "The moment he dreaded has arrived."]),
+    day13Phrase("Four Hundred Men", ["The number that terrified Jacob is still there.", "God did not remove the visible threat before the meeting.", "Jacob must approach while the situation still looks dangerous."]),
+    day13Phrase("Went Before Them", ["Jacob steps ahead of his family.", "He places himself in front as the encounter begins.", "After years of fear, he faces Esau first."]),
+    day13Phrase("Embraced Him", ["Esau's embrace overturns Jacob's worst expectation.", "The brother he feared as an avenger receives him with affection.", "This moment lets mercy interrupt years of dread."]),
+    day13Phrase("Fell On His Neck", ["The gesture is intimate and emotional.", "It shows family affection rather than attack.", "Jacob prepared for violence and receives a brother's neck-embrace."]),
+    day13Phrase("Kissed Him", ["The kiss seals the unexpected tenderness of the meeting.", "It does not erase the past, but it changes the present encounter.", "Grace arrives in a form Jacob did not dare assume."]),
+    day13Phrase("They Wept", ["Both brothers weep after years of separation.", "The tears carry grief, relief, memory, and release.", "Genesis lets reconciliation become emotional, not merely formal."]),
+  ],
+  "Genesis 33:5-7": [
+    day13Phrase("Lifted Up His Eyes", ["Esau now sees the women and children with Jacob.", "The reunion expands from two brothers to the whole family behind Jacob.", "The past wound has consequences for many lives standing nearby."]),
+    day13Phrase("The Handmaids Came Near", ["Bilhah and Zilpah approach with their children.", "Genesis includes the servants and their sons in the family presentation.", "The whole household is moving through this fragile peace."]),
+    day13Phrase("Leah Also With Her Children", ["Leah and her children come next.", "The order reflects Jacob's household structure and lingering favoritism.", "The family formed in Haran is now standing before Esau."]),
+    day13Phrase("Joseph Drew Near", ["Joseph is still young, but his name matters deeply for the rest of Genesis.", "He comes near with Rachel in the final group.", "The future rescuer of the family is already present in this reconciliation scene."]),
+  ],
+  "Genesis 33:8-11": [
+    day13Phrase("All This Drove Which I Met", ["Esau asks about the animal groups sent ahead of Jacob.", "The droves have done their work as visible humility.", "Now Jacob explains the gift's purpose."]),
+    day13Phrase("My Brother", ["Esau calls Jacob brother in the conversation.", "That word matters after years of hatred and fear.", "The relationship is not only political; it is family."]),
+    day13Phrase("Keep That Thou Hast Unto Thyself", ["Esau first tells Jacob to keep the gift.", "He does not appear greedy for Jacob's wealth.", "The refusal surprises the fear Jacob carried."]),
+    day13Phrase("Take, I Pray Thee, My Blessing", ["Jacob calls the gift his blessing.", "The word is loaded because Jacob once took Esau's blessing by deception.", "Now he offers a blessing back with humility."]),
+    day13Phrase("Thou Wast Pleased With Me", ["Jacob reads Esau's face as acceptance.", "The fear of rejection begins to give way to relief.", "A changed face can feel like life after dread."]),
+    day13Phrase("God Hath Dealt Graciously With Me", ["Jacob credits God for his abundance.", "He does not present the gift as self-made success.", "Grace has carried him from Bethel to this brotherly meeting."]),
+  ],
+  "Genesis 33:12-17": [
+    day13Phrase("I Will Go Before Thee", ["Esau offers to lead the way.", "The offer sounds friendly, but Jacob does not accept that pace or arrangement.", "Peace has come, but Jacob still moves with caution."]),
+    day13Phrase("The Children Are Tender", ["Jacob names the vulnerability of the children.", "Tender means young, delicate, and unable to endure harsh travel.", "Jacob's leadership must account for the weakest people in the group."]),
+    day13Phrase("One Day", ["Jacob says even one day of overdriving could destroy the flock.", "The phrase shows how quickly careless speed can harm the vulnerable.", "Wisdom refuses a pace that breaks what it is supposed to protect."]),
+    day13Phrase("Will Die", ["The stakes are life and death for the young animals.", "Jacob is not being dramatic; he is shepherding realistically.", "The strong cannot demand a pace the weak cannot survive."]),
+    day13Phrase("Unto Seir", ["Seir is Esau's region, but Jacob does not immediately follow him there.", "The brothers part peacefully without merging their paths.", "Reconciliation does not mean every future step is shared."]),
+    day13Phrase("Built Him An House", ["Jacob builds a house at Succoth.", "After years of tents, running, and fear, this feels like a pause.", "The return journey gives him a place to shelter his household."]),
+    day13Phrase("Made Booths For His Cattle", ["Jacob makes shelters for the animals, which gives Succoth its name.", "The detail shows practical care for the flock.", "The man God blessed is still responsible to steward what he has."]),
+  ],
+  "Genesis 33:18-20": [
+    day13Phrase("Jacob Came To Shalem", ["Shalem can carry the sense of peace, safety, or completeness in the arrival.", "After Laban, Peniel, and Esau, Jacob reaches the land alive.", "The return promise is becoming visible."]),
+    day13Phrase("City Of Shechem", ["Shechem becomes the next important setting in Jacob's story.", "The place is in Canaan, the land tied to the covenant promise.", "The peaceful arrival also prepares readers for the painful events of the next chapter."]),
+    day13Phrase("An Hundred Pieces Of Money", ["Jacob purchases the field with a named price.", "The detail makes the foothold in the land concrete.", "The promise family is still waiting for full possession, but this purchase matters."]),
+    day13Phrase("El Elohe Israel", ["The altar name means God, the God of Israel.", "Jacob uses his new name in worship.", "The God who met him in the wrestling night is now confessed in the land."]),
+  ],
+};
+
+function deepenDay13PhraseCards(section: PersonalGenesisPhraseSectionInput): PersonalGenesisPhraseSectionInput {
+  const additions = DAY_13_REAL_PHRASE_ADDITIONS[section.reference] ?? [];
+  return {
+    ...section,
+    phrases: [...section.phrases, ...additions],
+  };
+}
 
 const DAY_14_GENESIS_34_36_FINAL_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
   { chapter: 34, startVerse: 1, endVerse: 4, reference: "Genesis 34:1-4", title: "Dinah Is Violated", icon: "💔", phrases: [
@@ -1931,6 +2169,218 @@ const DAY_14_GENESIS_34_36_FINAL_SECTIONS: PersonalGenesisPhraseSectionInput[] =
     phrase("🏷️ He Is Esau The Father Of The Edomites", ["The final line repeats the key identity: Esau is the father of Edom.", "That repetition closes the chapter with the connection readers must remember.", "Jacob and Esau's brother story has now widened into Israel and Edom's national story.", "Genesis is ready to move forward, but it does not leave Esau unexplained.", "The chapter ends with identity, not trivia.", "Genealogies teach readers how family wounds and blessings echo into nations."]),
   ] },
 ];
+
+const day14Phrase = (title: string, lines: string[]): [string, string] => phrase(title, lines);
+
+const DAY_14_REAL_PHRASE_ADDITIONS: Record<string, Array<[string, string]>> = {
+  "Genesis 34:1-4": [
+    day14Phrase("Dinah Went Out", ["Dinah steps outside Jacob's household into the social world of the land.", "The phrase sets the scene, but it does not blame her for what follows.", "Genesis places responsibility on Shechem's actions, not on Dinah being seen."]),
+    day14Phrase("To See The Daughters Of The Land", ["Dinah is seeking contact with the women of the region.", "A beginner may miss how ordinary this sounds before the violence comes.", "The chapter begins with social movement and then shows how sin invades it."]),
+    day14Phrase("Shechem The Son Of Hamor", ["Shechem is both a man and connected to the city leadership through Hamor.", "His status matters because the harm becomes a family and city crisis.", "Power in the land does not make his action righteous."]),
+    day14Phrase("Prince Of The Country", ["Shechem is not powerless or unknown; he is a prince in the region.", "That makes the violation more socially dangerous for Jacob's family.", "Genesis shows harm involving power, status, and vulnerability."]),
+    day14Phrase("His Soul Clave Unto Dinah", ["After violating Dinah, Shechem becomes attached to her.", "The Bible records his desire without letting desire erase what he did.", "Strong emotion after sin is not the same as justice."]),
+    day14Phrase("Spake Kindly Unto The Damsel", ["Shechem speaks tenderly after the harm.", "This is important because soft words can appear after serious wrong.", "Bible Buddy should help readers avoid confusing affectionate language with repair."]),
+  ],
+  "Genesis 34:5-7": [
+    day14Phrase("Jacob Heard", ["Jacob receives the news of Dinah's defilement.", "The father knows, but the passage shows a painful delay before action.", "The silence around Dinah's suffering feels heavy."]),
+    day14Phrase("He Held His Peace", ["Jacob stays quiet until his sons return.", "That may be strategy, shock, or helplessness, but it leaves the moment unresolved.", "Genesis lets the reader feel the tension of delayed response."]),
+    day14Phrase("His Sons Were With His Cattle", ["The brothers are away at work when the news arrives.", "The family crisis interrupts ordinary shepherd life.", "Daily labor and deep trauma collide in the same household."]),
+    day14Phrase("The Men Were Grieved", ["Dinah's brothers feel real sorrow over what happened.", "Their grief is understandable, even though their later revenge becomes sinful and excessive.", "The Bible can acknowledge pain without approving every response to pain."]),
+    day14Phrase("Very Wroth", ["Their grief turns into hot anger.", "The phrase signals the emotional force behind what comes next.", "Anger over injustice must still be governed by righteousness."]),
+    day14Phrase("Wrought Folly In Israel", ["This phrase describes a disgraceful, wicked act within the covenant family.", "Even before Israel is a nation, the language treats the family as holy and accountable.", "Shechem's act is not morally small."]),
+    day14Phrase("Which Thing Ought Not To Be Done", ["The text gives a clear moral verdict.", "This was wrong, not merely culturally awkward.", "Genesis names the evil before the negotiations begin."]),
+  ],
+  "Genesis 34:8-12": [
+    day14Phrase("The Soul Of My Son Shechem Longeth", ["Hamor presents Shechem's desire as the center of the conversation.", "That is troubling because Dinah's harm should be central.", "The negotiation begins by focusing on what the offender wants."]),
+    day14Phrase("I Pray You Give Her Him To Wife", ["Hamor asks for marriage after the violation.", "Marriage is presented as a solution, but it does not undo what was done.", "The reader should feel the moral tension in the request."]),
+    day14Phrase("Make Ye Marriages With Us", ["Hamor broadens the issue from one marriage to community intermarriage.", "The proposal would merge Jacob's family with the city.", "A personal violation becomes a political and economic negotiation."]),
+    day14Phrase("The Land Shall Be Before You", ["Hamor offers access to land and settlement.", "The offer sounds practical and generous, but it comes after grave wrongdoing.", "Material opportunity cannot cleanse injustice."]),
+    day14Phrase("Ask Me Never So Much Dowry And Gift", ["Shechem offers to pay whatever bride price and gift they require.", "He treats the problem as something compensation can settle.", "Costly payment may be serious, but it cannot erase the need for righteousness."]),
+    day14Phrase("Give Me The Damsel To Wife", ["Shechem's desire remains focused on obtaining Dinah.", "Dinah's own voice is not heard in the chapter.", "That silence should make readers slow down and feel the weight of her vulnerability."]),
+  ],
+  "Genesis 34:13-17": [
+    day14Phrase("Answered Shechem And Hamor Deceitfully", ["Jacob's sons answer with deception.", "Their anger begins moving through a lie.", "Genesis does not make revenge look clean just because the original harm was real."]),
+    day14Phrase("Because He Had Defiled Dinah Their Sister", ["The verse explains the motive behind their deceit.", "Dinah is their sister, and the wrong done to her is real.", "But real harm does not make every response righteous."]),
+    day14Phrase("We Cannot Do This Thing", ["The brothers frame their answer as a covenant boundary.", "Circumcision was indeed a sign connected to Abraham's line.", "But they are about to weaponize a holy sign for revenge."]),
+    day14Phrase("To Give Our Sister To One That Is Uncircumcised", ["They present circumcision as the condition for marriage.", "The issue sounds religious on the surface.", "The danger is that spiritual language is being used to hide a violent plan."]),
+    day14Phrase("Then Will We Give Our Daughters", ["They describe mutual marriages between the families.", "The offer sounds like full social partnership.", "The words are part of the trap."]),
+    day14Phrase("If Ye Will Not Hearken", ["The brothers give a hard condition.", "The city's acceptance will expose it to danger.", "The conversation is tense because the reader knows the brothers are not speaking honestly."]),
+  ],
+  "Genesis 34:18-20": [
+    day14Phrase("Their Words Pleased Hamor", ["Hamor accepts the proposal as reasonable.", "He does not see the deceit behind the condition.", "The leaders of Shechem think the negotiation is moving toward peace."]),
+    day14Phrase("The Young Man Deferred Not", ["Shechem does not delay because he strongly desires Dinah.", "His eagerness is clear, but desire is still not repentance.", "Speed in pursuing a solution does not erase the original sin."]),
+    day14Phrase("He Had Delight In Jacob's Daughter", ["Shechem's delight is again emphasized.", "The text keeps showing his desire while Dinah remains voiceless.", "This imbalance is part of the pain of the chapter."]),
+    day14Phrase("More Honourable Than All The House Of His Father", ["Shechem is described as honored in his household.", "Social honor does not cancel moral guilt.", "A respected person can still do something deeply wrong."]),
+    day14Phrase("Unto The Gate Of Their City", ["Hamor and Shechem bring the proposal to the city gate.", "The gate was where public decisions and leadership discussions happened.", "The private wrong now becomes a civic matter."]),
+    day14Phrase("Communed With The Men Of Their City", ["They persuade the men of Shechem to accept the condition.", "The city is drawn into the consequences of one man's sin.", "Leadership can spread danger when it frames wrong things as opportunity."]),
+  ],
+  "Genesis 34:21-24": [
+    day14Phrase("These Men Are Peaceable With Us", ["Hamor presents Jacob's family as peaceful neighbors.", "His speech hides the moral crisis that started the negotiation.", "Public persuasion can smooth over painful truth."]),
+    day14Phrase("Let Them Dwell In The Land", ["The city is invited to accept Jacob's family as residents.", "This sounds like hospitality and economic partnership.", "But it is built on an unresolved violation and a hidden revenge plan."]),
+    day14Phrase("Trade Therein", ["Trade is part of the offer, making the arrangement economically attractive.", "The men of the city are being asked to see profit in the relationship.", "Money can make people ignore moral danger."]),
+    day14Phrase("Shall Not Their Cattle And Their Substance Be Ours?", ["The leaders appeal to gain.", "They imagine Jacob's wealth becoming accessible through intermarriage and settlement.", "Greed helps persuade the city into vulnerability."]),
+    day14Phrase("Only Let Us Consent Unto Them", ["The condition is presented as the one thing needed to gain the benefits.", "Circumcision is reduced to a bargaining tool.", "A holy sign is being emptied of its meaning by both sides."]),
+    day14Phrase("Every Male Was Circumcised", ["The men of the city accept the condition.", "The action creates physical weakness and covenant confusion.", "They undergo the sign without true covenant faith."]),
+  ],
+  "Genesis 34:25-29": [
+    day14Phrase("On The Third Day", ["The third day is when the men are sore and vulnerable.", "Simeon and Levi choose the moment of weakness.", "The timing shows calculation, not uncontrolled impulse."]),
+    day14Phrase("Simeon And Levi", ["Two of Jacob's sons lead the violence.", "They are Dinah's brothers through Leah.", "Their family connection helps explain their fury, but not excuse the massacre."]),
+    day14Phrase("Dinah's Brethren", ["The text names their relationship to Dinah.", "They act as brothers responding to their sister's defilement.", "The tragedy is that brotherly grief becomes bloodshed against a whole city."]),
+    day14Phrase("Slew All The Males", ["Their revenge expands beyond Shechem and Hamor to every male in the city.", "This is disproportionate and devastating.", "Genesis shows how vengeance can grow larger than justice."]),
+    day14Phrase("Took Dinah Out Of Shechem's House", ["They rescue or remove Dinah from Shechem's house.", "This detail keeps Dinah in view after the violence.", "The chapter began with her harm and now shows her being taken out from the offender's household."]),
+    day14Phrase("Spoiled The City", ["The sons plunder the city after the killing.", "That moves the act beyond rescue into taking wealth.", "The moral picture becomes darker as revenge mixes with gain."]),
+    day14Phrase("Because They Had Defiled Their Sister", ["The reason is repeated, but repetition does not equal approval of every action.", "Genesis holds together real outrage and sinful vengeance.", "The family is now in danger because of how they responded."]),
+  ],
+  "Genesis 34:30-31": [
+    day14Phrase("Ye Have Troubled Me", ["Jacob says Simeon and Levi have brought trouble on him.", "His focus turns to the danger facing the whole household.", "The family is now exposed among surrounding peoples."]),
+    day14Phrase("To Make Me To Stink", ["This old phrase means they have made Jacob hated or offensive to the people around them.", "Their reputation in the land is damaged.", "Violent revenge can poison a family's witness and safety."]),
+    day14Phrase("I Being Few In Number", ["Jacob knows his household is small compared with the surrounding peoples.", "The massacre may provoke retaliation they cannot survive.", "Fear returns because the family has acted recklessly in the land."]),
+    day14Phrase("Shall Be Destroyed, I And My House", ["Jacob sees the possible consequence as total destruction.", "The promise family is again endangered by family sin.", "Genesis shows how one wrong response can threaten many lives."]),
+    day14Phrase("Should He Deal With Our Sister As With An Harlot?", ["The brothers' final question names the outrage they feel.", "They refuse to treat Dinah's violation as a small thing.", "Their moral concern is real, even though their revenge was dangerous and wrong."]),
+  ],
+  "Genesis 35:1-4": [
+    day14Phrase("Arise, Go Up To Bethel", ["God calls Jacob back to the place of his earlier encounter.", "Bethel is where God met him when he fled from Esau.", "Now Jacob must return there after the crisis at Shechem."]),
+    day14Phrase("Dwell There", ["God does not only call Jacob to visit Bethel quickly.", "He tells him to settle there for a season.", "The family needs worship, cleansing, and renewed direction."]),
+    day14Phrase("Make There An Altar", ["The altar is the central command of the move.", "After violence and fear, Jacob's family must return to worship.", "God leads them away from Shechem toward consecration."]),
+    day14Phrase("Put Away The Strange Gods", ["Jacob commands the household to remove foreign gods.", "This connects back to Rachel stealing Laban's images.", "The family cannot carry hidden idols into renewed worship at Bethel."]),
+    day14Phrase("Be Clean", ["The command involves purification before approaching God in worship.", "Jacob understands that Bethel requires more than relocation.", "The household must be cleansed in body, objects, and allegiance."]),
+    day14Phrase("Change Your Garments", ["Changing garments marks a break from the previous defiled season.", "The family is preparing outwardly for a serious spiritual return.", "Genesis often lets physical actions show inward consecration."]),
+    day14Phrase("Under The Oak Which Was By Shechem", ["Jacob buries the idols and earrings under a tree near Shechem.", "The hidden objects are left behind before the family goes to Bethel.", "A place of crisis becomes the place where false worship is buried."]),
+  ],
+  "Genesis 35:5-8": [
+    day14Phrase("The Terror Of God", ["God places fear on the surrounding cities.", "This protects Jacob's family after the violence of Genesis 34.", "Their safety comes from God's restraint, not their own strength."]),
+    day14Phrase("They Did Not Pursue", ["The surrounding peoples do not chase Jacob's sons.", "That is mercy because retaliation seemed possible.", "God keeps the family alive despite the danger their own actions created."]),
+    day14Phrase("Luz, Which Is In The Land Of Canaan", ["Genesis identifies Bethel by its older name, Luz.", "This helps readers connect the place to Jacob's earlier dream.", "The covenant memory is anchored in real geography."]),
+    day14Phrase("He Built There An Altar", ["Jacob obeys God's command and builds the altar.", "Worship becomes the center of the family's next step.", "After chaos, the household is redirected toward God."]),
+    day14Phrase("El-bethel", ["El-bethel means God of Bethel.", "Jacob names the place around the God who met him there.", "The focus is not the location alone, but the God who revealed Himself."]),
+    day14Phrase("Deborah Rebekah's Nurse Died", ["Deborah's death is a tender family note.", "She connects back to Rebekah's household and Jacob's earlier life.", "The journey includes worship and grief in the same passage."]),
+    day14Phrase("Allon-bachuth", ["The name means oak of weeping.", "Genesis marks grief with a place name.", "The family remembers loss, not only divine encounters."]),
+  ],
+  "Genesis 35:9-12": [
+    day14Phrase("God Appeared Unto Jacob Again", ["God meets Jacob again after his return from Padan-aram.", "This renews the promise at another major turning point.", "The family has been messy, but God's covenant word remains steady."]),
+    day14Phrase("Blessed Him", ["God speaks blessing over Jacob again.", "The blessing is not earned by family perfection.", "It rests on God's faithful promise."]),
+    day14Phrase("Thy Name Is Jacob", ["God names Jacob's old identity before confirming the new one.", "The old story is not denied, but it is no longer the final name.", "God's grace speaks transformation over a known past."]),
+    day14Phrase("Israel Shall Be Thy Name", ["The new name from Peniel is reaffirmed at Bethel.", "Jacob's identity is now tied to God's work in him.", "The family of Israel grows from this renamed man."]),
+    day14Phrase("A Nation And A Company Of Nations", ["God promises national fullness from Jacob's line.", "The household may look unstable, but God sees a people forming.", "The promise is bigger than the present disorder."]),
+    day14Phrase("Kings Shall Come Out Of Thy Loins", ["God speaks of future kings from Jacob's descendants.", "This points forward far beyond Jacob's lifetime.", "The covenant promise includes royal future."]),
+    day14Phrase("The Land Which I Gave Abraham And Isaac", ["God ties Jacob's promise to Abraham and Isaac.", "The covenant is one continuous thread.", "Jacob is not starting a new story; he is receiving the old promise again."]),
+  ],
+  "Genesis 35:13-15": [
+    day14Phrase("In The Place Where He Talked With Him", ["The place matters because God spoke there.", "Genesis remembers locations where divine words were given.", "Worship grows out of remembered encounter."]),
+    day14Phrase("Poured A Drink Offering Thereon", ["Jacob offers a drink offering on the pillar.", "This physical act marks reverence and gratitude.", "The promise is received with worship, not casual forgetfulness."]),
+    day14Phrase("Poured Oil Thereon", ["Oil marks the pillar as set apart.", "Jacob repeats the kind of consecrating action seen earlier at Bethel.", "The old vow has come full circle with deeper understanding."]),
+    day14Phrase("Where God Spake With Him", ["The place is named by God's speech.", "Bethel's importance is not scenery, but revelation.", "God's word turns ground into testimony."]),
+  ],
+  "Genesis 35:16-20": [
+    day14Phrase("There Was But A Little Way To Come To Ephrath", ["Rachel's labor begins near Ephrath, later associated with Bethlehem.", "The location gives the grief a place on the map.", "The promise family continues through a road marked by loss."]),
+    day14Phrase("She Had Hard Labour", ["Rachel's childbirth is severe and dangerous.", "The phrase slows the reader down to feel her suffering.", "The long-desired motherhood story ends in pain."]),
+    day14Phrase("Fear Not", ["The midwife tries to comfort Rachel during labor.", "The words hold tenderness in a terrifying moment.", "Even in grief, Scripture lets us hear someone trying to steady her."]),
+    day14Phrase("Thou Shalt Have This Son Also", ["Rachel receives the son she once asked God to add.", "The answer comes with heartbreaking cost.", "Blessing and sorrow arrive together."]),
+    day14Phrase("As Her Soul Was In Departing", ["The phrase describes Rachel dying as Benjamin is born.", "Genesis is delicate but clear about the moment of death.", "The family grows while losing someone beloved."]),
+    day14Phrase("She Called His Name Benoni", ["Rachel names the child son of my sorrow.", "Her final word lets grief speak honestly.", "The Bible does not rush past the sorrow of the mother."]),
+    day14Phrase("His Father Called Him Benjamin", ["Jacob renames him son of the right hand.", "He gives the child a future not defined only by death.", "The naming holds sorrow and hope in tension."]),
+    day14Phrase("Rachel Was Buried", ["Rachel's story pauses at burial on the road.", "She does not reach the next settled place with the family.", "Genesis marks her death as a major wound in Jacob's journey."]),
+  ],
+  "Genesis 35:21-22": [
+    day14Phrase("Tower Of Edar", ["Jacob journeys beyond the tower of Edar after Rachel's death.", "The place marker keeps the family moving through real territory.", "The journey continues even while grief is fresh."]),
+    day14Phrase("When Israel Dwelt In That Land", ["The text calls Jacob Israel in this painful family scene.", "The new name does not mean the household is free from sin.", "God's people still need holiness after receiving grace."]),
+    day14Phrase("Bilhah His Father's Concubine", ["Bilhah's identity makes Reuben's sin especially serious.", "She belongs to Jacob's household as his concubine and was Rachel's servant.", "Reuben violates family order and dishonors his father."]),
+    day14Phrase("The Sons Of Jacob Were Twelve", ["This line transitions from scandal to the full list of sons.", "The tribes of Israel come from a deeply troubled family.", "Genesis is honest about the roots of the covenant people."]),
+  ],
+  "Genesis 35:23-26": [
+    day14Phrase("The Sons Of Leah", ["Leah's sons are listed first.", "Her story of rejection did not keep her from becoming central in Israel's family.", "God's mercy has been working through the overlooked wife."]),
+    day14Phrase("The Sons Of Rachel", ["Rachel's sons are named separately, Joseph and Benjamin.", "Her long barrenness and later grief sit behind this short line.", "A simple list carries years of longing and loss."]),
+    day14Phrase("The Sons Of Bilhah", ["Bilhah's sons are included in the twelve.", "The servant woman's children are not erased from Israel's family record.", "Genesis remembers the complicated mothers of the tribes."]),
+    day14Phrase("The Sons Of Zilpah", ["Zilpah's sons are also named in the full family list.", "The tribes come from more than one mother and more than one painful arrangement.", "God's covenant people begin in a household full of complexity."]),
+    day14Phrase("Born To Him In Padan-aram", ["Most of Jacob's sons were born during his years away from Canaan.", "The exile season became the place where the family multiplied.", "God kept His promise even in Laban's house."]),
+  ],
+  "Genesis 35:27-29": [
+    day14Phrase("Mamre", ["Mamre connects Isaac's death to the old places of Abraham's story.", "The family returns to covenant geography.", "The promise is still anchored in the land God named."]),
+    day14Phrase("Kirjath-arba", ["Kirjath-arba is identified with Hebron.", "These place names help readers connect patriarchal stories across generations.", "Genesis ties family memory to land."]),
+    day14Phrase("An Hundred And Fourscore Years", ["Isaac lives 180 years.", "The number gives weight and closure to his long life.", "A generation that began with miraculous birth now reaches its end."]),
+    day14Phrase("Old And Full Of Days", ["Isaac dies after a full span of life.", "The phrase honors the completion of his earthly journey.", "The promise continues beyond his death."]),
+  ],
+  "Genesis 36:1-5": [
+    day14Phrase("Esau Took His Wives", ["The genealogy begins by naming Esau's marriages.", "Marriage lines shape the peoples that come from him.", "The list explains Edom's family roots."]),
+    day14Phrase("Adah The Daughter Of Elon", ["Adah is named with her father and people connection.", "These details locate Esau's family among the surrounding peoples.", "Genealogies teach through names and relationships."]),
+    day14Phrase("Aholibamah", ["Aholibamah is another of Esau's wives and a named mother in Edom's line.", "Her name may feel difficult, but she matters to the family record.", "Bible readers should not skip people just because names are hard."]),
+    day14Phrase("Bashemath Ishmael's Daughter", ["Bashemath connects Esau to Ishmael's family.", "This reflects Esau's earlier attempt to marry within Abraham's wider line.", "The genealogy preserves that family connection."]),
+    day14Phrase("Born Unto Esau In The Land Of Canaan", ["Esau's children are born before his move to Seir.", "The family grows in Canaan, but his settled identity will become Edom outside Jacob's line.", "The phrase helps track movement from family to nation."]),
+  ],
+  "Genesis 36:6-8": [
+    day14Phrase("All The Persons Of His House", ["Esau moves with an entire household, not just a few belongings.", "His line is becoming large and established.", "The brother outside the covenant focus still grows into a real people."]),
+    day14Phrase("Went Into The Country From The Face Of His Brother Jacob", ["Esau separates from Jacob because the land cannot hold both households together.", "The phrase echoes earlier family separations in Genesis.", "Distance helps preserve peace between blessed but distinct brothers."]),
+    day14Phrase("Their Riches Were More Than That They Might Dwell Together", ["The brothers' wealth creates practical pressure.", "Blessing can create the need for boundaries.", "Living apart here is not framed as hatred but as necessity."]),
+    day14Phrase("Esau Dwelt In Mount Seir", ["Esau's home becomes Mount Seir.", "This place becomes tied to Edom's identity.", "The family story becomes geography."]),
+  ],
+  "Genesis 36:9-14": [
+    day14Phrase("Adah Bare To Esau Eliphaz", ["Eliphaz is one of Esau's important sons.", "The genealogy is building the structure of Edom's clans.", "Each birth pushes Esau's family toward nationhood."]),
+    day14Phrase("Bashemath Bare Reuel", ["Reuel is another son in Esau's line.", "Different wives contribute to different branches of Edom.", "The family tree is wide, not simple."]),
+    day14Phrase("The Sons Of Eliphaz", ["Eliphaz's sons become a next generation in Edom.", "Genesis is moving from Esau's children to grandchildren.", "The line is expanding into clans."]),
+    day14Phrase("Teman", ["Teman becomes an important Edomite name later in Scripture.", "A beginner may not know the future connection, but Genesis is planting the name now.", "Genealogies prepare later Bible geography and prophecy."]),
+    day14Phrase("Amalek", ["Amalek later becomes a major enemy of Israel.", "This name is one of the most important hidden seeds in Genesis 36.", "A quick genealogy line will echo through later biblical conflict."]),
+    day14Phrase("Aholibamah Bare Jeush, And Jaalam, And Korah", ["Aholibamah's sons form another branch of Esau's line.", "The names are hard, but they represent real families.", "Genesis is giving Edom a detailed origin story."]),
+  ],
+  "Genesis 36:15-19": [
+    day14Phrase("Duke Teman", ["Teman is listed as a chief, showing leadership arising from Esau's line.", "The family name becomes political structure.", "Edom is organizing into clans and rulers."]),
+    day14Phrase("Duke Amalek", ["Amalek is not only a descendant but connected with leadership memory.", "Later Israel will know Amalek as a dangerous enemy.", "This brief name carries future weight."]),
+    day14Phrase("Duke Korah", ["Korah appears among the chiefs of Esau.", "The repetition of chiefs shows settled clan identity.", "Genesis is moving from household names to tribal leadership."]),
+    day14Phrase("According To Their Families", ["The chiefs are organized by family lines.", "This helps readers see Edom as structured, not random.", "Genealogy becomes social order."]),
+    day14Phrase("In The Land Of Edom", ["The leadership is tied to a place.", "Edom now has family, chiefs, and territory.", "The brother story has become a national map."]),
+  ],
+  "Genesis 36:20-25": [
+    day14Phrase("Lotan", ["Lotan is one of the sons of Seir the Horite.", "The name begins the local family record of Seir.", "Genesis remembers the people connected to the land before and around Edom."]),
+    day14Phrase("Shobal", ["Shobal is another Horite family head.", "The names show that Seir had its own established lines.", "Edom's territory has a layered history."]),
+    day14Phrase("Zibeon", ["Zibeon is part of the Horite genealogy and connects to Anah.", "These family links matter because Genesis is mapping relationships in Seir.", "A difficult name can still carry geography and ancestry."]),
+    day14Phrase("Anah", ["Anah becomes important because of the note about finding mules or hot springs in the wilderness.", "Genesis pauses on him because his story has a distinctive detail.", "Genealogies sometimes include small memories from real lives."]),
+    day14Phrase("Dishon", ["Dishon is listed among Seir's sons and later among the chiefs.", "The repetition shows his branch mattered in the region.", "Genesis is careful with family structure."]),
+    day14Phrase("Ezer And Dishan", ["These names complete the listed sons of Seir.", "The Horite record is given before returning to Edom's chiefs.", "Scripture accounts for peoples who lived in the land."]),
+    day14Phrase("Timna Was Lotan's Sister", ["Timna is named as Lotan's sister, not only as a concubine elsewhere.", "This gives her a family location in Seir.", "Women in genealogies often connect major family lines."]),
+    day14Phrase("This Was That Anah That Found The Mules", ["Genesis pauses to identify Anah with a remembered event.", "The old wording may refer to mules or springs, depending on interpretation.", "Either way, the detail shows this was a known figure in regional memory."]),
+    day14Phrase("As He Fed The Asses Of Zibeon His Father", ["Anah's remembered discovery happens during ordinary animal work.", "The detail grounds the genealogy in daily life.", "Even lists can preserve small stories from the field."]),
+  ],
+  "Genesis 36:26-30": [
+    day14Phrase("The Children Of Dishon", ["The genealogy continues from Seir's sons into their children.", "This shows the Horite clans expanding.", "The structure helps explain who lived in Seir."]),
+    day14Phrase("Hemdan, And Eshban, And Ithran, And Cheran", ["These names are part of Dishon's branch.", "They may be hard to pronounce, but they are not meaningless filler.", "Genesis records them as real ancestry."]),
+    day14Phrase("Bilhan, And Zaavan, And Akan", ["These are sons of Ezer, another Horite branch.", "The list maps multiple family lines in the region.", "Slow reading turns strange names into family structure."]),
+    day14Phrase("Uz, And Aran", ["Uz and Aran complete Dishan's line here.", "Uz is a name that appears elsewhere in biblical geography.", "Genealogies can connect distant parts of Scripture."]),
+    day14Phrase("Dukes Of The Horites", ["The Horites have chiefs just as Esau's line does.", "This shows organized leadership among the earlier inhabitants.", "The land of Seir had political structure before Edom's full prominence."]),
+    day14Phrase("Among Their Dukes In The Land Of Seir", ["The chiefs are tied to place and clan.", "Genesis is preserving regional history.", "The Bible's world is populated by real peoples with real leadership."]),
+  ],
+  "Genesis 36:31-35": [
+    day14Phrase("Bela The Son Of Beor", ["Bela is the first king named in Edom's king list.", "The genealogy now shifts from chiefs to kings.", "Edom's political development is being recorded."]),
+    day14Phrase("Dinhabah", ["Dinhabah is the city connected to Bela's reign.", "The place name grounds the king in geography.", "Kings in Genesis have locations, not just titles."]),
+    day14Phrase("Jobab The Son Of Zerah", ["Jobab succeeds Bela after his death.", "The repeated pattern of death and succession begins.", "Human rule continues, but each ruler is temporary."]),
+    day14Phrase("Bozrah", ["Bozrah becomes an important Edomite location later in Scripture.", "Genesis names it here inside Edom's early royal list.", "A place name in a genealogy can prepare later prophetic geography."]),
+    day14Phrase("Husham Of The Land Of Temani", ["Husham is tied to Teman's region.", "This links kingship with Edomite places and clans.", "The list is political and geographical at once."]),
+    day14Phrase("Hadad The Son Of Bedad", ["Hadad is remembered for defeating Midian in Moab's field.", "That military note makes him stand out from the list.", "Edom's kings have stories and conflicts beyond their names."]),
+    day14Phrase("Avith", ["Avith is Hadad's city.", "The royal list keeps pairing rulers with places.", "Genesis is sketching Edom's early political map."]),
+  ],
+  "Genesis 36:36-39": [
+    day14Phrase("Samlah Of Masrekah", ["Samlah is another Edomite king with his city named.", "The repeated pattern gives Edom a remembered royal history.", "The list is not random; it tracks succession."]),
+    day14Phrase("Shaul Of Rehoboth By The River", ["Shaul's city is identified by a river location.", "This gives geographical texture to the king list.", "Places help readers see these rulers belonged to real regions."]),
+    day14Phrase("Baal-hanan The Son Of Achbor", ["Baal-hanan continues the royal succession.", "His name preserves another stage of Edom's rule.", "Even when little is said, the succession matters."]),
+    day14Phrase("Hadar", ["Hadar is the final king in this list section.", "Unlike the repeated deaths before, his wife and family are also named.", "The detail slows the list and adds household texture."]),
+    day14Phrase("Pau", ["Pau is Hadar's city.", "The location closes the king list with another place marker.", "Edom's monarchy is tied to named cities."]),
+    day14Phrase("Mehetabel", ["Mehetabel, Hadar's wife, is named with her family line.", "Women are rarely named in such lists, so the detail is worth noticing.", "Her mention gives the royal record a wider family context."]),
+  ],
+  "Genesis 36:40-43": [
+    day14Phrase("After Their Families", ["The final chiefs are organized by family lines.", "This reinforces Edom's settled clan structure.", "The chapter closes by making Esau's descendants orderly and traceable."]),
+    day14Phrase("After Their Places", ["The chiefs are also connected to places.", "Families and territories belong together in this record.", "Genesis is preserving Edom's social map."]),
+    day14Phrase("By Their Names", ["Names matter in this genealogy because they preserve identity.", "The reader may not know each person, but Scripture refuses to treat them as faceless.", "The phrase reminds us that biblical lists are made of real people."]),
+    day14Phrase("Duke Timnah", ["Timnah appears in the final chief list as a place or clan name.", "It connects back to earlier Timna details in the chapter.", "Repetition helps tie the genealogy together."]),
+    day14Phrase("Duke Alvah, Duke Jetheth", ["These chiefs represent more Edomite clans or regions.", "The names add density to Esau's final family map.", "Genesis is closing the branch carefully before moving on."]),
+    day14Phrase("Duke Magdiel, Duke Iram", ["The final names complete the list of Edom's chiefs.", "The chapter ends with established leadership and territory.", "Esau's line is now accounted for before Joseph's story begins."]),
+  ],
+};
+
+function deepenDay14PhraseCards(section: PersonalGenesisPhraseSectionInput): PersonalGenesisPhraseSectionInput {
+  const additions = DAY_14_REAL_PHRASE_ADDITIONS[section.reference] ?? [];
+  return {
+    ...section,
+    phrases: [...section.phrases, ...additions],
+  };
+}
 
 const DAY_15_GENESIS_37_38_FINAL_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
   { chapter: 37, startVerse: 1, endVerse: 4, reference: "Genesis 37:1-4", title: "Joseph Is Loved And Hated", icon: "🎽", phrases: [
@@ -2105,6 +2555,211 @@ function ensureGenesis31To38PhraseDepth(section: PersonalGenesisPhraseSectionInp
   };
 }
 
+const day15Phrase = (title: string, lines: string[]): [string, string] => phrase(title, lines);
+
+const DAY_15_REAL_PHRASE_ADDITIONS: Record<string, Array<[string, string]>> = {
+  "Genesis 37:1-4": [
+    day15Phrase("Wherein His Father Was A Stranger", ["Isaac lived in the land as a sojourner, not as a settled king.", "The promise is real, but full possession has not arrived yet.", "Joseph's story begins inside a family still waiting on God's long promise."]),
+    day15Phrase("Was Feeding The Flock", ["Joseph is introduced in ordinary shepherd work.", "The future ruler in Egypt begins among sheep and brothers.", "Genesis often starts major callings in daily labor."]),
+    day15Phrase("With The Sons Of Bilhah", ["Joseph works with sons from the servant mothers.", "The family is blended, layered, and emotionally complex.", "Knowing the mothers helps readers understand the brother tensions."]),
+    day15Phrase("With The Sons Of Zilpah", ["Joseph is also with Zilpah's sons.", "The scene places him among brothers from different parts of Jacob's household.", "The family line is already divided by mothers, favoritism, and resentment."]),
+    day15Phrase("Their Evil Report", ["Joseph brings a bad report about his brothers to Jacob.", "This adds fuel to a family already shaped by favoritism.", "The verse shows Joseph standing apart from the brothers before the dreams are even told."]),
+    day15Phrase("Son Of His Old Age", ["Jacob loves Joseph partly because Joseph was born to him late in life through Rachel.", "The phrase carries tenderness, memory, and favoritism.", "Love becomes dangerous when displayed in a way that wounds the rest of the family."]),
+  ],
+  "Genesis 37:5-8": [
+    day15Phrase("He Told It His Brethren", ["Joseph tells the brothers who already hate him.", "The audience matters because the dream touches their status.", "The words increase pressure in a household already near breaking."]),
+    day15Phrase("They Hated Him Yet The More", ["The hatred grows after Joseph shares the dream.", "Genesis repeats the emotion so readers feel its escalation.", "Sin is not standing still; it is intensifying."]),
+    day15Phrase("Hear, I Pray You, This Dream", ["Joseph invites his brothers to listen.", "He may be excited, naive, or unaware of how the dream sounds to them.", "The phrase shows how quickly spiritual experience can become relational tension."]),
+    day15Phrase("We Were Binding Sheaves", ["The dream uses harvest imagery from ordinary work.", "Sheaves are bundles of grain stalks.", "God often speaks future realities through pictures people can recognize."]),
+    day15Phrase("Your Sheaves Stood Round About", ["The brothers are pictured gathered around Joseph's sheaf.", "The dream is not private success only; it involves family submission.", "That is why it cuts so deeply."]),
+    day15Phrase("Made Obeisance", ["Obeisance means bowing down in respect or submission.", "This old word is central to the brothers' anger.", "The dream points toward the day they will bow before Joseph in Egypt."]),
+    day15Phrase("Shalt Thou Indeed Reign Over Us?", ["The brothers understand the dream's meaning immediately.", "They hear rule, authority, and reversal.", "Their question exposes the fear beneath their hatred."]),
+    day15Phrase("For His Dreams, And For His Words", ["The brothers hate both the dreams and Joseph's telling of them.", "The future God is showing and the way Joseph speaks both irritate them.", "Calling and communication are tangled together here."]),
+  ],
+  "Genesis 37:9-11": [
+    day15Phrase("He Dreamed Yet Another Dream", ["A second dream confirms that Joseph's first dream was not random.", "Repetition in Genesis often signals importance.", "God is establishing a future the family does not yet want to accept."]),
+    day15Phrase("The Sun And The Moon", ["Joseph's second dream uses cosmic family imagery.", "The sun and moon point toward his father and mother in Jacob's interpretation.", "The dream lifts the family conflict into a bigger symbolic frame."]),
+    day15Phrase("The Eleven Stars", ["The eleven stars represent Joseph's brothers.", "The image includes the whole family order bending toward Joseph.", "The dream is glorious, but it lands painfully in a house already divided."]),
+    day15Phrase("His Father Rebuked Him", ["Jacob corrects Joseph after hearing the dream.", "Even the father who loves him sees how bold the dream sounds.", "The rebuke shows that Joseph's words disturb more than his brothers."]),
+    day15Phrase("Shall I And Thy Mother And Thy Brethren", ["Jacob interprets the dream as involving the whole family.", "This phrase helps beginners understand the sun, moon, and stars.", "The dream is not vague; it speaks family reversal."]),
+    day15Phrase("Bow Down Ourselves To Thee", ["Jacob names the offense: Joseph appears above the family.", "Bowing is the issue that will later happen in Egypt.", "Genesis plants the future long before anyone can see how it will unfold."]),
+    day15Phrase("His Brethren Envied Him", ["The brothers' hatred now includes envy.", "They resent Joseph's favored place and dreamed future.", "Envy turns another person's calling into a personal threat."]),
+    day15Phrase("His Father Observed The Saying", ["Jacob keeps the matter in mind, even after rebuking Joseph.", "He has seen God work through strange words before.", "The dream troubles him, but he does not simply throw it away."]),
+  ],
+  "Genesis 37:12-17": [
+    day15Phrase("His Brethren Went To Feed", ["The brothers are away doing shepherd work.", "This creates distance from Jacob's house and sets the stage for danger.", "Ordinary work becomes the setting for betrayal."]),
+    day15Phrase("In Shechem", ["Shechem is a loaded place after Genesis 34.", "Jacob's sons had brought violence there before.", "Sending Joseph toward that region carries quiet tension."]),
+    day15Phrase("Come, And I Will Send Thee", ["Jacob sends Joseph to check on the brothers.", "The father does not yet see the danger in sending the favored son alone.", "The errand looks simple but will change the family forever."]),
+    day15Phrase("Here Am I", ["Joseph answers with readiness.", "He does not resist the errand.", "The phrase begins the road toward the pit, Egypt, and eventual rescue."]),
+    day15Phrase("See Whether It Be Well", ["Jacob wants to know the welfare of his sons and flocks.", "The mission is about peace and safety.", "Joseph is sent to seek his brothers' well-being, but they will not seek his."]),
+    day15Phrase("Bring Me Word Again", ["Joseph is expected to return with a report.", "That return will not happen for many years.", "The father will receive a lie instead."]),
+    day15Phrase("Wandering In The Field", ["Joseph cannot find his brothers at first.", "He is alone and searching in open country.", "The delay makes the scene feel vulnerable."]),
+    day15Phrase("What Seekest Thou?", ["A man asks Joseph what he is looking for.", "This ordinary question redirects the story.", "God's providence can move through unnamed people and simple questions."]),
+    day15Phrase("They Are Departed Hence", ["The brothers have moved from Shechem to Dothan.", "Joseph keeps following instead of turning back.", "Each step brings him closer to the brothers' hatred."]),
+  ],
+  "Genesis 37:18-22": [
+    day15Phrase("When They Saw Him Afar Off", ["The brothers recognize Joseph before he reaches them.", "The distance gives them time to plot.", "Hatred has room to become a plan."]),
+    day15Phrase("Even Before He Came Near", ["Joseph is condemned before he can speak.", "The brothers do not wait for conversation or explanation.", "Sin often decides the verdict before the person arrives."]),
+    day15Phrase("They Conspired Against Him", ["The brothers move from hatred to conspiracy.", "This is shared sin, not one person's sudden impulse.", "Group resentment becomes group violence."]),
+    day15Phrase("This Dreamer Cometh", ["They reduce Joseph to the dreams they hate.", "The phrase is mocking and dismissive.", "They attack the identity connected to God's future for him."]),
+    day15Phrase("Let Us Slay Him", ["The first plan is murder.", "The family jealousy has become deadly.", "Genesis wants readers to feel how far envy can go."]),
+    day15Phrase("Some Evil Beast Hath Devoured Him", ["They already imagine the cover story.", "The lie is planned before the act is finished.", "Sin often builds its alibi before it commits the crime."]),
+    day15Phrase("We Shall See What Will Become Of His Dreams", ["They think killing Joseph can kill the dream.", "This is the central irony of the chapter.", "Their attempt to stop the dream becomes part of the road that fulfills it."]),
+    day15Phrase("Reuben Heard It", ["Reuben intervenes when he hears the murder plot.", "As firstborn, he bears responsibility in the family.", "His response is flawed, but he does try to keep Joseph alive."]),
+    day15Phrase("Shed No Blood", ["Reuben tries to stop outright murder.", "He redirects the plan toward the pit.", "He wants rescue, but he does not confront the brothers with full courage."]),
+  ],
+  "Genesis 37:23-28": [
+    day15Phrase("They Stript Joseph Out Of His Coat", ["The brothers strip away the visible sign of Jacob's favor.", "They attack the garment before they sell the person.", "The coat had become the symbol of the wound they hated."]),
+    day15Phrase("Cast Him Into A Pit", ["Joseph is thrown down into a place with no water.", "The dreamer is lowered before God raises him.", "The pit becomes the first descent on the road to Egypt."]),
+    day15Phrase("The Pit Was Empty", ["The pit has no water, which means no relief and no easy survival.", "Joseph is alive but vulnerable.", "The detail makes the brothers' cruelty feel colder."]),
+    day15Phrase("They Sat Down To Eat Bread", ["The brothers eat while Joseph is in the pit.", "The calm meal beside suffering is chilling.", "Sin can make people disturbingly comfortable near another person's pain."]),
+    day15Phrase("A Company Of Ishmeelites", ["A caravan appears at just the right moment.", "Human trafficking enters the story through ordinary trade routes.", "God will use the road to Egypt, but the brothers' action remains evil."]),
+    day15Phrase("Spicery And Balm And Myrrh", ["The caravan carries valuable goods toward Egypt.", "These trade items make the scene concrete and historical.", "Joseph is sold into a world of commerce, movement, and empire."]),
+    day15Phrase("What Profit Is It", ["Judah frames Joseph's life in terms of profit.", "Instead of murder, he proposes sale.", "This is mercy only in a very limited and compromised sense."]),
+    day15Phrase("He Is Our Brother And Our Flesh", ["Judah remembers the family bond, but still supports selling Joseph.", "Knowing someone is family should have stopped the violence completely.", "The phrase shows conscience speaking, but not strongly enough."]),
+    day15Phrase("Twenty Pieces Of Silver", ["Joseph is sold for a price.", "A beloved son becomes a transaction.", "The number forces readers to feel betrayal measured in money."]),
+    day15Phrase("Brought Joseph Into Egypt", ["The brothers think they are getting rid of Joseph.", "In reality, they are moving him toward the place where God will preserve many lives.", "Egypt begins as exile, but God will turn it into rescue."]),
+  ],
+  "Genesis 37:29-32": [
+    day15Phrase("Reuben Returned Unto The Pit", ["Reuben comes back intending to deal with Joseph, but Joseph is gone.", "His partial plan has failed because he did not act openly enough.", "Delay and secrecy cost him the chance to rescue Joseph."]),
+    day15Phrase("Rent His Clothes", ["Reuben tears his garments in grief and shock.", "This outward sign shows distress.", "He knows the family disaster has gone beyond his control."]),
+    day15Phrase("The Child Is Not", ["Reuben calls Joseph the child, even though Joseph is seventeen.", "The word carries panic and responsibility.", "He knows a younger brother entrusted to the family is gone."]),
+    day15Phrase("Whither Shall I Go?", ["Reuben fears facing Jacob and the consequences.", "The question exposes his helplessness.", "He tried to avoid bloodshed, but he cannot undo the sale."]),
+    day15Phrase("They Took Joseph's Coat", ["The brothers take the coat as the object for their lie.", "The same garment that stirred hatred now becomes their tool of deception.", "Jacob's favoritism comes back to him through bloodied cloth."]),
+    day15Phrase("Killed A Kid Of The Goats", ["A goat is killed to create false evidence.", "This echoes Jacob's own deception of Isaac with goats in Genesis 27.", "Family deceit repeats with painful precision."]),
+    day15Phrase("Dipped The Coat In The Blood", ["The brothers make the coat look like proof of death.", "They do not murder Joseph, but they murder Jacob's hope.", "The bloodied coat becomes a lie strong enough to break a father."]),
+    day15Phrase("Sent The Coat Of Many Colours", ["They do not bring Joseph back; they send the coat.", "The message is cruelly indirect.", "Objects can carry devastating lies when people refuse to speak truth."]),
+  ],
+  "Genesis 37:33-36": [
+    day15Phrase("He Knew It", ["Jacob recognizes the coat immediately.", "The object confirms his worst fear in his mind.", "The brothers let their father interpret the lie himself."]),
+    day15Phrase("An Evil Beast Hath Devoured Him", ["Jacob supplies the very story the brothers planned.", "The deception works because it uses a believable fear.", "The father speaks the lie that his sons designed him to believe."]),
+    day15Phrase("Joseph Is Without Doubt Rent In Pieces", ["Jacob imagines Joseph violently torn apart.", "The words show how deeply the fake evidence wounds him.", "The brothers' lie creates a horror scene inside their father's mind."]),
+    day15Phrase("Jacob Rent His Clothes", ["Jacob tears his garments in grief, just as Reuben did earlier.", "The family is now covered in grief and secrecy.", "The visible mourning hides the hidden sin."]),
+    day15Phrase("Put Sackcloth Upon His Loins", ["Sackcloth is a garment of mourning.", "Jacob enters deep grief over a death that has not actually happened.", "The lie creates real suffering."]),
+    day15Phrase("Mourned For His Son Many Days", ["Jacob's grief is not brief.", "The loss becomes a long sorrow over the household.", "Sin committed in a moment can create years of pain."]),
+    day15Phrase("I Will Go Down Into The Grave Unto My Son Mourning", ["Jacob believes he will carry this grief until death.", "The sentence is heartbreaking because Joseph is alive.", "Deception has made a living son feel permanently lost."]),
+    day15Phrase("Potiphar, An Officer Of Pharaoh", ["Potiphar's house becomes Joseph's next setting.", "The mention of Pharaoh's officer quietly moves Joseph near Egypt's power structure.", "God is positioning Joseph long before anyone understands why."]),
+  ],
+  "Genesis 38:1-5": [
+    day15Phrase("At That Time", ["Genesis 38 interrupts Joseph's story to follow Judah.", "The timing matters because Judah just helped sell Joseph.", "The chapter shows what is happening in the family line while Joseph is in Egypt."]),
+    day15Phrase("Judah Went Down From His Brethren", ["Judah separates from his brothers after the Joseph betrayal.", "The phrase hints at moral and relational descent too.", "The family fracture spreads outward."]),
+    day15Phrase("Turned In To A Certain Adullamite", ["Judah attaches himself to Hirah of Adullam.", "He moves into Canaanite social circles.", "This sets up marriage and family choices outside the covenant household."]),
+    day15Phrase("Shuah", ["Shuah is the father of the Canaanite woman Judah marries.", "The name locates Judah's wife within the land's people.", "Genealogy and marriage details matter for the line that will lead to Perez."]),
+    day15Phrase("He Took Her", ["Judah takes a wife from the Canaanites.", "The brief phrase carries major family consequences.", "His household will become the setting for sin, death, and surprising mercy."]),
+    day15Phrase("Er", ["Er is Judah's firstborn son.", "His name matters because the firstborn line becomes central to Tamar's story.", "The hope of Judah's family appears to begin with him."]),
+    day15Phrase("Onan", ["Onan is Judah's second son.", "His role becomes important after Er dies.", "The family responsibility will fall to him, and he will refuse it wickedly."]),
+    day15Phrase("Shelah", ["Shelah is Judah's third son.", "Judah will later withhold him from Tamar out of fear.", "His name becomes part of the broken promise at the center of the chapter."]),
+    day15Phrase("Chezib", ["Chezib is the place connected to Shelah's birth.", "The place marker grounds Judah's household in real geography.", "Genesis keeps the story concrete even in uncomfortable chapters."]),
+  ],
+  "Genesis 38:6-11": [
+    day15Phrase("Tamar", ["Tamar enters as the wife Judah chooses for Er.", "She will become one of the most important women in Genesis.", "Her story is painful, bold, and tied to the line of Judah."]),
+    day15Phrase("Er, Judah's Firstborn, Was Wicked", ["The text gives a clear moral verdict on Er.", "It does not tell every detail, but it tells us enough: the Lord saw his wickedness.", "The firstborn line is immediately threatened by sin."]),
+    day15Phrase("The LORD Slew Him", ["Er's death is presented as divine judgment.", "This is a sobering line in the chapter.", "Judah's household is not outside God's moral sight."]),
+    day15Phrase("Go In Unto Thy Brother's Wife", ["Judah commands Onan to fulfill family duty for Tamar.", "This reflects levirate-like responsibility to preserve the dead brother's line.", "A beginner needs this slowed down because the custom is unfamiliar."]),
+    day15Phrase("Raise Up Seed To Thy Brother", ["The goal is to give Er a continuing family line through Tamar.", "This was about inheritance, name, and protection for the widow.", "Onan's refusal will be more than private selfishness."]),
+    day15Phrase("Onan Knew That The Seed Should Not Be His", ["Onan understands the child would legally continue his brother's line.", "His selfishness is deliberate, not confused.", "He wants the benefits without fulfilling the responsibility."]),
+    day15Phrase("He Spilled It On The Ground", ["Onan avoids giving Tamar a child while still using the marriage duty for himself.", "The sin is exploitation and refusal of family responsibility.", "The verse is about his deliberate betrayal of Tamar and his brother's line."]),
+    day15Phrase("Displeased The LORD", ["God sees Onan's action as evil.", "The private act has public covenant consequences.", "The Lord defends justice where Tamar is being denied."]),
+    day15Phrase("Remain A Widow At Thy Father's House", ["Judah sends Tamar away to wait.", "This sounds temporary, but he is already afraid to give Shelah to her.", "Tamar is left suspended without husband, child, or clear future."]),
+    day15Phrase("Lest Peradventure He Die Also", ["Judah blames danger on Tamar instead of facing the wickedness of his sons.", "Fear makes him unjust.", "He withholds the future he owes her."]),
+  ],
+  "Genesis 38:12-14": [
+    day15Phrase("In Process Of Time", ["Time passes while Tamar waits.", "The phrase carries the weight of delay and neglect.", "Judah's promise to her is not being honored."]),
+    day15Phrase("The Daughter Of Shuah Judah's Wife Died", ["Judah becomes a widower.", "The chapter moves through grief, family loss, and unresolved obligation.", "His own vulnerability does not make him more attentive to Tamar's."]),
+    day15Phrase("Judah Was Comforted", ["After mourning, Judah resumes activity.", "The phrase shows his grief season ending.", "But Tamar's suspended widowhood continues."]),
+    day15Phrase("Went Up Unto His Sheepshearers", ["Sheep-shearing was a social and economic event.", "Judah goes to Timnath with Hirah.", "The setting creates the opportunity for Tamar's plan."]),
+    day15Phrase("Tamar Was Told", ["Tamar receives information about Judah's movement.", "She has been waiting and watching because her future has been withheld.", "The news becomes the moment she chooses to act."]),
+    day15Phrase("She Put Her Widow's Garments Off", ["Tamar removes the clothing that marks her as waiting widow.", "This is a symbolic and strategic action.", "She has waited for justice and now changes her appearance to force the issue."]),
+    day15Phrase("Covered Her With A Vail", ["The veil hides Tamar's identity from Judah.", "Disguise enters Judah's story after he used a garment to deceive Jacob about Joseph.", "Genesis keeps showing deception echoing through the family."]),
+    day15Phrase("Shelah Was Grown", ["Tamar sees that Shelah is old enough, but she has not been given to him.", "This proves Judah has failed to keep his promise.", "Her plan responds to real injustice."]),
+  ],
+  "Genesis 38:15-18": [
+    day15Phrase("Judah Saw Her", ["Judah sees Tamar but does not recognize her.", "The scene turns on hidden identity.", "His own failure has placed him in a trap he does not understand."]),
+    day15Phrase("Thought Her To Be An Harlot", ["Judah misreads Tamar because of her covered face and location.", "The assumption exposes his own willingness to seek a prostitute.", "The chapter is showing Judah's moral blindness."]),
+    day15Phrase("He Turned Unto Her By The Way", ["Judah chooses to approach her.", "This is not accidental; he turns aside toward sin.", "The man who judged Tamar later is already guilty."]),
+    day15Phrase("For He Knew Not That She Was His Daughter In Law", ["The narrator tells us what Judah does not know.", "The hidden identity creates the irony of the scene.", "Judah is about to be exposed through his own actions."]),
+    day15Phrase("What Wilt Thou Give Me?", ["Tamar asks for payment before agreeing.", "She controls the terms of the encounter more than Judah realizes.", "Her question leads to the pledge that will later prove the truth."]),
+    day15Phrase("A Kid From The Flock", ["Judah offers a goat as payment.", "Goats keep appearing in Jacob's family deceptions.", "The detail quietly echoes earlier lies involving goat skins and goat blood."]),
+    day15Phrase("Thy Signet", ["The signet is a personal seal tied to identity and authority.", "Tamar asks for evidence that can identify Judah later.", "She is not merely seeking payment; she is securing proof."]),
+    day15Phrase("Thy Bracelets", ["The bracelets or cord are another personal item.", "Together with the signet and staff, they make the pledge unmistakable.", "Judah leaves pieces of his identity in Tamar's hand."]),
+    day15Phrase("Thy Staff", ["The staff is a personal object carried by Judah.", "It marks him as clearly as a signature would.", "The man who failed to give Tamar justice gives her the proof that will expose him."]),
+  ],
+  "Genesis 38:19-23": [
+    day15Phrase("She Arose, And Went Away", ["Tamar leaves after securing Judah's pledge.", "She does not remain in the disguise.", "The action is targeted toward justice, not a new identity as a prostitute."]),
+    day15Phrase("Laid By Her Vail", ["Tamar removes the disguise after the encounter.", "The veil was temporary and strategic.", "She returns to the visible state of widowhood."]),
+    day15Phrase("Put On The Garments Of Her Widowhood", ["Tamar resumes the clothing that shows her unresolved status.", "The garments remind readers that Judah still has not done right by her.", "Her widowhood is the wound underneath the whole scene."]),
+    day15Phrase("Judah Sent The Kid", ["Judah tries to pay what he promised.", "He wants the pledge back and the matter closed.", "But Tamar is no longer there to be found."]),
+    day15Phrase("To Receive His Pledge", ["The pledge matters because it can identify Judah.", "He wants his personal items returned.", "The evidence of his actions is now outside his control."]),
+    day15Phrase("Where Is The Harlot?", ["Hirah searches for the woman under the wrong label.", "No one understands that Tamar is involved.", "The public search begins to expose Judah's hidden behavior."]),
+    day15Phrase("There Was No Harlot In This Place", ["The local men deny that such a woman was there.", "Judah's attempt to tidy up the matter fails.", "The scene becomes more mysterious and risky for him."]),
+    day15Phrase("Lest We Be Shamed", ["Judah wants to avoid public shame.", "He is concerned about reputation before he is concerned about righteousness.", "That fear of shame will be reversed when Tamar is accused."]),
+  ],
+  "Genesis 38:24-26": [
+    day15Phrase("About Three Months After", ["Time passes before Tamar's pregnancy becomes known.", "The hidden encounter now produces visible consequences.", "What Judah thought was closed returns with force."]),
+    day15Phrase("Tamar Thy Daughter In Law Hath Played The Harlot", ["The accusation against Tamar is harsh and public.", "The language condemns her before the full truth is known.", "Judah is about to judge the sin he secretly participated in."]),
+    day15Phrase("She Is With Child By Whoredom", ["Tamar's pregnancy is presented as evidence against her.", "No one yet knows Judah is the father.", "The vulnerable widow is placed in danger by partial information."]),
+    day15Phrase("Bring Her Forth, And Let Her Be Burnt", ["Judah's sentence is severe and hypocritical.", "He moves quickly to punish Tamar while hiding his own guilt.", "The verse exposes how harshly people can judge when they do not see themselves."]),
+    day15Phrase("Discern, I Pray Thee", ["Tamar sends Judah's own words back through evidence.", "Discern means recognize or identify.", "This echoes the brothers asking Jacob to recognize Joseph's coat."]),
+    day15Phrase("Whose Are These", ["Tamar does not accuse with a speech; she lets the objects testify.", "The signet, bracelets, and staff speak the truth.", "Wisdom sometimes brings hidden sin into the light through undeniable evidence."]),
+    day15Phrase("Judah Acknowledged Them", ["Judah recognizes the items and therefore his own guilt.", "This is a turning point in his story.", "He stops blaming Tamar and tells the truth."]),
+    day15Phrase("She Hath Been More Righteous Than I", ["Judah admits Tamar acted more justly than he did.", "That confession is remarkable because he has power and she is vulnerable.", "Genesis shows real moral awakening in Judah."]),
+    day15Phrase("Because That I Gave Her Not To Shelah My Son", ["Judah names his own failure clearly.", "He withheld what he owed Tamar.", "The chapter's central injustice is finally spoken by the man who caused it."]),
+  ],
+  "Genesis 38:27-30": [
+    day15Phrase("In The Time Of Her Travail", ["Tamar's story reaches childbirth, like several Genesis promise-line stories before it.", "The woman who was nearly condemned now bears sons.", "God is moving the line forward through a scandalous and merciful turn."]),
+    day15Phrase("Twins Were In Her Womb", ["Like Rebekah, Tamar carries twins.", "The detail invites readers to remember Jacob and Esau.", "Another birth struggle is about to shape the family line."]),
+    day15Phrase("One Put Out His Hand", ["The birth scene begins with a hand appearing first.", "Genesis slows down the moment because birth order matters.", "The family line again turns on surprising reversal."]),
+    day15Phrase("Scarlet Thread", ["The midwife ties a scarlet thread to mark the first hand.", "The thread is meant to identify the firstborn.", "But the birth will not unfold as expected."]),
+    day15Phrase("This Came Out First", ["The midwife marks the assumed firstborn.", "Human beings try to label the order clearly.", "Genesis is about to show another reversal around first and second."]),
+    day15Phrase("His Brother Came Out", ["The other twin emerges first in the end.", "The birth order reverses expectations.", "The pattern of surprising younger/older tension continues in Genesis."]),
+    day15Phrase("How Hast Thou Broken Forth?", ["The midwife responds to the unexpected birth with surprise.", "The phrase explains the name Perez.", "The child breaks through in a startling way."]),
+    day15Phrase("Pharez", ["Pharez or Perez means breach or breaking forth.", "This son becomes crucial in Judah's line.", "The line leading toward David, and for Christians toward Jesus, comes through this surprising birth."]),
+    day15Phrase("Zarah", ["Zarah or Zerah is the twin marked by the scarlet thread.", "His name is preserved too, even though Perez becomes the major line.", "Genesis remembers both sons from this dramatic birth."]),
+  ],
+};
+
+function deepenDay15PhraseCards(section: PersonalGenesisPhraseSectionInput): PersonalGenesisPhraseSectionInput {
+  const additions = DAY_15_REAL_PHRASE_ADDITIONS[section.reference] ?? [];
+  const extraAdditions: Record<string, Array<[string, string]>> = {
+    "Genesis 37:1-4": [
+      day15Phrase("Israel Loved Joseph", ["The text uses Jacob's covenant name, Israel, while showing his family favoritism.", "That contrast matters because a man can carry God's promise and still love unwisely.", "The family wound begins with love expressed without wisdom."]),
+      day15Phrase("More Than All His Children", ["The problem is not that Jacob loves Joseph, but that the preference is obvious and comparative.", "The brothers can feel the ranking in the home.", "Favoritism turns affection into rivalry."]),
+    ],
+    "Genesis 37:5-8": [
+      day15Phrase("They Hated Him Yet The More For His Dreams", ["The brothers do not treat the dreams as neutral information.", "They hear the future as a threat to their standing.", "What God is revealing becomes another reason for resentment."]),
+      day15Phrase("And For His Words", ["Joseph's speech is part of the conflict too.", "The dream may be from God, but Joseph's words still land inside a wounded family.", "Beginners need to see both calling and communication in the scene."]),
+    ],
+    "Genesis 37:12-17": [
+      day15Phrase("Out Of The Vale Of Hebron", ["Joseph leaves the valley of Hebron on Jacob's errand.", "This place marker starts the physical journey toward Dothan and then Egypt.", "The road of suffering begins from home."]),
+      day15Phrase("I Seek My Brethren", ["Joseph's words are painfully innocent.", "He is looking for the very brothers who will betray him.", "The phrase lets readers feel the tragedy before Joseph understands it."]),
+    ],
+    "Genesis 37:23-28": [
+      day15Phrase("Lifted Up Their Eyes And Looked", ["The brothers see the caravan while Joseph is still in the pit.", "A new possibility enters the scene through what they notice.", "Their eyes find a way to profit from their brother's suffering."]),
+      day15Phrase("Let Not Our Hand Be Upon Him", ["Judah argues against killing Joseph directly.", "The phrase sounds merciful, but it still leaves Joseph sold into slavery.", "Avoiding blood on their hands does not make the betrayal clean."]),
+    ],
+    "Genesis 37:33-36": [
+      day15Phrase("All His Sons And All His Daughters", ["Jacob's whole household rises to comfort him.", "The tragedy spreads beyond Joseph and the guilty brothers.", "A hidden sin creates grief across the family."]),
+      day15Phrase("He Refused To Be Comforted", ["Jacob cannot receive comfort because he believes Joseph is dead.", "The lie has created grief that no one can easily reach.", "False evidence can imprison a person in sorrow."]),
+    ],
+    "Genesis 38:6-11": [
+      day15Phrase("Judah Took A Wife For Er", ["Judah arranges the marriage for his firstborn.", "The action places Tamar inside Judah's household responsibility.", "From this moment, Judah owes her protection and justice."]),
+      day15Phrase("Tamar Went And Dwelt In Her Father's House", ["Tamar obeys Judah's instruction and waits.", "She returns to her father's house, but her future is tied to Judah's promise.", "Her waiting becomes the moral pressure point of the chapter."]),
+    ],
+    "Genesis 38:15-18": [
+      day15Phrase("By The Way To Timnath", ["The location connects the encounter to Judah's sheep-shearing journey.", "Tamar places herself where Judah will pass.", "The road becomes the place where Judah's hidden failure is exposed."]),
+      day15Phrase("He Gave It Her", ["Judah hands over the signet, bracelets, and staff.", "He does not realize he is giving Tamar the evidence that will save her life.", "The proof of his identity leaves his control."]),
+    ],
+    "Genesis 38:24-26": [
+      day15Phrase("She Sent To Her Father In Law", ["Tamar sends the pledge back to Judah rather than publicly shouting first.", "Her response is controlled and wise under threat.", "She lets the evidence force Judah to face the truth."]),
+      day15Phrase("By The Man, Whose These Are, Am I With Child", ["Tamar identifies the father through the objects.", "The sentence turns the accusation back toward Judah without wasting words.", "Truth arrives through what Judah himself left behind."]),
+    ],
+  };
+  return {
+    ...section,
+    phrases: [...section.phrases, ...additions, ...(extraAdditions[section.reference] ?? [])],
+  };
+}
+
 const DAY_16_GENESIS_39_40_FINAL_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
   { chapter: 39, startVerse: 1, endVerse: 6, reference: "Genesis 39:1-6", title: "The Lord Is With Joseph In Potiphar's House", icon: "🏠", phrases: [
     deepPhrase("🇪🇬 Joseph Was Brought Down To Egypt", "Joseph's life has gone down from favored son to slave in a foreign land.", "The text names the descent plainly so readers do not skip the pain.", "God's presence does not mean Joseph avoided betrayal, sale, or displacement.", "God can be with someone even when their circumstances look like loss."),
@@ -2167,13 +2822,135 @@ const DAY_16_GENESIS_39_40_FINAL_SECTIONS: PersonalGenesisPhraseSectionInput[] =
   ] },
 ];
 
+const day16Phrase = (title: string, lines: string[]): [string, string] => phrase(title, lines);
+
+const DAY_16_REAL_PHRASE_ADDITIONS: Record<string, Array<[string, string]>> = {
+  "Genesis 39:1-6": [
+    day16Phrase("Potiphar, An Officer Of Pharaoh", ["Potiphar is connected directly to Pharaoh's court.", "Joseph is a slave, but he has been placed near the center of Egyptian power.", "The detail quietly prepares the road toward Joseph's later rise."]),
+    day16Phrase("Captain Of The Guard", ["Potiphar has authority in Egypt's security structure.", "Joseph is not sold into a powerless household.", "God's hidden positioning begins inside a powerful man's house."]),
+    day16Phrase("Bought Him Of The Hands Of The Ishmeelites", ["Joseph is treated like property after his brothers sold him.", "The phrase makes the injustice concrete.", "God is with Joseph, but the wrong done to him is still real."]),
+    day16Phrase("He Was In The House Of His Master", ["Joseph's first Egyptian setting is domestic service, not palace rule.", "The house becomes a training ground for stewardship.", "God can develop faithfulness in rooms that feel far from the dream."]),
+    day16Phrase("The LORD Made All That He Did To Prosper", ["Joseph's work is fruitful because the Lord is with him.", "The blessing touches ordinary tasks, not only dramatic moments.", "God's presence becomes visible through faithful labor."]),
+    day16Phrase("Joseph Found Grace In His Sight", ["Potiphar favors Joseph because he sees his reliability.", "Grace here means favor in the eyes of his master.", "Joseph's character makes room for trust even in a foreign house."]),
+    day16Phrase("All That He Had He Put Into His Hand", ["Potiphar entrusts Joseph with the household's affairs.", "The phrase shows wide responsibility.", "Joseph is learning to manage another man's house before he manages Egypt's stores."]),
+    day16Phrase("The LORD Blessed The Egyptian's House", ["God's blessing on Joseph spills over into Potiphar's household.", "An Egyptian master benefits because the Lord is with the Hebrew slave.", "The promise to bless others through Abraham's line is quietly visible here."]),
+    day16Phrase("He Knew Not Ought He Had", ["Potiphar trusts Joseph so completely that he does not track every detail himself.", "The old wording means he left everything in Joseph's care.", "Trust has grown from Joseph's consistent faithfulness."]),
+    day16Phrase("Joseph Was A Goodly Person, And Well Favoured", ["Joseph's appearance is noted before the temptation begins.", "His attractiveness becomes part of the danger in Potiphar's house.", "Genesis shows that gifts and favor can also bring tests."]),
+  ],
+  "Genesis 39:7-10": [
+    day16Phrase("After These Things", ["The temptation comes after Joseph has been elevated in the household.", "Success does not remove spiritual danger.", "Often a new level of trust brings a new kind of test."]),
+    day16Phrase("Lie With Me", ["Potiphar's wife speaks the temptation directly.", "Genesis does not soften the demand.", "Joseph's obedience begins by seeing the proposal clearly for what it is."]),
+    day16Phrase("My Master Wotteth Not What Is With Me", ["Wotteth means knows.", "Joseph explains that Potiphar has trusted him with almost everything.", "He refuses to treat private sin as if it affects no one else."]),
+    day16Phrase("Neither Hath He Kept Back Any Thing From Me But Thee", ["Joseph recognizes the boundary Potiphar has placed around his wife.", "The trust is great, but it is not unlimited.", "Faithfulness honors the boundary instead of resenting it."]),
+    day16Phrase("Because Thou Art His Wife", ["Joseph names marriage as the reason the act would be wrong.", "He does not reduce the issue to whether he can get away with it.", "The relationship itself creates a sacred boundary."]),
+    day16Phrase("Sin Against God", ["Joseph sees the temptation vertically before God.", "Even in Egypt, away from Jacob's tents, Joseph lives before the Lord.", "True integrity remembers God when no family member is watching."]),
+    day16Phrase("She Spake To Joseph Day By Day", ["The pressure repeats over time.", "Joseph's obedience is not a single heroic moment only.", "He has to refuse again and again."]),
+    day16Phrase("He Hearkened Not Unto Her", ["Joseph refuses to listen and yield.", "He does not keep feeding the conversation in his heart.", "Sometimes holiness means refusing the voice that keeps inviting compromise."]),
+    day16Phrase("To Be With Her", ["Joseph avoids even the setting where temptation could grow stronger.", "He does not only refuse the act; he refuses the closeness that would lead there.", "Wisdom guards distance before desire takes over."]),
+  ],
+  "Genesis 39:11-12": [
+    day16Phrase("About This Time", ["The repeated pressure reaches a decisive moment.", "Temptation often waits for the setting where resistance seems hardest.", "Genesis slows down because Joseph's integrity is about to be tested alone."]),
+    day16Phrase("Joseph Went Into The House To Do His Business", ["Joseph is there for work, not for sin.", "The ordinary task becomes the setting for an aggressive temptation.", "Faithfulness is tested in daily responsibilities."]),
+    day16Phrase("She Caught Him By His Garment", ["Potiphar's wife grabs Joseph's clothing to force the situation.", "The garment becomes central evidence in the coming lie.", "For the second time in Joseph's life, clothing will be used against him."]),
+    day16Phrase("He Left His Garment In Her Hand", ["Joseph chooses integrity over keeping control of appearances.", "Leaving the garment will cost him, but staying would cost him more.", "Sometimes obedience leaves behind something others can twist."]),
+    day16Phrase("Fled, And Got Him Out", ["Joseph gets out immediately.", "He does not negotiate with the moment.", "There are temptations where the faithful answer is movement, not debate."]),
+  ],
+  "Genesis 39:13-18": [
+    day16Phrase("When She Saw", ["Potiphar's wife quickly understands she has Joseph's garment.", "The same object that proved his escape can be used for accusation.", "Sin often twists evidence to protect itself."]),
+    day16Phrase("He Hath Brought In An Hebrew", ["She shifts blame toward Potiphar and labels Joseph by ethnicity.", "The phrase makes Joseph sound like an outsider threat.", "False accusation often recruits prejudice to make the lie stronger."]),
+    day16Phrase("To Mock Us", ["She frames Joseph's presence as an insult to the household.", "The language turns her failed temptation into a public offense.", "She makes herself and the household look like victims."]),
+    day16Phrase("I Cried With A Loud Voice", ["She claims she resisted loudly.", "The story she tells reverses the truth.", "Joseph's silence in the text makes the injustice feel heavier."]),
+    day16Phrase("He Left His Garment With Me", ["The garment becomes her proof.", "It is real evidence attached to a false interpretation.", "People can hold a true object and still tell a false story."]),
+    day16Phrase("Laid Up His Garment By Her", ["She keeps the garment until Potiphar comes home.", "The accusation is prepared and staged.", "Joseph's integrity is about to be judged through someone else's controlled narrative."]),
+    day16Phrase("Thy Servant Came In Unto Me", ["She tells Potiphar a version that makes Joseph the aggressor.", "The lie is personal and relational because Joseph had been trusted in the house.", "A false story can destroy trust faster than years built it."]),
+  ],
+  "Genesis 39:19-23": [
+    day16Phrase("When His Master Heard The Words", ["Potiphar responds to the report he is given.", "Joseph's side is not recorded.", "The silence shows how powerless he is in that household."]),
+    day16Phrase("After This Manner Did Thy Servant To Me", ["Potiphar's wife presents the accusation as settled fact.", "Her words shape Potiphar's anger.", "Injustice can begin when one story becomes the only story heard."]),
+    day16Phrase("Where The King's Prisoners Were Bound", ["Joseph is placed in a prison connected to royal prisoners.", "Even in punishment, God positions him near Pharaoh's world.", "The low place is also a hidden doorway."]),
+    day16Phrase("He Was There In The Prison", ["The text lets the reality land: Joseph is imprisoned.", "God's presence does not erase the bars.", "Faith has to live in the place where injustice put him."]),
+    day16Phrase("Gave Him Favour In The Sight Of The Keeper", ["Just as Joseph found favor with Potiphar, he now finds favor with the prison keeper.", "God's presence repeats in a new low place.", "Joseph's character remains fruitful under pressure."]),
+    day16Phrase("Committed To Joseph's Hand All The Prisoners", ["Joseph is trusted with people inside prison.", "Leadership keeps finding him even when freedom is taken away.", "God trains Joseph through responsibility in unexpected places."]),
+    day16Phrase("Whatsoever They Did There, He Was The Doer Of It", ["Joseph becomes the active manager of prison life.", "His work matters even in confinement.", "A person can be faithful in a place they did not choose."]),
+    day16Phrase("The Keeper Of The Prison Looked Not To Any Thing", ["The keeper trusts Joseph fully, like Potiphar did.", "The repeated trust shows Joseph's steady integrity.", "Circumstances change, but Joseph's faithfulness does not."]),
+  ],
+  "Genesis 40:1-4": [
+    day16Phrase("After These Things", ["Genesis signals a new development in prison.", "Joseph's waiting is not empty; God is arranging the next connection.", "The next step begins with two officers falling out of favor."]),
+    day16Phrase("The Butler Of The King Of Egypt", ["The butler or cupbearer served near Pharaoh's table.", "That role placed him close to royal presence and trust.", "His arrival connects Joseph's prison to Pharaoh's court."]),
+    day16Phrase("The Baker", ["The baker is another royal servant connected to Pharaoh's food.", "Both officers belong to the inner world of the palace.", "God brings palace servants into Joseph's prison path."]),
+    day16Phrase("Had Offended Their Lord The King", ["The officers have angered Pharaoh somehow.", "Their fall brings them into custody with Joseph.", "Someone else's crisis becomes part of God's setup for Joseph's future."]),
+    day16Phrase("Pharaoh Was Wroth", ["Pharaoh's anger changes the officers' lives.", "Royal displeasure sends powerful servants into confinement.", "Earthly power is unstable, but God is steady in the background."]),
+    day16Phrase("House Of The Captain Of The Guard", ["The prison is connected to the same official world as Potiphar.", "Joseph's confinement remains near Egyptian authority.", "The geography of suffering is also the geography of preparation."]),
+    day16Phrase("He Served Them", ["Joseph serves the officers instead of withdrawing into bitterness.", "His attentiveness becomes the doorway for the dream interpretations.", "Serving faithfully in prison becomes part of God's path to the palace."]),
+  ],
+  "Genesis 40:5-8": [
+    day16Phrase("They Dreamed A Dream Both Of Them", ["Both prisoners dream on the same night.", "The paired dreams signal that God is doing something purposeful.", "Joseph's old dream story now meets someone else's dreams."]),
+    day16Phrase("Each Man According To The Interpretation", ["The dreams have distinct meanings even though they happen together.", "Joseph must listen carefully to each one.", "God's revelation is specific, not generic."]),
+    day16Phrase("They Were Sad", ["Joseph notices their troubled faces.", "This matters because he is suffering too, yet still sees others.", "Compassion survives in Joseph's prison character."]),
+    day16Phrase("Wherefore Look Ye So Sadly To Day?", ["Joseph asks about their sadness directly.", "He does not ignore visible pain.", "That question opens the door for God to use his gift."]),
+    day16Phrase("There Is No Interpreter Of It", ["The men feel stuck because they do not understand the dreams.", "In Egypt, dreams were often treated as messages needing interpretation.", "Their helplessness prepares Joseph to point to God."]),
+    day16Phrase("Tell Me Them, I Pray You", ["Joseph invites them to share the dreams.", "His confidence is not in himself, but in the God who gives interpretation.", "He makes room for ministry inside prison conversation."]),
+  ],
+  "Genesis 40:9-11": [
+    day16Phrase("In My Dream", ["The butler begins by telling exactly what he saw.", "Joseph's interpretation will pay attention to the dream's details.", "Bible readers should slow down because each image matters."]),
+    day16Phrase("A Vine Was Before Me", ["The vine connects naturally to the cupbearer's work with wine.", "God speaks through imagery tied to the man's daily role.", "The dream's symbols fit the servant's world."]),
+    day16Phrase("In The Vine Were Three Branches", ["The three branches become the key timing detail.", "Joseph will interpret them as three days.", "The dream's structure carries the message."]),
+    day16Phrase("It Was As Though It Budded", ["The vine moves quickly from budding to blossoms to grapes.", "The image feels like sudden restoration and life.", "The dream is moving toward renewed service."]),
+    day16Phrase("Her Blossoms Shot Forth", ["The blossoms show growth and readiness.", "The dream compresses a fruitful process into a quick picture.", "Restoration is coming soon."]),
+    day16Phrase("The Clusters Thereof Brought Forth Ripe Grapes", ["The grapes are ready for Pharaoh's cup.", "The dream returns the butler to the work he once did.", "The imagery points toward restored position."]),
+    day16Phrase("Pharaoh's Cup Was In My Hand", ["The cupbearer sees himself holding Pharaoh's cup again.", "This is the clearest sign of return to office.", "The dream's hope is tied to his former service."]),
+    day16Phrase("I Gave The Cup Into Pharaoh's Hand", ["The dream ends with the butler serving Pharaoh again.", "Joseph will confirm that this means restoration.", "The cup moves from prison memory to palace future."]),
+  ],
+  "Genesis 40:12-15": [
+    day16Phrase("This Is The Interpretation", ["Joseph moves from listening to explaining.", "He speaks with clarity because interpretation belongs to God.", "The phrase signals that the dream's meaning is being opened."]),
+    day16Phrase("The Three Branches Are Three Days", ["Joseph identifies the timing plainly.", "The dream will unfold quickly.", "God's interpretation gives the butler a specific expectation."]),
+    day16Phrase("Within Three Days", ["The clock is now set.", "The butler will soon know whether Joseph's word is true.", "God's revelation enters real time."]),
+    day16Phrase("Pharaoh Shall Lift Up Thine Head", ["This phrase means Pharaoh will restore the butler to attention and position.", "It is good news in this dream.", "The same wording will sound darker in the baker's interpretation."]),
+    day16Phrase("Restore Thee Unto Thy Place", ["The butler will return to his former office.", "This is not vague encouragement; it is restoration to a known role.", "God gives Joseph the true meaning."]),
+    day16Phrase("When It Shall Be Well With Thee", ["Joseph expects the butler's situation to improve.", "He asks to be remembered in that future moment.", "Hope for another person becomes Joseph's chance to ask for justice."]),
+    day16Phrase("Make Mention Of Me Unto Pharaoh", ["Joseph asks the butler to speak his name to Pharaoh.", "He is not wrong to seek release from injustice.", "Faith can pray, serve, and also ask for help."]),
+    day16Phrase("Stolen Away Out Of The Land Of The Hebrews", ["Joseph names his kidnapping plainly.", "He does not minimize what happened to him.", "The dream interpreter is also a victim of human trafficking."]),
+    day16Phrase("Here Also Have I Done Nothing", ["Joseph states his innocence in Egypt too.", "He was wronged by his brothers and wronged in Potiphar's house.", "Patient faithfulness does not require pretending injustice is fair."]),
+  ],
+  "Genesis 40:16-19": [
+    day16Phrase("When The Chief Baker Saw", ["The baker responds after hearing the butler's favorable interpretation.", "He hopes his own dream may also bring good news.", "The order makes the coming hard word more painful."]),
+    day16Phrase("I Also Was In My Dream", ["The baker offers his dream because Joseph's gift has just been proven hopeful to him.", "He wants meaning too.", "But not every dream in the chapter carries restoration."]),
+    day16Phrase("Three White Baskets On My Head", ["The three baskets match the number pattern from the butler's dream.", "But similar symbols do not guarantee the same outcome.", "Joseph must interpret the actual dream, not force a happy pattern."]),
+    day16Phrase("In The Uppermost Basket", ["The top basket holds baked goods for Pharaoh.", "The detail focuses attention on what should have reached the king.", "Instead, the birds eat from it."]),
+    day16Phrase("All Manner Of Bakemeats", ["The dream includes baked foods connected to the baker's former work.", "Like the butler's dream, the symbols come from his office.", "The difference is what happens to the food."]),
+    day16Phrase("The Birds Did Eat Them", ["Birds eat the food meant for Pharaoh.", "The image points toward loss and judgment, not service restored.", "The dream's ending is ominous."]),
+    day16Phrase("The Three Baskets Are Three Days", ["Joseph identifies the same timing: three days.", "Both men will receive an answer quickly.", "Shared timing does not mean shared destiny."]),
+    day16Phrase("Shall Lift Up Thy Head From Off Thee", ["The phrase turns dark: the baker's head will be lifted from him.", "Joseph gives the hard truth without softening it.", "Faithful interpretation must tell the truth even when it is terrible."]),
+    day16Phrase("Hang Thee On A Tree", ["Joseph says the baker will be executed and exposed.", "This is a severe judgment scene.", "The prison dreams carry life for one man and death for another."]),
+  ],
+  "Genesis 40:20-23": [
+    day16Phrase("The Third Day", ["The interpretations are fulfilled on the exact day Joseph said.", "This confirms that God truly gave the meaning.", "Joseph's gift is validated while Joseph remains in prison."]),
+    day16Phrase("Pharaoh's Birthday", ["Pharaoh's feast becomes the public setting for both outcomes.", "A royal celebration turns into restoration for one man and judgment for another.", "The palace calendar fulfills the prison dreams."]),
+    day16Phrase("Made A Feast Unto All His Servants", ["The events happen before Pharaoh's servants.", "The butler and baker are lifted up publicly in opposite ways.", "What was spoken in prison becomes visible in court."]),
+    day16Phrase("Lifted Up The Head Of The Chief Butler", ["The phrase is fulfilled positively for the butler.", "He is brought back into Pharaoh's service.", "Joseph's interpretation proves true."]),
+    day16Phrase("Lifted Up The Head Of The Chief Baker", ["The same phrase is fulfilled as judgment for the baker.", "Genesis uses the repeated wording to show two opposite outcomes.", "Truth can restore or condemn depending on the word God has given."]),
+    day16Phrase("He Restored The Chief Butler Unto His Butlership", ["The butler returns to exactly the role Joseph described.", "This should have opened a door for Joseph.", "The accuracy of the interpretation is undeniable."]),
+    day16Phrase("He Hanged The Chief Baker", ["The baker's dream is fulfilled with the same precision.", "Joseph did not invent comfort or avoid hard truth.", "God's revealed meaning stands."]),
+    day16Phrase("According As Joseph Had Interpreted", ["The chapter confirms Joseph's interpretations were accurate.", "Joseph's gift is real even in prison.", "God is preparing the moment when Pharaoh himself will need that gift."]),
+    day16Phrase("Forgot Him", ["The butler's forgetfulness leaves Joseph waiting longer.", "This is painful because Joseph served him well and asked to be remembered.", "Human forgetfulness delays Joseph, but it does not derail God's timing."]),
+  ],
+};
+
+function deepenDay16PhraseCards(section: PersonalGenesisPhraseSectionInput): PersonalGenesisPhraseSectionInput {
+  const additions = DAY_16_REAL_PHRASE_ADDITIONS[section.reference] ?? [];
+  return {
+    ...section,
+    phrases: [...section.phrases, ...additions],
+  };
+}
+
 export const GENESIS_31_40_PERSONAL_SECTIONS = addGenesisThirtyOneToFortySectionTexture(
   [
-    ...DAY_12_GENESIS_31_FINAL_SECTIONS.map(ensureGenesis31To38PhraseDepth),
-    ...DAY_13_GENESIS_32_33_FINAL_SECTIONS.map(ensureGenesis31To38PhraseDepth),
-    ...DAY_14_GENESIS_34_36_FINAL_SECTIONS.map(ensureGenesis31To38PhraseDepth),
-    ...DAY_15_GENESIS_37_38_FINAL_SECTIONS.map(ensureGenesis31To38PhraseDepth),
-    ...DAY_16_GENESIS_39_40_FINAL_SECTIONS.map(ensureBeginnerGenesisPhraseDepth),
+    ...DAY_12_GENESIS_31_FINAL_SECTIONS.map(deepenDay12Genesis31PhraseCards),
+    ...DAY_13_GENESIS_32_33_FINAL_SECTIONS.map(deepenDay13PhraseCards),
+    ...DAY_14_GENESIS_34_36_FINAL_SECTIONS.map(deepenDay14PhraseCards),
+    ...DAY_15_GENESIS_37_38_FINAL_SECTIONS.map(deepenDay15PhraseCards),
+    ...DAY_16_GENESIS_39_40_FINAL_SECTIONS.map(deepenDay16PhraseCards),
     ...expandSplitSections(RAW_GENESIS_31_40_PERSONAL_SECTIONS.filter((section) => section.chapter !== 31 && section.chapter !== 32 && section.chapter !== 33 && section.chapter !== 34 && section.chapter !== 35 && section.chapter !== 36 && section.chapter !== 37 && section.chapter !== 38 && section.chapter !== 39 && section.chapter !== 40)),
   ],
 );

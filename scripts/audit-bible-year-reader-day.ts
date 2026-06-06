@@ -1,5 +1,6 @@
 import { GENESIS_41_50_PERSONAL_SECTIONS } from "../lib/genesisFortyOneToFiftyPersonalNotes";
 import { GENESIS_21_30_PERSONAL_SECTIONS } from "../lib/genesisTwentyOneToThirtyPersonalNotes";
+import { GENESIS_31_40_PERSONAL_SECTIONS } from "../lib/genesisThirtyOneToFortyPersonalNotes";
 import { EXODUS_2_10_PERSONAL_SECTIONS } from "../lib/exodusTwoToTenPersonalNotes";
 import { EXODUS_11_20_PERSONAL_SECTIONS } from "../lib/exodusElevenToTwentyPersonalNotes";
 import { EXODUS_21_30_PERSONAL_SECTIONS } from "../lib/exodusTwentyOneToThirtyPersonalNotes";
@@ -22,6 +23,20 @@ type DaySpec = {
 
 const DAY_SPECS: Record<number, DaySpec> = {
   10: { book: "Genesis", chapters: [25, 26, 27], sections: GENESIS_21_30_PERSONAL_SECTIONS },
+  11: { book: "Genesis", chapters: [28, 29], sections: GENESIS_21_30_PERSONAL_SECTIONS },
+  12: {
+    book: "Genesis",
+    chapters: [30, 31],
+    sections: [...GENESIS_21_30_PERSONAL_SECTIONS, ...GENESIS_31_40_PERSONAL_SECTIONS],
+  },
+  13: { book: "Genesis", chapters: [32, 33], sections: GENESIS_31_40_PERSONAL_SECTIONS },
+  14: { book: "Genesis", chapters: [34, 35, 36], sections: GENESIS_31_40_PERSONAL_SECTIONS },
+  15: { book: "Genesis", chapters: [37, 38], sections: GENESIS_31_40_PERSONAL_SECTIONS },
+  16: { book: "Genesis", chapters: [39, 40], sections: GENESIS_31_40_PERSONAL_SECTIONS },
+  17: { book: "Genesis", chapters: [41, 42], sections: GENESIS_41_50_PERSONAL_SECTIONS },
+  18: { book: "Genesis", chapters: [43, 44], sections: GENESIS_41_50_PERSONAL_SECTIONS },
+  19: { book: "Genesis", chapters: [45, 46], sections: GENESIS_41_50_PERSONAL_SECTIONS },
+  20: { book: "Genesis", chapters: [47, 48], sections: GENESIS_41_50_PERSONAL_SECTIONS },
   21: { book: "Genesis", chapters: [49, 50], sections: GENESIS_41_50_PERSONAL_SECTIONS },
   22: { book: "Exodus", chapters: [1, 2, 3, 4], sections: EXODUS_2_10_PERSONAL_SECTIONS },
   23: { book: "Exodus", chapters: [5, 6, 7, 8], sections: EXODUS_2_10_PERSONAL_SECTIONS },
