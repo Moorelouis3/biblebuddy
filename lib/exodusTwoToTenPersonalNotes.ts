@@ -473,11 +473,11 @@ function makeExodusSectionsFromDeepStudy(
 
 const DAY_22_REAL_PHRASE_TITLES: Record<string, string[]> = {
   "Exodus 1:1-6": ["These Are The Names", "Which Came Into Egypt", "Every Man And His Household", "Seventy Souls", "Joseph Was In Egypt Already", "Joseph Died, And All His Brethren"],
-  "Exodus 1:7-7": ["The Children Of Israel Were Fruitful", "Increased Abundantly", "Waxed Exceeding Mighty", "The Land Was Filled With Them"],
+  "Exodus 1:7-7": ["The Children Of Israel", "Were Fruitful", "Increased Abundantly", "Multiplied", "Waxed Exceeding Mighty", "The Land Was Filled With Them"],
   "Exodus 1:8-13": ["A New King Over Egypt", "Which Knew Not Joseph", "More And Mightier Than We", "Let Us Deal Wisely With Them", "Taskmasters To Afflict Them", "Treasure Cities, Pithom And Raamses", "The More They Afflicted Them, The More They Multiplied"],
-  "Exodus 1:14-14": ["Made Their Lives Bitter", "Hard Bondage", "Morter And In Brick", "All Manner Of Service In The Field", "All Their Service Was With Rigour"],
+  "Exodus 1:14-14": ["Made Their Lives Bitter", "Hard Bondage", "In Morter", "In Brick", "All Manner Of Service In The Field", "All Their Service Was With Rigour"],
   "Exodus 1:15-20": ["The Hebrew Midwives", "Shiphrah, And The Name Of The Other Puah", "Upon The Stools", "If It Be A Son, Then Ye Shall Kill Him", "If It Be A Daughter, Then She Shall Live", "The Midwives Feared God", "Did Not As The King Of Egypt Commanded", "The People Multiplied, And Waxed Very Mighty"],
-  "Exodus 1:21-22": ["He Made Them Houses", "Pharaoh Charged All His People", "Every Son That Is Born Ye Shall Cast Into The River", "Every Daughter Ye Shall Save Alive"],
+  "Exodus 1:21-22": ["Because The Midwives Feared God", "He Made Them Houses", "Pharaoh Charged All His People", "Every Son That Is Born", "Ye Shall Cast Into The River", "Every Daughter Ye Shall Save Alive"],
   "Exodus 2:1-6": ["A Man Of The House Of Levi", "Bare A Son", "He Was A Goodly Child", "Hid Him Three Months", "An Ark Of Bulrushes", "Slime And With Pitch", "His Sister Stood Afar Off", "The Babe Wept"],
   "Exodus 2:7-10": ["Shall I Go And Call To Thee A Nurse", "Nurse It For Me", "I Will Give Thee Thy Wages", "The Child Grew", "He Became Her Son", "She Called His Name Moses"],
   "Exodus 2:11-16": ["When Moses Was Grown", "Looked On Their Burdens", "An Egyptian Smiting An Hebrew", "He Looked This Way And That Way", "He Slew The Egyptian", "Who Made Thee A Prince And A Judge", "Moses Feared", "Dwelt In The Land Of Midian"],
@@ -497,7 +497,7 @@ const DAY_22_REAL_PHRASE_TITLES: Record<string, string[]> = {
 
 const DAY_22_SECTION_EXPLANATIONS: Record<string, string[]> = {
   "Exodus 1:1-6": ["Exodus begins by tying the rescue story back to Genesis.", "Jacob's family came to Egypt through Joseph, but now that first generation is passing away.", "The names remind the reader that God is still dealing with the same promise family.", "Before bondage is described, Exodus makes sure we know whose story this is."],
-  "Exodus 1:7-7": ["This verse shows God's promise multiplying right in Egypt.", "The family becomes fruitful, strong, and visible across the land.", "Pharaoh will treat that growth as a threat, but the reader should first see it as faithfulness.", "God is growing His people before He brings them out."],
+  "Exodus 1:7-7": ["God's promise is multiplying right in Egypt.", "The family becomes fruitful, strong, and visible across the land.", "Pharaoh will treat that growth as a threat, but the reader should first see it as faithfulness.", "God is growing His people before He brings them out."],
   "Exodus 1:8-13": ["The new king reads Israel's growth through fear instead of gratitude.", "He forgets Joseph and turns blessing into a political problem.", "The words about wisdom, taskmasters, and treasure cities show oppression becoming organized policy.", "Pharaoh tries to crush the promise, but the more he afflicts Israel, the more God multiplies them."],
   "Exodus 1:14-14": ["This verse slows down to show what slavery felt like.", "Bitter lives, hard bondage, brickwork, field service, and rigour make the suffering concrete.", "A beginner should not picture vague sadness here; this is exhausting forced labor.", "God's coming rescue answers real cruelty in real bodies."],
   "Exodus 1:15-20": ["Pharaoh's oppression moves from labor to the murder of children.", "The midwives stand in holy courage because they fear God more than the king.", "Their names are remembered because their hidden faithfulness protects life.", "The section shows that resistance to evil can begin in a birth room before it ever reaches a palace."],
@@ -519,23 +519,493 @@ const DAY_22_SECTION_EXPLANATIONS: Record<string, string[]> = {
   "Exodus 4:30-31": ["Aaron speaks, the signs are shown, and the people believe.", "Before Pharaoh releases them, Israel already hears that God has visited and seen their affliction.", "Their worship comes while they are still in bondage.", "Hope begins when God's word is received, even before the rescue is complete."],
 };
 
-function makeDay22PhraseCard(section: PersonalExodusPhraseSectionInput, title: string): [string, string] {
-  const [scene, meaning, beginner, lesson] = DAY_22_SECTION_EXPLANATIONS[section.reference] ?? [
-    `This phrase belongs to ${section.reference}.`,
-    "It helps explain the pressure, promise, and rescue movement in Exodus.",
-    "A beginner should slow down here instead of treating the words as filler.",
-    "The LORD is showing that Pharaoh is not ultimate and His people are not forgotten.",
-  ];
+function explainExodusOneToTenPhrase(
+  section: PersonalExodusPhraseSectionInput,
+  title: string,
+  sectionLines: string[],
+): string {
+  const lower = title.toLowerCase();
+  const [scene, meaning, beginner, lesson] = sectionLines;
+  const lines: string[] = [];
+  const add = (...items: string[]) => {
+    for (const item of items) {
+      if (item && !lines.includes(item)) lines.push(item);
+    }
+  };
 
-  return phrase(`📌 ${title}`, [
-    scene,
-    meaning,
-    beginner,
-    "This phrase comes directly from the passage, so it helps the reader stay close to the Bible text.",
-    lesson,
-  ]);
+  if (lower.includes("pharaoh") || lower.includes("king of egypt") || lower.includes("new king")) {
+    add(`${title} points to Egypt's ruler, the man acting like he owns Israel's future.`, "In Exodus, Pharaoh is more than one stubborn man. He represents a whole system that wants control, labor, and obedience without honoring God.", "👑 Power", "🔒 Control", "🧱 Oppression", "The LORD is confronting a kingdom that refuses to let His people worship.");
+  } else if (lower.includes("midwives") || lower.includes("shiphrah") || lower.includes("puah")) {
+    add(`${title} names women who protected life when Pharaoh commanded death.`, "Midwives helped mothers during birth, so Pharaoh tried to turn a place of life into a place of murder.", "👶 Babies", "👐 Hidden courage", "🙏 Fear of God", "Their names are remembered because God sees faithful people even when their obedience happens far from a throne.");
+  } else if (lower.includes("straw") || lower.includes("brick") || lower.includes("taskmasters") || lower.includes("bondage") || lower.includes("rigour") || lower.includes("burdens") || lower.includes("beaten")) {
+    add(`${title} helps us feel what slavery looked like in daily life.`, "Israel's suffering was not vague sadness. It meant exhausting work, cruel supervisors, impossible quotas, and bodies worn down by forced labor.", "🧱 Bricks", "🌾 Straw", "💢 Harsh pressure", "God's rescue answers real oppression. He is saving Israel from bitter lives under Pharaoh.");
+  } else if (lower.includes("fruitful") || lower.includes("multiplied") || lower.includes("increased") || lower.includes("mighty") || lower.includes("filled")) {
+    add(`${title} echoes the blessing language from Genesis.`, "God told His people to be fruitful and multiply, and now Jacob's family is becoming a people inside Egypt.", "🌱 Growth", "📜 Promise", "🏠 Family becoming a nation", "Pharaoh sees this growth as a threat, but Exodus wants us to see it first as God keeping His word.");
+  } else if (lower.includes("kept the flock") || lower.includes("flock") || lower.includes("backside of the desert")) {
+    add(`${title} shows Moses in ordinary shepherd work before the burning bush.`, "He is far from Egypt, far from palace life, and doing quiet work in the wilderness.", "🐑 Flock", "🏜️ Desert", "⏳ Hidden years", "God often prepares His servants in ordinary places before anyone sees the public calling.");
+  } else if (lower.includes("house of levi") || lower.includes("levi")) {
+    add(`${title} places Moses inside Israel's covenant family line.`, "Levi was one of Jacob's sons in Genesis, and the Levites later become important in Israel's worship.", "🏠 Family line", "📜 Genesis connection", "🙏 Future worship", "Moses is not a random hero dropped into the story. He comes from the people God promised to preserve.");
+  } else if (lower.includes("ark of bulrushes") || lower.includes("bulrushes") || lower.includes("pitch") || lower.includes("babe") || lower.includes("wept") || lower.includes("nurse") || lower.includes("moses")) {
+    add(`${title} belongs to the rescue of Moses under Pharaoh's death sentence.`, "The river was supposed to be a place of death for Hebrew sons, but God uses a mother, a basket, a sister, and compassion to preserve the deliverer.", "🧺 Basket", "🌊 Water", "👶 Weakness", "Pharaoh's own household helps raise the child God will use to confront Pharaoh.");
+  } else if (lower.includes("midian") || lower.includes("zipporah") || lower.includes("jethro") || lower.includes("gershom") || lower.includes("well") || lower.includes("drew water")) {
+    add(`${title} shows Moses living far from Egypt before God sends him back.`, "Midian becomes a wilderness training place. Moses learns life outside the palace, serves at wells, marries, and becomes a stranger in another land.", "🏜️ Wilderness", "🐑 Shepherd life", "🚶 Stranger", "God is preparing Moses quietly before the public rescue begins.");
+  } else if (lower.includes("heard") || lower.includes("groaning") || lower.includes("cry") || lower.includes("remembered") || lower.includes("looked") || lower.includes("respect")) {
+    add(`${title} tells us how God responds to suffering.`, "Remembered does not mean God had forgotten. It means He is now moving to act on the covenant promises He made to Abraham, Isaac, and Jacob.", "👂 God hears", "📜 God remembers", "👀 God sees", "Before Moses returns to Egypt, the rescue has already begun in God's faithful attention.");
+  } else if (lower.includes("bush") || lower.includes("holy") || lower.includes("shoes") || lower.includes("horeb") || lower.includes("angel of the lord")) {
+    add(`${title} belongs to the burning bush scene where God calls Moses.`, "The ground is holy because God is present there. Moses is not walking into a normal conversation; he is standing before the living God.", "🔥 Fire", "👣 Bare feet", "⛰️ Holy ground", "The God who speaks from the bush is the God of Abraham, Isaac, and Jacob.");
+  } else if (lower.includes("i am") || lower.includes("name") || lower.includes("jehovah") || lower.includes("lord")) {
+    add(`${title} teaches who God is, not just what God can do.`, "God is not one more Egyptian-style god with a small territory or limited power. He is the living LORD who exists by His own power and keeps covenant.", "📛 Name", "🕊️ Presence", "📜 Promise", "Israel's hope rests on God's character. The rescue is strong because the Rescuer is faithful.");
+  } else if (lower.includes("rod") || lower.includes("serpent") || lower.includes("sign") || lower.includes("blood") || lower.includes("wonders") || lower.includes("magicians")) {
+    add(`${title} is part of the signs God gives to confirm His word.`, "The signs are not magic tricks. They show that the LORD rules creation, bodies, Egypt's river, and every power Pharaoh trusts.", "🐍 Rod and serpent", "🩸 Blood", "⚡ Wonder", "A sign in Exodus is meant to make people listen to God's message, not just stare at the miracle.");
+  } else if (lower.includes("let my people go") || lower.includes("serve me") || lower.includes("sacrifice") || lower.includes("wilderness")) {
+    add(`${title} explains the purpose of freedom in Exodus.`, "God is not merely taking Israel out of bad conditions. He is claiming them as His people so they can worship and serve Him.", "🚪 Freedom", "🙏 Worship", "⛺ Wilderness meeting", "Pharaoh wants labor from Israel. The LORD wants worship from His people.");
+  } else if (lower.includes("hardened") || lower.includes("refuse") || lower.includes("hearkened not") || lower.includes("know not")) {
+    add(`${title} shows Pharaoh resisting clear truth.`, "A hard heart does not simply lack information. It sees God's word, warnings, and signs, yet still refuses to bow.", "🔒 Refusal", "👂 Not listening", "⚠️ Warning ignored", "Exodus repeats this pattern so a beginner can see how dangerous stubborn pride becomes.");
+  } else if (lower.includes("frogs") || lower.includes("lice") || lower.includes("flies") || lower.includes("river") || lower.includes("hail") || lower.includes("locust") || lower.includes("darkness") || lower.includes("boil")) {
+    add(`${title} is one of the plague details where creation itself confronts Egypt.`, "The plagues touch water, land, animals, bodies, food, and light because the LORD rules every part of the world Pharaoh thought he controlled.", "🌊 Water", "🐸 Creatures", "🌑 Darkness", "Each plague is judgment, but it is also a lesson: Egypt will know that the LORD is God.");
+  } else if (lower.includes("goshen") || lower.includes("sever") || lower.includes("division") || lower.includes("difference")) {
+    add(`${title} shows God making a distinction between Egypt and His people.`, "Israel is still living inside Egypt, but they do not belong to Pharaoh in the deepest sense. They belong to the LORD.", "🛡️ Protection", "📍 Goshen", "⚖️ Precise judgment", "God's judgment is not random chaos. He knows how to protect His people while confronting their oppressor.");
+  } else if (lower.includes("uncircumcised") || lower.includes("foreskin") || lower.includes("bloody husband")) {
+    add(`${title} is a hard covenant moment in Moses' own household.`, "Circumcision was the sign God gave Abraham's family in Genesis. Before Moses leads covenant Israel, his own family must not ignore that sign.", "📜 Covenant sign", "🩸 Serious obedience", "🏠 Moses' household", "God's messenger must not treat God's covenant casually.");
+  } else {
+    add(`${title} is worth slowing down over in ${section.reference}.`, scene, meaning, beginner, lesson);
+  }
+
+  if (lines.length < 5) add(scene, meaning, "A beginner should read this phrase as part of God's rescue story, not as extra wording to skip.", lesson);
+  return note(lines.slice(0, 8));
 }
 
+const DAY_22_EXACT_EXPLANATIONS: Record<string, string[]> = {
+  "These Are The Names": [
+    "Exodus begins with names because this story is about real people.",
+    "These are not random names on a list.",
+    "They are the sons of Jacob.",
+    "They are the family God promised to bless back in Genesis.",
+    "\u{1F4DC} Reuben",
+    "\u{1F4DC} Simeon",
+    "\u{1F4DC} Levi",
+    "\u{1F4DC} Judah",
+    "The rescue story does not begin with Pharaoh. It begins with the promise family.",
+    "Before Exodus shows slavery, plagues, and deliverance, it reminds us who these people are.",
+  ],
+  "Which Came Into Egypt": [
+    "This points backward to Genesis.",
+    "Jacob's family did not start in Egypt.",
+    "They came there during the famine, when Joseph was already in power.",
+    "\u{1F33E} Famine brought need",
+    "\u{1F3DB}\u{FE0F} Egypt became shelter",
+    "\u{1F46A} Jacob's family moved there",
+    "\u{1F4DC} God's promise kept moving",
+    "At first, Egypt was a place of preservation.",
+    "Later, it becomes a place of bondage.",
+    "God will rescue His people from the very land where He once preserved them.",
+  ],
+  "Every Man And His Household": [
+    "The sons of Jacob did not come alone.",
+    "They came with their families.",
+    "A household could include wives, children, servants, and everyone connected to the family line.",
+    "\u{1F468} Father",
+    "\u{1F469} Mother",
+    "\u{1F466} Children",
+    "\u{1F3E0} Household",
+    "Exodus wants us to see more than individual men.",
+    "It wants us to see families.",
+    "God is building a people, not just saving one person.",
+  ],
+  "Seventy Souls": [
+    "Souls here means people.",
+    "It does not mean ghosts or spirits floating around.",
+    "It means the living members of Jacob's family who came into Egypt.",
+    "\u{1F465} Seventy people",
+    "\u{1F331} One family",
+    "\u{1F4C8} A growing promise",
+    "\u{1F3DB}\u{FE0F} Entering Egypt",
+    "Exodus begins with a family small enough to count.",
+    "Soon, that family will multiply so much that Pharaoh becomes afraid.",
+    "God's promise is growing before anyone can stop it.",
+  ],
+  "Joseph Was In Egypt Already": [
+    "Joseph was already in Egypt because Genesis told his story first.",
+    "His brothers sold him.",
+    "He suffered.",
+    "God raised him up.",
+    "Through Joseph, God saved the family during famine.",
+    "\u{26D3}\u{FE0F} Sold by his brothers",
+    "\u{1F3DB}\u{FE0F} Raised in Egypt",
+    "\u{1F33E} Used during famine",
+    "\u{1F46A} Preserved his family",
+    "What looked like family betrayal became part of God's preservation plan.",
+  ],
+  "Joseph Died, And All His Brethren": [
+    "This sentence marks the end of a generation.",
+    "Joseph dies.",
+    "His brothers die.",
+    "The people who personally knew the Genesis story are gone.",
+    "\u{26B0}\u{FE0F} Joseph died",
+    "\u{26B0}\u{FE0F} His brothers died",
+    "\u{23F3} Time passed",
+    "\u{1F4DC} The promise remained",
+    "God's promise does not die when people die.",
+    "A new generation is about to suffer, but the God of Abraham, Isaac, Jacob, and Joseph still knows them.",
+  ],
+};
+
+Object.assign(DAY_22_EXACT_EXPLANATIONS, {
+  "The Children Of Israel": [
+    "This is Jacob's family being named as a people.",
+    "In Genesis, Jacob was given the name Israel.",
+    "Now his children are becoming the children of Israel.",
+    "\u{1F46A} Jacob's family",
+    "\u{1F4DC} Covenant name",
+    "\u{1F465} A people forming",
+    "Exodus is not starting a brand-new story.",
+    "It is carrying forward the promise God already made.",
+  ],
+  "Were Fruitful": [
+    "Fruitful means the family is producing life.",
+    "This echoes the Genesis blessing to be fruitful and multiply.",
+    "Israel is not shrinking in Egypt.",
+    "\u{1F331} Life is growing",
+    "\u{1F476} Children are being born",
+    "\u{1F4DC} Promise is visible",
+    "Before Pharaoh ever reacts, the reader is meant to see God's faithfulness.",
+  ],
+  "Increased Abundantly": [
+    "The wording adds strength to the idea of growth.",
+    "Israel is not barely surviving.",
+    "They are increasing in a noticeable way.",
+    "\u{1F4C8} More people",
+    "\u{1F3E0} More households",
+    "\u{1F465} More presence in the land",
+    "God's promise is becoming too visible for Egypt to ignore.",
+  ],
+  "Multiplied": [
+    "Multiplied means the family kept becoming larger.",
+    "The promise to Abraham about many descendants is moving forward in Egypt.",
+    "\u{1F46A} One family",
+    "\u{1F465} Many people",
+    "\u{1F4DC} Covenant promise",
+    "The growth is not random population increase.",
+    "It is God keeping His word.",
+  ],
+  "Waxed Exceeding Mighty": [
+    "This means Israel became very strong and numerous.",
+    "The wording sounds intense because their growth was intense.",
+    "\u{1F4AA} Strength",
+    "\u{1F4C8} Increase",
+    "\u{26A0}\u{FE0F} Egypt notices",
+    "What God calls blessing, Pharaoh will soon call a threat.",
+  ],
+  "The Land Was Filled With Them": [
+    "Israel's growth spread across the land.",
+    "They were no longer a tiny family hidden in one corner.",
+    "\u{1F5FA}\u{FE0F} The land",
+    "\u{1F465} The people",
+    "\u{1F331} The promise spreading",
+    "This sets up Pharaoh's fear.",
+    "He sees the people everywhere, but Exodus wants us to see God keeping His promise.",
+  ],
+  "A New King Over Egypt": [
+    "A new ruler changes the whole atmosphere of the story.",
+    "Joseph once had favor in Egypt, but this king does not honor that history.",
+    "\u{1F451} New king",
+    "\u{1F6AB} Old gratitude forgotten",
+    "\u{26A0}\u{FE0F} Danger rising",
+    "The same land that once sheltered Israel is about to oppress Israel.",
+  ],
+  "Which Knew Not Joseph": [
+    "This does not mean Pharaoh never heard Joseph's name.",
+    "It means he does not honor Joseph's place in Egypt's story.",
+    "\u{1F4DC} Joseph's service forgotten",
+    "\u{1F451} New power",
+    "\u{1F512} Fear replacing gratitude",
+    "When Egypt forgets how God used Joseph to preserve life, Israel becomes easier to mistreat.",
+  ],
+  "More And Mightier Than We": [
+    "Pharaoh looks at Israel's growth and feels threatened.",
+    "He does not see blessing.",
+    "He sees competition.",
+    "\u{1F465} Israel growing",
+    "\u{1F451} Pharaoh afraid",
+    "\u{26A0}\u{FE0F} Fear twisting judgment",
+    "This is the beginning of oppression: fear tells lies about people made in God's image.",
+  ],
+  "Let Us Deal Wisely With Them": [
+    "Pharaoh calls his plan wisdom.",
+    "But it is not true wisdom.",
+    "It is control, fear, and cruelty dressed up as strategy.",
+    "\u{1F9E0} Political planning",
+    "\u{1F512} Control",
+    "\u{1F9F1} Forced labor coming",
+    "Evil often tries to sound reasonable before it becomes openly violent.",
+  ],
+  "Taskmasters To Afflict Them": [
+    "Taskmasters were supervisors over forced labor.",
+    "Their job was to make Israel work under pressure.",
+    "\u{1F9F1} Bricks",
+    "\u{1F4A2} Affliction",
+    "\u{1F512} No freedom",
+    "Pharaoh turns people into tools for his building projects.",
+    "God sees that kind of oppression clearly.",
+  ],
+  "Treasure Cities, Pithom And Raamses": [
+    "These were storage or supply cities for Pharaoh's kingdom.",
+    "Israel's forced labor helped build Egypt's wealth and power.",
+    "\u{1F3D7}\u{FE0F} Building projects",
+    "\u{1F3DB}\u{FE0F} Pharaoh's cities",
+    "\u{26D3}\u{FE0F} Israel's bondage",
+    "The text names the cities so the suffering does not stay vague.",
+  ],
+  "The More They Afflicted Them, The More They Multiplied": [
+    "Pharaoh's plan backfires.",
+    "The pressure meant to crush Israel does not stop God's promise.",
+    "\u{1F4A2} Affliction",
+    "\u{1F331} Growth",
+    "\u{1F4DC} Promise stronger than oppression",
+    "Exodus is showing that Pharaoh can hurt God's people, but he cannot cancel God's word.",
+  ],
+  "Made Their Lives Bitter": [
+    "This tells us what slavery felt like from the inside.",
+    "Israel's work was not merely tiring.",
+    "It made life painful and heavy.",
+    "\u{1F622} Bitter life",
+    "\u{26D3}\u{FE0F} Bondage",
+    "\u{1F4A2} Cruel pressure",
+    "God's rescue answers real suffering, not a small inconvenience.",
+  ],
+  "Hard Bondage": [
+    "Bondage means slavery.",
+    "Hard bondage means the slavery was severe and crushing.",
+    "\u{26D3}\u{FE0F} No freedom",
+    "\u{1F4A2} Harsh labor",
+    "\u{1F9F1} Daily pressure",
+    "The Bible wants the reader to feel the weight of what Israel needed rescue from.",
+  ],
+  "In Morter": [
+    "Morter was the mixture used in brickmaking and building.",
+    "The wording brings the reader down into the worksite.",
+    "\u{1F9F1} Mud and mortar",
+    "\u{1F4AA} Physical labor",
+    "\u{1F4A2} Exhaustion",
+    "Israel's suffering happened in ordinary work over and over again.",
+  ],
+  "In Brick": [
+    "Brickmaking was part of Israel's forced labor.",
+    "The people were building for the empire that oppressed them.",
+    "\u{1F9F1} Bricks",
+    "\u{1F3D7}\u{FE0F} Construction",
+    "\u{26D3}\u{FE0F} Slavery",
+    "Every brick reminds the reader that Pharaoh is using people for power.",
+  ],
+  "All Manner Of Service In The Field": [
+    "Israel's slavery was not only city construction.",
+    "They were also forced into field labor.",
+    "\u{1F33E} Fields",
+    "\u{1F4A2} Forced work",
+    "\u{2600}\u{FE0F} Long days",
+    "Egypt's oppression reached across many kinds of work.",
+  ],
+  "All Their Service Was With Rigour": [
+    "Rigour means harshness or severity.",
+    "The work was pushed with cruelty.",
+    "\u{1F4A2} Harsh treatment",
+    "\u{1F512} No mercy",
+    "\u{26D3}\u{FE0F} Forced service",
+    "The closing words make sure we do not soften Pharaoh's oppression.",
+  ],
+  "Did Not As The King Of Egypt Commanded": [
+    "The midwives disobey Pharaoh's evil command.",
+    "This is not rebellion for selfish reasons.",
+    "It is obedience to God over a command to murder.",
+    "\u{1F451} Pharaoh commanded death",
+    "\u{1F64F} The midwives feared God",
+    "\u{1F476} Babies lived",
+    "Sometimes faithfulness means refusing an order that defies God.",
+  ],
+  "Because The Midwives Feared God": [
+    "This explains why the midwives chose life.",
+    "They feared God more than they feared Pharaoh.",
+    "\u{1F64F} Reverence for God",
+    "\u{1F476} Protection of life",
+    "\u{1F4AA} Courage",
+    "Their fear of God made them brave in front of human power.",
+  ],
+  "Zipporah His Daughter": [
+    "Zipporah is the daughter Moses receives in marriage while living in Midian.",
+    "Her name shows Moses is building a life far from Egypt.",
+    "\u{1F3DC}\u{FE0F} Midian",
+    "\u{1F491} Marriage",
+    "\u{1F6B6} Moses as a stranger",
+    "This family detail matters because Moses' wilderness years are part of God's preparation.",
+  ],
+  "Not By A Mighty Hand": [
+    "God tells Moses Pharaoh will not release Israel easily.",
+    "The wording prepares Moses for resistance before it happens.",
+    "\u{1F512} Pharaoh refuses",
+    "\u{1F4AA} Power will be required",
+    "\u{26A0}\u{FE0F} Conflict ahead",
+    "The rescue will come because God's hand is stronger than Pharaoh's hand.",
+  ],
+  "I Am Not Eloquent": [
+    "Moses is saying he does not feel like a strong speaker.",
+    "He looks at the mission and notices his weakness.",
+    "\u{1F5E3}\u{FE0F} Speech fear",
+    "\u{1F610} Insecurity",
+    "\u{1F64F} God still calls",
+    "God does not build the mission on Moses sounding impressive.",
+    "He promises to help Moses speak.",
+  ],
+  "A Bloody Husband Art Thou To Me": [
+    "Zipporah speaks this during the difficult circumcision scene.",
+    "The words are intense because the moment is intense.",
+    "\u{1FA78} Blood",
+    "\u{1F4DC} Covenant sign",
+    "\u{1F3E0} Moses' household",
+    "Before Moses leads covenant Israel, his own home must not ignore God's covenant sign.",
+  ],
+  "God Looked Upon The Children Of Israel": [
+    "God's looking means His attention is fixed on His suffering people.",
+    "Israel may feel unseen in Egypt, but they are not unseen by God.",
+    "\u{1F441}\u{FE0F} God sees",
+    "\u{1F465} His people",
+    "\u{1F4DC} Covenant attention",
+    "The wording prepares the reader for rescue before Moses even returns.",
+  ],
+  "The LORD Had Visited The Children Of Israel": [
+    "Visited means God has turned His attention toward His people to act.",
+    "It does not mean a casual visit.",
+    "\u{1F442} God heard",
+    "\u{1F441}\u{FE0F} God saw",
+    "\u{1F6AA} Rescue beginning",
+    "The people worship because they realize God has not abandoned them.",
+  ],
+  "Why Is It That Ye Are Come So Soon To Day": [
+    "Reuel is surprised that his daughters return from the well so quickly.",
+    "Usually the shepherds pushed them away and delayed their work.",
+    "\u{1F4A7} The well",
+    "\u{1F6AB} Shepherds blocking them",
+    "\u{23F1}\u{FE0F} They return early",
+    "The question helps the reader notice that Moses' help made a real difference in their day.",
+  ],
+  "An Egyptian Delivered Us": [
+    "The daughters describe Moses as an Egyptian because that is how he appears to them.",
+    "He has come from Egypt, and they do not yet know his full story.",
+    "\u{1F3DB}\u{FE0F} Egyptian appearance",
+    "\u{1F4AA} He defended them",
+    "\u{1F4A7} He watered the flock",
+    "The future deliverer of Israel is first seen delivering vulnerable women at a well.",
+  ],
+  "That They May Believe": [
+    "The signs are given so the people will trust the message Moses brings.",
+    "God is not asking Israel to believe Moses with no witness at all.",
+    "\u{1F40D} Rod sign",
+    "\u{270B} Hand sign",
+    "\u{2705} Belief",
+    "The signs serve the word of God. They point beyond Moses to the LORD who sent him.",
+  ],
+  "It Was Turned Again As His Other Flesh": [
+    "Moses' hand is restored after becoming diseased.",
+    "The sign shows that God has power both to strike and to heal.",
+    "\u{270B} Hand restored",
+    "\u{1F4A7} Cleansing picture",
+    "\u{2728} Power over the body",
+    "This matters because Moses is being sent by the God who rules bodies, sickness, and restoration.",
+  ],
+  "Go Into The Wilderness To Meet Moses": [
+    "God sends Aaron toward Moses before Moses reaches Egypt.",
+    "The help God promised is already moving.",
+    "\u{1F3DC}\u{FE0F} Wilderness meeting",
+    "\u{1F91D} Brotherly help",
+    "\u{1F4DC} God's promise kept",
+    "Moses does not have to create his own support. God provides Aaron at the right time.",
+  ],
+});
+
+function explainDay22ExodusPhrase(section: PersonalExodusPhraseSectionInput, title: string): string {
+  const exact = DAY_22_EXACT_EXPLANATIONS[title];
+  if (exact) return note(exact);
+
+  const lower = title.toLowerCase();
+  const lines: string[] = [];
+  const add = (...items: string[]) => {
+    for (const item of items) {
+      if (item && !lines.includes(item)) lines.push(item);
+    }
+  };
+
+  if (lower.includes("children of israel")) {
+    add(`${title} is the family name becoming a people name.`, "Israel was Jacob's new name in Genesis, and his children became the children of Israel.", "The promise family is growing into a nation.", "\u{1F46A} Jacob's family", "\u{1F4DC} Covenant name", "\u{1F465} A people forming", "The phrase keeps the reader connected to Genesis while the rescue story begins.");
+  } else if (lower.includes("all his people")) {
+    add(`${title} shows Pharaoh spreading his evil command beyond the palace.`, "The order is no longer only given to midwives.", "Pharaoh pulls the whole society into his attempt to destroy Hebrew sons.", "\u{1F451} Royal command", "\u{1F465} Public pressure", "\u{26A0}\u{FE0F} Shared guilt", "Oppression becomes more dangerous when ordinary people are commanded to participate.");
+  } else if (lower.includes("every son that is born")) {
+    add(`${title} shows how specific Pharaoh's attack becomes.`, "The command targets Hebrew baby boys because Pharaoh fears the future strength of Israel.", "He is trying to kill the next generation before it can grow.", "\u{1F476} Sons targeted", "\u{1F4C9} Future attacked", "\u{1F512} Fear-driven control", "Exodus wants the reader to feel how dark Egypt has become before Moses is born.");
+  } else if (lower.includes("fruitful") || lower.includes("increased") || lower.includes("multiplied") || lower.includes("mighty") || lower.includes("filled")) {
+    add(`${title} shows the promise still growing under pressure.`, "Back in Genesis, God promised Abraham a family that would become many people.", "Now that promise is becoming visible.", "\u{1F331} Growth", "\u{1F46A} Family becoming a people", "\u{1F4DC} Promise kept", "Pharaoh will see this growth as a threat, but Exodus wants us to see it first as God's faithfulness.");
+  } else if (lower.includes("new king") || lower.includes("knew not joseph")) {
+    add(`${title} marks a dangerous change in Egypt.`, "Joseph once saved Egypt from famine, but this ruler does not honor that history.", "When memory is lost, gratitude can turn into fear.", "\u{1F451} New ruler", "\u{1F6AB} Joseph forgotten", "\u{26A0}\u{FE0F} Fear rising", "The same family once welcomed in Egypt is now treated like a threat.");
+  } else if (lower.includes("more and mightier") || lower.includes("deal wisely")) {
+    add(`${title} shows Pharaoh turning blessing into suspicion.`, "Israel's growth is good, but Pharaoh reads it through fear.", "His wisdom is really political control dressed up as strategy.", "\u{1F512} Control", "\u{1F4C8} Israel growing", "\u{26A0}\u{FE0F} Fear-driven leadership", "Exodus begins showing how evil power often calls oppression wisdom.");
+  } else if (lower.includes("taskmasters") || lower.includes("treasure cities") || lower.includes("pithom") || lower.includes("raamses") || lower.includes("bondage") || lower.includes("rigour") || lower.includes("morter") || lower.includes("brick") || lower.includes("field")) {
+    add(`${title} makes Israel's slavery concrete.`, "The suffering was not vague sadness.", "It was organized labor, harsh supervisors, brickwork, fieldwork, and exhausting pressure.", "\u{1F9F1} Bricks", "\u{1F3D7}\u{FE0F} Building projects", "\u{1F4A2} Harsh labor", "God's rescue answers real cruelty in real bodies.");
+  } else if (lower.includes("bitter")) {
+    add(`${title} tells us what slavery felt like.`, "The work did not merely make Israel tired.", "It made life painful, heavy, and hard to endure.", "\u{1F622} Bitter life", "\u{1F9F1} Forced labor", "\u{1F512} No freedom", "When God delivers Israel, He is rescuing people from misery.");
+  } else if (lower.includes("midwives") || lower.includes("shiphrah") || lower.includes("puah") || lower.includes("stools")) {
+    add(`${title} brings us into the birth room, away from Pharaoh's palace.`, "Pharaoh tries to use midwives as tools of death, but these women fear God more than the king.", "\u{1F476} Babies", "\u{1F64F} Fear of God", "\u{1F4AA} Hidden courage", "Their faithfulness matters because God sees obedience even when it happens quietly.");
+  } else if ((lower.includes("son") && lower.includes("kill")) || lower.includes("daughter") || lower.includes("river") || lower.includes("cast")) {
+    add(`${title} shows Pharaoh's fear becoming a death command.`, "The attack moves from forced labor to the murder of children.", "Pharaoh wants to stop the promise by destroying Hebrew sons.", "\u{26A0}\u{FE0F} Death command", "\u{1F476} Children targeted", "\u{1F30A} River weaponized", "The next chapter will show God preserving Moses through the very water Pharaoh meant for death.");
+  } else if (lower.includes("made them houses")) {
+    add(`${title} shows God honoring the midwives.`, "The women protected Hebrew babies when Pharaoh commanded murder.", "God responds by blessing them with households of their own.", "\u{1F3E0} Houses", "\u{1F64F} Fear of God", "\u{2705} Faithfulness seen", "Pharaoh had power, but God had the final word over their lives.");
+  } else if (lower.includes("house of levi") || lower.includes("bare a son") || lower.includes("goodly child") || lower.includes("hid him")) {
+    add(`${title} places Moses under Pharaoh's death sentence.`, "Moses is born into danger, but his family does not surrender him to Pharaoh's command.", "\u{1F476} A child is born", "\u{1F3E0} Levite family", "\u{1F92B} Hidden three months", "Deliverance begins quietly through parental courage before anyone sees a miracle.");
+  } else if (lower.includes("ark of bulrushes") || lower.includes("bulrushes") || lower.includes("pitch") || lower.includes("sister") || lower.includes("babe wept")) {
+    add(`${title} slows down the fragile rescue of Moses.`, "A basket, waterproof pitch, a watching sister, and a crying baby all become part of God's preservation.", "\u{1F9FA} Basket", "\u{1F30A} Water", "\u{1F441}\u{FE0F} Sister watching", "God can use small, ordinary details to protect the future deliverer.");
+  } else if (lower.includes("nurse") || lower.includes("wages") || lower.includes("child grew") || lower.includes("became her son") || lower.includes("called his name moses")) {
+    add(`${title} lets Pharaoh's house protect the child Pharaoh tried to kill.`, "Pharaoh tried to destroy Hebrew sons, but his own daughter helps preserve one.", "Moses is nursed by his own mother and later raised with Egyptian access.", "\u{1F476} Child preserved", "\u{1F469} Mother restored", "\u{1F3DB}\u{FE0F} Palace access", "The child drawn from water will one day lead Israel through water.");
+  } else if (lower.includes("grown") || lower.includes("burdens") || lower.includes("egyptian smiting") || lower.includes("slew") || lower.includes("prince and a judge") || lower.includes("moses feared")) {
+    add(`${title} puts Moses face to face with Hebrew suffering.`, "He sees Hebrew suffering, but his first attempt to act brings fear, exposure, and exile.", "\u{1F441}\u{FE0F} He sees the burden", "\u{1F4A5} Violence erupts", "\u{1F3C3} Moses flees", "Moses will become a deliverer, but not by self-appointment.");
+  } else if (lower.includes("midian") || lower.includes("shepherds") || lower.includes("drew water") || lower.includes("helped them") || lower.includes("eat bread") || lower.includes("zipporah") || lower.includes("gershom")) {
+    add(`${title} moves Moses deeper into life outside Egypt.`, "In Midian, Moses is no longer in Pharaoh's palace.", "He protects vulnerable women, receives hospitality, marries, and becomes a stranger in another land.", "\u{1F3DC}\u{FE0F} Midian", "\u{1F4A7} Well", "\u{1F6B6} Stranger", "God is shaping a shepherd before sending him to lead a people through the wilderness.");
+  } else if (lower.includes("process of time") || lower.includes("king of egypt died")) {
+    add(`${title} reminds us that suffering can last longer than one ruler.`, "A king dies, but Israel's bondage does not disappear overnight.", "\u{23F3} Time passes", "\u{1F451} Kings change", "\u{26D3}\u{FE0F} Bondage remains", "The story is preparing us to look beyond politics to God's covenant action.");
+  } else if (lower.includes("sighed") || lower.includes("cry") || lower.includes("heard") || lower.includes("groaning") || lower.includes("remembered") || lower.includes("looked") || lower.includes("respect")) {
+    add(`${title} brings Israel's pain before God.`, "Remembered does not mean God had forgotten.", "It means He is now moving to act on His covenant promises.", "\u{1F442} God hears", "\u{1F4DC} God remembers", "\u{1F441}\u{FE0F} God sees", "Before Moses returns to Egypt, rescue has already begun in God's faithful attention.");
+  } else if (lower.includes("flock") || lower.includes("desert") || lower.includes("horeb")) {
+    add(`${title} places Moses in ordinary wilderness work before God's call.`, "He is far from Egypt and far from palace life.", "The calling comes while he is keeping sheep, not while he is chasing greatness.", "\u{1F411} Flock", "\u{1F3DC}\u{FE0F} Desert", "\u{26F0}\u{FE0F} Mountain of God", "God often prepares servants in hidden places.");
+  } else if (lower.includes("angel of the lord") || lower.includes("bush") || lower.includes("fire") || lower.includes("turn aside") || lower.includes("shoes") || lower.includes("abraham") || lower.includes("isaac") || lower.includes("jacob")) {
+    add(`${title} belongs to the burning bush encounter.`, "The bush burns without being consumed, and Moses learns that he is standing on holy ground.", "\u{1F525} Fire", "\u{1F463} Shoes removed", "\u{1F4DC} Covenant God", "The God who calls Moses is the same God who made promises to Abraham, Isaac, and Jacob.");
+  } else if (lower.includes("seen the affliction") || lower.includes("heard their cry") || lower.includes("know their sorrows") || lower.includes("come down to deliver")) {
+    add(`${title} shows God's compassion in action.`, "God does not speak about Israel's pain coldly.", "He sees, hears, knows, and comes down to deliver.", "\u{1F441}\u{FE0F} Seen", "\u{1F442} Heard", "\u{1F90D} Known", "The rescue begins in God's heart before it appears in Egypt.");
+  } else if (lower.includes("good land") || lower.includes("large") || lower.includes("milk and honey")) {
+    add(`${title} describes the destination of the rescue.`, "God is not only bringing Israel out of slavery.", "He is bringing them toward a spacious land of provision.", "\u{1F6AA} Out of Egypt", "\u{1F33E} Provision", "\u{1F3DE}\u{FE0F} Promised land", "Deliverance in Exodus has both an exit and a destination.");
+  } else if (lower.includes("send thee") || lower.includes("who am i") || lower.includes("with thee")) {
+    add(`${title} meets Moses at the point of weakness.`, "Moses looks at himself and feels small.", "God answers by promising His presence.", "\u{2753} Moses' weakness", "\u{1F91D} God's presence", "\u{1F4E3} Sent to Pharaoh", "The strength of the mission is not Moses' confidence. It is God's nearness.");
+  } else if (lower.includes("what is his name") || lower.includes("i am") || lower.includes("name for ever")) {
+    add(`${title} reveals the identity of the God who sends Moses.`, "God is not borrowing power from Egypt or depending on another god.", "He is the living LORD who exists by His own power and keeps covenant.", "\u{1F4DB} Name", "\u{1F54A}\u{FE0F} Presence", "\u{1F4DC} Promise", "Israel's hope rests on who God is.");
+  } else if (lower.includes("elders") || lower.includes("visited you") || lower.includes("bring you up") || lower.includes("hearken")) {
+    add(`${title} is part of the first hope-filled message to Israel.`, "The oppressed people need to hear that God has seen them and is moving to rescue.", "\u{1F465} Elders gathered", "\u{1F442} Message heard", "\u{1F6AA} Brought up from affliction", "Hope begins when God's word reaches people still living under pressure.");
+  } else if (lower.includes("not let you go") || lower.includes("mighty hand") || lower.includes("stretch out") || lower.includes("wonders") || lower.includes("favour") || lower.includes("silver") || lower.includes("gold") || lower.includes("raiment") || lower.includes("spoil")) {
+    add(`${title} tells Moses what will happen before he returns to Pharaoh.`, "God tells Moses ahead of time that Pharaoh will resist.", "The rescue will not be quiet or empty-handed.", "\u{1F4AA} Mighty hand", "\u{2728} Wonders", "\u{1FA99} Silver and gold", "After years of exploitation, Israel will leave with provision because God is just.");
+  } else if (lower.includes("believe me") || lower.includes("hearken") || lower.includes("hand") || lower.includes("serpent") || lower.includes("sign") || lower.includes("bosom") || lower.includes("blood")) {
+    add(`${title} is one of the signs God gives Moses.`, "Moses is afraid people will not listen, so God gives signs that confirm His message.", "\u{1F40D} Rod and serpent", "\u{270B} Hand restored", "\u{1FA78} Water to blood", "The signs are not tricks. They point people back to God's word.");
+  } else if (lower.includes("eloquent") || lower.includes("slow of speech") || lower.includes("mouth") || lower.includes("tongue")) {
+    add(`${title} names Moses' fear about speaking.`, "Moses is honest about his weakness.", "God does not deny that Moses feels limited; He reminds Moses who made the mouth.", "\u{1F5E3}\u{FE0F} Speech", "\u{1F610} Weakness", "\u{1F91D} God helps", "God's calling is not built on Moses being impressive.");
+  } else if (lower.includes("send") || lower.includes("anger") || lower.includes("aaron") || lower.includes("speak well") || lower.includes("glad") || lower.includes("words in his mouth") || lower.includes("rod")) {
+    add(`${title} shows God's provision for a reluctant servant.`, "Moses keeps pulling back, and God's anger shows the mission is serious.", "Aaron is given as help, not as an excuse to quit.", "\u{1F91D} Aaron helps", "\u{1F4E3} Words given", "\u{1F9AF} Rod in hand", "God supports His servant without canceling obedience.");
+  } else if (lower.includes("let me go") || lower.includes("peace") || lower.includes("men are dead") || lower.includes("wife and his sons") || lower.includes("rod of god") || lower.includes("firstborn") || lower.includes("serve me")) {
+    add(`${title} moves Moses back toward Egypt and the mission.`, "The old threat is gone, but the hard mission remains.", "God calls Israel His firstborn son, which makes the conflict deeply personal.", "\u{1F6B6} Moses returns", "\u{1F9AF} Rod of God", "\u{1F466} Israel my firstborn", "Freedom is for serving the LORD, not merely escaping Pharaoh.");
+  } else if (lower.includes("inn") || lower.includes("sought to kill") || lower.includes("sharp stone") || lower.includes("foreskin") || lower.includes("bloody husband") || lower.includes("mount of god") || lower.includes("kissed")) {
+    add(`${title} is part of the hard covenant scene on the road.`, "Before Moses leads covenant Israel, his own household must not treat God's covenant sign casually.", "\u{1F4DC} Covenant sign", "\u{1FA78} Serious obedience", "\u{1F91D} Aaron meets Moses", "The mission moves forward, but God's messenger must stand under God's command too.");
+  } else if (lower.includes("aaron spake") || lower.includes("sight of the people") || lower.includes("people believed") || lower.includes("visited") || lower.includes("affliction") || lower.includes("worshipped")) {
+    add(`${title} shows Israel receiving the first message of hope.`, "The people are still enslaved, but they hear that God has visited them and seen their affliction.", "\u{1F442} Word heard", "\u{2705} People believed", "\u{1F64C} Worship in bondage", "Worship begins before the rescue is complete because God's promise has reached them.");
+  } else {
+    add(`${title} gives one important detail in ${section.reference}.`, `${section.title} is moving the rescue story forward through real people, places, fears, commands, and promises.`, "\u{1F4DC} Bible wording", "\u{1F9ED} Story direction", "\u{1F64F} God at work", "The detail helps a beginner follow how God preserves, calls, sends, and rescues His people.");
+  }
+
+  return note(lines.slice(0, 10));
+}
+function makeDay22PhraseCard(section: PersonalExodusPhraseSectionInput, title: string): [string, string] {
+  return [`\u{1F4CC} ${title}`, explainDay22ExodusPhrase(section, title)];
+}
 function deepenDay22PhraseCards(section: PersonalExodusPhraseSectionInput): PersonalExodusPhraseSectionInput {
   const titles = DAY_22_REAL_PHRASE_TITLES[section.reference];
   if (!titles) return section;
@@ -599,22 +1069,15 @@ const DAY_23_SECTION_EXPLANATIONS: Record<string, string[]> = {
 };
 
 function makeDay23PhraseCard(section: PersonalExodusPhraseSectionInput, title: string): [string, string] {
-  const [scene, meaning, beginner, lesson] = DAY_23_SECTION_EXPLANATIONS[section.reference] ?? [
+  const sectionLines = DAY_23_SECTION_EXPLANATIONS[section.reference] ?? [
     `This phrase belongs to ${section.reference}.`,
     "It helps explain the pressure, signs, hard hearts, and rescue movement in Exodus.",
     "A beginner should slow down here instead of treating the words as filler.",
     "The LORD is confronting Pharaoh and teaching Israel who He is.",
   ];
 
-  return phrase(`📌 ${title}`, [
-    scene,
-    meaning,
-    beginner,
-    "This phrase comes directly from the passage, so it keeps the note anchored in the Bible text.",
-    lesson,
-  ]);
+  return [`📌 ${title}`, explainExodusOneToTenPhrase(section, title, sectionLines)];
 }
-
 function deepenDay23PhraseCards(section: PersonalExodusPhraseSectionInput): PersonalExodusPhraseSectionInput {
   const titles = DAY_23_REAL_PHRASE_TITLES[section.reference];
   if (!titles) return section;
@@ -658,22 +1121,15 @@ const DAY_24_EXODUS_9_10_EXPLANATIONS: Record<string, string[]> = {
 };
 
 function makeDay24Exodus9To10PhraseCard(section: PersonalExodusPhraseSectionInput, title: string): [string, string] {
-  const [scene, meaning, beginner, lesson] = DAY_24_EXODUS_9_10_EXPLANATIONS[section.reference] ?? [
+  const sectionLines = DAY_24_EXODUS_9_10_EXPLANATIONS[section.reference] ?? [
     `This phrase belongs to ${section.reference}.`,
     "It helps explain the plagues, Pharaoh's hard heart, and God's precise rescue of Israel.",
     "A beginner should slow down here because Exodus is teaching through repeated warnings and signs.",
     "The LORD is showing that He rules Egypt, creation, judgment, and mercy.",
   ];
 
-  return phrase(`📌 ${title}`, [
-    scene,
-    meaning,
-    beginner,
-    "This phrase comes directly from the passage, so the note stays anchored in the Bible text.",
-    lesson,
-  ]);
+  return [`📌 ${title}`, explainExodusOneToTenPhrase(section, title, sectionLines)];
 }
-
 function deepenDay24Exodus9To10PhraseCards(section: PersonalExodusPhraseSectionInput): PersonalExodusPhraseSectionInput {
   const titles = DAY_24_EXODUS_9_10_PHRASE_TITLES[section.reference];
   if (!titles) return section;
