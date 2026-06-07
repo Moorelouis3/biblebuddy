@@ -636,6 +636,10 @@ function formatExodusElevenToTwentyPhraseExplanation(section: PersonalExodusPhra
     .replace(/not filler/g, "part of the story")
     .replace(/not a generic comment card/g, "a real piece of the passage")
     .replace(/this phrase carries a real piece of the passage, a real piece of the passage/g, "this phrase carries a real piece of the passage");
+  if (section.chapter >= 11 && section.chapter <= 20) {
+    return cleaned;
+  }
+
   if (section.chapter < 11 || section.chapter > 20 || hasExodusElevenToTwentyVisualList(cleaned)) {
     return cleaned;
   }

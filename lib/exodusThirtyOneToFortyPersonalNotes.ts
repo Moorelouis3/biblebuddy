@@ -592,6 +592,10 @@ const EXODUS_31_40_BANNED_FILLER_TITLES = [
 
 function formatExodusThirtyOneToFortyPhraseExplanation(section: PersonalExodusPhraseSectionInput, content: string) {
   const cleaned = content.replace(/in Day 29/g, "in Exodus");
+  if (section.chapter >= 31 && section.chapter <= 36) {
+    return cleaned;
+  }
+
   if (section.chapter < 31 || section.chapter > 40 || cleaned.includes("What to notice:")) {
     return cleaned;
   }

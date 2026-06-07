@@ -706,6 +706,10 @@ function hasExodusTwoToTenVisualList(content: string) {
 
 function formatExodusTwoToTenPhraseExplanation(section: PersonalExodusPhraseSectionInput, content: string) {
   const cleaned = content.replace(/not filler/g, "part of the story");
+  if (section.chapter >= 1 && section.chapter <= 10) {
+    return cleaned;
+  }
+
   if (section.chapter < 1 || section.chapter > 10 || hasExodusTwoToTenVisualList(cleaned)) {
     return cleaned;
   }

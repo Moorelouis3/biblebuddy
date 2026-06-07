@@ -650,6 +650,10 @@ function formatExodusTwentyOneToThirtyPhraseExplanation(section: PersonalExodusP
     .replace(/not random or casual/g, "ordered by God's holiness")
     .replace(/this phrase is a real piece of the passage, a real part of the passage/g, "this phrase is a real part of the passage")
     .replace(/this phrase carries a real piece of the passage, a real piece of the passage/g, "this phrase carries a real piece of the passage");
+  if (section.chapter >= 21 && section.chapter <= 30) {
+    return cleaned;
+  }
+
   if (section.chapter < 21 || section.chapter > 30 || cleaned.includes("What to notice:")) {
     return cleaned;
   }

@@ -724,29 +724,7 @@ function formatGenesisTwentyOneToThirtyPhraseExplanation(
   section: PersonalGenesisPhraseSectionInput,
   content: string,
 ) {
-  if (section.chapter < 25 || section.chapter > 30 || hasVisualList(content)) {
-    return content;
-  }
-
-  const blocks = content
-    .split(/\n{2,}/)
-    .map((block) => block.trim())
-    .filter(Boolean);
-  const cues = GENESIS_21_30_MOBILE_FORMAT_CUES[section.chapter];
-
-  if (!cues || blocks.length < 2) {
-    return content;
-  }
-
-  const opening = blocks.slice(0, Math.min(2, blocks.length));
-  const closing = blocks.slice(opening.length);
-
-  return note([
-    ...opening,
-    "What to notice:",
-    ...cues,
-    ...closing,
-  ]);
+  return content;
 }
 
 function formatGenesisTwentyOneToThirtySectionExplanations(sections: PersonalGenesisPhraseSectionInput[]) {

@@ -301,6 +301,10 @@ function formatGenesisFortyOneToFiftyPhraseExplanation(
   section: PersonalGenesisPhraseSectionInput,
   content: string,
 ) {
+  if (section.chapter >= 41 && section.chapter <= 50) {
+    return content;
+  }
+
   if (section.chapter < 41 || section.chapter > 50 || hasGenesisFortyOneToFiftyVisualList(content)) {
     return content;
   }
