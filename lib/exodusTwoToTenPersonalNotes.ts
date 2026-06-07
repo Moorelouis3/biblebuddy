@@ -1024,13 +1024,13 @@ const DAY_23_REAL_PHRASE_TITLES: Record<string, string[]> = {
   "Exodus 5:22-23": ["Moses Returned Unto The LORD", "Lord, Wherefore Hast Thou So Evil Entreated This People", "Why Is It That Thou Hast Sent Me", "Since I Came To Pharaoh", "He Hath Done Evil To This People", "Neither Hast Thou Delivered Thy People At All"],
   "Exodus 6:1-6": ["Now Shalt Thou See What I Will Do", "With A Strong Hand", "I Am The LORD", "By My Name JEHOVAH", "I Have Also Established My Covenant", "I Have Also Heard The Groaning", "I Will Bring You Out From Under The Burdens"],
   "Exodus 6:7-12": ["I Will Take You To Me For A People", "I Will Be To You A God", "Ye Shall Know That I Am The LORD", "I Will Bring You In Unto The Land", "They Hearkened Not Unto Moses", "Anguish Of Spirit", "Cruel Bondage", "Uncircumcised Lips"],
-  "Exodus 6:13-13": ["Unto Moses And Unto Aaron", "Gave Them A Charge", "Unto The Children Of Israel", "Unto Pharaoh King Of Egypt", "To Bring The Children Of Israel Out"],
+  "Exodus 6:13-13": ["The LORD Spake Unto Moses And Unto Aaron", "Unto Moses And Unto Aaron", "Gave Them A Charge", "Unto The Children Of Israel", "Unto Pharaoh King Of Egypt", "To Bring The Children Of Israel Out"],
   "Exodus 6:14-19": ["These Be The Heads Of Their Fathers' Houses", "The Sons Of Reuben", "The Sons Of Simeon", "The Sons Of Levi", "According To Their Generations", "The Years Of The Life Of Levi"],
   "Exodus 6:20-25": ["Amram Took Him Jochebed His Father's Sister To Wife", "She Bare Him Aaron And Moses", "The Years Of The Life Of Amram", "Eleazar Aaron's Son", "Took Him One Of The Daughters Of Putiel", "These Are The Heads Of The Fathers Of The Levites"],
   "Exodus 6:26-30": ["These Are That Aaron And Moses", "Bring Out The Children Of Israel", "According To Their Armies", "These Are They Which Spake To Pharaoh", "I Am The LORD", "Speak Thou Unto Pharaoh", "I Am Of Uncircumcised Lips"],
   "Exodus 7:1-6": ["I Have Made Thee A God To Pharaoh", "Aaron Thy Brother Shall Be Thy Prophet", "Thou Shalt Speak All That I Command Thee", "I Will Harden Pharaoh's Heart", "Multiply My Signs And My Wonders", "The Egyptians Shall Know That I Am The LORD", "Moses And Aaron Did As The LORD Commanded"],
   "Exodus 7:7-12": ["Moses Was Fourscore Years Old", "Aaron Fourscore And Three Years Old", "Shew A Miracle For You", "Take Thy Rod", "It Shall Become A Serpent", "The Magicians Of Egypt", "Aaron's Rod Swallowed Up Their Rods"],
-  "Exodus 7:13-13": ["He Hardened Pharaoh's Heart", "He Hearkened Not Unto Them", "As The LORD Had Said", "The Sign Was Clear", "Pharaoh Still Refused"],
+  "Exodus 7:13-13": ["He Hardened Pharaoh's Heart", "Pharaoh's Heart", "He Hearkened Not Unto Them", "Unto Them", "As The LORD Had Said", "The LORD Had Said"],
   "Exodus 7:14-19": ["Pharaoh's Heart Is Hardened", "He Refuseth To Let The People Go", "Get Thee Unto Pharaoh In The Morning", "The Rod Which Was Turned To A Serpent", "In This Thou Shalt Know That I Am The LORD", "The Waters Which Are In The River", "They Shall Be Turned To Blood"],
   "Exodus 7:20-25": ["He Lifted Up The Rod", "Smote The Waters That Were In The River", "All The Waters Were Turned To Blood", "The Fish That Was In The River Died", "The River Stank", "The Magicians Of Egypt Did So", "Pharaoh Turned And Went Into His House"],
   "Exodus 8:1-6": ["Let My People Go, That They May Serve Me", "If Thou Refuse To Let Them Go", "I Will Smite All Thy Borders With Frogs", "The River Shall Bring Forth Frogs Abundantly", "Into Thine House", "Into Thy Bedchamber", "The Frogs Came Up"],
@@ -1039,7 +1039,7 @@ const DAY_23_REAL_PHRASE_TITLES: Record<string, string[]> = {
   "Exodus 8:16-19": ["Smite The Dust Of The Land", "It May Become Lice", "In Man, And In Beast", "The Magicians Did So With Their Enchantments", "But They Could Not", "This Is The Finger Of God", "Pharaoh's Heart Was Hardened"],
   "Exodus 8:20-25": ["Rise Up Early In The Morning", "Let My People Go, That They May Serve Me", "Swarms Of Flies", "The Land Was Corrupted", "I Will Sever In That Day The Land Of Goshen", "No Swarms Of Flies Shall Be There", "I Will Put A Division Between My People And Thy People"],
   "Exodus 8:26-31": ["It Is Not Meet So To Do", "We Shall Sacrifice The Abomination Of The Egyptians", "Three Days' Journey Into The Wilderness", "Only Ye Shall Not Go Very Far Away", "Intreat For Me", "Let Not Pharaoh Deal Deceitfully Any More", "There Remained Not One"],
-  "Exodus 8:32-32": ["Pharaoh Hardened His Heart At This Time Also", "Neither Would He Let The People Go", "Relief Did Not Become Repentance", "The Pattern Continues"],
+  "Exodus 8:32-32": ["Pharaoh Hardened His Heart At This Time Also", "At This Time Also", "Neither Would He Let The People Go", "The People", "Let The People Go", "His Heart"],
 };
 
 const DAY_23_SECTION_EXPLANATIONS: Record<string, string[]> = {
@@ -1068,15 +1068,114 @@ const DAY_23_SECTION_EXPLANATIONS: Record<string, string[]> = {
   "Exodus 8:32-32": ["The final verse shows the pattern continuing.", "Pharaoh receives relief and hardens his heart again.", "The people are still not released.", "Repeated mercy can be rejected by a heart committed to control."],
 };
 
-function makeDay23PhraseCard(section: PersonalExodusPhraseSectionInput, title: string): [string, string] {
-  const sectionLines = DAY_23_SECTION_EXPLANATIONS[section.reference] ?? [
-    `This phrase belongs to ${section.reference}.`,
-    "It helps explain the pressure, signs, hard hearts, and rescue movement in Exodus.",
-    "A beginner should slow down here instead of treating the words as filler.",
-    "The LORD is confronting Pharaoh and teaching Israel who He is.",
-  ];
+function explainDay23Phrase(section: PersonalExodusPhraseSectionInput, title: string): string {
+  const lower = title.toLowerCase();
+  const lines: string[] = [];
+  const add = (...items: string[]) => {
+    for (const item of items) {
+      if (item && !lines.includes(item)) lines.push(item);
+    }
+  };
 
-  return [`📌 ${title}`, explainExodusOneToTenPhrase(section, title, sectionLines)];
+  if (lower === "thus saith the lord god of israel") {
+    add("Thus Saith The LORD God Of Israel means Moses and Aaron are not bringing a personal request.", "They are speaking as messengers for Israel's covenant God.", "In the ancient world, a messenger spoke with the authority of the one who sent him.", "🗣️ God is the speaker", "📜 Moses carries the message", "👑 Pharaoh is being confronted", "Pharaoh is not being asked to consider Moses' opinion. He is being confronted by the LORD's command.");
+  } else if (lower === "who is the lord") {
+    add("Who Is The LORD is Pharaoh's challenge against God's authority.", "Pharaoh is not asking a humble Bible-study question.", "He is saying, in effect, 'Why should I obey this God?'", "👑 Pharaoh claims power", "🙌 The LORD claims Israel", "⚔️ The conflict is now open", "The plagues will answer Pharaoh's question by showing that the LORD rules Egypt, creation, and Pharaoh himself.");
+  } else if (lower === "i know not the lord") {
+    add("I Know Not The LORD means Pharaoh refuses to recognize the God of Israel.", "In the Bible, to know God is not just to know a fact about Him.", "It means to acknowledge Him, honor Him, and respond rightly to Him.", "🚫 No recognition", "🔒 No obedience", "💢 Proud refusal", "Pharaoh's ignorance is moral, not innocent. He hears God's command and rejects it.");
+  } else if (lower === "the god of the hebrews hath met with us") {
+    add("The God Of The Hebrews Hath Met With Us explains why Israel must leave Egypt to worship.", "Hebrews is the name Pharaoh would understand for this enslaved people group.", "Hath met with us means God has appeared, spoken, and summoned His people.", "👥 The Hebrews are Israel", "🔥 God has appeared to Moses", "⛺ Worship requires obedience", "Moses is saying that Israel's worship is not a hobby Pharaoh can schedule. Their God has called them, and Pharaoh is standing in the way.");
+  } else if (lower === "let my people go") {
+    add("Let My People Go is God's claim over Israel.", "Pharaoh treats Israel like labor property, but the LORD calls them My people.", "Freedom in Exodus is not just escape from bad conditions.", "🚪 Release from bondage", "🙌 Freedom for worship", "📜 God keeps covenant", "The command confronts Pharaoh's ownership. Israel is claimed by the LORD before Egypt ever tries to claim them.");
+  } else if (lower === "let my people go, that they may serve me" && section.reference === "Exodus 8:1-6") {
+    add("Let My People Go, That They May Serve Me repeats the purpose of Israel's freedom before the frog plague.", "The LORD does not ask Pharaoh for vague kindness. He commands release so Israel can serve Him.", "🚪 Let them go", "🙌 Serve the LORD", "🐸 Warning before frogs", "The plague comes because Pharaoh keeps blocking worship.");
+  } else if (lower === "let my people go, that they may serve me") {
+    add("Let My People Go, That They May Serve Me is repeated before the fly plague so Pharaoh cannot pretend he misunderstood.", "The demand has stayed the same from the beginning.", "🚪 Release", "🙌 Worship", "📜 Same command", "The LORD's word is clear even when Pharaoh keeps trying to bargain around it.");
+  } else if (lower.includes("let us go")) {
+    add(`${title} is Moses and Aaron's respectful request for Israel to obey God's summons.`, "We pray thee is old wording for please or we ask you.", "The request is not laziness. It is about leaving Egypt long enough to worship and sacrifice to the LORD.", "⛺ Journey", "🔥 Sacrifice", "🙏 Worship", "Pharaoh hears worship as a threat because worship means Israel answers to someone higher than him.");
+  } else if (lower.includes("neither will i let israel go")) {
+    add(`${title} is Pharaoh's flat refusal to release God's people.`, "He rejects the LORD's authority and keeps Israel under forced labor.", "This is the human conflict at the surface of Exodus.", "🔒 Refusal", "🧱 Slavery protected", "⚔️ God versus Pharaoh", "The rest of the plague story shows what happens when a king refuses the command of God.");
+  } else if (lower.includes("thus saith pharaoh")) {
+    add(`${title} deliberately echoes God's messenger formula, but now Pharaoh speaks his own cruel command.`, "The story sets two voices against each other.", "God says, 'Let My people go.' Pharaoh says, 'I will not give you straw.'", "📜 God's word", "👑 Pharaoh's decree", "🧱 Hard labor", "Pharaoh tries to answer God's command with heavier oppression.");
+  } else if (lower.includes("straw") || lower.includes("bricks") || lower.includes("tale of the bricks") || lower.includes("diminish") || lower.includes("work") || lower.includes("idle") || lower.includes("taskmasters") || lower.includes("beaten") || lower.includes("evil case")) {
+    add(`${title} shows how Pharaoh turns worship into a labor crisis.`, "Bricks in Egypt were often made with mud and straw. Straw helped hold the bricks together.", "Pharaoh removes the straw but keeps the same quota.", "🧱 Same brick count", "🌾 No supplied straw", "💢 More pressure", "The cruelty is calculated: Pharaoh wants Israel too exhausted to listen to Moses or hope in God's rescue.");
+  } else if (lower.includes("savour") || lower.includes("abhorred")) {
+    add(`${title} is old Bible wording for becoming hated or disgusting in someone's eyes.`, "The Israelite officers mean Moses and Aaron have made them look offensive to Pharaoh.", "They blame the messengers because obedience has made life harder at first.", "👃 Savour means smell or reputation", "💢 Pharaoh is angrier", "😣 Israel feels trapped", "Oppression can turn suffering people against the very rescue God has begun.");
+  } else if (lower.includes("moses returned") || lower.includes("wherefore") || lower.includes("why is it") || lower.includes("since i came") || lower.includes("done evil") || lower.includes("neither hast thou delivered")) {
+    add(`${title} shows Moses bringing his confusion directly to the LORD.`, "Moses obeyed, but the first result looked worse, not better.", "His prayer is honest pain from a servant who does not understand God's timing.", "🙏 Honest prayer", "😣 Confusion", "⏳ Deliverance not visible yet", "Faithful people can bring hard questions to God instead of pretending they are fine.");
+  } else if (lower === "i am the lord" && section.reference === "Exodus 6:1-6") {
+    add("I Am The LORD is God's answer to Moses' fear after things got worse.", "The rescue does not rest on Pharaoh changing his mind or Moses feeling confident.", "📛 God's name", "💪 God's authority", "📜 God's promise", "The LORD anchors Moses in who He is before explaining what He will do.");
+  } else if (lower === "i am the lord") {
+    add("I Am The LORD repeats God's identity after the genealogy returns to the mission.", "The family line matters, but God's name is still the foundation of the rescue.", "📛 The LORD speaks", "👥 Moses and Aaron are sent", "👑 Pharaoh must hear", "The deliverers are human, but the authority behind them is divine.");
+  } else if (lower.includes("strong hand") || lower.includes("bring you out") || lower.includes("burdens") || lower.includes("take you to me") || lower.includes("be to you a god") || lower.includes("bring you in")) {
+    add(`${title} is God's rescue promise stated with certainty.`, "The repeated I will language matters because Israel cannot free themselves.", "God promises rescue from burdens, relationship with Him, and movement toward the land He swore to give.", "💪 Strong hand", "🚪 Bring out", "🏞️ Bring in", "The LORD's promise is bigger than Pharaoh's pressure.");
+  } else if (lower.includes("i am the lord") || lower.includes("jehovah") || lower.includes("ye shall know")) {
+    add(`${title} anchors the rescue in God's own name and character.`, "The LORD is not proving Himself because He is insecure.", "He is teaching Israel and Egypt who truly rules.", "📛 God's name", "📜 Covenant faithfulness", "⚡ Rescue power", "Knowing the LORD in Exodus means seeing His word, judgment, mercy, and promises prove true.");
+  } else if (lower.includes("covenant") || lower.includes("groaning") || lower.includes("anguish") || lower.includes("cruel bondage")) {
+    add(`${title} connects Israel's suffering to God's remembered promise.`, "God hears the groaning of enslaved people and acts because He keeps covenant.", "Anguish of spirit means their pain is so deep that hope feels hard to receive.", "👂 God hears", "📜 God remembers", "💔 Crushed spirit", "The LORD does not wait for Israel to feel strong before He speaks rescue.");
+  } else if (lower.includes("uncircumcised lips")) {
+    add(`${title} is Moses' way of saying he feels unfit to speak.`, "Uncircumcised often means something is not prepared, clean, or acceptable for holy use.", "Moses is saying his mouth feels inadequate for Pharaoh's court.", "🗣️ Weak speech", "😟 Fear", "🙌 God still sends him", "The focus stays on God's command, not Moses' confidence.");
+  } else if (lower.includes("charge") || lower.includes("aaron") || lower.includes("moses") || lower.includes("bring the children") || lower.includes("spake to pharaoh")) {
+    add(`${title} shows God assigning the mission to real people with real weakness.`, "Moses and Aaron are named because Exodus is not a myth about vague heroes.", "God uses brothers from Israel's own family line to confront Pharaoh.", "👥 Moses and Aaron", "📜 Given a charge", "🚪 Bring Israel out", "The mission continues because God commands it, not because the messengers feel fearless.");
+  } else if (lower.includes("reuben") || lower.includes("simeon") || lower.includes("levi") || lower.includes("generations") || lower.includes("fathers") || lower.includes("jochebed") || lower.includes("amram") || lower.includes("eleazar") || lower.includes("putiel") || lower.includes("levites")) {
+    add(`${title} places the deliverance story inside Israel's real family line.`, "Genealogies can feel slow, but they show that God works through actual households and generations.", "Reuben, Simeon, and Levi connect Exodus back to Jacob's sons in Genesis.", "🏠 Family line", "📜 Genesis connection", "🙏 Future priesthood", "The deliverers do not appear from nowhere. They come from the covenant people God promised to preserve.");
+  } else if (lower.includes("god to pharaoh") || lower.includes("prophet")) {
+    add(`${title} explains the speaking roles God gives Moses and Aaron.`, "Moses will stand before Pharaoh with God's authority behind him.", "Aaron will speak the message like a prophet, meaning a spokesman for another.", "🗣️ Aaron speaks", "📜 Moses carries authority", "👑 Pharaoh is confronted", "This does not make Moses divine. It means Pharaoh must deal with God's word through Moses.");
+  } else if (lower === "pharaoh's heart") {
+    add("Pharaoh's Heart points to the inner center of Pharaoh's refusal.", "The Bible is not only describing Pharaoh's policy choices.", "It is exposing the stubborn place inside him that will not bow to the LORD.", "👑 Pharaoh", "🔒 Heart shut", "⚠️ Warning ignored", "The conflict is spiritual before it is political.");
+  } else if (lower === "unto them") {
+    add("Unto Them refers to Moses and Aaron as God's messengers before Pharaoh.", "Pharaoh is not merely ignoring two Hebrew men.", "He is refusing the message God sent through them.", "👥 Moses and Aaron", "📜 God's message", "👂 Pharaoh will not listen", "Rejecting the messenger becomes rejection of the One who sent them.");
+  } else if (lower === "the lord had said") {
+    add("The LORD Had Said reminds the reader that Pharaoh's refusal did not surprise God.", "God had already warned Moses that Pharaoh would resist.", "📜 God spoke beforehand", "🔒 Pharaoh resisted", "🙌 God's plan still stands", "Resistance does not mean God's word failed.");
+  } else if (lower === "his heart") {
+    add("His Heart names the inner place where Pharaoh keeps choosing resistance.", "The pressure lifts, but Pharaoh's heart does not soften.", "🔒 Closed heart", "⏳ Relief received", "🚫 Release refused", "The verse shows that the deepest problem is not the flies. It is Pharaoh's refusal to surrender.");
+  } else if (lower === "at this time also") {
+    add("At This Time Also means Pharaoh repeats the same hard-hearted response again.", "He has already seen signs, warnings, prayer, and relief.", "🔁 Again", "⚠️ More evidence ignored", "🔒 Same hard heart", "The phrase shows a pattern, not a one-time bad decision.");
+  } else if (lower === "the people" && section.reference === "Exodus 8:32-32") {
+    add("The People refers to Israel, the enslaved people Pharaoh still refuses to release.", "They are not just workers in Egypt's economy.", "They are the people the LORD has claimed as His own.", "👥 Israel", "🧱 Enslaved laborers", "🙌 Claimed by God", "Pharaoh's refusal keeps real families under bondage.");
+  } else if (lower === "let the people go") {
+    add("Let The People Go is the release Pharaoh keeps denying.", "The issue is simple by this point: God has commanded release, and Pharaoh will not obey.", "🚪 Release", "🙌 Worship", "👑 Pharaoh refuses", "The phrase keeps the reader focused on the central demand of Exodus.");
+  } else if (lower.includes("harden") || lower.includes("heart") || lower.includes("hearkened not") || lower.includes("refuseth") || lower.includes("refuse") || lower.includes("would not")) {
+    add(`${title} describes stubborn resistance to God's word.`, "A hard heart is not just a person lacking information.", "Pharaoh sees warnings, signs, and relief, yet keeps refusing the LORD's command.", "🔒 Stubborn heart", "👂 Refuses to listen", "⚠️ Warning ignored", "Exodus repeats this so beginners can see how pride can become more fixed over time.");
+  } else if (lower.includes("signs") || lower.includes("wonders") || lower.includes("miracle") || lower.includes("rod") || lower.includes("serpent") || lower.includes("magicians") || lower.includes("swallowed")) {
+    add(`${title} deals with the public signs before Pharaoh.`, "The signs are not party tricks. They confirm that the LORD's message is backed by His power.", "Egypt's magicians can imitate some things, but they cannot defeat God's authority.", "🐍 Rod and serpent", "⚡ Signs", "🔥 Counterfeit power exposed", "Aaron's rod swallowing their rods shows that the contest is not equal.");
+  } else if (lower.includes("egyptians shall know") || lower.includes("in this thou shalt know") || lower.includes("that thou mayest know") || lower.includes("none like")) {
+    add(`${title} gives the teaching purpose behind the plagues.`, "The plagues are judgments, but they are also revelations.", "Egypt, Pharaoh, and Israel are being shown that the LORD alone is God.", "⚡ Judgment", "👀 Revelation", "🙌 No rival", "God is not only removing Israel from Egypt. He is making His name known.");
+  } else if (lower.includes("river") || lower.includes("waters") || lower.includes("blood") || lower.includes("fish") || lower.includes("stank")) {
+    add(`${title} points to the Nile plague, where Egypt's life source becomes death.`, "The Nile was central to Egypt's food, water, economy, and religious imagination.", "God strikes the place Egypt trusted most.", "🌊 Nile River", "🩸 Blood", "🐟 Fish died", "The river Pharaoh once used for Hebrew death now becomes a sign of judgment against Egypt.");
+  } else if (lower.includes("frogs") || lower.includes("bedchamber") || lower.includes("house") || lower.includes("heaps")) {
+    add(`${title} describes the frog plague invading ordinary life.`, "The frogs enter houses, bedrooms, ovens, and kneading bowls.", "The plague is not only powerful. It is humiliating and impossible to ignore.", "🐸 Frogs everywhere", "🏠 Homes invaded", "👃 The land stank", "The LORD can make creation unsettle the palace that refuses Him.");
+  } else if (lower.includes("intreat") || lower.includes("glory over me") || lower.includes("to morrow") || lower.includes("respite") || lower.includes("relief")) {
+    add(`${title} shows Pharaoh wanting relief without surrender.`, "Intreat means ask or plead in prayer.", "Pharaoh asks Moses to pray when the plague hurts, but he hardens again when the pressure lifts.", "🙏 Prayer requested", "⏳ Relief comes", "🔒 Heart hardens", "There is a difference between wanting pain removed and truly yielding to God.");
+  } else if (lower.includes("lice") || lower.includes("dust") || lower.includes("finger of god") || lower.includes("could not")) {
+    add(`${title} marks the point where Egypt's magicians hit their limit.`, "The dust becoming lice touches people and animals throughout Egypt.", "When the magicians say, 'This is the finger of God,' they admit a power beyond their enchantments.", "🌫️ Dust", "🪲 Lice", "☝️ God's finger", "Pharaoh still refuses, so the issue is no longer lack of evidence.");
+  } else if (lower.includes("swarms of flies")) {
+    add(`${title} names the plague that filled Egypt with swarming insects.`, "The word swarms pictures a mass of pests invading daily life.", "This judgment reaches Pharaoh's servants, houses, and land.", "🪰 Swarms", "🏠 Houses invaded", "👑 Pharaoh confronted", "The LORD can make even small creatures overthrow Egypt's sense of control.");
+  } else if (lower.includes("land was corrupted")) {
+    add(`${title} means the fly plague ruined the condition of the land.`, "Corrupted here means damaged, spoiled, or made unbearable by the swarm.", "Egypt's land becomes unclean-feeling, chaotic, and miserable under judgment.", "🪰 Flies everywhere", "🌍 Land spoiled", "⚠️ Judgment felt", "Pharaoh's refusal does not stay private. It spreads pain across the land he rules.");
+  } else if (lower.includes("land of goshen")) {
+    add(`${title} names the region where Israel lived inside Egypt.`, "God says Goshen will be treated differently during the fly plague.", "📍 Goshen", "👥 Israel's dwelling place", "🛡️ Protected area", "The distinction shows that Israel is still in Egypt, but they are not abandoned to Egypt's judgment.");
+  } else if (lower.includes("no swarms of flies shall be there")) {
+    add(`${title} promises protection for Israel during the plague.`, "The LORD does not merely send chaos and hope His people avoid it.", "He names the place where the flies will not be.", "🚫 No swarm", "📍 Goshen spared", "🛡️ God protects", "Judgment in Exodus is precise, not random.");
+  } else if (lower.includes("division between my people and thy people")) {
+    add(`${title} draws a line between the LORD's people and Pharaoh's people.`, "My people means Israel is under the LORD's covenant care.", "Thy people means Pharaoh's kingdom remains under Pharaoh's hardened rule.", "👥 My people", "👑 Thy people", "⚖️ Clear division", "The plague teaches Pharaoh that the LORD can judge Egypt while preserving Israel.");
+  } else if (lower.includes("sever")) {
+    add(`${title} means God will set Goshen apart from the plague falling on Egypt.`, "Sever means separate or distinguish.", "The LORD is making the difference visible so Pharaoh cannot call it chance.", "✂️ Separated", "📍 Goshen marked out", "👀 Pharaoh can see it", "The protection itself becomes a sign that the LORD rules the plague.");
+  } else if (lower.includes("not meet") || lower.includes("abomination") || lower.includes("three days") || lower.includes("not go very far") || lower.includes("deal deceitfully")) {
+    add(`${title} explains why Pharaoh's compromise is not true obedience.`, "Moses refuses worship on Pharaoh's terms because Egyptian religion would treat Israel's sacrifices as offensive.", "Three days' journey means Israel must worship where and how God commanded.", "⛺ Wilderness worship", "🚫 Pharaoh's limits rejected", "📜 God's terms", "Partial permission still keeps Pharaoh in control.");
+  } else if (lower.includes("there remained not one")) {
+    add(`${title} shows the LORD completely removing the plague after Moses prays.`, "God does not merely reduce the flies. He removes them.", "Pharaoh receives mercy and then is responsible for how he responds.", "🙏 Moses prays", "🪰 Flies removed", "⚠️ Mercy tested", "Relief should have led Pharaoh to obedience, but he hardened again.");
+  } else if (lower.includes("pattern continues") || lower.includes("relief did not become repentance")) {
+    add(`${title} summarizes Pharaoh's repeated response to mercy.`, "Pressure makes him negotiate, but relief exposes his heart.", "Once the pain is gone, he returns to refusal.", "⏳ Relief", "🔒 Hard heart", "🔁 Repeated rebellion", "Exodus is teaching the difference between temporary regret and real repentance.");
+  } else {
+    add(`${title} names a real phrase in the conflict between the LORD and Pharaoh.`, "The words help a beginner follow the exact movement of Exodus: command, refusal, oppression, promise, signs, judgment, and mercy.", "📜 Bible wording", "⚔️ Pharaoh confronted", "🙌 The LORD revealed", "The card should help decode the verse, not skip over it.");
+  }
+
+  return note(lines.slice(0, 8));
+}
+
+function makeDay23PhraseCard(section: PersonalExodusPhraseSectionInput, title: string): [string, string] {
+  return [`📌 ${title}`, explainDay23Phrase(section, title)];
 }
 function deepenDay23PhraseCards(section: PersonalExodusPhraseSectionInput): PersonalExodusPhraseSectionInput {
   const titles = DAY_23_REAL_PHRASE_TITLES[section.reference];
@@ -1117,7 +1216,85 @@ function explainDay24Exodus9To10Phrase(section: PersonalExodusPhraseSectionInput
     }
   };
 
-  if (lower.includes("let my people go")) {
+  if (lower === "upon thy cattle") {
+    add("Upon Thy Cattle means the plague will strike Egypt's livestock.", "Cattle here includes the animals Egypt depended on for food, work, travel, and wealth.", "The warning is practical and direct: Pharaoh's refusal will touch Egypt's daily life.", "The LORD is not only confronting Pharaoh's palace. He is confronting the whole system that profits from Israel's bondage.");
+  } else if (lower === "the lord shall sever") {
+    add("The LORD Shall Sever means the LORD will make a clear separation between Egypt's animals and Israel's animals.", "Sever means divide or set apart.", "This is not random sickness moving through the land.", "God is showing Pharaoh that He can judge Egypt while preserving His people.");
+  } else if (lower === "tomorrow the lord shall do this thing" || lower === "tomorrow about this time") {
+    add(`${title} means the plague has an appointed time set by God.`, "The judgment will not arrive by accident, superstition, or natural chance.", "The LORD names the time before it happens.", "When it arrives exactly as spoken, Pharaoh is facing God's word, not bad luck.");
+  } else if (lower === "of the cattle of the israelites dead") {
+    add("Of The Cattle Of The Israelites Dead means Pharaoh learns Israel's livestock were preserved.", "He checks the report after Egypt's animals die.", "The phrase is written in a negative form because the point is total protection: not one of Israel's cattle died.", "That evidence should have humbled Pharaoh, but his heart stayed shut.");
+  } else if (lower === "he did not let the people go") {
+    add("He Did Not Let The People Go means Pharaoh still refuses after seeing the LORD's distinction.", "The plague has ended, and Pharaoh has evidence that God protected Israel.", "But he still keeps the people in bondage.", "The problem is no longer lack of information. It is hardened rebellion.");
+  } else if (lower === "sprinkle it toward the heaven") {
+    add("Sprinkle It Toward The Heaven means Moses throws the ashes upward before the LORD sends the plague of boils.", "The action turns ordinary furnace ashes into a public sign of judgment.", "Heaven is mentioned because the plague does not come from Egyptian medicine or magic.", "The LORD is the One sending the painful sign over Egypt.");
+  } else if (lower === "gather thy cattle") {
+    add("Gather Thy Cattle is mercy inside a warning.", "Before the hail falls, God tells Egypt how to shelter people and animals from the field.", "Some Egyptians will believe the warning and act.", "The plague is judgment, but the warning gives people a real chance to respond to the LORD's word.");
+  } else if (lower === "he that feared the word of the lord") {
+    add("He That Feared The Word Of The LORD means some Egyptians took God's warning seriously.", "Fear here means more than being scared of hail.", "It means they believed the LORD's word enough to move servants and cattle into shelter.", "Their actions show that hearing God's warning should lead to obedience.");
+  } else if (lower === "he that regarded not the word of the lord") {
+    add("He That Regarded Not The Word Of The LORD means others heard the same warning and ignored it.", "Regarded not means they did not pay attention or treat it as weighty.", "They left servants and animals exposed in the field.", "The same warning that protected some people was rejected by others.");
+  } else if (lower === "hail, and fire mingled with the hail") {
+    add("Hail, And Fire Mingled With The Hail means the storm was more than ordinary bad weather.", "The hail crushed what stood in the field, and fire made the scene terrifying.", "Egypt is learning that the sky is not controlled by Egypt's gods or Pharaoh's power.", "The LORD commands the heavens as easily as He commands the river and the dust.");
+  } else if (lower === "such as there was none like it") {
+    add("Such As There Was None Like It means this storm was unmatched in Egypt's memory.", "The phrase tells the reader not to treat the hail as a normal seasonal event.", "This was a unique act of judgment tied to God's warning.", "Pharaoh is being shown that the LORD's power is not one more Egyptian weather pattern.");
+  } else if (lower === "the hail smote throughout all the land of egypt") {
+    add("The Hail Smote Throughout All The Land Of Egypt means the plague struck broadly across Egypt.", "Smote means hit, struck, or beat down.", "The storm damaged people, animals, trees, and crops in the field.", "Pharaoh's refusal brought judgment beyond the palace and into the land he ruled.");
+  } else if (lower === "only in the land of goshen") {
+    add("Only In The Land Of Goshen means Israel's dwelling place was spared from the hail.", "Goshen was the region where many Israelites lived in Egypt.", "The phrase matters because the storm is not random destruction.", "The LORD knows where His people are and can protect them inside a judged land.");
+  } else if (lower === "the thunder shall cease") {
+    add("The Thunder Shall Cease means Moses says the storm will stop when he prays.", "Thunder here is part of the terrifying hail plague.", "Moses is not controlling weather by himself.", "He is showing Pharaoh that the LORD who sent the storm can also end it.");
+  } else if (lower === "i know that ye will not yet fear the lord god") {
+    add("I Know That Ye Will Not Yet Fear The LORD God means Moses sees through Pharaoh's temporary confession.", "Pharaoh wants the thunder and hail gone, but he has not truly bowed to the LORD.", "Fear the LORD means reverence that leads to surrender.", "Moses knows Pharaoh's words are still ahead of his heart.");
+  } else if (lower === "the flax and the barley was smitten") {
+    add("The Flax And The Barley Was Smitten explains which crops were destroyed by the hail.", "Flax was used for linen, and barley was an important grain crop.", "The text notes they were mature enough to be damaged.", "This detail helps the reader see the economic cost of Pharaoh's refusal.");
+  } else if (lower === "the wheat and the rye were not smitten") {
+    add("The Wheat And The Rye Were Not Smitten means some later crops survived the hail because they had not grown up yet.", "This is not random farming trivia.", "It prepares the reader for the locusts in the next chapter.", "What the hail leaves behind, the locusts will later devour.");
+  } else if (lower === "when pharaoh saw") {
+    add("When Pharaoh Saw means Pharaoh responds after relief, not before it.", "He sees that the rain, hail, and thunder have stopped.", "That moment reveals what is really in him.", "Instead of mercy softening him, relief gives him room to harden again.");
+  } else if (lower === "he sinned yet more") {
+    add("He Sinned Yet More means Pharaoh's guilt increases after the storm stops.", "He had confessed sin during the plague, but once relief came, he returned to rebellion.", "That makes his response worse, not better.", "The phrase warns that religious words under pressure are not the same as repentance.");
+  } else if (lower === "go in unto pharaoh") {
+    add("Go In Unto Pharaoh means Moses must confront Pharaoh again even after repeated refusal.", "God sends Moses back into the same hard place with the same demand.", "The command teaches persistence in God's mission.", "Pharaoh's stubbornness does not cancel the LORD's word.");
+  } else if (lower === "that i might shew these my signs") {
+    add("That I Might Shew These My Signs means the plagues are meant to reveal the LORD's power.", "Shew is old spelling for show.", "The signs are not random punishments with no message.", "They teach Egypt, Israel, and future children that the LORD rules over Pharaoh and creation.");
+  } else if (lower === "tell in the ears of thy son") {
+    add("Tell In The Ears Of Thy Son means the Exodus story must be taught to the next generation.", "God wants children to hear what He did in Egypt.", "The rescue is not supposed to become a forgotten family legend.", "Parents are to explain the LORD's acts so children learn who saved them.");
+  } else if (lower === "tomorrow will i bring the locusts") {
+    add("Tomorrow Will I Bring The Locusts gives Pharaoh another timed warning before judgment.", "The locusts are not coming by chance.", "God names the plague and the time before it happens.", "The warning leaves Pharaoh responsible for refusing to humble himself.");
+  } else if (lower === "they were driven out from pharaoh's presence") {
+    add("They Were Driven Out From Pharaoh's Presence means Pharaoh angrily ends the meeting.", "Moses and Aaron refuse his partial compromise.", "Pharaoh does not answer with obedience; he pushes them away.", "The scene shows a ruler trying to control the conversation instead of submitting to God's command.");
+  } else if (lower === "stretch out thine hand over the land of egypt") {
+    add("Stretch Out Thine Hand Over The Land Of Egypt is the command connected to bringing the locusts.", "Moses' stretched hand is a visible sign of the LORD's authority being released over Egypt.", "The land itself becomes the place of judgment.", "Pharaoh's kingdom cannot hide from God's command.");
+  } else if (lower === "the lord brought an east wind") {
+    add("The LORD Brought An East Wind means God used the wind to carry the locusts into Egypt.", "The wind is not treated as an independent force.", "Creation obeys the Creator.", "The same LORD who names the plague also commands the movement that brings it.");
+  } else if (lower === "the locusts went up over all the land") {
+    add("The Locusts Went Up Over All The Land means the plague spread across Egypt.", "Locust swarms could strip fields bare and threaten food supplies.", "This plague attacks what remained after the hail.", "Egypt's land is being emptied because Pharaoh still refuses release.");
+  } else if (lower === "before them there were no such locusts") {
+    add("Before Them There Were No Such Locusts means this swarm was unmatched.", "The text wants the reader to feel the scale of the plague.", "This was not an ordinary insect problem.", "It was a sign of judgment unlike anything Egypt had seen.");
+  } else if (lower === "they covered the face of the whole earth") {
+    add("They Covered The Face Of The Whole Earth means the locusts were so many that the ground seemed hidden.", "Face of the earth is a Bible way of speaking about the surface of the land.", "The image helps beginners picture the swarm's thickness.", "Egypt's fields were overwhelmed under Pharaoh's continued refusal.");
+  } else if (lower === "there remained not any green thing") {
+    add("There Remained Not Any Green Thing means the locusts finished what the hail left.", "Green thing refers to living plant growth.", "The plague strips Egypt's remaining food supply.", "The land that Pharaoh ruled is being emptied by the God Pharaoh refused.");
+  } else if (lower === "the lord turned a mighty strong west wind") {
+    add("The LORD Turned A Mighty Strong West Wind means God also controlled the removal of the locusts.", "The east wind brought them, and the west wind carried them away.", "The plague did not end because Egypt solved it.", "Relief came when the LORD commanded creation again.");
+  } else if (lower === "he would not let the children of israel go") {
+    add("He Would Not Let The Children Of Israel Go means Pharaoh refuses even after the locusts are removed.", "The children of Israel are the covenant people God is rescuing.", "Pharaoh receives relief but still keeps them trapped.", "Again, the problem is not the plague. The problem is Pharaoh's hard heart.");
+  } else if (lower === "darkness which may be felt") {
+    add("Darkness Which May Be Felt means the darkness was heavy, oppressive, and terrifying.", "This is not normal nightfall.", "The phrase makes the darkness feel almost physical.", "Egypt's light is shut down because the LORD rules even what people assume is constant.");
+  } else if (lower === "there was a thick darkness") {
+    add("There Was A Thick Darkness means Egypt was covered in deep, disabling darkness.", "People could not see one another or move normally.", "The plague attacks daily life without using insects, hail, or disease.", "The LORD can judge by removing light itself.");
+  } else if (lower === "all the children of israel had light") {
+    add("All The Children Of Israel Had Light means God preserved Israel while Egypt sat in darkness.", "The contrast is sharp: darkness in Egypt, light in Israel's dwellings.", "This is another visible distinction between Pharaoh's people and the LORD's people.", "God's people are still in Egypt, but they are not abandoned to Egypt's judgment.");
+  } else if (lower === "only let your flocks and your herds be stayed") {
+    add("Only Let Your Flocks And Your Herds Be Stayed is Pharaoh's attempt at a final compromise.", "He offers to let the people go but wants to keep the animals behind.", "That would still give Pharaoh control over Israel's worship and return.", "Partial freedom is not obedience to the LORD's command.");
+  } else if (lower === "there shall not an hoof be left behind") {
+    add("There Shall Not An Hoof Be Left Behind means Moses refuses Pharaoh's compromise completely.", "Not even one animal hoof may stay in Egypt.", "Israel must leave with everything needed to worship as God commands.", "Pharaoh does not get to decide the limits of obedience.");
+  } else if (lower === "take heed to thyself") {
+    add("Take Heed To Thyself is Pharaoh's threat to Moses.", "It means be careful or watch yourself.", "Pharaoh warns Moses not to appear before him again.", "The threat sounds powerful, but Pharaoh is the one standing under the LORD's final warning.");
+  } else if (lower === "i will see thy face again no more") {
+    add("I Will See Thy Face Again No More means Moses accepts that the public confrontations are ending.", "Pharaoh thinks he is dismissing Moses.", "But the final plague will force Pharaoh to send Israel out.", "The conversation closes, but the LORD's judgment is not finished.");
+  } else if (lower.includes("let my people go")) {
     add(`${title} keeps God's main demand in front of Pharaoh.`, "Israel is not being rescued just to wander around free.", "God says they belong to Him and must be released to worship Him.", "🚪 Let them go", "🙌 Serve the LORD", "🔒 Pharaoh has no right to keep them", "Freedom in Exodus means leaving bondage so God's people can live under God's rule.");
   } else if (lower.includes("hand of the lord")) {
     add(`${title} means the plague comes from the LORD's own power.`, "Egypt may have armies, magicians, animals, and wealth.", "But the hand of the LORD is stronger than every part of Egypt's system.", "✋ God's hand", "🐄 Livestock judged", "👑 Pharaoh humbled", "Creation answers to God, not to Egypt's king.");
@@ -1135,6 +1312,8 @@ function explainDay24Exodus9To10Phrase(section: PersonalExodusPhraseSectionInput
     add(`${title} prepares the reader for the final plague by showing that Pharaoh still will not release Israel.`, "The darkness has not softened him.", "He is still locked in rebellion even after Egypt has been shaken again and again.", "🔒 Hardened heart", "🌑 Darkness ignored", "⚖️ Final judgment near", "The story is moving toward the last warning because Pharaoh's refusal remains.");
   } else if (lower.includes("heart of pharaoh") || lower.includes("hardened")) {
     add(`${title} names the deep problem under Pharaoh's decisions.`, "His issue is not confusion.", "His heart is locked against the LORD.", "🔒 Closed heart", "🚫 Refusal", "📣 God's word resisted", "A hard heart can see mercy, feel judgment, ask for relief, and still refuse God.");
+  } else if (lower === "he would not let them go") {
+    add("He Would Not Let Them Go means Pharaoh still refuses release after the plague of darkness.", "Them refers to Israel, the people God has commanded him to release.", "By this point Pharaoh has seen plague after plague.", "His refusal shows that darkness outside him has not changed the darkness of his heart.");
   } else if (lower.includes("he did not let") || lower.includes("would not let")) {
     add(`${title} shows Pharaoh choosing refusal again.`, "The plague has ended, but Pharaoh has not changed.", "He keeps Israel trapped because his pride still wants control.", "🚫 No release", "🔒 Bondage continues", "🔁 The pattern repeats", "Relief from pain is not the same as repentance before God.");
   } else if (lower.includes("ashes") || lower.includes("boil") || lower.includes("beast")) {
