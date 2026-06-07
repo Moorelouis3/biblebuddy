@@ -74,11 +74,62 @@ The goal is to help the reader stop, see the details, understand the culture, an
 
 ## Key Phrase Standard
 
-Key Phrase explanations must explain the phrase itself. Do not use Reading Tip, Study Tip, Reader Tip, or generic advice to fill space.
+Key Phrase explanations must function like a deep Bible study, not a summary section.
 
-Each Key Phrase should help the reader understand what the phrase means, why it matters in the story, what biblical or cultural context is needed, and how it connects to the larger Bible story when relevant.
+Assume the reader has never studied the Bible before.
 
-Write at about a 6th grade reading level. Use clear paragraph format. Each phrase should usually have 6 to 12 meaningful sentences unless the phrase is already fully explained by the surrounding card. Aim for understanding, not decoration. The user should leave saying, "Now I understand what that phrase means and why it matters."
+Use Day 22 Exodus 1-4 as the current Bible Buddy phrase-card model.
+
+The Exodus 1:1-6 cards show the required style:
+
+- "These Are The Names" explains why Exodus begins with real names and promise-family identity.
+- "Which Came Into Egypt" explains the Genesis connection, famine, Egypt as shelter, and later bondage.
+- "Every Man And His Household" explains household language and family-line growth.
+- "Seventy Souls" explains that souls means people and why the counted family matters.
+- "Joseph Was In Egypt Already" explains Joseph as the bridge from Genesis into Exodus.
+- "Joseph Died, And All His Brethren" explains generational change and the promise continuing after death.
+
+Every phrase card should work like those examples:
+
+- The first sentence must be specific to the exact phrase.
+- The explanation must teach the phrase itself, not merely recap the section.
+- Do not use the first sentence to repeat the verse reference. Write "A Bunch Of Hyssop names the plant used to apply the blood to the doorway," not "A Bunch Of Hyssop in Exodus 12:21-26..."
+- Use short paragraphs and emoji lists when they help the reader see the parts.
+- Do not use the same first line or same paragraph structure across a group of cards.
+- Do not write "This verse shows...", "This phrase belongs to...", "is worth slowing down...", "not filler...", or "this phrase comes directly from the passage" as reusable filler.
+- Do not add commentary cards disguised as phrase cards.
+
+Do not only explain the most obvious phrases. Identify every phrase that could create a real question in the reader's mind:
+
+- places
+- people
+- objects
+- actions
+- directions
+- symbols
+- names
+- unusual KJV wording
+- cultural details
+- historical background
+- theological ideas
+
+If a brand-new Christian might Google it, ask about it, or quietly skip past it without understanding, it probably belongs in Key Phrases.
+
+Each Key Phrase should explain:
+
+- what the phrase means in plain English
+- what is happening in the immediate verse or scene
+- why the phrase matters in the story
+- what cultural, historical, geographical, or biblical context is needed
+- how it connects to the larger Bible story when relevant
+
+Do not use Reading Tip, Study Tip, Reader Tip, or generic advice to fill space.
+
+Do not pad notes with repeated filler like "this phrase matters because..." unless the sentence actually explains the phrase.
+
+Write at about a 6th grade reading level. Use clear paragraph format. Each phrase should usually have 6 to 12 meaningful lines unless more detail is needed. Aim for more needed phrases with real explanation, not fewer phrases with broad summaries.
+
+The user should leave saying, "Now I understand what that phrase means and why it matters."
 ## Verse Callout Rule
 
 Each verse must appear in its own callout line.

@@ -84,6 +84,13 @@ Reader-note rules:
 - No card may have fewer than 4 key phrases.
 - Prefer 7 key phrases per card where possible.
 - If a split creates a thin card, add beginner-focused key phrases.
+- Phrase cards only. Do not add broad commentary cards such as "What Is Happening Here?", "Why This Detail Matters", "Beginner Connection", "Watch The Pattern", "What This Shows About People", or "What This Shows About God".
+- Use Exodus 1-4 Day 22 as the phrase-card explanation model. Each card must teach the exact phrase in front of the reader, the way Exodus 1:1-6 explains "These Are The Names", "Which Came Into Egypt", "Every Man And His Household", "Seventy Souls", "Joseph Was In Egypt Already", and "Joseph Died, And All His Brethren".
+- Use the corrected Day 24 and Day 25 Exodus cards as the current formatting example for later Exodus days: start with the phrase itself, then explain its meaning in plain language, then use short spaced teaching lines and emoji lists only when they help.
+- Do not start the first sentence by citing the section reference, such as "The Hand Of The LORD in Exodus 9:1-6...". The card title already anchors the phrase. Explain the phrase directly, such as "The Hand Of The LORD means..."
+- Do not write bucket explanations where many cards begin the same way, such as "This verse shows...", "This phrase belongs to...", "is worth slowing down...", "this phrase comes directly...", "not filler...", or the same recap paragraph repeated across cards.
+- The first sentence of each phrase card should be specific to that exact phrase, not a reusable category label.
+- Use short paragraph spacing and emoji lists when they genuinely help the reader see parts of the phrase.
 - Think like a Bible beginner:
   - What word is confusing?
   - What object, place, law, ritual, or name needs explanation?
@@ -93,14 +100,6 @@ Reader-note rules:
 - Do not add fake "openings" or "endings" inside Scripture notes.
 - Notes should explain the Bible text, not pad it.
 
-Beginner phrase cards that are acceptable when a card is thin:
-
-- `🧭 What Is Happening Here?`
-- `🔎 Why This Detail Matters`
-- `🧠 Beginner Connection`
-- `🧵 Watch The Pattern`
-- `❤️ What This Shows About People`
-- `🙌 What This Shows About God`
 
 ## Required Validation
 
@@ -131,4 +130,3 @@ When pushing:
 - Commit message format:
   - `Build Bible year day XX`
   - or `Deepen Bible year day XX notes` if it was notes-only.
-
