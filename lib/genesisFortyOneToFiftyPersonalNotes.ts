@@ -277,6 +277,65 @@ function addGenesisFortyOneToFiftySectionTexture(sections: PersonalGenesisPhrase
   }));
 }
 
+const GENESIS_41_50_MOBILE_FORMAT_CUES: Record<number, string[]> = {
+  41: ["🌙 Pharaoh's dreams expose a need Egypt cannot solve.", "🙌 Joseph gives God the credit.", "🌾 Wisdom prepares people before famine hits."],
+  42: ["🙇 The brothers bow without knowing Joseph.", "💔 Old guilt begins to speak.", "🧪 Joseph tests what kind of men they have become."],
+  43: ["🧍 Judah steps forward with responsibility.", "🎁 The brothers return with gifts and Benjamin.", "😭 Joseph's hidden emotion keeps rising."],
+  44: ["🥣 The cup creates the final test.", "🗣️ Judah tells the truth plainly.", "🤲 The brother who once sold Joseph now offers himself."],
+  45: ["😭 Joseph reveals himself through tears.", "🙌 God worked preservation through human evil.", "🤝 Forgiveness begins without pretending the sin was small."],
+  46: ["🛕 Jacob worships before going down to Egypt.", "🌙 God promises to go with him.", "👨‍👩‍👧‍👦 The family enters Egypt as the seed of a nation."],
+  47: ["🏞️ Israel is settled in Goshen.", "🍞 Famine pressure reshapes Egypt.", "🧓 Jacob lives as a pilgrim still trusting the promise."],
+  48: ["🙌 Jacob blesses Joseph's sons.", "🔁 The younger is placed before the older again.", "🧭 God's promise guides the family order."],
+  49: ["📣 Jacob speaks over the tribes.", "🦁 Judah receives royal hope.", "🌿 Joseph is blessed as fruitful through hardship."],
+  50: ["💔 Genesis closes with death and mourning.", "🌱 God means good even through evil.", "⚰️ Joseph's bones point forward to the Exodus."],
+};
+
+function hasGenesisFortyOneToFiftyVisualList(content: string) {
+  return content
+    .split(/\n+/)
+    .filter((line) => line.trim().length > 0)
+    .some((line) => /^[^\w\s"']/.test(line.trim()));
+}
+
+function formatGenesisFortyOneToFiftyPhraseExplanation(
+  section: PersonalGenesisPhraseSectionInput,
+  content: string,
+) {
+  if (section.chapter < 41 || section.chapter > 50 || hasGenesisFortyOneToFiftyVisualList(content)) {
+    return content;
+  }
+
+  const blocks = content
+    .split(/\n{2,}/)
+    .map((block) => block.trim())
+    .filter(Boolean);
+  const cues = GENESIS_41_50_MOBILE_FORMAT_CUES[section.chapter];
+
+  if (!cues || blocks.length < 2) {
+    return content;
+  }
+
+  const opening = blocks.slice(0, Math.min(2, blocks.length));
+  const closing = blocks.slice(opening.length);
+
+  return note([
+    ...opening,
+    "What to notice:",
+    ...cues,
+    ...closing,
+  ]);
+}
+
+function formatGenesisFortyOneToFiftySectionExplanations(sections: PersonalGenesisPhraseSectionInput[]) {
+  return sections.map((section) => ({
+    ...section,
+    phrases: section.phrases.map(([title, content]) => [
+      title,
+      formatGenesisFortyOneToFiftyPhraseExplanation(section, content),
+    ] as [string, string]),
+  }));
+}
+
 const RAW_GENESIS_41_50_PERSONAL_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
   {
     chapter: 41,
@@ -1814,13 +1873,15 @@ const DAY_21_GENESIS_49_50_FINAL_SECTIONS = makeGenesisSectionsFromDeepStudy(
   "🕊️",
 ).map(deepenDay21PhraseCards);
 
-export const GENESIS_41_50_PERSONAL_SECTIONS = addGenesisFortyOneToFiftySectionTexture(
-  [
-    ...DAY_17_GENESIS_41_42_FINAL_SECTIONS.map(deepenDay17PhraseCards),
-    ...DAY_18_GENESIS_43_44_FINAL_SECTIONS.map(deepenDay18PhraseCards),
-    ...DAY_19_GENESIS_45_46_FINAL_SECTIONS.map(deepenDay19PhraseCards),
-    ...DAY_20_GENESIS_47_48_FINAL_SECTIONS.map(deepenDay20PhraseCards),
-    ...DAY_21_GENESIS_49_50_FINAL_SECTIONS,
-    ...expandSplitSections(RAW_GENESIS_41_50_PERSONAL_SECTIONS.filter((section) => section.chapter < 41 || section.chapter > 50)),
-  ].map((section) => (section.chapter > 50 ? ensureBeginnerGenesisPhraseDepth(section) : section)),
+export const GENESIS_41_50_PERSONAL_SECTIONS = formatGenesisFortyOneToFiftySectionExplanations(
+  addGenesisFortyOneToFiftySectionTexture(
+    [
+      ...DAY_17_GENESIS_41_42_FINAL_SECTIONS.map(deepenDay17PhraseCards),
+      ...DAY_18_GENESIS_43_44_FINAL_SECTIONS.map(deepenDay18PhraseCards),
+      ...DAY_19_GENESIS_45_46_FINAL_SECTIONS.map(deepenDay19PhraseCards),
+      ...DAY_20_GENESIS_47_48_FINAL_SECTIONS.map(deepenDay20PhraseCards),
+      ...DAY_21_GENESIS_49_50_FINAL_SECTIONS,
+      ...expandSplitSections(RAW_GENESIS_41_50_PERSONAL_SECTIONS.filter((section) => section.chapter < 41 || section.chapter > 50)),
+    ].map((section) => (section.chapter > 50 ? ensureBeginnerGenesisPhraseDepth(section) : section)),
+  ),
 );

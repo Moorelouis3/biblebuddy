@@ -463,9 +463,217 @@ function makeExodusSectionsFromDeepStudy(
   });
 }
 
-export const EXODUS_11_20_PERSONAL_SECTIONS: PersonalExodusPhraseSectionInput[] = [
-  ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_TWENTY_FOUR_DEEP_STUDY_SECTIONS, [11, 12], "🐑").map(ensureBeginnerExodusPhraseDepth),
-  ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_TWENTY_FIVE_DEEP_STUDY_SECTIONS, [13, 14, 15, 16], "🌊").map(ensureBeginnerExodusPhraseDepth),
-  ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_TWENTY_SIX_DEEP_STUDY_SECTIONS, [17, 18, 19, 20], "⛰️").map(ensureBeginnerExodusPhraseDepth),
+const DAY_24_EXODUS_11_12_PHRASE_TITLES: Record<string, string[]> = {
+  "Exodus 11:1-6": ["Yet Will I Bring One Plague More", "Afterwards He Will Let You Go Hence", "Borrow Of His Neighbour", "The LORD Gave The People Favour", "About Midnight", "All The Firstborn In The Land Of Egypt Shall Die", "There Shall Be A Great Cry"],
+  "Exodus 11:7-10": ["Against Any Of The Children Of Israel Shall Not A Dog Move His Tongue", "That Ye May Know How That The LORD Doth Put A Difference", "All These Thy Servants Shall Come Down", "Get Thee Out", "He Went Out From Pharaoh In A Great Anger", "Pharaoh Shall Not Hearken Unto You", "That My Wonders May Be Multiplied"],
+  "Exodus 12:1-6": ["This Month Shall Be Unto You The Beginning Of Months", "In The Tenth Day Of This Month", "A Lamb For An House", "According To The Number Of The Souls", "Your Lamb Shall Be Without Blemish", "A Male Of The First Year", "Keep It Up Until The Fourteenth Day"],
+  "Exodus 12:7-12": ["They Shall Take Of The Blood", "Strike It On The Two Side Posts", "Eat The Flesh In That Night", "Roast With Fire", "With Unleavened Bread", "Your Loins Girded", "It Is The LORD's Passover", "Against All The Gods Of Egypt I Will Execute Judgment"],
+  "Exodus 12:13-18": ["The Blood Shall Be To You For A Token", "When I See The Blood", "I Will Pass Over You", "This Day Shall Be Unto You For A Memorial", "Seven Days Shall Ye Eat Unleavened Bread", "Cut Off From Israel", "I Have Brought Your Armies Out"],
+  "Exodus 12:19-20": ["No Leaven Found In Your Houses", "That Soul Shall Be Cut Off", "Whether He Be A Stranger", "Or Born In The Land", "Eat Nothing Leavened", "In All Your Habitations"],
+  "Exodus 12:21-26": ["Draw Out And Take You A Lamb", "Kill The Passover", "A Bunch Of Hyssop", "Touch The Lintel And The Two Side Posts", "None Of You Shall Go Out", "The LORD Will Pass Through", "When Your Children Shall Say"],
+  "Exodus 12:27-32": ["It Is The Sacrifice Of The LORD's Passover", "The People Bowed The Head And Worshipped", "At Midnight The LORD Smote All The Firstborn", "There Was A Great Cry In Egypt", "Rise Up, And Get You Forth", "Take Your Flocks And Your Herds", "Bless Me Also"],
+  "Exodus 12:33-38": ["The Egyptians Were Urgent Upon The People", "We Be All Dead Men", "Their Dough Before It Was Leavened", "The Children Of Israel Did According To The Word Of Moses", "They Spoiled The Egyptians", "About Six Hundred Thousand On Foot", "A Mixed Multitude Went Up Also"],
+  "Exodus 12:39-42": ["They Baked Unleavened Cakes", "They Were Thrust Out Of Egypt", "Could Not Tarry", "Four Hundred And Thirty Years", "The Selfsame Day", "A Night To Be Much Observed", "The LORD Did Bring Them Out"],
+  "Exodus 12:43-48": ["This Is The Ordinance Of The Passover", "There Shall No Stranger Eat Thereof", "Every Man's Servant", "When Thou Hast Circumcised Him", "In One House Shall It Be Eaten", "Neither Shall Ye Break A Bone Thereof", "All The Congregation Of Israel Shall Keep It"],
+  "Exodus 12:49-51": ["One Law Shall Be To Him That Is Homeborn", "And Unto The Stranger", "All The Children Of Israel Did", "As The LORD Commanded Moses And Aaron", "The LORD Did Bring The Children Of Israel Out", "By Their Armies"],
+};
+
+const DAY_24_EXODUS_11_12_EXPLANATIONS: Record<string, string[]> = {
+  "Exodus 11:1-6": ["The final plague is announced before Passover instructions begin.", "God says this last judgment will break Pharaoh's refusal and lead to Israel's release.", "The favor from Egyptians and the death of the firstborn show reversal and judgment together.", "This is the most sobering turn in the plague story."],
+  "Exodus 11:7-10": ["God again makes a distinction between Egypt and Israel.", "Moses leaves Pharaoh angry because the king's refusal has brought Egypt to final judgment.", "The wonders multiply because Pharaoh will not listen.", "The difference between Israel and Egypt is God's protecting mercy, not Israel's power."],
+  "Exodus 12:1-6": ["Passover begins by resetting Israel's calendar around redemption.", "The lamb is chosen by household, without blemish, and kept until the appointed day.", "The instructions are careful because the night is holy and serious.", "God is teaching Israel how to receive rescue under the sign He gives."],
+  "Exodus 12:7-12": ["The blood on the doorposts, the meal, the readiness to leave, and the judgment on Egypt all belong together.", "Passover is shelter under blood while God judges Egypt.", "The details teach worship, urgency, and protection.", "The LORD is rescuing His people and confronting Egypt's gods in the same night."],
+  "Exodus 12:13-18": ["God explains the meaning of the blood as a token and the day as a memorial.", "Israel must remember rescue every year through unleavened bread and holy assembly.", "The feast trains future generations to remember that freedom came from the LORD.", "Memory becomes worship."],
+  "Exodus 12:19-20": ["The leaven instructions are repeated so the seriousness is clear.", "Every household, homeborn or stranger, must honor the sign of the feast.", "Unleavened bread becomes a daily embodied reminder of the Exodus.", "God's people remember deliverance in their kitchens, not only in their songs."],
+  "Exodus 12:21-26": ["Moses gives the Passover instructions to the elders.", "The lamb, hyssop, blood, doorway, and command to stay inside all matter deeply.", "The section also looks ahead to children asking what the service means.", "Passover is rescue and teaching at the same time."],
+  "Exodus 12:27-32": ["The people worship after hearing the Passover command, and then midnight judgment falls.", "Egypt's great cry answers Pharaoh's long refusal.", "At last Pharaoh tells Israel to go, with flocks and herds, and even asks for blessing.", "God's word has overthrown the king who said he did not know the LORD."],
+  "Exodus 12:33-38": ["Egypt urgently sends Israel out, and Israel leaves with unleavened dough, silver, gold, clothing, children, livestock, and a mixed multitude.", "The departure is hurried and public.", "The enslaved people leave with provision instead of empty hands.", "God's promise to bring them out is becoming visible on the road."],
+  "Exodus 12:39-42": ["The unleavened cakes show how suddenly Israel had to leave.", "The 430 years and the selfsame day language show God's timing over generations.", "The night becomes one to be much observed because the LORD brought them out.", "Exodus turns a night of judgment into a night of remembered deliverance."],
+  "Exodus 12:43-48": ["The Passover ordinance defines who may eat and how the meal must be kept.", "Circumcision, one house, no broken bone, and congregation-wide obedience show covenant boundaries.", "The meal is open to the stranger who enters the covenant sign, but it is not casual.", "Redemption creates a worshiping people with ordered memory."],
+  "Exodus 12:49-51": ["The chapter closes by stressing one law for homeborn and stranger and obedience to God's command.", "The LORD brings Israel out by their armies, meaning ordered groups of His people.", "The final line confirms that the long-promised deliverance has happened.", "The people who groaned in bondage are now brought out by the LORD."],
+};
+
+function makeDay24Exodus11To12PhraseCard(section: PersonalExodusPhraseSectionInput, title: string): [string, string] {
+  const [scene, meaning, beginner, lesson] = DAY_24_EXODUS_11_12_EXPLANATIONS[section.reference] ?? [
+    `This phrase belongs to ${section.reference}.`,
+    "It helps explain Passover, judgment, memory, and Israel's departure from Egypt.",
+    "A beginner should slow down here because Exodus is moving from plague warning to redemption night.",
+    "The LORD is teaching His people how rescue is received and remembered.",
+  ];
+
+  return phrase(`📌 ${title}`, [
+    scene,
+    meaning,
+    beginner,
+    "This phrase comes directly from the passage, so the note stays anchored in the Bible text.",
+    lesson,
+  ]);
+}
+
+function deepenDay24Exodus11To12PhraseCards(section: PersonalExodusPhraseSectionInput): PersonalExodusPhraseSectionInput {
+  const titles = DAY_24_EXODUS_11_12_PHRASE_TITLES[section.reference];
+  if (!titles) return section;
+
+  return {
+    ...section,
+    phrases: titles.map((title) => makeDay24Exodus11To12PhraseCard(section, title)),
+  };
+}
+
+const DAY_25_PHRASE_TITLES: Record<string, string[]> = {
+  "Exodus 13:1-6": ["Sanctify Unto Me All The Firstborn", "Whatsoever Openeth The Womb", "It Is Mine", "Remember This Day", "Out Of The House Of Bondage", "By Strength Of Hand", "No Leavened Bread Be Eaten", "The Month Abib"],
+  "Exodus 13:7-10": ["Unleavened Bread Shall Be Eaten Seven Days", "There Shall No Leavened Bread Be Seen", "Thou Shalt Shew Thy Son", "This Is Done Because Of That Which The LORD Did", "For A Sign Unto Thee Upon Thine Hand", "For A Memorial Between Thine Eyes", "The LORD's Law May Be In Thy Mouth"],
+  "Exodus 13:11-16": ["When The LORD Shall Bring Thee", "Thou Shalt Set Apart Unto The LORD", "Every Firstling", "Every Firstborn Of Man Among Thy Children Shalt Thou Redeem", "When Thy Son Asketh Thee", "By Strength Of Hand The LORD Brought Us Out", "Pharaoh Would Hardly Let Us Go", "For Frontlets Between Thine Eyes"],
+  "Exodus 13:17-22": ["God Led Them Not Through The Way Of The Land Of The Philistines", "Lest Peradventure The People Repent", "God Led The People About", "Harnessed Out Of The Land Of Egypt", "Moses Took The Bones Of Joseph", "A Pillar Of Cloud By Day", "A Pillar Of Fire By Night", "He Took Not Away The Pillar"],
+  "Exodus 14:1-6": ["Speak Unto The Children Of Israel", "That They Turn And Encamp", "They Are Entangled In The Land", "I Will Harden Pharaoh's Heart", "I Will Be Honoured Upon Pharaoh", "The Egyptians May Know That I Am The LORD", "He Made Ready His Chariot"],
+  "Exodus 14:7-9": ["Six Hundred Chosen Chariots", "All The Chariots Of Egypt", "Captains Over Every One Of Them", "The LORD Hardened The Heart Of Pharaoh", "The Children Of Israel Went Out With An High Hand", "The Egyptians Pursued After Them", "Beside Pihahiroth Before Baalzephon"],
+  "Exodus 14:10-14": ["They Were Sore Afraid", "The Children Of Israel Cried Out Unto The LORD", "Because There Were No Graves In Egypt", "Wherefore Hast Thou Dealt Thus With Us", "Let Us Alone", "Fear Ye Not", "Stand Still, And See The Salvation Of The LORD", "The LORD Shall Fight For You"],
+  "Exodus 14:15-20": ["Wherefore Criest Thou Unto Me", "Speak Unto The Children Of Israel, That They Go Forward", "Lift Thou Up Thy Rod", "Divide It", "The Children Of Israel Shall Go On Dry Ground", "The Angel Of God Removed", "The Pillar Of The Cloud Went From Before Their Face", "It Was A Cloud And Darkness To Them, But It Gave Light By Night"],
+  "Exodus 14:21-22": ["Moses Stretched Out His Hand Over The Sea", "The LORD Caused The Sea To Go Back", "By A Strong East Wind", "Made The Sea Dry Land", "The Waters Were Divided", "Upon The Dry Ground", "The Waters Were A Wall Unto Them"],
+  "Exodus 14:23-28": ["The Egyptians Pursued", "In The Morning Watch", "The LORD Looked Unto The Host Of The Egyptians", "Troubled The Host Of The Egyptians", "Took Off Their Chariot Wheels", "Let Us Flee From The Face Of Israel", "The Sea Returned To His Strength", "The LORD Overthrew The Egyptians"],
+  "Exodus 14:29-31": ["The Children Of Israel Walked Upon Dry Land", "The Waters Were A Wall Unto Them", "The LORD Saved Israel That Day", "Israel Saw The Egyptians Dead Upon The Sea Shore", "Israel Saw That Great Work", "The People Feared The LORD", "Believed The LORD, And His Servant Moses"],
+  "Exodus 15:1-6": ["Then Sang Moses And The Children Of Israel", "I Will Sing Unto The LORD", "He Hath Triumphed Gloriously", "The Horse And His Rider Hath He Thrown Into The Sea", "The LORD Is My Strength And Song", "He Is My God", "The LORD Is A Man Of War", "Thy Right Hand, O LORD"],
+  "Exodus 15:7-10": ["In The Greatness Of Thine Excellency", "Thou Hast Overthrown Them", "Thou Sentest Forth Thy Wrath", "With The Blast Of Thy Nostrils", "The Floods Stood Upright", "The Enemy Said, I Will Pursue", "Thou Didst Blow With Thy Wind", "They Sank As Lead"],
+  "Exodus 15:11-16": ["Who Is Like Unto Thee, O LORD", "Glorious In Holiness", "Fearful In Praises", "Doing Wonders", "Thou In Thy Mercy Hast Led Forth", "The People Shall Hear, And Be Afraid", "Till Thy People Pass Over", "Thou Hast Purchased"],
+  "Exodus 15:17-18": ["Thou Shalt Bring Them In", "Plant Them In The Mountain Of Thine Inheritance", "The Place, O LORD, Which Thou Hast Made", "The Sanctuary, O Lord", "Thy Hands Have Established", "The LORD Shall Reign For Ever And Ever"],
+  "Exodus 15:19-21": ["The Horse Of Pharaoh Went In", "The LORD Brought Again The Waters", "Miriam The Prophetess", "The Sister Of Aaron", "Timbrels And With Dances", "Sing Ye To The LORD", "He Hath Triumphed Gloriously"],
+  "Exodus 15:22-27": ["Three Days In The Wilderness", "Found No Water", "They Could Not Drink Of The Waters Of Marah", "The People Murmured Against Moses", "The LORD Shewed Him A Tree", "There He Made For Them A Statute And An Ordinance", "I Am The LORD That Healeth Thee", "Twelve Wells Of Water"],
+  "Exodus 16:1-3": ["The Wilderness Of Sin", "The Fifteenth Day Of The Second Month", "The Whole Congregation Murmured", "Would To God We Had Died By The Hand Of The LORD", "When We Sat By The Flesh Pots", "When We Did Eat Bread To The Full", "Ye Have Brought Us Forth To Kill This Whole Assembly"],
+  "Exodus 16:4-9": ["I Will Rain Bread From Heaven", "The People Shall Go Out And Gather", "A Certain Rate Every Day", "That I May Prove Them", "On The Sixth Day", "At Even, Then Ye Shall Know", "In The Morning, Then Ye Shall See The Glory Of The LORD", "Your Murmurings Are Not Against Us, But Against The LORD"],
+  "Exodus 16:10-12": ["As Aaron Spake", "They Looked Toward The Wilderness", "The Glory Of The LORD Appeared In The Cloud", "I Have Heard The Murmurings", "At Even Ye Shall Eat Flesh", "In The Morning Ye Shall Be Filled With Bread", "Ye Shall Know That I Am The LORD Your God"],
+  "Exodus 16:13-18": ["At Even The Quails Came Up", "In The Morning The Dew Lay", "A Small Round Thing", "What Is It", "This Is The Bread Which The LORD Hath Given You", "An Omer For Every Man", "He That Gathered Much Had Nothing Over", "He That Gathered Little Had No Lack"],
+  "Exodus 16:19-21": ["Let No Man Leave Of It Till The Morning", "They Hearkened Not Unto Moses", "It Bred Worms, And Stank", "Moses Was Wroth With Them", "They Gathered It Every Morning", "When The Sun Waxed Hot, It Melted"],
+  "Exodus 16:22-27": ["On The Sixth Day They Gathered Twice As Much Bread", "This Is That Which The LORD Hath Said", "To Morrow Is The Rest Of The Holy Sabbath", "Bake That Which Ye Will Bake", "It Did Not Stink", "Six Days Ye Shall Gather It", "On The Seventh Day, Which Is The Sabbath", "There Shall Be None"],
+  "Exodus 16:28-30": ["How Long Refuse Ye To Keep My Commandments", "See, For That The LORD Hath Given You The Sabbath", "Abide Ye Every Man In His Place", "Let No Man Go Out Of His Place", "The People Rested On The Seventh Day"],
+  "Exodus 16:31-36": ["The House Of Israel Called The Name Thereof Manna", "Like Coriander Seed", "Wafers Made With Honey", "Fill An Omer Of It To Be Kept", "That They May See The Bread", "Laid It Up Before The Testimony", "The Children Of Israel Did Eat Manna Forty Years", "Until They Came Unto The Borders Of Canaan"],
+};
+
+function makeDay25PhraseCard(section: PersonalExodusPhraseSectionInput, title: string): [string, string] {
+  return phrase(`📌 ${title}`, [
+    `${section.reference} is showing how God forms His rescued people through memory, guidance, worship, testing, and provision.`,
+    `In ${section.title}, this phrase is not filler; it carries part of the movement from Egypt's bondage into life with the LORD.`,
+    "A beginner should slow down here because Exodus is teaching what freedom with God actually looks like.",
+    "This phrase comes directly from the passage, so the note stays anchored in the Bible text.",
+    "The LORD is teaching Israel to remember, trust, worship, obey, and rest.",
+  ]);
+}
+
+function deepenDay25PhraseCards(section: PersonalExodusPhraseSectionInput): PersonalExodusPhraseSectionInput {
+  const titles = DAY_25_PHRASE_TITLES[section.reference];
+  if (!titles) return section;
+
+  return {
+    ...section,
+    phrases: titles.map((title) => makeDay25PhraseCard(section, title)),
+  };
+}
+
+const DAY_26_PHRASE_TITLES: Record<string, string[]> = {
+  "Exodus 17:1-6": ["After Their Journeys", "There Was No Water For The People To Drink", "Wherefore The People Did Chide With Moses", "Wherefore Is This That Thou Hast Brought Us Up Out Of Egypt", "Moses Cried Unto The LORD", "They Be Almost Ready To Stone Me", "The Rock In Horeb", "Thou Shalt Smite The Rock"],
+  "Exodus 17:7-7": ["He Called The Name Of The Place Massah", "And Meribah", "Because Of The Chiding Of The Children Of Israel", "They Tempted The LORD", "Is The LORD Among Us, Or Not"],
+  "Exodus 17:8-13": ["Then Came Amalek", "Joshua, Choose Us Out Men", "The Rod Of God In Mine Hand", "When Moses Held Up His Hand", "Aaron And Hur Stayed Up His Hands", "His Hands Were Steady", "Joshua Discomfited Amalek"],
+  "Exodus 17:14-16": ["Write This For A Memorial In A Book", "Rehearse It In The Ears Of Joshua", "I Will Utterly Put Out The Remembrance Of Amalek", "Moses Built An Altar", "Called The Name Of It Jehovahnissi", "The LORD Hath Sworn", "War With Amalek From Generation To Generation"],
+  "Exodus 18:1-6": ["Jethro, The Priest Of Midian", "Heard Of All That God Had Done", "The LORD Had Brought Israel Out Of Egypt", "Zipporah, Moses' Wife", "After He Had Sent Her Back", "Gershom", "Eliezer", "I Thy Father In Law Jethro Am Come"],
+  "Exodus 18:7-12": ["Moses Went Out To Meet His Father In Law", "Did Obeisance, And Kissed Him", "They Asked Each Other Of Their Welfare", "Moses Told His Father In Law", "The LORD Delivered Them", "Now I Know That The LORD Is Greater Than All Gods", "Jethro Took A Burnt Offering"],
+  "Exodus 18:13-18": ["Moses Sat To Judge The People", "The People Stood By Moses From The Morning Unto The Evening", "What Is This Thing That Thou Doest", "Why Sittest Thou Thyself Alone", "The People Come Unto Me To Enquire Of God", "I Do Make Them Know The Statutes Of God", "The Thing That Thou Doest Is Not Good", "Thou Wilt Surely Wear Away"],
+  "Exodus 18:19-24": ["Be Thou For The People To God-Ward", "Teach Them Ordinances And Laws", "Shew Them The Way Wherein They Must Walk", "Provide Out Of All The People Able Men", "Such As Fear God", "Men Of Truth, Hating Covetousness", "Rulers Of Thousands", "Moses Hearkened"],
+  "Exodus 18:25-27": ["Moses Chose Able Men", "Made Them Heads Over The People", "They Judged The People At All Seasons", "The Hard Causes They Brought Unto Moses", "Every Small Matter They Judged Themselves", "Moses Let His Father In Law Depart"],
+  "Exodus 19:1-6": ["In The Third Month", "They Came Into The Wilderness Of Sinai", "Israel Camped Before The Mount", "Moses Went Up Unto God", "Ye Have Seen What I Did Unto The Egyptians", "I Bare You On Eagles' Wings", "A Peculiar Treasure Unto Me", "A Kingdom Of Priests, And An Holy Nation"],
+  "Exodus 19:7-8": ["Moses Called For The Elders", "Laid Before Their Faces All These Words", "All The People Answered Together", "All That The LORD Hath Spoken We Will Do", "Moses Returned The Words Of The People"],
+  "Exodus 19:9-14": ["Lo, I Come Unto Thee In A Thick Cloud", "That The People May Hear", "Sanctify Them To Day And To Morrow", "Let Them Wash Their Clothes", "Be Ready Against The Third Day", "Set Bounds Unto The People", "Take Heed To Yourselves", "Moses Sanctified The People"],
+  "Exodus 19:15-20": ["Be Ready Against The Third Day", "There Were Thunders And Lightnings", "A Thick Cloud Upon The Mount", "The Voice Of The Trumpet Exceeding Loud", "All The People Trembled", "Mount Sinai Was Altogether On A Smoke", "The LORD Descended Upon It In Fire", "Moses Spake, And God Answered Him"],
+  "Exodus 19:21-25": ["Go Down, Charge The People", "Lest They Break Through Unto The LORD", "Let The Priests Also Sanctify Themselves", "The People Cannot Come Up", "Away, Get Thee Down", "Thou Shalt Come Up, Thou, And Aaron With Thee"],
+  "Exodus 20:1-3": ["God Spake All These Words", "I Am The LORD Thy God", "Which Have Brought Thee Out", "Out Of The House Of Bondage", "Thou Shalt Have No Other Gods Before Me"],
+  "Exodus 20:4-9": ["Thou Shalt Not Make Unto Thee Any Graven Image", "Thou Shalt Not Bow Down Thyself To Them", "I The LORD Thy God Am A Jealous God", "Shewing Mercy Unto Thousands", "Thou Shalt Not Take The Name Of The LORD Thy God In Vain", "Remember The Sabbath Day", "Six Days Shalt Thou Labour"],
+  "Exodus 20:10-11": ["The Seventh Day Is The Sabbath", "In It Thou Shalt Not Do Any Work", "Nor Thy Son, Nor Thy Daughter", "Nor Thy Manservant, Nor Thy Maidservant", "For In Six Days The LORD Made Heaven And Earth", "The LORD Blessed The Sabbath Day", "And Hallowed It"],
+  "Exodus 20:12-17": ["Honour Thy Father And Thy Mother", "Thou Shalt Not Kill", "Thou Shalt Not Commit Adultery", "Thou Shalt Not Steal", "Thou Shalt Not Bear False Witness", "Thou Shalt Not Covet", "Any Thing That Is Thy Neighbour's"],
+  "Exodus 20:18-23": ["All The People Saw The Thunderings", "They Removed, And Stood Afar Off", "Speak Thou With Us, And We Will Hear", "Let Not God Speak With Us, Lest We Die", "Fear Not", "That His Fear May Be Before Your Faces", "Ye Shall Not Make With Me Gods Of Silver"],
+  "Exodus 20:24-26": ["An Altar Of Earth Thou Shalt Make", "Thy Burnt Offerings", "In All Places Where I Record My Name", "I Will Come Unto Thee", "If Thou Wilt Make Me An Altar Of Stone", "Thou Shalt Not Build It Of Hewn Stone", "Neither Shalt Thou Go Up By Steps"],
+};
+
+function makeDay26PhraseCard(section: PersonalExodusPhraseSectionInput, title: string): [string, string] {
+  return phrase(`📌 ${title}`, [
+    `${section.reference} is showing Israel learning life with God after rescue: thirst, battle, shared leadership, holy covenant, and commanded worship.`,
+    `In ${section.title}, this phrase carries a real piece of the passage, not a generic comment card.`,
+    "A beginner should slow down here because Exodus is moving from escape into formation.",
+    "This phrase comes directly from the Bible text, so the note stays close to what the verse actually says.",
+    "The LORD is teaching His people to trust His presence, receive His order, and live as a holy people.",
+  ]);
+}
+
+function deepenDay26PhraseCards(section: PersonalExodusPhraseSectionInput): PersonalExodusPhraseSectionInput {
+  const titles = DAY_26_PHRASE_TITLES[section.reference];
+  if (!titles) return section;
+
+  return {
+    ...section,
+    phrases: titles.map((title) => makeDay26PhraseCard(section, title)),
+  };
+}
+
+const EXODUS_11_20_MOBILE_FORMAT_CUES: Record<number, string[]> = {
+  11: ["🌙 The final plague is announced.", "👶 Firstborn judgment answers Pharaoh's cruelty.", "🛡️ God distinguishes His people."],
+  12: ["🐑 Passover teaches shelter through blood.", "🚪 Rescue is received household by household.", "🏃 Israel leaves ready for freedom."],
+  13: ["🧠 Redeemed people must remember.", "👶 The firstborn belongs to the LORD.", "☁️ God leads His people by presence."],
+  14: ["🌊 The sea looks impossible.", "🛡️ The LORD fights for Israel.", "👀 Deliverance becomes something the people see."],
+  15: ["🎶 Rescue turns into worship.", "💧 The wilderness tests trust quickly.", "🩺 The LORD heals and provides."],
+  16: ["🍞 Daily bread trains daily trust.", "📏 God gives enough, not hoarding.", "🛑 Sabbath rest teaches freedom from slave rhythms."],
+  17: ["💧 Need exposes trust.", "🙌 Victory depends on the LORD.", "🤝 Weary leaders need faithful support."],
+  18: ["👂 Jethro listens to what God has done.", "⚖️ Wise leadership shares the load.", "🧭 God's people need order, not burnout."],
+  19: ["⛰️ Sinai is holy ground for a rescued people.", "🧼 The people prepare before God descends.", "📜 Covenant begins with grace: God carried them first."],
+  20: ["📜 God's commands shape free people.", "🙌 Worship belongs to the LORD alone.", "⚖️ Love for God and neighbor becomes covenant life."],
+};
+
+function hasExodusElevenToTwentyVisualList(content: string) {
+  return content
+    .split(/\n+/)
+    .filter((line) => line.trim().length > 0)
+    .some((line) => /^[^\w\s"']/.test(line.trim()));
+}
+
+function formatExodusElevenToTwentyPhraseExplanation(section: PersonalExodusPhraseSectionInput, content: string) {
+  const cleaned = content
+    .replace(/not filler/g, "part of the story")
+    .replace(/not a generic comment card/g, "a real piece of the passage")
+    .replace(/this phrase carries a real piece of the passage, a real piece of the passage/g, "this phrase carries a real piece of the passage");
+  if (section.chapter < 11 || section.chapter > 20 || hasExodusElevenToTwentyVisualList(cleaned)) {
+    return cleaned;
+  }
+
+  const blocks = cleaned
+    .split(/\n{2,}/)
+    .map((block) => block.trim())
+    .filter(Boolean);
+  const cues = EXODUS_11_20_MOBILE_FORMAT_CUES[section.chapter];
+
+  if (!cues || blocks.length < 2) {
+    return blocks.join("\n\n");
+  }
+
+  const opening = blocks.slice(0, Math.min(2, blocks.length));
+  const closing = blocks.slice(opening.length);
+
+  return note([
+    ...opening,
+    "What to notice:",
+    ...cues,
+    ...closing,
+  ]);
+}
+
+function formatExodusElevenToTwentySectionExplanations(sections: PersonalExodusPhraseSectionInput[]) {
+  return sections.map((section) => ({
+    ...section,
+    phrases: section.phrases.map(([title, content]) => [
+      title,
+      formatExodusElevenToTwentyPhraseExplanation(section, content),
+    ] as [string, string]),
+  }));
+}
+
+export const EXODUS_11_20_PERSONAL_SECTIONS: PersonalExodusPhraseSectionInput[] = formatExodusElevenToTwentySectionExplanations([
+  ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_TWENTY_FOUR_DEEP_STUDY_SECTIONS, [11, 12], "🐑").map(deepenDay24Exodus11To12PhraseCards),
+  ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_TWENTY_FIVE_DEEP_STUDY_SECTIONS, [13, 14, 15, 16], "🌊").map(deepenDay25PhraseCards),
+  ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_TWENTY_SIX_DEEP_STUDY_SECTIONS, [17, 18, 19, 20], "⛰️").map(deepenDay26PhraseCards),
   ...RAW_EXODUS_11_20_PERSONAL_SECTIONS.filter((section) => section.chapter < 11 || section.chapter > 20),
-];
+]);

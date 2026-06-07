@@ -471,9 +471,279 @@ function makeExodusSectionsFromDeepStudy(
   });
 }
 
-export const EXODUS_2_10_PERSONAL_SECTIONS: PersonalExodusPhraseSectionInput[] = [
-  ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_TWENTY_TWO_DEEP_STUDY_SECTIONS, [1, 2, 3, 4], "🔥").map(ensureBeginnerExodusPhraseDepth),
-  ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_TWENTY_THREE_DEEP_STUDY_SECTIONS, [5, 6, 7, 8], "⚖️").map(ensureBeginnerExodusPhraseDepth),
-  ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_TWENTY_FOUR_DEEP_STUDY_SECTIONS, [9, 10], "🌩️").map(ensureBeginnerExodusPhraseDepth),
+const DAY_22_REAL_PHRASE_TITLES: Record<string, string[]> = {
+  "Exodus 1:1-6": ["These Are The Names", "Which Came Into Egypt", "Every Man And His Household", "Seventy Souls", "Joseph Was In Egypt Already", "Joseph Died, And All His Brethren"],
+  "Exodus 1:7-7": ["The Children Of Israel Were Fruitful", "Increased Abundantly", "Waxed Exceeding Mighty", "The Land Was Filled With Them"],
+  "Exodus 1:8-13": ["A New King Over Egypt", "Which Knew Not Joseph", "More And Mightier Than We", "Let Us Deal Wisely With Them", "Taskmasters To Afflict Them", "Treasure Cities, Pithom And Raamses", "The More They Afflicted Them, The More They Multiplied"],
+  "Exodus 1:14-14": ["Made Their Lives Bitter", "Hard Bondage", "Morter And In Brick", "All Manner Of Service In The Field", "All Their Service Was With Rigour"],
+  "Exodus 1:15-20": ["The Hebrew Midwives", "Shiphrah, And The Name Of The Other Puah", "Upon The Stools", "If It Be A Son, Then Ye Shall Kill Him", "If It Be A Daughter, Then She Shall Live", "The Midwives Feared God", "Did Not As The King Of Egypt Commanded", "The People Multiplied, And Waxed Very Mighty"],
+  "Exodus 1:21-22": ["He Made Them Houses", "Pharaoh Charged All His People", "Every Son That Is Born Ye Shall Cast Into The River", "Every Daughter Ye Shall Save Alive"],
+  "Exodus 2:1-6": ["A Man Of The House Of Levi", "Bare A Son", "He Was A Goodly Child", "Hid Him Three Months", "An Ark Of Bulrushes", "Slime And With Pitch", "His Sister Stood Afar Off", "The Babe Wept"],
+  "Exodus 2:7-10": ["Shall I Go And Call To Thee A Nurse", "Nurse It For Me", "I Will Give Thee Thy Wages", "The Child Grew", "He Became Her Son", "She Called His Name Moses"],
+  "Exodus 2:11-16": ["When Moses Was Grown", "Looked On Their Burdens", "An Egyptian Smiting An Hebrew", "He Looked This Way And That Way", "He Slew The Egyptian", "Who Made Thee A Prince And A Judge", "Moses Feared", "Dwelt In The Land Of Midian"],
+  "Exodus 2:17-22": ["Came And Drew Water", "The Shepherds Came And Drove Them Away", "Moses Stood Up And Helped Them", "Why Is It That Ye Are Come So Soon To Day", "An Egyptian Delivered Us", "That He May Eat Bread", "Zipporah His Daughter", "Gershom"],
+  "Exodus 2:23-25": ["In Process Of Time", "The King Of Egypt Died", "Sighed By Reason Of The Bondage", "Their Cry Came Up Unto God", "God Heard Their Groaning", "God Remembered His Covenant", "God Looked Upon The Children Of Israel", "God Had Respect Unto Them"],
+  "Exodus 3:1-6": ["Moses Kept The Flock", "Backside Of The Desert", "Horeb The Mountain Of God", "The Angel Of The LORD Appeared", "The Bush Burned With Fire, And The Bush Was Not Consumed", "I Will Now Turn Aside", "Put Off Thy Shoes From Off Thy Feet", "The God Of Abraham, The God Of Isaac, And The God Of Jacob"],
+  "Exodus 3:7-12": ["I Have Surely Seen The Affliction", "I Have Heard Their Cry", "I Know Their Sorrows", "I Am Come Down To Deliver Them", "A Good Land And A Large", "A Land Flowing With Milk And Honey", "I Will Send Thee Unto Pharaoh", "Who Am I", "Certainly I Will Be With Thee"],
+  "Exodus 3:13-18": ["What Is His Name", "I AM THAT I AM", "I AM Hath Sent Me Unto You", "This Is My Name For Ever", "Go, And Gather The Elders Of Israel", "I Have Surely Visited You", "I Will Bring You Up Out Of The Affliction Of Egypt", "They Shall Hearken To Thy Voice"],
+  "Exodus 3:19-22": ["The King Of Egypt Will Not Let You Go", "Not By A Mighty Hand", "I Will Stretch Out My Hand", "Smite Egypt With All My Wonders", "I Will Give This People Favour", "Jewels Of Silver, And Jewels Of Gold", "Raiment", "Ye Shall Spoil The Egyptians"],
+  "Exodus 4:1-6": ["They Will Not Believe Me", "Nor Hearken Unto My Voice", "What Is That In Thine Hand", "It Became A Serpent", "Put Forth Thine Hand, And Take It By The Tail", "That They May Believe", "Put Now Thine Hand Into Thy Bosom"],
+  "Exodus 4:7-12": ["It Was Turned Again As His Other Flesh", "If They Will Not Believe Also These Two Signs", "Water Of The River", "Shall Become Blood Upon The Dry Land", "I Am Not Eloquent", "Slow Of Speech, And Of A Slow Tongue", "Who Hath Made Man's Mouth", "I Will Be With Thy Mouth"],
+  "Exodus 4:13-17": ["Send, I Pray Thee, By The Hand Of Him Whom Thou Wilt Send", "The Anger Of The LORD Was Kindled", "Aaron The Levite Thy Brother", "He Can Speak Well", "He Will Be Glad In His Heart", "Put Words In His Mouth", "Thou Shalt Take This Rod In Thine Hand"],
+  "Exodus 4:18-23": ["Let Me Go, I Pray Thee", "Go In Peace", "All The Men Are Dead Which Sought Thy Life", "Moses Took His Wife And His Sons", "The Rod Of God", "Israel Is My Son, Even My Firstborn", "Let My Son Go, That He May Serve Me"],
+  "Exodus 4:24-29": ["By The Way In The Inn", "The LORD Met Him, And Sought To Kill Him", "Zipporah Took A Sharp Stone", "Cut Off The Foreskin Of Her Son", "A Bloody Husband Art Thou To Me", "Go Into The Wilderness To Meet Moses", "He Met Him In The Mount Of God, And Kissed Him"],
+  "Exodus 4:30-31": ["Aaron Spake All The Words", "Did The Signs In The Sight Of The People", "The People Believed", "The LORD Had Visited The Children Of Israel", "He Had Looked Upon Their Affliction", "They Bowed Their Heads And Worshipped"],
+};
+
+const DAY_22_SECTION_EXPLANATIONS: Record<string, string[]> = {
+  "Exodus 1:1-6": ["Exodus begins by tying the rescue story back to Genesis.", "Jacob's family came to Egypt through Joseph, but now that first generation is passing away.", "The names remind the reader that God is still dealing with the same promise family.", "Before bondage is described, Exodus makes sure we know whose story this is."],
+  "Exodus 1:7-7": ["This verse shows God's promise multiplying right in Egypt.", "The family becomes fruitful, strong, and visible across the land.", "Pharaoh will treat that growth as a threat, but the reader should first see it as faithfulness.", "God is growing His people before He brings them out."],
+  "Exodus 1:8-13": ["The new king reads Israel's growth through fear instead of gratitude.", "He forgets Joseph and turns blessing into a political problem.", "The words about wisdom, taskmasters, and treasure cities show oppression becoming organized policy.", "Pharaoh tries to crush the promise, but the more he afflicts Israel, the more God multiplies them."],
+  "Exodus 1:14-14": ["This verse slows down to show what slavery felt like.", "Bitter lives, hard bondage, brickwork, field service, and rigour make the suffering concrete.", "A beginner should not picture vague sadness here; this is exhausting forced labor.", "God's coming rescue answers real cruelty in real bodies."],
+  "Exodus 1:15-20": ["Pharaoh's oppression moves from labor to the murder of children.", "The midwives stand in holy courage because they fear God more than the king.", "Their names are remembered because their hidden faithfulness protects life.", "The section shows that resistance to evil can begin in a birth room before it ever reaches a palace."],
+  "Exodus 1:21-22": ["God honors the midwives, while Pharaoh widens his death command to the whole nation.", "The river is meant to become a grave for Hebrew sons.", "That makes the next chapter powerful: God will preserve Moses through the very waters Pharaoh chose for death.", "The oppressor's weapon is about to become God's hiding place."],
+  "Exodus 2:1-6": ["Moses is born under a death sentence, and his mother acts with careful courage.", "The ark of bulrushes, pitch, river, watching sister, and crying baby all matter.", "Deliverance begins in weakness, not spectacle.", "God is preserving the future deliverer through a mother, a sister, a basket, and compassion."],
+  "Exodus 2:7-10": ["Moses' sister speaks wisely, and Pharaoh's daughter unknowingly gives Moses back to his own mother for nursing.", "The wages, adoption, and naming show holy irony at Pharaoh's expense.", "Moses grows with Hebrew roots and Egyptian access.", "The child drawn from water will later lead Israel through water."],
+  "Exodus 2:11-16": ["Moses grows up and sees the burdens of his people, but his first attempt to act brings fear and exile.", "The killing of the Egyptian shows zeal without God's sending yet.", "The question about prince and judge exposes the authority issue.", "Moses will become a deliverer, but not by self-appointment."],
+  "Exodus 2:17-22": ["In Midian, Moses protects vulnerable women without repeating the murder of Egypt.", "The well scene shows his strength being reshaped into service.", "Hospitality, marriage, and Gershom's name show Moses becoming a stranger in a strange land.", "God is preparing a shepherd for a people who will soon live on the road."],
+  "Exodus 2:23-25": ["The chapter ends by moving from Moses' hidden life to Israel's groaning.", "The verbs are the key: God heard, remembered, looked, and knew.", "Remembered does not mean God forgot; it means He is moving to act on His covenant.", "The rescue starts in God's faithful attention before Moses ever returns."],
+  "Exodus 3:1-6": ["God meets Moses in ordinary shepherd work on the far side of the desert.", "The burning bush draws Moses into holy ground and covenant revelation.", "The God who speaks is the God of Abraham, Isaac, and Jacob.", "Exodus is showing that the coming rescue is rooted in Genesis promises."],
+  "Exodus 3:7-12": ["God names Israel's suffering with tenderness and detail.", "He has seen, heard, and known their sorrow, and now He has come down to deliver.", "The rescue has both an exit from Egypt and an entrance into a good land.", "Moses feels small, but God's answer is His presence."],
+  "Exodus 3:13-18": ["Moses needs to know how to speak about the God who sends him.", "I AM reveals God's self-existent, unshakable identity.", "The message goes first to Israel's elders so the oppressed people hear hope.", "Joseph's old promise that God would visit His people is now becoming reality."],
+  "Exodus 3:19-22": ["God prepares Moses for Pharaoh's resistance before it happens.", "The mighty hand, wonders, favor, silver, gold, and raiment show that deliverance will be public and provided for.", "Israel will not leave empty after generations of exploitation.", "God's justice reverses the flow of power and provision."],
+  "Exodus 4:1-6": ["Moses fears the people will not believe him, so God gives signs.", "The rod, serpent, hand, and healing show that God's power rules creation and bodies.", "The signs are not tricks; they serve the message that the LORD has appeared.", "God meets Moses' fear with evidence and command."],
+  "Exodus 4:7-12": ["God adds more signs and then answers Moses' fear about speaking.", "The Nile-water sign previews judgment on Egypt's river.", "Moses' speech weakness is real, but the Maker of the mouth is greater.", "God promises help at the exact place Moses feels inadequate."],
+  "Exodus 4:13-17": ["Moses' hesitation becomes refusal, and God's anger shows the mission is serious.", "Aaron is given as a merciful helper, not as an excuse for Moses to quit.", "The brother, the words, and the rod all become part of God's provision.", "God supports the servant while still sending him."],
+  "Exodus 4:18-23": ["Moses begins the return to Egypt with family, permission, and the rod of God.", "God tells him the old threat is gone but Pharaoh's hard heart remains ahead.", "Israel is called God's firstborn son, which makes the conflict deeply personal.", "Freedom is for serving the LORD, not merely escaping Pharaoh."],
+  "Exodus 4:24-29": ["This difficult travel scene shows that Moses' household must stand under God's covenant before he leads covenant Israel.", "Zipporah acts quickly in a tense and bloody moment tied to circumcision.", "Then God sends Aaron exactly as promised.", "The mission moves forward with covenant seriousness and brotherly help."],
+  "Exodus 4:30-31": ["Aaron speaks, the signs are shown, and the people believe.", "Before Pharaoh releases them, Israel already hears that God has visited and seen their affliction.", "Their worship comes while they are still in bondage.", "Hope begins when God's word is received, even before the rescue is complete."],
+};
+
+function makeDay22PhraseCard(section: PersonalExodusPhraseSectionInput, title: string): [string, string] {
+  const [scene, meaning, beginner, lesson] = DAY_22_SECTION_EXPLANATIONS[section.reference] ?? [
+    `This phrase belongs to ${section.reference}.`,
+    "It helps explain the pressure, promise, and rescue movement in Exodus.",
+    "A beginner should slow down here instead of treating the words as filler.",
+    "The LORD is showing that Pharaoh is not ultimate and His people are not forgotten.",
+  ];
+
+  return phrase(`📌 ${title}`, [
+    scene,
+    meaning,
+    beginner,
+    "This phrase comes directly from the passage, so it helps the reader stay close to the Bible text.",
+    lesson,
+  ]);
+}
+
+function deepenDay22PhraseCards(section: PersonalExodusPhraseSectionInput): PersonalExodusPhraseSectionInput {
+  const titles = DAY_22_REAL_PHRASE_TITLES[section.reference];
+  if (!titles) return section;
+
+  return {
+    ...section,
+    phrases: titles.map((title) => makeDay22PhraseCard(section, title)),
+  };
+}
+
+const DAY_23_REAL_PHRASE_TITLES: Record<string, string[]> = {
+  "Exodus 5:1-6": ["Thus Saith The LORD God Of Israel", "Let My People Go", "Who Is The LORD", "I Know Not The LORD", "Neither Will I Let Israel Go", "The God Of The Hebrews Hath Met With Us", "Let Us Go, We Pray Thee"],
+  "Exodus 5:7-9": ["Ye Shall No More Give The People Straw", "Let Them Go And Gather Straw For Themselves", "The Tale Of The Bricks", "Ye Shall Not Diminish Ought Thereof", "They Be Idle", "Let There More Work Be Laid Upon The Men"],
+  "Exodus 5:10-15": ["Thus Saith Pharaoh", "I Will Not Give You Straw", "Go Ye, Get You Straw Where Ye Can Find It", "Yet Not Ought Of Your Work Shall Be Diminished", "The People Were Scattered Abroad", "The Taskmasters Hasted Them", "The Officers Of The Children Of Israel Were Beaten"],
+  "Exodus 5:16-21": ["There Is No Straw Given Unto Thy Servants", "Thy Servants Are Beaten", "Ye Are Idle, Ye Are Idle", "Go Therefore Now, And Work", "They Were In Evil Case", "The LORD Look Upon You, And Judge", "Ye Have Made Our Savour To Be Abhorred"],
+  "Exodus 5:22-23": ["Moses Returned Unto The LORD", "Lord, Wherefore Hast Thou So Evil Entreated This People", "Why Is It That Thou Hast Sent Me", "Since I Came To Pharaoh", "He Hath Done Evil To This People", "Neither Hast Thou Delivered Thy People At All"],
+  "Exodus 6:1-6": ["Now Shalt Thou See What I Will Do", "With A Strong Hand", "I Am The LORD", "By My Name JEHOVAH", "I Have Also Established My Covenant", "I Have Also Heard The Groaning", "I Will Bring You Out From Under The Burdens"],
+  "Exodus 6:7-12": ["I Will Take You To Me For A People", "I Will Be To You A God", "Ye Shall Know That I Am The LORD", "I Will Bring You In Unto The Land", "They Hearkened Not Unto Moses", "Anguish Of Spirit", "Cruel Bondage", "Uncircumcised Lips"],
+  "Exodus 6:13-13": ["Unto Moses And Unto Aaron", "Gave Them A Charge", "Unto The Children Of Israel", "Unto Pharaoh King Of Egypt", "To Bring The Children Of Israel Out"],
+  "Exodus 6:14-19": ["These Be The Heads Of Their Fathers' Houses", "The Sons Of Reuben", "The Sons Of Simeon", "The Sons Of Levi", "According To Their Generations", "The Years Of The Life Of Levi"],
+  "Exodus 6:20-25": ["Amram Took Him Jochebed His Father's Sister To Wife", "She Bare Him Aaron And Moses", "The Years Of The Life Of Amram", "Eleazar Aaron's Son", "Took Him One Of The Daughters Of Putiel", "These Are The Heads Of The Fathers Of The Levites"],
+  "Exodus 6:26-30": ["These Are That Aaron And Moses", "Bring Out The Children Of Israel", "According To Their Armies", "These Are They Which Spake To Pharaoh", "I Am The LORD", "Speak Thou Unto Pharaoh", "I Am Of Uncircumcised Lips"],
+  "Exodus 7:1-6": ["I Have Made Thee A God To Pharaoh", "Aaron Thy Brother Shall Be Thy Prophet", "Thou Shalt Speak All That I Command Thee", "I Will Harden Pharaoh's Heart", "Multiply My Signs And My Wonders", "The Egyptians Shall Know That I Am The LORD", "Moses And Aaron Did As The LORD Commanded"],
+  "Exodus 7:7-12": ["Moses Was Fourscore Years Old", "Aaron Fourscore And Three Years Old", "Shew A Miracle For You", "Take Thy Rod", "It Shall Become A Serpent", "The Magicians Of Egypt", "Aaron's Rod Swallowed Up Their Rods"],
+  "Exodus 7:13-13": ["He Hardened Pharaoh's Heart", "He Hearkened Not Unto Them", "As The LORD Had Said", "The Sign Was Clear", "Pharaoh Still Refused"],
+  "Exodus 7:14-19": ["Pharaoh's Heart Is Hardened", "He Refuseth To Let The People Go", "Get Thee Unto Pharaoh In The Morning", "The Rod Which Was Turned To A Serpent", "In This Thou Shalt Know That I Am The LORD", "The Waters Which Are In The River", "They Shall Be Turned To Blood"],
+  "Exodus 7:20-25": ["He Lifted Up The Rod", "Smote The Waters That Were In The River", "All The Waters Were Turned To Blood", "The Fish That Was In The River Died", "The River Stank", "The Magicians Of Egypt Did So", "Pharaoh Turned And Went Into His House"],
+  "Exodus 8:1-6": ["Let My People Go, That They May Serve Me", "If Thou Refuse To Let Them Go", "I Will Smite All Thy Borders With Frogs", "The River Shall Bring Forth Frogs Abundantly", "Into Thine House", "Into Thy Bedchamber", "The Frogs Came Up"],
+  "Exodus 8:7-12": ["The Magicians Did So", "Intreat The LORD", "That He May Take Away The Frogs", "Glory Over Me", "To Morrow", "That Thou Mayest Know", "There Is None Like Unto The LORD Our God"],
+  "Exodus 8:13-15": ["The Frogs Died Out", "They Gathered Them Together Upon Heaps", "The Land Stank", "When Pharaoh Saw That There Was Respite", "He Hardened His Heart", "Hearkened Not Unto Them"],
+  "Exodus 8:16-19": ["Smite The Dust Of The Land", "It May Become Lice", "In Man, And In Beast", "The Magicians Did So With Their Enchantments", "But They Could Not", "This Is The Finger Of God", "Pharaoh's Heart Was Hardened"],
+  "Exodus 8:20-25": ["Rise Up Early In The Morning", "Let My People Go, That They May Serve Me", "Swarms Of Flies", "The Land Was Corrupted", "I Will Sever In That Day The Land Of Goshen", "No Swarms Of Flies Shall Be There", "I Will Put A Division Between My People And Thy People"],
+  "Exodus 8:26-31": ["It Is Not Meet So To Do", "We Shall Sacrifice The Abomination Of The Egyptians", "Three Days' Journey Into The Wilderness", "Only Ye Shall Not Go Very Far Away", "Intreat For Me", "Let Not Pharaoh Deal Deceitfully Any More", "There Remained Not One"],
+  "Exodus 8:32-32": ["Pharaoh Hardened His Heart At This Time Also", "Neither Would He Let The People Go", "Relief Did Not Become Repentance", "The Pattern Continues"],
+};
+
+const DAY_23_SECTION_EXPLANATIONS: Record<string, string[]> = {
+  "Exodus 5:1-6": ["Moses and Aaron stand before Pharaoh with God's command.", "Pharaoh's question, 'Who is the LORD?' becomes the issue the plagues will answer.", "The request is about worship, not laziness or politics.", "Exodus is confronting Pharaoh's control with the LORD's claim over His people."],
+  "Exodus 5:7-9": ["Pharaoh answers God's word by making Israel's labor harder.", "No straw, same brick quota, and more work show cruelty hidden inside administration.", "He wants exhaustion to drown out hope.", "Oppression often tries to make people too tired to listen to God's promise."],
+  "Exodus 5:10-15": ["The taskmasters and officers carry Pharaoh's harsh order into the work sites.", "The people scatter for straw but the quota remains unchanged.", "The beating of Israel's officers shows how Pharaoh turns pressure inward among the oppressed.", "This section makes the cost of Pharaoh's refusal painfully concrete."],
+  "Exodus 5:16-21": ["Israel's officers appeal to Pharaoh and are blamed instead of helped.", "Then they turn on Moses and Aaron because obedience has made life harder at first.", "Deliverance has begun, but the first visible result is pain.", "God's rescue can intensify conflict before freedom appears."],
+  "Exodus 5:22-23": ["Moses brings his confusion directly to the LORD.", "He does not hide that the mission looks like failure.", "His prayer is raw, frustrated, and honest.", "Faithful servants can ask hard questions when obedience becomes painful."],
+  "Exodus 6:1-6": ["God answers Moses by repeating who He is and what He will do.", "The covenant, the groaning, the burdens, and the strong hand all belong together.", "God's name is the foundation of rescue.", "When Moses sees only failure, the LORD restates His promise."],
+  "Exodus 6:7-12": ["God gives repeated 'I will' promises, but Israel cannot hear because their spirit is crushed.", "Anguish of spirit and cruel bondage explain why hope feels hard to receive.", "Moses also feels inadequate and brings up his uncircumcised lips again.", "God keeps speaking even when people are too hurt to listen well."],
+  "Exodus 6:13-13": ["This single verse resets the mission with Moses and Aaron together.", "God gives them a charge toward Israel and Pharaoh.", "The rescue is still moving after discouragement.", "God's command stands when human confidence collapses."],
+  "Exodus 6:14-19": ["The genealogy locates Moses and Aaron inside Israel's family story.", "Reuben, Simeon, and Levi connect Exodus back to Jacob's sons.", "These names show the deliverers coming from the covenant people.", "God's rescue has roots in a real family line."],
+  "Exodus 6:20-25": ["The genealogy narrows to the Levite family of Moses and Aaron.", "Parents, sons, marriages, and priestly descendants are named.", "God works through actual households, not vague heroes.", "The future priestly line is already being placed into the story."],
+  "Exodus 6:26-30": ["The genealogy closes by identifying the same Moses and Aaron who speak to Pharaoh.", "The repeated wording connects the family list to the mission.", "Moses' weakness is repeated too, so the focus stays on God's command.", "God uses named, limited people to carry His word."],
+  "Exodus 7:1-6": ["God defines the roles of Moses and Aaron before the signs intensify.", "Moses will represent God's authority to Pharaoh, and Aaron will speak as prophet.", "Pharaoh's hard heart is expected, not surprising.", "The purpose is that Egypt will know the LORD when His hand acts."],
+  "Exodus 7:7-12": ["Moses and Aaron are old when the confrontation begins, and the rod sign is given before Pharaoh.", "Egypt's magicians imitate the sign, but Aaron's rod swallows theirs.", "Counterfeit power is exposed as lesser.", "The contest is not equal."],
+  "Exodus 7:13-13": ["After the rod sign, Pharaoh still refuses to listen.", "Evidence alone does not soften a hardened heart.", "The LORD had already said this would happen.", "Resistance does not mean God's word failed."],
+  "Exodus 7:14-19": ["The first plague targets the Nile, Egypt's life source and the river Pharaoh used for death.", "God tells Moses to confront Pharaoh in the morning with the rod.", "The water turning to blood reveals that the LORD rules what Egypt trusts.", "Judgment begins where Egypt felt secure."],
+  "Exodus 7:20-25": ["The Nile turns to blood, fish die, the river stinks, and Egypt cannot drink.", "The plague touches daily life, food, smell, water, and survival.", "The magicians imitate enough to harden Pharaoh but cannot heal the river.", "Power that only copies judgment cannot save."],
+  "Exodus 8:1-6": ["God repeats the command to let His people go serve Him.", "When Pharaoh refuses, frogs invade Egypt's borders, houses, beds, ovens, and people.", "The plague is intentionally intrusive and humiliating.", "God can make creation unsettle the palace that defies Him."],
+  "Exodus 8:7-12": ["The magicians imitate frogs, but Pharaoh needs Moses to pray for removal.", "This exposes the difference between imitation and deliverance.", "Moses lets Pharaoh name the time so he will know there is none like the LORD.", "God's power is not only to strike but also to remove."],
+  "Exodus 8:13-15": ["The frogs die, the land stinks, and Pharaoh receives relief.", "But relief does not become repentance.", "As soon as the pressure lifts, Pharaoh hardens his heart again.", "There is a difference between wanting pain gone and surrendering to God."],
+  "Exodus 8:16-19": ["The dust becomes lice on people and animals, and Egypt's magicians reach their limit.", "Their confession, 'This is the finger of God,' is a major moment.", "Even Egypt's experts recognize a power beyond them.", "Pharaoh still refuses, showing that the problem is not lack of evidence."],
+  "Exodus 8:20-25": ["The flies bring another confrontation, but this time God marks out Goshen.", "The distinction shows that Israel belongs to the LORD even while still living in Egypt.", "God's judgment can be precise, not chaotic.", "The plagues reveal both judgment against Pharaoh and protection over God's people."],
+  "Exodus 8:26-31": ["Pharaoh begins bargaining with partial obedience, but Moses refuses worship on Pharaoh's terms.", "The three days' journey matters because God defines the worship He requires.", "Moses warns Pharaoh not to deal deceitfully again.", "Half-obedience is still control when Pharaoh keeps setting the limits."],
+  "Exodus 8:32-32": ["The final verse shows the pattern continuing.", "Pharaoh receives relief and hardens his heart again.", "The people are still not released.", "Repeated mercy can be rejected by a heart committed to control."],
+};
+
+function makeDay23PhraseCard(section: PersonalExodusPhraseSectionInput, title: string): [string, string] {
+  const [scene, meaning, beginner, lesson] = DAY_23_SECTION_EXPLANATIONS[section.reference] ?? [
+    `This phrase belongs to ${section.reference}.`,
+    "It helps explain the pressure, signs, hard hearts, and rescue movement in Exodus.",
+    "A beginner should slow down here instead of treating the words as filler.",
+    "The LORD is confronting Pharaoh and teaching Israel who He is.",
+  ];
+
+  return phrase(`📌 ${title}`, [
+    scene,
+    meaning,
+    beginner,
+    "This phrase comes directly from the passage, so it keeps the note anchored in the Bible text.",
+    lesson,
+  ]);
+}
+
+function deepenDay23PhraseCards(section: PersonalExodusPhraseSectionInput): PersonalExodusPhraseSectionInput {
+  const titles = DAY_23_REAL_PHRASE_TITLES[section.reference];
+  if (!titles) return section;
+
+  return {
+    ...section,
+    phrases: titles.map((title) => makeDay23PhraseCard(section, title)),
+  };
+}
+
+const DAY_24_EXODUS_9_10_PHRASE_TITLES: Record<string, string[]> = {
+  "Exodus 9:1-6": ["Let My People Go, That They May Serve Me", "The Hand Of The LORD", "Upon Thy Cattle", "The LORD Shall Sever", "There Shall Nothing Die", "Tomorrow The LORD Shall Do This Thing"],
+  "Exodus 9:7-7": ["Pharaoh Sent", "There Was Not One Of The Cattle Of The Israelites Dead", "The Heart Of Pharaoh Was Hardened", "He Did Not Let The People Go"],
+  "Exodus 9:8-12": ["Take To You Handfuls Of Ashes", "Sprinkle It Toward The Heaven", "A Boil Breaking Forth", "Upon Man, And Upon Beast", "The Magicians Could Not Stand", "The LORD Hardened The Heart Of Pharaoh"],
+  "Exodus 9:13-18": ["Rise Up Early In The Morning", "All My Plagues Upon Thine Heart", "That Thou Mayest Know", "There Is None Like Me In All The Earth", "For This Cause Have I Raised Thee Up", "That My Name May Be Declared Throughout All The Earth", "Tomorrow About This Time"],
+  "Exodus 9:19-24": ["Send Therefore Now", "Gather Thy Cattle", "He That Feared The Word Of The LORD", "He That Regarded Not The Word Of The LORD", "Stretch Forth Thine Hand Toward Heaven", "Hail, And Fire Mingled With The Hail", "Such As There Was None Like It"],
+  "Exodus 9:25-30": ["The Hail Smote Throughout All The Land Of Egypt", "Only In The Land Of Goshen", "I Have Sinned This Time", "The LORD Is Righteous", "Intreat The LORD", "The Thunder Shall Cease", "I Know That Ye Will Not Yet Fear The LORD God"],
+  "Exodus 9:31-35": ["The Flax And The Barley Was Smitten", "The Wheat And The Rye Were Not Smitten", "When Pharaoh Saw", "He Sinned Yet More", "Hardened His Heart", "As The LORD Had Spoken By Moses"],
+  "Exodus 10:1-6": ["Go In Unto Pharaoh", "I Have Hardened His Heart", "That I Might Shew These My Signs", "Tell In The Ears Of Thy Son", "That Ye May Know", "How Long Wilt Thou Refuse To Humble Thyself", "Tomorrow Will I Bring The Locusts"],
+  "Exodus 10:7-12": ["How Long Shall This Man Be A Snare Unto Us", "Knowest Thou Not Yet That Egypt Is Destroyed", "Who Are They That Shall Go", "We Will Go With Our Young And With Our Old", "Go Now Ye That Are Men", "They Were Driven Out From Pharaoh's Presence", "Stretch Out Thine Hand Over The Land Of Egypt"],
+  "Exodus 10:13-18": ["The LORD Brought An East Wind", "The Locusts Went Up Over All The Land", "Before Them There Were No Such Locusts", "They Covered The Face Of The Whole Earth", "There Remained Not Any Green Thing", "I Have Sinned Against The LORD Your God", "Forgive, I Pray Thee"],
+  "Exodus 10:19-20": ["The LORD Turned A Mighty Strong West Wind", "Cast Them Into The Red Sea", "There Remained Not One Locust", "The LORD Hardened Pharaoh's Heart", "He Would Not Let The Children Of Israel Go"],
+  "Exodus 10:21-26": ["Darkness Which May Be Felt", "There Was A Thick Darkness", "They Saw Not One Another", "All The Children Of Israel Had Light", "Only Let Your Flocks And Your Herds Be Stayed", "There Shall Not An Hoof Be Left Behind", "We Know Not With What We Must Serve The LORD"],
+  "Exodus 10:27-29": ["The LORD Hardened Pharaoh's Heart", "He Would Not Let Them Go", "Get Thee From Me", "Take Heed To Thyself", "See My Face No More", "Thou Hast Spoken Well", "I Will See Thy Face Again No More"],
+};
+
+const DAY_24_EXODUS_9_10_EXPLANATIONS: Record<string, string[]> = {
+  "Exodus 9:1-6": ["The livestock plague moves judgment into Egypt's economy, transport, food, and daily life.", "God also makes a clear distinction between Egypt's cattle and Israel's cattle.", "The repeated command is still about worship: let My people go, that they may serve Me.", "The LORD judges Pharaoh precisely while preserving His people."],
+  "Exodus 9:7-7": ["Pharaoh investigates the distinction and finds Israel's livestock untouched.", "The evidence is clear, but his heart remains hard.", "This one verse shows that information alone does not create repentance.", "A hard heart can inspect mercy and still refuse God."],
+  "Exodus 9:8-12": ["The ashes become boils on people and animals, and Egypt's magicians cannot even stand.", "The plague reaches bodies directly and humiliates counterfeit spiritual power.", "The furnace and ashes connect judgment to Egypt's world of labor and oppression.", "The conflict keeps exposing Pharaoh's power as powerless before the LORD."],
+  "Exodus 9:13-18": ["God warns Pharaoh that the plagues are aimed at his heart and at the knowledge of God's name.", "The LORD says He raised Pharaoh up so His power and name would be declared through the earth.", "This does not make Pharaoh innocent; it shows God ruling even over Pharaoh's resistance.", "The battle is about revelation, not random disaster."],
+  "Exodus 9:19-24": ["Before the hail falls, God gives a warning that some Egyptians actually fear and obey.", "Servants and cattle can be sheltered if people heed the word of the LORD.", "The hail and fire show terrifying judgment, but the warning shows mercy before judgment.", "Even in Egypt, response to God's word matters."],
+  "Exodus 9:25-30": ["The hail devastates Egypt, but Goshen is spared.", "Pharaoh says words that sound repentant, yet Moses knows Pharaoh still does not fear the LORD.", "The section teaches the difference between confession under pressure and true surrender.", "God's distinction and Pharaoh's false repentance stand side by side."],
+  "Exodus 9:31-35": ["The crop detail matters because some crops are destroyed and some remain for the locusts to devour later.", "Pharaoh sees relief and sins again by hardening his heart.", "The pattern is painfully familiar now: pressure, request, relief, refusal.", "Watch what Pharaoh does after mercy arrives."],
+  "Exodus 10:1-6": ["God tells Moses the signs must be remembered and taught to children.", "The plagues are not only judgment on Pharaoh; they become testimony for Israel's generations.", "Moses asks how long Pharaoh will refuse to humble himself.", "The locust warning presses Pharaoh's pride and prepares to devour what remains."],
+  "Exodus 10:7-12": ["Pharaoh's own servants can see Egypt is being destroyed, but Pharaoh still bargains.", "He offers to let only the men go, keeping families under his control.", "Moses insists that young, old, sons, daughters, flocks, and herds must go.", "Partial freedom is still bondage when Pharaoh defines the terms."],
+  "Exodus 10:13-18": ["The east wind brings locusts that cover the land and eat what the hail left.", "Pharaoh again uses confession language and asks for forgiveness and prayer.", "The devastation is real, but his repentance will not last.", "There is a difference between wanting relief and yielding to God."],
+  "Exodus 10:19-20": ["God removes the locusts completely by a strong west wind.", "Not one remains, which shows the LORD rules removal as much as arrival.", "Yet Pharaoh's heart remains hard and Israel is not released.", "Mercy received without surrender becomes another witness against him."],
+  "Exodus 10:21-26": ["The darkness is thick enough to be felt and stops Egypt in place for three days.", "Israel has light in their dwellings, another clear distinction.", "Pharaoh tries one more compromise by holding the animals back.", "Moses refuses because God, not Pharaoh, defines what worship requires."],
+  "Exodus 10:27-29": ["The darkness scene ends with Pharaoh threatening Moses and cutting off the conversation.", "The next plague will be final and terrible.", "Pharaoh thinks he is dismissing Moses, but he is really moving toward judgment.", "The chapter closes with a hard king and a coming midnight."],
+};
+
+function makeDay24Exodus9To10PhraseCard(section: PersonalExodusPhraseSectionInput, title: string): [string, string] {
+  const [scene, meaning, beginner, lesson] = DAY_24_EXODUS_9_10_EXPLANATIONS[section.reference] ?? [
+    `This phrase belongs to ${section.reference}.`,
+    "It helps explain the plagues, Pharaoh's hard heart, and God's precise rescue of Israel.",
+    "A beginner should slow down here because Exodus is teaching through repeated warnings and signs.",
+    "The LORD is showing that He rules Egypt, creation, judgment, and mercy.",
+  ];
+
+  return phrase(`📌 ${title}`, [
+    scene,
+    meaning,
+    beginner,
+    "This phrase comes directly from the passage, so the note stays anchored in the Bible text.",
+    lesson,
+  ]);
+}
+
+function deepenDay24Exodus9To10PhraseCards(section: PersonalExodusPhraseSectionInput): PersonalExodusPhraseSectionInput {
+  const titles = DAY_24_EXODUS_9_10_PHRASE_TITLES[section.reference];
+  if (!titles) return section;
+
+  return {
+    ...section,
+    phrases: titles.map((title) => makeDay24Exodus9To10PhraseCard(section, title)),
+  };
+}
+
+const EXODUS_2_10_MOBILE_FORMAT_CUES: Record<number, string[]> = {
+  1: ["👑 Pharaoh fears Israel's growth.", "🧱 Slavery becomes Egypt's weapon.", "👶 God preserves life under pressure."],
+  2: ["🧺 Moses is rescued through ordinary courage.", "🏜️ Midian becomes a training place.", "👂 God hears the groaning of His people."],
+  3: ["🔥 God calls Moses from holy ground.", "📜 The promise from Genesis is still alive.", "🤝 God's presence answers Moses' weakness."],
+  4: ["🐍 Signs confirm God's sending.", "🗣️ Moses brings his fear of speaking.", "🤝 Aaron is given as help, not as a replacement for obedience."],
+  5: ["👑 Pharaoh rejects God's word.", "🧱 Oppression gets heavier before rescue is visible.", "🙏 Moses brings honest questions back to the LORD."],
+  6: ["📜 God repeats His covenant promise.", "💔 Crushed people struggle to hear hope.", "🧬 Moses and Aaron are placed inside Israel's family story."],
+  7: ["🐍 The rod confronts Egypt's power.", "🌊 The Nile is judged.", "🔒 Pharaoh's hard heart is being exposed."],
+  8: ["🐸 The plagues invade ordinary life.", "🎭 Egypt can imitate power but cannot bring rescue.", "🛡️ God distinguishes His people."],
+  9: ["⚖️ Judgment grows more severe.", "📣 Warning comes before the blow.", "🔒 Pharaoh's relief does not become surrender."],
+  10: ["🦗 Egypt is being emptied by judgment.", "🌑 Darkness exposes Pharaoh's blindness.", "🙏 God, not Pharaoh, defines worship."],
+};
+
+function hasExodusTwoToTenVisualList(content: string) {
+  return content
+    .split(/\n+/)
+    .filter((line) => line.trim().length > 0)
+    .some((line) => /^[^\w\s"']/.test(line.trim()));
+}
+
+function formatExodusTwoToTenPhraseExplanation(section: PersonalExodusPhraseSectionInput, content: string) {
+  const cleaned = content.replace(/not filler/g, "part of the story");
+  if (section.chapter < 1 || section.chapter > 10 || hasExodusTwoToTenVisualList(cleaned)) {
+    return cleaned;
+  }
+
+  const blocks = cleaned
+    .split(/\n{2,}/)
+    .map((block) => block.trim())
+    .filter(Boolean);
+  const cues = EXODUS_2_10_MOBILE_FORMAT_CUES[section.chapter];
+
+  if (!cues || blocks.length < 2) {
+    return blocks.join("\n\n");
+  }
+
+  const opening = blocks.slice(0, Math.min(2, blocks.length));
+  const closing = blocks.slice(opening.length);
+
+  return note([
+    ...opening,
+    "What to notice:",
+    ...cues,
+    ...closing,
+  ]);
+}
+
+function formatExodusTwoToTenSectionExplanations(sections: PersonalExodusPhraseSectionInput[]) {
+  return sections.map((section) => ({
+    ...section,
+    phrases: section.phrases.map(([title, content]) => [
+      title,
+      formatExodusTwoToTenPhraseExplanation(section, content),
+    ] as [string, string]),
+  }));
+}
+
+export const EXODUS_2_10_PERSONAL_SECTIONS: PersonalExodusPhraseSectionInput[] = formatExodusTwoToTenSectionExplanations([
+  ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_TWENTY_TWO_DEEP_STUDY_SECTIONS, [1, 2, 3, 4], "🔥").map(deepenDay22PhraseCards),
+  ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_TWENTY_THREE_DEEP_STUDY_SECTIONS, [5, 6, 7, 8], "⚖️").map(deepenDay23PhraseCards),
+  ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_TWENTY_FOUR_DEEP_STUDY_SECTIONS, [9, 10], "🌩️").map(deepenDay24Exodus9To10PhraseCards),
   ...RAW_EXODUS_2_10_PERSONAL_SECTIONS.filter((section) => section.chapter < 1 || section.chapter > 10),
-];
+]);

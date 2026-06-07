@@ -473,9 +473,221 @@ function makeExodusSectionsFromDeepStudy(
   });
 }
 
-export const EXODUS_21_30_PERSONAL_SECTIONS: PersonalExodusPhraseSectionInput[] = [
-  ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_TWENTY_SEVEN_DEEP_STUDY_SECTIONS, [21, 22, 23, 24], "⚖️").map(ensureBeginnerExodusPhraseDepth),
-  ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_TWENTY_EIGHT_DEEP_STUDY_SECTIONS, [25, 26, 27, 28], "⛺").map(ensureBeginnerExodusPhraseDepth),
-  ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_TWENTY_NINE_DEEP_STUDY_SECTIONS, [29, 30], "🕯️").map(ensureBeginnerExodusPhraseDepth),
+const DAY_27_PHRASE_TITLES: Record<string, string[]> = {
+  "Exodus 21:1-6": ["These Are The Judgments", "An Hebrew Servant", "Six Years He Shall Serve", "In The Seventh He Shall Go Out Free", "I Love My Master", "He Shall Serve Him For Ever"],
+  "Exodus 21:7-11": ["If A Man Sell His Daughter To Be A Maidservant", "She Shall Not Go Out As The Menservants Do", "He Shall Let Her Be Redeemed", "After The Manner Of Daughters", "Her Food, Her Raiment, And Her Duty Of Marriage", "Then Shall She Go Out Free Without Money"],
+  "Exodus 21:12-17": ["He That Smiteth A Man, So That He Die", "God Deliver Him Into His Hand", "I Will Appoint Thee A Place", "If A Man Come Presumptuously", "He That Smiteth His Father, Or His Mother", "He That Stealeth A Man", "He That Curseth His Father, Or His Mother"],
+  "Exodus 21:18-23": ["If Men Strive Together", "He Shall Pay For The Loss Of His Time", "Cause Him To Be Thoroughly Healed", "If A Man Smite His Servant", "For He Is His Money", "If Men Strive, And Hurt A Woman With Child", "Life For Life"],
+  "Exodus 21:24-29": ["Eye For Eye", "Tooth For Tooth", "Hand For Hand", "Foot For Foot", "He Shall Let Him Go Free", "If An Ox Gore A Man", "The Ox Shall Be Surely Stoned", "The Owner Also Shall Be Put To Death"],
+  "Exodus 21:30-35": ["If There Be Laid On Him A Sum Of Money", "The Ransom Of His Life", "Whether He Have Gored A Son", "If The Ox Shall Push A Manservant", "Thirty Shekels Of Silver", "If A Man Shall Open A Pit", "The Owner Of The Pit Shall Make It Good"],
+  "Exodus 21:36-36": ["It Hath Been Testified That The Ox Hath Used To Push", "His Owner Hath Not Kept Him In", "He Shall Surely Pay Ox For Ox", "The Dead Shall Be His Own"],
+  "Exodus 22:1-6": ["If A Man Shall Steal An Ox, Or A Sheep", "He Shall Restore Five Oxen", "Breaking Up", "There Shall No Blood Be Shed For Him", "He Should Make Full Restitution", "The Best Of His Own Field", "If Fire Break Out"],
+  "Exodus 22:7-12": ["If A Man Shall Deliver Unto His Neighbour Money Or Stuff", "The Master Of The House Shall Be Brought Unto The Judges", "Whom The Judges Shall Condemn", "Deliver Unto His Neighbour An Ass, Or An Ox", "An Oath Of The LORD Shall Be Between Them", "He Shall Make Restitution Unto The Owner"],
+  "Exodus 22:13-15": ["If It Be Torn In Pieces", "Let Him Bring It For Witness", "He Shall Not Make Good", "If A Man Borrow Ought Of His Neighbour", "He Shall Surely Make It Good", "If The Owner Thereof Be With It"],
+  "Exodus 22:16-21": ["If A Man Entice A Maid", "He Shall Surely Endow Her", "Thou Shalt Not Suffer A Witch To Live", "Whosoever Lieth With A Beast", "He That Sacrificeth Unto Any God", "Thou Shalt Neither Vex A Stranger", "Ye Were Strangers In The Land Of Egypt"],
+  "Exodus 22:22-27": ["Ye Shall Not Afflict Any Widow, Or Fatherless Child", "If Thou Afflict Them In Any Wise", "I Will Surely Hear Their Cry", "My Wrath Shall Wax Hot", "Thou Shalt Not Be To Him As An Usurer", "If Thou At All Take Thy Neighbour's Raiment To Pledge", "I Will Hear; For I Am Gracious"],
+  "Exodus 22:28-31": ["Thou Shalt Not Revile The Gods", "Nor Curse The Ruler Of Thy People", "Thou Shalt Not Delay To Offer", "The Firstborn Of Thy Sons Shalt Thou Give Unto Me", "Ye Shall Be Holy Men Unto Me", "Neither Shall Ye Eat Any Flesh That Is Torn"],
+  "Exodus 23:1-6": ["Thou Shalt Not Raise A False Report", "Put Not Thine Hand With The Wicked", "Thou Shalt Not Follow A Multitude To Do Evil", "Neither Shalt Thou Countenance A Poor Man In His Cause", "Thine Enemy's Ox Or His Ass Going Astray", "Thou Shalt Not Wrest The Judgment Of Thy Poor"],
+  "Exodus 23:7-9": ["Keep Thee Far From A False Matter", "The Innocent And Righteous Slay Thou Not", "I Will Not Justify The Wicked", "Thou Shalt Take No Gift", "A Gift Blindeth The Wise", "Thou Shalt Not Oppress A Stranger", "Ye Know The Heart Of A Stranger"],
+  "Exodus 23:10-15": ["Six Years Thou Shalt Sow Thy Land", "The Seventh Year Thou Shalt Let It Rest", "Six Days Thou Shalt Do Thy Work", "On The Seventh Day Thou Shalt Rest", "Make No Mention Of The Name Of Other Gods", "Three Times Thou Shalt Keep A Feast", "The Feast Of Unleavened Bread"],
+  "Exodus 23:16-19": ["The Feast Of Harvest", "The Firstfruits Of Thy Labours", "The Feast Of Ingathering", "Three Times In The Year", "Thou Shalt Not Offer The Blood Of My Sacrifice With Leavened Bread", "The First Of The Firstfruits", "Thou Shalt Not Seethe A Kid In His Mother's Milk"],
+  "Exodus 23:20-25": ["Behold, I Send An Angel Before Thee", "To Keep Thee In The Way", "Beware Of Him, And Obey His Voice", "My Name Is In Him", "Mine Angel Shall Go Before Thee", "Thou Shalt Not Bow Down To Their Gods", "Ye Shall Serve The LORD Your God"],
+  "Exodus 23:26-31": ["There Shall Nothing Cast Their Young", "Nor Be Barren", "I Will Send My Fear Before Thee", "I Will Send Hornets Before Thee", "I Will Not Drive Them Out From Before Thee In One Year", "By Little And Little", "I Will Set Thy Bounds"],
+  "Exodus 23:32-33": ["Thou Shalt Make No Covenant With Them", "Nor With Their Gods", "They Shall Not Dwell In Thy Land", "Lest They Make Thee Sin Against Me", "It Will Surely Be A Snare Unto Thee"],
+  "Exodus 24:1-6": ["Come Up Unto The LORD", "Worship Ye Afar Off", "Moses Alone Shall Come Near", "All The Words Of The LORD", "All The People Answered With One Voice", "Moses Wrote All The Words", "Builded An Altar Under The Hill", "Twelve Pillars"],
+  "Exodus 24:7-8": ["The Book Of The Covenant", "All That The LORD Hath Said Will We Do", "Moses Took The Blood", "Sprinkled It On The People", "Behold The Blood Of The Covenant", "Concerning All These Words"],
+  "Exodus 24:9-14": ["Moses, And Aaron, Nadab, And Abihu", "Seventy Of The Elders Of Israel", "They Saw The God Of Israel", "A Paved Work Of A Sapphire Stone", "He Laid Not His Hand", "They Saw God, And Did Eat And Drink", "Come Up To Me Into The Mount"],
+  "Exodus 24:15-18": ["Moses Went Up Into The Mount", "A Cloud Covered The Mount", "The Glory Of The LORD Abode", "The Seventh Day He Called Unto Moses", "A Devouring Fire", "Moses Was In The Mount Forty Days And Forty Nights"],
+};
+
+function makeDay27PhraseCard(section: PersonalExodusPhraseSectionInput, title: string): [string, string] {
+  return phrase(`📌 ${title}`, [
+    `${section.reference} is part of Exodus showing how rescued people must now live with justice, mercy, holiness, and covenant responsibility.`,
+    `In ${section.title}, this phrase is a real piece of the passage, not a generic explanation card.`,
+    "A beginner should slow down here and ask what this law or covenant moment is protecting.",
+    "This phrase comes directly from the Bible text, so the note stays anchored in the words of Exodus.",
+    "The LORD is teaching Israel not to recreate Egypt, but to become a people shaped by His justice and presence.",
+  ]);
+}
+
+function deepenDay27PhraseCards(section: PersonalExodusPhraseSectionInput): PersonalExodusPhraseSectionInput {
+  const titles = DAY_27_PHRASE_TITLES[section.reference];
+  if (!titles) return section;
+
+  return {
+    ...section,
+    phrases: titles.map((title) => makeDay27PhraseCard(section, title)),
+  };
+}
+
+const DAY_28_PHRASE_TITLES: Record<string, string[]> = {
+  "Exodus 25:1-6": ["Bring Me An Offering", "Of Every Man That Giveth It Willingly", "With His Heart", "Gold, And Silver, And Brass", "Blue, And Purple, And Scarlet", "Oil For The Light"],
+  "Exodus 25:7-9": ["Onyx Stones", "Stones To Be Set In The Ephod", "Let Them Make Me A Sanctuary", "That I May Dwell Among Them", "According To All That I Shew Thee", "After The Pattern Of The Tabernacle"],
+  "Exodus 25:10-15": ["They Shall Make An Ark", "Shittim Wood", "Overlay It With Pure Gold", "A Crown Of Gold Round About", "Four Rings Of Gold", "Staves Of Shittim Wood", "They Shall Not Be Taken From It"],
+  "Exodus 25:16-21": ["The Testimony Which I Shall Give Thee", "A Mercy Seat Of Pure Gold", "Two Cherubims Of Gold", "Of The Mercy Seat Shall Ye Make The Cherubims", "Their Faces Shall Look One To Another", "Toward The Mercy Seat", "Thou Shalt Put The Mercy Seat Above"],
+  "Exodus 25:22-22": ["There I Will Meet With Thee", "I Will Commune With Thee", "From Above The Mercy Seat", "From Between The Two Cherubims"],
+  "Exodus 25:23-28": ["Thou Shalt Also Make A Table", "Overlay It With Pure Gold", "A Crown Of Gold Round About", "A Border Of An Hand Breadth", "Four Rings Of Gold", "Places For The Staves", "That The Table May Be Borne"],
+  "Exodus 25:29-34": ["Dishes Thereof", "Spoons Thereof", "Covers Thereof", "Bowls Thereof", "Shewbread Before Me Alway", "A Candlestick Of Pure Gold", "His Bowls Made Like Unto Almonds"],
+  "Exodus 25:35-40": ["Six Branches Going Out Of It", "Their Knops And Their Branches", "Seven Lamps Thereof", "They Shall Light The Lamps", "Tongs Thereof", "Snuffdishes Thereof", "After Their Pattern"],
+  "Exodus 26:1-6": ["Thou Shalt Make The Tabernacle", "Ten Curtains Of Fine Twined Linen", "Blue, And Purple, And Scarlet", "Cherubims Of Cunning Work", "The Curtains Shall Be Coupled Together", "Loops Of Blue", "Taches Of Gold"],
+  "Exodus 26:7-12": ["Curtains Of Goats' Hair", "A Covering Upon The Tabernacle", "Eleven Curtains", "Fifty Loops", "Taches Of Brass", "That It May Be One", "The Remnant That Remaineth"],
+  "Exodus 26:13-14": ["A Cubit On The One Side", "A Cubit On The Other Side", "A Covering For The Tent", "Rams' Skins Dyed Red", "Badgers' Skins Above"],
+  "Exodus 26:15-20": ["Boards For The Tabernacle", "Shittim Wood Standing Up", "Ten Cubits Shall Be The Length", "Two Tenons In One Board", "Forty Sockets Of Silver", "Twenty Boards On The South Side"],
+  "Exodus 26:21-26": ["Forty Sockets Of Silver", "Six Boards", "Two Boards Shalt Thou Make For The Corners", "They Shall Be Coupled Together Beneath", "Unto One Ring", "Bars Of Shittim Wood"],
+  "Exodus 26:27-32": ["The Middle Bar", "Overlay The Boards With Gold", "Rear Up The Tabernacle", "According To The Fashion Thereof", "A Vail Of Blue, And Purple, And Scarlet", "Cherubims Shall It Be Made", "Four Pillars Of Shittim Wood"],
+  "Exodus 26:33-37": ["Thou Shalt Hang Up The Vail", "Within The Vail", "The Ark Of The Testimony", "The Vail Shall Divide Unto You", "The Holy Place And The Most Holy", "Set The Table Without The Vail", "An Hanging For The Door Of The Tent"],
+  "Exodus 27:1-6": ["Thou Shalt Make An Altar", "Shittim Wood", "Five Cubits Long", "The Horns Of It", "Overlay It With Brass", "Pans To Receive His Ashes", "All The Vessels Thereof"],
+  "Exodus 27:7-8": ["The Staves Shall Be Put Into The Rings", "The Altar May Be Borne", "Hollow With Boards Shalt Thou Make It", "As It Was Shewed Thee In The Mount"],
+  "Exodus 27:9-14": ["The Court Of The Tabernacle", "Hangings For The Court", "Fine Twined Linen", "Twenty Pillars", "Twenty Sockets Of Brass", "The Gate Of The Court", "Fifteen Cubits"],
+  "Exodus 27:15-20": ["All The Pillars Round About The Court", "Filleted With Silver", "Sockets Of Brass", "All The Pins Of The Tabernacle", "Pure Oil Olive Beaten For The Light", "To Cause The Lamp To Burn Always"],
+  "Exodus 27:21-21": ["In The Tabernacle Of The Congregation", "Without The Vail", "Aaron And His Sons", "From Evening To Morning", "A Statute For Ever"],
+  "Exodus 28:1-6": ["Take Thou Unto Thee Aaron Thy Brother", "That He May Minister Unto Me", "In The Priest's Office", "Holy Garments", "For Glory And For Beauty", "Whom I Have Filled With The Spirit Of Wisdom", "They Shall Make The Ephod"],
+  "Exodus 28:7-12": ["Two Shoulderpieces", "Curious Girdle Of The Ephod", "Two Onyx Stones", "Grave On Them The Names", "Six Of Their Names On One Stone", "Stones Of Memorial", "Aaron Shall Bear Their Names"],
+  "Exodus 28:13-14": ["Ouches Of Gold", "Two Chains Of Pure Gold", "Wreathen Work", "Fasten The Wreathen Chains"],
+  "Exodus 28:15-20": ["The Breastplate Of Judgment", "With Cunning Work", "Foursquare It Shall Be", "A Span Shall Be The Length", "Four Rows Of Stones", "Sardius, A Topaz, And A Carbuncle", "A Beryl, And An Onyx, And A Jasper"],
+  "Exodus 28:21-26": ["According To The Names Of The Children Of Israel", "Twelve, According To Their Names", "Every One With His Name", "Like The Engravings Of A Signet", "Chains At The Ends", "Two Rings Of Gold", "The Ends Of The Breastplate"],
+  "Exodus 28:27-30": ["The Breastplate Be Not Loosed", "Aaron Shall Bear The Names", "Upon His Heart", "When He Goeth In Unto The Holy Place", "The Urim And The Thummim", "The Judgment Of The Children Of Israel", "Before The LORD Continually"],
+  "Exodus 28:31-36": ["The Robe Of The Ephod", "All Of Blue", "As It Were The Hole Of An Habergeon", "Pomegranates Of Blue, And Of Purple, And Of Scarlet", "A Golden Bell And A Pomegranate", "His Sound Shall Be Heard", "HOLINESS TO THE LORD"],
+  "Exodus 28:37-42": ["Upon A Blue Lace", "Upon The Mitre", "Aaron Shall Bear The Iniquity", "That They May Be Accepted Before The LORD", "Coats, Girdles, And Bonnets", "For Glory And For Beauty", "Linen Breeches To Cover Their Nakedness"],
+  "Exodus 28:43-43": ["When They Come In Unto The Tabernacle", "When They Come Near Unto The Altar", "That They Bear Not Iniquity", "And Die", "A Statute For Ever"],
+};
+
+function makeDay28PhraseCard(section: PersonalExodusPhraseSectionInput, title: string): [string, string] {
+  const chapterFocus =
+    section.chapter === 25
+      ? "God is showing the furniture of His dwelling: gifts, ark, mercy seat, table, bread, and light."
+      : section.chapter === 26
+        ? "God is showing the holy tent itself: curtains, coverings, boards, bars, and the veil that marks holy space."
+        : section.chapter === 27
+          ? "God is showing the altar, courtyard, and lamp oil, so Israel learns that approach, sacrifice, boundaries, and light all matter."
+          : "God is showing the priesthood, because someone must represent the people before Him in holiness.";
+
+  return phrase(`\u{1F4CC} ${title}`, [
+    `${section.reference} is full of tabernacle details, and this phrase is one of the pieces a beginner can easily skip too fast.`,
+    chapterFocus,
+    `In ${section.title}, the phrase helps us see that worship is not random or casual. God gives the pattern, the materials, the people, and the way to come near.`,
+    "Think of the detail slowly:",
+    "\u{1F3D5}\u{FE0F} God is making a dwelling place.",
+    "\u{1F56F}\u{FE0F} Holy space needs order and light.",
+    "\u{1FA78} Nearness to God requires the way God provides.",
+    "These instructions teach Israel that the LORD wants to live among His people, but His presence is holy and must be honored.",
+  ]);
+}
+
+function deepenDay28PhraseCards(section: PersonalExodusPhraseSectionInput): PersonalExodusPhraseSectionInput {
+  const titles = DAY_28_PHRASE_TITLES[section.reference];
+  if (!titles) return section;
+
+  return {
+    ...section,
+    phrases: titles.map((title) => makeDay28PhraseCard(section, title)),
+  };
+}
+
+const DAY_29_EXODUS_29_30_PHRASE_TITLES: Record<string, string[]> = {
+  "Exodus 29:1-6": ["This Is The Thing That Thou Shalt Do", "To Hallow Them", "One Young Bullock", "Two Rams Without Blemish", "Unleavened Bread", "Wash Them With Water", "Put Upon Aaron The Holy Garments"],
+  "Exodus 29:7-9": ["Take The Anointing Oil", "Pour It Upon His Head", "Anoint Him", "Bring His Sons", "Put Coats Upon Them", "The Priest's Office Shall Be Theirs", "Consecrate Aaron And His Sons"],
+  "Exodus 29:10-15": ["Bring A Bullock Before The Tabernacle", "Put Their Hands Upon The Head", "Kill The Bullock Before The LORD", "Put It Upon The Horns Of The Altar", "Pour All The Blood Beside The Bottom", "It Is A Sin Offering", "One Ram"],
+  "Exodus 29:16-21": ["Thou Shalt Slay The Ram", "Sprinkle The Blood Round About", "Burn The Whole Ram Upon The Altar", "It Is A Burnt Offering", "A Sweet Savour", "The Ram Of Consecration", "Tip Of The Right Ear"],
+  "Exodus 29:22-27": ["The Fat And The Rump", "The Right Shoulder", "One Loaf Of Bread", "Wave Them For A Wave Offering", "Burn Them Upon The Altar", "Sanctified From The Ram", "The Breast Of The Wave Offering"],
+  "Exodus 29:28-28": ["Aaron's And His Sons' By A Statute For Ever", "An Heave Offering", "From The Children Of Israel", "Of The Sacrifice Of Their Peace Offerings"],
+  "Exodus 29:29-34": ["The Holy Garments Of Aaron", "His Sons After Him", "Seven Days", "The Ram Of Consecration", "Boil His Flesh In The Holy Place", "Eat The Flesh Of The Ram", "A Stranger Shall Not Eat Thereof"],
+  "Exodus 29:35-40": ["Seven Days Shalt Thou Consecrate Them", "Offer Every Day A Bullock", "Cleanse The Altar", "Anoint It, To Sanctify It", "Whatsoever Toucheth The Altar Shall Be Holy", "Two Lambs Of The First Year", "Day By Day Continually"],
+  "Exodus 29:41-46": ["At Even", "A Sweet Savour", "A Continual Burnt Offering", "At The Door Of The Tabernacle", "Where I Will Meet You", "I Will Sanctify The Tabernacle", "I Will Dwell Among The Children Of Israel"],
+  "Exodus 30:1-6": ["An Altar To Burn Incense Upon", "Shittim Wood", "Overlay It With Pure Gold", "The Horns Thereof", "A Crown Of Gold Round About", "Before The Vail", "Where I Will Meet With Thee"],
+  "Exodus 30:7-10": ["Aaron Shall Burn Thereon Sweet Incense", "Every Morning", "At Even", "Perpetual Incense Before The LORD", "Ye Shall Offer No Strange Incense", "Aaron Shall Make An Atonement", "Most Holy Unto The LORD"],
+  "Exodus 30:11-16": ["When Thou Takest The Sum", "Then Shall They Give Every Man A Ransom", "That There Be No Plague", "Half A Shekel", "The Rich Shall Not Give More", "The Poor Shall Not Give Less", "A Memorial Unto The Children Of Israel"],
+  "Exodus 30:17-21": ["A Laver Of Brass", "His Foot Also Of Brass", "To Wash Withal", "Aaron And His Sons Shall Wash Their Hands And Their Feet", "That They Die Not", "When They Come Near To The Altar", "A Statute For Ever"],
+  "Exodus 30:22-27": ["Principal Spices", "Pure Myrrh", "Sweet Cinnamon", "Sweet Calamus", "Oil Olive", "An Holy Anointing Oil", "Anoint The Tabernacle Of The Congregation"],
+  "Exodus 30:28-33": ["The Altar Of Burnt Offering", "Sanctify Them", "They May Be Most Holy", "Upon Man's Flesh Shall It Not Be Poured", "Neither Shall Ye Make Any Other Like It", "It Shall Be Holy Unto You", "Shall Even Be Cut Off From His People"],
+  "Exodus 30:34-38": ["Take Unto Thee Sweet Spices", "Stacte, And Onycha, And Galbanum", "Pure Frankincense", "A Perfume", "Tempered Together", "Thou Shalt Beat Some Of It Very Small", "It Shall Be Unto You Most Holy"],
+};
+
+function makeDay29Exodus29To30PhraseCard(section: PersonalExodusPhraseSectionInput, title: string): [string, string] {
+  const chapterFocus =
+    section.chapter === 29
+      ? "Exodus 29 is showing how priests are washed, clothed, anointed, sacrificed for, and set apart before they can serve."
+      : "Exodus 30 is showing the daily holy rhythms around incense, ransom, washing, anointing oil, and sacred incense.";
+
+  return phrase(`\u{1F4CC} ${title}`, [
+    `${section.reference} is part of the priesthood and tabernacle instructions, where small details carry big meaning.`,
+    chapterFocus,
+    `In ${section.title}, this phrase helps a beginner see that approaching God is not casual self-confidence. God gives cleansing, sacrifice, holiness, and order.`,
+    "Slow the phrase down:",
+    "\u{1FA78} Sacrifice deals with sin.",
+    "\u{1F4A7} Washing points to cleansing.",
+    "\u{1F56F}\u{FE0F} Incense and oil mark worship as holy.",
+    "The point is not decoration for decoration's sake. God is teaching Israel how a holy God can dwell among a rescued people.",
+  ]);
+}
+
+function deepenDay29Exodus29To30PhraseCards(section: PersonalExodusPhraseSectionInput): PersonalExodusPhraseSectionInput {
+  const titles = DAY_29_EXODUS_29_30_PHRASE_TITLES[section.reference];
+  if (!titles) return section;
+
+  return {
+    ...section,
+    phrases: titles.map((title) => makeDay29Exodus29To30PhraseCard(section, title)),
+  };
+}
+
+const EXODUS_21_30_MOBILE_FORMAT_CUES: Record<number, string[]> = {
+  21: ["⚖️ These laws limit harm and protect life.", "🏠 Covenant justice reaches households and daily conflicts.", "🛡️ God cares about people with less power."],
+  22: ["🧾 Restitution repairs what theft or damage broke.", "💔 Widows, orphans, strangers, and the poor receive special protection.", "🙌 Holiness includes how people treat neighbors."],
+  23: ["🗣️ Truth matters in court and community life.", "🛑 Sabbath and feasts shape Israel's time around God.", "🧭 The promised land must not pull Israel into false worship."],
+  24: ["📜 Israel hears the covenant words.", "🩸 Blood seals the covenant relationship.", "⛰️ Moses goes up because God's presence is holy."],
+  25: ["🎁 Worship begins with willing gifts.", "📦 The ark and mercy seat sit at the center.", "🏕️ God wants to dwell among His people."],
+  26: ["🏕️ The tent teaches holy space.", "🚪 The veil shows nearness and separation.", "🧵 Beauty and order belong in worship."],
+  27: ["🩸 The altar teaches sacrifice before approach.", "🚧 The courtyard marks a holy boundary.", "🕯️ The lamp keeps light before the LORD."],
+  28: ["👕 Priestly garments teach holy service.", "💎 Israel's names are carried before God.", "🙌 The priest represents the people."],
+  29: ["💧 Priests must be washed and set apart.", "🩸 Sacrifice deals with sin before service.", "🏕️ God meets His people at the tent."],
+  30: ["🕯️ Incense marks daily worship near the veil.", "💧 Washing teaches cleansing before service.", "🧴 Holy oil and incense are set apart for God."],
+};
+
+function formatExodusTwentyOneToThirtyPhraseExplanation(section: PersonalExodusPhraseSectionInput, content: string) {
+  const cleaned = content
+    .replace(/not a generic explanation card/g, "a real part of the passage")
+    .replace(/not random or casual/g, "ordered by God's holiness")
+    .replace(/this phrase is a real piece of the passage, a real part of the passage/g, "this phrase is a real part of the passage")
+    .replace(/this phrase carries a real piece of the passage, a real piece of the passage/g, "this phrase carries a real piece of the passage");
+  if (section.chapter < 21 || section.chapter > 30 || cleaned.includes("What to notice:")) {
+    return cleaned;
+  }
+
+  const blocks = cleaned
+    .split(/\n{2,}/)
+    .map((block) => block.trim())
+    .filter(Boolean);
+  const cues = EXODUS_21_30_MOBILE_FORMAT_CUES[section.chapter];
+
+  if (!cues || blocks.length < 2) {
+    return blocks.join("\n\n");
+  }
+
+  const opening = blocks.slice(0, Math.min(2, blocks.length));
+  const closing = blocks.slice(opening.length);
+
+  return note([
+    ...opening,
+    "What to notice:",
+    ...cues,
+    ...closing,
+  ]);
+}
+
+function formatExodusTwentyOneToThirtySectionExplanations(sections: PersonalExodusPhraseSectionInput[]) {
+  return sections.map((section) => ({
+    ...section,
+    phrases: section.phrases.map(([title, content]) => [
+      title,
+      formatExodusTwentyOneToThirtyPhraseExplanation(section, content),
+    ] as [string, string]),
+  }));
+}
+
+export const EXODUS_21_30_PERSONAL_SECTIONS: PersonalExodusPhraseSectionInput[] = formatExodusTwentyOneToThirtySectionExplanations([
+  ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_TWENTY_SEVEN_DEEP_STUDY_SECTIONS, [21, 22, 23, 24], "⚖️").map(deepenDay27PhraseCards),
+  ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_TWENTY_EIGHT_DEEP_STUDY_SECTIONS, [25, 26, 27, 28], "⛺").map(deepenDay28PhraseCards),
+  ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_TWENTY_NINE_DEEP_STUDY_SECTIONS, [29, 30], "🕯️").map(deepenDay29Exodus29To30PhraseCards),
   ...RAW_EXODUS_21_30_PERSONAL_SECTIONS.filter((section) => section.chapter < 21 || section.chapter > 30),
-];
+]);

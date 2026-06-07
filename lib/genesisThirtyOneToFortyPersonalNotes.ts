@@ -122,7 +122,7 @@ const GENESIS_31_40_TEXTURE_RULES: PersonalTextureRule[] = [
     ],
   },
   {
-    matches: ["mizpah", "heap", "pillar", "god judge"],
+    matches: ["mizpah", "heap", "god judge"],
     lines: [
       "The covenant with Laban is not warm and cozy:",
       "🪨 Stones mark the boundary.",
@@ -252,6 +252,65 @@ function addGenesisThirtyOneToFortySectionTexture(sections: PersonalGenesisPhras
   return sections.map((section) => ({
     ...section,
     phrases: section.phrases.map(([title, content]) => [title, addGenesisThirtyOneToFortyTexture(title, content)] as [string, string]),
+  }));
+}
+
+const GENESIS_31_40_MOBILE_FORMAT_CUES: Record<number, string[]> = {
+  31: ["👂 God sees unfairness.", "🏃 Leaving is messy.", "🪨 Boundaries can protect peace."],
+  32: ["🙏 Fear can still pray.", "🎁 Jacob plans carefully.", "🤼 God changes Jacob in the struggle."],
+  33: ["🙇 Jacob comes low.", "😭 Mercy meets old fear.", "🧭 Reconciliation does not erase wisdom."],
+  34: ["💔 Harm spreads through a whole community.", "🗣️ People talk around Dinah.", "⚔️ Revenge does not heal the wound."],
+  35: ["🧹 Idols must be buried.", "📍 Bethel becomes a place of return.", "😭 The promise continues through grief."],
+  36: ["🧬 Esau's family is recorded.", "🏔️ Edom becomes a real people and place.", "🧭 This genealogy matters later in the Bible."],
+  37: ["🎽 Favoritism wounds the family.", "💤 Dreams reveal a future no one understands yet.", "🕳️ Joseph is lowered, but God is still at work."],
+  38: ["🚶 Judah moves away from his brothers.", "⏳ Tamar is left waiting.", "⚖️ Hidden sin is brought into the open."],
+  39: ["🏠 Joseph serves faithfully in a foreign house.", "🚪 He runs from temptation.", "⛓️ Faithfulness does not keep him from suffering."],
+  40: ["🌙 Dreams matter in the prison.", "🙌 Joseph gives God the credit.", "⏳ Being forgotten is not the same as being abandoned."],
+};
+
+function hasGenesisThirtyOneToFortyVisualList(content: string) {
+  return content
+    .split(/\n+/)
+    .filter((line) => line.trim().length > 0)
+    .some((line) => /^[^\w\s"']/.test(line.trim()));
+}
+
+function formatGenesisThirtyOneToFortyPhraseExplanation(
+  section: PersonalGenesisPhraseSectionInput,
+  content: string,
+) {
+  if (section.chapter < 31 || section.chapter > 40 || hasGenesisThirtyOneToFortyVisualList(content)) {
+    return content;
+  }
+
+  const blocks = content
+    .split(/\n{2,}/)
+    .map((block) => block.trim())
+    .filter(Boolean);
+  const cues = GENESIS_31_40_MOBILE_FORMAT_CUES[section.chapter];
+
+  if (!cues || blocks.length < 2) {
+    return content;
+  }
+
+  const opening = blocks.slice(0, Math.min(2, blocks.length));
+  const closing = blocks.slice(opening.length);
+
+  return note([
+    ...opening,
+    "What to notice:",
+    ...cues,
+    ...closing,
+  ]);
+}
+
+function formatGenesisThirtyOneToFortySectionExplanations(sections: PersonalGenesisPhraseSectionInput[]) {
+  return sections.map((section) => ({
+    ...section,
+    phrases: section.phrases.map(([title, content]) => [
+      title,
+      formatGenesisThirtyOneToFortyPhraseExplanation(section, content),
+    ] as [string, string]),
   }));
 }
 
@@ -2050,7 +2109,7 @@ function deepenDay13PhraseCards(section: PersonalGenesisPhraseSectionInput): Per
 
 const DAY_14_GENESIS_34_36_FINAL_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
   { chapter: 34, startVerse: 1, endVerse: 4, reference: "Genesis 34:1-4", title: "Dinah Is Violated", icon: "💔", phrases: [
-    phrase("💔 Dinah The Daughter Of Leah", ["Genesis names Dinah as Leah's daughter, which matters after Leah's long story of feeling unloved.", "Dinah is not a background detail or a prop in the brothers' anger.", "She is a daughter inside Jacob's household, and what happens to her is treated as serious harm.", "The chapter should be read slowly and carefully because Scripture is showing family brokenness without hiding it.", "The text begins with Dinah, not with the men's negotiations.", "Bible Buddy should help readers see the harmed person before the political fallout."]),
+    phrase("💔 Dinah The Daughter Of Leah", ["Genesis names Dinah as Leah's daughter, which matters after Leah's long story of feeling unloved.", "Dinah is not a background detail or a prop in the brothers' anger.", "She is a daughter inside Jacob's household, and what happens to her is treated as serious harm.", "The chapter should be read slowly and carefully because Scripture is showing family brokenness without hiding it.", "The text begins with Dinah, not with the men's negotiations.", "A careful reader should see the harmed person before the political fallout."]),
     phrase("🚶 Went Out To See The Daughters Of The Land", ["The verse says Dinah went out, but it does not blame Dinah for what follows.", "The focus of the passage falls on Shechem's action, not on accusing Dinah.", "That matters because readers can sometimes rush to ask what a victim did instead of naming what was done to them.", "Genesis keeps the moral weight on the violation.", "Going out to see the women of the land is not presented as sin.", "We should be careful not to place blame where Scripture does not place it."]),
     phrase("⚠️ He Took Her", ["The verbs are forceful: Shechem saw, took, lay with, and humbled Dinah.", "This is not romantic pursuit first; it is violation first.", "Later tender words do not erase the harm already done.", "Genesis is honest about the confusion of sin, desire, power, and speech after damage has happened.", "The text names action before emotion.", "Affection after harm does not make the harm righteous."]),
     phrase("🗣️ Spoke Kindly Unto The Damsel", ["Shechem speaks tenderly after violating Dinah, and that can feel jarring.", "The Bible is not telling us the words fixed what happened.", "It is showing how someone can mix wrong actions with soft language.", "This helps readers avoid confusing tenderness with justice.", "Kind-sounding speech can appear after serious evil.", "Repentance and repair require more than affectionate words."]),
@@ -2179,7 +2238,7 @@ const DAY_14_REAL_PHRASE_ADDITIONS: Record<string, Array<[string, string]>> = {
     day14Phrase("Shechem The Son Of Hamor", ["Shechem is both a man and connected to the city leadership through Hamor.", "His status matters because the harm becomes a family and city crisis.", "Power in the land does not make his action righteous."]),
     day14Phrase("Prince Of The Country", ["Shechem is not powerless or unknown; he is a prince in the region.", "That makes the violation more socially dangerous for Jacob's family.", "Genesis shows harm involving power, status, and vulnerability."]),
     day14Phrase("His Soul Clave Unto Dinah", ["After violating Dinah, Shechem becomes attached to her.", "The Bible records his desire without letting desire erase what he did.", "Strong emotion after sin is not the same as justice."]),
-    day14Phrase("Spake Kindly Unto The Damsel", ["Shechem speaks tenderly after the harm.", "This is important because soft words can appear after serious wrong.", "Bible Buddy should help readers avoid confusing affectionate language with repair."]),
+    day14Phrase("Spake Kindly Unto The Damsel", ["Shechem speaks tenderly after the harm.", "This is important because soft words can appear after serious wrong.", "A beginner should not confuse affectionate language with repair."]),
   ],
   "Genesis 34:5-7": [
     day14Phrase("Jacob Heard", ["Jacob receives the news of Dinah's defilement.", "The father knows, but the passage shows a painful delay before action.", "The silence around Dinah's suffering feels heavy."]),
@@ -2485,7 +2544,7 @@ const deepPhrase = (
   scene,
   notice,
   meaning,
-  "This detail is not filler.",
+  "This detail belongs in the story.",
   "It helps the reader see how God's story is moving through real choices, real pressure, and real consequences.",
   lesson,
 ]);
@@ -2944,13 +3003,15 @@ function deepenDay16PhraseCards(section: PersonalGenesisPhraseSectionInput): Per
   };
 }
 
-export const GENESIS_31_40_PERSONAL_SECTIONS = addGenesisThirtyOneToFortySectionTexture(
-  [
-    ...DAY_12_GENESIS_31_FINAL_SECTIONS.map(deepenDay12Genesis31PhraseCards),
-    ...DAY_13_GENESIS_32_33_FINAL_SECTIONS.map(deepenDay13PhraseCards),
-    ...DAY_14_GENESIS_34_36_FINAL_SECTIONS.map(deepenDay14PhraseCards),
-    ...DAY_15_GENESIS_37_38_FINAL_SECTIONS.map(deepenDay15PhraseCards),
-    ...DAY_16_GENESIS_39_40_FINAL_SECTIONS.map(deepenDay16PhraseCards),
-    ...expandSplitSections(RAW_GENESIS_31_40_PERSONAL_SECTIONS.filter((section) => section.chapter !== 31 && section.chapter !== 32 && section.chapter !== 33 && section.chapter !== 34 && section.chapter !== 35 && section.chapter !== 36 && section.chapter !== 37 && section.chapter !== 38 && section.chapter !== 39 && section.chapter !== 40)),
-  ],
+export const GENESIS_31_40_PERSONAL_SECTIONS = formatGenesisThirtyOneToFortySectionExplanations(
+  addGenesisThirtyOneToFortySectionTexture(
+    [
+      ...DAY_12_GENESIS_31_FINAL_SECTIONS.map(deepenDay12Genesis31PhraseCards),
+      ...DAY_13_GENESIS_32_33_FINAL_SECTIONS.map(deepenDay13PhraseCards),
+      ...DAY_14_GENESIS_34_36_FINAL_SECTIONS.map(deepenDay14PhraseCards),
+      ...DAY_15_GENESIS_37_38_FINAL_SECTIONS.map(deepenDay15PhraseCards),
+      ...DAY_16_GENESIS_39_40_FINAL_SECTIONS.map(deepenDay16PhraseCards),
+      ...expandSplitSections(RAW_GENESIS_31_40_PERSONAL_SECTIONS.filter((section) => section.chapter !== 31 && section.chapter !== 32 && section.chapter !== 33 && section.chapter !== 34 && section.chapter !== 35 && section.chapter !== 36 && section.chapter !== 37 && section.chapter !== 38 && section.chapter !== 39 && section.chapter !== 40)),
+    ],
+  ),
 );

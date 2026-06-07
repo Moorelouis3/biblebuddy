@@ -1,4 +1,5 @@
 import { BIBLE_YEAR_DAY_THIRTY_DEEP_STUDY_SECTIONS } from "./bibleYearDayThirtyDeepNotes";
+import { BIBLE_YEAR_DAY_THIRTY_ONE_DEEP_STUDY_SECTIONS } from "./bibleYearDayThirtyOneDeepNotes";
 import { BIBLE_YEAR_DAY_TWENTY_NINE_DEEP_STUDY_SECTIONS } from "./bibleYearDayTwentyNineDeepNotes";
 
 export type PersonalExodusPhraseSectionInput = {
@@ -464,8 +465,176 @@ function makeExodusSectionsFromDeepStudy(
   });
 }
 
-export const EXODUS_31_40_PERSONAL_SECTIONS: PersonalExodusPhraseSectionInput[] = [
-  ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_TWENTY_NINE_DEEP_STUDY_SECTIONS, [31, 32], "🐂").map(ensureBeginnerExodusPhraseDepth),
-  ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_THIRTY_DEEP_STUDY_SECTIONS, [33, 34, 35, 36], "☁️").map(ensureBeginnerExodusPhraseDepth),
-  ...RAW_EXODUS_31_40_PERSONAL_SECTIONS.filter((section) => section.chapter < 31 || section.chapter > 36),
+const DAY_29_EXODUS_31_32_PHRASE_TITLES: Record<string, string[]> = {
+  "Exodus 31:1-6": ["I Have Called By Name Bezaleel", "The Son Of Uri", "The Tribe Of Judah", "I Have Filled Him With The Spirit Of God", "In Wisdom, And In Understanding", "In All Manner Of Workmanship", "I Have Given With Him Aholiab"],
+  "Exodus 31:7-11": ["The Tabernacle Of The Congregation", "The Ark Of The Testimony", "The Mercy Seat", "The Pure Candlestick", "The Altar Of Incense", "The Cloths Of Service", "According To All That I Have Commanded Thee"],
+  "Exodus 31:12-17": ["Verily My Sabbaths Ye Shall Keep", "It Is A Sign Between Me And You", "That Ye May Know", "I Am The LORD That Doth Sanctify You", "Every One That Defileth It", "Six Days May Work Be Done", "The Seventh Is The Sabbath Of Rest"],
+  "Exodus 31:18-18": ["Two Tables Of Testimony", "Tables Of Stone", "Written With The Finger Of God", "When He Had Made An End Of Communing"],
+  "Exodus 32:1-6": ["When The People Saw That Moses Delayed", "Up, Make Us Gods", "As For This Moses", "Break Off The Golden Earrings", "He Made It A Molten Calf", "These Be Thy Gods, O Israel", "Rose Up To Play"],
+  "Exodus 32:7-12": ["Go, Get Thee Down", "Thy People Have Corrupted Themselves", "They Have Turned Aside Quickly", "A Stiffnecked People", "Let Me Alone", "I May Consume Them", "Why Doth Thy Wrath Wax Hot"],
+  "Exodus 32:13-14": ["Remember Abraham, Isaac, And Israel", "To Whom Thou Swarest", "I Will Multiply Your Seed", "They Shall Inherit It For Ever", "The LORD Repented Of The Evil"],
+  "Exodus 32:15-20": ["The Two Tables Of The Testimony", "Written On Both Their Sides", "The Writing Was The Writing Of God", "The Noise Of War In The Camp", "He Cast The Tables Out Of His Hands", "Burnt It In The Fire", "Made The Children Of Israel Drink Of It"],
+  "Exodus 32:21-26": ["What Did This People Unto Thee", "Thou Knowest The People", "They Are Set On Mischief", "There Came Out This Calf", "The People Were Naked", "Who Is On The LORD'S Side", "All The Sons Of Levi"],
+  "Exodus 32:27-29": ["Thus Saith The LORD God Of Israel", "Put Every Man His Sword By His Side", "Slay Every Man His Brother", "About Three Thousand Men", "Consecrate Yourselves To Day", "That He May Bestow Upon You A Blessing"],
+  "Exodus 32:30-35": ["Ye Have Sinned A Great Sin", "Peradventure I Shall Make An Atonement", "This People Have Sinned A Great Sin", "Made Them Gods Of Gold", "Blot Me, I Pray Thee, Out Of Thy Book", "Whosoever Hath Sinned Against Me", "The LORD Plagued The People"],
+};
+
+function makeDay29Exodus31To32PhraseCard(section: PersonalExodusPhraseSectionInput, title: string): [string, string] {
+  const chapterFocus =
+    section.chapter === 31
+      ? "Exodus 31 shows God giving Spirit-filled skill for holy work and then guarding the Sabbath as a sign of covenant identity."
+      : "Exodus 32 shows the golden calf disaster, Moses' intercession, broken tablets, judgment, and the need for true atonement.";
+
+  return phrase(`\u{1F4CC} ${title}`, [
+    `${section.reference} is a turning point in Day 29, because true worship and false worship are standing side by side.`,
+    chapterFocus,
+    `In ${section.title}, this phrase helps a beginner see the difference between worship shaped by God's command and worship shaped by fear, impatience, or human control.`,
+    "Watch the movement carefully:",
+    "\u{1F9F1} God gives His word and pattern.",
+    "\u{1F528} People either build by obedience or make an idol.",
+    "\u{1F64C} Moses stands between a holy God and a guilty people.",
+    "This is why the phrase matters. Exodus is showing that God's presence is a gift, but covenant betrayal is serious and mercy must come through God's appointed way.",
+  ]);
+}
+
+function deepenDay29Exodus31To32PhraseCards(section: PersonalExodusPhraseSectionInput): PersonalExodusPhraseSectionInput {
+  const titles = DAY_29_EXODUS_31_32_PHRASE_TITLES[section.reference];
+  if (!titles) return section;
+
+  return {
+    ...section,
+    phrases: titles.map((title) => makeDay29Exodus31To32PhraseCard(section, title)),
+  };
+}
+
+const DAY_30_PHRASE_TITLES: Record<string, string[]> = {
+  "Exodus 33:1-6": ["Depart, And Go Up Hence", "Unto The Land Which I Sware", "I Will Send An Angel Before Thee", "I Will Not Go Up In The Midst Of Thee", "A Stiffnecked People", "The People Heard These Evil Tidings", "Put Off Thy Ornaments"],
+  "Exodus 33:7-11": ["Moses Took The Tabernacle", "Pitched It Without The Camp", "The Tabernacle Of The Congregation", "Every One Which Sought The LORD", "The Cloudy Pillar Descended", "The LORD Spake Unto Moses Face To Face", "As A Man Speaketh Unto His Friend"],
+  "Exodus 33:12-17": ["Thou Hast Not Let Me Know Whom Thou Wilt Send", "I Know Thee By Name", "Thou Hast Also Found Grace In My Sight", "Shew Me Now Thy Way", "Consider That This Nation Is Thy People", "My Presence Shall Go With Thee", "I Will Give Thee Rest"],
+  "Exodus 33:18-23": ["I Beseech Thee, Shew Me Thy Glory", "I Will Make All My Goodness Pass Before Thee", "I Will Proclaim The Name Of The LORD", "Thou Canst Not See My Face", "There Is A Place By Me", "I Will Put Thee In A Clift Of The Rock", "Thou Shalt See My Back Parts"],
+  "Exodus 34:1-6": ["Hew Thee Two Tables Of Stone", "Like Unto The First", "I Will Write Upon These Tables", "Be Ready In The Morning", "The LORD Descended In The Cloud", "Proclaimed The Name Of The LORD", "The LORD, The LORD God"],
+  "Exodus 34:7-9": ["Merciful And Gracious", "Longsuffering", "Abundant In Goodness And Truth", "Keeping Mercy For Thousands", "Forgiving Iniquity And Transgression And Sin", "By No Means Clear The Guilty", "Let My Lord, I Pray Thee, Go Among Us"],
+  "Exodus 34:10-15": ["Behold, I Make A Covenant", "I Will Do Marvels", "Observe Thou That Which I Command Thee", "Take Heed To Thyself", "Throw Down Their Altars", "The LORD, Whose Name Is Jealous", "Make No Covenant With The Inhabitants"],
+  "Exodus 34:16-21": ["Take Of Their Daughters Unto Thy Sons", "They Go A Whoring After Their Gods", "Make Thee No Molten Gods", "The Feast Of Unleavened Bread", "All That Openeth The Matrix Is Mine", "None Shall Appear Before Me Empty", "On The Seventh Day Thou Shalt Rest"],
+  "Exodus 34:22-27": ["The Feast Of Weeks", "The Feast Of Ingathering", "Thrice In The Year", "Neither Shall The Sacrifice Of The Feast", "The First Of The Firstfruits", "Write Thou These Words", "After The Tenor Of These Words"],
+  "Exodus 34:28-28": ["Forty Days And Forty Nights", "He Did Neither Eat Bread, Nor Drink Water", "He Wrote Upon The Tables", "The Words Of The Covenant", "The Ten Commandments"],
+  "Exodus 34:29-34": ["The Two Tables Of Testimony", "The Skin Of His Face Shone", "While He Talked With Him", "They Were Afraid To Come Nigh Him", "Moses Called Unto Them", "He Gave Them In Commandment", "Moses Put A Vail On His Face"],
+  "Exodus 34:35-35": ["The Children Of Israel Saw The Face Of Moses", "The Skin Of Moses' Face Shone", "Moses Put The Vail Upon His Face", "Until He Went In To Speak With Him"],
+  "Exodus 35:1-6": ["Moses Gathered All The Congregation", "These Are The Words", "Six Days Shall Work Be Done", "The Seventh Day", "An Holy Day", "Kindle No Fire", "Take Ye From Among You An Offering"],
+  "Exodus 35:7-12": ["Ram Skins Dyed Red", "Shittim Wood", "Oil For The Light", "Spices For Anointing Oil", "Onyx Stones", "Every Wise Hearted Among You", "The Tabernacle, His Tent, And His Covering"],
+  "Exodus 35:13-18": ["The Table, And His Staves", "The Shewbread", "The Candlestick Also For The Light", "The Incense Altar", "The Hanging For The Door", "The Altar Of Burnt Offering", "The Pins Of The Tabernacle"],
+  "Exodus 35:19-19": ["The Cloths Of Service", "To Do Service In The Holy Place", "The Holy Garments For Aaron", "The Garments Of His Sons", "To Minister In The Priest's Office"],
+  "Exodus 35:20-25": ["All The Congregation Departed", "Every One Whose Heart Stirred Him Up", "Every One Whom His Spirit Made Willing", "They Came, Both Men And Women", "As Many As Were Willing Hearted", "An Offering Of Gold Unto The LORD", "All The Women That Were Wise Hearted"],
+  "Exodus 35:26-29": ["All The Women Whose Heart Stirred Them Up", "Spun Goats' Hair", "The Rulers Brought Onyx Stones", "Spice, And Oil", "Every Man And Woman", "Whose Heart Made Them Willing", "A Willing Offering Unto The LORD"],
+  "Exodus 36:8-13": ["Every Wise Hearted Man", "Made Ten Curtains", "Fine Twined Linen", "Blue, And Purple, And Scarlet", "Cherubims Of Cunning Work", "Fifty Loops", "Coupled The Curtains One Unto Another"],
+  "Exodus 36:14-19": ["Curtains Of Goats' Hair", "A Covering Over The Tabernacle", "Eleven Curtains", "Taches Of Brass", "A Covering For The Tent", "Rams' Skins Dyed Red", "Badgers' Skins Above That"],
+  "Exodus 36:20-25": ["Boards For The Tabernacle", "Shittim Wood, Standing Up", "Ten Cubits Was The Length", "Two Tenons", "Forty Sockets Of Silver", "Twenty Boards", "For The Other Side"],
+  "Exodus 36:26-31": ["Two Boards Made He For The Corners", "Coupled Beneath", "Coupled Together At The Head", "Eight Boards", "Sixteen Sockets Of Silver", "Bars Of Shittim Wood", "For The Boards Of The Tabernacle"],
+  "Exodus 36:32-37": ["The Middle Bar", "Shot Through The Boards", "Overlaid The Boards With Gold", "A Vail Of Blue, And Purple, And Scarlet", "Cherubims Made He It", "Four Pillars Of Shittim Wood", "An Hanging For The Tabernacle Door"],
+  "Exodus 36:38-38": ["Five Pillars Of It", "Their Hooks", "He Overlaid Their Chapiters", "Their Fillets With Gold", "Their Five Sockets Were Of Brass"],
+};
+
+function makeDay30PhraseCard(section: PersonalExodusPhraseSectionInput, title: string): [string, string] {
+  const chapterFocus =
+    section.chapter === 33
+      ? "Exodus 33 is about the crisis after the golden calf: the land is not enough if God's presence does not go with them."
+      : section.chapter === 34
+        ? "Exodus 34 renews the covenant and reveals the LORD's name: mercy, patience, faithfulness, justice, and holy jealousy."
+        : section.chapter === 35
+          ? "Exodus 35 turns the people from idol-making toward willing gifts, Sabbath obedience, and skilled work for God's dwelling."
+          : "Exodus 36 shows the tabernacle actually being built according to God's command, detail by detail.";
+
+  return phrase(`\u{1F4CC} ${title}`, [
+    `${section.reference} sits in the recovery story after Israel's golden calf failure, so this phrase is not just a detail on the page.`,
+    chapterFocus,
+    `In ${section.title}, the phrase helps a beginner see what God is teaching about presence, covenant renewal, willing obedience, or building worship His way.`,
+    "Read it slowly:",
+    "\u2601\u{FE0F} God's presence is the real gift.",
+    "\u{1F64C} Mercy does not make sin small.",
+    "\u{1F3D5}\u{FE0F} The tabernacle is built by willing obedience, not panic or invention.",
+    "This keeps the note anchored in Exodus itself: God is restoring a sinful people and teaching them how to live near Him again.",
+  ]);
+}
+
+function deepenDay30PhraseCards(section: PersonalExodusPhraseSectionInput): PersonalExodusPhraseSectionInput {
+  const titles = DAY_30_PHRASE_TITLES[section.reference];
+  if (!titles) return section;
+
+  return {
+    ...section,
+    phrases: titles.map((title) => makeDay30PhraseCard(section, title)),
+  };
+}
+
+const EXODUS_31_40_MOBILE_FORMAT_CUES: Record<number, string[]> = {
+  31: ["🛠️ God gives skill for holy work.", "🛑 Sabbath guards covenant identity.", "🪨 The tablets come from God, not human invention."],
+  32: ["🐂 The golden calf corrupts worship.", "🙏 Moses intercedes for guilty people.", "🩹 Mercy does not pretend covenant sin is small."],
+  33: ["☁️ God's presence is the real gift.", "🙏 Moses pleads for the people.", "✨ God's glory is revealed with mercy and holiness."],
+  34: ["📜 The covenant is renewed after failure.", "🙌 The LORD reveals His character.", "🧭 Israel must not drift back into idolatry."],
+  35: ["🛑 Sabbath still matters during holy work.", "🎁 Willing hearts bring offerings.", "🛠️ God uses skilled hands for worship."],
+  36: ["🏕️ The tabernacle begins to take shape.", "📏 Obedience follows God's pattern.", "🎁 The people give more than enough."],
+  37: ["📦 The holy furniture is built.", "🩸 The mercy seat points to atonement.", "🕯️ God's house is ordered for presence and worship."],
+  38: ["🩸 The altar and courtyard shape approach.", "💧 Washing matters before service.", "🧾 The tabernacle work is counted carefully."],
+  39: ["👕 Priestly garments are finished.", "💎 Israel's names are carried before God.", "✅ The work is checked against the LORD's command."],
+  40: ["🏕️ The tabernacle is set up.", "🧴 Holy things are anointed and arranged.", "☁️ God's glory fills the dwelling place."],
+};
+
+const EXODUS_31_40_BANNED_FILLER_TITLES = [
+  "What Is Happening Here",
+  "Why This Detail Matters",
+  "Why This Matters",
+  "Beginner Connection",
+  "Watch The Pattern",
+  "Watch This Pattern",
+  "What This Shows About People",
+  "What This Shows About God",
 ];
+
+function formatExodusThirtyOneToFortyPhraseExplanation(section: PersonalExodusPhraseSectionInput, content: string) {
+  const cleaned = content.replace(/in Day 29/g, "in Exodus");
+  if (section.chapter < 31 || section.chapter > 40 || cleaned.includes("What to notice:")) {
+    return cleaned;
+  }
+
+  const blocks = cleaned
+    .split(/\n{2,}/)
+    .map((block) => block.trim())
+    .filter(Boolean);
+  const cues = EXODUS_31_40_MOBILE_FORMAT_CUES[section.chapter];
+
+  if (!cues || blocks.length < 2) {
+    return blocks.join("\n\n");
+  }
+
+  const opening = blocks.slice(0, Math.min(2, blocks.length));
+  const closing = blocks.slice(opening.length);
+
+  return note([
+    ...opening,
+    "What to notice:",
+    ...cues,
+    ...closing,
+  ]);
+}
+
+function formatExodusThirtyOneToFortySectionExplanations(sections: PersonalExodusPhraseSectionInput[]) {
+  return sections.map((section) => ({
+    ...section,
+    phrases: section.phrases
+      .filter(([title]) =>
+        section.chapter < 37 ||
+        !EXODUS_31_40_BANNED_FILLER_TITLES.some((bannedTitle) => title.includes(bannedTitle)),
+      )
+      .map(([title, content]) => [
+        title,
+        formatExodusThirtyOneToFortyPhraseExplanation(section, content),
+      ] as [string, string]),
+  }));
+}
+
+export const EXODUS_31_40_PERSONAL_SECTIONS: PersonalExodusPhraseSectionInput[] = formatExodusThirtyOneToFortySectionExplanations([
+  ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_TWENTY_NINE_DEEP_STUDY_SECTIONS, [31, 32], "🐂").map(deepenDay29Exodus31To32PhraseCards),
+  ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_THIRTY_DEEP_STUDY_SECTIONS, [33, 34, 35, 36], "☁️").map(deepenDay30PhraseCards),
+  ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_THIRTY_ONE_DEEP_STUDY_SECTIONS, [37, 38, 39, 40], "🏁").map(ensureBeginnerExodusPhraseDepth),
+  ...RAW_EXODUS_31_40_PERSONAL_SECTIONS.filter((section) => section.chapter < 31 || section.chapter > 40),
+]);

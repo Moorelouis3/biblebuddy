@@ -704,6 +704,61 @@ function addGenesisTwentyOneToThirtySectionTexture(sections: PersonalGenesisPhra
   }));
 }
 
+const GENESIS_21_30_MOBILE_FORMAT_CUES: Record<number, string[]> = {
+  25: ["🧬 The family line is moving forward.", "👶 The promise is passing to the next generation.", "⚖️ Choices reveal what people value."],
+  26: ["🌾 Famine tests trust.", "💧 Wells show conflict and provision.", "🤝 God keeps the promise He made."],
+  27: ["👂 Secret plans shape the scene.", "🎭 Deception wounds the family.", "🙏 The blessing still matters."],
+  28: ["🪜 God meets Jacob on the road.", "📍 A place becomes a memory of worship.", "🧭 The promise travels with Jacob."],
+  29: ["💧 The well becomes a meeting place.", "💔 Love, labor, and rejection mix together.", "👶 God sees the overlooked."],
+  30: ["💔 Comparison keeps hurting the family.", "👶 Children are named inside pain and hope.", "🐑 God provides through ordinary work."],
+};
+
+function hasVisualList(content: string) {
+  return content
+    .split(/\n+/)
+    .filter((line) => line.trim().length > 0)
+    .some((line) => /^[^\w\s"']/.test(line.trim()));
+}
+
+function formatGenesisTwentyOneToThirtyPhraseExplanation(
+  section: PersonalGenesisPhraseSectionInput,
+  content: string,
+) {
+  if (section.chapter < 25 || section.chapter > 30 || hasVisualList(content)) {
+    return content;
+  }
+
+  const blocks = content
+    .split(/\n{2,}/)
+    .map((block) => block.trim())
+    .filter(Boolean);
+  const cues = GENESIS_21_30_MOBILE_FORMAT_CUES[section.chapter];
+
+  if (!cues || blocks.length < 2) {
+    return content;
+  }
+
+  const opening = blocks.slice(0, Math.min(2, blocks.length));
+  const closing = blocks.slice(opening.length);
+
+  return note([
+    ...opening,
+    "What to notice:",
+    ...cues,
+    ...closing,
+  ]);
+}
+
+function formatGenesisTwentyOneToThirtySectionExplanations(sections: PersonalGenesisPhraseSectionInput[]) {
+  return sections.map((section) => ({
+    ...section,
+    phrases: section.phrases.map(([title, content]) => [
+      title,
+      formatGenesisTwentyOneToThirtyPhraseExplanation(section, content),
+    ] as [string, string]),
+  }));
+}
+
 const RAW_GENESIS_21_30_PERSONAL_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
   {
     chapter: 21,
@@ -3832,10 +3887,12 @@ function deepenDay12Genesis30PhraseCards(section: PersonalGenesisPhraseSectionIn
   };
 }
 
-export const GENESIS_21_30_PERSONAL_SECTIONS = addGenesisTwentyOneToThirtySectionTexture([
-  ...DAY_9_FINAL_SECTIONS,
-  ...DAY_10_FINAL_SECTIONS.map(deepenDay10PhraseCards),
-  ...DAY_11_FINAL_SECTIONS.map(deepenDay11PhraseCards),
-  ...DAY_12_GENESIS_30_FINAL_SECTIONS.map(deepenDay12Genesis30PhraseCards),
-  ...expandSplitSections(GENESIS_25_30_PERSONAL_SECTIONS),
-]);
+export const GENESIS_21_30_PERSONAL_SECTIONS = formatGenesisTwentyOneToThirtySectionExplanations(
+  addGenesisTwentyOneToThirtySectionTexture([
+    ...DAY_9_FINAL_SECTIONS,
+    ...DAY_10_FINAL_SECTIONS.map(deepenDay10PhraseCards),
+    ...DAY_11_FINAL_SECTIONS.map(deepenDay11PhraseCards),
+    ...DAY_12_GENESIS_30_FINAL_SECTIONS.map(deepenDay12Genesis30PhraseCards),
+    ...expandSplitSections(GENESIS_25_30_PERSONAL_SECTIONS),
+  ]),
+);
