@@ -59,6 +59,8 @@ const DAY_SPECS: Record<number, DaySpec> = {
   31: { book: "Exodus", chapters: [37, 38, 39, 40], sections: EXODUS_31_40_PERSONAL_SECTIONS },
   32: { book: "Leviticus", chapters: [1, 2, 3, 4], sections: LEVITICUS_1_10_PERSONAL_SECTIONS },
   33: { book: "Leviticus", chapters: [5, 6, 7, 8], sections: LEVITICUS_1_10_PERSONAL_SECTIONS },
+  34: { book: "Leviticus", chapters: [9, 10, 11, 12], sections: LEVITICUS_1_10_PERSONAL_SECTIONS },
+  35: { book: "Leviticus", chapters: [13, 14, 15, 16], sections: LEVITICUS_1_10_PERSONAL_SECTIONS },
 };
 
 function parseDay() {

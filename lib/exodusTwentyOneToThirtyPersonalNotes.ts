@@ -500,16 +500,48 @@ const DAY_27_PHRASE_TITLES: Record<string, string[]> = {
   "Exodus 24:15-18": ["Moses Went Up Into The Mount", "A Cloud Covered The Mount", "The Glory Of The LORD Abode", "The Seventh Day He Called Unto Moses", "A Devouring Fire", "Moses Was In The Mount Forty Days And Forty Nights"],
 };
 
-function makeDay27PhraseCard(section: PersonalExodusPhraseSectionInput, title: string): [string, string] {
-  return phrase(`📌 ${title}`, [
-    `${section.reference} is part of Exodus showing how rescued people must now live with justice, mercy, holiness, and covenant responsibility.`,
-    `In ${section.title}, this phrase is a real piece of the passage, not a generic explanation card.`,
-    "A beginner should slow down here and ask what this law or covenant moment is protecting.",
-    "This phrase comes directly from the Bible text, so the note stays anchored in the words of Exodus.",
-    "The LORD is teaching Israel not to recreate Egypt, but to become a people shaped by His justice and presence.",
-  ]);
-}
+function explainExodusTwentyOneToTwentyEightPhrase(section: PersonalExodusPhraseSectionInput, title: string): string {
+  const lower = title.toLowerCase();
+  const lines: string[] = [];
+  const add = (...items: string[]) => {
+    for (const item of items) {
+      if (item && !lines.includes(item)) lines.push(item);
+    }
+  };
 
+  if (lower.includes("judgments") || lower.includes("servant") || lower.includes("maidservant") || lower.includes("go out free") || lower.includes("year of release")) {
+    add(`${title} belongs to Israel's case laws for real life after rescue.`, "These laws do not let Israel recreate Egypt's cruelty. They put limits around power and protect people who could easily be mistreated.", "\u{2696}\u{FE0F} Justice", "\u{1F3E0} Household life", "\u{1F6E1}\u{FE0F} Protection", "God's rescued people must treat vulnerable people differently than Pharaoh did.");
+  } else if (lower.includes("smite") || lower.includes("tooth") || lower.includes("eye") || lower.includes("life for life") || lower.includes("ox") || lower.includes("pit")) {
+    add(`${title} deals with harm, responsibility, and restitution.`, "The law teaches that damage cannot be ignored. Life, injury, animals, property, and negligence all matter before God.", "\u{2696}\u{FE0F} Fair judgment", "\u{1F9FE} Responsibility", "\u{1F91D} Repairing harm", "A beginner should see that God's law brings justice into ordinary conflicts, not only religious ceremonies.");
+  } else if (lower.includes("widow") || lower.includes("fatherless") || lower.includes("stranger") || lower.includes("poor") || lower.includes("pledge") || lower.includes("usury")) {
+    add(`${title} shows God's care for people with less protection.`, "In the ancient world, widows, orphans, foreigners, and the poor could be easily exploited. God commands Israel to protect them.", "\u{1F494} Vulnerable people", "\u{1F932} Mercy", "\u{2696}\u{FE0F} Justice", "The people rescued from oppression must not become oppressors themselves.");
+  } else if (lower.includes("sabbath") || lower.includes("feast") || lower.includes("firstfruits") || lower.includes("unleavened") || lower.includes("harvest")) {
+    add(`${title} shapes Israel's time around worship and trust.`, "Sabbaths and feasts trained Israel to remember rescue, receive rest, and bring the first of their increase to the LORD.", "\u{1F4C6} Holy time", "\u{1F35E} Remembered rescue", "\u{1F33E} Firstfruits", "God's people do not only belong to Him in crisis. Their calendar belongs to Him too.");
+  } else if (lower.includes("book of the covenant") || lower.includes("blood of the covenant") || lower.includes("all that the lord hath said")) {
+    add(`${title} belongs to the covenant ceremony at Sinai.`, "Israel hears God's words, agrees to the covenant, and the blood marks the seriousness of the relationship.", "\u{1F4DC} Covenant words", "\u{1FA78} Covenant blood", "\u{1F64F} Worship response", "This is not casual agreement. The rescued people are being bound to the LORD as His covenant people.");
+  } else if (lower.includes("offering") || lower.includes("willingly") || lower.includes("gold") || lower.includes("silver") || lower.includes("brass") || lower.includes("blue") || lower.includes("purple") || lower.includes("scarlet") || lower.includes("oil")) {
+    add(`${title} belongs to the materials Israel brings for God's dwelling place.`, "The tabernacle begins with willing gifts, not forced labor like Egypt. The rescued people give valuable materials for worship.", "\u{1F381} Willing offering", "\u{1F48E} Precious materials", "\u{1F56F}\u{FE0F} Oil for light", "God is forming a worshiping people, not a slave workforce.");
+  } else if (lower.includes("ark") || lower.includes("mercy seat") || lower.includes("cherubims") || lower.includes("testimony") || lower.includes("commune")) {
+    add(`${title} points to the holiest furniture in the tabernacle.`, "The ark held the testimony, and the mercy seat was the place where God promised to meet and speak with Moses.", "\u{1F4E6} Ark", "\u{1FAB6} Cherubim", "\u{1F64F} Meeting with God", "The center of Israel's camp is not Pharaoh's throne. It is the holy presence of the LORD.");
+  } else if (lower.includes("table") || lower.includes("shewbread") || lower.includes("candlestick") || lower.includes("lamps") || lower.includes("almonds") || lower.includes("branches")) {
+    add(`${title} explains furniture inside the holy place.`, "The table, bread, lampstand, and lamps teach that God's house has fellowship, provision, beauty, and light.", "\u{1F35E} Bread before God", "\u{1F56F}\u{FE0F} Lamp light", "\u{1F33F} Almond design", "These details help a beginner see that worship space is teaching truth through objects.");
+  } else if (lower.includes("curtain") || lower.includes("covering") || lower.includes("boards") || lower.includes("sockets") || lower.includes("vail") || lower.includes("holy place") || lower.includes("most holy")) {
+    add(`${title} describes the structure and boundaries of holy space.`, "The tabernacle was not random fabric and wood. Curtains, boards, sockets, and the veil taught Israel that nearness to God is beautiful, ordered, and holy.", "\u{1F3D5}\u{FE0F} Holy tent", "\u{1F6AA} Veil", "\u{1F4CD} Holy and Most Holy", "God wants to dwell among His people, but His presence must be honored His way.");
+  } else if (lower.includes("altar") || lower.includes("ashes") || lower.includes("horns") || lower.includes("court") || lower.includes("pins") || lower.includes("lamp to burn")) {
+    add(`${title} belongs to the altar, courtyard, or lamp service.`, "The altar teaches sacrifice before approach, the court marks holy boundaries, and the lamp keeps light before the LORD.", "\u{1FA78} Sacrifice", "\u{1F6A7} Courtyard boundary", "\u{1F56F}\u{FE0F} Continual light", "Israel learns that worship includes access, cleansing, boundaries, and steady service.");
+  } else if (lower.includes("aaron") || lower.includes("priest") || lower.includes("ephod") || lower.includes("breastplate") || lower.includes("onyx") || lower.includes("names") || lower.includes("urim") || lower.includes("thummim") || lower.includes("holiness to the lord")) {
+    add(`${title} explains priestly service and representation.`, "The priest carried Israel's names before God, wore holy garments, and served as a representative for the people.", "\u{1F455} Holy garments", "\u{1F48E} Stones with names", "\u{1F64F} Representing Israel", "A beginner should see that coming near to God requires a God-given mediator, not casual self-approach.");
+  } else if (lower.includes("linen breeches") || lower.includes("nakedness") || lower.includes("die") || lower.includes("accepted")) {
+    add(`${title} shows the seriousness of priestly holiness.`, "Even clothing details matter because the priest's work happens before the holy LORD. Shame, sin, and careless approach cannot be treated lightly.", "\u{1F455} Covered for service", "\u{26A0}\u{FE0F} Holy danger", "\u{2705} Accepted before God", "The point is not fashion. It is reverent service before God's presence.");
+  } else {
+    add(`${title} is worth slowing down over in ${section.reference}.`, `${section.title} gives one concrete detail about covenant justice, worship, or God's presence.`, "A beginner should ask what this phrase protects, teaches, or reveals about approaching God.", "Exodus is showing that redemption reshapes ordinary life and worship.");
+  }
+
+  return note(lines.slice(0, 8));
+}
+function makeDay27PhraseCard(section: PersonalExodusPhraseSectionInput, title: string): [string, string] {
+  return [`📌 ${title}`, explainExodusTwentyOneToTwentyEightPhrase(section, title)];
+}
 function deepenDay27PhraseCards(section: PersonalExodusPhraseSectionInput): PersonalExodusPhraseSectionInput {
   const titles = DAY_27_PHRASE_TITLES[section.reference];
   if (!titles) return section;
@@ -553,27 +585,8 @@ const DAY_28_PHRASE_TITLES: Record<string, string[]> = {
 };
 
 function makeDay28PhraseCard(section: PersonalExodusPhraseSectionInput, title: string): [string, string] {
-  const chapterFocus =
-    section.chapter === 25
-      ? "God is showing the furniture of His dwelling: gifts, ark, mercy seat, table, bread, and light."
-      : section.chapter === 26
-        ? "God is showing the holy tent itself: curtains, coverings, boards, bars, and the veil that marks holy space."
-        : section.chapter === 27
-          ? "God is showing the altar, courtyard, and lamp oil, so Israel learns that approach, sacrifice, boundaries, and light all matter."
-          : "God is showing the priesthood, because someone must represent the people before Him in holiness.";
-
-  return phrase(`\u{1F4CC} ${title}`, [
-    `${section.reference} is full of tabernacle details, and this phrase is one of the pieces a beginner can easily skip too fast.`,
-    chapterFocus,
-    `In ${section.title}, the phrase helps us see that worship is not random or casual. God gives the pattern, the materials, the people, and the way to come near.`,
-    "Think of the detail slowly:",
-    "\u{1F3D5}\u{FE0F} God is making a dwelling place.",
-    "\u{1F56F}\u{FE0F} Holy space needs order and light.",
-    "\u{1FA78} Nearness to God requires the way God provides.",
-    "These instructions teach Israel that the LORD wants to live among His people, but His presence is holy and must be honored.",
-  ]);
+  return [`\u{1F4CC} ${title}`, explainExodusTwentyOneToTwentyEightPhrase(section, title)];
 }
-
 function deepenDay28PhraseCards(section: PersonalExodusPhraseSectionInput): PersonalExodusPhraseSectionInput {
   const titles = DAY_28_PHRASE_TITLES[section.reference];
   if (!titles) return section;
@@ -604,21 +617,55 @@ const DAY_29_EXODUS_29_30_PHRASE_TITLES: Record<string, string[]> = {
 };
 
 function makeDay29Exodus29To30PhraseCard(section: PersonalExodusPhraseSectionInput, title: string): [string, string] {
-  const chapterFocus =
-    section.chapter === 29
-      ? "Exodus 29 is showing how priests are washed, clothed, anointed, sacrificed for, and set apart before they can serve."
-      : "Exodus 30 is showing the daily holy rhythms around incense, ransom, washing, anointing oil, and sacred incense.";
+  return [`\u{1F4CC} ${title}`, explainExodusTwentyNineToThirtyPhrase(section, title)];
+}
 
-  return phrase(`\u{1F4CC} ${title}`, [
-    `${section.reference} is part of the priesthood and tabernacle instructions, where small details carry big meaning.`,
-    chapterFocus,
-    `In ${section.title}, this phrase helps a beginner see that approaching God is not casual self-confidence. God gives cleansing, sacrifice, holiness, and order.`,
-    "Slow the phrase down:",
-    "\u{1FA78} Sacrifice deals with sin.",
-    "\u{1F4A7} Washing points to cleansing.",
-    "\u{1F56F}\u{FE0F} Incense and oil mark worship as holy.",
-    "The point is not decoration for decoration's sake. God is teaching Israel how a holy God can dwell among a rescued people.",
-  ]);
+function explainExodusTwentyNineToThirtyPhrase(section: PersonalExodusPhraseSectionInput, title: string): string {
+  const lower = title.toLowerCase();
+  const lines: string[] = [];
+  const add = (...items: string[]) => {
+    for (const item of items) {
+      if (item && !lines.includes(item)) lines.push(item);
+    }
+  };
+
+  if (lower.includes("wash") || lower.includes("water") || lower.includes("laver")) {
+    add(`${title} points to cleansing before priestly service.`, "The priests could not serve near God's holy presence while acting as if uncleanness did not matter.", "\u{1F4A7} Washing", "\u{1F9FC} Cleansing", "\u{26A0}\u{FE0F} Holy service", "A beginner should see that God provides a way to serve Him, but He does not make holiness casual.");
+  } else if (lower.includes("anoint") || lower.includes("oil") || lower.includes("spices") || lower.includes("myrrh") || lower.includes("cinnamon") || lower.includes("calamus")) {
+    add(`${title} marks someone or something as set apart for the LORD.`, "Anointing oil was not normal perfume. It marked the tabernacle, altar, and priests as holy for God's service.", "\u{1F9F4} Holy oil", "\u{1F64C} Set apart", "\u{1F3D5}\u{FE0F} God's dwelling", "The smell itself would teach Israel that God's service is different from ordinary life.");
+  } else if (lower.includes("bullock") || lower.includes("ram") || lower.includes("lamb") || lower.includes("blood") || lower.includes("sin offering") || lower.includes("burnt offering") || lower.includes("atonement")) {
+    add(`${title} names the sacrifice needed before holy service.`, "Priests needed sacrifice too. Their calling did not remove their need for atonement.", "\u{1FA78} Blood", "\u{1F402} Sacrifice", "\u{1F64F} Atonement", "Leaders in worship are not above cleansing; they must be brought near God's way.");
+  } else if (lower.includes("ear") || lower.includes("thumb") || lower.includes("toe") || lower.includes("right shoulder") || lower.includes("wave") || lower.includes("consecration")) {
+    add(`${title} shows priestly service being marked from head to foot.`, "The priest's hearing, hands, and walk all belong to the LORD. Consecration is not only a ceremony; it claims the whole life for holy service.", "\u{1F442} Hearing God", "\u{1F590}\u{FE0F} Serving God", "\u{1F463} Walking with God", "A beginner should notice that God shapes the priest before the priest serves the people.");
+  } else if (lower.includes("incense") || lower.includes("altar to burn") || lower.includes("sweet") || lower.includes("perfume") || lower.includes("frankincense")) {
+    add(`${title} describes fragrant worship near the veil.`, "Incense rose before the LORD in the holy place. It taught Israel that worship near God is ordered, beautiful, and holy.", "\u{1F32B}\u{FE0F} Incense rising", "\u{1F6AA} Near the veil", "\u{1F64F} Prayer-like worship", "No strange incense was allowed because God's presence is not approached by human invention.");
+  } else if (lower.includes("ransom") || lower.includes("half a shekel") || lower.includes("rich") || lower.includes("poor") || lower.includes("memorial")) {
+    add(`${title} teaches that every Israelite life belongs to the LORD.`, "The ransom money showed that the people were counted before God with humility, not pride.", "\u{1FA99} Half shekel", "\u{1F465} Every person counted", "\u{2696}\u{FE0F} Rich and poor equal", "No one is worth more before God because of wealth, and no one is too poor to belong.");
+  } else if (lower.includes("garments") || lower.includes("coats") || lower.includes("priest") || lower.includes("aaron") || lower.includes("sons")) {
+    add(`${title} points to priestly identity and service.`, "The garments were not costumes for status. They marked Aaron and his sons as servants set apart to represent Israel before God.", "\u{1F455} Holy garments", "\u{1F64C} Set apart", "\u{1F465} Serving for the people", "A beginner should see that priesthood is about holy responsibility, not personal importance.");
+  } else if (lower.includes("continual") || lower.includes("morning") || lower.includes("even") || lower.includes("day by day")) {
+    add(`${title} shows worship as a steady rhythm before God.`, "Israel's life with the LORD was not only crisis moments. Morning and evening worship trained the people to live continually before Him.", "\u{1F305} Morning", "\u{1F307} Evening", "\u{1F56F}\u{FE0F} Daily worship", "God was teaching His people that nearness to Him shapes ordinary time.");
+  } else {
+    add(`${title} gives a real detail from ${section.reference}.`, `${section.title} is explaining how priests, sacrifices, incense, cleansing, ransom, and holy objects prepare Israel for God's presence.`, "The phrase may name a person, object, action, material, location, or old Bible wording.", "God is teaching how a holy God can dwell among a rescued people.");
+  }
+
+  return note(lines.slice(0, 8));
+}
+
+function deepenDay29Exodus29To30Mining(section: PersonalExodusPhraseSectionInput): PersonalExodusPhraseSectionInput {
+  if (section.chapter < 29 || section.chapter > 30) return section;
+
+  const pools: Record<string, string[]> = {
+    29: ["Before The LORD", "The Door Of The Tabernacle", "A Sweet Savour", "Holy Place", "Seven Days", "Sanctify It", "I Will Meet You", "I Will Dwell Among The Children Of Israel"],
+    30: ["Before The Mercy Seat", "Once In A Year", "A Ransom For His Soul", "To Make An Atonement", "They Shall Wash With Water", "Holy Anointing Oil", "Most Holy", "Ye Shall Not Make To Yourselves"],
+  };
+  const existing = new Set(section.phrases.map(([phraseTitle]) => phraseTitle.replace(/^📌\s*/, "").trim().toLowerCase()));
+  const additions = (pools[section.chapter] ?? [])
+    .filter((phraseTitle) => !existing.has(phraseTitle.toLowerCase()))
+    .slice(0, 2)
+    .map((phraseTitle) => makeDay29Exodus29To30PhraseCard(section, phraseTitle));
+
+  return { ...section, phrases: [...section.phrases, ...additions] };
 }
 
 function deepenDay29Exodus29To30PhraseCards(section: PersonalExodusPhraseSectionInput): PersonalExodusPhraseSectionInput {
@@ -692,6 +739,6 @@ function formatExodusTwentyOneToThirtySectionExplanations(sections: PersonalExod
 export const EXODUS_21_30_PERSONAL_SECTIONS: PersonalExodusPhraseSectionInput[] = formatExodusTwentyOneToThirtySectionExplanations([
   ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_TWENTY_SEVEN_DEEP_STUDY_SECTIONS, [21, 22, 23, 24], "⚖️").map(deepenDay27PhraseCards),
   ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_TWENTY_EIGHT_DEEP_STUDY_SECTIONS, [25, 26, 27, 28], "⛺").map(deepenDay28PhraseCards),
-  ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_TWENTY_NINE_DEEP_STUDY_SECTIONS, [29, 30], "🕯️").map(deepenDay29Exodus29To30PhraseCards),
+  ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_TWENTY_NINE_DEEP_STUDY_SECTIONS, [29, 30], "🕯️").map(deepenDay29Exodus29To30PhraseCards).map(deepenDay29Exodus29To30Mining),
   ...RAW_EXODUS_21_30_PERSONAL_SECTIONS.filter((section) => section.chapter < 21 || section.chapter > 30),
 ]);

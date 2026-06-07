@@ -6,6 +6,7 @@ import { EXODUS_2_10_PERSONAL_SECTIONS } from "./exodusTwoToTenPersonalNotes";
 import { EXODUS_11_20_PERSONAL_SECTIONS } from "./exodusElevenToTwentyPersonalNotes";
 import { EXODUS_21_30_PERSONAL_SECTIONS } from "./exodusTwentyOneToThirtyPersonalNotes";
 import { EXODUS_31_40_PERSONAL_SECTIONS } from "./exodusThirtyOneToFortyPersonalNotes";
+import { LEVITICUS_1_10_PERSONAL_SECTIONS } from "./leviticusOneToTenPersonalNotes";
 
 export type BibleReaderStudyNoteCategory = {
   id: string;
@@ -11896,6 +11897,21 @@ function makePersonalExodusPhraseSection(section: {
   };
 }
 
+function makePersonalLeviticusPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "leviticus",
+  };
+}
+
 function applyPersonalGenesisFourThroughTenStudySections() {
   const sections: BibleReaderStudySection[] = [
     makePersonalGenesisPhraseSection({
@@ -16189,6 +16205,19 @@ function applyPersonalExodusThirtyOneThroughFortyStudySections() {
   BIBLE_READER_STUDY_SECTIONS.push(...sections);
 }
 
+function applyPersonalLeviticusOneThroughTenStudySections() {
+  const sections = LEVITICUS_1_10_PERSONAL_SECTIONS.map(makePersonalLeviticusPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "leviticus" && section.chapter >= 1 && section.chapter <= 16) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
 type ExodusTextureRule = {
   matches: string[];
   lines: string[];
@@ -16933,6 +16962,7 @@ applyPersonalExodusTwoThroughTenStudySections();
 applyPersonalExodusElevenThroughTwentyStudySections();
 applyPersonalExodusTwentyOneThroughThirtyStudySections();
 applyPersonalExodusThirtyOneThroughFortyStudySections();
+applyPersonalLeviticusOneThroughTenStudySections();
 applyPersonalExodusTextureStudySections();
 enforceStudySectionVerseLimit();
 

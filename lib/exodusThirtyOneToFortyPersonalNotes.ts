@@ -479,22 +479,67 @@ const DAY_29_EXODUS_31_32_PHRASE_TITLES: Record<string, string[]> = {
   "Exodus 32:30-35": ["Ye Have Sinned A Great Sin", "Peradventure I Shall Make An Atonement", "This People Have Sinned A Great Sin", "Made Them Gods Of Gold", "Blot Me, I Pray Thee, Out Of Thy Book", "Whosoever Hath Sinned Against Me", "The LORD Plagued The People"],
 };
 
-function makeDay29Exodus31To32PhraseCard(section: PersonalExodusPhraseSectionInput, title: string): [string, string] {
-  const chapterFocus =
-    section.chapter === 31
-      ? "Exodus 31 shows God giving Spirit-filled skill for holy work and then guarding the Sabbath as a sign of covenant identity."
-      : "Exodus 32 shows the golden calf disaster, Moses' intercession, broken tablets, judgment, and the need for true atonement.";
+function explainExodusThirtyOneToFortyMinedPhrase(section: PersonalExodusPhraseSectionInput, title: string): string {
+  const lower = title.toLowerCase();
+  const lines: string[] = [];
+  const add = (...items: string[]) => {
+    for (const item of items) {
+      if (item && !lines.includes(item)) lines.push(item);
+    }
+  };
 
-  return phrase(`\u{1F4CC} ${title}`, [
-    `${section.reference} is a turning point in Day 29, because true worship and false worship are standing side by side.`,
-    chapterFocus,
-    `In ${section.title}, this phrase helps a beginner see the difference between worship shaped by God's command and worship shaped by fear, impatience, or human control.`,
-    "Watch the movement carefully:",
-    "\u{1F9F1} God gives His word and pattern.",
-    "\u{1F528} People either build by obedience or make an idol.",
-    "\u{1F64C} Moses stands between a holy God and a guilty people.",
-    "This is why the phrase matters. Exodus is showing that God's presence is a gift, but covenant betrayal is serious and mercy must come through God's appointed way.",
-  ]);
+  if (lower.includes("bezaleel") || lower.includes("aholiab") || lower.includes("wisdom") || lower.includes("understanding") || lower.includes("workmanship") || lower.includes("wise hearted")) {
+    add(`${title} points to skill that God Himself provides.`, "The tabernacle is not built by panic, pride, or random creativity. God gives wisdom, understanding, and skilled hands for His dwelling place.", "\u{1F528} Skilled hands", "\u{1F9E0} Wisdom", "\u{1F64C} Spirit-given ability", "Craftsmanship becomes worship when it follows God's command.");
+  } else if (lower.includes("sabbath") || lower.includes("six days") || lower.includes("seventh") || lower.includes("sign")) {
+    add(`${title} teaches that rest is part of covenant identity.`, "Even holy work does not cancel the Sabbath. Israel must remember that they belong to the LORD, not to endless labor.", "\u{1F6D1} Rest", "\u{1F4DC} Covenant sign", "\u{1F9ED} Identity", "After slavery in Egypt, Sabbath rest teaches God's people that Pharaoh no longer owns their time.");
+  } else if (lower.includes("tables") || lower.includes("stone") || lower.includes("finger of god") || lower.includes("writing")) {
+    add(`${title} points to God's own covenant word.`, "The tablets are not human ideas about religion. They come from God, written as covenant testimony for His people.", "\u{1FAA8} Stone tablets", "\u{270D}\u{FE0F} God's writing", "\u{1F4DC} Covenant word", "That makes the golden calf even more serious: Israel breaks covenant while God's word is still being given.");
+  } else if (lower.includes("calf") || lower.includes("gods") || lower.includes("earrings") || lower.includes("rose up to play") || lower.includes("molten")) {
+    add(`${title} is part of the golden calf disaster.`, "Israel tries to make worship visible and controllable, but the result is idolatry. They use gifts from Egypt to shape a false god.", "\u{1F402} Golden calf", "\u{26A0}\u{FE0F} False worship", "\u{1F494} Covenant betrayal", "Worship becomes dangerous when people invent it instead of receiving God's way.");
+  } else if (lower.includes("stiffnecked") || lower.includes("corrupted") || lower.includes("mischief") || lower.includes("naked")) {
+    add(`${title} exposes the people's stubborn sin.`, "The Bible does not soften what happened. Israel was rescued by God, but their hearts could still turn quickly toward rebellion.", "\u{1F512} Stubborn heart", "\u{1F4A5} Corruption", "\u{1F622} Shame", "Mercy is needed because the covenant people cannot heal themselves.");
+  } else if (lower.includes("abraham") || lower.includes("isaac") || lower.includes("israel") || lower.includes("swarest") || lower.includes("multiply") || lower.includes("inherit")) {
+    add(`${title} shows Moses praying from God's promises.`, "Moses does not pretend Israel deserves mercy. He appeals to God's covenant with Abraham, Isaac, and Jacob.", "\u{1F4DC} Promise remembered", "\u{1F64F} Intercession", "\u{1F3DE}\u{FE0F} Inheritance", "This helps a beginner see prayer rooted in who God is and what God has promised.");
+  } else if (lower.includes("atonement") || lower.includes("blot me") || lower.includes("book") || lower.includes("plagued")) {
+    add(`${title} shows the seriousness of sin and the need for a mediator.`, "Moses stands between guilty Israel and the holy LORD, but even Moses cannot erase sin by pretending it did not happen.", "\u{1F64F} Mediator", "\u{1FA78} Atonement needed", "\u{1F4D6} God's book", "The scene points forward to the Bible's larger need for a better mediator.");
+  } else if (lower.includes("presence") || lower.includes("glory") || lower.includes("goodness") || lower.includes("face") || lower.includes("clift") || lower.includes("rock")) {
+    add(`${title} comes from Moses' plea for God's presence and glory.`, "After the golden calf, the land is not enough if the LORD does not go with them. Moses wants God Himself, not merely God's gifts.", "\u{2601}\u{FE0F} Presence", "\u{2728} Glory", "\u{1FAA8} Hidden in the rock", "God reveals His goodness while protecting Moses from seeing more than a human can bear.");
+  } else if (lower.includes("merciful") || lower.includes("gracious") || lower.includes("longsuffering") || lower.includes("goodness") || lower.includes("truth") || lower.includes("forgiving") || lower.includes("guilty") || lower.includes("jealous")) {
+    add(`${title} reveals the LORD's character.`, "God is not only powerful. He names Himself as merciful, gracious, patient, faithful, forgiving, and just.", "\u{1F64C} Mercy", "\u{23F3} Patience", "\u{2696}\u{FE0F} Justice", "A beginner should hold these together: God's mercy is real, and His holiness is real.");
+  } else if (lower.includes("offering") || lower.includes("willing") || lower.includes("heart") || lower.includes("gold") || lower.includes("onyx") || lower.includes("spun") || lower.includes("brought")) {
+    add(`${title} marks a beautiful turn in Israel's worship.`, "This is the opposite of the golden calf. The people now bring gifts for worship according to God's pattern, not an idol shaped by fear.", "\u{1F381} Willing gifts", "\u{1F9F5} Skilled work", "\u{1F3D5}\u{FE0F} Dwelling place", "God can turn a people from false worship toward obedient generosity.");
+  } else if (lower.includes("ark") || lower.includes("mercy seat") || lower.includes("table") || lower.includes("candlestick") || lower.includes("altar") || lower.includes("laver") || lower.includes("court") || lower.includes("curtains") || lower.includes("boards") || lower.includes("vail") || lower.includes("garments")) {
+    add(`${title} is one of the holy details in God's dwelling place.`, "The tabernacle details teach Israel how God's presence is approached: mercy, sacrifice, cleansing, light, priesthood, and holy boundaries.", "\u{1F3D5}\u{FE0F} Holy dwelling", "\u{1FA78} Sacrifice and mercy", "\u{1F56F}\u{FE0F} Ordered worship", "These are not random construction notes. A holy God is preparing to live among His people.");
+  } else if (lower.includes("commanded") || lower.includes("finished") || lower.includes("set up") || lower.includes("reared up") || lower.includes("anointed")) {
+    add(`${title} emphasizes obedience after the chaos of idolatry.`, "The repeated obedience matters because Israel once invented worship with the calf. Now the work follows the LORD's command.", "\u{2705} Obedience", "\u{1F4CF} God's pattern", "\u{1F9F4} Holy anointing", "A beginner should notice that renewed worship is built by listening to God.");
+  } else if (lower.includes("cloud") || lower.includes("filled") || lower.includes("journeys") || lower.includes("fire")) {
+    add(`${title} brings Exodus to its goal: God's presence among His people.`, "The book began with groaning under Pharaoh. It ends with the LORD's glory filling the tabernacle and guiding Israel's journeys.", "\u{2601}\u{FE0F} Cloud", "\u{1F525} Fire", "\u{1F3D5}\u{FE0F} Glory in the camp", "God did not only rescue Israel from Egypt. He came to dwell with them.");
+  } else {
+    add(`${title} gives a concrete detail from ${section.reference}.`, `${section.title} is showing worship being rebuilt through God's pattern, not through Israel's guesses.`, "The phrase may name a measurement, object, material, action, or priestly detail.", "Each detail helps the reader see that God's presence is a gift and must be honored His way.");
+  }
+
+  return note(lines.slice(0, 8));
+}
+
+function makeDay29Exodus31To32PhraseCard(section: PersonalExodusPhraseSectionInput, title: string): [string, string] {
+  return [`\u{1F4CC} ${title}`, explainExodusThirtyOneToFortyMinedPhrase(section, title)];
+}
+
+function appendMinedExodusPhraseCards(
+  section: PersonalExodusPhraseSectionInput,
+  desiredCount: number,
+  poolsByChapter: Record<number, string[]>,
+): PersonalExodusPhraseSectionInput {
+  if (section.phrases.length >= desiredCount) return section;
+
+  const existing = new Set(section.phrases.map(([phraseTitle]) => phraseTitle.replace(/^📌\s*/, "").trim().toLowerCase()));
+  const pool = poolsByChapter[section.chapter] ?? [];
+  const additions = pool
+    .filter((phraseTitle) => !existing.has(phraseTitle.toLowerCase()))
+    .slice(0, desiredCount - section.phrases.length)
+    .map((phraseTitle) => [`\u{1F4CC} ${phraseTitle}`, explainExodusThirtyOneToFortyMinedPhrase(section, phraseTitle)] as [string, string]);
+
+  return { ...section, phrases: [...section.phrases, ...additions] };
 }
 
 function deepenDay29Exodus31To32PhraseCards(section: PersonalExodusPhraseSectionInput): PersonalExodusPhraseSectionInput {
@@ -535,25 +580,7 @@ const DAY_30_PHRASE_TITLES: Record<string, string[]> = {
 };
 
 function makeDay30PhraseCard(section: PersonalExodusPhraseSectionInput, title: string): [string, string] {
-  const chapterFocus =
-    section.chapter === 33
-      ? "Exodus 33 is about the crisis after the golden calf: the land is not enough if God's presence does not go with them."
-      : section.chapter === 34
-        ? "Exodus 34 renews the covenant and reveals the LORD's name: mercy, patience, faithfulness, justice, and holy jealousy."
-        : section.chapter === 35
-          ? "Exodus 35 turns the people from idol-making toward willing gifts, Sabbath obedience, and skilled work for God's dwelling."
-          : "Exodus 36 shows the tabernacle actually being built according to God's command, detail by detail.";
-
-  return phrase(`\u{1F4CC} ${title}`, [
-    `${section.reference} sits in the recovery story after Israel's golden calf failure, so this phrase is not just a detail on the page.`,
-    chapterFocus,
-    `In ${section.title}, the phrase helps a beginner see what God is teaching about presence, covenant renewal, willing obedience, or building worship His way.`,
-    "Read it slowly:",
-    "\u2601\u{FE0F} God's presence is the real gift.",
-    "\u{1F64C} Mercy does not make sin small.",
-    "\u{1F3D5}\u{FE0F} The tabernacle is built by willing obedience, not panic or invention.",
-    "This keeps the note anchored in Exodus itself: God is restoring a sinful people and teaching them how to live near Him again.",
-  ]);
+  return [`\u{1F4CC} ${title}`, explainExodusThirtyOneToFortyMinedPhrase(section, title)];
 }
 
 function deepenDay30PhraseCards(section: PersonalExodusPhraseSectionInput): PersonalExodusPhraseSectionInput {
@@ -592,7 +619,7 @@ const EXODUS_31_40_BANNED_FILLER_TITLES = [
 
 function formatExodusThirtyOneToFortyPhraseExplanation(section: PersonalExodusPhraseSectionInput, content: string) {
   const cleaned = content.replace(/in Day 29/g, "in Exodus");
-  if (section.chapter >= 31 && section.chapter <= 36) {
+  if (section.chapter >= 31 && section.chapter <= 40) {
     return cleaned;
   }
 
@@ -636,9 +663,27 @@ function formatExodusThirtyOneToFortySectionExplanations(sections: PersonalExodu
   }));
 }
 
+const DAY_29_EXODUS_31_32_EXTRA_PHRASES: Record<number, string[]> = {
+  31: ["To Devise Cunning Works", "To Work In Gold", "To Work In Silver", "To Work In Brass", "To Cut Stones", "To Carve Timber", "Throughout Your Generations", "A Perpetual Covenant"],
+  32: ["Gathered Themselves Together Unto Aaron", "Moses Delayed To Come Down", "A Graving Tool", "Built An Altar Before It", "To Morrow Is A Feast To The LORD", "The People Sat Down To Eat And To Drink", "The Tables Were The Work Of God", "Moses' Anger Waxed Hot", "Ground It To Powder", "Set On Mischief", "Moses Stood In The Gate", "On The Morrow"],
+};
+
+const DAY_30_EXODUS_33_36_EXTRA_PHRASES: Record<number, string[]> = {
+  33: ["Flowing With Milk And Honey", "No Man Did Put On Him His Ornaments", "The Door Of The Tabernacle", "All The People Rose Up", "Joshua The Son Of Nun", "If Thy Presence Go Not With Me", "So Shall We Be Separated", "I Will Be Gracious", "I Will Cover Thee With My Hand"],
+  34: ["No Man Shall Come Up With Thee", "The LORD Passed By Before Him", "Visiting The Iniquity", "Pardon Our Iniquity And Our Sin", "For It Is A Terrible Thing", "Thou Shalt Worship No Other God", "Redeem With A Lamb", "The Firstling Of An Ass", "Moses Made Haste"],
+  35: ["Whosoever Is Of A Willing Heart", "Bracelets, And Earrings, And Rings", "All Manner Of Jewels Of Gold", "Fine Linen", "The Rulers Brought", "The LORD Commanded To Be Made", "The Children Of Israel Brought A Willing Offering"],
+  36: ["The People Bring Much More Than Enough", "They Were Restrained From Bringing", "The Stuff They Had Was Sufficient", "More Than Enough", "The Curtains Were One Tabernacle", "He Made A Covering", "He Made Boards"],
+};
+
+const DAY_31_EXODUS_37_40_EXTRA_PHRASES: Record<number, string[]> = {
+  37: ["Bezalel Made The Ark", "Two Cubits And A Half", "Pure Gold Within And Without", "The Cherubims Spread Out Their Wings", "The Table Of Shittim Wood", "The Candlestick Of Pure Gold", "A Talent Of Pure Gold", "The Holy Anointing Oil", "The Pure Incense"],
+  38: ["The Altar Of Burnt Offering", "The Horns Thereof", "The Laver Of Brass", "The Lookingglasses Of The Women", "The Hangings Of The Court", "The Sockets Were Of Brass", "This Is The Sum Of The Tabernacle", "A Bekah For Every Man", "The Brass Of The Offering"],
+  39: ["The Cloths Of Service", "As The LORD Commanded Moses", "They Did Beat The Gold Into Thin Plates", "The Curious Girdle", "The Breastplate Was Foursquare", "The Robe Of The Ephod", "A Bell And A Pomegranate", "The Plate Of The Holy Crown", "Moses Did Look Upon All The Work", "Moses Blessed Them"],
+  40: ["On The First Day Of The First Month", "Set The Ark Of The Testimony", "Put Therein The Ark", "Set The Bread In Order", "Lighted The Lamps", "Washed Their Hands And Their Feet", "So Moses Finished The Work", "The Cloud Covered The Tent", "The Glory Of The LORD Filled The Tabernacle", "In The Sight Of All The House Of Israel"],
+};
 export const EXODUS_31_40_PERSONAL_SECTIONS: PersonalExodusPhraseSectionInput[] = formatExodusThirtyOneToFortySectionExplanations([
-  ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_TWENTY_NINE_DEEP_STUDY_SECTIONS, [31, 32], "🐂").map(deepenDay29Exodus31To32PhraseCards),
-  ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_THIRTY_DEEP_STUDY_SECTIONS, [33, 34, 35, 36], "☁️").map(deepenDay30PhraseCards),
-  ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_THIRTY_ONE_DEEP_STUDY_SECTIONS, [37, 38, 39, 40], "🏁").map(ensureBeginnerExodusPhraseDepth),
+  ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_TWENTY_NINE_DEEP_STUDY_SECTIONS, [31, 32], "🐂").map(deepenDay29Exodus31To32PhraseCards).map((section) => appendMinedExodusPhraseCards(section, 9, DAY_29_EXODUS_31_32_EXTRA_PHRASES)),
+  ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_THIRTY_DEEP_STUDY_SECTIONS, [33, 34, 35, 36], "☁️").map(deepenDay30PhraseCards).map((section) => appendMinedExodusPhraseCards(section, 9, DAY_30_EXODUS_33_36_EXTRA_PHRASES)),
+  ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_THIRTY_ONE_DEEP_STUDY_SECTIONS, [37, 38, 39, 40], "🏁").map(ensureBeginnerExodusPhraseDepth).map((section) => appendMinedExodusPhraseCards(section, 10, DAY_31_EXODUS_37_40_EXTRA_PHRASES)),
   ...RAW_EXODUS_31_40_PERSONAL_SECTIONS.filter((section) => section.chapter < 31 || section.chapter > 40),
 ]);
