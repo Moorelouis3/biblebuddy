@@ -846,9 +846,104 @@ const DAY_31_EXODUS_37_40_EXTRA_PHRASES: Record<number, string[]> = {
   39: ["The Cloths Of Service", "As The LORD Commanded Moses", "They Did Beat The Gold Into Thin Plates", "The Curious Girdle", "The Breastplate Was Foursquare", "The Robe Of The Ephod", "A Bell And A Pomegranate", "The Plate Of The Holy Crown", "Moses Did Look Upon All The Work", "Moses Blessed Them"],
   40: ["On The First Day Of The First Month", "Set The Ark Of The Testimony", "Put Therein The Ark", "Set The Bread In Order", "Lighted The Lamps", "Washed Their Hands And Their Feet", "So Moses Finished The Work", "The Cloud Covered The Tent", "The Glory Of The LORD Filled The Tabernacle", "In The Sight Of All The House Of Israel"],
 };
+
+const DAY_31_PHRASE_TITLES: Record<string, string[]> = {
+  "Exodus 37:1-6": ["Bezaleel Made The Ark", "Shittim Wood", "Two Cubits And A Half", "Overlayed It With Pure Gold", "A Crown Of Gold", "Four Rings Of Gold", "Staves Of Shittim Wood", "The Testimony"],
+  "Exodus 37:7-9": ["The Mercy Seat", "Two Cherubims Of Gold", "Beaten Out Of One Piece", "On The Two Ends", "Spread Out Their Wings", "Covered The Mercy Seat", "Their Faces One To Another", "Even To The Mercy Seatward"],
+  "Exodus 37:10-15": ["He Made The Table", "Shittim Wood", "Overlayed It With Pure Gold", "A Crown Of Gold Round About", "An Handbreadth Round About", "Four Rings Of Gold", "Places For The Staves", "To Bear The Table"],
+  "Exodus 37:16-21": ["Vessels Which Were Upon The Table", "Dishes", "Spoons", "Bowls", "Covers To Cover Withal", "Pure Gold", "The Candlestick", "Six Branches"],
+  "Exodus 37:22-27": ["Their Knops And Their Branches", "All Of It Was One Beaten Work", "Seven Lamps", "Tongs", "Snuffdishes", "A Talent Of Pure Gold", "The Incense Altar", "The Horns Thereof"],
+  "Exodus 37:28-29": ["The Staves Of Shittim Wood", "Overlaid Them With Gold", "The Holy Anointing Oil", "The Pure Incense", "Of Sweet Spices", "According To The Work Of The Apothecary", "Oil And Incense", "Holy Fragrance"],
+  "Exodus 38:1-6": ["The Altar Of Burnt Offering", "Shittim Wood", "Five Cubits", "Foursquare", "The Horns Thereof", "Overlayed It With Brass", "The Vessels Of The Altar", "Staves Of Shittim Wood"],
+  "Exodus 38:7-8": ["The Altar Hollow With Boards", "The Laver Of Brass", "The Foot Of It", "The Lookingglasses", "The Women Assembling", "At The Door Of The Tabernacle", "Brass For Washing", "Service At The Door"],
+  "Exodus 38:9-14": ["The Court", "South Side Southward", "Hangings Of Fine Twined Linen", "An Hundred Cubits", "Pillars Were Twenty", "Sockets Were Twenty", "Hooks And Fillets", "The Gate Of The Court"],
+  "Exodus 38:15-20": ["On The Other Side", "Hangings Of Fifteen Cubits", "Their Pillars Three", "All The Hangings", "Fine Twined Linen", "Sockets Of Brass", "Hooks Of Silver", "Pins Of The Tabernacle"],
+  "Exodus 38:21-26": ["This Is The Sum Of The Tabernacle", "The Tabernacle Of Testimony", "As It Was Counted", "By The Hand Of Ithamar", "Bezaleel The Son Of Uri", "Aholiab", "All The Gold", "The Gold Of The Offering"],
+  "Exodus 38:27-31": ["An Hundred Talents Of Silver", "Sockets Of The Sanctuary", "A Bekah For Every Man", "The Brass Of The Offering", "Sockets To The Door", "The Brasen Altar", "The Vessels Of The Altar", "Pins Of The Court"],
+  "Exodus 39:1-6": ["Cloths Of Service", "To Do Service In The Holy Place", "Holy Garments For Aaron", "As The LORD Commanded Moses", "Gold, Blue, Purple, And Scarlet", "Fine Twined Linen", "They Did Beat The Gold", "The Ephod"],
+  "Exodus 39:7-12": ["Shoulderpieces", "The Curious Girdle", "Onyx Stones", "Names Of The Children Of Israel", "Engraven As Signets", "Stones Of Memorial", "Rows Of Stones", "Sardius, Topaz, Carbuncle"],
+  "Exodus 39:13-18": ["The Fourth Row", "According To The Names", "Twelve", "Like The Engravings Of A Signet", "Chains At The Ends", "Wreathen Work", "Ouches Of Gold", "The Breastplate"],
+  "Exodus 39:19-24": ["Rings Of Gold", "The Breastplate Might Not Be Loosed", "The Robe Of The Ephod", "All Of Blue", "An Hole In The Midst", "As The Hole Of An Habergeon", "Pomegranates", "Blue, Purple, And Scarlet"],
+  "Exodus 39:25-30": ["Bells Of Pure Gold", "A Bell And A Pomegranate", "To Minister In", "The Coats Of Fine Linen", "The Mitre", "Linen Breeches", "The Girdle", "The Plate Of The Holy Crown"],
+  "Exodus 39:31-31": ["A Lace Of Blue", "Fastened It On High", "Upon The Mitre", "As The LORD Commanded Moses", "Holiness To The LORD", "The Holy Crown", "Priestly Identity", "Set Apart For Service"],
+  "Exodus 39:32-37": ["All The Work Was Finished", "The Children Of Israel Did", "As The LORD Commanded Moses", "They Brought The Tabernacle Unto Moses", "The Tent", "All His Furniture", "His Taches", "His Boards"],
+  "Exodus 39:38-43": ["The Golden Altar", "The Anointing Oil", "The Sweet Incense", "The Hanging For The Tabernacle Door", "The Brasen Altar", "The Laver And His Foot", "Moses Did Look Upon All The Work", "Moses Blessed Them"],
+  "Exodus 40:1-6": ["The LORD Spake Unto Moses", "On The First Day Of The First Month", "Set Up The Tabernacle", "The Tent Of The Congregation", "The Ark Of The Testimony", "Cover The Ark With The Vail", "Bring In The Table", "Set In Order"],
+  "Exodus 40:7-12": ["Set The Laver", "Put Water Therein", "Set Up The Court", "Hang Up The Hanging", "Take The Anointing Oil", "Anoint The Tabernacle", "It Shall Be Holy", "Bring Aaron And His Sons"],
+  "Exodus 40:13-16": ["Put Upon Aaron The Holy Garments", "Anoint Him", "Sanctify Him", "Minister Unto Me", "Bring His Sons", "Clothe Them With Coats", "An Everlasting Priesthood", "Moses Did According To All"],
+  "Exodus 40:17-22": ["The First Month In The Second Year", "The Tabernacle Was Reared Up", "Moses Reared Up The Tabernacle", "Fastened His Sockets", "Set Up The Boards", "Put In The Testimony", "Set The Staves", "Put The Mercy Seat Above"],
+  "Exodus 40:23-28": ["Set The Bread In Order", "Before The LORD", "Lighted The Lamps", "The Candlestick", "The Golden Altar", "Burnt Sweet Incense", "Set Up The Hanging", "As The LORD Commanded Moses"],
+  "Exodus 40:29-33": ["The Altar Of Burnt Offering", "Offered Upon It", "The Burnt Offering", "The Meat Offering", "Washed Their Hands And Their Feet", "When They Came Near", "So Moses Finished The Work", "The Court Round About"],
+  "Exodus 40:34-38": ["The Cloud Covered The Tent", "The Glory Of The LORD Filled The Tabernacle", "Moses Was Not Able To Enter", "The Cloud Abode Thereon", "When The Cloud Was Taken Up", "The Children Of Israel Went Onward", "If The Cloud Were Not Taken Up", "Fire Was On It By Night"],
+};
+
+function explainDay31Phrase(title: string): string {
+  const lower = title.toLowerCase();
+  const lines: string[] = [];
+  const add = (...items: string[]) => {
+    for (const item of items) {
+      if (item && !lines.includes(item)) lines.push(item);
+    }
+  };
+
+  if (lower.includes("ark") || lower.includes("testimony") || lower.includes("mercy seat")) {
+    add(`${title} means the center of the tabernacle is God's covenant word and mercy.`, "The ark holds the testimony, and the mercy seat sits above it.", "This is where the story keeps word and mercy together.", "God's presence is not approached by human confidence. It is approached through the place He provides.");
+  } else if (lower.includes("cherub") || lower.includes("wings") || lower.includes("faces")) {
+    add(`${title} means the mercy seat is holy, guarded space.`, "The cherubim are not decorations like ordinary statues.", "They mark the place connected with God's throne-like presence.", "Mercy is real, but it is never casual.");
+  } else if (lower.includes("table") || lower.includes("bread") || lower.includes("dishes") || lower.includes("spoons") || lower.includes("bowls") || lower.includes("covers")) {
+    add(`${title} means the table service had its own holy tools.`, "The table holds the bread connected with provision and covenant fellowship.", "Even dishes and bowls become holy tools when God sets them apart.", "Israel is learning that ordinary things can serve worship when they are used God's way.");
+  } else if (lower.includes("candlestick") || lower.includes("lamps") || lower.includes("branches") || lower.includes("knops") || lower.includes("tongs") || lower.includes("snuffdishes")) {
+    add(`${title} means the holy place had ordered light for priestly service.`, "The lampstand is useful and beautiful at the same time.", "Its branches, lamps, and tools show ordered service before God.", "The holy place is marked by light, care, and beauty.");
+  } else if (lower.includes("incense") || lower.includes("fragrance") || lower.includes("sweet spices") || lower.includes("apothecary") || lower.includes("golden altar")) {
+    add(`${title} is connected with fragrant worship near the veil.`, "Incense was not casual perfume.", "It was prepared for holy service before the LORD.", "The smell itself taught Israel that worship near God is set apart.");
+  } else if (lower.includes("altar") || lower.includes("burnt offering") || lower.includes("horns") || lower.includes("vessels") || lower.includes("ashes") || lower.includes("offered upon it") || lower.includes("meat offering")) {
+    add(`${title} means sacrifice stands at the entrance of approach to God.`, "The altar stands before movement toward the holy place.", "It teaches that sinful people need God's provided way to draw near.", "Worship in Exodus is not vague emotion. It is sacrifice, atonement, and obedience.");
+  } else if (lower.includes("laver") || lower.includes("water") || lower.includes("washed") || lower.includes("lookingglasses")) {
+    add(`${title} means priestly service required cleansing before nearness.`, "The priests wash before serving near God's presence.", "The bronze laver even uses mirrors from serving women, turning personal objects into holy service.", "God cares about cleansing, preparation, and reverence.");
+  } else if (lower.includes("court") || lower.includes("hangings") || lower.includes("gate") || lower.includes("sockets") || lower.includes("pillars") || lower.includes("hooks") || lower.includes("fillets") || lower.includes("pins")) {
+    add(`${title} helps form the ordered boundary around God's dwelling.`, "The courtyard gives Israel a real way to approach, but not a careless way.", "There is entrance, structure, and separation.", "God provides access while still teaching holiness.");
+  } else if (lower.includes("sum") || lower.includes("counted") || lower.includes("talents") || lower.includes("bekah") || lower.includes("gold of the offering") || lower.includes("brass of the offering") || lower.includes("ithamar") || lower.includes("bezaleel") || lower.includes("aholiab")) {
+    add(`${title} means worshipful gifts were handled with accountability.`, "The materials are counted because holy generosity should not be hidden or sloppy.", "Gold, silver, and brass are stewarded for God's dwelling place.", "The people give willingly, and the work is still handled carefully.");
+  } else if (lower.includes("ephod") || lower.includes("breastplate") || lower.includes("shoulder") || lower.includes("onyx") || lower.includes("stones") || lower.includes("names") || lower.includes("signets") || lower.includes("memorial") || lower.includes("chains") || lower.includes("ouches")) {
+    add(`${title} means the priest carried Israel before God.`, "The stones and names are not mere decoration.", "They show representation: the priest serves while carrying the people on his shoulders and over his heart.", "A beginner should see that priesthood is responsibility, not costume.");
+  } else if (lower.includes("robe") || lower.includes("blue") || lower.includes("habergeon") || lower.includes("pomegranates") || lower.includes("bells") || lower.includes("mitre") || lower.includes("linen") || lower.includes("girdle") || lower.includes("breeches") || lower.includes("coats")) {
+    add(`${title} explains clothing made for holy priestly service.`, "The garments cover, identify, and prepare the priests.", "Beauty and order matter because the work happens before the holy LORD.", "These are not fashion notes. They teach reverence.");
+  } else if (lower.includes("holy crown") || lower.includes("holiness to the lord") || lower.includes("plate of the holy crown") || lower.includes("lace of blue") || lower.includes("fastened")) {
+    add(`${title} marks the priest as set apart for the LORD.`, "The gold plate says Holiness to the LORD.", "Aaron does not minister as a private celebrity or religious performer.", "His service is claimed by God and done for the people.");
+  } else if (lower.includes("as the lord commanded") || lower.includes("moses did according") || lower.includes("finished") || lower.includes("moses did look") || lower.includes("moses blessed")) {
+    add(`${title} is the opposite of the golden calf pattern.`, "Israel once shaped worship by fear and impatience.", "Now the work is checked against God's command.", "After failure, mercy is producing careful obedience.");
+  } else if (lower.includes("first day") || lower.includes("first month") || lower.includes("second year") || lower.includes("set up") || lower.includes("reared up") || lower.includes("tent of the congregation") || lower.includes("tabernacle was reared")) {
+    add(`${title} gives the finished tabernacle a new-beginning feeling.`, "The completed pieces are now put into place.", "This is not just a construction project ending.", "It is the dwelling of God being prepared in the middle of the camp.");
+  } else if (lower.includes("anoint") || lower.includes("sanctify") || lower.includes("holy garments") || lower.includes("minister unto me") || lower.includes("everlasting priesthood") || lower.includes("aaron") || lower.includes("sons")) {
+    add(`${title} prepares Aaron and his sons for priestly service.`, "Priests are washed, clothed, anointed, and set apart before they serve.", "They do not walk into holy work by natural right.", "God provides the way His servants are prepared.");
+  } else if (lower.includes("staves") || lower.includes("boards") || lower.includes("sockets") || lower.includes("pure gold") || lower.includes("shittim") || lower.includes("crown") || lower.includes("rings") || lower.includes("foursquare") || lower.includes("cubits") || lower.includes("handbreadth")) {
+    add(`${title} gives a real construction detail from God's pattern.`, "Measurements, wood, gold, rings, sockets, and boards can feel slow to read.", "But they show that God's dwelling is built carefully, not guessed at.", "Holy worship follows God's design down to practical details.");
+  } else if (lower.includes("cloud") || lower.includes("glory") || lower.includes("enter") || lower.includes("abode") || lower.includes("went onward") || lower.includes("taken up") || lower.includes("fire") || lower.includes("night") || lower.includes("sight of all")) {
+    add(`${title} is the goal of Exodus coming into view.`, "The God who rescued Israel from Egypt now fills the tabernacle and guides the journey.", "The cloud and fire mean the people are still traveling, but they are not abandoned.", "Exodus ends with God's presence in the middle of the camp.");
+  } else {
+    add(`${title} gives another named detail in the finished tabernacle.`, "The final chapters slow down because obedience after failure matters.", "Every piece is being made or placed according to God's word.", "God's presence is a gift, and His dwelling is honored His way.");
+  }
+
+  return note(lines.slice(0, 8));
+}
+
+function makeDay31PhraseCard(title: string): [string, string] {
+  return [`\u{1F4CC} ${title}`, explainDay31Phrase(title)];
+}
+
+function deepenDay31PhraseCards(section: PersonalExodusPhraseSectionInput): PersonalExodusPhraseSectionInput {
+  const titles = DAY_31_PHRASE_TITLES[section.reference];
+  if (!titles) return section;
+
+  return {
+    ...section,
+    phrases: titles.map(makeDay31PhraseCard),
+  };
+}
+
 export const EXODUS_31_40_PERSONAL_SECTIONS: PersonalExodusPhraseSectionInput[] = formatExodusThirtyOneToFortySectionExplanations([
   ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_TWENTY_NINE_DEEP_STUDY_SECTIONS, [31, 32], "🐂").map(deepenDay29Exodus31To32PhraseCards).map((section) => appendMinedExodusPhraseCards(section, 9, DAY_29_EXODUS_31_32_EXTRA_PHRASES, (_section, title) => explainDay29Exodus31To32Phrase(title))),
   ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_THIRTY_DEEP_STUDY_SECTIONS, [33, 34, 35, 36], "☁️").map(deepenDay30PhraseCards).map((section) => appendMinedExodusPhraseCards(section, 9, DAY_30_EXODUS_33_36_EXTRA_PHRASES, (_section, title) => explainDay30Phrase(title))),
-  ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_THIRTY_ONE_DEEP_STUDY_SECTIONS, [37, 38, 39, 40], "🏁").map(ensureBeginnerExodusPhraseDepth).map((section) => appendMinedExodusPhraseCards(section, 10, DAY_31_EXODUS_37_40_EXTRA_PHRASES)),
+  ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_THIRTY_ONE_DEEP_STUDY_SECTIONS, [37, 38, 39, 40], "🏁").map(deepenDay31PhraseCards),
   ...RAW_EXODUS_31_40_PERSONAL_SECTIONS.filter((section) => section.chapter < 31 || section.chapter > 40),
 ]);
