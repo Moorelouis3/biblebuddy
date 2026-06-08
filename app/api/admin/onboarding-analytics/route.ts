@@ -1,6 +1,15 @@
 import { NextResponse } from "next/server";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
+const ANALYTICS_RESPONSE_CACHE_TTL_MS = 45 * 1000;
+
+type AnalyticsResponseCacheEntry = {
+  body: unknown;
+  cachedAt: number;
+};
+
+const analyticsResponseCache = new Map<string, AnalyticsResponseCacheEntry>();
+
 type AnswerSummary = {
   answer: string;
   count: number;
@@ -2773,6 +2782,167 @@ async function buildRegisteredUserAnalytics(
   };
 }
 
+function getCachedAnalyticsResponse(cacheKey: string) {
+  const entry = analyticsResponseCache.get(cacheKey);
+  if (!entry) return null;
+  if (Date.now() - entry.cachedAt > ANALYTICS_RESPONSE_CACHE_TTL_MS) {
+    analyticsResponseCache.delete(cacheKey);
+    return null;
+  }
+  return entry.body;
+}
+
+function cacheAnalyticsResponse(cacheKey: string, body: unknown) {
+  analyticsResponseCache.set(cacheKey, {
+    body,
+    cachedAt: Date.now(),
+  });
+}
+
+function cachedAnalyticsJson(cacheKey: string, body: unknown) {
+  cacheAnalyticsResponse(cacheKey, body);
+  return NextResponse.json(body, {
+    headers: {
+      "Cache-Control": "private, max-age=30, stale-while-revalidate=60",
+      "X-BibleBuddy-Analytics-Cache": "miss",
+    },
+  });
+}
+
+async function buildOverviewAnalyticsResponse(
+  adminSupabase: SupabaseClient,
+  url: string,
+  serviceKey: string,
+  journeyWindow: JourneyWindowKey,
+) {
+  const { startIso, endIso } = getAnalyticsDateRange(journeyWindow);
+  const allAuthUsers = await loadAllAuthUserSummaries(url, serviceKey);
+  const now = new Date();
+  const thisMonthStart = new Date(now.getFullYear(), now.getMonth(), 1).getTime();
+  const nextMonthStart = new Date(now.getFullYear(), now.getMonth() + 1, 1).getTime();
+  const previousMonthStart = new Date(now.getFullYear(), now.getMonth() - 1, 1).getTime();
+  const monthlySignups = allAuthUsers.filter((user) => {
+    const createdAt = user.createdAt ? new Date(user.createdAt).getTime() : 0;
+    return Number.isFinite(createdAt) && createdAt >= thisMonthStart && createdAt < nextMonthStart;
+  }).length;
+  const previousMonthlySignups = allAuthUsers.filter((user) => {
+    const createdAt = user.createdAt ? new Date(user.createdAt).getTime() : 0;
+    return Number.isFinite(createdAt) && createdAt >= previousMonthStart && createdAt < thisMonthStart;
+  }).length;
+  const registeredUsers = {
+    total: allAuthUsers.length,
+    withEmail: allAuthUsers.filter((user) => Boolean(user.email)).length,
+    withoutEmail: allAuthUsers.filter((user) => !user.email).length,
+    guestAccounts: allAuthUsers.filter((user) => user.isAnonymous).length,
+    rows: [],
+  };
+  const businessMetrics = {
+    totalUsers: registeredUsers.total,
+    registeredUsers: registeredUsers.withEmail,
+    guestUsers: registeredUsers.guestAccounts,
+    monthlySignups,
+    previousMonthlySignups,
+    monthlySignupChange: monthlySignups - previousMonthlySignups,
+    lifetimeSignups: registeredUsers.total,
+  };
+
+  let landingQuery = adminSupabase
+    .from("landing_page_events")
+    .select("event_name, session_id, user_id, created_at")
+    .gte("created_at", startIso)
+    .order("created_at", { ascending: false })
+    .limit(50000);
+  if (endIso) landingQuery = landingQuery.lt("created_at", endIso);
+  const { data: landingData } = await landingQuery;
+  const landingRows = (landingData || []) as LandingEventRow[];
+
+  let masterQuery = adminSupabase
+    .from("master_actions")
+    .select("user_id, session_id, action_type, action_label, journey_day, created_at")
+    .in("action_type", ["landing_page_visited", "landing_cta_clicked", "user_signup", "user_upgraded", "bible_year_audio_played", "bible_year_task_started"])
+    .gte("created_at", startIso)
+    .order("created_at", { ascending: false })
+    .limit(50000);
+  if (endIso) masterQuery = masterQuery.lt("created_at", endIso);
+  const { data: masterData } = await masterQuery;
+  const masterRows = (masterData || []) as MasterActionFunnelRow[];
+  const windowSummary = summarizeAcquisitionWindow(landingRows, masterRows, journeyWindow);
+  const proUpgrades = new Set(masterRows.filter((row) => row.action_type === "user_upgraded").map((row) => row.user_id).filter(Boolean)).size;
+  const audioRows = masterRows.filter((row) => row.action_type === "bible_year_audio_played" || row.action_type === "bible_year_task_started");
+  const uniqueAudioActors = new Set(audioRows.map((row) => getMasterActorId(row)).filter(Boolean));
+  const landingUsers = windowSummary.visits;
+  const signupUsers = windowSummary.accountsCreated || windowSummary.signups || 0;
+  const conversionRate = landingUsers > 0 ? Number(((signupUsers / landingUsers) * 100).toFixed(1)) : 0;
+  const bibleBuddyFunnelStages: FunnelStageRow[] = [
+    { key: "landing", label: "Landing Page", users: landingUsers, conversionRate: 100, dropoffRate: 0, retentionRate: 100 },
+    { key: "accountsCreated", label: "Accounts Created", users: signupUsers, conversionRate, dropoffRate: Math.max(0, Number((100 - conversionRate).toFixed(1))), retentionRate: conversionRate },
+  ];
+
+  return {
+    totalResponses: 0,
+    personaLine: "Overview loaded first. Full analytics are loading in the background.",
+    questions: [],
+    businessMetrics,
+    registeredUsers,
+    audioEngagement: {
+      totalPlays: audioRows.length,
+      uniqueListeners: uniqueAudioActors.size,
+      totalMinutesPlayed: 0,
+      averageListeningMinutes: 0,
+      lessonCompletionRate: 0,
+      source: "day_task_events",
+      playDetails: [],
+    },
+    customerJourney: {
+      window: journeyWindow,
+      label: getJourneyWindowLabel(journeyWindow),
+      visits: landingUsers,
+      startClicks: windowSummary.startClicks || 0,
+      guestStarts: windowSummary.guestStarts || 0,
+      freeAccounts: signupUsers,
+      proUpgrades,
+      guestToAccountRate: windowSummary.guestToAccountRate || 0,
+    },
+    visitorJourneys: {
+      rows: [],
+      metrics: {
+        totalVisitors: landingUsers,
+        finishedOnboarding: 0,
+        startedDay1: 0,
+        completedDay1: 0,
+        createdFreeAccount: signupUsers,
+        upgradedToPro: proUpgrades,
+        onboardingCompletionRate: 0,
+        day1StartRate: 0,
+        day1CompletionRate: 0,
+        freeAccountRate: conversionRate,
+        proUpgradeRate: signupUsers > 0 ? Number(((proUpgrades / signupUsers) * 100).toFixed(1)) : 0,
+      },
+      sources: [],
+      journeys: [],
+      statuses: [],
+    },
+    bibleBuddyFunnelStages,
+    activeUsersLast24Hours: { totalUsers: 0, totalActions: 0, rows: [] },
+    bibleYearDays: [],
+    studyNotes: {
+      totalOpens: 0,
+      totalInteractions: 0,
+      uniqueUsers: 0,
+      sectionOpens: 0,
+      chapterNoteOpens: 0,
+      phraseOpens: 0,
+      topSources: [],
+      topNotes: [],
+      topPhrases: [],
+      rows: [],
+    },
+    setupRequired: false,
+    eventSetupRequired: false,
+    partial: true,
+  };
+}
+
 export async function GET(request: Request) {
   const owner = await verifyOwner(request);
   if (!owner) {
@@ -2780,6 +2950,19 @@ export async function GET(request: Request) {
   }
 
   const journeyWindow = getJourneyWindowKey(request);
+  const requestUrl = new URL(request.url);
+  const mode = requestUrl.searchParams.get("mode") === "overview" ? "overview" : "full";
+  const cacheKey = `onboarding:${mode}:${journeyWindow}`;
+  const cachedResponse = getCachedAnalyticsResponse(cacheKey);
+  if (cachedResponse) {
+    return NextResponse.json(cachedResponse, {
+      headers: {
+        "Cache-Control": "private, max-age=30, stale-while-revalidate=60",
+        "X-BibleBuddy-Analytics-Cache": "hit",
+      },
+    });
+  }
+
   const { startIso: journeySinceIso, endIso: journeyBeforeIso } = getAnalyticsDateRange(journeyWindow);
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -2794,6 +2977,11 @@ export async function GET(request: Request) {
       persistSession: false,
     },
   });
+
+  if (mode === "overview") {
+    const overview = await buildOverviewAnalyticsResponse(adminSupabase, url, serviceKey, journeyWindow);
+    return cachedAnalyticsJson(cacheKey, overview);
+  }
 
   const allAuthUsers = await loadAllAuthUserSummaries(url, serviceKey);
   const registeredUserAnalytics = await buildRegisteredUserAnalytics(adminSupabase, allAuthUsers);
@@ -3110,7 +3298,7 @@ export async function GET(request: Request) {
   };
 
   if (error) {
-    return NextResponse.json({
+    return cachedAnalyticsJson(cacheKey, {
       totalResponses: 0,
       personaLine: "Run CREATE_LANDING_ONBOARDING_RESPONSES.sql to enable new onboarding analytics.",
       funnel,
@@ -3152,7 +3340,7 @@ export async function GET(request: Request) {
     ...summarize(question.options, rows, question.field),
   }));
 
-  return NextResponse.json({
+  return cachedAnalyticsJson(cacheKey, {
     totalResponses: rows.length,
     personaLine: buildPersonaLine(questions),
     questions,

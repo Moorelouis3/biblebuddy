@@ -10,13 +10,15 @@ type CacheEntry<T> = {
 };
 
 const analyticsCache = new Map<AdminAnalyticsWindow, CacheEntry<unknown>>();
+const overviewAnalyticsCache = new Map<AdminAnalyticsWindow, CacheEntry<unknown>>();
 const CACHE_TTL_MS = 60 * 1000;
 
-function getEntry(windowKey: AdminAnalyticsWindow) {
-  let entry = analyticsCache.get(windowKey);
+function getEntry(windowKey: AdminAnalyticsWindow, mode: "full" | "overview" = "full") {
+  const cache = mode === "overview" ? overviewAnalyticsCache : analyticsCache;
+  let entry = cache.get(windowKey);
   if (!entry) {
     entry = { data: null, error: null, updatedAt: 0, promise: null };
-    analyticsCache.set(windowKey, entry);
+    cache.set(windowKey, entry);
   }
   return entry;
 }
@@ -26,18 +28,26 @@ export function getCachedAdminAnalytics<T>(windowKey: AdminAnalyticsWindow) {
   return entry?.data ? (entry.data as T) : null;
 }
 
+export function getCachedAdminAnalyticsOverview<T>(windowKey: AdminAnalyticsWindow) {
+  const entry = overviewAnalyticsCache.get(windowKey);
+  return entry?.data ? (entry.data as T) : null;
+}
+
 export async function loadAdminAnalytics<T>(
   windowKey: AdminAnalyticsWindow,
   token: string,
-  options: { force?: boolean } = {},
+  options: { force?: boolean; mode?: "full" | "overview" } = {},
 ) {
-  const entry = getEntry(windowKey);
+  const mode = options.mode || "full";
+  const entry = getEntry(windowKey, mode);
   const isFresh = entry.data && Date.now() - entry.updatedAt < CACHE_TTL_MS;
 
   if (!options.force && isFresh) return entry.data as T;
   if (!options.force && entry.promise) return entry.promise as Promise<T>;
 
-  const promise = fetch(`/api/admin/onboarding-analytics?window=${windowKey}`, {
+  const params = new URLSearchParams({ window: windowKey });
+  if (mode === "overview") params.set("mode", "overview");
+  const promise = fetch(`/api/admin/onboarding-analytics?${params.toString()}`, {
     cache: "no-store",
     headers: { Authorization: `Bearer ${token}` },
   })

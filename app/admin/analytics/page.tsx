@@ -4,7 +4,7 @@ import { Fragment, useEffect, useMemo, useState } from "react";
 import { GENESIS_BIBLE_IN_ONE_YEAR_SERIES } from "@/lib/bibleInOneYearPlan";
 import { supabase } from "@/lib/supabaseClient";
 import { applyAppThemeToDocument, readCachedAppTheme } from "@/lib/appThemes";
-import { getCachedAdminAnalytics, loadAdminAnalytics } from "@/lib/adminAnalyticsPreload";
+import { getCachedAdminAnalytics, getCachedAdminAnalyticsOverview, loadAdminAnalytics } from "@/lib/adminAnalyticsPreload";
 
 type JourneyWindow = "today" | "yesterday" | "24h" | "7d" | "30d" | "this_month" | "lifetime";
 type AccountFilter = "all" | "guest" | "free" | "pro";
@@ -221,6 +221,7 @@ type AudioHelpfulnessAnalytics = {
 };
 
 type AnalyticsResponse = {
+  partial?: boolean;
   businessMetrics?: {
     totalUsers: number;
     registeredUsers: number;
@@ -2574,6 +2575,7 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
   const [windowKey, setWindowKey] = useState<JourneyWindow>("today");
   const [data, setData] = useState<AnalyticsResponse | null>(null);
   const [loading, setLoading] = useState(true);
+  const [detailsLoading, setDetailsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [stripeRevenue, setStripeRevenue] = useState<StripeRevenueSummary | null>(null);
   const [stripeRevenueLoading, setStripeRevenueLoading] = useState(false);
@@ -2606,24 +2608,36 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
   useEffect(() => {
     if (!authChecked || !isOwner) return;
     async function loadAnalytics() {
-      const cached = getCachedAdminAnalytics<AnalyticsResponse>(windowKey);
-      if (cached) {
-        setData(cached);
+      const cachedFull = getCachedAdminAnalytics<AnalyticsResponse>(windowKey);
+      const cachedOverview = getCachedAdminAnalyticsOverview<AnalyticsResponse>(windowKey);
+      if (cachedFull || cachedOverview) {
+        setData(cachedFull || cachedOverview);
         setLoading(false);
       } else {
         setLoading(true);
       }
+      setDetailsLoading(Boolean(cachedOverview && !cachedFull));
       setError(null);
       try {
         const { data: sessionData } = await supabase.auth.getSession();
         const token = sessionData.session?.access_token;
         if (!token) throw new Error("Owner session expired. Please sign in again.");
-        const json = await loadAdminAnalytics<AnalyticsResponse>(windowKey, token, { force: Boolean(cached) });
+        if (!cachedFull) {
+          const overview = await loadAdminAnalytics<AnalyticsResponse>(windowKey, token, {
+            force: Boolean(cachedOverview),
+            mode: "overview",
+          });
+          setData((current) => current || overview);
+          setLoading(false);
+          setDetailsLoading(true);
+        }
+        const json = await loadAdminAnalytics<AnalyticsResponse>(windowKey, token, { force: Boolean(cachedFull) });
         setData(json);
       } catch (loadError) {
         setError(loadError instanceof Error ? loadError.message : "Could not load analytics.");
       } finally {
         setLoading(false);
+        setDetailsLoading(false);
       }
     }
     void loadAnalytics();
@@ -2824,6 +2838,12 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
             </div>
           ) : null}
 
+          {detailsLoading || data?.partial ? (
+            <div className="mt-6 rounded-xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] p-4 text-sm font-bold text-[var(--bb-text-secondary,#334155)]">
+              Overview loaded. Detailed tables are loading in the background.
+            </div>
+          ) : null}
+
           {activeView !== "overview" && data?.dataHealth?.length ? (
             <section className="mt-6 grid gap-3 lg:grid-cols-2">
               {data.dataHealth.map((warning) => (
@@ -2988,7 +3008,7 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
             ) : null}
 
             <VisitorJourneyTableSection
-              loading={loading}
+              loading={loading || detailsLoading}
               journeys={journeys}
               rows={rows}
               filteredRows={filteredRows}
