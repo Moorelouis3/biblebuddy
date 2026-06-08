@@ -493,13 +493,17 @@ export const BIBLE_READER_STUDY_SECTIONS: BibleReaderStudySection[] = [
         icon: "💬",
         title: "Key Phrases",
         content: [
+          "\"When The Woman Saw\"\nThe temptation has moved from hearing the serpent's words to looking at the tree through those words.\nThe tree was already in the garden, but now Eve is seeing it differently. The lie has changed the way the object looks to her heart.\nSight, desire, and attention are all involved here.\nThis phrase matters because sin often starts by reshaping what we notice, what we value, and what we keep staring at.",
           "\"Good For Food\"\nThe fruit appears useful and harmless. That matters because sin does not always look ugly at first.\nEve sees something practical: food. Temptation often attaches itself to a real appetite or a normal human desire, then pulls that desire outside trust in God.\nThe problem is not that food is bad. God filled the garden with food. The problem is desire judging reality without listening to God's word.\nGenesis is teaching that something can look useful and still be spiritually dangerous if God has said no.",
           "\"A Delight To The Eyes\"\nThe fruit is visually appealing. The problem is not beauty itself, because God made trees that were pleasant to the sight back in Genesis 2.\nThe danger is beauty separated from obedience. Eve's eyes are now evaluating the tree through the serpent's lie instead of through God's command.\nThat gives us a practical Bible-study insight: the senses are good gifts, but they are not meant to be our highest authority.\nSomething can look beautiful and still lead away from God if desire is no longer guided by truth.",
           "\"Desired To Make One Wise\"\nWisdom is good when it comes from God. Later books like Proverbs will tell people to seek wisdom like treasure.\nBut this is wisdom seized apart from God. It is an attempt to gain moral independence instead of receiving instruction from the Creator.\nThat is why the tree is so serious. It represents the human desire to define good and evil without God.\nThere is an aha moment here: the Bible is not anti-wisdom. It is against a kind of wisdom that begins by distrusting God.",
           "\"She Took Of Its Fruit And Ate\"\nThe fall moves from listening, to looking, to taking, to eating. Genesis slows the moment down so we can see sin becoming action.\nTaking is important language in the Bible. Sometimes God gives, and humans receive. But here the human reaches for what God has not given.\nThe act may look small from the outside. It is just fruit. But spiritually, it is a declaration that the creature will no longer live under the Creator's word.\nThis is why sin cannot be measured only by the size of the object involved. It must be measured by the relationship it breaks.",
           "\"She Also Gave Some To Her Husband\"\nAdam is not far away in this scene. The text says he is with her.\nThat means Adam's silence matters. He was given the command first, but he does not guard the garden, speak truth, or protect the relationship from the lie.\nGenesis is not letting Adam off the hook. Sin spreads through passive failure as well as active choice.\nThis phrase teaches that love should not stand quietly while falsehood grows.",
+          "\"He Did Eat\"\nAdam personally eats the fruit. He is not only present near the sin; he joins it.\nThat matters because the Bible does not treat Adam as innocent just because Eve ate first. He receives what was forbidden and steps across the same boundary.\nEve ate. Adam ate. Both disobeyed.\nThis phrase deserves attention because sin becomes shared rebellion here. The man and woman who were meant to walk together in trust now stand together in disobedience.",
+          "\"The Eyes Of Them Both Were Opened\"\nThe serpent promised opened eyes, and in one sense that promise comes true. But the result is not glory, freedom, or wisdom the way they imagined.\nTheir eyes open to a painful new reality. They now know evil by experience, not just by warning.\nInnocence is gone, and the world feels different because they have crossed God's command.\nThis phrase is important because it shows the bitter half-truth of temptation. Sin may reveal something, but it also wounds the person who sees it.",
           "\"They Knew That They Were Naked\"\nIn Genesis 2, nakedness meant openness without shame. After sin, the same nakedness feels threatening.\nNothing about their bodies changed, but their relationship to God, each other, and themselves changed. Innocence has been lost, and self-protection begins.\nThat is why shame is deeper than embarrassment. Shame is the feeling that being fully seen is no longer safe.\nGenesis shows shame entering immediately after sin because sin breaks the trust that made openness possible.",
-          "\"Fig Leaves\"\nThe fig leaves are the first human-made covering. Adam and Eve try to manage exposure with whatever they can make quickly.\nThis is a powerful picture because people still do this. We cover with image, excuses, performance, humor, denial, success, or blame.\nThe leaves may hide their bodies for a moment, but they cannot heal the relationship with God.\nLater in the chapter, God will make a better covering, which shows that human coverings cannot do what divine mercy can.",
+          "\"They Sewed Fig Leaves Together\"\nAdam and Eve try to cover shame with something they can make from the garden.\nThis is the first human response to guilt: not confession, but covering. They know something is wrong, but they try to manage the exposure themselves.\nThe fig leaves may hide their bodies for a moment, but they cannot heal the relationship with God.\nThis phrase matters because it shows shame turning into self-protection almost immediately.",
+          "\"Made Themselves Aprons\"\nThe aprons are human-made protection. Adam and Eve are trying to make themselves feel less exposed.\nThis phrase shows the beginning of self-protection after sin. People still do this with excuses, image, performance, denial, humor, or blame.\nThe covering is real, but it is not enough. Later in the chapter, God will make a better covering, showing that human coverings cannot do what divine mercy can.\nThis deserves its own card because it moves from the material, fig leaves, to the deeper action: humans trying to cover themselves without God.",
         ],
       },
       {
@@ -5112,13 +5116,17 @@ const DAY_TWO_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; tru
   },
   "Genesis 3:6-7": {
     phrases: [
+      "\"When The Woman Saw\"\nThe temptation has moved from hearing the serpent's words to looking at the tree through those words.\nThe tree was already in the garden, but now Eve is seeing it differently. The lie has changed the way the object looks to her heart.\nSight, desire, and attention are all involved here.\nThis phrase matters because sin often starts by reshaping what we notice, what we value, and what we keep staring at.",
       "\"Good For Food\"\nThe fruit appears useful and harmless. That matters because sin does not always look ugly at first.\nEve sees something practical: food. Temptation often attaches itself to a real appetite or a normal human desire, then pulls that desire outside trust in God.\nThe problem is not that food is bad. God filled the garden with food. The problem is desire judging reality without listening to God's word.\nGenesis is teaching that something can look useful and still be spiritually dangerous if God has said no.",
       "\"A Delight To The Eyes\"\nThe fruit is visually appealing. The problem is not beauty itself, because God made trees that were pleasant to the sight back in Genesis 2.\nThe danger is beauty separated from obedience. Eve's eyes are now evaluating the tree through the serpent's lie instead of through God's command.\nThat gives us a practical Bible-study insight: the senses are good gifts, but they are not meant to be our highest authority.\nSomething can look beautiful and still lead away from God if desire is no longer guided by truth.",
       "\"Desired To Make One Wise\"\nWisdom is good when it comes from God. Later books like Proverbs will tell people to seek wisdom like treasure.\nBut this is wisdom seized apart from God. It is an attempt to gain moral independence instead of receiving instruction from the Creator.\nThat is why the tree is so serious. It represents the human desire to define good and evil without God.\nThere is an aha moment here: the Bible is not anti-wisdom. It is against a kind of wisdom that begins by distrusting God.",
       "\"She Took Of Its Fruit And Ate\"\nThe fall moves from listening, to looking, to taking, to eating. Genesis slows the moment down so we can see sin becoming action.\nTaking is important language in the Bible. Sometimes God gives, and humans receive. But here the human reaches for what God has not given.\nThe act may look small from the outside. It is just fruit. But spiritually, it is a declaration that the creature will no longer live under the Creator's word.\nThis is why sin cannot be measured only by the size of the object involved. It must be measured by the relationship it breaks.",
       "\"She Also Gave Some To Her Husband\"\nAdam is not far away in this scene. The text says he is with her.\nThat means Adam's silence matters. He was given the command first, but he does not guard the garden, speak truth, or protect the relationship from the lie.\nGenesis is not letting Adam off the hook. Sin spreads through passive failure as well as active choice.\nThis phrase teaches that love should not stand quietly while falsehood grows.",
+      "\"He Did Eat\"\nAdam personally eats the fruit. He is not only present near the sin; he joins it.\nThat matters because the Bible does not treat Adam as innocent just because Eve ate first. He receives what was forbidden and steps across the same boundary.\nEve ate. Adam ate. Both disobeyed.\nThis phrase deserves attention because sin becomes shared rebellion here. The man and woman who were meant to walk together in trust now stand together in disobedience.",
+      "\"The Eyes Of Them Both Were Opened\"\nThe serpent promised opened eyes, and in one sense that promise comes true. But the result is not glory, freedom, or wisdom the way they imagined.\nTheir eyes open to a painful new reality. They now know evil by experience, not just by warning.\nInnocence is gone, and the world feels different because they have crossed God's command.\nThis phrase is important because it shows the bitter half-truth of temptation. Sin may reveal something, but it also wounds the person who sees it.",
       "\"They Knew That They Were Naked\"\nIn Genesis 2, nakedness meant openness without shame. After sin, the same nakedness feels threatening.\nNothing about their bodies changed, but their relationship to God, each other, and themselves changed. Innocence has been lost, and self-protection begins.\nThat is why shame is deeper than embarrassment. Shame is the feeling that being fully seen is no longer safe.\nGenesis shows shame entering immediately after sin because sin breaks the trust that made openness possible.",
-      "\"Fig Leaves\"\nThe fig leaves are the first human-made covering. Adam and Eve try to manage exposure with whatever they can make quickly.\nThis is a powerful picture because people still do this. We cover with image, excuses, performance, humor, denial, success, or blame.\nThe leaves may hide their bodies for a moment, but they cannot heal the relationship with God.\nLater in the chapter, God will make a better covering, which shows that human coverings cannot do what divine mercy can.",
+      "\"They Sewed Fig Leaves Together\"\nAdam and Eve try to cover shame with something they can make from the garden.\nThis is the first human response to guilt: not confession, but covering. They know something is wrong, but they try to manage the exposure themselves.\nThe fig leaves may hide their bodies for a moment, but they cannot heal the relationship with God.\nThis phrase matters because it shows shame turning into self-protection almost immediately.",
+      "\"Made Themselves Aprons\"\nThe aprons are human-made protection. Adam and Eve are trying to make themselves feel less exposed.\nThis phrase shows the beginning of self-protection after sin. People still do this with excuses, image, performance, denial, humor, or blame.\nThe covering is real, but it is not enough. Later in the chapter, God will make a better covering, showing that human coverings cannot do what divine mercy can.\nThis deserves its own card because it moves from the material, fig leaves, to the deeper action: humans trying to cover themselves without God.",
     ],
     truths: [
       "Sin can look desirable before it destroys.\nThe fruit appears good, beautiful, and wise. That is part of the danger.\nTemptation rarely begins by showing the wound it will leave. It shows the appetite, the beauty, and the imagined benefit.\nGenesis teaches us to ask not only, \"Do I want this?\" but, \"Where will this desire lead if it is detached from God's word?\"",
@@ -11168,6 +11176,72 @@ The man who was given the command also disobeys.
 The relationship that was meant for partnership now joins together in rebellion.`,
         ],
         [
+          "He Did Eat",
+          `Adam personally eats the fruit.
+
+He is not only near the sin.
+
+He joins it.
+
+That matters because Genesis does not treat Adam as innocent just because Eve ate first.
+
+He receives what God had forbidden.
+
+He crosses the same boundary.
+
+Eve ate.
+
+Adam ate.
+
+Both disobeyed.
+
+This phrase matters because the fall becomes shared rebellion.
+
+The man and woman who were meant to walk together in trust now stand together in disobedience.`,
+        ],
+        [
+          "The Eyes Of Them Both Were Opened",
+          `The serpent promised opened eyes.
+
+In one sense, that promise comes true.
+
+But it does not give them the freedom they imagined.
+
+Their eyes open to a painful new reality.
+
+They now know evil by experience, not just by warning.
+
+Opened eyes.
+
+Lost innocence.
+
+Knowledge with pain.
+
+This phrase matters because temptation often tells a half-truth.
+
+Sin may reveal something, but it wounds the person who sees it.`,
+        ],
+        [
+          "They Knew That They Were Naked",
+          `In Genesis 2, nakedness meant openness without shame.
+
+After sin, the same nakedness feels threatening.
+
+Their bodies did not suddenly become evil.
+
+Their relationship to God, each other, and themselves has changed.
+
+Shame.
+
+Vulnerability.
+
+Self-protection.
+
+This phrase matters because shame enters immediately after sin.
+
+Being fully seen no longer feels safe.`,
+        ],
+        [
           "🌿 They Sewed Fig Leaves Together",
           `This is the first attempt to cover shame.
 
@@ -11190,6 +11264,28 @@ They can cover skin, but they cannot fix the deeper problem.
 This phrase matters because people still try to cover shame with whatever they can make for themselves.
 
 Genesis will show that God must provide a better covering.`,
+        ],
+        [
+          "Made Themselves Aprons",
+          `The aprons are human-made protection.
+
+Adam and Eve are trying to feel less exposed.
+
+This is more than clothing.
+
+It is the first picture of people trying to manage shame without God.
+
+Covering.
+
+Protection.
+
+Human effort.
+
+The covering is real, but it is not enough.
+
+Later in the chapter, God will make a better covering.
+
+That shows human coverings cannot do what divine mercy can.`,
         ],
       ],
     }),
