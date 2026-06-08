@@ -235,8 +235,6 @@ type LandingAnalyticsEvent =
   | "reached_results_page"
   | "clicked_yes_start_my_journey"
   | "started_guest_journey"
-  | "viewed_create_account_modal"
-  | "opened_create_account_modal"
   | "created_account_successfully"
   | "closed_onboarding";
 
@@ -646,9 +644,6 @@ export default function LandingPage() {
       return;
     }
 
-    if (onboardingStep === "account") {
-      trackLandingEventOnce("viewed_create_account_modal", { stepKey: "account" });
-    }
   }, [currentQuestion, onboardingOpen, onboardingStep, questionIndex, recommendationDays, recommendedStudyRoute]);
 
   function trackStartJourneyClick(clickedFrom: string) {
@@ -686,11 +681,11 @@ export default function LandingPage() {
   }
 
   function skipToAccount() {
-    trackLandingEvent("opened_create_account_modal", { openedFrom: "skip" });
-    setOnboardingOpen(true);
-    setOnboardingStep("account");
+    setOnboardingOpen(false);
     setAccountAttempted(false);
     setError(null);
+    setLandingMenuOpen(false);
+    router.push("/signup");
   }
 
   function chooseAnswer(value: string) {
@@ -744,8 +739,8 @@ export default function LandingPage() {
       studyRoute: route,
       selectedDevotionalId: null,
     });
-    trackLandingEvent("opened_create_account_modal");
-    setOnboardingStep("account");
+    setOnboardingOpen(false);
+    router.push("/signup");
   }
 
   async function startGuestJourney(routeOverride?: StudyRoute) {
@@ -981,23 +976,35 @@ export default function LandingPage() {
     window.localStorage.setItem(`bb:skip-initial-login:${user.id}`, "1");
     window.localStorage.setItem(`bb:skip-initial-dashboard-view:${user.id}`, "1");
 
+    const { data: existingSignupAction } = await supabase
+      .from("master_actions")
+      .select("id")
+      .eq("user_id", user.id)
+      .eq("action_type", ACTION_TYPE.user_signup)
+      .limit(1);
+    const alreadyTrackedSignup = Boolean(existingSignupAction?.length);
+
     try {
-      await supabase.from("user_signups").insert({
-        user_id: user.id,
-        email: user.email,
-      });
+      if (!alreadyTrackedSignup) {
+        await supabase.from("user_signups").insert({
+          user_id: user.id,
+          email: user.email,
+        });
+      }
     } catch (analyticsError) {
       console.error("Analytics insert error (non-blocking):", analyticsError);
     }
 
     try {
-      await supabase.from("master_actions").insert({
-        user_id: user.id,
-        username: cleanName,
-        action_type: ACTION_TYPE.user_signup,
-        action_label: "Signed up after Bible Buddy landing questionnaire",
-        created_at: new Date().toISOString(),
-      });
+      if (!alreadyTrackedSignup) {
+        await supabase.from("master_actions").insert({
+          user_id: user.id,
+          username: cleanName,
+          action_type: ACTION_TYPE.user_signup,
+          action_label: "Signed up after Bible Buddy landing questionnaire",
+          created_at: new Date().toISOString(),
+        });
+      }
     } catch (actionTrackingError) {
       console.error("Signup action tracking error (non-blocking):", actionTrackingError);
     }

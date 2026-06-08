@@ -153,8 +153,8 @@ export async function GET(request: Request) {
       videoHelpfulnessResult,
     ] = await Promise.all([
       countAuthUsers(url, key),
-      supabase.from("user_signups").select("id", { count: "exact", head: true }).gte("created_at", todayStart),
-      supabase.from("master_actions").select("id", { count: "exact", head: true }).eq("action_type", "user_signup").gte("created_at", todayStart),
+      supabase.from("user_signups").select("user_id").gte("created_at", todayStart).limit(250000),
+      supabase.from("master_actions").select("user_id").eq("action_type", "user_signup").gte("created_at", todayStart).limit(250000),
       supabase.from("master_actions").select("id", { count: "exact", head: true }).eq("action_type", "user_upgraded").gte("created_at", todayStart),
       supabase.from("master_actions").select("user_id").gte("created_at", activeSince).limit(250000),
       supabase.from("profile_stats").select("user_id, last_active_at, last_active_date").or(`last_active_at.gte.${activeSince},last_active_date.gte.${activeSince.slice(0, 10)}`).limit(250000),
@@ -164,6 +164,10 @@ export async function GET(request: Request) {
       supabase.from("profile_stats").select("user_id, username, display_name, is_paid, current_level, last_active_at, last_active_date").limit(250000),
       supabase.from("video_helpfulness_votes").select("video_id, video_title, video_url, video_context, helpful, updated_at").limit(250000),
     ]);
+
+    const signupRows = (signupsResult.data || []) as Array<{ user_id: string | null }>;
+    const fallbackSignupRows = (fallbackSignupsResult.data || []) as Array<{ user_id: string | null }>;
+    const uniqueSignupCount = uniqueCount(signupsResult.error ? fallbackSignupRows : signupRows);
 
     const activeRows = [
       ...((activeActionsResult.data || []) as Array<{ user_id: string | null }>),
@@ -303,7 +307,7 @@ export async function GET(request: Request) {
     return NextResponse.json({
       generatedAt: new Date().toISOString(),
       overview: {
-        signupsToday: signupsResult.error ? fallbackSignupsResult.count ?? 0 : signupsResult.count ?? 0,
+        signupsToday: uniqueSignupCount,
         activeUsers: uniqueCount(activeRows),
         upgradesToday: upgradesResult.count ?? 0,
         totalUsers,

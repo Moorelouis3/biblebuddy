@@ -1607,7 +1607,19 @@ function buildLandingActivityLog(rows: LandingEventRow[], profileByUserId: Map<s
     sessions.get(sessionId)?.push(row);
   }
 
-  const entries = validRows.map((row, index) => {
+  const seenAccountEvents = new Set<string>();
+  const dedupedRows = validRows.filter((row) => {
+    if (!isAccountEvent(row.event_name || "")) return true;
+    const userId = typeof row.user_id === "string" && row.user_id ? row.user_id : "";
+    const sessionId = typeof row.session_id === "string" && row.session_id ? row.session_id : "";
+    const accountKey = userId || sessionId;
+    if (!accountKey) return true;
+    if (seenAccountEvents.has(accountKey)) return false;
+    seenAccountEvents.add(accountKey);
+    return true;
+  });
+
+  const entries = dedupedRows.map((row, index) => {
     const sessionId = typeof row.session_id === "string" && row.session_id ? row.session_id : "";
     const sessionRows = sessionId ? sessions.get(sessionId) || [] : [];
     const firstRow = sessionRows[0];
@@ -2193,7 +2205,11 @@ function buildVisitorJourneys(
           "onboarding_results_viewed",
           "onboarding_journey_started",
         ].includes(row.action_type || ""))
-        .filter((row) => row.action_type === "user_signup" || row.action_type === "user_upgraded")
+        .filter((row) => {
+          if (row.action_type === "user_upgraded") return true;
+          if (row.action_type !== "user_signup") return false;
+          return !accountEvent;
+        })
         .map((row, index) => {
           const actionType = row.action_type || "";
           const dayNumber = Number(row.journey_day || parseBibleYearDayFromLabel(row.action_label || "") || 0);
@@ -2291,7 +2307,13 @@ function buildVisitorJourneys(
   const finishedOnboarding = rowsOut.filter((row) => Boolean(row.onboardingCompletedAt)).length;
   const startedDay1 = rowsOut.filter((row) => Boolean(row.startedDay1At)).length;
   const completedDay1 = rowsOut.filter((row) => Boolean(row.completedDay1At)).length;
-  const createdFreeAccount = rowsOut.filter((row) => Boolean(row.createdAccountAt)).length;
+  const createdAccountActors = new Set(
+    rowsOut
+      .filter((row) => Boolean(row.createdAccountAt))
+      .map((row) => row.userId || row.sessionId)
+      .filter(Boolean),
+  );
+  const createdFreeAccount = createdAccountActors.size;
   const upgradedToPro = rowsOut.filter((row) => Boolean(row.upgradedAt)).length;
 
   return {

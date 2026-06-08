@@ -102,23 +102,35 @@ export default function SignupPage() {
   }, [referrerUserId, router]);
 
   async function recordSignup(userId: string, userEmail: string | undefined, username: string) {
+    const { data: existingSignupAction } = await supabase
+      .from("master_actions")
+      .select("id")
+      .eq("user_id", userId)
+      .eq("action_type", ACTION_TYPE.user_signup)
+      .limit(1);
+    const alreadyTrackedSignup = Boolean(existingSignupAction?.length);
+
     try {
-      await supabase.from("user_signups").insert({
-        user_id: userId,
-        email: userEmail,
-      });
+      if (!alreadyTrackedSignup) {
+        await supabase.from("user_signups").insert({
+          user_id: userId,
+          email: userEmail,
+        });
+      }
     } catch (analyticsError) {
       console.error("Analytics insert error (non-blocking):", analyticsError);
     }
 
     try {
-      await supabase.from("master_actions").insert({
-        user_id: userId,
-        username,
-        action_type: ACTION_TYPE.user_signup,
-        action_label: "Signed up for Bible Buddy",
-        created_at: new Date().toISOString(),
-      });
+      if (!alreadyTrackedSignup) {
+        await supabase.from("master_actions").insert({
+          user_id: userId,
+          username,
+          action_type: ACTION_TYPE.user_signup,
+          action_label: "Signed up for Bible Buddy",
+          created_at: new Date().toISOString(),
+        });
+      }
     } catch (actionTrackingError) {
       console.error("Signup action tracking error (non-blocking):", actionTrackingError);
     }
