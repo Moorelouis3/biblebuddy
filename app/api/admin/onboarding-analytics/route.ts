@@ -2,6 +2,28 @@ import { NextResponse } from "next/server";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
 const ANALYTICS_RESPONSE_CACHE_TTL_MS = 45 * 1000;
+const NEW_USER_FIRST_THREE_DAYS_LOOKBACK_DAYS = 7;
+const NEW_USER_FIRST_THREE_DAYS_ACTION_TYPES = [
+  "user_signup",
+  "bible_year_audio_played",
+  "bible_year_audio_progress",
+  "bible_year_audio_completed",
+  "bible_year_task_started",
+  "bible_year_task_completed",
+  "bible_in_one_year_day_viewed",
+  "bible_in_one_year_reading_completed",
+  "bible_in_one_year_trivia_completed",
+  "bible_in_one_year_reflection_completed",
+  "follow_along_scripture_opened",
+  "study_notes_viewed",
+  "study_notes_section_opened",
+  "chapter_notes_viewed",
+  "chapter_notes_reviewed",
+  "scrambled_chapter_opened",
+  "scrambled_chapter_completed",
+  "profile_creation_popup_completed",
+  "profile_creation_popup_skipped",
+] as const;
 
 type AnalyticsResponseCacheEntry = {
   body: unknown;
@@ -3049,11 +3071,20 @@ async function buildOverviewAnalyticsResponse(
   if (endIso) masterQuery = masterQuery.lt("created_at", endIso);
   const { data: masterData } = await masterQuery;
   const masterRows = (masterData || []) as MasterActionFunnelRow[];
+  const firstThreeDaysSinceIso = new Date(Date.now() - NEW_USER_FIRST_THREE_DAYS_LOOKBACK_DAYS * 24 * 60 * 60 * 1000).toISOString();
+  const { data: firstThreeDaysData } = await adminSupabase
+    .from("master_actions")
+    .select("user_id, username, session_id, action_type, action_label, journey_day, account_status, event_metadata, created_at")
+    .in("action_type", [...NEW_USER_FIRST_THREE_DAYS_ACTION_TYPES])
+    .gte("created_at", firstThreeDaysSinceIso)
+    .order("created_at", { ascending: false })
+    .limit(50000);
+  const firstThreeDayRows = (firstThreeDaysData || []) as MasterActionFunnelRow[];
   const windowSummary = summarizeAcquisitionWindow(landingRows, masterRows, journeyWindow);
   const proUpgrades = new Set(masterRows.filter((row) => row.action_type === "user_upgraded").map((row) => row.user_id).filter(Boolean)).size;
   const audioRows = masterRows.filter((row) => row.action_type === "bible_year_audio_played" || row.action_type === "bible_year_task_started");
   const uniqueAudioActors = new Set(audioRows.map((row) => getMasterActorId(row)).filter(Boolean));
-  const newUserFirstThreeDays = buildNewUserFirstThreeDaysAnalytics(masterRows, new Map());
+  const newUserFirstThreeDays = buildNewUserFirstThreeDaysAnalytics(firstThreeDayRows, new Map());
   const landingUsers = windowSummary.visits;
   const signupUsers = windowSummary.accountsCreated || windowSummary.signups || 0;
   const conversionRate = landingUsers > 0 ? Number(((signupUsers / landingUsers) * 100).toFixed(1)) : 0;
@@ -3321,6 +3352,16 @@ export async function GET(request: Request) {
     masterFunnelRows = (masterFunnelData || []) as MasterActionFunnelRow[];
   }
 
+  const firstThreeDaysSinceIso = new Date(Date.now() - NEW_USER_FIRST_THREE_DAYS_LOOKBACK_DAYS * 24 * 60 * 60 * 1000).toISOString();
+  const { data: firstThreeDaysData, error: firstThreeDaysError } = await adminSupabase
+    .from("master_actions")
+    .select("user_id, username, session_id, action_type, action_label, journey_day, account_status, event_metadata, created_at")
+    .in("action_type", [...NEW_USER_FIRST_THREE_DAYS_ACTION_TYPES])
+    .gte("created_at", firstThreeDaysSinceIso)
+    .order("created_at", { ascending: false })
+    .limit(50000);
+  let firstThreeDayRows = firstThreeDaysError ? [] : ((firstThreeDaysData || []) as MasterActionFunnelRow[]);
+
   const activeSinceIso = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
   let activeUsersLast24Rows: MasterActionFunnelRow[] = [];
   const { data: activeUsersLast24Data, error: activeUsersLast24Error } = await adminSupabase
@@ -3339,6 +3380,7 @@ export async function GET(request: Request) {
     ...studyNotesActionRows.map((row) => row.user_id).filter((userId): userId is string => Boolean(userId)),
     ...bibleYearTaskActionRows.map((row) => row.user_id).filter((userId): userId is string => Boolean(userId)),
     ...masterFunnelRows.map((row) => row.user_id).filter((userId): userId is string => Boolean(userId)),
+    ...firstThreeDayRows.map((row) => row.user_id).filter((userId): userId is string => Boolean(userId)),
     ...activeUsersLast24Rows.map((row) => row.user_id).filter((userId): userId is string => Boolean(userId)),
   ]));
   const profileByUserId = new Map<string, string>();
@@ -3401,6 +3443,9 @@ export async function GET(request: Request) {
   masterFunnelRows = masterFunnelRows.filter(
     (row) => !isInternalAnalyticsUser(row.user_id, profileSummaryByUserId) && !isOwnerAuthUser(row.user_id, authSummaryByUserId),
   );
+  firstThreeDayRows = firstThreeDayRows.filter(
+    (row) => !isInternalAnalyticsUser(row.user_id, profileSummaryByUserId) && !isOwnerAuthUser(row.user_id, authSummaryByUserId),
+  );
   activeUsersLast24Rows = activeUsersLast24Rows.filter(
     (row) =>
       !isActiveUsersLast24NoiseAction(row.action_type) &&
@@ -3447,7 +3492,7 @@ export async function GET(request: Request) {
   const daySevenUpgrade = buildDayUpgradeAnalytics(masterFunnelRows, 7);
   const studyNotesUpgrade = buildStudyNotesUpgradeAnalytics(masterFunnelRows);
   const activeUsersLast24Hours = buildActiveUsersLast24Hours(activeUsersLast24Rows, profileByUserId);
-  const newUserFirstThreeDays = buildNewUserFirstThreeDaysAnalytics(masterFunnelRows, profileByUserId);
+  const newUserFirstThreeDays = buildNewUserFirstThreeDaysAnalytics(firstThreeDayRows, profileByUserId);
   const bibleBuddyFunnelStages = buildBibleBuddyFunnelStages(validLandingEventRows, masterFunnelRows, windowBibleYearProgressRows, dayThreeUpgrade, daySevenUpgrade);
   const funnel = summarizeFunnel(validEventRows);
   const sources = summarizeSources(validEventRows);
