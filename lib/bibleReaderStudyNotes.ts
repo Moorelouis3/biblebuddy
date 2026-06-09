@@ -499,11 +499,11 @@ export const BIBLE_READER_STUDY_SECTIONS: BibleReaderStudySection[] = [
           "\"Desired To Make One Wise\"\nWisdom is good when it comes from God. Later books like Proverbs will tell people to seek wisdom like treasure.\nBut this is wisdom seized apart from God. It is an attempt to gain moral independence instead of receiving instruction from the Creator.\nThat is why the tree is so serious. It represents the human desire to define good and evil without God.\nThere is an aha moment here: the Bible is not anti-wisdom. It is against a kind of wisdom that begins by distrusting God.",
           "\"She Took Of Its Fruit And Ate\"\nThe fall moves from listening, to looking, to taking, to eating. Genesis slows the moment down so we can see sin becoming action.\nTaking is important language in the Bible. Sometimes God gives, and humans receive. But here the human reaches for what God has not given.\nThe act may look small from the outside. It is just fruit. But spiritually, it is a declaration that the creature will no longer live under the Creator's word.\nThis is why sin cannot be measured only by the size of the object involved. It must be measured by the relationship it breaks.",
           "\"She Also Gave Some To Her Husband\"\nAdam is not far away in this scene. The text says he is with her.\nThat means Adam's silence matters. He was given the command first, but he does not guard the garden, speak truth, or protect the relationship from the lie.\nGenesis is not letting Adam off the hook. Sin spreads through passive failure as well as active choice.\nThis phrase teaches that love should not stand quietly while falsehood grows.",
-          "\"He Did Eat\"\nAdam personally eats the fruit. He is not only present near the sin; he joins it.\nThat matters because the Bible does not treat Adam as innocent just because Eve ate first. He receives what was forbidden and steps across the same boundary.\nEve ate. Adam ate. Both disobeyed.\nThis phrase deserves attention because sin becomes shared rebellion here. The man and woman who were meant to walk together in trust now stand together in disobedience.",
-          "\"The Eyes Of Them Both Were Opened\"\nThe serpent promised opened eyes, and in one sense that promise comes true. But the result is not glory, freedom, or wisdom the way they imagined.\nTheir eyes open to a painful new reality. They now know evil by experience, not just by warning.\nInnocence is gone, and the world feels different because they have crossed God's command.\nThis phrase is important because it shows the bitter half-truth of temptation. Sin may reveal something, but it also wounds the person who sees it.",
+          "\"He Ate It Too\"\nAdam personally eats the fruit. He is not only present near the sin; he joins it.\nThat matters because the Bible does not treat Adam as innocent just because Eve ate first. He receives what was forbidden and steps across the same boundary.\nEve ate. Adam ate. Both disobeyed.\nThis phrase deserves attention because sin becomes shared rebellion here. The man and woman who were meant to walk together in trust now stand together in disobedience.",
+          "\"Their Eyes Were Opened\"\nThe serpent promised opened eyes, and in one sense that promise comes true. But the result is not glory, freedom, or wisdom the way they imagined.\nTheir eyes open to a painful new reality. They now know evil by experience, not just by warning.\nInnocence is gone, and the world feels different because they have crossed God's command.\nThis phrase is important because it shows the bitter half-truth of temptation. Sin may reveal something, but it also wounds the person who sees it.",
           "\"They Knew That They Were Naked\"\nIn Genesis 2, nakedness meant openness without shame. After sin, the same nakedness feels threatening.\nNothing about their bodies changed, but their relationship to God, each other, and themselves changed. Innocence has been lost, and self-protection begins.\nThat is why shame is deeper than embarrassment. Shame is the feeling that being fully seen is no longer safe.\nGenesis shows shame entering immediately after sin because sin breaks the trust that made openness possible.",
           "\"They Sewed Fig Leaves Together\"\nAdam and Eve try to cover shame with something they can make from the garden.\nThis is the first human response to guilt: not confession, but covering. They know something is wrong, but they try to manage the exposure themselves.\nThe fig leaves may hide their bodies for a moment, but they cannot heal the relationship with God.\nThis phrase matters because it shows shame turning into self-protection almost immediately.",
-          "\"Made Themselves Aprons\"\nThe aprons are human-made protection. Adam and Eve are trying to make themselves feel less exposed.\nThis phrase shows the beginning of self-protection after sin. People still do this with excuses, image, performance, denial, humor, or blame.\nThe covering is real, but it is not enough. Later in the chapter, God will make a better covering, showing that human coverings cannot do what divine mercy can.\nThis deserves its own card because it moves from the material, fig leaves, to the deeper action: humans trying to cover themselves without God.",
+          "\"Made Coverings For Themselves\"\nThe coverings are human-made protection. Adam and Eve are trying to make themselves feel less exposed.\nThis phrase shows the beginning of self-protection after sin. People still do this with excuses, image, performance, denial, humor, or blame.\nThe covering is real, but it is not enough. Later in the chapter, God will make a better covering, showing that human coverings cannot do what divine mercy can.\nThis deserves its own card because it moves from the material, fig leaves, to the deeper action: humans trying to cover themselves without God.",
         ],
       },
       {
@@ -5122,11 +5122,11 @@ const DAY_TWO_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; tru
       "\"Desired To Make One Wise\"\nWisdom is good when it comes from God. Later books like Proverbs will tell people to seek wisdom like treasure.\nBut this is wisdom seized apart from God. It is an attempt to gain moral independence instead of receiving instruction from the Creator.\nThat is why the tree is so serious. It represents the human desire to define good and evil without God.\nThere is an aha moment here: the Bible is not anti-wisdom. It is against a kind of wisdom that begins by distrusting God.",
       "\"She Took Of Its Fruit And Ate\"\nThe fall moves from listening, to looking, to taking, to eating. Genesis slows the moment down so we can see sin becoming action.\nTaking is important language in the Bible. Sometimes God gives, and humans receive. But here the human reaches for what God has not given.\nThe act may look small from the outside. It is just fruit. But spiritually, it is a declaration that the creature will no longer live under the Creator's word.\nThis is why sin cannot be measured only by the size of the object involved. It must be measured by the relationship it breaks.",
       "\"She Also Gave Some To Her Husband\"\nAdam is not far away in this scene. The text says he is with her.\nThat means Adam's silence matters. He was given the command first, but he does not guard the garden, speak truth, or protect the relationship from the lie.\nGenesis is not letting Adam off the hook. Sin spreads through passive failure as well as active choice.\nThis phrase teaches that love should not stand quietly while falsehood grows.",
-      "\"He Did Eat\"\nAdam personally eats the fruit. He is not only present near the sin; he joins it.\nThat matters because the Bible does not treat Adam as innocent just because Eve ate first. He receives what was forbidden and steps across the same boundary.\nEve ate. Adam ate. Both disobeyed.\nThis phrase deserves attention because sin becomes shared rebellion here. The man and woman who were meant to walk together in trust now stand together in disobedience.",
-      "\"The Eyes Of Them Both Were Opened\"\nThe serpent promised opened eyes, and in one sense that promise comes true. But the result is not glory, freedom, or wisdom the way they imagined.\nTheir eyes open to a painful new reality. They now know evil by experience, not just by warning.\nInnocence is gone, and the world feels different because they have crossed God's command.\nThis phrase is important because it shows the bitter half-truth of temptation. Sin may reveal something, but it also wounds the person who sees it.",
+      "\"He Ate It Too\"\nAdam personally eats the fruit. He is not only present near the sin; he joins it.\nThat matters because the Bible does not treat Adam as innocent just because Eve ate first. He receives what was forbidden and steps across the same boundary.\nEve ate. Adam ate. Both disobeyed.\nThis phrase deserves attention because sin becomes shared rebellion here. The man and woman who were meant to walk together in trust now stand together in disobedience.",
+      "\"Their Eyes Were Opened\"\nThe serpent promised opened eyes, and in one sense that promise comes true. But the result is not glory, freedom, or wisdom the way they imagined.\nTheir eyes open to a painful new reality. They now know evil by experience, not just by warning.\nInnocence is gone, and the world feels different because they have crossed God's command.\nThis phrase is important because it shows the bitter half-truth of temptation. Sin may reveal something, but it also wounds the person who sees it.",
       "\"They Knew That They Were Naked\"\nIn Genesis 2, nakedness meant openness without shame. After sin, the same nakedness feels threatening.\nNothing about their bodies changed, but their relationship to God, each other, and themselves changed. Innocence has been lost, and self-protection begins.\nThat is why shame is deeper than embarrassment. Shame is the feeling that being fully seen is no longer safe.\nGenesis shows shame entering immediately after sin because sin breaks the trust that made openness possible.",
       "\"They Sewed Fig Leaves Together\"\nAdam and Eve try to cover shame with something they can make from the garden.\nThis is the first human response to guilt: not confession, but covering. They know something is wrong, but they try to manage the exposure themselves.\nThe fig leaves may hide their bodies for a moment, but they cannot heal the relationship with God.\nThis phrase matters because it shows shame turning into self-protection almost immediately.",
-      "\"Made Themselves Aprons\"\nThe aprons are human-made protection. Adam and Eve are trying to make themselves feel less exposed.\nThis phrase shows the beginning of self-protection after sin. People still do this with excuses, image, performance, denial, humor, or blame.\nThe covering is real, but it is not enough. Later in the chapter, God will make a better covering, showing that human coverings cannot do what divine mercy can.\nThis deserves its own card because it moves from the material, fig leaves, to the deeper action: humans trying to cover themselves without God.",
+      "\"Made Coverings For Themselves\"\nThe coverings are human-made protection. Adam and Eve are trying to make themselves feel less exposed.\nThis phrase shows the beginning of self-protection after sin. People still do this with excuses, image, performance, denial, humor, or blame.\nThe covering is real, but it is not enough. Later in the chapter, God will make a better covering, showing that human coverings cannot do what divine mercy can.\nThis deserves its own card because it moves from the material, fig leaves, to the deeper action: humans trying to cover themselves without God.",
     ],
     truths: [
       "Sin can look desirable before it destroys.\nThe fruit appears good, beautiful, and wise. That is part of the danger.\nTemptation rarely begins by showing the wound it will leave. It shows the appetite, the beauty, and the imagined benefit.\nGenesis teaches us to ask not only, \"Do I want this?\" but, \"Where will this desire lead if it is detached from God's word?\"",
@@ -11176,7 +11176,7 @@ The man who was given the command also disobeys.
 The relationship that was meant for partnership now joins together in rebellion.`,
         ],
         [
-          "He Did Eat",
+          "He Ate It Too",
           `Adam personally eats the fruit.
 
 He is not only near the sin.
@@ -11200,7 +11200,7 @@ This phrase matters because the fall becomes shared rebellion.
 The man and woman who were meant to walk together in trust now stand together in disobedience.`,
         ],
         [
-          "The Eyes Of Them Both Were Opened",
+          "Their Eyes Were Opened",
           `The serpent promised opened eyes.
 
 In one sense, that promise comes true.
@@ -11266,8 +11266,8 @@ This phrase matters because people still try to cover shame with whatever they c
 Genesis will show that God must provide a better covering.`,
         ],
         [
-          "Made Themselves Aprons",
-          `The aprons are human-made protection.
+          "Made Coverings For Themselves",
+          `The coverings are human-made protection.
 
 Adam and Eve are trying to feel less exposed.
 
@@ -11363,7 +11363,7 @@ People hide through silence, blame, pretending, busyness, or distance.
 Genesis shows that hiding began in the garden.`,
         ],
         [
-          "❓ Where Art Thou",
+          "❓ Where Are You",
           `God asks Adam where he is.
 
 This does not mean God lost him.
@@ -11408,12 +11408,12 @@ This phrase matters because sin makes God's presence feel unsafe to guilty peopl
 The same Lord who made Adam, breathed life into him, and placed him in the garden is now someone Adam wants to hide from.`,
         ],
         [
-          "👉 The Woman Whom Thou Gavest",
+          "👉 The Woman You Gave Me",
           `Adam answers by shifting blame.
 
 He points to the woman.
 
-But he also points back at God by saying, "whom thou gavest."
+But he also points back at God by saying, "the woman You gave me."
 
 That is painful.
 
@@ -11430,7 +11430,7 @@ Instead of confessing, Adam explains.
 Instead of owning his choice, he redirects the blame.`,
         ],
         [
-          "🐍 The Serpent Beguiled Me",
+          "🐍 The Serpent Deceived Me",
           `Eve also shifts blame.
 
 She says the serpent deceived her.
@@ -11485,7 +11485,7 @@ This phrase matters because God takes deception seriously.
 The serpent may have sounded clever, but God exposes him as cursed.`,
         ],
         [
-          "🪨 Upon Thy Belly Shalt Thou Go",
+          "🪨 You Shall Go On Your Belly",
           `This image shows humiliation.
 
 The serpent is brought low.
@@ -11507,7 +11507,7 @@ This phrase matters because the serpent's rebellion does not lead to true glory.
 He promised elevation, but receives humiliation.`,
         ],
         [
-          "⚔️ Enmity Between Thee And The Woman",
+          "⚔️ Enmity Between You And The Woman",
           `Enmity means hostility or conflict.
 
 God says there will be ongoing conflict between the serpent and the woman.
@@ -11527,7 +11527,7 @@ The story will not end with humanity simply joining the serpent.
 God promises conflict against evil.`,
         ],
         [
-          "👶 Thy Seed And Her Seed",
+          "👶 Your Offspring And Her Offspring",
           `Seed means offspring or descendants.
 
 The Bible now begins making us watch family lines.
@@ -11547,7 +11547,7 @@ This phrase matters because Genesis will keep tracing seed, family, promise, and
 The rest of the Bible grows out of this first promise.`,
         ],
         [
-          "🦶 It Shall Bruise Thy Head",
+          "🦶 He Will Bruise Your Head",
           `This is one of the first great promises of the Bible.
 
 The offspring of the woman will crush the serpent's head.
@@ -11567,7 +11567,7 @@ Christians have long seen this as the first promise pointing forward to Jesus.
 The Savior will come from humanity and defeat the deceiver.`,
         ],
         [
-          "🐍 Thou Shalt Bruise His Heel",
+          "🐍 You Will Bruise His Heel",
           `The serpent will wound the promised offspring.
 
 A heel wound hurts, but it is not the same as a crushed head.
@@ -11596,7 +11596,7 @@ At the cross, Jesus is wounded, but through His death and resurrection He defeat
       icon: "💔",
       phrases: [
         [
-          "🤰 I Will Greatly Multiply Thy Sorrow",
+          "🤰 I Will Greatly Multiply Your Pain",
           `God speaks to the woman about pain and sorrow.
 
 Sin has entered the world, and now the places of blessing will be touched by pain.
@@ -11614,7 +11614,7 @@ This phrase matters because sin does not stay abstract.
 It reaches bodies, families, relationships, and daily life.`,
         ],
         [
-          "👶 In Sorrow Thou Shalt Bring Forth Children",
+          "👶 You Will Bear Children In Pain",
           `Childbirth is still connected to life and blessing.
 
 But now it is also connected to pain.
@@ -11638,7 +11638,7 @@ This phrase matters because the promised seed will still come through childbirth
 Even in pain, God's promise keeps moving.`,
         ],
         [
-          "💔 Thy Desire Shall Be To Thy Husband",
+          "💔 Your Desire Will Be For Your Husband",
           `This phrase is difficult, but it points to tension entering the marriage relationship.
 
 Genesis 2 showed unity, joy, and no shame.
@@ -11682,7 +11682,7 @@ It touches the world people live in.
 The created order now bears the weight of human rebellion.`,
         ],
         [
-          "😓 In The Sweat Of Thy Face",
+          "😓 By The Sweat Of Your Face",
           `Work existed before sin, but sweat and painful toil enter after sin.
 
 Adam was placed in the garden to work and keep it.
@@ -11703,7 +11703,7 @@ This phrase matters because it explains why work can feel both purposeful and pa
 We were made to work, but we now work in a world affected by the fall.`,
         ],
         [
-          "🪦 Dust Thou Art",
+          "🪦 You Are Dust",
           `God reminds Adam where he came from.
 
 Adam was formed from dust in Genesis 2.

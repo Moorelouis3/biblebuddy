@@ -170,7 +170,7 @@ Human labor is still meaningful, but now it is mixed with hardship.
 
 ### ⚰️ Death Enters The Human Story
 
-God says, "Dust thou art, and unto dust shalt thou return."
+God says, "You are dust, and you will return to dust."
 
 This is the consequence God warned about. Humanity was made from dust, and now death will return the body to dust.
 
