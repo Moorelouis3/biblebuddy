@@ -109,6 +109,7 @@ type NewUserFirstThreeDaysRow = {
   userId: string;
   userLabel: string;
   signupAt: string;
+  eligibleForThreeDayMetrics: boolean;
   firstAction: string;
   firstActionAt: string | null;
   day1Started: boolean;
@@ -125,6 +126,8 @@ type NewUserFirstThreeDaysRow = {
 
 type NewUserFirstThreeDaysAnalytics = {
   totalNewAccounts: number;
+  eligibleAccounts: number;
+  stillMaturingAccounts: number;
   startedDay1: number;
   completedDay1: number;
   reachedDay2: number;
@@ -2017,6 +2020,7 @@ function buildNewUserFirstThreeDaysAnalytics(
   masterRows: MasterActionFunnelRow[],
   profileByUserId: Map<string, string>,
 ): NewUserFirstThreeDaysAnalytics {
+  const nowMs = Date.now();
   const signupByUser = new Map<string, MasterActionFunnelRow>();
   for (const row of masterRows) {
     if (row.action_type !== "user_signup" || !row.user_id || !row.created_at) continue;
@@ -2037,26 +2041,31 @@ function buildNewUserFirstThreeDaysAnalytics(
     const signupAtMs = signup.created_at ? new Date(signup.created_at).getTime() : 0;
     const dayOneEndsAt = signupAtMs + 24 * 60 * 60 * 1000;
     const dayThreeEndsAt = signupAtMs + 72 * 60 * 60 * 1000;
+    const eligibleForThreeDayMetrics = Number.isFinite(signupAtMs) && nowMs >= dayThreeEndsAt;
     const userActions = (actionsByUser.get(userId) || [])
       .filter((row) => {
         const createdAt = row.created_at ? new Date(row.created_at).getTime() : 0;
-        return Number.isFinite(createdAt) && createdAt >= signupAtMs && createdAt <= dayThreeEndsAt;
+        return Number.isFinite(createdAt) && createdAt >= signupAtMs;
       })
       .sort((a, b) => (a.created_at || "").localeCompare(b.created_at || ""));
-    const meaningfulActions = userActions.filter((row) => row.action_type !== "user_signup");
+    const firstThreeDayActions = userActions.filter((row) => {
+      const createdAt = row.created_at ? new Date(row.created_at).getTime() : 0;
+      return Number.isFinite(createdAt) && createdAt <= dayThreeEndsAt;
+    });
+    const meaningfulActions = firstThreeDayActions.filter((row) => row.action_type !== "user_signup");
     const firstAction = meaningfulActions[0] || null;
     const lastAction = meaningfulActions[meaningfulActions.length - 1] || firstAction;
-    const day1Started = userActions.some((row) => isBibleYearStartedAction(row, 1));
-    const day1Completed = userActions.some((row) => isBibleYearCompletedAction(row, 1));
-    const reachedDay2 = userActions.some((row) => isBibleYearStartedAction(row, 2) || isBibleYearCompletedAction(row, 2));
-    const reachedDay3 = userActions.some((row) => isBibleYearStartedAction(row, 3) || isBibleYearCompletedAction(row, 3));
+    const day1Started = firstThreeDayActions.some((row) => isBibleYearStartedAction(row, 1));
+    const day1Completed = firstThreeDayActions.some((row) => isBibleYearCompletedAction(row, 1));
+    const reachedDay2 = firstThreeDayActions.some((row) => isBibleYearStartedAction(row, 2) || isBibleYearCompletedAction(row, 2));
+    const reachedDay3 = firstThreeDayActions.some((row) => isBibleYearStartedAction(row, 3) || isBibleYearCompletedAction(row, 3));
     const returnedNextDay = meaningfulActions.some((row) => {
       const createdAt = row.created_at ? new Date(row.created_at).getTime() : 0;
       return Number.isFinite(createdAt) && createdAt >= dayOneEndsAt && createdAt <= dayThreeEndsAt;
     });
-    const activeAfter72Hours = meaningfulActions.some((row) => {
+    const activeAfter72Hours = userActions.some((row) => {
       const createdAt = row.created_at ? new Date(row.created_at).getTime() : 0;
-      return Number.isFinite(createdAt) && createdAt >= dayThreeEndsAt;
+      return row.action_type !== "user_signup" && Number.isFinite(createdAt) && createdAt >= dayThreeEndsAt;
     });
     const status: NewUserFirstThreeDaysRow["status"] = reachedDay3 || day1Completed
       ? "activated"
@@ -2070,6 +2079,7 @@ function buildNewUserFirstThreeDaysAnalytics(
       userId,
       userLabel: profileByUserId.get(userId) || signup.username || `User ${shortId(userId)}`,
       signupAt: signup.created_at || "",
+      eligibleForThreeDayMetrics,
       firstAction: firstAction ? getMasterActionTitle(firstAction) : "No action after signup",
       firstActionAt: firstAction?.created_at || null,
       day1Started,
@@ -2086,30 +2096,36 @@ function buildNewUserFirstThreeDaysAnalytics(
   }).sort((a, b) => (b.signupAt || "").localeCompare(a.signupAt || ""));
 
   const totalNewAccounts = rows.length;
-  const startedDay1 = rows.filter((row) => row.day1Started).length;
-  const completedDay1 = rows.filter((row) => row.day1Completed).length;
-  const reachedDay2 = rows.filter((row) => row.reachedDay2).length;
-  const reachedDay3 = rows.filter((row) => row.reachedDay3).length;
-  const returnedNextDay = rows.filter((row) => row.returnedNextDay).length;
-  const activeAfter72Hours = rows.filter((row) => row.activeAfter72Hours).length;
+  const eligibleRows = rows.filter((row) => row.eligibleForThreeDayMetrics);
+  const eligibleAccounts = eligibleRows.length;
+  const stillMaturingAccounts = totalNewAccounts - eligibleAccounts;
+  const startedDay1 = eligibleRows.filter((row) => row.day1Started).length;
+  const completedDay1 = eligibleRows.filter((row) => row.day1Completed).length;
+  const reachedDay2 = eligibleRows.filter((row) => row.reachedDay2).length;
+  const reachedDay3 = eligibleRows.filter((row) => row.reachedDay3).length;
+  const returnedNextDay = eligibleRows.filter((row) => row.returnedNextDay).length;
+  const activeAfter72Hours = eligibleRows.filter((row) => row.activeAfter72Hours).length;
 
   return {
     totalNewAccounts,
+    eligibleAccounts,
+    stillMaturingAccounts,
     startedDay1,
     completedDay1,
     reachedDay2,
     reachedDay3,
     returnedNextDay,
     activeAfter72Hours,
-    activationRate: percent(startedDay1, totalNewAccounts),
-    day1CompletionRate: percent(completedDay1, totalNewAccounts),
-    day2ReachRate: percent(reachedDay2, totalNewAccounts),
-    day3ReachRate: percent(reachedDay3, totalNewAccounts),
+    activationRate: percent(startedDay1, eligibleAccounts),
+    day1CompletionRate: percent(completedDay1, eligibleAccounts),
+    day2ReachRate: percent(reachedDay2, eligibleAccounts),
+    day3ReachRate: percent(reachedDay3, eligibleAccounts),
     commonDropoffs: [
-      { key: "no_action", label: "Signed up but did nothing", count: rows.filter((row) => row.status === "dropped_off").length },
-      { key: "started_not_finished", label: "Started Day 1 but did not finish", count: rows.filter((row) => row.day1Started && !row.day1Completed).length },
-      { key: "finished_not_returned", label: "Finished Day 1 but did not return", count: rows.filter((row) => row.day1Completed && !row.returnedNextDay).length },
-      { key: "returned_not_day2", label: "Returned but did not reach Day 2", count: rows.filter((row) => row.returnedNextDay && !row.reachedDay2).length },
+      { key: "maturing", label: "Still inside first 72 hours", count: stillMaturingAccounts },
+      { key: "no_action", label: "Signed up but did nothing", count: eligibleRows.filter((row) => row.status === "dropped_off").length },
+      { key: "started_not_finished", label: "Started Day 1 but did not finish", count: eligibleRows.filter((row) => row.day1Started && !row.day1Completed).length },
+      { key: "finished_not_returned", label: "Finished Day 1 but did not return", count: eligibleRows.filter((row) => row.day1Completed && !row.returnedNextDay).length },
+      { key: "returned_not_day2", label: "Returned but did not reach Day 2", count: eligibleRows.filter((row) => row.returnedNextDay && !row.reachedDay2).length },
     ],
     rows: rows.slice(0, 100),
   };

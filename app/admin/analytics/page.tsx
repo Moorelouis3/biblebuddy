@@ -278,6 +278,8 @@ type AnalyticsResponse = {
   };
   newUserFirstThreeDays?: {
     totalNewAccounts: number;
+    eligibleAccounts: number;
+    stillMaturingAccounts: number;
     startedDay1: number;
     completedDay1: number;
     reachedDay2: number;
@@ -293,6 +295,7 @@ type AnalyticsResponse = {
       userId: string;
       userLabel: string;
       signupAt: string;
+      eligibleForThreeDayMetrics: boolean;
       firstAction: string;
       firstActionAt: string | null;
       day1Started: boolean;
@@ -1150,9 +1153,9 @@ function NewUserFirstThreeDaysSection({ report }: { report: AnalyticsResponse["n
   const [showRows, setShowRows] = useState(false);
   const metrics = [
     { label: "New Accounts", value: report?.totalNewAccounts || 0, helper: "Created in this window." },
-    { label: "Started Day 1", value: report?.startedDay1 || 0, helper: `${report?.activationRate || 0}% of new accounts.` },
-    { label: "Completed Day 1", value: report?.completedDay1 || 0, helper: `${report?.day1CompletionRate || 0}% of new accounts.` },
-    { label: "Reached Day 3", value: report?.reachedDay3 || 0, helper: `${report?.day3ReachRate || 0}% of new accounts.` },
+    { label: "Eligible 72h Cohort", value: report?.eligibleAccounts || 0, helper: `${report?.stillMaturingAccounts || 0} still maturing.` },
+    { label: "Started Day 1", value: report?.startedDay1 || 0, helper: `${report?.activationRate || 0}% of eligible accounts.` },
+    { label: "Reached Day 3", value: report?.reachedDay3 || 0, helper: `${report?.day3ReachRate || 0}% of eligible accounts.` },
   ];
   const statusStyles: Record<string, string> = {
     activated: "bg-emerald-50 text-emerald-700 ring-emerald-200",
@@ -1167,6 +1170,9 @@ function NewUserFirstThreeDaysSection({ report }: { report: AnalyticsResponse["n
         <div>
           <p className="text-xs font-black uppercase tracking-[0.2em] text-[var(--bb-accent,#2f7fe8)]">New User First 3 Days</p>
           <h2 className="mt-2 text-2xl font-black text-[var(--bb-text-primary,#101827)]">What new accounts do after signup</h2>
+          <p className="mt-1 text-sm font-bold text-[var(--bb-text-secondary,#334155)]">
+            Rates only count accounts that signed up at least 72 hours ago, so brand-new users do not drag down Day 2 or Day 3.
+          </p>
         </div>
         <button
           type="button"
@@ -1193,9 +1199,9 @@ function NewUserFirstThreeDaysSection({ report }: { report: AnalyticsResponse["n
           <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">First 3-day movement</p>
           <div className="mt-4 grid gap-3 sm:grid-cols-4">
             {[
+              ["Completed Day 1", report?.completedDay1 || 0, `${report?.day1CompletionRate || 0}%`],
               ["Returned", report?.returnedNextDay || 0, "24-72h"],
               ["Reached Day 2", report?.reachedDay2 || 0, `${report?.day2ReachRate || 0}%`],
-              ["Reached Day 3", report?.reachedDay3 || 0, `${report?.day3ReachRate || 0}%`],
               ["Active 72h+", report?.activeAfter72Hours || 0, "after signup"],
             ].map(([label, value, helper]) => (
               <div key={label} className="rounded-lg bg-[var(--bb-card,#ffffff)] p-3">
@@ -1228,6 +1234,7 @@ function NewUserFirstThreeDaysSection({ report }: { report: AnalyticsResponse["n
                 <tr>
                   <th className="px-4 py-3">User</th>
                   <th className="px-4 py-3">Signup</th>
+                  <th className="px-4 py-3">Cohort</th>
                   <th className="px-4 py-3">First Action</th>
                   <th className="px-4 py-3">Day 1</th>
                   <th className="px-4 py-3">Day 2</th>
@@ -1243,6 +1250,7 @@ function NewUserFirstThreeDaysSection({ report }: { report: AnalyticsResponse["n
                       <div className="mt-0.5 text-xs font-semibold text-[var(--bb-text-muted,#64748b)]">{shortId(row.userId)}</div>
                     </td>
                     <td className="px-4 py-3 font-semibold text-[var(--bb-text-secondary,#334155)]">{formatDateTime(row.signupAt)}</td>
+                    <td className="px-4 py-3 font-black text-[var(--bb-text-primary,#101827)]">{row.eligibleForThreeDayMetrics ? "72h eligible" : "Still maturing"}</td>
                     <td className="px-4 py-3">
                       <div className="font-bold text-[var(--bb-text-primary,#101827)]">{row.firstAction}</div>
                       <div className="mt-0.5 text-xs font-semibold text-[var(--bb-text-muted,#64748b)]">{row.firstActionAt ? formatDateTime(row.firstActionAt) : "No action tracked"}</div>
@@ -1258,7 +1266,7 @@ function NewUserFirstThreeDaysSection({ report }: { report: AnalyticsResponse["n
                   </tr>
                 )) : (
                   <tr>
-                    <td colSpan={7} className="px-4 py-8 text-center font-semibold text-[var(--bb-text-secondary,#334155)]">No new account rows found for this window yet.</td>
+                    <td colSpan={8} className="px-4 py-8 text-center font-semibold text-[var(--bb-text-secondary,#334155)]">No new account rows found for this window yet.</td>
                   </tr>
                 )}
               </tbody>
