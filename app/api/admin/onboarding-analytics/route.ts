@@ -105,6 +105,40 @@ type ActiveUserLast24HoursRow = {
   actions: ActiveUserActionRow[];
 };
 
+type NewUserFirstThreeDaysRow = {
+  userId: string;
+  userLabel: string;
+  signupAt: string;
+  firstAction: string;
+  firstActionAt: string | null;
+  day1Started: boolean;
+  day1Completed: boolean;
+  reachedDay2: boolean;
+  reachedDay3: boolean;
+  returnedNextDay: boolean;
+  activeAfter72Hours: boolean;
+  lastAction: string;
+  lastActionAt: string | null;
+  status: "activated" | "stalled" | "returned" | "dropped_off";
+  statusLabel: string;
+};
+
+type NewUserFirstThreeDaysAnalytics = {
+  totalNewAccounts: number;
+  startedDay1: number;
+  completedDay1: number;
+  reachedDay2: number;
+  reachedDay3: number;
+  returnedNextDay: number;
+  activeAfter72Hours: number;
+  activationRate: number;
+  day1CompletionRate: number;
+  day2ReachRate: number;
+  day3ReachRate: number;
+  commonDropoffs: Array<{ key: string; label: string; count: number }>;
+  rows: NewUserFirstThreeDaysRow[];
+};
+
 type FunnelStageRow = {
   key: string;
   label: string;
@@ -1959,6 +1993,128 @@ function buildActiveUsersLast24Hours(masterRows: MasterActionFunnelRow[], profil
   };
 }
 
+function isBibleYearDayAction(row: MasterActionFunnelRow, dayNumber: number) {
+  const day = Number(row.journey_day || parseBibleYearDayFromLabel(row.action_label || "") || 0);
+  return day === dayNumber;
+}
+
+function isBibleYearStartedAction(row: MasterActionFunnelRow, dayNumber: number) {
+  if (!isBibleYearDayAction(row, dayNumber)) return false;
+  return row.action_type === "bible_year_task_started" || row.action_type === "bible_in_one_year_day_viewed" || row.action_type === "bible_year_audio_played";
+}
+
+function isBibleYearCompletedAction(row: MasterActionFunnelRow, dayNumber: number) {
+  if (!isBibleYearDayAction(row, dayNumber)) return false;
+  return (
+    row.action_type === "bible_year_task_completed" ||
+    row.action_type === "bible_in_one_year_reading_completed" ||
+    row.action_type === "bible_in_one_year_trivia_completed" ||
+    row.action_type === "bible_in_one_year_reflection_completed"
+  );
+}
+
+function buildNewUserFirstThreeDaysAnalytics(
+  masterRows: MasterActionFunnelRow[],
+  profileByUserId: Map<string, string>,
+): NewUserFirstThreeDaysAnalytics {
+  const signupByUser = new Map<string, MasterActionFunnelRow>();
+  for (const row of masterRows) {
+    if (row.action_type !== "user_signup" || !row.user_id || !row.created_at) continue;
+    const current = signupByUser.get(row.user_id);
+    if (!current || (row.created_at || "") < (current.created_at || "")) signupByUser.set(row.user_id, row);
+  }
+
+  const actionsByUser = new Map<string, MasterActionFunnelRow[]>();
+  for (const row of masterRows) {
+    if (!row.user_id || !row.created_at) continue;
+    const rows = actionsByUser.get(row.user_id) || [];
+    rows.push(row);
+    actionsByUser.set(row.user_id, rows);
+  }
+
+  const rows = Array.from(signupByUser.values()).map((signup) => {
+    const userId = signup.user_id || "";
+    const signupAtMs = signup.created_at ? new Date(signup.created_at).getTime() : 0;
+    const dayOneEndsAt = signupAtMs + 24 * 60 * 60 * 1000;
+    const dayThreeEndsAt = signupAtMs + 72 * 60 * 60 * 1000;
+    const userActions = (actionsByUser.get(userId) || [])
+      .filter((row) => {
+        const createdAt = row.created_at ? new Date(row.created_at).getTime() : 0;
+        return Number.isFinite(createdAt) && createdAt >= signupAtMs && createdAt <= dayThreeEndsAt;
+      })
+      .sort((a, b) => (a.created_at || "").localeCompare(b.created_at || ""));
+    const meaningfulActions = userActions.filter((row) => row.action_type !== "user_signup");
+    const firstAction = meaningfulActions[0] || null;
+    const lastAction = meaningfulActions[meaningfulActions.length - 1] || firstAction;
+    const day1Started = userActions.some((row) => isBibleYearStartedAction(row, 1));
+    const day1Completed = userActions.some((row) => isBibleYearCompletedAction(row, 1));
+    const reachedDay2 = userActions.some((row) => isBibleYearStartedAction(row, 2) || isBibleYearCompletedAction(row, 2));
+    const reachedDay3 = userActions.some((row) => isBibleYearStartedAction(row, 3) || isBibleYearCompletedAction(row, 3));
+    const returnedNextDay = meaningfulActions.some((row) => {
+      const createdAt = row.created_at ? new Date(row.created_at).getTime() : 0;
+      return Number.isFinite(createdAt) && createdAt >= dayOneEndsAt && createdAt <= dayThreeEndsAt;
+    });
+    const activeAfter72Hours = meaningfulActions.some((row) => {
+      const createdAt = row.created_at ? new Date(row.created_at).getTime() : 0;
+      return Number.isFinite(createdAt) && createdAt >= dayThreeEndsAt;
+    });
+    const status: NewUserFirstThreeDaysRow["status"] = reachedDay3 || day1Completed
+      ? "activated"
+      : returnedNextDay || reachedDay2
+        ? "returned"
+        : day1Started || meaningfulActions.length
+          ? "stalled"
+          : "dropped_off";
+
+    return {
+      userId,
+      userLabel: profileByUserId.get(userId) || signup.username || `User ${shortId(userId)}`,
+      signupAt: signup.created_at || "",
+      firstAction: firstAction ? getMasterActionTitle(firstAction) : "No action after signup",
+      firstActionAt: firstAction?.created_at || null,
+      day1Started,
+      day1Completed,
+      reachedDay2,
+      reachedDay3,
+      returnedNextDay,
+      activeAfter72Hours,
+      lastAction: lastAction ? getMasterActionTitle(lastAction) : "No action after signup",
+      lastActionAt: lastAction?.created_at || null,
+      status,
+      statusLabel: status === "activated" ? "Activated" : status === "returned" ? "Returned" : status === "stalled" ? "Stalled" : "Dropped Off",
+    };
+  }).sort((a, b) => (b.signupAt || "").localeCompare(a.signupAt || ""));
+
+  const totalNewAccounts = rows.length;
+  const startedDay1 = rows.filter((row) => row.day1Started).length;
+  const completedDay1 = rows.filter((row) => row.day1Completed).length;
+  const reachedDay2 = rows.filter((row) => row.reachedDay2).length;
+  const reachedDay3 = rows.filter((row) => row.reachedDay3).length;
+  const returnedNextDay = rows.filter((row) => row.returnedNextDay).length;
+  const activeAfter72Hours = rows.filter((row) => row.activeAfter72Hours).length;
+
+  return {
+    totalNewAccounts,
+    startedDay1,
+    completedDay1,
+    reachedDay2,
+    reachedDay3,
+    returnedNextDay,
+    activeAfter72Hours,
+    activationRate: percent(startedDay1, totalNewAccounts),
+    day1CompletionRate: percent(completedDay1, totalNewAccounts),
+    day2ReachRate: percent(reachedDay2, totalNewAccounts),
+    day3ReachRate: percent(reachedDay3, totalNewAccounts),
+    commonDropoffs: [
+      { key: "no_action", label: "Signed up but did nothing", count: rows.filter((row) => row.status === "dropped_off").length },
+      { key: "started_not_finished", label: "Started Day 1 but did not finish", count: rows.filter((row) => row.day1Started && !row.day1Completed).length },
+      { key: "finished_not_returned", label: "Finished Day 1 but did not return", count: rows.filter((row) => row.day1Completed && !row.returnedNextDay).length },
+      { key: "returned_not_day2", label: "Returned but did not reach Day 2", count: rows.filter((row) => row.returnedNextDay && !row.reachedDay2).length },
+    ],
+    rows: rows.slice(0, 100),
+  };
+}
+
 function buildTimelineEvent(
   base: Omit<VisitorJourneyTimelineEvent, "timeSinceFirstLabel" | "timeSincePreviousLabel">,
   firstTime: number,
@@ -2859,7 +3015,18 @@ async function buildOverviewAnalyticsResponse(
   let masterQuery = adminSupabase
     .from("master_actions")
     .select("user_id, session_id, action_type, action_label, journey_day, created_at")
-    .in("action_type", ["landing_page_visited", "landing_cta_clicked", "user_signup", "user_upgraded", "bible_year_audio_played", "bible_year_task_started"])
+    .in("action_type", [
+      "landing_page_visited",
+      "landing_cta_clicked",
+      "user_signup",
+      "user_upgraded",
+      "bible_year_audio_played",
+      "bible_year_task_started",
+      "bible_year_task_completed",
+      "bible_in_one_year_reading_completed",
+      "bible_in_one_year_trivia_completed",
+      "bible_in_one_year_reflection_completed",
+    ])
     .gte("created_at", startIso)
     .order("created_at", { ascending: false })
     .limit(50000);
@@ -2870,6 +3037,7 @@ async function buildOverviewAnalyticsResponse(
   const proUpgrades = new Set(masterRows.filter((row) => row.action_type === "user_upgraded").map((row) => row.user_id).filter(Boolean)).size;
   const audioRows = masterRows.filter((row) => row.action_type === "bible_year_audio_played" || row.action_type === "bible_year_task_started");
   const uniqueAudioActors = new Set(audioRows.map((row) => getMasterActorId(row)).filter(Boolean));
+  const newUserFirstThreeDays = buildNewUserFirstThreeDaysAnalytics(masterRows, new Map());
   const landingUsers = windowSummary.visits;
   const signupUsers = windowSummary.accountsCreated || windowSummary.signups || 0;
   const conversionRate = landingUsers > 0 ? Number(((signupUsers / landingUsers) * 100).toFixed(1)) : 0;
@@ -2923,6 +3091,7 @@ async function buildOverviewAnalyticsResponse(
       statuses: [],
     },
     bibleBuddyFunnelStages,
+    newUserFirstThreeDays,
     activeUsersLast24Hours: { totalUsers: 0, totalActions: 0, rows: [] },
     bibleYearDays: [],
     studyNotes: {
@@ -3262,6 +3431,7 @@ export async function GET(request: Request) {
   const daySevenUpgrade = buildDayUpgradeAnalytics(masterFunnelRows, 7);
   const studyNotesUpgrade = buildStudyNotesUpgradeAnalytics(masterFunnelRows);
   const activeUsersLast24Hours = buildActiveUsersLast24Hours(activeUsersLast24Rows, profileByUserId);
+  const newUserFirstThreeDays = buildNewUserFirstThreeDaysAnalytics(masterFunnelRows, profileByUserId);
   const bibleBuddyFunnelStages = buildBibleBuddyFunnelStages(validLandingEventRows, masterFunnelRows, windowBibleYearProgressRows, dayThreeUpgrade, daySevenUpgrade);
   const funnel = summarizeFunnel(validEventRows);
   const sources = summarizeSources(validEventRows);
@@ -3312,6 +3482,7 @@ export async function GET(request: Request) {
       landingActivityLog,
       visitorJourneys,
       bibleBuddyFunnelStages,
+      newUserFirstThreeDays,
       dayThreeUpgrade,
       daySevenUpgrade,
       studyNotesUpgrade,
@@ -3355,6 +3526,7 @@ export async function GET(request: Request) {
     landingActivityLog,
     visitorJourneys,
     bibleBuddyFunnelStages,
+    newUserFirstThreeDays,
     dayThreeUpgrade,
     daySevenUpgrade,
     studyNotesUpgrade,

@@ -276,6 +276,37 @@ type AnalyticsResponse = {
     proUpgrades?: number;
     guestToAccountRate?: number;
   };
+  newUserFirstThreeDays?: {
+    totalNewAccounts: number;
+    startedDay1: number;
+    completedDay1: number;
+    reachedDay2: number;
+    reachedDay3: number;
+    returnedNextDay: number;
+    activeAfter72Hours: number;
+    activationRate: number;
+    day1CompletionRate: number;
+    day2ReachRate: number;
+    day3ReachRate: number;
+    commonDropoffs: Array<{ key: string; label: string; count: number }>;
+    rows: Array<{
+      userId: string;
+      userLabel: string;
+      signupAt: string;
+      firstAction: string;
+      firstActionAt: string | null;
+      day1Started: boolean;
+      day1Completed: boolean;
+      reachedDay2: boolean;
+      reachedDay3: boolean;
+      returnedNextDay: boolean;
+      activeAfter72Hours: boolean;
+      lastAction: string;
+      lastActionAt: string | null;
+      status: "activated" | "stalled" | "returned" | "dropped_off";
+      statusLabel: string;
+    }>;
+  };
   visitorJourneys?: VisitorJourneys;
   activeUsersLast24Hours?: ActiveUsersLast24Hours;
   bibleBuddyFunnelStages?: FunnelStageRow[];
@@ -1103,6 +1134,131 @@ function FounderFunnelSection({
                 )) : (
                   <tr>
                     <td colSpan={6} className="px-4 py-8 text-center font-semibold text-[var(--bb-text-secondary,#334155)]">No detail rows found for this metric yet.</td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      ) : null}
+    </section>
+  );
+}
+
+function NewUserFirstThreeDaysSection({ report }: { report: AnalyticsResponse["newUserFirstThreeDays"] | undefined }) {
+  const rows = report?.rows || [];
+  const [showRows, setShowRows] = useState(false);
+  const metrics = [
+    { label: "New Accounts", value: report?.totalNewAccounts || 0, helper: "Created in this window." },
+    { label: "Started Day 1", value: report?.startedDay1 || 0, helper: `${report?.activationRate || 0}% of new accounts.` },
+    { label: "Completed Day 1", value: report?.completedDay1 || 0, helper: `${report?.day1CompletionRate || 0}% of new accounts.` },
+    { label: "Reached Day 3", value: report?.reachedDay3 || 0, helper: `${report?.day3ReachRate || 0}% of new accounts.` },
+  ];
+  const statusStyles: Record<string, string> = {
+    activated: "bg-emerald-50 text-emerald-700 ring-emerald-200",
+    returned: "bg-blue-50 text-blue-700 ring-blue-200",
+    stalled: "bg-amber-50 text-amber-700 ring-amber-200",
+    dropped_off: "bg-rose-50 text-rose-700 ring-rose-200",
+  };
+
+  return (
+    <section className="rounded-2xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-5 shadow-[0_18px_44px_rgba(15,23,42,0.08)]">
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p className="text-xs font-black uppercase tracking-[0.2em] text-[var(--bb-accent,#2f7fe8)]">New User First 3 Days</p>
+          <h2 className="mt-2 text-2xl font-black text-[var(--bb-text-primary,#101827)]">What new accounts do after signup</h2>
+        </div>
+        <button
+          type="button"
+          onClick={() => setShowRows((current) => !current)}
+          className="w-fit rounded-full border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] px-4 py-2 text-xs font-black text-[var(--bb-text-primary,#101827)]"
+          aria-expanded={showRows}
+        >
+          {showRows ? "Hide users" : "Show users"}
+        </button>
+      </div>
+
+      <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+        {metrics.map((metric) => (
+          <div key={metric.label} className="rounded-xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] p-4">
+            <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-text-muted,#64748b)]">{metric.label}</p>
+            <p className="mt-2 text-3xl font-black text-[var(--bb-text-primary,#101827)]">{formatNumber(metric.value)}</p>
+            <p className="mt-2 text-sm font-bold text-[var(--bb-accent,#2f7fe8)]">{metric.helper}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-5 grid gap-3 lg:grid-cols-[1.2fr_1fr]">
+        <div className="rounded-xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] p-4">
+          <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">First 3-day movement</p>
+          <div className="mt-4 grid gap-3 sm:grid-cols-4">
+            {[
+              ["Returned", report?.returnedNextDay || 0, "24-72h"],
+              ["Reached Day 2", report?.reachedDay2 || 0, `${report?.day2ReachRate || 0}%`],
+              ["Reached Day 3", report?.reachedDay3 || 0, `${report?.day3ReachRate || 0}%`],
+              ["Active 72h+", report?.activeAfter72Hours || 0, "after signup"],
+            ].map(([label, value, helper]) => (
+              <div key={label} className="rounded-lg bg-[var(--bb-card,#ffffff)] p-3">
+                <p className="text-[10px] font-black uppercase tracking-[0.12em] text-[var(--bb-text-muted,#64748b)]">{label}</p>
+                <p className="mt-1 text-xl font-black text-[var(--bb-text-primary,#101827)]">{formatNumber(Number(value))}</p>
+                <p className="mt-1 text-xs font-bold text-[var(--bb-text-secondary,#334155)]">{helper}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="rounded-xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] p-4">
+          <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">Common drop-off points</p>
+          <div className="mt-3 space-y-2">
+            {(report?.commonDropoffs || []).map((dropoff) => (
+              <div key={dropoff.key} className="flex items-center justify-between gap-3 rounded-lg bg-[var(--bb-card,#ffffff)] px-3 py-2">
+                <p className="text-xs font-bold text-[var(--bb-text-secondary,#334155)]">{dropoff.label}</p>
+                <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">{formatNumber(dropoff.count)}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {showRows ? (
+        <div className="mt-5 overflow-hidden rounded-xl border border-[var(--bb-card-border,#d8e3ec)]">
+          <div className="overflow-x-auto">
+            <table className="min-w-[980px] w-full border-collapse text-left text-sm">
+              <thead className="bg-[var(--bb-surface-soft,#eef4f8)] text-xs font-black uppercase tracking-[0.12em] text-[var(--bb-text-muted,#64748b)]">
+                <tr>
+                  <th className="px-4 py-3">User</th>
+                  <th className="px-4 py-3">Signup</th>
+                  <th className="px-4 py-3">First Action</th>
+                  <th className="px-4 py-3">Day 1</th>
+                  <th className="px-4 py-3">Day 2</th>
+                  <th className="px-4 py-3">Day 3</th>
+                  <th className="px-4 py-3">Status</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-[var(--bb-card-border,#d8e3ec)]">
+                {rows.length ? rows.map((row) => (
+                  <tr key={`${row.userId}-${row.signupAt}`} className="bg-[var(--bb-card,#ffffff)]">
+                    <td className="px-4 py-3">
+                      <div className="font-bold text-[var(--bb-text-primary,#101827)]">{row.userLabel}</div>
+                      <div className="mt-0.5 text-xs font-semibold text-[var(--bb-text-muted,#64748b)]">{shortId(row.userId)}</div>
+                    </td>
+                    <td className="px-4 py-3 font-semibold text-[var(--bb-text-secondary,#334155)]">{formatDateTime(row.signupAt)}</td>
+                    <td className="px-4 py-3">
+                      <div className="font-bold text-[var(--bb-text-primary,#101827)]">{row.firstAction}</div>
+                      <div className="mt-0.5 text-xs font-semibold text-[var(--bb-text-muted,#64748b)]">{row.firstActionAt ? formatDateTime(row.firstActionAt) : "No action tracked"}</div>
+                    </td>
+                    <td className="px-4 py-3 font-black text-[var(--bb-text-primary,#101827)]">{row.day1Completed ? "Completed" : row.day1Started ? "Started" : "No"}</td>
+                    <td className="px-4 py-3 font-black text-[var(--bb-text-primary,#101827)]">{row.reachedDay2 ? "Reached" : "No"}</td>
+                    <td className="px-4 py-3 font-black text-[var(--bb-text-primary,#101827)]">{row.reachedDay3 ? "Reached" : "No"}</td>
+                    <td className="px-4 py-3">
+                      <span className={`rounded-full px-2.5 py-1 text-xs font-black ring-1 ${statusStyles[row.status] || statusStyles.stalled}`}>
+                        {row.statusLabel}
+                      </span>
+                    </td>
+                  </tr>
+                )) : (
+                  <tr>
+                    <td colSpan={7} className="px-4 py-8 text-center font-semibold text-[var(--bb-text-secondary,#334155)]">No new account rows found for this window yet.</td>
                   </tr>
                 )}
               </tbody>
@@ -2886,6 +3042,7 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
                 signups={signupsCompleted}
                 rows={rows}
               />
+              <NewUserFirstThreeDaysSection report={data?.newUserFirstThreeDays} />
               <ListeningMetricsSection audio={data?.audioEngagement} />
               <AudioHelpfulnessSection
                 audioHelpfulness={data?.audioHelpfulness}
@@ -2946,6 +3103,8 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
               signups={signupsCompleted}
               rows={rows}
             />
+
+            <NewUserFirstThreeDaysSection report={data?.newUserFirstThreeDays} />
 
             <ListeningMetricsSection audio={data?.audioEngagement} />
 
