@@ -4108,8 +4108,8 @@ Before God fills the earth with life, He first creates the order that life will 
       icon: "☁️",
       phrases: [
         [
-          "☁️ Let There Be A Firmament",
-          `The word firmament means an expanse or a space.
+          "☁️ Let There Be An Expanse",
+          `The word expanse means a spread-out space.
 
 Think of it as the sky stretching above the earth.
 
@@ -4118,7 +4118,7 @@ Before this, the world was covered in water.
 God now creates a space between the waters.
 
 🌊 Waters above
-☁️ Firmament, or sky
+☁️ Expanse, or sky
 🌊 Waters below
 
 For the first time, the earth begins to look more like the world we know.`,
@@ -4127,7 +4127,7 @@ For the first time, the earth begins to look more like the world we know.`,
           "🌊 In The Midst Of The Waters",
           `The phrase in the midst simply means in the middle.
 
-God places the firmament between two bodies of water.
+God places the expanse between two bodies of water.
 
 🌊 Waters above
 ☁️ Sky in the middle
@@ -4156,10 +4156,10 @@ The waters below refer to the oceans, seas, rivers, and waters on the earth.
 The important point is that God is separating and organizing His creation.`,
         ],
         [
-          "🌌 Called The Firmament Heaven",
+          "🌌 Called The Expanse Sky",
           `In Genesis 1:1, the heavens and the earth refers to all creation.
 
-Here, God is using the word heaven to name the sky above the earth.
+Here, God is naming the expanse as the sky above the earth.
 
 ☁️ The sky above
 🐦 Where birds will fly
@@ -4331,7 +4331,7 @@ The foundation has been laid for everything that will follow.`,
       icon: "☀️",
       phrases: [
         [
-          "💡 Let There Be Lights In The Firmament",
+          "💡 Let There Be Lights In The Expanse Of The Sky",
           `On Day 1, God created light.
 
 Now on Day 4, He creates the lights that will carry that light.
@@ -4449,7 +4449,7 @@ The stars are not gods.
 They are part of God's creation.`,
         ],
         [
-          "🌌 God Set Them In The Firmament",
+          "🌌 God Set Them In The Expanse Of The Sky",
           `God did not just create the sun, moon, and stars.
 
 He placed them where they belonged.
@@ -4541,7 +4541,7 @@ The seas are no longer empty.
 God fills what He previously formed.`,
         ],
         [
-          "🐦 Let Fowl Fly Above The Earth",
+          "🐦 Let Birds Fly Above The Earth",
           `The sky is no longer empty either.
 
 🦅 Eagles
@@ -4554,12 +4554,12 @@ God fills the heavens He created on Day 2.
 The sky now has life moving through it.`,
         ],
         [
-          "🐋 God Created Great Whales",
+          "🐋 God Created Large Sea Creatures",
           `Moses could have simply said sea creatures.
 
-But he specifically mentions the great whales.
+But the verse specifically mentions the large sea creatures.
 
-🐋 Great whales
+🐋 Large sea creatures
 🌊 Massive creatures of the deep
 🐟 Creatures larger than man
 
@@ -4579,7 +4579,7 @@ Nothing in the sea exists outside God's authority.`,
 
 🐟 Fish produce fish
 🐦 Birds produce birds
-🐋 Whales produce whales
+🐋 Sea creatures produce sea creatures
 
 Creation is not random.
 
@@ -4662,7 +4662,7 @@ The land that appeared on Day 3 is no longer empty.
 🦁 Animals
 🐄 Livestock
 🦌 Creatures that move along the ground
-🐘 Beasts of the earth
+🐘 Animals of the earth
 
 God is still following the same pattern.
 
@@ -4701,8 +4701,8 @@ But Genesis includes them because God made them too.
 Nothing is too small to belong inside God's creation.`,
         ],
         [
-          "🐘 Beasts Of The Earth",
-          `Beasts of the earth refers to the larger wild animals.
+          "🐘 Animals Of The Earth",
+          `Animals of the earth refers to the larger wild animals.
 
 🐘 Strong animals
 🦁 Wild animals
@@ -4746,7 +4746,7 @@ Now the story is about to slow down, because mankind is about to be created.`,
 Until now He has said:
 
 🗣️ Let there be light.
-🗣️ Let there be a firmament.
+🗣️ Let there be an expanse.
 🗣️ Let the earth bring forth.
 
 Now He says:

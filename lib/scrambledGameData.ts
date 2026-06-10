@@ -2650,7 +2650,7 @@ const GENESIS_CHAPTERS: ScrambledChapterPack[] = [
     ["day", "Genesis 1:5", "God called the light Day", "What God called the light.", "easy"],
     ["night", "Genesis 1:5", "the darkness he called Night", "What God called the darkness.", "easy"],
     ["earth", "Genesis 1:10", "God called the dry land Earth", "The name God gives the dry land.", "easy"],
-    ["heaven", "Genesis 1:8", "God called the firmament Heaven", "What God called the firmament.", "medium"],
+    ["sky", "Genesis 1:8", "God called the expanse sky", "What God called the expanse.", "medium"],
   ]),
   createGenesisChapter(2, "The chapter slows down to focus on Eden, Adam's formation, God's command, and the first marriage.", [
     ["dust", "Genesis 2:7", "formed man of the dust", "What man was formed from.", "easy"],

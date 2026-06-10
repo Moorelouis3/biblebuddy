@@ -96,7 +96,7 @@ They do not rule themselves. God gives them boundaries.
 
 ### ☁️ The Sky Has A Place
 
-God names the firmament Heaven.
+God names the expanse sky.
 
 Here, "heaven" is talking about the sky or expanse above the earth. It is the place where clouds move, birds fly, and later the lights will appear.
 
@@ -173,7 +173,7 @@ That would have mattered to ancient readers because the sea often felt powerful 
 
 God fills the land with animals.
 
-Cattle, creeping things, and beasts of the earth all have their place. Creation is becoming full, alive, and layered.
+Livestock, creeping things, and animals of the earth all have their place. Creation is becoming full, alive, and layered.
 
 ### ✨ God Blesses Life
 
