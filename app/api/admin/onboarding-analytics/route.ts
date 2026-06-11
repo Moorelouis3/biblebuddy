@@ -2,9 +2,12 @@ import { NextResponse } from "next/server";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
 const ANALYTICS_RESPONSE_CACHE_TTL_MS = 45 * 1000;
-const NEW_USER_FIRST_THREE_DAYS_LOOKBACK_DAYS = 7;
+const NEW_USER_FIRST_THREE_DAYS_LOOKBACK_DAYS = 14;
 const NEW_USER_FIRST_THREE_DAYS_ACTION_TYPES = [
   "user_signup",
+  "bible_in_one_year_started",
+  "bible_year_day_start_popup_viewed",
+  "bible_year_day_start_popup_clicked",
   "bible_year_audio_played",
   "bible_year_audio_progress",
   "bible_year_audio_completed",
@@ -2020,12 +2023,35 @@ function buildActiveUsersLast24Hours(masterRows: MasterActionFunnelRow[], profil
 
 function isBibleYearDayAction(row: MasterActionFunnelRow, dayNumber: number) {
   const day = Number(row.journey_day || parseBibleYearDayFromLabel(row.action_label || "") || 0);
+  if (!day && dayNumber === 1 && isUnlabeledDayOneStartAction(row)) return true;
   return day === dayNumber;
+}
+
+function isUnlabeledDayOneStartAction(row: MasterActionFunnelRow) {
+  const actionType = row.action_type || "";
+  const hasDay = Boolean(Number(row.journey_day || parseBibleYearDayFromLabel(row.action_label || "") || 0));
+  if (hasDay) return false;
+  return (
+    actionType === "bible_in_one_year_started" ||
+    actionType === "bible_in_one_year_day_viewed" ||
+    actionType === "bible_year_day_start_popup_clicked" ||
+    actionType === "bible_year_audio_played" ||
+    actionType === "bible_year_audio_progress" ||
+    actionType === "bible_year_audio_completed"
+  );
 }
 
 function isBibleYearStartedAction(row: MasterActionFunnelRow, dayNumber: number) {
   if (!isBibleYearDayAction(row, dayNumber)) return false;
-  return row.action_type === "bible_year_task_started" || row.action_type === "bible_in_one_year_day_viewed" || row.action_type === "bible_year_audio_played";
+  return (
+    row.action_type === "bible_in_one_year_started" ||
+    row.action_type === "bible_year_day_start_popup_clicked" ||
+    row.action_type === "bible_year_task_started" ||
+    row.action_type === "bible_in_one_year_day_viewed" ||
+    row.action_type === "bible_year_audio_played" ||
+    row.action_type === "bible_year_audio_progress" ||
+    row.action_type === "bible_year_audio_completed"
+  );
 }
 
 function isBibleYearCompletedAction(row: MasterActionFunnelRow, dayNumber: number) {
@@ -2077,8 +2103,8 @@ function buildNewUserFirstThreeDaysAnalytics(
     const meaningfulActions = firstThreeDayActions.filter((row) => row.action_type !== "user_signup");
     const firstAction = meaningfulActions[0] || null;
     const lastAction = meaningfulActions[meaningfulActions.length - 1] || firstAction;
-    const day1Started = firstThreeDayActions.some((row) => isBibleYearStartedAction(row, 1));
     const day1Completed = firstThreeDayActions.some((row) => isBibleYearCompletedAction(row, 1));
+    const day1Started = day1Completed || firstThreeDayActions.some((row) => isBibleYearStartedAction(row, 1));
     const reachedDay2 = firstThreeDayActions.some((row) => isBibleYearStartedAction(row, 2) || isBibleYearCompletedAction(row, 2));
     const reachedDay3 = firstThreeDayActions.some((row) => isBibleYearStartedAction(row, 3) || isBibleYearCompletedAction(row, 3));
     const returnedNextDay = meaningfulActions.some((row) => {

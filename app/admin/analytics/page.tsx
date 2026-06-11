@@ -1171,7 +1171,7 @@ function NewUserFirstThreeDaysSection({ report }: { report: AnalyticsResponse["n
           <p className="text-xs font-black uppercase tracking-[0.2em] text-[var(--bb-accent,#2f7fe8)]">New User First 3 Days</p>
           <h2 className="mt-2 text-2xl font-black text-[var(--bb-text-primary,#101827)]">What new accounts do after signup</h2>
           <p className="mt-1 text-sm font-bold text-[var(--bb-text-secondary,#334155)]">
-            Uses a rolling 7-day signup backfill from master actions. Rates only count accounts at least 72 hours old, so brand-new users do not drag down Day 2 or Day 3.
+            Uses a rolling 14-day signup backfill from master actions. Rates only count accounts at least 72 hours old, so brand-new users do not drag down Day 2 or Day 3.
           </p>
         </div>
         <button

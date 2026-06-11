@@ -410,7 +410,10 @@ export default function BibleInOneYearPage() {
     }
 
     const consume = async () => {
-      const creditResult = await consumeCreditAction(ACTION_TYPE.bible_in_one_year_day_viewed, { userId });
+      const creditResult = await consumeCreditAction(ACTION_TYPE.bible_in_one_year_day_viewed, {
+        userId,
+        actionLabel: `Bible in One Year Day ${selectedDay.dayNumber}`,
+      });
       if (creditResult.ok === false) {
         setShowCreditBlocked(true);
         setCanViewSelectedDay(false);
