@@ -199,6 +199,10 @@ type BibleYearProgressRow = {
   reflection_completed: boolean | null;
   created_at?: string | null;
 };
+type BibleYearCompletionKeyVerse = {
+  text: string;
+  reference: string;
+};
 type BibleYearTriviaQuestion = {
   id: string;
   question: string;
@@ -208,6 +212,51 @@ type BibleYearTriviaQuestion = {
   explanation: string;
 };
 const BIBLE_YEAR_DAY_CARD_KEYS: BibleYearDayCardKey[] = ["reading", "trivia", "reflection"];
+
+const BIBLE_YEAR_COMPLETION_KEY_VERSES: Record<number, BibleYearCompletionKeyVerse> = {
+  1: { text: "God saw everything that he had made, and, behold, it was very good.", reference: "Genesis 1:31" },
+  2: { text: "I will put enmity between you and the woman, and between your offspring and her offspring.", reference: "Genesis 3:15" },
+  3: { text: "Noah walked with God.", reference: "Genesis 6:9" },
+  4: { text: "God remembered Noah, all the animals, and all the livestock that were with him in the ship.", reference: "Genesis 8:1" },
+  5: { text: "Abram went, as Yahweh had spoken to him.", reference: "Genesis 12:4" },
+  6: { text: "He believed in Yahweh, who credited it to him for righteousness.", reference: "Genesis 15:6" },
+  7: { text: "I will establish my covenant between me and you and your offspring after you throughout their generations.", reference: "Genesis 17:7" },
+  8: { text: "Yahweh was merciful to him; and they brought him out, and set him outside of the city.", reference: "Genesis 19:16" },
+  9: { text: "Now I know that you fear God, since you have not withheld your son, your only son, from me.", reference: "Genesis 22:12" },
+  10: { text: "Yahweh appeared to him, and said, Do not go down into Egypt. Live in the land I will tell you about.", reference: "Genesis 26:2" },
+  11: { text: "Behold, I am with you, and will keep you, wherever you go.", reference: "Genesis 28:15" },
+  12: { text: "God has seen my affliction and the labor of my hands, and rebuked you last night.", reference: "Genesis 31:42" },
+  13: { text: "Your name will no longer be called Jacob, but Israel; for you have fought with God and with men, and have prevailed.", reference: "Genesis 32:28" },
+  14: { text: "Arise, go up to Bethel, and live there. Make there an altar to God.", reference: "Genesis 35:1" },
+  15: { text: "Yahweh was with Joseph, and he was a prosperous man.", reference: "Genesis 39:2" },
+  16: { text: "That which he did, Yahweh made it prosper.", reference: "Genesis 39:23" },
+  17: { text: "God has shown Pharaoh what he is about to do.", reference: "Genesis 41:28" },
+  18: { text: "God has found out the iniquity of your servants.", reference: "Genesis 44:16" },
+  19: { text: "God sent me before you to preserve life.", reference: "Genesis 45:5" },
+  20: { text: "God, before whom my fathers Abraham and Isaac walked, the God who has fed me all my life long to this day.", reference: "Genesis 48:15" },
+  21: { text: "You meant evil against me, but God meant it for good.", reference: "Genesis 50:20" },
+  22: { text: "God heard their groaning, and God remembered his covenant with Abraham, with Isaac, and with Jacob.", reference: "Exodus 2:24" },
+  23: { text: "I will take you to myself for a people, and I will be your God.", reference: "Exodus 6:7" },
+  24: { text: "When I see the blood, I will pass over you.", reference: "Exodus 12:13" },
+  25: { text: "Yahweh will fight for you, and you shall be still.", reference: "Exodus 14:14" },
+  26: { text: "I am Yahweh your God, who brought you out of the land of Egypt.", reference: "Exodus 20:2" },
+  27: { text: "All the words which Yahweh has spoken we will do.", reference: "Exodus 24:3" },
+  28: { text: "Let them make me a sanctuary, that I may dwell among them.", reference: "Exodus 25:8" },
+  29: { text: "Yahweh, Yahweh, a merciful and gracious God, slow to anger, and abundant in loving kindness and truth.", reference: "Exodus 34:6" },
+  30: { text: "My presence will go with you, and I will give you rest.", reference: "Exodus 33:14" },
+  31: { text: "The glory of Yahweh filled the tabernacle.", reference: "Exodus 40:34" },
+  32: { text: "The priest shall make atonement for him concerning his sin, and he will be forgiven.", reference: "Leviticus 4:26" },
+  33: { text: "Fire came out from before Yahweh, and consumed the burnt offering.", reference: "Leviticus 9:24" },
+  34: { text: "You shall therefore be holy, for I am holy.", reference: "Leviticus 11:45" },
+  35: { text: "On this day shall atonement be made for you, to cleanse you.", reference: "Leviticus 16:30" },
+};
+
+function getBibleYearCompletionKeyVerse(day: GenesisBibleYearDay): BibleYearCompletionKeyVerse {
+  return BIBLE_YEAR_COMPLETION_KEY_VERSES[day.dayNumber] || {
+    text: day.summary || "Keep going. One day at a time, you are learning the story of Scripture.",
+    reference: day.reference || `Day ${day.dayNumber}`,
+  };
+}
 
 function getDashboardLocalDateKey(date = new Date()) {
   return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
@@ -2008,6 +2057,7 @@ export default function DashboardJourneyExperience({
   const [bibleYearTriviaAnswers, setBibleYearTriviaAnswers] = useState<Record<string, string>>({});
   const [bibleYearTriviaQuestionIndexByDay, setBibleYearTriviaQuestionIndexByDay] = useState<Record<number, number>>({});
   const [bibleYearTriviaResultsOpenByDay, setBibleYearTriviaResultsOpenByDay] = useState<Record<number, boolean>>({});
+  const [bibleYearScriptureNotesViewedByDay, setBibleYearScriptureNotesViewedByDay] = useState<Record<number, boolean>>({});
   const [continuingBibleYearDay, setContinuingBibleYearDay] = useState<number | null>(null);
   const [bibleYearPlanMenuOpen, setBibleYearPlanMenuOpen] = useState(false);
   const [bibleYearPlanOverviewOpen, setBibleYearPlanOverviewOpen] = useState(false);
@@ -8372,15 +8422,15 @@ The man names the animals, showing responsibility.
 
 But none of them can answer his loneliness.
 
-None is a suitable helper.
+None is a helper comparable to him.
 
-### 🧩 A Helper Fit for Him
+### 🧩 A Helper Comparable To Him
 
 Helper does not mean weak or lesser.
 
 The point is partnership, not inferiority.
 
-The man needs someone who corresponds to him.
+The man needs someone who is truly comparable to him.
 
 ### 💍 Woman Is Made From Man
 
@@ -9391,7 +9441,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       bibleYearJustCompletedDayRef.current = day.dayNumber;
       setSelectedBibleYearSeriesDay(day);
       if (!dayWasFullyComplete && newlyCompletedCards.length > 0) {
-        setBibleYearCompletionModalDay(day);
+        setBibleYearCompletionModalDay(null);
       }
       setBibleYearCompletedTasksExpandedDay(null);
       setActiveBibleYearDayCard(null);
@@ -10177,6 +10227,192 @@ Before we understand redemption, we need to understand what God made humanity fo
     );
   }
 
+  function renderBibleYearLessonCompleteCard(day: GenesisBibleYearDay, nextDay: GenesisBibleYearDay | null, openNextDay: () => void) {
+    const keyVerse = getBibleYearCompletionKeyVerse(day);
+    const completedForDay = bibleYearCompletedCardsByDay[day.dayNumber] || {};
+    const lessonCount = Math.max(completedBibleYearDays.length, completedForDay.reading ? 1 : 0);
+    const streak = Math.max(0, effectiveBibleYearReport.currentStreak || profile?.current_streak || 0);
+    const completionPercent = Math.max(0, Math.min(100, effectiveBibleYearReport.overallPercent || computedBibleYearOverallPercent || 0));
+    const notesViewed = bibleYearScriptureNotesViewedByDay[day.dayNumber] === true;
+    const triviaDone = completedForDay.trivia === true;
+    const reflectionDone = bibleYearReflectionPostedByDay[day.dayNumber] === true || completedForDay.reflection === true;
+    const activeBonus =
+      bibleYearOptionalDiscussionDay === day.dayNumber
+        ? "discussion"
+        : activeBibleYearDayCard === "trivia"
+          ? "trivia"
+          : activeBibleYearDayCard === "reflection"
+            ? "reflection"
+            : null;
+    const nextAudio = nextDay ? getBibleYearDayContent(nextDay).audio : null;
+    const bonusActivities: Array<{
+      key: "trivia" | "discussion" | "reflection";
+      icon: string;
+      title: string;
+      body: string;
+      done: boolean;
+      status: string;
+      onClick: () => void;
+    }> = [
+      {
+        key: "trivia",
+        icon: "🧠",
+        title: "Trivia Challenge",
+        body: "Test what you remember from today's lesson.",
+        done: triviaDone,
+        status: triviaDone ? "Completed" : "Optional",
+        onClick: () => {
+          setBibleYearOptionalDiscussionDay(null);
+          setActiveBibleYearDayCard((current) => (current === "trivia" ? null : "trivia"));
+        },
+      },
+      {
+        key: "discussion",
+        icon: "✍️",
+        title: "Reflection Question",
+        body: "Write a short response to help the lesson settle.",
+        done: reflectionDone,
+        status: reflectionDone ? "Completed" : "Optional",
+        onClick: () => {
+          setActiveBibleYearDayCard(null);
+          setBibleYearOptionalDiscussionDay((current) => (current === day.dayNumber ? null : day.dayNumber));
+        },
+      },
+      {
+        key: "reflection",
+        icon: "📖",
+        title: "Scripture Notes",
+        body: "Review the notes and supporting verses.",
+        done: notesViewed,
+        status: notesViewed ? "Viewed" : "Optional",
+        onClick: () => {
+          setBibleYearOptionalDiscussionDay(null);
+          setActiveBibleYearDayCard((current) => (current === "reflection" ? null : "reflection"));
+          setBibleYearScriptureNotesViewedByDay((current) => ({ ...current, [day.dayNumber]: true }));
+        },
+      },
+    ];
+
+    return (
+      <article className="order-4 overflow-hidden rounded-[20px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_28%,var(--bb-card-border,#dbe7f4))] bg-[linear-gradient(145deg,color-mix(in_srgb,var(--bb-card,#ffffff)_96%,var(--bb-surface-soft,#f8fbff)),color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_64%,var(--bb-surface-soft,#f8fbff)))] p-4 text-[var(--bb-text-primary,#111827)] shadow-[0_22px_58px_rgba(38,63,99,0.16),inset_0_1px_0_rgba(255,255,255,0.42)] backdrop-blur-xl sm:p-6">
+        <div className="overflow-hidden rounded-[18px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)] bg-[radial-gradient(circle_at_14%_0%,rgba(246,180,75,0.24),transparent_32%),radial-gradient(circle_at_92%_10%,color-mix(in_srgb,var(--bb-accent,#2f7fe8)_20%,transparent),transparent_34%),linear-gradient(145deg,var(--bb-card,#ffffff),var(--bb-surface-soft,#f8fbff))] p-5 text-center shadow-[0_16px_34px_rgba(38,63,99,0.12)]">
+          <div className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-[var(--bb-accent,#2f7fe8)] text-3xl text-white shadow-[0_0_30px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_42%,transparent)]" aria-hidden="true">
+            🔥
+          </div>
+          <p className="mt-4 text-[12px] font-black uppercase tracking-[0.22em] text-[var(--bb-accent,#2f7fe8)]">
+            Day {day.dayNumber} Complete
+          </p>
+          <h2 className="mx-auto mt-2 max-w-2xl text-[28px] font-black leading-tight text-[var(--bb-text-primary,#111827)] sm:text-[36px]">
+            {day.title}
+          </h2>
+          <p className="mt-2 text-sm font-black text-[var(--bb-text-secondary,#4b5563)]">{day.reference}</p>
+          <p className="mx-auto mt-4 max-w-xl text-[15px] font-bold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+            Great job. You completed today&apos;s lesson. You kept moving through Scripture, and that momentum matters.
+          </p>
+        </div>
+
+        <div className="mt-4 grid gap-3 sm:grid-cols-3">
+          {[
+            { label: "Current Streak", value: `${streak} Day Streak`, icon: "🔥" },
+            { label: "Lessons Completed", value: `${lessonCount} of 365`, icon: "✅" },
+            { label: "Bible Complete", value: `${completionPercent}%`, icon: "📈" },
+          ].map((stat) => (
+            <div key={stat.label} className="rounded-[16px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm">
+              <div className="flex items-center gap-2">
+                <span className="grid h-9 w-9 place-items-center rounded-full bg-[var(--bb-accent-soft,#eaf5ff)] text-lg" aria-hidden="true">{stat.icon}</span>
+                <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--bb-text-muted,#6b7280)]">{stat.label}</p>
+              </div>
+              <p className="mt-3 text-[22px] font-black leading-none text-[var(--bb-text-primary,#111827)]">{stat.value}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-4 rounded-[18px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_30%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm">
+          <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">Key Verse</p>
+          <blockquote className="mt-2 text-xl font-black leading-8 text-[var(--bb-text-primary,#111827)]">
+            “{keyVerse.text}”
+          </blockquote>
+          <p className="mt-2 text-sm font-black text-[var(--bb-text-secondary,#4b5563)]">{keyVerse.reference}</p>
+        </div>
+
+        <div className="mt-5">
+          <div className="flex flex-wrap items-end justify-between gap-2">
+            <div>
+              <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">Continue Learning</p>
+              <h3 className="mt-1 text-xl font-black text-[var(--bb-text-primary,#111827)]">Optional study activities</h3>
+            </div>
+            <p className="text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">These never block completion.</p>
+          </div>
+          <div className="mt-3 grid gap-3 md:grid-cols-3">
+            {bonusActivities.map((activity) => {
+              const expanded = activeBonus === activity.key;
+              return (
+                <button
+                  key={activity.key}
+                  type="button"
+                  onClick={activity.onClick}
+                  aria-expanded={expanded}
+                  className={`rounded-[16px] border p-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md ${
+                    expanded
+                      ? "border-[var(--bb-accent,#2f7fe8)] bg-[var(--bb-accent-soft,#eaf5ff)]"
+                      : activity.done
+                        ? "border-sky-300 bg-sky-50"
+                        : "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)]"
+                  }`}
+                >
+                  <div className="flex items-start justify-between gap-3">
+                    <span className="grid h-11 w-11 place-items-center rounded-full bg-white text-2xl shadow-sm" aria-hidden="true">{activity.icon}</span>
+                    <span className={`rounded-full px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.12em] ${
+                      activity.done ? "bg-sky-500 text-white" : "bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-text-muted,#6b7280)]"
+                    }`}>
+                      {activity.done ? "✓ " : ""}{activity.status}
+                    </span>
+                  </div>
+                  <h4 className="mt-3 text-base font-black text-[var(--bb-text-primary,#111827)]">{activity.title}</h4>
+                  <p className="mt-1 text-sm font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">{activity.body}</p>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {activeBonus ? (
+          <div className="mt-4 overflow-hidden rounded-[18px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-sm">
+            {activeBonus === "discussion" ? renderBibleYearOptionalDiscussion(day) : renderBibleYearInlineTask(activeBonus, day)}
+          </div>
+        ) : null}
+
+        <div className="mt-5 rounded-[18px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm">
+          <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">Up Next</p>
+          {nextDay ? (
+            <div className="mt-3 grid gap-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
+              <div>
+                <p className="text-sm font-black text-[var(--bb-text-muted,#6b7280)]">Day {nextDay.dayNumber}</p>
+                <h3 className="mt-1 text-xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">{nextDay.title}</h3>
+                <p className="mt-1 text-sm font-bold text-[var(--bb-text-secondary,#4b5563)]">{nextDay.reference}</p>
+                <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">{nextDay.summary}</p>
+                <p className="mt-2 text-xs font-black uppercase tracking-[0.12em] text-[var(--bb-text-muted,#6b7280)]">
+                  {nextAudio?.estimatedDuration || nextDay.estimatedTime} lesson
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={openNextDay}
+                className="rounded-[14px] bg-[var(--bb-button,#2f7fe8)] px-5 py-3.5 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-[0_14px_30px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_28%,transparent)] transition hover:brightness-95"
+              >
+                Continue to Day {nextDay.dayNumber}
+              </button>
+            </div>
+          ) : (
+            <p className="mt-2 text-sm font-bold text-[var(--bb-text-secondary,#4b5563)]">
+              You finished every available Bible in One Year lesson. That is real progress.
+            </p>
+          )}
+        </div>
+      </article>
+    );
+  }
+
   function renderBibleYearCompletedTasksPanel(day: GenesisBibleYearDay) {
     const completedTasksForDay = buildBibleYearDayTasks(day).filter((task) => task.done);
     const requiredTasksCount = getBibleYearRequiredCardKeys(day).length;
@@ -10885,9 +11121,10 @@ Before we understand redemption, we need to understand what God made humanity fo
         )}
         {renderDashboardSectionIntro(
           "Scripture Player",
-          "Press play and continue today's guided Bible lesson.",
+          readingComplete ? "Celebrate the lesson you finished and choose an optional next step." : "Press play and continue today's guided Bible lesson.",
           "order-3"
         )}
+        {readingComplete ? renderBibleYearLessonCompleteCard(day, nextBibleYearDay, () => openAdjacentBibleYearDay(nextBibleYearDay)) : (
         <article className="order-4 overflow-hidden rounded-[20px] border border-[var(--bb-card-border,#dbe7f4)] bg-[linear-gradient(145deg,color-mix(in_srgb,var(--bb-card,#ffffff)_94%,var(--bb-surface-soft,#f8fbff)),var(--bb-surface-soft,#f8fbff))] p-5 text-[var(--bb-text-primary,#111827)] shadow-[0_18px_48px_rgba(38,63,99,0.12),inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-xl sm:p-6">
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div className="min-w-0">
@@ -10985,7 +11222,10 @@ Before we understand redemption, we need to understand what God made humanity fo
           </div>
           {followAlongOpen ? renderBibleYearFollowAlongScripturePanel(day) : null}
         </article>
+        )}
 
+        {!readingComplete ? (
+          <>
         {renderDashboardSectionIntro(
           "Study Tools",
           "Explore today's lesson through notes, trivia, and reflection.",
@@ -11026,6 +11266,8 @@ Before we understand redemption, we need to understand what God made humanity fo
             );
           })}
         </section>
+          </>
+        ) : null}
 
         <section data-bb-dashboard-tour="journey-map" className="order-2 overflow-hidden rounded-[20px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] shadow-[0_16px_42px_rgba(38,63,99,0.12),inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-xl">
           <button type="button" onClick={openBibleYearSeriesDashboard} className="hidden w-full items-center justify-between gap-3 px-4 py-3.5 text-left transition hover:bg-[var(--bb-surface-soft,#f4f8ff)]">
