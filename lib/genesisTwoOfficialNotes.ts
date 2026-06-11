@@ -121,7 +121,7 @@ Water means life. The garden is pictured as a place of abundance, not scarcity. 
 
 ### 🛠️ Work Is Good
 
-God puts the man in the garden to dress it and keep it.
+God puts the man in the garden to cultivate and keep it.
 
 This happens before sin enters the world. That means work itself is not a curse. The frustration of work comes later, but meaningful responsibility is part of God's good design.
 
@@ -162,15 +162,15 @@ God brings the animals to the man to see what he will call them.
 
 Naming shows responsibility and wisdom. The man is participating in the ordered world God made.
 
-But the animals do not solve the problem of human loneliness. None is found as a suitable helper for him.
+But the animals do not solve the problem of human loneliness. None is found as a helper comparable to him.
 
-### 🧩 A Helper Fit For Him
+### 🧩 A Helper Comparable To Him
 
 The word helper does not mean weak or lesser.
 
 In the Bible, helper can be a strong word. God Himself is called helper in other places. The point is not inferiority. The point is needed partnership.
 
-The man needs someone who corresponds to him.
+The man needs someone who is truly comparable to him.
 
 ## Genesis 2:21-25
 

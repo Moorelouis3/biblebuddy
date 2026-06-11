@@ -370,7 +370,7 @@ export const BIBLE_READER_STUDY_SECTIONS: BibleReaderStudySection[] = [
           "\"A River Flowed Out Of Eden\"\nThe river shows that Eden is a place of life and abundance. Water is one of the clearest Bible pictures of provision and flourishing.\nThe river does not stay still. It flows outward and becomes connected to lands beyond the garden.\nThat detail gives the garden a bigger feeling. Eden is not a tiny private escape; it is a center of life meant to overflow.",
           "\"Gold Of That Land Is Good\"\nGenesis names gold, bdellium, and onyx stone. That may feel random at first, but it shows that the world God made contains beauty, value, and material richness.\nLater in the Bible, precious materials appear in the tabernacle and temple. The resources of creation can be used in worship and beauty.\nThis is another reminder that physical creation is not worthless. God made a world filled with good things.",
           "\"Put Him In The Garden\"\nAdam does not wander into Eden by accident. God places him there.\nThat placement matters because purpose often begins with where God puts you. Adam receives a location, a calling, and a responsibility.\nThe garden is gift, but it is also assignment.",
-          "\"To Work It And Keep It\"\nThese words mean Adam is meant to cultivate and guard the garden. Work and protection are part of his calling.\nThis is before sin, so work is not bad. The pain, sweat, and frustration of work come later, but purposeful labor is already good.\nThe word keep can also carry the sense of guarding. Adam is not only farming; he is responsible for protecting what God entrusted to him.",
+          "\"To Cultivate It And Keep It\"\nThese words mean the man is meant to cultivate and guard the garden. Work and protection are part of his calling.\nThis is before sin, so work is not bad. The pain, sweat, and frustration of work come later, but purposeful labor is already good.\nThe word keep can also carry the sense of guarding. The man is not only farming; he is responsible for protecting what God entrusted to him.",
           "\"You May Surely Eat\"\nBefore God gives the warning, He gives wide permission. Adam is free to eat from every tree except one.\nThat order matters. God's command begins in generosity, not restriction.\nSometimes people remember the one forbidden tree and forget the whole garden of allowed trees. Genesis wants us to see both.",
           "\"The Tree Of The Knowledge Of Good And Evil\"\nThis tree represents a boundary around moral authority. The question is not whether Adam will learn facts; the question is whether he will trust God to define good and evil.\nTo eat from it is to reach for independence from God's wisdom. It is humanity saying, \"I will decide good and evil for myself.\"\nThat makes the tree a test of trust, not a trap.",
           "\"You Shall Surely Die\"\nThis warning is serious and direct. Death is introduced as the consequence of rebellion before it becomes human experience.\nGod is not being harsh by warning Adam. A loving warning tells the truth about danger.\nThe rest of the Bible will show that death is not part of the good design; it enters through sin and becomes the enemy God must overcome.",
@@ -401,7 +401,7 @@ export const BIBLE_READER_STUDY_SECTIONS: BibleReaderStudySection[] = [
         icon: "🧭",
         title: "What Is Happening Here?",
         content: [
-          "For the first time in the Bible, God says something is not good. The world is good, the garden is good, the work is good, but the man being alone is not good.\n🤝 God says the man needs a helper fit for him, someone who corresponds to him in a way no animal can.\n🐾 God brings the animals to Adam, and Adam names them, but none is found as a suitable partner.\n💤 God causes the man to sleep and forms the woman from his side, showing shared humanity and deep connection.\n😍 Adam receives the woman with joy, recognizing her as bone of his bones and flesh of his flesh.\n💍 The passage ends by explaining marriage as a one-flesh union and describes a world without shame.\nThis is not just about Adam needing company. Genesis is teaching that human life is relational, and that marriage is rooted in God's created design.",
+          "For the first time in the Bible, God says something is not good. The world is good, the garden is good, the work is good, but the man being alone is not good.\n🤝 God says the man needs a helper comparable to him, someone who corresponds to him in a way no animal can.\n🐾 God brings the animals to the man, and the man names them, but none is found as a helper comparable to him.\n💤 God causes the man to sleep and forms the woman from his side, showing shared humanity and deep connection.\n😍 The man receives the woman with joy, recognizing her as bone of his bones and flesh of his flesh.\n💍 The passage ends by explaining marriage as a one-flesh union and describes a world without shame.\nThis is not just about the man needing company. Genesis is teaching that human life is relational, and that marriage is rooted in God's created design.",
         ],
       },
       {
@@ -410,12 +410,12 @@ export const BIBLE_READER_STUDY_SECTIONS: BibleReaderStudySection[] = [
         title: "Key Phrases",
         content: [
           "\"It Is Not Good\"\nThis phrase should surprise us because Genesis 1 kept repeating that creation was good. Now God names something incomplete.\nThe problem is not sin yet. The problem is aloneness. Adam has a garden, work, food, and animals, but he does not yet have a human partner.\nThat teaches that people need more than a task and a place. We are made for relationship.",
-          "\"A Helper Fit For Him\"\nHelper does not mean inferior. The same word is often used in the Old Testament for God as the helper of His people.\nThe idea is strength, support, and partnership. The woman is not created as an afterthought or servant-class human.\nFit for him means corresponding to him. She is like him and different from him in a way that makes partnership possible.",
-          "\"God Brought Them To The Man\"\nGod brings the animals to Adam, and Adam names them. This shows Adam exercising the authority and wisdom God gave him.\nBut the scene also teaches by contrast. The animals are good, but none can answer Adam's aloneness.\nAdam needs someone who shares his humanity, not just another living creature nearby.",
+          "\"A Helper Comparable To Him\"\nHelper does not mean inferior. The same word is often used in the Old Testament for God as the helper of His people.\nThe idea is strength, support, and partnership. The woman is not created as an afterthought or servant-class human.\nComparable to him means corresponding to him. She is like him and different from him in a way that makes partnership possible.",
+          "\"God Brought Them To The Man\"\nGod brings the animals to the man, and the man names them. This shows the man exercising the authority and wisdom God gave him.\nBut the scene also teaches by contrast. The animals are good, but none can answer the man's aloneness.\nThe man needs someone who shares his humanity, not just another living creature nearby.",
           "\"The Rib\"\nThe woman is formed from the man's side, not from his head to rule over him or from his feet to be trampled by him.\nThat old observation is not a verse quote, but it captures the picture well: she is made from his side, near his heart, as his companion.\nGenesis is showing unity, equality of humanity, and difference at the same time.",
-          "\"Bone Of My Bones And Flesh Of My Flesh\"\nThese are Adam's first recorded words, and they sound like joy and recognition. He sees that the woman is not another animal and not a stranger.\nShe is like him. She shares his humanity.\nThis is the first human celebration in the Bible, and it happens when Adam receives the person God made for relationship.",
+          "\"Bone Of My Bones And Flesh Of My Flesh\"\nThese are the man's first recorded words, and they sound like joy and recognition. He sees that the woman is not another animal and not a stranger.\nShe is like him. She shares his humanity.\nThis is the first human celebration in the Bible, and it happens when the man receives the person God made for relationship.",
           "\"One Flesh\"\nOne flesh describes the deep union of marriage. It includes physical union, but it is bigger than that.\nMarriage creates a new family bond where two people are joined in loyalty, life, and covenant love.\nJesus later points back to this passage when teaching about marriage, which shows how foundational Genesis 2 is for the rest of Scripture.",
-          "\"Naked And Not Ashamed\"\nBefore sin, there is openness without fear. Adam and the woman are fully seen and not hiding.\nThat is hard for us to imagine because shame becomes so normal after Genesis 3.\nThis phrase gives us a glimpse of God's original design: relationship without hiding, fear, comparison, or self-protection.",
+          "\"Naked And Not Ashamed\"\nBefore sin, there is openness without fear. The man and the woman are fully seen and not hiding.\nThat is hard for us to imagine because shame becomes so normal after Genesis 3.\nThis phrase gives us a glimpse of God's original design: relationship without hiding, fear, comparison, or self-protection.",
         ],
       },
       {
@@ -423,7 +423,7 @@ export const BIBLE_READER_STUDY_SECTIONS: BibleReaderStudySection[] = [
         icon: "❤️",
         title: "Why This Matters",
         content: [
-          "Genesis 2:18-25 matters because it shows that people are not made to live as isolated individuals. Even in a good world, Adam needed relationship.\n🤝 Needing people is not weakness; it is part of being human.\n💪 Biblical help is strong, valuable, and necessary.\n💍 Marriage is meant to be covenant union, not just attraction or convenience.\n🫶 God's original design included openness without shame.\nThis passage helps us understand why loneliness hurts so deeply and why trust matters so much. We were made for relationship, but the safest relationships are the ones shaped by God's design, not selfishness or control.",
+          "Genesis 2:18-25 matters because it shows that people are not made to live as isolated individuals. Even in a good world, the man needed relationship.\n🤝 Needing people is not weakness; it is part of being human.\n💪 Biblical help is strong, valuable, and necessary.\n💍 Marriage is meant to be covenant union, not just attraction or convenience.\n🫶 God's original design included openness without shame.\nThis passage helps us understand why loneliness hurts so deeply and why trust matters so much. We were made for relationship, but the safest relationships are the ones shaped by God's design, not selfishness or control.",
         ],
       },
     ],
@@ -9662,8 +9662,8 @@ Nothing is missing, unfinished, or left incomplete.
 Creation rests on the completed work of God, not on human effort.`,
         ],
         [
-          "🛑 God Ended His Work",
-          `God ending His work does not mean He stopped caring for creation.
+          "🛑 God Finished His Work",
+          `God finishing His work does not mean He stopped caring for creation.
 
 It means the special work of creating the heavens and the earth was complete.
 
@@ -9671,7 +9671,7 @@ God was not exhausted.
 
 He was not running out of power.
 
-He ended because everything was exactly where it needed to be.
+He finished because everything was exactly where it needed to be.
 
 That is different from the way people often stop working.
 
@@ -9793,29 +9793,22 @@ It is a closer look at mankind, Eden, work, command, and relationship.`,
         ],
         [
           "🌌 Of The Heavens And Of The Earth",
-          `This phrase helps us understand what Genesis 2 is doing.
+          `This phrase tells us what story Genesis 2 is connected to.
 
-Genesis 2 is not starting a second creation story that disagrees with Genesis 1.
+It is the story of the heavens and the earth God has just made.
 
-Genesis 1 gives the big picture view of creation.
+Genesis 1 showed the whole creation.
 
-Genesis 2 zooms in on the human part of that same creation story.
+Genesis 2 now looks more closely at life inside that creation.
 
-It focuses on mankind, the Garden of Eden, work, command, and relationship with God.
+🌌 Heavens
+🌍 Earth
+👤 The man
+🌳 The garden
 
-"These are the generations of the heavens and of the earth" means this is the account of what came from the heavens and the earth after God created them.
+The card is not mainly explaining the word generations.
 
-Generations does not mean the heavens and earth had children.
-
-It is a Hebrew way of introducing the history, development, or story that follows.
-
-Genesis uses this kind of phrase again and again to open a new section.
-
-Later we read, "These are the generations of Noah," "These are the generations of Shem," and "These are the generations of Isaac."
-
-Each time, Genesis is telling us the focus is narrowing to the next important part of the story.
-
-Here, Genesis 2:4 connects the completed creation account with the detailed story of human life in the garden.`,
+It is showing that Eden, the man, work, command, and relationship all belong inside God's created heavens and earth.`,
         ],
         [
           "🌱 No Plant Of The Field",
@@ -10320,10 +10313,10 @@ The point is that Eden is pictured as a real, life-giving place whose waters con
       icon: "🛠️",
       phrases: [
         [
-          "🛠️ To Dress It And To Keep It",
+          "🛠️ To Cultivate It And Keep It",
           `Adam is placed in the garden with work to do.
 
-To dress it means to work, cultivate, or care for it.
+To cultivate it means to work, tend, or care for it.
 
 To keep it means to guard, watch, or preserve it.
 
@@ -10479,8 +10472,8 @@ God names the need before Adam even asks for it.
 That shows God's care for the human heart.`,
         ],
         [
-          "🤝 A Help Meet For Him",
-          `Help meet means a helper fit for him.
+          "🤝 A Helper Comparable To Him",
+          `Helper comparable to him means a helper who truly corresponds to the man.
 
 The word helper does not mean weak or less important.
 
@@ -10488,7 +10481,7 @@ In the Old Testament, God Himself is often called a helper.
 
 So this word carries strength, support, and partnership.
 
-Fit for him means corresponding to him.
+Comparable to him means she shares his humanity and fits with him in a way no animal does.
 
 Not identical.
 
@@ -10505,14 +10498,14 @@ This phrase matters because woman is not created as an afterthought.
 She is created as the answer to the first "not good" in the Bible.`,
         ],
         [
-          "🐾 God Brought Them Unto Adam",
-          `God brings the animals to Adam.
+          "🐾 God Brought Them To The Man",
+          `God brings the animals to the man.
 
 Adam names them, which shows responsibility and authority.
 
 But the scene also teaches Adam something.
 
-As he sees the animals, he recognizes that none of them matches him.
+As the man sees the animals, he recognizes that none of them matches him.
 
 They are living creatures, but they are not his human partner.
 
@@ -10527,7 +10520,7 @@ The need is not just stated by God.
 It is shown through the story.`,
         ],
         [
-          "📛 Adam Gave Names",
+          "📛 The Man Gave Names",
           `Naming in Genesis often shows authority and understanding.
 
 Adam is not acting randomly.
@@ -10594,10 +10587,10 @@ She comes from the man because she corresponds to him.
 She is like him in a way no animal was.`,
         ],
         [
-          "👩 Made He A Woman",
-          `God personally makes the woman.
+          "👩 God Made A Woman",
+          `God made a woman from the rib He had taken from the man.
 
-Just as Adam's formation was intentional, her creation is intentional too.
+Just as the man's formation was intentional, her creation is intentional too.
 
 She is not an accident.
 
@@ -10614,18 +10607,18 @@ This phrase matters because woman enters the story with God-given purpose and va
 The first woman is made by the Lord, brought by the Lord, and received with joy.`,
         ],
         [
-          "🤲 Brought Her Unto The Man",
-          `God brings the woman to Adam.
+          "🤲 Brought Her To The Man",
+          `God brings the woman to the man.
 
 This is a tender moment.
 
-Earlier, God brought the animals to Adam, and no suitable partner was found.
+Earlier, God brought the animals to the man, and no suitable partner was found.
 
 Now God brings the woman.
 
 The difference is immediate.
 
-Adam recognizes her.
+The man recognizes her.
 
 She is not another creature to name from a distance.
 
@@ -10637,11 +10630,11 @@ He sees the need, forms the answer, and brings them together.`,
         ],
         [
           "🦴 Bone Of My Bones",
-          `These are Adam's first recorded words.
+          `These are the man's first recorded words.
 
 They sound like recognition and joy.
 
-Adam is saying, "This one is like me."
+The man is saying, "This one is like me."
 
 She shares his humanity.
 
@@ -10661,11 +10654,11 @@ It is celebration.`,
         ],
         [
           "❤️ Flesh Of My Flesh",
-          `This phrase continues Adam's celebration.
+          `This phrase continues the man's celebration.
 
 Flesh points to shared human life.
 
-Adam recognizes that the woman belongs with him in a way no animal did.
+The man recognizes that the woman belongs with him in a way no animal did.
 
 She is his counterpart.
 
@@ -10678,6 +10671,25 @@ This is the first human poem-like speech in the Bible.
 It shows joy at relationship.
 
 Before sin brings blame in Genesis 3, Genesis 2 gives us delight, unity, and recognition.`,
+        ],
+        [
+          "👩 She Shall Be Called Woman",
+          `The man gives her the name Woman because she was taken out of Man.
+
+The wording shows connection.
+
+She is not a different kind of creature.
+
+She shares his human life.
+
+👤 Man
+👩 Woman
+🦴 Bone of my bones
+❤️ Flesh of my flesh
+
+This statement matters because the man recognizes her as the partner God made for him.
+
+Genesis is showing unity, closeness, and shared dignity before sin enters the story.`,
         ],
       ],
     }),

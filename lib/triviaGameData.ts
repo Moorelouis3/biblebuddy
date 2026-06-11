@@ -173,10 +173,10 @@ const MANUAL_TRIVIA_BOOKS: Record<string, TriviaBookPack> = {
         createQuestion(
           "genesis-2-4",
           "Why did God say it was not good for man to be alone?",
-          ["Because the garden was too large", "Because Adam needed a helper fit for him", "Because animals were dangerous", "Because Adam needed more work"],
+          ["Because the garden was too large", "Because Adam needed a helper comparable to him", "Because animals were dangerous", "Because Adam needed more work"],
           "B",
           "Genesis 2:18",
-          "God said He would make a helper suitable for Adam.",
+          "God said He would make a helper comparable to him.",
         ),
         createQuestion(
           "genesis-2-5",
