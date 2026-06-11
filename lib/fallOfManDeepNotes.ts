@@ -197,7 +197,7 @@ const fallNotes: FallChapterNote[] = [
           "She ate.",
           "She gave.",
           "He ate.",
-          "The first sin is both personal and shared. Eve is deceived by the serpent, and Adam eats with her.",
+          "The first sin is both personal and shared. Eve is beguiled by the serpent, and Adam eats with her.",
           "The verse says her husband was `with her.` That makes the scene heavier. Adam is not pictured as miles away. He is present, silent, and participating.",
           "### 🙈 Eyes Opened, But Not Like They Expected",
           "The serpent promised opened eyes.",
@@ -246,8 +246,8 @@ const fallNotes: FallChapterNote[] = [
           "Think about that.",
           "The trees God made for beauty and life are now used as cover from God.",
           "That is what sin does. It takes good gifts and turns them into hiding places.",
-          "### ❓ Where Are You?",
-          "God asks, `Where are you?`",
+          "### ❓ Where Art Thou?",
+          "God asks, `Where art thou?`",
           "God is not asking because He lacks information.",
           "He is drawing Adam into confession.",
           "A better answer would have been, `I sinned. I was wrong. I am afraid.`",
@@ -267,7 +267,7 @@ const fallNotes: FallChapterNote[] = [
           "That is a loaded sentence.",
           "The gift God gave him in Genesis 2 is now being used as an excuse in Genesis 3.",
           "Eve blames the serpent.",
-          "Eve says the serpent deceived her. That means he tricked her and led her astray.",
+          "Eve says the serpent beguiled her. That means he tricked her and led her astray.",
           "She is telling the truth about deception, but she still ate.",
           "Genesis 3 shows a human pattern that never stopped:",
           "- 😨 fear instead of honesty",
@@ -315,7 +315,7 @@ const fallNotes: FallChapterNote[] = [
           "Thorns and thistles grow.",
           "Bread comes through sweat.",
           "Life becomes labor under resistance.",
-          "### ⚰️ You Are Dust",
+          "### ⚰️ Dust Thou Art",
           "Verse 19 is the first clear death sentence over humanity.",
           "`You are dust, and you will return to dust.`",
           "This is devastating.",
@@ -713,15 +713,15 @@ That is why Genesis 3-4 is so important. It explains the wound, but it also begi
 
 ## Genesis 3:1-5
 
-> 📖 **1** Now the serpent was more subtle than any animal of the field which Yahweh God had made. He said to the woman, "Has God really said, 'You shall not eat of any tree of the garden'?"
+> 📖 **1** Now the serpent was more subtil than any beast of the field which the LORD God had made. And he said unto the woman, "Yea, hath God said, Ye shall not eat of every tree of the garden?"
 >
-> 📖 **2** The woman said to the serpent, "We may eat fruit from the trees of the garden,
+> 📖 **2** And the woman said unto the serpent, "We may eat of the fruit of the trees of the garden:
 >
-> 📖 **3** but not the fruit of the tree which is in the middle of the garden. God has said, 'You shall not eat of it. You shall not touch it, lest you die.'"
+> 📖 **3** But of the fruit of the tree which is in the midst of the garden, God hath said, "Ye shall not eat of it, neither shall ye touch it, lest ye die."
 >
-> 📖 **4** The serpent said to the woman, "You won't really die,
+> 📖 **4** And the serpent said unto the woman, "Ye shall not surely die:
 >
-> 📖 **5** for God knows that in the day you eat it, your eyes will be opened, and you will be like God, knowing good and evil."
+> 📖 **5** For God doth know that in the day ye eat thereof, then your eyes shall be opened, and ye shall be as gods, knowing good and evil."
 
 ## 🐍 What Is Happening Here?
 
@@ -737,15 +737,15 @@ This is one of the oldest strategies of sin: make God's goodness feel smaller an
 
 ## 🧠 Words To Know
 
-### Subtle
+### Subtil
 
-**Subtle** means crafty, clever, or shrewd.
+**Subtil** means crafty, clever, or shrewd.
 
 The serpent is not presented as loud and obvious. He is careful. His danger is not only in open rebellion, but in twisting the way Eve hears God.
 
-### Really Said
+### Yea, Hath God Said
 
-The phrase **really said** matters because the serpent is attacking trust in God's word.
+The phrase **Yea, hath God said** matters because the serpent is attacking trust in God's word.
 
 He wants Eve to move from confidence to suspicion. Once God's word feels uncertain, disobedience begins to feel easier.
 
@@ -765,7 +765,7 @@ The serpent is connected with deception and opposition to God. Genesis does not 
 
 ### Arum
 
-**Arum** is the Hebrew word behind subtle or crafty.
+**Arum** is the Hebrew word behind subtil or crafty.
 
 This word is important because Genesis 2 ended by saying Adam and Eve were naked and not ashamed. In Hebrew, naked and crafty sound similar. The story moves from innocence without shame to craftiness that leads into shame.
 
@@ -795,13 +795,13 @@ That connection matters because Jesus succeeds where humanity failed.
 
 ## Genesis 3:6-7
 
-> 📖 **6** When the woman saw that the tree was good for food, and that it was a delight to the eyes, and that the tree was to be desired to make one wise, she took some of its fruit, and ate. Then she gave some to her husband with her, and he ate it, too.
+> 📖 **6** And when the woman saw that the tree was good for food, and that it was pleasant to the eyes, and a tree to be desired to make one wise, she took of the fruit thereof, and did eat, and gave also unto her husband with her; and he did eat.
 >
-> 📖 **7** Their eyes were opened, and they both knew that they were naked. They sewed fig leaves together, and made coverings for themselves.
+> 📖 **7** And the eyes of them both were opened, and they knew that they were naked; and they sewed fig leaves together and made themselves aprons.
 
 ## 🍎 What Is Happening Here?
 
-Eve sees the fruit as good, delightful, and desirable.
+Eve sees the fruit as good, pleasant, and desirable.
 
 That is important because sin does not always look ugly at first. It can look helpful, beautiful, reasonable, and wise. The problem is not that the fruit looks attractive. The problem is that Adam and Eve are now evaluating God's command from a place of distrust.
 
@@ -813,9 +813,9 @@ The first human-made clothing in Scripture is not fashion. It is shame managemen
 
 ## 🧠 Words To Know
 
-### Delight
+### Pleasant
 
-**Delight** means the fruit looked pleasing and attractive.
+**Pleasant** means the fruit looked pleasing and attractive.
 
 The verse shows how desire can pull the heart. Wanting something is not always wrong, but desire becomes dangerous when it starts arguing against God's word.
 
@@ -825,9 +825,9 @@ The verse shows how desire can pull the heart. Wanting something is not always w
 
 The tree is desired as a way to gain wisdom apart from obedience. Genesis is showing the danger of wanting wisdom without surrender.
 
-### Coverings
+### Aprons
 
-**Coverings** are what Adam and Eve make from fig leaves.
+**Aprons** are what Adam and Eve make from fig leaves.
 
 They are trying to deal with shame by their own effort. They can cover their bodies, but they cannot heal the broken trust underneath.
 
@@ -849,7 +849,7 @@ Genesis 2 said they were naked and not ashamed. Genesis 3 says they know they ar
 
 Fig leaves were large and available in the garden setting, but they were not a lasting solution.
 
-That detail matters because humans often respond to shame with quick coverings. We hide, perform, blame, distract, or pretend. Genesis shows that human coverings can hide symptoms but cannot restore relationship with God.
+That detail matters because humans often respond to shame with quick coverings. We hide, perform, blame, distract, or pretend. Genesis shows that human-made aprons can hide symptoms but cannot restore relationship with God.
 
 ## 🔥 Connection Across Scripture
 
@@ -863,17 +863,17 @@ Genesis 3 begins the question: who can truly cover human shame?
 
 ## Genesis 3:8-13
 
-> 📖 **8** They heard Yahweh God's voice walking in the garden in the cool of the day, and the man and his wife hid themselves from Yahweh God's presence among the trees of the garden.
+> 📖 **8** And they heard the voice of the LORD God walking in the garden in the cool of the day: and Adam and his wife hid themselves from the presence of the LORD God amongst the trees of the garden.
 >
-> 📖 **9** Yahweh God called to the man, and said to him, "Where are you?"
+> 📖 **9** And the LORD God called unto Adam, and said unto him, "Where art thou?"
 >
-> 📖 **10** The man said, "I heard your voice in the garden, and I was afraid, because I was naked; so I hid myself."
+> 📖 **10** And he said, "I heard thy voice in the garden, and I was afraid, because I was naked; and I hid myself."
 >
-> 📖 **11** God said, "Who told you that you were naked? Have you eaten from the tree that I commanded you not to eat from?"
+> 📖 **11** And he said, "Who told thee that thou wast naked? Hast thou eaten of the tree, whereof I commanded thee that thou shouldest not eat?"
 >
-> 📖 **12** The man said, "The woman whom you gave to be with me, she gave me fruit from the tree, and I ate it."
+> 📖 **12** And the man said, "The woman whom thou gavest to be with me, she gave me of the tree, and I did eat."
 >
-> 📖 **13** Yahweh God said to the woman, "What have you done?" The woman said, "The serpent deceived me, and I ate."
+> 📖 **13** And the LORD God said unto the woman, "What is this that thou hast done?" And the woman said, "The serpent beguiled me, and I did eat."
 
 ## 👀 What Is Happening Here?
 
@@ -881,7 +881,7 @@ God comes into the garden, and the humans hide.
 
 This is heartbreaking because the garden was designed as a place of life with God. Now the sound of God's presence creates fear. Adam does not run toward God. He hides among the trees God made.
 
-God asks, Where are you?
+God asks, Where art thou?
 
 God is not lost. Adam is. The question is mercy because it draws Adam out of hiding. God gives Adam room to speak truth, but Adam answers with fear and then blame.
 
@@ -1011,9 +1011,9 @@ Then they are sent out of Eden. This is painful, but it is also mercy. If they e
 
 Her name matters because Genesis is saying the story is not over. Judgment is real, but life will continue.
 
-### Garments
+### Coats Of Skins
 
-**Garments** are the clothes God makes for Adam and Eve.
+**Coats of skins** are the clothes God makes for Adam and Eve.
 
 This is the first time God covers human shame. The text does not explain everything about sacrifice here, but it clearly shows that God's covering is better than human hiding.
 
@@ -1077,7 +1077,7 @@ The first recorded human death after Eden is murder. That is meant to shock us. 
 
 God asks Cain, Where is Abel your brother?
 
-This echoes Genesis 3. God asked Adam, Where are you? Now God asks Cain about his brother. Cain lies and says, Am I my brother's keeper?
+This echoes Genesis 3. God asked Adam, Where art thou? Now God asks Cain about his brother. Cain lies and says, Am I my brother's keeper?
 
 Cain tries to avoid responsibility, but Abel's blood cries from the ground.
 
@@ -1275,7 +1275,7 @@ It is the story of God making a way back to life.
 
 # Pause And Reflect
 
-Where do you see the serpent's question, Has God really said?, showing up in modern life?
+Where do you see the serpent's question, Yea, hath God said?, showing up in modern life?
 
 What is one place where shame makes people hide instead of come into the light?
 

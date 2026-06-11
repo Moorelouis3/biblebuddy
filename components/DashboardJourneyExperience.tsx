@@ -11045,6 +11045,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     const content = getBibleYearDayContent(day);
     const audio = content.audio;
     const readingComplete = bibleYearCompletedCardsByDay[day.dayNumber]?.reading === true;
+    const showCompletionMoment = readingComplete && bibleYearJustCompletedDayRef.current === day.dayNumber;
     const summaryComplete = bibleYearCompletedCardsByDay[day.dayNumber]?.reflection === true;
     const triviaComplete = bibleYearCompletedCardsByDay[day.dayNumber]?.trivia === true;
     const reflectionPosted = bibleYearReflectionPostedByDay[day.dayNumber] === true;
@@ -11121,10 +11122,10 @@ Before we understand redemption, we need to understand what God made humanity fo
         )}
         {renderDashboardSectionIntro(
           "Scripture Player",
-          readingComplete ? "Celebrate the lesson you finished and choose an optional next step." : "Press play and continue today's guided Bible lesson.",
+          showCompletionMoment ? "Celebrate the lesson you finished and choose an optional next step." : "Press play and continue today's guided Bible lesson.",
           "order-3"
         )}
-        {readingComplete ? renderBibleYearLessonCompleteCard(day, nextBibleYearDay, () => openAdjacentBibleYearDay(nextBibleYearDay)) : (
+        {showCompletionMoment ? renderBibleYearLessonCompleteCard(day, nextBibleYearDay, () => openAdjacentBibleYearDay(nextBibleYearDay)) : (
         <article className="order-4 overflow-hidden rounded-[20px] border border-[var(--bb-card-border,#dbe7f4)] bg-[linear-gradient(145deg,color-mix(in_srgb,var(--bb-card,#ffffff)_94%,var(--bb-surface-soft,#f8fbff)),var(--bb-surface-soft,#f8fbff))] p-5 text-[var(--bb-text-primary,#111827)] shadow-[0_18px_48px_rgba(38,63,99,0.12),inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-xl sm:p-6">
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div className="min-w-0">
@@ -11134,7 +11135,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               </h2>
               <p className="mt-1 text-[13px] font-semibold text-[var(--bb-text-secondary,#4b5563)]">{readingSummary}</p>
             </div>
-            <span className={`rounded-full border px-3 py-1.5 text-[12px] font-bold ${readingComplete ? "border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_45%,transparent)] bg-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_12%,transparent)] text-[var(--bb-accent,#2f7fe8)]" : "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-text-secondary,#4b5563)]"}`}>
+            <span className={`rounded-full border px-3 py-1.5 text-[12px] font-bold ${readingComplete ? "border-emerald-300 bg-emerald-50 text-emerald-700" : "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-text-secondary,#4b5563)]"}`}>
               {readingComplete ? "Complete" : "In Progress"}
             </span>
           </div>
@@ -11190,7 +11191,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               disabled={readingComplete}
               className={`rounded-[14px] px-5 py-3.5 text-[13px] font-bold shadow-[0_10px_24px_rgba(123,175,212,0.10)] transition ${
                 readingComplete
-                  ? "cursor-default border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_50%,transparent)] bg-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent)] text-[var(--bb-accent,#2f7fe8)]"
+                  ? "cursor-default border border-emerald-300 bg-emerald-50 text-emerald-700"
                   : "bg-[var(--bb-button,#2f7fe8)] text-[var(--bb-button-text,#ffffff)] hover:brightness-105"
               }`}
             >
@@ -11224,7 +11225,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         </article>
         )}
 
-        {!readingComplete ? (
+        {!showCompletionMoment ? (
           <>
         {renderDashboardSectionIntro(
           "Study Tools",

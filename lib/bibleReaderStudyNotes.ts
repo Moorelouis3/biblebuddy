@@ -452,12 +452,12 @@ export const BIBLE_READER_STUDY_SECTIONS: BibleReaderStudySection[] = [
         title: "Key Phrases",
         content: [
           "\"The Serpent\"\nThe serpent appears as a crafty creature who challenges God's word. Genesis does not pause to explain everything about him yet; it shows what he does.\nHis strategy is to twist trust. He takes a clear command from God and turns it into a conversation about suspicion.\nLater Scripture connects the serpent with Satan, but Genesis first wants us to notice the pattern: evil speaks by questioning God's goodness.",
-          "\"Did God Really Say\"\nThis is the first question recorded from the serpent, and it is aimed directly at God's word. He does not begin by saying God is not real. He begins by making God's command sound uncertain.\nThat matters because temptation often loosens confidence before it pushes disobedience. If God's word becomes blurry, obedience starts to feel negotiable.\nThe question also sounds thoughtful, almost harmless, which is part of the danger. Eve is not being invited to worship another god yet; she is being invited to reconsider whether the true God can be trusted.\nA helpful Bible-watch how often sin begins with a distorted question, not an obvious attack.",
+          "\"Yea, Hath God Said\"\nThis is the first question recorded from the serpent, and it is aimed directly at God's word. He does not begin by saying God is not real. He begins by making God's command sound uncertain.\nThat matters because temptation often loosens confidence before it pushes disobedience. If God's word becomes blurry, obedience starts to feel negotiable.\nThe question also sounds thoughtful, almost harmless, which is part of the danger. Eve is not being invited to worship another god yet; she is being invited to reconsider whether the true God can be trusted.\nA helpful Bible-watch how often sin begins with a distorted question, not an obvious attack.",
           "\"You Shall Not Eat Of Any Tree\"\nThe serpent exaggerates God's command. God gave Adam freedom to eat from every tree except one, but the serpent talks as if God has forbidden everything.\nThis is one of temptation's oldest tricks: shrink God's generosity and magnify His boundary. The garden is full of gifts, but the serpent trains Eve's attention on the one limit.\nGod's commands are easiest to resent when we forget the context of His goodness. The forbidden tree was surrounded by allowed trees.\nThis phrase teaches us to ask, \"Am I seeing God's whole generosity, or only staring at the one thing He has said no to?\"",
-          "\"You Will Not Surely Die\"\nHere the serpent directly contradicts God's warning. At first he questions God; now he denies God.\nThis is not a small misunderstanding anymore. It is a rival message about life and death. God says rebellion brings death, but the serpent says rebellion has no real consequence.\nThat makes this the first false gospel in the Bible. It offers life without trust, freedom without obedience, and safety without God.\nThe rest of Genesis will prove God's word true. Death will enter the family story, first through shame and exile, then through Abel's murder, then through the repeated deaths in Genesis 5.",
-          "\"Your Eyes Will Be Opened\"\nThe serpent promises a higher kind of sight. He makes disobedience sound like awakening, maturity, and hidden knowledge.\nThere is a cruel half-truth here. Their eyes will open, but not in the way they hope. They will not wake up into freedom; they will wake up into shame.\nTemptation often advertises insight while hiding the cost of that insight. It says, \"You will finally know,\" but it does not say, \"You will also lose innocence, peace, and trust.\"\nGenesis teaches that not every opened door leads to life, and not every opened eye sees truth clearly.",
+          "\"Ye Shall Not Surely Die\"\nHere the serpent directly contradicts God's warning. At first he questions God; now he denies God.\nThis is not a small misunderstanding anymore. It is a rival message about life and death. God says rebellion brings death, but the serpent says rebellion has no real consequence.\nThat makes this the first false gospel in the Bible. It offers life without trust, freedom without obedience, and safety without God.\nThe rest of Genesis will prove God's word true. Death will enter the family story, first through shame and exile, then through Abel's murder, then through the repeated deaths in Genesis 5.",
+          "\"Your Eyes Shall Be Opened\"\nThe serpent promises a higher kind of sight. He makes disobedience sound like awakening, maturity, and hidden knowledge.\nThere is a cruel half-truth here. Their eyes will be opened, but not in the way they hope. They will not wake up into freedom; they will wake up into shame.\nTemptation often advertises insight while hiding the cost of that insight. It says, \"You will finally know,\" but it does not say, \"You will also lose innocence, peace, and trust.\"\nGenesis teaches that not every opened door leads to life, and not every opened eye sees truth clearly.",
           "\"Knowing Good And Evil\"\nThis phrase is about moral authority, not just learning facts. Adam and Eve already knew good by living in God's good world and hearing God's good command.\nThe temptation is to know good and evil independently, as if humans can define reality without receiving it from God. It is the desire to move from trusting God's wisdom to becoming self-appointed judges.\nThat is why this phrase still feels so modern. Every age is tempted to say, \"I will decide good and evil for myself.\"\nGenesis says that road does not make humans more alive. It cuts them off from the God who is life.",
-          "\"You Will Be Like God\"\nThis is the heart of the temptation. Adam and Eve were already made in God's image, but the serpent tempts them to reach for God-likeness on their own terms.\nThe lie works because it sounds close to something true. Humans really are meant to reflect God. But image-bearing is received as a gift, not seized as a replacement for God.\nThe serpent makes rebellion sound like growth, freedom, and maturity. He presents dependence on God as childish and independence from God as wise.\nThis is why the fall is so serious: humanity tries to become like God by distrusting God, and that breaks the very relationship that made them fully alive.",
+          "\"Ye Shall Be As Gods\"\nThis is the heart of the temptation. Adam and Eve were already made in God's image, but the serpent tempts them to reach for God-likeness on their own terms.\nThe lie works because it sounds close to something true. Humans really are meant to reflect God. But image-bearing is received as a gift, not seized as a replacement for God.\nThe serpent makes rebellion sound like growth, freedom, and maturity. He presents dependence on God as childish and independence from God as wise.\nThis is why the fall is so serious: humanity tries to become like God by distrusting God, and that breaks the very relationship that made them fully alive.",
         ],
       },
       {
@@ -495,15 +495,15 @@ export const BIBLE_READER_STUDY_SECTIONS: BibleReaderStudySection[] = [
         content: [
           "\"When The Woman Saw\"\nThe temptation has moved from hearing the serpent's words to looking at the tree through those words.\nThe tree was already in the garden, but now Eve is seeing it differently. The lie has changed the way the object looks to her heart.\nSight, desire, and attention are all involved here.\nThis phrase matters because sin often starts by reshaping what we notice, what we value, and what we keep staring at.",
           "\"Good For Food\"\nThe fruit appears useful and harmless. That matters because sin does not always look ugly at first.\nEve sees something practical: food. Temptation often attaches itself to a real appetite or a normal human desire, then pulls that desire outside trust in God.\nThe problem is not that food is bad. God filled the garden with food. The problem is desire judging reality without listening to God's word.\nGenesis is teaching that something can look useful and still be spiritually dangerous if God has said no.",
-          "\"A Delight To The Eyes\"\nThe fruit is visually appealing. The problem is not beauty itself, because God made trees that were pleasant to the sight back in Genesis 2.\nThe danger is beauty separated from obedience. Eve's eyes are now evaluating the tree through the serpent's lie instead of through God's command.\nThat gives us a practical Bible-study insight: the senses are good gifts, but they are not meant to be our highest authority.\nSomething can look beautiful and still lead away from God if desire is no longer guided by truth.",
+          "\"Pleasant To The Eyes\"\nThe fruit is visually appealing. The problem is not beauty itself, because God made trees that were pleasant to the sight back in Genesis 2.\nThe danger is beauty separated from obedience. Eve's eyes are now evaluating the tree through the serpent's lie instead of through God's command.\nThat gives us a practical Bible-study insight: the senses are good gifts, but they are not meant to be our highest authority.\nSomething can look beautiful and still lead away from God if desire is no longer guided by truth.",
           "\"Desired To Make One Wise\"\nWisdom is good when it comes from God. Later books like Proverbs will tell people to seek wisdom like treasure.\nBut this is wisdom seized apart from God. It is an attempt to gain moral independence instead of receiving instruction from the Creator.\nThat is why the tree is so serious. It represents the human desire to define good and evil without God.\nThere is an aha moment here: the Bible is not anti-wisdom. It is against a kind of wisdom that begins by distrusting God.",
-          "\"She Took Of Its Fruit And Ate\"\nThe fall moves from listening, to looking, to taking, to eating. Genesis slows the moment down so we can see sin becoming action.\nTaking is important language in the Bible. Sometimes God gives, and humans receive. But here the human reaches for what God has not given.\nThe act may look small from the outside. It is just fruit. But spiritually, it is a declaration that the creature will no longer live under the Creator's word.\nThis is why sin cannot be measured only by the size of the object involved. It must be measured by the relationship it breaks.",
-          "\"She Also Gave Some To Her Husband\"\nAdam is not far away in this scene. The text says he is with her.\nThat means Adam's silence matters. He was given the command first, but he does not guard the garden, speak truth, or protect the relationship from the lie.\nGenesis is not letting Adam off the hook. Sin spreads through passive failure as well as active choice.\nThis phrase teaches that love should not stand quietly while falsehood grows.",
-          "\"He Ate It Too\"\nAdam personally eats the fruit. He is not only present near the sin; he joins it.\nThat matters because the Bible does not treat Adam as innocent just because Eve ate first. He receives what was forbidden and steps across the same boundary.\nEve ate. Adam ate. Both disobeyed.\nThis phrase deserves attention because sin becomes shared rebellion here. The man and woman who were meant to walk together in trust now stand together in disobedience.",
-          "\"Their Eyes Were Opened\"\nThe serpent promised opened eyes, and in one sense that promise comes true. But the result is not glory, freedom, or wisdom the way they imagined.\nTheir eyes open to a painful new reality. They now know evil by experience, not just by warning.\nInnocence is gone, and the world feels different because they have crossed God's command.\nThis phrase is important because it shows the bitter half-truth of temptation. Sin may reveal something, but it also wounds the person who sees it.",
+          "\"She Took Of The Fruit Thereof\"\nThe fall moves from listening, to looking, to taking, to eating. Genesis slows the moment down so we can see sin becoming action.\nTaking is important language in the Bible. Sometimes God gives, and humans receive. But here the human reaches for what God has not given.\nThe act may look small from the outside. It is just fruit. But spiritually, it is a declaration that the creature will no longer live under the Creator's word.\nThis is why sin cannot be measured only by the size of the object involved. It must be measured by the relationship it breaks.",
+          "\"Gave Also Unto Her Husband With Her\"\nAdam is not far away in this scene. The text says he is with her.\nThat means Adam's silence matters. He was given the command first, but he does not guard the garden, speak truth, or protect the relationship from the lie.\nGenesis is not letting Adam off the hook. Sin spreads through passive failure as well as active choice.\nThis phrase teaches that love should not stand quietly while falsehood grows.",
+          "\"And He Did Eat\"\nAdam personally eats the fruit. He is not only present near the sin; he joins it.\nThat matters because the Bible does not treat Adam as innocent just because Eve ate first. He receives what was forbidden and steps across the same boundary.\nEve ate. Adam ate. Both disobeyed.\nThis phrase deserves attention because sin becomes shared rebellion here. The man and woman who were meant to walk together in trust now stand together in disobedience.",
+          "\"The Eyes Of Them Both Were Opened\"\nThe serpent promised opened eyes, and in one sense that promise comes true. But the result is not glory, freedom, or wisdom the way they imagined.\nTheir eyes open to a painful new reality. They now know evil by experience, not just by warning.\nInnocence is gone, and the world feels different because they have crossed God's command.\nThis phrase is important because it shows the bitter half-truth of temptation. Sin may reveal something, but it also wounds the person who sees it.",
           "\"They Knew That They Were Naked\"\nIn Genesis 2, nakedness meant openness without shame. After sin, the same nakedness feels threatening.\nNothing about their bodies changed, but their relationship to God, each other, and themselves changed. Innocence has been lost, and self-protection begins.\nThat is why shame is deeper than embarrassment. Shame is the feeling that being fully seen is no longer safe.\nGenesis shows shame entering immediately after sin because sin breaks the trust that made openness possible.",
           "\"They Sewed Fig Leaves Together\"\nAdam and Eve try to cover shame with something they can make from the garden.\nThis is the first human response to guilt: not confession, but covering. They know something is wrong, but they try to manage the exposure themselves.\nThe fig leaves may hide their bodies for a moment, but they cannot heal the relationship with God.\nThis phrase matters because it shows shame turning into self-protection almost immediately.",
-          "\"Made Coverings For Themselves\"\nThe coverings are human-made protection. Adam and Eve are trying to make themselves feel less exposed.\nThis phrase shows the beginning of self-protection after sin. People still do this with excuses, image, performance, denial, humor, or blame.\nThe covering is real, but it is not enough. Later in the chapter, God will make a better covering, showing that human coverings cannot do what divine mercy can.\nThis deserves its own card because it moves from the material, fig leaves, to the deeper action: humans trying to cover themselves without God.",
+          "\"Made Themselves Aprons\"\nThe aprons are human-made protection. Adam and Eve are trying to make themselves feel less exposed.\nThis phrase shows the beginning of self-protection after sin. People still do this with excuses, image, performance, denial, humor, or blame.\nThe covering is real, but it is not enough. Later in the chapter, God will make a better covering, showing that human coverings cannot do what divine mercy can.\nThis deserves its own card because it moves from the material, fig leaves, to the deeper action: humans trying to cover themselves without God.",
         ],
       },
       {
@@ -531,7 +531,7 @@ export const BIBLE_READER_STUDY_SECTIONS: BibleReaderStudySection[] = [
         icon: "🧭",
         title: "What Is Happening Here?",
         content: [
-          "After Adam and Eve sin, they hear God in the garden and hide. The relationship that once had openness now has fear.\n🌿 God comes into the garden, and the sinners hide from the One who gave them life.\n❓ God asks, \"Where are you?\" not because He lacks information, but because He is drawing Adam into confession.\n😨 Adam says he was afraid because he was naked.\n👉 When confronted, Adam blames Eve and even hints at blaming God.\n🐍 Eve blames the serpent, and nobody simply says, \"I sinned.\"\nThis scene shows that sin does more than break a rule. It breaks honesty, trust, courage, and closeness.",
+          "After Adam and Eve sin, they hear God in the garden and hide. The relationship that once had openness now has fear.\n🌿 God comes into the garden, and the sinners hide from the One who gave them life.\n❓ God asks, \"Where art thou?\" not because He lacks information, but because He is drawing Adam into confession.\n😨 Adam says he was afraid because he was naked.\n👉 When confronted, Adam blames Eve and even hints at blaming God.\n🐍 Eve blames the serpent, and nobody simply says, \"I sinned.\"\nThis scene shows that sin does more than break a rule. It breaks honesty, trust, courage, and closeness.",
         ],
       },
       {
@@ -540,10 +540,10 @@ export const BIBLE_READER_STUDY_SECTIONS: BibleReaderStudySection[] = [
         title: "Key Phrases",
         content: [
           "\"They Hid Themselves\"\nThis is the first hiding in Scripture. Before sin, Adam and Eve were naked and unashamed; after sin, they hide from God.\nHiding is one of shame's first instincts. It says, \"If I can stay unseen, maybe I can stay safe.\"\nBut hiding from God never heals what is broken. It only shows how broken trust has become.",
-          "\"Where Are You\"\nGod's question is not about geography. He knows where Adam is.\nThe question is an invitation to step out of hiding and tell the truth.\nThat makes this moment merciful. Judgment is coming, but God begins by seeking the sinners.",
+          "\"Where Art Thou\"\nGod's question is not about geography. He knows where Adam is.\nThe question is an invitation to step out of hiding and tell the truth.\nThat makes this moment merciful. Judgment is coming, but God begins by seeking the sinners.",
           "\"I Was Afraid\"\nFear now enters the human relationship with God. The God who gave Adam breath is now the God Adam avoids.\nThat is one of sin's deepest damages. It makes the presence of God feel threatening instead of life-giving.\nThe rest of Scripture will keep answering this fear with God's mercy and rescue.",
           "\"The Woman Whom You Gave\"\nAdam blames Eve, but his words also point back toward God. It is as if he says, \"This happened because of the woman You gave me.\"\nThat is how blame works. It avoids honest confession by shifting responsibility outward.\nThe first broken human relationship after sin includes accusation.",
-          "\"The Serpent Deceived Me\"\nEve tells part of the truth: she was deceived. But the statement still shifts responsibility away from her own choice.\nGenesis does not deny deception, but it also does not remove human responsibility.\nBeing tempted explains the battle; it does not erase the disobedience.",
+          "\"The Serpent Beguiled Me\"\nEve tells part of the truth: she was beguiled, meaning deceived or tricked. But the statement still shifts responsibility away from her own choice.\nGenesis does not deny deception, but it also does not remove human responsibility.\nBeing tempted explains the battle; it does not erase the disobedience.",
         ],
       },
       {
@@ -580,11 +580,11 @@ export const BIBLE_READER_STUDY_SECTIONS: BibleReaderStudySection[] = [
         title: "Key Phrases",
         content: [
           "\"Cursed Are You\"\nThe serpent receives a direct curse. Adam and Eve face consequences, but the serpent is addressed as the enemy.\nThis shows that God does not treat deception as a small thing. Evil is judged by the Creator.\nThe curse begins the Bible's long story of conflict between God and the powers that oppose His life.",
-          "\"Her Offspring\"\nThis phrase becomes one of the most important hopes in Genesis. A child from the woman's line will one day defeat the serpent.\nAt this point, the promise is not fully explained. It is like a seed planted early in the story.\nChristians have long seen Genesis 3:15 as the first gospel promise, pointing forward to Jesus.",
-          "\"He Shall Bruise Your Head\"\nA head wound against the serpent means final defeat. The serpent will wound, but he will not win.\nThat matters because the promise comes immediately after sin enters. God does not wait centuries to hint at rescue.\nJudgment and mercy appear together in the same scene.",
+          "\"Her Seed\"\nSeed means offspring or descendants. A child from the woman's line will one day defeat the serpent.\nAt this point, the promise is not fully explained. It is like a seed planted early in the story.\nChristians have long seen Genesis 3:15 as the first gospel promise, pointing forward to Jesus.",
+          "\"It Shall Bruise Thy Head\"\nA head wound against the serpent means final defeat. The serpent will wound, but he will not win.\nThat matters because the promise comes immediately after sin enters. God does not wait centuries to hint at rescue.\nJudgment and mercy appear together in the same scene.",
           "\"Pain\"\nPain enters the areas most connected to life, family, work, and fruitfulness.\nThe woman will experience pain connected to childbearing and relational tension.\nThis is not God calling pain good. It is describing how sin damages the good design.",
-          "\"By The Sweat Of Your Face\"\nWork existed before sin, but now work becomes painful and resistant.\nThe ground that was meant to be cultivated will now produce thorns and thistles.\nThe curse does not make work meaningless, but it makes work frustrating.",
-          "\"To Dust You Shall Return\"\nAdam was formed from dust, and now death means he will return to dust.\nThis is the fulfillment of God's warning in Genesis 2.\nDeath is not presented as natural beauty here; it is the consequence of sin and an enemy in God's good world.",
+          "\"In The Sweat Of Thy Face\"\nWork existed before sin, but now work becomes painful and resistant.\nThe ground that was meant to be cultivated will now produce thorns and thistles.\nThe curse does not make work meaningless, but it makes work frustrating.",
+          "\"Unto Dust Shalt Thou Return\"\nAdam was formed from dust, and now death means he will return to dust.\nThis is the fulfillment of God's warning in Genesis 2.\nDeath is not presented as natural beauty here; it is the consequence of sin and an enemy in God's good world.",
         ],
       },
       {
@@ -621,7 +621,7 @@ export const BIBLE_READER_STUDY_SECTIONS: BibleReaderStudySection[] = [
         title: "Key Phrases",
         content: [
           "\"Eve\"\nAdam names his wife Eve because she will be the mother of all living. That is a surprising note of hope after judgment.\nDeath has entered, but life will continue.\nThis name quietly connects back to the promise that offspring from the woman will matter in the battle against the serpent.",
-          "\"Garments Of Skin\"\nAdam and Eve made fig leaves, but God provides a stronger covering.\nThe text does not explain every detail, but it clearly shows God caring for guilty people.\nThis becomes a pattern in Scripture: human coverings are not enough, and God provides what shame cannot make for itself.",
+          "\"Coats Of Skins\"\nAdam and Eve made fig leaves, but God provides a stronger covering.\nThe text does not explain every detail, but it clearly shows God caring for guilty people.\nThis becomes a pattern in Scripture: human coverings are not enough, and God provides what shame cannot make for itself.",
           "\"Like One Of Us\"\nGod says the man has become like one of us in knowing good and evil. This does not mean humanity became divine.\nIt means they have entered moral knowledge through rebellion instead of trust.\nThey now know evil by experience, and that knowledge brings ruin rather than freedom.",
           "\"Tree Of Life\"\nThe tree of life represents ongoing life with God. After sin, access to it is blocked.\nThat is judgment, but also mercy. Living forever in a corrupted state would not be salvation.\nThe Bible will bring the tree of life back in Revelation, when God restores what sin broke.",
           "\"He Drove Out The Man\"\nThis is painful language. Eden is no longer humanity's home.\nSin brings exile, distance, and loss.\nBut exile is not abandonment. God sends them out clothed and with a promise still alive.",
@@ -5099,12 +5099,12 @@ const DAY_TWO_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; tru
   "Genesis 3:1-5": {
     phrases: [
       "\"The Serpent\"\nThe serpent is introduced as crafty, which means shrewd, subtle, and skilled at twisting a conversation. Genesis does not stop to explain everything about him yet; it wants us to watch what he does.\nHe does not begin by denying God exists. He begins by challenging whether God's word and goodness can be trusted.\nLater Scripture connects the serpent with Satan, but Genesis first teaches the pattern of evil: it makes distrust sound reasonable.\nThat is why this scene matters so much. The first temptation is not only about fruit; it is about whether humans will live by God's voice or by a rival voice.",
-      "\"Did God Really Say\"\nThis is the first question recorded from the serpent, and it is aimed directly at God's word. He does not start with open rebellion; he starts with uncertainty.\nThat matters because temptation often loosens confidence before it pushes disobedience. If God's word becomes blurry, obedience starts to feel negotiable.\nThe question also sounds thoughtful, almost harmless, which is part of the danger. Eve is not being invited to worship another god yet; she is being invited to reconsider whether the true God can be trusted.\nA helpful Bible-watch how often sin begins with a distorted question, not an obvious attack.",
+      "\"Yea, Hath God Said\"\nThis is the first question recorded from the serpent, and it is aimed directly at God's word. He does not start with open rebellion; he starts with uncertainty.\nThat matters because temptation often loosens confidence before it pushes disobedience. If God's word becomes blurry, obedience starts to feel negotiable.\nThe question also sounds thoughtful, almost harmless, which is part of the danger. Eve is not being invited to worship another god yet; she is being invited to reconsider whether the true God can be trusted.\nA helpful Bible-watch how often sin begins with a distorted question, not an obvious attack.",
       "\"You Shall Not Eat Of Any Tree\"\nThe serpent exaggerates God's command. God gave Adam freedom to eat from every tree except one, but the serpent talks as if God has forbidden everything.\nThis is one of temptation's oldest tricks: shrink God's generosity and magnify His boundary. The garden is full of gifts, but the serpent trains Eve's attention on the one limit.\nGod's commands are easiest to resent when we forget the context of His goodness. The forbidden tree was surrounded by allowed trees.\nThis phrase teaches us to ask, \"Am I seeing God's whole generosity, or only staring at the one thing He has said no to?\"",
-      "\"You Will Not Surely Die\"\nHere the serpent directly contradicts God's warning. At first he questions God; now he denies God.\nThis is not a small misunderstanding anymore. It is a rival message about life and death. God says rebellion brings death, but the serpent says rebellion has no real consequence.\nThat makes this the first false gospel in the Bible. It offers life without trust, freedom without obedience, and safety without God.\nThe rest of Genesis will prove God's word true. Death enters the family story through shame, exile, Abel's murder, and the repeated deaths in Genesis 5.",
-      "\"Your Eyes Will Be Opened\"\nThe serpent promises a higher kind of sight. He makes disobedience sound like awakening, maturity, and hidden knowledge.\nThere is a cruel half-truth here. Their eyes will open, but not in the way they hope. They will not wake up into freedom; they will wake up into shame.\nTemptation often advertises insight while hiding the cost of that insight. It says, \"You will finally know,\" but it does not say, \"You will also lose innocence, peace, and trust.\"\nGenesis teaches that not every opened door leads to life, and not every opened eye sees truth clearly.",
+      "\"Ye Shall Not Surely Die\"\nHere the serpent directly contradicts God's warning. At first he questions God; now he denies God.\nThis is not a small misunderstanding anymore. It is a rival message about life and death. God says rebellion brings death, but the serpent says rebellion has no real consequence.\nThat makes this the first false gospel in the Bible. It offers life without trust, freedom without obedience, and safety without God.\nThe rest of Genesis will prove God's word true. Death enters the family story through shame, exile, Abel's murder, and the repeated deaths in Genesis 5.",
+      "\"Your Eyes Shall Be Opened\"\nThe serpent promises a higher kind of sight. He makes disobedience sound like awakening, maturity, and hidden knowledge.\nThere is a cruel half-truth here. Their eyes will be opened, but not in the way they hope. They will not wake up into freedom; they will wake up into shame.\nTemptation often advertises insight while hiding the cost of that insight. It says, \"You will finally know,\" but it does not say, \"You will also lose innocence, peace, and trust.\"\nGenesis teaches that not every opened door leads to life, and not every opened eye sees truth clearly.",
       "\"Knowing Good And Evil\"\nThis phrase is about moral authority, not just learning facts. Adam and Eve already knew good by living in God's good world and hearing God's good command.\nThe temptation is to know good and evil independently, as if humans can define reality without receiving it from God. It is the desire to move from trusting God's wisdom to becoming self-appointed judges.\nThat is why this phrase still feels so modern. Every age is tempted to say, \"I will decide good and evil for myself.\"\nGenesis says that road does not make humans more alive. It cuts them off from the God who is life.",
-      "\"You Will Be Like God\"\nThis is the heart of the temptation. Adam and Eve were already made in God's image, but the serpent tempts them to reach for God-likeness on their own terms.\nThe lie works because it sounds close to something true. Humans really are meant to reflect God. But image-bearing is received as a gift, not seized as a replacement for God.\nThe serpent makes rebellion sound like growth, freedom, and maturity. He presents dependence on God as childish and independence from God as wise.\nThis is why the fall is so serious: humanity tries to become like God by distrusting God, and that breaks the very relationship that made them fully alive.",
+      "\"Ye Shall Be As Gods\"\nThis is the heart of the temptation. Adam and Eve were already made in God's image, but the serpent tempts them to reach for God-likeness on their own terms.\nThe lie works because it sounds close to something true. Humans really are meant to reflect God. But image-bearing is received as a gift, not seized as a replacement for God.\nThe serpent makes rebellion sound like growth, freedom, and maturity. He presents dependence on God as childish and independence from God as wise.\nThis is why the fall is so serious: humanity tries to become like God by distrusting God, and that breaks the very relationship that made them fully alive.",
     ],
     truths: [
       "Temptation often starts by questioning God's word.\nThe serpent does not begin with fruit. He begins with a question about what God said.\nThat matters because obedience rests on trust. If God's word becomes uncertain in our minds, disobedience starts to look reasonable.\nGenesis teaches us to pay attention to voices that make God's command sound unclear, unfair, or outdated.",
@@ -5118,15 +5118,15 @@ const DAY_TWO_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; tru
     phrases: [
       "\"When The Woman Saw\"\nThe temptation has moved from hearing the serpent's words to looking at the tree through those words.\nThe tree was already in the garden, but now Eve is seeing it differently. The lie has changed the way the object looks to her heart.\nSight, desire, and attention are all involved here.\nThis phrase matters because sin often starts by reshaping what we notice, what we value, and what we keep staring at.",
       "\"Good For Food\"\nThe fruit appears useful and harmless. That matters because sin does not always look ugly at first.\nEve sees something practical: food. Temptation often attaches itself to a real appetite or a normal human desire, then pulls that desire outside trust in God.\nThe problem is not that food is bad. God filled the garden with food. The problem is desire judging reality without listening to God's word.\nGenesis is teaching that something can look useful and still be spiritually dangerous if God has said no.",
-      "\"A Delight To The Eyes\"\nThe fruit is visually appealing. The problem is not beauty itself, because God made trees that were pleasant to the sight back in Genesis 2.\nThe danger is beauty separated from obedience. Eve's eyes are now evaluating the tree through the serpent's lie instead of through God's command.\nThat gives us a practical Bible-study insight: the senses are good gifts, but they are not meant to be our highest authority.\nSomething can look beautiful and still lead away from God if desire is no longer guided by truth.",
+      "\"Pleasant To The Eyes\"\nThe fruit is visually appealing. The problem is not beauty itself, because God made trees that were pleasant to the sight back in Genesis 2.\nThe danger is beauty separated from obedience. Eve's eyes are now evaluating the tree through the serpent's lie instead of through God's command.\nThat gives us a practical Bible-study insight: the senses are good gifts, but they are not meant to be our highest authority.\nSomething can look beautiful and still lead away from God if desire is no longer guided by truth.",
       "\"Desired To Make One Wise\"\nWisdom is good when it comes from God. Later books like Proverbs will tell people to seek wisdom like treasure.\nBut this is wisdom seized apart from God. It is an attempt to gain moral independence instead of receiving instruction from the Creator.\nThat is why the tree is so serious. It represents the human desire to define good and evil without God.\nThere is an aha moment here: the Bible is not anti-wisdom. It is against a kind of wisdom that begins by distrusting God.",
-      "\"She Took Of Its Fruit And Ate\"\nThe fall moves from listening, to looking, to taking, to eating. Genesis slows the moment down so we can see sin becoming action.\nTaking is important language in the Bible. Sometimes God gives, and humans receive. But here the human reaches for what God has not given.\nThe act may look small from the outside. It is just fruit. But spiritually, it is a declaration that the creature will no longer live under the Creator's word.\nThis is why sin cannot be measured only by the size of the object involved. It must be measured by the relationship it breaks.",
-      "\"She Also Gave Some To Her Husband\"\nAdam is not far away in this scene. The text says he is with her.\nThat means Adam's silence matters. He was given the command first, but he does not guard the garden, speak truth, or protect the relationship from the lie.\nGenesis is not letting Adam off the hook. Sin spreads through passive failure as well as active choice.\nThis phrase teaches that love should not stand quietly while falsehood grows.",
-      "\"He Ate It Too\"\nAdam personally eats the fruit. He is not only present near the sin; he joins it.\nThat matters because the Bible does not treat Adam as innocent just because Eve ate first. He receives what was forbidden and steps across the same boundary.\nEve ate. Adam ate. Both disobeyed.\nThis phrase deserves attention because sin becomes shared rebellion here. The man and woman who were meant to walk together in trust now stand together in disobedience.",
-      "\"Their Eyes Were Opened\"\nThe serpent promised opened eyes, and in one sense that promise comes true. But the result is not glory, freedom, or wisdom the way they imagined.\nTheir eyes open to a painful new reality. They now know evil by experience, not just by warning.\nInnocence is gone, and the world feels different because they have crossed God's command.\nThis phrase is important because it shows the bitter half-truth of temptation. Sin may reveal something, but it also wounds the person who sees it.",
+      "\"She Took Of The Fruit Thereof\"\nThe fall moves from listening, to looking, to taking, to eating. Genesis slows the moment down so we can see sin becoming action.\nTaking is important language in the Bible. Sometimes God gives, and humans receive. But here the human reaches for what God has not given.\nThe act may look small from the outside. It is just fruit. But spiritually, it is a declaration that the creature will no longer live under the Creator's word.\nThis is why sin cannot be measured only by the size of the object involved. It must be measured by the relationship it breaks.",
+      "\"Gave Also Unto Her Husband With Her\"\nAdam is not far away in this scene. The text says he is with her.\nThat means Adam's silence matters. He was given the command first, but he does not guard the garden, speak truth, or protect the relationship from the lie.\nGenesis is not letting Adam off the hook. Sin spreads through passive failure as well as active choice.\nThis phrase teaches that love should not stand quietly while falsehood grows.",
+      "\"And He Did Eat\"\nAdam personally eats the fruit. He is not only present near the sin; he joins it.\nThat matters because the Bible does not treat Adam as innocent just because Eve ate first. He receives what was forbidden and steps across the same boundary.\nEve ate. Adam ate. Both disobeyed.\nThis phrase deserves attention because sin becomes shared rebellion here. The man and woman who were meant to walk together in trust now stand together in disobedience.",
+      "\"The Eyes Of Them Both Were Opened\"\nThe serpent promised opened eyes, and in one sense that promise comes true. But the result is not glory, freedom, or wisdom the way they imagined.\nTheir eyes open to a painful new reality. They now know evil by experience, not just by warning.\nInnocence is gone, and the world feels different because they have crossed God's command.\nThis phrase is important because it shows the bitter half-truth of temptation. Sin may reveal something, but it also wounds the person who sees it.",
       "\"They Knew That They Were Naked\"\nIn Genesis 2, nakedness meant openness without shame. After sin, the same nakedness feels threatening.\nNothing about their bodies changed, but their relationship to God, each other, and themselves changed. Innocence has been lost, and self-protection begins.\nThat is why shame is deeper than embarrassment. Shame is the feeling that being fully seen is no longer safe.\nGenesis shows shame entering immediately after sin because sin breaks the trust that made openness possible.",
       "\"They Sewed Fig Leaves Together\"\nAdam and Eve try to cover shame with something they can make from the garden.\nThis is the first human response to guilt: not confession, but covering. They know something is wrong, but they try to manage the exposure themselves.\nThe fig leaves may hide their bodies for a moment, but they cannot heal the relationship with God.\nThis phrase matters because it shows shame turning into self-protection almost immediately.",
-      "\"Made Coverings For Themselves\"\nThe coverings are human-made protection. Adam and Eve are trying to make themselves feel less exposed.\nThis phrase shows the beginning of self-protection after sin. People still do this with excuses, image, performance, denial, humor, or blame.\nThe covering is real, but it is not enough. Later in the chapter, God will make a better covering, showing that human coverings cannot do what divine mercy can.\nThis deserves its own card because it moves from the material, fig leaves, to the deeper action: humans trying to cover themselves without God.",
+      "\"Made Themselves Aprons\"\nThe aprons are human-made protection. Adam and Eve are trying to make themselves feel less exposed.\nThis phrase shows the beginning of self-protection after sin. People still do this with excuses, image, performance, denial, humor, or blame.\nThe covering is real, but it is not enough. Later in the chapter, God will make a better covering, showing that human coverings cannot do what divine mercy can.\nThis deserves its own card because it moves from the material, fig leaves, to the deeper action: humans trying to cover themselves without God.",
     ],
     truths: [
       "Sin can look desirable before it destroys.\nThe fruit appears good, beautiful, and wise. That is part of the danger.\nTemptation rarely begins by showing the wound it will leave. It shows the appetite, the beauty, and the imagined benefit.\nGenesis teaches us to ask not only, \"Do I want this?\" but, \"Where will this desire lead if it is detached from God's word?\"",
@@ -5139,11 +5139,11 @@ const DAY_TWO_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; tru
   "Genesis 3:8-13": {
     phrases: [
       "\"They Hid Themselves\"\nThis is the first hiding in Scripture. Before sin, Adam and Eve were naked and unashamed; after sin, they hide from God.\nHiding is one of shame's first instincts. It says, \"If I can stay unseen, maybe I can stay safe.\"\nBut hiding from God never heals what is broken. It only shows how broken trust has become.\nThis phrase helps explain why people still avoid prayer, truth, and honest confession when guilt is heavy.",
-      "\"Where Are You\"\nGod's question is not about geography. He knows where Adam is.\nThe question is an invitation to step out of hiding and tell the truth. God confronts sin, but He begins by calling the sinner into the open.\nThat makes this moment merciful. Judgment is coming, but God does not begin by abandoning them.\nA Bible-when God asks questions in Scripture, He is often exposing the heart, not looking for information.",
+      "\"Where Art Thou\"\nGod's question is not about geography. He knows where Adam is.\nThe question is an invitation to step out of hiding and tell the truth. God confronts sin, but He begins by calling the sinner into the open.\nThat makes this moment merciful. Judgment is coming, but God does not begin by abandoning them.\nA Bible-when God asks questions in Scripture, He is often exposing the heart, not looking for information.",
       "\"I Was Afraid\"\nFear now enters the human relationship with God. The God who gave Adam breath is now the God Adam avoids.\nThat is one of sin's deepest damages. It makes the presence of God feel threatening instead of life-giving.\nAdam's fear is not because God changed. It is because Adam changed.\nThe rest of Scripture keeps answering this fear by showing God making a way for guilty people to come near again.",
       "\"Who Told You\"\nGod's question presses beneath Adam's fear. Adam's shame did not come from God's original design; it came from listening to another voice.\nThis is important because shame often carries a message: you are exposed, unsafe, unwanted, ruined. God is asking Adam to trace where that message came from.\nThe question helps us see that not every voice in our head is telling the truth.\nGod brings Adam back to the real issue: did you eat from the tree I commanded you not to eat from?",
       "\"The Woman Whom You Gave\"\nAdam blames Eve, but his words also point back toward God. It is as if he says, \"This happened because of the woman You gave me.\"\nThat is how blame works. It avoids honest confession by shifting responsibility outward.\nThe first broken human relationship after sin includes accusation, not protection.\nInstead of saying, \"I sinned,\" Adam tries to spread the blame across Eve and even God.",
-      "\"The Serpent Deceived Me\"\nEve tells part of the truth: she was deceived. But the statement still shifts responsibility away from her own choice.\nGenesis does not deny deception, but it also does not remove human responsibility. Being lied to explains the battle; it does not make disobedience harmless.\nThis phrase gives a balanced view of sin. There is a real tempter, and there is still real human accountability.\nThe Bible is honest enough to hold both together.",
+      "\"The Serpent Beguiled Me\"\nEve tells part of the truth: she was beguiled, meaning deceived or tricked. But the statement still shifts responsibility away from her own choice.\nGenesis does not deny deception, but it also does not remove human responsibility. Being lied to explains the battle; it does not make disobedience harmless.\nThis phrase gives a balanced view of sin. There is a real tempter, and there is still real human accountability.\nThe Bible is honest enough to hold both together.",
     ],
     truths: [
       "God seeks sinners before they seek Him.\nAdam and Eve hide, but God comes looking. That is mercy before judgment.\nThe rescue story begins with God moving toward the guilty, not with guilty people finding their way back.\nThis pattern will keep showing up through the Bible: God calls, seeks, comes near, and makes the first move.",
@@ -5157,11 +5157,11 @@ const DAY_TWO_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; tru
     phrases: [
       "\"Cursed Are You\"\nThe serpent receives a direct curse. Adam and Eve face consequences, but the serpent is addressed as the enemy.\nThis shows that God does not treat deception as a small thing. Evil is judged by the Creator.\nThe curse begins the Bible's long story of conflict between God and the powers that oppose His life.\nThis matters because evil is real, but it is not equal to God. It stands under God's judgment.",
       "\"I Will Put Enmity\"\nEnmity means hostility or deep opposition. God announces that there will be ongoing conflict between the serpent and the woman, and between their offspring.\nThis means the story after Eden will not be neutral. There will be a line of rebellion and a line of promise.\nGenesis is preparing us to watch family lines carefully. Cain and Abel, Seth's line, Noah, Abraham, and eventually Israel all matter because the promise is moving through history.\nThe Bible's rescue story begins here, inside the judgment scene.",
-      "\"Her Offspring\"\nThis phrase becomes one of the most important hopes in Genesis. A child from the woman's line will one day defeat the serpent.\nAt this point, the promise is not fully explained. It is like a seed planted early in the story.\nChristians have long seen Genesis 3:15 as the first gospel promise, pointing forward to Jesus.\nThe important point for any reader is this: God promises rescue before Adam and Eve can repair anything themselves.",
-      "\"He Shall Bruise Your Head\"\nA head wound against the serpent means final defeat. The serpent will wound, but he will not win.\nThe promised offspring will be hurt, but the serpent's head will be crushed. That gives the promise both suffering and victory.\nThis pattern becomes deeply important for the whole Bible: victory over evil comes through a wounded deliverer.\nGenesis gives hope immediately after sin enters, so the curse is not the last word.",
-      "\"Your Desire Will Be For Your Husband\"\nThis phrase is difficult, but in context it describes tension entering the marriage relationship. The partnership of Genesis 2 is now damaged by the fall.\nThe next chapter uses similar language when sin desires Cain, which suggests a pull toward control, conflict, or domination.\nThe point is not that marriage itself is cursed as evil. The point is that sin now distorts relationships that were created for trust and unity.\nGenesis helps us understand why love can be beautiful and painful in the same broken world.",
-      "\"By The Sweat Of Your Face\"\nWork existed before sin, but now work becomes painful and resistant.\nThe ground that was meant to be cultivated will now produce thorns and thistles. Adam will still work, but the work will fight back.\nThis explains why ordinary life can feel frustrating even when the work itself is meaningful.\nThe curse does not make work worthless; it makes work weary.",
-      "\"To Dust You Shall Return\"\nAdam was formed from dust, and now death means he will return to dust.\nThis is the fulfillment of God's warning in Genesis 2. Death is not presented as natural beauty here; it is the consequence of sin.\nThat is why the Bible later calls death an enemy. It is not part of the original peace of Eden.\nThe rest of Scripture moves toward God's answer to dust, death, and the grave.",
+      "\"Her Seed\"\nThis phrase becomes one of the most important hopes in Genesis. A child from the woman's line will one day defeat the serpent.\nAt this point, the promise is not fully explained. It is like a seed planted early in the story.\nChristians have long seen Genesis 3:15 as the first gospel promise, pointing forward to Jesus.\nThe important point for any reader is this: God promises rescue before Adam and Eve can repair anything themselves.",
+      "\"It Shall Bruise Thy Head\"\nA head wound against the serpent means final defeat. The serpent will wound, but he will not win.\nThe promised offspring will be hurt, but the serpent's head will be bruised with a defeating blow. That gives the promise both suffering and victory.\nThis pattern becomes deeply important for the whole Bible: victory over evil comes through a wounded deliverer.\nGenesis gives hope immediately after sin enters, so the curse is not the last word.",
+      "\"Thy Desire Shall Be To Thy Husband\"\nThis phrase is difficult, but in context it describes tension entering the marriage relationship. The partnership of Genesis 2 is now damaged by the fall.\nThe next chapter uses similar language when sin desires Cain, which suggests a pull toward control, conflict, or domination.\nThe point is not that marriage itself is cursed as evil. The point is that sin now distorts relationships that were created for trust and unity.\nGenesis helps us understand why love can be beautiful and painful in the same broken world.",
+      "\"In The Sweat Of Thy Face\"\nWork existed before sin, but now work becomes painful and resistant.\nThe ground that was meant to be cultivated will now produce thorns and thistles. Adam will still work, but the work will fight back.\nThis explains why ordinary life can feel frustrating even when the work itself is meaningful.\nThe curse does not make work worthless; it makes work weary.",
+      "\"Unto Dust Shalt Thou Return\"\nAdam was formed from dust, and now death means he will return to dust.\nThis is the fulfillment of God's warning in Genesis 2. Death is not presented as natural beauty here; it is the consequence of sin.\nThat is why the Bible later calls death an enemy. It is not part of the original peace of Eden.\nThe rest of Scripture moves toward God's answer to dust, death, and the grave.",
     ],
     truths: [
       "God judges evil.\nThe serpent is not allowed to deceive without answer. God names evil and curses it.\nThis matters because injustice is never invisible to God. He does not shrug at the voice that pulled humanity into death.\nJudgment may sound severe, but a God who never judges evil would not be good.",
@@ -5174,7 +5174,7 @@ const DAY_TWO_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; tru
   "Genesis 3:20-24": {
     phrases: [
       "\"Eve\"\nAdam names his wife Eve because she will be the mother of all living. That is a surprising note of hope after judgment.\nDeath has entered, but life will continue. The human story does not end at the tree.\nThis name quietly connects back to the promise that offspring from the woman will matter in the battle against the serpent.\nEven outside Eden, Adam is speaking a life-word over the woman through whom future generations will come.",
-      "\"Garments Of Skin\"\nAdam and Eve made fig leaves, but God provides a stronger covering.\nThe text does not explain every detail, but it clearly shows God caring for guilty people. They are judged, but they are not left naked in shame.\nMany readers also notice that skin implies the death of an animal, which introduces the idea that covering shame is costly.\nThis becomes a pattern in Scripture: human coverings are not enough, and God provides what shame cannot make for itself.",
+      "\"Coats Of Skins\"\nAdam and Eve made fig leaves, but God provides a stronger covering.\nThe text does not explain every detail, but it clearly shows God caring for guilty people. They are judged, but they are not left naked in shame.\nMany readers also notice that skin implies the death of an animal, which introduces the idea that covering shame is costly.\nThis becomes a pattern in Scripture: human coverings are not enough, and God provides what shame cannot make for itself.",
       "\"Like One Of Us\"\nGod says the man has become like one of us in knowing good and evil. This does not mean humanity became divine.\nIt means they have entered moral knowledge through rebellion instead of trust. They now know evil by experience, and that knowledge brings ruin rather than freedom.\nThe phrase also reminds us that the problem was never wisdom itself. The problem was grasping wisdom apart from God.\nHumanity has gained a terrible kind of knowledge: the knowledge of evil from the inside.",
       "\"Tree Of Life\"\nThe tree of life represents ongoing life with God. After sin, access to it is blocked.\nThat is judgment, but it is also mercy. Living forever in a corrupted state would not be rescue.\nThe Bible will bring the tree of life back in Revelation, when God restores what sin broke.\nSo the guarded tree creates longing. The story now moves toward the day when access to life is opened again by God's redemption.",
       "\"Cherubim And A Flaming Sword\"\nCherubim are heavenly guardians associated later with God's holy presence, including the tabernacle and temple imagery.\nHere they guard the way to the tree of life. The flaming sword shows that humans cannot stroll back into Eden by effort, regret, or force.\nThis is a holy barrier, not just a locked gate. Sin has created a real separation between humanity and the fullness of God's life.\nThe rest of the Bible asks the big question: who can open the way back?",
@@ -10856,14 +10856,14 @@ function applyPersonalGenesisThreeStudySections() {
       icon: "🐍",
       phrases: [
         [
-          "🐍 The Serpent Was More Subtle",
+          "🐍 The Serpent Was More Subtil",
           `This is the first time a new voice enters the story.
 
 Genesis does not begin by telling us everything about the serpent.
 
 It shows us how he works.
 
-The word subtle means crafty, clever, or shrewd.
+The word subtil means crafty, clever, or shrewd.
 
 That does not mean wise in a godly way.
 
@@ -11188,7 +11188,7 @@ The man who was given the command also disobeys.
 The relationship that was meant for partnership now joins together in rebellion.`,
         ],
         [
-          "He Ate It Too",
+          "And He Did Eat",
           `Adam personally eats the fruit.
 
 He is not only near the sin.
@@ -11212,7 +11212,7 @@ This phrase matters because the fall becomes shared rebellion.
 The man and woman who were meant to walk together in trust now stand together in disobedience.`,
         ],
         [
-          "Their Eyes Were Opened",
+          "The Eyes Of Them Both Were Opened",
           `The serpent promised opened eyes.
 
 In one sense, that promise comes true.
@@ -11278,8 +11278,8 @@ This phrase matters because people still try to cover shame with whatever they c
 Genesis will show that God must provide a better covering.`,
         ],
         [
-          "Made Coverings For Themselves",
-          `The coverings are human-made protection.
+          "Made Themselves Aprons",
+          `The aprons are human-made protection.
 
 Adam and Eve are trying to feel less exposed.
 
@@ -11375,7 +11375,7 @@ People hide through silence, blame, pretending, busyness, or distance.
 Genesis shows that hiding began in the garden.`,
         ],
         [
-          "❓ Where Are You",
+          "❓ Where Art Thou",
           `God asks Adam where he is.
 
 This does not mean God lost him.
@@ -11386,7 +11386,7 @@ The question is meant to draw Adam out.
 
 It gives Adam a chance to answer, confess, and face what has happened.
 
-❓ Where are you?
+❓ Where art thou?
 🫣 Why are you hiding?
 😨 What has changed?
 
@@ -11442,14 +11442,16 @@ Instead of confessing, Adam explains.
 Instead of owning his choice, he redirects the blame.`,
         ],
         [
-          "🐍 The Serpent Deceived Me",
+          "🐍 The Serpent Beguiled Me",
           `Eve also shifts blame.
 
-She says the serpent deceived her.
+She says the serpent beguiled her.
 
 That is true, but it is not the whole truth.
 
-The serpent deceived her, but she still ate.
+Beguiled means deceived, tricked, or led astray.
+
+The serpent beguiled her, but she still ate.
 
 Deception matters.
 
@@ -11497,7 +11499,7 @@ This phrase matters because God takes deception seriously.
 The serpent may have sounded clever, but God exposes him as cursed.`,
         ],
         [
-          "🪨 You Shall Go On Your Belly",
+          "🪨 Upon Thy Belly Shalt Thou Go",
           `This image shows humiliation.
 
 The serpent is brought low.
@@ -11519,7 +11521,7 @@ This phrase matters because the serpent's rebellion does not lead to true glory.
 He promised elevation, but receives humiliation.`,
         ],
         [
-          "⚔️ Enmity Between You And The Woman",
+          "⚔️ Enmity Between Thee And The Woman",
           `Enmity means hostility or conflict.
 
 God says there will be ongoing conflict between the serpent and the woman.
@@ -11539,7 +11541,7 @@ The story will not end with humanity simply joining the serpent.
 God promises conflict against evil.`,
         ],
         [
-          "👶 Your Offspring And Her Offspring",
+          "👶 Thy Seed And Her Seed",
           `Seed means offspring or descendants.
 
 The Bible now begins making us watch family lines.
@@ -11559,7 +11561,7 @@ This phrase matters because Genesis will keep tracing seed, family, promise, and
 The rest of the Bible grows out of this first promise.`,
         ],
         [
-          "🦶 He Will Bruise Your Head",
+          "🦶 It Shall Bruise Thy Head",
           `This is one of the first great promises of the Bible.
 
 The offspring of the woman will crush the serpent's head.
@@ -11579,7 +11581,7 @@ Christians have long seen this as the first promise pointing forward to Jesus.
 The Savior will come from humanity and defeat the deceiver.`,
         ],
         [
-          "🐍 You Will Bruise His Heel",
+          "🐍 Thou Shalt Bruise His Heel",
           `The serpent will wound the promised offspring.
 
 A heel wound hurts, but it is not the same as a crushed head.
@@ -11608,7 +11610,7 @@ At the cross, Jesus is wounded, but through His death and resurrection He defeat
       icon: "💔",
       phrases: [
         [
-          "🤰 I Will Greatly Multiply Your Pain",
+          "🤰 I Will Greatly Multiply Thy Sorrow",
           `God speaks to the woman about pain and sorrow.
 
 Sin has entered the world, and now the places of blessing will be touched by pain.
@@ -11626,7 +11628,7 @@ This phrase matters because sin does not stay abstract.
 It reaches bodies, families, relationships, and daily life.`,
         ],
         [
-          "👶 You Will Bear Children In Pain",
+          "👶 In Sorrow Thou Shalt Bring Forth Children",
           `Childbirth is still connected to life and blessing.
 
 But now it is also connected to pain.
@@ -11650,7 +11652,7 @@ This phrase matters because the promised seed will still come through childbirth
 Even in pain, God's promise keeps moving.`,
         ],
         [
-          "💔 Your Desire Will Be For Your Husband",
+          "💔 Thy Desire Shall Be To Thy Husband",
           `This phrase is difficult, but it points to tension entering the marriage relationship.
 
 Genesis 2 showed unity, joy, and no shame.
@@ -11694,7 +11696,7 @@ It touches the world people live in.
 The created order now bears the weight of human rebellion.`,
         ],
         [
-          "😓 By The Sweat Of Your Face",
+          "😓 In The Sweat Of Thy Face",
           `Work existed before sin, but sweat and painful toil enter after sin.
 
 Adam was placed in the garden to work and keep it.
@@ -11715,7 +11717,7 @@ This phrase matters because it explains why work can feel both purposeful and pa
 We were made to work, but we now work in a world affected by the fall.`,
         ],
         [
-          "🪦 You Are Dust",
+          "🪦 Dust Thou Art",
           `God reminds Adam where he came from.
 
 Adam was formed from dust in Genesis 2.

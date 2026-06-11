@@ -206,11 +206,11 @@ const MANUAL_TRIVIA_BOOKS: Record<string, TriviaBookPack> = {
         ),
         createQuestion(
           "genesis-3-3",
-          "What did Adam and Eve use to make coverings for themselves?",
-          ["Animal skins", "Branches", "Fig leaves", "Grass"],
+          "What did Adam and Eve make themselves after sewing fig leaves together?",
+          ["Coats of skins", "Branches", "Aprons", "Garments"],
           "C",
           "Genesis 3:7",
-          "They sewed fig leaves together after realizing they were naked.",
+          "They sewed fig leaves together and made themselves aprons.",
         ),
         createQuestion(
           "genesis-3-4",

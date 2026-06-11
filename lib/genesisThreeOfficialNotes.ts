@@ -30,11 +30,11 @@ This chapter is not only about Adam and Eve eating forbidden fruit. It is about 
 
 # The Serpent Twists God's Word
 
-### 🐍 Temptation Begins With A Question
+### 🐍 Yea, Hath God Said
 
 The serpent begins by questioning what God said.
 
-He does not start with a loud attack. He starts with doubt. "Did God really say?" That is still one of temptation's oldest patterns.
+He does not start with a loud attack. He starts with doubt. "Yea, hath God said?" means he is pushing Eve to question whether God's word can be trusted.
 
 Temptation often begins by making God seem less trustworthy than He is.
 
@@ -48,7 +48,7 @@ That matters because sin often grows when we forget God's generosity and focus o
 
 ### 🍎 The Lie Makes Disobedience Look Like Wisdom
 
-The serpent tells them they will not surely die.
+The serpent tells them, "Ye shall not surely die."
 
 That is a direct contradiction of God's warning. Then he suggests that eating will open their eyes and make them like God.
 

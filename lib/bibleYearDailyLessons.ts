@@ -170,7 +170,7 @@ export const GENESIS_DAY_TWO_FALL_LESSON: BibleYearDailyLesson = {
       heading: "God Comes Looking",
       verseBlock: { reference: "Genesis 3:8-13", chapter: 3, startVerse: 8, endVerse: 13 },
       teaching: [
-        "God asks, Where are you?, not because He is confused, but because He is drawing Adam out of hiding.",
+        "God asks, Where art thou?, not because He is confused, but because He is drawing Adam out of hiding.",
         "That question is mercy before judgment.",
         "Adam answers with fear, and the God who gave him life is now the God he hides from.",
         "Then blame begins: Adam points to Eve and even hints at blaming God, while Eve points to the serpent.",
@@ -184,7 +184,7 @@ export const GENESIS_DAY_TWO_FALL_LESSON: BibleYearDailyLesson = {
       teaching: [
         "God judges the serpent first, but even that judgment carries hope.",
         "Genesis 3:15 promises conflict between the serpent and the woman, and between their offspring.",
-        "The promised seed will be wounded, but the serpent's head will be crushed.",
+        "The promised seed will be wounded, but the serpent's head will be bruised with a defeating blow.",
         "Before Adam and Eve leave Eden, God is already speaking rescue into the story.",
         "This is the Bible's first major promise that evil will not have the final word.",
         "Christians see this promise pointing forward to Jesus, who is wounded yet defeats sin, death, and the enemy.",
