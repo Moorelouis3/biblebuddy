@@ -4056,7 +4056,7 @@ export default function DashboardJourneyExperience({
           Math.min(reportedCurrentDayNumber, builtBibleYearDays[builtBibleYearDays.length - 1]?.dayNumber ?? reportedCurrentDayNumber),
         )
       : 0;
-    const nextBibleYearDayNumber = Math.max(firstIncompleteDay?.dayNumber || 0, boundedReportedDayNumber || 0);
+    const nextBibleYearDayNumber = firstIncompleteDay?.dayNumber || boundedReportedDayNumber || 0;
     const nextBibleYearDay =
       (nextBibleYearDayNumber
         ? builtBibleYearDays.find((day) => day.dayNumber === nextBibleYearDayNumber)
@@ -9027,10 +9027,10 @@ Before we understand redemption, we need to understand what God made humanity fo
     const minDay = days[0]?.dayNumber ?? 1;
     const maxDay = days[days.length - 1]?.dayNumber ?? reportedCurrentDayNumber;
     const nextIncompleteDayNumber = nextDay?.dayNumber || minDay;
-    const boundedReportedDayNumber = Number.isFinite(reportedCurrentDayNumber)
+    if (nextIncompleteDayNumber) return Math.max(minDay, Math.min(nextIncompleteDayNumber, maxDay));
+    return Number.isFinite(reportedCurrentDayNumber)
       ? Math.max(minDay, Math.min(reportedCurrentDayNumber, maxDay))
       : minDay;
-    return Math.max(boundedReportedDayNumber, nextIncompleteDayNumber);
   }
 
   function freeUserCanOpenBibleYearDayTasks(day: GenesisBibleYearDay) {
