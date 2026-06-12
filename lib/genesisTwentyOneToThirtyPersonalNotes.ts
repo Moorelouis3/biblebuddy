@@ -2945,10 +2945,83 @@ function deepenDay9Phrase(section: PersonalGenesisPhraseSectionInput, entry: [st
   return [heading, note([...lines, ...texture.slice(0, needed)])];
 }
 
+function cleanDay9PhraseTitle(title: string) {
+  return title.replace(/^[^A-Za-z0-9']+\s*/, "").trim();
+}
+
+function renameDay9WeakPhraseTitle(section: PersonalGenesisPhraseSectionInput, title: string) {
+  const cleanTitle = cleanDay9PhraseTitle(title);
+  const key = `${section.reference}|${cleanTitle}`;
+
+  const replacements: Record<string, string> = {
+    "Genesis 21:8-10|Mocking": "The Son Of Hagar The Egyptian, Which She Had Born Unto Abraham, Mocking",
+    "Genesis 21:25-31|Beer-sheba": "Wherefore He Called That Place Beer-sheba",
+    "Genesis 22:13-14|Jehovah-jireh": "Called The Name Of That Place Jehovah-jireh",
+    "Genesis 22:19|Beersheba": "Abraham Dwelt At Beer-sheba",
+    "Genesis 22:20-24|Nahor": "Milcah, She Hath Also Born Children Unto Thy Brother Nahor",
+    "Genesis 22:20-24|Bethuel": "Bethuel Begat Rebekah",
+    "Genesis 24:15-16|Bethuel": "Daughter Of Bethuel The Son Of Milcah",
+    "Genesis 24:50-53|Raiment": "Jewels Of Silver, And Jewels Of Gold, And Raiment",
+  };
+
+  return replacements[key] ?? cleanTitle;
+}
+
+function normalizeDay9Phrase(section: PersonalGenesisPhraseSectionInput, entry: [string, string]): [string, string] {
+  const [heading, content] = deepenDay9Phrase(section, entry);
+  const title = renameDay9WeakPhraseTitle(section, heading);
+  return [titleHasDay9Emoji(title) ? title : `${getDay9PhraseEmoji(title)} ${title}`, content];
+}
+
+function completeDay9MinimumPhraseDensity(section: PersonalGenesisPhraseSectionInput): PersonalGenesisPhraseSectionInput {
+  if (section.reference !== "Genesis 22:19" || section.phrases.length >= 4) {
+    return section;
+  }
+
+  return {
+    ...section,
+    phrases: [
+      ...section.phrases,
+      phrase("🚶 Rose Up And Went Together To Beer-sheba", [
+        "Abraham and the young men leave the mountain and return together.",
+        "The test is over, but Abraham still has to walk back into ordinary life.",
+        "Beer-sheba becomes the place where the family continues after surrender, provision, and worship.",
+        "The promise has survived the altar because the LORD provided.",
+        "Genesis moves from the mountain back to the road.",
+        "Faith must keep walking after the crisis has passed.",
+      ]),
+    ],
+  };
+}
+
+function titleHasDay9Emoji(title: string) {
+  return /^[^A-Za-z0-9']/.test(title.trim());
+}
+
+function getDay9PhraseEmoji(title: string) {
+  const lower = title.toLowerCase();
+  if (lower.includes("lord") || lower.includes("god") || lower.includes("angel")) return "🙌";
+  if (lower.includes("bless") || lower.includes("covenant") || lower.includes("oath") || lower.includes("sworn")) return "📜";
+  if (lower.includes("isaac") || lower.includes("son") || lower.includes("child") || lower.includes("seed") || lower.includes("born")) return "👶";
+  if (lower.includes("sarah") || lower.includes("rebekah") || lower.includes("hagar")) return "👩";
+  if (lower.includes("abraham") || lower.includes("servant") || lower.includes("esau") || lower.includes("ishmael")) return "👤";
+  if (lower.includes("water") || lower.includes("well") || lower.includes("drink") || lower.includes("camels")) return "💧";
+  if (lower.includes("land") || lower.includes("field") || lower.includes("cave") || lower.includes("moriah") || lower.includes("beersheba")) return "📍";
+  if (lower.includes("altar") || lower.includes("offering") || lower.includes("ram") || lower.includes("lamb")) return "🐏";
+  if (lower.includes("died") || lower.includes("buried") || lower.includes("bury") || lower.includes("dead")) return "🪦";
+  if (lower.includes("laughed") || lower.includes("laugh")) return "😂";
+  if (lower.includes("saw") || lower.includes("eyes") || lower.includes("look")) return "👀";
+  if (lower.includes("heard") || lower.includes("hearken")) return "👂";
+  if (lower.includes("went") || lower.includes("go") || lower.includes("journey") || lower.includes("came")) return "🚶";
+  if (lower.includes("wife") || lower.includes("marry") || lower.includes("veil")) return "💍";
+  return "🔎";
+}
+
 const DAY_9_FINAL_SECTIONS = DAY_9_RESTRUCTURED_SECTIONS.map((section) => ({
   ...section,
-  phrases: section.phrases.map((entry) => deepenDay9Phrase(section, entry)),
-}));
+  phrases: section.phrases.map((entry) => normalizeDay9Phrase(section, entry)),
+})).map(completeDay9MinimumPhraseDensity);
+
 
 function makeGenesis25To30BeginnerPhrase(title: string, section: PersonalGenesisPhraseSectionInput, focus: string): [string, string] {
   return phrase(title, [
@@ -3460,10 +3533,35 @@ const DAY_10_REAL_PHRASE_ADDITIONS: Record<string, Array<[string, string]>> = {
 
 function deepenDay10PhraseCards(section: PersonalGenesisPhraseSectionInput): PersonalGenesisPhraseSectionInput {
   const additions = DAY_10_REAL_PHRASE_ADDITIONS[section.reference] ?? [];
+  const withAdditions = [...section.phrases, ...additions];
   return {
     ...section,
-    phrases: [...section.phrases, ...additions],
+    phrases: withAdditions.map((entry) => normalizeDay10Phrase(section, entry)),
   };
+}
+
+function cleanDay10PhraseTitle(title: string) {
+  return title.replace(/^[^A-Za-z0-9']+\s*/, "").trim();
+}
+
+function renameDay10WeakPhraseTitle(section: PersonalGenesisPhraseSectionInput, title: string) {
+  const cleanTitle = cleanDay10PhraseTitle(title);
+  const key = `${section.reference}|${cleanTitle}`;
+
+  const replacements: Record<string, string> = {
+    "Genesis 25:1-6|Eastward": "Sent Them Away From Isaac His Son, Eastward",
+    "Genesis 25:1-6|Keturah": "His Wife's Name Was Keturah",
+    "Genesis 26:17-22|Esek": "He Called The Name Of The Well Esek",
+    "Genesis 26:17-22|Sitnah": "He Called The Name Of It Sitnah",
+    "Genesis 26:17-22|Rehoboth": "He Called The Name Of It Rehoboth",
+  };
+
+  return replacements[key] ?? cleanTitle;
+}
+
+function normalizeDay10Phrase(section: PersonalGenesisPhraseSectionInput, entry: [string, string]): [string, string] {
+  const [heading, content] = entry;
+  return [renameDay10WeakPhraseTitle(section, heading), content];
 }
 
 const DAY_11_FINAL_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
@@ -3710,10 +3808,35 @@ const DAY_11_REAL_PHRASE_ADDITIONS: Record<string, Array<[string, string]>> = {
 
 function deepenDay11PhraseCards(section: PersonalGenesisPhraseSectionInput): PersonalGenesisPhraseSectionInput {
   const additions = DAY_11_REAL_PHRASE_ADDITIONS[section.reference] ?? [];
+  const withAdditions = [...section.phrases, ...additions];
   return {
     ...section,
-    phrases: [...section.phrases, ...additions],
+    phrases: withAdditions.map((entry) => normalizeDay11Phrase(section, entry)),
   };
+}
+
+function cleanDay11PhraseTitle(title: string) {
+  return title.replace(/^[^A-Za-z0-9']+\s*/, "").trim();
+}
+
+function renameDay11WeakPhraseTitle(section: PersonalGenesisPhraseSectionInput, title: string) {
+  const cleanTitle = cleanDay11PhraseTitle(title);
+  const key = `${section.reference}|${cleanTitle}`;
+
+  const replacements: Record<string, string> = {
+    "Genesis 28:1-5|Arise": "Arise, Go To Padan-aram",
+    "Genesis 29:31-35|Reuben": "She Called His Name Reuben",
+    "Genesis 29:31-35|Simeon": "She Called His Name Simeon",
+    "Genesis 29:31-35|Levi": "Therefore Was His Name Called Levi",
+    "Genesis 29:31-35|Judah": "She Called His Name Judah",
+  };
+
+  return replacements[key] ?? cleanTitle;
+}
+
+function normalizeDay11Phrase(section: PersonalGenesisPhraseSectionInput, entry: [string, string]): [string, string] {
+  const [heading, content] = entry;
+  return [renameDay11WeakPhraseTitle(section, heading), content];
 }
 
 const DAY_12_GENESIS_30_FINAL_SECTIONS: PersonalGenesisPhraseSectionInput[] = [

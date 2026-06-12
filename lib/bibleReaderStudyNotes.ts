@@ -13147,7 +13147,7 @@ That helps later readers understand that the nations have history before Israel 
 📜 Bible geography begins early`,
       ],
       [
-        "🌊 Javan",
+        "?? The Sons Of Javan",
         `Javan is often connected with Greek or coastal peoples in the wider Mediterranean world.
 
 That matters because Genesis 10 is not only about nearby neighbors.
@@ -13353,14 +13353,14 @@ The promised land story will later happen around peoples and cities like these.
 🗺️ Land story prepared`,
       ],
       [
-        "🏠 Heth",
+        "?? Canaan Begat Sidon His Firstborn, And Heth",
         `Heth is connected with the Hittites.
 
 That name will return later in Genesis, especially around Abraham's purchase of a burial place.
 
 The Bible often introduces names before their importance becomes clear.
 
-🏠 Heth
+?? Canaan Begat Sidon His Firstborn, And Heth
 📜 Hittite connection
 🪦 Abraham story later`,
       ],
@@ -13556,26 +13556,26 @@ That matters because God sees the whole family tree.
 📜 No family line is invisible`,
       ],
       [
-        "🏺 Sheba",
+        "?? Obal, And Abimael, And Sheba",
         `Sheba appears here as one of Joktan's descendants.
 
 The name will echo later in biblical geography and trade-world language.
 
 Genesis is building a map that later stories can stand on.
 
-🏺 Sheba
+?? Obal, And Abimael, And Sheba
 🛤️ Trade-world echoes
 📜 Future name to recognize`,
       ],
       [
-        "💰 Ophir",
+        "?? Ophir, And Havilah, And Jobab",
         `Ophir later becomes associated with valuable gold.
 
 That makes the name more than a random genealogy detail.
 
 Genesis is introducing places and peoples that later biblical readers will hear again.
 
-💰 Ophir
+?? Ophir, And Havilah, And Jobab
 📍 Distant wealth
 📜 Later Bible memory`,
       ],

@@ -5304,7 +5304,10 @@ const DAY_5_QUALITY_REVIEW_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
       phrase("The Princes Also Of Pharaoh Saw Her", [
         "Pharaoh's officials notice Sarai and bring word to the palace.",
         "This moves the problem from ordinary Egyptians to royal power.",
-        "Abram and Sarai are now caught in a system Abram cannot control.",
+        "Abram's fear has now entered a system much stronger than his own household.",
+        "The phrase matters because it shows how quickly deception can grow beyond the person who started it.",
+        "Sarai is not simply in an awkward conversation; she is being pulled toward the throne of Egypt.",
+        "A beginner should notice that Abram tried to manage danger with a half-truth, but the half-truth placed the promise family in deeper danger.",
       ]),
       phrase("Commended Her Before Pharaoh", [
         "To commend her means they praised or recommended her to Pharaoh.",
@@ -5401,17 +5404,26 @@ const DAY_5_QUALITY_REVIEW_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
       phrase("Abram Went Up Out Of Egypt", [
         "Abram leaves Egypt after God's intervention protected Sarai.",
         "The phrase marks a return from the place where fear led him into deception.",
-        "He is still the promise man, but he is also a man who needed rescue.",
+        "He went down into Egypt because of famine, but he comes up out of Egypt because God preserved the promise family.",
+        "This matters because Abram is not leaving as a hero who solved the problem.",
+        "He is leaving as a man who needed rescue from the consequences of his own fear.",
+        "Genesis is teaching that God's faithfulness is stronger than Abram's failure, but Abram still has to walk back from the place where his fear took him.",
       ]),
       phrase("He, And His Wife, And All That He Had", [
-        "Sarai leaves with Abram.",
-        "That matters because the promise family is intact.",
-        "Abram also leaves with possessions, but the most important mercy is that Sarai has been restored.",
+        "Sarai leaves Egypt with Abram.",
+        "That matters because the promise family is intact after a dangerous failure.",
+        "Abram also leaves with possessions, but the most important mercy is that Sarai has been restored to him.",
+        "The promise of descendants cannot move forward if Sarai is lost in Pharaoh's house.",
+        "This phrase helps the reader see that God protected the covenant future, not merely Abram's comfort.",
+        "The family comes out together because the LORD guarded what Abram's fear endangered.",
       ]),
       phrase("Lot With Him", [
-        "Lot continues traveling with Abram.",
+        "Lot continues traveling with Abram after Egypt.",
         "His presence keeps the family complexity in the story.",
-        "The next conflict will grow from the size of their households and herds.",
+        "He is not just a background relative; the next conflict will grow around the size of their households and herds.",
+        "This phrase matters because Genesis is preparing the reader for the separation between Abram and Lot.",
+        "The promise line will continue through Abram, but Lot's choices will still affect the story deeply.",
+        "A small travel detail becomes important because the people who walk with Abram can bring both blessing and tension into the journey.",
       ]),
       phrase("Abram Was Very Rich In Cattle, In Silver, And In Gold", [
         "Abram now has great wealth.",
@@ -5428,7 +5440,10 @@ const DAY_5_QUALITY_REVIEW_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
       phrase("Unto The Place Of The Altar", [
         "Abram returns to the altar he had made before.",
         "That is important because worship is where his journey is re-centered.",
-        "After Egypt, the text brings Abram back to the place of calling on the LORD.",
+        "Egypt exposed fear, deception, and danger, but the altar brings Abram back to the LORD.",
+        "The phrase matters because Genesis does not move Abram forward by pretending nothing happened.",
+        "He comes back to the place where he had called on God's name.",
+        "For a reader, this shows that failure should not make a person run from worship; it should draw them back to the God who restores and leads.",
       ]),
       phrase("There Abram Called On The Name Of The LORD", [
         "Abram calls on the LORD again.",
@@ -5628,7 +5643,10 @@ const DAY_5_QUALITY_REVIEW_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
       phrase("Abram Removed His Tent", [
         "Abram moves again in response to the promise.",
         "He is still a pilgrim, living in tents rather than settled possession.",
-        "The promise is sure, but the lifestyle is still one of waiting and trust.",
+        "The promise is sure, but his lifestyle is still one of waiting and trust.",
+        "This phrase matters because Abram does not yet own the land in the way his descendants will later possess it.",
+        "He lives by faith in the land God has promised, moving his tent while God speaks future over him.",
+        "A beginner should see the tension: God's word is firm, but Abram's daily life still requires patience, movement, worship, and trust.",
       ]),
       phrase("Built There An Altar Unto The LORD", [
         "Abram ends the scene with worship.",
@@ -8243,11 +8261,46 @@ const DAY_8_QUALITY_REVIEW_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
   },
 ];
 
+function getGenesisElevenToTwentyPhraseEmoji(title: string) {
+  const lower = title.toLowerCase();
+  if (lower.includes("lord") || lower.includes("god") || lower.includes("almighty")) return "🙌";
+  if (lower.includes("covenant") || lower.includes("promise") || lower.includes("bless")) return "📜";
+  if (lower.includes("land") || lower.includes("canaan") || lower.includes("plain") || lower.includes("mountain")) return "📍";
+  if (lower.includes("altar") || lower.includes("called upon")) return "⛪";
+  if (lower.includes("seed") || lower.includes("son") || lower.includes("child") || lower.includes("born") || lower.includes("bare")) return "👶";
+  if (lower.includes("name") || lower.includes("called")) return "🏷️";
+  if (lower.includes("king") || lower.includes("pharaoh") || lower.includes("princes")) return "👑";
+  if (lower.includes("war") || lower.includes("battle") || lower.includes("smote") || lower.includes("sword")) return "⚔️";
+  if (lower.includes("famine") || lower.includes("bread") || lower.includes("food") || lower.includes("water") || lower.includes("well") || lower.includes("fountain")) return "💧";
+  if (lower.includes("went") || lower.includes("departed") || lower.includes("journey") || lower.includes("return") || lower.includes("escape")) return "🚶";
+  if (lower.includes("sodom") || lower.includes("gomorrah") || lower.includes("fire") || lower.includes("brimstone") || lower.includes("destroy")) return "🔥";
+  if (lower.includes("fear") || lower.includes("afraid") || lower.includes("wrong") || lower.includes("sin") || lower.includes("wicked")) return "⚠️";
+  if (lower.includes("saw") || lower.includes("eyes") || lower.includes("looked")) return "👀";
+  if (lower.includes("heard") || lower.includes("hearken")) return "👂";
+  if (lower.includes("wife") || lower.includes("sarah") || lower.includes("sarai") || lower.includes("hagar")) return "👩";
+  if (lower.includes("abraham") || lower.includes("abram") || lower.includes("lot")) return "👤";
+  return "🔎";
+}
+
+function titleHasEmoji(title: string) {
+  return /^[^A-Za-z0-9']/.test(title.trim());
+}
+
+function addGenesisElevenToTwentyPhraseTitleEmojis(sections: PersonalGenesisPhraseSectionInput[]) {
+  return sections.map((section) => ({
+    ...section,
+    phrases: section.phrases.map(([title, body]): [string, string] => [
+      titleHasEmoji(title) ? title : `${getGenesisElevenToTwentyPhraseEmoji(title)} ${title}`,
+      body,
+    ]),
+  }));
+}
+
 export const GENESIS_11_20_PERSONAL_SECTIONS = [
-  ...DAY_5_QUALITY_REVIEW_SECTIONS,
-  ...DAY_6_QUALITY_REVIEW_SECTIONS,
-  ...DAY_7_QUALITY_REVIEW_SECTIONS,
-  ...DAY_8_QUALITY_REVIEW_SECTIONS,
+  ...addGenesisElevenToTwentyPhraseTitleEmojis(DAY_5_QUALITY_REVIEW_SECTIONS),
+  ...addGenesisElevenToTwentyPhraseTitleEmojis(DAY_6_QUALITY_REVIEW_SECTIONS),
+  ...addGenesisElevenToTwentyPhraseTitleEmojis(DAY_7_QUALITY_REVIEW_SECTIONS),
+  ...addGenesisElevenToTwentyPhraseTitleEmojis(DAY_8_QUALITY_REVIEW_SECTIONS),
   ...addGenesisElevenTwelveSectionTexture(GENESIS_15_20_PERSONAL_REWRITE_SECTIONS).filter((section) => section.chapter > 20),
   ...expandSplitSections(RAW_GENESIS_11_20_PERSONAL_SECTIONS).filter(
     (section) => section.chapter < 11 || section.chapter > 20,
