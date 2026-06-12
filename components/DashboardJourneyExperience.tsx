@@ -8968,7 +8968,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     4: "What kind of new beginning are you asking God to help you walk into?",
     5: "Where is God asking you to obey, trust His promise, or stop grasping for control?",
     6: "Where do you need courage, discernment, or renewed trust in God's promise?",
-    7: "Where are you tempted to force what God has promised, and where do you need to receive the identity God gives?",
+    7: "Where are you tempted to force what God has promised but may not have delivered yet?",
     8: "Where do you need to take God's mercy, holiness, and warnings more seriously today?",
     9: "What part of Abraham's legacy challenges or encourages you most: waiting, testing, grief, guidance, or passing faith forward?",
     10: "Where do you see fear, favoritism, or deception causing damage in Genesis 26-27?",
