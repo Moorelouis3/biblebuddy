@@ -12633,6 +12633,38 @@ The fall brought pain into relationships, but it did not erase the goodness of w
 🪞 Both created by God`,
         ],
         [
+          "🙌 And Blessed Them",
+          `God's blessing is repeated before the genealogy begins.
+
+That matters because Genesis 5 is about to be full of death.
+
+Before the chapter says people die, it reminds us that human life began under God's blessing.
+
+Sin has damaged the world, but it has not erased the truth that life is a gift from God.
+
+🙌 Humanity is blessed
+🌱 Life continues
+⚰️ Death is real, but it is not the first word`,
+        ],
+        [
+          "🏷️ Called Their Name Adam",
+          `The text says God called their name Adam, or Man.
+
+This shows humanity being spoken of together.
+
+Male and female share the human calling before God.
+
+The family record is not only about one man named Adam.
+
+It is about the human family that came from the people God created.
+
+This helps beginners see why Genesis moves from creation into genealogy.
+
+🏷️ One human family
+🪞 Created by God
+🌍 The story of mankind continues`,
+        ],
+        [
           "👶 In His Own Likeness, After His Image",
           `Adam has a son who carries a family resemblance.
 
@@ -12651,6 +12683,60 @@ Life continues by God's mercy, but death now follows every generation.
 👶 Family continues
 🪞 Likeness continues
 💔 Brokenness continues`,
+        ],
+        [
+          "📛 Called His Name Seth",
+          `Adam names his son Seth.
+
+This connects Genesis 5 back to Genesis 4, where Seth was born after Abel was killed.
+
+The family line does not end with murder.
+
+God allows life to continue through Seth.
+
+That matters because Genesis is teaching readers to watch family lines carefully.
+
+The promise story is moving through real births, real names, and real generations.
+
+📛 A son is named
+🌱 Hope continues
+🧬 The line is preserved`,
+        ],
+        [
+          "👨‍👩‍👧 Sons And Daughters",
+          `Genesis names Seth because he is the line the story will follow.
+
+But Adam also has sons and daughters.
+
+That reminds us the world is filling with more people than the main genealogy names.
+
+The Bible narrows the camera without saying the unnamed people do not matter.
+
+For a beginner, this helps answer the question, "Where did the other people come from?"
+
+Genesis is showing a growing human family.
+
+👨‍👩‍👧 More children
+🌍 A growing world
+📜 One traced line`,
+        ],
+        [
+          "📅 All The Days That Adam Lived",
+          `This phrase gathers Adam's whole earthly life into one sentence.
+
+Adam lives a very long time.
+
+He sees children, grandchildren, and generations after him.
+
+But Genesis still counts his days.
+
+That means human life outside Eden now has a limit.
+
+The first man formed from dust is moving toward the dust again, just as God warned.
+
+📅 Counted days
+⏳ Long life
+⚰️ Still mortal`,
         ],
         [
           "⚰️ And He Died",
@@ -13140,6 +13226,44 @@ The family story is about to become a world story.
       icon: "🌧️",
       phrases: [
         [
+          "🌍 Men Began To Multiply",
+          `This phrase shows the creation blessing continuing.
+
+People are spreading across the earth.
+
+Families are growing.
+
+The world is filling with human life.
+
+But Genesis immediately shows that multiplication without faithfulness can still become dangerous.
+
+More people does not automatically mean more righteousness.
+
+The chapter moves from population growth into moral corruption.
+
+🌍 People multiply
+👨‍👩‍👧 Families grow
+💔 Sin spreads with them`,
+        ],
+        [
+          "👧 Daughters Were Born Unto Them",
+          `This detail keeps the story inside ordinary family life.
+
+Children are being born.
+
+Households are forming.
+
+Marriage and desire become part of the story.
+
+The Bible is not saying daughters are the problem.
+
+It is showing how human desire, power, and choice can twist good gifts when people stop listening to God.
+
+👧 Daughters are born
+🏠 Families grow
+⚠️ Desire needs wisdom`,
+        ],
+        [
           "🧩 Sons Of God And Daughters Of Men",
           `This phrase has been understood in more than one way.
 
@@ -13235,6 +13359,60 @@ The world is not just making mistakes.
 The heart of humanity has become deeply bent away from God.`,
         ],
         [
+          "👀 God Saw That The Wickedness Of Man Was Great",
+          `God sees the true condition of the world.
+
+The flood is not based on rumor, panic, or random anger.
+
+God looks at humanity and sees that wickedness has become great.
+
+That means evil is not small, hidden, or occasional here.
+
+It has grown large across human life.
+
+👀 God sees
+💔 Wickedness is great
+⚖️ Judgment is based on truth`,
+        ],
+        [
+          "⚫ Only Evil Continually",
+          `This is one of the darkest descriptions in early Genesis.
+
+The problem is not only that people sometimes do wrong things.
+
+The direction of the heart has become settled in evil.
+
+Only evil continually means corruption is deep, repeated, and constant.
+
+Genesis wants readers to understand why judgment comes.
+
+The world is not basically healthy with a few small problems.
+
+It is spiritually ruined.
+
+⚫ Deep corruption
+🔁 Continual evil
+💔 A heart problem`,
+        ],
+        [
+          "😔 It Repented The Lord",
+          `This phrase can confuse readers.
+
+It does not mean God sinned or made a mistake.
+
+It means God is grieved over what humanity has become.
+
+Genesis uses human language so we can understand God's sorrow over evil.
+
+The Creator looks at the world He made good and sees it filled with corruption.
+
+That grief leads into judgment.
+
+😔 Divine grief
+🌍 A ruined world
+⚖️ Holy response`,
+        ],
+        [
           "💔 It Grieved Him At His Heart",
           `God is not cold toward human evil.
 
@@ -13249,6 +13427,44 @@ God is not surprised by sin, but He is truly opposed to what sin does to His wor
 This phrase matters because judgment is not God losing His temper.
 
 It is the holy response of a good God whose world has become filled with evil.`,
+        ],
+        [
+          "🧹 I Will Destroy Man Whom I Have Created",
+          `This phrase announces the seriousness of the flood.
+
+God is not treating evil as a small inconvenience.
+
+The Creator is responding to a world that has become corrupt and violent.
+
+The words are heavy because judgment is heavy.
+
+At the same time, the phrase "whom I have created" reminds us that this is God's world.
+
+He has authority over the life He made.
+
+🧹 Judgment announced
+🌍 Creation belongs to God
+⚖️ Evil will be answered`,
+        ],
+        [
+          "🐾 Both Man, And Beast, And The Creeping Thing",
+          `This phrase shows the reach of the flood judgment.
+
+Human sin does not only affect humans.
+
+Creation gets pulled into the damage.
+
+That is one of the sad patterns of Genesis.
+
+Adam's sin affects the ground.
+
+Human violence fills the earth.
+
+Now the living world suffers under judgment too.
+
+🐾 Animals named
+🌍 Creation affected
+💔 Sin damages more than the sinner`,
         ],
         [
           "🕊️ Noah Found Grace",
@@ -13663,6 +13879,54 @@ There is a real division between outside and inside, judgment and refuge, danger
 🔒 God secures the rescue`,
         ],
         [
+          "🏗️ Lower, Second, And Third Stories",
+          `This phrase describes the ark's levels.
+
+The ark is not a vague rescue idea.
+
+It is an ordered structure with space arranged for life.
+
+God gives Noah practical details because preservation will require real preparation.
+
+For beginners, this helps make the ark feel less like a children's picture and more like a serious vessel for survival.
+
+🏗️ Levels
+📐 Structure
+🐾 Space for living creatures`,
+        ],
+        [
+          "🌊 I, Even I, Do Bring A Flood Of Waters",
+          `God makes the flood announcement personal and direct.
+
+The flood is not described as random weather.
+
+God says He is bringing judgment on a violent and corrupt world.
+
+That makes the flood morally serious.
+
+The waters answer the corruption Genesis has already described.
+
+🌊 Flood waters
+⚖️ Judgment from God
+⚠️ Warning before it happens`,
+        ],
+        [
+          "⚰️ Every Thing That Is In The Earth Shall Die",
+          `This phrase is meant to feel heavy.
+
+The flood is not a small reset or a dramatic background scene.
+
+It is judgment that brings death.
+
+Genesis says this clearly so readers do not treat the flood lightly.
+
+The same chapter that shows God's mercy in the ark also shows the seriousness of sin outside the ark.
+
+⚰️ Death is real
+🌍 The earth is judged
+🛶 Refuge matters because judgment is real`,
+        ],
+        [
           "🍞 Take Thou Unto Thee Of All Food",
           `God tells Noah to gather food for his family and the animals.
 
@@ -13681,6 +13945,22 @@ Faith listens to God and prepares for what obedience will require.
 🍞 Provision
 🛠️ Preparation
 🐾 Life sustained`,
+        ],
+        [
+          "🐾 Two Of Every Sort",
+          `God tells Noah to bring living creatures into the ark.
+
+This shows that the ark is not only about one man surviving.
+
+God is preserving creaturely life through judgment.
+
+The animals come by pairs so life can continue after the flood.
+
+That means the ark carries the future of creation inside it.
+
+🐾 Animals preserved
+🌱 Future life
+🌍 God has not given up on creation`,
         ],
       ],
     }),
@@ -13745,6 +14025,36 @@ This phrase matters because God is preserving more than survival.
 He is preserving worship.`,
         ],
         [
+          "7️⃣ By Sevens",
+          `God tells Noah to take clean animals by sevens.
+
+This detail can feel strange until we remember what happens after the flood.
+
+Noah will offer sacrifice.
+
+If only one pair of clean animals entered the ark, sacrifice would threaten the continuation of that animal kind.
+
+The extra clean animals show that God is already preparing for worship after rescue.
+
+7️⃣ Extra clean animals
+🔥 Future sacrifice
+🙏 Worship preserved`,
+        ],
+        [
+          "♂️ The Male And His Female",
+          `This phrase shows how God preserves future life.
+
+The animals enter as male and female so life can continue after the flood.
+
+Genesis is connecting back to creation, where living creatures multiply according to their kinds.
+
+Judgment is coming, but God is still protecting the possibility of a future.
+
+♂️ Male
+♀️ Female
+🌱 Life after judgment`,
+        ],
+        [
           "🌱 To Keep Seed Alive",
           `This phrase explains why the animals enter the ark.
 
@@ -13759,6 +14069,24 @@ Judgment is coming, but God is not giving up on the world He made.
 Inside the ark, God is carrying the future through the waters.
 
 That makes the ark a place of both rescue and new beginning.`,
+        ],
+        [
+          "👴 Noah Was Six Hundred Years Old",
+          `This phrase gives the flood a place in Noah's real life.
+
+The story is not floating in vague time.
+
+Genesis marks Noah's age when the flood comes.
+
+That helps readers feel the long obedience behind the moment.
+
+Noah has lived many years before this day arrives.
+
+God's warning has now become a dated event in his life.
+
+👴 Noah's age
+📅 A real moment
+⚠️ Warning fulfilled`,
         ],
         [
           "⏳ Yet Seven Days",
@@ -13843,6 +14171,24 @@ This phrase matters because God's words eventually become days on the calendar.
 What He says will happen truly happens.`,
         ],
         [
+          "🗓️ The Second Month, The Seventeenth Day",
+          `Genesis gives the flood a specific date.
+
+That detail makes the story feel concrete.
+
+The flood is not treated like a vague myth or a general memory of hard times.
+
+It is marked as an event that arrives on a particular day in Noah's life.
+
+For Bible readers, dates like this slow the story down.
+
+They tell us the warning became reality in time and history.
+
+🗓️ Specific date
+📖 Serious record
+⚠️ God's word arrives`,
+        ],
+        [
           "🌊 Fountains Of The Great Deep",
           `The waters come from below as well as above.
 
@@ -13875,6 +14221,38 @@ Genesis uses that picture to show God ruling over creation.
 This phrase matters because nature is not out of control.
 
 The Creator is in control, even over the terrifying waters.`,
+        ],
+        [
+          "👨‍👩‍👧‍👦 Noah, And Shem, And Ham, And Japheth",
+          `Genesis names Noah's family as they enter.
+
+This matters because the ark is carrying the future human family.
+
+Noah is not preserved alone.
+
+His sons and their wives are also brought through the waters.
+
+The names prepare readers for the world after the flood, where the nations will come through Noah's sons.
+
+👨‍👩‍👧‍👦 A household enters
+🌍 Future nations
+🛶 Life preserved`,
+        ],
+        [
+          "🐾 Every Beast After His Kind",
+          `This phrase reaches back to Genesis 1.
+
+God created living creatures according to their kinds.
+
+Now He preserves them according to their kinds.
+
+The flood judges corruption, but it does not cancel God's care for ordered life.
+
+The ark carries creation's future through the waters.
+
+🐾 Kinds preserved
+🌱 Creation continues
+🛶 The ark carries life`,
         ],
         [
           "⏱️ Forty Days And Forty Nights",
