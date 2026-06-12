@@ -763,60 +763,64 @@ function getGenesisTwentyOneToTwentyFourPhraseFocus(section: PersonalGenesisPhra
   const lower = cleanTitle.toLowerCase();
 
   if (lower.includes("visited") || lower.includes("as he had said") || lower.includes("set time") || lower.includes("isaac")) {
-    return "⏳ Long wait\n\n👵 Impossible body\n\n👶 Promised son\n\n😂 Laughter turned from doubt into worship";
+    return "\u{23F3} Long wait\n\n\u{1F475} Impossible body\n\n\u{1F476} Promised son\n\n\u{1F602} Laughter turned from doubt into worship\n\nIsaac is proof that God's word can outlive every human limit.";
   }
 
   if (lower.includes("laug") || lower.includes("mock")) {
-    return "The wording uses emotion to show what is happening inside the family, where joy, tension, and rivalry all press against the promise.";
+    return "\u{1F602} Joy and laughter\n\n\u{1F494} Family tension\n\n\u{1F476} The promised child\n\nThe wording uses emotion to show what is happening inside the family.";
   }
 
   if (lower.includes("hagar") || lower.includes("ishmael") || lower.includes("lad") || lower.includes("water")) {
-    return "Hagar and Ishmael do not become side characters who disappear; God sees their distress and provides for them in the wilderness.";
+    return "\u{1F3DC}\u{FE0F} Wilderness\n\n\u{1F4A7} Water needed\n\n\u{1F442} God hears\n\n\u{1F440} God sees\n\nHagar and Ishmael do not become side characters who disappear; God provides for them in the wilderness.";
   }
 
   if (lower.includes("covenant") || lower.includes("oath") || lower.includes("swear") || lower.includes("beersheba")) {
-    return "The words show peace being made through public commitment, where promises are spoken clearly and remembered in a place.";
+    return "\u{1F91D} Public agreement\n\n\u{1F4DC} Spoken promise\n\n\u{1F4CD} A place remembered\n\nThe words show peace being made through public commitment.";
   }
 
   if (lower.includes("tempt") || lower.includes("prove") || lower.includes("offer") || lower.includes("only son") || lower.includes("moriah")) {
-    return "❤️ Isaac is loved\n\n⛰️ Moriah is costly\n\n🪵 The wood is carried\n\n🐏 The substitute will be provided";
+    return "\u{2764}\u{FE0F} Isaac is loved\n\n\u{26F0}\u{FE0F} Moriah is costly\n\n\u{1FAB5} The wood is carried\n\n\u{1F40F} The substitute will be provided\n\nThe test touches the very promise Abraham has been trusting.";
   }
 
   if (lower.includes("lamb") || lower.includes("ram") || lower.includes("provided") || lower.includes("instead")) {
-    return "The LORD provides a substitute in the place where death seemed certain.";
+    return "\u{1F40F} A substitute\n\n\u{1FAB5} An altar\n\n\u{1F64C} The LORD provides\n\nThe LORD provides a substitute in the place where death seemed certain.";
   }
 
   if (lower.includes("blessing") || lower.includes("seed") || lower.includes("stars") || lower.includes("sand")) {
-    return "The wording expands the promise beyond one family moment and shows God's plan reaching toward descendants, nations, and blessing.";
+    return "\u{1F30C} Stars\n\n\u{1F3D6}\u{FE0F} Sand\n\n\u{1F476} Descendants\n\n\u{1F30D} Blessing for nations\n\nThe promise stretches far beyond one family moment.";
   }
 
   if (lower.includes("sarah") || lower.includes("died") || lower.includes("mourn") || lower.includes("bury")) {
-    return "Grief is part of the covenant story, not an interruption of it.";
+    return "\u{1F494} Grief\n\n\u{26B0}\u{FE0F} Burial\n\n\u{1F4CD} The promised land\n\nGrief is part of the covenant story, not an interruption of it.";
   }
 
   if (lower.includes("field") || lower.includes("cave") || lower.includes("machpelah") || lower.includes("possession")) {
-    return "The land detail matters because Abraham owns only a burial place, yet he still believes God will give the land to his descendants.";
+    return "\u{1F4CD} Land\n\n\u{26B0}\u{FE0F} A burial place\n\n\u{1F9FE} A public purchase\n\nAbraham owns only a burial place, yet he still believes God will give the land to his descendants.";
   }
 
   if (lower.includes("servant") || lower.includes("pray") || lower.includes("lord god") || lower.includes("kindness")) {
-    return "The servant depends on God in an ordinary decision, turning the search for a wife into an act of prayer and trust.";
+    return "\u{1F64F} Prayer\n\n\u{1F6B6} Obedience\n\n\u{1F4A7} A well\n\n\u{1F64C} God's guidance\n\nThe servant depends on God in an ordinary decision.";
   }
 
   if (lower.includes("rebekah") || lower.includes("damsel") || lower.includes("draw water") || lower.includes("camels")) {
-    return "The detail reveals character through action, showing generosity, courage, and readiness before the story explains her future role.";
+    return "\u{1F4A7} Water drawn\n\n\u{1F42A} Camels served\n\n\u{1F4AA} Generous action\n\nRebekah's character is revealed through what she does.";
   }
 
   if (lower.includes("go with this man") || lower.includes("i will go") || lower.includes("blessed rebekah")) {
-    return "The promise moves forward through willing response, not only through family arrangement.";
+    return "\u{1F6B6} Leaving home\n\n\u{1F932} Willing response\n\n\u{1F4DC} Promise moving forward\n\nThe promise moves forward through willing response, not only through family arrangement.";
   }
 
-  return "The wording explains how this moment carries the promise story forward instead of merely filling space.";
+  return "\u{1F50E} A detail to notice\n\n\u{1F4D6} A piece of the story\n\n\u{1F9ED} A clue for understanding the passage\n\nThe wording explains how this moment carries the promise story forward instead of merely filling space.";
 }
-
 function hasGenesisTwentyOneToThirtyTeachingLayer(content: string) {
   return /matters|important|reveals|shows|teaches|connects|larger bible|covenant|promise|faith|obedience|judgment|mercy|worship|blessing|sin|redemption|identity|reader sees|reader understands/i.test(content);
 }
 
+function hasGenesisTwentyOneToThirtyVisualBlock(content: string) {
+  return content
+    .split("\n\n")
+    .some((line) => /^[^\w\s"']/.test(line.trim()));
+}
 function cleanGenesisTwentyOneToThirtyBoilerplate(content: string) {
   const seen = new Set<string>();
   return note(
@@ -864,18 +868,16 @@ function deepenGenesisTwentyOneToTwentyFourPhraseExplanation(
   const cleanedContent = cleanGenesisTwentyOneToThirtyBoilerplate(content);
   const lines = cleanedContent.split("\n\n").filter(Boolean);
   const hasTeachingLayer = hasGenesisTwentyOneToThirtyTeachingLayer(cleanedContent);
-  if (lines.length >= 6 && hasTeachingLayer) return cleanedContent;
+  const hasVisualBlock = hasGenesisTwentyOneToThirtyVisualBlock(cleanedContent);
+  if (lines.length >= 6 && hasTeachingLayer && hasVisualBlock) return cleanedContent;
 
   const cleanTitle = stripGenesisTwentyOneToThirtyPhraseEmoji(title);
-  const theme = getGenesisTwentyOneToTwentyFourStudyTheme(section);
+  const focus = getGenesisTwentyOneToTwentyFourPhraseFocus(section, cleanTitle);
   const additions = [
-    getGenesisTwentyOneToTwentyFourPhraseFocus(section, cleanTitle),
-    theme.matters,
-    theme.theme,
-  ].filter((line) => !cleanedContent.includes(line));
-  const neededAdditions = hasTeachingLayer ? additions.slice(0, Math.max(1, 6 - lines.length)) : additions;
+    hasVisualBlock ? "" : focus,
+  ].filter((line) => line && !cleanedContent.includes(line));
 
-  return note([...lines, ...neededAdditions]);
+  return note([...lines, ...additions]);
 }
 
 function formatGenesisTwentyOneToThirtyPhraseExplanation(

@@ -8379,88 +8379,88 @@ function getGenesisElevenToTwentyPhraseFocus(section: PersonalGenesisPhraseSecti
   const lower = cleanTitle.toLowerCase();
 
   if (lower.includes("toward") || lower.includes("northward") || lower.includes("southward") || lower.includes("eastward") || lower.includes("westward")) {
-    return "The direction language helps the reader follow Abram through the land God has promised but not yet fully given.";
+    return "\u{1F4CD} Real land\n\n\u{1F6B6} A traveling family\n\n\u{1F4DC} A promise not fully possessed yet\n\nThe direction language helps the reader follow Abram through the land God has promised but not yet fully given.";
   }
 
   if (lower.includes("let us make us a name") || lower.includes("name")) {
-    return "🏙️ A city for security\n\n🗼 A tower for greatness\n\n🏷️ A name for themselves";
+    return "\u{1F3D9}\u{FE0F} A city for security\n\n\u{1F5FC} A tower for greatness\n\n\u{1F3F7}\u{FE0F} A name for themselves\n\nThis shows pride in the heart.";
   }
 
   if (lower.includes("language") || lower.includes("confound") || lower.includes("scattered")) {
-    return "The detail helps explain why the story moves from one gathered human project into many peoples spread across the earth.";
+    return "\u{1F5E3}\u{FE0F} One speech\n\n\u{1F91D} One project\n\n\u{1F30D} Many peoples spread out\n\nThe detail helps explain why the story moves from one gathered human project into many peoples spread across the earth.";
   }
 
   if (lower.includes("generations") || lower.includes("begat") || lower.includes("sons and daughters") || lower.includes("lived after")) {
-    return "The genealogy is not filler; it is tracing the promise line through ordinary family history until the story reaches Abram.";
+    return "\u{1F476} Births\n\n\u{1F46A} Families\n\n\u{23F3} Years passing\n\n\u{1F4DC} The promise line moving forward\n\nThe genealogy is not filler; it is tracing the promise line through ordinary family history until the story reaches Abram.";
   }
 
   if (lower.includes("angel") || lower.includes("seen") || lower.includes("heard") || lower.includes("affliction")) {
-    return "🏜️ In the wilderness\n\n🤰 Carrying a child\n\n💔 Hurt by the household\n\n👀 Seen by God";
+    return "\u{1F3DC}\u{FE0F} In the wilderness\n\n\u{1FAC4} Carrying a child\n\n\u{1F494} Hurt by the household\n\n\u{1F440} Seen by God";
   }
 
   if (lower.includes("laugh") || lower.includes("impossible") || lower.includes("hundred") || lower.includes("too hard")) {
-    return "👵 Sarah was old\n\n👴 Abraham was old\n\n👶 The promise still stood\n\n🙌 The LORD was able";
+    return "\u{1F475} Sarah was old\n\n\u{1F474} Abraham was old\n\n\u{1F476} The promise still stood\n\n\u{1F64C} The LORD was able";
   }
 
   if (lower.includes("lord") || lower.includes("god") || lower.includes("almighty")) {
-    return "God's character is the center of the scene.";
+    return "\u{1F64C} God speaks\n\n\u{1F4DC} God promises\n\n\u{1F6E1}\u{FE0F} God protects\n\nGod's character is the center of the scene.";
   }
 
   if (lower.includes("covenant") || lower.includes("promise") || lower.includes("bless") || lower.includes("seed")) {
-    return "The words carry covenant weight because God is tying the future of His people to His own promise.";
+    return "\u{1F4DC} God's word\n\n\u{1F476} Future descendants\n\n\u{1F30D} Blessing beyond one family\n\nThe words carry covenant weight because God is tying the future of His people to His own promise.";
   }
 
   if (lower.includes("land") || lower.includes("canaan") || lower.includes("plain") || lower.includes("haran") || lower.includes("ur")) {
-    return "The location matters because Genesis is showing where God's promise is moving and what kind of place the people are choosing or leaving.";
+    return "\u{1F4CD} A real place\n\n\u{1F6B6} A real journey\n\n\u{1F4DC} A promised future\n\nThe location matters because Genesis is showing where God's promise is moving and what kind of place the people are choosing or leaving.";
   }
 
   if (lower.includes("altar") || lower.includes("called upon")) {
-    return "The action shows worship entering the story, where Abram responds to God's promise by honoring the LORD in the land.";
+    return "\u{26EA} Worship\n\n\u{1F64C} Calling on the LORD\n\n\u{1F4CD} Faith marked in the land\n\nThe action shows worship entering the story, where Abram responds to God's promise by honoring the LORD in the land.";
   }
 
   if (lower.includes("famine") || lower.includes("egypt") || lower.includes("pharaoh") || lower.includes("fear") || lower.includes("sister")) {
-    return "The pressure in the scene reveals the difference between trusting God's promise and trying to survive by fear or half-truths.";
+    return "\u{26A0}\u{FE0F} Pressure\n\n\u{1F628} Fear\n\n\u{1F5E3}\u{FE0F} Half-truths\n\n\u{1F6E1}\u{FE0F} God's protection\n\nThe pressure in the scene reveals the difference between trusting God's promise and trying to survive by fear or half-truths.";
   }
 
   if (lower.includes("lot") || lower.includes("sodom") || lower.includes("gomorrah")) {
-    return "Lot's choices slowly move him closer to danger, showing how a good-looking path can still pull the heart toward ruin.";
+    return "\u{1F440} What looks good\n\n\u{1F3D9}\u{FE0F} A dangerous city\n\n\u{26A0}\u{FE0F} A heart drifting closer\n\nLot's choices slowly move him closer to danger, showing how a good-looking path can still pull the heart toward ruin.";
   }
 
   if (lower.includes("king") || /\bwar\b/.test(lower) || lower.includes("battle") || lower.includes("captiv")) {
-    return "Abram's family is moving into the world of kingdoms and conflict, where faith has to face real danger and real power.";
+    return "\u{1F451} Named kings\n\n\u{1F4CD} Real places\n\n\u{2694}\u{FE0F} War and alliances\n\n\u{1F464} Abram's family nearby\n\nAbram's family is moving into the world of kingdoms and conflict, where faith has to face real danger and real power.";
   }
 
   if (lower.includes("melchizedek") || lower.includes("bread and wine") || lower.includes("most high")) {
-    return "This moment lifts Abram's rescue story into worship, blessing, and the confession that victory belongs to God Most High.";
+    return "\u{1F35E} Bread\n\n\u{1F377} Wine\n\n\u{1F64C} Blessing\n\n\u{1F451} God Most High\n\nThis moment lifts Abram's rescue story into worship, blessing, and the confession that victory belongs to God Most High.";
   }
 
   if (lower.includes("hagar") || lower.includes("sarai") || lower.includes("sarah") || lower.includes("ishmael") || lower.includes("isaac")) {
-    return "The family detail matters because the promise is moving through real pain, real people, and God's careful choice of the promised child.";
+    return "\u{1F469} Real people\n\n\u{1F494} Real pain\n\n\u{1F476} Children and promise\n\n\u{1F64C} God still working\n\nThe family detail matters because the promise is moving through real pain, real people, and God's careful choice of the promised child.";
   }
 
   if (lower.includes("circumcis") || lower.includes("token")) {
-    return "The covenant sign makes God's promise visible in the household, turning belief into an embodied mark of belonging.";
-  }
-
-  if (lower.includes("laugh") || lower.includes("impossible") || lower.includes("hundred")) {
-    return "The reaction exposes how impossible the promise feels from a human point of view, which makes God's power and timing stand out more clearly.";
+    return "\u{1F4DC} Covenant promise\n\n\u{2702}\u{FE0F} Covenant sign\n\n\u{1F3E0} A marked household\n\nThe covenant sign makes God's promise visible in the household, turning belief into an embodied mark of belonging.";
   }
 
   if (lower.includes("righteous") || lower.includes("judge") || lower.includes("wicked")) {
-    return "God's mercy never cancels His justice, and His justice is never careless or cruel.";
+    return "\u{2696}\u{FE0F} Justice\n\n\u{1F54A}\u{FE0F} Mercy\n\n\u{1F525} Judgment against evil\n\nGod's mercy never cancels His justice, and His justice is never careless or cruel.";
   }
 
   if (section.chapter === 12 && section.startVerse <= 9) {
-    return "Abram is being called to obey before he can see the whole path ahead.";
+    return "\u{1F6B6} Leave what is familiar\n\n\u{1F4CD} Go where God leads\n\n\u{1F4DC} Trust the promise before seeing the map\n\nAbram is being called to obey before he can see the whole path ahead.";
   }
 
-  return "The wording carries one piece of the passage's meaning instead of merely adding background information.";
+  return "\u{1F50E} A detail to notice\n\n\u{1F4D6} A piece of the story\n\n\u{1F9ED} A clue for understanding the passage\n\nThe wording carries one piece of the passage's meaning instead of merely adding background information.";
 }
-
 function hasGenesisElevenToTwentyTeachingLayer(body: string) {
   return /matters|important|reveals|shows|teaches|connects|larger bible|covenant|promise|faith|obedience|judgment|mercy|worship|blessing|sin|redemption|identity|reader understands/i.test(body);
 }
 
+function hasGenesisElevenToTwentyVisualBlock(body: string) {
+  return body
+    .split("\n\n")
+    .some((line) => /^[^\w\s"']/.test(line.trim()));
+}
 function cleanGenesisElevenToTwentyBoilerplate(body: string) {
   const seen = new Set<string>();
   return note(
@@ -8507,19 +8507,17 @@ function deepenGenesisElevenToTwentyPhraseExplanation(
   const lines = cleanedBody.split("\n\n").filter(Boolean);
   const cleanTitle = stripGenesisElevenToTwentyPhraseEmoji(title);
   const hasTeachingLayer = hasGenesisElevenToTwentyTeachingLayer(cleanedBody);
-  if (lines.length >= 6 && hasTeachingLayer) return cleanedBody;
+  const hasVisualBlock = hasGenesisElevenToTwentyVisualBlock(cleanedBody);
+  if (lines.length >= 6 && hasTeachingLayer && hasVisualBlock) return cleanedBody;
 
-  const theme = getGenesisElevenToTwentyStudyTheme(section);
+  const focus = getGenesisElevenToTwentyPhraseFocus(section, cleanTitle);
   const additions = [
-    getGenesisElevenToTwentyPhraseFocus(section, cleanTitle),
-    theme.matters,
-    theme.theme,
-  ].filter((line) => !cleanedBody.includes(line));
-  const neededAdditions = hasTeachingLayer ? additions.slice(0, Math.max(1, 6 - lines.length)) : additions;
+    hasVisualBlock ? "" : focus,
+  ].filter((line) => line && !cleanedBody.includes(line));
 
   return note([
     ...lines,
-    ...neededAdditions,
+    ...additions,
   ]);
 }
 
