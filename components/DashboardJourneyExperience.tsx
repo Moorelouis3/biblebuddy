@@ -10180,7 +10180,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     const [rawTitle = "", ...bodyLines] = content.split("\n");
     return {
       title: rawTitle.trim(),
-      body: bodyLines.join("\n").replace(/\n{2,}/g, "\n").trim(),
+      body: bodyLines.join("\n").trim(),
     };
   }
 
@@ -10266,7 +10266,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                           </button>
                           {phraseOpen ? (
                             <div className="border-t border-[var(--bb-card-border,#dbe7f4)] px-4 py-3">
-                              <div className="whitespace-pre-line text-[13px] font-medium leading-6 text-[var(--bb-text-secondary,#374151)]">
+                              <div className="whitespace-pre-wrap text-[13px] font-medium leading-6 text-[var(--bb-text-secondary,#374151)]">
                                 {phrase.body}
                               </div>
                             </div>

@@ -8263,6 +8263,7 @@ const DAY_8_QUALITY_REVIEW_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
 
 function getGenesisElevenToTwentyPhraseEmoji(title: string) {
   const lower = title.toLowerCase();
+  if (lower.includes("toward") || lower.includes("northward") || lower.includes("southward") || lower.includes("eastward") || lower.includes("westward")) return "📍";
   if (lower.includes("lord") || lower.includes("god") || lower.includes("almighty")) return "🙌";
   if (lower.includes("covenant") || lower.includes("promise") || lower.includes("bless")) return "📜";
   if (lower.includes("land") || lower.includes("canaan") || lower.includes("plain") || lower.includes("mountain")) return "📍";
@@ -8377,6 +8378,10 @@ function stripGenesisElevenToTwentyPhraseEmoji(title: string) {
 function getGenesisElevenToTwentyPhraseFocus(section: PersonalGenesisPhraseSectionInput, cleanTitle: string) {
   const lower = cleanTitle.toLowerCase();
 
+  if (lower.includes("toward") || lower.includes("northward") || lower.includes("southward") || lower.includes("eastward") || lower.includes("westward")) {
+    return "The direction language helps the reader follow Abram through the land God has promised but not yet fully given.";
+  }
+
   if (lower.includes("let us make us a name") || lower.includes("name")) {
     return "🏙️ A city for security\n\n🗼 A tower for greatness\n\n🏷️ A name for themselves";
   }
@@ -8421,8 +8426,8 @@ function getGenesisElevenToTwentyPhraseFocus(section: PersonalGenesisPhraseSecti
     return "Lot's choices slowly move him closer to danger, showing how a good-looking path can still pull the heart toward ruin.";
   }
 
-  if (lower.includes("king") || lower.includes("war") || lower.includes("battle") || lower.includes("captiv")) {
-    return "The phrase moves Abram's family into the world of kingdoms and conflict, where faith has to face real danger and real power.";
+  if (lower.includes("king") || /\bwar\b/.test(lower) || lower.includes("battle") || lower.includes("captiv")) {
+    return "Abram's family is moving into the world of kingdoms and conflict, where faith has to face real danger and real power.";
   }
 
   if (lower.includes("melchizedek") || lower.includes("bread and wine") || lower.includes("most high")) {
@@ -8442,7 +8447,7 @@ function getGenesisElevenToTwentyPhraseFocus(section: PersonalGenesisPhraseSecti
   }
 
   if (lower.includes("righteous") || lower.includes("judge") || lower.includes("wicked")) {
-    return "The phrase teaches that God's mercy never cancels His justice, and His justice is never careless or cruel.";
+    return "God's mercy never cancels His justice, and His justice is never careless or cruel.";
   }
 
   if (section.chapter === 12 && section.startVerse <= 9) {
@@ -8457,6 +8462,7 @@ function hasGenesisElevenToTwentyTeachingLayer(body: string) {
 }
 
 function cleanGenesisElevenToTwentyBoilerplate(body: string) {
+  const seen = new Set<string>();
   return note(
     body
       .split("\n\n")
@@ -8464,12 +8470,31 @@ function cleanGenesisElevenToTwentyBoilerplate(body: string) {
         line
           .replace(/^This phrase matters because /, "")
           .replace(/^This matters because /, "")
+          .replace(/^That matters because /, "")
           .replace(/^It connects to the larger Bible theme that /, "")
           .replace(/^It connects to the larger Bible theme of /, "")
           .replace(/^The wording is worth noticing because /, "")
+          .replace(/^This phrase shows /, "")
+          .replace(/^This phrase means /, "")
+          .replace(/^This phrase points to /, "")
+          .replace(/^This phrase invites readers to /, "")
+          .replace(/^This phrase helps readers /, "")
+          .replace(/^This phrase\s*$/, "")
+          .replace(/^The phrase\s*$/, "")
+          .replace(/^This phrase /, "")
+          .replace(/^The phrase /, "")
+          .replace(/^This phrase$/, "")
+          .replace(/^The phrase$/, "")
           .trim(),
       )
-      .filter(Boolean),
+      .map((line) => line ? `${line.charAt(0).toUpperCase()}${line.slice(1)}` : line)
+      .filter((line) => {
+        if (!line) return false;
+        const key = line.toLowerCase().replace(/[.?!]+$/, "");
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      }),
   );
 }
 

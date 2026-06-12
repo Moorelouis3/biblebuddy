@@ -754,7 +754,7 @@ function getGenesisTwentyOneToTwentyFourStudyTheme(section: PersonalGenesisPhras
   }
 
   return {
-    matters: "The phrase carries part of the promise story forward through real decisions, family tension, and God's steady faithfulness.",
+    matters: "The promise story moves forward through real decisions, family tension, and God's steady faithfulness.",
     theme: "God's plan keeps moving through ordinary people who must learn to trust His word.",
   };
 }
@@ -771,7 +771,7 @@ function getGenesisTwentyOneToTwentyFourPhraseFocus(section: PersonalGenesisPhra
   }
 
   if (lower.includes("hagar") || lower.includes("ishmael") || lower.includes("lad") || lower.includes("water")) {
-    return "The phrase keeps Hagar and Ishmael from becoming side characters who disappear; God sees their distress and provides for them in the wilderness.";
+    return "Hagar and Ishmael do not become side characters who disappear; God sees their distress and provides for them in the wilderness.";
   }
 
   if (lower.includes("covenant") || lower.includes("oath") || lower.includes("swear") || lower.includes("beersheba")) {
@@ -783,7 +783,7 @@ function getGenesisTwentyOneToTwentyFourPhraseFocus(section: PersonalGenesisPhra
   }
 
   if (lower.includes("lamb") || lower.includes("ram") || lower.includes("provided") || lower.includes("instead")) {
-    return "The phrase points to substitution, because the LORD provides a sacrifice in the place where death seemed certain.";
+    return "The LORD provides a substitute in the place where death seemed certain.";
   }
 
   if (lower.includes("blessing") || lower.includes("seed") || lower.includes("stars") || lower.includes("sand")) {
@@ -791,7 +791,7 @@ function getGenesisTwentyOneToTwentyFourPhraseFocus(section: PersonalGenesisPhra
   }
 
   if (lower.includes("sarah") || lower.includes("died") || lower.includes("mourn") || lower.includes("bury")) {
-    return "The phrase treats grief as part of the covenant story, not an interruption of it.";
+    return "Grief is part of the covenant story, not an interruption of it.";
   }
 
   if (lower.includes("field") || lower.includes("cave") || lower.includes("machpelah") || lower.includes("possession")) {
@@ -799,7 +799,7 @@ function getGenesisTwentyOneToTwentyFourPhraseFocus(section: PersonalGenesisPhra
   }
 
   if (lower.includes("servant") || lower.includes("pray") || lower.includes("lord god") || lower.includes("kindness")) {
-    return "The phrase shows dependence on God in an ordinary decision, turning the search for a wife into an act of prayer and trust.";
+    return "The servant depends on God in an ordinary decision, turning the search for a wife into an act of prayer and trust.";
   }
 
   if (lower.includes("rebekah") || lower.includes("damsel") || lower.includes("draw water") || lower.includes("camels")) {
@@ -807,7 +807,7 @@ function getGenesisTwentyOneToTwentyFourPhraseFocus(section: PersonalGenesisPhra
   }
 
   if (lower.includes("go with this man") || lower.includes("i will go") || lower.includes("blessed rebekah")) {
-    return "The phrase shows the promise moving forward through willing response, not only through family arrangement.";
+    return "The promise moves forward through willing response, not only through family arrangement.";
   }
 
   return "The wording explains how this moment carries the promise story forward instead of merely filling space.";
@@ -818,6 +818,7 @@ function hasGenesisTwentyOneToThirtyTeachingLayer(content: string) {
 }
 
 function cleanGenesisTwentyOneToThirtyBoilerplate(content: string) {
+  const seen = new Set<string>();
   return note(
     content
       .split("\n\n")
@@ -825,12 +826,31 @@ function cleanGenesisTwentyOneToThirtyBoilerplate(content: string) {
         line
           .replace(/^This phrase matters because /, "")
           .replace(/^This matters because /, "")
+          .replace(/^That matters because /, "")
           .replace(/^It connects to the larger Bible theme that /, "")
           .replace(/^It connects to the larger Bible theme of /, "")
           .replace(/^The wording deserves attention because /, "")
+          .replace(/^This phrase shows /, "")
+          .replace(/^This phrase means /, "")
+          .replace(/^This phrase points to /, "")
+          .replace(/^This phrase invites readers to /, "")
+          .replace(/^This phrase helps readers /, "")
+          .replace(/^This phrase\s*$/, "")
+          .replace(/^The phrase\s*$/, "")
+          .replace(/^This phrase /, "")
+          .replace(/^The phrase /, "")
+          .replace(/^This phrase$/, "")
+          .replace(/^The phrase$/, "")
           .trim(),
       )
-      .filter(Boolean),
+      .map((line) => line ? `${line.charAt(0).toUpperCase()}${line.slice(1)}` : line)
+      .filter((line) => {
+        if (!line) return false;
+        const key = line.toLowerCase().replace(/[.?!]+$/, "");
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      }),
   );
 }
 
