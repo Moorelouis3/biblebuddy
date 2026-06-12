@@ -115,17 +115,43 @@ Do not only explain the most obvious phrases. Identify every phrase that could c
 
 If a brand-new Christian might Google it, ask about it, or quietly skip past it without understanding, it probably belongs in Key Phrases.
 
-Each Key Phrase should explain:
+Each Key Phrase should explain the phrase the way the strongest Genesis 1 cards do:
 
-- what the phrase means in plain English
-- what is happening in the immediate verse or scene
-- why the phrase matters in the story
-- what cultural, historical, geographical, or biblical context is needed
-- how it connects to the larger Bible story when relevant
+- Start by explaining what the exact phrase means in the verse.
+- Use short, spaced teaching lines instead of one large paragraph.
+- Add emoji lists only when they help the reader see real parts of the phrase.
+- Explain the culture, background, Bible connection, or spiritual meaning in normal conversational wording.
+- End with a clear teaching point that helps the reader understand the phrase better.
 
 Do not use Reading Tip, Study Tip, Reader Tip, or generic advice to fill space.
 
-Do not pad notes with repeated filler like "this phrase matters because..." unless the sentence actually explains the phrase.
+Do not pad notes with repeated filler like "this phrase matters because...", "it connects to the larger Bible theme...", "this verse shows...", or "this phrase belongs to...".
+
+Approved Key Phrase format:
+
+```txt
+The people of Babel wanted to become important by their own power.
+
+They were not just building a tower.
+
+They were trying to build a reputation.
+
+🏙️ A city for security
+🗼 A tower for greatness
+🏷️ A name for themselves
+
+This shows pride in the heart.
+
+Instead of trusting God to give them purpose, they tried to create their own greatness without Him.
+
+Genesis 12 will show the opposite.
+
+Babel tries to make a name.
+
+God gives Abram a name.
+```
+
+The explanation should teach the key phrase directly. It should not announce the teaching framework.
 
 Write at about a 6th grade reading level. Use clear paragraph format. Each phrase should usually have 6 to 12 meaningful lines unless more detail is needed. Aim for more needed phrases with real explanation, not fewer phrases with broad summaries.
 

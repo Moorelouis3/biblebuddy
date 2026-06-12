@@ -8286,13 +8286,225 @@ function titleHasEmoji(title: string) {
   return /^[^A-Za-z0-9']/.test(title.trim());
 }
 
+function getGenesisElevenToTwentyStudyTheme(section: PersonalGenesisPhraseSectionInput) {
+  if (section.chapter === 11 && section.endVerse <= 9) {
+    return {
+      matters: "Babel is not mainly about architecture.",
+      theme: "It is about human pride trying to build life apart from humble dependence on God.",
+    };
+  }
+
+  if (section.chapter === 11) {
+    return {
+      matters: "The genealogy carries the story from the scattered nations toward Abram's family.",
+      theme: "God keeps the promise line moving through ordinary births, deaths, names, and generations.",
+    };
+  }
+
+  if (section.chapter === 12 && section.startVerse <= 9) {
+    return {
+      matters: "Abram's call is where God's rescue plan begins to narrow onto one family.",
+      theme: "Through that one family, God is preparing blessing for many families.",
+    };
+  }
+
+  if (section.chapter === 12) {
+    return {
+      matters: "The pressure exposes whether Abram is trusting God's promise or trying to protect himself by fear.",
+      theme: "God's faithfulness protects His promise even when His people act weakly, foolishly, or fearfully.",
+    };
+  }
+
+  if (section.chapter === 13) {
+    return {
+      matters: "Abram and Lot's separation reveals the difference between choosing by sight and trusting what God has promised.",
+      theme: "The best-looking place is not always the safest place for the heart.",
+    };
+  }
+
+  if (section.chapter === 14) {
+    return {
+      matters: "Abram's family is now caught inside the conflicts of real kingdoms, wealth, rescue, and power.",
+      theme: "God's promised people have to live with courage, worship, integrity, and trust in a broken world.",
+    };
+  }
+
+  if (section.chapter === 15) {
+    return {
+      matters: "Genesis 15 teaches Abram to rest on God's promise before the promise is visible.",
+      theme: "God binds the future to His own word and calls His people to believe Him.",
+    };
+  }
+
+  if (section.chapter === 16) {
+    return {
+      matters: "Genesis 16 shows the pain that comes when people try to force God's promise by human control.",
+      theme: "God still sees the afflicted, hears the vulnerable, and remains faithful inside a wounded family.",
+    };
+  }
+
+  if (section.chapter === 17) {
+    return {
+      matters: "Genesis 17 marks covenant identity.",
+      theme: "Abram becomes Abraham, Sarai becomes Sarah, and the household receives the covenant sign.",
+    };
+  }
+
+  if (section.chapter === 18) {
+    return {
+      matters: "Genesis 18 holds together promise, hospitality, divine presence, justice, and mercy.",
+      theme: "The LORD comes near, keeps impossible promises, and judges evil with perfect righteousness.",
+    };
+  }
+
+  if (section.chapter === 19) {
+    return {
+      matters: "Genesis 19 shows the seriousness of sin and the reality of judgment.",
+      theme: "It also shows mercy pulling Lot out before destruction falls.",
+    };
+  }
+
+  return {
+    matters: "Genesis is showing God's promise moving forward through real people, real danger, and real moral choices.",
+    theme: "God's faithfulness is stronger than human weakness.",
+  };
+}
+
+function stripGenesisElevenToTwentyPhraseEmoji(title: string) {
+  return title.replace(/^[^A-Za-z0-9']+\s*/, "").trim();
+}
+
+function getGenesisElevenToTwentyPhraseFocus(section: PersonalGenesisPhraseSectionInput, cleanTitle: string) {
+  const lower = cleanTitle.toLowerCase();
+
+  if (lower.includes("let us make us a name") || lower.includes("name")) {
+    return "🏙️ A city for security\n\n🗼 A tower for greatness\n\n🏷️ A name for themselves";
+  }
+
+  if (lower.includes("language") || lower.includes("confound") || lower.includes("scattered")) {
+    return "The detail helps explain why the story moves from one gathered human project into many peoples spread across the earth.";
+  }
+
+  if (lower.includes("generations") || lower.includes("begat") || lower.includes("sons and daughters") || lower.includes("lived after")) {
+    return "The genealogy is not filler; it is tracing the promise line through ordinary family history until the story reaches Abram.";
+  }
+
+  if (lower.includes("angel") || lower.includes("seen") || lower.includes("heard") || lower.includes("affliction")) {
+    return "🏜️ In the wilderness\n\n🤰 Carrying a child\n\n💔 Hurt by the household\n\n👀 Seen by God";
+  }
+
+  if (lower.includes("laugh") || lower.includes("impossible") || lower.includes("hundred") || lower.includes("too hard")) {
+    return "👵 Sarah was old\n\n👴 Abraham was old\n\n👶 The promise still stood\n\n🙌 The LORD was able";
+  }
+
+  if (lower.includes("lord") || lower.includes("god") || lower.includes("almighty")) {
+    return "God's character is the center of the scene.";
+  }
+
+  if (lower.includes("covenant") || lower.includes("promise") || lower.includes("bless") || lower.includes("seed")) {
+    return "The words carry covenant weight because God is tying the future of His people to His own promise.";
+  }
+
+  if (lower.includes("land") || lower.includes("canaan") || lower.includes("plain") || lower.includes("haran") || lower.includes("ur")) {
+    return "The location matters because Genesis is showing where God's promise is moving and what kind of place the people are choosing or leaving.";
+  }
+
+  if (lower.includes("altar") || lower.includes("called upon")) {
+    return "The action shows worship entering the story, where Abram responds to God's promise by honoring the LORD in the land.";
+  }
+
+  if (lower.includes("famine") || lower.includes("egypt") || lower.includes("pharaoh") || lower.includes("fear") || lower.includes("sister")) {
+    return "The pressure in the scene reveals the difference between trusting God's promise and trying to survive by fear or half-truths.";
+  }
+
+  if (lower.includes("lot") || lower.includes("sodom") || lower.includes("gomorrah")) {
+    return "Lot's choices slowly move him closer to danger, showing how a good-looking path can still pull the heart toward ruin.";
+  }
+
+  if (lower.includes("king") || lower.includes("war") || lower.includes("battle") || lower.includes("captiv")) {
+    return "The phrase moves Abram's family into the world of kingdoms and conflict, where faith has to face real danger and real power.";
+  }
+
+  if (lower.includes("melchizedek") || lower.includes("bread and wine") || lower.includes("most high")) {
+    return "This moment lifts Abram's rescue story into worship, blessing, and the confession that victory belongs to God Most High.";
+  }
+
+  if (lower.includes("hagar") || lower.includes("sarai") || lower.includes("sarah") || lower.includes("ishmael") || lower.includes("isaac")) {
+    return "The family detail matters because the promise is moving through real pain, real people, and God's careful choice of the promised child.";
+  }
+
+  if (lower.includes("circumcis") || lower.includes("token")) {
+    return "The covenant sign makes God's promise visible in the household, turning belief into an embodied mark of belonging.";
+  }
+
+  if (lower.includes("laugh") || lower.includes("impossible") || lower.includes("hundred")) {
+    return "The reaction exposes how impossible the promise feels from a human point of view, which makes God's power and timing stand out more clearly.";
+  }
+
+  if (lower.includes("righteous") || lower.includes("judge") || lower.includes("wicked")) {
+    return "The phrase teaches that God's mercy never cancels His justice, and His justice is never careless or cruel.";
+  }
+
+  if (section.chapter === 12 && section.startVerse <= 9) {
+    return "Abram is being called to obey before he can see the whole path ahead.";
+  }
+
+  return "The wording carries one piece of the passage's meaning instead of merely adding background information.";
+}
+
+function hasGenesisElevenToTwentyTeachingLayer(body: string) {
+  return /matters|important|reveals|shows|teaches|connects|larger bible|covenant|promise|faith|obedience|judgment|mercy|worship|blessing|sin|redemption|identity|reader understands/i.test(body);
+}
+
+function cleanGenesisElevenToTwentyBoilerplate(body: string) {
+  return note(
+    body
+      .split("\n\n")
+      .map((line) =>
+        line
+          .replace(/^This phrase matters because /, "")
+          .replace(/^This matters because /, "")
+          .replace(/^It connects to the larger Bible theme that /, "")
+          .replace(/^It connects to the larger Bible theme of /, "")
+          .replace(/^The wording is worth noticing because /, "")
+          .trim(),
+      )
+      .filter(Boolean),
+  );
+}
+
+function deepenGenesisElevenToTwentyPhraseExplanation(
+  section: PersonalGenesisPhraseSectionInput,
+  title: string,
+  body: string,
+) {
+  const cleanedBody = cleanGenesisElevenToTwentyBoilerplate(body);
+  const lines = cleanedBody.split("\n\n").filter(Boolean);
+  const cleanTitle = stripGenesisElevenToTwentyPhraseEmoji(title);
+  const hasTeachingLayer = hasGenesisElevenToTwentyTeachingLayer(cleanedBody);
+  if (lines.length >= 6 && hasTeachingLayer) return cleanedBody;
+
+  const theme = getGenesisElevenToTwentyStudyTheme(section);
+  const additions = [
+    getGenesisElevenToTwentyPhraseFocus(section, cleanTitle),
+    theme.matters,
+    theme.theme,
+  ].filter((line) => !cleanedBody.includes(line));
+  const neededAdditions = hasTeachingLayer ? additions.slice(0, Math.max(1, 6 - lines.length)) : additions;
+
+  return note([
+    ...lines,
+    ...neededAdditions,
+  ]);
+}
+
 function addGenesisElevenToTwentyPhraseTitleEmojis(sections: PersonalGenesisPhraseSectionInput[]) {
   return sections.map((section) => ({
     ...section,
-    phrases: section.phrases.map(([title, body]): [string, string] => [
-      titleHasEmoji(title) ? title : `${getGenesisElevenToTwentyPhraseEmoji(title)} ${title}`,
-      body,
-    ]),
+    phrases: section.phrases.map(([title, body]): [string, string] => {
+      const heading = titleHasEmoji(title) ? title : `${getGenesisElevenToTwentyPhraseEmoji(title)} ${title}`;
+      return [heading, deepenGenesisElevenToTwentyPhraseExplanation(section, heading, body)];
+    }),
   }));
 }
 

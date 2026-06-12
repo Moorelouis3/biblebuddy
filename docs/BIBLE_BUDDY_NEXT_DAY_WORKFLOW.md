@@ -87,8 +87,9 @@ Reader-note rules:
 - Phrase cards only. Do not add broad commentary cards such as "What Is Happening Here?", "Why This Detail Matters", "Beginner Connection", "Watch The Pattern", "What This Shows About People", or "What This Shows About God".
 - Use Exodus 1-4 Day 22 as the phrase-card explanation model. Each card must teach the exact phrase in front of the reader, the way Exodus 1:1-6 explains "These Are The Names", "Which Came Into Egypt", "Every Man And His Household", "Seventy Souls", "Joseph Was In Egypt Already", and "Joseph Died, And All His Brethren".
 - Use the corrected Day 24 and Day 25 Exodus cards as the current formatting example for later Exodus days: start with the phrase itself, then explain its meaning in plain language, then use short spaced teaching lines and emoji lists only when they help.
+- Use the Genesis 1-style Key Phrase format: explain the exact phrase directly, use short spaced lines, add emoji lists only for real listable ideas, and teach the phrase without announcing the framework.
 - Do not start the first sentence by citing the section reference, such as "The Hand Of The LORD in Exodus 9:1-6...". The card title already anchors the phrase. Explain the phrase directly, such as "The Hand Of The LORD means..."
-- Do not write bucket explanations where many cards begin the same way, such as "This verse shows...", "This phrase belongs to...", "is worth slowing down...", "this phrase comes directly...", "not filler...", or the same recap paragraph repeated across cards.
+- Do not write bucket explanations where many cards begin the same way, such as "This verse shows...", "This phrase belongs to...", "is worth slowing down...", "this phrase comes directly...", "not filler...", "This phrase matters because...", "It connects to the larger Bible theme...", or the same recap paragraph repeated across cards.
 - The first sentence of each phrase card should be specific to that exact phrase, not a reusable category label.
 - Use short paragraph spacing and emoji lists when they genuinely help the reader see parts of the phrase.
 - Think like a Bible beginner:

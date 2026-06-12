@@ -64,6 +64,26 @@ The notes should not feel like a sermon outline, a school worksheet, or a roboti
 
 They should feel like Louis teaching the Bible with patience, clarity, warmth, and weight.
 
+## Key Phrase Explanation Format
+
+Key Phrase cards should explain the exact phrase like Genesis 1:
+
+- Start with what the phrase means in the verse.
+- Keep the explanation in short, spaced lines.
+- Use emoji lists only when they list real ideas, objects, people, movements, or contrasts.
+- Explain culture, Bible background, promise, sin, judgment, mercy, worship, or covenant only when it helps the reader understand the phrase.
+- Do not announce the framework.
+
+Do not write repeated formula lines such as:
+
+- "This phrase matters because..."
+- "It connects to the larger Bible theme..."
+- "This verse shows..."
+- "This phrase belongs to..."
+- "This phrase is worth slowing down over..."
+
+The card should simply teach the phrase in a warm, direct way.
+
 ## Reader Question Standard
 
 Bible Buddy is a study Bible experience, not a summary app.

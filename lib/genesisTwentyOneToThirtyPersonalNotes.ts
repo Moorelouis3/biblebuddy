@@ -720,11 +720,150 @@ function hasVisualList(content: string) {
     .some((line) => /^[^\w\s"']/.test(line.trim()));
 }
 
-function formatGenesisTwentyOneToThirtyPhraseExplanation(
+function stripGenesisTwentyOneToThirtyPhraseEmoji(title: string) {
+  return title.replace(/^[^A-Za-z0-9']+\s*/, "").trim();
+}
+
+function getGenesisTwentyOneToTwentyFourStudyTheme(section: PersonalGenesisPhraseSectionInput) {
+  if (section.chapter === 21) {
+    return {
+      matters: "Genesis 21 shows the promised child arriving after years of waiting.",
+      theme: "God keeps His covenant promises while also showing mercy to people who feel cast out and afraid.",
+    };
+  }
+
+  if (section.chapter === 22) {
+    return {
+      matters: "Genesis 22 tests whether Abraham trusts the Giver more than the gift he waited so long to receive.",
+      theme: "The chapter teaches faith, surrender, substitution, and the LORD providing what His people cannot provide for themselves.",
+    };
+  }
+
+  if (section.chapter === 23) {
+    return {
+      matters: "Sarah's death turns the land promise into something Abraham must still believe while standing beside a grave.",
+      theme: "God's promises remain true even when His people are grieving and waiting for fulfillment.",
+    };
+  }
+
+  if (section.chapter === 24) {
+    return {
+      matters: "Genesis 24 shows the promise moving to the next generation through prayer, providence, character, and willing obedience.",
+      theme: "God guides ordinary decisions while preserving His covenant promise from one generation to the next.",
+    };
+  }
+
+  return {
+    matters: "The phrase carries part of the promise story forward through real decisions, family tension, and God's steady faithfulness.",
+    theme: "God's plan keeps moving through ordinary people who must learn to trust His word.",
+  };
+}
+
+function getGenesisTwentyOneToTwentyFourPhraseFocus(section: PersonalGenesisPhraseSectionInput, cleanTitle: string) {
+  const lower = cleanTitle.toLowerCase();
+
+  if (lower.includes("visited") || lower.includes("as he had said") || lower.includes("set time") || lower.includes("isaac")) {
+    return "⏳ Long wait\n\n👵 Impossible body\n\n👶 Promised son\n\n😂 Laughter turned from doubt into worship";
+  }
+
+  if (lower.includes("laug") || lower.includes("mock")) {
+    return "The wording uses emotion to show what is happening inside the family, where joy, tension, and rivalry all press against the promise.";
+  }
+
+  if (lower.includes("hagar") || lower.includes("ishmael") || lower.includes("lad") || lower.includes("water")) {
+    return "The phrase keeps Hagar and Ishmael from becoming side characters who disappear; God sees their distress and provides for them in the wilderness.";
+  }
+
+  if (lower.includes("covenant") || lower.includes("oath") || lower.includes("swear") || lower.includes("beersheba")) {
+    return "The words show peace being made through public commitment, where promises are spoken clearly and remembered in a place.";
+  }
+
+  if (lower.includes("tempt") || lower.includes("prove") || lower.includes("offer") || lower.includes("only son") || lower.includes("moriah")) {
+    return "❤️ Isaac is loved\n\n⛰️ Moriah is costly\n\n🪵 The wood is carried\n\n🐏 The substitute will be provided";
+  }
+
+  if (lower.includes("lamb") || lower.includes("ram") || lower.includes("provided") || lower.includes("instead")) {
+    return "The phrase points to substitution, because the LORD provides a sacrifice in the place where death seemed certain.";
+  }
+
+  if (lower.includes("blessing") || lower.includes("seed") || lower.includes("stars") || lower.includes("sand")) {
+    return "The wording expands the promise beyond one family moment and shows God's plan reaching toward descendants, nations, and blessing.";
+  }
+
+  if (lower.includes("sarah") || lower.includes("died") || lower.includes("mourn") || lower.includes("bury")) {
+    return "The phrase treats grief as part of the covenant story, not an interruption of it.";
+  }
+
+  if (lower.includes("field") || lower.includes("cave") || lower.includes("machpelah") || lower.includes("possession")) {
+    return "The land detail matters because Abraham owns only a burial place, yet he still believes God will give the land to his descendants.";
+  }
+
+  if (lower.includes("servant") || lower.includes("pray") || lower.includes("lord god") || lower.includes("kindness")) {
+    return "The phrase shows dependence on God in an ordinary decision, turning the search for a wife into an act of prayer and trust.";
+  }
+
+  if (lower.includes("rebekah") || lower.includes("damsel") || lower.includes("draw water") || lower.includes("camels")) {
+    return "The detail reveals character through action, showing generosity, courage, and readiness before the story explains her future role.";
+  }
+
+  if (lower.includes("go with this man") || lower.includes("i will go") || lower.includes("blessed rebekah")) {
+    return "The phrase shows the promise moving forward through willing response, not only through family arrangement.";
+  }
+
+  return "The wording explains how this moment carries the promise story forward instead of merely filling space.";
+}
+
+function hasGenesisTwentyOneToThirtyTeachingLayer(content: string) {
+  return /matters|important|reveals|shows|teaches|connects|larger bible|covenant|promise|faith|obedience|judgment|mercy|worship|blessing|sin|redemption|identity|reader sees|reader understands/i.test(content);
+}
+
+function cleanGenesisTwentyOneToThirtyBoilerplate(content: string) {
+  return note(
+    content
+      .split("\n\n")
+      .map((line) =>
+        line
+          .replace(/^This phrase matters because /, "")
+          .replace(/^This matters because /, "")
+          .replace(/^It connects to the larger Bible theme that /, "")
+          .replace(/^It connects to the larger Bible theme of /, "")
+          .replace(/^The wording deserves attention because /, "")
+          .trim(),
+      )
+      .filter(Boolean),
+  );
+}
+
+function deepenGenesisTwentyOneToTwentyFourPhraseExplanation(
   section: PersonalGenesisPhraseSectionInput,
+  title: string,
   content: string,
 ) {
-  return content;
+  if (section.chapter < 21 || section.chapter > 24) return content;
+
+  const cleanedContent = cleanGenesisTwentyOneToThirtyBoilerplate(content);
+  const lines = cleanedContent.split("\n\n").filter(Boolean);
+  const hasTeachingLayer = hasGenesisTwentyOneToThirtyTeachingLayer(cleanedContent);
+  if (lines.length >= 6 && hasTeachingLayer) return cleanedContent;
+
+  const cleanTitle = stripGenesisTwentyOneToThirtyPhraseEmoji(title);
+  const theme = getGenesisTwentyOneToTwentyFourStudyTheme(section);
+  const additions = [
+    getGenesisTwentyOneToTwentyFourPhraseFocus(section, cleanTitle),
+    theme.matters,
+    theme.theme,
+  ].filter((line) => !cleanedContent.includes(line));
+  const neededAdditions = hasTeachingLayer ? additions.slice(0, Math.max(1, 6 - lines.length)) : additions;
+
+  return note([...lines, ...neededAdditions]);
+}
+
+function formatGenesisTwentyOneToThirtyPhraseExplanation(
+  section: PersonalGenesisPhraseSectionInput,
+  title: string,
+  content: string,
+) {
+  return deepenGenesisTwentyOneToTwentyFourPhraseExplanation(section, title, content);
 }
 
 function formatGenesisTwentyOneToThirtySectionExplanations(sections: PersonalGenesisPhraseSectionInput[]) {
@@ -732,7 +871,7 @@ function formatGenesisTwentyOneToThirtySectionExplanations(sections: PersonalGen
     ...section,
     phrases: section.phrases.map(([title, content]) => [
       title,
-      formatGenesisTwentyOneToThirtyPhraseExplanation(section, content),
+      formatGenesisTwentyOneToThirtyPhraseExplanation(section, title, content),
     ] as [string, string]),
   }));
 }
