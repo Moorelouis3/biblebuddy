@@ -11920,6 +11920,1753 @@ function makePersonalGenesisPhraseSection(section: {
   };
 }
 
+const DAY_4_QUALITY_REVIEW_SECTIONS: Array<Parameters<typeof makePersonalGenesisPhraseSection>[0]> = [
+  {
+    chapter: 8,
+    startVerse: 1,
+    endVerse: 5,
+    reference: "Genesis 8:1-5",
+    title: "God Remembers Noah",
+    icon: "🧠",
+    phrases: [
+      [
+        "🧠 God Remembered Noah",
+        `This does not mean God forgot Noah.
+
+In Scripture, when God remembers, He turns His covenant attention toward someone and acts for them.
+
+Noah is still inside the ark.
+
+The water has not disappeared yet.
+
+But this sentence tells the reader that the turning point has begun.
+
+🧠 God remembers
+🛶 Noah is not abandoned
+🌱 Mercy begins before Noah can see dry ground`,
+      ],
+      [
+        "🐄 Every Living Thing",
+        `God remembers Noah, but He also remembers the living creatures with him.
+
+That detail keeps the flood story from becoming only a human survival story.
+
+The Creator still cares about the life He made.
+
+The animals in the ark matter because creation itself is being preserved for a renewed beginning.
+
+🐄 Cattle
+🐦 Birds
+🌍 Living creatures
+
+God's mercy is wider than one man.`,
+      ],
+      [
+        "🌬️ God Made A Wind To Pass",
+        `Wind moves over the flooded earth.
+
+That should make readers think back to Genesis 1, where God's Spirit moved over the waters before dry land appeared.
+
+The world is not being abandoned under judgment.
+
+God is moving it toward order again.
+
+🌬️ Wind moves
+🌊 Waters recede
+🌍 Land will appear
+
+Genesis 8 feels like a new creation scene after judgment.`,
+      ],
+      [
+        "🚫 The Fountains Also Of The Deep Were Stopped",
+        `The flood began when the fountains of the deep were broken open.
+
+Now those waters are stopped.
+
+This means the flood is not a wild force outside God's control.
+
+God rules the waters that rise, and He rules the waters that return.
+
+🚫 The deep is restrained
+☔ Rain is restrained
+👑 God limits judgment`,
+      ],
+      [
+        "☔ The Rain From Heaven Was Restrained",
+        `The rain does not simply run out.
+
+It is restrained.
+
+That word helps readers see God's command over the storm.
+
+Judgment had a beginning, and now judgment has a boundary.
+
+The same God who shut Noah in the ark now shuts the floodwaters down.
+
+☔ Rain stops
+🌊 Waters lower
+🛶 The ark remains under God's care`,
+      ],
+      [
+        "📉 The Waters Were Abated",
+        `The waters go down slowly.
+
+Genesis does not rush the restoration.
+
+Noah is safe, but he is still waiting.
+
+That matters because rescue and full renewal are not always the same moment.
+
+📉 Waters decrease
+⏳ Waiting continues
+🌱 Hope grows in stages`,
+      ],
+      [
+        "⛰️ The Ark Rested",
+        `The ark is no longer drifting.
+
+It rests on the mountains of Ararat.
+
+Noah cannot leave yet, but the story has entered a new stage.
+
+God has brought the place of refuge to a resting place.
+
+⛰️ Resting place
+🛶 Preserved life
+🌱 Restoration beginning`,
+      ],
+      [
+        "📅 The Seventh Month, On The Seventeenth Day",
+        `Genesis gives a real date for the ark resting.
+
+That helps the reader feel the length of Noah's waiting.
+
+This is not a vague rescue story where everything happens instantly.
+
+There are months, days, stages, and patience.
+
+📅 A marked day
+⏳ A long process
+🛶 A real waiting season`,
+      ],
+      [
+        "👀 The Tops Of The Mountains Seen",
+        `The mountains are the first visible sign that land is returning.
+
+Noah does not yet have a world he can walk in.
+
+But he can see that the covered earth is beginning to appear again.
+
+👀 First sight of land
+⛰️ Hope becomes visible
+🌱 The world is returning step by step`,
+      ],
+    ],
+  },
+  {
+    chapter: 8,
+    startVerse: 6,
+    endVerse: 12,
+    reference: "Genesis 8:6-12",
+    title: "Noah Sends The Birds",
+    icon: "🕊️",
+    phrases: [
+      [
+        "🪟 Noah Opened The Window",
+        `Noah begins looking out from the ark.
+
+He has trusted God through the flood, but now he must discern the right time for the next step.
+
+The window turns the ark from a closed refuge into a place of watching.
+
+🪟 Looking out
+⏳ Waiting carefully
+🧭 Seeking what God is doing next`,
+      ],
+      [
+        "🐦 He Sent Forth A Raven",
+        `The raven is the first bird Noah sends out.
+
+It goes to and fro while the waters are still drying.
+
+Ravens can survive in rougher conditions, so this first sending shows that the earth is changing but not yet ready in a full way.
+
+🐦 Raven sent
+🌊 Waters remain
+⏳ The test is not complete`,
+      ],
+      [
+        "🕊️ He Sent Forth A Dove",
+        `The dove gives Noah a different kind of sign.
+
+Unlike the raven, the dove needs a place to rest.
+
+If the dove can settle, Noah will know the ground is becoming livable again.
+
+🕊️ Dove sent
+🌍 Looking for habitable land
+🧭 Wisdom waits for evidence`,
+      ],
+      [
+        "🌊 The Waters Were Abated",
+        `Noah sends the dove to see whether the waters have gone down from the face of the ground.
+
+That detail matters because Noah is not guessing wildly.
+
+He is looking for a real sign that the world outside can support life again.
+
+🌊 Waters lower
+🌍 Ground returning
+🛶 Noah still waits`,
+      ],
+      [
+        "🦶 No Rest For The Sole Of Her Foot",
+        `The dove returns because there is nowhere to rest.
+
+The danger is passing, but the world is not ready yet.
+
+That phrase helps beginners understand the difference between being saved from the flood and being released into a restored world.
+
+🦶 No landing place
+🕊️ Dove returns
+⏳ Restoration is still unfinished`,
+      ],
+      [
+        "✋ He Put Forth His Hand",
+        `Noah pulls the dove back into the ark.
+
+This is a small tender detail.
+
+The ark remains the place of safety until the world outside is ready.
+
+Noah does not punish the dove for returning.
+
+He receives it back.
+
+✋ Hand extended
+🛶 Shelter remains
+🕊️ Waiting continues with care`,
+      ],
+      [
+        "⏳ Stayed Yet Other Seven Days",
+        `Noah waits in seven-day rhythms.
+
+Even after a test, he does not rush.
+
+The repeated waiting teaches patience after judgment.
+
+Hope is growing, but wisdom still moves slowly.
+
+⏳ Seven days
+🕊️ Another sending
+🧭 Patient discernment`,
+      ],
+      [
+        "🌿 An Olive Leaf Pluckt Off",
+        `The olive leaf is a small sign with big meaning.
+
+It means vegetation is returning.
+
+The earth is not only drying; it is beginning to produce life again.
+
+🌿 Fresh growth
+🕊️ Hope carried back
+🌱 Life after judgment`,
+      ],
+      [
+        "🧠 So Noah Knew",
+        `The olive leaf gives Noah understanding.
+
+He does not know because he escaped the ark early.
+
+He knows because he waited and watched.
+
+This is a beautiful picture of patient wisdom.
+
+🧠 Noah understands
+🌊 Waters are abated
+⏳ Waiting has taught him`,
+      ],
+      [
+        "🕊️ Returned Not Again Unto Him Any More",
+        `The dove does not return the final time.
+
+That means the earth can now support life outside the ark.
+
+The sign is quiet, but it is powerful.
+
+The world is moving from preservation inside the ark to life outside the ark.
+
+🕊️ No return
+🌍 Habitable earth
+🚪 The exit is getting closer`,
+      ],
+    ],
+  },
+  {
+    chapter: 8,
+    startVerse: 13,
+    endVerse: 14,
+    reference: "Genesis 8:13-14",
+    title: "The Ground Becomes Dry",
+    icon: "🌍",
+    phrases: [
+      [
+        "📅 Six Hundredth And First Year",
+        `Genesis keeps marking time carefully.
+
+Noah's waiting is measured in real months and days.
+
+That gives weight to the story.
+
+The flood is not treated like a quick scene change; it is a long season of judgment, preservation, and gradual renewal.
+
+📅 Real time
+⏳ Long waiting
+🛶 Patient endurance`,
+      ],
+      [
+        "🌊 Waters Were Dried Up From Off The Earth",
+        `The waters that once covered the earth are now dried up.
+
+This is the reversal of the flood's covering judgment.
+
+Genesis wants readers to feel the movement from covered earth to visible ground.
+
+🌊 Waters gone down
+🌍 Earth visible
+🌱 New beginning near`,
+      ],
+      [
+        "🪵 Noah Removed The Covering Of The Ark",
+        `Noah removes the covering and looks out.
+
+This is different from simply opening the window.
+
+The scene feels more open, like the closed season inside the ark is nearing its end.
+
+🪵 Covering removed
+👀 Noah looks
+🚪 Exit is close`,
+      ],
+      [
+        "👀 Behold, The Face Of The Ground Was Dry",
+        `Noah sees dry ground.
+
+The phrase face of the ground connects the reader back to the earth that had been covered with death and water.
+
+Now the surface is visible again.
+
+👀 Noah sees
+🌍 Ground appears
+🌱 Life can restart`,
+      ],
+      [
+        "🌍 Was The Earth Dried",
+        `The earth being dried marks the final readiness of the world outside.
+
+The ground was visible before, but now the earth is fully ready for the next command.
+
+Noah still waits for God to speak.
+
+That matters.
+
+Seeing an opportunity is not the same as receiving God's timing.
+
+🌍 Earth ready
+⏳ Noah waits
+🗣️ God will speak next`,
+      ],
+    ],
+  },
+  {
+    chapter: 8,
+    startVerse: 15,
+    endVerse: 19,
+    reference: "Genesis 8:15-19",
+    title: "God Calls Life Out Of The Ark",
+    icon: "🚪",
+    phrases: [
+      [
+        "🗣️ God Spake Unto Noah",
+        `Noah does not leave the ark simply because the ground looks dry.
+
+He waits until God speaks.
+
+That matches the earlier pattern: God told Noah to enter, and God tells Noah to go out.
+
+🗣️ God's word leads
+🚪 The next step opens
+🛶 Noah follows God's timing`,
+      ],
+      [
+        "🚪 Go Forth Of The Ark",
+        `This is the command that moves Noah from preservation into mission.
+
+The ark was not meant to be a permanent home.
+
+It was God's refuge through judgment.
+
+Now God sends Noah back into the renewed world.
+
+🚪 Exit
+🌍 New beginning
+🧭 Obedience continues after rescue`,
+      ],
+      [
+        "👨‍👩‍👦 Thou, And Thy Wife, And Thy Sons",
+        `God names Noah's family in the exit command.
+
+The rescued family leaves together.
+
+This matters because the future human story will continue through this household.
+
+👨‍👩‍👦 Family preserved
+🌍 Humanity continues
+📜 Genesis 10 is being prepared`,
+      ],
+      [
+        "🐾 Bring Forth With Thee Every Living Thing",
+        `The animals are brought out with Noah.
+
+God preserved them so life could continue on the earth.
+
+The ark was never only about keeping Noah alive.
+
+It was about preserving a living world.
+
+🐾 Animals released
+🌍 Creation continues
+🌱 Life begins again`,
+      ],
+      [
+        "📈 Breed Abundantly In The Earth",
+        `God wants the living creatures to multiply again.
+
+The flood judged corruption, but it did not cancel creation's purpose.
+
+Life is meant to spread across the earth again.
+
+📈 Multiply
+🐾 Living creatures
+🌍 Earth filled again`,
+      ],
+      [
+        "🌱 Be Fruitful, And Multiply",
+        `This phrase echoes Genesis 1.
+
+God is renewing the creation blessing after judgment.
+
+The same world has been cleansed by flood, but God's purpose for fruitfulness continues.
+
+🌱 Fruitful
+📈 Multiply
+🌍 Creation purpose continues`,
+      ],
+      [
+        "🧬 After Their Kinds",
+        `The animals leave the ark after their kinds.
+
+That wording echoes the order of Genesis 1.
+
+The post-flood world is not chaos.
+
+God preserves order, distinction, and life.
+
+🧬 Kinds
+🐾 Ordered creatures
+🌍 Creation order remains`,
+      ],
+    ],
+  },
+  {
+    chapter: 8,
+    startVerse: 20,
+    endVerse: 22,
+    reference: "Genesis 8:20-22",
+    title: "Noah Worships And God Promises Mercy",
+    icon: "🔥",
+    phrases: [
+      [
+        "🔥 Noah Builded An Altar Unto The LORD",
+        `Noah's first recorded act after leaving the ark is worship.
+
+He does not build a monument to himself.
+
+He builds an altar to the LORD.
+
+That shows gratitude after rescue and dependence after judgment.
+
+🔥 Altar
+🙏 Worship
+🛶 Rescue remembered`,
+      ],
+      [
+        "🕊️ Every Clean Beast",
+        `The clean animals preserved in the ark now become part of worship.
+
+This helps explain why extra clean animals were brought earlier.
+
+God was preserving not only life, but also the possibility of sacrifice.
+
+🕊️ Clean animals
+🔥 Burnt offering
+🙏 Worship after rescue`,
+      ],
+      [
+        "🔥 Offered Burnt Offerings",
+        `The offering rises before God after judgment.
+
+Noah knows the renewed world still needs worship, mercy, and fellowship with the LORD.
+
+The sacrifice does not pretend humanity is now sinless.
+
+It acknowledges that rescued people still need grace.
+
+🔥 Sacrifice
+🙏 Dependence
+🌱 Mercy after judgment`,
+      ],
+      [
+        "🌫️ The LORD Smelled A Sweet Savour",
+        `This is a Bible way of saying God receives the offering with favor.
+
+It does not mean God needs smoke or food.
+
+It means Noah's worship is accepted before Him.
+
+🌫️ Accepted offering
+🙏 Worship received
+🕊️ Relationship continues`,
+      ],
+      [
+        "❤️ The LORD Said In His Heart",
+        `This phrase lets the reader hear God's merciful resolve.
+
+After the flood, God is not reacting carelessly.
+
+He is revealing a settled commitment about how He will preserve the world.
+
+❤️ God's inner resolve
+🤝 Mercy promised
+🌍 World preserved`,
+      ],
+      [
+        "🌍 I Will Not Again Curse The Ground Any More",
+        `God promises not to keep striking the ground in this flood-like way.
+
+That promise is not because humans have become perfect.
+
+The very next line says the human heart is still evil from youth.
+
+So this promise is mercy over a still-broken world.
+
+🌍 Ground preserved
+🙏 Mercy
+💔 Human sin still real`,
+      ],
+      [
+        "🧠 The Imagination Of Man's Heart Is Evil From His Youth",
+        `This is one of the key lessons of the flood story.
+
+The flood judged evil, but it did not remove the heart problem.
+
+Humanity needs more than a washed world.
+
+Humanity needs changed hearts.
+
+🧠 Heart problem
+💔 Sin remains
+🙏 Deeper rescue needed`,
+      ],
+      [
+        "🌾 Seedtime And Harvest",
+        `God promises the ordinary rhythms that make life possible.
+
+Planting and harvest will continue.
+
+This is common mercy.
+
+The world keeps receiving seasons not because humanity deserves them, but because God is faithful.
+
+🌾 Seedtime
+🌽 Harvest
+🤝 Preserving mercy`,
+      ],
+      [
+        "☀️ Cold And Heat, Summer And Winter, Day And Night",
+        `God names the rhythms of creation.
+
+The seasons and days will continue while the earth remains.
+
+Every normal sunrise after the flood becomes a quiet witness to God's promise.
+
+☀️ Day
+🌙 Night
+❄️ Cold
+🔥 Heat
+
+Creation's rhythms are gifts of God's patience.`,
+      ],
+    ],
+  },
+  {
+    chapter: 9,
+    startVerse: 1,
+    endVerse: 7,
+    reference: "Genesis 9:1-7",
+    title: "Blessing, Blood, And Human Dignity",
+    icon: "🌱",
+    phrases: [
+      [
+        "🙌 God Blessed Noah And His Sons",
+        `Genesis 9 begins with blessing.
+
+That matters because the post-flood world is not restarted only with warnings.
+
+God speaks blessing over Noah's family before giving responsibility.
+
+🙌 Blessing
+👨‍👩‍👦 Family
+🌍 Humanity continues`,
+      ],
+      [
+        "🌱 Be Fruitful, And Multiply",
+        `This repeats the creation command from Genesis 1.
+
+The flood has not canceled God's design for human life.
+
+Families, growth, and filling the earth still belong to God's purpose.
+
+🌱 Fruitful
+📈 Multiply
+🌍 Replenish the earth`,
+      ],
+      [
+        "😨 The Fear Of You And The Dread Of You",
+        `The relationship between people and animals changes after the flood.
+
+Genesis 1 showed human dominion in a good creation.
+
+Here the language includes fear and dread.
+
+That tells us the renewed world is not Eden restored.
+
+😨 Fear
+🐾 Animals
+🌍 A fallen world continues`,
+      ],
+      [
+        "✋ Into Your Hand Are They Delivered",
+        `God gives humans authority over the animals.
+
+But this authority is not ownerless power.
+
+The creatures still belong to the Creator.
+
+Human use of creation must remain under God's limits.
+
+✋ Given into human hand
+🐾 Animals
+👑 God remains Lord`,
+      ],
+      [
+        "🍖 Every Moving Thing That Liveth Shall Be Meat For You",
+        `God now permits animals as food.
+
+This is a shift from the earlier focus on plants in Genesis 1.
+
+The permission is real, but it is immediately surrounded by a boundary about blood.
+
+🍖 Meat given
+🌿 Green herb remembered
+⚠️ Permission with limits`,
+      ],
+      [
+        "🩸 Flesh With The Life Thereof",
+        `Blood represents life.
+
+God permits meat, but He does not let people treat life casually.
+
+The command teaches reverence before the Creator of life.
+
+🩸 Blood
+❤️ Life
+🙏 Reverence`,
+      ],
+      [
+        "⚖️ Your Blood Of Your Lives Will I Require",
+        `God says human blood will be required.
+
+That means violence will not be treated as a small thing.
+
+The old world was filled with violence, and God now places a serious boundary around human life.
+
+⚖️ Accountability
+🩸 Blood
+👤 Human life matters`,
+      ],
+      [
+        "🩸 Whoso Sheddeth Man's Blood",
+        `Murder is treated with great seriousness because human life belongs to God.
+
+To shed human blood is not only to harm another person.
+
+It is to attack someone made in God's image.
+
+🩸 Bloodshed
+⚖️ Justice
+🪞 Image of God`,
+      ],
+      [
+        "🪞 In The Image Of God Made He Man",
+        `The image of God remains after sin and after the flood.
+
+That is a massive truth.
+
+Human dignity is not erased by the fall.
+
+Every human life still carries God-given worth.
+
+🪞 God's image
+👤 Human dignity
+⚖️ Why murder is so serious`,
+      ],
+      [
+        "📈 Bring Forth Abundantly In The Earth",
+        `Verse 7 repeats the fruitfulness command again.
+
+The repetition matters.
+
+God wants the renewed world to be filled with life, not fear, violence, and death.
+
+📈 Abundance
+🌍 Earth filled
+🌱 Life continues under blessing`,
+      ],
+    ],
+  },
+  {
+    chapter: 9,
+    startVerse: 8,
+    endVerse: 11,
+    reference: "Genesis 9:8-11",
+    title: "God Establishes His Covenant",
+    icon: "🤝",
+    phrases: [
+      [
+        "🗣️ God Spake Unto Noah",
+        `God personally explains the covenant.
+
+Noah does not invent the meaning of the flood or the future.
+
+God speaks, and His word defines what the renewed world can trust.
+
+🗣️ God speaks
+🤝 Covenant explained
+🛶 Noah receives the promise`,
+      ],
+      [
+        "🤝 I Establish My Covenant",
+        `God establishes the covenant Himself.
+
+Noah receives it; he does not negotiate it.
+
+The promise rests on God's commitment, not Noah's ability to control the future.
+
+🤝 God's covenant
+👑 God's initiative
+🌍 Creation preserved`,
+      ],
+      [
+        "👶 Your Seed After You",
+        `The covenant reaches beyond Noah's lifetime.
+
+God is speaking about generations not yet born.
+
+People will live under mercy promised before they existed.
+
+👶 Future generations
+📜 Promise continues
+🌍 A world for descendants`,
+      ],
+      [
+        "🐾 Every Living Creature",
+        `The covenant includes animals.
+
+Birds, cattle, and beasts are named because the promise is creation-wide.
+
+The Creator cares about the living world He preserved.
+
+🐾 Animals included
+🌍 Creation remembered
+🤝 Mercy wider than one family`,
+      ],
+      [
+        "🚪 All That Go Out Of The Ark",
+        `This phrase ties the covenant to the rescue that just happened.
+
+Everything that leaves the ark does so into a world held by God's promise.
+
+The exit is not random survival.
+
+It is life released under covenant mercy.
+
+🚪 Ark exit
+🐾 Preserved life
+🤝 Promise over the future`,
+      ],
+      [
+        "🌊 Neither Shall All Flesh Be Cut Off Any More",
+        `God promises that all flesh will not be cut off again by floodwaters.
+
+This does not mean judgment disappears from the Bible.
+
+It means the flood will not become God's repeated way of erasing the world.
+
+🌊 Flood limited
+🤝 Mercy promised
+🌍 Life preserved`,
+      ],
+      [
+        "🌍 Neither Shall There Any More Be A Flood To Destroy The Earth",
+        `This is the heart of the covenant promise.
+
+The world after the flood is still broken, but it is not abandoned to repeated total destruction by water.
+
+God binds the future of the earth to His own word.
+
+🌍 Earth preserved
+🌊 Flood restrained
+🤝 Promise stands`,
+      ],
+    ],
+  },
+  {
+    chapter: 9,
+    startVerse: 12,
+    endVerse: 17,
+    reference: "Genesis 9:12-17",
+    title: "The Bow In The Cloud",
+    icon: "🌈",
+    phrases: [
+      [
+        "🎁 The Token Of The Covenant",
+        `A token is a visible sign.
+
+God gives the covenant a sign people can see.
+
+The promise is spoken by God, and the sign helps creation remember that promise when clouds return.
+
+🎁 Sign
+🤝 Covenant
+👀 Visible reminder`,
+      ],
+      [
+        "🌈 I Do Set My Bow In The Cloud",
+        `The bow is the covenant sign.
+
+The word bow can also refer to a battle bow.
+
+The picture is powerful: the bow is set in the cloud, not aimed at the earth.
+
+🌈 Bow
+☁️ Cloud
+🕊️ Mercy after judgment`,
+      ],
+      [
+        "🌍 Between Me And The Earth",
+        `The covenant sign is between God and the earth.
+
+That makes the promise bigger than Noah's private family.
+
+The whole living world is under this preserving mercy.
+
+🌍 Earth
+🐾 Living creatures
+🤝 Creator's promise`,
+      ],
+      [
+        "☁️ When I Bring A Cloud Over The Earth",
+        `God does not promise there will never be clouds again.
+
+He promises a sign in the clouds.
+
+The reminder appears in the very place where fear could rise.
+
+☁️ Clouds still come
+🌈 Promise appears
+🙏 Storms do not cancel mercy`,
+      ],
+      [
+        "👀 The Bow Shall Be Seen In The Cloud",
+        `The sign is meant to be visible.
+
+A stormy sky becomes a place where the promise can be remembered.
+
+That helps readers see the rainbow as more than beauty.
+
+It is a mercy sign after judgment.
+
+👀 Seen
+🌈 Bow
+🤝 Covenant reminder`,
+      ],
+      [
+        "🧠 I Will Remember My Covenant",
+        `God remembering does not mean He might forget.
+
+In the Bible, remembering means faithful covenant attention.
+
+The sign declares that God remains committed to what He said.
+
+🧠 Remember
+🤝 Covenant faithfulness
+🌍 Creation preserved`,
+      ],
+      [
+        "♾️ The Everlasting Covenant",
+        `This covenant is called everlasting.
+
+That means the promise is not only for one storm, one season, or one generation.
+
+It stands over the continuing life of the earth.
+
+♾️ Continuing promise
+🌍 Earth preserved
+🐾 Every living creature included`,
+      ],
+      [
+        "🌍 Between Me And All Flesh",
+        `The covenant closes by repeating its wide reach.
+
+All flesh upon the earth is included.
+
+God is teaching Noah to see the renewed world under mercy, not merely under fear.
+
+🌍 All flesh
+🤝 Covenant
+🕊️ Mercy over creation`,
+      ],
+    ],
+  },
+  {
+    chapter: 9,
+    startVerse: 18,
+    endVerse: 23,
+    reference: "Genesis 9:18-23",
+    title: "Noah's Shame And His Sons",
+    icon: "🍇",
+    phrases: [
+      [
+        "👦 Shem, And Ham, And Japheth",
+        `The three sons are named again because the next chapter will trace nations through them.
+
+Genesis is moving from one family into the world map.
+
+These names are not filler.
+
+They are the bridge from flood rescue to the nations.
+
+👦 Three sons
+🌍 Future nations
+📜 Genesis 10 coming`,
+      ],
+      [
+        "📍 Ham Is The Father Of Canaan",
+        `This detail prepares the reader for what comes next.
+
+Canaan will be named in Noah's words, and Canaan's descendants will matter deeply in the promised land story.
+
+Genesis gives the connection before the tension unfolds.
+
+📍 Canaan
+📜 Future land story
+⚠️ Family consequences`,
+      ],
+      [
+        "🌍 Of Them Was The Whole Earth Overspread",
+        `Noah's sons become the source of the post-flood spread of humanity.
+
+The story is no longer only inside the ark.
+
+It is moving toward lands, peoples, languages, and nations.
+
+🌍 Earth overspread
+👨‍👩‍👦 Family expands
+📜 Table of Nations ahead`,
+      ],
+      [
+        "🍇 Noah Began To Be An Husbandman",
+        `Noah becomes a man of the ground, planting and farming after the flood.
+
+Normal life is restarting.
+
+But the scene also shows that ordinary gifts can become places of failure when wisdom is missing.
+
+🍇 Vineyard
+🌱 New world
+⚠️ Human weakness remains`,
+      ],
+      [
+        "🍷 He Drank Of The Wine, And Was Drunken",
+        `Genesis does not hide Noah's failure.
+
+The righteous man who survived the flood still sins.
+
+That honesty matters because the Bible is not pretending the flood fixed the human heart.
+
+🍷 Drunkenness
+💔 Weakness
+🛶 Rescued people still need grace`,
+      ],
+      [
+        "🫣 Uncovered Within His Tent",
+        `Noah's nakedness brings shame back into the story.
+
+That echoes Eden, where sin also led to nakedness, shame, and covering.
+
+The post-flood world is not a return to sinless paradise.
+
+🫣 Nakedness
+🌿 Eden echo
+💔 Shame after rescue`,
+      ],
+      [
+        "👀 Saw The Nakedness Of His Father",
+        `Ham sees his father's shame.
+
+The issue is not only seeing; it is what he does next.
+
+Instead of protecting Noah's dignity, he exposes the situation to his brothers.
+
+👀 Seeing shame
+🗣️ Spreading shame
+💔 Dishonor`,
+      ],
+      [
+        "🧥 Took A Garment",
+        `Shem and Japheth respond with covering.
+
+They do not deny Noah's failure, but they refuse to turn his shame into entertainment.
+
+Their action shows honor in a broken family moment.
+
+🧥 Covering
+🙈 Refusing to gaze
+🤝 Protecting dignity`,
+      ],
+      [
+        "🙈 They Saw Not Their Father's Nakedness",
+        `This phrase shows intentional restraint.
+
+Shem and Japheth know wrong has happened, but they choose honor instead of exposure.
+
+That contrast makes Ham's action clearer.
+
+🙈 Refusal to stare
+🧥 Covering shame
+🤝 Honor in action`,
+      ],
+    ],
+  },
+  {
+    chapter: 9,
+    startVerse: 24,
+    endVerse: 29,
+    reference: "Genesis 9:24-29",
+    title: "Noah Speaks Over The Future",
+    icon: "⚠️",
+    phrases: [
+      [
+        "😔 Noah Awoke From His Wine",
+        `Noah wakes from drunkenness into consequence.
+
+The sin is not left in the tent as a private moment with no effect.
+
+Family damage has happened, and words now follow.
+
+😔 Waking
+🍷 Failure
+🏠 Family consequences`,
+      ],
+      [
+        "🧠 Knew What His Younger Son Had Done",
+        `Noah understands that something dishonoring has happened.
+
+Genesis does not explain every detail, but it makes clear that Ham's action was serious.
+
+The scene is about shame, dishonor, and family breakdown after the flood.
+
+🧠 Noah knows
+💔 Dishonor
+⚠️ Consequences follow`,
+      ],
+      [
+        "⚠️ Cursed Be Canaan",
+        `This phrase has been badly misused in history, so it must be read carefully.
+
+The text names Canaan, not all descendants of Ham and not people of African descent.
+
+In Genesis, Canaan matters because the Canaanites will later be tied to the promised land story.
+
+⚠️ Canaan named
+📍 Future land tension
+🚫 Not a license for racism or oppression`,
+      ],
+      [
+        "🏠 A Servant Of Servants",
+        `This phrase describes humiliation and subjection for Canaan.
+
+It points toward future conflict connected to Canaan's line.
+
+It does not erase human dignity, and it does not give anyone permission to abuse people.
+
+🏠 Subjection
+⚠️ Consequence
+📜 Future Canaan story`,
+      ],
+      [
+        "🙌 Blessed Be The LORD God Of Shem",
+        `Noah blesses the LORD, the God of Shem.
+
+The focus moves toward Shem's line.
+
+That matters because Genesis will later trace the promise line through Shem toward Abram.
+
+🙌 The LORD praised
+📜 Shem's line
+🌱 Promise direction`,
+      ],
+      [
+        "⛺ God Shall Enlarge Japheth",
+        `Japheth is associated with enlargement and spread.
+
+Genesis 10 will show his descendants spreading toward wider regions and coastlands.
+
+The family words in Genesis 9 prepare the map in Genesis 10.
+
+⛺ Enlargement
+🌍 Spread of peoples
+📜 Nations taking shape`,
+      ],
+      [
+        "⛺ He Shall Dwell In The Tents Of Shem",
+        `This phrase connects Japheth's future with Shem's tents.
+
+The exact future details are debated, but the line shows relationship between the family branches.
+
+Genesis is not treating these sons as isolated stories.
+
+⛺ Tents
+🤝 Family connection
+🌍 Nations related under God`,
+      ],
+      [
+        "📅 Noah Lived After The Flood Three Hundred And Fifty Years",
+        `Noah's life continues long after the flood.
+
+He lives in both worlds: the world before judgment and the world after it.
+
+That makes him a bridge figure in Genesis.
+
+📅 Long life
+🛶 Flood survivor
+🌍 New world witness`,
+      ],
+      [
+        "⚰️ Noah Died",
+        `Even Noah dies.
+
+He is righteous, obedient, preserved, and used by God.
+
+But he is not the final answer to death.
+
+Genesis keeps making readers long for someone greater than Noah.
+
+⚰️ Death remains
+🛶 Rescue was real
+✝️ Deeper salvation still needed`,
+      ],
+    ],
+  },
+  {
+    chapter: 10,
+    startVerse: 1,
+    endVerse: 5,
+    reference: "Genesis 10:1-5",
+    title: "Japheth And The Coastland Peoples",
+    icon: "🌍",
+    phrases: [
+      [
+        "📜 These Are The Generations Of The Sons Of Noah",
+        `This phrase introduces the Table of Nations.
+
+Genesis is not giving random names.
+
+It is showing how the post-flood world spreads from Noah's family.
+
+📜 Generations
+👨‍👩‍👦 Sons of Noah
+🌍 Nations beginning`,
+      ],
+      [
+        "👶 Unto Them Were Sons Born After The Flood",
+        `Life continues after judgment.
+
+Children are born in the world that came through the flood.
+
+This phrase quietly shows that God's preservation of Noah's family really does become a future for humanity.
+
+👶 Sons born
+🌱 Life continues
+🌍 The world repopulates`,
+      ],
+      [
+        "🧭 The Sons Of Japheth",
+        `Japheth's line is listed first.
+
+Many of these names are connected with distant peoples and regions around the wider ancient world.
+
+The Bible is widening the camera before narrowing later to Shem's line.
+
+🧭 Japheth
+🌊 Distant peoples
+🌍 Wide-angle world map`,
+      ],
+      [
+        "📍 Gomer, And Magog, And Madai",
+        `These names may feel unfamiliar, but they signal real peoples and regions to ancient readers.
+
+Genesis is giving Israel a memory of where surrounding nations came from.
+
+That helps later readers understand that the nations have history before Israel meets them.
+
+📍 Peoples
+🗺️ Regions
+📜 Bible geography begins early`,
+      ],
+      [
+        "🌊 Javan",
+        `Javan is often connected with Greek or coastal peoples in the wider Mediterranean world.
+
+That matters because Genesis 10 is not only about nearby neighbors.
+
+It stretches the map toward far-off peoples too.
+
+🌊 Coastlands
+🛶 Distant trade world
+🌍 Nations beyond Israel's immediate land`,
+      ],
+      [
+        "🏝️ Isles Of The Gentiles",
+        `This phrase points to coastlands or distant maritime peoples.
+
+For ancient readers, it would sound like humanity spreading toward the edges of the known world.
+
+Genesis is teaching that God's world is wide.
+
+🏝️ Coastlands
+🌊 Sea regions
+🌍 Gentile nations`,
+      ],
+      [
+        "🗣️ Every One After His Tongue",
+        `Languages are mentioned before Babel is explained in Genesis 11.
+
+Genesis 10 gives the result.
+
+Genesis 11 will zoom in and explain the event behind the scattering.
+
+🗣️ Tongues
+👨‍👩‍👦 Families
+🌍 Nations`,
+      ],
+      [
+        "🏛️ After Their Families, In Their Nations",
+        `The chapter describes people by families and nations.
+
+Families grow into peoples.
+
+Peoples settle into lands.
+
+Lands become part of the story God is telling.
+
+🏛️ Nations
+👨‍👩‍👦 Families
+📍 Lands`,
+      ],
+    ],
+  },
+  {
+    chapter: 10,
+    startVerse: 6,
+    endVerse: 12,
+    reference: "Genesis 10:6-12",
+    title: "Ham, Nimrod, And Early Kingdoms",
+    icon: "🏙️",
+    phrases: [
+      [
+        "📍 Cush, And Mizraim, And Phut, And Canaan",
+        `Ham's sons introduce several major biblical regions.
+
+Mizraim is connected with Egypt.
+
+Canaan becomes central to the promised land story.
+
+These names are seeds for huge later themes.
+
+📍 Egypt
+📍 Canaan
+🌍 Nations with future importance`,
+      ],
+      [
+        "👑 Cush Begat Nimrod",
+        `Nimrod receives unusual attention in a genealogy.
+
+Most names pass quickly, but Nimrod's power, hunting, and kingdom are described.
+
+Genesis wants readers to slow down and notice him.
+
+👑 Nimrod
+💪 Mighty one
+🏙️ Kingdom builder`,
+      ],
+      [
+        "💪 He Began To Be A Mighty One In The Earth",
+        `Mighty sounds impressive.
+
+But Genesis teaches readers to be careful with impressive power.
+
+The flood judged a world filled with violence, and now human greatness begins rising again.
+
+💪 Power
+🌍 Reputation
+⚠️ Strength needs moral wisdom`,
+      ],
+      [
+        "🏹 Mighty Hunter Before The LORD",
+        `This phrase can sound heroic, but it also carries weight.
+
+Nimrod is mighty before the LORD, which means his power is not hidden from God.
+
+His later city connections make readers alert to the danger of proud human power.
+
+🏹 Hunter
+👑 Reputation
+👀 Seen before the LORD`,
+      ],
+      [
+        "🏙️ The Beginning Of His Kingdom Was Babel",
+        `This is the first clear kingdom language in Genesis.
+
+Babel appears here before the tower story in Genesis 11.
+
+Genesis gives the location on the map before explaining the rebellion connected to it.
+
+🏙️ Babel
+👑 Kingdom beginnings
+⚠️ Pride ahead`,
+      ],
+      [
+        "📍 In The Land Of Shinar",
+        `Shinar becomes an important Bible location.
+
+It is connected with Babel and later with Babylon imagery.
+
+Genesis is already placing early empire power on the map.
+
+📍 Shinar
+🏙️ Babel
+📜 Later Bible echoes`,
+      ],
+      [
+        "🏛️ Builded Nineveh",
+        `Nineveh will become one of the famous cities associated with Assyria.
+
+Later, Jonah will be sent there.
+
+So this quick name is not random.
+
+Genesis is planting future Bible geography early.
+
+🏛️ Nineveh
+📜 Jonah connection later
+🌍 Nations taking shape`,
+      ],
+      [
+        "🏙️ The Same Is A Great City",
+        `Genesis notices the greatness of the city.
+
+Great cities can show organization, strength, and human achievement.
+
+But the Bible will keep asking whether greatness is submitted to God.
+
+🏙️ Great city
+💪 Human strength
+⚠️ Great does not always mean godly`,
+      ],
+    ],
+  },
+  {
+    chapter: 10,
+    startVerse: 13,
+    endVerse: 20,
+    reference: "Genesis 10:13-20",
+    title: "Egypt, Philistim, And Canaan's Borders",
+    icon: "🗺️",
+    phrases: [
+      [
+        "📍 Mizraim Begat",
+        `Mizraim is connected with Egypt.
+
+That matters because Egypt will become one of the most important places in the Bible.
+
+Genesis is introducing Egypt's world long before Joseph, Moses, and the Exodus.
+
+📍 Egypt
+👶 Descendants
+📜 Future Bible setting`,
+      ],
+      [
+        "🌊 Out Of Whom Came Philistim",
+        `The Philistines are named here before they become famous later.
+
+They will be major enemies in the stories of Samson, Saul, and David.
+
+Genesis plants the name early so later readers recognize the thread.
+
+🌊 Philistim
+⚔️ Future conflict
+📜 Name to remember`,
+      ],
+      [
+        "📍 Canaan Begat Sidon His Firstborn",
+        `Canaan's line begins with Sidon.
+
+Sidon connects with the coastal world north of Israel.
+
+The promised land story will later happen around peoples and cities like these.
+
+📍 Canaan
+🌊 Sidon
+🗺️ Land story prepared`,
+      ],
+      [
+        "🏠 Heth",
+        `Heth is connected with the Hittites.
+
+That name will return later in Genesis, especially around Abraham's purchase of a burial place.
+
+The Bible often introduces names before their importance becomes clear.
+
+🏠 Heth
+📜 Hittite connection
+🪦 Abraham story later`,
+      ],
+      [
+        "🏙️ Jebusite, Amorite, Girgasite",
+        `These are Canaanite peoples.
+
+Later, Israel will encounter peoples like these in the land.
+
+Genesis is showing that the promised land is not an empty stage.
+
+🏙️ Peoples in the land
+📍 Real geography
+⚔️ Future tension`,
+      ],
+      [
+        "🌍 The Families Of The Canaanites Spread Abroad",
+        `Canaan's descendants spread into many families and regions.
+
+That helps readers understand why Canaan becomes a broad and complicated part of the story.
+
+It is not only one person.
+
+It becomes many peoples.
+
+🌍 Families spread
+📍 Regions form
+🏛️ Peoples develop`,
+      ],
+      [
+        "🗺️ The Border Of The Canaanites",
+        `Genesis gives borders because land will matter.
+
+The Abraham story will soon focus on the land of Canaan.
+
+This geography prepares the reader before the promise arrives.
+
+🗺️ Borders
+📍 Canaan
+🌱 Promise land tension`,
+      ],
+      [
+        "🔥 Sodom, And Gomorrah, And Admah, And Zeboim",
+        `These names will become famous in Genesis 18 and 19.
+
+Here they appear as places on the map.
+
+Later they become places of moral warning and judgment.
+
+🔥 Sodom
+🔥 Gomorrah
+⚠️ Future judgment setting`,
+      ],
+      [
+        "🏛️ After Their Families, After Their Tongues, In Their Countries, And In Their Nations",
+        `Ham's section closes with the same pattern of families, languages, countries, and nations.
+
+Genesis is organizing the world after the flood.
+
+The names may feel distant, but they form the Bible's early map of peoples.
+
+🏛️ Nations
+🗣️ Tongues
+📍 Countries
+👨‍👩‍👦 Families`,
+      ],
+    ],
+  },
+  {
+    chapter: 10,
+    startVerse: 21,
+    endVerse: 25,
+    reference: "Genesis 10:21-25",
+    title: "Shem's Line Moves Toward Promise",
+    icon: "📜",
+    phrases: [
+      [
+        "📜 Unto Shem Also",
+        `Shem's section begins after Japheth and Ham.
+
+That delay builds attention.
+
+Genesis is about to guide the reader toward the line that will lead to Abram.
+
+📜 Shem
+🌱 Promise line
+👀 Watch this family`,
+      ],
+      [
+        "👴 Father Of All The Children Of Eber",
+        `Eber matters because his name is often connected with the word Hebrew.
+
+Genesis is moving toward the family identity that will later become central.
+
+The chapter does not explain everything yet, but it marks the line.
+
+👴 Eber
+📜 Hebrew connection
+🌱 Abram getting closer`,
+      ],
+      [
+        "🤝 The Brother Of Japheth The Elder",
+        `Genesis keeps the brothers connected even while tracing separate lines.
+
+The nations will spread and divide, but they still come from one post-flood family.
+
+That matters because the Bible presents humanity as related under one Creator.
+
+🤝 Brothers
+🌍 Shared origin
+📜 One connected human story`,
+      ],
+      [
+        "📍 Elam, And Asshur, And Arphaxad",
+        `These names connect Shem to peoples and places that matter later.
+
+Asshur connects with Assyria.
+
+Arphaxad becomes important because the promise line moves through him.
+
+📍 Elam
+📍 Asshur
+🌱 Arphaxad`,
+      ],
+      [
+        "🌱 Arphaxad Begat Salah",
+        `This phrase looks small, but it carries the line forward.
+
+Genesis will soon trace the family from Shem toward Abram.
+
+Arphaxad is part of that bridge.
+
+🌱 Family line
+📜 Covenant story
+👀 Abram is getting closer`,
+      ],
+      [
+        "🌱 Salah Begat Eber",
+        `The line moves from Salah to Eber.
+
+Eber's name stands out because of the later Hebrew connection.
+
+Genesis is narrowing the wide world toward a chosen family line.
+
+🌱 Generations
+📜 Eber marked
+🌍 Blessing for nations will come through a line`,
+      ],
+      [
+        "🔀 The Name Of One Was Peleg",
+        `Peleg is important because his name is connected to division.
+
+Genesis pauses over him because the division of the earth matters for the next chapter.
+
+This name prepares the reader for Babel.
+
+🔀 Peleg
+🌍 Division
+📜 Genesis 11 coming`,
+      ],
+      [
+        "🌍 In His Days Was The Earth Divided",
+        `This phrase likely points toward the scattering that Genesis 11 will explain.
+
+Genesis 10 gives the map.
+
+Genesis 11 will show the pride and judgment behind the division.
+
+🌍 Earth divided
+🗣️ Languages
+🏙️ Babel ahead`,
+      ],
+    ],
+  },
+  {
+    chapter: 10,
+    startVerse: 26,
+    endVerse: 32,
+    reference: "Genesis 10:26-32",
+    title: "The Nations Are Divided After The Flood",
+    icon: "🏛️",
+    phrases: [
+      [
+        "👨‍👩‍👦 Joktan Begat",
+        `Joktan's descendants show the wider spread of Shem's family.
+
+The promise line will narrow through another branch, but Genesis still records these peoples.
+
+That matters because God sees the whole family tree.
+
+👨‍👩‍👦 Descendants
+🌍 Wider spread
+📜 No family line is invisible`,
+      ],
+      [
+        "🏺 Sheba",
+        `Sheba appears here as one of Joktan's descendants.
+
+The name will echo later in biblical geography and trade-world language.
+
+Genesis is building a map that later stories can stand on.
+
+🏺 Sheba
+🛤️ Trade-world echoes
+📜 Future name to recognize`,
+      ],
+      [
+        "💰 Ophir",
+        `Ophir later becomes associated with valuable gold.
+
+That makes the name more than a random genealogy detail.
+
+Genesis is introducing places and peoples that later biblical readers will hear again.
+
+💰 Ophir
+📍 Distant wealth
+📜 Later Bible memory`,
+      ],
+      [
+        "🗺️ Their Dwelling Was From Mesha",
+        `This phrase places people in geography.
+
+The Bible is not only giving names; it is mapping where peoples settled.
+
+Real places matter because God's story happens in real history.
+
+🗺️ Dwelling
+📍 Mesha
+🌍 Peoples settled in lands`,
+      ],
+      [
+        "⛰️ Sephar A Mount Of The East",
+        `The phrase points toward eastern regions.
+
+Genesis is showing the spread of families beyond one central location.
+
+The world after the flood is expanding outward.
+
+⛰️ Mount of the east
+🗺️ Spread of settlement
+🌍 Wide world`,
+      ],
+      [
+        "📜 These Are The Sons Of Shem",
+        `This closes Shem's section.
+
+That closure matters because Shem's line will soon become the main line Genesis follows.
+
+The story is almost ready to move from the nations toward Abram.
+
+📜 Shem's sons
+🌱 Promise line
+👀 Abram coming soon`,
+      ],
+      [
+        "👨‍👩‍👦 After Their Families",
+        `Families are one of the main ways Genesis organizes history.
+
+The Bible does not treat people as isolated individuals floating through time.
+
+Families carry memory, blessing, sin, responsibility, and promise.
+
+👨‍👩‍👦 Families
+📜 Generations
+🌍 Peoples grow from households`,
+      ],
+      [
+        "🗣️ After Their Tongues",
+        `Languages are part of the nation list.
+
+This prepares the reader for Babel, where language confusion will explain the scattering.
+
+Genesis is already connecting people, speech, and division.
+
+🗣️ Tongues
+🏙️ Babel ahead
+🌍 Scattered peoples`,
+      ],
+      [
+        "🏛️ In Their Lands, After Their Nations",
+        `The nations are now connected to lands.
+
+That matters because land will become one of the biggest themes in Genesis.
+
+God will soon promise land to Abram in a world already filled with peoples and borders.
+
+🏛️ Nations
+📍 Lands
+🌱 Promise tension coming`,
+      ],
+      [
+        "🔀 By These Were The Nations Divided In The Earth After The Flood",
+        `This closing line summarizes Genesis 10.
+
+Humanity has spread into families, tongues, lands, and nations.
+
+Genesis gives the result before Genesis 11 explains the Babel event behind it.
+
+🔀 Nations divided
+🌍 Earth after the flood
+📜 Babel explanation coming`,
+      ],
+    ],
+  },
+];
+
 const WINDOWS_1252_BYTE_BY_CODE_POINT: Record<number, number> = {
   0x20ac: 0x80,
   0x201a: 0x82,
@@ -12023,7 +13770,7 @@ function makePersonalLeviticusPhraseSection(section: {
 }
 
 function applyPersonalGenesisFourThroughTenStudySections() {
-  const sections: BibleReaderStudySection[] = [
+  let sections: BibleReaderStudySection[] = [
     makePersonalGenesisPhraseSection({
       chapter: 4,
       startVerse: 1,
@@ -16051,6 +17798,9 @@ The nations are divided, but they still come from one human family under one Cre
       ],
     }),
   ];
+
+  sections = sections.filter((section) => section.chapter < 8 || section.chapter > 10);
+  sections.push(...DAY_4_QUALITY_REVIEW_SECTIONS.map(makePersonalGenesisPhraseSection));
 
   for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
     const section = BIBLE_READER_STUDY_SECTIONS[index];

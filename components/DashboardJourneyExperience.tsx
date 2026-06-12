@@ -10180,7 +10180,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     const [rawTitle = "", ...bodyLines] = content.split("\n");
     return {
       title: rawTitle.trim(),
-      body: bodyLines.join("\n").trim(),
+      body: bodyLines.join("\n").replace(/\n{2,}/g, "\n").trim(),
     };
   }
 
@@ -10236,8 +10236,8 @@ Before we understand redemption, we need to understand what God made humanity fo
                   {section.icon || "📖"}
                 </span>
                 <span className="min-w-0 flex-1">
-                  <span className="block text-[11px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">{section.reference}</span>
-                  <span className="mt-1 block text-base font-black leading-tight text-[var(--bb-text-primary,#111827)]">{section.title}</span>
+                  <span className="block text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--bb-accent,#2f7fe8)]">{section.reference}</span>
+                  <span className="mt-1 block text-[15px] font-extrabold leading-snug text-[var(--bb-text-primary,#111827)]">{section.title}</span>
                 </span>
                 <span className={`text-xl font-black text-[var(--bb-text-muted,#6b7280)] transition ${sectionOpen ? "rotate-90 text-[var(--bb-accent,#2f7fe8)]" : ""}`} aria-hidden="true">
                   ›
@@ -10259,14 +10259,14 @@ Before we understand redemption, we need to understand what God made humanity fo
                             aria-expanded={phraseOpen}
                             className="flex w-full items-center gap-3 px-3.5 py-3 text-left transition hover:bg-[var(--bb-surface-soft,#f4f8ff)]"
                           >
-                            <span className="min-w-0 flex-1 text-sm font-black leading-5 text-[var(--bb-text-primary,#111827)]">{phrase.title}</span>
+                            <span className="min-w-0 flex-1 text-[13px] font-extrabold leading-5 text-[var(--bb-text-primary,#111827)]">{phrase.title}</span>
                             <span className={`text-lg font-black text-[var(--bb-text-muted,#6b7280)] transition ${phraseOpen ? "rotate-90 text-[var(--bb-accent,#2f7fe8)]" : ""}`} aria-hidden="true">
                               ›
                             </span>
                           </button>
                           {phraseOpen ? (
                             <div className="border-t border-[var(--bb-card-border,#dbe7f4)] px-4 py-3">
-                              <div className="whitespace-pre-line text-sm font-semibold leading-7 text-[var(--bb-text-secondary,#374151)]">
+                              <div className="whitespace-pre-line text-[13px] font-medium leading-6 text-[var(--bb-text-secondary,#374151)]">
                                 {phrase.body}
                               </div>
                             </div>
