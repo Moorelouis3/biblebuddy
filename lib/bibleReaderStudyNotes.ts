@@ -7,6 +7,7 @@ import { EXODUS_11_20_PERSONAL_SECTIONS } from "./exodusElevenToTwentyPersonalNo
 import { EXODUS_21_30_PERSONAL_SECTIONS } from "./exodusTwentyOneToThirtyPersonalNotes";
 import { EXODUS_31_40_PERSONAL_SECTIONS } from "./exodusThirtyOneToFortyPersonalNotes";
 import { LEVITICUS_1_10_PERSONAL_SECTIONS } from "./leviticusOneToTenPersonalNotes";
+import { LEVITICUS_17_20_PERSONAL_SECTIONS } from "./leviticusSeventeenToTwentyPersonalNotes";
 
 export type BibleReaderStudyNoteCategory = {
   id: string;
@@ -19271,6 +19272,19 @@ function applyPersonalLeviticusOneThroughTenStudySections() {
   BIBLE_READER_STUDY_SECTIONS.push(...sections);
 }
 
+function applyPersonalLeviticusSeventeenThroughTwentyStudySections() {
+  const sections = LEVITICUS_17_20_PERSONAL_SECTIONS.map(makePersonalLeviticusPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "leviticus" && section.chapter >= 17 && section.chapter <= 20) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
 type ExodusTextureRule = {
   matches: string[];
   lines: string[];
@@ -20016,6 +20030,7 @@ applyPersonalExodusElevenThroughTwentyStudySections();
 applyPersonalExodusTwentyOneThroughThirtyStudySections();
 applyPersonalExodusThirtyOneThroughFortyStudySections();
 applyPersonalLeviticusOneThroughTenStudySections();
+applyPersonalLeviticusSeventeenThroughTwentyStudySections();
 applyPersonalExodusTextureStudySections();
 enforceStudySectionVerseLimit(8);
 

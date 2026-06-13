@@ -311,3 +311,35 @@ export const BIBLE_YEAR_DAY_THIRTY_TWO_AUDIO: BibleYearAudioDay = {
   apiSrc: getBibleYearAudioApiSrc(32),
   estimatedDuration: "35-40 min",
 };
+
+export const BIBLE_YEAR_DAY_THIRTY_THREE_AUDIO: BibleYearAudioDay = {
+  dayNumber: 33,
+  title: "Day 33 - Guilt, Consecration, and Priests",
+  storagePath: getBibleYearAudioStoragePath(33),
+  apiSrc: getBibleYearAudioApiSrc(33),
+  estimatedDuration: "35-40 min",
+};
+
+export const BIBLE_YEAR_DAY_THIRTY_FOUR_AUDIO: BibleYearAudioDay = {
+  dayNumber: 34,
+  title: "Day 34 - Worship, Holiness, and Clean Living",
+  storagePath: getBibleYearAudioStoragePath(34),
+  apiSrc: getBibleYearAudioApiSrc(34),
+  estimatedDuration: "30-35 min",
+};
+
+export const BIBLE_YEAR_DAY_THIRTY_FIVE_AUDIO: BibleYearAudioDay = {
+  dayNumber: 35,
+  title: "Day 35 - Cleansing and the Day of Atonement",
+  storagePath: getBibleYearAudioStoragePath(35),
+  apiSrc: getBibleYearAudioApiSrc(35),
+  estimatedDuration: "35-40 min",
+};
+
+export const BIBLE_YEAR_DAY_THIRTY_SIX_AUDIO: BibleYearAudioDay = {
+  dayNumber: 36,
+  title: "Day 36 - Holy Living Before a Holy God",
+  storagePath: getBibleYearAudioStoragePath(36),
+  apiSrc: getBibleYearAudioApiSrc(36),
+  estimatedDuration: "35-40 min",
+};

@@ -18,7 +18,11 @@ import {
   BIBLE_YEAR_DAY_THREE_AUDIO,
   BIBLE_YEAR_DAY_THIRTEEN_AUDIO,
   BIBLE_YEAR_DAY_THIRTY_AUDIO,
+  BIBLE_YEAR_DAY_THIRTY_FIVE_AUDIO,
+  BIBLE_YEAR_DAY_THIRTY_FOUR_AUDIO,
   BIBLE_YEAR_DAY_THIRTY_ONE_AUDIO,
+  BIBLE_YEAR_DAY_THIRTY_SIX_AUDIO,
+  BIBLE_YEAR_DAY_THIRTY_THREE_AUDIO,
   BIBLE_YEAR_DAY_THIRTY_TWO_AUDIO,
   BIBLE_YEAR_DAY_TWENTY_NINE_AUDIO,
   BIBLE_YEAR_DAY_TWENTY_ONE_AUDIO,
@@ -167,6 +171,11 @@ import {
   BIBLE_YEAR_DAY_THIRTY_FIVE_DEEP_STUDY_SECTIONS,
   LEVITICUS_DAY_THIRTY_FIVE_CLEANSING_AND_DAY_OF_ATONEMENT_LESSON,
 } from "./bibleYearDayThirtyFiveDeepNotes";
+import {
+  BIBLE_YEAR_DAY_THIRTY_SIX_DEEP_NOTES,
+  BIBLE_YEAR_DAY_THIRTY_SIX_DEEP_STUDY_SECTIONS,
+  LEVITICUS_DAY_THIRTY_SIX_HOLY_LIVING_BEFORE_A_HOLY_GOD_LESSON,
+} from "./bibleYearDayThirtySixDeepNotes";
 import { BIBLE_YEAR_DAY_ONE_DEEP_NOTES } from "./bibleYearDayOneDeepNotes";
 import { BIBLE_YEAR_DAY_ONE_DEEP_STUDY_SECTIONS, type BibleYearDeepStudySection } from "./bibleYearDayOneDeepStudy";
 import { BIBLE_YEAR_DAY_THREE_DEEP_NOTES, BIBLE_YEAR_DAY_THREE_DEEP_STUDY_SECTIONS } from "./bibleYearDayThreeDeepNotes";
@@ -796,6 +805,23 @@ const dayThirtyFiveSummary: BibleYearSummaryContent = {
   takeawaySupport: "Day 35 helps us see that God's holiness names the problem honestly, and God's mercy provides a way back.",
 };
 
+const dayThirtySixSummary: BibleYearSummaryContent = {
+  intro: [
+    "Leviticus 17-20 moves from the Day of Atonement into holy living.",
+    "These chapters teach that blood, worship, desire, family, justice, speech, business, strangers, and community life all belong before the LORD.",
+    "This day shows that holiness is not only about avoiding sin; it is about belonging to God.",
+  ],
+  highlights: [
+    ["blood", "The life of the flesh is in the blood, and God gives blood upon the altar for atonement."],
+    ["worship", "Sacrifice must come to the tabernacle instead of drifting into hidden or false worship."],
+    ["boundaries", "God gives holy boundaries for desire, family, marriage, children, and the body."],
+    ["neighbor", "Leviticus 19 connects holiness with justice, mercy, truthful speech, and love for neighbor and stranger."],
+    ["belonging", "God separates His people from the nations so that they should be His."],
+  ],
+  takeaway: "Holiness reaches the whole life because God's people belong to the holy LORD.",
+  takeawaySupport: "Day 36 helps us see that Leviticus is not random rules; it is God forming a people whose worship, bodies, relationships, justice, and mercy reflect Him.",
+};
+
 function buildFallbackSummary(day: GenesisBibleYearDay): BibleYearSummaryContent {
   const pieces = day.summary
     .split(",")
@@ -839,7 +865,7 @@ ${body}`;
 }
 
 function getReaderAlignedStudySections(day: GenesisBibleYearDay, fallback: BibleYearDeepStudySection[] | null | undefined) {
-  if (day.dayNumber < 1 || day.dayNumber > 35) return fallback ?? null;
+  if (day.dayNumber < 1 || day.dayNumber > 36) return fallback ?? null;
 
   const readerSections = day.readings.flatMap((reading) =>
     getBibleReaderStudySections(reading.book, reading.chapter).map((section) => ({
@@ -1113,7 +1139,7 @@ export const BIBLE_YEAR_DAY_CONTENT: Partial<Record<number, Omit<BibleYearDayCon
   },
   33: {
     lesson: LEVITICUS_DAY_THIRTY_THREE_GUILT_CONSECRATION_AND_PRIESTS_LESSON,
-    audio: null,
+    audio: BIBLE_YEAR_DAY_THIRTY_THREE_AUDIO,
     studyNotesMarkdown: BIBLE_YEAR_DAY_THIRTY_THREE_DEEP_NOTES,
     studyNotesSections: BIBLE_YEAR_DAY_THIRTY_THREE_DEEP_STUDY_SECTIONS,
     summary: dayThirtyThreeSummary,
@@ -1121,7 +1147,7 @@ export const BIBLE_YEAR_DAY_CONTENT: Partial<Record<number, Omit<BibleYearDayCon
   },
   34: {
     lesson: LEVITICUS_DAY_THIRTY_FOUR_WORSHIP_HOLINESS_AND_CLEAN_LIVING_LESSON,
-    audio: null,
+    audio: BIBLE_YEAR_DAY_THIRTY_FOUR_AUDIO,
     studyNotesMarkdown: BIBLE_YEAR_DAY_THIRTY_FOUR_DEEP_NOTES,
     studyNotesSections: BIBLE_YEAR_DAY_THIRTY_FOUR_DEEP_STUDY_SECTIONS,
     summary: dayThirtyFourSummary,
@@ -1129,11 +1155,19 @@ export const BIBLE_YEAR_DAY_CONTENT: Partial<Record<number, Omit<BibleYearDayCon
   },
   35: {
     lesson: LEVITICUS_DAY_THIRTY_FIVE_CLEANSING_AND_DAY_OF_ATONEMENT_LESSON,
-    audio: null,
+    audio: BIBLE_YEAR_DAY_THIRTY_FIVE_AUDIO,
     studyNotesMarkdown: BIBLE_YEAR_DAY_THIRTY_FIVE_DEEP_NOTES,
     studyNotesSections: BIBLE_YEAR_DAY_THIRTY_FIVE_DEEP_STUDY_SECTIONS,
     summary: dayThirtyFiveSummary,
     discussionPrompt: "What stands out to you about cleansing, restoration, and the Day of Atonement?",
+  },
+  36: {
+    lesson: LEVITICUS_DAY_THIRTY_SIX_HOLY_LIVING_BEFORE_A_HOLY_GOD_LESSON,
+    audio: BIBLE_YEAR_DAY_THIRTY_SIX_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_THIRTY_SIX_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_THIRTY_SIX_DEEP_STUDY_SECTIONS,
+    summary: dayThirtySixSummary,
+    discussionPrompt: "Where do you see God calling His people to live differently because they belong to Him?",
   },
 };
 

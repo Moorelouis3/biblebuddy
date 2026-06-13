@@ -6,6 +6,7 @@ import { EXODUS_11_20_PERSONAL_SECTIONS } from "../lib/exodusElevenToTwentyPerso
 import { EXODUS_21_30_PERSONAL_SECTIONS } from "../lib/exodusTwentyOneToThirtyPersonalNotes";
 import { EXODUS_31_40_PERSONAL_SECTIONS } from "../lib/exodusThirtyOneToFortyPersonalNotes";
 import { LEVITICUS_1_10_PERSONAL_SECTIONS } from "../lib/leviticusOneToTenPersonalNotes";
+import { LEVITICUS_17_20_PERSONAL_SECTIONS } from "../lib/leviticusSeventeenToTwentyPersonalNotes";
 
 type PersonalSection = {
   chapter: number;
@@ -61,6 +62,7 @@ const DAY_SPECS: Record<number, DaySpec> = {
   33: { book: "Leviticus", chapters: [5, 6, 7, 8], sections: LEVITICUS_1_10_PERSONAL_SECTIONS },
   34: { book: "Leviticus", chapters: [9, 10, 11, 12], sections: LEVITICUS_1_10_PERSONAL_SECTIONS },
   35: { book: "Leviticus", chapters: [13, 14, 15, 16], sections: LEVITICUS_1_10_PERSONAL_SECTIONS },
+  36: { book: "Leviticus", chapters: [17, 18, 19, 20], sections: LEVITICUS_17_20_PERSONAL_SECTIONS },
 };
 
 function parseDay() {
