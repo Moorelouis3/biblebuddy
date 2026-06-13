@@ -686,7 +686,11 @@ const GENESIS_21_30_TEXTURE_RULES: PersonalTextureRule[] = [
   },
 ];
 
-function addGenesisTwentyOneToThirtyTexture(title: string, content: string) {
+function addGenesisTwentyOneToThirtyTexture(section: PersonalGenesisPhraseSectionInput, title: string, content: string) {
+  if (section.chapter >= 25) {
+    return content;
+  }
+
   const lower = title.toLowerCase();
   const rule = GENESIS_21_30_TEXTURE_RULES.find((item) => item.matches.some((match) => lower.includes(match)));
 
@@ -700,7 +704,7 @@ function addGenesisTwentyOneToThirtyTexture(title: string, content: string) {
 function addGenesisTwentyOneToThirtySectionTexture(sections: PersonalGenesisPhraseSectionInput[]) {
   return sections.map((section) => ({
     ...section,
-    phrases: section.phrases.map(([title, content]) => [title, addGenesisTwentyOneToThirtyTexture(title, content)] as [string, string]),
+    phrases: section.phrases.map(([title, content]) => [title, addGenesisTwentyOneToThirtyTexture(section, title, content)] as [string, string]),
   }));
 }
 
@@ -821,6 +825,48 @@ function hasGenesisTwentyOneToThirtyVisualBlock(content: string) {
     .split("\n\n")
     .some((line) => /^[^\w\s"']/.test(line.trim()));
 }
+
+function getGenesisTwentyFiveToThirtyPhraseFocus(section: PersonalGenesisPhraseSectionInput, cleanTitle: string) {
+  const lower = `${section.title} ${cleanTitle}`.toLowerCase();
+
+  if (lower.includes("abraham") || lower.includes("isaac") || lower.includes("buried") || lower.includes("died")) {
+    return "\u{1F4DC} Promise history\n\n\u{26B0}\u{FE0F} Death and burial\n\n\u{1F476} The next generation\n\nGenesis shows the covenant story moving forward after Abraham's death.";
+  }
+
+  if (lower.includes("rebekah") || lower.includes("womb") || lower.includes("twins") || lower.includes("jacob") || lower.includes("esau")) {
+    return "\u{1F476} Children in the promise family\n\n\u{1F494} Family tension beginning early\n\n\u{1F4DC} God's word before the outcome is visible\n\nThe story is showing that the next generation will also need God's promise and mercy.";
+  }
+
+  if (lower.includes("birthright") || lower.includes("blessing") || lower.includes("firstborn") || lower.includes("sold")) {
+    return "\u{1F35E} Immediate hunger\n\n\u{1F4DC} A family inheritance\n\n\u{2696}\u{FE0F} A choice that reveals value\n\nGenesis is showing what each son values when pressure exposes the heart.";
+  }
+
+  if (lower.includes("famine") || lower.includes("gerar") || lower.includes("philistines") || lower.includes("egypt")) {
+    return "\u{26A0}\u{FE0F} Pressure in the land\n\n\u{1F4CD} A real place\n\n\u{1F6E1}\u{FE0F} God guarding the promise\n\nThe promise family is tested by need, fear, and life among other peoples.";
+  }
+
+  if (lower.includes("well") || lower.includes("water") || lower.includes("digged") || lower.includes("rehoboth")) {
+    return "\u{1F4A7} Water for life\n\n\u{26CF}\u{FE0F} Work and conflict\n\n\u{1F4CD} Room in the land\n\nThe wells show ordinary survival, dispute, and God's provision in the promised land.";
+  }
+
+  if (lower.includes("dream") || lower.includes("ladder") || lower.includes("bethel") || lower.includes("angels")) {
+    return "\u{1F4AD} A dream in the night\n\n\u{1FA9C} Heaven and earth connected\n\n\u{1F4CD} A place renamed by encounter\n\nGod meets Jacob while he is on the road, not after he has become impressive.";
+  }
+
+  if (lower.includes("laban") || lower.includes("rachel") || lower.includes("leah") || lower.includes("served") || lower.includes("seven years")) {
+    return "\u{1F494} Love and disappointment\n\n\u{23F3} Years of labor\n\n\u{1F3E0} Family complexity\n\nJacob enters a household where desire, deception, and waiting shape the story.";
+  }
+
+  if (lower.includes("bare") || lower.includes("conceived") || lower.includes("son") || lower.includes("daughter") || lower.includes("maid")) {
+    return "\u{1F476} Children being born\n\n\u{1F494} Pain and rivalry\n\n\u{1F64C} God seeing the overlooked\n\nGenesis is building Israel's family through real people with real wounds.";
+  }
+
+  if (lower.includes("flock") || lower.includes("cattle") || lower.includes("speckled") || lower.includes("ringstraked")) {
+    return "\u{1F411} Flocks and wages\n\n\u{1F4C8} Increase under pressure\n\n\u{1F6E1}\u{FE0F} God providing despite Laban\n\nJacob's prosperity is not just cleverness; Genesis later connects it to God's care.";
+  }
+
+  return "\u{1F4D6} The story keeps moving\n\n\u{1F9ED} The wording gives direction\n\n\u{1F64C} God is still carrying the promise\n\nThis phrase helps the reader follow how ordinary details become part of the larger Genesis story.";
+}
 function cleanGenesisTwentyOneToThirtyBoilerplate(content: string) {
   const seen = new Set<string>();
   return note(
@@ -880,12 +926,32 @@ function deepenGenesisTwentyOneToTwentyFourPhraseExplanation(
   return note([...lines, ...additions]);
 }
 
+function deepenGenesisTwentyFiveToThirtyPhraseExplanation(
+  section: PersonalGenesisPhraseSectionInput,
+  title: string,
+  content: string,
+) {
+  if (section.chapter < 25 || section.chapter > 30) return content;
+
+  const cleanedContent = cleanGenesisTwentyOneToThirtyBoilerplate(content);
+  const hasVisualBlock = hasGenesisTwentyOneToThirtyVisualBlock(cleanedContent);
+  if (hasVisualBlock) return cleanedContent;
+
+  const cleanTitle = stripGenesisTwentyOneToThirtyPhraseEmoji(title);
+  const focus = getGenesisTwentyFiveToThirtyPhraseFocus(section, cleanTitle);
+  return note([cleanedContent, focus].filter(Boolean));
+}
+
 function formatGenesisTwentyOneToThirtyPhraseExplanation(
   section: PersonalGenesisPhraseSectionInput,
   title: string,
   content: string,
 ) {
-  return deepenGenesisTwentyOneToTwentyFourPhraseExplanation(section, title, content);
+  return deepenGenesisTwentyFiveToThirtyPhraseExplanation(
+    section,
+    title,
+    deepenGenesisTwentyOneToTwentyFourPhraseExplanation(section, title, content),
+  );
 }
 
 function formatGenesisTwentyOneToThirtySectionExplanations(sections: PersonalGenesisPhraseSectionInput[]) {
@@ -4100,7 +4166,7 @@ const DAY_12_GENESIS_30_REAL_PHRASE_ADDITIONS: Record<string, Array<[string, str
     day12Genesis30Phrase("God Hearkened To Her", ["God listens to Rachel after long barrenness.", "The text shifts attention from rivalry and mandrakes to divine mercy.", "Rachel's answer comes because God hears, not because the household has figured out control."]),
     day12Genesis30Phrase("Opened Her Womb", ["This phrase shows God giving life where Rachel could not create it herself.", "Genesis has repeatedly shown that the promise family depends on God's power over the womb.", "The long ache finally turns into birth."]),
     day12Genesis30Phrase("Taken Away My Reproach", ["Rachel feels her shame lifted through Joseph's birth.", "In her world, childlessness carried public pain and private grief.", "God's mercy meets the place where she felt exposed and diminished."]),
-    day12Genesis30Phrase("Joseph", ["Joseph's name carries both relief and request.", "Rachel rejoices that God has taken away reproach and asks the Lord to add another son.", "This child will become central to the rest of Genesis."]),
+    day12Genesis30Phrase("She Called His Name Joseph", ["Joseph's name carries both relief and request.", "Rachel rejoices that God has taken away reproach and asks the Lord to add another son.", "This child will become central to the rest of Genesis."]),
   ],
   "Genesis 30:25-30": [
     day12Genesis30Phrase("When Rachel Had Born Joseph", ["Joseph's birth becomes a turning point in Jacob's desire to return home.", "The arrival of this son changes the emotional timing of the story.", "Jacob begins looking back toward the land of promise."]),

@@ -275,37 +275,104 @@ function hasGenesisThirtyOneToFortyVisualList(content: string) {
     .some((line) => /^[^\w\s"']/.test(line.trim()));
 }
 
+function stripGenesisThirtyOneToFortyPhraseEmoji(title: string) {
+  return title.replace(/^[^A-Za-z0-9']+\s*/, "").trim();
+}
+
+function cleanGenesisThirtyOneToFortyBoilerplate(content: string) {
+  const seen = new Set<string>();
+  return note(
+    content
+      .split("\n\n")
+      .map((line) =>
+        line
+          .replace(/^This phrase matters because /, "")
+          .replace(/^This matters because /, "")
+          .replace(/^That matters because /, "")
+          .replace(/^It connects to the larger Bible theme that /, "")
+          .replace(/^It connects to the larger Bible theme of /, "")
+          .replace(/^The wording deserves attention because /, "")
+          .replace(/^This phrase shows /, "")
+          .replace(/^This phrase means /, "")
+          .replace(/^This phrase points to /, "")
+          .replace(/^This phrase invites readers to /, "")
+          .replace(/^This phrase helps readers /, "")
+          .replace(/^This phrase\s*$/, "")
+          .replace(/^The phrase\s*$/, "")
+          .replace(/^This phrase /, "")
+          .replace(/^The phrase /, "")
+          .trim(),
+      )
+      .map((line) => line ? `${line.charAt(0).toUpperCase()}${line.slice(1)}` : line)
+      .filter((line) => {
+        if (!line) return false;
+        const key = line.toLowerCase().replace(/[.?!]+$/, "");
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      }),
+  );
+}
+
+function getGenesisThirtyOneToFortyPhraseFocus(section: PersonalGenesisPhraseSectionInput, cleanTitle: string) {
+  const lower = `${section.title} ${cleanTitle}`.toLowerCase();
+
+  if (lower.includes("laban") || lower.includes("stole") || lower.includes("fled") || lower.includes("pursued")) {
+    return "\u{1F3C3} Leaving under pressure\n\n\u{1F442} Accusations and fear\n\n\u{1F6E1}\u{FE0F} God protecting the promise family\n\nJacob's departure is not clean or calm, but God is still guiding him out.";
+  }
+
+  if (lower.includes("wrest") || lower.includes("israel") || lower.includes("peniel") || lower.includes("prevailed")) {
+    return "\u{1F93C} A night struggle\n\n\u{1F64C} God meeting Jacob personally\n\n\u{1F3F7}\u{FE0F} A changed name\n\nJacob is not only escaping Laban; he is being changed by God.";
+  }
+
+  if (lower.includes("esau") || lower.includes("bowed") || lower.includes("embraced") || lower.includes("kissed")) {
+    return "\u{1F647} Humility\n\n\u{1F62D} Emotion\n\n\u{1F91D} Reconciliation\n\nThe scene slows down because old fear is meeting unexpected mercy.";
+  }
+
+  if (lower.includes("dinah") || lower.includes("shechem") || lower.includes("simeon") || lower.includes("levi") || lower.includes("revenge")) {
+    return "\u{1F494} Harm done\n\n\u{1F5E3}\u{FE0F} People speaking around Dinah\n\n\u{2694}\u{FE0F} Revenge spreading the damage\n\nGenesis does not treat violence as a small family problem.";
+  }
+
+  if (lower.includes("bethel") || lower.includes("altar") || lower.includes("strange gods") || lower.includes("earrings") || lower.includes("pillar") || lower.includes("oil") || lower.includes("place")) {
+    return "\u{1F9F9} Idols removed\n\n\u{26EA} Worship renewed\n\n\u{1F4CD} Returning to Bethel\n\nJacob's family has to bury false worship before moving forward with God.";
+  }
+
+  if (lower.includes("rachel") || lower.includes("benjamin") || lower.includes("died") || lower.includes("buried")) {
+    return "\u{1F494} Grief\n\n\u{1F476} A child born\n\n\u{1F4CD} A place remembered\n\nThe promise continues, but Genesis lets the sorrow feel real.";
+  }
+
+  if (lower.includes("esau") || lower.includes("edom") || lower.includes("duke") || lower.includes("chief") || lower.includes("king")) {
+    return "\u{1F9EC} Family lines\n\n\u{1F3D4}\u{FE0F} Edom becoming a people\n\n\u{1F4D6} Names that matter later\n\nGenesis records Esau's line because the family story keeps affecting future nations.";
+  }
+
+  if (lower.includes("joseph") || lower.includes("coat") || lower.includes("dream") || lower.includes("pit") || lower.includes("sold")) {
+    return "\u{1F3BD} Favoritism in the family\n\n\u{1F4AD} Dreams no one understands yet\n\n\u{1F573}\u{FE0F} Joseph being lowered\n\nGod is working, but the path begins with betrayal and pain.";
+  }
+
+  if (lower.includes("judah") || lower.includes("tamar") || lower.includes("pledge") || lower.includes("harlot") || lower.includes("righteous") || lower.includes("er ") || lower.includes("onan") || lower.includes("shelah") || lower.includes("seed") || lower.includes("widow")) {
+    return "\u{1F6B6} Judah moving away\n\n\u{23F3} Tamar left waiting\n\n\u{2696}\u{FE0F} Hidden sin exposed\n\nGenesis 38 shows God working even inside a messy and morally broken family story.";
+  }
+
+  return "\u{1F4D6} The story keeps moving\n\n\u{1F9ED} The wording gives direction\n\n\u{1F64C} God is still carrying the promise\n\nThis phrase helps the reader follow how ordinary details become part of the larger Genesis story.";
+}
+
 function formatGenesisThirtyOneToFortyPhraseExplanation(
   section: PersonalGenesisPhraseSectionInput,
+  title: string,
   content: string,
 ) {
-  if (section.chapter >= 31 && section.chapter <= 40) {
+  if (section.chapter < 31 || section.chapter > 40) {
     return content;
   }
 
-  if (section.chapter < 31 || section.chapter > 40 || hasGenesisThirtyOneToFortyVisualList(content)) {
-    return content;
-  }
+  const cleanedContent = cleanGenesisThirtyOneToFortyBoilerplate(content);
+  const hasVisualBlock = hasGenesisThirtyOneToFortyVisualList(cleanedContent);
 
-  const blocks = content
-    .split(/\n{2,}/)
-    .map((block) => block.trim())
-    .filter(Boolean);
-  const cues = GENESIS_31_40_MOBILE_FORMAT_CUES[section.chapter];
+  if (hasVisualBlock) return cleanedContent;
 
-  if (!cues || blocks.length < 2) {
-    return content;
-  }
-
-  const opening = blocks.slice(0, Math.min(2, blocks.length));
-  const closing = blocks.slice(opening.length);
-
-  return note([
-    ...opening,
-    "What to notice:",
-    ...cues,
-    ...closing,
-  ]);
+  const cleanTitle = stripGenesisThirtyOneToFortyPhraseEmoji(title);
+  const focus = getGenesisThirtyOneToFortyPhraseFocus(section, cleanTitle);
+  return note([cleanedContent, focus].filter(Boolean));
 }
 
 function formatGenesisThirtyOneToFortySectionExplanations(sections: PersonalGenesisPhraseSectionInput[]) {
@@ -313,7 +380,7 @@ function formatGenesisThirtyOneToFortySectionExplanations(sections: PersonalGene
     ...section,
     phrases: section.phrases.map(([title, content]) => [
       title,
-      formatGenesisThirtyOneToFortyPhraseExplanation(section, content),
+      formatGenesisThirtyOneToFortyPhraseExplanation(section, title, content),
     ] as [string, string]),
   }));
 }
@@ -2173,7 +2240,7 @@ const DAY_14_GENESIS_34_36_FINAL_SECTIONS: PersonalGenesisPhraseSectionInput[] =
   { chapter: 35, startVerse: 13, endVerse: 15, reference: "Genesis 35:13-15", title: "Jacob Marks Bethel Again", icon: "🪨", phrases: [
     phrase("⬆️ God Went Up From Him", ["The language shows that Jacob has experienced another real encounter with God.", "The meeting ends, but the place remains marked by memory.", "Genesis treats divine encounters as moments that shape geography and identity.", "Jacob is not left with an idea only; he is left with a place and a promise.", "God's presence turns ordinary ground into remembered ground.", "Worship remembers where God met us."]),
     phrase("🪨 Jacob Set Up A Pillar", ["Jacob sets up a pillar again, echoing Genesis 28.", "The repeated action shows continuity between the fearful young man leaving home and the changed man returning.", "He pours a drink offering and oil on it as worship.", "The old vow scene has come full circle.", "Jacob's worship matures across the journey.", "God can bring us back to earlier promises with deeper understanding."]),
-    phrase("📍 Bethel", ["Jacob names the place Bethel, house of God.", "The name holds his first dream, God's promise, his return, and this renewed blessing together.", "Bethel becomes a spiritual landmark in the family story.", "It says God has been faithful from flight to return.", "Place names preserve testimony.", "Bethel reminds readers that God's house is where God graciously meets His people."]),
+    phrase("📍 Jacob Called The Name Of The Place Bethel", ["Jacob names the place Bethel, house of God.", "The name holds his first dream, God's promise, his return, and this renewed blessing together.", "Bethel becomes a spiritual landmark in the family story.", "It says God has been faithful from flight to return.", "Place names preserve testimony.", "Bethel reminds readers that God's house is where God graciously meets His people."]),
   ] },
   { chapter: 35, startVerse: 16, endVerse: 20, reference: "Genesis 35:16-20", title: "Rachel Dies Giving Birth", icon: "😭", phrases: [
     phrase("👶 Rachel Travailed", ["Rachel's long story of longing for children reaches a painful final scene.", "She gives birth on the road, not in calm comfort.", "The woman who once cried for children now dies bringing another son into the family.", "Genesis is tender and tragic here.", "Blessing and grief arrive together.", "The promise family grows, but the growth is not painless."]),
@@ -2504,7 +2571,7 @@ const DAY_15_GENESIS_37_38_FINAL_SECTIONS: PersonalGenesisPhraseSectionInput[] =
     phrase("👶 Er, Onan, And Shelah", ["Judah has three sons: Er, Onan, and Shelah.", "These names set up the crisis Tamar will face.", "The chapter is moving quickly from Judah's choices to the next generation's consequences.", "A household is being built, but serious trouble is coming.", "Names in Genesis often prepare the next conflict.", "A short family list can be the doorway into a major moral test."]),
   ] },
   { chapter: 38, startVerse: 6, endVerse: 11, reference: "Genesis 38:6-11", title: "Tamar Is Left Waiting", icon: "⏳", phrases: [
-    phrase("👰 Tamar", ["Tamar enters the story as the wife Judah gets for Er.", "She will become the central figure through whom Judah's failure is exposed.", "Genesis gives her a name and keeps her in view while the men around her act wrongly.", "Her future is placed at risk by the sins of Judah's household.", "Tamar is not a side note; she carries the chapter's moral weight.", "God sees the vulnerable person inside the family system."]),
+    phrase("👰 Whose Name Was Tamar", ["Tamar enters the story as the wife Judah gets for Er.", "She will become the central figure through whom Judah's failure is exposed.", "Genesis gives her a name and keeps her in view while the men around her act wrongly.", "Her future is placed at risk by the sins of Judah's household.", "Tamar is not a side note; she carries the chapter's moral weight.", "God sees the vulnerable person inside the family system."]),
     phrase("⚖️ Er Was Wicked In The Sight Of The LORD", ["Er's wickedness is named directly, though the details are not given.", "The important point is that the Lord sees and judges him.", "Judah's line is already in spiritual danger.", "The chapter is showing that the family carrying promise still needs judgment and mercy.", "The Lord's sight governs this hidden household story.", "What is not explained to us is still fully known to God."]),
     phrase("🌱 Raise Up Seed To Thy Brother", ["Judah tells Onan to fulfill the duty of raising offspring for his dead brother.", "This custom protected the dead brother's name and the widow's future.", "Tamar's security is tied to whether the family will act faithfully toward her.", "The issue is not merely inheritance; it is justice for a vulnerable widow.", "Family duty was meant to protect the exposed person.", "Biblical law and custom often aim to guard those who could be discarded."]),
     phrase("🛑 Onan Knew That The Seed Should Not Be His", ["Onan refuses the responsibility while still using the relationship for himself.", "His sin is selfishness, exploitation, and refusal to provide what duty required.", "He wants benefit without obligation.", "The Lord judges his action as evil.", "Onan's wrong is not reduced to one physical detail; it is covenantal selfishness.", "Using people while refusing responsibility is serious evil."]),
@@ -2534,7 +2601,7 @@ const DAY_15_GENESIS_37_38_FINAL_SECTIONS: PersonalGenesisPhraseSectionInput[] =
     phrase("👶 Twins Were In Her Womb", ["Tamar gives birth to twins, continuing the Genesis pattern of surprising birth stories.", "Twin conflict has appeared before with Jacob and Esau.", "Now another birth scene carries future significance.", "The family line is moving forward through a complicated and exposed story.", "Genesis keeps showing God's purposes through unlikely births.", "God can bring future promise through situations marked by human failure."]),
     phrase("🧵 The Scarlet Thread", ["The midwife marks Zerah's hand with a scarlet thread because he appears first.", "But the birth order does not unfold as expected.", "Genesis often pays attention to reversals around firstborn status.", "The thread shows human marking, but the final outcome surprises everyone.", "The expected first does not finally come first.", "God's story often unsettles human assumptions about order and status."]),
     phrase("💥 How Hast Thou Broken Forth", ["Perez breaks forth and is born before Zerah.", "His name is connected to breach or breaking through.", "This child will become important in the line of Judah.", "The chapter that exposed Judah ends with a birth that carries future hope.", "Breakthrough comes out of a messy chapter.", "God's grace can carry promise through exposed sin and painful truth."]),
-    phrase("🌱 Perez", ["Perez becomes part of the line that later leads to David and, for Christians, to Jesus.", "That makes Genesis 38 deeply important, not a side road to skip.", "Judah's failure and Tamar's struggle become part of a larger redemption story.", "The Bible does not hide the mess in the Messiah's family line.", "Grace does not require a polished family tree.", "God can weave redemption through stories people might prefer to omit."]),
+    phrase("🌱 His Name Was Called Perez", ["Perez becomes part of the line that later leads to David and, for Christians, to Jesus.", "That makes Genesis 38 deeply important, not a side road to skip.", "Judah's failure and Tamar's struggle become part of a larger redemption story.", "The Bible does not hide the mess in the Messiah's family line.", "Grace does not require a polished family tree.", "God can weave redemption through stories people might prefer to omit."]),
   ] },
 ];
 
@@ -2707,15 +2774,15 @@ const DAY_15_REAL_PHRASE_ADDITIONS: Record<string, Array<[string, string]>> = {
     day15Phrase("At That Time", ["Genesis 38 interrupts Joseph's story to follow Judah.", "The timing matters because Judah just helped sell Joseph.", "The chapter shows what is happening in the family line while Joseph is in Egypt."]),
     day15Phrase("Judah Went Down From His Brethren", ["Judah separates from his brothers after the Joseph betrayal.", "The phrase hints at moral and relational descent too.", "The family fracture spreads outward."]),
     day15Phrase("Turned In To A Certain Adullamite", ["Judah attaches himself to Hirah of Adullam.", "He moves into Canaanite social circles.", "This sets up marriage and family choices outside the covenant household."]),
-    day15Phrase("Shuah", ["Shuah is the father of the Canaanite woman Judah marries.", "The name locates Judah's wife within the land's people.", "Genealogy and marriage details matter for the line that will lead to Perez."]),
+    day15Phrase("Whose Name Was Shuah", ["Shuah is the father of the Canaanite woman Judah marries.", "The name locates Judah's wife within the land's people.", "Genealogy and marriage details matter for the line that will lead to Perez."]),
     day15Phrase("He Took Her", ["Judah takes a wife from the Canaanites.", "The brief phrase carries major family consequences.", "His household will become the setting for sin, death, and surprising mercy."]),
-    day15Phrase("Er", ["Er is Judah's firstborn son.", "His name matters because the firstborn line becomes central to Tamar's story.", "The hope of Judah's family appears to begin with him."]),
-    day15Phrase("Onan", ["Onan is Judah's second son.", "His role becomes important after Er dies.", "The family responsibility will fall to him, and he will refuse it wickedly."]),
-    day15Phrase("Shelah", ["Shelah is Judah's third son.", "Judah will later withhold him from Tamar out of fear.", "His name becomes part of the broken promise at the center of the chapter."]),
-    day15Phrase("Chezib", ["Chezib is the place connected to Shelah's birth.", "The place marker grounds Judah's household in real geography.", "Genesis keeps the story concrete even in uncomfortable chapters."]),
+    day15Phrase("Called His Name Er", ["Er is Judah's firstborn son.", "His name matters because the firstborn line becomes central to Tamar's story.", "The hope of Judah's family appears to begin with him."]),
+    day15Phrase("Called His Name Onan", ["Onan is Judah's second son.", "His role becomes important after Er dies.", "The family responsibility will fall to him, and he will refuse it wickedly."]),
+    day15Phrase("Called His Name Shelah", ["Shelah is Judah's third son.", "Judah will later withhold him from Tamar out of fear.", "His name becomes part of the broken promise at the center of the chapter."]),
+    day15Phrase("He Was At Chezib", ["Chezib is the place connected to Shelah's birth.", "The place marker grounds Judah's household in real geography.", "Genesis keeps the story concrete even in uncomfortable chapters."]),
   ],
   "Genesis 38:6-11": [
-    day15Phrase("Tamar", ["Tamar enters as the wife Judah chooses for Er.", "She will become one of the most important women in Genesis.", "Her story is painful, bold, and tied to the line of Judah."]),
+    day15Phrase("Whose Name Was Tamar", ["Tamar enters as the wife Judah chooses for Er.", "She will become one of the most important women in Genesis.", "Her story is painful, bold, and tied to the line of Judah."]),
     day15Phrase("Er, Judah's Firstborn, Was Wicked", ["The text gives a clear moral verdict on Er.", "It does not tell every detail, but it tells us enough: the Lord saw his wickedness.", "The firstborn line is immediately threatened by sin."]),
     day15Phrase("The LORD Slew Him", ["Er's death is presented as divine judgment.", "This is a sobering line in the chapter.", "Judah's household is not outside God's moral sight."]),
     day15Phrase("Go In Unto Thy Brother's Wife", ["Judah commands Onan to fulfill family duty for Tamar.", "This reflects levirate-like responsibility to preserve the dead brother's line.", "A beginner needs this slowed down because the custom is unfamiliar."]),
