@@ -1236,64 +1236,64 @@ function getExodusElevenToTwentyTeachingLines(section: PersonalExodusPhraseSecti
 
   if (/passover|lamb|blood|door|hyssop|unleavened|leaven|firstborn|midnight/.test(lower)) {
     return [
-      "This phrase is part of the Passover rescue.",
-      "God gives Israel a specific way to trust His word during judgment.",
-      "The focus is shelter, obedience, and deliverance.",
+      `${cleanTitle} points into the Passover rescue.`,
+      `In ${cleanTitle}, God gives Israel a concrete way to trust His word during judgment.`,
+      `${cleanTitle} teaches shelter, obedience, and deliverance through what God commanded.`,
     ];
   }
 
   if (/egypt|pharaoh|egyptians|thrust|jewels|silver|gold|mixed multitude/.test(lower)) {
     return [
-      "This phrase shows Egypt's power being reversed.",
-      "The people who were enslaved are now being sent out.",
-      "God is breaking the grip that Pharaoh refused to release.",
+      `${cleanTitle} shows Egypt's power being reversed.`,
+      `Through ${cleanTitle}, the people who were enslaved are now being pushed toward freedom.`,
+      `${cleanTitle} shows God breaking the grip Pharaoh refused to release.`,
     ];
   }
 
   if (/remember|children|ordinance|generation|sign|memorial|feast/.test(lower)) {
     return [
-      "This phrase turns rescue into remembrance.",
-      "God does not want the next generation to forget what He did.",
-      "The story must be taught, repeated, and lived.",
+      `${cleanTitle} turns rescue into remembrance.`,
+      `With ${cleanTitle}, God does not want the next generation to forget what He did.`,
+      `${cleanTitle} shows that the rescue must be explained, repeated, and lived in worship.`,
     ];
   }
 
   if (/pillar|cloud|fire|led|way|sea|wilderness|camp|journey/.test(lower)) {
     return [
-      "This phrase shows that freedom still needs guidance.",
-      "Israel is out of Egypt, but they do not know the way on their own.",
-      "The LORD leads them with presence, not just instructions.",
+      `${cleanTitle} shows that freedom still needs guidance.`,
+      `In ${cleanTitle}, Israel is out of Egypt, but they do not know the road by themselves.`,
+      `${cleanTitle} teaches that the LORD leads His people with presence, not just instructions.`,
     ];
   }
 
   if (/sea|waters|wind|dry ground|chariot|horse|rider|fight|stand still|fear/.test(lower)) {
     return [
-      "This phrase is part of the Red Sea rescue.",
-      "Israel cannot save itself in this moment.",
-      "The LORD makes a way where the people see no way.",
+      `${cleanTitle} is tied to the Red Sea rescue.`,
+      `In ${cleanTitle}, Israel cannot save itself by strength or strategy.`,
+      `${cleanTitle} shows the LORD making a way where the people see no way.`,
     ];
   }
 
   if (/sing|song|lord is my strength|who is like|miriam|timbrel|dance/.test(lower)) {
     return [
-      "This phrase turns deliverance into praise.",
-      "Israel sings because the LORD has rescued them.",
-      "The victory is remembered through worship.",
+      `${cleanTitle} turns deliverance into praise.`,
+      `Through ${cleanTitle}, Israel responds because the LORD has rescued them.`,
+      `${cleanTitle} shows that victory is remembered through worship, not just history.`,
     ];
   }
 
   if (/manna|bread|quail|omer|sabbath|murmur|wilderness|water|marah|elim/.test(lower)) {
     return [
-      "This phrase shows Israel learning to trust God after freedom.",
-      "The wilderness exposes need quickly.",
-      "God provides while also training His people to depend on Him.",
+      `${cleanTitle} shows Israel learning trust after freedom.`,
+      `Around ${cleanTitle}, the wilderness exposes Israel's need quickly.`,
+      `${cleanTitle} shows God providing while training His people to depend on Him day by day.`,
     ];
   }
 
   return [
-    "This phrase gives a real detail in Israel's journey.",
-    "It helps the reader follow how God rescues, guides, and provides.",
-    "The Exodus story is forming a people who must learn to trust the LORD.",
+    `${cleanTitle} gives a real detail in Israel's journey.`,
+    `The wording of ${cleanTitle} keeps the reader close to the movement of the passage.`,
+    `${cleanTitle} helps show how the Exodus story forms a people who must learn to trust the LORD.`,
   ];
 }
 
@@ -1335,7 +1335,7 @@ function normalizeRepeatedExodusElevenToTwentyLines(sections: PersonalExodusPhra
         }
 
         for (const line of getExodusElevenToTwentyTeachingLines(section, cleanTitle)) {
-          if (kept.length >= 7) break;
+          if (kept.length >= 5) break;
           if (!kept.some((keptLine) => normalizeLine(keptLine) === normalizeLine(line))) {
             kept.push(line);
           }

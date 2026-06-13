@@ -1021,6 +1021,20 @@ function explainDay22ExodusPhrase(section: PersonalExodusPhraseSectionInput, tit
     add(`${title} lets Pharaoh's house protect the child Pharaoh tried to kill.`, "Pharaoh tried to destroy Hebrew sons, but his own daughter helps preserve one.", "Moses is nursed by his own mother and later raised with Egyptian access.", "\u{1F476} Child preserved", "\u{1F469} Mother restored", "\u{1F3DB}\u{FE0F} Palace access", "The child drawn from water will one day lead Israel through water.");
   } else if (lower.includes("grown") || lower.includes("burdens") || lower.includes("egyptian smiting") || lower.includes("slew") || lower.includes("prince and a judge") || lower.includes("moses feared")) {
     add(`${title} puts Moses face to face with Hebrew suffering.`, "He sees Hebrew suffering, but his first attempt to act brings fear, exposure, and exile.", "\u{1F441}\u{FE0F} He sees the burden", "\u{1F4A5} Violence erupts", "\u{1F3C3} Moses flees", "Moses will become a deliverer, but not by self-appointment.");
+  } else if (lower.includes("inn") || lower.includes("sought to kill") || lower.includes("sharp stone") || lower.includes("foreskin") || lower.includes("bloody husband") || lower.includes("mount of god") || lower.includes("kissed")) {
+    if (lower.includes("inn")) {
+      add(`${title} gives the location of a sudden covenant crisis on Moses' journey back to Egypt.`, "An inn was a stopping place on the road.", "Moses is already moving toward his calling when this hard moment interrupts the journey.", "\u{1F3E0} Roadside stop", "\u{1F4DC} Covenant sign", "\u{26A0}\u{FE0F} Serious obedience", "The phrase slows the story down before Moses reaches Pharaoh.");
+    } else if (lower.includes("sought to kill")) {
+      add(`${title} shows the LORD confronting Moses before Moses confronts Pharaoh.`, "This is one of the most serious moments in Moses' early calling.", "The problem is connected to covenant obedience in Moses' own household.", "\u{26A0}\u{FE0F} Holy warning", "\u{1F4DC} Covenant matter", "\u{1F6B6} Before Egypt", "God's messenger must not treat God's covenant sign as optional.");
+    } else if (lower.includes("sharp stone")) {
+      add(`${title} shows Zipporah acting quickly in a dangerous covenant moment.`, "The sharp stone is the tool used for circumcision.", "Circumcision was the sign God gave to Abraham's family.", "\u{1FA78} Cutting tool", "\u{1F4DC} Covenant sign", "\u{23F1}\u{FE0F} Urgent action", "The phrase explains what Zipporah uses and why the moment is so serious.");
+    } else if (lower.includes("foreskin")) {
+      add(`${title} names the act of circumcision connected to God's covenant with Abraham.`, "This was not a random action.", "It was the sign that marked Abraham's family as God's covenant people.", "\u{1F4DC} Abraham's covenant", "\u{1FA78} Circumcision", "\u{1F3E0} Moses' household", "Moses cannot lead the covenant people while his own home ignores the covenant sign.");
+    } else if (lower.includes("bloody husband")) {
+      add(`${title} shows how shocking and costly the circumcision moment felt to Zipporah.`, "Her words are emotional because blood, danger, family, and obedience are all happening at once.", "The phrase does not make the scene comfortable.", "\u{1FA78} Blood", "\u{1F5E3}\u{FE0F} Hard words", "\u{1F4DC} Covenant cost", "It reminds the reader that covenant obedience was serious, not decorative.");
+    } else {
+      add(`${title} shows God providing Aaron as Moses continues toward Egypt.`, "Aaron's meeting with Moses is not accidental.", "God sends the brother Moses needs for the work ahead.", "\u{1F3DC}\u{FE0F} Wilderness meeting", "\u{1F91D} Brotherly help", "\u{1F4E3} Shared mission", "Moses will not stand before Pharaoh alone.");
+    }
   } else if (lower.includes("midian") || lower.includes("shepherds") || lower.includes("drew water") || lower.includes("helped them") || lower.includes("eat bread") || lower.includes("zipporah") || lower.includes("gershom")) {
     add(`${title} moves Moses deeper into life outside Egypt.`, "In Midian, Moses is no longer in Pharaoh's palace.", "He protects vulnerable women, receives hospitality, marries, and becomes a stranger in another land.", "\u{1F3DC}\u{FE0F} Midian", "\u{1F4A7} Well", "\u{1F6B6} Stranger", "God is shaping a shepherd before sending him to lead a people through the wilderness.");
   } else if (lower.includes("process of time") || lower.includes("king of egypt died")) {
@@ -1051,8 +1065,6 @@ function explainDay22ExodusPhrase(section: PersonalExodusPhraseSectionInput, tit
     add(`${title} shows God's provision for a reluctant servant.`, "Moses keeps pulling back, and God's anger shows the mission is serious.", "Aaron is given as help, not as an excuse to quit.", "\u{1F91D} Aaron helps", "\u{1F4E3} Words given", "\u{1F9AF} Rod in hand", "God supports His servant without canceling obedience.");
   } else if (lower.includes("let me go") || lower.includes("peace") || lower.includes("men are dead") || lower.includes("wife and his sons") || lower.includes("rod of god") || lower.includes("firstborn") || lower.includes("serve me")) {
     add(`${title} moves Moses back toward Egypt and the mission.`, "The old threat is gone, but the hard mission remains.", "God calls Israel His firstborn son, which makes the conflict deeply personal.", "\u{1F6B6} Moses returns", "\u{1F9AF} Rod of God", "\u{1F466} Israel my firstborn", "Freedom is for serving the LORD, not merely escaping Pharaoh.");
-  } else if (lower.includes("inn") || lower.includes("sought to kill") || lower.includes("sharp stone") || lower.includes("foreskin") || lower.includes("bloody husband") || lower.includes("mount of god") || lower.includes("kissed")) {
-    add(`${title} is part of the hard covenant scene on the road.`, "Before Moses leads covenant Israel, his own household must not treat God's covenant sign casually.", "\u{1F4DC} Covenant sign", "\u{1FA78} Serious obedience", "\u{1F91D} Aaron meets Moses", "The mission moves forward, but God's messenger must stand under God's command too.");
   } else if (lower.includes("aaron spake") || lower.includes("sight of the people") || lower.includes("people believed") || lower.includes("visited") || lower.includes("affliction") || lower.includes("worshipped")) {
     add(`${title} shows Israel receiving the first message of hope.`, "The people are still enslaved, but they hear that God has visited them and seen their affliction.", "\u{1F442} Word heard", "\u{2705} People believed", "\u{1F64C} Worship in bondage", "Worship begins before the rescue is complete because God's promise has reached them.");
   } else {
@@ -1584,66 +1596,116 @@ function getExodusTwoToTenPhraseList(section: PersonalExodusPhraseSectionInput, 
 function getExodusTwoToTenTeachingLines(section: PersonalExodusPhraseSectionInput, cleanTitle: string) {
   const lower = cleanTitle.toLowerCase();
 
+  if (/by the way in the inn|sought to kill|sharp stone|foreskin|bloody husband|wilderness to meet|mount of god|kissed/.test(lower)) {
+    if (/by the way in the inn/.test(lower)) {
+      return [
+        `${cleanTitle} gives the location of a sudden covenant crisis on Moses' journey back to Egypt.`,
+        `An inn was a stopping place on the road, so this moment happens while Moses is already moving toward his calling.`,
+        `${cleanTitle} slows the story down to show that God's messenger must take God's covenant seriously before he confronts Pharaoh.`,
+      ];
+    }
+
+    if (/sought to kill/.test(lower)) {
+      return [
+        `${cleanTitle} shows the LORD confronting Moses before Moses confronts Pharaoh.`,
+        `This is a serious moment because Moses is carrying God's message while something in his own household is still not right before God.`,
+        `${cleanTitle} teaches that God's covenant is not casual, even for the man God is sending to lead Israel.`,
+      ];
+    }
+
+    if (/sharp stone/.test(lower)) {
+      return [
+        `${cleanTitle} shows Zipporah acting quickly in a dangerous covenant moment.`,
+        `The sharp stone is the tool used for circumcision, the sign God gave to Abraham's family.`,
+        `${cleanTitle} helps the reader see that this scene is about obedience to the covenant sign, not random violence on the road.`,
+      ];
+    }
+
+    if (/foreskin/.test(lower)) {
+      return [
+        `${cleanTitle} names the act of circumcision connected to God's covenant with Abraham.`,
+        `Circumcision marked the males of Abraham's family as belonging to the covenant people.`,
+        `${cleanTitle} matters because Moses cannot lead the covenant people while treating the covenant sign as unimportant.`,
+      ];
+    }
+
+    if (/bloody husband/.test(lower)) {
+      return [
+        `${cleanTitle} shows how shocking and costly the circumcision moment felt to Zipporah.`,
+        `Her words are emotional because blood, danger, family, and obedience all meet in one hard scene.`,
+        `${cleanTitle} keeps the reader from treating covenant obedience as a small or comfortable thing.`,
+      ];
+    }
+
+    if (/wilderness to meet|mount of god|kissed/.test(lower)) {
+      return [
+        `${cleanTitle} shows God providing Aaron as Moses continues toward Egypt.`,
+        `In ${cleanTitle}, the meeting is not accidental; God sends Aaron to join Moses in the mission.`,
+        `${cleanTitle} helps the reader see that Moses will not stand before Pharaoh alone.`,
+      ];
+    }
+  }
+
   if (/heard.*groaning|groaning|cried|cry/.test(lower)) {
     return [
-      "This phrase shows that Israel's pain reached God.",
-      "The groaning was not organized prayer with perfect words.",
-      "God still heard the suffering of His people and moved toward rescue.",
+      `${cleanTitle} shows that Israel's suffering reached God.`,
+      `The pain behind ${cleanTitle} did not need polished words before God cared.`,
+      `Through ${cleanTitle}, the LORD begins answering real oppression with real deliverance.`,
     ];
   }
 
   if (/i am that i am|name|lord god of your fathers/.test(lower)) {
     return [
-      "This phrase reveals God's identity, not just His assignment for Moses.",
-      "The LORD is not one more Egyptian god with limited power.",
-      "He is the living God who exists by His own power and keeps covenant.",
+      `${cleanTitle} reveals God's identity, not just Moses' assignment.`,
+      `${cleanTitle} means the LORD is not one more Egyptian god with limited power.`,
+      `${cleanTitle} presents the living God who exists by His own power and keeps covenant.`,
     ];
   }
 
   if (/lord|god|i am|covenant|promise|name/.test(lower)) {
     return [
-      "This phrase keeps the focus on who God is.",
-      "The rescue does not begin with Moses being strong.",
-      "It begins with the LORD remembering His promise and acting for His people.",
+      `${cleanTitle} pulls the reader back to God's character.`,
+      `Around ${cleanTitle}, Moses may feel weak and Pharaoh may look strong.`,
+      `${cleanTitle} reminds the reader that rescue rests on the LORD who remembers, speaks, and keeps His promise.`,
     ];
   }
 
   if (/pharaoh|harden|heart|hearken|refused|not let/.test(lower)) {
     return [
-      "This phrase shows resistance against God's word.",
-      "Pharaoh is not confused about the command.",
-      "He is refusing the LORD's authority over Israel.",
+      `${cleanTitle} shows resistance against God's word.`,
+      `With ${cleanTitle}, Pharaoh's problem is not that God's command is unclear.`,
+      `${cleanTitle} exposes refusal against the LORD's right to claim Israel as His people.`,
     ];
   }
 
   if (/moses|aaron|mouth|rod|hand|speak|send/.test(lower)) {
     return [
-      "This phrase shows how God works through a weak servant.",
-      "Moses does not feel ready for the task.",
-      "But God's call rests on God's power, not Moses' confidence.",
+      `${cleanTitle} shows God working through an imperfect servant.`,
+      `In ${cleanTitle}, Moses does not always feel ready for what God commands.`,
+      `${cleanTitle} keeps the calling attached to God's power, not Moses' confidence.`,
     ];
   }
 
   if (/plague|blood|frog|lice|flies|murrain|boil|hail|locust|darkness|magicians/.test(lower)) {
     return [
-      "This phrase is part of God's public confrontation with Egypt.",
-      "The plagues are not random disasters.",
-      "They show that the LORD rules over what Egypt trusted.",
+      `${cleanTitle} is part of God's public confrontation with Egypt.`,
+      `${cleanTitle} is not random trouble dropped into the story.`,
+      `${cleanTitle} shows the LORD ruling over something Egypt trusted.`,
     ];
   }
 
   if (/israel|hebrew|people|groaning|cried|bondage|burden/.test(lower)) {
     return [
-      "This phrase keeps Israel's suffering in front of the reader.",
-      "God is not ignoring the pain of His people.",
-      "The Exodus story is rescue from real oppression.",
+      `${cleanTitle} keeps Israel's suffering in front of the reader.`,
+      `The pain behind ${cleanTitle} is real, physical, and daily.`,
+      `${cleanTitle} shows that God's rescue answers actual oppression, not an imaginary problem.`,
     ];
   }
 
   return [
-    "This phrase gives a real detail in the rescue story.",
-    "It helps the reader follow what God is revealing step by step.",
-    "Exodus is showing bondage, confrontation, deliverance, and worship.",
+    `${cleanTitle} names a real detail in the rescue story.`,
+    `The wording of ${cleanTitle} keeps the reader close to what the verse actually says.`,
+    `This detail helps connect ${cleanTitle} to bondage, deliverance, and worship without turning it into filler.`,
   ];
 }
 
@@ -1685,7 +1747,7 @@ function normalizeRepeatedExodusTwoToTenLines(sections: PersonalExodusPhraseSect
         }
 
         for (const line of getExodusTwoToTenTeachingLines(section, cleanTitle)) {
-          if (kept.length >= 7) break;
+          if (kept.length >= 5) break;
           if (!kept.some((keptLine) => normalizeLine(keptLine) === normalizeLine(line))) {
             kept.push(line);
           }

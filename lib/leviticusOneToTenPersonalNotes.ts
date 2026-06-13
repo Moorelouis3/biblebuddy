@@ -105,7 +105,15 @@ function explainLeviticusMinedPhrase(title: string, body: string, summary: strin
   };
   const context = body.toLowerCase();
 
-  if (context.includes("burnt offering")) {
+  if (lower.includes("priest shall look") || lower.includes("looketh")) {
+    add(`${title} means the priest had to examine visible uncleanness carefully.`, "The priest is not guessing or reacting in a panic.", "He looks, waits when needed, checks again, and then declares clean or unclean.", "\u{1F50E} Careful examination", "\u{23F3} Waiting when unclear", "\u{1F3D5}\u{FE0F} Camp boundaries", "The phrase shows that holiness required careful judgment, not careless labels.");
+  } else if (lower.includes("without the camp") || lower.includes("outside the camp")) {
+    add(`${title} means someone or something is moved outside Israel's camp for a time.`, "The camp is where God's people live around His holy presence.", "So uncleanness cannot be treated like an ordinary inconvenience.", "\u{1F3D5}\u{FE0F} Outside the camp", "\u{26A0}\u{FE0F} Uncleanness named", "\u{2705} Restoration still possible", "The phrase is painful, but it also points toward the hope of being cleansed and brought back.");
+  } else if (lower.includes("cedar wood") || lower.includes("scarlet") || lower.includes("hyssop") || lower.includes("running water")) {
+    add(`${title} names one visible detail in the cleansing ceremony.`, "This was not decoration.", "It helped Israel see cleansing and restoration with their own eyes.", "\u{1F4A7} Cleansing", "\u{1F54A}\u{FE0F} Restoration", "\u{1F441}\u{FE0F} Visible sign", "The phrase reminds the reader that God gave Israel a real process for returning from uncleanness.");
+  } else if (lower.includes("make an atonement") || lower.includes("atonement")) {
+    add(`${title} means sin or uncleanness must be dealt with before a holy God.`, "Atonement is about God making a way for people to be covered, cleansed, and accepted according to His command.", "\u{1FA78} Blood", "\u{1F64F} Mercy", "\u{2705} Accepted by God's way", "The phrase keeps mercy and holiness together.");
+  } else if (context.includes("burnt offering")) {
     add(`${title} means the offering is being given to God in surrender.`, "The burnt offering rises from the altar as worship, atonement, and dedication.", "The details are not empty ritual. They show that coming near to God involves life, cost, and God's provided way.", "\u{1F525} Whole offering", "\u{1FA78} Atonement", "\u{1F64C} Surrender");
   } else if (context.includes("grain offering")) {
     add(`${title} means daily provision can be offered back to God in gratitude.`, "The grain offering uses what comes from the field and kitchen rather than the herd.", "Fine flour, oil, frankincense, salt, and firstfruits teach dedication with ordinary provision.", "\u{1F33E} Grain", "\u{1FA94} Oil", "\u{1F9C2} Covenant salt");
@@ -400,42 +408,74 @@ function getLeviticusPhraseList(section: PersonalLeviticusPhraseSectionInput, cl
 function getLeviticusTeachingLines(section: PersonalLeviticusPhraseSectionInput, cleanTitle: string) {
   const lower = cleanTitle.toLowerCase();
 
+  if (/priest shall look|looketh/.test(lower)) {
+    return [
+      `${cleanTitle} protected the person and the camp by refusing careless labels.`,
+      `In ${cleanTitle}, the priest was not guessing, rushing, or treating the person's condition lightly.`,
+      `${cleanTitle} shows that clean and unclean decisions affected worship, community life, and whether someone could remain in the camp.`,
+    ];
+  }
+
+  if (/without the camp|outside the camp/.test(lower)) {
+    return [
+      `${cleanTitle} was painful, but it also kept uncleanness from being treated as normal near God's holy presence.`,
+      `Behind ${cleanTitle}, the camp was where God's people lived around His holy presence, so uncleanness could not be treated as ordinary there.`,
+      `${cleanTitle} helps the reader see both the seriousness of uncleanness and the hope of being restored when cleansing was complete.`,
+    ];
+  }
+
+  if (/cedar wood|scarlet|hyssop|running water/.test(lower)) {
+    return [
+      `${cleanTitle} helps make the cleansing ceremony visible instead of hidden or vague.`,
+      `${cleanTitle} was not included as decoration; it belonged to the visible process of being cleansed and restored.`,
+      `${cleanTitle} helps the reader see that Leviticus teaches restoration through actions Israel could watch, remember, and understand.`,
+    ];
+  }
+
+  if (/make an atonement|atonement/.test(lower)) {
+    return [
+      `${cleanTitle} keeps the focus on God's provided way for guilt and uncleanness to be covered.`,
+      `In ${cleanTitle}, atonement is about God making a way for people to be covered, cleansed, and accepted according to His command.`,
+      `${cleanTitle} keeps Leviticus centered on mercy and holiness together, not ritual without meaning.`,
+    ];
+  }
+
   if (/offering|oblation|sacrifice|altar|blood|atonement|without blemish|lay his hand/.test(lower)) {
     return [
-      "This phrase teaches how sinful people approach a holy God.",
-      "Leviticus is not empty ritual.",
-      "The sacrifices show that worship, sin, mercy, and holiness all matter before the LORD.",
+      `${cleanTitle} teaches how sinful people approach a holy God.`,
+      `${cleanTitle} is not empty ritual for its own sake.`,
+      `The wording of ${cleanTitle} connects worship, sin, mercy, and holiness before the LORD.`,
     ];
   }
 
   if (/priest|aaron|sons|consecrate|anoint|wash|garments/.test(lower)) {
     return [
-      "This phrase points to priestly service.",
-      "The priests are set apart because they serve near holy things.",
-      "Leviticus teaches that worship must be handled with reverence.",
+      `${cleanTitle} points to priestly service.`,
+      `In ${cleanTitle}, the priests are set apart because they serve near holy things.`,
+      `${cleanTitle} teaches that worship must be handled with reverence.`,
     ];
   }
 
   if (/clean|unclean|defiled|holy|separate|sanctify|leprosy|plague/.test(lower)) {
     return [
-      "This phrase helps explain clean and unclean in Israel's life.",
-      "The issue is not simple dirtiness.",
-      "God is teaching His people to recognize holiness, disorder, life, and death.",
+      `${cleanTitle} helps explain clean and unclean in Israel's life.`,
+      `In ${cleanTitle}, the issue is not simple dirtiness or ordinary sickness only.`,
+      `${cleanTitle} teaches Israel to recognize holiness, disorder, life, and death.`,
     ];
   }
 
   if (/goat|scapegoat|mercy seat|veil|incense|atonement/.test(lower)) {
     return [
-      "This phrase points toward the Day of Atonement.",
-      "Israel's sin must be dealt with before the holy God.",
-      "The chapter shows mercy, substitution, cleansing, and access on God's terms.",
+      `${cleanTitle} points toward the Day of Atonement.`,
+      `Through ${cleanTitle}, Israel's sin must be dealt with before the holy God.`,
+      `${cleanTitle} shows mercy, substitution, cleansing, and access on God's terms.`,
     ];
   }
 
   return [
-    "This phrase gives an important detail in Leviticus.",
-    "The book is teaching Israel how to live near a holy God.",
-    "Read these details as worship training, not random rules.",
+    `${cleanTitle} gives an important detail in Leviticus.`,
+    `The detail in ${cleanTitle} helps Israel learn how to live near a holy God.`,
+    `${cleanTitle} should be read as worship training, not as a random rule.`,
   ];
 }
 
@@ -477,7 +517,7 @@ function normalizeRepeatedLeviticusLines(sections: PersonalLeviticusPhraseSectio
         }
 
         for (const line of getLeviticusTeachingLines(section, cleanTitle)) {
-          if (kept.length >= 7) break;
+          if (kept.length >= 5) break;
           if (!kept.some((keptLine) => normalizeLine(keptLine) === normalizeLine(line))) {
             kept.push(line);
           }

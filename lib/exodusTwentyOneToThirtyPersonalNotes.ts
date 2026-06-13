@@ -1074,39 +1074,39 @@ function getExodusTwentyOneToThirtyTeachingLines(section: PersonalExodusPhraseSe
   if (section.chapter <= 24) {
     if (/servant|maid|widow|fatherless|stranger|poor|enemy|neighbor/.test(lower)) {
       return [
-        "This phrase shows that covenant law reaches real people.",
-        "God does not treat justice as an idea floating above daily life.",
-        "He teaches Israel how to protect life, repair harm, and care for the vulnerable.",
+        `${cleanTitle} shows that covenant law reaches real people.`,
+        `With ${cleanTitle}, God does not leave justice floating above daily life.`,
+        `${cleanTitle} teaches Israel how to protect life, repair harm, and care for the vulnerable.`,
       ];
     }
 
     return [
-      "This phrase helps explain covenant life after the Exodus.",
-      "Israel is learning what freedom under God looks like.",
-      "The law is shaping a rescued people into a holy community.",
+      `${cleanTitle} helps explain covenant life after the Exodus.`,
+      `Through ${cleanTitle}, Israel is learning what freedom under God looks like in daily choices.`,
+      `${cleanTitle} shows the law shaping rescued people into a holy community.`,
     ];
   }
 
   if (/ark|mercy seat|veil|altar|tabernacle|court|lamp|candlestick/.test(lower)) {
     return [
-      "This phrase names part of the worship space.",
-      "The tabernacle is not random decoration.",
-      "Each detail teaches that God's presence is holy and Israel must approach His way.",
+      `${cleanTitle} names part of the worship space.`,
+      `${cleanTitle} is not random decoration in the tabernacle instructions.`,
+      `${cleanTitle} teaches that God's presence is holy and Israel must approach His way.`,
     ];
   }
 
   if (/priest|aaron|garment|ephod|breastplate|anoint|consecrate/.test(lower)) {
     return [
-      "This phrase points to priestly service.",
-      "The priest does not come before God casually.",
-      "The clothing, washing, and setting apart teach holiness before the LORD.",
+      `${cleanTitle} points to priestly service.`,
+      `In ${cleanTitle}, the priest does not come before God casually.`,
+      `${cleanTitle} helps teach holiness before the LORD through clothing, washing, and setting apart.`,
     ];
   }
 
   return [
-    "This phrase is part of the pattern God gave Moses.",
-    "The details may feel small, but they build the place where Israel will worship.",
-    "God is teaching His people that nearness to Him is holy, ordered, and gracious.",
+    `${cleanTitle} is part of the pattern God gave Moses.`,
+    `The detail in ${cleanTitle} helps build the place where Israel will worship.`,
+    `${cleanTitle} teaches that nearness to God is holy, ordered, and gracious.`,
   ];
 }
 
@@ -1148,7 +1148,7 @@ function normalizeRepeatedExodusTwentyOneToThirtyLines(sections: PersonalExodusP
         }
 
         for (const line of getExodusTwentyOneToThirtyTeachingLines(section, cleanTitle)) {
-          if (kept.length >= 7) break;
+          if (kept.length >= 5) break;
           if (!kept.some((keptLine) => normalizeLine(keptLine) === normalizeLine(line))) {
             kept.push(line);
           }

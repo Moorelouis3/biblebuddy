@@ -932,48 +932,48 @@ function getExodusThirtyOneToFortyTeachingLines(section: PersonalExodusPhraseSec
 
   if (/calf|idols|sinned|wrath|anger|mischief/.test(lower)) {
     return [
-      "This phrase shows how quickly worship can become corrupted.",
-      "Israel was rescued from Egypt, but their hearts still needed formation.",
-      "The golden calf is not a small mistake; it is covenant rebellion.",
+      `${cleanTitle} shows how quickly worship can become corrupted.`,
+      `Around ${cleanTitle}, Israel has been rescued from Egypt, but their hearts still need formation.`,
+      `${cleanTitle} treats false worship as covenant rebellion, not a small mistake.`,
     ];
   }
 
   if (/moses|interced|presence|glory|face|tables|commanded/.test(lower)) {
     return [
-      "This phrase keeps Moses' mediation in view.",
-      "The people have failed, but the LORD is still dealing with them through covenant mercy.",
-      "Exodus shows both the seriousness of sin and the greatness of God's patience.",
+      `${cleanTitle} keeps Moses' mediation in view.`,
+      `Through ${cleanTitle}, the people have failed, but the LORD is still dealing with them through covenant mercy.`,
+      `${cleanTitle} holds together the seriousness of sin and the greatness of God's patience.`,
     ];
   }
 
   if (/tabernacle|tent|ark|altar|laver|candlestick|table|curtain|veil|court|glory|cloud/.test(lower)) {
     return [
-      "This phrase points to the place where God will dwell among His people.",
-      "The details are repeated because obedience matters in worship.",
-      "The tabernacle teaches that God's nearness is holy and gracious.",
+      `${cleanTitle} points to the place where God will dwell among His people.`,
+      `The detail in ${cleanTitle} shows that obedience matters in worship.`,
+      `${cleanTitle} helps teach that God's nearness is holy and gracious.`,
     ];
   }
 
   if (/offering|willing|hearted|brought|gold|silver|brass|blue|purple|scarlet|linen/.test(lower)) {
     return [
-      "This phrase shows the people contributing to holy work.",
-      "The materials are not random supplies.",
-      "They become part of the place where Israel will meet with God.",
+      `${cleanTitle} shows the people contributing to holy work.`,
+      `${cleanTitle} is not just a note about random supplies.`,
+      `The materials in ${cleanTitle} become part of the place where Israel will meet with God.`,
     ];
   }
 
   if (/garments|ephod|breastplate|robe|priest|aaron/.test(lower)) {
     return [
-      "This phrase points to priestly service before the LORD.",
-      "The garments teach that approaching God is not casual.",
-      "The priest represents the people in a holy place.",
+      `${cleanTitle} points to priestly service before the LORD.`,
+      `Through ${cleanTitle}, the garments teach that approaching God is not casual.`,
+      `${cleanTitle} helps show how the priest represents the people in a holy place.`,
     ];
   }
 
   return [
-    "This phrase helps the reader follow the end of Exodus.",
-    "God is moving His people from rescue toward worship.",
-    "The book ends with God's presence in the midst of Israel.",
+    `${cleanTitle} helps the reader follow the end of Exodus.`,
+    `Through ${cleanTitle}, God moves His people from rescue toward worship.`,
+    `${cleanTitle} helps the end of Exodus point toward God's presence in the midst of Israel.`,
   ];
 }
 
@@ -1015,7 +1015,7 @@ function normalizeRepeatedExodusThirtyOneToFortyLines(sections: PersonalExodusPh
         }
 
         for (const line of getExodusThirtyOneToFortyTeachingLines(section, cleanTitle)) {
-          if (kept.length >= 7) break;
+          if (kept.length >= 5) break;
           if (!kept.some((keptLine) => normalizeLine(keptLine) === normalizeLine(line))) {
             kept.push(line);
           }
