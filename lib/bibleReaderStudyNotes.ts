@@ -11351,6 +11351,22 @@ This phrase matters because sin changes Adam and Eve's experience of God's prese
 The presence that should have been joy now feels threatening because guilt has entered the heart.`,
         ],
         [
+          "\u{1F32C}\u{FE0F} In The Cool Of The Day",
+          `This phrase gives the scene a quiet feeling.
+
+It sounds like a time when walking with God should have felt peaceful.
+
+But after sin, the same garden feels different.
+
+\u{1F32C}\u{FE0F} A gentle time
+\u{1F333} The same garden
+\u{1F628} A changed heart
+
+The problem is not that God has become cruel.
+
+The problem is that guilt has made Adam and Eve afraid of His presence.`,
+        ],
+        [
           "🫣 Hid Themselves",
           `This is one of the first effects of sin.
 
@@ -11375,6 +11391,22 @@ People hide through silence, blame, pretending, busyness, or distance.
 Genesis shows that hiding began in the garden.`,
         ],
         [
+          "\u{1F333} Amongst The Trees Of The Garden",
+          `Adam and Eve hide among the trees God made.
+
+That detail is sad.
+
+The gifts of creation are now being used as cover from the Creator.
+
+\u{1F333} Trees meant for life
+\u{1FAE3} People trying to hide
+\u{1F494} Relationship now broken
+
+Sin makes people misuse good things.
+
+The garden is still good, but the human heart is no longer at peace inside it.`,
+        ],
+        [
           "❓ Where Art Thou",
           `God asks Adam where he is.
 
@@ -11395,6 +11427,40 @@ This phrase matters because God's first question after sin is not a lightning bo
 It is a searching question.
 
 God confronts sin, but He begins by calling the man out of hiding.`,
+        ],
+        [
+          "\u{2753} Who Told Thee That Thou Wast Naked",
+          `God's question pushes Adam to think about what changed.
+
+Adam was naked before, but he was not ashamed.
+
+Now shame has entered his mind.
+
+\u{2753} Who taught you shame?
+\u{1F440} What changed inside you?
+\u{1F494} What did sin do?
+
+God already knows the answer.
+
+The question helps Adam face the truth instead of hiding from it.`,
+        ],
+        [
+          "\u{1F34E} Hast Thou Eaten Of The Tree",
+          `God names the real issue.
+
+Adam's fear did not appear from nowhere.
+
+It came from disobedience.
+
+\u{1F34E} A command was given
+\u{270B} A boundary was crossed
+\u{2696}\u{FE0F} Truth must be faced
+
+God's question is direct.
+
+He is not asking for excuses.
+
+He is calling Adam to tell the truth about what he has done.`,
         ],
         [
           "😨 I Was Afraid",
@@ -11740,6 +11806,38 @@ It is the result of sin.
 
 The rest of Scripture will move toward God's answer to death.`,
         ],
+        [
+          "\u{1F33E} Thorns Also And Thistles",
+          `The ground will still produce food.
+
+But now it will also produce resistance.
+
+Thorns and thistles show that creation is frustrated by sin.
+
+\u{1F33E} Food will grow
+\u{1F335} Thorns will grow too
+\u{1F613} Work becomes harder
+
+Adam will still work the ground.
+
+But the work will now include struggle, frustration, and pain.`,
+        ],
+        [
+          "\u{1F35E} Till Thou Return Unto The Ground",
+          `Adam's life outside Eden will be marked by work until death.
+
+He came from the ground.
+
+Now he will return to the ground.
+
+\u{1F35E} Daily bread
+\u{1F613} Daily labor
+\u{1FAA6} A final return to dust
+
+This phrase shows how serious sin is.
+
+Life continues, but death now stands at the end of the road.`,
+        ],
       ],
     }),
     makePersonalGenesisThreeSection({
@@ -11770,6 +11868,22 @@ This phrase matters because Adam is not only thinking about death.
 He is also responding to the promise that life will continue through the woman.`,
         ],
         [
+          "\u{1F469} Mother Of All Living",
+          `Eve's name is connected to life.
+
+That is important because Genesis 3 has just spoken about death.
+
+Even after judgment, life will continue.
+
+\u{1F469} Mother
+\u{1F476} Children
+\u{1F331} Life continuing
+
+This does not erase the consequences of sin.
+
+But it shows hope still alive inside the story.`,
+        ],
+        [
           "🧥 Coats Of Skins",
           `Adam and Eve made fig leaves for themselves.
 
@@ -11792,6 +11906,54 @@ This phrase matters because it is the first picture of God covering human shame.
 Many readers also notice that skins imply death, which points forward to the Bible's larger theme of covering through sacrifice.`,
         ],
         [
+          "\u{1F9E5} The Lord God Made Coats Of Skins",
+          `God Himself makes the covering.
+
+Adam and Eve had already tried to cover themselves with fig leaves.
+
+But God gives a better covering.
+
+\u{1F9E5} God provides
+\u{1F33F} Human covering was not enough
+\u{1F64F} Mercy comes from the Lord
+
+This is more than clothing.
+
+It shows that God is still caring for guilty people.`,
+        ],
+        [
+          "\u{1F451} The Man Is Become As One Of Us",
+          `This phrase shows that something serious has changed.
+
+Adam and Eve now know evil by experience.
+
+They wanted wisdom apart from God.
+
+\u{1F440} Eyes opened
+\u{2696}\u{FE0F} Evil now known
+\u{1F494} Innocence lost
+
+They did not become gods.
+
+They became sinners who now understand evil from the inside.`,
+        ],
+        [
+          "\u{270B} Lest He Put Forth His Hand",
+          `God stops Adam from reaching for the tree of life.
+
+That may sound harsh at first.
+
+But it is actually mercy.
+
+\u{270B} Access is stopped
+\u{1F333} The tree of life is guarded
+\u{1F494} Fallen life must not last forever
+
+God does not allow humans to live forever in a broken condition.
+
+The way back to life will have to come through God's rescue.`,
+        ],
+        [
           "🚪 The Lord God Sent Him Forth",
           `God sends Adam out of the garden.
 
@@ -11808,6 +11970,22 @@ Sin has broken the relationship and changed their condition.
 This phrase matters because exile becomes a major Bible theme.
 
 People are pushed away from the place of blessing because of sin, and the rest of Scripture begins moving toward restoration.`,
+        ],
+        [
+          "\u{1F331} To Till The Ground",
+          `Adam is sent out to work the ground.
+
+This connects back to his calling in Genesis 2.
+
+But now the work happens outside Eden.
+
+\u{1F331} Work continues
+\u{1F6AA} Eden is behind him
+\u{1F613} The ground is harder now
+
+God does not remove Adam's calling.
+
+But sin changes the place and pain of that calling.`,
         ],
         [
           "🌳 The Tree Of Life",
@@ -11832,6 +12010,22 @@ This phrase matters because the Bible's story is not only about punishment.
 It is about regaining access to life with God.
 
 The tree of life returns in Revelation, where access is restored.`,
+        ],
+        [
+          "\u{1F305} At The East Of The Garden",
+          `The guard is placed at the east of Eden.
+
+That detail helps the reader picture the closed way back.
+
+The garden has an entrance, but the entrance is guarded.
+
+\u{1F305} East of Eden
+\u{1F6AA} The way is closed
+\u{1F525} Access is guarded
+
+Humanity is now outside the place of life.
+
+The rest of the Bible will keep showing the need for a way back to God.`,
         ],
         [
           "🛡️ Cherubims",
@@ -14026,6 +14220,21 @@ This phrase matters because God gives dignity to the harmed.
 What people try to silence still reaches Him.`,
         ],
         [
+          "\u{1FA78} The Voice Of Thy Brother's Blood",
+          `God speaks as if Abel's blood has a voice.
+
+That means the murder is not hidden, even though Abel cannot speak for himself.
+
+The ground has received the blood, but God hears it.
+
+\u{1FA78} Blood crying out
+\u{1F442} God hears
+\u{2696}\u{FE0F} Justice is coming
+
+This phrase matters because victims are not forgotten by God.
+
+Human violence may silence a person, but it cannot silence the truth before the Lord.`,
+        ],        [
           "🌍 Cursed From The Earth",
           `Cain is cursed from the ground that received Abel's blood.
 
@@ -14062,6 +14271,21 @@ This phrase matters because sin promises freedom but often produces restlessness
 Cain wanted his own way, but his own way becomes exile.`,
         ],
         [
+          "\u{1F648} From Thy Face Shall I Be Hid",
+          `Cain understands that his sin has created separation.
+
+He will be driven from the ground and live away from the nearness of God's presence.
+
+That is one of the deepest pains in the judgment.
+
+\u{1F648} Hidden from God's face
+\u{1F6B6} Wandering begins
+\u{1F494} Sin separates
+
+Cain is worried about survival.
+
+But the bigger tragedy is life away from the face of the Lord.`,
+        ],        [
           "🛡️ The Lord Set A Mark Upon Cain",
           `God judges Cain, but He also protects him from revenge.
 
@@ -14168,6 +14392,60 @@ This phrase matters because Genesis shows that human ability is powerful.
 But ability without righteousness can become dangerous.`,
         ],
         [
+          "\u{1F469} Adah And Zillah",
+          `Lamech has two wives.
+
+That is a change from the one-man and one-woman pattern in Genesis 2.
+
+Genesis does not pause to explain everything here.
+
+But it lets the reader notice the family pattern moving away from Eden's design.
+
+\u{1F469} Adah
+\u{1F469} Zillah
+\u{1F3E0} A complicated household
+
+Sin affects worship, work, violence, and family life.
+
+The brokenness keeps spreading.`,
+        ],
+        [
+          "\u{1F9CD}\u{200D}\u{2640}\u{FE0F} The Sister Of Tubalcain Was Naamah",
+          `Naamah is named briefly.
+
+That small detail reminds us that women are present in these family lines too.
+
+Genesis often moves quickly through names.
+
+But each name belongs to a real person in the growing human story.
+
+\u{1F9CD}\u{200D}\u{2640}\u{FE0F} A named woman
+\u{1F46A} A real family
+\u{1F4DC} A line being traced
+
+The Bible's genealogies are not empty lists.
+
+They show humanity spreading through real households.`,
+        ],
+        [
+          "\u{1F5E3}\u{FE0F} Ye Wives Of Lamech",
+          `Lamech speaks directly to his wives.
+
+He wants them to hear his boast.
+
+That makes the violence public inside his household.
+
+\u{1F5E3}\u{FE0F} Listen to me
+\u{1F3E0} A household hears
+\u{1FA78} Violence becomes a speech
+
+Cain tried to hide from responsibility.
+
+Lamech announces his violence out loud.
+
+Sin is becoming more bold.`,
+        ],
+        [
           "🗣️ Hear My Voice",
           `Lamech speaks like a man who wants attention.
 
@@ -14256,6 +14534,38 @@ Genesis is teaching us to watch the family line.
 Even after murder, God's promise is not dead.`,
         ],
         [
+          "\u{1F64F} God Hath Appointed Me Another Seed",
+          `Eve sees Seth as a gift from God.
+
+She does not treat his birth as random.
+
+She connects new life to God's mercy after grief.
+
+\u{1F64F} God appointed
+\u{1F331} Another seed
+\u{1F494} Hope after loss
+
+This phrase helps readers see faith inside Eve's words.
+
+After Abel's death, she still recognizes God as the giver of life.`,
+        ],
+        [
+          "\u{1F494} Instead Of Abel",
+          `Abel is not forgotten.
+
+Seth's birth brings hope, but it does not erase the pain of Abel's murder.
+
+Genesis lets grief and hope stand together.
+
+\u{1F494} Abel is gone
+\u{1F331} Seth is given
+\u{1F64F} God is still working
+
+This phrase matters because biblical hope is not pretend happiness.
+
+It is trust in God after real loss.`,
+        ],
+        [
           "🧍 Seth",
           `Seth's name is connected with being appointed or granted.
 
@@ -14290,6 +14600,38 @@ Weak people need the strong name of God.
 This phrase matters because Genesis does not present humans as self-sufficient heroes.
 
 The line of hope is made of people who need God.`,
+        ],
+        [
+          "\u{1F476} To Seth, To Him Also There Was Born A Son",
+          `The line continues from Seth to Enos.
+
+Genesis is slowly tracing the family line of hope.
+
+This matters after a chapter filled with death and exile.
+
+\u{1F476} A son is born
+\u{1F46A} The family continues
+\u{1F331} Hope moves forward
+
+God's promise does not depend on Cain's city or Lamech's boast.
+
+It continues through the line God preserves.`,
+        ],
+        [
+          "\u{1F64F} Then Began Men",
+          `This phrase introduces a new spiritual movement.
+
+People begin calling on the name of the Lord.
+
+That is a hopeful ending to a dark chapter.
+
+\u{1F64F} Prayer
+\u{1F5E3}\u{FE0F} Calling on God
+\u{1F331} Worship outside Eden
+
+Genesis 4 does not end with Lamech's violence.
+
+It ends with people turning toward the Lord.`,
         ],
         [
           "🙏 Call Upon The Name Of The Lord",
@@ -19204,6 +19546,87 @@ applyPersonalLeviticusOneThroughTenStudySections();
 applyPersonalExodusTextureStudySections();
 enforceStudySectionVerseLimit();
 
+function lineStartsWithVisualMarker(line: string) {
+  const trimmed = line.trim();
+  return Boolean(trimmed) && !/^[A-Za-z0-9"'\u201c\u2018(]/.test(trimmed);
+}
+
+function removePhraseCardFillerOpening(line: string) {
+  const cleaned = line
+    .replace(/^This phrase matters because /i, "")
+    .replace(/^This matters because /i, "")
+    .replace(/^That matters because /i, "")
+    .replace(/^This phrase /i, "")
+    .replace(/^The phrase /i, "")
+    .trim();
+
+  return cleaned ? `${cleaned.charAt(0).toUpperCase()}${cleaned.slice(1)}` : cleaned;
+}
+
+function formatShortTeachingBlock(block: string) {
+  const lines = block
+    .split("\n")
+    .map((line) => removePhraseCardFillerOpening(line.trim()))
+    .filter(Boolean);
+
+  if (!lines.length) return "";
+
+  const visualLineCount = lines.filter(lineStartsWithVisualMarker).length;
+  if (visualLineCount >= 2) {
+    return lines.join("\n");
+  }
+
+  const joined = lines.join(" ");
+  return joined
+    .replace(/([.!?])\s+(?=[A-Z0-9"'\u201c\u2018])/g, "$1\n\n")
+    .split(/\n{2,}/)
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .join("\n\n");
+}
+
+function isVisualOnlyBlock(block: string) {
+  const lines = block
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean);
+
+  return Boolean(lines.length) && lines.every(lineStartsWithVisualMarker);
+}
+
+function formatKeyPhraseLikeDayOne(content: string) {
+  const normalized = content.replace(/\r\n/g, "\n").trim();
+  const [rawTitle = "", ...bodyLines] = normalized.split("\n");
+  const title = rawTitle.trim();
+  const body = bodyLines.join("\n").trim();
+
+  if (!body) return title;
+
+  const formattedBlocks = body
+    .split(/\n{2,}/)
+    .map(formatShortTeachingBlock)
+    .filter(Boolean);
+
+  const compactedBlocks = formattedBlocks.reduce<string[]>((blocks, block) => {
+    const previous = blocks[blocks.length - 1];
+    if (previous && isVisualOnlyBlock(previous) && isVisualOnlyBlock(block)) {
+      blocks[blocks.length - 1] = `${previous}\n${block}`;
+      return blocks;
+    }
+
+    blocks.push(block);
+    return blocks;
+  }, []);
+
+  const formattedBody = compactedBlocks.join("\n\n");
+
+  return `${title}\n${formattedBody}`;
+}
+
+function shouldFormatLikeDayOne(section: BibleReaderStudySection) {
+  return section.book === "genesis" && section.chapter >= 1 && section.chapter <= 48;
+}
+
 for (const section of BIBLE_READER_STUDY_SECTIONS) {
   section.categories = section.categories
     .filter((category) => category.id !== "key-truths")
@@ -19211,7 +19634,12 @@ for (const section of BIBLE_READER_STUDY_SECTIONS) {
       category.id === "why-this-matters"
         ? { ...category, title: "What This Means" }
         : category.id === "key-phrases"
-          ? { ...category, content: category.content }
+          ? {
+              ...category,
+              content: shouldFormatLikeDayOne(section)
+                ? category.content.map(formatKeyPhraseLikeDayOne)
+                : category.content,
+            }
           : category,
     );
 }

@@ -78,7 +78,44 @@ Key Phrase explanations must function like a deep Bible study, not a summary sec
 
 Assume the reader has never studied the Bible before.
 
-Use Day 22 Exodus 1-4 as the current Bible Buddy phrase-card model.
+Use Day 1 Genesis 1, especially the "In The Beginning" card, as the current Bible Buddy phrase-card formatting model.
+
+The approved visual rhythm is:
+
+- short sentences
+- lots of spacing
+- one clear idea per line or short paragraph
+- compact emoji lists only when they explain real parts of the phrase
+- no headings inside the explanation
+- no commentary-style blocks
+- no repeated filler sentence structure
+
+Approved formatting benchmark:
+
+```txt
+These words do not mean God began here.
+
+They mean creation began here.
+
+🌌 Before the heavens
+🌍 Before the earth
+💡 Before light
+📅 Before the first day
+
+God was already there.
+
+So Genesis does not start by explaining where God came from.
+
+It starts by showing us that everything else came from Him.
+
+The beginning is not the beginning of God.
+
+It is the beginning of what God made.
+```
+
+Every phrase explanation should feel like this: simple, spaced, conversational, and directly tied to the exact phrase.
+
+Day 22 Exodus 1-4 remains a content-depth reference, but Genesis 1 is the formatting standard.
 
 The Exodus 1:1-6 cards show the required style:
 

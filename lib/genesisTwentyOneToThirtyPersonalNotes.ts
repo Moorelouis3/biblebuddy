@@ -865,7 +865,7 @@ function getGenesisTwentyFiveToThirtyPhraseFocus(section: PersonalGenesisPhraseS
     return "\u{1F411} Flocks and wages\n\n\u{1F4C8} Increase under pressure\n\n\u{1F6E1}\u{FE0F} God providing despite Laban\n\nJacob's prosperity is not just cleverness; Genesis later connects it to God's care.";
   }
 
-  return "\u{1F4D6} The story keeps moving\n\n\u{1F9ED} The wording gives direction\n\n\u{1F64C} God is still carrying the promise\n\nThis phrase helps the reader follow how ordinary details become part of the larger Genesis story.";
+  return "";
 }
 function cleanGenesisTwentyOneToThirtyBoilerplate(content: string) {
   const seen = new Set<string>();

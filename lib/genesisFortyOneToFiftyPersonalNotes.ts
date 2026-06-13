@@ -718,8 +718,6 @@ const deepPhrase = (
   scene,
   notice,
   meaning,
-  "This phrase is carrying story movement, not decoration.",
-  "It helps the reader see how famine, fear, wisdom, family pain, and blessing are all connected.",
   lesson,
 ]);
 

@@ -8376,10 +8376,14 @@ function stripGenesisElevenToTwentyPhraseEmoji(title: string) {
 }
 
 function getGenesisElevenToTwentyPhraseFocus(section: PersonalGenesisPhraseSectionInput, cleanTitle: string) {
-  const lower = cleanTitle.toLowerCase();
+  const lower = `${section.title} ${cleanTitle}`.toLowerCase();
 
   if (lower.includes("toward") || lower.includes("northward") || lower.includes("southward") || lower.includes("eastward") || lower.includes("westward")) {
     return "\u{1F4CD} Real land\n\n\u{1F6B6} A traveling family\n\n\u{1F4DC} A promise not fully possessed yet\n\nThe direction language helps the reader follow Abram through the land God has promised but not yet fully given.";
+  }
+
+  if (lower.includes("brick") || lower.includes("burn") || lower.includes("slime") || lower.includes("city") || lower.includes("tower") || lower.includes("heaven")) {
+    return "\u{1F9F1} Bricks for strength\n\n\u{1F3D9}\u{FE0F} A city for safety\n\n\u{1F5FC} A tower for greatness\n\nThe building project shows organized human ability being used without humble trust in God.";
   }
 
   if (lower.includes("let us make us a name") || lower.includes("name")) {

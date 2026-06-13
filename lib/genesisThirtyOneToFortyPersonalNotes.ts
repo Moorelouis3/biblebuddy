@@ -353,7 +353,7 @@ function getGenesisThirtyOneToFortyPhraseFocus(section: PersonalGenesisPhraseSec
     return "\u{1F6B6} Judah moving away\n\n\u{23F3} Tamar left waiting\n\n\u{2696}\u{FE0F} Hidden sin exposed\n\nGenesis 38 shows God working even inside a messy and morally broken family story.";
   }
 
-  return "\u{1F4D6} The story keeps moving\n\n\u{1F9ED} The wording gives direction\n\n\u{1F64C} God is still carrying the promise\n\nThis phrase helps the reader follow how ordinary details become part of the larger Genesis story.";
+  return "";
 }
 
 function formatGenesisThirtyOneToFortyPhraseExplanation(
@@ -2615,8 +2615,6 @@ const deepPhrase = (
   scene,
   notice,
   meaning,
-  "This detail belongs in the story.",
-  "It helps the reader see how God's story is moving through real choices, real pressure, and real consequences.",
   lesson,
 ]);
 
