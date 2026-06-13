@@ -237,7 +237,11 @@ const GENESIS_31_40_TEXTURE_RULES: PersonalTextureRule[] = [
   },
 ];
 
-function addGenesisThirtyOneToFortyTexture(title: string, content: string) {
+function addGenesisThirtyOneToFortyTexture(section: PersonalGenesisPhraseSectionInput, title: string, content: string) {
+  if (section.chapter >= 37 && section.chapter <= 40) {
+    return content;
+  }
+
   const lower = title.toLowerCase();
   const rule = GENESIS_31_40_TEXTURE_RULES.find((item) => item.matches.some((match) => lower.includes(match)));
 
@@ -251,7 +255,7 @@ function addGenesisThirtyOneToFortyTexture(title: string, content: string) {
 function addGenesisThirtyOneToFortySectionTexture(sections: PersonalGenesisPhraseSectionInput[]) {
   return sections.map((section) => ({
     ...section,
-    phrases: section.phrases.map(([title, content]) => [title, addGenesisThirtyOneToFortyTexture(title, content)] as [string, string]),
+    phrases: section.phrases.map(([title, content]) => [title, addGenesisThirtyOneToFortyTexture(section, title, content)] as [string, string]),
   }));
 }
 
@@ -317,6 +321,10 @@ function cleanGenesisThirtyOneToFortyBoilerplate(content: string) {
 function getGenesisThirtyOneToFortyPhraseFocus(section: PersonalGenesisPhraseSectionInput, cleanTitle: string) {
   const lower = `${section.title} ${cleanTitle}`.toLowerCase();
 
+  if (section.chapter >= 37 && section.chapter <= 40) {
+    return "";
+  }
+
   if (lower.includes("laban") || lower.includes("stole") || lower.includes("fled") || lower.includes("pursued")) {
     return "\u{1F3C3} Leaving under pressure\n\n\u{1F442} Accusations and fear\n\n\u{1F6E1}\u{FE0F} God protecting the promise family\n\nJacob's departure is not clean or calm, but God is still guiding him out.";
   }
@@ -366,22 +374,160 @@ function formatGenesisThirtyOneToFortyPhraseExplanation(
   }
 
   const cleanedContent = cleanGenesisThirtyOneToFortyBoilerplate(content);
-  const hasVisualBlock = hasGenesisThirtyOneToFortyVisualList(cleanedContent);
+  const finalCleanedContent =
+    section.chapter === 37 || section.chapter === 38
+      ? cleanedContent
+          .replace(/\bmatters because\b/gi, "is important because")
+          .replace(/\bnot filler\b/gi, "meaningful")
+          .replace(/\n\nIs mocking, but/g, "\n\nThe nickname is mocking, but")
+          .replace(/\n\nIs mocking and dismissive\./g, "\n\nThe nickname is mocking and dismissive.")
+          .replace(/\n\nIs important because Judah stops/g, "\n\nThis is important because Judah stops")
+      : cleanedContent;
+  const hasVisualBlock = hasGenesisThirtyOneToFortyVisualList(finalCleanedContent);
 
-  if (hasVisualBlock) return cleanedContent;
+  if (hasVisualBlock) return finalCleanedContent;
 
   const cleanTitle = stripGenesisThirtyOneToFortyPhraseEmoji(title);
   const focus = getGenesisThirtyOneToFortyPhraseFocus(section, cleanTitle);
-  return note([cleanedContent, focus].filter(Boolean));
+  return note([finalCleanedContent, focus].filter(Boolean));
+}
+
+function getGenesisThirtyNineFortyIcon(title: string) {
+  if (/lord|god|interpret|dream/i.test(title)) return "🙌";
+  if (/potiphar|pharaoh|captain|master|officer|keeper|butler|baker/i.test(title)) return "🏛️";
+  if (/prison|bound|dungeon|guard/i.test(title)) return "⛓️";
+  if (/garment|hand|fled|lie with me|wife|tempt/i.test(title)) return "🚪";
+  if (/bread|basket|vine|cup|grapes|branches|feast/i.test(title)) return "🍞";
+  if (/head|hang|restored|forgot|remember/i.test(title)) return "⏳";
+  if (/prosper|grace|blessed|mercy|favour/i.test(title)) return "🌱";
+  if (/sin|wicked|wrath|fault/i.test(title)) return "⚠️";
+  return "🔎";
+}
+
+function ensureGenesisThirtyNineFortyEmoji(title: string) {
+  return /^[^A-Za-z0-9']+\s/.test(title) ? title : `${getGenesisThirtyNineFortyIcon(title)} ${title}`;
+}
+
+function cleanGenesisThirtyNineFortyFrameworkText(content: string) {
+  return content
+    .replace(/\bThis phrase matters because\b/gi, "This is important because")
+    .replace(/\bThe phrase matters because\b/gi, "This is important because")
+    .replace(/\bmatters because\b/gi, "is important because")
+    .replace(/\bbelongs to\b/gi, "is part of")
+    .replace(/\bnot filler\b/gi, "meaningful")
+    .replace(/\binterpreting dreams\b/gi, "explaining dreams");
+}
+
+function getGenesisThirtyNineFortyTeachingLines(cleanTitle: string) {
+  const lower = cleanTitle.toLowerCase();
+
+  if (/potiphar|pharaoh|captain|officer|guard|master/.test(lower)) {
+    return [
+      "This title or role helps readers understand the world Joseph is now living in.",
+      "Joseph is no longer in his father's tents.",
+      "He is inside Egyptian power, service, and household authority.",
+    ];
+  }
+
+  if (/lord was with joseph|lord made|lord blessed|mercy|grace|prosper/.test(lower)) {
+    return [
+      "The phrase does not mean Joseph's life became easy.",
+      "It means God's presence and favor stayed with him inside a hard place.",
+      "Bible Buddy should slow down here because blessing and suffering are happening at the same time.",
+    ];
+  }
+
+  if (/prison|bound|dungeon|keeper/.test(lower)) {
+    return [
+      "Prison is another descent in Joseph's story.",
+      "But Genesis keeps showing that God is not absent in the low place.",
+      "The phrase helps readers see that Joseph's path downward is still being held by God.",
+    ];
+  }
+
+  if (/lie with me|wife|garment|fled|hand|tempt|hearkened not|sin against god/.test(lower)) {
+    return [
+      "Joseph is being tested in a private moment.",
+      "Joseph treats sin as more than a private moment.",
+      "He sees faithfulness to his master and faithfulness to God tied together.",
+    ];
+  }
+
+  if (/dream|interpret|interpretation|vine|branches|basket|cup|grapes/.test(lower)) {
+    return [
+      "Joseph is learning to serve with the gift God gave him.",
+      "The details matter because God is preparing Joseph's gift before Pharaoh ever calls for him.",
+      "What looks small in prison will become important in Egypt's palace.",
+    ];
+  }
+
+  if (/lift up thy head|restored|hang|forgot|remember/.test(lower)) {
+    return [
+      "This phrase shows the outcome of the dream interpretation.",
+      "One servant is restored, one servant is judged, and Joseph is still left waiting.",
+      "The phrase helps readers see that God's word proves true even before Joseph's own situation changes.",
+    ];
+  }
+
+  return [
+    "This phrase gives a concrete detail in Joseph's testing.",
+    "Genesis is showing God's hidden work through ordinary roles, places, words, and choices.",
+    "The detail helps readers follow the story instead of rushing past it.",
+  ];
+}
+
+function formatGenesisThirtyNineFortyRenderedPhrase(section: PersonalGenesisPhraseSectionInput, title: string, content: string): [string, string] {
+  if (section.chapter !== 39 && section.chapter !== 40) {
+    return [title, content];
+  }
+
+  const cleanTitle = stripGenesisThirtyOneToFortyPhraseEmoji(title);
+  const paragraphs = cleanGenesisThirtyNineFortyFrameworkText(content)
+    .split(/\n{2,}/)
+    .map((paragraph) => paragraph.trim())
+    .filter(Boolean);
+
+  const expanded = paragraphs.length >= 4 ? paragraphs : [...paragraphs, ...getGenesisThirtyNineFortyTeachingLines(cleanTitle)];
+  const seen = new Set<string>();
+  const body = note(
+    expanded.filter((paragraph) => {
+      const key = paragraph.toLowerCase().replace(/[.?!]+$/, "");
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    }),
+  );
+
+  return [ensureGenesisThirtyNineFortyEmoji(title), body];
+}
+
+function dedupeGenesisThirtyNineFortySections(section: PersonalGenesisPhraseSectionInput): PersonalGenesisPhraseSectionInput {
+  if (section.chapter !== 39 && section.chapter !== 40) {
+    return section;
+  }
+
+  const byTitle = new Map<string, [string, string]>();
+  for (const phraseCard of section.phrases) {
+    const key = stripGenesisThirtyOneToFortyPhraseEmoji(phraseCard[0]).toLowerCase();
+    const existing = byTitle.get(key);
+    if (!existing || phraseCard[1].length > existing[1].length) {
+      byTitle.set(key, phraseCard);
+    }
+  }
+
+  return { ...section, phrases: [...byTitle.values()] };
 }
 
 function formatGenesisThirtyOneToFortySectionExplanations(sections: PersonalGenesisPhraseSectionInput[]) {
   return sections.map((section) => ({
     ...section,
-    phrases: section.phrases.map(([title, content]) => [
-      title,
-      formatGenesisThirtyOneToFortyPhraseExplanation(section, title, content),
-    ] as [string, string]),
+    phrases: section.phrases.map(([title, content]) =>
+      formatGenesisThirtyNineFortyRenderedPhrase(
+        section,
+        title,
+        formatGenesisThirtyOneToFortyPhraseExplanation(section, title, content),
+      ),
+    ),
   }));
 }
 
@@ -2683,7 +2829,368 @@ function ensureGenesis31To38PhraseDepth(section: PersonalGenesisPhraseSectionInp
   };
 }
 
-const day15Phrase = (title: string, lines: string[]): [string, string] => phrase(title, lines);
+function getDay15PhraseIcon(title: string) {
+  if (/dream|sheaf|obeisance|stars|sun|moon|bow/i.test(title)) return "💭";
+  if (/coat|garment|vail|sackcloth|scarlet/i.test(title)) return "🧥";
+  if (/pit|down|grave|egypt/i.test(title)) return "⬇️";
+  if (/blood|slay|wicked|burnt|harlot|whoredom/i.test(title)) return "⚠️";
+  if (/brother|brethren|father|son|wife|widow|tamar|judah|joseph|reuben/i.test(title)) return "👨‍👩‍👦";
+  if (/pledge|signet|bracelets|staff|discern|acknowledged|righteous/i.test(title)) return "🧾";
+  if (/seed|womb|twins|travail|perez|pharez|zarah|zerah|born|name/i.test(title)) return "🌱";
+  if (/flock|sheep|goats|kid|shearers/i.test(title)) return "🐐";
+  if (/shechem|dothan|timnath|chezib|adullamite|place|land/i.test(title)) return "📍";
+  if (/sent|went|departed|came|arose|turned/i.test(title)) return "🚶";
+  if (/time|seventeen|three months|process/i.test(title)) return "⏳";
+  if (/saw|knew|heard|told|word|report|seek/i.test(title)) return "👀";
+  return "🔎";
+}
+
+function ensureDay15PhraseEmoji(title: string) {
+  return /^[^A-Za-z0-9']+\s/.test(title) ? title : `${getDay15PhraseIcon(title)} ${title}`;
+}
+
+function cleanDay15PhraseTitle(title: string) {
+  return title.replace(/^[^A-Za-z0-9']+\s*/, "").trim();
+}
+
+function getDay15PhraseTeachingLines(title: string, sectionReference: string) {
+  const cleanTitle = cleanDay15PhraseTitle(title);
+  const lower = cleanTitle.toLowerCase();
+
+  if (lower.includes("obeisance")) {
+    return [
+      "Obeisance means bowing down in honor or submission.",
+      "That old word helps beginners understand why the dream feels so threatening to Joseph's brothers.",
+      "🙇 Bowing",
+      "👑 Authority",
+      "💭 A future they do not want",
+      "The phrase matters because the bowing in the dream will later happen in Egypt.",
+    ];
+  }
+
+  if (lower.includes("sheaf") || lower.includes("sheaves")) {
+    return [
+      "A sheaf is a bundle of grain stalks gathered from the field.",
+      "Joseph's dream uses ordinary harvest language to picture future authority.",
+      "🌾 Grain",
+      "📦 Bundles",
+      "🙇 Bowing",
+      "The phrase helps readers see that God can use simple pictures to reveal a future no one understands yet.",
+    ];
+  }
+
+  if (lower.includes("coat") || lower.includes("garment") || lower.includes("vail") || lower.includes("sackcloth") || lower.includes("scarlet thread")) {
+    return [
+      `${cleanTitle} is clothing language, but Genesis uses clothing to show more than appearance.`,
+      "In these chapters, garments reveal favor, disguise, grief, evidence, and hidden truth.",
+      "🧥 Identity",
+      "🩸 Evidence",
+      "🫣 Hidden truth",
+      "The phrase helps readers notice how objects can carry the weight of a family's sin and sorrow.",
+    ];
+  }
+
+  if (lower.includes("pit")) {
+    return [
+      "The pit is a place of helplessness.",
+      "Joseph is alive, but he is below his brothers' power and unable to free himself.",
+      "🕳️ Trapped",
+      "💧 No water",
+      "⬇️ Going down",
+      "The phrase helps readers feel Joseph's first deep descent before God raises him later.",
+    ];
+  }
+
+  if (lower.includes("twenty pieces of silver") || lower.includes("profit")) {
+    return [
+      `${cleanTitle} puts money language beside a brother's life.`,
+      "The brothers are not merely angry now; they are turning Joseph into a transaction.",
+      "💰 Price",
+      "👨‍👩‍👦 Brother",
+      "💔 Betrayal",
+      "The phrase teaches that sin can become colder when a person starts calculating gain from another person's pain.",
+    ];
+  }
+
+  if (lower.includes("signet") || lower.includes("bracelets") || lower.includes("staff") || lower.includes("pledge")) {
+    return [
+      `${cleanTitle} points to personal items that could identify Judah.`,
+      "Tamar asks for more than payment; she secures proof.",
+      "🧾 Evidence",
+      "👤 Identity",
+      "⚖️ Truth coming",
+      "The phrase matters because the objects Judah leaves behind will later speak the truth he tried to hide.",
+    ];
+  }
+
+  if (lower.includes("discern") || lower.includes("whose are these") || lower.includes("acknowledged")) {
+    return [
+      `${cleanTitle} is recognition language.`,
+      "Judah is forced to identify the truth through the evidence in front of him.",
+      "👀 Recognize",
+      "🧾 Evidence",
+      "⚖️ Confession",
+      "The phrase echoes Joseph's coat scene and shows hidden sin coming back to be named.",
+    ];
+  }
+
+  if (lower.includes("more righteous")) {
+    return [
+      "More righteous does not mean Tamar's situation was simple or clean.",
+      "It means Judah finally admits she acted more justly than he did in this matter.",
+      "⚖️ Justice",
+      "🧾 Truth",
+      "🙇 Confession",
+      "The phrase is important because Judah stops defending himself and names his own failure.",
+    ];
+  }
+
+  if (lower.includes("widow") || lower.includes("shelah") || lower.includes("raise up seed") || lower.includes("seed should not be his")) {
+    return [
+      `${cleanTitle} is tied to the family-duty problem in Genesis 38.`,
+      "Tamar's future depends on whether Judah's household will honor its responsibility toward her.",
+      "⏳ Waiting",
+      "👨‍👩‍👦 Family duty",
+      "⚖️ Justice for the vulnerable",
+      "The phrase helps readers understand why Tamar's story is about more than private scandal.",
+    ];
+  }
+
+  if (lower.includes("harlot") || lower.includes("whoredom") || lower.includes("burnt")) {
+    return [
+      `${cleanTitle} uses severe public shame language.`,
+      "Judah and the people around him are ready to condemn Tamar before the whole truth is known.",
+      "⚠️ Accusation",
+      "🔥 Judgment",
+      "🧾 Hidden evidence",
+      "The phrase exposes how quickly people can judge when they do not see their own guilt.",
+    ];
+  }
+
+  if (lower.includes("pharez") || lower.includes("perez") || lower.includes("zarah") || lower.includes("zerah") || lower.includes("twins") || lower.includes("travail") || lower.includes("womb") || lower.includes("came out")) {
+    return [
+      `${cleanTitle} comes from the surprising birth scene at the end of Genesis 38.`,
+      "The chapter that exposed Judah's sin ends with sons being born and the family line continuing.",
+      "👶 Birth",
+      "🔄 Reversal",
+      "🌱 Future promise",
+      "The phrase helps readers see grace moving forward through a family story that is anything but polished.",
+    ];
+  }
+
+  if (lower.includes("shechem") || lower.includes("dothan") || lower.includes("timnath") || lower.includes("chezib") || lower.includes("adullamite")) {
+    return [
+      `${cleanTitle} is a place detail, but it is not filler.`,
+      "Genesis uses places to show movement, danger, alliances, and the next turn in the story.",
+      "📍 Location",
+      "🚶 Movement",
+      "🧭 Story direction",
+      "The phrase helps readers track how ordinary geography becomes part of God's larger providence.",
+    ];
+  }
+
+  if (lower.includes("evil beast") || lower.includes("rent in pieces") || lower.includes("refused to be comforted") || lower.includes("mourned") || lower.includes("grave")) {
+    return [
+      `${cleanTitle} shows the grief created by the brothers' deception.`,
+      "Jacob believes the lie because the evidence has been arranged to lead him there.",
+      "😭 Grief",
+      "🩸 False evidence",
+      "💔 A living son treated as dead",
+      "The phrase teaches that hidden sin can create real sorrow even when the story people believe is false.",
+    ];
+  }
+
+  if (lower.includes("dream") || lower.includes("stars") || lower.includes("sun") || lower.includes("moon") || lower.includes("reign")) {
+    return [
+      `${cleanTitle} is dream language that drives Joseph's story.`,
+      "The dreams are not understood kindly by the family, but they point toward a future God will unfold over time.",
+      "💭 Dream",
+      "👑 Future authority",
+      "⏳ Fulfillment later",
+      "The phrase helps readers remember that God's purpose can be revealed long before anyone sees how it will happen.",
+    ];
+  }
+
+  if (lower.includes("brother") || lower.includes("brethren") || lower.includes("father") || lower.includes("son") || lower.includes("child")) {
+    return [
+      `${cleanTitle} keeps the family relationship in front of the reader.`,
+      "Genesis wants us to feel that these are not strangers hurting each other.",
+      "👨‍👩‍👦 Family",
+      "💔 Responsibility",
+      "⚠️ Betrayal or protection",
+      "The phrase matters because sin is heavier when it happens inside a relationship meant for love and care.",
+    ];
+  }
+
+  if (lower.includes("went") || lower.includes("sent") || lower.includes("departed") || lower.includes("came") || lower.includes("turned")) {
+    return [
+      `${cleanTitle} is movement language.`,
+      "The physical movement in the story often shows a deeper movement toward testing, exposure, or providence.",
+      "🚶 Movement",
+      "🧭 Direction",
+      "⏳ A next step unfolding",
+      "The phrase helps readers slow down and notice how the story turns one step at a time.",
+    ];
+  }
+
+  if (lower.includes("feeding") || lower.includes("flock") || lower.includes("report") || lower.includes("loved") || lower.includes("hated") || lower.includes("old age")) {
+    return [
+      "This is one of the early signs that Joseph's trouble starts at home.",
+      "The house of Jacob carries promise, but it also carries favoritism, reports, resentment, and wounded brothers.",
+      "Joseph's road to Egypt begins inside this family pressure.",
+    ];
+  }
+
+  if (lower.includes("come") || lower.includes("send") || lower.includes("here am i") || lower.includes("see whether") || lower.includes("bring me word") || lower.includes("wandering") || lower.includes("seekest") || lower.includes("vale of hebron")) {
+    return [
+      "The words sound like an ordinary errand.",
+      "But this small movement carries Joseph toward Dothan, the pit, and eventually Egypt.",
+      "Genesis lets a simple family task become the road where hidden hatred is exposed.",
+    ];
+  }
+
+  if (lower.includes("conspired") || lower.includes("slay") || lower.includes("shed no blood") || lower.includes("afar off") || lower.includes("evil beast")) {
+    return [
+      "The phrase shows hatred becoming planned action.",
+      "The brothers are no longer only angry in their hearts.",
+      "They are now deciding what evil they can do and how they can hide it.",
+    ];
+  }
+
+  if (lower.includes("ishmeelites") || lower.includes("spicery") || lower.includes("balm") || lower.includes("myrrh") || lower.includes("lifted up their eyes") || lower.includes("let not our hand") || lower.includes("brought joseph into egypt")) {
+    return [
+      "This detail moves Joseph from family betrayal into the wider world of trade, travel, and Egypt.",
+      "The brothers see an opportunity for profit.",
+      "God is quietly moving Joseph toward the place where many lives will later be preserved.",
+    ];
+  }
+
+  if (lower.includes("rent his clothes") || lower.includes("whither shall i go") || lower.includes("child is not") || lower.includes("potiphar") || lower.includes("officer of pharaoh")) {
+    return [
+      "This detail shows the cost of Joseph's disappearance spreading through the story.",
+      "Jacob's house is moving toward grief.",
+      "Joseph's life is moving toward Egypt, even though no one in the family understands that yet.",
+    ];
+  }
+
+  if (lower.includes("at that time") || lower.includes("process of time") || lower.includes("three months") || lower.includes("comforted")) {
+    return [
+      "Genesis uses time carefully in Judah and Tamar's story.",
+      "Delay does not mean the issue is gone.",
+      "The hidden failure is still moving toward a moment when it must be faced.",
+    ];
+  }
+
+  if (lower.includes("shuah") || lower.includes("took her") || lower.includes("called his name") || lower.includes("er, judah") || lower.includes("lord slew") || lower.includes("displeased the lord") || lower.includes("peradventure")) {
+    return [
+      "This detail sits inside Judah's household, where the next moral crisis will unfold.",
+      "Genesis is not listing family facts for trivia.",
+      "These names and judgments explain why Tamar's future becomes so fragile.",
+    ];
+  }
+
+  if (lower.includes("spilled") || lower.includes("go in unto") || lower.includes("brother's wife") || lower.includes("father's house")) {
+    return [
+      "The custom may feel unfamiliar, but the point is protection, family responsibility, and a future for Tamar.",
+      "The men in Judah's household are supposed to protect the family line and the widow.",
+      "Instead, responsibility is refused or delayed.",
+    ];
+  }
+
+  if (lower.includes("kid from the flock") || lower.includes("goats") || lower.includes("flock")) {
+    return [
+      "Goat details matter in Jacob's family story.",
+      "Goats were involved when Jacob deceived Isaac, and goat blood is used when Joseph's coat deceives Jacob.",
+      "Genesis keeps showing deception repeating through familiar objects.",
+    ];
+  }
+
+  return [
+    "This phrase gives the reader one more piece of the scene.",
+    "Genesis often teaches through small words, objects, movements, and family details.",
+    "The detail helps the reader follow what is happening instead of rushing past the verse.",
+  ];
+}
+
+const day15Phrase = (title: string, lines: string[]): [string, string] => {
+  const heading = ensureDay15PhraseEmoji(title);
+  const teachingLines = getDay15PhraseTeachingLines(title, "");
+  const mergedLines = [...lines, ...teachingLines].filter((line, index, all) => {
+    const key = line.toLowerCase().replace(/[.?!]+$/, "").trim();
+    return key.length > 0 && all.findIndex((item) => item.toLowerCase().replace(/[.?!]+$/, "").trim() === key) === index;
+  });
+
+  return phrase(heading, mergedLines);
+};
+
+function dedupeDay15PhraseCards(section: PersonalGenesisPhraseSectionInput): PersonalGenesisPhraseSectionInput {
+  if (section.chapter !== 37 && section.chapter !== 38) {
+    return section;
+  }
+
+  const byTitle = new Map<string, [string, string]>();
+  for (const phraseCard of section.phrases) {
+    const [title, content] = phraseCard;
+    const key = cleanDay15PhraseTitle(title).toLowerCase();
+    const existing = byTitle.get(key);
+    if (!existing || content.length > existing[1].length) {
+      byTitle.set(key, phraseCard);
+    }
+  }
+
+  return {
+    ...section,
+    phrases: [...byTitle.values()],
+  };
+}
+
+function cleanDay15FrameworkLanguage(section: PersonalGenesisPhraseSectionInput): PersonalGenesisPhraseSectionInput {
+  if (section.chapter !== 37 && section.chapter !== 38) {
+    return section;
+  }
+
+  return {
+    ...section,
+    phrases: section.phrases.map(([title, content]) => [
+      title,
+      content
+        .replace(
+          "His youth matters because the dreams and robe make him stand out before he has the maturity to carry the tension wisely.",
+          "His youth makes the dreams and robe even heavier, because he stands out before he has the maturity to carry the tension wisely.",
+        )
+        .replace(
+          "That contrast matters because a man can carry God's promise and still love unwisely.",
+          "That contrast is important: a man can carry God's promise and still love unwisely.",
+        )
+        .replace(
+          "The audience matters because the dream touches their status.",
+          "The audience is important because the dream touches their status.",
+        )
+        .replace("In Shechem is a place detail, but it is not filler.", "In Shechem is a place detail with real weight.")
+        .replace("Turned In To A Certain Adullamite is a place detail, but it is not filler.", "Turned In To A Certain Adullamite is a place detail with real weight.")
+        .replace("He Was At Chezib is a place detail, but it is not filler.", "He Was At Chezib is a place detail with real weight.")
+        .replace("By The Way To Timnath is a place detail, but it is not filler.", "By The Way To Timnath is a place detail with real weight.")
+        .replace("Is mocking, but it reveals what most threatens them.", "The nickname is mocking, but it reveals what most threatens them.")
+        .replace("Is mocking and dismissive.", "The nickname is mocking and dismissive.")
+        .replace(
+          "The timing matters because Judah just helped sell Joseph.",
+          "The timing is important because Judah just helped sell Joseph.",
+        )
+        .replace(
+          "His name matters because the firstborn line becomes central to Tamar's story.",
+          "His name is important because the firstborn line becomes central to Tamar's story.",
+        )
+        .replace(
+          "The pledge matters because it can identify Judah.",
+          "The pledge is important because it can identify Judah.",
+        )
+        .replace(
+          "Is important because Judah stops defending himself and names his own failure.",
+          "This is important because Judah stops defending himself and names his own failure.",
+        ),
+    ]),
+  };
+}
 
 const DAY_15_REAL_PHRASE_ADDITIONS: Record<string, Array<[string, string]>> = {
   "Genesis 37:1-4": [
@@ -2882,10 +3389,10 @@ function deepenDay15PhraseCards(section: PersonalGenesisPhraseSectionInput): Per
       day15Phrase("By The Man, Whose These Are, Am I With Child", ["Tamar identifies the father through the objects.", "The sentence turns the accusation back toward Judah without wasting words.", "Truth arrives through what Judah himself left behind."]),
     ],
   };
-  return {
+  return cleanDay15FrameworkLanguage(dedupeDay15PhraseCards({
     ...section,
     phrases: [...section.phrases, ...additions, ...(extraAdditions[section.reference] ?? [])],
-  };
+  }));
 }
 
 const DAY_16_GENESIS_39_40_FINAL_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
@@ -3079,7 +3586,7 @@ export const GENESIS_31_40_PERSONAL_SECTIONS = formatGenesisThirtyOneToFortySect
       ...DAY_13_GENESIS_32_33_FINAL_SECTIONS.map(deepenDay13PhraseCards),
       ...DAY_14_GENESIS_34_36_FINAL_SECTIONS.map(deepenDay14PhraseCards),
       ...DAY_15_GENESIS_37_38_FINAL_SECTIONS.map(deepenDay15PhraseCards),
-      ...DAY_16_GENESIS_39_40_FINAL_SECTIONS.map(deepenDay16PhraseCards),
+      ...DAY_16_GENESIS_39_40_FINAL_SECTIONS.map(deepenDay16PhraseCards).map(dedupeGenesisThirtyNineFortySections),
       ...expandSplitSections(RAW_GENESIS_31_40_PERSONAL_SECTIONS.filter((section) => section.chapter !== 31 && section.chapter !== 32 && section.chapter !== 33 && section.chapter !== 34 && section.chapter !== 35 && section.chapter !== 36 && section.chapter !== 37 && section.chapter !== 38 && section.chapter !== 39 && section.chapter !== 40)),
     ],
   ),

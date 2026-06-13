@@ -41,6 +41,13 @@ export type GenesisBibleYearDay = {
   readings: GenesisBibleYearReading[];
 };
 
+export const BIBLE_YEAR_FALLBACK_COVER_IMAGE = "/genericcoverforBIOY.png";
+
+export function getBibleYearDayCoverImage(day: Pick<GenesisBibleYearDay, "coverImage"> | null | undefined) {
+  const coverImage = typeof day?.coverImage === "string" ? day.coverImage.trim() : "";
+  return coverImage || BIBLE_YEAR_FALLBACK_COVER_IMAGE;
+}
+
 function buildGenesisReadings(studyTitle: string, startChapter: number, endChapter: number, studyStartDay: number): GenesisBibleYearReading[] {
   return Array.from({ length: endChapter - startChapter + 1 }, (_, index) => ({
     book: "Genesis",
@@ -440,7 +447,7 @@ function parseBibleYearSchedule(raw: string): BibleYearScheduleEntry[] {
 
 const ADDITIONAL_BIBLE_YEAR_SCHEDULE = parseBibleYearSchedule(ADDITIONAL_BIBLE_YEAR_SCHEDULE_RAW);
 
-export const GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
+const RAW_GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
   {
     dayNumber: 1,
     title: "Creation of the World",
@@ -627,6 +634,11 @@ export const GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     readings: buildReadingsFromReference(entry.title, entry.reference),
   })),
 ];
+
+export const GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = RAW_GENESIS_BIBLE_IN_ONE_YEAR_SERIES.map((day) => ({
+  ...day,
+  coverImage: getBibleYearDayCoverImage(day),
+}));
 
 /**
  * Generate a 365-day Bible reading plan

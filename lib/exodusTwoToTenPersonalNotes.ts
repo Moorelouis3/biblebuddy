@@ -1407,7 +1407,29 @@ function hasExodusTwoToTenVisualList(content: string) {
 }
 
 function formatExodusTwoToTenPhraseExplanation(section: PersonalExodusPhraseSectionInput, content: string) {
-  const cleaned = content.replace(/not filler/g, "part of the story");
+  const cleaned = content
+    .replace(/\bThis phrase matters because\b/gi, "This is important because")
+    .replace(/\bThe phrase matters because\b/gi, "This is important because")
+    .replace(/\bmatters because\b/gi, "is important because")
+    .replace(/\bbelongs to\b/gi, "is part of")
+    .replace(/\bnot filler\b/gi, "part of the story")
+    .replace(/\bA beginner should see that\s*/gi, "Notice that ")
+    .replace(/\bA beginner should see\s*/gi, "Notice ")
+    .replace(/\bA beginner should notice that\s*/gi, "Notice that ")
+    .replace(/\bA beginner should notice\s*/gi, "Notice ")
+    .replace(/\bA beginner should\s+/gi, "The reader can ")
+    .replace(/\bFor beginners,?\s*/gi, "")
+    .replace(/\bThis phrase helps\s+/gi, "The wording helps ")
+    .replace(/\bThe phrase helps\s+/gi, "The wording helps ")
+    .replace(/\bBible Buddy should slow down here because\s*/gi, "Slow down here because ")
+    .replace(/\bThis detail helps (?:a beginner|the reader) (?:see|follow|understand) that\s*/gi, "Notice that ")
+    .replace(/\bThis detail helps (?:a beginner|the reader) (?:see|follow|understand)\s*/gi, "Notice ")
+    .replace(/\bThis phrase helps (?:a beginner|the reader) (?:see|follow|understand) that\s*/gi, "Notice that ")
+    .replace(/\bThis phrase helps (?:a beginner|the reader) (?:see|follow|understand)\s*/gi, "Notice ")
+    .replace(/\bThe detail helps (?:a beginner|the reader) (?:see|follow|understand) that\s*/gi, "Notice that ")
+    .replace(/\bThe detail helps (?:a beginner|the reader) (?:see|follow|understand)\s*/gi, "Notice ")
+    .replace(/\bThe phrase helps (?:a beginner|the reader) (?:see|follow|understand) that\s*/gi, "Notice that ")
+    .replace(/\bThe phrase helps (?:a beginner|the reader) (?:see|follow|understand)\s*/gi, "Notice ");
   if (section.chapter >= 1 && section.chapter <= 10) {
     return cleaned;
   }
@@ -1437,14 +1459,60 @@ function formatExodusTwoToTenPhraseExplanation(section: PersonalExodusPhraseSect
   ]);
 }
 
+function normalizeRepeatedExodusTwoToTenLines(sections: PersonalExodusPhraseSectionInput[]) {
+  const counts = new Map<string, number>();
+  const normalizeLine = (line: string) => line.toLowerCase().replace(/[.?!]+$/, "").trim();
+
+  for (const section of sections) {
+    if (section.chapter < 1 || section.chapter > 10) continue;
+    for (const [, content] of section.phrases) {
+      for (const line of content.split(/\n+/).map((item) => item.trim()).filter(Boolean)) {
+        const key = normalizeLine(line);
+        counts.set(key, (counts.get(key) ?? 0) + 1);
+      }
+    }
+  }
+
+  return sections.map((section) => {
+    if (section.chapter < 1 || section.chapter > 10) return section;
+
+    return {
+      ...section,
+      phrases: section.phrases.map(([title, content]) => {
+        const cleanTitle = title.replace(/^[^A-Za-z0-9']+\s*/, "").trim();
+        const kept: string[] = [];
+
+        for (const line of formatExodusTwoToTenPhraseExplanation(section, content).split(/\n+/).map((item) => item.trim()).filter(Boolean)) {
+          const key = normalizeLine(line);
+          const isRepeated = (counts.get(key) ?? 0) >= 3;
+          const isTitleLine = line.toLowerCase().includes(cleanTitle.toLowerCase());
+          if (isRepeated && !isTitleLine) continue;
+          kept.push(line);
+        }
+
+        while (kept.length < 4) {
+          const additions = [
+            `${cleanTitle} keeps the reader close to the exact Bible wording.`,
+            `It names a real detail God included in this part of the story.`,
+            `That detail should be read slowly instead of skipped.`,
+          ];
+          kept.push(additions[kept.length % additions.length]);
+        }
+
+        return [title, note(kept)] as [string, string];
+      }),
+    };
+  });
+}
+
 function formatExodusTwoToTenSectionExplanations(sections: PersonalExodusPhraseSectionInput[]) {
-  return sections.map((section) => ({
+  return normalizeRepeatedExodusTwoToTenLines(sections.map((section) => ({
     ...section,
     phrases: section.phrases.map(([title, content]) => [
       title,
       formatExodusTwoToTenPhraseExplanation(section, content),
     ] as [string, string]),
-  }));
+  })));
 }
 
 export const EXODUS_2_10_PERSONAL_SECTIONS: PersonalExodusPhraseSectionInput[] = formatExodusTwoToTenSectionExplanations([

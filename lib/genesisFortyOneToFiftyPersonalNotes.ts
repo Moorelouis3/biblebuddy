@@ -259,7 +259,11 @@ const GENESIS_41_50_TEXTURE_RULES: PersonalTextureRule[] = [
   },
 ];
 
-function addGenesisFortyOneToFiftyTexture(title: string, content: string) {
+function addGenesisFortyOneToFiftyTexture(section: PersonalGenesisPhraseSectionInput, title: string, content: string) {
+  if (section.chapter >= 41 && section.chapter <= 48) {
+    return content;
+  }
+
   const lower = title.toLowerCase();
   const rule = GENESIS_41_50_TEXTURE_RULES.find((item) => item.matches.some((match) => lower.includes(match)));
 
@@ -273,7 +277,7 @@ function addGenesisFortyOneToFiftyTexture(title: string, content: string) {
 function addGenesisFortyOneToFiftySectionTexture(sections: PersonalGenesisPhraseSectionInput[]) {
   return sections.map((section) => ({
     ...section,
-    phrases: section.phrases.map(([title, content]) => [title, addGenesisFortyOneToFiftyTexture(title, content)] as [string, string]),
+    phrases: section.phrases.map(([title, content]) => [title, addGenesisFortyOneToFiftyTexture(section, title, content)] as [string, string]),
   }));
 }
 
@@ -330,14 +334,135 @@ function formatGenesisFortyOneToFiftyPhraseExplanation(
   ]);
 }
 
+function getGenesisFortyOneToFortyEightIcon(title: string) {
+  if (/dream|river|kine|ears|famine|plenty|bread|corn|seed|fifth/i.test(title)) return "🌾";
+  if (/pharaoh|ruler|ring|arrayed|servants|officers|law/i.test(title)) return "👑";
+  if (/joseph|jacob|israel|benjamin|judah|father|brother|son|lad/i.test(title)) return "👨‍👩‍👦";
+  if (/god|almighty|mercy|blessed|bless|angel|redeemed/i.test(title)) return "🙌";
+  if (/egypt|goshen|canaan|beersheba|land/i.test(title)) return "📍";
+  if (/money|sacks|cup|pledge|silver|gift/i.test(title)) return "🧾";
+  if (/wept|haste|troubled|afraid|mourning|grief/i.test(title)) return "😭";
+  if (/surety|servant|instead|near|send/i.test(title)) return "🤝";
+  if (/right hand|left hand|firstborn|ephraim|manasseh|crossing/i.test(title)) return "✋";
+  return "🔎";
+}
+
+function ensureGenesisFortyOneToFortyEightEmoji(title: string) {
+  return /^[^A-Za-z0-9']+\s/.test(title) ? title : `${getGenesisFortyOneToFortyEightIcon(title)} ${title}`;
+}
+
+function cleanGenesisFortyOneToFortyEightFrameworkText(content: string) {
+  return content
+    .replace(/\bThis phrase matters because\b/gi, "This is important because")
+    .replace(/\bThe phrase matters because\b/gi, "This is important because")
+    .replace(/\bmatters because\b/gi, "is important because")
+    .replace(/\bbelongs to\b/gi, "is part of")
+    .replace(/\bnot filler\b/gi, "meaningful")
+    .replace(/\bA beginner should see that\s*/gi, "Notice that ")
+    .replace(/\bA beginner should see\s*/gi, "Notice ")
+    .replace(/\bA beginner should notice that\s*/gi, "Notice that ")
+    .replace(/\bA beginner should notice\s*/gi, "Notice ")
+    .replace(/\bA beginner should\s+/gi, "The reader can ")
+    .replace(/\bFor beginners,?\s*/gi, "")
+    .replace(/\bThis phrase helps\s+/gi, "The wording helps ")
+    .replace(/\bThe phrase helps\s+/gi, "The wording helps ")
+    .replace(/^This phrase keeps Pharaoh from dividing the dreams into unrelated stories\./gm, "Pharaoh should not treat the two dreams as separate messages.")
+    .replace(/^The phrase into Egypt is huge for the Bible story\./gm, "Going into Egypt is a major turn in the Bible story.")
+    .replace(/^This phrase pictures victory over enemies\./gm, "The neck image pictures victory over enemies.")
+    .replace(/^This phrase gathers shepherd and stone imagery around God's care and stability\./gm, "Shepherd and stone imagery gathers God's care and stability into one line.")
+    .replace(/^This phrase likely means Joseph received these children as his own descendants with affection and recognition\./gm, "Joseph likely received these children as his own descendants with affection and recognition.")
+    .replace(/\bTheology:\s*/gi, "")
+    .replace(/\bMeaning:\s*/gi, "")
+    .replace(/\bSignificance:\s*/gi, "")
+    .replace(/\bApplication:\s*/gi, "");
+}
+
+function formatGenesisFortyOneToFortyEightRenderedPhrase(
+  section: PersonalGenesisPhraseSectionInput,
+  title: string,
+  content: string,
+): [string, string] {
+  if (section.chapter < 41 || section.chapter > 50) {
+    return [title, content];
+  }
+
+  return [ensureGenesisFortyOneToFortyEightEmoji(title), cleanGenesisFortyOneToFortyEightFrameworkText(content)];
+}
+
+function dedupeGenesisFortyOneToFortyEightSections(section: PersonalGenesisPhraseSectionInput): PersonalGenesisPhraseSectionInput {
+  if (section.chapter < 41 || section.chapter > 50) {
+    return section;
+  }
+
+  const byTitle = new Map<string, [string, string]>();
+  for (const phraseCard of section.phrases) {
+    const key = phraseCard[0].replace(/^[^A-Za-z0-9']+\s*/, "").trim().toLowerCase();
+    const existing = byTitle.get(key);
+    if (!existing || phraseCard[1].length > existing[1].length) {
+      byTitle.set(key, phraseCard);
+    }
+  }
+
+  return { ...section, phrases: [...byTitle.values()] };
+}
+
+function normalizeRepeatedGenesisFortyOneToFiftyLines(sections: PersonalGenesisPhraseSectionInput[]) {
+  const counts = new Map<string, number>();
+  const normalizeLine = (line: string) => line.toLowerCase().replace(/[.?!]+$/, "").trim();
+
+  for (const section of sections) {
+    if (section.chapter < 41 || section.chapter > 50) continue;
+    for (const [, content] of section.phrases) {
+      for (const line of content.split(/\n+/).map((item) => item.trim()).filter(Boolean)) {
+        const key = normalizeLine(line);
+        counts.set(key, (counts.get(key) ?? 0) + 1);
+      }
+    }
+  }
+
+  return sections.map((section) => {
+    if (section.chapter < 41 || section.chapter > 50) return section;
+
+    return {
+      ...section,
+      phrases: section.phrases.map(([title, content]) => {
+        const cleanTitle = title.replace(/^[^A-Za-z0-9']+\s*/, "").trim();
+        const kept: string[] = [];
+
+        for (const line of cleanGenesisFortyOneToFortyEightFrameworkText(content).split(/\n+/).map((item) => item.trim()).filter(Boolean)) {
+          const key = normalizeLine(line);
+          const isRepeated = (counts.get(key) ?? 0) >= 3;
+          const isTitleLine = line.toLowerCase().includes(cleanTitle.toLowerCase());
+          if (isRepeated && !isTitleLine) continue;
+          kept.push(line);
+        }
+
+        while (kept.length < 4) {
+          const additions = [
+            `${cleanTitle} keeps the reader close to the exact Bible wording.`,
+            `It names a real detail God included in this part of the story.`,
+            `That detail should be read slowly instead of skipped.`,
+          ];
+          kept.push(additions[kept.length % additions.length]);
+        }
+
+        return [title, note(kept)] as [string, string];
+      }),
+    };
+  });
+}
+
 function formatGenesisFortyOneToFiftySectionExplanations(sections: PersonalGenesisPhraseSectionInput[]) {
-  return sections.map((section) => ({
+  return normalizeRepeatedGenesisFortyOneToFiftyLines(sections.map((section) => ({
     ...section,
-    phrases: section.phrases.map(([title, content]) => [
-      title,
-      formatGenesisFortyOneToFiftyPhraseExplanation(section, content),
-    ] as [string, string]),
-  }));
+    phrases: section.phrases.map(([title, content]) =>
+      formatGenesisFortyOneToFortyEightRenderedPhrase(
+        section,
+        title,
+        formatGenesisFortyOneToFiftyPhraseExplanation(section, content),
+      ),
+    ),
+  })));
 }
 
 const RAW_GENESIS_41_50_PERSONAL_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
@@ -1016,7 +1141,7 @@ const DAY_18_GENESIS_43_44_FINAL_SECTIONS: PersonalGenesisPhraseSectionInput[] =
     deepPhrase("❓ Is Your Father Yet Alive", "The brothers explain that the Egyptian ruler asked detailed family questions.", "Those questions were Joseph reaching toward the hidden family story.", "What felt like interrogation was actually personal knowledge under disguise.", "God may be asking questions that lead us toward confession."),
   ] },
   { chapter: 43, startVerse: 8, endVerse: 10, reference: "Genesis 43:8-10", title: "Judah Pledges Himself", icon: "🤲", phrases: [
-    deepPhrase("🤲 Send The Lad With Me", "Judah steps forward where the family is stuck.", "He is no longer the same brother who suggested selling Joseph for profit.", "His words begin showing responsibility for Benjamin.", "Grace can change a person from betrayer to pledge-bearer."),
+    deepPhrase("🤲 Send The Lad With Me", "Judah is asking Jacob to release Benjamin into his care.", "The family cannot return to Egypt unless Benjamin goes with them.", "Judah is no longer acting like the brother who helped sell Joseph.", "His words show responsibility where there used to be selfishness."),
     deepPhrase("🛡️ I Will Be Surety For Him", "Judah offers himself as guarantee for Benjamin.", "This is a major character turn in Genesis.", "He accepts personal cost to protect the favored son.", "Real repentance becomes responsibility."),
   ] },
   { chapter: 43, startVerse: 11, endVerse: 14, reference: "Genesis 43:11-14", title: "Jacob Releases Benjamin", icon: "🙏", phrases: [
@@ -1878,10 +2003,10 @@ const DAY_21_GENESIS_49_50_FINAL_SECTIONS = makeGenesisSectionsFromDeepStudy(
 export const GENESIS_41_50_PERSONAL_SECTIONS = formatGenesisFortyOneToFiftySectionExplanations(
   addGenesisFortyOneToFiftySectionTexture(
     [
-      ...DAY_17_GENESIS_41_42_FINAL_SECTIONS.map(deepenDay17PhraseCards),
-      ...DAY_18_GENESIS_43_44_FINAL_SECTIONS.map(deepenDay18PhraseCards),
-      ...DAY_19_GENESIS_45_46_FINAL_SECTIONS.map(deepenDay19PhraseCards),
-      ...DAY_20_GENESIS_47_48_FINAL_SECTIONS.map(deepenDay20PhraseCards),
+      ...DAY_17_GENESIS_41_42_FINAL_SECTIONS.map(deepenDay17PhraseCards).map(dedupeGenesisFortyOneToFortyEightSections),
+      ...DAY_18_GENESIS_43_44_FINAL_SECTIONS.map(deepenDay18PhraseCards).map(dedupeGenesisFortyOneToFortyEightSections),
+      ...DAY_19_GENESIS_45_46_FINAL_SECTIONS.map(deepenDay19PhraseCards).map(dedupeGenesisFortyOneToFortyEightSections),
+      ...DAY_20_GENESIS_47_48_FINAL_SECTIONS.map(deepenDay20PhraseCards).map(dedupeGenesisFortyOneToFortyEightSections),
       ...DAY_21_GENESIS_49_50_FINAL_SECTIONS,
       ...expandSplitSections(RAW_GENESIS_41_50_PERSONAL_SECTIONS.filter((section) => section.chapter < 41 || section.chapter > 50)),
     ].map((section) => (section.chapter > 50 ? ensureBeginnerGenesisPhraseDepth(section) : section)),

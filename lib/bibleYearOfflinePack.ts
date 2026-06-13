@@ -1,4 +1,4 @@
-import { GENESIS_BIBLE_IN_ONE_YEAR_SERIES, generateBibleInOneYearPlan, type ChapterAssignment } from "./bibleInOneYearPlan";
+import { GENESIS_BIBLE_IN_ONE_YEAR_SERIES, generateBibleInOneYearPlan, getBibleYearDayCoverImage, type ChapterAssignment } from "./bibleInOneYearPlan";
 import { getBibleYearDayContent, type BibleYearSummaryContent } from "./bibleYearDaysContent";
 
 export const BIBLE_YEAR_OFFLINE_TEXT_PACK_KEY = "bb:bible-year-offline-text-pack";
@@ -57,7 +57,7 @@ export function buildBibleYearOfflineTextPack(): BibleYearOfflineTextPack {
         reference,
         summary: builtDay?.summary || `Read ${reference} as part of your Bible in One Year journey.`,
         estimatedTime: builtDay?.estimatedTime,
-        coverImage: builtDay?.coverImage,
+        coverImage: getBibleYearDayCoverImage(builtDay),
         chapters: planDay.chapters,
         summaryContent: content?.summary,
         studyNotesMarkdown: content?.studyNotesMarkdown,

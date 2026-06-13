@@ -3,7 +3,7 @@
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
-import { Fragment, useCallback, useEffect, useRef, useState, type FormEvent, type MouseEvent, type ReactNode } from "react";
+import { Fragment, useCallback, useEffect, useRef, useState, type FormEvent, type MouseEvent, type ReactNode, type SyntheticEvent } from "react";
 import { LouisAvatar } from "./LouisAvatar";
 import { ModalShell } from "./ModalShell";
 import BibleReadingModal from "./BibleReadingModal";
@@ -49,8 +49,10 @@ import {
   type BuddyAvatarId,
 } from "../lib/buddyAvatars";
 import {
+  BIBLE_YEAR_FALLBACK_COVER_IMAGE,
   GENESIS_BIBLE_IN_ONE_YEAR_SERIES,
   generateBibleInOneYearPlan,
+  getBibleYearDayCoverImage,
   type GenesisBibleYearDay,
 } from "../lib/bibleInOneYearPlan";
 import type { BibleYearDailyLesson } from "../lib/bibleYearDailyLessons";
@@ -649,6 +651,12 @@ function getDashboardStudyCover(title: string | null | undefined) {
   if (title === "The Calling of Moses") return "/callingofmosesdevotional.png";
   if (title === "The Transforming of Paul") return "/transformingofpauldevotional.png";
   return null;
+}
+
+function handleBibleYearCoverImageError(event: SyntheticEvent<HTMLImageElement>) {
+  const image = event.currentTarget;
+  if (image.src.endsWith(BIBLE_YEAR_FALLBACK_COVER_IMAGE)) return;
+  image.src = BIBLE_YEAR_FALLBACK_COVER_IMAGE;
 }
 
 function getDashboardStudySummary(title: string | null | undefined, totalDays: number | null | undefined) {
@@ -11215,7 +11223,7 @@ Before we understand redemption, we need to understand what God made humanity fo
   }
 
   function renderBibleYearDashboardStudyArea(day: GenesisBibleYearDay, tasksToRender: TaskState[]) {
-    const cover = day.coverImage || getDashboardStudyCover(day.readings[0]?.studyTitle || day.title) || undefined;
+    const cover = getBibleYearDayCoverImage(day);
     const readingSummary = formatBibleYearMediaReference(day);
     const content = getBibleYearDayContent(day);
     const audio = content.audio;
@@ -11333,11 +11341,7 @@ Before we understand redemption, we need to understand what God made humanity fo
 
           <div className="mt-4 grid gap-4 sm:grid-cols-[142px_minmax(0,1fr)] lg:grid-cols-[164px_minmax(0,1fr)] xl:grid-cols-[176px_minmax(0,1fr)] xl:items-start">
             <div className="mx-auto aspect-square w-full max-w-[176px] overflow-hidden rounded-[12px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f4f8ff)] shadow-[0_12px_26px_rgba(38,63,99,0.12)] sm:mx-0">
-              {cover ? (
-                <img src={cover} alt="" loading="eager" decoding="async" className="h-full w-full object-cover" />
-              ) : (
-                <div className="grid h-full w-full place-items-center text-5xl" aria-hidden="true">📖</div>
-              )}
+              <img src={cover} alt="" loading="eager" decoding="async" onError={handleBibleYearCoverImageError} className="h-full w-full object-cover" />
             </div>
             <div className="flex min-w-0 flex-col justify-start pt-0.5">
               <div className="min-w-0 px-1">
@@ -11463,7 +11467,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   const isComplete = Boolean(completed.reading);
                   const isCurrent = getCurrentBibleYearSeriesDayNumber() === milestone.dayNumber;
                   const isLocked = milestoneDay ? isBibleYearDayVisuallyLocked(milestoneDay) : true;
-                  const milestoneCover = milestoneDay?.coverImage || getDashboardStudyCover(milestoneDay?.readings[0]?.studyTitle || milestoneDay?.title || milestone.label) || "/thefallofman.png";
+                  const milestoneCover = getBibleYearDayCoverImage(milestoneDay);
                   return (
                     <div key={milestone.dayNumber} className="relative px-1 text-center">
                       {index > 0 ? (
@@ -11485,7 +11489,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                         aria-label={`Day ${milestone.dayNumber} ${isComplete ? "complete" : isCurrent ? "current day" : "locked"}`}
                       >
                         <span className="relative block h-full w-full overflow-hidden rounded-[10px] bg-[var(--bb-surface-soft,#f4f8ff)]">
-                          <img src={milestoneCover} alt="" loading="lazy" decoding="async" className={`h-full w-full object-cover transition duration-300 ${isLocked ? "grayscale contrast-75 brightness-70 opacity-65" : "brightness-105"}`} />
+                          <img src={milestoneCover} alt="" loading="lazy" decoding="async" onError={handleBibleYearCoverImageError} className={`h-full w-full object-cover transition duration-300 ${isLocked ? "grayscale contrast-75 brightness-70 opacity-65" : "brightness-105"}`} />
                           {isLocked ? <span className="absolute inset-0 bg-black/24" aria-hidden="true" /> : null}
                         </span>
                         <span className={`absolute -right-2 -top-2 z-20 grid h-6 w-6 place-items-center rounded-full text-[11px] font-black shadow-[0_6px_14px_rgba(0,0,0,0.22)] ${isComplete ? "bg-sky-500 text-white" : isCurrent ? "bg-[var(--bb-accent,#2f7fe8)] text-white" : "border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-muted,#6b7280)]"}`} aria-hidden="true">
@@ -11585,11 +11589,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 ? "border-sky-300/70 bg-sky-950/30 shadow-[0_0_18px_rgba(123,175,212,0.34)]"
                 : "border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_26%,transparent)] bg-[var(--bb-surface-soft,#f8fbff)]"
             }`}>
-              {cover ? (
-                <img src={cover} alt="" loading="lazy" decoding="async" className="h-full w-full object-contain" />
-              ) : (
-                <div className="grid h-full w-full place-items-center text-3xl">📖</div>
-              )}
+              <img src={cover} alt="" loading="lazy" decoding="async" onError={handleBibleYearCoverImageError} className="h-full w-full object-contain" />
             </div>
             <div className="min-w-0 flex-1">
               <p className={`text-[10px] font-black uppercase tracking-[0.16em] ${dashboardAllDone ? "text-sky-300" : "text-[var(--bb-accent,#2f7fe8)]"}`}>
@@ -11616,7 +11616,7 @@ Before we understand redemption, we need to understand what God made humanity fo
   }
 
   function renderBibleYearSeriesDayDetail(day: GenesisBibleYearDay) {
-    const cover = day.coverImage || getDashboardStudyCover(day.readings[0]?.studyTitle || day.title);
+    const cover = getBibleYearDayCoverImage(day);
     const detailAction = getBibleYearDayAction(day);
     const lockedFutureDay = isBibleYearDayVisuallyLocked(day);
     const detailReference =
@@ -11674,9 +11674,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         <div className="mx-auto flex max-w-xl flex-col gap-4 pb-7">
           <div className="bb-skin-glow-card overflow-hidden rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-left shadow-[0_14px_36px_rgba(38,63,99,0.10)]">
             <div className="relative min-h-[230px] overflow-hidden bg-[var(--bb-surface-soft,#f8fbff)]">
-              {cover ? (
-                <img src={cover} alt="" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
-              ) : null}
+              <img src={cover} alt="" loading="lazy" decoding="async" onError={handleBibleYearCoverImageError} className="absolute inset-0 h-full w-full object-cover" />
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.08),rgba(0,0,0,0.76))]" />
               <button
                 type="button"
@@ -11914,7 +11912,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               </div>
 
               {filteredSeriesDays.map((day) => {
-                const cover = day.coverImage || getDashboardStudyCover(day.readings[0]?.studyTitle || day.title);
+                const cover = getBibleYearDayCoverImage(day);
                 const isCurrent = day.dayNumber === currentSeriesDayNumber;
                 const isComplete = isBibleYearDayComplete(day);
                 const isLocked = isBibleYearDayVisuallyLocked(day);
@@ -11946,11 +11944,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   >
                     <div className="flex gap-3 p-3">
                       <div className="h-24 w-[72px] min-w-[72px] overflow-hidden rounded-2xl bg-[var(--bb-surface-soft,#f8fbff)] shadow-sm">
-                        {cover ? (
-                          <img src={cover} alt="" loading="lazy" decoding="async" className="h-full w-full object-cover" />
-                        ) : (
-                          <span className="grid h-full w-full place-items-center text-2xl" aria-hidden="true">📖</span>
-                        )}
+                        <img src={cover} alt="" loading="lazy" decoding="async" onError={handleBibleYearCoverImageError} className="h-full w-full object-cover" />
                       </div>
                       <div className="min-w-0 flex-1 py-1">
                         <div className="flex items-center justify-between gap-2">
@@ -14402,10 +14396,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                             const milestoneDay = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => day.dayNumber === milestone.dayNumber);
                             const isLocked = milestoneDay ? isBibleYearDayVisuallyLocked(milestoneDay) : true;
                             const isUnlocked = !isLocked;
-                            const milestoneCover =
-                              milestoneDay?.coverImage ||
-                              getDashboardStudyCover(milestoneDay?.readings[0]?.studyTitle || milestoneDay?.title || milestone.label) ||
-                              "/thefallofman.png";
+                            const milestoneCover = getBibleYearDayCoverImage(milestoneDay);
                             const milestoneDayLabel = `Day ${milestone.dayNumber}`;
                             const isSelectedDetail = bibleYearJourneyPreviewDay?.dayNumber === milestone.dayNumber;
 
@@ -14452,6 +14443,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                                       alt=""
                                       loading="lazy"
                                       decoding="async"
+                                      onError={handleBibleYearCoverImageError}
                                       className={`h-full w-full object-cover transition duration-300 ${
                                         isLocked ? "grayscale contrast-75 brightness-70 opacity-65" : "brightness-105"
                                       }`}
