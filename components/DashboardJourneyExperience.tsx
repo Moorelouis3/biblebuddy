@@ -2108,6 +2108,8 @@ export default function DashboardJourneyExperience({
   const bibleYearJustCompletedDayRef = useRef<number | null>(null);
   const bibleYearTermTakeoverRef = useRef<HTMLDivElement | null>(null);
   const bibleYearTermReturnScrollYRef = useRef<number | null>(null);
+  const bibleYearScriptureNotesSectionRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const bibleYearScriptureNotesPhraseRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const getCompletedBibleChapterKey = (book: string, chapter: number) => `${book.trim().toLowerCase()}:${chapter}`;
   const completedBibleYearDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => {
     const completed = bibleYearCompletedCardsByDay[day.dayNumber] || {};
@@ -10184,6 +10186,19 @@ Before we understand redemption, we need to understand what God made humanity fo
     };
   }
 
+  function scrollBibleYearScriptureNotesCardIntoView(refs: { current: Record<string, HTMLDivElement | null> }, key: string) {
+    if (typeof window === "undefined") return;
+
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        const card = refs.current[key];
+        if (!card) return;
+        const top = card.getBoundingClientRect().top + window.scrollY - 12;
+        window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+      });
+    });
+  }
+
   function renderBibleYearScriptureNotesTask(day: GenesisBibleYearDay) {
     const sections = getBibleYearScriptureNoteSections(day);
 
@@ -10208,7 +10223,13 @@ Before we understand redemption, we need to understand what God made humanity fo
             .map(splitBibleYearPhraseCard);
 
           return (
-            <div key={sectionKey} className="overflow-hidden rounded-[18px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-sm">
+            <div
+              key={sectionKey}
+              ref={(node) => {
+                bibleYearScriptureNotesSectionRefs.current[sectionKey] = node;
+              }}
+              className="overflow-hidden rounded-[18px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-sm"
+            >
               <button
                 type="button"
                 onClick={() => {
@@ -10216,6 +10237,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   setBibleYearOpenScriptureNotesSectionKey(nextOpen);
                   setBibleYearOpenScriptureNotesPhraseKey(null);
                   if (!sectionOpen) {
+                    scrollBibleYearScriptureNotesCardIntoView(bibleYearScriptureNotesSectionRefs, sectionKey);
                     void trackStudyNotesSectionOpened({
                       userId,
                       username: userName,
@@ -10252,10 +10274,22 @@ Before we understand redemption, we need to understand what God made humanity fo
                       const phraseOpen = bibleYearOpenScriptureNotesPhraseKey === phraseKey;
 
                       return (
-                        <div key={phraseKey} className="overflow-hidden rounded-[14px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)]">
+                        <div
+                          key={phraseKey}
+                          ref={(node) => {
+                            bibleYearScriptureNotesPhraseRefs.current[phraseKey] = node;
+                          }}
+                          className="overflow-hidden rounded-[14px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)]"
+                        >
                           <button
                             type="button"
-                            onClick={() => setBibleYearOpenScriptureNotesPhraseKey((current) => current === phraseKey ? null : phraseKey)}
+                            onClick={() => {
+                              const nextOpen = phraseOpen ? null : phraseKey;
+                              setBibleYearOpenScriptureNotesPhraseKey(nextOpen);
+                              if (nextOpen) {
+                                scrollBibleYearScriptureNotesCardIntoView(bibleYearScriptureNotesPhraseRefs, phraseKey);
+                              }
+                            }}
                             aria-expanded={phraseOpen}
                             className="flex w-full items-center gap-3 px-3.5 py-3 text-left transition hover:bg-[var(--bb-surface-soft,#f4f8ff)]"
                           >

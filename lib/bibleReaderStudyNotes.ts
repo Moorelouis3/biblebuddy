@@ -19544,7 +19544,7 @@ applyPersonalExodusTwentyOneThroughThirtyStudySections();
 applyPersonalExodusThirtyOneThroughFortyStudySections();
 applyPersonalLeviticusOneThroughTenStudySections();
 applyPersonalExodusTextureStudySections();
-enforceStudySectionVerseLimit();
+enforceStudySectionVerseLimit(8);
 
 function lineStartsWithVisualMarker(line: string) {
   const trimmed = line.trim();
@@ -19552,10 +19552,23 @@ function lineStartsWithVisualMarker(line: string) {
 }
 
 function removePhraseCardFillerOpening(line: string) {
+  if (
+    /^This phrase comes directly from the passage/i.test(line) ||
+    /^This card slows down/i.test(line) ||
+    /worth slowing down over/i.test(line) ||
+    /^Notice:/i.test(line) ||
+    /^Follow the thread:/i.test(line) ||
+    /^Lesson:/i.test(line)
+  ) {
+    return "";
+  }
+
   const cleaned = line
     .replace(/^This phrase matters because /i, "")
     .replace(/^This matters because /i, "")
     .replace(/^That matters because /i, "")
+    .replace(/^This verse shows that /i, "")
+    .replace(/^This verse shows /i, "")
     .replace(/^This phrase /i, "")
     .replace(/^The phrase /i, "")
     .trim();
@@ -19594,10 +19607,46 @@ function isVisualOnlyBlock(block: string) {
   return Boolean(lines.length) && lines.every(lineStartsWithVisualMarker);
 }
 
+function getKeyPhraseTitleEmoji(title: string) {
+  const normalizedTitle = title.toLowerCase();
+
+  if (normalizedTitle.includes("lord") || normalizedTitle.includes("god")) return "\u{1F64C}";
+  if (normalizedTitle.includes("covenant") || normalizedTitle.includes("promise")) return "\u{1F4DC}";
+  if (normalizedTitle.includes("bless") || normalizedTitle.includes("blessed")) return "\u{2728}";
+  if (normalizedTitle.includes("name")) return "\u{1F3F7}\u{FE0F}";
+  if (normalizedTitle.includes("altar") || normalizedTitle.includes("offering") || normalizedTitle.includes("sacrifice")) return "\u{1F54A}\u{FE0F}";
+  if (normalizedTitle.includes("land") || normalizedTitle.includes("earth") || normalizedTitle.includes("field")) return "\u{1F30D}";
+  if (normalizedTitle.includes("water") || normalizedTitle.includes("sea") || normalizedTitle.includes("river")) return "\u{1F30A}";
+  if (normalizedTitle.includes("dream")) return "\u{1F319}";
+  if (normalizedTitle.includes("famine") || normalizedTitle.includes("bread") || normalizedTitle.includes("corn")) return "\u{1F33E}";
+  if (normalizedTitle.includes("king") || normalizedTitle.includes("pharaoh") || normalizedTitle.includes("ruler")) return "\u{1F451}";
+  if (normalizedTitle.includes("servant") || normalizedTitle.includes("bond") || normalizedTitle.includes("slave")) return "\u{1F9F1}";
+  if (normalizedTitle.includes("blood") || normalizedTitle.includes("passover")) return "\u{1FA78}";
+  if (normalizedTitle.includes("fire") || normalizedTitle.includes("burn")) return "\u{1F525}";
+  if (normalizedTitle.includes("wilderness") || normalizedTitle.includes("journey")) return "\u{1F9ED}";
+  if (normalizedTitle.includes("tabernacle") || normalizedTitle.includes("ark") || normalizedTitle.includes("mercy seat")) return "\u{26EA}";
+  if (normalizedTitle.includes("priest") || normalizedTitle.includes("garment")) return "\u{1F9E5}";
+  if (normalizedTitle.includes("command") || normalizedTitle.includes("law") || normalizedTitle.includes("judgment")) return "\u{1F4D6}";
+  if (normalizedTitle.includes("son") || normalizedTitle.includes("daughter") || normalizedTitle.includes("children")) return "\u{1F46A}";
+  if (normalizedTitle.includes("brother") || normalizedTitle.includes("family") || normalizedTitle.includes("father")) return "\u{1F91D}";
+  if (normalizedTitle.includes("fear") || normalizedTitle.includes("afraid")) return "\u{1F630}";
+  if (normalizedTitle.includes("see") || normalizedTitle.includes("eyes") || normalizedTitle.includes("look")) return "\u{1F441}\u{FE0F}";
+  if (normalizedTitle.includes("said") || normalizedTitle.includes("spake") || normalizedTitle.includes("voice")) return "\u{1F5E3}\u{FE0F}";
+
+  return "\u{1F4AC}";
+}
+
+function ensureKeyPhraseTitleEmoji(title: string) {
+  const trimmed = title.trim();
+  if (!trimmed || lineStartsWithVisualMarker(trimmed)) return trimmed;
+
+  return `${getKeyPhraseTitleEmoji(trimmed)} ${trimmed}`;
+}
+
 function formatKeyPhraseLikeDayOne(content: string) {
   const normalized = content.replace(/\r\n/g, "\n").trim();
   const [rawTitle = "", ...bodyLines] = normalized.split("\n");
-  const title = rawTitle.trim();
+  const title = ensureKeyPhraseTitleEmoji(rawTitle);
   const body = bodyLines.join("\n").trim();
 
   if (!body) return title;
@@ -19624,7 +19673,10 @@ function formatKeyPhraseLikeDayOne(content: string) {
 }
 
 function shouldFormatLikeDayOne(section: BibleReaderStudySection) {
-  return section.book === "genesis" && section.chapter >= 1 && section.chapter <= 48;
+  return (
+    (section.book === "genesis" && section.chapter >= 1 && section.chapter <= 50) ||
+    (section.book === "exodus" && section.chapter >= 1 && section.chapter <= 36)
+  );
 }
 
 for (const section of BIBLE_READER_STUDY_SECTIONS) {

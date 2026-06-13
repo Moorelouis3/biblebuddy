@@ -18,6 +18,9 @@ import {
   BIBLE_YEAR_DAY_THREE_AUDIO,
   BIBLE_YEAR_DAY_THIRTEEN_AUDIO,
   BIBLE_YEAR_DAY_THIRTY_AUDIO,
+  BIBLE_YEAR_DAY_THIRTY_ONE_AUDIO,
+  BIBLE_YEAR_DAY_THIRTY_TWO_AUDIO,
+  BIBLE_YEAR_DAY_TWENTY_NINE_AUDIO,
   BIBLE_YEAR_DAY_TWENTY_ONE_AUDIO,
   BIBLE_YEAR_DAY_TWENTY_AUDIO,
   BIBLE_YEAR_DAY_TWENTY_FIVE_AUDIO,
@@ -1078,7 +1081,7 @@ export const BIBLE_YEAR_DAY_CONTENT: Partial<Record<number, Omit<BibleYearDayCon
   },
   29: {
     lesson: EXODUS_DAY_TWENTY_NINE_CONSECRATION_AND_GOLDEN_CALF_LESSON,
-    audio: null,
+    audio: BIBLE_YEAR_DAY_TWENTY_NINE_AUDIO,
     studyNotesMarkdown: BIBLE_YEAR_DAY_TWENTY_NINE_DEEP_NOTES,
     studyNotesSections: BIBLE_YEAR_DAY_TWENTY_NINE_DEEP_STUDY_SECTIONS,
     summary: dayTwentyNineSummary,
@@ -1094,7 +1097,7 @@ export const BIBLE_YEAR_DAY_CONTENT: Partial<Record<number, Omit<BibleYearDayCon
   },
   31: {
     lesson: EXODUS_DAY_THIRTY_ONE_TABERNACLE_FINISHED_LESSON,
-    audio: null,
+    audio: BIBLE_YEAR_DAY_THIRTY_ONE_AUDIO,
     studyNotesMarkdown: BIBLE_YEAR_DAY_THIRTY_ONE_DEEP_NOTES,
     studyNotesSections: BIBLE_YEAR_DAY_THIRTY_ONE_DEEP_STUDY_SECTIONS,
     summary: dayThirtyOneSummary,
@@ -1102,7 +1105,7 @@ export const BIBLE_YEAR_DAY_CONTENT: Partial<Record<number, Omit<BibleYearDayCon
   },
   32: {
     lesson: LEVITICUS_DAY_THIRTY_TWO_OFFERINGS_AND_ATONEMENT_LESSON,
-    audio: null,
+    audio: BIBLE_YEAR_DAY_THIRTY_TWO_AUDIO,
     studyNotesMarkdown: BIBLE_YEAR_DAY_THIRTY_TWO_DEEP_NOTES,
     studyNotesSections: BIBLE_YEAR_DAY_THIRTY_TWO_DEEP_STUDY_SECTIONS,
     summary: dayThirtyTwoSummary,

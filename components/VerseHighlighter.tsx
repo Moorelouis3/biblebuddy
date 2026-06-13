@@ -32,6 +32,17 @@ interface VerseHighlighterProps {
   onStudyNotesCreditBlocked?: () => void;
 }
 
+function scrollStudyAccordionHeaderIntoView(element: HTMLElement | null) {
+  if (!element || typeof window === "undefined") return;
+
+  window.requestAnimationFrame(() => {
+    window.requestAnimationFrame(() => {
+      const top = element.getBoundingClientRect().top + window.scrollY - 12;
+      window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+    });
+  });
+}
+
 type ColorPickerState =
   | { mode: "verse"; verse: number; anchor: { x: number; y: number } }
   | {
@@ -491,10 +502,8 @@ function StudyCategoryContent({
                 onClick={() => {
                   onToggleItem(index);
                   if (!itemOpen) {
-                    window.setTimeout(() => {
-                      itemRefs.current[index]?.scrollIntoView({ behavior: "smooth", block: "start" });
-                      onItemOpened(index);
-                    }, 0);
+                    scrollStudyAccordionHeaderIntoView(itemRefs.current[index]);
+                    onItemOpened(index);
                   }
                 }}
                 className="flex w-full items-center gap-2 px-3 py-3 text-left transition hover:bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_8%,var(--bb-card,#ffffff))]"
@@ -734,9 +743,7 @@ function InlineStudySection({
         onClick={() => {
           onToggleSection();
           if (!isOpen) {
-            window.setTimeout(() => {
-              sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-            }, 0);
+            scrollStudyAccordionHeaderIntoView(sectionRef.current);
           }
         }}
         className={`flex w-full items-center gap-2.5 rounded-2xl border px-2.5 py-3 text-left transition sm:gap-3 sm:px-3 ${
@@ -812,9 +819,7 @@ function InlineStudySection({
                     }
                     onToggleCategory(category.id);
                     if (!categoryOpen) {
-                      window.setTimeout(() => {
-                        categoryRefs.current[category.id]?.scrollIntoView({ behavior: "smooth", block: "start" });
-                      }, 0);
+                      scrollStudyAccordionHeaderIntoView(categoryRefs.current[category.id]);
                     }
                   }}
                   className="flex w-full items-center gap-2 px-3 py-3 text-left transition hover:bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_7%,var(--bb-card,#ffffff))]"

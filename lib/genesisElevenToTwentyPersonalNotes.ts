@@ -7150,7 +7150,7 @@ const DAY_7_QUALITY_REVIEW_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
       ]),
       phrase("As God Had Said Unto Him", [
         "Abraham's action matches God's instruction.",
-        "This is the kind of alignment Bible Buddy notes should help readers notice: word and response fit together.",
+        "God speaks, and Abraham responds with obedience.",
         "He does not invent a different sign or partial obedience.",
         "He does what God said.",
       ]),

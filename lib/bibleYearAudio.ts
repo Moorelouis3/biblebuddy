@@ -280,10 +280,34 @@ export const BIBLE_YEAR_DAY_TWENTY_EIGHT_AUDIO: BibleYearAudioDay = {
   estimatedDuration: "35-40 min",
 };
 
+export const BIBLE_YEAR_DAY_TWENTY_NINE_AUDIO: BibleYearAudioDay = {
+  dayNumber: 29,
+  title: "Day 29 - Consecration and the Golden Calf",
+  storagePath: getBibleYearAudioStoragePath(29),
+  apiSrc: getBibleYearAudioApiSrc(29),
+  estimatedDuration: "35-40 min",
+};
+
 export const BIBLE_YEAR_DAY_THIRTY_AUDIO: BibleYearAudioDay = {
   dayNumber: 30,
   title: "Day 30 - God's Presence and Renewed Obedience",
   storagePath: getBibleYearAudioStoragePath(30),
   apiSrc: getBibleYearAudioApiSrc(30),
+  estimatedDuration: "35-40 min",
+};
+
+export const BIBLE_YEAR_DAY_THIRTY_ONE_AUDIO: BibleYearAudioDay = {
+  dayNumber: 31,
+  title: "Day 31 - The Tabernacle Is Finished",
+  storagePath: getBibleYearAudioStoragePath(31),
+  apiSrc: getBibleYearAudioApiSrc(31),
+  estimatedDuration: "35-40 min",
+};
+
+export const BIBLE_YEAR_DAY_THIRTY_TWO_AUDIO: BibleYearAudioDay = {
+  dayNumber: 32,
+  title: "Day 32 - Offerings and Atonement",
+  storagePath: getBibleYearAudioStoragePath(32),
+  apiSrc: getBibleYearAudioApiSrc(32),
   estimatedDuration: "35-40 min",
 };
