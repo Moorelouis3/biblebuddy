@@ -9922,7 +9922,6 @@ Before we understand redemption, we need to understand what God made humanity fo
             }`}
           >
             <span className="text-base font-black">{videoComplete ? "Lesson Completed" : showVideo ? "Mark Video Complete" : "Mark Audio Complete"}</span>
-            <span className="rounded-full bg-white/18 px-2.5 py-1 text-xs font-black">Complete</span>
           </button>
         </div>
       </div>
@@ -11325,9 +11324,11 @@ Before we understand redemption, we need to understand what God made humanity fo
               </h2>
               <p className="mt-1 text-[13px] font-semibold text-[var(--bb-text-secondary,#4b5563)]">{readingSummary}</p>
             </div>
-            <span className={`rounded-full border px-3 py-1.5 text-[12px] font-bold ${readingComplete ? "border-emerald-300 bg-emerald-50 text-emerald-700" : "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-text-secondary,#4b5563)]"}`}>
-              {readingComplete ? "Complete" : "In Progress"}
-            </span>
+            {!readingComplete ? (
+              <span className="rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f4f8ff)] px-3 py-1.5 text-[12px] font-bold text-[var(--bb-text-secondary,#4b5563)]">
+                In Progress
+              </span>
+            ) : null}
           </div>
 
           <div className="mt-4 grid gap-4 sm:grid-cols-[142px_minmax(0,1fr)] lg:grid-cols-[164px_minmax(0,1fr)] xl:grid-cols-[176px_minmax(0,1fr)] xl:items-start">
@@ -12046,7 +12047,6 @@ Before we understand redemption, we need to understand what God made humanity fo
                     </span>
                   </span>
                 </span>
-                <span className="rounded-full bg-black/12 px-2.5 py-1 text-xs font-black">Complete</span>
               </button>
             </>
           ) : null}
@@ -12775,7 +12775,6 @@ Before we understand redemption, we need to understand what God made humanity fo
                     </span>
                   </span>
                 </span>
-                <span className="rounded-full bg-black/12 px-2.5 py-1 text-xs font-black">Complete</span>
               </button>
             </div>
           ) : null}
@@ -12809,7 +12808,6 @@ Before we understand redemption, we need to understand what God made humanity fo
                 <span className="block text-base font-black leading-tight">
                   {readingCardComplete ? "Reading Completed" : "Mark Audio Complete"}
                 </span>
-                <span className="rounded-full bg-black/12 px-2.5 py-1 text-xs font-black">Complete</span>
               </button>
             </div>
           ) : null}
@@ -13395,7 +13393,6 @@ Before we understand redemption, we need to understand what God made humanity fo
           </p>
           <div className="mt-3 flex flex-wrap gap-2">
             <span className="rounded-full bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-1 text-[11px] font-black text-[var(--bb-text-primary,#111827)]">{day.estimatedTime}</span>
-            <span className="rounded-full bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-1 text-[11px] font-black text-[var(--bb-text-primary,#111827)]">Complete</span>
           </div>
         </div>
         {renderBibleYearDayModalBody(day)}

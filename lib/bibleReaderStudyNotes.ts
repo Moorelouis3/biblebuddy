@@ -13861,6 +13861,479 @@ Genesis gives the result before Genesis 11 explains the Babel event behind it.
   },
 ];
 
+function normalizeDayFourPhraseHeading(heading: string) {
+  return heading.replace(/^[^A-Za-z0-9]+/, "").trim();
+}
+
+function formatDayFourPhraseBody(lines: string[]) {
+  return lines.join("\n\n");
+}
+
+function getDayFourPhraseFocusedExplanation(reference: string, heading: string, originalBody: string) {
+  const phrase = normalizeDayFourPhraseHeading(heading);
+
+  const exact: Record<string, string[]> = {
+    "God Remembered Noah": [
+      "God remembered Noah does not mean God had forgotten him.",
+      "In the Bible, to remember often means to turn attention toward someone with faithful care.",
+      "Noah is still inside the ark.",
+      "The waters are still around him.",
+      "But God is now acting for the one He preserved.",
+      "🧠 God remembers",
+      "🛶 Noah is not abandoned",
+      "🌱 Mercy begins before dry ground appears",
+      "The phrase teaches that God's care can be active before the rescue looks finished.",
+    ],
+    "Every Living Thing": [
+      "Every living thing points beyond Noah's family.",
+      "God remembers the animals in the ark too.",
+      "The flood story is not only about saving one man.",
+      "It is about preserving the life God created.",
+      "🐄 Cattle",
+      "🐦 Birds",
+      "🌍 Creatures of the earth",
+      "The phrase reminds the reader that the Creator still cares for His creation after judgment.",
+    ],
+    "God Made A Wind To Pass": [
+      "God made a wind to pass means God sends movement over the waters.",
+      "The wind is not random weather.",
+      "It is part of God's work of making the flooded earth livable again.",
+      "🌬️ Wind moves",
+      "🌊 Waters begin to lower",
+      "🌍 Dry land will return",
+      "This phrase echoes Genesis 1, where God's Spirit moved over the waters before the ordered world appeared.",
+    ],
+    "The Fountains Also Of The Deep Were Stopped": [
+      "The fountains of the deep were the waters from below that helped bring the flood.",
+      "Stopped means God restrains them.",
+      "The same waters that broke open in judgment are now held back by God's command.",
+      "🚫 Waters below restrained",
+      "👑 God rules the deep",
+      "🌱 Judgment now has a boundary",
+      "The phrase shows that the flood was never outside God's control.",
+    ],
+    "The Rain From Heaven Was Restrained": [
+      "Restrained means held back.",
+      "The rain does not simply fade away on its own.",
+      "God places a limit on the storm.",
+      "☔ Rain stops",
+      "🌊 Waters begin to lower",
+      "🛶 The ark remains safe",
+      "This phrase helps the reader see that God rules the sky as surely as He rules the deep.",
+    ],
+    "The Waters Were Abated": [
+      "Abated means the waters decreased or went down.",
+      "The phrase does not describe instant dryness.",
+      "It describes slow, steady lessening.",
+      "📉 Waters lower",
+      "⏳ Waiting continues",
+      "🌱 Hope appears in stages",
+      "The wording helps beginners see that restoration can be real even when it is gradual.",
+    ],
+    "The Ark Rested": [
+      "The ark rested means the boat stopped drifting and settled on the mountains.",
+      "Rested is a peaceful word after a terrifying flood.",
+      "Noah is not out yet, but the ark has reached a stable place.",
+      "⛰️ A resting place",
+      "🛶 Preserved life",
+      "🌱 A new stage begins",
+      "The phrase shows God bringing refuge to rest before Noah can step into the renewed world.",
+    ],
+    "The Seventh Month, On The Seventeenth Day": [
+      "This date marks the moment the ark rested.",
+      "Genesis gives months and days so the waiting feels real.",
+      "Noah's rescue did not happen in one quick jump from rain to dry land.",
+      "📅 A real day",
+      "⏳ A long season",
+      "🛶 A measured rescue",
+      "The phrase teaches readers to notice God's work across time, not only in instant moments.",
+    ],
+    "The Tops Of The Mountains Seen": [
+      "The tops of the mountains seen means the highest parts of land begin to appear.",
+      "The world is not fully ready yet.",
+      "But the covered earth is becoming visible again.",
+      "👀 First sight of land",
+      "⛰️ Mountains appear",
+      "🌱 Hope becomes visible",
+      "The phrase gives Noah and the reader the first clear sign that the flood is reversing.",
+    ],
+    "Noah Opened The Window": [
+      "Noah opened the window means he begins to look out from the protected place.",
+      "The ark has been closed for safety.",
+      "Now Noah starts watching for signs of the world outside.",
+      "🪟 Looking out",
+      "⏳ Waiting carefully",
+      "🧭 Seeking the next step",
+      "The phrase shows wise attention, not impatience.",
+    ],
+    "He Sent Forth A Raven": [
+      "He sent forth a raven means Noah releases the first bird to test the conditions outside.",
+      "A raven can survive in rougher places than a dove.",
+      "Its movement tells Noah something about the world, but not everything.",
+      "🐦 Raven sent",
+      "🌊 Waters still present",
+      "⏳ The test is not complete",
+      "The phrase helps readers see Noah gathering evidence while he waits.",
+    ],
+    "He Sent Forth A Dove": [
+      "He sent forth a dove means Noah sends a gentler bird that needs a place to rest.",
+      "The dove becomes a clearer test of whether the earth is becoming livable.",
+      "If the dove can settle, Noah will know the ground is ready.",
+      "🕊️ Dove sent",
+      "🦶 Looking for rest",
+      "🌍 Testing for habitable land",
+      "The phrase shows careful waiting instead of rushing out of the ark.",
+    ],
+    "No Rest For The Sole Of Her Foot": [
+      "No rest for the sole of her foot means the dove cannot find a dry place to land.",
+      "The flood is decreasing, but the world is not ready for life outside the ark.",
+      "The phrase makes the waiting practical.",
+      "🦶 No landing place",
+      "🕊️ Dove returns",
+      "⏳ Restoration is unfinished",
+      "It teaches the difference between surviving judgment and stepping into full renewal.",
+    ],
+    "He Put Forth His Hand": [
+      "He put forth his hand means Noah reaches out and receives the dove back.",
+      "It is a small detail, but it shows care inside the waiting.",
+      "The ark is still the safe place.",
+      "✋ Hand extended",
+      "🛶 Shelter remains",
+      "🕊️ The dove is received",
+      "The phrase keeps the scene tender and personal.",
+    ],
+    "Stayed Yet Other Seven Days": [
+      "Stayed yet other seven days means Noah waits another full week before testing again.",
+      "He does not treat one sign of hope as permission to rush.",
+      "The repeated seven-day rhythm gives the story patience and order.",
+      "⏳ Seven days",
+      "🕊️ Another sending",
+      "🧭 Patient wisdom",
+      "The phrase teaches that faith can wait carefully after hope appears.",
+    ],
+    "An Olive Leaf Pluckt Off": [
+      "An olive leaf pluckt off means the dove returns with fresh plant life.",
+      "This is more than a pretty image.",
+      "It tells Noah that vegetation is growing again.",
+      "🌿 Fresh leaf",
+      "🌱 New growth",
+      "🕊️ Hope carried back",
+      "The phrase shows life returning after judgment.",
+    ],
+    "So Noah Knew": [
+      "So Noah knew means the olive leaf gave Noah understanding.",
+      "He does not know by guessing.",
+      "He knows because the sign matches the condition of the earth.",
+      "🧠 Understanding",
+      "🌊 Waters lowered",
+      "⏳ Waiting proved wise",
+      "The phrase shows patient observation turning into clear knowledge.",
+    ],
+    "Returned Not Again Unto Him Any More": [
+      "Returned not again unto him any more means the dove no longer needs the ark.",
+      "The bird has found a place to live outside.",
+      "That quiet absence becomes a powerful sign.",
+      "🕊️ No return",
+      "🌍 Livable earth",
+      "🚪 The exit is near",
+      "The phrase shows the world moving from preservation inside the ark to life outside it.",
+    ],
+    "God Spake Unto Noah": [
+      "God spake unto Noah means God personally gives Noah the next command.",
+      "Noah does not leave the ark just because the ground looks dry.",
+      "He entered by God's word, and he exits by God's word.",
+      "🗣️ God speaks",
+      "🚪 The next step opens",
+      "🛶 Noah follows God's timing",
+      "The phrase teaches that Noah's movement is guided by God's voice, not by impulse.",
+    ],
+    "Noah Builded An Altar Unto The LORD": [
+      "An altar was a place of worship and sacrifice.",
+      "People built altars to honor God and draw near to Him.",
+      "Noah has just survived the flood.",
+      "His first recorded action is not building a house.",
+      "It is building an altar unto the LORD.",
+      "🔥 Worship before work",
+      "🙏 Gratitude before requests",
+      "🏗️ God before rebuilding life",
+      "The phrase shows that Noah's rescue leads him to worship.",
+    ],
+    "The LORD Smelled A Sweet Savour": [
+      "Sweet savour means the offering was pleasing and accepted by God.",
+      "It does not mean God needed smoke or food.",
+      "It is Bible language for God's favorable response to worship.",
+      "🌫️ Accepted offering",
+      "🙏 Worship received",
+      "🕊️ Relationship continues",
+      "The phrase shows God receiving Noah's worship after judgment.",
+    ],
+    "The LORD Said In His Heart": [
+      "The LORD said in His heart lets the reader hear God's settled resolve.",
+      "The phrase is not casual emotion.",
+      "It reveals God's inward commitment to preserve the world.",
+      "❤️ God's resolve",
+      "🤝 Mercy promised",
+      "🌍 The world preserved",
+      "The phrase prepares the reader for God's promise after the altar.",
+    ],
+    "The Imagination Of Man's Heart Is Evil From His Youth": [
+      "The imagination of man's heart means the inner thoughts, desires, and plans of human beings.",
+      "God says the problem of sin is not only outside people.",
+      "It is inside the heart from youth.",
+      "🧠 Inner thoughts",
+      "💔 Sin remains",
+      "🙏 A deeper rescue is needed",
+      "The phrase explains why the flood judged evil but did not cure humanity.",
+    ],
+    "In The Image Of God Made He Man": [
+      "In the image of God means human beings carry God-given worth.",
+      "That dignity remains after sin and after the flood.",
+      "Human life is not valuable because people are powerful, useful, or perfect.",
+      "🪞 God's image",
+      "👤 Human dignity",
+      "⚖️ Why murder is so serious",
+      "The phrase explains why human bloodshed matters so deeply to God.",
+    ],
+    "I Establish My Covenant": [
+      "I establish my covenant means God Himself sets the promise in place.",
+      "Noah does not negotiate it.",
+      "The future rests on God's commitment.",
+      "🤝 Covenant",
+      "👑 God's initiative",
+      "🌍 Creation preserved",
+      "The phrase teaches that covenant mercy begins with God's word.",
+    ],
+    "The Token Of The Covenant": [
+      "A token is a visible sign.",
+      "God gives His covenant a sign people can see.",
+      "The promise is spoken, and the token helps it be remembered.",
+      "🎁 Sign",
+      "🤝 Covenant",
+      "👀 Visible reminder",
+      "The phrase explains why the bow is more than a beautiful sky detail.",
+    ],
+    "I Do Set My Bow In The Cloud": [
+      "The bow is the visible covenant sign.",
+      "The word can also make readers think of a battle bow.",
+      "Here the bow is set in the cloud, not aimed at the earth.",
+      "🌈 Bow",
+      "☁️ Cloud",
+      "🕊️ Mercy after judgment",
+      "The phrase turns the sky after a storm into a reminder of God's promise.",
+    ],
+  };
+
+  const exactBody = exact[phrase];
+  if (exactBody) return formatDayFourPhraseBody(exactBody);
+
+  if (phrase.includes("Flesh") || phrase.includes("Blood") || phrase.includes("Lives")) {
+    return formatDayFourPhraseBody([
+      `${phrase} uses blood language to teach the seriousness of life.`,
+      "Blood represents life in Scripture.",
+      "God does not let people treat life casually.",
+      "🩸 Blood",
+      "❤️ Life",
+      "⚖️ Accountability",
+      "The phrase explains why human life and violence are treated with such weight after the flood.",
+    ]);
+  }
+
+  if (phrase.includes("Covenant") || phrase.includes("All Flesh") || phrase.includes("Flood To Destroy") || phrase.includes("Cut Off")) {
+    return formatDayFourPhraseBody([
+      `${phrase} belongs to God's promise after the flood.`,
+      "The phrase is not only about weather.",
+      "It is about God placing the future of the living world under His own word.",
+      "🤝 Promise",
+      "🌊 Flood restrained",
+      "🌍 Creation preserved",
+      "The phrase helps the reader see mercy standing after judgment.",
+    ]);
+  }
+
+  if (phrase.includes("Bow") || phrase.includes("Cloud") || phrase.includes("Seen")) {
+    return formatDayFourPhraseBody([
+      `${phrase} explains the visible sign God gives with His covenant.`,
+      "Clouds can remind people of the flood.",
+      "But God places the bow there as a reminder of mercy.",
+      "☁️ Cloud",
+      "🌈 Bow",
+      "👀 Promise seen",
+      "The phrase teaches readers to see the rainbow as a covenant sign, not only a beautiful color in the sky.",
+    ]);
+  }
+
+  if (phrase.includes("Seedtime") || phrase.includes("Cold And Heat") || phrase.includes("Summer And Winter") || phrase.includes("Day And Night")) {
+    return formatDayFourPhraseBody([
+      `${phrase} names the steady rhythms God promises to preserve.`,
+      "These ordinary patterns make life on earth possible.",
+      "The world continues because God is faithful, not because humanity has become sinless.",
+      "🌾 Planting",
+      "🌽 Harvest",
+      "☀️ Day",
+      "🌙 Night",
+      "The phrase helps the reader see daily life as a gift of God's patience.",
+    ]);
+  }
+
+  if (phrase.includes("Blessed") || phrase.includes("Fruitful") || phrase.includes("Multiply") || phrase.includes("Abundantly")) {
+    return formatDayFourPhraseBody([
+      `${phrase} is blessing language from God.`,
+      "After the flood, God still wants life to grow and spread.",
+      "Judgment did not cancel the creation purpose.",
+      "🙌 Blessing",
+      "🌱 Fruitfulness",
+      "🌍 Life filling the earth",
+      "The phrase connects the renewed world back to God's good design in Genesis 1.",
+    ]);
+  }
+
+  if (phrase.includes("Fear") || phrase.includes("Dread") || phrase.includes("Hand") || phrase.includes("Meat")) {
+    return formatDayFourPhraseBody([
+      `${phrase} describes life in the changed world after the flood.`,
+      "Humans receive real authority, but the world is no longer Eden.",
+      "Permission and responsibility now stand together.",
+      "😨 Fear",
+      "✋ Authority",
+      "⚠️ Limits",
+      "The phrase helps the reader understand human rule under God's boundaries.",
+    ]);
+  }
+
+  if (phrase.includes("Shem") || phrase.includes("Ham") || phrase.includes("Japheth")) {
+    return formatDayFourPhraseBody([
+      `${phrase} names the family line that will spread after the flood.`,
+      "These names are not random labels.",
+      "They help the reader follow how one rescued family becomes many peoples.",
+      "👨‍👩‍👦 Family line",
+      "🌍 Nations coming",
+      "📜 The story moving forward",
+      "That helps the reader see Noah's family becoming the bridge to the nations of Genesis 10.",
+    ]);
+  }
+
+  if (phrase.includes("Noah") || phrase.includes("Wine") || phrase.includes("Nakedness") || phrase.includes("Garment") || phrase.includes("Tent")) {
+    return formatDayFourPhraseBody([
+      `${phrase} belongs to the sad scene after the flood.`,
+      "The wording shows that Noah's family is rescued, but sin has not disappeared.",
+      "Genesis is honest about weakness even in important people.",
+      "🍷 Failure",
+      "🫣 Shame",
+      "👨‍👩‍👦 Family consequences",
+      "The phrase helps the reader see that the renewed world still needs God's mercy.",
+    ]);
+  }
+
+  if (phrase.includes("Cursed") || phrase.includes("Servant") || phrase.includes("Enlarge") || phrase.includes("Dwell")) {
+    return formatDayFourPhraseBody([
+      `${phrase} is blessing-and-curse language.`,
+      "Noah's words look forward to the future of his family lines.",
+      "Genesis is showing that sin, honor, and family direction have consequences.",
+      "⚠️ Curse",
+      "🙌 Blessing",
+      "📜 Future family lines",
+      "The phrase helps the reader understand why Noah's household becomes important for the nations that follow.",
+    ]);
+  }
+
+  if (phrase.includes("Generations")) {
+    return formatDayFourPhraseBody([
+      `${phrase} is a Bible phrase that introduces a family record.`,
+      "It tells the reader that the story is moving through descendants.",
+      "Genesis uses these family records to show how God's story keeps moving forward.",
+      "📜 Family record",
+      "👨‍👩‍👦 Descendants",
+      "🌍 Nations ahead",
+      "The phrase helps readers understand that genealogies are part of the story, not a break from it.",
+    ]);
+  }
+
+  if (phrase.includes("Canaan") || phrase.includes("Canaanites") || phrase.includes("Sidon") || phrase.includes("Heth")) {
+    return formatDayFourPhraseBody([
+      `${phrase} points to the family and land that will become important later in Genesis.`,
+      "Canaan is not just a name on a list.",
+      "The people of Canaan will be connected to the land promised to Abraham's family.",
+      "📍 Place",
+      "👨‍👩‍👦 Family",
+      "📜 Future Bible story",
+      "The phrase helps beginners see that Genesis is planting details the Bible will return to later.",
+    ]);
+  }
+
+  if (phrase.includes("Begat") || phrase.startsWith("Unto Them Were Sons Born") || phrase.startsWith("The Sons Of")) {
+    return formatDayFourPhraseBody([
+      `${phrase} is genealogy language.`,
+      "It means the story is tracing descendants from one generation to the next.",
+      "These lines can feel slow, but they show that God's world after the flood is filling with real families.",
+      "👶 Descendants",
+      "👨‍👩‍👦 Family lines",
+      "🌍 Nations forming",
+      "The phrase helps the reader follow how the Bible moves from one household to many peoples.",
+    ]);
+  }
+
+  if (phrase.includes("Tongue") || phrase.includes("Languages") || phrase.includes("After Their")) {
+    return formatDayFourPhraseBody([
+      `${phrase} sorts the people by the categories Genesis wants us to notice.`,
+      "The chapter is not only naming people.",
+      "It is showing families, languages, lands, and nations taking shape after the flood.",
+      "👨‍👩‍👦 Families",
+      "🗣️ Tongues",
+      "🏛️ Nations",
+      "The phrase helps the reader see Genesis 10 as a map of humanity spreading across the earth.",
+    ]);
+  }
+
+  if (phrase.includes("Divided")) {
+    return formatDayFourPhraseBody([
+      `${phrase} describes separation among peoples on the earth.`,
+      "Genesis 10 gives the map of the divided nations.",
+      "Genesis 11 will explain the Babel event behind that division.",
+      "🔀 Division",
+      "🗣️ Languages",
+      "🌍 Nations spread out",
+      "The phrase helps readers connect the Table of Nations with the tower story that follows.",
+    ]);
+  }
+
+  if (phrase.includes("Land") || phrase.includes("Shinar") || phrase.includes("Nineveh") || phrase.includes("Babel") || phrase.includes("Sodom") || phrase.includes("Gomorrah") || phrase.includes("Mesha") || phrase.includes("Sephar") || phrase.includes("Countries")) {
+    return formatDayFourPhraseBody([
+      `${phrase} gives the reader geography.`,
+      "Genesis is not listing places only to fill space.",
+      "These locations help build the Bible's world map for future stories.",
+      "📍 Place",
+      "🏙️ Cities",
+      "🌍 Nations taking shape",
+      "The phrase teaches readers to notice where people are spreading after the flood.",
+    ]);
+  }
+
+  if (phrase.includes("Kingdom") || phrase.includes("Mighty") || phrase.includes("Hunter") || phrase.includes("Great City")) {
+    return formatDayFourPhraseBody([
+      `${phrase} describes early power and influence after the flood.`,
+      "Genesis shows that people are not only forming families.",
+      "They are also building strength, cities, rule, and reputation.",
+      "💪 Power",
+      "🏙️ Cities",
+      "👑 Kingdoms",
+      "The phrase prepares the reader to see how human power can become important and dangerous in the chapters ahead.",
+    ]);
+  }
+
+  return originalBody.replace(/\n\nThis phrase matters because[^\n]*(?:\n[^\n]*)?/g, "").trim();
+}
+
+function applyDayFourPhraseFocusedExplanations(
+  section: Parameters<typeof makePersonalGenesisPhraseSection>[0],
+): Parameters<typeof makePersonalGenesisPhraseSection>[0] {
+  return {
+    ...section,
+    phrases: section.phrases.map(([heading, body]) => [
+      heading,
+      getDayFourPhraseFocusedExplanation(section.reference, heading, body),
+    ]),
+  };
+}
+
 const WINDOWS_1252_BYTE_BY_CODE_POINT: Record<number, number> = {
   0x20ac: 0x80,
   0x201a: 0x82,
@@ -18142,7 +18615,7 @@ The nations are divided, but they still come from one human family under one Cre
   ];
 
   sections = sections.filter((section) => section.chapter < 8 || section.chapter > 10);
-  sections.push(...DAY_4_QUALITY_REVIEW_SECTIONS.map(makePersonalGenesisPhraseSection));
+  sections.push(...DAY_4_QUALITY_REVIEW_SECTIONS.map(applyDayFourPhraseFocusedExplanations).map(makePersonalGenesisPhraseSection));
 
   for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
     const section = BIBLE_READER_STUDY_SECTIONS[index];

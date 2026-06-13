@@ -3,7 +3,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
 import { dirname, join } from "path";
 import { createContext, runInContext } from "vm";
 import { createClient } from "@supabase/supabase-js";
-import { BIBLE_YEAR_AUDIO_BUCKET, BIBLE_YEAR_DAY_EIGHT_AUDIO, BIBLE_YEAR_DAY_EIGHTEEN_AUDIO, BIBLE_YEAR_DAY_ELEVEN_AUDIO, BIBLE_YEAR_DAY_FIFTEEN_AUDIO, BIBLE_YEAR_DAY_FIVE_AUDIO, BIBLE_YEAR_DAY_FOUR_AUDIO, BIBLE_YEAR_DAY_FOURTEEN_AUDIO, BIBLE_YEAR_DAY_NINE_AUDIO, BIBLE_YEAR_DAY_NINETEEN_AUDIO, BIBLE_YEAR_DAY_ONE_AUDIO, BIBLE_YEAR_DAY_SEVEN_AUDIO, BIBLE_YEAR_DAY_SEVENTEEN_AUDIO, BIBLE_YEAR_DAY_SIX_AUDIO, BIBLE_YEAR_DAY_SIXTEEN_AUDIO, BIBLE_YEAR_DAY_TEN_AUDIO, BIBLE_YEAR_DAY_THIRTEEN_AUDIO, BIBLE_YEAR_DAY_THIRTY_AUDIO, BIBLE_YEAR_DAY_THREE_AUDIO, BIBLE_YEAR_DAY_TWELVE_AUDIO, BIBLE_YEAR_DAY_TWENTY_AUDIO, BIBLE_YEAR_DAY_TWENTY_EIGHT_AUDIO, BIBLE_YEAR_DAY_TWENTY_FIVE_AUDIO, BIBLE_YEAR_DAY_TWENTY_FOUR_AUDIO, BIBLE_YEAR_DAY_TWENTY_ONE_AUDIO, BIBLE_YEAR_DAY_TWENTY_SEVEN_AUDIO, BIBLE_YEAR_DAY_TWENTY_SIX_AUDIO, BIBLE_YEAR_DAY_TWENTY_THREE_AUDIO, BIBLE_YEAR_DAY_TWENTY_TWO_AUDIO, BIBLE_YEAR_DAY_TWO_AUDIO } from "../lib/bibleYearAudio";
+import { BIBLE_YEAR_AUDIO_BUCKET, BIBLE_YEAR_DAY_EIGHT_AUDIO, BIBLE_YEAR_DAY_EIGHTEEN_AUDIO, BIBLE_YEAR_DAY_ELEVEN_AUDIO, BIBLE_YEAR_DAY_FIFTEEN_AUDIO, BIBLE_YEAR_DAY_FIVE_AUDIO, BIBLE_YEAR_DAY_FOUR_AUDIO, BIBLE_YEAR_DAY_FOURTEEN_AUDIO, BIBLE_YEAR_DAY_NINE_AUDIO, BIBLE_YEAR_DAY_NINETEEN_AUDIO, BIBLE_YEAR_DAY_ONE_AUDIO, BIBLE_YEAR_DAY_SEVEN_AUDIO, BIBLE_YEAR_DAY_SEVENTEEN_AUDIO, BIBLE_YEAR_DAY_SIX_AUDIO, BIBLE_YEAR_DAY_SIXTEEN_AUDIO, BIBLE_YEAR_DAY_TEN_AUDIO, BIBLE_YEAR_DAY_THIRTEEN_AUDIO, BIBLE_YEAR_DAY_THIRTY_AUDIO, BIBLE_YEAR_DAY_THIRTY_ONE_AUDIO, BIBLE_YEAR_DAY_THIRTY_TWO_AUDIO, BIBLE_YEAR_DAY_THREE_AUDIO, BIBLE_YEAR_DAY_TWELVE_AUDIO, BIBLE_YEAR_DAY_TWENTY_AUDIO, BIBLE_YEAR_DAY_TWENTY_EIGHT_AUDIO, BIBLE_YEAR_DAY_TWENTY_FIVE_AUDIO, BIBLE_YEAR_DAY_TWENTY_FOUR_AUDIO, BIBLE_YEAR_DAY_TWENTY_NINE_AUDIO, BIBLE_YEAR_DAY_TWENTY_ONE_AUDIO, BIBLE_YEAR_DAY_TWENTY_SEVEN_AUDIO, BIBLE_YEAR_DAY_TWENTY_SIX_AUDIO, BIBLE_YEAR_DAY_TWENTY_THREE_AUDIO, BIBLE_YEAR_DAY_TWENTY_TWO_AUDIO, BIBLE_YEAR_DAY_TWO_AUDIO } from "../lib/bibleYearAudio";
 import { BIBLE_YEAR_GENESIS_WEB_VERSES } from "../lib/bibleYearGenesisVerses";
 import { GENESIS_DAY_EIGHT_JUDGMENT_OF_SODOM_LESSON, GENESIS_DAY_FIVE_ABRAHAM_OBEDIENCE_LESSON, GENESIS_DAY_FOUR_NOAH_FLOOD_LESSON, GENESIS_DAY_NINE_ABRAHAMS_TEST_AND_LEGACY_LESSON, GENESIS_DAY_ONE_CREATION_LESSON, GENESIS_DAY_SEVEN_COVENANT_PROMISE_LESSON, GENESIS_DAY_SIX_RESCUE_OF_LOT_LESSON, GENESIS_DAY_THREE_NOAH_ARK_LESSON, GENESIS_DAY_TWO_FALL_LESSON, type BibleYearDailyLesson } from "../lib/bibleYearDailyLessons";
 import { GENESIS_ONE_TTS_VOICE } from "../lib/genesisOneTtsAudio";
@@ -23,7 +23,10 @@ import { EXODUS_DAY_TWENTY_FIVE_THROUGH_THE_SEA_LESSON } from "../lib/bibleYearD
 import { EXODUS_DAY_TWENTY_SIX_WATER_BATTLE_AND_COMMANDMENTS_LESSON } from "../lib/bibleYearDayTwentySixDeepNotes";
 import { EXODUS_DAY_TWENTY_SEVEN_COVENANT_LAW_AND_BLOOD_LESSON } from "../lib/bibleYearDayTwentySevenDeepNotes";
 import { EXODUS_DAY_TWENTY_EIGHT_TABERNACLE_AND_PRIESTHOOD_LESSON } from "../lib/bibleYearDayTwentyEightDeepNotes";
+import { EXODUS_DAY_TWENTY_NINE_CONSECRATION_AND_GOLDEN_CALF_LESSON } from "../lib/bibleYearDayTwentyNineDeepNotes";
 import { EXODUS_DAY_THIRTY_GODS_PRESENCE_AND_RENEWED_OBEDIENCE_LESSON } from "../lib/bibleYearDayThirtyDeepNotes";
+import { EXODUS_DAY_THIRTY_ONE_TABERNACLE_FINISHED_LESSON } from "../lib/bibleYearDayThirtyOneDeepNotes";
+import { LEVITICUS_DAY_THIRTY_TWO_OFFERINGS_AND_ATONEMENT_LESSON } from "../lib/bibleYearDayThirtyTwoDeepNotes";
 
 const SAMPLE_RATE = 24000;
 const MAX_TTS_CHUNK_LENGTH = 3400;
@@ -52,8 +55,14 @@ const voiceOnlyMode = process.argv.includes("--voice-only") || process.env.BIBLE
 const uploadVoiceOnlyMode = process.argv.includes("--upload-voice-only") || process.env.BIBLE_YEAR_TTS_UPLOAD_VOICE_ONLY === "true";
 const skipUploadMode = process.argv.includes("--skip-upload") || process.env.BIBLE_YEAR_TTS_SKIP_UPLOAD === "true";
 const selectedLesson =
-  requestedDay === 30
+  requestedDay === 32
+    ? LEVITICUS_DAY_THIRTY_TWO_OFFERINGS_AND_ATONEMENT_LESSON
+    : requestedDay === 31
+    ? EXODUS_DAY_THIRTY_ONE_TABERNACLE_FINISHED_LESSON
+    : requestedDay === 30
     ? EXODUS_DAY_THIRTY_GODS_PRESENCE_AND_RENEWED_OBEDIENCE_LESSON
+    : requestedDay === 29
+    ? EXODUS_DAY_TWENTY_NINE_CONSECRATION_AND_GOLDEN_CALF_LESSON
     : requestedDay === 28
     ? EXODUS_DAY_TWENTY_EIGHT_TABERNACLE_AND_PRIESTHOOD_LESSON
     : requestedDay === 27
@@ -110,8 +119,14 @@ const selectedLesson =
           ? GENESIS_DAY_TWO_FALL_LESSON
           : GENESIS_DAY_ONE_CREATION_LESSON;
 const selectedAudio =
-  requestedDay === 30
+  requestedDay === 32
+    ? BIBLE_YEAR_DAY_THIRTY_TWO_AUDIO
+    : requestedDay === 31
+    ? BIBLE_YEAR_DAY_THIRTY_ONE_AUDIO
+    : requestedDay === 30
     ? BIBLE_YEAR_DAY_THIRTY_AUDIO
+    : requestedDay === 29
+    ? BIBLE_YEAR_DAY_TWENTY_NINE_AUDIO
     : requestedDay === 28
     ? BIBLE_YEAR_DAY_TWENTY_EIGHT_AUDIO
     : requestedDay === 27
@@ -193,7 +208,10 @@ const DAY_TWENTY_FIVE_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-
 const DAY_TWENTY_SIX_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-26-narrator-script.md");
 const DAY_TWENTY_SEVEN_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-27-narrator-script.md");
 const DAY_TWENTY_EIGHT_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-28-narrator-script.md");
+const DAY_TWENTY_NINE_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-29-narrator-script.md");
 const DAY_THIRTY_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-30-narrator-script.md");
+const DAY_THIRTY_ONE_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-31-narrator-script.md");
+const DAY_THIRTY_TWO_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-32-narrator-script.md");
 const AMBIENCE_GAIN = selectedLesson.dayNumber === 2 ? 0.129 : selectedLesson.dayNumber === 1 ? 0.112 : 0.088;
 
 function ensureDir(path: string) {
@@ -1015,7 +1033,10 @@ function getApprovedBibleYearScriptPath(dayNumber: number) {
   if (dayNumber === 26) return DAY_TWENTY_SIX_APPROVED_SCRIPT_PATH;
   if (dayNumber === 27) return DAY_TWENTY_SEVEN_APPROVED_SCRIPT_PATH;
   if (dayNumber === 28) return DAY_TWENTY_EIGHT_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 29) return DAY_TWENTY_NINE_APPROVED_SCRIPT_PATH;
   if (dayNumber === 30) return DAY_THIRTY_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 31) return DAY_THIRTY_ONE_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 32) return DAY_THIRTY_TWO_APPROVED_SCRIPT_PATH;
   return null;
 }
 
