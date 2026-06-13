@@ -343,3 +343,115 @@ export const BIBLE_YEAR_DAY_THIRTY_SIX_AUDIO: BibleYearAudioDay = {
   apiSrc: getBibleYearAudioApiSrc(36),
   estimatedDuration: "35-40 min",
 };
+
+export const BIBLE_YEAR_DAY_THIRTY_SEVEN_AUDIO: BibleYearAudioDay = {
+  dayNumber: 37,
+  title: "Day 37 - Priests, Feasts, and Sacred Order",
+  storagePath: getBibleYearAudioStoragePath(37),
+  apiSrc: getBibleYearAudioApiSrc(37),
+  estimatedDuration: "35-40 min",
+};
+
+export const BIBLE_YEAR_DAY_THIRTY_EIGHT_AUDIO: BibleYearAudioDay = {
+  dayNumber: 38,
+  title: "Day 38 - Jubilee, Covenant, and Israel Counted",
+  storagePath: getBibleYearAudioStoragePath(38),
+  apiSrc: getBibleYearAudioApiSrc(38),
+  estimatedDuration: "35-40 min",
+};
+
+export const BIBLE_YEAR_DAY_THIRTY_NINE_AUDIO: BibleYearAudioDay = {
+  dayNumber: 39,
+  title: "Day 39 - Camp Order and Purity",
+  storagePath: getBibleYearAudioStoragePath(39),
+  apiSrc: getBibleYearAudioApiSrc(39),
+  estimatedDuration: "35-40 min",
+};
+
+export const BIBLE_YEAR_DAY_FORTY_AUDIO: BibleYearAudioDay = {
+  dayNumber: 40,
+  title: "Day 40 - Blessing, Dedication, and Passover",
+  storagePath: getBibleYearAudioStoragePath(40),
+  apiSrc: getBibleYearAudioApiSrc(40),
+  estimatedDuration: "35-40 min",
+};
+
+export const BIBLE_YEAR_DAY_FORTY_ONE_AUDIO: BibleYearAudioDay = {
+  dayNumber: 41,
+  title: "Day 41 - Journey, Complaints, and Spies",
+  storagePath: getBibleYearAudioStoragePath(41),
+  apiSrc: getBibleYearAudioApiSrc(41),
+  estimatedDuration: "35-40 min",
+};
+
+export const BIBLE_YEAR_DAY_FORTY_TWO_AUDIO: BibleYearAudioDay = {
+  dayNumber: 42,
+  title: "Day 42 - Rebellion and God's Chosen Priesthood",
+  storagePath: getBibleYearAudioStoragePath(42),
+  apiSrc: getBibleYearAudioApiSrc(42),
+  estimatedDuration: "35-40 min",
+};
+
+export const BIBLE_YEAR_DAY_FORTY_THREE_AUDIO: BibleYearAudioDay = {
+  dayNumber: 43,
+  title: "Day 43 - Provision, Judgment, and the Bronze Serpent",
+  storagePath: getBibleYearAudioStoragePath(43),
+  apiSrc: getBibleYearAudioApiSrc(43),
+  estimatedDuration: "35-40 min",
+};
+
+export const BIBLE_YEAR_DAY_FORTY_FOUR_AUDIO: BibleYearAudioDay = {
+  dayNumber: 44,
+  title: "Day 44 - Balaam, Blessing, and Compromise",
+  storagePath: getBibleYearAudioStoragePath(44),
+  apiSrc: getBibleYearAudioApiSrc(44),
+  estimatedDuration: "35-40 min",
+};
+
+export const BIBLE_YEAR_DAY_FORTY_FIVE_AUDIO: BibleYearAudioDay = {
+  dayNumber: 45,
+  title: "Day 45 - A New Generation Counted",
+  storagePath: getBibleYearAudioStoragePath(45),
+  apiSrc: getBibleYearAudioApiSrc(45),
+  estimatedDuration: "35-40 min",
+};
+
+export const BIBLE_YEAR_DAY_FORTY_SIX_AUDIO: BibleYearAudioDay = {
+  dayNumber: 46,
+  title: "Day 46 - Vows, Victory, and the Journey Reviewed",
+  storagePath: getBibleYearAudioStoragePath(46),
+  apiSrc: getBibleYearAudioApiSrc(46),
+  estimatedDuration: "35-40 min",
+};
+
+export const BIBLE_YEAR_DAY_FORTY_SEVEN_AUDIO: BibleYearAudioDay = {
+  dayNumber: 47,
+  title: "Day 47 - Land Boundaries and Moses Looks Back",
+  storagePath: getBibleYearAudioStoragePath(47),
+  apiSrc: getBibleYearAudioApiSrc(47),
+  estimatedDuration: "35-40 min",
+};
+
+export const BIBLE_YEAR_DAY_FORTY_EIGHT_AUDIO: BibleYearAudioDay = {
+  dayNumber: 48,
+  title: "Day 48 - Remembering the Journey and the Covenant",
+  storagePath: getBibleYearAudioStoragePath(48),
+  apiSrc: getBibleYearAudioApiSrc(48),
+  estimatedDuration: "35-40 min",
+};
+
+export const BIBLE_YEAR_DAY_FORTY_NINE_AUDIO: BibleYearAudioDay = {
+  dayNumber: 49,
+  title: "Day 49 - Love God and Remember Grace",
+  storagePath: getBibleYearAudioStoragePath(49),
+  apiSrc: getBibleYearAudioApiSrc(49),
+  estimatedDuration: "35-40 min",
+};
+
+export const BIBLE_YEAR_DAY_FIFTY_AUDIO: BibleYearAudioDay = {
+  dayNumber: 50,
+  title: "Day 50 - Covenant Loyalty From the Heart",
+  storagePath: getBibleYearAudioStoragePath(50),
+  apiSrc: getBibleYearAudioApiSrc(50),
+  estimatedDuration: "35-40 min",
+};

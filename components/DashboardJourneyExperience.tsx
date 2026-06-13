@@ -2685,9 +2685,23 @@ export default function DashboardJourneyExperience({
     34: "Holiness",
     35: "Atonement",
     36: "Holy Living",
+    37: "Feasts",
+    38: "Jubilee",
+    39: "Camp",
+    40: "Blessing",
+    41: "Spies",
+    42: "Rebellion",
+    43: "Serpent",
+    44: "Balaam",
+    45: "Counted",
+    46: "Journey",
+    47: "Boundaries",
+    48: "Covenant",
+    49: "Love",
+    50: "Loyalty",
   };
   const bibleYearStudyPlanMilestones = GENESIS_BIBLE_IN_ONE_YEAR_SERIES
-    .filter((day) => day.dayNumber <= 36)
+    .filter((day) => day.dayNumber <= 50)
     .map((day) => ({
       dayNumber: day.dayNumber,
       label: bibleYearStudyPlanMilestoneLabels[day.dayNumber] || day.title,

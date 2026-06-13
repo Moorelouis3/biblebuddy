@@ -19,8 +19,11 @@ import {
   BIBLE_YEAR_DAY_THIRTEEN_AUDIO,
   BIBLE_YEAR_DAY_THIRTY_AUDIO,
   BIBLE_YEAR_DAY_THIRTY_FIVE_AUDIO,
+  BIBLE_YEAR_DAY_THIRTY_EIGHT_AUDIO,
   BIBLE_YEAR_DAY_THIRTY_FOUR_AUDIO,
   BIBLE_YEAR_DAY_THIRTY_ONE_AUDIO,
+  BIBLE_YEAR_DAY_THIRTY_NINE_AUDIO,
+  BIBLE_YEAR_DAY_THIRTY_SEVEN_AUDIO,
   BIBLE_YEAR_DAY_THIRTY_SIX_AUDIO,
   BIBLE_YEAR_DAY_THIRTY_THREE_AUDIO,
   BIBLE_YEAR_DAY_THIRTY_TWO_AUDIO,
@@ -36,6 +39,17 @@ import {
   BIBLE_YEAR_DAY_TWENTY_EIGHT_AUDIO,
   BIBLE_YEAR_DAY_TWELVE_AUDIO,
   BIBLE_YEAR_DAY_TWO_AUDIO,
+  BIBLE_YEAR_DAY_FORTY_AUDIO,
+  BIBLE_YEAR_DAY_FORTY_FOUR_AUDIO,
+  BIBLE_YEAR_DAY_FORTY_ONE_AUDIO,
+  BIBLE_YEAR_DAY_FORTY_THREE_AUDIO,
+  BIBLE_YEAR_DAY_FORTY_TWO_AUDIO,
+  BIBLE_YEAR_DAY_FIFTY_AUDIO,
+  BIBLE_YEAR_DAY_FORTY_EIGHT_AUDIO,
+  BIBLE_YEAR_DAY_FORTY_FIVE_AUDIO,
+  BIBLE_YEAR_DAY_FORTY_NINE_AUDIO,
+  BIBLE_YEAR_DAY_FORTY_SEVEN_AUDIO,
+  BIBLE_YEAR_DAY_FORTY_SIX_AUDIO,
 } from "./bibleYearAudio";
 import type { BibleYearDailyLesson } from "./bibleYearDailyLessons";
 import {
@@ -176,6 +190,54 @@ import {
   BIBLE_YEAR_DAY_THIRTY_SIX_DEEP_STUDY_SECTIONS,
   LEVITICUS_DAY_THIRTY_SIX_HOLY_LIVING_BEFORE_A_HOLY_GOD_LESSON,
 } from "./bibleYearDayThirtySixDeepNotes";
+import {
+  BIBLE_YEAR_DAY_FORTY_DEEP_NOTES,
+  BIBLE_YEAR_DAY_FORTY_DEEP_STUDY_SECTIONS,
+  BIBLE_YEAR_DAY_THIRTY_EIGHT_DEEP_NOTES,
+  BIBLE_YEAR_DAY_THIRTY_EIGHT_DEEP_STUDY_SECTIONS,
+  BIBLE_YEAR_DAY_THIRTY_NINE_DEEP_NOTES,
+  BIBLE_YEAR_DAY_THIRTY_NINE_DEEP_STUDY_SECTIONS,
+  BIBLE_YEAR_DAY_THIRTY_SEVEN_DEEP_NOTES,
+  BIBLE_YEAR_DAY_THIRTY_SEVEN_DEEP_STUDY_SECTIONS,
+  LEVITICUS_DAY_THIRTY_SEVEN_PRIESTS_FEASTS_AND_SACRED_ORDER_LESSON,
+  LEVITICUS_NUMBERS_DAY_THIRTY_EIGHT_JUBILEE_COVENANT_AND_ISRAEL_COUNTED_LESSON,
+  NUMBERS_DAY_FORTY_BLESSING_DEDICATION_AND_PASSOVER_LESSON,
+  NUMBERS_DAY_THIRTY_NINE_CAMP_ORDER_AND_PURITY_LESSON,
+} from "./bibleYearDaysThirtySevenToFortyDeepNotes";
+import {
+  BIBLE_YEAR_DAY_FORTY_FOUR_DEEP_NOTES,
+  BIBLE_YEAR_DAY_FORTY_FOUR_DEEP_STUDY_SECTIONS,
+  BIBLE_YEAR_DAY_FORTY_ONE_DEEP_NOTES,
+  BIBLE_YEAR_DAY_FORTY_ONE_DEEP_STUDY_SECTIONS,
+  BIBLE_YEAR_DAY_FORTY_THREE_DEEP_NOTES,
+  BIBLE_YEAR_DAY_FORTY_THREE_DEEP_STUDY_SECTIONS,
+  BIBLE_YEAR_DAY_FORTY_TWO_DEEP_NOTES,
+  BIBLE_YEAR_DAY_FORTY_TWO_DEEP_STUDY_SECTIONS,
+  NUMBERS_DAY_FORTY_FOUR_BALAAM_BLESSING_AND_COMPROMISE_LESSON,
+  NUMBERS_DAY_FORTY_ONE_JOURNEY_COMPLAINTS_AND_SPIES_LESSON,
+  NUMBERS_DAY_FORTY_THREE_PROVISION_JUDGMENT_AND_BRONZE_SERPENT_LESSON,
+  NUMBERS_DAY_FORTY_TWO_REBELLION_AND_CHOSEN_PRIESTHOOD_LESSON,
+} from "./bibleYearDaysFortyOneToFortyFourDeepNotes";
+import {
+  BIBLE_YEAR_DAY_FIFTY_DEEP_NOTES,
+  BIBLE_YEAR_DAY_FIFTY_DEEP_STUDY_SECTIONS,
+  BIBLE_YEAR_DAY_FORTY_EIGHT_DEEP_NOTES,
+  BIBLE_YEAR_DAY_FORTY_EIGHT_DEEP_STUDY_SECTIONS,
+  BIBLE_YEAR_DAY_FORTY_FIVE_DEEP_NOTES,
+  BIBLE_YEAR_DAY_FORTY_FIVE_DEEP_STUDY_SECTIONS,
+  BIBLE_YEAR_DAY_FORTY_NINE_DEEP_NOTES,
+  BIBLE_YEAR_DAY_FORTY_NINE_DEEP_STUDY_SECTIONS,
+  BIBLE_YEAR_DAY_FORTY_SEVEN_DEEP_NOTES,
+  BIBLE_YEAR_DAY_FORTY_SEVEN_DEEP_STUDY_SECTIONS,
+  BIBLE_YEAR_DAY_FORTY_SIX_DEEP_NOTES,
+  BIBLE_YEAR_DAY_FORTY_SIX_DEEP_STUDY_SECTIONS,
+  DEUTERONOMY_DAY_FIFTY_COVENANT_LOYALTY_FROM_THE_HEART_LESSON,
+  DEUTERONOMY_DAY_FORTY_EIGHT_REMEMBERING_JOURNEY_AND_COVENANT_LESSON,
+  DEUTERONOMY_DAY_FORTY_NINE_LOVE_GOD_AND_REMEMBER_GRACE_LESSON,
+  NUMBERS_DAY_FORTY_FIVE_NEW_GENERATION_COUNTED_LESSON,
+  NUMBERS_DAY_FORTY_SIX_VOWS_VICTORY_AND_JOURNEY_REVIEWED_LESSON,
+  NUMBERS_DEUTERONOMY_DAY_FORTY_SEVEN_LAND_BOUNDARIES_AND_MOSES_LOOKS_BACK_LESSON,
+} from "./bibleYearDaysFortyFiveToFiftyDeepNotes";
 import { BIBLE_YEAR_DAY_ONE_DEEP_NOTES } from "./bibleYearDayOneDeepNotes";
 import { BIBLE_YEAR_DAY_ONE_DEEP_STUDY_SECTIONS, type BibleYearDeepStudySection } from "./bibleYearDayOneDeepStudy";
 import { BIBLE_YEAR_DAY_THREE_DEEP_NOTES, BIBLE_YEAR_DAY_THREE_DEEP_STUDY_SECTIONS } from "./bibleYearDayThreeDeepNotes";
@@ -822,6 +884,244 @@ const dayThirtySixSummary: BibleYearSummaryContent = {
   takeawaySupport: "Day 36 helps us see that Leviticus is not random rules; it is God forming a people whose worship, bodies, relationships, justice, and mercy reflect Him.",
 };
 
+const dayThirtySevenSummary: BibleYearSummaryContent = {
+  intro: [
+    "Leviticus 21-24 keeps moving through holy life near a holy God.",
+    "These chapters focus on priests, offerings, feasts, lamps, bread, reverence, justice, and the seriousness of the LORD's name.",
+    "Day 37 shows that Israel's worship calendar, worship leaders, and public justice all belong under God's holy order.",
+  ],
+  highlights: [
+    ["priests", "The priests must guard holiness because they stand before the LORD on behalf of the people."],
+    ["offerings", "Sacrifices brought near to God must not treat Him as common."],
+    ["feasts", "The appointed feasts teach Israel to remember God's saving work through the year."],
+    ["lamp and bread", "The tabernacle lamp and bread keep worship ordered before the LORD continually."],
+    ["name", "The LORD's name is holy, so blasphemy and justice are treated with seriousness."],
+  ],
+  takeaway: "Holy worship shapes leaders, time, offerings, speech, and justice.",
+  takeawaySupport: "Day 37 helps us see that Israel's worship was not random activity. God ordered the people so their priests, calendar, gifts, and community life would reflect His holiness.",
+};
+
+const dayThirtyEightSummary: BibleYearSummaryContent = {
+  intro: [
+    "Leviticus 25-27 closes Leviticus with Sabbath years, Jubilee, covenant blessing, covenant warning, vows, and devoted things.",
+    "Then Numbers begins by counting Israel's fighting men in the wilderness.",
+    "Day 38 turns from holy order in Leviticus to the numbered camp of Israel preparing to move forward.",
+  ],
+  highlights: [
+    ["jubilee", "The Jubilee teaches that land, freedom, and family inheritance belong under God's mercy."],
+    ["covenant", "Blessing and warning show that Israel's life depends on listening to the LORD."],
+    ["vows", "Leviticus ends by teaching that promises, gifts, and devoted things must be treated seriously."],
+    ["numbered", "Numbers begins with Israel being counted by families, tribes, and armies."],
+    ["wilderness", "The people are still in the wilderness, but God is ordering them for the road ahead."],
+  ],
+  takeaway: "God orders His people for covenant life, mercy, obedience, and movement.",
+  takeawaySupport: "Day 38 helps us see the bridge from Leviticus to Numbers. The holy people now become an ordered camp ready to travel with the LORD.",
+};
+
+const dayThirtyNineSummary: BibleYearSummaryContent = {
+  intro: [
+    "Numbers 2-5 shows Israel arranged around the tabernacle, the Levites assigned to holy service, and the camp kept clean.",
+    "The reading moves from marching order to priestly duties, then to purity and justice within the community.",
+    "Day 39 shows that the LORD does not only rescue His people; He orders them around His presence.",
+  ],
+  highlights: [
+    ["camp", "The tribes camp by standards around the tabernacle, showing that God's presence is at the center."],
+    ["Levites", "The Levites are counted and assigned to guard and carry holy things."],
+    ["Kohath", "The sons of Kohath handle the most holy things only after they are covered."],
+    ["clean", "Uncleanness is sent outside the camp because the LORD dwells among Israel."],
+    ["justice", "Confession, restitution, and difficult marriage cases are brought under God's authority."],
+  ],
+  takeaway: "The camp must be ordered because the holy God is living among His people.",
+  takeawaySupport: "Day 39 helps us understand that Numbers is not just lists. It shows a whole community learning to live, move, serve, and stay clean around the LORD's presence.",
+};
+
+const dayFortySummary: BibleYearSummaryContent = {
+  intro: [
+    "Numbers 6-9 brings blessing, dedication, light, Levitical service, Passover, and God's visible guidance.",
+    "The people receive the priestly blessing, leaders bring offerings, Levites are cleansed, and Israel keeps Passover in the wilderness.",
+    "Day 40 ends with the cloud over the tabernacle, showing that Israel moves and stops by the commandment of the LORD.",
+  ],
+  highlights: [
+    ["blessing", "The priestly blessing speaks the LORD's name over Israel with grace and peace."],
+    ["dedication", "The leaders bring offerings when the altar is dedicated."],
+    ["lampstand", "The lamps shine before the LORD as worship continues in the tabernacle."],
+    ["Passover", "Israel keeps Passover in the wilderness to remember rescue from Egypt."],
+    ["cloud", "The cloud guides Israel, teaching them when to move and when to wait."],
+  ],
+  takeaway: "God blesses, orders, cleanses, feeds memory, and guides His people step by step.",
+  takeawaySupport: "Day 40 helps us see Israel learning life with God in the wilderness. They do not move by guesswork. They follow the LORD's presence.",
+};
+
+const dayFortyOneSummary: BibleYearSummaryContent = {
+  intro: [
+    "Numbers 10-13 begins with Israel setting forward from Sinai.",
+    "The camp moves by trumpets and cloud, but the journey quickly exposes complaint, craving, leadership pressure, family conflict, and fear.",
+    "Day 41 ends with spies seeing the land and Israel standing at a major faith test.",
+  ],
+  highlights: [
+    ["trumpets", "Silver trumpets gather the camp, signal movement, sound alarm, and mark worship."],
+    ["journey", "Israel sets forward from Sinai in ordered formation with the ark going before them."],
+    ["complaint", "The people despise manna and remember Egypt wrongly."],
+    ["leadership", "God gives seventy elders to help Moses bear the burden."],
+    ["spies", "The spies see fruitful Canaan, but most return with fear instead of faith."],
+  ],
+  takeaway: "The wilderness journey reveals whether God's people will trust the God who leads them.",
+  takeawaySupport: "Day 41 helps us see that guidance, provision, and promise are real, but complaints and fear can still distort the heart.",
+};
+
+const dayFortyTwoSummary: BibleYearSummaryContent = {
+  intro: [
+    "Numbers 14-17 shows unbelief becoming rebellion.",
+    "Israel refuses the land, Moses intercedes, the generation is sentenced to wander, and Korah challenges God's appointed leadership.",
+    "The day closes with Aaron's rod budding, a sign that God Himself chooses the priesthood.",
+  ],
+  highlights: [
+    ["unbelief", "Israel treats the promised land like death and Egypt like safety."],
+    ["intercession", "Moses pleads according to the LORD's mercy and reputation."],
+    ["wandering", "Forty days of spying become forty years in the wilderness."],
+    ["rebellion", "Korah challenges Moses and Aaron, and God judges the uprising."],
+    ["rod", "Aaron's dead rod buds, blossoms, and bears almonds before the LORD."],
+  ],
+  takeaway: "Unbelief is serious, but God still preserves His promise and confirms His appointed mediator.",
+  takeawaySupport: "Day 42 helps us understand rebellion, intercession, priesthood, and God's power to bring life from what looked dead.",
+};
+
+const dayFortyThreeSummary: BibleYearSummaryContent = {
+  intro: [
+    "Numbers 18-21 moves through priestly provision, cleansing from death, Moses' failure, Aaron's death, fiery serpents, and victories.",
+    "The wilderness keeps showing judgment and mercy side by side.",
+    "The bronze serpent becomes a powerful picture of healing by looking to the remedy God provides.",
+  ],
+  highlights: [
+    ["priests", "God clarifies priestly and Levitical duties after rebellion."],
+    ["cleansing", "The red heifer provides purification from death's uncleanness."],
+    ["rock", "Moses strikes the rock and fails to sanctify the LORD before the people."],
+    ["serpent", "Bitten Israelites live when they look at the bronze serpent."],
+    ["victory", "God gives Israel victories over Sihon and Og as the journey continues."],
+  ],
+  takeaway: "The wilderness exposes sin, but God keeps providing cleansing, water, healing, and forward movement.",
+  takeawaySupport: "Day 43 helps us see God's mercy inside hard chapters where death, failure, judgment, and hope all meet.",
+};
+
+const dayFortyFourSummary: BibleYearSummaryContent = {
+  intro: [
+    "Numbers 22-25 follows Balak and Balaam as Moab tries to curse Israel.",
+    "God turns attempted curses into blessing and speaks through Balaam, but Israel later falls into compromise at Baalpeor.",
+    "Day 44 shows that outside opposition cannot overturn God's blessing, but inward compromise is still dangerous.",
+  ],
+  highlights: [
+    ["Balak", "Moab's king fears Israel and hires Balaam to curse them."],
+    ["donkey", "Balaam's donkey sees the angel before Balaam does."],
+    ["blessing", "Balaam repeatedly blesses Israel because God controls the word spoken."],
+    ["star", "A star out of Jacob points toward future kingship and victory."],
+    ["compromise", "Israel joins itself to Baalpeor and faces deadly judgment."],
+  ],
+  takeaway: "No curse can cancel God's blessing, but God's people must still guard against compromise.",
+  takeawaySupport: "Day 44 helps us see God's protection over Israel from outside threats and His holy jealousy when His people turn aside.",
+};
+
+const dayFortyFiveSummary: BibleYearSummaryContent = {
+  intro: [
+    "Numbers 26-29 counts a new generation and prepares Israel for inheritance, leadership, and worship.",
+    "The old unbelieving generation has fallen, but God's promise has not failed.",
+    "Day 45 shows the LORD ordering names, land, Joshua's leadership, and regular offerings before Israel enters Canaan.",
+  ],
+  highlights: [
+    ["counted", "A new generation is counted after the wilderness judgment."],
+    ["inheritance", "Zelophehad's daughters ask for inheritance, and God gives a just answer."],
+    ["Joshua", "Joshua is commissioned so Israel will not be like sheep without a shepherd."],
+    ["offerings", "Daily, Sabbath, monthly, and feast offerings shape Israel's worship rhythm."],
+    ["calendar", "The seventh month teaches remembrance, atonement, rejoicing, and ordered worship."],
+  ],
+  takeaway: "God keeps His promise by preparing a new generation for land, leadership, justice, and worship.",
+  takeawaySupport: "Day 45 helps us see that the wilderness did not cancel God's plan. The LORD is still arranging His people for covenant life.",
+};
+
+const dayFortySixSummary: BibleYearSummaryContent = {
+  intro: [
+    "Numbers 30-33 moves through vows, judgment on Midian, settlement east of Jordan, and Israel's journey record.",
+    "The reading teaches that words matter, compromise has consequences, and memory matters before entering the land.",
+    "Day 46 shows Israel preparing for inheritance while still needing faithfulness, courage, and separation from idolatry.",
+  ],
+  highlights: [
+    ["vows", "Words spoken before the LORD must be taken seriously."],
+    ["Midian", "Judgment on Midian connects back to the deadly compromise at Baalpeor."],
+    ["Jordan", "Reuben, Gad, and half Manasseh must not abandon the rest of Israel."],
+    ["journey", "The journey stages remember how far the LORD carried His people."],
+    ["warning", "Remaining idolatry in the land will become a snare if Israel compromises."],
+  ],
+  takeaway: "The promised land requires truthful words, shared responsibility, remembered grace, and holy separation.",
+  takeawaySupport: "Day 46 helps us understand that entering the land is not just geography. It is a call to covenant faithfulness.",
+};
+
+const dayFortySevenSummary: BibleYearSummaryContent = {
+  intro: [
+    "Numbers 34-36 closes Numbers with land boundaries, Levite cities, cities of refuge, and inheritance protection.",
+    "Then Deuteronomy begins with Moses speaking across Jordan to the new generation.",
+    "Day 47 marks a transition from wilderness record to covenant sermon.",
+  ],
+  highlights: [
+    ["boundaries", "The borders of Canaan make the promise specific."],
+    ["Levites", "Levite cities scatter spiritual service throughout Israel."],
+    ["refuge", "Cities of refuge protect justice while guarding the land from bloodguilt."],
+    ["inheritance", "Zelophehad's daughters and tribal inheritance are protected together."],
+    ["memory", "Moses begins retelling the journey so the new generation learns from the past."],
+  ],
+  takeaway: "God prepares Israel for land with boundaries, justice, refuge, inheritance, and memory.",
+  takeawaySupport: "Day 47 helps us feel the handoff from Numbers to Deuteronomy: the people are near the land, and Moses begins teaching them how to remember.",
+};
+
+const dayFortyEightSummary: BibleYearSummaryContent = {
+  intro: [
+    "Deuteronomy 2-5 remembers the journey and repeats the covenant.",
+    "Moses reminds Israel where God restrained them, where God gave victory, and how God spoke at Horeb.",
+    "Day 48 teaches that memory is meant to produce obedience.",
+  ],
+  highlights: [
+    ["restraint", "Israel must not seize lands God gave to Edom, Moab, and Ammon."],
+    ["victory", "Sihon and Og are defeated because the LORD gives victory."],
+    ["Joshua", "Moses strengthens Joshua for the leadership ahead."],
+    ["idols", "Israel heard God's voice but saw no form, so they must not make images."],
+    ["commandments", "The Ten Commandments are repeated for the new generation."],
+  ],
+  takeaway: "Remembering God's past faithfulness prepares the heart for present obedience.",
+  takeawaySupport: "Day 48 helps us see Deuteronomy as more than review. Moses is teaching the new generation how to remember rightly and obey faithfully.",
+};
+
+const dayFortyNineSummary: BibleYearSummaryContent = {
+  intro: [
+    "Deuteronomy 6-9 contains the great call to love the LORD with all the heart, soul, and might.",
+    "Moses warns Israel not to forget God in prosperity and not to think the land is earned by their own righteousness.",
+    "Day 49 teaches love, memory, humility, and grace.",
+  ],
+  highlights: [
+    ["Shema", "Hear, O Israel calls God's people to exclusive covenant loyalty."],
+    ["love", "Israel must love the LORD with the whole heart, soul, and might."],
+    ["chosen", "God chose Israel because He loved them and kept His oath."],
+    ["remember", "Manna taught Israel that life depends on every word from the LORD."],
+    ["grace", "The land is not given because of Israel's righteousness."],
+  ],
+  takeaway: "Covenant obedience begins with love for God and humble memory of grace.",
+  takeawaySupport: "Day 49 helps us see that Deuteronomy is aiming at the heart, not just outward behavior.",
+};
+
+const dayFiftySummary: BibleYearSummaryContent = {
+  intro: [
+    "Deuteronomy 10-13 presses covenant loyalty into the heart, home, worship, and community.",
+    "Moses calls Israel to fear, love, serve, cleave to, and obey the LORD.",
+    "Day 50 shows that true loyalty must resist idolatry from the inside out.",
+  ],
+  highlights: [
+    ["heart", "Circumcise your heart means the inner life must belong to God."],
+    ["blessing", "Blessing and curse are set before Israel as a real covenant choice."],
+    ["worship", "Israel must worship at the place the LORD chooses, not according to pagan patterns."],
+    ["warning", "False prophets, family pressure, and cities can all tempt people away from God."],
+    ["loyalty", "Love for the LORD must be stronger than signs, pressure, and community drift."],
+  ],
+  takeaway: "True covenant loyalty is love, obedience, worship, and allegiance from the heart.",
+  takeawaySupport: "Day 50 helps us see that God wants more than religious activity. He wants His people to belong to Him fully.",
+};
+
 function buildFallbackSummary(day: GenesisBibleYearDay): BibleYearSummaryContent {
   const pieces = day.summary
     .split(",")
@@ -865,7 +1165,7 @@ ${body}`;
 }
 
 function getReaderAlignedStudySections(day: GenesisBibleYearDay, fallback: BibleYearDeepStudySection[] | null | undefined) {
-  if (day.dayNumber < 1 || day.dayNumber > 36) return fallback ?? null;
+  if (day.dayNumber < 1 || day.dayNumber > 50) return fallback ?? null;
 
   const readerSections = day.readings.flatMap((reading) =>
     getBibleReaderStudySections(reading.book, reading.chapter).map((section) => ({
@@ -1168,6 +1468,118 @@ export const BIBLE_YEAR_DAY_CONTENT: Partial<Record<number, Omit<BibleYearDayCon
     studyNotesSections: BIBLE_YEAR_DAY_THIRTY_SIX_DEEP_STUDY_SECTIONS,
     summary: dayThirtySixSummary,
     discussionPrompt: "Where do you see God calling His people to live differently because they belong to Him?",
+  },
+  37: {
+    lesson: LEVITICUS_DAY_THIRTY_SEVEN_PRIESTS_FEASTS_AND_SACRED_ORDER_LESSON,
+    audio: BIBLE_YEAR_DAY_THIRTY_SEVEN_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_THIRTY_SEVEN_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_THIRTY_SEVEN_DEEP_STUDY_SECTIONS,
+    summary: dayThirtySevenSummary,
+    discussionPrompt: "What stands out to you about God's holiness shaping priests, feasts, worship, and justice?",
+  },
+  38: {
+    lesson: LEVITICUS_NUMBERS_DAY_THIRTY_EIGHT_JUBILEE_COVENANT_AND_ISRAEL_COUNTED_LESSON,
+    audio: BIBLE_YEAR_DAY_THIRTY_EIGHT_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_THIRTY_EIGHT_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_THIRTY_EIGHT_DEEP_STUDY_SECTIONS,
+    summary: dayThirtyEightSummary,
+    discussionPrompt: "What stands out to you about Jubilee, covenant warning, and Israel being counted for the journey?",
+  },
+  39: {
+    lesson: NUMBERS_DAY_THIRTY_NINE_CAMP_ORDER_AND_PURITY_LESSON,
+    audio: BIBLE_YEAR_DAY_THIRTY_NINE_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_THIRTY_NINE_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_THIRTY_NINE_DEEP_STUDY_SECTIONS,
+    summary: dayThirtyNineSummary,
+    discussionPrompt: "What stands out to you about Israel arranging the camp around God's presence?",
+  },
+  40: {
+    lesson: NUMBERS_DAY_FORTY_BLESSING_DEDICATION_AND_PASSOVER_LESSON,
+    audio: BIBLE_YEAR_DAY_FORTY_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_FORTY_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_FORTY_DEEP_STUDY_SECTIONS,
+    summary: dayFortySummary,
+    discussionPrompt: "What stands out to you about God's blessing, Passover memory, and guidance by the cloud?",
+  },
+  41: {
+    lesson: NUMBERS_DAY_FORTY_ONE_JOURNEY_COMPLAINTS_AND_SPIES_LESSON,
+    audio: BIBLE_YEAR_DAY_FORTY_ONE_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_FORTY_ONE_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_FORTY_ONE_DEEP_STUDY_SECTIONS,
+    summary: dayFortyOneSummary,
+    discussionPrompt: "Where do you see complaint, fear, or faith shaping Israel's response to God's leading?",
+  },
+  42: {
+    lesson: NUMBERS_DAY_FORTY_TWO_REBELLION_AND_CHOSEN_PRIESTHOOD_LESSON,
+    audio: BIBLE_YEAR_DAY_FORTY_TWO_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_FORTY_TWO_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_FORTY_TWO_DEEP_STUDY_SECTIONS,
+    summary: dayFortyTwoSummary,
+    discussionPrompt: "What stands out to you about Moses' intercession and Aaron's rod budding before the LORD?",
+  },
+  43: {
+    lesson: NUMBERS_DAY_FORTY_THREE_PROVISION_JUDGMENT_AND_BRONZE_SERPENT_LESSON,
+    audio: BIBLE_YEAR_DAY_FORTY_THREE_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_FORTY_THREE_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_FORTY_THREE_DEEP_STUDY_SECTIONS,
+    summary: dayFortyThreeSummary,
+    discussionPrompt: "What stands out to you about God providing mercy in the middle of judgment?",
+  },
+  44: {
+    lesson: NUMBERS_DAY_FORTY_FOUR_BALAAM_BLESSING_AND_COMPROMISE_LESSON,
+    audio: BIBLE_YEAR_DAY_FORTY_FOUR_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_FORTY_FOUR_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_FORTY_FOUR_DEEP_STUDY_SECTIONS,
+    summary: dayFortyFourSummary,
+    discussionPrompt: "Where do you see the difference between outside opposition and inward compromise in Numbers 22-25?",
+  },
+  45: {
+    lesson: NUMBERS_DAY_FORTY_FIVE_NEW_GENERATION_COUNTED_LESSON,
+    audio: BIBLE_YEAR_DAY_FORTY_FIVE_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_FORTY_FIVE_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_FORTY_FIVE_DEEP_STUDY_SECTIONS,
+    summary: dayFortyFiveSummary,
+    discussionPrompt: "What stands out to you about God preparing a new generation for inheritance and worship?",
+  },
+  46: {
+    lesson: NUMBERS_DAY_FORTY_SIX_VOWS_VICTORY_AND_JOURNEY_REVIEWED_LESSON,
+    audio: BIBLE_YEAR_DAY_FORTY_SIX_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_FORTY_SIX_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_FORTY_SIX_DEEP_STUDY_SECTIONS,
+    summary: dayFortySixSummary,
+    discussionPrompt: "Where do you see words, memory, and responsibility shaping Israel before the land?",
+  },
+  47: {
+    lesson: NUMBERS_DEUTERONOMY_DAY_FORTY_SEVEN_LAND_BOUNDARIES_AND_MOSES_LOOKS_BACK_LESSON,
+    audio: BIBLE_YEAR_DAY_FORTY_SEVEN_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_FORTY_SEVEN_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_FORTY_SEVEN_DEEP_STUDY_SECTIONS,
+    summary: dayFortySevenSummary,
+    discussionPrompt: "What stands out to you about boundaries, refuge, inheritance, and Moses retelling the journey?",
+  },
+  48: {
+    lesson: DEUTERONOMY_DAY_FORTY_EIGHT_REMEMBERING_JOURNEY_AND_COVENANT_LESSON,
+    audio: BIBLE_YEAR_DAY_FORTY_EIGHT_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_FORTY_EIGHT_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_FORTY_EIGHT_DEEP_STUDY_SECTIONS,
+    summary: dayFortyEightSummary,
+    discussionPrompt: "How does remembering God's past faithfulness help Israel obey in the present?",
+  },
+  49: {
+    lesson: DEUTERONOMY_DAY_FORTY_NINE_LOVE_GOD_AND_REMEMBER_GRACE_LESSON,
+    audio: BIBLE_YEAR_DAY_FORTY_NINE_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_FORTY_NINE_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_FORTY_NINE_DEEP_STUDY_SECTIONS,
+    summary: dayFortyNineSummary,
+    discussionPrompt: "What stands out to you about loving God, remembering grace, and resisting pride?",
+  },
+  50: {
+    lesson: DEUTERONOMY_DAY_FIFTY_COVENANT_LOYALTY_FROM_THE_HEART_LESSON,
+    audio: BIBLE_YEAR_DAY_FIFTY_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_FIFTY_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_FIFTY_DEEP_STUDY_SECTIONS,
+    summary: dayFiftySummary,
+    discussionPrompt: "Where do you see God calling His people to loyalty from the heart, not just outward religion?",
   },
 };
 

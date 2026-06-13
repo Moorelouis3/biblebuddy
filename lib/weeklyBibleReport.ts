@@ -1,4 +1,4 @@
-﻿import { getDirectMessagePreview, isMissingDirectMessageActionColumnError } from "@/lib/directMessageActions";
+import { getDirectMessagePreview, isMissingDirectMessageActionColumnError } from "@/lib/directMessageActions";
 import { isSeriesWeekComplete, toSeriesWeekProgressState } from "@/lib/seriesWeekProgress";
 
 const LOUIS_EMAIL = "moorelouis3@gmail.com";
@@ -658,7 +658,7 @@ function getStreakRecommendation(profile: ProfileRow | undefined, actionCounts: 
       key: "streak-building",
       priority: 72,
       line: "You are building a real daily habit now. Stay steady, because this is the stretch where consistency starts changing how Bible Buddy feels to you.",
-      action: { label: "Read today's chapter", href: "/reading" },
+      action: { label: "Read today's chapter", href: "/Bible" },
       quickActionLabel: "Read today's chapter",
     };
   }
@@ -668,7 +668,7 @@ function getStreakRecommendation(profile: ProfileRow | undefined, actionCounts: 
       key: "streak-strong",
       priority: 72,
       line: `A ${formatCount(streak, "day")} streak is real momentum. Keep going, because your level is proving that this is turning into part of your daily life.`,
-      action: { label: "Keep the streak alive", href: "/reading" },
+      action: { label: "Keep the streak alive", href: "/Bible" },
       quickActionLabel: "Keep the streak alive",
     };
   }
@@ -679,7 +679,7 @@ function getStreakRecommendation(profile: ProfileRow | undefined, actionCounts: 
       key: "streak-countdown",
       priority: 72,
       line: `You are only ${daysLeft} ${daysLeft === 1 ? "day" : "days"} away from the fire emoji. Do not let up now, because you are right at the edge of it.`,
-      action: { label: "Finish one chapter today", href: "/reading" },
+      action: { label: "Finish one chapter today", href: "/Bible" },
       quickActionLabel: "Finish one chapter today",
     };
   }
@@ -688,7 +688,7 @@ function getStreakRecommendation(profile: ProfileRow | undefined, actionCounts: 
     key: "streak-fire",
     priority: 72,
     line: "You already earned the fire emoji. Now the goal is to protect it and keep climbing one level at a time.",
-    action: { label: "Keep the fire going", href: "/reading" },
+    action: { label: "Keep the fire going", href: "/Bible" },
     quickActionLabel: "Keep the fire going",
   };
 }
@@ -770,7 +770,7 @@ function pickRecommendations(
       key: "read",
       priority: 86,
       line: "You were in the app this week, but you did not finish a Bible chapter yet. Reading one chapter is still the fastest way to move your understanding forward.",
-      action: { label: "Open The Bible", href: "/reading" },
+      action: { label: "Open The Bible", href: "/Bible" },
       quickActionLabel: "Open The Bible",
     });
   }
@@ -800,7 +800,7 @@ function pickRecommendations(
       key: "review",
       priority: 80,
       line: "Open a chapter review after you read so you do not just finish the chapter and move on without slowing down to understand it.",
-      action: { label: "Open The Bible", href: "/reading" },
+      action: { label: "Open The Bible", href: "/Bible" },
       quickActionLabel: "Open The Bible",
     });
   }
@@ -830,7 +830,7 @@ function pickRecommendations(
     key: "default-read",
     priority: 1,
     line: "Read one chapter this week so you keep moving instead of letting the momentum disappear.",
-    action: { label: "Open The Bible", href: "/reading" },
+    action: { label: "Open The Bible", href: "/Bible" },
     quickActionLabel: "Open The Bible",
   };
   const third = getStreakRecommendation(profile, actionCounts);
@@ -872,34 +872,34 @@ export function buildWeeklyReportForUser(
   const groupMessages = count("group_message_sent");
 
   const statLines = [
-    chaptersRead ? `ðŸ“– You finished ${formatCount(chaptersRead, "Bible chapter")}.` : null,
-    devotionalsCompleted ? `ðŸŒ¿ You completed ${formatCount(devotionalsCompleted, "Bible study day")}.` : null,
-    chapterReviews ? `ðŸ“ You reviewed ${formatCount(chapterReviews, "chapter review")}.` : null,
-    triviaCompleted ? `ðŸ§  You finished ${formatCount(triviaCompleted, "trivia chapter")}.` : null,
-    scrambledCompleted ? `ðŸ”¤ You finished ${formatCount(scrambledCompleted, "Scrambled chapter")}.` : null,
+    chaptersRead ? `📖 You finished ${formatCount(chaptersRead, "Bible chapter")}.` : null,
+    devotionalsCompleted ? `🌿 You completed ${formatCount(devotionalsCompleted, "Bible study day")}.` : null,
+    chapterReviews ? `📝 You reviewed ${formatCount(chapterReviews, "chapter review")}.` : null,
+    triviaCompleted ? `🧠 You finished ${formatCount(triviaCompleted, "trivia chapter")}.` : null,
+    scrambledCompleted ? `🔤 You finished ${formatCount(scrambledCompleted, "Scrambled chapter")}.` : null,
     peopleLearned || placesLearned || keywordsLearned
-      ? `ðŸ”Ž You explored ${toSentenceCaseList([
+      ? `🔎 You explored ${toSentenceCaseList([
           peopleLearned ? formatCount(peopleLearned, "person") : "",
           placesLearned ? formatCount(placesLearned, "place") : "",
           keywordsLearned ? formatCount(keywordsLearned, "keyword") : "",
         ].filter(Boolean))}.`
       : null,
     notesCreated || highlights
-      ? `âœï¸ You made ${toSentenceCaseList([
+      ? `✍️ You made ${toSentenceCaseList([
           notesCreated ? formatCount(notesCreated, "note") : "",
           highlights ? formatCount(highlights, "verse highlight") : "",
         ].filter(Boolean))}.`
       : null,
     commentsPosted || repliesPosted || groupMessages
-      ? `ðŸ¤ You showed up in community with ${toSentenceCaseList([
+      ? `🤝 You showed up in community with ${toSentenceCaseList([
           commentsPosted ? formatCount(commentsPosted, "comment") : "",
           repliesPosted ? formatCount(repliesPosted, "reply") : "",
           groupMessages ? formatCount(groupMessages, "message") : "",
         ].filter(Boolean))}.`
       : null,
-    `ðŸ“… You were active on ${formatCount(activeDays, "day")} this week and logged ${formatCount(actions.length, "action")}.`,
-    profile?.current_streak ? `ðŸ”¥ Your current streak is ${formatCount(profile.current_streak, "day")}.` : null,
-    profile?.current_level ? `â­ You are holding Level ${profile.current_level}${profile.member_badge ? ` with the ${profile.member_badge} badge` : ""}.` : null,
+    `📅 You were active on ${formatCount(activeDays, "day")} this week and logged ${formatCount(actions.length, "action")}.`,
+    profile?.current_streak ? `🔥 Your current streak is ${formatCount(profile.current_streak, "day")}.` : null,
+    profile?.current_level ? `⭐ You are holding Level ${profile.current_level}${profile.member_badge ? ` with the ${profile.member_badge} badge` : ""}.` : null,
   ].filter(Boolean) as string[];
 
   const recommendations = pickRecommendations(userId, profile, actions, context);
@@ -929,16 +929,16 @@ export function buildWeeklyReportForUser(
     "",
     "Here is your personal Bible Buddy wrap-up for this week.",
     "",
-    "ð—¬ð—¢ð—¨ð—¥ ð—ªð—˜ð—˜ð—ž",
+    "𝗬𝗢𝗨𝗥 𝗪𝗘𝗘𝗞",
     ...statLines,
     "",
-    "ð—ªð—›ð—¬ ð—œð—§ ð— ð—”ð—§ð—§ð—˜ð—¥ð—¦",
+    "𝗪𝗛𝗬 𝗜𝗧 𝗠𝗔𝗧𝗧𝗘𝗥𝗦",
     encouragementLine,
     "",
-    "ð—¡ð—˜ð—«ð—§ ð—¦ð—§ð—˜ð—£ð—¦",
+    "𝗡𝗘𝗫𝗧 𝗦𝗧𝗘𝗣𝗦",
     ...nextStepLines,
     "",
-    ...(quickActionLines.length ? quickActionLines : ["Quick Action: Open The Bible|/reading"]),
+    ...(quickActionLines.length ? quickActionLines : ["Quick Action: Open The Bible|/Bible"]),
     "",
     "Keep going.",
     "Louis",
@@ -984,34 +984,34 @@ export function buildWeeklyLouisReportForUser(
   const groupMessages = count("group_message_sent");
 
   const statLines = [
-    chaptersRead ? `ðŸ“– You finished ${formatCount(chaptersRead, "Bible chapter")}.` : null,
-    devotionalsCompleted ? `ðŸŒ¿ You completed ${formatCount(devotionalsCompleted, "Bible study day")}.` : null,
-    chapterReviews ? `ðŸ“ You opened ${formatCount(chapterReviews, "chapter review")}.` : null,
-    triviaCompleted ? `ðŸ§  You finished ${formatCount(triviaCompleted, "trivia chapter")}.` : null,
-    scrambledCompleted ? `ðŸ”¤ You finished ${formatCount(scrambledCompleted, "Scrambled chapter")}.` : null,
+    chaptersRead ? `📖 You finished ${formatCount(chaptersRead, "Bible chapter")}.` : null,
+    devotionalsCompleted ? `🌿 You completed ${formatCount(devotionalsCompleted, "Bible study day")}.` : null,
+    chapterReviews ? `📝 You opened ${formatCount(chapterReviews, "chapter review")}.` : null,
+    triviaCompleted ? `🧠 You finished ${formatCount(triviaCompleted, "trivia chapter")}.` : null,
+    scrambledCompleted ? `🔤 You finished ${formatCount(scrambledCompleted, "Scrambled chapter")}.` : null,
     peopleLearned || placesLearned || keywordsLearned
-      ? `ðŸ”Ž You explored ${toSentenceCaseList([
+      ? `🔎 You explored ${toSentenceCaseList([
           peopleLearned ? formatCount(peopleLearned, "person") : "",
           placesLearned ? formatCount(placesLearned, "place") : "",
           keywordsLearned ? formatCount(keywordsLearned, "keyword") : "",
         ].filter(Boolean))}.`
       : null,
     notesCreated || highlights
-      ? `âœï¸ You made ${toSentenceCaseList([
+      ? `✍️ You made ${toSentenceCaseList([
           notesCreated ? formatCount(notesCreated, "note") : "",
           highlights ? formatCount(highlights, "verse highlight") : "",
         ].filter(Boolean))}.`
       : null,
     commentsPosted || repliesPosted || groupMessages
-      ? `ðŸ¤ You showed up in community with ${toSentenceCaseList([
+      ? `🤝 You showed up in community with ${toSentenceCaseList([
           commentsPosted ? formatCount(commentsPosted, "comment") : "",
           repliesPosted ? formatCount(repliesPosted, "reply") : "",
           groupMessages ? formatCount(groupMessages, "message") : "",
         ].filter(Boolean))}.`
       : null,
-    `ðŸ“… You were active on ${formatCount(activeDays, "day")} this week and logged ${formatCount(actions.length, "action")}.`,
-    profile?.current_streak ? `ðŸ”¥ Your current streak is ${formatCount(profile.current_streak, "day")}.` : null,
-    profile?.current_level ? `â­ You are holding Level ${profile.current_level} in Bible Buddy.` : null,
+    `📅 You were active on ${formatCount(activeDays, "day")} this week and logged ${formatCount(actions.length, "action")}.`,
+    profile?.current_streak ? `🔥 Your current streak is ${formatCount(profile.current_streak, "day")}.` : null,
+    profile?.current_level ? `⭐ You are holding Level ${profile.current_level} in Bible Buddy.` : null,
   ].filter(Boolean) as string[];
 
   const recommendations = pickRecommendations(userId, profile, actions, context);
@@ -1023,7 +1023,7 @@ export function buildWeeklyLouisReportForUser(
   const quickActionLines = recommendations
     .map((recommendation) =>
       recommendation.action && recommendation.quickActionLabel
-        ? `ðŸ‘‰ ${recommendation.quickActionLabel}: ${recommendation.action.href}`
+        ? `👉 ${recommendation.quickActionLabel}: ${recommendation.action.href}`
         : null,
     )
     .filter(Boolean) as string[];
@@ -1037,21 +1037,21 @@ export function buildWeeklyLouisReportForUser(
       ];
 
   return {
-    title: `Weekly Bible Report â€¢ ${formatWeekRange(weekKey)}`,
+    title: `Weekly Bible Report • ${formatWeekRange(weekKey)}`,
     message: [
-      `Hey ${firstName}, hereâ€™s your weekly Bible report.`,
+      `Hey ${firstName}, here’s your weekly Bible report.`,
       "",
-      "ðŸ“Š Your week",
+      "📊 Your week",
       ...statLines,
       "",
-      "ðŸ’­ Why it matters",
+      "💭 Why it matters",
       encouragementLine,
       "",
-      "âž¡ï¸ What I think you should do next",
+      "➡️ What I think you should do next",
       ...nextStepLines,
       "",
-      "âš¡ Quick action",
-      ...(quickActionLines.length ? quickActionLines : ["ðŸ‘‰ Open The Bible: /reading"]),
+      "⚡ Quick action",
+      ...(quickActionLines.length ? quickActionLines : ["👉 Open The Bible: /Bible"]),
       "",
       "Keep showing up.",
       "Louis",

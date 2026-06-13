@@ -78,7 +78,7 @@ Key Phrase explanations must function like a deep Bible study, not a summary sec
 
 Assume the reader has never studied the Bible before.
 
-Use Day 1 Genesis 1, especially the "In The Beginning" card, as the current Bible Buddy phrase-card formatting model.
+Use Day 1 Genesis 1, especially the "In The Beginning" card, and the corrected Day 24 Exodus cards as the current Bible Buddy phrase-card formatting model.
 
 The approved visual rhythm is:
 
@@ -115,7 +115,66 @@ It is the beginning of what God made.
 
 Every phrase explanation should feel like this: simple, spaced, conversational, and directly tied to the exact phrase.
 
-Day 22 Exodus 1-4 remains a content-depth reference, but Genesis 1 is the formatting standard.
+Day 22 Exodus 1-4 remains a content-depth reference, but Genesis 1 and the corrected Day 24 Exodus cards are the formatting standard.
+
+The Day 24 Exodus standard is now locked in for all future Bible-in-one-year notes:
+
+- Explain the exact phrase first.
+- Keep the phrase itself as the subject of the card.
+- Use short spaced paragraphs.
+- Use emoji lists only when the list explains real parts of the phrase.
+- Do not add generic recap endings.
+- Do not let a phrase fall into a bucket such as "Bible words / slow reading / clear understanding."
+- Do not use broad filler like "teaches a real detail," "names a real detail," "shows God working," or "keeps suffering in front of the reader."
+- Check that repeated words like "not one" or "part of" do not route the card to the wrong explanation.
+
+Approved Day 24-style examples:
+
+```txt
+There Remained Not One Locust means the LORD removed the locusts completely.
+
+The same God who brought the swarm can take the swarm away.
+
+Egypt does not solve the plague by its own power.
+
+🦗 Locusts gone
+🌬️ Wind obeys
+🙌 The LORD removes
+
+The phrase shows total relief.
+
+But Pharaoh still refuses after mercy.
+```
+
+```txt
+They Saw Not One Another means the darkness was so thick that normal human connection stopped.
+
+People could not see the faces of those around them.
+
+The plague isolated people inside the same land.
+
+🌑 Darkness
+🙈 Could not see
+⏸️ Life stopped
+
+The wording helps the reader feel how heavy the darkness was.
+
+Egypt's daily life is shut down by the LORD's command.
+```
+
+```txt
+A Bunch Of Hyssop names the plant used to apply the blood to the doorway.
+
+Hyssop was a small plant used for sprinkling or applying liquid in Bible rituals.
+
+Here it carries the blood to the lintel and side posts.
+
+🌿 Hyssop
+🩸 Blood applied
+🚪 Door marked
+
+A simple plant becomes one visible sign of God's protection.
+```
 
 The Exodus 1:1-6 cards show the required style:
 

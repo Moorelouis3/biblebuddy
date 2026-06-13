@@ -8,6 +8,11 @@ import { EXODUS_21_30_PERSONAL_SECTIONS } from "./exodusTwentyOneToThirtyPersona
 import { EXODUS_31_40_PERSONAL_SECTIONS } from "./exodusThirtyOneToFortyPersonalNotes";
 import { LEVITICUS_1_10_PERSONAL_SECTIONS } from "./leviticusOneToTenPersonalNotes";
 import { LEVITICUS_17_20_PERSONAL_SECTIONS } from "./leviticusSeventeenToTwentyPersonalNotes";
+import { LEVITICUS_21_27_PERSONAL_SECTIONS } from "./leviticusTwentyOneToTwentySevenPersonalNotes";
+import { NUMBERS_1_9_PERSONAL_SECTIONS } from "./numbersOneToNinePersonalNotes";
+import { NUMBERS_10_25_PERSONAL_SECTIONS } from "./numbersTenToTwentyFivePersonalNotes";
+import { NUMBERS_26_36_PERSONAL_SECTIONS } from "./numbersTwentySixToThirtySixPersonalNotes";
+import { DEUTERONOMY_1_13_PERSONAL_SECTIONS } from "./deuteronomyOneToThirteenPersonalNotes";
 
 export type BibleReaderStudyNoteCategory = {
   id: string;
@@ -3837,7 +3842,7 @@ function makePersonalGenesisOneSection(section: {
         id: "key-phrases",
         icon: "💬",
         title: "Key Phrases",
-        content: section.phrases.map(([heading, body]) => `${repairMojibake(heading)}\n${repairMojibake(body.trim())}`),
+        content: section.phrases.map(([heading, body]) => formatBibleYearPhraseCard(heading, body)),
       },
     ],
   };
@@ -9597,7 +9602,7 @@ function makePersonalGenesisTwoSection(section: {
         id: "key-phrases",
         icon: "💬",
         title: "Key Phrases",
-        content: section.phrases.map(([heading, body]) => `${heading}\n${body.trim()}`),
+        content: section.phrases.map(([heading, body]) => formatBibleYearPhraseCard(heading, body)),
       },
     ],
   };
@@ -10841,7 +10846,7 @@ function makePersonalGenesisThreeSection(section: {
         id: "key-phrases",
         icon: "💬",
         title: "Key Phrases",
-        content: section.phrases.map(([heading, body]) => `${heading}\n${body.trim()}`),
+        content: section.phrases.map(([heading, body]) => formatBibleYearPhraseCard(heading, body)),
       },
     ],
   };
@@ -12109,7 +12114,7 @@ function makePersonalGenesisPhraseSection(section: {
         id: "key-phrases",
         icon: "💬",
         title: "Key Phrases",
-        content: section.phrases.map(([heading, body]) => `${heading}\n${body.trim()}`),
+        content: section.phrases.map(([heading, body]) => formatBibleYearPhraseCard(heading, body)),
       },
     ],
   };
@@ -14393,6 +14398,97 @@ function repairMojibake(input: string) {
   }
 }
 
+function stripPhraseIcon(input: string) {
+  return repairMojibake(input)
+    .replace(/^[^A-Za-z0-9'"]+/u, "")
+    .replace(/\*\*/g, "")
+    .trim();
+}
+
+function isEmojiTeachingLine(line: string) {
+  const trimmed = line.trim();
+  return Boolean(trimmed) && !/^[A-Za-z0-9"'\u201c\u2018(]/.test(trimmed);
+}
+
+function trimSentence(line: string) {
+  return line.trim().replace(/\s+/g, " ");
+}
+
+function inferPhraseFocus(phrase: string) {
+  const lower = phrase.toLowerCase();
+
+  if (/\blord\b|\bgod\b/.test(lower)) return "God is the main actor in this phrase, so the reader should notice His authority, mercy, holiness, or covenant faithfulness.";
+  if (/inheritance|land|canaan|possession|border|coast/.test(lower)) return "This phrase points to the promised land and the inheritance God is giving His people.";
+  if (/command|statute|judgment|law|word|spake|said|hear/.test(lower)) return "This phrase points to God's instruction, so the reader should hear it as covenant direction, not random information.";
+  if (/offering|sacrifice|altar|atonement|blood|priest|levite|tabernacle|sanctuary/.test(lower)) return "This phrase belongs to worship, sacrifice, priesthood, or holy service before the LORD.";
+  if (/remember|forget|teach|children|heart|love|soul|might/.test(lower)) return "This phrase reaches into memory, love, and the heart, not only outward religious action.";
+  if (/wilderness|journey|camp|jordan|egypt|moab|midian/.test(lower)) return "This phrase helps the reader follow where Israel is in the journey and what God is teaching there.";
+  if (/moses|joshua|aaron|balaam|balak|caleb|eleazar|zelophehad/.test(lower)) return "This phrase names people involved in the story, so the reader can follow who is acting and why it matters.";
+  if (/bless|curse|covenant|oath|promise/.test(lower)) return "This phrase is covenant language, showing blessing, warning, promise, or loyalty before God.";
+  if (/sin|rebel|iniquity|unclean|plague|serpent|death|judgment/.test(lower)) return "This phrase shows the seriousness of sin, uncleanness, judgment, or the mercy God provides in response.";
+
+  return "This phrase gives the reader an important detail that helps explain what is happening in the passage.";
+}
+
+function buildPhraseTeachingBullets(phrase: string, sourceLines: string[]) {
+  const usefulLines = sourceLines
+    .map(trimSentence)
+    .filter(Boolean)
+    .filter((line) => !/^this phrase (matters|helps|shows|points)/i.test(line))
+    .slice(0, 3);
+
+  if (usefulLines.length >= 3) {
+    return [`🔎 ${usefulLines[0]}`, `📖 ${usefulLines[1]}`, `🧭 ${usefulLines[2]}`];
+  }
+
+  const focus = inferPhraseFocus(phrase);
+  const lower = phrase.toLowerCase();
+  const meaning = usefulLines[0] || `${phrase} is a phrase the reader should slow down and understand in context.`;
+  const context = usefulLines[1] || focus;
+  const why =
+    usefulLines[2] ||
+    (/lord|god/.test(lower)
+      ? "It helps the reader see what the LORD is revealing about Himself."
+      : "It helps the reader understand why this detail belongs in the story.");
+
+  return [`🔎 ${meaning}`, `📖 ${context}`, `🧭 ${why}`];
+}
+
+function formatBibleYearPhraseCard(rawHeading: string, rawBody: string) {
+  const heading = repairMojibake(rawHeading).trim().replace(/^\?{2,3}\s+/, "📌 ");
+  const phrase = stripPhraseIcon(heading);
+  const lines = repairMojibake(rawBody)
+    .replace(/\r/g, "")
+    .split("\n")
+    .map(trimSentence)
+    .filter(Boolean);
+
+  const textLines = lines.filter((line) => !isEmojiTeachingLine(line));
+  const firstEmojiIndex = lines.findIndex(isEmojiTeachingLine);
+  const preEmojiText =
+    firstEmojiIndex >= 0 ? lines.slice(0, firstEmojiIndex).filter((line) => !isEmojiTeachingLine(line)) : textLines;
+  const postEmojiText =
+    firstEmojiIndex >= 0 ? lines.slice(firstEmojiIndex + 1).filter((line) => !isEmojiTeachingLine(line)) : [];
+  const emojiLines = lines.filter(isEmojiTeachingLine).slice(0, 4);
+  const introSource = preEmojiText.slice(0, 2);
+  const intro = [
+    introSource[0] || `${phrase} is the exact phrase being explained in this card.`,
+    introSource[1] || `${phrase} helps the reader understand what this part of the passage means.`,
+  ];
+  const teachingSource = [...preEmojiText.slice(2), ...postEmojiText];
+  const bullets = emojiLines.length >= 2 ? emojiLines : buildPhraseTeachingBullets(phrase, teachingSource.length ? teachingSource : textLines);
+  const outroSource = emojiLines.length >= 2 ? postEmojiText : textLines.slice(2);
+  const outro =
+    outroSource.length >= 2
+      ? outroSource.slice(0, 2)
+      : [
+          outroSource[0] || inferPhraseFocus(phrase),
+          `${phrase} helps explain what the reader is meant to notice in this moment of the passage.`,
+        ];
+
+  return [heading, ...intro.slice(0, 2), ...bullets.slice(0, 4), ...outro.slice(0, 2)].join("\n\n");
+}
+
 function makePersonalExodusPhraseSection(section: {
   chapter: number;
   startVerse: number;
@@ -14416,7 +14512,7 @@ function makePersonalExodusPhraseSection(section: {
         id: "key-phrases",
         icon: "💬",
         title: "Key Phrases",
-        content: section.phrases.map(([heading, body]) => `${repairMojibake(heading)}\n${repairMojibake(body.trim())}`),
+        content: section.phrases.map(([heading, body]) => formatBibleYearPhraseCard(heading, body)),
       },
     ],
   };
@@ -14434,6 +14530,36 @@ function makePersonalLeviticusPhraseSection(section: {
   return {
     ...makePersonalExodusPhraseSection(section),
     book: "leviticus",
+  };
+}
+
+function makePersonalNumbersPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "numbers",
+  };
+}
+
+function makePersonalDeuteronomyPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "deuteronomy",
   };
 }
 
@@ -19285,6 +19411,71 @@ function applyPersonalLeviticusSeventeenThroughTwentyStudySections() {
   BIBLE_READER_STUDY_SECTIONS.push(...sections);
 }
 
+function applyPersonalLeviticusTwentyOneThroughTwentySevenStudySections() {
+  const sections = LEVITICUS_21_27_PERSONAL_SECTIONS.map(makePersonalLeviticusPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "leviticus" && section.chapter >= 21 && section.chapter <= 27) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalNumbersOneThroughNineStudySections() {
+  const sections = NUMBERS_1_9_PERSONAL_SECTIONS.map(makePersonalNumbersPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "numbers" && section.chapter >= 1 && section.chapter <= 9) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalNumbersTenThroughTwentyFiveStudySections() {
+  const sections = NUMBERS_10_25_PERSONAL_SECTIONS.map(makePersonalNumbersPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "numbers" && section.chapter >= 10 && section.chapter <= 25) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalNumbersTwentySixThroughThirtySixStudySections() {
+  const sections = NUMBERS_26_36_PERSONAL_SECTIONS.map(makePersonalNumbersPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "numbers" && section.chapter >= 26 && section.chapter <= 36) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalDeuteronomyOneThroughThirteenStudySections() {
+  const sections = DEUTERONOMY_1_13_PERSONAL_SECTIONS.map(makePersonalDeuteronomyPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "deuteronomy" && section.chapter >= 1 && section.chapter <= 13) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
 type ExodusTextureRule = {
   matches: string[];
   lines: string[];
@@ -20031,6 +20222,11 @@ applyPersonalExodusTwentyOneThroughThirtyStudySections();
 applyPersonalExodusThirtyOneThroughFortyStudySections();
 applyPersonalLeviticusOneThroughTenStudySections();
 applyPersonalLeviticusSeventeenThroughTwentyStudySections();
+applyPersonalLeviticusTwentyOneThroughTwentySevenStudySections();
+applyPersonalNumbersOneThroughNineStudySections();
+applyPersonalNumbersTenThroughTwentyFiveStudySections();
+applyPersonalNumbersTwentySixThroughThirtySixStudySections();
+applyPersonalDeuteronomyOneThroughThirteenStudySections();
 applyPersonalExodusTextureStudySections();
 enforceStudySectionVerseLimit(8);
 
