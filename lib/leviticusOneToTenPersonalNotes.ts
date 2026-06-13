@@ -23,6 +23,56 @@ type DeepStudySection = {
 const note = (lines: string[]) => lines.join("\n\n");
 const phrase = (title: string, lines: string[]): [string, string] => [title, note(lines)];
 
+function getLeviticusTitleIcon(title: string) {
+  if (/burnt offering|fire|burn|flay|pieces/i.test(title)) return "🔥";
+  if (/sweet savour|ashes|wood|flay|cut|wash|inwards|legs|crop|feathers|wings|divide|asunder/i.test(title)) return "🔥";
+  if (/meat offering|grain|flour|oil|frankincense|cakes|wafers/i.test(title)) return "🌾";
+  if (/memorial|baken|fryingpan|honey|firstfruits|salt|green ears|corn|full ears/i.test(title)) return "🌾";
+  if (/peace offering|thanksgiving|vow|freewill/i.test(title)) return "🕊️";
+  if (/sin offering|trespass offering|sin|ignorance|forgiven|forgiveness/i.test(title)) return "🩸";
+  if (/blood|atonement|sprinkle|altar|without blemish|lay his hand|kill/i.test(title)) return "🩸";
+  if (/bullock|lamb|ram|goat|kid|herd|flock|cattle/i.test(title)) return "🐐";
+  if (/priest|aaron|sons|consecrate|anoint|garments|wash|oil/i.test(title)) return "🕯️";
+  if (/holy|unclean|clean|defiled|separate|sanctify|abomination|abominable|make a difference/i.test(title)) return "🧼";
+  if (/leprosy|plague|skin|scab|bright spot|priest shall look|shut up|pronounce|hair|deeper|flesh|camp|clothes|rent|bare|cover/i.test(title)) return "🧼";
+  if (/goat|scapegoat|mercy seat|holy place|incense|within the veil|azazel/i.test(title)) return "🐐";
+  if (/nadab|abihu|strange fire|died|glory|appeared|accepted|befallen|content/i.test(title)) return "⚠️";
+  if (/bird|fowl|turtle|pigeon|eagle|vulture|raven|owl|locust/i.test(title)) return "🐦";
+  if (/kidney|fat|liver|inwards/i.test(title)) return "🫀";
+  if (/issue|running|seed|woman|blood|separation|fountain|plague be healed|bed|saddle|lieth|bathe|water|earthen vessel/i.test(title)) return "🧼";
+  if (/command|spake|said|law|statute|ordinance|teach|called unto moses/i.test(title)) return "📜";
+  if (/before the lord|unto the lord|tabernacle|congregation|sanctuary|hallowed|eighth day|blessed|shouted|fell on their faces/i.test(title)) return "🙌";
+  if (/camel|coney|hare|swine|beasts|hoof|cud|fins|scales|creeping thing|belly|all four|carcase/i.test(title)) return "🐾";
+  if (/man child|seven days|circumcised|purifying|open field|house|break down the house|scrape the house/i.test(title)) return "🏠";
+  if (/young calf|people's offering|breasts|wave breast|heave shoulder|due/i.test(title)) return "🐐";
+  if (/afflict your souls|sabbath of rest|once in a year|confess|iniquities|not inhabited/i.test(title)) return "🐐";
+  return "🔎";
+}
+
+function ensureLeviticusTitleEmoji(title: string) {
+  const cleanTitle = title.replace(/^[^A-Za-z0-9']+\s*/, "").trim();
+  return `${getLeviticusTitleIcon(cleanTitle)} ${cleanTitle}`;
+}
+
+function getLeviticusSectionIcon(section: PersonalLeviticusPhraseSectionInput) {
+  const text = `${section.title} ${section.reference}`.toLowerCase();
+  if (/skin disease|leprosy|examination/.test(text)) return "🧼";
+  if (/garments/.test(text)) return "👕";
+  if (/contaminated house/.test(text)) return "🏠";
+  if (/bodily discharges/.test(text)) return "💧";
+  if (/atonement|scapegoat|mercy seat|solemn rest/.test(text)) return "🐐";
+  if (/cleansing the restored person/.test(text)) return "🕊️";
+  if (/burnt/.test(text)) return "🔥";
+  if (/meat|grain|flour/.test(text)) return "🌾";
+  if (/peace/.test(text)) return "🕊️";
+  if (/sin|trespass|forgiven/.test(text)) return "🩸";
+  if (/priest|aaron|consecration|ordination/.test(text)) return "🕯️";
+  if (/strange fire|nadab|abihu/.test(text)) return "⚠️";
+  if (/clean|unclean|food|animals/.test(text)) return "🧼";
+  if (/leprosy|skin|plague/.test(text)) return "🧼";
+  return getLeviticusTitleIcon(section.title);
+}
+
 function getDeepPhraseEntries(markdown: string, fallbackTitle: string, fallbackSummary: string) {
   const entries = [...markdown.matchAll(/### ([^\n]+)\n+([\s\S]*?)(?=\n### |\n## |$)/g)]
     .map((match) => ({
@@ -442,7 +492,7 @@ function normalizeRepeatedLeviticusLines(sections: PersonalLeviticusPhraseSectio
           kept.push(additions[kept.length % additions.length]);
         }
 
-        return [title, note(kept)] as [string, string];
+        return [ensureLeviticusTitleEmoji(title), note(kept)] as [string, string];
       }),
     };
   });
@@ -451,6 +501,7 @@ function normalizeRepeatedLeviticusLines(sections: PersonalLeviticusPhraseSectio
 function formatLeviticusOneToEightSectionExplanations(sections: PersonalLeviticusPhraseSectionInput[]) {
   return normalizeRepeatedLeviticusLines(sections.map((section) => ({
     ...section,
+    icon: getLeviticusSectionIcon(section),
     phrases: section.phrases
       .filter(([title]) => !LEVITICUS_1_8_BANNED_FILLER_TITLES.some((bannedTitle) => title.includes(bannedTitle)))
       .map(([title, content]) => [

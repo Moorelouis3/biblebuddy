@@ -15,6 +15,54 @@ export type PersonalExodusPhraseSectionInput = {
 const note = (lines: string[]) => lines.join("\n\n");
 const phrase = (title: string, lines: string[]): [string, string] => [title, note(lines)];
 
+function getExodusThirtyOneToFortyTitleIcon(title: string) {
+  if (/bezaleel|aholiab|wisdom|spirit|workmanship|cunning|craft/i.test(title)) return "🧠";
+  if (/work|made|make|wrought|fashion|devise|build|cloths of service/i.test(title)) return "🛠️";
+  if (/sabbath|rest|seventh|perpetual covenant|sign/i.test(title)) return "🛑";
+  if (/calf|golden|idol|aaron|mischief|sinned|wrath|anger|consume/i.test(title)) return "⚠️";
+  if (/moses|interced|besought|prayed|face|presence|glory|tables|commanded|lord passed|merciful|gracious|mercy|forgiving|pardon|grace/i.test(title)) return "🙌";
+  if (/cloud|filled|tabernacle|tent|congregation|sanctuary/i.test(title)) return "☁️";
+  if (/ark|mercy seat|cherubim|table|candlestick|altar|laver|curtain|veil|court/i.test(title)) return "🏕️";
+  if (/boards|bars|sockets|pins|pillars|hooks|rings|staves|vail|hanging|couplings/i.test(title)) return "🏕️";
+  if (/offering|willing|hearted|brought|bracelets|jewels|gold|silver|brass|blue|purple|scarlet|linen/i.test(title)) return "🎁";
+  if (/garments|ephod|breastplate|robe|mitre|plate|holy crown|aaron|priest/i.test(title)) return "👕";
+  if (/oil|incense|anoint|wash|holy/i.test(title)) return "🕯️";
+  if (/people|congregation|children of israel|every one|men|women|son of|tribe|sons of levi|brother|seed/i.test(title)) return "👥";
+  if (/command|word|testimony|tables|law|wrote|writing|finger of god|book/i.test(title)) return "📜";
+  if (/set|put|reared|finished|brought unto moses|looked upon/i.test(title)) return "✅";
+  if (/land|milk and honey|go up hence|inherit|whither thou goest/i.test(title)) return "🏞️";
+  if (/afraid|nigh|fierce|terror|terrible|wrath/i.test(title)) return "😨";
+  if (/worship no other|jealous|whoring|gods|daughters|molten/i.test(title)) return "⚠️";
+  if (/feast|unleavened|firstfruits|weeks|ingathering|sacrifice|lamb|firstling/i.test(title)) return "🙌";
+  if (/forty days|forty nights|eat bread|drink water|mount sinai|morning/i.test(title)) return "⛰️";
+  if (/gate to gate|slay|blot|visit|morrow/i.test(title)) return "⚖️";
+  return "🔎";
+}
+
+function ensureExodusThirtyOneToFortyTitleEmoji(title: string) {
+  const cleanTitle = title.replace(/^[^A-Za-z0-9']+\s*/, "").trim();
+  return `${getExodusThirtyOneToFortyTitleIcon(cleanTitle)} ${cleanTitle}`;
+}
+
+function getExodusThirtyOneToFortySectionIcon(section: PersonalExodusPhraseSectionInput) {
+  const text = `${section.title} ${section.reference}`.toLowerCase();
+  if (/land without presence|presence/.test(text)) return "☁️";
+  if (/proclaims his name/.test(text)) return "📣";
+  if (/covenant is renewed/.test(text)) return "📜";
+  if (/moses' face shines/.test(text)) return "✨";
+  if (/sabbath and the tabernacle offering/.test(text)) return "🛑";
+  if (/tabernacle begins/.test(text)) return "🏕️";
+  if (/bezaleel|skill|wisdom|spirit/.test(text)) return "🧠";
+  if (/sabbath|rest/.test(text)) return "🛑";
+  if (/calf|sin|wrath|idolatry/.test(text)) return "⚠️";
+  if (/moses|intercedes|presence|glory|face/.test(text)) return "🙌";
+  if (/offering|willing|materials/.test(text)) return "🎁";
+  if (/ark|table|lamp|altar|laver|court|tabernacle|curtain|veil/.test(text)) return "🏕️";
+  if (/garments|ephod|breastplate|priest/.test(text)) return "👕";
+  if (/cloud|glory|fills|set up/.test(text)) return "☁️";
+  return getExodusThirtyOneToFortyTitleIcon(section.title);
+}
+
 const RAW_EXODUS_31_40_PERSONAL_SECTIONS: PersonalExodusPhraseSectionInput[] = [
   {
     chapter: 31,
@@ -982,7 +1030,7 @@ function normalizeRepeatedExodusThirtyOneToFortyLines(sections: PersonalExodusPh
           kept.push(additions[kept.length % additions.length]);
         }
 
-        return [title, note(kept)] as [string, string];
+        return [ensureExodusThirtyOneToFortyTitleEmoji(title), note(kept)] as [string, string];
       }),
     };
   });
@@ -991,6 +1039,7 @@ function normalizeRepeatedExodusThirtyOneToFortyLines(sections: PersonalExodusPh
 function formatExodusThirtyOneToFortySectionExplanations(sections: PersonalExodusPhraseSectionInput[]) {
   return normalizeRepeatedExodusThirtyOneToFortyLines(sections.map((section) => ({
     ...section,
+    icon: getExodusThirtyOneToFortySectionIcon(section),
     phrases: section.phrases
       .filter(([title]) =>
         section.chapter < 37 ||

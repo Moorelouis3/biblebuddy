@@ -15,6 +15,51 @@ export type PersonalExodusPhraseSectionInput = {
 const note = (lines: string[]) => lines.join("\n\n");
 const phrase = (title: string, lines: string[]): [string, string] => [title, note(lines)];
 
+function getExodusTwentyOneToThirtyTitleIcon(title: string) {
+  if (/servant|maid|master|manservant|bondman|bondwoman|slave/i.test(title)) return "⚖️";
+  if (/smite|kill|death|life|eye|tooth|hand|foot|burning|wound|stripe|hurt/i.test(title)) return "⚖️";
+  if (/if a man|if men|come presumptuously|stealeth|curseth|strive|slay|wicked/i.test(title)) return "⚖️";
+  if (/ox|sheep|ass|beast|field|vineyard|fire|pit|restitution|restore/i.test(title)) return "🧾";
+  if (/owner|money|stuff|good|make good|pay|sum|loss|torn in pieces/i.test(title)) return "🧾";
+  if (/widow|fatherless|stranger|poor|enemy|neighbor|borrow|pledge/i.test(title)) return "🛡️";
+  if (/false|witness|report|judge|judgment|cause|matter|controversy/i.test(title)) return "⚖️";
+  if (/sabbath|feast|firstfruits|bread|sacrifice|blood|covenant/i.test(title)) return "🙌";
+  if (/ark|mercy seat|cherubim|table|candlestick|lamp|tabernacle|curtain|veil|court/i.test(title)) return "🏕️";
+  if (/altar|burnt|offering|horn|brasen/i.test(title)) return "🩸";
+  if (/ephod|breastplate|robe|garment|mitre|stones|names/i.test(title)) return "👕";
+  if (/priest|aaron|sons|holy|anoint|consecrate|wash|incense|oil/i.test(title)) return "🕯️";
+  if (/gold|silver|brass|blue|purple|scarlet|linen|shittim/i.test(title)) return "🎁";
+  if (/command|word|book|law|ordinance|statute|testimony/i.test(title)) return "📜";
+  if (/angel|presence|lord|god|worship|serve/i.test(title)) return "🙌";
+  if (/cubits|boards|rings|staves|sockets|hooks|loops|taches|branches|bowls/i.test(title)) return "🏕️";
+  if (/seventh|free|redeemed|go out free|redeem/i.test(title)) return "🔓";
+  if (/daughters|marriage|food|raiment|milk|kid|mother/i.test(title)) return "🏠";
+  if (/mount|cloud|come up|near|sapphire|forty days|forty nights|called unto moses/i.test(title)) return "⛰️";
+  if (/meet with thee|commune|faces|look one to another|willingly|heart/i.test(title)) return "🙌";
+  if (/dishes|spoons|covers|tongs|snuffdishes|fashion|pattern|remnant|remaineth|covering/i.test(title)) return "🏕️";
+  return "🔎";
+}
+
+function ensureExodusTwentyOneToThirtyTitleEmoji(title: string) {
+  const cleanTitle = title.replace(/^[^A-Za-z0-9']+\s*/, "").trim();
+  return `${getExodusTwentyOneToThirtyTitleIcon(cleanTitle)} ${cleanTitle}`;
+}
+
+function getExodusTwentyOneToThirtySectionIcon(section: PersonalExodusPhraseSectionInput) {
+  const text = `${section.title} ${section.reference}`.toLowerCase();
+  if (/servant|injury|violence|justice|law|judgment/.test(text)) return "⚖️";
+  if (/theft|property|restitution|field|ox/.test(text)) return "🧾";
+  if (/widow|poor|stranger|neighbor|mercy/.test(text)) return "🛡️";
+  if (/sabbath|feast|worship|covenant|blood/.test(text)) return "🙌";
+  if (/ark|mercy seat/.test(text)) return "📦";
+  if (/table|bread/.test(text)) return "🍞";
+  if (/candlestick|lamp/.test(text)) return "🕯️";
+  if (/tabernacle|curtain|veil|court/.test(text)) return "🏕️";
+  if (/altar|sacrifice/.test(text)) return "🩸";
+  if (/garment|ephod|breastplate|priest/.test(text)) return "👕";
+  return getExodusTwentyOneToThirtyTitleIcon(section.title);
+}
+
 const RAW_EXODUS_21_30_PERSONAL_SECTIONS: PersonalExodusPhraseSectionInput[] = [
   {
     chapter: 21,
@@ -1118,7 +1163,7 @@ function normalizeRepeatedExodusTwentyOneToThirtyLines(sections: PersonalExodusP
           kept.push(additions[kept.length % additions.length]);
         }
 
-        return [title, note(kept)] as [string, string];
+        return [ensureExodusTwentyOneToThirtyTitleEmoji(title), note(kept)] as [string, string];
       }),
     };
   });
@@ -1127,6 +1172,7 @@ function normalizeRepeatedExodusTwentyOneToThirtyLines(sections: PersonalExodusP
 function formatExodusTwentyOneToThirtySectionExplanations(sections: PersonalExodusPhraseSectionInput[]) {
   return normalizeRepeatedExodusTwentyOneToThirtyLines(sections.map((section) => ({
     ...section,
+    icon: getExodusTwentyOneToThirtySectionIcon(section),
     phrases: section.phrases.map(([title, content]) => [
       title,
       formatExodusTwentyOneToThirtyPhraseExplanation(section, content),

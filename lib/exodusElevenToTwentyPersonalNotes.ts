@@ -15,6 +15,64 @@ export type PersonalExodusPhraseSectionInput = {
 const note = (lines: string[]) => lines.join("\n\n");
 const phrase = (title: string, lines: string[]): [string, string] => [title, note(lines)];
 
+function getExodusElevenToTwentyTitleIcon(title: string) {
+  if (/passover|lamb|blood|door|hyssop|unleavened|leaven|firstborn|midnight/i.test(title)) return "🐑";
+  if (/plague|wonders|judgment|difference|cut off/i.test(title)) return "⚖️";
+  if (/pharaoh|egypt|egyptians|thrust|jewels|silver|gold|mixed multitude/i.test(title)) return "🏛️";
+  if (/remember|children|ordinance|generation|sign|memorial|feast/i.test(title)) return "🧠";
+  if (/pillar|cloud|fire|led|way|wilderness|camp|journey/i.test(title)) return "🧭";
+  if (/sea|waters|wind|dry ground|chariot|horse|rider|fight|stand still|fear/i.test(title)) return "🌊";
+  if (/sing|song|strength|who is like|miriam|timbrel|dance/i.test(title)) return "🎶";
+  if (/manna|bread|quail|omer|sabbath|murmur|water|marah|elim/i.test(title)) return "🍞";
+  if (/amalek|joshua|banner|hands|hur/i.test(title)) return "🏳️";
+  if (/jethro|judges|rulers|counsel/i.test(title)) return "🧑‍⚖️";
+  if (/sinai|mount|thunder|lightning|commandments/i.test(title)) return "⛰️";
+  if (/joseph|bones|canaan|promise|surely visit/i.test(title)) return "🦴";
+  if (/fear|afraid|graves|die|death|cry/i.test(title)) return "😨";
+  if (/law|statute|command|word|voice|hear|hearken/i.test(title)) return "📜";
+  if (/rock|smite|rephidim|massah|meribah/i.test(title)) return "🪨";
+  if (/tent|camp|congregation|people|children of israel|souls|armies|stranger|born in the land|servant/i.test(title)) return "👥";
+  if (/gold|silver|jewels|raiment|spoiled/i.test(title)) return "💍";
+  if (/wilderness|way|journey|departed|went/i.test(title)) return "🏜️";
+  if (/month|fourteenth|sixth day|seventh day|selfsame day|night|morning|even/i.test(title)) return "📅";
+  if (/eat|flesh|flocks|herds|loins|girded|shoes|staff|bone|flesh pots/i.test(title)) return "🍽️";
+  if (/bring|brought|go|get thee|forth|out|rise up|let you go|tarry|openeth the womb/i.test(title)) return "🚶";
+  if (/right hand|wrath|overthrown|triumphed|excellency|blast|purchased|wonders/i.test(title)) return "💪";
+  if (/sanctuary|place|habitation|house/i.test(title)) return "🏕️";
+  if (/lord|god|healeth|reign|servant moses|my god/i.test(title)) return "🙌";
+  return "🔎";
+}
+
+function ensureExodusElevenToTwentyTitleEmoji(title: string) {
+  const cleanTitle = title.replace(/^[^A-Za-z0-9']+\s*/, "").trim();
+  return `${getExodusElevenToTwentyTitleIcon(cleanTitle)} ${cleanTitle}`;
+}
+
+function getExodusElevenToTwentySectionIcon(section: PersonalExodusPhraseSectionInput) {
+  const text = `${section.title} ${section.reference}`.toLowerCase();
+  if (/water from the rock/.test(text)) return "🪨";
+  if (/banner|amalek/.test(text)) return "🏳️";
+  if (/jethro hears/.test(text)) return "👂";
+  if (/shared wisdom|shared burden|leadership/.test(text)) return "🧑‍⚖️";
+  if (/eagles|wings/.test(text)) return "🦅";
+  if (/mountain|sinai|set apart/.test(text)) return "⛰️";
+  if (/no other gods|images|name|sabbath/.test(text)) return "📜";
+  if (/life with our neighbor/.test(text)) return "🤝";
+  if (/holy fear|simple worship/.test(text)) return "🙌";
+  if (/plague|firstborn|midnight/.test(text)) return "🌙";
+  if (/passover|lamb|blood/.test(text)) return "🐑";
+  if (/leaves|departure|egypt/.test(text)) return "🎒";
+  if (/remember|redeemed|firstborn/.test(text)) return "🧠";
+  if (/cloud|fire|long way|leads/.test(text)) return "🧭";
+  if (/sea|fear|opens/.test(text)) return "🌊";
+  if (/song|sings|victory/.test(text)) return "🎶";
+  if (/bitter|water|heals|manna|bread|sabbath/.test(text)) return "🍞";
+  if (/amalek|banner/.test(text)) return "🏳️";
+  if (/jethro|leadership/.test(text)) return "🧑‍⚖️";
+  if (/sinai|commandments|mount/.test(text)) return "⛰️";
+  return getExodusElevenToTwentyTitleIcon(section.title);
+}
+
 const RAW_EXODUS_11_20_PERSONAL_SECTIONS: PersonalExodusPhraseSectionInput[] = [
   {
     chapter: 11,
@@ -1292,7 +1350,7 @@ function normalizeRepeatedExodusElevenToTwentyLines(sections: PersonalExodusPhra
           kept.push(additions[kept.length % additions.length]);
         }
 
-        return [title, note(kept)] as [string, string];
+        return [ensureExodusElevenToTwentyTitleEmoji(title), note(kept)] as [string, string];
       }),
     };
   });
@@ -1301,6 +1359,7 @@ function normalizeRepeatedExodusElevenToTwentyLines(sections: PersonalExodusPhra
 function formatExodusElevenToTwentySectionExplanations(sections: PersonalExodusPhraseSectionInput[]) {
   return normalizeRepeatedExodusElevenToTwentyLines(sections.map((section) => ({
     ...section,
+    icon: getExodusElevenToTwentySectionIcon(section),
     phrases: section.phrases.map(([title, content]) => [
       title,
       formatExodusElevenToTwentyPhraseExplanation(section, content),

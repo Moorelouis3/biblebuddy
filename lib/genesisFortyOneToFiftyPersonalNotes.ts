@@ -351,6 +351,17 @@ function ensureGenesisFortyOneToFortyEightEmoji(title: string) {
   return /^[^A-Za-z0-9']+\s/.test(title) ? title : `${getGenesisFortyOneToFortyEightIcon(title)} ${title}`;
 }
 
+function getGenesisFortyOneToFiftySectionIcon(section: PersonalGenesisPhraseSectionInput) {
+  const text = `${section.title} ${section.reference}`.toLowerCase();
+  if (/bless|sons|tribes|judah|joseph|sceptre|shiloh/.test(text)) return "🙌";
+  if (/bury|death|died|mourning|machpelah/.test(text)) return "⚰️";
+  if (/forgive|evil|good|comfort|fear not/.test(text)) return "💔";
+  if (/egypt|goshen|pharaoh|famine|corn/.test(text)) return "🌾";
+  if (/ephraim|manasseh|right hand|left hand/.test(text)) return "✋";
+  if (/brothers|brethren|judah|benjamin|father/.test(text)) return "👥";
+  return getGenesisFortyOneToFortyEightIcon(section.title);
+}
+
 function cleanGenesisFortyOneToFortyEightFrameworkText(content: string) {
   return content
     .replace(/\bThis phrase matters because\b/gi, "This is important because")
@@ -723,6 +734,7 @@ function normalizeRepeatedGenesisFortyOneToFiftyLines(sections: PersonalGenesisP
 function formatGenesisFortyOneToFiftySectionExplanations(sections: PersonalGenesisPhraseSectionInput[]) {
   return normalizeRepeatedGenesisFortyOneToFiftyLines(sections.map((section) => ({
     ...section,
+    icon: getGenesisFortyOneToFiftySectionIcon(section),
     phrases: section.phrases.map(([title, content]) =>
       formatGenesisFortyOneToFortyEightRenderedPhrase(
         section,
