@@ -377,6 +377,258 @@ function cleanGenesisFortyOneToFortyEightFrameworkText(content: string) {
     .replace(/\bApplication:\s*/gi, "");
 }
 
+function getGenesisFortyOneFortyTwoPhraseList(section: PersonalGenesisPhraseSectionInput, cleanTitle: string) {
+  const lower = cleanTitle.toLowerCase();
+
+  if (section.chapter >= 43 && section.chapter <= 44) {
+    if (/judah|surety|lad|benjamin|father|israel|jacob|brother/.test(lower)) {
+      return [
+        `👥 ${cleanTitle}`,
+        "👦 Benjamin at the center",
+        "👴 Jacob's fear and love",
+        "🤝 Judah learning responsibility",
+      ];
+    }
+
+    if (/money|sack|gift|present|silver|cup|steward|house/.test(lower)) {
+      return [
+        `🧾 ${cleanTitle}`,
+        "💰 Money and fear",
+        "🏠 Joseph's house",
+        "🔎 The test becoming sharper",
+      ];
+    }
+
+    if (/eat|meal|bread|mess|drank|merry|set on/.test(lower)) {
+      return [
+        `🍽️ ${cleanTitle}`,
+        "🏠 A table in Egypt",
+        "👥 Brothers seated together",
+        "💔 Hidden tension under the meal",
+      ];
+    }
+
+    return [
+      `🔎 ${cleanTitle}`,
+      "👥 Joseph testing his brothers",
+      "💔 Old sin being exposed",
+      "🌱 Character beginning to change",
+    ];
+  }
+
+  if (section.chapter >= 45 && section.chapter <= 46) {
+    if (/joseph|brethren|brother|father|jacob|israel|benjamin/.test(lower)) {
+      return [
+        `👥 ${cleanTitle}`,
+        "😭 Family grief meeting mercy",
+        "🏠 Jacob's house being preserved",
+        "🙌 God working through the pain",
+      ];
+    }
+
+    if (/god|sent me|preserve life|remnant|great deliverance|fear not/.test(lower)) {
+      return [
+        `🙌 ${cleanTitle}`,
+        "💔 Evil not getting the final word",
+        "🌾 Life preserved through famine",
+        "📜 God's promise family protected",
+      ];
+    }
+
+    if (/egypt|goshen|wagons|goods|land|beersheba|journey/.test(lower)) {
+      return [
+        `📍 ${cleanTitle}`,
+        "🚶 Jacob's family moving",
+        "🏠 A place prepared in Egypt",
+        "📜 Genesis promise moving forward",
+      ];
+    }
+
+    return [
+      `🔎 ${cleanTitle}`,
+      "😭 Reconciliation unfolding",
+      "🌾 Famine still shaping the story",
+      "🙌 God preserving the family line",
+    ];
+  }
+
+  if (section.chapter >= 47 && section.chapter <= 48) {
+    if (/pharaoh|joseph|land|corn|money|cattle|servants|fifth/.test(lower)) {
+      return [
+        `🌾 ${cleanTitle}`,
+        "🏛️ Egypt under famine pressure",
+        "🧠 Joseph leading with wisdom",
+        "🍞 Food preserving life",
+      ];
+    }
+
+    if (/jacob|israel|days|years|die|bury|fathers|canaan/.test(lower)) {
+      return [
+        `👴 ${cleanTitle}`,
+        "⏳ Jacob near the end",
+        "📍 Hope still tied to Canaan",
+        "📜 God's promise remembered",
+      ];
+    }
+
+    if (/ephraim|manasseh|right hand|left hand|bless|blessed|angel|redeemed/.test(lower)) {
+      return [
+        `🙌 ${cleanTitle}`,
+        "👶 Joseph's sons brought near",
+        "✋ Blessing placed by faith",
+        "📜 Covenant promise continuing",
+      ];
+    }
+
+    return [
+      `🔎 ${cleanTitle}`,
+      "🏠 Israel living in Egypt",
+      "📜 Canaan still matters",
+      "🙌 God guiding the family forward",
+    ];
+  }
+
+  if (section.chapter >= 49 && section.chapter <= 50) {
+    if (/bless|blessing|gather|sons|tribes|judah|sceptre|shiloh|joseph/.test(lower)) {
+      return [
+        `🙌 ${cleanTitle}`,
+        "👥 Jacob speaking over his sons",
+        "📜 Future tribes in view",
+        "👑 God's promise moving forward",
+      ];
+    }
+
+    if (/bury|sepulchre|machpelah|canaan|father|died|embalmed|mourned/.test(lower)) {
+      return [
+        `⚰️ ${cleanTitle}`,
+        "😭 Death and mourning",
+        "📍 Canaan still the family hope",
+        "📜 Promise stronger than Egypt",
+      ];
+    }
+
+    if (/evil|good|fear not|forgive|god meant|preserve much people alive/.test(lower)) {
+      return [
+        `💔 ${cleanTitle}`,
+        "⚖️ Human evil named honestly",
+        "🙌 God working for good",
+        "🌾 Many lives preserved",
+      ];
+    }
+
+    return [
+      `🔎 ${cleanTitle}`,
+      "👴 Jacob's family at a turning point",
+      "📜 Genesis promises still alive",
+      "🙌 God carrying the story forward",
+    ];
+  }
+
+  if (/dream|river|kine|ears|favoured|lean|thin|rank|blasted/.test(lower)) {
+    if (section.chapter === 42) {
+      return [
+        `🌙 ${cleanTitle}`,
+        "🙇 Brothers bowing before Joseph",
+        "🧠 Joseph remembering what God showed him",
+        "💔 Wisdom instead of quick revenge",
+      ];
+    }
+
+    return [
+      `🌙 ${cleanTitle}`,
+      /kine/.test(lower) ? "🐄 Cows from the river" : /ears|corn/.test(lower) ? "🌾 Grain in the dream" : "👑 Pharaoh troubled by what he sees",
+      "🙌 God sending a warning",
+    ];
+  }
+
+  if (/magicians|wise men|none that could interpret|troubled/.test(lower)) {
+    return [
+      `🧠 ${cleanTitle}`,
+      "🏛️ Egypt's best wisdom",
+      "🚫 No answer from the palace",
+      "🙌 Truth must come from God",
+    ];
+  }
+
+  if (/butler|remember|faults|prison|dungeon|hebrew|servant/.test(lower)) {
+    return [
+      `🧠 ${cleanTitle}`,
+      "⛓️ Joseph still in prison",
+      "👑 Pharaoh now needs help",
+      "⏳ God's timing opening the door",
+    ];
+  }
+
+  if (/god|not in me|answer of peace|shewed|established|doubled/.test(lower)) {
+    return [
+      `🙌 ${cleanTitle}`,
+      "🗣️ Joseph pointing away from himself",
+      "👑 Pharaoh hearing God's message",
+      "🌾 Egypt warned before famine",
+    ];
+  }
+
+  if (/shaved|raiment|changed|brought him hastily/.test(lower)) {
+    return [
+      `🚪 ${cleanTitle}`,
+      "⛓️ Joseph leaving the dungeon",
+      "👑 Preparing for Pharaoh's court",
+      "🧼 Egyptian public custom",
+    ];
+  }
+
+  if (/seven years|plenty|famine|corn|food|store|fifth|gather|against the years/.test(lower)) {
+    return [
+      `🌾 ${cleanTitle}`,
+      "📅 Years of plenty and hunger",
+      "🍞 Food stored before need",
+      "🧠 Wisdom preparing ahead",
+    ];
+  }
+
+  if (/discreet|wise|over the land|officers|let pharaoh do this|look out a man/.test(lower)) {
+    return [
+      `🧠 ${cleanTitle}`,
+      "👑 Leadership under pressure",
+      "🌾 Planning before the famine",
+      "🙌 Wisdom used to preserve life",
+    ];
+  }
+
+  if (/ring|chain|fine linen|chariot|bow the knee|ruler|without thee|only in the throne/.test(lower)) {
+    return [
+      `👑 ${cleanTitle}`,
+      "💍 Authority placed on Joseph",
+      "🏛️ Egypt recognizing his role",
+      "⛓️ Prison shame turned into service",
+    ];
+  }
+
+  if (/manasseh|ephraim|born unto joseph|forget|fruitful/.test(lower)) {
+    return [
+      `👶 ${cleanTitle}`,
+      "🏠 Joseph's family in Egypt",
+      "💔 Pain remembered before God",
+      "🌱 Fruitfulness in a strange land",
+    ];
+  }
+
+  if (/brethren|brothers|bowed|spies|true men|honest|guilt|simeon|benjamin|money|sacks|father|jacob/.test(lower)) {
+    return [
+      `👥 ${cleanTitle}`,
+      "🙇 Joseph's brothers before him",
+      "💔 Old guilt rising again",
+      section.chapter === 42 ? "🏠 Jacob's family under pressure" : "🌾 Famine driving the story",
+    ];
+  }
+
+  return [
+    `🔎 ${cleanTitle}`,
+    section.chapter === 41 ? "👑 Joseph before Pharaoh" : "👥 Joseph and his brothers",
+    section.chapter === 41 ? "🌾 God preserving life through wisdom" : "💔 Family sin being brought into the light",
+  ];
+}
+
 function formatGenesisFortyOneToFortyEightRenderedPhrase(
   section: PersonalGenesisPhraseSectionInput,
   title: string,
@@ -386,7 +638,22 @@ function formatGenesisFortyOneToFortyEightRenderedPhrase(
     return [title, content];
   }
 
-  return [ensureGenesisFortyOneToFortyEightEmoji(title), cleanGenesisFortyOneToFortyEightFrameworkText(content)];
+  const cleaned = cleanGenesisFortyOneToFortyEightFrameworkText(content);
+  const cleanTitle = title.replace(/^[^A-Za-z0-9']+\s*/, "").trim();
+  const paragraphs = cleaned
+    .split(/\n{2,}/)
+    .map((paragraph) => paragraph.trim())
+    .filter(Boolean);
+  const hasList = paragraphs.some((paragraph) => /^[^A-Za-z0-9'"(]/.test(paragraph));
+  const expanded = hasList
+    ? paragraphs
+    : [
+        ...paragraphs.slice(0, Math.min(2, paragraphs.length)),
+        ...getGenesisFortyOneFortyTwoPhraseList(section, cleanTitle),
+        ...paragraphs.slice(Math.min(2, paragraphs.length)),
+      ];
+
+  return [ensureGenesisFortyOneToFortyEightEmoji(title), note(expanded)];
 }
 
 function dedupeGenesisFortyOneToFortyEightSections(section: PersonalGenesisPhraseSectionInput): PersonalGenesisPhraseSectionInput {
@@ -433,7 +700,8 @@ function normalizeRepeatedGenesisFortyOneToFiftyLines(sections: PersonalGenesisP
           const key = normalizeLine(line);
           const isRepeated = (counts.get(key) ?? 0) >= 3;
           const isTitleLine = line.toLowerCase().includes(cleanTitle.toLowerCase());
-          if (isRepeated && !isTitleLine) continue;
+          const isEmojiLine = /^[^A-Za-z0-9'"(]/.test(line);
+          if (isRepeated && !isTitleLine && !isEmojiLine) continue;
           kept.push(line);
         }
 

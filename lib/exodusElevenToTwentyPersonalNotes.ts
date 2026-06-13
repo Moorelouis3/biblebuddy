@@ -1100,6 +1100,145 @@ function formatExodusElevenToTwentyPhraseExplanation(section: PersonalExodusPhra
   return note([...opening, ...cues, ...closing]);
 }
 
+function getExodusElevenToTwentyPhraseList(section: PersonalExodusPhraseSectionInput, cleanTitle: string) {
+  const lower = cleanTitle.toLowerCase();
+
+  if (/passover|lamb|blood|door|hyssop|unleavened|leaven|firstborn|midnight/.test(lower)) {
+    return [
+      `🐑 ${cleanTitle}`,
+      "🩸 Blood marking the house",
+      "🏠 Families sheltered by God's word",
+      "⚖️ Judgment passing through Egypt",
+    ];
+  }
+
+  if (/egypt|pharaoh|egyptians|thrust|jewels|silver|gold|mixed multitude/.test(lower)) {
+    return [
+      `🏛️ ${cleanTitle}`,
+      "👑 Egypt losing its grip",
+      "🎒 Israel leaving supplied",
+      "🙌 God reversing oppression",
+    ];
+  }
+
+  if (/remember|children|ordinance|generation|sign|memorial|feast/.test(lower)) {
+    return [
+      `🧠 ${cleanTitle}`,
+      "👶 Children learning the story",
+      "📖 Rescue remembered",
+      "🙌 Worship shaped by deliverance",
+    ];
+  }
+
+  if (/pillar|cloud|fire|led|way|sea|wilderness|camp|journey/.test(lower)) {
+    return [
+      `🧭 ${cleanTitle}`,
+      "☁️ God guiding His people",
+      "🏜️ Wilderness path",
+      "🛡️ Presence on the journey",
+    ];
+  }
+
+  if (/sea|waters|wind|dry ground|chariot|horse|rider|fight|stand still|fear/.test(lower)) {
+    return [
+      `🌊 ${cleanTitle}`,
+      "😨 Israel facing danger",
+      "🛡️ The LORD fighting for them",
+      "🚶 A path opened by God",
+    ];
+  }
+
+  if (/sing|song|lord is my strength|who is like|miriam|timbrel|dance/.test(lower)) {
+    return [
+      `🎶 ${cleanTitle}`,
+      "🙌 Praise after rescue",
+      "🌊 The sea victory remembered",
+      "👥 Worship spreading through the people",
+    ];
+  }
+
+  if (/manna|bread|quail|omer|sabbath|murmur|wilderness|water|marah|elim/.test(lower)) {
+    return [
+      `🍞 ${cleanTitle}`,
+      "🏜️ Need in the wilderness",
+      "🙌 God providing daily",
+      "🧪 Trust being trained",
+    ];
+  }
+
+  return [
+    `🔎 ${cleanTitle}`,
+    section.chapter <= 12 ? "🐑 Rescue through Passover" : "🏜️ Israel learning trust",
+    section.chapter <= 12 ? "🏠 God's people sheltered" : "🙌 God leading after freedom",
+  ];
+}
+
+function getExodusElevenToTwentyTeachingLines(section: PersonalExodusPhraseSectionInput, cleanTitle: string) {
+  const lower = cleanTitle.toLowerCase();
+
+  if (/passover|lamb|blood|door|hyssop|unleavened|leaven|firstborn|midnight/.test(lower)) {
+    return [
+      "This phrase is part of the Passover rescue.",
+      "God gives Israel a specific way to trust His word during judgment.",
+      "The focus is shelter, obedience, and deliverance.",
+    ];
+  }
+
+  if (/egypt|pharaoh|egyptians|thrust|jewels|silver|gold|mixed multitude/.test(lower)) {
+    return [
+      "This phrase shows Egypt's power being reversed.",
+      "The people who were enslaved are now being sent out.",
+      "God is breaking the grip that Pharaoh refused to release.",
+    ];
+  }
+
+  if (/remember|children|ordinance|generation|sign|memorial|feast/.test(lower)) {
+    return [
+      "This phrase turns rescue into remembrance.",
+      "God does not want the next generation to forget what He did.",
+      "The story must be taught, repeated, and lived.",
+    ];
+  }
+
+  if (/pillar|cloud|fire|led|way|sea|wilderness|camp|journey/.test(lower)) {
+    return [
+      "This phrase shows that freedom still needs guidance.",
+      "Israel is out of Egypt, but they do not know the way on their own.",
+      "The LORD leads them with presence, not just instructions.",
+    ];
+  }
+
+  if (/sea|waters|wind|dry ground|chariot|horse|rider|fight|stand still|fear/.test(lower)) {
+    return [
+      "This phrase is part of the Red Sea rescue.",
+      "Israel cannot save itself in this moment.",
+      "The LORD makes a way where the people see no way.",
+    ];
+  }
+
+  if (/sing|song|lord is my strength|who is like|miriam|timbrel|dance/.test(lower)) {
+    return [
+      "This phrase turns deliverance into praise.",
+      "Israel sings because the LORD has rescued them.",
+      "The victory is remembered through worship.",
+    ];
+  }
+
+  if (/manna|bread|quail|omer|sabbath|murmur|wilderness|water|marah|elim/.test(lower)) {
+    return [
+      "This phrase shows Israel learning to trust God after freedom.",
+      "The wilderness exposes need quickly.",
+      "God provides while also training His people to depend on Him.",
+    ];
+  }
+
+  return [
+    "This phrase gives a real detail in Israel's journey.",
+    "It helps the reader follow how God rescues, guides, and provides.",
+    "The Exodus story is forming a people who must learn to trust the LORD.",
+  ];
+}
+
 function normalizeRepeatedExodusElevenToTwentyLines(sections: PersonalExodusPhraseSectionInput[]) {
   const counts = new Map<string, number>();
   const normalizeLine = (line: string) => line.toLowerCase().replace(/[.?!]+$/, "").trim();
@@ -1127,8 +1266,21 @@ function normalizeRepeatedExodusElevenToTwentyLines(sections: PersonalExodusPhra
           const key = normalizeLine(line);
           const isRepeated = (counts.get(key) ?? 0) >= 3;
           const isTitleLine = line.toLowerCase().includes(cleanTitle.toLowerCase());
-          if (isRepeated && !isTitleLine) continue;
+          const isEmojiLine = /^[^A-Za-z0-9'"(]/.test(line);
+          if (isRepeated && !isTitleLine && !isEmojiLine) continue;
           kept.push(line);
+        }
+
+        const hasList = kept.filter((line) => /^[^A-Za-z0-9'"(]/.test(line)).length >= 2;
+        if (!hasList) {
+          kept.splice(Math.min(2, kept.length), 0, ...getExodusElevenToTwentyPhraseList(section, cleanTitle));
+        }
+
+        for (const line of getExodusElevenToTwentyTeachingLines(section, cleanTitle)) {
+          if (kept.length >= 7) break;
+          if (!kept.some((keptLine) => normalizeLine(keptLine) === normalizeLine(line))) {
+            kept.push(line);
+          }
         }
 
         while (kept.length < 4) {

@@ -806,6 +806,129 @@ function formatExodusThirtyOneToFortyPhraseExplanation(section: PersonalExodusPh
   return note([...opening, ...cues, ...closing]);
 }
 
+function getExodusThirtyOneToFortyPhraseList(section: PersonalExodusPhraseSectionInput, cleanTitle: string) {
+  const lower = cleanTitle.toLowerCase();
+
+  if (/bezaleel|aholiab|wisdom|spirit|workmanship|cunning|gold|silver|brass/.test(lower)) {
+    return [
+      `🧠 ${cleanTitle}`,
+      "🛠️ Skill given by God",
+      "🏕️ Work for the tabernacle",
+      "🙌 Creativity used in worship",
+    ];
+  }
+
+  if (/sabbath|rest|seventh|perpetual covenant|sign/.test(lower)) {
+    return [
+      `🛑 ${cleanTitle}`,
+      "📅 Holy time",
+      "🙌 Trust through rest",
+      "📜 Covenant sign for Israel",
+    ];
+  }
+
+  if (/calf|golden|aaron|idols|mischief|sinned|wrath|anger|consume/.test(lower)) {
+    return [
+      `⚠️ ${cleanTitle}`,
+      "🐂 False worship",
+      "💔 Covenant rebellion",
+      "⚖️ Sin exposed before God",
+    ];
+  }
+
+  if (/moses|interced|besought|prayed|face|presence|shew me thy glory|tables|commanded/.test(lower)) {
+    return [
+      `🙌 ${cleanTitle}`,
+      "⛰️ Moses before the LORD",
+      "📜 Covenant words",
+      "🤲 Mercy after failure",
+    ];
+  }
+
+  if (/cloud|glory|filled|tabernacle|tent|congregation|sanctuary|ark|mercy seat|altar|laver|candlestick|table|curtain|veil|court/.test(lower)) {
+    return [
+      `🏕️ ${cleanTitle}`,
+      "☁️ God's presence",
+      "🧵 Holy space arranged",
+      "🙌 Worship ordered by command",
+    ];
+  }
+
+  if (/offering|willing|hearted|brought|bracelets|jewels|blue|purple|scarlet|linen|goats|rams/.test(lower)) {
+    return [
+      `🎁 ${cleanTitle}`,
+      "🤲 Willing gifts",
+      "🧵 Materials for worship",
+      "🏕️ The people helping build",
+    ];
+  }
+
+  if (/garments|ephod|breastplate|robe|mitre|plate|holy crown|aaron|priest/.test(lower)) {
+    return [
+      `👕 ${cleanTitle}`,
+      "💎 Priestly beauty",
+      "🙌 Serving before God",
+      "📜 Israel carried in worship",
+    ];
+  }
+
+  return [
+    `🔎 ${cleanTitle}`,
+    section.chapter <= 34 ? "💔 Covenant failure and mercy" : "🏕️ The tabernacle being built",
+    section.chapter <= 34 ? "🙌 The LORD dealing with His people" : "☁️ God's presence coming near",
+  ];
+}
+
+function getExodusThirtyOneToFortyTeachingLines(section: PersonalExodusPhraseSectionInput, cleanTitle: string) {
+  const lower = cleanTitle.toLowerCase();
+
+  if (/calf|idols|sinned|wrath|anger|mischief/.test(lower)) {
+    return [
+      "This phrase shows how quickly worship can become corrupted.",
+      "Israel was rescued from Egypt, but their hearts still needed formation.",
+      "The golden calf is not a small mistake; it is covenant rebellion.",
+    ];
+  }
+
+  if (/moses|interced|presence|glory|face|tables|commanded/.test(lower)) {
+    return [
+      "This phrase keeps Moses' mediation in view.",
+      "The people have failed, but the LORD is still dealing with them through covenant mercy.",
+      "Exodus shows both the seriousness of sin and the greatness of God's patience.",
+    ];
+  }
+
+  if (/tabernacle|tent|ark|altar|laver|candlestick|table|curtain|veil|court|glory|cloud/.test(lower)) {
+    return [
+      "This phrase points to the place where God will dwell among His people.",
+      "The details are repeated because obedience matters in worship.",
+      "The tabernacle teaches that God's nearness is holy and gracious.",
+    ];
+  }
+
+  if (/offering|willing|hearted|brought|gold|silver|brass|blue|purple|scarlet|linen/.test(lower)) {
+    return [
+      "This phrase shows the people contributing to holy work.",
+      "The materials are not random supplies.",
+      "They become part of the place where Israel will meet with God.",
+    ];
+  }
+
+  if (/garments|ephod|breastplate|robe|priest|aaron/.test(lower)) {
+    return [
+      "This phrase points to priestly service before the LORD.",
+      "The garments teach that approaching God is not casual.",
+      "The priest represents the people in a holy place.",
+    ];
+  }
+
+  return [
+    "This phrase helps the reader follow the end of Exodus.",
+    "God is moving His people from rescue toward worship.",
+    "The book ends with God's presence in the midst of Israel.",
+  ];
+}
+
 function normalizeRepeatedExodusThirtyOneToFortyLines(sections: PersonalExodusPhraseSectionInput[]) {
   const counts = new Map<string, number>();
   const normalizeLine = (line: string) => line.toLowerCase().replace(/[.?!]+$/, "").trim();
@@ -833,8 +956,21 @@ function normalizeRepeatedExodusThirtyOneToFortyLines(sections: PersonalExodusPh
           const key = normalizeLine(line);
           const isRepeated = (counts.get(key) ?? 0) >= 3;
           const isTitleLine = line.toLowerCase().includes(cleanTitle.toLowerCase());
-          if (isRepeated && !isTitleLine) continue;
+          const isEmojiLine = /^[^A-Za-z0-9'"(]/.test(line);
+          if (isRepeated && !isTitleLine && !isEmojiLine) continue;
           kept.push(line);
+        }
+
+        const hasList = kept.filter((line) => /^[^A-Za-z0-9'"(]/.test(line)).length >= 2;
+        if (!hasList) {
+          kept.splice(Math.min(2, kept.length), 0, ...getExodusThirtyOneToFortyPhraseList(section, cleanTitle));
+        }
+
+        for (const line of getExodusThirtyOneToFortyTeachingLines(section, cleanTitle)) {
+          if (kept.length >= 7) break;
+          if (!kept.some((keptLine) => normalizeLine(keptLine) === normalizeLine(line))) {
+            kept.push(line);
+          }
         }
 
         while (kept.length < 4) {

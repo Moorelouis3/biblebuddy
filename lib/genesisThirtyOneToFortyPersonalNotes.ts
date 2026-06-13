@@ -415,7 +415,11 @@ function cleanGenesisThirtyNineFortyFrameworkText(content: string) {
     .replace(/\bmatters because\b/gi, "is important because")
     .replace(/\bbelongs to\b/gi, "is part of")
     .replace(/\bnot filler\b/gi, "meaningful")
-    .replace(/\binterpreting dreams\b/gi, "explaining dreams");
+    .replace(/\binterpreting dreams\b/gi, "explaining dreams")
+    .replace(
+      /\bBible Buddy should slow down here because blessing and suffering are happening at the same time\./gi,
+      "This helps the reader see blessing and suffering happening at the same time.",
+    );
 }
 
 function getGenesisThirtyNineFortyTeachingLines(cleanTitle: string) {
@@ -433,7 +437,7 @@ function getGenesisThirtyNineFortyTeachingLines(cleanTitle: string) {
     return [
       "The phrase does not mean Joseph's life became easy.",
       "It means God's presence and favor stayed with him inside a hard place.",
-      "Bible Buddy should slow down here because blessing and suffering are happening at the same time.",
+      "This helps the reader see blessing and suffering happening at the same time.",
     ];
   }
 
@@ -476,6 +480,72 @@ function getGenesisThirtyNineFortyTeachingLines(cleanTitle: string) {
   ];
 }
 
+function getGenesisThirtyNineFortyPhraseList(section: PersonalGenesisPhraseSectionInput, cleanTitle: string) {
+  const lower = cleanTitle.toLowerCase();
+
+  if (/lord|god|prosper|mercy|favour|grace|blessed/.test(lower)) {
+    return [
+      `🙌 ${cleanTitle}`,
+      section.chapter === 39 ? "🌱 Favor inside suffering" : "🌙 God working through dreams",
+      section.reference.includes("39:19") ? "⛓️ Presence in prison" : "👀 God is not absent",
+    ];
+  }
+
+  if (/lie with me|wife|sin|wicked|hearkened not|refused|fled|garment|mock|sport|wrath|eyes/.test(lower)) {
+    return [
+      `🚪 ${cleanTitle}`,
+      "⚠️ Temptation and pressure",
+      /fled|garment/.test(lower) ? "🏃 Escape over compromise" : "🙌 Faithfulness before God",
+    ];
+  }
+
+  if (/potiphar|master|captain|officer|keeper|pharaoh/.test(lower)) {
+    return [
+      `🏛️ ${cleanTitle}`,
+      section.chapter === 39 ? "🏠 Egyptian household power" : "👑 Pharaoh's court",
+      section.chapter === 39 ? "⛓️ Joseph serving as a slave" : "⛓️ Joseph serving from prison",
+    ];
+  }
+
+  if (/hand|overseer|all that he had|committed|served|business/.test(lower)) {
+    return [
+      `✋ ${cleanTitle}`,
+      "📦 Responsibility placed on Joseph",
+      section.chapter === 39 ? "🏠 Faithfulness in the house" : "⛓️ Faithfulness in prison",
+    ];
+  }
+
+  if (/prison|bound|dungeon|ward/.test(lower)) {
+    return [
+      `⛓️ ${cleanTitle}`,
+      "🚪 A lower place in Joseph's story",
+      "🙌 God still with him there",
+    ];
+  }
+
+  if (/dream|interpret|interpretation|vine|branches|cup|grapes|basket|bake|meats/.test(lower)) {
+    return [
+      `🌙 ${cleanTitle}`,
+      /vine|branches|cup|grapes/.test(lower) ? "🍇 Butler dream details" : /basket|bake|meats/.test(lower) ? "🍞 Baker dream details" : "🔎 Meaning God must reveal",
+      "🙌 Joseph points beyond himself",
+    ];
+  }
+
+  if (/lift up thy head|restored|hang|forgot|remember|birthday|three days/.test(lower)) {
+    return [
+      `⏳ ${cleanTitle}`,
+      /restored|remember/.test(lower) ? "👑 Return to Pharaoh's service" : /hang/.test(lower) ? "⚖️ Judgment on the baker" : "📅 God's timing in the story",
+      "🧠 Joseph left waiting",
+    ];
+  }
+
+  return [
+    `🔎 ${cleanTitle}`,
+    section.chapter === 39 ? "🏠 Joseph tested in Egypt" : "⛓️ Joseph serving in prison",
+    "🙌 God working quietly",
+  ];
+}
+
 function formatGenesisThirtyNineFortyRenderedPhrase(section: PersonalGenesisPhraseSectionInput, title: string, content: string): [string, string] {
   if (section.chapter !== 39 && section.chapter !== 40) {
     return [title, content];
@@ -487,7 +557,15 @@ function formatGenesisThirtyNineFortyRenderedPhrase(section: PersonalGenesisPhra
     .map((paragraph) => paragraph.trim())
     .filter(Boolean);
 
-  const expanded = paragraphs.length >= 4 ? paragraphs : [...paragraphs, ...getGenesisThirtyNineFortyTeachingLines(cleanTitle)];
+  const expandedBase = paragraphs.length >= 4 ? paragraphs : [...paragraphs, ...getGenesisThirtyNineFortyTeachingLines(cleanTitle)];
+  const hasList = expandedBase.some((paragraph) => /^[^A-Za-z0-9'"(]/.test(paragraph));
+  const expanded = hasList
+    ? expandedBase
+    : [
+        ...expandedBase.slice(0, Math.min(2, expandedBase.length)),
+        ...getGenesisThirtyNineFortyPhraseList(section, cleanTitle),
+        ...expandedBase.slice(Math.min(2, expandedBase.length)),
+      ];
   const seen = new Set<string>();
   const body = note(
     expanded.filter((paragraph) => {

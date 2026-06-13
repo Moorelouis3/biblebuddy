@@ -959,6 +959,112 @@ function formatExodusTwentyOneToThirtyPhraseExplanation(section: PersonalExodusP
   return note([...opening, ...cues, ...closing]);
 }
 
+function getExodusTwentyOneToThirtyPhraseList(section: PersonalExodusPhraseSectionInput, cleanTitle: string) {
+  const lower = cleanTitle.toLowerCase();
+
+  if (/servant|maid|master|manservant|bondman|bondwoman|slave/.test(lower)) {
+    return [
+      `⚖️ ${cleanTitle}`,
+      "🏠 Justice inside daily life",
+      "🛡️ Protection for the vulnerable",
+      "📜 Covenant law shaping conduct",
+    ];
+  }
+
+  if (/ox|sheep|ass|beast|field|vineyard|fire|pit|restitution|restore/.test(lower)) {
+    return [
+      `🧾 ${cleanTitle}`,
+      "🐂 Property and responsibility",
+      "⚖️ Repairing harm",
+      "🏠 Neighbor love in practical form",
+    ];
+  }
+
+  if (/widow|fatherless|stranger|poor|enemy|neighbor|borrow|pledge/.test(lower)) {
+    return [
+      `🛡️ ${cleanTitle}`,
+      "💔 People with less power",
+      "🤝 Mercy in the community",
+      "🙌 God's concern for justice",
+    ];
+  }
+
+  if (/sabbath|feast|firstfruits|bread|altar|sacrifice|blood|covenant/.test(lower)) {
+    return [
+      `🙌 ${cleanTitle}`,
+      "📅 Worship shaping time",
+      "🩸 Covenant relationship",
+      "📜 Israel living before the LORD",
+    ];
+  }
+
+  if (/ark|mercy seat|cherubim|table|candlestick|lamp|tabernacle|curtain|veil|altar|court|ephod|breastplate|robe|garment/.test(lower)) {
+    return [
+      `🏕️ ${cleanTitle}`,
+      "🧵 Holy design",
+      "🙌 Worship near God's presence",
+      "📜 Every detail given by command",
+    ];
+  }
+
+  if (/priest|aaron|sons|holy|anoint|consecrate|wash|incense|oil/.test(lower)) {
+    return [
+      `🕯️ ${cleanTitle}`,
+      "🧼 Set apart for service",
+      "🙌 Priestly worship",
+      "📜 Holiness before the LORD",
+    ];
+  }
+
+  return [
+    `🔎 ${cleanTitle}`,
+    section.chapter <= 24 ? "⚖️ Covenant life being shaped" : "🏕️ Worship space being prepared",
+    section.chapter <= 24 ? "🏠 God's law reaching daily life" : "🙌 God teaching Israel how to approach",
+  ];
+}
+
+function getExodusTwentyOneToThirtyTeachingLines(section: PersonalExodusPhraseSectionInput, cleanTitle: string) {
+  const lower = cleanTitle.toLowerCase();
+
+  if (section.chapter <= 24) {
+    if (/servant|maid|widow|fatherless|stranger|poor|enemy|neighbor/.test(lower)) {
+      return [
+        "This phrase shows that covenant law reaches real people.",
+        "God does not treat justice as an idea floating above daily life.",
+        "He teaches Israel how to protect life, repair harm, and care for the vulnerable.",
+      ];
+    }
+
+    return [
+      "This phrase helps explain covenant life after the Exodus.",
+      "Israel is learning what freedom under God looks like.",
+      "The law is shaping a rescued people into a holy community.",
+    ];
+  }
+
+  if (/ark|mercy seat|veil|altar|tabernacle|court|lamp|candlestick/.test(lower)) {
+    return [
+      "This phrase names part of the worship space.",
+      "The tabernacle is not random decoration.",
+      "Each detail teaches that God's presence is holy and Israel must approach His way.",
+    ];
+  }
+
+  if (/priest|aaron|garment|ephod|breastplate|anoint|consecrate/.test(lower)) {
+    return [
+      "This phrase points to priestly service.",
+      "The priest does not come before God casually.",
+      "The clothing, washing, and setting apart teach holiness before the LORD.",
+    ];
+  }
+
+  return [
+    "This phrase is part of the pattern God gave Moses.",
+    "The details may feel small, but they build the place where Israel will worship.",
+    "God is teaching His people that nearness to Him is holy, ordered, and gracious.",
+  ];
+}
+
 function normalizeRepeatedExodusTwentyOneToThirtyLines(sections: PersonalExodusPhraseSectionInput[]) {
   const counts = new Map<string, number>();
   const normalizeLine = (line: string) => line.toLowerCase().replace(/[.?!]+$/, "").trim();
@@ -986,8 +1092,21 @@ function normalizeRepeatedExodusTwentyOneToThirtyLines(sections: PersonalExodusP
           const key = normalizeLine(line);
           const isRepeated = (counts.get(key) ?? 0) >= 3;
           const isTitleLine = line.toLowerCase().includes(cleanTitle.toLowerCase());
-          if (isRepeated && !isTitleLine) continue;
+          const isEmojiLine = /^[^A-Za-z0-9'"(]/.test(line);
+          if (isRepeated && !isTitleLine && !isEmojiLine) continue;
           kept.push(line);
+        }
+
+        const hasList = kept.filter((line) => /^[^A-Za-z0-9'"(]/.test(line)).length >= 2;
+        if (!hasList) {
+          kept.splice(Math.min(2, kept.length), 0, ...getExodusTwentyOneToThirtyPhraseList(section, cleanTitle));
+        }
+
+        for (const line of getExodusTwentyOneToThirtyTeachingLines(section, cleanTitle)) {
+          if (kept.length >= 7) break;
+          if (!kept.some((keptLine) => normalizeLine(keptLine) === normalizeLine(line))) {
+            kept.push(line);
+          }
         }
 
         while (kept.length < 4) {

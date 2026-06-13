@@ -1459,6 +1459,136 @@ function formatExodusTwoToTenPhraseExplanation(section: PersonalExodusPhraseSect
   ]);
 }
 
+function getExodusTwoToTenPhraseList(section: PersonalExodusPhraseSectionInput, cleanTitle: string) {
+  const lower = cleanTitle.toLowerCase();
+
+  if (/pharaoh|egypt|taskmaster|officer|bondage|brick|straw|burden/.test(lower)) {
+    return [
+      `🏛️ ${cleanTitle}`,
+      "🧱 Oppression in Egypt",
+      "👑 Pharaoh's control",
+      "🙌 God preparing deliverance",
+    ];
+  }
+
+  if (/moses|aaron|rod|mouth|speak|send|sign|hand/.test(lower)) {
+    return [
+      `🧭 ${cleanTitle}`,
+      "📣 God's messenger",
+      "🤲 Human weakness",
+      "🙌 God's power at work",
+    ];
+  }
+
+  if (/lord|god|i am|covenant|abraham|isaac|jacob|name|promise/.test(lower)) {
+    return [
+      `🙌 ${cleanTitle}`,
+      "📜 Covenant promise",
+      "👂 God hearing His people",
+      "💪 Rescue rooted in who God is",
+    ];
+  }
+
+  if (/plague|blood|frog|lice|flies|murrain|boil|hail|locust|darkness|magicians/.test(lower)) {
+    return [
+      `⚖️ ${cleanTitle}`,
+      "👑 Pharaoh confronted",
+      "🌍 Creation under God's command",
+      "🚫 Egypt's power exposed",
+    ];
+  }
+
+  if (/heart|harden|hearken|refused|not let|let my people go/.test(lower)) {
+    return [
+      `🔒 ${cleanTitle}`,
+      "👑 Pharaoh resisting God",
+      "📣 God's word made clear",
+      "⚖️ Judgment becoming heavier",
+    ];
+  }
+
+  if (/israel|hebrew|people|children|groaning|cried|heard/.test(lower)) {
+    return [
+      `👥 ${cleanTitle}`,
+      "💔 Israel suffering",
+      "👂 God hearing",
+      "🕊️ Deliverance coming",
+    ];
+  }
+
+  return [
+    `🔎 ${cleanTitle}`,
+    section.chapter <= 4 ? "🔥 God calling Moses" : "⚖️ God confronting Egypt",
+    section.chapter <= 4 ? "📣 A rescuer being prepared" : "🕊️ Israel's freedom drawing near",
+  ];
+}
+
+function getExodusTwoToTenTeachingLines(section: PersonalExodusPhraseSectionInput, cleanTitle: string) {
+  const lower = cleanTitle.toLowerCase();
+
+  if (/heard.*groaning|groaning|cried|cry/.test(lower)) {
+    return [
+      "This phrase shows that Israel's pain reached God.",
+      "The groaning was not organized prayer with perfect words.",
+      "God still heard the suffering of His people and moved toward rescue.",
+    ];
+  }
+
+  if (/i am that i am|name|lord god of your fathers/.test(lower)) {
+    return [
+      "This phrase reveals God's identity, not just His assignment for Moses.",
+      "The LORD is not one more Egyptian god with limited power.",
+      "He is the living God who exists by His own power and keeps covenant.",
+    ];
+  }
+
+  if (/lord|god|i am|covenant|promise|name/.test(lower)) {
+    return [
+      "This phrase keeps the focus on who God is.",
+      "The rescue does not begin with Moses being strong.",
+      "It begins with the LORD remembering His promise and acting for His people.",
+    ];
+  }
+
+  if (/pharaoh|harden|heart|hearken|refused|not let/.test(lower)) {
+    return [
+      "This phrase shows resistance against God's word.",
+      "Pharaoh is not confused about the command.",
+      "He is refusing the LORD's authority over Israel.",
+    ];
+  }
+
+  if (/moses|aaron|mouth|rod|hand|speak|send/.test(lower)) {
+    return [
+      "This phrase shows how God works through a weak servant.",
+      "Moses does not feel ready for the task.",
+      "But God's call rests on God's power, not Moses' confidence.",
+    ];
+  }
+
+  if (/plague|blood|frog|lice|flies|murrain|boil|hail|locust|darkness|magicians/.test(lower)) {
+    return [
+      "This phrase is part of God's public confrontation with Egypt.",
+      "The plagues are not random disasters.",
+      "They show that the LORD rules over what Egypt trusted.",
+    ];
+  }
+
+  if (/israel|hebrew|people|groaning|cried|bondage|burden/.test(lower)) {
+    return [
+      "This phrase keeps Israel's suffering in front of the reader.",
+      "God is not ignoring the pain of His people.",
+      "The Exodus story is rescue from real oppression.",
+    ];
+  }
+
+  return [
+    "This phrase gives a real detail in the rescue story.",
+    "It helps the reader follow what God is revealing step by step.",
+    "Exodus is showing bondage, confrontation, deliverance, and worship.",
+  ];
+}
+
 function normalizeRepeatedExodusTwoToTenLines(sections: PersonalExodusPhraseSectionInput[]) {
   const counts = new Map<string, number>();
   const normalizeLine = (line: string) => line.toLowerCase().replace(/[.?!]+$/, "").trim();
@@ -1486,8 +1616,21 @@ function normalizeRepeatedExodusTwoToTenLines(sections: PersonalExodusPhraseSect
           const key = normalizeLine(line);
           const isRepeated = (counts.get(key) ?? 0) >= 3;
           const isTitleLine = line.toLowerCase().includes(cleanTitle.toLowerCase());
-          if (isRepeated && !isTitleLine) continue;
+          const isEmojiLine = /^[^A-Za-z0-9'"(]/.test(line);
+          if (isRepeated && !isTitleLine && !isEmojiLine) continue;
           kept.push(line);
+        }
+
+        const hasList = kept.filter((line) => /^[^A-Za-z0-9'"(]/.test(line)).length >= 2;
+        if (!hasList) {
+          kept.splice(Math.min(2, kept.length), 0, ...getExodusTwoToTenPhraseList(section, cleanTitle));
+        }
+
+        for (const line of getExodusTwoToTenTeachingLines(section, cleanTitle)) {
+          if (kept.length >= 7) break;
+          if (!kept.some((keptLine) => normalizeLine(keptLine) === normalizeLine(line))) {
+            kept.push(line);
+          }
         }
 
         while (kept.length < 4) {

@@ -274,6 +274,121 @@ function formatLeviticusOneToEightPhraseExplanation(section: PersonalLeviticusPh
   ]);
 }
 
+function getLeviticusPhraseList(section: PersonalLeviticusPhraseSectionInput, cleanTitle: string) {
+  const lower = cleanTitle.toLowerCase();
+
+  if (/burnt offering|meat offering|peace offering|sin offering|trespass offering|offering|oblation|sacrifice/.test(lower)) {
+    return [
+      `🔥 ${cleanTitle}`,
+      "🙌 Worship brought near",
+      "🩸 Sacrifice before God",
+      "📜 A holy pattern for approach",
+    ];
+  }
+
+  if (/blood|atonement|sprinkle|altar|without blemish|lay his hand|kill/.test(lower)) {
+    return [
+      `🩸 ${cleanTitle}`,
+      "⚖️ Sin taken seriously",
+      "🙌 Life given before the LORD",
+      "🕊️ Atonement and mercy",
+    ];
+  }
+
+  if (/priest|aaron|sons|consecrate|anoint|garments|wash|oil/.test(lower)) {
+    return [
+      `🕯️ ${cleanTitle}`,
+      "🧼 Priests set apart",
+      "👕 Holy service",
+      "🙌 Worship led God's way",
+    ];
+  }
+
+  if (/holy|unclean|clean|defiled|separate|sanctify/.test(lower)) {
+    return [
+      `🧼 ${cleanTitle}`,
+      "⚖️ Clean and unclean",
+      "🙌 Holiness before God",
+      "👥 Israel learning distinction",
+    ];
+  }
+
+  if (/leprosy|plague|skin|scab|bright spot|priest shall look|shut up|pronounce/.test(lower)) {
+    return [
+      `🔎 ${cleanTitle}`,
+      "🧑‍⚕️ Careful examination",
+      "🏕️ Camp kept holy",
+      "💔 Sickness and separation",
+    ];
+  }
+
+  if (/goat|scapegoat|mercy seat|holy place|incense|within the veil|azazel/.test(lower)) {
+    return [
+      `🕊️ ${cleanTitle}`,
+      "🩸 Atonement for sin",
+      "🏕️ The holy place",
+      "🙌 Mercy before the LORD",
+    ];
+  }
+
+  if (/fire|strange fire|nadab|abihu|died|glory|appeared/.test(lower)) {
+    return [
+      `🔥 ${cleanTitle}`,
+      "⚠️ Holy worship",
+      "🙌 God's presence is serious",
+      "📜 Worship must follow God's command",
+    ];
+  }
+
+  return [
+    `🔎 ${cleanTitle}`,
+    section.chapter <= 7 ? "🔥 Offerings before the LORD" : section.chapter <= 10 ? "🕯️ Priests serving before God" : "🧼 Holiness in daily life",
+    section.chapter <= 7 ? "🩸 Sacrifice teaching approach" : section.chapter <= 10 ? "🙌 Worship treated as holy" : "👥 Israel learning clean and unclean",
+  ];
+}
+
+function getLeviticusTeachingLines(section: PersonalLeviticusPhraseSectionInput, cleanTitle: string) {
+  const lower = cleanTitle.toLowerCase();
+
+  if (/offering|oblation|sacrifice|altar|blood|atonement|without blemish|lay his hand/.test(lower)) {
+    return [
+      "This phrase teaches how sinful people approach a holy God.",
+      "Leviticus is not empty ritual.",
+      "The sacrifices show that worship, sin, mercy, and holiness all matter before the LORD.",
+    ];
+  }
+
+  if (/priest|aaron|sons|consecrate|anoint|wash|garments/.test(lower)) {
+    return [
+      "This phrase points to priestly service.",
+      "The priests are set apart because they serve near holy things.",
+      "Leviticus teaches that worship must be handled with reverence.",
+    ];
+  }
+
+  if (/clean|unclean|defiled|holy|separate|sanctify|leprosy|plague/.test(lower)) {
+    return [
+      "This phrase helps explain clean and unclean in Israel's life.",
+      "The issue is not simple dirtiness.",
+      "God is teaching His people to recognize holiness, disorder, life, and death.",
+    ];
+  }
+
+  if (/goat|scapegoat|mercy seat|veil|incense|atonement/.test(lower)) {
+    return [
+      "This phrase points toward the Day of Atonement.",
+      "Israel's sin must be dealt with before the holy God.",
+      "The chapter shows mercy, substitution, cleansing, and access on God's terms.",
+    ];
+  }
+
+  return [
+    "This phrase gives an important detail in Leviticus.",
+    "The book is teaching Israel how to live near a holy God.",
+    "Read these details as worship training, not random rules.",
+  ];
+}
+
 function normalizeRepeatedLeviticusLines(sections: PersonalLeviticusPhraseSectionInput[]) {
   const counts = new Map<string, number>();
   const normalizeLine = (line: string) => line.toLowerCase().replace(/[.?!]+$/, "").trim();
@@ -301,8 +416,21 @@ function normalizeRepeatedLeviticusLines(sections: PersonalLeviticusPhraseSectio
           const key = normalizeLine(line);
           const isRepeated = (counts.get(key) ?? 0) >= 3;
           const isTitleLine = line.toLowerCase().includes(cleanTitle.toLowerCase());
-          if (isRepeated && !isTitleLine) continue;
+          const isEmojiLine = /^[^A-Za-z0-9'"(]/.test(line);
+          if (isRepeated && !isTitleLine && !isEmojiLine) continue;
           kept.push(line);
+        }
+
+        const hasList = kept.filter((line) => /^[^A-Za-z0-9'"(]/.test(line)).length >= 2;
+        if (!hasList) {
+          kept.splice(Math.min(2, kept.length), 0, ...getLeviticusPhraseList(section, cleanTitle));
+        }
+
+        for (const line of getLeviticusTeachingLines(section, cleanTitle)) {
+          if (kept.length >= 7) break;
+          if (!kept.some((keptLine) => normalizeLine(keptLine) === normalizeLine(line))) {
+            kept.push(line);
+          }
         }
 
         while (kept.length < 4) {
