@@ -24,29 +24,29 @@ const note = (lines: string[]) => lines.join("\n\n");
 const phrase = (title: string, lines: string[]): [string, string] => [title, note(lines)];
 
 function getLeviticusTitleIcon(title: string) {
-  if (/burnt offering|fire|burn|flay|pieces/i.test(title)) return "🔥";
-  if (/sweet savour|ashes|wood|flay|cut|wash|inwards|legs|crop|feathers|wings|divide|asunder/i.test(title)) return "🔥";
-  if (/meat offering|grain|flour|oil|frankincense|cakes|wafers/i.test(title)) return "🌾";
-  if (/memorial|baken|fryingpan|honey|firstfruits|salt|green ears|corn|full ears/i.test(title)) return "🌾";
-  if (/peace offering|thanksgiving|vow|freewill/i.test(title)) return "🕊️";
-  if (/sin offering|trespass offering|sin|ignorance|forgiven|forgiveness/i.test(title)) return "🩸";
-  if (/blood|atonement|sprinkle|altar|without blemish|lay his hand|kill/i.test(title)) return "🩸";
-  if (/bullock|lamb|ram|goat|kid|herd|flock|cattle/i.test(title)) return "🐐";
-  if (/priest|aaron|sons|consecrate|anoint|garments|wash|oil/i.test(title)) return "🕯️";
-  if (/holy|unclean|clean|defiled|separate|sanctify|abomination|abominable|make a difference/i.test(title)) return "🧼";
-  if (/leprosy|plague|skin|scab|bright spot|priest shall look|shut up|pronounce|hair|deeper|flesh|camp|clothes|rent|bare|cover/i.test(title)) return "🧼";
-  if (/goat|scapegoat|mercy seat|holy place|incense|within the veil|azazel/i.test(title)) return "🐐";
-  if (/nadab|abihu|strange fire|died|glory|appeared|accepted|befallen|content/i.test(title)) return "⚠️";
-  if (/bird|fowl|turtle|pigeon|eagle|vulture|raven|owl|locust/i.test(title)) return "🐦";
-  if (/kidney|fat|liver|inwards/i.test(title)) return "🫀";
-  if (/issue|running|seed|woman|blood|separation|fountain|plague be healed|bed|saddle|lieth|bathe|water|earthen vessel/i.test(title)) return "🧼";
-  if (/command|spake|said|law|statute|ordinance|teach|called unto moses/i.test(title)) return "📜";
-  if (/before the lord|unto the lord|tabernacle|congregation|sanctuary|hallowed|eighth day|blessed|shouted|fell on their faces/i.test(title)) return "🙌";
-  if (/camel|coney|hare|swine|beasts|hoof|cud|fins|scales|creeping thing|belly|all four|carcase/i.test(title)) return "🐾";
-  if (/man child|seven days|circumcised|purifying|open field|house|break down the house|scrape the house/i.test(title)) return "🏠";
-  if (/young calf|people's offering|breasts|wave breast|heave shoulder|due/i.test(title)) return "🐐";
-  if (/afflict your souls|sabbath of rest|once in a year|confess|iniquities|not inhabited/i.test(title)) return "🐐";
-  return "🔎";
+  if (/burnt offering|fire|burn|flay|pieces/i.test(title)) return "??";
+  if (/sweet savour|ashes|wood|flay|cut|wash|inwards|legs|crop|feathers|wings|divide|asunder/i.test(title)) return "??";
+  if (/meat offering|grain|flour|oil|frankincense|cakes|wafers/i.test(title)) return "??";
+  if (/memorial|baken|fryingpan|honey|firstfruits|salt|green ears|corn|full ears/i.test(title)) return "??";
+  if (/peace offering|thanksgiving|vow|freewill/i.test(title)) return "???";
+  if (/sin offering|trespass offering|sin|ignorance|forgiven|forgiveness/i.test(title)) return "??";
+  if (/blood|atonement|sprinkle|altar|without blemish|lay his hand|kill/i.test(title)) return "??";
+  if (/bullock|lamb|ram|goat|kid|herd|flock|cattle/i.test(title)) return "??";
+  if (/priest|aaron|sons|consecrate|anoint|garments|wash|oil/i.test(title)) return "???";
+  if (/holy|unclean|clean|defiled|separate|sanctify|abomination|abominable|make a difference/i.test(title)) return "??";
+  if (/leprosy|plague|skin|scab|bright spot|priest shall look|shut up|pronounce|hair|deeper|flesh|camp|clothes|rent|bare|cover/i.test(title)) return "??";
+  if (/goat|scapegoat|mercy seat|holy place|incense|within the veil|azazel/i.test(title)) return "??";
+  if (/nadab|abihu|strange fire|died|glory|appeared|accepted|befallen|content/i.test(title)) return "??";
+  if (/bird|fowl|turtle|pigeon|eagle|vulture|raven|owl|locust/i.test(title)) return "??";
+  if (/kidney|fat|liver|inwards/i.test(title)) return "??";
+  if (/issue|running|seed|woman|blood|separation|fountain|plague be healed|bed|saddle|lieth|bathe|water|earthen vessel/i.test(title)) return "??";
+  if (/command|spake|said|law|statute|ordinance|teach|called unto moses/i.test(title)) return "??";
+  if (/before the lord|unto the lord|tabernacle|congregation|sanctuary|hallowed|eighth day|blessed|shouted|fell on their faces/i.test(title)) return "??";
+  if (/camel|coney|hare|swine|beasts|hoof|cud|fins|scales|creeping thing|belly|all four|carcase/i.test(title)) return "??";
+  if (/man child|seven days|circumcised|purifying|open field|house|break down the house|scrape the house/i.test(title)) return "??";
+  if (/young calf|people's offering|breasts|wave breast|heave shoulder|due/i.test(title)) return "??";
+  if (/afflict your souls|sabbath of rest|once in a year|confess|iniquities|not inhabited/i.test(title)) return "??";
+  return "??";
 }
 
 function ensureLeviticusTitleEmoji(title: string) {
@@ -56,20 +56,20 @@ function ensureLeviticusTitleEmoji(title: string) {
 
 function getLeviticusSectionIcon(section: PersonalLeviticusPhraseSectionInput) {
   const text = `${section.title} ${section.reference}`.toLowerCase();
-  if (/skin disease|leprosy|examination/.test(text)) return "🧼";
-  if (/garments/.test(text)) return "👕";
-  if (/contaminated house/.test(text)) return "🏠";
-  if (/bodily discharges/.test(text)) return "💧";
-  if (/atonement|scapegoat|mercy seat|solemn rest/.test(text)) return "🐐";
-  if (/cleansing the restored person/.test(text)) return "🕊️";
-  if (/burnt/.test(text)) return "🔥";
-  if (/meat|grain|flour/.test(text)) return "🌾";
-  if (/peace/.test(text)) return "🕊️";
-  if (/sin|trespass|forgiven/.test(text)) return "🩸";
-  if (/priest|aaron|consecration|ordination/.test(text)) return "🕯️";
-  if (/strange fire|nadab|abihu/.test(text)) return "⚠️";
-  if (/clean|unclean|food|animals/.test(text)) return "🧼";
-  if (/leprosy|skin|plague/.test(text)) return "🧼";
+  if (/skin disease|leprosy|examination/.test(text)) return "??";
+  if (/garments/.test(text)) return "??";
+  if (/contaminated house/.test(text)) return "??";
+  if (/bodily discharges/.test(text)) return "??";
+  if (/atonement|scapegoat|mercy seat|solemn rest/.test(text)) return "??";
+  if (/cleansing the restored person/.test(text)) return "???";
+  if (/burnt/.test(text)) return "??";
+  if (/meat|grain|flour/.test(text)) return "??";
+  if (/peace/.test(text)) return "???";
+  if (/sin|trespass|forgiven/.test(text)) return "??";
+  if (/priest|aaron|consecration|ordination/.test(text)) return "???";
+  if (/strange fire|nadab|abihu/.test(text)) return "??";
+  if (/clean|unclean|food|animals/.test(text)) return "??";
+  if (/leprosy|skin|plague/.test(text)) return "??";
   return getLeviticusTitleIcon(section.title);
 }
 
@@ -111,6 +111,18 @@ function explainLeviticusMinedPhrase(title: string, body: string, summary: strin
     add(`${title} means someone or something is moved outside Israel's camp for a time.`, "The camp is where God's people live around His holy presence.", "So uncleanness cannot be treated like an ordinary inconvenience.", "\u{1F3D5}\u{FE0F} Outside the camp", "\u{26A0}\u{FE0F} Uncleanness named", "\u{2705} Restoration still possible", "The phrase is painful, but it also points toward the hope of being cleansed and brought back.");
   } else if (lower.includes("cedar wood") || lower.includes("scarlet") || lower.includes("hyssop") || lower.includes("running water")) {
     add(`${title} names one visible detail in the cleansing ceremony.`, "This was not decoration.", "It helped Israel see cleansing and restoration with their own eyes.", "\u{1F4A7} Cleansing", "\u{1F54A}\u{FE0F} Restoration", "\u{1F441}\u{FE0F} Visible sign", "The phrase reminds the reader that God gave Israel a real process for returning from uncleanness.");
+  } else if (lower.includes("clothes shall be rent") || lower.includes("head bare") || lower.includes("upper lip") || lower.includes("unclean, unclean") || lower.includes("dwell alone")) {
+    add(`${title} describes the public signs of uncleanness outside the camp.`, "These signs were not meant to shame someone for entertainment.", "They warned the community that the person could not live in normal worship life until cleansing came.", "\u{1F3D5}\u{FE0F} Outside the camp", "\u{1F514} Public warning", "\u{2705} Hope of cleansing", "The phrase shows how serious uncleanness was near God's holy presence.");
+  } else if (lower.includes("yellow thin hair") || lower.includes("raw flesh") || lower.includes("white rising") || lower.includes("deeper than the skin") || lower.includes("plague hath not changed") || lower.includes("darkish white") || lower.includes("quick raw flesh")) {
+    add(`${title} names one visible sign the priest had to examine.`, "Leviticus does not leave the priest to guess from fear or emotion.", "The law gives visible markers so the judgment can be careful.", "\u{1F50E} Look closely", "\u{23F3} Wait when unclear", "\u{2696}\u{FE0F} Judge carefully", "The phrase teaches that holiness required patience, attention, and truth.");
+  } else if (lower.includes("two birds") || lower.includes("living bird") || lower.includes("open field") || lower.includes("shave") || lower.includes("wash his clothes") || lower.includes("in the day of his cleansing") || lower.includes("priest shall go forth") || lower.includes("log of oil")) {
+    add(`${title} shows the way back after uncleanness.`, "The person is not simply left outside forever.", "God gives a real process for cleansing, return, and restored worship.", "\u{1F54A}\u{FE0F} Life released", "\u{1F4A7} Washing", "\u{2705} Return made possible", "Leviticus is not only about exclusion. It is also about the way back.");
+  } else if (lower.includes("scrape the house") || lower.includes("break down the house") || lower.includes("cleanse the house") || lower.includes("plague in a house") || lower.includes("stones thereof") || lower.includes("dust thereof")) {
+    add(`${title} shows that Israel's homes also came under God's holy order.`, "The house was not treated as separate from worship life.", "If uncleanness spread there, it had to be examined and dealt with.", "\u{1F3E0} Home life", "\u{1F9F1} Stones and walls", "\u{1F9FC} Cleansing or removal", "The phrase teaches that holiness reaches ordinary places, not only the tabernacle.");
+  } else if (lower.includes("issue") || lower.includes("bed") || lower.includes("saddle") || lower.includes("bathe his flesh") || lower.includes("earthen vessel") || lower.includes("woman also") || lower.includes("blood of her purifying") || lower.includes("seven days")) {
+    add(`${title} brings private body matters under God's care and order.`, "Leviticus is not embarrassed to speak about bodies.", "Some uncleanness came from normal life, and some came from abnormal conditions.", "\u{1F4A7} Washing", "\u{23F3} Waiting", "\u{2705} Return to cleanness", "The phrase helps the reader separate ritual uncleanness from personal shame.");
+  } else if (lower.includes("mercy seat") || lower.includes("within the vail") || lower.includes("cloud of incense") || lower.includes("confess over him") || lower.includes("all their iniquities") || lower.includes("scapegoat") || lower.includes("bear upon him") || lower.includes("fit man") || lower.includes("afflict your souls")) {
+    add(`${title} helps explain the deep cleansing of the Day of Atonement.`, "Israel's sin could not be ignored or explained away.", "God gave a way for sin to be covered before Him and carried away from the people.", "\u{1FA78} Blood before God", "\u{1F410} Sin carried away", "\u{1F64F} Mercy on God's terms", "The phrase shows both the seriousness of sin and the mercy God provides.");
   } else if (lower.includes("make an atonement") || lower.includes("atonement")) {
     add(`${title} means sin or uncleanness must be dealt with before a holy God.`, "Atonement is about God making a way for people to be covered, cleansed, and accepted according to His command.", "\u{1FA78} Blood", "\u{1F64F} Mercy", "\u{2705} Accepted by God's way", "The phrase keeps mercy and holiness together.");
   } else if (context.includes("burnt offering")) {
@@ -189,22 +201,22 @@ function makeBeginnerLeviticusPhrase(title: string, section: PersonalLeviticusPh
     focus,
     "Leviticus can feel strange at first because it talks about animals, blood, flour, oil, salt, fat, priests, and fire.",
     "But the big question is simple: how can people with sin come near the holy God who now dwells among them?",
-    "â›º God's presence",
-    "ðŸ”¥ Costly worship",
-    "ðŸ©¸ Atonement",
-    "ðŸ¤² Mercy provided",
+    "⛺ God's presence",
+    "🔥 Costly worship",
+    "🩸 Atonement",
+    "🤲 Mercy provided",
     `In ${section.title}, the details help explain the way God gives for worship, cleansing, fellowship, or forgiveness.`,
   ]);
 }
 
 function ensureBeginnerLeviticusPhraseDepth(section: PersonalLeviticusPhraseSectionInput): PersonalLeviticusPhraseSectionInput {
   const additions: Array<[string, string]> = [
-    makeBeginnerLeviticusPhrase("ðŸ§­ The Offering Scene", section, "The wording helps locate the offering scene: who brings the offering, what is done with it, and what need it answers before God."),
-    makeBeginnerLeviticusPhrase("ðŸ”Ž Why This Detail Matters", section, "This detail matters because Leviticus teaches through repeated actions like bringing, laying on hands, sprinkling blood, burning portions, and receiving forgiveness."),
-    makeBeginnerLeviticusPhrase("ðŸ§  Beginner Connection", section, "A new Bible reader may not know why these rituals matter, but they prepare the whole Bible's language of sacrifice, priesthood, holiness, and atonement."),
-    makeBeginnerLeviticusPhrase("ðŸ§µ Watch The Pattern", section, "Watch the pattern: God speaks from the tabernacle, the worshiper brings what God commands, the priest serves at the altar, and God provides a way near."),
-    makeBeginnerLeviticusPhrase("â¤ï¸ What This Shows About People", section, "This scene shows that people need surrender, gratitude, fellowship, cleansing, and forgiveness because sin affects life near God's presence."),
-    makeBeginnerLeviticusPhrase("ðŸ™Œ What This Shows About God", section, "This scene shows the LORD as holy and merciful. He tells His people the truth about sin while giving them a way to draw near."),
+    makeBeginnerLeviticusPhrase("🧭 The Offering Scene", section, "The wording helps locate the offering scene: who brings the offering, what is done with it, and what need it answers before God."),
+    makeBeginnerLeviticusPhrase("🔎 Why This Detail Matters", section, "This detail matters because Leviticus teaches through repeated actions like bringing, laying on hands, sprinkling blood, burning portions, and receiving forgiveness."),
+    makeBeginnerLeviticusPhrase("🧠 Beginner Connection", section, "A new Bible reader may not know why these rituals matter, but they prepare the whole Bible's language of sacrifice, priesthood, holiness, and atonement."),
+    makeBeginnerLeviticusPhrase("🧵 Watch The Pattern", section, "Watch the pattern: God speaks from the tabernacle, the worshiper brings what God commands, the priest serves at the altar, and God provides a way near."),
+    makeBeginnerLeviticusPhrase("❤️ What This Shows About People", section, "This scene shows that people need surrender, gratitude, fellowship, cleansing, and forgiveness because sin affects life near God's presence."),
+    makeBeginnerLeviticusPhrase("🙌 What This Shows About God", section, "This scene shows the LORD as holy and merciful. He tells His people the truth about sin while giving them a way to draw near."),
   ];
 
   return {
@@ -250,14 +262,14 @@ function makeLeviticusSectionsFromDeepStudy(
 }
 
 const LEVITICUS_1_8_MOBILE_FORMAT_CUES: Record<number, string[]> = {
-  1: ["ðŸ”¥ The burnt offering shows whole surrender.", "ðŸ©¸ Blood marks atonement at the altar.", "ðŸ™Œ Worship begins by coming God's way."],
-  2: ["ðŸŒ¾ The grain offering gives thanks for provision.", "ðŸ§‚ Salt reminds Israel of covenant faithfulness.", "ðŸ”¥ Part is burned to the LORD; part supports the priests."],
-  3: ["ðŸ¤ The peace offering celebrates fellowship.", "ðŸ½ï¸ Worship can include a shared meal.", "ðŸ©¸ Life is claimed by God, so blood is not treated as common."],
-  4: ["ðŸ’” Sin can happen even when people do not mean to rebel.", "ðŸ©¸ Atonement is needed for priest, people, leader, and common person.", "ðŸ™Œ God provides forgiveness without pretending sin is small."],
-  5: ["ðŸ—£ï¸ Guilt must be confessed honestly.", "ðŸ¤² Mercy makes room for the poor.", "ðŸ§¾ Some wrongs create debt that must be repaired."],
-  6: ["ðŸ¤ Sin against a neighbor is also sin against the LORD.", "ðŸ”¥ The altar fire is tended continually.", "ðŸ‘¨â€ðŸ³ Priests handle holy offerings carefully."],
-  7: ["ðŸ©¸ The guilt offering is most holy.", "ðŸ™ Peace offerings include thanks, vows, and freewill worship.", "ðŸš« Blood and fat are reserved for God."],
-  8: ["ðŸ‘• Priests are washed, clothed, and anointed.", "ðŸ©¸ Blood marks them for hearing, serving, and walking.", "â³ Consecration takes time and obedience."],
+  1: ["🔥 The burnt offering shows whole surrender.", "🩸 Blood marks atonement at the altar.", "🙌 Worship begins by coming God's way."],
+  2: ["🌾 The grain offering gives thanks for provision.", "🧂 Salt reminds Israel of covenant faithfulness.", "🔥 Part is burned to the LORD; part supports the priests."],
+  3: ["🤝 The peace offering celebrates fellowship.", "🍽️ Worship can include a shared meal.", "🩸 Life is claimed by God, so blood is not treated as common."],
+  4: ["💔 Sin can happen even when people do not mean to rebel.", "🩸 Atonement is needed for priest, people, leader, and common person.", "🙌 God provides forgiveness without pretending sin is small."],
+  5: ["🗣️ Guilt must be confessed honestly.", "🤲 Mercy makes room for the poor.", "🧾 Some wrongs create debt that must be repaired."],
+  6: ["🤝 Sin against a neighbor is also sin against the LORD.", "🔥 The altar fire is tended continually.", "👨‍🍳 Priests handle holy offerings carefully."],
+  7: ["🩸 The guilt offering is most holy.", "🙏 Peace offerings include thanks, vows, and freewill worship.", "🚫 Blood and fat are reserved for God."],
+  8: ["👕 Priests are washed, clothed, and anointed.", "🩸 Blood marks them for hearing, serving, and walking.", "⏳ Consecration takes time and obedience."],
 };
 
 const LEVITICUS_1_8_BANNED_FILLER_TITLES = [
@@ -337,106 +349,107 @@ function getLeviticusPhraseList(section: PersonalLeviticusPhraseSectionInput, cl
 
   if (/burnt offering|meat offering|peace offering|sin offering|trespass offering|offering|oblation|sacrifice/.test(lower)) {
     return [
-      `🔥 ${cleanTitle}`,
-      "🙌 Worship brought near",
-      "🩸 Sacrifice before God",
-      "📜 A holy pattern for approach",
+      `?? ${cleanTitle}`,
+      "?? Worship brought near",
+      "?? Sacrifice before God",
+      "?? A holy pattern for approach",
     ];
   }
 
   if (/blood|atonement|sprinkle|altar|without blemish|lay his hand|kill/.test(lower)) {
     return [
-      `🩸 ${cleanTitle}`,
-      "⚖️ Sin taken seriously",
-      "🙌 Life given before the LORD",
-      "🕊️ Atonement and mercy",
+      `?? ${cleanTitle}`,
+      "?? Sin taken seriously",
+      "?? Life given before the LORD",
+      "??? Atonement and mercy",
     ];
   }
 
   if (/priest|aaron|sons|consecrate|anoint|garments|wash|oil/.test(lower)) {
     return [
-      `🕯️ ${cleanTitle}`,
-      "🧼 Priests set apart",
-      "👕 Holy service",
-      "🙌 Worship led God's way",
+      `??? ${cleanTitle}`,
+      "?? Priests set apart",
+      "?? Holy service",
+      "?? Worship led God's way",
     ];
   }
 
   if (/holy|unclean|clean|defiled|separate|sanctify/.test(lower)) {
     return [
-      `🧼 ${cleanTitle}`,
-      "⚖️ Clean and unclean",
-      "🙌 Holiness before God",
-      "👥 Israel learning distinction",
+      `?? ${cleanTitle}`,
+      "?? Clean and unclean",
+      "?? Holiness before God",
+      "?? Israel learning distinction",
     ];
   }
 
   if (/leprosy|plague|skin|scab|bright spot|priest shall look|shut up|pronounce/.test(lower)) {
     return [
-      `🔎 ${cleanTitle}`,
-      "🧑‍⚕️ Careful examination",
-      "🏕️ Camp kept holy",
-      "💔 Sickness and separation",
+      `?? ${cleanTitle}`,
+      "????? Careful examination",
+      "??? Camp kept holy",
+      "?? Sickness and separation",
     ];
   }
 
   if (/goat|scapegoat|mercy seat|holy place|incense|within the veil|azazel/.test(lower)) {
     return [
-      `🕊️ ${cleanTitle}`,
-      "🩸 Atonement for sin",
-      "🏕️ The holy place",
-      "🙌 Mercy before the LORD",
+      `??? ${cleanTitle}`,
+      "?? Atonement for sin",
+      "??? The holy place",
+      "?? Mercy before the LORD",
     ];
   }
 
   if (/fire|strange fire|nadab|abihu|died|glory|appeared/.test(lower)) {
     return [
-      `🔥 ${cleanTitle}`,
-      "⚠️ Holy worship",
-      "🙌 God's presence is serious",
-      "📜 Worship must follow God's command",
+      `?? ${cleanTitle}`,
+      "?? Holy worship",
+      "?? God's presence is serious",
+      "?? Worship must follow God's command",
     ];
   }
 
   return [
-    `🔎 ${cleanTitle}`,
-    section.chapter <= 7 ? "🔥 Offerings before the LORD" : section.chapter <= 10 ? "🕯️ Priests serving before God" : "🧼 Holiness in daily life",
-    section.chapter <= 7 ? "🩸 Sacrifice teaching approach" : section.chapter <= 10 ? "🙌 Worship treated as holy" : "👥 Israel learning clean and unclean",
+    `?? ${cleanTitle}`,
+    section.chapter <= 7 ? "?? Offerings before the LORD" : section.chapter <= 10 ? "??? Priests serving before God" : "?? Holiness in daily life",
+    section.chapter <= 7 ? "?? Sacrifice teaching approach" : section.chapter <= 10 ? "?? Worship treated as holy" : "?? Israel learning clean and unclean",
   ];
 }
 
 function getLeviticusTeachingLines(section: PersonalLeviticusPhraseSectionInput, cleanTitle: string) {
   const lower = cleanTitle.toLowerCase();
+  const focus = getLeviticusSectionFocus(section);
 
   if (/priest shall look|looketh/.test(lower)) {
     return [
-      `${cleanTitle} protected the person and the camp by refusing careless labels.`,
-      `In ${cleanTitle}, the priest was not guessing, rushing, or treating the person's condition lightly.`,
-      `${cleanTitle} shows that clean and unclean decisions affected worship, community life, and whether someone could remain in the camp.`,
+      `${cleanTitle} protects the person and the camp during ${focus}.`,
+      `During ${focus}, the priest was not guessing, rushing, or treating ${cleanTitle} lightly.`,
+      `The decision around ${cleanTitle} affected worship, community life, and whether someone could remain near the camp during ${focus}.`,
     ];
   }
 
   if (/without the camp|outside the camp/.test(lower)) {
     return [
-      `${cleanTitle} was painful, but it also kept uncleanness from being treated as normal near God's holy presence.`,
-      `Behind ${cleanTitle}, the camp was where God's people lived around His holy presence, so uncleanness could not be treated as ordinary there.`,
-      `${cleanTitle} helps the reader see both the seriousness of uncleanness and the hope of being restored when cleansing was complete.`,
+      `${cleanTitle} is painful in ${focus}, but it is not hopeless.`,
+      `The camp around ${cleanTitle} was where God's people lived around His holy presence.`,
+      `${cleanTitle} shows both the seriousness of uncleanness and the hope of restoration after cleansing.`,
     ];
   }
 
   if (/cedar wood|scarlet|hyssop|running water/.test(lower)) {
     return [
-      `${cleanTitle} helps make the cleansing ceremony visible instead of hidden or vague.`,
-      `${cleanTitle} was not included as decoration; it belonged to the visible process of being cleansed and restored.`,
-      `${cleanTitle} helps the reader see that Leviticus teaches restoration through actions Israel could watch, remember, and understand.`,
+      `${cleanTitle} makes ${focus} visible instead of hidden or vague.`,
+      `${cleanTitle} was not included as decoration in ${focus}.`,
+      `${cleanTitle} served in a cleansing process Israel could watch, remember, and understand during ${focus}.`,
     ];
   }
 
   if (/make an atonement|atonement/.test(lower)) {
     return [
-      `${cleanTitle} keeps the focus on God's provided way for guilt and uncleanness to be covered.`,
-      `In ${cleanTitle}, atonement is about God making a way for people to be covered, cleansed, and accepted according to His command.`,
-      `${cleanTitle} keeps Leviticus centered on mercy and holiness together, not ritual without meaning.`,
+      `${cleanTitle} keeps the focus on God's provided way during ${focus}.`,
+      `Atonement means guilt and uncleanness connected to ${cleanTitle} must be covered before a holy God.`,
+      `The phrase keeps mercy and holiness together, not ritual without meaning.`,
     ];
   }
 
@@ -472,11 +485,167 @@ function getLeviticusTeachingLines(section: PersonalLeviticusPhraseSectionInput,
     ];
   }
 
+  if (/strange fire|nadab|abihu|commanded them not|sanctified|held his peace/.test(lower)) {
+    return [
+      `${cleanTitle} shows that worship near God cannot be invented by the priests.`,
+      `The issue around ${cleanTitle} is not creativity, but disobedience near holy fire.`,
+      `${cleanTitle} teaches that God's presence is good, but never casual.`,
+    ];
+  }
+
   return [
-    `${cleanTitle} gives an important detail in Leviticus.`,
-    `The detail in ${cleanTitle} helps Israel learn how to live near a holy God.`,
-    `${cleanTitle} should be read as worship training, not as a random rule.`,
+    `${cleanTitle} helps explain what holiness looked like during ${focus}.`,
+    `Through ${cleanTitle}, Israel could see that God's law touched real actions, objects, bodies, places, and worship practices.`,
+    `${cleanTitle} keeps the instruction clear instead of vague.`,
   ];
+}
+
+function getLeviticusSectionFocus(section: PersonalLeviticusPhraseSectionInput) {
+  if (section.chapter === 1) {
+    if (section.startVerse >= 13) return "bird offerings for worshipers with fewer resources";
+    if (section.startVerse >= 7) return "the altar work of the burnt offering";
+    return "the worshiper bringing the first burnt offering";
+  }
+  if (section.chapter === 2) {
+    if (section.startVerse >= 13) return "salt, firstfruits, and covenant faithfulness";
+    if (section.startVerse >= 7) return "grain offerings prepared in different ways";
+    return "flour, oil, and frankincense brought near to God";
+  }
+  if (section.chapter === 3) {
+    if (section.startVerse >= 13) return "the lasting command about fat and blood";
+    if (section.startVerse >= 7) return "peace offerings from the flock";
+    return "peace offerings from the herd";
+  }
+  if (section.chapter === 4) {
+    if (section.startVerse >= 27) return "atonement for one of the common people";
+    if (section.startVerse >= 22) return "atonement when a ruler sins";
+    if (section.startVerse >= 13) return "atonement for the whole congregation";
+    if (section.startVerse >= 7) return "blood and ashes in the priestly sin offering";
+    return "sin committed through ignorance";
+  }
+  if (section.chapter === 5) {
+    if (section.startVerse >= 14) return "trespass in the holy things of the LORD";
+    if (section.startVerse >= 7) return "mercy for a worshiper who cannot afford a lamb";
+    return "confession after hidden or ordinary guilt";
+  }
+  if (section.chapter === 6) {
+    if (section.startVerse >= 20) return "priestly portions and holy handling";
+    if (section.startVerse >= 8) return "the altar fire and the priest's daily care";
+    return "restitution when a neighbor has been wronged";
+  }
+  if (section.chapter === 7) {
+    if (section.startVerse >= 28) return "wave and heave portions for the priests";
+    if (section.startVerse >= 17) return "uncleanness, fat, and blood restrictions";
+    if (section.startVerse >= 11) return "thanksgiving and peace offering meals";
+    return "the trespass offering and priestly portions";
+  }
+  if (section.chapter === 8) {
+    if (section.startVerse >= 32) return "the seven-day consecration charge";
+    if (section.startVerse >= 20) return "the ram of consecration";
+    if (section.startVerse >= 14) return "blood applied during ordination";
+    if (section.startVerse >= 7) return "Aaron clothed for priestly service";
+    return "Aaron and his sons being gathered for ordination";
+  }
+  if (section.chapter === 9) {
+    if (section.startVerse >= 19) return "God receiving the offering with glory and fire";
+    if (section.startVerse >= 13) return "the people's offering";
+    if (section.startVerse >= 7) return "Aaron offering for himself and the people";
+    return "the eighth day when priestly ministry begins";
+  }
+  if (section.chapter === 10) {
+    if (section.startVerse >= 14) return "Aaron's grief and the uneaten sin offering";
+    if (section.startVerse >= 8) return "priestly discernment after judgment";
+    return "Nadab and Abihu offering strange fire";
+  }
+  if (section.chapter === 11) {
+    if (section.startVerse >= 42) return "the final call to be holy";
+    if (section.startVerse >= 36) return "uncleanness around vessels, seed, and creeping things";
+    if (section.startVerse >= 30) return "uncleanness from creeping things";
+    if (section.startVerse >= 24) return "contact with carcasses and uncleanness";
+    if (section.startVerse >= 13) return "birds and creeping things";
+    if (section.startVerse >= 7) return "unclean land animals and water creatures";
+    return "clean and unclean land animals";
+  }
+  if (section.chapter === 12) {
+    if (section.startVerse >= 7) return "the offering that completes purification";
+    return "childbirth, circumcision, and purification";
+  }
+  if (section.chapter === 13) {
+    if (section.startVerse >= 59) return "the closing law about garment uncleanness";
+    if (section.startVerse >= 53) return "the rechecked garment after washing";
+    if (section.startVerse >= 47) return "the first inspection of garment uncleanness";
+    if (section.startVerse >= 43) return "the public signs of uncleanness";
+    if (section.startVerse >= 31) return "unclear signs that require repeated inspection";
+    if (section.startVerse >= 19) return "spreading marks and deeper examination";
+    if (section.startVerse >= 13) return "uncleanness that affects the whole person";
+    if (section.startVerse >= 7) return "a mark that spreads after the first inspection";
+    return "the first skin examination";
+  }
+  if (section.chapter === 14) {
+    if (section.startVerse >= 51) return "the final cleansing sign for a house";
+    if (section.startVerse >= 45) return "a house that must be broken down";
+    if (section.startVerse >= 39) return "a returning plague in the house";
+    if (section.startVerse >= 33) return "uncleanness discovered in a house";
+    if (section.startVerse >= 31) return "the poor person's cleansing offering";
+    if (section.startVerse >= 25) return "oil and blood in the cleansing ceremony";
+    if (section.startVerse >= 19) return "the living bird released into the open field";
+    if (section.startVerse >= 13) return "washing, shaving, and reentry";
+    if (section.startVerse >= 7) return "blood and oil applied to the restored person";
+    return "the first cleansing ceremony outside the camp";
+  }
+  if (section.chapter === 15) {
+    if (section.startVerse >= 31) return "why Israel must be separated from uncleanness";
+    if (section.startVerse >= 25) return "extended bleeding and restoration";
+    if (section.startVerse >= 19) return "a woman's monthly uncleanness";
+    if (section.startVerse >= 13) return "cleansing after a bodily issue";
+    if (section.startVerse >= 7) return "contact with uncleanness";
+    return "bodily discharges and daily uncleanness";
+  }
+  if (section.chapter === 16) {
+    if (section.startVerse >= 29) return "the yearly Day of Atonement statute";
+    if (section.startVerse >= 23) return "washing and finishing the atonement work";
+    if (section.startVerse >= 17) return "confession over the live goat";
+    if (section.startVerse >= 11) return "blood, incense, and the mercy seat";
+    if (section.startVerse >= 7) return "the two goats before the LORD";
+    return "restricted access after Aaron's sons died";
+  }
+
+  return "life near God's holy presence";
+}
+
+function getLeviticusContextualOpening(section: PersonalLeviticusPhraseSectionInput, cleanTitle: string) {
+  const lower = cleanTitle.toLowerCase();
+  const focus = getLeviticusSectionFocus(section);
+
+  if (/priest shall look|looketh/.test(lower)) {
+    return `${cleanTitle} means the priest examines ${focus} instead of guessing.`;
+  }
+
+  if (/cedar wood|scarlet|hyssop|running water/.test(lower)) {
+    return `${cleanTitle} names a visible cleansing detail in ${focus}.`;
+  }
+
+  if (/without the camp|outside the camp/.test(lower)) {
+    return `${cleanTitle} moves uncleanness outside the camp during ${focus}.`;
+  }
+
+  if (/leprosy|plague|skin|scab|bright spot|hair|deeper|white rising|raw flesh|yellow thin hair|plague hath not changed|darkish white/.test(lower)) {
+    return `${cleanTitle} gives the priest a visible sign to weigh during ${focus}.`;
+  }
+
+  if (/wash|bathe|issue|blood|bed|saddle|earthen|unclean until/.test(lower)) {
+    return `${cleanTitle} shows how ${focus} affected ordinary daily life.`;
+  }
+
+  if (/mercy seat|scapegoat|within the vail|confess|iniquities|atonement|incense|lot|azazel|afflict/.test(lower)) {
+    return `${cleanTitle} explains one movement in ${focus}.`;
+  }
+
+  if (/house|stones|scrape|break down|cleanse the house/.test(lower)) {
+    return `${cleanTitle} explains how ${focus} was handled under God's law.`;
+  }
+
+  return `${cleanTitle} helps explain ${focus}.`;
 }
 
 function normalizeRepeatedLeviticusLines(sections: PersonalLeviticusPhraseSectionInput[]) {
@@ -517,13 +686,13 @@ function normalizeRepeatedLeviticusLines(sections: PersonalLeviticusPhraseSectio
         }
 
         for (const line of getLeviticusTeachingLines(section, cleanTitle)) {
-          if (kept.length >= 5) break;
+          if (kept.length >= 7) break;
           if (!kept.some((keptLine) => normalizeLine(keptLine) === normalizeLine(line))) {
             kept.push(line);
           }
         }
 
-        while (kept.length < 4) {
+        while (kept.length < 6) {
           const additions = [
             `${cleanTitle} keeps the reader close to the exact Bible wording.`,
             `It names a real detail God included in this part of the law.`,
@@ -532,7 +701,29 @@ function normalizeRepeatedLeviticusLines(sections: PersonalLeviticusPhraseSectio
           kept.push(additions[kept.length % additions.length]);
         }
 
-        return [ensureLeviticusTitleEmoji(title), note(kept)] as [string, string];
+        const firstKey = normalizeLine(kept[0] ?? "");
+        if ((counts.get(firstKey) ?? 0) >= 3) {
+          kept[0] = getLeviticusContextualOpening(section, cleanTitle);
+        }
+
+        const seenInCard = new Set<string>();
+        const focus = getLeviticusSectionFocus(section);
+        const refined = kept.map((line, index) => {
+          const key = normalizeLine(line);
+          const isEmojiLine = /^[^A-Za-z0-9'"(]/.test(line);
+          const isRepeated = (counts.get(key) ?? 0) >= 8 || seenInCard.has(key);
+          seenInCard.add(key);
+
+          if (index === 0 || isEmojiLine || !isRepeated) return line;
+
+          if (line.includes(cleanTitle)) {
+            return `${cleanTitle} carries its meaning inside ${focus}, not as an empty detail.`;
+          }
+
+          return `Inside ${focus}, this detail helps Israel treat holiness with care.`;
+        });
+
+        return [ensureLeviticusTitleEmoji(title), note(refined)] as [string, string];
       }),
     };
   });
@@ -808,6 +999,6 @@ export const LEVITICUS_1_10_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionInp
   formatLeviticusOneToEightSectionExplanations([
     ...makeLeviticusSectionsFromDeepStudy(BIBLE_YEAR_DAY_THIRTY_FOUR_DEEP_STUDY_SECTIONS, [9, 10, 11, 12], "\u{2728}").map(deepenLeviticusPhraseCards),
     ...makeLeviticusSectionsFromDeepStudy(BIBLE_YEAR_DAY_THIRTY_FIVE_DEEP_STUDY_SECTIONS, [13, 14, 15, 16], "\u{1F54A}\u{FE0F}").map(deepenLeviticusPhraseCards),
-    ...makeLeviticusSectionsFromDeepStudy(BIBLE_YEAR_DAY_THIRTY_TWO_DEEP_STUDY_SECTIONS, [1, 2, 3, 4], "🔥").map(deepenLeviticusPhraseCards),
-    ...makeLeviticusSectionsFromDeepStudy(BIBLE_YEAR_DAY_THIRTY_THREE_DEEP_STUDY_SECTIONS, [5, 6, 7, 8], "🩸").map(deepenLeviticusPhraseCards),
+    ...makeLeviticusSectionsFromDeepStudy(BIBLE_YEAR_DAY_THIRTY_TWO_DEEP_STUDY_SECTIONS, [1, 2, 3, 4], "??").map(deepenLeviticusPhraseCards),
+    ...makeLeviticusSectionsFromDeepStudy(BIBLE_YEAR_DAY_THIRTY_THREE_DEEP_STUDY_SECTIONS, [5, 6, 7, 8], "??").map(deepenLeviticusPhraseCards),
   ]);

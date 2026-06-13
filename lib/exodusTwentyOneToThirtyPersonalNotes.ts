@@ -588,6 +588,19 @@ function makeDay27PhraseCard(section: PersonalExodusPhraseSectionInput, title: s
   return [`📌 ${title}`, explainDay27Phrase(section, title)];
 }
 
+const DAY_27_EXACT_PHRASE_EXPLANATIONS: Record<string, string[]> = {
+  "She Shall Not Go Out As The Menservants Do": ["She Shall Not Go Out As The Menservants Do means this woman is not treated like the male servant in the earlier law.", "Her situation involves household and marriage responsibility, so her protection is described differently.", "God is limiting what a powerful household can do to someone vulnerable.", "\u{1F469} Vulnerable woman", "\u{1F3E0} Household duty", "\u{2696}\u{FE0F} Protection", "The phrase keeps the reader from flattening every servant law into the same situation."],
+  "For He Is His Money": ["For He Is His Money is hard wording from an ancient household law.", "It means the servant was legally tied to the master's property and labor system.", "The law is describing responsibility inside that world, not saying the servant has no value before God.", "\u{1F4B0} Legal loss", "\u{1F9D1} Servant harmed", "\u{2696}\u{FE0F} Judgment weighed", "The phrase helps a beginner see that Exodus is regulating a broken ancient system with limits and accountability."],
+  "Thirty Shekels Of Silver": ["Thirty Shekels Of Silver names the payment required when an ox kills a servant.", "A shekel was a weight of silver used for payment.", "The amount shows that even the death of a servant could not be ignored.", "\u{1FA99} Silver", "\u{1F402} Dangerous ox", "\u{2696}\u{FE0F} Required payment", "The phrase gives a concrete cost where life and responsibility meet in the law."],
+  "If It Be Known": ["If It Be Known means the owner had knowledge of the danger.", "The ox had already been known to push in the past.", "That makes the owner responsible for failing to restrain it.", "\u{1F441}\u{FE0F} Known danger", "\u{1F402} Repeated behavior", "\u{1F6A7} Preventable harm", "The phrase teaches that ignoring known danger is not treated as innocence."],
+  "He Shall Not Make Good": ["He Shall Not Make Good means the borrower does not have to repay in that situation.", "If the owner was present, the responsibility is judged differently.", "The law pays attention to context instead of forcing one flat rule on every case.", "\u{1F9FE} No repayment", "\u{1F441}\u{FE0F} Owner present", "\u{2696}\u{FE0F} Careful judgment", "The phrase shows that God's justice considers what actually happened."],
+  "He Shall Surely Make It Good": ["He Shall Surely Make It Good means the borrower must repay when responsible for the loss.", "Make it good means restore or compensate for what was damaged.", "The repeated wording makes the duty strong and clear.", "\u{1F9FE} Repayment", "\u{1F91D} Responsibility", "\u{2696}\u{FE0F} Restitution", "The phrase teaches that borrowing from a neighbor carries real accountability."],
+  "Thou Shalt Take No Gift": ["Thou Shalt Take No Gift means judges must not accept bribes.", "Gift here is not a birthday present.", "It means money or favor that bends judgment.", "\u{1F4B0} Bribe", "\u{1F441}\u{FE0F} Blinded judgment", "\u{2696}\u{FE0F} Fair court", "The phrase protects justice from being bought by the person with more power."],
+  "Three Times In The Year": ["Three Times In The Year means Israel's men were to appear before the LORD at set feast times.", "Their calendar included regular moments of worship, memory, and thanksgiving.", "God was shaping the year around His rescue and provision.", "\u{1F4C5} Set times", "\u{1F33E} Harvest", "\u{1F64C} Worship", "The phrase teaches that Israel's time belonged to the LORD, not only their emergencies."],
+  "Moses Took The Blood": ["Moses Took The Blood begins the blood-sign moment of the covenant ceremony.", "The covenant is not sealed by words alone.", "Blood from sacrifice marks the seriousness of life with the holy LORD.", "\u{1FA78} Blood", "\u{1F525} Sacrifice", "\u{1F4DC} Covenant", "The phrase helps the reader see that covenant with God is serious, costly, and holy."],
+  "Moses Went Up Into The Mount": ["Moses Went Up Into The Mount means Moses enters the holy place of meeting on Sinai.", "The people remain below while Moses goes up as the mediator.", "He is going to receive instruction from the LORD.", "\u{26F0}\u{FE0F} Mount Sinai", "\u{1F9D4} Moses", "\u{2601}\u{FE0F} Holy cloud", "The phrase shows nearness to God happening through the person God appoints."],
+};
+
 function explainDay27Phrase(section: PersonalExodusPhraseSectionInput, title: string): string {
   const lower = title.toLowerCase();
   const lines: string[] = [];
@@ -596,6 +609,9 @@ function explainDay27Phrase(section: PersonalExodusPhraseSectionInput, title: st
       if (item && !lines.includes(item)) lines.push(item);
     }
   };
+
+  const exact = DAY_27_EXACT_PHRASE_EXPLANATIONS[title];
+  if (exact) return note(exact);
 
   if (lower.includes("judgments")) {
     add(`${title} means these are case laws for real situations among God's people.`, "After the Ten Commandments, God shows what justice looks like in daily life.", "These laws touch servants, families, injuries, property, worship, courts, and covenant.", "⚖️ Case laws", "🏠 Ordinary life", "📜 God's justice", "The LORD is teaching Israel not to become another Egypt.");
@@ -660,7 +676,7 @@ function explainDay27Phrase(section: PersonalExodusPhraseSectionInput, title: st
   } else if (lower.includes("cloud covered") || lower.includes("glory of the lord") || lower.includes("seventh day") || lower.includes("devouring fire") || lower.includes("forty days")) {
     add(`${title} means Moses is entering the holy cloud where the LORD is present.`, "The mountain is covered with glory, and the people see the LORD's presence like devouring fire.", "Moses stays forty days and nights to receive more instruction.", "☁️ Cloud", "🔥 Devouring fire", "⛰️ Forty days", "God's nearness is beautiful, weighty, and never casual.");
   } else {
-    add(`${title} teaches a real detail in Israel's covenant life after Sinai.`, "The wording helps a beginner slow down and see what God is teaching about justice, mercy, worship, responsibility, or covenant nearness.", "📖 Bible words", "🔍 Slow reading", "🧠 Clear understanding", "God's rescued people are learning how to live differently from Egypt.");
+    add(`${title} explains one part of Israel's covenant life after Sinai.`, "The wording helps the reader see what God is teaching about justice, mercy, worship, responsibility, or covenant nearness.", "📖 Scripture wording", "🔍 Phrase meaning", "🧠 Covenant understanding", "God's rescued people are learning how to live differently from Egypt.");
   }
 
   return note(lines.slice(0, 8));
@@ -721,7 +737,7 @@ function explainDay28Phrase(section: PersonalExodusPhraseSectionInput, title: st
   };
 
   if (lower.includes("blue, and purple, and scarlet") && section.reference === "Exodus 26:1-6") {
-    add(`${title} means these colors are woven into the tabernacle curtains.`, "These colors are not just a supply list here; they become part of the fabric surrounding holy space.", "The curtains teach beauty, skill, and reverence in the place where God dwells.", "🧵 Woven colors", "🏕️ Tabernacle curtains", "✨ Holy beauty", "The same colors given as offerings are now shaped into worship space.");
+    add(`${title} means these colors are woven into the tabernacle curtains.`, "These colors are not just a supply list here; they are woven into the fabric surrounding holy space.", "The curtains teach beauty, skill, and reverence in the place where God dwells.", "🧵 Woven colors", "🏕️ Tabernacle curtains", "✨ Holy beauty", "The same colors given as offerings are now shaped into worship space.");
   } else if (lower.includes("shittim wood") && section.reference === "Exodus 27:1-6") {
     add(`${title} means this wood is used for the altar of sacrifice.`, "The altar is made to be strong, portable, and overlaid with brass.", "This is the place where sacrifice is offered before approach to God.", "🪵 Shittim wood", "🔥 Altar", "🩸 Sacrifice", "The material serves the worship where sin is dealt with before the LORD.");
   } else if (lower.includes("overlay it with pure gold") && section.reference === "Exodus 25:23-28") {
@@ -775,7 +791,7 @@ function explainDay28Phrase(section: PersonalExodusPhraseSectionInput, title: st
   } else if (lower.includes("tabernacle") || lower.includes("curtains") || lower.includes("fine twined linen") || lower.includes("cunning work") || lower.includes("coupled") || lower.includes("loops") || lower.includes("taches")) {
     add(`${title} means this detail helps build the tent where God will dwell among His people.`, "The curtains, loops, clasps, colors, and designs are not random decoration.", "They create ordered holy space around God's presence.", "🏕️ Holy tent", "🧵 Curtains", "✨ Beauty and order", "The tabernacle teaches that nearness to God is a gift arranged by God Himself.");
   } else if (lower.includes("goats") || lower.includes("covering") || lower.includes("eleven curtains") || lower.includes("remaineth") || lower.includes("rams") || lower.includes("badgers")) {
-    add(`${title} means this layer covers and protect the tabernacle.`, "The holy tent needed coverings that protected and completed the structure.", "Even outer layers mattered because the dwelling place of God was treated with care.", "🏕️ Covering", "🐐 Goats' hair", "🛡️ Protection", "Holy space is both beautiful inside and carefully covered outside.");
+    add(`${title} means this layer covers and protects the tabernacle.`, "The holy tent needed coverings that protected and completed the structure.", "Even outer layers mattered because the dwelling place of God was treated with care.", "🏕️ Covering", "🐐 Goats' hair", "🛡️ Protection", "Holy space is both beautiful inside and carefully covered outside.");
   } else if (lower.includes("boards") || lower.includes("standing up") || lower.includes("ten cubits") || lower.includes("tenons") || lower.includes("sockets") || lower.includes("south side") || lower.includes("corners") || lower.includes("ring") || lower.includes("bars")) {
     add(`${title} gives the tabernacle structure strength and shape.`, "Boards, sockets, tenons, rings, and bars hold the tent together.", "The details may feel technical, but they show that God's dwelling place is ordered and stable.", "🪵 Boards", "⚙️ Sockets and rings", "🏕️ Strong structure", "Worship is not thrown together. It is built according to God's pattern.");
   } else if (lower.includes("middle bar") || lower.includes("rear up") || lower.includes("fashion") || lower.includes("vail") || lower.includes("holy place") || lower.includes("most holy") || lower.includes("door of the tent")) {
@@ -783,7 +799,7 @@ function explainDay28Phrase(section: PersonalExodusPhraseSectionInput, title: st
   } else if (lower.includes("altar") || lower.includes("five cubits") || lower.includes("horns") || lower.includes("ashes") || lower.includes("vessels") || lower.includes("hollow with boards") || lower.includes("shewed thee in the mount")) {
     add(`${title} names an altar detail connected to sacrifice and approach.`, "The altar stands in the worship system because sinful people need atonement before a holy God.", "Its horns, vessels, ashes, and carrying poles all serve that holy work.", "🩸 Sacrifice", "🔥 Altar", "📐 Mountain pattern", "Approach to God begins with God's provided way, not human confidence.");
   } else if (lower.includes("court") || lower.includes("hangings") || lower.includes("pillars") || lower.includes("sockets") || lower.includes("gate") || lower.includes("pins")) {
-    add(`${title} means this detail forms part of the courtyard boundary around the tabernacle.`, "The court marked off holy space from ordinary camp space.", "People did not rush into God's presence however they wanted.", "🚧 Boundary", "🏕️ Court", "🚪 Gate", "God's nearness is open by His command and guarded by His holiness.");
+    add(`${title} means this detail helps form the courtyard boundary around the tabernacle.`, "The court marked off holy space from ordinary camp space.", "People did not rush into God's presence however they wanted.", "🚧 Boundary", "🏕️ Court", "🚪 Gate", "God's nearness is open by His command and guarded by His holiness.");
   } else if (lower.includes("pure oil") || lower.includes("lamp") || lower.includes("evening to morning") || lower.includes("statute for ever") || lower.includes("without the vail")) {
     add(`${title} teaches steady light before the LORD.`, "The lamp was to burn from evening to morning outside the veil.", "Aaron and his sons were responsible for this regular service.", "🕯️ Lamp", "🌙 Evening to morning", "🙌 Continual service", "God's people learn that worship includes faithful rhythms, not only dramatic moments.");
   } else if (lower.includes("aaron") || lower.includes("priest") || lower.includes("holy garments") || lower.includes("glory and for beauty") || lower.includes("spirit of wisdom") || lower.includes("ephod")) {
@@ -801,7 +817,7 @@ function explainDay28Phrase(section: PersonalExodusPhraseSectionInput, title: st
   } else if (lower.includes("blue lace") || lower.includes("mitre") || lower.includes("bear the iniquity") || lower.includes("accepted") || lower.includes("coats") || lower.includes("girdles") || lower.includes("bonnets") || lower.includes("linen breeches") || lower.includes("nakedness") || lower.includes("die") || lower.includes("minister in the holy place")) {
     add(`${title} means serving near God's holiness is serious.`, "The priestly clothing covers, marks, and prepares the priests for service.", "Careless approach could bring guilt and death because the work is before the holy LORD.", "👕 Priestly clothing", "⚠️ Holy danger", "✅ Accepted before God", "The details are not fashion notes. They teach reverence before God's presence.");
   } else {
-    add(`${title} gives another piece of the pattern God gave Moses.`, "The tabernacle is not built from Israel's imagination.", "Its objects, materials, priests, and boundaries are all received from the LORD.", "📖 Bible words", "🔍 Slow reading", "🙌 Holy worship", "The rescued people are learning how a holy God dwells among them.");
+    add(`${title} explains one piece of the pattern God gave Moses.`, "The tabernacle is not built from Israel's imagination.", "Its objects, materials, priests, and boundaries are all received from the LORD.", "📖 Scripture wording", "🔍 Phrase meaning", "🙌 Holy worship", "The rescued people are learning how a holy God dwells among them.");
   }
 
   return note(lines.slice(0, 8));
@@ -851,7 +867,7 @@ function explainExodusTwentyNineToThirtyPhrase(section: PersonalExodusPhraseSect
   if (lower === "the ram of consecration" && section.reference === "Exodus 29:16-21") {
     add("The Ram Of Consecration is the sacrifice used to mark Aaron and his sons for priestly service.", "The word consecration means they are being set apart for the LORD's work.", "\u{1F402} Ram", "\u{1F64C} Set apart", "\u{1FA78} Blood applied", "The priest is not ready because he volunteered. He is ready because God prepares him.");
   } else if (lower === "the ram of consecration") {
-    add("The Ram Of Consecration also becomes part of the holy meal for the priests.", "After sacrifice is offered, Aaron and his sons eat what God allows them to receive.", "\u{1F402} Ram", "\u{1F372} Holy meal", "\u{1F3D5}\u{FE0F} Holy place", "This shows that priestly service includes both cleansing and participation in what God provides.");
+    add("The Ram Of Consecration also becomes food in the holy meal for the priests.", "After sacrifice is offered, Aaron and his sons eat what God allows them to receive.", "\u{1F402} Ram", "\u{1F372} Holy meal", "\u{1F3D5}\u{FE0F} Holy place", "This shows that priestly service includes both cleansing and participation in what God provides.");
   } else if (lower === "a sweet savour" && section.reference === "Exodus 29:16-21") {
     add("A Sweet Savour means the burnt offering is received as pleasing before the LORD.", "This does not mean God needed the smell like a person needs food. It means the offering was accepted according to His command.", "\u{1F525} Offering burned", "\u{1F64C} Accepted worship", "\u{1F4DC} God's way", "The phrase helps beginners see that sacrifice was about relationship with God, not empty ritual.");
   } else if (lower === "a sweet savour") {
@@ -885,13 +901,13 @@ function explainExodusTwentyNineToThirtyPhrase(section: PersonalExodusPhraseSect
   } else if (lower.includes("meet") || lower.includes("dwell") || lower.includes("door of the tabernacle") || lower.includes("before the vail") || lower.includes("mercy seat")) {
     add(`${title} means the tabernacle was about meeting with God, not furniture by itself.`, "The goal is not furniture by itself. The goal is God living among His rescued people.", "\u{1F3D5}\u{FE0F} Dwelling place", "\u{1F64C} God comes near", "\u{1F465} Israel is His people", "Exodus began with Israel groaning in slavery. Now the LORD is preparing a place where He will meet them.");
   } else if (lower.includes("unleavened") || lower.includes("loaf") || lower.includes("bread") || lower.includes("eat") || lower.includes("boil")) {
-    add(`${title} means food became part of the holy consecration ceremony.`, "In the Bible, eating can show fellowship, participation, and receiving what God provides.", "\u{1F35E} Bread", "\u{1F372} Shared meal", "\u{1F3D5}\u{FE0F} Holy place", "The priests were not just watching a ritual happen. They were being brought into the service God assigned them.");
+    add(`${title} means food was included in the holy consecration ceremony.`, "In the Bible, eating can show fellowship, participation, and receiving what God provides.", "\u{1F35E} Bread", "\u{1F372} Shared meal", "\u{1F3D5}\u{FE0F} Holy place", "The priests were not just watching a ritual happen. They were being brought into the service God assigned them.");
   } else if (lower.includes("blemish")) {
     add(`${title} means the sacrifice could not be damaged or defective.`, "Israel was not supposed to bring God whatever was easiest to spare.", "\u{2705} Whole", "\u{2705} Acceptable", "\u{2705} Given with care", "The offering taught reverence: the LORD deserves worship that honors Him.");
   } else if (lower.includes("shittim") || lower.includes("pure gold") || lower.includes("crown of gold") || lower.includes("horns thereof")) {
     add(`${title} means the furniture was made with deliberate material and design.`, "The tabernacle furniture was built with care because it served worship near God's presence.", "\u{1FAB5} Wood", "\u{1F7E1} Gold", "\u{1F3D5}\u{FE0F} Holy furniture", "These details help beginners see that God gave Israel a pattern, not a vague idea.");
   } else {
-    add(`${title} is one action or object in the priest-consecration ceremony.`, "Consecration means Aaron and his sons are being prepared for holy service.", "\u{1F3D5}\u{FE0F} Holy place", "\u{1F64C} Holy service", "\u{1FA78} Sin dealt with", "The ceremony teaches that priests do not walk into God's service casually. They are washed, clothed, marked, and brought near by sacrifice.");
+    add(`${title} names one action or object in the priest-consecration ceremony.`, "Consecration means Aaron and his sons are being prepared for holy service.", "\u{1F3D5}\u{FE0F} Holy place", "\u{1F64C} Holy service", "\u{1FA78} Sin dealt with", "The ceremony teaches that priests do not walk into God's service casually. They are washed, clothed, marked, and brought near by sacrifice.");
   }
 
   return note(lines.slice(0, 8));
@@ -1089,8 +1105,8 @@ function getExodusTwentyOneToThirtyTeachingLines(section: PersonalExodusPhraseSe
 
   if (/ark|mercy seat|veil|altar|tabernacle|court|lamp|candlestick/.test(lower)) {
     return [
-      `${cleanTitle} names part of the worship space.`,
-      `${cleanTitle} is not random decoration in the tabernacle instructions.`,
+      `${cleanTitle} names a piece of the worship space God is teaching Israel to honor.`,
+      `In ${cleanTitle}, the tabernacle instructions are teaching more than decoration.`,
       `${cleanTitle} teaches that God's presence is holy and Israel must approach His way.`,
     ];
   }
@@ -1104,9 +1120,9 @@ function getExodusTwentyOneToThirtyTeachingLines(section: PersonalExodusPhraseSe
   }
 
   return [
-    `${cleanTitle} is part of the pattern God gave Moses.`,
-    `The detail in ${cleanTitle} helps build the place where Israel will worship.`,
-    `${cleanTitle} teaches that nearness to God is holy, ordered, and gracious.`,
+    `${cleanTitle} should be read as more than a construction note.`,
+    `Through ${cleanTitle}, God is showing that worship has shape, order, and purpose.`,
+    `${cleanTitle} points to a holy dwelling where the LORD will meet His people.`,
   ];
 }
 
@@ -1147,18 +1163,22 @@ function normalizeRepeatedExodusTwentyOneToThirtyLines(sections: PersonalExodusP
           kept.splice(Math.min(2, kept.length), 0, ...getExodusTwentyOneToThirtyPhraseList(section, cleanTitle));
         }
 
+        if (section.chapter >= 25 && kept.length >= 7) {
+          return [ensureExodusTwentyOneToThirtyTitleEmoji(title), note(kept)] as [string, string];
+        }
+
         for (const line of getExodusTwentyOneToThirtyTeachingLines(section, cleanTitle)) {
-          if (kept.length >= 5) break;
+          if (kept.length >= 7) break;
           if (!kept.some((keptLine) => normalizeLine(keptLine) === normalizeLine(line))) {
             kept.push(line);
           }
         }
 
-        while (kept.length < 4) {
+        while (kept.length < (section.chapter >= 25 ? 6 : 4)) {
           const additions = [
             `${cleanTitle} keeps the reader close to the exact Bible wording.`,
-            `It names a real detail God included in this part of the story.`,
-            `That detail should be read slowly instead of skipped.`,
+            `${cleanTitle} names something God included in this scene.`,
+            `${cleanTitle} should be understood before the reader moves on.`,
           ];
           kept.push(additions[kept.length % additions.length]);
         }

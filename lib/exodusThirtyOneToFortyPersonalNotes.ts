@@ -748,7 +748,7 @@ function explainDay30Phrase(title: string): string {
   } else if (lower.includes("wise hearted") || lower.includes("spun") || lower.includes("cunning work") || lower.includes("made ten curtains") || lower.includes("coupled") || lower.includes("he made")) {
     add(`${title} means practical skill is being used for worship.`, "The tabernacle required careful hands, patient work, and obedient craftsmanship.", "\u{1F9E0} Wisdom", "\u{1F9F5} Fabric work", "\u{1F528} Skilled labor", "In Exodus, practical skill can become holy service when it follows God's pattern.");
   } else if (lower.includes("covering over") || lower.includes("covering for the tent") || lower.includes("covering above") || lower.includes("eleven curtains") || lower.includes("rams' skins")) {
-    add(`${title} belongs with the outer coverings that protect the holy tent.`, "The tabernacle has beauty inside and durable covering outside.", "God's design includes protection, not only decoration.", "\u{1F3D5}\u{FE0F} Tent covering", "\u{1F6E1}\u{FE0F} Protection", "\u{1F4CF} Ordered layers", "The outer layers teach that holy space is cared for completely.");
+    add(`${title} points to the outer coverings that protect the holy tent.`, "The tabernacle has beauty inside and durable covering outside.", "God's design includes protection, not only decoration.", "\u{1F3D5}\u{FE0F} Tent covering", "\u{1F6E1}\u{FE0F} Protection", "\u{1F4CF} Ordered layers", "The outer layers teach that holy space is cared for completely.");
   } else if (lower.includes("ram skins") || lower.includes("shittim") || lower.includes("oil") || lower.includes("spices") || lower.includes("onyx") || lower.includes("linen") || lower.includes("blue") || lower.includes("purple") || lower.includes("scarlet") || lower.includes("goats' hair") || lower.includes("badgers")) {
     add(`${title} means this material was set apart for the tabernacle.`, "These materials were not random craft supplies. They were given and shaped for God's dwelling place.", "\u{1F9F5} Fabric", "\u{1FAB5} Wood", "\u{1F48E} Precious stones", "The details teach care, beauty, order, and reverence in worship.");
   } else if (lower.includes("ten cubits") || lower.includes("two tenons") || lower.includes("for the other side") || lower.includes("for one side") || lower.includes("two sides westward") || lower.includes("middle bar")) {
@@ -857,6 +857,24 @@ function formatExodusThirtyOneToFortyPhraseExplanation(section: PersonalExodusPh
 function getExodusThirtyOneToFortyPhraseList(section: PersonalExodusPhraseSectionInput, cleanTitle: string) {
   const lower = cleanTitle.toLowerCase();
 
+  if (section.chapter >= 37 && /cherub|faces|mercy seat/.test(lower)) {
+    return [
+      `\u{1F3D5}\u{FE0F} ${cleanTitle}`,
+      "\u{1F64C} Holy space",
+      "\u{1F4DC} Covenant testimony",
+      "\u{1F932} Mercy before God",
+    ];
+  }
+
+  if (section.chapter >= 37 && /moses|lord spake|commanded|according|looked|blessed|finished|glory|cloud|enter|presence/.test(lower)) {
+    return [
+      `\u{2705} ${cleanTitle}`,
+      "\u{1F4DC} God's command followed",
+      "\u{1F3D5}\u{FE0F} Tabernacle completed",
+      "\u{1F64C} Worship ordered by God",
+    ];
+  }
+
   if (/bezaleel|aholiab|wisdom|spirit|workmanship|cunning|gold|silver|brass/.test(lower)) {
     return [
       `🧠 ${cleanTitle}`,
@@ -927,8 +945,61 @@ function getExodusThirtyOneToFortyPhraseList(section: PersonalExodusPhraseSectio
   ];
 }
 
+function getExodusThirtyOneToThirtySixFocus(section: PersonalExodusPhraseSectionInput) {
+  if (section.chapter === 31) {
+    if (section.startVerse >= 18) return "the stone tablets given by God";
+    if (section.startVerse >= 12) return "the Sabbath sign";
+    return "the tabernacle workers and their God-given skill";
+  }
+  if (section.chapter === 32) {
+    if (section.startVerse >= 30) return "Moses pleading after the golden calf";
+    if (section.startVerse >= 21) return "the camp being confronted after the calf";
+    if (section.startVerse >= 15) return "the broken tablets and broken covenant";
+    if (section.startVerse >= 7) return "the LORD exposing Israel's idolatry";
+    return "Israel's impatience becoming the golden calf";
+  }
+  if (section.chapter === 33) {
+    if (section.startVerse >= 18) return "Moses asking to see God's glory";
+    if (section.startVerse >= 12) return "Moses asking for God's presence";
+    return "the tent outside the camp";
+  }
+  if (section.chapter === 34) {
+    if (section.startVerse >= 29) return "Moses coming down with a shining face";
+    if (section.startVerse >= 22) return "renewed covenant instructions";
+    if (section.startVerse >= 10) return "the renewed covenant warning against idols";
+    return "the LORD renewing the covenant after failure";
+  }
+  if (section.chapter === 35) {
+    if (section.startVerse >= 20) return "the willing offering for the tabernacle";
+    return "Sabbath and the call to bring tabernacle materials";
+  }
+  if (section.chapter === 36) {
+    if (section.startVerse >= 20) return "the tabernacle frame and veil work";
+    return "skilled workers building the tabernacle";
+  }
+  return "the end of Exodus";
+}
+
 function getExodusThirtyOneToFortyTeachingLines(section: PersonalExodusPhraseSectionInput, cleanTitle: string) {
   const lower = cleanTitle.toLowerCase();
+
+  if (section.chapter >= 37 && /moses|lord spake|faces|glory|cloud|enter|tabernacle unto moses/.test(lower)) {
+    const focus = getDay31PhraseFocus(section);
+    return [
+      `${cleanTitle} explains the finished tabernacle scene in ${focus}.`,
+      `${cleanTitle} keeps the reader focused on ordered worship in ${focus}, not rushed invention.`,
+      `${cleanTitle} helps show that Exodus is ending with God's dwelling prepared among His people.`,
+    ];
+  }
+
+  if (section.chapter >= 37 && /commanded|moses did according|moses did look|moses blessed|finished/.test(lower)) {
+    const focus = getDay31PhraseFocus(section);
+    return [
+      `${cleanTitle} shows careful obedience in ${focus}.`,
+      `The work is not judged by creativity alone.`,
+      `It is measured by whether it matches what the LORD commanded.`,
+    ];
+  }
 
   if (/calf|idols|sinned|wrath|anger|mischief/.test(lower)) {
     return [
@@ -938,11 +1009,12 @@ function getExodusThirtyOneToFortyTeachingLines(section: PersonalExodusPhraseSec
     ];
   }
 
-  if (/moses|interced|presence|glory|face|tables|commanded/.test(lower)) {
+  if (section.chapter >= 31 && section.chapter <= 36 && /moses|interced|presence|glory|face|tables|commanded|word|lord/.test(lower)) {
+    const focus = getExodusThirtyOneToThirtySixFocus(section);
     return [
-      `${cleanTitle} keeps Moses' mediation in view.`,
-      `Through ${cleanTitle}, the people have failed, but the LORD is still dealing with them through covenant mercy.`,
-      `${cleanTitle} holds together the seriousness of sin and the greatness of God's patience.`,
+      `${cleanTitle} helps explain ${focus}.`,
+      `${cleanTitle} keeps the reader close to what the LORD is saying or doing in this scene.`,
+      `${cleanTitle} matters because ${focus} moves Exodus from failure back toward ordered worship and God's presence among His people.`,
     ];
   }
 
@@ -958,7 +1030,7 @@ function getExodusThirtyOneToFortyTeachingLines(section: PersonalExodusPhraseSec
     return [
       `${cleanTitle} shows the people contributing to holy work.`,
       `${cleanTitle} is not just a note about random supplies.`,
-      `The materials in ${cleanTitle} become part of the place where Israel will meet with God.`,
+      `The materials in ${cleanTitle} are shaped into the place where Israel will meet with God.`,
     ];
   }
 
@@ -1014,14 +1086,18 @@ function normalizeRepeatedExodusThirtyOneToFortyLines(sections: PersonalExodusPh
           kept.splice(Math.min(2, kept.length), 0, ...getExodusThirtyOneToFortyPhraseList(section, cleanTitle));
         }
 
+        if (section.chapter >= 31 && kept.length >= 7) {
+          return [ensureExodusThirtyOneToFortyTitleEmoji(title), note(kept)] as [string, string];
+        }
+
         for (const line of getExodusThirtyOneToFortyTeachingLines(section, cleanTitle)) {
-          if (kept.length >= 5) break;
+          if (kept.length >= 7) break;
           if (!kept.some((keptLine) => normalizeLine(keptLine) === normalizeLine(line))) {
             kept.push(line);
           }
         }
 
-        while (kept.length < 4) {
+        while (kept.length < 6) {
           const additions = [
             `${cleanTitle} keeps the reader close to the exact Bible wording.`,
             `It names a real detail God included in this part of the story.`,
@@ -1130,8 +1206,23 @@ const DAY_31_PHRASE_TITLES: Record<string, string[]> = {
   "Exodus 40:34-38": ["The Cloud Covered The Tent", "The Glory Of The LORD Filled The Tabernacle", "Moses Was Not Able To Enter", "The Cloud Abode Thereon", "When The Cloud Was Taken Up", "The Children Of Israel Went Onward", "If The Cloud Were Not Taken Up", "Fire Was On It By Night"],
 };
 
-function explainDay31Phrase(title: string): string {
+function getDay31PhraseFocus(section?: PersonalExodusPhraseSectionInput) {
+  if (!section) return "the finished tabernacle";
+
+  if (section.reference === "Exodus 37:1-6") return "the ark and mercy seat";
+  if (section.reference === "Exodus 37:10-15") return "the table for the bread";
+  if (section.reference === "Exodus 38:1-6") return "the altar of burnt offering";
+  if (section.reference === "Exodus 39:1-6") return "the priestly garments";
+  if (section.reference === "Exodus 39:31-31") return "the holy crown";
+  if (section.reference === "Exodus 39:32-37") return "the completed tabernacle work";
+  if (section.reference === "Exodus 40:23-28") return "the bread, lamps, and incense";
+
+  return section.title.toLowerCase();
+}
+
+function explainDay31Phrase(title: string, section?: PersonalExodusPhraseSectionInput): string {
   const lower = title.toLowerCase();
+  const focus = getDay31PhraseFocus(section);
   const lines: string[] = [];
   const add = (...items: string[]) => {
     for (const item of items) {
@@ -1164,13 +1255,13 @@ function explainDay31Phrase(title: string): string {
   } else if (lower.includes("holy crown") || lower.includes("holiness to the lord") || lower.includes("plate of the holy crown") || lower.includes("lace of blue") || lower.includes("fastened")) {
     add(`${title} marks the priest as set apart for the LORD.`, "The gold plate says Holiness to the LORD.", "Aaron does not minister as a private celebrity or religious performer.", "His service is claimed by God and done for the people.");
   } else if (lower.includes("as the lord commanded") || lower.includes("moses did according") || lower.includes("finished") || lower.includes("moses did look") || lower.includes("moses blessed")) {
-    add(`${title} is the opposite of the golden calf pattern.`, "Israel once shaped worship by fear and impatience.", "Now the work is checked against God's command.", "After failure, mercy is producing careful obedience.");
+    add(`${title} means ${focus} was completed according to God's command.`, `${title} shows the workers did not design worship from imagination.`, `${title} keeps the tabernacle work tied to the LORD's word.`, "\u{2705} Careful obedience", "\u{1F4DC} God's pattern followed", "\u{1F64C} Worship repaired", `${title} teaches that holy worship is received from God before it is offered back to Him.`);
   } else if (lower.includes("first day") || lower.includes("first month") || lower.includes("second year") || lower.includes("set up") || lower.includes("reared up") || lower.includes("tent of the congregation") || lower.includes("tabernacle was reared")) {
     add(`${title} gives the finished tabernacle a new-beginning feeling.`, "The completed pieces are now put into place.", "This is not just a construction project ending.", "It is the dwelling of God being prepared in the middle of the camp.");
   } else if (lower.includes("anoint") || lower.includes("sanctify") || lower.includes("holy garments") || lower.includes("minister unto me") || lower.includes("everlasting priesthood") || lower.includes("aaron") || lower.includes("sons")) {
     add(`${title} prepares Aaron and his sons for priestly service.`, "Priests are washed, clothed, anointed, and set apart before they serve.", "They do not walk into holy work by natural right.", "God provides the way His servants are prepared.");
   } else if (lower.includes("staves") || lower.includes("boards") || lower.includes("sockets") || lower.includes("pure gold") || lower.includes("shittim") || lower.includes("crown") || lower.includes("rings") || lower.includes("foursquare") || lower.includes("cubits") || lower.includes("handbreadth")) {
-    add(`${title} gives a real construction detail from God's pattern.`, "Measurements, wood, gold, rings, sockets, and boards can feel slow to read.", "But they show that God's dwelling is built carefully, not guessed at.", "Holy worship follows God's design down to practical details.");
+    add(`${title} gives a real construction detail for ${focus}.`, "Measurements, wood, gold, rings, sockets, and boards can feel slow to read.", "But they show that God's dwelling is built carefully, not guessed at.", "\u{1FAB5} Materials", "\u{1F4CF} Measurements", "\u{2692}\u{FE0F} Careful work", "Holy worship follows God's design down to practical details.");
   } else if (lower.includes("cloud") || lower.includes("glory") || lower.includes("enter") || lower.includes("abode") || lower.includes("went onward") || lower.includes("taken up") || lower.includes("fire") || lower.includes("night") || lower.includes("sight of all")) {
     add(`${title} is the goal of Exodus coming into view.`, "The God who rescued Israel from Egypt now fills the tabernacle and guides the journey.", "The cloud and fire mean the people are still traveling, but they are not abandoned.", "Exodus ends with God's presence in the middle of the camp.");
   } else {
@@ -1180,8 +1271,8 @@ function explainDay31Phrase(title: string): string {
   return note(lines.slice(0, 8));
 }
 
-function makeDay31PhraseCard(title: string): [string, string] {
-  return [`\u{1F4CC} ${title}`, explainDay31Phrase(title)];
+function makeDay31PhraseCard(section: PersonalExodusPhraseSectionInput, title: string): [string, string] {
+  return [`\u{1F4CC} ${title}`, explainDay31Phrase(title, section)];
 }
 
 function deepenDay31PhraseCards(section: PersonalExodusPhraseSectionInput): PersonalExodusPhraseSectionInput {
@@ -1190,7 +1281,7 @@ function deepenDay31PhraseCards(section: PersonalExodusPhraseSectionInput): Pers
 
   return {
     ...section,
-    phrases: titles.map(makeDay31PhraseCard),
+    phrases: titles.map((title) => makeDay31PhraseCard(section, title)),
   };
 }
 
