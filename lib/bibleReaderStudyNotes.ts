@@ -13,6 +13,16 @@ import { NUMBERS_1_9_PERSONAL_SECTIONS } from "./numbersOneToNinePersonalNotes";
 import { NUMBERS_10_25_PERSONAL_SECTIONS } from "./numbersTenToTwentyFivePersonalNotes";
 import { NUMBERS_26_36_PERSONAL_SECTIONS } from "./numbersTwentySixToThirtySixPersonalNotes";
 import { DEUTERONOMY_1_13_PERSONAL_SECTIONS } from "./deuteronomyOneToThirteenPersonalNotes";
+import { DEUTERONOMY_14_29_PERSONAL_SECTIONS } from "./deuteronomyFourteenToTwentyNinePersonalNotes";
+import { DEUTERONOMY_30_34_PERSONAL_SECTIONS } from "./deuteronomyThirtyToThirtyFourPersonalNotes";
+import { JOSHUA_1_11_PERSONAL_SECTIONS } from "./joshuaOneToElevenPersonalNotes";
+import { JOSHUA_12_19_PERSONAL_SECTIONS } from "./joshuaTwelveToNineteenPersonalNotes";
+import { JOSHUA_20_24_PERSONAL_SECTIONS } from "./joshuaTwentyToTwentyFourPersonalNotes";
+import { JUDGES_1_15_PERSONAL_SECTIONS } from "./judgesOneToFifteenPersonalNotes";
+import { JUDGES_16_21_PERSONAL_SECTIONS } from "./judgesSixteenToTwentyOnePersonalNotes";
+import { RUTH_1_4_PERSONAL_SECTIONS } from "./ruthOneToFourPersonalNotes";
+import { FIRST_SAMUEL_1_10_PERSONAL_SECTIONS } from "./firstSamuelOneToTenPersonalNotes";
+import { FIRST_SAMUEL_11_30_PERSONAL_SECTIONS } from "./firstSamuelElevenToThirtyPersonalNotes";
 
 export type BibleReaderStudyNoteCategory = {
   id: string;
@@ -14427,7 +14437,7 @@ function inferPhraseFocus(phrase: string) {
   if (/bless|curse|covenant|oath|promise/.test(lower)) return "This phrase is covenant language, showing blessing, warning, promise, or loyalty before God.";
   if (/sin|rebel|iniquity|unclean|plague|serpent|death|judgment/.test(lower)) return "This phrase shows the seriousness of sin, uncleanness, judgment, or the mercy God provides in response.";
 
-  return "This phrase gives the reader an important detail that helps explain what is happening in the passage.";
+  return `${phrase} gives the reader a concrete detail for understanding the passage.`;
 }
 
 function buildPhraseTeachingBullets(phrase: string, sourceLines: string[]) {
@@ -14478,15 +14488,10 @@ function formatBibleYearPhraseCard(rawHeading: string, rawBody: string) {
   const teachingSource = [...preEmojiText.slice(2), ...postEmojiText];
   const bullets = emojiLines.length >= 2 ? emojiLines : buildPhraseTeachingBullets(phrase, teachingSource.length ? teachingSource : textLines);
   const outroSource = emojiLines.length >= 2 ? postEmojiText : textLines.slice(2);
-  const outro =
-    outroSource.length >= 2
-      ? outroSource.slice(0, 2)
-      : [
-          outroSource[0] || inferPhraseFocus(phrase),
-          `${phrase} helps explain what the reader is meant to notice in this moment of the passage.`,
-        ];
+  const outro = outroSource.slice(0, 2);
+  const bulletBlock = bullets.slice(0, 4).join("\n");
 
-  return [heading, ...intro.slice(0, 2), ...bullets.slice(0, 4), ...outro.slice(0, 2)].join("\n\n");
+  return [heading, ...intro.slice(0, 2), bulletBlock, ...outro.slice(0, 2)].filter(Boolean).join("\n\n");
 }
 
 function makePersonalExodusPhraseSection(section: {
@@ -14560,6 +14565,66 @@ function makePersonalDeuteronomyPhraseSection(section: {
   return {
     ...makePersonalExodusPhraseSection(section),
     book: "deuteronomy",
+  };
+}
+
+function makePersonalJoshuaPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "joshua",
+  };
+}
+
+function makePersonalJudgesPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "judges",
+  };
+}
+
+function makePersonalRuthPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "ruth",
+  };
+}
+
+function makePersonalFirstSamuelPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "1 samuel",
   };
 }
 
@@ -19476,6 +19541,136 @@ function applyPersonalDeuteronomyOneThroughThirteenStudySections() {
   BIBLE_READER_STUDY_SECTIONS.push(...sections);
 }
 
+function applyPersonalDeuteronomyFourteenThroughTwentyNineStudySections() {
+  const sections = DEUTERONOMY_14_29_PERSONAL_SECTIONS.map(makePersonalDeuteronomyPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "deuteronomy" && section.chapter >= 14 && section.chapter <= 29) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalJoshuaTwentyThroughTwentyFourStudySections() {
+  const sections = JOSHUA_20_24_PERSONAL_SECTIONS.map(makePersonalJoshuaPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "joshua" && section.chapter >= 20 && section.chapter <= 24) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalJudgesOneThroughFifteenStudySections() {
+  const sections = JUDGES_1_15_PERSONAL_SECTIONS.map(makePersonalJudgesPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "judges" && section.chapter >= 1 && section.chapter <= 15) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalJudgesSixteenThroughTwentyOneStudySections() {
+  const sections = JUDGES_16_21_PERSONAL_SECTIONS.map(makePersonalJudgesPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "judges" && section.chapter >= 16 && section.chapter <= 21) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalRuthOneThroughFourStudySections() {
+  const sections = RUTH_1_4_PERSONAL_SECTIONS.map(makePersonalRuthPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "ruth" && section.chapter >= 1 && section.chapter <= 4) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalFirstSamuelOneThroughTenStudySections() {
+  const sections = FIRST_SAMUEL_1_10_PERSONAL_SECTIONS.map(makePersonalFirstSamuelPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "1 samuel" && section.chapter >= 1 && section.chapter <= 10) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalDeuteronomyThirtyThroughThirtyFourStudySections() {
+  const sections = DEUTERONOMY_30_34_PERSONAL_SECTIONS.map(makePersonalDeuteronomyPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "deuteronomy" && section.chapter >= 30 && section.chapter <= 34) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalJoshuaOneThroughElevenStudySections() {
+  const sections = JOSHUA_1_11_PERSONAL_SECTIONS.map(makePersonalJoshuaPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "joshua" && section.chapter >= 1 && section.chapter <= 11) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalJoshuaTwelveThroughNineteenStudySections() {
+  const sections = JOSHUA_12_19_PERSONAL_SECTIONS.map(makePersonalJoshuaPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "joshua" && section.chapter >= 12 && section.chapter <= 19) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalFirstSamuelElevenThroughThirtyStudySections() {
+  const sections = FIRST_SAMUEL_11_30_PERSONAL_SECTIONS.map(makePersonalFirstSamuelPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "1 samuel" && section.chapter >= 11 && section.chapter <= 30) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
 type ExodusTextureRule = {
   matches: string[];
   lines: string[];
@@ -20227,6 +20422,16 @@ applyPersonalNumbersOneThroughNineStudySections();
 applyPersonalNumbersTenThroughTwentyFiveStudySections();
 applyPersonalNumbersTwentySixThroughThirtySixStudySections();
 applyPersonalDeuteronomyOneThroughThirteenStudySections();
+applyPersonalDeuteronomyFourteenThroughTwentyNineStudySections();
+applyPersonalJoshuaTwentyThroughTwentyFourStudySections();
+applyPersonalJudgesOneThroughFifteenStudySections();
+applyPersonalJudgesSixteenThroughTwentyOneStudySections();
+applyPersonalRuthOneThroughFourStudySections();
+applyPersonalDeuteronomyThirtyThroughThirtyFourStudySections();
+applyPersonalJoshuaOneThroughElevenStudySections();
+applyPersonalJoshuaTwelveThroughNineteenStudySections();
+applyPersonalFirstSamuelOneThroughTenStudySections();
+applyPersonalFirstSamuelElevenThroughThirtyStudySections();
 applyPersonalExodusTextureStudySections();
 enforceStudySectionVerseLimit(8);
 

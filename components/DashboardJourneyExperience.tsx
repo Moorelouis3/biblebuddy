@@ -1988,6 +1988,7 @@ export default function DashboardJourneyExperience({
   const previousJourneyKeyRef = useRef<string | null>(null);
   const autoOpenedCompletedBibleYearDayRef = useRef<number | null>(null);
   const dashboardHiddenAtRef = useRef<number | null>(null);
+  const bibleYearJourneyScrollerRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const [activePage, setActivePage] = useState(0);
   const [celebratingTasks, setCelebratingTasks] = useState<Record<string, number>>({});
   const [clearedDoneTaskKinds, setClearedDoneTaskKinds] = useState<Record<string, boolean>>({});
@@ -2648,6 +2649,21 @@ export default function DashboardJourneyExperience({
     ? buildBibleYearDayTasks(activeBibleYearDashboardDay)
     : null;
 
+  useEffect(() => {
+    if (!bibleYearDashboardActive || !activeBibleYearDashboardDay) return;
+    const targetDayNumber = activeBibleYearDashboardDay.dayNumber;
+    const frame = window.requestAnimationFrame(() => {
+      Object.values(bibleYearJourneyScrollerRefs.current).forEach((scroller) => {
+        if (!scroller || scroller.offsetParent === null) return;
+        const target = scroller.querySelector<HTMLElement>(`[data-bible-year-map-day="${targetDayNumber}"]`);
+        if (!target) return;
+        const left = target.offsetLeft - scroller.clientWidth / 2 + target.clientWidth / 2;
+        scroller.scrollTo({ left: Math.max(0, left), behavior: "auto" });
+      });
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [activeBibleYearDashboardDay?.dayNumber, bibleYearDashboardActive]);
+
   const bibleYearStudyPlanMilestoneLabels: Record<number, string> = {
     1: "Creation",
     2: "Fall of Man",
@@ -2706,10 +2722,6 @@ export default function DashboardJourneyExperience({
       dayNumber: day.dayNumber,
       label: bibleYearStudyPlanMilestoneLabels[day.dayNumber] || day.title,
     }));
-  const bibleYearJourneyMapGridStyle = {
-    gridTemplateColumns: `repeat(${bibleYearStudyPlanMilestones.length}, minmax(0, 1fr))`,
-    minWidth: `${bibleYearStudyPlanMilestones.length * 90}px`,
-  };
   const dashboardTaskSource = bibleYearDashboardTasks || visibleTasks;
   const nextTask = dashboardTaskSource.find((task) => !task.done) ?? null;
   const nextActionTaskIndex = dashboardTaskSource.findIndex((task) => !task.done);
@@ -11474,8 +11486,13 @@ Before we understand redemption, we need to understand what God made humanity fo
           </button>
           <div className="px-3 pb-4 pt-3">
             {renderBibleYearJourneyStatusBanner(day)}
-            <div className="bible-year-journey-scroll overflow-x-auto px-1 pb-2 pt-3">
-              <div className="grid items-start gap-2" style={bibleYearJourneyMapGridStyle}>
+            <div
+              ref={(node) => {
+                bibleYearJourneyScrollerRefs.current.home = node;
+              }}
+              className="bible-year-journey-scroll overflow-x-auto px-1 pb-2 pt-3"
+            >
+              <div className="flex min-w-max items-start gap-2">
                 {bibleYearStudyPlanMilestones.map((milestone, index) => {
                   const milestoneDay = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((item) => item.dayNumber === milestone.dayNumber);
                   const completed = bibleYearCompletedCardsByDay[milestone.dayNumber] || {};
@@ -11484,9 +11501,9 @@ Before we understand redemption, we need to understand what God made humanity fo
                   const isLocked = milestoneDay ? isBibleYearDayVisuallyLocked(milestoneDay) : true;
                   const milestoneCover = getBibleYearDayCoverImage(milestoneDay);
                   return (
-                    <div key={milestone.dayNumber} className="relative px-1 text-center">
+                    <div key={milestone.dayNumber} data-bible-year-map-day={milestone.dayNumber} className="relative w-[82px] shrink-0 px-1 text-center">
                       {index > 0 ? (
-                        <span className={`absolute left-[-50%] top-[45px] h-[2px] w-full ${isComplete ? "bg-sky-400/80" : isCurrent ? "bg-[var(--bb-accent,#2f7fe8)]" : "bg-[var(--bb-card-border,#dbe7f4)]/75"}`} aria-hidden="true" />
+                        <span className={`absolute left-[-50%] top-[45px] h-[2px] w-[82px] ${isComplete ? "bg-sky-400/80" : isCurrent ? "bg-[var(--bb-accent,#2f7fe8)]" : "bg-[var(--bb-card-border,#dbe7f4)]/75"}`} aria-hidden="true" />
                       ) : null}
                       <button
                         type="button"
@@ -14230,7 +14247,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         <section className="w-full px-1">
           <div className={`mx-auto flex w-full flex-col pb-7 ${
             bibleYearDashboardActive
-              ? "max-w-[1120px] gap-5 px-2 sm:px-4 xl:max-w-[1180px]"
+              ? "max-w-xl gap-4 px-2 sm:px-4"
               : "max-w-xl gap-4"
           }`}>
             {shouldShowBibleBuddy3ModeGate ? (
@@ -14401,8 +14418,13 @@ Before we understand redemption, we need to understand what God made humanity fo
                   {activeBibleYearDashboardDay ? (
                     <>
                     <div className="dashboard-inline-task border-t border-[var(--bb-card-border,#dbe7f4)] px-3 pb-3 pt-2 sm:px-4">
-                      <div className="bible-year-journey-scroll overflow-x-auto px-1 pb-2 pt-4">
-                        <div className="grid items-start gap-2" style={bibleYearJourneyMapGridStyle}>
+                      <div
+                        ref={(node) => {
+                          bibleYearJourneyScrollerRefs.current.inline = node;
+                        }}
+                        className="bible-year-journey-scroll overflow-x-auto px-1 pb-2 pt-4"
+                      >
+                        <div className="flex min-w-max items-start gap-2">
                           {bibleYearStudyPlanMilestones.map((milestone, index) => {
                             const completed = bibleYearCompletedCardsByDay[milestone.dayNumber] || {};
                             const isComplete = Boolean(completed.reading && completed.trivia && completed.reflection);
@@ -14416,10 +14438,10 @@ Before we understand redemption, we need to understand what God made humanity fo
                             const isSelectedDetail = bibleYearJourneyPreviewDay?.dayNumber === milestone.dayNumber;
 
                             return (
-                              <div key={milestone.dayNumber} className="relative px-1 text-center">
+                              <div key={milestone.dayNumber} data-bible-year-map-day={milestone.dayNumber} className="relative w-[82px] shrink-0 px-1 text-center">
                                 {index > 0 ? (
                                   <span
-                                    className={`absolute left-[-50%] top-[45px] h-[2px] w-full ${
+                                    className={`absolute left-[-50%] top-[45px] h-[2px] w-[82px] ${
                                       isComplete
                                         ? "bg-sky-400/80"
                                         : isCurrent

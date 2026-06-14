@@ -462,7 +462,7 @@ export const LEVITICUS_DAY_THIRTY_SEVEN_PRIESTS_FEASTS_AND_SACRED_ORDER_LESSON =
   37,
   "Priests, Feasts, and Sacred Order",
   "Leviticus 21-24",
-  "35-40 min",
+  "20-30 min",
   [
     "Day 37 continues Leviticus by focusing on priests, holy offerings, holy time, holy light, holy bread, holy speech, and holy justice.",
     "The reading shows that holiness touches both the sanctuary and the camp.",
@@ -479,7 +479,7 @@ export const LEVITICUS_NUMBERS_DAY_THIRTY_EIGHT_JUBILEE_COVENANT_AND_ISRAEL_COUN
   38,
   "Jubilee, Covenant, and Israel Counted",
   "Leviticus 25-27; Numbers 1",
-  "35-40 min",
+  "20-30 min",
   [
     "Day 38 closes Leviticus and opens Numbers.",
     "Leviticus ends by showing that land, time, debt, vows, blessing, warning, and devotion all belong to the LORD.",
@@ -496,7 +496,7 @@ export const NUMBERS_DAY_THIRTY_NINE_CAMP_ORDER_AND_PURITY_LESSON = makeLesson(
   39,
   "Camp Order and Purity",
   "Numbers 2-5",
-  "35-40 min",
+  "20-30 min",
   [
     "Day 39 moves deeper into Numbers.",
     "God arranges the camp, assigns the Levites, orders the carrying of holy things, and protects the purity of the community.",
@@ -513,7 +513,7 @@ export const NUMBERS_DAY_FORTY_BLESSING_DEDICATION_AND_PASSOVER_LESSON = makeLes
   40,
   "Blessing, Dedication, and Passover",
   "Numbers 6-9",
-  "35-40 min",
+  "20-30 min",
   [
     "Day 40 continues Numbers with dedication, blessing, offerings, Levite service, Passover, and God's guiding cloud.",
     "The reading moves from special consecration to priestly blessing and from altar dedication to wilderness guidance.",

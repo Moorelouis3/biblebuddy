@@ -1,4 +1,4 @@
-const CACHE_VERSION = "v16-2026-05-29-new-logo-icon";
+const CACHE_VERSION = "v17-2026-06-14-dev-cache-bypass";
 const CACHE_NAME = `biblebuddy-${CACHE_VERSION}`;
 const RUNTIME_CACHE_NAME = `biblebuddy-runtime-${CACHE_VERSION}`;
 const MEDIA_CACHE_NAME = `biblebuddy-media-${CACHE_VERSION}`;
@@ -68,6 +68,16 @@ self.addEventListener('fetch', event => {
   if (req.method !== "GET") return;
   const url = new URL(req.url);
   const sameOrigin = url.origin === self.location.origin;
+  const isLocalDev =
+    self.location.hostname === "localhost" ||
+    self.location.hostname === "127.0.0.1" ||
+    self.location.hostname === "[::1]";
+
+  if (isLocalDev) {
+    event.respondWith(fetch(req));
+    return;
+  }
+
   const isBibleYearAudio = sameOrigin && url.pathname.startsWith("/api/tts/bible-year/day/");
   const isMediaAsset = /\.(mp3|m4a|aac|wav|ogg|mp4|webm)$/i.test(url.pathname);
   const isNextStatic = sameOrigin && url.pathname.startsWith("/_next/static/");

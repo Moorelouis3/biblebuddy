@@ -45,6 +45,31 @@ import {
   BIBLE_YEAR_DAY_FORTY_THREE_AUDIO,
   BIBLE_YEAR_DAY_FORTY_TWO_AUDIO,
   BIBLE_YEAR_DAY_FIFTY_AUDIO,
+  BIBLE_YEAR_DAY_FIFTY_EIGHT_AUDIO,
+  BIBLE_YEAR_DAY_FIFTY_FIVE_AUDIO,
+  BIBLE_YEAR_DAY_FIFTY_FOUR_AUDIO,
+  BIBLE_YEAR_DAY_FIFTY_ONE_AUDIO,
+  BIBLE_YEAR_DAY_FIFTY_SEVEN_AUDIO,
+  BIBLE_YEAR_DAY_FIFTY_SIX_AUDIO,
+  BIBLE_YEAR_DAY_FIFTY_THREE_AUDIO,
+  BIBLE_YEAR_DAY_FIFTY_TWO_AUDIO,
+  BIBLE_YEAR_DAY_FIFTY_NINE_AUDIO,
+  BIBLE_YEAR_DAY_SIXTY_FIVE_AUDIO,
+  BIBLE_YEAR_DAY_SIXTY_AUDIO,
+  BIBLE_YEAR_DAY_SIXTY_SIX_AUDIO,
+  BIBLE_YEAR_DAY_SIXTY_SEVEN_AUDIO,
+  BIBLE_YEAR_DAY_SIXTY_EIGHT_AUDIO,
+  BIBLE_YEAR_DAY_SIXTY_NINE_AUDIO,
+  BIBLE_YEAR_DAY_SEVENTY_AUDIO,
+  BIBLE_YEAR_DAY_SEVENTY_FIVE_AUDIO,
+  BIBLE_YEAR_DAY_SEVENTY_FOUR_AUDIO,
+  BIBLE_YEAR_DAY_SEVENTY_ONE_AUDIO,
+  BIBLE_YEAR_DAY_SEVENTY_THREE_AUDIO,
+  BIBLE_YEAR_DAY_SEVENTY_TWO_AUDIO,
+  BIBLE_YEAR_DAY_SIXTY_FOUR_AUDIO,
+  BIBLE_YEAR_DAY_SIXTY_ONE_AUDIO,
+  BIBLE_YEAR_DAY_SIXTY_THREE_AUDIO,
+  BIBLE_YEAR_DAY_SIXTY_TWO_AUDIO,
   BIBLE_YEAR_DAY_FORTY_EIGHT_AUDIO,
   BIBLE_YEAR_DAY_FORTY_FIVE_AUDIO,
   BIBLE_YEAR_DAY_FORTY_NINE_AUDIO,
@@ -238,6 +263,93 @@ import {
   NUMBERS_DAY_FORTY_SIX_VOWS_VICTORY_AND_JOURNEY_REVIEWED_LESSON,
   NUMBERS_DEUTERONOMY_DAY_FORTY_SEVEN_LAND_BOUNDARIES_AND_MOSES_LOOKS_BACK_LESSON,
 } from "./bibleYearDaysFortyFiveToFiftyDeepNotes";
+import {
+  BIBLE_YEAR_DAY_FIFTY_FOUR_DEEP_NOTES,
+  BIBLE_YEAR_DAY_FIFTY_FOUR_DEEP_STUDY_SECTIONS,
+  BIBLE_YEAR_DAY_FIFTY_ONE_DEEP_NOTES,
+  BIBLE_YEAR_DAY_FIFTY_ONE_DEEP_STUDY_SECTIONS,
+  BIBLE_YEAR_DAY_FIFTY_THREE_DEEP_NOTES,
+  BIBLE_YEAR_DAY_FIFTY_THREE_DEEP_STUDY_SECTIONS,
+  BIBLE_YEAR_DAY_FIFTY_TWO_DEEP_NOTES,
+  BIBLE_YEAR_DAY_FIFTY_TWO_DEEP_STUDY_SECTIONS,
+  DEUTERONOMY_DAY_FIFTY_FOUR_BLESSING_CURSE_AND_COVENANT_RENEWAL_LESSON,
+  DEUTERONOMY_DAY_FIFTY_ONE_WORSHIP_JUSTICE_AND_LEADERSHIP_LESSON,
+  DEUTERONOMY_DAY_FIFTY_THREE_EVERYDAY_FAITHFULNESS_LESSON,
+  DEUTERONOMY_DAY_FIFTY_TWO_PROPHETS_CITIES_AND_JUSTICE_LESSON,
+} from "./bibleYearDaysFiftyOneToFiftyFourDeepNotes";
+import {
+  BIBLE_YEAR_DAY_FIFTY_EIGHT_DEEP_NOTES,
+  BIBLE_YEAR_DAY_FIFTY_EIGHT_DEEP_STUDY_SECTIONS,
+  BIBLE_YEAR_DAY_FIFTY_FIVE_DEEP_NOTES,
+  BIBLE_YEAR_DAY_FIFTY_FIVE_DEEP_STUDY_SECTIONS,
+  BIBLE_YEAR_DAY_FIFTY_SEVEN_DEEP_NOTES,
+  BIBLE_YEAR_DAY_FIFTY_SEVEN_DEEP_STUDY_SECTIONS,
+  BIBLE_YEAR_DAY_FIFTY_SIX_DEEP_NOTES,
+  BIBLE_YEAR_DAY_FIFTY_SIX_DEEP_STUDY_SECTIONS,
+  DEUTERONOMY_DAY_FIFTY_FIVE_CHOOSE_LIFE_AND_MOSES_BLESSING_LESSON,
+  DEUTERONOMY_JOSHUA_DAY_FIFTY_SIX_MOSES_DIES_AND_JOSHUA_LEADS_LESSON,
+  JOSHUA_DAY_FIFTY_EIGHT_CONQUEST_AND_COVENANT_OBEDIENCE_LESSON,
+  JOSHUA_DAY_FIFTY_SEVEN_MEMORIAL_STONES_JERICHO_AND_ACHAN_LESSON,
+} from "./bibleYearDaysFiftyFiveToFiftyEightDeepNotes";
+import {
+  BIBLE_YEAR_DAY_FIFTY_NINE_DEEP_NOTES,
+  BIBLE_YEAR_DAY_FIFTY_NINE_DEEP_STUDY_SECTIONS,
+  BIBLE_YEAR_DAY_SIXTY_DEEP_NOTES,
+  BIBLE_YEAR_DAY_SIXTY_DEEP_STUDY_SECTIONS,
+  JOSHUA_DAY_FIFTY_NINE_LAND_IS_DISTRIBUTED_LESSON,
+  JOSHUA_DAY_SIXTY_INHERITANCE_FOR_THE_TRIBES_LESSON,
+} from "./bibleYearDaysFiftyNineToSixtyDeepNotes";
+import {
+  BIBLE_YEAR_DAY_SIXTY_FIVE_DEEP_NOTES,
+  BIBLE_YEAR_DAY_SIXTY_FIVE_DEEP_STUDY_SECTIONS,
+  BIBLE_YEAR_DAY_SIXTY_FOUR_DEEP_NOTES,
+  BIBLE_YEAR_DAY_SIXTY_FOUR_DEEP_STUDY_SECTIONS,
+  BIBLE_YEAR_DAY_SIXTY_ONE_DEEP_NOTES,
+  BIBLE_YEAR_DAY_SIXTY_ONE_DEEP_STUDY_SECTIONS,
+  BIBLE_YEAR_DAY_SIXTY_THREE_DEEP_NOTES,
+  BIBLE_YEAR_DAY_SIXTY_THREE_DEEP_STUDY_SECTIONS,
+  BIBLE_YEAR_DAY_SIXTY_TWO_DEEP_NOTES,
+  BIBLE_YEAR_DAY_SIXTY_TWO_DEEP_STUDY_SECTIONS,
+  JOSHUA_DAY_SIXTY_ONE_REFUGE_REST_AND_WARNING_LESSON,
+  JOSHUA_JUDGES_DAY_SIXTY_TWO_COVENANT_CHOICE_AND_DRIFT_LESSON,
+  JUDGES_DAY_SIXTY_FIVE_SAMSON_BEGINS_TROUBLED_CALLING_LESSON,
+  JUDGES_DAY_SIXTY_FOUR_GIDEONS_FAILURE_AND_JEPHTHAHS_VOW_LESSON,
+  JUDGES_DAY_SIXTY_THREE_DEBORAH_GIDEON_AND_DELIVERANCE_LESSON,
+} from "./bibleYearDaysSixtyOneToSixtyFiveDeepNotes";
+import {
+  BIBLE_YEAR_DAY_SEVENTY_DEEP_NOTES,
+  BIBLE_YEAR_DAY_SEVENTY_DEEP_STUDY_SECTIONS,
+  BIBLE_YEAR_DAY_SIXTY_EIGHT_DEEP_NOTES,
+  BIBLE_YEAR_DAY_SIXTY_EIGHT_DEEP_STUDY_SECTIONS,
+  BIBLE_YEAR_DAY_SIXTY_NINE_DEEP_NOTES,
+  BIBLE_YEAR_DAY_SIXTY_NINE_DEEP_STUDY_SECTIONS,
+  BIBLE_YEAR_DAY_SIXTY_SEVEN_DEEP_NOTES,
+  BIBLE_YEAR_DAY_SIXTY_SEVEN_DEEP_STUDY_SECTIONS,
+  BIBLE_YEAR_DAY_SIXTY_SIX_DEEP_NOTES,
+  BIBLE_YEAR_DAY_SIXTY_SIX_DEEP_STUDY_SECTIONS,
+  FIRST_SAMUEL_DAY_SEVENTY_ISRAEL_ASKS_FOR_A_KING_LESSON,
+  FIRST_SAMUEL_DAY_SIXTY_NINE_SAMUEL_HEARS_GOD_AND_ARK_TAKEN_LESSON,
+  JUDGES_DAY_SIXTY_SIX_SAMSON_FALLS_AND_ISRAEL_UNRAVELS_LESSON,
+  JUDGES_RUTH_DAY_SIXTY_SEVEN_CIVIL_WAR_AND_RUTHS_LOYAL_LOVE_LESSON,
+  RUTH_SAMUEL_DAY_SIXTY_EIGHT_REDEMPTION_AND_SAMUELS_BIRTH_LESSON,
+} from "./bibleYearDaysSixtySixToSeventyDeepNotes";
+import {
+  BIBLE_YEAR_DAY_SEVENTY_FIVE_DEEP_NOTES,
+  BIBLE_YEAR_DAY_SEVENTY_FIVE_DEEP_STUDY_SECTIONS,
+  BIBLE_YEAR_DAY_SEVENTY_FOUR_DEEP_NOTES,
+  BIBLE_YEAR_DAY_SEVENTY_FOUR_DEEP_STUDY_SECTIONS,
+  BIBLE_YEAR_DAY_SEVENTY_ONE_DEEP_NOTES,
+  BIBLE_YEAR_DAY_SEVENTY_ONE_DEEP_STUDY_SECTIONS,
+  BIBLE_YEAR_DAY_SEVENTY_THREE_DEEP_NOTES,
+  BIBLE_YEAR_DAY_SEVENTY_THREE_DEEP_STUDY_SECTIONS,
+  BIBLE_YEAR_DAY_SEVENTY_TWO_DEEP_NOTES,
+  BIBLE_YEAR_DAY_SEVENTY_TWO_DEEP_STUDY_SECTIONS,
+  FIRST_SAMUEL_DAY_SEVENTY_FIVE_DAVID_IN_EXILE_LESSON,
+  FIRST_SAMUEL_DAY_SEVENTY_FOUR_DAVID_SPARES_SAUL_LESSON,
+  FIRST_SAMUEL_DAY_SEVENTY_ONE_SAULS_RISE_AND_EARLY_FAILURE_LESSON,
+  FIRST_SAMUEL_DAY_SEVENTY_THREE_DAVID_FLEES_FROM_SAUL_LESSON,
+  FIRST_SAMUEL_DAY_SEVENTY_TWO_SAUL_REJECTED_AND_DAVID_APPEARS_LESSON,
+} from "./bibleYearDaysSeventyOneToSeventyFiveDeepNotes";
 import { BIBLE_YEAR_DAY_ONE_DEEP_NOTES } from "./bibleYearDayOneDeepNotes";
 import { BIBLE_YEAR_DAY_ONE_DEEP_STUDY_SECTIONS, type BibleYearDeepStudySection } from "./bibleYearDayOneDeepStudy";
 import { BIBLE_YEAR_DAY_THREE_DEEP_NOTES, BIBLE_YEAR_DAY_THREE_DEEP_STUDY_SECTIONS } from "./bibleYearDayThreeDeepNotes";
@@ -1122,6 +1234,431 @@ const dayFiftySummary: BibleYearSummaryContent = {
   takeawaySupport: "Day 50 helps us see that God wants more than religious activity. He wants His people to belong to Him fully.",
 };
 
+const dayFiftyOneSummary: BibleYearSummaryContent = {
+  intro: [
+    "Deuteronomy 14-17 shows covenant life reaching worship, generosity, justice, feasts, courts, and leadership.",
+    "Moses teaches Israel that holiness is not only a sanctuary idea. It touches food, money, mercy, judges, and even the future king.",
+    "Day 51 shows that worship, justice, and leadership must all stay under the LORD's word.",
+  ],
+  highlights: [
+    ["holiness", "Israel is called the children of the LORD and a holy people."],
+    ["generosity", "The seventh-year release teaches open-handed mercy toward the poor."],
+    ["feasts", "Passover, Weeks, and Tabernacles keep rescue and provision in Israel's memory."],
+    ["justice", "Judges must not twist judgment or take bribes."],
+    ["king", "The future king must read God's law and stay humble under it."],
+  ],
+  takeaway: "Covenant life reaches the table, the tithe, the courts, the feasts, and the throne.",
+  takeawaySupport: "Day 51 helps us see that God's people are meant to be holy in public, private, religious, and civic life.",
+};
+
+const dayFiftyTwoSummary: BibleYearSummaryContent = {
+  intro: [
+    "Deuteronomy 18-21 teaches Israel how to handle true words, false practices, refuge, witnesses, war, and difficult justice.",
+    "The land must not be ruled by magic, revenge, panic, false testimony, or careless bloodshed.",
+    "Day 52 shows that God's people need true prophecy and careful justice in the hardest parts of life.",
+  ],
+  highlights: [
+    ["Levites", "The priests and Levites have the LORD as their inheritance."],
+    ["prophet", "God promises to raise up a prophet like Moses."],
+    ["refuge", "Cities of refuge slow revenge down so justice can be heard."],
+    ["witness", "False witnesses are judged because truth matters in court."],
+    ["war", "Even battle is placed under the LORD's command and order."],
+  ],
+  takeaway: "True covenant justice listens to God's word, protects life, and refuses false spiritual shortcuts.",
+  takeawaySupport: "Day 52 helps us see that Deuteronomy cares about the real pressure points of community life.",
+};
+
+const dayFiftyThreeSummary: BibleYearSummaryContent = {
+  intro: [
+    "Deuteronomy 22-25 brings covenant obedience into ordinary daily life.",
+    "Moses teaches about lost animals, roofs, clothing, marriage, the camp, vows, wages, pledges, gleaning, punishment, honest weights, and Amalek.",
+    "Day 53 shows that holiness is not only for special days. It belongs in everyday faithfulness.",
+  ],
+  highlights: [
+    ["neighbor", "Lost property must be restored instead of ignored."],
+    ["safety", "A roof needs a battlement because love protects life before harm happens."],
+    ["mercy", "Workers, strangers, widows, and fatherless people are protected from exploitation."],
+    ["justice", "Punishment must be restrained and honest measures must be used."],
+    ["memory", "Israel must remember Amalek's cruelty and not let evil be treated lightly."],
+  ],
+  takeaway: "Everyday faithfulness matters because ordinary life is lived before the LORD.",
+  takeawaySupport: "Day 53 helps us see that God's law trains His people to love their neighbor in practical ways.",
+};
+
+const dayFiftyFourSummary: BibleYearSummaryContent = {
+  intro: [
+    "Deuteronomy 26-29 brings Israel to firstfruits, covenant confession, written law, blessing, curse, and renewal in Moab.",
+    "Moses calls Israel to remember rescue, answer Amen, take warning seriously, and obey what God has revealed.",
+    "Day 54 shows covenant renewal as worship, memory, obedience, warning, and trust.",
+  ],
+  highlights: [
+    ["firstfruits", "Israel must confess the rescue story when bringing firstfruits."],
+    ["Amen", "The people answer the covenant curses publicly."],
+    ["blessing", "Obedience is connected to blessing in city, field, family, work, and land."],
+    ["curse", "Disobedience is warned against with sober detail."],
+    ["revealed", "The secret things belong to the LORD, but revealed things belong to obedience."],
+  ],
+  takeaway: "Covenant renewal calls God's people to remember, confess, obey, and take His warnings seriously.",
+  takeawaySupport: "Day 54 helps us see that blessing and curse are not abstract ideas. They press Israel to choose covenant faithfulness before entering the land.",
+};
+
+const dayFiftyFiveSummary: BibleYearSummaryContent = {
+  intro: [
+    "Deuteronomy 30-33 brings Moses' final covenant teaching close to Israel's heart.",
+    "Moses calls the people to choose life, charges Joshua, teaches a witness song, and blesses the tribes.",
+    "Day 55 is about final words that prepare Israel to live faithfully after Moses.",
+  ],
+  highlights: [
+    ["choose life", "Moses sets life and death before Israel."],
+    ["Joshua", "Joshua is charged to be strong and courageous."],
+    ["song", "The Song of Moses becomes a witness for future generations."],
+    ["Rock", "The LORD is praised as faithful, just, and perfect in His ways."],
+    ["blessing", "Moses blesses the tribes before his death."],
+  ],
+  takeaway: "Life is found in loving the LORD, obeying His voice, and holding fast to Him.",
+  takeawaySupport: "Day 55 helps us hear Moses' final call before the story moves into Joshua.",
+};
+
+const dayFiftySixSummary: BibleYearSummaryContent = {
+  intro: [
+    "Deuteronomy 34 and Joshua 1-3 move the story from Moses to Joshua.",
+    "Moses dies, Joshua is commissioned, Rahab protects the spies, and Israel crosses the Jordan.",
+    "Day 56 shows that God's promise continues even after a great leader is gone.",
+  ],
+  highlights: [
+    ["Moses", "Moses sees the land and dies in Moab."],
+    ["courage", "Joshua is commanded to be strong and courageous."],
+    ["Rahab", "Rahab confesses faith and protects the spies."],
+    ["scarlet cord", "Rahab's household receives a sign of rescue."],
+    ["Jordan", "The LORD stops the river so Israel crosses on dry ground."],
+  ],
+  takeaway: "The LORD's presence is the foundation for courage in the next season.",
+  takeawaySupport: "Day 56 helps us see leadership transition without losing sight of God's faithful promise.",
+};
+
+const dayFiftySevenSummary: BibleYearSummaryContent = {
+  intro: [
+    "Joshua 4-7 moves from memorial stones to Jericho's fall and Achan's sin.",
+    "Israel remembers the Jordan crossing, renews covenant signs, sees a great victory, and then faces hidden disobedience.",
+    "Day 57 teaches memory, obedience, mercy, and holy seriousness.",
+  ],
+  highlights: [
+    ["stones", "Memorial stones teach future children what the LORD did."],
+    ["Gilgal", "Israel renews covenant signs before battle."],
+    ["Jericho", "The walls fall as Israel obeys God's command."],
+    ["Rahab", "Rahab and her household are spared."],
+    ["Achan", "Hidden sin brings defeat and judgment."],
+  ],
+  takeaway: "God's people must remember His works and take obedience seriously after victory.",
+  takeawaySupport: "Day 57 helps us see that victory is not permission to become careless with sin.",
+};
+
+const dayFiftyEightSummary: BibleYearSummaryContent = {
+  intro: [
+    "Joshua 8-11 follows Israel through Ai, Gibeon, the southern battle, and the northern campaign.",
+    "The chapters show victory, covenant renewal, deception, prayer, and continued obedience.",
+    "Day 58 keeps tying conquest to the LORD's command and the LORD's help.",
+  ],
+  highlights: [
+    ["Ai", "The LORD gives Ai into Joshua's hand after Achan's sin is judged."],
+    ["law", "Joshua reads blessing and curse before all Israel."],
+    ["Gibeon", "Israel is deceived because they do not ask counsel of the LORD."],
+    ["sun", "The LORD hears Joshua and fights for Israel."],
+    ["rest", "The land rests from war after the northern kings are defeated."],
+  ],
+  takeaway: "Courage and victory must stay joined to obedience and seeking the LORD.",
+  takeawaySupport: "Day 58 helps us see that conquest in Joshua is not self-confidence, but covenant obedience under God's command.",
+};
+
+const dayFiftyNineSummary: BibleYearSummaryContent = {
+  intro: [
+    "Joshua 12-15 moves from conquered kings to distributed inheritance.",
+    "These chapters list victories, unfinished land, Caleb's inheritance, and Judah's borders.",
+    "Day 59 shows God's promise becoming real geography for real families.",
+  ],
+  highlights: [
+    ["kings", "The defeated kings are remembered as proof of the LORD's victories."],
+    ["inheritance", "The land is distributed as promised inheritance."],
+    ["Caleb", "Caleb receives Hebron after decades of steady faith."],
+    ["Judah", "Judah's borders and cities are recorded in detail."],
+    ["unfinished", "The land is given, but some obedience remains incomplete."],
+  ],
+  takeaway: "God's promises become concrete, but receiving inheritance still calls for faithfulness.",
+  takeawaySupport: "Day 59 helps us read land lists as promise taking shape, not empty geography.",
+};
+
+const daySixtySummary: BibleYearSummaryContent = {
+  intro: [
+    "Joshua 16-19 continues the inheritance for Joseph's descendants and the remaining tribes.",
+    "The chapters include Ephraim, Manasseh, Zelophehad's daughters, Shiloh, the land survey, and the final tribal portions.",
+    "Day 60 shows inheritance being ordered around worship, family, and the LORD's promise.",
+  ],
+  highlights: [
+    ["Ephraim", "Ephraim receives land but leaves unfinished obedience at Gezer."],
+    ["Manasseh", "Manasseh's inheritance includes Zelophehad's daughters."],
+    ["Shiloh", "The tabernacle is set up at Shiloh."],
+    ["survey", "The remaining land is described and divided by lot."],
+    ["Joshua", "Joshua receives his inheritance after the tribes receive theirs."],
+  ],
+  takeaway: "Inheritance is a gift from God that must be lived in with obedience and trust.",
+  takeawaySupport: "Day 60 helps us see the promised land becoming ordered life for the tribes of Israel.",
+};
+
+const daySixtyOneSummary: BibleYearSummaryContent = {
+  intro: [
+    "Joshua 20-23 brings refuge, Levite cities, unity, rest, and Joshua's warning to Israel's leaders.",
+    "The land has been received, but the people still need justice, pure worship, careful listening, and covenant loyalty.",
+    "Day 61 shows that fulfilled promise must be guarded by faithful obedience.",
+  ],
+  highlights: [
+    ["refuge", "Cities of refuge protect life while justice is carefully heard."],
+    ["Levites", "Levite cities spread worship and teaching among the tribes."],
+    ["rest", "Joshua 21 celebrates that not one good promise of the LORD failed."],
+    ["witness", "The altar in Joshua 22 is meant as a witness, not rival worship."],
+    ["warning", "Joshua warns the leaders not to cling to the nations or serve their gods."],
+  ],
+  takeaway: "The LORD gives refuge, rest, unity, and warning so His people can live faithfully in the land.",
+  takeawaySupport: "Day 61 helps us see that receiving God's promise does not remove the need to keep listening to God's word.",
+};
+
+const daySixtyTwoSummary: BibleYearSummaryContent = {
+  intro: [
+    "Joshua 24 calls Israel to choose whom they will serve, then Judges begins showing the danger of spiritual drift.",
+    "The people inherit the land, but incomplete obedience and forgetfulness begin shaping the next generation.",
+    "Day 62 moves from covenant commitment to the painful early cycles of Judges.",
+  ],
+  highlights: [
+    ["choose", "Joshua calls the people to serve the LORD with undivided loyalty."],
+    ["compromise", "Judges 1 repeats that Israel did not drive out the inhabitants."],
+    ["generation", "Another generation arises that does not know the LORD."],
+    ["cycle", "Judges 2 explains sin, oppression, crying out, and deliverance."],
+    ["deliverers", "Othniel, Ehud, and Shamgar show God's mercy in dark times."],
+  ],
+  takeaway: "Covenant words must become remembered obedience, not only a public moment.",
+  takeawaySupport: "Day 62 helps us see how quickly blessing can be forgotten when faith is not taught, remembered, and lived.",
+};
+
+const daySixtyThreeSummary: BibleYearSummaryContent = {
+  intro: [
+    "Judges 4-7 shows the LORD delivering Israel through Deborah, Barak, Jael, and Gideon.",
+    "These chapters mix courage, fear, worship, weakness, and God's surprising power.",
+    "Day 63 teaches that deliverance belongs to the LORD, not human impressiveness.",
+  ],
+  highlights: [
+    ["Deborah", "Deborah speaks God's word as prophetess and judge."],
+    ["Jael", "Jael becomes the unexpected woman through whom Sisera falls."],
+    ["song", "Judges 5 turns victory into worship and memory."],
+    ["Gideon", "God calls fearful Gideon a mighty man of valor."],
+    ["small army", "The LORD reduces Gideon's army so Israel cannot boast."],
+  ],
+  takeaway: "God can rescue through unexpected people, weak faith, and reduced strength.",
+  takeawaySupport: "Day 63 helps us see that the LORD's power is clearest when human boasting is removed.",
+};
+
+const daySixtyFourSummary: BibleYearSummaryContent = {
+  intro: [
+    "Judges 8-11 becomes darker as Gideon's victory turns dangerous, Abimelech grabs power, and Jephthah makes a tragic vow.",
+    "These chapters show deliverance mixed with pride, ambition, idolatry, repentance, and sorrow.",
+    "Day 64 warns that victory without wisdom and worship can still leave damage behind.",
+  ],
+  highlights: [
+    ["ephod", "Gideon's ephod becomes a snare to Israel."],
+    ["Abimelech", "Abimelech uses violence and manipulation to seize power."],
+    ["parable", "Jotham's parable warns Shechem about destructive leadership."],
+    ["cry", "Israel cries to the LORD after serving many gods."],
+    ["vow", "Jephthah's rash vow brings sorrow into his victory."],
+  ],
+  takeaway: "Power, victory, and zeal are dangerous when separated from humility and obedience.",
+  takeawaySupport: "Day 64 helps us read Judges honestly: God is merciful, but Israel's spiritual decline is becoming more painful.",
+};
+
+const daySixtyFiveSummary: BibleYearSummaryContent = {
+  intro: [
+    "Judges 12-15 introduces Samson's troubled calling after more internal conflict in Israel.",
+    "Samson is set apart before birth, empowered by the Spirit, and used against the Philistines, but his desires and anger are already visible.",
+    "Day 65 shows both God's purpose and Samson's weakness.",
+  ],
+  highlights: [
+    ["division", "Jephthah's conflict with Ephraim shows Israel's internal fractures."],
+    ["angel", "The angel of the LORD announces Samson's birth."],
+    ["Nazirite", "Samson is set apart from the womb for a special calling."],
+    ["desire", "Samson's desire for a Philistine woman reveals tension in his heart."],
+    ["Spirit", "The Spirit of the LORD empowers Samson against the Philistines."],
+  ],
+  takeaway: "God can begin deliverance through a flawed person, but Samson's story is not simple hero worship.",
+  takeawaySupport: "Day 65 helps us see that calling and gifting do not erase the need for wisdom, self-control, and faithfulness.",
+};
+
+const daySixtySixSummary: BibleYearSummaryContent = {
+  intro: [
+    "Judges 16-19 finishes Samson's story and then shows Israel unraveling from idolatry to violence.",
+    "Samson's fall is personal, but the chapters after him show the nation itself is deeply confused.",
+    "Day 66 makes the need for righteous leadership painfully clear.",
+  ],
+  highlights: [
+    ["Samson", "Samson reveals his secret, loses his strength, and cries to God in weakness."],
+    ["Delilah", "Delilah's pressure exposes Samson's lack of wisdom and self-control."],
+    ["Micah", "Micah builds private religion with idols and a hired priest."],
+    ["Dan", "Dan spreads corrupt worship from one house to a whole tribe."],
+    ["Gibeah", "Gibeah's evil shows how dark Israel has become."],
+  ],
+  takeaway: "Strength without faithfulness cannot heal a people who have turned from God's word.",
+  takeawaySupport: "Day 66 helps us feel why Judges keeps saying there was no king in Israel and everyone did what was right in his own eyes.",
+};
+
+const daySixtySevenSummary: BibleYearSummaryContent = {
+  intro: [
+    "Judges 20-21 closes the book with civil war, grief, and the near loss of Benjamin.",
+    "Then Ruth 1-2 begins in the same period, but with a very different kind of story.",
+    "Day 67 moves from national collapse to quiet loyal love.",
+  ],
+  highlights: [
+    ["civil war", "Israel fights Benjamin after Gibeah's wickedness."],
+    ["Benjamin", "The tribe is nearly destroyed and then preserved through painful human schemes."],
+    ["Naomi", "Naomi returns to Bethlehem empty and bitter."],
+    ["Ruth", "Ruth clings to Naomi and chooses Naomi's God."],
+    ["Boaz", "Boaz protects Ruth and begins the redemption thread."],
+  ],
+  takeaway: "God can keep hope alive through ordinary faithfulness in a dark time.",
+  takeawaySupport: "Day 67 helps us see Ruth as more than a family story. It is God's quiet mercy during the days of the judges.",
+};
+
+const daySixtyEightSummary: BibleYearSummaryContent = {
+  intro: [
+    "Ruth 3-4 completes the redemption story, and 1 Samuel 1-2 begins with Hannah's prayer.",
+    "Both stories show God working through vulnerable people, family pain, and faithful worship.",
+    "Day 68 connects Ruth's line to David and Hannah's son to Israel's prophetic future.",
+  ],
+  highlights: [
+    ["redeemer", "Boaz acts publicly and honorably as kinsman redeemer."],
+    ["Obed", "Ruth's son becomes part of the line leading to David."],
+    ["Hannah", "Hannah pours out her soul before the LORD."],
+    ["Samuel", "Samuel is born in answer to prayer and given to the LORD."],
+    ["Eli's sons", "The corruption of Hophni and Phinehas shows why faithful leadership is needed."],
+  ],
+  takeaway: "God often begins renewal through prayer, faithfulness, and hidden family stories.",
+  takeawaySupport: "Day 68 helps us see that redemption and prophetic leadership both begin with the LORD's mercy.",
+};
+
+const daySixtyNineSummary: BibleYearSummaryContent = {
+  intro: [
+    "1 Samuel 3-6 shows Samuel hearing God's word and Israel losing the ark to the Philistines.",
+    "The chapters are sobering because they show that religious symbols cannot be used to control God.",
+    "Day 69 teaches reverence for God's word, God's presence, and God's holiness.",
+  ],
+  highlights: [
+    ["Samuel", "Samuel learns to listen when the LORD calls."],
+    ["prophet", "All Israel recognizes Samuel as established by the LORD."],
+    ["ark", "Israel loses the ark after treating it like a battle tool."],
+    ["Dagon", "The idol falls before the ark in Philistine territory."],
+    ["holiness", "The ark's return brings joy, but also holy fear."],
+  ],
+  takeaway: "The LORD cannot be managed by symbols, enemies, or human plans.",
+  takeawaySupport: "Day 69 helps us see that God is present, holy, and powerful even when His people are humbled.",
+};
+
+const daySeventySummary: BibleYearSummaryContent = {
+  intro: [
+    "1 Samuel 7-10 moves from repentance and Ebenezer to Israel's request for a king.",
+    "Samuel warns the people, but they still want to be like the nations.",
+    "Day 70 begins Saul's story with both promise and warning.",
+  ],
+  highlights: [
+    ["Ebenezer", "Samuel raises a stone to remember that the LORD has helped Israel."],
+    ["king", "Israel asks for a king like the nations."],
+    ["warning", "Samuel explains what a king will take."],
+    ["Saul", "Saul is led to Samuel through an ordinary search for lost donkeys."],
+    ["anointing", "Samuel anoints Saul and God gives him another heart."],
+  ],
+  takeaway: "Israel's king begins with God's permission, but the deeper question is whether the people will trust the LORD.",
+  takeawaySupport: "Day 70 helps us understand why the monarchy begins with hope, tension, and a serious warning.",
+};
+
+const daySeventyOneSummary: BibleYearSummaryContent = {
+  intro: [
+    "1 Samuel 11-14 shows Saul's early public victory and his first major failures under pressure.",
+    "Jabeshgilead is rescued, Samuel warns Israel, Saul offers unlawfully, and Jonathan steps out in bold faith.",
+    "Day 71 helps us see the difference between Spirit-empowered rescue and fear-driven leadership.",
+  ],
+  highlights: [
+    ["Jabeshgilead", "Saul rescues a threatened Israelite city."],
+    ["Samuel", "Samuel calls Israel to serve the LORD faithfully even with a king."],
+    ["offering", "Saul acts before Samuel arrives and reveals a disobedient heart."],
+    ["Jonathan", "Jonathan trusts that the LORD can save by many or by few."],
+    ["oath", "Saul's rash oath weakens the people after victory begins."],
+  ],
+  takeaway: "Leadership must listen to the LORD, especially when pressure rises.",
+  takeawaySupport: "Day 71 shows Saul with real promise, but it also begins exposing why Israel needs a better king.",
+};
+
+const daySeventyTwoSummary: BibleYearSummaryContent = {
+  intro: [
+    "1 Samuel 15-18 is one of the biggest turning points in the story of Israel's kings.",
+    "Saul is rejected, David is anointed, Goliath falls, and Saul's jealousy begins to grow.",
+    "Day 72 moves the story from Saul's failing kingdom toward David, the king God has chosen.",
+  ],
+  highlights: [
+    ["obedience", "Samuel declares that obedience is better than sacrifice."],
+    ["heart", "The LORD sees the heart, not outward appearance."],
+    ["Goliath", "David faces the giant in the name of the LORD."],
+    ["Jonathan", "Jonathan loves David and makes covenant with him."],
+    ["jealousy", "Saul begins fearing David because the LORD is with him."],
+  ],
+  takeaway: "God's choice is not based on outward appearance but on the heart.",
+  takeawaySupport: "Day 72 shows David's rise beginning through faith, courage, and the LORD's presence.",
+};
+
+const daySeventyThreeSummary: BibleYearSummaryContent = {
+  intro: [
+    "1 Samuel 19-22 follows David as Saul's jealousy becomes open danger.",
+    "Jonathan protects David, Michal helps him escape, David receives help at Nob, and Saul kills the priests.",
+    "Day 73 shows that being chosen by God does not mean the road becomes easy.",
+  ],
+  highlights: [
+    ["Jonathan", "Jonathan speaks for David and protects him from Saul."],
+    ["escape", "David flees through a window with Michal's help."],
+    ["covenant", "David and Jonathan renew loyal friendship before parting."],
+    ["Nob", "Ahimelech helps David with bread and Goliath's sword."],
+    ["Adullam", "Distressed people gather around David in the cave."],
+  ],
+  takeaway: "God can preserve His chosen servant through friendship, hiding, and painful waiting.",
+  takeawaySupport: "Day 73 helps us understand David's wilderness years before he ever wears the crown.",
+};
+
+const daySeventyFourSummary: BibleYearSummaryContent = {
+  intro: [
+    "1 Samuel 23-26 shows David hunted by Saul but refusing revenge.",
+    "David seeks the LORD's direction, is strengthened by Jonathan, spares Saul in a cave, learns wisdom from Abigail, and spares Saul again.",
+    "Day 74 is about restraint, mercy, and trusting God's timing.",
+  ],
+  highlights: [
+    ["Keilah", "David asks the LORD before rescuing the city."],
+    ["Jonathan", "Jonathan strengthens David's hand in God."],
+    ["robe", "David cuts Saul's robe but will not kill him."],
+    ["Abigail", "Abigail's wisdom keeps David from bloodguilt."],
+    ["spear", "David takes Saul's spear but again refuses murder."],
+  ],
+  takeaway: "Faith sometimes means refusing revenge even when the opportunity is in your hand.",
+  takeawaySupport: "Day 74 shows David being formed into a king who waits for the LORD rather than seizing power through sin.",
+};
+
+const daySeventyFiveSummary: BibleYearSummaryContent = {
+  intro: [
+    "1 Samuel 27-30 follows David in exile while Saul moves toward final collapse.",
+    "David lives among the Philistines, Saul seeks forbidden counsel, the Philistines reject David, and Ziklag is rescued.",
+    "Day 75 contrasts Saul's spiritual ruin with David strengthening himself in the LORD.",
+  ],
+  highlights: [
+    ["Ziklag", "David receives a city while living in Philistine territory."],
+    ["medium", "Saul seeks forbidden spiritual help when the LORD does not answer."],
+    ["Philistines", "The Philistine rulers refuse to let David fight with them."],
+    ["encouraged", "David strengthens himself in the LORD during deep distress."],
+    ["recovered", "David recovers all that the Amalekites had taken."],
+  ],
+  takeaway: "In crisis, David turns back to the LORD for strength and direction.",
+  takeawaySupport: "Day 75 prepares us for Saul's fall and David's coming kingdom by showing two very different responses to pressure.",
+};
+
 function buildFallbackSummary(day: GenesisBibleYearDay): BibleYearSummaryContent {
   const pieces = day.summary
     .split(",")
@@ -1165,7 +1702,7 @@ ${body}`;
 }
 
 function getReaderAlignedStudySections(day: GenesisBibleYearDay, fallback: BibleYearDeepStudySection[] | null | undefined) {
-  if (day.dayNumber < 1 || day.dayNumber > 50) return fallback ?? null;
+  if (day.dayNumber < 1 || day.dayNumber > 75) return fallback ?? null;
 
   const readerSections = day.readings.flatMap((reading) =>
     getBibleReaderStudySections(reading.book, reading.chapter).map((section) => ({
@@ -1580,6 +2117,206 @@ export const BIBLE_YEAR_DAY_CONTENT: Partial<Record<number, Omit<BibleYearDayCon
     studyNotesSections: BIBLE_YEAR_DAY_FIFTY_DEEP_STUDY_SECTIONS,
     summary: dayFiftySummary,
     discussionPrompt: "Where do you see God calling His people to loyalty from the heart, not just outward religion?",
+  },
+  51: {
+    lesson: DEUTERONOMY_DAY_FIFTY_ONE_WORSHIP_JUSTICE_AND_LEADERSHIP_LESSON,
+    audio: BIBLE_YEAR_DAY_FIFTY_ONE_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_FIFTY_ONE_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_FIFTY_ONE_DEEP_STUDY_SECTIONS,
+    summary: dayFiftyOneSummary,
+    discussionPrompt: "Where do you see holiness shaping worship, generosity, justice, or leadership in Deuteronomy 14-17?",
+  },
+  52: {
+    lesson: DEUTERONOMY_DAY_FIFTY_TWO_PROPHETS_CITIES_AND_JUSTICE_LESSON,
+    audio: BIBLE_YEAR_DAY_FIFTY_TWO_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_FIFTY_TWO_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_FIFTY_TWO_DEEP_STUDY_SECTIONS,
+    summary: dayFiftyTwoSummary,
+    discussionPrompt: "What stands out to you about true words, refuge, witnesses, and justice in Deuteronomy 18-21?",
+  },
+  53: {
+    lesson: DEUTERONOMY_DAY_FIFTY_THREE_EVERYDAY_FAITHFULNESS_LESSON,
+    audio: BIBLE_YEAR_DAY_FIFTY_THREE_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_FIFTY_THREE_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_FIFTY_THREE_DEEP_STUDY_SECTIONS,
+    summary: dayFiftyThreeSummary,
+    discussionPrompt: "Where do you see everyday faithfulness showing up in ordinary neighbor life?",
+  },
+  54: {
+    lesson: DEUTERONOMY_DAY_FIFTY_FOUR_BLESSING_CURSE_AND_COVENANT_RENEWAL_LESSON,
+    audio: BIBLE_YEAR_DAY_FIFTY_FOUR_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_FIFTY_FOUR_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_FIFTY_FOUR_DEEP_STUDY_SECTIONS,
+    summary: dayFiftyFourSummary,
+    discussionPrompt: "What stands out to you about worship, warning, and covenant renewal in Deuteronomy 26-29?",
+  },
+  55: {
+    lesson: DEUTERONOMY_DAY_FIFTY_FIVE_CHOOSE_LIFE_AND_MOSES_BLESSING_LESSON,
+    audio: BIBLE_YEAR_DAY_FIFTY_FIVE_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_FIFTY_FIVE_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_FIFTY_FIVE_DEEP_STUDY_SECTIONS,
+    summary: dayFiftyFiveSummary,
+    discussionPrompt: "Where do you see Moses calling Israel to choose life and hold fast to the LORD?",
+  },
+  56: {
+    lesson: DEUTERONOMY_JOSHUA_DAY_FIFTY_SIX_MOSES_DIES_AND_JOSHUA_LEADS_LESSON,
+    audio: BIBLE_YEAR_DAY_FIFTY_SIX_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_FIFTY_SIX_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_FIFTY_SIX_DEEP_STUDY_SECTIONS,
+    summary: dayFiftySixSummary,
+    discussionPrompt: "What stands out to you about God's promise continuing from Moses to Joshua?",
+  },
+  57: {
+    lesson: JOSHUA_DAY_FIFTY_SEVEN_MEMORIAL_STONES_JERICHO_AND_ACHAN_LESSON,
+    audio: BIBLE_YEAR_DAY_FIFTY_SEVEN_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_FIFTY_SEVEN_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_FIFTY_SEVEN_DEEP_STUDY_SECTIONS,
+    summary: dayFiftySevenSummary,
+    discussionPrompt: "What do memorial stones, Jericho, and Achan teach you about remembering and obeying?",
+  },
+  58: {
+    lesson: JOSHUA_DAY_FIFTY_EIGHT_CONQUEST_AND_COVENANT_OBEDIENCE_LESSON,
+    audio: BIBLE_YEAR_DAY_FIFTY_EIGHT_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_FIFTY_EIGHT_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_FIFTY_EIGHT_DEEP_STUDY_SECTIONS,
+    summary: dayFiftyEightSummary,
+    discussionPrompt: "Where do you see victory, wisdom, and obedience staying connected in Joshua 8-11?",
+  },
+  59: {
+    lesson: JOSHUA_DAY_FIFTY_NINE_LAND_IS_DISTRIBUTED_LESSON,
+    audio: BIBLE_YEAR_DAY_FIFTY_NINE_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_FIFTY_NINE_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_FIFTY_NINE_DEEP_STUDY_SECTIONS,
+    summary: dayFiftyNineSummary,
+    discussionPrompt: "What does Joshua 12-15 teach you about promise becoming real inheritance?",
+  },
+  60: {
+    lesson: JOSHUA_DAY_SIXTY_INHERITANCE_FOR_THE_TRIBES_LESSON,
+    audio: BIBLE_YEAR_DAY_SIXTY_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_SIXTY_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_SIXTY_DEEP_STUDY_SECTIONS,
+    summary: daySixtySummary,
+    discussionPrompt: "Where do you see inheritance, responsibility, and worship connected in Joshua 16-19?",
+  },
+  61: {
+    lesson: JOSHUA_DAY_SIXTY_ONE_REFUGE_REST_AND_WARNING_LESSON,
+    audio: BIBLE_YEAR_DAY_SIXTY_ONE_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_SIXTY_ONE_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_SIXTY_ONE_DEEP_STUDY_SECTIONS,
+    summary: daySixtyOneSummary,
+    discussionPrompt: "Where do you see refuge, rest, unity, and warning shaping life in the land?",
+  },
+  62: {
+    lesson: JOSHUA_JUDGES_DAY_SIXTY_TWO_COVENANT_CHOICE_AND_DRIFT_LESSON,
+    audio: BIBLE_YEAR_DAY_SIXTY_TWO_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_SIXTY_TWO_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_SIXTY_TWO_DEEP_STUDY_SECTIONS,
+    summary: daySixtyTwoSummary,
+    discussionPrompt: "What stands out to you about choosing the LORD and then watching Israel begin to drift?",
+  },
+  63: {
+    lesson: JUDGES_DAY_SIXTY_THREE_DEBORAH_GIDEON_AND_DELIVERANCE_LESSON,
+    audio: BIBLE_YEAR_DAY_SIXTY_THREE_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_SIXTY_THREE_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_SIXTY_THREE_DEEP_STUDY_SECTIONS,
+    summary: daySixtyThreeSummary,
+    discussionPrompt: "Where do you see God using unexpected people and reduced strength to bring deliverance?",
+  },
+  64: {
+    lesson: JUDGES_DAY_SIXTY_FOUR_GIDEONS_FAILURE_AND_JEPHTHAHS_VOW_LESSON,
+    audio: BIBLE_YEAR_DAY_SIXTY_FOUR_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_SIXTY_FOUR_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_SIXTY_FOUR_DEEP_STUDY_SECTIONS,
+    summary: daySixtyFourSummary,
+    discussionPrompt: "What warnings do you see about power, ambition, idolatry, and careless vows?",
+  },
+  65: {
+    lesson: JUDGES_DAY_SIXTY_FIVE_SAMSON_BEGINS_TROUBLED_CALLING_LESSON,
+    audio: BIBLE_YEAR_DAY_SIXTY_FIVE_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_SIXTY_FIVE_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_SIXTY_FIVE_DEEP_STUDY_SECTIONS,
+    summary: daySixtyFiveSummary,
+    discussionPrompt: "What stands out to you about Samson's calling, strength, weakness, and early conflict with the Philistines?",
+  },
+  66: {
+    lesson: JUDGES_DAY_SIXTY_SIX_SAMSON_FALLS_AND_ISRAEL_UNRAVELS_LESSON,
+    audio: BIBLE_YEAR_DAY_SIXTY_SIX_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_SIXTY_SIX_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_SIXTY_SIX_DEEP_STUDY_SECTIONS,
+    summary: daySixtySixSummary,
+    discussionPrompt: "What stands out to you about Samson's fall and Israel's unraveling in Judges 16-19?",
+  },
+  67: {
+    lesson: JUDGES_RUTH_DAY_SIXTY_SEVEN_CIVIL_WAR_AND_RUTHS_LOYAL_LOVE_LESSON,
+    audio: BIBLE_YEAR_DAY_SIXTY_SEVEN_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_SIXTY_SEVEN_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_SIXTY_SEVEN_DEEP_STUDY_SECTIONS,
+    summary: daySixtySevenSummary,
+    discussionPrompt: "Where do you see the contrast between Judges' collapse and Ruth's loyal love?",
+  },
+  68: {
+    lesson: RUTH_SAMUEL_DAY_SIXTY_EIGHT_REDEMPTION_AND_SAMUELS_BIRTH_LESSON,
+    audio: BIBLE_YEAR_DAY_SIXTY_EIGHT_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_SIXTY_EIGHT_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_SIXTY_EIGHT_DEEP_STUDY_SECTIONS,
+    summary: daySixtyEightSummary,
+    discussionPrompt: "What stands out to you about redemption, prayer, and God preparing Israel's future?",
+  },
+  69: {
+    lesson: FIRST_SAMUEL_DAY_SIXTY_NINE_SAMUEL_HEARS_GOD_AND_ARK_TAKEN_LESSON,
+    audio: BIBLE_YEAR_DAY_SIXTY_NINE_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_SIXTY_NINE_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_SIXTY_NINE_DEEP_STUDY_SECTIONS,
+    summary: daySixtyNineSummary,
+    discussionPrompt: "What does Day 69 teach you about hearing God's word and revering God's holiness?",
+  },
+  70: {
+    lesson: FIRST_SAMUEL_DAY_SEVENTY_ISRAEL_ASKS_FOR_A_KING_LESSON,
+    audio: BIBLE_YEAR_DAY_SEVENTY_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_SEVENTY_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_SEVENTY_DEEP_STUDY_SECTIONS,
+    summary: daySeventySummary,
+    discussionPrompt: "Where do you see Israel's desire for a king revealing questions of trust?",
+  },
+  71: {
+    lesson: FIRST_SAMUEL_DAY_SEVENTY_ONE_SAULS_RISE_AND_EARLY_FAILURE_LESSON,
+    audio: BIBLE_YEAR_DAY_SEVENTY_ONE_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_SEVENTY_ONE_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_SEVENTY_ONE_DEEP_STUDY_SECTIONS,
+    summary: daySeventyOneSummary,
+    discussionPrompt: "Where do you see pressure testing whether Saul will listen to the LORD?",
+  },
+  72: {
+    lesson: FIRST_SAMUEL_DAY_SEVENTY_TWO_SAUL_REJECTED_AND_DAVID_APPEARS_LESSON,
+    audio: BIBLE_YEAR_DAY_SEVENTY_TWO_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_SEVENTY_TWO_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_SEVENTY_TWO_DEEP_STUDY_SECTIONS,
+    summary: daySeventyTwoSummary,
+    discussionPrompt: "What stands out to you about the LORD seeing the heart instead of outward appearance?",
+  },
+  73: {
+    lesson: FIRST_SAMUEL_DAY_SEVENTY_THREE_DAVID_FLEES_FROM_SAUL_LESSON,
+    audio: BIBLE_YEAR_DAY_SEVENTY_THREE_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_SEVENTY_THREE_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_SEVENTY_THREE_DEEP_STUDY_SECTIONS,
+    summary: daySeventyThreeSummary,
+    discussionPrompt: "Where do you see God preserving David through loyal friendship and hidden protection?",
+  },
+  74: {
+    lesson: FIRST_SAMUEL_DAY_SEVENTY_FOUR_DAVID_SPARES_SAUL_LESSON,
+    audio: BIBLE_YEAR_DAY_SEVENTY_FOUR_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_SEVENTY_FOUR_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_SEVENTY_FOUR_DEEP_STUDY_SECTIONS,
+    summary: daySeventyFourSummary,
+    discussionPrompt: "What does David's restraint teach you about mercy, revenge, and God's timing?",
+  },
+  75: {
+    lesson: FIRST_SAMUEL_DAY_SEVENTY_FIVE_DAVID_IN_EXILE_LESSON,
+    audio: BIBLE_YEAR_DAY_SEVENTY_FIVE_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_SEVENTY_FIVE_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_SEVENTY_FIVE_DEEP_STUDY_SECTIONS,
+    summary: daySeventyFiveSummary,
+    discussionPrompt: "What does David strengthening himself in the LORD teach you about crisis?",
   },
 };
 
