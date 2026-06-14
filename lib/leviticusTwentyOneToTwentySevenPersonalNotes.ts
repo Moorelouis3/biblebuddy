@@ -1552,6 +1552,39 @@ const day38LeviticusCuratedPhraseTitles: Record<string, string[]> = {
   ],
 };
 
+const day38LeviticusSectionHeadings: Record<string, { icon: string; title: string }> = {
+  "Leviticus 25:1-6": { icon: "🛖", title: "🛖 The Land Keeps Sabbath" },
+  "Leviticus 25:7-7": { icon: "🌾", title: "🌾 Sabbath Provision For All" },
+  "Leviticus 25:8-13": { icon: "🎺", title: "🎺 Jubilee And Liberty" },
+  "Leviticus 25:14-17": { icon: "⚖️", title: "⚖️ Fair Dealing In The Land" },
+  "Leviticus 25:18-22": { icon: "🌧️", title: "🌧️ Trusting God's Provision" },
+  "Leviticus 25:23-28": { icon: "🏞️", title: "🏞️ The Land Belongs To God" },
+  "Leviticus 25:29-34": { icon: "🏠", title: "🏠 Houses, Villages, And Levites" },
+  "Leviticus 25:35-38": { icon: "🤲", title: "🤲 Help The Poor Brother Live" },
+  "Leviticus 25:39-44": { icon: "🛡️", title: "🛡️ No Harsh Rule Over A Brother" },
+  "Leviticus 25:45-46": { icon: "📜", title: "📜 Servants And Inheritance Boundaries" },
+  "Leviticus 25:47-52": { icon: "🔁", title: "🔁 Redemption From Bondage" },
+  "Leviticus 25:53-55": { icon: "🕊️", title: "🕊️ Israel Belongs To The LORD" },
+  "Leviticus 26:1-2": { icon: "🚫", title: "🚫 Worship Must Stay Pure" },
+  "Leviticus 26:3-8": { icon: "🚶", title: "🚶 Blessing For Walking In God's Ways" },
+  "Leviticus 26:9-13": { icon: "⛺", title: "⛺ Covenant Presence Among Israel" },
+  "Leviticus 26:14-19": { icon: "⚠️", title: "⚠️ The First Covenant Warnings" },
+  "Leviticus 26:20-20": { icon: "📉", title: "📉 Labor Spent In Vain" },
+  "Leviticus 26:21-26": { icon: "🚨", title: "🚨 Walking Contrary To God" },
+  "Leviticus 26:27-32": { icon: "🏚️", title: "🏚️ Cities, Idols, And Desolation" },
+  "Leviticus 26:33-38": { icon: "⚔️", title: "⚔️ Scattering And The Land's Rest" },
+  "Leviticus 26:39-39": { icon: "😔", title: "😔 Wasting Away In Iniquity" },
+  "Leviticus 26:40-45": { icon: "🙏", title: "🙏 Confession And Covenant Mercy" },
+  "Leviticus 27:1-6": { icon: "🗣️", title: "🗣️ Vows And Valuations" },
+  "Leviticus 27:7-8": { icon: "🧑‍⚖️", title: "🧑‍⚖️ The Priest Values The Poor" },
+  "Leviticus 27:9-13": { icon: "✨", title: "✨ Once Given, It Is Holy" },
+  "Leviticus 27:14-15": { icon: "🏡", title: "🏡 A House Set Apart" },
+  "Leviticus 27:16-21": { icon: "🌱", title: "🌱 A Field Dedicated To The LORD" },
+  "Leviticus 27:22-25": { icon: "🪙", title: "🪙 Bought Fields And Sanctuary Shekels" },
+  "Leviticus 27:26-29": { icon: "🔥", title: "🔥 Firstborn And Devoted Things" },
+  "Leviticus 27:30-33": { icon: "👑", title: "👑 The Tithe Belongs To The LORD" },
+};
+
 function getDay38LeviticusCueLines(title: string) {
   const lower = getDay38CleanTitle(title).toLowerCase();
 
@@ -1860,9 +1893,11 @@ function makeDay38LeviticusExplanation(title: string) {
 
 function polishDay38LeviticusSection(section: PersonalLeviticusPhraseSectionInput): PersonalLeviticusPhraseSectionInput {
   const curatedTitles = day38LeviticusCuratedPhraseTitles[section.reference];
+  const heading = day38LeviticusSectionHeadings[section.reference];
 
   return {
     ...section,
+    ...(heading || {}),
     phrases: (curatedTitles || section.phrases.map(([title]) => title)).map((title) => {
       const finalTitle = replaceDay38LeviticusPhraseTitle(title);
       return [finalTitle, makeDay38LeviticusExplanation(finalTitle)];

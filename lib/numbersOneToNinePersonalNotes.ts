@@ -150,6 +150,22 @@ const day38NumbersCuratedPhraseTitles: Record<string, string[]> = {
   ],
 };
 
+const day38NumbersSectionHeadings: Record<string, { icon: string; title: string }> = {
+  "Numbers 1:1-4": { icon: "🏜️", title: "🏜️ Counted In The Wilderness" },
+  "Numbers 1:5-9": { icon: "🤝", title: "🤝 Leaders Stand With Moses" },
+  "Numbers 1:10-15": { icon: "🌿", title: "🌿 Joseph's Sons And The Tribes" },
+  "Numbers 1:16-16": { icon: "📣", title: "📣 Renowned Heads Of Israel" },
+  "Numbers 1:17-19": { icon: "📝", title: "📝 Names Declared Before The LORD" },
+  "Numbers 1:20-25": { icon: "🧾", title: "🧾 Reuben, Simeon, And Gad Counted" },
+  "Numbers 1:26-27": { icon: "🦁", title: "🦁 Judah Counted For War" },
+  "Numbers 1:28-33": { icon: "📋", title: "📋 Issachar Through Manasseh Counted" },
+  "Numbers 1:34-35": { icon: "👤", title: "👤 Manasseh Counted By Family" },
+  "Numbers 1:36-41": { icon: "🔢", title: "🔢 The Remaining Tribes Counted" },
+  "Numbers 1:42-46": { icon: "🪖", title: "🪖 The Full Army Number" },
+  "Numbers 1:47-52": { icon: "🛕", title: "🛕 Levi Set Apart For The Tabernacle" },
+  "Numbers 1:53-54": { icon: "✅", title: "✅ The Levites Keep The Charge" },
+};
+
 function getDay38NumbersCueLines(title: string) {
   const lower = getDay38NumbersCleanTitle(title).toLowerCase();
 
@@ -301,6 +317,7 @@ function polishDay38NumbersSection(section: PersonalLeviticusPhraseSectionInput)
 
   return {
     ...section,
+    ...(day38NumbersSectionHeadings[section.reference] || {}),
     phrases: (day38NumbersCuratedPhraseTitles[section.reference] || section.phrases.map(([title]) => title)).map((title) => {
       const finalTitle = replaceDay38NumbersPhraseTitle(title);
       return [finalTitle, makeDay38NumbersExplanation(finalTitle)];
