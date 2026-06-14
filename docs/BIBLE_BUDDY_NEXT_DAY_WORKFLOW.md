@@ -9,6 +9,57 @@ Use this when the user says something like:
 
 The goal is to build a complete Bible-in-one-year day the same way as the previous days: journey entry, script, audio, page wiring, and deep reader notes.
 
+## Batch Run Rule For Days 39-365
+
+When the user asks for a range such as "do day 39 to day 44", treat it as a repeated day-production run, usually 5 days at a time unless the user says otherwise.
+
+Use Days 37 and 38 as the current quality baseline and Day 1 Genesis 1 as the layout/format baseline.
+
+For each day in the requested range, complete the full checklist before moving to the next day:
+
+1. Check whether the day already exists.
+   - If it exists, audit what is already there before changing it.
+   - If it does not exist, build it from scratch using the master plan reading.
+   - Do not assume an existing generated day is good enough.
+
+2. Build or repair the day page and journey data.
+   - Add the day to the journey map/content map if missing.
+   - Use the actual reading from `docs/bible-in-one-year-master-plan.md`.
+   - Keep the dashboard/player layout consistent with the published BibleBuddy day layout.
+
+3. Build the narrator script and audio.
+   - Use OpenAI / ChatGPT TTS for the narrator voice.
+   - Use one narrator voice only.
+   - Save the local narrator-only audio.
+   - Create the final mixed music-under-narrator audio.
+   - Wire the mixed audio to the day.
+   - Target 20-30 minutes for the final day audio. If the audio is outside that range, revise the script and regenerate before calling the day done.
+
+4. Build the Scripture notes.
+   - Add notes for every chapter assigned to that day.
+   - Section cards must have their own intentional emoji and heading.
+   - Section-card emojis should not all repeat across the day.
+   - Key phrases must be real phrases from the assigned King James Version text inside BibleBuddy.
+   - Do not use single words, names, or topics as key phrases when the feature calls for phrases.
+   - Every key phrase heading must include an emoji.
+   - Every phrase explanation must follow the Genesis 1 / Day 37 / Day 38 explanation standard: explain the exact phrase directly, stay on topic, use short paragraphs, and avoid canned framework language.
+
+5. Audit the notes before moving on.
+   - No fake generated filler phrases.
+   - No repeated fallback openings such as "These words...", "This phrase belongs...", or "A reader should connect...".
+   - No repeated generic emoji lists across cards.
+   - No section under 4 key phrases.
+   - No card over 6 verses.
+   - Prefer about 150+ phrase cards for a full multi-chapter day when the reading size supports it.
+
+6. Validate the day.
+   - Run TypeScript.
+   - Run the reader-day audit for that day.
+   - Run `git diff --check`.
+   - Report section and phrase totals.
+
+Only after all days in the requested range pass their own checks should the batch be considered done.
+
 ## Step 0: Identify The Day
 
 1. Find the day number and reading range from `docs/bible-in-one-year-master-plan.md`.

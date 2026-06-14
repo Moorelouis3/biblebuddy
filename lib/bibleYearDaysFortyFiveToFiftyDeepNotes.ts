@@ -500,7 +500,7 @@ const DAY_50_SECTIONS = [
   },
 ] as const;
 
-export const NUMBERS_DAY_FORTY_FIVE_NEW_GENERATION_COUNTED_LESSON = makeLesson(45, "A New Generation Counted", "Numbers 26-29", "35-40 min", [
+export const NUMBERS_DAY_FORTY_FIVE_NEW_GENERATION_COUNTED_LESSON = makeLesson(45, "A New Generation Counted", "Numbers 26-29", "20-30 min", [
   "Day 45 counts a new generation and prepares Israel for inheritance, leadership, and worship in the land.",
   "The wilderness judgment has happened, but God's promise has not failed.",
   "Numbers 26-29 shows names, land, Joshua, and offerings all being ordered before Israel enters Canaan.",
@@ -509,14 +509,14 @@ export const NUMBERS_DAY_FORTY_FIVE_NEW_GENERATION_COUNTED_LESSON = makeLesson(4
   "The land, leadership, justice, and worship are all prepared by the LORD.",
 ]);
 
-export const NUMBERS_DAY_FORTY_SIX_VOWS_VICTORY_AND_JOURNEY_REVIEWED_LESSON = makeLesson(46, "Vows, Victory, and the Journey Reviewed", "Numbers 30-33", "35-40 min", [
+export const NUMBERS_DAY_FORTY_SIX_VOWS_VICTORY_AND_JOURNEY_REVIEWED_LESSON = makeLesson(46, "Vows, Victory, and the Journey Reviewed", "Numbers 30-33", "20-30 min", [
   "Day 46 moves through vows, Midian, east-of-Jordan settlement, and the long journey list from Egypt to Moab.",
   "The reading shows Israel learning that words matter, compromise has consequences, and memory matters before entering the land.",
 ], DAY_46_SECTIONS, [
   "Day 46 teaches that the promised land requires honest words, shared responsibility, remembered grace, and serious separation from idolatry.",
 ]);
 
-export const NUMBERS_DEUTERONOMY_DAY_FORTY_SEVEN_LAND_BOUNDARIES_AND_MOSES_LOOKS_BACK_LESSON = makeLesson(47, "Land Boundaries and Moses Looks Back", "Numbers 34-36; Deuteronomy 1", "35-40 min", [
+export const NUMBERS_DEUTERONOMY_DAY_FORTY_SEVEN_LAND_BOUNDARIES_AND_MOSES_LOOKS_BACK_LESSON = makeLesson(47, "Land Boundaries and Moses Looks Back", "Numbers 34-36; Deuteronomy 1", "20-30 min", [
   "Day 47 closes Numbers and opens Deuteronomy.",
   "Numbers ends with boundaries, Levite cities, cities of refuge, and inheritance protection.",
   "Then Moses begins speaking to the new generation, retelling the journey so they can enter the land with memory and wisdom.",
@@ -524,21 +524,21 @@ export const NUMBERS_DEUTERONOMY_DAY_FORTY_SEVEN_LAND_BOUNDARIES_AND_MOSES_LOOKS
   "Day 47 teaches that inheritance, justice, refuge, memory, and leadership all matter as Israel stands near the land.",
 ]);
 
-export const DEUTERONOMY_DAY_FORTY_EIGHT_REMEMBERING_JOURNEY_AND_COVENANT_LESSON = makeLesson(48, "Remembering the Journey and the Covenant", "Deuteronomy 2-5", "35-40 min", [
+export const DEUTERONOMY_DAY_FORTY_EIGHT_REMEMBERING_JOURNEY_AND_COVENANT_LESSON = makeLesson(48, "Remembering the Journey and the Covenant", "Deuteronomy 2-5", "20-30 min", [
   "Day 48 listens as Moses remembers the journey and repeats the covenant.",
   "The new generation must know where God led them, what God gave them, and how God spoke to them at Horeb.",
 ], DAY_48_SECTIONS, [
   "Day 48 teaches that remembering God's past faithfulness prepares the heart for present obedience.",
 ]);
 
-export const DEUTERONOMY_DAY_FORTY_NINE_LOVE_GOD_AND_REMEMBER_GRACE_LESSON = makeLesson(49, "Love God and Remember Grace", "Deuteronomy 6-9", "35-40 min", [
+export const DEUTERONOMY_DAY_FORTY_NINE_LOVE_GOD_AND_REMEMBER_GRACE_LESSON = makeLesson(49, "Love God and Remember Grace", "Deuteronomy 6-9", "20-30 min", [
   "Day 49 includes the great call to love the LORD with all the heart, soul, and might.",
   "Moses warns Israel not to forget God in prosperity and not to think the land is earned by their own righteousness.",
 ], DAY_49_SECTIONS, [
   "Day 49 teaches that covenant obedience begins with love, memory, humility, and grace.",
 ]);
 
-export const DEUTERONOMY_DAY_FIFTY_COVENANT_LOYALTY_FROM_THE_HEART_LESSON = makeLesson(50, "Covenant Loyalty From the Heart", "Deuteronomy 10-13", "35-40 min", [
+export const DEUTERONOMY_DAY_FIFTY_COVENANT_LOYALTY_FROM_THE_HEART_LESSON = makeLesson(50, "Covenant Loyalty From the Heart", "Deuteronomy 10-13", "20-30 min", [
   "Day 50 presses covenant loyalty into the heart, the home, worship, and community life.",
   "Moses calls Israel to love the LORD, circumcise the heart, choose blessing, worship where God chooses, and refuse other gods.",
 ], DAY_50_SECTIONS, [

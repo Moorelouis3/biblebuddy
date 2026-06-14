@@ -428,7 +428,7 @@ export const NUMBERS_DAY_FORTY_ONE_JOURNEY_COMPLAINTS_AND_SPIES_LESSON = makeLes
   41,
   "Journey, Complaints, and Spies",
   "Numbers 10-13",
-  "35-40 min",
+  "20-30 min",
   [
     "Day 41 follows Israel as they finally set forward from Sinai.",
     "The camp moves by God's command, but the journey quickly exposes complaint, craving, leadership pressure, family rebellion, and fear at the edge of the promised land.",
@@ -445,7 +445,7 @@ export const NUMBERS_DAY_FORTY_TWO_REBELLION_AND_CHOSEN_PRIESTHOOD_LESSON = make
   42,
   "Rebellion and God's Chosen Priesthood",
   "Numbers 14-17",
-  "35-40 min",
+  "20-30 min",
   [
     "Day 42 shows the terrible cost of unbelief and rebellion.",
     "Israel refuses the promised land, Moses intercedes, a generation is sentenced to wander, and Korah challenges God's appointed leadership.",
@@ -462,7 +462,7 @@ export const NUMBERS_DAY_FORTY_THREE_PROVISION_JUDGMENT_AND_BRONZE_SERPENT_LESSO
   43,
   "Provision, Judgment, and the Bronze Serpent",
   "Numbers 18-21",
-  "35-40 min",
+  "20-30 min",
   [
     "Day 43 moves through priestly provision, cleansing from death, water from the rock, Aaron's death, serpents in the camp, and victories on the road.",
     "These chapters show the wilderness generation facing death, failure, judgment, mercy, and continued movement toward the land.",
@@ -479,7 +479,7 @@ export const NUMBERS_DAY_FORTY_FOUR_BALAAM_BLESSING_AND_COMPROMISE_LESSON = make
   44,
   "Balaam, Blessing, and Compromise",
   "Numbers 22-25",
-  "35-40 min",
+  "20-30 min",
   [
     "Day 44 follows Balak and Balaam as Moab tries to curse Israel from the outside.",
     "God turns attempted curses into blessing, speaks through Balaam, and even uses a donkey to expose spiritual blindness.",

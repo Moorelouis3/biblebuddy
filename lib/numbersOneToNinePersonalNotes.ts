@@ -18,6 +18,35 @@ const generatedNumbersOneToNinePersonalSections = buildGeneratedPersonalSections
   ],
 });
 
+const day39SectionIcons = [
+  "🏕️", "🚩", "🧭", "🦁", "📍", "🛡️", "🌿", "🌊", "🔥", "✅",
+  "👶", "📋", "⛺", "👨‍👩‍👦", "🧺", "🕯️", "🛕", "👕", "🔢", "🧑‍⚖️",
+  "🪔", "🧳", "📦", "🛞", "🪢", "⚖️", "🧼", "🚪", "🕊️", "🍞",
+  "💧", "🛑", "🙏", "👂", "🧎", "🌾", "📜", "💬", "✨",
+];
+
+const day40SectionIcons = [
+  "🗣️", "🍇", "✂️", "🕊️", "🙏", "🌟", "🕯️", "🛞", "🥣", "⚖️",
+  "🧾", "🪔", "🏛️", "💎", "🛡️", "📦", "🌿", "🔥", "✅", "🧼",
+  "⛺", "👕", "📋", "🌙", "🩸", "🍞", "🧳", "☁️", "🚶", "🎺",
+  "👥", "🕰️", "🛕", "💡", "🏕️",
+];
+
+function stripLeadingEmoji(value: string) {
+  return value.replace(/^[^A-Za-z0-9']+\s*/, "").trim();
+}
+
+function buildSectionIconByReference(chapters: number[], icons: string[]) {
+  return new Map(
+    generatedNumbersOneToNinePersonalSections
+      .filter((section) => chapters.includes(section.chapter))
+      .map((section, index) => [section.reference, icons[index % icons.length]])
+  );
+}
+
+const day39SectionIconByReference = buildSectionIconByReference([2, 3, 4, 5], day39SectionIcons);
+const day40SectionIconByReference = buildSectionIconByReference([6, 7, 8, 9], day40SectionIcons);
+
 const day38NumbersPhraseTitleReplacements: Record<string, string> = {
   "In The Tabernacle": "⛺ In The Tabernacle Of The Congregation",
   "The Second Year After Egypt": "📅 In The Second Year After They Were Come Out",
@@ -325,4 +354,17 @@ function polishDay38NumbersSection(section: PersonalLeviticusPhraseSectionInput)
   };
 }
 
-export const NUMBERS_1_9_PERSONAL_SECTIONS = generatedNumbersOneToNinePersonalSections.map(polishDay38NumbersSection);
+function polishDay39To40NumbersSection(section: PersonalLeviticusPhraseSectionInput): PersonalLeviticusPhraseSectionInput {
+  const icon = day39SectionIconByReference.get(section.reference) || day40SectionIconByReference.get(section.reference);
+  if (!icon) return section;
+
+  return {
+    ...section,
+    icon,
+    title: `${icon} ${stripLeadingEmoji(section.title)}`,
+  };
+}
+
+export const NUMBERS_1_9_PERSONAL_SECTIONS = generatedNumbersOneToNinePersonalSections
+  .map(polishDay38NumbersSection)
+  .map(polishDay39To40NumbersSection);
