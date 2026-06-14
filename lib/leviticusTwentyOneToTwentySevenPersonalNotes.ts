@@ -1313,6 +1313,245 @@ function replaceDay38LeviticusPhraseTitle(title: string) {
   return day38LeviticusPhraseTitleReplacements[cleanTitle] || title;
 }
 
+const day38LeviticusCuratedPhraseTitles: Record<string, string[]> = {
+  "Leviticus 25:1-6": [
+    "🛡️ The LORD Spake Unto Moses In Mount Sinai",
+    "🌍 Speak Unto The Children Of Israel",
+    "🍇 When Ye Come Into The Land Which I Give You",
+    "🌾 The Land Keep A Sabbath Unto The LORD",
+    "📅 Six Years Thou Shalt Sow Thy Field",
+    "🍇 Six Years Thou Shalt Prune Thy Vineyard",
+    "🛖 In The Seventh Year Shall Be A Sabbath Of Rest",
+  ],
+  "Leviticus 25:7-7": [
+    "🐄 For Thy Cattle",
+    "🦌 For The Beast That Are In Thy Land",
+    "🌾 All The Increase Thereof Shall Be Meat",
+    "🏞️ The Land's Rest Feeds More Than The Owner",
+  ],
+  "Leviticus 25:8-13": [
+    "📅 Seven Sabbaths Of Years",
+    "🎺 Cause The Trumpet Of The Jubile To Sound",
+    "🩸 In The Day Of Atonement",
+    "📣 Proclaim Liberty Throughout All The Land",
+    "🏡 Ye Shall Return Every Man Unto His Possession",
+    "👨‍👩‍👦 Ye Shall Return Every Man Unto His Family",
+    "🎺 A Jubile Shall That Fiftieth Year Be Unto You",
+  ],
+  "Leviticus 25:14-17": [
+    "🤝 If Thou Sell Ought Unto Thy Neighbour",
+    "🛒 Or Buyest Ought Of Thy Neighbour's Hand",
+    "🚫 Ye Shall Not Oppress One Another",
+    "📅 According To The Number Of Years After The Jubile",
+    "🌾 According Unto The Number Of Years Of The Fruits",
+    "🙏 Thou Shalt Fear Thy God",
+  ],
+  "Leviticus 25:18-22": [
+    "🚶 Ye Shall Do My Statutes",
+    "📜 Keep My Judgments",
+    "🏠 Ye Shall Dwell In The Land In Safety",
+    "🌾 The Land Shall Yield Her Fruit",
+    "❓ What Shall We Eat The Seventh Year",
+    "🌧️ I Will Command My Blessing Upon You",
+  ],
+  "Leviticus 25:23-28": [
+    "🏞️ The Land Shall Not Be Sold For Ever",
+    "👑 For The Land Is Mine",
+    "🧳 Ye Are Strangers And Sojourners With Me",
+    "🔁 Ye Shall Grant A Redemption For The Land",
+    "🤝 If Any Of His Kin Come To Redeem It",
+    "📅 Let Him Count The Years Of The Sale Thereof",
+    "🏡 He Shall Return Unto His Possession",
+  ],
+  "Leviticus 25:29-34": [
+    "🏠 If A Man Sell A Dwelling House",
+    "📅 Within A Whole Year May He Redeem It",
+    "🚪 The House That Is In The Walled City",
+    "🌾 Houses Of The Villages",
+    "🎺 They May Go Out In The Jubile",
+    "⛺ The Cities Of The Levites",
+  ],
+  "Leviticus 25:35-38": [
+    "🤲 If Thy Brother Be Waxen Poor",
+    "⬇️ Fallen In Decay With Thee",
+    "👐 Then Thou Shalt Relieve Him",
+    "🚫 Take Thou No Usury Of Him",
+    "🙏 Fear Thy God",
+    "🍞 Give Him Thy Victuals For Increase",
+  ],
+  "Leviticus 25:39-44": [
+    "🤲 If Thy Brother Be Waxen Poor",
+    "📉 Be Sold Unto Thee",
+    "🚫 Thou Shalt Not Compel Him To Serve As A Bondservant",
+    "🧑‍🌾 As An Hired Servant",
+    "🎺 Serve Thee Unto The Year Of Jubile",
+    "🚫 Thou Shalt Not Rule Over Him With Rigour",
+  ],
+  "Leviticus 25:45-46": [
+    "🌍 Of The Strangers That Do Sojourn Among You",
+    "👨‍👩‍👦 Of Their Families That Are With You",
+    "📜 They Shall Be Your Possession",
+    "👶 Ye Shall Take Them As An Inheritance",
+    "🚫 Over Your Brethren Ye Shall Not Rule",
+  ],
+  "Leviticus 25:47-52": [
+    "🌍 If A Sojourner Or Stranger Wax Rich",
+    "📉 Thy Brother Wax Poor",
+    "📜 Sell Himself Unto The Stranger",
+    "🔁 He May Be Redeemed Again",
+    "🤝 One Of His Brethren May Redeem Him",
+    "📅 According Unto The Year Of Jubile",
+    "💰 The Price Of His Sale",
+  ],
+  "Leviticus 25:53-55": [
+    "🧑‍🌾 As A Yearly Hired Servant",
+    "🚫 The Other Shall Not Rule With Rigour",
+    "🎺 In The Year Of Jubile He Shall Go Out",
+    "👨‍👩‍👦 Both He And His Children With Him",
+    "👑 Unto Me The Children Of Israel Are Servants",
+    "🕊️ I Brought Them Forth Out Of The Land Of Egypt",
+  ],
+  "Leviticus 26:1-2": [
+    "🚫 Ye Shall Make You No Idols",
+    "🪨 Nor Graven Image",
+    "🧱 Neither Rear You Up A Standing Image",
+    "🙇 To Bow Down Unto It",
+    "🛖 Ye Shall Keep My Sabbaths",
+    "⛪ Reverence My Sanctuary",
+  ],
+  "Leviticus 26:3-8": [
+    "🚶 If Ye Walk In My Statutes",
+    "📜 Keep My Commandments",
+    "🌧️ I Will Give You Rain In Due Season",
+    "🌾 The Land Shall Yield Her Increase",
+    "🍞 Ye Shall Eat Your Bread To The Full",
+    "🕊️ I Will Give Peace In The Land",
+    "⚔️ Five Of You Shall Chase An Hundred",
+  ],
+  "Leviticus 26:9-13": [
+    "👀 I Will Have Respect Unto You",
+    "🌱 Make You Fruitful",
+    "📜 Establish My Covenant With You",
+    "⛺ I Will Set My Tabernacle Among You",
+    "🚶 I Will Walk Among You",
+    "🕊️ I Have Broken The Bands Of Your Yoke",
+  ],
+  "Leviticus 26:14-19": [
+    "👂 If Ye Will Not Hearken Unto Me",
+    "🚫 Will Not Do All These Commandments",
+    "💔 If Your Soul Abhor My Judgments",
+    "📜 Break My Covenant",
+    "😨 I Also Will Do This Unto You",
+    "🌾 Ye Shall Sow Your Seed In Vain",
+    "🪨 I Will Make Your Heaven As Iron",
+  ],
+  "Leviticus 26:20-20": [
+    "💪 Your Strength Shall Be Spent In Vain",
+    "🌍 Your Land Shall Not Yield Her Increase",
+    "🌳 Neither Shall The Trees Of The Land Yield Their Fruits",
+    "⚠️ Rebellion Turns Work Into Emptiness",
+  ],
+  "Leviticus 26:21-26": [
+    "🚶 If Ye Walk Contrary Unto Me",
+    "👂 Will Not Hearken Unto Me",
+    "⚠️ Seven Times More Plagues",
+    "🐺 I Will Send Wild Beasts Among You",
+    "⚔️ I Will Bring A Sword Upon You",
+    "🍞 When I Have Broken The Staff Of Your Bread",
+  ],
+  "Leviticus 26:27-32": [
+    "🔥 I Will Walk Contrary Unto You Also In Fury",
+    "🚫 Cut Down Your Images",
+    "🪦 Cast Your Carcases Upon The Carcases Of Your Idols",
+    "🏚️ I Will Make Your Cities Waste",
+    "⛪ Bring Your Sanctuaries Unto Desolation",
+    "🌍 I Will Bring The Land Into Desolation",
+  ],
+  "Leviticus 26:33-38": [
+    "🌬️ I Will Scatter You Among The Heathen",
+    "⚔️ Draw Out A Sword After You",
+    "🏚️ Your Land Shall Be Desolate",
+    "🏙️ Your Cities Waste",
+    "🌾 Then Shall The Land Enjoy Her Sabbaths",
+    "😨 The Sound Of A Shaken Leaf Shall Chase Them",
+  ],
+  "Leviticus 26:39-39": [
+    "😔 They That Are Left Of You",
+    "📉 Pine Away In Their Iniquity",
+    "🌍 In Your Enemies' Lands",
+    "👨‍👩‍👦 In The Iniquities Of Their Fathers",
+  ],
+  "Leviticus 26:40-45": [
+    "🙏 If They Shall Confess Their Iniquity",
+    "👨‍👩‍👦 The Iniquity Of Their Fathers",
+    "💔 Their Trespass Which They Trespassed Against Me",
+    "⬇️ If Then Their Uncircumcised Hearts Be Humbled",
+    "📜 I Will Remember My Covenant With Jacob",
+    "🌍 I Will Remember The Land",
+    "🕊️ I Will Not Cast Them Away",
+  ],
+  "Leviticus 27:1-6": [
+    "🛡️ The LORD Spake Unto Moses",
+    "🌍 Speak Unto The Children Of Israel",
+    "🗣️ When A Man Shall Make A Singular Vow",
+    "⚖️ Persons Shall Be For The LORD By Thy Estimation",
+    "🪙 Fifty Shekels Of Silver",
+    "👶 From A Month Old Even Unto Five Years Old",
+  ],
+  "Leviticus 27:7-8": [
+    "👴 From Sixty Years Old And Above",
+    "⚖️ Thy Estimation Shall Be",
+    "🤲 If He Be Poorer Than Thy Estimation",
+    "🧑‍⚖️ The Priest Shall Value Him",
+  ],
+  "Leviticus 27:9-13": [
+    "🐄 Whereof Men Bring An Offering Unto The LORD",
+    "✨ All That Any Man Giveth Shall Be Holy",
+    "🔁 He Shall Not Alter It",
+    "🚫 Nor Change It",
+    "🐪 If It Be Of Any Unclean Beast",
+    "➕ Add A Fifth Part Of It",
+  ],
+  "Leviticus 27:14-15": [
+    "🏠 Sanctify His House To Be Holy Unto The LORD",
+    "🧑‍⚖️ Then The Priest Shall Estimate It",
+    "⚖️ Whether It Be Good Or Bad",
+    "➕ Add The Fifth Part Of The Money",
+  ],
+  "Leviticus 27:16-21": [
+    "🌾 Sanctify Unto The LORD Some Part Of A Field",
+    "🪙 According To The Seed Thereof",
+    "🎺 If He Sanctify His Field From The Year Of Jubile",
+    "📅 According To The Years That Remain",
+    "🔁 If He Will Not Redeem The Field",
+    "✨ It Shall Be Holy Unto The LORD",
+    "👑 As A Field Devoted",
+  ],
+  "Leviticus 27:22-25": [
+    "🏡 A Field Which He Hath Bought",
+    "🏘️ Which Is Not Of The Fields Of His Possession",
+    "🧑‍⚖️ The Priest Shall Reckon Unto Him",
+    "🎺 Even Unto The Year Of The Jubile",
+    "⚖️ According To The Shekel Of The Sanctuary",
+  ],
+  "Leviticus 27:26-29": [
+    "🐄 Only The Firstling Of The Beasts",
+    "👑 It Is The LORD's",
+    "🐪 If It Be Of An Unclean Beast",
+    "🔥 Every Devoted Thing Is Most Holy Unto The LORD",
+    "🚫 No Devoted Thing Shall Be Sold Or Redeemed",
+    "⚖️ None Devoted Shall Be Redeemed",
+  ],
+  "Leviticus 27:30-33": [
+    "🌾 All The Tithe Of The Land Is The LORD's",
+    "🌱 Whether Of The Seed Of The Land",
+    "🍎 Or Of The Fruit Of The Tree",
+    "🐑 The Tenth Shall Be Holy Unto The LORD",
+    "👁️ He Shall Not Search Whether It Be Good Or Bad",
+    "🔁 Neither Shall He Change It",
+  ],
+};
+
 function getDay38LeviticusCueLines(title: string) {
   const lower = getDay38CleanTitle(title).toLowerCase();
 
@@ -1341,12 +1580,211 @@ function getDay38LeviticusCueLines(title: string) {
     return ["🗣️ Serious vows", "⚖️ Ordered valuation", "✨ Holy things guarded"];
   }
 
-  return ["🔎 Exact phrase", "🧭 Passage context", "✨ Life before the LORD"];
+  return ["🔎 Verse detail", "🧭 Day 38 context", "✨ Ordered holiness"];
 }
 
 function getDay38LeviticusMeaning(title: string) {
   const cleanTitle = getDay38CleanTitle(title);
   const lower = cleanTitle.toLowerCase();
+
+  if (/lord spake unto moses in mount sinai/.test(lower)) {
+    return [
+      "God gives these instructions at Mount Sinai, the covenant mountain.",
+      "Jubilee, Sabbath rest, land laws, and vows are not social ideas Moses invented; they come from the LORD who is forming Israel.",
+    ];
+  }
+  if (/speak unto the children of israel/.test(lower)) {
+    return [
+      "The command is addressed to the whole covenant community.",
+      "The people themselves must learn how land, money, worship, poverty, and promises belong under God's rule.",
+    ];
+  }
+  if (/when ye come into the land/.test(lower)) {
+    return [
+      "The law looks ahead to life in the land God is giving them.",
+      "Israel has not earned the land by strength; they are preparing to receive it as a gift and live in it God's way.",
+    ];
+  }
+  if (/proclaim liberty/.test(lower)) {
+    return [
+      "Jubilee announces release across the land.",
+      "Lost property, debt pressure, and servitude are not allowed to become a permanent prison for Israelite families.",
+    ];
+  }
+  if (/return every man unto his possession|return every man unto his family/.test(lower)) {
+    return [
+      "Jubilee sends people back to their inheritance and family place.",
+      "The phrase shows that God's law protects restoration, not just punishment or economic survival.",
+    ];
+  }
+  if (/land is mine|land shall not be sold for ever/.test(lower)) {
+    return [
+      "God claims final ownership over the land.",
+      "Because the land belongs to Him, inheritance cannot be erased forever by poverty, pressure, or profit.",
+    ];
+  }
+  if (/strangers and sojourners with me/.test(lower)) {
+    return [
+      "Israel lives on God's land as guests under His care.",
+      "That keeps ownership humble: even the family with property must remember they are dependent on the LORD.",
+    ];
+  }
+  if (/waxen poor|fallen in decay|relieve him|no usury|not rule over him with rigour|not compel him/.test(lower)) {
+    return [
+      "The law slows down exploitation when a brother becomes poor.",
+      "A struggling Israelite is not to be treated as a disposable worker, a debt machine, or a permanent slave.",
+    ];
+  }
+  if (/he may be redeemed again|brethren may redeem|kin come to redeem|redemption for the land/.test(lower)) {
+    return [
+      "Redemption means a way back is kept open.",
+      "The family member who can redeem acts to restore what poverty or sale has put at risk.",
+    ];
+  }
+  if (/brought them forth out of the land of egypt|children of israel are servants/.test(lower)) {
+    return [
+      "Israel already belongs to the LORD because He rescued them from Egypt.",
+      "That rescue limits how Israelites may treat one another; they cannot act like new Pharaohs over their brothers.",
+    ];
+  }
+  if (/no idols|graven image|standing image|bow down/.test(lower)) {
+    return [
+      "The covenant warning begins by rejecting false worship.",
+      "Israel must not give visible idols the reverence that belongs only to the LORD who lives among them.",
+    ];
+  }
+  if (/keep my sabbaths|reverence my sanctuary/.test(lower)) {
+    return [
+      "Sabbath and sanctuary summarize Israel's worship rhythm.",
+      "Time and place both teach reverence: Israel rests because God commands it and approaches His dwelling with holy fear.",
+    ];
+  }
+  if (/walk in my statutes|keep my commandments|keep my judgments|do them/.test(lower)) {
+    return [
+      "Obedience is pictured as a walk, not a one-time moment.",
+      "Israel is being called to move through ordinary life under God's statutes, commandments, and judgments.",
+    ];
+  }
+  if (/rain|land shall yield|bread to the full|peace in the land|fruitful/.test(lower)) {
+    return [
+      "Covenant blessing reaches the ordinary needs of life.",
+      "Rain, harvest, food, safety, and fruitfulness are named so Israel sees provision as the LORD's gift.",
+    ];
+  }
+  if (/tabernacle among you|walk among you|establish my covenant/.test(lower)) {
+    return [
+      "The deepest blessing is God's presence among His people.",
+      "Harvest and peace matter, but the center is the LORD dwelling with Israel and keeping His covenant.",
+    ];
+  }
+  if (/will not hearken|break my covenant|abhor my judgments|walk contrary/.test(lower)) {
+    return [
+      "The warning describes refusal, not confusion.",
+      "Israel would be hearing God's word and still choosing to reject His commandments, judgments, and covenant.",
+    ];
+  }
+  if (/spent in vain|not yield her increase|sow your seed in vain/.test(lower)) {
+    return [
+      "Rebellion turns labor into emptiness.",
+      "The people may still work the ground, but the blessing they depended on is no longer treated as automatic.",
+    ];
+  }
+  if (/scatter you|desolate|cities waste|sanctuaries|carcases|sword|shaken leaf/.test(lower)) {
+    return [
+      "The covenant curses show sin spreading into land, cities, worship, and security.",
+      "These images are severe because Israel's rebellion would corrupt the whole life God gave them.",
+    ];
+  }
+  if (/land enjoy her sabbaths|lieth desolate/.test(lower)) {
+    return [
+      "Even judgment gives the land the rest Israel refused to honor.",
+      "The phrase ties exile back to Sabbath teaching: ignoring God's order does not erase it.",
+    ];
+  }
+  if (/confess their iniquity|uncircumcised hearts be humbled|remember my covenant|not cast them away/.test(lower)) {
+    return [
+      "Mercy remains possible when confession and humility replace stubborn rebellion.",
+      "God's covenant memory is stronger than Israel's failure, so exile is not the final word.",
+    ];
+  }
+  if (/iniquity of their fathers/.test(lower)) {
+    return [
+      "The confession reaches beyond one generation's surface behavior.",
+      "Israel must admit the inherited pattern of rebellion that shaped the family story, not only the latest mistake.",
+    ];
+  }
+  if (/trespass which they trespassed/.test(lower)) {
+    return [
+      "Trespass names covenant betrayal as a real offense against God.",
+      "The repetition slows the reader down so confession does not sound vague or harmless.",
+    ];
+  }
+  if (/singular vow|estimation|value him|fifty shekels|priest shall estimate/.test(lower)) {
+    return [
+      "A vow set something apart before the LORD and had to be handled seriously.",
+      "The valuation rules prevent holy promises from becoming careless talk, manipulation, or confusion.",
+    ];
+  }
+  if (/all that any man giveth shall be holy|shall not alter|nor change|add a fifth|house to be holy/.test(lower)) {
+    return [
+      "What is given to the LORD must not be treated casually afterward.",
+      "The added fifth and the no-swap rule teach honesty when holy things are redeemed or exchanged.",
+    ];
+  }
+  if (/field|seed thereof|year of jubile|not redeem the field|field devoted/.test(lower)) {
+    return [
+      "A dedicated field is valued by harvest potential and distance from Jubilee.",
+      "The rule keeps vows connected to real land, real time, and the LORD's claim over inheritance.",
+    ];
+  }
+  if (/firstling|firstborn|devoted thing|most holy|not be sold or redeemed|tithe|tenth|seed of the land|fruit of the tree/.test(lower)) {
+    return [
+      "Some things already belong to the LORD and cannot be treated like optional gifts.",
+      "Firstborn animals, devoted things, and tithes teach Israel that holiness creates real boundaries.",
+    ];
+  }
+  if (/cattle|beast that are in thy land|increase thereof shall be meat/.test(lower)) {
+    return [
+      "The Sabbath year provision reaches animals and people who depend on the land.",
+      "The land's rest is not wasted time; God provides enough for households, servants, cattle, and wild creatures.",
+    ];
+  }
+  if (/day of atonement/.test(lower)) {
+    return [
+      "Jubilee is announced on the Day of Atonement.",
+      "Release in the land is tied to mercy before God, so restoration begins with atonement, not merely economics.",
+    ];
+  }
+  if (/fear thy god|thou shalt fear thy god/.test(lower)) {
+    return [
+      "Fear of God is the reason Israel must not take advantage of the vulnerable.",
+      "A person may hide oppression from neighbors, but not from the LORD who sees how His people treat one another.",
+    ];
+  }
+  if (/walled city|houses of the villages|cities of the levites/.test(lower)) {
+    return [
+      "Leviticus distinguishes houses, villages, and Levitical cities because each one relates to inheritance differently.",
+      "The details keep redemption fair instead of treating every property situation as if it were the same.",
+    ];
+  }
+  if (/families that are with you|brethren ye shall not rule|both he and his children/.test(lower)) {
+    return [
+      "The law names family relationships because servitude affects more than one worker.",
+      "God's people must see households, children, and brothers instead of reducing people to labor and profit.",
+    ];
+  }
+  if (/five of you shall chase|respect unto you|broken the bands|also will do this|heaven as iron|seven times more plagues|shaken leaf|left of you|iniquities of their fathers/.test(lower)) {
+    return [
+      "The blessing and warning language makes covenant life visible.",
+      "Victory, fear, famine, weakness, and exile are pictured in concrete terms so Israel feels what obedience and rebellion lead toward.",
+    ];
+  }
+  if (/month old|sixty years old|men bring an offering|years that remain|priest shall reckon|it is the lord's|neither shall he change/.test(lower)) {
+    return [
+      "The valuation detail keeps holy promises orderly and honest.",
+      "Leviticus is showing that devotion to the LORD must be handled with real measures, real costs, and real accountability.",
+    ];
+  }
 
   if (/lord spake|speak unto|say unto/.test(lower)) {
     return [
@@ -1404,28 +1842,28 @@ function getDay38LeviticusMeaning(title: string) {
   }
 
   return [
-    "This detail belongs to Leviticus' closing vision of holy life.",
-    "The phrase belongs to Leviticus' final teaching about God's ownership, covenant order, and holy things.",
+    "This wording belongs to Leviticus' closing vision of ordered holiness.",
+    "The reader should connect it to the chapter's larger concern: land, worship, mercy, vows, and possessions all stand before the LORD.",
   ];
 }
 
 function makeDay38LeviticusExplanation(title: string) {
   const finalTitle = replaceDay38LeviticusPhraseTitle(title);
   const [lineOne, lineTwo] = getDay38LeviticusMeaning(finalTitle);
-  const cleanTitle = getDay38CleanTitle(finalTitle);
 
   return note([
     lineOne,
     lineTwo,
     getDay38LeviticusCueLines(finalTitle).join("\n"),
-    `A reader should connect ${cleanTitle} to the larger point: every part of Israel's life belongs before the LORD.`,
   ]);
 }
 
 function polishDay38LeviticusSection(section: PersonalLeviticusPhraseSectionInput): PersonalLeviticusPhraseSectionInput {
+  const curatedTitles = day38LeviticusCuratedPhraseTitles[section.reference];
+
   return {
     ...section,
-    phrases: section.phrases.map(([title]) => {
+    phrases: (curatedTitles || section.phrases.map(([title]) => title)).map((title) => {
       const finalTitle = replaceDay38LeviticusPhraseTitle(title);
       return [finalTitle, makeDay38LeviticusExplanation(finalTitle)];
     }),

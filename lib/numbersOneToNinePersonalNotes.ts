@@ -55,6 +55,101 @@ function replaceDay38NumbersPhraseTitle(title: string) {
   return day38NumbersPhraseTitleReplacements[cleanTitle] || title;
 }
 
+const day38NumbersCuratedPhraseTitles: Record<string, string[]> = {
+  "Numbers 1:1-4": [
+    "🏜️ In The Wilderness Of Sinai",
+    "⛺ In The Tabernacle Of The Congregation",
+    "📅 In The Second Year After They Were Come Out",
+    "📋 Take Ye The Sum Of All The Congregation",
+    "👨‍👩‍👦 After Their Families",
+    "⚔️ Able To Go Forth To War",
+  ],
+  "Numbers 1:5-9": [
+    "🤝 Men That Shall Stand With You",
+    "👤 Of Reuben; Elizur The Son Of Shedeur",
+    "👤 Of Simeon; Shelumiel The Son Of Zurishaddai",
+    "🦁 Of Judah; Nahshon The Son Of Amminadab",
+    "👑 Every One Head Of The House Of His Fathers",
+  ],
+  "Numbers 1:10-15": [
+    "🌿 Of The Children Of Joseph",
+    "🧭 Of Ephraim; Elishama The Son Of Ammihud",
+    "👤 Of Benjamin; Abidan The Son Of Gideoni",
+    "👤 Of Dan; Ahiezer The Son Of Ammishaddai",
+    "👤 Of Naphtali; Ahira The Son Of Enan",
+  ],
+  "Numbers 1:16-16": [
+    "📣 These Were The Renowned Of The Congregation",
+    "👑 Princes Of The Tribes Of Their Fathers",
+    "🧩 Heads Of Thousands In Israel",
+    "🏕️ Leaders Stand For Ordered People",
+  ],
+  "Numbers 1:17-19": [
+    "🤝 Moses And Aaron Took These Men",
+    "🕊️ Expressed By Their Names",
+    "📖 They Declared Their Pedigrees",
+    "🏠 By The House Of Their Fathers",
+    "☁️ As The LORD Commanded Moses",
+  ],
+  "Numbers 1:20-25": [
+    "🏠 The Children Of Reuben",
+    "👑 Israel's Eldest Son",
+    "📖 By Their Generations",
+    "📋 Those That Were Numbered Of The Tribe Of Reuben",
+    "📋 Those That Were Numbered Of The Tribe Of Simeon",
+    "📋 Those That Were Numbered Of The Tribe Of Gad",
+  ],
+  "Numbers 1:26-27": [
+    "🦁 Of The Children Of Judah",
+    "👨‍👩‍👦 After Their Families",
+    "🏠 By The House Of Their Fathers",
+    "⚔️ Able To Go Forth To War",
+  ],
+  "Numbers 1:28-33": [
+    "📋 Those That Were Numbered Of The Tribe Of Issachar",
+    "📋 Those That Were Numbered Of The Tribe Of Zebulun",
+    "📋 Those That Were Numbered Of The Tribe Of Ephraim",
+    "📋 Those That Were Numbered Of The Tribe Of Manasseh",
+    "🌿 Of The Children Of Joseph",
+    "⚔️ Able To Go Forth To War",
+  ],
+  "Numbers 1:34-35": [
+    "👤 Of The Children Of Manasseh",
+    "👨‍👩‍👦 After Their Families",
+    "🏠 By The House Of Their Fathers",
+    "📋 Those That Were Numbered Of The Tribe Of Manasseh",
+  ],
+  "Numbers 1:36-41": [
+    "📋 Those That Were Numbered Of The Tribe Of Benjamin",
+    "📋 Those That Were Numbered Of The Tribe Of Dan",
+    "📋 Those That Were Numbered Of The Tribe Of Asher",
+    "📋 Those That Were Numbered Of The Tribe Of Naphtali",
+    "🔢 Six Hundred Thousand And Three Thousand And Five Hundred And Fifty",
+    "🏕️ All The Tribes Stand Accounted",
+  ],
+  "Numbers 1:42-46": [
+    "👤 Of The Children Of Naphtali",
+    "👨‍👩‍👦 After Their Families",
+    "🏠 By The House Of Their Fathers",
+    "⚔️ Able To Go Forth To War",
+    "🔢 All They That Were Numbered Were Six Hundred Thousand",
+  ],
+  "Numbers 1:47-52": [
+    "⛺ The Levites After The Tribe Of Their Fathers",
+    "🚫 Thou Shalt Not Number The Tribe Of Levi",
+    "🛖 Appoint The Levites Over The Tabernacle Of Testimony",
+    "📦 Over All The Vessels Thereof",
+    "🏕️ The Levites Shall Pitch Round About The Tabernacle",
+    "⚠️ That There Be No Wrath Upon The Congregation",
+  ],
+  "Numbers 1:53-54": [
+    "🛡️ The Levites Shall Keep The Charge",
+    "⛺ The Tabernacle Of Testimony",
+    "👥 The Children Of Israel Did According To All",
+    "☁️ As The LORD Commanded Moses",
+  ],
+};
+
 function getDay38NumbersCueLines(title: string) {
   const lower = getDay38NumbersCleanTitle(title).toLowerCase();
 
@@ -83,6 +178,73 @@ function getDay38NumbersCueLines(title: string) {
 function getDay38NumbersMeaning(title: string) {
   const cleanTitle = getDay38NumbersCleanTitle(title);
   const lower = cleanTitle.toLowerCase();
+
+  if (/wilderness of sinai/.test(lower)) {
+    return [
+      "Numbers begins with Israel still in the wilderness near Sinai.",
+      "The setting tells the reader that the rescued people are not settled yet; they are being prepared to travel with the LORD.",
+    ];
+  }
+  if (/tabernacle of the congregation|tabernacle of testimony/.test(lower)) {
+    return [
+      "The count happens with the tabernacle at the center.",
+      "Israel's camp is not organized around a palace or battlefield first, but around God's holy dwelling.",
+    ];
+  }
+  if (/second year after they were come out/.test(lower)) {
+    return [
+      "The timing connects Numbers to the Exodus story.",
+      "Israel has been rescued from Egypt, taught at Sinai, and now must learn how to move as an ordered people.",
+    ];
+  }
+  if (/take ye the sum|all they that were numbered|six hundred thousand/.test(lower)) {
+    return [
+      "The census counts Israel for responsibility, movement, and battle.",
+      "This is not a random list; it shows a once-enslaved people being formed into an ordered camp.",
+    ];
+  }
+  if (/after their families|house of their fathers|pedigrees|generations/.test(lower)) {
+    return [
+      "The people are counted through family lines.",
+      "Numbers wants the reader to see real households and covenant identity, not a faceless crowd.",
+    ];
+  }
+  if (/able to go forth to war/.test(lower)) {
+    return [
+      "The census focuses on men able to serve in Israel's armies.",
+      "The people are moving toward promised land conflict, so the count prepares them for the road ahead.",
+    ];
+  }
+  if (/men that shall stand with you|renowned|princes|heads of thousands|head of the house/.test(lower)) {
+    return [
+      "Named leaders stand with Moses and Aaron in the work.",
+      "The phrase shows order and accountability, because each tribe has recognized heads before the journey begins.",
+    ];
+  }
+  if (/reuben|simeon|gad|judah|issachar|zebulun|ephraim|manasseh|benjamin|dan|asher|naphtali|joseph/.test(lower)) {
+    return [
+      "This tribe is being named within the whole camp of Israel.",
+      "Each tribe has a real place in the count, so God's people are ordered without being erased into one blur.",
+    ];
+  }
+  if (/levites|tribe of levi|appoint the levites|vessels|keep the charge|wrath/.test(lower)) {
+    return [
+      "The Levites are set apart from the fighting census.",
+      "Their assignment is to guard and serve the tabernacle, protecting Israel from careless contact with holy things.",
+    ];
+  }
+  if (/as the lord commanded moses|did according to all/.test(lower)) {
+    return [
+      "The chapter closes by stressing obedience to the LORD's command.",
+      "Israel is learning that order in the camp must come from God's word, not from convenience or guesswork.",
+    ];
+  }
+  if (/leaders stand for ordered people/.test(lower)) {
+    return [
+      "The named leaders show that Israel's order has visible responsibility.",
+      "Moses is not dealing with a crowd without structure; each tribe has recognized leadership before the LORD.",
+    ];
+  }
 
   if (/lord spake|moses|wilderness|sinai|second year|come out/.test(lower)) {
     return [
@@ -122,17 +284,16 @@ function getDay38NumbersMeaning(title: string) {
   }
 
   return [
-    "This census detail belongs to Israel's ordered camp.",
-    "The phrase belongs to Numbers 1, where God counts, orders, and prepares Israel for the wilderness journey.",
+    "This census detail helps the reader see Israel becoming an ordered camp.",
+    "Numbers 1 is showing a rescued people counted, named, and prepared for the wilderness journey.",
   ];
 }
 
 function makeDay38NumbersExplanation(title: string) {
   const finalTitle = replaceDay38NumbersPhraseTitle(title);
   const [lineOne, lineTwo] = getDay38NumbersMeaning(finalTitle);
-  const cleanTitle = getDay38NumbersCleanTitle(finalTitle);
 
-  return [lineOne, lineTwo, getDay38NumbersCueLines(finalTitle).join("\n"), `A reader should connect ${cleanTitle} to the bigger movement: the holy people are now becoming an ordered camp.`].join("\n\n");
+  return [lineOne, lineTwo, getDay38NumbersCueLines(finalTitle).join("\n")].join("\n\n");
 }
 
 function polishDay38NumbersSection(section: PersonalLeviticusPhraseSectionInput): PersonalLeviticusPhraseSectionInput {
@@ -140,7 +301,7 @@ function polishDay38NumbersSection(section: PersonalLeviticusPhraseSectionInput)
 
   return {
     ...section,
-    phrases: section.phrases.map(([title]) => {
+    phrases: (day38NumbersCuratedPhraseTitles[section.reference] || section.phrases.map(([title]) => title)).map((title) => {
       const finalTitle = replaceDay38NumbersPhraseTitle(title);
       return [finalTitle, makeDay38NumbersExplanation(finalTitle)];
     }),
