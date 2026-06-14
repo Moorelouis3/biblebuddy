@@ -11395,9 +11395,6 @@ Before we understand redemption, we need to understand what God made humanity fo
                 <span className="shrink-0">Day {day.dayNumber}</span>
                 <span className="min-w-0 truncate text-right tracking-[0.14em]">{readingSummary}</span>
               </div>
-              <p className="mt-2 max-w-3xl text-[13px] font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)] sm:text-[14px]">
-                {playerSubline}
-              </p>
             </div>
           </div>
 
@@ -11409,7 +11406,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               <div className="min-w-0 px-1">
                 <h3 className="mt-1 truncate whitespace-nowrap text-[18px] font-bold leading-tight text-[var(--bb-text-primary,#111827)] sm:text-[20px]">{day.title}</h3>
                 <p className="mt-1 max-w-2xl text-[13px] font-medium leading-5 text-[var(--bb-text-secondary,#4b5563)]">
-                  Listen to the cinematic audio lesson with Scripture, storytelling, and teaching.
+                  {playerSubline}
                 </p>
               </div>
             </div>
