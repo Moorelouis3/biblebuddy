@@ -11288,6 +11288,9 @@ Before we understand redemption, we need to understand what God made humanity fo
     const cover = getBibleYearDayCoverImage(day);
     const readingSummary = formatBibleYearMediaReference(day);
     const content = getBibleYearDayContent(day);
+    const playerSubline =
+      content.summary.takeawaySupport ||
+      `Study ${readingSummary} with Scripture, storytelling, and teaching.`;
     const audio = content.audio;
     const readingComplete = bibleYearCompletedCardsByDay[day.dayNumber]?.reading === true;
     const showCompletionMoment = readingComplete && bibleYearJustCompletedDayRef.current === day.dayNumber;
@@ -11392,9 +11395,9 @@ Before we understand redemption, we need to understand what God made humanity fo
                 <span className="shrink-0">Day {day.dayNumber}</span>
                 <span className="min-w-0 truncate text-right tracking-[0.14em]">{readingSummary}</span>
               </div>
-              <h2 className="mt-1.5 truncate whitespace-nowrap text-[20px] font-bold leading-tight text-[var(--bb-text-primary,#111827)] sm:text-[24px] lg:text-[26px]">
-                {day.title}
-              </h2>
+              <p className="mt-2 max-w-3xl text-[13px] font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)] sm:text-[14px]">
+                {playerSubline}
+              </p>
             </div>
           </div>
 
