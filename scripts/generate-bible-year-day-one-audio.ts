@@ -416,6 +416,11 @@ const DAY_FORTY_SEVEN_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-
 const DAY_FORTY_EIGHT_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-48-narrator-script.md");
 const DAY_FORTY_NINE_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-49-narrator-script.md");
 const DAY_FIFTY_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-50-narrator-script.md");
+const DAY_SEVENTY_ONE_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-71-narrator-script.md");
+const DAY_SEVENTY_TWO_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-72-narrator-script.md");
+const DAY_SEVENTY_THREE_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-73-narrator-script.md");
+const DAY_SEVENTY_FOUR_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-74-narrator-script.md");
+const DAY_SEVENTY_FIVE_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-75-narrator-script.md");
 const AMBIENCE_GAIN = selectedLesson.dayNumber === 2 ? 0.129 : selectedLesson.dayNumber === 1 ? 0.112 : 0.088;
 
 function ensureDir(path: string) {
@@ -1271,6 +1276,11 @@ function getApprovedBibleYearScriptPath(dayNumber: number) {
   if (dayNumber === 48) return DAY_FORTY_EIGHT_APPROVED_SCRIPT_PATH;
   if (dayNumber === 49) return DAY_FORTY_NINE_APPROVED_SCRIPT_PATH;
   if (dayNumber === 50) return DAY_FIFTY_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 71) return DAY_SEVENTY_ONE_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 72) return DAY_SEVENTY_TWO_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 73) return DAY_SEVENTY_THREE_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 74) return DAY_SEVENTY_FOUR_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 75) return DAY_SEVENTY_FIVE_APPROVED_SCRIPT_PATH;
   return null;
 }
 
