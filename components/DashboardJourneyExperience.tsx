@@ -2740,9 +2740,19 @@ export default function DashboardJourneyExperience({
     73: "Fleeing",
     74: "Mercy",
     75: "Exile",
+    76: "Falls",
+    77: "Promise",
+    78: "Sin",
+    79: "Consequences",
+    80: "Absalom",
+    81: "Mighty",
+    82: "Wisdom",
+    83: "Temple",
+    84: "Glory",
+    85: "Divides",
   };
   const bibleYearStudyPlanMilestones = GENESIS_BIBLE_IN_ONE_YEAR_SERIES
-    .filter((day) => day.dayNumber <= 75)
+    .filter((day) => day.dayNumber <= 85)
     .map((day) => ({
       dayNumber: day.dayNumber,
       label: bibleYearStudyPlanMilestoneLabels[day.dayNumber] || day.title,
@@ -11401,32 +11411,32 @@ Before we understand redemption, we need to understand what God made humanity fo
                 <p className="mt-1 max-w-2xl text-[13px] font-medium leading-5 text-[var(--bb-text-secondary,#4b5563)]">
                   Listen to the cinematic audio lesson with Scripture, storytelling, and teaching.
                 </p>
-                <div className="mt-3">
-                  {audio ? (
-                    <BibleYearLessonAudioPlayer
-                      audioSrc={audio.apiSrc}
-                      title={audio.title}
-                      durationLabel={audio.estimatedDuration}
-                      storagePath={audio.storagePath}
-                      userId={userId}
-                      videoId={`bible-year-day-${day.dayNumber}`}
-                      compactMediaControls
-                      previousLessonLabel={previousBibleYearDay ? `Open Day ${previousBibleYearDay.dayNumber}` : "No previous day"}
-                      nextLessonLabel={nextBibleYearDay ? `Open Day ${nextBibleYearDay.dayNumber}` : "No next day"}
-                      onPreviousLesson={previousBibleYearDay ? () => openAdjacentBibleYearDay(previousBibleYearDay) : undefined}
-                      onNextLesson={nextBibleYearDay ? () => openAdjacentBibleYearDay(nextBibleYearDay) : undefined}
-                      onEnded={() => {
-                        if (!readingComplete) markBibleYearDayCardComplete(day, "reading");
-                      }}
-                    />
-                  ) : (
-                    <div className="mt-3 rounded-[14px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f4f8ff)] p-4 text-sm font-bold text-[var(--bb-text-secondary,#4b5563)]">
-                      Today&apos;s audio lesson is being prepared.
-                    </div>
-                  )}
-                </div>
               </div>
             </div>
+          </div>
+          <div className="mt-4">
+            {audio ? (
+              <BibleYearLessonAudioPlayer
+                audioSrc={audio.apiSrc}
+                title={audio.title}
+                durationLabel={audio.estimatedDuration}
+                storagePath={audio.storagePath}
+                userId={userId}
+                videoId={`bible-year-day-${day.dayNumber}`}
+                compactMediaControls
+                previousLessonLabel={previousBibleYearDay ? `Open Day ${previousBibleYearDay.dayNumber}` : "No previous day"}
+                nextLessonLabel={nextBibleYearDay ? `Open Day ${nextBibleYearDay.dayNumber}` : "No next day"}
+                onPreviousLesson={previousBibleYearDay ? () => openAdjacentBibleYearDay(previousBibleYearDay) : undefined}
+                onNextLesson={nextBibleYearDay ? () => openAdjacentBibleYearDay(nextBibleYearDay) : undefined}
+                onEnded={() => {
+                  if (!readingComplete) markBibleYearDayCardComplete(day, "reading");
+                }}
+              />
+            ) : (
+              <div className="rounded-[14px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f4f8ff)] p-4 text-sm font-bold text-[var(--bb-text-secondary,#4b5563)]">
+                Today&apos;s audio lesson is being prepared.
+              </div>
+            )}
           </div>
           <div className="mt-2">
             <button

@@ -106,7 +106,7 @@ export default function VideoHelpfulPoll({
     <div
       className={`video-helpful-poll relative mt-3 overflow-hidden rounded-2xl border px-3 py-3 ${
         mediaType === "audio"
-          ? "border-[color-mix(in_srgb,var(--bb-card-border,#dbe7f4)_78%,transparent)] bg-[color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_62%,transparent)]"
+          ? "mx-auto max-w-[430px] border-[color-mix(in_srgb,var(--bb-card-border,#dbe7f4)_78%,transparent)] bg-[color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_62%,transparent)]"
           : "border-[color-mix(in_srgb,var(--bb-card-border,#dbe7f4)_78%,transparent)] bg-[color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_62%,transparent)]"
       } ${
         dismissState === "puffing" ? "video-helpful-poll-puff" : ""
@@ -144,7 +144,7 @@ export default function VideoHelpfulPoll({
           <span className="absolute h-7 w-7 rounded-full bg-white/75 [--smoke-x:-90px] [--smoke-y:34px]" />
         </div>
       ) : null}
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <div className={`flex flex-col gap-3 sm:flex-row sm:items-center ${mediaType === "audio" ? "text-center sm:justify-center" : "sm:justify-between"}`}>
         <p className="text-sm font-black text-[var(--bb-text-primary,#111827)]">
           Was this {mediaLabel} helpful?
         </p>
