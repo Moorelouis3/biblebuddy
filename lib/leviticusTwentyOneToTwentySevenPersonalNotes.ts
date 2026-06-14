@@ -1268,7 +1268,171 @@ const generatedLeviticus21To27Sections = buildGeneratedPersonalSections({
   ],
 });
 
+const day38LeviticusPhraseTitleReplacements: Record<string, string> = {
+  "The Land Gets A Sabbath": "🌾 A Sabbath Unto The LORD",
+  "A Sabbath For The Lord": "🛖 The Sabbath Of The Land",
+  "The Year Of Jubilee": "🎺 Ye Shall Hallow The Fiftieth Year",
+  "Fair Dealing": "⚖️ Ye Shall Not Oppress One Another",
+  "Trusting God For Provision": "🌾 I Will Command My Blessing Upon You",
+  "The Land Belongs To God": "🏞️ For The Land Is Mine",
+  "Help The Poor Brother Live": "🤲 Then Thou Shalt Relieve Him",
+  "Do Not Rule With Harshness": "🛡️ Thou Shalt Not Rule Over Him With Rigour",
+  "Redemption From Bondage": "🔁 He May Be Redeemed Again",
+  "Worship Must Stay Pure": "🛐 Ye Shall Make You No Idols",
+  "Blessing For Obedience": "🌧️ If Ye Walk In My Statutes",
+  "The First Warnings": "⚠️ If Ye Will Not Hearken Unto Me",
+  "Walking Contrary To God": "🚶 If Ye Walk Contrary Unto Me",
+  "Exile And Desolation": "🏚️ I Will Make Your Cities Waste",
+  "Confession And Covenant Mercy": "🙏 If They Shall Confess Their Iniquity",
+  "A Special Vow": "🗣️ When A Man Shall Make A Singular Vow",
+  "Ordered Valuation": "⚖️ Thy Estimation Shall Be",
+  "Room For The Poor": "🤲 Poorer Than Thy Estimation",
+  "Once Given, It Is Holy": "✨ It Shall Be Holy",
+  "No Swapping Holy Things": "🔁 He Shall Not Alter It",
+  "Redeeming The Unclean Animal": "🐪 If It Be Of Any Unclean Beast",
+  "A House Set Apart": "🏠 Sanctify His House To Be Holy",
+  "Redemption Has Cost": "➕ Add The Fifth Part",
+  "A Field From Inheritance": "🌾 Sanctify Unto The LORD Some Part Of A Field",
+  "Jubilee Shapes The Price": "🎺 Even Unto The Year Of The Jubile",
+  "Redemption And Loss": "🚫 If He Will Not Redeem The Field",
+  "The Sanctuary Shekel": "⚖️ According To The Shekel Of The Sanctuary",
+  "The Firstborn Is Already The Lord's": "🐄 Only The Firstling Of The Beasts",
+  "Devoted Things Are Most Holy": "🔥 Every Devoted Thing Is Most Holy",
+  "Holy Categories Cannot Be Blurred": "🚫 No Devoted Thing Shall Be Sold Or Redeemed",
+  "The Tithe Belongs To The Lord": "🌾 All The Tithe Of The Land Is The LORD's",
+  "The Tenth Passes Under The Rod": "🐑 The Tenth Shall Be Holy Unto The LORD",
+  "No Picking And Choosing": "👁️ He Shall Not Search Whether It Be Good Or Bad",
+};
+
+function getDay38CleanTitle(title: string) {
+  return title.replace(/^[^A-Za-z0-9']+\s*/, "").trim();
+}
+
+function replaceDay38LeviticusPhraseTitle(title: string) {
+  const cleanTitle = getDay38CleanTitle(title);
+  return day38LeviticusPhraseTitleReplacements[cleanTitle] || title;
+}
+
+function getDay38LeviticusCueLines(title: string) {
+  const lower = getDay38CleanTitle(title).toLowerCase();
+
+  if (/sabbath|seventh|fiftieth|jubile|year|season/.test(lower)) {
+    return ["📅 Sacred time", "🎺 Jubilee release", "🌾 Trust in provision"];
+  }
+  if (/land|possession|field|vineyard|fruit|inheritance|sold|sale/.test(lower)) {
+    return ["🏞️ God's land", "🏡 Family inheritance", "🔁 Return and restoration"];
+  }
+  if (/poor|brother|relieve|redeem|redeemed|bondservant|hired servant|stranger|sojourner|rigour|oppress|neighbour|buyest|sell|decay|uncle/.test(lower)) {
+    return ["🤲 Mercy for the poor", "🔁 Redemption made possible", "🛡️ No harsh rule"];
+  }
+  if (/lord spake|speak unto|say unto|children of israel|before the lord|idols|image|bow down|sanctuary|sabbaths/.test(lower)) {
+    return ["🛐 Pure worship", "🚫 No idols", "⛪ Reverence for God's sanctuary"];
+  }
+  if (/walk|statutes|commandments|judgments|hearken|covenant|contrary|confess|iniquity|trespass|do them/.test(lower)) {
+    return ["👂 Hearing God's word", "🚶 Covenant obedience", "🙏 Confession and mercy"];
+  }
+  if (/rain|bread|increase|vintage|blessing|peace|fruitful/.test(lower)) {
+    return ["🌧️ Rain in season", "🍞 Bread to the full", "🕊️ Peace in the land"];
+  }
+  if (/sword|desolate|waste|enemies|fury|idols|sanctuaries|carcases/.test(lower)) {
+    return ["⚠️ Covenant warning", "🏚️ Land made desolate", "🚪 Exile from the land"];
+  }
+  if (/vow|estimation|estimate|shekel|redeem|fifth|sanctify|holy|firstling|devoted|tithe|tenth|alter|beast|unclean|good or bad/.test(lower)) {
+    return ["🗣️ Serious vows", "⚖️ Ordered valuation", "✨ Holy things guarded"];
+  }
+
+  return ["🔎 Exact phrase", "🧭 Passage context", "✨ Life before the LORD"];
+}
+
+function getDay38LeviticusMeaning(title: string) {
+  const cleanTitle = getDay38CleanTitle(title);
+  const lower = cleanTitle.toLowerCase();
+
+  if (/lord spake|speak unto|say unto/.test(lower)) {
+    return [
+      "The instruction begins with God's speech.",
+      "Moses is receiving and delivering the LORD's command, so the chapter is not human advice about farming, money, or vows.",
+    ];
+  }
+  if (/sabbath|seventh|fiftieth|jubile/.test(lower)) {
+    return [
+      "Sabbath and Jubilee time belongs to the LORD.",
+      "Israel's calendar must teach trust: work stops, liberty is proclaimed, and the people remember that God rules more than their labor does.",
+    ];
+  }
+  if (/land|possession|field|vineyard|fruit|inheritance|sold|sale/.test(lower)) {
+    return [
+      "The land is treated as God's gift, not Israel's absolute possession.",
+      "Israel may live on the land and work it, but they must not treat it as if family inheritance and God's gift can be permanently erased.",
+    ];
+  }
+  if (/poor|brother|relieve|redeem|redeemed|bondservant|hired servant|stranger|sojourner|rigour|oppress|neighbour|buyest|sell|decay|uncle/.test(lower)) {
+    return [
+      "The vulnerable brother is protected from permanent loss and harsh treatment.",
+      "The law is teaching Israel that poverty must not become an excuse for crushing a brother or blocking redemption.",
+    ];
+  }
+  if (/lord spake|speak unto|say unto|children of israel|before the lord|idols|image|bow down|sanctuary|sabbaths/.test(lower)) {
+    return [
+      "Israel's worship must stay loyal to the LORD.",
+      "The LORD does not allow His people to mix covenant life with carved images, false worship, or casual treatment of His sanctuary.",
+    ];
+  }
+  if (/walk|statutes|commandments|judgments|hearken|covenant|contrary|confess|iniquity|trespass|do them/.test(lower)) {
+    return [
+      "Israel's response to the covenant is pictured as walking with or against the LORD.",
+      "The chapter is showing two roads: listening and walking with the LORD, or refusing Him and walking contrary to Him.",
+    ];
+  }
+  if (/rain|bread|increase|vintage|blessing|peace|fruitful/.test(lower)) {
+    return [
+      "Covenant blessing reaches ordinary life.",
+      "Rain, harvest, bread, safety, and peace are pictured as gifts from the LORD, not as things Israel can secure apart from Him.",
+    ];
+  }
+  if (/sword|desolate|waste|enemies|fury|idols|sanctuaries|carcases/.test(lower)) {
+    return [
+      "Covenant warning shows what rebellion does to the land and the people.",
+      "The judgment is severe because rebellion would turn the land, cities, worship, and daily life away from the LORD who rescued them.",
+    ];
+  }
+  if (/vow|estimation|estimate|shekel|redeem|fifth|sanctify|holy|firstling|devoted|tithe|tenth|alter|beast|unclean|good or bad/.test(lower)) {
+    return [
+      "Something set apart for the LORD must be handled honestly.",
+      "Leviticus is teaching that promises, gifts, animals, houses, fields, and tithes must be handled honestly when they are called holy.",
+    ];
+  }
+
+  return [
+    "This detail belongs to Leviticus' closing vision of holy life.",
+    "The phrase belongs to Leviticus' final teaching about God's ownership, covenant order, and holy things.",
+  ];
+}
+
+function makeDay38LeviticusExplanation(title: string) {
+  const finalTitle = replaceDay38LeviticusPhraseTitle(title);
+  const [lineOne, lineTwo] = getDay38LeviticusMeaning(finalTitle);
+  const cleanTitle = getDay38CleanTitle(finalTitle);
+
+  return note([
+    lineOne,
+    lineTwo,
+    getDay38LeviticusCueLines(finalTitle).join("\n"),
+    `A reader should connect ${cleanTitle} to the larger point: every part of Israel's life belongs before the LORD.`,
+  ]);
+}
+
+function polishDay38LeviticusSection(section: PersonalLeviticusPhraseSectionInput): PersonalLeviticusPhraseSectionInput {
+  return {
+    ...section,
+    phrases: section.phrases.map(([title]) => {
+      const finalTitle = replaceDay38LeviticusPhraseTitle(title);
+      return [finalTitle, makeDay38LeviticusExplanation(finalTitle)];
+    }),
+  };
+}
+
 export const LEVITICUS_21_27_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionInput[] = [
   ...DAY_37_LEVITICUS_21_24_PERSONAL_SECTIONS,
-  ...generatedLeviticus21To27Sections.filter((section) => section.chapter >= 25),
+  ...generatedLeviticus21To27Sections.filter((section) => section.chapter >= 25).map(polishDay38LeviticusSection),
 ];
