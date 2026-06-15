@@ -52,6 +52,22 @@ import { EZEKIEL_1_12_PERSONAL_SECTIONS } from "../lib/ezekielOneToTwelvePersona
 import { EZEKIEL_13_48_PERSONAL_SECTIONS } from "../lib/ezekielThirteenToFortyEightPersonalNotes";
 import { DANIEL_1_12_PERSONAL_SECTIONS } from "../lib/danielOneToTwelvePersonalNotes";
 import { HOSEA_1_12_PERSONAL_SECTIONS } from "../lib/hoseaOneToTwelvePersonalNotes";
+import { HOSEA_13_14_PERSONAL_SECTIONS } from "../lib/hoseaThirteenToFourteenPersonalNotes";
+import { JOEL_1_3_PERSONAL_SECTIONS } from "../lib/joelOneToThreePersonalNotes";
+import { AMOS_1_9_PERSONAL_SECTIONS } from "../lib/amosOneToNinePersonalNotes";
+import { OBADIAH_1_PERSONAL_SECTIONS } from "../lib/obadiahOnePersonalNotes";
+import { JONAH_1_4_PERSONAL_SECTIONS } from "../lib/jonahOneToFourPersonalNotes";
+import { MICAH_1_7_PERSONAL_SECTIONS } from "../lib/micahOneToSevenPersonalNotes";
+import { NAHUM_1_3_PERSONAL_SECTIONS } from "../lib/nahumOneToThreePersonalNotes";
+import { HABAKKUK_1_3_PERSONAL_SECTIONS } from "../lib/habakkukOneToThreePersonalNotes";
+import { ZEPHANIAH_1_3_PERSONAL_SECTIONS } from "../lib/zephaniahOneToThreePersonalNotes";
+import { HAGGAI_1_2_PERSONAL_SECTIONS } from "../lib/haggaiOneToTwoPersonalNotes";
+import { ZECHARIAH_1_14_PERSONAL_SECTIONS } from "../lib/zechariahOneToFourteenPersonalNotes";
+import { MALACHI_1_4_PERSONAL_SECTIONS } from "../lib/malachiOneToFourPersonalNotes";
+import { MATTHEW_1_5_PERSONAL_SECTIONS } from "../lib/matthewOneToFivePersonalNotes";
+import { MATTHEW_6_28_PERSONAL_SECTIONS } from "../lib/matthewSixToTwentyEightPersonalNotes";
+import { MARK_1_16_PERSONAL_SECTIONS } from "../lib/markOneToSixteenPersonalNotes";
+import { LUKE_1_21_PERSONAL_SECTIONS } from "../lib/lukeOneToTwentyOnePersonalNotes";
 
 type PersonalSection = {
   chapter: number;
@@ -90,7 +106,21 @@ type BibleBook =
   | "Lamentations"
   | "Ezekiel"
   | "Daniel"
-  | "Hosea";
+  | "Hosea"
+  | "Joel"
+  | "Amos"
+  | "Obadiah"
+  | "Jonah"
+  | "Micah"
+  | "Nahum"
+  | "Habakkuk"
+  | "Zephaniah"
+  | "Haggai"
+  | "Zechariah"
+  | "Malachi"
+  | "Matthew"
+  | "Mark"
+  | "Luke";
 
 type DayPart = {
   book: BibleBook;
@@ -444,6 +474,101 @@ const DAY_SPECS: Record<number, DaySpec> = {
   258: { book: "Hosea", chapters: [4, 5, 6], sections: HOSEA_1_12_PERSONAL_SECTIONS },
   259: { book: "Hosea", chapters: [7, 8, 9], sections: HOSEA_1_12_PERSONAL_SECTIONS },
   260: { book: "Hosea", chapters: [10, 11, 12], sections: HOSEA_1_12_PERSONAL_SECTIONS },
+  261: {
+    parts: [
+      { book: "Hosea", chapters: [13, 14], sections: HOSEA_13_14_PERSONAL_SECTIONS },
+      { book: "Joel", chapters: [1], sections: JOEL_1_3_PERSONAL_SECTIONS },
+    ],
+  },
+  262: {
+    parts: [
+      { book: "Joel", chapters: [2, 3], sections: JOEL_1_3_PERSONAL_SECTIONS },
+      { book: "Amos", chapters: [1], sections: AMOS_1_9_PERSONAL_SECTIONS },
+    ],
+  },
+  263: { book: "Amos", chapters: [2, 3, 4], sections: AMOS_1_9_PERSONAL_SECTIONS },
+  264: { book: "Amos", chapters: [5, 6, 7], sections: AMOS_1_9_PERSONAL_SECTIONS },
+  265: {
+    parts: [
+      { book: "Amos", chapters: [8, 9], sections: AMOS_1_9_PERSONAL_SECTIONS },
+      { book: "Obadiah", chapters: [1], sections: OBADIAH_1_PERSONAL_SECTIONS },
+    ],
+  },
+  266: { book: "Jonah", chapters: [1, 2, 3], sections: JONAH_1_4_PERSONAL_SECTIONS },
+  267: {
+    parts: [
+      { book: "Jonah", chapters: [4], sections: JONAH_1_4_PERSONAL_SECTIONS },
+      { book: "Micah", chapters: [1, 2], sections: MICAH_1_7_PERSONAL_SECTIONS },
+    ],
+  },
+  268: { book: "Micah", chapters: [3, 4, 5], sections: MICAH_1_7_PERSONAL_SECTIONS },
+  269: {
+    parts: [
+      { book: "Micah", chapters: [6, 7], sections: MICAH_1_7_PERSONAL_SECTIONS },
+      { book: "Nahum", chapters: [1], sections: NAHUM_1_3_PERSONAL_SECTIONS },
+    ],
+  },
+  270: {
+    parts: [
+      { book: "Nahum", chapters: [2, 3], sections: NAHUM_1_3_PERSONAL_SECTIONS },
+      { book: "Habakkuk", chapters: [1], sections: HABAKKUK_1_3_PERSONAL_SECTIONS },
+    ],
+  },
+  271: {
+    parts: [
+      { book: "Habakkuk", chapters: [2, 3], sections: HABAKKUK_1_3_PERSONAL_SECTIONS },
+      { book: "Zephaniah", chapters: [1], sections: ZEPHANIAH_1_3_PERSONAL_SECTIONS },
+    ],
+  },
+  272: {
+    parts: [
+      { book: "Zephaniah", chapters: [2, 3], sections: ZEPHANIAH_1_3_PERSONAL_SECTIONS },
+      { book: "Haggai", chapters: [1], sections: HAGGAI_1_2_PERSONAL_SECTIONS },
+    ],
+  },
+  273: {
+    parts: [
+      { book: "Haggai", chapters: [2], sections: HAGGAI_1_2_PERSONAL_SECTIONS },
+      { book: "Zechariah", chapters: [1, 2], sections: ZECHARIAH_1_14_PERSONAL_SECTIONS },
+    ],
+  },
+  274: { book: "Zechariah", chapters: [3, 4, 5], sections: ZECHARIAH_1_14_PERSONAL_SECTIONS },
+  275: { book: "Zechariah", chapters: [6, 7, 8], sections: ZECHARIAH_1_14_PERSONAL_SECTIONS },
+  276: { book: "Zechariah", chapters: [9, 10, 11], sections: ZECHARIAH_1_14_PERSONAL_SECTIONS },
+  277: { book: "Zechariah", chapters: [12, 13, 14], sections: ZECHARIAH_1_14_PERSONAL_SECTIONS },
+  278: { book: "Malachi", chapters: [1, 2, 3], sections: MALACHI_1_4_PERSONAL_SECTIONS },
+  279: {
+    parts: [
+      { book: "Malachi", chapters: [4], sections: MALACHI_1_4_PERSONAL_SECTIONS },
+      { book: "Matthew", chapters: [1, 2], sections: MATTHEW_1_5_PERSONAL_SECTIONS },
+    ],
+  },
+  280: { book: "Matthew", chapters: [3, 4, 5], sections: MATTHEW_1_5_PERSONAL_SECTIONS },
+  281: { book: "Matthew", chapters: [6, 7, 8], sections: MATTHEW_6_28_PERSONAL_SECTIONS },
+  282: { book: "Matthew", chapters: [9, 10, 11], sections: MATTHEW_6_28_PERSONAL_SECTIONS },
+  283: { book: "Matthew", chapters: [12, 13, 14], sections: MATTHEW_6_28_PERSONAL_SECTIONS },
+  284: { book: "Matthew", chapters: [15, 16, 17], sections: MATTHEW_6_28_PERSONAL_SECTIONS },
+  285: { book: "Matthew", chapters: [18, 19, 20], sections: MATTHEW_6_28_PERSONAL_SECTIONS },
+  286: { book: "Matthew", chapters: [21, 22, 23], sections: MATTHEW_6_28_PERSONAL_SECTIONS },
+  287: { book: "Matthew", chapters: [24, 25, 26], sections: MATTHEW_6_28_PERSONAL_SECTIONS },
+  288: {
+    parts: [
+      { book: "Matthew", chapters: [27, 28], sections: MATTHEW_6_28_PERSONAL_SECTIONS },
+      { book: "Mark", chapters: [1], sections: MARK_1_16_PERSONAL_SECTIONS },
+    ],
+  },
+  289: { book: "Mark", chapters: [2, 3, 4], sections: MARK_1_16_PERSONAL_SECTIONS },
+  290: { book: "Mark", chapters: [5, 6, 7], sections: MARK_1_16_PERSONAL_SECTIONS },
+  291: { book: "Mark", chapters: [8, 9, 10], sections: MARK_1_16_PERSONAL_SECTIONS },
+  292: { book: "Mark", chapters: [11, 12, 13], sections: MARK_1_16_PERSONAL_SECTIONS },
+  293: { book: "Mark", chapters: [14, 15, 16], sections: MARK_1_16_PERSONAL_SECTIONS },
+  294: { book: "Luke", chapters: [1, 2, 3], sections: LUKE_1_21_PERSONAL_SECTIONS },
+  295: { book: "Luke", chapters: [4, 5, 6], sections: LUKE_1_21_PERSONAL_SECTIONS },
+  296: { book: "Luke", chapters: [7, 8, 9], sections: LUKE_1_21_PERSONAL_SECTIONS },
+  297: { book: "Luke", chapters: [10, 11, 12], sections: LUKE_1_21_PERSONAL_SECTIONS },
+  298: { book: "Luke", chapters: [13, 14, 15], sections: LUKE_1_21_PERSONAL_SECTIONS },
+  299: { book: "Luke", chapters: [16, 17, 18], sections: LUKE_1_21_PERSONAL_SECTIONS },
+  300: { book: "Luke", chapters: [19, 20, 21], sections: LUKE_1_21_PERSONAL_SECTIONS },
 };
 
 function getDayParts(spec: DaySpec): DayPart[] {

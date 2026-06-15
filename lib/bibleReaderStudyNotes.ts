@@ -53,6 +53,22 @@ import { EZEKIEL_1_12_PERSONAL_SECTIONS } from "./ezekielOneToTwelvePersonalNote
 import { EZEKIEL_13_48_PERSONAL_SECTIONS } from "./ezekielThirteenToFortyEightPersonalNotes";
 import { DANIEL_1_12_PERSONAL_SECTIONS } from "./danielOneToTwelvePersonalNotes";
 import { HOSEA_1_12_PERSONAL_SECTIONS } from "./hoseaOneToTwelvePersonalNotes";
+import { HOSEA_13_14_PERSONAL_SECTIONS } from "./hoseaThirteenToFourteenPersonalNotes";
+import { JOEL_1_3_PERSONAL_SECTIONS } from "./joelOneToThreePersonalNotes";
+import { AMOS_1_9_PERSONAL_SECTIONS } from "./amosOneToNinePersonalNotes";
+import { OBADIAH_1_PERSONAL_SECTIONS } from "./obadiahOnePersonalNotes";
+import { JONAH_1_4_PERSONAL_SECTIONS } from "./jonahOneToFourPersonalNotes";
+import { MICAH_1_7_PERSONAL_SECTIONS } from "./micahOneToSevenPersonalNotes";
+import { NAHUM_1_3_PERSONAL_SECTIONS } from "./nahumOneToThreePersonalNotes";
+import { HABAKKUK_1_3_PERSONAL_SECTIONS } from "./habakkukOneToThreePersonalNotes";
+import { ZEPHANIAH_1_3_PERSONAL_SECTIONS } from "./zephaniahOneToThreePersonalNotes";
+import { HAGGAI_1_2_PERSONAL_SECTIONS } from "./haggaiOneToTwoPersonalNotes";
+import { ZECHARIAH_1_14_PERSONAL_SECTIONS } from "./zechariahOneToFourteenPersonalNotes";
+import { MALACHI_1_4_PERSONAL_SECTIONS } from "./malachiOneToFourPersonalNotes";
+import { MATTHEW_1_5_PERSONAL_SECTIONS } from "./matthewOneToFivePersonalNotes";
+import { MATTHEW_6_28_PERSONAL_SECTIONS } from "./matthewSixToTwentyEightPersonalNotes";
+import { MARK_1_16_PERSONAL_SECTIONS } from "./markOneToSixteenPersonalNotes";
+import { LUKE_1_21_PERSONAL_SECTIONS } from "./lukeOneToTwentyOnePersonalNotes";
 
 export type BibleReaderStudyNoteCategory = {
   id: string;
@@ -14943,6 +14959,216 @@ function makePersonalHoseaPhraseSection(section: {
   };
 }
 
+function makePersonalJoelPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "joel",
+  };
+}
+
+function makePersonalAmosPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "amos",
+  };
+}
+
+function makePersonalObadiahPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "obadiah",
+  };
+}
+
+function makePersonalJonahPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "jonah",
+  };
+}
+
+function makePersonalMicahPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "micah",
+  };
+}
+
+function makePersonalNahumPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "nahum",
+  };
+}
+
+function makePersonalHabakkukPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "habakkuk",
+  };
+}
+
+function makePersonalZephaniahPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "zephaniah",
+  };
+}
+
+function makePersonalHaggaiPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "haggai",
+  };
+}
+
+function makePersonalZechariahPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "zechariah",
+  };
+}
+
+function makePersonalMalachiPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "malachi",
+  };
+}
+
+function makePersonalMatthewPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "matthew",
+  };
+}
+
+function makePersonalMarkPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "mark",
+  };
+}
+
+function makePersonalLukePhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "luke",
+  };
+}
+
 function applyPersonalGenesisFourThroughTenStudySections() {
   let sections: BibleReaderStudySection[] = [
     makePersonalGenesisPhraseSection({
@@ -20480,6 +20706,81 @@ function applyPersonalHoseaOneThroughTwelveStudySections() {
   BIBLE_READER_STUDY_SECTIONS.push(...sections);
 }
 
+function applyPersonalSectionsForBook(book: string, startChapter: number, endChapter: number, sections: BibleReaderStudySection[]) {
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === book && section.chapter >= startChapter && section.chapter <= endChapter) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalHoseaThirteenThroughFourteenStudySections() {
+  applyPersonalSectionsForBook("hosea", 13, 14, HOSEA_13_14_PERSONAL_SECTIONS.map(makePersonalHoseaPhraseSection));
+}
+
+function applyPersonalJoelOneThroughThreeStudySections() {
+  applyPersonalSectionsForBook("joel", 1, 3, JOEL_1_3_PERSONAL_SECTIONS.map(makePersonalJoelPhraseSection));
+}
+
+function applyPersonalAmosOneThroughNineStudySections() {
+  applyPersonalSectionsForBook("amos", 1, 9, AMOS_1_9_PERSONAL_SECTIONS.map(makePersonalAmosPhraseSection));
+}
+
+function applyPersonalObadiahOneStudySections() {
+  applyPersonalSectionsForBook("obadiah", 1, 1, OBADIAH_1_PERSONAL_SECTIONS.map(makePersonalObadiahPhraseSection));
+}
+
+function applyPersonalJonahOneThroughFourStudySections() {
+  applyPersonalSectionsForBook("jonah", 1, 4, JONAH_1_4_PERSONAL_SECTIONS.map(makePersonalJonahPhraseSection));
+}
+
+function applyPersonalMicahOneThroughSevenStudySections() {
+  applyPersonalSectionsForBook("micah", 1, 7, MICAH_1_7_PERSONAL_SECTIONS.map(makePersonalMicahPhraseSection));
+}
+
+function applyPersonalNahumOneThroughThreeStudySections() {
+  applyPersonalSectionsForBook("nahum", 1, 3, NAHUM_1_3_PERSONAL_SECTIONS.map(makePersonalNahumPhraseSection));
+}
+
+function applyPersonalHabakkukOneThroughThreeStudySections() {
+  applyPersonalSectionsForBook("habakkuk", 1, 3, HABAKKUK_1_3_PERSONAL_SECTIONS.map(makePersonalHabakkukPhraseSection));
+}
+
+function applyPersonalZephaniahOneThroughThreeStudySections() {
+  applyPersonalSectionsForBook("zephaniah", 1, 3, ZEPHANIAH_1_3_PERSONAL_SECTIONS.map(makePersonalZephaniahPhraseSection));
+}
+
+function applyPersonalHaggaiOneThroughTwoStudySections() {
+  applyPersonalSectionsForBook("haggai", 1, 2, HAGGAI_1_2_PERSONAL_SECTIONS.map(makePersonalHaggaiPhraseSection));
+}
+
+function applyPersonalZechariahOneThroughFourteenStudySections() {
+  applyPersonalSectionsForBook("zechariah", 1, 14, ZECHARIAH_1_14_PERSONAL_SECTIONS.map(makePersonalZechariahPhraseSection));
+}
+
+function applyPersonalMalachiOneThroughFourStudySections() {
+  applyPersonalSectionsForBook("malachi", 1, 4, MALACHI_1_4_PERSONAL_SECTIONS.map(makePersonalMalachiPhraseSection));
+}
+
+function applyPersonalMatthewOneThroughFiveStudySections() {
+  applyPersonalSectionsForBook("matthew", 1, 5, MATTHEW_1_5_PERSONAL_SECTIONS.map(makePersonalMatthewPhraseSection));
+}
+
+function applyPersonalMatthewSixThroughTwentyEightStudySections() {
+  applyPersonalSectionsForBook("matthew", 6, 28, MATTHEW_6_28_PERSONAL_SECTIONS.map(makePersonalMatthewPhraseSection));
+}
+
+function applyPersonalMarkOneThroughSixteenStudySections() {
+  applyPersonalSectionsForBook("mark", 1, 16, MARK_1_16_PERSONAL_SECTIONS.map(makePersonalMarkPhraseSection));
+}
+
+function applyPersonalLukeOneThroughTwentyOneStudySections() {
+  applyPersonalSectionsForBook("luke", 1, 21, LUKE_1_21_PERSONAL_SECTIONS.map(makePersonalLukePhraseSection));
+}
+
 type ExodusTextureRule = {
   matches: string[];
   lines: string[];
@@ -21279,6 +21580,22 @@ applyPersonalEzekielOneThroughTwelveStudySections();
 applyPersonalEzekielThirteenThroughFortyEightStudySections();
 applyPersonalDanielOneThroughTwelveStudySections();
 applyPersonalHoseaOneThroughTwelveStudySections();
+applyPersonalHoseaThirteenThroughFourteenStudySections();
+applyPersonalJoelOneThroughThreeStudySections();
+applyPersonalAmosOneThroughNineStudySections();
+applyPersonalObadiahOneStudySections();
+applyPersonalJonahOneThroughFourStudySections();
+applyPersonalMicahOneThroughSevenStudySections();
+applyPersonalNahumOneThroughThreeStudySections();
+applyPersonalHabakkukOneThroughThreeStudySections();
+applyPersonalZephaniahOneThroughThreeStudySections();
+applyPersonalHaggaiOneThroughTwoStudySections();
+applyPersonalZechariahOneThroughFourteenStudySections();
+applyPersonalMalachiOneThroughFourStudySections();
+applyPersonalMatthewOneThroughFiveStudySections();
+applyPersonalMatthewSixThroughTwentyEightStudySections();
+applyPersonalMarkOneThroughSixteenStudySections();
+applyPersonalLukeOneThroughTwentyOneStudySections();
 applyPersonalExodusTextureStudySections();
 enforceStudySectionVerseLimit(8);
 
