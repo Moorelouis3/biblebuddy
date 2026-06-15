@@ -375,8 +375,83 @@ function getNumbersOneToNineBullets(title: string) {
   return ["📜 Numbers records a real camp detail", "🏕️ Israel is being ordered around God's presence", "🙌 The LORD is teaching His people"];
 }
 
-function formatNumbersOneToNineMeaningFirstLines(section: PersonalLeviticusPhraseSectionInput, title: string, content: string) {
+function getNumbersDistinctiveTopic(cleanTitle: string) {
+  const words = cleanTitle
+    .toLowerCase()
+    .replace(/[^a-z0-9'\s]/g, " ")
+    .split(/\s+/)
+    .filter(Boolean)
+    .filter((word) => !["the", "and", "of", "a", "an", "to", "for", "with", "shall", "be", "is", "it", "he", "him", "them", "that", "this", "unto", "upon", "in", "their", "all", "any", "ye", "thy", "by"].includes(word));
+
+  return (words.length <= 6 ? words : words.slice(-4)).join(" ") || "this detail";
+}
+
+function getNumbers95Support(cleanTitle: string) {
+  const lower = cleanTitle.toLowerCase();
+
+  if (/sum|numbered|poll|families|fathers|tribe|armies|standard|ensign|camp|pitch/.test(lower)) return ["\u{1F4CB} Israel is counted and arranged", "\u{1F3D5}\u{FE0F} The camp centers on God's dwelling", "\u{1F9ED} Each tribe has its place", "\u{1F6B6} The people are prepared to travel"];
+  if (/levi|levites|aaron|sons|priest|charge|service|tabernacle|vessels|bear/.test(lower)) return ["\u{26FA} Holy service is assigned", "\u{1F451} Priests and Levites guard the work", "\u{1F4E6} Sacred objects are handled carefully", "\u{1F6E1}\u{FE0F} The camp is protected from careless nearness"];
+  if (/unclean|leper|issue|dead|without the camp|confess|restitution|trespass|jealousy|bitter water/.test(lower)) return ["\u{1F9FC} Uncleanness is handled honestly", "\u{1F64F} Guilt must be confessed", "\u{1F91D} Harm must be repaired", "\u{1F3D5}\u{FE0F} The camp remains ordered around God's presence"];
+  if (/nazarite|separate|wine|razor|hair|vow|holy unto the lord/.test(lower)) return ["\u{1F64C} The vow sets a person apart", "\u{1F6AB} Ordinary pleasures are limited", "\u{2728} Dedication becomes visible", "\u{1F4DC} The days belong to the LORD"];
+  if (/bless|keep thee|face|gracious|peace|name/.test(lower)) return ["\u{1F64C} Blessing comes from the LORD", "\u{2728} God's face means favor", "\u{1F54A}\u{FE0F} Peace is His gift", "\u{1F3D5}\u{FE0F} The camp lives under His name"];
+  if (/offering|charger|bowl|spoon|bullock|ram|lamb|goat|incense|altar|dedication/.test(lower)) return ["\u{1F381} Each tribe brings a gift", "\u{1F525} Worship is offered before God", "\u{1F4DC} Dedication follows holy order", "\u{1F465} Every tribe participates"];
+  if (/passover|unleavened|cloud|journey|trumpet|second month|at even|ordinance/.test(lower)) return ["\u{1F35E} Rescue is remembered", "\u{2601}\u{FE0F} The LORD guides the journey", "\u{1F4DC} The command orders the camp", "\u{1F6B6} Israel moves when God leads"];
+  return ["\u{1F4DC} Numbers records a real camp detail", "\u{1F3D5}\u{FE0F} Israel is ordered around God's presence", "\u{1F9E0} The wording answers a concrete question", "\u{1F64C} The LORD teaches His people"];
+}
+
+function explainNumbersOneToNineAt95(section: PersonalLeviticusPhraseSectionInput, cleanTitle: string, occurrenceIndex = 0) {
+  const lower = cleanTitle.toLowerCase();
+  let opening: string[];
+
+  if (/lord spake|speak unto|say unto|commanded moses/.test(lower)) opening = ["The instruction begins with the LORD's command.", "Israel's camp order comes from God, not from human planning alone."];
+  else if (/wilderness of sinai/.test(lower)) opening = ["The wilderness of Sinai is the desert region where Israel camped after leaving Egypt.", "Numbers begins with rescued people still near the mountain, preparing to travel."];
+  else if (/tabernacle of the congregation|tabernacle/.test(lower)) opening = ["The tabernacle was the holy tent of meeting where the LORD dwelt among Israel.", "The camp is arranged around God's presence, not around human convenience."];
+  else if (/second year|come out/.test(lower)) opening = ["The second year after Egypt places the census at a real point in Israel's journey.", "The rescued people are no longer escaping Egypt; they are being ordered for the road ahead."];
+  else if (/take ye the sum|numbered|poll|sum/.test(lower)) opening = ["Taking the sum means counting the people.", "The census prepares Israel for ordered movement, service, and battle."];
+  else if (/families|fathers|pedigrees|generations/.test(lower)) opening = ["Families and fathers' houses are Israel's household lines.", "Numbers counts real households, not a faceless crowd."];
+  else if (/armies|war|host|able to go forth/.test(lower)) opening = ["Able to go forth to war means men counted for military service.", "The count prepares Israel for promised-land conflict under God's command."];
+  else if (/reuben|simeon|gad|judah|issachar|zebulun|ephraim|manasseh|benjamin|dan|asher|naphtali|joseph/.test(lower)) opening = ["The named tribe is being placed inside Israel's ordered camp.", "Each tribe has responsibility and location without being erased into the crowd."];
+  else if (/levi|levites/.test(lower)) opening = ["The Levites were the tribe set apart for tabernacle service.", "They are counted differently because their work guards the holy dwelling."];
+  else if (/standard|ensign|pitch|camp/.test(lower)) opening = ["A standard or ensign was a tribal banner or signal.", "The camp was arranged by tribe so Israel could move with order around the tabernacle."];
+  else if (/firstborn/.test(lower)) opening = ["The firstborn belonged specially to the LORD because of the Passover rescue.", "Numbers explains how Levites stand in place of Israel's firstborn."];
+  else if (/redeem|redemption|shekel/.test(lower)) opening = ["Redeem means buy back or release by payment.", "The redemption money shows that belonging to the LORD has a concrete cost and order."];
+  else if (/charge|service|minister|bear|vessels|keep/.test(lower)) opening = ["Keeping charge means guarding an assigned holy responsibility.", "The Levites serve and carry sacred things according to God's order."];
+  else if (/unclean|leper|issue|dead|without the camp/.test(lower)) opening = ["Unclean means not fit for normal camp or sanctuary access for a time.", "The camp must deal honestly with uncleanness because God's presence is in the middle."];
+  else if (/confess|trespass|restitution/.test(lower)) opening = ["Confession names the wrong, and restitution repairs the harm.", "Numbers joins guilt before God with responsibility toward people."];
+  else if (/jealousy|bitter water|suspected/.test(lower)) opening = ["The jealousy test addresses a broken-trust accusation in marriage.", "The ritual brings a hidden matter before the LORD instead of leaving it to private revenge."];
+  else if (/nazarite|separate|vow/.test(lower)) opening = ["A Nazarite vow set a person apart to the LORD for a special season.", "The vow made dedication visible in daily habits."];
+  else if (/wine|strong drink|vinegar|grapes/.test(lower)) opening = ["The Nazarite avoided wine and grape products during the vow.", "Limiting ordinary pleasure made the person's dedication visible."];
+  else if (/razor|hair|locks/.test(lower)) opening = ["Uncut hair was the visible sign of the Nazarite vow.", "The growing hair marked the days of separation to the LORD."];
+  else if (/dead body|dead/.test(lower)) opening = ["Contact with the dead would defile the Nazarite vow.", "Dedication to the LORD required distance from death during the vow period."];
+  else if (/bless|keep thee|face shine|gracious|peace|put my name/.test(lower)) opening = ["The priestly blessing places the LORD's care over Israel.", "The camp needs God's keeping, favor, grace, and peace more than order alone."];
+  else if (/charger|bowl|spoon/.test(lower)) opening = ["Chargers, bowls, and spoons were offering vessels.", "The tribal leaders bring costly gifts for altar dedication."];
+  else if (/bullock|ram|lamb|goat|kid/.test(lower)) opening = ["The animal named here belongs to the offering brought before the LORD.", "The repeated gifts show every tribe participating in worship."];
+  else if (/dedication|altar/.test(lower)) opening = ["Dedication means setting the altar apart for holy use.", "The tribal offerings mark the altar as central to worship in the camp."];
+  else if (/lamp|candlestick/.test(lower)) opening = ["The lamps belonged to the holy-place lampstand.", "Their light had to be arranged according to the LORD's command."];
+  else if (/sprinkle|shave|wash|cleanse/.test(lower)) opening = ["Sprinkling, shaving, and washing were cleansing actions.", "The Levites had to be cleansed before serving near holy things."];
+  else if (/wave offering/.test(lower)) opening = ["A wave offering was presented before the LORD.", "The Levites themselves are presented as belonging to God for service."];
+  else if (/passover/.test(lower)) opening = ["Passover remembers the LORD's rescue from Egypt.", "Even in the wilderness, Israel must keep rescue at the center of its life."];
+  else if (/unleavened/.test(lower)) opening = ["Unleavened bread is bread made without leaven, so it does not rise.", "It keeps the memory of the hurried Exodus rescue alive."];
+  else if (/second month/.test(lower)) opening = ["The second month provision gave a later Passover for people who were unclean or away.", "God's command makes room without turning obedience into guesswork."];
+  else if (/cloud/.test(lower)) opening = ["The cloud was the visible sign of the LORD's presence over the tabernacle.", "Israel moved or stayed because God guided the camp."];
+  else if (/trumpet/.test(lower)) opening = ["Trumpets were signals for gathering and movement.", "The sound helped the camp respond together to the LORD's order."];
+  else opening = [`This wording names ${getNumbersDistinctiveTopic(cleanTitle)} in Numbers ${section.chapter}.`, "The phrase gives a concrete part of Israel's ordered wilderness life."];
+
+  const startsWithTitle = opening[0].toLowerCase().startsWith(cleanTitle.toLowerCase());
+  const firstLine = startsWithTitle ? `In ${section.reference}, ${opening[0].charAt(0).toLowerCase()}${opening[0].slice(1)}` : `${opening[0]} Here it applies to ${getNumbersDistinctiveTopic(cleanTitle)} in ${section.reference}.`;
+  const occurrenceNote = occurrenceIndex > 0 ? ` This is repeated here because the section gives another command or response in the same scene.` : "";
+
+  return [
+    `${firstLine}${occurrenceNote}`,
+    opening[1],
+    ...getNumbers95Support(cleanTitle),
+  ].slice(0, 8);
+}
+
+function formatNumbersOneToNineMeaningFirstLines(section: PersonalLeviticusPhraseSectionInput, title: string, content: string, occurrenceIndex = 0) {
   const cleanTitle = stripLeadingEmoji(title);
+  return note(explainNumbersOneToNineAt95(section, cleanTitle, occurrenceIndex));
+
   const escapedTitle = cleanTitle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const titleStartPattern = new RegExp(`^${escapedTitle}\\s+(means|shows|gives|helps|explains|teaches|marks|names|is|are|was|were|connects|keeps|points to|prepares|refers to|describes)\\s+`, "i");
   const isEmojiLine = (line: string) => /^[^A-Za-z0-9'"(]/.test(line.trim());
@@ -424,10 +499,16 @@ function polishDay38NumbersSection(section: PersonalLeviticusPhraseSectionInput)
   return {
     ...section,
     ...(day38NumbersSectionHeadings[section.reference] || {}),
-    phrases: (day38NumbersCuratedPhraseTitles[section.reference] || section.phrases.map(([title]) => title)).map((title) => {
+    phrases: (() => {
+      const seen = new Map<string, number>();
+      return (day38NumbersCuratedPhraseTitles[section.reference] || section.phrases.map(([title]) => title)).map((title) => {
       const finalTitle = replaceDay38NumbersPhraseTitle(title);
-      return [finalTitle, formatNumbersOneToNineMeaningFirstLines(section, finalTitle, makeDay38NumbersExplanation(finalTitle))];
-    }),
+      const key = stripLeadingEmoji(finalTitle).toLowerCase();
+      const occurrence = seen.get(key) ?? 0;
+      seen.set(key, occurrence + 1);
+      return [finalTitle, formatNumbersOneToNineMeaningFirstLines(section, finalTitle, makeDay38NumbersExplanation(finalTitle), occurrence)];
+      });
+    })(),
   };
 }
 
@@ -439,10 +520,18 @@ function polishDay39To40NumbersSection(section: PersonalLeviticusPhraseSectionIn
     ...section,
     icon,
     title: `${icon} ${stripLeadingEmoji(section.title)}`,
-    phrases: section.phrases.map(([title, content]) => [
-      title,
-      formatNumbersOneToNineMeaningFirstLines(section, title, content),
-    ]),
+    phrases: (() => {
+      const seen = new Map<string, number>();
+      return section.phrases.map(([title, content]) => {
+        const key = stripLeadingEmoji(title).toLowerCase();
+        const occurrence = seen.get(key) ?? 0;
+        seen.set(key, occurrence + 1);
+        return [
+          title,
+          formatNumbersOneToNineMeaningFirstLines(section, title, content, occurrence),
+        ];
+      });
+    })(),
   };
 }
 

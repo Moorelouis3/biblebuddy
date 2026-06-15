@@ -566,6 +566,12 @@ function explainExodusThirtyOneToFortyMinedPhrase(section: PersonalExodusPhraseS
     add(`${title} means this is a concrete detail in the rebuilding of worship.`, `${section.title} is showing worship being rebuilt through God's pattern, not through Israel's guesses.`, "The phrase may name a measurement, object, material, action, or priestly detail.", "Each detail helps the reader see that God's presence is a gift and must be honored His way.");
   }
 
+  if (lines[0]) {
+    const startsWithTitle = lines[0].toLowerCase().startsWith(title.toLowerCase());
+    const adjusted = startsWithTitle ? `The wording ${lines[0].charAt(0).toLowerCase()}${lines[0].slice(1)}` : lines[0];
+    lines[0] = `${adjusted} This belongs with this part of Exodus.`;
+  }
+
   return note(lines.slice(0, 8));
 }
 
@@ -618,6 +624,12 @@ function explainDay29Exodus31To32Phrase(title: string): string {
     add(`${title} means Moses is standing between guilty Israel and the holy LORD.`, "Moses does not pretend the calf was harmless. He names the sin and seeks mercy.", "\u{1F64F} Intercession", "\u{1FA78} Atonement needed", "\u{1F4D6} God's book", "This points forward to the Bible's larger need for a greater mediator who can truly deal with sin.");
   } else {
     add(`${title} names a detail tied to worship, covenant, sin, or mercy.`, "The wording should make the reader ask what is being built, guarded, corrected, or restored.", "\u{1F3D5}\u{FE0F} Worship", "\u{1F4DC} Covenant", "\u{26A0}\u{FE0F} Sin and mercy", "Exodus holds both sides together: God gives a way to dwell with His people, and His people still need mercy.");
+  }
+
+  if (lines[0]) {
+    const startsWithTitle = lines[0].toLowerCase().startsWith(title.toLowerCase());
+    const adjusted = startsWithTitle ? `The wording ${lines[0].charAt(0).toLowerCase()}${lines[0].slice(1)}` : lines[0];
+    lines[0] = `${adjusted} This belongs with this part of Exodus.`;
   }
 
   return note(lines.slice(0, 8));
@@ -682,6 +694,69 @@ const DAY_30_PHRASE_TITLES: Record<string, string[]> = {
   "Exodus 36:38-38": ["Five Pillars Of It", "Their Hooks", "He Overlaid Their Chapiters", "Their Fillets With Gold", "Their Five Sockets Were Of Brass"],
 };
 
+function explainDay30PhraseAt95(title: string): string[] {
+  const lower = title.toLowerCase();
+  const support = lower.includes("tabernacle") || lower.includes("curtain") || lower.includes("board") || lower.includes("socket") || lower.includes("bar") || lower.includes("pillar") || lower.includes("hook") || lower.includes("chapiter") || lower.includes("fillet") || lower.includes("taches")
+    ? ["🏕️ The tabernacle is being built", "📏 Details follow God's pattern", "🛠️ Skilled work serves worship", "🙌 Mercy leads to obedience"]
+    : lower.includes("offering") || lower.includes("willing") || lower.includes("heart") || lower.includes("gold") || lower.includes("onyx") || lower.includes("spice") || lower.includes("oil")
+      ? ["🎁 Gifts are brought freely", "💛 Hearts respond willingly", "🏕️ Materials serve God's dwelling", "📜 Giving follows God's command"]
+      : lower.includes("presence") || lower.includes("glory") || lower.includes("cloud") || lower.includes("face") || lower.includes("shew") || lower.includes("gracious") || lower.includes("mercy")
+        ? ["☁️ God's presence is the treasure", "🙌 Moses seeks the LORD", "✨ Glory is holy and weighty", "🕊️ Mercy keeps hope alive"]
+        : ["📜 Covenant words are renewed", "🙌 The LORD reveals His character", "🛑 Israel must not return to idols", "🏕️ Worship follows God's command"];
+
+  let opening: string[];
+  if (lower.includes("stiffnecked")) opening = ["Stiffnecked means stubborn and resistant.", "The LORD names Israel's hard-heartedness after the golden calf, showing why His presence cannot be treated casually."];
+  else if (lower.includes("evil tidings")) opening = ["Evil tidings means painful or troubling news.", "Israel grieves because the LORD has warned that He may not go in their midst after their sin."];
+  else if (lower.includes("ornaments")) opening = ["Ornaments were jewelry or decorative items worn by the people.", "Taking them off becomes an outward sign of grief and humility after covenant failure."];
+  else if (lower.includes("tabernacle of the congregation")) opening = ["The tabernacle of the congregation was the meeting tent where people sought the LORD.", "In this scene it stands outside the camp, showing distance after Israel's sin."];
+  else if (lower.includes("pitched")) opening = ["Pitched means set up like a tent.", "Moses sets the meeting tent outside the camp so seeking the LORD has a visible place."];
+  else if (lower.includes("cloudy pillar")) opening = ["The cloudy pillar is the visible sign of the LORD's presence.", "When it descends, the people see that God is speaking with Moses."];
+  else if (lower.includes("face to face")) opening = ["Face to face means direct, personal communication.", "The wording shows unusual nearness between the LORD and Moses, not that Moses fully sees God's unveiled essence."];
+  else if (lower.includes("shew")) opening = ["Shew means show.", "Moses is asking the LORD to reveal His way or glory because Israel's hope depends on God's presence."];
+  else if (lower.includes("presence")) opening = ["Presence means the LORD Himself going with His people.", "Moses knows the promised land is not enough if God does not go with Israel."];
+  else if (lower.includes("rest")) opening = ["Rest means settled help and security from the LORD.", "God promises more than travel directions; He promises His own presence with Moses and the people."];
+  else if (lower.includes("glory")) opening = ["Glory means God's visible weight, beauty, and majesty.", "Moses asks to know the LORD more deeply, but God's holiness must still be guarded."];
+  else if (lower.includes("clift")) opening = ["A clift is a split or crevice in the rock.", "The LORD places Moses there to protect him while revealing only what Moses can bear."];
+  else if (lower.includes("back parts")) opening = ["Back parts is picture language for a partial glimpse after the LORD passes by.", "Moses receives a real revelation, but not the full sight of God's face."];
+  else if (lower.includes("hew")) opening = ["Hew means cut or carve.", "Moses must cut new stone tablets because the first ones were broken after the golden calf."];
+  else if (lower.includes("tables of stone") || lower.includes("tables")) opening = ["Tables of stone means stone tablets.", "The covenant words are being renewed after Israel shattered the first tablets through rebellion."];
+  else if (lower.includes("longsuffering")) opening = ["Longsuffering means patient and slow to anger.", "The LORD reveals that His mercy is not thin or rushed, even after Israel's serious sin."];
+  else if (lower.includes("iniquity") || lower.includes("transgression")) opening = ["Iniquity and transgression are words for sin and rebellion.", "The LORD forgives real guilt, but He does not pretend guilt is harmless."];
+  else if (lower.includes("jealous")) opening = ["Jealous means the LORD rightly refuses rival worship.", "His covenant love does not allow Israel to give worship to false gods."];
+  else if (lower.includes("whoring")) opening = ["Whoring after their gods is covenant betrayal language.", "The phrase pictures idolatry as spiritual unfaithfulness to the LORD."];
+  else if (lower.includes("molten gods")) opening = ["Molten gods are metal idols shaped from melted material.", "After the golden calf, this command directly warns Israel not to make visible gods again."];
+  else if (lower.includes("matrix")) opening = ["Matrix is old wording for the womb.", "The firstborn belongs to the LORD because Passover mercy spared Israel's firstborn."];
+  else if (lower.includes("firstling")) opening = ["Firstling means the firstborn animal from a mother.", "Even animal life becomes part of Israel's repeated memory of rescue."];
+  else if (lower.includes("ass")) opening = ["An ass is a donkey.", "The firstborn donkey had to be redeemed because firstborn life was claimed by the LORD."];
+  else if (lower.includes("unleavened")) opening = ["Unleavened bread is bread made without leaven, so it does not rise.", "The feast keeps the hurried Exodus rescue alive in Israel's calendar."];
+  else if (lower.includes("weeks")) opening = ["The Feast of Weeks was a harvest feast.", "Israel's calendar teaches them to worship the LORD for provision, not only rescue."];
+  else if (lower.includes("ingathering")) opening = ["Ingathering means gathering in the harvest.", "The feast marks the LORD's provision at the end of the agricultural cycle."];
+  else if (lower.includes("thrice")) opening = ["Thrice means three times.", "Israel's men were to appear before the LORD at three appointed feast times each year."];
+  else if (lower.includes("tenor")) opening = ["Tenor means the terms or content of the words.", "The covenant is renewed according to the LORD's words, not Israel's inventions."];
+  else if (lower.includes("vail")) opening = ["A vail is a veil or covering.", "Moses uses it because the reflected glory on his face is too weighty for the people to face continually."];
+  else if (lower.includes("wise hearted")) opening = ["Wise hearted means skilled and willing from the heart.", "The tabernacle work needs both ability and a heart ready to serve the LORD."];
+  else if (lower.includes("shittim")) opening = ["Shittim wood was durable acacia-like wood used in the tabernacle.", "The material is named because God's dwelling is built according to a specific pattern."];
+  else if (lower.includes("shewbread")) opening = ["Shewbread was bread set before the LORD.", "It represented Israel living continually before God's presence."];
+  else if (lower.includes("candlestick")) opening = ["The candlestick was the lampstand for the holy place.", "Its light belonged to ordered worship inside the tabernacle."];
+  else if (lower.includes("pins")) opening = ["Pins were stakes used to secure parts of the tabernacle.", "Even practical supports mattered because the holy tent had to be built carefully."];
+  else if (lower.includes("cloths of service")) opening = ["Cloths of service were special cloths used in holy work.", "The phrase names practical items connected to serving in God's dwelling place."];
+  else if (lower.includes("spun")) opening = ["Spun means twisted fibers into thread or yarn.", "The women's skilled work turns ordinary material into fabric for the tabernacle."];
+  else if (lower.includes("onyx")) opening = ["Onyx stones were precious stones used for priestly and tabernacle service.", "The rulers bring valuable materials for worship according to God's command."];
+  else if (lower.includes("taches")) opening = ["Taches were clasps that fastened curtains together.", "They made separate fabric pieces work as one tabernacle covering."];
+  else if (lower.includes("cubit")) opening = ["A cubit was an ancient measurement based roughly on the forearm.", "The measurement shows that the tabernacle was built as a real structure, not a vague symbol."];
+  else if (lower.includes("tenons")) opening = ["Tenons were projecting pieces that fit boards into sockets.", "They helped the tabernacle frame stand securely."];
+  else if (lower.includes("sockets")) opening = ["Sockets were bases that held the boards or pillars in place.", "The tabernacle's stability depended on these practical supports."];
+  else if (lower.includes("bars")) opening = ["Bars were long pieces used to hold the boards together.", "They strengthened the tabernacle frame so the dwelling stood as one structure."];
+  else if (lower.includes("chapiters")) opening = ["Chapiters were capitals or top pieces on pillars.", "The detail shows finishing work on the tabernacle's entrance structure."];
+  else if (lower.includes("fillets")) opening = ["Fillets were connecting bands or rods on the pillars.", "They helped join and finish the tabernacle entrance framework."];
+  else if (lower.includes("offering")) opening = ["Offering means a gift brought for the LORD's work.", "After the golden calf, Israel's giving is redirected toward obedient worship."];
+  else opening = [`This line is naming ${title.toLowerCase()} within covenant renewal or tabernacle obedience.`, "Exodus 33-36 shows mercy after failure producing renewed listening, worship, and willing work."];
+
+  const startsWithTitle = opening[0].toLowerCase().startsWith(title.toLowerCase());
+  const firstLine = startsWithTitle ? `The wording ${opening[0].charAt(0).toLowerCase()}${opening[0].slice(1)}` : opening[0];
+  return [`${firstLine} This belongs with this part of Exodus.`, opening[1], ...support, "The phrase is explained as part of renewed covenant life after the golden calf."].slice(0, 8);
+}
+
 function explainDay30Phrase(title: string): string {
   const lower = title.toLowerCase();
   const lines: string[] = [];
@@ -690,6 +765,8 @@ function explainDay30Phrase(title: string): string {
       if (item && !lines.includes(item)) lines.push(item);
     }
   };
+
+  return note(explainDay30PhraseAt95(title));
 
   if (lower.includes("depart") || lower.includes("go up hence") || lower.includes("land which i sware") || lower.includes("flowing with milk and honey")) {
     add(`${title} keeps God's promise to bring Israel toward the land.`, "Even after the golden calf, the LORD has not forgotten what He swore to Abraham, Isaac, and Jacob.", "\u{1F3DE}\u{FE0F} Promised land", "\u{1F4DC} Covenant promise", "\u{1F6B6} Journey continues", "The land is still a gift, but the next question is whether God's presence will go with them.");
@@ -1131,10 +1208,11 @@ function formatRenderedDays29To30Lines(section: PersonalExodusPhraseSectionInput
   if (section.chapter < 31 || section.chapter > 36) return lines;
 
   const isEmojiLine = (line: string) => /^[^A-Za-z0-9'"(]/.test(line.trim());
+  const isFillerLine = (line: string) => /(This shows the end of Exodus|helps the reader|helps the end of Exodus|real detail|assigned text|meaning should be clear|keeps the reader close|should be read slowly)/i.test(line);
   const cleaned = removeExodusThirtyOneToFortyRepeatedPhraseTitle(cleanTitle, lines)
     .map((line) => line.trim())
     .filter(Boolean);
-  const proseLines = cleaned.filter((line) => !isEmojiLine(line));
+  const proseLines = cleaned.filter((line) => !isEmojiLine(line) && !isFillerLine(line));
   const opening = proseLines.slice(0, Math.min(3, proseLines.length));
   const closing = proseLines.slice(opening.length);
 
@@ -1147,6 +1225,8 @@ function formatRenderedDays29To30Lines(section: PersonalExodusPhraseSectionInput
 
 function formatRenderedDay31Lines(section: PersonalExodusPhraseSectionInput, cleanTitle: string, lines: string[]) {
   if (section.chapter < 37 || section.chapter > 40) return lines;
+
+  return explainDay31PhraseAt95(section, cleanTitle);
 
   const escapedTitle = cleanTitle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const titleStartPattern = new RegExp(`^${escapedTitle}\\s+(means|shows|gives|helps|explains|teaches|marks|names|is|are|was|were|connects|keeps|points to|prepares|forms)\\s+`, "i");
@@ -1201,6 +1281,146 @@ function formatRenderedDay31Lines(section: PersonalExodusPhraseSectionInput, cle
   const closing = proseLines.slice(opening.length).filter((line) => !/exact Bible wording|read slowly|empty detail/i.test(line));
 
   return [...opening, ...bullets, ...closing].slice(0, 8);
+}
+
+function getDay31Support(section: PersonalExodusPhraseSectionInput, cleanTitle: string) {
+  const lower = cleanTitle.toLowerCase();
+
+  if (/cloud|glory|fire|filled|taken up|went onward|abode/.test(lower)) {
+    return ["\u{2601}\u{FE0F} God's presence fills the tabernacle", "\u{1F525} The LORD guides His people", "\u{1F3D5}\u{FE0F} The camp moves with God at the center", "\u{1F64C} Exodus ends with God dwelling among Israel"];
+  }
+
+  if (/garment|ephod|breastplate|mitre|crown|linen|stone|names|signet|robe|bells|pomegranate|girdle|breeches/.test(lower)) {
+    return ["\u{1F451} Priestly service is set apart", "\u{1F48E} Israel is represented before God", "\u{1F9F5} Beauty serves holy worship", "\u{1F64C} The priest ministers for the people"];
+  }
+
+  if (/altar|blood|offering|incense|laver|wash|water|mercy seat/.test(lower)) {
+    return ["\u{1F525} Worship happens God's way", "\u{1FA78} Sacrifice and mercy matter", "\u{1F4A7} Cleansing comes before service", "\u{1F64F} Nearness requires holy preparation"];
+  }
+
+  if (/sum|counted|talent|bekah|gold|silver|brass|offering|ithamar|bezaleel|aholiab/.test(lower)) {
+    return ["\u{1F9FE} The materials are counted carefully", "\u{1F381} Gifts are used for the LORD's dwelling", "\u{2692}\u{FE0F} Skilled workers serve God's pattern", "\u{2705} Holy generosity has accountability"];
+  }
+
+  return ["\u{1F3D5}\u{FE0F} The tabernacle is built with care", "\u{1F4DC} God's pattern is followed", "\u{2692}\u{FE0F} Practical details serve worship", "\u{1F64C} Holy worship is received from God"];
+}
+
+function explainDay31PhraseAt95(section: PersonalExodusPhraseSectionInput, cleanTitle: string) {
+  const lower = cleanTitle.toLowerCase();
+  const focus = getDay31PhraseFocus(section).replace(/\s+continued$/i, "");
+  let opening: string[];
+
+  if (/bezaleel/.test(lower)) opening = ["Bezaleel was the craftsman God appointed for tabernacle work.", "The finished ark and furniture are made by a named worker using God-given skill."];
+  else if (/ark of the testimony|ark/.test(lower)) opening = ["The ark was the sacred chest that held the covenant testimony.", "It stood at the center of the Most Holy Place, where God's word and mercy were held together."];
+  else if (/testimony/.test(lower)) opening = ["The testimony means the covenant tablets God gave Israel.", "Putting the testimony in the ark placed God's word at the heart of the dwelling."];
+  else if (/mercy seat/.test(lower)) opening = ["The mercy seat was the gold cover of the ark.", "It became the place connected with atonement, mercy, and God's throne-like presence."];
+  else if (/cherub/.test(lower)) opening = ["Cherubims were heavenly guardian figures connected with God's holy presence.", "Their wings over the mercy seat showed that mercy is real but never casual."];
+  else if (/wings|faces|mercy seatward/.test(lower)) opening = ["The wings and faces describe how the cherubim guarded and faced the mercy seat.", "The design keeps attention on the holy place where God would meet His people."];
+  else if (/shittim wood/.test(lower)) opening = ["Shittim wood was durable acacia-like wood used for tabernacle furniture.", "The material is named because God's dwelling was built from specific commanded materials."];
+  else if (/cubit|handbreadth/.test(lower)) opening = ["A cubit was an ancient length based roughly on the forearm, and a handbreadth was a smaller hand-width measure.", "The measurements show the tabernacle pieces were real crafted objects, not vague symbols."];
+  else if (/overlayed|pure gold|gold/.test(lower)) opening = ["Pure gold marked beauty, value, and holiness in the tabernacle.", "The gold was not decoration for luxury; it served the LORD's dwelling."];
+  else if (/crown of gold|crown/.test(lower)) opening = ["A crown of gold was a raised rim or border around holy furniture.", "It gave the piece a finished, honored edge for sacred use."];
+  else if (/rings|staves|places for the staves|bear/.test(lower)) opening = ["Staves were carrying poles, and rings held those poles in place.", "Holy furniture could be carried without being handled casually."];
+  else if (/table/.test(lower)) opening = ["The table held the bread set before the LORD.", "It pictured Israel living before God's presence and receiving provision from Him."];
+  else if (/dishes|spoons|bowls|covers/.test(lower)) opening = ["Dishes, spoons, bowls, and covers were tools for table service.", "Even ordinary-looking vessels became holy when set apart for God's worship."];
+  else if (/candlestick|lamps|branches|knops/.test(lower)) opening = ["The candlestick was the lampstand inside the holy place.", "Its branches, lamps, and shaped details gave ordered light for priestly service."];
+  else if (/tongs|snuffdishes/.test(lower)) opening = ["Tongs and snuffdishes were tools for tending the lamps.", "The light in the holy place had to be cared for with ordered priestly attention."];
+  else if (/talent/.test(lower)) opening = ["A talent was a large ancient weight measure.", "Naming the weight shows the lampstand was carefully made from costly material."];
+  else if (/incense|sweet spices|apothecary|fragrance/.test(lower)) opening = ["Incense was fragrant material prepared for holy worship.", "It was not ordinary perfume; it belonged to service before the LORD."];
+  else if (/altar of burnt offering|burnt offering/.test(lower)) opening = ["The altar of burnt offering was the place where sacrifices were offered.", "It stood in the approach to God's dwelling because sinful people needed God's provided way near."];
+  else if (/horns thereof|horns/.test(lower)) opening = ["The horns were raised corner pieces on the altar.", "They were part of the altar's design and later connected with sacrifice and atonement."];
+  else if (/brass|brasen/.test(lower)) opening = ["Brass here refers to bronze-colored metal used for outer-court items.", "The material fits the altar, laver, sockets, and tools connected with approach and cleansing."];
+  else if (/laver/.test(lower)) opening = ["The laver was a basin for priestly washing.", "Priests washed before serving because nearness to God's presence required cleansing."];
+  else if (/lookingglasses/.test(lower)) opening = ["Lookingglasses were polished bronze mirrors.", "The women's mirrors became material for the laver, turning personal items into worship service."];
+  else if (/court|hangings|gate|pillars|sockets|hooks|fillets|pins/.test(lower)) opening = ["The court was the enclosed area around the tabernacle.", "Its hangings, pillars, sockets, hooks, and pins created ordered access instead of casual approach."];
+  else if (/sum|counted/.test(lower)) opening = ["The sum means the counted total of tabernacle materials.", "The work is recorded carefully because holy gifts are handled with accountability."];
+  else if (/ithamar/.test(lower)) opening = ["Ithamar was one of Aaron's sons involved in overseeing the counted materials.", "The tabernacle work includes priestly accountability, not hidden handling."];
+  else if (/aholiab/.test(lower)) opening = ["Aholiab was another skilled worker appointed for the tabernacle.", "His name shows that God used more than one person in the holy work."];
+  else if (/bekah/.test(lower)) opening = ["A bekah was a small weight of silver, half a shekel.", "The phrase connects each counted man with the silver used in the sanctuary."];
+  else if (/cloths of service/.test(lower)) opening = ["Cloths of service were special cloths used for holy work.", "They helped the priests handle tabernacle service with care."];
+  else if (/holy garments/.test(lower)) opening = ["Holy garments were priestly clothes set apart for Aaron and his sons.", "They marked priestly service as belonging to the LORD."];
+  else if (/ephod/.test(lower)) opening = ["The ephod was a special priestly garment.", "It carried stones and details that represented Israel before the LORD."];
+  else if (/curious girdle/.test(lower)) opening = ["Curious girdle means a skillfully woven waistband or sash.", "It belonged to the ephod and showed that priestly clothing was made with careful artistry."];
+  else if (/onyx|sardius|topaz|carbuncle|stones/.test(lower)) opening = ["The stones were precious gems set into the priestly garments.", "They carried the names of Israel so the priest represented the people before God."];
+  else if (/signets|engraven|names/.test(lower)) opening = ["Engraven as signets means carved like a seal.", "Israel's names were permanently marked on the priestly stones, not loosely attached or forgotten."];
+  else if (/breastplate/.test(lower)) opening = ["The breastplate was worn over the priest's chest.", "It carried Israel's names near the heart as the priest ministered before the LORD."];
+  else if (/foursquare/.test(lower)) opening = ["Foursquare means square in shape.", "The breastplate was made with an exact form because holy service followed God's pattern."];
+  else if (/chains|wreathen|ouches/.test(lower)) opening = ["Chains, wreathen work, and ouches were fasteners and settings for the priestly garments.", "The details held the breastplate and stones securely for holy service."];
+  else if (/robe|all of blue/.test(lower)) opening = ["The robe of the ephod was a blue priestly garment.", "Its color and design marked Aaron's ministry as holy service before the LORD."];
+  else if (/habergeon/.test(lower)) opening = ["A habergeon was armor-like clothing with a reinforced opening.", "The robe's neck opening was made strong so it would not tear."];
+  else if (/pomegranate|bell/.test(lower)) opening = ["Bells and pomegranates decorated the hem of the priestly robe.", "The sound and fruit-shaped ornaments marked priestly movement before the LORD."];
+  else if (/mitre/.test(lower)) opening = ["The mitre was the priestly head covering.", "It held the holy crown plate that marked Aaron as set apart for the LORD."];
+  else if (/breeches|coats|linen|girdle/.test(lower)) opening = ["Coats, breeches, linen, and girdles were priestly garments.", "They covered and prepared the priests for service near holy things."];
+  else if (/plate of the holy crown|holiness to the lord|holy crown|lace of blue/.test(lower)) opening = ["Holiness to the LORD was written on the priestly crown plate.", "Aaron's ministry was marked as belonging to God, not to personal status."];
+  else if (/commanded moses|according to all|did according/.test(lower)) opening = ["As the LORD commanded Moses means the work followed God's instructions.", "After the golden calf, obedience matters because worship must be received from God, not invented."];
+  else if (/finished|look upon all the work|blessed/.test(lower)) opening = ["Finished means the tabernacle work reached completion according to God's command.", "Moses inspects and blesses the workers because the work matches what the LORD said."];
+  else if (/first day|first month|second year/.test(lower)) opening = ["The first day of the first month gives the tabernacle setup a new-beginning feel.", "The finished dwelling is now being put into service in Israel's camp."];
+  else if (/set up|reared up/.test(lower)) opening = ["Set up and reared up mean the tabernacle was raised into place.", "The finished pieces now become the dwelling where God's presence will fill the camp."];
+  else if (/vail/.test(lower)) opening = ["A vail was a veil or curtain.", "It covered the ark and marked the boundary around the Most Holy Place."];
+  else if (/bread in order|lighted the lamps|burnt sweet incense/.test(lower)) opening = ["Bread, lamps, and incense show priestly service beginning inside the holy place.", "The tabernacle is not only built; it is arranged for worship."];
+  else if (/washed their hands|came near/.test(lower)) opening = ["Washing hands and feet prepared the priests for service.", "They could not come near the altar or tent without cleansing."];
+  else if (/cloud covered|glory.*filled/.test(lower)) opening = ["The cloud and glory show the LORD filling the completed tabernacle.", "Exodus reaches its goal: the rescuing God dwells among His people."];
+  else if (/moses was not able/.test(lower)) opening = ["Moses not being able to enter shows the weight of God's glory.", "Even Moses cannot treat the filled tabernacle as ordinary space."];
+  else if (/taken up|went onward|fire.*night|sight of all/.test(lower)) opening = ["The cloud rising or staying guided Israel's journeys.", "The people moved or waited because the LORD's presence led them."];
+  else opening = ["This detail names a real part of the finished tabernacle.", `Inside ${focus}, the wording shows ordered obedience after Israel's earlier failure.`];
+
+  return finalizeDay31PhraseAt95Lines(section, cleanTitle, [...opening, ...getDay31Support(section, cleanTitle), `Inside ${focus}, the wording shows God's dwelling being finished according to His word.`].slice(0, 8));
+}
+
+function finalizeDay31PhraseAt95Lines(section: PersonalExodusPhraseSectionInput, cleanTitle: string, lines: string[]) {
+  if (lines.length === 0) return lines;
+
+  const focus = getDay31PhraseFocus(section).replace(/\s+continued$/i, "");
+  const lowerTitle = cleanTitle.toLowerCase();
+  const startsWithTitle = lines[0].toLowerCase().startsWith(lowerTitle);
+  const detail = getDay31DistinctiveTopic(cleanTitle);
+  const topic = `${getDay31PhraseTopic(cleanTitle)} (${detail})`;
+  const firstLine = lines[0]
+    .replace(/\bThis helps explain\b/gi, `Inside ${focus}, this explains`)
+    .replace(/\bThis helps\b/gi, "This shows");
+  const first = startsWithTitle
+    ? `In ${section.reference}, ${firstLine.charAt(0).toLowerCase()}${firstLine.slice(1)}`
+    : `${firstLine} Here it applies to ${topic} in ${section.reference}.`;
+
+  return [
+    first,
+    ...lines.slice(1).map((line) =>
+      line
+        .replace(/\bthe phrase shows\b/gi, "the wording shows")
+        .replace(/\bthe phrase explains\b/gi, "the wording explains")
+        .replace(/\bthe phrase teaches\b/gi, "the wording teaches")
+        .replace(/\bThis detail names a real part\b/gi, `Inside ${focus}, this names a real part`)
+    ),
+  ];
+}
+
+function getDay31PhraseTopic(cleanTitle: string) {
+  const lower = cleanTitle.toLowerCase();
+  const detail = getDay31DistinctiveTopic(cleanTitle);
+  if (/mercy seat/.test(lower)) return "the ark cover where mercy is shown";
+  if (/staves|rings/.test(lower)) return "the carrying system for holy furniture";
+  if (/cubit|handbreadth/.test(lower)) return "the measurement detail";
+  if (/laver|washed|water/.test(lower)) return "the cleansing station";
+  if (/lookingglasses/.test(lower)) return "the bronze mirror material";
+  if (/ephod|breastplate|robe|mitre|garment|crown/.test(lower)) return "the priestly clothing";
+  if (/ouches|chains|wreathen/.test(lower)) return "the fasteners for the priestly garments";
+  if (/cloud|glory|fire/.test(lower)) return "the LORD's visible presence";
+  if (/incense|spices|apothecary/.test(lower)) return "the holy fragrance";
+  if (/altar|offering|horns/.test(lower)) return "the altar service";
+  if (/table|bread|dishes|spoons|bowls/.test(lower)) return "the holy table service";
+  if (/candlestick|lamps|tongs|snuffdishes/.test(lower)) return "the lampstand service";
+  return `the tabernacle detail about ${detail}`;
+}
+
+function getDay31DistinctiveTopic(cleanTitle: string) {
+  const words = cleanTitle
+    .toLowerCase()
+    .replace(/[^a-z0-9'\s]/g, " ")
+    .split(/\s+/)
+    .filter(Boolean)
+    .filter((word) => !["the", "and", "of", "a", "an", "to", "for", "with", "shall", "be", "is", "it", "his", "her", "he", "him", "them", "that", "this", "unto", "upon", "in", "their", "all", "as"].includes(word));
+
+  return words.slice(-3).join(" ") || "this detail";
 }
 
 function normalizeRepeatedExodusThirtyOneToFortyLines(sections: PersonalExodusPhraseSectionInput[]) {

@@ -1905,8 +1905,81 @@ function polishDay38LeviticusSection(section: PersonalLeviticusPhraseSectionInpu
   };
 }
 
-function formatDay37To38LeviticusMeaningFirstLines(title: string, lines: string[]) {
+function getDay37To38DistinctiveTopic(cleanTitle: string) {
+  const words = cleanTitle
+    .toLowerCase()
+    .replace(/[^a-z0-9'\s]/g, " ")
+    .split(/\s+/)
+    .filter(Boolean)
+    .filter((word) => !["the", "and", "of", "a", "an", "to", "for", "with", "shall", "be", "is", "it", "he", "him", "them", "that", "this", "unto", "upon", "in", "their", "all", "any", "ye", "thy"].includes(word));
+
+  return (words.length <= 4 ? words : words.slice(-3)).join(" ") || "this detail";
+}
+
+function getDay37To38LeviticusSupport(cleanTitle: string) {
+  const lower = cleanTitle.toLowerCase();
+
+  if (/priest|aaron|sons|garment|blemish|holy|sanctify|bread|offering/.test(lower)) return ["\u{1F451} Priestly service is set apart", "\u{1F35E} Holy bread belongs to the LORD", "\u{1F6AB} Defilement is not treated casually", "\u{1F64C} Nearness requires holiness"];
+  if (/feast|sabbath|passover|unleavened|firstfruits|trumpets|atonement|tabernacles|convocation|jubile/.test(lower)) return ["\u{1F4C5} Israel's calendar teaches worship", "\u{1F64C} Time belongs to the LORD", "\u{1F33E} Harvest becomes praise", "\u{1F54A}\u{FE0F} Rest and atonement shape the year"];
+  if (/land|sabbath|redeem|redemption|poor|brother|bondman|rigour|inheritance|fiftieth|liberty/.test(lower)) return ["\u{1F33E} The land belongs to the LORD", "\u{1F932} Poor brothers are protected", "\u{1F3BA} Jubilee announces liberty", "\u{2696}\u{FE0F} Ownership is limited by God's mercy"];
+  if (/statutes|commandments|contrary|confess|covenant|blessing|curse|cities waste|desolation/.test(lower)) return ["\u{1F4DC} Covenant obedience has weight", "\u{26A0}\u{FE0F} Rebellion brings real warning", "\u{1F64F} Confession opens the door to mercy", "\u{1F54A}\u{FE0F} The LORD remembers His covenant"];
+  if (/vow|estimation|shekel|firstling|devoted|tithe|tenth|alter|redeem/.test(lower)) return ["\u{1F5E3}\u{FE0F} Vows are taken seriously", "\u{2696}\u{FE0F} Valuation follows sanctuary order", "\u{1F525} Devoted things belong to God", "\u{1F33E} Tithes are holy to the LORD"];
+  if (/blasphem|name|stone|judgment|stranger|eye|tooth|breach/.test(lower)) return ["\u{1F5E3}\u{FE0F} God's name must be honored", "\u{2696}\u{FE0F} Justice is measured carefully", "\u{1F30D} One law covers Israel and the stranger", "\u{1F4DC} Judgment follows the LORD's command"];
+  return ["\u{1F4DC} The wording gives concrete holiness", "\u{1F64C} The LORD defines worship and life", "\u{1F9E0} The phrase answers a real question", "\u{2705} Israel must live the command"];
+}
+
+function explainDay37To38LeviticusAt95(section: PersonalLeviticusPhraseSectionInput, cleanTitle: string) {
+  const lower = cleanTitle.toLowerCase();
+  let opening: string[];
+
+  if (/priest|aaron|sons/.test(lower)) opening = ["The priestly wording names those who serve nearest to holy things.", "Leviticus holds priests to visible holiness because they represent the people before the LORD."];
+  else if (/dead|defile|unclean|blemish/.test(lower)) opening = ["Defilement means becoming unclean for holy service.", "Priests could not treat uncleanness or visible blemish as irrelevant near God's altar."];
+  else if (/bread of thy god|shewbread|holy bread/.test(lower)) opening = ["The bread of God refers to holy food connected with priestly service.", "The priest's work centers on offerings that belong to the LORD, not ordinary meals."];
+  else if (/whore|profane|virgin|wife/.test(lower)) opening = ["The marriage wording protects priestly holiness in household life.", "Leviticus treats the priest's home as connected to his public service."];
+  else if (/sabbath/.test(lower)) opening = ["Sabbath means the holy rest day given by the LORD.", "Israel's weekly rhythm teaches that time belongs to God."];
+  else if (/passover/.test(lower)) opening = ["Passover remembers the night the LORD spared and rescued Israel from Egypt.", "The feast keeps deliverance at the center of Israel's calendar."];
+  else if (/unleavened/.test(lower)) opening = ["Unleavened bread is bread made without leaven, so it does not rise.", "The feast remembers Israel leaving Egypt in haste under God's rescue."];
+  else if (/firstfruits|harvest|wave sheaf/.test(lower)) opening = ["Firstfruits were the first part of the harvest presented to the LORD.", "Israel learned to honor God before treating the harvest as personal possession."];
+  else if (/trumpets/.test(lower)) opening = ["Trumpets signaled a holy gathering before the LORD.", "The sound called Israel to attention inside God's calendar."];
+  else if (/atonement|afflict your souls/.test(lower)) opening = ["Atonement means sin is covered before God, and afflict your souls means humble yourselves.", "The Day of Atonement was solemn mercy, not ordinary celebration."];
+  else if (/tabernacles|booths/.test(lower)) opening = ["Tabernacles were temporary shelters used during the feast.", "Israel remembered wilderness life and God's provision after harvest."];
+  else if (/oil|candlestick|lamps/.test(lower)) opening = ["The oil and lamps kept light burning in the holy place.", "The tabernacle required steady care, not occasional enthusiasm."];
+  else if (/blasphem|name of the lord/.test(lower)) opening = ["Blaspheming the LORD's name means dishonoring God with serious speech.", "Leviticus treats God's name as holy, not as a tool for anger or contempt."];
+  else if (/eye for eye|tooth|breach|life for life/.test(lower)) opening = ["Eye for eye language limits justice to measured proportion.", "The law prevents revenge from becoming larger than the harm."];
+  else if (/stranger/.test(lower)) opening = ["The stranger was a foreigner living among Israel.", "God's justice did not disappear when the person involved was not native-born."];
+  else if (/land.*sabbath|sabbath of the land/.test(lower)) opening = ["The land Sabbath means the land itself rested every seventh year.", "Israel had to trust that the LORD owned and sustained the land."];
+  else if (/jubile|fiftieth|liberty/.test(lower)) opening = ["Jubilee was the fiftieth year of release and restoration.", "Debts, land, and bondage were limited because Israel belonged to the LORD."];
+  else if (/oppress/.test(lower)) opening = ["Oppress means to treat someone unfairly or harshly for gain.", "Leviticus forbids using land, money, or power to crush a neighbor."];
+  else if (/blessing/.test(lower)) opening = ["The promised blessing means God can provide when obedience seems costly.", "Israel must trust the LORD more than short-term control."];
+  else if (/land is mine/.test(lower)) opening = ["For the land is mine means Israel is tenant, not ultimate owner.", "The promised land remains the LORD's gift and possession."];
+  else if (/poor|relieve|brother/.test(lower)) opening = ["The poor brother is an Israelite in economic trouble.", "God commands help that protects life and dignity instead of exploiting weakness."];
+  else if (/rigour/.test(lower)) opening = ["Rigour means harshness or crushing severity.", "Israel must not rule a poor brother like Pharaoh ruled slaves."];
+  else if (/redeemed|redemption/.test(lower)) opening = ["Redeemed means bought back or released from bondage or loss.", "Leviticus gives a way for people and land to be restored."];
+  else if (/idols/.test(lower)) opening = ["Idols are false gods made or trusted instead of the LORD.", "Covenant life cannot mix worship of the LORD with manufactured gods."];
+  else if (/walk in my statutes/.test(lower)) opening = ["Walking in God's statutes means living according to His commands.", "Obedience is pictured as a path Israel must keep walking."];
+  else if (/contrary/.test(lower)) opening = ["Contrary means moving against the LORD instead of with His commands.", "The warning shows rebellion as stubborn resistance, not a small mistake."];
+  else if (/confess/.test(lower)) opening = ["Confess means openly admit sin before God.", "The warning section still leaves room for humbling and covenant mercy."];
+  else if (/vow|singular vow/.test(lower)) opening = ["A vow was a serious promise made before the LORD.", "Leviticus gives ordered valuation so vowed things are not handled casually."];
+  else if (/estimation|shekel/.test(lower)) opening = ["Estimation means assigned value, and the sanctuary shekel was the holy standard of weight.", "Vows and redemptions had measured order before God."];
+  else if (/firstling/.test(lower)) opening = ["Firstling means the firstborn animal from its mother.", "The firstborn already belonged to the LORD and could not be treated like an optional vow."];
+  else if (/devoted/.test(lower)) opening = ["Devoted things were set apart completely to the LORD.", "Leviticus treats them as most holy, not available for casual sale or exchange."];
+  else if (/tithe|tenth/.test(lower)) opening = ["Tithe means a tenth portion.", "The tenth belonged to the LORD from the land, herd, and flock."];
+  else opening = [`This wording names ${getDay37To38DistinctiveTopic(cleanTitle)} in Leviticus ${section.chapter}.`, "The phrase gives a concrete piece of holiness, worship, justice, land, vow, or covenant life."];
+
+  const startsWithTitle = opening[0].toLowerCase().startsWith(cleanTitle.toLowerCase());
+  const firstLine = startsWithTitle ? `In ${section.reference}, ${opening[0].charAt(0).toLowerCase()}${opening[0].slice(1)}` : `${opening[0]} Here it applies to ${getDay37To38DistinctiveTopic(cleanTitle)} in ${section.reference}.`;
+
+  return [
+    firstLine,
+    opening[1],
+    ...getDay37To38LeviticusSupport(cleanTitle),
+  ].slice(0, 8);
+}
+
+function formatDay37To38LeviticusMeaningFirstLines(section: PersonalLeviticusPhraseSectionInput, title: string, lines: string[]) {
   const cleanTitle = getCleanPhraseTitle(title);
+  return explainDay37To38LeviticusAt95(section, cleanTitle);
+
   const escapedTitle = cleanTitle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const titleStartPattern = new RegExp(`^${escapedTitle}\\s+(means|shows|gives|helps|explains|teaches|marks|names|is|are|was|were|connects|keeps|points to|prepares|refers to|describes)\\s+`, "i");
   const isEmojiLine = (line: string) => /^[^A-Za-z0-9'"(]/.test(line.trim());
@@ -1960,7 +2033,7 @@ function polishDay37To38LeviticusSection(section: PersonalLeviticusPhraseSection
     ...section,
     phrases: section.phrases.map(([title, content]) => [
       title,
-      note(formatDay37To38LeviticusMeaningFirstLines(title, content.split(/\n+/).map((line) => line.trim()).filter(Boolean))),
+      note(formatDay37To38LeviticusMeaningFirstLines(section, title, content.split(/\n+/).map((line) => line.trim()).filter(Boolean))),
     ]),
   };
 }

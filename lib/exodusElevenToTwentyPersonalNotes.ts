@@ -2795,6 +2795,77 @@ function getDay26TeachingBullets(section: PersonalExodusPhraseSectionInput, titl
   return ["📜 The command comes from the LORD", "🧭 Israel is learning covenant life", "🙌 Rescue leads into obedience", "🧠 The phrase explains how God's people should live"];
 }
 
+function isDay26FillerLine(line: string) {
+  return /(^this gives\b|^this turns\b|^this introduces\b|^this brings\b|^this names\b|^this protects\b|^this teaches\b|^this keeps\b|^this explains one part|helps the reader|reminds the reader|the phrase shows|real detail|assigned text|meaning should be clear|keeps the reader close|wording helps)/i.test(line);
+}
+
+function makeDay26OpeningLineUnique(line: string, title: string, section: PersonalExodusPhraseSectionInput) {
+  const startsWithTitle = line.toLowerCase().startsWith(title.toLowerCase());
+  const adjusted = startsWithTitle ? `The wording ${line.charAt(0).toLowerCase()}${line.slice(1)}` : line;
+  return `${adjusted} This belongs to the ${section.title} section.`;
+}
+
+function getDay26SpecificOpening(section: PersonalExodusPhraseSectionInput, title: string) {
+  const lower = title.toLowerCase();
+
+  if (lower.includes("chide")) return ["Chide means quarrel or argue.", "The people are not only thirsty; they are turning their fear against Moses instead of trusting the LORD."];
+  if (lower.includes("wherefore")) return ["Wherefore means why.", "The people are asking why Moses brought them from Egypt, but their question accuses rescue as if God meant harm."];
+  if (lower.includes("stone me")) return ["Stone me means kill Moses by throwing stones.", "The water crisis has grown so angry that Moses feels physically threatened by the people he is leading."];
+  if (lower.includes("no water")) return ["The problem is literal thirst, not a small inconvenience.", "A large camp in the wilderness needs water to survive, so this crisis tests whether need will become trust or accusation."];
+  if (lower.includes("rock in horeb")) return ["Horeb is the mountain region where God will provide water from a rock.", "The place that looks hard and lifeless becomes the place where the LORD gives life."];
+  if (lower.includes("smite the rock")) return ["Smite means strike.", "Moses must strike the rock because God commands it, and the water comes by the LORD's power rather than Moses' cleverness."];
+  if (lower.includes("massah")) return ["Massah is connected with testing.", "The place name remembers that Israel tested the LORD by questioning whether He was really with them."];
+  if (lower.includes("meribah")) return ["Meribah is connected with quarreling.", "The name keeps Israel's angry argument in memory so the people do not forget what unbelief sounded like."];
+  if (lower.includes("tempted the lord")) return ["Tempted the LORD means tested Him in an unbelieving way.", "Israel is treating God's presence as doubtful even after He has rescued, guided, and fed them."];
+  if (lower === "saying") return ["Saying introduces the words that reveal Israel's deeper question.", "The issue beneath the complaint is not only water, but whether the LORD is truly among them."];
+  if (lower.includes("among us")) return ["Among us means present with us.", "Israel is asking whether the LORD is really with the camp, even though His care has already followed them from Egypt."];
+  if (lower.includes("amalek")) return ["Amalek was the enemy people who attacked Israel in the wilderness.", "This is Israel's first battle after Egypt, so the rescued people must learn dependence in conflict too."];
+  if (lower.includes("choose us out")) return ["Choose us out men means select men for battle.", "Joshua must gather fighters while Moses stands with the rod of God, joining human action with dependence on the LORD."];
+  if (lower.includes("rod of god")) return ["The rod of God is Moses' staff connected with God's earlier signs and judgments.", "Holding it during the battle points to dependence on the LORD, not magic in the staff itself."];
+  if (lower.includes("held up his hand")) return ["Moses' lifted hand shows dependence during the battle.", "When his hand is raised, Israel prevails, teaching that victory is tied to the LORD's help."];
+  if (lower.includes("aaron and hur")) return ["Aaron and Hur support Moses when his strength runs out.", "The battle teaches that even faithful leaders need help from others to keep standing."];
+  if (lower.includes("hands were steady")) return ["Steady means firm and held up without dropping.", "Moses remains supported until the battle is finished, showing endurance through shared help."];
+  if (lower.includes("discomfited")) return ["Discomfited means defeated or overthrown.", "Joshua beats Amalek in battle, but the scene ties that victory to God's help and Moses' dependence."];
+  if (lower.includes("memorial in a book")) return ["A memorial in a book means the battle must be written down for remembrance.", "God does not want this attack and victory to disappear from Israel's memory."];
+  if (lower.includes("rehearse it")) return ["Rehearse it means repeat it or tell it carefully.", "Joshua must hear the record because the conflict with Amalek will matter beyond this one battle."];
+  if (lower.includes("put out the remembrance")) return ["Put out the remembrance means erase Amalek's lasting name and power.", "The LORD promises judgment against the enemy who attacked His rescued people."];
+  if (lower.includes("altar")) return ["An altar is a place of sacrifice and worship.", "Moses builds one after the victory so the battle's glory is given to the LORD."];
+  if (lower.includes("jehovahnissi")) return ["Jehovah-nissi means the LORD is my banner.", "A banner was a rallying sign in battle, so the name says Israel's victory comes from the LORD."];
+  if (lower.includes("jethro")) return ["Jethro is Moses' father-in-law from Midian.", "His arrival brings Moses' family story back into the wilderness journey after the rescue from Egypt."];
+  if (lower.includes("zipporah")) return ["Zipporah is Moses' wife.", "Her return with Jethro shows that Moses is not only Israel's leader; he also has a real family."];
+  if (lower.includes("gershom")) return ["Gershom is Moses' son whose name is connected with living as a stranger.", "His name remembers Moses' earlier exile before the Exodus mission."];
+  if (lower.includes("eliezer")) return ["Eliezer is Moses' son whose name points to God's help.", "His name remembers that the LORD delivered Moses from danger."];
+  if (lower.includes("obeisance")) return ["Obeisance means a respectful bow.", "Moses greets Jethro with honor, showing family respect inside the larger Exodus story."];
+  if (lower.includes("welfare")) return ["Welfare means well-being or peace.", "Moses and Jethro ask about each other's peace after long pressure, danger, and separation."];
+  if (lower.includes("burnt offering")) return ["A burnt offering was a sacrifice offered up to God.", "Jethro responds to the LORD's rescue with worship, not only curiosity."];
+  if (lower.includes("sat to judge")) return ["Sat to judge means Moses was hearing disputes and deciding cases.", "The people bring their problems to him, but one man cannot carry that load all day forever."];
+  if (lower.includes("morning unto the evening")) return ["Morning unto the evening means the work lasted all day.", "Jethro sees that the leadership burden is exhausting Moses and the people."];
+  if (lower.includes("wear away")) return ["Wear away means become worn out.", "Jethro warns that Moses and the people will be drained if every case depends on one man."];
+  if (lower.includes("not good")) return ["Not good means Jethro sees a real problem in the leadership pattern.", "The issue is not Moses' laziness but an unsustainable way of serving the people."];
+  if (lower.includes("god-ward")) return ["God-ward means toward God or before God.", "Moses must represent the people before the LORD even while other leaders help carry smaller cases."];
+  if (lower.includes("able men")) return ["Able men means capable men who can carry responsibility.", "Shared leadership needs skill, reverence, truthfulness, and freedom from greed."];
+  if (lower.includes("fear god")) return ["Fear God means reverence the LORD and take His justice seriously.", "Israel's leaders must be shaped by holy fear, not merely talent or popularity."];
+  if (lower.includes("covetousness")) return ["Covetousness means greedy desire for gain.", "Judges who love gain can twist justice, so Israel needs leaders who hate bribery and selfish advantage."];
+  if (lower.includes("rulers of thousands")) return ["Rulers of thousands, hundreds, fifties, and tens describes layered leadership.", "The structure spreads responsibility so ordinary cases can be handled wisely."];
+  if (lower.includes("hard causes")) return ["Hard causes means difficult cases.", "The hardest matters still come to Moses, while smaller disputes are handled by appointed leaders."];
+  if (lower.includes("third month")) return ["The third month marks when Israel arrives near Sinai after leaving Egypt.", "The date shows that the rescued people are now being brought into covenant formation."];
+  if (lower.includes("sinai")) return ["Sinai is the mountain where the LORD will speak covenant words to Israel.", "The people rescued from Egypt now camp before the place of holy meeting."];
+  if (lower.includes("eagles' wings")) return ["Eagles' wings pictures strong, protective carrying.", "Before giving commands, God reminds Israel that He carried them out of Egypt by grace."];
+  if (lower.includes("peculiar treasure")) return ["Peculiar treasure means a special possession treasured by the LORD.", "Israel is being called God's own people among the nations."];
+  if (lower.includes("kingdom of priests")) return ["A kingdom of priests means Israel is called to represent the LORD before the nations.", "The whole people are being given a holy identity, not only private rescue."];
+  if (lower.includes("holy nation")) return ["Holy nation means a people set apart for the LORD.", "God rescued Israel so their life together would show His character."];
+  if (lower.includes("wash their clothes")) return ["Washing clothes is part of preparing for God's holy presence.", "The outward preparation teaches that Sinai is not an ordinary meeting."];
+  if (lower.includes("set bounds")) return ["Set bounds means place limits around the mountain.", "The boundary protects the people from treating God's holiness casually."];
+  if (lower.includes("thunders") || lower.includes("lightnings")) return ["Thunder and lightning mark the terrifying majesty of God's presence.", "Sinai shakes the people because the LORD is drawing near as holy King."];
+  if (lower.includes("trumpet")) return ["The trumpet sound announces the holy meeting at Sinai.", "The growing sound makes the moment feel public, serious, and impossible to ignore."];
+  if (lower.includes("house of bondage")) return ["The house of bondage means the place of slavery.", "The commandments begin by reminding Israel that the LORD rescued them from Egypt before calling them to obey."];
+  if (lower.includes("graven image")) return ["A graven image is a carved or shaped idol.", "Israel must not turn the invisible LORD into an object they can control or bow before."];
+  if (lower.includes("vain")) return ["Vain means empty, false, or careless.", "God's name must not be used as if it were weightless or available for lies."];
+  if (lower.includes("covet")) return ["Covet means desire what another person has.", "The command reaches beneath outward behavior into the heart's cravings."];
+
+  return [`This line is naming ${title.toLowerCase()} as part of Israel's formation after Egypt.`, `${section.title} shows rescued people learning trust, worship, leadership, holiness, and covenant obedience.`];
+}
+
 function formatRenderedDay26Lines(section: PersonalExodusPhraseSectionInput, cleanTitle: string, lines: string[]) {
   if (section.chapter < 17 || section.chapter > 20) return lines;
 
@@ -2802,8 +2873,12 @@ function formatRenderedDay26Lines(section: PersonalExodusPhraseSectionInput, cle
   const cleaned = removeDay25RepeatedPhraseTitle(cleanTitle, lines)
     .map((line) => line.trim())
     .filter(Boolean);
-  const proseLines = cleaned.filter((line) => !isEmojiLine(line));
-  const opening = proseLines.slice(0, Math.min(3, proseLines.length));
+  const proseLines = cleaned.filter((line) => !isEmojiLine(line) && !isDay26FillerLine(line));
+  const rawOpening = getDay26SpecificOpening(section, cleanTitle);
+  const opening = [
+    makeDay26OpeningLineUnique(rawOpening[0], cleanTitle, section),
+    rawOpening[1],
+  ];
   const closing = proseLines.slice(opening.length);
 
   return [

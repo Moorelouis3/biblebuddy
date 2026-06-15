@@ -19,8 +19,79 @@ function stripDay36Title(title: string) {
   return title.replace(/^[^A-Za-z0-9']+\s*/, "").trim();
 }
 
-function formatDay36MeaningFirstLines(title: string, lines: string[]) {
+function getDay36DistinctiveTopic(cleanTitle: string) {
+  const words = cleanTitle
+    .toLowerCase()
+    .replace(/[^a-z0-9'\s]/g, " ")
+    .split(/\s+/)
+    .filter(Boolean)
+    .filter((word) => !["the", "and", "of", "a", "an", "to", "for", "with", "shall", "be", "is", "it", "he", "him", "them", "that", "this", "unto", "upon", "in", "their", "all", "any", "ye"].includes(word));
+
+  return (words.length <= 4 ? words : words.slice(-3)).join(" ") || "this detail";
+}
+
+function getDay36Support(cleanTitle: string) {
+  const lower = cleanTitle.toLowerCase();
+
+  if (/blood|atonement|sacrifice|offering|altar|goat|ox|lamb/.test(lower)) return ["\u{1FA78} Blood belongs to life and atonement", "\u{1F525} Sacrifice must come God's way", "\u{1F6AA} Worship is brought to the tabernacle", "\u{1F64F} The LORD guards holy approach"];
+  if (/nakedness|uncover|wife|mother|sister|daughter|kin|adultery|molech|abomination|confusion/.test(lower)) return ["\u{1F6AB} Forbidden relationships are named plainly", "\u{1F3E0} Family boundaries are protected", "\u{26A0}\u{FE0F} Canaan's practices must not shape Israel", "\u{1F54A}\u{FE0F} Holiness reaches the body"];
+  if (/holy|sanctify|statutes|ordinance|judgments|sabbath|idols|molten/.test(lower)) return ["\u{1F54A}\u{FE0F} Israel is set apart to the LORD", "\u{1F4DC} God's commands shape daily life", "\u{1F6AB} False worship is refused", "\u{1F64C} Holiness begins with who God is"];
+  if (/poor|stranger|neighbor|deaf|blind|wages|steal|lie|talebearer|love/.test(lower)) return ["\u{1F91D} Holiness protects neighbors", "\u{2696}\u{FE0F} Justice must be truthful", "\u{1F932} Vulnerable people are defended", "\u{2764}\u{FE0F} Love becomes practical obedience"];
+  if (/land|egypt|canaan|spue|customs|nation|milk and honey/.test(lower)) return ["\u{1F30D} The land must not be defiled", "\u{1F6AB} Israel must not copy the nations", "\u{1F1EA}\u{1F1EC} Rescue from Egypt shapes obedience", "\u{1F381} God's gift calls for holy life"];
+  return ["\u{1F4DC} The command gives concrete holiness", "\u{1F64C} The LORD defines life near Him", "\u{1F9E0} The wording answers a real question", "\u{2705} Obedience is practiced, not guessed"];
+}
+
+function explainDay36PhraseAt95(section: PersonalLeviticusPhraseSectionInput, cleanTitle: string) {
+  const lower = cleanTitle.toLowerCase();
+  let opening: string[];
+
+  if (/lord spake|hath commanded/.test(lower)) opening = ["The command begins with the LORD's own speech.", "Israel is not building holiness from custom, fear, or personal preference."];
+  else if (/children of israel|congregation/.test(lower)) opening = ["The command is addressed to the whole covenant people.", "Leviticus 17-20 is not only priest information; the whole camp must learn holy life."];
+  else if (/killeth an ox|lamb|goat/.test(lower)) opening = ["Ox, lamb, and goat were animals used in sacrifice.", "The issue is not random meat only; God is guarding sacrificial life from misuse."];
+  else if (/door of the tabernacle/.test(lower)) opening = ["The door of the tabernacle was the appointed place for bringing sacrifice.", "Worship could not be hidden in private fields as if the LORD had not given an altar."];
+  else if (/offering|sacrifice/.test(lower)) opening = ["An offering is something brought near to the LORD in worship.", "The animal is not merely killed; it is presented to God in the way He commands."];
+  else if (/blood/.test(lower)) opening = ["Blood represents life before the LORD.", "Leviticus forbids treating blood like ordinary food because God gave it for atonement."];
+  else if (/atonement/.test(lower)) opening = ["Atonement means sin or uncleanness is covered before God.", "The life God provides deals with guilt instead of pretending guilt is harmless."];
+  else if (/devils/.test(lower)) opening = ["Devils here means false spiritual powers connected with idolatrous worship.", "Israel must not turn sacrifice into worship of anything besides the LORD."];
+  else if (/stranger|sojourn/.test(lower)) opening = ["A stranger was a foreigner living among Israel.", "God's holiness rules applied to outsiders dwelling inside the covenant community too."];
+  else if (/hunt|venison|beast|fowl/.test(lower)) opening = ["Hunted animals and birds still had to be handled under God's blood command.", "Even food from the field taught Israel that life belongs to the LORD."];
+  else if (/nakedness/.test(lower)) opening = ["Uncovering nakedness is Bible language for forbidden sexual relations.", "Leviticus names family and covenant boundaries that desire must not cross."];
+  else if (/near kin|mother|father|sister|daughter|aunt|wife|woman/.test(lower)) opening = ["The family relationship named here is protected by God's law.", "Closeness in a household must not become exploitation or sexual confusion."];
+  else if (/molech/.test(lower)) opening = ["Molech was a false god connected with child sacrifice.", "The command shows that false worship can become destructive to children and to God's name."];
+  else if (/abomination|abominable/.test(lower)) opening = ["Abomination means something detestable before the LORD.", "The word marks practices Israel must reject because they corrupt holy life."];
+  else if (/spue|vomit/.test(lower)) opening = ["Spue means vomit out.", "The land is pictured as rejecting practices that defile it before God."];
+  else if (/holy/.test(lower)) opening = ["Holy means set apart for the LORD.", "Israel's daily life must reflect the God who is holy."];
+  else if (/fear.*mother|father/.test(lower)) opening = ["Fear here means honor with reverence.", "Holiness begins in ordinary family life, not only at the altar."];
+  else if (/sabbath/.test(lower)) opening = ["Sabbath is the holy rest day the LORD gave Israel.", "Time itself becomes part of holy obedience."];
+  else if (/idol|molten/.test(lower)) opening = ["Molten gods were handmade metal idols.", "Israel must not replace the living LORD with something people can manufacture."];
+  else if (/peace offerings/.test(lower)) opening = ["Peace offerings celebrated fellowship with God.", "Even joyful worship had to be handled according to God's holy boundaries."];
+  else if (/profaned|hallowed/.test(lower)) opening = ["Profaned means treating holy things as common.", "Leviticus warns that careless handling can corrupt something set apart for the LORD."];
+  else if (/reap|field|grape|poor|stranger/.test(lower)) opening = ["The harvest command leaves food for the poor and the stranger.", "Holiness reaches the economy by limiting greed and making room for mercy."];
+  else if (/steal|falsely|lie|swear/.test(lower)) opening = ["The command names ordinary dishonesty as unholy.", "Leviticus connects worship of God with truthfulness toward neighbors."];
+  else if (/wages|hired/.test(lower)) opening = ["Wages are the pay owed to a hired worker.", "God's holiness reaches payday and protects workers from being used."];
+  else if (/deaf|blind|stumblingblock/.test(lower)) opening = ["The deaf and blind are protected from hidden cruelty.", "God sees wrongs that the vulnerable person may not be able to hear, see, or prevent."];
+  else if (/talebearer/.test(lower)) opening = ["A talebearer spreads damaging talk.", "Holiness reaches speech because words can wound a community."];
+  else if (/love thy neighbour/.test(lower)) opening = ["Love thy neighbour means seek another person's good as seriously as your own.", "Leviticus places love inside holiness, not outside it."];
+  else if (/familiar spirits|wizards/.test(lower)) opening = ["Familiar spirits and wizards refer to forbidden occult guidance.", "Israel must seek the LORD, not hidden power from sources He forbids."];
+  else if (/hoary head/.test(lower)) opening = ["Hoary head means gray hair.", "The command teaches honor for age and wisdom in the community."];
+  else if (/ephah|hin|meteyard|weight|measure|balances/.test(lower)) opening = ["Ephah, hin, weights, and measures were tools for trade and offerings.", "God's holiness reaches honest business and exact fairness."];
+  else if (/molech|stone|death|blood shall be upon/.test(lower)) opening = ["The judgment language shows covenant sin is being treated as life-and-death serious.", "Leviticus is guarding the people from evil that destroys worship, family, and community."];
+  else opening = [`This wording names ${getDay36DistinctiveTopic(cleanTitle)} inside Leviticus ${section.chapter}.`, "The command gives Israel a concrete way to live as the LORD's holy people."];
+
+  const startsWithTitle = opening[0].toLowerCase().startsWith(cleanTitle.toLowerCase());
+  const firstLine = startsWithTitle ? `In ${section.reference}, ${opening[0].charAt(0).toLowerCase()}${opening[0].slice(1)}` : `${opening[0]} Here it applies to ${getDay36DistinctiveTopic(cleanTitle)} in ${section.reference}.`;
+
+  return [
+    firstLine,
+    opening[1],
+    ...getDay36Support(cleanTitle),
+  ].slice(0, 8);
+}
+
+function formatDay36MeaningFirstLines(section: PersonalLeviticusPhraseSectionInput, title: string, lines: string[]) {
   const cleanTitle = stripDay36Title(title);
+  return explainDay36PhraseAt95(section, cleanTitle);
+
   const escapedTitle = cleanTitle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const titleStartPattern = new RegExp(`^${escapedTitle}\\s+(means|shows|gives|helps|explains|teaches|marks|names|is|are|was|were|connects|keeps|points to|prepares|refers to|describes)\\s+`, "i");
   const isEmojiLine = (line: string) => /^[^A-Za-z0-9'"(]/.test(line.trim());
@@ -68,7 +139,7 @@ function polishDay36Section(section: PersonalLeviticusPhraseSectionInput): Perso
     ...section,
     phrases: section.phrases.map(([title, content]) => [
       title,
-      note(formatDay36MeaningFirstLines(title, content.split(/\n+/).map((line) => line.trim()).filter(Boolean))),
+      note(formatDay36MeaningFirstLines(section, title, content.split(/\n+/).map((line) => line.trim()).filter(Boolean))),
     ]),
   };
 }

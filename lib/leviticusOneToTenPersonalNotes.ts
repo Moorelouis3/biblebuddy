@@ -648,8 +648,230 @@ function getLeviticusContextualOpening(section: PersonalLeviticusPhraseSectionIn
   return `${cleanTitle} helps explain ${focus}.`;
 }
 
+function getLeviticus95Support(section: PersonalLeviticusPhraseSectionInput, cleanTitle: string) {
+  const lower = cleanTitle.toLowerCase();
+
+  if (/atonement|blood|sprinkle|sin|trespass|guilt|forgiven|mercy seat|scapegoat|iniquities/.test(lower)) {
+    return ["\u{1FA78} Sin is dealt with before God", "\u{1F64F} Mercy comes through God's appointed way", "\u{2705} Forgiveness is received, not invented", "\u{26A0}\u{FE0F} Holiness is still serious"];
+  }
+
+  if (/priest|aaron|sons|anoint|garment|consecrate|wash|mitre|ephod|ordination|minister/.test(lower)) {
+    return ["\u{1F451} Priests are set apart for service", "\u{1F4A7} Cleansing comes before nearness", "\u{1F455} Garments mark holy work", "\u{1F64C} Service follows God's command"];
+  }
+
+  if (/leprosy|plague|skin|scab|hair|raw flesh|garment|warp|woof|fretting|unclean|clean|camp|issue|blood|bathe|wash/.test(lower)) {
+    return ["\u{1F50E} Uncleanness is examined carefully", "\u{23F3} Cleansing may require waiting", "\u{1F3D5}\u{FE0F} The camp is guarded around God's presence", "\u{2705} Restoration is still possible"];
+  }
+
+  if (/offering|oblation|sacrifice|burnt|meat|peace|flour|oil|frankincense|salt|fat|kidneys|inwards|sweet savour/.test(lower)) {
+    return ["\u{1F525} The offering is brought to the LORD", "\u{1F64C} Worship follows God's pattern", "\u{1F54A}\u{FE0F} Nearness requires holy surrender", "\u{1F91D} God provides a way to draw near"];
+  }
+
+  if (/beast|hoof|cud|camel|swine|fins|scales|abomination|carcase|creeping|holy/.test(lower)) {
+    return ["\u{1F37D}\u{FE0F} Daily meals teach distinction", "\u{1F9ED} Israel learns clean and unclean", "\u{1F465} God's people are set apart", "\u{1F4A7} Contact with death affects cleanness"];
+  }
+
+  if (/child|foreskin|circumcised|purifying|hallowed|turtles|pigeons/.test(lower)) {
+    return ["\u{1F476} Birth belongs under God's care", "\u{1FA78} Blood and purification matter", "\u{1F54A}\u{FE0F} The poor can still bring an offering", "\u{2705} The mother returns to sanctuary worship"];
+  }
+
+  if (/cloud|incense|vail|lot|goat|afflict|statute|once in a year/.test(lower)) {
+    return ["\u{2601}\u{FE0F} Access comes only God's way", "\u{1FA78} Blood is brought before the LORD", "\u{1F410} Sin is carried away", "\u{1F64F} Israel humbles itself before mercy"];
+  }
+
+  return ["\u{1F4DC} The law teaches life near God", "\u{1F64C} Holiness reaches real details", "\u{1F9E0} The wording answers a concrete question", "\u{2705} God gives order instead of confusion"];
+}
+
+function explainLeviticusPhraseAt95(section: PersonalLeviticusPhraseSectionInput, cleanTitle: string) {
+  const lower = cleanTitle.toLowerCase();
+  const focus = getLeviticusSectionFocus(section);
+  let opening: string[];
+
+  if (/called unto moses/.test(lower)) opening = ["Called unto Moses means the LORD speaks directly to Moses.", "Leviticus begins with God giving worship instructions from the tabernacle, not from Moses' imagination."];
+  else if (/tabernacle/.test(lower)) opening = ["The tabernacle was the holy tent where the LORD dwelt among Israel.", "Leviticus explains how sinful people can live near that holy presence."];
+  else if (/unleavened|leaven/.test(lower)) opening = ["Leaven is what makes dough rise, like yeast.", "Grain offerings burned to the LORD could not include leaven because worship followed God's boundaries."];
+  else if (/honey/.test(lower)) opening = ["Honey was sweet food, but it was not burned on the altar.", "The rule teaches that worship is not shaped by what people prefer, but by what God commands."];
+  else if (/salt/.test(lower)) opening = ["Salt was required with the offering as a sign of covenant faithfulness.", "It helped Israel remember that worship happened inside a binding relationship with the LORD."];
+  else if (/green ears|corn|full ears/.test(lower)) opening = ["Green ears and corn refer to fresh grain from the harvest.", "Firstfruits worship thanked the LORD for provision at the beginning of harvest."];
+  else if (/two kids|two goats|lot for the lord|scapegoat/.test(lower)) opening = ["The two goats divide the Day of Atonement picture into sacrifice and removal.", "One goat is offered before the LORD, and the other carries confessed sin away."];
+  else if (/offering|oblation/.test(lower)) opening = ["An offering is something brought near to the LORD in worship.", "The kind of offering named here answers a specific need: surrender, gratitude, fellowship, cleansing, or forgiveness."];
+  else if (/herd|flock|cattle/.test(lower)) opening = ["Herd and flock name the animals a worshiper could bring.", "Leviticus starts with real animals from daily life because worship cost something concrete."];
+  else if (/without blemish/.test(lower)) opening = ["Without blemish means the animal had no defect.", "The worshiper could not bring God a damaged leftover and call it holy worship."];
+  else if (/voluntary will|freewill/.test(lower)) opening = ["Voluntary will means the worshiper brings the offering willingly.", "The burnt offering is not treated as a casual payment; it is worship brought before the LORD."];
+  else if (/door of the tabernacle|door of the tent/.test(lower)) opening = ["The door of the tabernacle was the appointed place of approach.", "The worshiper comes where God says to come, not by inventing a private way."];
+  else if (/lay|put.*hand|head/.test(lower)) opening = ["Putting a hand on the animal's head showed personal identification.", "The offering is connected to the worshiper; sacrifice is not random or distant."];
+  else if (/accepted/.test(lower)) opening = ["Accepted means the LORD receives the worshiper through the offering He commanded.", "Acceptance is given by God's provided way, not by human confidence."];
+  else if (/atonement/.test(lower)) opening = ["Atonement means sin or uncleanness is covered before God.", "Leviticus keeps holiness and mercy together: guilt is not ignored, but God gives a way near."];
+  else if (/blood|sprinkle/.test(lower)) opening = ["Blood represents life before the LORD.", "The priest handles it carefully because atonement is serious, not symbolic decoration."];
+  else if (/sweet savour/.test(lower)) opening = ["Sweet savour means a pleasing aroma rising to the LORD.", "The phrase pictures worship received by God when it is offered His way."];
+  else if (/turtledoves|pigeons/.test(lower)) opening = ["Turtledoves and young pigeons were smaller birds used for offerings.", "They show that poorer worshipers still had a God-given way to bring an offering."];
+  else if (/crop|feathers/.test(lower)) opening = ["The crop and feathers were parts of a bird handled during the offering.", "Even a small bird offering followed ordered steps before the LORD."];
+  else if (/meat offering/.test(lower)) opening = ["Meat offering in the KJV means a grain offering, not a meat dinner.", "It uses flour, oil, and frankincense to give daily provision back to God in gratitude."];
+  else if (/fine flour/.test(lower)) opening = ["Fine flour was carefully prepared grain flour.", "The offering gives ordinary provision back to the LORD with care and honor."];
+  else if (/oil/.test(lower)) opening = ["Oil was poured on the grain offering as part of its preparation.", "Food from Israel's daily life becomes worship when brought according to God's command."];
+  else if (/frankincense/.test(lower)) opening = ["Frankincense was fragrant resin used in worship.", "Its smell marked the grain offering as something set apart for the LORD."];
+  else if (/memorial/.test(lower)) opening = ["A memorial portion was the part burned on the altar before the LORD.", "It represented the whole offering being remembered and received by God."];
+  else if (/most holy/.test(lower)) opening = ["Most holy means this part of the offering was set apart in an especially serious way.", "The priests could not treat it like ordinary food or casual leftovers."];
+  else if (/baken|oven|fryingpan/.test(lower)) opening = ["Baken means baked.", "Leviticus names different preparations because ordinary food preparation could become holy worship."];
+  else if (/peace offering/.test(lower)) opening = ["A peace offering celebrated fellowship and wholeness with God.", "It was not only about stopping conflict; it pictured restored relationship before the LORD."];
+  else if (/fat|kidneys|inwards|caul/.test(lower)) opening = ["Fat and inner parts were rich portions given to the LORD.", "The peace offering teaches that the best and deepest parts are not handled casually."];
+  else if (/neither fat nor blood/.test(lower)) opening = ["Fat and blood were reserved from ordinary eating.", "Blood represented life, and the fat belonged to the LORD in the offering system."];
+  else if (/throughout your generations/.test(lower)) opening = ["Throughout your generations means this command continues for Israel's descendants.", "The rule is not a one-day instruction; it shapes covenant life over time."];
+  else if (/sin through ignorance|ignorance|unwittingly/.test(lower)) opening = ["Sin through ignorance means sin committed without open defiance or full awareness.", "Leviticus still treats it seriously because unintentional sin can make someone guilty before God."];
+  else if (/commandments/.test(lower)) opening = ["Commandments are the LORD's instructions for covenant life.", "Sin is measured against God's word, not against what feels harmless to the person."];
+  else if (/anointed priest/.test(lower)) opening = ["The anointed priest was the priest set apart with holy oil.", "Even a priest needed atonement when he sinned; office did not erase guilt."];
+  else if (/bullock|calf|ram|goat|kid|lamb/.test(lower)) opening = ["The animal named here is part of the sacrifice God commanded.", "Different offerings used different animals, but each one taught that approach to God involved life and cost."];
+  else if (/seven times/.test(lower)) opening = ["Seven times marks a repeated priestly action before the LORD.", "The repetition shows careful obedience, not rushed ritual."];
+  else if (/congregation/.test(lower)) opening = ["Congregation means the gathered people of Israel.", "Leviticus shows that sin can involve the whole community, not only private individuals."];
+  else if (/hid from the eyes/.test(lower)) opening = ["Hid from the eyes means the sin was not noticed at first.", "When guilt becomes known, Israel must deal with it honestly before God."];
+  else if (/ruler/.test(lower)) opening = ["A ruler was a leader among the people.", "Leaders are not above God's law; their sin also needs confession and atonement."];
+  else if (/common people|common person/.test(lower)) opening = ["A common person means an ordinary Israelite without special office.", "Leviticus gives ordinary people a way to seek forgiveness too."];
+  else if (/forgiven/.test(lower)) opening = ["Forgiven means guilt is removed according to God's provided way.", "The word is mercy language, but it comes after sin is named and atonement is made."];
+  else if (/voice of swearing|oath|swearing/.test(lower)) opening = ["Swearing here means an oath or solemn statement.", "Leviticus treats speech as serious because words can make a person guilty."];
+  else if (/witness/.test(lower)) opening = ["A witness is someone who knows what happened and is responsible to tell the truth.", "Silence can become guilt when truth is required."];
+  else if (/unclean thing/.test(lower)) opening = ["An unclean thing made a person ritually unclean for worship access.", "This was not always moral shame, but it still had to be addressed before holy space."];
+  else if (/confess/.test(lower)) opening = ["Confess means openly admit the wrong before God.", "Leviticus does not let guilt stay hidden behind vague feelings."];
+  else if (/ephah/.test(lower)) opening = ["An ephah was an ancient dry measure for grain.", "The tenth part shows God made room for a poor worshiper to bring a smaller offering."];
+  else if (/trespass/.test(lower)) opening = ["Trespass means guilt from violating what belongs to God or another person.", "The offering does not erase responsibility; wrongs still need to be repaired."];
+  else if (/holy things/.test(lower)) opening = ["Holy things were items or duties set apart for the LORD.", "Misusing them was not a small mistake because they belonged to God's worship."];
+  else if (/fifth/.test(lower)) opening = ["The fifth part means an extra twenty percent added when restitution was made.", "Wrongdoing had to be repaired, not only regretted."];
+  else if (/neighbour|restore|delivered him to keep/.test(lower)) opening = ["Wronging a neighbor is treated as sin against the LORD.", "Leviticus joins worship and justice instead of separating them."];
+  else if (/fire upon the altar|not be put out/.test(lower)) opening = ["The altar fire had to keep burning.", "Priestly service included steady daily care, not only dramatic sacrifice moments."];
+  else if (/ashes/.test(lower)) opening = ["Ashes were the remains from sacrifices on the altar.", "Even removing them had holy order because the altar belonged to the LORD."];
+  else if (/linen garment/.test(lower)) opening = ["A linen garment was priestly clothing for holy service.", "The priest dressed according to God's command before handling altar work."];
+  else if (/wave breast|heave shoulder|wave|heave/.test(lower)) opening = ["Wave and heave offerings were portions presented before the LORD.", "Those portions also provided for the priests who served at the altar."];
+  else if (/garments/.test(lower)) opening = ["The garments were priestly clothes made for holy service.", "They marked Aaron and his sons as set apart before they ministered."];
+  else if (/anointing oil|anoint/.test(lower)) opening = ["Anointing oil was holy oil used to set people or objects apart.", "Being anointed marked priestly service as belonging to the LORD."];
+  else if (/washed them with water/.test(lower)) opening = ["Washing with water came before priestly service.", "Aaron and his sons had to be cleansed before they served near God's presence."];
+  else if (/right ear|thumb|great toe/.test(lower)) opening = ["The ear, thumb, and toe marked hearing, serving, and walking.", "Blood on these parts showed the priest's whole life being claimed for holy service."];
+  else if (/seven days.*consecrate|abide at the door/.test(lower)) opening = ["Seven days of consecration meant priestly preparation took time.", "Aaron and his sons had to remain where God commanded until the ordination was complete."];
+  else if (/eighth day/.test(lower)) opening = ["The eighth day marks the move from ordination into public priestly service.", "After seven days of preparation, Aaron begins serving before the congregation."];
+  else if (/glory of the lord/.test(lower)) opening = ["The glory of the LORD means God's visible holy presence.", "The people are about to see that God receives worship offered His way."];
+  else if (/fire out from before the lord|fire from the lord/.test(lower)) opening = ["Fire from the LORD shows God Himself receiving or judging at the altar.", "The same holy presence that accepts commanded worship also judges unauthorized worship."];
+  else if (/shouted|fell on their faces/.test(lower)) opening = ["Shouting and falling on their faces show public awe.", "The people respond because God's glory has appeared, not because the ritual is empty ceremony."];
+  else if (/strange fire/.test(lower)) opening = ["Strange fire means unauthorized fire God had not commanded.", "Nadab and Abihu treated holy worship as something they could invent."];
+  else if (/nadab|abihu/.test(lower)) opening = ["Nadab and Abihu were Aaron's sons and priests.", "Their judgment shows that serving near holy things brings serious responsibility."];
+  else if (/sanctified/.test(lower)) opening = ["Sanctified means treated as holy.", "The LORD will be honored as holy by those who come near Him."];
+  else if (/held his peace/.test(lower)) opening = ["Held his peace means Aaron stayed silent.", "His silence shows grief under God's judgment without arguing that holy worship can be handled casually."];
+  else if (/wine|strong drink/.test(lower)) opening = ["Wine and strong drink could blur priestly judgment.", "Priests needed clear minds to serve and teach near God's holy presence."];
+  else if (/holy and unholy|unclean and clean|difference/.test(lower)) opening = ["Holy and unholy, clean and unclean are distinctions priests had to teach.", "Israel needed leaders who could explain God's boundaries clearly."];
+  else if (/teach the children/.test(lower)) opening = ["Teaching the children of Israel was part of priestly service.", "Priests did not only perform rituals; they helped the people understand God's law."];
+  else if (/beasts|hoof|cud/.test(lower)) opening = ["Parting the hoof and chewing the cud were signs in Israel's food laws.", "Daily eating trained Israel to make distinctions as a set-apart people."];
+  else if (/camel|swine/.test(lower)) opening = ["The camel and swine are examples of animals Israel could not eat.", "The point is covenant distinction, not modern diet advice."];
+  else if (/fins and scales/.test(lower)) opening = ["Fins and scales marked water creatures Israel could eat.", "The rule made even meals part of learning clean and unclean."];
+  else if (/abomination/.test(lower)) opening = ["Abomination here means something forbidden as unclean for Israel.", "The word marks a boundary for covenant life, not a random dislike."];
+  else if (/carcase/.test(lower)) opening = ["Carcase means a dead body.", "Contact with death brought uncleanness because death and decay do not fit easily near God's holy dwelling."];
+  else if (/until the even/.test(lower)) opening = ["Until the even means until evening.", "Some uncleanness lasted only for a time, with washing and waiting before return."];
+  else if (/earthen vessel/.test(lower)) opening = ["An earthen vessel was a clay container.", "Because clay absorbed contamination, some vessels had to be broken instead of reused."];
+  else if (/be holy|i am holy/.test(lower)) opening = ["Be holy means live as people set apart for the holy LORD.", "Israel's daily habits were to reflect the God who rescued them."];
+  else if (/conceived seed|man child|woman have/.test(lower)) opening = ["Conceived seed and man child are old wording for pregnancy and the birth of a son.", "Leviticus speaks about childbirth as a major life event that required purification before sanctuary worship."];
+  else if (/foreskin|circumcised/.test(lower)) opening = ["Circumcised means the covenant sign was given to the baby boy.", "The eighth-day sign connects the child to Israel's covenant identity."];
+  else if (/purifying|hallowed/.test(lower)) opening = ["Purifying means the period before returning to regular worship cleanness.", "The mother was not being called evil; the law deals with blood, birth, and holy space."];
+  else if (/leprosy/.test(lower)) opening = ["Leprosy in Leviticus covers serious skin disease or visible contamination, not only modern leprosy.", "The priest examines it because uncleanness affects life near the holy camp."];
+  else if (/priest shall look|look on him again/.test(lower)) opening = ["The priest had to look carefully before declaring someone clean or unclean.", "Leviticus slows judgment down so fear does not replace truth."];
+  else if (/hair.*white|deeper than the skin|raw flesh|white rising|yellow thin hair/.test(lower)) opening = ["The visible sign named here helped the priest judge the condition.", "The law uses observable evidence instead of guesses or panic."];
+  else if (/shut up/.test(lower)) opening = ["Shut up means the person was isolated for a set time.", "Waiting gave the priest time to see whether the mark spread or faded."];
+  else if (/pronounce.*clean/.test(lower)) opening = ["Pronounce clean means the priest declares the person restored for normal life and worship access.", "The declaration mattered because the person could return from suspicion or uncleanness."];
+  else if (/pronounce.*unclean/.test(lower)) opening = ["Pronounce unclean means the priest declares the person unable to live in normal camp life for a time.", "The decision protected the camp around God's holy presence."];
+  else if (/clothes shall be rent|dwell alone|without the camp/.test(lower)) opening = ["Rent clothes, living alone, and being outside the camp were public signs of uncleanness.", "The signs were painful, but they protected the community and kept open the hope of cleansing."];
+  else if (/woollen|warp|woof|garment/.test(lower)) opening = ["Warp and woof are threads that run lengthwise and crosswise in fabric.", "Even clothing could be examined because uncleanness could touch ordinary objects."];
+  else if (/fretting leprosy/.test(lower)) opening = ["Fretting leprosy means a spreading contamination in fabric or material.", "What kept spreading had to be removed or burned instead of ignored."];
+  else if (/burn that garment/.test(lower)) opening = ["Burning the garment removed contamination that could not be cleansed.", "Leviticus treats spreading uncleanness as something that must be stopped."];
+  else if (/day of his cleansing/.test(lower)) opening = ["The day of cleansing is the beginning of the way back.", "Leviticus 14 is not only about exclusion; it gives a path toward restoration."];
+  else if (/go forth out of the camp/.test(lower)) opening = ["The priest going outside the camp shows restoration begins where the unclean person is.", "The person is not left to find a way back alone."];
+  else if (/two birds|living bird/.test(lower)) opening = ["The two birds belong to the cleansing ceremony.", "One bird dies, and the living bird is released to picture cleansing and restored life."];
+  else if (/cedar|scarlet|hyssop|running water/.test(lower)) opening = ["Cedar, scarlet, hyssop, and running water were visible parts of cleansing.", "The ceremony used physical signs so restoration could be seen, not only imagined."];
+  else if (/open field/.test(lower)) opening = ["The open field is where the living bird is released.", "The release pictures life and freedom after uncleanness has been dealt with."];
+  else if (/shave|wash his clothes/.test(lower)) opening = ["Shaving and washing marked a real cleansing process.", "The restored person moved step by step back toward community and worship."];
+  else if (/log of oil/.test(lower)) opening = ["A log of oil was a measured amount of oil used in the cleansing ceremony.", "The oil marked restoration and renewed readiness before the LORD."];
+  else if (/tip of the right ear/.test(lower)) opening = ["The ear, thumb, and toe show the restored person's hearing, serving, and walking brought back under God.", "Cleansing touches the whole life, not only the diseased place."];
+  else if (/if he be poor/.test(lower)) opening = ["If he be poor means the law gives a smaller offering for someone with fewer resources.", "God's way back did not exclude the poor."];
+  else if (/land of canaan|house/.test(lower)) opening = ["The house laws look ahead to life in Canaan.", "Holiness will reach Israel's homes, not only the tabernacle."];
+  else if (/stones|scrape|break down|cleanse the house/.test(lower)) opening = ["Stones, scraping, breaking down, and cleansing describe how a contaminated house was handled.", "Restoration was attempted, but spreading corruption could not be ignored forever."];
+  else if (/running issue|issue/.test(lower)) opening = ["A running issue means an ongoing bodily discharge.", "Leviticus brings private body conditions under God's care without treating the body as outside holiness."];
+  else if (/bed|saddle|lieth/.test(lower)) opening = ["Beds and saddles could become unclean through contact.", "Uncleanness affected ordinary daily objects, not only religious spaces."];
+  else if (/bathe|flesh in water|wash/.test(lower)) opening = ["Bathing and washing were part of returning to cleanness.", "The law gives a concrete path back through washing, waiting, and offerings when needed."];
+  else if (/seed of copulation/.test(lower)) opening = ["Seed of copulation is old wording for semen.", "Leviticus speaks plainly about bodily fluids because holy space touched real human life."];
+  else if (/woman also|blood/.test(lower)) opening = ["The woman's issue of blood refers to menstrual or extended bleeding.", "The law marks ritual uncleanness around blood without saying the woman has committed moral sin."];
+  else if (/separate the children/.test(lower)) opening = ["Separate the children of Israel from uncleanness means the people must respect holy boundaries.", "The command protects life around the LORD's dwelling place."];
+  else if (/after the death/.test(lower)) opening = ["After the death of Aaron's sons connects the Day of Atonement to holy danger.", "Access to the Most Holy Place cannot be casual after Nadab and Abihu's judgment."];
+  else if (/come not at all times/.test(lower)) opening = ["Come not at all times means Aaron could not enter the Most Holy Place whenever he wanted.", "God set the terms for access to His holy presence."];
+  else if (/vail|veil/.test(lower)) opening = ["The vail was the curtain before the Most Holy Place.", "It marked the boundary between ordinary priestly service and the place of God's special presence."];
+  else if (/mercy seat/.test(lower)) opening = ["The mercy seat was the cover of the ark where atonement blood was brought.", "It is the place where God's holiness and mercy meet on His terms."];
+  else if (/die not/.test(lower)) opening = ["That he die not means the warning is life-and-death serious.", "Coming near God's holy presence without God's command is dangerous."];
+  else if (/cloud of incense/.test(lower)) opening = ["The cloud of incense covered the mercy seat area.", "Even the high priest enters with protection and reverence, not casual sight."];
+  else if (/uncleanness of the children/.test(lower)) opening = ["Israel's uncleanness means the sanctuary itself needed cleansing from the people's sin and impurity.", "The Day of Atonement deals with the whole nation's need before God."];
+  else if (/confess.*iniquities|bear.*iniquities/.test(lower)) opening = ["Confessing and bearing iniquities means Israel's sins are named and carried away.", "The live goat visibly shows guilt leaving the camp."];
+  else if (/land not inhabited/.test(lower)) opening = ["A land not inhabited means a wilderness place away from the camp.", "The goat carries sin away from the people and away from God's dwelling."];
+  else if (/afflict your souls/.test(lower)) opening = ["Afflict your souls means humble yourselves before the LORD.", "The Day of Atonement was not party worship; it was solemn repentance and mercy."];
+  else if (/statute for ever|once in a year/.test(lower)) opening = ["Once in a year means the Day of Atonement was repeated annually.", "Israel needed a regular, God-given day for deep cleansing before the LORD."];
+  else opening = [getLeviticusContextualOpening(section, cleanTitle).replace(new RegExp(`^${cleanTitle}\\s+`, "i"), "This "), `Inside ${focus}, this wording answers a real question about worship, cleanness, sin, or mercy.`];
+
+  return finalizeLeviticus95Lines(section, cleanTitle, [...opening, ...getLeviticus95Support(section, cleanTitle), `Inside ${focus}, the wording teaches how people live near the holy LORD.`].slice(0, 8));
+}
+
+function finalizeLeviticus95Lines(section: PersonalLeviticusPhraseSectionInput, cleanTitle: string, lines: string[]) {
+  if (lines.length === 0) return lines;
+
+  const focus = getLeviticusSectionFocus(section);
+  const lowerTitle = cleanTitle.toLowerCase();
+  const startsWithTitle = lines[0].toLowerCase().startsWith(lowerTitle);
+  const detail = getLeviticusDistinctiveTopic(cleanTitle);
+  const topic = `${getLeviticus95Topic(cleanTitle)} (${detail})`;
+  const firstLine = lines[0]
+    .replace(/\bThis helps explain\b/gi, `Inside ${focus}, this explains`)
+    .replace(/\bThis helps\b/gi, "This shows");
+  const first = startsWithTitle
+    ? `In ${section.reference}, ${firstLine.charAt(0).toLowerCase()}${firstLine.slice(1)}`
+    : `${firstLine} Here it applies to ${topic} in ${section.reference}.`;
+
+  return [
+    first,
+    ...lines.slice(1).map((line) =>
+      line
+        .replace(/\bthe phrase shows\b/gi, "the wording shows")
+        .replace(/\bthe phrase explains\b/gi, "the wording explains")
+        .replace(/\bthe phrase teaches\b/gi, "the wording teaches")
+        .replace(/\bThis helps explain\b/gi, `Inside ${focus}, this explains`)
+    ),
+  ];
+}
+
+function getLeviticus95Topic(cleanTitle: string) {
+  const lower = cleanTitle.toLowerCase();
+  const detail = getLeviticusDistinctiveTopic(cleanTitle);
+  if (/leaven/.test(lower)) return "the leaven rule";
+  if (/honey/.test(lower)) return "the honey restriction";
+  if (/salt/.test(lower)) return "the covenant salt command";
+  if (/scapegoat/.test(lower)) return "the scapegoat lot";
+  if (/atonement/.test(lower)) return "the atonement action";
+  if (/blood|sprinkle/.test(lower)) return "the blood ritual";
+  if (/fifth/.test(lower)) return "the added repayment";
+  if (/trespass/.test(lower)) return "the trespass law";
+  if (/unclean|clean/.test(lower)) return "the clean-or-unclean ruling";
+  if (/leprosy|plague/.test(lower)) return "the visible uncleanness being examined";
+  if (/issue|blood/.test(lower)) return "the bodily uncleanness being named";
+  if (/offering|sacrifice|oblation/.test(lower)) return `the offering detail about ${detail}`;
+  if (/priest|aaron|sons/.test(lower)) return `the priestly service detail about ${detail}`;
+  if (/goat|bullock|ram|lamb|calf|kid|bird|turtledove|pigeon/.test(lower)) return `the required sacrifice detail about ${detail}`;
+  return `the wording about ${detail}`;
+}
+
+function getLeviticusDistinctiveTopic(cleanTitle: string) {
+  const words = cleanTitle
+    .toLowerCase()
+    .replace(/[^a-z0-9'\s]/g, " ")
+    .split(/\s+/)
+    .filter(Boolean)
+    .filter((word) => !["the", "and", "of", "a", "an", "to", "for", "with", "shall", "be", "is", "it", "he", "him", "them", "that", "this", "unto", "upon", "in", "their", "all", "any"].includes(word));
+
+  return (words.length <= 4 ? words : words.slice(-3)).join(" ") || "this detail";
+}
+
 function formatDay32To35MeaningFirstLines(section: PersonalLeviticusPhraseSectionInput, cleanTitle: string, lines: string[]) {
   if (section.chapter < 1 || section.chapter > 16) return lines;
+
+  return explainLeviticusPhraseAt95(section, cleanTitle);
 
   const escapedTitle = cleanTitle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const titleStartPattern = new RegExp(`^${escapedTitle}\\s+(means|shows|gives|helps|explains|teaches|marks|names|is|are|was|were|connects|keeps|points to|prepares|brings|describes)\\s+`, "i");
