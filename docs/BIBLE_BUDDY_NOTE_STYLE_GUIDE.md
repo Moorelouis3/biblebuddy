@@ -128,6 +128,27 @@ The Day 24 Exodus standard is now locked in for all future Bible-in-one-year not
 - Do not use broad filler like "teaches a real detail," "names a real detail," "shows God working," or "keeps suffering in front of the reader."
 - Check that repeated words like "not one" or "part of" do not route the card to the wrong explanation.
 
+The Day 25 9.5 standard is now locked in as the upgrade standard for phrase explanations:
+
+- Explain the phrase as if the reader does not already understand the Bible wording.
+- Define hard words, objects, measures, rituals, places, idioms, and KJV wording before drawing the lesson.
+- Answer the natural question a beginner would ask inside the phrase.
+- Do not let the emoji list carry the teaching. The explanation paragraphs must work if the emojis are hidden.
+- Do not let the takeaway rescue a vague explanation. The explanation paragraphs must work if the takeaway is hidden.
+- Do not open by simply repeating the key phrase when the phrase contains a confusing term. Define the term first.
+- Do not repeat the same first sentence across cards.
+- Do not let a section teach the same broad point seven times. Each card should add new understanding.
+- The emoji list should support the explanation, and the takeaway should reinforce it.
+
+Required 9.5 phrase-card audit:
+
+- Hide the emoji list. The paragraphs alone must teach the phrase.
+- Hide the takeaway. The paragraphs alone must teach the phrase.
+- Search for repeated first lines across the day.
+- Search for title-repeat openings.
+- Search for filler patterns such as "This helps the reader...", "This gives a real detail...", "This phrase shows...", "This phrase explains...", "part of the passage means...", and similar padding.
+- Read each section as a group and confirm each phrase answers a different reader question.
+
 Approved Day 24-style examples:
 
 ```txt

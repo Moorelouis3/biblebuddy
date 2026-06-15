@@ -796,6 +796,416 @@ function makeDay25PhraseCard(section: PersonalExodusPhraseSectionInput, title: s
   return [`📌 ${title}`, explainDay25Phrase(section, title)];
 }
 
+function buildDay25RevisedExplanation(section: PersonalExodusPhraseSectionInput, title: string) {
+  const lower = title.toLowerCase();
+  const cleanTitle = title.replace(/^[^A-Za-z0-9']+\s*/, "").trim();
+  const exact: Record<string, string[]> = {
+    "Fear Ye Not": [
+      "Moses is telling Israel not to let panic rule the moment.",
+      "The danger is real: Pharaoh's army is behind them and the sea is in front of them.",
+      "😨 Fear is taking over",
+      "👀 The danger looks visible",
+      "🙏 God calls for trust",
+      "⚓ Faith must replace panic",
+      "Israel's first battle at the sea is not swinging a sword; it is trusting the LORD while afraid.",
+    ],
+    "Stand Still, And See The Salvation Of The LORD": [
+      "Israel must stop trying to create its own escape and watch the LORD rescue them.",
+      "They have no road, no army strong enough, and no strategy that can defeat Pharaoh.",
+      "🛑 Stop panicking",
+      "👀 Watch what God will do",
+      "⚔️ Victory will not come from Israel",
+      "🙌 Salvation belongs to the LORD",
+      "The command teaches trust before action, because this rescue must be seen as God's work.",
+    ],
+    "The LORD Shall Fight For You": [
+      "God Himself will take the battlefield against Egypt.",
+      "Israel does not win this battle through weapons, training, or courage; the LORD defeats the enemy they cannot defeat.",
+      "⚔️ God takes the battlefield",
+      "👑 The victory belongs to Him",
+      "🚫 Israel cannot save itself",
+      "🌊 Egypt will fall at the sea",
+      "The rescue teaches divine victory: the LORD wins what His people cannot win.",
+    ],
+    "They Were Sore Afraid": [
+      "Israel is overwhelmed with intense fear.",
+      "The people see Pharaoh's army behind them and cannot yet see the road God will open.",
+      "😨 Fear feels reasonable",
+      "🐎 Egypt is near",
+      "🌊 The sea blocks escape",
+      "💔 Trust is still fragile",
+      "The fear is honest, but it is not the final truth of the scene.",
+    ],
+    "The Children Of Israel Cried Out Unto The LORD": [
+      "Their fear becomes a desperate cry to God.",
+      "They do not know what to do, so the helpless people appeal to the only One who can save them.",
+      "🙏 The cry goes upward",
+      "🚫 Human options are gone",
+      "🌊 The sea scene is desperate",
+      "🙌 God can answer helpless people",
+      "The cry shows need before it shows mature faith.",
+    ],
+    "Because There Were No Graves In Egypt": [
+      "Israel speaks with bitter sarcasm because fear has taken over their thinking.",
+      "They accuse Moses as if Egypt did not have enough graves and he brought them into the wilderness to die.",
+      "🪦 Death feels close",
+      "💬 Panic speaks harshly",
+      "⛓️ Egypt sounds safer",
+      "💔 Fear twists memory",
+      "The line shows how quickly terror can make bondage look better than faith.",
+    ],
+    "Wherefore Hast Thou Dealt Thus With Us": [
+      "The people are asking why Moses has treated them this way.",
+      "Their question comes from panic because they cannot yet see that God positioned them for deliverance.",
+      "❓ Fear asks why",
+      "👤 Moses is blamed",
+      "🌊 The plan is still hidden",
+      "🙏 God has not failed",
+      "The question exposes confusion before the rescue becomes visible.",
+    ],
+    "Let Us Alone": [
+      "Israel is saying they would rather have been left in slavery.",
+      "Fear makes Egypt sound like safety, even though Egypt was the house of bondage.",
+      "⛓️ Slavery sounds familiar",
+      "😨 Freedom feels dangerous",
+      "💔 Fear wants to go backward",
+      "🚪 God is still leading out",
+      "The words reveal how bondage can keep shaping the heart after the body is free.",
+    ],
+    "Sanctify Unto Me All The Firstborn": [
+      "Sanctify means set apart as belonging to God.",
+      "The firstborn are marked for the LORD because He spared Israel's firstborn on Passover night.",
+      "👶 Firstborn life is remembered",
+      "🩸 Passover mercy stands behind it",
+      "🙌 Rescued life belongs to God",
+      "🏠 The whole family must remember",
+      "The command turns one night of mercy into a lasting practice of worship.",
+    ],
+    "Doing Wonders": [
+      "Wonders are acts only God can do.",
+      "Israel is praising the LORD because the plagues and the sea crossing were beyond ordinary human power.",
+      "✨ God does what no one else can do",
+      "🌊 The sea obeyed Him",
+      "👑 Egypt's power failed",
+      "🙌 Praise answers the miracle",
+      "The rescue teaches Israel that the LORD's power is not ordinary strength.",
+    ],
+    "Like Coriander Seed": [
+      "Coriander seed is a small seed, so the comparison describes manna's size and look.",
+      "A beginner can picture the food as small pieces scattered on the ground each morning.",
+      "🍞 Manna is named",
+      "🌱 Its appearance is described",
+      "🍯 Its taste is remembered",
+      "🏺 An omer is preserved",
+      "The detail makes God's wilderness food concrete instead of vague.",
+    ],
+    "Fill An Omer Of It To Be Kept": [
+      "Fill an omer means put one measured amount of manna aside.",
+      "Kept means this portion is preserved instead of eaten, so future generations can see what God provided.",
+      "📏 One omer is measured",
+      "🍞 Manna is preserved",
+      "👶 Future children can see it",
+      "🙌 God's provision is remembered",
+      "The saved portion turns daily bread into a lasting witness of God's care.",
+    ],
+  };
+
+  if (cleanTitle === "The Waters Were A Wall Unto Them" && section.reference === "Exodus 14:29-31") {
+    return note([
+      "The wall of water is remembered again after Israel has crossed safely.",
+      "The same sea that looked impossible became protection on both sides of the people.",
+      "🌊 Water stood beside them",
+      "🚶 Israel crossed safely",
+      "🛡️ The path was protected",
+      "🙌 The LORD controlled the sea",
+      "The repeated line confirms that Israel's escape was a real miracle from start to finish.",
+    ]);
+  }
+
+  if (cleanTitle === "He Hath Triumphed Gloriously" && section.reference === "Exodus 15:19-21") {
+    return note([
+      "Miriam repeats the victory line so the whole community can answer the song.",
+      "Triumphed gloriously means the LORD won completely and magnificently over Egypt.",
+      "🥁 Miriam leads praise",
+      "👥 The women answer",
+      "🌊 Egypt's army is gone",
+      "🙌 The LORD receives the song",
+      "The repeated phrase turns the Red Sea victory into shared worship.",
+    ]);
+  }
+
+  if (exact[cleanTitle]) return note(exact[cleanTitle]);
+
+  const exactPhraseExplanation = DAY_25_EXACT_PHRASE_EXPLANATIONS[cleanTitle];
+  if (exactPhraseExplanation) {
+    return formatDay25PhraseExplanation(section, cleanTitle, exactPhraseExplanation);
+  }
+
+  if (cleanTitle === "Speak Unto The Children Of Israel, That They Go Forward") {
+    return note([
+      "God tells Moses to command Israel forward while the sea is still in front of them.",
+      "The command comes before the visible road appears, so obedience must begin with trust.",
+      "➡️ Israel must move forward",
+      "🌊 The sea is still blocking them",
+      "📣 Moses must give the command",
+      "🙌 God will make the way",
+      "Faith moves because God has spoken, not because the path already looks easy.",
+    ]);
+  }
+
+  if (cleanTitle === "He That Gathered Much Had Nothing Over") {
+    return note([
+      "Extra gathering did not create extra supply.",
+      "God's measured provision kept anyone from turning manna into private advantage.",
+      "📏 The measure stays fair",
+      "🧺 More gathering does not mean excess",
+      "👥 The whole camp is cared for",
+      "🚫 Hoarding cannot control God's gift",
+      "Manna teaches that God's provision is enough without becoming selfish possession.",
+    ]);
+  }
+
+  if (cleanTitle === "He That Gathered Little Had No Lack") {
+    return note([
+      "Smaller gathering did not leave anyone hungry.",
+      "God's provision met each household according to need, not according to competition.",
+      "🤲 Less gathering still receives enough",
+      "👨‍👩‍👧 Each household is supplied",
+      "✅ No one lacks bread",
+      "🙌 God measures provision with care",
+      "Manna teaches sufficiency instead of fear-driven comparison.",
+    ]);
+  }
+
+  if (cleanTitle === "The People Rested On The Seventh Day") {
+    return note([
+      "Israel finally follows the Sabbath pattern.",
+      "After generations of slave labor, rest becomes an act of obedience.",
+      "🍞 Double portion is already given",
+      "🛑 Sabbath rest is holy",
+      "🏠 The people stay in place",
+      "🙌 Rest depends on trust",
+      "Free people learn they are not ruled by endless labor.",
+    ]);
+  }
+
+  const getOpeningLines = (meaning: string, context: string) => {
+    const specific = getDay25SpecificOpening(section, cleanTitle)
+      .map((line) => removeDay25OpeningPhraseRepeat(cleanTitle, line))
+      .filter(Boolean);
+    const genericOpening = /^(This detail adds|The sea scene shows|God is leading newly freed people|The wilderness begins testing trust|The victory song looks beyond|Rescue turns into worship|Hunger exposes fear|God provides food|The manna instructions teach)/i.test(specific[0] ?? "");
+
+    if (!genericOpening && specific.length > 0) {
+      return specific.slice(0, 2);
+    }
+
+    return [meaning, context];
+  };
+
+  const add = (meaning: string, context: string, bullets: string[], takeaway: string) =>
+    note([...getOpeningLines(meaning, context), ...bullets, takeaway]);
+
+  if (/sanctify|firstborn|openeth|firstling|redeem|it is mine/.test(lower)) {
+    return add(
+      /redeem/.test(lower) ? "God is teaching Israel that firstborn sons are bought back, not sacrificed." : "God is claiming the firstborn because He spared Israel's firstborn on Passover night.",
+      "The firstborn command turns the rescue from Egypt into a repeated family practice.",
+      ["👶 Firstborn life is remembered", "🩸 Passover mercy stands behind it", "💰 Redemption means bought back", "🙌 Spared life belongs to the LORD"],
+      "Every firstborn lesson keeps Israel remembering that rescued life belongs to the Rescuer."
+    );
+  }
+  if (/remember this day|bondage|strength of hand|abib|leavened|unleavened/.test(lower)) {
+    return add(
+      /leaven|unleavened/.test(lower) ? "The bread teaches Israel to remember the hurried rescue from Egypt." : "Moses is turning the Exodus into a memory Israel must keep.",
+      "The date, bread, and language of bondage make deliverance concrete instead of vague.",
+      ["🧠 Rescue must be remembered", "🍞 Bread carries the story", "📅 The calendar marks deliverance", "💪 The LORD brought them out"],
+      "The practice protects Israel from forgetting what slavery was and who freed them."
+    );
+  }
+  if (/shew thy son|son asketh|sign|memorial|frontlets|mouth|hand|eyes/.test(lower)) {
+    return add(
+      "Parents must explain the rescue so the next generation understands Israel's worship.",
+      "The feast and signs are not empty religious habits; they are teaching tools for children.",
+      ["👶 Children ask questions", "🗣️ Parents tell the rescue", "✋ Hands remember God's work", "👀 Eyes stay fixed on deliverance"],
+      "The Exodus is meant to be taught, spoken, and carried into family life."
+    );
+  }
+  if (/bring thee|set apart|pharaoh would hardly/.test(lower)) {
+    return add(
+      "The command looks forward to life in the land after God completes the rescue.",
+      "Israel must keep practicing firstborn redemption because Pharaoh's refusal and God's deliverance must not be forgotten.",
+      ["🏞️ The land is ahead", "👶 Firstborn life is marked", "👑 Pharaoh resisted release", "🙌 God finished the rescue"],
+      "Future obedience will keep the Exodus alive in Israel's memory."
+    );
+  }
+  if (/philistines|repent|led the people about|harnessed|bones of joseph|pillar/.test(lower)) {
+    return add(
+      /joseph/.test(lower) ? "Moses carries Joseph's bones because Joseph believed God would bring Israel out of Egypt." : "God is guiding Israel by the route and presence He knows they need.",
+      "The shortest road is not always the wisest road for newly freed people learning to trust Him.",
+      ["🧭 God chooses the road", "⛔ The shortest path is avoided", "☁️ Presence guides by day", "🔥 Presence guards by night"],
+      "The route teaches that God's guidance may look indirect while still being careful and faithful."
+    );
+  }
+  if (/encamp|entangled|harden pharaoh|honoured|egyptians may know|chariot|pihahiroth|baalzephon/.test(lower)) {
+    return add(
+      /entangled|pihahiroth|baalzephon/.test(lower) ? "The location makes Israel look trapped from Egypt's point of view." : "God is setting the final sea confrontation where Egypt's pride will be exposed.",
+      "Pharaoh thinks Israel is vulnerable, but the LORD is preparing to show His power over Egypt one more time.",
+      ["📍 The camp looks trapped", "🐎 Pharaoh prepares pursuit", "👑 God will be honored", "🙌 Egypt will know the LORD"],
+      "The scene is not random danger; it is the stage for God's public deliverance."
+    );
+  }
+  if (/chariots|captains|pursued|high hand|pharaoh/.test(lower)) {
+    return add(
+      /high hand/.test(lower) ? "Israel leaves openly and boldly under God's victory." : "Egypt is bringing organized military power after former slaves.",
+      "The details make the threat feel impossible for Israel to overcome by human strength.",
+      ["🐎 Chariots show military power", "👑 Pharaoh wants control again", "😨 Israel looks outmatched", "🌊 The sea will expose Egypt's weakness"],
+      "The stronger Egypt looks, the clearer God's rescue will be."
+    );
+  }
+  if (/criest|go forward|rod|divide|dry ground|angel of god|pillar|cloud and darkness|gave light/.test(lower)) {
+    return add(
+      /go forward/.test(lower) ? "God commands Israel to move before the path looks possible." : "God is opening and guarding the way through the sea.",
+      "Prayer gives way to obedience as Moses lifts the rod and the LORD moves between Israel and Egypt.",
+      ["➡️ Israel must move forward", "🌊 The sea will open", "☁️ God's presence guards the camp", "💡 Light is given to His people"],
+      "Faith follows God's command even before the road looks safe."
+    );
+  }
+  if (/stretched out|strong east wind|sea dry land|waters were divided|dry ground|wall unto them/.test(lower)) {
+    return add(
+      /wall/.test(lower) ? "The waters stand on both sides while Israel passes through." : "The LORD turns the sea itself into a road for His people.",
+      "The miracle is not shallow water or lucky timing; the Creator commands wind, sea, and ground.",
+      ["🌊 Water obeys God", "💨 Wind serves His command", "🚶 Israel crosses on dry ground", "🧱 Waters stand like walls"],
+      "The obstacle that looked like death becomes the path of deliverance."
+    );
+  }
+  if (/morning watch|looked unto|troubled|chariot wheels|flee|returned|overthrew/.test(lower)) {
+    return add(
+      "Egypt's strength collapses inside God's judgment.",
+      "The same sea road that was safe for Israel becomes the place where Pharaoh's army is trapped and overthrown.",
+      ["👀 The LORD sees the enemy", "🛞 Chariot wheels fail", "😨 Egypt wants to flee", "🌊 The sea returns"],
+      "God's rescue for His people becomes judgment on the power trying to enslave them again."
+    );
+  }
+  if (/saved israel|egyptians dead|great work|feared the lord|believed/.test(lower)) {
+    return add(
+      /believed/.test(lower) ? "The visible rescue strengthens Israel's trust in the LORD and in Moses as His servant." : "Israel sees the finished result of the LORD's rescue.",
+      "The army that terrified them can no longer drag them back to bondage.",
+      ["👀 Israel sees the outcome", "🛡️ The LORD saved them", "🌊 Egypt is defeated", "🙌 Trust grows after rescue"],
+      "The sea teaches Israel that the LORD is more trustworthy than what they feared."
+    );
+  }
+  if (/sang|sing|triumphed|horse|rider|strength and song|my god|man of war|right hand|overthrown|wrath|enemy said|blast|sank as lead/.test(lower)) {
+    return add(
+      /enemy said/.test(lower) ? "The song quotes Egypt's boast so God's victory over that boast is unmistakable." : "Israel is turning deliverance into worship.",
+      "The song names what happened at the sea: the LORD defeated Egypt and became the praise of His people.",
+      ["🎶 Rescue becomes song", "🐎 Egypt's power falls", "💪 God's strength is praised", "👑 The LORD is the victor"],
+      "Worship retells the rescue with God at the center."
+    );
+  }
+  if (/who is like|glorious|fearful|wonders|mercy hast led|people shall hear|pass over|purchased/.test(lower)) {
+    return add(
+      /purchased/.test(lower) ? "Israel belongs to the LORD because He redeemed them from bondage." : "The song moves from what God did to who God is.",
+      "His holiness, mercy, wonders, and redeemed people will make the nations tremble.",
+      ["✨ God is unlike all others", "🕊️ Mercy leads the redeemed", "🌍 Nations will hear", "💰 Israel has been purchased"],
+      "The sea victory reveals God's character, not only His power."
+    );
+  }
+  if (/bring them in|plant them|place|sanctuary|hands have established|reign/.test(lower)) {
+    return add(
+      /reign/.test(lower) ? "The song ends by declaring the LORD's everlasting kingship." : "The song looks forward to God's destination for His rescued people.",
+      "Israel was not freed to wander without a future; God is bringing them toward inheritance and worship.",
+      ["🏞️ God will bring them in", "🌱 His people will be planted", "⛪ Worship is the goal", "👑 The LORD reigns forever"],
+      "The Exodus points beyond escape toward life with God as King."
+    );
+  }
+  if (/miriam|sister of aaron|timbrels|dances|sing ye/.test(lower)) {
+    return add(
+      "Miriam leads the women in answering the sea victory with praise.",
+      "The rescue becomes a shared song, not only Moses' private worship.",
+      ["🥁 Timbrels join the praise", "👥 The women answer", "🎶 Victory is repeated", "🙌 The LORD receives the song"],
+      "The whole community is invited to remember deliverance through worship."
+    );
+  }
+  if (/three days|no water|marah|murmured|tree|statute|healeth|twelve wells/.test(lower)) {
+    return add(
+      /healeth/.test(lower) ? "The LORD names Himself as the healer of His people." : "The wilderness quickly tests Israel's trust through thirst.",
+      "The God who opened the sea also teaches His people to trust Him when the water is bitter or missing.",
+      ["💧 Thirst is real", "🌿 God provides healing", "🗣️ Complaining exposes fear", "🏝️ Elim shows generous provision"],
+      "The wilderness teaches that the LORD cares for needs after the rescue too."
+    );
+  }
+  if (/wilderness of sin|fifteenth day|murmured|died by the hand|flesh pots|bread to the full|kill this whole assembly/.test(lower)) {
+    return add(
+      "Hunger makes Israel remember Egypt falsely.",
+      "They remember food but forget slavery, and their complaint turns need into accusation.",
+      ["🍲 Egypt is remembered selectively", "🍞 Hunger is real", "💬 Complaint grows", "💔 Fear rewrites the past"],
+      "The complaint shows how need can make bondage sound better than trust."
+    );
+  }
+  if (/rain bread|go out and gather|certain rate|prove them|sixth day|\beven\b|morning|murmurings/.test(lower)) {
+    return add(
+      /prove/.test(lower) ? "The manna will test whether Israel trusts and obeys God's instruction." : "God is giving bread in a way that trains daily dependence.",
+      "The provision comes with limits, timing, and commands so Israel learns the Provider's ways.",
+      ["🍞 Bread comes from heaven", "📏 Each day has a measure", "🧪 Trust is tested", "🙌 Provision reveals the LORD"],
+      "Manna is not only food; it is a classroom for obedience."
+    );
+  }
+  if (/aaron spake|looked toward|glory|heard the murmurings|eat flesh|filled with bread|lord your god/.test(lower)) {
+    return add(
+      "God answers complaint with provision that reveals who He is.",
+      "Quail in the evening and bread in the morning show that the LORD has heard and is still caring for His people.",
+      ["👂 God hears the murmuring", "🍗 Flesh comes at evening", "🍞 Bread fills them in morning", "☁️ Glory appears in the cloud"],
+      "The food is meant to lead Israel beyond full stomachs to knowing the LORD."
+    );
+  }
+  if (/quails|dew|small round|what is it|bread which the lord|omer|much had nothing|little had no lack/.test(lower)) {
+    return add(
+      /what is it/.test(lower) ? "Israel sees unfamiliar food and does not know what to call it." : "God gives enough food for each person according to need.",
+      "The manna is strange, measured, and sufficient, so no household has to compete or hoard.",
+      ["🌅 Provision comes in the morning", "❓ Manna is unfamiliar", "📏 An omer measures enough", "✅ No one lacks"],
+      "Daily bread teaches sufficiency instead of panic."
+    );
+  }
+  if (/leave of it|hearkened not|worms|stank|wroth|every morning|sun waxed hot|melted/.test(lower)) {
+    return add(
+      "Israel learns that manna must be received God's way.",
+      "Keeping it overnight against command leads to spoiled food, while morning gathering teaches fresh dependence.",
+      ["🚫 Hoarding disobeys", "🪱 Stored manna spoils", "🌅 Morning gathering continues", "☀️ The manna melts"],
+      "Trust means obeying the Provider instead of trying to control tomorrow."
+    );
+  }
+  if (/twice as much|holy sabbath|bake|did not stink|six days|seventh day|there shall be none|rested/.test(lower)) {
+    return add(
+      "The Sabbath pattern teaches Israel to stop because God has provided enough.",
+      "The double portion before the seventh day trains former slaves to receive rest by faith.",
+      ["🍞 Double portion is given", "🛑 Sabbath rest is holy", "🔥 Preparation happens beforehand", "🙌 Rest depends on trust"],
+      "Free people learn they are not ruled by endless labor."
+    );
+  }
+  if (/how long refuse|commandments|abide|go out of his place|people rested/.test(lower)) {
+    return add(
+      "God confronts the refusal to trust His Sabbath command.",
+      "Some people still search for manna when He has already said none will be there.",
+      ["🚫 Refusal is exposed", "📜 The command is clear", "🏠 Each person must stay", "🛑 Rest is finally practiced"],
+      "Stopping becomes obedience when God has promised enough."
+    );
+  }
+  if (/called the name thereof manna|coriander|wafers|honey|omer|kept|testimony|forty years|borders of canaan/.test(lower)) {
+    return add(
+      /forty years|borders/.test(lower) ? "The manna continued through the whole wilderness journey until Canaan's edge." : "The manna is described and preserved so Israel remembers God's provision.",
+      "Taste, appearance, and the kept omer make God's care concrete for future generations.",
+      ["🍞 Manna is named", "🍯 Its taste is remembered", "🏺 An omer is preserved", "🏞️ God fed them until Canaan"],
+      "The kept manna witnesses that the LORD sustained Israel day after day."
+    );
+  }
+
+  return add(
+    "This detail names a specific part of Israel's movement after rescue.",
+    `In ${section.reference}, the people are learning how memory, guidance, worship, testing, provision, and rest belong to the LORD.`,
+    ["📜 The detail belongs to the text", "🧭 Israel is learning the way", "🙌 The LORD is forming His people"],
+    "Each detail adds one piece to life with the God who brought Israel out."
+  );
+}
+
 const DAY_25_EXACT_PHRASE_EXPLANATIONS: Record<string, string[]> = {
   "Whatsoever Openeth The Womb": ["Whatsoever Openeth The Womb means the first offspring born from a mother.", "The phrase can refer to firstborn children and firstborn animals.", "After Passover, firstborn life carries a memory: Israel's firstborn were spared by the LORD.", "God uses the firstborn to keep rescue in front of the people."],
   "It Is Mine": ["It Is Mine is the LORD's claim over the firstborn He spared.", "Israel's firstborn lived because God showed mercy on Passover night.", "So the firstborn are not treated as independent possessions.", "The phrase teaches that rescued life is claimed by the Rescuer."],
@@ -885,7 +1295,7 @@ const DAY_25_EXACT_PHRASE_EXPLANATIONS: Record<string, string[]> = {
   "The Place, O LORD, Which Thou Hast Made": ["The Place, O LORD, Which Thou Hast Made looks forward to the dwelling place God prepares.", "The song is not satisfied with escape alone.", "God is bringing His people toward a place of worship and belonging.", "\u{1F3D4}\u{FE0F} Place prepared", "\u{1F64F} Worship", "\u{1F3E0} Life with God", "The phrase points beyond leaving Egypt toward living near the LORD."],
   "Thy Hands Have Established": ["Thy Hands Have Established means God Himself makes the place secure.", "Established means set firmly in place.", "Israel's future does not depend on their strength alone.", "\u{1F590}\u{FE0F} God's hands", "\u{1F3D4}\u{FE0F} Secure place", "\u{1F64C} Promise held", "The phrase gives confidence that the LORD can finish what He started."],
   "The LORD Brought Again The Waters": ["The LORD Brought Again The Waters means God returned the sea over Egypt's army.", "The waters do not decide for themselves when to close.", "The LORD controls both the opening and the returning.", "\u{1F30A} Waters return", "\u{2694}\u{FE0F} Egypt covered", "\u{1F64C} The LORD rules", "Israel's rescue and Egypt's judgment both happen under God's command."],
-  "The Sister Of Aaron": ["The Sister Of Aaron identifies Miriam through her family connection.", "Aaron is named because the reader already knows him as Moses' brother and spokesman.", "Miriam is not a random singer at the edge of the story.", "\u{1F469} Miriam", "\u{1F46A} Family line", "\u{1F3B6} Worship leader", "The phrase helps the reader place her inside Israel's leadership family."],
+  "The Sister Of Aaron": ["The Sister Of Aaron identifies Miriam through her family connection.", "Aaron is named because the reader already knows him as Moses' brother and spokesman.", "Miriam is not a random singer at the edge of the story.", "\u{1F469} Miriam", "\u{1F46A} Family line", "\u{1F3B6} Worship leader", "Her family connection places her inside Israel's leadership family."],
   "There He Made For Them A Statute And An Ordinance": ["There He Made For Them A Statute And An Ordinance means Marah becomes a place of instruction.", "A statute and an ordinance are commands or rules for God's people.", "The bitter water scene becomes more than a water miracle.", "\u{1F4DC} Instruction", "\u{1F4A7} Water test", "\u{1F9ED} Learning God's ways", "God is teaching rescued people how to listen and obey in the wilderness."],
   "Would To God We Had Died By The Hand Of The LORD": ["Would To God We Had Died By The Hand Of The LORD is Israel's bitter complaint.", "They are saying it would have been better to die in Egypt than hunger in the wilderness.", "Fear is making slavery sound safer than freedom.", "\u{1F62B} Hunger", "\u{1F4AD} Twisted memory", "\u{1F6AA} Egypt behind them", "The phrase shows how quickly fear can make people forget rescue."],
   "At Even, Then Ye Shall Know": ["At Even, Then Ye Shall Know points to evening as the time God will begin answering their hunger.", "At even means at evening.", "The quail will show that the LORD heard their complaint.", "\u{1F307} Evening", "\u{1F357} Flesh provided", "\u{1F441}\u{FE0F} The LORD sees", "God's timing turns the evening meal into a lesson about His presence."],
@@ -897,7 +1307,7 @@ const DAY_25_EXACT_PHRASE_EXPLANATIONS: Record<string, string[]> = {
   "Moses Was Wroth With Them": ["Moses Was Wroth With Them means Moses was angry with the people.", "Wroth is old wording for deeply angry.", "The anger comes because some Israelites ignored clear instruction about the manna.", "\u{1F621} Moses angry", "\u{1F35E} Manna kept", "\u{1F6AB} Command ignored", "The phrase shows that God's provision still had to be received God's way."],
   "This Is That Which The LORD Hath Said": ["This Is That Which The LORD Hath Said means Moses explains the Sabbath instruction as God's word.", "The double portion is not Moses making up a new rule.", "It is connected to what the LORD already said.", "\u{1F4DC} God's word", "\u{1F35E} Double portion", "\u{1F6D1} Sabbath rest", "The phrase teaches Israel to understand provision through God's command."],
   "It Did Not Stink": ["It Did Not Stink means the Sabbath portion did not spoil overnight.", "Earlier, kept manna bred worms and stank.", "Here, the same kind of bread stays good because God commanded the Sabbath rest.", "\u{1F35E} Manna kept", "\u{2705} No stink", "\u{1F6D1} Sabbath", "The phrase shows that obedience changes the meaning of keeping the manna."],
-  "See, For That The LORD Hath Given You The Sabbath": ["See, For That The LORD Hath Given You The Sabbath means the Sabbath is presented as a gift.", "God is not merely stopping Israel from working.", "He is giving them rest after generations of slave labor.", "\u{1F441}\u{FE0F} See", "\u{1F381} Given", "\u{1F6D1} Sabbath rest", "The phrase helps the reader see rest as mercy from the LORD."],
+  "See, For That The LORD Hath Given You The Sabbath": ["See, For That The LORD Hath Given You The Sabbath means the Sabbath is presented as a gift.", "God is not merely stopping Israel from working.", "He is giving them rest after generations of slave labor.", "\u{1F441}\u{FE0F} See", "\u{1F381} Given", "\u{1F6D1} Sabbath rest", "Rest is mercy from the LORD, not a loss of provision."],
   "Abide Ye Every Man In His Place": ["Abide Ye Every Man In His Place means the people are to stay where they are on the Sabbath.", "Abide means remain or stay.", "They do not need to run out searching for food.", "\u{1F3E0} Stay", "\u{1F6D1} Rest", "\u{1F35E} God provides", "The phrase teaches Israel to trust the LORD enough to stop."],
   "Let No Man Go Out Of His Place": ["Let No Man Go Out Of His Place repeats the Sabbath boundary clearly.", "No one needs to go out gathering manna that God said would not be there.", "The command protects rest from anxious searching.", "\u{1F6AB} Do not go out", "\u{1F6D1} Sabbath", "\u{1F64C} Trust", "The phrase presses the lesson home: God's people can rest because God has provided."],
   "That They May See The Bread": ["That They May See The Bread means a sample of manna is kept for future generations to look at.", "The preserved bread becomes a witness.", "Children who did not walk through the wilderness could still learn what God gave.", "\u{1F35E} Bread kept", "\u{1F3FA} Stored witness", "\u{1F9D2} Future children", "The phrase turns daily food into remembered testimony."],
@@ -983,6 +1393,15 @@ function getDay25TeachingBullets(section: PersonalExodusPhraseSectionInput, titl
   if (section.chapter === 15 && (lower.includes("water") || lower.includes("marah") || lower.includes("murmured") || lower.includes("tree") || lower.includes("healeth") || lower.includes("wells"))) {
     return ["💧 Thirst tests the rescued people", "🌿 The LORD provides what heals", "🗣️ Complaining exposes fragile trust", "🙌 The God of the sea also cares in the wilderness"];
   }
+  if (section.chapter === 15 && (lower.includes("horse") || lower.includes("rider") || lower.includes("war") || lower.includes("right hand") || lower.includes("overthrown") || lower.includes("wrath") || lower.includes("enemy") || lower.includes("blast") || lower.includes("floods") || lower.includes("sank") || lower.includes("wind"))) {
+    return ["⚔️ Egypt's army is defeated", "🌊 The sea becomes judgment", "💪 The LORD's power wins", "🎶 Israel sings the victory"];
+  }
+  if (section.chapter === 15 && (lower.includes("who is like") || lower.includes("holiness") || lower.includes("fearful") || lower.includes("wonders") || lower.includes("mercy") || lower.includes("purchased") || lower.includes("pass over"))) {
+    return ["✨ The LORD is unmatched", "🔥 His holiness inspires awe", "🕊️ Mercy leads the redeemed", "🌍 Nations will hear and fear"];
+  }
+  if (section.chapter === 15 && (lower.includes("bring") || lower.includes("plant") || lower.includes("place") || lower.includes("sanctuary") || lower.includes("established") || lower.includes("reign") || lower.includes("inheritance"))) {
+    return ["🏞️ God will bring them in", "🌱 His people will be planted", "⛪ Worship is the goal", "👑 The LORD reigns forever"];
+  }
   if (section.chapter === 15) {
     return ["👑 The LORD wins the victory", "🌊 Egypt's power falls in the sea", "✨ God's holiness stands apart", "🏔️ Rescue is moving toward life with God"];
   }
@@ -999,23 +1418,876 @@ function getDay25TeachingBullets(section: PersonalExodusPhraseSectionInput, titl
   return ["📖 The phrase comes from the assigned text", "🔍 It explains a real detail in the verse", "🙌 The LORD is teaching His rescued people", "🧠 The meaning should be clear before moving on"];
 }
 
+function isDay25FillerLine(line: string) {
+  return /(^this shows\b|^this is repeated after\b|repeated image means|helps the reader|helps picture|gives a real detail|wording helps|the wording of .* keeps|phrase shows|phrase explains|part of the passage means|reminds the reader|teaches the reader|explains one part|assigned text|real detail in the verse|meaning should be clear|helps a beginner|helps beginners|helps readers|is tied to the red sea rescue|the lord is teaching his rescued people)/i.test(line);
+}
+
+function getDay25SpecificOpening(section: PersonalExodusPhraseSectionInput, title: string) {
+  const lower = title.toLowerCase();
+
+  const exact: Record<string, string[]> = {
+    "Fear Ye Not": [
+      "Moses commands the people not to let panic rule the moment.",
+      "Israel is truly trapped between Pharaoh's army and the sea, but Moses points them away from Egypt's power and toward the LORD's rescue.",
+      "The command does not deny the danger. It says the danger is not greater than God.",
+    ],
+    "Stand Still, And See The Salvation Of The LORD": [
+      "Stand Still, And See The Salvation Of The LORD means Israel must watch God deliver them before they can do anything to save themselves.",
+      "They have no army strong enough to defeat Pharaoh and no path through the sea.",
+      "Salvation here is the LORD's rescue, shown in public where terrified people can see it.",
+    ],
+    "The LORD Shall Fight For You": [
+      "The LORD Shall Fight For You means the battle belongs to God, not to Israel's weapons or courage.",
+      "Former slaves cannot overthrow Egypt's chariots, but the LORD can end Pharaoh's pursuit.",
+      "Israel's part is to trust and obey while God wins the victory they cannot win.",
+    ],
+    "Out Of The House Of Bondage": [
+      "Egypt was a place of slavery, not merely a place Israel used to live.",
+      "Israel must stay honest about what the LORD rescued them from.",
+      "Freedom begins with remembering that bondage was real and that Israel could not break it alone.",
+    ],
+    "Whatsoever Openeth The Womb": [
+      "Openeth The Womb means the first child or animal born from its mother.",
+      "God is talking about firstborn life: the first son in a family and the first offspring from the animals.",
+      "Because the LORD spared Israel's firstborn at Passover, the firstborn now carries a living reminder of His mercy.",
+    ],
+    "No Leavened Bread Be Eaten": [
+      "Leavened bread is bread made with leaven, something like yeast that makes dough rise.",
+      "Israel must eat bread without leaven because they left Egypt in haste, before ordinary bread could rise.",
+      "Not eating leavened bread turns the rushed rescue into something the people can taste and remember.",
+    ],
+    "The Month Abib": [
+      "Abib is the name of the month or season when Israel left Egypt.",
+      "It was connected with spring and new grain, so the rescue is tied to a real time of year.",
+      "God puts the Exodus on Israel's calendar so the people will remember when He brought them out.",
+    ],
+    "Unleavened Bread Shall Be Eaten Seven Days": [
+      "Unleavened bread is flat bread made without leaven, so the dough does not rise.",
+      "Israel eats it for seven days to remember the hurry of leaving Egypt after Passover.",
+      "The full week makes the rescue more than a one-night memory; it becomes a practiced remembrance.",
+    ],
+    "There Shall No Leavened Bread Be Seen": [
+      "Leavened bread is bread with leaven in it, the ingredient that makes dough rise.",
+      "For this feast, Israel is not even to keep that bread visible in their homes.",
+      "Removing it helps the whole household remember the rushed night when God brought them out of Egypt.",
+    ],
+    "The LORD's Law May Be In Thy Mouth": [
+      "The LORD's Law May Be In Thy Mouth means God's instruction should be spoken, remembered, and taught.",
+      "The Exodus is meant to shape Israel's words, not only their calendar.",
+      "A rescued people keep God's law near by telling the rescue story clearly.",
+    ],
+    "This Is Done Because Of That Which The LORD Did": [
+      "This Is Done points to the feast and the way Israel keeps it.",
+      "The practice has a reason: the LORD brought Israel out of Egypt.",
+      "The phrase teaches children that worship actions are meant to be explained, not performed without meaning.",
+    ],
+    "For A Sign Unto Thee Upon Thine Hand": [
+      "A sign upon the hand means the Exodus should shape what Israel does.",
+      "The hand points to action, work, and daily life.",
+      "God's rescue is not only something to remember once a year; it should mark how His people live.",
+    ],
+    "For A Memorial Between Thine Eyes": [
+      "A memorial between the eyes means the Exodus should stay in Israel's attention and memory.",
+      "The image points to what the people keep in front of their minds.",
+      "God wants His rescue to shape how Israel sees the world.",
+    ],
+    "When Thy Son Asketh Thee": [
+      "Children are expected to ask why Israel lives this way.",
+      "God builds questions into the practice so parents can answer with the story of rescue.",
+      "The child's question becomes a doorway for teaching the LORD's strong hand.",
+    ],
+    "For Frontlets Between Thine Eyes": [
+      "Frontlets were reminders worn near the forehead, close to the eyes.",
+      "The image means God's rescue should stay in front of Israel's attention and shape how they think.",
+      "The Exodus is not meant to sit in the past; it should guide ordinary life.",
+    ],
+    "By Strength Of Hand The LORD Brought Us Out": [
+      "Israel's freedom came from God's power.",
+      "Pharaoh did not release them because he became merciful, and Israel did not free itself.",
+      "The LORD's strong hand broke the grip that held His people in Egypt.",
+    ],
+    "Harnessed Out Of The Land Of Egypt": [
+      "Harnessed means Israel left in an ordered, arranged way instead of as a confused crowd.",
+      "The people had been slaves, but now they are moving as the LORD's rescued people.",
+      "The word helps show that God is forming them into a people who can follow Him.",
+    ],
+    "God Led Them Not Through The Way Of The Land Of The Philistines": [
+      "God did not take Israel by the shortest road through Philistine territory.",
+      "That route could have brought them quickly into war before they were ready.",
+      "The phrase teaches that God's guidance may look longer because He is protecting weak people.",
+    ],
+    "Lest Peradventure The People Repent": [
+      "Lest peradventure means in case, and repent here means turn back.",
+      "God knows Israel might turn back toward Egypt if war frightens them too soon.",
+      "The phrase explains why the longer road is mercy, not confusion.",
+    ],
+    "God Led The People About": [
+      "God led them about means He took them by a roundabout route.",
+      "The path is indirect, but it is not accidental.",
+      "The LORD is guiding newly freed people in a way they can survive and learn.",
+    ],
+    "Moses Took The Bones Of Joseph": [
+      "Joseph's bones are his remains, carried because Joseph believed God would bring Israel out of Egypt.",
+      "Moses honors Joseph's old request from Genesis.",
+      "The phrase shows that the Exodus fulfills promises made long before Moses' generation.",
+    ],
+    "A Pillar Of Cloud By Day": [
+      "A pillar of cloud was a visible column-like cloud that guided Israel during the day.",
+      "The people did not have to guess the road through the wilderness.",
+      "God gave them visible guidance because freedom still required following Him.",
+    ],
+    "A Pillar Of Fire By Night": [
+      "A pillar of fire was a visible fiery sign of God's presence at night.",
+      "It gave light and guidance when the wilderness would have been dark and frightening.",
+      "The phrase shows that the LORD leads His people in darkness as well as daylight.",
+    ],
+    "He Took Not Away The Pillar": [
+      "He took not away means God did not remove the pillar from Israel.",
+      "The visible cloud and fire stayed with the people on the journey.",
+      "The phrase teaches steady guidance: the LORD does not abandon His rescued people after bringing them out.",
+    ],
+    "Speak Unto The Children Of Israel": [
+      "God tells Moses to speak to the whole people of Israel.",
+      "Their next movement is not Moses guessing or panicking.",
+      "The phrase shows that Israel's strange route comes from the LORD's command.",
+    ],
+    "That They Turn And Encamp": [
+      "Turn and encamp means Israel must change direction and camp where God tells them.",
+      "The move will make them look trapped, but it is part of God's plan.",
+      "The phrase teaches that God's instructions can look strange before His rescue is visible.",
+    ],
+    "They Are Entangled In The Land": [
+      "Entangled means trapped or boxed in.",
+      "Pharaoh thinks Israel is stuck between land, wilderness, and sea.",
+      "The phrase shows how Egypt misreads God's setup as Israel's weakness.",
+    ],
+    "Beside Pihahiroth Before Baalzephon": [
+      "Beside Pihahiroth Before Baalzephon gives the location where Egypt catches up to Israel.",
+      "The place names make the scene feel fixed and concrete: Israel is camped where escape appears impossible.",
+      "That trapped-looking location becomes the stage for the LORD's rescue.",
+    ],
+    "They Were Sore Afraid": [
+      "Sore afraid means extremely afraid.",
+      "Israel sees Pharaoh's army behind them and the sea in front of them.",
+      "The phrase names real panic before the LORD shows His salvation.",
+    ],
+    "Wherefore Hast Thou Dealt Thus With Us": [
+      "Wherefore means why.",
+      "The people are asking Moses why he has treated them this way by bringing them out of Egypt.",
+      "The phrase shows fear turning rescue into accusation before they understand God's plan.",
+    ],
+    "Wherefore Criest Thou Unto Me": [
+      "Wherefore criest thou means why are you crying out to Me?",
+      "God is not rejecting prayer; He is telling Moses that the time has come to obey and move forward.",
+      "The phrase marks the moment when prayer must become action under God's command.",
+    ],
+    "Lift Thou Up Thy Rod": [
+      "Rod means Moses' staff, the same visible sign used in earlier signs and plagues.",
+      "Moses must lift it because God is about to divide the sea.",
+      "The power is not in the stick; the staff marks obedience to the LORD's command.",
+    ],
+    "Divide It": [
+      "Divide it means split the sea open.",
+      "The water blocking Israel's escape will become two sides of a path.",
+      "The phrase teaches that only the Creator can turn the sea into a road.",
+    ],
+    "The Children Of Israel Shall Go On Dry Ground": [
+      "Dry ground means Israel will cross without sinking into mud or drowning.",
+      "God does not merely make the water shallow.",
+      "The phrase shows a complete miracle: a safe road through the sea.",
+    ],
+    "The Angel Of God Removed": [
+      "Removed means moved from one place to another.",
+      "God's angel-presence moves from the front of Israel to behind them.",
+      "The phrase shows guidance becoming protection between Israel and Egypt.",
+    ],
+    "The Pillar Of The Cloud Went From Before Their Face": [
+      "Before their face means in front of them.",
+      "The cloud that had led Israel moves from the front to the rear.",
+      "The phrase shows God guarding the vulnerable side where Egypt is approaching.",
+    ],
+    "It Was A Cloud And Darkness To Them, But It Gave Light By Night": [
+      "The same cloud gives darkness to Egypt and light to Israel.",
+      "Them refers to the Egyptians, while Israel receives light for the way.",
+      "The phrase shows God's presence protecting His people while blocking their enemies.",
+    ],
+    "By A Strong East Wind": [
+      "A strong east wind is the means God uses to drive the sea back.",
+      "The wind is not random weather; it serves the LORD's command.",
+      "The phrase shows creation obeying God in Israel's rescue.",
+    ],
+    "The Waters Were Divided": [
+      "The waters were divided means the sea split apart.",
+      "Israel sees water opened into a path where no human power could make one.",
+      "The phrase describes the central miracle of the Red Sea crossing.",
+    ],
+    "Upon The Dry Ground": [
+      "Dry ground means the sea floor became safe enough to walk on.",
+      "Israel is not stumbling through swamp or mud.",
+      "The phrase stresses how complete God's rescue road was.",
+    ],
+    "In The Morning Watch": [
+      "The morning watch was a late-night or early-morning period when guards kept watch.",
+      "God troubles Egypt's army before the full morning arrives.",
+      "The phrase gives the timing of judgment inside the tense night crossing.",
+    ],
+    "The LORD Looked Unto The Host Of The Egyptians": [
+      "Host means army.",
+      "The LORD turns His attention toward Egypt's fighting force in the sea path.",
+      "The phrase shows that Egypt's organized power is now under God's judgment.",
+    ],
+    "Troubled The Host Of The Egyptians": [
+      "Troubled means God threw Egypt's army into confusion and distress.",
+      "The chariot force that looked controlled begins to break down.",
+      "The phrase shows the LORD fighting without Israel needing to swing a sword.",
+    ],
+    "Took Off Their Chariot Wheels": [
+      "Chariot wheels were part of Egypt's strongest military vehicles.",
+      "God makes those vehicles fail inside the sea path.",
+      "The phrase shows Egypt's trusted weapon becoming useless under God's judgment.",
+    ],
+    "Let Us Flee From The Face Of Israel": [
+      "Let us flee means the Egyptians now want to run away.",
+      "The pursuers realize the LORD is fighting for Israel.",
+      "The phrase reverses the scene: Egypt chased Israel, but now Egypt tries to escape.",
+    ],
+    "The Sea Returned To His Strength": [
+      "The sea returned to his strength means the waters came back with full force.",
+      "The road stayed open only as long as God held it open.",
+      "The phrase shows the same sea becoming rescue for Israel and judgment for Egypt.",
+    ],
+    "The LORD Overthrew The Egyptians": [
+      "Overthrew means the LORD brought Egypt's army down in defeat.",
+      "Israel does not win by weapons or military skill.",
+      "The phrase gives the final victory at the sea to God Himself.",
+    ],
+    "The LORD Saved Israel That Day": [
+      "The Red Sea miracle has a plain result: Israel is saved by the LORD.",
+      "Israel is alive because God delivered them from Pharaoh's army.",
+      "The day ends with the oppressor defeated and the rescued people standing free.",
+    ],
+    "The Waters Were A Wall Unto Them": [
+      "The water stood like protective walls while Israel crossed.",
+      "The sea was not merely shallow or briefly passable.",
+      "God held back the waters on both sides so His people could walk through safely.",
+    ],
+    "Israel Saw The Egyptians Dead Upon The Sea Shore": [
+      "Israel sees that Pharaoh's army can no longer threaten them.",
+      "The bodies on the shore make the end of Egypt's pursuit visible and final.",
+      "The people who feared being dragged back now see that the LORD has broken Egypt's power.",
+    ],
+    "Israel Saw That Great Work": [
+      "Israel Saw That Great Work means the rescue was visible to the people who had been afraid.",
+      "They watched the LORD open the sea, overthrow Egypt, and finish the deliverance.",
+      "The sight turned fear into reverence because God's power was no longer only promised.",
+    ],
+    "Believed The LORD, And His Servant Moses": [
+      "Believed The LORD, And His Servant Moses means the sea rescue deepened Israel's trust.",
+      "They saw that the LORD's word was true and that Moses really was His appointed servant.",
+      "Faith grew because God's saving work confirmed His message.",
+    ],
+    "He Is My God": [
+      "The victory song becomes personal here.",
+      "Israel is not only saying that the LORD is powerful in general.",
+      "They are confessing that the God who defeated Egypt is their own covenant God.",
+    ],
+    "The LORD Is A Man Of War": [
+      "The LORD is pictured as the warrior who fights for His people.",
+      "This image does not make God cruel; it celebrates His power against the oppressor.",
+      "At the sea, God defeats the army that came to drag Israel back into slavery.",
+    ],
+    "Thy Right Hand, O LORD": [
+      "God's right hand is a picture of His active power.",
+      "In Bible language, the right hand often represents strength, action, and victory.",
+      "The song says Egypt fell because the LORD's power shattered the enemy.",
+    ],
+    "Thou Hast Overthrown Them": [
+      "Thou Hast Overthrown Them means the LORD has thrown down Egypt's forces.",
+      "The army that looked dominant at the shore is now defeated in the sea.",
+      "The phrase gives the victory to God from beginning to end.",
+    ],
+    "Thou Sentest Forth Thy Wrath": [
+      "Thou Sentest Forth Thy Wrath means God's holy judgment went out against Egypt's rebellion.",
+      "Wrath here is not uncontrolled anger.",
+      "It is the LORD's righteous answer to Pharaoh's violence, pride, and pursuit.",
+    ],
+    "The Enemy Said, I Will Pursue": [
+      "The song quotes Egypt's arrogant plan.",
+      "The enemy expects to chase, overtake, divide spoil, and satisfy revenge.",
+      "The song remembers that boast so the LORD's victory over it feels unmistakable.",
+    ],
+    "With The Blast Of Thy Nostrils": [
+      "Blast of thy nostrils is poetic language for God's powerful breath.",
+      "The song pictures the waters moving as easily as if God breathed on them.",
+      "The phrase is not about human anatomy; it is worship language for the LORD's effortless power.",
+    ],
+    "The Floods Stood Upright": [
+      "Floods here means the gathered waters of the sea.",
+      "Stood upright means the water stood like walls instead of flowing normally.",
+      "The phrase helps a new reader picture the impossible shape of the Red Sea miracle.",
+    ],
+    "Thou Didst Blow With Thy Wind": [
+      "The wind in the song belongs to the LORD's action.",
+      "God uses wind in the sea rescue and judgment.",
+      "The phrase teaches that nature itself serves the God who delivers Israel.",
+    ],
+    "They Sank As Lead": [
+      "Lead is a heavy metal, so sinking as lead means going down heavily and helplessly.",
+      "Egypt's army does not merely slow down; it is swallowed in the sea.",
+      "The phrase makes Pharaoh's defeat feel final.",
+    ],
+    "Glorious In Holiness": [
+      "Glorious In Holiness means the LORD's beauty and majesty are tied to His perfect holiness.",
+      "He is not merely stronger than Egypt; He is morally set apart from every false god and empire.",
+      "Israel praises the God whose power is holy power.",
+    ],
+    "Doing Wonders": [
+      "Doing Wonders praises the LORD for acts only God can do.",
+      "The plagues and the sea crossing are not ordinary events with religious language added.",
+      "They are wonders that reveal the LORD's unmatched rule over creation and nations.",
+    ],
+    "The People Shall Hear, And Be Afraid": [
+      "The song looks beyond Egypt to the nations ahead.",
+      "When other peoples hear what the LORD did at the sea, they will tremble.",
+      "Israel's rescue becomes news that prepares the way toward the promised land.",
+    ],
+    "Till Thy People Pass Over": [
+      "The song asks God to bring His redeemed people safely through the journey ahead.",
+      "The sea crossing is not the last passage Israel will need.",
+      "The song trusts the LORD to keep protecting them until they reach His goal.",
+    ],
+    "Thou Hast Purchased": [
+      "Thou Hast Purchased means the LORD has made Israel His own through redemption.",
+      "Purchased language says the people belong to God because He rescued them at great cost.",
+      "They are not Pharaoh's property anymore; they are the LORD's redeemed people.",
+    ],
+    "Thou Shalt Bring Them In": [
+      "The song looks forward with confidence after the sea victory.",
+      "The LORD did not rescue Israel so they could wander without a future.",
+      "The song trusts Him to bring His people into the place He promised.",
+    ],
+    "Plant Them In The Mountain Of Thine Inheritance": [
+      "Plant means God will settle His people securely, like something rooted in place.",
+      "Planting means more than arriving; it means being rooted and established.",
+      "The rescued people are meant to live securely in the inheritance the LORD gives.",
+    ],
+    "Timbrels And With Dances": [
+      "Timbrels were hand drums or tambourine-like instruments used in celebration.",
+      "Miriam and the women use music and movement to praise the LORD after the sea rescue.",
+      "The phrase shows public joy: the victory is sung, played, and remembered by the community.",
+    ],
+    "They Could Not Drink Of The Waters Of Marah": [
+      "Marah means bitter, and the water there was too bitter to drink.",
+      "Israel finds water after three days, but the water cannot help them unless God heals it.",
+      "The phrase explains why the people are distressed and why the LORD's provision matters.",
+    ],
+    "The People Murmured Against Moses": [
+      "Murmured means grumbled or complained in a resentful way.",
+      "The people are thirsty, but instead of trusting the LORD, they turn their fear against Moses.",
+      "The phrase shows how quickly real need can become unbelieving complaint.",
+    ],
+    "The LORD Shall Reign For Ever And Ever": [
+      "God's kingship does not end with one rescue.",
+      "Pharaoh's rule collapses, but the LORD's reign continues forever.",
+      "The song ends by placing Israel's future under God's everlasting rule.",
+    ],
+    "When We Sat By The Flesh Pots": [
+      "Flesh pots were cooking pots with meat in them.",
+      "Hungry Israel remembers Egypt as if it were mainly a place of full meals.",
+      "The phrase exposes selective memory: they remember food but forget slavery.",
+    ],
+    "A Certain Rate Every Day": [
+      "A certain rate means a fixed amount or measured portion for each day.",
+      "God will give manna in daily amounts, not unlimited piles for anxious storing.",
+      "The phrase teaches Israel to receive enough for today and trust the LORD for tomorrow.",
+    ],
+    "An Omer For Every Man": [
+      "An omer was a measured amount of food.",
+      "Each person was to gather that amount of manna, so every household received enough.",
+      "The phrase teaches measured provision: no panic, no competition, and no one left lacking.",
+    ],
+    "To Morrow Is The Rest Of The Holy Sabbath": [
+      "To morrow means tomorrow, and Sabbath means a set-apart day of rest.",
+      "God gives extra manna before the Sabbath so Israel can stop gathering on the seventh day.",
+      "The phrase teaches former slaves that rest is holy because the LORD provides.",
+    ],
+    "It Did Not Stink": [
+      "The Sabbath manna did not rot or smell bad overnight.",
+      "Earlier, manna kept against God's command spoiled, but this portion stays good because God commanded the Sabbath rest.",
+      "The phrase shows that keeping manna can be distrust in one setting and obedience in another.",
+    ],
+    "Moses Was Wroth With Them": [
+      "Wroth means very angry.",
+      "Moses is angry because some Israelites ignored the command and kept manna overnight.",
+      "The phrase shows that God's generous provision still had to be received God's way.",
+    ],
+    "When The Sun Waxed Hot, It Melted": [
+      "Waxed hot means became hot.",
+      "The manna melted as the sun grew warm, so the people had to gather it in the morning.",
+      "The phrase teaches Israel a daily rhythm of receiving God's provision on His terms.",
+    ],
+    "Like Coriander Seed": [
+      "Coriander seed is a small seed, so the comparison helps describe manna's appearance.",
+      "The Bible gives this detail so readers can picture the food Israel saw on the ground.",
+      "The phrase makes the miracle feel concrete instead of vague.",
+    ],
+    "Wafers Made With Honey": [
+      "Wafers were thin cakes, and honey points to sweetness.",
+      "The phrase describes the taste of manna, not only the fact that it existed.",
+      "God's provision was enough to sustain Israel, and it was remembered as pleasant food.",
+    ],
+    "Laid It Up Before The Testimony": [
+      "Laid it up means stored it away, and the testimony refers to the covenant witness kept before the LORD.",
+      "A portion of manna is preserved so later generations can see what God fed Israel in the wilderness.",
+      "The phrase turns daily bread into lasting evidence of God's care.",
+    ],
+    "This Is The Bread Which The LORD Hath Given You": [
+      "Moses identifies the strange morning food as the LORD's gift.",
+      "The people asked what it was, and Moses answers by pointing them to the Provider.",
+      "The bread is not luck, wilderness discovery, or human achievement; it is God's provision for hungry Israel.",
+    ],
+    "Thou Shalt Shew Thy Son": [
+      "Shew means show or explain.",
+      "Parents must tell their children why Israel eats this bread and keeps this feast.",
+      "The phrase teaches that children should understand the rescue, not merely watch a ritual happen.",
+    ],
+    "When The LORD Shall Bring Thee": [
+      "When the LORD shall bring thee means when God brings Israel into the promised land.",
+      "The command is meant to continue after the crisis of Egypt is over.",
+      "The phrase teaches that comfort in the land must not erase the memory of rescue.",
+    ],
+    "Thou Shalt Set Apart Unto The LORD": [
+      "Set apart means mark something as belonging specially to the LORD.",
+      "Israel must treat the firstborn as claimed by God because He spared the firstborn at Passover.",
+      "The phrase connects rescued life with belonging to the Rescuer.",
+    ],
+    "I Will Harden Pharaoh's Heart": [
+      "Harden Pharaoh's heart means Pharaoh will remain stubborn and resistant.",
+      "God will use Pharaoh's rebellion to display His power at the sea.",
+      "The phrase prepares the reader for one final confrontation with Egypt.",
+    ],
+    "I Will Be Honoured Upon Pharaoh": [
+      "Be honoured upon Pharaoh means the LORD will receive glory through Pharaoh's defeat.",
+      "Pharaoh wants control, but the sea will show that the LORD is greater than Egypt's king.",
+      "The phrase explains why God allows the pursuit to continue for one more scene.",
+    ],
+    "The Egyptians May Know That I Am The LORD": [
+      "Know that I am the LORD means Egypt will recognize the LORD's power and identity.",
+      "The sea judgment is not random destruction; it reveals who truly rules.",
+      "The phrase shows that God's rescue also becomes a witness to Egypt.",
+    ],
+    "He Made Ready His Chariot": [
+      "Made ready his chariot means Pharaoh prepares his war vehicle for pursuit.",
+      "A chariot was a fast military vehicle, a symbol of Egypt's strength.",
+      "The phrase shows Pharaoh responding to Israel's freedom by reaching for force.",
+    ],
+    "Six Hundred Chosen Chariots": [
+      "Chosen chariots means selected, elite war vehicles.",
+      "Pharaoh is not sending a weak or random group after Israel.",
+      "The phrase makes the danger clear: former slaves are being chased by Egypt's best military power.",
+    ],
+    "All The Chariots Of Egypt": [
+      "All the chariots of Egypt means Pharaoh brings the full weight of Egypt's military force.",
+      "The pursuit is massive, organized, and terrifying.",
+      "The phrase sets up the rescue so no one can mistake it for Israel's own strength.",
+    ],
+    "Captains Over Every One Of Them": [
+      "Captains means commanders.",
+      "Each chariot group has leadership, so Egypt's pursuit is organized and disciplined.",
+      "The phrase shows that Israel faces a real army, not a confused crowd.",
+    ],
+    "The LORD Hardened The Heart Of Pharaoh": [
+      "Pharaoh's hardened heart means he remains locked in rebellion against the LORD.",
+      "Even after letting Israel go, he chases them to regain control.",
+      "The phrase shows God handing Pharaoh's stubbornness over to judgment at the sea.",
+    ],
+    "The Children Of Israel Went Out With An High Hand": [
+      "With an high hand means Israel left boldly and openly.",
+      "They were not sneaking away like criminals.",
+      "The phrase shows the people leaving Egypt under God's public victory.",
+    ],
+    "The Egyptians Pursued After Them": [
+      "Pursued means chased.",
+      "Egypt's army goes after Israel to drag them back under Pharaoh's power.",
+      "The phrase shows the old bondage reaching after the people God has freed.",
+    ],
+    "Moses Stretched Out His Hand Over The Sea": [
+      "Moses stretches his hand over the sea in obedience to God's command.",
+      "His hand does not contain the power by itself.",
+      "The phrase shows the visible act that goes with the LORD opening the water.",
+    ],
+    "The LORD Caused The Sea To Go Back": [
+      "Caused means the LORD is the One making the sea move.",
+      "Moses stretches out his hand, but God moves the water.",
+      "The phrase keeps the miracle credited to the LORD, not to Moses.",
+    ],
+    "Made The Sea Dry Land": [
+      "Dry land means ground safe enough for Israel to walk on.",
+      "The sea does not merely become shallow or muddy.",
+      "The phrase shows that God makes a complete path through the water.",
+    ],
+    "The Egyptians Pursued": [
+      "Pursued means chased.",
+      "Egypt follows Israel into the path God opened through the sea.",
+      "The phrase shows pride rushing into the place that will become judgment.",
+    ],
+    "The Children Of Israel Walked Upon Dry Land": [
+      "Dry land means the people walked safely where water had been.",
+      "God gave Israel a real path, not a muddy scramble.",
+      "The phrase helps a new reader see the completeness of the Red Sea rescue.",
+    ],
+    "The Horse And His Rider Hath He Thrown Into The Sea": [
+      "Horse and rider represent Egypt's pursuing military power.",
+      "The LORD throws that power into the sea and ends the threat.",
+      "The phrase celebrates God defeating what Israel could never defeat alone.",
+    ],
+    "In The Greatness Of Thine Excellency": [
+      "Excellency means lifted-up greatness, majesty, and honor.",
+      "The song says Egypt falls because the LORD's greatness is above every earthly power.",
+      "The phrase teaches Israel to praise God's majesty, not merely the escape itself.",
+    ],
+    "Who Is Like Unto Thee, O LORD": [
+      "Who is like unto thee is a worship question expecting the answer: no one.",
+      "Israel has seen Pharaoh's power collapse and the sea obey the LORD.",
+      "The phrase teaches that the LORD has no rival.",
+    ],
+    "Fearful In Praises": [
+      "Fearful here means awesome or worthy of reverent awe.",
+      "Israel's praise is joyful, but it is not casual because God has saved and judged.",
+      "The phrase teaches worship with both gladness and holy fear.",
+    ],
+    "Thou In Thy Mercy Hast Led Forth": [
+      "Mercy means faithful compassion toward the people God rescued.",
+      "The LORD did not only defeat Egypt; He is leading Israel onward with covenant love.",
+      "The phrase shows that rescue continues as guidance.",
+    ],
+    "The LORD Brought Again The Waters": [
+      "Brought again means brought back.",
+      "The LORD returned the waters over Pharaoh's army after Israel crossed safely.",
+      "The phrase shows that God controls both the opening and closing of the sea.",
+    ],
+    "Three Days In The Wilderness": [
+      "Three days in the wilderness means Israel travels three days through desert land after the sea.",
+      "The celebration of victory quickly meets the pressure of thirst.",
+      "The phrase shows that freedom still requires daily dependence on the LORD.",
+    ],
+    "Found No Water": [
+      "Found no water means Israel could not find drinkable water for the people.",
+      "This is a real survival problem in the wilderness.",
+      "The phrase explains why trust is tested so quickly after the Red Sea rescue.",
+    ],
+    "The LORD Shewed Him A Tree": [
+      "Shewed means showed.",
+      "The LORD points Moses to a tree that becomes part of healing the bitter water.",
+      "The phrase shows that the solution comes from God, not Moses' cleverness.",
+    ],
+    "There He Made For Them A Statute And An Ordinance": [
+      "A statute and an ordinance are commands or instructions for God's people.",
+      "Marah becomes more than a water miracle; it becomes a place of teaching.",
+      "The phrase shows God training rescued people to listen and obey.",
+    ],
+    "Twelve Wells Of Water": [
+      "Twelve wells means an abundant water supply at Elim.",
+      "After bitter water at Marah, God brings Israel to real refreshment.",
+      "The phrase shows that the wilderness story does not end with lack.",
+    ],
+    "On The Sixth Day": [
+      "The sixth day is the day before the Sabbath rest.",
+      "God gives extra provision before the day when Israel must stop gathering.",
+      "The phrase prepares the people to trust the LORD's rhythm of work and rest.",
+    ],
+    "They Gathered It Every Morning": [
+      "Every morning describes the daily rhythm of manna.",
+      "Israel could not stockpile the ordinary daily portion for tomorrow.",
+      "The phrase teaches dependence one day at a time.",
+    ],
+    "Bake That Which Ye Will Bake": [
+      "Bake means cook the manna into bread for eating.",
+      "Israel is told to prepare the double portion before the Sabbath.",
+      "The phrase shows that rest includes wise preparation under God's command.",
+    ],
+    "Six Days Ye Shall Gather It": [
+      "Six days names the regular work pattern for collecting manna.",
+      "God gives bread during those days, then stops the gathering on the seventh.",
+      "The phrase teaches Israel a rhythm of work and rest.",
+    ],
+    "See, For That The LORD Hath Given You The Sabbath": [
+      "Given you the Sabbath means rest is a gift from the LORD.",
+      "God is not merely taking work away; He is giving former slaves a holy rhythm of rest.",
+      "The phrase teaches Israel to see Sabbath as mercy, not loss.",
+    ],
+    "That They May See The Bread": [
+      "That they may see means future generations should be able to look at the preserved manna.",
+      "The bread becomes visible evidence of how God fed Israel in the wilderness.",
+      "The phrase teaches memory through something concrete, not only through words.",
+    ],
+    "Until They Came Unto The Borders Of Canaan": [
+      "Borders of Canaan means the edge of the promised land.",
+      "The manna continued until Israel reached the land God had promised.",
+      "The phrase shows that the LORD fed His people all the way to the next stage of the promise.",
+    ],
+    "He Hath Triumphed Gloriously": [
+      "Triumphed gloriously means the LORD won a complete and majestic victory.",
+      "Israel is praising God because Egypt's army was defeated at the sea.",
+      "The victory belongs to the LORD, not to Israel's weapons or courage.",
+    ],
+    "The Sanctuary, O Lord": [
+      "Sanctuary means a holy dwelling place for worship.",
+      "The song looks forward to God bringing His people to a place where He will dwell with them.",
+      "Exodus is not only escape from Egypt; it is movement toward life with God.",
+    ],
+    "Thy Hands Have Established": [
+      "Established means firmly set up or made secure.",
+      "The song says God's own hands will secure the place He prepares for His people.",
+      "Israel can trust the LORD to finish what He started.",
+    ],
+    "The Whole Congregation Murmured": [
+      "Whole congregation means the complaint spread through the whole community.",
+      "Murmured means grumbled or complained resentfully.",
+      "Hunger becomes a shared crisis of trust, not just one person's bad mood.",
+    ],
+    "Would To God We Had Died By The Hand Of The LORD": [
+      "Would to God means they wish something had happened.",
+      "The people are saying it would have been better to die in Egypt than face hunger in the wilderness.",
+      "Fear is twisting their memory of rescue into despair.",
+    ],
+    "I Will Rain Bread From Heaven": [
+      "Rain bread from heaven means God will send food down from above.",
+      "Israel cannot grow grain or bake normal bread in the wilderness, so the food must come from the LORD.",
+      "This introduces manna as God's daily provision for hungry people.",
+    ],
+    "At Even, Then Ye Shall Know": [
+      "At even means in the evening.",
+      "God will begin answering their hunger with evening provision so they know He has heard.",
+      "A specific time of day becomes part of learning that the LORD is present.",
+    ],
+    "In The Morning, Then Ye Shall See The Glory Of The LORD": [
+      "In the morning points to when the manna will appear.",
+      "The glory of the LORD means His presence and power will be made visible through provision.",
+      "Breakfast in the wilderness will reveal the Provider.",
+    ],
+    "Your Murmurings Are Not Against Us, But Against The LORD": [
+      "Murmurings are complaints or grumbling words.",
+      "Moses says the complaint is deeper than anger at human leaders.",
+      "Distrustful complaining is really aimed at the LORD who led them.",
+    ],
+    "As Aaron Spake": [
+      "As Aaron spake means while Aaron was speaking.",
+      "The people hear the message, and then God's glory appears in the cloud.",
+      "Aaron's words are immediately joined to the LORD's visible answer.",
+    ],
+    "They Looked Toward The Wilderness": [
+      "The people turn their eyes toward the empty wilderness.",
+      "That place looks like lack, but it becomes the place where God's glory appears.",
+      "God reveals Himself where Israel expects only need.",
+    ],
+    "The Glory Of The LORD Appeared In The Cloud": [
+      "The glory of the LORD means God's visible majesty and presence.",
+      "The cloud is not ordinary weather in this scene.",
+      "The LORD answers complaint by making His nearness visible.",
+    ],
+    "I Have Heard The Murmurings": [
+      "Murmurings means complaints or grumbling words.",
+      "The LORD hears what Israel is saying in hunger and fear.",
+      "God knows their need, but He also hears their distrust.",
+    ],
+    "At Even Ye Shall Eat Flesh": [
+      "At even means in the evening, and flesh here means meat.",
+      "God promises quail in the evening to answer their hunger.",
+      "The wilderness cannot stop the LORD from feeding His people.",
+    ],
+    "In The Morning Ye Shall Be Filled With Bread": [
+      "Filled with bread means they will have enough to satisfy hunger.",
+      "God promises morning bread after the evening quail.",
+      "This begins the daily pattern of manna provision.",
+    ],
+    "Ye Shall Know That I Am The LORD Your God": [
+      "Know here means recognize by experience, not merely hear information.",
+      "The food is meant to teach Israel that the LORD is truly their God in the wilderness.",
+      "Provision is also revelation.",
+    ],
+    "At Even The Quails Came Up": [
+      "Quails are small birds that God provides as meat.",
+      "They come in the evening, just as the LORD had promised.",
+      "God's word becomes food the people can actually eat.",
+    ],
+    "In The Morning The Dew Lay": [
+      "Dew is the moisture that settles on the ground in the morning.",
+      "The manna appears with the morning dew around the camp.",
+      "This describes where Israel first sees the bread from heaven.",
+    ],
+    "A Small Round Thing": [
+      "A small round thing describes what the manna looked like on the ground.",
+      "The food is unfamiliar and humble-looking, not something Israel recognizes at first.",
+      "The wording helps a new reader picture the strange bread God provided.",
+    ],
+    "Let No Man Leave Of It Till The Morning": [
+      "Leave of it till the morning means keep some manna overnight.",
+      "God tells Israel not to save the daily portion for tomorrow.",
+      "Daily bread must be received with daily trust.",
+    ],
+    "On The Sixth Day They Gathered Twice As Much Bread": [
+      "Twice as much means a double portion.",
+      "God gives extra manna on the sixth day so Israel can rest on the seventh.",
+      "The double portion prepares the people to trust God's Sabbath provision.",
+    ],
+    "This Is That Which The LORD Hath Said": [
+      "Moses is explaining that the double portion matches what the LORD already commanded.",
+      "The Sabbath instruction is not Moses inventing a new rule.",
+      "Israel must understand the manna through God's word.",
+    ],
+    "On The Seventh Day, Which Is The Sabbath": [
+      "The seventh day is the Sabbath, the set-apart day of rest.",
+      "Israel must stop gathering because God has already provided enough.",
+      "Former slaves are learning that the LORD builds rest into their week.",
+    ],
+    "On The Seventh Day": [
+      "The seventh day is the Sabbath day of rest.",
+      "Israel's week now has a God-given stop built into it.",
+      "Trust on this day means resting instead of gathering.",
+    ],
+    "The House Of Israel Called The Name Thereof Manna": [
+      "The house of Israel means the people of Israel, and manna is the name they gave the bread.",
+      "The name is connected to their first question, What is it?",
+      "The strange food becomes part of Israel's remembered story.",
+    ],
+  };
+
+  if (exact[title]) return exact[title];
+
+  if (section.reference === "Exodus 16:4-9" && lower.includes("people shall go out")) return ["The People Shall Go Out And Gather means manna will require daily action.", "God provides the bread, but the people must receive it according to His instruction.", "The wilderness meal trains obedience as well as hunger."];
+  if (section.reference === "Exodus 16:4-9" && lower.includes("certain rate")) return ["A Certain Rate Every Day means each day has an appointed amount of bread.", "God is not teaching hoarding or panic gathering.", "He is training Israel to trust measured provision from Him."];
+  if (section.reference === "Exodus 16:4-9" && lower.includes("prove them")) return ["That I May Prove Them means the manna will test Israel's trust and obedience.", "The issue is not whether God can feed them.", "The test is whether they will walk in His instruction day by day."];
+  if (section.reference === "Exodus 16:4-9" && lower.includes("sixth day")) return ["On The Sixth Day introduces the rhythm that will prepare Israel for Sabbath rest.", "God gives extra provision before the day when they must stop gathering.", "The calendar of manna teaches that rest depends on trusting God's word."];
+  if (section.reference === "Exodus 16:13-18" && lower.includes("morning the dew")) return ["In The Morning The Dew Lay describes the setting where manna appears.", "The bread from heaven comes with the morning dew across the camp.", "God's provision arrives quietly and daily in the wilderness."];
+  if (section.reference === "Exodus 16:13-18" && lower.includes("small round thing")) return ["A Small Round Thing describes what Israel first sees on the ground.", "The manna is unfamiliar, humble-looking, and surprising.", "God's provision does not have to look impressive to sustain His people."];
+  if (section.reference === "Exodus 16:13-18" && lower.includes("what is it")) return ["Israel asks this when they first see manna.", "They do not recognize the food God has provided.", "The question becomes part of the name manna and reminds them that God's care can arrive in unfamiliar form."];
+  if (section.reference === "Exodus 16:13-18" && lower.includes("much had nothing over")) return ["He That Gathered Much Had Nothing Over means extra gathering did not create excess.", "God's measured provision leveled the community's need.", "No one could turn manna into a private advantage over others."];
+  if (section.reference === "Exodus 16:13-18" && lower.includes("little had no lack")) return ["He That Gathered Little Had No Lack means smaller gathering did not leave a person hungry.", "God's provision was enough for each household according to need.", "The manna taught sufficiency rather than competition."];
+  if (section.reference === "Exodus 16:19-21" && lower.includes("gathered it every morning")) return ["They Gathered It Every Morning describes the daily rhythm of manna.", "Israel could not stockpile the ordinary daily portion for tomorrow.", "Each morning became a fresh lesson in dependence on the LORD."];
+  if (section.reference === "Exodus 16:22-27" && lower.includes("bake")) return ["Bake That Which Ye Will Bake tells Israel to prepare the double portion before Sabbath.", "The people may cook what they need because no manna will be gathered on the seventh day.", "Preparation becomes part of trusting God's rest."];
+  if (section.reference === "Exodus 16:22-27" && lower.includes("six days")) return ["Six Days Ye Shall Gather It sets the ordinary work pattern for manna.", "God gives bread across the six days and then stops the gathering on the seventh.", "The rhythm teaches work and rest under the LORD's command."];
+  if (section.reference === "Exodus 16:22-27" && lower.includes("there shall be none")) return ["There Shall Be None means manna will not appear on the Sabbath.", "The people must not search for what God said He would not give that day.", "Rest requires believing the double portion was enough."];
+  if (section.reference === "Exodus 16:28-30" && lower.includes("people rested")) return ["The People Rested On The Seventh Day means Israel finally follows the Sabbath pattern.", "After generations of slave labor, rest becomes an act of obedience.", "The people stop because God has provided enough."];
+  if (section.reference === "Exodus 16:28-30" && lower.includes("seventh day")) return ["On The Seventh Day marks the day God set apart for rest.", "Israel's week is now shaped by the LORD's provision and command.", "The day interrupts anxious labor with trust."];
+  if (section.reference === "Exodus 16:31-36" && lower.includes("coriander")) return ["Like Coriander Seed describes manna's appearance by comparing it to a small pale seed.", "The comparison helps us imagine the bread Israel found each morning.", "God's wilderness food is described plainly so the memory can be passed on."];
+  if (section.reference === "Exodus 16:31-36" && lower.includes("wafers")) return ["Wafers Made With Honey describes manna's taste.", "The bread from heaven is not only enough; it is remembered as sweet.", "The detail makes God's provision feel tangible rather than abstract."];
+  if (section.reference === "Exodus 16:31-36" && lower.includes("laid it up")) return ["Laid It Up Before The Testimony means the kept manna is placed before the covenant witness.", "The preserved omer becomes evidence for future generations.", "Israel is meant to remember that the LORD fed them in the wilderness."];
+  if (section.reference === "Exodus 16:31-36" && lower.includes("borders of canaan")) return ["Until They Came Unto The Borders Of Canaan shows how long God's manna care continued.", "The LORD fed Israel through the whole wilderness journey until they reached the land's edge.", "Daily bread became forty years of faithfulness."];
+
+  if (section.chapter === 13 && /(firstborn|firstling|openeth|mine|redeem)/i.test(title)) {
+    return ["Firstborn life is being marked as belonging to the LORD.", "Passover mercy is not left as a memory from one night only.", "Israel must remember that the lives God spared are claimed by the God who rescued them."];
+  }
+  if (section.chapter === 13 && /(bondage|strength of hand|brought|pharaoh)/i.test(title)) {
+    return ["Israel's freedom came from the LORD's power, not from Pharaoh's kindness.", "Egypt had been a house of bondage, and the people could not free themselves.", "The wording keeps rescue, slavery, and God's strong hand tied together."];
+  }
+  if (section.chapter === 13 && /(son|frontlets|sign|mouth|law)/i.test(title)) {
+    return ["The Exodus must be taught clearly to the next generation.", "Children are meant to know why Israel remembers, worships, and obeys this way.", "God's rescue is supposed to shape speech, action, memory, and family instruction."];
+  }
+  if (section.chapter === 13) {
+    return ["God is leading newly freed people with patient care.", "The route, the memory of Joseph, and the pillar all show that Israel is not traveling alone.", "Freedom begins with learning to follow the LORD's presence."];
+  }
+  if (section.chapter === 14 && /(chariot|captain|horse|pursued|pharaoh|egyptian|hardened|heart)/i.test(title)) {
+    return ["Egypt is trying to pull Israel back under its power.", "The chariots make the danger real, but they also set the stage for the LORD's victory.", "Pharaoh's pursuit will end where God displays rescue and judgment at the sea."];
+  }
+  if (section.chapter === 14 && /(sea|waters|dry|wind|rod|divide|forward|ground)/i.test(title)) {
+    return ["The blocked sea becomes the road God opens for His people.", "Israel crosses because the LORD rules the water, not because the people find their own escape.", "The impossible place becomes the path of deliverance."];
+  }
+  if (section.chapter === 14 && /(angel|pillar|cloud|darkness|light)/i.test(title)) {
+    return ["God's presence moves to protect Israel from Egypt.", "The same cloud brings light to the rescued people and darkness to their pursuers.", "The LORD guards behind His people while opening the way ahead."];
+  }
+  if (section.chapter === 14) {
+    return ["The sea scene shows the LORD finishing Israel's deliverance from Egypt.", "The people see that Pharaoh's army cannot reclaim them.", "Fear begins to turn into reverence because God's salvation becomes visible."];
+  }
+  if (section.chapter === 15 && /(sing|song|miriam|timbrel|dance)/i.test(title)) {
+    return ["Rescue turns into worship after the sea victory.", "The people answer God's deliverance with song, music, and public praise.", "The victory is remembered by giving the LORD the glory."];
+  }
+  if (section.chapter === 15 && /(right hand|war|wrath|overthrown|enemy|lead|blast|nostrils|floods|triumphed|rider)/i.test(title)) {
+    return ["The song celebrates the LORD's power over Egypt's army.", "Israel does not praise its own strength or battle skill.", "The LORD is the warrior who defeats the oppressor and saves His people."];
+  }
+  if (section.chapter === 15 && /(holy|wonders|praises|like unto thee|excellency)/i.test(title)) {
+    return ["The song moves from what God did to who God is.", "Israel is learning that the LORD is holy, unmatched, and wonderful in power.", "The sea rescue becomes a revelation of God's character."];
+  }
+  if (section.chapter === 15 && /(mercy|purchased|pass over|bring|plant|inheritance|sanctuary|reign|established)/i.test(title)) {
+    return ["The victory song looks beyond escape toward God's future for Israel.", "The LORD has redeemed His people and will keep leading them.", "Rescue has a destination: life with God as King."];
+  }
+  if (section.chapter === 15) {
+    return ["The wilderness begins testing trust almost immediately after the sea.", "The need is real, but the LORD who opened the water can also provide water.", "Israel must learn dependence after deliverance."];
+  }
+  if (section.chapter === 16 && /(murmur|flesh|bread|kill|died|pots|full|wilderness|congregation)/i.test(title)) {
+    return ["Hunger exposes fear inside the rescued community.", "Israel remembers Egypt's food while forgetting Egypt's bondage.", "The LORD will answer their need while training them not to run back to slave-shaped thinking."];
+  }
+  if (section.chapter === 16 && /(manna|omer|gather|quail|dew|small|what is it|bread|much|little|lack)/i.test(title)) {
+    return ["God provides food in a way that trains daily dependence.", "The people receive enough for each household, but not permission to hoard in fear.", "Manna teaches Israel to trust the Provider one morning at a time."];
+  }
+  if (section.chapter === 16 && /(sabbath|seventh|sixth|rest|commandments|place|stink|worms|morning|sun|bake)/i.test(title)) {
+    return ["The manna instructions teach Israel how to trust and rest.", "God provides enough before the Sabbath so the people can stop gathering.", "Former slaves are learning a rhythm shaped by the LORD, not endless labor."];
+  }
+  return ["This detail adds a concrete piece to Israel's journey after Egypt.", "The surrounding scene shows rescued people learning trust, worship, provision, and obedience.", "The phrase belongs to that movement from deliverance into daily life with the LORD."];
+}
+
+function getDay25FallbackSupportLines(section: PersonalExodusPhraseSectionInput) {
+  if (section.reference.startsWith("Exodus 13")) {
+    return ["Rescue becomes remembered practice", "Firstborn mercy shapes family life", "Children are taught what the LORD did", "Freedom must not be forgotten"];
+  }
+  if (section.reference.startsWith("Exodus 14")) {
+    return ["Israel faces danger at the sea", "The LORD opens the impossible road", "Egypt's pursuit ends in judgment", "The rescued people learn trust"];
+  }
+  if (section.reference.startsWith("Exodus 15")) {
+    return ["Victory becomes worship", "The song names the LORD as Savior", "Egypt's power falls under judgment", "Israel's future rests in God's reign"];
+  }
+  return ["Daily bread trains trust", "The LORD answers hunger in the wilderness", "Enough is given for each household", "Rest becomes part of freedom"];
+}
+
+function removeDay25OpeningPhraseRepeat(title: string, line: string) {
+  const escapedTitle = title.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return line
+    .replace(new RegExp(`^${escapedTitle}\\s+means\\s+`, "i"), "")
+    .replace(new RegExp(`^${escapedTitle}\\s+is\\s+`, "i"), "")
+    .replace(new RegExp(`^${escapedTitle}\\s+names\\s+`, "i"), "")
+    .replace(new RegExp(`^${escapedTitle}\\s+pictures\\s+`, "i"), "")
+    .replace(new RegExp(`^${escapedTitle}\\s+praises\\s+`, "i"), "")
+    .replace(new RegExp(`^${escapedTitle}\\s+states\\s+`, "i"), "")
+    .replace(new RegExp(`^${escapedTitle}\\s+asks\\s+`, "i"), "")
+    .replace(new RegExp(`^${escapedTitle}\\s+looks\\s+`, "i"), "")
+    .replace(new RegExp(`^${escapedTitle}\\s+points\\s+`, "i"), "")
+    .replace(new RegExp(`^${escapedTitle}\\s+declares\\s+`, "i"), "")
+    .replace(new RegExp(`^${escapedTitle}\\s+describes\\s+`, "i"), "")
+    .replace(new RegExp(`^${escapedTitle}\\s+introduces\\s+`, "i"), "")
+    .replace(new RegExp(`^${escapedTitle}\\s+tells\\s+`, "i"), "")
+    .replace(new RegExp(`^${escapedTitle}\\s+sets\\s+`, "i"), "")
+    .replace(new RegExp(`^${escapedTitle}\\s+shows\\s+`, "i"), "")
+    .replace(new RegExp(`^${escapedTitle}\\s+expects\\s+`, "i"), "")
+    .replace(new RegExp(`^${escapedTitle}\\s+says\\s+`, "i"), "")
+    .replace(new RegExp(`^${escapedTitle}\\s+gives\\s+`, "i"), "")
+    .replace(new RegExp(`^${escapedTitle}\\s+belongs\\s+`, "i"), "")
+    .replace(new RegExp(`^${escapedTitle}\\s+makes\\s+`, "i"), "")
+    .replace(new RegExp(`^${escapedTitle}\\s+quotes\\s+`, "i"), "")
+    .replace(new RegExp(`^${escapedTitle}\\s+marks\\s+`, "i"), "")
+    .replace(/^([a-z])/, (letter) => letter.toUpperCase());
+}
+
 function formatDay25PhraseExplanation(section: PersonalExodusPhraseSectionInput, title: string, lines: string[]) {
   const cleaned = removeDay25RepeatedPhraseTitle(title, lines).filter(Boolean);
   const isEmojiLine = (line: string) => /^[^\w\s"']/.test(line.trim());
-  const teachingBullets = getDay25TeachingBullets(section, title);
-  const proseLines = cleaned.filter((line) => !isEmojiLine(line));
+  const teachingBullets = getDay25TeachingBullets(section, title).filter((line) => !isDay25FillerLine(line));
+  const supportLines = teachingBullets.length > 0 ? teachingBullets : getDay25FallbackSupportLines(section);
+  const proseLines = cleaned.filter((line) => !isEmojiLine(line) && !isDay25FillerLine(line));
 
-  const opening = proseLines.slice(0, Math.min(3, proseLines.length));
+  const opening = (proseLines.length > 0 ? proseLines.slice(0, Math.min(3, proseLines.length)) : getDay25SpecificOpening(section, title))
+    .map((line) => removeDay25OpeningPhraseRepeat(title, line));
   const closing = proseLines.slice(opening.length);
 
   return note([
     ...opening,
-    ...teachingBullets,
+    ...supportLines,
     ...closing,
   ].slice(0, 8));
 }
 
 function explainDay25Phrase(section: PersonalExodusPhraseSectionInput, title: string): string {
+  return buildDay25RevisedExplanation(section, title);
+
   const lower = title.toLowerCase();
   const lines: string[] = [];
   const add = (...items: string[]) => {
@@ -1481,13 +2753,16 @@ function formatRenderedDay25Lines(section: PersonalExodusPhraseSectionInput, cle
   const cleaned = removeDay25RepeatedPhraseTitle(cleanTitle, lines)
     .map((line) => line.trim())
     .filter(Boolean);
-  const proseLines = cleaned.filter((line) => !isEmojiLine(line));
-  const opening = proseLines.slice(0, Math.min(3, proseLines.length));
+  const proseLines = cleaned.filter((line) => !isEmojiLine(line) && !isDay25FillerLine(line));
+  const opening = getDay25SpecificOpening(section, cleanTitle)
+    .map((line) => removeDay25OpeningPhraseRepeat(cleanTitle, line));
   const closing = proseLines.slice(opening.length);
+  const teachingBullets = getDay25TeachingBullets(section, cleanTitle).filter((line) => !isDay25FillerLine(line));
+  const supportLines = teachingBullets.length > 0 ? teachingBullets : getDay25FallbackSupportLines(section);
 
   return [
     ...opening,
-    ...getDay25TeachingBullets(section, cleanTitle),
+    ...supportLines,
     ...closing,
   ].slice(0, 8);
 }
@@ -1559,6 +2834,10 @@ function normalizeRepeatedExodusElevenToTwentyLines(sections: PersonalExodusPhra
       ...section,
       phrases: section.phrases.map(([title, content]) => {
         const cleanTitle = title.replace(/^[^A-Za-z0-9']+\s*/, "").trim();
+        if (section.chapter >= 13 && section.chapter <= 16) {
+          return [ensureExodusElevenToTwentyTitleEmoji(title), content] as [string, string];
+        }
+
         const kept: string[] = [];
 
         for (const line of formatExodusElevenToTwentyPhraseExplanation(section, content).split(/\n+/).map((item) => item.trim()).filter(Boolean)) {
@@ -1603,10 +2882,20 @@ function formatExodusElevenToTwentySectionExplanations(sections: PersonalExodusP
   return normalizeRepeatedExodusElevenToTwentyLines(sections.map((section) => ({
     ...section,
     icon: getExodusElevenToTwentySectionIcon(section),
-    phrases: section.phrases.map(([title, content]) => [
-      title,
-      formatExodusElevenToTwentyPhraseExplanation(section, content),
-    ] as [string, string]),
+    phrases: section.phrases.map(([title, content]) => {
+      if (section.chapter >= 13 && section.chapter <= 16) {
+        const cleanTitle = title.replace(/^[^A-Za-z0-9']+\s*/, "").trim();
+        return [
+          ensureExodusElevenToTwentyTitleEmoji(title),
+          buildDay25RevisedExplanation(section, cleanTitle),
+        ] as [string, string];
+      }
+
+      return [
+        title,
+        formatExodusElevenToTwentyPhraseExplanation(section, content),
+      ] as [string, string];
+    }),
   })));
 }
 

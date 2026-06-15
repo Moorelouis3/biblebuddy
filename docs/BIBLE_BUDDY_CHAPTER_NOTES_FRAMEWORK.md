@@ -84,6 +84,29 @@ Do not write repeated formula lines such as:
 
 The card should simply teach the phrase in a warm, direct way.
 
+## Day 25 9.5 Explanation Standard
+
+Day 25 Exodus 13-16 is now the phrase-card quality target for upgraded Bible-in-one-year notes.
+
+For every phrase card:
+
+- Explain like the reader does not already know the Bible word, object, place, ritual, measure, or idiom.
+- Define confusing KJV wording immediately when it matters: examples include "shew," "hath," "ye," "even," "flesh," "murmured," "wroth," "omer," "Sabbath," "sanctuary," "ordinance," and "leavened bread."
+- Answer the hidden question inside the phrase. For example, "No Leavened Bread Be Eaten" should explain what leavened bread is and why it cannot be eaten.
+- Do not rely on the emoji list to do the teaching. If the emoji list is hidden, the explanation paragraphs should still make the phrase clear.
+- Do not rely on the takeaway to fix a weak explanation. If the takeaway is hidden, the explanation paragraphs should still teach the phrase.
+- Do not open by merely repeating the key phrase when the reader needs a definition. Prefer "Leavened bread is bread made with leaven..." over "No Leavened Bread Be Eaten means..."
+- Make every phrase card in a section teach something distinct. A section should not have several cards with the same broad explanation.
+- Use the emoji list to support the explanation, not replace it.
+- Use the takeaway to reinforce the exact phrase, not to add generic recap padding.
+
+Before approving a 9.5 pass, scan the rendered cards for:
+
+- duplicate first explanation lines
+- title-repeat openings
+- filler lines such as "This helps the reader...", "This gives a real detail...", "This phrase shows...", "This phrase explains...", or "part of the passage means..."
+- repeated teaching inside the same section
+
 ## Reader Question Standard
 
 Bible Buddy is a study Bible experience, not a summary app.

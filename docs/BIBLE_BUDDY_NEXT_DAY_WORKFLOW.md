@@ -42,12 +42,15 @@ For each day in the requested range, complete the full checklist before moving t
    - Key phrases must be real phrases from the assigned King James Version text inside BibleBuddy.
    - Do not use single words, names, or topics as key phrases when the feature calls for phrases.
    - Every key phrase heading must include an emoji.
-   - Every phrase explanation must follow the Genesis 1 / Day 37 / Day 38 explanation standard: explain the exact phrase directly, stay on topic, use short paragraphs, and avoid canned framework language.
+   - Every phrase explanation must follow the Genesis 1 / Day 37 / Day 38 explanation standard and the Day 25 9.5 standard: explain the exact phrase directly, define confusing words first, stay on topic, use short paragraphs, and avoid canned framework language.
 
 5. Audit the notes before moving on.
    - No fake generated filler phrases.
    - No repeated fallback openings such as "These words...", "This phrase belongs...", or "A reader should connect...".
    - No repeated generic emoji lists across cards.
+   - No repeated first explanation line across phrase cards in the day unless the exact phrase is intentionally repeated and the second use explains the repetition.
+   - No opening paragraph should simply repeat the key phrase. It should define the hard word, explain the image, identify the object, name the action, or answer the natural reader question.
+   - Hide the emoji list and takeaway sentence. The explanation paragraphs alone must teach the phrase well enough for a new Bible reader.
    - No section under 4 key phrases.
    - No card over 6 verses.
    - Prefer about 150+ phrase cards for a full multi-chapter day when the reading size supports it.
@@ -137,11 +140,19 @@ Reader-note rules:
 - If a split creates a thin card, add beginner-focused key phrases.
 - Phrase cards only. Do not add broad commentary cards such as "What Is Happening Here?", "Why This Detail Matters", "Beginner Connection", "Watch The Pattern", "What This Shows About People", or "What This Shows About God".
 - Use Exodus 1-4 Day 22 as the phrase-card explanation model. Each card must teach the exact phrase in front of the reader, the way Exodus 1:1-6 explains "These Are The Names", "Which Came Into Egypt", "Every Man And His Household", "Seventy Souls", "Joseph Was In Egypt Already", and "Joseph Died, And All His Brethren".
-- Use the corrected Day 24 and Day 25 Exodus cards as the current formatting example for later Exodus days: start with the phrase itself, then explain its meaning in plain language, then use short spaced teaching lines and emoji lists only when they help.
+- Use the corrected Day 24 and Day 25 Exodus cards as the current formatting example for later Exodus days: start by explaining the phrase's meaning in plain language, then use short spaced teaching lines and emoji lists only when they help.
+- Day 25 now sets the 9.5 explanation standard:
+  - Explain like the reader does not already know the Bible word, object, place, ritual, measure, or idiom.
+  - Define confusing KJV wording immediately: examples include "shew," "hath," "ye," "even," "flesh," "murmured," "wroth," "omer," "Sabbath," "sanctuary," "ordinance," and "leavened bread."
+  - Answer the hidden question inside the phrase, such as "What is leavened bread, and why can it not be eaten?" or "What is an omer, and why keep one?"
+  - Make each phrase card in a section teach something distinct. A seven-phrase section should not have seven cards saying the same broad idea.
+  - The emoji list supports the explanation. It must not carry the teaching by itself.
+  - The takeaway reinforces the exact phrase. It must not be generic recap padding.
 - Use the Genesis 1-style Key Phrase format: explain the exact phrase directly, use short spaced lines, add emoji lists only for real listable ideas, and teach the phrase without announcing the framework.
 - Do not start the first sentence by citing the section reference, such as "The Hand Of The LORD in Exodus 9:1-6...". The card title already anchors the phrase. Explain the phrase directly, such as "The Hand Of The LORD means..."
 - Do not write bucket explanations where many cards begin the same way, such as "This verse shows...", "This phrase belongs to...", "is worth slowing down...", "this phrase comes directly...", "not filler...", "This phrase matters because...", "It connects to the larger Bible theme...", or the same recap paragraph repeated across cards.
 - The first sentence of each phrase card should be specific to that exact phrase, not a reusable category label.
+- Avoid openings that only repeat the key phrase, such as "No Leavened Bread Be Eaten means..." when a beginner needs the term explained. Prefer "Leavened bread is bread made with leaven, something like yeast that makes dough rise."
 - Use short paragraph spacing and emoji lists when they genuinely help the reader see parts of the phrase.
 - Think like a Bible beginner:
   - What word is confusing?
@@ -162,6 +173,13 @@ npx tsc --noEmit --pretty false
 npx tsx scripts/audit-bible-year-reader-day.ts --day=XX
 git diff --check
 ```
+
+For a 9.5 run-through, also perform a rendered phrase-card quality scan before final response:
+
+- duplicate first explanation lines: 0
+- title-repeat openings: 0, except intentional repeated phrases handled with different context
+- filler hits: 0 for lines such as "This helps the reader...", "This gives a real detail...", "This phrase shows...", "This phrase explains...", "part of the passage means...", and other reusable padding
+- section-level repetition review completed for every section in the requested day range
 
 The audit must show:
 
