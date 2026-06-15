@@ -2139,13 +2139,8 @@ export default function DashboardJourneyExperience({
   const computedBibleYearOverallPercent = BIBLE_IN_ONE_YEAR_TOTAL_CHAPTERS > 0
     ? Math.min(100, Math.round((completedBibleYearChapters / BIBLE_IN_ONE_YEAR_TOTAL_CHAPTERS) * 100))
     : 0;
-  const expectedBibleYearFinishDate = (() => {
-    const currentDayNumber = Math.max(1, computedBibleYearCurrentDay?.dayNumber ?? 1);
-    const finishDate = new Date();
-    finishDate.setHours(12, 0, 0, 0);
-    finishDate.setDate(finishDate.getDate() + Math.max(0, 365 - currentDayNumber));
-    return finishDate.toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" });
-  })();
+  const formatBibleYearFinishDate = (date: Date) =>
+    date.toLocaleDateString(undefined, { month: "long", day: "numeric", year: "numeric" });
   const bibleYearSchedule = (() => {
     const rawStartDate = profile?.bible_year_started_at || profile?.created_at || null;
     const startDate = rawStartDate ? new Date(rawStartDate) : new Date();
@@ -2161,20 +2156,22 @@ export default function DashboardJourneyExperience({
     const statusDelta = completedDays - targetCompletedDays;
     const statusDirection: "ahead" | "behind" | "on-track" = statusDelta > 0 ? "ahead" : statusDelta < 0 ? "behind" : "on-track";
     const statusDays = Math.abs(statusDelta);
-    const statusLabel =
-      statusDirection === "ahead"
-        ? `${statusDays} ${statusDays === 1 ? "day" : "days"} ahead`
-        : statusDirection === "behind"
-          ? `${statusDays} ${statusDays === 1 ? "day" : "days"} behind`
-          : "On track";
+    const completedPacePerDay = completedDays > 0 ? completedDays / daysElapsed : 0;
+    const remainingReadingDays = Math.max(0, 365 - completedDays);
+    const projectedDaysRemaining = completedDays >= 365
+      ? 0
+      : completedPacePerDay > 0
+        ? Math.ceil(remainingReadingDays / completedPacePerDay)
+        : Math.max(0, 365 - Math.max(1, computedBibleYearCurrentDay?.dayNumber ?? 1));
+    const finishDate = new Date(today);
+    finishDate.setHours(12, 0, 0, 0);
+    finishDate.setDate(finishDate.getDate() + projectedDaysRemaining);
+    const expectedFinishDateLabel = formatBibleYearFinishDate(finishDate);
+    const statusLabel = "Building momentum";
     const statusDetail =
-      statusDirection === "ahead"
-        ? `You started on ${validStartDate.toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" })}. Based on that start date, you would be on Day ${expectedDay}, and you have completed ${completedDays} days.`
-        : statusDirection === "behind"
-          ? `You started on ${validStartDate.toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" })}. Based on that start date, Day ${expectedDay} is the target pace.`
-          : `You started on ${validStartDate.toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" })}. You are right on pace for today.`;
-    const finishDate = new Date(startDay);
-    finishDate.setDate(finishDate.getDate() + 364);
+      completedDays > 0
+        ? `At your current pace, you are headed to finish the Bible on ${expectedFinishDateLabel}. Each completed lesson can move that date closer.`
+        : `Start with today's lesson and Bible Buddy will update your expected finish date as your reading rhythm grows.`;
     return {
       expectedDay,
       statusLabel,
@@ -2182,10 +2179,10 @@ export default function DashboardJourneyExperience({
       statusDays,
       statusDirection,
       startDateLabel: validStartDate.toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" }),
-      expectedFinishDateLabel: finishDate.toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" }),
+      expectedFinishDateLabel,
     };
   })();
-  const effectiveBibleYearReport: BibleYearReport = bibleYearReport ?? {
+  const baseBibleYearReport: BibleYearReport = bibleYearReport ?? {
     currentDay: computedBibleYearCurrentDay?.dayNumber ?? 1,
     currentDayPercent: 0,
     currentDayCompletedChapters: 0,
@@ -2201,7 +2198,16 @@ export default function DashboardJourneyExperience({
     statusDays: bibleYearSchedule.statusDays,
     statusDirection: bibleYearSchedule.statusDirection,
     startDateLabel: bibleYearSchedule.startDateLabel,
-    expectedFinishDateLabel: bibleYearSchedule.expectedFinishDateLabel || expectedBibleYearFinishDate,
+    expectedFinishDateLabel: bibleYearSchedule.expectedFinishDateLabel,
+  };
+  const effectiveBibleYearReport: BibleYearReport = {
+    ...baseBibleYearReport,
+    statusLabel: bibleYearSchedule.statusLabel,
+    statusDetail: bibleYearSchedule.statusDetail,
+    statusDays: bibleYearSchedule.statusDays,
+    statusDirection: "on-track",
+    startDateLabel: baseBibleYearReport.startDateLabel ?? bibleYearSchedule.startDateLabel,
+    expectedFinishDateLabel: bibleYearSchedule.expectedFinishDateLabel,
   };
   const [bibleYearOptionalDiscussionDay, setBibleYearOptionalDiscussionDay] = useState<number | null>(null);
   const [bibleYearReflectionPostedByDay, setBibleYearReflectionPostedByDay] = useState<Record<number, boolean>>({});
@@ -13648,31 +13654,8 @@ Before we understand redemption, we need to understand what God made humanity fo
     return day.reference || day.readings.map((reading) => `${reading.book} ${reading.chapter}`).join(", ");
   }
 
-  function getBibleYearJourneyStatusBannerText(day: GenesisBibleYearDay) {
-    const completedDays = completedBibleYearDays.length;
-    const statusDirection = effectiveBibleYearReport.statusDirection || bibleYearSchedule.statusDirection;
-    const statusDays = Math.max(0, effectiveBibleYearReport.statusDays ?? bibleYearSchedule.statusDays ?? 0);
-    const reportedCurrentDayNumber = Number(effectiveBibleYearReport.currentDay);
-    const currentPlanDayNumber = Number.isFinite(reportedCurrentDayNumber)
-      ? Math.max(1, Math.min(365, reportedCurrentDayNumber))
-      : Math.max(1, Math.min(365, computedBibleYearCurrentDay?.dayNumber ?? day.dayNumber));
-
-    if (completedDays > 0 && completedDays % 25 === 0) {
-      return `You have completed ${completedDays} days of your Bible journey.`;
-    }
-    if (effectiveBibleYearReport.overallPercent > 0 && effectiveBibleYearReport.overallPercent % 10 === 0) {
-      return `You have finished ${effectiveBibleYearReport.overallPercent}% of your Bible reading plan.`;
-    }
-    if (statusDirection === "ahead" && statusDays > 0) {
-      return `You are on Day ${currentPlanDayNumber} and are ${statusDays} ${statusDays === 1 ? "day" : "days"} ahead of your reading plan!`;
-    }
-    if (statusDirection === "behind" && statusDays > 0) {
-      return `You are on Day ${currentPlanDayNumber} and are ${statusDays} ${statusDays === 1 ? "day" : "days"} behind your reading plan.`;
-    }
-    if (completedDays > 0) {
-      return `You are on Day ${currentPlanDayNumber} and have completed ${completedDays} ${completedDays === 1 ? "study" : "studies"}.`;
-    }
-    return `You are on Day ${currentPlanDayNumber} and right on schedule.`;
+  function getBibleYearJourneyStatusBannerText(_day: GenesisBibleYearDay) {
+    return `🏁 Expected Bible Finish Date: ${effectiveBibleYearReport.expectedFinishDateLabel ?? bibleYearSchedule.expectedFinishDateLabel}`;
   }
 
   function renderBibleYearJourneyStatusBanner(day: GenesisBibleYearDay) {

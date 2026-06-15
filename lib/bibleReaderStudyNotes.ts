@@ -69,6 +69,34 @@ import { MATTHEW_1_5_PERSONAL_SECTIONS } from "./matthewOneToFivePersonalNotes";
 import { MATTHEW_6_28_PERSONAL_SECTIONS } from "./matthewSixToTwentyEightPersonalNotes";
 import { MARK_1_16_PERSONAL_SECTIONS } from "./markOneToSixteenPersonalNotes";
 import { LUKE_1_21_PERSONAL_SECTIONS } from "./lukeOneToTwentyOnePersonalNotes";
+import { LUKE_22_24_PERSONAL_SECTIONS } from "./lukeTwentyTwoToTwentyFourPersonalNotes";
+import { JOHN_1_21_PERSONAL_SECTIONS } from "./johnOneToTwentyOnePersonalNotes";
+import { ACTS_1_28_PERSONAL_SECTIONS } from "./actsOneToTwentyEightPersonalNotes";
+import { ROMANS_1_8_PERSONAL_SECTIONS } from "./romansOneToEightPersonalNotes";
+import { ROMANS_9_16_PERSONAL_SECTIONS } from "./romansNineToSixteenPersonalNotes";
+import { FIRST_CORINTHIANS_1_16_PERSONAL_SECTIONS } from "./firstCorinthiansOneToSixteenPersonalNotes";
+import { SECOND_CORINTHIANS_1_13_PERSONAL_SECTIONS } from "./secondCorinthiansOneToThirteenPersonalNotes";
+import { GALATIANS_1_6_PERSONAL_SECTIONS } from "./galatiansOneToSixPersonalNotes";
+import { EPHESIANS_1_6_PERSONAL_SECTIONS } from "./ephesiansOneToSixPersonalNotes";
+import { PHILIPPIANS_1_4_PERSONAL_SECTIONS } from "./philippiansOneToFourPersonalNotes";
+import { COLOSSIANS_1_4_PERSONAL_SECTIONS } from "./colossiansOneToFourPersonalNotes";
+import { FIRST_THESSALONIANS_1_3_PERSONAL_SECTIONS } from "./firstThessaloniansOneToThreePersonalNotes";
+import { FIRST_THESSALONIANS_4_5_PERSONAL_SECTIONS } from "./firstThessaloniansFourToFivePersonalNotes";
+import { SECOND_THESSALONIANS_1_3_PERSONAL_SECTIONS } from "./secondThessaloniansOneToThreePersonalNotes";
+import { FIRST_TIMOTHY_1_6_PERSONAL_SECTIONS } from "./firstTimothyOneToSixPersonalNotes";
+import { SECOND_TIMOTHY_1_4_PERSONAL_SECTIONS } from "./secondTimothyOneToFourPersonalNotes";
+import { TITUS_1_3_PERSONAL_SECTIONS } from "./titusOneToThreePersonalNotes";
+import { PHILEMON_1_PERSONAL_SECTIONS } from "./philemonOnePersonalNotes";
+import { HEBREWS_1_13_PERSONAL_SECTIONS } from "./hebrewsOneToThirteenPersonalNotes";
+import { JAMES_1_5_PERSONAL_SECTIONS } from "./jamesOneToFivePersonalNotes";
+import { FIRST_PETER_1_5_PERSONAL_SECTIONS } from "./firstPeterOneToFivePersonalNotes";
+import { SECOND_PETER_1_3_PERSONAL_SECTIONS } from "./secondPeterOneToThreePersonalNotes";
+import { FIRST_JOHN_1_5_PERSONAL_SECTIONS } from "./firstJohnOneToFivePersonalNotes";
+import { SECOND_JOHN_1_PERSONAL_SECTIONS } from "./secondJohnOnePersonalNotes";
+import { THIRD_JOHN_1_PERSONAL_SECTIONS } from "./thirdJohnOnePersonalNotes";
+import { JUDE_1_PERSONAL_SECTIONS } from "./judeOnePersonalNotes";
+import { REVELATION_1_7_PERSONAL_SECTIONS } from "./revelationOneToSevenPersonalNotes";
+import { REVELATION_8_22_PERSONAL_SECTIONS } from "./revelationEightToTwentyTwoPersonalNotes";
 
 export type BibleReaderStudyNoteCategory = {
   id: string;
@@ -15169,6 +15197,171 @@ function makePersonalLukePhraseSection(section: {
   };
 }
 
+function makePersonalJohnPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "john",
+  };
+}
+
+function makePersonalActsPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "acts",
+  };
+}
+
+function makePersonalRomansPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "romans",
+  };
+}
+
+function makePersonalFirstCorinthiansPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "1 corinthians",
+  };
+}
+
+function makePersonalSecondCorinthiansPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "2 corinthians",
+  };
+}
+
+function makePersonalGalatiansPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "galatians",
+  };
+}
+
+function makePersonalEphesiansPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "ephesians",
+  };
+}
+
+function makePersonalPhilippiansPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "philippians",
+  };
+}
+
+function makePersonalColossiansPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "colossians",
+  };
+}
+
+function makePersonalFirstThessaloniansPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "1 thessalonians",
+  };
+}
+
+function makePersonalPhraseSectionForBook(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}, book: string): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book,
+  };
+}
+
 function applyPersonalGenesisFourThroughTenStudySections() {
   let sections: BibleReaderStudySection[] = [
     makePersonalGenesisPhraseSection({
@@ -20781,6 +20974,118 @@ function applyPersonalLukeOneThroughTwentyOneStudySections() {
   applyPersonalSectionsForBook("luke", 1, 21, LUKE_1_21_PERSONAL_SECTIONS.map(makePersonalLukePhraseSection));
 }
 
+function applyPersonalLukeTwentyTwoThroughTwentyFourStudySections() {
+  applyPersonalSectionsForBook("luke", 22, 24, LUKE_22_24_PERSONAL_SECTIONS.map(makePersonalLukePhraseSection));
+}
+
+function applyPersonalJohnOneThroughTwentyOneStudySections() {
+  applyPersonalSectionsForBook("john", 1, 21, JOHN_1_21_PERSONAL_SECTIONS.map(makePersonalJohnPhraseSection));
+}
+
+function applyPersonalActsOneThroughTwentyEightStudySections() {
+  applyPersonalSectionsForBook("acts", 1, 28, ACTS_1_28_PERSONAL_SECTIONS.map(makePersonalActsPhraseSection));
+}
+
+function applyPersonalRomansOneThroughEightStudySections() {
+  applyPersonalSectionsForBook("romans", 1, 8, ROMANS_1_8_PERSONAL_SECTIONS.map(makePersonalRomansPhraseSection));
+}
+
+function applyPersonalRomansNineThroughSixteenStudySections() {
+  applyPersonalSectionsForBook("romans", 9, 16, ROMANS_9_16_PERSONAL_SECTIONS.map(makePersonalRomansPhraseSection));
+}
+
+function applyPersonalFirstCorinthiansOneThroughSixteenStudySections() {
+  applyPersonalSectionsForBook("1 corinthians", 1, 16, FIRST_CORINTHIANS_1_16_PERSONAL_SECTIONS.map(makePersonalFirstCorinthiansPhraseSection));
+}
+
+function applyPersonalSecondCorinthiansOneThroughThirteenStudySections() {
+  applyPersonalSectionsForBook("2 corinthians", 1, 13, SECOND_CORINTHIANS_1_13_PERSONAL_SECTIONS.map(makePersonalSecondCorinthiansPhraseSection));
+}
+
+function applyPersonalGalatiansOneThroughSixStudySections() {
+  applyPersonalSectionsForBook("galatians", 1, 6, GALATIANS_1_6_PERSONAL_SECTIONS.map(makePersonalGalatiansPhraseSection));
+}
+
+function applyPersonalEphesiansOneThroughSixStudySections() {
+  applyPersonalSectionsForBook("ephesians", 1, 6, EPHESIANS_1_6_PERSONAL_SECTIONS.map(makePersonalEphesiansPhraseSection));
+}
+
+function applyPersonalPhilippiansOneThroughFourStudySections() {
+  applyPersonalSectionsForBook("philippians", 1, 4, PHILIPPIANS_1_4_PERSONAL_SECTIONS.map(makePersonalPhilippiansPhraseSection));
+}
+
+function applyPersonalColossiansOneThroughFourStudySections() {
+  applyPersonalSectionsForBook("colossians", 1, 4, COLOSSIANS_1_4_PERSONAL_SECTIONS.map(makePersonalColossiansPhraseSection));
+}
+
+function applyPersonalFirstThessaloniansOneThroughThreeStudySections() {
+  applyPersonalSectionsForBook("1 thessalonians", 1, 3, FIRST_THESSALONIANS_1_3_PERSONAL_SECTIONS.map(makePersonalFirstThessaloniansPhraseSection));
+}
+
+function applyPersonalFirstThessaloniansFourThroughFiveStudySections() {
+  applyPersonalSectionsForBook("1 thessalonians", 4, 5, FIRST_THESSALONIANS_4_5_PERSONAL_SECTIONS.map((section) => makePersonalPhraseSectionForBook(section, "1 thessalonians")));
+}
+
+function applyPersonalSecondThessaloniansOneThroughThreeStudySections() {
+  applyPersonalSectionsForBook("2 thessalonians", 1, 3, SECOND_THESSALONIANS_1_3_PERSONAL_SECTIONS.map((section) => makePersonalPhraseSectionForBook(section, "2 thessalonians")));
+}
+
+function applyPersonalFirstTimothyOneThroughSixStudySections() {
+  applyPersonalSectionsForBook("1 timothy", 1, 6, FIRST_TIMOTHY_1_6_PERSONAL_SECTIONS.map((section) => makePersonalPhraseSectionForBook(section, "1 timothy")));
+}
+
+function applyPersonalSecondTimothyOneThroughFourStudySections() {
+  applyPersonalSectionsForBook("2 timothy", 1, 4, SECOND_TIMOTHY_1_4_PERSONAL_SECTIONS.map((section) => makePersonalPhraseSectionForBook(section, "2 timothy")));
+}
+
+function applyPersonalTitusOneThroughThreeStudySections() {
+  applyPersonalSectionsForBook("titus", 1, 3, TITUS_1_3_PERSONAL_SECTIONS.map((section) => makePersonalPhraseSectionForBook(section, "titus")));
+}
+
+function applyPersonalPhilemonOneStudySections() {
+  applyPersonalSectionsForBook("philemon", 1, 1, PHILEMON_1_PERSONAL_SECTIONS.map((section) => makePersonalPhraseSectionForBook(section, "philemon")));
+}
+
+function applyPersonalHebrewsOneThroughThirteenStudySections() {
+  applyPersonalSectionsForBook("hebrews", 1, 13, HEBREWS_1_13_PERSONAL_SECTIONS.map((section) => makePersonalPhraseSectionForBook(section, "hebrews")));
+}
+
+function applyPersonalJamesOneThroughFiveStudySections() {
+  applyPersonalSectionsForBook("james", 1, 5, JAMES_1_5_PERSONAL_SECTIONS.map((section) => makePersonalPhraseSectionForBook(section, "james")));
+}
+
+function applyPersonalFirstPeterOneThroughFiveStudySections() {
+  applyPersonalSectionsForBook("1 peter", 1, 5, FIRST_PETER_1_5_PERSONAL_SECTIONS.map((section) => makePersonalPhraseSectionForBook(section, "1 peter")));
+}
+
+function applyPersonalSecondPeterOneThroughThreeStudySections() {
+  applyPersonalSectionsForBook("2 peter", 1, 3, SECOND_PETER_1_3_PERSONAL_SECTIONS.map((section) => makePersonalPhraseSectionForBook(section, "2 peter")));
+}
+
+function applyPersonalFirstJohnOneThroughFiveStudySections() {
+  applyPersonalSectionsForBook("1 john", 1, 5, FIRST_JOHN_1_5_PERSONAL_SECTIONS.map((section) => makePersonalPhraseSectionForBook(section, "1 john")));
+}
+
+function applyPersonalSecondJohnOneStudySections() {
+  applyPersonalSectionsForBook("2 john", 1, 1, SECOND_JOHN_1_PERSONAL_SECTIONS.map((section) => makePersonalPhraseSectionForBook(section, "2 john")));
+}
+
+function applyPersonalThirdJohnOneStudySections() {
+  applyPersonalSectionsForBook("3 john", 1, 1, THIRD_JOHN_1_PERSONAL_SECTIONS.map((section) => makePersonalPhraseSectionForBook(section, "3 john")));
+}
+
+function applyPersonalJudeOneStudySections() {
+  applyPersonalSectionsForBook("jude", 1, 1, JUDE_1_PERSONAL_SECTIONS.map((section) => makePersonalPhraseSectionForBook(section, "jude")));
+}
+
+function applyPersonalRevelationOneThroughSevenStudySections() {
+  applyPersonalSectionsForBook("revelation", 1, 7, REVELATION_1_7_PERSONAL_SECTIONS.map((section) => makePersonalPhraseSectionForBook(section, "revelation")));
+}
+
+function applyPersonalRevelationEightThroughTwentyTwoStudySections() {
+  applyPersonalSectionsForBook("revelation", 8, 22, REVELATION_8_22_PERSONAL_SECTIONS.map((section) => makePersonalPhraseSectionForBook(section, "revelation")));
+}
+
 type ExodusTextureRule = {
   matches: string[];
   lines: string[];
@@ -21596,6 +21901,34 @@ applyPersonalMatthewOneThroughFiveStudySections();
 applyPersonalMatthewSixThroughTwentyEightStudySections();
 applyPersonalMarkOneThroughSixteenStudySections();
 applyPersonalLukeOneThroughTwentyOneStudySections();
+applyPersonalLukeTwentyTwoThroughTwentyFourStudySections();
+applyPersonalJohnOneThroughTwentyOneStudySections();
+applyPersonalActsOneThroughTwentyEightStudySections();
+applyPersonalRomansOneThroughEightStudySections();
+applyPersonalRomansNineThroughSixteenStudySections();
+applyPersonalFirstCorinthiansOneThroughSixteenStudySections();
+applyPersonalSecondCorinthiansOneThroughThirteenStudySections();
+applyPersonalGalatiansOneThroughSixStudySections();
+applyPersonalEphesiansOneThroughSixStudySections();
+applyPersonalPhilippiansOneThroughFourStudySections();
+applyPersonalColossiansOneThroughFourStudySections();
+applyPersonalFirstThessaloniansOneThroughThreeStudySections();
+applyPersonalFirstThessaloniansFourThroughFiveStudySections();
+applyPersonalSecondThessaloniansOneThroughThreeStudySections();
+applyPersonalFirstTimothyOneThroughSixStudySections();
+applyPersonalSecondTimothyOneThroughFourStudySections();
+applyPersonalTitusOneThroughThreeStudySections();
+applyPersonalPhilemonOneStudySections();
+applyPersonalHebrewsOneThroughThirteenStudySections();
+applyPersonalJamesOneThroughFiveStudySections();
+applyPersonalFirstPeterOneThroughFiveStudySections();
+applyPersonalSecondPeterOneThroughThreeStudySections();
+applyPersonalFirstJohnOneThroughFiveStudySections();
+applyPersonalSecondJohnOneStudySections();
+applyPersonalThirdJohnOneStudySections();
+applyPersonalJudeOneStudySections();
+applyPersonalRevelationOneThroughSevenStudySections();
+applyPersonalRevelationEightThroughTwentyTwoStudySections();
 applyPersonalExodusTextureStudySections();
 enforceStudySectionVerseLimit(8);
 

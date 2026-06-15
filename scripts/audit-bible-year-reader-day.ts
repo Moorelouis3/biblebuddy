@@ -68,6 +68,34 @@ import { MATTHEW_1_5_PERSONAL_SECTIONS } from "../lib/matthewOneToFivePersonalNo
 import { MATTHEW_6_28_PERSONAL_SECTIONS } from "../lib/matthewSixToTwentyEightPersonalNotes";
 import { MARK_1_16_PERSONAL_SECTIONS } from "../lib/markOneToSixteenPersonalNotes";
 import { LUKE_1_21_PERSONAL_SECTIONS } from "../lib/lukeOneToTwentyOnePersonalNotes";
+import { LUKE_22_24_PERSONAL_SECTIONS } from "../lib/lukeTwentyTwoToTwentyFourPersonalNotes";
+import { JOHN_1_21_PERSONAL_SECTIONS } from "../lib/johnOneToTwentyOnePersonalNotes";
+import { ACTS_1_28_PERSONAL_SECTIONS } from "../lib/actsOneToTwentyEightPersonalNotes";
+import { ROMANS_1_8_PERSONAL_SECTIONS } from "../lib/romansOneToEightPersonalNotes";
+import { ROMANS_9_16_PERSONAL_SECTIONS } from "../lib/romansNineToSixteenPersonalNotes";
+import { FIRST_CORINTHIANS_1_16_PERSONAL_SECTIONS } from "../lib/firstCorinthiansOneToSixteenPersonalNotes";
+import { SECOND_CORINTHIANS_1_13_PERSONAL_SECTIONS } from "../lib/secondCorinthiansOneToThirteenPersonalNotes";
+import { GALATIANS_1_6_PERSONAL_SECTIONS } from "../lib/galatiansOneToSixPersonalNotes";
+import { EPHESIANS_1_6_PERSONAL_SECTIONS } from "../lib/ephesiansOneToSixPersonalNotes";
+import { PHILIPPIANS_1_4_PERSONAL_SECTIONS } from "../lib/philippiansOneToFourPersonalNotes";
+import { COLOSSIANS_1_4_PERSONAL_SECTIONS } from "../lib/colossiansOneToFourPersonalNotes";
+import { FIRST_THESSALONIANS_1_3_PERSONAL_SECTIONS } from "../lib/firstThessaloniansOneToThreePersonalNotes";
+import { FIRST_THESSALONIANS_4_5_PERSONAL_SECTIONS } from "../lib/firstThessaloniansFourToFivePersonalNotes";
+import { SECOND_THESSALONIANS_1_3_PERSONAL_SECTIONS } from "../lib/secondThessaloniansOneToThreePersonalNotes";
+import { FIRST_TIMOTHY_1_6_PERSONAL_SECTIONS } from "../lib/firstTimothyOneToSixPersonalNotes";
+import { SECOND_TIMOTHY_1_4_PERSONAL_SECTIONS } from "../lib/secondTimothyOneToFourPersonalNotes";
+import { TITUS_1_3_PERSONAL_SECTIONS } from "../lib/titusOneToThreePersonalNotes";
+import { PHILEMON_1_PERSONAL_SECTIONS } from "../lib/philemonOnePersonalNotes";
+import { HEBREWS_1_13_PERSONAL_SECTIONS } from "../lib/hebrewsOneToThirteenPersonalNotes";
+import { JAMES_1_5_PERSONAL_SECTIONS } from "../lib/jamesOneToFivePersonalNotes";
+import { FIRST_PETER_1_5_PERSONAL_SECTIONS } from "../lib/firstPeterOneToFivePersonalNotes";
+import { SECOND_PETER_1_3_PERSONAL_SECTIONS } from "../lib/secondPeterOneToThreePersonalNotes";
+import { FIRST_JOHN_1_5_PERSONAL_SECTIONS } from "../lib/firstJohnOneToFivePersonalNotes";
+import { SECOND_JOHN_1_PERSONAL_SECTIONS } from "../lib/secondJohnOnePersonalNotes";
+import { THIRD_JOHN_1_PERSONAL_SECTIONS } from "../lib/thirdJohnOnePersonalNotes";
+import { JUDE_1_PERSONAL_SECTIONS } from "../lib/judeOnePersonalNotes";
+import { REVELATION_1_7_PERSONAL_SECTIONS } from "../lib/revelationOneToSevenPersonalNotes";
+import { REVELATION_8_22_PERSONAL_SECTIONS } from "../lib/revelationEightToTwentyTwoPersonalNotes";
 
 type PersonalSection = {
   chapter: number;
@@ -120,7 +148,31 @@ type BibleBook =
   | "Malachi"
   | "Matthew"
   | "Mark"
-  | "Luke";
+  | "Luke"
+  | "John"
+  | "Acts"
+  | "Romans"
+  | "1 Corinthians"
+  | "2 Corinthians"
+  | "Galatians"
+  | "Ephesians"
+  | "Philippians"
+  | "Colossians"
+  | "1 Thessalonians"
+  | "2 Thessalonians"
+  | "1 Timothy"
+  | "2 Timothy"
+  | "Titus"
+  | "Philemon"
+  | "Hebrews"
+  | "James"
+  | "1 Peter"
+  | "2 Peter"
+  | "1 John"
+  | "2 John"
+  | "3 John"
+  | "Jude"
+  | "Revelation";
 
 type DayPart = {
   book: BibleBook;
@@ -569,6 +621,142 @@ const DAY_SPECS: Record<number, DaySpec> = {
   298: { book: "Luke", chapters: [13, 14, 15], sections: LUKE_1_21_PERSONAL_SECTIONS },
   299: { book: "Luke", chapters: [16, 17, 18], sections: LUKE_1_21_PERSONAL_SECTIONS },
   300: { book: "Luke", chapters: [19, 20, 21], sections: LUKE_1_21_PERSONAL_SECTIONS },
+  301: { book: "Luke", chapters: [22, 23, 24], sections: LUKE_22_24_PERSONAL_SECTIONS },
+  302: { book: "John", chapters: [1, 2, 3], sections: JOHN_1_21_PERSONAL_SECTIONS },
+  303: { book: "John", chapters: [4, 5, 6], sections: JOHN_1_21_PERSONAL_SECTIONS },
+  304: { book: "John", chapters: [7, 8, 9], sections: JOHN_1_21_PERSONAL_SECTIONS },
+  305: { book: "John", chapters: [10, 11, 12], sections: JOHN_1_21_PERSONAL_SECTIONS },
+  306: { book: "John", chapters: [13, 14, 15], sections: JOHN_1_21_PERSONAL_SECTIONS },
+  307: { book: "John", chapters: [16, 17, 18], sections: JOHN_1_21_PERSONAL_SECTIONS },
+  308: { book: "John", chapters: [19, 20, 21], sections: JOHN_1_21_PERSONAL_SECTIONS },
+  309: { book: "Acts", chapters: [1, 2, 3], sections: ACTS_1_28_PERSONAL_SECTIONS },
+  310: { book: "Acts", chapters: [4, 5, 6], sections: ACTS_1_28_PERSONAL_SECTIONS },
+  311: { book: "Acts", chapters: [7, 8, 9], sections: ACTS_1_28_PERSONAL_SECTIONS },
+  312: { book: "Acts", chapters: [10, 11, 12], sections: ACTS_1_28_PERSONAL_SECTIONS },
+  313: { book: "Acts", chapters: [13, 14, 15], sections: ACTS_1_28_PERSONAL_SECTIONS },
+  314: { book: "Acts", chapters: [16, 17, 18], sections: ACTS_1_28_PERSONAL_SECTIONS },
+  315: { book: "Acts", chapters: [19, 20, 21], sections: ACTS_1_28_PERSONAL_SECTIONS },
+  316: { book: "Acts", chapters: [22, 23, 24], sections: ACTS_1_28_PERSONAL_SECTIONS },
+  317: { book: "Acts", chapters: [25, 26, 27], sections: ACTS_1_28_PERSONAL_SECTIONS },
+  318: {
+    parts: [
+      { book: "Acts", chapters: [28], sections: ACTS_1_28_PERSONAL_SECTIONS },
+      { book: "Romans", chapters: [1, 2], sections: ROMANS_1_8_PERSONAL_SECTIONS },
+    ],
+  },
+  319: { book: "Romans", chapters: [3, 4, 5], sections: ROMANS_1_8_PERSONAL_SECTIONS },
+  320: { book: "Romans", chapters: [6, 7, 8], sections: ROMANS_1_8_PERSONAL_SECTIONS },
+  321: { book: "Romans", chapters: [9, 10, 11], sections: ROMANS_9_16_PERSONAL_SECTIONS },
+  322: { book: "Romans", chapters: [12, 13, 14], sections: ROMANS_9_16_PERSONAL_SECTIONS },
+  323: {
+    parts: [
+      { book: "Romans", chapters: [15, 16], sections: ROMANS_9_16_PERSONAL_SECTIONS },
+      { book: "1 Corinthians", chapters: [1], sections: FIRST_CORINTHIANS_1_16_PERSONAL_SECTIONS },
+    ],
+  },
+  324: { book: "1 Corinthians", chapters: [2, 3, 4], sections: FIRST_CORINTHIANS_1_16_PERSONAL_SECTIONS },
+  325: { book: "1 Corinthians", chapters: [5, 6, 7], sections: FIRST_CORINTHIANS_1_16_PERSONAL_SECTIONS },
+  326: { book: "1 Corinthians", chapters: [8, 9, 10], sections: FIRST_CORINTHIANS_1_16_PERSONAL_SECTIONS },
+  327: { book: "1 Corinthians", chapters: [11, 12, 13], sections: FIRST_CORINTHIANS_1_16_PERSONAL_SECTIONS },
+  328: { book: "1 Corinthians", chapters: [14, 15, 16], sections: FIRST_CORINTHIANS_1_16_PERSONAL_SECTIONS },
+  329: { book: "2 Corinthians", chapters: [1, 2, 3], sections: SECOND_CORINTHIANS_1_13_PERSONAL_SECTIONS },
+  330: { book: "2 Corinthians", chapters: [4, 5, 6], sections: SECOND_CORINTHIANS_1_13_PERSONAL_SECTIONS },
+  331: { book: "2 Corinthians", chapters: [7, 8, 9], sections: SECOND_CORINTHIANS_1_13_PERSONAL_SECTIONS },
+  332: { book: "2 Corinthians", chapters: [10, 11, 12], sections: SECOND_CORINTHIANS_1_13_PERSONAL_SECTIONS },
+  333: {
+    parts: [
+      { book: "2 Corinthians", chapters: [13], sections: SECOND_CORINTHIANS_1_13_PERSONAL_SECTIONS },
+      { book: "Galatians", chapters: [1, 2], sections: GALATIANS_1_6_PERSONAL_SECTIONS },
+    ],
+  },
+  334: { book: "Galatians", chapters: [3, 4, 5], sections: GALATIANS_1_6_PERSONAL_SECTIONS },
+  335: {
+    parts: [
+      { book: "Galatians", chapters: [6], sections: GALATIANS_1_6_PERSONAL_SECTIONS },
+      { book: "Ephesians", chapters: [1, 2], sections: EPHESIANS_1_6_PERSONAL_SECTIONS },
+    ],
+  },
+  336: { book: "Ephesians", chapters: [3, 4, 5], sections: EPHESIANS_1_6_PERSONAL_SECTIONS },
+  337: {
+    parts: [
+      { book: "Ephesians", chapters: [6], sections: EPHESIANS_1_6_PERSONAL_SECTIONS },
+      { book: "Philippians", chapters: [1, 2], sections: PHILIPPIANS_1_4_PERSONAL_SECTIONS },
+    ],
+  },
+  338: {
+    parts: [
+      { book: "Philippians", chapters: [3, 4], sections: PHILIPPIANS_1_4_PERSONAL_SECTIONS },
+      { book: "Colossians", chapters: [1], sections: COLOSSIANS_1_4_PERSONAL_SECTIONS },
+    ],
+  },
+  339: { book: "Colossians", chapters: [2, 3, 4], sections: COLOSSIANS_1_4_PERSONAL_SECTIONS },
+  340: { book: "1 Thessalonians", chapters: [1, 2, 3], sections: FIRST_THESSALONIANS_1_3_PERSONAL_SECTIONS },
+  341: {
+    parts: [
+      { book: "1 Thessalonians", chapters: [4, 5], sections: FIRST_THESSALONIANS_4_5_PERSONAL_SECTIONS },
+      { book: "2 Thessalonians", chapters: [1], sections: SECOND_THESSALONIANS_1_3_PERSONAL_SECTIONS },
+    ],
+  },
+  342: {
+    parts: [
+      { book: "2 Thessalonians", chapters: [2, 3], sections: SECOND_THESSALONIANS_1_3_PERSONAL_SECTIONS },
+      { book: "1 Timothy", chapters: [1], sections: FIRST_TIMOTHY_1_6_PERSONAL_SECTIONS },
+    ],
+  },
+  343: { book: "1 Timothy", chapters: [2, 3, 4], sections: FIRST_TIMOTHY_1_6_PERSONAL_SECTIONS },
+  344: {
+    parts: [
+      { book: "1 Timothy", chapters: [5, 6], sections: FIRST_TIMOTHY_1_6_PERSONAL_SECTIONS },
+      { book: "2 Timothy", chapters: [1], sections: SECOND_TIMOTHY_1_4_PERSONAL_SECTIONS },
+    ],
+  },
+  345: { book: "2 Timothy", chapters: [2, 3, 4], sections: SECOND_TIMOTHY_1_4_PERSONAL_SECTIONS },
+  346: { book: "Titus", chapters: [1, 2, 3], sections: TITUS_1_3_PERSONAL_SECTIONS },
+  347: {
+    parts: [
+      { book: "Philemon", chapters: [1], sections: PHILEMON_1_PERSONAL_SECTIONS },
+      { book: "Hebrews", chapters: [1, 2], sections: HEBREWS_1_13_PERSONAL_SECTIONS },
+    ],
+  },
+  348: { book: "Hebrews", chapters: [3, 4, 5], sections: HEBREWS_1_13_PERSONAL_SECTIONS },
+  349: { book: "Hebrews", chapters: [6, 7, 8], sections: HEBREWS_1_13_PERSONAL_SECTIONS },
+  350: { book: "Hebrews", chapters: [9, 10, 11], sections: HEBREWS_1_13_PERSONAL_SECTIONS },
+  351: {
+    parts: [
+      { book: "Hebrews", chapters: [12, 13], sections: HEBREWS_1_13_PERSONAL_SECTIONS },
+      { book: "James", chapters: [1], sections: JAMES_1_5_PERSONAL_SECTIONS },
+    ],
+  },
+  352: { book: "James", chapters: [2, 3, 4], sections: JAMES_1_5_PERSONAL_SECTIONS },
+  353: {
+    parts: [
+      { book: "James", chapters: [5], sections: JAMES_1_5_PERSONAL_SECTIONS },
+      { book: "1 Peter", chapters: [1, 2], sections: FIRST_PETER_1_5_PERSONAL_SECTIONS },
+    ],
+  },
+  354: { book: "1 Peter", chapters: [3, 4, 5], sections: FIRST_PETER_1_5_PERSONAL_SECTIONS },
+  355: { book: "2 Peter", chapters: [1, 2, 3], sections: SECOND_PETER_1_3_PERSONAL_SECTIONS },
+  356: { book: "1 John", chapters: [1, 2, 3], sections: FIRST_JOHN_1_5_PERSONAL_SECTIONS },
+  357: {
+    parts: [
+      { book: "1 John", chapters: [4, 5], sections: FIRST_JOHN_1_5_PERSONAL_SECTIONS },
+      { book: "2 John", chapters: [1], sections: SECOND_JOHN_1_PERSONAL_SECTIONS },
+    ],
+  },
+  358: {
+    parts: [
+      { book: "3 John", chapters: [1], sections: THIRD_JOHN_1_PERSONAL_SECTIONS },
+      { book: "Jude", chapters: [1], sections: JUDE_1_PERSONAL_SECTIONS },
+      { book: "Revelation", chapters: [1], sections: REVELATION_1_7_PERSONAL_SECTIONS },
+    ],
+  },
+  359: { book: "Revelation", chapters: [2, 3, 4], sections: REVELATION_1_7_PERSONAL_SECTIONS },
+  360: { book: "Revelation", chapters: [5, 6, 7], sections: REVELATION_1_7_PERSONAL_SECTIONS },
+  361: { book: "Revelation", chapters: [8, 9, 10], sections: REVELATION_8_22_PERSONAL_SECTIONS },
+  362: { book: "Revelation", chapters: [11, 12, 13], sections: REVELATION_8_22_PERSONAL_SECTIONS },
+  363: { book: "Revelation", chapters: [14, 15, 16], sections: REVELATION_8_22_PERSONAL_SECTIONS },
+  364: { book: "Revelation", chapters: [17, 18, 19], sections: REVELATION_8_22_PERSONAL_SECTIONS },
+  365: { book: "Revelation", chapters: [20, 21, 22], sections: REVELATION_8_22_PERSONAL_SECTIONS },
 };
 
 function getDayParts(spec: DaySpec): DayPart[] {
