@@ -46,6 +46,9 @@ import { SONG_OF_SOLOMON_1_8_PERSONAL_SECTIONS } from "../lib/songOfSolomonOneTo
 import { ISAIAH_1_15_PERSONAL_SECTIONS } from "../lib/isaiahOneToFifteenPersonalNotes";
 import { ISAIAH_16_66_PERSONAL_SECTIONS } from "../lib/isaiahSixteenToSixtySixPersonalNotes";
 import { JEREMIAH_1_9_PERSONAL_SECTIONS } from "../lib/jeremiahOneToNinePersonalNotes";
+import { JEREMIAH_10_52_PERSONAL_SECTIONS } from "../lib/jeremiahTenToFiftyTwoPersonalNotes";
+import { LAMENTATIONS_1_5_PERSONAL_SECTIONS } from "../lib/lamentationsOneToFivePersonalNotes";
+import { EZEKIEL_1_12_PERSONAL_SECTIONS } from "../lib/ezekielOneToTwelvePersonalNotes";
 
 type PersonalSection = {
   chapter: number;
@@ -80,7 +83,9 @@ type BibleBook =
   | "Ecclesiastes"
   | "Song of Solomon"
   | "Isaiah"
-  | "Jeremiah";
+  | "Jeremiah"
+  | "Lamentations"
+  | "Ezekiel";
 
 type DayPart = {
   book: BibleBook;
@@ -389,6 +394,31 @@ const DAY_SPECS: Record<number, DaySpec> = {
   218: { book: "Jeremiah", chapters: [1, 2, 3], sections: JEREMIAH_1_9_PERSONAL_SECTIONS },
   219: { book: "Jeremiah", chapters: [4, 5, 6], sections: JEREMIAH_1_9_PERSONAL_SECTIONS },
   220: { book: "Jeremiah", chapters: [7, 8, 9], sections: JEREMIAH_1_9_PERSONAL_SECTIONS },
+  221: { book: "Jeremiah", chapters: [10, 11, 12], sections: JEREMIAH_10_52_PERSONAL_SECTIONS },
+  222: { book: "Jeremiah", chapters: [13, 14, 15], sections: JEREMIAH_10_52_PERSONAL_SECTIONS },
+  223: { book: "Jeremiah", chapters: [16, 17, 18], sections: JEREMIAH_10_52_PERSONAL_SECTIONS },
+  224: { book: "Jeremiah", chapters: [19, 20, 21], sections: JEREMIAH_10_52_PERSONAL_SECTIONS },
+  225: { book: "Jeremiah", chapters: [22, 23, 24], sections: JEREMIAH_10_52_PERSONAL_SECTIONS },
+  226: { book: "Jeremiah", chapters: [25, 26, 27], sections: JEREMIAH_10_52_PERSONAL_SECTIONS },
+  227: { book: "Jeremiah", chapters: [28, 29, 30], sections: JEREMIAH_10_52_PERSONAL_SECTIONS },
+  228: { book: "Jeremiah", chapters: [31, 32, 33], sections: JEREMIAH_10_52_PERSONAL_SECTIONS },
+  229: { book: "Jeremiah", chapters: [34, 35, 36], sections: JEREMIAH_10_52_PERSONAL_SECTIONS },
+  230: { book: "Jeremiah", chapters: [37, 38, 39], sections: JEREMIAH_10_52_PERSONAL_SECTIONS },
+  231: { book: "Jeremiah", chapters: [40, 41, 42], sections: JEREMIAH_10_52_PERSONAL_SECTIONS },
+  232: { book: "Jeremiah", chapters: [43, 44, 45], sections: JEREMIAH_10_52_PERSONAL_SECTIONS },
+  233: { book: "Jeremiah", chapters: [46, 47, 48], sections: JEREMIAH_10_52_PERSONAL_SECTIONS },
+  234: { book: "Jeremiah", chapters: [49, 50, 51], sections: JEREMIAH_10_52_PERSONAL_SECTIONS },
+  235: {
+    parts: [
+      { book: "Jeremiah", chapters: [52], sections: JEREMIAH_10_52_PERSONAL_SECTIONS },
+      { book: "Lamentations", chapters: [1, 2], sections: LAMENTATIONS_1_5_PERSONAL_SECTIONS },
+    ],
+  },
+  236: { book: "Lamentations", chapters: [3, 4, 5], sections: LAMENTATIONS_1_5_PERSONAL_SECTIONS },
+  237: { book: "Ezekiel", chapters: [1, 2, 3], sections: EZEKIEL_1_12_PERSONAL_SECTIONS },
+  238: { book: "Ezekiel", chapters: [4, 5, 6], sections: EZEKIEL_1_12_PERSONAL_SECTIONS },
+  239: { book: "Ezekiel", chapters: [7, 8, 9], sections: EZEKIEL_1_12_PERSONAL_SECTIONS },
+  240: { book: "Ezekiel", chapters: [10, 11, 12], sections: EZEKIEL_1_12_PERSONAL_SECTIONS },
 };
 
 function getDayParts(spec: DaySpec): DayPart[] {

@@ -1828,7 +1828,7 @@ ${body}`;
 }
 
 function getReaderAlignedStudySections(day: GenesisBibleYearDay, fallback: BibleYearDeepStudySection[] | null | undefined) {
-  if (day.dayNumber < 1 || day.dayNumber > 220) return fallback ?? null;
+  if (day.dayNumber < 1 || day.dayNumber > 240) return fallback ?? null;
 
   const readerSections = day.readings.flatMap((reading) =>
     getBibleReaderStudySections(reading.book, reading.chapter).map((section) => ({

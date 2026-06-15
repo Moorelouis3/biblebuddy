@@ -2772,7 +2772,7 @@ export default function DashboardJourneyExperience({
     105: "Trust",
   };
   const bibleYearStudyPlanMilestones = GENESIS_BIBLE_IN_ONE_YEAR_SERIES
-    .filter((day) => day.dayNumber <= 105)
+    .filter((day) => day.dayNumber <= 220)
     .map((day) => ({
       dayNumber: day.dayNumber,
       label: bibleYearStudyPlanMilestoneLabels[day.dayNumber] || day.title,
@@ -11438,6 +11438,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 title={audio.title}
                 durationLabel={audio.estimatedDuration}
                 storagePath={audio.storagePath}
+                videoSrc={audio.videoSrc}
                 userId={userId}
                 videoId={`bible-year-day-${day.dayNumber}`}
                 compactMediaControls

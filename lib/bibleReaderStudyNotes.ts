@@ -47,6 +47,9 @@ import { SONG_OF_SOLOMON_1_8_PERSONAL_SECTIONS } from "./songOfSolomonOneToEight
 import { ISAIAH_1_15_PERSONAL_SECTIONS } from "./isaiahOneToFifteenPersonalNotes";
 import { ISAIAH_16_66_PERSONAL_SECTIONS } from "./isaiahSixteenToSixtySixPersonalNotes";
 import { JEREMIAH_1_9_PERSONAL_SECTIONS } from "./jeremiahOneToNinePersonalNotes";
+import { JEREMIAH_10_52_PERSONAL_SECTIONS } from "./jeremiahTenToFiftyTwoPersonalNotes";
+import { LAMENTATIONS_1_5_PERSONAL_SECTIONS } from "./lamentationsOneToFivePersonalNotes";
+import { EZEKIEL_1_12_PERSONAL_SECTIONS } from "./ezekielOneToTwelvePersonalNotes";
 
 export type BibleReaderStudyNoteCategory = {
   id: string;
@@ -14877,6 +14880,36 @@ function makePersonalJeremiahPhraseSection(section: {
   };
 }
 
+function makePersonalLamentationsPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "lamentations",
+  };
+}
+
+function makePersonalEzekielPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "ezekiel",
+  };
+}
+
 function applyPersonalGenesisFourThroughTenStudySections() {
   let sections: BibleReaderStudySection[] = [
     makePersonalGenesisPhraseSection({
@@ -20336,6 +20369,45 @@ function applyPersonalJeremiahOneThroughNineStudySections() {
   BIBLE_READER_STUDY_SECTIONS.push(...sections);
 }
 
+function applyPersonalJeremiahTenThroughFiftyTwoStudySections() {
+  const sections = JEREMIAH_10_52_PERSONAL_SECTIONS.map(makePersonalJeremiahPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "jeremiah" && section.chapter >= 10 && section.chapter <= 52) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalLamentationsOneThroughFiveStudySections() {
+  const sections = LAMENTATIONS_1_5_PERSONAL_SECTIONS.map(makePersonalLamentationsPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "lamentations" && section.chapter >= 1 && section.chapter <= 5) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalEzekielOneThroughTwelveStudySections() {
+  const sections = EZEKIEL_1_12_PERSONAL_SECTIONS.map(makePersonalEzekielPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "ezekiel" && section.chapter >= 1 && section.chapter <= 12) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
 type ExodusTextureRule = {
   matches: string[];
   lines: string[];
@@ -21129,6 +21201,9 @@ applyPersonalSongOfSolomonOneThroughEightStudySections();
 applyPersonalIsaiahOneThroughFifteenStudySections();
 applyPersonalIsaiahSixteenThroughSixtySixStudySections();
 applyPersonalJeremiahOneThroughNineStudySections();
+applyPersonalJeremiahTenThroughFiftyTwoStudySections();
+applyPersonalLamentationsOneThroughFiveStudySections();
+applyPersonalEzekielOneThroughTwelveStudySections();
 applyPersonalExodusTextureStudySections();
 enforceStudySectionVerseLimit(8);
 
