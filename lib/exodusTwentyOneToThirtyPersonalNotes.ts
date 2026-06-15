@@ -16,6 +16,42 @@ const note = (lines: string[]) => lines.join("\n\n");
 const phrase = (title: string, lines: string[]): [string, string] => [title, note(lines)];
 
 function getExodusTwentyOneToThirtyTitleIcon(title: string) {
+  if (/this is the thing|from the children|day by day|cubit|sanctify them|neither shall ye make|whosoever compoundeth|tempered together|beat some of it/i.test(title)) return "\u{1F4DC}";
+  if (/pour it upon his head/i.test(title)) return "\u{1F56F}\u{FE0F}";
+  if (/that they die not/i.test(title)) return "\u{26A0}\u{FE0F}";
+  if (/wash|laver|water|hands|feet/i.test(title)) return "\u{1F4A7}";
+  if (/garment|coat|girdle|bonnet|breeches|mitre/i.test(title)) return "\u{1F455}";
+  if (/anoint|oil|lamps|morning|even|light/i.test(title)) return "\u{1F56F}\u{FE0F}";
+  if (/bullock|ram|lamb|blood|sin offering|burnt offering|sacrifice|altar|horn|atonement|consecration|sweet savour|fat|rump|shoulder|flesh|ear|caul|hin of wine/i.test(title)) return "\u{1FA78}";
+  if (/bread|loaf|cake|basket|unleavened|wafer|flour/i.test(title)) return "\u{1F35E}";
+  if (/priest|aaron|sons|hallow|consecrate|holy|most holy|office/i.test(title)) return "\u{1F451}";
+  if (/incense|perfume|spices|stacte|onycha|galbanum|myrrh|cinnamon|calamus|apothecary/i.test(title)) return "\u{1F32B}\u{FE0F}";
+  if (/shekel|ransom|rich|poor|sum|memorial|plague|give less/i.test(title)) return "\u{1FA99}";
+  if (/tabernacle|door|veil|testimony|meet|dwell|brought them forth/i.test(title)) return "\u{1F3D5}\u{FE0F}";
+  if (/sanctuary|dwell among|shew thee|pattern|taken from it|one side|other side|one ring|middle bar|vail|veil|door of the tent|without the vail|that it may be one|so shall they make it/i.test(title)) return "\u{1F3D5}\u{FE0F}";
+  if (/rams' skins|badgers' skins|tenons|coupled|cunning work|wreathen|ouches|chains|ends|foursquare|span|habergeon|coats|girdles|bonnets|breeches/i.test(title)) return "\u{1F9F5}";
+  if (/pans|ashes|vessels|altar|come near unto the altar/i.test(title)) return "\u{1FA78}";
+  if (/evening to morning|oil|light|sound shall be heard/i.test(title)) return "\u{1F56F}\u{FE0F}";
+  if (/minister unto me|glory and for beauty|spirit of wisdom|shoulderpieces|urim|thummim|accepted before the lord|bear not iniquity|and die/i.test(title)) return "\u{1F451}";
+  if (/sardius|topaz|carbuncle|beryl|jasper|every one with his name|engravings of a signet/i.test(title)) return "\u{1F48E}";
+  if (/appoint thee a place|refuge/i.test(title)) return "\u{1F3C3}";
+  if (/gored a son|cast their young|barren/i.test(title)) return "\u{1F9D2}";
+  if (/if it be known|in time past/i.test(title)) return "\u{1F441}\u{FE0F}";
+  if (/the dead shall be his own/i.test(title)) return "\u{1F402}";
+  if (/breaking up/i.test(title)) return "\u{1F3E0}";
+  if (/endow her/i.test(title)) return "\u{1F48D}";
+  if (/witch|other gods|their gods|snare|bow down/i.test(title)) return "\u{1F6AB}";
+  if (/afflict|cry|wrath|gracious|poor|fatherless|widow/i.test(title)) return "\u{1F494}";
+  if (/usurer|gift|bribe|money|silver/i.test(title)) return "\u{1FA99}";
+  if (/curse the ruler|revile/i.test(title)) return "\u{1F5E3}\u{FE0F}";
+  if (/delay to offer|firstborn|holy men|flesh that is torn/i.test(title)) return "\u{1F56F}\u{FE0F}";
+  if (/multitude|answered with one voice|elders/i.test(title)) return "\u{1F465}";
+  if (/six years thou shalt sow|six days thou shalt do|three times|feast|harvest|ingathering/i.test(title)) return "\u{1F4C5}";
+  if (/keep thee in the way|obey his voice|my name is in him|little and little|set thy bounds|dwell in thy land/i.test(title)) return "\u{1F9ED}";
+  if (/send my fear|drive them out/i.test(title)) return "\u{1F6E1}\u{FE0F}";
+  if (/make thee sin/i.test(title)) return "\u{26A0}\u{FE0F}";
+  if (/pillars/i.test(title)) return "\u{1F5FF}";
+  if (/sprinkled/i.test(title)) return "\u{1FA78}";
   if (/servant|maid|master|manservant|bondman|bondwoman|slave/i.test(title)) return "⚖️";
   if (/smite|kill|death|life|eye|tooth|hand|foot|burning|wound|stripe|hurt/i.test(title)) return "⚖️";
   if (/if a man|if men|come presumptuously|stealeth|curseth|strive|slay|wicked/i.test(title)) return "⚖️";
@@ -1208,58 +1244,563 @@ function isDays27To29FillerLine(line: string) {
 function makeDays27To29OpeningLineUnique(line: string, title: string, section: PersonalExodusPhraseSectionInput) {
   const startsWithTitle = line.toLowerCase().startsWith(title.toLowerCase());
   const adjusted = startsWithTitle ? `The wording ${line.charAt(0).toLowerCase()}${line.slice(1)}` : line;
-  return `${adjusted} This belongs to the ${section.title} section.`;
+  return adjusted;
+}
+
+function getDay27ShortTeachingBullets(section: PersonalExodusPhraseSectionInput, title: string) {
+  const lower = title.toLowerCase();
+
+  if (section.reference === "Exodus 21:1-6" || section.reference === "Exodus 21:7-11") {
+    return ["\u{2696}\u{FE0F} Service has limits", "\u{1F3E0} Households must act justly", "\u{1F6E1}\u{FE0F} Vulnerable people are protected", "\u{1F4DC} The LORD sets the terms"];
+  }
+  if (section.chapter === 21) {
+    return ["\u{2696}\u{FE0F} Harm must be judged", "\u{1F9FE} Responsibility has a cost", "\u{1F6E1}\u{FE0F} Life must be protected", "\u{1F91D} Justice repairs what it can"];
+  }
+  if (section.reference === "Exodus 22:1-6" || section.reference === "Exodus 22:7-12" || section.reference === "Exodus 22:13-15") {
+    return ["\u{1F9FE} Restitution repairs loss", "\u{1F3E0} Neighbor property matters", "\u{2696}\u{FE0F} Context matters in judgment", "\u{1F91D} Trust must be protected"];
+  }
+  if (section.reference === "Exodus 22:16-21" || section.reference === "Exodus 22:22-27" || section.reference === "Exodus 22:28-31") {
+    return ["\u{1F6E1}\u{FE0F} The vulnerable are protected", "\u{1F494} God hears affliction", "\u{1F932} Mercy shapes justice", "\u{1F64C} Holiness reaches daily life"];
+  }
+  if (section.reference === "Exodus 23:1-6" || section.reference === "Exodus 23:7-9") {
+    return ["\u{1F5E3}\u{FE0F} Truth matters in court", "\u{2696}\u{FE0F} Justice must not bend", "\u{1F6AB} Bribes corrupt judgment", "\u{1F6E1}\u{FE0F} The stranger must not be oppressed"];
+  }
+  if (section.reference === "Exodus 23:10-15" || section.reference === "Exodus 23:16-19") {
+    return ["\u{1F6D1} Rest belongs to the LORD", "\u{1F33E} Harvest becomes worship", "\u{1F35E} Feasts remember rescue", "\u{1F4C5} Israel's calendar is holy"];
+  }
+  if (section.reference === "Exodus 23:20-25" || section.reference === "Exodus 23:26-31" || section.reference === "Exodus 23:32-33") {
+    return ["\u{1F9ED} The LORD leads the way", "\u{1F6AB} False gods are a danger", "\u{1F3DE}\u{FE0F} The land is received by trust", "\u{1F6E1}\u{FE0F} God guards His people"];
+  }
+  if (section.reference === "Exodus 24:1-6" || section.reference === "Exodus 24:7-8") {
+    return ["\u{1F4DC} Covenant words are heard", "\u{1FA78} Blood marks the covenant", "\u{1F5E3}\u{FE0F} The people answer", "\u{1F64C} Worship confirms the promise"];
+  }
+  if (section.reference === "Exodus 24:9-14" || section.reference === "Exodus 24:15-18") {
+    return ["\u{26F0}\u{FE0F} Sinai is holy ground", "\u{2601}\u{FE0F} The cloud covers the mountain", "\u{1F525} Glory appears like fire", "\u{1F4DC} Moses receives God's word"];
+  }
+
+  return getDays27To29TeachingBullets(section, title);
+}
+
+function getDay27ShortClosing(section: PersonalExodusPhraseSectionInput, title: string) {
+  const lower = title.toLowerCase();
+
+  if (section.reference === "Exodus 21:1-6" || section.reference === "Exodus 21:7-11") return "A redeemed people must not copy Egypt's cruelty.";
+  if (section.chapter === 21 && /ox|pit|sum|ransom|pay|known|owner|gore|push/.test(lower)) return "Known danger and real damage bring real responsibility.";
+  if (section.chapter === 21) return "God's law protects life and restrains harm.";
+  if (section.reference === "Exodus 22:1-6" || section.reference === "Exodus 22:7-12" || section.reference === "Exodus 22:13-15") return "Justice includes repairing what was taken or damaged.";
+  if (section.reference === "Exodus 22:16-21" || section.reference === "Exodus 22:22-27" || section.reference === "Exodus 22:28-31") return "Holiness protects people who could easily be exploited.";
+  if (section.reference === "Exodus 23:1-6" || section.reference === "Exodus 23:7-9") return "Covenant justice must tell the truth.";
+  if (section.reference === "Exodus 23:10-15" || section.reference === "Exodus 23:16-19") return "Israel's time, work, and harvest belong to the LORD.";
+  if (section.reference === "Exodus 23:20-25" || section.reference === "Exodus 23:26-31" || section.reference === "Exodus 23:32-33") return "The promised land must not pull Israel into false worship.";
+  if (section.reference === "Exodus 24:1-6" || section.reference === "Exodus 24:7-8") return "The covenant is heard, accepted, and marked with blood.";
+  if (section.reference === "Exodus 24:9-14" || section.reference === "Exodus 24:15-18") return "God's nearness is glorious, holy, and never casual.";
+
+  return "The LORD is shaping rescued people into a just and holy community.";
+}
+
+function getDay28ShortTeachingBullets(section: PersonalExodusPhraseSectionInput, title: string) {
+  const lower = title.toLowerCase();
+
+  if (section.chapter === 25 && /offering|willingly|heart|gold|silver|brass|blue|purple|scarlet|oil|spices|onyx|stones/.test(lower)) {
+    return ["\u{1F381} Gifts are brought willingly", "\u{1F48E} Valuable materials are given", "\u{1F56F}\u{FE0F} Oil and spices serve worship", "\u{1F3D5}\u{FE0F} God is preparing a dwelling place"];
+  }
+  if (section.chapter === 25 && /sanctuary|dwell|pattern|ark|mercy seat|cherub|testimony|meet|commune/.test(lower)) {
+    return ["\u{1F3D5}\u{FE0F} The sanctuary is God's dwelling", "\u{1F4E6} The ark holds the testimony", "\u{1F64F} Mercy is at the center", "\u{1FAE1} God promises to meet His people"];
+  }
+  if (section.chapter === 25) {
+    return ["\u{1F35E} Bread stands before the LORD", "\u{1F56F}\u{FE0F} Light fills the holy place", "\u{1F7E1} Gold marks holy service", "\u{1F4DC} Every detail follows God's command"];
+  }
+  if (section.chapter === 26) {
+    return ["\u{1F3D5}\u{FE0F} The tabernacle is a holy tent", "\u{1F9F5} Curtains and coverings are ordered", "\u{1F6AA} The veil guards holy access", "\u{2728} Beauty serves God's presence"];
+  }
+  if (section.chapter === 27) {
+    if (section.reference === "Exodus 27:21-21") {
+      return ["\u{1F56F}\u{FE0F} The lamp is tended continually", "\u{1F307} Evening to morning", "\u{1F451} Aaron and his sons serve", "\u{1F4DC} The command continues for Israel"];
+    }
+    return ["\u{1FA78} The altar points to sacrifice", "\u{1F6A7} The court marks holy boundaries", "\u{1F56F}\u{FE0F} The lamp gives steady light", "\u{1F64C} Worship follows God's pattern"];
+  }
+  if (section.chapter === 28 && /ephod|breastplate|stones|names|urim|thummim|shoulder|heart/.test(lower)) {
+    return ["\u{1F455} Priestly garments mark holy service", "\u{1F48E} Israel's names are carried before God", "\u{1F64F} The priest represents the people", "\u{1F451} Holiness belongs to the LORD"];
+  }
+  if (section.chapter === 28) {
+    return ["\u{1F455} The priest is dressed for holy service", "\u{1F451} Aaron serves before the LORD", "\u{1F64F} The priest represents Israel", "\u{26A0}\u{FE0F} God's holiness is serious"];
+  }
+
+  return getDays27To29TeachingBullets(section, title);
+}
+
+function getDay28ShortClosing(section: PersonalExodusPhraseSectionInput, title: string) {
+  const lower = title.toLowerCase();
+
+  if (section.chapter === 25 && /offering|willingly|heart|gold|silver|brass|blue|purple|scarlet|oil|spices|onyx|stones/.test(lower)) return "Worship begins with willing gifts for God's dwelling place.";
+  if (section.chapter === 25 && /sanctuary|dwell|pattern|ark|mercy seat|cherub|testimony|meet|commune/.test(lower)) return "The center of Israel's camp is God's holy presence and mercy.";
+  if (section.chapter === 25) return "The holy place teaches provision, light, beauty, and order before the LORD.";
+  if (section.chapter === 26 && /vail|veil|most holy|holy place/.test(lower)) return "The veil teaches that nearness to God is holy and guarded.";
+  if (section.chapter === 26) return "God's dwelling place is built with order, beauty, and holiness.";
+  if (section.chapter === 27 && /altar|offering|blood|horn|ashes/.test(lower)) return "Approach to God begins with sacrifice.";
+  if (section.chapter === 27 && /court|hanging|gate|pillars|sockets/.test(lower)) return "The court marks the boundary around holy worship.";
+  if (section.chapter === 27) return "The lamp keeps light burning before the LORD.";
+  if (section.chapter === 28 && /names|stones|breastplate|ephod|shoulder|heart/.test(lower)) return "The priest carries Israel before the LORD.";
+  if (section.chapter === 28) return "Priestly service must be marked by holiness.";
+
+  return "The LORD teaches Israel how to worship near His presence.";
+}
+
+function getDay29ShortTeachingBullets(section: PersonalExodusPhraseSectionInput, title: string) {
+  const lower = title.toLowerCase();
+
+  if (section.reference === "Exodus 29:1-6" || section.reference === "Exodus 29:7-9") {
+    return ["\u{1F4A7} Priests are washed", "\u{1F455} Priests are clothed", "\u{1F56F}\u{FE0F} Oil marks holy service", "\u{1F451} Aaron's house is set apart"];
+  }
+  if (section.reference === "Exodus 29:10-15" || section.reference === "Exodus 29:16-21" || section.reference === "Exodus 29:22-27") {
+    return ["\u{1FA78} Blood marks consecration", "\u{1F525} Sacrifice is offered to God", "\u{1F450} Priests identify with the offering", "\u{1F451} Holy service begins with atonement"];
+  }
+  if (section.reference === "Exodus 29:28-28" || section.reference === "Exodus 29:29-34") {
+    return ["\u{1F4DC} The priestly portion is commanded", "\u{1F35E} Holy food stays holy", "\u{1F451} The priesthood continues", "\u{1F6AB} Strangers may not eat it"];
+  }
+  if (section.reference === "Exodus 29:35-40" || section.reference === "Exodus 29:41-46") {
+    return ["\u{1FA78} Daily offerings continue", "\u{1F307} Morning and evening worship", "\u{1F3D5}\u{FE0F} God meets His people", "\u{1F64C} The LORD dwells with Israel"];
+  }
+  if (section.reference === "Exodus 30:1-6" || section.reference === "Exodus 30:7-10") {
+    return ["\u{1F32B}\u{FE0F} Incense rises before God", "\u{1F56F}\u{FE0F} Lamps are tended daily", "\u{1F6AA} Worship happens near the veil", "\u{1F4DC} The altar follows God's command"];
+  }
+  if (section.reference === "Exodus 30:11-16") {
+    return ["\u{1FA99} Every life is counted", "\u{2696}\u{FE0F} Rich and poor give alike", "\u{1FA78} Atonement protects the people", "\u{1F4DC} The ransom belongs to the LORD"];
+  }
+  if (section.reference === "Exodus 30:17-21") {
+    return ["\u{1F4A7} Washing comes before service", "\u{270B} Hands and feet are cleansed", "\u{26A0}\u{FE0F} Holy service is serious", "\u{1F451} Priests approach God's way"];
+  }
+  if (section.reference === "Exodus 30:22-27" || section.reference === "Exodus 30:28-33") {
+    return ["\u{1F56F}\u{FE0F} Oil marks holy service", "\u{1F33F} Spices are set apart", "\u{1F3D5}\u{FE0F} The tabernacle is consecrated", "\u{1F6AB} Holy oil is not common"];
+  }
+  if (section.reference === "Exodus 30:34-38") {
+    return ["\u{1F32B}\u{FE0F} Incense is holy", "\u{1F33F} Fragrance belongs to worship", "\u{1F4DC} God gives the recipe", "\u{1F6AB} It must not be copied"];
+  }
+
+  if (/incense|perfume|spices/.test(lower)) return ["\u{1F32B}\u{FE0F} Fragrance is set apart", "\u{1F64C} It belongs to worship", "\u{1F4DC} God gives the terms", "\u{1F6AB} Holy things are not common"];
+  return ["\u{1F451} Priests are set apart", "\u{1FA78} Sacrifice deals with sin", "\u{1F3D5}\u{FE0F} God meets His people", "\u{1F4DC} Worship follows God's command"];
+}
+
+function getDay29ShortClosing(section: PersonalExodusPhraseSectionInput, title: string) {
+  const lower = title.toLowerCase();
+
+  if (section.reference === "Exodus 29:1-6" || section.reference === "Exodus 29:7-9") return "Priests are prepared by washing, clothing, and anointing.";
+  if (section.reference === "Exodus 29:10-15" || section.reference === "Exodus 29:16-21" || section.reference === "Exodus 29:22-27") return "Priestly service begins with sacrifice and blood.";
+  if (section.reference === "Exodus 29:28-28" || section.reference === "Exodus 29:29-34") return "Holy portions are treated as holy because they belong to God.";
+  if (section.reference === "Exodus 29:35-40" || section.reference === "Exodus 29:41-46") return "Daily worship keeps Israel near the LORD by His mercy.";
+  if (section.reference === "Exodus 30:1-6" || section.reference === "Exodus 30:7-10") return "Incense marks daily worship near the veil.";
+  if (section.reference === "Exodus 30:11-16") return "Every life is counted before the LORD.";
+  if (section.reference === "Exodus 30:17-21") return "Priests must be washed before holy service.";
+  if (section.reference === "Exodus 30:22-27" || section.reference === "Exodus 30:28-33") return "Holy oil marks what belongs to God's service.";
+  if (section.reference === "Exodus 30:34-38") return "Holy incense belongs to worship before the LORD.";
+  if (/blood|atonement/.test(lower)) return "Holy service depends on atonement.";
+
+  return "The LORD teaches Israel to treat holy service as holy.";
 }
 
 function getDays27To29SpecificOpening(section: PersonalExodusPhraseSectionInput, title: string) {
   const lower = title.toLowerCase();
 
+  if (section.chapter >= 29 && section.chapter <= 30) {
+    if (lower.includes("this is the thing")) return ["This introduces the ceremony that will set Aaron and his sons apart.", "Priestly service begins because God commands it, not because Aaron chooses it for himself."];
+    if (lower.includes("to hallow them")) return ["Hallow means set apart as holy for the LORD.", "Aaron and his sons must be made ready before they serve as priests."];
+    if (lower.includes("young bullock") || lower.includes("bullock")) return ["A bullock is a young bull brought for sacrifice.", "The priestly ceremony begins with sin being dealt with before God."];
+    if (lower.includes("two rams") || lower === "one ram") return ["A ram is a male sheep used for sacrifice.", "The rams are part of setting the priests apart for holy service."];
+    if (lower.includes("without blemish")) return ["Without blemish means without defect.", "The animal brought to the LORD must not be damaged or careless."];
+    if (lower.includes("unleavened bread")) return ["Unleavened bread is bread made without leaven, so it does not rise.", "This bread is brought with the sacrifices as part of the consecration ceremony."];
+    if (lower.includes("cakes unleavened") || lower.includes("wafers unleavened")) return ["These are unleavened bread pieces used in the priestly offering.", "Even the food in the ceremony is prepared as God commands."];
+    if (lower.includes("mingled with oil") || lower.includes("anointed with oil")) return ["Oil is added to the bread for the holy offering.", "The food is not ordinary table bread; it belongs to worship."];
+    if (lower.includes("wheaten flour")) return ["Wheaten flour is fine wheat flour used to make the offering bread.", "The materials for the ceremony are named because worship follows God's order."];
+    if (lower.includes("bring them in the basket")) return ["The bread is carried in a basket to the tabernacle.", "The basket brings the prepared food into the priestly ceremony."];
+    if (lower.includes("wash them with water")) return ["Washing with water prepares the priests for holy service.", "Before Aaron and his sons are clothed, they are cleansed."];
+    if (lower.includes("put upon aaron the holy garments")) return ["Aaron is dressed in garments set apart for priestly service.", "His clothing marks that he is serving before the LORD."];
+    if (lower.includes("garments, and the anointing oil")) return ["The garments and oil are both signs of priestly consecration.", "Aaron is clothed and anointed for service that belongs to God."];
+    if (lower.includes("take the anointing oil")) return ["The anointing oil is the holy oil used to mark priestly service.", "Aaron does not enter the priesthood without being set apart."];
+    if (lower.includes("pour it upon his head")) return ["The oil is poured on Aaron's head as a visible sign of consecration.", "His priestly role is publicly marked before the LORD."];
+    if (lower === "anoint him") return ["Anoint means mark him with holy oil for God's service.", "Aaron is being set apart to serve as priest."];
+    if (lower.includes("bring his sons")) return ["Aaron's sons are brought forward because the priesthood includes his house.", "They also must be prepared before serving."];
+    if (lower.includes("put coats upon them")) return ["Coats are priestly garments placed on Aaron's sons.", "Their clothing shows they are not entering ordinary work."];
+    if (lower.includes("gird them with girdles")) return ["Girdles are sashes used to fasten the priestly clothing.", "The sons are dressed carefully for holy service."];
+    if (lower.includes("bonnets")) return ["Bonnets are priestly head coverings.", "Even the priests' heads are covered as part of their holy clothing."];
+    if (lower.includes("priest's office")) return ["The priest's office is the role of serving before the LORD for Israel.", "God gives this role to Aaron and his sons."];
+    if (lower.includes("consecrate aaron")) return ["Consecrate means set apart for holy service.", "Aaron and his sons are being prepared to serve as priests."];
+    if (lower.includes("put their hands upon the head")) return ["Laying hands on the animal connects the priests with the sacrifice.", "The offering stands in their place before God."];
+    if (lower.includes("kill the bullock") || lower.includes("kill the ram") || lower.includes("slay the ram")) return ["Slaying the animal turns it into the appointed sacrifice.", "Priestly service begins with life given before the LORD."];
+    if (lower.includes("blood of the bullock") || lower.includes("blood of the ram") || lower.includes("take of the blood")) return ["The blood is taken from the sacrifice for the ceremony.", "Blood marks that atonement and consecration are serious."];
+    if (lower.includes("horns of the altar")) return ["The altar's horns are its raised corner points.", "Blood is placed there to mark the altar in the sin offering."];
+    if (lower.includes("with thy finger")) return ["Moses applies the blood with his finger.", "The action shows the altar is being marked deliberately."];
+    if (lower.includes("bottom of the altar") || lower.includes("blood beside the bottom")) return ["The rest of the blood is poured at the base of the altar.", "The whole sacrifice is handled as God commands."];
+    if (lower.includes("sin offering")) return ["A sin offering deals with sin before the holy LORD.", "The priests cannot serve without atonement."];
+    if (lower.includes("sprinkle the blood")) return ["Sprinkling the blood means applying it around the altar.", "The altar is marked by sacrificial blood before priestly service continues."];
+    if (lower.includes("burnt offering")) return ["A burnt offering is fully offered up to God on the altar.", "The whole animal is given in worship."];
+    if (lower.includes("sweet savour")) return ["A sweet savour means the offering is pleasing to the LORD.", "The sacrifice rises to God as accepted worship."];
+    if (lower.includes("ram of consecration")) return ["The ram of consecration is the sacrifice used to set the priests apart.", "Its blood and portions mark Aaron and his sons for service."];
+    if (lower.includes("cut the ram in pieces")) return ["The ram is cut into pieces before being offered.", "The sacrifice is prepared carefully for the altar."];
+    if (lower.includes("tip of the right ear")) return ["The right ear, thumb, and toe are marked with blood.", "The priest's hearing, work, and walk are claimed for holy service."];
+    if (lower.includes("upon aaron, and upon his garments")) return ["Blood and oil are placed on Aaron and his garments.", "Both the priest and his clothing are marked as holy."];
+    if (lower.includes("fat and the rump")) return ["The fat and rump are chosen portions from the ram.", "These parts are lifted into the consecration offering."];
+    if (lower.includes("right shoulder")) return ["The right shoulder is a selected portion of the ram.", "It is set apart in the priestly ceremony."];
+    if (lower.includes("one loaf of bread")) return ["One loaf is taken from the basket of consecration bread.", "Bread is included with the animal offering."];
+    if (lower.includes("put all in the hands")) return ["The offering portions are placed in Aaron's and his sons' hands.", "Their hands are filled for priestly service before the LORD."];
+    if (lower.includes("wave offering")) return ["A wave offering is presented before the LORD.", "The action shows the offering belongs to God."];
+    if (lower.includes("burn them upon the altar")) return ["The offering portions are burned on the altar.", "What is placed in the priests' hands is then given to the LORD."];
+    if (lower.includes("burn the whole ram")) return ["The whole ram is burned on the altar as a burnt offering.", "The sacrifice is completely given to the LORD."];
+    if (lower.includes("sanctified from the ram")) return ["These parts are set apart from the ram for holy use.", "The consecration sacrifice provides a priestly portion."];
+    if (lower.includes("inwards") || lower.includes("caul")) return ["The inward parts are inner portions of the animal.", "The sacrifice is handled in the detailed way God commands."];
+    if (lower.includes("heave offering")) return ["A heave offering is a portion lifted up or set apart for the LORD.", "This part of the sacrifice is assigned by God's command."];
+    if (lower.includes("statute for ever")) return ["A statute for ever is a lasting command for Israel.", "The priestly portion is not a one-time custom."];
+    if (lower.includes("from the children of israel")) return ["The priestly portion comes from Israel's offerings.", "The people share in supporting the worship God commanded."];
+    if (lower.includes("peace offerings")) return ["Peace offerings are sacrifices connected with fellowship before God.", "Part of that offering is assigned to the priests."];
+    if (lower.includes("holy garments of aaron")) return ["Aaron's holy garments are the clothing of the high priest.", "They pass to his sons when they serve after him."];
+    if (lower.includes("his sons after him")) return ["Aaron's sons continue the priestly service after him.", "The priesthood is carried forward through his line."];
+    if (lower.includes("seven days")) return ["Seven days marks the full length of the consecration ceremony.", "The priests are not rushed into holy service."];
+    if (lower.includes("boil his flesh")) return ["The consecration meat is cooked in a holy place.", "Even eating from the sacrifice is treated as holy."];
+    if (lower.includes("stranger shall not eat")) return ["A stranger means someone outside the priestly household.", "Holy consecration food is not common food for anyone to eat."];
+    if (lower.includes("eat the flesh of the ram")) return ["The priests eat from the consecration ram.", "The meal belongs to their being set apart for service."];
+    if (lower.includes("make the atonement")) return ["Atonement means sin is dealt with before God.", "The ceremony prepares priests to serve near the holy LORD."];
+    if (lower.includes("to be anointed therein")) return ["To be anointed therein means Aaron's sons wear the holy garments when they are anointed.", "The clothing and oil together mark priestly service."];
+    if (lower.includes("cleanse the altar")) return ["The altar is cleansed so it can be used for holy sacrifice.", "Even the place of offering must be consecrated."];
+    if (lower.includes("toucheth the altar")) return ["Anything touching the altar is treated as holy.", "The altar is not ordinary furniture."];
+    if (lower.includes("offer every day")) return ["A sacrifice is offered every day during the consecration.", "The altar is prepared through repeated appointed offerings."];
+    if (lower.includes("anoint it, to sanctify it")) return ["The altar is anointed to set it apart as holy.", "It cannot be treated as ordinary because sacrifices will be offered there."];
+    if (lower.includes("two lambs")) return ["Two young lambs are appointed for the daily offering.", "Israel's worship has a morning and evening rhythm."];
+    if (lower.includes("day by day continually")) return ["Continually means the offering keeps happening day after day.", "Worship before the LORD becomes a regular pattern."];
+    if (lower.includes("hin of wine") || lower.includes("hin of beaten oil")) return ["A hin is an ancient liquid measure.", "The amount is specified because offerings follow God's command."];
+    if (lower.includes("at even")) return ["At even means in the evening.", "The daily offering is made at the close of the day."];
+    if (lower.includes("door of the tabernacle")) return ["The door of the tabernacle is the entrance to the holy tent.", "God appoints this as the meeting place for worship."];
+    if (lower.includes("where i will meet")) return ["God promises to meet His people at the tabernacle.", "The sacrifices are tied to His holy presence, not empty ritual."];
+    if (lower.includes("sanctify the tabernacle")) return ["God will sanctify the tabernacle by His presence.", "The tent is holy because the LORD meets Israel there."];
+    if (lower.includes("dwell among the children")) return ["God dwelling among Israel means His presence stays in the camp.", "The rescue from Egypt is moving toward life with God."];
+    if (lower.includes("i will be their god")) return ["I will be their God names the covenant relationship.", "Israel belongs to the LORD who lives among them."];
+    if (lower.includes("brought them forth out of egypt")) return ["God reminds Israel that He brought them out of Egypt.", "Deliverance leads to His presence dwelling among them."];
+    if (lower.includes("altar to burn incense")) return ["The incense altar is the place where fragrant incense is burned.", "It stands inside the tabernacle for daily worship."];
+    if (lower.includes("shittim wood")) return ["Shittim wood is the durable wood used for tabernacle furniture.", "The incense altar is built from real materials chosen for holy use."];
+    if (lower.includes("cubit shall be the length")) return ["A cubit is an ancient length measurement.", "The incense altar is built to exact size, not rough guesswork."];
+    if (lower.includes("overlay it with pure gold")) return ["The incense altar is covered with pure gold.", "The gold marks it as holy furniture for worship."];
+    if (lower.includes("horns thereof")) return ["The horns are raised corners on the incense altar.", "They are part of the altar's holy design."];
+    if (lower.includes("crown of gold")) return ["A crown of gold is a raised golden rim.", "The incense altar is given beauty and distinction."];
+    if (lower.includes("before the vail") || lower.includes("before the veil")) return ["Before the veil means near the curtain to the Most Holy Place.", "The incense altar stands close to God's guarded presence."];
+    if (lower.includes("before the mercy seat")) return ["The mercy seat is the cover of the ark connected with atonement.", "The incense altar is placed near the place where God meets Moses."];
+    if (lower.includes("aaron shall burn thereon sweet incense")) return ["Aaron burns sweet incense on the incense altar.", "The fragrance rises before the LORD as part of daily worship."];
+    if (lower.includes("every morning")) return ["Every morning means incense is burned at the start of each day.", "Daily worship begins with fragrance rising before the LORD."];
+    if (lower.includes("perpetual incense")) return ["Perpetual incense means incense is offered regularly before the LORD.", "The fragrance marks ongoing worship, not a rare event only."];
+    if (lower.includes("aaron shall make an atonement")) return ["Aaron makes atonement on the incense altar with blood.", "Even this altar is cleansed because worship is near the holy LORD."];
+    if (lower.includes("dresseth the lamps")) return ["Dressing the lamps means trimming and tending them.", "Incense is offered while the priest cares for the holy light."];
+    if (lower.includes("lamps at even")) return ["The lamps are tended in the evening.", "Light and incense mark the daily rhythm of worship."];
+    if (lower.includes("strange incense")) return ["Strange incense means unauthorized incense.", "The altar must not be used however people prefer."];
+    if (lower.includes("once in a year")) return ["Once in a year marks the yearly atonement on the altar.", "Even the incense altar is connected with cleansing by blood."];
+    if (lower.includes("most holy unto the lord")) return ["Most holy means completely set apart for the LORD.", "The incense altar must be treated with deep reverence."];
+    if (lower.includes("takest the sum")) return ["Taking the sum means counting the people.", "When Israel is numbered, each life must be acknowledged before God."];
+    if (lower.includes("ransom")) return ["A ransom is a payment given for a life.", "The census offering teaches that every Israelite life belongs to the LORD."];
+    if (lower.includes("no plague")) return ["No plague means the ransom protects the people during the numbering.", "Counting Israel is not casual because the people belong to God."];
+    if (lower.includes("half a shekel")) return ["A half shekel is a set weight of silver.", "Each person gives the same ransom amount before the LORD."];
+    if (lower.includes("rich shall not give more")) return ["The rich do not give more and the poor do not give less.", "Every life is valued equally in the ransom offering."];
+    if (lower.includes("poor shall not give less")) return ["The poor are not allowed to give less than the ransom amount.", "The command teaches that every life stands equal before the LORD."];
+    if (lower.includes("shekel of the sanctuary")) return ["The shekel of the sanctuary is the official weight used for the offering.", "The ransom is measured by God's standard, not private judgment."];
+    if (lower.includes("memorial")) return ["A memorial is something kept before the LORD as a reminder.", "The ransom money witnesses that Israel's lives are His."];
+    if (lower.includes("atonement for your souls")) return ["Atonement for your souls means the ransom is tied to life before God.", "The payment points to mercy, not simple taxation."];
+    if (lower.includes("laver of brass")) return ["The laver is a bronze basin for washing.", "Priests use it before entering holy service."];
+    if (lower.includes("foot also of brass")) return ["The laver's foot is its bronze base.", "The basin stands ready between the tent and the altar."];
+    if (lower.includes("wash withal")) return ["To wash withal means to wash with it.", "The laver exists so priests can cleanse themselves before serving."];
+    if (lower.includes("wash their hands and their feet")) return ["Priests wash their hands and feet before service.", "Their work and walk must be clean near holy things."];
+    if (lower.includes("that they die not")) return ["That they die not warns that unwashed service is dangerous.", "God's holiness makes priestly cleansing necessary."];
+    if (lower.includes("come near to the altar")) return ["Coming near the altar means approaching the place of sacrifice.", "Priests must wash before handling holy worship."];
+    if (lower.includes("between the tabernacle and the altar")) return ["The laver stands between the tent and the altar.", "Its location puts washing directly before priestly service."];
+    if (lower.includes("their hands and their feet")) return ["Hands and feet point to priestly work and movement.", "The priests must be clean in what they do and where they go."];
+    if (lower.includes("holy anointing oil")) return ["Holy anointing oil is the special oil used to consecrate people and objects.", "It marks what belongs to God's service."];
+    if (lower.includes("principal spices")) return ["Principal spices are the chief spices for the holy anointing oil.", "God names the ingredients instead of leaving the mixture open."];
+    if (lower.includes("pure myrrh")) return ["Pure myrrh is a costly fragrant spice.", "It becomes part of the oil set apart for holy service."];
+    if (lower.includes("sweet cinnamon")) return ["Sweet cinnamon is a fragrant spice in the holy oil.", "The smell itself belongs to consecrated worship."];
+    if (lower.includes("sweet calamus")) return ["Sweet calamus is another fragrant ingredient.", "The holy oil is made from specific spices God commands."];
+    if (lower.includes("oil olive")) return ["Olive oil is the base of the anointing oil.", "It carries the spices used to mark holy things."];
+    if (lower.includes("art of the apothecary")) return ["An apothecary is a skilled maker of mixtures.", "The holy oil is carefully prepared, not casually blended."];
+    if (lower.includes("tabernacle of the congregation")) return ["The tabernacle of the congregation is the meeting tent.", "It is anointed because it belongs to the LORD's presence."];
+    if (lower.includes("ark of the testimony")) return ["The ark of the testimony is the sacred chest holding God's covenant word.", "It is anointed as part of the holy dwelling."];
+    if (lower.includes("altar of burnt offering")) return ["The altar of burnt offering is the place of sacrifice.", "It is anointed because sacrifice belongs to holy worship."];
+    if (lower.includes("sanctify them")) return ["Sanctify means set apart as holy.", "The anointing oil marks these objects as belonging to God."];
+    if (lower.includes("they may be most holy")) return ["Most holy means completely set apart for the LORD.", "The anointed objects must not be treated as common."];
+    if (lower.includes("upon man's flesh")) return ["The holy oil must not be poured on ordinary human skin.", "It is reserved for God's appointed holy use."];
+    if (lower.includes("make any other like it")) return ["Israel must not copy the holy oil for ordinary use.", "What God sets apart must stay set apart."];
+    if (lower.includes("holy unto you")) return ["Holy unto you means Israel must treat the oil as sacred.", "The mixture belongs to worship, not personal fragrance."];
+    if (lower.includes("cut off from his people")) return ["Cut off from his people means removed from covenant community.", "Misusing holy oil is treated as serious rebellion."];
+    if (lower.includes("compoundeth any like it")) return ["Compounding any like it means making a copy of the holy mixture.", "God forbids copying sacred oil for common use."];
+    if (lower.includes("sweet spices")) return ["Sweet spices are fragrant ingredients for holy incense.", "God gives the scent of worship its own recipe."];
+    if (lower.includes("stacte") || lower.includes("onycha") || lower.includes("galbanum")) return ["Stacte, onycha, and galbanum are incense ingredients.", "Their names show that the incense is a specific holy mixture."];
+    if (lower.includes("pure frankincense")) return ["Pure frankincense is a fragrant incense ingredient.", "It is included in the holy mixture offered before the LORD."];
+    if (lower.includes("a perfume")) return ["The perfume is the holy incense mixture.", "Its fragrance belongs to worship before the LORD."];
+    if (lower.includes("tempered together")) return ["Tempered together means blended into one mixture.", "The incense is prepared carefully as God commands."];
+    if (lower.includes("beat some of it very small")) return ["Beating it very small means grinding the incense fine.", "The prepared incense is placed before the testimony."];
+    if (lower.includes("salted, pure, and holy")) return ["Salted, pure, and holy describes incense set apart for God.", "The mixture is prepared for sacred use, not common smell."];
+    if (lower.includes("before the testimony")) return ["Before the testimony means near the ark that holds God's covenant word.", "The incense stands close to the heart of the tabernacle."];
+    if (lower.includes("it shall be unto you most holy")) return ["Most holy means the incense is completely set apart for the LORD.", "Israel must treat its fragrance as sacred."];
+
+    return ["This wording names a holy part of priestly service.", "The detail matters because priests may approach God only in the way He commands."];
+  }
+
+  if (section.chapter >= 25 && section.chapter <= 28) {
+    if (lower.includes("to the ouches")) return ["The chains are fastened to the gold settings.", "The breastplate is secured to the priestly garment with care."];
+    if (lower.includes("aaron shall bear the names")) return ["Aaron shall bear the names means he carries Israel's tribes before the LORD.", "The priest does not stand before God for himself only."];
+    if (lower.includes("accepted before the lord")) return ["Accepted before the LORD means the holy gifts are received through the priest's service.", "The priest bears responsibility so Israel's offerings may be brought rightly."];
+    if (lower.includes("coats, girdles, and bonnets")) return ["Coats, girdles, and bonnets are priestly clothing pieces.", "Aaron's sons are dressed for holy service, not ordinary work."];
+    if (lower.includes("linen breeches")) return ["Linen breeches are undergarments for priestly modesty.", "The priests must be covered properly when serving near holy things."];
+    if (lower.includes("come in unto the tabernacle")) return ["Coming into the tabernacle means entering the holy tent for service.", "The priests must approach dressed as God commands."];
+    if (lower.includes("come near unto the altar")) return ["Coming near the altar means serving at the place of sacrifice.", "The priest must not approach the altar carelessly."];
+    if (lower.includes("bear not iniquity")) return ["Bear not iniquity means avoid guilt by obeying God's priestly command.", "Holy service brings responsibility before the LORD."];
+    if (lower === "and die") return ["And die warns that careless priestly service can bring judgment.", "God's holiness is not something to treat lightly."];
+    if (lower.includes("bring me an offering")) return ["God asks Israel to bring an offering for the tabernacle.", "The dwelling place begins with gifts given for worship."];
+    if (lower.includes("giveth it willingly")) return ["Willingly means the gift is given from desire, not forced labor.", "The tabernacle offering is different from Egypt's slavery work."];
+    if (lower.includes("with his heart")) return ["With his heart means the gift comes from inward willingness.", "God wants worshipful giving, not empty pressure."];
+    if (lower.includes("gold, and silver, and brass")) return ["Gold, silver, and brass are valuable metals for the tabernacle.", "Israel gives costly materials for the LORD's dwelling place."];
+    if (lower.includes("blue, and purple, and scarlet")) return ["Blue, purple, and scarlet are rich colors used in the tabernacle materials.", "The holy place is being made with beauty and care."];
+    if (lower.includes("oil for the light")) return ["Oil for the light means oil used to keep the lamp burning.", "The tabernacle needs steady light before the LORD."];
+    if (lower.includes("spices")) return ["Spices are fragrant materials used in holy worship.", "The smell of worship is also set apart for the LORD."];
+    if (lower.includes("onyx stones")) return ["Onyx stones are precious stones for the priestly garments.", "They will help carry Israel's names before the LORD."];
+    if (lower.includes("stones to be set in the ephod")) return ["These stones are placed in the priestly ephod.", "The priest's clothing will carry memory and representation before God."];
+    if (lower.includes("let them make me a sanctuary")) return ["A sanctuary is a holy dwelling place for God among His people.", "The LORD is not leaving Israel with rescue only; He is preparing to dwell among them."];
+    if (lower.includes("that i may dwell among them")) return ["Dwell among them means God will live in the midst of Israel's camp.", "The tabernacle is about God's holy presence with His rescued people."];
+    if (lower.includes("according to all that i shew thee")) return ["According to all that I shew thee means Moses must follow God's revealed pattern.", "Israel cannot invent the tabernacle from imagination."];
+    if (lower.includes("after the pattern")) return ["Pattern means the design God shows Moses.", "The tabernacle is built by command, not personal taste."];
+    if (lower.includes("overlay it with pure gold")) return ["Overlay it with pure gold means cover the wooden object with gold.", "The gold marks the furniture as belonging to holy service."];
+    if (lower.includes("crown of gold")) return ["A crown of gold is a raised gold border around holy furniture.", "The detail gives the piece beauty and distinction for worship."];
+    if (lower.includes("rings of gold")) return ["Gold rings are attached so the holy furniture can be carried.", "The tabernacle furniture must travel with Israel without being handled casually."];
+    if (lower.includes("not be taken from it")) return ["The poles must stay in the ark's rings.", "The ark is always to be ready for careful carrying."];
+    if (lower.includes("testimony which i shall give thee")) return ["The testimony is the covenant word God gives Moses.", "The ark holds the LORD's covenant instruction at the center of worship."];
+    if (lower.includes("faces shall look one to another")) return ["The cherubim face one another over the mercy seat.", "Their posture frames the holy place where God promises to meet Moses."];
+    if (lower.includes("there i will meet with thee")) return ["God promises to meet Moses above the mercy seat.", "The ark is not just furniture; it is tied to God's holy nearness."];
+    if (lower.includes("i will commune with thee")) return ["Commune means speak with Moses.", "God promises to give His word from the place of mercy."];
+    if (lower.includes("make a table")) return ["The table is holy furniture for the tabernacle.", "It will hold bread before the LORD."];
+    if (lower.includes("border of an hand breadth")) return ["A hand breadth is a small width measured by the hand.", "The table is built with exact details instead of vague design."];
+    if (lower.includes("table may be borne")) return ["The table may be borne means it can be carried with poles.", "Even holy furniture is made for Israel's journey."];
+    if (lower.includes("dishes") || lower.includes("spoons") || lower.includes("covers") || lower.includes("bowls")) return ["These are utensils used with the tabernacle table.", "Even the serving pieces belong to ordered worship before the LORD."];
+    if (lower.includes("bowls made like unto almonds")) return ["Almond-shaped bowls are part of the lampstand design.", "The lampstand is made with beauty, not bare function only."];
+    if (lower.includes("six branches")) return ["Six branches extend from the lampstand.", "The lampstand's design is ordered and carefully shaped for holy light."];
+    if (lower.includes("after their pattern")) return ["After their pattern means the pieces must match the design God showed.", "Worship is shaped by God's command, not Israel's guessing."];
+    if (lower.includes("make the tabernacle")) return ["The tabernacle is the holy tent where God will dwell among Israel.", "Its construction begins with exact instructions."];
+    if (lower.includes("loops of blue")) return ["Loops of blue are fasteners for the tabernacle curtains.", "Small connecting pieces matter because the tent must be joined as God commands."];
+    if (lower.includes("covering upon the tabernacle")) return ["The covering protects the tabernacle tent.", "God's dwelling place has outer layers as well as inner beauty."];
+    if (lower.includes("fifty loops")) return ["Fifty loops are repeated fasteners for joining the curtains.", "The number shows careful order in how the tent is connected."];
+    if (lower.includes("that it may be one")) return ["That it may be one means the separate curtain pieces become one tent.", "The tabernacle is joined together as a unified dwelling place."];
+    if (lower.includes("remnant that remaineth") || lower.includes("that which remaineth")) return ["Remaineth means the extra material left over in the tent covering.", "Even the overlap of the fabric is described with care."];
+    if (lower.includes("covering for the tent")) return ["A covering for the tent is an outer protective layer.", "The holy dwelling is guarded by strong materials."];
+    if (lower.includes("boards for the tabernacle")) return ["Boards form the frame of the tabernacle.", "The holy tent has a real structure, not only fabric."];
+    if (lower.includes("two tenons")) return ["Tenons are projecting pieces that fit into sockets.", "The boards are designed to stand securely in place."];
+    if (lower.includes("sockets of silver")) return ["Sockets of silver are bases that hold the boards.", "The frame rests on ordered supports."];
+    if (lower.includes("twenty boards") || lower.includes("six boards") || lower.includes("two boards")) return ["The boards are counted and placed for each side or corner.", "God gives exact structure for the tabernacle walls."];
+    if (lower.includes("coupled together beneath")) return ["Coupled together means fastened together.", "The corner boards must be joined securely."];
+    if (lower.includes("unto one ring")) return ["One ring joins the boards at the corner.", "The small connection helps hold the holy structure together."];
+    if (lower.includes("middle bar")) return ["The middle bar runs through the boards to strengthen them.", "The tabernacle frame is held together with support."];
+    if (lower.includes("overlay the boards with gold")) return ["The boards are covered with gold for holy use.", "Even the frame of the dwelling is marked as sacred."];
+    if (lower.includes("rear up the tabernacle")) return ["Rear up means set up the tabernacle.", "Moses must assemble the dwelling according to God's design."];
+    if (lower.includes("according to the fashion")) return ["Fashion means the form or design shown to Moses.", "The tabernacle must be raised according to God's revealed pattern."];
+    if (lower.includes("holy place and the most holy")) return ["The Holy Place and Most Holy are two sacred spaces inside the tabernacle.", "The layout teaches that God's presence is near but guarded."];
+    if (lower.includes("hanging for the door")) return ["The hanging for the door is the entrance curtain of the tent.", "Access into the holy tent is marked by a commanded doorway."];
+    if (lower.includes("make an altar")) return ["The altar is the place where sacrifices are offered.", "Approach to God begins with sacrifice."];
+    if (lower.includes("horns of it")) return ["The horns are raised corners of the altar.", "They are part of the altar's sacred design."];
+    if (lower.includes("overlay it with brass")) return ["Overlay it with brass means cover the altar with bronze-like metal.", "The altar is made strong for sacrificial fire."];
+    if (lower.includes("pans to receive his ashes")) return ["The pans receive ashes from the altar fire.", "Even the cleanup of sacrifice has ordered tools."];
+    if (lower.includes("vessels thereof")) return ["The vessels are tools used with the altar.", "Sacrifice is served with specific instruments."];
+    if (lower.includes("two sides of the altar")) return ["The poles are placed on two sides of the altar.", "The altar is built so it can be carried."];
+    if (lower.includes("altar may be borne")) return ["The altar may be borne means it can be carried with poles.", "Israel's worship furniture travels with the camp."];
+    if (lower.includes("hollow with boards")) return ["Hollow with boards describes the altar's construction.", "The altar is made according to the form God shows Moses."];
+    if (lower.includes("shewed thee in the mount")) return ["God showed Moses the pattern on the mountain.", "The altar follows revelation, not invention."];
+    if (lower.includes("so shall they make it")) return ["So shall they make it means the builders must follow God's pattern.", "The command leaves no room for redesigning worship."];
+    if (lower.includes("court of the tabernacle")) return ["The court is the outer enclosed area around the tabernacle.", "It marks the boundary of holy worship space."];
+    if (lower.includes("hangings for the court")) return ["Hangings are fabric walls for the courtyard.", "They separate the worship area from the rest of the camp."];
+    if (lower.includes("fine twined linen")) return ["Fine twined linen is carefully woven fabric.", "The court is made with ordered and clean material."];
+    if (lower.includes("twenty pillars")) return ["Twenty pillars support the court hangings.", "The courtyard boundary is held up by a real structure."];
+    if (lower.includes("sockets of brass")) return ["Sockets of brass are bases for the pillars.", "The boundary stands on strong supports."];
+    if (lower.includes("gate of the court")) return ["The gate of the court is the entrance to the tabernacle courtyard.", "There is a commanded way into the worship space."];
+    if (lower.includes("pillars round about")) return ["The pillars round about support the court on every side.", "The holy boundary surrounds the worship area."];
+    if (lower.includes("filleted with silver")) return ["Filleted with silver means joined or trimmed with silver bands.", "The court structure includes careful finishing details."];
+    if (lower.includes("pins of the tabernacle")) return ["Pins are stakes that help secure the tabernacle and court.", "Even the anchoring pieces matter in God's design."];
+    if (lower.includes("pure oil olive beaten")) return ["Pure beaten olive oil fuels the lamp.", "The light before the LORD is kept with prepared oil."];
+    if (lower.includes("tabernacle of the congregation")) return ["The tabernacle of the congregation is the tent of meeting.", "It is the place connected with Israel gathering before the LORD."];
+    if (lower === "before the lord") return ["Before the LORD means in God's presence.", "The lamp burns as service offered toward Him."];
+    if (lower.includes("aaron and his sons")) return ["Aaron and his sons are the priests appointed to serve.", "They are responsible to tend the lamp before the LORD."];
+    if (lower.includes("evening to morning")) return ["From evening to morning means the lamp is tended through the night.", "The light is not occasional; it is maintained steadily."];
+    if (lower.includes("statute for ever")) return ["A statute for ever means an ongoing command for Israel.", "The lamp service is meant to continue through their generations."];
+    if (lower.includes("aaron thy brother")) return ["Aaron is Moses' brother, chosen for priestly service.", "God appoints the priesthood instead of leaving it open to anyone."];
+    if (lower.includes("minister unto me")) return ["Minister unto me means serve the LORD as priest.", "Aaron's work is directed toward God, not personal status."];
+    if (lower.includes("priest's office")) return ["The priest's office is the appointed role of serving before the LORD.", "Priestly work is a holy calling with boundaries."];
+    if (lower.includes("holy garments")) return ["Holy garments are clothing set apart for priestly service.", "Aaron does not approach the LORD in ordinary dress."];
+    if (lower.includes("glory and for beauty")) return ["For glory and for beauty means the garments display honor and beauty.", "The priest's clothing teaches the weight of holy service."];
+    if (lower.includes("spirit of wisdom")) return ["The Spirit of wisdom gives skill for making the garments.", "Holy craftsmanship depends on wisdom God provides."];
+    if (lower.includes("two shoulderpieces")) return ["Two shoulderpieces are parts of the ephod joined together.", "The garment is built to carry symbolic weight before God."];
+    if (lower.includes("grave on them the names")) return ["Grave means engrave the names into the stones.", "Israel's names are permanently marked on the priestly garment."];
+    if (lower.includes("six of their names")) return ["Six names on one stone means half the tribes are carried on one shoulder stone.", "The other six are carried on the other stone."];
+    if (lower.includes("stones of memorial")) return ["Stones of memorial are stones that keep Israel's names before the LORD.", "The priest carries the people in remembered form."];
+    if (lower.includes("bear their names")) return ["Aaron bearing their names means he carries Israel before the LORD.", "The priest represents the people as he serves."];
+    if (lower.includes("ouches of gold")) return ["Ouches of gold are gold settings for the stones.", "The names of Israel are held in precious settings."];
+    if (lower.includes("chains of pure gold")) return ["Chains of pure gold connect parts of the priestly garment.", "The breastplate is secured with valuable, holy materials."];
+    if (lower.includes("at the ends")) return ["At the ends names where the gold chains are attached.", "The detail shows how carefully the garment is assembled."];
+    if (lower.includes("wreathen work")) return ["Wreathen work means braided or twisted craftsmanship.", "The priestly garment is made with skilled beauty."];
+    if (lower.includes("fasten the wreathen chains")) return ["The wreathen chains are fastened to hold the breastplate in place.", "The priestly garment is joined carefully for holy service."];
+    if (lower.includes("cunning work")) return ["Cunning work means skillful craftsmanship.", "The breastplate is made with wisdom and care."];
+    if (lower.includes("foursquare")) return ["Foursquare means the breastplate is square.", "Its shape is specified as part of God's design."];
+    if (lower.includes("span shall be the length")) return ["A span is a hand-width measurement.", "The breastplate has exact dimensions."];
+    if (lower.includes("four rows of stones")) return ["Four rows of stones hold the tribal stones on the breastplate.", "The people of Israel are represented in ordered beauty."];
+    if (lower.includes("sardius") || lower.includes("topaz") || lower.includes("carbuncle")) return ["These are precious stones in the breastplate.", "The named stones show beauty and value in representing Israel before God."];
+    if (lower.includes("according to the names of the children of israel")) return ["The stones correspond to the names of Israel's tribes.", "The breastplate is not decoration only; it carries the people before God."];
+    if (lower.includes("twelve, according to their names")) return ["Twelve stones correspond to the twelve tribes.", "Every tribe is remembered in the priest's service."];
+    if (lower.includes("every one with his name")) return ["Each stone carries a name.", "No tribe is swallowed into a vague crowd before the LORD."];
+    if (lower.includes("engravings of a signet")) return ["A signet engraving is a carved mark like a seal.", "The names are fixed into the stones with permanence."];
+    if (lower.includes("chains at the ends")) return ["Chains at the ends help attach the breastplate.", "The garment is secured with ordered craftsmanship."];
+    if (lower.includes("two rings of gold")) return ["Two gold rings help fasten the breastplate.", "Small gold connectors hold the priestly garment together."];
+    if (lower.includes("upon his heart")) return ["Upon his heart means Aaron carries Israel close to his chest.", "The priest represents the people before the LORD with care."];
+    if (lower.includes("holy place")) return ["The holy place is the sacred room where the priest serves.", "Aaron enters as a representative, not as a private person."];
+    if (lower.includes("judgment of the children of israel")) return ["The judgment of Israel is carried on the breastplate.", "The priest brings the people's case before the LORD."];
+    if (lower.includes("all of blue")) return ["All of blue describes the robe's color.", "The priestly garment is marked by a distinct holy appearance."];
+    if (lower.includes("habergeon")) return ["A habergeon was a kind of protective garment opening.", "The robe opening is reinforced so it will not tear."];
+    if (lower.includes("pomegranates")) return ["Pomegranates are decorative fruit shapes on the robe.", "The garment uses beauty and symbolism in holy service."];
+    if (lower.includes("golden bell")) return ["Golden bells are placed around the robe's hem.", "The priest's movement in holy service is heard."];
+    if (lower.includes("sound shall be heard")) return ["The sound of the bells marks Aaron's service as he enters.", "The priest does not move casually before the holy LORD."];
+    if (lower.includes("blue lace")) return ["Blue lace fastens the holy plate to the priestly headpiece.", "The visible sign of holiness is attached by God's command."];
+    if (lower.includes("bear the iniquity")) return ["Aaron bearing iniquity means he carries guilt connected with Israel's holy gifts.", "The priest's role includes representing a sinful people before the LORD."];
+  }
+
   if (lower.includes("judgments")) return ["Judgments are case laws for real situations.", "After the Ten Commandments, the LORD shows how justice should work in daily life."];
+  if (lower.includes("six years")) return ["Six years sets a limit on Israelite service.", "The servant is not meant to be trapped under another Israelite forever."];
+  if (lower.includes("in the seventh")) return ["The seventh year brings release from service.", "Freedom is built into the law as a command, not a favor."];
+  if (lower.includes("i love my master")) return ["The servant may choose to stay because of love and household attachment.", "The law describes a voluntary decision, not forced slavery."];
+  if (lower.includes("serve him for ever")) return ["Serve him for ever means the servant chooses lifelong service in that household.", "The public act shows the choice is serious and visible."];
   if (lower.includes("hebrew servant")) return ["A Hebrew servant was an Israelite bound to service for a limited time.", "The law places boundaries around service so Israel does not copy Egypt's crushing slavery."];
   if (lower.includes("maidservant")) return ["A maidservant was a female servant in a vulnerable household situation.", "The law names protections so she is not used and discarded by someone with more power."];
+  if (lower.includes("menservants")) return ["This woman is not released by the same rule as the male servant.", "Her case involves household and marriage obligations, so the law gives different protections."];
   if (lower.includes("redeemed")) return ["Redeemed means bought back or released through an allowed payment.", "The law gives a vulnerable person a path out instead of trapping her without protection."];
+  if (lower.includes("manner of daughters")) return ["After the manner of daughters means she must be treated with daughter-like household protection.", "The man may not treat her as disposable property."];
   if (lower.includes("raiment")) return ["Raiment means clothing.", "Food, clothing, and marriage duty are named because the woman must not be neglected."];
+  if (lower.includes("without money")) return ["Without money means she leaves without having to pay for her freedom.", "If her basic rights are denied, the law releases her from that household."];
   if (lower.includes("smiteth")) return ["Smiteth means strikes.", "The law treats violent harm as serious because life and family order matter before God."];
+  if (lower.includes("deliver him into his hand")) return ["This phrase describes a death that was not planned by the killer.", "The law leaves room to distinguish accident from deliberate murder."];
+  if (lower.includes("appoint thee a place")) return ["God appoints a place of refuge for the person who killed unintentionally.", "Justice must protect the innocent from revenge while still taking death seriously."];
   if (lower.includes("presumptuously")) return ["Presumptuously means deliberately and arrogantly.", "The law distinguishes planned violence from accidental death."];
   if (lower.includes("stealeth a man")) return ["Stealeth a man means kidnapping a person.", "God's law treats stealing people as a grave attack on human dignity."];
   if (lower.includes("curseth")) return ["Curseth means speaks a curse against someone.", "Dishonoring father or mother is treated as serious rebellion inside covenant family life."];
   if (lower.includes("strive together")) return ["Strive together means fight or struggle with each other.", "The law does not ignore injuries that happen during conflict."];
   if (lower.includes("loss of his time")) return ["Loss of his time means lost work and livelihood during recovery.", "The person who caused the injury must take responsibility for the damage done."];
   if (lower.includes("thoroughly healed")) return ["Thoroughly healed means fully cared for through recovery.", "Justice includes restoration, not only punishment."];
+  if (lower.includes("smite his servant")) return ["This case deals with a master striking a servant.", "The law brings even household power under judgment."];
+  if (lower.includes("for he is his money")) return ["This hard phrase reflects the servant's legal place in an ancient household economy.", "The law is weighing loss and accountability inside that world, not saying the servant has no value before God."];
+  if (lower.includes("hurt a woman with child")) return ["This case involves a pregnant woman harmed during a fight.", "The law treats harm to mother and child as serious, not accidental background damage."];
+  if (lower.includes("life for life")) return ["Life for life means the penalty must match the seriousness of the harm.", "The law refuses to treat a life as a small loss."];
   if (lower.includes("eye for eye")) return ["Eye for eye limits punishment to fit the injury.", "The point is measured justice, not unlimited revenge."];
   if (lower.includes("tooth for tooth")) return ["Tooth for tooth continues the rule of proportion.", "The law restrains retaliation so anger does not grow beyond the harm."];
+  if (lower.includes("hand for hand")) return ["Hand for hand continues the rule of measured justice.", "The response must fit the injury instead of becoming revenge."];
+  if (lower.includes("foot for foot")) return ["Foot for foot continues the same limit on punishment.", "God's law restrains retaliation by tying judgment to the actual harm."];
   if (lower.includes("go free")) return ["Go free means release from service.", "When a servant is seriously injured, freedom becomes part of justice."];
   if (lower.includes("ox")) return ["An ox was a powerful work animal that could injure or kill.", "The law makes owners responsible when dangerous animals are not restrained."];
   if (lower.includes("gore")) return ["Gore means strike or pierce with horns.", "The danger is physical and serious, so the law weighs both the animal and the owner's responsibility."];
   if (lower.includes("pit")) return ["A pit was an open hole that could trap or kill an animal.", "Leaving danger uncovered makes a person responsible for preventable harm."];
   if (lower.includes("ransom")) return ["Ransom means a payment connected with sparing life.", "The law gives a concrete cost where negligence has brought deadly guilt."];
+  if (lower.includes("owner also")) return ["The owner can share guilt when he ignored a known dangerous animal.", "Responsibility increases when warning has already been given."];
+  if (lower.includes("sum of money")) return ["A sum of money means a required payment set in response to guilt.", "The law turns responsibility into a concrete cost."];
+  if (lower.includes("if it be known")) return ["If it be known means the owner already knew the danger.", "Known danger creates responsibility for what happens next."];
+  if (lower.includes("in time past")) return ["In time past means the danger had shown itself before.", "The owner cannot pretend the harm came with no warning."];
+  if (lower.includes("not kept him in")) return ["The owner failed to restrain a dangerous animal.", "Neglect becomes guilt when a known danger is left loose."];
+  if (lower.includes("dead shall be his own")) return ["The dead animal becomes the owner's loss after repayment.", "The law assigns both compensation and final responsibility."];
   if (lower.includes("restitution") || lower.includes("restore")) return ["Restitution means repairing or paying back what was taken or damaged.", "God's justice pushes wrongdoers toward repair, not only punishment."];
   if (lower.includes("breaking up")) return ["Breaking up means breaking into a house.", "The law distinguishes a night intrusion from other property situations."];
+  if (lower.includes("no blood be shed")) return ["No blood be shed means the thief's death is not treated as justified in that case.", "The law weighs the situation instead of giving one careless answer for every theft."];
+  if (lower.includes("best of his own field")) return ["The best of his own field means repayment must come from good produce, not leftovers.", "The person who caused loss must repair it fairly."];
+  if (lower.includes("fire break out")) return ["Fire breaking out means a person's fire spreads and damages another field.", "The law makes people responsible for harm that spreads from their actions."];
   if (lower.includes("stuff")) return ["Stuff means belongings or property.", "The law protects neighbor trust when someone keeps another person's goods."];
+  if (lower.includes("master of the house")) return ["The master of the house is brought before the judges when entrusted goods are missing.", "The law does not let hidden loss be handled by suspicion alone."];
+  if (lower.includes("judges shall condemn")) return ["The judges decide guilt in the dispute.", "Restitution follows a judged case, not private revenge."];
   if (lower.includes("oath of the lord")) return ["An oath of the LORD is a solemn promise made before God.", "When no human witness can settle the matter, the dispute is still treated as happening before the LORD."];
+  if (lower.includes("torn in pieces")) return ["Torn in pieces means an animal was killed by another beast.", "Evidence must be brought so the keeper is not blamed unfairly."];
+  if (lower.includes("bring it for witness")) return ["The remains are brought as witness to what happened.", "The law uses evidence instead of guessing guilt."];
+  if (lower.includes("not make good")) return ["Not make good means repayment is not required in that case.", "The law notices when loss was not caused by the keeper's fault."];
+  if (lower.includes("borrow ought")) return ["Borrow ought means borrow something from a neighbor.", "Using another person's property brings responsibility."];
+  if (lower.includes("surely make it good")) return ["Surely make it good means the borrower must repay the loss.", "Borrowing is not casual when another person's goods are damaged."];
+  if (lower.includes("owner thereof be with it")) return ["If the owner is present, responsibility is judged differently.", "The law pays attention to who had control when the loss happened."];
   if (lower.includes("entice a maid")) return ["Entice a maid means seduce an unmarried young woman.", "The law refuses to treat sexual harm as casual or consequence-free."];
   if (lower.includes("endow")) return ["Endow means provide the required marriage payment.", "The man must take covenant responsibility instead of using the woman and walking away."];
   if (lower.includes("witch")) return ["A witch here refers to forbidden occult practice.", "Israel must not seek spiritual power apart from the LORD."];
+  if (lower.includes("lieth with a beast")) return ["This command forbids sexual union with an animal.", "Israel's holiness includes rejecting practices that corrupt God's design for the body."];
+  if (lower.includes("sacrificeth unto any god")) return ["Sacrificing to any god means offering worship to a false god.", "Covenant worship belongs to the LORD alone."];
   if (lower.includes("vex")) return ["Vex means mistreat, oppress, or trouble someone.", "Israel must not treat foreigners the way Egypt treated them."];
+  if (lower.includes("strangers in the land")) return ["Israel knew what it felt like to live as strangers in Egypt.", "Their own pain must teach them mercy toward foreigners."];
   if (lower.includes("widow") || lower.includes("fatherless")) return ["Widows and fatherless children were people with less protection in ancient society.", "The LORD warns Israel not to exploit those who can easily be harmed."];
+  if (lower.includes("afflict them")) return ["Afflict means mistreat or oppress.", "God warns Israel not to harm widows or fatherless children in any way."];
+  if (lower.includes("hear their cry")) return ["God promises to hear the cry of the vulnerable.", "People with little earthly protection are not invisible to Him."];
+  if (lower.includes("wrath shall wax hot")) return ["God's wrath growing hot means His judgment is stirred against oppression.", "Mistreating the vulnerable is not a small matter to the LORD."];
   if (lower.includes("usurer")) return ["Usury means interest charged in a way that exploits need.", "The law protects the poor from being crushed by someone else's gain."];
   if (lower.includes("pledge")) return ["A pledge was something held as security for a debt.", "Even debt situations must be handled with mercy toward the poor."];
+  if (lower.includes("i will hear; for i am gracious")) return ["God says He will hear because He is gracious.", "His mercy stands behind the command to return the poor person's cloak."];
+  if (lower.includes("revile the gods")) return ["Revile means speak with contempt.", "The command warns Israel not to speak recklessly toward authority."];
+  if (lower.includes("curse the ruler")) return ["Cursing the ruler means speaking evil against the leader of the people.", "Covenant life puts a boundary around rebellious speech."];
+  if (lower.includes("delay to offer")) return ["Not delaying means Israel must not hold back what belongs to the LORD.", "Worship should not be pushed aside after provision comes."];
+  if (lower.includes("firstborn of thy sons")) return ["The firstborn sons belong to the LORD in a special way.", "Israel must remember that God spared their firstborn in the Exodus."];
+  if (lower.includes("holy men")) return ["Holy men means people set apart for the LORD.", "Israel's daily life must match the God who rescued them."];
+  if (lower.includes("flesh that is torn")) return ["Torn flesh means meat from an animal killed by beasts.", "Israel's food practices were also shaped by holiness."];
+  if (lower.includes("follow a multitude")) return ["Following a multitude means joining the crowd.", "God's people must not do evil just because many people are doing it."];
+  if (lower.includes("countenance a poor man")) return ["Countenance means show favoritism.", "The poor must receive justice, but judges must not twist truth even for sympathy."];
+  if (lower.includes("far from a false matter")) return ["Keeping far from a false matter means avoiding lies before they shape judgment.", "Truth must be protected before a case becomes corrupt."];
+  if (lower.includes("innocent and righteous")) return ["The innocent and righteous must not be condemned or killed.", "God's justice protects the person who has not done wrong."];
+  if (lower.includes("justify the wicked")) return ["God will not justify the wicked means He will not call evil innocent.", "Human judges must not reverse good and evil."];
   if (lower.includes("gift blindeth")) return ["A gift here means a bribe.", "Bribes blind judgment by making the judge favor the giver instead of the truth."];
+  if (lower.includes("take no gift")) return ["Taking a gift means accepting a bribe in judgment.", "A judge must not let money bend the truth."];
+  if (lower.includes("oppress a stranger")) return ["Oppressing a stranger means mistreating a foreigner living among the people.", "Israel must remember Egypt and refuse to repeat its cruelty."];
+  if (lower.includes("heart of a stranger")) return ["Knowing the heart of a stranger means Israel understands that pain from experience.", "Their memory of Egypt must become compassion."];
   if (lower.includes("false report")) return ["A false report is a lie that damages justice.", "God's people must not use words to twist court, reputation, or community judgment."];
   if (lower.includes("wrest the judgment")) return ["Wrest the judgment means twist justice away from what is right.", "The poor must not be denied justice, and the law must not bend for pressure."];
+  if (lower.includes("six years thou shalt sow")) return ["Six years of sowing names the ordinary work cycle for the land.", "Israel may work the land, but they do not own time as if God is absent."];
   if (lower.includes("seventh year")) return ["The seventh year was a rest year for the land.", "Israel had to trust the LORD enough to let fields rest and let the poor eat."];
+  if (lower.includes("six days thou shalt do")) return ["Six days are given for ordinary work.", "The command honors work while setting a boundary around it."];
   if (lower.includes("seventh day")) return ["The seventh day is the Sabbath day of rest.", "The rhythm of rest reaches workers, animals, and strangers, not only household leaders."];
+  if (lower.includes("other gods")) return ["Israel must not even keep the names of other gods alive in worship.", "The LORD is guarding His people from divided loyalty."];
+  if (lower.includes("three times thou shalt keep")) return ["Three times means Israel's year has appointed feast moments.", "The people must regularly gather to remember and worship."];
   if (lower.includes("unleavened bread")) return ["Unleavened bread is bread made without leaven, so it does not rise.", "The feast keeps Israel remembering the hurried rescue from Egypt."];
+  if (lower.includes("feast of harvest")) return ["The Feast of Harvest celebrates the first results of the field.", "Israel's harvest becomes thanksgiving before the LORD."];
+  if (lower.includes("feast of ingathering")) return ["The Feast of Ingathering comes when the harvest is gathered in.", "The end of the agricultural year becomes worship and gratitude."];
+  if (lower.includes("three times in the year")) return ["Three times in the year means regular appointed worship before the LORD.", "Israel's calendar is shaped around God's presence and provision."];
+  if (lower.includes("blood of my sacrifice")) return ["The blood of the sacrifice must not be offered with leavened bread.", "God sets boundaries around how worship is brought to Him."];
   if (lower.includes("firstfruits")) return ["Firstfruits means the first part of the harvest brought to the LORD.", "Israel gives the first produce as worship because the land's increase comes from God."];
   if (lower.includes("kid in his mother's milk")) return ["A kid is a young goat.", "The command sets a boundary around Israel's food and worship practices so they do not imitate surrounding customs."];
   if (lower.includes("angel")) return ["The angel is the LORD's appointed messenger leading Israel toward the land.", "Guidance is tied to obedience, because God's name and authority are with him."];
+  if (lower.includes("keep thee in the way")) return ["To keep thee in the way means to guard Israel on the road ahead.", "The LORD is not leaving His people to find the land alone."];
+  if (lower.includes("obey his voice")) return ["Obey his voice means Israel must listen to the messenger God sends.", "Guidance is a gift, but it must be received with obedience."];
+  if (lower.includes("my name is in him")) return ["God's name being in him means the messenger carries the LORD's authority.", "Israel must treat the message as God's command, not ordinary advice."];
+  if (lower.includes("bow down to their gods")) return ["Bowing down to their gods means joining the worship of the nations.", "The land must not pull Israel away from the LORD."];
+  if (lower.includes("serve the lord your god")) return ["Serving the LORD means worshiping and obeying Him alone.", "Israel's life in the land must be centered on the God who brought them there."];
+  if (lower.includes("nor be barren")) return ["Nor be barren means God promises fruitfulness among the people and animals.", "The blessing of the land is tied to the LORD's care."];
+  if (lower.includes("send my fear")) return ["God sending His fear means He will make the nations afraid before Israel.", "The battle for the land depends on the LORD going ahead of them."];
   if (lower.includes("hornets")) return ["Hornets are stinging insects used here as an image of God driving enemies out.", "The LORD promises to go before Israel in ways they cannot control."];
+  if (lower.includes("not drive them out") || lower.includes("one year")) return ["God will not drive out the nations all at once.", "Slow victory protects Israel from a land becoming empty and dangerous."];
   if (lower.includes("little and little")) return ["Little and little means gradually.", "God will give the land over time because immediate victory could create new dangers."];
+  if (lower.includes("set thy bounds")) return ["God setting bounds means He marks the borders of Israel's land.", "The promise has real shape, not vague hope."];
+  if (lower.includes("make no covenant")) return ["Making no covenant means Israel must not make binding peace with the false-worshiping nations.", "The danger is spiritual compromise, not only politics."];
+  if (lower.includes("nor with their gods")) return ["Nor with their gods means Israel must reject the gods behind those nations' worship.", "The LORD will not share covenant loyalty with idols."];
+  if (lower.includes("dwell in thy land")) return ["They shall not dwell in thy land means the nations must not remain as a spiritual trap.", "The land is meant for covenant faithfulness."];
+  if (lower.includes("make thee sin")) return ["Make thee sin means draw Israel into rebellion against the LORD.", "Wrong worship can spread through close partnership."];
+  if (lower.includes("serve their gods")) return ["Serving their gods means adopting idol worship.", "The LORD warns that false worship will trap Israel."];
   if (lower.includes("snare")) return ["A snare is a trap.", "False worship can trap Israel by slowly pulling the heart away from the LORD."];
+  if (lower.includes("come up unto the lord")) return ["Come up unto the LORD means approach the mountain by God's invitation.", "No one comes near Sinai unless the LORD calls them."];
+  if (lower.includes("worship ye afar")) return ["Worship afar off means the leaders worship from a distance.", "God allows approach, but His holiness still sets boundaries."];
+  if (lower.includes("moses alone")) return ["Moses alone coming near means he has a unique mediator role.", "The people and leaders cannot approach God the same way Moses does."];
+  if (lower.includes("all the words of the lord")) return ["All the words of the LORD means the covenant commands are spoken to the people.", "Israel hears God's actual instruction before answering."];
+  if (lower.includes("answered with one voice")) return ["The people answer with one voice as a united response.", "They promise together to obey the LORD's covenant words."];
+  if (lower.includes("wrote all the words")) return ["Moses writes the LORD's words down.", "The covenant is not left as a vague memory or private feeling."];
+  if (lower.includes("builded an altar")) return ["Moses builds an altar at the foot of the mountain.", "Worship and sacrifice stand at the center of the covenant ceremony."];
+  if (lower.includes("twelve pillars")) return ["The twelve pillars represent the twelve tribes of Israel.", "The whole nation is included in the covenant scene."];
   if (lower.includes("book of the covenant")) return ["The book of the covenant is the written record of the LORD's covenant words.", "Israel hears actual commands before promising obedience."];
+  if (lower.includes("will we do")) return ["The people promise to do all the LORD has said.", "Their answer accepts covenant responsibility."];
+  if (lower.includes("moses took the blood")) return ["Moses takes the sacrificial blood for the covenant ceremony.", "The covenant is not sealed by words alone."];
   if (lower.includes("blood of the covenant")) return ["Blood of the covenant means sacrificial blood marking the covenant relationship.", "The ceremony shows that life with the holy LORD is serious and costly."];
   if (lower.includes("sprinkled")) return ["Sprinkled means the blood was applied to the people.", "The covenant is not only placed on the altar; the people themselves are marked as included."];
+  if (lower.includes("concerning all these words")) return ["All these words are the covenant instructions the people have heard.", "The blood is tied to the LORD's spoken commands, not a vague ritual."];
+  if (lower.includes("nadab") || lower.includes("abihu")) return ["Moses, Aaron, Nadab, and Abihu are named among those invited up.", "The covenant scene includes appointed leaders, not the whole camp rushing in."];
+  if (lower.includes("seventy of the elders")) return ["Seventy elders represent Israel's leadership before the LORD.", "The covenant meal includes leaders from the people God rescued."];
+  if (lower.includes("saw the god of israel")) return ["They saw the God of Israel in a limited, protected way.", "The scene shows astonishing nearness without making God casual."];
   if (lower.includes("sapphire")) return ["Sapphire is a precious blue stone.", "The pavement image gives a glimpse of royal beauty beneath the LORD's revealed presence."];
+  if (lower.includes("laid not his hand")) return ["God did not lay His hand on the leaders means He did not strike them down.", "They are allowed to behold and eat by mercy, not by entitlement."];
+  if (lower.includes("eat and drink")) return ["They eat and drink in God's presence as part of the covenant scene.", "The meal shows fellowship, but still under holy mercy."];
+  if (lower.includes("come up to me into the mount")) return ["God calls Moses up into the mountain.", "Moses goes higher to receive the tablets and instruction from the LORD."];
+  if (lower.includes("went up into the mount")) return ["Moses goes up into the mountain of God.", "He leaves the people below because he is receiving God's instruction for them."];
+  if (lower.includes("cloud covered")) return ["The cloud covers the mountain as a sign of God's presence.", "The glory is near, but still hidden and holy."];
+  if (lower.includes("glory of the lord abode")) return ["The glory of the LORD abode means God's visible presence rested there.", "Sinai becomes the place where God's holiness settles before Israel."];
+  if (lower.includes("devouring fire")) return ["A devouring fire is a frightening picture of God's glory.", "The people see that His presence is powerful and holy."];
+  if (lower.includes("forty days")) return ["Forty days and forty nights shows Moses remains on the mountain for a long appointed time.", "Receiving God's instruction is not rushed."];
   if (lower.includes("hewed tables")) return ["Hewed tables means cut stone tablets.", "Moses receives covenant words from the LORD, not ideas invented by Israel."];
   if (lower.includes("shittim")) return ["Shittim wood was the durable acacia-like wood used for tabernacle furniture and frames.", "The material is named because holy worship is built from specific things God commanded."];
   if (lower.includes("cubit")) return ["A cubit was an ancient length measurement based roughly on the forearm.", "The measurement shows that the tabernacle was a real structure built to God's pattern."];
@@ -1304,6 +1845,36 @@ function getDays27To29SpecificOpening(section: PersonalExodusPhraseSectionInput,
 
 function formatRenderedDays27To29Lines(section: PersonalExodusPhraseSectionInput, cleanTitle: string, lines: string[]) {
   if (section.chapter < 21 || section.chapter > 30) return lines;
+
+  if (section.chapter >= 21 && section.chapter <= 24) {
+    const rawOpening = getDays27To29SpecificOpening(section, cleanTitle);
+    return [
+      rawOpening[0],
+      rawOpening[1],
+      ...getDay27ShortTeachingBullets(section, cleanTitle),
+      getDay27ShortClosing(section, cleanTitle),
+    ].filter(Boolean).slice(0, 7);
+  }
+
+  if (section.chapter >= 25 && section.chapter <= 28) {
+    const rawOpening = getDays27To29SpecificOpening(section, cleanTitle);
+    return [
+      rawOpening[0],
+      rawOpening[1],
+      ...getDay28ShortTeachingBullets(section, cleanTitle),
+      getDay28ShortClosing(section, cleanTitle),
+    ].filter(Boolean).slice(0, 7);
+  }
+
+  if (section.chapter >= 29 && section.chapter <= 30) {
+    const rawOpening = getDays27To29SpecificOpening(section, cleanTitle);
+    return [
+      rawOpening[0],
+      rawOpening[1],
+      ...getDay29ShortTeachingBullets(section, cleanTitle),
+      getDay29ShortClosing(section, cleanTitle),
+    ].filter(Boolean).slice(0, 7);
+  }
 
   const isEmojiLine = (line: string) => /^[^A-Za-z0-9'"(]/.test(line.trim());
   const cleaned = removeExodusTwentyOneToThirtyRepeatedPhraseTitle(cleanTitle, lines)

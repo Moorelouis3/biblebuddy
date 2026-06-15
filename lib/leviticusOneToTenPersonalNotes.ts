@@ -24,29 +24,52 @@ const note = (lines: string[]) => lines.join("\n\n");
 const phrase = (title: string, lines: string[]): [string, string] => [title, note(lines)];
 
 function getLeviticusTitleIcon(title: string) {
-  if (/burnt offering|fire|burn|flay|pieces/i.test(title)) return "??";
-  if (/sweet savour|ashes|wood|flay|cut|wash|inwards|legs|crop|feathers|wings|divide|asunder/i.test(title)) return "??";
-  if (/meat offering|grain|flour|oil|frankincense|cakes|wafers/i.test(title)) return "??";
-  if (/memorial|baken|fryingpan|honey|firstfruits|salt|green ears|corn|full ears/i.test(title)) return "??";
-  if (/peace offering|thanksgiving|vow|freewill/i.test(title)) return "???";
-  if (/sin offering|trespass offering|sin|ignorance|forgiven|forgiveness/i.test(title)) return "??";
-  if (/blood|atonement|sprinkle|altar|without blemish|lay his hand|kill/i.test(title)) return "??";
-  if (/bullock|lamb|ram|goat|kid|herd|flock|cattle/i.test(title)) return "??";
-  if (/priest|aaron|sons|consecrate|anoint|garments|wash|oil/i.test(title)) return "???";
-  if (/holy|unclean|clean|defiled|separate|sanctify|abomination|abominable|make a difference/i.test(title)) return "??";
-  if (/leprosy|plague|skin|scab|bright spot|priest shall look|shut up|pronounce|hair|deeper|flesh|camp|clothes|rent|bare|cover/i.test(title)) return "??";
-  if (/goat|scapegoat|mercy seat|holy place|incense|within the veil|azazel/i.test(title)) return "??";
-  if (/nadab|abihu|strange fire|died|glory|appeared|accepted|befallen|content/i.test(title)) return "??";
-  if (/bird|fowl|turtle|pigeon|eagle|vulture|raven|owl|locust/i.test(title)) return "??";
-  if (/kidney|fat|liver|inwards/i.test(title)) return "??";
-  if (/issue|running|seed|woman|blood|separation|fountain|plague be healed|bed|saddle|lieth|bathe|water|earthen vessel/i.test(title)) return "??";
-  if (/command|spake|said|law|statute|ordinance|teach|called unto moses/i.test(title)) return "??";
-  if (/before the lord|unto the lord|tabernacle|congregation|sanctuary|hallowed|eighth day|blessed|shouted|fell on their faces/i.test(title)) return "??";
-  if (/camel|coney|hare|swine|beasts|hoof|cud|fins|scales|creeping thing|belly|all four|carcase/i.test(title)) return "??";
-  if (/man child|seven days|circumcised|purifying|open field|house|break down the house|scrape the house/i.test(title)) return "??";
-  if (/young calf|people's offering|breasts|wave breast|heave shoulder|due/i.test(title)) return "??";
-  if (/afflict your souls|sabbath of rest|once in a year|confess|iniquities|not inhabited/i.test(title)) return "??";
-  return "??";
+  if (/burnt offering|fire|burn|flay|pieces/i.test(title)) return "\u{1F525}";
+  if (/sweet savour|ashes|wood|flay|cut|wash|inwards|legs|crop|feathers|wings|divide|asunder/i.test(title)) return "\u{1F4A7}";
+  if (/meat offering|grain|flour|oil|frankincense|cakes|wafers/i.test(title)) return "\u{1F33E}";
+  if (/memorial|baken|fryingpan|honey|firstfruits|salt|green ears|corn|full ears/i.test(title)) return "\u{1F9C2}";
+  if (/peace offering|thanksgiving|vow|freewill/i.test(title)) return "\u{1F54A}\u{FE0F}";
+  if (/sin offering|trespass offering|sin|ignorance|forgiven|forgiveness/i.test(title)) return "\u{1FA78}";
+  if (/blood|atonement|sprinkle|altar|without blemish|lay his hand|kill/i.test(title)) return "\u{1FA78}";
+  if (/witness|knoweth|pronouncing|lips|swear|confess|confession|truth/i.test(title)) return "\u{1F5E3}\u{FE0F}";
+  if (/not able|poor|tenth part|ephah|handful|remnant|remaineth|left/i.test(title)) return "\u{1F932}";
+  if (/restore|restitution|fifth part|lost|neighbour|lie|trespass|committed/i.test(title)) return "\u{2696}\u{FE0F}";
+  if (/all night|morning|never go out|same day|generations|statute|for ever|many days/i.test(title)) return "\u{1F4C5}";
+  if (/charge of the lord|hand of moses|speak unto the children|all thine offerings/i.test(title)) return "\u{1F4DC}";
+  if (/linen|coat|girdle|breastplate|urim|thummim|garment|woollen/i.test(title)) return "\u{1F455}";
+  if (/wave|waved|breast|shoulder|right shoulder|rump|food of the offering|his own hands|oblation/i.test(title)) return "\u{1F64C}";
+  if (/leaven|unleavened|cake|bread|pan|fryingpan|baken/i.test(title)) return "\u{1F35E}";
+  if (/vail|veil|die not|lot|holy place|mercy seat/i.test(title)) return "\u{26FA}";
+  if (/sanctified|strong drink|wine|glory|all the people saw/i.test(title)) return "\u{26A0}\u{FE0F}";
+  if (/bullock|lamb|ram|goat|kid|herd|flock|cattle/i.test(title)) return "\u{1F411}";
+  if (/priest|aaron|sons|consecrate|anoint|garments|wash|oil/i.test(title)) return "\u{1F451}";
+  if (/holy|unclean|clean|defiled|separate|sanctify|abomination|abominable|make a difference/i.test(title)) return "\u{1F9FC}";
+  if (/leprosy|plague|skin|scab|bright spot|priest shall look|shut up|pronounce|hair|deeper|flesh|camp|clothes|rent|bare|cover/i.test(title)) return "\u{1F50E}";
+  if (/goat|scapegoat|mercy seat|holy place|incense|within the veil|azazel/i.test(title)) return "\u{1F410}";
+  if (/nadab|abihu|strange fire|died|glory|appeared|accepted|befallen|content/i.test(title)) return "\u{26A0}\u{FE0F}";
+  if (/bird|fowl|turtle|pigeon|eagle|vulture|raven|owl|locust/i.test(title)) return "\u{1F54A}\u{FE0F}";
+  if (/kidney|fat|liver|inwards/i.test(title)) return "\u{1F525}";
+  if (/issue|running|seed|woman|blood|separation|fountain|plague be healed|bed|saddle|lieth|bathe|water|earthen vessel/i.test(title)) return "\u{1F4A7}";
+  if (/command|spake|said|law|statute|ordinance|teach|called unto moses/i.test(title)) return "\u{1F4DC}";
+  if (/before the lord|unto the lord|tabernacle|congregation|sanctuary|hallowed|eighth day|blessed|shouted|fell on their faces/i.test(title)) return "\u{26FA}";
+  if (/voluntary|own will|accepted/i.test(title)) return "\u{1F64C}";
+  if (/put.*hand|lay.*hand|hands? upon|thumb|toe|ear/i.test(title)) return "\u{270B}";
+  if (/wring|cleave|divide/i.test(title)) return "\u{1F54A}\u{FE0F}";
+  if (/camel|coney|hare|swine|beasts|hoof|cud|fins|scales|creeping thing|belly|all four|carcase/i.test(title)) return "\u{1F37D}\u{FE0F}";
+  if (/common people|male or female/i.test(title)) return "\u{1F9D1}";
+  if (/thing be hid|wist it not|ignorance|unaware/i.test(title)) return "\u{1F648}";
+  if (/wrung off/i.test(title)) return "\u{1F54A}\u{FE0F}";
+  if (/broken down/i.test(title)) return "\u{1F9F1}";
+  if (/man child|seven days|circumcised|purifying|open field/i.test(title)) return "\u{1F476}";
+  if (/house|break down the house|scrape the house|stones|dust/i.test(title)) return "\u{1F3E0}";
+  if (/scarlet/i.test(title)) return "\u{1F9F5}";
+  if (/hyssop|cedar/i.test(title)) return "\u{1F331}";
+  if (/dwell alone|without the camp|outside the camp/i.test(title)) return "\u{1F3D5}\u{FE0F}";
+  if (/seas|rivers|fins|scales/i.test(title)) return "\u{1F30A}";
+  if (/ossifrage/i.test(title)) return "\u{1FAB6}";
+  if (/young calf|people's offering|breasts|wave breast|heave shoulder|due/i.test(title)) return "\u{1F64C}";
+  if (/afflict your souls|sabbath of rest|once in a year|confess|iniquities|not inhabited/i.test(title)) return "\u{1F4C5}";
+  return "\u{1F4CC}";
 }
 
 function ensureLeviticusTitleEmoji(title: string) {
@@ -56,20 +79,20 @@ function ensureLeviticusTitleEmoji(title: string) {
 
 function getLeviticusSectionIcon(section: PersonalLeviticusPhraseSectionInput) {
   const text = `${section.title} ${section.reference}`.toLowerCase();
-  if (/skin disease|leprosy|examination/.test(text)) return "??";
-  if (/garments/.test(text)) return "??";
-  if (/contaminated house/.test(text)) return "??";
-  if (/bodily discharges/.test(text)) return "??";
-  if (/atonement|scapegoat|mercy seat|solemn rest/.test(text)) return "??";
-  if (/cleansing the restored person/.test(text)) return "???";
-  if (/burnt/.test(text)) return "??";
-  if (/meat|grain|flour/.test(text)) return "??";
-  if (/peace/.test(text)) return "???";
-  if (/sin|trespass|forgiven/.test(text)) return "??";
-  if (/priest|aaron|consecration|ordination/.test(text)) return "???";
-  if (/strange fire|nadab|abihu/.test(text)) return "??";
-  if (/clean|unclean|food|animals/.test(text)) return "??";
-  if (/leprosy|skin|plague/.test(text)) return "??";
+  if (/skin disease|leprosy|examination/.test(text)) return "\u{1F50E}";
+  if (/garments/.test(text)) return "\u{1F455}";
+  if (/contaminated house/.test(text)) return "\u{1F3E0}";
+  if (/bodily discharges/.test(text)) return "\u{1F4A7}";
+  if (/atonement|scapegoat|mercy seat|solemn rest/.test(text)) return "\u{1FA78}";
+  if (/cleansing the restored person/.test(text)) return "\u{1F54A}\u{FE0F}";
+  if (/burnt/.test(text)) return "\u{1F525}";
+  if (/meat|grain|flour/.test(text)) return "\u{1F33E}";
+  if (/peace/.test(text)) return "\u{1F54A}\u{FE0F}";
+  if (/sin|trespass|forgiven/.test(text)) return "\u{1FA78}";
+  if (/priest|aaron|consecration|ordination/.test(text)) return "\u{1F451}";
+  if (/strange fire|nadab|abihu/.test(text)) return "\u{26A0}\u{FE0F}";
+  if (/clean|unclean|food|animals/.test(text)) return "\u{1F37D}\u{FE0F}";
+  if (/leprosy|skin|plague/.test(text)) return "\u{1F50E}";
   return getLeviticusTitleIcon(section.title);
 }
 
@@ -92,7 +115,7 @@ function getDeepPhraseEntries(markdown: string, fallbackTitle: string, fallbackS
 }
 
 function makeGeneratedLeviticusPhrase(title: string, body: string, summary: string): [string, string] {
-  return [`\u{1F4CC} ${title}`, explainLeviticusMinedPhrase(title, body, summary)];
+  return [ensureLeviticusTitleEmoji(title), explainLeviticusMinedPhrase(title, body, summary)];
 }
 
 function explainLeviticusMinedPhrase(title: string, body: string, summary: string): string {
@@ -349,71 +372,71 @@ function getLeviticusPhraseList(section: PersonalLeviticusPhraseSectionInput, cl
 
   if (/burnt offering|meat offering|peace offering|sin offering|trespass offering|offering|oblation|sacrifice/.test(lower)) {
     return [
-      `?? ${cleanTitle}`,
-      "?? Worship brought near",
-      "?? Sacrifice before God",
-      "?? A holy pattern for approach",
+      `${getLeviticusTitleIcon(cleanTitle)} ${cleanTitle}`,
+      "\u{1F64C} Worship brought near",
+      "\u{1F525} Sacrifice before God",
+      "\u{1F4DC} A holy pattern for approach",
     ];
   }
 
   if (/blood|atonement|sprinkle|altar|without blemish|lay his hand|kill/.test(lower)) {
     return [
-      `?? ${cleanTitle}`,
-      "?? Sin taken seriously",
-      "?? Life given before the LORD",
-      "??? Atonement and mercy",
+      `${getLeviticusTitleIcon(cleanTitle)} ${cleanTitle}`,
+      "\u{26A0}\u{FE0F} Sin taken seriously",
+      "\u{1FA78} Life given before the LORD",
+      "\u{1F64F} Atonement and mercy",
     ];
   }
 
   if (/priest|aaron|sons|consecrate|anoint|garments|wash|oil/.test(lower)) {
     return [
-      `??? ${cleanTitle}`,
-      "?? Priests set apart",
-      "?? Holy service",
-      "?? Worship led God's way",
+      `${getLeviticusTitleIcon(cleanTitle)} ${cleanTitle}`,
+      "\u{1F451} Priests set apart",
+      "\u{26FA} Holy service",
+      "\u{1F64C} Worship led God's way",
     ];
   }
 
   if (/holy|unclean|clean|defiled|separate|sanctify/.test(lower)) {
     return [
-      `?? ${cleanTitle}`,
-      "?? Clean and unclean",
-      "?? Holiness before God",
-      "?? Israel learning distinction",
+      `${getLeviticusTitleIcon(cleanTitle)} ${cleanTitle}`,
+      "\u{1F9FC} Clean and unclean",
+      "\u{1F54A}\u{FE0F} Holiness before God",
+      "\u{1F9ED} Israel learning distinction",
     ];
   }
 
   if (/leprosy|plague|skin|scab|bright spot|priest shall look|shut up|pronounce/.test(lower)) {
     return [
-      `?? ${cleanTitle}`,
-      "????? Careful examination",
-      "??? Camp kept holy",
-      "?? Sickness and separation",
+      `${getLeviticusTitleIcon(cleanTitle)} ${cleanTitle}`,
+      "\u{1F50E} Careful examination",
+      "\u{1F3D5}\u{FE0F} Camp kept holy",
+      "\u{26A0}\u{FE0F} Sickness and separation",
     ];
   }
 
   if (/goat|scapegoat|mercy seat|holy place|incense|within the veil|azazel/.test(lower)) {
     return [
-      `??? ${cleanTitle}`,
-      "?? Atonement for sin",
-      "??? The holy place",
-      "?? Mercy before the LORD",
+      `${getLeviticusTitleIcon(cleanTitle)} ${cleanTitle}`,
+      "\u{1FA78} Atonement for sin",
+      "\u{26FA} The holy place",
+      "\u{1F64F} Mercy before the LORD",
     ];
   }
 
   if (/fire|strange fire|nadab|abihu|died|glory|appeared/.test(lower)) {
     return [
-      `?? ${cleanTitle}`,
-      "?? Holy worship",
-      "?? God's presence is serious",
-      "?? Worship must follow God's command",
+      `${getLeviticusTitleIcon(cleanTitle)} ${cleanTitle}`,
+      "\u{1F525} Holy worship",
+      "\u{26A0}\u{FE0F} God's presence is serious",
+      "\u{1F4DC} Worship must follow God's command",
     ];
   }
 
   return [
-    `?? ${cleanTitle}`,
-    section.chapter <= 7 ? "?? Offerings before the LORD" : section.chapter <= 10 ? "??? Priests serving before God" : "?? Holiness in daily life",
-    section.chapter <= 7 ? "?? Sacrifice teaching approach" : section.chapter <= 10 ? "?? Worship treated as holy" : "?? Israel learning clean and unclean",
+    `${getLeviticusTitleIcon(cleanTitle)} ${cleanTitle}`,
+    section.chapter <= 7 ? "\u{1F525} Offerings before the LORD" : section.chapter <= 10 ? "\u{1F451} Priests serving before God" : "\u{1F54A}\u{FE0F} Holiness in daily life",
+    section.chapter <= 7 ? "\u{1FA78} Sacrifice teaching approach" : section.chapter <= 10 ? "\u{26FA} Worship treated as holy" : "\u{1F9FC} Israel learning clean and unclean",
   ];
 }
 
@@ -1288,6 +1311,6 @@ export const LEVITICUS_1_10_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionInp
   formatLeviticusOneToEightSectionExplanations([
     ...makeLeviticusSectionsFromDeepStudy(BIBLE_YEAR_DAY_THIRTY_FOUR_DEEP_STUDY_SECTIONS, [9, 10, 11, 12], "\u{2728}").map(deepenLeviticusPhraseCards),
     ...makeLeviticusSectionsFromDeepStudy(BIBLE_YEAR_DAY_THIRTY_FIVE_DEEP_STUDY_SECTIONS, [13, 14, 15, 16], "\u{1F54A}\u{FE0F}").map(deepenLeviticusPhraseCards),
-    ...makeLeviticusSectionsFromDeepStudy(BIBLE_YEAR_DAY_THIRTY_TWO_DEEP_STUDY_SECTIONS, [1, 2, 3, 4], "??").map(deepenLeviticusPhraseCards),
-    ...makeLeviticusSectionsFromDeepStudy(BIBLE_YEAR_DAY_THIRTY_THREE_DEEP_STUDY_SECTIONS, [5, 6, 7, 8], "??").map(deepenLeviticusPhraseCards),
+    ...makeLeviticusSectionsFromDeepStudy(BIBLE_YEAR_DAY_THIRTY_TWO_DEEP_STUDY_SECTIONS, [1, 2, 3, 4], "\u{1F525}").map(deepenLeviticusPhraseCards),
+    ...makeLeviticusSectionsFromDeepStudy(BIBLE_YEAR_DAY_THIRTY_THREE_DEEP_STUDY_SECTIONS, [5, 6, 7, 8], "\u{1FA78}").map(deepenLeviticusPhraseCards),
   ]);

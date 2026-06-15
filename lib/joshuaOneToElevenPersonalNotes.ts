@@ -2,6 +2,9 @@ import { JOSHUA_DEEP_NOTES } from "./joshuaDeepNotes";
 import { buildGeneratedPersonalSections } from "./bibleYearGeneratedPersonalSections";
 import type { PersonalLeviticusPhraseSectionInput } from "./leviticusOneToTenPersonalNotes";
 
+type PersonalPhrase = [string, string];
+type PersonalSection = PersonalLeviticusPhraseSectionInput;
+
 const note = (lines: string[]) => lines.join("\n\n");
 
 const supplementalJoshuaOneToElevenSections: PersonalLeviticusPhraseSectionInput[] = [
@@ -183,8 +186,7 @@ const supplementalJoshuaOneToElevenSections: PersonalLeviticusPhraseSectionInput
   },
 ];
 
-export const JOSHUA_1_11_PERSONAL_SECTIONS = [
-  ...buildGeneratedPersonalSections({
+const generatedJoshuaOneToElevenPersonalSections = buildGeneratedPersonalSections({
   book: "Joshua",
   notes: JOSHUA_DEEP_NOTES,
   chapters: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
@@ -203,6 +205,93 @@ export const JOSHUA_1_11_PERSONAL_SECTIONS = [
     "The Accursed Thing",
     "Ask Not Counsel At The Mouth Of The LORD",
   ],
-  }),
-  ...supplementalJoshuaOneToElevenSections,
+});
+
+function stripLeadingEmoji(value: string) {
+  return value.replace(/^[^A-Za-z0-9']+\s*/, "").trim();
+}
+
+function getMeaning(title: string, section: { reference: string }) {
+  const lower = stripLeadingEmoji(title).toLowerCase();
+
+  if (/be strong|good courage|not fail|not forsake|lord thy god is with thee|whithersoever/.test(lower)) {
+    return ["Joshua is being called to courageous obedience.", "His courage is grounded in the LORD's presence, not in confidence that he can lead by himself."];
+  }
+  if (/book of the law|mouth|meditate|observe to do|written|commanded moses/.test(lower)) {
+    return ["Joshua's leadership must stay under God's written instruction.", "The conquest of the land begins with hearing, speaking, remembering, and obeying the LORD's word."];
+  }
+  if (/jordan|ark|covenant|priests|dry ground|passed over|waters/.test(lower)) {
+    return ["The LORD is bringing Israel through the Jordan by His covenant presence.", "The river that should block them becomes the place where God shows that He leads His people into the promise."];
+  }
+  if (/rahab|harlot|spies|scarlet|token|house|hid|messengers/.test(lower)) {
+    return ["Rahab is responding to the LORD with faith while Jericho faces judgment.", "Her house becomes a place where mercy is promised because she receives Israel's God as the true God."];
+  }
+  if (/jericho|wall|shout|trumpets|compass|seventh day|accursed thing|silver|gold/.test(lower)) {
+    return ["Jericho's fall must happen exactly the way the LORD commands.", "Victory is not treated as Israel's private achievement; the city, the spoil, and the rescue of Rahab belong under God's word."];
+  }
+  if (/achan|israel hath sinned|covenant|accursed|ai|taken|burnt|troubled/.test(lower)) {
+    return ["Hidden sin has brought covenant trouble into Israel's camp.", "The defeat at Ai shows that victory cannot continue while disobedience is protected."];
+  }
+  if (/gibeon|league|counsel|mouth of the lord|hewers of wood|drawers of water/.test(lower)) {
+    return ["Israel is being warned about acting without asking the LORD.", "The Gibeonite deception shows how quickly sight, pressure, and appearances can lead God's people into a binding mistake."];
+  }
+  if (/sun|moon|stood still|hailstones|kings|makkedah|amorites/.test(lower)) {
+    return ["The LORD fights for Israel in the battle.", "Joshua's campaign is not only military strategy; creation, weather, and victory are shown under God's authority."];
+  }
+  if (/land|give|inheritance|children of israel|tribes|people/.test(lower)) {
+    return ["The promised land is being received by the covenant people.", "Joshua shows that God's gift becomes real as Israel follows, fights, and obeys under His command."];
+  }
+
+  return ["Joshua is showing the LORD bringing His people into the promise.", `In ${section.reference}, courage, obedience, mercy, judgment, and victory are being shaped by God's word.`];
+}
+
+function getBullets(title: string) {
+  const lower = stripLeadingEmoji(title).toLowerCase();
+
+  if (/be strong|good courage|not fail|not forsake|with thee/.test(lower)) return ["💪 Courage rests on God", "🤝 The LORD stays with Joshua", "👣 Obedience must move forward"];
+  if (/book of the law|meditate|observe|written|commanded/.test(lower)) return ["📖 God's word leads Joshua", "🧠 Meditation shapes courage", "👣 Obedience is required"];
+  if (/jordan|ark|covenant|dry ground|waters|passed over/.test(lower)) return ["🌊 The barrier opens", "📦 God's presence leads", "👥 The whole people cross"];
+  if (/rahab|scarlet|token|house|hid|messengers/.test(lower)) return ["🪟 Rahab responds with faith", "🏠 Mercy reaches her household", "🤝 The promise must be kept"];
+  if (/jericho|wall|shout|trumpets|accursed|silver|gold/.test(lower)) return ["🏰 Jericho falls by God's command", "📣 Israel obeys the strange instruction", "⚠️ Devoted things belong to the LORD"];
+  if (/achan|sinned|covenant|ai|taken|burnt|troubled/.test(lower)) return ["🚨 Sin is exposed", "👥 The camp is affected", "🔥 Judgment cleanses the trouble"];
+  if (/gibeon|league|counsel|mouth of the lord|hewers|drawers/.test(lower)) return ["👀 Appearances deceive", "🙏 Israel should ask the LORD", "🤝 A covenant promise still binds"];
+  if (/sun|moon|hailstones|kings|amorites|battle/.test(lower)) return ["☀️ Creation obeys God", "⚔️ The LORD fights for Israel", "👑 Enemy kings cannot stop Him"];
+  if (/land|inheritance|children of israel|tribes|people/.test(lower)) return ["🏞️ The land is God's gift", "👥 Israel receives it together", "📜 The promise becomes visible"];
+
+  return ["📜 God's word directs the story", "🏞️ The promise is moving forward", "🙌 Israel must trust and obey"];
+}
+
+function getTakeaway(title: string) {
+  const lower = stripLeadingEmoji(title).toLowerCase();
+
+  if (/rahab|scarlet|token/.test(lower)) return "Mercy is real for the one who trusts the LORD.";
+  if (/achan|accursed|ai|troubled/.test(lower)) return "Hidden disobedience harms the whole covenant community.";
+  if (/book of the law|meditate|observe/.test(lower)) return "Courage must stay joined to God's word.";
+  if (/jordan|ark|waters|dry ground/.test(lower)) return "God's presence makes a way where Israel cannot make one.";
+  return "The LORD leads Israel into the land by promise, obedience, and mercy.";
+}
+
+function makeExplanation(section: { reference: string }, title: string) {
+  const [lineOne, lineTwo] = getMeaning(title, section);
+  return note([
+    lineOne,
+    lineTwo,
+    ...getBullets(title),
+    getTakeaway(title),
+  ]);
+}
+
+function polishSection<T extends { phrases: string[][]; reference: string }>(section: T): T & { phrases: PersonalPhrase[] } {
+  return {
+    ...section,
+    phrases: section.phrases.map(([title]) => [
+      title,
+      makeExplanation(section, title),
+    ] as PersonalPhrase),
+  };
+}
+
+export const JOSHUA_1_11_PERSONAL_SECTIONS: PersonalSection[] = [
+  ...generatedJoshuaOneToElevenPersonalSections.map(polishSection),
+  ...supplementalJoshuaOneToElevenSections.map(polishSection),
 ];

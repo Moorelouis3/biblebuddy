@@ -3,6 +3,9 @@ import { buildGeneratedPersonalSections } from "./bibleYearGeneratedPersonalSect
 import type { PersonalLeviticusPhraseSectionInput } from "./leviticusOneToTenPersonalNotes";
 import { DAY_59_JOSHUA_12_15_PERSONAL_SECTIONS } from "./dayFiftyNineJoshuaPersonalNotes";
 
+type PersonalPhrase = [string, string];
+type PersonalSection = PersonalLeviticusPhraseSectionInput;
+
 const note = (lines: string[]) => lines.join("\n\n");
 
 const upgradedDayFiftyNineOpeningSections: PersonalLeviticusPhraseSectionInput[] = [
@@ -397,10 +400,7 @@ const supplementalJoshuaTwelveToNineteenSections: PersonalLeviticusPhraseSection
   },
 ];
 
-export const JOSHUA_12_19_PERSONAL_SECTIONS = [
-  ...upgradedDayFiftyNineOpeningSections,
-  ...DAY_59_JOSHUA_12_15_PERSONAL_SECTIONS.filter((section) => section.reference !== "Joshua 12:1-6" && section.reference !== "Joshua 12:7-8" && section.reference !== "Joshua 14:6-11"),
-  ...buildGeneratedPersonalSections({
+const generatedJoshuaTwelveToNineteenPersonalSections = buildGeneratedPersonalSections({
   book: "Joshua",
   notes: JOSHUA_DEEP_NOTES,
   chapters: [12, 13, 14, 15, 16, 17, 18, 19],
@@ -419,6 +419,93 @@ export const JOSHUA_12_19_PERSONAL_SECTIONS = [
     "Their Coast Went Out",
     "The Tabernacle Of The Congregation",
   ],
-  }).filter((section) => ![12, 13, 14, 15].includes(section.chapter)),
-  ...supplementalJoshuaTwelveToNineteenSections,
+}).filter((section) => ![12, 13, 14, 15].includes(section.chapter));
+
+function stripLeadingEmoji(value: string) {
+  return value.replace(/^[^A-Za-z0-9']+\s*/, "").trim();
+}
+
+function getMeaning(title: string, section: { reference: string }) {
+  const lower = stripLeadingEmoji(title).toLowerCase();
+
+  if (/kings of the land|king|smote|defeated|possessed|war/.test(lower)) {
+    return ["Joshua is remembering real victories before the land is divided.", "The inheritance is not an abstract idea; it follows the LORD giving Israel victory over actual rulers and places."];
+  }
+  if (/land|inheritance|possess|lot|portion|fell|gave|divided|families/.test(lower)) {
+    return ["The promised land is being assigned to Israel's tribes and families.", "Joshua is showing God's promise becoming specific through borders, portions, cities, and households."];
+  }
+  if (/coast|border|went out|river|mount|valley|sea|city|cities|villages/.test(lower)) {
+    return ["The boundary language gives shape to Israel's inheritance.", "The Bible names places because God's promise becomes real territory, not a vague spiritual idea."];
+  }
+  if (/caleb|give me this mountain|hebron|wholly followed|anakims|forty/.test(lower)) {
+    return ["Caleb is trusting the same promise he believed decades earlier.", "His request for the mountain shows old faith still acting with courage in the land."];
+  }
+  if (/daughters of zelophehad|daughter|no sons|inheritance among our brethren|commandment of the lord/.test(lower)) {
+    return ["The daughters' inheritance is protected according to the LORD's command.", "Their family is not erased because there were no sons; justice becomes part of the land map."];
+  }
+  if (/canaanites|drave not out|dwell among|tribute|slack|how long/.test(lower)) {
+    return ["Incomplete obedience is being exposed inside the inheritance story.", "Israel may control some places, but leaving what God commanded them to remove plants danger for the future."];
+  }
+  if (/tabernacle|congregation|shiloh/.test(lower)) {
+    return ["Worship is being placed at the center of Israel's settled life.", "The land is not merely real estate; the covenant people must live around the LORD's presence."];
+  }
+  if (/children of israel|tribe|tribes|people|brethren/.test(lower)) {
+    return ["The inheritance belongs to the covenant people together.", "Joshua keeps naming tribes and families because God's promise is being distributed to real households."];
+  }
+
+  return ["Joshua is describing how the promised land becomes ordered inheritance.", `In ${section.reference}, victory, boundaries, tribes, and cities are being gathered under the LORD's faithfulness.`];
+}
+
+function getBullets(title: string) {
+  const lower = stripLeadingEmoji(title).toLowerCase();
+
+  if (/king|smote|war|defeated/.test(lower)) return ["👑 Real kings had ruled there", "⚔️ Israel faced real enemies", "🙌 The LORD gave victory"];
+  if (/inheritance|lot|portion|families|gave|divided/.test(lower)) return ["🏞️ The land is God's gift", "👥 Families receive their place", "📜 The allotment is ordered"];
+  if (/coast|border|went out|river|mount|valley|sea|cities|villages/.test(lower)) return ["🗺️ The promise has boundaries", "📍 Places are named carefully", "🏠 The land becomes livable"];
+  if (/caleb|mountain|hebron|anakims|wholly followed/.test(lower)) return ["💪 Caleb keeps trusting", "⛰️ The mountain requires courage", "📜 God's old promise still stands"];
+  if (/daughters|zelophehad|no sons|brethren/.test(lower)) return ["👩‍👧 The daughters are included", "⚖️ Justice protects the family", "🏞️ Inheritance is preserved"];
+  if (/canaanites|drave not out|dwell among|tribute|slack/.test(lower)) return ["⚠️ Obedience is incomplete", "🏠 The danger remains nearby", "📉 Compromise will have consequences"];
+  if (/tabernacle|congregation|shiloh/.test(lower)) return ["⛺ Worship stands at the center", "👥 The congregation gathers", "🙌 The land belongs before God"];
+  if (/children of israel|tribe|tribes|people|brethren/.test(lower)) return ["👥 Israel receives the promise together", "🏠 Families matter to the allotment", "📜 God's gift is ordered"];
+
+  return ["🏞️ The land is becoming inheritance", "📍 The details make the promise concrete", "🙌 The LORD's faithfulness is being recorded"];
+}
+
+function getTakeaway(title: string) {
+  const lower = stripLeadingEmoji(title).toLowerCase();
+
+  if (/canaanites|drave not out|slack|tribute/.test(lower)) return "Partial possession is not the same as full obedience.";
+  if (/caleb|mountain|hebron/.test(lower)) return "Long obedience can still ask boldly for what God promised.";
+  if (/daughters|zelophehad/.test(lower)) return "God's inheritance includes careful justice for vulnerable families.";
+  if (/coast|border|cities|villages|lot|inheritance/.test(lower)) return "God's promise becomes concrete in real places and real families.";
+  return "God's promise is becoming visible in Israel's settled life.";
+}
+
+function makeExplanation(section: { reference: string }, title: string) {
+  const [lineOne, lineTwo] = getMeaning(title, section);
+  return note([
+    lineOne,
+    lineTwo,
+    ...getBullets(title),
+    getTakeaway(title),
+  ]);
+}
+
+function polishSection<T extends { phrases: string[][]; reference: string }>(section: T): T & { phrases: PersonalPhrase[] } {
+  return {
+    ...section,
+    phrases: section.phrases.map(([title]) => [
+      title,
+      makeExplanation(section, title),
+    ] as PersonalPhrase),
+  };
+}
+
+export const JOSHUA_12_19_PERSONAL_SECTIONS: PersonalSection[] = [
+  ...upgradedDayFiftyNineOpeningSections.map(polishSection),
+  ...DAY_59_JOSHUA_12_15_PERSONAL_SECTIONS
+    .filter((section) => section.reference !== "Joshua 12:1-6" && section.reference !== "Joshua 12:7-8" && section.reference !== "Joshua 14:6-11")
+    .map(polishSection),
+  ...generatedJoshuaTwelveToNineteenPersonalSections.map(polishSection),
+  ...supplementalJoshuaTwelveToNineteenSections.map(polishSection),
 ];

@@ -2,6 +2,9 @@ import { DEUTERONOMY_DEEP_NOTES } from "./deuteronomyDeepNotes";
 import { buildGeneratedPersonalSections } from "./bibleYearGeneratedPersonalSections";
 import type { PersonalLeviticusPhraseSectionInput } from "./leviticusOneToTenPersonalNotes";
 
+type PersonalPhrase = [string, string];
+type PersonalSection = PersonalLeviticusPhraseSectionInput;
+
 const note = (lines: string[]) => lines.join("\n\n");
 
 const supplementalDeuteronomyThirtyFourSections: PersonalLeviticusPhraseSectionInput[] = [
@@ -49,8 +52,7 @@ const supplementalDeuteronomyThirtyFourSections: PersonalLeviticusPhraseSectionI
   },
 ];
 
-export const DEUTERONOMY_30_34_PERSONAL_SECTIONS = [
-  ...buildGeneratedPersonalSections({
+const generatedDeuteronomyThirtyToThirtyFourPersonalSections = buildGeneratedPersonalSections({
   book: "Deuteronomy",
   notes: DEUTERONOMY_DEEP_NOTES,
   chapters: [30, 31, 32, 33, 34],
@@ -69,6 +71,88 @@ export const DEUTERONOMY_30_34_PERSONAL_SECTIONS = [
     "As Thy Days So Shall Thy Strength Be",
     "Thine Enemies Shall Be Found Liars Unto Thee",
   ],
-  }),
-  ...supplementalDeuteronomyThirtyFourSections,
+});
+
+function stripLeadingEmoji(value: string) {
+  return value.replace(/^[^A-Za-z0-9']+\s*/, "").trim();
+}
+
+function getMeaning(title: string, section: { reference: string }) {
+  const lower = stripLeadingEmoji(title).toLowerCase();
+
+  if (/choose life|life and good|death and evil|that thou and thy seed may live|love the lord|cleave unto him/.test(lower)) {
+    return ["Moses is pressing Israel to choose covenant life with the LORD.", "Life is not bare survival; it means loving God, listening to Him, and walking in His ways."];
+  }
+  if (/commandment|not hidden|not far off|mouth|heart|do it|words of this law/.test(lower)) {
+    return ["God's command is being placed close enough for Israel to obey.", "Moses does not describe obedience as mysterious or unreachable, but as a real response to God's revealed word."];
+  }
+  if (/joshua|be strong|good courage|go with thee|not fail thee|not forsake thee/.test(lower)) {
+    return ["Joshua is being strengthened for leadership after Moses.", "The courage command rests on the LORD's presence, not on Joshua's personality or military skill."];
+  }
+  if (/song|witness|heaven|earth|set your hearts|teach it|children/.test(lower)) {
+    return ["Moses uses song and witnesses to make Israel remember God's words.", "The people must carry the warning into future generations instead of treating it as a momentary speech."];
+  }
+  if (/rock|eagle|jeshurun|provoked|strange gods|vengeance|recompence/.test(lower)) {
+    return ["The song describes the LORD's faithfulness and Israel's danger of rebellion.", "Its images teach that God is steady, just, and merciful while His people are often forgetful."];
+  }
+  if (/blessing|moses the man of god|reuben|judah|levi|benjamin|joseph|zebulun|gad|dan|naphtali|asher/.test(lower)) {
+    return ["Moses blesses the tribes before his death.", "The blessings look over Israel's future and place each tribe under the care and rule of the LORD."];
+  }
+  if (/eternal god|refuge|everlasting arms|happy art thou|saved by the lord|shield|sword/.test(lower)) {
+    return ["Israel's safety is found in the eternal God.", "Moses ends by pointing beyond himself to the LORD who carries, protects, and saves His people."];
+  }
+  if (/moses|hundred and twenty|eye was not dim|natural force|died|wept|thirty days|spirit of wisdom|laid his hands/.test(lower)) {
+    return ["Moses' ministry is closing while God's promise continues.", "The chapter honors Moses without making Israel's future depend on Moses being present."];
+  }
+
+  return ["Moses is giving Israel final covenant instruction before the transition to Joshua.", `In ${section.reference}, the people are being taught to remember the LORD, obey His word, and trust Him beyond Moses' lifetime.`];
+}
+
+function getBullets(title: string) {
+  const lower = stripLeadingEmoji(title).toLowerCase();
+
+  if (/choose life|life and good|death and evil|love the lord|cleave/.test(lower)) return ["✅ Life is tied to the LORD", "❤️ Love must become obedience", "⚠️ Rebellion leads toward death"];
+  if (/commandment|not hidden|not far off|mouth|heart/.test(lower)) return ["📜 God's word is near", "🗣️ The mouth must confess it", "❤️ The heart must receive it"];
+  if (/joshua|be strong|good courage|not fail|not forsake/.test(lower)) return ["💪 Courage has a reason", "🤝 The LORD stays with His servant", "➡️ Leadership moves forward"];
+  if (/song|witness|heaven|earth|children|set your hearts/.test(lower)) return ["🎶 The song teaches memory", "👂 Israel must listen deeply", "👨‍👩‍👧 The next generation must learn"];
+  if (/rock|eagle|jeshurun|strange gods|vengeance/.test(lower)) return ["🪨 The LORD is steady", "🦅 He carried Israel with care", "💔 Idolatry betrays His mercy"];
+  if (/blessing|reuben|judah|levi|benjamin|joseph|zebulun|gad|dan|naphtali|asher/.test(lower)) return ["🙌 The tribes are blessed before God", "🏞️ Each inheritance has a future", "👑 The LORD rules over Israel"];
+  if (/eternal god|refuge|arms|shield|sword|saved/.test(lower)) return ["🛡️ God is Israel's refuge", "💪 His arms uphold His people", "🙌 Salvation belongs to the LORD"];
+  if (/moses|died|wept|thirty days|wisdom|laid his hands/.test(lower)) return ["🕯️ Moses' work reaches its close", "➡️ The mission continues", "🕊️ God provides the next leader"];
+
+  return ["📜 Final words must be remembered", "❤️ Israel must answer from the heart", "➡️ God's promise continues forward"];
+}
+
+function getTakeaway(title: string) {
+  const lower = stripLeadingEmoji(title).toLowerCase();
+
+  if (/choose life|life and good|death and evil/.test(lower)) return "Covenant choice is about life with the LORD.";
+  if (/joshua|be strong|good courage/.test(lower)) return "Courage comes from God's continuing presence.";
+  if (/moses|died|wept|laid his hands|wisdom/.test(lower)) return "God's work continues when one faithful servant's role ends.";
+  return "Israel must receive Moses' final words as a call to faithful covenant life.";
+}
+
+function makeExplanation(section: { reference: string }, title: string) {
+  const [lineOne, lineTwo] = getMeaning(title, section);
+  return note([
+    lineOne,
+    lineTwo,
+    ...getBullets(title),
+    getTakeaway(title),
+  ]);
+}
+
+function polishSection<T extends { phrases: string[][]; reference: string }>(section: T): T & { phrases: PersonalPhrase[] } {
+  return {
+    ...section,
+    phrases: section.phrases.map(([title]) => [
+      title,
+      makeExplanation(section, title),
+    ] as PersonalPhrase),
+  };
+}
+
+export const DEUTERONOMY_30_34_PERSONAL_SECTIONS: PersonalSection[] = [
+  ...generatedDeuteronomyThirtyToThirtyFourPersonalSections.map(polishSection),
+  ...supplementalDeuteronomyThirtyFourSections.map(polishSection),
 ];

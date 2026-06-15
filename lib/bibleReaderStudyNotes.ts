@@ -21817,8 +21817,376 @@ function applyPersonalExodusTextureStudySections() {
   }
 }
 
+function getKeyPhraseCategory(section: BibleReaderStudySection) {
+  return section.categories.find((category) => category.id === "key-phrases");
+}
+
+function normalizeDayOnePhraseTitle(content: string) {
+  const [title = ""] = content.replace(/\r\n/g, "\n").split("\n");
+  return title.replace(/^[^A-Za-z0-9']+\s*/, "").trim().toLowerCase();
+}
+
+function makeDayOneReviewedPhrase(heading: string, body: string) {
+  return formatBibleYearPhraseCard(heading, body);
+}
+
+function replaceDayOnePhrase(reference: string, title: string, heading: string, body: string) {
+  const section = BIBLE_READER_STUDY_SECTIONS.find(
+    (item) => item.book === "genesis" && (item.chapter === 1 || item.chapter === 2) && item.reference === reference,
+  );
+  const category = section ? getKeyPhraseCategory(section) : undefined;
+  if (!category) return;
+
+  const normalizedTitle = title.toLowerCase();
+  const nextContent = makeDayOneReviewedPhrase(heading, body);
+  const index = category.content.findIndex((content) => normalizeDayOnePhraseTitle(content) === normalizedTitle);
+
+  if (index >= 0) {
+    category.content[index] = nextContent;
+  } else {
+    category.content.push(nextContent);
+  }
+}
+
+function appendDayOnePhrase(reference: string, heading: string, body: string) {
+  const section = BIBLE_READER_STUDY_SECTIONS.find(
+    (item) => item.book === "genesis" && (item.chapter === 1 || item.chapter === 2) && item.reference === reference,
+  );
+  const category = section ? getKeyPhraseCategory(section) : undefined;
+  if (!category) return;
+
+  const normalizedTitle = heading.replace(/^[^A-Za-z0-9']+\s*/, "").trim().toLowerCase();
+  if (category.content.some((content) => normalizeDayOnePhraseTitle(content) === normalizedTitle)) return;
+
+  category.content.push(makeDayOneReviewedPhrase(heading, body));
+}
+
+function cleanDayOneReviewedCard(content: string) {
+  return content
+    .replace(/\n\n[^\n]+ helps the reader understand what this part of the passage means\./gi, "")
+    .replace(/\n\nThis helps the original audience connect the early chapters of Genesis to the world they knew\./gi, "")
+    .replace(/\n\nMoses mentions it because the original readers would know this river mattered\./gi, "")
+    .replace(/\n\nThe card is not mainly explaining the word generations\./gi, "")
+    .replace(/\bexpanse\b/g, "firmament")
+    .replace(/\bExpanse\b/g, "Firmament")
+    .replace(/\bCalled The Firmament Sky\b/g, "Called The Firmament Heaven")
+    .replace(/\bIn The Firmament Of The Sky\b/g, "In The Firmament Of The Heaven")
+    .replace(/\bOf The Sky\b/g, "Of The Heaven")
+    .replace(/\bsky\b/g, "heaven")
+    .replace(/\bSky\b/g, "Heaven")
+    .replace(/\bbirds\b/g, "fowls")
+    .replace(/\bBirds\b/g, "Fowls")
+    .replace(/\bbird\b/g, "fowl")
+    .replace(/\bBird\b/g, "Fowl")
+    .replace(/\bAnimals Of The Earth\b/g, "Beasts Of The Earth")
+    .replace(/\banimals of the earth\b/g, "beasts of the earth")
+    .replace(/\bAnimals\b/g, "Beasts")
+    .replace(/\banimals\b/g, "beasts")
+    .replace(/\bLand Beasts\b/g, "Beasts Of The Earth")
+    .replace(/\bland beasts\b/g, "beasts of the earth")
+    .replace(/\bCreatures That Move Along The Ground\b/g, "Creeping Things")
+    .replace(/\bCreatures that move along the ground\b/g, "Creeping things")
+    .replace(/\bcreatures that move along the ground\b/g, "creeping things")
+    .replace(/\bcreatures that move close to the ground\b/g, "creeping things")
+    .replace(/\bSea creatures produce sea creatures\b/g, "Great whales bring forth after their kind")
+    .replace(/\bSea creatures produce great whales\b/g, "Great whales bring forth after their kind")
+    .replace(/\bCultivate It And Keep It\b/g, "Dress It And Keep It")
+    .replace(/\bcultivate it and keep it\b/g, "dress it and keep it")
+    .replace(/\bCultivate\b/g, "Dress")
+    .replace(/\bcultivate\b/g, "dress")
+    .replace(/\bLord God\b/g, "LORD God")
+    .replace(/\bLarge Sea Creatures\b/g, "Great Whales")
+    .replace(/\blarge sea creatures\b/g, "great whales")
+    .replace(/\bSea Creatures\b/g, "Great Whales")
+    .replace(/\bsea creatures\b/g, "great whales")
+    .replace(/\bSea Animals\b/g, "Great Whales")
+    .replace(/\bsea animals\b/g, "great whales");
+}
+
+function applyDayOneQualityReviewUpgrade() {
+  replaceDayOnePhrase(
+    "Genesis 1:6-8",
+    "Let There Be An Expanse",
+    "☁️ Let There Be A Firmament",
+    `Firmament is the KJV word for the spread-out heaven God places between the waters.
+
+God is making ordered space where the world can later be filled with life.
+
+☁️ The firmament is made
+🌊 Waters are separated
+🧭 Creation receives order
+🐦 Fowls will later fly there
+
+The second day shows God preparing the place before He fills it.`,
+  );
+
+  replaceDayOnePhrase(
+    "Genesis 1:6-8",
+    "Called The Expanse Sky",
+    "🌌 Called The Firmament Heaven",
+    `God names the firmament Heaven.
+
+Naming shows His authority over the space He made.
+
+🌌 Heaven is named
+☁️ The firmament has its place
+🌊 The waters are divided
+👑 God rules what He creates
+
+The world is not nameless confusion; it is ordered by God's word.`,
+  );
+
+  replaceDayOnePhrase(
+    "Genesis 1:20-23",
+    "God Created Large Sea Creatures",
+    "🐋 God Created Great Whales",
+    `Great whales are the great creatures of the waters named in Genesis 1:21.
+
+Ancient people often feared the sea and the massive creatures within it, but Genesis says they are made by God.
+
+🐋 Great whales are created
+🌊 The deep is under God's rule
+👑 No creature rivals the Creator
+✅ God calls His work good
+
+Even the largest creatures in the waters answer to the LORD who made them.`,
+  );
+
+  replaceDayOnePhrase(
+    "Genesis 1:20-23",
+    "And God Blessed Them",
+    "🙌 And God Blessed Them",
+    `God blesses the living creatures of the waters and the fowls of the heaven.
+
+The blessing gives life the power to multiply and fill the places God prepared.
+
+🙌 God blesses living creatures
+🐋 Great whales fill the waters
+🐦 Fowls multiply in the heaven
+📈 Life spreads by God's command
+
+The first blessing in creation shows that life increases because God gives it fruitfulness.`,
+  );
+
+  replaceDayOnePhrase(
+    "Genesis 1:24-25",
+    "Creatures That Move Along The Ground",
+    "🐾 Creeping Things",
+    `Creeping things are the smaller living creatures that move along the earth.
+
+Genesis names them because even the low and easily overlooked parts of creation belong to God.
+
+🐾 Creeping things are made
+🌍 The earth is filled with life
+👑 God rules the small and great
+✅ God calls His work good
+
+Nothing is too small to be included in God's created order.`,
+  );
+
+  replaceDayOnePhrase(
+    "Genesis 1:24-25",
+    "Animals Of The Earth",
+    "🐘 Beasts Of The Earth",
+    `Beasts of the earth are the larger wild creatures God makes for the dry land.
+
+They are powerful, but they are still creatures under the Creator's authority.
+
+🐘 Beasts fill the land
+🌍 The earth receives life
+👑 God made them all
+✅ Their place is good
+
+The land is no longer empty; it is filled with life God ordered.`,
+  );
+
+  appendDayOnePhrase(
+    "Genesis 1:29-31",
+    "🍽️ To You It Shall Be For Meat",
+    `Meat in older KJV English means food.
+
+God is telling mankind that the herbs and fruit trees are given for provision.
+
+🍽️ Meat means food
+🌱 Herbs are given
+🌳 Fruit trees provide
+🙌 God feeds what He creates
+
+Creation includes provision before human need is ever spoken.`,
+  );
+
+  appendDayOnePhrase(
+    "Genesis 2:1-3",
+    "🌌 And All The Host Of Them",
+    `The host of them means everything that fills the heavens and the earth.
+
+God did not finish empty spaces only; He finished the full company of created things.
+
+🌌 Heaven is filled
+🌍 Earth is filled
+🐦 Fowls and beasts are in place
+👤 Humanity stands in God's image
+
+Creation is complete, ordered, and full.`,
+  );
+
+  appendDayOnePhrase(
+    "Genesis 2:1-3",
+    "✨ Sanctified It",
+    `Sanctified means God set the seventh day apart as holy.
+
+The first thing called holy in the Bible is time, not a building.
+
+✨ Set apart
+🛑 Rest is holy
+📅 Time belongs to God
+🙌 Creation is complete
+
+God sanctifies the day so rest becomes part of His good design.`,
+  );
+
+  replaceDayOnePhrase(
+    "Genesis 2:4-6",
+    "These Are The Generations",
+    "📖 These Are The Generations Of The Heavens And Of The Earth",
+    `Generations introduces the record of what comes from the heavens and the earth God created.
+
+Genesis now moves from the wide creation week into the human story inside that created world.
+
+📖 A new section begins
+🌌 Heaven and earth are named
+👤 The man comes into view
+🌳 Eden comes into view
+
+The phrase shows Genesis 2 as a closer look at life within God's finished creation.`,
+  );
+
+  replaceDayOnePhrase(
+    "Genesis 2:4-6",
+    "Of The Heavens And Of The Earth",
+    "🌌 Of The Heavens And Of The Earth",
+    `The heavens and the earth are the whole created world from Genesis 1.
+
+Eden, the man, work, command, and relationship all belong inside that world God made.
+
+🌌 Heavens above
+🌍 Earth below
+🌳 Eden within creation
+👤 Man formed for purpose
+
+Genesis 2 is not detached from creation; it zooms in on life inside it.`,
+  );
+
+  appendDayOnePhrase(
+    "Genesis 2:7",
+    "🌬️ Breath Of Life",
+    `The breath of life is the life God gives directly to the man.
+
+The formed dust becomes a living soul only because God breathes life into him.
+
+🌬️ Breath comes from God
+🪨 Man is formed from dust
+❤️ Life is received
+👤 Man becomes a living soul
+
+Human life is humble because it is dust, and precious because it is God-given.`,
+  );
+
+  replaceDayOnePhrase(
+    "Genesis 2:8-9",
+    "Eastward In Eden",
+    "📍 Eastward In Eden",
+    `Eden is presented as a real place with direction, land, trees, and later rivers.
+
+Genesis says the garden is planted eastward in Eden, showing the garden as a specific place within a larger region.
+
+📍 Eden has location language
+🌳 The garden is planted there
+🌊 Rivers later flow from it
+🗺️ The story is grounded in place
+
+Genesis presents early history with geography, rivers, land, and direction inside the world God made.`,
+  );
+
+  replaceDayOnePhrase(
+    "Genesis 2:10-14",
+    "River Three: Hiddekel",
+    "🌊 River Three: Hiddekel",
+    `Hiddekel is commonly identified with the Tigris River.
+
+Genesis connects it with the east of Assyria, giving the Eden account a real geographical marker.
+
+🌊 Hiddekel points to a known river
+📍 Assyria gives location
+🗺️ Eden is tied to geography
+📖 Later Bible history will return to this region
+
+The river details show Eden as part of the world Scripture keeps tracing through lands, peoples, and history.`,
+  );
+
+  replaceDayOnePhrase(
+    "Genesis 2:10-14",
+    "River Four: Euphrates",
+    "🌊 River Four: Euphrates",
+    `The Euphrates is one of the major rivers of the biblical world.
+
+Its name anchors Eden's river system to a region that later becomes important in Genesis and the rest of Scripture.
+
+🌊 Euphrates is named
+📍 The story has geography
+🌍 Eden's waters reach outward
+📖 Later history connects to this region
+
+The rivers make Eden feel like a real, life-giving place whose abundance moves into the wider world.`,
+  );
+
+  replaceDayOnePhrase(
+    "Genesis 2:15-17",
+    "To Cultivate It And Keep It",
+    "🛠️ To Dress It And To Keep It",
+    `To dress it means to work, tend, and care for the garden.
+
+To keep it means to guard, watch, and preserve what God entrusted to the man.
+
+🛠️ Dress the garden
+🛡️ Keep the garden
+🌱 Work is good before sin
+👤 Adam serves under God
+
+The garden belongs to God, and Adam is placed there as a responsible steward.`,
+  );
+
+  replaceDayOnePhrase(
+    "Genesis 2:18-20",
+    "God Brought Them To The Man",
+    "🐾 God Brought Them To The Man",
+    `God brings the living creatures to Adam so he can name them.
+
+As Adam sees each creature, the absence of a fitting human companion becomes clear.
+
+🐾 The beasts are good
+📛 Adam names them
+👤 None matches the man
+🤝 The need for Eve becomes visible
+
+God states that aloneness is not good, and the story lets Adam feel that need before God forms the woman.`,
+  );
+
+  for (const section of BIBLE_READER_STUDY_SECTIONS) {
+    if (section.book !== "genesis" || (section.chapter !== 1 && section.chapter !== 2)) continue;
+
+    section.title = cleanDayOneReviewedCard(section.title);
+    section.categories = section.categories.map((category) =>
+      category.id === "key-phrases"
+        ? { ...category, content: category.content.map(cleanDayOneReviewedCard) }
+        : category,
+    );
+  }
+}
+
 applyPersonalGenesisOneStudySections();
 applyPersonalGenesisTwoStudySections();
+applyDayOneQualityReviewUpgrade();
 applyPersonalGenesisThreeStudySections();
 applyPersonalGenesisFourThroughTenStudySections();
 applyPersonalGenesisElevenThroughTwentyStudySections();

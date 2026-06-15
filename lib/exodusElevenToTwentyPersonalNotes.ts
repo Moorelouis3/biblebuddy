@@ -16,6 +16,49 @@ const note = (lines: string[]) => lines.join("\n\n");
 const phrase = (title: string, lines: string[]): [string, string] => [title, note(lines)];
 
 function getExodusElevenToTwentyTitleIcon(title: string) {
+  if (/no water|water for the people|drink/i.test(title)) return "\u{1F4A7}";
+  if (/chide|chiding|tempted|saying|among us|wherefore/i.test(title)) return "\u{1F5E3}\u{FE0F}";
+  if (/cried unto the lord|prayed/i.test(title)) return "\u{1F64F}";
+  if (/stone|rock|horeb|smite|massah|meribah/i.test(title)) return "\u{1FAA8}";
+  if (/amalek|discomfited|battle|war/i.test(title)) return "\u{2694}\u{FE0F}";
+  if (/joshua|choose us out/i.test(title)) return "\u{1F6E1}\u{FE0F}";
+  if (/rod of god|staff/i.test(title)) return "\u{1F9AF}";
+  if (/held up|hands|aaron and hur|steady/i.test(title)) return "\u{270B}";
+  if (/memorial|book|rehearse|remembrance/i.test(title)) return "\u{1F4D6}";
+  if (/jehovahnissi|banner/i.test(title)) return "\u{1F6A9}";
+  if (/sworn/i.test(title)) return "\u{270B}";
+  if (/jethro|father in law|priest of midian|rulers|judge|judged/i.test(title)) return "\u{1F9D1}\u{200D}\u{2696}\u{FE0F}";
+  if (/zipporah|wife/i.test(title)) return "\u{1F469}";
+  if (/sent her back/i.test(title)) return "\u{1F3D5}\u{FE0F}";
+  if (/gershom|eliezer|son|daughter/i.test(title)) return "\u{1F9D2}";
+  if (/heard|told|welfare/i.test(title)) return "\u{1F442}";
+  if (/obeisance|kissed/i.test(title)) return "\u{1F91D}";
+  if (/what is this thing/i.test(title)) return "\u{2753}";
+  if (/delivered|brought israel out|brought thee out/i.test(title)) return "\u{1F6E1}\u{FE0F}";
+  if (/greater than all gods|no other gods|graven image|bow down|jealous god|gods of silver|before me/i.test(title)) return "\u{1F6AB}";
+  if (/shewing mercy|mercy unto thousands/i.test(title)) return "\u{1F496}";
+  if (/burnt offering|altar|offerings/i.test(title)) return "\u{1F525}";
+  if (/come unto thee/i.test(title)) return "\u{1FAE1}";
+  if (/morning unto the evening|wear away|alone/i.test(title)) return "\u{1F613}";
+  if (/statutes|ordinances|laws|words|command|spake|hearkened|name of the lord/i.test(title)) return "\u{1F4DC}";
+  if (/way wherein|journeys|wilderness|depart/i.test(title)) return "\u{1F9ED}";
+  if (/able men|men of truth|covetousness/i.test(title)) return "\u{2705}";
+  if (/sinai|mount|mountain/i.test(title)) return "\u{26F0}\u{FE0F}";
+  if (/third month|third day/i.test(title)) return "\u{1F4C5}";
+  if (/eagles' wings/i.test(title)) return "\u{1F985}";
+  if (/peculiar treasure/i.test(title)) return "\u{1F48E}";
+  if (/kingdom of priests|holy nation|priests/i.test(title)) return "\u{1F451}";
+  if (/elders|all the people|people answered|people cannot|people stood|manservant|maidservant/i.test(title)) return "\u{1F465}";
+  if (/cloud|thunder|lightning/i.test(title)) return "\u{1F329}\u{FE0F}";
+  if (/trumpet/i.test(title)) return "\u{1F3BA}";
+  if (/fire/i.test(title)) return "\u{1F525}";
+  if (/sanctify|wash|hallowed/i.test(title)) return "\u{1F9FC}";
+  if (/bounds|heed|break through|go down|come up|afar off/i.test(title)) return "\u{1F6A7}";
+  if (/house of bondage|egypt/i.test(title)) return "\u{1F3DB}\u{FE0F}";
+  if (/sabbath|seventh day|six days|work|labour|rest/i.test(title)) return "\u{1F6D1}";
+  if (/father|mother|family/i.test(title)) return "\u{1F46A}";
+  if (/kill|adultery|steal|false witness|covet|neighbour/i.test(title)) return "\u{2696}\u{FE0F}";
+  if (/fear not|fear may|lest we die|trembled/i.test(title)) return "\u{1F628}";
   if (/passover|lamb|blood|door|hyssop|unleavened|leaven|firstborn|midnight/i.test(title)) return "🐑";
   if (/plague|wonders|judgment|difference|cut off/i.test(title)) return "⚖️";
   if (/pharaoh|egypt|egyptians|thrust|jewels|silver|gold|mixed multitude/i.test(title)) return "🏛️";
@@ -2436,6 +2479,10 @@ function makeDay26PhraseCard(section: PersonalExodusPhraseSectionInput, title: s
   return [`📌 ${title}`, explainDay26Phrase(section, title)];
 }
 
+function makeDay26PhraseCardShort(section: PersonalExodusPhraseSectionInput, title: string): [string, string] {
+  return [ensureExodusElevenToTwentyTitleEmoji(title), explainDay26Phrase(section, title)];
+}
+
 function explainDay26Phrase(section: PersonalExodusPhraseSectionInput, title: string): string {
   const lower = title.toLowerCase();
   const lines: string[] = [];
@@ -2533,7 +2580,7 @@ function deepenDay26PhraseCards(section: PersonalExodusPhraseSectionInput): Pers
 
   return {
     ...section,
-    phrases: titles.map((title) => makeDay26PhraseCard(section, title)),
+    phrases: titles.map((title) => makeDay26PhraseCardShort(section, title)),
   };
 }
 
@@ -2770,6 +2817,10 @@ function formatRenderedDay25Lines(section: PersonalExodusPhraseSectionInput, cle
 function getDay26TeachingBullets(section: PersonalExodusPhraseSectionInput, title: string) {
   const lower = title.toLowerCase();
 
+  if (section.reference === "Exodus 17:1-6" || section.reference === "Exodus 17:7-7") {
+    return ["\u{1F4A7} Israel needs real water", "\u{1FAA8} The LORD provides from the rock", "\u{1F5E3}\u{FE0F} Complaining tests trust", "\u{1F64C} God meets need in the wilderness"];
+  }
+
   if (section.chapter === 17 && (lower.includes("water") || lower.includes("rock") || lower.includes("horeb") || lower.includes("chide") || lower.includes("massah") || lower.includes("meribah"))) {
     return ["💧 Israel needs real water", "🪨 The LORD provides from the rock", "🗣️ Complaining tests trust", "🙌 God meets need in the wilderness"];
   }
@@ -2782,17 +2833,38 @@ function getDay26TeachingBullets(section: PersonalExodusPhraseSectionInput, titl
   if (section.chapter === 18) {
     return ["⚖️ Moses carries too much alone", "👥 Wise leaders share the burden", "📜 God's ways must be taught clearly", "🧠 Leadership protects the people from exhaustion"];
   }
+  if (section.reference === "Exodus 19:9-14" || section.reference === "Exodus 19:15-20" || section.reference === "Exodus 19:21-25") {
+    return ["\u{1F9FC} The people must prepare", "\u{1F6A7} Boundaries guard the mountain", "\u{26F0}\u{FE0F} Sinai is holy ground", "\u{1F628} God's presence brings reverence"];
+  }
   if (section.chapter === 19 && (lower.includes("mount") || lower.includes("sinai") || lower.includes("thunder") || lower.includes("lightning") || lower.includes("quaked"))) {
     return ["⛰️ Sinai is the place of holy meeting", "⚡ God's presence is not casual", "😨 The people must approach with reverence", "📜 Covenant words come from the LORD"];
   }
   if (section.chapter === 19) {
     return ["🦅 God carried Israel out of Egypt", "💎 Israel is called His treasured people", "👑 The rescued people belong to the King", "📜 Covenant obedience follows rescue"];
   }
+  if (section.reference === "Exodus 20:10-11") {
+    return ["\u{1F6D1} Sabbath rest reaches the household", "\u{1F465} Servants and children are included", "\u{1F30D} Creation sets the pattern", "\u{1F64C} Rest belongs to the LORD"];
+  }
+  if (section.reference === "Exodus 20:1-3") {
+    return ["\u{1F6E1}\u{FE0F} The LORD rescued Israel", "\u{1F3DB}\u{FE0F} Egypt was bondage", "\u{1F6AB} No rival gods", "\u{1F64C} Worship belongs to the LORD"];
+  }
+  if (section.reference === "Exodus 20:4-9") {
+    return ["\u{1F6AB} No carved idols", "\u{1F4DB} God's name is holy", "\u{1F496} Mercy reaches thousands", "\u{1F6D1} Sabbath must be remembered"];
+  }
+  if (section.reference === "Exodus 20:12-17") {
+    return ["\u{1F46A} Family honor", "\u{2696}\u{FE0F} Justice with neighbors", "\u{1F5E3}\u{FE0F} Truthful witness", "\u{1F9E0} Desire brought under God"];
+  }
+  if (section.reference === "Exodus 20:18-23") {
+    return ["\u{1F628} The people tremble", "\u{1F5E3}\u{FE0F} God's voice is holy", "\u{1F64F} Moses stands between", "\u{1F6AB} No silver or gold gods"];
+  }
+  if (section.reference === "Exodus 20:24-26") {
+    return ["\u{1FAA8} Simple altar", "\u{1F525} Offerings brought to God", "\u{1FAE1} The LORD promises nearness", "\u{1F6AB} No human display"];
+  }
   if (section.chapter === 20 && (lower.includes("god") || lower.includes("lord") || lower.includes("commandment") || lower.includes("sabbath") || lower.includes("honour"))) {
     return ["📜 God gives covenant commands", "🙌 Worship belongs to the LORD alone", "🛑 Rest is part of holy life", "👨‍👩‍👦 Family honor matters before God"];
   }
 
-  return ["📜 The command comes from the LORD", "🧭 Israel is learning covenant life", "🙌 Rescue leads into obedience", "🧠 The phrase explains how God's people should live"];
+  return ["\u{1F4DC} The command comes from the LORD", "\u{1F9ED} Israel is learning covenant life", "\u{1F64C} Rescue leads into obedience", "\u{2705} Obedience becomes daily practice"];
 }
 
 function isDay26FillerLine(line: string) {
@@ -2802,13 +2874,14 @@ function isDay26FillerLine(line: string) {
 function makeDay26OpeningLineUnique(line: string, title: string, section: PersonalExodusPhraseSectionInput) {
   const startsWithTitle = line.toLowerCase().startsWith(title.toLowerCase());
   const adjusted = startsWithTitle ? `The wording ${line.charAt(0).toLowerCase()}${line.slice(1)}` : line;
-  return `${adjusted} This belongs to the ${section.title} section.`;
+  return adjusted;
 }
 
 function getDay26SpecificOpening(section: PersonalExodusPhraseSectionInput, title: string) {
   const lower = title.toLowerCase();
 
-  if (lower.includes("chide")) return ["Chide means quarrel or argue.", "The people are not only thirsty; they are turning their fear against Moses instead of trusting the LORD."];
+  if (lower.includes("chide") || lower.includes("chiding")) return ["Chide means quarrel or argue.", "The people are not only thirsty; they are turning their fear against Moses instead of trusting the LORD."];
+  if (lower.includes("after their journeys")) return ["Israel is still moving through the wilderness.", "Each stop is part of the road God is leading them on."];
   if (lower.includes("wherefore")) return ["Wherefore means why.", "The people are asking why Moses brought them from Egypt, but their question accuses rescue as if God meant harm."];
   if (lower.includes("stone me")) return ["Stone me means kill Moses by throwing stones.", "The water crisis has grown so angry that Moses feels physically threatened by the people he is leading."];
   if (lower.includes("no water")) return ["The problem is literal thirst, not a small inconvenience.", "A large camp in the wilderness needs water to survive, so this crisis tests whether need will become trust or accusation."];
@@ -2833,11 +2906,14 @@ function getDay26SpecificOpening(section: PersonalExodusPhraseSectionInput, titl
   if (lower.includes("jehovahnissi")) return ["Jehovah-nissi means the LORD is my banner.", "A banner was a rallying sign in battle, so the name says Israel's victory comes from the LORD."];
   if (lower.includes("jethro")) return ["Jethro is Moses' father-in-law from Midian.", "His arrival brings Moses' family story back into the wilderness journey after the rescue from Egypt."];
   if (lower.includes("zipporah")) return ["Zipporah is Moses' wife.", "Her return with Jethro shows that Moses is not only Israel's leader; he also has a real family."];
+  if (lower.includes("sent her back")) return ["Zipporah had been away from Moses for a time.", "Now she returns with Jethro and Moses' sons."];
   if (lower.includes("gershom")) return ["Gershom is Moses' son whose name is connected with living as a stranger.", "His name remembers Moses' earlier exile before the Exodus mission."];
   if (lower.includes("eliezer")) return ["Eliezer is Moses' son whose name points to God's help.", "His name remembers that the LORD delivered Moses from danger."];
   if (lower.includes("obeisance")) return ["Obeisance means a respectful bow.", "Moses greets Jethro with honor, showing family respect inside the larger Exodus story."];
   if (lower.includes("welfare")) return ["Welfare means well-being or peace.", "Moses and Jethro ask about each other's peace after long pressure, danger, and separation."];
   if (lower.includes("burnt offering")) return ["A burnt offering was a sacrifice offered up to God.", "Jethro responds to the LORD's rescue with worship, not only curiosity."];
+  if (lower.includes("what is this thing")) return ["Jethro is asking why Moses is judging the people this way.", "The question exposes a leadership pattern that is wearing everyone down."];
+  if (lower.includes("why sittest thou thyself alone")) return ["Jethro sees Moses sitting as the only judge.", "One leader carrying every case alone is not wise or sustainable."];
   if (lower.includes("sat to judge")) return ["Sat to judge means Moses was hearing disputes and deciding cases.", "The people bring their problems to him, but one man cannot carry that load all day forever."];
   if (lower.includes("morning unto the evening")) return ["Morning unto the evening means the work lasted all day.", "Jethro sees that the leadership burden is exhausting Moses and the people."];
   if (lower.includes("wear away")) return ["Wear away means become worn out.", "Jethro warns that Moses and the people will be drained if every case depends on one man."];
@@ -2855,37 +2931,127 @@ function getDay26SpecificOpening(section: PersonalExodusPhraseSectionInput, titl
   if (lower.includes("kingdom of priests")) return ["A kingdom of priests means Israel is called to represent the LORD before the nations.", "The whole people are being given a holy identity, not only private rescue."];
   if (lower.includes("holy nation")) return ["Holy nation means a people set apart for the LORD.", "God rescued Israel so their life together would show His character."];
   if (lower.includes("wash their clothes")) return ["Washing clothes is part of preparing for God's holy presence.", "The outward preparation teaches that Sinai is not an ordinary meeting."];
+  if (lower.includes("moses sanctified the people")) return ["Moses helps the people prepare for the LORD's holy presence.", "Sanctified means set apart or made ready for God."];
   if (lower.includes("set bounds")) return ["Set bounds means place limits around the mountain.", "The boundary protects the people from treating God's holiness casually."];
   if (lower.includes("thunders") || lower.includes("lightnings")) return ["Thunder and lightning mark the terrifying majesty of God's presence.", "Sinai shakes the people because the LORD is drawing near as holy King."];
   if (lower.includes("trumpet")) return ["The trumpet sound announces the holy meeting at Sinai.", "The growing sound makes the moment feel public, serious, and impossible to ignore."];
+  if (lower.includes("away, get thee down")) return ["The LORD sends Moses back down the mountain.", "Moses must warn the people before they cross the holy boundary."];
   if (lower.includes("house of bondage")) return ["The house of bondage means the place of slavery.", "The commandments begin by reminding Israel that the LORD rescued them from Egypt before calling them to obey."];
   if (lower.includes("graven image")) return ["A graven image is a carved or shaped idol.", "Israel must not turn the invisible LORD into an object they can control or bow before."];
   if (lower.includes("vain")) return ["Vain means empty, false, or careless.", "God's name must not be used as if it were weightless or available for lies."];
   if (lower.includes("covet")) return ["Covet means desire what another person has.", "The command reaches beneath outward behavior into the heart's cravings."];
 
-  return [`This line is naming ${title.toLowerCase()} as part of Israel's formation after Egypt.`, `${section.title} shows rescued people learning trust, worship, leadership, holiness, and covenant obedience.`];
+  if (lower.includes("moses cried")) return ["Moses cries out because the people are angry and the need is urgent.", "He brings the pressure to the LORD instead of pretending he can solve it alone."];
+  if (lower.includes("lord hath sworn")) return ["The LORD hath sworn means God has made a firm promise.", "The battle with Amalek will not be forgotten or treated lightly."];
+  if (lower.includes("war with amalek")) return ["War with Amalek means this conflict will continue beyond one battle.", "Amalek's attack becomes a remembered enemy pattern in Israel's story."];
+  if (lower.includes("heard of all")) return ["Jethro hears the report of what God has done for Moses and Israel.", "The Exodus is becoming known beyond Israel's own camp."];
+  if (lower.includes("brought israel out")) return ["The LORD brought Israel out means their freedom came from God.", "Jethro is hearing that Egypt did not release Israel by kindness or accident."];
+  if (lower.includes("i thy father in law")) return ["Jethro announces himself as Moses' father-in-law.", "His arrival brings Moses' family back into the wilderness story."];
+  if (lower.includes("went out to meet")) return ["Moses goes out to greet Jethro with honor.", "The leader of Israel still shows respect inside his own family."];
+  if (lower.includes("moses told")) return ["Moses tells Jethro the story of the LORD's rescue.", "The deliverance is meant to be spoken and remembered."];
+  if (lower.includes("lord delivered")) return ["The LORD delivered them means God rescued Israel from danger.", "Their survival is credited to the LORD, not to Moses' strength."];
+  if (lower.includes("greater than all gods")) return ["Jethro confesses that the LORD is greater than all gods.", "The rescue from Egypt has shown him the LORD's unmatched power."];
+  if (lower.includes("people come unto me")) return ["The people come to Moses because they need judgment and direction.", "Their problems are real, but one man is carrying too much."];
+  if (lower.includes("statutes of god")) return ["Statutes are God's instructions.", "Moses teaches the people what God requires, not merely his own opinions."];
+  if (lower.includes("teach them ordinances")) return ["Ordinances and laws are instructions for ordered life with God.", "Jethro tells Moses to teach clearly so the people know the way."];
+  if (lower.includes("way wherein they must walk")) return ["The way means the path of life God wants Israel to follow.", "The people need more than decisions; they need direction."];
+  if (lower.includes("moses hearkened")) return ["Hearkened means listened and obeyed.", "Moses receives wise correction instead of defending his old way."];
+  if (lower.includes("heads over the people")) return ["Heads over the people means appointed leaders.", "Moses shares responsibility so the whole camp can be served."];
+  if (lower.includes("all seasons")) return ["At all seasons means regularly and continually.", "The people need justice available without exhausting Moses every day."];
+  if (lower.includes("small matter")) return ["Small matters are ordinary disputes that appointed leaders can handle.", "Not every problem needs to rise to Moses."];
+  if (lower.includes("let his father in law depart")) return ["Moses lets Jethro return home after the counsel is received.", "Jethro's visit leaves Israel with a wiser leadership structure."];
+  if (lower.includes("camped before the mount")) return ["Israel camps before the mountain where God will speak.", "The rescued people are now waiting at the place of covenant."];
+  if (lower.includes("went up unto god")) return ["Moses goes up to God as the mediator for the people.", "He stands between the camp and the LORD's holy word."];
+  if (lower.includes("seen what i did")) return ["God reminds Israel that they saw what He did to Egypt.", "The covenant begins with memory of rescue, not with Israel proving itself first."];
+  if (lower.includes("elders")) return ["The elders are the representatives of the people.", "Moses gathers them so the LORD's words can be brought to the whole camp."];
+  if (lower.includes("laid before their faces")) return ["Moses lays the LORD's words before the people plainly.", "They are not being asked to respond to something hidden or unclear."];
+  if (lower.includes("answered together")) return ["All the people answer together with one voice.", "The whole nation responds to the covenant words."];
+  if (lower.includes("we will do")) return ["The people promise to do what the LORD has spoken.", "Their words accept the covenant responsibility before Sinai."];
+  if (lower.includes("returned the words")) return ["Moses carries the people's answer back to the LORD.", "He serves as the messenger between God and Israel."];
+  if (lower.includes("thick cloud")) return ["The thick cloud hides the fullness of God's glory.", "God draws near in a way the people can recognize but not control."];
+  if (lower.includes("people may hear")) return ["God wants the people to hear Him speak with Moses.", "This will help them trust that Moses truly carries the LORD's word."];
+  if (lower.includes("sanctify them")) return ["Sanctify means set apart and prepare for God.", "The people must get ready because the LORD is coming near."];
+  if (lower.includes("ready against the third day")) return ["Be ready means prepare for the appointed day.", "The third day marks the time when the LORD will descend on Sinai."];
+  if (lower.includes("take heed")) return ["Take heed means pay careful attention.", "The people must not rush past the boundaries around God's holy presence."];
+  if (lower.includes("people trembled")) return ["The people tremble because God's presence is terrifying and holy.", "Sinai is not casual, quiet, or ordinary."];
+  if (lower.includes("descended upon it in fire")) return ["The LORD descends in fire on the mountain.", "The fire shows His holy presence in a way Israel can see and fear."];
+  if (lower.includes("moses spake")) return ["Moses speaks, and God answers him.", "The people hear that Moses is not acting on his own authority."];
+  if (lower.includes("charge the people")) return ["Charge the people means warn them firmly.", "The boundary around Sinai must be taken seriously."];
+  if (lower.includes("break through")) return ["Break through means push past the boundary.", "The people must not force their way toward God's holy presence."];
+  if (lower.includes("priests also sanctify")) return ["The priests also must prepare themselves.", "No one gets to treat God's holiness casually, even religious leaders."];
+  if (lower.includes("cannot come up")) return ["The people cannot come up the mountain.", "God's boundary protects them from approaching in the wrong way."];
+  if (lower.includes("aaron with thee")) return ["Aaron is allowed to come up with Moses.", "God names who may approach instead of leaving the moment open to everyone."];
+  if (lower.includes("spake all these words")) return ["God speaks the commandments Himself.", "Israel's law begins with the LORD's own voice."];
+  if (lower.includes("i am the lord")) return ["God identifies Himself before giving the commands.", "The commandments come from the LORD who already rescued Israel."];
+  if (lower.includes("which have brought thee out")) return ["God reminds Israel that He brought them out of Egypt.", "Obedience comes after rescue, not before it."];
+  if (lower.includes("no other gods")) return ["Israel must worship no god besides the LORD.", "The God who rescued them alone deserves their trust and worship."];
+  if (lower === "before me") return ["Before me means in the LORD's presence.", "No rival god may stand beside Him in Israel's worship."];
+  if (lower.includes("bow down")) return ["Bowing down means worshiping or submitting to an idol.", "Israel must not give worship to something their own hands made."];
+  if (lower.includes("jealous god")) return ["Jealous here means covenant love that refuses rivals.", "The LORD will not share His people with false gods."];
+  if (lower.includes("mercy unto thousands")) return ["God's mercy reaches far beyond one generation.", "The command warns against idols but also shows the LORD's steadfast kindness."];
+  if (lower.includes("remember the sabbath")) return ["Remember means keep the Sabbath in mind and practice.", "Israel must build rest into life with God."];
+  if (lower.includes("six days shalt thou labour")) return ["Six days are given for ordinary work.", "God's command honors work while setting a boundary around it."];
+  if (lower.includes("seventh day")) return ["The seventh day is set apart as Sabbath.", "Israel's week must include holy rest."];
+  if (lower.includes("not do any work")) return ["No work means the Sabbath stops normal labor.", "Rest becomes obedience, not laziness."];
+  if (lower.includes("nor thy son")) return ["The Sabbath command includes the children in the household.", "Rest is not only for adults or leaders."];
+  if (lower.includes("nor thy manservant")) return ["The Sabbath command includes servants too.", "Israel must not receive rest from God while denying rest to workers."];
+  if (lower.includes("heaven and earth")) return ["God made heaven and earth in six days.", "The Sabbath command points back to the creation pattern."];
+  if (lower.includes("blessed the sabbath")) return ["The LORD blessed the Sabbath day.", "Rest is presented as a gift from God, not only a rule."];
+  if (lower.includes("hallowed it")) return ["Hallowed means made holy or set apart.", "The Sabbath belongs to God in a special way."];
+  if (lower.includes("honour thy father")) return ["Honour means treat parents with respect and weight.", "Family life is part of covenant obedience."];
+  if (lower.includes("not kill")) return ["This command forbids murder.", "Human life must be protected because it belongs under God's rule."];
+  if (lower.includes("adultery")) return ["This command protects marriage faithfulness.", "God's people must not betray the covenant of husband and wife."];
+  if (lower.includes("steal")) return ["This command forbids taking what belongs to another person.", "Freedom under God does not permit harming a neighbor's life."];
+  if (lower.includes("false witness")) return ["False witness means lying against another person.", "God's people must protect truth in the community."];
+  if (lower.includes("neighbour")) return ["A neighbor is the person whose life and goods are near you.", "God's commands protect what belongs to others."];
+  if (lower.includes("saw the thunderings")) return ["The people see and hear the terrifying signs at Sinai.", "God's presence overwhelms their senses."];
+  if (lower.includes("stood afar off")) return ["The people step back and stand at a distance.", "Their fear shows how heavy the moment feels."];
+  if (lower.includes("speak thou with us")) return ["The people ask Moses to speak with them instead.", "They want a mediator because God's voice terrifies them."];
+  if (lower.includes("lest we die")) return ["The people fear they will die if God keeps speaking directly.", "Sinai makes God's holiness feel dangerously near."];
+  if (lower === "fear not") return ["Fear not means they should not run from God's covenant word.", "Moses is calming panic, not making God seem small."];
+  if (lower.includes("fear may be before")) return ["God's fear before their faces means reverence should stay with them.", "Holy fear is meant to keep them from sin."];
+  if (lower.includes("gods of silver")) return ["Gods of silver means metal idols.", "Israel must not replace the living LORD with objects they can make."];
+  if (lower.includes("burnt offerings")) return ["Burnt offerings are sacrifices given up to God.", "The altar is a place where worship is brought before the LORD."];
+  if (lower.includes("i will come unto thee")) return ["God promises to meet His people where He records His name.", "The altar is not magic; the LORD Himself gives the promise of nearness."];
+  if (lower.includes("record my name")) return ["God records His name where He chooses to be worshiped.", "His presence is received by His word, not controlled by Israel."];
+  if (lower.includes("altar of stone")) return ["An altar of stone is allowed, but only on God's terms.", "Even worship materials must follow His command."];
+  if (lower.includes("hewn stone")) return ["Hewn stone means stone cut or shaped by tools.", "God forbids turning the altar into a display of human craftsmanship."];
+  if (lower.includes("steps")) return ["Steps could expose the priest as he climbed the altar.", "God's worship must guard holiness and modesty."];
+
+  if (section.chapter === 17) return ["The wilderness exposes another pressure point for Israel.", "The LORD is teaching rescued people to depend on Him in need and conflict."];
+  if (section.chapter === 18) return ["This detail belongs to Israel's new life after rescue.", "God is shaping leadership, family, and justice in the wilderness camp."];
+  if (section.chapter === 19) return ["This detail prepares Israel for meeting the LORD at Sinai.", "The rescued people must learn reverence before covenant words are given."];
+  return ["This command shapes Israel's life with God and neighbor.", "Freedom from Egypt now becomes obedience under the LORD."];
+}
+
+function getDay26ClosingLine(section: PersonalExodusPhraseSectionInput, title: string) {
+  const lower = title.toLowerCase();
+
+  if (section.reference === "Exodus 17:1-6" || section.reference === "Exodus 17:7-7") return "The water crisis becomes a lesson in trust.";
+  if (section.chapter === 17 && /water|rock|horeb|smite|chide|massah|meribah|among us|tempted/.test(lower)) return "The water crisis becomes a lesson in trust.";
+  if (section.chapter === 17) return "The battle teaches Israel to depend on the LORD.";
+  if (section.chapter === 18 && /jethro|zipporah|gershom|eliezer|father in law|welfare|obeisance/.test(lower)) return "The Exodus story includes real families and real witnesses.";
+  if (section.chapter === 18) return "Wise order protects both the leader and the people.";
+  if (section.chapter === 19 && /mount|sinai|cloud|thunder|lightning|trumpet|fire|bounds|sanctify|ready|trembled/.test(lower)) return "God's nearness must be treated as holy.";
+  if (section.chapter === 19) return "Rescue leads Israel into covenant with God.";
+  if (section.chapter === 20 && /sabbath|work|seventh|hallowed|blessed/.test(lower)) return "The LORD builds holy rest into His people's life.";
+  if (section.chapter === 20 && /father|mother|kill|adultery|steal|witness|covet|neighbour/.test(lower)) return "God's commands protect life with other people.";
+  if (section.chapter === 20 && /altar|offering|stone|steps|name|come unto thee/.test(lower)) return "Worship must follow God's way, not human display.";
+
+  return "The commandments teach rescued people how to live under God's rule.";
 }
 
 function formatRenderedDay26Lines(section: PersonalExodusPhraseSectionInput, cleanTitle: string, lines: string[]) {
   if (section.chapter < 17 || section.chapter > 20) return lines;
 
-  const isEmojiLine = (line: string) => /^[^A-Za-z0-9'"(]/.test(line.trim());
-  const cleaned = removeDay25RepeatedPhraseTitle(cleanTitle, lines)
-    .map((line) => line.trim())
-    .filter(Boolean);
-  const proseLines = cleaned.filter((line) => !isEmojiLine(line) && !isDay26FillerLine(line));
   const rawOpening = getDay26SpecificOpening(section, cleanTitle);
-  const opening = [
-    makeDay26OpeningLineUnique(rawOpening[0], cleanTitle, section),
-    rawOpening[1],
-  ];
-  const closing = proseLines.slice(opening.length);
 
   return [
-    ...opening,
+    rawOpening[0],
+    rawOpening[1],
     ...getDay26TeachingBullets(section, cleanTitle),
-    ...closing,
-  ].slice(0, 8);
+    getDay26ClosingLine(section, cleanTitle),
+  ].filter(Boolean).slice(0, 7);
 }
 
 function normalizeRepeatedExodusElevenToTwentyLines(sections: PersonalExodusPhraseSectionInput[]) {

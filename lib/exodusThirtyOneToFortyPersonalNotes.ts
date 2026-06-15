@@ -16,6 +16,13 @@ const note = (lines: string[]) => lines.join("\n\n");
 const phrase = (title: string, lines: string[]): [string, string] => [title, note(lines)];
 
 function getExodusThirtyOneToFortyTitleIcon(title: string) {
+  if (/angel|not go up|presence|know thee|shew me|separated|proclaim|place by me|back parts|cover thee|face|friend|gracious|goodness|truth|guilty|go among us|lord god|like unto|come up with thee|longsuffering|marvels|take heed|matrix|empty|thrice|with the lord|talked with him|kindle no fire|pitched it without|not let me know|came down from the mount|went in to speak|to do service/i.test(title)) return "\u{1F64C}";
+  if (/ram skins|rams' skins|badgers|shittim|onyx|shewbread|cords|spun|loops|tenons|cubits|other side|coupled|middle bar|chapiters|fillets|covering above|one side|two sides westward/i.test(title)) return "\u{1F3D5}\u{FE0F}";
+  if (/every man and woman/i.test(title)) return "\u{1F465}";
+  if (/that ye may know|sanctify you|throughout your generations/i.test(title)) return "\u{1F6D1}";
+  if (/rose up to play|turned aside|let me alone|go, get thee down|burnt it in the fire/i.test(title)) return "\u{26A0}\u{FE0F}";
+  if (/remember abraham|lord repented|lord turned|thought to do|who is on the lord's side/i.test(title)) return "\u{1F64F}";
+  if (/written on both|noise of war|thus saith|consecrate yourselves|bestow upon you|every man upon his son/i.test(title)) return "\u{2696}\u{FE0F}";
   if (/bezaleel|aholiab|wisdom|spirit|workmanship|cunning|craft/i.test(title)) return "🧠";
   if (/work|made|make|wrought|fashion|devise|build|cloths of service/i.test(title)) return "🛠️";
   if (/sabbath|rest|seventh|perpetual covenant|sign/i.test(title)) return "🛑";
@@ -1204,8 +1211,248 @@ function getDays29To30TeachingBullets(section: PersonalExodusPhraseSectionInput,
   return ["📖 The phrase comes from the assigned text", "🔍 It explains a real detail in the verse", "🙌 The LORD is teaching His people", "🧠 The meaning should be clear before moving on"];
 }
 
+function getDay29Exodus31To32Opening(section: PersonalExodusPhraseSectionInput, title: string) {
+  const lower = title.toLowerCase();
+
+  if (/bezaleel/.test(lower)) return ["Bezalel is the craftsman God personally names for tabernacle work.", "His skill is treated as a calling from the LORD."];
+  if (/son of uri|tribe of judah/.test(lower)) return ["Bezalel's family and tribe are named.", "God's holy work is done through real people, not nameless workers."];
+  if (/filled him with the spirit/.test(lower)) return ["God fills Bezalel with His Spirit for craftsmanship.", "The Spirit's work includes wisdom, design, and skilled making."];
+  if (/wisdom|understanding|knowledge/.test(lower)) return ["Wisdom and understanding are practical skill given by God.", "The tabernacle requires minds and hands shaped by the LORD."];
+  if (/workmanship|cunning works|work in gold|devise/.test(lower)) return ["Workmanship means skilled craft and design.", "Beauty and precision can become obedience when used for God's dwelling."];
+  if (/aholiab/.test(lower)) return ["Aholiab is the helper God gives alongside Bezalel.", "Holy work is shared by gifted people, not carried by one person alone."];
+  if (/tabernacle of the congregation/.test(lower)) return ["The tabernacle of the congregation is the meeting tent.", "It is the place where Israel will gather near the LORD's presence."];
+  if (/ark of the testimony|tables of testimony|tables were the work/.test(lower)) return ["The testimony is God's covenant word.", "The ark and tablets hold the words that define Israel's life with Him."];
+  if (/mercy seat/.test(lower)) return ["The mercy seat is the cover of the ark connected with atonement.", "It stands at the center of the holiest place."];
+  if (/table and his furniture/.test(lower)) return ["The table and its furniture are the holy table and its serving pieces.", "They belong to ordered worship inside the tabernacle."];
+  if (/candlestick|lamp/.test(lower)) return ["The candlestick is the lampstand for the holy place.", "Its light belongs to ordered worship before the LORD."];
+  if (/altar of incense/.test(lower)) return ["The altar of incense is where holy fragrance is burned.", "It marks daily worship near the veil."];
+  if (/cloths of service/.test(lower)) return ["Cloths of service are special cloths used for tabernacle ministry.", "Even handling holy things requires ordered care."];
+  if (/according to all that i have commanded/.test(lower)) return ["According to all that I have commanded means the workers must follow God's instructions.", "Holy worship is received from God before it is offered back to Him."];
+  if (/sabbaths ye shall keep/.test(lower)) return ["Keeping Sabbath means stopping work because the LORD commands holy rest.", "Even tabernacle work must not erase trust in God."];
+  if (/sign between me and you/.test(lower)) return ["Sabbath is a covenant sign between the LORD and Israel.", "Their weekly rest marks that they belong to Him."];
+  if (/that ye may know/.test(lower)) return ["That ye may know means Sabbath teaches Israel something about God.", "Rest reminds them that holiness comes from the LORD."];
+  if (/sanctify you/.test(lower)) return ["The LORD sanctifies Israel by setting them apart as His people.", "Sabbath teaches that holiness is His gift, not their achievement."];
+  if (/defileth it/.test(lower)) return ["Defiling the Sabbath means treating holy rest as common.", "Israel must not handle God's sign carelessly."];
+  if (/six days may work/.test(lower)) return ["Six days are given for work.", "The command honors work but puts a boundary around it."];
+  if (/seventh is the sabbath|sabbath of rest/.test(lower)) return ["The seventh day is holy rest to the LORD.", "Israel stops because their life is ordered by God, not endless labor."];
+  if (/throughout your generations|perpetual covenant/.test(lower)) return ["This command continues through Israel's generations.", "Sabbath is not a temporary habit but a lasting covenant sign."];
+  if (/two tables|tables of stone/.test(lower)) return ["The two tables are stone tablets carrying God's covenant words.", "The law is given by God, not invented by Moses."];
+  if (/finger of god/.test(lower)) return ["Written with the finger of God means the tablets carry divine authority.", "The covenant words come from the LORD Himself."];
+  if (/mount sinai|he gave unto moses|made an end of communing/.test(lower)) return ["God gives the tablets to Moses on Sinai after speaking with him.", "The mountain scene ends with God's written testimony in Moses' hands."];
+  if (/people saw that moses delayed|moses delayed/.test(lower)) return ["Moses' delay exposes the people's impatience.", "Waiting becomes the moment where trust collapses."];
+  if (/gathered themselves/.test(lower)) return ["The people gather against Aaron with a demand.", "Pressure from the crowd becomes the doorway to false worship."];
+  if (/make us gods/.test(lower)) return ["The people ask for gods they can see and manage.", "They want visible control instead of trusting the unseen LORD."];
+  if (/as for this moses/.test(lower)) return ["The people speak of Moses as if he has disappeared for good.", "Their fear turns quickly into rebellion."];
+  if (/golden earrings|gold/.test(lower)) return ["The gold from the people becomes material for an idol.", "A gift connected with deliverance is twisted into rebellion."];
+  if (/molten calf|this calf/.test(lower)) return ["A molten calf is an idol shaped from melted metal.", "Israel replaces the LORD's command with an image they can control."];
+  if (/these be thy gods/.test(lower)) return ["The people attach rescue language to the calf.", "False worship borrows holy words while betraying the LORD."];
+  if (/rose up to play/.test(lower)) return ["Rose up to play describes celebration around the idol.", "The feast is not harmless joy; it is covenant rebellion."];
+  if (/get thee down/.test(lower)) return ["God tells Moses to go down from the mountain.", "The crisis is happening in the camp below."];
+  if (/corrupted themselves|turned aside quickly/.test(lower)) return ["Corruption means Israel has spoiled covenant worship.", "They have turned from God's way almost immediately."];
+  if (/stiffnecked/.test(lower)) return ["Stiffnecked means stubborn and resistant to correction.", "Israel is acting like a people who refuse to bend before the LORD."];
+  if (/let me alone|consume them|fierce wrath|wrath wax hot/.test(lower)) return ["God's wrath shows that idolatry is serious covenant betrayal.", "The golden calf is not treated as a small misunderstanding."];
+  if (/out of the land of egypt/.test(lower)) return ["Egypt is the place God rescued Israel from.", "Their idolatry insults the mercy that brought them out."];
+  if (/remember abraham|isaac|israel|swarest|multiply your seed|inherit|all this land|unto thy seed/.test(lower)) return ["Moses appeals to God's covenant promise to the fathers.", "Israel's hope rests on God's faithfulness, not their innocence."];
+  if (/lord repented|lord turned|thought to do/.test(lower)) return ["The LORD turns from the announced disaster after Moses intercedes.", "Mercy answers the plea without pretending the sin was small."];
+  if (/two tables of the testimony|written on both/.test(lower)) return ["Moses carries the covenant tablets down the mountain.", "God's written words are coming into a camp already breaking them."];
+  if (/writing was the writing of god/.test(lower)) return ["The writing on the tablets is God's own writing.", "The broken covenant is against divine words, not human opinion."];
+  if (/noise of war/.test(lower)) return ["The noise in the camp sounds like battle to Joshua.", "But the real danger is worship turned into rebellion."];
+  if (/cast the tables/.test(lower)) return ["Moses throws down the tablets as a visible sign of broken covenant.", "Israel has shattered the relationship the tablets represented."];
+  if (/burnt it in the fire|drink of it|ground/.test(lower)) return ["Moses destroys the calf completely.", "The idol is burned, ground, and made worthless before the people."];
+  if (/anger waxed hot/.test(lower)) return ["Moses' anger burns because the covenant has been betrayed.", "His reaction shows that the calf is a grave sin."];
+  if (/what did this people/.test(lower)) return ["Moses confronts Aaron about his leadership failure.", "Aaron cannot hide behind the pressure of the crowd."];
+  if (/thou knowest the people|set on mischief/.test(lower)) return ["Aaron blames the people's bent toward evil.", "His excuse exposes weakness instead of faithful leadership."];
+  if (/people were naked/.test(lower)) return ["The people being naked means they are exposed in shame and disorder.", "Idolatry has stripped the camp of covenant dignity."];
+  if (/moses stood in the gate/.test(lower)) return ["Moses stands in the gate as the camp faces judgment.", "The gate becomes the place where loyalty to the LORD must be made public."];
+  if (/who is on the lord's side/.test(lower)) return ["Moses calls for open loyalty to the LORD.", "The calf crisis forces a public choice."];
+  if (/sons of levi/.test(lower)) return ["The sons of Levi gather to Moses.", "They stand with the LORD in a camp that has turned aside."];
+  if (/thus saith the lord/.test(lower)) return ["Thus saith the LORD means the judgment comes by God's authority.", "The response is not Moses inventing his own revenge."];
+  if (/sword by his side|slay|gate to gate|brother|son/.test(lower)) return ["Judgment moves through the camp because the sin is severe.", "The covenant community is being purged after the calf."];
+  if (/three thousand/.test(lower)) return ["About three thousand men die in the judgment.", "The number shows the terrible cost of idolatry."];
+  if (/consecrate yourselves|bestow upon you a blessing/.test(lower)) return ["Consecrate yourselves means set yourselves apart to the LORD.", "The Levites' loyalty is marked in the middle of judgment."];
+  if (/morrow/.test(lower)) return ["On the morrow means Moses returns to God the next day.", "After judgment, he still seeks mercy for the people."];
+  if (/sinned a great sin/.test(lower)) return ["A great sin means the golden calf is serious covenant betrayal.", "Moses confesses the guilt plainly instead of softening it."];
+  if (/make an atonement/.test(lower)) return ["Atonement means dealing with sin before God.", "Moses hopes mercy can cover the people's guilt."];
+  if (/gods of gold/.test(lower)) return ["Gods of gold names the idol they made from precious metal.", "The material is valuable, but the worship is false."];
+  if (/blot me/.test(lower)) return ["Moses offers himself in a costly plea for the people.", "His words show mediator love, but he cannot finally remove their guilt."];
+  if (/whosoever hath sinned/.test(lower)) return ["God says the guilty person bears guilt before Him.", "Moses cannot erase responsibility by offering himself."];
+  if (/plagued the people|day when i visit/.test(lower)) return ["The plague shows that the calf still has consequences.", "Mercy continues the journey, but sin is not treated as imaginary."];
+
+  return ["This wording names a concrete part of the Day 29 story.", "It matters because Exodus 31-32 moves from holy worship to the golden calf crisis."];
+}
+
+function getDay29Exodus31To32Support(section: PersonalExodusPhraseSectionInput, title: string) {
+  const lower = title.toLowerCase();
+
+  if (section.chapter === 31 && section.startVerse <= 11) {
+    return ["\u{1F9E0} Skill comes from God", "\u{1F6E0}\u{FE0F} Craft serves worship", "\u{1F3D5}\u{FE0F} The tabernacle is holy work", "\u{1F91D} God provides helpers"];
+  }
+  if (section.chapter === 31 && section.startVerse <= 17) {
+    return ["\u{1F6D1} Sabbath rest is holy", "\u{1F4DC} Rest is a covenant sign", "\u{1F64C} The LORD sanctifies Israel", "\u{23F3} Work has a God-given limit"];
+  }
+  if (section.chapter === 31) {
+    return ["\u{1FAA8} Stone tablets", "\u{1F4DC} Covenant testimony", "\u{261D}\u{FE0F} Written by God", "\u{26F0}\u{FE0F} Given on Sinai"];
+  }
+  if (/moses|remember|atonement|blot|book|repented|turned|plea/.test(lower)) {
+    return ["\u{1F64F} Moses intercedes", "\u{1F4DC} Covenant promises matter", "\u{1FA78} Atonement is needed", "\u{1F494} Sin is confessed truthfully"];
+  }
+  if (/tables|writing|finger|stone|cast|broken/.test(lower)) {
+    return ["\u{1FAA8} Tablets come from God", "\u{1F494} Covenant is broken", "\u{1F4DC} God's word is rejected", "\u{26A0}\u{FE0F} Sin is exposed"];
+  }
+  if (/sword|slay|three thousand|levi|gate|judgment|consecrate/.test(lower)) {
+    return ["\u{2696}\u{FE0F} Judgment enters the camp", "\u{1F6E1}\u{FE0F} Loyalty must be public", "\u{1F525} Idolatry is severe", "\u{1F64C} The LORD is holy"];
+  }
+  return ["\u{1F402} The calf is false worship", "\u{1F494} Covenant trust is broken", "\u{26A0}\u{FE0F} Idolatry brings judgment", "\u{1F64F} Mercy must be sought"];
+}
+
+function getDay29Exodus31To32Closing(section: PersonalExodusPhraseSectionInput, title: string) {
+  const lower = title.toLowerCase();
+
+  if (section.chapter === 31 && section.startVerse <= 11) return "God gives skill so His dwelling can be made with wisdom.";
+  if (section.chapter === 31 && section.startVerse <= 17) return "Sabbath teaches Israel that holy work still rests under God.";
+  if (section.chapter === 31) return "The covenant words come from God Himself.";
+  if (/moses|remember|atonement|blot|book|repented|turned/.test(lower)) return "Moses pleads for mercy without denying the sin.";
+  if (/tables|writing|finger|stone|cast|broken/.test(lower)) return "The broken tablets show the broken covenant.";
+  if (/sword|slay|three thousand|levi|gate|judgment|consecrate/.test(lower)) return "The calf crisis forces loyalty and brings judgment.";
+  return "The golden calf shows how quickly false worship can corrupt rescued people.";
+}
+
+function getDay30ShortOpening(section: PersonalExodusPhraseSectionInput, title: string) {
+  const lower = title.toLowerCase();
+  const existing = explainDay30PhraseAt95(title);
+  const hasBadFallback = /^This line is naming/i.test(existing[0] ?? "");
+
+  if (!hasBadFallback) {
+    return existing.slice(0, 2).map((line) => line.replace(/\s+This belongs with this part of Exodus\./g, ""));
+  }
+
+  if (section.chapter === 33) {
+    if (/depart|go up hence/.test(lower)) return ["Depart and go up means Israel must continue toward the promised land.", "The journey continues after the calf, but the question of God's presence is now urgent."];
+    if (/land|milk and honey|sware/.test(lower)) return ["The land is the place God promised to the fathers.", "Canaan is still a gift, but land without God's presence would not be enough."];
+    if (/angel/.test(lower)) return ["God promises an angel to lead Israel forward.", "This gives guidance, but Moses still longs for the LORD's own presence."];
+    if (/not go up/.test(lower)) return ["God not going up in their midst is a terrifying warning.", "Israel's sin has damaged the nearness that Exodus has been moving toward."];
+    if (/tabernacle|tent|door/.test(lower)) return ["The meeting tent becomes the place where people seek the LORD.", "Its position outside the camp shows the distance caused by Israel's sin."];
+    if (/sought|rose up|people/.test(lower)) return ["The people respond to the meeting tent with reverence.", "They know the camp's relationship with the LORD is no longer casual."];
+    if (/friend/.test(lower)) return ["Speaking as a friend means direct and personal communication.", "Moses receives unusual nearness as Israel's mediator."];
+    if (/i will be gracious/.test(lower)) return ["God being gracious means He gives mercy freely.", "Moses' hope rests on the LORD's character, not Israel's worthiness."];
+    if (/send|way|name|grace|nation|separated|rest/.test(lower)) return ["Moses is asking for assurance that the LORD Himself will lead Israel.", "He knows the promised land is not enough without God's presence."];
+    if (/glory|goodness|proclaim|face|place|clift|back parts|cover/.test(lower)) return ["Moses asks to know the LORD more deeply.", "God answers with real revelation while still protecting Moses from the full weight of His glory."];
+  }
+
+  if (section.chapter === 34) {
+    if (/hew|tables|first|write|morning|mount|come up/.test(lower)) return ["God renews the covenant with new stone tablets.", "The first tablets were broken, but the LORD makes a way for His words to be given again."];
+    if (/cloud|name|lord god|merciful|gracious|longsuffering|goodness|truth|mercy|forgiving/.test(lower)) return ["The LORD reveals His own character after Israel's failure.", "He is merciful and gracious, but His mercy is not careless about sin."];
+    if (/guilty|iniquity|transgression|pardon|go among us/.test(lower)) return ["Moses asks for pardon because Israel is guilty.", "The covenant can continue only by the LORD's mercy."];
+    if (/terrible thing/.test(lower)) return ["Terrible thing means an awe-inspiring act of the LORD.", "God's covenant work will be powerful enough to make the nations fear."];
+    if (/covenant|marvels|observe|command|heed|altars|jealous|inhabitants|other god|covenant with/.test(lower)) return ["The renewed covenant comes with clear commands.", "Mercy does not give Israel permission to return to idols."];
+    if (/daughters|whoring|molten gods/.test(lower)) return ["Israel must avoid worship that pulls them into idolatry.", "The golden calf has already shown how dangerous false worship is."];
+    if (/all thy men children/.test(lower)) return ["All the men of Israel are called to appear before the LORD.", "The feasts make worship a public rhythm for the covenant people."];
+    if (/land whither thou goest/.test(lower)) return ["The land whither thou goest is the promised land Israel is entering.", "The land must become a place of worship, not a place of idol compromise."];
+    if (/unleavened|matrix|lamb|empty|seventh|feast|weeks|ingathering|thrice|firstfruits|sacrifice/.test(lower)) return ["Israel's calendar and firstborn practices keep rescue and worship in memory.", "Repeated rhythms teach the people to belong to the LORD in ordinary life."];
+    if (/write|tenor|words|forty|bread|water|ten commandments|with the lord/.test(lower)) return ["Moses receives the renewed covenant words on the mountain.", "The long meeting shows that Israel receives life with God from His word."];
+    if (/moses called unto them/.test(lower)) return ["Moses calls the leaders and people back to hear him.", "The shining face does not replace the commandment he must speak."];
+    if (/children of israel saw/.test(lower)) return ["The children of Israel see the glory reflected on Moses' face.", "The visible change teaches them that Moses has been with the LORD."];
+    if (/face|shone|talked|afraid|vail|speak|commandment/.test(lower)) return ["Moses' shining face reflects time in the LORD's presence.", "The glory is wonderful, but it also teaches the people reverence."];
+  }
+
+  if (section.chapter === 35) {
+    if (/gathered|words|six days|seventh|holy day|fire/.test(lower)) return ["Moses gathers Israel under God's words again.", "Even while building the tabernacle, holy work must stop for Sabbath rest."];
+    if (/bracelets|earrings|rings/.test(lower)) return ["Bracelets, earrings, and rings are valuable personal items.", "The people give costly objects for the LORD's dwelling instead of an idol."];
+    if (/every man and woman/.test(lower)) return ["Men and women both bring what they can for the tabernacle.", "The willing offering involves the whole covenant community."];
+    if (/commanded by the hand of moses/.test(lower)) return ["The LORD commands the work through Moses.", "Willing gifts are still guided by God's word."];
+    if (/offering|willing|heart|gold|silver|brass|jewels|men and women|rulers|departed|stirred/.test(lower)) return ["The people bring gifts willingly for the LORD's dwelling.", "After the golden calf, their giving is redirected toward obedient worship."];
+    if (/lord commanded to be made/.test(lower)) return ["The LORD commanded these tabernacle pieces to be made.", "The workers are not inventing worship; they are obeying God's pattern."];
+    if (/ram skins|shittim|oil|spices|onyx|linen|tabernacle|covering|wise hearted/.test(lower)) return ["These materials are set apart for the tabernacle.", "God's dwelling is built from specific gifts prepared for holy use."];
+    if (/table|shewbread|candlestick|incense|altar|pins|cords|door/.test(lower)) return ["These pieces belong to the tabernacle's furniture and structure.", "Each item helps form ordered worship before the LORD."];
+    if (/cloths|garments|service|aaron|sons|priest/.test(lower)) return ["Priestly garments and service cloths prepare holy ministry.", "Serving near God's dwelling requires order, beauty, and care."];
+    if (/women|spun|goats|spice|oil/.test(lower)) return ["Skilled hands turn materials into tabernacle work.", "The people's willing labor becomes service for the LORD's dwelling."];
+  }
+
+  if (section.chapter === 36) {
+    if (/wise|curtains|linen|blue|purple|scarlet|cherubims|loops|coupled|taches/.test(lower)) return ["The curtains are carefully made and joined for the tabernacle.", "Separate pieces become one dwelling through skilled, obedient work."];
+    if (/made he it/.test(lower)) return ["Made he it means the worker made the piece as commanded.", "The wording stresses completed obedience, not creative improvising."];
+    if (/goats|covering|eleven|rams|badgers/.test(lower)) return ["The outer coverings protect the holy tent.", "God's design includes durable layers as well as inner beauty."];
+    if (/boards|shittim|cubits|tenons|sockets|side|corners|bars|middle bar|standing/.test(lower)) return ["The boards, sockets, tenons, and bars form the tabernacle frame.", "God's dwelling is built as a real structure with strength and order."];
+    if (/vail|hanging|door|pillars|hooks|chapiters|fillets/.test(lower)) return ["The veil, hanging, pillars, hooks, and bands form entrances and boundaries.", "The tabernacle teaches nearness to God with reverent order."];
+  }
+
+  return ["This phrase names a specific part of renewed worship after the golden calf.", "The detail shows Israel listening to God's word instead of inventing worship again."];
+}
+
+function getDay30ShortSupport(section: PersonalExodusPhraseSectionInput, title: string) {
+  const lower = title.toLowerCase();
+
+  if (section.chapter === 33 && /glory|goodness|face|clift|back parts|cover|proclaim/.test(lower)) {
+    return ["\u{2728} God's glory is holy", "\u{1F64C} The LORD reveals Himself", "\u{1FAA8} Moses is protected", "\u{2601}\u{FE0F} Mercy keeps hope alive"];
+  }
+  if (section.chapter === 33) {
+    return ["\u{2601}\u{FE0F} God's presence is needed", "\u{1F64F} Moses pleads for Israel", "\u{1F3D5}\u{FE0F} The camp needs mercy", "\u{1F9ED} The journey must be led by God"];
+  }
+  if (section.chapter === 34 && /cloud|name|merciful|gracious|longsuffering|goodness|truth|mercy|forgiving|guilty|pardon/.test(lower)) {
+    return ["\u{1F4E3} The LORD names Himself", "\u{1F54A}\u{FE0F} Mercy is real", "\u{2696}\u{FE0F} Justice remains", "\u{1F64F} Moses asks for pardon"];
+  }
+  if (section.chapter === 34 && /feast|unleavened|weeks|ingathering|firstfruits|matrix|lamb|empty|seventh/.test(lower)) {
+    return ["\u{1F35E} Rescue is remembered", "\u{1F33E} Harvest becomes worship", "\u{1F476} Firstborn life belongs to God", "\u{1F6D1} Rest still shapes time"];
+  }
+  if (section.chapter === 34) {
+    return ["\u{1F4DC} Covenant words are renewed", "\u{1F6AB} Idols must be rejected", "\u{26F0}\u{FE0F} Moses meets the LORD", "\u{2728} God's glory marks the scene"];
+  }
+  if (section.chapter === 35 && /offering|willing|heart|gold|silver|jewels|men and women|stirred/.test(lower)) {
+    return ["\u{1F381} Gifts are brought freely", "\u{1F49B} Hearts respond willingly", "\u{1F3D5}\u{FE0F} Materials serve God's dwelling", "\u{1F4DC} Giving follows God's command"];
+  }
+  if (section.chapter === 35 && /sabbath|six days|seventh|holy day|fire/.test(lower)) {
+    return ["\u{1F6D1} Sabbath rest remains", "\u{1F4DC} God's words gather Israel", "\u{1F3D5}\u{FE0F} Holy work has limits", "\u{1F64C} Rest shows trust"];
+  }
+  if (section.chapter === 35) {
+    return ["\u{1F9F5} Materials are prepared", "\u{1F9E0} Wise hearts serve", "\u{1F455} Priests are clothed", "\u{1F3D5}\u{FE0F} The tabernacle is supplied"];
+  }
+  if (section.chapter === 36 && /curtain|linen|blue|purple|scarlet|loops|coupled|taches/.test(lower)) {
+    return ["\u{1F9F5} Curtains are joined", "\u{1F517} Separate pieces become one", "\u{1F3D5}\u{FE0F} The tent takes shape", "\u{1F6E0}\u{FE0F} Skilled work serves worship"];
+  }
+  if (section.chapter === 36 && /covering|goats|rams|badgers/.test(lower)) {
+    return ["\u{1F3D5}\u{FE0F} The holy tent is covered", "\u{1F6E1}\u{FE0F} Outer layers protect", "\u{1F9F5} Materials are ordered", "\u{1F4DC} The pattern is followed"];
+  }
+  return ["\u{1F3D5}\u{FE0F} The dwelling is built", "\u{1F4CF} Details follow God's pattern", "\u{1F6E0}\u{FE0F} Skilled work serves worship", "\u{1F64C} Mercy leads to obedience"];
+}
+
+function getDay30ShortClosing(section: PersonalExodusPhraseSectionInput, title: string) {
+  const lower = title.toLowerCase();
+
+  if (section.chapter === 33 && /glory|goodness|face|clift|back parts|cover|proclaim/.test(lower)) return "God reveals Himself truly while guarding His holiness.";
+  if (section.chapter === 33) return "The promised land is not enough without the LORD's presence.";
+  if (section.chapter === 34 && /cloud|name|merciful|gracious|longsuffering|goodness|truth|mercy|forgiving|guilty|pardon/.test(lower)) return "Israel's hope rests on the LORD's merciful and holy character.";
+  if (section.chapter === 34 && /feast|unleavened|weeks|ingathering|firstfruits|matrix|lamb|empty|seventh/.test(lower)) return "Israel's calendar keeps rescue, rest, and worship in memory.";
+  if (section.chapter === 34) return "Renewed covenant mercy leads to renewed obedience.";
+  if (section.chapter === 35 && /offering|willing|heart|gold|silver|jewels|men and women|stirred/.test(lower)) return "Willing gifts now serve God's dwelling instead of an idol.";
+  if (section.chapter === 35 && /sabbath|six days|seventh|holy day|fire/.test(lower)) return "Holy work still rests under the LORD's command.";
+  if (section.chapter === 35) return "The people prepare materials and service for God's dwelling.";
+  if (section.chapter === 36) return "The tabernacle is built piece by piece according to God's pattern.";
+
+  return "Mercy after failure produces listening, worship, and willing work.";
+}
+
 function formatRenderedDays29To30Lines(section: PersonalExodusPhraseSectionInput, cleanTitle: string, lines: string[]) {
   if (section.chapter < 31 || section.chapter > 36) return lines;
+
+  if (section.chapter >= 31 && section.chapter <= 32) {
+    const rawOpening = getDay29Exodus31To32Opening(section, cleanTitle);
+    return [
+      rawOpening[0],
+      rawOpening[1],
+      ...getDay29Exodus31To32Support(section, cleanTitle),
+      getDay29Exodus31To32Closing(section, cleanTitle),
+    ].filter(Boolean).slice(0, 7);
+  }
+
+  if (section.chapter >= 33 && section.chapter <= 36) {
+    const rawOpening = getDay30ShortOpening(section, cleanTitle);
+    return [
+      rawOpening[0],
+      rawOpening[1],
+      ...getDay30ShortSupport(section, cleanTitle),
+      getDay30ShortClosing(section, cleanTitle),
+    ].filter(Boolean).slice(0, 7);
+  }
 
   const isEmojiLine = (line: string) => /^[^A-Za-z0-9'"(]/.test(line.trim());
   const isFillerLine = (line: string) => /(This shows the end of Exodus|helps the reader|helps the end of Exodus|real detail|assigned text|meaning should be clear|keeps the reader close|should be read slowly)/i.test(line);
