@@ -7,12 +7,12 @@ export const JOSHUA_20_24_PERSONAL_SECTIONS = buildGeneratedPersonalSections({
   chapters: [20, 21, 22, 23, 24],
   icon: "🛡️",
   fallbackPhrases: [
-    "The LORD",
+    "The LORD Also Spake Unto Joshua",
     "The Children Of Israel",
     "The Cities Of Refuge",
-    "The Land",
-    "The Inheritance",
+    "The Land Rested From War",
+    "The Inheritance Of The Levites",
     "Serve The LORD",
-    "Covenant",
+    "Made A Covenant With The People",
   ],
 });

@@ -41,38 +41,38 @@ function teachingLine(title: string) {
   const cleanTitle = title.replace(/^[^\p{L}\p{N}]+/u, "").trim().toLowerCase();
 
   if (/samson|delilah|woman|wife/.test(cleanTitle)) {
-    return "This phrase helps the reader see the personal choices driving the scene.";
+    return "The wording exposes the personal choices driving the scene.";
   }
 
   if (/strength|spirit|lord|remember|pray/.test(cleanTitle)) {
-    return "This phrase points to the difference between human weakness and God's power.";
+    return "The wording points to the difference between human weakness and God's power.";
   }
 
   if (/philistines|battle|smote|fell|fire|sword/.test(cleanTitle)) {
-    return "This phrase shows the conflict becoming public and costly.";
+    return "The conflict is becoming public and costly.";
   }
 
   if (/image|graven|molten|gods|dagon|priest|levite/.test(cleanTitle)) {
-    return "This phrase explains how worship has become confused and corrupt.";
+    return "The scene explains how worship has become confused and corrupt.";
   }
 
   if (/door|gate|house|city|shiloh|gibeah|dan/.test(cleanTitle)) {
-    return "This phrase gives the story a real setting where the sin or rescue unfolds.";
+    return "The story is grounded in the real place where the sin or rescue unfolds.";
   }
 
   if (/hear|hearken|question|what|why|tell/.test(cleanTitle)) {
-    return "This phrase shows a moment where words reveal what is happening in the heart.";
+    return "Words are revealing what is happening in the heart.";
   }
 
   if (/wept|sorrow|fell down|breach|repented/.test(cleanTitle)) {
-    return "This phrase keeps the pain of Israel's collapse in front of the reader.";
+    return "The pain of Israel's collapse stays in front of the reader.";
   }
 
   if (/king|own eyes/.test(cleanTitle)) {
-    return "This phrase diagnoses the deeper problem of life without faithful rule under God.";
+    return "The deeper problem is life without faithful rule under God.";
   }
 
-  return "This phrase helps the reader slow down and understand the detail in front of them.";
+  return "The detail helps the reader slow down and understand the moment in front of them.";
 }
 
 function phrase(icon: string, title: string, meaning: string, bullets: string[], close: string): [string, string] {
@@ -116,7 +116,7 @@ export const JUDGES_16_21_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionInput
   section(16, 6, 10, "Delilah Begins Pressing Samson", I.question, [
     phrase(I.question, "Tell Me, I Pray Thee", "Delilah asks for Samson's secret while hiding the danger behind personal words.", [`${I.question} A request`, `${I.warning} A hidden trap`, `${I.broken} Trust being tested`], "The phrase sounds gentle, but the story shows it is manipulation."),
     phrase(I.strength, "Wherein Thy Great Strength Lieth", "the enemy wants to know the source of Samson's strength so they can control him.", [`${I.strength} Strength`, `${I.eye} Secret watched`, `${I.battle} Enemy strategy`], "The Philistines know they cannot defeat Samson until his strength is exposed."),
-    phrase(I.warning, "Bind Thee To Afflict Thee", "the goal is not curiosity but captivity and suffering.", [`${I.warning} Binding`, `${I.broken} Affliction`, `${I.battle} Enemy purpose`], "This phrase tells the reader what Delilah's questions are really moving toward."),
+    phrase(I.warning, "Bind Thee To Afflict Thee", "the goal is not curiosity but captivity and suffering.", [`${I.warning} Binding`, `${I.broken} Affliction`, `${I.battle} Enemy purpose`], "Delilah's questions are really moving toward Samson's suffering."),
     phrase(I.seedling, "Seven Green Withs", "Samson gives a false answer and begins playing with the secret of his calling.", [`${I.seedling} Fresh cords`, `${I.question} False answer`, `${I.warning} Playing with danger`], "The lie may protect him for a moment, but it keeps him close to the trap."),
   ]),
   section(16, 11, 14, "Samson Keeps Playing With Danger", I.warning, [
@@ -153,7 +153,7 @@ export const JUDGES_16_21_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionInput
     phrase(I.money, "Eleven Hundred Shekels Of Silver", "stolen money becomes part of a corrupt worship story.", [`${I.money} Silver`, `${I.house} Family trouble`, `${I.warning} Worship confusion`], "The same amount offered to Delilah now appears in another story of spiritual disorder."),
     phrase(I.scroll, "I Had Wholly Dedicated The Silver Unto The LORD", "Micah's mother uses religious language for something God had forbidden.", [`${I.scroll} Religious words`, `${I.idol} Idol money`, `${I.warning} Misguided devotion`], "The phrase teaches that sincere-sounding words do not make disobedience holy."),
     phrase(I.idol, "A Graven Image And A Molten Image", "the silver becomes an idol for private worship.", [`${I.idol} Image`, `${I.fire} Metal work`, `${I.warning} Forbidden worship`], "Israel is acting like the nations instead of worshiping the LORD as He commanded."),
-    phrase(I.crown, "Every Man Did That Which Was Right In His Own Eyes", "people are following personal desire instead of God's word.", [`${I.eye} Own eyes`, `${I.crown} No king`, `${I.broken} Moral collapse`], "This line explains the spiritual atmosphere of Judges."),
+    phrase(I.crown, "Every Man Did That Which Was Right In His Own Eyes", "people are following personal desire instead of God's word.", [`${I.eye} Own eyes`, `${I.crown} No king`, `${I.broken} Moral collapse`], "The line explains the spiritual atmosphere of Judges."),
   ]),
   section(17, 7, 10, "A Levite Comes To Micah", I.priest, [
     phrase(I.priest, "A Young Man Out Of Bethlehemjudah", "a Levite is wandering instead of serving in stable covenant order.", [`${I.priest} Levite`, `${I.map} Bethlehemjudah`, `${I.warning} Worship instability`], "The detail shows worship leadership has become unsettled."),

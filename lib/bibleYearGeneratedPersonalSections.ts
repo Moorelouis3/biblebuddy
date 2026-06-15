@@ -130,6 +130,123 @@ function buildPhraseTitle(rawTitle: string) {
 function phraseSpecificTeaching(title: string, book: string, chapter: number) {
   const lower = title.toLowerCase();
 
+  if (book === "Joshua" && /be strong and of a good courage|only be thou strong|neither be thou dismayed/.test(lower)) {
+    return formatPhraseTeaching(title, [
+      `${title} is the LORD's courage command to Joshua as leadership passes from Moses to him.`,
+      "The phrase does not mean Joshua should trust his own personality. His courage rests on God's presence and promise.",
+      ...buildTeachingBullets(title),
+      "A beginner should see that biblical courage is tied to listening to the LORD and walking forward because He is with His people.",
+    ]);
+  }
+
+  if (book === "Joshua" && /ark of the covenant|ark of the lord|ark of god/.test(lower)) {
+    return formatPhraseTeaching(title, [
+      `${title} points to the visible sign of the LORD's covenant presence leading Israel.`,
+      "The ark is not a magic object. It belongs to worship, covenant, and God's holy presence among His people.",
+      ...buildTeachingBullets(title),
+      "The phrase helps readers see why the river crossing and the march around Jericho are centered on God's presence, not Israel's strength.",
+    ]);
+  }
+
+  if (book === "Joshua" && /according unto the word of the lord|as the lord commanded|commanded joshua|word of the lord/.test(lower)) {
+    return formatPhraseTeaching(title, [
+      `${title} shows Joshua and Israel acting under God's command rather than their own strategy.`,
+      "The phrase matters because victory in Joshua is repeatedly tied to obedience.",
+      ...buildTeachingBullets(title),
+      "A beginner should read it as the anchor of the story: God's word directs the action.",
+    ]);
+  }
+
+  if (book === "Joshua" && /land which i do give|lord gave unto israel|gave them rest|land rested from war/.test(lower)) {
+    return formatPhraseTeaching(title, [
+      `${title} shows the promise becoming real in the land of Canaan.`,
+      "Joshua is not mainly about Israel grabbing land by ambition. It is about the LORD giving what He promised.",
+      ...buildTeachingBullets(title),
+      "The phrase helps readers see geography as covenant promise taking shape for real tribes and families.",
+    ]);
+  }
+
+  if (book === "Joshua" && /inheritance by lot|according to their families|cities and villages|coast|border|border went/.test(lower)) {
+    return formatPhraseTeaching(title, [
+      `${title} belongs to the careful distribution of inheritance among Israel's tribes.`,
+      "These details can feel like lists, but they show that God's promise reaches actual families, borders, towns, and responsibilities.",
+      ...buildTeachingBullets(title),
+      "A beginner should see order here: the promised land is being received as covenant inheritance, not vague religious language.",
+    ]);
+  }
+
+  if (book === "Joshua" && /children of israel|tribe of|half tribe|joseph|judah|ephraim|manasseh/.test(lower)) {
+    return formatPhraseTeaching(title, [
+      `${title} names the covenant people or tribe receiving a real place in the promise.`,
+      "Joshua keeps repeating tribal names because the promise is not abstract. It belongs to the people God brought out of Egypt.",
+      ...buildTeachingBullets(title),
+      "The phrase helps readers follow how one rescued nation is being settled tribe by tribe.",
+    ]);
+  }
+
+  if (book === "Joshua" && /joshua|rahab|achan|caleb|eleazar|jordan|jericho|gilgal|ai/.test(lower)) {
+    return formatPhraseTeaching(title, [
+      `${title} identifies a person or place that carries the story forward in Joshua.`,
+      "The phrase matters because Joshua's story moves through real leaders, cities, crossings, failures, and acts of faith.",
+      ...buildTeachingBullets(title),
+      "A beginner should slow down here because the named details show where obedience, mercy, judgment, or inheritance is happening.",
+    ]);
+  }
+
+  if (book === "Joshua" && /twelve stones|take you twelve men|out of every tribe|memorial|what mean ye by these stones/.test(lower)) {
+    return formatPhraseTeaching(title, [
+      `${title} points to Israel turning God's mighty act into something future generations can remember.`,
+      "The stones are not decoration. They are teaching signs so children will hear what the LORD did at the Jordan.",
+      ...buildTeachingBullets(title),
+      "The phrase helps readers see that Joshua connects miracle, memory, and family instruction.",
+    ]);
+  }
+
+  if (book === "Joshua" && /accursed thing|devoted thing|hath sinned|israel hath sinned|get thee up|wherefore liest thou/.test(lower)) {
+    return formatPhraseTeaching(title, [
+      `${title} belongs to the Achan story, where hidden sin damages the whole covenant community.`,
+      "Joshua 7 teaches that victory at Jericho did not make Israel safe from disobedience.",
+      ...buildTeachingBullets(title),
+      "The phrase helps readers see why the LORD exposes sin before Israel can move forward.",
+    ]);
+  }
+
+  if (book === "Joshua" && /ask not counsel|league with us|made a league|let them live|gibeon|beguiled us|work wilily/.test(lower)) {
+    return formatPhraseTeaching(title, [
+      `${title} belongs to the Gibeonite deception, where Israel acts without asking counsel from the LORD.`,
+      "The phrase teaches that danger does not always look like battle. Sometimes it looks reasonable and persuasive.",
+      ...buildTeachingBullets(title),
+      "A beginner should see that covenant wisdom must seek God's counsel, not only trust appearances.",
+    ]);
+  }
+
+  if (book === "Joshua" && /sharp knives|circumcis|captain of the lord|passover|manna|old corn/.test(lower)) {
+    return formatPhraseTeaching(title, [
+      `${title} points to covenant renewal before Israel moves deeper into the land.`,
+      "Joshua 5 slows the story down before Jericho so the people remember who they are before the LORD.",
+      ...buildTeachingBullets(title),
+      "The phrase helps readers see that worship and covenant identity come before battle confidence.",
+    ]);
+  }
+
+  if (book === "Joshua" && /father|mother|brethren|sisters|household|kindness|swear unto me/.test(lower)) {
+    return formatPhraseTeaching(title, [
+      `${title} shows Rahab asking for mercy to reach her family, not only herself.`,
+      "Her request matters because faith in Joshua 2 becomes a plea for rescue in the middle of coming judgment.",
+      ...buildTeachingBullets(title),
+      "The phrase helps readers see mercy entering Jericho before Jericho falls.",
+    ]);
+  }
+
+  if (book === "Joshua" && /valley|springs|wilderness|towns|villages|city|cities|coast|mountain|wood country|south land|lot came out/.test(lower)) {
+    return formatPhraseTeaching(title, [
+      `${title} names the actual places, borders, or portions connected to Israel's inheritance.`,
+      "These details may feel slow, but they show the promise becoming settled geography for real families.",
+      ...buildTeachingBullets(title),
+      "The phrase keeps the reader from treating the land as an idea. Joshua is showing the inheritance taking shape.",
+    ]);
+  }
+
   if (/i am the lord/.test(lower)) {
     return formatPhraseTeaching(title, [
       "I Am The LORD identifies the One giving the command.",
@@ -167,11 +284,21 @@ function phraseSpecificTeaching(title: string, book: string, chapter: number) {
   }
 
   if (/before the lord/.test(lower)) {
+    const focus =
+      chapter >= 26
+        ? chapter === 26
+          ? "Before The LORD means Israel brings firstfruits and confession into God's presence."
+          : chapter === 27
+          ? "Before The LORD means the covenant ceremony is being treated as worship, not merely public speech."
+          : "Before The LORD means Israel's covenant words and gifts are being brought into God's presence."
+        : chapter >= 16
+        ? "Before The LORD means the feast, offering, or judgment is not merely a social event."
+        : "Before The LORD means the action is happening in God's presence.";
     return formatPhraseTeaching(title, [
-      "Before The LORD means the action is happening in God's presence.",
-      "This phrase makes worship personal and serious.",
+      focus,
+      "The phrase makes the moment personal and serious because the LORD sees what His people bring, say, and do.",
       ...buildTeachingBullets(title),
-      "They are done before the holy God who sees and receives what His people bring.",
+      "A beginner should read it as nearness: the people are acting before the holy God, not only in front of one another.",
     ]);
   }
 
@@ -266,11 +393,35 @@ function phraseSpecificTeaching(title: string, book: string, chapter: number) {
   }
 
   if (/place which the lord shall choose|place which he shall choose|before the lord thy god/.test(lower)) {
+    const focus =
+      chapter >= 26
+        ? `${title} points to covenant worship being brought to the place God chose for His name.`
+        : chapter >= 16
+        ? `${title} means Israel's feasts and offerings must gather where the LORD appoints.`
+        : `${title} points to worship gathered around the place God chooses, not wherever Israel invents for itself.`;
     return formatPhraseTeaching(title, [
-      `${title} points to worship gathered around the place God chooses, not wherever Israel invents for itself.`,
+      focus,
       "The phrase keeps worship centered on God's authority instead of personal preference.",
       ...buildTeachingBullets(title),
       "It teaches that worship is a response to God's word, not something people design on their own terms.",
+    ]);
+  }
+
+  if (/justice and judgment/.test(lower)) {
+    return formatPhraseTeaching(title, [
+      `${title} means public decisions must be measured by truth instead of pressure, favoritism, or fear.`,
+      "In Deuteronomy, justice is not a side issue. It is part of covenant faithfulness before the LORD.",
+      ...buildTeachingBullets(title),
+      "The phrase helps readers see that holy life includes fair courts, honest leaders, and righteous decisions.",
+    ]);
+  }
+
+  if (/keep the commandments/.test(lower)) {
+    return formatPhraseTeaching(title, [
+      `${title} means Israel must guard the LORD's words by actually obeying them.`,
+      "The phrase is not about collecting religious information. It is about covenant instruction becoming visible life.",
+      ...buildTeachingBullets(title),
+      "A beginner should hear this as careful loyalty: the people remember God's word by walking in it.",
     ]);
   }
 
@@ -283,7 +434,7 @@ function phraseSpecificTeaching(title: string, book: string, chapter: number) {
     ]);
   }
 
-  if (/poor|widow|fatherless|stranger|foreigner|servant|bondman|brother/.test(lower)) {
+  if (/poor|widow|fatherless|stranger|foreigner|servant|bondman|brother/.test(lower) && !/moses the servant of the lord/.test(lower)) {
     return formatPhraseTeaching(title, [
       `${title} brings vulnerable people or covenant neighbors into view.`,
       "The phrase matters because God's law does not ignore people with less power, less money, or less protection.",
@@ -298,6 +449,60 @@ function phraseSpecificTeaching(title: string, book: string, chapter: number) {
       "The phrase matters because obedience in Deuteronomy is built on God's faithfulness, not on Israel starting from nothing.",
       ...buildTeachingBullets(title),
       "It helps the reader connect the command in front of them to the bigger promise story.",
+    ]);
+  }
+
+  if (/this commandment which i command thee this day|this commandment/.test(lower)) {
+    return formatPhraseTeaching(title, [
+      `${title} points to the covenant word Moses is putting directly before Israel.`,
+      "In Deuteronomy, the command is not treated as distant, hidden, or impossible to hear.",
+      ...buildTeachingBullets(title),
+      "The phrase helps the reader see that obedience begins with receiving the word God has already made known.",
+    ]);
+  }
+
+  if (/song of moses|this song|write ye this song|teach it the children/.test(lower)) {
+    return formatPhraseTeaching(title, [
+      `${title} points to the witness Moses gives Israel in song form before he dies.`,
+      "The song is meant to be remembered, repeated, and used as testimony when Israel forgets the LORD.",
+      ...buildTeachingBullets(title),
+      "A beginner should see that the song is not decoration. It is covenant memory shaped into words the people can carry.",
+    ]);
+  }
+
+  if (/choose life|that thou and thy seed may live/.test(lower)) {
+    return formatPhraseTeaching(title, [
+      `${title} is Moses' urgent call for Israel to cling to the LORD instead of choosing death through rebellion.`,
+      "Life here means covenant life with God: loving Him, obeying His voice, and holding fast to Him.",
+      ...buildTeachingBullets(title),
+      "The phrase helps the reader hear Deuteronomy's final appeal as personal, serious, and full of mercy.",
+    ]);
+  }
+
+  if (/set your hearts unto all the words|set your hearts/.test(lower)) {
+    return formatPhraseTeaching(title, [
+      `${title} means Moses wants Israel to take the covenant words into the center of their attention.`,
+      "This is more than hearing sounds. The people must receive the words as life-giving instruction.",
+      ...buildTeachingBullets(title),
+      "The phrase teaches that Scripture is meant to be held, taught, remembered, and obeyed.",
+    ]);
+  }
+
+  if (/moses the servant of the lord/.test(lower)) {
+    return formatPhraseTeaching(title, [
+      `${title} identifies Moses by his faithful role before the LORD at the end of his life.`,
+      "The phrase does not make Moses the center. It shows that even Israel's great leader stands under God's command.",
+      ...buildTeachingBullets(title),
+      "A beginner should see honor and humility together: Moses is important because he served the LORD.",
+    ]);
+  }
+
+  if (/eternal god is thy refuge|underneath are the everlasting arms/.test(lower)) {
+    return formatPhraseTeaching(title, [
+      `${title} describes the LORD as the safe place beneath and around His people.`,
+      "Moses is blessing Israel with confidence that their security rests in the everlasting God.",
+      ...buildTeachingBullets(title),
+      "The phrase helps readers see that Israel's future depends on God's strength, not their own.",
     ]);
   }
 
@@ -374,8 +579,8 @@ function phraseSpecificTeaching(title: string, book: string, chapter: number) {
   }
 
   return formatPhraseTeaching(title, [
-    `${title} means this word or action is part of how the passage teaches covenant life.`,
-    "The phrase may be small, but it helps the reader slow down and notice what God is placing in the text.",
+    `${title} names an exact detail the reader is meant to notice in this part of ${book}.`,
+    "The phrase may be small, but it belongs to the way the passage moves the story, command, warning, or promise forward.",
     ...buildTeachingBullets(title),
     "It keeps the explanation tied to the Bible's wording instead of turning the section into a vague summary.",
   ]);
@@ -459,6 +664,7 @@ function extractVersePhraseTitles(sectionBody: string) {
     .map(cleanVersePhrase)
     .filter((phrase) => {
       const words = phrase.split(/\s+/).filter(Boolean);
+      if (/^(it came to pass|now therefore|and now)$/i.test(phrase)) return false;
       return words.length >= 3 && words.length <= 10 && !/^\d+$/.test(phrase);
     });
   const seen = new Set<string>();
@@ -514,7 +720,7 @@ function parseDeepSections(book: string, chapter: number, markdown: string): Par
   const escapedBook = book.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const sectionPattern = new RegExp(`## ${escapedBook} ${chapter}:(\\d+)(?:-| to )(\\d+)\\n([\\s\\S]*?)(?=\\n## ${escapedBook} ${chapter}:|\\n# The Big Lesson|\\n# Final Thought|\\n# Pause and Reflect|$)`, "g");
   const sections: ParsedDeepSection[] = [];
-  const useVersePhrasesFirst = book === "Numbers" || book === "Deuteronomy";
+    const useVersePhrasesFirst = book === "Numbers" || book === "Deuteronomy" || book === "Joshua";
 
   for (const match of markdown.matchAll(sectionPattern)) {
     const startVerse = Number(match[1]);
@@ -579,7 +785,8 @@ function chunkSection(section: ParsedDeepSection, book: string, icon: string, fa
     phraseCursor += Math.max(4, chunkPhrases.length);
 
     while (chunkPhrases.length < 4) {
-      const fallback = fallbackPhrases[(chunks.length + chunkPhrases.length) % fallbackPhrases.length] || "The LORD Spake Unto Moses";
+      const fallbackIndex = (section.chapter + start + chunks.length + chunkPhrases.length) % fallbackPhrases.length;
+      const fallback = fallbackPhrases[fallbackIndex] || "The LORD Spake Unto Moses";
       chunkPhrases.push(makeFallbackPhrase(fallback, book, section.chapter));
     }
 

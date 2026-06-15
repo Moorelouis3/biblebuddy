@@ -30,6 +30,7 @@ import { enrichBibleVerses } from "@/lib/bibleHighlighting";
 import { BIBLE_STUDY_SERIES_CATALOG, getBibleStudySeriesCover } from "@/lib/bibleStudiesCatalog";
 import { ACTION_TYPE } from "@/lib/actionTypes";
 import { getPremiumSkin, normalizePremiumSkinId, type PremiumSkinId } from "@/lib/premiumSkins";
+import { useDocumentScrollLock } from "@/hooks/useDocumentScrollLock";
 import { ensureBibleEntityLearned } from "@/lib/bibleEntityProgress";
 import { getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes } from "@/lib/bibleNotes";
 import { resolveBibleReference } from "@/lib/bibleTermResolver";
@@ -3218,36 +3219,17 @@ export default function GroupChatPage() {
     return () => window.clearInterval(id);
   }, []);
 
-  useEffect(() => {
-    const shouldLockBodyScroll =
-      !!showPostComposerModal ||
-      !!showTopBuddiesModal ||
-      !!showGroupInfoModal ||
-      !!deletePostId ||
-      !!lightboxUrl ||
-      !!showHubLikesFor ||
-      !!showPostLikesFor;
-
-    if (!shouldLockBodyScroll) return;
-
-    const previousOverflow = document.body.style.overflow;
-    const previousTouchAction = document.body.style.touchAction;
-    document.body.style.overflow = "hidden";
-    document.body.style.touchAction = "none";
-
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      document.body.style.touchAction = previousTouchAction;
-    };
-  }, [
-    showPostComposerModal,
-    showTopBuddiesModal,
-    showGroupInfoModal,
-    deletePostId,
-    lightboxUrl,
-    showHubLikesFor,
-    showPostLikesFor,
-  ]);
+  useDocumentScrollLock(
+    Boolean(
+      showPostComposerModal ||
+        showTopBuddiesModal ||
+        showGroupInfoModal ||
+        deletePostId ||
+        lightboxUrl ||
+        showHubLikesFor ||
+        showPostLikesFor,
+    ),
+  );
 
   useEffect(() => {
     if (!showMoreNav) return;

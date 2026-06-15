@@ -33,6 +33,7 @@ import { resolveBibleReference } from "@/lib/bibleTermResolver";
 import { consumeCreditAction } from "@/lib/creditClient";
 import { buildWeeklyGroupPoll } from "@/lib/groupWeeklyPoll";
 import { buildWeeklyGroupQuestion } from "@/lib/groupWeeklyQuestion";
+import { useDocumentScrollLock } from "@/hooks/useDocumentScrollLock";
 import { buildWeeklyGroupTrivia } from "@/lib/groupWeeklyTrivia";
 import { enrichBibleVerses } from "@/lib/bibleHighlighting";
 import {
@@ -1563,14 +1564,7 @@ export default function StudyGroupSchedulerPage() {
     };
   }, [groupId, router]);
 
-  useEffect(() => {
-    if (!selectedQueueItemId && !selectedRecurringItemKey && !editingRecurringItemKey) return undefined;
-    const originalOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = originalOverflow;
-    };
-  }, [editingRecurringItemKey, selectedQueueItemId, selectedRecurringItemKey]);
+  useDocumentScrollLock(Boolean(selectedQueueItemId || selectedRecurringItemKey || editingRecurringItemKey));
 
   useEffect(() => {
     let cancelled = false;

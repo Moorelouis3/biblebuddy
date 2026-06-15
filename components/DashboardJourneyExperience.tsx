@@ -2750,9 +2750,29 @@ export default function DashboardJourneyExperience({
     83: "Temple",
     84: "Glory",
     85: "Divides",
+    86: "Elijah",
+    87: "Ahab",
+    88: "Elisha",
+    89: "Siege",
+    90: "Jehu",
+    91: "Assyria",
+    92: "Hezekiah",
+    93: "Josiah",
+    94: "Line",
+    95: "Tribes",
+    96: "Return",
+    97: "Ark",
+    98: "Covenant",
+    99: "Temple Site",
+    100: "Worship",
+    101: "Offering",
+    102: "Dedication",
+    103: "Division",
+    104: "Reform",
+    105: "Trust",
   };
   const bibleYearStudyPlanMilestones = GENESIS_BIBLE_IN_ONE_YEAR_SERIES
-    .filter((day) => day.dayNumber <= 85)
+    .filter((day) => day.dayNumber <= 105)
     .map((day) => ({
       dayNumber: day.dayNumber,
       label: bibleYearStudyPlanMilestoneLabels[day.dayNumber] || day.title,

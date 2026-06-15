@@ -23,6 +23,13 @@ import { JUDGES_16_21_PERSONAL_SECTIONS } from "./judgesSixteenToTwentyOnePerson
 import { RUTH_1_4_PERSONAL_SECTIONS } from "./ruthOneToFourPersonalNotes";
 import { FIRST_SAMUEL_1_10_PERSONAL_SECTIONS } from "./firstSamuelOneToTenPersonalNotes";
 import { FIRST_SAMUEL_11_30_PERSONAL_SECTIONS } from "./firstSamuelElevenToThirtyPersonalNotes";
+import { FIRST_KINGS_1_15_PERSONAL_SECTIONS, FIRST_SAMUEL_31_PERSONAL_SECTIONS, SECOND_SAMUEL_1_24_PERSONAL_SECTIONS } from "./royalHistoryPersonalNotes";
+import { FIRST_CHRONICLES_1_8_PERSONAL_SECTIONS, FIRST_KINGS_16_22_PERSONAL_SECTIONS, SECOND_KINGS_1_25_PERSONAL_SECTIONS } from "./kingdomDeclinePersonalNotes";
+import { FIRST_CHRONICLES_9_29_PERSONAL_SECTIONS, SECOND_CHRONICLES_1_19_PERSONAL_SECTIONS } from "./chroniclesPersonalNotes";
+import { EZRA_1_3_PERSONAL_SECTIONS, SECOND_CHRONICLES_20_36_PERSONAL_SECTIONS } from "./secondChroniclesTwentyToEzraThreePersonalNotes";
+import { EZRA_4_10_PERSONAL_SECTIONS, NEHEMIAH_1_13_PERSONAL_SECTIONS } from "./ezraFourToNehemiahThirteenPersonalNotes";
+import { ESTHER_1_10_PERSONAL_SECTIONS, JOB_1_10_PERSONAL_SECTIONS } from "./estherOneToJobTenPersonalNotes";
+import { JOB_11_30_PERSONAL_SECTIONS } from "./jobElevenToThirtyPersonalNotes";
 
 export type BibleReaderStudyNoteCategory = {
   id: string;
@@ -14628,6 +14635,141 @@ function makePersonalFirstSamuelPhraseSection(section: {
   };
 }
 
+function makePersonalSecondSamuelPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "2 samuel",
+  };
+}
+
+function makePersonalFirstKingsPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "1 kings",
+  };
+}
+
+function makePersonalSecondKingsPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "2 kings",
+  };
+}
+
+function makePersonalFirstChroniclesPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "1 chronicles",
+  };
+}
+
+function makePersonalSecondChroniclesPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "2 chronicles",
+  };
+}
+
+function makePersonalEzraPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "ezra",
+  };
+}
+
+function makePersonalNehemiahPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "nehemiah",
+  };
+}
+
+function makePersonalEstherPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "esther",
+  };
+}
+
+function makePersonalJobPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "job",
+  };
+}
+
 function applyPersonalGenesisFourThroughTenStudySections() {
   let sections: BibleReaderStudySection[] = [
     makePersonalGenesisPhraseSection({
@@ -19671,6 +19813,201 @@ function applyPersonalFirstSamuelElevenThroughThirtyStudySections() {
   BIBLE_READER_STUDY_SECTIONS.push(...sections);
 }
 
+function applyPersonalFirstSamuelThirtyOneStudySections() {
+  const sections = FIRST_SAMUEL_31_PERSONAL_SECTIONS.map(makePersonalFirstSamuelPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "1 samuel" && section.chapter === 31) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalSecondSamuelOneThroughTwentyFourStudySections() {
+  const sections = SECOND_SAMUEL_1_24_PERSONAL_SECTIONS.map(makePersonalSecondSamuelPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "2 samuel" && section.chapter >= 1 && section.chapter <= 24) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalFirstKingsOneThroughFifteenStudySections() {
+  const sections = FIRST_KINGS_1_15_PERSONAL_SECTIONS.map(makePersonalFirstKingsPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "1 kings" && section.chapter >= 1 && section.chapter <= 15) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalFirstKingsSixteenThroughTwentyTwoStudySections() {
+  const sections = FIRST_KINGS_16_22_PERSONAL_SECTIONS.map(makePersonalFirstKingsPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "1 kings" && section.chapter >= 16 && section.chapter <= 22) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalSecondKingsOneThroughTwentyFiveStudySections() {
+  const sections = SECOND_KINGS_1_25_PERSONAL_SECTIONS.map(makePersonalSecondKingsPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "2 kings" && section.chapter >= 1 && section.chapter <= 25) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalFirstChroniclesOneThroughEightStudySections() {
+  const sections = FIRST_CHRONICLES_1_8_PERSONAL_SECTIONS.map(makePersonalFirstChroniclesPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "1 chronicles" && section.chapter >= 1 && section.chapter <= 8) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalFirstChroniclesNineThroughTwentyNineStudySections() {
+  const sections = FIRST_CHRONICLES_9_29_PERSONAL_SECTIONS.map(makePersonalFirstChroniclesPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "1 chronicles" && section.chapter >= 9 && section.chapter <= 29) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalSecondChroniclesOneThroughNineteenStudySections() {
+  const sections = SECOND_CHRONICLES_1_19_PERSONAL_SECTIONS.map(makePersonalSecondChroniclesPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "2 chronicles" && section.chapter >= 1 && section.chapter <= 19) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalSecondChroniclesTwentyThroughThirtySixStudySections() {
+  const sections = SECOND_CHRONICLES_20_36_PERSONAL_SECTIONS.map(makePersonalSecondChroniclesPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "2 chronicles" && section.chapter >= 20 && section.chapter <= 36) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalEzraOneThroughThreeStudySections() {
+  const sections = EZRA_1_3_PERSONAL_SECTIONS.map(makePersonalEzraPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "ezra" && section.chapter >= 1 && section.chapter <= 3) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalEzraFourThroughTenStudySections() {
+  const sections = EZRA_4_10_PERSONAL_SECTIONS.map(makePersonalEzraPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "ezra" && section.chapter >= 4 && section.chapter <= 10) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalNehemiahOneThroughThirteenStudySections() {
+  const sections = NEHEMIAH_1_13_PERSONAL_SECTIONS.map(makePersonalNehemiahPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "nehemiah" && section.chapter >= 1 && section.chapter <= 13) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalEstherOneThroughTenStudySections() {
+  const sections = ESTHER_1_10_PERSONAL_SECTIONS.map(makePersonalEstherPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "esther" && section.chapter >= 1 && section.chapter <= 10) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalJobOneThroughTenStudySections() {
+  const sections = JOB_1_10_PERSONAL_SECTIONS.map(makePersonalJobPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "job" && section.chapter >= 1 && section.chapter <= 10) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalJobElevenThroughThirtyStudySections() {
+  const sections = JOB_11_30_PERSONAL_SECTIONS.map(makePersonalJobPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "job" && section.chapter >= 11 && section.chapter <= 30) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
 type ExodusTextureRule = {
   matches: string[];
   lines: string[];
@@ -20432,6 +20769,21 @@ applyPersonalJoshuaOneThroughElevenStudySections();
 applyPersonalJoshuaTwelveThroughNineteenStudySections();
 applyPersonalFirstSamuelOneThroughTenStudySections();
 applyPersonalFirstSamuelElevenThroughThirtyStudySections();
+applyPersonalFirstSamuelThirtyOneStudySections();
+applyPersonalSecondSamuelOneThroughTwentyFourStudySections();
+applyPersonalFirstKingsOneThroughFifteenStudySections();
+applyPersonalFirstKingsSixteenThroughTwentyTwoStudySections();
+applyPersonalSecondKingsOneThroughTwentyFiveStudySections();
+applyPersonalFirstChroniclesOneThroughEightStudySections();
+applyPersonalFirstChroniclesNineThroughTwentyNineStudySections();
+applyPersonalSecondChroniclesOneThroughNineteenStudySections();
+applyPersonalSecondChroniclesTwentyThroughThirtySixStudySections();
+applyPersonalEzraOneThroughThreeStudySections();
+applyPersonalEzraFourThroughTenStudySections();
+applyPersonalNehemiahOneThroughThirteenStudySections();
+applyPersonalEstherOneThroughTenStudySections();
+applyPersonalJobOneThroughTenStudySections();
+applyPersonalJobElevenThroughThirtyStudySections();
 applyPersonalExodusTextureStudySections();
 enforceStudySectionVerseLimit(8);
 
@@ -20564,7 +20916,17 @@ function formatKeyPhraseLikeDayOne(content: string) {
 function shouldFormatLikeDayOne(section: BibleReaderStudySection) {
   return (
     (section.book === "genesis" && section.chapter >= 1 && section.chapter <= 50) ||
-    (section.book === "exodus" && section.chapter >= 1 && section.chapter <= 36)
+    (section.book === "exodus" && section.chapter >= 1 && section.chapter <= 36) ||
+    (section.book === "1 samuel" && section.chapter >= 31 && section.chapter <= 31) ||
+    (section.book === "2 samuel" && section.chapter >= 1 && section.chapter <= 24) ||
+    (section.book === "1 kings" && section.chapter >= 1 && section.chapter <= 22) ||
+    (section.book === "2 kings" && section.chapter >= 1 && section.chapter <= 25) ||
+    (section.book === "1 chronicles" && section.chapter >= 1 && section.chapter <= 29) ||
+    (section.book === "2 chronicles" && section.chapter >= 1 && section.chapter <= 36) ||
+    (section.book === "ezra" && section.chapter >= 1 && section.chapter <= 10) ||
+    (section.book === "nehemiah" && section.chapter >= 1 && section.chapter <= 13) ||
+    (section.book === "esther" && section.chapter >= 1 && section.chapter <= 10) ||
+    (section.book === "job" && section.chapter >= 1 && section.chapter <= 30)
   );
 }
 

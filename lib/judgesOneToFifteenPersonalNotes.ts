@@ -29,34 +29,34 @@ function teachingLine(title: string) {
   }
 
   if (/judged|judge|head|captain/.test(cleanTitle)) {
-    return "This phrase explains the kind of leadership Israel was depending on in that moment.";
+    return "Judges is showing the kind of leadership Israel was depending on in that moment.";
   }
 
   if (/lord|spirit|deliver|delivered|called on/.test(cleanTitle)) {
-    return "This phrase keeps God's action at the center of the story.";
+    return "God's action stays at the center of the story.";
   }
 
   if (/vow|mouth|words|witness/.test(cleanTitle)) {
-    return "This phrase shows that spoken words before God are serious.";
+    return "Spoken words before God are being treated as serious.";
   }
 
   if (/daughter|virginity|fellows|wept|low/.test(cleanTitle)) {
-    return "This phrase slows the reader down to feel the human cost of the scene.";
+    return "The scene slows down so the reader feels the human cost.";
   }
 
   if (/ammon|philistines|battle|war|smote|slew/.test(cleanTitle)) {
-    return "This phrase shows how Israel's trouble becomes visible through conflict.";
+    return "Israel's trouble becomes visible through conflict.";
   }
 
   if (/land|gilead|mizpeh|border|shamir|bethlehem/.test(cleanTitle)) {
-    return "This phrase grounds the lesson in real places, not vague ideas.";
+    return "The lesson is grounded in real places, not vague ideas.";
   }
 
   if (/evil|gods|baalim|ashtaroth|sinned|strange/.test(cleanTitle)) {
-    return "This phrase names the spiritual problem underneath the crisis.";
+    return "The spiritual problem underneath the crisis is being named.";
   }
 
-  return "This phrase helps the reader understand why the detail belongs in the story.";
+  return "The detail belongs in the story because it helps explain the moment in front of the reader.";
 }
 
 function phrase(title: string, meaning: string, bullets: string[], close: string): [string, string] {
@@ -139,7 +139,7 @@ const judgesTenToFifteenFallbackSections: GeneratedJudgesSection[] = [
     phrase("🙌 The LORD God Of Israel Delivered Sihon", "The LORD God of Israel delivered Sihon means the land came by God's hand.", ["🙌 God's action", "🛡️ Deliverance", "🏞️ Land given"], "The phrase puts inheritance under God's authority."),
   ]),
   section(11, 24, 28, "The King Refuses To Listen", "👂", [
-    phrase("🪵 Wilt Not Thou Possess That Which Chemosh Thy God Giveth Thee", "This phrase uses Ammon's own way of thinking to expose the land claim.", ["🪵 False god named", "🏞️ Possession argument", "🗣️ Jephthah reasons"], "Jephthah is arguing that Israel will hold what the LORD gave."),
+    phrase("🪵 Wilt Not Thou Possess That Which Chemosh Thy God Giveth Thee", "Jephthah uses Ammon's own way of thinking to expose the land claim.", ["🪵 False god named", "🏞️ Possession argument", "🗣️ Jephthah reasons"], "Jephthah is arguing that Israel will hold what the LORD gave."),
     phrase("👑 Art Thou Any Thing Better Than Balak", "Art thou any thing better than Balak compares Ammon's king to Moab's earlier king.", ["👑 Kings compared", "📖 Earlier history", "⚖️ Weak claim"], "History becomes part of Jephthah's defense."),
     phrase("⚖️ The LORD The Judge Be Judge", "The LORD the Judge be judge means Jephthah appeals the dispute to God.", ["⚖️ God judges", "🏞️ Land dispute", "🙏 Final appeal"], "The phrase places the conflict under divine judgment."),
     phrase("👂 The King Of The Children Of Ammon Hearkened Not", "Hearkened not means Ammon's king refuses Jephthah's answer.", ["👂 Refusal", "📜 Rejected message", "⚔️ Battle remains"], "Words have been offered, but the conflict continues."),
@@ -213,7 +213,7 @@ const judgesTenToFifteenFallbackSections: GeneratedJudgesSection[] = [
   section(14, 1, 4, "Samson Desires A Philistine Woman", "👀", [
     phrase("👀 Samson Went Down To Timnath", "Samson went down to Timnath places him among the Philistines.", ["👀 Movement", "📍 Timnath", "⚠️ Dangerous direction"], "The story begins with Samson moving toward temptation and conflict."),
     phrase("💍 Get Her For Me To Wife", "Get her for me to wife shows Samson's desire driving the scene.", ["💍 Marriage desire", "🔥 Impulse", "👪 Parents involved"], "The phrase reveals appetite before wisdom."),
-    phrase("❓ Is There Never A Woman Among The Daughters Of Thy Brethren", "This question shows his parents' concern about marrying among the Philistines.", ["❓ Parental concern", "👥 Covenant people", "⚠️ Mixed loyalty"], "They sense the spiritual danger in the request."),
+    phrase("❓ Is There Never A Woman Among The Daughters Of Thy Brethren", "Samson's parents are concerned about him marrying among the Philistines.", ["❓ Parental concern", "👥 Covenant people", "⚠️ Mixed loyalty"], "They sense the spiritual danger in the request."),
     phrase("🕊️ It Was Of The LORD", "It was of the LORD means God is working through the conflict with the Philistines.", ["🕊️ God's purpose", "⚔️ Occasion sought", "🧩 Complicated providence"], "The phrase does not excuse Samson's impulses, but it shows God is still ruling."),
   ]),
   section(14, 5, 9, "The Lion And The Honey", "🦁", [
@@ -229,16 +229,16 @@ const judgesTenToFifteenFallbackSections: GeneratedJudgesSection[] = [
     phrase("🍽️ Out Of The Eater Came Forth Meat", "Out of the eater came forth meat is the riddle drawn from the lion and honey.", ["🍽️ Meat", "🦁 Eater", "🍯 Sweetness"], "The phrase is clever, but the contest will bring conflict."),
   ]),
   section(14, 15, 20, "The Riddle Turns Bitter", "💔", [
-    phrase("🔥 Lest We Burn Thee And Thy Father's House", "This threat shows how quickly the Philistine companions use violence.", ["🔥 Threat", "😨 Pressure", "💔 Fear"], "The wedding feast turns dangerous."),
+    phrase("🔥 Lest We Burn Thee And Thy Father's House", "The Philistine companions quickly turn to violent pressure.", ["🔥 Threat", "😨 Pressure", "💔 Fear"], "The wedding feast turns dangerous."),
     phrase("😢 Samson's Wife Wept Before Him", "Samson's wife wept before him shows emotional pressure being used to get the answer.", ["😢 Tears", "🗣️ Pressure", "🧩 Secret sought"], "The riddle becomes a test of loyalty."),
     phrase("🐄 If Ye Had Not Plowed With My Heifer", "If ye had not plowed with my heifer is Samson's angry way of saying they manipulated his wife.", ["🐄 Harsh image", "😠 Anger", "🧩 Riddle solved by pressure"], "The phrase shows Samson's rough speech and wounded pride."),
     phrase("💪 The Spirit Of The LORD Came Upon Him", "The Spirit of the LORD came upon him again connects Samson's action to divine empowerment.", ["💪 Power", "⚔️ Conflict", "🕊️ Spirit"], "The chapter ends with strength, anger, and broken relationships tangled together."),
   ]),
   section(15, 1, 5, "Samson Burns The Philistine Fields", "🔥", [
     phrase("🌾 In The Time Of Wheat Harvest", "In the time of wheat harvest sets the scene during an economically important season.", ["🌾 Harvest", "💰 Food supply", "🔥 Vulnerable fields"], "The timing makes Samson's revenge especially damaging."),
-    phrase("🚪 I Verily Thought That Thou Hadst Utterly Hated Her", "This line is the father-in-law's explanation for giving Samson's wife away.", ["🚪 Broken marriage", "🗣️ Excuse", "💔 Betrayal"], "The phrase explains the personal conflict behind the next act."),
+    phrase("🚪 I Verily Thought That Thou Hadst Utterly Hated Her", "The father-in-law explains why he gave Samson's wife away.", ["🚪 Broken marriage", "🗣️ Excuse", "💔 Betrayal"], "The words explain the personal conflict behind the next act."),
     phrase("🦊 Three Hundred Foxes", "Three hundred foxes are the animals Samson uses in his revenge.", ["🦊 Foxes", "🔥 Firebrands", "🌾 Fields targeted"], "The strange detail shows Samson's creativity and anger."),
-    phrase("🔥 Burnt Up Both The Shocks, And Also The Standing Corn", "This phrase describes the destruction of Philistine food and wealth.", ["🔥 Fire", "🌾 Harvest ruined", "⚔️ Retaliation"], "Samson's personal conflict becomes national conflict."),
+    phrase("🔥 Burnt Up Both The Shocks, And Also The Standing Corn", "Samson destroys Philistine food and wealth at harvest time.", ["🔥 Fire", "🌾 Harvest ruined", "⚔️ Retaliation"], "Samson's personal conflict becomes national conflict."),
   ]),
   section(15, 6, 8, "Violence Escalates", "⚠️", [
     phrase("❓ Who Hath Done This", "Who hath done this shows the Philistines investigating the destruction.", ["❓ Investigation", "🔥 Burned fields", "⚔️ Retaliation cycle"], "The question pulls Samson's private revenge into public conflict."),
@@ -248,7 +248,7 @@ const judgesTenToFifteenFallbackSections: GeneratedJudgesSection[] = [
   ]),
   section(15, 9, 13, "Judah Hands Samson Over", "⛓️", [
     phrase("⛺ The Philistines Went Up", "The Philistines went up means the enemy comes against Judah because of Samson.", ["⛺ Enemy movement", "⚔️ Pressure", "👥 Judah threatened"], "Samson's conflict now affects his own people."),
-    phrase("❓ Knowest Thou Not That The Philistines Are Rulers Over Us", "This question from Judah shows fear and resignation.", ["❓ Fearful question", "👑 Philistine rule", "😟 Accepted oppression"], "Judah sounds more afraid of Samson's disruption than Philistine control."),
+    phrase("❓ Knowest Thou Not That The Philistines Are Rulers Over Us", "Judah's question shows fear and resignation under Philistine rule.", ["❓ Fearful question", "👑 Philistine rule", "😟 Accepted oppression"], "Judah sounds more afraid of Samson's disruption than Philistine control."),
     phrase("⛓️ We Are Come Down To Bind Thee", "We are come down to bind thee means Judah chooses to hand Samson over.", ["⛓️ Binding", "👥 Own people", "⚔️ Avoiding conflict"], "The deliverer is restrained by the people he is meant to help."),
     phrase("🤝 Swear Unto Me", "Swear unto me shows Samson asking Judah not to kill him themselves.", ["🤝 Oath", "⚠️ Danger", "⛓️ Surrender"], "Even this moment is full of distrust inside Israel."),
   ]),

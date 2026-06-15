@@ -36,34 +36,34 @@ function teachingLine(title: string) {
   const cleanTitle = title.replace(/^[^\p{L}\p{N}]+/u, "").trim().toLowerCase();
 
   if (/famine|barley|field|glean|harvest|corn/.test(cleanTitle)) {
-    return "This phrase shows how ordinary provision becomes part of God's mercy.";
+    return "Ordinary provision becomes part of God's mercy in Ruth's story.";
   }
 
   if (/naomi|ruth|woman|daughter|mother/.test(cleanTitle)) {
-    return "This phrase keeps the human grief and loyalty of the story in view.";
+    return "The human grief and loyalty of the story stay in view.";
   }
 
   if (/lord|blessed|grace|kindly|recompense/.test(cleanTitle)) {
-    return "This phrase helps the reader see God's kindness working through people.";
+    return "God's kindness is working through the people in the scene.";
   }
 
   if (/kinsman|redeem|redeemer|shoe|witnesses|gate/.test(cleanTitle)) {
-    return "This phrase explains the family-redemption custom that drives Ruth's ending.";
+    return "The family-redemption custom that drives Ruth's ending is coming into view.";
   }
 
   if (/rest|house|home|empty|full/.test(cleanTitle)) {
-    return "This phrase shows the movement from vulnerability toward security.";
+    return "The story is moving from vulnerability toward security.";
   }
 
   if (/people|god|moabitess|moab/.test(cleanTitle)) {
-    return "This phrase helps explain Ruth's place as an outsider being brought near.";
+    return "Ruth's place as an outsider being brought near is part of the mercy here.";
   }
 
   if (/obed|jesse|david|generations|begat/.test(cleanTitle)) {
-    return "This phrase shows that the small family story is connected to God's larger plan.";
+    return "The small family story is connected to God's larger plan.";
   }
 
-  return "This phrase helps the reader notice the meaning inside a small story detail.";
+  return "The small story detail carries meaning the reader should not rush past.";
 }
 
 function phrase(icon: string, title: string, meaning: string, bullets: string[], close: string): [string, string] {
@@ -148,7 +148,7 @@ export const RUTH_1_4_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionInput[] =
   section(2, 19, 23, "Naomi Sees Hope", I.blessing, [
     phrase(I.question, "Where Hast Thou Gleaned To Day", "Naomi sees the amount Ruth brought and asks where it came from.", [`${I.question} Surprise`, `${I.barley} Abundant grain`, `${I.blessing} Hope awakening`], "The question opens Naomi's eyes to God's kindness."),
     phrase(I.blessing, "Blessed Be He Of The LORD", "Naomi blesses Boaz and recognizes kindness connected to God.", [`${I.blessing} Praise`, `${I.hand} Human kindness`, `${I.promise} God's mercy`], "Naomi's bitter words begin to soften toward hope."),
-    phrase(I.family, "One Of Our Next Kinsmen", "Boaz belongs to the family line that could help redeem them.", [`${I.family} Kinsman`, `${I.law} Redemption possibility`, `${I.home} Family future`], "This phrase is the door into the redemption theme of Ruth."),
+    phrase(I.family, "One Of Our Next Kinsmen", "Boaz belongs to the family line that could help redeem them.", [`${I.family} Kinsman`, `${I.law} Redemption possibility`, `${I.home} Family future`], "The wording opens the door into the redemption theme of Ruth."),
     phrase(I.field, "Kept Fast By The Maidens Of Boaz", "Ruth stays in Boaz's field through the harvest.", [`${I.field} Continued work`, `${I.shield} Safe place`, `${I.seed} Hope growing`], "The story slows down so provision can grow into redemption."),
   ]),
   section(3, 1, 6, "Naomi Seeks Rest For Ruth", I.rest, [

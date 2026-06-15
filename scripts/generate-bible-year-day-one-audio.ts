@@ -41,6 +41,12 @@ import { JOSHUA_DAY_FIFTY_NINE_LAND_IS_DISTRIBUTED_LESSON, JOSHUA_DAY_SIXTY_INHE
 import { JOSHUA_DAY_SIXTY_ONE_REFUGE_REST_AND_WARNING_LESSON, JOSHUA_JUDGES_DAY_SIXTY_TWO_COVENANT_CHOICE_AND_DRIFT_LESSON, JUDGES_DAY_SIXTY_FIVE_SAMSON_BEGINS_TROUBLED_CALLING_LESSON, JUDGES_DAY_SIXTY_FOUR_GIDEONS_FAILURE_AND_JEPHTHAHS_VOW_LESSON, JUDGES_DAY_SIXTY_THREE_DEBORAH_GIDEON_AND_DELIVERANCE_LESSON } from "../lib/bibleYearDaysSixtyOneToSixtyFiveDeepNotes";
 import { FIRST_SAMUEL_DAY_SEVENTY_ISRAEL_ASKS_FOR_A_KING_LESSON, FIRST_SAMUEL_DAY_SIXTY_NINE_SAMUEL_HEARS_GOD_AND_ARK_TAKEN_LESSON, JUDGES_DAY_SIXTY_SIX_SAMSON_FALLS_AND_ISRAEL_UNRAVELS_LESSON, JUDGES_RUTH_DAY_SIXTY_SEVEN_CIVIL_WAR_AND_RUTHS_LOYAL_LOVE_LESSON, RUTH_SAMUEL_DAY_SIXTY_EIGHT_REDEMPTION_AND_SAMUELS_BIRTH_LESSON } from "../lib/bibleYearDaysSixtySixToSeventyDeepNotes";
 import { FIRST_SAMUEL_DAY_SEVENTY_FIVE_DAVID_IN_EXILE_LESSON, FIRST_SAMUEL_DAY_SEVENTY_FOUR_DAVID_SPARES_SAUL_LESSON, FIRST_SAMUEL_DAY_SEVENTY_ONE_SAULS_RISE_AND_EARLY_FAILURE_LESSON, FIRST_SAMUEL_DAY_SEVENTY_THREE_DAVID_FLEES_FROM_SAUL_LESSON, FIRST_SAMUEL_DAY_SEVENTY_TWO_SAUL_REJECTED_AND_DAVID_APPEARS_LESSON } from "../lib/bibleYearDaysSeventyOneToSeventyFiveDeepNotes";
+import { SAMUEL_KINGS_DAY_EIGHTY_ABSALOMS_REBELLION_AND_DAVIDS_GRIEF_LESSON, SAMUEL_KINGS_DAY_EIGHTY_FIVE_THE_KINGDOM_DIVIDES_LESSON, SAMUEL_KINGS_DAY_EIGHTY_FOUR_TEMPLE_GLORY_AND_SOLOMONS_FALL_LESSON, SAMUEL_KINGS_DAY_EIGHTY_ONE_DAVIDS_LATER_REIGN_AND_MIGHTY_MEN_LESSON, SAMUEL_KINGS_DAY_EIGHTY_THREE_SOLOMONS_WISDOM_AND_TEMPLE_PREPARATIONS_LESSON, SAMUEL_KINGS_DAY_EIGHTY_TWO_DAVIDS_CENSUS_AND_SOLOMONS_WISDOM_LESSON, SAMUEL_KINGS_DAY_SEVENTY_EIGHT_DAVIDS_VICTORIES_AND_DAVIDS_SIN_LESSON, SAMUEL_KINGS_DAY_SEVENTY_NINE_CONSEQUENCES_IN_DAVIDS_HOUSE_LESSON, SAMUEL_KINGS_DAY_SEVENTY_SEVEN_DAVIDS_THRONE_AND_GODS_PROMISE_LESSON, SAMUEL_KINGS_DAY_SEVENTY_SIX_SAUL_FALLS_AND_DAVIDS_KINGDOM_BEGINS_LESSON } from "../lib/bibleYearDaysSeventySixToEightyFiveDeepNotes";
+import { BIBLE_YEAR_DAY_EIGHTY_AUDIO, BIBLE_YEAR_DAY_EIGHTY_FIVE_AUDIO, BIBLE_YEAR_DAY_EIGHTY_FOUR_AUDIO, BIBLE_YEAR_DAY_EIGHTY_ONE_AUDIO, BIBLE_YEAR_DAY_EIGHTY_THREE_AUDIO, BIBLE_YEAR_DAY_EIGHTY_TWO_AUDIO, BIBLE_YEAR_DAY_SEVENTY_EIGHT_AUDIO, BIBLE_YEAR_DAY_SEVENTY_NINE_AUDIO, BIBLE_YEAR_DAY_SEVENTY_SEVEN_AUDIO, BIBLE_YEAR_DAY_SEVENTY_SIX_AUDIO } from "../lib/bibleYearAudio";
+import { KINGS_CHRONICLES_DAY_EIGHTY_EIGHT_ELISHAS_MINISTRY_BEGINS_LESSON, KINGS_CHRONICLES_DAY_EIGHTY_NINE_RESCUE_SIEGE_AND_JEHUS_JUDGMENT_LESSON, KINGS_CHRONICLES_DAY_EIGHTY_SEVEN_AHABS_FALL_AND_ELIJAHS_FINAL_WARNINGS_LESSON, KINGS_CHRONICLES_DAY_EIGHTY_SIX_ELIJAH_CONFRONTS_IDOLATRY_LESSON, KINGS_CHRONICLES_DAY_NINETY_FIVE_TRIBES_GENEALOGIES_AND_IDENTITY_LESSON, KINGS_CHRONICLES_DAY_NINETY_FOUR_THE_FAMILY_LINE_OF_GODS_PEOPLE_LESSON, KINGS_CHRONICLES_DAY_NINETY_JEHUS_REFORM_AND_ISRAELS_DECLINE_LESSON, KINGS_CHRONICLES_DAY_NINETY_ONE_ISRAEL_FALLS_TO_ASSYRIA_LESSON, KINGS_CHRONICLES_DAY_NINETY_THREE_JOSIAHS_REFORM_AND_JUDAHS_FALL_LESSON, KINGS_CHRONICLES_DAY_NINETY_TWO_HEZEKIAHS_FAITH_AND_MANASSEHS_EVIL_LESSON } from "../lib/bibleYearDaysEightySixToNinetyFiveDeepNotes";
+import { BIBLE_YEAR_DAY_EIGHTY_EIGHT_AUDIO, BIBLE_YEAR_DAY_EIGHTY_NINE_AUDIO, BIBLE_YEAR_DAY_EIGHTY_SEVEN_AUDIO, BIBLE_YEAR_DAY_EIGHTY_SIX_AUDIO, BIBLE_YEAR_DAY_NINETY_AUDIO, BIBLE_YEAR_DAY_NINETY_FIVE_AUDIO, BIBLE_YEAR_DAY_NINETY_FOUR_AUDIO, BIBLE_YEAR_DAY_NINETY_ONE_AUDIO, BIBLE_YEAR_DAY_NINETY_THREE_AUDIO, BIBLE_YEAR_DAY_NINETY_TWO_AUDIO } from "../lib/bibleYearAudio";
+import { CHRONICLES_DAY_NINETY_EIGHT_DAVIDS_COVENANT_AND_VICTORIES_LESSON, CHRONICLES_DAY_NINETY_NINE_THE_TEMPLE_SITE_AND_PRIESTLY_ORDER_LESSON, CHRONICLES_DAY_NINETY_SEVEN_THE_ARK_COMES_TO_JERUSALEM_LESSON, CHRONICLES_DAY_NINETY_SIX_RETURN_SAUL_AND_DAVIDS_SUPPORTERS_LESSON, CHRONICLES_DAY_ONE_HUNDRED_FIVE_ASA_JEHOSHAPHAT_AND_TRUST_LESSON, CHRONICLES_DAY_ONE_HUNDRED_FOUR_KINGS_REFORM_AND_RETURNING_TO_GOD_LESSON, CHRONICLES_DAY_ONE_HUNDRED_ONE_DAVIDS_OFFERING_AND_SOLOMONS_TEMPLE_LESSON, CHRONICLES_DAY_ONE_HUNDRED_THREE_SOLOMONS_REIGN_AND_THE_DIVIDED_KINGDOM_LESSON, CHRONICLES_DAY_ONE_HUNDRED_TWO_TEMPLE_DEDICATION_AND_GODS_GLORY_LESSON, CHRONICLES_DAY_ONE_HUNDRED_WORSHIP_TEAMS_AND_TEMPLE_PLANS_LESSON } from "../lib/bibleYearDaysNinetySixToOneHundredFiveDeepNotes";
+import { BIBLE_YEAR_DAY_NINETY_EIGHT_AUDIO, BIBLE_YEAR_DAY_NINETY_NINE_AUDIO, BIBLE_YEAR_DAY_NINETY_SEVEN_AUDIO, BIBLE_YEAR_DAY_NINETY_SIX_AUDIO, BIBLE_YEAR_DAY_ONE_HUNDRED_AUDIO, BIBLE_YEAR_DAY_ONE_HUNDRED_FIVE_AUDIO, BIBLE_YEAR_DAY_ONE_HUNDRED_FOUR_AUDIO, BIBLE_YEAR_DAY_ONE_HUNDRED_ONE_AUDIO, BIBLE_YEAR_DAY_ONE_HUNDRED_THREE_AUDIO, BIBLE_YEAR_DAY_ONE_HUNDRED_TWO_AUDIO } from "../lib/bibleYearAudio";
 
 const SAMPLE_RATE = 24000;
 const MAX_TTS_CHUNK_LENGTH = 3400;
@@ -69,7 +75,67 @@ const voiceOnlyMode = process.argv.includes("--voice-only") || process.env.BIBLE
 const uploadVoiceOnlyMode = process.argv.includes("--upload-voice-only") || process.env.BIBLE_YEAR_TTS_UPLOAD_VOICE_ONLY === "true";
 const skipUploadMode = process.argv.includes("--skip-upload") || process.env.BIBLE_YEAR_TTS_SKIP_UPLOAD === "true";
 const selectedLesson =
-  requestedDay === 75
+  requestedDay === 105
+    ? CHRONICLES_DAY_ONE_HUNDRED_FIVE_ASA_JEHOSHAPHAT_AND_TRUST_LESSON
+    : requestedDay === 104
+    ? CHRONICLES_DAY_ONE_HUNDRED_FOUR_KINGS_REFORM_AND_RETURNING_TO_GOD_LESSON
+    : requestedDay === 103
+    ? CHRONICLES_DAY_ONE_HUNDRED_THREE_SOLOMONS_REIGN_AND_THE_DIVIDED_KINGDOM_LESSON
+    : requestedDay === 102
+    ? CHRONICLES_DAY_ONE_HUNDRED_TWO_TEMPLE_DEDICATION_AND_GODS_GLORY_LESSON
+    : requestedDay === 101
+    ? CHRONICLES_DAY_ONE_HUNDRED_ONE_DAVIDS_OFFERING_AND_SOLOMONS_TEMPLE_LESSON
+    : requestedDay === 100
+    ? CHRONICLES_DAY_ONE_HUNDRED_WORSHIP_TEAMS_AND_TEMPLE_PLANS_LESSON
+    : requestedDay === 99
+    ? CHRONICLES_DAY_NINETY_NINE_THE_TEMPLE_SITE_AND_PRIESTLY_ORDER_LESSON
+    : requestedDay === 98
+    ? CHRONICLES_DAY_NINETY_EIGHT_DAVIDS_COVENANT_AND_VICTORIES_LESSON
+    : requestedDay === 97
+    ? CHRONICLES_DAY_NINETY_SEVEN_THE_ARK_COMES_TO_JERUSALEM_LESSON
+    : requestedDay === 96
+    ? CHRONICLES_DAY_NINETY_SIX_RETURN_SAUL_AND_DAVIDS_SUPPORTERS_LESSON
+    : requestedDay === 95
+    ? KINGS_CHRONICLES_DAY_NINETY_FIVE_TRIBES_GENEALOGIES_AND_IDENTITY_LESSON
+    : requestedDay === 94
+    ? KINGS_CHRONICLES_DAY_NINETY_FOUR_THE_FAMILY_LINE_OF_GODS_PEOPLE_LESSON
+    : requestedDay === 93
+    ? KINGS_CHRONICLES_DAY_NINETY_THREE_JOSIAHS_REFORM_AND_JUDAHS_FALL_LESSON
+    : requestedDay === 92
+    ? KINGS_CHRONICLES_DAY_NINETY_TWO_HEZEKIAHS_FAITH_AND_MANASSEHS_EVIL_LESSON
+    : requestedDay === 91
+    ? KINGS_CHRONICLES_DAY_NINETY_ONE_ISRAEL_FALLS_TO_ASSYRIA_LESSON
+    : requestedDay === 90
+    ? KINGS_CHRONICLES_DAY_NINETY_JEHUS_REFORM_AND_ISRAELS_DECLINE_LESSON
+    : requestedDay === 89
+    ? KINGS_CHRONICLES_DAY_EIGHTY_NINE_RESCUE_SIEGE_AND_JEHUS_JUDGMENT_LESSON
+    : requestedDay === 88
+    ? KINGS_CHRONICLES_DAY_EIGHTY_EIGHT_ELISHAS_MINISTRY_BEGINS_LESSON
+    : requestedDay === 87
+    ? KINGS_CHRONICLES_DAY_EIGHTY_SEVEN_AHABS_FALL_AND_ELIJAHS_FINAL_WARNINGS_LESSON
+    : requestedDay === 86
+    ? KINGS_CHRONICLES_DAY_EIGHTY_SIX_ELIJAH_CONFRONTS_IDOLATRY_LESSON
+    : requestedDay === 85
+    ? SAMUEL_KINGS_DAY_EIGHTY_FIVE_THE_KINGDOM_DIVIDES_LESSON
+    : requestedDay === 84
+    ? SAMUEL_KINGS_DAY_EIGHTY_FOUR_TEMPLE_GLORY_AND_SOLOMONS_FALL_LESSON
+    : requestedDay === 83
+    ? SAMUEL_KINGS_DAY_EIGHTY_THREE_SOLOMONS_WISDOM_AND_TEMPLE_PREPARATIONS_LESSON
+    : requestedDay === 82
+    ? SAMUEL_KINGS_DAY_EIGHTY_TWO_DAVIDS_CENSUS_AND_SOLOMONS_WISDOM_LESSON
+    : requestedDay === 81
+    ? SAMUEL_KINGS_DAY_EIGHTY_ONE_DAVIDS_LATER_REIGN_AND_MIGHTY_MEN_LESSON
+    : requestedDay === 80
+    ? SAMUEL_KINGS_DAY_EIGHTY_ABSALOMS_REBELLION_AND_DAVIDS_GRIEF_LESSON
+    : requestedDay === 79
+    ? SAMUEL_KINGS_DAY_SEVENTY_NINE_CONSEQUENCES_IN_DAVIDS_HOUSE_LESSON
+    : requestedDay === 78
+    ? SAMUEL_KINGS_DAY_SEVENTY_EIGHT_DAVIDS_VICTORIES_AND_DAVIDS_SIN_LESSON
+    : requestedDay === 77
+    ? SAMUEL_KINGS_DAY_SEVENTY_SEVEN_DAVIDS_THRONE_AND_GODS_PROMISE_LESSON
+    : requestedDay === 76
+    ? SAMUEL_KINGS_DAY_SEVENTY_SIX_SAUL_FALLS_AND_DAVIDS_KINGDOM_BEGINS_LESSON
+    : requestedDay === 75
     ? FIRST_SAMUEL_DAY_SEVENTY_FIVE_DAVID_IN_EXILE_LESSON
     : requestedDay === 74
     ? FIRST_SAMUEL_DAY_SEVENTY_FOUR_DAVID_SPARES_SAUL_LESSON
@@ -219,7 +285,67 @@ const selectedLesson =
           ? GENESIS_DAY_TWO_FALL_LESSON
           : GENESIS_DAY_ONE_CREATION_LESSON;
 const selectedAudio =
-  requestedDay === 75
+  requestedDay === 105
+    ? BIBLE_YEAR_DAY_ONE_HUNDRED_FIVE_AUDIO
+    : requestedDay === 104
+    ? BIBLE_YEAR_DAY_ONE_HUNDRED_FOUR_AUDIO
+    : requestedDay === 103
+    ? BIBLE_YEAR_DAY_ONE_HUNDRED_THREE_AUDIO
+    : requestedDay === 102
+    ? BIBLE_YEAR_DAY_ONE_HUNDRED_TWO_AUDIO
+    : requestedDay === 101
+    ? BIBLE_YEAR_DAY_ONE_HUNDRED_ONE_AUDIO
+    : requestedDay === 100
+    ? BIBLE_YEAR_DAY_ONE_HUNDRED_AUDIO
+    : requestedDay === 99
+    ? BIBLE_YEAR_DAY_NINETY_NINE_AUDIO
+    : requestedDay === 98
+    ? BIBLE_YEAR_DAY_NINETY_EIGHT_AUDIO
+    : requestedDay === 97
+    ? BIBLE_YEAR_DAY_NINETY_SEVEN_AUDIO
+    : requestedDay === 96
+    ? BIBLE_YEAR_DAY_NINETY_SIX_AUDIO
+    : requestedDay === 95
+    ? BIBLE_YEAR_DAY_NINETY_FIVE_AUDIO
+    : requestedDay === 94
+    ? BIBLE_YEAR_DAY_NINETY_FOUR_AUDIO
+    : requestedDay === 93
+    ? BIBLE_YEAR_DAY_NINETY_THREE_AUDIO
+    : requestedDay === 92
+    ? BIBLE_YEAR_DAY_NINETY_TWO_AUDIO
+    : requestedDay === 91
+    ? BIBLE_YEAR_DAY_NINETY_ONE_AUDIO
+    : requestedDay === 90
+    ? BIBLE_YEAR_DAY_NINETY_AUDIO
+    : requestedDay === 89
+    ? BIBLE_YEAR_DAY_EIGHTY_NINE_AUDIO
+    : requestedDay === 88
+    ? BIBLE_YEAR_DAY_EIGHTY_EIGHT_AUDIO
+    : requestedDay === 87
+    ? BIBLE_YEAR_DAY_EIGHTY_SEVEN_AUDIO
+    : requestedDay === 86
+    ? BIBLE_YEAR_DAY_EIGHTY_SIX_AUDIO
+    : requestedDay === 85
+    ? BIBLE_YEAR_DAY_EIGHTY_FIVE_AUDIO
+    : requestedDay === 84
+    ? BIBLE_YEAR_DAY_EIGHTY_FOUR_AUDIO
+    : requestedDay === 83
+    ? BIBLE_YEAR_DAY_EIGHTY_THREE_AUDIO
+    : requestedDay === 82
+    ? BIBLE_YEAR_DAY_EIGHTY_TWO_AUDIO
+    : requestedDay === 81
+    ? BIBLE_YEAR_DAY_EIGHTY_ONE_AUDIO
+    : requestedDay === 80
+    ? BIBLE_YEAR_DAY_EIGHTY_AUDIO
+    : requestedDay === 79
+    ? BIBLE_YEAR_DAY_SEVENTY_NINE_AUDIO
+    : requestedDay === 78
+    ? BIBLE_YEAR_DAY_SEVENTY_EIGHT_AUDIO
+    : requestedDay === 77
+    ? BIBLE_YEAR_DAY_SEVENTY_SEVEN_AUDIO
+    : requestedDay === 76
+    ? BIBLE_YEAR_DAY_SEVENTY_SIX_AUDIO
+    : requestedDay === 75
     ? BIBLE_YEAR_DAY_SEVENTY_FIVE_AUDIO
     : requestedDay === 74
     ? BIBLE_YEAR_DAY_SEVENTY_FOUR_AUDIO
@@ -416,11 +542,56 @@ const DAY_FORTY_SEVEN_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-
 const DAY_FORTY_EIGHT_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-48-narrator-script.md");
 const DAY_FORTY_NINE_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-49-narrator-script.md");
 const DAY_FIFTY_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-50-narrator-script.md");
+const DAY_FIFTY_ONE_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-51-narrator-script.md");
+const DAY_FIFTY_TWO_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-52-narrator-script.md");
+const DAY_FIFTY_THREE_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-53-narrator-script.md");
+const DAY_FIFTY_FOUR_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-54-narrator-script.md");
+const DAY_FIFTY_FIVE_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-55-narrator-script.md");
+const DAY_FIFTY_SIX_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-56-narrator-script.md");
+const DAY_FIFTY_SEVEN_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-57-narrator-script.md");
+const DAY_FIFTY_EIGHT_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-58-narrator-script.md");
+const DAY_FIFTY_NINE_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-59-narrator-script.md");
+const DAY_SIXTY_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-60-narrator-script.md");
+const DAY_SIXTY_ONE_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-61-narrator-script.md");
+const DAY_SIXTY_TWO_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-62-narrator-script.md");
+const DAY_SIXTY_THREE_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-63-narrator-script.md");
+const DAY_SIXTY_FOUR_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-64-narrator-script.md");
+const DAY_SIXTY_FIVE_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-65-narrator-script.md");
+const DAY_SIXTY_SIX_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-66-narrator-script.md");
+const DAY_SIXTY_SEVEN_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-67-narrator-script.md");
+const DAY_SIXTY_EIGHT_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-68-narrator-script.md");
+const DAY_SIXTY_NINE_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-69-narrator-script.md");
+const DAY_SEVENTY_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-70-narrator-script.md");
 const DAY_SEVENTY_ONE_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-71-narrator-script.md");
 const DAY_SEVENTY_TWO_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-72-narrator-script.md");
 const DAY_SEVENTY_THREE_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-73-narrator-script.md");
 const DAY_SEVENTY_FOUR_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-74-narrator-script.md");
 const DAY_SEVENTY_FIVE_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-75-narrator-script.md");
+const DAY_SEVENTY_SIX_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-76-narrator-script.md");
+const DAY_SEVENTY_SEVEN_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-77-narrator-script.md");
+const DAY_SEVENTY_EIGHT_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-78-narrator-script.md");
+const DAY_SEVENTY_NINE_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-79-narrator-script.md");
+const DAY_EIGHTY_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-80-narrator-script.md");
+const DAY_EIGHTY_ONE_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-81-narrator-script.md");
+const DAY_EIGHTY_TWO_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-82-narrator-script.md");
+const DAY_EIGHTY_THREE_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-83-narrator-script.md");
+const DAY_EIGHTY_FOUR_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-84-narrator-script.md");
+const DAY_EIGHTY_FIVE_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-85-narrator-script.md");
+const DAY_EIGHTY_SIX_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-86-narrator-script.md");
+const DAY_EIGHTY_SEVEN_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-87-narrator-script.md");
+const DAY_EIGHTY_EIGHT_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-88-narrator-script.md");
+const DAY_EIGHTY_NINE_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-89-narrator-script.md");
+const DAY_NINETY_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-90-narrator-script.md");
+const DAY_NINETY_ONE_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-91-narrator-script.md");
+const DAY_NINETY_TWO_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-92-narrator-script.md");
+const DAY_NINETY_THREE_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-93-narrator-script.md");
+const DAY_NINETY_FOUR_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-94-narrator-script.md");
+const DAY_NINETY_FIVE_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-95-narrator-script.md");
+const DAY_NINETY_SIX_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-96-narrator-script.md");
+const DAY_NINETY_SEVEN_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-97-narrator-script.md");
+const DAY_NINETY_EIGHT_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-98-narrator-script.md");
+const DAY_NINETY_NINE_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-99-narrator-script.md");
+const DAY_ONE_HUNDRED_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-100-narrator-script.md");
 const AMBIENCE_GAIN = selectedLesson.dayNumber === 2 ? 0.129 : selectedLesson.dayNumber === 1 ? 0.112 : 0.088;
 
 function ensureDir(path: string) {
@@ -1276,11 +1447,56 @@ function getApprovedBibleYearScriptPath(dayNumber: number) {
   if (dayNumber === 48) return DAY_FORTY_EIGHT_APPROVED_SCRIPT_PATH;
   if (dayNumber === 49) return DAY_FORTY_NINE_APPROVED_SCRIPT_PATH;
   if (dayNumber === 50) return DAY_FIFTY_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 51) return DAY_FIFTY_ONE_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 52) return DAY_FIFTY_TWO_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 53) return DAY_FIFTY_THREE_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 54) return DAY_FIFTY_FOUR_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 55) return DAY_FIFTY_FIVE_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 56) return DAY_FIFTY_SIX_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 57) return DAY_FIFTY_SEVEN_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 58) return DAY_FIFTY_EIGHT_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 59) return DAY_FIFTY_NINE_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 60) return DAY_SIXTY_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 61) return DAY_SIXTY_ONE_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 62) return DAY_SIXTY_TWO_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 63) return DAY_SIXTY_THREE_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 64) return DAY_SIXTY_FOUR_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 65) return DAY_SIXTY_FIVE_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 66) return DAY_SIXTY_SIX_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 67) return DAY_SIXTY_SEVEN_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 68) return DAY_SIXTY_EIGHT_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 69) return DAY_SIXTY_NINE_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 70) return DAY_SEVENTY_APPROVED_SCRIPT_PATH;
   if (dayNumber === 71) return DAY_SEVENTY_ONE_APPROVED_SCRIPT_PATH;
   if (dayNumber === 72) return DAY_SEVENTY_TWO_APPROVED_SCRIPT_PATH;
   if (dayNumber === 73) return DAY_SEVENTY_THREE_APPROVED_SCRIPT_PATH;
   if (dayNumber === 74) return DAY_SEVENTY_FOUR_APPROVED_SCRIPT_PATH;
   if (dayNumber === 75) return DAY_SEVENTY_FIVE_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 76) return DAY_SEVENTY_SIX_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 77) return DAY_SEVENTY_SEVEN_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 78) return DAY_SEVENTY_EIGHT_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 79) return DAY_SEVENTY_NINE_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 80) return DAY_EIGHTY_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 81) return DAY_EIGHTY_ONE_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 82) return DAY_EIGHTY_TWO_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 83) return DAY_EIGHTY_THREE_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 84) return DAY_EIGHTY_FOUR_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 85) return DAY_EIGHTY_FIVE_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 86) return DAY_EIGHTY_SIX_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 87) return DAY_EIGHTY_SEVEN_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 88) return DAY_EIGHTY_EIGHT_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 89) return DAY_EIGHTY_NINE_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 90) return DAY_NINETY_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 91) return DAY_NINETY_ONE_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 92) return DAY_NINETY_TWO_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 93) return DAY_NINETY_THREE_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 94) return DAY_NINETY_FOUR_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 95) return DAY_NINETY_FIVE_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 96) return DAY_NINETY_SIX_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 97) return DAY_NINETY_SEVEN_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 98) return DAY_NINETY_EIGHT_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 99) return DAY_NINETY_NINE_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 100) return DAY_ONE_HUNDRED_APPROVED_SCRIPT_PATH;
   return null;
 }
 
@@ -1430,13 +1646,20 @@ async function main() {
   }
 
   const voiceTrack = concatSamples(voiceChunks);
-  const mixed = voiceOnlyMode ? normalizeVoiceOnlyEpisode(voiceTrack) : mixVoiceWithBed(voiceTrack);
+  const narratorOnly = normalizeVoiceOnlyEpisode(voiceTrack);
+  const mixed = voiceOnlyMode ? narratorOnly : mixVoiceWithBed(voiceTrack);
 
   console.log(`[${selectedDayLabel}] Encoding ${voiceOnlyMode ? "narrator-only" : "mixed"} MP3`);
   const mp3 = encodeMp3(mixed);
   const outputPath = voiceOnlyMode ? NARRATOR_ONLY_OUTPUT_PATH : OUTPUT_PATH;
   ensureDir(outputPath);
   writeFileSync(outputPath, mp3);
+  if (!voiceOnlyMode) {
+    const narratorOnlyMp3 = encodeMp3(narratorOnly);
+    ensureDir(NARRATOR_ONLY_OUTPUT_PATH);
+    writeFileSync(NARRATOR_ONLY_OUTPUT_PATH, narratorOnlyMp3);
+    console.log(`[${selectedDayLabel}] Narrator-only MP3: ${NARRATOR_ONLY_OUTPUT_PATH}`);
+  }
 
   console.log(`[${selectedDayLabel}] Local MP3: ${outputPath}`);
   if ((!voiceOnlyMode || uploadVoiceOnlyMode) && !skipUploadMode) {

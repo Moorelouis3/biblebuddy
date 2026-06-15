@@ -45,38 +45,38 @@ function teachingLine(title: string) {
   const cleanTitle = title.replace(/^[^\p{L}\p{N}]+/u, "").trim().toLowerCase();
 
   if (/samuel|child|son|bare|young|grew/.test(cleanTitle)) {
-    return "This phrase helps the reader see how God is preparing a servant from small beginnings.";
+    return "God is preparing a servant from small beginnings.";
   }
 
   if (/hannah|sorrow|wept|bitterness|soul|sad/.test(cleanTitle)) {
-    return "This phrase explains the grief that Hannah brings honestly before the LORD.";
+    return "Hannah brings real grief honestly before the LORD.";
   }
 
   if (/prayed|prayer|vow|lent|lord remembered|before the lord/.test(cleanTitle)) {
-    return "This phrase shows worship as trust, surrender, and dependence on God.";
+    return "Worship is being shown as trust, surrender, and dependence on God.";
   }
 
   if (/eli|sons|belial|offering|sacrifice|priest/.test(cleanTitle)) {
-    return "This phrase exposes the difference between religious position and faithful obedience.";
+    return "Religious position and faithful obedience are being separated from each other.";
   }
 
   if (/word|called|speak|heareth|voice|revealed/.test(cleanTitle)) {
-    return "This phrase teaches the reader how God's word begins to shape Samuel's life.";
+    return "God's word begins to shape Samuel's life.";
   }
 
   if (/ark|dagon|philistines|battle|smote|thundered/.test(cleanTitle)) {
-    return "This phrase shows that the LORD is not a symbol to be managed but the living God who rules.";
+    return "The LORD is not a symbol to be managed but the living God who rules.";
   }
 
   if (/king|saul|captain|anoint|chosen|kingdom/.test(cleanTitle)) {
-    return "This phrase prepares the reader for Israel's move from judges toward kingship.";
+    return "Israel's move from judges toward kingship is coming into view.";
   }
 
   if (/heart|honour|faithful|sure house/.test(cleanTitle)) {
-    return "This phrase points to the kind of inner faithfulness God is looking for.";
+    return "God is looking for inner faithfulness, not only outward position.";
   }
 
-  return "This phrase helps the reader understand why this detail matters in the story.";
+  return "The detail matters because it helps explain the story in front of the reader.";
 }
 
 function phrase(icon: string, title: string, meaning: string, bullets: string[], close: string): [string, string] {

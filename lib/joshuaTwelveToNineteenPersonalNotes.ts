@@ -13,5 +13,11 @@ export const JOSHUA_12_19_PERSONAL_SECTIONS = buildGeneratedPersonalSections({
     "According To Their Families",
     "Cities And Villages",
     "The Children Of Israel",
+    "The Kings Of The Land",
+    "There Remaineth Yet Very Much Land",
+    "Give Me This Mountain",
+    "The Lot Came Out",
+    "Their Coast Went Out",
+    "The Tabernacle Of The Congregation",
   ],
 });

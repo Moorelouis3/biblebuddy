@@ -655,3 +655,243 @@ export const BIBLE_YEAR_DAY_SEVENTY_FIVE_AUDIO: BibleYearAudioDay = {
   apiSrc: getBibleYearAudioApiSrc(75),
   estimatedDuration: "20-30 min",
 };
+
+export const BIBLE_YEAR_DAY_SEVENTY_SIX_AUDIO: BibleYearAudioDay = {
+  dayNumber: 76,
+  title: "Day 76 - Saul Falls and David's Kingdom Begins",
+  storagePath: getBibleYearAudioStoragePath(76),
+  apiSrc: getBibleYearAudioApiSrc(76),
+  estimatedDuration: "20-30 min",
+};
+
+export const BIBLE_YEAR_DAY_SEVENTY_SEVEN_AUDIO: BibleYearAudioDay = {
+  dayNumber: 77,
+  title: "Day 77 - David's Throne and God's Promise",
+  storagePath: getBibleYearAudioStoragePath(77),
+  apiSrc: getBibleYearAudioApiSrc(77),
+  estimatedDuration: "20-30 min",
+};
+
+export const BIBLE_YEAR_DAY_SEVENTY_EIGHT_AUDIO: BibleYearAudioDay = {
+  dayNumber: 78,
+  title: "Day 78 - David's Victories and David's Sin",
+  storagePath: getBibleYearAudioStoragePath(78),
+  apiSrc: getBibleYearAudioApiSrc(78),
+  estimatedDuration: "20-30 min",
+};
+
+export const BIBLE_YEAR_DAY_SEVENTY_NINE_AUDIO: BibleYearAudioDay = {
+  dayNumber: 79,
+  title: "Day 79 - Consequences in David's House",
+  storagePath: getBibleYearAudioStoragePath(79),
+  apiSrc: getBibleYearAudioApiSrc(79),
+  estimatedDuration: "20-30 min",
+};
+
+export const BIBLE_YEAR_DAY_EIGHTY_AUDIO: BibleYearAudioDay = {
+  dayNumber: 80,
+  title: "Day 80 - Absalom's Rebellion and David's Grief",
+  storagePath: getBibleYearAudioStoragePath(80),
+  apiSrc: getBibleYearAudioApiSrc(80),
+  estimatedDuration: "20-30 min",
+};
+
+export const BIBLE_YEAR_DAY_EIGHTY_ONE_AUDIO: BibleYearAudioDay = {
+  dayNumber: 81,
+  title: "Day 81 - David's Later Reign and Mighty Men",
+  storagePath: getBibleYearAudioStoragePath(81),
+  apiSrc: getBibleYearAudioApiSrc(81),
+  estimatedDuration: "20-30 min",
+};
+
+export const BIBLE_YEAR_DAY_EIGHTY_TWO_AUDIO: BibleYearAudioDay = {
+  dayNumber: 82,
+  title: "Day 82 - David's Census and Solomon's Wisdom",
+  storagePath: getBibleYearAudioStoragePath(82),
+  apiSrc: getBibleYearAudioApiSrc(82),
+  estimatedDuration: "20-30 min",
+};
+
+export const BIBLE_YEAR_DAY_EIGHTY_THREE_AUDIO: BibleYearAudioDay = {
+  dayNumber: 83,
+  title: "Day 83 - Solomon's Wisdom and Temple Preparations",
+  storagePath: getBibleYearAudioStoragePath(83),
+  apiSrc: getBibleYearAudioApiSrc(83),
+  estimatedDuration: "20-30 min",
+};
+
+export const BIBLE_YEAR_DAY_EIGHTY_FOUR_AUDIO: BibleYearAudioDay = {
+  dayNumber: 84,
+  title: "Day 84 - Temple Glory and Solomon's Fall",
+  storagePath: getBibleYearAudioStoragePath(84),
+  apiSrc: getBibleYearAudioApiSrc(84),
+  estimatedDuration: "20-30 min",
+};
+
+export const BIBLE_YEAR_DAY_EIGHTY_FIVE_AUDIO: BibleYearAudioDay = {
+  dayNumber: 85,
+  title: "Day 85 - The Kingdom Divides",
+  storagePath: getBibleYearAudioStoragePath(85),
+  apiSrc: getBibleYearAudioApiSrc(85),
+  estimatedDuration: "20-30 min",
+};
+
+export const BIBLE_YEAR_DAY_EIGHTY_SIX_AUDIO: BibleYearAudioDay = {
+  dayNumber: 86,
+  title: "Day 86 - Elijah Confronts Idolatry",
+  storagePath: getBibleYearAudioStoragePath(86),
+  apiSrc: getBibleYearAudioApiSrc(86),
+  estimatedDuration: "20-30 min",
+};
+
+export const BIBLE_YEAR_DAY_EIGHTY_SEVEN_AUDIO: BibleYearAudioDay = {
+  dayNumber: 87,
+  title: "Day 87 - Ahab's Fall and Elijah's Final Warnings",
+  storagePath: getBibleYearAudioStoragePath(87),
+  apiSrc: getBibleYearAudioApiSrc(87),
+  estimatedDuration: "20-30 min",
+};
+
+export const BIBLE_YEAR_DAY_EIGHTY_EIGHT_AUDIO: BibleYearAudioDay = {
+  dayNumber: 88,
+  title: "Day 88 - Elisha's Ministry Begins",
+  storagePath: getBibleYearAudioStoragePath(88),
+  apiSrc: getBibleYearAudioApiSrc(88),
+  estimatedDuration: "20-30 min",
+};
+
+export const BIBLE_YEAR_DAY_EIGHTY_NINE_AUDIO: BibleYearAudioDay = {
+  dayNumber: 89,
+  title: "Day 89 - Rescue, Siege, and Jehu's Judgment",
+  storagePath: getBibleYearAudioStoragePath(89),
+  apiSrc: getBibleYearAudioApiSrc(89),
+  estimatedDuration: "20-30 min",
+};
+
+export const BIBLE_YEAR_DAY_NINETY_AUDIO: BibleYearAudioDay = {
+  dayNumber: 90,
+  title: "Day 90 - Jehu's Reform and Israel's Decline",
+  storagePath: getBibleYearAudioStoragePath(90),
+  apiSrc: getBibleYearAudioApiSrc(90),
+  estimatedDuration: "20-30 min",
+};
+
+export const BIBLE_YEAR_DAY_NINETY_ONE_AUDIO: BibleYearAudioDay = {
+  dayNumber: 91,
+  title: "Day 91 - Israel Falls to Assyria",
+  storagePath: getBibleYearAudioStoragePath(91),
+  apiSrc: getBibleYearAudioApiSrc(91),
+  estimatedDuration: "20-30 min",
+};
+
+export const BIBLE_YEAR_DAY_NINETY_TWO_AUDIO: BibleYearAudioDay = {
+  dayNumber: 92,
+  title: "Day 92 - Hezekiah's Faith and Manasseh's Evil",
+  storagePath: getBibleYearAudioStoragePath(92),
+  apiSrc: getBibleYearAudioApiSrc(92),
+  estimatedDuration: "20-30 min",
+};
+
+export const BIBLE_YEAR_DAY_NINETY_THREE_AUDIO: BibleYearAudioDay = {
+  dayNumber: 93,
+  title: "Day 93 - Josiah's Reform and Judah's Fall",
+  storagePath: getBibleYearAudioStoragePath(93),
+  apiSrc: getBibleYearAudioApiSrc(93),
+  estimatedDuration: "20-30 min",
+};
+
+export const BIBLE_YEAR_DAY_NINETY_FOUR_AUDIO: BibleYearAudioDay = {
+  dayNumber: 94,
+  title: "Day 94 - The Family Line of God's People",
+  storagePath: getBibleYearAudioStoragePath(94),
+  apiSrc: getBibleYearAudioApiSrc(94),
+  estimatedDuration: "20-30 min",
+};
+
+export const BIBLE_YEAR_DAY_NINETY_FIVE_AUDIO: BibleYearAudioDay = {
+  dayNumber: 95,
+  title: "Day 95 - Tribes, Genealogies, and Identity",
+  storagePath: getBibleYearAudioStoragePath(95),
+  apiSrc: getBibleYearAudioApiSrc(95),
+  estimatedDuration: "20-30 min",
+};
+
+export const BIBLE_YEAR_DAY_NINETY_SIX_AUDIO: BibleYearAudioDay = {
+  dayNumber: 96,
+  title: "Day 96 - Return, Saul, and David's Supporters",
+  storagePath: getBibleYearAudioStoragePath(96),
+  apiSrc: getBibleYearAudioApiSrc(96),
+  estimatedDuration: "20-30 min",
+};
+
+export const BIBLE_YEAR_DAY_NINETY_SEVEN_AUDIO: BibleYearAudioDay = {
+  dayNumber: 97,
+  title: "Day 97 - The Ark Comes to Jerusalem",
+  storagePath: getBibleYearAudioStoragePath(97),
+  apiSrc: getBibleYearAudioApiSrc(97),
+  estimatedDuration: "20-30 min",
+};
+
+export const BIBLE_YEAR_DAY_NINETY_EIGHT_AUDIO: BibleYearAudioDay = {
+  dayNumber: 98,
+  title: "Day 98 - David's Covenant and Victories",
+  storagePath: getBibleYearAudioStoragePath(98),
+  apiSrc: getBibleYearAudioApiSrc(98),
+  estimatedDuration: "20-30 min",
+};
+
+export const BIBLE_YEAR_DAY_NINETY_NINE_AUDIO: BibleYearAudioDay = {
+  dayNumber: 99,
+  title: "Day 99 - The Temple Site and Priestly Order",
+  storagePath: getBibleYearAudioStoragePath(99),
+  apiSrc: getBibleYearAudioApiSrc(99),
+  estimatedDuration: "20-30 min",
+};
+
+export const BIBLE_YEAR_DAY_ONE_HUNDRED_AUDIO: BibleYearAudioDay = {
+  dayNumber: 100,
+  title: "Day 100 - Worship Teams and Temple Plans",
+  storagePath: getBibleYearAudioStoragePath(100),
+  apiSrc: getBibleYearAudioApiSrc(100),
+  estimatedDuration: "20-30 min",
+};
+
+export const BIBLE_YEAR_DAY_ONE_HUNDRED_ONE_AUDIO: BibleYearAudioDay = {
+  dayNumber: 101,
+  title: "Day 101 - David's Offering and Solomon's Temple",
+  storagePath: getBibleYearAudioStoragePath(101),
+  apiSrc: getBibleYearAudioApiSrc(101),
+  estimatedDuration: "20-30 min",
+};
+
+export const BIBLE_YEAR_DAY_ONE_HUNDRED_TWO_AUDIO: BibleYearAudioDay = {
+  dayNumber: 102,
+  title: "Day 102 - Temple Dedication and God's Glory",
+  storagePath: getBibleYearAudioStoragePath(102),
+  apiSrc: getBibleYearAudioApiSrc(102),
+  estimatedDuration: "20-30 min",
+};
+
+export const BIBLE_YEAR_DAY_ONE_HUNDRED_THREE_AUDIO: BibleYearAudioDay = {
+  dayNumber: 103,
+  title: "Day 103 - Solomon's Reign and the Divided Kingdom",
+  storagePath: getBibleYearAudioStoragePath(103),
+  apiSrc: getBibleYearAudioApiSrc(103),
+  estimatedDuration: "20-30 min",
+};
+
+export const BIBLE_YEAR_DAY_ONE_HUNDRED_FOUR_AUDIO: BibleYearAudioDay = {
+  dayNumber: 104,
+  title: "Day 104 - Kings, Reform, and Returning to God",
+  storagePath: getBibleYearAudioStoragePath(104),
+  apiSrc: getBibleYearAudioApiSrc(104),
+  estimatedDuration: "20-30 min",
+};
+
+export const BIBLE_YEAR_DAY_ONE_HUNDRED_FIVE_AUDIO: BibleYearAudioDay = {
+  dayNumber: 105,
+  title: "Day 105 - Asa, Jehoshaphat, and Trust",
+  storagePath: getBibleYearAudioStoragePath(105),
+  apiSrc: getBibleYearAudioApiSrc(105),
+  estimatedDuration: "20-30 min",
+};

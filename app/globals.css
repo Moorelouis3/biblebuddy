@@ -426,13 +426,13 @@ body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
-  overscroll-behavior-y: none;
-  touch-action: manipulation;
+  overscroll-behavior-y: auto;
+  touch-action: pan-y;
   -webkit-text-size-adjust: 100%;
 }
 
 html {
-  overscroll-behavior: none;
+  overscroll-behavior-y: auto;
 }
 
 .no-scrollbar {
@@ -4994,4 +4994,33 @@ html[data-bb-basic-skin] body::before,
 html[data-bb-basic-skin] body::after {
   display: none !important;
   content: none !important;
+}
+
+/* Scroll safety: normal app pages must always be vertically scrollable.
+   Only ModalShell may lock page scroll, through this explicit class. */
+html:not(.bb-modal-scroll-locked),
+body:not(.bb-modal-scroll-locked) {
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior-y: auto;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+}
+
+html.bb-modal-scroll-locked,
+body.bb-modal-scroll-locked {
+  overflow: hidden !important;
+  overscroll-behavior: contain;
+}
+
+.dashboard-shell,
+.dashboard-shell main,
+[data-bb-dashboard-tour="bottom-menu"] {
+  touch-action: pan-y;
+}
+
+.bible-year-journey-scroll,
+.dashboard-shell .overflow-x-auto {
+  touch-action: pan-x pan-y;
 }

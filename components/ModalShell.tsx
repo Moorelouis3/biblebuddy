@@ -2,10 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-
-// Track how many modals are currently mounted so scroll is only restored when all are closed.
-let _openModalCount = 0;
-let _previousBodyOverflow: string | null = null;
+import { lockDocumentScroll } from "@/hooks/useDocumentScrollLock";
 
 interface ModalShellProps {
   isOpen: boolean;
@@ -61,22 +58,7 @@ export function ModalShell({
   // Lock body scroll while any modal is mounted, then restore the previous state exactly.
   useEffect(() => {
     if (!mounted) return;
-
-    if (_openModalCount === 0) {
-      _previousBodyOverflow = document.body.style.overflow;
-    }
-
-    _openModalCount += 1;
-    document.body.style.overflow = "hidden";
-
-    return () => {
-      _openModalCount = Math.max(0, _openModalCount - 1);
-      if (_openModalCount <= 0) {
-        _openModalCount = 0;
-        document.body.style.overflow = _previousBodyOverflow ?? "";
-        _previousBodyOverflow = null;
-      }
-    };
+    return lockDocumentScroll(".bb-modal-shell");
   }, [mounted]);
 
   if (!mounted || typeof document === "undefined") return null;

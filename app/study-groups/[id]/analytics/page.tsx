@@ -9,6 +9,7 @@ import { supabase } from "@/lib/supabaseClient";
 import StreakFlameBadge from "@/components/StreakFlameBadge";
 import LevelBadge from "@/components/LevelBadge";
 import UserBadge from "@/components/UserBadge";
+import { useDocumentScrollLock } from "@/hooks/useDocumentScrollLock";
 
 type AnalyticsPayload = {
   group: {
@@ -717,17 +718,7 @@ export default function StudyGroupAnalyticsPage() {
     };
   }, [groupId, router]);
 
-  useEffect(() => {
-    const shouldLockBodyScroll = Boolean(selectedEventId || selectedQueueItemId);
-    if (!shouldLockBodyScroll) return;
-
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
-    return () => {
-      document.body.style.overflow = previousOverflow;
-    };
-  }, [selectedEventId, selectedQueueItemId]);
+  useDocumentScrollLock(Boolean(selectedEventId || selectedQueueItemId));
 
   if (loading) {
     return <div className="min-h-screen bg-gray-50 flex items-center justify-center text-sm text-gray-500">Loading group analytics...</div>;

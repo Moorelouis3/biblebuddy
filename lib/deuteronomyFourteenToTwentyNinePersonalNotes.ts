@@ -14,5 +14,10 @@ export const DEUTERONOMY_14_29_PERSONAL_SECTIONS = buildGeneratedPersonalSection
     "Justice And Judgment",
     "Keep The Commandments",
     "All The Words Of This Law",
+    "Thou Shalt Rejoice Before The LORD",
+    "Thou Shalt Not Wrest Judgment",
+    "That Which Is Altogether Just",
+    "The Stranger And The Fatherless And The Widow",
+    "All The Words Of This Covenant",
   ],
 });
