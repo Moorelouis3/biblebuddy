@@ -1,7 +1,190 @@
 import { JOSHUA_DEEP_NOTES } from "./joshuaDeepNotes";
 import { buildGeneratedPersonalSections } from "./bibleYearGeneratedPersonalSections";
+import type { PersonalLeviticusPhraseSectionInput } from "./leviticusOneToTenPersonalNotes";
 
-export const JOSHUA_1_11_PERSONAL_SECTIONS = buildGeneratedPersonalSections({
+const note = (lines: string[]) => lines.join("\n\n");
+
+const supplementalJoshuaOneToElevenSections: PersonalLeviticusPhraseSectionInput[] = [
+  {
+    chapter: 1,
+    startVerse: 7,
+    endVerse: 8,
+    reference: "Joshua 1:7-8",
+    title: "📖 This Book Of The Law Shall Not Depart",
+    icon: "📖",
+    phrases: [
+      ["📖 This Book Of The Law", note(["Joshua's courage must stay tied to God's written instruction.", "The new leader does not receive permission to invent his own way forward.", "📖 God's word directs him", "👂 Joshua must listen", "👣 Israel must obey", "🏞️ The land is entered by faithfulness", "The phrase shows that conquest begins with submission to the LORD's word."])],
+      ["🗣️ Shall Not Depart Out Of Thy Mouth", note(["Joshua is commanded to keep God's law close in speech.", "The law is not meant to sit silently in the background. It is to shape what he says and teaches.", "🗣️ The word is spoken", "📜 The command is remembered", "👥 The people are instructed", "🧭 Leadership stays anchored", "The phrase shows that Joshua's public leadership must be filled with God's instruction."])],
+      ["🌙 Meditate Therein Day And Night", note(["Meditation means steady attention to God's word.", "Joshua needs more than a quick reminder before battle. He needs the law shaping his mind day and night.", "🌅 Morning obedience", "🌙 Night reflection", "🧠 A trained mind", "👣 A steady walk", "The phrase teaches that biblical courage grows from repeated attention to God's word."])],
+      ["👣 Observe To Do According To All That Is Written", note(["Joshua is not only told to know the law.", "He must do what is written, because knowledge without obedience would not lead Israel well.", "👣 Obedience is required", "📜 The written word sets the path", "⚖️ All the command matters", "🏞️ The promise is entered God's way", "The phrase joins reading, remembering, and obeying into one calling."])],
+      ["✅ Then Thou Shalt Make Thy Way Prosperous", note(["Prosperity here is tied to walking in the LORD's instruction.", "Joshua's success is not presented as luck or military talent. It is covenant faithfulness under God's command.", "✅ The way is blessed", "📖 The word is obeyed", "🛡️ Courage is grounded", "🏞️ The mission moves forward", "The phrase keeps success connected to obedience rather than self-confidence."])],
+    ],
+  },
+  {
+    chapter: 2,
+    startVerse: 8,
+    endVerse: 11,
+    reference: "Joshua 2:8-11",
+    title: "🪟 I Know That The LORD Hath Given You The Land",
+    icon: "🪟",
+    phrases: [
+      ["🪟 I Know That The LORD Hath Given You The Land", note(["Rahab recognizes what the LORD is doing before Israel takes Jericho.", "Her confession shows that news of God's power has reached inside the city walls.", "🪟 Faith appears in Jericho", "🏞️ The land is God's gift", "👂 Rahab has heard", "🛡️ Israel's God is feared", "The phrase turns Rahab from a background character into a witness to the LORD's victory."])],
+      ["😨 Your Terror Is Fallen Upon Us", note(["Jericho is already afraid before the battle begins.", "The fear is not mainly about Israel's army. It is about the LORD who dried up the sea and defeated kings.", "😨 Fear fills the city", "🌊 The Red Sea is remembered", "⚔️ Former victories are known", "👑 The LORD is being recognized", "The phrase shows that God has gone before Israel even into the hearts of their enemies."])],
+      ["👂 We Have Heard How The LORD Dried Up The Water", note(["Rahab's faith is connected to what she has heard about the LORD.", "The old rescue from Egypt is still preaching to people far away in Canaan.", "👂 The report reaches Jericho", "🌊 The sea crossing is remembered", "📣 God's acts become testimony", "🪟 Rahab responds with faith", "The phrase shows how God's past deliverance creates present fear and faith."])],
+      ["💔 Our Hearts Did Melt", note(["The people of Jericho lose courage when they hear what the LORD has done.", "Their walls may still stand, but inwardly the city is already shaken.", "💔 Courage collapses", "🏰 Walls cannot protect the heart", "👑 The LORD is feared", "🪟 Rahab sees the truth", "God's power reaches deeper than military defenses."])],
+      ["👑 He Is God In Heaven Above And In Earth Beneath", note(["Rahab confesses that Israel's God rules everywhere.", "This is not a small tribal claim. She recognizes the LORD over heaven and earth.", "👑 God reigns above", "🌍 God rules below", "🪟 A Canaanite woman confesses Him", "🛡️ Jericho's gods cannot save", "The phrase is one of the clearest faith statements in the chapter."])],
+    ],
+  },
+  {
+    chapter: 3,
+    startVerse: 17,
+    endVerse: 17,
+    reference: "Joshua 3:17",
+    title: "🌊 Stood Firm On Dry Ground",
+    icon: "🌊",
+    phrases: [
+      ["🌊 Stood Firm On Dry Ground", note(["The priests stand in the riverbed while the people cross.", "Their stillness shows trust: the ark remains in the middle until everyone passes safely.", "🌊 The river has opened", "🦶 The ground is dry", "📦 The ark remains central", "👥 The people cross safely", "The phrase shows God's presence holding the way open for Israel."])],
+      ["📦 The Ark Of The Covenant Of The LORD", note(["The ark marks the LORD's covenant presence in the middle of the crossing.", "Israel is not crossing because the priests are powerful. They cross because the LORD is present with His covenant people.", "📦 Covenant presence", "👑 The LORD leads", "🌊 The river obeys", "👣 Israel follows", "The phrase keeps the miracle centered on God, not on human bravery."])],
+      ["🏞️ In The Midst Of Jordan", note(["The priests stand in the middle of the danger, not safely on the edge.", "That detail makes the crossing feel concrete: the place that should stop Israel becomes the place where God holds them secure.", "🏞️ The riverbed becomes a pathway", "🛡️ The priests stand firm", "👥 The nation passes through", "📜 The promise moves forward", "The miracle is happening in the very place that looked impossible to cross."])],
+      ["👥 All The Israelites Passed Over", note(["The crossing is not only for leaders or soldiers.", "All Israel passes through, showing that the LORD is bringing the whole covenant people into the land.", "👥 The whole people cross", "👣 No tribe is left behind", "🏞️ The promise is shared", "📦 God's presence stays with them", "The phrase shows the mercy and completeness of the LORD's deliverance."])],
+      ["✅ Passed Clean Over Jordan", note(["The crossing is completed safely.", "Clean over means the people do not merely start the miracle; they finish the passage to the other side.", "✅ The crossing is finished", "🌊 The barrier is overcome", "🏞️ Canaan is reached", "👑 The LORD proves faithful", "The phrase closes the scene with completion, not uncertainty."])],
+    ],
+  },
+  {
+    chapter: 4,
+    startVerse: 20,
+    endVerse: 24,
+    reference: "Joshua 4:20-24",
+    title: "🪨 Those Twelve Stones",
+    icon: "🪨",
+    phrases: [
+      ["🪨 Those Twelve Stones", note(["The stones become a physical reminder of the Jordan crossing.", "They are not decoration. They are memory markers for Israel's children.", "🪨 A sign is set up", "👥 Twelve tribes are remembered", "🌊 The Jordan crossing is taught", "📣 Future children will ask", "The phrase shows that God wants His works remembered and explained."])],
+      ["👶 When Your Children Shall Ask", note(["The memorial is built with future children in mind.", "Israel must not let the miracle become a forgotten story from the past.", "👶 Children will ask", "👨‍👩‍👧 Parents must answer", "📖 God's work must be taught", "🪨 The stones start the conversation", "The phrase shows that faith is meant to be passed on with explanation."])],
+      ["🌊 The LORD Your God Dried Up The Waters Of Jordan", note(["The explanation of the stones points straight to what the LORD did.", "Israel is not told to celebrate their courage first. They are told to remember God's power.", "🌊 The waters stopped", "👑 The LORD acted", "👥 Israel crossed", "📣 The story must be told", "The phrase keeps the memorial centered on God's mighty work."])],
+      ["🌍 All The People Of The Earth Might Know", note(["The Jordan crossing is not only for Israel's private memory.", "God's power is meant to be known beyond Israel, among all peoples.", "🌍 The nations should know", "💪 The LORD's hand is mighty", "📣 Israel becomes a witness", "👑 God is publicly revealed", "The phrase widens the meaning of the miracle beyond one generation."])],
+      ["🙏 Fear The LORD Your God For Ever", note(["The right response to the miracle is reverent fear.", "Israel should remember the Jordan so they keep honoring the LORD long after the water returns to normal.", "🙏 Reverence is required", "📜 Memory supports obedience", "🪨 The stones keep teaching", "⏳ The lesson is lasting", "The phrase turns memory into worship and obedience."])],
+    ],
+  },
+  {
+    chapter: 5,
+    startVerse: 1,
+    endVerse: 1,
+    reference: "Joshua 5:1",
+    title: "💔 Their Heart Melted",
+    icon: "💔",
+    phrases: [
+      ["💔 Their Heart Melted", note(["The kings of Canaan lose courage after hearing about the Jordan crossing.", "The phrase shows fear inside the enemy before Israel ever fights.", "💔 Courage collapses", "🌊 The Jordan miracle is known", "👑 The LORD is feared", "🏰 Canaan's confidence breaks", "God's work at the river shakes the land Israel is about to enter."])],
+      ["🌊 The LORD Had Dried Up The Waters Of Jordan", note(["The drying of the Jordan becomes testimony to the nations.", "The miracle was not hidden. Canaan's kings hear that the LORD opened the way for Israel.", "🌊 The river was stopped", "👑 The LORD acted", "📣 The report spread", "😨 The nations trembled", "The phrase shows that God's deliverance announces His power beyond Israel."])],
+      ["👥 From Before The Children Of Israel", note(["The waters dried up in front of Israel as they moved toward the promise.", "The phrase connects the miracle directly to God's care for His covenant people.", "👥 Israel is protected", "👣 The people pass through", "🏞️ The land lies ahead", "🛡️ God goes before them", "The crossing is personal: the LORD makes a way for His people."])],
+      ["😶 Neither Was There Spirit In Them Any More", note(["The kings have no courage left.", "Spirit here points to inner strength or resolve, and the verse says that resolve has drained away.", "😶 Courage is gone", "🏰 Power looks weak", "👑 The LORD has acted", "⚔️ Battle has not even begun", "The phrase shows that fear of the LORD's works can empty human confidence."])],
+    ],
+  },
+  {
+    chapter: 5,
+    startVerse: 15,
+    endVerse: 15,
+    reference: "Joshua 5:15",
+    title: "👣 Loose Thy Shoe From Off Thy Foot",
+    icon: "👣",
+    phrases: [
+      ["👣 Loose Thy Shoe From Off Thy Foot", note(["Joshua is commanded to respond with reverence.", "The command echoes Moses at the burning bush and shows that this moment is holy.", "👣 Shoes come off", "🙏 Reverence is required", "🔥 Holy ground is recognized", "👑 The LORD's authority stands", "The phrase teaches Joshua that conquest begins with worship, not swagger."])],
+      ["🔥 The Place Whereon Thou Standest Is Holy", note(["The ground is holy because of God's presence.", "Joshua is near Jericho, but the most important reality is not the city. It is the LORD meeting him.", "🔥 God's presence makes the place holy", "🏰 Jericho is not ultimate", "🙏 Joshua must bow", "⚔️ Battle belongs to the LORD", "The phrase shifts the reader's attention from strategy to worship."])],
+      ["🛡️ The Captain Of The LORD'S Host", note(["The speaker is the commander of the LORD's army.", "Joshua leads Israel, but he is not the highest commander in the story.", "🛡️ Heaven's army is named", "👑 The LORD outranks Joshua", "⚔️ The battle is God's", "🙏 Joshua must submit", "The phrase prepares the reader for Jericho by showing who truly leads the campaign."])],
+      ["✅ Joshua Did So", note(["Joshua obeys immediately.", "The short phrase matters because the leader of Israel responds to holiness with submission.", "✅ Obedience is immediate", "🙏 Reverence is visible", "👣 The shoe is removed", "👑 God's command is honored", "The phrase shows Joshua receiving the posture he needs before the battle begins."])],
+    ],
+  },
+  {
+    chapter: 1,
+    startVerse: 1,
+    endVerse: 5,
+    reference: "Joshua 1:1-5",
+    title: "🧭 Arise Go Over This Jordan",
+    icon: "🧭",
+    phrases: [
+      ["🧭 Arise Go Over This Jordan", note(["Joshua is commanded to move forward after Moses' death.", "The phrase does not let grief become stillness. God calls Joshua and Israel toward the promise.", "🧭 The command is active", "🌊 Jordan is the barrier", "👣 Joshua must lead", "🏞️ The land is ahead", "The phrase sets the direction for the whole book of Joshua."])],
+      ["👥 Thou And All This People", note(["Joshua does not cross alone.", "The command includes the whole covenant people who must move together into the land God promised.", "👥 The people are included", "👣 Leadership serves the nation", "🏞️ The promise is shared", "📜 God's word directs them", "The phrase shows that Joshua's calling is for Israel's future, not his personal glory."])],
+      ["🏞️ The Land Which I Do Give To Them", note(["The land is described as God's gift.", "Joshua is about conquest, but this phrase makes clear that the inheritance comes from the LORD's promise.", "🏞️ The land is given", "👑 God is the giver", "📜 Promise is being fulfilled", "👣 Israel must enter by faith", "The phrase keeps the reader from seeing the land as mere human achievement."])],
+      ["👣 Every Place That The Sole Of Your Foot Shall Tread Upon", note(["The promise becomes connected to Israel's actual steps.", "God gives the land, and Israel must walk into what He gives.", "👣 Feet must move", "🏞️ Promise becomes place", "🛡️ Courage is required", "📜 God's word stands", "The phrase joins divine gift with obedient movement."])],
+      ["🤝 I Will Not Fail Thee Nor Forsake Thee", note(["God promises Joshua His continuing presence.", "This is the foundation beneath every courage command in the chapter.", "🤝 God will not abandon him", "🛡️ Courage has a reason", "👣 Joshua can move forward", "🏞️ The promise is secure", "The phrase teaches that Joshua's confidence rests on God's faithfulness."])],
+    ],
+  },
+  {
+    chapter: 2,
+    startVerse: 12,
+    endVerse: 14,
+    reference: "Joshua 2:12-14",
+    title: "🧵 Give Me A True Token",
+    icon: "🧵",
+    phrases: [
+      ["🙏 Swear Unto Me By The LORD", note(["Rahab asks the spies to make an oath before the LORD.", "Her request shows that she understands Israel's God as the one who gives weight to their promise.", "🙏 The oath is serious", "👑 The LORD is named", "🪟 Rahab seeks mercy", "🤝 The spies must answer faithfully", "The phrase shows Rahab placing her hope under the name of the LORD."])],
+      ["🕊️ Shewed You Kindness", note(["Rahab reminds the spies that she protected them.", "Kindness here is not a soft feeling; it is risky action that sheltered God's people.", "🕊️ Mercy was shown", "🪟 Rahab hid the spies", "⚠️ Her risk was real", "🤝 She asks for mercy in return", "The phrase helps explain why the spies promise protection to her house."])],
+      ["🏠 My Father's House", note(["Rahab asks for mercy not only for herself but for her family.", "Her faith reaches toward her household in the middle of Jericho's coming judgment.", "🏠 Her family is named", "🕊️ Mercy is requested", "⚠️ Judgment is near", "🧵 A sign will mark the house", "The phrase shows personal faith seeking family rescue."])],
+      ["🧵 Give Me A True Token", note(["Rahab asks for a reliable sign that the promise will be kept.", "The token will later be the scarlet cord, marking the house that should be spared.", "🧵 A sign is requested", "🤝 The promise must be trusted", "🏠 The house will be marked", "🕊️ Mercy needs a visible pledge", "The phrase prepares the reader for the cord in the window."])],
+      ["💙 Our Life For Yours", note(["The spies pledge their own lives as security for Rahab's rescue.", "The phrase shows how seriously they take the promise made to her.", "💙 Their lives stand behind the oath", "🤝 Mercy is promised", "🏠 Rahab's house is protected", "👑 The LORD's name gives weight", "The phrase makes the covenant of protection feel costly and real."])],
+    ],
+  },
+  {
+    chapter: 4,
+    startVerse: 8,
+    endVerse: 13,
+    reference: "Joshua 4:8-13",
+    title: "🪨 Carried Them Over With Them",
+    icon: "🪨",
+    phrases: [
+      ["🪨 Took Up Twelve Stones", note(["The twelve stones represent the twelve tribes of Israel.", "The act turns the Jordan crossing into a memorial that the whole nation shares.", "🪨 Stones are lifted", "👥 Twelve tribes are represented", "🌊 The crossing is remembered", "📣 The story will be taught", "The phrase shows memory being built into Israel's life."])],
+      ["👣 Carried Them Over With Them", note(["The stones are carried from the riverbed to the place where Israel lodges.", "That movement connects the miracle in the Jordan to daily life on the other side.", "👣 The stones move with the people", "🏕️ The memorial reaches camp", "🌊 The river miracle is remembered", "👥 The nation carries the testimony", "The phrase shows Israel taking the memory of God's work forward."])],
+      ["📦 The Ark Of The Covenant Of The LORD Stood", note(["The ark remains in the Jordan while the people complete the crossing.", "God's covenant presence stays in the middle until the nation is safely across.", "📦 The ark stands", "🌊 The river remains open", "👥 The people cross", "👑 The LORD holds the way", "The phrase keeps the crossing centered on God's presence."])],
+      ["⚔️ The Children Of Reuben And The Children Of Gad", note(["The eastern tribes cross armed before the rest of Israel.", "They already have land east of the Jordan, but they still help their brothers enter theirs.", "⚔️ They cross ready for battle", "🤝 They keep their promise", "👥 The tribes remain united", "🏞️ The conquest is shared", "The phrase shows covenant responsibility across tribal lines."])],
+    ],
+  },
+  {
+    chapter: 4,
+    startVerse: 14,
+    endVerse: 14,
+    reference: "Joshua 4:14",
+    title: "👑 The LORD Magnified Joshua",
+    icon: "👑",
+    phrases: [
+      ["👑 The LORD Magnified Joshua", note(["The LORD publicly confirms Joshua's leadership at the Jordan.", "This matters because Israel must learn to follow Joshua after Moses.", "👑 God honors Joshua's role", "👥 Israel sees it", "🌊 The crossing confirms leadership", "📜 Moses' transition continues", "The phrase shows that Joshua's authority is established by the LORD."])],
+      ["👀 In The Sight Of All Israel", note(["Joshua's confirmation happens publicly before the people.", "The phrase matters because Israel needs to recognize the leader God has raised up.", "👀 The people see it", "👤 Joshua is recognized", "🌊 The miracle confirms the moment", "📜 The transition from Moses is clear", "The phrase shows that leadership is being established before the whole nation."])],
+      ["🙏 They Feared Him", note(["Israel responds to Joshua with reverent respect.", "This does not mean they worship Joshua. It means they receive the authority God has placed on him.", "🙏 Respect is shown", "👥 Israel listens", "👤 Joshua is honored", "📜 God's appointment is received", "The phrase shows the people accepting Joshua's God-given role."])],
+      ["📜 As They Feared Moses", note(["Joshua's leadership is connected to Moses' leadership.", "The phrase shows continuity: Israel is not starting over with a disconnected leader.", "📜 Moses' role is remembered", "👤 Joshua follows in that line", "👥 Israel recognizes him", "👑 The LORD confirms the transition", "Joshua is the appointed successor, not a rival to Moses."])],
+    ],
+  },
+  {
+    chapter: 6,
+    startVerse: 17,
+    endVerse: 19,
+    reference: "Joshua 6:17-19",
+    title: "⚠️ The City Shall Be Accursed",
+    icon: "⚠️",
+    phrases: [
+      ["⚠️ The City Shall Be Accursed", note(["Jericho is placed under judgment before the LORD.", "The phrase means the city is devoted to destruction, not treated like ordinary spoil.", "⚠️ Judgment is declared", "🏰 Jericho belongs to the ban", "📜 Israel must obey exactly", "👑 The victory belongs to the LORD", "The phrase prepares the reader for why taking spoil becomes such a serious sin."])],
+      ["🪟 Only Rahab The Harlot Shall Live", note(["Rahab is singled out for mercy in the middle of judgment.", "The phrase shows that faith and covenant mercy can rescue even inside a condemned city.", "🪟 Rahab is remembered", "🕊️ Mercy is shown", "🏠 Her household is spared", "👑 The LORD honors faith", "The phrase makes Rahab's rescue stand out against Jericho's fall."])],
+      ["🧵 She Hid The Messengers", note(["Rahab's earlier act of faith is remembered here.", "She protected the spies because she believed the LORD had given Israel the land.", "🧵 Her action mattered", "⚠️ The risk was real", "🕊️ Mercy follows faith", "📜 The promise is kept", "The phrase connects Joshua 2 to the rescue in Joshua 6."])],
+      ["🚫 Keep Yourselves From The Accursed Thing", note(["Israel is warned not to take what belongs under the ban.", "The command is clear because disobedience would bring trouble on the whole camp.", "🚫 Do not take it", "⚠️ Judgment is holy", "👥 The camp can be harmed", "📜 Obedience must be complete", "The phrase sets up the seriousness of Achan's sin in the next chapter."])],
+      ["🥇 The Silver And Gold", note(["Precious metals are not for private greed.", "They are to be set apart for the treasury of the LORD instead of treated as personal loot.", "🥇 Valuable things are named", "🏛️ They belong to the LORD's treasury", "🚫 Israel must not steal them", "📜 Victory has holy boundaries", "The phrase teaches that even victory must be handled by God's command."])],
+    ],
+  },
+  {
+    chapter: 7,
+    startVerse: 10,
+    endVerse: 15,
+    reference: "Joshua 7:10-15",
+    title: "🚨 Israel Hath Sinned",
+    icon: "🚨",
+    phrases: [
+      ["🚨 Israel Hath Sinned", note(["The LORD names the real problem after the defeat at Ai.", "The issue is not military weakness first. It is covenant disobedience inside the camp.", "🚨 Sin is exposed", "👥 The whole people are affected", "📜 The covenant has been broken", "⚠️ Defeat has a spiritual cause", "The phrase shifts the reader from battlefield confusion to hidden sin."])],
+      ["📜 Transgressed My Covenant", note(["Achan's theft is described as covenant breaking.", "This makes the sin bigger than taking forbidden items. It is rebellion against the LORD's command.", "📜 The covenant is violated", "🚫 The ban was ignored", "👑 The LORD's word was dishonored", "👥 Israel suffers together", "The phrase explains why the consequence is so serious."])],
+      ["🤲 Taken Of The Accursed Thing", note(["Someone has taken what God commanded Israel not to take.", "The phrase points directly back to Jericho's warning about devoted things.", "🤲 Forbidden spoil was taken", "⚠️ The command was clear", "🏰 Jericho's victory was polluted", "👥 The camp is troubled", "The phrase shows that hidden disobedience can corrupt public victory."])],
+      ["🛑 Neither Will I Be With You Any More", note(["The LORD warns that His presence cannot be presumed while sin is protected.", "Israel's strength depends on God's presence, so this warning is terrifying.", "🛑 Presence is at stake", "🚨 Sin must be dealt with", "👥 Israel cannot move forward casually", "📜 Covenant obedience matters", "The phrase teaches that God's presence is holy, not automatic approval."])],
+      ["🔥 Burnt With Fire", note(["The judgment on the guilty person shows the seriousness of devoted things.", "The punishment is severe because the sin has brought covenant trouble into Israel.", "🔥 Judgment is severe", "⚠️ Sin is not hidden from God", "👥 The camp must be cleansed", "📜 The LORD's word is upheld", "The phrase shows that Israel cannot carry the accursed thing forward."])],
+    ],
+  },
+];
+
+export const JOSHUA_1_11_PERSONAL_SECTIONS = [
+  ...buildGeneratedPersonalSections({
   book: "Joshua",
   notes: JOSHUA_DEEP_NOTES,
   chapters: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
@@ -20,4 +203,6 @@ export const JOSHUA_1_11_PERSONAL_SECTIONS = buildGeneratedPersonalSections({
     "The Accursed Thing",
     "Ask Not Counsel At The Mouth Of The LORD",
   ],
-});
+  }),
+  ...supplementalJoshuaOneToElevenSections,
+];

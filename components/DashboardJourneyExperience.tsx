@@ -13669,7 +13669,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             <rect x="3" y="4" width="18" height="18" rx="3" />
           </svg>
         </span>
-        <p className="min-w-0 text-center text-sm font-black leading-5 text-[var(--bb-text-primary,#111827)] sm:text-[15px]">
+        <p className="min-w-0 whitespace-nowrap text-center text-[11px] font-black leading-4 text-[var(--bb-text-primary,#111827)] sm:text-xs md:text-sm">
           {getBibleYearJourneyStatusBannerText(day)}
         </p>
         <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[var(--bb-button,#2f7fe8)] text-[var(--bb-button-text,#ffffff)] shadow-[0_8px_18px_rgba(47,127,232,0.20)]" aria-hidden="true">
