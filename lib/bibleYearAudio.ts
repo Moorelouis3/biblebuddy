@@ -62,7 +62,6 @@ export const BIBLE_YEAR_DAY_ONE_AUDIO: BibleYearAudioDay = {
   storagePath: getBibleYearAudioStoragePath(1),
   apiSrc: getBibleYearAudioApiSrc(1),
   estimatedDuration: "about 18 min",
-  videoSrc: "https://youtu.be/ZvP93hHvwuU",
 };
 
 export const BIBLE_YEAR_DAY_TWO_AUDIO: BibleYearAudioDay = {
@@ -71,7 +70,6 @@ export const BIBLE_YEAR_DAY_TWO_AUDIO: BibleYearAudioDay = {
   storagePath: getBibleYearAudioStoragePath(2),
   apiSrc: getBibleYearAudioApiSrc(2),
   estimatedDuration: "about 15 min",
-  videoSrc: "https://youtu.be/sfEGArkD0So",
 };
 
 export const BIBLE_YEAR_DAY_THREE_AUDIO: BibleYearAudioDay = {
@@ -80,7 +78,6 @@ export const BIBLE_YEAR_DAY_THREE_AUDIO: BibleYearAudioDay = {
   storagePath: getBibleYearAudioStoragePath(3),
   apiSrc: getBibleYearAudioApiSrc(3),
   estimatedDuration: "about 15 min",
-  videoSrc: "https://youtu.be/amOnjZfgJhs",
 };
 
 export const BIBLE_YEAR_DAY_FOUR_AUDIO: BibleYearAudioDay = {
@@ -89,7 +86,6 @@ export const BIBLE_YEAR_DAY_FOUR_AUDIO: BibleYearAudioDay = {
   storagePath: getBibleYearAudioStoragePath(4),
   apiSrc: getBibleYearAudioApiSrc(4),
   estimatedDuration: "about 16 min",
-  videoSrc: "https://youtu.be/tLF7kqVs6cs",
 };
 
 export const BIBLE_YEAR_DAY_FIVE_AUDIO: BibleYearAudioDay = {
@@ -98,7 +94,6 @@ export const BIBLE_YEAR_DAY_FIVE_AUDIO: BibleYearAudioDay = {
   storagePath: getBibleYearAudioStoragePath(5),
   apiSrc: getBibleYearAudioApiSrc(5),
   estimatedDuration: "about 15 min",
-  videoSrc: "https://youtu.be/KA_2mq-pTyw",
 };
 
 export const BIBLE_YEAR_DAY_SIX_AUDIO: BibleYearAudioDay = {
@@ -107,7 +102,6 @@ export const BIBLE_YEAR_DAY_SIX_AUDIO: BibleYearAudioDay = {
   storagePath: getBibleYearAudioStoragePath(6),
   apiSrc: getBibleYearAudioApiSrc(6),
   estimatedDuration: "about 16 min",
-  videoSrc: "https://youtu.be/KLyXhiLfrlE",
 };
 
 export const BIBLE_YEAR_DAY_SEVEN_AUDIO: BibleYearAudioDay = {
@@ -116,7 +110,6 @@ export const BIBLE_YEAR_DAY_SEVEN_AUDIO: BibleYearAudioDay = {
   storagePath: getBibleYearAudioStoragePath(7),
   apiSrc: getBibleYearAudioApiSrc(7),
   estimatedDuration: "about 14 min",
-  videoSrc: "https://youtu.be/gJg3pwT8zVs",
 };
 
 export const BIBLE_YEAR_DAY_EIGHT_AUDIO: BibleYearAudioDay = {

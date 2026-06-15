@@ -49,6 +49,9 @@ import { JEREMIAH_1_9_PERSONAL_SECTIONS } from "../lib/jeremiahOneToNinePersonal
 import { JEREMIAH_10_52_PERSONAL_SECTIONS } from "../lib/jeremiahTenToFiftyTwoPersonalNotes";
 import { LAMENTATIONS_1_5_PERSONAL_SECTIONS } from "../lib/lamentationsOneToFivePersonalNotes";
 import { EZEKIEL_1_12_PERSONAL_SECTIONS } from "../lib/ezekielOneToTwelvePersonalNotes";
+import { EZEKIEL_13_48_PERSONAL_SECTIONS } from "../lib/ezekielThirteenToFortyEightPersonalNotes";
+import { DANIEL_1_12_PERSONAL_SECTIONS } from "../lib/danielOneToTwelvePersonalNotes";
+import { HOSEA_1_12_PERSONAL_SECTIONS } from "../lib/hoseaOneToTwelvePersonalNotes";
 
 type PersonalSection = {
   chapter: number;
@@ -85,7 +88,9 @@ type BibleBook =
   | "Isaiah"
   | "Jeremiah"
   | "Lamentations"
-  | "Ezekiel";
+  | "Ezekiel"
+  | "Daniel"
+  | "Hosea";
 
 type DayPart = {
   book: BibleBook;
@@ -419,6 +424,26 @@ const DAY_SPECS: Record<number, DaySpec> = {
   238: { book: "Ezekiel", chapters: [4, 5, 6], sections: EZEKIEL_1_12_PERSONAL_SECTIONS },
   239: { book: "Ezekiel", chapters: [7, 8, 9], sections: EZEKIEL_1_12_PERSONAL_SECTIONS },
   240: { book: "Ezekiel", chapters: [10, 11, 12], sections: EZEKIEL_1_12_PERSONAL_SECTIONS },
+  241: { book: "Ezekiel", chapters: [13, 14, 15], sections: EZEKIEL_13_48_PERSONAL_SECTIONS },
+  242: { book: "Ezekiel", chapters: [16, 17, 18], sections: EZEKIEL_13_48_PERSONAL_SECTIONS },
+  243: { book: "Ezekiel", chapters: [19, 20, 21], sections: EZEKIEL_13_48_PERSONAL_SECTIONS },
+  244: { book: "Ezekiel", chapters: [22, 23, 24], sections: EZEKIEL_13_48_PERSONAL_SECTIONS },
+  245: { book: "Ezekiel", chapters: [25, 26, 27], sections: EZEKIEL_13_48_PERSONAL_SECTIONS },
+  246: { book: "Ezekiel", chapters: [28, 29, 30], sections: EZEKIEL_13_48_PERSONAL_SECTIONS },
+  247: { book: "Ezekiel", chapters: [31, 32, 33], sections: EZEKIEL_13_48_PERSONAL_SECTIONS },
+  248: { book: "Ezekiel", chapters: [34, 35, 36], sections: EZEKIEL_13_48_PERSONAL_SECTIONS },
+  249: { book: "Ezekiel", chapters: [37, 38, 39], sections: EZEKIEL_13_48_PERSONAL_SECTIONS },
+  250: { book: "Ezekiel", chapters: [40, 41, 42], sections: EZEKIEL_13_48_PERSONAL_SECTIONS },
+  251: { book: "Ezekiel", chapters: [43, 44, 45], sections: EZEKIEL_13_48_PERSONAL_SECTIONS },
+  252: { book: "Ezekiel", chapters: [46, 47, 48], sections: EZEKIEL_13_48_PERSONAL_SECTIONS },
+  253: { book: "Daniel", chapters: [1, 2, 3], sections: DANIEL_1_12_PERSONAL_SECTIONS },
+  254: { book: "Daniel", chapters: [4, 5, 6], sections: DANIEL_1_12_PERSONAL_SECTIONS },
+  255: { book: "Daniel", chapters: [7, 8, 9], sections: DANIEL_1_12_PERSONAL_SECTIONS },
+  256: { book: "Daniel", chapters: [10, 11, 12], sections: DANIEL_1_12_PERSONAL_SECTIONS },
+  257: { book: "Hosea", chapters: [1, 2, 3], sections: HOSEA_1_12_PERSONAL_SECTIONS },
+  258: { book: "Hosea", chapters: [4, 5, 6], sections: HOSEA_1_12_PERSONAL_SECTIONS },
+  259: { book: "Hosea", chapters: [7, 8, 9], sections: HOSEA_1_12_PERSONAL_SECTIONS },
+  260: { book: "Hosea", chapters: [10, 11, 12], sections: HOSEA_1_12_PERSONAL_SECTIONS },
 };
 
 function getDayParts(spec: DaySpec): DayPart[] {

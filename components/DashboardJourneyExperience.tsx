@@ -2772,7 +2772,7 @@ export default function DashboardJourneyExperience({
     105: "Trust",
   };
   const bibleYearStudyPlanMilestones = GENESIS_BIBLE_IN_ONE_YEAR_SERIES
-    .filter((day) => day.dayNumber <= 220)
+    .filter((day) => day.dayNumber <= 260)
     .map((day) => ({
       dayNumber: day.dayNumber,
       label: bibleYearStudyPlanMilestoneLabels[day.dayNumber] || day.title,
