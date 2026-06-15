@@ -1905,7 +1905,67 @@ function polishDay38LeviticusSection(section: PersonalLeviticusPhraseSectionInpu
   };
 }
 
+function formatDay37To38LeviticusMeaningFirstLines(title: string, lines: string[]) {
+  const cleanTitle = getCleanPhraseTitle(title);
+  const escapedTitle = cleanTitle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const titleStartPattern = new RegExp(`^${escapedTitle}\\s+(means|shows|gives|helps|explains|teaches|marks|names|is|are|was|were|connects|keeps|points to|prepares|refers to|describes)\\s+`, "i");
+  const isEmojiLine = (line: string) => /^[^A-Za-z0-9'"(]/.test(line.trim());
+  const cleanLine = (line: string) => {
+    let cleaned = line.trim();
+    cleaned = cleaned.replace(titleStartPattern, (_match, verb: string) => {
+      const action = verb.toLowerCase();
+      if (action === "means" || action === "refers to") return "";
+      if (action === "is") return "This is ";
+      if (action === "are") return "These are ";
+      if (action === "was") return "This was ";
+      if (action === "were") return "These were ";
+      return `This ${action} `;
+    });
+    cleaned = cleaned
+      .replace(new RegExp(`\\b${escapedTitle}\\b`, "gi"), "This detail")
+      .replace(/\bThis wording belongs to\b/gi, "This belongs to")
+      .replace(/\bThe wording is\b/gi, "The detail is")
+      .replace(/\bThe wording\b/gi, "This")
+      .replace(/\bThis phrase\b/gi, "This")
+      .replace(/\bThe phrase\b/gi, "This")
+      .replace(/\bA reader should see that\b/gi, "Notice that")
+      .replace(/\bA reader should understand\b/gi, "Notice")
+      .replace(/\bA reader should picture\b/gi, "Picture")
+      .replace(/\bA reader should\b/gi, "Notice")
+      .replace(/\bThe reader should connect it to\b/gi, "This belongs with")
+      .replace(/\bthe reader\b/gi, "a beginner")
+      .replace(/\breaders\b/gi, "beginners")
+      .replace(/\bhelps beginners\b/gi, "shows beginners")
+      .replace(/\bhelps a beginner\b/gi, "shows a beginner")
+      .replace(/\bhelps modern beginners\b/gi, "shows modern beginners")
+      .replace(/\bThis keeps a beginner grounded\b/gi, "This keeps holiness grounded")
+      .replace(/\bNotice notice that\b/gi, "Notice that")
+      .replace(/\bhelps understand\b/gi, "explains");
+    return cleaned.replace(/^([a-z])/, (letter) => letter.toUpperCase());
+  };
+
+  const cleaned = lines.map(cleanLine).filter(Boolean);
+  const proseLines = cleaned.filter((line) => !isEmojiLine(line));
+  const emojiLines = cleaned.filter(isEmojiLine);
+
+  return [
+    ...proseLines.slice(0, Math.min(3, proseLines.length)),
+    ...emojiLines.slice(0, 4),
+    ...proseLines.slice(Math.min(3, proseLines.length)),
+  ].slice(0, 8);
+}
+
+function polishDay37To38LeviticusSection(section: PersonalLeviticusPhraseSectionInput): PersonalLeviticusPhraseSectionInput {
+  return {
+    ...section,
+    phrases: section.phrases.map(([title, content]) => [
+      title,
+      note(formatDay37To38LeviticusMeaningFirstLines(title, content.split(/\n+/).map((line) => line.trim()).filter(Boolean))),
+    ]),
+  };
+}
+
 export const LEVITICUS_21_27_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionInput[] = [
   ...DAY_37_LEVITICUS_21_24_PERSONAL_SECTIONS,
   ...generatedLeviticus21To27Sections.filter((section) => section.chapter >= 25).map(polishDay38LeviticusSection),
-];
+].map(polishDay37To38LeviticusSection);

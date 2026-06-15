@@ -891,6 +891,8 @@ const DAY_25_EXACT_PHRASE_EXPLANATIONS: Record<string, string[]> = {
   "At Even, Then Ye Shall Know": ["At Even, Then Ye Shall Know points to evening as the time God will begin answering their hunger.", "At even means at evening.", "The quail will show that the LORD heard their complaint.", "\u{1F307} Evening", "\u{1F357} Flesh provided", "\u{1F441}\u{FE0F} The LORD sees", "God's timing turns the evening meal into a lesson about His presence."],
   "Your Murmurings Are Not Against Us, But Against The LORD": ["Your Murmurings Are Not Against Us, But Against The LORD means the complaint is deeper than Moses and Aaron.", "The people think they are only grumbling at leaders.", "But their words are really challenging the God who led them out.", "\u{1F5E3}\u{FE0F} Complaints", "\u{1F465} Leaders", "\u{1F64C} The LORD", "The phrase helps beginners see that unbelief can hide behind complaints about people."],
   "As Aaron Spake": ["As Aaron Spake means the moment happens while Aaron is speaking to the congregation.", "The people are hearing the message when God shows His glory.", "Aaron's words are immediately backed by the LORD's visible presence.", "\u{1F5E3}\u{FE0F} Aaron speaks", "\u{2601}\u{FE0F} Cloud", "\u{2728} Glory appears", "The phrase connects the spoken message with God's answer."],
+  "Who Is Like Unto Thee, O LORD": ["No one can be compared with the LORD.", "Israel has seen Pharaoh's power collapse, Egypt's gods exposed, and the sea obey God's command.", "The question is worship, not confusion.", "\u{1F451} The LORD alone is supreme", "\u{1F30A} The sea obeyed Him", "\u{2728} His holiness stands apart", "\u{1F64C} Rescue leads to praise", "The song teaches Israel that the God who saved them has no rival."],
+  "I Will Rain Bread From Heaven": ["God promises to send food from above for His hungry people.", "Israel cannot grow bread in the wilderness, and they cannot return to Egypt for life.", "The bread will come from the LORD's own provision.", "\u{1F35E} God gives bread from heaven", "\u{1F3DC}\u{FE0F} The wilderness cannot stop His care", "\u{1F4CF} Daily provision will train trust", "\u{1F64C} The Provider is teaching His people", "Manna will teach Israel to depend on God one day at a time."],
   "They Looked Toward The Wilderness": ["They Looked Toward The Wilderness means the people turn their eyes toward the empty place.", "The wilderness looks like lack, hunger, and no supply.", "But that is where the glory of the LORD appears.", "\u{1F441}\u{FE0F} They looked", "\u{1F3DC}\u{FE0F} Wilderness", "\u{2728} Glory", "God can reveal His presence in the place that looks least promising."],
   "Moses Was Wroth With Them": ["Moses Was Wroth With Them means Moses was angry with the people.", "Wroth is old wording for deeply angry.", "The anger comes because some Israelites ignored clear instruction about the manna.", "\u{1F621} Moses angry", "\u{1F35E} Manna kept", "\u{1F6AB} Command ignored", "The phrase shows that God's provision still had to be received God's way."],
   "This Is That Which The LORD Hath Said": ["This Is That Which The LORD Hath Said means Moses explains the Sabbath instruction as God's word.", "The double portion is not Moses making up a new rule.", "It is connected to what the LORD already said.", "\u{1F4DC} God's word", "\u{1F35E} Double portion", "\u{1F6D1} Sabbath rest", "The phrase teaches Israel to understand provision through God's command."],
@@ -900,6 +902,118 @@ const DAY_25_EXACT_PHRASE_EXPLANATIONS: Record<string, string[]> = {
   "Let No Man Go Out Of His Place": ["Let No Man Go Out Of His Place repeats the Sabbath boundary clearly.", "No one needs to go out gathering manna that God said would not be there.", "The command protects rest from anxious searching.", "\u{1F6AB} Do not go out", "\u{1F6D1} Sabbath", "\u{1F64C} Trust", "The phrase presses the lesson home: God's people can rest because God has provided."],
   "That They May See The Bread": ["That They May See The Bread means a sample of manna is kept for future generations to look at.", "The preserved bread becomes a witness.", "Children who did not walk through the wilderness could still learn what God gave.", "\u{1F35E} Bread kept", "\u{1F3FA} Stored witness", "\u{1F9D2} Future children", "The phrase turns daily food into remembered testimony."],
 };
+
+function removeDay25RepeatedPhraseTitle(title: string, lines: string[]) {
+  const escapedTitle = title.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const repeatedTitlePattern = new RegExp(`^${escapedTitle}\\s+(means|explains|describes|shows|names|gives|is|stresses|teaches|captures|announces|pictures|protects|closes|deals with|turns|introduces|exposes|preserves|carries|celebrates|marks|looks|points to|points into|reminds|connects|ties|places|repeats|praises|identifies|becomes|dates|brings|treats|warns|makes|keeps|follows|begins|guards|shapes|joins|prepares|stays|matters because|also becomes|should be read as|helps)\\s+`, "i");
+
+  return lines.map((line, index) => {
+    let cleaned = line
+      .replace(/\bThe phrase helps the reader\b/gi, "This helps")
+      .replace(/\bThe phrase helps readers\b/gi, "This helps")
+      .replace(/\bThe repeated image helps the people understand that\b/gi, "The repeated image means ")
+      .replace(/\bThe wording helps the reader ask what God is showing through\b/gi, "This points to")
+      .replace(/\bThe wording helps beginners see that\b/gi, "This shows that")
+      .replace(/\bThe image helps the reader feel\b/gi, "The image shows")
+      .replace(/\bThis reminds the reader that\b/gi, "This shows that")
+      .replace(new RegExp(`\\bThrough ${escapedTitle},\\s*`, "gi"), "")
+      .replace(new RegExp(`\\bAround ${escapedTitle},\\s*`, "gi"), "Here, ")
+      .replace(new RegExp(`\\bIn ${escapedTitle},\\s*`, "gi"), "Here, ")
+      .replace(new RegExp(`${escapedTitle}\\s+helps\\s+`, "gi"), "This shows ")
+      .replace(new RegExp(`${escapedTitle}\\s+points\\s+`, "gi"), "This points ")
+      .replace(/\bThis detail God\b/gi, "God")
+      .replace(/\bhelps the reader picture\b/gi, "pictures")
+      .replace(/\bhelps the reader see\b/gi, "shows")
+      .replace(/\bhelps readers see\b/gi, "shows")
+      .replace(/\bhelps the people understand that\b/gi, "shows that")
+      .replace(/\bthe reader already knows\b/gi, "the surrounding story has already shown")
+      .replace(/\bthe reader\b/gi, "a beginner")
+      .replace(/\breaders\b/gi, "beginners");
+
+    cleaned = cleaned.replace(repeatedTitlePattern, (_match, verb: string) => {
+      const normalizedVerb = verb.toLowerCase();
+      if (normalizedVerb === "means") return "";
+      if (normalizedVerb === "shows") return "This shows ";
+      if (normalizedVerb === "turns") return "This turns ";
+      if (normalizedVerb === "is") return "This is ";
+      if (normalizedVerb === "looks") return "This looks ";
+      if (normalizedVerb === "points to") return "This points to ";
+      return `This ${normalizedVerb} `;
+    });
+
+    return cleaned
+      .replace(/\bThis shows explain\b/gi, "This explains")
+      .replace(/\bThis should be read as more than a construction note\b/gi, "This detail belongs to worship before the LORD")
+      .replace(/\bThis reminds the reader that\b/gi, "This shows that")
+      .replace(/\bThis reminds the reader\b/gi, "This shows")
+      .replace(/^([a-z])/, (letter) => letter.toUpperCase());
+  });
+}
+
+function getDay25TeachingBullets(section: PersonalExodusPhraseSectionInput, title: string) {
+  const lower = title.toLowerCase();
+
+  if (section.chapter === 13 && (lower.includes("firstborn") || lower.includes("firstling") || lower.includes("openeth") || lower.includes("redeem") || lower.includes("mine"))) {
+    return ["👶 Firstborn life belongs to the LORD", "🩸 Passover mercy must be remembered", "💰 Redeemed life is bought back", "🙌 The Rescuer has the right to claim His people"];
+  }
+  if (section.chapter === 13 && (lower.includes("unleavened") || lower.includes("leaven") || lower.includes("abib") || lower.includes("remember"))) {
+    return ["🍞 Unleavened bread remembers the hurried Exodus", "📅 Israel's calendar is shaped by rescue", "🏃 The people left Egypt quickly", "🕯️ Worship keeps deliverance from being forgotten"];
+  }
+  if (section.chapter === 13 && (lower.includes("sign") || lower.includes("frontlets") || lower.includes("hand") || lower.includes("eyes") || lower.includes("son") || lower.includes("mouth"))) {
+    return ["👶 Children must hear the rescue story", "✋ God's work shapes Israel's actions", "👀 God's rescue stays before their eyes", "📖 The next generation learns why Israel worships"];
+  }
+  if (section.chapter === 13) {
+    return ["🧭 The LORD chooses the road", "🛡️ God's route protects weak people", "☁️ His presence guides by day", "🔥 His presence guards by night"];
+  }
+  if (section.chapter === 14 && (lower.includes("chariot") || lower.includes("captain") || lower.includes("horse") || lower.includes("pursued") || lower.includes("pharaoh"))) {
+    return ["🐎 Egypt brings military power", "🔒 Pharaoh reaches for control again", "🌊 The sea will expose Egypt's weakness", "🙌 The LORD will fight for Israel"];
+  }
+  if (section.chapter === 14 && (lower.includes("afraid") || lower.includes("cried") || lower.includes("graves") || lower.includes("alone") || lower.includes("wherefore"))) {
+    return ["😨 Israel feels trapped", "🌊 The sea blocks the way forward", "🐎 Egypt presses from behind", "🙌 Fear must meet the LORD's salvation"];
+  }
+  if (section.chapter === 14 && (lower.includes("dry") || lower.includes("waters") || lower.includes("sea") || lower.includes("rod") || lower.includes("divide") || lower.includes("forward"))) {
+    return ["🌊 The sea becomes God's road", "🚶 Israel crosses safely", "📜 God's command comes before the visible path", "🙌 The Creator makes a way through water"];
+  }
+  if (section.chapter === 14) {
+    return ["☁️ God's presence protects Israel", "🌑 Egypt is confused by judgment", "💡 Israel receives light for the way", "🛡️ The LORD guards His people"];
+  }
+  if (section.chapter === 15 && (lower.includes("sang") || lower.includes("sing") || lower.includes("song") || lower.includes("timbrels") || lower.includes("miriam"))) {
+    return ["🎶 Rescue turns into worship", "🥁 The community joins the song", "🙌 Praise gives God the credit", "🌊 The sea victory is remembered aloud"];
+  }
+  if (section.chapter === 15 && (lower.includes("water") || lower.includes("marah") || lower.includes("murmured") || lower.includes("tree") || lower.includes("healeth") || lower.includes("wells"))) {
+    return ["💧 Thirst tests the rescued people", "🌿 The LORD provides what heals", "🗣️ Complaining exposes fragile trust", "🙌 The God of the sea also cares in the wilderness"];
+  }
+  if (section.chapter === 15) {
+    return ["👑 The LORD wins the victory", "🌊 Egypt's power falls in the sea", "✨ God's holiness stands apart", "🏔️ Rescue is moving toward life with God"];
+  }
+  if (section.chapter === 16 && (lower.includes("murmured") || lower.includes("flesh") || lower.includes("bread") || lower.includes("kill") || lower.includes("wilderness"))) {
+    return ["🍞 Hunger tests Israel's trust", "🧱 Egypt is remembered wrongly", "🗣️ Complaints reveal fear", "🙌 God answers need with provision"];
+  }
+  if (section.chapter === 16 && (lower.includes("manna") || lower.includes("omer") || lower.includes("quails") || lower.includes("dew") || lower.includes("what is it") || lower.includes("gather"))) {
+    return ["🍞 God gives daily bread", "📏 Each person receives enough", "🌅 Provision comes morning by morning", "🙌 Former slaves learn daily dependence"];
+  }
+  if (section.chapter === 16 && (lower.includes("sabbath") || lower.includes("seventh") || lower.includes("rest") || lower.includes("sixth") || lower.includes("commandments"))) {
+    return ["🛑 Sabbath rest is God's gift", "🍞 The double portion teaches trust", "📜 Rest comes by command", "🙌 Free people are no longer ruled by endless labor"];
+  }
+
+  return ["📖 The phrase comes from the assigned text", "🔍 It explains a real detail in the verse", "🙌 The LORD is teaching His rescued people", "🧠 The meaning should be clear before moving on"];
+}
+
+function formatDay25PhraseExplanation(section: PersonalExodusPhraseSectionInput, title: string, lines: string[]) {
+  const cleaned = removeDay25RepeatedPhraseTitle(title, lines).filter(Boolean);
+  const isEmojiLine = (line: string) => /^[^\w\s"']/.test(line.trim());
+  const teachingBullets = getDay25TeachingBullets(section, title);
+  const proseLines = cleaned.filter((line) => !isEmojiLine(line));
+
+  const opening = proseLines.slice(0, Math.min(3, proseLines.length));
+  const closing = proseLines.slice(opening.length);
+
+  return note([
+    ...opening,
+    ...teachingBullets,
+    ...closing,
+  ].slice(0, 8));
+}
 
 function explainDay25Phrase(section: PersonalExodusPhraseSectionInput, title: string): string {
   const lower = title.toLowerCase();
@@ -911,7 +1025,7 @@ function explainDay25Phrase(section: PersonalExodusPhraseSectionInput, title: st
   };
 
   const exact = DAY_25_EXACT_PHRASE_EXPLANATIONS[title];
-  if (exact) return note(exact);
+  if (exact) return formatDay25PhraseExplanation(section, title, exact);
 
   if (lower.includes("sanctify") || lower.includes("set apart")) {
     add(`${title} means the firstborn are now marked for the LORD in a special way.`, "God spared Israel's firstborn on Passover night, so rescued life is marked as His.", "This is not random religious paperwork. It teaches Israel that salvation creates belonging.", "👶 Firstborn", "🙌 Set apart", "📜 Rescued life is God's gift", "The people who were brought out must now remember who brought them out.");
@@ -999,7 +1113,7 @@ function explainDay25Phrase(section: PersonalExodusPhraseSectionInput, title: st
     add(`${title} explains one part of Israel's journey from rescue into life with God.`, "The wording helps the reader ask what God is showing through memory, guidance, worship, testing, provision, or rest.", "📖 Scripture wording", "🔍 Phrase meaning", "🧠 Trust training", "Every rescued step is training Israel to trust the LORD.");
   }
 
-  return note(lines.slice(0, 8));
+  return formatDay25PhraseExplanation(section, title, lines);
 }
 
 function deepenDay25PhraseCards(section: PersonalExodusPhraseSectionInput): PersonalExodusPhraseSectionInput {
@@ -1360,6 +1474,70 @@ function getExodusElevenToTwentyTeachingLines(section: PersonalExodusPhraseSecti
   ];
 }
 
+function formatRenderedDay25Lines(section: PersonalExodusPhraseSectionInput, cleanTitle: string, lines: string[]) {
+  if (section.chapter < 13 || section.chapter > 16) return lines;
+
+  const isEmojiLine = (line: string) => /^[^A-Za-z0-9'"(]/.test(line.trim());
+  const cleaned = removeDay25RepeatedPhraseTitle(cleanTitle, lines)
+    .map((line) => line.trim())
+    .filter(Boolean);
+  const proseLines = cleaned.filter((line) => !isEmojiLine(line));
+  const opening = proseLines.slice(0, Math.min(3, proseLines.length));
+  const closing = proseLines.slice(opening.length);
+
+  return [
+    ...opening,
+    ...getDay25TeachingBullets(section, cleanTitle),
+    ...closing,
+  ].slice(0, 8);
+}
+
+function getDay26TeachingBullets(section: PersonalExodusPhraseSectionInput, title: string) {
+  const lower = title.toLowerCase();
+
+  if (section.chapter === 17 && (lower.includes("water") || lower.includes("rock") || lower.includes("horeb") || lower.includes("chide") || lower.includes("massah") || lower.includes("meribah"))) {
+    return ["💧 Israel needs real water", "🪨 The LORD provides from the rock", "🗣️ Complaining tests trust", "🙌 God meets need in the wilderness"];
+  }
+  if (section.chapter === 17) {
+    return ["⚔️ Amalek attacks the rescued people", "🙌 Israel depends on the LORD's help", "🤝 Aaron and Hur support Moses", "📖 The victory must be remembered"];
+  }
+  if (section.chapter === 18 && (lower.includes("jethro") || lower.includes("zipporah") || lower.includes("gershom") || lower.includes("eliezer"))) {
+    return ["👨‍👩‍👦 Moses has a real family story", "👂 Jethro hears what God has done", "🏜️ Midian reconnects with the Exodus", "🙌 Rescue is being witnessed beyond Israel"];
+  }
+  if (section.chapter === 18) {
+    return ["⚖️ Moses carries too much alone", "👥 Wise leaders share the burden", "📜 God's ways must be taught clearly", "🧠 Leadership protects the people from exhaustion"];
+  }
+  if (section.chapter === 19 && (lower.includes("mount") || lower.includes("sinai") || lower.includes("thunder") || lower.includes("lightning") || lower.includes("quaked"))) {
+    return ["⛰️ Sinai is the place of holy meeting", "⚡ God's presence is not casual", "😨 The people must approach with reverence", "📜 Covenant words come from the LORD"];
+  }
+  if (section.chapter === 19) {
+    return ["🦅 God carried Israel out of Egypt", "💎 Israel is called His treasured people", "👑 The rescued people belong to the King", "📜 Covenant obedience follows rescue"];
+  }
+  if (section.chapter === 20 && (lower.includes("god") || lower.includes("lord") || lower.includes("commandment") || lower.includes("sabbath") || lower.includes("honour"))) {
+    return ["📜 God gives covenant commands", "🙌 Worship belongs to the LORD alone", "🛑 Rest is part of holy life", "👨‍👩‍👦 Family honor matters before God"];
+  }
+
+  return ["📜 The command comes from the LORD", "🧭 Israel is learning covenant life", "🙌 Rescue leads into obedience", "🧠 The phrase explains how God's people should live"];
+}
+
+function formatRenderedDay26Lines(section: PersonalExodusPhraseSectionInput, cleanTitle: string, lines: string[]) {
+  if (section.chapter < 17 || section.chapter > 20) return lines;
+
+  const isEmojiLine = (line: string) => /^[^A-Za-z0-9'"(]/.test(line.trim());
+  const cleaned = removeDay25RepeatedPhraseTitle(cleanTitle, lines)
+    .map((line) => line.trim())
+    .filter(Boolean);
+  const proseLines = cleaned.filter((line) => !isEmojiLine(line));
+  const opening = proseLines.slice(0, Math.min(3, proseLines.length));
+  const closing = proseLines.slice(opening.length);
+
+  return [
+    ...opening,
+    ...getDay26TeachingBullets(section, cleanTitle),
+    ...closing,
+  ].slice(0, 8);
+}
+
 function normalizeRepeatedExodusElevenToTwentyLines(sections: PersonalExodusPhraseSectionInput[]) {
   const counts = new Map<string, number>();
   const normalizeLine = (line: string) => line.toLowerCase().replace(/[.?!]+$/, "").trim();
@@ -1413,7 +1591,9 @@ function normalizeRepeatedExodusElevenToTwentyLines(sections: PersonalExodusPhra
           kept.push(additions[kept.length % additions.length]);
         }
 
-        return [ensureExodusElevenToTwentyTitleEmoji(title), note(kept)] as [string, string];
+        const finalLines = formatRenderedDay26Lines(section, cleanTitle, formatRenderedDay25Lines(section, cleanTitle, kept));
+
+        return [ensureExodusElevenToTwentyTitleEmoji(title), note(finalLines)] as [string, string];
       }),
     };
   });

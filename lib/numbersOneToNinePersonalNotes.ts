@@ -2,6 +2,8 @@ import { NUMBERS_DEEP_NOTES } from "./numbersDeepNotes";
 import { buildGeneratedPersonalSections } from "./bibleYearGeneratedPersonalSections";
 import type { PersonalLeviticusPhraseSectionInput } from "./leviticusOneToTenPersonalNotes";
 
+const note = (lines: string[]) => lines.join("\n\n");
+
 const generatedNumbersOneToNinePersonalSections = buildGeneratedPersonalSections({
   book: "Numbers",
   notes: NUMBERS_DEEP_NOTES,
@@ -341,6 +343,81 @@ function makeDay38NumbersExplanation(title: string) {
   return [lineOne, lineTwo, getDay38NumbersCueLines(finalTitle).join("\n")].join("\n\n");
 }
 
+function getNumbersOneToNineMeaning(title: string, section: PersonalLeviticusPhraseSectionInput) {
+  const cleanTitle = stripLeadingEmoji(title);
+  const lower = cleanTitle.toLowerCase();
+
+  if (/lord spake|speak unto|say unto|as the lord commanded/.test(lower)) return ["The instruction begins with God's command.", "Moses receives the word so Israel's order comes from the LORD, not from human guesswork."];
+  if (/ensign|standard|camp|pitch|far off|tabernacle/.test(lower)) return ["Israel's camp is arranged around the LORD's dwelling.", "The tribes do not move as a loose crowd; each family has a place near the tabernacle."];
+  if (/judah|reuben|ephraim|dan|simeon|gad|issachar|zebulun|manasseh|benjamin|asher|naphtali|levi|levites/.test(lower)) return ["This tribe is named inside Israel's ordered camp.", "Numbers shows that every tribe has a real place, responsibility, and relationship to the tabernacle."];
+  if (/firstborn|redeem|redemption|number|sum|count|poll|shekel|month old|able to go/.test(lower)) return ["The count gives Israel ordered responsibility before God.", "Numbers is not listing people for trivia; it is showing a rescued people prepared for worship, service, and journey."];
+  if (/aaron|sons|priest|charge|service|minister|keep/.test(lower)) return ["The priests and Levites are responsible for holy service.", "Their work guards the tabernacle so God's presence is honored and the camp is protected."];
+  if (/unclean|leper|issue|dead|without the camp|confess|restitution|trespass/.test(lower)) return ["Uncleanness and guilt must be dealt with inside the camp.", "God is teaching Israel that life near His presence requires cleansing, confession, and repair."];
+  if (/nazarite|separate|wine|razor|hair|vow|holy unto the lord/.test(lower)) return ["The Nazarite vow sets a person apart to the LORD for a special season.", "The visible restrictions teach that dedication to God touches appetite, appearance, and contact with death."];
+  if (/bless|keep thee|face shine|gracious|peace|put my name/.test(lower)) return ["The priestly blessing places God's care over His people.", "Israel needs more than camp order; they need the LORD's face, grace, and peace."];
+  if (/offering|charger|bowl|spoon|bullock|ram|lamb|goat|incense|altar/.test(lower)) return ["The tribal gifts are brought for worship before the LORD.", "Repeated offerings show every tribe participating in the dedication of the altar."];
+  if (/lamp|candlestick|levites|cleanse|sprinkle|shave|wash|wave offering/.test(lower)) return ["The Levites are cleansed and presented for service.", "Their work belongs to the LORD because they stand in the place of Israel's firstborn."];
+  if (/passover|unleavened|cloud|journey|keep the charge|second month/.test(lower)) return ["Israel remembers rescue while preparing to travel.", "Passover, cloud, and command teach that the journey must stay under the LORD's direction."];
+
+  return ["This detail belongs to Israel's ordered wilderness life.", `In ${section.reference}, the LORD is teaching the camp how to live, worship, and travel near His presence.`];
+}
+
+function getNumbersOneToNineBullets(title: string) {
+  const lower = stripLeadingEmoji(title).toLowerCase();
+
+  if (/lord spake|speak unto|say unto|as the lord commanded/.test(lower)) return ["📜 God's command gives the order", "🧔 Moses receives the instruction", "🏕️ The camp must obey the LORD"];
+  if (/camp|ensign|standard|tabernacle|journey/.test(lower)) return ["🏕️ The camp is ordered around God", "🧭 Each tribe has a place", "🙌 The journey follows the LORD"];
+  if (/levi|levites|priest|aaron|sons|charge|service/.test(lower)) return ["⛺ Holy service is guarded", "👑 Priests and Levites have assigned work", "🛡️ The tabernacle must be honored"];
+  if (/unclean|confess|trespass|restitution|leper|dead/.test(lower)) return ["🧼 Uncleanness is handled honestly", "🙏 Guilt must be confessed", "🤝 Harm must be repaired"];
+  if (/nazarite|vow|separate|wine|hair|razor/.test(lower)) return ["🙌 The vow sets a person apart", "🚫 Ordinary pleasures are limited", "✨ Dedication becomes visible"];
+  if (/bless|face|peace|gracious|name/.test(lower)) return ["🙌 Blessing comes from the LORD", "✨ God's face means favor", "🕊️ Peace is His gift"];
+  if (/offering|charger|bowl|spoon|bullock|ram|lamb|goat|altar/.test(lower)) return ["🎁 Each tribe brings a gift", "🔥 Worship is offered before God", "📜 Dedication follows holy order"];
+  return ["📜 Numbers records a real camp detail", "🏕️ Israel is being ordered around God's presence", "🙌 The LORD is teaching His people"];
+}
+
+function formatNumbersOneToNineMeaningFirstLines(section: PersonalLeviticusPhraseSectionInput, title: string, content: string) {
+  const cleanTitle = stripLeadingEmoji(title);
+  const escapedTitle = cleanTitle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const titleStartPattern = new RegExp(`^${escapedTitle}\\s+(means|shows|gives|helps|explains|teaches|marks|names|is|are|was|were|connects|keeps|points to|prepares|refers to|describes)\\s+`, "i");
+  const isEmojiLine = (line: string) => /^[^A-Za-z0-9'"(]/.test(line.trim());
+  const lines = content.split(/\n+/).map((line) => line.trim()).filter(Boolean);
+  const cleaned = lines.map((line) => {
+    let next = line.replace(titleStartPattern, (_match, verb: string) => {
+      const action = verb.toLowerCase();
+      if (action === "means" || action === "refers to") return "";
+      if (action === "is") return "This is ";
+      if (action === "are") return "These are ";
+      if (action === "was") return "This was ";
+      if (action === "were") return "These were ";
+      return `This ${action} `;
+    });
+    next = next
+      .replace(/^The LORD Spake Unto Moses(?: And Unto Aaron)? means\s+/i, "The instruction begins with ")
+      .replace(new RegExp(`\\b${escapedTitle}\\b`, "gi"), "This detail")
+      .replace(/\bnames an exact detail (?:a beginner|the reader) is meant to notice in this part of Numbers\.?/gi, "belongs to Israel's ordered wilderness life.")
+      .replace(/\bThe phrase may be small, but it belongs to the way the passage moves the story, command, warning, or promise forward\.?/gi, `It matters inside ${section.reference} because the camp is learning God's order.`)
+      .replace(/\bThis phrase\b/gi, "This")
+      .replace(/\bThe phrase\b/gi, "This")
+      .replace(/\bThe wording\b/gi, "This")
+      .replace(/\bDeuteronomy\b/gi, "Numbers")
+      .replace(/\bhelps the reader\b/gi, "shows")
+      .replace(/\bhelps readers\b/gi, "shows")
+      .replace(/\bthe reader\b/gi, "a beginner")
+      .replace(/\breaders\b/gi, "beginners")
+      .replace(/\bA beginner should\b/gi, "Notice")
+      .replace(/\bNotice notice that\b/gi, "Notice that");
+    return next.replace(/^([a-z])/, (letter) => letter.toUpperCase());
+  });
+  const proseLines = cleaned.filter((line) => !isEmojiLine(line) && !/A detail to notice|Movement in the passage|Meaning for Israel/i.test(line));
+  const hasGenericCarryover = proseLines.some((line) => /ordinary daily life|homes, work, property|may sound small|story, command, warning|vague summary|Bible's wording|larger story|detail to notice|Deuteronomy|Leviticus|Notice notice/i.test(line));
+  const opening = !hasGenericCarryover && proseLines.length >= 2 ? proseLines.slice(0, 3) : getNumbersOneToNineMeaning(title, section);
+  const bullets = cleaned.filter(isEmojiLine).slice(0, 4);
+  const teachingBullets = !hasGenericCarryover && bullets.length >= 3 ? bullets : getNumbersOneToNineBullets(title);
+  const closing = hasGenericCarryover ? [] : proseLines.slice(opening.length).filter((line) => !/exact detail|small, but|faceless crowd|reader/i.test(line));
+
+  return note([...opening, ...teachingBullets, ...closing].slice(0, 8));
+}
+
 function polishDay38NumbersSection(section: PersonalLeviticusPhraseSectionInput): PersonalLeviticusPhraseSectionInput {
   if (section.chapter !== 1) return section;
 
@@ -349,7 +426,7 @@ function polishDay38NumbersSection(section: PersonalLeviticusPhraseSectionInput)
     ...(day38NumbersSectionHeadings[section.reference] || {}),
     phrases: (day38NumbersCuratedPhraseTitles[section.reference] || section.phrases.map(([title]) => title)).map((title) => {
       const finalTitle = replaceDay38NumbersPhraseTitle(title);
-      return [finalTitle, makeDay38NumbersExplanation(finalTitle)];
+      return [finalTitle, formatNumbersOneToNineMeaningFirstLines(section, finalTitle, makeDay38NumbersExplanation(finalTitle))];
     }),
   };
 }
@@ -362,6 +439,10 @@ function polishDay39To40NumbersSection(section: PersonalLeviticusPhraseSectionIn
     ...section,
     icon,
     title: `${icon} ${stripLeadingEmoji(section.title)}`,
+    phrases: section.phrases.map(([title, content]) => [
+      title,
+      formatNumbersOneToNineMeaningFirstLines(section, title, content),
+    ]),
   };
 }
 

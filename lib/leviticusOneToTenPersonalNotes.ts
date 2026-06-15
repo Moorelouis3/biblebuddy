@@ -648,6 +648,73 @@ function getLeviticusContextualOpening(section: PersonalLeviticusPhraseSectionIn
   return `${cleanTitle} helps explain ${focus}.`;
 }
 
+function formatDay32To35MeaningFirstLines(section: PersonalLeviticusPhraseSectionInput, cleanTitle: string, lines: string[]) {
+  if (section.chapter < 1 || section.chapter > 16) return lines;
+
+  const escapedTitle = cleanTitle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const titleStartPattern = new RegExp(`^${escapedTitle}\\s+(means|shows|gives|helps|explains|teaches|marks|names|is|are|was|were|connects|keeps|points to|prepares|brings|describes)\\s+`, "i");
+  const isEmojiLine = (line: string) => /^[^A-Za-z0-9'"(]/.test(line.trim());
+  const focus = getLeviticusSectionFocus(section);
+  const cleanLine = (line: string) => {
+    let cleaned = line.trim();
+    cleaned = cleaned.replace(titleStartPattern, (_match, verb: string) => {
+      const action = verb.toLowerCase();
+      if (action === "means") return "";
+      if (action === "is") return "This is ";
+      if (action === "are") return "These are ";
+      if (action === "was") return "This was ";
+      if (action === "were") return "These were ";
+      return `This ${action} `;
+    });
+    cleaned = cleaned
+      .replace(new RegExp(`\\bThrough ${escapedTitle},\\s*`, "gi"), "")
+      .replace(new RegExp(`\\bIn ${escapedTitle},\\s*`, "gi"), "Here, ")
+      .replace(new RegExp(`\\b${escapedTitle}\\b`, "gi"), "This detail")
+      .replace(/\bThis phrase matters because\b/gi, "This means")
+      .replace(/\bThe phrase matters because\b/gi, "This means")
+      .replace(/\bThis phrase\b/gi, "This")
+      .replace(/\bThe phrase\b/gi, "This")
+      .replace(/\bThe wording helps(?: a beginner| beginners| the reader| readers)?(?: see| follow| understand)? that\s*/gi, "This means ")
+      .replace(/\bThe wording helps(?: a beginner| beginners| the reader| readers)?(?: see| follow| understand)?\s*/gi, "This shows ")
+      .replace(/\bThe wording of\b/gi, "The meaning of")
+      .replace(/\bThe wording\b/gi, "This")
+      .replace(/\bhelps the reader\b/gi, "shows")
+      .replace(/\bhelps readers\b/gi, "shows")
+      .replace(/\bkeeps the reader close to\b/gi, "stays with")
+      .replace(/\bthe reader\b/gi, "a beginner")
+      .replace(/\breaders\b/gi, "beginners")
+      .replace(/\bA beginner should not read this as\b/gi, "This is not")
+      .replace(/\bA beginner should see that\b/gi, "Notice that")
+      .replace(/\bA beginner should\b/gi, "Notice")
+      .replace(/\bNotice that renewed worship\b/gi, "Renewed worship")
+      .replace(/\bThis shows explain\b/gi, "This explains")
+      .replace(/\bThis helps explain\b/gi, "This explains")
+      .replace(/\bThe meaning of This detail\b/gi, "This detail")
+      .replace(/\bThis keeps the instruction clear instead of vague\b/gi, "This keeps the instruction clear.")
+      .replace(/\bThis keeps the instruction clear\.\./gi, "This keeps the instruction clear.");
+    return cleaned.replace(/^([a-z])/, (letter) => letter.toUpperCase());
+  };
+
+  const cleaned = lines.map(cleanLine).filter(Boolean);
+  const proseLines = cleaned.filter((line) => !isEmojiLine(line) && !/^\?+$/.test(line));
+  const emojiLines = cleaned.filter(isEmojiLine).filter((line) => !line.includes(cleanTitle));
+  const lower = cleanTitle.toLowerCase();
+  const bullets = emojiLines.length >= 3 ? emojiLines.slice(0, 4) :
+    /blood|atonement|sprinkle|altar|sin|trespass|forgiven|guilt/.test(lower)
+      ? ["🩸 Sin is dealt with before God", "🙏 Mercy comes through God's appointed way", "✅ Forgiveness is received, not invented"]
+      : /priest|aaron|sons|anoint|garments|consecrate|wash/.test(lower)
+        ? ["👑 Priests are set apart for service", "💧 Cleansing comes before nearness", "🙌 Holy work follows God's command"]
+        : /clean|unclean|leprosy|plague|issue|wash|bathe|camp/.test(lower)
+          ? ["🧼 Uncleanness is named honestly", "⏳ Cleansing may require waiting", "🏕️ The camp is guarded around God's presence"]
+          : /offering|sacrifice|burnt|meat|peace|flour|oil|frankincense|salt|fat/.test(lower)
+            ? ["🔥 The offering is brought to the LORD", "🙌 Worship follows God's pattern", "🕊️ Nearness requires holy surrender"]
+            : ["📜 The law teaches life near God", "🙌 Holiness reaches real details", "🧠 The meaning belongs inside " + focus];
+  const opening = proseLines.slice(0, Math.min(3, proseLines.length));
+  const closing = proseLines.slice(opening.length).filter((line) => !/exact Bible wording|read slowly|empty detail|key details/i.test(line));
+
+  return [...opening, ...bullets, ...closing].slice(0, 8);
+}
+
 function normalizeRepeatedLeviticusLines(sections: PersonalLeviticusPhraseSectionInput[]) {
   const counts = new Map<string, number>();
   const normalizeLine = (line: string) => line.toLowerCase().replace(/[.?!]+$/, "").trim();
@@ -723,7 +790,7 @@ function normalizeRepeatedLeviticusLines(sections: PersonalLeviticusPhraseSectio
           return `Inside ${focus}, this detail helps Israel treat holiness with care.`;
         });
 
-        return [ensureLeviticusTitleEmoji(title), note(refined)] as [string, string];
+        return [ensureLeviticusTitleEmoji(title), note(formatDay32To35MeaningFirstLines(section, cleanTitle, refined))] as [string, string];
       }),
     };
   });

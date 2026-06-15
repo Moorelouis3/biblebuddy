@@ -1049,6 +1049,160 @@ function getExodusThirtyOneToFortyTeachingLines(section: PersonalExodusPhraseSec
   ];
 }
 
+function removeExodusThirtyOneToFortyRepeatedPhraseTitle(title: string, lines: string[]) {
+  const escapedTitle = title.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const repeatedTitlePattern = new RegExp(`^${escapedTitle}\\s+(means|explains|describes|shows|names|gives|is|stresses|teaches|captures|announces|pictures|protects|closes|deals with|turns|introduces|exposes|preserves|carries|celebrates|marks|looks|points to|points into|reminds|connects|ties|places|repeats|praises|identifies|becomes|dates|brings|treats|warns|makes|keeps|follows|begins|guards|shapes|joins|prepares|stays|matters because|also becomes|should be read as|helps)\\s+`, "i");
+
+  return lines.map((line) => {
+    let cleaned = line
+      .replace(/\bThe phrase helps the reader\b/gi, "This shows")
+      .replace(/\bThe phrase helps readers\b/gi, "This shows")
+      .replace(/\bThe wording helps a beginner see that\b/gi, "This means")
+      .replace(/\bThe wording helps beginners see that\b/gi, "This means")
+      .replace(/\bhelps the reader follow\b/gi, "shows")
+      .replace(/\bThis reminds the reader that\b/gi, "This shows that")
+      .replace(new RegExp(`\\bThrough ${escapedTitle},\\s*`, "gi"), "")
+      .replace(new RegExp(`\\bAround ${escapedTitle},\\s*`, "gi"), "Here, ")
+      .replace(new RegExp(`\\bIn ${escapedTitle},\\s*`, "gi"), "Here, ")
+      .replace(new RegExp(`${escapedTitle}\\s+helps\\s+`, "gi"), "This shows ")
+      .replace(new RegExp(`${escapedTitle}\\s+points\\s+`, "gi"), "This points ")
+      .replace(/\bThis detail God\b/gi, "God")
+      .replace(/\bhelps the reader picture\b/gi, "pictures")
+      .replace(/\bhelps the reader see\b/gi, "shows")
+      .replace(/\bhelps readers see\b/gi, "shows")
+      .replace(/\bkeeps the reader close to\b/gi, "stays close to")
+      .replace(/\bthe reader already knows\b/gi, "the surrounding story has already shown")
+      .replace(/\bthe reader\b/gi, "a beginner")
+      .replace(/\breaders\b/gi, "beginners")
+      .replace(/\bThis should be read as more than a construction note\b/gi, "This detail belongs to worship before the LORD");
+
+    cleaned = cleaned.replace(repeatedTitlePattern, (_match, verb: string) => {
+      const normalizedVerb = verb.toLowerCase();
+      if (normalizedVerb === "means") return "";
+      if (normalizedVerb === "is") return "This is ";
+      if (normalizedVerb === "turns") return "This turns ";
+      if (normalizedVerb === "looks") return "This looks ";
+      return `This ${normalizedVerb} `;
+    });
+
+    return cleaned
+      .replace(/\bThis shows explain\b/gi, "This explains")
+      .replace(/\bThis explains Moses asking for God's presence\b/gi, "Moses is asking for God's presence")
+      .replace(/\bThis stays close to what the LORD is saying or doing in this scene\b/gi, "The scene centers on what the LORD is saying or doing")
+      .replace(/\bThis should be read as more than a construction note\b/gi, "This detail belongs to worship before the LORD")
+      .replace(/\bThis reminds the reader that\b/gi, "This shows that")
+      .replace(/\bThis reminds the reader\b/gi, "This shows")
+      .replace(/^This matters because\s+/i, "")
+      .replace(/^([a-z])/, (letter) => letter.toUpperCase());
+  });
+}
+
+function getDays29To30TeachingBullets(section: PersonalExodusPhraseSectionInput, title: string) {
+  const lower = title.toLowerCase();
+
+  if (section.chapter >= 31 && section.chapter <= 32) {
+    if (/bezaleel|aholiab|wisdom|spirit|workmanship|sabbath|tables|finger of god/.test(lower)) {
+      return ["🛠️ God equips people for holy work", "🧠 Skill comes from His wisdom", "🛑 Sabbath rest still matters", "📜 The covenant is written by God"];
+    }
+    if (/calf|aaron|gold|molten|dance|anger|wrath|idolatry|sin|broken|intercession|blot/.test(lower)) {
+      return ["🐂 Israel turns to a false god", "💔 Idolatry breaks covenant trust", "⚖️ Sin brings real judgment", "🙏 Moses intercedes for the people"];
+    }
+    return ["📜 Covenant life is serious before God", "🙌 Worship must be given to the LORD alone", "⚖️ Rebellion has consequences", "🙏 Mercy is needed after sin"];
+  }
+
+  if (section.chapter >= 33 && section.chapter <= 34) {
+    if (/presence|face|glory|goodness|name|merciful|gracious|covenant|tables|shine/.test(lower)) {
+      return ["☁️ God's presence is Israel's true hope", "✨ His glory reveals His character", "📜 Covenant mercy follows judgment", "🙌 The LORD makes Himself known"];
+    }
+    return ["🏕️ Israel needs God's presence to continue", "🙏 Moses pleads for mercy", "📜 The covenant is renewed by grace", "✨ The LORD's holiness changes what people see"];
+  }
+
+  if (section.chapter >= 35 && section.chapter <= 36) {
+    if (/willing|heart|offering|wise|work|curtains|tabernacle|brought|enough|restrained/.test(lower)) {
+      return ["❤️ Willing hearts give for worship", "🛠️ Wise workers build what God commanded", "🏕️ The tabernacle takes shape", "🙌 God's dwelling is prepared through obedient service"];
+    }
+    return ["🏕️ The people build for God's presence", "📜 The work follows His command", "🤲 Gifts are offered willingly", "✨ Worship requires both generosity and skill"];
+  }
+
+  return ["📖 The phrase comes from the assigned text", "🔍 It explains a real detail in the verse", "🙌 The LORD is teaching His people", "🧠 The meaning should be clear before moving on"];
+}
+
+function formatRenderedDays29To30Lines(section: PersonalExodusPhraseSectionInput, cleanTitle: string, lines: string[]) {
+  if (section.chapter < 31 || section.chapter > 36) return lines;
+
+  const isEmojiLine = (line: string) => /^[^A-Za-z0-9'"(]/.test(line.trim());
+  const cleaned = removeExodusThirtyOneToFortyRepeatedPhraseTitle(cleanTitle, lines)
+    .map((line) => line.trim())
+    .filter(Boolean);
+  const proseLines = cleaned.filter((line) => !isEmojiLine(line));
+  const opening = proseLines.slice(0, Math.min(3, proseLines.length));
+  const closing = proseLines.slice(opening.length);
+
+  return [
+    ...opening,
+    ...getDays29To30TeachingBullets(section, cleanTitle),
+    ...closing,
+  ].slice(0, 8);
+}
+
+function formatRenderedDay31Lines(section: PersonalExodusPhraseSectionInput, cleanTitle: string, lines: string[]) {
+  if (section.chapter < 37 || section.chapter > 40) return lines;
+
+  const escapedTitle = cleanTitle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const titleStartPattern = new RegExp(`^${escapedTitle}\\s+(means|shows|gives|helps|explains|teaches|marks|names|is|are|was|were|connects|keeps|points to|prepares|forms)\\s+`, "i");
+  const isEmojiLine = (line: string) => /^[^A-Za-z0-9'"(]/.test(line.trim());
+  const cleanLine = (line: string) => {
+    let cleaned = line.trim();
+    cleaned = cleaned.replace(titleStartPattern, (_match, verb: string) => {
+      const action = verb.toLowerCase();
+      if (action === "means") return "";
+      if (action === "is") return "This is ";
+      if (action === "are") return "These are ";
+      if (action === "was") return "This was ";
+      if (action === "were") return "These were ";
+      return `This ${action} `;
+    });
+    cleaned = cleaned
+      .replace(new RegExp(`\\bThrough ${escapedTitle},\\s*`, "gi"), "")
+      .replace(new RegExp(`\\b${escapedTitle}\\b`, "gi"), "This detail")
+      .replace(/\bThis phrase\b/gi, "This")
+      .replace(/\bThe phrase\b/gi, "This")
+      .replace(/\bThe wording helps(?: a beginner| beginners| the reader| readers)?(?: see| follow| understand)? that\s*/gi, "This means ")
+      .replace(/\bThe wording\b/gi, "This")
+      .replace(/\bhelps the reader\b/gi, "shows")
+      .replace(/\bhelps readers\b/gi, "shows")
+      .replace(/\bkeeps the reader close to\b/gi, "stays with")
+      .replace(/\bthe reader\b/gi, "a beginner")
+      .replace(/\breaders\b/gi, "beginners")
+      .replace(/\bA beginner should see that\b/gi, "Notice that")
+      .replace(/\bA beginner should\b/gi, "Notice")
+      .replace(/\bThis shows explain\b/gi, "This explains")
+      .replace(/\bThis shows follow\b/gi, "This follows")
+      .replace(/\bThis helps form\b/gi, "This forms")
+      .replace(/\bThis helps explain\b/gi, "This explains")
+      .replace(/\bThis explains the finished tabernacle scene in the [^.]+/gi, "This belongs to the finished tabernacle scene")
+      .replace(/\bThis keeps a beginner focused on ordered worship in [^,]+, not rushed invention\./gi, "The scene stays focused on ordered worship before the LORD.");
+    return cleaned.replace(/^([a-z])/, (letter) => letter.toUpperCase());
+  };
+
+  const cleaned = lines.map(cleanLine).filter(Boolean);
+  const proseLines = cleaned.filter((line) => !isEmojiLine(line));
+  const emojiLines = cleaned.filter(isEmojiLine);
+  const lower = cleanTitle.toLowerCase();
+  const bullets = emojiLines.length >= 3 ? emojiLines.slice(0, 4) :
+    /cloud|glory|fire|filled|taken up/.test(lower)
+      ? ["☁️ God's presence fills the tabernacle", "🔥 The LORD guides His people", "🏕️ The camp moves with God at the center"]
+      : /garment|ephod|breastplate|mitre|crown|linen|stone|names/.test(lower)
+        ? ["👑 Priestly service is set apart", "💎 Israel is represented before God", "🧵 Beauty serves holy worship"]
+        : /altar|blood|offering|incense|laver|wash|water/.test(lower)
+          ? ["🔥 Worship happens God's way", "🩸 Sacrifice and cleansing matter", "🙌 Nearness requires holy preparation"]
+          : ["🏕️ The tabernacle is built with care", "📜 God's pattern is followed", "🙌 Holy worship is not invented"];
+  const opening = proseLines.slice(0, Math.min(3, proseLines.length));
+  const closing = proseLines.slice(opening.length).filter((line) => !/exact Bible wording|read slowly|empty detail/i.test(line));
+
+  return [...opening, ...bullets, ...closing].slice(0, 8);
+}
+
 function normalizeRepeatedExodusThirtyOneToFortyLines(sections: PersonalExodusPhraseSectionInput[]) {
   const counts = new Map<string, number>();
   const normalizeLine = (line: string) => line.toLowerCase().replace(/[.?!]+$/, "").trim();
@@ -1087,7 +1241,7 @@ function normalizeRepeatedExodusThirtyOneToFortyLines(sections: PersonalExodusPh
         }
 
         if (section.chapter >= 31 && kept.length >= 7) {
-          return [ensureExodusThirtyOneToFortyTitleEmoji(title), note(kept)] as [string, string];
+          return [ensureExodusThirtyOneToFortyTitleEmoji(title), note(formatRenderedDay31Lines(section, cleanTitle, formatRenderedDays29To30Lines(section, cleanTitle, kept)))] as [string, string];
         }
 
         for (const line of getExodusThirtyOneToFortyTeachingLines(section, cleanTitle)) {
@@ -1106,7 +1260,7 @@ function normalizeRepeatedExodusThirtyOneToFortyLines(sections: PersonalExodusPh
           kept.push(additions[kept.length % additions.length]);
         }
 
-        return [ensureExodusThirtyOneToFortyTitleEmoji(title), note(kept)] as [string, string];
+        return [ensureExodusThirtyOneToFortyTitleEmoji(title), note(formatRenderedDay31Lines(section, cleanTitle, formatRenderedDays29To30Lines(section, cleanTitle, kept)))] as [string, string];
       }),
     };
   });

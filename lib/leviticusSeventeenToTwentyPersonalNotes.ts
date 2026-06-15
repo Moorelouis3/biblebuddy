@@ -15,7 +15,65 @@ const card = (
     closing,
   ]);
 
-export const LEVITICUS_17_20_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionInput[] = [
+function stripDay36Title(title: string) {
+  return title.replace(/^[^A-Za-z0-9']+\s*/, "").trim();
+}
+
+function formatDay36MeaningFirstLines(title: string, lines: string[]) {
+  const cleanTitle = stripDay36Title(title);
+  const escapedTitle = cleanTitle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const titleStartPattern = new RegExp(`^${escapedTitle}\\s+(means|shows|gives|helps|explains|teaches|marks|names|is|are|was|were|connects|keeps|points to|prepares|refers to|describes)\\s+`, "i");
+  const isEmojiLine = (line: string) => /^[^A-Za-z0-9'"(]/.test(line.trim());
+  const cleanLine = (line: string) => {
+    let cleaned = line.trim();
+    cleaned = cleaned.replace(titleStartPattern, (_match, verb: string) => {
+      const action = verb.toLowerCase();
+      if (action === "means" || action === "refers to") return "";
+      if (action === "is") return "This is ";
+      if (action === "are") return "These are ";
+      if (action === "was") return "This was ";
+      if (action === "were") return "These were ";
+      return `This ${action} `;
+    });
+    cleaned = cleaned
+      .replace(new RegExp(`\\b${escapedTitle}\\b`, "gi"), "This detail")
+      .replace(/\bThis phrase reminds us that\b/gi, "")
+      .replace(/\bThis phrase explains\b/gi, "This explains")
+      .replace(/\bThe phrase makes\b/gi, "The command is")
+      .replace(/\bThe phrase names\b/gi, "This names")
+      .replace(/\bThe phrase shows\b/gi, "This shows")
+      .replace(/\bThis phrase\b/gi, "This")
+      .replace(/\bThe phrase\b/gi, "This")
+      .replace(/\bGod slows the reader down so\b/gi, "God names the relationship so")
+      .replace(/\bthe reader\b/gi, "a beginner")
+      .replace(/\breaders\b/gi, "beginners")
+      .replace(/\bhelps beginners\b/gi, "shows beginners")
+      .replace(/\bhelps explain\b/gi, "explains");
+    return cleaned.replace(/^([a-z])/, (letter) => letter.toUpperCase());
+  };
+
+  const cleaned = lines.map(cleanLine).filter(Boolean);
+  const proseLines = cleaned.filter((line) => !isEmojiLine(line));
+  const emojiLines = cleaned.filter(isEmojiLine);
+
+  return [
+    ...proseLines.slice(0, Math.min(3, proseLines.length)),
+    ...emojiLines.slice(0, 4),
+    ...proseLines.slice(Math.min(3, proseLines.length)),
+  ].slice(0, 8);
+}
+
+function polishDay36Section(section: PersonalLeviticusPhraseSectionInput): PersonalLeviticusPhraseSectionInput {
+  return {
+    ...section,
+    phrases: section.phrases.map(([title, content]) => [
+      title,
+      note(formatDay36MeaningFirstLines(title, content.split(/\n+/).map((line) => line.trim()).filter(Boolean))),
+    ]),
+  };
+}
+
+const RAW_LEVITICUS_17_20_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionInput[] = [
   {
     chapter: 17,
     startVerse: 1,
@@ -457,3 +515,5 @@ export const LEVITICUS_17_20_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionIn
     ],
   },
 ];
+
+export const LEVITICUS_17_20_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionInput[] = RAW_LEVITICUS_17_20_PERSONAL_SECTIONS.map(polishDay36Section);
