@@ -1,4 +1,5 @@
 import type { PersonalLeviticusPhraseSectionInput } from "./leviticusOneToTenPersonalNotes";
+import { DAY_61_80_RUTH_1_4_SUPPLEMENTAL_SECTIONS } from "./daySixtyOneToEightySupplementalPersonalNotes";
 
 const e = (...codes: number[]) => String.fromCodePoint(...codes);
 
@@ -199,4 +200,5 @@ export const RUTH_1_4_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionInput[] =
     phrase(I.family, "Obed Begat Jesse", "Obed becomes the father of Jesse.", [`${I.family} Jesse`, `${I.seed} Next generation`, `${I.blessing} Hidden preparation`], "The phrase moves the reader toward David's family."),
     phrase(I.crown, "Jesse Begat David", "Ruth ends by pointing to King David.", [`${I.crown} David`, `${I.seed} Royal line`, `${I.blessing} God's larger plan`], "The ending reveals that ordinary faithfulness can belong to God's enormous story."),
   ]),
+  ...DAY_61_80_RUTH_1_4_SUPPLEMENTAL_SECTIONS,
 ];

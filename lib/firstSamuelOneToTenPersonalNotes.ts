@@ -1,4 +1,5 @@
 import type { PersonalLeviticusPhraseSectionInput } from "./leviticusOneToTenPersonalNotes";
+import { DAY_61_80_FIRST_SAMUEL_1_10_SUPPLEMENTAL_SECTIONS } from "./daySixtyOneToEightySupplementalPersonalNotes";
 
 const e = (...codes: number[]) => String.fromCodePoint(...codes);
 
@@ -392,4 +393,5 @@ export const FIRST_SAMUEL_1_10_PERSONAL_SECTIONS: PersonalLeviticusPhraseSection
     phrase(I.eye, "See Ye Him Whom The LORD Hath Chosen", "Samuel presents Saul as the LORD's chosen king.", [`${I.eye} Look`, `${I.crown} Chosen`, `${I.people} Israel sees`], "The phrase marks the public beginning of Saul's reign."),
     phrase(I.warning, "The Children Of Belial Said, How Shall This Man Save Us", "some worthless men reject Saul immediately.", [`${I.warning} Rejection`, `${I.question} Doubt`, `${I.crown} Divided response`], "The phrase shows tension around Saul from the very beginning."),
   ]),
+  ...DAY_61_80_FIRST_SAMUEL_1_10_SUPPLEMENTAL_SECTIONS,
 ];

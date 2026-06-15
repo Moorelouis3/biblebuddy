@@ -1,4 +1,5 @@
 import type { PersonalLeviticusPhraseSectionInput } from "./leviticusOneToTenPersonalNotes";
+import { DAY_61_80_FIRST_SAMUEL_11_30_SUPPLEMENTAL_SECTIONS } from "./daySixtyOneToEightySupplementalPersonalNotes";
 
 const e = (...codes: number[]) => String.fromCodePoint(...codes);
 
@@ -549,4 +550,7 @@ const sections: SectionSeed[] = [
   ]],
 ];
 
-export const FIRST_SAMUEL_11_30_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionInput[] = sections.map(section);
+export const FIRST_SAMUEL_11_30_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionInput[] = [
+  ...sections.map(section),
+  ...DAY_61_80_FIRST_SAMUEL_11_30_SUPPLEMENTAL_SECTIONS,
+];

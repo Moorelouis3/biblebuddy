@@ -2513,13 +2513,30 @@ function getDay24ExodusVisualLines(title: string): string[] {
 }
 
 function formatDay24ExodusLines(title: string, lines: string[]) {
-  const hasVisualList = lines.filter((line) => /^[^\w\s"']/.test(line.trim())).length >= 2;
-  if (hasVisualList) return note(lines.slice(0, 8));
+  const cleanedLines = removeDay24RepeatedPhraseTitle(title, lines);
+  const hasVisualList = cleanedLines.filter((line) => /^[^\w\s"']/.test(line.trim())).length >= 2;
+  if (hasVisualList) return note(cleanedLines.slice(0, 8));
 
-  const first = lines.slice(0, Math.min(3, lines.length));
-  const rest = lines.slice(first.length);
+  const first = cleanedLines.slice(0, Math.min(3, cleanedLines.length));
+  const rest = cleanedLines.slice(first.length);
 
   return note([...first, ...getDay24ExodusVisualLines(title), ...rest].slice(0, 8));
+}
+
+function removeDay24RepeatedPhraseTitle(title: string, lines: string[]) {
+  const escapedTitle = title.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const repeatedTitlePattern = new RegExp(`^${escapedTitle}\\s+(means|explains|describes|shows|names|gives|is|stresses|teaches|captures|announces|pictures|protects|closes|deals with)\\s+`, "i");
+
+  return lines.map((line, index) => {
+    if (index !== 0) return line;
+
+    return line.replace(repeatedTitlePattern, (_match, verb: string) => {
+      const normalizedVerb = verb.toLowerCase();
+      if (normalizedVerb === "means") return "";
+      if (normalizedVerb === "is") return "This is ";
+      return `This ${normalizedVerb} `;
+    }).replace(/^([a-z])/, (letter) => letter.toUpperCase());
+  });
 }
 
 function explainDay24Exodus9To10Phrase(section: PersonalExodusPhraseSectionInput, title: string): string {
@@ -2530,6 +2547,48 @@ function explainDay24Exodus9To10Phrase(section: PersonalExodusPhraseSectionInput
       if (item && !lines.includes(item)) lines.push(item);
     }
   };
+  const exactDay24Explanation: Record<string, string[]> = {
+    "let my people go, that they may serve me": [
+      "Let My People Go, That They May Serve Me means God is commanding Pharaoh to release Israel for worship.",
+      "Israel is not being rescued simply so they can leave Egypt.",
+      "God is freeing them so they can belong to Him and serve Him.",
+      "🚪 Israel must be released",
+      "🙌 God's people must worship Him",
+      "🔒 Pharaoh has no right to keep them",
+      "Freedom in Exodus means leaving bondage so God's people can live under God's rule.",
+    ],
+    "the lord hardened pharaoh's heart": [
+      "The LORD Hardened Pharaoh's Heart means Pharaoh's stubborn refusal is now being handed over to judgment.",
+      "Pharaoh has resisted God's command again and again.",
+      "After the darkness, his heart still remains locked against the LORD.",
+      "🔒 Pharaoh remains hard",
+      "🌑 Darkness does not humble him",
+      "⚖️ Final judgment is near",
+      "A hard heart can stand in darkness and still refuse the light of God's command.",
+    ],
+    "as the lord had spoken by moses": [
+      "As The LORD Had Spoken By Moses means Pharaoh's refusal happened exactly as God had already said.",
+      "Moses is not guessing, and Pharaoh is not surprising God.",
+      "The Exodus is unfolding under the LORD's word.",
+      "📜 God spoke beforehand",
+      "✅ God's word came true",
+      "🧭 The rescue stays under God's control",
+      "God's word is steering the Exodus, even while Pharaoh keeps resisting.",
+    ],
+    "cast them into the red sea": [
+      "Cast Them Into The Red Sea means the LORD removed the locusts by driving them into the sea.",
+      "Egypt did not solve the plague by its own power.",
+      "The God who brought the swarm also carried it away.",
+      "🌊 Locusts are cast into the Red Sea",
+      "🦗 The plague is fully removed",
+      "🙌 The LORD controls the wind and sea",
+      "The LORD rules both Egypt's land and the waters beyond it.",
+    ],
+  };
+
+  if (exactDay24Explanation[lower]) {
+    return note(removeDay24RepeatedPhraseTitle(title, exactDay24Explanation[lower]));
+  }
 
   if (lower === "upon thy cattle") {
     add("Upon Thy Cattle means the plague will strike Egypt's livestock.", "Cattle here includes the animals Egypt depended on for food, work, travel, and wealth.", "The warning is practical and direct: Pharaoh's refusal will touch Egypt's daily life.", "The LORD is not only confronting Pharaoh's palace. He is confronting the whole system that profits from Israel's bondage.");
@@ -2552,7 +2611,7 @@ function explainDay24Exodus9To10Phrase(section: PersonalExodusPhraseSectionInput
   } else if (lower === "hail, and fire mingled with the hail") {
     add("Hail, And Fire Mingled With The Hail means the storm was more than ordinary bad weather.", "The hail crushed what stood in the field, and fire made the scene terrifying.", "Egypt is learning that the sky is not controlled by Egypt's gods or Pharaoh's power.", "The LORD commands the heavens as easily as He commands the river and the dust.");
   } else if (lower === "such as there was none like it") {
-    add("Such As There Was None Like It means this storm was unmatched in Egypt's memory.", "The phrase tells the reader not to treat the hail as a normal seasonal event.", "This was a unique act of judgment tied to God's warning.", "Pharaoh is being shown that the LORD's power is not one more Egyptian weather pattern.");
+    add("Such As There Was None Like It means this storm was unmatched in Egypt's memory.", "This was not a normal seasonal storm.", "It was a unique act of judgment tied to God's warning.", "Pharaoh is being shown that the LORD's power is not one more Egyptian weather pattern.");
   } else if (lower === "the hail smote throughout all the land of egypt") {
     add("The Hail Smote Throughout All The Land Of Egypt means the plague struck broadly across Egypt.", "Smote means hit, struck, or beat down.", "The storm damaged people, animals, trees, and crops in the field.", "Pharaoh's refusal brought judgment beyond the palace and into the land he ruled.");
   } else if (lower === "only in the land of goshen") {
@@ -2562,9 +2621,9 @@ function explainDay24Exodus9To10Phrase(section: PersonalExodusPhraseSectionInput
   } else if (lower === "i know that ye will not yet fear the lord god") {
     add("I Know That Ye Will Not Yet Fear The LORD God means Moses sees through Pharaoh's temporary confession.", "Pharaoh wants the thunder and hail gone, but he has not truly bowed to the LORD.", "Fear the LORD means reverence that leads to surrender.", "Moses knows Pharaoh's words are still ahead of his heart.");
   } else if (lower === "the flax and the barley was smitten") {
-    add("The Flax And The Barley Was Smitten explains which crops were destroyed by the hail.", "Flax was used for linen, and barley was an important grain crop.", "The text notes they were mature enough to be damaged.", "This detail helps the reader see the economic cost of Pharaoh's refusal.");
+    add("The Flax And The Barley Was Smitten means Egypt's mature flax and barley crops were destroyed by the hail.", "Flax was used for linen, and barley was an important grain crop.", "Because those crops were already developed, the storm could ruin them.", "Pharaoh's refusal is now costing Egypt clothing material, food, and trade.");
   } else if (lower === "the wheat and the rye were not smitten") {
-    add("The Wheat And The Rye Were Not Smitten means some later crops survived the hail because they had not grown up yet.", "This is not random farming trivia.", "It prepares the reader for the locusts in the next chapter.", "What the hail leaves behind, the locusts will later devour.");
+    add("The Wheat And The Rye Were Not Smitten means some later crops survived the hail because they had not grown up yet.", "Wheat and rye were still low or hidden enough not to be ruined by that storm.", "Egypt still has something left after the hail.", "What the hail leaves behind, the locusts will later devour.");
   } else if (lower === "when pharaoh saw") {
     add("When Pharaoh Saw means Pharaoh responds after relief, not before it.", "He sees that the rain, hail, and thunder have stopped.", "That moment reveals what is really in him.", "Instead of mercy softening him, relief gives him room to harden again.");
   } else if (lower === "he sinned yet more") {
@@ -2588,7 +2647,7 @@ function explainDay24Exodus9To10Phrase(section: PersonalExodusPhraseSectionInput
   } else if (lower === "before them there were no such locusts") {
     add("Before Them There Were No Such Locusts means this swarm was unmatched.", "The text wants the reader to feel the scale of the plague.", "This was not an ordinary insect problem.", "It was a sign of judgment unlike anything Egypt had seen.");
   } else if (lower === "they covered the face of the whole earth") {
-    add("They Covered The Face Of The Whole Earth means the locusts were so many that the ground seemed hidden.", "Face of the earth is a Bible way of speaking about the surface of the land.", "The image helps beginners picture the swarm's thickness.", "Egypt's fields were overwhelmed under Pharaoh's continued refusal.");
+    add("They Covered The Face Of The Whole Earth means the locusts were so many that the ground seemed hidden.", "Face of the earth is a Bible way of speaking about the surface of the land.", "The swarm was thick enough to cover what people normally saw under their feet.", "Egypt's fields were overwhelmed under Pharaoh's continued refusal.");
   } else if (lower === "there remained not any green thing") {
     add("There Remained Not Any Green Thing means the locusts finished what the hail left.", "Green thing refers to living plant growth.", "The plague strips Egypt's remaining food supply.", "The land that Pharaoh ruled is being emptied by the God Pharaoh refused.");
   } else if (lower === "the lord turned a mighty strong west wind") {
@@ -2620,7 +2679,7 @@ function explainDay24Exodus9To10Phrase(section: PersonalExodusPhraseSectionInput
   } else if (lower === "there remained not one locust" || lower === "not one locust") {
     add(`${title} means the LORD removed the locusts completely.`, "The same God who brought the swarm can take the swarm away.", "Egypt does not solve the plague by its own power.", "\u{1F997} Locusts gone", "\u{1F32C}\u{FE0F} Wind obeys", "\u{1F64C} The LORD removes", "The phrase shows total relief.", "But Pharaoh still refuses after mercy.");
   } else if (lower === "they saw not one another") {
-    add("They Saw Not One Another means the darkness was so thick that normal human connection stopped.", "People could not see the faces of those around them.", "The plague isolated people inside the same land.", "\u{1F311} Darkness", "\u{1F648} Could not see", "\u{23F8}\u{FE0F} Life stopped", "The phrase helps the reader feel how heavy the darkness was.", "Egypt's daily life is shut down by the LORD's command.");
+    add("They Saw Not One Another means the darkness was so thick that normal human connection stopped.", "People could not see the faces of those around them.", "The plague isolated people inside the same land.", "\u{1F311} Darkness covered Egypt", "\u{1F648} Neighbors could not see each other", "\u{23F8}\u{FE0F} Daily life stopped", "Egypt's daily life is shut down by the LORD's command.");
   } else if (lower.includes("nothing die") || lower.includes("not one")) {
     add(`${title} stresses how complete God's protection was.`, "Pharaoh checks the report and cannot explain it away.", "Egypt's livestock suffered, but Israel's were preserved.", "✅ Not one", "🐄 Preserved cattle", "👀 Evidence Pharaoh could see", "The problem is not lack of proof. The problem is Pharaoh's hard heart.");
   } else if (lower.includes("tomorrow") || lower.includes("about this time")) {
@@ -2690,7 +2749,7 @@ function explainDay24Exodus9To10Phrase(section: PersonalExodusPhraseSectionInput
   } else if (lower.includes("get thee from me") || lower.includes("face no more") || lower.includes("spoken well")) {
     add(`${title} closes the public confrontation between Moses and Pharaoh.`, "Pharaoh thinks he is controlling access by threatening Moses.", "Moses agrees that this meeting is finished, but God's final word is still coming.", "🚪 Conversation closed", "👑 Threatening king", "⏳ Final plague near", "The king who kept saying no is about to face the judgment he cannot dismiss.");
   } else {
-    add(`${title} keeps the reader close to the wording of the plague story.`, "The surrounding verses show Pharaoh, Egypt, Israel, and the LORD moving toward the final plague.", "📖 Scripture text", "🔍 Phrase meaning", "🧠 Story understanding", `${title} lets the actual words teach the story.`);
+    add(`${title} names one concrete part of the plague story that should be understood directly.`, "The surrounding verses show Pharaoh resisting, Egypt suffering, Israel being preserved, and the LORD moving toward the final plague.", "📖 The phrase comes from the Scripture text", "🔍 Its meaning belongs to the plague scene", "🧠 It clarifies what God is doing", `${title} should be read as part of the LORD's direct confrontation with Pharaoh.`);
   }
 
   return formatDay24ExodusLines(title, lines);

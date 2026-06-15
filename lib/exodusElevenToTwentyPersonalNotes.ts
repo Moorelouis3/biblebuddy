@@ -540,6 +540,22 @@ function makeDay24Exodus11To12PhraseCard(section: PersonalExodusPhraseSectionInp
   return [`📌 ${title}`, explainDay24Exodus11To12Phrase(section, title)];
 }
 
+function removeDay24RepeatedPhraseTitle(title: string, lines: string[]) {
+  const escapedTitle = title.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const repeatedTitlePattern = new RegExp(`^${escapedTitle}\\s+(means|explains|describes|shows|names|gives|is|stresses|teaches|captures|announces|pictures|protects|closes|deals with)\\s+`, "i");
+
+  return lines.map((line, index) => {
+    if (index !== 0) return line;
+
+    return line.replace(repeatedTitlePattern, (_match, verb: string) => {
+      const normalizedVerb = verb.toLowerCase();
+      if (normalizedVerb === "means") return "";
+      if (normalizedVerb === "is") return "This is ";
+      return `This ${normalizedVerb} `;
+    }).replace(/^([a-z])/, (letter) => letter.toUpperCase());
+  });
+}
+
 function explainDay24Exodus11To12Phrase(section: PersonalExodusPhraseSectionInput, title: string): string {
   const lower = title.toLowerCase();
   const lines: string[] = [];
@@ -662,7 +678,7 @@ function explainDay24Exodus11To12Phrase(section: PersonalExodusPhraseSectionInpu
   } else if (lower.includes("great anger")) {
     add(`${title} shows Moses leaving Pharaoh with holy seriousness.`, "Pharaoh's refusal has endangered the whole land.", "Moses understands that final judgment is now near.", "🔥 Anger", "📣 Warning rejected", "⚖️ Judgment near", "Stubborn sin should grieve and anger God's messenger.");
   } else if (lower.includes("not hearken") || lower.includes("wonders may be multiplied")) {
-    add(`${title} reminds the reader that Pharaoh's refusal will not stop God's plan.`, "His hard heart makes the judgment story longer, but not stronger than God.", "The LORD will use even Pharaoh's resistance to display His power.", "🔒 Refusal", "⚡ Wonders", "🌍 God's name made known", "The king's no becomes the stage where God's authority is seen more clearly.");
+    add(`${title} means Pharaoh's refusal will not stop God's plan.`, "His hard heart makes the judgment story longer, but not stronger than God.", "The LORD will use even Pharaoh's resistance to display His power.", "🔒 Pharaoh refuses God's word", "⚡ The LORD multiplies His wonders", "🌍 God's name is made known", "The king's no becomes the place where God's authority is seen more clearly.");
   } else if (lower.includes("beginning of months")) {
     add(`${title} means Israel's calendar is being rebuilt around redemption.`, "God makes their rescue the starting point for how they count sacred time.", "Their year will now remember the night He brought them out.", "📅 New calendar", "🚪 New beginning", "🙌 Rescue remembered", "Freedom becomes the center of Israel's worship rhythm.");
   } else if (lower.includes("tenth day") || lower.includes("fourteenth day")) {
@@ -692,7 +708,7 @@ function explainDay24Exodus11To12Phrase(section: PersonalExodusPhraseSectionInpu
   } else if (lower.includes("seven days") || lower.includes("cut off") || lower.includes("soul shall be cut off")) {
     add(`${title} shows the seriousness of the feast after Passover night.`, "Israel was not free to treat God's memorial however they wanted.", "The command shaped the whole community's worship.", "📅 Seven days", "🚫 No leaven", "⚠️ Serious command", "God's rescue creates a people who remember Him with obedience.");
   } else if (lower.includes("armies")) {
-    add(`${title} describes Israel leaving Egypt in ordered groups under God's command.`, "They are not a mob escaping by luck.", "The enslaved people are being formed into the LORD's organized people.", "🚶 People moving", "🏕️ Ordered groups", "🙌 Led by God", "The word helps readers see dignity and purpose in the Exodus departure.");
+    add(`${title} describes Israel leaving Egypt in ordered groups under God's command.`, "They are not a mob escaping by luck.", "The enslaved people are being formed into the LORD's organized people.", "🚶 Israel moves out together", "🏕️ The people leave in ordered groups", "🙌 The LORD leads former slaves with purpose", "The Exodus departure has dignity because God is forming Israel into His people.");
   } else if (lower === "there shall no stranger eat thereof") {
     add("There Shall No Stranger Eat Thereof means an uncovenanted outsider may not treat Passover as an ordinary meal.", "Stranger means someone outside Israel's covenant life.", "The rule does not say outsiders are worthless.", "It says the rescue meal is holy and must be entered through God's covenant order.");
   } else if (lower.includes("stranger") || lower.includes("born in the land") || lower.includes("homeborn")) {
@@ -726,16 +742,16 @@ function explainDay24Exodus11To12Phrase(section: PersonalExodusPhraseSectionInpu
   } else if (lower.includes("one house")) {
     add(`${title} keeps the Passover meal gathered and whole.`, "The lamb was not to be treated casually or scattered around.", "The household setting helped preserve the meaning of the meal.", "🏠 One house", "🐑 One lamb", "🍽️ Shared meal", "The rescue story was meant to be remembered together.");
   } else if (lower.includes("break a bone")) {
-    add(`${title} protects the wholeness of the Passover lamb.`, "The lamb was eaten according to God's instruction, not handled however people wanted.", "Later readers also connect this language with the suffering of Jesus, the true Passover Lamb.", "🐑 Lamb kept whole", "📜 Careful command", "✝️ Later Bible connection", "Even small details in Passover teach reverence for God's rescue.");
+    add(`${title} protects the wholeness of the Passover lamb.`, "The lamb was eaten according to God's instruction, not handled however people wanted.", "The command teaches reverence for the sacrifice God provided on the rescue night.", "🐑 The lamb is kept whole", "📜 The meal follows God's command", "🙌 Rescue is received with reverence", "Even small Passover details teach Israel to treat God's rescue as holy.");
   } else if (lower.includes("one law")) {
     add(`${title} teaches that the same covenant rule applies to Israelite and joined stranger.`, "God does not create one holy standard for insiders and another for outsiders who join them.", "The worshiping community is ordered under one command.", "📜 One law", "🏠 Homeborn", "🧍 Stranger", "The line holds together holiness, welcome, and obedience.");
   } else if (lower.includes("as the lord commanded") || lower.includes("did bring")) {
     add(`${title} closes the chapter by showing God's word fulfilled in action.`, "Israel does what the LORD commanded, and the LORD brings them out.", "The long rescue promise is no longer only spoken; it is happening on the road.", "✅ Command obeyed", "🚪 Brought out", "🙌 The LORD saves", "Obedience and deliverance stand together.");
   } else {
-    add(`${title} keeps the reader close to the Passover wording.`, "The surrounding verses move through final judgment, blood-marked shelter, worship, memory, and departure.", "📖 Scripture text", "🔍 Phrase meaning", "🧠 Rescue story", `${title} lets the actual words teach the rescue story.`);
+    add(`${title} names one concrete part of the Passover and deliverance account.`, "The surrounding verses move through final judgment, blood-marked shelter, worship, memory, and departure.", "📖 The phrase comes from the Scripture text", "🔍 Its meaning belongs to Passover night", "🧠 It clarifies God's rescue", `${title} should be understood as part of the LORD bringing Israel out of Egypt.`);
   }
 
-  return note(lines.slice(0, 8));
+  return note(removeDay24RepeatedPhraseTitle(title, lines).slice(0, 8));
 }
 
 function deepenDay24Exodus11To12PhraseCards(section: PersonalExodusPhraseSectionInput): PersonalExodusPhraseSectionInput {

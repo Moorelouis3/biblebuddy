@@ -1,4 +1,5 @@
 import type { PersonalLeviticusPhraseSectionInput } from "./leviticusOneToTenPersonalNotes";
+import { DAY_61_80_JUDGES_16_21_SUPPLEMENTAL_SECTIONS } from "./daySixtyOneToEightySupplementalPersonalNotes";
 
 const e = (...codes: number[]) => String.fromCodePoint(...codes);
 
@@ -323,4 +324,5 @@ export const JUDGES_16_21_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionInput
     phrase(I.crown, "In Those Days There Was No King In Israel", "the book closes by naming the lack of righteous leadership.", [`${I.crown} No king`, `${I.warning} No order`, `${I.book} Book summary`], "The phrase prepares the reader to long for better leadership."),
     phrase(I.eye, "Every Man Did That Which Was Right In His Own Eyes", "everyone follows personal judgment instead of God's word.", [`${I.eye} Own eyes`, `${I.broken} Moral collapse`, `${I.prayer} Need for God's rule`], "Judges ends by diagnosing the heart problem behind the whole book."),
   ]),
+  ...DAY_61_80_JUDGES_16_21_SUPPLEMENTAL_SECTIONS,
 ];

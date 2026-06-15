@@ -1,5 +1,6 @@
 import { JUDGES_DEEP_NOTES } from "./judgesDeepNotes";
 import { buildGeneratedPersonalSections } from "./bibleYearGeneratedPersonalSections";
+import { DAY_61_80_JUDGES_1_15_SUPPLEMENTAL_SECTIONS } from "./daySixtyOneToEightySupplementalPersonalNotes";
 
 const generatedJudgesOneToNineSections = buildGeneratedPersonalSections({
   book: "Judges",
@@ -266,4 +267,8 @@ const judgesTenToFifteenFallbackSections: GeneratedJudgesSection[] = [
   ]),
 ];
 
-export const JUDGES_1_15_PERSONAL_SECTIONS = [...generatedJudgesOneToNineSections, ...judgesTenToFifteenFallbackSections];
+export const JUDGES_1_15_PERSONAL_SECTIONS = [
+  ...generatedJudgesOneToNineSections,
+  ...judgesTenToFifteenFallbackSections,
+  ...DAY_61_80_JUDGES_1_15_SUPPLEMENTAL_SECTIONS,
+];

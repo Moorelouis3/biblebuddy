@@ -1,8 +1,293 @@
 import { JOSHUA_DEEP_NOTES } from "./joshuaDeepNotes";
 import { buildGeneratedPersonalSections } from "./bibleYearGeneratedPersonalSections";
 import type { PersonalLeviticusPhraseSectionInput } from "./leviticusOneToTenPersonalNotes";
+import { DAY_59_JOSHUA_12_15_PERSONAL_SECTIONS } from "./dayFiftyNineJoshuaPersonalNotes";
 
 const note = (lines: string[]) => lines.join("\n\n");
+
+const upgradedDayFiftyNineOpeningSections: PersonalLeviticusPhraseSectionInput[] = [
+  {
+    chapter: 12,
+    startVerse: 1,
+    endVerse: 6,
+    reference: "Joshua 12:1-6",
+    title: "🌱 Now These Are The Kings Of The Land",
+    icon: "🌱",
+    phrases: [
+      [
+        "🌱 Now These Are The Kings Of The Land",
+        note([
+          "Joshua is pausing to name the defeated kings before the land is divided.",
+          "This is not a random list.",
+          "It is a record of real victories God gave Israel before they received their inheritance.",
+          "👑 Kings had ruled the land",
+          "⚔️ Israel had fought real enemies",
+          "🗺️ The land had real boundaries",
+          "📜 The victories are being remembered",
+          "The phrase tells the reader that inheritance in Joshua is built on God's faithfulness in actual history.",
+        ]),
+      ],
+      [
+        "👥 Which The Children Of Israel Smote",
+        note([
+          "Israel did not simply walk into empty territory.",
+          "The people had to face kings, armies, fortified places, and long-standing powers in the land.",
+          "👥 Israel is the covenant people",
+          "⚔️ Smote means they defeated those kings in battle",
+          "🛡️ The victories were costly and public",
+          "🙏 The LORD had gone before them",
+          "The phrase keeps the reader from treating the land as an abstract promise. The promise was received through real deliverance.",
+        ]),
+      ],
+      [
+        "🗺️ Possessed Their Land",
+        note([
+          "Possessed means Israel took hold of the land as an inheritance.",
+          "Joshua is showing that the land moved from enemy control into covenant possession.",
+          "🗺️ The land changed hands",
+          "👥 Tribes would now live there",
+          "📜 God's promise was becoming visible",
+          "🏠 Possession meant future homes, fields, and cities",
+          "The phrase explains why these victories matter: defeated kings make way for settled inheritance.",
+        ]),
+      ],
+      [
+        "🌅 On The Other Side Jordan Toward The Rising Of The Sun",
+        note([
+          "This points to the land east of the Jordan River.",
+          "Toward the rising of the sun means the eastern side, where Reuben, Gad, and half of Manasseh received land.",
+          "🌅 East of Jordan",
+          "🏞️ Before the main crossing into Canaan",
+          "👥 The eastern tribes are remembered",
+          "🧭 The map is being oriented",
+          "Those words place the first victories east of the Jordan before the chapter moves to the western victories.",
+        ]),
+      ],
+      [
+        "🏞️ From The River Arnon Unto Mount Hermon",
+        note([
+          "Joshua gives the range of the conquered territory.",
+          "The River Arnon marks the southern side, and Mount Hermon points far north.",
+          "🏞️ Arnon marks one edge",
+          "⛰️ Hermon marks another edge",
+          "🗺️ The victory covers a wide region",
+          "📜 The record is specific, not vague",
+          "The phrase teaches the reader that Bible geography is part of the story of promise fulfilled.",
+        ]),
+      ],
+      [
+        "🌄 All The Plain On The East",
+        note([
+          "The plain on the east describes the open region east of the Jordan.",
+          "Joshua is summarizing the territory Moses' generation had already conquered before the western land was divided.",
+          "🌄 Eastern plain",
+          "🗺️ Real territory",
+          "👥 Assigned to real tribes",
+          "🙏 Remembered as part of God's gift",
+          "The phrase keeps the eastern inheritance connected to the whole story of Israel receiving the land.",
+        ]),
+      ],
+      [
+        "👤 Moses The Servant Of The LORD",
+        note([
+          "Moses is remembered as the LORD's servant even though Joshua is now leading.",
+          "The chapter honors the earlier victories God gave through Moses before listing Joshua's victories west of the Jordan.",
+          "👤 Moses served the LORD",
+          "📜 His work still matters",
+          "➡️ Joshua continues the mission",
+          "🙏 The same LORD stands behind both leaders",
+          "The phrase shows continuity: the leader changes, but God's promise keeps moving forward.",
+        ]),
+      ],
+    ],
+  },
+  {
+    chapter: 12,
+    startVerse: 7,
+    endVerse: 8,
+    reference: "Joshua 12:7-8",
+    title: "🧭 On This Side Jordan On The West",
+    icon: "🧭",
+    phrases: [
+      [
+        "🧭 On This Side Jordan On The West",
+        note([
+          "Joshua now turns from the eastern victories under Moses to the western victories under Joshua.",
+          "The wording marks the chapter's structure: Moses' victories east of Jordan, then Joshua's victories west of Jordan.",
+          "🌅 East victories came first",
+          "🌄 West victories are now listed",
+          "👤 Moses and Joshua are both remembered",
+          "📜 The whole land story is being gathered together",
+          "Joshua 12 is not filler. It is a victory record for both sides of the Jordan.",
+        ]),
+      ],
+      [
+        "🏔️ From Baal-gad In The Valley Of Lebanon",
+        note([
+          "Baal-gad marks the northern reach of the western conquest.",
+          "The name helps place the victories on an actual map instead of leaving them as vague battle stories.",
+          "🏔️ Northern boundary",
+          "🗺️ Real location",
+          "⚔️ Conquest remembered",
+          "📜 The record is specific",
+          "The phrase shows that Israel's inheritance had shape, distance, and history.",
+        ]),
+      ],
+      [
+        "⛰️ Unto The Mount Halak",
+        note([
+          "Mount Halak marks the southern reach of the territory being summarized.",
+          "Together with Baal-gad, it frames the land Joshua conquered west of the Jordan.",
+          "⛰️ Southern marker",
+          "🧭 Boundary language",
+          "🏞️ The land is measured",
+          "🙏 The promise becomes visible",
+          "The wording traces the sweep of the conquest from north to south.",
+        ]),
+      ],
+      [
+        "🏠 For A Possession According To Their Divisions",
+        note([
+          "The conquered land is not left as a battlefield.",
+          "It is given to Israel's tribes as possession according to their divisions.",
+          "🏠 Possession means settled inheritance",
+          "👥 Divisions means tribal allotments",
+          "📜 The land is ordered",
+          "🕊️ Victory moves toward home",
+          "The phrase shows why the king list matters: conquest prepares the way for inheritance.",
+        ]),
+      ],
+      [
+        "🏞️ In The Mountains, And In The Valleys",
+        note([
+          "Joshua names different kinds of land because the conquest covered more than one kind of terrain.",
+          "Israel's inheritance included mountains, valleys, plains, springs, wilderness, and southern country.",
+          "🏞️ Mountains were included",
+          "🌾 Valleys were included",
+          "💧 Springs were included",
+          "🏜️ Wilderness was included",
+          "The land being received is broad and varied, not one small battlefield.",
+        ]),
+      ],
+    ],
+  },
+  {
+    chapter: 14,
+    startVerse: 6,
+    endVerse: 11,
+    reference: "Joshua 14:6-11",
+    title: "❤️ I Wholly Followed The LORD My God",
+    icon: "⛰️",
+    phrases: [
+      [
+        "❤️ I Wholly Followed The LORD My God",
+        note([
+          "Caleb describes a life of undivided loyalty.",
+          "He had seen the same giants as the fearful spies, but he trusted the LORD more than the danger.",
+          "❤️ His heart stayed loyal",
+          "👣 His obedience endured",
+          "⏳ Forty-five years did not erase faith",
+          "🙏 The LORD remained his confidence",
+          "The phrase explains why Caleb is remembered differently from the unbelieving generation.",
+        ]),
+      ],
+      [
+        "💪 I Am As Strong This Day",
+        note([
+          "Caleb is eighty-five, but he is still ready for the work before him.",
+          "The point is not pride in his body. The point is that God has preserved him for the promise.",
+          "💪 Strength has been preserved",
+          "⏳ Years have passed",
+          "📜 The promise still stands",
+          "⛰️ The assignment remains",
+          "The phrase makes Caleb's faith feel active, not nostalgic.",
+        ]),
+      ],
+      [
+        "🛡️ If So Be The LORD Will Be With Me",
+        note([
+          "Caleb's courage is not confidence without God.",
+          "He knows the mountain can only be taken if the LORD is with him.",
+          "🛡️ The enemy is real",
+          "🙏 God's presence is necessary",
+          "⛰️ The mountain is not easy",
+          "📜 The promise is trusted",
+          "The phrase keeps Caleb's bravery humble and God-centered.",
+        ]),
+      ],
+      [
+        "📜 The LORD Spake This Word Unto Moses",
+        note([
+          "Caleb's request rests on something the LORD had already spoken.",
+          "He is not inventing a new claim late in life. He is holding onto an old promise.",
+          "📜 God's word came first",
+          "👤 Moses heard the promise",
+          "⏳ Caleb waited for years",
+          "⛰️ The inheritance is still before him",
+          "The phrase shows why Caleb can ask boldly without sounding selfish.",
+        ]),
+      ],
+    ],
+  },
+  {
+    chapter: 14,
+    startVerse: 12,
+    endVerse: 12,
+    reference: "Joshua 14:12",
+    title: "⛰️ Now Therefore Give Me This Mountain",
+    icon: "⛰️",
+    phrases: [
+      [
+        "⛰️ Now Therefore Give Me This Mountain",
+        note([
+          "Caleb is asking for the hard inheritance God had promised him.",
+          "He is not asking for comfort first. He is asking for the place where faith must still fight.",
+          "⛰️ The mountain is difficult",
+          "🛡️ The Anakims are still there",
+          "📜 God had promised it",
+          "💪 Caleb still trusts the LORD",
+          "The phrase shows old faith still ready to obey.",
+        ]),
+      ],
+      [
+        "🏙️ The Cities Were Great And Fenced",
+        note([
+          "Caleb does not pretend the cities are easy targets.",
+          "Great and fenced means the place is strong, fortified, and intimidating.",
+          "🏙️ The cities are strong",
+          "🛡️ The walls are real",
+          "⚔️ The fight will not be light",
+          "🙏 Caleb still trusts the LORD",
+          "Faith is not blind to the difficulty. It trusts God while seeing the difficulty clearly.",
+        ]),
+      ],
+      [
+        "🙏 If So Be The LORD Will Be With Me",
+        note([
+          "Caleb's courage depends on God's presence.",
+          "He does not speak as if his age, strength, or experience can win the mountain by itself.",
+          "🙏 The LORD must be with him",
+          "💪 Strength is not enough alone",
+          "⛰️ The assignment is serious",
+          "📜 The promise is trusted",
+          "The phrase keeps Caleb's bravery humble.",
+        ]),
+      ],
+      [
+        "⚔️ I Shall Be Able To Drive Them Out",
+        note([
+          "Caleb believes the enemy can be removed because the LORD has spoken.",
+          "This is not empty confidence. It is faith acting on a promise that has lasted for decades.",
+          "⚔️ The enemy must be driven out",
+          "⏳ The promise has waited",
+          "🙏 The LORD is Caleb's confidence",
+          "🏞️ The inheritance can be received",
+          "The phrase shows faith moving from memory to action.",
+        ]),
+      ],
+    ],
+  },
+];
 
 const supplementalJoshuaTwelveToNineteenSections: PersonalLeviticusPhraseSectionInput[] = [
   {
@@ -113,6 +398,8 @@ const supplementalJoshuaTwelveToNineteenSections: PersonalLeviticusPhraseSection
 ];
 
 export const JOSHUA_12_19_PERSONAL_SECTIONS = [
+  ...upgradedDayFiftyNineOpeningSections,
+  ...DAY_59_JOSHUA_12_15_PERSONAL_SECTIONS.filter((section) => section.reference !== "Joshua 12:1-6" && section.reference !== "Joshua 12:7-8" && section.reference !== "Joshua 14:6-11"),
   ...buildGeneratedPersonalSections({
   book: "Joshua",
   notes: JOSHUA_DEEP_NOTES,
@@ -132,6 +419,6 @@ export const JOSHUA_12_19_PERSONAL_SECTIONS = [
     "Their Coast Went Out",
     "The Tabernacle Of The Congregation",
   ],
-  }),
+  }).filter((section) => ![12, 13, 14, 15].includes(section.chapter)),
   ...supplementalJoshuaTwelveToNineteenSections,
 ];

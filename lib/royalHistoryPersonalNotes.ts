@@ -1,4 +1,8 @@
 import type { PersonalLeviticusPhraseSectionInput } from "./leviticusOneToTenPersonalNotes";
+import {
+  DAY_61_80_FIRST_SAMUEL_31_SUPPLEMENTAL_SECTIONS,
+  DAY_61_80_SECOND_SAMUEL_1_19_SUPPLEMENTAL_SECTIONS,
+} from "./daySixtyOneToEightySupplementalPersonalNotes";
 
 type RoyalPhraseSectionInput = PersonalLeviticusPhraseSectionInput & { book: "1 Samuel" | "2 Samuel" | "1 Kings" };
 
@@ -6242,6 +6246,12 @@ const sections = [
   }
 ] as const satisfies readonly RoyalPhraseSectionInput[];
 
-export const FIRST_SAMUEL_31_PERSONAL_SECTIONS = sections.filter((section) => section.book === "1 Samuel");
-export const SECOND_SAMUEL_1_24_PERSONAL_SECTIONS = sections.filter((section) => section.book === "2 Samuel");
+export const FIRST_SAMUEL_31_PERSONAL_SECTIONS = [
+  ...sections.filter((section) => section.book === "1 Samuel"),
+  ...DAY_61_80_FIRST_SAMUEL_31_SUPPLEMENTAL_SECTIONS,
+];
+export const SECOND_SAMUEL_1_24_PERSONAL_SECTIONS = [
+  ...sections.filter((section) => section.book === "2 Samuel"),
+  ...DAY_61_80_SECOND_SAMUEL_1_19_SUPPLEMENTAL_SECTIONS,
+];
 export const FIRST_KINGS_1_15_PERSONAL_SECTIONS = sections.filter((section) => section.book === "1 Kings");

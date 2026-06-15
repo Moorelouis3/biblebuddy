@@ -13655,7 +13655,7 @@ Before we understand redemption, we need to understand what God made humanity fo
   }
 
   function getBibleYearJourneyStatusBannerText(_day: GenesisBibleYearDay) {
-    return `🏁 Expected Bible Finish Date: ${effectiveBibleYearReport.expectedFinishDateLabel ?? bibleYearSchedule.expectedFinishDateLabel}`;
+    return `Expected Bible Finish Date: ${effectiveBibleYearReport.expectedFinishDateLabel ?? bibleYearSchedule.expectedFinishDateLabel}`;
   }
 
   function renderBibleYearJourneyStatusBanner(day: GenesisBibleYearDay) {
