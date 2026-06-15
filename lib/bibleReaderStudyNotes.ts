@@ -30,6 +30,23 @@ import { EZRA_1_3_PERSONAL_SECTIONS, SECOND_CHRONICLES_20_36_PERSONAL_SECTIONS }
 import { EZRA_4_10_PERSONAL_SECTIONS, NEHEMIAH_1_13_PERSONAL_SECTIONS } from "./ezraFourToNehemiahThirteenPersonalNotes";
 import { ESTHER_1_10_PERSONAL_SECTIONS, JOB_1_10_PERSONAL_SECTIONS } from "./estherOneToJobTenPersonalNotes";
 import { JOB_11_30_PERSONAL_SECTIONS } from "./jobElevenToThirtyPersonalNotes";
+import { JOB_31_42_PERSONAL_SECTIONS } from "./jobThirtyOneToFortyTwoPersonalNotes";
+import { PSALMS_1_6_PERSONAL_SECTIONS } from "./psalmsOneToSixPersonalNotes";
+import { PSALMS_7_21_PERSONAL_SECTIONS } from "./psalmsSevenToTwentyOnePersonalNotes";
+import { PSALMS_22_36_PERSONAL_SECTIONS } from "./psalmsTwentyTwoToThirtySixPersonalNotes";
+import { PSALMS_37_51_PERSONAL_SECTIONS } from "./psalmsThirtySevenToFiftyOnePersonalNotes";
+import { PSALMS_52_66_PERSONAL_SECTIONS } from "./psalmsFiftyTwoToSixtySixPersonalNotes";
+import { PSALMS_67_96_PERSONAL_SECTIONS } from "./psalmsSixtySevenToNinetySixPersonalNotes";
+import { PSALMS_97_126_PERSONAL_SECTIONS } from "./psalmsNinetySevenToOneTwentySixPersonalNotes";
+import { PSALMS_127_150_PERSONAL_SECTIONS } from "./psalmsOneTwentySevenToOneFiftyPersonalNotes";
+import { PROVERBS_1_6_PERSONAL_SECTIONS } from "./proverbsOneToSixPersonalNotes";
+import { PROVERBS_7_31_PERSONAL_SECTIONS } from "./proverbsSevenToThirtyOnePersonalNotes";
+import { ECCLESIASTES_1_5_PERSONAL_SECTIONS } from "./ecclesiastesOneToFivePersonalNotes";
+import { ECCLESIASTES_6_12_PERSONAL_SECTIONS } from "./ecclesiastesSixToTwelvePersonalNotes";
+import { SONG_OF_SOLOMON_1_8_PERSONAL_SECTIONS } from "./songOfSolomonOneToEightPersonalNotes";
+import { ISAIAH_1_15_PERSONAL_SECTIONS } from "./isaiahOneToFifteenPersonalNotes";
+import { ISAIAH_16_66_PERSONAL_SECTIONS } from "./isaiahSixteenToSixtySixPersonalNotes";
+import { JEREMIAH_1_9_PERSONAL_SECTIONS } from "./jeremiahOneToNinePersonalNotes";
 
 export type BibleReaderStudyNoteCategory = {
   id: string;
@@ -14770,6 +14787,96 @@ function makePersonalJobPhraseSection(section: {
   };
 }
 
+function makePersonalPsalmsPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "psalms",
+  };
+}
+
+function makePersonalProverbsPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "proverbs",
+  };
+}
+
+function makePersonalEcclesiastesPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "ecclesiastes",
+  };
+}
+
+function makePersonalSongOfSolomonPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "song of solomon",
+  };
+}
+
+function makePersonalIsaiahPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "isaiah",
+  };
+}
+
+function makePersonalJeremiahPhraseSection(section: {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    ...makePersonalExodusPhraseSection(section),
+    book: "jeremiah",
+  };
+}
+
 function applyPersonalGenesisFourThroughTenStudySections() {
   let sections: BibleReaderStudySection[] = [
     makePersonalGenesisPhraseSection({
@@ -20008,6 +20115,227 @@ function applyPersonalJobElevenThroughThirtyStudySections() {
   BIBLE_READER_STUDY_SECTIONS.push(...sections);
 }
 
+function applyPersonalJobThirtyOneThroughFortyTwoStudySections() {
+  const sections = JOB_31_42_PERSONAL_SECTIONS.map(makePersonalJobPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "job" && section.chapter >= 31 && section.chapter <= 42) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalPsalmsOneThroughSixStudySections() {
+  const sections = PSALMS_1_6_PERSONAL_SECTIONS.map(makePersonalPsalmsPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "psalms" && section.chapter >= 1 && section.chapter <= 6) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalPsalmsSevenThroughTwentyOneStudySections() {
+  const sections = PSALMS_7_21_PERSONAL_SECTIONS.map(makePersonalPsalmsPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "psalms" && section.chapter >= 7 && section.chapter <= 21) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalPsalmsTwentyTwoThroughThirtySixStudySections() {
+  const sections = PSALMS_22_36_PERSONAL_SECTIONS.map(makePersonalPsalmsPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "psalms" && section.chapter >= 22 && section.chapter <= 36) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalPsalmsThirtySevenThroughFiftyOneStudySections() {
+  const sections = PSALMS_37_51_PERSONAL_SECTIONS.map(makePersonalPsalmsPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "psalms" && section.chapter >= 37 && section.chapter <= 51) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalPsalmsFiftyTwoThroughSixtySixStudySections() {
+  const sections = PSALMS_52_66_PERSONAL_SECTIONS.map(makePersonalPsalmsPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "psalms" && section.chapter >= 52 && section.chapter <= 66) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalPsalmsSixtySevenThroughNinetySixStudySections() {
+  const sections = PSALMS_67_96_PERSONAL_SECTIONS.map(makePersonalPsalmsPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "psalms" && section.chapter >= 67 && section.chapter <= 96) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalPsalmsNinetySevenThroughOneTwentySixStudySections() {
+  const sections = PSALMS_97_126_PERSONAL_SECTIONS.map(makePersonalPsalmsPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "psalms" && section.chapter >= 97 && section.chapter <= 126) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalPsalmsOneTwentySevenThroughOneFiftyStudySections() {
+  const sections = PSALMS_127_150_PERSONAL_SECTIONS.map(makePersonalPsalmsPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "psalms" && section.chapter >= 127 && section.chapter <= 150) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalProverbsOneThroughSixStudySections() {
+  const sections = PROVERBS_1_6_PERSONAL_SECTIONS.map(makePersonalProverbsPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "proverbs" && section.chapter >= 1 && section.chapter <= 6) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalProverbsSevenThroughThirtyOneStudySections() {
+  const sections = PROVERBS_7_31_PERSONAL_SECTIONS.map(makePersonalProverbsPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "proverbs" && section.chapter >= 7 && section.chapter <= 31) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalEcclesiastesOneThroughFiveStudySections() {
+  const sections = ECCLESIASTES_1_5_PERSONAL_SECTIONS.map(makePersonalEcclesiastesPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "ecclesiastes" && section.chapter >= 1 && section.chapter <= 5) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalEcclesiastesSixThroughTwelveStudySections() {
+  const sections = ECCLESIASTES_6_12_PERSONAL_SECTIONS.map(makePersonalEcclesiastesPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "ecclesiastes" && section.chapter >= 6 && section.chapter <= 12) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalSongOfSolomonOneThroughEightStudySections() {
+  const sections = SONG_OF_SOLOMON_1_8_PERSONAL_SECTIONS.map(makePersonalSongOfSolomonPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "song of solomon" && section.chapter >= 1 && section.chapter <= 8) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalIsaiahOneThroughFifteenStudySections() {
+  const sections = ISAIAH_1_15_PERSONAL_SECTIONS.map(makePersonalIsaiahPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "isaiah" && section.chapter >= 1 && section.chapter <= 15) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalIsaiahSixteenThroughSixtySixStudySections() {
+  const sections = ISAIAH_16_66_PERSONAL_SECTIONS.map(makePersonalIsaiahPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "isaiah" && section.chapter >= 16 && section.chapter <= 66) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
+function applyPersonalJeremiahOneThroughNineStudySections() {
+  const sections = JEREMIAH_1_9_PERSONAL_SECTIONS.map(makePersonalJeremiahPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "jeremiah" && section.chapter >= 1 && section.chapter <= 9) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
 type ExodusTextureRule = {
   matches: string[];
   lines: string[];
@@ -20784,6 +21112,23 @@ applyPersonalNehemiahOneThroughThirteenStudySections();
 applyPersonalEstherOneThroughTenStudySections();
 applyPersonalJobOneThroughTenStudySections();
 applyPersonalJobElevenThroughThirtyStudySections();
+applyPersonalJobThirtyOneThroughFortyTwoStudySections();
+applyPersonalPsalmsOneThroughSixStudySections();
+applyPersonalPsalmsSevenThroughTwentyOneStudySections();
+applyPersonalPsalmsTwentyTwoThroughThirtySixStudySections();
+applyPersonalPsalmsThirtySevenThroughFiftyOneStudySections();
+applyPersonalPsalmsFiftyTwoThroughSixtySixStudySections();
+applyPersonalPsalmsSixtySevenThroughNinetySixStudySections();
+applyPersonalPsalmsNinetySevenThroughOneTwentySixStudySections();
+applyPersonalPsalmsOneTwentySevenThroughOneFiftyStudySections();
+applyPersonalProverbsOneThroughSixStudySections();
+applyPersonalProverbsSevenThroughThirtyOneStudySections();
+applyPersonalEcclesiastesOneThroughFiveStudySections();
+applyPersonalEcclesiastesSixThroughTwelveStudySections();
+applyPersonalSongOfSolomonOneThroughEightStudySections();
+applyPersonalIsaiahOneThroughFifteenStudySections();
+applyPersonalIsaiahSixteenThroughSixtySixStudySections();
+applyPersonalJeremiahOneThroughNineStudySections();
 applyPersonalExodusTextureStudySections();
 enforceStudySectionVerseLimit(8);
 

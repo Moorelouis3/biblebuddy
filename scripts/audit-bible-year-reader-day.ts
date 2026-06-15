@@ -29,6 +29,23 @@ import { EZRA_1_3_PERSONAL_SECTIONS, SECOND_CHRONICLES_20_36_PERSONAL_SECTIONS }
 import { EZRA_4_10_PERSONAL_SECTIONS, NEHEMIAH_1_13_PERSONAL_SECTIONS } from "../lib/ezraFourToNehemiahThirteenPersonalNotes";
 import { ESTHER_1_10_PERSONAL_SECTIONS, JOB_1_10_PERSONAL_SECTIONS } from "../lib/estherOneToJobTenPersonalNotes";
 import { JOB_11_30_PERSONAL_SECTIONS } from "../lib/jobElevenToThirtyPersonalNotes";
+import { JOB_31_42_PERSONAL_SECTIONS } from "../lib/jobThirtyOneToFortyTwoPersonalNotes";
+import { PSALMS_1_6_PERSONAL_SECTIONS } from "../lib/psalmsOneToSixPersonalNotes";
+import { PSALMS_7_21_PERSONAL_SECTIONS } from "../lib/psalmsSevenToTwentyOnePersonalNotes";
+import { PSALMS_22_36_PERSONAL_SECTIONS } from "../lib/psalmsTwentyTwoToThirtySixPersonalNotes";
+import { PSALMS_37_51_PERSONAL_SECTIONS } from "../lib/psalmsThirtySevenToFiftyOnePersonalNotes";
+import { PSALMS_52_66_PERSONAL_SECTIONS } from "../lib/psalmsFiftyTwoToSixtySixPersonalNotes";
+import { PSALMS_67_96_PERSONAL_SECTIONS } from "../lib/psalmsSixtySevenToNinetySixPersonalNotes";
+import { PSALMS_97_126_PERSONAL_SECTIONS } from "../lib/psalmsNinetySevenToOneTwentySixPersonalNotes";
+import { PSALMS_127_150_PERSONAL_SECTIONS } from "../lib/psalmsOneTwentySevenToOneFiftyPersonalNotes";
+import { PROVERBS_1_6_PERSONAL_SECTIONS } from "../lib/proverbsOneToSixPersonalNotes";
+import { PROVERBS_7_31_PERSONAL_SECTIONS } from "../lib/proverbsSevenToThirtyOnePersonalNotes";
+import { ECCLESIASTES_1_5_PERSONAL_SECTIONS } from "../lib/ecclesiastesOneToFivePersonalNotes";
+import { ECCLESIASTES_6_12_PERSONAL_SECTIONS } from "../lib/ecclesiastesSixToTwelvePersonalNotes";
+import { SONG_OF_SOLOMON_1_8_PERSONAL_SECTIONS } from "../lib/songOfSolomonOneToEightPersonalNotes";
+import { ISAIAH_1_15_PERSONAL_SECTIONS } from "../lib/isaiahOneToFifteenPersonalNotes";
+import { ISAIAH_16_66_PERSONAL_SECTIONS } from "../lib/isaiahSixteenToSixtySixPersonalNotes";
+import { JEREMIAH_1_9_PERSONAL_SECTIONS } from "../lib/jeremiahOneToNinePersonalNotes";
 
 type PersonalSection = {
   chapter: number;
@@ -57,7 +74,13 @@ type BibleBook =
   | "Ezra"
   | "Nehemiah"
   | "Esther"
-  | "Job";
+  | "Job"
+  | "Psalms"
+  | "Proverbs"
+  | "Ecclesiastes"
+  | "Song of Solomon"
+  | "Isaiah"
+  | "Jeremiah";
 
 type DayPart = {
   book: BibleBook;
@@ -261,6 +284,111 @@ const DAY_SPECS: Record<number, DaySpec> = {
   123: { book: "Job", chapters: [19, 20, 21, 22], sections: JOB_11_30_PERSONAL_SECTIONS },
   124: { book: "Job", chapters: [23, 24, 25, 26], sections: JOB_11_30_PERSONAL_SECTIONS },
   125: { book: "Job", chapters: [27, 28, 29, 30], sections: JOB_11_30_PERSONAL_SECTIONS },
+  126: { book: "Job", chapters: [31, 32, 33, 34], sections: JOB_31_42_PERSONAL_SECTIONS },
+  127: { book: "Job", chapters: [35, 36, 37, 38], sections: JOB_31_42_PERSONAL_SECTIONS },
+  128: { book: "Job", chapters: [39, 40, 41, 42], sections: JOB_31_42_PERSONAL_SECTIONS },
+  129: { book: "Psalms", chapters: [1, 2, 3], sections: PSALMS_1_6_PERSONAL_SECTIONS },
+  130: { book: "Psalms", chapters: [4, 5, 6], sections: PSALMS_1_6_PERSONAL_SECTIONS },
+  131: { book: "Psalms", chapters: [7, 8, 9], sections: PSALMS_7_21_PERSONAL_SECTIONS },
+  132: { book: "Psalms", chapters: [10, 11, 12], sections: PSALMS_7_21_PERSONAL_SECTIONS },
+  133: { book: "Psalms", chapters: [13, 14, 15], sections: PSALMS_7_21_PERSONAL_SECTIONS },
+  134: { book: "Psalms", chapters: [16, 17, 18], sections: PSALMS_7_21_PERSONAL_SECTIONS },
+  135: { book: "Psalms", chapters: [19, 20, 21], sections: PSALMS_7_21_PERSONAL_SECTIONS },
+  136: { book: "Psalms", chapters: [22, 23, 24], sections: PSALMS_22_36_PERSONAL_SECTIONS },
+  137: { book: "Psalms", chapters: [25, 26, 27], sections: PSALMS_22_36_PERSONAL_SECTIONS },
+  138: { book: "Psalms", chapters: [28, 29, 30], sections: PSALMS_22_36_PERSONAL_SECTIONS },
+  139: { book: "Psalms", chapters: [31, 32, 33], sections: PSALMS_22_36_PERSONAL_SECTIONS },
+  140: { book: "Psalms", chapters: [34, 35, 36], sections: PSALMS_22_36_PERSONAL_SECTIONS },
+  141: { book: "Psalms", chapters: [37, 38, 39], sections: PSALMS_37_51_PERSONAL_SECTIONS },
+  142: { book: "Psalms", chapters: [40, 41, 42], sections: PSALMS_37_51_PERSONAL_SECTIONS },
+  143: { book: "Psalms", chapters: [43, 44, 45], sections: PSALMS_37_51_PERSONAL_SECTIONS },
+  144: { book: "Psalms", chapters: [46, 47, 48], sections: PSALMS_37_51_PERSONAL_SECTIONS },
+  145: { book: "Psalms", chapters: [49, 50, 51], sections: PSALMS_37_51_PERSONAL_SECTIONS },
+  146: { book: "Psalms", chapters: [52, 53, 54], sections: PSALMS_52_66_PERSONAL_SECTIONS },
+  147: { book: "Psalms", chapters: [55, 56, 57], sections: PSALMS_52_66_PERSONAL_SECTIONS },
+  148: { book: "Psalms", chapters: [58, 59, 60], sections: PSALMS_52_66_PERSONAL_SECTIONS },
+  149: { book: "Psalms", chapters: [61, 62, 63], sections: PSALMS_52_66_PERSONAL_SECTIONS },
+  150: { book: "Psalms", chapters: [64, 65, 66], sections: PSALMS_52_66_PERSONAL_SECTIONS },
+  151: { book: "Psalms", chapters: [67, 68, 69], sections: PSALMS_67_96_PERSONAL_SECTIONS },
+  152: { book: "Psalms", chapters: [70, 71, 72], sections: PSALMS_67_96_PERSONAL_SECTIONS },
+  153: { book: "Psalms", chapters: [73, 74, 75], sections: PSALMS_67_96_PERSONAL_SECTIONS },
+  154: { book: "Psalms", chapters: [76, 77, 78], sections: PSALMS_67_96_PERSONAL_SECTIONS },
+  155: { book: "Psalms", chapters: [79, 80, 81], sections: PSALMS_67_96_PERSONAL_SECTIONS },
+  156: { book: "Psalms", chapters: [82, 83, 84], sections: PSALMS_67_96_PERSONAL_SECTIONS },
+  157: { book: "Psalms", chapters: [85, 86, 87], sections: PSALMS_67_96_PERSONAL_SECTIONS },
+  158: { book: "Psalms", chapters: [88, 89, 90], sections: PSALMS_67_96_PERSONAL_SECTIONS },
+  159: { book: "Psalms", chapters: [91, 92, 93], sections: PSALMS_67_96_PERSONAL_SECTIONS },
+  160: { book: "Psalms", chapters: [94, 95, 96], sections: PSALMS_67_96_PERSONAL_SECTIONS },
+  161: { book: "Psalms", chapters: [97, 98, 99], sections: PSALMS_97_126_PERSONAL_SECTIONS },
+  162: { book: "Psalms", chapters: [100, 101, 102], sections: PSALMS_97_126_PERSONAL_SECTIONS },
+  163: { book: "Psalms", chapters: [103, 104, 105], sections: PSALMS_97_126_PERSONAL_SECTIONS },
+  164: { book: "Psalms", chapters: [106, 107, 108], sections: PSALMS_97_126_PERSONAL_SECTIONS },
+  165: { book: "Psalms", chapters: [109, 110, 111], sections: PSALMS_97_126_PERSONAL_SECTIONS },
+  166: { book: "Psalms", chapters: [112, 113, 114], sections: PSALMS_97_126_PERSONAL_SECTIONS },
+  167: { book: "Psalms", chapters: [115, 116, 117], sections: PSALMS_97_126_PERSONAL_SECTIONS },
+  168: { book: "Psalms", chapters: [118, 119, 120], sections: PSALMS_97_126_PERSONAL_SECTIONS },
+  169: { book: "Psalms", chapters: [121, 122, 123], sections: PSALMS_97_126_PERSONAL_SECTIONS },
+  170: { book: "Psalms", chapters: [124, 125, 126], sections: PSALMS_97_126_PERSONAL_SECTIONS },
+  171: { book: "Psalms", chapters: [127, 128, 129], sections: PSALMS_127_150_PERSONAL_SECTIONS },
+  172: { book: "Psalms", chapters: [130, 131, 132], sections: PSALMS_127_150_PERSONAL_SECTIONS },
+  173: { book: "Psalms", chapters: [133, 134, 135], sections: PSALMS_127_150_PERSONAL_SECTIONS },
+  174: { book: "Psalms", chapters: [136, 137, 138], sections: PSALMS_127_150_PERSONAL_SECTIONS },
+  175: { book: "Psalms", chapters: [139, 140, 141], sections: PSALMS_127_150_PERSONAL_SECTIONS },
+  176: { book: "Psalms", chapters: [142, 143, 144], sections: PSALMS_127_150_PERSONAL_SECTIONS },
+  177: { book: "Psalms", chapters: [145, 146, 147], sections: PSALMS_127_150_PERSONAL_SECTIONS },
+  178: { book: "Psalms", chapters: [148, 149, 150], sections: PSALMS_127_150_PERSONAL_SECTIONS },
+  179: { book: "Proverbs", chapters: [1, 2, 3], sections: PROVERBS_1_6_PERSONAL_SECTIONS },
+  180: { book: "Proverbs", chapters: [4, 5, 6], sections: PROVERBS_1_6_PERSONAL_SECTIONS },
+  181: { book: "Proverbs", chapters: [7, 8, 9], sections: PROVERBS_7_31_PERSONAL_SECTIONS },
+  182: { book: "Proverbs", chapters: [10, 11, 12], sections: PROVERBS_7_31_PERSONAL_SECTIONS },
+  183: { book: "Proverbs", chapters: [13, 14, 15], sections: PROVERBS_7_31_PERSONAL_SECTIONS },
+  184: { book: "Proverbs", chapters: [16, 17, 18], sections: PROVERBS_7_31_PERSONAL_SECTIONS },
+  185: { book: "Proverbs", chapters: [19, 20, 21], sections: PROVERBS_7_31_PERSONAL_SECTIONS },
+  186: { book: "Proverbs", chapters: [22, 23, 24], sections: PROVERBS_7_31_PERSONAL_SECTIONS },
+  187: { book: "Proverbs", chapters: [25, 26, 27], sections: PROVERBS_7_31_PERSONAL_SECTIONS },
+  188: { book: "Proverbs", chapters: [28, 29, 30], sections: PROVERBS_7_31_PERSONAL_SECTIONS },
+  189: {
+    parts: [
+      { book: "Proverbs", chapters: [31], sections: PROVERBS_7_31_PERSONAL_SECTIONS },
+      { book: "Ecclesiastes", chapters: [1, 2], sections: ECCLESIASTES_1_5_PERSONAL_SECTIONS },
+    ],
+  },
+  190: { book: "Ecclesiastes", chapters: [3, 4, 5], sections: ECCLESIASTES_1_5_PERSONAL_SECTIONS },
+  191: { book: "Ecclesiastes", chapters: [6, 7, 8], sections: ECCLESIASTES_6_12_PERSONAL_SECTIONS },
+  192: { book: "Ecclesiastes", chapters: [9, 10, 11], sections: ECCLESIASTES_6_12_PERSONAL_SECTIONS },
+  193: {
+    parts: [
+      { book: "Ecclesiastes", chapters: [12], sections: ECCLESIASTES_6_12_PERSONAL_SECTIONS },
+      { book: "Song of Solomon", chapters: [1, 2], sections: SONG_OF_SOLOMON_1_8_PERSONAL_SECTIONS },
+    ],
+  },
+  194: { book: "Song of Solomon", chapters: [3, 4, 5], sections: SONG_OF_SOLOMON_1_8_PERSONAL_SECTIONS },
+  195: { book: "Song of Solomon", chapters: [6, 7, 8], sections: SONG_OF_SOLOMON_1_8_PERSONAL_SECTIONS },
+  196: { book: "Isaiah", chapters: [1, 2, 3], sections: ISAIAH_1_15_PERSONAL_SECTIONS },
+  197: { book: "Isaiah", chapters: [4, 5, 6], sections: ISAIAH_1_15_PERSONAL_SECTIONS },
+  198: { book: "Isaiah", chapters: [7, 8, 9], sections: ISAIAH_1_15_PERSONAL_SECTIONS },
+  199: { book: "Isaiah", chapters: [10, 11, 12], sections: ISAIAH_1_15_PERSONAL_SECTIONS },
+  200: { book: "Isaiah", chapters: [13, 14, 15], sections: ISAIAH_1_15_PERSONAL_SECTIONS },
+  201: { book: "Isaiah", chapters: [16, 17, 18], sections: ISAIAH_16_66_PERSONAL_SECTIONS },
+  202: { book: "Isaiah", chapters: [19, 20, 21], sections: ISAIAH_16_66_PERSONAL_SECTIONS },
+  203: { book: "Isaiah", chapters: [22, 23, 24], sections: ISAIAH_16_66_PERSONAL_SECTIONS },
+  204: { book: "Isaiah", chapters: [25, 26, 27], sections: ISAIAH_16_66_PERSONAL_SECTIONS },
+  205: { book: "Isaiah", chapters: [28, 29, 30], sections: ISAIAH_16_66_PERSONAL_SECTIONS },
+  206: { book: "Isaiah", chapters: [31, 32, 33], sections: ISAIAH_16_66_PERSONAL_SECTIONS },
+  207: { book: "Isaiah", chapters: [34, 35, 36], sections: ISAIAH_16_66_PERSONAL_SECTIONS },
+  208: { book: "Isaiah", chapters: [37, 38, 39], sections: ISAIAH_16_66_PERSONAL_SECTIONS },
+  209: { book: "Isaiah", chapters: [40, 41, 42], sections: ISAIAH_16_66_PERSONAL_SECTIONS },
+  210: { book: "Isaiah", chapters: [43, 44, 45], sections: ISAIAH_16_66_PERSONAL_SECTIONS },
+  211: { book: "Isaiah", chapters: [46, 47, 48], sections: ISAIAH_16_66_PERSONAL_SECTIONS },
+  212: { book: "Isaiah", chapters: [49, 50, 51], sections: ISAIAH_16_66_PERSONAL_SECTIONS },
+  213: { book: "Isaiah", chapters: [52, 53, 54], sections: ISAIAH_16_66_PERSONAL_SECTIONS },
+  214: { book: "Isaiah", chapters: [55, 56, 57], sections: ISAIAH_16_66_PERSONAL_SECTIONS },
+  215: { book: "Isaiah", chapters: [58, 59, 60], sections: ISAIAH_16_66_PERSONAL_SECTIONS },
+  216: { book: "Isaiah", chapters: [61, 62, 63], sections: ISAIAH_16_66_PERSONAL_SECTIONS },
+  217: { book: "Isaiah", chapters: [64, 65, 66], sections: ISAIAH_16_66_PERSONAL_SECTIONS },
+  218: { book: "Jeremiah", chapters: [1, 2, 3], sections: JEREMIAH_1_9_PERSONAL_SECTIONS },
+  219: { book: "Jeremiah", chapters: [4, 5, 6], sections: JEREMIAH_1_9_PERSONAL_SECTIONS },
+  220: { book: "Jeremiah", chapters: [7, 8, 9], sections: JEREMIAH_1_9_PERSONAL_SECTIONS },
 };
 
 function getDayParts(spec: DaySpec): DayPart[] {
