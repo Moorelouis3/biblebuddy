@@ -107,34 +107,37 @@ function getDay37FallbackCueLines(title: string) {
 function getDay37CueLines(title: string) {
   const lower = title.toLowerCase();
 
-  if (/priest|aaron|sons|high priest|anointing|garments|minister/.test(lower)) {
+  if (/priest|aaron|sons|high priest|anointing|garments|minister|seed/.test(lower)) {
     return ["👑 Priestly calling", "⛺ Sanctuary service", "🍞 Holy offerings"];
   }
-  if (/lord|moses|speak|spake|commanded/.test(lower)) {
+  if (/moses|speak|spake|commanded/.test(lower)) {
     return ["📣 God speaks", "🧭 Moses receives", "👥 Israel learns"];
   }
   if (/dead|kin|baldness|beard|flesh|mourning/.test(lower)) {
     return ["⚰️ Death and grief", "👪 Family mercy", "🛡️ Holy boundaries"];
   }
-  if (/wife|daughter|father|husband|married|father's house|household/.test(lower)) {
+  if (/wife|daughter|father|husband|married|father's house|household|virgin/.test(lower)) {
     return ["🏠 Household life", "💍 Covenant faithfulness", "✨ Public holiness"];
   }
   if (/blemish|blind|lame|vail|altar|approach|come nigh/.test(lower)) {
     return ["🧍 Visible wholeness", "🚪 Holy-space boundary", "🍞 Priest still provided for"];
   }
-  if (/holy thing|holy things|profane|uncleanness|clean|ordinance|stranger eat|father's meat/.test(lower)) {
+  if (/holy thing|holy things|most holy|holy name|profane|uncleanness|clean|ordinance|stranger eat|father's meat|sun is down|dieth of itself|statute/.test(lower)) {
     return ["🛡️ Holy things guarded", "💧 Cleanness matters", "📛 God's name honored"];
   }
-  if (/offering|oblation|vow|freewill|perfect|without blemish|bullock|lamb|goat|sheep|sacrifice|thanksgiving/.test(lower)) {
+  if (/offering|oblation|vow|freewill|own will|perfect|without blemish|bruised|crushed|corruption|bullock|lamb|goat|sheep|sacrifice|thanksgiving|dam|eighth day|young both|commandments/.test(lower)) {
     return ["🎁 Gift brought", "🐑 Offering examined", "✅ Worship made acceptable"];
   }
-  if (/egypt|brought you out|hallow|holy name|my name/.test(lower)) {
+  if (/egypt|brought you out|hallow|holy name|my name|his god|curseth his god|i am the lord|sanctify them|do sanctify/.test(lower)) {
     return ["🚪 Rescue from Egypt", "📛 God's name", "🕊️ People made holy"];
   }
-  if (/feast|sabbath|convocation|passover|unleavened|atonement|tabernacles|trumpets|seventh month/.test(lower)) {
+  if (/not offer|offer these|unto the lord/.test(lower)) {
+    return ["🎁 Gift brought", "🐑 Offering examined", "✅ Worship made acceptable"];
+  }
+  if (/feast|sabbath|convocation|passover|unleavened|atonement|tabernacles|trumpets|seventh month|servile work|six days|seven days unto|selfsame day|proclaim|rejoice before/.test(lower)) {
     return ["📅 Sacred time", "👥 Holy gathering", "🔥 Worship before the LORD"];
   }
-  if (/firstfruits|sheaf|harvest|bread|loaves|gleaning|poor|fruit of the land|boughs|booths/.test(lower)) {
+  if (/firstfruits|sheaf|harvest|bread|loaves|gleaning|poor|come into the land|fruit of the land|boughs|booths|generations/.test(lower)) {
     return ["🌾 Harvest received", "🙌 God honored first", "🤲 Mercy for others"];
   }
   if (/afflict your souls|from even unto even|ninth day|destroy/.test(lower)) {
@@ -145,6 +148,15 @@ function getDay37CueLines(title: string) {
   }
   if (/blasphem|cursed|name of the lord|heard him|hands upon|stone/.test(lower)) {
     return ["📛 God's name", "👂 Public witness", "⚖️ Serious judgment"];
+  }
+  if (/suffer|bear|iniquity|trespass|fifth|restitution/.test(lower)) {
+    return ["⚖️ Guilt repaired", "🍞 Holy food guarded", "➕ Restitution added"];
+  }
+  if (/count|weeks|fiftieth|number/.test(lower)) {
+    return ["🧮 Days counted", "🌾 Harvest marked", "📅 Worship timed"];
+  }
+  if (/strove|ward|put him|camp|israelitish/.test(lower)) {
+    return ["⚔️ Conflict in the camp", "⏳ Judgment waits", "🧑‍⚖️ Moses receives the case"];
   }
   if (/killeth|beast|eye for eye|tooth|law|stranger|blemish/.test(lower)) {
     return ["🩸 Human life", "⚖️ Measured justice", "🌍 Same law for all"];
@@ -246,12 +258,12 @@ const DAY_37_LEVITICUS_21_24_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionIn
       explain("🍞 He Offereth The Bread Of Thy God", [
         "He Offereth The Bread Of Thy God means the priest presents the food-offerings that belong to God.",
         "Bread here points to the altar portions and holy food connected to worship, not only a normal meal.",
-        "The phrase explains why the priest is held to a high standard: he stands close to holy provision.",
+        "Standing close to holy provision is why the priest is held to a high standard.",
       ]),
       explain("🔥 She Profaneth Her Father", [
         "She Profaneth Her Father means the daughter's public rebellion brings shame on the priestly household.",
         "The verse is severe because the priest's family represents holy service before the people.",
-        "The phrase shows how seriously Leviticus treats the connection between public worship and household life.",
+        "Public worship and household life are connected for the priestly family.",
       ]),
     ],
   },
@@ -271,7 +283,7 @@ const DAY_37_LEVITICUS_21_24_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionIn
       explain("🫒 Upon Whose Head The Anointing Oil Was Poured", [
         "Upon Whose Head The Anointing Oil Was Poured points to the ceremony that marked the high priest for service.",
         "Anointing oil was not perfume for status; it was a visible sign that he had been set apart by God's command.",
-        "The phrase explains why his body, grief, and household are treated as belonging to holy service.",
+        "His body, grief, and household are treated as belonging to holy service.",
       ]),
       explain("👕 Consecrated To Put On The Garments", [
         "Consecrated To Put On The Garments means the high priest's clothing belongs to his calling.",
@@ -356,7 +368,7 @@ const DAY_37_LEVITICUS_21_24_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionIn
       explain("🚪 Only He Shall Not Go In Unto The Vail", [
         "Only He Shall Not Go In Unto The Vail marks the boundary around the inner sanctuary.",
         "The vail separated holy space from the most holy place, so crossing near it was not casual.",
-        "The phrase explains that the restriction is about approach to sacred space, not personal worth.",
+        "The restriction is about approach to sacred space, not personal worth.",
       ]),
       explain("⛔ Nor Come Nigh Unto The Altar", [
         "Nor Come Nigh Unto The Altar keeps the same boundary at the place of sacrifice.",
@@ -401,7 +413,7 @@ const DAY_37_LEVITICUS_21_24_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionIn
       explain("🚫 Having His Uncleanness Upon Him", [
         "Having His Uncleanness Upon Him means the priest is still in a state that blocks holy contact.",
         "Uncleanness could come through many ordinary life situations, but it still mattered near sacred food.",
-        "The phrase helps readers separate ritual uncleanness from worthlessness or hatred.",
+        "Ritual uncleanness is a temporary worship barrier, not a statement that the priest is worthless or hated.",
       ]),
       explain("🕊️ I Am The LORD", [
         "I Am The LORD seals the command with God's own identity.",
@@ -461,22 +473,22 @@ const DAY_37_LEVITICUS_21_24_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionIn
       explain("💰 If The Priest Buy Any Soul With His Money", [
         "If The Priest Buy Any Soul With His Money refers to a servant who belongs within the priest's household.",
         "In that ancient household structure, the servant's place in the home affected access to food.",
-        "The phrase helps readers follow the difference between an outsider and someone attached to the priestly house.",
+        "The law separates an outsider from someone attached to the priestly house.",
       ]),
       explain("👧 If The Priest's Daughter Also Be Married Unto A Stranger", [
         "If The Priest's Daughter Also Be Married Unto A Stranger describes a daughter who leaves the priestly household through marriage.",
         "Her access changes because holy food belongs to the priestly house, not merely to her birth memories.",
-        "The phrase shows how household boundaries worked in the law.",
+        "Holy food follows household boundaries under the law.",
       ]),
       explain("🏠 Returned Unto Her Father's House", [
         "Returned Unto Her Father's House describes a widowed or divorced daughter coming back without children.",
         "Her return restores her place in the priestly household.",
-        "The phrase shows both boundary and care: she may eat again because she belongs again to that house.",
+        "Boundary and care meet here: she may eat again because she belongs again to that house.",
       ]),
       explain("🍞 She Shall Eat Of Her Father's Meat", [
         "She Shall Eat Of Her Father's Meat means she can share in the priestly food once restored to her father's house.",
         "Meat here means food or portion, not only animal flesh.",
-        "The phrase helps readers see holy food as household provision under God's rules.",
+        "Holy food is household provision under God's rules, not private property.",
       ]),
     ],
   },
@@ -506,7 +518,7 @@ const DAY_37_LEVITICUS_21_24_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionIn
       explain("⚖️ Suffer Them To Bear The Iniquity Of Trespass", [
         "Suffer Them To Bear The Iniquity Of Trespass means careless handling of holy food can load guilt onto the people.",
         "Trespass is wrongdoing against what belongs to God.",
-        "The phrase shows why the priests must teach and guard the boundaries clearly.",
+        "Priests must teach and guard the boundaries so guilt does not spread through careless eating.",
       ]),
     ],
   },
@@ -526,7 +538,7 @@ const DAY_37_LEVITICUS_21_24_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionIn
       explain("🗣️ Speak Unto Aaron, And To His Sons", [
         "Speak Unto Aaron, And To His Sons brings the priests into responsibility for examining offerings.",
         "They are not only ceremony workers; they guard what may be placed on the altar.",
-        "The phrase shows priestly leadership protecting worship from careless gifts.",
+        "Priestly leadership protects worship from careless gifts.",
       ]),
       explain("🎁 Offer His Oblation For All His Vows", [
         "Offer His Oblation For All His Vows names gifts brought because a worshiper made a vow to the LORD.",
@@ -616,7 +628,7 @@ const DAY_37_LEVITICUS_21_24_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionIn
       explain("🙏 Sacrifice A Sacrifice Of Thanksgiving", [
         "Sacrifice A Sacrifice Of Thanksgiving describes an offering of gratitude to the LORD.",
         "Thanksgiving is not only a feeling inside the worshiper; it becomes an ordered act of worship.",
-        "The phrase shows gratitude expressed through obedience.",
+        "Gratitude becomes worship when it is offered in obedience.",
       ]),
       explain("📜 Therefore Shall Ye Keep My Commandments", [
         "Therefore Shall Ye Keep My Commandments gathers the offering rules into obedience.",
@@ -636,12 +648,12 @@ const DAY_37_LEVITICUS_21_24_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionIn
       explain("📛 Neither Shall Ye Profane My Holy Name", [
         "Neither Shall Ye Profane My Holy Name means Israel must not treat the LORD's name as common or dishonored.",
         "God's name represents His revealed character, authority, and presence among His people.",
-        "The phrase explains why careless worship is so serious.",
+        "Careless worship is serious because it dishonors the name of the God who made Israel holy.",
       ]),
       explain("✨ I Will Be Hallowed Among The Children Of Israel", [
         "I Will Be Hallowed Among The Children Of Israel means the LORD will be treated as holy by His people.",
         "Hallowed means recognized as set apart, weighty, and worthy of reverence.",
-        "The phrase shows the goal of all these laws: God's holiness displayed among Israel.",
+        "The goal of these laws is God's holiness displayed among Israel.",
       ]),
       explain("🕊️ I Am The LORD Which Hallow You", [
         "I Am The LORD Which Hallow You means God is the one who makes Israel holy.",
@@ -756,7 +768,7 @@ const DAY_37_LEVITICUS_21_24_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionIn
       explain("🙌 He Shall Wave The Sheaf Before The LORD", [
         "He Shall Wave The Sheaf Before The LORD describes the priest presenting the firstfruits in God's presence.",
         "The wave offering is a visible act of giving and acknowledgment.",
-        "The phrase shows the harvest being lifted before the true giver.",
+        "The first harvest is lifted before the true giver.",
       ]),
       explain("🐑 An He Lamb Without Blemish", [
         "An He Lamb Without Blemish names the accompanying burnt offering.",
@@ -781,7 +793,7 @@ const DAY_37_LEVITICUS_21_24_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionIn
       explain("🧮 Ye Shall Count Unto You", [
         "Ye Shall Count Unto You begins the counting toward the Feast of Weeks.",
         "The people mark time from firstfruits toward another harvest celebration.",
-        "The phrase shows worshipful waiting built into the calendar.",
+        "The calendar builds worshipful waiting into Israel's harvest life.",
       ]),
       explain("📅 Seven Sabbaths Shall Be Complete", [
         "Seven Sabbaths Shall Be Complete means seven full weeks pass before the next offering.",
@@ -791,7 +803,7 @@ const DAY_37_LEVITICUS_21_24_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionIn
       explain("🍞 A New Meat Offering Unto The LORD", [
         "A New Meat Offering Unto The LORD means fresh grain is brought to God from the harvest.",
         "Meat offering in KJV language usually means grain offering, not animal meat.",
-        "The phrase helps modern readers avoid misunderstanding the word meat.",
+        "Meat means grain here, so the offering is fresh harvest produce brought to God.",
       ]),
       explain("🍞 Two Wave Loaves", [
         "Two Wave Loaves are loaves presented before the LORD as part of the feast.",
@@ -856,7 +868,7 @@ const DAY_37_LEVITICUS_21_24_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionIn
       explain("📅 In The Seventh Month", [
         "In The Seventh Month places this holy day in a major festival season.",
         "The seventh month becomes crowded with worship, rest, atonement, and rejoicing.",
-        "The phrase helps readers see the calendar building toward solemn and joyful encounters with God.",
+        "The calendar builds toward both solemn and joyful encounters with God.",
       ]),
       explain("🛑 A Sabbath", [
         "A Sabbath means the day is marked by rest even though it is not the weekly seventh-day Sabbath.",
@@ -981,7 +993,7 @@ const DAY_37_LEVITICUS_21_24_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionIn
       explain("📜 Beside The Sabbaths Of The LORD", [
         "Beside The Sabbaths Of The LORD means these festival offerings do not replace the regular Sabbath rhythm.",
         "God's calendar has layers: weekly rest, yearly feasts, vows, freewill gifts, and appointed sacrifices.",
-        "The phrase helps readers avoid flattening all holy days into one category.",
+        "Weekly Sabbaths and yearly feasts are related, but they are not the same category.",
       ]),
     ],
   },
@@ -996,10 +1008,10 @@ const DAY_37_LEVITICUS_21_24_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionIn
       explain("🌾 When Ye Have Gathered In The Fruit Of The Land", [
         "When Ye Have Gathered In The Fruit Of The Land places the feast after harvest abundance.",
         "Israel rejoices after receiving provision from the land God gives.",
-        "The phrase shows thanksgiving tied to actual food, fields, and gathered produce.",
+        "Thanksgiving is tied to actual food, fields, and gathered produce.",
       ]),
       explain("🎉 Ye Shall Rejoice Before The LORD Your God", [
-        "Ye Shall Rejoice Before The LORD Your God commands joy in God's presence.",
+        "Joy is commanded in God's presence.",
         "This joy is not detached from holiness; it happens before the LORD.",
         "The phrase teaches that reverence and gladness belong together.",
       ]),
@@ -1051,7 +1063,7 @@ const DAY_37_LEVITICUS_21_24_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionIn
       explain("🌙 From The Evening Unto The Morning", [
         "From The Evening Unto The Morning gives the lamp-tending rhythm through the night.",
         "Aaron is responsible to keep the light ordered during the dark hours.",
-        "The phrase shows priestly care continuing when ordinary activity quiets down.",
+        "Priestly care continues when ordinary activity quiets down.",
       ]),
       explain("📜 A Statute For Ever", [
         "A Statute For Ever means this lamp duty is an ongoing ordinance for Israel's generations.",
@@ -1086,12 +1098,12 @@ const DAY_37_LEVITICUS_21_24_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionIn
       explain("✨ Pure Frankincense Upon Each Row", [
         "Pure Frankincense Upon Each Row adds a fragrant memorial portion to the bread.",
         "Frankincense signals offering and remembrance before the LORD.",
-        "The phrase shows the bread being presented as holy, not merely stored.",
+        "The bread is presented as holy, not merely stored.",
       ]),
       explain("📅 Every Sabbath He Shall Set It In Order", [
         "Every Sabbath He Shall Set It In Order means the bread is refreshed weekly before God.",
         "Sabbath rhythm shapes not only the people, but also priestly service in the sanctuary.",
-        "The phrase shows steady worship repeated with faithful care.",
+        "Steady worship is repeated with faithful care.",
       ]),
       explain("🍞 It Shall Be Aaron's And His Sons'", [
         "It Shall Be Aaron's And His Sons' means the priests eat the holy bread after it is removed.",
@@ -1116,22 +1128,22 @@ const DAY_37_LEVITICUS_21_24_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionIn
       explain("⚔️ Strove Together In The Camp", [
         "Strove Together In The Camp means a fight or serious conflict broke out among the people.",
         "The camp is the ordered community gathered around God's presence.",
-        "The phrase shows disorder erupting in the very place where holiness is supposed to shape life.",
+        "Disorder erupts in the very place where holiness is supposed to shape life.",
       ]),
       explain("📛 Blasphemed The Name Of The LORD", [
         "Blasphemed The Name Of The LORD means he dishonored God's revealed name with contempt.",
         "The Name is not a magic sound; it represents the LORD Himself.",
-        "The phrase explains why the case becomes so serious.",
+        "The case becomes serious because contempt for the Name is contempt for the LORD Himself.",
       ]),
       explain("🧑‍⚖️ They Brought Him Unto Moses", [
         "They Brought Him Unto Moses means the case is taken to the covenant mediator for judgment.",
         "The people do not improvise punishment in the heat of the fight.",
-        "The phrase shows the community seeking God's order through Moses.",
+        "The community seeks God's order through Moses instead of inventing its own judgment.",
       ]),
       explain("⏳ They Put Him In Ward", [
         "They Put Him In Ward means they held him in custody while waiting for the LORD's will to be made clear.",
         "Ward is a guarded holding place, not the final judgment itself.",
-        "The phrase shows restraint until God's command is known.",
+        "The people show restraint until God's command is known.",
       ]),
     ],
   },
@@ -1171,7 +1183,7 @@ const DAY_37_LEVITICUS_21_24_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionIn
       explain("📛 Blasphemeth The Name Of The LORD", [
         "Blasphemeth The Name Of The LORD names the central sin again.",
         "The repeated focus on the Name shows that the issue is direct contempt toward the LORD.",
-        "The phrase helps readers see why this legal case appears after laws about hallowing God's name.",
+        "This legal case belongs after the laws about hallowing God's name.",
       ]),
     ],
   },
@@ -1191,7 +1203,7 @@ const DAY_37_LEVITICUS_21_24_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionIn
       explain("🐂 He That Killeth A Beast", [
         "He That Killeth A Beast deals with responsibility for killing another person's animal.",
         "The penalty is different from killing a human because animal life and human life are not valued the same way.",
-        "The phrase helps readers see measured justice rather than flat punishment.",
+        "The law uses measured justice rather than flat punishment.",
       ]),
       explain("🦴 If A Man Cause A Blemish", [
         "If A Man Cause A Blemish refers to injuring another person physically.",
@@ -1200,7 +1212,7 @@ const DAY_37_LEVITICUS_21_24_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionIn
       ]),
       explain("👁️ Eye For Eye, Tooth For Tooth", [
         "Eye For Eye, Tooth For Tooth means justice must be proportionate to the injury.",
-        "The phrase is often misunderstood as permission for revenge, but in law it limits punishment to fit the harm.",
+        "This is often misunderstood as permission for revenge, but in law it limits punishment to fit the harm.",
         "It keeps judgment from becoming excessive retaliation.",
       ]),
       explain("⚖️ Ye Shall Have One Manner Of Law", [
@@ -1226,7 +1238,7 @@ const DAY_37_LEVITICUS_21_24_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionIn
       explain("🧑‍⚖️ Moses Spake To The Children Of Israel", [
         "Moses Spake To The Children Of Israel means the judgment God gave is communicated to the whole community.",
         "Moses does not keep the ruling private because the case affects Israel's public holiness.",
-        "The phrase shows the mediator delivering God's word before action is taken.",
+        "The mediator delivers God's word before action is taken.",
       ]),
       explain("🚪 They Brought Forth Him That Had Cursed", [
         "They Brought Forth Him That Had Cursed means the guilty man is taken out from custody to receive the sentence.",
@@ -1925,18 +1937,27 @@ function getDay37To38LeviticusSupport(cleanTitle: string) {
   if (/statutes|commandments|contrary|confess|covenant|blessing|curse|cities waste|desolation/.test(lower)) return ["\u{1F4DC} Covenant obedience has weight", "\u{26A0}\u{FE0F} Rebellion brings real warning", "\u{1F64F} Confession opens the door to mercy", "\u{1F54A}\u{FE0F} The LORD remembers His covenant"];
   if (/vow|estimation|shekel|firstling|devoted|tithe|tenth|alter|redeem/.test(lower)) return ["\u{1F5E3}\u{FE0F} Vows are taken seriously", "\u{2696}\u{FE0F} Valuation follows sanctuary order", "\u{1F525} Devoted things belong to God", "\u{1F33E} Tithes are holy to the LORD"];
   if (/blasphem|name|stone|judgment|stranger|eye|tooth|breach/.test(lower)) return ["\u{1F5E3}\u{FE0F} God's name must be honored", "\u{2696}\u{FE0F} Justice is measured carefully", "\u{1F30D} One law covers Israel and the stranger", "\u{1F4DC} Judgment follows the LORD's command"];
-  return ["\u{1F4DC} The wording gives concrete holiness", "\u{1F64C} The LORD defines worship and life", "\u{1F9E0} The phrase answers a real question", "\u{2705} Israel must live the command"];
+  return ["\u{1F4DC} Holiness reaches real life", "\u{1F64C} The LORD defines worship and justice", "\u{1F9E0} The law gives ordered meaning", "\u{2705} Israel must live the command"];
 }
 
 function explainDay37To38LeviticusAt95(section: PersonalLeviticusPhraseSectionInput, cleanTitle: string) {
   const lower = cleanTitle.toLowerCase();
   let opening: string[];
 
-  if (/priest|aaron|sons/.test(lower)) opening = ["The priestly wording names those who serve nearest to holy things.", "Leviticus holds priests to visible holiness because they represent the people before the LORD."];
+  if (/persons shall be.*estimation/.test(lower)) opening = ["Persons given by vow are assigned a sanctuary value.", "The vow is treated seriously, so Leviticus gives an ordered way to value the person dedicated to the LORD."];
+  else if (/priest shall value/.test(lower)) opening = ["The priest sets the value when someone cannot meet the normal amount.", "Holy vows are handled with both order and mercy."];
+  else if (/priest shall estimate/.test(lower)) opening = ["The priest evaluates the house dedicated to the LORD.", "A vowed house is not treated casually once it has been set apart as holy."];
+  else if (/priest shall reckon/.test(lower)) opening = ["The priest calculates the field's value by the years that remain.", "Leviticus keeps vowed property tied to Jubilee and sanctuary order."];
+  else if (/priest|aaron|sons/.test(lower)) opening = ["Priestly service stands nearest to holy things.", "Leviticus holds priests to visible holiness because they represent the people before the LORD."];
   else if (/dead|defile|unclean|blemish/.test(lower)) opening = ["Defilement means becoming unclean for holy service.", "Priests could not treat uncleanness or visible blemish as irrelevant near God's altar."];
   else if (/bread of thy god|shewbread|holy bread/.test(lower)) opening = ["The bread of God refers to holy food connected with priestly service.", "The priest's work centers on offerings that belong to the LORD, not ordinary meals."];
   else if (/whore|profane|virgin|wife/.test(lower)) opening = ["The marriage wording protects priestly holiness in household life.", "Leviticus treats the priest's home as connected to his public service."];
-  else if (/sabbath/.test(lower)) opening = ["Sabbath means the holy rest day given by the LORD.", "Israel's weekly rhythm teaches that time belongs to God."];
+  else if (/land keep a sabbath/.test(lower)) opening = ["The land itself must rest before the LORD.", "Israel cannot farm endlessly as if the land belongs only to them."];
+  else if (/seventh year.*sabbath of rest/.test(lower)) opening = ["The seventh year is a full rest year for the land.", "Fields and vineyards stop so Israel learns trust instead of constant production."];
+  else if (/seven sabbaths of years/.test(lower)) opening = ["Seven sabbaths of years means seven cycles of seven years.", "The counting prepares Israel for the fiftieth year of Jubilee."];
+  else if (/keep my sabbaths/.test(lower)) opening = ["Keeping the Sabbaths means honoring the rest times God commanded.", "Israel's calendar must show reverence for the LORD, not only work and profit."];
+  else if (/land enjoy her sabbaths/.test(lower)) opening = ["The land enjoying her Sabbaths means the land finally receives the rest Israel refused.", "Judgment gives the land the rest that disobedience had stolen."];
+  else if (/sabbath/.test(lower)) opening = ["Sabbath means holy rest given by the LORD.", "Rest teaches Israel that time and provision belong to God."];
   else if (/passover/.test(lower)) opening = ["Passover remembers the night the LORD spared and rescued Israel from Egypt.", "The feast keeps deliverance at the center of Israel's calendar."];
   else if (/unleavened/.test(lower)) opening = ["Unleavened bread is bread made without leaven, so it does not rise.", "The feast remembers Israel leaving Egypt in haste under God's rescue."];
   else if (/firstfruits|harvest|wave sheaf/.test(lower)) opening = ["Firstfruits were the first part of the harvest presented to the LORD.", "Israel learned to honor God before treating the harvest as personal possession."];
@@ -1946,28 +1967,49 @@ function explainDay37To38LeviticusAt95(section: PersonalLeviticusPhraseSectionIn
   else if (/oil|candlestick|lamps/.test(lower)) opening = ["The oil and lamps kept light burning in the holy place.", "The tabernacle required steady care, not occasional enthusiasm."];
   else if (/blasphem|name of the lord/.test(lower)) opening = ["Blaspheming the LORD's name means dishonoring God with serious speech.", "Leviticus treats God's name as holy, not as a tool for anger or contempt."];
   else if (/eye for eye|tooth|breach|life for life/.test(lower)) opening = ["Eye for eye language limits justice to measured proportion.", "The law prevents revenge from becoming larger than the harm."];
-  else if (/stranger/.test(lower)) opening = ["The stranger was a foreigner living among Israel.", "God's justice did not disappear when the person involved was not native-born."];
+  else if (/strangers and sojourners with me/.test(lower)) opening = ["Strangers and sojourners means Israel lives as tenants with God.", "Even in the promised land, they are guests under the LORD's ownership."];
+  else if (/strangers that do sojourn/.test(lower)) opening = ["Sojourning strangers are foreigners living among Israel.", "This rule allows household servants from surrounding peoples while still protecting Israelite brothers differently."];
+  else if (/sojourner or stranger wax rich/.test(lower)) opening = ["A sojourner or stranger can become wealthy while an Israelite brother becomes poor.", "Leviticus still protects the poor brother's right to redemption."];
+  else if (/sell himself unto the stranger/.test(lower)) opening = ["Selling himself to a stranger means a poor Israelite enters service under a foreign resident.", "Even then, the brother is not abandoned to permanent loss."];
+  else if (/stranger/.test(lower)) opening = ["The stranger is a foreigner living among Israel.", "God's justice does not disappear when the person involved is not native-born."];
   else if (/land.*sabbath|sabbath of the land/.test(lower)) opening = ["The land Sabbath means the land itself rested every seventh year.", "Israel had to trust that the LORD owned and sustained the land."];
-  else if (/jubile|fiftieth|liberty/.test(lower)) opening = ["Jubilee was the fiftieth year of release and restoration.", "Debts, land, and bondage were limited because Israel belonged to the LORD."];
+  else if (/trumpet.*jubile/.test(lower)) opening = ["The Jubilee trumpet announces release across the land.", "The sound turns the fiftieth year into a public act of restoration."];
+  else if (/proclaim liberty/.test(lower)) opening = ["Proclaim liberty means announce freedom and release.", "Jubilee breaks long-term loss so land and families can be restored."];
+  else if (/jubile shall.*fiftieth/.test(lower)) opening = ["The fiftieth year is marked as Jubilee.", "This year belongs to restoration, release, and remembering that Israel belongs to the LORD."];
+  else if (/number of years after the jubile/.test(lower)) opening = ["Land prices are measured by years remaining after Jubilee.", "Buying land is really buying harvest years, because the land returns in Jubilee."];
+  else if (/go out in the jubile/.test(lower)) opening = ["Going out in Jubilee means release from the arrangement that held the person or property.", "The fiftieth year stops poverty from becoming permanent bondage."];
+  else if (/serve thee unto the year of jubile/.test(lower)) opening = ["Service lasts only until Jubilee.", "A poor brother may work for help, but he must not be trapped forever."];
+  else if (/according unto the year of jubile/.test(lower)) opening = ["The redemption price is calculated by the distance from Jubilee.", "The nearer Jubilee is, the less time remains to buy back."];
+  else if (/year of jubile he shall go out/.test(lower)) opening = ["Jubilee releases the poor brother from service.", "The LORD limits bondage because Israel belongs to Him."];
+  else if (/jubile|fiftieth|liberty/.test(lower)) opening = ["Jubilee is the fiftieth year of release and restoration.", "Debts, land, and bondage are limited because Israel belongs to the LORD."];
   else if (/oppress/.test(lower)) opening = ["Oppress means to treat someone unfairly or harshly for gain.", "Leviticus forbids using land, money, or power to crush a neighbor."];
   else if (/blessing/.test(lower)) opening = ["The promised blessing means God can provide when obedience seems costly.", "Israel must trust the LORD more than short-term control."];
   else if (/land is mine/.test(lower)) opening = ["For the land is mine means Israel is tenant, not ultimate owner.", "The promised land remains the LORD's gift and possession."];
-  else if (/poor|relieve|brother/.test(lower)) opening = ["The poor brother is an Israelite in economic trouble.", "God commands help that protects life and dignity instead of exploiting weakness."];
+  else if (/if thy brother be waxen poor/.test(lower)) opening = ["A brother waxen poor is an Israelite who has fallen into hardship.", "The law treats poverty as a moment for mercy, not exploitation."];
+  else if (/then thou shalt relieve him/.test(lower)) opening = ["Relieve him means give support so the poor brother can keep living.", "God commands help that protects life instead of profiting from weakness."];
+  else if (/thy brother wax poor/.test(lower)) opening = ["The poor brother's hardship may become severe enough that he sells himself.", "Even then, Leviticus protects him from being treated like property."];
+  else if (/poorer than thy estimation/.test(lower)) opening = ["Poorer than thy estimation means the person cannot afford the normal vow value.", "The priest can set a value that recognizes poverty instead of crushing the worshiper."];
+  else if (/poor|relieve|brother/.test(lower)) opening = ["A poor brother is an Israelite in economic trouble.", "God commands help that protects life and dignity instead of exploiting weakness."];
   else if (/rigour/.test(lower)) opening = ["Rigour means harshness or crushing severity.", "Israel must not rule a poor brother like Pharaoh ruled slaves."];
+  else if (/redemption for the land/.test(lower)) opening = ["Redemption for the land means family land can be bought back.", "The land must not disappear forever from the family God assigned it to."];
+  else if (/may be redeemed again/.test(lower)) opening = ["He may be redeemed again means the poor brother can be bought out of service.", "Family rescue remains possible even after he sells himself."];
+  else if (/devoted thing.*sold or redeemed|none devoted.*redeemed/.test(lower)) opening = ["A devoted thing cannot be bought back like an ordinary vow.", "Once completely devoted to the LORD, it is treated as most holy."];
   else if (/redeemed|redemption/.test(lower)) opening = ["Redeemed means bought back or released from bondage or loss.", "Leviticus gives a way for people and land to be restored."];
   else if (/idols/.test(lower)) opening = ["Idols are false gods made or trusted instead of the LORD.", "Covenant life cannot mix worship of the LORD with manufactured gods."];
   else if (/walk in my statutes/.test(lower)) opening = ["Walking in God's statutes means living according to His commands.", "Obedience is pictured as a path Israel must keep walking."];
   else if (/contrary/.test(lower)) opening = ["Contrary means moving against the LORD instead of with His commands.", "The warning shows rebellion as stubborn resistance, not a small mistake."];
   else if (/confess/.test(lower)) opening = ["Confess means openly admit sin before God.", "The warning section still leaves room for humbling and covenant mercy."];
   else if (/vow|singular vow/.test(lower)) opening = ["A vow was a serious promise made before the LORD.", "Leviticus gives ordered valuation so vowed things are not handled casually."];
-  else if (/estimation|shekel/.test(lower)) opening = ["Estimation means assigned value, and the sanctuary shekel was the holy standard of weight.", "Vows and redemptions had measured order before God."];
+  else if (/fifty shekels/.test(lower)) opening = ["Fifty shekels of silver is the valuation amount named for this category.", "The vow is handled by sanctuary measure, not personal guessing."];
+  else if (/thy estimation shall be/.test(lower)) opening = ["Thy estimation shall be introduces the assigned value for the vow.", "Leviticus gives measured order so promises before God are handled honestly."];
+  else if (/shekel of the sanctuary/.test(lower)) opening = ["The sanctuary shekel is the holy standard of weight for valuation.", "Vows and redemptions use God's appointed measure, not private scales."];
+  else if (/estimation|shekel/.test(lower)) opening = ["Estimation means assigned value before the LORD.", "Vows and redemptions have measured order before God."];
   else if (/firstling/.test(lower)) opening = ["Firstling means the firstborn animal from its mother.", "The firstborn already belonged to the LORD and could not be treated like an optional vow."];
   else if (/devoted/.test(lower)) opening = ["Devoted things were set apart completely to the LORD.", "Leviticus treats them as most holy, not available for casual sale or exchange."];
   else if (/tithe|tenth/.test(lower)) opening = ["Tithe means a tenth portion.", "The tenth belonged to the LORD from the land, herd, and flock."];
-  else opening = [`This wording names ${getDay37To38DistinctiveTopic(cleanTitle)} in Leviticus ${section.chapter}.`, "The phrase gives a concrete piece of holiness, worship, justice, land, vow, or covenant life."];
+  else opening = [`The law gives a concrete rule about ${getDay37To38DistinctiveTopic(cleanTitle)}.`, "Holiness reaches land, worship, justice, vows, possessions, and daily responsibility."];
 
-  const startsWithTitle = opening[0].toLowerCase().startsWith(cleanTitle.toLowerCase());
-  const firstLine = startsWithTitle ? `In ${section.reference}, ${opening[0].charAt(0).toLowerCase()}${opening[0].slice(1)}` : `${opening[0]} Here it applies to ${getDay37To38DistinctiveTopic(cleanTitle)} in ${section.reference}.`;
+  const firstLine = opening[0];
 
   return [
     firstLine,
@@ -2040,5 +2082,8 @@ function polishDay37To38LeviticusSection(section: PersonalLeviticusPhraseSection
 
 export const LEVITICUS_21_27_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionInput[] = [
   ...DAY_37_LEVITICUS_21_24_PERSONAL_SECTIONS,
-  ...generatedLeviticus21To27Sections.filter((section) => section.chapter >= 25).map(polishDay38LeviticusSection),
-].map(polishDay37To38LeviticusSection);
+  ...generatedLeviticus21To27Sections
+    .filter((section) => section.chapter >= 25)
+    .map(polishDay38LeviticusSection)
+    .map(polishDay37To38LeviticusSection),
+];
