@@ -389,7 +389,7 @@ function DashboardInlineBibleReader({
   const [error, setError] = useState<string | null>(null);
   const readerRootRef = useRef<HTMLDivElement | null>(null);
   const isModal = variant === "modal";
-  const chapterAudioSrc = getBibleChapterTtsSrc(bookDisplay, chapter);
+  const chapterAudioSrc = getBibleChapterTtsSrc(bookDisplay, chapter, "kjv");
   const chapterSpeechText = useMemo(
     () => verses.map((verse) => verse.text).join(" "),
     [verses],

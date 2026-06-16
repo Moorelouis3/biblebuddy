@@ -288,8 +288,8 @@ export default function BibleChapterPage() {
     [sections],
   );
   const chapterAudioSrc = useMemo(
-    () => getBibleChapterTtsSrc(bookDisplayName, chapter),
-    [bookDisplayName, chapter],
+    () => getBibleChapterTtsSrc(bookDisplayName, chapter, translation),
+    [bookDisplayName, chapter, translation],
   );
 
   useEffect(() => {

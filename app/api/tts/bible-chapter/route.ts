@@ -3,6 +3,7 @@ import {
   createBibleChapterTtsAdminClient,
   ensureBibleChapterTtsAudio,
 } from "@/lib/bibleChapterTtsAudio";
+import type { BibleChapterTtsTranslation } from "@/lib/bibleChapterTts";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -24,6 +25,9 @@ function audioResponse(bytes: ArrayBuffer | Buffer, source: "cache" | "generated
 export async function GET(request: NextRequest) {
   const book = request.nextUrl.searchParams.get("book");
   const chapter = Number(request.nextUrl.searchParams.get("chapter"));
+  const rawTranslation = request.nextUrl.searchParams.get("translation");
+  const translation: BibleChapterTtsTranslation =
+    rawTranslation === "web" || rawTranslation === "asv" ? rawTranslation : "kjv";
 
   if (!book || !Number.isFinite(chapter) || chapter <= 0) {
     return NextResponse.json({ error: "Invalid Bible chapter TTS request." }, { status: 400 });
@@ -35,7 +39,7 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const result = await ensureBibleChapterTtsAudio(book, chapter, supabase);
+    const result = await ensureBibleChapterTtsAudio(book, chapter, translation, supabase);
     return audioResponse(result.audio, result.source, result.path);
   } catch (error) {
     console.error("[BIBLE_CHAPTER_TTS] Failed to load audio:", error);

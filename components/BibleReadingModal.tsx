@@ -169,7 +169,7 @@ export default function BibleReadingModal({ book, chapter, onClose, onMarkComple
     [sections],
   );
   const chapterAudioSrc = useMemo(
-    () => getBibleChapterTtsSrc(bookDisplayName, chapter),
+    () => getBibleChapterTtsSrc(bookDisplayName, chapter, "kjv"),
     [bookDisplayName, chapter],
   );
 

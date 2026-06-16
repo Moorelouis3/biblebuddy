@@ -1,20 +1,23 @@
 import { createClient } from "@supabase/supabase-js";
 import { createHash } from "crypto";
 import { cleanTextForTts } from "./ttsSpeechText";
+import type { BibleChapterTtsTranslation } from "./bibleChapterTts";
 
 export const BIBLE_CHAPTER_TTS_BUCKET = "tts-audio";
-export const BIBLE_CHAPTER_TTS_CACHE_VERSION = "v1";
+export const BIBLE_CHAPTER_TTS_CACHE_VERSION = "v2";
 export const BIBLE_CHAPTER_TTS_VOICE = "onyx";
 export const BIBLE_CHAPTER_TTS_KIND = "verses";
 
 const MAX_TTS_CHUNK_LENGTH = 3400;
 type SupabaseAdmin = any;
 
-type BibleChapterVerse = {
+type BibleApiVerse = {
   verse?: number | string | null;
-  num?: number | string | null;
-  number?: number | string | null;
   text?: string | null;
+};
+
+type BibleApiResponse = {
+  verses?: BibleApiVerse[] | null;
 };
 
 function normalizeBookForDb(book: string | null | undefined) {
@@ -27,6 +30,10 @@ function normalizeBookForDb(book: string | null | undefined) {
 
 function normalizeBookForPath(book: string | null | undefined) {
   return normalizeBookForDb(book).replace(/[^a-z0-9]+/g, "");
+}
+
+function normalizeBookForApi(book: string | null | undefined) {
+  return normalizeBookForDb(book).replace(/\s+/g, "");
 }
 
 function displayBookName(book: string | null | undefined) {
@@ -130,31 +137,40 @@ async function generateOpenAiSpeech(text: string) {
   return Buffer.concat(audioChunks);
 }
 
-function getBookQueryVariants(book: string) {
-  const normalized = normalizeBookForDb(book);
-  const display = displayBookName(book);
-  const compact = normalized.replace(/\s+/g, "");
-  return Array.from(new Set([normalized, display, compact])).filter((value): value is string => Boolean(value));
-}
+async function fetchTranslationVerses(
+  book: string,
+  chapter: number,
+  translation: BibleChapterTtsTranslation,
+) {
+  const apiBook = normalizeBookForApi(book);
+  const apiUrl = `https://bible-api.com/${apiBook}+${chapter}?translation=${translation}`;
+  const response = await fetch(apiUrl, {
+    headers: {
+      Accept: "application/json",
+    },
+    cache: "no-store",
+  });
 
-export async function getBibleChapterSpeechText(book: string, chapter: number, supabase: SupabaseAdmin) {
-  const variants = getBookQueryVariants(book);
-
-  const { data, error } = await supabase
-    .from("bible_chapters")
-    .select("content_json")
-    .eq("chapter", chapter)
-    .in("book", variants)
-    .limit(1)
-    .maybeSingle();
-
-  if (error) throw new Error(error.message);
-
-  const verses = ((data as any)?.content_json as any)?.verses as BibleChapterVerse[] | undefined;
-  if (!Array.isArray(verses) || verses.length === 0) {
-    throw new Error(`${displayBookName(book)} ${chapter} chapter text was not found.`);
+  if (!response.ok) {
+    throw new Error(`Failed to fetch ${displayBookName(book)} ${chapter} ${translation.toUpperCase()} text.`);
   }
 
+  const apiData = (await response.json()) as BibleApiResponse;
+  const verses = Array.isArray(apiData.verses) ? apiData.verses : [];
+  if (!verses.length) {
+    throw new Error(`${displayBookName(book)} ${chapter} ${translation.toUpperCase()} text was empty.`);
+  }
+
+  return verses;
+}
+
+export async function getBibleChapterSpeechText(
+  book: string,
+  chapter: number,
+  translation: BibleChapterTtsTranslation,
+  _supabase: SupabaseAdmin,
+) {
+  const verses = await fetchTranslationVerses(book, chapter, translation);
   const text = verses
     .map((verse) => String(verse?.text || "").trim())
     .filter(Boolean)
@@ -162,14 +178,19 @@ export async function getBibleChapterSpeechText(book: string, chapter: number, s
 
   const cleaned = cleanTextForTts(text);
   if (!cleaned) {
-    throw new Error(`${displayBookName(book)} ${chapter} chapter text was empty.`);
+    throw new Error(`${displayBookName(book)} ${chapter} ${translation.toUpperCase()} text was empty.`);
   }
 
   return cleaned;
 }
 
-export function getBibleChapterTtsPath(book: string, chapter: number, text: string) {
-  return `bible/${normalizeBookForPath(book)}/${chapter}/${BIBLE_CHAPTER_TTS_KIND}-${BIBLE_CHAPTER_TTS_VOICE}-${BIBLE_CHAPTER_TTS_CACHE_VERSION}-${speechTextHash(text)}.mp3`;
+export function getBibleChapterTtsPath(
+  book: string,
+  chapter: number,
+  translation: BibleChapterTtsTranslation,
+  text: string,
+) {
+  return `bible/${normalizeBookForPath(book)}/${chapter}/${BIBLE_CHAPTER_TTS_KIND}-${translation}-${BIBLE_CHAPTER_TTS_VOICE}-${BIBLE_CHAPTER_TTS_CACHE_VERSION}-${speechTextHash(text)}.mp3`;
 }
 
 export async function downloadCachedBibleChapterAudio(supabase: SupabaseAdmin, path: string) {
@@ -193,9 +214,15 @@ export async function uploadCachedBibleChapterAudio(supabase: SupabaseAdmin, pat
   });
 }
 
-export async function ensureBibleChapterTtsAudio(book: string, chapter: number, supabase: SupabaseAdmin, force = false) {
-  const text = await getBibleChapterSpeechText(book, chapter, supabase);
-  const path = getBibleChapterTtsPath(book, chapter, text);
+export async function ensureBibleChapterTtsAudio(
+  book: string,
+  chapter: number,
+  translation: BibleChapterTtsTranslation,
+  supabase: SupabaseAdmin,
+  force = false,
+) {
+  const text = await getBibleChapterSpeechText(book, chapter, translation, supabase);
+  const path = getBibleChapterTtsPath(book, chapter, translation, text);
 
   if (!force) {
     const cached = await downloadCachedBibleChapterAudio(supabase, path);
