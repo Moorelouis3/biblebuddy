@@ -17,7 +17,7 @@ import { CHAPTER_BASED_TRIVIA_BOOK_CONFIG } from "../lib/triviaCatalog";
 import { getTriviaChapter } from "../lib/triviaGameData";
 import { getScrambledChapter } from "../lib/scrambledGameData";
 import BrowserTtsButton from "./BrowserTtsButton";
-import { getGenesisOneTtsSrc } from "../lib/genesisOneTts";
+import { getBibleChapterTtsSrc } from "../lib/bibleChapterTts";
 import { BIBLE_READING_BACKGROUND_VOLUME, getBibleReadingBackgroundTracks } from "../lib/bibleReadingBackgroundMusic";
 import { GENESIS_CREATION_WEB_VERSES } from "../lib/creationOfWorldDeepNotes";
 
@@ -165,13 +165,13 @@ export default function BibleReadingModal({ book, chapter, onClose, onMarkComple
   const hasScrambled = false;
   const isInline = presentation === "inline";
   const chapterSpeechText = useMemo(
-    () =>
-      sections
-        .flatMap((section) => section.verses.map((verse) => `${verse.num}. ${verse.text}`))
-        .join(" "),
+    () => sections.flatMap((section) => section.verses.map((verse) => verse.text)).join(" "),
     [sections],
   );
-  const isGenesisOneStudyReading = bookDisplayName.toLowerCase() === "genesis" && Number(chapter) === 1;
+  const chapterAudioSrc = useMemo(
+    () => getBibleChapterTtsSrc(bookDisplayName, chapter),
+    [bookDisplayName, chapter],
+  );
 
   useEffect(() => {
     async function loadUserAndProgress() {
@@ -987,14 +987,14 @@ Be accurate to Scripture.`;
               isInline ? "overflow-visible" : "max-h-[60vh] overflow-y-auto"
             }`}
           >
-            {isGenesisOneStudyReading ? (
+            {chapterAudioSrc ? (
               <BrowserTtsButton
                 text={chapterSpeechText}
-                label={`Listen to KJV ${bookDisplayName} ${chapter}`}
-                audioSrc={getGenesisOneTtsSrc("verses", bookDisplayName, chapter)}
+                label={`Listen to ${bookDisplayName} ${chapter}`}
+                audioSrc={chapterAudioSrc}
                 backgroundMusicSrcs={getBibleReadingBackgroundTracks(bookDisplayName, chapter)}
                 backgroundMusicVolume={BIBLE_READING_BACKGROUND_VOLUME}
-                aiDisclosure={Boolean(getGenesisOneTtsSrc("verses", bookDisplayName, chapter))}
+                aiDisclosure={Boolean(chapterAudioSrc)}
               />
             ) : null}
             {enrichedContent ? (

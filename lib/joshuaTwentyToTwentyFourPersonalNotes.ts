@@ -807,7 +807,7 @@ function explainDay62JoshuaAt95(section: PersonalLeviticusPhraseSectionInput, cl
   } else if (/people ye cannot serve the lord for/.test(lower)) {
     opening = ["Joshua shocks the people by saying they cannot serve the LORD casually or on their own terms.", "He wants them to feel the weight of the God they are claiming to choose."];
   } else if (/ye cannot serve the lord for he/.test(lower)) {
-    opening = ["Ye cannot serve the LORD means covenant loyalty is too serious for empty enthusiasm.", "Joshua is exposing shallow confidence before he confirms their commitment."];
+    opening = ["Joshua is warning that covenant loyalty is too serious for empty enthusiasm or casual promises.", "He is exposing shallow confidence before he confirms their commitment."];
   } else if (/cannot serve the lord for he is/.test(lower)) {
     opening = ["The problem is not that God is impossible to obey, but that He is too holy for divided worship.", "Joshua is warning them against speaking faster than they are willing to live."];
   } else if (/serve the lord for he is an/.test(lower)) {
@@ -839,7 +839,7 @@ function explainDay62JoshuaAt95(section: PersonalLeviticusPhraseSectionInput, cl
   } else if (/lord all the days of joshua and/.test(lower)) {
     opening = ["The wording stretches loyalty beyond Joshua himself to the elders who outlived him.", "Living memory helped preserve covenant faithfulness."];
   } else if (/known all the works of the lord/.test(lower)) {
-    opening = ["Known all the works of the LORD means these leaders had firsthand knowledge of what God had done.", "Their obedience was strengthened by remembered experience, not by rumor."];
+    opening = ["These leaders had firsthand knowledge of what God had done for Israel.", "Their obedience was strengthened by remembered experience, not by rumor."];
   } else if (/all the works of the lord that/.test(lower)) {
     opening = ["Joshua ties faithful service to actual knowledge of God's works.", "The line implies that forgetting God opens the door to later drift."];
   } else if (/works of the lord that he had/.test(lower)) {

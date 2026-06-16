@@ -45,6 +45,7 @@ import { DIAMOND_REWARDS, TASK_REWARD_LABELS, TASK_XP } from "../../../../lib/pr
 import { cacheChapterNotes, fetchBibleChapterNotes, getCanonicalBibleNotesBookKey, getOfflineChapterNotes } from "../../../../lib/chapterNotesOffline";
 import BrowserTtsButton from "../../../../components/BrowserTtsButton";
 import { getGenesisOneTtsSrc } from "../../../../lib/genesisOneTts";
+import { getBibleChapterTtsSrc } from "../../../../lib/bibleChapterTts";
 import { BIBLE_READING_BACKGROUND_VOLUME, getBibleReadingBackgroundTracks } from "../../../../lib/bibleReadingBackgroundMusic";
 import { getApprovedBibleYearDeepStudyMarkdownForChapter, getApprovedBibleYearDeepStudySectionsForChapter } from "../../../../lib/bibleYearApprovedDeepStudy";
 
@@ -282,9 +283,13 @@ export default function BibleChapterPage() {
   const chapterSpeechText = useMemo(
     () =>
       sections
-        .flatMap((section) => section.verses.map((verse) => `${verse.num}. ${verse.text}`))
+        .flatMap((section) => section.verses.map((verse) => verse.text))
         .join(" "),
     [sections],
+  );
+  const chapterAudioSrc = useMemo(
+    () => getBibleChapterTtsSrc(bookDisplayName, chapter),
+    [bookDisplayName, chapter],
   );
 
   useEffect(() => {
@@ -343,7 +348,7 @@ export default function BibleChapterPage() {
     return [
       {
         id: "verses",
-        emoji: "??",
+        emoji: "",
         title: `${bookDisplay} ${chapter}`,
         verses: verses.map((v) => ({
           num: v.verse,
@@ -1662,7 +1667,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
           type: "reading-plan",
           id: "bible-buddy",
           backLink: "/reading-plans/bible-buddy",
-          backText: "? Back to The Bible Buddy Reading Plan",
+          backText: "Back to The Bible Buddy Reading Plan",
         });
         setFromReadingPlan(true); // Keep for backward compatibility
       } else if (source === "bible-in-one-year") {
@@ -1670,7 +1675,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
           type: "reading-plan",
           id: "bible-in-one-year",
           backLink: "/reading-plans/bible-in-one-year",
-          backText: "? Back to Bible in One Year",
+          backText: "Back to Bible in One Year",
         });
         setFromReadingPlan(true);
       } else if (source.startsWith("devotional:")) {
@@ -1679,7 +1684,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
           type: "devotional",
           id: devotionalId,
           backLink: `/bible-studies/${devotionalId}`,
-          backText: "? Back to Devotional",
+          backText: "Back to Devotional",
         });
         setFromReadingPlan(true);
       } else if (source === "true") {
@@ -1688,7 +1693,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
           type: "reading-plan",
           id: "bible-buddy",
           backLink: "/reading-plans/bible-buddy",
-          backText: "? Back to The Bible Buddy Reading Plan",
+          backText: "Back to The Bible Buddy Reading Plan",
         });
         setFromReadingPlan(true);
       }
@@ -2008,8 +2013,8 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
   // Determine back link:
   // - If opened from a reading plan or devotional, send users back there.
   // - Otherwise, send them to the normal book overview page.
-  const backLink = sourceContext.backLink || "/Bible";
-  const backText = sourceContext.backText || `? Back to ${bookDisplayName} overview`;
+  const backLink = sourceContext.backLink || `/reading/books/${encodeURIComponent(book.toLowerCase())}`;
+  const backText = sourceContext.backText || `Back to ${bookDisplayName} overview`;
 
   const chapterDiscussionSlug = `bible-chapter-${book.toLowerCase().replace(/\s+/g, "-")}-${chapter}`;
 
@@ -2347,16 +2352,16 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
         >
           <BrowserTtsButton
             text={chapterSpeechText}
-            label={`Listen to KJV ${bookDisplayName} ${chapter}`}
-            audioSrc={getGenesisOneTtsSrc("verses", bookDisplayName, chapter)}
+            label={`Listen to ${bookDisplayName} ${chapter}`}
+            audioSrc={chapterAudioSrc}
             backgroundMusicSrcs={getBibleReadingBackgroundTracks(bookDisplayName, chapter)}
             backgroundMusicVolume={BIBLE_READING_BACKGROUND_VOLUME}
-            aiDisclosure={Boolean(getGenesisOneTtsSrc("verses", bookDisplayName, chapter))}
+            aiDisclosure={Boolean(chapterAudioSrc)}
           />
           {sections.map((section) => (
             <div key={section.id} className="mb-8 last:mb-0">
               <h2 className="mb-4 flex items-center gap-2 text-xl font-semibold">
-                <span className="text-2xl">{section.emoji}</span>
+                {section.emoji ? <span className="text-2xl">{section.emoji}</span> : null}
                 <span>{section.title}</span>
               </h2>
               <div className="space-y-5">
@@ -2497,8 +2502,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                           : "border-gray-200 bg-white text-gray-800 hover:bg-blue-50 hover:border-blue-200"
                       }`}
                     >
-                      <span className="text-sm font-bold">?</span>
-                      <span className="ml-1.5 hidden sm:inline text-xs font-semibold">Prev</span>
+                      <span className="text-xs font-semibold">Prev</span>
                     </button>
                     <div className="pointer-events-none absolute left-0 top-full mt-2 z-50 hidden w-max rounded-lg border border-yellow-200 bg-yellow-50 px-3 py-1.5 text-xs font-semibold text-gray-800 shadow-md group-hover:block">
                       Previous chapter
@@ -2512,8 +2516,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                       aria-label="Browse all Bible books"
                       className="flex items-center justify-center rounded-xl border border-gray-200 bg-white px-2.5 py-1.5 text-gray-800 transition hover:bg-blue-50 hover:border-blue-200"
                     >
-                      <span className="text-base">??</span>
-                      <span className="ml-1.5 hidden sm:inline text-xs font-semibold">Books</span>
+                      <span className="text-xs font-semibold">Books</span>
                     </button>
                     <div className="pointer-events-none absolute left-0 top-full mt-2 z-50 hidden w-max rounded-lg border border-yellow-200 bg-yellow-50 px-3 py-1.5 text-xs font-semibold text-gray-800 shadow-md group-hover:block">
                       Browse all Bible books
@@ -2529,8 +2532,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                     aria-label="Next chapter"
                     className="flex items-center justify-center rounded-xl border border-gray-200 bg-white px-2.5 py-1.5 text-gray-800 transition hover:bg-blue-50 hover:border-blue-200"
                   >
-                    <span className="hidden sm:inline text-xs font-semibold">Next</span>
-                    <span className="ml-1.5 text-sm font-bold">?</span>
+                    <span className="text-xs font-semibold">Next</span>
                   </button>
                   <div className="pointer-events-none absolute right-0 top-full mt-2 z-50 hidden w-max rounded-lg border border-yellow-200 bg-yellow-50 px-3 py-1.5 text-xs font-semibold text-gray-800 shadow-md group-hover:block">
                     Next chapter
@@ -2568,7 +2570,6 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                           : "bg-blue-600 text-white hover:bg-blue-700 bb-mark-pulse"
                     }`}
                   >
-                    <span className="text-base">{isCompleted ? "?" : "??"}</span>
                     <span className="text-xs font-bold">
                       {isCompleted ? "Chapter Completed" : "Mark Chapter Completed"}
                     </span>
@@ -2579,7 +2580,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                 </div>
               </div>
 
-              {/* Right: Translation + Review + Trivia + Scrambled + Next */}
+              {/* Right: Translation + Review + Trivia + Next */}
               <div className="hidden md:flex items-center justify-end gap-1.5">
                 <div ref={translationMenuRef} className="group relative">
                   <button
@@ -2589,8 +2590,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                     aria-expanded={translationMenuOpen}
                     className="flex items-center justify-center rounded-xl border bg-white px-2.5 py-1.5 text-gray-800 transition hover:bg-blue-50 hover:border-blue-200"
                   >
-                    <span className="text-base">??</span>
-                    <span className="ml-1.5 text-xs font-semibold">{translation.toUpperCase()}</span>
+                    <span className="text-xs font-semibold">{translation.toUpperCase()}</span>
                   </button>
                   {!translationMenuOpen && (
                     <div className="pointer-events-none absolute right-0 top-full mt-2 z-50 hidden w-max rounded-lg border border-yellow-200 bg-yellow-50 px-3 py-1.5 text-xs font-semibold text-gray-800 shadow-md group-hover:block">
@@ -2639,11 +2639,10 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                         : "border-gray-200 bg-white text-gray-800 hover:bg-blue-50 hover:border-blue-200"
                     }`}
                   >
-                    <span className="text-base">{reviewDone ? "?" : "??"}</span>
-                    <span className="ml-1.5 hidden lg:inline text-xs font-semibold">Notes</span>
+                    <span className="text-xs font-semibold">Notes</span>
                   </button>
                   <div className="pointer-events-none absolute right-0 top-full mt-2 z-50 hidden w-max rounded-lg border border-yellow-200 bg-yellow-50 px-3 py-1.5 text-xs font-semibold text-gray-800 shadow-md group-hover:block">
-                    {reviewDone ? "Notes done ?" : "Chapter notes"}
+                    {reviewDone ? "Notes done" : "Chapter notes"}
                   </div>
                 </div>
 
@@ -2659,34 +2658,12 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                           : "border-gray-200 bg-white text-gray-800 hover:bg-blue-50 hover:border-blue-200"
                       }`}
                     >
-                      <span className="text-base">{triviaDone ? "?" : "??"}</span>
-                      <span className="ml-1.5 text-xs font-semibold">Trivia</span>
+                      <span className="text-xs font-semibold">Trivia</span>
                     </button>
                     <div className="pointer-events-none absolute right-0 top-full mt-2 z-50 hidden w-max rounded-lg border border-yellow-200 bg-yellow-50 px-3 py-1.5 text-xs font-semibold text-gray-800 shadow-md group-hover:block">
-                      {triviaDone ? "Trivia done ?" : "Chapter trivia"}
+                      {triviaDone ? "Trivia done" : "Chapter trivia"}
                     </div>
-                
-                  </div>
-                )}
 
-                {scrambledChapterPack && (
-                  <div className="group relative">
-                    <button
-                      type="button"
-                      onClick={() => setShowScrambledModal(true)}
-                      aria-label="Scrambled"
-                      className={`flex items-center justify-center rounded-xl border px-2.5 py-1.5 transition ${
-                        scrambledDone
-                          ? "border-emerald-300 bg-emerald-50 text-emerald-700 hover:bg-emerald-100"
-                          : "border-gray-200 bg-white text-gray-800 hover:bg-blue-50 hover:border-blue-200"
-                      }`}
-                    >
-                      <span className="text-base">{scrambledDone ? "?" : "??"}</span>
-                      <span className="ml-1.5 text-xs font-semibold">Scrambled</span>
-                    </button>
-                    <div className="pointer-events-none absolute right-0 top-full mt-2 z-50 hidden w-max rounded-lg border border-yellow-200 bg-yellow-50 px-3 py-1.5 text-xs font-semibold text-gray-800 shadow-md group-hover:block">
-                      {scrambledDone ? "Scrambled done ?" : "Scrambled game"}
-                    </div>
                   </div>
                 )}
 
@@ -2698,7 +2675,6 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                     className="flex items-center justify-center rounded-xl border border-gray-200 bg-white px-2.5 py-1.5 text-gray-800 transition hover:bg-blue-50 hover:border-blue-200"
                   >
                     <span className="text-xs font-semibold">Next</span>
-                    <span className="ml-1.5 text-sm font-bold">?</span>
                   </button>
                   <div className="pointer-events-none absolute right-0 top-full mt-2 z-50 hidden w-max rounded-lg border border-yellow-200 bg-yellow-50 px-3 py-1.5 text-xs font-semibold text-gray-800 shadow-md group-hover:block">
                     Next chapter
@@ -2841,20 +2817,6 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                       </button>
                     ) : null}
 
-                    {scrambledChapterPack ? (
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setShowScrambledModal(true);
-                          setGamesMenuOpen(false);
-                        }}
-                        className={`flex w-full items-center justify-between rounded-2xl border px-4 py-3 text-sm font-semibold transition ${scrambledDone ? "border-emerald-300 bg-emerald-50 text-emerald-700" : "border-gray-200 bg-white text-gray-800 hover:border-blue-200 hover:bg-blue-50"}`}
-                      >
-                        <span>Scrambled</span>
-                        <span>{scrambledDone ? "Done" : "Play"}</span>
-                      </button>
-                    ) : null}
-
                     <label className="flex cursor-pointer items-center justify-between rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-800 transition hover:border-blue-200 hover:bg-blue-50 select-none">
                       <span>Plain Text Mode</span>
                       <input
@@ -2898,7 +2860,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                     {isCompleted ? "This chapter is finished" : "Finish this chapter"}
                   </span>
                 </div>
-                <span className="text-lg font-bold">{isCompleted ? "?" : "?"}</span>
+                <span className="text-sm font-bold">{isCompleted ? "Done" : "Go"}</span>
               </button>
 
               <button
@@ -3003,20 +2965,6 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                     </button>
                   ) : null}
 
-                  {scrambledChapterPack ? (
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setShowScrambledModal(true);
-                        setGamesMenuOpen(false);
-                      }}
-                      className={`flex w-full items-center justify-between rounded-2xl border px-4 py-3 text-sm font-semibold transition ${scrambledDone ? "border-emerald-300 bg-emerald-50 text-emerald-700" : "border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] hover:brightness-95"}`}
-                    >
-                      <span>Scrambled</span>
-                      <span>{scrambledDone ? "Done" : "Play"}</span>
-                    </button>
-                  ) : null}
-
                   <label className="flex cursor-pointer items-center justify-between rounded-2xl border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] px-4 py-3 text-sm font-semibold text-[var(--bb-text-primary,#111827)] transition hover:brightness-95 select-none">
                     <span>Plain Text Mode</span>
                     <input
@@ -3043,16 +2991,16 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
         >
           <BrowserTtsButton
             text={chapterSpeechText}
-            label={`Listen to KJV ${bookDisplayName} ${chapter}`}
-            audioSrc={getGenesisOneTtsSrc("verses", bookDisplayName, chapter)}
+            label={`Listen to ${bookDisplayName} ${chapter}`}
+            audioSrc={chapterAudioSrc}
             backgroundMusicSrcs={getBibleReadingBackgroundTracks(bookDisplayName, chapter)}
             backgroundMusicVolume={BIBLE_READING_BACKGROUND_VOLUME}
-            aiDisclosure={Boolean(getGenesisOneTtsSrc("verses", bookDisplayName, chapter))}
+            aiDisclosure={Boolean(chapterAudioSrc)}
           />
           {sections.map((section) => (
             <div key={section.id} className="mb-8 last:mb-0">
               <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-                <span className="text-2xl">{section.emoji}</span>
+                {section.emoji ? <span className="text-2xl">{section.emoji}</span> : null}
                 <span>{section.title}</span>
               </h2>
               <div className="space-y-5">
@@ -3133,7 +3081,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
             {/* Header */}
             <div className="sticky top-0 z-10 flex items-center justify-between rounded-t-3xl border-b border-gray-100 bg-white/95 px-6 py-4 backdrop-blur">
               <div className="flex items-center gap-3">
-                <div className="flex h-9 w-9 items-center justify-center rounded-2xl bg-blue-50 text-lg">??</div>
+                <div className="flex h-9 w-9 items-center justify-center rounded-2xl bg-blue-50 text-sm font-semibold text-blue-700">Notes</div>
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-widest text-blue-600">Chapter Notes</p>
                   <h2 className="text-base font-bold text-gray-900">{bookDisplayName} {chapter}</h2>
@@ -3145,7 +3093,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                 className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-gray-500 transition hover:bg-gray-200"
                 aria-label="Close review"
               >
-                ?
+                ×
               </button>
             </div>
 
@@ -3228,7 +3176,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
               className="absolute right-4 top-4 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-gray-200 text-gray-600 hover:bg-gray-300"
               aria-label="Close trivia"
             >
-              ?
+              ×
             </button>
             <TriviaGamePlayer
               bookName={bookDisplayName}

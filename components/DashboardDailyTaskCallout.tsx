@@ -25,6 +25,7 @@ import { TASK_XP } from "../lib/progressionRewards";
 import { GENESIS_CREATION_WEB_VERSES } from "../lib/creationOfWorldDeepNotes";
 import BrowserTtsButton from "./BrowserTtsButton";
 import { getGenesisOneTtsSrc } from "../lib/genesisOneTts";
+import { getBibleChapterTtsSrc } from "../lib/bibleChapterTts";
 import { BIBLE_READING_BACKGROUND_VOLUME, getBibleReadingBackgroundTracks } from "../lib/bibleReadingBackgroundMusic";
 
 type Props = {
@@ -388,7 +389,7 @@ function DashboardInlineBibleReader({
   const [error, setError] = useState<string | null>(null);
   const readerRootRef = useRef<HTMLDivElement | null>(null);
   const isModal = variant === "modal";
-  const chapterAudioSrc = getGenesisOneTtsSrc("verses", bookDisplay, chapter);
+  const chapterAudioSrc = getBibleChapterTtsSrc(bookDisplay, chapter);
   const chapterSpeechText = useMemo(
     () => verses.map((verse) => verse.text).join(" "),
     [verses],

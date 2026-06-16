@@ -77,9 +77,9 @@ export const JUDGES_16_21_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionInput
   ]),
   section(16, 6, 10, "Delilah Begins Pressing Samson", I.question, [
     phrase(I.question, "Tell Me, I Pray Thee", "Delilah asks for Samson's secret while hiding the danger behind personal words.", [`${I.question} A request`, `${I.warning} A hidden trap`, `${I.broken} Trust being tested`], "The phrase sounds gentle, but the story shows it is manipulation."),
-    phrase(I.strength, "Wherein Thy Great Strength Lieth", "the enemy wants to know the source of Samson's strength so they can control him.", [`${I.strength} Strength`, `${I.eye} Secret watched`, `${I.battle} Enemy strategy`], "The Philistines know they cannot defeat Samson until his strength is exposed."),
-    phrase(I.warning, "Bind Thee To Afflict Thee", "the goal is not curiosity but captivity and suffering.", [`${I.warning} Binding`, `${I.broken} Affliction`, `${I.battle} Enemy purpose`], "Delilah's questions are really moving toward Samson's suffering."),
-    phrase(I.seedling, "Seven Green Withs", "Samson gives a false answer and begins playing with the secret of his calling.", [`${I.seedling} Fresh cords`, `${I.question} False answer`, `${I.warning} Playing with danger`], "The lie may protect him for a moment, but it keeps him close to the trap."),
+    phrase(I.strength, "Wherein Thy Great Strength Lieth", "Lieth here means lies or comes from. Delilah wants to know where Samson's strength comes from so he can be controlled.", [`${I.strength} Strength`, `${I.eye} Secret watched`, `${I.battle} Enemy strategy`], "The Philistines know they cannot defeat Samson until his strength is exposed."),
+    phrase(I.warning, "Bind Thee To Afflict Thee", "The goal is not curiosity but tying Samson up so he can be weakened and harmed.", [`${I.warning} Binding`, `${I.broken} Affliction`, `${I.battle} Enemy purpose`], "Delilah's questions are really moving toward Samson's suffering."),
+    phrase(I.seedling, "Seven Green Withs", "Withs are fresh cords or bowstrings that have not dried out yet.", [`${I.seedling} Fresh cords`, `${I.question} False answer`, `${I.warning} Playing with danger`], "Samson gives Delilah a false answer, but he keeps playing close to the trap."),
   ]),
   section(16, 11, 14, "Samson Keeps Playing With Danger", I.warning, [
     phrase(I.hand, "If They Bind Me Fast With New Ropes", "Samson gives another false answer while still staying in the dangerous conversation.", [`${I.hand} New ropes`, `${I.question} Another test`, `${I.warning} Danger ignored`], "He is not trapped yet, but he is becoming less careful."),
@@ -137,7 +137,7 @@ export const JUDGES_16_21_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionInput
   ]),
   section(18, 7, 10, "Laish Looks Easy To Take", I.city, [
     phrase(I.city, "The People That Were Therein Dwelt Careless", "Laish appears secure and unguarded.", [`${I.city} Laish`, `${I.eye} Spies observing`, `${I.warning} Vulnerable people`], "The spies see opportunity, not covenant faithfulness."),
-    phrase(I.hand, "There Was No Magistrate In The Land", "Laish lacks nearby authority or protection.", [`${I.hand} No ruler nearby`, `${I.city} Isolated city`, `${I.battle} Easy target`], "That weakness is why Dan thinks the city can be taken."),
+    phrase(I.hand, "There Was No Magistrate In The Land", "A magistrate is a ruler or official with power to restrain trouble. Laish has no nearby authority to protect it.", [`${I.hand} No ruler nearby`, `${I.city} Isolated city`, `${I.battle} Easy target`], "That weakness is why Dan thinks the city can be taken."),
     phrase(I.grain, "A Place Where There Is No Want", "the land appears rich and supplied.", [`${I.grain} Plenty`, `${I.map} Good land`, `${I.eye} Attractive target`], "Dan is drawn by ease and abundance."),
     phrase(I.battle, "God Hath Given It Into Your Hands", "the spies use God-language to encourage the attack.", [`${I.battle} Confidence`, `${I.prayer} Religious claim`, `${I.warning} Troubled discernment`], "The words sound faithful, but the surrounding story is morally dark."),
   ]),
@@ -154,8 +154,8 @@ export const JUDGES_16_21_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionInput
     phrase(I.sorrow, "The Priest's Heart Was Glad", "the Levite is happy to trade Micah's house for a larger role with Dan.", [`${I.sorrow} Gladness in corruption`, `${I.priest} Better position`, `${I.warning} Ambition over faithfulness`], "The priest cares more about opportunity than obedience."),
   ]),
   section(18, 21, 26, "Micah Loses His Gods", I.broken, [
-    phrase(I.broken, "The Little Ones And The Cattle And The Carriage", "Dan protects its vulnerable people and goods while stealing Micah's shrine.", [`${I.baby} Families`, `${I.grain} Possessions`, `${I.warning} Armed movement`], "The detail makes the tribal migration feel large and organized."),
-    phrase(I.question, "What Aileth Thee", "Dan asks Micah why he is upset after taking his gods and priest.", [`${I.question} Confrontation`, `${I.idol} Stolen gods`, `${I.warning} Moral blindness`], "The question exposes how upside down the whole scene has become."),
+    phrase(I.broken, "The Little Ones And The Cattle And The Carriage", "The line lists Dan's children, livestock, and baggage moving together in one organized migration.", [`${I.baby} Families`, `${I.grain} Possessions`, `${I.warning} Armed movement`], "The detail makes the tribal migration feel large and organized."),
+    phrase(I.question, "What Aileth Thee", "Aileth means troubles you. Dan is asking Micah why he is upset after taking his gods and priest.", [`${I.question} Confrontation`, `${I.idol} Stolen gods`, `${I.warning} Moral blindness`], "The question exposes how upside down the whole scene has become."),
     phrase(I.idol, "Ye Have Taken Away My Gods", "Micah admits his gods can be stolen.", [`${I.idol} Weak gods`, `${I.broken} Loss`, `${I.warning} False worship exposed`], "The phrase almost mocks idolatry. A god that can be stolen cannot save."),
     phrase(I.hand, "Thou Gatheredst Them Together", "Micah cannot recover what was taken because Dan is stronger.", [`${I.hand} Small force`, `${I.battle} Stronger tribe`, `${I.broken} Helpless anger`], "Human-made religion leaves Micah powerless."),
   ]),
@@ -167,8 +167,8 @@ export const JUDGES_16_21_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionInput
   ]),
   section(19, 1, 6, "A Levite And His Concubine", I.broken, [
     phrase(I.crown, "There Was No King In Israel", "the story happens in a time of moral disorder.", [`${I.crown} No king`, `${I.warning} No shared obedience`, `${I.broken} Dark chapter ahead`], "This opening prepares the reader for one of Judges' most painful scenes."),
-    phrase(I.priest, "A Certain Levite Sojourning", "a Levite is again unsettled and away from stable service.", [`${I.priest} Levite`, `${I.map} Sojourning`, `${I.warning} Worship disorder`], "The repeated Levite detail keeps showing Israel's spiritual instability."),
-    phrase(I.broken, "His Concubine Played The Whore Against Him", "the relationship is already broken and painful.", [`${I.broken} Broken household`, `${I.sorrow} Shame`, `${I.warning} Human disorder`], "The phrase introduces family fracture before national fracture appears."),
+    phrase(I.priest, "A Certain Levite Sojourning", "A Levite was a man from Israel's priestly tribe. Here he is living as a traveler instead of serving in stable covenant order.", [`${I.priest} Levite`, `${I.map} Sojourning`, `${I.warning} Worship disorder`], "The repeated Levite detail keeps showing Israel's spiritual instability."),
+    phrase(I.broken, "His Concubine Played The Whore Against Him", "A concubine was a secondary wife. The line says this relationship had become sexually unfaithful and broken.", [`${I.broken} Broken household`, `${I.sorrow} Shame`, `${I.warning} Human disorder`], "The phrase introduces family fracture before national fracture appears."),
     phrase(I.house, "His Father In Law Detained Him", "hospitality delays the Levite from leaving.", [`${I.house} Hospitality`, `${I.hand} Delay`, `${I.warning} Journey postponed`], "The repeated delays set up the dangerous night journey."),
   ]),
   section(19, 7, 12, "The Journey Turns Dangerous", I.warning, [
@@ -179,7 +179,7 @@ export const JUDGES_16_21_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionInput
   ]),
   section(19, 13, 18, "No One Takes Them In", I.house, [
     phrase(I.city, "They Sat Them Down In A Street Of The City", "the travelers are left exposed in the open square.", [`${I.city} City street`, `${I.sorrow} No shelter`, `${I.warning} Vulnerable night`], "Hospitality failure becomes the first sign of Gibeah's darkness."),
-    phrase(I.house, "There Was No Man That Took Them Into His House", "no one offers the protection expected in ancient hospitality.", [`${I.house} No host`, `${I.broken} Community failure`, `${I.warning} Danger growing`], "The city is showing itself to be without compassion."),
+    phrase(I.house, "There Was No Man That Took Them Into His House", "No one in the city offers the travelers a house, which means no one gives them the shelter and protection hospitality was supposed to provide.", [`${I.house} No host`, `${I.broken} Community failure`, `${I.warning} Danger growing`], "The city is showing itself to be without compassion or responsibility."),
     phrase(I.eye, "An Old Man Came From His Work", "an outsider in Gibeah becomes the only person willing to help.", [`${I.eye} Old man`, `${I.hand} Work field`, `${I.house} Possible shelter`], "The one who helps is not from the city itself."),
     phrase(I.grain, "There Is Both Straw And Provender", "the Levite says they have supplies but need shelter.", [`${I.grain} Supplies`, `${I.house} Need lodging`, `${I.warning} Protection needed`], "The issue is not food. It is safety."),
   ]),

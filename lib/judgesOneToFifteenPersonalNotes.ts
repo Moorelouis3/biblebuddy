@@ -92,7 +92,7 @@ function section(chapter: number, startVerse: number, endVerse: number, title: s
 const judgesTenToFifteenFallbackSections: GeneratedJudgesSection[] = [
   section(10, 1, 5, "Tola Judges Israel", "🧭", [
     phrase("🧭 Tola The Son Of Puah", "Tola is named as a judge who rises after Abimelech's violent failure.", ["👤 A named deliverer", "🏚️ After chaos", "🧭 Stabilizing leadership"], "The short notice shows mercy after disorder."),
-    phrase("🛡️ To Defend Israel", "To defend Israel means Tola's role was protective.", ["🛡️ Protection", "👥 God's people", "⚖️ Restored order"], "Judges often gives long failure stories and short mercy notes."),
+    phrase("🛡️ To Defend Israel", "Tola's role was to protect Israel from further collapse.", ["🛡️ Protection", "👥 God's people", "⚖️ Restored order"], "Judges often gives long failure stories and short mercy notes."),
     phrase("🏔️ Dwelt In Shamir", "Dwelt in Shamir locates Tola's leadership in the hill country of Ephraim.", ["📍 Real place", "🏔️ Hill country", "👣 Local leadership"], "The detail keeps the story grounded in Israel's lived history."),
     phrase("⚰️ He Died, And Was Buried", "He died, and was buried closes Tola's brief service.", ["⏳ Limited life", "🧭 Temporary judge", "📖 Story moves on"], "Every judge is temporary, which keeps the reader longing for deeper rescue."),
   ]),
@@ -165,7 +165,7 @@ const judgesTenToFifteenFallbackSections: GeneratedJudgesSection[] = [
   section(11, 37, 40, "The Daughter Mourns Her Future", "⛰️", [
     phrase("⛰️ Bewail My Virginity", "Bewail my virginity points to her grief over a future family she will not have.", ["⛰️ Mourning", "👧 Daughter's sorrow", "💔 Lost future"], "The phrase helps readers feel the cost of Jephthah's vow."),
     phrase("👭 I And My Fellows", "I and my fellows shows Jephthah's daughter grieving with other young women.", ["👭 Companions", "⛰️ Shared mourning", "💔 Public sorrow"], "Her grief is not hidden; the community feels the weight of it."),
-    phrase("📅 Two Months", "Two months gives a measured time of mourning before the vow's result.", ["📅 Time given", "⏳ Delay", "😢 Sorrow"], "The detail slows the story and keeps the tragedy from feeling rushed."),
+    phrase("📅 Two Months", "The story pauses for a set period of mourning before the vow's result.", ["📅 Time given", "⏳ Delay", "😢 Sorrow"], "The detail slows the story and keeps the tragedy from feeling rushed."),
     phrase("📜 A Custom In Israel", "A custom in Israel means the sorrow was remembered yearly.", ["📜 Memory", "👧 Daughter remembered", "💔 Lasting grief"], "The ending makes Jephthah's vow a warning Israel does not forget."),
   ]),
   section(12, 1, 6, "Ephraim Fights Jephthah", "⚔️", [
@@ -349,7 +349,7 @@ function explainDay62JudgesAt95(section: PersonalLeviticusPhraseSectionInput, cl
   } else if (/lord said judah shall go up behold/.test(lower)) {
     opening = ["Judah is chosen to go first in the continuing conquest.", "The line makes Judah the leading tribe in this new stage after Joshua."];
   } else if (/judah went up and the lord delivered/.test(lower)) {
-    opening = ["Judah went up means the tribe acted on God's direction instead of merely hearing it.", "The LORD delivering the enemy shows success still depends on Him."];
+    opening = ["The tribe of Judah acted on God's direction instead of merely hearing it.", "The LORD delivering the enemy shows success still depends on Him."];
   } else if (/adoni-bezek said threescore and ten kings/.test(lower)) {
     opening = ["Adoni-bezek is confessing his own cruel history after being captured.", "The line turns his suffering into a public acknowledgment of former brutality."];
   } else if (/said threescore and ten kings having their/.test(lower)) {
@@ -461,7 +461,7 @@ function explainDay62JudgesAt95(section: PersonalLeviticusPhraseSectionInput, cl
   } else if (/lord was hot against israel and he/.test(lower)) {
     opening = ["The burning anger of the LORD moves toward action, not empty emotion.", "The line prepares for Israel to be handed over to oppressors."];
   } else if (/as the lord had sworn unto them/.test(lower)) {
-    opening = ["As the LORD had sworn means the covenant warnings were always real, not decorative.", "Israel is now tasting the judgment long attached to disobedience."];
+    opening = ["The line points back to covenant warnings God had already sworn would be real.", "Israel is now tasting the judgment long attached to disobedience."];
   } else if (/it came to pass when the judge/.test(lower)) {
     opening = ["The line marks the moment after a judge's death when the cycle starts sliding again.", "Temporary leaders cannot permanently heal Israel's heart."];
   } else if (/came to pass when the judge was/.test(lower)) {
@@ -499,7 +499,7 @@ function explainDay62JudgesAt95(section: PersonalLeviticusPhraseSectionInput, cl
   } else if (/did evil in the sight of the/.test(lower)) {
     opening = ["Did evil points to covenant rebellion, not to a passing mistake.", "The line names the root problem directly."];
   } else if (/evil in the sight of the lord/.test(lower)) {
-    opening = ["Evil in the sight of the LORD means behavior God openly judges as wrong.", "The standard is divine, not merely social."];
+    opening = ["The line describes behavior God openly judges as wrong.", "The standard is divine, not merely social."];
   } else if (/in the sight of the lord and/.test(lower)) {
     opening = ["The line moves from God's verdict on their evil to the specific form that evil took.", "What follows will show forgetfulness and false worship."];
   } else if (/sight of the lord and forgat the/.test(lower)) {
@@ -599,7 +599,7 @@ function explainDay63JudgesAt95(section: PersonalLeviticusPhraseSectionInput, cl
   } else if (/did evil in the sight of the/.test(lower) && section.chapter === 4) {
     opening = ["Did evil points to covenant rebellion, not to a small mistake.", "The line identifies the root cause of the coming oppression under Jabin."];
   } else if (/evil in the sight of the lord/.test(lower) && section.chapter === 4) {
-    opening = ["Evil in the sight of the LORD means behavior God openly judges as wrong.", "The standard of judgment is divine, not public opinion."];
+    opening = ["The line describes behavior God openly judges as wrong.", "The standard of judgment is divine, not public opinion."];
   } else if (/in the sight of the lord when/.test(lower)) {
     opening = ["Ehud's death matters because one deliverer's death exposed how unstable Israel still was.", "The line links the return of sin to the passing of leadership."];
   } else if (/be for thine honour for the lord/.test(lower)) {
@@ -637,7 +637,7 @@ function explainDay63JudgesAt95(section: PersonalLeviticusPhraseSectionInput, cl
   } else if (/subdued on that day jabin the king/.test(lower)) {
     opening = ["The king himself is named so the chapter ends with the ruler's power broken.", "The line makes the victory political as well as military."];
   } else if (/on that day jabin the king of/.test(lower)) {
-    opening = ["On that day gives the victory a fixed historical moment in Israel's memory.", "The line treats the deliverance as a real event, not a legend."];
+    opening = ["The victory is fixed to a definite historical moment in Israel's memory.", "The line treats the deliverance as a real event, not a legend."];
   } else if (/day jabin the king of canaan before/.test(lower)) {
     opening = ["Before the children of Israel means Jabin was brought down in relation to the people he had oppressed.", "The line reverses the old power arrangement."];
   } else if (/jabin the king of canaan before the/.test(lower)) {
@@ -645,7 +645,7 @@ function explainDay63JudgesAt95(section: PersonalLeviticusPhraseSectionInput, cl
   } else if (/king of canaan before the children of/.test(lower)) {
     opening = ["The king of Canaan is no longer looming above Israel but falling before them.", "The line shows how completely the balance has shifted."];
   } else if (/praise ye the lord for the avenging/.test(lower)) {
-    opening = ["Praise ye the LORD means the song begins by giving God credit for the victory.", "Avenging here means the LORD answered oppression with justice."];
+    opening = ["The song begins by giving the LORD credit for the victory.", "Avenging here means the LORD answered oppression with justice."];
   } else if (/ye the lord for the avenging of/.test(lower)) {
     opening = ["The song wants the people to bless God for acting on Israel's behalf.", "The victory is interpreted as divine intervention, not mere good fortune."];
   } else if (/lord for the avenging of israel when/.test(lower)) {
@@ -737,7 +737,7 @@ function explainDay63JudgesAt95(section: PersonalLeviticusPhraseSectionInput, cl
   } else if (/did evil in the sight of the/.test(lower) && section.chapter === 6) {
     opening = ["Did evil here points to covenant rebellion rather than mere weakness.", "The phrase sets up the discipline that follows."];
   } else if (/evil in the sight of the lord/.test(lower) && section.chapter === 6) {
-    opening = ["Evil in the sight of the LORD means behavior judged wrong by God Himself.", "The line places Midian's oppression under divine discipline."];
+    opening = ["The line describes behavior judged wrong by God Himself.", "The line places Midian's oppression under divine discipline."];
   } else if (/in the sight of the lord and the lord/.test(lower)) {
     opening = ["The line moves straight from Israel's evil to God's response.", "The oppressor arrives as part of covenant discipline."];
   } else if (/sight of the lord and the lord/.test(lower)) {
@@ -897,7 +897,7 @@ function explainDay63JudgesAt95(section: PersonalLeviticusPhraseSectionInput, cl
   } else if (/two princes of the midianites oreb and/.test(lower)) {
     opening = ["Two princes means Midian loses important commanders, not only ordinary soldiers.", "The line shows the depth of the defeat."];
   } else if (/princes of the midianites oreb and zeeb/.test(lower)) {
-    opening = ["Oreb and Zeeb stand as named symbols of Midian's broken power.", "The line closes the chapter with defeated enemy leaders."];
+    opening = ["These named Midianite leaders show that the victory reached enemy leadership itself.", "The line closes the chapter with defeated enemy leaders."];
   } else if (/of the midianites oreb and zeeb and/.test(lower)) {
     opening = ["The line strings together the names and outcomes so the victory will be remembered precisely.", "This is not a vague end but a recorded finish."];
   }
@@ -941,13 +941,13 @@ const day64JudgesEightAndNineSections: GeneratedJudgesSection[] = [
   section(8, 2, 3, "Gideon Answers Ephraim Gently", "🕊️", [
     explicitPhrase("🕊️ What Have I Done Now In Comparison Of You", "Gideon answers Ephraim with humility instead of defending himself.", "He lowers the tension by giving them honor.", ["🕊️ A soft answer", "🤝 Pride is calmed", "👥 Unity is protected"], "Victory is preserved here by gentleness, not by force."),
     explicitPhrase("🌾 The Gleaning Of Ephraim", "Gleaning means the leftovers gathered after the main harvest.", "Gideon is saying Ephraim's later part in the battle was still very important.", ["🌾 Leftovers are still valuable", "🏹 Their part mattered", "🧠 Gideon speaks wisely"], "The comparison turns a complaint into peace."),
-    explicitPhrase("⚔️ Oreb And Zeeb", "Oreb and Zeeb were Midianite leaders Ephraim captured.", "Gideon points to them as proof that Ephraim was used mightily in the victory.", ["⚔️ Enemy princes fell", "🙌 God used Ephraim", "📖 Real success is named"], "Gideon quiets jealousy by remembering what God already did through them."),
-    explicitPhrase("😌 Their Anger Was Abated", "Their anger was abated means their sharp spirit settled down.", "The conflict ended because Gideon answered wisely.", ["😌 Anger cools", "🗣️ Words matter", "🤝 Brothers are reconciled"], "A gentle response keeps Israel from turning inward after battle."),
+    explicitPhrase("⚔️ Oreb And Zeeb", "These were Midianite princes Ephraim captured during the victory.", "Gideon points to them as proof that Ephraim was used mightily in the victory.", ["⚔️ Enemy princes fell", "🙌 God used Ephraim", "📖 Real success is named"], "Gideon quiets jealousy by remembering what God already did through them."),
+    explicitPhrase("😌 Their Anger Was Abated", "Ephraim's sharp anger settled down after Gideon's answer.", "The conflict ended because Gideon answered wisely.", ["😌 Anger cools", "🗣️ Words matter", "🤝 Brothers are reconciled"], "A gentle response keeps Israel from turning inward after battle."),
   ]),
   section(8, 5, 6, "Succoth Refuses Bread", "🍞", [
     explicitPhrase("🍞 Give, I Pray You, Loaves Of Bread", "Gideon is asking for food for exhausted men, not luxury or reward.", "The request is simple help for soldiers still chasing the enemy.", ["🍞 Bread is basic help", "🥵 The men are weary", "🏃 The pursuit is not over"], "The request tests whether fellow Israelites will support God's deliverance."),
     explicitPhrase("🥵 The People That Follow Me Are Faint", "Faint means worn out and weak from the pursuit.", "The line shows victory can still require endurance after the first breakthrough.", ["🥵 Strength is running low", "👣 The work continues", "⚔️ Battle pressure remains"], "God's people still need help when they are tired."),
-    explicitPhrase("👑 Zebah And Zalmunna", "Zebah and Zalmunna are the Midianite kings Gideon is still chasing.", "The enemy leadership is not yet gone, so stopping now would be dangerous.", ["👑 Midian's kings remain", "🏃 Gideon keeps pursuing", "⚠️ The threat is unfinished"], "The line explains why Gideon cannot rest yet."),
+    explicitPhrase("👑 Zebah And Zalmunna", "These are the Midianite kings Gideon is still chasing.", "The enemy leadership is not yet gone, so stopping now would be dangerous.", ["👑 Midian's kings remain", "🏃 Gideon keeps pursuing", "⚠️ The threat is unfinished"], "The line explains why Gideon cannot rest yet."),
     explicitPhrase("❓ Are The Hands Of Zebah And Zalmunna Now In Thine Hand", "Succoth is saying, 'You have not captured them yet, so why should we help?'", "They want visible success before they risk loyalty.", ["❓ Skeptical response", "😬 Fear rules them", "🤝 Help is withheld"], "Their words expose unbelief more than caution."),
   ]),
   section(8, 8, 9, "Penuel Refuses Help", "🏰", [
@@ -1060,7 +1060,7 @@ const day64JudgesEightAndNineSections: GeneratedJudgesSection[] = [
   ]),
   section(9, 24, 25, "Violence Begins To Be Repaid", "🩸", [
     explicitPhrase("🩸 The Cruelty Done To The Threescore And Ten Sons", "Cruelty names the murder of Gideon's sons as moral evil, not political necessity.", "The chapter insists that bloodshed matters to God.", ["🩸 Cruelty is named", "⚖️ God sees blood", "🏠 Gideon's house is remembered"], "The dead are not forgotten by heaven."),
-    explicitPhrase("⚖️ Their Blood Be Laid Upon Abimelech", "Their blood being laid upon him means he bears guilt for the murders.", "The line speaks of accountability, not accident.", ["⚖️ Bloodguilt", "👑 The king is answerable", "🧠 Justice is personal"], "God is tracing the crime back to its doer."),
+    explicitPhrase("⚖️ Their Blood Be Laid Upon Abimelech", "The phrase says Abimelech bears guilt for the murders.", "The line speaks of accountability, not accident.", ["⚖️ Bloodguilt", "👑 The king is answerable", "🧠 Justice is personal"], "God is tracing the crime back to its doer."),
     explicitPhrase("🥷 They Set Liers In Wait", "Liers in wait are men hiding in ambush.", "Shechem now begins using violence against the ruler it once supported.", ["🥷 Hidden attack", "💔 Alliance decays", "⚠️ Ambush replaces trust"], "The city is starting to live inside Jotham's curse."),
     explicitPhrase("↩️ God Did Render", "Render means to repay or return what is deserved.", "The chapter is showing that judgment is not random chaos.", ["↩️ God repays", "⚖️ Justice works", "📖 Events have meaning"], "The unraveling is part of divine response."),
   ]),
@@ -1103,7 +1103,7 @@ const day64JudgesEightAndNineSections: GeneratedJudgesSection[] = [
   section(9, 42, 45, "Abimelech Destroys Shechem", "🧂", [
     explicitPhrase("🌄 On The Morrow The People Went Out Into The Field", "The people return to ordinary activity the next day.", "They act as if the danger has passed, but Abimelech is still watching.", ["🌄 A new day", "🌾 Ordinary life resumes", "⚠️ Danger remains"], "The calm is deceptive."),
     explicitPhrase("3️⃣ Abimelech Divided The People Into Three Companies", "Three companies means he arranges another coordinated attack.", "He is planning destruction, not reconciliation.", ["3️⃣ Organized assault", "⚔️ Strategy returns", "💔 Peace is not sought"], "His leadership keeps choosing violence."),
-    explicitPhrase("🏙️ Smote The City", "Smote the city means Abimelech strikes Shechem itself, not just its fighters.", "The judgment now falls on the place that crowned him.", ["🏙️ The city is attacked", "⚖️ Former allies suffer", "🔥 Violence turns inward"], "The partnership ends in ruin for both sides."),
+    explicitPhrase("🏙️ Smote The City", "Abimelech strikes Shechem itself, not just its fighters.", "The judgment now falls on the place that crowned him.", ["🏙️ The city is attacked", "⚖️ Former allies suffer", "🔥 Violence turns inward"], "The partnership ends in ruin for both sides."),
     explicitPhrase("🧂 Sowed It With Salt", "Sowing with salt is a sign of devastation and curse.", "The city is not merely defeated. It is marked as ruined.", ["🧂 Symbol of desolation", "🏙️ Shechem is cursed", "⚠️ Ruin is made visible"], "The place that chose a false king reaps bitter destruction."),
   ]),
   section(9, 46, 49, "The Tower Of Shechem Burns", "🔥", [
@@ -1136,7 +1136,7 @@ function explainDay64JudgesTenAndEleven(section: GeneratedJudgesSection, cleanTi
   const title = cleanTitle.toLowerCase();
 
   if (/tola the son of puah/.test(title)) return note(["Tola is introduced as the judge who rises after Abimelech's chaos.", "His brief notice shows God giving stability after disorder.", "👤 A named judge", "🛡️ Israel is defended", "↩️ Mercy follows chaos", "The short record still matters because it shows God has not abandoned Israel."]);
-  if (/to defend israel/.test(title)) return note(["To defend Israel means Tola's role was protective, not decorative.", "He stands between the nation and further collapse.", "🛡️ Protection", "👥 Israel is guarded", "⚖️ Order is restored", "Judges often records mercy in very simple lines."]);
+  if (/to defend israel/.test(title)) return note(["Tola's role was to protect Israel from further collapse.", "He stands between the nation and further disorder.", "🛡️ Protection", "👥 Israel is guarded", "⚖️ Order is restored", "Judges often records mercy in very simple lines."]);
   if (/dwelt in shamir/.test(title)) return note(["Shamir is the place where Tola lived and judged.", "The location keeps the judge rooted in real history, not legend.", "📍 A real place", "🏔️ Hill country setting", "📖 History stays concrete", "The Bible keeps naming places because God's work happened among real people."]);
   if (/he died, and was buried/.test(title)) return note(["The line closes Tola's life with the usual end all judges share.", "Even helpful leaders are temporary.", "⚰️ A judge dies", "⏳ His season ends", "📖 The story moves on", "The repeated endings make Israel's deeper need clearer."]);
   if (/did evil again/.test(title)) return note(["Again means Israel has returned to the same rebellion.", "The cycle is repeating because the heart problem has not been healed.", "🔁 Repeated sin", "👁️ The LORD sees it", "⚠️ Trouble is returning", "Judges keeps showing that short relief is not the same as lasting faithfulness."]);
@@ -1185,7 +1185,7 @@ function explainDay64JudgesTenAndEleven(section: GeneratedJudgesSection, cleanTi
   if (/opened my mouth unto the lord/.test(title)) return note(["Jephthah knows he spoke this promise before the LORD.", "That is why the vow now feels so terrible and binding to him.", "🗣️ A word before God", "🙏 Sacred speech", "⚠️ Careless vows are dangerous", "The line shows why words to God must never be treated lightly."]);
   if (/bewail my virginity/.test(title)) return note(["She mourns the future family life she will never have.", "The grief is focused on a lost future, not on battlefield defeat.", "⛰️ Mourning", "👧 A future is lost", "💔 Her sorrow is personal", "The Bible makes room for the daughter's pain to be heard."]);
   if (/i and my fellows/.test(title)) return note(["Her fellows are her companions who mourn with her.", "The sorrow is shared publicly rather than hidden away.", "👭 Companions join her", "⛰️ Shared mourning", "💔 The community feels it", "The chapter lets other women stand with her in grief."]);
-  if (/two months/.test(title)) return note(["Two months gives a measured period for mourning before the vow is carried through.", "The time slows the story and makes the weight linger.", "📅 Set time", "⏳ The sorrow stretches on", "💔 The moment is not rushed", "The delay makes the tragedy feel even more real."]);
+  if (/two months/.test(title)) return note(["The story pauses for a measured period of mourning before the vow is carried through.", "The time slows the story and makes the weight linger.", "📅 Set time", "⏳ The sorrow stretches on", "💔 The moment is not rushed", "The delay makes the tragedy feel even more real."]);
   if (/a custom in israel/.test(title)) return note(["The daughters of Israel remembered her year by year.", "Her sorrow becomes a lasting warning in the community's memory.", "📜 A memorial practice", "👧 She is not forgotten", "💔 The grief endures", "The ending turns the story into a national memory of costly words."]);
 
   return note(["This phrase belongs to the movement of Judges 10-11 and needs to be read in its immediate story.", "The line carries its meaning by showing where Israel, Jephthah, or the LORD stands in that moment.", "📖 Context matters", "🧠 The story is specific", "⚠️ The wording is not filler", "Each phrase here pushes the chapter's lesson forward."]);
@@ -1225,14 +1225,14 @@ function explainDay65JudgesAt95(section: PersonalLeviticusPhraseSectionInput, cl
 
   if (section.reference === "Judges 12:1-6") {
     if (/children of ammon/.test(title)) return note(["The children of Ammon are the enemy Jephthah had just fought.", "Naming them reminds Ephraim that the battle was against Israel's oppressor, not against a brother tribe.", "⚔️ Ammon was the enemy", "🛡️ Israel had been threatened", "🧠 The complaint comes after rescue", "Ephraim's anger sounds worse when the real enemy has already been defeated."]);
-    if (/delivered them into my hand/.test(title)) return note(["Delivered them into my hand means the LORD gave Jephthah victory in battle.", "Jephthah is saying the rescue was God's work, not a private power grab.", "🙌 God gave the victory", "✋ Hand means power in battle", "⚖️ Jephthah defends his actions", "The answer points back to God's deliverance, not to Jephthah's pride."]);
+    if (/delivered them into my hand/.test(title)) return note(["Jephthah is saying the LORD gave him victory in battle.", "Into my hand means into his power to defeat and subdue.", "🙌 God gave the victory", "✋ Hand means power in battle", "⚖️ Jephthah defends his actions", "The answer points back to God's deliverance, not to Jephthah's pride."]);
     if (/my hand wherefore/.test(title)) return note(["Wherefore means 'why then.'", "Jephthah is asking why Ephraim has come to fight him after God already gave success.", "❓ A hard question", "🙌 Victory has already come", "💔 Israel is turning inward", "The line exposes how misplaced Ephraim's anger is."]);
     return note(["The phrase keeps Jephthah's answer tied to the victory over Ammon.", "He is reminding Ephraim that God had already settled the battle they are now using as a reason to quarrel.", "📖 The battle is still in view", "⚖️ Jephthah answers directly", "😔 Brotherly conflict follows rescue", "Israel should have been grateful, but instead it is fighting itself."]);
   }
 
   if (section.reference === "Judges 12:7-12") {
-    if (/jephthah judged israel six years then died/.test(title) || /judged israel six years then died jephthah/.test(title)) return note(["Jephthah judged Israel six years means his leadership was real but brief.", "Then died closes his troubled story with the same limit every judge shares.", "⏳ A short judgeship", "⚰️ His life ends", "📖 The story moves on", "Even a deliverer used by God does not last forever."]);
-    if (/after him ibzan of bethlehem judged israel/.test(title)) return note(["After him means one judge follows another without giving Israel permanent stability.", "Ibzan of Bethlehem is simply the next leader in the chain.", "👤 A new judge appears", "↩️ Leadership keeps changing", "📍 Bethlehem is named", "Judges keeps moving through temporary rescuers."]);
+    if (/jephthah judged israel six years then died/.test(title) || /judged israel six years then died jephthah/.test(title)) return note(["Jephthah served as Israel's judge for only six years.", "Then died closes his troubled story with the same limit every judge shares.", "⏳ A short judgeship", "⚰️ His life ends", "📖 The story moves on", "Even a deliverer used by God does not last forever."]);
+    if (/after him ibzan of bethlehem judged israel/.test(title)) return note(["Ibzan comes next in the line of temporary judges after Jephthah.", "The wording shows leadership passing from one short-lived judge to another.", "👤 A new judge appears", "↩️ Leadership keeps changing", "📍 Bethlehem is named", "Judges keeps moving through temporary rescuers."]);
     if (/sons and he judged israel seven years/.test(title) || /for his sons and he judged israel/.test(title) || /abroad for his sons/.test(title)) return note(["The line points to Ibzan's large family and arranged marriages.", "Those details suggest influence and status, even though the Bible says little else about him.", "👥 A large household", "🏠 Family influence", "📖 Brief record", "The judge is remembered more by household reach than by a long story."]);
     return note(["The wording keeps the focus on judges rising and passing one after another after Jephthah.", "The Bible is marking short seasons of leadership because none of them solves Israel's deeper problem.", "🧭 Another leader", "⏳ Another short season", "📖 The pattern continues", "These brief records keep showing how temporary each judge was."]);
   }
@@ -1240,7 +1240,7 @@ function explainDay65JudgesAt95(section: PersonalLeviticusPhraseSectionInput, cl
   if (section.reference === "Judges 12:13-15") {
     if (/son of hillel/.test(title) || /abdon the son of hillel/.test(title)) return note(["Abdon is identified by his father Hillel and his home in Pirathon.", "The wording roots this judge in a real family and place.", "👤 A named judge", "🏠 Family line", "📍 Real location", "The Bible keeps leadership tied to actual people, not vague legend."]);
     if (/ten ass colts/.test(title) || /ass colts/.test(title) || /colts and he judged israel eight/.test(title)) return note(["Ass colts means young donkeys used for riding.", "The many sons and many donkeys point to Abdon's wealth and household strength.", "🐴 Riding donkeys", "👥 A large family", "🏠 Social status", "The details show influence, but not lasting rescue."]);
-    if (/judged israel eight years/.test(title)) return note(["Eight years is the measured length of Abdon's judgeship.", "The number reminds the reader that each judge's season has a boundary.", "⏳ A limited term", "⚖️ A real judgeship", "📖 Time passes", "Leadership comes in seasons and then ends."]);
+    if (/judged israel eight years/.test(title)) return note(["Abdon ruled as judge for eight years before his time ended.", "The number reminds the reader that each judge's season has a boundary.", "⏳ A limited term", "⚖️ A real judgeship", "📖 Time passes", "Leadership comes in seasons and then ends."]);
     return note(["The phrase belongs to Abdon's short record at the end of Judges 12.", "It highlights status, family, and time, but still leaves Israel without a permanent deliverer.", "📖 Brief notice", "👥 Household prominence", "⚰️ Another passing leader", "The chapter closes by reminding us how temporary these judges were."]);
   }
 
@@ -1252,7 +1252,7 @@ function explainDay65JudgesAt95(section: PersonalLeviticusPhraseSectionInput, cl
   }
 
   if (section.reference === "Judges 13:7-12") {
-    if (/nazarite to god/.test(title) || /from the womb/.test(title) || /to the day/.test(title)) return note(["A Nazarite to God means Samson is devoted to God in a marked and visible way.", "From the womb to the day of his death means the calling is meant to shape his whole life.", "🙏 Consecrated life", "👶 Set apart from birth", "⏳ A lifelong calling", "The child is not ordinary. His whole life is claimed for God's purpose."]);
+    if (/nazarite to god/.test(title) || /from the womb/.test(title) || /to the day/.test(title)) return note(["A Nazarite was someone devoted to God under visible holy restrictions.", "From the womb to the day of his death means Samson's calling was meant to shape his whole life.", "🙏 Consecrated life", "👶 Set apart from birth", "⏳ A lifelong calling", "The child is not ordinary. His whole life is claimed for God's purpose."]);
     if (/manoah/.test(title) && /i pray thee/.test(title)) return note(["Manoah is asking for the messenger to return and teach them more.", "The request shows a father wanting clear guidance for raising the promised child.", "🙏 A prayer for instruction", "👂 They want to obey well", "👶 The child matters already", "Holy calling makes Manoah seek clarity, not control."]);
     return note(["The phrase keeps the focus on Samson's calling before he is born.", "The family is learning that this child must be raised under God's instruction, not ordinary preference.", "📖 The calling is repeated", "👶 Parenting is shaped by holiness", "🙏 God must teach them", "The chapter keeps slowing down so the reader feels the seriousness of Samson's beginning."]);
   }
@@ -1272,13 +1272,13 @@ function explainDay65JudgesAt95(section: PersonalLeviticusPhraseSectionInput, cl
   }
 
   if (section.reference === "Judges 13:25-25") {
-    if (/spirit of the lord began to move/.test(title) || /of the lord began to move him/.test(title) || /began to move him at times/.test(title)) return note(["The Spirit beginning to move Samson means God's power starts stirring him for future work.", "This is the first sign that the promised deliverer is being prepared.", "💪 Divine stirring", "👦 Samson is being readied", "⚔️ Future conflict is coming", "The chapter ends by showing God has started the work within Samson."]);
+    if (/spirit of the lord began to move/.test(title) || /of the lord began to move him/.test(title) || /began to move him at times/.test(title)) return note(["God's Spirit starts stirring Samson for the work ahead.", "This is the first sign that the promised deliverer is being prepared.", "💪 Divine stirring", "👦 Samson is being readied", "⚔️ Future conflict is coming", "The chapter ends by showing God has started the work within Samson."]);
     return note(["This phrase closes the birth story by showing movement before battle.", "God is already at work in Samson before his famous acts begin.", "📖 The story shifts forward", "💪 Strength is being awakened", "🙌 God begins first", "Samson's future starts with God's Spirit, not with his own ambition."]);
   }
 
   if (section.reference === "Judges 14:1-6") {
-    if (/it was of the lord/.test(title) || /of the lord that he sought/.test(title) || /occasion against/.test(title)) return note(["It was of the LORD means God is working through this troubled situation for His own purpose.", "Seeking an occasion against the Philistines means the conflict will become a doorway for judgment on them.", "🙌 God is still acting", "⚔️ The Philistines remain the target", "🧠 Providence is at work", "The line does not praise Samson's desire. It shows God overruling it."]);
-    if (/spirit of the lord came mightily upon/.test(title) || /of the lord came mightily upon him/.test(title)) return note(["Came mightily upon him means the sudden strength came from God's Spirit, not from Samson's body alone.", "The power in the scene is divine empowerment.", "💪 Strength from God", "🦁 Danger is answered", "🙌 The Spirit enables him", "Samson's strength is introduced as a gift, not as self-made greatness."]);
+    if (/it was of the lord/.test(title) || /of the lord that he sought/.test(title) || /occasion against/.test(title)) return note(["God is working through this troubled situation for His own purpose.", "Seeking an occasion against the Philistines means the conflict will become a doorway for judgment on them.", "🙌 God is still acting", "⚔️ The Philistines remain the target", "🧠 Providence is at work", "The line does not praise Samson's desire. It shows God overruling it."]);
+    if (/spirit of the lord came mightily upon/.test(title) || /of the lord came mightily upon him/.test(title)) return note(["The sudden strength comes from God's Spirit, not from Samson's body alone.", "The power in the scene is divine empowerment.", "💪 Strength from God", "🦁 Danger is answered", "🙌 The Spirit enables him", "Samson's strength is introduced as a gift, not as self-made greatness."]);
     return note(["Samson's first move toward the Philistines is already tangled with danger and purpose.", "The chapter is already mixing troubled desire with God's larger purpose.", "👀 Samson desires", "⚠️ The choice is uneasy", "🙌 God still rules", "The story is messy, but the LORD is not absent from it."]);
   }
 
@@ -1297,26 +1297,26 @@ function explainDay65JudgesAt95(section: PersonalLeviticusPhraseSectionInput, cl
   }
 
   if (section.reference === "Judges 14:19-20") {
-    if (/spirit of the lord came upon him/.test(title) || /of the lord came upon him and/.test(title) || /the lord came upon him and he/.test(title)) return note(["The Spirit coming upon him means Samson's violent strike is carried out with divine empowerment against the Philistines.", "The chapter keeps linking his power to the LORD, not to private force.", "💪 The Spirit empowers", "⚔️ The Philistines are struck", "🙌 God remains active", "Even here, Samson's strength is still presented as Spirit-given."]);
+    if (/spirit of the lord came upon him/.test(title) || /of the lord came upon him and/.test(title) || /the lord came upon him and he/.test(title)) return note(["Samson's violent strike is carried out with divine empowerment against the Philistines.", "The chapter keeps linking his power to the LORD, not to private force.", "💪 The Spirit empowers", "⚔️ The Philistines are struck", "🙌 God remains active", "Even here, Samson's strength is still presented as Spirit-given."]);
     if (/he went up to his father s house/.test(title)) return note(["Going up to his father's house means Samson leaves in anger instead of settling into the marriage.", "The wedding story breaks apart rather than becoming stable.", "🏠 He returns home", "💔 The marriage fractures", "😠 Anger drives the move", "The chapter ends with separation, not peace."]);
     return note(["The aftermath of the broken riddle leaves anger, violence, and a marriage falling apart.", "The scene ends in anger, violence, and a marriage that falls apart.", "⚔️ Violence follows betrayal", "💔 The bond breaks", "📖 The story remains unsettled", "What began as desire is already producing damage."]);
   }
 
   if (section.reference === "Judges 15:1-6") {
     if (/wheat harvest/.test(title) || /samson visited his wife/.test(title) || /with a kid/.test(title)) return note(["Wheat harvest places the scene in a real season of the year.", "Samson comes with a young goat as a customary gift, expecting to visit his wife.", "🌾 Harvest season", "🐐 A visit gift", "🏠 Samson expects welcome", "The ordinary details make the coming conflict feel even sharper."]);
-    if (/i be more blameless than the philistines/.test(title) || /concerning them now shall i/.test(title)) return note(["Blameless means Samson thinks he now has stronger reason to strike back.", "He believes the wrong done to him justifies his revenge.", "⚖️ Samson claims justification", "😠 Anger hardens", "🔥 Revenge is coming", "The line shows how quickly grievance turns into destruction."]);
+    if (/i be more blameless than the philistines/.test(title) || /concerning them now shall i/.test(title)) return note(["Samson thinks he now has stronger reason to strike back.", "Blameless here means he sees himself as more justified than the Philistines in what he is about to do.", "⚖️ Samson claims justification", "😠 Anger hardens", "🔥 Revenge is coming", "The line shows how quickly grievance turns into destruction."]);
     return note(["Personal hurt is about to spill over into wide public damage across Philistine land.", "Personal hurt is about to spill over into wider public damage.", "💔 Private offense", "🔥 Public retaliation", "⚠️ The conflict spreads", "What happened at home is about to burn across the land."]);
   }
 
   if (section.reference === "Judges 15:7-12") {
     if (/samson said unto them though ye have/.test(title)) return note(["Samson is saying their action will not end the conflict.", "He intends to strike back before he rests.", "🗣️ Samson answers", "😠 Revenge continues", "⚔️ The cycle deepens", "The line shows retaliation feeding retaliation."]);
     if (/philistines went up and pitched in judah/.test(title)) return note(["Pitched in Judah means the Philistines set up camp inside Israel's territory.", "Their response to Samson now threatens the whole region.", "⛺ Enemy camp in Judah", "🏠 Israel is pressured", "⚠️ The conflict spreads", "Samson's private feud is becoming public danger."]);
-    if (/to bind samson are we come/.test(title) || /answered to bind samson/.test(title) || /bind samson are we come up/.test(title)) return note(["Bind means tie him up and hand him over.", "Judah is choosing surrender over resistance because it fears Philistine power.", "⛓️ Samson is to be tied", "😟 Judah is afraid", "💔 Israelites hand over an Israelite", "The line shows how low Israel has sunk under Philistine rule."]);
+    if (/to bind samson are we come/.test(title) || /answered to bind samson/.test(title) || /bind samson are we come up/.test(title)) return note(["Bind means tie Samson up and hand him over.", "Judah is choosing surrender over resistance because it fears Philistine power.", "⛓️ Samson is to be tied", "😟 Judah is afraid", "💔 Israelites hand over an Israelite", "The line shows how low Israel has sunk under Philistine rule."]);
     return note(["Judah's response to Philistine pressure is fear instead of resistance.", "Instead of fighting the oppressor, they move to restrain their own deliverer.", "⚠️ Fear rules Judah", "⛓️ Samson is handed over", "💔 Oppression has bent the people", "The chapter shows bondage shaping Israel's instincts."]);
   }
 
   if (section.reference === "Judges 15:13-18") {
-    if (/spirit of the lord came mightily upon/.test(title) || /of the lord came mightily upon him/.test(title) || /lord came mightily upon him/.test(title)) return note(["Came mightily upon him means the LORD suddenly empowers Samson again.", "The strength for this victory comes from God's Spirit, not from the ropes breaking by chance.", "💪 Divine strength", "⛓️ Bondage is broken", "🙌 God empowers deliverance", "The battle turns because the Spirit acts."]);
+    if (/spirit of the lord came mightily upon/.test(title) || /of the lord came mightily upon him/.test(title) || /lord came mightily upon him/.test(title)) return note(["The LORD suddenly empowers Samson again.", "The strength for this victory comes from God's Spirit, not from the ropes breaking by chance.", "💪 Divine strength", "⛓️ Bondage is broken", "🙌 God empowers deliverance", "The battle turns because the Spirit acts."]);
     if (/cords that were upon his arms became as flax/.test(title)) return note(["Flax burns or snaps easily when touched by fire.", "The cords becoming like flax means the ropes lose all power to hold him.", "⛓️ Ropes fail", "🔥 Flax is easily consumed", "💪 Samson is freed", "What bound him becomes suddenly useless."]);
     if (/a new jawbone of an ass/.test(title)) return note(["A jawbone is the bone from a donkey's mouth.", "Samson uses a crude, unexpected object as his weapon.", "🦴 An unlikely weapon", "🐴 Donkey jawbone", "⚔️ God can use little", "The victory does not depend on polished military tools."]);
     if (/slew a thousand men therewith/.test(title)) return note(["Therewith means with that jawbone.", "The line stresses the scale of the victory through an astonishingly simple weapon.", "⚔️ A thousand fall", "🦴 The jawbone is enough", "🙌 The triumph is extraordinary", "The chapter wants the reader to feel how overwhelming the deliverance is."]);
@@ -1325,7 +1325,7 @@ function explainDay65JudgesAt95(section: PersonalLeviticusPhraseSectionInput, cl
 
   if (section.reference === "Judges 15:19-20") {
     if (/god clave an hollow place/.test(title) || /an hollow place that was/.test(title)) return note(["Clave means split open.", "God opens a place so water can come out for Samson.", "🪨 God opens the ground", "💧 Water is provided", "🙌 Mercy follows victory", "The same God who gave strength now gives refreshment."]);
-    if (/he had drunk his spirit came again/.test(title) || /drunk his spirit came again/.test(title) || /his spirit came again and he revived/.test(title)) return note(["His spirit came again means his life and strength returned after drinking.", "The phrase describes recovery, not the Holy Spirit leaving and returning.", "💧 Water restores him", "🫁 Strength returns", "✅ He revives", "The line simply means Samson comes back to life and vigor."]);
+    if (/he had drunk his spirit came again/.test(title) || /drunk his spirit came again/.test(title) || /his spirit came again and he revived/.test(title)) return note(["His life and strength returned after drinking the water.", "The phrase describes recovery, not the Holy Spirit leaving and returning.", "💧 Water restores him", "🫁 Strength returns", "✅ He revives", "The line simply means Samson comes back to life and vigor."]);
     if (/judged israel/.test(title)) return note(["Judged Israel twenty years means Samson served as Israel's judge for a long stretch under Philistine pressure.", "The note widens from one miracle to his larger place in Israel's story.", "⚖️ He really judged Israel", "⏳ Twenty years are marked", "⚔️ Philistine days continue", "Samson was not just a strong man in stories. He held the role of judge."]);
     return note(["The water God gives Samson after battle shows that strength still needs sustaining mercy.", "The chapter ends by showing that the strong deliverer still needs God to sustain his life.", "💧 He becomes thirsty", "🙏 Need drives prayer", "🙌 God provides", "Strength in battle does not remove dependence on God."]);
   }

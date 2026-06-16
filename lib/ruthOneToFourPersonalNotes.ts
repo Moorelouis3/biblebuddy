@@ -58,7 +58,7 @@ function section(chapter: number, startVerse: number, endVerse: number, title: s
 
 export const RUTH_1_4_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionInput[] = [
   section(1, 1, 5, "Famine And Loss", I.mourning, [
-    phrase(I.law, "In The Days When The Judges Ruled", "This story takes place during the same troubled time described in the book of Judges.", [`${I.law} Judges background`, `${I.city} Israel's disorder`, `${I.heart} Quiet faith still possible`], "Ruth begins in a dark period, which makes its faithfulness stand out more."),
+    phrase(I.law, "In The Days When The Judges Ruled", "Ruth takes place during the same troubled era described in Judges.", [`${I.law} Judges background`, `${I.city} Israel's disorder`, `${I.heart} Quiet faith still possible`], "Ruth begins in a dark period, which makes its faithfulness stand out more."),
     phrase(I.barley, "There Was A Famine In The Land", "A famine means there is not enough food in the land because the crops have failed.", [`${I.barley} Hunger`, `${I.home} Family pressure`, `${I.foot} A journey begins`], "That lack of food is what pushes the family toward Moab."),
     phrase(I.foot, "Went To Sojourn In The Country Of Moab", "To sojourn means to live somewhere temporarily. Elimelech's family leaves Judah to stay in Moab for a time.", [`${I.foot} Leaving home`, `${I.city} Moab`, `${I.question} Uncertain future`], "The family is leaving home under pressure, not settling there as its true homeland."),
     phrase(I.mourning, "The Woman Was Left Of Her Two Sons And Her Husband", "Naomi is left alone after her husband and both sons die.", [`${I.mourning} Widowhood`, `${I.family} Sons gone`, `${I.hand} Vulnerability`], "Her loss explains why the story begins with so much weakness and sorrow."),
@@ -91,7 +91,7 @@ export const RUTH_1_4_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionInput[] =
     phrase(I.family, "A Mighty Man Of Wealth", "This means Boaz is a prominent man with property, resources, and social standing.", [`${I.family} Family connection`, `${I.field} Landowner`, `${I.shield} Ability to help`], "He has the position to become real help for Ruth and Naomi."),
     phrase(I.field, "Let Me Now Go To The Field", "Ruth asks to go out and work in the fields so she can gather food.", [`${I.field} Work`, `${I.hand} Humility`, `${I.heart} Care for Naomi`], "She does not sit still in sorrow. She goes to labor."),
     phrase(I.law, "Glean Ears Of Corn", "To glean ears of corn means to pick up stalks of grain left behind by the harvesters.", [`${I.barley} Leftover grain`, `${I.law} Provision in God's law`, `${I.hand} Dignified help`], "God's law allowed the poor to gather this leftover food."),
-    phrase(I.blessing, "Her Hap Was To Light On A Part Of The Field Belonging Unto Boaz", "It looked like chance that Ruth arrived in Boaz's field, but the story shows God's quiet guidance behind it.", [`${I.foot} Ordinary steps`, `${I.field} Boaz's field`, `${I.blessing} Hidden providence`], "What seems accidental is becoming part of God's provision."),
+    phrase(I.blessing, "Her Hap Was To Light On A Part Of The Field Belonging Unto Boaz", "Hap means what looked like chance. Ruth happens to arrive in Boaz's field, but the story quietly shows God's guidance behind it.", [`${I.foot} Ordinary steps`, `${I.field} Boaz's field`, `${I.blessing} Hidden providence`], "What seems accidental is becoming part of God's provision."),
   ]),
   section(2, 7, 7, "Ruth Works In The Field", I.hand, [
     phrase(I.hand, "I Pray You, Let Me Glean", "Ruth is politely asking permission to gather leftover grain.", [`${I.hand} Humble request`, `${I.barley} Gleaning`, `${I.woman} Vulnerable worker`], "Her need does not make her demanding. She asks with humility."),
@@ -126,7 +126,7 @@ export const RUTH_1_4_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionInput[] =
   section(3, 7, 12, "Ruth Asks For Redemption", I.cloak, [
     phrase(I.foot, "Uncovered His Feet", "Ruth follows the custom Naomi gave her to make a humble request.", [`${I.foot} Feet`, `${I.question} Request setting`, `${I.heart} Respectful approach`], "The phrase may feel strange to modern readers, but it prepares for a serious family appeal."),
     phrase(I.question, "Who Art Thou", "Boaz wakes and asks who is there.", [`${I.question} Night question`, `${I.woman} Ruth answers`, `${I.warning} Serious moment`], "The question lets Ruth state her request clearly."),
-    phrase(I.cloak, "Spread Therefore Thy Skirt Over Thine Handmaid", "Ruth asks Boaz to cover and protect her as redeemer.", [`${I.cloak} Covering`, `${I.shield} Protection`, `${I.family} Redeemer request`], "The phrase is a bold request for covenant care."),
+    phrase(I.cloak, "Spread Therefore Thy Skirt Over Thine Handmaid", "Skirt here means the corner of Boaz's garment. Ruth is asking him to take her under his protection as family redeemer.", [`${I.cloak} Covering`, `${I.shield} Protection`, `${I.family} Redeemer request`], "The phrase is a bold request for covenant care."),
     phrase(I.family, "Thou Art A Near Kinsman", "Ruth names Boaz's family responsibility.", [`${I.family} Near kin`, `${I.law} Redeemer role`, `${I.home} Future hope`], "The request is rooted in family duty and mercy."),
   ]),
   section(3, 13, 13, "Boaz Promises To Act", I.promise, [
@@ -143,7 +143,7 @@ export const RUTH_1_4_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionInput[] =
   ]),
   section(4, 1, 6, "Boaz Goes To The Gate", I.gate, [
     phrase(I.door, "Went Up To The Gate", "Boaz goes to the public place where legal matters were handled.", [`${I.door} City gate`, `${I.law} Public decision`, `${I.hand} Responsible action`], "Redemption is handled openly, not secretly."),
-    phrase(I.question, "Ho, Such A One", "Boaz calls the nearer kinsman without naming him.", [`${I.question} Unnamed man`, `${I.family} Nearer redeemer`, `${I.law} Legal order`], "The unnamed man becomes a contrast to Boaz's faithful action."),
+    phrase(I.question, "Ho, Such A One", "This is an old way of calling out to an unnamed man, something like saying, 'Hey, you there.'", [`${I.question} Unnamed man`, `${I.family} Nearer redeemer`, `${I.law} Legal order`], "The unnamed man becomes a contrast to Boaz's faithful action."),
     phrase(I.law, "If Thou Wilt Redeem It, Redeem It", "Boaz gives the nearer kinsman the first right to redeem.", [`${I.law} Fair process`, `${I.family} Family land`, `${I.hand} Public honesty`], "The phrase shows Boaz obeying the proper order."),
     phrase(I.woman, "Ruth The Moabitess", "Boaz makes clear that redeeming the land includes responsibility toward Ruth.", [`${I.woman} Ruth included`, `${I.city} Moabite widow`, `${I.family} Family future`], "Redemption is not only property; it is care for people."),
   ]),
