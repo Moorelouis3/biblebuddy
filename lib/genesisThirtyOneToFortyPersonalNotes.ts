@@ -373,6 +373,8 @@ function formatGenesisThirtyOneToFortyPhraseExplanation(
   title: string,
   content: string,
 ) {
+  void title;
+
   if (section.chapter < 31 || section.chapter > 40) {
     return content;
   }
@@ -387,9 +389,8 @@ function formatGenesisThirtyOneToFortyPhraseExplanation(
           .replace(/\n\nIs mocking and dismissive\./g, "\n\nThe nickname is mocking and dismissive.")
           .replace(/\n\nIs important because Judah stops/g, "\n\nThis is important because Judah stops")
       : cleanedContent;
-  if (section.chapter >= 31 && section.chapter <= 40) {
-    return finalCleanedContent;
-  }
+
+  return finalCleanedContent;
 }
 
 function getGenesisThirtyNineFortyIcon(title: string) {
