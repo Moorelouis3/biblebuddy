@@ -3926,7 +3926,7 @@ function makePersonalGenesisOneSection(section: {
         id: "key-phrases",
         icon: "💬",
         title: "Key Phrases",
-        content: section.phrases.map(([heading, body]) => formatBibleYearPhraseCard(heading, body)),
+        content: section.phrases.map(([heading, body]) => formatBibleYearPhraseCard(heading, body, section.reference)),
       },
     ],
   };
@@ -9686,7 +9686,7 @@ function makePersonalGenesisTwoSection(section: {
         id: "key-phrases",
         icon: "💬",
         title: "Key Phrases",
-        content: section.phrases.map(([heading, body]) => formatBibleYearPhraseCard(heading, body)),
+        content: section.phrases.map(([heading, body]) => formatBibleYearPhraseCard(heading, body, section.reference)),
       },
     ],
   };
@@ -10930,7 +10930,7 @@ function makePersonalGenesisThreeSection(section: {
         id: "key-phrases",
         icon: "💬",
         title: "Key Phrases",
-        content: section.phrases.map(([heading, body]) => formatBibleYearPhraseCard(heading, body)),
+        content: section.phrases.map(([heading, body]) => formatBibleYearPhraseCard(heading, body, section.reference)),
       },
     ],
   };
@@ -12198,7 +12198,7 @@ function makePersonalGenesisPhraseSection(section: {
         id: "key-phrases",
         icon: "💬",
         title: "Key Phrases",
-        content: section.phrases.map(([heading, body]) => formatBibleYearPhraseCard(heading, body)),
+        content: section.phrases.map(([heading, body]) => formatBibleYearPhraseCard(heading, body, section.reference)),
       },
     ],
   };
@@ -14538,7 +14538,19 @@ function buildPhraseTeachingBullets(phrase: string, sourceLines: string[]) {
   return [`🔎 ${meaning}`, `📖 ${context}`, `🧭 ${why}`];
 }
 
-function formatBibleYearPhraseCard(rawHeading: string, rawBody: string) {
+function isGenesisQualityControlReference(reference?: string) {
+  if (!reference) return false;
+  const match = /^Genesis (\d+):/.exec(reference);
+  if (!match) return false;
+  const chapter = Number(match[1]);
+  return chapter >= 7 && chapter <= 35;
+}
+
+function isPhraseCardFillerLine(line: string) {
+  return /^(This phrase matters because|This matters because|That matters because|This helps the reader|This helps readers|The reader should notice|A beginner should notice|This passage reminds us|We learn that|The lesson here is|This phrase helps|This phrase shows|This phrase points to|This phrase means)\b/i.test(line.trim());
+}
+
+function formatBibleYearPhraseCard(rawHeading: string, rawBody: string, reference?: string) {
   const heading = repairMojibake(rawHeading).trim().replace(/^\?{2,3}\s+/, "📌 ");
   const phrase = stripPhraseIcon(heading);
   const lines = repairMojibake(rawBody)
@@ -14546,6 +14558,20 @@ function formatBibleYearPhraseCard(rawHeading: string, rawBody: string) {
     .split("\n")
     .map(trimSentence)
     .filter(Boolean);
+
+  if (isGenesisQualityControlReference(reference)) {
+    const cleanedLines = lines.filter((line) => !isPhraseCardFillerLine(line));
+    const textLines = cleanedLines.filter((line) => !isEmojiTeachingLine(line));
+    const emojiLines = cleanedLines.filter(isEmojiTeachingLine).slice(0, 4);
+    const intro = textLines.slice(0, 2);
+    const remainder = textLines.slice(2);
+    if (emojiLines.length >= 2) {
+      return [heading, ...intro, emojiLines.join("\n\n")].filter(Boolean).join("\n\n");
+    }
+
+    const outro = remainder.length ? [remainder[remainder.length - 1]] : [];
+    return [heading, ...intro, ...outro].filter(Boolean).join("\n\n");
+  }
 
   const textLines = lines.filter((line) => !isEmojiTeachingLine(line));
   const firstEmojiIndex = lines.findIndex(isEmojiTeachingLine);
@@ -14591,7 +14617,7 @@ function makePersonalExodusPhraseSection(section: {
         id: "key-phrases",
         icon: "💬",
         title: "Key Phrases",
-        content: section.phrases.map(([heading, body]) => formatBibleYearPhraseCard(heading, body)),
+        content: section.phrases.map(([heading, body]) => formatBibleYearPhraseCard(heading, body, section.reference)),
       },
     ],
   };

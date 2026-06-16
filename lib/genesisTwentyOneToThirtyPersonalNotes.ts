@@ -915,6 +915,7 @@ function deepenGenesisTwentyOneToTwentyFourPhraseExplanation(
   const lines = cleanedContent.split("\n\n").filter(Boolean);
   const hasTeachingLayer = hasGenesisTwentyOneToThirtyTeachingLayer(cleanedContent);
   const hasVisualBlock = hasGenesisTwentyOneToThirtyVisualBlock(cleanedContent);
+  if (section.chapter >= 21 && section.chapter <= 24 && lines.length >= 4 && hasTeachingLayer) return cleanedContent;
   if (lines.length >= 6 && hasTeachingLayer && hasVisualBlock) return cleanedContent;
 
   const cleanTitle = stripGenesisTwentyOneToThirtyPhraseEmoji(title);
@@ -934,7 +935,10 @@ function deepenGenesisTwentyFiveToThirtyPhraseExplanation(
   if (section.chapter < 25 || section.chapter > 30) return content;
 
   const cleanedContent = cleanGenesisTwentyOneToThirtyBoilerplate(content);
+  const lines = cleanedContent.split("\n\n").filter(Boolean);
+  const hasTeachingLayer = hasGenesisTwentyOneToThirtyTeachingLayer(cleanedContent);
   const hasVisualBlock = hasGenesisTwentyOneToThirtyVisualBlock(cleanedContent);
+  if (section.chapter >= 25 && section.chapter <= 29 && lines.length >= 4 && hasTeachingLayer) return cleanedContent;
   if (hasVisualBlock) return cleanedContent;
 
   const cleanTitle = stripGenesisTwentyOneToThirtyPhraseEmoji(title);
@@ -4123,7 +4127,84 @@ const DAY_12_GENESIS_30_FINAL_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
   ] },
 ];
 
-const day12Genesis30Phrase = (title: string, lines: string[]): [string, string] => phrase(title, lines);
+function getDay12Genesis30Visuals(title: string): [string, string, string] {
+  const lower = title.toLowerCase();
+
+  if (lower.includes("children") || lower.includes("die") || lower.includes("stead")) {
+    return ["👶 Barrenness is central", "💔 Rachel is in pain", "🙏 Only God can give life"];
+  }
+
+  if (lower.includes("bilhah") || lower.includes("knees") || lower.includes("maid")) {
+    return ["👩‍🍼 A servant is brought in", "🏠 An ancient household custom", "⚠️ The family chooses a human solution"];
+  }
+
+  if (lower.includes("dan") || lower.includes("naphtali") || lower.includes("wrestl") || lower.includes("prevailed")) {
+    return ["📛 A child receives a name", "👭 The sisters are still competing", "🗣️ The name explains the moment"];
+  }
+
+  if (lower.includes("rachel said")) {
+    return ["🗣️ Rachel interprets the birth", "👭 Rivalry shapes her words", "📛 Naming explains her heart"];
+  }
+
+  if (lower.includes("zilpah") || lower.includes("left bearing")) {
+    return ["👩‍🍼 Leah answers with her servant", "↔️ Rivalry keeps escalating", "🏠 The whole household is affected"];
+  }
+
+  if (lower.includes("gad") || lower.includes("asher") || lower.includes("troop") || lower.includes("blessed")) {
+    return ["📛 Another son is named", "😊 Leah reads meaning into the birth", "👀 Public blessing matters to her"];
+  }
+
+  if (lower.includes("mandrake") || lower.includes("small matter") || lower.includes("taken my husband") || lower.includes("pray thee")) {
+    return ["🌿 Mandrakes stir the conflict", "💬 Old wounds come out", "👭 The sisters speak from hurt"];
+  }
+
+  if (lower.includes("lie with thee") || lower.includes("hire") || lower.includes("issachar")) {
+    return ["🤝 A bargain is made", "🌙 Jacob's time is negotiated", "📛 The birth keeps the story"];
+  }
+
+  if (lower.includes("zebulun") || lower.includes("daughter") || lower.includes("reproach") || lower.includes("joseph")) {
+    return ["🎁 The birth is interpreted", "👶 The family keeps growing", "📖 The next stage of the story is forming"];
+  }
+
+  if (lower.includes("hearkened") || lower.includes("opened her womb")) {
+    return ["👂 God is the one acting", "👶 Rachel finally conceives", "🙌 Mercy replaces helplessness"];
+  }
+
+  if (lower.includes("mine own") || lower.includes("send me away") || lower.includes("served thee")) {
+    return ["🏠 Jacob wants to leave", "👨‍👩‍👧‍👦 He speaks for his household", "🧾 Years of service are behind him"];
+  }
+
+  if (lower.includes("learned by experience") || lower.includes("since my coming") || lower.includes("wages")) {
+    return ["📈 Laban has prospered", "💰 Work and payment are in view", "⚖️ Jacob is asking for fairness"];
+  }
+
+  if (lower.includes("speckled") || lower.includes("brown cattle") || lower.includes("three days")) {
+    return ["🐑 The wages are visible", "👀 Markings will show ownership", "🧤 Laban still works for advantage"];
+  }
+
+  if (lower.includes("green poplar") || lower.includes("hazel") || lower.includes("white") || lower.includes("rods")) {
+    return ["🌳 Tree branches are used", "🐑 Jacob works among the flocks", "🛠️ The method is practical and strange"];
+  }
+
+  if (lower.includes("gutters") || lower.includes("watering troughs") || lower.includes("conceived") || lower.includes("ringstraked") || lower.includes("spotted")) {
+    return ["💧 The watering place matters", "🐑 The flock gathers there", "👀 Marked animals are the focus"];
+  }
+
+  if (lower.includes("separate the lambs") || lower.includes("faces of the flocks") || lower.includes("his own flocks")) {
+    return ["↔️ Jacob separates the flocks", "🐑 Ownership becomes clear", "🏠 His own household is growing"];
+  }
+
+  if (lower.includes("feebler") || lower.includes("stronger") || lower.includes("increased exceedingly") || lower.includes("camels") || lower.includes("maidservants")) {
+    return ["📈 Jacob's wealth increases", "💪 The outcome favors him", "🚶 The return journey is getting closer"];
+  }
+
+  return ["📖 A phrase to notice", "🧠 The wording gives meaning", "✨ The line adds understanding"];
+}
+
+const day12Genesis30Phrase = (title: string, lines: string[]): [string, string] => {
+  const [first, second, third = "The wording adds a clear detail to the story."] = lines;
+  return phrase(title, [first, second, ...getDay12Genesis30Visuals(title), third]);
+};
 
 const DAY_12_GENESIS_30_REAL_PHRASE_ADDITIONS: Record<string, Array<[string, string]>> = {
   "Genesis 30:1-6": [
@@ -4211,7 +4292,7 @@ function deepenDay12Genesis30PhraseCards(section: PersonalGenesisPhraseSectionIn
   const additions = DAY_12_GENESIS_30_REAL_PHRASE_ADDITIONS[section.reference] ?? [];
   return {
     ...section,
-    phrases: [...section.phrases, ...additions],
+    phrases: additions.length ? additions : section.phrases,
   };
 }
 

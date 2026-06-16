@@ -34,7 +34,9 @@ function removeRepeatedPhraseHeading(title: string, line: string) {
   }
 
   if (/^(is|are|was|were)\b/i.test(rest)) {
-    return `This phrase ${rest}`;
+    if (/^are\b/i.test(rest)) return `These ${rest}`;
+    if (/^were\b/i.test(rest)) return `These ${rest}`;
+    return `This ${rest}`;
   }
 
   return rest || line;
@@ -52,6 +54,38 @@ function tightenDay37Line(line: string) {
     .replace(/^The phrase reminds readers that\s+/i, "This reminds readers that ")
     .replace(/^The phrase keeps\s+/i, "This keeps ")
     .replace(/^The phrase makes\s+/i, "This makes ");
+}
+
+function cleanDay37Line(line: string) {
+  return line
+    .replace(/^A reader should see that\s+/i, "")
+    .replace(/^A reader should understand why\s+/i, "")
+    .replace(/^A reader should understand\s+/i, "")
+    .replace(/^A reader should picture\s+/i, "")
+    .replace(/^A reader should\s+/i, "")
+    .replace(/^The wording\s+/i, "This ")
+    .replace(/^The phrase is\s+/i, "")
+    .replace(/^This phrase is\s+/i, "")
+    .replace(/^The phrase\b\s*/i, "This ")
+    .replace(/^This refers to a divorced woman in this priestly marriage rule\./i, "A divorced woman is in view in this priestly marriage rule.")
+    .replace(/^This gives the high priest a stricter death-boundary than other priests\./i, "The high priest receives a stricter boundary around contact with death than other priests.")
+    .replace(/^This begins the list of bodily conditions that affected altar service\./i, "This starts the list of bodily conditions that restricted altar service.")
+    .replace(/^This repeats the boundary so the priestly family cannot ignore it\./i, "The boundary is repeated so the priestly family cannot ignore it.")
+    .replace(/^This seals the command with God's own identity\./i, "God seals the command with His own identity.")
+    .replace(/^This shows that mishandling holy things dishonors the LORD Himself\./i, "Mishandling holy things dishonors the LORD Himself.")
+    .replace(/^This shows that uncleanness was serious, but it was not always permanent\./i, "Uncleanness was serious, but it was not always permanent.")
+    .replace(/so the phrase has to be read inside the symbolic world of Leviticus\./i, "so it has to be read inside the symbolic world of Leviticus.")
+    .replace(/^This gives relief after the warning: /i, "")
+    .replace(/^This protects /i, "It protects ")
+    .replace(/^This prepares /i, "It prepares ")
+    .replace(/^This clarifies /i, "It clarifies ")
+    .replace(/^This points to /i, "It points to ")
+    .replace(/^This names /i, "It names ")
+    .replace(/^This explains /i, "It explains ")
+    .replace(/^This identifies /i, "It identifies ")
+    .replace(/^This describes /i, "It describes ")
+    .replace(/^This marks /i, "It marks ")
+    .replace(/^This adds /i, "It adds ");
 }
 
 function titleCaseCueWord(word: string) {
@@ -176,20 +210,19 @@ function getDay37CueBlock(title: string) {
 }
 
 const explain = (title: string, lines: string[]) =>
-  phrase(
-    title,
-    [
-      ...lines
-        .map((line, index) => tightenDay37Line(index === 0 ? removeRepeatedPhraseHeading(title, line) : line))
-        .filter(Boolean)
-        .slice(0, 2),
+  phrase(title, (() => {
+    const prose = lines
+      .map((line, index) => tightenDay37Line(index === 0 ? removeRepeatedPhraseHeading(title, line) : line))
+      .map(cleanDay37Line)
+      .map((line) => line.trim())
+      .filter(Boolean);
+
+    return [
+      ...prose.slice(0, 2),
       getDay37CueBlock(title),
-      ...lines
-        .map((line, index) => tightenDay37Line(index === 0 ? removeRepeatedPhraseHeading(title, line) : line))
-        .filter(Boolean)
-        .slice(2),
-    ].filter(Boolean),
-  );
+      ...prose.slice(2),
+    ].filter(Boolean);
+  })());
 
 const DAY_37_LEVITICUS_21_24_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionInput[] = [
   {
@@ -1949,12 +1982,14 @@ function explainDay37To38LeviticusAt95(section: PersonalLeviticusPhraseSectionIn
   else if (/priest shall estimate/.test(lower)) opening = ["The priest evaluates the house dedicated to the LORD.", "A vowed house is not treated casually once it has been set apart as holy."];
   else if (/priest shall reckon/.test(lower)) opening = ["The priest calculates the field's value by the years that remain.", "Leviticus keeps vowed property tied to Jubilee and sanctuary order."];
   else if (/priest|aaron|sons/.test(lower)) opening = ["Priestly service stands nearest to holy things.", "Leviticus holds priests to visible holiness because they represent the people before the LORD."];
+  else if (/if it be of any unclean beast/.test(lower) && section.reference === "Leviticus 27:9-13") opening = ["An unclean animal could not be offered on the altar like a clean sacrifice.", "It still had to be handled by God's valuation rules if someone vowed it."];
+  else if (/if it be of an unclean beast/.test(lower)) opening = ["An unclean animal already belonging to the LORD had to be valued rather than sacrificed.", "God's redemption rules still applied to it by priestly estimation."];
   else if (/dead|defile|unclean|blemish/.test(lower)) opening = ["Defilement means becoming unclean for holy service.", "Priests could not treat uncleanness or visible blemish as irrelevant near God's altar."];
   else if (/bread of thy god|shewbread|holy bread/.test(lower)) opening = ["The bread of God refers to holy food connected with priestly service.", "The priest's work centers on offerings that belong to the LORD, not ordinary meals."];
   else if (/whore|profane|virgin|wife/.test(lower)) opening = ["The marriage wording protects priestly holiness in household life.", "Leviticus treats the priest's home as connected to his public service."];
   else if (/land keep a sabbath/.test(lower)) opening = ["The land itself must rest before the LORD.", "Israel cannot farm endlessly as if the land belongs only to them."];
   else if (/seventh year.*sabbath of rest/.test(lower)) opening = ["The seventh year is a full rest year for the land.", "Fields and vineyards stop so Israel learns trust instead of constant production."];
-  else if (/seven sabbaths of years/.test(lower)) opening = ["Seven sabbaths of years means seven cycles of seven years.", "The counting prepares Israel for the fiftieth year of Jubilee."];
+  else if (/seven sabbaths of years/.test(lower)) opening = ["Israel must count seven cycles of seven years.", "The counting prepares Israel for the fiftieth year of Jubilee."];
   else if (/keep my sabbaths/.test(lower)) opening = ["Keeping the Sabbaths means honoring the rest times God commanded.", "Israel's calendar must show reverence for the LORD, not only work and profit."];
   else if (/land enjoy her sabbaths/.test(lower)) opening = ["The land enjoying her Sabbaths means the land finally receives the rest Israel refused.", "Judgment gives the land the rest that disobedience had stolen."];
   else if (/sabbath/.test(lower)) opening = ["Sabbath means holy rest given by the LORD.", "Rest teaches Israel that time and provision belong to God."];
@@ -1981,31 +2016,50 @@ function explainDay37To38LeviticusAt95(section: PersonalLeviticusPhraseSectionIn
   else if (/serve thee unto the year of jubile/.test(lower)) opening = ["Service lasts only until Jubilee.", "A poor brother may work for help, but he must not be trapped forever."];
   else if (/according unto the year of jubile/.test(lower)) opening = ["The redemption price is calculated by the distance from Jubilee.", "The nearer Jubilee is, the less time remains to buy back."];
   else if (/year of jubile he shall go out/.test(lower)) opening = ["Jubilee releases the poor brother from service.", "The LORD limits bondage because Israel belongs to Him."];
+  else if (/from the year of jubile/.test(lower)) opening = ["The field's value is being measured from the last Jubilee year.", "The number of years remaining affects the price."];
+  else if (/unto the year of the jubile/.test(lower)) opening = ["The price is being calculated by how close the next Jubilee year is.", "Jubilee controls land value because the land eventually returns."];
   else if (/jubile|fiftieth|liberty/.test(lower)) opening = ["Jubilee is the fiftieth year of release and restoration.", "Debts, land, and bondage are limited because Israel belongs to the LORD."];
   else if (/oppress/.test(lower)) opening = ["Oppress means to treat someone unfairly or harshly for gain.", "Leviticus forbids using land, money, or power to crush a neighbor."];
   else if (/blessing/.test(lower)) opening = ["The promised blessing means God can provide when obedience seems costly.", "Israel must trust the LORD more than short-term control."];
-  else if (/land is mine/.test(lower)) opening = ["For the land is mine means Israel is tenant, not ultimate owner.", "The promised land remains the LORD's gift and possession."];
-  else if (/if thy brother be waxen poor/.test(lower)) opening = ["A brother waxen poor is an Israelite who has fallen into hardship.", "The law treats poverty as a moment for mercy, not exploitation."];
+  else if (/land is mine/.test(lower)) opening = ["Israel is tenant in the land, not its ultimate owner.", "The promised land remains the LORD's gift and possession."];
+  else if (/if thy brother be waxen poor/.test(lower) && section.reference === "Leviticus 25:35-38") opening = ["An Israelite brother has fallen into hardship and needs support.", "The law treats poverty as a moment for mercy, not exploitation."];
+  else if (/if thy brother be waxen poor/.test(lower)) opening = ["An Israelite brother has fallen so low that service may follow.", "The law still treats poverty as a moment for mercy, not exploitation."];
   else if (/then thou shalt relieve him/.test(lower)) opening = ["Relieve him means give support so the poor brother can keep living.", "God commands help that protects life instead of profiting from weakness."];
   else if (/thy brother wax poor/.test(lower)) opening = ["The poor brother's hardship may become severe enough that he sells himself.", "Even then, Leviticus protects him from being treated like property."];
   else if (/poorer than thy estimation/.test(lower)) opening = ["Poorer than thy estimation means the person cannot afford the normal vow value.", "The priest can set a value that recognizes poverty instead of crushing the worshiper."];
   else if (/poor|relieve|brother/.test(lower)) opening = ["A poor brother is an Israelite in economic trouble.", "God commands help that protects life and dignity instead of exploiting weakness."];
+  else if (/thou shalt not rule over him with rigour/.test(lower)) opening = ["A poor Israelite brother must not be ruled with harshness.", "Israel must not treat a brother like Pharaoh treated slaves."];
+  else if (/the other shall not rule with rigour/.test(lower)) opening = ["The foreign master must not be allowed to rule an Israelite brother harshly.", "Israel must not let a brother be crushed in service."];
   else if (/rigour/.test(lower)) opening = ["Rigour means harshness or crushing severity.", "Israel must not rule a poor brother like Pharaoh ruled slaves."];
   else if (/redemption for the land/.test(lower)) opening = ["Redemption for the land means family land can be bought back.", "The land must not disappear forever from the family God assigned it to."];
-  else if (/may be redeemed again/.test(lower)) opening = ["He may be redeemed again means the poor brother can be bought out of service.", "Family rescue remains possible even after he sells himself."];
+  else if (/may be redeemed again/.test(lower)) opening = ["The poor brother may be bought out of service and restored.", "Family rescue remains possible even after he sells himself."];
+  else if (/no devoted thing shall be sold or redeemed/.test(lower)) opening = ["A devoted thing may not be sold or bought back like ordinary property.", "Once completely devoted to the LORD, it is treated as most holy."];
+  else if (/none devoted shall be redeemed/.test(lower)) opening = ["A person or thing placed under total devotion is beyond ordinary redemption.", "The law marks a final category that cannot be reversed by payment."];
   else if (/devoted thing.*sold or redeemed|none devoted.*redeemed/.test(lower)) opening = ["A devoted thing cannot be bought back like an ordinary vow.", "Once completely devoted to the LORD, it is treated as most holy."];
   else if (/redeemed|redemption/.test(lower)) opening = ["Redeemed means bought back or released from bondage or loss.", "Leviticus gives a way for people and land to be restored."];
+  else if (/ye shall make you no idols/.test(lower)) opening = ["Israel is forbidden to make or bow to false gods.", "Covenant life cannot mix worship of the LORD with manufactured gods."];
+  else if (/carcases of your idols/.test(lower)) opening = ["The image is one of judgment falling on idolaters among their dead idols.", "False gods cannot save the people who trusted them."];
   else if (/idols/.test(lower)) opening = ["Idols are false gods made or trusted instead of the LORD.", "Covenant life cannot mix worship of the LORD with manufactured gods."];
   else if (/walk in my statutes/.test(lower)) opening = ["Walking in God's statutes means living according to His commands.", "Obedience is pictured as a path Israel must keep walking."];
+  else if (/if ye walk contrary unto me/.test(lower)) opening = ["Israel is warned against stubbornly walking against the LORD.", "The warning shows rebellion as deliberate resistance, not a small mistake."];
+  else if (/i will walk contrary unto you also in fury/.test(lower)) opening = ["God answers stubborn resistance with active judgment in fury.", "The warning shows that covenant rebellion meets covenant justice."];
   else if (/contrary/.test(lower)) opening = ["Contrary means moving against the LORD instead of with His commands.", "The warning shows rebellion as stubborn resistance, not a small mistake."];
+  else if (/i will make your cities waste/.test(lower)) opening = ["God warns that Israel's cities can be turned into ruins.", "Covenant rebellion does not only wound hearts; it can desolate the land."];
+  else if (/your cities waste/.test(lower)) opening = ["The warning pictures ruined cities left behind in judgment.", "Covenant rebellion does not only wound hearts; it can desolate the land."];
   else if (/confess/.test(lower)) opening = ["Confess means openly admit sin before God.", "The warning section still leaves room for humbling and covenant mercy."];
+  else if (/speak unto the children of israel/.test(lower) && section.reference === "Leviticus 25:1-6") opening = ["The sabbath-year command is being given to the whole nation.", "Holy time for the land belongs to Israel's shared life before the LORD."];
+  else if (/speak unto the children of israel/.test(lower)) opening = ["The vow command is addressed to the covenant people as a whole.", "Promises made to the LORD belong to Israel's shared life before Him."];
   else if (/vow|singular vow/.test(lower)) opening = ["A vow was a serious promise made before the LORD.", "Leviticus gives ordered valuation so vowed things are not handled casually."];
-  else if (/fifty shekels/.test(lower)) opening = ["Fifty shekels of silver is the valuation amount named for this category.", "The vow is handled by sanctuary measure, not personal guessing."];
-  else if (/thy estimation shall be/.test(lower)) opening = ["Thy estimation shall be introduces the assigned value for the vow.", "Leviticus gives measured order so promises before God are handled honestly."];
+  else if (/fifty shekels/.test(lower)) opening = ["This category is valued at fifty shekels of silver.", "The vow is handled by sanctuary measure, not personal guessing."];
+  else if (/thy estimation shall be/.test(lower)) opening = ["The priest is about to assign the stated value for the vow.", "Leviticus gives measured order so promises before God are handled honestly."];
   else if (/shekel of the sanctuary/.test(lower)) opening = ["The sanctuary shekel is the holy standard of weight for valuation.", "Vows and redemptions use God's appointed measure, not private scales."];
   else if (/estimation|shekel/.test(lower)) opening = ["Estimation means assigned value before the LORD.", "Vows and redemptions have measured order before God."];
   else if (/firstling/.test(lower)) opening = ["Firstling means the firstborn animal from its mother.", "The firstborn already belonged to the LORD and could not be treated like an optional vow."];
+  else if (/as a field devoted/.test(lower)) opening = ["A field not bought back becomes permanently devoted to the LORD.", "It will not return to the original owner after Jubilee."];
+  else if (/every devoted thing is most holy/.test(lower)) opening = ["A devoted thing is treated as most holy because it has been set apart completely to the LORD.", "Leviticus does not treat it like an ordinary vow."];
   else if (/devoted/.test(lower)) opening = ["Devoted things were set apart completely to the LORD.", "Leviticus treats them as most holy, not available for casual sale or exchange."];
+  else if (/all the tithe of the land is the lord's/.test(lower)) opening = ["The produce tithe is being claimed as the LORD's own portion.", "A tenth of the land's increase belongs to Him."];
+  else if (/the tenth shall be holy unto the lord/.test(lower)) opening = ["Every tenth animal passing under the rod is set apart as holy to the LORD.", "The flock tithe belongs to Him, not to the owner's preference."];
   else if (/tithe|tenth/.test(lower)) opening = ["Tithe means a tenth portion.", "The tenth belonged to the LORD from the land, herd, and flock."];
   else opening = [`The law gives a concrete rule about ${getDay37To38DistinctiveTopic(cleanTitle)}.`, "Holiness reaches land, worship, justice, vows, possessions, and daily responsibility."];
 

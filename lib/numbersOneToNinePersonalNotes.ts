@@ -1369,39 +1369,51 @@ function explainNumbersOneToNineAt95(section: PersonalLeviticusPhraseSectionInpu
   const lower = cleanTitle.toLowerCase();
   let opening: string[];
 
-  if (/lord spake|speak unto|say unto|commanded moses/.test(lower)) opening = ["The instruction begins with the LORD's command.", "Israel's camp order comes from God, not from human planning alone."];
+  if (/as the lord commanded moses/.test(lower) && section.reference === "Numbers 1:17-19") opening = ["Moses carries out the census exactly as the LORD commanded.", "Israel's camp order comes from God, not from human planning alone."];
+  else if (/as the lord commanded moses/.test(lower)) opening = ["The people obey the census arrangement exactly as the LORD commanded Moses.", "Israel's camp order comes from God, not from human planning alone."];
+  else if (/speak unto the children of israel/.test(lower)) opening = ["Moses is to deliver this command to all Israel.", "Camp order is not private advice; it is public instruction for the nation."];
+  else if (/lord spake|say unto|commanded moses/.test(lower)) opening = ["The instruction begins with the LORD's command.", "Israel's camp order comes from God, not from human planning alone."];
   else if (/wilderness of sinai/.test(lower)) opening = ["The wilderness of Sinai is the desert region where Israel camped after leaving Egypt.", "Numbers begins with rescued people still near the mountain, preparing to travel."];
   else if (/tabernacle of the congregation/.test(lower)) opening = ["The tabernacle of the congregation is the meeting tent at the center of Israel's camp.", "The census begins near God's dwelling because the people are ordered around His presence."];
   else if (/appoint the levites over the tabernacle/.test(lower)) opening = ["The Levites are appointed over the tabernacle of testimony.", "Their work is to guard the holy dwelling and its service."];
   else if (/levites shall pitch round about the tabernacle/.test(lower)) opening = ["The Levites camp around the tabernacle as a protective boundary.", "Their placement keeps holy space from being treated casually."];
-  else if (/tabernacle of testimony/.test(lower)) opening = ["The tabernacle of testimony is God's holy dwelling with His covenant witness inside.", "The Levites keep charge of it because God's presence is central to the camp."];
+  else if (/tabernacle of testimony/.test(lower)) opening = ["God's holy dwelling is in view here, with the covenant witness inside it.", "The Levites keep charge of it because God's presence is central to the camp."];
   else if (/tabernacle/.test(lower)) opening = ["The tabernacle is the holy tent where the LORD dwells among Israel.", "The camp is arranged around God's presence, not around human convenience."];
   else if (/second year|come out/.test(lower)) opening = ["The second year after Egypt places the census at a real point in Israel's journey.", "The rescued people are no longer escaping Egypt; they are being ordered for the road ahead."];
   else if (/take ye the sum/.test(lower)) opening = ["Taking the sum means counting the congregation.", "The census prepares Israel for ordered movement, service, and battle."];
+  else if (/those that were numbered of the tribe of manasseh/.test(lower) && section.reference === "Numbers 1:28-33") {
+    opening = ["Manasseh's census total is first given with the surrounding tribe counts.", "Joseph's younger son is fully counted among Israel's fighting men."];
+  }
+  else if (/those that were numbered of the tribe of manasseh/.test(lower)) {
+    opening = ["Manasseh's number is repeated here as its own tribe total.", "The separate line makes sure Joseph's divided inheritance is clearly counted."];
+  }
   else if (/those that were numbered of the tribe of (\w+)/.test(lower)) {
     const tribe = cleanTitle.match(/Tribe Of ([A-Za-z]+)/i)?.[1] || "this tribe";
     opening = [`${tribe} is counted among Israel's fighting men.`, "The number gives that tribe a visible place in the ordered camp."];
   }
+  else if (/six hundred thousand and three thousand and five hundred and fifty/.test(lower)) opening = ["This is the full total of Israel's counted fighting men.", "Israel is no longer shown as scattered slaves, but as an ordered people prepared to move."];
+  else if (/all they that were numbered were six hundred thousand/.test(lower)) opening = ["The census now restates the final army total after the tribe lists are complete.", "Israel is no longer shown as scattered slaves, but as an ordered people prepared to move."];
   else if (/all they that were numbered|six hundred thousand/.test(lower)) opening = ["The full army number gathers the tribe counts into one total.", "Israel is no longer shown as scattered slaves, but as an ordered people prepared to move."];
   else if (/numbered|poll|sum/.test(lower)) opening = ["The count gives Israel ordered responsibility before God.", "The census prepares the camp for movement, service, and battle."];
-  else if (/after their families/.test(lower) && section.reference === "Numbers 1:1-4") opening = ["After their families means the whole census follows household lines.", "Israel is numbered as real families with covenant identity."];
+  else if (/after their families/.test(lower) && section.reference === "Numbers 1:1-4") opening = ["The whole census follows household lines.", "Israel is numbered as real families with covenant identity."];
   else if (/after their families/.test(lower) && section.reference === "Numbers 1:26-27") opening = ["Judah is counted by family lines.", "The tribe's strength is connected to real households, not a faceless total."];
   else if (/after their families/.test(lower) && section.reference === "Numbers 1:34-35") opening = ["Manasseh is counted through its family groups.", "Joseph's line is represented through actual households in the camp."];
   else if (/after their families/.test(lower)) opening = ["Naphtali's count also follows family lines.", "The final tribe listed is still counted through covenant households."];
   else if (/every one head of the house of his fathers/.test(lower)) opening = ["Each leader stands as head of his father's house.", "The census uses recognized family leadership for tribal order."];
-  else if (/by the house of their fathers/.test(lower) && section.reference === "Numbers 1:17-19") opening = ["By the house of their fathers means the names are organized by ancestral households.", "The census is public and orderly before the LORD."];
+  else if (/by the house of their fathers/.test(lower) && section.reference === "Numbers 1:17-19") opening = ["The names are organized by ancestral households.", "The census is public and orderly before the LORD."];
   else if (/by the house of their fathers/.test(lower) && section.reference === "Numbers 1:26-27") opening = ["Judah's count is organized by fathers' houses.", "The tribe is counted through its covenant family structure."];
   else if (/by the house of their fathers/.test(lower) && section.reference === "Numbers 1:34-35") opening = ["Manasseh's fathers' houses anchor its census number.", "The tribe's place is traced through family identity."];
   else if (/house of his fathers|house of their fathers/.test(lower)) opening = ["The final tribe count is still tied to fathers' houses.", "Numbers connects each person to tribe and household, not just an individual name."];
   else if (/declared their pedigrees/.test(lower)) opening = ["Declared their pedigrees means they stated their family records.", "The census depends on known covenant family lines."];
-  else if (/by their generations/.test(lower)) opening = ["By their generations means the count follows family descent.", "The tribe is remembered through its households across time."];
+  else if (/by their generations/.test(lower)) opening = ["The count follows family descent from one generation to the next.", "The tribe is remembered through its households across time."];
   else if (/princes of the tribes/.test(lower)) opening = ["Princes of the tribes are recognized leaders from each father's house.", "They give visible order to the congregation under Moses and Aaron."];
   else if (/families|fathers|pedigrees|generations/.test(lower)) opening = ["Israel is counted by household lines.", "Numbers counts real households, not a faceless crowd."];
   else if (/able to go forth to war/.test(lower) && section.reference === "Numbers 1:1-4") opening = ["The opening census focuses on men able for war.", "Israel is being prepared for the conflict ahead, not merely counted for curiosity."];
   else if (/able to go forth to war/.test(lower) && section.reference === "Numbers 1:26-27") opening = ["Judah's counted men are able for war.", "The tribe that will later lead is already shown as strong within the camp."];
   else if (/able to go forth to war/.test(lower) && section.reference === "Numbers 1:28-33") opening = ["These middle tribe counts also focus on men ready for war.", "Every tribe named here has a military responsibility in Israel's ordered camp."];
   else if (/able to go forth to war/.test(lower)) opening = ["The final count confirms the men ready for war.", "The census total is built from real fighting-age men across the tribes."];
-  else if (/of the children of joseph/.test(lower)) opening = ["Joseph's descendants are counted through Ephraim and Manasseh.", "The one son Joseph receives a double tribal presence in Israel."];
+  else if (/of the children of joseph/.test(lower) && section.reference === "Numbers 1:10-15") opening = ["Joseph's descendants are counted through Ephraim and Manasseh.", "The one son Joseph receives a double tribal presence in Israel."];
+  else if (/of the children of joseph/.test(lower)) opening = ["Joseph's name appears again because both Ephraim and Manasseh carry his tribal line.", "The census keeps his double tribal presence visible."];
   else if (/of (reuben|simeon|gad|judah|issachar|zebulun|ephraim|manasseh|benjamin|dan|asher|naphtali);/.test(lower)) {
     const tribe = cleanTitle.match(/Of ([A-Za-z]+)/i)?.[1] || "this tribe";
     const leader = cleanTitle.match(/;\s*([^;]+)$/)?.[1] || "its leader";
@@ -1412,6 +1424,8 @@ function explainNumbersOneToNineAt95(section: PersonalLeviticusPhraseSectionInpu
     opening = [`${tribe}'s descendants are being counted in their place.`, "The tribe stands as one part of the whole ordered camp."];
   }
   else if (/reuben|simeon|gad|judah|issachar|zebulun|ephraim|manasseh|benjamin|dan|asher|naphtali|joseph/.test(lower)) opening = ["The named tribe is placed inside Israel's ordered camp.", "Each tribe has responsibility and location without being erased into the crowd."];
+  else if (/thou shalt not number the tribe of levi/.test(lower)) opening = ["Levi is excluded from the military census because its service is different.", "The tribe is set apart to guard the holy dwelling rather than join the war count."];
+  else if (/levites shall keep the charge/.test(lower)) opening = ["The Levites are assigned the duty of guarding the tabernacle's service.", "Their work protects holy space at the center of the camp."];
   else if (/levi|levites/.test(lower)) opening = ["The Levites were the tribe set apart for tabernacle service.", "They are counted differently because their work guards the holy dwelling."];
   else if (/standard|ensign|pitch|camp/.test(lower)) opening = ["A standard or ensign was a tribal banner or signal.", "The camp was arranged by tribe so Israel could move with order around the tabernacle."];
   else if (/firstborn/.test(lower)) opening = ["The firstborn belonged specially to the LORD because of the Passover rescue.", "Numbers explains how Levites stand in place of Israel's firstborn."];

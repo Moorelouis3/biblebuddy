@@ -238,6 +238,10 @@ const GENESIS_31_40_TEXTURE_RULES: PersonalTextureRule[] = [
 ];
 
 function addGenesisThirtyOneToFortyTexture(section: PersonalGenesisPhraseSectionInput, title: string, content: string) {
+  if (section.chapter >= 31 && section.chapter <= 35) {
+    return content;
+  }
+
   if (section.chapter >= 37 && section.chapter <= 40) {
     return content;
   }
@@ -383,13 +387,9 @@ function formatGenesisThirtyOneToFortyPhraseExplanation(
           .replace(/\n\nIs mocking and dismissive\./g, "\n\nThe nickname is mocking and dismissive.")
           .replace(/\n\nIs important because Judah stops/g, "\n\nThis is important because Judah stops")
       : cleanedContent;
-  const hasVisualBlock = hasGenesisThirtyOneToFortyVisualList(finalCleanedContent);
-
-  if (hasVisualBlock) return finalCleanedContent;
-
-  const cleanTitle = stripGenesisThirtyOneToFortyPhraseEmoji(title);
-  const focus = getGenesisThirtyOneToFortyPhraseFocus(section, cleanTitle);
-  return note([finalCleanedContent, focus].filter(Boolean));
+  if (section.chapter >= 31 && section.chapter <= 40) {
+    return finalCleanedContent;
+  }
 }
 
 function getGenesisThirtyNineFortyIcon(title: string) {
@@ -551,32 +551,7 @@ function formatGenesisThirtyNineFortyRenderedPhrase(section: PersonalGenesisPhra
     return [title, content];
   }
 
-  const cleanTitle = stripGenesisThirtyOneToFortyPhraseEmoji(title);
-  const paragraphs = cleanGenesisThirtyNineFortyFrameworkText(content)
-    .split(/\n{2,}/)
-    .map((paragraph) => paragraph.trim())
-    .filter(Boolean);
-
-  const expandedBase = paragraphs.length >= 4 ? paragraphs : [...paragraphs, ...getGenesisThirtyNineFortyTeachingLines(cleanTitle)];
-  const hasList = expandedBase.some((paragraph) => /^[^A-Za-z0-9'"(]/.test(paragraph));
-  const expanded = hasList
-    ? expandedBase
-    : [
-        ...expandedBase.slice(0, Math.min(2, expandedBase.length)),
-        ...getGenesisThirtyNineFortyPhraseList(section, cleanTitle),
-        ...expandedBase.slice(Math.min(2, expandedBase.length)),
-      ];
-  const seen = new Set<string>();
-  const body = note(
-    expanded.filter((paragraph) => {
-      const key = paragraph.toLowerCase().replace(/[.?!]+$/, "");
-      if (seen.has(key)) return false;
-      seen.add(key);
-      return true;
-    }),
-  );
-
-  return [ensureGenesisThirtyNineFortyEmoji(title), body];
+  return [ensureGenesisThirtyNineFortyEmoji(title), cleanGenesisThirtyNineFortyFrameworkText(content)];
 }
 
 function dedupeGenesisThirtyNineFortySections(section: PersonalGenesisPhraseSectionInput): PersonalGenesisPhraseSectionInput {
@@ -2144,7 +2119,7 @@ const DAY_12_GENESIS_31_REAL_PHRASE_ADDITIONS: Record<string, Array<[string, str
   ],
   "Genesis 31:36-37": [
     day12Genesis31Phrase("Jacob Was Wroth", ["Jacob's anger rises after Laban's search finds nothing.", "Years of unfair treatment now pour into one confrontation.", "The false accusation becomes the spark that lights a long-delayed speech."]),
-    day12Genesis31Phrase("What Is My Sin?", ["Jacob asks Laban to name the actual wrong.", "The question challenges vague suspicion and controlling blame.", "A beginner should notice Jacob is asking for evidence, not just emotional accusation."]),
+    day12Genesis31Phrase("What Is My Sin?", ["Jacob asks Laban to name the actual wrong.", "The question challenges vague suspicion and controlling blame.", "He is asking for a real charge that can be proved, not a cloud of accusation."]),
     day12Genesis31Phrase("Thou Hast So Hotly Pursued After Me", ["Jacob names the intensity of Laban's chase.", "Laban did not come gently or casually.", "His pursuit shows how strongly he wanted to regain control."]),
     day12Genesis31Phrase("Set It Here Before My Brethren And Thy Brethren", ["Jacob calls for public evidence in front of both groups.", "He wants the matter judged openly.", "Truth is brought into the light where accusation can be tested."]),
   ],
@@ -2193,7 +2168,7 @@ function deepenDay12Genesis31PhraseCards(section: PersonalGenesisPhraseSectionIn
   const additions = DAY_12_GENESIS_31_REAL_PHRASE_ADDITIONS[section.reference] ?? [];
   return {
     ...section,
-    phrases: [...section.phrases, ...additions],
+    phrases: additions.length ? additions : section.phrases,
   };
 }
 
@@ -2398,7 +2373,7 @@ function deepenDay13PhraseCards(section: PersonalGenesisPhraseSectionInput): Per
   const additions = DAY_13_REAL_PHRASE_ADDITIONS[section.reference] ?? [];
   return {
     ...section,
-    phrases: [...section.phrases, ...additions],
+    phrases: additions.length ? additions : section.phrases,
   };
 }
 
@@ -2732,7 +2707,7 @@ function deepenDay14PhraseCards(section: PersonalGenesisPhraseSectionInput): Per
   const additions = DAY_14_REAL_PHRASE_ADDITIONS[section.reference] ?? [];
   return {
     ...section,
-    phrases: [...section.phrases, ...additions],
+    phrases: additions.length ? additions : section.phrases,
   };
 }
 
@@ -3192,13 +3167,7 @@ function getDay15PhraseTeachingLines(title: string, sectionReference: string) {
 
 const day15Phrase = (title: string, lines: string[]): [string, string] => {
   const heading = ensureDay15PhraseEmoji(title);
-  const teachingLines = getDay15PhraseTeachingLines(title, "");
-  const mergedLines = [...lines, ...teachingLines].filter((line, index, all) => {
-    const key = line.toLowerCase().replace(/[.?!]+$/, "").trim();
-    return key.length > 0 && all.findIndex((item) => item.toLowerCase().replace(/[.?!]+$/, "").trim() === key) === index;
-  });
-
-  return phrase(heading, mergedLines);
+  return phrase(heading, lines);
 };
 
 function dedupeDay15PhraseCards(section: PersonalGenesisPhraseSectionInput): PersonalGenesisPhraseSectionInput {
@@ -3469,7 +3438,9 @@ function deepenDay15PhraseCards(section: PersonalGenesisPhraseSectionInput): Per
   };
   return cleanDay15FrameworkLanguage(dedupeDay15PhraseCards({
     ...section,
-    phrases: [...section.phrases, ...additions, ...(extraAdditions[section.reference] ?? [])],
+    phrases: additions.length || extraAdditions[section.reference]?.length
+      ? [...additions, ...(extraAdditions[section.reference] ?? [])]
+      : section.phrases,
   }));
 }
 
@@ -3653,7 +3624,7 @@ function deepenDay16PhraseCards(section: PersonalGenesisPhraseSectionInput): Per
   const additions = DAY_16_REAL_PHRASE_ADDITIONS[section.reference] ?? [];
   return {
     ...section,
-    phrases: [...section.phrases, ...additions],
+    phrases: additions.length ? additions : section.phrases,
   };
 }
 

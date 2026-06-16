@@ -539,6 +539,89 @@ const DAY_29_EXODUS_31_32_PHRASE_TITLES: Record<string, string[]> = {
   "Exodus 32:30-35": ["Ye Have Sinned A Great Sin", "Peradventure I Shall Make An Atonement", "This People Have Sinned A Great Sin", "Made Them Gods Of Gold", "Blot Me, I Pray Thee, Out Of Thy Book", "Whosoever Hath Sinned Against Me", "The LORD Plagued The People"],
 };
 
+function escapeDay29PhraseForRegex(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function stripDay29TitleFromOpening(title: string, line: string): string {
+  const escaped = escapeDay29PhraseForRegex(title);
+  const patterns = [
+    new RegExp(`^${escaped} means\\s+`, "i"),
+    new RegExp(`^${escaped} are\\s+`, "i"),
+    new RegExp(`^${escaped} names\\s+`, "i"),
+    new RegExp(`^${escaped} was\\s+`, "i"),
+    new RegExp(`^${escaped} gives\\s+`, "i"),
+    new RegExp(`^${escaped} warns\\s+`, "i"),
+    new RegExp(`^${escaped} explains\\s+`, "i"),
+    new RegExp(`^${escaped} introduces\\s+`, "i"),
+    new RegExp(`^${escaped} places\\s+`, "i"),
+    new RegExp(`^${escaped} is\\s+`, "i"),
+    new RegExp(`^${escaped} describes\\s+`, "i"),
+    new RegExp(`^${escaped} marks\\s+`, "i"),
+    new RegExp(`^${escaped} points\\s+`, "i"),
+    new RegExp(`^${escaped} continues\\s+`, "i"),
+    new RegExp(`^${escaped} completes\\s+`, "i"),
+    new RegExp(`^${escaped} confirms\\s+`, "i"),
+    new RegExp(`^${escaped} dates\\s+`, "i"),
+    new RegExp(`^${escaped} hold\\s+`, "i"),
+    new RegExp(`^${escaped} fasten\\s+`, "i"),
+    new RegExp(`^${escaped} die\\s+`, "i"),
+  ];
+
+  for (const pattern of patterns) {
+    if (pattern.test(line)) {
+      const stripped = line.replace(pattern, "").trim();
+      return stripped ? `${stripped.charAt(0).toUpperCase()}${stripped.slice(1)}` : line;
+    }
+  }
+
+  return line;
+}
+
+function finalizeDay29ExodusPhrase(
+  title: string,
+  lines: string[],
+  overrides?: Record<string, string>,
+  sectionReference?: string,
+): string {
+  if (!lines[0]) return note(lines.slice(0, 8));
+
+  const keyedOverride = sectionReference && overrides ? overrides[`${sectionReference}|${title}`] : undefined;
+  lines[0] = keyedOverride ?? overrides?.[title] ?? stripDay29TitleFromOpening(title, lines[0]);
+  return note(lines.slice(0, 8));
+}
+
+const DAY_29_EXODUS_31_32_FIRST_LINE_OVERRIDES: Record<string, string> = {
+  "Exodus 31:1-6|The Son Of Uri": "This identifies Bezaleel by family line, showing that God calls a real craftsman from a real household.",
+  "Exodus 31:1-6|The Tribe Of Judah": "Bezaleel comes from Judah, rooting the tabernacle work in one of Israel's tribes.",
+  "Exodus 31:7-11|The Tabernacle Of The Congregation": "The tabernacle of the congregation is the meeting tent where God's people approach Him by His command.",
+  "Exodus 31:7-11|The Ark Of The Testimony": "The ark of the testimony is the sacred chest that holds God's covenant witness.",
+  "Exodus 31:7-11|The Mercy Seat": "The mercy seat is the cover over the ark associated with atonement and God's meeting place.",
+  "Exodus 31:7-11|The Pure Candlestick": "The pure candlestick is the gold lampstand that gives light inside the holy place.",
+  "Exodus 31:7-11|The Altar Of Incense": "The altar of incense is the small gold altar where fragrance rises before the LORD.",
+  "Exodus 31:7-11|The Cloths Of Service": "The cloths of service are special garments or fabrics used in the tabernacle's holy work.",
+  "Exodus 31:12-17|That Ye May Know": "The Sabbath teaches Israel that the LORD Himself is the One who sets them apart.",
+  "Exodus 31:18-18|Tables Of Stone": "These stone tablets give the covenant words a durable, public form.",
+  "Exodus 31:18-18|Written With The Finger Of God": "This wording stresses divine authorship: the covenant words come directly from God.",
+  "Exodus 31:18-18|When He Had Made An End Of Communing": "This marks the close of God's speaking with Moses on Sinai.",
+  "Exodus 32:1-6|As For This Moses": "The people speak of Moses with distance and impatience, as though their mediator has failed them.",
+  "Exodus 32:1-6|Break Off The Golden Earrings": "The gold earrings are collected as raw material for the idol.",
+  "Exodus 32:1-6|He Made It A Molten Calf": "A molten calf is a cast metal idol shaped to be seen and controlled.",
+  "Exodus 32:1-6|These Be Thy Gods, O Israel": "The people wrongly credit the idol with the rescue that belonged to the LORD alone.",
+  "Exodus 32:1-6|Rose Up To Play": "This points to unrestrained festival behavior surrounding the idol feast.",
+  "Exodus 32:7-12|A Stiffnecked People": "A stiffnecked people are stubborn people who refuse to bend under God's rule.",
+  "Exodus 32:13-14|The LORD Repented Of The Evil": "This means the LORD turned from the announced disaster after Moses' intercession.",
+  "Exodus 32:15-20|The Writing Was The Writing Of God": "The tablets carried God's own writing, not Moses' private teaching notes.",
+  "Exodus 32:15-20|He Cast The Tables Out Of His Hands": "Breaking the tablets pictures the covenant being shattered by Israel's sin.",
+  "Exodus 32:21-26|There Came Out This Calf": "Aaron speaks as if the idol appeared on its own, which exposes how weak his excuse is.",
+  "Exodus 32:21-26|The People Were Naked": "The people were out of control and exposed in shame before their enemies.",
+  "Exodus 32:21-26|Who Is On The LORD'S Side": "Moses calls for open loyalty to the LORD in the middle of the camp's rebellion.",
+  "Exodus 32:27-29|About Three Thousand Men": "This gives the sobering number of those struck in the judgment after the calf.",
+  "Exodus 32:30-35|Ye Have Sinned A Great Sin": "Moses names the golden calf for what it was: a major act of covenant rebellion.",
+  "Exodus 32:30-35|Made Them Gods Of Gold": "The sin is not abstract; Israel actually made visible gods out of gold.",
+  "Exodus 32:30-35|Blot Me, I Pray Thee, Out Of Thy Book": "Moses offers himself in intercession, though he cannot finally bear Israel's guilt away.",
+};
+
 function explainExodusThirtyOneToFortyMinedPhrase(section: PersonalExodusPhraseSectionInput, title: string): string {
   const lower = title.toLowerCase();
   const lines: string[] = [];
@@ -578,13 +661,7 @@ function explainExodusThirtyOneToFortyMinedPhrase(section: PersonalExodusPhraseS
     add(`${title} means this is a concrete detail in the rebuilding of worship.`, `${section.title} is showing worship being rebuilt through God's pattern, not through Israel's guesses.`, "The phrase may name a measurement, object, material, action, or priestly detail.", "Each detail helps the reader see that God's presence is a gift and must be honored His way.");
   }
 
-  if (lines[0]) {
-    const startsWithTitle = lines[0].toLowerCase().startsWith(title.toLowerCase());
-    const adjusted = startsWithTitle ? `The wording ${lines[0].charAt(0).toLowerCase()}${lines[0].slice(1)}` : lines[0];
-    lines[0] = `${adjusted} This belongs with this part of Exodus.`;
-  }
-
-  return note(lines.slice(0, 8));
+  return finalizeDay29ExodusPhrase(title, lines);
 }
 
 function explainDay29Exodus31To32Phrase(title: string): string {
@@ -638,13 +715,7 @@ function explainDay29Exodus31To32Phrase(title: string): string {
     add(`${title} names a detail tied to worship, covenant, sin, or mercy.`, "The wording should make the reader ask what is being built, guarded, corrected, or restored.", "\u{1F3D5}\u{FE0F} Worship", "\u{1F4DC} Covenant", "\u{26A0}\u{FE0F} Sin and mercy", "Exodus holds both sides together: God gives a way to dwell with His people, and His people still need mercy.");
   }
 
-  if (lines[0]) {
-    const startsWithTitle = lines[0].toLowerCase().startsWith(title.toLowerCase());
-    const adjusted = startsWithTitle ? `The wording ${lines[0].charAt(0).toLowerCase()}${lines[0].slice(1)}` : lines[0];
-    lines[0] = `${adjusted} This belongs with this part of Exodus.`;
-  }
-
-  return note(lines.slice(0, 8));
+  return finalizeDay29ExodusPhrase(title, lines, DAY_29_EXODUS_31_32_FIRST_LINE_OVERRIDES);
 }
 
 function makeDay29Exodus31To32PhraseCard(section: PersonalExodusPhraseSectionInput, title: string): [string, string] {
@@ -1452,8 +1523,8 @@ function formatRenderedDays29To30Lines(section: PersonalExodusPhraseSectionInput
   if (section.chapter >= 33 && section.chapter <= 36) {
     const rawOpening = getDay30ShortOpening(section, cleanTitle);
     return [
-      rawOpening[0],
-      rawOpening[1],
+      cleanRenderedExodusOpening(cleanTitle, rawOpening[0]),
+      cleanRenderedExodusSupport(rawOpening[1]),
       ...getDay30ShortSupport(section, cleanTitle),
       getDay30ShortClosing(section, cleanTitle),
     ].filter(Boolean).slice(0, 7);
@@ -1473,6 +1544,33 @@ function formatRenderedDays29To30Lines(section: PersonalExodusPhraseSectionInput
     ...getDays29To30TeachingBullets(section, cleanTitle),
     ...closing,
   ].slice(0, 8);
+}
+
+function cleanRenderedExodusOpening(title: string, line: string) {
+  const overrides: Record<string, string> = {
+    "The Tabernacle Of The Congregation": "The tabernacle of the congregation was the meeting tent where people sought the LORD.",
+    "The Feast Of Weeks": "The Feast of Weeks was a harvest feast later known for counting from firstfruits to the next grain celebration.",
+    "Shittim Wood": "Shittim wood was durable acacia-like wood used to build tabernacle furniture and frames.",
+    "Onyx Stones": "Onyx stones were precious stones used in priestly garments and tabernacle service.",
+    "Rows Of Stones": "The breastplate stones are arranged in ordered rows across the priest's chest.",
+    "Moses Blessed Them": "Moses blesses the workers after inspecting the completed tabernacle.",
+    "Bring His Sons": "Aaron's sons are brought forward to be included in priestly service.",
+    "Moses Reared Up The Tabernacle": "Moses raises the tabernacle under the LORD's command.",
+    "The Cloud Covered The Tent": "The cloud covered the tent when the tabernacle was complete.",
+    "The Children Of Israel Went Onward": "Israel moved onward when the cloud lifted from the tabernacle.",
+  };
+  if (overrides[title]) return overrides[title];
+
+  return stripDay29TitleFromOpening(title, line)
+    .replace(/^The wording\s+/i, "")
+    .replace(/^This\s+means\s+/i, "")
+    .replace(/^([a-z])/, (letter) => letter.toUpperCase());
+}
+
+function cleanRenderedExodusSupport(line: string) {
+  return line
+    .replace(/^The wording\s+/i, "")
+    .replace(/^([a-z])/, (letter) => letter.toUpperCase());
 }
 
 function getDay31ShortOpening(section: PersonalExodusPhraseSectionInput, cleanTitle: string) {
@@ -1744,8 +1842,8 @@ function formatRenderedDay31Lines(section: PersonalExodusPhraseSectionInput, cle
 
   const rawOpening = getDay31ShortOpening(section, cleanTitle);
   return [
-    rawOpening[0],
-    rawOpening[1],
+    cleanRenderedExodusOpening(cleanTitle, rawOpening[0]),
+    cleanRenderedExodusSupport(rawOpening[1]),
     ...getDay31ShortSupport(section, cleanTitle),
     getDay31ShortClosing(section, cleanTitle),
   ].filter(Boolean).slice(0, 7);

@@ -848,14 +848,18 @@ function finalizeLeviticus95Lines(section: PersonalLeviticusPhraseSectionInput, 
   const firstLine = lines[0]
     .replace(/\bThis helps explain\b/gi, `Inside ${focus}, this explains`)
     .replace(/\bThis helps\b/gi, "This shows");
-  const first = startsWithTitle
-    ? `In ${section.reference}, ${firstLine.charAt(0).toLowerCase()}${firstLine.slice(1)}`
-    : `${firstLine} Here it applies to ${topic} in ${section.reference}.`;
+  const first = cleanRenderedLeviticusOpening(
+    cleanTitle,
+    startsWithTitle ? `In ${section.reference}, ${firstLine.charAt(0).toLowerCase()}${firstLine.slice(1)}` : `${firstLine} Here it applies to ${topic} in ${section.reference}.`,
+  );
 
   return [
     first,
     ...lines.slice(1).map((line) =>
       line
+        .replace(/\s+Here it applies to .*$/i, "")
+        .replace(/^Inside [^.]+, this wording answers a real question about worship, cleanness, sin, or mercy\./i, `This detail fits the larger instruction about ${focus}.`)
+        .replace(/^Inside [^.]+, this explains /i, "")
         .replace(/\bthe phrase shows\b/gi, "the wording shows")
         .replace(/\bthe phrase explains\b/gi, "the wording explains")
         .replace(/\bthe phrase teaches\b/gi, "the wording teaches")
@@ -1056,6 +1060,31 @@ function getDay32ShortClosing(section: PersonalLeviticusPhraseSectionInput, clea
   if (section.chapter === 4) return "The sin offering teaches that guilt must be brought to God for atonement.";
 
   return "The phrase teaches worship near a holy God without filler.";
+}
+
+function cleanRenderedLeviticusOpening(cleanTitle: string, line: string) {
+  const escapedTitle = cleanTitle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const titleStartPattern = new RegExp(`^${escapedTitle}\\s+(means|shows|gives|helps|explains|teaches|marks|names|is|are|was|were|connects|keeps|points to|prepares|brings|describes|refers to|repeats|continues|introduces)\\s+`, "i");
+  const bareTitlePattern = new RegExp(`^${escapedTitle}\\s+`, "i");
+
+  let cleaned = line.trim();
+  cleaned = cleaned.replace(titleStartPattern, (_match, verb: string) => {
+    const action = verb.toLowerCase();
+    if (action === "means") return "";
+    if (action === "is") return "This is ";
+    if (action === "are") return "These are ";
+    if (action === "was") return "This was ";
+    if (action === "were") return "These were ";
+    return `This ${action} `;
+  });
+
+  return cleaned
+    .replace(/^In [^,]+,\s*/i, "")
+    .replace(/\s+Here it applies to .*$/i, "")
+    .replace(bareTitlePattern, "")
+    .replace(/^The wording\s+/i, "")
+    .replace(/^This\s+means\s+/i, "")
+    .replace(/^([a-z])/, (letter) => letter.toUpperCase());
 }
 
 function getDay34ShortOpening(section: PersonalLeviticusPhraseSectionInput, cleanTitle: string) {
@@ -1377,7 +1406,7 @@ function formatDay32To35MeaningFirstLines(section: PersonalLeviticusPhraseSectio
   if (section.chapter >= 1 && section.chapter <= 4) {
     const opening = getDay32ShortOpening(section, cleanTitle);
     return [
-      opening[0],
+      cleanRenderedLeviticusOpening(cleanTitle, opening[0]),
       opening[1],
       ...getDay32ShortSupport(section, cleanTitle),
       getDay32ShortClosing(section, cleanTitle),
@@ -1387,7 +1416,7 @@ function formatDay32To35MeaningFirstLines(section: PersonalLeviticusPhraseSectio
   if (section.chapter >= 9 && section.chapter <= 12) {
     const opening = getDay34ShortOpening(section, cleanTitle);
     return [
-      opening[0],
+      cleanRenderedLeviticusOpening(cleanTitle, opening[0]),
       opening[1],
       ...getDay34ShortSupport(section, cleanTitle),
       getDay34ShortClosing(section, cleanTitle),
@@ -1397,7 +1426,7 @@ function formatDay32To35MeaningFirstLines(section: PersonalLeviticusPhraseSectio
   if (section.chapter >= 13 && section.chapter <= 16) {
     const opening = getDay35ShortOpening(section, cleanTitle);
     return [
-      opening[0],
+      cleanRenderedLeviticusOpening(cleanTitle, opening[0]),
       opening[1],
       ...getDay35ShortSupport(section, cleanTitle),
       getDay35ShortClosing(section, cleanTitle),

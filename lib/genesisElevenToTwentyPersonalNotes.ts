@@ -6097,7 +6097,7 @@ const DAY_6_QUALITY_REVIEW_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
         "God Himself is Abram's protection.",
         "Abram has just fought kings, but his deepest security is not military strength.",
         "The LORD is his shield.",
-        "This phrase teaches that God's presence is safer than any earthly defense.",
+        "His safety rests in God's presence more than in any earthly defense.",
       ]),
       phrase("Thy Exceeding Great Reward", [
         "God is not only Abram's protector; He is Abram's reward.",
@@ -6349,7 +6349,7 @@ const DAY_6_QUALITY_REVIEW_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
         "This is the key action in the covenant ceremony.",
         "In ancient covenant imagery, passing between pieces signaled a solemn oath.",
         "Here God alone passes through.",
-        "That teaches that the covenant rests on God's commitment, not Abram's ability to hold everything together.",
+        "The covenant rests on God's commitment, not Abram's ability to hold everything together.",
       ]),
       phrase("The LORD Made A Covenant With Abram", [
         "This phrase names what the whole scene has been building toward.",
@@ -7201,7 +7201,7 @@ const DAY_8_QUALITY_REVIEW_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
         "Genesis tells us from the start that this visit is not ordinary.",
         "The LORD is coming near to Abraham in a personal way.",
         "Before the promise of Isaac is repeated, God draws close.",
-        "The scene teaches that covenant faith is built on God's presence, not only on information.",
+        "Abraham's faith is being sustained by God's presence, not only by information.",
       ]),
       phrase("In The Plains Of Mamre", [
         "Mamre is the place where Abraham has lived, worshiped, and built an altar.",
@@ -8085,7 +8085,7 @@ const DAY_8_QUALITY_REVIEW_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
         "God says He restrained Abimelech from sin.",
         "This is preventative mercy.",
         "Abimelech did not avoid disaster by wisdom alone; God held him back.",
-        "The phrase teaches that sin against people is also sin against God.",
+        "The wording shows that sin against people is also sin against God.",
       ]),
       phrase("He Is A Prophet", [
         "God still calls Abraham a prophet.",
@@ -8512,6 +8512,9 @@ function deepenGenesisElevenToTwentyPhraseExplanation(
   const cleanTitle = stripGenesisElevenToTwentyPhraseEmoji(title);
   const hasTeachingLayer = hasGenesisElevenToTwentyTeachingLayer(cleanedBody);
   const hasVisualBlock = hasGenesisElevenToTwentyVisualBlock(cleanedBody);
+  if (section.chapter >= 11 && section.chapter <= 20 && lines.length >= 4 && hasTeachingLayer) {
+    return cleanedBody;
+  }
   if (lines.length >= 6 && hasTeachingLayer && hasVisualBlock) return cleanedBody;
 
   const focus = getGenesisElevenToTwentyPhraseFocus(section, cleanTitle);

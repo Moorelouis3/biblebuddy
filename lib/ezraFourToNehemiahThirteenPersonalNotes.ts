@@ -2813,5 +2813,634 @@ const sections = [
     }
 ] as const satisfies readonly EzraNehemiahPhraseSectionInput[];
 
-export const EZRA_4_10_PERSONAL_SECTIONS = sections.filter((section) => section.book === "Ezra");
+const DAY_111_EZRA_OVERRIDES: Record<string, readonly [string, string][]> = {
+  "Ezra 4:1-6": [
+    ["🏛️ Ye Have Nothing to Do with Us to Build an House", `The returned leaders are refusing shared control of the temple project.
+
+Ye have nothing to do with us means, "You have no rightful part in this work with us."
+
+⛔ Participation is refused
+🏛 Temple work stays distinct
+🧠 The issue is covenant loyalty
+
+The phrase says these opponents were not allowed to build God's house with them.`],
+    ["🙏 But We Ourselves Together Will Build unto the LORD God of Israel", `The returned people insist that they alone must carry out the temple rebuilding.
+
+Together means as one covenant people, and unto the LORD shows the work belongs to God.
+
+👥 The returned exiles act together
+🏛 The work is for the LORD
+🙏 Covenant identity matters
+
+The phrase says the restored community itself will build for the LORD.`],
+    ["👑 As King Cyrus the King of Persia Hath Commanded Us", `This appeals to Cyrus's official royal decree.
+
+The builders are saying they have legal authorization as well as covenant responsibility.
+
+👑 Cyrus had commanded it
+📜 Royal permission exists
+✅ The work has official backing
+
+The phrase says Cyrus had already ordered them to build.`],
+    ["👑 All the Days of Cyrus King of Persia", `This means the opposition kept working against the Jews throughout Cyrus's reign.
+
+The resistance was not momentary. It continued over time.
+
+⏳ Pressure lasts for years
+👑 Cyrus's reign frames the period
+⚠️ Opposition is persistent
+
+The phrase says the hindrance continued during all Cyrus's days.`]
+  ],
+  "Ezra 4:7-12": [
+    ["👑 The Writing of the Letter Was Written in the Syrian Tongue", `The Syrian tongue here means Aramaic, the imperial language used for government business.
+
+This was an official political letter meant to be read in the Persian system.
+
+📜 Official correspondence
+🗣 Aramaic language used
+👑 Government process begins
+
+The phrase says the accusation letter was written in Aramaic.`],
+    ["👑 Rehum the Chancellor and Shimshai the Scribe Wrote a Letter Against Jerusalem", `A chancellor is a high official, and a scribe is an administrative writer.
+
+These men used government channels to oppose Jerusalem.
+
+👤 Officials are named
+📨 A hostile letter is sent
+🏙 Jerusalem is targeted
+
+The phrase says named officials wrote an accusation against Jerusalem.`],
+    ["👑 This Is the Copy of the Letter That They Sent unto Him", `Copy of the letter means the text that follows is the actual message they sent.
+
+Ezra is letting the reader hear the accusation directly.
+
+📄 The document is quoted
+🧠 The reader sees the actual charge
+👑 Official wording matters
+
+The phrase introduces the text of the letter itself.`],
+    ["👑 Unto Artaxerxes King of Persia", `This identifies the Persian king receiving the accusation.
+
+The opponents are taking their case to the empire's highest authority.
+
+👑 Artaxerxes is addressed
+📨 Appeal goes upward
+🌍 Imperial power is involved
+
+The phrase says the letter was sent to Artaxerxes king of Persia.`]
+  ],
+  "Ezra 4:13-18": [
+    ["📜 So Shalt Thou Find in the Book of the Records", `The accusers want the king to search the archives for earlier records about Jerusalem.
+
+Book of the records means official state documents, not Scripture here.
+
+📚 Royal archives searched
+🧠 They appeal to past evidence
+👑 Politics uses records
+
+The phrase says the king can verify their claim in the official records.`],
+    ["👑 The Letter Which Ye Sent unto Us Hath Been Plainly Read Before", `This means the king has received and had the letter read clearly before him.
+
+Plainly read shows the accusation has fully entered the royal process.
+
+📨 Letter received
+👑 The king hears it
+🗣 The case is officially considered
+
+The phrase says the submitted letter was read before the king.`],
+    ["👑 Be It Known Now unto the King", `This is formal court language meaning, "Let the king understand this."
+
+The writers are pressing a conclusion for royal action.
+
+🗣 Formal appeal
+👑 The king is urged to act
+📜 Official tone continues
+
+The phrase asks that the king be informed of their warning.`],
+    ["🏛️ If This City Be Builded", `The accusers are warning about Jerusalem itself being rebuilt and fortified.
+
+Here the city, not just the temple, is the focus of their political fear.
+
+🏙 City rebuilding feared
+🧱 Fortification is implied
+⚠️ Opposition grows stronger
+
+The phrase says, "If Jerusalem is rebuilt..." as a political warning.`]
+  ],
+  "Ezra 4:19-24": [
+    ["👑 There Have Been Mighty Kings Also Over Jerusalem", `This means Jerusalem once had powerful rulers and wide influence.
+
+The reply is using history to justify fear of the city being strengthened again.
+
+👑 Past kings were strong
+🏙 Jerusalem had influence
+📖 History is used politically
+
+The phrase says Jerusalem had once been ruled by mighty kings.`],
+    ["🧭 They Went Up in Haste to Jerusalem unto the Jews", `Went up in haste means they hurried quickly to enforce the royal order.
+
+The opposition moved fast to stop the work on the ground.
+
+🏃 Quick action
+🏙 Jerusalem is reached
+⛔ The order is enforced
+
+The phrase says they hurried to Jerusalem against the Jews.`],
+    ["👑 So It Ceased unto the Second Year of the Reign of Darius", `This means the work stopped for a period until Darius's reign.
+
+Ceased marks a real interruption in rebuilding, not a minor delay.
+
+⏸ Work stops
+📅 The pause lasts into Darius's reign
+⚠️ Opposition succeeds for a time
+
+The phrase says the building work ceased until Darius's second year.`],
+    ["✨ Search Hath Been Made", `This means an official investigation of the records was carried out.
+
+The issue has moved from accusation to administrative action.
+
+📚 Search completed
+👑 The court investigates
+📜 Records shape the outcome
+
+The phrase says an archive search was made.`]
+  ],
+  "Ezra 5:1-6": [
+    ["🧭 Prophesied unto the Jews That Were in Judah and Jerusalem", `Haggai and Zechariah spoke God's message to the returned Jews in the land.
+
+Prophesied unto means they addressed the community with divine words.
+
+👤 Prophets speak
+👥 The returned Jews are addressed
+🙏 God's word restarts the work
+
+The phrase says the prophets spoke to the Jews in Judah and Jerusalem.`],
+    ["🏛️ Who Hath Commanded You to Build This House", `Tatnai is asking by what authority the temple rebuilding is happening.
+
+This house means the temple, and the issue is who gave the right to restore it.
+
+🏛 Temple is in view
+❓ Authority is questioned
+👑 The builders must answer
+
+The phrase asks who authorized the rebuilding of this house.`],
+    ["🙏 But the Eye of Their God Was Upon the Elders", `The eye of their God means God's watchful care and protection.
+
+The elders keep working because God is overseeing them.
+
+👀 God watches over them
+👥 Elders are protected
+🛡 The work continues under His care
+
+The phrase says God's watchful eye was on the elders.`],
+    ["👑 The Copy of the Letter That Tatnai", `This introduces the official report Tatnai sent to King Darius.
+
+Ezra is showing the exact political communication around the temple work.
+
+📄 Official report introduced
+👑 Tatnai sends a document
+📨 The case goes to Darius
+
+The phrase introduces Tatnai's letter copy.`]
+  ],
+  "Ezra 5:7-12": [
+    ["👑 They Sent a Letter unto Him", `This means the Persian officials sent their report to King Darius.
+
+The rebuilding question is being carried through normal imperial procedure.
+
+📨 A report is sent
+👑 Darius will decide
+📜 The issue enters the court
+
+The phrase says the officials sent a letter to the king.`],
+    ["🏛️ Who Commanded You to Build This House", `This repeated question keeps the pressure on the builders' authority.
+
+The house is the temple, and the officials want legal proof for the project.
+
+🏛 Temple authority questioned
+❓ Proof is demanded
+👑 Imperial oversight continues
+
+The phrase asks again who authorized this house to be built.`],
+    ["🏛️ Build the House That Was Builded These Many Years Ago", `This means they are rebuilding an older temple that had stood long before.
+
+The builders explain they are restoring a former great house, not inventing a new religion.
+
+🏛 Old temple restored
+🧱 Past greatness remembered
+↩️ This is restoration work
+
+The phrase says the house being built is the old temple from long ago.`],
+    ["🏛️ Who Destroyed This House", `The Jews explain that the Babylonians destroyed the temple after God's judgment.
+
+This question draws the story back to the reason the house needed rebuilding at all.
+
+🔥 Temple had been destroyed
+⚖️ Judgment lay behind it
+🏛 Rebuilding answers past ruin
+
+The phrase asks who destroyed the former house.`]
+  ],
+  "Ezra 5:13-17": [
+    ["👑 Those Did Cyrus the King Take Out of the Temple of Babylon", `This means Cyrus removed the temple vessels from Babylon's shrine.
+
+The phrase highlights the official reversal of exile's humiliation.
+
+👑 Cyrus acts
+🏺 Sacred vessels are retrieved
+↩️ Loss begins to be reversed
+
+The phrase says Cyrus took those vessels out of Babylon's temple.`],
+    ["🏛️ Brought Them into the Temple of Babylon", `This refers back to Nebuchadnezzar placing Jerusalem's temple items in Babylon's temple.
+
+It recalls the earlier disgrace before the restoration.
+
+🏛 Babylon's temple
+🏺 Jerusalem's vessels misplaced
+⚠️ Exile shame remembered
+
+The phrase says the vessels had been brought into Babylon's temple.`],
+    ["🏛️ Carry Them into the Temple That Is in Jerusalem", `Cyrus ordered the sacred objects to be taken back where they belonged.
+
+The temple that is in Jerusalem is the rightful place for those vessels.
+
+🏺 Vessels return home
+🏛 Jerusalem's temple is their place
+✅ Proper worship order is restored
+
+The phrase says the vessels should be carried into Jerusalem's temple.`],
+    ["🙏 Let the House of God Be Builded in His Place", `This means the temple should be rebuilt on its proper site.
+
+In his place means in its own rightful location, not somewhere else.
+
+🏛 God's house rebuilt
+📍 Proper place restored
+🙏 The project is authorized
+
+The phrase says God's house is to be rebuilt in its place.`]
+  ],
+  "Ezra 6:1-6": [
+    ["🏛️ Search Was Made in the House of the Rolls", `The house of the rolls is the archive building where official documents were stored.
+
+Rolls means scrolls or written records.
+
+📚 Archive searched
+📜 Scroll records consulted
+👑 The king investigates formally
+
+The phrase says a search was made in the archive house.`],
+    ["🏛️ Let the House Be Builded", `This is Cyrus's recorded order that the temple should be rebuilt.
+
+The house means God's temple at Jerusalem.
+
+🏛 Temple rebuilding authorized
+👑 A decree supports it
+✅ The project should continue
+
+The phrase says the house is to be built.`],
+    ["👑 Let the Expences Be Given Out of the King's House", `Expences means expenses or costs.
+
+The king's house here means the royal treasury, not his residence.
+
+💰 Costs will be covered
+👑 Royal treasury pays
+🏛 Rebuilding is funded officially
+
+The phrase says the building costs should come from the king's treasury.`],
+    ["🏛️ Brought Again unto the Temple Which Is at Jerusalem", `This means the sacred objects are to be returned to Jerusalem's temple.
+
+Brought again stresses restoration after earlier loss.
+
+↩️ Sacred items return
+🏛 Jerusalem receives them again
+✅ Worship order is repaired
+
+The phrase says the vessels should be brought back to the temple at Jerusalem.`]
+  ],
+  "Ezra 6:7-12": [
+    ["👑 I Darius Have Made a Decree", `This is Darius's formal royal command.
+
+The decree gives legal protection and support to the temple work.
+
+👑 Darius commands
+📜 Official decree issued
+✅ The work is protected
+
+The phrase says Darius has made a decree.`],
+    ["🧭 According to the Appointment of the Priests Which Are at Jerusalem", `Appointment here means the ordered divisions or assigned service of the priests.
+
+Darius is recognizing the established worship pattern at Jerusalem.
+
+👥 Priestly order matters
+🏛 Jerusalem worship is organized
+📋 Service follows assigned roles
+
+The phrase refers to the appointed order of the priests in Jerusalem.`],
+    ["🙏 Let the Work of This House of God Alone", `This means, "Leave this temple work alone. Do not interfere with it."
+
+Darius commands the officials to stop hindering the rebuilding.
+
+⛔ Interference forbidden
+🏛 Temple work protected
+👑 Opposition is checked
+
+The phrase tells the officials to leave God's house work alone.`],
+    ["🙏 Pray for the Life of the King", `Darius expects the temple community to pray for him and his sons.
+
+This shows even a Persian king wants blessing from the God worshiped at Jerusalem.
+
+🙏 Prayer is requested
+👑 The king seeks goodwill
+🏛 Temple worship affects empire politics
+
+The phrase says they should pray for the king's life.`]
+  ],
+  "Ezra 6:13-18": [
+    ["🙏 Kept the Dedication of This House of God with Joy", `Dedication means the special ceremony marking the completed temple as set apart for God's use.
+
+With joy shows the people's gladness after long delay and opposition.
+
+🏛 Temple dedication
+🎉 Joy fills the moment
+🙏 Restoration is celebrated
+
+The phrase says they celebrated the dedication of God's house with joy.`],
+    ["🙏 Offered at the Dedication of This House of God an Hundred Bullocks", `These many animals were sacrifices presented at the dedication ceremony.
+
+The large number shows the seriousness and celebration of the occasion.
+
+🐂 Many sacrifices offered
+🏛 Dedication is costly
+🙏 Worship is public and full
+
+The phrase says they offered many bullocks at the dedication.`],
+    ["🙏 According to the Commandment of the God of Israel", `This means the dedication and priestly arrangement followed God's instruction.
+
+The restored temple is being ordered by God's command, not human preference.
+
+📜 God's command rules
+🏛 Worship follows His order
+✅ Restoration is obedient
+
+The phrase says the action followed the command of Israel's God.`],
+    ["🧭 Which Is at Jerusalem", `This identifies the temple's location as Jerusalem.
+
+The place matters because Jerusalem is the chosen center of restored worship.
+
+🏙 Jerusalem named
+🏛 Temple located there
+🧠 The holy place is specific
+
+The phrase points to the temple that is at Jerusalem.`]
+  ],
+  "Ezra 6:19-22": [
+    ["🙏 The God of Israel", `This names the covenant God of the returned people.
+
+The feast is not just cultural memory. It is worship directed to Israel's God.
+
+🙏 Covenant God named
+🍞 Feast is for Him
+👥 The people are His
+
+The phrase identifies the LORD as the God of Israel.`],
+    ["💛 All Such as Had Separated Themselves unto Them from the Filthiness", `Separated themselves means they turned away from impurity to join the worshiping community rightly.
+
+Filthiness here means the uncleanness and idolatrous corruption of the surrounding peoples.
+
+↩️ Separation from impurity
+💛 Real repentance implied
+🙏 Worship requires cleansing
+
+The phrase says these people separated from impurity to join the worshipers.`],
+    ["✨ All of Them Were Pure", `This means the priests and Levites were ceremonially clean for the Passover service.
+
+Pure here refers to ritual readiness for worship.
+
+✨ Ceremonially clean
+🍞 Ready for Passover
+✅ Worship requirements met
+
+The phrase says they were all pure for the service.`],
+    ["🧭 Killed the Passover for All the Children of the Captivity", `This means the Passover lambs were prepared for the returned exiles as a whole.
+
+Children of the captivity means the people who had come back from exile.
+
+🐑 Passover lambs prepared
+👥 Returnees included together
+🍞 The feast serves the restored people
+
+The phrase says the Passover was prepared for all the returned exiles.`]
+  ],
+  "Ezra 7:1-6": [
+    ["📜 He Was a Ready Scribe in the Law of Moses", `A ready scribe is a skilled and capable expert in the written law.
+
+Ezra is being introduced as a man deeply trained in Scripture.
+
+📜 Skilled in the law
+👤 Ezra is prepared
+🧠 Scripture knowledge defines him
+
+The phrase says Ezra was a skilled scribe in Moses's law.`],
+    ["🙏 Which the LORD God of Israel Had Given", `This means the law Ezra studied was a gift God had given to His people.
+
+The law is not human invention. It came from the LORD.
+
+🙏 God gave the law
+📜 Scripture has divine source
+👥 Israel received it
+
+The phrase says the LORD God of Israel had given this law.`],
+    ["🙏 According to the Hand of the LORD His God Upon Him", `The hand of the LORD means God's active favor and help.
+
+Ezra's success is explained by God's gracious action on his life.
+
+✋ God's hand is upon him
+🙏 Divine favor explains the outcome
+👤 Ezra is helped by God
+
+The phrase says God's hand was upon Ezra.`],
+    ["✨ Ezra the Son of Seraiah", `This identifies Ezra through his family line.
+
+The genealogy matters because Ezra is a priestly figure with real covenant lineage.
+
+👨‍👦 Family line named
+🙏 Priestly identity matters
+📜 Ezra is historically placed
+
+The phrase identifies Ezra as the son of Seraiah.`]
+  ],
+  "Ezra 7:7-12": [
+    ["👑 Now This Is the Copy of the Letter That the King Artaxerxes", `This introduces the actual royal document Artaxerxes gave Ezra.
+
+Copy of the letter means the text is being quoted for the reader.
+
+📄 Royal letter quoted
+👑 Artaxerxes is the sender
+📜 Official authority is shown
+
+The phrase introduces the copy of Artaxerxes's letter.`],
+    ["🧭 He Came to Jerusalem in the Fifth Month", `This gives the timing of Ezra's arrival.
+
+The month detail helps show the journey happened in real, dated history.
+
+📅 Fifth month noted
+🏙 Ezra reaches Jerusalem
+🧭 Travel is historically located
+
+The phrase says Ezra came to Jerusalem in the fifth month.`],
+    ["🙏 According to the Good Hand of His God Upon Him", `The good hand of God means God's favorable help and guidance.
+
+Ezra's safe arrival is explained by divine kindness, not luck.
+
+✋ God's good hand
+🙏 Favor and help given
+🛡 Journey succeeds under God
+
+The phrase says Ezra arrived by the good hand of God upon him.`],
+    ["🙏 A Scribe of the Law of the God of Heaven", `This title describes Ezra as an expert in the law belonging to the God who rules heaven.
+
+The God of heaven title emphasizes God's sovereignty beyond one land only.
+
+📜 Ezra is a law-scribe
+☁️ God of heaven named
+🧠 Ezra serves universal divine authority
+
+The phrase identifies Ezra as a scribe of the law of the God of heaven.`]
+  ],
+  "Ezra 7:13-18": [
+    ["👑 I Make a Decree", `This is Artaxerxes issuing an official command.
+
+The decree gives Ezra authority and support for his mission.
+
+👑 Royal decision made
+📜 Official policy set
+✅ Ezra is authorized
+
+The phrase says the king is making a decree.`],
+    ["🧭 Whose Habitation Is in Jerusalem", `This refers to God as the one whose dwelling is associated with Jerusalem's temple.
+
+Habitation means dwelling place, especially in relation to worship.
+
+🏛 God's dwelling place
+🏙 Jerusalem named
+🙏 Temple identity affirmed
+
+The phrase points to the God whose habitation is in Jerusalem.`],
+    ["🧭 Which Are Minded of Their Own Freewill to Go Up to Jerusalem", `Minded of their own freewill means willing in heart to make the journey.
+
+The return under Ezra includes volunteers, not only compelled travelers.
+
+💛 Willing return
+🚶 People choose to go up
+🏙 Jerusalem draws them
+
+The phrase says those willing may go up to Jerusalem.`],
+    ["🙏 According to the Law of Thy God Which Is in Thine Hand", `This means Ezra carries and teaches God's law with real authority.
+
+In thine hand suggests possession, responsibility, and use.
+
+📜 God's law is with Ezra
+🤲 He holds it in trust
+✅ His mission is law-shaped
+
+The phrase says Ezra is to act according to God's law in his hand.`]
+  ],
+  "Ezra 7:19-24": [
+    ["🙏 Those Deliver Thou Before the God of Jerusalem", `This means the sacred vessels are to be presented properly before God at Jerusalem.
+
+Deliver thou before means place or present them in His presence for temple use.
+
+🏺 Sacred items presented
+🏙 Jerusalem is the destination
+🙏 God is the one before whom they are set
+
+The phrase says these items are to be presented before the God of Jerusalem.`],
+    ["👑 Bestow It Out of the King's Treasure House", `This means the needed resources may be supplied from the royal treasury.
+
+Treasure house here is the place where the king's wealth is stored.
+
+💰 Royal funds available
+👑 The treasury supports the mission
+🏛 Worship work is resourced
+
+The phrase says it may be given from the king's treasure house.`],
+    ["🙏 The Scribe of the Law of the God of Heaven", `This title again identifies Ezra's role and authority.
+
+He is not only a traveler but a recognized Scripture teacher under the God of heaven.
+
+📜 Ezra's office named
+☁️ God of heaven emphasized
+👤 His mission is spiritual and legal
+
+The phrase identifies Ezra as the scribe of the law of the God of heaven.`],
+    ["🙏 Whatsoever Is Commanded by the God of Heaven", `This means God's commands are to be carried out fully in temple matters.
+
+The Persian king does not want to provoke the God of heaven by neglecting His commands.
+
+📜 God's commands matter
+☁️ Heaven's God is feared
+✅ Obedience is expected
+
+The phrase says whatever God commands must be done.`]
+  ],
+  "Ezra 7:25-28": [
+    ["🙏 After the Wisdom of Thy God", `This means Ezra is to govern and appoint judges according to the wisdom God has given.
+
+The wisdom is not merely human cleverness but God-shaped understanding.
+
+🧠 God-given wisdom
+⚖️ Leadership by divine standard
+👤 Ezra acts under it
+
+The phrase says Ezra should act according to the wisdom of his God.`],
+    ["🙏 All Such as Know the Laws of Thy God", `This refers to people already instructed in God's law.
+
+Ezra is to appoint judges among those who understand that law.
+
+📜 Law-knowers identified
+⚖️ They can serve in judgment
+🧠 Knowledge carries responsibility
+
+The phrase points to those who know God's laws.`],
+    ["🙏 Whosoever Will Not Do the Law of Thy God", `This refers to people who refuse to obey God's law and the king's law.
+
+Do the law means actually practice and obey it.
+
+❌ Disobedience named
+📜 God's law must be done
+⚖️ Refusal brings consequences
+
+The phrase says whoever will not obey God's law is accountable.`],
+    ["👑 The Law of the King", `This means the civil authority of Artaxerxes alongside God's law.
+
+In Ezra's mission, royal law and divine law are working together in administration.
+
+👑 Royal authority
+📜 King's law named
+⚖️ Civil order supports the mission
+
+The phrase points to the law issued by the king.`]
+  ]
+};
+
+function rewriteDay111EzraSection(section: EzraNehemiahPhraseSectionInput): EzraNehemiahPhraseSectionInput {
+  if (section.book !== "Ezra" || section.chapter < 4 || section.chapter > 7) {
+    return section;
+  }
+
+  const overrides = DAY_111_EZRA_OVERRIDES[section.reference];
+  if (!overrides) {
+    return section;
+  }
+
+  return {
+    ...section,
+    phrases: section.phrases.map((_, index) => overrides[index] ?? section.phrases[index])
+  };
+}
+
+export const EZRA_4_10_PERSONAL_SECTIONS = sections
+  .filter((section) => section.book === "Ezra")
+  .map(rewriteDay111EzraSection);
 export const NEHEMIAH_1_13_PERSONAL_SECTIONS = sections.filter((section) => section.book === "Nehemiah");

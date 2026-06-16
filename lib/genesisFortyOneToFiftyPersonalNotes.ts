@@ -649,6 +649,10 @@ function formatGenesisFortyOneToFortyEightRenderedPhrase(
     return [title, content];
   }
 
+  if (section.chapter >= 41 && section.chapter <= 48) {
+    return [ensureGenesisFortyOneToFortyEightEmoji(title), cleanGenesisFortyOneToFortyEightFrameworkText(content)];
+  }
+
   const cleaned = cleanGenesisFortyOneToFortyEightFrameworkText(content);
   const cleanTitle = title.replace(/^[^A-Za-z0-9']+\s*/, "").trim();
   const paragraphs = cleaned
@@ -700,6 +704,7 @@ function normalizeRepeatedGenesisFortyOneToFiftyLines(sections: PersonalGenesisP
 
   return sections.map((section) => {
     if (section.chapter < 41 || section.chapter > 50) return section;
+    if (section.chapter >= 41 && section.chapter <= 48) return section;
 
     return {
       ...section,
@@ -1278,7 +1283,7 @@ const DAY_17_REAL_PHRASE_ADDITIONS: Record<string, Array<[string, string]>> = {
     day17Phrase("📢 I Told This Unto The Magicians", ["Pharaoh had already searched Egypt's normal wisdom channels.", "He did not call Joseph first.", "That makes Joseph's coming even more significant.", "The old systems failed before God's servant spoke.", "God's wisdom stands out most clearly when human wisdom runs out."]),
   ],
   "Genesis 41:25-28": [
-    day17Phrase("👀 God Hath Shewed Pharaoh", ["Joseph says God is showing Pharaoh what He is about to do.", "The dream is not merely about Pharaoh's anxiety.", "It is revelation from God about the future.", "A beginner should notice how Joseph keeps the focus on God, not on himself.", "The message belongs to God before it becomes Joseph's interpretation."]),
+    day17Phrase("👀 God Hath Shewed Pharaoh", ["Joseph says God is showing Pharaoh what He is about to do.", "The dream is not merely about Pharaoh's anxiety.", "It is revelation from God about the future.", "Joseph keeps the focus on God, not on himself.", "The message belongs to God before it becomes Joseph's interpretation."]),
     day17Phrase("🐄 The Seven Good Kine Are Seven Years", ["Joseph begins matching the dream images to time.", "The healthy cows are not literal cows to chase; they symbolize years of plenty.", "This helps readers understand how biblical dreams can use pictures for meaning.", "Joseph gives the interpretation plainly.", "God's message becomes understandable through the wisdom He gives."]),
     day17Phrase("🌾 The Seven Good Ears Are Seven Years", ["The grain confirms the same timeline as the cows.", "Two pictures point to one seven-year season.", "That unity matters because Pharaoh needs confidence to act.", "God is not giving a puzzle for entertainment.", "He is giving a clear warning so Egypt can prepare."]),
     day17Phrase("☝️ The Dream Is One", ["This phrase keeps Pharaoh from dividing the dreams into unrelated stories.", "Joseph gathers the images into one message.", "For a beginner, this is a key Bible reading skill: look for repeated patterns.", "The cows and grain are different pictures but the same warning.", "God often confirms truth through repetition."]),
@@ -1316,15 +1321,15 @@ const DAY_17_REAL_PHRASE_ADDITIONS: Record<string, Array<[string, string]>> = {
     day17Phrase("💍 Asenath", ["Pharaoh gives Joseph Asenath as his wife.", "Joseph now has a household in Egypt.", "This detail prepares for Manasseh and Ephraim, his sons.", "The family story is growing in a foreign land.", "God can bring fruitfulness even where the story once looked like exile."]),
   ],
   "Genesis 41:46-49": [
-    day17Phrase("🚶 Joseph Went Out From The Presence Of Pharaoh", ["Joseph leaves Pharaoh's presence and immediately begins the work.", "He does not treat promotion as a trophy.", "The office sends him into responsibility across the land.", "A beginner should notice the movement: interpreted dream, wise plan, public authority, active service.", "God's gifts are meant to serve real needs."]),
-    day17Phrase("🌍 Throughout All The Land Of Egypt", ["Joseph's assignment covers the whole land.", "The coming famine will be broad, so the preparation must be broad too.", "This phrase shows the scale of his responsibility.", "He is not managing one household anymore.", "God has enlarged the field because many lives will depend on the work."]),
+    day17Phrase("🚶 Joseph Went Out From The Presence Of Pharaoh", ["Joseph leaves Pharaoh's presence and immediately begins the work.", "He does not treat promotion as a trophy.", "The office sends him into responsibility across the land.", "The movement is clear: interpreted dream, wise plan, public authority, active service.", "God's gifts are meant to serve real needs."]),
+    day17Phrase("🌍 Throughout All The Land Of Egypt", ["Joseph's assignment covers the whole land.", "The coming famine will be broad, so the preparation must be broad too.", "The wording makes his responsibility feel national in scale.", "He is not managing one household anymore.", "God has enlarged the field because many lives will depend on the work."]),
     day17Phrase("🌱 By Handfuls", ["The land produces abundantly during the plenty years.", "The phrase gives a picture of generous harvests.", "God's warning is joined to God's supply.", "There is enough to gather because God gives the season Joseph described.", "Abundance is mercy before scarcity."]),
     day17Phrase("🏙️ Laid Up In Every City", ["Joseph stores food city by city.", "This is practical administration, not vague inspiration.", "The grain is placed near the fields and people connected to each city.", "That makes future distribution possible.", "Wise leadership prepares in a way people can actually use."]),
-    day17Phrase("🧮 Left Numbering", ["The grain becomes too much to count.", "This phrase shows the size of the provision.", "Egypt's storehouses are filling before the famine begins.", "The abundance is not accidental; it matches the word Joseph gave.", "God's provision can be larger than human accounting."]),
+    day17Phrase("🧮 Left Numbering", ["The grain becomes too much to count.", "The amount grows beyond normal counting.", "Egypt's storehouses are filling before the famine begins.", "The abundance is not accidental; it matches the word Joseph gave.", "God's provision can be larger than human accounting."]),
   ],
   "Genesis 41:50-52": [
     day17Phrase("⏳ Before The Years Of Famine Came", ["Joseph's sons are born before the famine.", "This timing matters because God gives Joseph family joy before the hardest years arrive.", "The children become signs of life in a land that will soon face hunger.", "Genesis places personal blessing beside public responsibility.", "God can give tenderness in the middle of a heavy calling."]),
-    day17Phrase("👶 Bare Unto Him", ["Asenath bears Joseph two sons.", "The family line continues in Egypt.", "A beginner should notice that Joseph's story is not only about career elevation.", "It is also about God preserving a household and future tribes.", "The promise keeps growing in unexpected soil."]),
+    day17Phrase("👶 Bare Unto Him", ["Asenath bears Joseph two sons.", "The family line continues in Egypt.", "Joseph's story is not only about career elevation.", "It is also about God preserving a household and future tribes.", "The promise keeps growing in unexpected soil."]),
     day17Phrase("😌 God Hath Made Me Forget", ["Manasseh's name is tied to relief from pain.", "Joseph is not saying his past never happened.", "He is saying God has eased the crushing weight of his toil and family sorrow.", "That is important for readers who confuse healing with pretending.", "God can loosen grief without erasing memory."]),
     day17Phrase("🏠 All My Father's House", ["Joseph names his father's house when naming Manasseh.", "Even in Egypt, his family story is still inside him.", "The old wounds have not vanished from his heart.", "His son's name shows both distance and memory.", "God's healing works inside real history, not amnesia."]),
     day17Phrase("🌱 Fruitful In The Land Of My Affliction", ["Ephraim's name says God made Joseph fruitful where he suffered.", "This is one of the most beautiful summaries of Joseph's life.", "Egypt was the land of slavery, false accusation, prison, and now fruitfulness.", "A beginner should see that fruitfulness does not mean the affliction was good.", "It means God was faithful inside it."]),
@@ -1355,7 +1360,7 @@ const DAY_17_REAL_PHRASE_ADDITIONS: Record<string, Array<[string, string]>> = {
     day17Phrase("🍞 To Buy Food Are Thy Servants Come", ["They explain the practical reason for their journey.", "They are not spies; they are hungry men sent by a starving father.", "The famine has made proud brothers needy.", "Genesis often uses physical need to expose spiritual truth.", "Their hunger is real, but it is also moving them into a deeper reckoning."]),
     day17Phrase("👨‍👦 One Man's Sons", ["The brothers identify themselves as sons of one father.", "Family identity is central to the test.", "Joseph needs to know what has happened to Jacob and Benjamin.", "Their words begin pulling the hidden family story into the open.", "The wound was family betrayal, so the healing must deal with the family honestly."]),
     day17Phrase("👶 The Youngest Is This Day With Our Father", ["The brothers reveal Benjamin is alive and with Jacob.", "This is the information Joseph needs.", "Benjamin is Joseph's full brother, Rachel's other son.", "The test will center on whether the brothers will protect him.", "God is bringing the old pattern of favoritism and jealousy back into the light."]),
-    day17Phrase("🕯️ One Is Not", ["They speak of Joseph as if he is gone.", "The painful irony is that Joseph is listening to them say it.", "This phrase shows how the lie has become part of the family language.", "They do not say what happened; they only say he is not.", "Hidden sin often survives by speaking in half-truths."]),
+    day17Phrase("🕯️ One Is Not", ["They speak of Joseph as if he is gone.", "The painful irony is that Joseph is listening to them say it.", "The lie has become part of the family's ordinary language.", "They do not say what happened; they only say he is not.", "Hidden sin often survives by speaking in half-truths."]),
   ],
   "Genesis 42:14-17": [
     day17Phrase("🧪 Hereby Ye Shall Be Proved", ["Joseph sets up a test.", "Proved means examined or shown to be true.", "He wants evidence, not just claims of honesty.", "The test will reveal whether the brothers can be trusted with Benjamin.", "Real repentance has to become visible in choices."]),
@@ -1365,7 +1370,7 @@ const DAY_17_REAL_PHRASE_ADDITIONS: Record<string, Array<[string, string]>> = {
     day17Phrase("📅 Three Days", ["The brothers are kept in ward for three days.", "The short confinement gives them time to sit with fear and memory.", "It is not the years Joseph endured, but it is enough to shake them.", "Genesis slows the scene so conscience can begin waking up.", "Waiting under pressure often reveals what is inside the heart."]),
   ],
   "Genesis 42:18-20": [
-    day17Phrase("✅ This Do, And Live", ["Joseph changes the terms and offers them a way to live.", "His test is severe, but it is not designed to destroy them.", "He gives a path that preserves their families and brings Benjamin into the story.", "This phrase matters because Joseph is not acting as a murderer.", "He is using pressure with restraint."]),
+    day17Phrase("✅ This Do, And Live", ["Joseph changes the terms and offers them a way to live.", "His test is severe, but it is not designed to destroy them.", "He gives a path that preserves their families and brings Benjamin into the story.", "Joseph is not acting as a murderer.", "He is using pressure with restraint."]),
     day17Phrase("🙏 For I Fear God", ["Joseph explains the moral boundary under his authority.", "He fears God, so he will not act like power makes him accountable to no one.", "This is one of the most important lines in the chapter.", "Joseph's reverence protects his brothers from revenge.", "Power under God becomes disciplined instead of cruel."]),
     day17Phrase("⛓️ Let One Of Your Brethren Be Bound", ["Joseph keeps one brother as security while the others return home.", "This keeps the test active after they leave Egypt.", "Simeon's detention will force the family to face whether they will return.", "A beginner should see that the story is not resolved in one visit.", "Joseph is drawing the truth out step by step."]),
     day17Phrase("🌾 Carry Corn For The Famine Of Your Houses", ["Joseph lets them take grain home to feed their families.", "Even while testing them, he provides for their hunger.", "This balance matters: Joseph is firm, but he is preserving life.", "He does not let justice cancel mercy.", "God's work in the scene includes both exposure and provision."]),
@@ -1380,7 +1385,7 @@ const DAY_17_REAL_PHRASE_ADDITIONS: Record<string, Array<[string, string]>> = {
     day17Phrase("⛓️ Bound Him Before Their Eyes", ["Joseph has Simeon bound in front of the brothers.", "The public binding makes the test impossible to forget.", "They must go home with food, money, fear, and one brother missing.", "The family will now have to decide whether Simeon matters enough to return.", "Joseph is testing whether the brothers will abandon another brother again."]),
   ],
   "Genesis 42:25-28": [
-    day17Phrase("🌾 Fill Their Sacks With Corn", ["Joseph sends them away with grain, not empty hands.", "This is mercy in the middle of a test.", "Their families will eat because Joseph chooses provision.", "A beginner should notice that Joseph has power to crush them but feeds them instead.", "The story is moving toward restoration, not revenge."]),
+    day17Phrase("🌾 Fill Their Sacks With Corn", ["Joseph sends them away with grain, not empty hands.", "This is mercy in the middle of a test.", "Their families will eat because Joseph chooses provision.", "He has power to crush them but feeds them instead.", "The story is moving toward restoration, not revenge."]),
     day17Phrase("💰 Every Man's Money Into His Sack", ["Joseph secretly returns their payment.", "The brothers will experience this as frightening because they do not understand the giver.", "Grace can feel suspicious when guilt is awake.", "The returned money keeps pressure on their conscience.", "Joseph's hidden mercy unsettles them into deeper reflection."]),
     day17Phrase("🐴 To Give Them Provision For The Way", ["Joseph also gives supplies for the journey.", "He cares for their immediate travel needs.", "This small detail shows his mercy is practical.", "Even while he tests them, he does not neglect their bodies.", "God's providence often includes ordinary provision along the road."]),
     day17Phrase("🏨 In The Inn", ["One brother opens his sack at a lodging place on the way home.", "The discovery happens before they even reach Jacob.", "Fear enters the journey, not only the destination.", "The returned money turns the road home into a place of trembling.", "God keeps pressing the story while they travel."]),
@@ -1395,7 +1400,7 @@ const DAY_17_REAL_PHRASE_ADDITIONS: Record<string, Array<[string, string]>> = {
     day17Phrase("🛒 Ye Shall Traffick In The Land", ["Traffick here means trade or do business.", "Joseph promises they can buy and move freely if they prove their words.", "The old word may confuse beginners, so the meaning needs to be plain.", "The issue is access to food during famine.", "Honesty will open the way for provision."]),
   ],
   "Genesis 42:35-38": [
-    day17Phrase("😨 They And Their Father Were Afraid", ["The fear spreads from the brothers to Jacob.", "The returned money turns the whole household anxious.", "They do not understand Joseph's hidden mercy, so it feels like danger.", "A beginner should notice how guilt and grief shape interpretation.", "The family is not ready yet, but God is still moving them."]),
+    day17Phrase("😨 They And Their Father Were Afraid", ["The fear spreads from the brothers to Jacob.", "The returned money turns the whole household anxious.", "They do not understand Joseph's hidden mercy, so it feels like danger.", "Guilt and grief are shaping the way they interpret the moment.", "The family is not ready yet, but God is still moving them."]),
     day17Phrase("💔 Joseph Is Not, And Simeon Is Not", ["Jacob speaks as a father counting losses.", "Joseph is gone in his mind, Simeon is detained, and Benjamin is threatened.", "His words show how grief stacks sorrow together.", "The family has survived years with a false story about Joseph.", "That false story still controls Jacob's heart."]),
     day17Phrase("⚫ All These Things Are Against Me", ["Jacob believes everything is turning against him.", "From his limited view, that feeling makes sense.", "But the reader knows Joseph is alive and working to preserve them.", "This phrase is powerful because it shows the gap between human perception and God's providence.", "Sometimes what feels against us is part of a rescue we cannot yet see."]),
     day17Phrase("👦 Slay My Two Sons", ["Reuben makes a desperate offer to guarantee Benjamin's return.", "His words are dramatic but not wise.", "Offering Jacob more grief cannot heal Jacob's fear.", "This shows Reuben's desire to help, but also his inability to carry the moment well.", "Not every intense promise is a faithful solution."]),
@@ -1408,7 +1413,9 @@ const DAY_17_REAL_PHRASE_ADDITIONS: Record<string, Array<[string, string]>> = {
 function deepenDay17PhraseCards(section: PersonalGenesisPhraseSectionInput): PersonalGenesisPhraseSectionInput {
   return {
     ...section,
-    phrases: [...section.phrases, ...(DAY_17_REAL_PHRASE_ADDITIONS[section.reference] ?? [])],
+    phrases: (DAY_17_REAL_PHRASE_ADDITIONS[section.reference] ?? []).length
+      ? DAY_17_REAL_PHRASE_ADDITIONS[section.reference]
+      : section.phrases,
   };
 }
 
@@ -1489,13 +1496,13 @@ const day18Phrase = (title: string, lines: string[]): [string, string] => phrase
 const DAY_18_REAL_PHRASE_ADDITIONS: Record<string, Array<[string, string]>> = {
   "Genesis 43:1-5": [
     day18Phrase("🍞 Eaten Up The Corn", ["The food from the first trip is gone.", "This makes the problem immediate again: the family cannot survive on yesterday's provision.", "Jacob's fear of sending Benjamin still exists, but hunger keeps pressing.", "A beginner should see how famine becomes the pressure God uses to move the story forward.", "The family cannot stay where fear left them."]),
-    day18Phrase("🛒 Buy Us A Little Food", ["Jacob asks for food as if the trip can be simple.", "But the brothers know Egypt now requires Benjamin.", "This phrase shows Jacob wanting provision without facing the hard condition attached to it.", "The family needs bread, but the deeper issue is trust.", "Sometimes the next step is not blocked by lack of supply, but by a fear we have not surrendered."]),
+    day18Phrase("🛒 Buy Us A Little Food", ["Jacob asks for food as if the trip can be simple.", "But the brothers know Egypt now requires Benjamin.", "Jacob wants provision without facing the hard condition attached to it.", "The family needs bread, but the deeper issue is trust.", "Sometimes the next step is not blocked by lack of supply, but by a fear we have not surrendered."]),
     day18Phrase("⚠️ The Man Did Solemnly Protest", ["Judah reminds Jacob that the Egyptian ruler warned them seriously.", "Solemnly protest means he strongly testified or warned them.", "They cannot pretend the condition was optional.", "Benjamin must go, or they cannot see the ruler's face.", "The text is teaching that delayed obedience does not erase a clear requirement."]),
     day18Phrase("👶 Except Your Brother Be With You", ["Benjamin is the condition for returning to Egypt.", "This is painful because Benjamin is Jacob's protected son.", "The test touches the exact place of Jacob's grief and the brothers' old jealousy.", "Joseph is forcing the family to bring the hidden wound into the open.", "No real healing can happen while Benjamin remains outside the story."]),
     day18Phrase("🚫 We Will Not Go Down", ["Judah refuses to make a useless trip without Benjamin.", "This is direct, but it is also honest.", "The brothers cannot fix the famine by pretending the terms have changed.", "A beginner can see Judah becoming practical and responsible here.", "Faithful leadership sometimes tells the truth no one wants to hear."]),
   ],
   "Genesis 43:6-7": [
-    day18Phrase("😣 Wherefore Dealt Ye So Ill With Me", ["Jacob feels the brothers have brought trouble on him by mentioning Benjamin.", "His grief makes him hear the report as betrayal.", "But the brothers were answering Joseph's questions without knowing who he was.", "This phrase shows how fear can turn even necessary truth into accusation.", "Jacob is still reading the moment through the wound of losing Joseph."]),
+    day18Phrase("😣 Wherefore Dealt Ye So Ill With Me", ["Jacob feels the brothers have brought trouble on him by mentioning Benjamin.", "His grief makes him hear the report as betrayal.", "But the brothers were answering Joseph's questions without knowing who he was.", "Fear can turn even necessary truth into accusation.", "Jacob is still reading the moment through the wound of losing Joseph."]),
     day18Phrase("👨‍👦 Whether Ye Had Yet A Brother", ["Joseph had asked about their father and another brother.", "Those questions sounded like interrogation, but they came from Joseph's hidden love and longing.", "He wanted to know if Jacob and Benjamin were alive.", "A beginner should feel the dramatic irony: Joseph is asking family questions because he is family.", "God is working through questions the brothers do not yet understand."]),
     day18Phrase("🗣️ We Told Him According To The Tenor Of These Words", ["The brothers explain that they answered according to what the man asked.", "Tenor means the substance or direction of the questions.", "They did not volunteer Benjamin as a plan; they responded under pressure.", "This helps the reader understand why Jacob's blame is not the whole picture.", "Fear often looks for someone to blame before it accepts what must be done."]),
     day18Phrase("❓ Could We Certainly Know", ["The brothers say they could not have known Joseph would demand Benjamin.", "They are trapped by events they did not control.", "This phrase is honest: they had no way to see the hidden family connection in Egypt.", "Genesis lets us feel how providence can feel confusing from the inside.", "God may be guiding a story long before the people in it can explain what is happening."]),
@@ -1514,7 +1521,7 @@ const DAY_18_REAL_PHRASE_ADDITIONS: Record<string, Array<[string, string]>> = {
     day18Phrase("🍯 A Little Honey", ["Honey is part of Jacob's present.", "The small word 'little' matters because famine has reduced what they can send.", "The gift is thoughtful but limited.", "Genesis lets us feel a household trying to survive scarcity with dignity.", "Even small offerings can carry wisdom and humility."]),
     day18Phrase("💰 Double Money", ["Jacob sends double money to repay what was returned and to buy more grain.", "This shows integrity and caution.", "They do not want to be accused of theft.", "A beginner should see that Jacob is trying to make the situation right as far as he understands it.", "When fear and confusion surround a problem, honesty still matters."]),
     day18Phrase("💰 The Money That Was Brought Again", ["Jacob tells them to return the first money found in their sacks.", "He does not treat unexplained money as a lucky gain.", "This matters because the family is trying to approach Egypt cleanly.", "The old Joseph sin involved silver; now money again tests their hearts.", "God keeps bringing the family back through the language of value and honesty."]),
-    day18Phrase("😔 Peradventure It Was An Oversight", ["Jacob wonders whether the returned money was a mistake.", "Peradventure means perhaps.", "He does not know Joseph arranged it.", "This phrase shows how little the family understands about the hidden mercy behind their fear.", "Sometimes what we call a mistake is part of a larger mercy we cannot yet see."]),
+    day18Phrase("😔 Peradventure It Was An Oversight", ["Jacob wonders whether the returned money was a mistake.", "Peradventure means perhaps.", "He does not know Joseph arranged it.", "The family still does not understand the hidden mercy behind their fear.", "Sometimes what we call a mistake is part of a larger mercy we cannot yet see."]),
     day18Phrase("👶 Take Also Your Brother", ["Jacob finally says Benjamin must go.", "This is the surrender the whole section has been moving toward.", "He does not release Benjamin easily, but he releases him.", "The family can now move toward Egypt, truth, and eventual restoration.", "Obedience may begin with trembling hands."]),
     day18Phrase("🙏 If I Be Bereaved Of My Children, I Am Bereaved", ["Jacob speaks like a man surrendering what he cannot control.", "The line is heavy, not cheerful.", "He is entrusting Benjamin, Simeon, and the outcome to God while still feeling the risk.", "A beginner should not miss the emotional honesty here.", "Faith sometimes sounds like grief placed into God's hands."]),
   ],
@@ -1586,7 +1593,7 @@ const DAY_18_REAL_PHRASE_ADDITIONS: Record<string, Array<[string, string]>> = {
   ],
   "Genesis 44:18-23": [
     day18Phrase("🙏 Let Thy Servant, I Pray Thee", ["Judah begins with humble pleading.", "He knows Joseph has power over life, slavery, and release.", "His tone is respectful, but his courage is real.", "The man who once used power against Joseph now appeals for mercy under power.", "Grace has made Judah brave in a different direction."]),
-    day18Phrase("🔥 Let Not Thine Anger Burn", ["Judah asks Joseph not to become angry at his speech.", "He is stepping into risk because Benjamin's life is at stake.", "This phrase shows the danger of speaking to an Egyptian ruler.", "Judah's love is now stronger than his fear.", "Intercession often means speaking carefully but courageously."]),
+    day18Phrase("🔥 Let Not Thine Anger Burn", ["Judah asks Joseph not to become angry at his speech.", "He is stepping into risk because Benjamin's life is at stake.", "The request shows the danger of speaking to an Egyptian ruler.", "Judah's love is now stronger than his fear.", "Intercession often means speaking carefully but courageously."]),
     day18Phrase("👑 Thou Art Even As Pharaoh", ["Judah acknowledges Joseph's authority as nearly Pharaoh's.", "This is not flattery only; it recognizes the seriousness of the moment.", "Joseph holds the power to enslave or release Benjamin.", "A beginner should feel the stakes of the speech.", "Judah is pleading before power with no weapon except truth."]),
     day18Phrase("❓ Have Ye A Father, Or A Brother", ["Judah retells Joseph's first family questions.", "He does not know those questions came from Joseph's own heart.", "The retelling lets Joseph hear the family story from the brothers' side.", "Truth is being narrated in the very room where it was hidden.", "God is letting the wound speak before it is healed."]),
     day18Phrase("👶 His Brother Is Dead", ["Judah repeats the family's belief that Joseph is dead.", "Joseph hears himself described as the dead brother while standing alive before them.", "The emotional force of this line is enormous.", "It shows how the old lie has shaped the family for years.", "Mercy is listening to the damage before revealing the truth."]),
@@ -1595,7 +1602,7 @@ const DAY_18_REAL_PHRASE_ADDITIONS: Record<string, Array<[string, string]>> = {
   "Genesis 44:24-29": [
     day18Phrase("🗣️ We Told Him The Words Of My Lord", ["Judah recounts how they told Jacob everything Joseph demanded.", "He is building the case carefully and honestly.", "The family conversation is now brought into Joseph's hearing.", "A beginner should notice that Judah is no longer hiding from painful facts.", "Truth-telling becomes the road toward mercy."]),
     day18Phrase("🍞 Buy Us A Little Food", ["Judah remembers Jacob's simple request for food.", "That request became complicated by the demand for Benjamin.", "The famine need and family wound are tied together now.", "They cannot get bread without facing trust.", "God uses ordinary need to expose extraordinary heart issues."]),
-    day18Phrase("🚫 We Cannot Go Down", ["The brothers told Jacob they could not return without Benjamin.", "This phrase shows Judah had already accepted the condition back home.", "He is not improvising responsibility at the last second.", "He has been carrying this burden since Canaan.", "Faithfulness starts before the crisis reaches its peak."]),
+    day18Phrase("🚫 We Cannot Go Down", ["The brothers told Jacob they could not return without Benjamin.", "Judah had already accepted the condition back home.", "He is not improvising responsibility at the last second.", "He has been carrying this burden since Canaan.", "Faithfulness starts before the crisis reaches its peak."]),
     day18Phrase("👀 If Our Youngest Brother Be With Us", ["Benjamin's presence is the condition for seeing Joseph's face.", "The phrase repeats the test again.", "The story keeps circling Benjamin because he is the living point of the old wound.", "Will the brothers protect the favored younger son this time?", "Genesis answers that question through Judah's plea."]),
     day18Phrase("🩸 Surely He Is Torn In Pieces", ["Judah repeats Jacob's explanation for Joseph's disappearance.", "Joseph hears the lie that covered his sale.", "The phrase is painful because the reader knows Joseph was not torn by an animal.", "The brothers' deception became Jacob's settled grief.", "Sin can create a story others suffer inside for years."]),
     day18Phrase("😭 Sorrow To The Grave", ["Judah says losing Benjamin would bury Jacob in sorrow.", "He now feels the cost of causing his father grief.", "This is the opposite of Genesis 37, where the brothers let Jacob mourn Joseph without telling the truth.", "Judah's empathy is one of the clearest signs of transformation.", "Changed hearts care about the grief they once ignored."]),
@@ -1614,7 +1621,9 @@ const DAY_18_REAL_PHRASE_ADDITIONS: Record<string, Array<[string, string]>> = {
 function deepenDay18PhraseCards(section: PersonalGenesisPhraseSectionInput): PersonalGenesisPhraseSectionInput {
   return {
     ...section,
-    phrases: [...section.phrases, ...(DAY_18_REAL_PHRASE_ADDITIONS[section.reference] ?? [])],
+    phrases: (DAY_18_REAL_PHRASE_ADDITIONS[section.reference] ?? []).length
+      ? DAY_18_REAL_PHRASE_ADDITIONS[section.reference]
+      : section.phrases,
   };
 }
 
@@ -1722,7 +1731,7 @@ const DAY_19_REAL_PHRASE_ADDITIONS: Record<string, Array<[string, string]>> = {
     day19Phrase("👨‍👩‍👧 Thy Children, And Thy Children's Children", ["Joseph's invitation includes the whole household.", "He is not only asking for Jacob, but for generations.", "The move to Egypt will carry the future family of Israel.", "A beginner should see that this is a covenant migration, not a small visit.", "God is preserving children who will become tribes."]),
     day19Phrase("🐑 Thy Flocks, And Thy Herds", ["Joseph includes their animals in the move.", "This matters because the family are shepherds with real livelihood needs.", "God's provision is practical enough to include work, animals, space, and food.", "The Bible does not treat survival as abstract.", "Mercy makes room for the ordinary parts of life."]),
     day19Phrase("🍞 There Will I Nourish Thee", ["Nourish means feed, sustain, and care for.", "Joseph promises to provide for Jacob in Goshen.", "The son Jacob thought dead will now keep him alive.", "This is one of the great reversals of Genesis.", "God can restore a relationship and make it a channel of provision."]),
-    day19Phrase("🕳️ Lest Thou, And Thy Household, Come To Poverty", ["Joseph knows famine could ruin the whole household if they remain in Canaan.", "He names the danger plainly.", "Love does not only celebrate reunion; it plans protection.", "This phrase shows Joseph thinking like a provider and son.", "Real care sees the threat and moves people toward safety."]),
+    day19Phrase("🕳️ Lest Thou, And Thy Household, Come To Poverty", ["Joseph knows famine could ruin the whole household if they remain in Canaan.", "He names the danger plainly.", "Love does not only celebrate reunion; it plans protection.", "Joseph is thinking like a provider and son.", "Real care sees the threat and moves people toward safety."]),
   ],
   "Genesis 45:12-15": [
     day19Phrase("👄 It Is My Mouth That Speaketh Unto You", ["Joseph gives personal proof that he is truly their brother.", "He is not speaking through disguise now.", "The brothers hear his own voice, likely in their own language.", "The phrase matters because recognition needs more than a name in a shocking moment.", "Mercy patiently helps frightened people believe what is true."]),
@@ -1815,7 +1824,7 @@ const DAY_19_REAL_PHRASE_ADDITIONS: Record<string, Array<[string, string]>> = {
     day19Phrase("7️⃣ Seven Souls", ["Bilhah's line is counted as seven souls.", "The total is smaller, but still fully included.", "The word souls keeps dignity in the count.", "God sees each life in the migration, from the largest branch to the smallest.", "The family promise is personal all the way down."]),
     day19Phrase("🚶 Came With Jacob Into Egypt", ["The list gathers everyone who came with Jacob.", "This phrase marks the family crossing into a new chapter of biblical history.", "Egypt will become the place of growth, pressure, bondage, and eventual deliverance.", "A beginner should feel that this move matters beyond Genesis.", "Exodus begins to become possible here."]),
     day19Phrase("👑 Joseph's Sons, Which Were Born Him In Egypt", ["Joseph's two sons are counted with the family even though they were already in Egypt.", "This keeps Manasseh and Ephraim inside Jacob's household total.", "They are not treated as outsiders because of their birthplace.", "God's family story can include children born far from the original home.", "Covenant identity is deeper than geography."]),
-    day19Phrase("🔢 Threescore And Six", ["Threescore and six means sixty-six.", "This number counts those who came from Jacob's body into Egypt, not including every person in every category.", "Old number phrases can confuse beginners, so slowing down helps.", "The list is careful because the family movement matters.", "God's promise is becoming countable."]),
+    day19Phrase("🔢 Threescore And Six", ["Threescore and six is old number language for sixty-six.", "This number counts those who came from Jacob's body into Egypt, not including every person in every category.", "Old number phrases can confuse beginners, so slowing down helps.", "The list is careful because the family movement matters.", "God's promise is becoming countable."]),
   ],
   "Genesis 46:28-30": [
     day19Phrase("🦁 Sent Judah Before Him Unto Joseph", ["Jacob sends Judah ahead as the family approaches Goshen.", "Judah has become the trusted representative after his transformation in Genesis 44.", "This is a quiet sign that his role in the family has changed.", "The one who once helped sell Joseph now helps lead the family toward Joseph.", "God can turn failure into humbled usefulness."]),
@@ -1840,7 +1849,9 @@ const DAY_19_REAL_PHRASE_ADDITIONS: Record<string, Array<[string, string]>> = {
 function deepenDay19PhraseCards(section: PersonalGenesisPhraseSectionInput): PersonalGenesisPhraseSectionInput {
   return {
     ...section,
-    phrases: [...section.phrases, ...(DAY_19_REAL_PHRASE_ADDITIONS[section.reference] ?? [])],
+    phrases: (DAY_19_REAL_PHRASE_ADDITIONS[section.reference] ?? []).length
+      ? DAY_19_REAL_PHRASE_ADDITIONS[section.reference]
+      : section.phrases,
   };
 }
 
@@ -1917,7 +1928,7 @@ const DAY_20_REAL_PHRASE_ADDITIONS: Record<string, Array<[string, string]>> = {
     day20Phrase("🐑 Thy Servants' Flocks", ["The brothers name their flocks because shepherding is their life and trade.", "They are not ashamed to tell Pharaoh what they do.", "Their ordinary work is the reason Goshen fits them.", "God uses their vocation to place them where they can survive and remain distinct.", "Simple work can become part of divine preservation."]),
     day20Phrase("🙏 Let Thy Servants Dwell In The Land Of Goshen", ["The brothers ask Pharaoh for permission to dwell in Goshen.", "They come humbly, as foreigners needing refuge.", "Goshen is not only convenient; it is a protected space for shepherd families.", "This request helps show how Israel is preserved in Egypt.", "Sometimes God's provision comes through a place suited to your actual need."]),
     day20Phrase("👑 The Land Of Egypt Is Before Thee", ["Pharaoh gives Joseph freedom to settle his family well.", "This shows favor toward Joseph and toward Jacob's household.", "The starving family receives access in a powerful empire.", "A beginner should see how Joseph's faithfulness opens a door for many others.", "God can use one person's tested life to shelter a whole family."]),
-    day20Phrase("💪 Men Of Activity", ["Men of activity means capable, skilled, hardworking men.", "Pharaoh is willing to employ the best shepherds among Joseph's brothers over his own cattle.", "This gives the family dignity and responsibility, not only charity.", "God's provision can include meaningful work.", "Refuge does not erase vocation; it can give it room."]),
+    day20Phrase("💪 Men Of Activity", ["Men of activity are capable, skilled, hardworking men.", "Pharaoh is willing to employ the best shepherds among Joseph's brothers over his own cattle.", "This gives the family dignity and responsibility, not only charity.", "God's provision can include meaningful work.", "Refuge does not erase vocation; it can give it room."]),
   ],
   "Genesis 47:7-12": [
     day20Phrase("👴 Joseph Brought In Jacob His Father", ["Joseph brings Jacob into Pharaoh's presence.", "The son who was once lost now presents his father before Egypt's king.", "This moment is full of reversal and honor.", "Jacob enters not as a beggar only, but as the covenant patriarch Joseph claims openly.", "God has restored father and son in a way that reaches the throne room."]),
@@ -1938,7 +1949,7 @@ const DAY_20_REAL_PHRASE_ADDITIONS: Record<string, Array<[string, string]>> = {
     day20Phrase("📆 He Fed Them With Bread For All Their Cattle For That Year", ["Joseph gives bread in exchange for livestock for that year.", "The phrase shows the famine moving in stages over time.", "Survival is being managed year by year.", "This is a hard scene because preservation comes with cost.", "Genesis invites readers to see both the mercy of food and the weight of crisis."]),
   ],
   "Genesis 47:18-22": [
-    day20Phrase("📅 When That Year Was Ended", ["The famine continues beyond one exchange cycle.", "This phrase shows the exhaustion of resources over time.", "The people return because yesterday's solution has run out.", "A beginner should see how severe and extended the crisis is.", "Long famine wears down every layer of human security."]),
+    day20Phrase("📅 When That Year Was Ended", ["The famine continues beyond one exchange cycle.", "The line marks the exhaustion of resources over time.", "The people return because yesterday's solution has run out.", "A beginner should see how severe and extended the crisis is.", "Long famine wears down every layer of human security."]),
     day20Phrase("💰 Our Money Is Spent", ["The people openly admit their money is gone.", "Their financial resources cannot save them anymore.", "This detail makes the famine feel personal and economic.", "Money matters, but it has limits when food disappears.", "Earthly wealth cannot feed anyone if there is no bread."]),
     day20Phrase("🐄 My Lord Also Hath Our Herds", ["The livestock have already been transferred to Pharaoh through Joseph's administration.", "The people are naming how much they have already surrendered to survive.", "This helps beginners track the progression: money, then animals, then land and labor.", "The famine is reshaping society step by step.", "Crisis can reorder a whole nation."]),
     day20Phrase("🧍 There Is Not Ought Left But Our Bodies, And Our Lands", ["Ought means anything.", "The people say nothing remains except themselves and their land.", "This is one of the heaviest famine lines in Joseph's story.", "It shows survival pressure at its most vulnerable.", "The human cost of famine is not abstract; people feel reduced to body and soil."]),
@@ -1968,7 +1979,7 @@ const DAY_20_REAL_PHRASE_ADDITIONS: Record<string, Array<[string, string]>> = {
   "Genesis 48:1-4": [
     day20Phrase("📣 Behold, Thy Father Is Sick", ["Joseph receives news that Jacob is ill.", "This summons him into a final family blessing scene.", "The story moves from public famine management to private covenant passing.", "A beginner should recognize the shift in tone.", "When death approaches, blessing and memory become urgent."]),
     day20Phrase("👦 He Took With Him His Two Sons", ["Joseph brings Manasseh and Ephraim to Jacob.", "He wants his sons present for Jacob's final blessing.", "These boys were born in Egypt, but Joseph brings them into the covenant family moment.", "This detail prepares for their adoption into Israel's inheritance.", "Parents can bring children into the story of God's promise."]),
-    day20Phrase("💪 Israel Strengthened Himself", ["Jacob gathers strength when he hears Joseph has come.", "The old man's body is weak, but the blessing moment matters enough for effort.", "This phrase shows intention and dignity near death.", "A beginner should see that Jacob is not passive in his final days.", "Faith can rise with purpose even in physical weakness."]),
+    day20Phrase("💪 Israel Strengthened Himself", ["Jacob gathers strength when he hears Joseph has come.", "The old man's body is weak, but the blessing moment matters enough for effort.", "The action shows intention and dignity near death.", "A beginner should see that Jacob is not passive in his final days.", "Faith can rise with purpose even in physical weakness."]),
     day20Phrase("📍 At Luz In The Land Of Canaan", ["Luz is another name connected with Bethel, where God appeared to Jacob.", "Jacob remembers the place where God promised fruitfulness and land.", "He anchors the blessing in God's old word, not in his own nostalgia.", "This helps readers connect Genesis 48 back to earlier Jacob stories.", "God's promises become the memory a family must carry forward."]),
     day20Phrase("🌱 I Will Make Thee Fruitful", ["Jacob repeats God's promise of fruitfulness.", "This matters because he is about to bless Joseph's sons as part of Israel's future.", "The family has grown in Egypt, but the promise began with God.", "A beginner should see that blessing flows from God's word first.", "Fruitfulness is received before it is counted."]),
     day20Phrase("👥 A Multitude Of People", ["God promised Jacob a multitude, meaning many descendants.", "The small family that came to Egypt is already becoming larger.", "Ephraim and Manasseh will be part of that expansion.", "This phrase links the boys to the big family promise.", "God's word can turn grandchildren into signs of a nation."]),
@@ -2008,7 +2019,7 @@ const DAY_20_REAL_PHRASE_ADDITIONS: Record<string, Array<[string, string]>> = {
     day20Phrase("👥 He Also Shall Become A People", ["Jacob does not reject Manasseh.", "He affirms Manasseh will become a people and be great.", "This is important because the reversal is not hatred or exclusion.", "Manasseh is blessed, but Ephraim receives greater prominence.", "God's choice of one does not always mean contempt for another."]),
     day20Phrase("👦 His Younger Brother Shall Be Greater Than He", ["Jacob states the reversal clearly.", "Ephraim, the younger, will become greater in prominence.", "This continues Genesis' pattern of surprising younger-son blessing.", "A beginner should learn to watch this pattern across the book.", "God's purposes move by grace, not automatic human rank."]),
     day20Phrase("🌍 His Seed Shall Become A Multitude Of Nations", ["Ephraim's descendants will become especially numerous and significant.", "The blessing looks far beyond the two boys in the room.", "Jacob is speaking future over generations.", "This moment helps explain later biblical references to Ephraim.", "Small family scenes can carry national futures."]),
-    day20Phrase("🗣️ In Thee Shall Israel Bless", ["Jacob gives a blessing formula that Israel will use later.", "The boys become examples of blessing within the family.", "This phrase shows how the moment will echo beyond Joseph's lifetime.", "A beginner should see that words spoken here become tradition.", "Faithful blessing can shape how future generations speak."]),
+    day20Phrase("🗣️ In Thee Shall Israel Bless", ["Jacob gives a blessing formula that Israel will use later.", "The boys become examples of blessing within the family.", "The moment will echo beyond Joseph's lifetime.", "A beginner should see that words spoken here become tradition.", "Faithful blessing can shape how future generations speak."]),
     day20Phrase("🔁 He Set Ephraim Before Manasseh", ["The text summarizes the reversal plainly.", "Ephraim is set before Manasseh in blessing order.", "This is the final confirmation of Jacob's intention.", "Genesis ends the scene with the younger before the older.", "God's order may surprise us, but it is not accidental."]),
   ],
   "Genesis 48:21-22": [
@@ -2024,11 +2035,65 @@ const DAY_20_REAL_PHRASE_ADDITIONS: Record<string, Array<[string, string]>> = {
 function deepenDay20PhraseCards(section: PersonalGenesisPhraseSectionInput): PersonalGenesisPhraseSectionInput {
   return {
     ...section,
-    phrases: [...section.phrases, ...(DAY_20_REAL_PHRASE_ADDITIONS[section.reference] ?? [])],
+    phrases: (DAY_20_REAL_PHRASE_ADDITIONS[section.reference] ?? []).length
+      ? DAY_20_REAL_PHRASE_ADDITIONS[section.reference]
+      : section.phrases,
   };
 }
 
 const day21Phrase = (title: string, lines: string[]): [string, string] => phrase(title, lines);
+
+const DAY_21_OPENING_REPLACEMENTS: Record<string, string> = {
+  "Unstable As Water": "Water here pictures something uncontrolled, shifting, and unable to hold shape.",
+  "Cursed Be Their Anger": "Jacob is condemning the violent anger that ruled Simeon and Levi.",
+  "Thy Father's Children Shall Bow Down Before Thee": "Jacob is saying Judah will receive leadership among his brothers.",
+  "The Sceptre Shall Not Depart From Judah": "A sceptre is the staff that symbolizes royal rule.",
+  "Unto Him Shall The Gathering Of The People Be": "Jacob is saying the ruler from Judah will draw peoples to himself.",
+  "Washed His Garments In Wine": "This image uses wine to picture overwhelming abundance and royal prosperity.",
+  "Issachar Is A Strong Ass": "Jacob compares Issachar to a strong donkey built for carrying heavy loads.",
+  "The Archers Have Sorely Grieved Him": "Joseph's enemies are pictured like archers who kept attacking him.",
+  "They Shall Be On The Head Of Joseph": "Jacob is placing the blessing of honor and fruitfulness on Joseph.",
+  "This Is It That Their Father Spake Unto Them": "This line gathers all of Jacob's final words into one closing summary.",
+  "I Am To Be Gathered Unto My People": "Jacob speaks about death as joining the family line that has already gone before him.",
+  "There I Buried Leah": "Jacob mentions Leah to show that this burial cave already belongs to the covenant family story.",
+  "All The Servants Of Pharaoh": "A large Egyptian delegation travels with Joseph to honor Jacob's burial.",
+  "For A Possession Of A Buryingplace": "The cave was a legally owned burial place in the promised land.",
+  "Thy Father Did Command Before He Died": "The brothers appeal to Jacob's final words because they are still afraid of Joseph.",
+  "But God Meant It Unto Good": "Joseph says God ruled over their evil act for a good purpose.",
+  "To Save Much People Alive": "Joseph explains that God's purpose was to preserve many lives through the famine.",
+  "Fear Ye Not": "Joseph tells his brothers to stop living under the fear of revenge.",
+  "Joseph Lived An Hundred And Ten Years": "Joseph reaches a long, full lifespan in the land of Egypt.",
+  "Brought Up Upon Joseph's Knees": "The phrase pictures Joseph receiving these descendants with family affection and recognition.",
+  "He Was Put In A Coffin In Egypt": "Genesis ends with Joseph buried in Egypt, not yet carried back to Canaan.",
+  "Blessed Them": "Jacob's final words are still called a blessing even when they include rebuke and warning.",
+  "Chariots And Horsemen": "The burial procession includes royal Egyptian escort and military honor.",
+  "The Threshingfloor Of Atad": "Atad is the named stopping place where the mourning pauses before burial.",
+};
+
+function polishDay21PhraseContent(title: string, content: string) {
+  const cleanTitle = title.replace(/^[^A-Za-z0-9']+\s*/, "").trim();
+  const opening = DAY_21_OPENING_REPLACEMENTS[cleanTitle];
+  const cleaned = content
+    .replace(/\bA beginner should see that\s*/gi, "Notice that ")
+    .replace(/\bA beginner should see\s*/gi, "Notice ")
+    .replace(/\bA beginner should hear\s*/gi, "Hear ")
+    .replace(/\bA beginner should connect\s*/gi, "Connect ")
+    .replace(/\bA beginner should feel\s*/gi, "Feel ")
+    .replace(/\bA beginner should notice\s*/gi, "Notice ")
+    .replace(/\bA beginner should not skip this as poetic language only\./gi, "This is more than decorative poetry.")
+    .replace(/\bThis is the theological center of Joseph's story\./gi, "This is the main providence statement in Joseph's story.")
+    .replace(/\bJoseph likely received these children as his own descendants with affection and recognition\./gi, "The phrase pictures Joseph receiving these descendants with family affection and recognition.");
+  if (!opening) return cleaned;
+
+  const paragraphs = cleaned
+    .split(/\n{2,}/)
+    .map((paragraph) => paragraph.trim())
+    .filter(Boolean);
+
+  if (paragraphs.length === 0) return content;
+  paragraphs[0] = opening;
+  return note(paragraphs);
+}
 
 const DAY_21_REAL_PHRASE_REPLACEMENTS: Record<string, Array<[string, string]>> = {
   "Genesis 49:1-6": [
@@ -2175,7 +2240,10 @@ const DAY_21_REAL_PHRASE_REPLACEMENTS: Record<string, Array<[string, string]>> =
 function deepenDay21PhraseCards(section: PersonalGenesisPhraseSectionInput): PersonalGenesisPhraseSectionInput {
   return {
     ...section,
-    phrases: DAY_21_REAL_PHRASE_REPLACEMENTS[section.reference] ?? section.phrases,
+    phrases: (DAY_21_REAL_PHRASE_REPLACEMENTS[section.reference] ?? section.phrases).map(([title, content]) => [
+      title,
+      polishDay21PhraseContent(title, content),
+    ]),
   };
 }
 

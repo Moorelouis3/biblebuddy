@@ -15,6 +15,74 @@ export type PersonalExodusPhraseSectionInput = {
 const note = (lines: string[]) => lines.join("\n\n");
 const phrase = (title: string, lines: string[]): [string, string] => [title, note(lines)];
 
+function replaceElevenToTwentyPhraseOpening(content: string, opening: string) {
+  const paragraphs = content
+    .split(/\n{2,}/)
+    .map((paragraph) => paragraph.trim())
+    .filter(Boolean);
+
+  if (paragraphs.length === 0) return content;
+  paragraphs[0] = opening;
+  return note(paragraphs);
+}
+
+const DAY_24_EXODUS_11_12_OPENING_REPLACEMENTS: Record<string, string> = {
+  "Eat The Flesh In That Night": "The lamb must be eaten that same night as part of the Passover meal.",
+  "Roast With Fire": "The lamb is to be cooked by roasting over fire, not boiled or eaten raw.",
+  "In All Your Habitations": "This command applies in every home where Israel lives.",
+  "Four Hundred And Thirty Years": "This number marks the long stretch connected to Israel's stay and affliction.",
+  "Every Man's Servant": "A household servant could share Passover only after receiving circumcision.",
+};
+
+const DAY_26_OPENING_REPLACEMENTS: Record<string, string> = {
+  "Wherefore The People Did Chide With Moses": "The people begin quarreling with Moses over their lack of water.",
+  "Because Of The Chiding Of The Children Of Israel": "This place name remembers Israel's quarreling at Rephidim.",
+  "Then Came Amalek": "Amalek arrives as the first enemy to attack Israel in the wilderness.",
+  "Joshua Discomfited Amalek": "Joshua defeats Amalek in battle under the LORD's help.",
+  "I Will Utterly Put Out The Remembrance Of Amalek": "God promises to erase Amalek's lasting name and power.",
+  "War With Amalek From Generation To Generation": "This conflict with Amalek will continue beyond a single battle.",
+  "Moses Built An Altar": "After the battle, Moses responds by building an altar of worship.",
+  "An Altar Of Earth Thou Shalt Make": "God tells Israel to build a simple altar made from earth.",
+  "If Thou Wilt Make Me An Altar Of Stone": "If Israel uses stone for an altar, it must stay plain and unshaped.",
+  "Jethro, The Priest Of Midian": "Jethro enters the story as Moses' father-in-law from Midian.",
+  "I Thy Father In Law Jethro Am Come": "Jethro announces his own arrival to Moses in the wilderness.",
+  "Jethro Took A Burnt Offering": "Jethro responds to the rescue story by bringing a burnt offering.",
+  "Provide Out Of All The People Able Men": "Moses must choose capable men from the people to help judge.",
+  "Moses Chose Able Men": "Moses actually appoints the capable men Jethro recommended.",
+  "They Came Into The Wilderness Of Sinai": "Israel reaches the wilderness region around Sinai.",
+  "Mount Sinai Was Altogether On A Smoke": "Sinai is covered in smoke as the LORD descends in fire.",
+  "Moses Called For The Elders": "Moses summons the elders to hear God's covenant words.",
+  "The Elders Of The People": "These elders serve as representatives for the people.",
+  "Lo, I Come Unto Thee In A Thick Cloud": "God says He will come to Moses in a thick cloud.",
+  "A Thick Cloud Upon The Mount": "A heavy cloud settles over the mountain as God draws near.",
+  "Sanctify Them To Day And To Morrow": "The people must be set apart and prepared over two days.",
+  "Let The Priests Also Sanctify Themselves": "Even the priests must prepare themselves before approaching holy things.",
+  "Saying": "This introduces the words that reveal Israel's deeper question.",
+  "The LORD Hath Sworn": "The LORD has made a firm promise of ongoing war against Amalek.",
+  "Gershom": "This is the name of Moses' son connected with living as a stranger.",
+  "Eliezer": "This is the name of Moses' son that points to God's help.",
+  "The LORD Delivered Them": "Jethro is hearing that the LORD rescued Israel from danger.",
+  "Rulers Of Thousands": "This describes a layered structure of delegated leadership.",
+  "The People Cannot Come Up": "The people are not allowed to climb Sinai past the boundary God set.",
+  "Before Me": "This means in the LORD's presence, with no rival gods beside Him.",
+  "The LORD Blessed The Sabbath Day": "God set the Sabbath apart with His own blessing.",
+  "Fear Not": "Moses tells the people not to run from God's covenant word in panic.",
+};
+
+function polishDay24Exodus11To12PhraseContent(title: string, content: string) {
+  const cleanTitle = title.replace(/^[^A-Za-z0-9']+\s*/, "").trim();
+  const opening = DAY_24_EXODUS_11_12_OPENING_REPLACEMENTS[cleanTitle];
+  if (!opening) return content;
+  return replaceElevenToTwentyPhraseOpening(content, opening);
+}
+
+function polishDay26PhraseContent(title: string, content: string) {
+  const cleanTitle = title.replace(/^[^A-Za-z0-9']+\s*/, "").trim();
+  const opening = DAY_26_OPENING_REPLACEMENTS[cleanTitle];
+  if (!opening) return content;
+  return replaceElevenToTwentyPhraseOpening(content, opening);
+}
+
 function getExodusElevenToTwentyTitleIcon(title: string) {
   if (/no water|water for the people|drink/i.test(title)) return "\u{1F4A7}";
   if (/chide|chiding|tempted|saying|among us|wherefore/i.test(title)) return "\u{1F5E3}\u{FE0F}";
@@ -59,31 +127,31 @@ function getExodusElevenToTwentyTitleIcon(title: string) {
   if (/father|mother|family/i.test(title)) return "\u{1F46A}";
   if (/kill|adultery|steal|false witness|covet|neighbour/i.test(title)) return "\u{2696}\u{FE0F}";
   if (/fear not|fear may|lest we die|trembled/i.test(title)) return "\u{1F628}";
-  if (/passover|lamb|blood|door|hyssop|unleavened|leaven|firstborn|midnight/i.test(title)) return "🐑";
-  if (/plague|wonders|judgment|difference|cut off/i.test(title)) return "⚖️";
-  if (/pharaoh|egypt|egyptians|thrust|jewels|silver|gold|mixed multitude/i.test(title)) return "🏛️";
-  if (/remember|children|ordinance|generation|sign|memorial|feast/i.test(title)) return "🧠";
-  if (/pillar|cloud|fire|led|way|wilderness|camp|journey/i.test(title)) return "🧭";
-  if (/sea|waters|wind|dry ground|chariot|horse|rider|fight|stand still|fear/i.test(title)) return "🌊";
-  if (/sing|song|strength|who is like|miriam|timbrel|dance/i.test(title)) return "🎶";
-  if (/manna|bread|quail|omer|sabbath|murmur|water|marah|elim/i.test(title)) return "🍞";
-  if (/amalek|joshua|banner|hands|hur/i.test(title)) return "🏳️";
-  if (/jethro|judges|rulers|counsel/i.test(title)) return "🧑‍⚖️";
-  if (/sinai|mount|thunder|lightning|commandments/i.test(title)) return "⛰️";
-  if (/joseph|bones|canaan|promise|surely visit/i.test(title)) return "🦴";
-  if (/fear|afraid|graves|die|death|cry/i.test(title)) return "😨";
-  if (/law|statute|command|word|voice|hear|hearken/i.test(title)) return "📜";
-  if (/rock|smite|rephidim|massah|meribah/i.test(title)) return "🪨";
-  if (/tent|camp|congregation|people|children of israel|souls|armies|stranger|born in the land|servant/i.test(title)) return "👥";
-  if (/gold|silver|jewels|raiment|spoiled/i.test(title)) return "💍";
-  if (/wilderness|way|journey|departed|went/i.test(title)) return "🏜️";
-  if (/month|fourteenth|sixth day|seventh day|selfsame day|night|morning|even/i.test(title)) return "📅";
-  if (/eat|flesh|flocks|herds|loins|girded|shoes|staff|bone|flesh pots/i.test(title)) return "🍽️";
-  if (/bring|brought|go|get thee|forth|out|rise up|let you go|tarry|openeth the womb/i.test(title)) return "🚶";
-  if (/right hand|wrath|overthrown|triumphed|excellency|blast|purchased|wonders/i.test(title)) return "💪";
-  if (/sanctuary|place|habitation|house/i.test(title)) return "🏕️";
-  if (/lord|god|healeth|reign|servant moses|my god/i.test(title)) return "🙌";
-  return "🔎";
+  if (/passover|lamb|blood|door|hyssop|unleavened|leaven|firstborn|midnight/i.test(title)) return "ðŸ‘";
+  if (/plague|wonders|judgment|difference|cut off/i.test(title)) return "âš–ï¸";
+  if (/pharaoh|egypt|egyptians|thrust|jewels|silver|gold|mixed multitude/i.test(title)) return "ðŸ›ï¸";
+  if (/remember|children|ordinance|generation|sign|memorial|feast/i.test(title)) return "ðŸ§ ";
+  if (/pillar|cloud|fire|led|way|wilderness|camp|journey/i.test(title)) return "ðŸ§­";
+  if (/sea|waters|wind|dry ground|chariot|horse|rider|fight|stand still|fear/i.test(title)) return "ðŸŒŠ";
+  if (/sing|song|strength|who is like|miriam|timbrel|dance/i.test(title)) return "ðŸŽ¶";
+  if (/manna|bread|quail|omer|sabbath|murmur|water|marah|elim/i.test(title)) return "ðŸž";
+  if (/amalek|joshua|banner|hands|hur/i.test(title)) return "ðŸ³ï¸";
+  if (/jethro|judges|rulers|counsel/i.test(title)) return "ðŸ§‘â€âš–ï¸";
+  if (/sinai|mount|thunder|lightning|commandments/i.test(title)) return "â›°ï¸";
+  if (/joseph|bones|canaan|promise|surely visit/i.test(title)) return "ðŸ¦´";
+  if (/fear|afraid|graves|die|death|cry/i.test(title)) return "ðŸ˜¨";
+  if (/law|statute|command|word|voice|hear|hearken/i.test(title)) return "ðŸ“œ";
+  if (/rock|smite|rephidim|massah|meribah/i.test(title)) return "ðŸª¨";
+  if (/tent|camp|congregation|people|children of israel|souls|armies|stranger|born in the land|servant/i.test(title)) return "ðŸ‘¥";
+  if (/gold|silver|jewels|raiment|spoiled/i.test(title)) return "ðŸ’";
+  if (/wilderness|way|journey|departed|went/i.test(title)) return "ðŸœï¸";
+  if (/month|fourteenth|sixth day|seventh day|selfsame day|night|morning|even/i.test(title)) return "ðŸ“…";
+  if (/eat|flesh|flocks|herds|loins|girded|shoes|staff|bone|flesh pots/i.test(title)) return "ðŸ½ï¸";
+  if (/bring|brought|go|get thee|forth|out|rise up|let you go|tarry|openeth the womb/i.test(title)) return "ðŸš¶";
+  if (/right hand|wrath|overthrown|triumphed|excellency|blast|purchased|wonders/i.test(title)) return "ðŸ’ª";
+  if (/sanctuary|place|habitation|house/i.test(title)) return "ðŸ•ï¸";
+  if (/lord|god|healeth|reign|servant moses|my god/i.test(title)) return "ðŸ™Œ";
+  return "ðŸ”Ž";
 }
 
 function ensureExodusElevenToTwentyTitleEmoji(title: string) {
@@ -93,26 +161,26 @@ function ensureExodusElevenToTwentyTitleEmoji(title: string) {
 
 function getExodusElevenToTwentySectionIcon(section: PersonalExodusPhraseSectionInput) {
   const text = `${section.title} ${section.reference}`.toLowerCase();
-  if (/water from the rock/.test(text)) return "🪨";
-  if (/banner|amalek/.test(text)) return "🏳️";
-  if (/jethro hears/.test(text)) return "👂";
-  if (/shared wisdom|shared burden|leadership/.test(text)) return "🧑‍⚖️";
-  if (/eagles|wings/.test(text)) return "🦅";
-  if (/mountain|sinai|set apart/.test(text)) return "⛰️";
-  if (/no other gods|images|name|sabbath/.test(text)) return "📜";
-  if (/life with our neighbor/.test(text)) return "🤝";
-  if (/holy fear|simple worship/.test(text)) return "🙌";
-  if (/plague|firstborn|midnight/.test(text)) return "🌙";
-  if (/passover|lamb|blood/.test(text)) return "🐑";
-  if (/leaves|departure|egypt/.test(text)) return "🎒";
-  if (/remember|redeemed|firstborn/.test(text)) return "🧠";
-  if (/cloud|fire|long way|leads/.test(text)) return "🧭";
-  if (/sea|fear|opens/.test(text)) return "🌊";
-  if (/song|sings|victory/.test(text)) return "🎶";
-  if (/bitter|water|heals|manna|bread|sabbath/.test(text)) return "🍞";
-  if (/amalek|banner/.test(text)) return "🏳️";
-  if (/jethro|leadership/.test(text)) return "🧑‍⚖️";
-  if (/sinai|commandments|mount/.test(text)) return "⛰️";
+  if (/water from the rock/.test(text)) return "ðŸª¨";
+  if (/banner|amalek/.test(text)) return "ðŸ³ï¸";
+  if (/jethro hears/.test(text)) return "ðŸ‘‚";
+  if (/shared wisdom|shared burden|leadership/.test(text)) return "ðŸ§‘â€âš–ï¸";
+  if (/eagles|wings/.test(text)) return "ðŸ¦…";
+  if (/mountain|sinai|set apart/.test(text)) return "â›°ï¸";
+  if (/no other gods|images|name|sabbath/.test(text)) return "ðŸ“œ";
+  if (/life with our neighbor/.test(text)) return "ðŸ¤";
+  if (/holy fear|simple worship/.test(text)) return "ðŸ™Œ";
+  if (/plague|firstborn|midnight/.test(text)) return "ðŸŒ™";
+  if (/passover|lamb|blood/.test(text)) return "ðŸ‘";
+  if (/leaves|departure|egypt/.test(text)) return "ðŸŽ’";
+  if (/remember|redeemed|firstborn/.test(text)) return "ðŸ§ ";
+  if (/cloud|fire|long way|leads/.test(text)) return "ðŸ§­";
+  if (/sea|fear|opens/.test(text)) return "ðŸŒŠ";
+  if (/song|sings|victory/.test(text)) return "ðŸŽ¶";
+  if (/bitter|water|heals|manna|bread|sabbath/.test(text)) return "ðŸž";
+  if (/amalek|banner/.test(text)) return "ðŸ³ï¸";
+  if (/jethro|leadership/.test(text)) return "ðŸ§‘â€âš–ï¸";
+  if (/sinai|commandments|mount/.test(text)) return "â›°ï¸";
   return getExodusElevenToTwentyTitleIcon(section.title);
 }
 
@@ -123,16 +191,16 @@ const RAW_EXODUS_11_20_PERSONAL_SECTIONS: PersonalExodusPhraseSectionInput[] = [
     endVerse: 10,
     reference: "Exodus 11:1-10",
     title: "The Final Plague Is Announced",
-    icon: "🌙",
+    icon: "ðŸŒ™",
     phrases: [
-      phrase("🌙 Yet Will I Bring One Plague More", ["The final plague is announced before it comes.", "God is not acting in confusion or panic.", "🌙 One plague more", "📣 Warning before judgment", "🔓 Release coming", "This line tells us the conflict with Pharaoh is reaching its decisive moment."]),
-      phrase("🏃 He Shall Surely Thrust You Out", ["Pharaoh will not merely allow Israel to leave.", "He will drive them out.", "👑 The oppressor releases", "🏃 The people leave", "⚖️ God's judgment breaks the grip", "The king who kept saying no will be forced into the very release he resisted."]),
-      phrase("💍 Jewels Of Silver, And Jewels Of Gold", ["Israel is told to ask Egypt for silver and gold.", "The enslaved people will not leave empty.", "💍 Silver", "👑 Gold", "🎒 Provision for the journey", "God reverses the exploitation of Egypt and sends His people out supplied."]),
-      phrase("👑 Moses Was Very Great", ["Moses is now respected in Egypt.", "The fugitive shepherd has become God's public messenger.", "👑 Before Pharaoh's servants", "👥 Before the people", "📣 Carrying God's word", "His greatness is not celebrity; it comes from the LORD's authority on his mission."]),
-      phrase("🌃 About Midnight", ["The final judgment has an appointed time.", "Midnight makes the scene heavy and unmistakable.", "🌃 Night", "⏰ Appointed hour", "⚖️ Judgment", "Egypt will learn that the LORD rules timing as surely as He rules nature."]),
-      phrase("👶 All The Firstborn", ["The judgment reaches the firstborn of Egypt.", "This is deeply connected to Pharaoh's attack on Hebrew sons in Exodus 1.", "👶 Firstborn", "👑 Throne", "🏠 Household", "Pharaoh targeted Israel's children; now judgment reaches Egypt's households."]),
-      phrase("🛡️ The Lord Doth Put A Difference", ["God makes a distinction between Egypt and Israel.", "The rescue is not because Israel is stronger.", "🛡️ Difference", "👥 God's people", "⚖️ Judgment passing by", "God knows how to judge Egypt while preserving His covenant people."]),
-      phrase("🔒 Pharaoh Shall Not Hearken", ["Even after all the signs, Pharaoh will not listen.", "The hard heart is now fully exposed.", "🔒 Refusal", "📣 Clear warning", "⚖️ More wonders", "This prepares the reader for the final blow and the Passover shelter."]),
+      phrase("ðŸŒ™ Yet Will I Bring One Plague More", ["The final plague is announced before it comes.", "God is not acting in confusion or panic.", "ðŸŒ™ One plague more", "ðŸ“£ Warning before judgment", "ðŸ”“ Release coming", "This line tells us the conflict with Pharaoh is reaching its decisive moment."]),
+      phrase("ðŸƒ He Shall Surely Thrust You Out", ["Pharaoh will not merely allow Israel to leave.", "He will drive them out.", "ðŸ‘‘ The oppressor releases", "ðŸƒ The people leave", "âš–ï¸ God's judgment breaks the grip", "The king who kept saying no will be forced into the very release he resisted."]),
+      phrase("ðŸ’ Jewels Of Silver, And Jewels Of Gold", ["Israel is told to ask Egypt for silver and gold.", "The enslaved people will not leave empty.", "ðŸ’ Silver", "ðŸ‘‘ Gold", "ðŸŽ’ Provision for the journey", "God reverses the exploitation of Egypt and sends His people out supplied."]),
+      phrase("ðŸ‘‘ Moses Was Very Great", ["Moses is now respected in Egypt.", "The fugitive shepherd has become God's public messenger.", "ðŸ‘‘ Before Pharaoh's servants", "ðŸ‘¥ Before the people", "ðŸ“£ Carrying God's word", "His greatness is not celebrity; it comes from the LORD's authority on his mission."]),
+      phrase("ðŸŒƒ About Midnight", ["The final judgment has an appointed time.", "Midnight makes the scene heavy and unmistakable.", "ðŸŒƒ Night", "â° Appointed hour", "âš–ï¸ Judgment", "Egypt will learn that the LORD rules timing as surely as He rules nature."]),
+      phrase("ðŸ‘¶ All The Firstborn", ["The judgment reaches the firstborn of Egypt.", "This is deeply connected to Pharaoh's attack on Hebrew sons in Exodus 1.", "ðŸ‘¶ Firstborn", "ðŸ‘‘ Throne", "ðŸ  Household", "Pharaoh targeted Israel's children; now judgment reaches Egypt's households."]),
+      phrase("ðŸ›¡ï¸ The Lord Doth Put A Difference", ["God makes a distinction between Egypt and Israel.", "The rescue is not because Israel is stronger.", "ðŸ›¡ï¸ Difference", "ðŸ‘¥ God's people", "âš–ï¸ Judgment passing by", "God knows how to judge Egypt while preserving His covenant people."]),
+      phrase("ðŸ”’ Pharaoh Shall Not Hearken", ["Even after all the signs, Pharaoh will not listen.", "The hard heart is now fully exposed.", "ðŸ”’ Refusal", "ðŸ“£ Clear warning", "âš–ï¸ More wonders", "This prepares the reader for the final blow and the Passover shelter."]),
     ],
   },
   {
@@ -141,17 +209,17 @@ const RAW_EXODUS_11_20_PERSONAL_SECTIONS: PersonalExodusPhraseSectionInput[] = [
     endVerse: 20,
     reference: "Exodus 12:1-20",
     title: "Passover Begins A New Calendar",
-    icon: "🐑",
+    icon: "ðŸ‘",
     phrases: [
-      phrase("📅 The Beginning Of Months", ["God resets Israel's calendar around redemption.", "Their time will now be marked by the night He brought them out.", "📅 New beginning", "🩸 Rescue remembered", "👥 Identity reshaped", "Freedom changes how Israel counts time."]),
-      phrase("🏠 According To The House Of Their Fathers", ["Passover is given household by household.", "Deliverance reaches actual families, tables, and doorways.", "🏠 Household", "🍽️ Meal", "🩸 Door", "The rescue is national, but it is received in homes."]),
-      phrase("🐑 A Lamb For An House", ["Each household takes a lamb.", "The lamb stands at the center of the night of shelter.", "🐑 Lamb", "🏠 House", "🩸 Blood", "God gives Israel a specific way to be covered during judgment."]),
-      phrase("✨ Without Blemish", ["The lamb must be without blemish.", "Israel does not give God what is defective.", "✨ Whole", "🐑 Set apart", "🙏 Given under God's command", "The rescue is not invented by Israel; it follows God's provided pattern."]),
-      phrase("🩸 They Shall Take Of The Blood", ["The blood is placed on the side posts and lintel of the house.", "The doorway becomes the visible boundary of shelter.", "🩸 Blood", "🚪 Doorway", "🛡️ Protection", "The house is not safe because it is Hebrew, but because it is marked according to God's word."]),
-      phrase("🔥 Roast With Fire", ["The lamb is eaten roasted with fire, unleavened bread, and bitter herbs.", "The meal teaches through taste and memory.", "🔥 Roasted lamb", "🍞 Unleavened bread", "🌿 Bitter herbs", "Israel remembers both suffering and rescue."]),
-      phrase("👟 Your Shoes On Your Feet", ["Israel eats ready to leave.", "The meal is not relaxed nostalgia; it is urgent faith.", "👟 Shoes on", "🎒 Staff in hand", "🏃 Ready to go", "They must trust that deliverance is close enough to dress for departure."]),
-      phrase("🩸 When I See The Blood", ["This is one of the clearest rescue lines in Exodus.", "God promises to pass over the marked houses.", "🩸 Blood seen", "🛡️ Judgment passes over", "🏠 Household sheltered", "Safety rests on God's appointed sign."]),
-      phrase("🍞 Seven Days Shall Ye Eat Unleavened Bread", ["Unleavened bread becomes a yearly practice.", "The haste of deliverance is built into Israel's memory.", "🍞 No leaven", "📅 Seven days", "🧠 Remember rescue", "God gives the people a rhythm so freedom will not be forgotten."]),
+      phrase("ðŸ“… The Beginning Of Months", ["God resets Israel's calendar around redemption.", "Their time will now be marked by the night He brought them out.", "ðŸ“… New beginning", "ðŸ©¸ Rescue remembered", "ðŸ‘¥ Identity reshaped", "Freedom changes how Israel counts time."]),
+      phrase("ðŸ  According To The House Of Their Fathers", ["Passover is given household by household.", "Deliverance reaches actual families, tables, and doorways.", "ðŸ  Household", "ðŸ½ï¸ Meal", "ðŸ©¸ Door", "The rescue is national, but it is received in homes."]),
+      phrase("ðŸ‘ A Lamb For An House", ["Each household takes a lamb.", "The lamb stands at the center of the night of shelter.", "ðŸ‘ Lamb", "ðŸ  House", "ðŸ©¸ Blood", "God gives Israel a specific way to be covered during judgment."]),
+      phrase("âœ¨ Without Blemish", ["The lamb must be without blemish.", "Israel does not give God what is defective.", "âœ¨ Whole", "ðŸ‘ Set apart", "ðŸ™ Given under God's command", "The rescue is not invented by Israel; it follows God's provided pattern."]),
+      phrase("ðŸ©¸ They Shall Take Of The Blood", ["The blood is placed on the side posts and lintel of the house.", "The doorway becomes the visible boundary of shelter.", "ðŸ©¸ Blood", "ðŸšª Doorway", "ðŸ›¡ï¸ Protection", "The house is not safe because it is Hebrew, but because it is marked according to God's word."]),
+      phrase("ðŸ”¥ Roast With Fire", ["The lamb is eaten roasted with fire, unleavened bread, and bitter herbs.", "The meal teaches through taste and memory.", "ðŸ”¥ Roasted lamb", "ðŸž Unleavened bread", "ðŸŒ¿ Bitter herbs", "Israel remembers both suffering and rescue."]),
+      phrase("ðŸ‘Ÿ Your Shoes On Your Feet", ["Israel eats ready to leave.", "The meal is not relaxed nostalgia; it is urgent faith.", "ðŸ‘Ÿ Shoes on", "ðŸŽ’ Staff in hand", "ðŸƒ Ready to go", "They must trust that deliverance is close enough to dress for departure."]),
+      phrase("ðŸ©¸ When I See The Blood", ["This is one of the clearest rescue lines in Exodus.", "God promises to pass over the marked houses.", "ðŸ©¸ Blood seen", "ðŸ›¡ï¸ Judgment passes over", "ðŸ  Household sheltered", "Safety rests on God's appointed sign."]),
+      phrase("ðŸž Seven Days Shall Ye Eat Unleavened Bread", ["Unleavened bread becomes a yearly practice.", "The haste of deliverance is built into Israel's memory.", "ðŸž No leaven", "ðŸ“… Seven days", "ðŸ§  Remember rescue", "God gives the people a rhythm so freedom will not be forgotten."]),
     ],
   },
   {
@@ -160,15 +228,15 @@ const RAW_EXODUS_11_20_PERSONAL_SECTIONS: PersonalExodusPhraseSectionInput[] = [
     endVerse: 32,
     reference: "Exodus 12:21-32",
     title: "Blood On The Doorposts",
-    icon: "🩸",
+    icon: "ðŸ©¸",
     phrases: [
-      phrase("🪴 Hyssop", ["Hyssop is used to apply the blood.", "A simple plant becomes part of the act of obedience.", "🪴 Hyssop", "🩸 Blood", "🚪 Doorposts", "God's appointed means may look ordinary, but obedience to His word matters."]),
-      phrase("🚪 None Of You Shall Go Out", ["The people must remain inside the marked house.", "Faith is shown by staying under the shelter God provides.", "🚪 Inside", "🩸 Blood outside", "🛡️ Safety", "They do not survive by bravery in the street, but by trusting God's covering."]),
-      phrase("👶 Your Children Shall Say", ["God expects children to ask about Passover.", "The ritual is meant to teach the next generation.", "👶 Children ask", "📖 Parents explain", "🧠 Memory continues", "Deliverance must become family instruction, not just adult memory."]),
-      phrase("🙇 The People Bowed The Head And Worshipped", ["Israel worships before the final plague falls.", "They receive God's word and bow.", "🙇 Worship", "📣 Promise heard", "🩸 Rescue prepared", "Faith responds before the full deliverance is visible."]),
-      phrase("🌙 At Midnight", ["The announced hour arrives.", "Egypt's long refusal meets God's final judgment.", "🌙 Midnight", "⚖️ Judgment", "😢 Great cry", "The timing shows that God's warning was true."]),
-      phrase("😢 A Great Cry In Egypt", ["The death of the firstborn brings grief through Egypt.", "This is a terrible and weighty judgment.", "😢 Cry", "🏠 Every house touched", "👑 Pharaoh's house included", "Exodus does not make judgment feel light. It is holy and severe."]),
-      phrase("🏃 Rise Up, And Get You Forth", ["Pharaoh finally tells Israel to go.", "The command he resisted now comes from his own mouth.", "🏃 Leave", "🔓 Release", "👑 Pharaoh broken", "God has turned refusal into expulsion."]),
+      phrase("ðŸª´ Hyssop", ["Hyssop is used to apply the blood.", "A simple plant becomes part of the act of obedience.", "ðŸª´ Hyssop", "ðŸ©¸ Blood", "ðŸšª Doorposts", "God's appointed means may look ordinary, but obedience to His word matters."]),
+      phrase("ðŸšª None Of You Shall Go Out", ["The people must remain inside the marked house.", "Faith is shown by staying under the shelter God provides.", "ðŸšª Inside", "ðŸ©¸ Blood outside", "ðŸ›¡ï¸ Safety", "They do not survive by bravery in the street, but by trusting God's covering."]),
+      phrase("ðŸ‘¶ Your Children Shall Say", ["God expects children to ask about Passover.", "The ritual is meant to teach the next generation.", "ðŸ‘¶ Children ask", "ðŸ“– Parents explain", "ðŸ§  Memory continues", "Deliverance must become family instruction, not just adult memory."]),
+      phrase("ðŸ™‡ The People Bowed The Head And Worshipped", ["Israel worships before the final plague falls.", "They receive God's word and bow.", "ðŸ™‡ Worship", "ðŸ“£ Promise heard", "ðŸ©¸ Rescue prepared", "Faith responds before the full deliverance is visible."]),
+      phrase("ðŸŒ™ At Midnight", ["The announced hour arrives.", "Egypt's long refusal meets God's final judgment.", "ðŸŒ™ Midnight", "âš–ï¸ Judgment", "ðŸ˜¢ Great cry", "The timing shows that God's warning was true."]),
+      phrase("ðŸ˜¢ A Great Cry In Egypt", ["The death of the firstborn brings grief through Egypt.", "This is a terrible and weighty judgment.", "ðŸ˜¢ Cry", "ðŸ  Every house touched", "ðŸ‘‘ Pharaoh's house included", "Exodus does not make judgment feel light. It is holy and severe."]),
+      phrase("ðŸƒ Rise Up, And Get You Forth", ["Pharaoh finally tells Israel to go.", "The command he resisted now comes from his own mouth.", "ðŸƒ Leave", "ðŸ”“ Release", "ðŸ‘‘ Pharaoh broken", "God has turned refusal into expulsion."]),
     ],
   },
   {
@@ -177,17 +245,17 @@ const RAW_EXODUS_11_20_PERSONAL_SECTIONS: PersonalExodusPhraseSectionInput[] = [
     endVerse: 51,
     reference: "Exodus 12:33-51",
     title: "Israel Leaves Egypt",
-    icon: "🎒",
+    icon: "ðŸŽ’",
     phrases: [
-      phrase("⚡ The Egyptians Were Urgent", ["Egypt urges Israel to leave quickly.", "The oppressor now fears delay.", "⚡ Urgency", "🏃 Departure", "⚖️ Judgment behind them", "God can make the system that held people captive push them out."]),
-      phrase("🍞 Before It Was Leavened", ["Israel carries dough before it rises.", "The food itself tells the story of haste.", "🍞 Unleavened dough", "🎒 Wrapped possessions", "🏃 Quick departure", "Their bread becomes a reminder that God delivered suddenly."]),
-      phrase("👥 About Six Hundred Thousand", ["The small family from Genesis has become a great multitude.", "This shows the promise visibly multiplied.", "👥 Multitude", "📈 Growth", "📜 Abraham's promise", "God kept His word in Egypt."]),
-      phrase("🌍 A Mixed Multitude", ["Non-Israelites leave with Israel.", "The Exodus already has a wider witness.", "🌍 Outsiders", "👥 Traveling with Israel", "📣 God's fame spreading", "God's rescue draws more than one ethnic household into the movement."]),
-      phrase("⏳ Four Hundred And Thirty Years", ["The timeline shows long waiting.", "Generations lived and died before this night.", "⏳ 430 years", "😣 Long affliction", "📜 Promise kept", "God's timing can feel long, but Exodus says He did not forget."]),
-      phrase("🌙 A Night To Be Much Observed", ["The night becomes holy memory.", "Israel must keep watching it through generations.", "🌙 Night of rescue", "🧠 Memory", "🙏 Worship", "Freedom needs remembrance so the Rescuer is not forgotten."]),
-      phrase("🍽️ The Ordinance Of The Passover", ["God gives rules for the meal after the rescue.", "Deliverance creates ordered worship.", "🍽️ Meal", "📜 Ordinance", "👥 Covenant people", "Passover is not random celebration; it shapes the identity of the redeemed."]),
-      phrase("✂️ Circumcised", ["The Passover meal is tied to covenant belonging.", "Outsiders may join, but not casually.", "✂️ Covenant sign", "🌍 Stranger welcomed", "📜 Same law", "Grace welcomes people into belonging, not detached religious sampling."]),
-      phrase("🪖 By Their Armies", ["Israel leaves Egypt by their hosts.", "Former slaves are described as organized people under God's command.", "🪖 Hosts", "🔓 Freed people", "🧭 Ordered journey", "God is forming a people, not only emptying Egypt of laborers."]),
+      phrase("âš¡ The Egyptians Were Urgent", ["Egypt urges Israel to leave quickly.", "The oppressor now fears delay.", "âš¡ Urgency", "ðŸƒ Departure", "âš–ï¸ Judgment behind them", "God can make the system that held people captive push them out."]),
+      phrase("ðŸž Before It Was Leavened", ["Israel carries dough before it rises.", "The food itself tells the story of haste.", "ðŸž Unleavened dough", "ðŸŽ’ Wrapped possessions", "ðŸƒ Quick departure", "Their bread becomes a reminder that God delivered suddenly."]),
+      phrase("ðŸ‘¥ About Six Hundred Thousand", ["The small family from Genesis has become a great multitude.", "This shows the promise visibly multiplied.", "ðŸ‘¥ Multitude", "ðŸ“ˆ Growth", "ðŸ“œ Abraham's promise", "God kept His word in Egypt."]),
+      phrase("ðŸŒ A Mixed Multitude", ["Non-Israelites leave with Israel.", "The Exodus already has a wider witness.", "ðŸŒ Outsiders", "ðŸ‘¥ Traveling with Israel", "ðŸ“£ God's fame spreading", "God's rescue draws more than one ethnic household into the movement."]),
+      phrase("â³ Four Hundred And Thirty Years", ["The timeline shows long waiting.", "Generations lived and died before this night.", "â³ 430 years", "ðŸ˜£ Long affliction", "ðŸ“œ Promise kept", "God's timing can feel long, but Exodus says He did not forget."]),
+      phrase("ðŸŒ™ A Night To Be Much Observed", ["The night becomes holy memory.", "Israel must keep watching it through generations.", "ðŸŒ™ Night of rescue", "ðŸ§  Memory", "ðŸ™ Worship", "Freedom needs remembrance so the Rescuer is not forgotten."]),
+      phrase("ðŸ½ï¸ The Ordinance Of The Passover", ["God gives rules for the meal after the rescue.", "Deliverance creates ordered worship.", "ðŸ½ï¸ Meal", "ðŸ“œ Ordinance", "ðŸ‘¥ Covenant people", "Passover is not random celebration; it shapes the identity of the redeemed."]),
+      phrase("âœ‚ï¸ Circumcised", ["The Passover meal is tied to covenant belonging.", "Outsiders may join, but not casually.", "âœ‚ï¸ Covenant sign", "ðŸŒ Stranger welcomed", "ðŸ“œ Same law", "Grace welcomes people into belonging, not detached religious sampling."]),
+      phrase("ðŸª– By Their Armies", ["Israel leaves Egypt by their hosts.", "Former slaves are described as organized people under God's command.", "ðŸª– Hosts", "ðŸ”“ Freed people", "ðŸ§­ Ordered journey", "God is forming a people, not only emptying Egypt of laborers."]),
     ],
   },
   {
@@ -196,15 +264,15 @@ const RAW_EXODUS_11_20_PERSONAL_SECTIONS: PersonalExodusPhraseSectionInput[] = [
     endVerse: 16,
     reference: "Exodus 13:1-16",
     title: "Redeemed People Remember",
-    icon: "🧠",
+    icon: "ðŸ§ ",
     phrases: [
-      phrase("👶 Sanctify Unto Me All The Firstborn", ["God claims the firstborn because He spared Israel's firstborn.", "Rescue creates belonging.", "👶 Firstborn", "🛡️ Spared by mercy", "🙏 Set apart to God", "The life God protected is now marked as His."]),
-      phrase("🧠 Remember This Day", ["God commands memory immediately after deliverance.", "Freed people can forget quickly.", "🧠 Remember", "🔓 Brought out", "💪 Strong hand", "Memory becomes part of worship."]),
-      phrase("🍞 No Leavened Bread", ["Unleavened bread keeps the haste of rescue visible.", "The absence of leaven teaches the story.", "🍞 Unleavened", "🏃 Haste", "📅 Repeated feast", "Israel eats memory into the next generation."]),
-      phrase("🏞️ When The Lord Shall Bring Thee", ["The command looks forward to the land.", "Passover memory must continue after the crisis is over.", "🏞️ Promised land", "📜 Old oath", "🧠 Continued remembrance", "God does not want comfort in the land to erase memory of rescue."]),
-      phrase("👶 When Thy Son Asketh Thee", ["Children will ask what the practices mean.", "God wants parents ready with the story.", "👶 Question", "📖 Answer", "💪 By strength of hand", "Faith is passed on through explained remembrance."]),
-      phrase("✋ A Sign Unto Thee Upon Thine Hand", ["The rescue is to shape action and thought.", "Hand and eyes point to daily life and memory.", "✋ Actions", "👀 Attention", "📜 God's law", "Deliverance belongs in ordinary life, not only festival days."]),
-      phrase("🐑 Thou Shalt Redeem", ["The firstborn son is redeemed, not sacrificed.", "God teaches that life is claimed by Him and is rescued by provision.", "🐑 Substitute", "👶 Firstborn son", "🤲 Redemption", "The language prepares the Bible's larger theme of rescue through a price."]),
+      phrase("ðŸ‘¶ Sanctify Unto Me All The Firstborn", ["God claims the firstborn because He spared Israel's firstborn.", "Rescue creates belonging.", "ðŸ‘¶ Firstborn", "ðŸ›¡ï¸ Spared by mercy", "ðŸ™ Set apart to God", "The life God protected is now marked as His."]),
+      phrase("ðŸ§  Remember This Day", ["God commands memory immediately after deliverance.", "Freed people can forget quickly.", "ðŸ§  Remember", "ðŸ”“ Brought out", "ðŸ’ª Strong hand", "Memory becomes part of worship."]),
+      phrase("ðŸž No Leavened Bread", ["Unleavened bread keeps the haste of rescue visible.", "The absence of leaven teaches the story.", "ðŸž Unleavened", "ðŸƒ Haste", "ðŸ“… Repeated feast", "Israel eats memory into the next generation."]),
+      phrase("ðŸžï¸ When The Lord Shall Bring Thee", ["The command looks forward to the land.", "Passover memory must continue after the crisis is over.", "ðŸžï¸ Promised land", "ðŸ“œ Old oath", "ðŸ§  Continued remembrance", "God does not want comfort in the land to erase memory of rescue."]),
+      phrase("ðŸ‘¶ When Thy Son Asketh Thee", ["Children will ask what the practices mean.", "God wants parents ready with the story.", "ðŸ‘¶ Question", "ðŸ“– Answer", "ðŸ’ª By strength of hand", "Faith is passed on through explained remembrance."]),
+      phrase("âœ‹ A Sign Unto Thee Upon Thine Hand", ["The rescue is to shape action and thought.", "Hand and eyes point to daily life and memory.", "âœ‹ Actions", "ðŸ‘€ Attention", "ðŸ“œ God's law", "Deliverance belongs in ordinary life, not only festival days."]),
+      phrase("ðŸ‘ Thou Shalt Redeem", ["The firstborn son is redeemed, not sacrificed.", "God teaches that life is claimed by Him and is rescued by provision.", "ðŸ‘ Substitute", "ðŸ‘¶ Firstborn son", "ðŸ¤² Redemption", "The language prepares the Bible's larger theme of rescue through a price."]),
     ],
   },
   {
@@ -213,14 +281,14 @@ const RAW_EXODUS_11_20_PERSONAL_SECTIONS: PersonalExodusPhraseSectionInput[] = [
     endVerse: 22,
     reference: "Exodus 13:17-22",
     title: "God Leads The Long Way",
-    icon: "☁️",
+    icon: "â˜ï¸",
     phrases: [
-      phrase("🧭 God Led Them Not Through The Way Of The Philistines", ["The shortest route is not the route God chooses.", "Israel is free but not yet battle-ready.", "🧭 Longer road", "⚔️ War avoided", "🛡️ Mercy", "A longer path can still be God's kindness."]),
-      phrase("🔁 Lest Peradventure The People Repent", ["God knows the people's weakness.", "He leads with patience.", "🔁 Turning back", "😨 Fear of war", "☁️ Guided mercy", "God's route accounts for what His people can actually bear."]),
-      phrase("🪖 Harnessed", ["Israel leaves in ordered formation.", "They are no longer a scattered slave population.", "🪖 Ordered hosts", "🔓 Freed people", "🧭 Journey begins", "God is shaping their identity as His people."]),
-      phrase("🦴 Moses Took The Bones Of Joseph", ["Joseph's bones connect Exodus back to Genesis 50.", "Joseph believed God would surely visit His people.", "🦴 Bones", "📜 Promise remembered", "🏞️ Canaan hope", "Even Joseph's remains preach that Egypt is not the final home."]),
-      phrase("☁️ A Pillar Of Cloud", ["God gives visible guidance by day.", "A newly freed people need more than release; they need direction.", "☁️ Cloud", "🧭 Guidance", "👥 God with them", "Israel is not wandering alone."]),
-      phrase("🔥 A Pillar Of Fire", ["The fire gives light by night.", "God's presence guides in darkness too.", "🔥 Fire", "🌙 Night", "💡 Light", "The journey can continue because the LORD leads both day and night."]),
+      phrase("ðŸ§­ God Led Them Not Through The Way Of The Philistines", ["The shortest route is not the route God chooses.", "Israel is free but not yet battle-ready.", "ðŸ§­ Longer road", "âš”ï¸ War avoided", "ðŸ›¡ï¸ Mercy", "A longer path can still be God's kindness."]),
+      phrase("ðŸ” Lest Peradventure The People Repent", ["God knows the people's weakness.", "He leads with patience.", "ðŸ” Turning back", "ðŸ˜¨ Fear of war", "â˜ï¸ Guided mercy", "God's route accounts for what His people can actually bear."]),
+      phrase("ðŸª– Harnessed", ["Israel leaves in ordered formation.", "They are no longer a scattered slave population.", "ðŸª– Ordered hosts", "ðŸ”“ Freed people", "ðŸ§­ Journey begins", "God is shaping their identity as His people."]),
+      phrase("ðŸ¦´ Moses Took The Bones Of Joseph", ["Joseph's bones connect Exodus back to Genesis 50.", "Joseph believed God would surely visit His people.", "ðŸ¦´ Bones", "ðŸ“œ Promise remembered", "ðŸžï¸ Canaan hope", "Even Joseph's remains preach that Egypt is not the final home."]),
+      phrase("â˜ï¸ A Pillar Of Cloud", ["God gives visible guidance by day.", "A newly freed people need more than release; they need direction.", "â˜ï¸ Cloud", "ðŸ§­ Guidance", "ðŸ‘¥ God with them", "Israel is not wandering alone."]),
+      phrase("ðŸ”¥ A Pillar Of Fire", ["The fire gives light by night.", "God's presence guides in darkness too.", "ðŸ”¥ Fire", "ðŸŒ™ Night", "ðŸ’¡ Light", "The journey can continue because the LORD leads both day and night."]),
     ],
   },
   {
@@ -229,16 +297,16 @@ const RAW_EXODUS_11_20_PERSONAL_SECTIONS: PersonalExodusPhraseSectionInput[] = [
     endVerse: 14,
     reference: "Exodus 14:1-14",
     title: "Fear At The Sea",
-    icon: "😨",
+    icon: "ðŸ˜¨",
     phrases: [
-      phrase("🌊 Camp Before The Sea", ["God leads Israel to a place that looks trapped.", "The sea is in front and Egypt will come behind.", "🌊 Sea", "🏜️ Wilderness", "🐎 Army coming", "The setup looks impossible, but it is not outside God's plan."]),
-      phrase("🪤 They Are Entangled In The Land", ["Pharaoh thinks Israel is trapped.", "He reads the geography without seeing God.", "🪤 Trap", "👑 Pharaoh's confidence", "🌊 Sea", "What looks like entanglement to Pharaoh will become deliverance for Israel."]),
-      phrase("🐎 Six Hundred Chosen Chariots", ["Egypt brings elite military power.", "The contrast is extreme: chariots against freed slaves.", "🐎 Chariots", "⚔️ Army", "😨 Fear", "The visible threat is real, which makes God's rescue unmistakable."]),
-      phrase("😨 They Were Sore Afraid", ["Israel's fear is understandable.", "The army is real.", "😨 Fear", "🌊 Sea", "🐎 Pursuit", "But fear becomes dangerous when it rewrites God's rescue as a mistake."]),
-      phrase("⚰️ Because There Were No Graves In Egypt", ["The people speak with bitter sarcasm.", "They accuse Moses of bringing them out to die.", "⚰️ Graves", "😣 Panic", "🔁 Egypt nostalgia", "Fear can make bondage look safer than faith."]),
-      phrase("🛑 Fear Ye Not", ["Moses commands the people not to fear.", "This is not because the danger is fake, but because God is real.", "🛑 Fear not", "👀 Stand still", "🛡️ Salvation coming", "Faith begins by looking away from Egypt's power to the LORD's promise."]),
-      phrase("👀 Stand Still, And See", ["Israel cannot save itself at the sea.", "They must watch God act.", "👀 Stand still", "🛡️ Salvation", "💪 The LORD acts", "This moment teaches salvation before it teaches strategy."]),
-      phrase("🛡️ The Lord Shall Fight For You", ["God Himself will fight for Israel.", "The Exodus is not Israel's military victory.", "🛡️ The LORD fights", "🤫 Hold peace", "🐎 Egypt defeated", "The people are rescued by divine power, not battle skill."]),
+      phrase("ðŸŒŠ Camp Before The Sea", ["God leads Israel to a place that looks trapped.", "The sea is in front and Egypt will come behind.", "ðŸŒŠ Sea", "ðŸœï¸ Wilderness", "ðŸŽ Army coming", "The setup looks impossible, but it is not outside God's plan."]),
+      phrase("ðŸª¤ They Are Entangled In The Land", ["Pharaoh thinks Israel is trapped.", "He reads the geography without seeing God.", "ðŸª¤ Trap", "ðŸ‘‘ Pharaoh's confidence", "ðŸŒŠ Sea", "What looks like entanglement to Pharaoh will become deliverance for Israel."]),
+      phrase("ðŸŽ Six Hundred Chosen Chariots", ["Egypt brings elite military power.", "The contrast is extreme: chariots against freed slaves.", "ðŸŽ Chariots", "âš”ï¸ Army", "ðŸ˜¨ Fear", "The visible threat is real, which makes God's rescue unmistakable."]),
+      phrase("ðŸ˜¨ They Were Sore Afraid", ["Israel's fear is understandable.", "The army is real.", "ðŸ˜¨ Fear", "ðŸŒŠ Sea", "ðŸŽ Pursuit", "But fear becomes dangerous when it rewrites God's rescue as a mistake."]),
+      phrase("âš°ï¸ Because There Were No Graves In Egypt", ["The people speak with bitter sarcasm.", "They accuse Moses of bringing them out to die.", "âš°ï¸ Graves", "ðŸ˜£ Panic", "ðŸ” Egypt nostalgia", "Fear can make bondage look safer than faith."]),
+      phrase("ðŸ›‘ Fear Ye Not", ["Moses commands the people not to fear.", "This is not because the danger is fake, but because God is real.", "ðŸ›‘ Fear not", "ðŸ‘€ Stand still", "ðŸ›¡ï¸ Salvation coming", "Faith begins by looking away from Egypt's power to the LORD's promise."]),
+      phrase("ðŸ‘€ Stand Still, And See", ["Israel cannot save itself at the sea.", "They must watch God act.", "ðŸ‘€ Stand still", "ðŸ›¡ï¸ Salvation", "ðŸ’ª The LORD acts", "This moment teaches salvation before it teaches strategy."]),
+      phrase("ðŸ›¡ï¸ The Lord Shall Fight For You", ["God Himself will fight for Israel.", "The Exodus is not Israel's military victory.", "ðŸ›¡ï¸ The LORD fights", "ðŸ¤« Hold peace", "ðŸŽ Egypt defeated", "The people are rescued by divine power, not battle skill."]),
     ],
   },
   {
@@ -247,15 +315,15 @@ const RAW_EXODUS_11_20_PERSONAL_SECTIONS: PersonalExodusPhraseSectionInput[] = [
     endVerse: 31,
     reference: "Exodus 14:15-31",
     title: "The Sea Opens",
-    icon: "🌊",
+    icon: "ðŸŒŠ",
     phrases: [
-      phrase("🚶 Go Forward", ["After standing still, Israel must move.", "Faith changes posture when God commands.", "👀 Stand still", "🚶 Go forward", "🌊 Path opening", "Waiting and walking both belong with obedience."]),
-      phrase("☁️ The Pillar Removed", ["The cloud moves between Egypt and Israel.", "God's presence becomes a shield behind them.", "☁️ Cloud", "🛡️ Protection", "🐎 Egypt blocked", "The LORD knows where His people need defense."]),
-      phrase("🌬️ A Strong East Wind", ["God uses wind to divide the sea.", "Creation obeys the Creator.", "🌬️ Wind", "🌊 Waters divided", "🏜️ Dry ground", "The rescue echoes creation: God brings order and dry land through waters."]),
-      phrase("🧱 A Wall Unto Them", ["The waters stand like walls on both sides.", "The sea that looked like death becomes a passage.", "🧱 Water walls", "🚶 Israel walking", "🛡️ God preserving", "The impossible path exists because God commands it."]),
-      phrase("⚙️ Took Off Their Chariot Wheels", ["Egypt follows, but their strength breaks down.", "The chariots that terrified Israel become useless.", "⚙️ Wheels off", "🐎 Army troubled", "⚖️ Pride collapsing", "God can dismantle the very power people trust."]),
-      phrase("🏃 Let Us Flee", ["Egypt finally recognizes the LORD fights for Israel.", "But the recognition comes too late.", "🏃 Panic", "🛡️ The LORD fights", "🌊 Waters returning", "The oppressor's confidence collapses inside the place of judgment."]),
-      phrase("👀 Israel Saw That Great Work", ["The people see the LORD's deliverance.", "The sight leads to fear of the LORD and belief.", "👀 Saw", "🙇 Feared", "🤲 Believed", "Deliverance becomes a foundation for worship and trust."]),
+      phrase("ðŸš¶ Go Forward", ["After standing still, Israel must move.", "Faith changes posture when God commands.", "ðŸ‘€ Stand still", "ðŸš¶ Go forward", "ðŸŒŠ Path opening", "Waiting and walking both belong with obedience."]),
+      phrase("â˜ï¸ The Pillar Removed", ["The cloud moves between Egypt and Israel.", "God's presence becomes a shield behind them.", "â˜ï¸ Cloud", "ðŸ›¡ï¸ Protection", "ðŸŽ Egypt blocked", "The LORD knows where His people need defense."]),
+      phrase("ðŸŒ¬ï¸ A Strong East Wind", ["God uses wind to divide the sea.", "Creation obeys the Creator.", "ðŸŒ¬ï¸ Wind", "ðŸŒŠ Waters divided", "ðŸœï¸ Dry ground", "The rescue echoes creation: God brings order and dry land through waters."]),
+      phrase("ðŸ§± A Wall Unto Them", ["The waters stand like walls on both sides.", "The sea that looked like death becomes a passage.", "ðŸ§± Water walls", "ðŸš¶ Israel walking", "ðŸ›¡ï¸ God preserving", "The impossible path exists because God commands it."]),
+      phrase("âš™ï¸ Took Off Their Chariot Wheels", ["Egypt follows, but their strength breaks down.", "The chariots that terrified Israel become useless.", "âš™ï¸ Wheels off", "ðŸŽ Army troubled", "âš–ï¸ Pride collapsing", "God can dismantle the very power people trust."]),
+      phrase("ðŸƒ Let Us Flee", ["Egypt finally recognizes the LORD fights for Israel.", "But the recognition comes too late.", "ðŸƒ Panic", "ðŸ›¡ï¸ The LORD fights", "ðŸŒŠ Waters returning", "The oppressor's confidence collapses inside the place of judgment."]),
+      phrase("ðŸ‘€ Israel Saw That Great Work", ["The people see the LORD's deliverance.", "The sight leads to fear of the LORD and belief.", "ðŸ‘€ Saw", "ðŸ™‡ Feared", "ðŸ¤² Believed", "Deliverance becomes a foundation for worship and trust."]),
     ],
   },
   {
@@ -264,15 +332,15 @@ const RAW_EXODUS_11_20_PERSONAL_SECTIONS: PersonalExodusPhraseSectionInput[] = [
     endVerse: 21,
     reference: "Exodus 15:1-21",
     title: "Israel Sings The Victory",
-    icon: "🎶",
+    icon: "ðŸŽ¶",
     phrases: [
-      phrase("🎶 I Will Sing Unto The Lord", ["The first major song rises from deliverance.", "Israel does not merely escape; they worship.", "🎶 Song", "🌊 Sea rescue", "🙌 Praise", "God's saving work becomes the people's music."]),
-      phrase("🐎 Horse And His Rider", ["The song remembers Egypt's military pride thrown into the sea.", "What terrified Israel is gone.", "🐎 Horse", "⚔️ Rider", "🌊 Sea", "The line celebrates the LORD's victory over visible power."]),
-      phrase("💪 The Lord Is My Strength And Song", ["God is not only the One who gives strength.", "He becomes the center of song.", "💪 Strength", "🎶 Song", "🛡️ Salvation", "The rescued people now have a new source of confidence."]),
-      phrase("👑 The Lord Is A Man Of War", ["The song praises the LORD as warrior.", "He fought for His oppressed people.", "👑 Warrior", "⚖️ Justice", "🛡️ Rescue", "This is not random violence; it is holy deliverance from oppression."]),
-      phrase("❓ Who Is Like Unto Thee", ["The question is worship.", "No rival compares to the LORD.", "❓ Who is like", "✨ Glorious in holiness", "🙌 Fearful in praises", "Egypt's gods and Pharaoh's power have been exposed as nothing beside Him."]),
-      phrase("🏞️ Thou Shalt Bring Them In", ["The song looks forward to the destination.", "God did not rescue Israel to leave them nowhere.", "🏞️ Bring them in", "⛰️ Holy habitation", "📜 Promise ahead", "Deliverance has a destination: life near God."]),
-      phrase("🥁 Miriam The Prophetess", ["Miriam leads the women in praise.", "Her leadership is visible and named.", "🥁 Timbrel", "💃 Dance", "🎶 Answering song", "The victory reaches the whole community, and worship spreads through it."]),
+      phrase("ðŸŽ¶ I Will Sing Unto The Lord", ["The first major song rises from deliverance.", "Israel does not merely escape; they worship.", "ðŸŽ¶ Song", "ðŸŒŠ Sea rescue", "ðŸ™Œ Praise", "God's saving work becomes the people's music."]),
+      phrase("ðŸŽ Horse And His Rider", ["The song remembers Egypt's military pride thrown into the sea.", "What terrified Israel is gone.", "ðŸŽ Horse", "âš”ï¸ Rider", "ðŸŒŠ Sea", "The line celebrates the LORD's victory over visible power."]),
+      phrase("ðŸ’ª The Lord Is My Strength And Song", ["God is not only the One who gives strength.", "He becomes the center of song.", "ðŸ’ª Strength", "ðŸŽ¶ Song", "ðŸ›¡ï¸ Salvation", "The rescued people now have a new source of confidence."]),
+      phrase("ðŸ‘‘ The Lord Is A Man Of War", ["The song praises the LORD as warrior.", "He fought for His oppressed people.", "ðŸ‘‘ Warrior", "âš–ï¸ Justice", "ðŸ›¡ï¸ Rescue", "This is not random violence; it is holy deliverance from oppression."]),
+      phrase("â“ Who Is Like Unto Thee", ["The question is worship.", "No rival compares to the LORD.", "â“ Who is like", "âœ¨ Glorious in holiness", "ðŸ™Œ Fearful in praises", "Egypt's gods and Pharaoh's power have been exposed as nothing beside Him."]),
+      phrase("ðŸžï¸ Thou Shalt Bring Them In", ["The song looks forward to the destination.", "God did not rescue Israel to leave them nowhere.", "ðŸžï¸ Bring them in", "â›°ï¸ Holy habitation", "ðŸ“œ Promise ahead", "Deliverance has a destination: life near God."]),
+      phrase("ðŸ¥ Miriam The Prophetess", ["Miriam leads the women in praise.", "Her leadership is visible and named.", "ðŸ¥ Timbrel", "ðŸ’ƒ Dance", "ðŸŽ¶ Answering song", "The victory reaches the whole community, and worship spreads through it."]),
     ],
   },
   {
@@ -281,14 +349,14 @@ const RAW_EXODUS_11_20_PERSONAL_SECTIONS: PersonalExodusPhraseSectionInput[] = [
     endVerse: 27,
     reference: "Exodus 15:22-27",
     title: "Bitter Water And The God Who Heals",
-    icon: "💧",
+    icon: "ðŸ’§",
     phrases: [
-      phrase("🏜️ Three Days In The Wilderness", ["The song is followed by thirst.", "Spiritual highs do not remove real needs.", "🏜️ Wilderness", "⏳ Three days", "💧 No water", "Israel must learn trust after the sea."]),
-      phrase("💧 The Waters Of Marah", ["The water exists, but it is bitter.", "Need turns into disappointment.", "💧 Water found", "😖 Bitter", "😣 Cannot drink", "The wilderness exposes the heart quickly."]),
-      phrase("😣 The People Murmured", ["Israel complains against Moses.", "Their thirst is real, but their response turns against God's servant.", "😣 Complaint", "💧 Need", "🧠 Short memory", "The people who sang at the sea now struggle at the water."]),
-      phrase("🌳 The Lord Shewed Him A Tree", ["God shows Moses what to do.", "The tree is God's appointed means for healing the water.", "🌳 Tree", "💧 Bitter made sweet", "🤲 Provision", "God can make bitter places livable."]),
-      phrase("🩺 I Am The Lord That Healeth Thee", ["God reveals Himself as healer.", "He cares for His people after the dramatic rescue.", "🩺 Healing", "💧 Water", "🏜️ Wilderness", "The LORD is not only the God who defeats Egypt; He heals His people on the road."]),
-      phrase("🌴 Elim", ["After Marah, Israel comes to Elim with twelve wells and seventy palm trees.", "God gives refreshment after testing.", "🌴 Palm trees", "💧 Twelve wells", "🏕️ Rest", "The wilderness includes bitter places, but not only bitter places."]),
+      phrase("ðŸœï¸ Three Days In The Wilderness", ["The song is followed by thirst.", "Spiritual highs do not remove real needs.", "ðŸœï¸ Wilderness", "â³ Three days", "ðŸ’§ No water", "Israel must learn trust after the sea."]),
+      phrase("ðŸ’§ The Waters Of Marah", ["The water exists, but it is bitter.", "Need turns into disappointment.", "ðŸ’§ Water found", "ðŸ˜– Bitter", "ðŸ˜£ Cannot drink", "The wilderness exposes the heart quickly."]),
+      phrase("ðŸ˜£ The People Murmured", ["Israel complains against Moses.", "Their thirst is real, but their response turns against God's servant.", "ðŸ˜£ Complaint", "ðŸ’§ Need", "ðŸ§  Short memory", "The people who sang at the sea now struggle at the water."]),
+      phrase("ðŸŒ³ The Lord Shewed Him A Tree", ["God shows Moses what to do.", "The tree is God's appointed means for healing the water.", "ðŸŒ³ Tree", "ðŸ’§ Bitter made sweet", "ðŸ¤² Provision", "God can make bitter places livable."]),
+      phrase("ðŸ©º I Am The Lord That Healeth Thee", ["God reveals Himself as healer.", "He cares for His people after the dramatic rescue.", "ðŸ©º Healing", "ðŸ’§ Water", "ðŸœï¸ Wilderness", "The LORD is not only the God who defeats Egypt; He heals His people on the road."]),
+      phrase("ðŸŒ´ Elim", ["After Marah, Israel comes to Elim with twelve wells and seventy palm trees.", "God gives refreshment after testing.", "ðŸŒ´ Palm trees", "ðŸ’§ Twelve wells", "ðŸ•ï¸ Rest", "The wilderness includes bitter places, but not only bitter places."]),
     ],
   },
   {
@@ -297,15 +365,15 @@ const RAW_EXODUS_11_20_PERSONAL_SECTIONS: PersonalExodusPhraseSectionInput[] = [
     endVerse: 12,
     reference: "Exodus 16:1-12",
     title: "Bread From Heaven",
-    icon: "🍞",
+    icon: "ðŸž",
     phrases: [
-      phrase("🏜️ Wilderness Of Sin", ["This is a wilderness location, not a claim that the place itself is sinful.", "Israel is away from Egypt's food system now.", "🏜️ Wilderness", "🍽️ Hunger", "🤲 Dependence", "Freedom requires learning a new source of daily life."]),
-      phrase("😣 The Whole Congregation Murmured", ["The complaint spreads through the community.", "Hunger is real, but fear turns into accusation.", "😣 Murmuring", "👥 Whole congregation", "🍽️ Hunger", "Pressure can make a rescued people speak like Egypt was better."]),
-      phrase("🍲 Flesh Pots", ["Israel remembers Egypt's food while forgetting Egypt's cruelty.", "Fear edits memory.", "🍲 Meat pots", "🍞 Bread to the full", "🔒 Slavery minimized", "Hunger can make bondage sound safer than trust."]),
-      phrase("🍞 I Will Rain Bread From Heaven", ["God answers hunger with bread from above.", "Israel cannot produce it or control it.", "🍞 Bread", "☁️ From heaven", "🤲 Gift", "Daily life will become a classroom of trust."]),
-      phrase("📏 A Certain Rate Every Day", ["God gives daily limits.", "The people must gather enough for each day.", "📏 Measured portion", "📅 Daily rhythm", "🤲 Trust", "God is training them out of hoarding and into dependence."]),
-      phrase("🧪 That I May Prove Them", ["The manna is food and a test.", "God is forming a people who listen.", "🧪 Test", "🍞 Provision", "📜 Law", "Provision is not only survival; it is discipleship."]),
-      phrase("👂 The Lord Heareth Your Murmurings", ["God hears even the complaints.", "The people aim their frustration at Moses and Aaron, but the deeper issue is with the LORD.", "👂 God hears", "😣 Murmuring", "🙏 Need", "God answers with provision, but He also names the complaint truthfully."]),
+      phrase("ðŸœï¸ Wilderness Of Sin", ["This is a wilderness location, not a claim that the place itself is sinful.", "Israel is away from Egypt's food system now.", "ðŸœï¸ Wilderness", "ðŸ½ï¸ Hunger", "ðŸ¤² Dependence", "Freedom requires learning a new source of daily life."]),
+      phrase("ðŸ˜£ The Whole Congregation Murmured", ["The complaint spreads through the community.", "Hunger is real, but fear turns into accusation.", "ðŸ˜£ Murmuring", "ðŸ‘¥ Whole congregation", "ðŸ½ï¸ Hunger", "Pressure can make a rescued people speak like Egypt was better."]),
+      phrase("ðŸ² Flesh Pots", ["Israel remembers Egypt's food while forgetting Egypt's cruelty.", "Fear edits memory.", "ðŸ² Meat pots", "ðŸž Bread to the full", "ðŸ”’ Slavery minimized", "Hunger can make bondage sound safer than trust."]),
+      phrase("ðŸž I Will Rain Bread From Heaven", ["God answers hunger with bread from above.", "Israel cannot produce it or control it.", "ðŸž Bread", "â˜ï¸ From heaven", "ðŸ¤² Gift", "Daily life will become a classroom of trust."]),
+      phrase("ðŸ“ A Certain Rate Every Day", ["God gives daily limits.", "The people must gather enough for each day.", "ðŸ“ Measured portion", "ðŸ“… Daily rhythm", "ðŸ¤² Trust", "God is training them out of hoarding and into dependence."]),
+      phrase("ðŸ§ª That I May Prove Them", ["The manna is food and a test.", "God is forming a people who listen.", "ðŸ§ª Test", "ðŸž Provision", "ðŸ“œ Law", "Provision is not only survival; it is discipleship."]),
+      phrase("ðŸ‘‚ The Lord Heareth Your Murmurings", ["God hears even the complaints.", "The people aim their frustration at Moses and Aaron, but the deeper issue is with the LORD.", "ðŸ‘‚ God hears", "ðŸ˜£ Murmuring", "ðŸ™ Need", "God answers with provision, but He also names the complaint truthfully."]),
     ],
   },
   {
@@ -314,15 +382,15 @@ const RAW_EXODUS_11_20_PERSONAL_SECTIONS: PersonalExodusPhraseSectionInput[] = [
     endVerse: 36,
     reference: "Exodus 16:13-36",
     title: "Manna And Sabbath Rest",
-    icon: "❓",
+    icon: "â“",
     phrases: [
-      phrase("🐦 Quails Came Up", ["God provides meat in the evening.", "He answers the people's complaint with real provision.", "🐦 Quail", "🌙 Evening", "🍽️ Food", "The wilderness is not too empty for God to feed His people."]),
-      phrase("❓ What Is It", ["Manna is connected to Israel's question.", "They receive provision they do not recognize.", "❓ What is it", "🍞 Bread from the LORD", "🤲 Strange gift", "God's provision may be unfamiliar before it becomes daily bread."]),
-      phrase("📏 An Omer For Every Man", ["Each person gathers according to need.", "No one is meant to lack, and no one is meant to hoard.", "📏 Omer", "👥 Every person", "⚖️ Enough", "God's economy trains the community in sufficiency."]),
-      phrase("🪱 It Bred Worms", ["When people keep manna against God's command, it spoils.", "Hoarding disobeys the daily lesson.", "🪱 Worms", "😖 Stench", "🛑 Distrust exposed", "God is teaching trust one morning at a time."]),
-      phrase("🛑 The Rest Of The Holy Sabbath", ["Sabbath appears before Sinai's tablets.", "Former slaves are taught holy rest.", "🛑 Rest", "🍞 Double portion", "📅 Seventh day", "Rest is not laziness; it is trust in God's provision."]),
-      phrase("🚫 There Was None", ["Some still go out looking for manna on Sabbath.", "They struggle to trust rest.", "🚫 No manna", "🛑 Sabbath", "😟 Slave habits", "A rescued people must learn that God gives enough for rest too."]),
-      phrase("🏺 Lay Up An Omer", ["A portion of manna is kept as a witness for future generations.", "God wants the miracle remembered.", "🏺 Omer kept", "👶 Generations", "📖 Testimony", "The daily bread becomes evidence of God's faithfulness in the wilderness."]),
+      phrase("ðŸ¦ Quails Came Up", ["God provides meat in the evening.", "He answers the people's complaint with real provision.", "ðŸ¦ Quail", "ðŸŒ™ Evening", "ðŸ½ï¸ Food", "The wilderness is not too empty for God to feed His people."]),
+      phrase("â“ What Is It", ["Manna is connected to Israel's question.", "They receive provision they do not recognize.", "â“ What is it", "ðŸž Bread from the LORD", "ðŸ¤² Strange gift", "God's provision may be unfamiliar before it becomes daily bread."]),
+      phrase("ðŸ“ An Omer For Every Man", ["Each person gathers according to need.", "No one is meant to lack, and no one is meant to hoard.", "ðŸ“ Omer", "ðŸ‘¥ Every person", "âš–ï¸ Enough", "God's economy trains the community in sufficiency."]),
+      phrase("ðŸª± It Bred Worms", ["When people keep manna against God's command, it spoils.", "Hoarding disobeys the daily lesson.", "ðŸª± Worms", "ðŸ˜– Stench", "ðŸ›‘ Distrust exposed", "God is teaching trust one morning at a time."]),
+      phrase("ðŸ›‘ The Rest Of The Holy Sabbath", ["Sabbath appears before Sinai's tablets.", "Former slaves are taught holy rest.", "ðŸ›‘ Rest", "ðŸž Double portion", "ðŸ“… Seventh day", "Rest is not laziness; it is trust in God's provision."]),
+      phrase("ðŸš« There Was None", ["Some still go out looking for manna on Sabbath.", "They struggle to trust rest.", "ðŸš« No manna", "ðŸ›‘ Sabbath", "ðŸ˜Ÿ Slave habits", "A rescued people must learn that God gives enough for rest too."]),
+      phrase("ðŸº Lay Up An Omer", ["A portion of manna is kept as a witness for future generations.", "God wants the miracle remembered.", "ðŸº Omer kept", "ðŸ‘¶ Generations", "ðŸ“– Testimony", "The daily bread becomes evidence of God's faithfulness in the wilderness."]),
     ],
   },
   {
@@ -331,13 +399,13 @@ const RAW_EXODUS_11_20_PERSONAL_SECTIONS: PersonalExodusPhraseSectionInput[] = [
     endVerse: 7,
     reference: "Exodus 17:1-7",
     title: "Water From The Rock",
-    icon: "💧",
+    icon: "ðŸ’§",
     phrases: [
-      phrase("💧 No Water For The People To Drink", ["The need is real.", "The wilderness has brought Israel to thirst again.", "💧 No water", "🏜️ Rephidim", "😣 Pressure", "Exodus does not pretend the need is small. It shows what need reveals."]),
-      phrase("⚖️ The People Did Chide", ["The people quarrel with Moses.", "Fear turns into accusation.", "⚖️ Quarreling", "😣 Thirst", "🧠 Forgetting", "The deeper question is whether they trust the God who has already provided."]),
-      phrase("🪨 Smite The Rock", ["God tells Moses to strike the rock at Horeb.", "Water comes from an unlikely place.", "🪨 Rock", "🪵 Rod", "💧 Water", "The staff used in judgment on Egypt now becomes connected to provision for Israel."]),
-      phrase("❓ Is The Lord Among Us, Or Not", ["This question names the heart issue.", "Israel's thirst is real, but they question God's presence.", "❓ Is God here", "💧 Need", "😨 Doubt", "The wilderness tests whether they know the LORD is with them when the next need appears."]),
-      phrase("📍 Massah And Meribah", ["The place is named for testing and quarrelling.", "Place names in Exodus preserve spiritual memory.", "📍 Massah", "📍 Meribah", "🧠 Warning", "The map itself becomes a reminder of mistrust and God's provision."]),
+      phrase("ðŸ’§ No Water For The People To Drink", ["The need is real.", "The wilderness has brought Israel to thirst again.", "ðŸ’§ No water", "ðŸœï¸ Rephidim", "ðŸ˜£ Pressure", "Exodus does not pretend the need is small. It shows what need reveals."]),
+      phrase("âš–ï¸ The People Did Chide", ["The people quarrel with Moses.", "Fear turns into accusation.", "âš–ï¸ Quarreling", "ðŸ˜£ Thirst", "ðŸ§  Forgetting", "The deeper question is whether they trust the God who has already provided."]),
+      phrase("ðŸª¨ Smite The Rock", ["God tells Moses to strike the rock at Horeb.", "Water comes from an unlikely place.", "ðŸª¨ Rock", "ðŸªµ Rod", "ðŸ’§ Water", "The staff used in judgment on Egypt now becomes connected to provision for Israel."]),
+      phrase("â“ Is The Lord Among Us, Or Not", ["This question names the heart issue.", "Israel's thirst is real, but they question God's presence.", "â“ Is God here", "ðŸ’§ Need", "ðŸ˜¨ Doubt", "The wilderness tests whether they know the LORD is with them when the next need appears."]),
+      phrase("ðŸ“ Massah And Meribah", ["The place is named for testing and quarrelling.", "Place names in Exodus preserve spiritual memory.", "ðŸ“ Massah", "ðŸ“ Meribah", "ðŸ§  Warning", "The map itself becomes a reminder of mistrust and God's provision."]),
     ],
   },
   {
@@ -346,14 +414,14 @@ const RAW_EXODUS_11_20_PERSONAL_SECTIONS: PersonalExodusPhraseSectionInput[] = [
     endVerse: 16,
     reference: "Exodus 17:8-16",
     title: "The Lord Is My Banner",
-    icon: "🏳️",
+    icon: "ðŸ³ï¸",
     phrases: [
-      phrase("⚔️ Then Came Amalek", ["The first battle comes after the water crisis.", "Freedom does not mean life becomes battle-free.", "⚔️ Amalek", "🏜️ Wilderness", "🛡️ Need for God", "Israel must learn dependence in conflict as well as thirst."]),
-      phrase("🪖 Joshua", ["Joshua appears as a battle leader.", "This is an early introduction to someone who will matter later.", "🪖 Joshua", "⚔️ Fighting below", "⛰️ Moses above", "God's deliverance uses different servants in different roles."]),
-      phrase("🙌 When Moses Held Up His Hand", ["The battle is connected to Moses' raised hands.", "Israel's victory is not explained by military strength alone.", "🙌 Raised hands", "⚔️ Battle", "🤲 Dependence", "The scene shows that victory depends on the LORD."]),
-      phrase("🥀 Moses' Hands Were Heavy", ["Moses is called, but he is still human.", "His weakness is not hidden.", "🥀 Heavy hands", "🪨 Stone seat", "🤝 Help needed", "Faithful leadership often requires faithful support."]),
-      phrase("🤝 Aaron And Hur Stayed Up His Hands", ["Aaron and Hur support Moses until sunset.", "Their hidden help matters to the victory.", "🤝 Support", "🙌 Steady hands", "⚔️ Victory", "Exodus honors the people who hold up weary servants."]),
-      phrase("🏳️ Jehovah-Nissi", ["Moses names the altar The LORD is my banner.", "A banner marks identity and rallying point.", "🏳️ Banner", "🙌 Worship", "🛡️ Victory comes from God", "Israel must remember whose name stands over the battle."]),
+      phrase("âš”ï¸ Then Came Amalek", ["The first battle comes after the water crisis.", "Freedom does not mean life becomes battle-free.", "âš”ï¸ Amalek", "ðŸœï¸ Wilderness", "ðŸ›¡ï¸ Need for God", "Israel must learn dependence in conflict as well as thirst."]),
+      phrase("ðŸª– Joshua", ["Joshua appears as a battle leader.", "This is an early introduction to someone who will matter later.", "ðŸª– Joshua", "âš”ï¸ Fighting below", "â›°ï¸ Moses above", "God's deliverance uses different servants in different roles."]),
+      phrase("ðŸ™Œ When Moses Held Up His Hand", ["The battle is connected to Moses' raised hands.", "Israel's victory is not explained by military strength alone.", "ðŸ™Œ Raised hands", "âš”ï¸ Battle", "ðŸ¤² Dependence", "The scene shows that victory depends on the LORD."]),
+      phrase("ðŸ¥€ Moses' Hands Were Heavy", ["Moses is called, but he is still human.", "His weakness is not hidden.", "ðŸ¥€ Heavy hands", "ðŸª¨ Stone seat", "ðŸ¤ Help needed", "Faithful leadership often requires faithful support."]),
+      phrase("ðŸ¤ Aaron And Hur Stayed Up His Hands", ["Aaron and Hur support Moses until sunset.", "Their hidden help matters to the victory.", "ðŸ¤ Support", "ðŸ™Œ Steady hands", "âš”ï¸ Victory", "Exodus honors the people who hold up weary servants."]),
+      phrase("ðŸ³ï¸ Jehovah-Nissi", ["Moses names the altar The LORD is my banner.", "A banner marks identity and rallying point.", "ðŸ³ï¸ Banner", "ðŸ™Œ Worship", "ðŸ›¡ï¸ Victory comes from God", "Israel must remember whose name stands over the battle."]),
     ],
   },
   {
@@ -362,14 +430,14 @@ const RAW_EXODUS_11_20_PERSONAL_SECTIONS: PersonalExodusPhraseSectionInput[] = [
     endVerse: 12,
     reference: "Exodus 18:1-12",
     title: "Jethro Hears What God Has Done",
-    icon: "👂",
+    icon: "ðŸ‘‚",
     phrases: [
-      phrase("👂 Jethro Heard", ["The Exodus is becoming testimony beyond Israel.", "Jethro hears what God has done.", "👂 Heard", "🌍 Outsider listening", "📣 God's works spreading", "Deliverance is meant to be known."]),
-      phrase("🏠 Zipporah", ["Moses' family is brought back into the story.", "The deliverer is also a husband and father.", "🏠 Family", "👥 Reunion", "🧭 Journey", "Exodus keeps public mission and personal household in view."]),
-      phrase("🗣️ Moses Told His Father In Law All", ["Moses tells the story of deliverance and hardship.", "Good testimony does not hide trouble.", "🗣️ Told all", "⚖️ What Pharaoh did", "🛡️ How the LORD delivered", "The story is for God's glory, not Moses' image."]),
-      phrase("😊 Jethro Rejoiced", ["Jethro rejoices over God's goodness to Israel.", "An outsider celebrates the LORD's rescue.", "😊 Joy", "🙌 Blessing", "🌍 Wider witness", "God's salvation draws praise from beyond the rescued people."]),
-      phrase("👑 Greater Than All Gods", ["Jethro confesses the LORD's greatness.", "Egypt's gods have been exposed.", "👑 Greater", "⚖️ Proud enemies judged", "🙌 The LORD blessed", "The Exodus reveals supremacy, not merely power."]),
-      phrase("🍽️ Eat Bread With Moses' Father In Law Before God", ["The chapter ends with a meal before God.", "Deliverance becomes fellowship and worship.", "🍽️ Meal", "👴 Elders", "🙌 Before God", "Testimony leads to shared worship."]),
+      phrase("ðŸ‘‚ Jethro Heard", ["The Exodus is becoming testimony beyond Israel.", "Jethro hears what God has done.", "ðŸ‘‚ Heard", "ðŸŒ Outsider listening", "ðŸ“£ God's works spreading", "Deliverance is meant to be known."]),
+      phrase("ðŸ  Zipporah", ["Moses' family is brought back into the story.", "The deliverer is also a husband and father.", "ðŸ  Family", "ðŸ‘¥ Reunion", "ðŸ§­ Journey", "Exodus keeps public mission and personal household in view."]),
+      phrase("ðŸ—£ï¸ Moses Told His Father In Law All", ["Moses tells the story of deliverance and hardship.", "Good testimony does not hide trouble.", "ðŸ—£ï¸ Told all", "âš–ï¸ What Pharaoh did", "ðŸ›¡ï¸ How the LORD delivered", "The story is for God's glory, not Moses' image."]),
+      phrase("ðŸ˜Š Jethro Rejoiced", ["Jethro rejoices over God's goodness to Israel.", "An outsider celebrates the LORD's rescue.", "ðŸ˜Š Joy", "ðŸ™Œ Blessing", "ðŸŒ Wider witness", "God's salvation draws praise from beyond the rescued people."]),
+      phrase("ðŸ‘‘ Greater Than All Gods", ["Jethro confesses the LORD's greatness.", "Egypt's gods have been exposed.", "ðŸ‘‘ Greater", "âš–ï¸ Proud enemies judged", "ðŸ™Œ The LORD blessed", "The Exodus reveals supremacy, not merely power."]),
+      phrase("ðŸ½ï¸ Eat Bread With Moses' Father In Law Before God", ["The chapter ends with a meal before God.", "Deliverance becomes fellowship and worship.", "ðŸ½ï¸ Meal", "ðŸ‘´ Elders", "ðŸ™Œ Before God", "Testimony leads to shared worship."]),
     ],
   },
   {
@@ -378,14 +446,14 @@ const RAW_EXODUS_11_20_PERSONAL_SECTIONS: PersonalExodusPhraseSectionInput[] = [
     endVerse: 27,
     reference: "Exodus 18:13-27",
     title: "Jethro Teaches Shared Leadership",
-    icon: "🧑‍⚖️",
+    icon: "ðŸ§‘â€âš–ï¸",
     phrases: [
-      phrase("🧑‍⚖️ Moses Sat To Judge The People", ["Moses is carrying dispute after dispute.", "The need is real, but the load is too heavy.", "🧑‍⚖️ Judging", "👥 People waiting", "😓 One man overloaded", "Good work can still be unsustainable."]),
-      phrase("❓ Why Sittest Thou Thyself Alone", ["Jethro asks a wise question.", "He sees the strain Moses has normalized.", "❓ Why alone", "👀 Outside perspective", "🧠 Wisdom", "Sometimes faithful leaders need someone else to name what is not working."]),
-      phrase("😓 Thou Wilt Surely Wear Away", ["Jethro warns Moses that the load will wear him out.", "The people will suffer too.", "😓 Exhaustion", "👥 People burdened", "⚠️ Not sustainable", "Human limits are not failure; they are part of wise leadership."]),
-      phrase("📖 Teach Them Ordinances And Laws", ["Moses must teach the people God's ways, not only solve cases.", "Instruction helps the whole community mature.", "📖 Teach", "🧭 Show the way", "👥 Form the people", "Leadership is not only answering problems; it is shaping understanding."]),
-      phrase("🧑‍⚖️ Able Men", ["Jethro describes the kind of leaders needed.", "Ability and character both matter.", "🧑‍⚖️ Able", "🙏 Fear God", "🗣️ Truth", "🚫 Hating covetousness", "Shared leadership must be trustworthy leadership."]),
-      phrase("🤝 They Shall Bear The Burden With Thee", ["The load is shared.", "Moses does not have to carry every case alone.", "🤝 Shared burden", "👥 Ordered people", "😌 Sustainable service", "God's care can come through wise structure."]),
+      phrase("ðŸ§‘â€âš–ï¸ Moses Sat To Judge The People", ["Moses is carrying dispute after dispute.", "The need is real, but the load is too heavy.", "ðŸ§‘â€âš–ï¸ Judging", "ðŸ‘¥ People waiting", "ðŸ˜“ One man overloaded", "Good work can still be unsustainable."]),
+      phrase("â“ Why Sittest Thou Thyself Alone", ["Jethro asks a wise question.", "He sees the strain Moses has normalized.", "â“ Why alone", "ðŸ‘€ Outside perspective", "ðŸ§  Wisdom", "Sometimes faithful leaders need someone else to name what is not working."]),
+      phrase("ðŸ˜“ Thou Wilt Surely Wear Away", ["Jethro warns Moses that the load will wear him out.", "The people will suffer too.", "ðŸ˜“ Exhaustion", "ðŸ‘¥ People burdened", "âš ï¸ Not sustainable", "Human limits are not failure; they are part of wise leadership."]),
+      phrase("ðŸ“– Teach Them Ordinances And Laws", ["Moses must teach the people God's ways, not only solve cases.", "Instruction helps the whole community mature.", "ðŸ“– Teach", "ðŸ§­ Show the way", "ðŸ‘¥ Form the people", "Leadership is not only answering problems; it is shaping understanding."]),
+      phrase("ðŸ§‘â€âš–ï¸ Able Men", ["Jethro describes the kind of leaders needed.", "Ability and character both matter.", "ðŸ§‘â€âš–ï¸ Able", "ðŸ™ Fear God", "ðŸ—£ï¸ Truth", "ðŸš« Hating covetousness", "Shared leadership must be trustworthy leadership."]),
+      phrase("ðŸ¤ They Shall Bear The Burden With Thee", ["The load is shared.", "Moses does not have to carry every case alone.", "ðŸ¤ Shared burden", "ðŸ‘¥ Ordered people", "ðŸ˜Œ Sustainable service", "God's care can come through wise structure."]),
     ],
   },
   {
@@ -394,15 +462,15 @@ const RAW_EXODUS_11_20_PERSONAL_SECTIONS: PersonalExodusPhraseSectionInput[] = [
     endVerse: 15,
     reference: "Exodus 19:1-15",
     title: "Israel Comes To Sinai",
-    icon: "⛰️",
+    icon: "â›°ï¸",
     phrases: [
-      phrase("⛰️ Wilderness Of Sinai", ["Israel arrives at the mountain region where God will speak covenant words.", "The rescue from Egypt is moving toward relationship.", "⛰️ Sinai", "🏕️ Camp", "📜 Covenant coming", "God brought them out so He could bring them near."]),
-      phrase("🦅 Bare You On Eagles' Wings", ["God describes the Exodus as carrying Israel.", "They did not fly themselves out.", "🦅 Carried", "🔓 Brought out", "🏠 Brought unto God", "Deliverance is grace before it is responsibility."]),
-      phrase("💎 A Peculiar Treasure", ["Israel is called God's treasured possession.", "This is identity before law-keeping is described.", "💎 Treasure", "🌍 All earth is God's", "👥 Covenant people", "God's commands come to people He has already claimed."]),
-      phrase("👑 A Kingdom Of Priests", ["Israel is called to represent God among the nations.", "Their identity has a priestly purpose.", "👑 Kingdom", "🙏 Priests", "🕊️ Holy nation", "Rescue gives Israel a calling, not just relief."]),
-      phrase("🙋 All That The Lord Hath Spoken We Will Do", ["The people answer covenant words with commitment.", "They agree before hearing all the details.", "🙋 We will do", "📜 God's words", "🤝 Covenant response", "The moment is serious because Israel is entering binding relationship with the LORD."]),
-      phrase("🧼 Sanctify Them", ["The people must prepare to meet God.", "Washing clothes becomes an outward sign of readiness.", "🧼 Washed garments", "⏳ Third day", "🔥 Holy presence", "Grace does not make God's nearness casual."]),
-      phrase("🚧 Set Bounds", ["Boundaries are placed around the mountain.", "Nearness to God must be approached God's way.", "🚧 Boundary", "⛰️ Mountain", "⚠️ Warning", "The limits are mercy because God's holiness is weighty."]),
+      phrase("â›°ï¸ Wilderness Of Sinai", ["Israel arrives at the mountain region where God will speak covenant words.", "The rescue from Egypt is moving toward relationship.", "â›°ï¸ Sinai", "ðŸ•ï¸ Camp", "ðŸ“œ Covenant coming", "God brought them out so He could bring them near."]),
+      phrase("ðŸ¦… Bare You On Eagles' Wings", ["God describes the Exodus as carrying Israel.", "They did not fly themselves out.", "ðŸ¦… Carried", "ðŸ”“ Brought out", "ðŸ  Brought unto God", "Deliverance is grace before it is responsibility."]),
+      phrase("ðŸ’Ž A Peculiar Treasure", ["Israel is called God's treasured possession.", "This is identity before law-keeping is described.", "ðŸ’Ž Treasure", "ðŸŒ All earth is God's", "ðŸ‘¥ Covenant people", "God's commands come to people He has already claimed."]),
+      phrase("ðŸ‘‘ A Kingdom Of Priests", ["Israel is called to represent God among the nations.", "Their identity has a priestly purpose.", "ðŸ‘‘ Kingdom", "ðŸ™ Priests", "ðŸ•Šï¸ Holy nation", "Rescue gives Israel a calling, not just relief."]),
+      phrase("ðŸ™‹ All That The Lord Hath Spoken We Will Do", ["The people answer covenant words with commitment.", "They agree before hearing all the details.", "ðŸ™‹ We will do", "ðŸ“œ God's words", "ðŸ¤ Covenant response", "The moment is serious because Israel is entering binding relationship with the LORD."]),
+      phrase("ðŸ§¼ Sanctify Them", ["The people must prepare to meet God.", "Washing clothes becomes an outward sign of readiness.", "ðŸ§¼ Washed garments", "â³ Third day", "ðŸ”¥ Holy presence", "Grace does not make God's nearness casual."]),
+      phrase("ðŸš§ Set Bounds", ["Boundaries are placed around the mountain.", "Nearness to God must be approached God's way.", "ðŸš§ Boundary", "â›°ï¸ Mountain", "âš ï¸ Warning", "The limits are mercy because God's holiness is weighty."]),
     ],
   },
   {
@@ -411,14 +479,14 @@ const RAW_EXODUS_11_20_PERSONAL_SECTIONS: PersonalExodusPhraseSectionInput[] = [
     endVerse: 25,
     reference: "Exodus 19:16-25",
     title: "The Lord Descends On Sinai",
-    icon: "⚡",
+    icon: "âš¡",
     phrases: [
-      phrase("⚡ Thunders And Lightnings", ["Sinai overwhelms the senses.", "God's arrival is not casual.", "⚡ Lightning", "🌩️ Thunder", "🎺 Trumpet", "The people are encountering the living God, not receiving religious tips."]),
-      phrase("🔥 The Lord Descended Upon It In Fire", ["Fire marks God's holy presence on the mountain.", "The mountain smokes because the LORD descends.", "🔥 Fire", "⛰️ Mountain", "☁️ Smoke", "God comes near, and creation trembles."]),
-      phrase("🌋 The Whole Mount Quaked Greatly", ["The mountain shakes.", "The physical world responds to God's presence.", "🌋 Quaking", "😨 People trembling", "👑 Divine majesty", "Sinai teaches reverence before any command is given."]),
-      phrase("🎺 The Voice Of The Trumpet", ["The trumpet grows louder and louder.", "The scene builds holy fear.", "🎺 Trumpet", "📣 God answering", "⛰️ Moses speaks", "The sound marks the seriousness of covenant encounter."]),
-      phrase("⚠️ Charge The People", ["God repeats the warning not to break through.", "The boundary matters.", "⚠️ Warning", "🚧 Boundary", "🔥 Holiness", "God is near, but approach still requires reverence."]),
-      phrase("👥 Let The Priests Also", ["Even priests must sanctify themselves.", "Religious role does not make someone casual before God.", "👥 Priests", "🧼 Sanctified", "🔥 Holy God", "The closer the service, the greater the need for reverence."]),
+      phrase("âš¡ Thunders And Lightnings", ["Sinai overwhelms the senses.", "God's arrival is not casual.", "âš¡ Lightning", "ðŸŒ©ï¸ Thunder", "ðŸŽº Trumpet", "The people are encountering the living God, not receiving religious tips."]),
+      phrase("ðŸ”¥ The Lord Descended Upon It In Fire", ["Fire marks God's holy presence on the mountain.", "The mountain smokes because the LORD descends.", "ðŸ”¥ Fire", "â›°ï¸ Mountain", "â˜ï¸ Smoke", "God comes near, and creation trembles."]),
+      phrase("ðŸŒ‹ The Whole Mount Quaked Greatly", ["The mountain shakes.", "The physical world responds to God's presence.", "ðŸŒ‹ Quaking", "ðŸ˜¨ People trembling", "ðŸ‘‘ Divine majesty", "Sinai teaches reverence before any command is given."]),
+      phrase("ðŸŽº The Voice Of The Trumpet", ["The trumpet grows louder and louder.", "The scene builds holy fear.", "ðŸŽº Trumpet", "ðŸ“£ God answering", "â›°ï¸ Moses speaks", "The sound marks the seriousness of covenant encounter."]),
+      phrase("âš ï¸ Charge The People", ["God repeats the warning not to break through.", "The boundary matters.", "âš ï¸ Warning", "ðŸš§ Boundary", "ðŸ”¥ Holiness", "God is near, but approach still requires reverence."]),
+      phrase("ðŸ‘¥ Let The Priests Also", ["Even priests must sanctify themselves.", "Religious role does not make someone casual before God.", "ðŸ‘¥ Priests", "ðŸ§¼ Sanctified", "ðŸ”¥ Holy God", "The closer the service, the greater the need for reverence."]),
     ],
   },
   {
@@ -427,15 +495,15 @@ const RAW_EXODUS_11_20_PERSONAL_SECTIONS: PersonalExodusPhraseSectionInput[] = [
     endVerse: 11,
     reference: "Exodus 20:1-11",
     title: "Love The Lord Your God",
-    icon: "☝️",
+    icon: "â˜ï¸",
     phrases: [
-      phrase("🗣️ God Spake All These Words", ["The commandments come from God Himself.", "They are not Moses' private leadership ideas.", "🗣️ God speaks", "📜 Covenant words", "👥 Israel hears", "The law begins with divine speech."]),
-      phrase("🏠 Out Of The House Of Bondage", ["God begins by reminding Israel of deliverance.", "Obedience is response to rescue.", "🏠 Bondage", "🔓 Brought out", "📜 Then command", "The law is given to freed people, not as a ladder to earn freedom."]),
-      phrase("☝️ No Other Gods Before Me", ["The LORD requires exclusive worship.", "Israel has left Egypt's world of many gods.", "☝️ One LORD", "🚫 No rivals", "🤝 Covenant loyalty", "Freedom begins with worship rightly ordered."]),
-      phrase("🪵 Graven Image", ["An idol tries to make the divine manageable.", "God forbids worship through human-made images.", "🪵 Image", "👁️ Visible control", "🚫 False worship", "The LORD must be received as He reveals Himself, not reduced to what people can handle."]),
-      phrase("🕊️ Name Of The Lord In Vain", ["God's name must not be carried lightly, falsely, or emptily.", "This is bigger than a single careless phrase.", "🕊️ Name", "⚖️ Weight", "👥 Representation", "God's people must not claim His name while emptying it of truth."]),
-      phrase("🛑 Remember The Sabbath Day", ["Former slaves are commanded to rest.", "This command pushes against Pharaoh's endless production.", "🛑 Sabbath", "😌 Rest", "🙏 Holy time", "The LORD gives His people a rhythm Egypt never gave them."]),
-      phrase("🌍 For In Six Days The Lord Made Heaven And Earth", ["Sabbath is grounded in creation.", "Israel's weekly rhythm reflects God's ordering of time.", "🌍 Creation", "📅 Six days", "🛑 Seventh day", "Rest is built into the world by the Creator."]),
+      phrase("ðŸ—£ï¸ God Spake All These Words", ["The commandments come from God Himself.", "They are not Moses' private leadership ideas.", "ðŸ—£ï¸ God speaks", "ðŸ“œ Covenant words", "ðŸ‘¥ Israel hears", "The law begins with divine speech."]),
+      phrase("ðŸ  Out Of The House Of Bondage", ["God begins by reminding Israel of deliverance.", "Obedience is response to rescue.", "ðŸ  Bondage", "ðŸ”“ Brought out", "ðŸ“œ Then command", "The law is given to freed people, not as a ladder to earn freedom."]),
+      phrase("â˜ï¸ No Other Gods Before Me", ["The LORD requires exclusive worship.", "Israel has left Egypt's world of many gods.", "â˜ï¸ One LORD", "ðŸš« No rivals", "ðŸ¤ Covenant loyalty", "Freedom begins with worship rightly ordered."]),
+      phrase("ðŸªµ Graven Image", ["An idol tries to make the divine manageable.", "God forbids worship through human-made images.", "ðŸªµ Image", "ðŸ‘ï¸ Visible control", "ðŸš« False worship", "The LORD must be received as He reveals Himself, not reduced to what people can handle."]),
+      phrase("ðŸ•Šï¸ Name Of The Lord In Vain", ["God's name must not be carried lightly, falsely, or emptily.", "This is bigger than a single careless phrase.", "ðŸ•Šï¸ Name", "âš–ï¸ Weight", "ðŸ‘¥ Representation", "God's people must not claim His name while emptying it of truth."]),
+      phrase("ðŸ›‘ Remember The Sabbath Day", ["Former slaves are commanded to rest.", "This command pushes against Pharaoh's endless production.", "ðŸ›‘ Sabbath", "ðŸ˜Œ Rest", "ðŸ™ Holy time", "The LORD gives His people a rhythm Egypt never gave them."]),
+      phrase("ðŸŒ For In Six Days The Lord Made Heaven And Earth", ["Sabbath is grounded in creation.", "Israel's weekly rhythm reflects God's ordering of time.", "ðŸŒ Creation", "ðŸ“… Six days", "ðŸ›‘ Seventh day", "Rest is built into the world by the Creator."]),
     ],
   },
   {
@@ -444,17 +512,17 @@ const RAW_EXODUS_11_20_PERSONAL_SECTIONS: PersonalExodusPhraseSectionInput[] = [
     endVerse: 26,
     reference: "Exodus 20:12-26",
     title: "Life With Neighbor And Holy Fear",
-    icon: "🤝",
+    icon: "ðŸ¤",
     phrases: [
-      phrase("👪 Honour Thy Father And Thy Mother", ["God protects family order and generational faithfulness.", "A redeemed community must learn honor.", "👪 Parents", "🏠 Household", "📜 Covenant life", "Freedom must shape home life."]),
-      phrase("🩸 Thou Shalt Not Kill", ["Human life is protected by God's command.", "Former slaves must not become people who treat life cheaply.", "🩸 Life", "🛡️ Protection", "⚖️ Accountability", "The God who judged Egypt's violence now commands His people to honor life."]),
-      phrase("💍 Thou Shalt Not Commit Adultery", ["God protects marriage covenant.", "Faithfulness matters in the life of a redeemed people.", "💍 Marriage", "🤝 Faithfulness", "🏠 Family stability", "Covenant with God shapes covenant with people."]),
-      phrase("🧾 Thou Shalt Not Steal", ["God protects a neighbor's property and livelihood.", "The people rescued from exploitation must not exploit one another.", "🧾 Property", "🤝 Neighbor", "⚖️ Justice", "Freedom is not permission to take."]),
-      phrase("🗣️ Thou Shalt Not Bear False Witness", ["Truth matters because lies can destroy justice and community.", "Words are moral actions.", "🗣️ Witness", "⚖️ Court", "🤝 Neighbor", "A redeemed people must not use speech as a weapon."]),
-      phrase("🧠 Thou Shalt Not Covet", ["The final command reaches desire.", "God cares about what the heart rehearses wanting.", "🧠 Desire", "🏠 Neighbor's house", "💔 Inner disorder", "The law does not stop at behavior; it exposes the heart."]),
-      phrase("😨 The People Stood Afar Off", ["The people tremble at Sinai.", "They feel the weight of God's voice.", "😨 Fear", "⛰️ Distance", "🔥 Holy presence", "Sinai teaches that nearness to God is a gift, not a casual right."]),
-      phrase("🔥 His Fear May Be Before Your Faces", ["Moses explains holy fear.", "This fear is meant to keep them from sin.", "🔥 Reverence", "🛑 Guardrail", "📜 Obedience", "Biblical fear is not thinking God is cruel; it is taking Him seriously."]),
-      phrase("🪨 An Altar Of Earth", ["God gives simple altar instructions.", "Worship must not become a display of human pride.", "🪨 Earth altar", "🙏 Sacrifice", "🚫 No performance", "The God who thundered at Sinai still teaches humble worship."]),
+      phrase("ðŸ‘ª Honour Thy Father And Thy Mother", ["God protects family order and generational faithfulness.", "A redeemed community must learn honor.", "ðŸ‘ª Parents", "ðŸ  Household", "ðŸ“œ Covenant life", "Freedom must shape home life."]),
+      phrase("ðŸ©¸ Thou Shalt Not Kill", ["Human life is protected by God's command.", "Former slaves must not become people who treat life cheaply.", "ðŸ©¸ Life", "ðŸ›¡ï¸ Protection", "âš–ï¸ Accountability", "The God who judged Egypt's violence now commands His people to honor life."]),
+      phrase("ðŸ’ Thou Shalt Not Commit Adultery", ["God protects marriage covenant.", "Faithfulness matters in the life of a redeemed people.", "ðŸ’ Marriage", "ðŸ¤ Faithfulness", "ðŸ  Family stability", "Covenant with God shapes covenant with people."]),
+      phrase("ðŸ§¾ Thou Shalt Not Steal", ["God protects a neighbor's property and livelihood.", "The people rescued from exploitation must not exploit one another.", "ðŸ§¾ Property", "ðŸ¤ Neighbor", "âš–ï¸ Justice", "Freedom is not permission to take."]),
+      phrase("ðŸ—£ï¸ Thou Shalt Not Bear False Witness", ["Truth matters because lies can destroy justice and community.", "Words are moral actions.", "ðŸ—£ï¸ Witness", "âš–ï¸ Court", "ðŸ¤ Neighbor", "A redeemed people must not use speech as a weapon."]),
+      phrase("ðŸ§  Thou Shalt Not Covet", ["The final command reaches desire.", "God cares about what the heart rehearses wanting.", "ðŸ§  Desire", "ðŸ  Neighbor's house", "ðŸ’” Inner disorder", "The law does not stop at behavior; it exposes the heart."]),
+      phrase("ðŸ˜¨ The People Stood Afar Off", ["The people tremble at Sinai.", "They feel the weight of God's voice.", "ðŸ˜¨ Fear", "â›°ï¸ Distance", "ðŸ”¥ Holy presence", "Sinai teaches that nearness to God is a gift, not a casual right."]),
+      phrase("ðŸ”¥ His Fear May Be Before Your Faces", ["Moses explains holy fear.", "This fear is meant to keep them from sin.", "ðŸ”¥ Reverence", "ðŸ›‘ Guardrail", "ðŸ“œ Obedience", "Biblical fear is not thinking God is cruel; it is taking Him seriously."]),
+      phrase("ðŸª¨ An Altar Of Earth", ["God gives simple altar instructions.", "Worship must not become a display of human pride.", "ðŸª¨ Earth altar", "ðŸ™ Sacrifice", "ðŸš« No performance", "The God who thundered at Sinai still teaches humble worship."]),
     ],
   },
 ];
@@ -485,15 +553,15 @@ function getDeepPhraseEntries(markdown: string, fallbackTitle: string, fallbackS
 }
 
 function makeGeneratedExodusPhrase(title: string, body: string, summary: string): [string, string] {
-  return phrase(`📌 ${title}`, [
+  return phrase(`ðŸ“Œ ${title}`, [
     body,
     summary,
     "The wording is carrying the rescue story forward.",
     "Israel is out of Egypt, but the Lord is still teaching them what freedom, worship, memory, and trust look like.",
-    "🌊 Rescue",
-    "🍞 Provision",
-    "🧭 Guidance",
-    "⛰️ Covenant",
+    "ðŸŒŠ Rescue",
+    "ðŸž Provision",
+    "ðŸ§­ Guidance",
+    "â›°ï¸ Covenant",
     "The detail helps a beginner see that deliverance is not only escape from Pharaoh; it is formation under God's care.",
   ]);
 }
@@ -504,22 +572,22 @@ function makeBeginnerExodusPhrase(title: string, section: PersonalExodusPhraseSe
     focus,
     "For a beginner, the key is to see how ordinary needs become teaching moments.",
     "The Lord is using roads, water, bread, battle, law, and worship to train a newly rescued people.",
-    "🌊 Fear at the sea",
-    "🎶 Songs after rescue",
-    "🍞 Bread in the wilderness",
-    "⛰️ Meeting with God",
+    "ðŸŒŠ Fear at the sea",
+    "ðŸŽ¶ Songs after rescue",
+    "ðŸž Bread in the wilderness",
+    "â›°ï¸ Meeting with God",
     `In ${section.title}, Exodus is showing what freedom looks like when God is the one leading.`,
   ]);
 }
 
 function ensureBeginnerExodusPhraseDepth(section: PersonalExodusPhraseSectionInput): PersonalExodusPhraseSectionInput {
   const additions: Array<[string, string]> = [
-    makeBeginnerExodusPhrase("🧭 What Is Happening Here?", section, "The wording helps the reader locate the scene: Israel has been rescued, but now they must learn what freedom, worship, and trust look like."),
-    makeBeginnerExodusPhrase("🔎 Why This Detail Matters", section, "This detail matters because Exodus does not stop at leaving Egypt; it teaches how rescued people remember, obey, and depend on God."),
-    makeBeginnerExodusPhrase("🧠 Beginner Connection", section, "A new Bible reader may not know why the story slows down over food, water, bones, songs, or route changes, but those details teach God's care."),
-    makeBeginnerExodusPhrase("🧵 Watch The Pattern", section, "Watch the pattern: God rescues, Israel fears or grumbles, God provides, and the people are invited to trust Him more deeply."),
-    makeBeginnerExodusPhrase("❤️ What This Shows About People", section, "This scene shows how quickly rescued people can become afraid, hungry, forgetful, or unsure when the next need appears."),
-    makeBeginnerExodusPhrase("🙌 What This Shows About God", section, "This scene shows the LORD as deliverer, guide, warrior, healer, provider, and patient teacher in the wilderness."),
+    makeBeginnerExodusPhrase("ðŸ§­ What Is Happening Here?", section, "The wording helps the reader locate the scene: Israel has been rescued, but now they must learn what freedom, worship, and trust look like."),
+    makeBeginnerExodusPhrase("ðŸ”Ž Why This Detail Matters", section, "This detail matters because Exodus does not stop at leaving Egypt; it teaches how rescued people remember, obey, and depend on God."),
+    makeBeginnerExodusPhrase("ðŸ§  Beginner Connection", section, "A new Bible reader may not know why the story slows down over food, water, bones, songs, or route changes, but those details teach God's care."),
+    makeBeginnerExodusPhrase("ðŸ§µ Watch The Pattern", section, "Watch the pattern: God rescues, Israel fears or grumbles, God provides, and the people are invited to trust Him more deeply."),
+    makeBeginnerExodusPhrase("â¤ï¸ What This Shows About People", section, "This scene shows how quickly rescued people can become afraid, hungry, forgetful, or unsure when the next need appears."),
+    makeBeginnerExodusPhrase("ðŸ™Œ What This Shows About God", section, "This scene shows the LORD as deliverer, guide, warrior, healer, provider, and patient teacher in the wilderness."),
   ];
 
   return {
@@ -580,7 +648,8 @@ const DAY_24_EXODUS_11_12_PHRASE_TITLES: Record<string, string[]> = {
 };
 
 function makeDay24Exodus11To12PhraseCard(section: PersonalExodusPhraseSectionInput, title: string): [string, string] {
-  return [`📌 ${title}`, explainDay24Exodus11To12Phrase(section, title)];
+  const cardTitle = `ðŸ“Œ ${title}`;
+  return [cardTitle, polishDay24Exodus11To12PhraseContent(cardTitle, explainDay24Exodus11To12Phrase(section, title))];
 }
 
 function removeDay24RepeatedPhraseTitle(title: string, lines: string[]) {
@@ -701,97 +770,97 @@ function explainDay24Exodus11To12Phrase(section: PersonalExodusPhraseSectionInpu
   } else if (lower === "by their armies") {
     add("By Their Armies means Israel left in ordered divisions or organized groups.", "The phrase does not mean they had already become a polished army.", "It shows the enslaved people leaving with structure and identity.", "The LORD is forming them into a people, not scattering them as fugitives.");
   } else if (lower.includes("one plague more")) {
-    add(`${title} announces that Pharaoh's long refusal is reaching its final judgment.`, "God has warned Pharaoh again and again.", "Now one last plague will break the grip of Egypt.", "🌙 Final night", "⚠️ Last warning", "🚪 Release coming", "Deliverance for Israel will come through judgment on Egypt.");
+    add(`${title} announces that Pharaoh's long refusal is reaching its final judgment.`, "God has warned Pharaoh again and again.", "Now one last plague will break the grip of Egypt.", "ðŸŒ™ Final night", "âš ï¸ Last warning", "ðŸšª Release coming", "Deliverance for Israel will come through judgment on Egypt.");
   } else if (lower.includes("afterwards") || lower.includes("go hence")) {
-    add(`${title} means Israel's release is now certain.`, "Pharaoh has refused every command so far.", "But God says the next act will force the door open.", "🚪 Way out", "⏳ Almost time", "👑 Pharaoh's grip breaking", "God is declaring what will happen.");
+    add(`${title} means Israel's release is now certain.`, "Pharaoh has refused every command so far.", "But God says the next act will force the door open.", "ðŸšª Way out", "â³ Almost time", "ðŸ‘‘ Pharaoh's grip breaking", "God is declaring what will happen.");
   } else if (lower.includes("borrow") || lower.includes("favour") || lower.includes("spoiled")) {
-    add(`${title} shows God sending enslaved Israel out with provision.`, "The people who were exploited in Egypt will not leave empty-handed.", "Silver, gold, and clothing become signs of reversal.", "💍 Silver and gold", "👕 Clothing", "⚖️ Justice and reversal", "God's rescue includes care for the journey ahead.");
+    add(`${title} shows God sending enslaved Israel out with provision.`, "The people who were exploited in Egypt will not leave empty-handed.", "Silver, gold, and clothing become signs of reversal.", "ðŸ’ Silver and gold", "ðŸ‘• Clothing", "âš–ï¸ Justice and reversal", "God's rescue includes care for the journey ahead.");
   } else if (lower.includes("midnight")) {
-    add(`${title} gives the final plague an appointed hour.`, "Midnight makes the moment feel solemn and unmistakable.", "Egypt will learn that the LORD rules timing as surely as He rules the river, sky, and land.", "🌙 Night", "⏰ Appointed time", "⚖️ Judgment", "The darkness of the hour matches the seriousness of what is coming.");
+    add(`${title} gives the final plague an appointed hour.`, "Midnight makes the moment feel solemn and unmistakable.", "Egypt will learn that the LORD rules timing as surely as He rules the river, sky, and land.", "ðŸŒ™ Night", "â° Appointed time", "âš–ï¸ Judgment", "The darkness of the hour matches the seriousness of what is coming.");
   } else if (lower.includes("firstborn")) {
-    add(`${title} names the heartbreaking reach of the final plague.`, "The firstborn represented a family's future, inheritance, and strength.", "Pharaoh once attacked Israel's sons; now judgment reaches Egypt's households.", "👶 Firstborn", "🏠 Household", "💔 Deep grief", "This is one of the most sobering places in Exodus.");
+    add(`${title} names the heartbreaking reach of the final plague.`, "The firstborn represented a family's future, inheritance, and strength.", "Pharaoh once attacked Israel's sons; now judgment reaches Egypt's households.", "ðŸ‘¶ Firstborn", "ðŸ  Household", "ðŸ’” Deep grief", "This is one of the most sobering places in Exodus.");
   } else if (lower.includes("great cry")) {
-    add(`${title} describes the grief that will fill Egypt after the final plague.`, "Earlier Israel groaned under slavery.", "Now Egypt cries out under judgment.", "😭 Cry", "🏠 Every household touched", "⚖️ Pharaoh's cruelty answered", "The sound of Egypt's grief shows that Pharaoh's rebellion has brought suffering on his own people.");
+    add(`${title} describes the grief that will fill Egypt after the final plague.`, "Earlier Israel groaned under slavery.", "Now Egypt cries out under judgment.", "ðŸ˜­ Cry", "ðŸ  Every household touched", "âš–ï¸ Pharaoh's cruelty answered", "The sound of Egypt's grief shows that Pharaoh's rebellion has brought suffering on his own people.");
   } else if (lower.includes("dog move his tongue")) {
-    add(`${title} is a vivid way of saying Israel will be completely protected.`, "Not even a dog will bark against them.", "The picture is ordinary, but the meaning is powerful.", "🔇 No barking", "🛡️ Protected homes", "✅ Complete difference", "God can keep His people in peace while Egypt is judged.");
+    add(`${title} is a vivid way of saying Israel will be completely protected.`, "Not even a dog will bark against them.", "The picture is ordinary, but the meaning is powerful.", "ðŸ”‡ No barking", "ðŸ›¡ï¸ Protected homes", "âœ… Complete difference", "God can keep His people in peace while Egypt is judged.");
   } else if (lower.includes("put a difference")) {
-    add(`${title} explains that God can judge Egypt and shelter Israel at the same time.`, "The difference is not Israel's military power or moral greatness.", "It is the LORD's protecting mercy.", "⚖️ Distinction", "🏠 Israel sheltered", "🌍 Egypt judged", "The Exodus rescue is precise, not chaotic.");
+    add(`${title} explains that God can judge Egypt and shelter Israel at the same time.`, "The difference is not Israel's military power or moral greatness.", "It is the LORD's protecting mercy.", "âš–ï¸ Distinction", "ðŸ  Israel sheltered", "ðŸŒ Egypt judged", "The Exodus rescue is precise, not chaotic.");
   } else if (lower.includes("servants shall come down") || lower.includes("get thee out")) {
-    add(`${title} pictures Pharaoh's officials begging Israel to leave.`, "The people who once served Pharaoh's command will soon plead for the Hebrews to go.", "God reverses the power scene.", "🙇 Servants come down", "🚪 Leave now", "🔁 Reversal", "The king who would not listen will watch his own household push toward release.");
+    add(`${title} pictures Pharaoh's officials begging Israel to leave.`, "The people who once served Pharaoh's command will soon plead for the Hebrews to go.", "God reverses the power scene.", "ðŸ™‡ Servants come down", "ðŸšª Leave now", "ðŸ” Reversal", "The king who would not listen will watch his own household push toward release.");
   } else if (lower.includes("great anger")) {
-    add(`${title} shows Moses leaving Pharaoh with holy seriousness.`, "Pharaoh's refusal has endangered the whole land.", "Moses understands that final judgment is now near.", "🔥 Anger", "📣 Warning rejected", "⚖️ Judgment near", "Stubborn sin should grieve and anger God's messenger.");
+    add(`${title} shows Moses leaving Pharaoh with holy seriousness.`, "Pharaoh's refusal has endangered the whole land.", "Moses understands that final judgment is now near.", "ðŸ”¥ Anger", "ðŸ“£ Warning rejected", "âš–ï¸ Judgment near", "Stubborn sin should grieve and anger God's messenger.");
   } else if (lower.includes("not hearken") || lower.includes("wonders may be multiplied")) {
-    add(`${title} means Pharaoh's refusal will not stop God's plan.`, "His hard heart makes the judgment story longer, but not stronger than God.", "The LORD will use even Pharaoh's resistance to display His power.", "🔒 Pharaoh refuses God's word", "⚡ The LORD multiplies His wonders", "🌍 God's name is made known", "The king's no becomes the place where God's authority is seen more clearly.");
+    add(`${title} means Pharaoh's refusal will not stop God's plan.`, "His hard heart makes the judgment story longer, but not stronger than God.", "The LORD will use even Pharaoh's resistance to display His power.", "ðŸ”’ Pharaoh refuses God's word", "âš¡ The LORD multiplies His wonders", "ðŸŒ God's name is made known", "The king's no becomes the place where God's authority is seen more clearly.");
   } else if (lower.includes("beginning of months")) {
-    add(`${title} means Israel's calendar is being rebuilt around redemption.`, "God makes their rescue the starting point for how they count sacred time.", "Their year will now remember the night He brought them out.", "📅 New calendar", "🚪 New beginning", "🙌 Rescue remembered", "Freedom becomes the center of Israel's worship rhythm.");
+    add(`${title} means Israel's calendar is being rebuilt around redemption.`, "God makes their rescue the starting point for how they count sacred time.", "Their year will now remember the night He brought them out.", "ðŸ“… New calendar", "ðŸšª New beginning", "ðŸ™Œ Rescue remembered", "Freedom becomes the center of Israel's worship rhythm.");
   } else if (lower.includes("tenth day") || lower.includes("fourteenth day")) {
-    add(`${title} shows that Passover preparation had an exact timetable.`, "The lamb was chosen before the night it was killed.", "The waiting period made the rescue feel deliberate and serious.", "📅 Tenth day", "🐑 Lamb selected", "⏳ Fourteenth day", "God teaches Israel to receive deliverance carefully, not casually.");
+    add(`${title} shows that Passover preparation had an exact timetable.`, "The lamb was chosen before the night it was killed.", "The waiting period made the rescue feel deliberate and serious.", "ðŸ“… Tenth day", "ðŸ‘ Lamb selected", "â³ Fourteenth day", "God teaches Israel to receive deliverance carefully, not casually.");
   } else if (lower.includes("lamb") || lower.includes("without blemish") || lower.includes("male of the first year")) {
-    add(`${title} describes the Passover sacrifice God required.`, "The lamb was not random leftovers from the flock.", "It had to be whole, fitting, and set apart for this holy night.", "🐑 Lamb", "✅ Without blemish", "🏠 For the household", "Rescue comes through the sign God provides.");
+    add(`${title} describes the Passover sacrifice God required.`, "The lamb was not random leftovers from the flock.", "It had to be whole, fitting, and set apart for this holy night.", "ðŸ‘ Lamb", "âœ… Without blemish", "ðŸ  For the household", "Rescue comes through the sign God provides.");
   } else if (lower === "in one house shall it be eaten") {
     add("In One House Shall It Be Eaten means the Passover lamb is kept within one household setting.", "The meal is not to be scattered casually from place to place.", "The house matters because Passover night centers on shelter under the blood-marked doorway.", "The command keeps the meal gathered, whole, and reverent.");
   } else if (lower.includes("number of the souls") || lower.includes("house")) {
-    add(`${title} shows Passover happening household by household.`, "God's rescue reaches families, tables, doors, and ordinary homes.", "No household is meant to treat the night lightly.", "🏠 House", "👪 Family", "🍽️ Shared meal", "The Exodus is national rescue received in real homes.");
+    add(`${title} shows Passover happening household by household.`, "God's rescue reaches families, tables, doors, and ordinary homes.", "No household is meant to treat the night lightly.", "ðŸ  House", "ðŸ‘ª Family", "ðŸ½ï¸ Shared meal", "The Exodus is national rescue received in real homes.");
   } else if (lower.includes("blood") || lower.includes("side posts") || lower.includes("lintel")) {
-    add(`${title} points to the visible sign of shelter during judgment.`, "The blood marked the doorway of the house.", "The family inside was safe because they obeyed the sign God gave.", "🩸 Blood", "🚪 Doorway", "🛡️ Shelter", "Passover teaches rescue by trusting God's provided way.");
+    add(`${title} points to the visible sign of shelter during judgment.`, "The blood marked the doorway of the house.", "The family inside was safe because they obeyed the sign God gave.", "ðŸ©¸ Blood", "ðŸšª Doorway", "ðŸ›¡ï¸ Shelter", "Passover teaches rescue by trusting God's provided way.");
   } else if (lower.includes("eat the flesh") || lower.includes("roast with fire")) {
-    add(`${title} keeps the Passover lamb connected to a real meal.`, "Israel did not only mark the door and stand back.", "They ate the lamb as people ready to leave Egypt.", "🐑 Lamb", "🔥 Roasted", "🍽️ Meal", "The rescue night includes shelter, worship, and readiness all together.");
+    add(`${title} keeps the Passover lamb connected to a real meal.`, "Israel did not only mark the door and stand back.", "They ate the lamb as people ready to leave Egypt.", "ðŸ‘ Lamb", "ðŸ”¥ Roasted", "ðŸ½ï¸ Meal", "The rescue night includes shelter, worship, and readiness all together.");
   } else if (lower.includes("unleavened") || lower.includes("leaven") || lower.includes("dough") || lower.includes("cakes")) {
-    add(`${title} teaches Israel to remember the hurry of their departure.`, "Leaven makes dough rise, but Israel would leave too quickly for normal bread-making.", "The simple bread became a yearly reminder of rescue.", "🍞 Bread", "🏃 Haste", "📅 Remember every year", "God placed memory into ordinary food so families could taste the story again.");
+    add(`${title} teaches Israel to remember the hurry of their departure.`, "Leaven makes dough rise, but Israel would leave too quickly for normal bread-making.", "The simple bread became a yearly reminder of rescue.", "ðŸž Bread", "ðŸƒ Haste", "ðŸ“… Remember every year", "God placed memory into ordinary food so families could taste the story again.");
   } else if (lower.includes("loins girded")) {
-    add(`${title} means the people were dressed and ready to move.`, "Long garments had to be tucked up for travel or work.", "Passover was not a slow dinner for people settling into Egypt.", "👞 Shoes on", "🧥 Clothes ready", "🏃 Ready to leave", "The meal trained Israel to eat as people whose freedom was about to begin.");
+    add(`${title} means the people were dressed and ready to move.`, "Long garments had to be tucked up for travel or work.", "Passover was not a slow dinner for people settling into Egypt.", "ðŸ‘ž Shoes on", "ðŸ§¥ Clothes ready", "ðŸƒ Ready to leave", "The meal trained Israel to eat as people whose freedom was about to begin.");
   } else if (lower.includes("lord's passover")) {
-    add(`${title} gives the night its name and meaning.`, "The LORD is the One who passes over the marked houses while judging Egypt.", "Israel is not saved because their homes are nicer or stronger.", "🛡️ Passed over", "🩸 Blood sign", "🙌 The LORD saves", "The name keeps the focus on God's mercy and command.");
+    add(`${title} gives the night its name and meaning.`, "The LORD is the One who passes over the marked houses while judging Egypt.", "Israel is not saved because their homes are nicer or stronger.", "ðŸ›¡ï¸ Passed over", "ðŸ©¸ Blood sign", "ðŸ™Œ The LORD saves", "The name keeps the focus on God's mercy and command.");
   } else if (lower.includes("gods of egypt")) {
-    add(`${title} explains that the final plague is also a judgment against Egypt's false gods.`, "Egypt trusted many gods connected to life, death, fertility, kingship, and protection.", "The LORD shows that none of them can shield Egypt from Him.", "🏛️ Egypt's gods", "⚖️ Judgment", "👑 Pharaoh humbled", "The LORD exposes every false refuge.");
+    add(`${title} explains that the final plague is also a judgment against Egypt's false gods.`, "Egypt trusted many gods connected to life, death, fertility, kingship, and protection.", "The LORD shows that none of them can shield Egypt from Him.", "ðŸ›ï¸ Egypt's gods", "âš–ï¸ Judgment", "ðŸ‘‘ Pharaoh humbled", "The LORD exposes every false refuge.");
   } else if (lower.includes("token") || lower.includes("when i see the blood") || lower.includes("pass over you")) {
-    add(`${title} explains how the blood sign functioned on Passover night.`, "God promised to see the blood and pass over that house.", "The safety of the family rested on God's word attached to God's sign.", "🩸 Blood seen", "🚪 House marked", "✅ Judgment passes over", "The point is trusting and obeying the rescue God commanded.");
+    add(`${title} explains how the blood sign functioned on Passover night.`, "God promised to see the blood and pass over that house.", "The safety of the family rested on God's word attached to God's sign.", "ðŸ©¸ Blood seen", "ðŸšª House marked", "âœ… Judgment passes over", "The point is trusting and obeying the rescue God commanded.");
   } else if (lower.includes("memorial") || lower.includes("children") || lower.includes("observed")) {
-    add(`${title} shows that Exodus was meant to be taught and remembered.`, "God did not want the rescue to become an old story nobody understood.", "He built memory into meals, questions, calendars, and family teaching.", "👶 Children ask", "📖 Parents explain", "🕯️ Worship remembers", "Bible faith keeps telling the next generation what the LORD has done.");
+    add(`${title} shows that Exodus was meant to be taught and remembered.`, "God did not want the rescue to become an old story nobody understood.", "He built memory into meals, questions, calendars, and family teaching.", "ðŸ‘¶ Children ask", "ðŸ“– Parents explain", "ðŸ•¯ï¸ Worship remembers", "Bible faith keeps telling the next generation what the LORD has done.");
   } else if (lower.includes("seven days") || lower.includes("cut off") || lower.includes("soul shall be cut off")) {
-    add(`${title} shows the seriousness of the feast after Passover night.`, "Israel was not free to treat God's memorial however they wanted.", "The command shaped the whole community's worship.", "📅 Seven days", "🚫 No leaven", "⚠️ Serious command", "God's rescue creates a people who remember Him with obedience.");
+    add(`${title} shows the seriousness of the feast after Passover night.`, "Israel was not free to treat God's memorial however they wanted.", "The command shaped the whole community's worship.", "ðŸ“… Seven days", "ðŸš« No leaven", "âš ï¸ Serious command", "God's rescue creates a people who remember Him with obedience.");
   } else if (lower.includes("armies")) {
-    add(`${title} describes Israel leaving Egypt in ordered groups under God's command.`, "They are not a mob escaping by luck.", "The enslaved people are being formed into the LORD's organized people.", "🚶 Israel moves out together", "🏕️ The people leave in ordered groups", "🙌 The LORD leads former slaves with purpose", "The Exodus departure has dignity because God is forming Israel into His people.");
+    add(`${title} describes Israel leaving Egypt in ordered groups under God's command.`, "They are not a mob escaping by luck.", "The enslaved people are being formed into the LORD's organized people.", "ðŸš¶ Israel moves out together", "ðŸ•ï¸ The people leave in ordered groups", "ðŸ™Œ The LORD leads former slaves with purpose", "The Exodus departure has dignity because God is forming Israel into His people.");
   } else if (lower === "there shall no stranger eat thereof") {
     add("There Shall No Stranger Eat Thereof means an uncovenanted outsider may not treat Passover as an ordinary meal.", "Stranger means someone outside Israel's covenant life.", "The rule does not say outsiders are worthless.", "It says the rescue meal is holy and must be entered through God's covenant order.");
   } else if (lower.includes("stranger") || lower.includes("born in the land") || lower.includes("homeborn")) {
-    add(`${title} shows that Passover had covenant boundaries and a place for outsiders who joined Israel's sign.`, "A stranger could not treat the meal casually.", "But the law made room for the stranger who entered the covenant through circumcision.", "🏠 Homeborn", "🧍 Stranger", "📜 One covenant order", "God's people are distinct, but His mercy is not limited to one family line only.");
+    add(`${title} shows that Passover had covenant boundaries and a place for outsiders who joined Israel's sign.`, "A stranger could not treat the meal casually.", "But the law made room for the stranger who entered the covenant through circumcision.", "ðŸ  Homeborn", "ðŸ§ Stranger", "ðŸ“œ One covenant order", "God's people are distinct, but His mercy is not limited to one family line only.");
   } else if (lower.includes("habitations")) {
-    add(`${title} brings the command into every place Israel lives.`, "Passover was not only for one public ceremony.", "The memory of rescue had to shape households wherever God's people settled.", "🏠 Homes", "🍞 Food practice", "📅 Ongoing remembrance", "God wanted the Exodus story to live in daily spaces.");
+    add(`${title} brings the command into every place Israel lives.`, "Passover was not only for one public ceremony.", "The memory of rescue had to shape households wherever God's people settled.", "ðŸ  Homes", "ðŸž Food practice", "ðŸ“… Ongoing remembrance", "God wanted the Exodus story to live in daily spaces.");
   } else if (lower.includes("draw out") || lower.includes("kill the passover")) {
-    add(`${title} is Moses turning God's command into action for the elders of Israel.`, "The lamb must be selected and killed just as the LORD said.", "Obedience now matters because judgment night is near.", "🐑 Lamb taken", "🩸 Sacrifice", "⏳ Night approaching", "Faith is shown by doing what God said before the danger passes.");
+    add(`${title} is Moses turning God's command into action for the elders of Israel.`, "The lamb must be selected and killed just as the LORD said.", "Obedience now matters because judgment night is near.", "ðŸ‘ Lamb taken", "ðŸ©¸ Sacrifice", "â³ Night approaching", "Faith is shown by doing what God said before the danger passes.");
   } else if (lower.includes("hyssop")) {
-    add(`${title} names the plant used to apply the blood to the doorway.`, "Hyssop was a small plant used for sprinkling or applying liquid in Bible rituals.", "Here it carries the blood to the lintel and side posts.", "🌿 Hyssop", "🩸 Blood applied", "🚪 Door marked", "A simple plant becomes one visible sign of God's protection.");
+    add(`${title} names the plant used to apply the blood to the doorway.`, "Hyssop was a small plant used for sprinkling or applying liquid in Bible rituals.", "Here it carries the blood to the lintel and side posts.", "ðŸŒ¿ Hyssop", "ðŸ©¸ Blood applied", "ðŸšª Door marked", "A simple plant becomes one visible sign of God's protection.");
   } else if (lower.includes("none of you shall go out")) {
-    add(`${title} teaches that the marked house was the place of safety.`, "The people were not told to wander outside and test danger.", "They were to stay under the shelter God provided.", "🏠 Stay inside", "🩸 Blood-marked door", "🛡️ Protection", "Obedience meant remaining where God's mercy had placed them.");
+    add(`${title} teaches that the marked house was the place of safety.`, "The people were not told to wander outside and test danger.", "They were to stay under the shelter God provided.", "ðŸ  Stay inside", "ðŸ©¸ Blood-marked door", "ðŸ›¡ï¸ Protection", "Obedience meant remaining where God's mercy had placed them.");
   } else if (lower.includes("bowed") || lower.includes("worshipped")) {
-    add(`${title} shows Israel responding to God's Passover command with reverence.`, "Before the rescue is fully visible, the people bow and worship.", "They receive God's word as true and holy.", "🙇 Bowed heads", "🙌 Worship", "📜 Trusted command", "Worship begins before the road out of Egypt opens.");
+    add(`${title} shows Israel responding to God's Passover command with reverence.`, "Before the rescue is fully visible, the people bow and worship.", "They receive God's word as true and holy.", "ðŸ™‡ Bowed heads", "ðŸ™Œ Worship", "ðŸ“œ Trusted command", "Worship begins before the road out of Egypt opens.");
   } else if (lower.includes("smote")) {
-    add(`${title} describes the LORD carrying out the final judgment exactly as warned.`, "The plague is not accidental tragedy.", "It is the promised judgment after Pharaoh's repeated refusal.", "🌙 Midnight", "⚖️ Judgment", "💔 Egypt struck", "The moment shows the weight of resisting God's word.");
+    add(`${title} describes the LORD carrying out the final judgment exactly as warned.`, "The plague is not accidental tragedy.", "It is the promised judgment after Pharaoh's repeated refusal.", "ðŸŒ™ Midnight", "âš–ï¸ Judgment", "ðŸ’” Egypt struck", "The moment shows the weight of resisting God's word.");
   } else if (lower.includes("rise up") || lower.includes("get you forth")) {
-    add(`${title} is Pharaoh finally commanding Israel to leave.`, "The king who kept saying no now tells them to go.", "God has broken the hold of Egypt.", "🚪 Go out", "👑 Pharaoh yields", "🏃 Departure begins", "The release comes because the LORD acted, not because Pharaoh became generous.");
+    add(`${title} is Pharaoh finally commanding Israel to leave.`, "The king who kept saying no now tells them to go.", "God has broken the hold of Egypt.", "ðŸšª Go out", "ðŸ‘‘ Pharaoh yields", "ðŸƒ Departure begins", "The release comes because the LORD acted, not because Pharaoh became generous.");
   } else if (lower.includes("flocks") || lower.includes("herds")) {
-    add(`${title} shows Pharaoh surrendering the compromise he tried to keep earlier.`, "He had wanted to hold Israel's animals back.", "Now he tells them to take the flocks and herds too.", "🐐 Flocks", "🐄 Herds", "🚫 No more bargaining", "God's command wins over Pharaoh's attempt to control Israel's worship.");
+    add(`${title} shows Pharaoh surrendering the compromise he tried to keep earlier.`, "He had wanted to hold Israel's animals back.", "Now he tells them to take the flocks and herds too.", "ðŸ Flocks", "ðŸ„ Herds", "ðŸš« No more bargaining", "God's command wins over Pharaoh's attempt to control Israel's worship.");
   } else if (lower.includes("bless me also")) {
-    add(`${title} is a striking request from Pharaoh after judgment falls.`, "The king who dismissed the LORD now asks Moses for blessing.", "But the request comes after terrible loss and long resistance.", "👑 Humbled king", "🙏 Bless me", "💔 Too late to avoid the plague", "Pharaoh's words show defeat more than true worship.");
+    add(`${title} is a striking request from Pharaoh after judgment falls.`, "The king who dismissed the LORD now asks Moses for blessing.", "But the request comes after terrible loss and long resistance.", "ðŸ‘‘ Humbled king", "ðŸ™ Bless me", "ðŸ’” Too late to avoid the plague", "Pharaoh's words show defeat more than true worship.");
   } else if (lower.includes("urgent") || lower.includes("dead men") || lower.includes("thrust out") || lower.includes("could not tarry")) {
-    add(`${title} captures the sudden pressure to leave Egypt immediately.`, "Egypt wants Israel gone because the judgment has become unbearable.", "The departure is not calm or leisurely.", "🏃 Hurry", "🚪 Forced out", "🍞 No time for bread to rise", "God's promised rescue arrives with urgency after years of bondage.");
+    add(`${title} captures the sudden pressure to leave Egypt immediately.`, "Egypt wants Israel gone because the judgment has become unbearable.", "The departure is not calm or leisurely.", "ðŸƒ Hurry", "ðŸšª Forced out", "ðŸž No time for bread to rise", "God's promised rescue arrives with urgency after years of bondage.");
   } else if (lower.includes("six hundred thousand") || lower.includes("mixed multitude")) {
-    add(`${title} shows the size and variety of the people leaving Egypt.`, "Israel's departure is massive, and others go with them too.", "The Exodus is no hidden escape by a few people.", "👥 Great crowd", "🚶 On foot", "🧍 Mixed multitude", "God's rescue is public, visible, and bigger than one household.");
+    add(`${title} shows the size and variety of the people leaving Egypt.`, "Israel's departure is massive, and others go with them too.", "The Exodus is no hidden escape by a few people.", "ðŸ‘¥ Great crowd", "ðŸš¶ On foot", "ðŸ§ Mixed multitude", "God's rescue is public, visible, and bigger than one household.");
   } else if (lower.includes("four hundred and thirty") || lower.includes("selfsame day")) {
-    add(`${title} shows God's timing over many generations.`, "The years in Egypt did not make God forget His promise.", "On the exact day appointed, He brought His people out.", "⏳ Long waiting", "📅 Exact timing", "✅ Promise kept", "God's delays are not the same as God's absence.");
+    add(`${title} shows God's timing over many generations.`, "The years in Egypt did not make God forget His promise.", "On the exact day appointed, He brought His people out.", "â³ Long waiting", "ðŸ“… Exact timing", "âœ… Promise kept", "God's delays are not the same as God's absence.");
   } else if (lower.includes("ordinance") || lower.includes("stranger eat") || lower.includes("servant") || lower.includes("circumcised") || lower.includes("congregation")) {
-    add(`${title} gives covenant boundaries for who may share the Passover meal.`, "The meal is holy because it remembers holy rescue.", "Outsiders and servants are not ignored, but they must enter the covenant sign before eating.", "📜 Ordinance", "🔪 Circumcision sign", "🍽️ Holy meal", "God's welcome has order because Passover marks His redeemed people.");
+    add(`${title} gives covenant boundaries for who may share the Passover meal.`, "The meal is holy because it remembers holy rescue.", "Outsiders and servants are not ignored, but they must enter the covenant sign before eating.", "ðŸ“œ Ordinance", "ðŸ”ª Circumcision sign", "ðŸ½ï¸ Holy meal", "God's welcome has order because Passover marks His redeemed people.");
   } else if (lower.includes("one house")) {
-    add(`${title} keeps the Passover meal gathered and whole.`, "The lamb was not to be treated casually or scattered around.", "The household setting helped preserve the meaning of the meal.", "🏠 One house", "🐑 One lamb", "🍽️ Shared meal", "The rescue story was meant to be remembered together.");
+    add(`${title} keeps the Passover meal gathered and whole.`, "The lamb was not to be treated casually or scattered around.", "The household setting helped preserve the meaning of the meal.", "ðŸ  One house", "ðŸ‘ One lamb", "ðŸ½ï¸ Shared meal", "The rescue story was meant to be remembered together.");
   } else if (lower.includes("break a bone")) {
-    add(`${title} protects the wholeness of the Passover lamb.`, "The lamb was eaten according to God's instruction, not handled however people wanted.", "The command teaches reverence for the sacrifice God provided on the rescue night.", "🐑 The lamb is kept whole", "📜 The meal follows God's command", "🙌 Rescue is received with reverence", "Even small Passover details teach Israel to treat God's rescue as holy.");
+    add(`${title} protects the wholeness of the Passover lamb.`, "The lamb was eaten according to God's instruction, not handled however people wanted.", "The command teaches reverence for the sacrifice God provided on the rescue night.", "ðŸ‘ The lamb is kept whole", "ðŸ“œ The meal follows God's command", "ðŸ™Œ Rescue is received with reverence", "Even small Passover details teach Israel to treat God's rescue as holy.");
   } else if (lower.includes("one law")) {
-    add(`${title} teaches that the same covenant rule applies to Israelite and joined stranger.`, "God does not create one holy standard for insiders and another for outsiders who join them.", "The worshiping community is ordered under one command.", "📜 One law", "🏠 Homeborn", "🧍 Stranger", "The line holds together holiness, welcome, and obedience.");
+    add(`${title} teaches that the same covenant rule applies to Israelite and joined stranger.`, "God does not create one holy standard for insiders and another for outsiders who join them.", "The worshiping community is ordered under one command.", "ðŸ“œ One law", "ðŸ  Homeborn", "ðŸ§ Stranger", "The line holds together holiness, welcome, and obedience.");
   } else if (lower.includes("as the lord commanded") || lower.includes("did bring")) {
-    add(`${title} closes the chapter by showing God's word fulfilled in action.`, "Israel does what the LORD commanded, and the LORD brings them out.", "The long rescue promise is no longer only spoken; it is happening on the road.", "✅ Command obeyed", "🚪 Brought out", "🙌 The LORD saves", "Obedience and deliverance stand together.");
+    add(`${title} closes the chapter by showing God's word fulfilled in action.`, "Israel does what the LORD commanded, and the LORD brings them out.", "The long rescue promise is no longer only spoken; it is happening on the road.", "âœ… Command obeyed", "ðŸšª Brought out", "ðŸ™Œ The LORD saves", "Obedience and deliverance stand together.");
   } else {
-    add(`${title} names one concrete part of the Passover and deliverance account.`, "The surrounding verses move through final judgment, blood-marked shelter, worship, memory, and departure.", "📖 The phrase comes from the Scripture text", "🔍 Its meaning belongs to Passover night", "🧠 It clarifies God's rescue", `${title} should be understood as part of the LORD bringing Israel out of Egypt.`);
+    add(`${title} names one concrete part of the Passover and deliverance account.`, "The surrounding verses move through final judgment, blood-marked shelter, worship, memory, and departure.", "ðŸ“– The phrase comes from the Scripture text", "ðŸ” Its meaning belongs to Passover night", "ðŸ§  It clarifies God's rescue", `${title} should be understood as part of the LORD bringing Israel out of Egypt.`);
   }
 
   return note(removeDay24RepeatedPhraseTitle(title, lines).slice(0, 8));
@@ -836,7 +905,7 @@ const DAY_25_PHRASE_TITLES: Record<string, string[]> = {
 };
 
 function makeDay25PhraseCard(section: PersonalExodusPhraseSectionInput, title: string): [string, string] {
-  return [`📌 ${title}`, explainDay25Phrase(section, title)];
+  return [`ðŸ“Œ ${title}`, explainDay25Phrase(section, title)];
 }
 
 function buildDay25RevisedExplanation(section: PersonalExodusPhraseSectionInput, title: string) {
@@ -846,109 +915,109 @@ function buildDay25RevisedExplanation(section: PersonalExodusPhraseSectionInput,
     "Fear Ye Not": [
       "Moses is telling Israel not to let panic rule the moment.",
       "The danger is real: Pharaoh's army is behind them and the sea is in front of them.",
-      "😨 Fear is taking over",
-      "👀 The danger looks visible",
-      "🙏 God calls for trust",
-      "⚓ Faith must replace panic",
+      "ðŸ˜¨ Fear is taking over",
+      "ðŸ‘€ The danger looks visible",
+      "ðŸ™ God calls for trust",
+      "âš“ Faith must replace panic",
       "Israel's first battle at the sea is not swinging a sword; it is trusting the LORD while afraid.",
     ],
     "Stand Still, And See The Salvation Of The LORD": [
       "Israel must stop trying to create its own escape and watch the LORD rescue them.",
       "They have no road, no army strong enough, and no strategy that can defeat Pharaoh.",
-      "🛑 Stop panicking",
-      "👀 Watch what God will do",
-      "⚔️ Victory will not come from Israel",
-      "🙌 Salvation belongs to the LORD",
+      "ðŸ›‘ Stop panicking",
+      "ðŸ‘€ Watch what God will do",
+      "âš”ï¸ Victory will not come from Israel",
+      "ðŸ™Œ Salvation belongs to the LORD",
       "The command teaches trust before action, because this rescue must be seen as God's work.",
     ],
     "The LORD Shall Fight For You": [
       "God Himself will take the battlefield against Egypt.",
       "Israel does not win this battle through weapons, training, or courage; the LORD defeats the enemy they cannot defeat.",
-      "⚔️ God takes the battlefield",
-      "👑 The victory belongs to Him",
-      "🚫 Israel cannot save itself",
-      "🌊 Egypt will fall at the sea",
+      "âš”ï¸ God takes the battlefield",
+      "ðŸ‘‘ The victory belongs to Him",
+      "ðŸš« Israel cannot save itself",
+      "ðŸŒŠ Egypt will fall at the sea",
       "The rescue teaches divine victory: the LORD wins what His people cannot win.",
     ],
     "They Were Sore Afraid": [
       "Israel is overwhelmed with intense fear.",
       "The people see Pharaoh's army behind them and cannot yet see the road God will open.",
-      "😨 Fear feels reasonable",
-      "🐎 Egypt is near",
-      "🌊 The sea blocks escape",
-      "💔 Trust is still fragile",
+      "ðŸ˜¨ Fear feels reasonable",
+      "ðŸŽ Egypt is near",
+      "ðŸŒŠ The sea blocks escape",
+      "ðŸ’” Trust is still fragile",
       "The fear is honest, but it is not the final truth of the scene.",
     ],
     "The Children Of Israel Cried Out Unto The LORD": [
       "Their fear becomes a desperate cry to God.",
       "They do not know what to do, so the helpless people appeal to the only One who can save them.",
-      "🙏 The cry goes upward",
-      "🚫 Human options are gone",
-      "🌊 The sea scene is desperate",
-      "🙌 God can answer helpless people",
+      "ðŸ™ The cry goes upward",
+      "ðŸš« Human options are gone",
+      "ðŸŒŠ The sea scene is desperate",
+      "ðŸ™Œ God can answer helpless people",
       "The cry shows need before it shows mature faith.",
     ],
     "Because There Were No Graves In Egypt": [
       "Israel speaks with bitter sarcasm because fear has taken over their thinking.",
       "They accuse Moses as if Egypt did not have enough graves and he brought them into the wilderness to die.",
-      "🪦 Death feels close",
-      "💬 Panic speaks harshly",
-      "⛓️ Egypt sounds safer",
-      "💔 Fear twists memory",
+      "ðŸª¦ Death feels close",
+      "ðŸ’¬ Panic speaks harshly",
+      "â›“ï¸ Egypt sounds safer",
+      "ðŸ’” Fear twists memory",
       "The line shows how quickly terror can make bondage look better than faith.",
     ],
     "Wherefore Hast Thou Dealt Thus With Us": [
       "The people are asking why Moses has treated them this way.",
       "Their question comes from panic because they cannot yet see that God positioned them for deliverance.",
-      "❓ Fear asks why",
-      "👤 Moses is blamed",
-      "🌊 The plan is still hidden",
-      "🙏 God has not failed",
+      "â“ Fear asks why",
+      "ðŸ‘¤ Moses is blamed",
+      "ðŸŒŠ The plan is still hidden",
+      "ðŸ™ God has not failed",
       "The question exposes confusion before the rescue becomes visible.",
     ],
     "Let Us Alone": [
       "Israel is saying they would rather have been left in slavery.",
       "Fear makes Egypt sound like safety, even though Egypt was the house of bondage.",
-      "⛓️ Slavery sounds familiar",
-      "😨 Freedom feels dangerous",
-      "💔 Fear wants to go backward",
-      "🚪 God is still leading out",
+      "â›“ï¸ Slavery sounds familiar",
+      "ðŸ˜¨ Freedom feels dangerous",
+      "ðŸ’” Fear wants to go backward",
+      "ðŸšª God is still leading out",
       "The words reveal how bondage can keep shaping the heart after the body is free.",
     ],
     "Sanctify Unto Me All The Firstborn": [
       "Sanctify means set apart as belonging to God.",
       "The firstborn are marked for the LORD because He spared Israel's firstborn on Passover night.",
-      "👶 Firstborn life is remembered",
-      "🩸 Passover mercy stands behind it",
-      "🙌 Rescued life belongs to God",
-      "🏠 The whole family must remember",
+      "ðŸ‘¶ Firstborn life is remembered",
+      "ðŸ©¸ Passover mercy stands behind it",
+      "ðŸ™Œ Rescued life belongs to God",
+      "ðŸ  The whole family must remember",
       "The command turns one night of mercy into a lasting practice of worship.",
     ],
     "Doing Wonders": [
       "Wonders are acts only God can do.",
       "Israel is praising the LORD because the plagues and the sea crossing were beyond ordinary human power.",
-      "✨ God does what no one else can do",
-      "🌊 The sea obeyed Him",
-      "👑 Egypt's power failed",
-      "🙌 Praise answers the miracle",
+      "âœ¨ God does what no one else can do",
+      "ðŸŒŠ The sea obeyed Him",
+      "ðŸ‘‘ Egypt's power failed",
+      "ðŸ™Œ Praise answers the miracle",
       "The rescue teaches Israel that the LORD's power is not ordinary strength.",
     ],
     "Like Coriander Seed": [
       "Coriander seed is a small seed, so the comparison describes manna's size and look.",
       "A beginner can picture the food as small pieces scattered on the ground each morning.",
-      "🍞 Manna is named",
-      "🌱 Its appearance is described",
-      "🍯 Its taste is remembered",
-      "🏺 An omer is preserved",
+      "ðŸž Manna is named",
+      "ðŸŒ± Its appearance is described",
+      "ðŸ¯ Its taste is remembered",
+      "ðŸº An omer is preserved",
       "The detail makes God's wilderness food concrete instead of vague.",
     ],
     "Fill An Omer Of It To Be Kept": [
       "Fill an omer means put one measured amount of manna aside.",
       "Kept means this portion is preserved instead of eaten, so future generations can see what God provided.",
-      "📏 One omer is measured",
-      "🍞 Manna is preserved",
-      "👶 Future children can see it",
-      "🙌 God's provision is remembered",
+      "ðŸ“ One omer is measured",
+      "ðŸž Manna is preserved",
+      "ðŸ‘¶ Future children can see it",
+      "ðŸ™Œ God's provision is remembered",
       "The saved portion turns daily bread into a lasting witness of God's care.",
     ],
   };
@@ -957,10 +1026,10 @@ function buildDay25RevisedExplanation(section: PersonalExodusPhraseSectionInput,
     return note([
       "The wall of water is remembered again after Israel has crossed safely.",
       "The same sea that looked impossible became protection on both sides of the people.",
-      "🌊 Water stood beside them",
-      "🚶 Israel crossed safely",
-      "🛡️ The path was protected",
-      "🙌 The LORD controlled the sea",
+      "ðŸŒŠ Water stood beside them",
+      "ðŸš¶ Israel crossed safely",
+      "ðŸ›¡ï¸ The path was protected",
+      "ðŸ™Œ The LORD controlled the sea",
       "The repeated line confirms that Israel's escape was a real miracle from start to finish.",
     ]);
   }
@@ -969,10 +1038,10 @@ function buildDay25RevisedExplanation(section: PersonalExodusPhraseSectionInput,
     return note([
       "Miriam repeats the victory line so the whole community can answer the song.",
       "Triumphed gloriously means the LORD won completely and magnificently over Egypt.",
-      "🥁 Miriam leads praise",
-      "👥 The women answer",
-      "🌊 Egypt's army is gone",
-      "🙌 The LORD receives the song",
+      "ðŸ¥ Miriam leads praise",
+      "ðŸ‘¥ The women answer",
+      "ðŸŒŠ Egypt's army is gone",
+      "ðŸ™Œ The LORD receives the song",
       "The repeated phrase turns the Red Sea victory into shared worship.",
     ]);
   }
@@ -988,10 +1057,10 @@ function buildDay25RevisedExplanation(section: PersonalExodusPhraseSectionInput,
     return note([
       "God tells Moses to command Israel forward while the sea is still in front of them.",
       "The command comes before the visible road appears, so obedience must begin with trust.",
-      "➡️ Israel must move forward",
-      "🌊 The sea is still blocking them",
-      "📣 Moses must give the command",
-      "🙌 God will make the way",
+      "âž¡ï¸ Israel must move forward",
+      "ðŸŒŠ The sea is still blocking them",
+      "ðŸ“£ Moses must give the command",
+      "ðŸ™Œ God will make the way",
       "Faith moves because God has spoken, not because the path already looks easy.",
     ]);
   }
@@ -1000,10 +1069,10 @@ function buildDay25RevisedExplanation(section: PersonalExodusPhraseSectionInput,
     return note([
       "Extra gathering did not create extra supply.",
       "God's measured provision kept anyone from turning manna into private advantage.",
-      "📏 The measure stays fair",
-      "🧺 More gathering does not mean excess",
-      "👥 The whole camp is cared for",
-      "🚫 Hoarding cannot control God's gift",
+      "ðŸ“ The measure stays fair",
+      "ðŸ§º More gathering does not mean excess",
+      "ðŸ‘¥ The whole camp is cared for",
+      "ðŸš« Hoarding cannot control God's gift",
       "Manna teaches that God's provision is enough without becoming selfish possession.",
     ]);
   }
@@ -1012,10 +1081,10 @@ function buildDay25RevisedExplanation(section: PersonalExodusPhraseSectionInput,
     return note([
       "Smaller gathering did not leave anyone hungry.",
       "God's provision met each household according to need, not according to competition.",
-      "🤲 Less gathering still receives enough",
-      "👨‍👩‍👧 Each household is supplied",
-      "✅ No one lacks bread",
-      "🙌 God measures provision with care",
+      "ðŸ¤² Less gathering still receives enough",
+      "ðŸ‘¨â€ðŸ‘©â€ðŸ‘§ Each household is supplied",
+      "âœ… No one lacks bread",
+      "ðŸ™Œ God measures provision with care",
       "Manna teaches sufficiency instead of fear-driven comparison.",
     ]);
   }
@@ -1024,10 +1093,10 @@ function buildDay25RevisedExplanation(section: PersonalExodusPhraseSectionInput,
     return note([
       "Israel finally follows the Sabbath pattern.",
       "After generations of slave labor, rest becomes an act of obedience.",
-      "🍞 Double portion is already given",
-      "🛑 Sabbath rest is holy",
-      "🏠 The people stay in place",
-      "🙌 Rest depends on trust",
+      "ðŸž Double portion is already given",
+      "ðŸ›‘ Sabbath rest is holy",
+      "ðŸ  The people stay in place",
+      "ðŸ™Œ Rest depends on trust",
       "Free people learn they are not ruled by endless labor.",
     ]);
   }
@@ -1052,7 +1121,7 @@ function buildDay25RevisedExplanation(section: PersonalExodusPhraseSectionInput,
     return add(
       /redeem/.test(lower) ? "God is teaching Israel that firstborn sons are bought back, not sacrificed." : "God is claiming the firstborn because He spared Israel's firstborn on Passover night.",
       "The firstborn command turns the rescue from Egypt into a repeated family practice.",
-      ["👶 Firstborn life is remembered", "🩸 Passover mercy stands behind it", "💰 Redemption means bought back", "🙌 Spared life belongs to the LORD"],
+      ["ðŸ‘¶ Firstborn life is remembered", "ðŸ©¸ Passover mercy stands behind it", "ðŸ’° Redemption means bought back", "ðŸ™Œ Spared life belongs to the LORD"],
       "Every firstborn lesson keeps Israel remembering that rescued life belongs to the Rescuer."
     );
   }
@@ -1060,7 +1129,7 @@ function buildDay25RevisedExplanation(section: PersonalExodusPhraseSectionInput,
     return add(
       /leaven|unleavened/.test(lower) ? "The bread teaches Israel to remember the hurried rescue from Egypt." : "Moses is turning the Exodus into a memory Israel must keep.",
       "The date, bread, and language of bondage make deliverance concrete instead of vague.",
-      ["🧠 Rescue must be remembered", "🍞 Bread carries the story", "📅 The calendar marks deliverance", "💪 The LORD brought them out"],
+      ["ðŸ§  Rescue must be remembered", "ðŸž Bread carries the story", "ðŸ“… The calendar marks deliverance", "ðŸ’ª The LORD brought them out"],
       "The practice protects Israel from forgetting what slavery was and who freed them."
     );
   }
@@ -1068,7 +1137,7 @@ function buildDay25RevisedExplanation(section: PersonalExodusPhraseSectionInput,
     return add(
       "Parents must explain the rescue so the next generation understands Israel's worship.",
       "The feast and signs are not empty religious habits; they are teaching tools for children.",
-      ["👶 Children ask questions", "🗣️ Parents tell the rescue", "✋ Hands remember God's work", "👀 Eyes stay fixed on deliverance"],
+      ["ðŸ‘¶ Children ask questions", "ðŸ—£ï¸ Parents tell the rescue", "âœ‹ Hands remember God's work", "ðŸ‘€ Eyes stay fixed on deliverance"],
       "The Exodus is meant to be taught, spoken, and carried into family life."
     );
   }
@@ -1076,7 +1145,7 @@ function buildDay25RevisedExplanation(section: PersonalExodusPhraseSectionInput,
     return add(
       "The command looks forward to life in the land after God completes the rescue.",
       "Israel must keep practicing firstborn redemption because Pharaoh's refusal and God's deliverance must not be forgotten.",
-      ["🏞️ The land is ahead", "👶 Firstborn life is marked", "👑 Pharaoh resisted release", "🙌 God finished the rescue"],
+      ["ðŸžï¸ The land is ahead", "ðŸ‘¶ Firstborn life is marked", "ðŸ‘‘ Pharaoh resisted release", "ðŸ™Œ God finished the rescue"],
       "Future obedience will keep the Exodus alive in Israel's memory."
     );
   }
@@ -1084,7 +1153,7 @@ function buildDay25RevisedExplanation(section: PersonalExodusPhraseSectionInput,
     return add(
       /joseph/.test(lower) ? "Moses carries Joseph's bones because Joseph believed God would bring Israel out of Egypt." : "God is guiding Israel by the route and presence He knows they need.",
       "The shortest road is not always the wisest road for newly freed people learning to trust Him.",
-      ["🧭 God chooses the road", "⛔ The shortest path is avoided", "☁️ Presence guides by day", "🔥 Presence guards by night"],
+      ["ðŸ§­ God chooses the road", "â›” The shortest path is avoided", "â˜ï¸ Presence guides by day", "ðŸ”¥ Presence guards by night"],
       "The route teaches that God's guidance may look indirect while still being careful and faithful."
     );
   }
@@ -1092,7 +1161,7 @@ function buildDay25RevisedExplanation(section: PersonalExodusPhraseSectionInput,
     return add(
       /entangled|pihahiroth|baalzephon/.test(lower) ? "The location makes Israel look trapped from Egypt's point of view." : "God is setting the final sea confrontation where Egypt's pride will be exposed.",
       "Pharaoh thinks Israel is vulnerable, but the LORD is preparing to show His power over Egypt one more time.",
-      ["📍 The camp looks trapped", "🐎 Pharaoh prepares pursuit", "👑 God will be honored", "🙌 Egypt will know the LORD"],
+      ["ðŸ“ The camp looks trapped", "ðŸŽ Pharaoh prepares pursuit", "ðŸ‘‘ God will be honored", "ðŸ™Œ Egypt will know the LORD"],
       "The scene is not random danger; it is the stage for God's public deliverance."
     );
   }
@@ -1100,7 +1169,7 @@ function buildDay25RevisedExplanation(section: PersonalExodusPhraseSectionInput,
     return add(
       /high hand/.test(lower) ? "Israel leaves openly and boldly under God's victory." : "Egypt is bringing organized military power after former slaves.",
       "The details make the threat feel impossible for Israel to overcome by human strength.",
-      ["🐎 Chariots show military power", "👑 Pharaoh wants control again", "😨 Israel looks outmatched", "🌊 The sea will expose Egypt's weakness"],
+      ["ðŸŽ Chariots show military power", "ðŸ‘‘ Pharaoh wants control again", "ðŸ˜¨ Israel looks outmatched", "ðŸŒŠ The sea will expose Egypt's weakness"],
       "The stronger Egypt looks, the clearer God's rescue will be."
     );
   }
@@ -1108,7 +1177,7 @@ function buildDay25RevisedExplanation(section: PersonalExodusPhraseSectionInput,
     return add(
       /go forward/.test(lower) ? "God commands Israel to move before the path looks possible." : "God is opening and guarding the way through the sea.",
       "Prayer gives way to obedience as Moses lifts the rod and the LORD moves between Israel and Egypt.",
-      ["➡️ Israel must move forward", "🌊 The sea will open", "☁️ God's presence guards the camp", "💡 Light is given to His people"],
+      ["âž¡ï¸ Israel must move forward", "ðŸŒŠ The sea will open", "â˜ï¸ God's presence guards the camp", "ðŸ’¡ Light is given to His people"],
       "Faith follows God's command even before the road looks safe."
     );
   }
@@ -1116,7 +1185,7 @@ function buildDay25RevisedExplanation(section: PersonalExodusPhraseSectionInput,
     return add(
       /wall/.test(lower) ? "The waters stand on both sides while Israel passes through." : "The LORD turns the sea itself into a road for His people.",
       "The miracle is not shallow water or lucky timing; the Creator commands wind, sea, and ground.",
-      ["🌊 Water obeys God", "💨 Wind serves His command", "🚶 Israel crosses on dry ground", "🧱 Waters stand like walls"],
+      ["ðŸŒŠ Water obeys God", "ðŸ’¨ Wind serves His command", "ðŸš¶ Israel crosses on dry ground", "ðŸ§± Waters stand like walls"],
       "The obstacle that looked like death becomes the path of deliverance."
     );
   }
@@ -1124,7 +1193,7 @@ function buildDay25RevisedExplanation(section: PersonalExodusPhraseSectionInput,
     return add(
       "Egypt's strength collapses inside God's judgment.",
       "The same sea road that was safe for Israel becomes the place where Pharaoh's army is trapped and overthrown.",
-      ["👀 The LORD sees the enemy", "🛞 Chariot wheels fail", "😨 Egypt wants to flee", "🌊 The sea returns"],
+      ["ðŸ‘€ The LORD sees the enemy", "ðŸ›ž Chariot wheels fail", "ðŸ˜¨ Egypt wants to flee", "ðŸŒŠ The sea returns"],
       "God's rescue for His people becomes judgment on the power trying to enslave them again."
     );
   }
@@ -1132,7 +1201,7 @@ function buildDay25RevisedExplanation(section: PersonalExodusPhraseSectionInput,
     return add(
       /believed/.test(lower) ? "The visible rescue strengthens Israel's trust in the LORD and in Moses as His servant." : "Israel sees the finished result of the LORD's rescue.",
       "The army that terrified them can no longer drag them back to bondage.",
-      ["👀 Israel sees the outcome", "🛡️ The LORD saved them", "🌊 Egypt is defeated", "🙌 Trust grows after rescue"],
+      ["ðŸ‘€ Israel sees the outcome", "ðŸ›¡ï¸ The LORD saved them", "ðŸŒŠ Egypt is defeated", "ðŸ™Œ Trust grows after rescue"],
       "The sea teaches Israel that the LORD is more trustworthy than what they feared."
     );
   }
@@ -1140,7 +1209,7 @@ function buildDay25RevisedExplanation(section: PersonalExodusPhraseSectionInput,
     return add(
       /enemy said/.test(lower) ? "The song quotes Egypt's boast so God's victory over that boast is unmistakable." : "Israel is turning deliverance into worship.",
       "The song names what happened at the sea: the LORD defeated Egypt and became the praise of His people.",
-      ["🎶 Rescue becomes song", "🐎 Egypt's power falls", "💪 God's strength is praised", "👑 The LORD is the victor"],
+      ["ðŸŽ¶ Rescue becomes song", "ðŸŽ Egypt's power falls", "ðŸ’ª God's strength is praised", "ðŸ‘‘ The LORD is the victor"],
       "Worship retells the rescue with God at the center."
     );
   }
@@ -1148,7 +1217,7 @@ function buildDay25RevisedExplanation(section: PersonalExodusPhraseSectionInput,
     return add(
       /purchased/.test(lower) ? "Israel belongs to the LORD because He redeemed them from bondage." : "The song moves from what God did to who God is.",
       "His holiness, mercy, wonders, and redeemed people will make the nations tremble.",
-      ["✨ God is unlike all others", "🕊️ Mercy leads the redeemed", "🌍 Nations will hear", "💰 Israel has been purchased"],
+      ["âœ¨ God is unlike all others", "ðŸ•Šï¸ Mercy leads the redeemed", "ðŸŒ Nations will hear", "ðŸ’° Israel has been purchased"],
       "The sea victory reveals God's character, not only His power."
     );
   }
@@ -1156,7 +1225,7 @@ function buildDay25RevisedExplanation(section: PersonalExodusPhraseSectionInput,
     return add(
       /reign/.test(lower) ? "The song ends by declaring the LORD's everlasting kingship." : "The song looks forward to God's destination for His rescued people.",
       "Israel was not freed to wander without a future; God is bringing them toward inheritance and worship.",
-      ["🏞️ God will bring them in", "🌱 His people will be planted", "⛪ Worship is the goal", "👑 The LORD reigns forever"],
+      ["ðŸžï¸ God will bring them in", "ðŸŒ± His people will be planted", "â›ª Worship is the goal", "ðŸ‘‘ The LORD reigns forever"],
       "The Exodus points beyond escape toward life with God as King."
     );
   }
@@ -1164,7 +1233,7 @@ function buildDay25RevisedExplanation(section: PersonalExodusPhraseSectionInput,
     return add(
       "Miriam leads the women in answering the sea victory with praise.",
       "The rescue becomes a shared song, not only Moses' private worship.",
-      ["🥁 Timbrels join the praise", "👥 The women answer", "🎶 Victory is repeated", "🙌 The LORD receives the song"],
+      ["ðŸ¥ Timbrels join the praise", "ðŸ‘¥ The women answer", "ðŸŽ¶ Victory is repeated", "ðŸ™Œ The LORD receives the song"],
       "The whole community is invited to remember deliverance through worship."
     );
   }
@@ -1172,7 +1241,7 @@ function buildDay25RevisedExplanation(section: PersonalExodusPhraseSectionInput,
     return add(
       /healeth/.test(lower) ? "The LORD names Himself as the healer of His people." : "The wilderness quickly tests Israel's trust through thirst.",
       "The God who opened the sea also teaches His people to trust Him when the water is bitter or missing.",
-      ["💧 Thirst is real", "🌿 God provides healing", "🗣️ Complaining exposes fear", "🏝️ Elim shows generous provision"],
+      ["ðŸ’§ Thirst is real", "ðŸŒ¿ God provides healing", "ðŸ—£ï¸ Complaining exposes fear", "ðŸï¸ Elim shows generous provision"],
       "The wilderness teaches that the LORD cares for needs after the rescue too."
     );
   }
@@ -1180,7 +1249,7 @@ function buildDay25RevisedExplanation(section: PersonalExodusPhraseSectionInput,
     return add(
       "Hunger makes Israel remember Egypt falsely.",
       "They remember food but forget slavery, and their complaint turns need into accusation.",
-      ["🍲 Egypt is remembered selectively", "🍞 Hunger is real", "💬 Complaint grows", "💔 Fear rewrites the past"],
+      ["ðŸ² Egypt is remembered selectively", "ðŸž Hunger is real", "ðŸ’¬ Complaint grows", "ðŸ’” Fear rewrites the past"],
       "The complaint shows how need can make bondage sound better than trust."
     );
   }
@@ -1188,7 +1257,7 @@ function buildDay25RevisedExplanation(section: PersonalExodusPhraseSectionInput,
     return add(
       /prove/.test(lower) ? "The manna will test whether Israel trusts and obeys God's instruction." : "God is giving bread in a way that trains daily dependence.",
       "The provision comes with limits, timing, and commands so Israel learns the Provider's ways.",
-      ["🍞 Bread comes from heaven", "📏 Each day has a measure", "🧪 Trust is tested", "🙌 Provision reveals the LORD"],
+      ["ðŸž Bread comes from heaven", "ðŸ“ Each day has a measure", "ðŸ§ª Trust is tested", "ðŸ™Œ Provision reveals the LORD"],
       "Manna is not only food; it is a classroom for obedience."
     );
   }
@@ -1196,7 +1265,7 @@ function buildDay25RevisedExplanation(section: PersonalExodusPhraseSectionInput,
     return add(
       "God answers complaint with provision that reveals who He is.",
       "Quail in the evening and bread in the morning show that the LORD has heard and is still caring for His people.",
-      ["👂 God hears the murmuring", "🍗 Flesh comes at evening", "🍞 Bread fills them in morning", "☁️ Glory appears in the cloud"],
+      ["ðŸ‘‚ God hears the murmuring", "ðŸ— Flesh comes at evening", "ðŸž Bread fills them in morning", "â˜ï¸ Glory appears in the cloud"],
       "The food is meant to lead Israel beyond full stomachs to knowing the LORD."
     );
   }
@@ -1204,7 +1273,7 @@ function buildDay25RevisedExplanation(section: PersonalExodusPhraseSectionInput,
     return add(
       /what is it/.test(lower) ? "Israel sees unfamiliar food and does not know what to call it." : "God gives enough food for each person according to need.",
       "The manna is strange, measured, and sufficient, so no household has to compete or hoard.",
-      ["🌅 Provision comes in the morning", "❓ Manna is unfamiliar", "📏 An omer measures enough", "✅ No one lacks"],
+      ["ðŸŒ… Provision comes in the morning", "â“ Manna is unfamiliar", "ðŸ“ An omer measures enough", "âœ… No one lacks"],
       "Daily bread teaches sufficiency instead of panic."
     );
   }
@@ -1212,7 +1281,7 @@ function buildDay25RevisedExplanation(section: PersonalExodusPhraseSectionInput,
     return add(
       "Israel learns that manna must be received God's way.",
       "Keeping it overnight against command leads to spoiled food, while morning gathering teaches fresh dependence.",
-      ["🚫 Hoarding disobeys", "🪱 Stored manna spoils", "🌅 Morning gathering continues", "☀️ The manna melts"],
+      ["ðŸš« Hoarding disobeys", "ðŸª± Stored manna spoils", "ðŸŒ… Morning gathering continues", "â˜€ï¸ The manna melts"],
       "Trust means obeying the Provider instead of trying to control tomorrow."
     );
   }
@@ -1220,7 +1289,7 @@ function buildDay25RevisedExplanation(section: PersonalExodusPhraseSectionInput,
     return add(
       "The Sabbath pattern teaches Israel to stop because God has provided enough.",
       "The double portion before the seventh day trains former slaves to receive rest by faith.",
-      ["🍞 Double portion is given", "🛑 Sabbath rest is holy", "🔥 Preparation happens beforehand", "🙌 Rest depends on trust"],
+      ["ðŸž Double portion is given", "ðŸ›‘ Sabbath rest is holy", "ðŸ”¥ Preparation happens beforehand", "ðŸ™Œ Rest depends on trust"],
       "Free people learn they are not ruled by endless labor."
     );
   }
@@ -1228,7 +1297,7 @@ function buildDay25RevisedExplanation(section: PersonalExodusPhraseSectionInput,
     return add(
       "God confronts the refusal to trust His Sabbath command.",
       "Some people still search for manna when He has already said none will be there.",
-      ["🚫 Refusal is exposed", "📜 The command is clear", "🏠 Each person must stay", "🛑 Rest is finally practiced"],
+      ["ðŸš« Refusal is exposed", "ðŸ“œ The command is clear", "ðŸ  Each person must stay", "ðŸ›‘ Rest is finally practiced"],
       "Stopping becomes obedience when God has promised enough."
     );
   }
@@ -1236,7 +1305,7 @@ function buildDay25RevisedExplanation(section: PersonalExodusPhraseSectionInput,
     return add(
       /forty years|borders/.test(lower) ? "The manna continued through the whole wilderness journey until Canaan's edge." : "The manna is described and preserved so Israel remembers God's provision.",
       "Taste, appearance, and the kept omer make God's care concrete for future generations.",
-      ["🍞 Manna is named", "🍯 Its taste is remembered", "🏺 An omer is preserved", "🏞️ God fed them until Canaan"],
+      ["ðŸž Manna is named", "ðŸ¯ Its taste is remembered", "ðŸº An omer is preserved", "ðŸžï¸ God fed them until Canaan"],
       "The kept manna witnesses that the LORD sustained Israel day after day."
     );
   }
@@ -1244,7 +1313,7 @@ function buildDay25RevisedExplanation(section: PersonalExodusPhraseSectionInput,
   return add(
     "This detail names a specific part of Israel's movement after rescue.",
     `In ${section.reference}, the people are learning how memory, guidance, worship, testing, provision, and rest belong to the LORD.`,
-    ["📜 The detail belongs to the text", "🧭 Israel is learning the way", "🙌 The LORD is forming His people"],
+    ["ðŸ“œ The detail belongs to the text", "ðŸ§­ Israel is learning the way", "ðŸ™Œ The LORD is forming His people"],
     "Each detail adds one piece to life with the God who brought Israel out."
   );
 }
@@ -1407,58 +1476,58 @@ function getDay25TeachingBullets(section: PersonalExodusPhraseSectionInput, titl
   const lower = title.toLowerCase();
 
   if (section.chapter === 13 && (lower.includes("firstborn") || lower.includes("firstling") || lower.includes("openeth") || lower.includes("redeem") || lower.includes("mine"))) {
-    return ["👶 Firstborn life belongs to the LORD", "🩸 Passover mercy must be remembered", "💰 Redeemed life is bought back", "🙌 The Rescuer has the right to claim His people"];
+    return ["ðŸ‘¶ Firstborn life belongs to the LORD", "ðŸ©¸ Passover mercy must be remembered", "ðŸ’° Redeemed life is bought back", "ðŸ™Œ The Rescuer has the right to claim His people"];
   }
   if (section.chapter === 13 && (lower.includes("unleavened") || lower.includes("leaven") || lower.includes("abib") || lower.includes("remember"))) {
-    return ["🍞 Unleavened bread remembers the hurried Exodus", "📅 Israel's calendar is shaped by rescue", "🏃 The people left Egypt quickly", "🕯️ Worship keeps deliverance from being forgotten"];
+    return ["ðŸž Unleavened bread remembers the hurried Exodus", "ðŸ“… Israel's calendar is shaped by rescue", "ðŸƒ The people left Egypt quickly", "ðŸ•¯ï¸ Worship keeps deliverance from being forgotten"];
   }
   if (section.chapter === 13 && (lower.includes("sign") || lower.includes("frontlets") || lower.includes("hand") || lower.includes("eyes") || lower.includes("son") || lower.includes("mouth"))) {
-    return ["👶 Children must hear the rescue story", "✋ God's work shapes Israel's actions", "👀 God's rescue stays before their eyes", "📖 The next generation learns why Israel worships"];
+    return ["ðŸ‘¶ Children must hear the rescue story", "âœ‹ God's work shapes Israel's actions", "ðŸ‘€ God's rescue stays before their eyes", "ðŸ“– The next generation learns why Israel worships"];
   }
   if (section.chapter === 13) {
-    return ["🧭 The LORD chooses the road", "🛡️ God's route protects weak people", "☁️ His presence guides by day", "🔥 His presence guards by night"];
+    return ["ðŸ§­ The LORD chooses the road", "ðŸ›¡ï¸ God's route protects weak people", "â˜ï¸ His presence guides by day", "ðŸ”¥ His presence guards by night"];
   }
   if (section.chapter === 14 && (lower.includes("chariot") || lower.includes("captain") || lower.includes("horse") || lower.includes("pursued") || lower.includes("pharaoh"))) {
-    return ["🐎 Egypt brings military power", "🔒 Pharaoh reaches for control again", "🌊 The sea will expose Egypt's weakness", "🙌 The LORD will fight for Israel"];
+    return ["ðŸŽ Egypt brings military power", "ðŸ”’ Pharaoh reaches for control again", "ðŸŒŠ The sea will expose Egypt's weakness", "ðŸ™Œ The LORD will fight for Israel"];
   }
   if (section.chapter === 14 && (lower.includes("afraid") || lower.includes("cried") || lower.includes("graves") || lower.includes("alone") || lower.includes("wherefore"))) {
-    return ["😨 Israel feels trapped", "🌊 The sea blocks the way forward", "🐎 Egypt presses from behind", "🙌 Fear must meet the LORD's salvation"];
+    return ["ðŸ˜¨ Israel feels trapped", "ðŸŒŠ The sea blocks the way forward", "ðŸŽ Egypt presses from behind", "ðŸ™Œ Fear must meet the LORD's salvation"];
   }
   if (section.chapter === 14 && (lower.includes("dry") || lower.includes("waters") || lower.includes("sea") || lower.includes("rod") || lower.includes("divide") || lower.includes("forward"))) {
-    return ["🌊 The sea becomes God's road", "🚶 Israel crosses safely", "📜 God's command comes before the visible path", "🙌 The Creator makes a way through water"];
+    return ["ðŸŒŠ The sea becomes God's road", "ðŸš¶ Israel crosses safely", "ðŸ“œ God's command comes before the visible path", "ðŸ™Œ The Creator makes a way through water"];
   }
   if (section.chapter === 14) {
-    return ["☁️ God's presence protects Israel", "🌑 Egypt is confused by judgment", "💡 Israel receives light for the way", "🛡️ The LORD guards His people"];
+    return ["â˜ï¸ God's presence protects Israel", "ðŸŒ‘ Egypt is confused by judgment", "ðŸ’¡ Israel receives light for the way", "ðŸ›¡ï¸ The LORD guards His people"];
   }
   if (section.chapter === 15 && (lower.includes("sang") || lower.includes("sing") || lower.includes("song") || lower.includes("timbrels") || lower.includes("miriam"))) {
-    return ["🎶 Rescue turns into worship", "🥁 The community joins the song", "🙌 Praise gives God the credit", "🌊 The sea victory is remembered aloud"];
+    return ["ðŸŽ¶ Rescue turns into worship", "ðŸ¥ The community joins the song", "ðŸ™Œ Praise gives God the credit", "ðŸŒŠ The sea victory is remembered aloud"];
   }
   if (section.chapter === 15 && (lower.includes("water") || lower.includes("marah") || lower.includes("murmured") || lower.includes("tree") || lower.includes("healeth") || lower.includes("wells"))) {
-    return ["💧 Thirst tests the rescued people", "🌿 The LORD provides what heals", "🗣️ Complaining exposes fragile trust", "🙌 The God of the sea also cares in the wilderness"];
+    return ["ðŸ’§ Thirst tests the rescued people", "ðŸŒ¿ The LORD provides what heals", "ðŸ—£ï¸ Complaining exposes fragile trust", "ðŸ™Œ The God of the sea also cares in the wilderness"];
   }
   if (section.chapter === 15 && (lower.includes("horse") || lower.includes("rider") || lower.includes("war") || lower.includes("right hand") || lower.includes("overthrown") || lower.includes("wrath") || lower.includes("enemy") || lower.includes("blast") || lower.includes("floods") || lower.includes("sank") || lower.includes("wind"))) {
-    return ["⚔️ Egypt's army is defeated", "🌊 The sea becomes judgment", "💪 The LORD's power wins", "🎶 Israel sings the victory"];
+    return ["âš”ï¸ Egypt's army is defeated", "ðŸŒŠ The sea becomes judgment", "ðŸ’ª The LORD's power wins", "ðŸŽ¶ Israel sings the victory"];
   }
   if (section.chapter === 15 && (lower.includes("who is like") || lower.includes("holiness") || lower.includes("fearful") || lower.includes("wonders") || lower.includes("mercy") || lower.includes("purchased") || lower.includes("pass over"))) {
-    return ["✨ The LORD is unmatched", "🔥 His holiness inspires awe", "🕊️ Mercy leads the redeemed", "🌍 Nations will hear and fear"];
+    return ["âœ¨ The LORD is unmatched", "ðŸ”¥ His holiness inspires awe", "ðŸ•Šï¸ Mercy leads the redeemed", "ðŸŒ Nations will hear and fear"];
   }
   if (section.chapter === 15 && (lower.includes("bring") || lower.includes("plant") || lower.includes("place") || lower.includes("sanctuary") || lower.includes("established") || lower.includes("reign") || lower.includes("inheritance"))) {
-    return ["🏞️ God will bring them in", "🌱 His people will be planted", "⛪ Worship is the goal", "👑 The LORD reigns forever"];
+    return ["ðŸžï¸ God will bring them in", "ðŸŒ± His people will be planted", "â›ª Worship is the goal", "ðŸ‘‘ The LORD reigns forever"];
   }
   if (section.chapter === 15) {
-    return ["👑 The LORD wins the victory", "🌊 Egypt's power falls in the sea", "✨ God's holiness stands apart", "🏔️ Rescue is moving toward life with God"];
+    return ["ðŸ‘‘ The LORD wins the victory", "ðŸŒŠ Egypt's power falls in the sea", "âœ¨ God's holiness stands apart", "ðŸ”ï¸ Rescue is moving toward life with God"];
   }
   if (section.chapter === 16 && (lower.includes("murmured") || lower.includes("flesh") || lower.includes("bread") || lower.includes("kill") || lower.includes("wilderness"))) {
-    return ["🍞 Hunger tests Israel's trust", "🧱 Egypt is remembered wrongly", "🗣️ Complaints reveal fear", "🙌 God answers need with provision"];
+    return ["ðŸž Hunger tests Israel's trust", "ðŸ§± Egypt is remembered wrongly", "ðŸ—£ï¸ Complaints reveal fear", "ðŸ™Œ God answers need with provision"];
   }
   if (section.chapter === 16 && (lower.includes("manna") || lower.includes("omer") || lower.includes("quails") || lower.includes("dew") || lower.includes("what is it") || lower.includes("gather"))) {
-    return ["🍞 God gives daily bread", "📏 Each person receives enough", "🌅 Provision comes morning by morning", "🙌 Former slaves learn daily dependence"];
+    return ["ðŸž God gives daily bread", "ðŸ“ Each person receives enough", "ðŸŒ… Provision comes morning by morning", "ðŸ™Œ Former slaves learn daily dependence"];
   }
   if (section.chapter === 16 && (lower.includes("sabbath") || lower.includes("seventh") || lower.includes("rest") || lower.includes("sixth") || lower.includes("commandments"))) {
-    return ["🛑 Sabbath rest is God's gift", "🍞 The double portion teaches trust", "📜 Rest comes by command", "🙌 Free people are no longer ruled by endless labor"];
+    return ["ðŸ›‘ Sabbath rest is God's gift", "ðŸž The double portion teaches trust", "ðŸ“œ Rest comes by command", "ðŸ™Œ Free people are no longer ruled by endless labor"];
   }
 
-  return ["📖 The phrase comes from the assigned text", "🔍 It explains a real detail in the verse", "🙌 The LORD is teaching His rescued people", "🧠 The meaning should be clear before moving on"];
+  return ["ðŸ“– The phrase comes from the assigned text", "ðŸ” It explains a real detail in the verse", "ðŸ™Œ The LORD is teaching His rescued people", "ðŸ§  The meaning should be clear before moving on"];
 }
 
 function isDay25FillerLine(line: string) {
@@ -2343,89 +2412,89 @@ function explainDay25Phrase(section: PersonalExodusPhraseSectionInput, title: st
   if (exact) return formatDay25PhraseExplanation(section, title, exact);
 
   if (lower.includes("sanctify") || lower.includes("set apart")) {
-    add(`${title} means the firstborn are now marked for the LORD in a special way.`, "God spared Israel's firstborn on Passover night, so rescued life is marked as His.", "This is not random religious paperwork. It teaches Israel that salvation creates belonging.", "👶 Firstborn", "🙌 Set apart", "📜 Rescued life is God's gift", "The people who were brought out must now remember who brought them out.");
+    add(`${title} means the firstborn are now marked for the LORD in a special way.`, "God spared Israel's firstborn on Passover night, so rescued life is marked as His.", "This is not random religious paperwork. It teaches Israel that salvation creates belonging.", "ðŸ‘¶ Firstborn", "ðŸ™Œ Set apart", "ðŸ“œ Rescued life is God's gift", "The people who were brought out must now remember who brought them out.");
   } else if (lower.includes("openeth the womb") || lower.includes("firstling") || lower.includes("firstborn")) {
-    add(`${title} points to the first life that opens a family or flock.`, "In Israel's world, firstborn language carried inheritance, future, strength, and family hope.", "God claims the first because He rescued the firstborn from death in Egypt.", "👶 Firstborn child", "🐑 First animal", "🩸 Passover memory", "Every firstborn reminder points back to the night God spared His people.");
+    add(`${title} points to the first life that opens a family or flock.`, "In Israel's world, firstborn language carried inheritance, future, strength, and family hope.", "God claims the first because He rescued the firstborn from death in Egypt.", "ðŸ‘¶ Firstborn child", "ðŸ‘ First animal", "ðŸ©¸ Passover memory", "Every firstborn reminder points back to the night God spared His people.");
   } else if (lower === "it is mine") {
-    add(`${title} is God's claim over what He rescued.`, "Israel's firstborn were spared by mercy, not by their own strength.", "So God says plainly that rescued life is claimed by Him.", "🙌 Belonging", "🛡️ Mercy", "📜 God's claim", "Exodus teaches that salvation is not independence from God. It is life given back to God.");
+    add(`${title} is God's claim over what He rescued.`, "Israel's firstborn were spared by mercy, not by their own strength.", "So God says plainly that rescued life is claimed by Him.", "ðŸ™Œ Belonging", "ðŸ›¡ï¸ Mercy", "ðŸ“œ God's claim", "Exodus teaches that salvation is not independence from God. It is life given back to God.");
   } else if (lower.includes("remember this day") || lower.includes("shew thy son") || lower.includes("son asketh") || lower.includes("memorial") || lower.includes("mouth")) {
-    add(`${title} turns rescue into family memory and teaching.`, "God does not want the Exodus to become a story people forget.", "Parents must explain what the LORD did, and children must grow up hearing why this day matters.", "👶 Children ask", "📖 Parents explain", "🕯️ Memory becomes worship", "Faith is carried forward when the next generation understands the rescue story.");
+    add(`${title} turns rescue into family memory and teaching.`, "God does not want the Exodus to become a story people forget.", "Parents must explain what the LORD did, and children must grow up hearing why this day matters.", "ðŸ‘¶ Children ask", "ðŸ“– Parents explain", "ðŸ•¯ï¸ Memory becomes worship", "Faith is carried forward when the next generation understands the rescue story.");
   } else if (lower.includes("house of bondage") || lower.includes("brought us out") || lower.includes("brought you out") || lower.includes("land of egypt")) {
-    add(`${title} reminds Israel what God rescued them from.`, "Egypt was not just a hard season. It was bondage, forced labor, fear, and Pharaoh's control.", "The LORD brought them out when they could not free themselves.", "🧱 Bondage", "🚪 Brought out", "🙌 Rescue", "Remembering slavery keeps freedom from becoming pride.");
+    add(`${title} reminds Israel what God rescued them from.`, "Egypt was not just a hard season. It was bondage, forced labor, fear, and Pharaoh's control.", "The LORD brought them out when they could not free themselves.", "ðŸ§± Bondage", "ðŸšª Brought out", "ðŸ™Œ Rescue", "Remembering slavery keeps freedom from becoming pride.");
   } else if (lower.includes("strength of hand")) {
-    add(`${title} explains how Israel left Egypt.`, "They did not escape because Pharaoh became kind or Israel became powerful.", "The LORD's strong hand broke the grip of bondage.", "💪 Strong hand", "👑 Pharaoh humbled", "🚪 Freedom opened", "The Exodus is God's rescue before it is Israel's journey.");
+    add(`${title} explains how Israel left Egypt.`, "They did not escape because Pharaoh became kind or Israel became powerful.", "The LORD's strong hand broke the grip of bondage.", "ðŸ’ª Strong hand", "ðŸ‘‘ Pharaoh humbled", "ðŸšª Freedom opened", "The Exodus is God's rescue before it is Israel's journey.");
   } else if (lower.includes("leaven") || lower.includes("unleavened") || lower.includes("abib")) {
-    add(`${title} connects Israel's food and calendar to the rescue from Egypt.`, "Unleavened bread reminded the people that they left quickly, before normal bread could rise.", "Abib marks the season when this rescue memory was kept.", "🍞 Unleavened bread", "🏃 Haste", "📅 Rescue season", "God put memory into ordinary food so families could taste the story again.");
+    add(`${title} connects Israel's food and calendar to the rescue from Egypt.`, "Unleavened bread reminded the people that they left quickly, before normal bread could rise.", "Abib marks the season when this rescue memory was kept.", "ðŸž Unleavened bread", "ðŸƒ Haste", "ðŸ“… Rescue season", "God put memory into ordinary food so families could taste the story again.");
   } else if (lower.includes("sign") || lower.includes("frontlets") || lower.includes("between thine eyes") || lower.includes("upon thine hand")) {
-    add(`${title} means the Exodus memory should shape what Israel does and how Israel thinks.`, "The hand points to action, and the eyes point to attention and thought.", "God's rescue was not supposed to stay hidden in the past.", "✋ Hands", "👀 Eyes", "🧠 Daily remembrance", "The people were to live like rescued people in visible, practical ways.");
+    add(`${title} means the Exodus memory should shape what Israel does and how Israel thinks.`, "The hand points to action, and the eyes point to attention and thought.", "God's rescue was not supposed to stay hidden in the past.", "âœ‹ Hands", "ðŸ‘€ Eyes", "ðŸ§  Daily remembrance", "The people were to live like rescued people in visible, practical ways.");
   } else if (lower.includes("philistines") || lower.includes("lest peradventure") || lower.includes("god led them not") || lower.includes("god led the people about")) {
-    add(`${title} shows God's patient guidance after Egypt.`, "The shortest road was not the wisest road for a people just freed from slavery.", "God knew they were not ready for immediate war and led them another way.", "🧭 Guidance", "🛡️ Protection", "⏳ Patient route", "Sometimes God's longer road is mercy, not delay.");
+    add(`${title} shows God's patient guidance after Egypt.`, "The shortest road was not the wisest road for a people just freed from slavery.", "God knew they were not ready for immediate war and led them another way.", "ðŸ§­ Guidance", "ðŸ›¡ï¸ Protection", "â³ Patient route", "Sometimes God's longer road is mercy, not delay.");
   } else if (lower.includes("harnessed")) {
-    add(`${title} means Israel left in an ordered way, ready for the journey ahead.`, "They were no longer a trapped slave people under Pharaoh's quotas.", "They were moving as the LORD's rescued people.", "🚶 Leaving Egypt", "🏕️ Ordered groups", "🙌 New identity", "Freedom begins with God leading them out as a people with purpose.");
+    add(`${title} means Israel left in an ordered way, ready for the journey ahead.`, "They were no longer a trapped slave people under Pharaoh's quotas.", "They were moving as the LORD's rescued people.", "ðŸš¶ Leaving Egypt", "ðŸ•ï¸ Ordered groups", "ðŸ™Œ New identity", "Freedom begins with God leading them out as a people with purpose.");
   } else if (lower.includes("bones of joseph") || lower.includes("joseph")) {
-    add(`${title} ties Exodus directly back to Genesis.`, "Joseph had believed God would visit His people and bring them out of Egypt.", "Moses carrying his bones shows that old promise being honored.", "⚰️ Joseph's bones", "📜 Old promise", "🏞️ Hope for Canaan", "Even Joseph's bones are preaching that God's word came true.");
+    add(`${title} ties Exodus directly back to Genesis.`, "Joseph had believed God would visit His people and bring them out of Egypt.", "Moses carrying his bones shows that old promise being honored.", "âš°ï¸ Joseph's bones", "ðŸ“œ Old promise", "ðŸžï¸ Hope for Canaan", "Even Joseph's bones are preaching that God's word came true.");
   } else if (lower.includes("pillar of cloud") || lower.includes("pillar of fire") || lower.includes("took not away the pillar")) {
-    add(`${title} shows God's visible guidance for a people learning freedom.`, "The pillar meant Israel was not wandering alone.", "God gave direction by day and protection by night.", "☁️ Cloud by day", "🔥 Fire by night", "🧭 God leads", "Freedom means learning to follow the presence of the LORD.");
+    add(`${title} shows God's visible guidance for a people learning freedom.`, "The pillar meant Israel was not wandering alone.", "God gave direction by day and protection by night.", "â˜ï¸ Cloud by day", "ðŸ”¥ Fire by night", "ðŸ§­ God leads", "Freedom means learning to follow the presence of the LORD.");
   } else if (lower.includes("turn and encamp") || lower.includes("entangled") || lower.includes("pihahiroth") || lower.includes("baalzephon")) {
-    add(`${title} places Israel where escape looks impossible.`, "To Pharaoh, Israel looks trapped by land and sea.", "But the trap is really the stage where God will display His rescue.", "🌊 Sea ahead", "👑 Pharaoh watching", "🧭 God positioning", "What looks like a dead end can become the place where the LORD acts.");
+    add(`${title} places Israel where escape looks impossible.`, "To Pharaoh, Israel looks trapped by land and sea.", "But the trap is really the stage where God will display His rescue.", "ðŸŒŠ Sea ahead", "ðŸ‘‘ Pharaoh watching", "ðŸ§­ God positioning", "What looks like a dead end can become the place where the LORD acts.");
   } else if (lower.includes("harden pharaoh") || lower.includes("hardened the heart")) {
-    add(`${title} shows Pharaoh still locked in rebellion after Israel leaves.`, "He has seen judgment, grief, and release, but his heart still resists God.", "The chase toward the sea exposes one last time that Pharaoh wants control back.", "🔒 Hard heart", "👑 Refusing king", "🌊 Sea judgment coming", "A hard heart can lose everything and still reach for bondage again.");
+    add(`${title} shows Pharaoh still locked in rebellion after Israel leaves.`, "He has seen judgment, grief, and release, but his heart still resists God.", "The chase toward the sea exposes one last time that Pharaoh wants control back.", "ðŸ”’ Hard heart", "ðŸ‘‘ Refusing king", "ðŸŒŠ Sea judgment coming", "A hard heart can lose everything and still reach for bondage again.");
   } else if (lower.includes("honoured upon pharaoh") || lower.includes("egyptians may know")) {
-    add(`${title} means God will make His identity clear through Pharaoh's defeat.`, "Egypt's king wants glory for himself, but the LORD will be honored over him.", "The sea will show that Pharaoh is not the final power.", "👑 Pharaoh humbled", "🙌 The LORD honored", "🌍 Egypt sees", "God's rescue reveals who truly rules.");
+    add(`${title} means God will make His identity clear through Pharaoh's defeat.`, "Egypt's king wants glory for himself, but the LORD will be honored over him.", "The sea will show that Pharaoh is not the final power.", "ðŸ‘‘ Pharaoh humbled", "ðŸ™Œ The LORD honored", "ðŸŒ Egypt sees", "God's rescue reveals who truly rules.");
   } else if (lower.includes("chariot") || lower.includes("chariots") || lower.includes("captains") || lower.includes("horse")) {
-    add(`${title} shows Egypt bringing its military strength against Israel.`, "Chariots were powerful weapons in the ancient world.", "Israel cannot match Egypt's army, which makes God's rescue at the sea even clearer.", "🐎 Horses", "⚔️ Chariots", "😨 Real danger", "The threat looks impossible so the LORD's salvation can be seen plainly.");
+    add(`${title} shows Egypt bringing its military strength against Israel.`, "Chariots were powerful weapons in the ancient world.", "Israel cannot match Egypt's army, which makes God's rescue at the sea even clearer.", "ðŸŽ Horses", "âš”ï¸ Chariots", "ðŸ˜¨ Real danger", "The threat looks impossible so the LORD's salvation can be seen plainly.");
   } else if (lower.includes("pursued")) {
-    add(`${title} shows Egypt trying to pull Israel back into bondage.`, "Pharaoh does not simply regret losing workers. He chases them with force.", "The old master wants the rescued people back under control.", "🏃 Pursuit", "👑 Pharaoh's army", "🔒 Bondage reaching back", "God will answer the chase with a rescue Israel could never create.");
+    add(`${title} shows Egypt trying to pull Israel back into bondage.`, "Pharaoh does not simply regret losing workers. He chases them with force.", "The old master wants the rescued people back under control.", "ðŸƒ Pursuit", "ðŸ‘‘ Pharaoh's army", "ðŸ”’ Bondage reaching back", "God will answer the chase with a rescue Israel could never create.");
   } else if (lower.includes("high hand")) {
-    add(`${title} describes Israel leaving openly and boldly.`, "They are not sneaking out like criminals.", "The LORD has brought them out in public victory.", "✋ High hand", "🚪 Open departure", "🙌 Public rescue", "The people who were crushed by slavery now walk out under God's power.");
+    add(`${title} describes Israel leaving openly and boldly.`, "They are not sneaking out like criminals.", "The LORD has brought them out in public victory.", "âœ‹ High hand", "ðŸšª Open departure", "ðŸ™Œ Public rescue", "The people who were crushed by slavery now walk out under God's power.");
   } else if (lower.includes("sore afraid") || lower.includes("cried out") || lower.includes("graves in egypt") || lower.includes("wherefore") || lower.includes("let us alone")) {
-    add(`${title} shows fear speaking inside newly freed people.`, "Israel is out of Egypt, but Egypt's army is behind them and the sea is ahead.", "Their panic is real, but fear starts rewriting the rescue story.", "😨 Fear", "🌊 Sea ahead", "🐎 Army behind", "The wilderness will teach Israel to trust the LORD after freedom begins.");
+    add(`${title} shows fear speaking inside newly freed people.`, "Israel is out of Egypt, but Egypt's army is behind them and the sea is ahead.", "Their panic is real, but fear starts rewriting the rescue story.", "ðŸ˜¨ Fear", "ðŸŒŠ Sea ahead", "ðŸŽ Army behind", "The wilderness will teach Israel to trust the LORD after freedom begins.");
   } else if (lower.includes("fear ye not") || lower.includes("stand still") || lower.includes("salvation") || lower.includes("fight for you")) {
-    add(`${title} teaches Israel how to face an impossible moment.`, "They cannot defeat Pharaoh's army or open the sea.", "They must watch the LORD do what only He can do.", "😨 Fear answered", "👀 Watch God act", "🛡️ The LORD fights", "Before Israel learns many commands, they learn that the LORD is the One who saves.");
+    add(`${title} teaches Israel how to face an impossible moment.`, "They cannot defeat Pharaoh's army or open the sea.", "They must watch the LORD do what only He can do.", "ðŸ˜¨ Fear answered", "ðŸ‘€ Watch God act", "ðŸ›¡ï¸ The LORD fights", "Before Israel learns many commands, they learn that the LORD is the One who saves.");
   } else if (lower.includes("go forward") || lower.includes("lift thou up thy rod") || lower.includes("divide it") || lower.includes("dry ground")) {
-    add(`${title} shows God turning a blocked path into a rescue road.`, "The sea looked like the end of the journey.", "God commands Moses forward, and the impossible place becomes the way through.", "🌊 Sea", "🚶 Dry ground", "📜 God's command", "Faith moves forward because God makes the road.");
+    add(`${title} shows God turning a blocked path into a rescue road.`, "The sea looked like the end of the journey.", "God commands Moses forward, and the impossible place becomes the way through.", "ðŸŒŠ Sea", "ðŸš¶ Dry ground", "ðŸ“œ God's command", "Faith moves forward because God makes the road.");
   } else if (lower.includes("angel of god") || lower.includes("pillar of the cloud") || lower.includes("cloud and darkness") || lower.includes("gave light")) {
-    add(`${title} shows God's presence standing between Israel and Egypt.`, "The same cloud gives light to Israel and darkness to Egypt.", "God's presence protects His people while confusing their enemies.", "☁️ Cloud", "💡 Light for Israel", "🌑 Darkness for Egypt", "The LORD is not only ahead of His people; He also guards behind them.");
+    add(`${title} shows God's presence standing between Israel and Egypt.`, "The same cloud gives light to Israel and darkness to Egypt.", "God's presence protects His people while confusing their enemies.", "â˜ï¸ Cloud", "ðŸ’¡ Light for Israel", "ðŸŒ‘ Darkness for Egypt", "The LORD is not only ahead of His people; He also guards behind them.");
   } else if (lower.includes("waters were a wall") && section.reference === "Exodus 14:29-31") {
-    add(`${title} is repeated after the danger is over so Israel remembers how they crossed safely.`, "The walls of water were not a poetic idea to them.", "They had walked between those waters and survived because God held the path open.", "🌊 Water held back", "🚶 Israel crossed", "👀 Rescue remembered", "The repeated image helps the people understand that the LORD protected every step through the sea.");
+    add(`${title} is repeated after the danger is over so Israel remembers how they crossed safely.`, "The walls of water were not a poetic idea to them.", "They had walked between those waters and survived because God held the path open.", "ðŸŒŠ Water held back", "ðŸš¶ Israel crossed", "ðŸ‘€ Rescue remembered", "The repeated image helps the people understand that the LORD protected every step through the sea.");
   } else if (lower.includes("strong east wind") || lower.includes("waters were divided") || lower.includes("waters were a wall") || lower.includes("sea dry land")) {
-    add(`${title} carries the great sea deliverance in a concrete image.`, "The water that looked like death becomes a passage of life.", "God makes dry ground where Israel could never build a road.", "🌊 Sea", "🧱 Waters like walls", "🚶 Dry ground", "The Creator makes a way through what His people cannot cross.");
+    add(`${title} carries the great sea deliverance in a concrete image.`, "The water that looked like death becomes a passage of life.", "God makes dry ground where Israel could never build a road.", "ðŸŒŠ Sea", "ðŸ§± Waters like walls", "ðŸš¶ Dry ground", "The Creator makes a way through what His people cannot cross.");
   } else if (lower.includes("morning watch") || lower.includes("troubled") || lower.includes("chariot wheels") || lower.includes("flee from the face") || lower.includes("overthrew")) {
-    add(`${title} shows Egypt's strength collapsing inside God's judgment.`, "The army that looked unstoppable becomes confused, slowed, and trapped.", "Even Egypt's chariot wheels cannot carry them through what God opened for Israel.", "⚔️ Army troubled", "🛞 Wheels fail", "🌊 Sea returns", "The road of rescue for Israel becomes judgment for Pharaoh's army.");
+    add(`${title} shows Egypt's strength collapsing inside God's judgment.`, "The army that looked unstoppable becomes confused, slowed, and trapped.", "Even Egypt's chariot wheels cannot carry them through what God opened for Israel.", "âš”ï¸ Army troubled", "ðŸ›ž Wheels fail", "ðŸŒŠ Sea returns", "The road of rescue for Israel becomes judgment for Pharaoh's army.");
   } else if (lower.includes("lord saved israel") || lower.includes("saw the egyptians dead") || lower.includes("saw that great work") || lower.includes("believed the lord")) {
-    add(`${title} marks the visible result of God's rescue at the sea.`, "Israel sees that Pharaoh's army can no longer drag them back.", "The fear of Egypt is replaced by fear of the LORD.", "👀 Israel saw", "🛡️ The LORD saved", "🙌 Belief grows", "God's work at the sea teaches Israel whom to trust.");
+    add(`${title} marks the visible result of God's rescue at the sea.`, "Israel sees that Pharaoh's army can no longer drag them back.", "The fear of Egypt is replaced by fear of the LORD.", "ðŸ‘€ Israel saw", "ðŸ›¡ï¸ The LORD saved", "ðŸ™Œ Belief grows", "God's work at the sea teaches Israel whom to trust.");
   } else if (lower.includes("sang") || lower.includes("sing") || lower.includes("song") || lower.includes("timbrels") || lower.includes("dances") || lower.includes("miriam")) {
-    add(`${title} shows rescue turning into worship.`, "After God saves Israel at the sea, the people sing.", "Praise becomes the first big response to deliverance.", "🎶 Song", "🥁 Timbrels", "🙌 Worship", "The song teaches Israel how to remember the victory: the LORD triumphed.");
+    add(`${title} shows rescue turning into worship.`, "After God saves Israel at the sea, the people sing.", "Praise becomes the first big response to deliverance.", "ðŸŽ¶ Song", "ðŸ¥ Timbrels", "ðŸ™Œ Worship", "The song teaches Israel how to remember the victory: the LORD triumphed.");
   } else if (lower.includes("triumphed gloriously") && section.reference === "Exodus 15:19-21") {
-    add(`${title} becomes the chorus Miriam and the women repeat after the sea rescue.`, "The victory is not left as a private memory.", "It is sung back by the community with music and movement.", "🎶 Repeated praise", "🥁 Timbrels", "🙌 Shared worship", "The same rescue truth moves from Moses' song into the people's celebration.");
+    add(`${title} becomes the chorus Miriam and the women repeat after the sea rescue.`, "The victory is not left as a private memory.", "It is sung back by the community with music and movement.", "ðŸŽ¶ Repeated praise", "ðŸ¥ Timbrels", "ðŸ™Œ Shared worship", "The same rescue truth moves from Moses' song into the people's celebration.");
   } else if (lower.includes("triumphed gloriously") || lower.includes("rider") || lower.includes("right hand") || lower.includes("man of war") || lower.includes("overthrown") || lower.includes("wrath") || lower.includes("enemy said")) {
-    add(`${title} celebrates the LORD's victory over Egypt's power.`, "The song does not praise Israel's bravery or strategy.", "It praises the LORD who threw down the horse, rider, army, and pride of Egypt.", "👑 The LORD wins", "🐎 Egypt defeated", "🌊 Sea judgment", "Worship tells the rescue story with God at the center.");
+    add(`${title} celebrates the LORD's victory over Egypt's power.`, "The song does not praise Israel's bravery or strategy.", "It praises the LORD who threw down the horse, rider, army, and pride of Egypt.", "ðŸ‘‘ The LORD wins", "ðŸŽ Egypt defeated", "ðŸŒŠ Sea judgment", "Worship tells the rescue story with God at the center.");
   } else if (lower.includes("strength and song") || lower.includes("he is my god") || lower.includes("who is like") || lower.includes("glorious") || lower.includes("doing wonders")) {
-    add(`${title} turns doctrine into worshipful confession.`, "Israel is not only saying God did a powerful act.", "They are confessing who He is: strong, holy, wonderful, and unlike any other.", "🙌 Praise", "🔥 Holiness", "✨ Wonders", "The sea rescue teaches Israel to know God, not just enjoy escape.");
+    add(`${title} turns doctrine into worshipful confession.`, "Israel is not only saying God did a powerful act.", "They are confessing who He is: strong, holy, wonderful, and unlike any other.", "ðŸ™Œ Praise", "ðŸ”¥ Holiness", "âœ¨ Wonders", "The sea rescue teaches Israel to know God, not just enjoy escape.");
   } else if (lower.includes("mercy hast led") || lower.includes("people shall hear") || lower.includes("pass over") || lower.includes("purchased")) {
-    add(`${title} looks beyond the sea toward the nations and the promised future.`, "The song says other peoples will hear and tremble.", "Israel has been redeemed, and the LORD will keep leading them.", "🛡️ Mercy", "🌍 Nations hear", "💰 Purchased people", "The rescue at the sea is the beginning of a larger journey with God.");
+    add(`${title} looks beyond the sea toward the nations and the promised future.`, "The song says other peoples will hear and tremble.", "Israel has been redeemed, and the LORD will keep leading them.", "ðŸ›¡ï¸ Mercy", "ðŸŒ Nations hear", "ðŸ’° Purchased people", "The rescue at the sea is the beginning of a larger journey with God.");
   } else if (lower.includes("bring them in") || lower.includes("plant them") || lower.includes("inheritance") || lower.includes("sanctuary") || lower.includes("reign")) {
-    add(`${title} looks forward to God's goal for His rescued people.`, "The Exodus is not only about leaving Egypt.", "God is bringing His people toward a place where He will dwell with them.", "🏞️ Inheritance", "🌱 Planted people", "👑 The LORD reigns", "Rescue has a destination: life with God as King.");
+    add(`${title} looks forward to God's goal for His rescued people.`, "The Exodus is not only about leaving Egypt.", "God is bringing His people toward a place where He will dwell with them.", "ðŸžï¸ Inheritance", "ðŸŒ± Planted people", "ðŸ‘‘ The LORD reigns", "Rescue has a destination: life with God as King.");
   } else if (lower.includes("three days") || lower.includes("no water") || lower.includes("marah") || lower.includes("murmured") || lower.includes("tree") || lower.includes("healeth") || lower.includes("wells")) {
-    add(`${title} shows the wilderness testing Israel's trust quickly after rescue.`, "The need is real: the people are thirsty.", "But the wilderness will teach them to bring need to God instead of letting fear rewrite the story.", "💧 Water", "🌳 Tree", "🩺 The LORD heals", "The God who opened the sea can also provide in dry places.");
+    add(`${title} shows the wilderness testing Israel's trust quickly after rescue.`, "The need is real: the people are thirsty.", "But the wilderness will teach them to bring need to God instead of letting fear rewrite the story.", "ðŸ’§ Water", "ðŸŒ³ Tree", "ðŸ©º The LORD heals", "The God who opened the sea can also provide in dry places.");
   } else if (lower.includes("wilderness of sin") || lower.includes("fifteenth day") || lower.includes("whole congregation murmured") || lower.includes("flesh pots") || lower.includes("bread to the full") || lower.includes("kill this whole assembly")) {
-    add(`${title} shows hunger and fear speaking after the rescue.`, "Israel remembers Egypt's food but forgets Egypt's bondage.", "Need is real, but nostalgia can make slavery look safer than trust.", "🍲 Egypt remembered", "🍞 Hunger", "😟 Fear talking", "God will teach them daily dependence instead of backward-looking panic.");
+    add(`${title} shows hunger and fear speaking after the rescue.`, "Israel remembers Egypt's food but forgets Egypt's bondage.", "Need is real, but nostalgia can make slavery look safer than trust.", "ðŸ² Egypt remembered", "ðŸž Hunger", "ðŸ˜Ÿ Fear talking", "God will teach them daily dependence instead of backward-looking panic.");
   } else if (lower.includes("rain bread") || lower.includes("gather") || lower.includes("certain rate") || lower.includes("prove them") || lower.includes("sixth day")) {
-    add(`${title} introduces manna as daily training in trust.`, "God gives bread, but He gives it with instructions.", "The people must gather enough for each day and learn that God's provision can be trusted.", "🍞 Bread from heaven", "📏 Daily amount", "🧪 Testing trust", "Provision becomes a classroom where Israel learns obedience.");
+    add(`${title} introduces manna as daily training in trust.`, "God gives bread, but He gives it with instructions.", "The people must gather enough for each day and learn that God's provision can be trusted.", "ðŸž Bread from heaven", "ðŸ“ Daily amount", "ðŸ§ª Testing trust", "Provision becomes a classroom where Israel learns obedience.");
   } else if (lower.includes("glory of the lord") || lower.includes("heard the murmurings") || lower.includes("eat flesh") || lower.includes("filled with bread") || lower.includes("lord your god")) {
-    add(`${title} shows God answering complaint with mercy and revelation.`, "The LORD hears the murmuring, but He still provides quail and bread.", "The goal is not only full stomachs. The goal is that Israel knows the LORD is their God.", "👂 God hears", "🍗 Flesh at evening", "🍞 Bread in morning", "Provision reveals the Provider.");
+    add(`${title} shows God answering complaint with mercy and revelation.`, "The LORD hears the murmuring, but He still provides quail and bread.", "The goal is not only full stomachs. The goal is that Israel knows the LORD is their God.", "ðŸ‘‚ God hears", "ðŸ— Flesh at evening", "ðŸž Bread in morning", "Provision reveals the Provider.");
   } else if (lower.includes("quails") || lower.includes("dew") || lower.includes("small round thing") || lower.includes("what is it") || lower.includes("bread which the lord") || lower.includes("omer") || lower.includes("much had nothing over") || lower.includes("little had no lack")) {
-    add(`${title} teaches daily dependence on God's measured provision.`, "Manna was strange enough that the people asked what it was.", "Yet God gave enough for each person, with no one lacking when they gathered as commanded.", "🍞 Manna", "📏 Omer", "✅ Enough for each day", "God is reshaping former slaves into people who receive His care one morning at a time.");
+    add(`${title} teaches daily dependence on God's measured provision.`, "Manna was strange enough that the people asked what it was.", "Yet God gave enough for each person, with no one lacking when they gathered as commanded.", "ðŸž Manna", "ðŸ“ Omer", "âœ… Enough for each day", "God is reshaping former slaves into people who receive His care one morning at a time.");
   } else if (lower.includes("leave of it") || lower.includes("hearkened not") || lower.includes("worms") || lower.includes("stank") || lower.includes("sun waxed hot") || lower.includes("melted")) {
-    add(`${title} shows what happens when Israel tries to control tomorrow without trusting God.`, "Some people keep manna overnight against Moses' command.", "The spoiled manna teaches that God's daily provision must be received God's way.", "🍞 Manna", "🪱 Spoiled food", "☀️ Melted away", "Trust means obeying the Provider, not hoarding against His word.");
+    add(`${title} shows what happens when Israel tries to control tomorrow without trusting God.`, "Some people keep manna overnight against Moses' command.", "The spoiled manna teaches that God's daily provision must be received God's way.", "ðŸž Manna", "ðŸª± Spoiled food", "â˜€ï¸ Melted away", "Trust means obeying the Provider, not hoarding against His word.");
   } else if (lower.includes("twice as much") || lower.includes("holy sabbath") || lower.includes("bake") || lower.includes("seventh day") || lower.includes("there shall be none") || lower.includes("rested")) {
-    add(`${title} teaches rest as part of freedom.`, "Slaves in Egypt were driven by endless quotas, but God gives His people a rhythm of work and rest.", "The double portion trains them to trust God's care even when they stop gathering.", "🛑 Rest", "🍞 Double portion", "📅 Seventh day", "The Sabbath shows that Israel is the LORD's people, not servants of endless labor.");
+    add(`${title} teaches rest as part of freedom.`, "Slaves in Egypt were driven by endless quotas, but God gives His people a rhythm of work and rest.", "The double portion trains them to trust God's care even when they stop gathering.", "ðŸ›‘ Rest", "ðŸž Double portion", "ðŸ“… Seventh day", "The Sabbath shows that Israel is the LORD's people, not servants of endless labor.");
   } else if (lower.includes("how long refuse") || lower.includes("commandments")) {
-    add(`${title} exposes disobedience after God has clearly provided.`, "Some Israelites still go out looking for manna on the Sabbath.", "The issue is no longer lack of food. It is refusal to trust God's command.", "🚫 Refusal", "📜 Commandments", "🛑 Sabbath lesson", "Freedom with God includes learning to stop when He says stop.");
+    add(`${title} exposes disobedience after God has clearly provided.`, "Some Israelites still go out looking for manna on the Sabbath.", "The issue is no longer lack of food. It is refusal to trust God's command.", "ðŸš« Refusal", "ðŸ“œ Commandments", "ðŸ›‘ Sabbath lesson", "Freedom with God includes learning to stop when He says stop.");
   } else if (lower.includes("manna") || lower.includes("coriander") || lower.includes("wafers") || lower.includes("honey") || lower.includes("kept") || lower.includes("testimony") || lower.includes("forty years") || lower.includes("borders of canaan")) {
-    add(`${title} preserves the memory of God's wilderness provision.`, "Manna was not only food for a hungry morning.", "It became testimony that the LORD fed Israel through the long journey.", "🍞 Manna", "🏺 Kept as witness", "🏞️ Until Canaan", "The bread reminded Israel that God sustained them from Egypt to the promised land.");
+    add(`${title} preserves the memory of God's wilderness provision.`, "Manna was not only food for a hungry morning.", "It became testimony that the LORD fed Israel through the long journey.", "ðŸž Manna", "ðŸº Kept as witness", "ðŸžï¸ Until Canaan", "The bread reminded Israel that God sustained them from Egypt to the promised land.");
   } else {
-    add(`${title} explains one part of Israel's journey from rescue into life with God.`, "The wording helps the reader ask what God is showing through memory, guidance, worship, testing, provision, or rest.", "📖 Scripture wording", "🔍 Phrase meaning", "🧠 Trust training", "Every rescued step is training Israel to trust the LORD.");
+    add(`${title} explains one part of Israel's journey from rescue into life with God.`, "The wording helps the reader ask what God is showing through memory, guidance, worship, testing, provision, or rest.", "ðŸ“– Scripture wording", "ðŸ” Phrase meaning", "ðŸ§  Trust training", "Every rescued step is training Israel to trust the LORD.");
   }
 
   return formatDay25PhraseExplanation(section, title, lines);
@@ -2476,11 +2545,12 @@ const DAY_26_EXACT_PHRASE_EXPLANATIONS: Record<string, string[]> = {
 };
 
 function makeDay26PhraseCard(section: PersonalExodusPhraseSectionInput, title: string): [string, string] {
-  return [`📌 ${title}`, explainDay26Phrase(section, title)];
+  return [`ðŸ“Œ ${title}`, explainDay26Phrase(section, title)];
 }
 
 function makeDay26PhraseCardShort(section: PersonalExodusPhraseSectionInput, title: string): [string, string] {
-  return [ensureExodusElevenToTwentyTitleEmoji(title), explainDay26Phrase(section, title)];
+  const cardTitle = ensureExodusElevenToTwentyTitleEmoji(title);
+  return [cardTitle, polishDay26PhraseContent(cardTitle, explainDay26Phrase(section, title))];
 }
 
 function explainDay26Phrase(section: PersonalExodusPhraseSectionInput, title: string): string {
@@ -2496,79 +2566,79 @@ function explainDay26Phrase(section: PersonalExodusPhraseSectionInput, title: st
   if (exact) return note(exact);
 
   if (lower.includes("after their journeys")) {
-    add(`${title} reminds the reader that Israel is moving step by step through the wilderness.`, "They have left Egypt, but they have not yet learned how to live as free people with God.", "Every stop becomes a place where trust is tested.", "🚶 Journey", "🏜️ Wilderness", "🧠 Learning trust", "The road after rescue is where God begins training His people.");
+    add(`${title} reminds the reader that Israel is moving step by step through the wilderness.`, "They have left Egypt, but they have not yet learned how to live as free people with God.", "Every stop becomes a place where trust is tested.", "ðŸš¶ Journey", "ðŸœï¸ Wilderness", "ðŸ§  Learning trust", "The road after rescue is where God begins training His people.");
   } else if (lower.includes("no water") || lower.includes("chide") || lower.includes("wherefore") || lower.includes("stone me")) {
-    add(`${title} means the thirst was real, but the reaction was faithless.`, "The people are thirsty, so the problem is not imaginary.", "But instead of trusting the God who opened the sea, they turn their fear against Moses.", "💧 No water", "😡 Quarreling", "🪨 Threatening stones", "The wilderness exposes what fear sounds like when trust is weak.");
+    add(`${title} means the thirst was real, but the reaction was faithless.`, "The people are thirsty, so the problem is not imaginary.", "But instead of trusting the God who opened the sea, they turn their fear against Moses.", "ðŸ’§ No water", "ðŸ˜¡ Quarreling", "ðŸª¨ Threatening stones", "The wilderness exposes what fear sounds like when trust is weak.");
   } else if (lower.includes("moses cried")) {
-    add(`${title} means Moses takes the crisis to the only One who can answer it.`, "The crowd is angry enough that Moses feels in danger.", "His prayer is honest because leadership has become heavy.", "🙏 Moses cries out", "😰 Real pressure", "🙌 God must answer", "Good leadership learns to carry people's panic to God.");
+    add(`${title} means Moses takes the crisis to the only One who can answer it.`, "The crowd is angry enough that Moses feels in danger.", "His prayer is honest because leadership has become heavy.", "ðŸ™ Moses cries out", "ðŸ˜° Real pressure", "ðŸ™Œ God must answer", "Good leadership learns to carry people's panic to God.");
   } else if (lower.includes("rock in horeb") || lower.includes("smite the rock")) {
-    add(`${title} means God chooses an unlikely place to provide life.`, "The people need water, and God gives it from the rock.", "The answer comes by God's command, not by Moses' cleverness.", "🪨 Rock", "💧 Water", "📜 God's command", "The LORD can bring life from places that look completely unable to give it.");
+    add(`${title} means God chooses an unlikely place to provide life.`, "The people need water, and God gives it from the rock.", "The answer comes by God's command, not by Moses' cleverness.", "ðŸª¨ Rock", "ðŸ’§ Water", "ðŸ“œ God's command", "The LORD can bring life from places that look completely unable to give it.");
   } else if (lower.includes("massah") || lower.includes("meribah")) {
-    add(`${title} turns the place name into a memory lesson.`, "Massah is connected with testing, and Meribah is connected with quarreling.", "The name helps Israel remember what unbelief sounded like at Rephidim.", "📍 Place name", "⚖️ Testing", "😡 Quarreling", "Bible place names often teach the meaning of what happened there.");
+    add(`${title} turns the place name into a memory lesson.`, "Massah is connected with testing, and Meribah is connected with quarreling.", "The name helps Israel remember what unbelief sounded like at Rephidim.", "ðŸ“ Place name", "âš–ï¸ Testing", "ðŸ˜¡ Quarreling", "Bible place names often teach the meaning of what happened there.");
   } else if (lower.includes("tempted the lord") || lower === "saying" || lower.includes("among us")) {
-    add(`${title} means Israel's thirst has turned into a question about God's presence.`, "They are not only asking for water.", "They are questioning whether the LORD is really present with them.", "❓ Is God here?", "💧 Need", "💔 Doubt", "The painful irony is that God has been leading them the whole way.");
+    add(`${title} means Israel's thirst has turned into a question about God's presence.`, "They are not only asking for water.", "They are questioning whether the LORD is really present with them.", "â“ Is God here?", "ðŸ’§ Need", "ðŸ’” Doubt", "The painful irony is that God has been leading them the whole way.");
   } else if (lower.includes("amalek") || lower.includes("joshua") || lower.includes("choose us out")) {
-    add(`${title} introduces Israel's first battle after leaving Egypt.`, "The rescued people now face an enemy in the wilderness.", "Joshua appears as a leader while Moses stands with the rod of God.", "⚔️ Battle", "🧍 Joshua", "🏜️ Wilderness enemy", "Freedom does not mean Israel will never face conflict. It means the LORD is with them in it.");
+    add(`${title} introduces Israel's first battle after leaving Egypt.`, "The rescued people now face an enemy in the wilderness.", "Joshua appears as a leader while Moses stands with the rod of God.", "âš”ï¸ Battle", "ðŸ§ Joshua", "ðŸœï¸ Wilderness enemy", "Freedom does not mean Israel will never face conflict. It means the LORD is with them in it.");
   } else if (lower.includes("rod of god") || lower.includes("held up his hand") || lower.includes("aaron and hur") || lower.includes("hands were steady")) {
-    add(`${title} means the battle is connected to dependence on God, not only swords on the ground.`, "Moses grows tired, so Aaron and Hur help hold up his hands.", "The battle is won through dependence, endurance, and shared support.", "🙌 Lifted hands", "🤝 Aaron and Hur", "⚔️ Battle below", "Even leaders who trust God still need people to help them stand.");
+    add(`${title} means the battle is connected to dependence on God, not only swords on the ground.`, "Moses grows tired, so Aaron and Hur help hold up his hands.", "The battle is won through dependence, endurance, and shared support.", "ðŸ™Œ Lifted hands", "ðŸ¤ Aaron and Hur", "âš”ï¸ Battle below", "Even leaders who trust God still need people to help them stand.");
   } else if (lower.includes("discomfited amalek")) {
-    add(`${title} means Joshua defeats Amalek in battle.`, "The word sounds old, but it means Amalek was overthrown or beaten back.", "Israel's victory is tied to God's help, not only Joshua's sword.", "⚔️ Joshua fights", "🙌 Moses depends on God", "✅ Amalek defeated", "The scene teaches both action and dependence.");
+    add(`${title} means Joshua defeats Amalek in battle.`, "The word sounds old, but it means Amalek was overthrown or beaten back.", "Israel's victory is tied to God's help, not only Joshua's sword.", "âš”ï¸ Joshua fights", "ðŸ™Œ Moses depends on God", "âœ… Amalek defeated", "The scene teaches both action and dependence.");
   } else if (lower.includes("memorial in a book") || lower.includes("rehearse it") || lower.includes("remembrance of amalek")) {
-    add(`${title} means this battle was not supposed to disappear from Israel's memory.`, "God tells Moses to write it down and make sure Joshua hears it.", "The fight with Amalek will matter beyond one day.", "📖 Written memory", "👂 Joshua hears", "⚔️ Long conflict", "Some moments are recorded because future faithfulness will need them.");
+    add(`${title} means this battle was not supposed to disappear from Israel's memory.`, "God tells Moses to write it down and make sure Joshua hears it.", "The fight with Amalek will matter beyond one day.", "ðŸ“– Written memory", "ðŸ‘‚ Joshua hears", "âš”ï¸ Long conflict", "Some moments are recorded because future faithfulness will need them.");
   } else if (lower.includes("altar") || lower.includes("jehovahnissi") || lower.includes("lord hath sworn") || lower.includes("war with amalek")) {
-    add(`${title} turns victory into worship and witness.`, "Moses builds an altar and names it Jehovah-nissi, meaning the LORD is my banner.", "The name says Israel's victory flag is not Moses, Joshua, or the army. It is the LORD.", "⛳ Banner", "🙌 Worship", "⚔️ Ongoing battle", "After the fight, Moses makes sure the glory goes to God.");
+    add(`${title} turns victory into worship and witness.`, "Moses builds an altar and names it Jehovah-nissi, meaning the LORD is my banner.", "The name says Israel's victory flag is not Moses, Joshua, or the army. It is the LORD.", "â›³ Banner", "ðŸ™Œ Worship", "âš”ï¸ Ongoing battle", "After the fight, Moses makes sure the glory goes to God.");
   } else if (lower.includes("jethro") || lower.includes("midian") || lower.includes("father in law")) {
-    add(`${title} brings Moses' family connection back into the story.`, "Jethro is Moses' father-in-law from Midian, the place where Moses lived before returning to Egypt.", "His arrival connects the wilderness rescue with Moses' earlier life.", "👴 Jethro", "🏜️ Midian", "👨‍👩‍👦 Family connection", "God's work in Exodus is public, but it also touches real families.");
+    add(`${title} brings Moses' family connection back into the story.`, "Jethro is Moses' father-in-law from Midian, the place where Moses lived before returning to Egypt.", "His arrival connects the wilderness rescue with Moses' earlier life.", "ðŸ‘´ Jethro", "ðŸœï¸ Midian", "ðŸ‘¨â€ðŸ‘©â€ðŸ‘¦ Family connection", "God's work in Exodus is public, but it also touches real families.");
   } else if (lower.includes("heard of all") || lower.includes("brought israel out") || lower.includes("delivered them")) {
-    add(`${title} means the rescue from Egypt has become news outside Israel's camp.`, "Jethro hears what God has done to Pharaoh and for His people.", "Deliverance becomes testimony to someone outside the rescued nation.", "👂 Heard", "🚪 Brought out", "🙌 God delivered", "God's rescue is meant to be known, not hidden.");
+    add(`${title} means the rescue from Egypt has become news outside Israel's camp.`, "Jethro hears what God has done to Pharaoh and for His people.", "Deliverance becomes testimony to someone outside the rescued nation.", "ðŸ‘‚ Heard", "ðŸšª Brought out", "ðŸ™Œ God delivered", "God's rescue is meant to be known, not hidden.");
   } else if (lower.includes("zipporah") || lower.includes("gershom") || lower.includes("eliezer")) {
-    add(`${title} names Moses' household and reminds the reader that Moses is not only a public leader.`, "His wife and sons carry pieces of his story: exile, help, and God's rescue from danger.", "These family names keep Moses grounded as a real person.", "👩 Zipporah", "👦 Sons", "🏠 Moses' household", "The leader of Israel still has a family story inside God's bigger story.");
+    add(`${title} names Moses' household and reminds the reader that Moses is not only a public leader.`, "His wife and sons carry pieces of his story: exile, help, and God's rescue from danger.", "These family names keep Moses grounded as a real person.", "ðŸ‘© Zipporah", "ðŸ‘¦ Sons", "ðŸ  Moses' household", "The leader of Israel still has a family story inside God's bigger story.");
   } else if (lower.includes("obeisance") || lower.includes("kissed") || lower.includes("welfare")) {
-    add(`${title} means Moses greets Jethro with honor and affection.`, "Moses honors Jethro, greets him warmly, and asks about his peace.", "The scene is tender after the pressure of plagues, escape, thirst, and battle.", "🙇 Respect", "🤝 Greeting", "🏕️ Family reunion", "Exodus includes ordinary human kindness inside the larger rescue story.");
+    add(`${title} means Moses greets Jethro with honor and affection.`, "Moses honors Jethro, greets him warmly, and asks about his peace.", "The scene is tender after the pressure of plagues, escape, thirst, and battle.", "ðŸ™‡ Respect", "ðŸ¤ Greeting", "ðŸ•ï¸ Family reunion", "Exodus includes ordinary human kindness inside the larger rescue story.");
   } else if (lower.includes("greater than all gods") || lower.includes("burnt offering")) {
-    add(`${title} is Jethro responding to Israel's rescue with worship.`, "He confesses that the LORD is greater than all gods and brings an offering.", "The Exodus has taught him something about who God is.", "🙌 Confession", "🔥 Offering", "👑 The LORD greater", "A rescued story becomes a witness that leads to worship.");
+    add(`${title} is Jethro responding to Israel's rescue with worship.`, "He confesses that the LORD is greater than all gods and brings an offering.", "The Exodus has taught him something about who God is.", "ðŸ™Œ Confession", "ðŸ”¥ Offering", "ðŸ‘‘ The LORD greater", "A rescued story becomes a witness that leads to worship.");
   } else if (lower.includes("sat to judge") || lower.includes("morning unto the evening") || lower.includes("why sittest") || lower.includes("wear away") || lower.includes("not good")) {
-    add(`${title} means Moses is carrying more than one man should carry.`, "Moses is trying to judge every case by himself from morning until evening.", "Jethro sees that this will wear Moses down and exhaust the people too.", "⚖️ Judging cases", "⏳ All day", "😓 Burnout danger", "Serving God does not mean carrying every burden alone.");
+    add(`${title} means Moses is carrying more than one man should carry.`, "Moses is trying to judge every case by himself from morning until evening.", "Jethro sees that this will wear Moses down and exhaust the people too.", "âš–ï¸ Judging cases", "â³ All day", "ðŸ˜“ Burnout danger", "Serving God does not mean carrying every burden alone.");
   } else if (lower.includes("enquire of god") || lower.includes("statutes of god")) {
-    add(`${title} means Israel's everyday problems need God's wisdom.`, "The people bring matters to Moses because they need guidance from the LORD.", "Moses teaches them God's statutes and laws.", "📜 God's instruction", "⚖️ Decisions", "🧭 Wisdom", "A rescued people must learn God's ways for ordinary life.");
+    add(`${title} means Israel's everyday problems need God's wisdom.`, "The people bring matters to Moses because they need guidance from the LORD.", "Moses teaches them God's statutes and laws.", "ðŸ“œ God's instruction", "âš–ï¸ Decisions", "ðŸ§­ Wisdom", "A rescued people must learn God's ways for ordinary life.");
   } else if (lower.includes("god-ward") || lower.includes("teach them") || lower.includes("way wherein")) {
-    add(`${title} means Moses is to stand before God for the people.`, "Moses must represent the people before God and teach them the way to walk.", "Delegating cases does not mean abandoning spiritual responsibility.", "🙏 Before God", "📜 Teach the law", "🧭 Show the way", "Healthy leadership keeps the main calling clear.");
+    add(`${title} means Moses is to stand before God for the people.`, "Moses must represent the people before God and teach them the way to walk.", "Delegating cases does not mean abandoning spiritual responsibility.", "ðŸ™ Before God", "ðŸ“œ Teach the law", "ðŸ§­ Show the way", "Healthy leadership keeps the main calling clear.");
   } else if (lower.includes("able men") || lower.includes("fear god") || lower.includes("men of truth") || lower.includes("hating covetousness") || lower.includes("rulers of thousands") || lower.includes("hearkened")) {
-    add(`${title} gives the character standard for shared leadership.`, "The leaders must be capable, reverent, truthful, and not greedy.", "God's people need more than talented organizers. They need trustworthy servants.", "💪 Able", "🙏 Fear God", "⚖️ Truthful and fair", "Shared leadership protects the people and the leader.");
+    add(`${title} gives the character standard for shared leadership.`, "The leaders must be capable, reverent, truthful, and not greedy.", "God's people need more than talented organizers. They need trustworthy servants.", "ðŸ’ª Able", "ðŸ™ Fear God", "âš–ï¸ Truthful and fair", "Shared leadership protects the people and the leader.");
   } else if (lower.includes("heads over the people") || lower.includes("judged the people") || lower.includes("hard causes") || lower.includes("small matter") || lower.includes("depart")) {
-    add(`${title} means the new leadership structure actually begins working.`, "Smaller cases are handled by appointed leaders, while hard cases come to Moses.", "This creates order without pretending Moses can do everything.", "👥 Shared leaders", "⚖️ Hard cases", "✅ Wise order", "God's people are helped when responsibility is carried wisely.");
+    add(`${title} means the new leadership structure actually begins working.`, "Smaller cases are handled by appointed leaders, while hard cases come to Moses.", "This creates order without pretending Moses can do everything.", "ðŸ‘¥ Shared leaders", "âš–ï¸ Hard cases", "âœ… Wise order", "God's people are helped when responsibility is carried wisely.");
   } else if (lower.includes("third month") || lower.includes("sinai") || lower.includes("camped before the mount")) {
-    add(`${title} brings Israel to the mountain where covenant instruction will be given.`, "The people rescued from Egypt now stand before Sinai.", "This is where the LORD will speak and shape them as His holy people.", "⛰️ Sinai", "🏕️ Camped people", "📜 Covenant coming", "Rescue leads to relationship, worship, and command.");
+    add(`${title} brings Israel to the mountain where covenant instruction will be given.`, "The people rescued from Egypt now stand before Sinai.", "This is where the LORD will speak and shape them as His holy people.", "â›°ï¸ Sinai", "ðŸ•ï¸ Camped people", "ðŸ“œ Covenant coming", "Rescue leads to relationship, worship, and command.");
   } else if (lower.includes("moses went up") || lower.includes("thick cloud") || lower.includes("people may hear")) {
-    add(`${title} means God is drawing near in a way the people can recognize as holy.`, "Moses goes up as mediator, and the cloud marks God's presence.", "The people are meant to hear and learn to trust the word God gives through Moses.", "⛰️ Mountain", "☁️ Cloud", "👂 People hear", "God is drawing near, but not casually.");
+    add(`${title} means God is drawing near in a way the people can recognize as holy.`, "Moses goes up as mediator, and the cloud marks God's presence.", "The people are meant to hear and learn to trust the word God gives through Moses.", "â›°ï¸ Mountain", "â˜ï¸ Cloud", "ðŸ‘‚ People hear", "God is drawing near, but not casually.");
   } else if (lower.includes("what i did unto the egyptians") || lower.includes("eagles' wings")) {
-    add(`${title} reminds Israel that covenant begins with grace.`, "Before God gives commands, He reminds them that He rescued them.", "The image of eagles' wings shows care, strength, and carrying help.", "🦅 Carried", "🚪 Rescued", "🙌 Grace first", "Obedience in Exodus comes after deliverance, not before it.");
+    add(`${title} reminds Israel that covenant begins with grace.`, "Before God gives commands, He reminds them that He rescued them.", "The image of eagles' wings shows care, strength, and carrying help.", "ðŸ¦… Carried", "ðŸšª Rescued", "ðŸ™Œ Grace first", "Obedience in Exodus comes after deliverance, not before it.");
   } else if (lower.includes("peculiar treasure") || lower.includes("kingdom of priests") || lower.includes("holy nation")) {
-    add(`${title} names Israel's calling after rescue.`, "God is making them His treasured people, set apart to represent Him among the nations.", "This is identity before it is assignment.", "💎 Treasured people", "🙌 Priests", "✨ Holy nation", "The LORD rescues Israel so they can live near Him and show His ways.");
+    add(`${title} names Israel's calling after rescue.`, "God is making them His treasured people, set apart to represent Him among the nations.", "This is identity before it is assignment.", "ðŸ’Ž Treasured people", "ðŸ™Œ Priests", "âœ¨ Holy nation", "The LORD rescues Israel so they can live near Him and show His ways.");
   } else if (lower.includes("elders") || lower.includes("laid before") || lower.includes("all the people answered") || lower.includes("we will do") || lower.includes("returned the words")) {
-    add(`${title} means Israel is answering God's covenant words together.`, "Moses brings God's words to the elders and the people answer together.", "Their response is serious, even though the coming story will show how deeply they still need grace.", "📜 God's words", "👥 People answer", "✅ We will do", "Covenant response should be wholehearted, not casual.");
+    add(`${title} means Israel is answering God's covenant words together.`, "Moses brings God's words to the elders and the people answer together.", "Their response is serious, even though the coming story will show how deeply they still need grace.", "ðŸ“œ God's words", "ðŸ‘¥ People answer", "âœ… We will do", "Covenant response should be wholehearted, not casual.");
   } else if (lower.includes("be ready") && section.reference === "Exodus 19:15-20") {
-    add(`${title} is repeated as Sinai gets closer and the people approach the third day.`, "The waiting is almost over, and the signs of God's presence are about to shake the mountain.", "Readiness here means reverence before the LORD descends.", "⏳ Third day", "⛰️ Sinai", "🙇 Reverence", "The repeated command makes the moment feel serious, not casual.");
+    add(`${title} is repeated as Sinai gets closer and the people approach the third day.`, "The waiting is almost over, and the signs of God's presence are about to shake the mountain.", "Readiness here means reverence before the LORD descends.", "â³ Third day", "â›°ï¸ Sinai", "ðŸ™‡ Reverence", "The repeated command makes the moment feel serious, not casual.");
   } else if (lower.includes("sanctify") || lower.includes("wash their clothes") || lower.includes("be ready") || lower.includes("set bounds") || lower.includes("take heed")) {
-    add(`${title} means the people must prepare before the holy God comes near.`, "The people wash, wait, and stay within the limits God gives.", "God is near, but He is not ordinary or safe to treat lightly.", "🧼 Washed clothes", "⏳ Ready", "🚧 Boundaries", "Holiness means God's presence is wonderful and serious.");
+    add(`${title} means the people must prepare before the holy God comes near.`, "The people wash, wait, and stay within the limits God gives.", "God is near, but He is not ordinary or safe to treat lightly.", "ðŸ§¼ Washed clothes", "â³ Ready", "ðŸš§ Boundaries", "Holiness means God's presence is wonderful and serious.");
   } else if (lower.includes("thunders") || lower.includes("lightnings") || lower.includes("trumpet") || lower.includes("trembled") || lower.includes("smoke") || lower.includes("descended") || lower.includes("god answered")) {
-    add(`${title} means Sinai has become a holy meeting place filled with fear and majesty.`, "The thunder, lightning, trumpet, smoke, and fire show that the LORD's presence is not small.", "The people tremble because God is drawing near in majesty.", "⛈️ Thunder", "🔥 Fire", "🎺 Trumpet", "The mountain scene teaches reverence before the God who rescued them.");
+    add(`${title} means Sinai has become a holy meeting place filled with fear and majesty.`, "The thunder, lightning, trumpet, smoke, and fire show that the LORD's presence is not small.", "The people tremble because God is drawing near in majesty.", "â›ˆï¸ Thunder", "ðŸ”¥ Fire", "ðŸŽº Trumpet", "The mountain scene teaches reverence before the God who rescued them.");
   } else if (lower.includes("go down") || lower.includes("break through") || lower.includes("priests also") || lower.includes("cannot come up") || lower.includes("aaron with thee")) {
-    add(`${title} protects the people from treating God's holiness carelessly.`, "The boundaries around Sinai are not pointless rules.", "They teach that access to God's presence must happen God's way.", "🚧 Boundary", "⚠️ Do not break through", "🙌 Holy presence", "God's nearness is a gift, but it must be received with reverence.");
+    add(`${title} protects the people from treating God's holiness carelessly.`, "The boundaries around Sinai are not pointless rules.", "They teach that access to God's presence must happen God's way.", "ðŸš§ Boundary", "âš ï¸ Do not break through", "ðŸ™Œ Holy presence", "God's nearness is a gift, but it must be received with reverence.");
   } else if (lower.includes("god spake") || lower.includes("i am the lord") || lower.includes("brought thee out") || lower.includes("house of bondage")) {
-    add(`${title} begins the commandments with God's identity and rescue.`, "Before Israel hears what to do, they hear who God is and what He has done.", "The law begins with deliverance, not cold rule-keeping.", "📜 God's word", "🚪 Brought out", "🙌 Rescuer first", "The Ten Commandments are given to a people already rescued by grace.");
+    add(`${title} begins the commandments with God's identity and rescue.`, "Before Israel hears what to do, they hear who God is and what He has done.", "The law begins with deliverance, not cold rule-keeping.", "ðŸ“œ God's word", "ðŸšª Brought out", "ðŸ™Œ Rescuer first", "The Ten Commandments are given to a people already rescued by grace.");
   } else if (lower.includes("no other gods") || lower.includes("before me") || lower.includes("graven image") || lower.includes("bow down") || lower.includes("jealous god") || lower.includes("mercy unto thousands") || lower.includes("name of the lord") || lower.includes("vain")) {
-    add(`${title} teaches Israel that the LORD alone must receive their worship.`, "God rescued them from Egypt, so they must not give their worship to idols, images, or empty use of His name.", "His jealousy is covenant love that refuses to share His people with false gods.", "🙌 One God", "🚫 No idols", "📛 Holy name", "Freedom begins with right worship.");
+    add(`${title} teaches Israel that the LORD alone must receive their worship.`, "God rescued them from Egypt, so they must not give their worship to idols, images, or empty use of His name.", "His jealousy is covenant love that refuses to share His people with false gods.", "ðŸ™Œ One God", "ðŸš« No idols", "ðŸ“› Holy name", "Freedom begins with right worship.");
   } else if (lower.includes("sabbath") || lower.includes("six days") || lower.includes("seventh day") || lower.includes("not do any work") || lower.includes("blessed") || lower.includes("hallowed")) {
-    add(`${title} teaches rest as part of covenant life.`, "Israel had known slave labor in Egypt, but God gives them a holy rhythm of work and rest.", "The Sabbath reaches households, servants, animals, and strangers.", "🛑 Rest", "📅 Seventh day", "🌍 Creation pattern", "The LORD's people are not ruled by endless work.");
+    add(`${title} teaches rest as part of covenant life.`, "Israel had known slave labor in Egypt, but God gives them a holy rhythm of work and rest.", "The Sabbath reaches households, servants, animals, and strangers.", "ðŸ›‘ Rest", "ðŸ“… Seventh day", "ðŸŒ Creation pattern", "The LORD's people are not ruled by endless work.");
   } else if (lower.includes("father") || lower.includes("mother") || lower.includes("kill") || lower.includes("adultery") || lower.includes("steal") || lower.includes("false witness") || lower.includes("covet") || lower.includes("neighbour")) {
-    add(`${title} means freedom under God must change how people treat one another.`, "God's commands protect family, life, marriage, property, truth, and the heart's desires.", "Freedom is not permission to harm others.", "👨‍👩‍👧 Family", "⚖️ Justice", "💭 Heart desires", "Love for the LORD must become love and faithfulness toward neighbors.");
+    add(`${title} means freedom under God must change how people treat one another.`, "God's commands protect family, life, marriage, property, truth, and the heart's desires.", "Freedom is not permission to harm others.", "ðŸ‘¨â€ðŸ‘©â€ðŸ‘§ Family", "âš–ï¸ Justice", "ðŸ’­ Heart desires", "Love for the LORD must become love and faithfulness toward neighbors.");
   } else if (lower.includes("thunderings") || lower.includes("afar off") || lower.includes("speak thou") || lower.includes("lest we die") || lower.includes("fear not") || lower.includes("fear may be before")) {
-    add(`${title} means the people are overwhelmed by hearing God speak.`, "They are afraid and ask Moses to stand between them and God.", "Moses teaches that the right fear of God should lead them away from sin, not away from obedience.", "😨 Trembling people", "🗣️ God's voice", "🙇 Holy fear", "The scene teaches reverence without running from God's word.");
+    add(`${title} means the people are overwhelmed by hearing God speak.`, "They are afraid and ask Moses to stand between them and God.", "Moses teaches that the right fear of God should lead them away from sin, not away from obedience.", "ðŸ˜¨ Trembling people", "ðŸ—£ï¸ God's voice", "ðŸ™‡ Holy fear", "The scene teaches reverence without running from God's word.");
   } else if (lower.includes("gods of silver") || lower.includes("altar") || lower.includes("burnt offerings") || lower.includes("record my name") || lower.includes("hewn stone") || lower.includes("steps")) {
-    add(`${title} keeps Israel's worship simple and obedient after the commandments.`, "They must not make rival gods or shape worship around human display.", "Even the altar instructions teach humility before the LORD.", "🪨 Altar", "🚫 No idols", "🙌 Worship God's way", "The God who spoke from Sinai also teaches how His people may approach Him.");
+    add(`${title} keeps Israel's worship simple and obedient after the commandments.`, "They must not make rival gods or shape worship around human display.", "Even the altar instructions teach humility before the LORD.", "ðŸª¨ Altar", "ðŸš« No idols", "ðŸ™Œ Worship God's way", "The God who spoke from Sinai also teaches how His people may approach Him.");
   } else {
-    add(`${title} explains one part of Israel's covenant journey with God.`, "The wording helps the reader see what the LORD is teaching about trust, worship, leadership, holiness, or obedience.", "📖 Scripture wording", "🔍 Phrase meaning", "🧠 Covenant understanding", "Rescued people are learning how to live with the God who saved them.");
+    add(`${title} explains one part of Israel's covenant journey with God.`, "The wording helps the reader see what the LORD is teaching about trust, worship, leadership, holiness, or obedience.", "ðŸ“– Scripture wording", "ðŸ” Phrase meaning", "ðŸ§  Covenant understanding", "Rescued people are learning how to live with the God who saved them.");
   }
 
   return note(lines.slice(0, 8));
@@ -2585,16 +2655,16 @@ function deepenDay26PhraseCards(section: PersonalExodusPhraseSectionInput): Pers
 }
 
 const EXODUS_11_20_MOBILE_FORMAT_CUES: Record<number, string[]> = {
-  11: ["🌙 The final plague is announced.", "👶 Firstborn judgment answers Pharaoh's cruelty.", "🛡️ God distinguishes His people."],
-  12: ["🐑 Passover teaches shelter through blood.", "🚪 Rescue is received household by household.", "🏃 Israel leaves ready for freedom."],
-  13: ["🧠 Redeemed people must remember.", "👶 The firstborn is claimed by the LORD.", "☁️ God leads His people by presence."],
-  14: ["🌊 The sea looks impossible.", "🛡️ The LORD fights for Israel.", "👀 Deliverance becomes something the people see."],
-  15: ["🎶 Rescue turns into worship.", "💧 The wilderness tests trust quickly.", "🩺 The LORD heals and provides."],
-  16: ["🍞 Daily bread trains daily trust.", "📏 God gives enough, not hoarding.", "🛑 Sabbath rest teaches freedom from slave rhythms."],
-  17: ["💧 Need exposes trust.", "🙌 Victory depends on the LORD.", "🤝 Weary leaders need faithful support."],
-  18: ["👂 Jethro listens to what God has done.", "⚖️ Wise leadership shares the load.", "🧭 God's people need order, not burnout."],
-  19: ["⛰️ Sinai is holy ground for a rescued people.", "🧼 The people prepare before God descends.", "📜 Covenant begins with grace: God carried them first."],
-  20: ["📜 God's commands shape free people.", "🙌 Worship is for the LORD alone.", "⚖️ Love for God and neighbor becomes covenant life."],
+  11: ["ðŸŒ™ The final plague is announced.", "ðŸ‘¶ Firstborn judgment answers Pharaoh's cruelty.", "ðŸ›¡ï¸ God distinguishes His people."],
+  12: ["ðŸ‘ Passover teaches shelter through blood.", "ðŸšª Rescue is received household by household.", "ðŸƒ Israel leaves ready for freedom."],
+  13: ["ðŸ§  Redeemed people must remember.", "ðŸ‘¶ The firstborn is claimed by the LORD.", "â˜ï¸ God leads His people by presence."],
+  14: ["ðŸŒŠ The sea looks impossible.", "ðŸ›¡ï¸ The LORD fights for Israel.", "ðŸ‘€ Deliverance becomes something the people see."],
+  15: ["ðŸŽ¶ Rescue turns into worship.", "ðŸ’§ The wilderness tests trust quickly.", "ðŸ©º The LORD heals and provides."],
+  16: ["ðŸž Daily bread trains daily trust.", "ðŸ“ God gives enough, not hoarding.", "ðŸ›‘ Sabbath rest teaches freedom from slave rhythms."],
+  17: ["ðŸ’§ Need exposes trust.", "ðŸ™Œ Victory depends on the LORD.", "ðŸ¤ Weary leaders need faithful support."],
+  18: ["ðŸ‘‚ Jethro listens to what God has done.", "âš–ï¸ Wise leadership shares the load.", "ðŸ§­ God's people need order, not burnout."],
+  19: ["â›°ï¸ Sinai is holy ground for a rescued people.", "ðŸ§¼ The people prepare before God descends.", "ðŸ“œ Covenant begins with grace: God carried them first."],
+  20: ["ðŸ“œ God's commands shape free people.", "ðŸ™Œ Worship is for the LORD alone.", "âš–ï¸ Love for God and neighbor becomes covenant life."],
 };
 
 function hasExodusElevenToTwentyVisualList(content: string) {
@@ -2659,71 +2729,71 @@ function getExodusElevenToTwentyPhraseList(section: PersonalExodusPhraseSectionI
 
   if (/passover|lamb|blood|door|hyssop|unleavened|leaven|firstborn|midnight/.test(lower)) {
     return [
-      `🐑 ${cleanTitle}`,
-      "🩸 Blood marking the house",
-      "🏠 Families sheltered by God's word",
-      "⚖️ Judgment passing through Egypt",
+      `ðŸ‘ ${cleanTitle}`,
+      "ðŸ©¸ Blood marking the house",
+      "ðŸ  Families sheltered by God's word",
+      "âš–ï¸ Judgment passing through Egypt",
     ];
   }
 
   if (/egypt|pharaoh|egyptians|thrust|jewels|silver|gold|mixed multitude/.test(lower)) {
     return [
-      `🏛️ ${cleanTitle}`,
-      "👑 Egypt losing its grip",
-      "🎒 Israel leaving supplied",
-      "🙌 God reversing oppression",
+      `ðŸ›ï¸ ${cleanTitle}`,
+      "ðŸ‘‘ Egypt losing its grip",
+      "ðŸŽ’ Israel leaving supplied",
+      "ðŸ™Œ God reversing oppression",
     ];
   }
 
   if (/remember|children|ordinance|generation|sign|memorial|feast/.test(lower)) {
     return [
-      `🧠 ${cleanTitle}`,
-      "👶 Children learning the story",
-      "📖 Rescue remembered",
-      "🙌 Worship shaped by deliverance",
+      `ðŸ§  ${cleanTitle}`,
+      "ðŸ‘¶ Children learning the story",
+      "ðŸ“– Rescue remembered",
+      "ðŸ™Œ Worship shaped by deliverance",
     ];
   }
 
   if (/pillar|cloud|fire|led|way|sea|wilderness|camp|journey/.test(lower)) {
     return [
-      `🧭 ${cleanTitle}`,
-      "☁️ God guiding His people",
-      "🏜️ Wilderness path",
-      "🛡️ Presence on the journey",
+      `ðŸ§­ ${cleanTitle}`,
+      "â˜ï¸ God guiding His people",
+      "ðŸœï¸ Wilderness path",
+      "ðŸ›¡ï¸ Presence on the journey",
     ];
   }
 
   if (/sea|waters|wind|dry ground|chariot|horse|rider|fight|stand still|fear/.test(lower)) {
     return [
-      `🌊 ${cleanTitle}`,
-      "😨 Israel facing danger",
-      "🛡️ The LORD fighting for them",
-      "🚶 A path opened by God",
+      `ðŸŒŠ ${cleanTitle}`,
+      "ðŸ˜¨ Israel facing danger",
+      "ðŸ›¡ï¸ The LORD fighting for them",
+      "ðŸš¶ A path opened by God",
     ];
   }
 
   if (/sing|song|lord is my strength|who is like|miriam|timbrel|dance/.test(lower)) {
     return [
-      `🎶 ${cleanTitle}`,
-      "🙌 Praise after rescue",
-      "🌊 The sea victory remembered",
-      "👥 Worship spreading through the people",
+      `ðŸŽ¶ ${cleanTitle}`,
+      "ðŸ™Œ Praise after rescue",
+      "ðŸŒŠ The sea victory remembered",
+      "ðŸ‘¥ Worship spreading through the people",
     ];
   }
 
   if (/manna|bread|quail|omer|sabbath|murmur|wilderness|water|marah|elim/.test(lower)) {
     return [
-      `🍞 ${cleanTitle}`,
-      "🏜️ Need in the wilderness",
-      "🙌 God providing daily",
-      "🧪 Trust being trained",
+      `ðŸž ${cleanTitle}`,
+      "ðŸœï¸ Need in the wilderness",
+      "ðŸ™Œ God providing daily",
+      "ðŸ§ª Trust being trained",
     ];
   }
 
   return [
-    `🔎 ${cleanTitle}`,
-    section.chapter <= 12 ? "🐑 Rescue through Passover" : "🏜️ Israel learning trust",
-    section.chapter <= 12 ? "🏠 God's people sheltered" : "🙌 God leading after freedom",
+    `ðŸ”Ž ${cleanTitle}`,
+    section.chapter <= 12 ? "ðŸ‘ Rescue through Passover" : "ðŸœï¸ Israel learning trust",
+    section.chapter <= 12 ? "ðŸ  God's people sheltered" : "ðŸ™Œ God leading after freedom",
   ];
 }
 
@@ -2822,25 +2892,25 @@ function getDay26TeachingBullets(section: PersonalExodusPhraseSectionInput, titl
   }
 
   if (section.chapter === 17 && (lower.includes("water") || lower.includes("rock") || lower.includes("horeb") || lower.includes("chide") || lower.includes("massah") || lower.includes("meribah"))) {
-    return ["💧 Israel needs real water", "🪨 The LORD provides from the rock", "🗣️ Complaining tests trust", "🙌 God meets need in the wilderness"];
+    return ["ðŸ’§ Israel needs real water", "ðŸª¨ The LORD provides from the rock", "ðŸ—£ï¸ Complaining tests trust", "ðŸ™Œ God meets need in the wilderness"];
   }
   if (section.chapter === 17) {
-    return ["⚔️ Amalek attacks the rescued people", "🙌 Israel depends on the LORD's help", "🤝 Aaron and Hur support Moses", "📖 The victory must be remembered"];
+    return ["âš”ï¸ Amalek attacks the rescued people", "ðŸ™Œ Israel depends on the LORD's help", "ðŸ¤ Aaron and Hur support Moses", "ðŸ“– The victory must be remembered"];
   }
   if (section.chapter === 18 && (lower.includes("jethro") || lower.includes("zipporah") || lower.includes("gershom") || lower.includes("eliezer"))) {
-    return ["👨‍👩‍👦 Moses has a real family story", "👂 Jethro hears what God has done", "🏜️ Midian reconnects with the Exodus", "🙌 Rescue is being witnessed beyond Israel"];
+    return ["ðŸ‘¨â€ðŸ‘©â€ðŸ‘¦ Moses has a real family story", "ðŸ‘‚ Jethro hears what God has done", "ðŸœï¸ Midian reconnects with the Exodus", "ðŸ™Œ Rescue is being witnessed beyond Israel"];
   }
   if (section.chapter === 18) {
-    return ["⚖️ Moses carries too much alone", "👥 Wise leaders share the burden", "📜 God's ways must be taught clearly", "🧠 Leadership protects the people from exhaustion"];
+    return ["âš–ï¸ Moses carries too much alone", "ðŸ‘¥ Wise leaders share the burden", "ðŸ“œ God's ways must be taught clearly", "ðŸ§  Leadership protects the people from exhaustion"];
   }
   if (section.reference === "Exodus 19:9-14" || section.reference === "Exodus 19:15-20" || section.reference === "Exodus 19:21-25") {
     return ["\u{1F9FC} The people must prepare", "\u{1F6A7} Boundaries guard the mountain", "\u{26F0}\u{FE0F} Sinai is holy ground", "\u{1F628} God's presence brings reverence"];
   }
   if (section.chapter === 19 && (lower.includes("mount") || lower.includes("sinai") || lower.includes("thunder") || lower.includes("lightning") || lower.includes("quaked"))) {
-    return ["⛰️ Sinai is the place of holy meeting", "⚡ God's presence is not casual", "😨 The people must approach with reverence", "📜 Covenant words come from the LORD"];
+    return ["â›°ï¸ Sinai is the place of holy meeting", "âš¡ God's presence is not casual", "ðŸ˜¨ The people must approach with reverence", "ðŸ“œ Covenant words come from the LORD"];
   }
   if (section.chapter === 19) {
-    return ["🦅 God carried Israel out of Egypt", "💎 Israel is called His treasured people", "👑 The rescued people belong to the King", "📜 Covenant obedience follows rescue"];
+    return ["ðŸ¦… God carried Israel out of Egypt", "ðŸ’Ž Israel is called His treasured people", "ðŸ‘‘ The rescued people belong to the King", "ðŸ“œ Covenant obedience follows rescue"];
   }
   if (section.reference === "Exodus 20:10-11") {
     return ["\u{1F6D1} Sabbath rest reaches the household", "\u{1F465} Servants and children are included", "\u{1F30D} Creation sets the pattern", "\u{1F64C} Rest belongs to the LORD"];
@@ -2861,7 +2931,7 @@ function getDay26TeachingBullets(section: PersonalExodusPhraseSectionInput, titl
     return ["\u{1FAA8} Simple altar", "\u{1F525} Offerings brought to God", "\u{1FAE1} The LORD promises nearness", "\u{1F6AB} No human display"];
   }
   if (section.chapter === 20 && (lower.includes("god") || lower.includes("lord") || lower.includes("commandment") || lower.includes("sabbath") || lower.includes("honour"))) {
-    return ["📜 God gives covenant commands", "🙌 Worship belongs to the LORD alone", "🛑 Rest is part of holy life", "👨‍👩‍👦 Family honor matters before God"];
+    return ["ðŸ“œ God gives covenant commands", "ðŸ™Œ Worship belongs to the LORD alone", "ðŸ›‘ Rest is part of holy life", "ðŸ‘¨â€ðŸ‘©â€ðŸ‘¦ Family honor matters before God"];
   }
 
   return ["\u{1F4DC} The command comes from the LORD", "\u{1F9ED} Israel is learning covenant life", "\u{1F64C} Rescue leads into obedience", "\u{2705} Obedience becomes daily practice"];
@@ -2890,7 +2960,7 @@ function getDay26SpecificOpening(section: PersonalExodusPhraseSectionInput, titl
   if (lower.includes("massah")) return ["Massah is connected with testing.", "The place name remembers that Israel tested the LORD by questioning whether He was really with them."];
   if (lower.includes("meribah")) return ["Meribah is connected with quarreling.", "The name keeps Israel's angry argument in memory so the people do not forget what unbelief sounded like."];
   if (lower.includes("tempted the lord")) return ["Tempted the LORD means tested Him in an unbelieving way.", "Israel is treating God's presence as doubtful even after He has rescued, guided, and fed them."];
-  if (lower === "saying") return ["Saying introduces the words that reveal Israel's deeper question.", "The issue beneath the complaint is not only water, but whether the LORD is truly among them."];
+  if (lower === "saying") return ["This introduces the words that reveal Israel's deeper question.", "The issue beneath the complaint is not only water, but whether the LORD is truly among them."];
   if (lower.includes("among us")) return ["Among us means present with us.", "Israel is asking whether the LORD is really with the camp, even though His care has already followed them from Egypt."];
   if (lower.includes("amalek")) return ["Amalek was the enemy people who attacked Israel in the wilderness.", "This is Israel's first battle after Egypt, so the rescued people must learn dependence in conflict too."];
   if (lower.includes("choose us out")) return ["Choose us out men means select men for battle.", "Joshua must gather fighters while Moses stands with the rod of God, joining human action with dependence on the LORD."];
@@ -2907,8 +2977,8 @@ function getDay26SpecificOpening(section: PersonalExodusPhraseSectionInput, titl
   if (lower.includes("jethro")) return ["Jethro is Moses' father-in-law from Midian.", "His arrival brings Moses' family story back into the wilderness journey after the rescue from Egypt."];
   if (lower.includes("zipporah")) return ["Zipporah is Moses' wife.", "Her return with Jethro shows that Moses is not only Israel's leader; he also has a real family."];
   if (lower.includes("sent her back")) return ["Zipporah had been away from Moses for a time.", "Now she returns with Jethro and Moses' sons."];
-  if (lower.includes("gershom")) return ["Gershom is Moses' son whose name is connected with living as a stranger.", "His name remembers Moses' earlier exile before the Exodus mission."];
-  if (lower.includes("eliezer")) return ["Eliezer is Moses' son whose name points to God's help.", "His name remembers that the LORD delivered Moses from danger."];
+  if (lower.includes("gershom")) return ["This is Moses' son whose name is connected with living as a stranger.", "His name remembers Moses' earlier exile before the Exodus mission."];
+  if (lower.includes("eliezer")) return ["This is Moses' son whose name points to God's help.", "His name remembers that the LORD delivered Moses from danger."];
   if (lower.includes("obeisance")) return ["Obeisance means a respectful bow.", "Moses greets Jethro with honor, showing family respect inside the larger Exodus story."];
   if (lower.includes("welfare")) return ["Welfare means well-being or peace.", "Moses and Jethro ask about each other's peace after long pressure, danger, and separation."];
   if (lower.includes("burnt offering")) return ["A burnt offering was a sacrifice offered up to God.", "Jethro responds to the LORD's rescue with worship, not only curiosity."];
@@ -2922,7 +2992,7 @@ function getDay26SpecificOpening(section: PersonalExodusPhraseSectionInput, titl
   if (lower.includes("able men")) return ["Able men means capable men who can carry responsibility.", "Shared leadership needs skill, reverence, truthfulness, and freedom from greed."];
   if (lower.includes("fear god")) return ["Fear God means reverence the LORD and take His justice seriously.", "Israel's leaders must be shaped by holy fear, not merely talent or popularity."];
   if (lower.includes("covetousness")) return ["Covetousness means greedy desire for gain.", "Judges who love gain can twist justice, so Israel needs leaders who hate bribery and selfish advantage."];
-  if (lower.includes("rulers of thousands")) return ["Rulers of thousands, hundreds, fifties, and tens describes layered leadership.", "The structure spreads responsibility so ordinary cases can be handled wisely."];
+  if (lower.includes("rulers of thousands")) return ["This describes layered leadership through thousands, hundreds, fifties, and tens.", "The structure spreads responsibility so ordinary cases can be handled wisely."];
   if (lower.includes("hard causes")) return ["Hard causes means difficult cases.", "The hardest matters still come to Moses, while smaller disputes are handled by appointed leaders."];
   if (lower.includes("third month")) return ["The third month marks when Israel arrives near Sinai after leaving Egypt.", "The date shows that the rescued people are now being brought into covenant formation."];
   if (lower.includes("sinai")) return ["Sinai is the mountain where the LORD will speak covenant words to Israel.", "The people rescued from Egypt now camp before the place of holy meeting."];
@@ -2942,14 +3012,14 @@ function getDay26SpecificOpening(section: PersonalExodusPhraseSectionInput, titl
   if (lower.includes("covet")) return ["Covet means desire what another person has.", "The command reaches beneath outward behavior into the heart's cravings."];
 
   if (lower.includes("moses cried")) return ["Moses cries out because the people are angry and the need is urgent.", "He brings the pressure to the LORD instead of pretending he can solve it alone."];
-  if (lower.includes("lord hath sworn")) return ["The LORD hath sworn means God has made a firm promise.", "The battle with Amalek will not be forgotten or treated lightly."];
+  if (lower.includes("lord hath sworn")) return ["God has made a firm promise about the conflict with Amalek.", "The battle will not be forgotten or treated lightly."];
   if (lower.includes("war with amalek")) return ["War with Amalek means this conflict will continue beyond one battle.", "Amalek's attack becomes a remembered enemy pattern in Israel's story."];
   if (lower.includes("heard of all")) return ["Jethro hears the report of what God has done for Moses and Israel.", "The Exodus is becoming known beyond Israel's own camp."];
   if (lower.includes("brought israel out")) return ["The LORD brought Israel out means their freedom came from God.", "Jethro is hearing that Egypt did not release Israel by kindness or accident."];
   if (lower.includes("i thy father in law")) return ["Jethro announces himself as Moses' father-in-law.", "His arrival brings Moses' family back into the wilderness story."];
   if (lower.includes("went out to meet")) return ["Moses goes out to greet Jethro with honor.", "The leader of Israel still shows respect inside his own family."];
   if (lower.includes("moses told")) return ["Moses tells Jethro the story of the LORD's rescue.", "The deliverance is meant to be spoken and remembered."];
-  if (lower.includes("lord delivered")) return ["The LORD delivered them means God rescued Israel from danger.", "Their survival is credited to the LORD, not to Moses' strength."];
+  if (lower.includes("lord delivered")) return ["God rescued Israel from danger.", "Their survival is credited to the LORD, not to Moses' strength."];
   if (lower.includes("greater than all gods")) return ["Jethro confesses that the LORD is greater than all gods.", "The rescue from Egypt has shown him the LORD's unmatched power."];
   if (lower.includes("people come unto me")) return ["The people come to Moses because they need judgment and direction.", "Their problems are real, but one man is carrying too much."];
   if (lower.includes("statutes of god")) return ["Statutes are God's instructions.", "Moses teaches the people what God requires, not merely his own opinions."];
@@ -2979,13 +3049,13 @@ function getDay26SpecificOpening(section: PersonalExodusPhraseSectionInput, titl
   if (lower.includes("charge the people")) return ["Charge the people means warn them firmly.", "The boundary around Sinai must be taken seriously."];
   if (lower.includes("break through")) return ["Break through means push past the boundary.", "The people must not force their way toward God's holy presence."];
   if (lower.includes("priests also sanctify")) return ["The priests also must prepare themselves.", "No one gets to treat God's holiness casually, even religious leaders."];
-  if (lower.includes("cannot come up")) return ["The people cannot come up the mountain.", "God's boundary protects them from approaching in the wrong way."];
+  if (lower.includes("cannot come up")) return ["The people are not allowed to come up the mountain past God's boundary.", "The boundary protects them from approaching in the wrong way."];
   if (lower.includes("aaron with thee")) return ["Aaron is allowed to come up with Moses.", "God names who may approach instead of leaving the moment open to everyone."];
   if (lower.includes("spake all these words")) return ["God speaks the commandments Himself.", "Israel's law begins with the LORD's own voice."];
   if (lower.includes("i am the lord")) return ["God identifies Himself before giving the commands.", "The commandments come from the LORD who already rescued Israel."];
   if (lower.includes("which have brought thee out")) return ["God reminds Israel that He brought them out of Egypt.", "Obedience comes after rescue, not before it."];
   if (lower.includes("no other gods")) return ["Israel must worship no god besides the LORD.", "The God who rescued them alone deserves their trust and worship."];
-  if (lower === "before me") return ["Before me means in the LORD's presence.", "No rival god may stand beside Him in Israel's worship."];
+  if (lower === "before me") return ["This means in the LORD's presence, with no rival beside Him.", "No rival god may stand beside Him in Israel's worship."];
   if (lower.includes("bow down")) return ["Bowing down means worshiping or submitting to an idol.", "Israel must not give worship to something their own hands made."];
   if (lower.includes("jealous god")) return ["Jealous here means covenant love that refuses rivals.", "The LORD will not share His people with false gods."];
   if (lower.includes("mercy unto thousands")) return ["God's mercy reaches far beyond one generation.", "The command warns against idols but also shows the LORD's steadfast kindness."];
@@ -2996,7 +3066,7 @@ function getDay26SpecificOpening(section: PersonalExodusPhraseSectionInput, titl
   if (lower.includes("nor thy son")) return ["The Sabbath command includes the children in the household.", "Rest is not only for adults or leaders."];
   if (lower.includes("nor thy manservant")) return ["The Sabbath command includes servants too.", "Israel must not receive rest from God while denying rest to workers."];
   if (lower.includes("heaven and earth")) return ["God made heaven and earth in six days.", "The Sabbath command points back to the creation pattern."];
-  if (lower.includes("blessed the sabbath")) return ["The LORD blessed the Sabbath day.", "Rest is presented as a gift from God, not only a rule."];
+  if (lower.includes("blessed the sabbath")) return ["God blessed the Sabbath day and set it apart.", "Rest is presented as a gift from God, not only a rule."];
   if (lower.includes("hallowed it")) return ["Hallowed means made holy or set apart.", "The Sabbath belongs to God in a special way."];
   if (lower.includes("honour thy father")) return ["Honour means treat parents with respect and weight.", "Family life is part of covenant obedience."];
   if (lower.includes("not kill")) return ["This command forbids murder.", "Human life must be protected because it belongs under God's rule."];
@@ -3008,7 +3078,7 @@ function getDay26SpecificOpening(section: PersonalExodusPhraseSectionInput, titl
   if (lower.includes("stood afar off")) return ["The people step back and stand at a distance.", "Their fear shows how heavy the moment feels."];
   if (lower.includes("speak thou with us")) return ["The people ask Moses to speak with them instead.", "They want a mediator because God's voice terrifies them."];
   if (lower.includes("lest we die")) return ["The people fear they will die if God keeps speaking directly.", "Sinai makes God's holiness feel dangerously near."];
-  if (lower === "fear not") return ["Fear not means they should not run from God's covenant word.", "Moses is calming panic, not making God seem small."];
+  if (lower === "fear not") return ["Moses tells them not to run from God's covenant word in panic.", "He is calming panic, not making God seem small."];
   if (lower.includes("fear may be before")) return ["God's fear before their faces means reverence should stay with them.", "Holy fear is meant to keep them from sin."];
   if (lower.includes("gods of silver")) return ["Gods of silver means metal idols.", "Israel must not replace the living LORD with objects they can make."];
   if (lower.includes("burnt offerings")) return ["Burnt offerings are sacrifices given up to God.", "The altar is a place where worship is brought before the LORD."];
@@ -3141,8 +3211,8 @@ function formatExodusElevenToTwentySectionExplanations(sections: PersonalExodusP
 }
 
 export const EXODUS_11_20_PERSONAL_SECTIONS: PersonalExodusPhraseSectionInput[] = formatExodusElevenToTwentySectionExplanations([
-  ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_TWENTY_FOUR_DEEP_STUDY_SECTIONS, [11, 12], "🐑").map(deepenDay24Exodus11To12PhraseCards),
-  ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_TWENTY_FIVE_DEEP_STUDY_SECTIONS, [13, 14, 15, 16], "🌊").map(deepenDay25PhraseCards),
-  ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_TWENTY_SIX_DEEP_STUDY_SECTIONS, [17, 18, 19, 20], "⛰️").map(deepenDay26PhraseCards),
+  ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_TWENTY_FOUR_DEEP_STUDY_SECTIONS, [11, 12], "ðŸ‘").map(deepenDay24Exodus11To12PhraseCards),
+  ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_TWENTY_FIVE_DEEP_STUDY_SECTIONS, [13, 14, 15, 16], "ðŸŒŠ").map(deepenDay25PhraseCards),
+  ...makeExodusSectionsFromDeepStudy(BIBLE_YEAR_DAY_TWENTY_SIX_DEEP_STUDY_SECTIONS, [17, 18, 19, 20], "â›°ï¸").map(deepenDay26PhraseCards),
   ...RAW_EXODUS_11_20_PERSONAL_SECTIONS.filter((section) => section.chapter < 11 || section.chapter > 20),
 ]);
