@@ -33,46 +33,11 @@ const I = {
 
 const note = (lines: string[]) => lines.join("\n\n");
 
-function teachingLine(title: string) {
-  const cleanTitle = title.replace(/^[^\p{L}\p{N}]+/u, "").trim().toLowerCase();
-
-  if (/famine|barley|field|glean|harvest|corn/.test(cleanTitle)) {
-    return "Ordinary provision becomes part of God's mercy in Ruth's story.";
-  }
-
-  if (/naomi|ruth|woman|daughter|mother/.test(cleanTitle)) {
-    return "The human grief and loyalty of the story stay in view.";
-  }
-
-  if (/lord|blessed|grace|kindly|recompense/.test(cleanTitle)) {
-    return "God's kindness is working through the people in the scene.";
-  }
-
-  if (/kinsman|redeem|redeemer|shoe|witnesses|gate/.test(cleanTitle)) {
-    return "The family-redemption custom that drives Ruth's ending is coming into view.";
-  }
-
-  if (/rest|house|home|empty|full/.test(cleanTitle)) {
-    return "The story is moving from vulnerability toward security.";
-  }
-
-  if (/people|god|moabitess|moab/.test(cleanTitle)) {
-    return "Ruth's place as an outsider being brought near is part of the mercy here.";
-  }
-
-  if (/obed|jesse|david|generations|begat/.test(cleanTitle)) {
-    return "The small family story is connected to God's larger plan.";
-  }
-
-  return "The small story detail carries meaning the reader should not rush past.";
-}
-
 function phrase(icon: string, title: string, meaning: string, bullets: string[], close: string): [string, string] {
   return [
     `${icon} ${title}`,
     note([
-      `${title} means ${meaning}`,
-      teachingLine(title),
+      meaning,
       ...bullets,
       close,
     ]),
@@ -93,64 +58,64 @@ function section(chapter: number, startVerse: number, endVerse: number, title: s
 
 export const RUTH_1_4_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionInput[] = [
   section(1, 1, 5, "Famine And Loss", I.mourning, [
-    phrase(I.law, "In The Days When The Judges Ruled", "Ruth happens during the same dark period as Judges.", [`${I.law} Judges background`, `${I.city} Israel's disorder`, `${I.heart} Quiet faith still possible`], "The phrase tells us Ruth is a light shining in a very broken time."),
-    phrase(I.barley, "There Was A Famine In The Land", "Bethlehem, the house of bread, is suffering without bread.", [`${I.barley} Hunger`, `${I.home} Family pressure`, `${I.foot} A journey begins`], "Need moves the family toward Moab and sets the story in motion."),
-    phrase(I.foot, "Went To Sojourn In The Country Of Moab", "Elimelech's family leaves Judah to live for a while among Moabites.", [`${I.foot} Leaving home`, `${I.city} Moab`, `${I.question} Uncertain future`], "The phrase shows movement away from the land of promise under pressure."),
-    phrase(I.mourning, "The Woman Was Left Of Her Two Sons And Her Husband", "Naomi loses the men who provided family protection in that culture.", [`${I.mourning} Widowhood`, `${I.family} Sons gone`, `${I.hand} Vulnerability`], "The story begins with grief before it shows redemption."),
+    phrase(I.law, "In The Days When The Judges Ruled", "This story takes place during the same troubled time described in the book of Judges.", [`${I.law} Judges background`, `${I.city} Israel's disorder`, `${I.heart} Quiet faith still possible`], "Ruth begins in a dark period, which makes its faithfulness stand out more."),
+    phrase(I.barley, "There Was A Famine In The Land", "A famine means there is not enough food in the land because the crops have failed.", [`${I.barley} Hunger`, `${I.home} Family pressure`, `${I.foot} A journey begins`], "That lack of food is what pushes the family toward Moab."),
+    phrase(I.foot, "Went To Sojourn In The Country Of Moab", "To sojourn means to live somewhere temporarily. Elimelech's family leaves Judah to stay in Moab for a time.", [`${I.foot} Leaving home`, `${I.city} Moab`, `${I.question} Uncertain future`], "The family is leaving home under pressure, not settling there as its true homeland."),
+    phrase(I.mourning, "The Woman Was Left Of Her Two Sons And Her Husband", "Naomi is left alone after her husband and both sons die.", [`${I.mourning} Widowhood`, `${I.family} Sons gone`, `${I.hand} Vulnerability`], "Her loss explains why the story begins with so much weakness and sorrow."),
   ]),
   section(1, 6, 10, "Naomi Turns Back", I.foot, [
     phrase(I.foot, "She Arose With Her Daughters In Law", "Naomi begins the journey back with Ruth and Orpah.", [`${I.foot} Return begins`, `${I.woman} Widows together`, `${I.home} Homeward movement`], "The phrase starts the road scene where loyalty will be tested."),
-    phrase(I.blessing, "The LORD Had Visited His People", "God has shown care by giving food again.", [`${I.blessing} God visits`, `${I.barley} Bread returns`, `${I.people} His people helped`], "The phrase reminds us that behind the ordinary harvest is God's mercy."),
+    phrase(I.blessing, "The LORD Had Visited His People", "This means the LORD has shown care for His people by giving them food again.", [`${I.blessing} God visits`, `${I.barley} Bread returns`, `${I.people} His people helped`], "The return of food is being understood as God's mercy."),
     phrase(I.hand, "Deal Kindly With You", "Naomi prays that the LORD will show covenant kindness to her daughters-in-law.", [`${I.hand} Kindness`, `${I.promise} Loyal love`, `${I.home} Future hope`], "Kindness becomes one of the deepest themes in Ruth."),
     phrase(I.rest, "Find Rest, Each Of You In The House Of Her Husband", "Naomi wants the younger widows to have security and a future family.", [`${I.rest} Security`, `${I.home} Household protection`, `${I.heart} A mother's concern`], "Rest in Ruth is not laziness. It is settled safety."),
   ]),
   section(1, 11, 14, "Naomi Urges Them To Return", I.question, [
-    phrase(I.question, "Turn Again, My Daughters", "Naomi urges Ruth and Orpah to return to Moab.", [`${I.question} Hard choice`, `${I.foot} Two roads`, `${I.mourning} Grief speaking`], "The words show Naomi trying to release them from her painful future."),
-    phrase(I.hand, "The Hand Of The LORD Is Gone Out Against Me", "Naomi feels that God's hand has brought sorrow upon her.", [`${I.hand} God's hand`, `${I.mourning} Bitter grief`, `${I.question} Struggling faith`], "The phrase lets beginners see honest pain in Scripture."),
-    phrase(I.heart, "Ruth Clave Unto Her", "Ruth holds fast to Naomi instead of leaving.", [`${I.heart} Loyalty`, `${I.woman} Ruth's choice`, `${I.promise} Covenant-like love`], "This is love that stays when leaving would be easier."),
-    phrase(I.promise, "Thy People Shall Be My People, And Thy God My God", "Ruth joins herself to Naomi's people and to the LORD.", [`${I.people} New people`, `${I.blessing} The LORD`, `${I.promise} Loyal commitment`], "The phrase is one of the clearest statements of faith and loyalty in the book."),
+    phrase(I.question, "Turn Again, My Daughters", "Naomi is telling Ruth and Orpah to go back rather than keep following her.", [`${I.question} Hard choice`, `${I.foot} Two roads`, `${I.mourning} Grief speaking`], "She is trying to release them from a future she thinks will only bring more pain."),
+    phrase(I.hand, "The Hand Of The LORD Is Gone Out Against Me", "Naomi believes the LORD has turned His hand against her and brought her suffering.", [`${I.hand} God's hand`, `${I.mourning} Bitter grief`, `${I.question} Struggling faith`], "The words are an honest expression of grief, not a calm theological speech."),
+    phrase(I.heart, "Ruth Clave Unto Her", "Clave means clung closely. Ruth stays with Naomi instead of separating from her.", [`${I.heart} Loyalty`, `${I.woman} Ruth stays`, `${I.promise} Love holds on`], "Her loyalty is being shown in action, not only in words."),
+    phrase(I.promise, "Thy People Shall Be My People, And Thy God My God", "Ruth is promising to join Naomi's people and worship Naomi's God instead of returning to Moab's life.", [`${I.people} New people`, `${I.blessing} The LORD`, `${I.promise} Loyal commitment`], "Her decision is both relational and spiritual."),
   ]),
   section(1, 15, 18, "Ruth Clings To Naomi", I.promise, [
-    phrase(I.question, "Behold, Thy Sister In Law Is Gone Back", "Naomi points Ruth to Orpah's choice to return.", [`${I.question} Orpah returns`, `${I.foot} Two paths`, `${I.heart} Ruth must choose`], "The phrase makes Ruth's loyalty stand out even more clearly."),
-    phrase(I.heart, "Ruth Clave Unto Her", "Ruth holds fast to Naomi instead of leaving.", [`${I.heart} Loyalty`, `${I.woman} Ruth's choice`, `${I.promise} Covenant-like love`], "This is love that stays when leaving would be easier."),
-    phrase(I.promise, "Thy People Shall Be My People, And Thy God My God", "Ruth joins herself to Naomi's people and to the LORD.", [`${I.people} New people`, `${I.blessing} The LORD`, `${I.promise} Loyal commitment`], "The phrase is one of the clearest statements of faith and loyalty in the book."),
-    phrase(I.hand, "She Was Stedfastly Minded To Go With Her", "Naomi sees Ruth's decision is settled.", [`${I.hand} Firm decision`, `${I.foot} Going with Naomi`, `${I.promise} Loyalty proven`], "The phrase shows Ruth's commitment is not a passing emotion."),
+    phrase(I.question, "Behold, Thy Sister In Law Is Gone Back", "Naomi is pointing out that Orpah has already returned, so Ruth can still do the same.", [`${I.question} Orpah returns`, `${I.foot} Two paths`, `${I.heart} Ruth must choose`], "The contrast makes Ruth's next words more weighty."),
+    phrase(I.heart, "Ruth Clave Unto Her", "Ruth continues to cling to Naomi even after Naomi gives her another chance to leave.", [`${I.heart} Loyalty`, `${I.woman} Ruth's choice`, `${I.promise} Covenant-like love`], "Her commitment is tested and confirmed."),
+    phrase(I.promise, "Thy People Shall Be My People, And Thy God My God", "Ruth openly binds her future to Naomi's nation and to the LORD whom Naomi worships.", [`${I.people} New people`, `${I.blessing} The LORD`, `${I.promise} Loyal commitment`], "She is choosing a new belonging, not just a new travel companion."),
+    phrase(I.hand, "She Was Stedfastly Minded To Go With Her", "Stedfastly minded means Ruth's decision is fixed and will not be changed.", [`${I.hand} Firm decision`, `${I.foot} Going with Naomi`, `${I.promise} Loyalty proven`], "Naomi can see that Ruth has fully made up her mind."),
   ]),
   section(1, 19, 22, "Naomi Comes Back Empty", I.mourning, [
-    phrase(I.city, "All The City Was Moved About Them", "Bethlehem notices Naomi's return.", [`${I.city} Bethlehem`, `${I.people} Community reaction`, `${I.mourning} Visible sorrow`], "Her grief is not hidden; the whole town feels the shock."),
-    phrase(I.mourning, "Call Me Not Naomi, Call Me Mara", "Naomi says her pleasant name no longer fits her bitter life.", [`${I.mourning} Mara means bitter`, `${I.heart} Pain speaking`, `${I.question} Faith wrestling`], "The phrase shows how suffering can shape how a person sees herself."),
-    phrase(I.hand, "I Went Out Full, And The LORD Hath Brought Me Home Again Empty", "Naomi compares what she had before with what she has now.", [`${I.hand} Full before`, `${I.mourning} Empty now`, `${I.home} Back home`], "She does not yet see that Ruth is part of God's mercy."),
-    phrase(I.barley, "In The Beginning Of Barley Harvest", "Naomi and Ruth arrive when food is beginning to appear.", [`${I.barley} Harvest`, `${I.seed} New beginning`, `${I.blessing} Quiet hope`], "The phrase quietly hints that God is not finished."),
+    phrase(I.city, "All The City Was Moved About Them", "The whole town is stirred up by Naomi's return and recognizes that something painful has happened.", [`${I.city} Bethlehem`, `${I.people} Community reaction`, `${I.mourning} Visible sorrow`], "Her sorrow is public, not hidden."),
+    phrase(I.mourning, "Call Me Not Naomi, Call Me Mara", "Mara means bitter. Naomi is saying bitterness now fits her life better than pleasantness.", [`${I.mourning} Mara means bitter`, `${I.heart} Pain speaking`, `${I.question} Faith wrestling`], "She is renaming herself out of grief."),
+    phrase(I.hand, "I Went Out Full, And The LORD Hath Brought Me Home Again Empty", "Naomi says she left with a full family but has come back bereaved and empty-handed.", [`${I.hand} Full before`, `${I.mourning} Empty now`, `${I.home} Back home`], "That is how she interprets her whole story at this point."),
+    phrase(I.barley, "In The Beginning Of Barley Harvest", "Barley harvest is the season when grain is first being gathered, so food is beginning to return.", [`${I.barley} Harvest`, `${I.seed} New beginning`, `${I.blessing} Quiet hope`], "The timing quietly hints that emptiness will not be the final word."),
   ]),
   section(2, 1, 6, "Ruth Goes To Glean", I.field, [
-    phrase(I.family, "A Mighty Man Of Wealth", "Boaz is a man with standing, resources, and responsibility.", [`${I.family} Family connection`, `${I.field} Landowner`, `${I.shield} Ability to help`], "The phrase introduces the man God will use to protect Ruth and Naomi."),
-    phrase(I.field, "Let Me Now Go To The Field", "Ruth takes action to provide food.", [`${I.field} Work`, `${I.hand} Humility`, `${I.heart} Care for Naomi`], "Faith in Ruth is active and practical."),
-    phrase(I.law, "Glean Ears Of Corn", "Ruth gathers leftover grain allowed for the poor and foreigners.", [`${I.barley} Leftover grain`, `${I.law} Provision in God's law`, `${I.hand} Dignified help`], "Gleaning shows mercy built into Israel's everyday life."),
-    phrase(I.blessing, "Her Hap Was To Light On A Part Of The Field Belonging Unto Boaz", "Ruth happens to arrive in Boaz's field, though God is quietly guiding the story.", [`${I.foot} Ordinary steps`, `${I.field} Boaz's field`, `${I.blessing} Hidden providence`], "What looks like chance is part of God's kindness."),
+    phrase(I.family, "A Mighty Man Of Wealth", "This means Boaz is a prominent man with property, resources, and social standing.", [`${I.family} Family connection`, `${I.field} Landowner`, `${I.shield} Ability to help`], "He has the position to become real help for Ruth and Naomi."),
+    phrase(I.field, "Let Me Now Go To The Field", "Ruth asks to go out and work in the fields so she can gather food.", [`${I.field} Work`, `${I.hand} Humility`, `${I.heart} Care for Naomi`], "She does not sit still in sorrow. She goes to labor."),
+    phrase(I.law, "Glean Ears Of Corn", "To glean ears of corn means to pick up stalks of grain left behind by the harvesters.", [`${I.barley} Leftover grain`, `${I.law} Provision in God's law`, `${I.hand} Dignified help`], "God's law allowed the poor to gather this leftover food."),
+    phrase(I.blessing, "Her Hap Was To Light On A Part Of The Field Belonging Unto Boaz", "It looked like chance that Ruth arrived in Boaz's field, but the story shows God's quiet guidance behind it.", [`${I.foot} Ordinary steps`, `${I.field} Boaz's field`, `${I.blessing} Hidden providence`], "What seems accidental is becoming part of God's provision."),
   ]),
   section(2, 7, 7, "Ruth Works In The Field", I.hand, [
-    phrase(I.hand, "I Pray You, Let Me Glean", "Ruth humbly asks permission to gather grain.", [`${I.hand} Humble request`, `${I.barley} Gleaning`, `${I.woman} Vulnerable worker`], "The phrase shows Ruth seeking provision with humility and courage."),
-    phrase(I.barley, "Gather After The Reapers", "Ruth works behind the harvesters, collecting what remains.", [`${I.barley} Leftover grain`, `${I.field} Harvest field`, `${I.law} Mercy in the law`], "The phrase explains how gleaning worked in daily life."),
-    phrase(I.foot, "She Came, And Hath Continued", "Ruth has worked steadily from morning.", [`${I.foot} She came`, `${I.hand} Continued work`, `${I.heart} Faithful effort`], "The phrase shows diligence, not passivity."),
-    phrase(I.rest, "That She Tarried A Little In The House", "Ruth rests only briefly while working in the field.", [`${I.rest} Short rest`, `${I.field} Long labor`, `${I.barley} Food for home`], "The phrase helps readers see Ruth's endurance."),
+    phrase(I.hand, "I Pray You, Let Me Glean", "Ruth is politely asking permission to gather leftover grain.", [`${I.hand} Humble request`, `${I.barley} Gleaning`, `${I.woman} Vulnerable worker`], "Her need does not make her demanding. She asks with humility."),
+    phrase(I.barley, "Gather After The Reapers", "She follows behind the official harvesters and picks up what they leave behind.", [`${I.barley} Leftover grain`, `${I.field} Harvest field`, `${I.law} Mercy in the law`], "That is how gleaning worked in ordinary field life."),
+    phrase(I.foot, "She Came, And Hath Continued", "The overseer is saying Ruth has been there working steadily without quitting.", [`${I.foot} She came`, `${I.hand} Continued work`, `${I.heart} Faithful effort`], "The report highlights her diligence."),
+    phrase(I.rest, "That She Tarried A Little In The House", "She has only paused briefly in the shelter area set aside for workers.", [`${I.rest} Short rest`, `${I.field} Long labor`, `${I.barley} Food for home`], "Most of her day has been spent working hard."),
   ]),
   section(2, 8, 13, "Boaz Shows Kindness", I.shield, [
-    phrase(I.woman, "Hearest Thou Not, My Daughter", "Boaz speaks to Ruth with protection and kindness.", [`${I.woman} Daughter language`, `${I.shield} Safety`, `${I.hand} Kindness`], "The phrase shows Boaz treating a vulnerable foreign widow with honor."),
-    phrase(I.shield, "Have I Not Charged The Young Men That They Shall Not Touch Thee", "Boaz orders his workers not to harm Ruth.", [`${I.shield} Protection`, `${I.field} Field safety`, `${I.hand} Responsible power`], "His authority becomes shelter, not exploitation."),
-    phrase(I.question, "Why Have I Found Grace In Thine Eyes", "Ruth is surprised by favor she did not expect.", [`${I.question} Wonder`, `${I.hand} Grace`, `${I.woman} A stranger welcomed`], "The phrase helps readers feel Ruth's humility."),
-    phrase(I.blessing, "The LORD Recompense Thy Work", "Boaz blesses Ruth and asks the LORD to reward her loyalty.", [`${I.blessing} Blessing`, `${I.heart} Ruth's loyal love`, `${I.promise} God sees faithfulness`], "The phrase shows that Ruth's hidden sacrifice matters to God."),
+    phrase(I.woman, "Hearest Thou Not, My Daughter", "Boaz speaks to Ruth gently and addresses her with warmth and care.", [`${I.woman} Daughter language`, `${I.shield} Safety`, `${I.hand} Kindness`], "A vulnerable foreign widow is being treated with unusual honor."),
+    phrase(I.shield, "Have I Not Charged The Young Men That They Shall Not Touch Thee", "Boaz has already commanded his workers not to mistreat or bother Ruth.", [`${I.shield} Protection`, `${I.field} Field safety`, `${I.hand} Responsible power`], "His authority is being used to protect her."),
+    phrase(I.question, "Why Have I Found Grace In Thine Eyes", "Ruth is asking why Boaz is showing favor to someone like her.", [`${I.question} Wonder`, `${I.hand} Grace`, `${I.woman} A stranger welcomed`], "She knows this kindness is more than she could expect."),
+    phrase(I.blessing, "The LORD Recompense Thy Work", "Boaz is asking the LORD Himself to repay Ruth for the loyalty and sacrifice she has shown.", [`${I.blessing} Blessing`, `${I.heart} Ruth's loyal love`, `${I.promise} God sees faithfulness`], "He sees her service to Naomi as something God notices and honors."),
   ]),
   section(2, 14, 18, "Handfuls Of Purpose", I.barley, [
-    phrase(I.hand, "Reach Hither Thy Morsel", "Boaz invites Ruth to eat with his workers.", [`${I.hand} Invitation`, `${I.barley} Shared meal`, `${I.woman} Honor for Ruth`], "A foreign widow is welcomed at the table."),
-    phrase(I.barley, "She Did Eat, And Was Sufficed, And Left", "Ruth receives enough to be satisfied with food remaining.", [`${I.barley} Enough food`, `${I.blessing} Provision`, `${I.home} Naomi also helped`], "The phrase shows abundance beginning to replace emptiness."),
-    phrase(I.hand, "Let Fall Also Some Of The Handfuls Of Purpose", "Boaz secretly makes sure Ruth receives extra grain.", [`${I.hand} Intentional kindness`, `${I.barley} Extra provision`, `${I.shield} Quiet care`], "This is not accident; Boaz chooses generosity."),
-    phrase(I.home, "She Brought Forth, And Gave To Her", "Ruth brings food home to Naomi.", [`${I.home} Provision shared`, `${I.heart} Love in action`, `${I.barley} Harvest blessing`], "Ruth's work becomes mercy for the whole household."),
+    phrase(I.hand, "Reach Hither Thy Morsel", "Boaz is inviting Ruth to come closer and eat her portion with the others.", [`${I.hand} Invitation`, `${I.barley} Shared meal`, `${I.woman} Honor for Ruth`], "She is being welcomed instead of kept at a distance."),
+    phrase(I.barley, "She Did Eat, And Was Sufficed, And Left", "Ruth ate until she was full and still had some food left over.", [`${I.barley} Enough food`, `${I.blessing} Provision`, `${I.home} Naomi also helped`], "The meal gives her more than bare survival."),
+    phrase(I.hand, "Let Fall Also Some Of The Handfuls Of Purpose", "Boaz tells his workers to pull out extra bundles on purpose so Ruth can gather more grain.", [`${I.hand} Intentional kindness`, `${I.barley} Extra provision`, `${I.shield} Quiet care`], "The help is deliberate, not accidental."),
+    phrase(I.home, "She Brought Forth, And Gave To Her", "Ruth brings the saved food home and gives it to Naomi.", [`${I.home} Provision shared`, `${I.heart} Love in action`, `${I.barley} Harvest blessing`], "The kindness shown in the field becomes food in Naomi's house."),
   ]),
   section(2, 19, 23, "Naomi Sees Hope", I.blessing, [
-    phrase(I.question, "Where Hast Thou Gleaned To Day", "Naomi sees the amount Ruth brought and asks where it came from.", [`${I.question} Surprise`, `${I.barley} Abundant grain`, `${I.blessing} Hope awakening`], "The question opens Naomi's eyes to God's kindness."),
-    phrase(I.blessing, "Blessed Be He Of The LORD", "Naomi blesses Boaz and recognizes kindness connected to God.", [`${I.blessing} Praise`, `${I.hand} Human kindness`, `${I.promise} God's mercy`], "Naomi's bitter words begin to soften toward hope."),
-    phrase(I.family, "One Of Our Next Kinsmen", "Boaz belongs to the family line that could help redeem them.", [`${I.family} Kinsman`, `${I.law} Redemption possibility`, `${I.home} Family future`], "The wording opens the door into the redemption theme of Ruth."),
-    phrase(I.field, "Kept Fast By The Maidens Of Boaz", "Ruth stays in Boaz's field through the harvest.", [`${I.field} Continued work`, `${I.shield} Safe place`, `${I.seed} Hope growing`], "The story slows down so provision can grow into redemption."),
+    phrase(I.question, "Where Hast Thou Gleaned To Day", "Naomi sees the large amount of grain and asks where Ruth worked to receive so much.", [`${I.question} Surprise`, `${I.barley} Abundant grain`, `${I.blessing} Hope awakening`], "The question comes from startled hope."),
+    phrase(I.blessing, "Blessed Be He Of The LORD", "Naomi speaks a blessing over Boaz because she sees his kindness as part of the LORD's mercy.", [`${I.blessing} Praise`, `${I.hand} Human kindness`, `${I.promise} God's mercy`], "Her words are beginning to move from bitterness toward gratitude."),
+    phrase(I.family, "One Of Our Next Kinsmen", "A next kinsman is a close family relative with the right to help redeem the family line and property.", [`${I.family} Kinsman`, `${I.law} Redemption possibility`, `${I.home} Family future`], "This is the first clear sign that a lawful redeemer may be near."),
+    phrase(I.field, "Kept Fast By The Maidens Of Boaz", "Ruth continues staying close to Boaz's female workers while the harvest lasts.", [`${I.field} Continued work`, `${I.shield} Safe place`, `${I.seed} Hope growing`], "She remains in the safest and kindest place available to her."),
   ]),
   section(3, 1, 6, "Naomi Seeks Rest For Ruth", I.rest, [
     phrase(I.rest, "Shall I Not Seek Rest For Thee", "Naomi wants Ruth to have security, marriage, and a future.", [`${I.rest} Safety`, `${I.home} Household future`, `${I.heart} Naomi's care`], "Rest is the opposite of Ruth's vulnerable widowhood."),
@@ -200,5 +165,5 @@ export const RUTH_1_4_PERSONAL_SECTIONS: PersonalLeviticusPhraseSectionInput[] =
     phrase(I.family, "Obed Begat Jesse", "Obed becomes the father of Jesse.", [`${I.family} Jesse`, `${I.seed} Next generation`, `${I.blessing} Hidden preparation`], "The phrase moves the reader toward David's family."),
     phrase(I.crown, "Jesse Begat David", "Ruth ends by pointing to King David.", [`${I.crown} David`, `${I.seed} Royal line`, `${I.blessing} God's larger plan`], "The ending reveals that ordinary faithfulness can belong to God's enormous story."),
   ]),
-  ...DAY_61_80_RUTH_1_4_SUPPLEMENTAL_SECTIONS,
+  ...DAY_61_80_RUTH_1_4_SUPPLEMENTAL_SECTIONS.filter((section) => section.chapter < 1 || section.chapter > 4),
 ];
