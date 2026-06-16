@@ -798,6 +798,196 @@ const day49DeuteronomySectionTitles: Record<string, string> = {
   "Deuteronomy 9:27-29": "🧠 Remember Abraham, Isaac, And Jacob",
 };
 
+const day50DeuteronomyCuratedPhraseTitles: Record<string, string[]> = {
+  "Deuteronomy 10:14-15": [
+    "🌌 Behold, The Heaven And The Heaven Of Heavens Is The LORD'S Thy God",
+    "🌍 The Earth Also, With All That Therein Is",
+    "❤️ Only The LORD Had A Delight In Thy Fathers To Love Them",
+    "🌱 And He Chose Their Seed After Them",
+    "👥 Even You Above All People",
+    "📅 As It Is This Day",
+  ],
+  "Deuteronomy 10:18-19": [
+    "⚖️ He Doth Execute The Judgment Of The Fatherless And Widow",
+    "👥 And Loveth The Stranger",
+    "🍞 In Giving Him Food And Raiment",
+    "❤️ Love Ye Therefore The Stranger",
+    "⛓️ For Ye Were Strangers In The Land Of Egypt",
+  ],
+  "Deuteronomy 11:10-12": [
+    "🏞️ The Land, Whither Thou Goest In To Possess It",
+    "🚫 Is Not As The Land Of Egypt",
+    "🌱 Where Thou Sowedst Thy Seed",
+    "🦶 And Wateredst It With Thy Foot",
+    "🌿 As A Garden Of Herbs",
+    "🌧️ Drinketh Water Of The Rain Of Heaven",
+    "👀 The Eyes Of The LORD Thy God Are Always Upon It",
+  ],
+  "Deuteronomy 11:13-15": [
+    "👂 If Ye Shall Hearken Diligently Unto My Commandments",
+    "❤️ To Love The LORD Your God",
+    "🙌 And To Serve Him With All Your Heart And With All Your Soul",
+    "🌧️ I Will Give You The Rain Of Your Land In His Due Season",
+    "🌾 That Thou Mayest Gather In Thy Corn, And Thy Wine, And Thine Oil",
+    "🍽️ That Thou Mayest Eat And Be Full",
+  ],
+  "Deuteronomy 11:18-21": [
+    "🫀 Lay Up These My Words In Your Heart And In Your Soul",
+    "✋ Bind Them For A Sign Upon Your Hand",
+    "👀 That They May Be As Frontlets Between Your Eyes",
+    "👨‍👩‍👧 Teach Them Your Children",
+    "🏠 Speaking Of Them When Thou Sittest In Thine House",
+    "🚶 And When Thou Walkest By The Way",
+    "🚪 Write Them Upon The Door Posts Of Thine House, And Upon Thy Gates",
+  ],
+  "Deuteronomy 11:22-25": [
+    "📜 To Keep All These Commandments Which I Command You",
+    "❤️ To Love The LORD Your God",
+    "🚶 To Walk In All His Ways",
+    "🤝 And To Cleave Unto Him",
+    "👣 Every Place Whereon The Soles Of Your Feet Shall Tread Shall Be Yours",
+    "🌍 From The Wilderness And Lebanon",
+    "🌊 From The River, The River Euphrates",
+  ],
+  "Deuteronomy 11:26-28": [
+    "👀 Behold, I Set Before You This Day A Blessing And A Curse",
+    "🌿 A Blessing, If Ye Obey The Commandments Of The LORD Your God",
+    "🚫 And A Curse, If Ye Will Not Obey The Commandments Of The LORD Your God",
+    "↩️ But Turn Aside Out Of The Way",
+    "🕊️ To Go After Other Gods",
+    "❓ Which Ye Have Not Known",
+  ],
+  "Deuteronomy 11:29-32": [
+    "⛰️ Put The Blessing Upon Mount Gerizim",
+    "⛰️ And The Curse Upon Mount Ebal",
+    "🌅 By The Way Where The Sun Goeth Down",
+    "🏕️ In The Land Of The Canaanites",
+    "🌳 Beside The Plains Of Moreh",
+    "🏞️ Ye Shall Pass Over Jordan To Possess The Land",
+    "✅ Ye Shall Observe To Do All The Statutes And Judgments",
+  ],
+  "Deuteronomy 12:8-9": [
+    "🚫 Ye Shall Not Do After All The Things That We Do Here This Day",
+    "👁️ Every Man Whatsoever Is Right In His Own Eyes",
+    "🛑 For Ye Are Not As Yet Come To The Rest",
+    "🎁 And To The Inheritance",
+    "🏞️ Which The LORD Your God Giveth You",
+  ],
+  "Deuteronomy 12:13-14": [
+    "⚠️ Take Heed To Thyself",
+    "👀 That Thou Offer Not Thy Burnt Offerings In Every Place That Thou Seest",
+    "📍 But In The Place Which The LORD Shall Choose",
+    "🔥 There Thou Shalt Offer Thy Burnt Offerings",
+    "📜 And There Thou Shalt Do All That I Command Thee",
+  ],
+  "Deuteronomy 12:17-19": [
+    "🚫 Thou Mayest Not Eat Within Thy Gates",
+    "🌾 The Tithe Of Thy Corn",
+    "🍷 Or Of Thy Wine, Or Of Thy Oil",
+    "🐄 Or The Firstlings Of Thy Herds Or Of Thy Flock",
+    "🙏 Nor Any Of Thy Vows Which Thou Vowest",
+    "🎁 Nor Thy Freewill Offerings",
+    "🤲 Or Heave Offering Of Thine Hand",
+  ],
+  "Deuteronomy 12:23-25": [
+    "🩸 Only Be Sure That Thou Eat Not The Blood",
+    "❤️ For The Blood Is The Life",
+    "🚫 Thou Mayest Not Eat The Life With The Flesh",
+    "🌍 Thou Shalt Pour It Upon The Earth As Water",
+    "🌱 That It May Go Well With Thee, And With Thy Children After Thee",
+  ],
+  "Deuteronomy 13:1-3": [
+    "⚖️ If There Arise Among You A Prophet",
+    "🌙 Or A Dreamer Of Dreams",
+    "✨ And Giveth Thee A Sign Or A Wonder",
+    "✅ And The Sign Or The Wonder Come To Pass",
+    "🕊️ Let Us Go After Other Gods",
+    "🚫 Thou Shalt Not Hearken Unto The Words Of That Prophet",
+    "🫀 For The LORD Your God Proveth You",
+  ],
+  "Deuteronomy 13:6-8": [
+    "🤫 If Thy Brother, The Son Of Thy Mother, Entice Thee Secretly",
+    "👦 Or Thy Son, Or Thy Daughter",
+    "💍 Or The Wife Of Thy Bosom",
+    "🤝 Or Thy Friend, Which Is As Thine Own Soul",
+    "🕊️ Saying, Let Us Go And Serve Other Gods",
+    "❓ Which Thou Hast Not Known, Thou, Nor Thy Fathers",
+    "🚫 Thou Shalt Not Consent Unto Him, Nor Hearken Unto Him",
+  ],
+  "Deuteronomy 13:9-11": [
+    "⚖️ Thou Shalt Surely Kill Him",
+    "✋ Thine Hand Shall Be First Upon Him",
+    "🪨 Thou Shalt Stone Him With Stones, That He Die",
+    "⛓️ Because He Hath Sought To Thrust Thee Away From The LORD Thy God",
+    "🏠 Which Brought Thee Out Of The Land Of Egypt",
+    "🔓 From The House Of Bondage",
+    "👂 All Israel Shall Hear, And Fear",
+  ],
+  "Deuteronomy 13:12-14": [
+    "👂 If Thou Shalt Hear Say In One Of Thy Cities",
+    "🧍 Certain Men, The Children Of Belial, Are Gone Out From Among You",
+    "↩️ And Have Withdrawn The Inhabitants Of Their City",
+    "🕊️ Saying, Let Us Go And Serve Other Gods",
+    "❓ Which Ye Have Not Known",
+    "🔎 Then Shalt Thou Enquire, And Make Search, And Ask Diligently",
+  ],
+  "Deuteronomy 13:15-16": [
+    "⚔️ Thou Shalt Surely Smite The Inhabitants Of That City With The Edge Of The Sword",
+    "🔥 Destroying It Utterly",
+    "🐄 And All The Cattle Thereof",
+    "📦 Gather All The Spoil Of It Into The Midst Of The Street Thereof",
+    "🔥 Shalt Burn With Fire The City, And All The Spoil Thereof Every Whit",
+    "🏚️ It Shall Be An Heap For Ever",
+  ],
+  "Deuteronomy 13:17-18": [
+    "🚫 There Shall Cleave Nought Of The Cursed Thing To Thine Hand",
+    "💗 That The LORD May Turn From The Fierceness Of His Anger",
+    "🤲 And Shew Thee Mercy",
+    "❤️ And Have Compassion Upon Thee",
+    "📈 And Multiply Thee",
+    "🤝 As He Hath Sworn Unto Thy Fathers",
+    "👂 Because Thou Shalt Hearken To The Voice Of The LORD Thy God",
+  ],
+};
+
+const day50DeuteronomySectionTitles: Record<string, string> = {
+  "Deuteronomy 10:1-2": "🪨 New Tables Of Stone",
+  "Deuteronomy 10:3-5": "🪵 The Ark Receives The Testimony",
+  "Deuteronomy 10:6-7": "⚰️ Aaron Died There",
+  "Deuteronomy 10:8-9": "🕊️ Levi Was Separated",
+  "Deuteronomy 10:10-11": "🙏 The LORD Hearkened Again",
+  "Deuteronomy 10:12-13": "🫀 What Doth The LORD Require",
+  "Deuteronomy 10:14-15": "🌌 Heaven, Earth, And Chosen Seed",
+  "Deuteronomy 10:18-19": "⚖️ He Loveth The Stranger",
+  "Deuteronomy 10:20-21": "🙇 Fear, Serve, And Cleave",
+  "Deuteronomy 11:2-7": "🧠 Know Ye This Day",
+  "Deuteronomy 11:8-9": "💪 Be Strong In The Land",
+  "Deuteronomy 11:10-12": "🌧️ A Land Of Rain From Heaven",
+  "Deuteronomy 11:13-15": "🌾 Rain In Due Season",
+  "Deuteronomy 11:16-17": "⚠️ Take Heed To Yourselves",
+  "Deuteronomy 11:18-21": "🏠 Lay Up These Words",
+  "Deuteronomy 11:22-25": "👣 Every Place Shall Be Yours",
+  "Deuteronomy 11:26-28": "⚖️ A Blessing And A Curse",
+  "Deuteronomy 11:29-32": "⛰️ Gerizim And Ebal",
+  "Deuteronomy 12:2-3": "🔥 Destroy Their Worship Places",
+  "Deuteronomy 12:4-7": "📍 The Place The LORD Shall Choose",
+  "Deuteronomy 12:8-9": "🚫 Not Right In His Own Eyes",
+  "Deuteronomy 12:10-12": "🎉 Rejoice Before The LORD",
+  "Deuteronomy 12:13-14": "⚠️ Not In Every Place",
+  "Deuteronomy 12:15-16": "🥩 Flesh But Not Blood",
+  "Deuteronomy 12:17-19": "🚪 Not Within Thy Gates",
+  "Deuteronomy 12:20-22": "🏕️ When The Border Is Enlarged",
+  "Deuteronomy 12:23-25": "🩸 The Blood Is The Life",
+  "Deuteronomy 12:26-28": "🙏 Holy Things And Vows",
+  "Deuteronomy 12:29-31": "🚫 Enquire Not After Their Gods",
+  "Deuteronomy 13:1-3": "⚠️ A Prophet With A False Message",
+  "Deuteronomy 13:6-8": "🤫 Enticed Secretly",
+  "Deuteronomy 13:9-11": "⚖️ Put Away The Evil",
+  "Deuteronomy 13:12-14": "🔎 Search The Matter Diligently",
+  "Deuteronomy 13:15-16": "🔥 Destroying It Utterly",
+  "Deuteronomy 13:17-18": "🤲 Mercy After Purging Evil",
+};
+
 function stripLeadingEmoji(value: string) {
   return value.replace(/^[^A-Za-z0-9']+\s*/, "").trim();
 }
@@ -1573,11 +1763,302 @@ function explainDay49DeuteronomyAt95(section: (typeof generatedDeuteronomyOneToT
   ].slice(0, 8));
 }
 
+function getDay50DeuteronomySupport(cleanTitle: string) {
+  const lower = cleanTitle.toLowerCase();
+
+  if (/tables|writing|ten commandments|\bark\b/.test(lower)) return ["🪨 Covenant words are restored", "🪵 The ark receives God's testimony", "🙌 Mercy follows failure", "📜 The same commandments still govern Israel"];
+  if (/aaron|levi|minister|bless in his name|inheritance/.test(lower)) return ["🕊️ Levi is set apart for holy service", "🏕️ Worship needs appointed ministry", "🏠 The LORD Himself can be the inheritance", "🙌 Holy service happens before God"];
+  if (/require|fear the lord|walk in all his ways|love him|serve him|cleave|commandments|statutes|for thy good/.test(lower)) return ["🫀 God asks for heart-deep obedience", "🙇 Fear and love belong together", "🚶 Walking means daily obedience", "🌱 His commands are for Israel's good"];
+  if (/heaven|earth also|delight in thy fathers|chose their seed|above all people/.test(lower)) return ["🌌 The whole world belongs to the LORD", "❤️ Election begins with God's love", "👨‍👩‍👧 Promise runs through the fathers", "🙌 Chosen grace should humble Israel"];
+  if (/fatherless|widow|stranger|food and raiment|strangers in the land of egypt/.test(lower)) return ["⚖️ God defends vulnerable people", "🍞 Mercy reaches daily needs", "👥 Israel must mirror God's love", "⛓️ Egypt should be remembered"];
+  if (/praise|great and terrible things|thine eyes have seen/.test(lower)) return ["👀 Israel saw God's acts itself", "🙌 Praise belongs to the LORD alone", "💪 Rescue proved His power", "📜 Memory should shape worship"];
+  if (/know ye this day|mighty hand|stretched out arm|miracles|acts|army of egypt/.test(lower)) return ["🧠 Moses calls Israel to remember what it witnessed", "💪 Egypt already proved God's power", "👀 The people are eyewitnesses", "🙌 Memory should make obedience serious"];
+  if (/strong|prolong your days|milk and honey/.test(lower)) return ["💪 Strength is needed for obedience", "🏞️ The land is a promised gift", "🍯 Blessing in the land is real", "📆 Faithfulness shapes the future"];
+  if (/not as the land of egypt|wateredst it with thy foot|garden of herbs|rain of heaven|eyes of the lord/.test(lower)) return ["🌧️ Canaan depends on God's rain", "🦶 Egypt relied on human irrigation", "👀 The LORD watches the land continually", "🙌 Provision is not self-made"];
+  if (/hearken diligently|rain of your land|corn|wine|oil|eat and be full/.test(lower)) return ["👂 Obedience opens the way for blessing", "🌧️ Rain is God's gift", "🌾 Harvest depends on Him", "🍽️ Fullness should lead to gratitude"];
+  if (/heart be not deceived|turn aside|serve other gods|wrath be kindled|shut up the heaven/.test(lower)) return ["⚠️ A wandering heart is dangerous", "🕊️ Idolatry brings covenant judgment", "🌧️ Shut heaven means withheld rain", "🚫 Turning aside ruins life in the land"];
+  if (/lay up these my words|bind them|frontlets|teach them your children|sittest|walkest|door posts|gates/.test(lower)) return ["🫀 God's words belong inside the person", "👨‍👩‍👧 Children must be taught", "🏠 Home life should carry the word", "🚶 Daily routines become places of remembrance"];
+  if (/keep all these commandments|every place whereon the soles of your feet shall tread|wilderness and lebanon|river euphrates/.test(lower)) return ["📜 Victory is tied to obedience", "👣 The land promise has real borders", "💪 The LORD makes room for His people", "🙌 Courage rests on covenant loyalty"];
+  if (/blessing and a curse|if ye obey|if ye will not obey|turn aside out of the way|other gods/.test(lower)) return ["⚖️ Israel is being given a real choice", "🌿 Obedience leads toward blessing", "🚫 Rebellion turns toward curse", "🫀 Loyalty is tested in the heart"];
+  if (/gerizim|ebal|sun goeth down|plains of moreh|pass over jordan/.test(lower)) return ["⛰️ Blessing and curse are tied to the land", "📍 These are real covenant markers", "🏞️ Jordan crossing leads to decision", "📜 The statutes must be obeyed there"];
+  if (/utterly destroy|served their gods|high mountains|hills|green tree|altars|pillars/.test(lower)) return ["🔥 Canaanite worship must be torn down", "🚫 Israel must not leave idol systems standing", "🏞️ Worship sites are not neutral places", "🪵 False worship must be dismantled"];
+  if (/habitation shall ye seek|thither thou shalt come|burnt offerings|sacrifices|tithes|vows|rejoice/.test(lower)) return ["📍 The LORD chooses where sacrifice belongs", "🔥 Offerings must come His way", "🎁 Gifts and vows are brought before Him", "🎉 Worship includes reverent joy"];
+  if (/right in his own eyes|rest|inheritance/.test(lower)) return ["👁️ Personal preference is not the rule for worship", "🛑 Rest had not yet been reached", "🎁 Inheritance comes with God's order", "📜 Worship must not be self-designed"];
+  if (/go over jordan|dwell in safety|heave offering|rejoice before the lord/.test(lower)) return ["🏞️ Settled life in the land changes worship practice", "🕊️ Safety is God's gift", "🔥 Offerings still belong to Him", "🎉 Households are meant to rejoice before the LORD"];
+  if (/take heed to thyself|offer not thy burnt offerings in every place|place which the lord shall choose/.test(lower)) return ["⚠️ Zeal does not justify disobedience", "📍 Sacrifice is restricted to God's chosen place", "🔥 Worship must follow command, not convenience", "🙇 The LORD decides how He is approached"];
+  if (/whatsoever thy soul lusteth after|unclean and the clean|roebuck|hart|pour it upon the earth as water/.test(lower)) return ["🥩 Ordinary meat may be eaten", "👥 Clean and unclean here share common meat", "🦌 Roebuck and hart picture non-sacrificial game", "🩸 Blood still belongs to God"];
+  if (/mayest not eat within thy gates|tithe of thy corn|wine|oil|firstlings|vows|freewill offerings|heave offering/.test(lower)) return ["🚪 Some holy foods cannot be treated like common meals", "🌾 Tithes and firstlings belong to worship", "🙏 Vows must be brought before the LORD", "📍 The chosen place still governs these gifts"];
+  if (/enlarge thy border|i will eat flesh|longeth to eat flesh|thou mayest eat flesh/.test(lower)) return ["🏕️ Life will expand in the land", "🥩 Meat for desire is permitted", "📏 Distance from the sanctuary changes ordinary eating", "🙌 The gift still comes from the LORD"];
+  if (/blood is the life|go well with thee|children after thee/.test(lower)) return ["🩸 Blood represents life itself", "🚫 Life must not be eaten as food", "🌱 Obedience affects the next generation", "✅ Doing right brings covenant good"];
+  if (/holy things|vows|place which the lord shall choose|upon the altar/.test(lower)) return ["🙏 Holy gifts are set apart for worship", "📍 They must go to the chosen place", "🔥 Burnt offerings belong on the altar", "🩸 Sacrifice is handled under God's order"];
+  if (/enquire not after their gods|abomination|sons and their daughters will they burn/.test(lower)) return ["🚫 Curiosity about pagan worship is dangerous", "🔥 Abomination means something detestable to the LORD", "💔 Canaanite worship included horrific evil", "🙇 The LORD must not be worshiped their way"];
+  if (/prophet|dreamer of dreams|sign or a wonder|come to pass|proveth you/.test(lower)) return ["⚠️ A true-looking sign can still carry a false message", "🕊️ Other gods remain the real test", "🫀 Love for the LORD is being proved", "🚫 Spiritual impressiveness does not excuse idolatry"];
+  if (/entice thee secretly|thy brother|thy son|thy daughter|wife of thy bosom|friend/.test(lower)) return ["🤫 The pressure comes from someone close", "💍 Family affection is not above covenant loyalty", "🕊️ Secret enticement still aims at idolatry", "🫀 The heart must stay true to the LORD"];
+  if (/surely kill him|hand shall be first|stone him with stones|house of bondage|all israel shall hear/.test(lower)) return ["⚖️ Idolatry is treated as deadly covenant evil", "✋ The witness cannot stay neutral", "⛓️ Egypt should not be traded for idols again", "👂 Public judgment warns the whole people"];
+  if (/children of belial|withdrawn the inhabitants|enquire.*diligently/.test(lower)) return ["🧍 Belial points to worthlessness and wicked rebellion", "🏙️ An entire city can be drawn away", "🔎 The charge must be investigated carefully", "⚖️ Judgment requires truth, not rumor"];
+  if (/smite the inhabitants|destroying it utterly|cattle thereof|spoil|heap for ever/.test(lower)) return ["⚔️ The city falls under total judgment", "🔥 Nothing idolatrous is preserved", "📦 Spoil is not a prize to keep", "🏚️ The ruin stands as a warning"];
+  if (/cursed thing|fierceness of his anger|shew thee mercy|compassion upon thee|multiply thee|hearken/.test(lower)) return ["🚫 Nothing devoted to destruction may be kept", "💗 Mercy follows obedience, not compromise", "📈 Compassion restores the people", "👂 Hearing God is still the path of life"];
+
+  return ["📜 Moses is pressing covenant loyalty", "🫀 The heart must stay with the LORD", "🚫 Idolatry must be refused", "🏞️ Life in the land must follow God's word"];
+}
+
+function getDay50DeuteronomyLeadSupport(cleanTitle: string) {
+  const lower = cleanTitle.toLowerCase();
+
+  if (/tables|writing|\bark\b/.test(lower)) return "🪨 Mercy does not erase God's words";
+  if (/levi|minister|inheritance/.test(lower)) return "🕊️ Holy service is assigned, not invented";
+  if (/require|fear|walk|love|serve|statutes|good/.test(lower)) return "🫀 Obedience reaches the whole life";
+  if (/heaven|earth|fathers|seed/.test(lower)) return "🌌 The Maker is also the chooser";
+  if (/stranger|fatherless|widow|food and raiment/.test(lower)) return "⚖️ God's character shapes social mercy";
+  if (/mighty hand|stretched out arm|miracles|acts/.test(lower)) return "🧠 Memory is meant to govern the present";
+  if (/rain|corn|wine|oil|eat and be full/.test(lower)) return "🌧️ Daily provision depends on God";
+  if (/heart be not deceived|turn aside|other gods|shut up the heaven/.test(lower)) return "⚠️ The heart can wander before the feet do";
+  if (/lay up these my words|teach them your children|door posts|gates/.test(lower)) return "🏠 The word belongs in ordinary routines";
+  if (/blessing|curse|gerizim|ebal/.test(lower)) return "⚖️ Covenant life moves in two directions";
+  if (/destroy|altars|pillars|green tree/.test(lower)) return "🔥 False worship must be dismantled";
+  if (/habitation|burnt offerings|sacrifices|vows|altar/.test(lower)) return "📍 Worship happens where God chooses";
+  if (/blood|life|pour it upon the earth/.test(lower)) return "🩸 Life is not common food";
+  if (/prophet|dreamer|sign|wonder/.test(lower)) return "⚠️ Not every sign deserves trust";
+  if (/brother|son|daughter|wife|friend|secretly/.test(lower)) return "🤫 Pressure can wear a familiar face";
+  if (/smite the inhabitants|destroying it utterly|heap for ever/.test(lower)) return "🏚️ Idolatry can ruin a whole city";
+
+  return "📌 One phrase carries a real covenant lesson";
+}
+
+function explainDay50DeuteronomyAt95(section: (typeof generatedDeuteronomyOneToThirteenPersonalSections)[number], cleanTitle: string) {
+  const lower = cleanTitle.toLowerCase();
+  let opening: string[];
+
+  if (/at that time the lord said unto me/.test(lower)) opening = ["The phrase returns to the moment when God spoke again after the golden calf.", "Mercy begins with the LORD renewing contact instead of abandoning Israel."];
+  else if (/hew thee two tables of stone like unto the first/.test(lower)) opening = ["God tells Moses to prepare fresh tablets after the first pair was broken.", "The renewed stone shows covenant mercy after covenant failure."];
+  else if (/hewed two tables of stone like unto the first/.test(lower)) opening = ["Moses obeys by cutting the new tablets himself.", "The action shows restoration required real submission, not mere regret."];
+  else if (/come up unto me into the mount/.test(lower)) opening = ["Moses is summoned back up Sinai into God's presence.", "The same mountain of covenant terror becomes the place of renewed mercy."];
+  else if (/went up into the mount/.test(lower)) opening = ["Moses actually climbs the mountain with the new tablets in hand.", "The movement shows obedience following God's command to return."];
+  else if (/put them in the ark/.test(lower)) opening = ["God tells Moses where the restored tablets must be kept.", "The covenant words belong in the sacred chest at Israel's center."];
+  else if (/i made an ark of shittim wood/.test(lower)) opening = ["Shittim wood is the acacia wood used for holy furnishings.", "Moses makes the ark as the place where the covenant tablets will rest."];
+  else if (/according to the first writing/.test(lower)) opening = ["The first writing means the same commandments written before.", "God does not soften His word after Israel's sin."];
+  else if (/the ten commandments/.test(lower)) opening = ["These are the ten covenant words spoken by God at Sinai.", "They summarize Israel's fundamental obligations before God and neighbor."];
+  else if (/and there they be/.test(lower)) opening = ["The tablets remained in the ark as an ongoing witness.", "Israel's covenant life stays anchored to God's spoken words."];
+  else if (/as the lord commanded me/.test(lower)) opening = ["Moses is careful to do exactly what God said.", "Precise obedience matters in holy things."];
+  else if (/there aaron died/.test(lower)) opening = ["Aaron's death marks the passing of an older generation in the wilderness story.", "Even key leaders do not stay forever, but God's covenant continues."];
+  else if (/there he was buried/.test(lower)) opening = ["The burial note makes Aaron's death concrete and final.", "Israel's journey includes real losses, not only victories and laws."];
+  else if (/from gudgodah to jotbath/.test(lower)) opening = ["Gudgodah and Jotbath are travel stages in Israel's wilderness journey.", "Moses keeps tying covenant teaching to real places they passed through."];
+  else if (/a land of rivers of waters/.test(lower)) opening = ["Jotbath is described as a place with abundant flowing water.", "The phrase highlights relief and provision along a hard wilderness road."];
+  else if (/separated the tribe of levi/.test(lower)) opening = ["Separated means set apart for a special holy role.", "Levi is assigned to worship service instead of ordinary tribal inheritance."];
+  else if (/bear the ark of the covenant/.test(lower)) opening = ["To bear the ark means to carry the holy chest that holds God's covenant testimony.", "The task shows how closely Levi is tied to God's presence and word."];
+  else if (/stand before the lord to minister unto him/.test(lower)) opening = ["To minister means to serve in holy duties before God.", "Levi's work happens in the LORD's presence, not merely in front of people."];
+  else if (/bless in his name/.test(lower)) opening = ["Blessing in His name means speaking good over the people under God's authority.", "The priestly blessing is not personal magic; it is service done in the LORD's name."];
+  else if (/the lord is his inheritance/.test(lower)) opening = ["Inheritance here means the portion a tribe receives.", "Levi's portion is not land but the privilege of belonging to the LORD's service."];
+  else if (/according as the lord thy god promised him/.test(lower)) opening = ["The priestly role rests on God's promise, not Levi's self-appointment.", "Moses wants Israel to see this arrangement as covenant order."];
+  else if (/i stayed in the mount/.test(lower)) opening = ["Moses remained on the mountain in God's presence.", "The phrase points to prolonged intercession and covenant renewal, not a brief visit."];
+  else if (/according to the first time/.test(lower)) opening = ["The second mountain stay matched the first in length.", "The repeated period shows the seriousness of restoring the covenant after rebellion."];
+  else if (/forty days and forty nights/.test(lower)) opening = ["The number marks a prolonged season of prayer, fasting, and waiting before God.", "Moses is reminding Israel that covenant mercy came through extended intercession."];
+  else if (/hearkened unto me at that time also/.test(lower)) opening = ["Hearkened means listened favorably.", "God heard Moses again, which shows mercy triumphing over deserved destruction."];
+  else if (/take thy journey before the people/.test(lower)) opening = ["Moses is told to lead the people forward again.", "After repentance and mercy, covenant life moves back into obedient travel."];
+  else if (/that they may go in and possess the land/.test(lower)) opening = ["To possess the land means to enter and receive God's promised inheritance.", "Forgiveness is tied to moving forward into the promise, not staying at failure."];
+  else if (/which i sware unto their fathers to give unto them/.test(lower)) opening = ["Sware means promised with an oath.", "The land still comes because God remembers His promise to the fathers."];
+  else if (/what doth the lord thy god require of thee/.test(lower)) opening = ["Moses is summarizing what God asks from His people.", "The covenant is not mysterious here; its demands are stated plainly."];
+  else if (/but to fear the lord thy god/.test(lower)) opening = ["Fear is the first requirement Moses names in his summary.", "The covenant begins with reverent submission to the LORD."];
+  else if (/thou shalt fear the lord thy god/.test(lower)) opening = ["Here fear becomes a direct personal command near the end of the chapter.", "Israel's worship response must stay shaped by reverence for the LORD."];
+  else if (/to walk in all his ways/.test(lower) && section.chapter === 10) opening = ["Walking in God's ways means copying His path in daily life.", "Moses is describing obedience as a lived pattern, not only a belief."];
+  else if (/to walk in all his ways/.test(lower) && section.chapter === 11) opening = ["Here walking in His ways is tied to the conquest promise.", "Possessing the land depends on continuing in the path God sets."];
+  else if (/and to love him/.test(lower)) opening = ["Love here means covenant loyalty, not mere feeling.", "God wants the heart's affection joined to faithful obedience."];
+  else if (/to love the lord your god/.test(lower) && section.chapter === 11 && /13-15/.test(section.reference)) opening = ["Love for the LORD is the inner condition attached to the promised rain.", "The blessing of the land is tied to a heart that remains loyal."];
+  else if (/to love the lord your god/.test(lower)) opening = ["This love is repeated because covenant obedience starts with affection for God.", "Israel cannot keep His ways rightly while loving other gods."];
+  else if (/to keep the commandments of the lord/.test(lower)) opening = ["Moses includes obedience explicitly in the list of what God requires.", "The commandments define covenant faithfulness in concrete terms."];
+  else if (/to keep all these commandments which i command you/.test(lower)) opening = ["The phrase gathers all the commands into one sustained charge.", "Israel's future in the land depends on a whole pattern of obedience, not selective loyalty."];
+  else if (/and his statutes/.test(lower)) opening = ["Statutes are fixed commands laid down by God.", "They give Israel concrete patterns for life under His rule."];
+  else if (/for thy good/.test(lower)) opening = ["For thy good means God's commands aim at Israel's true well-being.", "Moses wants the people to see obedience as life-giving, not arbitrary."];
+  else if (/heaven and the heaven of heavens/.test(lower)) opening = ["The heaven of heavens is a way of speaking about the highest heavens.", "Moses is saying the LORD owns every level of creation above them."];
+  else if (/the earth also, with all that therein is/.test(lower)) opening = ["The earth and all that is in it already belong to God.", "Israel's chosen status rests inside His universal rule over everything."];
+  else if (/had a delight in thy fathers to love them/.test(lower)) opening = ["Had a delight means God set His affection on the fathers.", "The covenant story begins with divine love, not human impressiveness."];
+  else if (/he chose their seed after them/.test(lower)) opening = ["Their seed after them means their descendants.", "God's choice reaches from the fathers down into later generations."];
+  else if (/even you above all people/.test(lower)) opening = ["The phrase marks Israel out from the surrounding nations.", "Chosen status is meant to produce gratitude and humility, not pride."];
+  else if (/as it is this day/.test(lower)) opening = ["Moses points to the people's present standing as visible proof of God's choice.", "The phrase ties ancient promise to the reality now in front of them."];
+  else if (/execute the judgment of the fatherless and widow/.test(lower)) opening = ["Executing judgment means giving justice and defending the case.", "God acts on behalf of people who are easily neglected or exploited."];
+  else if (/loveth the stranger/.test(lower)) opening = ["The stranger is the foreigner living among Israel.", "Moses says plainly that God loves the outsider, not only the native-born Israelite."];
+  else if (/food and raiment/.test(lower)) opening = ["Raiment means clothing.", "The line moves from God's love to His provision of everyday needs."];
+  else if (/love ye therefore the stranger/.test(lower)) opening = ["Israel is told to treat the foreigner with the same active concern God shows.", "Mercy toward outsiders is part of covenant obedience."];
+  else if (/for ye were strangers in the land of egypt/.test(lower)) opening = ["Israel once lived in Egypt as outsiders without power.", "That memory is meant to make them compassionate instead of hard-hearted."];
+  else if (/him shalt thou serve/.test(lower)) opening = ["Serving Him means placing worship and obedience under the LORD alone.", "The command names the direction of Israel's loyalty."];
+  else if (/to serve him with all your heart and with all your soul/.test(lower)) opening = ["This service reaches the whole inner life, not just outward ritual.", "Moses ties worship to the entire heart and soul."];
+  else if (/to him shalt thou cleave/.test(lower)) opening = ["Cleave means cling to the LORD personally and steadfastly.", "The image is one of close attachment that refuses to let go."];
+  else if (/and to cleave unto him/.test(lower)) opening = ["The conquest promise is linked to sticking close to God.", "Victory in the land depends on nearness in loyalty."];
+  else if (/swear by his name|he is thy praise/.test(lower)) opening = ["Swearing by His name means making solemn commitments under God's authority.", "He is thy praise means the LORD is the one Israel should boast in, not itself."];
+  else if (/he is thy god/.test(lower)) opening = ["The phrase is a covenant confession, not a vague religious statement.", "Israel belongs to this God personally and exclusively."];
+  else if (/great and terrible things/.test(lower)) opening = ["Terrible here means awe-inspiring and fearsome.", "Moses is pointing back to acts of power that overwhelmed Egypt and protected Israel."];
+  else if (/which thine eyes have seen/.test(lower)) opening = ["The people are not being asked to trust rumor.", "They themselves saw the mighty works Moses is recalling."];
+  else if (/know ye this day/.test(lower)) opening = ["Moses is calling this generation to remember what it already knows by experience.", "The appeal is to living memory, not secondhand tradition."];
+  else if (/his mighty hand/.test(lower)) opening = ["A mighty hand is a picture of active saving power.", "The phrase points to the LORD's strength in judgment and deliverance."];
+  else if (/his stretched out arm/.test(lower)) opening = ["A stretched out arm pictures power reaching into history to act.", "Israel's rescue was not distant goodwill but forceful intervention."];
+  else if (/his miracles/.test(lower)) opening = ["Miracles are signs that display God's unusual power.", "Egypt saw works no human ruler could produce."];
+  else if (/his acts/.test(lower)) opening = ["Acts means the deeds God actually performed.", "Moses wants the people to remember what God did, not only what He said."];
+  else if (/unto all his land/.test(lower)) opening = ["God's judgments spread across Egypt's whole land, not just one palace.", "The phrase widens the scale of the exodus signs."];
+  else if (/what he did unto the army of egypt/.test(lower)) opening = ["Moses points specifically to Egypt's military defeat.", "The army that looked strongest still collapsed before the LORD."];
+  else if (/that ye may be strong/.test(lower)) opening = ["Strength here means strength for obedience and for entering the land.", "Moses ties real strength to receiving God's command seriously."];
+  else if (/and go in and possess the land/.test(lower)) opening = ["Entering the land means stepping into God's promise in actual obedience.", "The phrase keeps strength tied to movement and trust."];
+  else if (/whither ye go to possess it/.test(lower)) opening = ["The land ahead is the place Israel is actively moving toward.", "Moses keeps the goal in view so obedience feels urgent, not abstract."];
+  else if (/prolong your days in the land/.test(lower)) opening = ["Prolong your days means remain long in the inheritance.", "Life in the land is connected to covenant faithfulness."];
+  else if (/land that floweth with milk and honey/.test(lower)) opening = ["Milk and honey describe abundance and settled provision.", "The promise is not bare survival but a richly supplied land."];
+  else if (/the land, whither thou goest in to possess it|whither thou goest in to possess it/.test(lower)) opening = ["Moses is contrasting the land ahead with the land Israel left behind.", "Canaan must be understood on God's terms before the people enter it."];
+  else if (/is not as the land of egypt/.test(lower)) opening = ["Canaan is not like Egypt in the way it is watered and lived in.", "The comparison teaches Israel not to imagine life in the new land by old habits."];
+  else if (/where thou sowedst thy seed/.test(lower)) opening = ["The phrase recalls ordinary farming labor in Egypt.", "Moses is using agriculture to show how different the promised land will be."];
+  else if (/wateredst it with thy foot/.test(lower)) opening = ["Watering with the foot refers to foot-worked irrigation in Egypt.", "The image contrasts human-managed watering there with God-given rain in Canaan."];
+  else if (/as a garden of herbs/.test(lower)) opening = ["A garden of herbs is a small, carefully watered patch.", "Egypt could be worked by human effort in a way Canaan could not."];
+  else if (/drinketh water of the rain of heaven/.test(lower)) opening = ["The land drinks rain from heaven instead of relying on man-made irrigation.", "Canaan teaches dependence because the sky, not the foot, supplies its water."];
+  else if (/eyes of the lord thy god are always upon it/.test(lower)) opening = ["The phrase pictures God's constant watch and care over the land.", "Israel's future home lives under His ongoing attention from year to year."];
+  else if (/if ye shall hearken diligently unto my commandments/.test(lower)) opening = ["Hearken diligently means listen carefully with obedient intent.", "Blessing is tied to attentive covenant obedience, not careless hearing."];
+  else if (/rain of your land in his due season/.test(lower)) opening = ["Due season means the right time.", "The phrase teaches that harvest depends on God sending rain when it is needed."];
+  else if (/gather in thy corn, and thy wine, and thine oil/.test(lower)) opening = ["Corn, wine, and oil stand for the staple produce of settled life.", "God's blessing reaches the field, the vineyard, and the olive grove."];
+  else if (/that thou mayest eat and be full/.test(lower)) opening = ["Being full means having enough to eat with satisfaction.", "Moses presents fullness as a gift from God, not a human achievement."];
+  else if (/take heed to yourselves/.test(lower)) opening = ["Take heed means watch yourselves carefully.", "The warning begins at the level of the heart before outward idolatry appears."];
+  else if (/that your heart be not deceived/.test(lower)) opening = ["A deceived heart is one tricked into false trust and worship.", "Moses warns that idolatry starts inside before it spreads outside."];
+  else if (/and ye turn aside/.test(lower)) opening = ["The phrase pictures the first step off God's path.", "A turned heart soon becomes turned behavior."];
+  else if (/but turn aside out of the way/.test(lower)) opening = ["Turning aside out of the way means abandoning the road God set before them.", "The curse comes when Israel deliberately leaves the commanded path."];
+  else if (/and serve other gods/.test(lower) && section.chapter === 11) opening = ["The warning moves from a deceived heart into actual idolatrous service.", "Israel is being warned against handing devotion to false gods."];
+  else if (/and worship them/.test(lower)) opening = ["Worship them adds outward reverence to inward departure.", "The warning moves from heart deception to visible idolatry."];
+  else if (/to go after other gods/.test(lower)) opening = ["Going after other gods means pursuing rival worship as a new path.", "The phrase treats idolatry like a chosen direction of life."];
+  else if (/let us go after other gods/.test(lower)) opening = ["The temptation is a spoken invitation into false worship.", "Even impressive signs cannot make that invitation safe."];
+  else if (/saying, let us go and serve other gods/.test(lower) && section.reference === "Deuteronomy 13:6-8") opening = ["The secret enticer is openly inviting the listener into idol service.", "The phrase exposes the seduction at the center of the warning."];
+  else if (/saying, let us go and serve other gods/.test(lower) && section.reference === "Deuteronomy 13:12-14") opening = ["The corrupt men are trying to move a whole city into idol service.", "The phrase exposes the seduction at the center of the warning."];
+  else if (/saying, let us go and serve other gods/.test(lower)) opening = ["The speaker is actively trying to recruit someone into idolatry.", "The phrase exposes the seduction at the center of the warning."];
+  else if (/and serve other gods/.test(lower)) opening = ["The phrase names idolatry as an act of service and allegiance.", "Israel is being warned against handing devotion to false gods."];
+  else if (/lord's wrath be kindled against you/.test(lower)) opening = ["Kindled wrath pictures God's anger burning against covenant unfaithfulness.", "Idolatry is serious because it attacks the relationship itself."];
+  else if (/shut up the heaven/.test(lower)) opening = ["Shut up the heaven means God withholds rain.", "The judgment strikes the land at its point of dependence."];
+  else if (/lay up these my words in your heart and in your soul/.test(lower)) opening = ["Lay up means store deeply within.", "God's words are meant to live inside the person, not only outside on the lips."];
+  else if (/bind them for a sign upon your hand/.test(lower)) opening = ["The hand represents action and work.", "The phrase teaches that what Israel does should stay tied to God's word."];
+  else if (/frontlets between your eyes/.test(lower)) opening = ["Frontlets are reminders kept before the eyes or forehead.", "The image teaches constant attention to God's words."];
+  else if (/teach them your children/.test(lower)) opening = ["The command makes the next generation a direct responsibility.", "Covenant memory must be taught on purpose, not left to chance."];
+  else if (/speaking of them when thou sittest in thine house/.test(lower)) opening = ["The house setting points to ordinary family life.", "God's words belong in everyday conversation, not only in formal worship."];
+  else if (/when thou walkest by the way/.test(lower)) opening = ["The way means the daily road and routine travel of life.", "Instruction is meant to follow Israel out of the meeting place and into motion."];
+  else if (/write them upon the door posts of thine house, and upon thy gates/.test(lower)) opening = ["Door posts and gates mark entry points into home and community life.", "The phrase teaches visible remembrance at the places where people come and go."];
+  else if (/every place whereon the soles of your feet shall tread shall be yours/.test(lower)) opening = ["Walking on the land becomes a sign of taking hold of God's promise.", "The inheritance is concrete enough to be measured by their steps."];
+  else if (/from the wilderness and lebanon/.test(lower)) opening = ["These places mark one edge of the promised territory.", "Moses begins sketching the borders of the land God will give."];
+  else if (/from the river, the river euphrates/.test(lower)) opening = ["The Euphrates marks the far reach of the promise in that direction.", "The phrase helps Israel imagine the scale of the land gift."];
+  else if (/behold, i set before you this day a blessing and a curse/.test(lower)) opening = ["Moses places the covenant choices openly before the nation.", "The phrase removes any illusion that obedience and rebellion lead to the same end."];
+  else if (/a blessing, if ye obey/.test(lower)) opening = ["Blessing is tied to hearing and obeying God's commands.", "The good promised to Israel is covenant good, not random luck."];
+  else if (/a curse, if ye will not obey/.test(lower)) opening = ["Curse means covenant judgment instead of covenant favor.", "Refusing God's voice leads in the opposite direction from blessing."];
+  else if (/which ye have not known/.test(lower) && section.chapter === 11) opening = ["The gods named here are strangers to Israel's covenant history.", "The phrase exposes idolatry as abandoning the true Redeemer for strangers."];
+  else if (/which ye have not known/.test(lower)) opening = ["The city is being invited to worship gods outside everything Israel knows from God's rescue.", "The phrase exposes idolatry as abandoning the true Redeemer for strangers."];
+  else if (/which thou hast not known, thou, nor thy fathers/.test(lower)) opening = ["The enticer is pointing toward gods unknown even to the family line.", "The phrase makes the betrayal feel even more foreign and rootless."];
+  else if (/put the blessing upon mount gerizim/.test(lower)) opening = ["Gerizim is the mountain appointed for the covenant blessing.", "The place turns obedience into something publicly declared in the land."];
+  else if (/and the curse upon mount ebal/.test(lower)) opening = ["Ebal is the mountain appointed for the covenant curse.", "The place makes rebellion as visible and weighty as blessing."];
+  else if (/by the way where the sun goeth down/.test(lower)) opening = ["This directional marker helps Israel locate the covenant scene precisely.", "Moses anchors blessing and curse in real geography they will reach."];
+  else if (/beside the plains of moreh/.test(lower)) opening = ["The plains of Moreh are another landmark fixing the location in the land.", "The covenant warning is not floating in theory; it is tied to actual ground."];
+  else if (/ye shall pass over jordan to possess the land/.test(lower)) opening = ["Crossing Jordan means the covenant warnings are about to become lived reality.", "Possession of the land brings responsibility with the gift."];
+  else if (/ye shall observe to do all the statutes and judgments/.test(lower)) opening = ["Observe to do means carefully practice what has been commanded.", "The mountain signs are meant to end in obedience, not ceremony alone."];
+  else if (/ye shall utterly destroy all the places/.test(lower)) opening = ["The places are worship sites used by the nations.", "Israel must remove the structures of false worship, not merely ignore them."];
+  else if (/wherein the nations which ye shall possess served their gods/.test(lower)) opening = ["The nations served their gods in specific visible locations.", "Moses is teaching that idolatry lives in habits and places, not only in ideas."];
+  else if (/upon the high mountains/.test(lower)) opening = ["High places were prominent sites where pagan worship was often performed.", "Moses starts naming the visible settings of Canaanite religion."];
+  else if (/upon the hills/.test(lower)) opening = ["The worship sites spread beyond one sacred peak into the wider landscape.", "Israel must learn to recognize idolatry in ordinary terrain too."];
+  else if (/under every green tree/.test(lower)) opening = ["Green trees were common places for fertility worship and shrine practices.", "The image shows how deeply pagan religion was woven into the land."];
+  else if (/overthrow their altars/.test(lower)) opening = ["Altars are the raised places where offerings were presented to idols.", "Israel must tear them down because the worship itself is false."];
+  else if (/break their pillars/.test(lower)) opening = ["Pillars are standing stones used in pagan worship.", "Breaking them prevents false worship from remaining honored in the land."];
+  else if (/habitation shall ye seek/.test(lower)) opening = ["Habitation means the dwelling place God chooses for His name.", "Worship will be gathered to the place He appoints, not scattered by preference."];
+  else if (/thither thou shalt come/.test(lower)) opening = ["Thither means to that chosen place.", "Israel must move toward the place God names instead of creating rival centers."];
+  else if (/and thither ye shall bring your burnt offerings/.test(lower)) opening = ["Burnt offerings are whole offerings placed on the altar for God.", "Even the most complete sacrifice must be brought to the place He chooses."];
+  else if (/and your sacrifices/.test(lower) && section.reference === "Deuteronomy 12:4-7") opening = ["The word sacrifices broadens the list beyond burnt offerings alone.", "The phrase expands the rule beyond one kind of gift."];
+  else if (/and your sacrifices/.test(lower)) opening = ["The settled-land command repeats that ordinary sacrifices still belong at God's chosen place.", "The phrase expands the rule beyond one kind of gift."];
+  else if (/and your tithes/.test(lower)) opening = ["Tithes are the set portions given as part of covenant worship.", "They too must come under God's chosen worship order."];
+  else if (/and heave offerings of your hand/.test(lower)) opening = ["A heave offering is a lifted portion presented to the LORD as a sacred gift.", "The phrase marks even raised portions as holy, not casual food."];
+  else if (/and the heave offering of your hand/.test(lower)) opening = ["The settled-land list repeats the heave offering to show that raised gifts still belong to holy worship.", "The phrase marks even raised portions as holy, not casual food."];
+  else if (/or heave offering of thine hand/.test(lower)) opening = ["Here the heave offering is one more example of food that cannot be treated like an ordinary home meal.", "The phrase marks even raised portions as holy, not casual food."];
+  else if (/and your vows/.test(lower)) opening = ["Vows are promised gifts that must be brought to God as spoken commitments.", "What is promised to the LORD must be brought and honored His way."];
+  else if (/nor any of thy vows which thou vowest/.test(lower)) opening = ["The line forbids treating vowed gifts like private food within the gates.", "What is promised to the LORD must be brought and honored His way."];
+  else if (/ye shall not do after all the things that we do here this day/.test(lower)) opening = ["Moses says the current wilderness pattern will not continue unchanged.", "Life in the land will require a more settled and regulated worship life."];
+  else if (/every man whatsoever is right in his own eyes/.test(lower)) opening = ["Doing what is right in his own eyes means acting by personal judgment alone.", "The phrase warns against self-designed worship."];
+  else if (/for ye are not as yet come to the rest/.test(lower)) opening = ["Rest means settled life in the land under God's gift.", "The people are still in transition and have not yet reached that stage."];
+  else if (/and to the inheritance/.test(lower)) opening = ["Inheritance is the land portion God is giving His people.", "Moses links worship order to life in the promised gift."];
+  else if (/which the lord your god giveth you/.test(lower) && section.chapter === 12) opening = ["The land remains God's gift even while Moses is giving worship rules for it.", "Inheritance is never permission to ignore the Giver's order."];
+  else if (/when ye go over jordan/.test(lower)) opening = ["Crossing Jordan marks entry into the promised land.", "The phrase points to a coming change in how Israel will live and worship."];
+  else if (/dwell in safety/.test(lower)) opening = ["Safety here means rest from enemies under God's protection.", "Settled peace is a gift God Himself provides."];
+  else if (/thither shall ye bring all that i command you/.test(lower)) opening = ["The phrase gathers every commanded offering under one chosen place.", "Worship is centralized because God, not preference, sets its location."];
+  else if (/your burnt offerings/.test(lower) && section.reference === "Deuteronomy 12:10-12") opening = ["Even after the people settle in safety, burnt offerings still belong to God's command.", "Rest in the land does not loosen worship order."];
+  else if (/ye shall rejoice before the lord your god/.test(lower)) opening = ["Rejoicing before the LORD means glad worship in His presence.", "Obedience is not joyless; it includes thankful celebration."];
+  else if (/take heed to thyself/.test(lower)) opening = ["Moses gives a direct personal warning to stay watchful about worship.", "Sacrificial zeal is not enough if it ignores God's chosen order."];
+  else if (/offer not thy burnt offerings in every place that thou seest/.test(lower)) opening = ["The phrase forbids offering sacrifice wherever it seems convenient.", "Seeing a place is not the same as God choosing a place."];
+  else if (/in the place which the lord shall choose/.test(lower)) opening = ["The chosen place belongs to God's decision, not Israel's imagination.", "Central worship protects the people from copying pagan patterns."];
+  else if (/there thou shalt offer thy burnt offerings/.test(lower)) opening = ["The place of sacrifice is narrowed down to where God appoints.", "True worship obeys the location as well as the act."];
+  else if (/and there thou shalt do all that i command thee/.test(lower)) opening = ["The phrase joins all worship practice to God's direct command.", "Nothing holy is left to improvisation."];
+  else if (/whatsoever thy soul lusteth after/.test(lower)) opening = ["The soul lusting after something means strongly desiring it.", "Here the desire is for meat as ordinary food rather than altar worship."];
+  else if (/i will eat flesh/.test(lower)) opening = ["The phrase voices a straightforward desire to eat meat.", "Moses is talking about common appetite, not sacrifice."];
+  else if (/because thy soul longeth to eat flesh/.test(lower)) opening = ["Longing here means craving or wanting something strongly.", "The law acknowledges ordinary human desire while still setting limits."];
+  else if (/thou mayest eat flesh/.test(lower)) opening = ["The permission is real: ordinary meat may be eaten.", "Moses is distinguishing common meals from sanctuary offerings."];
+  else if (/unclean and the clean may eat thereof/.test(lower)) opening = ["Here clean and unclean persons may share in ordinary meat that is not sacrificial.", "The rule is different because this is common food, not altar food."];
+  else if (/as of the roebuck|roebuck|hart/.test(lower)) opening = ["The roebuck and the hart are wild animals hunted for food.", "They picture meat that may be eaten apart from sanctuary sacrifice."];
+  else if (/ye shall pour it upon the earth as water/.test(lower)) opening = ["The blood is to be released back to the ground rather than eaten.", "The act keeps common meat from becoming a misuse of life."];
+  else if (/thou mayest not eat within thy gates/.test(lower)) opening = ["Within thy gates means in your hometown or local settlement.", "The phrase forbids treating holy portions like an ordinary meal at home."];
+  else if (/the tithe of thy corn/.test(lower)) opening = ["The grain tithe belongs to God as a set worship portion.", "It cannot be reduced to private eating at home."];
+  else if (/or of thy wine, or of thy oil/.test(lower)) opening = ["Wine and oil are named with the tithe because they too belong to holy use.", "The phrase widens the rule beyond grain alone."];
+  else if (/or the firstlings of thy herds or of thy flock/.test(lower)) opening = ["Firstlings are the firstborn animals from herd and flock.", "They are set apart and cannot be handled like common livestock."];
+  else if (/nor thy freewill offerings/.test(lower)) opening = ["A freewill offering is given voluntarily, but it is still holy once offered.", "Willingness does not remove the need for ordered worship."];
+  else if (/only be sure that thou eat not the blood/.test(lower)) opening = ["Be sure means take special care.", "The blood prohibition is emphasized because blood represents life before God."];
+  else if (/for the blood is the life/.test(lower)) opening = ["The phrase treats blood as the life of the creature.", "That is why it cannot be treated as just another edible part."];
+  else if (/thou mayest not eat the life with the flesh/.test(lower)) opening = ["The life must not be consumed along with the meat.", "Moses turns the rule into a moral boundary around life itself."];
+  else if (/thou shalt pour it upon the earth as water/.test(lower)) opening = ["The command repeats the same act in stronger personal form.", "Life must be returned to the earth instead of treated like food."];
+  else if (/only thy holy things which thou hast/.test(lower)) opening = ["Holy things are gifts already marked off for God.", "Once set apart, they must be handled as sacred, not ordinary."];
+  else if (/and thy vows/.test(lower)) opening = ["The vows are the promised offerings Israel must still fulfill.", "Moses keeps reminding the people that spoken commitments to God matter."];
+  else if (/go unto the place which the lord shall choose/.test(lower)) opening = ["The journey to the chosen place is part of the obedience itself.", "Holy things are not complete until they are brought where God appoints."];
+  else if (/the flesh and the blood/.test(lower)) opening = ["Both meat and blood are mentioned to distinguish what belongs on the altar from what may be eaten.", "The phrase protects the sacred meaning of sacrifice."];
+  else if (/upon the altar of the lord thy god/.test(lower)) opening = ["The altar is the appointed place where sacrificial life is offered to God.", "The phrase keeps holy sacrifice separate from ordinary eating."];
+  else if (/whither thou goest to possess them/.test(lower)) opening = ["Israel is entering land that once belonged to idolatrous nations.", "The phrase sets the scene for a warning about copied worship."];
+  else if (/and thou succeedest them/.test(lower)) opening = ["Succeedest means take their place after them.", "Israel must inherit the land without inheriting the religion that filled it."];
+  else if (/and dwellest in their land/.test(lower)) opening = ["Settling in their land creates the temptation to settle into their customs too.", "Moses warns before that imitation begins."];
+  else if (/after that they be destroyed from before thee/.test(lower)) opening = ["Even after the nations are judged, their religious patterns can still linger as a temptation.", "Removal of people does not automatically remove the danger of imitation."];
+  else if (/enquire not after their gods/.test(lower)) opening = ["The phrase forbids researching pagan worship as if it might teach something useful.", "Curiosity becomes dangerous when the subject is false worship."];
+  else if (/for every abomination to the lord/.test(lower)) opening = ["Abomination means something loathsome and detestable to God.", "The warning explains why pagan worship cannot be borrowed."];
+  else if (/which he hateth/.test(lower)) opening = ["The phrase states God's settled opposition to those practices.", "What the LORD hates cannot become a pattern for His people."];
+  else if (/if there arise among you a prophet/.test(lower)) opening = ["A prophet could claim to speak for God from inside the covenant community.", "Moses warns that not every spiritual voice is trustworthy."];
+  else if (/dreamer of dreams/.test(lower)) opening = ["A dreamer of dreams claims revelation through dreams.", "The warning reaches both spoken prophecy and dream-based claims."];
+  else if (/giveth thee a sign or a wonder/.test(lower)) opening = ["A sign or wonder is something impressive that seems to validate the speaker.", "Moses is preparing Israel not to confuse wonder with truth."];
+  else if (/the sign or the wonder come to pass/.test(lower)) opening = ["Even a sign that actually happens is not the final test of truth.", "A fulfilled wonder still must be judged by whether it leads toward the LORD or away from Him."];
+  else if (/thou shalt not hearken unto the words of that prophet/.test(lower)) opening = ["Hearken not means refuse his message.", "Moses breaks the link between supernatural impressiveness and spiritual truth."];
+  else if (/for the lord your god proveth you/.test(lower)) opening = ["Proveth you means tests you.", "The false sign exposes whether Israel truly loves the LORD more than spectacle."];
+  else if (/if thy brother, the son of thy mother, entice thee secretly/.test(lower)) opening = ["Entice secretly means quietly lure someone away.", "The danger here is intimate pressure rather than public preaching."];
+  else if (/or thy son, or thy daughter/.test(lower)) opening = ["Moses even names children as possible sources of pressure toward idolatry.", "No family bond is allowed to outrank covenant loyalty."];
+  else if (/wife of thy bosom/.test(lower)) opening = ["The wife of thy bosom is the spouse closest to the heart.", "Moses names the nearest relationships so loyalty to God cannot be sidestepped."];
+  else if (/friend, which is as thine own soul/.test(lower)) opening = ["This is a friend loved like one's own life.", "Even deep friendship cannot make idolatry harmless."];
+  else if (/thou shalt not consent unto him, nor hearken unto him/.test(lower)) opening = ["Consent means agree and join in.", "The command forbids both sympathy and participation in the seduction."];
+  else if (/thou shalt surely kill him/.test(lower)) opening = ["The severe wording shows how seriously covenant idolatry is treated.", "The one who tries to pull Israel from the LORD is not treated as a minor influence."];
+  else if (/thine hand shall be first upon him/.test(lower)) opening = ["The accuser cannot stand at a safe distance from the judgment.", "The phrase forces personal responsibility in a matter that serious."];
+  else if (/stone him with stones, that he die/.test(lower)) opening = ["The execution language makes the judgment public and final.", "The community is taught that covenant treachery is deadly evil."];
+  else if (/sought to thrust thee away from the lord thy god/.test(lower)) opening = ["To thrust away means push or drive someone off course.", "The enticer is trying to separate Israel from its Redeemer."];
+  else if (/which brought thee out of the land of egypt/.test(lower)) opening = ["The phrase names the God who actually rescued Israel from Egypt.", "It makes the enticer's sin personal betrayal against the true Deliverer."];
+  else if (/from the house of bondage/.test(lower)) opening = ["The house of bondage means the condition of slavery Israel lived under in Egypt.", "The reminder shows how wicked it is to push the rescued people away from their Redeemer."];
+  else if (/all israel shall hear, and fear/.test(lower)) opening = ["The judgment is meant to be heard about by the whole nation.", "Public fear is supposed to stop the spread of the same evil."];
+  else if (/if thou shalt hear say in one of thy cities/.test(lower)) opening = ["The warning now moves from an individual to a whole city.", "Idolatry can spread through a community, not only through one person."];
+  else if (/children of belial/.test(lower)) opening = ["Belial means worthlessness or wicked rebellion.", "The phrase names people who are morally corrupt and destructive."];
+  else if (/withdrawn the inhabitants of their city/.test(lower)) opening = ["Withdrawn means drawn away from covenant loyalty.", "The danger is organized influence that turns a population toward idols."];
+  else if (/then shalt thou enquire, and make search, and ask diligently/.test(lower)) opening = ["The three verbs slow the process down on purpose.", "Serious judgment requires careful investigation, not rumor and panic."];
+  else if (/thou shalt surely smite the inhabitants of that city with the edge of the sword/.test(lower)) opening = ["The whole city comes under judgment once the apostasy is proven true.", "The sentence shows how seriously covenant treason is treated at a communal level."];
+  else if (/destroying it utterly/.test(lower)) opening = ["Utterly means completely and without remainder.", "Nothing about the apostate city is to be preserved as normal."];
+  else if (/all the cattle thereof/.test(lower)) opening = ["The judgment reaches the city's livestock as well as its people.", "The destruction is total because the city has become devoted to judgment."];
+  else if (/gather all the spoil of it into the midst of the street thereof/.test(lower)) opening = ["Spoil means the city's goods and property gathered into one public place.", "The phrase stops people from quietly claiming private profit."];
+  else if (/shalt burn with fire the city, and all the spoil thereof every whit/.test(lower)) opening = ["Every whit means every bit of it.", "The total burning shows the judgment is complete and not a chance for gain."];
+  else if (/it shall be an heap for ever/.test(lower)) opening = ["An heap for ever means a permanent ruin.", "The destroyed city becomes a standing warning against covenant revolt."];
+  else if (/there shall cleave nought of the cursed thing to thine hand/.test(lower)) opening = ["Nothing under the curse may stick to Israel's hand as personal gain.", "Holy judgment cannot be mixed with private greed."];
+  else if (/turn from the fierceness of his anger/.test(lower)) opening = ["Fierceness of anger describes judgment at full heat.", "Moses is showing that obedience matters because it turns away deserved wrath."];
+  else if (/and shew thee mercy/.test(lower)) opening = ["Mercy here is the LORD's gracious turning toward His people after judgment is honored.", "Covenant severity is not God's final delight."];
+  else if (/and have compassion upon thee/.test(lower)) opening = ["Compassion means tender pity toward the people.", "Restoration comes because God is merciful, not because the people were flawless."];
+  else if (/multiply thee/.test(lower)) opening = ["Multiply thee means make the people flourish and increase.", "Restoration is not merely survival; it can become renewed fruitfulness."];
+  else if (/as he hath sworn unto thy fathers/.test(lower)) opening = ["Again Moses grounds hope in God's oath to the fathers.", "Mercy moves along covenant promise, not human worthiness."];
+  else if (/because thou shalt hearken to the voice of the lord thy god/.test(lower)) opening = ["Hearkening to God's voice means receiving it with obedience.", "Mercy and life are tied to listening rightly to the LORD."];
+  else opening = [`This wording highlights ${getDeuteronomy1To13DistinctiveTopic(cleanTitle)} in Day 50's covenant teaching.`, "Moses keeps pressing heart loyalty, true worship, and obedience inside the land God gives."];
+
+  return note([
+    opening[0],
+    opening[1],
+    getDay50DeuteronomyLeadSupport(cleanTitle),
+    ...getDay50DeuteronomySupport(cleanTitle).slice(0, 3),
+  ].slice(0, 8));
+}
+
 function explainDeuteronomy1To13At95(section: (typeof generatedDeuteronomyOneToThirteenPersonalSections)[number], title: string, occurrenceIndex = 0) {
   const cleanTitle = stripLeadingEmoji(title);
   if (section.chapter === 1) return explainDay47DeuteronomyAt95(section, cleanTitle);
   if (section.chapter >= 2 && section.chapter <= 5) return explainDay48DeuteronomyAt95(section, cleanTitle);
   if (section.chapter >= 6 && section.chapter <= 9) return explainDay49DeuteronomyAt95(section, cleanTitle);
+  if (section.chapter >= 10 && section.chapter <= 13) return explainDay50DeuteronomyAt95(section, cleanTitle);
 
   const lower = cleanTitle.toLowerCase();
   let opening: string[];
@@ -1624,13 +2105,14 @@ function makeDeuteronomyOneToThirteenExplanation(section: (typeof generatedDeute
 
 export const DEUTERONOMY_1_13_PERSONAL_SECTIONS: PersonalSection[] = generatedDeuteronomyOneToThirteenPersonalSections.map((section) => ({
   ...section,
-  title: day47DeuteronomySectionTitles[section.reference] || day48DeuteronomySectionTitles[section.reference] || day49DeuteronomySectionTitles[section.reference] || section.title,
+  title: day47DeuteronomySectionTitles[section.reference] || day48DeuteronomySectionTitles[section.reference] || day49DeuteronomySectionTitles[section.reference] || day50DeuteronomySectionTitles[section.reference] || section.title,
   phrases: (() => {
     const seen = new Map<string, number>();
     return (
       day47DeuteronomyCuratedPhraseTitles[section.reference] ||
       day48DeuteronomyCuratedPhraseTitles[section.reference] ||
       day49DeuteronomyCuratedPhraseTitles[section.reference] ||
+      day50DeuteronomyCuratedPhraseTitles[section.reference] ||
       section.phrases.map(([title]) => title)
     ).map((title) => {
       const key = stripLeadingEmoji(title).toLowerCase();
