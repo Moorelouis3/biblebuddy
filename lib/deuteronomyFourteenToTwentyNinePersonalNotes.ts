@@ -1267,7 +1267,7 @@ function explainDay52DeuteronomyAt95(section: (typeof generatedDeuteronomyFourte
   if (/the priests the levites/.test(lower)) opening = ["The priests and Levites are the men set apart for tabernacle and altar service.", "This line identifies their sacred role before it explains their support."];
   else if (/all the tribe of levi/.test(lower)) opening = ["This widens the focus from priests alone to the whole tribe of Levi.", "Levi's service life shapes the whole tribe's place in Israel."];
   else if (/no part nor inheritance with israel/.test(lower)) opening = ["Inheritance here means a tribal land share in Canaan.", "Levi does not receive land like the other tribes do."];
-  else if (/the lord is their inheritance/.test(lower)) opening = ["The LORD is their inheritance means their portion comes through belonging to His service.", "Their support is tied to God's presence rather than farmland."];
+  else if (/the lord is their inheritance/.test(lower)) opening = ["Instead of receiving tribal farmland, the Levites receive their portion through belonging to the LORD's service.", "Their support is tied to His worship and presence rather than to fields."];
   else if (/as he hath said unto them/.test(lower)) opening = ["This line appeals to God's earlier promise about Levi's place.", "Moses is not inventing a new rule here."];
   else if (/priest's due from the people/.test(lower)) opening = ["Due means the assigned portion owed to the priest.", "Worshipers are responsible to provide it as part of obedience."];
   else if (/whether it be ox or sheep/.test(lower)) opening = ["The rule applies whether the sacrifice animal is large or small.", "The priest's portion does not disappear with a different offering animal."];
@@ -1296,12 +1296,12 @@ function explainDay52DeuteronomyAt95(section: (typeof generatedDeuteronomyFourte
   else if (/that i die not/.test(lower)) opening = ["The people feared they would die under direct exposure to God's holy voice and fire.", "This explains why they asked for a mediator."];
   else if (/they have well spoken/.test(lower)) opening = ["God approves the people's request for mediated speech.", "Their fear at Sinai becomes the setting for true prophecy."];
   else if (/i will raise them up a prophet/.test(lower)) opening = ["God Himself promises to appoint a prophet for the people.", "True prophecy begins with His initiative, not human ambition."];
-  else if (/like unto thee/.test(lower)) opening = ["Like unto thee means like Moses in being God's appointed spokesman.", "The people will receive God's words through a mediator they must hear."];
+  else if (/like unto thee/.test(lower)) opening = ["This means a prophet raised by God who stands in Moses' line as an authorized spokesman.", "The people will again receive God's words through a mediator they must hear."];
   else if (/i will put my words in his mouth/.test(lower)) opening = ["This means the prophet speaks God's message, not his own invention.", "His authority depends on words given by the LORD."];
   else if (/i will require it of him/.test(lower)) opening = ["God will hold the listener accountable for refusing His prophet.", "Ignoring a true word from God is not a small matter."];
   else if (/if thou say in thine heart/.test(lower)) opening = ["The question begins inside the hearer who wants to know if a prophet is real.", "Moses makes room for testing instead of blind acceptance."];
   else if (/how shall we know/.test(lower)) opening = ["This asks how ordinary people can recognize a false prophet.", "The law gives a practical test rather than leaving Israel helpless."];
-  else if (/if the thing follow not/.test(lower)) opening = ["If the thing follow not means the announced word does not happen.", "A failed prediction exposes the claim."];
+  else if (/if the thing follow not/.test(lower)) opening = ["This means the prophet's announced message fails to happen in real history.", "When the word does not come true, the claim to speak for God is exposed as false."];
   else if (/nor come to pass/.test(lower)) opening = ["Come to pass means actually happen in history.", "Truth is tested by whether the word is fulfilled."];
   else if (/spoken it presumptuously/.test(lower)) opening = ["Presumptuously means speaking with bold self-claim instead of divine commission.", "The prophet has stepped beyond what God gave."];
   else if (/not be afraid of him/.test(lower)) opening = ["Israel must not be intimidated by a false prophet's confidence or claims.", "Failure of the word removes the prophet's authority."];

@@ -1011,6 +1011,8 @@ function explainDay39NumbersAt95(section: PersonalLeviticusPhraseSectionInput, c
   let opening: string[];
 
   if (/lord spake.*aaron/.test(lower)) opening = [`God gives Moses and Aaron the order for ${context}.`, "The camp is not arranged by instinct; it is arranged by the LORD's command."];
+  else if (/lord spake/.test(lower) && section.reference === "Numbers 5:5-10") opening = ["God introduces the law for confession and repayment after wrong has been done.", "The instruction begins with the LORD because restitution is part of holy camp life."];
+  else if (/speak unto/.test(lower) && section.reference === "Numbers 5:5-10") opening = ["Moses must tell Israel how confessed wrong is to be repaid.", "Restitution is not left to personal guesswork; God gives the rule."];
   else if (/lord spake|lord said|speak unto/.test(lower)) opening = [`God gives the command for ${context}.`, "Israel learns how to live near Him by listening before acting."];
   else if (/as the lord commanded|according to the commandment/.test(lower)) opening = [`Moses follows the LORD's command for ${context}.`, "The repeated obedience matters because holy order must be received, not invented."];
   else if (/every man by his own standard/.test(lower)) opening = ["Each man camps under his tribal standard.", "A standard is a banner or marker that keeps the tribe gathered in its proper place."];
@@ -1028,9 +1030,13 @@ function explainDay39NumbersAt95(section: PersonalLeviticusPhraseSectionInput, c
     const tribe = cleanTitle.match(/Tribe Of ([A-Za-z]+)/i)?.[1] || "This tribe";
     opening = [`${tribe} is named as part of this camp group.`, "The tribe is not lost inside the crowd; it has a clear place in Israel's order."];
   }
+  else if (/according to their armies/.test(lower) && section.reference === "Numbers 2:10-15") opening = ["Reuben's camp is arranged in ordered divisions ready to march together.", "This is military-style order inside the camp, not a scattered crowd."];
+  else if (/according to their armies/.test(lower) && section.reference === "Numbers 2:18-23") opening = ["Ephraim's side is counted as organized camp divisions ready for movement.", "Each western tribe belongs to a set marching group under one banner."];
+  else if (/according to their armies/.test(lower) && section.reference === "Numbers 2:25-30") opening = ["Dan's side is organized into camp divisions that travel as one rear group.", "The phrase shows the north side is structured for order and protection."];
+  else if (/according to their armies/.test(lower)) opening = ["The camp is divided into ordered groups ready to move together.", "Israel is arranged for movement and service, not left in confusion."];
   else if (/son of/.test(lower)) {
     const leader = cleanTitle.replace(/^.*?([A-Z][A-Za-z]+ The Son Of [A-Z][A-Za-z]+).*$/, "$1");
-    opening = [`${leader} is the named leader for this tribal group.`, "Numbers ties camp order to real leaders who answer for their tribes."];
+    opening = [`The named man is the leader for this tribal group: ${leader}.`, "Numbers ties camp order to real leaders who answer for their tribes."];
   }
   else if (/all .*numbered.*camp of ([a-z]+)/.test(lower)) {
     const camp = cleanTitle.match(/Camp Of ([A-Za-z]+)/i)?.[1] || "this camp";
@@ -1042,6 +1048,22 @@ function explainDay39NumbersAt95(section: PersonalLeviticusPhraseSectionInput, c
   else if (/fifty and seven thousand/.test(lower)) opening = ["Dan's camp total is one hundred fifty-seven thousand six hundred.", "The rear-guard camp is large and ordered for the march."];
   else if (/twenty and two thousand/.test(lower)) opening = ["Twenty-two thousand is the total Levite count given here.", "The number prepares for comparing Levites with Israel's firstborn."];
   else if (/two hundred threescore and thirteen/.test(lower)) opening = ["The two hundred seventy-three are the extra firstborn beyond the Levite count.", "They require redemption money because no Levite directly stands in their place."];
+  else if (/these are those which were numbered/.test(lower)) opening = ["This line gathers the completed camp totals into one summary.", "The whole camp can now be seen as an ordered nation around the tabernacle."];
+  else if (/moses numbered them/.test(lower)) opening = ["Moses personally carries out the Levite census God commanded.", "The numbering of Levi is treated as holy administration, not casual counting."];
+  else if (/these are the families of the levites/.test(lower)) opening = ["The line summarizes Levi's clans as the serving families of the tabernacle.", "Levitical work is organized by family lines, not random assignment."];
+  else if (/according to the house of their fathers/.test(lower) && section.reference === "Numbers 3:14-20") opening = ["The Levite clans are listed by ancestral households.", "Their tabernacle roles are tied to family lines handed down from the fathers."];
+  else if (/according to the house of their fathers/.test(lower) && section.reference === "Numbers 4:1-3") opening = ["The Kohathites are counted by their ancestral households.", "This keeps holy service organized by family responsibility, not random assignment."];
+  else if (/according to the house of their fathers/.test(lower)) opening = ["The count is organized by ancestral households.", "Service and identity are traced through the fathers' houses."];
+  else if (/all the service thereof/.test(lower)) opening = ["This points to the full range of work assigned to that Levite clan.", "Each family is responsible for a complete set of tabernacle duties."];
+  else if (/after their families/.test(lower) && section.reference === "Numbers 4:1-3") opening = ["The Kohathite count is arranged by family groups.", "Their holy carrying work belongs to named clan lines."];
+  else if (/after their families/.test(lower) && section.reference === "Numbers 4:34-37") opening = ["The final Kohathite total is still organized by family groups.", "The service count stays tied to clan identity all the way through."];
+  else if (/after their families/.test(lower)) opening = ["The census follows family groups rather than detached individuals.", "Numbers keeps service tied to household identity and responsibility."];
+  else if (/every one that entered into the service/.test(lower) && section.reference === "Numbers 4:21-26") opening = ["Only Gershon's men who are old enough for active tabernacle duty are counted here.", "This is a service register, not a full clan census."];
+  else if (/every one that entered into the service/.test(lower) && section.reference === "Numbers 4:34-37") opening = ["Only Kohathite men fit for active tabernacle duty are counted here.", "This number covers those who can carry the most holy things."];
+  else if (/every one that entered into the service/.test(lower) && section.reference === "Numbers 4:42-45") opening = ["Only Merarite men fit for active tabernacle duty are counted here.", "The number is limited to those who can carry the structural loads."];
+  else if (/every one that entered into the service/.test(lower) && section.reference === "Numbers 4:29-33") opening = ["Only Merari's men fit for active tabernacle duty are counted here.", "The number is limited to those carrying the structural burdens."];
+  else if (/every one that entered into the service/.test(lower)) opening = ["Only those entering the assigned tabernacle labor are counted here.", "The number is about actual service, not a general population list."];
+  else if (/throughout their families/.test(lower)) opening = ["The whole family line is included in this service count.", "The work of the tabernacle is organized clan by clan."];
   else if (/hundred|thousand|fifty/.test(lower)) opening = ["The number records the size of that counted group.", "Numbers is showing Israel as an organized people prepared for the wilderness march."];
   else if (/first set forth/.test(lower)) opening = ["Judah's camp moves first when Israel sets forward.", "The order of travel is fixed before the journey begins."];
   else if (/second rank/.test(lower)) opening = ["Reuben's camp moves second in the travel order.", "The camp moves by command, not by crowd confusion."];
@@ -1050,21 +1072,25 @@ function explainDay39NumbersAt95(section: PersonalLeviticusPhraseSectionInput, c
   else if (/pitched by their standards/.test(lower)) opening = ["Israel camps under the standards God assigned.", "Resting in camp follows the same order as traveling."];
   else if (/so they set forward/.test(lower)) opening = ["Israel sets forward in the order God gave.", "The march is organized around obedience, not panic or preference."];
   else if (/levites were not numbered/.test(lower)) opening = ["The Levites are excluded from the fighting census.", "Their role is tabernacle service, not ordinary military numbering."];
-  else if (/generations of aaron and moses/.test(lower)) opening = ["The generations of Aaron and Moses introduce the priestly family line.", "Numbers slows down to show who serves closest to the tabernacle."];
+  else if (/generations of aaron and moses/.test(lower)) opening = ["This heading introduces the priestly family line tied to Aaron and Moses.", "Numbers slows down to show who serves closest to the tabernacle."];
   else if (/priests which were anointed/.test(lower)) opening = ["The anointed priests are set apart for holy service.", "Anointing marks their work as belonging to the LORD."];
-  else if (/nadab and abihu died/.test(lower)) opening = ["Nadab and Abihu died before the LORD after offering unauthorized fire.", "Their death warns that priestly nearness is never casual."];
+  else if (/nadab and abihu died/.test(lower)) opening = ["Aaron's sons Nadab and Abihu died after offering unauthorized fire before the LORD.", "Their death warns that priestly nearness is never casual."];
   else if (/no children/.test(lower)) opening = ["Nadab and Abihu left no children to continue their priestly line.", "The priestly service continues through Eleazar and Ithamar."];
   else if (/eleazar and ithamar/.test(lower)) opening = ["Eleazar and Ithamar continue serving as priests.", "The priestly line remains active after Nadab and Abihu's judgment."];
   else if (/bring the tribe of levi near/.test(lower)) opening = ["The tribe of Levi is brought near for tabernacle service.", "Their closeness is a calling with duties, not a privilege for pride."];
   else if (/present them before aaron/.test(lower)) opening = ["The Levites are presented before Aaron the priest.", "They serve under priestly oversight instead of acting independently."];
   else if (/keep his charge/.test(lower)) opening = ["Keeping Aaron's charge means assisting the priest with assigned holy duties.", "The Levites serve near Aaron, not in place of him."];
   else if (/oversight.*charge/.test(lower)) opening = ["Oversight of the charge means Eleazar supervises those guarding holy duties.", "The most sacred work is watched by priestly leadership."];
-  else if (/keeping the charge of the sanctuary/.test(lower)) opening = ["Keeping the charge of the sanctuary means guarding holy access at the tabernacle.", "Moses, Aaron, and his sons protect the entrance side from unauthorized nearness."];
+  else if (/keeping the charge of the sanctuary/.test(lower)) opening = ["Guarding the sanctuary means protecting holy access at the tabernacle.", "Moses, Aaron, and his sons protect the entrance side from unauthorized nearness."];
+  else if (/stranger.*put to death/.test(lower) && section.reference === "Numbers 3:5-10") opening = ["A stranger here means anyone outside the priestly line trying to perform holy service.", "Unauthorized approach to priestly duties would bring death."];
+  else if (/stranger.*put to death/.test(lower) && section.reference === "Numbers 3:38-39") opening = ["A stranger here means anyone trying to cross into the guarded sanctuary entrance.", "The warning protects holy access around the tabernacle itself."];
   else if (/stranger.*put to death/.test(lower)) opening = ["A stranger here means someone not authorized for priestly service.", "Coming near holy duties without permission brings deadly danger."];
   else if (/i have taken the levites/.test(lower)) opening = ["God takes the Levites for Himself in place of Israel's firstborn.", "Their service is rooted in God's claim over rescued life."];
   else if (/instead of all the firstborn/.test(lower)) opening = ["The Levites stand in place of Israel's firstborn sons.", "This connects tabernacle service to the mercy of Passover."];
   else if (/smote all the firstborn/.test(lower)) opening = ["God points back to the night He struck Egypt's firstborn.", "Israel's spared firstborn belong to Him because He rescued them."];
   else if (/all the firstborn are mine/.test(lower)) opening = ["The firstborn belong to the LORD.", "Their lives are remembered as rescued lives, not private possessions."];
+  else if (/i am the lord/.test(lower) && section.reference === "Numbers 3:11-13") opening = ["God ends the claim over the firstborn and Levites with His own name.", "The exchange stands on His authority because the rescued firstborn belong to Him."];
+  else if (/i am the lord/.test(lower) && section.reference === "Numbers 3:40-45") opening = ["God seals the firstborn count and Levite substitution with His own name.", "The redemption arrangement rests on His authority, not human preference."];
   else if (/i am the lord/.test(lower)) opening = ["God seals the command with His own name.", "The claim over Levites, firstborn, and worship rests on who He is."];
   else if (/month old/.test(lower)) opening = ["The Levites are counted from one month old and upward.", "This is a tribal-service count, not the same as the army census."];
   else if (/gershon.*kohath.*merari/.test(lower)) opening = ["Gershon, Kohath, and Merari are Levi's main family lines.", "Each line will receive its own tabernacle work."];
@@ -1085,10 +1111,14 @@ function explainDay39NumbersAt95(section: PersonalLeviticusPhraseSectionInput, c
   else if (/ark, and the table/.test(lower)) opening = ["The ark and table are central holy furnishings.", "Kohath's clan is tied to the sacred objects nearest God's presence."];
   else if (/candlestick, and the altars/.test(lower)) opening = ["The lampstand and altars are holy furnishings used in worship.", "They must be handled under priestly direction."];
   else if (/cover the ark/.test(lower)) opening = ["The ark of testimony is covered before transport.", "The ark is never treated as ordinary cargo."];
-  else if (/boards of the tabernacle/.test(lower)) opening = ["The boards form the tabernacle's frame.", "Merari carries the pieces that give the holy tent its structure."];
-  else if (/bars thereof/.test(lower)) opening = ["The bars hold the tabernacle boards together.", "Merari carries the connecting pieces that keep the frame secure."];
-  else if (/pillars thereof/.test(lower)) opening = ["The pillars support the tabernacle and court hangings.", "Merari's duty includes the upright supports of holy space."];
-  else if (/sockets thereof|and sockets/.test(lower)) opening = ["The sockets are the bases that hold pillars and boards in place.", "Merari carries the foundation pieces for the tabernacle structure."];
+  else if (/boards of the tabernacle/.test(lower) && section.reference === "Numbers 3:33-37") opening = ["The boards are the wooden frame pieces assigned to Merari's clan.", "They are part of the standing structure of the tabernacle."];
+  else if (/boards of the tabernacle/.test(lower)) opening = ["The boards are the heavy frame pieces Merari must carry for transport.", "The tabernacle's structure has to be moved piece by piece."];
+  else if (/bars thereof/.test(lower) && section.reference === "Numbers 3:33-37") opening = ["The bars are the long supports that hold the tabernacle frame together.", "Merari is responsible for these connecting pieces."];
+  else if (/bars thereof/.test(lower)) opening = ["The bars are transportable support pieces for the tabernacle frame.", "Merari carries what keeps the structure fastened together."];
+  else if (/pillars thereof/.test(lower) && section.reference === "Numbers 3:33-37") opening = ["The pillars are upright supports belonging to Merari's assigned tabernacle parts.", "They help define and hold up holy space."];
+  else if (/pillars thereof/.test(lower)) opening = ["The pillars are upright supports that must be carried and reset during travel.", "Merari handles these structural pieces of the sanctuary and court."];
+  else if (/sockets thereof|and sockets/.test(lower) && section.reference === "Numbers 3:33-37") opening = ["The sockets are the bases that hold the boards and pillars in place.", "Merari is assigned these foundation pieces of the tabernacle frame."];
+  else if (/sockets thereof|and sockets/.test(lower)) opening = ["The sockets are the heavy bases carried with the structural parts during travel.", "Without them the boards and pillars could not be set in place again."];
   else if (/pins/.test(lower)) opening = ["The pins help secure the tabernacle coverings and court.", "Even small parts are counted because the holy dwelling must be set up rightly."];
   else if (/before the tabernacle toward the east/.test(lower)) opening = ["The east side before the tabernacle is the guarded entrance side.", "Moses, Aaron, and his sons camp there to protect holy access."];
   else if (/moses, and aaron/.test(lower)) opening = ["Moses, Aaron, and Aaron's sons guard the most responsible position.", "Leadership stands closest to the entrance of holy service."];
@@ -1103,28 +1133,33 @@ function explainDay39NumbersAt95(section: PersonalLeviticusPhraseSectionInput, c
   else if (/give the money/.test(lower)) opening = ["The redemption money is given to Aaron and his sons.", "The payment belongs to the priestly service connected with the LORD's claim."];
   else if (/thirty years old/.test(lower)) opening = [`Thirty years old and upward marks the service age for ${context}.`, "The work requires mature strength and readiness."];
   else if (/work in the tabernacle/.test(lower)) opening = ["The work in the tabernacle is Kohath's holy service assignment.", "The Levites serve the dwelling place at the center of Israel's camp."];
-  else if (/their service in the tabernacle/.test(lower)) opening = ["Their service in the tabernacle refers to Gershon's assigned duties.", "The work is done under priestly oversight."];
+  else if (/their service in the tabernacle/.test(lower)) opening = ["This refers to the specific work assigned to Gershon's clan inside tabernacle transport.", "Their service centers on curtains, coverings, and hangings under priestly oversight."];
   else if (/do service in the tabernacle/.test(lower)) opening = ["Doing service in the tabernacle means Gershon's counted men are ready for holy work.", "The count is tied to service, not status."];
   else if (/most holy things/.test(lower)) opening = ["The most holy things are the sacred objects nearest God's presence.", "They must be covered and carried with extreme care."];
   else if (/camp setteth forward/.test(lower)) opening = ["When the camp sets forward, the tabernacle must be prepared for travel.", "Holy movement begins with priestly covering and order."];
   else if (/covering vail|ark of testimony/.test(lower)) opening = ["The veil covers the ark before it is carried.", "The ark is never treated as ordinary cargo."];
+  else if (/not touch any holy thing/.test(lower) && section.reference === "Numbers 4:4-9") opening = ["The Kohathites are forbidden to touch the uncovered holy objects directly.", "They may carry them only after the priests cover them for transport."];
   else if (/not touch any holy thing/.test(lower)) opening = ["The Kohathites must not touch the holy objects themselves.", "They carry what priests have covered, but direct contact would bring death."];
-  else if (/lest they die/.test(lower)) opening = ["Lest they die warns that careless nearness to holy things is deadly.", "The rule protects the Levites while honoring God's holiness."];
+  else if (/lest they die/.test(lower) && section.reference === "Numbers 4:4-9") opening = ["The warning says death would follow direct contact with holy things.", "God's holiness sets a real boundary around the ark and sacred furniture."];
+  else if (/lest they die/.test(lower) && section.reference === "Numbers 4:17-20") opening = ["The warning here is about death if Kohath sees or handles holy things wrongly.", "These added rules protect them during the packing process."];
+  else if (/lest they die/.test(lower)) opening = ["The warning is about death from careless nearness to holy things.", "The rule protects the Levites while honoring God's holiness."];
   else if (/vessels thereof/.test(lower)) opening = ["The vessels are the smaller tools used with the holy furnishings.", "Even the tools of worship must be packed and carried carefully."];
   else if (/upon a bar/.test(lower)) opening = ["Putting it upon a bar prepares the covered object to be carried.", "The Levites transport holy things without grabbing them directly."];
   else if (/made an end/.test(lower)) opening = ["Aaron and his sons finish covering the holy things first.", "Only after the priests complete their work may Kohath begin carrying."];
   else if (/kohath.*bear/.test(lower)) opening = ["The sons of Kohath carry the covered holy things.", "Their burden is sacred, but it is limited by priestly boundaries."];
   else if (/cut ye not off/.test(lower)) opening = ["God warns Moses and Aaron not to let Kohath be cut off through careless handling.", "The instructions preserve their lives while they serve near holy things."];
-  else if (/that they may live/.test(lower)) opening = ["That they may live means the rules are protective, not merely restrictive.", "God gives order so the Kohathites can serve without dying."];
+  else if (/that they may live/.test(lower)) opening = ["These rules are meant to preserve the Kohathites' lives.", "God gives order so they can serve without dying."];
   else if (/aaron and his sons shall go in/.test(lower)) opening = ["Aaron and his sons must enter first to assign each task.", "Priestly oversight keeps the Kohathites from seeing or touching what they should not."];
   else if (/not go in to see/.test(lower)) opening = ["The Kohathites must not watch the holy things being covered.", "Even sight is guarded when the most holy objects are being prepared."];
   else if (/sons of gershon/.test(lower)) opening = ["The sons of Gershon are counted for their assigned carrying work.", "Their service focuses on the tabernacle fabrics and coverings."];
   else if (/bear curtains/.test(lower)) opening = ["Gershon carries the tabernacle curtains.", "The fabric parts of the holy tent are assigned to this clan."];
   else if (/burdens/.test(lower)) opening = ["Burdens are the loads assigned for transport.", "The Levites do not choose random tasks; each burden is appointed."];
+  else if (/ithamar/.test(lower) && section.reference === "Numbers 4:21-26") opening = ["Ithamar oversees Gershon's carrying work.", "A priest supervises the transport of curtains, coverings, and hangings."];
+  else if (/ithamar/.test(lower) && section.reference === "Numbers 4:27-28") opening = ["Ithamar is also placed over Gershon's assigned loads and duties.", "Even fabric and entrance pieces are handled under priestly oversight."];
   else if (/ithamar/.test(lower)) opening = ["Ithamar supervises this branch of Levite service.", "Priestly oversight keeps the work ordered."];
   else if (/appointment of aaron/.test(lower)) opening = ["The service happens at Aaron's appointment.", "The Levites work under priestly direction, not personal preference."];
   else if (/appoint unto them in charge/.test(lower)) opening = ["Their charge is assigned to them by name and duty.", "Holy service is specific so nothing is neglected."];
-  else if (/by name ye shall reckon/.test(lower)) opening = ["By name ye shall reckon means each duty is assigned personally.", "The heavy tabernacle parts are not left to confusion."];
+  else if (/by name ye shall reckon/.test(lower)) opening = ["Each duty is assigned personally by name.", "The heavy tabernacle parts are not left to confusion."];
   else if (/numbered.*kohathites/.test(lower)) opening = ["Kohath's serving men are counted after the duty instructions.", "The number shows who is ready for the most holy carrying work."];
   else if (/numbered.*gershon/.test(lower)) opening = ["Gershon's serving men are counted for their tabernacle duties.", "Their number belongs to ordered service, not military strength."];
   else if (/numbered.*merari/.test(lower)) opening = ["Merari's serving men are counted for the frame-carrying work.", "Their number is tied to burdens, boards, bars, and sockets."];
@@ -1140,11 +1175,12 @@ function explainDay39NumbersAt95(section: PersonalLeviticusPhraseSectionInput, c
   else if (/principal/.test(lower)) opening = ["The principal is the original amount or damage owed.", "Restitution begins by paying back what was wrongfully taken or harmed."];
   else if (/fifth part/.test(lower)) opening = ["The fifth part means an added twenty percent.", "The extra amount shows that wrongdoing must be repaired beyond the bare minimum."];
   else if (/recompensed unto the lord/.test(lower)) opening = ["The trespass is repaid to the LORD when no human relative can receive it.", "Wrongdoing against people is still handled before God."];
+  else if (/when a wife goeth aside/.test(lower)) opening = ["A wife going aside means she turns away from marital faithfulness into adultery.", "The law deals with suspected unfaithfulness that cannot be proven by witnesses."];
   else if (/wife go aside/.test(lower)) opening = ["A wife going aside means suspected unfaithfulness in marriage.", "The law brings the hidden accusation before the LORD instead of private revenge."];
   else if (/lie with her carnally/.test(lower)) opening = ["Lying with her carnally means sexual relations.", "The case deals with possible adultery that cannot be proven by witnesses."];
   else if (/hid from the eyes/.test(lower)) opening = ["Hidden from the husband's eyes means the truth is not publicly known.", "The ritual addresses suspicion when ordinary evidence is missing."];
-  else if (/offering of jealousy/.test(lower)) opening = ["The offering of jealousy is brought with the suspected wife.", "It is plain barley meal because the case is solemn, not celebratory."];
-  else if (/bringing iniquity to remembrance/.test(lower)) opening = ["Bringing iniquity to remembrance means bringing possible guilt before God.", "The ritual asks the LORD to expose truth that people cannot see."];
+  else if (/offering of jealousy/.test(lower)) opening = ["This barley offering is brought with the suspected wife.", "It is plain barley meal because the case is solemn, not celebratory."];
+  else if (/bringing iniquity to remembrance/.test(lower)) opening = ["The ritual brings possible guilt before God for judgment.", "The LORD is asked to expose truth that people cannot see."];
   else if (/priest shall bring her near/.test(lower)) opening = ["The priest brings the woman near before the LORD.", "The accusation moves from private suspicion into God's presence."];
   else if (/holy water/.test(lower)) opening = ["Holy water is placed in an earthen vessel for the test.", "The ritual uses sanctuary elements because the LORD is judge."];
   else if (/dust.*floor/.test(lower)) opening = ["Dust from the tabernacle floor is put into the water.", "The test is tied to the holy place where God's presence dwells."];
@@ -1164,8 +1200,9 @@ function explainDay39NumbersAt95(section: PersonalLeviticusPhraseSectionInput, c
   else if (/man shall be guiltless/.test(lower)) opening = ["The man is guiltless when he follows the law instead of taking revenge.", "His suspicion must be handled through the LORD's appointed process."];
   else if (/woman shall bear her iniquity/.test(lower)) opening = ["The woman bears her iniquity if she is truly guilty.", "Hidden sin is not hidden from the LORD."];
   else if (/wilderness of sinai/.test(lower)) opening = ["The wilderness of Sinai is where Israel is still camped after the Exodus.", "Even in the wilderness, the LORD orders the Levites by clan and service."];
-  else if (/by the hand of moses/.test(lower)) opening = ["By the hand of Moses means Moses carries out the LORD's command.", "Merari's final service count is reported through the mediator God appointed."];
-  else opening = [`${cleanTitle} names a specific part of ${context}.`, "It marks the order of Israel's camp, service, purity, or justice before the LORD."];
+  else if (/by the hand of moses/.test(lower)) opening = ["The LORD's command is carried out through Moses.", "Merari's final service count is reported through the mediator God appointed."];
+  else if (/the priest shall execute upon her all this law/.test(lower)) opening = ["The priest must carry out the whole jealousy test exactly as God gave it.", "The case is judged through an appointed ritual, not private accusation alone."];
+  else opening = ["This line adds another concrete duty or boundary to Israel's camp life.", "Numbers keeps service, purity, and justice specific instead of vague."];
 
   return [
     opening[0],
@@ -1241,7 +1278,7 @@ function explainDay40NumbersAt95(section: PersonalLeviticusPhraseSectionInput, c
   if (/lord spake/.test(lower)) opening = [`God gives the command for ${context}.`, "The instruction comes from the LORD before Israel acts."];
   else if (/speak unto/.test(lower)) opening = [`Moses must speak this command for ${context}.`, "The people learn God's order through the mediator He appointed."];
   else if (/as the lord commanded/.test(lower)) opening = [`Moses obeys the LORD's command for ${context}.`, "The repeated obedience shows that holy order is received from God."];
-  else if (/separate themselves/.test(lower)) opening = ["Separate themselves unto the LORD means taking a special vow of dedication.", "The Nazarite is set apart for God in visible, daily ways."];
+  else if (/separate themselves/.test(lower)) opening = ["A person begins a special vow of dedication by setting himself apart to the LORD.", "The Nazarite is set apart for God in visible, daily ways."];
   else if (/wine and strong drink/.test(lower)) opening = ["Wine and strong drink are forbidden during the Nazarite vow.", "The vow limits normal pleasures so dedication to the LORD is visible."];
   else if (/vine tree/.test(lower)) opening = ["Nothing from the vine tree means no grape products at all.", "The command is broader than avoiding drunkenness; it marks full separation."];
   else if (/no razor/.test(lower)) opening = ["No razor means the Nazarite does not cut the hair during the vow.", "Uncut hair becomes the visible sign of separation to the LORD."];
@@ -1254,7 +1291,8 @@ function explainDay40NumbersAt95(section: PersonalLeviticusPhraseSectionInput, c
   else if (/turtles|pigeons/.test(lower)) opening = ["Turtledoves or young pigeons are brought as cleansing offerings.", "The interrupted vow is restored through sacrifice, not ignored."];
   else if (/separation was defiled/.test(lower)) opening = ["The separation was defiled means the vow's holy status was broken.", "The person must deal with the uncleanness before continuing."];
   else if (/days that were before/.test(lower)) opening = ["The earlier days are lost because the vow was interrupted.", "The Nazarite must begin the dedicated period again."];
-  else if (/law of the nazarite/.test(lower)) opening = ["The law of the Nazarite gathers the rules for this special vow.", "Numbers shows how dedication begins, is protected, and is completed."];
+  else if (/law of the nazarite/.test(lower) && section.reference === "Numbers 6:13-17") opening = ["This gathers the offerings required when the Nazarite days are fulfilled.", "The vow ends with sacrifice, not with a casual personal decision."];
+  else if (/law of the nazarite/.test(lower)) opening = ["This gathers the closing actions for the Nazarite after the offerings are made.", "Numbers shows how dedication is completed under God's order."];
   else if (/days of his separation are fulfilled/.test(lower)) opening = ["The days are fulfilled when the vowed period is complete.", "The Nazarite comes to the tabernacle to end the vow in worship."];
   else if (/he lamb/.test(lower)) opening = ["The he lamb is part of the offering that completes the vow.", "The vow ends with sacrifice before the LORD."];
   else if (/ram without blemish/.test(lower)) opening = ["The ram without blemish is a whole, acceptable animal for offering.", "The completed vow is brought back to God through worship."];
@@ -1269,6 +1307,7 @@ function explainDay40NumbersAt95(section: PersonalLeviticusPhraseSectionInput, c
   else if (/gracious/.test(lower)) opening = ["Gracious means God shows kindness that His people do not earn.", "The blessing asks for mercy from the LORD Himself."];
   else if (/countenance/.test(lower)) opening = ["The LORD lifting His countenance means turning His face toward His people.", "The blessing pictures personal favor and peace from God."];
   else if (/put my name/.test(lower)) opening = ["Putting God's name on Israel marks them as His people.", "The blessing places Israel under the LORD's identity and care."];
+  else if (/moses had fully set up the tabernacle/.test(lower)) opening = ["The tabernacle has now been completely set up and anointed.", "The leaders bring gifts after God's dwelling and altar are ready."];
   else if (/anointed it.*sanctified|anointed it|sanctified it/.test(lower)) opening = ["Anointing and sanctifying set the tabernacle apart for holy use.", "The dedication gifts come after the dwelling place is marked as belonging to God."];
   else if (/princes of israel/.test(lower)) opening = ["The princes of Israel are the tribal leaders.", "They bring gifts as representatives of the tribes."];
   else if (/brought their offering/.test(lower)) opening = ["The leaders bring their offering before the LORD.", "The dedication of the altar involves every tribe, not one private family."];
@@ -1279,7 +1318,16 @@ function explainDay40NumbersAt95(section: PersonalLeviticusPhraseSectionInput, c
   else if (/sons of gershon/.test(lower)) opening = ["Gershon receives wagons for the fabric and covering work.", "His clan needs transport help for its assigned tabernacle pieces."];
   else if (/sons of merari/.test(lower)) opening = ["Merari receives more wagons because his clan carries the heavy frame parts.", "Boards, bars, pillars, and sockets require greater transport support."];
   else if (/kohath.*none/.test(lower)) opening = ["Kohath receives no wagons because the most holy things are carried on shoulders.", "Holy furniture is not hauled like ordinary cargo."];
-  else if (/tribe of|prince of|son of/.test(lower) && section.chapter === 7) opening = [`This names the leader or tribe for ${context}.`, "Each tribe participates in altar dedication with equal honor."];
+  else if (/son of/.test(lower) && section.chapter === 7) {
+    const leader = cleanTitle.replace(/^.*?([A-Z][A-Za-z]+ The Son Of [A-Z][A-Za-z]+).*$/, "$1");
+    opening = [`${leader} is the leader bringing this tribe's dedication gift.`, "Each tribe participates in altar dedication with equal honor."];
+  }
+  else if (/prince of/.test(lower) && section.chapter === 7) {
+    const tribe = cleanTitle.replace(/^.*prince of (?:the children of )?/i, "").trim();
+    const tribeName = tribe.replace(/^./, (char) => char.toUpperCase());
+    opening = [`${tribeName}'s ruler is presenting the gift for this day.`, "Each tribe participates in altar dedication with equal honor."];
+  }
+  else if (/tribe of/.test(lower) && section.chapter === 7) opening = ["The tribe named here is taking its turn in the altar dedication.", "Each tribe participates in altar dedication with equal honor."];
   else if (/silver charger/.test(lower)) opening = [`The silver charger is part of the gift for ${context}.`, "The tribe brings costly vessels for altar dedication."];
   else if (/burnt offering/.test(lower)) opening = [`The burnt offering in ${context} is worship given wholly to the LORD.`, "Each tribe's gift includes sacrifice, not only silver vessels."];
   else if (/sin offering/.test(lower)) opening = [`The sin offering in ${context} deals with uncleanness and guilt before God.`, "Dedication still requires atonement."];
@@ -1288,6 +1336,10 @@ function explainDay40NumbersAt95(section: PersonalLeviticusPhraseSectionInput, c
   else if (/five rams/.test(lower)) opening = ["The five rams are part of Judah's peace offering.", "The repeated number shows an ordered, generous dedication gift."];
   else if (/five he goats/.test(lower)) opening = [`The five goats belong to the peace offering in ${context}.`, "The tribe's gift includes repeated animals for fellowship worship."];
   else if (/five lambs/.test(lower)) opening = ["The five lambs complete Judah's peace offering list.", "The gift is abundant because the altar dedication is a major moment."];
+  else if (/on the .* day/.test(lower) && section.chapter === 7) {
+    const dayLabel = cleanTitle.replace(/^On The /i, "").trim();
+    opening = [`${dayLabel} marks this tribe's appointed turn in the dedication sequence.`, "The altar gifts are brought one day at a time instead of all at once."];
+  }
   else if (/dedication of the altar/.test(lower)) opening = ["The dedication of the altar summarizes the completed tribal gifts.", "All twelve tribes have taken part in setting apart the altar for worship."];
   else if (/in the day when it was anointed/.test(lower)) opening = ["The totals belong to the day the altar was anointed.", "The gifts are tied to setting the altar apart for holy use."];
   else if (/twelve chargers/.test(lower)) opening = ["Twelve silver chargers means one from each tribe.", "The total shows equal participation in the dedication."];
@@ -1301,8 +1353,11 @@ function explainDay40NumbersAt95(section: PersonalLeviticusPhraseSectionInput, c
   else if (/take the levites/.test(lower)) opening = ["The Levites are taken from among Israel for cleansing and service.", "They must be prepared before working near the tabernacle."];
   else if (/water of purifying/.test(lower)) opening = ["Water of purifying is used in the Levites' cleansing ritual.", "Their service begins with cleansing, not self-appointment."];
   else if (/shave all their flesh/.test(lower)) opening = ["Shaving their bodies is part of the visible cleansing process.", "The Levites are prepared completely for holy service."];
+  else if (/they washed their clothes/.test(lower)) opening = ["The Levites wash their clothes as part of outward cleansing.", "Their garments must match the clean service they are entering."];
   else if (/wash their clothes/.test(lower)) opening = ["Washing their clothes marks outward cleansing.", "The Levites' garments must match the clean service they are entering."];
   else if (/make themselves clean/.test(lower)) opening = ["Making themselves clean means completing the commanded cleansing actions.", "The Levites cannot begin service casually."];
+  else if (/let them take a young bullock/.test(lower)) opening = ["A young bullock is brought for the Levites' presentation and offering.", "Their cleansing includes sacrifice before service."];
+  else if (/another young bullock/.test(lower)) opening = ["A second young bullock is added so both sin offering and burnt offering are covered.", "Their cleansing includes sacrifice before service."];
   else if (/young bullock/.test(lower)) opening = ["The young bullocks are brought for the Levites' offerings.", "Their cleansing includes sacrifice before service."];
   else if (/meat offering/.test(lower)) opening = ["The meat offering is a grain offering, not animal meat.", "It accompanies the bullock as part of ordered worship."];
   else if (/whole assembly/.test(lower)) opening = ["The whole assembly gathers for the Levites' presentation.", "The tribe serves on behalf of all Israel."];
@@ -1330,30 +1385,31 @@ function explainDay40NumbersAt95(section: PersonalLeviticusPhraseSectionInput, c
   else if (/wilderness of sinai/.test(lower)) opening = ["The wilderness of Sinai is where Israel keeps Passover after the Exodus.", "Rescued people remember rescue even before reaching the land."];
   else if (/first month of the second year/.test(lower)) opening = ["The first month of the second year places this Passover one year after rescue from Egypt.", "The calendar keeps deliverance fresh in Israel's memory."];
   else if (/keep the passover/.test(lower)) opening = ["Keeping Passover means observing the feast that remembers rescue from Egypt.", "Israel's journey must stay rooted in God's deliverance."];
-  else if (/at even/.test(lower)) opening = ["At even means at evening, the appointed time for Passover.", "The feast is kept according to God's timing."];
+  else if (/at even/.test(lower)) opening = ["Passover is kept at evening, the appointed time God gave.", "The feast is kept according to God's timing."];
   else if (/rites of it/.test(lower)) opening = ["The rites are the commanded practices of Passover.", "Israel is not free to redesign the feast however they like."];
   else if (/defiled by the dead body/.test(lower)) opening = ["These men are unclean because they touched a dead body.", "Their uncleanness keeps them from keeping Passover at the normal time."];
   else if (/kept back/.test(lower)) opening = ["Kept back means prevented from bringing the Passover offering.", "The men want to honor the LORD but are blocked by uncleanness."];
   else if (/offering of the lord/.test(lower)) opening = ["The Passover offering belongs to the LORD.", "The men do not want their uncleanness to cut them off from worship."];
-  else if (/stand still/.test(lower)) opening = ["Stand still means wait while Moses seeks the LORD's command.", "Moses does not invent an answer for a holy problem."];
+  else if (/stand still/.test(lower)) opening = ["The men must wait while Moses seeks the LORD's command.", "Moses does not invent an answer for a holy problem."];
   else if (/hear what the lord/.test(lower)) opening = ["Moses will hear what the LORD commands about the case.", "The solution must come from God, not pressure or convenience."];
   else if (/fourteenth day of the second month/.test(lower)) opening = ["The fourteenth day of the second month gives a later Passover date.", "God makes provision for those who were unclean or away."];
   else if (/unleavened bread and bitter herbs/.test(lower)) opening = ["Unleavened bread and bitter herbs keep the original Passover pattern.", "The later Passover is still Passover, not a new feast."];
   else if (/leave none/.test(lower)) opening = ["Leaving none until morning follows the Passover rule.", "The delayed observance still obeys the original command."];
-  else if (/one ordinance/.test(lower)) opening = ["One ordinance means the same Passover rule applies to Israelite and stranger.", "God's rescue is remembered under one shared command."];
+  else if (/one ordinance/.test(lower)) opening = ["The same Passover rule applies to both Israelite and stranger.", "God's rescue is remembered under one shared command."];
   else if (/stranger/.test(lower)) opening = ["The stranger is a foreigner living among Israel.", "If he keeps Passover, he follows the same ordinance as Israel."];
   else if (/cloud covered/.test(lower)) opening = ["The cloud covering the tabernacle shows the LORD's presence over His dwelling.", "Israel can see that God is with them."];
   else if (/fire by night/.test(lower)) opening = ["The fire by night shows God's presence in the darkness.", "The same presence that appears as cloud by day appears as fire at night."];
-  else if (/until the morning/.test(lower)) opening = ["Until the morning shows the fire remaining through the night.", "God's visible presence does not vanish when the camp sleeps."];
-  else if (/so it was alway/.test(lower)) opening = ["So it was always means this visible guidance became the regular pattern.", "Israel learns to live by God's presence day and night."];
-  else if (/cloud was taken up|when the cloud was taken up/.test(lower)) opening = ["When the cloud was taken up, Israel knew it was time to move.", "The camp follows God's signal instead of choosing its own timing."];
+  else if (/until the morning/.test(lower)) opening = ["The fire remains visible through the night until morning.", "God's visible presence does not vanish when the camp sleeps."];
+  else if (/so it was alway/.test(lower)) opening = ["This visible guidance became Israel's regular pattern.", "Israel learns to live by God's presence day and night."];
+  else if (/cloud was taken up|when the cloud was taken up/.test(lower)) opening = ["When the cloud lifted, Israel knew it was time to move.", "The camp follows God's signal instead of choosing its own timing."];
+  else if (/at the commandment of the lord they journeyed/.test(lower)) opening = ["Israel travels only when the LORD gives the command.", "The cloud teaches dependence on God's direction."];
   else if (/journeyed/.test(lower)) opening = ["Israel journeyed after the cloud lifted.", "Movement begins when the LORD leads."];
   else if (/pitched their tents/.test(lower)) opening = ["Israel pitched their tents where the cloud rested.", "Stopping is also obedience, not laziness."];
   else if (/two days|month|year/.test(lower)) opening = ["Whether two days, a month, or a year means the waiting time could be short or long.", "Israel must follow God's timing even when it is unpredictable."];
   else if (/commandment of the lord.*journeyed|at the commandment/.test(lower)) opening = ["At the LORD's command Israel travels or stays.", "The cloud teaches dependence on God's direction."];
-  else if (/kept the charge/.test(lower)) opening = ["Keeping the charge means obeying the LORD's travel command.", "Israel's journey is ordered by God's word and presence."];
-  else if (/hand of moses/.test(lower)) opening = ["By the hand of Moses means the LORD's command comes through Moses.", "The people follow God's appointed mediator."];
-  else opening = [`${cleanTitle} names a specific part of ${context}.`, "It marks how Israel worships, serves, remembers rescue, or follows the LORD."];
+  else if (/kept the charge/.test(lower)) opening = ["Obeying the LORD's travel command is in view here.", "Israel's journey is ordered by God's word and presence."];
+  else if (/hand of moses/.test(lower)) opening = ["The LORD's command comes through Moses to the people.", "The people follow God's appointed mediator."];
+  else opening = ["The wording adds another needed detail to this section's worship, service, or travel order.", "Numbers keeps Israel's life with God concrete instead of vague."];
 
   return [
     opening[0],

@@ -708,7 +708,7 @@ function explainDay56JoshuaAt95(section: PersonalLeviticusPhraseSectionInput, cl
     lead = "💪 Courage here means obedience under pressure.";
     support = ["📖 The law must be kept", "↔️ Joshua must not turn aside", "👑 Strength serves obedience"];
   } else if (/observe to do according to all the law/.test(lower)) {
-    opening = ["Observe to do means watch carefully in order to obey.", "Joshua is not told merely to admire the law, but to practice it fully."];
+    opening = ["Joshua is told to pay close attention to the law so he can obey it fully.", "He is not meant merely to admire it, but to practice it."];
     lead = "📖 God's law must be obeyed, not just known.";
     support = ["👂 The word must be heard", "👣 Obedience must follow", "💪 Courage protects faithfulness"];
   } else if (/turn not from it to the right hand or to the left/.test(lower)) {
@@ -996,7 +996,7 @@ function explainDay56JoshuaAt95(section: PersonalLeviticusPhraseSectionInput, cl
     lead = "🧭 New ground requires close attention to God's lead.";
     support = ["👣 The path is unfamiliar", "📦 The ark must guide them", "🙌 God knows the way they do not"];
   } else if (/sanctify yourselves/.test(lower)) {
-    opening = ["Sanctify yourselves means prepare yourselves as set apart before the LORD.", "The people are being readied for holy encounter, not merely for a dramatic event."];
+    opening = ["The people must prepare themselves as set apart before the LORD.", "They are being readied for holy encounter, not merely for a dramatic event."];
     lead = "✨ The crossing begins with consecration.";
     support = ["🕊️ Hearts must be prepared", "🙌 God is about to act", "👥 The people must be ready"];
   } else if (/tomorrow the lord will do wonders among you/.test(lower)) {
@@ -1235,7 +1235,7 @@ function explainDay57JoshuaAt95(section: PersonalLeviticusPhraseSectionInput, cl
   } else if (/joshua lifted up his eyes and looked/.test(lower)) {
     opening = ["Joshua suddenly sees someone standing before him near Jericho.", "The scene interrupts ordinary preparation with a holy confrontation."];
   } else if (/their heart melted/.test(lower)) {
-    opening = ["Their heart melted means courage drained away inside the Canaanite kings.", "The phrase describes fear so deep that their confidence collapses."];
+    opening = ["The Canaanite kings lose their inward courage when they hear what the LORD has done.", "The phrase describes fear so deep that their confidence collapses."];
   } else if (/from before the children of israel/.test(lower)) {
     opening = ["The kings lose courage because Israel is coming toward them under the LORD's help.", "The phrase keeps the fear tied to God's people as the nation He is leading."];
   } else if (/neither was there spirit in them any more/.test(lower)) {
@@ -1297,7 +1297,7 @@ function explainDay57JoshuaAt95(section: PersonalLeviticusPhraseSectionInput, cl
   } else if (/keep yourselves from the accursed thing/.test(lower)) {
     opening = ["Israel is warned to stay away from what God has devoted to destruction.", "Victory does not erase the need for careful obedience."];
   } else if (/silver, and the gold/.test(lower)) {
-    opening = ["The silver and gold are not to become private plunder.", "These valuables are set apart for the LORD rather than for personal greed."];
+    opening = ["These valuables are set apart for the LORD instead of being taken as private plunder.", "Their value does not cancel the fact that they belong to Him."];
   } else if (/people shouted when the priests blew/.test(lower)) {
     opening = ["The shout happens at the exact moment God had ordered.", "The fall of Jericho is tied to obedient timing, not random excitement."];
   } else if (/wall fell down flat/.test(lower)) {
@@ -1343,7 +1343,7 @@ function explainDay57JoshuaAt95(section: PersonalLeviticusPhraseSectionInput, cl
   } else if (/in the sight of all israel/.test(lower)) {
     opening = ["The whole nation sees Joshua honored before their eyes.", "The phrase stresses that his authority is being confirmed publicly, not privately."];
   } else if (/they feared him/.test(lower)) {
-    opening = ["They feared him means Israel treated Joshua with reverent respect.", "The phrase describes received authority, not worship of the man himself."];
+    opening = ["Israel responds to Joshua with reverent respect for his leadership.", "The phrase describes received authority, not worship of the man himself."];
   } else if (/as they feared moses/.test(lower)) {
     opening = ["Israel now regards Joshua with the same reverent seriousness they had shown Moses.", "The phrase highlights continuity in leadership after Moses' death."];
   } else if (/transgressed my covenant/.test(lower)) {
@@ -1391,7 +1391,7 @@ function explainDay57JoshuaAt95(section: PersonalLeviticusPhraseSectionInput, cl
   } else if (/neither will i be with you any more/.test(lower)) {
     opening = ["God warns that His help cannot be treated as automatic while the sin remains protected.", "The phrase makes clear that holy presence and tolerated rebellion do not live together."];
   } else if (/burnt with fire/.test(lower)) {
-    opening = ["Burnt with fire describes severe judgment on the one found guilty.", "The phrase shows how seriously God treats what was stolen from the devoted spoil."];
+    opening = ["The guilty person is sentenced to severe public judgment by fire.", "The phrase shows how seriously God treats what was stolen from the devoted spoil."];
   } else if (/all israel with him/.test(lower)) {
     opening = ["All Israel is involved because the trouble touched the whole camp.", "The nation's corporate involvement matches the corporate damage the sin caused."];
   } else if (/raised over him a great heap of stones/.test(lower)) {
@@ -1462,9 +1462,9 @@ const day58JoshuaExplanationLines: Record<string, [string, string]> = {
   "Joshua 8:33-35::As Well The Stranger, As He That Was Born Among Them": ["The stranger is the foreigner living among Israel.", "The phrase shows covenant hearing extending beyond native-born Israelites alone."],
   "Joshua 8:33-35::He Read All The Words Of The Law": ["Joshua reads the law aloud instead of leaving it unwritten and unheard.", "The people must hear the covenant plainly inside the land they have entered."],
   "Joshua 9:1-2::All The Kings Which Were On This Side Jordan": ["The phrase gathers many Canaanite rulers into one widening response to Israel.", "Joshua is no longer facing one city only, but a regional reaction."],
-  "Joshua 9:1-2::Heard Thereof": ["Heard thereof means they heard what Israel and the LORD had done.", "News of conquest is moving ahead of Israel through the land."],
+  "Joshua 9:1-2::Heard Thereof": ["The kings have received news about what Israel and the LORD have been doing in the land.", "Word of the conquest is spreading ahead of Israel itself."],
   "Joshua 9:1-2::Gathered Themselves Together": ["The kings assemble because they see a common threat.", "The phrase shows opposition organizing instead of remaining scattered."],
-  "Joshua 9:1-2::With One Accord": ["With one accord means with shared purpose and agreement.", "Formerly separate peoples now unite against Israel."],
+  "Joshua 9:1-2::With One Accord": ["The phrase describes rulers acting with a shared purpose and united agreement.", "Formerly separate peoples now join together against Israel."],
   "Joshua 9:3-6::They Did Work Wilily": ["Wilily means with cunning or deceptive craft.", "The Gibeonites choose trickery instead of open battle."],
   "Joshua 9:3-6::Took Old Sacks Upon Their Asses": ["The old sacks are part of the disguise meant to sell a long-journey story.", "Their worn supplies are chosen props in a false appearance."],
   "Joshua 9:3-6::Old Shoes And Clouted Upon Their Feet": ["Clouted means patched or mended.", "The patched shoes are meant to prove they have traveled from far away."],
@@ -1495,7 +1495,7 @@ const day58JoshuaExplanationLines: Record<string, [string, string]> = {
   "Joshua 10:1-5::Gibeon Had Made Peace With Israel": ["Gibeon's peace treaty changes the balance of the region.", "The phrase explains why nearby kings now feel threatened."],
   "Joshua 10:1-5::Feared Greatly": ["The king's fear is intense because Gibeon was significant and now aligned with Israel.", "Political fear is driving the next attack."],
   "Joshua 10:1-5::Come Up Unto Me, And Help Me": ["Adonizedek calls other kings to join him in war.", "The phrase is a summons to coalition action."],
-  "Joshua 10:6-8::Slack Not Thy Hand From Thy Servants": ["Slack not thy hand means do not relax your help or hold back your strength.", "Gibeon urgently asks Joshua not to abandon the covenant promise."],
+  "Joshua 10:6-8::Slack Not Thy Hand From Thy Servants": ["Gibeon is asking Joshua not to hold back his help or strength from them.", "They urgently ask him not to abandon the covenant promise."],
   "Joshua 10:6-8::Come Up To Us Quickly": ["Quickly matters because Gibeon is under immediate threat.", "The phrase makes the request sound desperate and time-sensitive."],
   "Joshua 10:6-8::Fear Them Not": ["God answers the crisis with a direct command against fear.", "Joshua is told to face a coalition of kings without shrinking back."],
   "Joshua 10:6-8::There Shall Not A Man Of Them Stand Before Thee": ["Stand before thee means successfully resist or survive against Joshua.", "God promises total inability on the enemy side."],
@@ -1528,7 +1528,7 @@ const day58JoshuaExplanationLines: Record<string, [string, string]> = {
   "Joshua 10:34-39::From Hebron He Passed Unto Debir": ["Debir is the next city taken in the same campaign flow.", "The phrase stresses continuity rather than isolated battles."],
   "Joshua 10:40-43::Joshua Smote All The Country Of The Hills": ["Country of the hills means the hill region as a whole.", "The phrase broadens the view from single cities to an entire zone."],
   "Joshua 10:40-43::Left None Remaining": ["The wording says no surviving opposition was left in the struck region.", "It describes completed judgment rather than partial control."],
-  "Joshua 10:40-43::At One Time": ["At one time means in one sustained campaign movement.", "The phrase gives the reader the speed and force of Joshua's advance."],
+  "Joshua 10:40-43::At One Time": ["The wording describes one sustained campaign movement rather than scattered isolated battles.", "It gives the reader the speed and force of Joshua's advance."],
   "Joshua 10:40-43::The LORD God Of Israel Fought For Israel": ["The summary of the campaign is that God fought for His people.", "The phrase interprets every city victory under one cause."],
   "Joshua 11:1-5::Jabin King Of Hazor": ["Jabin is the northern ruler who leads the next major resistance.", "Hazor's king stands at the head of a new coalition."],
   "Joshua 11:1-5::As The Sand That Is Upon The Sea Shore In Multitude": ["The comparison means the gathered force was extremely numerous.", "The phrase makes the enemy host feel overwhelming to the reader."],
@@ -1551,7 +1551,7 @@ const day58JoshuaExplanationLines: Record<string, [string, string]> = {
   "Joshua 11:21-22::Joshua Cut Off The Anakims": ["Cut off means removed them by military judgment from the land regions named.", "The Anakims were known as formidable giant-like peoples."],
   "Joshua 11:21-22::Left None Of The Anakims": ["The phrase stresses how thorough the removal was inside Israel's conquest area.", "Joshua leaves no Anakim stronghold in those central regions."],
   "Joshua 11:21-22::Only In Gaza, In Gath, And In Ashdod": ["Only means a remnant remained in a few Philistine cities outside the main conquest zone.", "The phrase limits where the Anakims still survived."],
-  "Joshua 11:21-22::At That Time Came Joshua": ["At that time links this action to the larger conquest period already underway.", "Joshua's strike against the Anakims belongs to the same campaign season."],
+  "Joshua 11:21-22::At That Time Came Joshua": ["The words connect this action to the larger conquest period already in progress.", "Joshua's strike against the Anakims belongs to the same campaign season."],
 };
 
 function explainDay58JoshuaAt95(section: PersonalLeviticusPhraseSectionInput, cleanTitle: string) {

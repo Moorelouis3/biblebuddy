@@ -510,8 +510,8 @@ function explainDay55DeuteronomyAt95(section: { reference: string; chapter: numb
   let opening: string[] = ["This line belongs to Moses' final covenant words.", "He is pressing Israel to remember the LORD and live accordingly."];
 
   if (/all these things are come upon thee/.test(lower)) opening = ["Moses is speaking about a future moment when blessing and curse have both become real history.", "The return he describes begins after judgment has been felt."];
-  else if (/it shall come to pass/.test(lower)) opening = ["It shall come to pass means this future turning is certain, not imaginary.", "Moses is speaking with covenant certainty about what Israel will one day face."];
-  else if (/the blessing and the curse/.test(lower)) opening = ["The blessing and the curse are the two covenant outcomes already placed before Israel.", "Moses says both must be remembered if the people are going to understand their history rightly."];
+  else if (/it shall come to pass/.test(lower)) opening = ["Moses is speaking about something that will certainly happen in Israel's future.", "The wording gives covenant certainty, not a vague possibility."];
+  else if (/the blessing and the curse/.test(lower)) opening = ["These are the two covenant outcomes Moses has already laid before Israel.", "He wants the people to interpret their future by remembering both promise and warning."];
   else if (/obey his voice/.test(lower) && section.reference === "Deuteronomy 30:1-3") opening = ["Obey his voice means respond to what God says with actual submission.", "Return to the LORD is proved by listening to Him again."];
   else if (/call them to mind among all the nations/.test(lower)) opening = ["Call them to mind means remember deeply and honestly.", "Repentance begins when exile wakes memory."];
   else if (/return unto the lord thy god/.test(lower)) opening = ["Return means turn back in repentance and renewed obedience.", "Moses speaks of real return, not vague regret."];
@@ -540,13 +540,13 @@ function explainDay55DeuteronomyAt95(section: { reference: string; chapter: numb
   else if (/i have set before thee this day life and good/.test(lower)) opening = ["Life and good are named together because true life comes with God's favor.", "Moses is making the covenant path sound concrete and desirable."];
   else if (/and death and evil/.test(lower)) opening = ["Death and evil are paired as the covenant outcome of rebellion.", "Moses removes any illusion that turning from God is harmless."];
   else if (/to love the lord thy god/.test(lower) && section.reference === "Deuteronomy 30:15-18") opening = ["Love here means covenant loyalty, not only warm feeling.", "Choosing life includes loving the LORD who gives life."];
-  else if (/to walk in his ways/.test(lower)) opening = ["To walk in His ways means to live by God's character and commands.", "Life is not a momentary choice only, but a path."];
+  else if (/to walk in his ways/.test(lower)) opening = ["This speaks of living in a steady pattern that matches God's commands and character.", "Life with the LORD is a road to stay on, not a single momentary decision."];
   else if (/keep his commandments and his statutes and his judgments/.test(lower)) opening = ["The repeated words emphasize full covenant obedience.", "Moses is not speaking of selective loyalty."];
   else if (/thine heart turn away/.test(lower)) opening = ["The danger begins in the heart before it appears in open idolatry.", "Inner turning becomes outward ruin."];
   else if (/denounce unto you this day/.test(lower)) opening = ["Denounce means declare solemnly and plainly.", "Moses is warning Israel in advance that rebellion leads to real perishing."];
   else if (/i call heaven and earth to record/.test(lower)) opening = ["Heaven and earth are summoned as witnesses to the covenant choice.", "The whole creation is pictured hearing this moment."];
   else if (/i have set before you life and death/.test(lower)) opening = ["Life and death are set before Israel like two visible roads.", "Moses is forcing the choice into the open."];
-  else if (/blessing and cursing/.test(lower) && section.reference === "Deuteronomy 30:19-20") opening = ["Blessing and cursing name the outcome attached to each road.", "The covenant is never morally neutral."];
+  else if (/blessing and cursing/.test(lower) && section.reference === "Deuteronomy 30:19-20") opening = ["These words name the two outcomes attached to Israel's choice.", "The covenant sets before the people either life-giving favor or judgment."];
   else if (/therefore choose life/.test(lower)) opening = ["Choose life is Moses' direct appeal after laying out both roads.", "He does not leave the people at bare information."];
   else if (/that both thou and thy seed may live/.test(lower)) opening = ["The choice of life reaches children as well as parents.", "Moses is speaking about a future shaped across generations."];
   else if (/that thou mayest love the lord thy god/.test(lower) && section.reference === "Deuteronomy 30:19-20") opening = ["Moses ties true life to loving the LORD Himself.", "The covenant is not merely about surviving in the land."];
@@ -638,7 +638,7 @@ function explainDay55DeuteronomyAt95(section: { reference: string; chapter: numb
   else if (/they shall be burnt with hunger/.test(lower)) opening = ["Burnt with hunger means consumed by famine and want.", "Need itself becomes part of the judgment."];
   else if (/i will also send the teeth of beasts upon them/.test(lower)) opening = ["The teeth of beasts picture danger from the natural world turning hostile.", "Judgment reaches beyond armies into the land itself."];
   else if (/the sword without, and terror within/.test(lower)) opening = ["The line joins outward attack with inward panic in one picture of collapse.", "Judgment is shown reaching both public danger and private fear."];
-  else if (/the sword without/.test(lower)) opening = ["The sword without means danger from war and attack outside the home.", "Judgment is pictured as meeting the people in the open."];
+  else if (/the sword without/.test(lower)) opening = ["This pictures danger from war and violent attack outside the safety of the home.", "Judgment is shown meeting the people in public life and open space."];
   else if (/and terror within/.test(lower)) opening = ["Terror within means fear and ruin invading the inner life of the community.", "The warning is that no hidden corner stays peaceful under judgment."];
   else if (/sword without, and terror within/.test(lower)) opening = ["Judgment is pictured both outside and inside the community.", "There is no safe place in rebellion."];
   else if (/shall destroy both the young man and the virgin/.test(lower)) opening = ["The line stresses that judgment cuts across age and hope.", "Even those who seem to stand at the beginning of life are not outside its reach."];
@@ -663,9 +663,9 @@ function explainDay55DeuteronomyAt95(section: { reference: string; chapter: numb
   else if (/i will render vengeance to mine enemies/.test(lower)) opening = ["Render vengeance means repay enemies with the justice they are due.", "God's judgment is not impulsive rage but measured recompense."];
   else if (/rejoice, o ye nations, with his people/.test(lower)) opening = ["The song ends with nations called to rejoice over God's justice and mercy.", "The scope widens beyond Israel alone."];
   else if (/moses came and spake all the words of this song/.test(lower)) opening = ["Moses does not leave the song on a page; he speaks it aloud to the people.", "The warning must be heard, not merely stored."];
-  else if (/set your hearts unto all the words/.test(lower)) opening = ["Set your hearts means take these words in with seriousness and intent.", "Moses does not want the song treated as poetry only."];
+  else if (/set your hearts unto all the words/.test(lower)) opening = ["Moses is calling the people to receive these words with full inward seriousness.", "He does not want the song heard lightly or left at the surface."];
   else if (/command them your children/.test(lower)) opening = ["Parents are told to pass these words onward as a command, not a suggestion.", "The covenant must travel into the next generation on purpose."];
-  else if (/it is not a vain thing for you/.test(lower)) opening = ["Vain here means empty or pointless.", "Moses insists that these words are life, not filler."];
+  else if (/it is not a vain thing for you/.test(lower)) opening = ["Vain here means empty, useless, or pointless.", "Moses is saying these words carry life-and-death weight for Israel."];
   else if (/the lord spake unto moses that selfsame day/.test(lower)) opening = ["Selfsame day makes the timing immediate and weighty.", "God does not delay the final command to Moses."];
   else if (/mountain abarim|mount nebo/.test(lower)) opening = ["God directs Moses up the mountain to view the land before his death.", "The command closes his public role with solemn clarity."];
   else if (/behold the land of canaan/.test(lower)) opening = ["Behold means look carefully and fully.", "Moses is allowed to see the promise clearly even though he will not enter it."];
@@ -734,7 +734,7 @@ function explainDay56DeuteronomyAt95(cleanTitle: string) {
     lead = "⛰️ Moses is brought to the edge of the promise.";
     support = ["👀 He is allowed to see the land", "📍 The moment is final", "🕯️ His role is ending"];
   } else if (/shewed him all the land/.test(lower)) {
-    opening = ["The LORD shewed him means God personally lets Moses see what had been promised for generations.", "Moses does not imagine the land from far away; God displays it to him."];
+    opening = ["God personally lets Moses look upon the land that had been promised for generations.", "Moses does not imagine it from far away; the LORD displays it to him."];
     lead = "👁️ God gives Moses a final sight of the promise.";
     support = ["👀 The land is clearly shown", "📜 The promise is real", "🕯️ The moment is bittersweet"];
   } else if (/gilead, unto dan/.test(lower)) {
@@ -742,7 +742,7 @@ function explainDay56DeuteronomyAt95(cleanTitle: string) {
     lead = "🗺️ The promise is described in visible detail.";
     support = ["🧭 The land has real boundaries", "👀 Moses sees its breadth", "📜 God's oath was concrete"];
   } else if (/which i sware unto abraham/.test(lower)) {
-    opening = ["This is the land which I sware points back to God's covenant oath to Abraham, Isaac, and Jacob.", "The land matters because it rests on God's long-standing promise, not on Israel's imagination."];
+    opening = ["The words point back to God's covenant oath to Abraham, Isaac, and Jacob.", "The land matters because it rests on His long-standing promise, not on Israel's imagination."];
     lead = "📜 The land is tied to God's covenant oath.";
     support = ["👴 The patriarchs were promised it", "🗣️ God keeps His word", "🏞️ Canaan is covenant gift"];
   } else if (/thou shalt not go over thither/.test(lower)) {
@@ -754,7 +754,7 @@ function explainDay56DeuteronomyAt95(cleanTitle: string) {
     lead = "🕯️ Moses dies as God's servant, not as a forgotten man.";
     support = ["📛 His service is remembered", "⏳ His work is complete", "➡️ God's mission continues"];
   } else if (/according to the word of the lord/.test(lower)) {
-    opening = ["According to the word of the LORD means Moses dies at God's appointed command.", "His death is not outside God's rule or timing."];
+    opening = ["Moses dies under God's appointed word and timing.", "His death is not outside the LORD's rule or command."];
     lead = "🗣️ Even Moses' death happens under God's word.";
     support = ["⏳ The timing is appointed", "👑 God remains in control", "🕯️ The ending is purposeful"];
   } else if (/buried him in a valley/.test(lower)) {
@@ -806,7 +806,7 @@ function explainDay56DeuteronomyAt95(cleanTitle: string) {
     lead = "🏜️ Grief happens on the border of the promised land.";
     support = ["🏞️ Canaan is near", "😭 The people pause there", "➡️ Hope and loss meet in one place"];
   } else if (/thirty days/.test(lower)) {
-    opening = ["Thirty days marks a full period of public mourning.", "Israel does not rush past Moses' death as though his life were a small thing."];
+    opening = ["The number marks a full public period of mourning for Moses.", "Israel does not rush past his death as though his life were a small thing."];
     lead = "📆 The nation gives real time to grief.";
     support = ["👥 The mourning is public", "🕯️ Moses is honored", "➡️ Loss is felt before the journey continues"];
   } else if (/were ended/.test(lower)) {

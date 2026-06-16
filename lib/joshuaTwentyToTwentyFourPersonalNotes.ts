@@ -176,7 +176,7 @@ function explainDay61JoshuaAt95(section: PersonalLeviticusPhraseSectionInput, cl
     ];
   } else if (/the hand of the avenger of blood/.test(lower)) {
     opening = [
-      "The hand of the avenger of blood means the reach of family revenge after a killing.",
+      "The phrase speaks about the reach of family revenge after a killing.",
       "That is the danger the refuge city was meant to stop.",
     ];
   } else if (/land of canaan saying the lord commanded/.test(lower)) {
@@ -246,7 +246,7 @@ function explainDay61JoshuaAt95(section: PersonalLeviticusPhraseSectionInput, cl
     ];
   } else if (/with their suburbs as the lord commanded/.test(lower)) {
     opening = [
-      "With their suburbs means the cities came with the nearby pasturelands attached to them.",
+      "The cities came with the nearby pasturelands attached to them.",
       "The Levites received workable places to live, not empty labels on a map.",
     ];
   } else if (/the lord commanded by the hand of/.test(lower) && section.reference === "Joshua 21:7-12") {
@@ -540,7 +540,7 @@ function explainDay61JoshuaAt95(section: PersonalLeviticusPhraseSectionInput, cl
     ];
   } else if (/possession of the lord wherein the lord s/.test(lower)) {
     opening = [
-      "Possession of the LORD means the land where the tabernacle stands and official worship is centered.",
+      "The phrase points to the land where the tabernacle stands and official worship is centered.",
       "The phrase offers a drastic solution: better to move west than to break covenant.",
     ];
   } else if (/of the lord wherein the lord s tabernacle/.test(lower)) {
@@ -720,7 +720,7 @@ function explainDay61JoshuaAt95(section: PersonalLeviticusPhraseSectionInput, cl
     ];
   } else if (/for a certainty that the lord your/.test(lower)) {
     opening = [
-      "For a certainty means with full assurance.",
+      "The words mean with full assurance and no doubt about the outcome.",
       "The phrase says the covenant consequences will be real if Israel turns back.",
     ];
   } else if (/a certainty that the lord your god/.test(lower)) {

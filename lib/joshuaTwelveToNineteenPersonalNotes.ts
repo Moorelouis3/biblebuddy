@@ -716,7 +716,7 @@ function explainDay59JoshuaAt95(section: PersonalLeviticusPhraseSectionInput, cl
   } else if (/of tirzah one all the kings thirty and/.test(lower)) {
     opening = ["Tirzah stands at the end of the list just before the final number is stated.", "The phrase gathers the chapter toward its conclusion."];
   } else if (/the king of tirzah one all the kings/.test(lower)) {
-    opening = ["The king of Tirzah is the last ruler named before the full total is summarized.", "The phrase prepares for the final count of conquered kings."];
+    opening = ["This final king closes the conquest list just before the whole total is stated.", "The phrase prepares the reader for the summary count of defeated rulers."];
   } else if (/all the kings thirty and one/.test(lower) || /tirzah one all the kings thirty and one/.test(lower)) {
     opening = ["Thirty and one gives the total number of western kings listed in the chapter.", "The phrase gathers many separate victories into one final count."];
   } else if (/now joshua was old and stricken in years/.test(lower) || /joshua was old and stricken in years and/.test(lower)) {
@@ -782,11 +782,11 @@ function explainDay59JoshuaAt95(section: PersonalLeviticusPhraseSectionInput, cl
   } else if (/of sihon king of heshbon/.test(lower)) {
     opening = ["Sihon's name still identifies the region he once ruled before Israel possessed it.", "The phrase preserves the conquest history behind the inheritance."];
   } else if (/sihon king of heshbon/.test(lower)) {
-    opening = ["Sihon king of Heshbon is the ruler whose territory became part of Israel's inheritance.", "The phrase recalls the conquest that opened this region."];
+    opening = ["This line recalls the Amorite ruler whose territory later became part of Israel's inheritance.", "The phrase looks back to the earlier conquest that opened this region."];
   } else if (/cities of gilead and half the land of/.test(lower)) {
     opening = ["Gilead and the half-land named here belong to the territory assigned in this section.", "The phrase describes the spread of the inheritance across known regions."];
   } else if (/ain and rimmon all the cities are twenty/.test(lower)) {
-    opening = ["Ain and Rimmon appear at the point where this town group reaches its total count.", "The phrase closes that local cluster with a summary number."];
+    opening = ["These town names appear at the point where that local group is totaled.", "The phrase closes the cluster with a final count."];
   } else if (/king of heshbon jordan and his border even/.test(lower)) {
     opening = ["The Jordan border helps define the extent of Heshbon's former territory.", "The phrase uses the river to mark inheritance clearly."];
   } else if (/of heshbon jordan and his border even unto/.test(lower)) {
@@ -926,21 +926,21 @@ function explainDay59JoshuaAt95(section: PersonalLeviticusPhraseSectionInput, cl
   } else if (/all the cities are twenty and nine with/.test(lower)) {
     opening = ["The phrase totals the named towns and their villages as one grouped unit.", "It helps the reader treat the list as organized inheritance rather than loose names."];
   } else if (/naamah and makkedah sixteen cities with their villages/.test(lower)) {
-    opening = ["Naamah and Makkedah sit within a group totaling sixteen cities with their villages.", "The phrase counts one regional cluster in Judah's lowland inheritance."];
+    opening = ["These towns belong to one counted cluster within Judah's lowland inheritance.", "The phrase is marking a regional total, not highlighting one city above the others."];
   } else if (/achzib and mareshah nine cities with their villages/.test(lower)) {
-    opening = ["Achzib and Mareshah belong to a group counted as nine cities with their villages.", "The phrase totals another local section of Judah's land."];
+    opening = ["These towns belong to another counted section of Judah's land.", "The phrase totals one more local cluster with its villages."];
   } else if (/hebron and zior nine cities with their villages/.test(lower)) {
-    opening = ["Hebron and Zior appear in a hill-country group counted at nine cities with their villages.", "The phrase shows Hebron among a wider regional cluster."];
+    opening = ["These hill-country towns are part of a larger counted cluster in Judah.", "The phrase places Hebron within a wider regional grouping."];
   } else if (/holon and giloh eleven cities with their villages/.test(lower)) {
-    opening = ["Holon and Giloh belong to a grouped total of eleven cities with their villages.", "The phrase counts another section of Judah's hill-country inheritance."];
+    opening = ["These towns belong to another counted section of Judah's hill-country inheritance.", "The phrase is organizing the inheritance by local clusters and totals."];
   } else if (/gibeah and timnah ten cities with their villages/.test(lower)) {
-    opening = ["Gibeah and Timnah stand inside a counted group of ten cities with their villages.", "The phrase shows Judah's inheritance arranged in local totals."];
+    opening = ["These towns stand inside a counted group of ten cities with their villages.", "The phrase shows Judah's inheritance being arranged in local totals."];
   } else if (/beth-anoth and eltekon six cities with their villages/.test(lower)) {
-    opening = ["Beth-anoth and Eltekon belong to a smaller cluster totaling six cities with their villages.", "The phrase counts another organized pocket of Judah's towns."];
+    opening = ["These towns belong to a smaller cluster totaling six cities with their villages.", "The phrase counts another organized pocket of Judah's towns."];
   } else if (/kirjath-jearim and rabbah two cities with their villages/.test(lower)) {
-    opening = ["Kirjath-jearim and Rabbah form a two-city group with their villages.", "The phrase shows even small clusters being counted carefully."];
+    opening = ["This is a very small two-city cluster counted with its villages.", "The phrase shows that even the smallest groupings are recorded carefully."];
   } else if (/salt and en-gedi six cities with their villages/.test(lower)) {
-    opening = ["Salt and En-gedi stand in a wilderness group counted as six cities with their villages.", "The phrase totals that final Judah cluster."];
+    opening = ["These wilderness towns stand inside a counted group of six cities with their villages.", "The phrase totals that final Judah cluster."];
   } else if (/hazor hadattah and kerioth and hezron/.test(lower)) {
     opening = ["Hazor-hadattah, Kerioth, and Hezron are southern towns inside Judah's inheritance.", "The phrase starts one regional town cluster on Judah's map."];
   } else if (/hadattah and kerioth and hezron/.test(lower)) {
@@ -964,15 +964,15 @@ function explainDay59JoshuaAt95(section: PersonalLeviticusPhraseSectionInput, cl
   } else if (/adithaim and gederah and gederothaim/.test(lower)) {
     opening = ["Adithaim, Gederah, and Gederothaim belong to a shared local cluster in Judah.", "The phrase groups related settlements inside one inheritance region."];
   } else if (/gederah and gederothaim/.test(lower)) {
-    opening = ["Gederah and Gederothaim are part of another counted cluster of Judah's towns.", "The phrase keeps the local map moving through named settlements."];
+    opening = ["These names belong to another counted cluster of Judah's towns.", "The phrase keeps the local map moving through grouped settlements."];
   } else if (/shilhim and ain and rimmon/.test(lower)) {
     opening = ["Shilhim, Ain, and Rimmon help complete a grouped section of Judah's southern towns.", "The phrase carries the list toward its regional total."];
   } else if (/gederoth beth-dagon and naamah and makkedah/.test(lower)) {
-    opening = ["Gederoth, Beth-dagon, Naamah, and Makkedah appear together in one section of Judah's towns.", "The phrase counts another organized local cluster."];
+    opening = ["These towns are grouped together as one section within Judah's town list.", "The phrase counts another organized local cluster."];
   } else if (/beth-dagon and naamah and makkedah/.test(lower)) {
     opening = ["Beth-dagon, Naamah, and Makkedah continue the grouped list of Judah's towns.", "The phrase adds more detail to that regional section."];
   } else if (/and naamah and makkedah/.test(lower)) {
-    opening = ["Naamah and Makkedah are still part of the same counted town group.", "The phrase helps finish that local list within Judah."];
+    opening = ["These names still belong to the same counted town group.", "The phrase helps finish that local list within Judah."];
   } else if (/keilah and achzib and mareshah/.test(lower)) {
     opening = ["Keilah, Achzib, and Mareshah are grouped together as towns in Judah's inheritance.", "The phrase keeps the allotment tied to real settlements."];
   } else if (/all that lay near ashdod with their villages/.test(lower)) {
@@ -988,7 +988,7 @@ function explainDay59JoshuaAt95(section: PersonalLeviticusPhraseSectionInput, cl
   } else if (/goshen and holon and giloh/.test(lower)) {
     opening = ["Goshen, Holon, and Giloh are named as towns within Judah's hill-country inheritance.", "The phrase adds to that regional town group."];
   } else if (/cain gibeah and timnah/.test(lower)) {
-    opening = ["Cain, Gibeah, and Timnah belong to a grouped section of Judah's towns.", "The phrase helps fill out that local inheritance cluster."];
+    opening = ["These towns belong to one grouped section of Judah's inheritance.", "The phrase helps fill out that local cluster."];
   } else if (/maarath and beth-anoth and eltekon/.test(lower)) {
     opening = ["Maarath, Beth-anoth, and Eltekon are counted together in Judah's inheritance.", "The phrase marks another small regional cluster."];
   } else if (/kirjath-baal which is kirjath-jearim and rabbah/.test(lower)) {
@@ -996,7 +996,7 @@ function explainDay59JoshuaAt95(section: PersonalLeviticusPhraseSectionInput, cl
   } else if (/which is kirjath-jearim and rabbah/.test(lower)) {
     opening = ["Kirjath-jearim is clarified here by its alternate name before Rabbah is counted with it.", "The phrase helps the reader identify the town correctly."];
   } else if (/humtah and kirjath-arba which is hebron/.test(lower)) {
-    opening = ["Humtah and Kirjath-arba, that is Hebron, are listed together in Judah's inheritance.", "The phrase places Hebron among neighboring hill-country towns."];
+    opening = ["This line places Hebron, also called Kirjath-arba, among neighboring hill-country towns.", "The phrase anchors a famous city inside Judah's wider inheritance list."];
   } else if (/kirjath-arba which is hebron and zior/.test(lower)) {
     opening = ["Kirjath-arba, that is Hebron, appears here with Zior in Judah's hill-country list.", "The phrase identifies the well-known city inside a broader regional cluster."];
   } else if (/which is hebron and zior/.test(lower)) {
@@ -1055,15 +1055,15 @@ function explainDay60JoshuaAt95(section: PersonalLeviticusPhraseSectionInput, cl
   } else if (/throughout mount bethel/.test(lower) || /through the wilderness of beth-el unto luz/.test(lower)) {
     opening = ["Mount Bethel and Luz are landmarks used to trace Joseph's inheritance through the hill country.", "The phrase keeps the border tied to actual terrain and towns."];
   } else if (/the goings out thereof are at the sea/.test(lower) && section.chapter === 19) {
-    opening = ["The goings out are the outer end of Asher's border line at the sea.", "The phrase closes that tribal boundary with a coastal edge."];
+    opening = ["The wording marks the outer end of Asher's border line at the sea.", "The phrase closes that tribal boundary with a coastal edge."];
   } else if (/the goings out thereof are at the sea/.test(lower)) {
-    opening = ["The goings out are the outer end or outlet of Joseph's border line.", "The phrase says that inheritance stretched all the way to the sea."];
+    opening = ["The wording marks the outer end of Joseph's border line.", "The phrase says that inheritance stretched all the way to the sea."];
   } else if (/manasseh and ephraim took their inheritance/.test(lower) || /took their inheritance/.test(lower)) {
     opening = ["The inheritance is now actually received by Joseph's two tribal lines.", "The phrase moves from border description to possession."];
   } else if (/the border of the children of ephraim/.test(lower)) {
     opening = ["Ephraim's border is now being described specifically.", "The phrase narrows the inheritance from Joseph's house to one tribe's portion."];
   } else if (/according to their families/.test(lower) && section.reference === "Joshua 16:5-8") {
-    opening = ["According to their families means Ephraim's inheritance belongs to real clan groups within the tribe.", "The phrase ties land lines to households that will live there."];
+    opening = ["The inheritance is being assigned by clan groups within Ephraim, not as one undivided block.", "The phrase ties land lines to the households that will live there."];
   } else if (/on the east side/.test(lower)) {
     opening = ["The east side tells the reader which edge of Ephraim's border is being described.", "Direction words matter here because the chapter is drawing a map."];
   } else if (/the border went out toward the sea/.test(lower)) {
@@ -1093,9 +1093,9 @@ function explainDay60JoshuaAt95(section: PersonalLeviticusPhraseSectionInput, cl
   } else if (/these cities with their villages/.test(lower) && section.reference === "Joshua 19:30-31") {
     opening = ["These cities and villages make up the settled places within Asher's inheritance.", "The phrase shows that allotment as real communities, not just borders."];
   } else if (/the cities and their villages/.test(lower) && section.reference === "Joshua 19:23-23") {
-    opening = ["The cities and villages listed here make up Issachar's settled inheritance.", "The phrase turns the allotment into places where families actually live."];
+    opening = ["The named cities together with their villages make up Issachar's settled inheritance.", "The phrase turns the allotment into places where families actually live."];
   } else if (/the cities and their villages/.test(lower) && section.reference === "Joshua 19:38-39") {
-    opening = ["The cities and villages listed here make up Naphtali's settled inheritance.", "The phrase turns the allotment into places where families actually live."];
+    opening = ["The named cities together with their villages make up Naphtali's settled inheritance.", "The phrase turns the allotment into places where families actually live."];
   } else if (/the cities and their villages/.test(lower) && section.chapter === 19) {
     opening = ["The phrase includes both the named cities and the smaller villages attached to them.", "It shows the inheritance as settled communities, not isolated town names."];
   } else if (/these cities with their villages/.test(lower) && section.chapter === 19) {
@@ -1109,7 +1109,7 @@ function explainDay60JoshuaAt95(section: PersonalLeviticusPhraseSectionInput, cl
   } else if (/because he was a man of war/.test(lower)) {
     opening = ["The wording recalls military strength as part of Manasseh's history.", "The phrase explains why one branch had already received territory earlier."];
   } else if (/the rest of manasseh's sons had their portion/.test(lower)) {
-    opening = ["The rest of Manasseh's descendants also receive land by family branches.", "The phrase shows the allotment spreading beyond one prominent line."];
+    opening = ["Other branches of Manasseh's descendants also receive land in this allotment.", "The phrase shows the inheritance spreading beyond one prominent line."];
   } else if (/zelophehad.*had no sons/.test(lower) || /zelophehad had no sons but daughters/.test(lower)) {
     opening = ["The phrase highlights the family problem: Zelophehad left no sons to inherit his name and portion in the usual way.", "That is why his daughters step forward."];
   } else if (/but daughters.*they came near before eleazar the priest/.test(lower)) {
@@ -1137,11 +1137,11 @@ function explainDay60JoshuaAt95(section: PersonalLeviticusPhraseSectionInput, cl
   } else if (/the canaanites dwell among the ephraimites/.test(lower)) {
     opening = ["The Canaanites are said to remain living among Ephraim instead of being removed.", "The phrase shows coexistence where conquest had been left incomplete."];
   } else if (/unto this day/.test(lower) && section.reference === "Joshua 16:10") {
-    opening = ["Unto this day means the compromise at Gezer lasted beyond the first conquest moment.", "The phrase turns incomplete obedience into a lingering condition."];
+    opening = ["The compromise at Gezer lasted beyond the first conquest moment into later time.", "The phrase turns incomplete obedience into a lingering condition."];
   } else if (/the canaanites to tribute/.test(lower)) {
     opening = ["Tribute means forced labor or imposed payment under Israel's control.", "The phrase shows domination without full obedience."];
   } else if (/serve under tribute/.test(lower)) {
-    opening = ["Serve under tribute means the Canaanites remained in the land under forced service.", "The phrase shows compromise instead of complete removal."];
+    opening = ["The Canaanites remained in the land under forced service instead of being fully removed.", "The phrase shows compromise instead of complete obedience."];
   } else if (/when the children of israel were waxen strong/.test(lower)) {
     opening = ["Waxen strong means Israel had grown strong enough to act decisively.", "The phrase makes their later compromise more serious, not less."];
   } else if (/strength did not become full obedience/.test(lower)) {
@@ -1175,7 +1175,7 @@ function explainDay60JoshuaAt95(section: PersonalLeviticusPhraseSectionInput, cl
   } else if (/though they have iron chariots/.test(lower)) {
     opening = ["The iron chariots are offered as the reason the enemy still looks too strong to drive out.", "The phrase reveals fear mixed into the complaint."];
   } else if (/all the canaanites.*have chariots of iron/.test(lower) || /chariots of iron/.test(lower)) {
-    opening = ["Chariots of iron were intimidating military weapons that made the enemy look hard to defeat.", "The phrase explains why Joseph's descendants felt blocked."];
+    opening = ["These were intimidating military weapons that made the enemy look hard to defeat.", "The phrase explains why Joseph's descendants felt blocked."];
   } else if (/thou art a great people, and hast great power/.test(lower)) {
     opening = ["Joshua answers them by affirming their strength instead of excusing their fear.", "The phrase pushes them toward courage and action."];
   } else if (/and hast great power.*but the mountain shall be thine/.test(lower)) {
@@ -1238,8 +1238,8 @@ function explainDay60JoshuaAt95(section: PersonalLeviticusPhraseSectionInput, cl
     opening = /jericho/.test(lower)
       ? ["Jericho and the nearby places named here belong to Benjamin's inheritance.", "The phrase makes that tribal portion concrete through specific towns."]
       : /gibeon/.test(lower)
-        ? ["Gibeon, Ramah, and Beeroth are named towns inside Benjamin's allotted land.", "The phrase builds the inheritance through recognizable places."]
-        : ["Zelah, Eleph, and Jebusi are part of Benjamin's city list.", "The phrase ties Jerusalem's earlier name into Benjamin's inheritance."];
+        ? ["These are named towns inside Benjamin's allotted land.", "The phrase builds the inheritance through recognizable places."]
+        : ["These names belong to Benjamin's city list, including Jerusalem under its earlier name Jebusi.", "The phrase ties that famous site into Benjamin's inheritance."];
   } else if (/twelve cities with their villages/.test(lower) || /fourteen cities with their villages/.test(lower)) {
     opening = /fourteen/.test(lower)
       ? ["The phrase totals another grouped section of Benjamin's towns and villages at fourteen.", "The count keeps the inheritance organized instead of loose."]
@@ -1254,8 +1254,8 @@ function explainDay60JoshuaAt95(section: PersonalLeviticusPhraseSectionInput, cl
     opening = ["Simeon's inheritance lay inside Judah's larger territory.", "The phrase explains why Simeon's land is nested within another tribe's portion."];
   } else if (/beer-sheba, sheba, and moladah/.test(lower) || /ain, remmon, and ether/.test(lower)) {
     opening = /beer-sheba/.test(lower)
-      ? ["Beer-sheba, Sheba, and Moladah are named towns inside Simeon's allotted region.", "The phrase turns Simeon's inheritance into recognizable places."]
-      : ["Ain, Remmon, and Ether are part of Simeon's smaller town group.", "The phrase keeps Simeon's inheritance concrete through named places."];
+      ? ["These are named towns inside Simeon's allotted region.", "The phrase turns Simeon's inheritance into recognizable places."]
+      : ["These towns belong to one of Simeon's smaller grouped sections.", "The phrase keeps Simeon's inheritance concrete through named places."];
   } else if (/thirteen cities and their villages/.test(lower) || /four cities and their villages/.test(lower)) {
     opening = /thirteen/.test(lower)
       ? ["The phrase totals Simeon's first town cluster at thirteen cities with their villages.", "The count keeps the allotment orderly and measurable."]
@@ -1297,7 +1297,7 @@ function explainDay60JoshuaAt95(section: PersonalLeviticusPhraseSectionInput, cl
   } else if (/the coast of their inheritance was zorah, and eshtaol/.test(lower) || /shaalabbin, ajalon, and jethlah/.test(lower)) {
     opening = /zorah/.test(lower)
       ? ["Zorah and Eshtaol are named places within Dan's allotted territory.", "The phrase begins filling in Dan's map with towns."]
-      : ["Shaalabbin, Ajalon, and Jethlah add more named places to Dan's territory.", "The phrase continues Dan's town list."];
+      : ["These are more named places within Dan's allotted territory.", "The phrase continues Dan's town list."];
   } else if (/the children of dan went up to fight against leshem/.test(lower)) {
     opening = ["Dan goes up to fight for additional territory beyond the standard allotment list.", "The phrase shows the tribe enlarging its possession by battle."];
   } else if (/took it, and smote it with the edge of the sword/.test(lower)) {
@@ -1305,13 +1305,13 @@ function explainDay60JoshuaAt95(section: PersonalLeviticusPhraseSectionInput, cl
   } else if (/called leshem, dan, after the name of dan their father/.test(lower)) {
     opening = ["The city receives the tribal name Dan after its ancestor.", "The phrase shows conquest turning into identity and settlement."];
   } else if (/according to their families/.test(lower) && section.reference === "Joshua 19:16-16") {
-    opening = ["According to their families means Zebulun's inheritance belongs to its clan groups.", "The phrase ties the allotment to the households that will live there."];
+    opening = ["Zebulun's inheritance is being assigned by clan groups within the tribe.", "The phrase ties the allotment to the households that will live there."];
   } else if (/according to their families/.test(lower) && section.reference === "Joshua 19:23-23") {
-    opening = ["According to their families means Issachar's inheritance belongs to its clan groups.", "The phrase ties the allotment to the households that will live there."];
+    opening = ["Issachar's inheritance is being assigned by clan groups within the tribe.", "The phrase ties the allotment to the households that will live there."];
   } else if (/according to their families/.test(lower) && section.reference === "Joshua 19:30-31") {
-    opening = ["According to their families means Asher's inheritance belongs to its clan groups.", "The phrase ties the allotment to the households that will live there."];
+    opening = ["Asher's inheritance is being assigned by clan groups within the tribe.", "The phrase ties the allotment to the households that will live there."];
   } else if (/according to their families/.test(lower) && section.reference === "Joshua 19:38-39") {
-    opening = ["According to their families means Naphtali's inheritance belongs to its clan groups.", "The phrase ties the allotment to the households that will live there."];
+    opening = ["Naphtali's inheritance is being assigned by clan groups within the tribe.", "The phrase ties the allotment to the households that will live there."];
   } else if (/according to their families/.test(lower) && section.chapter === 19) {
     opening = ["According to their families means the inheritance belongs to real clan groups within that tribe.", "The phrase ties the land list to households that will live there."];
   } else if (/the allotment is complete/.test(lower) && section.reference === "Joshua 19:16-16") {
