@@ -5,10 +5,8 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import { ACTION_TYPE } from "../../../../lib/actionTypes";
 import { trackNavigationActionOnce } from "../../../../lib/navigationActionTracker";
-import { getBookCurrentStep, getCompletedChapters, getBookTotalChapters } from "../../../../lib/readingProgress";
+import { getCompletedChapters, getBookTotalChapters } from "../../../../lib/readingProgress";
 import { supabase } from "../../../../lib/supabaseClient";
-
-const CHAPTERS_PER_PAGE = 12;
 
 // Book descriptions (short subtitle under the title)
 const BOOK_DESCRIPTIONS: Record<string, string> = {
@@ -264,14 +262,9 @@ export default function BookPage() {
 
   const totalChapters = getBookTotalChapters(bookDisplayName);
 
-  // currentChapter is now loaded from database
-  const [currentChapter, setCurrentChapter] = useState(1);
-  const [chapterPage, setChapterPage] = useState(0);
   const [completedChapters, setCompletedChapters] = useState<number[]>([]);
   const [userId, setUserId] = useState<string | null>(null);
   const [username, setUsername] = useState<string | null>(null);
-  const [userEmail, setUserEmail] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
 
   const [bookIntroOpen, setBookIntroOpen] = useState(false);
 
@@ -281,7 +274,6 @@ export default function BookPage() {
       const { data: { user } } = await supabase.auth.getUser();
       if (user) {
         setUserId(user.id);
-        setUserEmail(user.email || null);
         const meta: any = user.user_metadata || {};
         setUsername(
           meta.firstName ||
@@ -289,8 +281,6 @@ export default function BookPage() {
             (user.email ? user.email.split("@")[0] : null) ||
             "User"
         );
-      } else {
-        setLoading(false);
       }
     }
     getUser();
@@ -316,17 +306,10 @@ export default function BookPage() {
       if (!userId) return;
 
       try {
-        setLoading(true);
-
-        const step = await getBookCurrentStep(userId, bookKey, totalChapters);
-        setCurrentChapter(step === 0 ? 1 : step);
-
         const completed = await getCompletedChapters(userId, bookKey);
         setCompletedChapters(completed);
       } catch (err) {
         console.error("Error loading progress:", err);
-      } finally {
-        setLoading(false);
       }
     }
 
@@ -335,24 +318,9 @@ export default function BookPage() {
     }
   }, [userId, bookKey, totalChapters]);
 
-  // Calculate finished chapters and progress
-  // All chapters from 1 to (currentChapter - 1) are finished, plus any explicitly completed
   const finishedChapters = completedChapters.length;
   const progressPercent = Math.min(100, (finishedChapters / totalChapters) * 100);
-
-  // chapter pagination - only show chapters 1-totalChapters
-  const chapterStartIndex = chapterPage * CHAPTERS_PER_PAGE;
-  const visibleChapterCount = Math.min(
-    CHAPTERS_PER_PAGE,
-    totalChapters - chapterStartIndex
-  );
-  const visibleChapters = Array.from(
-    { length: visibleChapterCount },
-    (_, i) => chapterStartIndex + i + 1 // Start from chapter 1, not 0
-  );
-  const hasPrevChapterPage = chapterPage > 0;
-  const hasNextChapterPage =
-    chapterStartIndex + CHAPTERS_PER_PAGE < totalChapters;
+  const allChapters = Array.from({ length: totalChapters }, (_, index) => index + 1);
 
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4">
@@ -468,32 +436,13 @@ export default function BookPage() {
 
           {/* CHAPTER GRID */}
           <div className="space-y-4 mt-1">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-2">
-              {visibleChapters.map((chapter) => {
-                // All chapters are always unlocked - no locking behavior
+            <div className="grid grid-cols-4 gap-2 sm:gap-3 mt-2">
+              {allChapters.map((chapter) => {
                 const done = completedChapters.includes(chapter);
-
-                // Chapter card styling: grey = not completed, green = completed
-                let stateClasses = "bg-gray-100 border-gray-300 text-gray-400 cursor-pointer";
-                if (done) {
-                  stateClasses = "bg-green-100 border-green-300 text-green-800 cursor-pointer";
-                }
-
-                // label and description
-                const title = `${bookDisplayName} ${chapter}`;
-                const description = done
-                  ? "Finished."
-                  : "Click to read this chapter.";
-
-                const content = (
-                  <>
-                    <p className="font-semibold">{title}</p>
-                    <p className="text-[11px] mt-1">{description}</p>
-                  </>
-                );
-
-                // All chapters use dynamic route - all are clickable
                 const href = `/Bible/${encodeURIComponent(bookKey)}/${chapter}`;
+                const stateClasses = done
+                  ? "border-green-300 bg-green-100 text-green-800"
+                  : "border-gray-200 bg-white text-gray-900 hover:border-blue-200 hover:bg-blue-50";
 
                 return (
                   <Link
@@ -512,45 +461,21 @@ export default function BookPage() {
                         console.error("[NAV] Failed to track Bible chapter click:", error);
                       });
                     }}
-                    className={`relative rounded-xl border px-3 py-3 text-left shadow-sm transition text-sm block ${stateClasses}`}
+                    aria-label={`${bookDisplayName} chapter ${chapter}${done ? ", finished" : ""}`}
+                    className={`flex h-14 items-center justify-center rounded-xl border text-base font-black shadow-sm transition sm:h-16 sm:text-lg ${stateClasses}`}
                   >
-                    {content}
+                    <span>{chapter}</span>
                   </Link>
                 );
               })}
             </div>
 
-            {/* chapter pagination and bottom nav */}
             <div className="mt-2 flex items-center justify-between text-xs sm:text-sm text-blue-600">
-              <button
-                type="button"
-                onClick={() =>
-                  hasPrevChapterPage && setChapterPage((p) => p - 1)
-                }
-                disabled={!hasPrevChapterPage}
-                className={`hover:underline ${
-                  !hasPrevChapterPage ? "text-gray-300 cursor-default" : ""
-                }`}
-              >
-                Previous chapters
-              </button>
-
               <Link href="/dashboard" className="hover:underline">
                 Home
               </Link>
 
-              <button
-                type="button"
-                onClick={() =>
-                  hasNextChapterPage && setChapterPage((p) => p + 1)
-                }
-                disabled={!hasNextChapterPage}
-                className={`hover:underline ${
-                  !hasNextChapterPage ? "text-gray-300 cursor-default" : ""
-                }`}
-              >
-                Next chapters
-              </button>
+              <span className="text-gray-400">Scroll for all chapters</span>
             </div>
 
             <Link

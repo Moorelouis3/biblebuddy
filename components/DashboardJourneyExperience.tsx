@@ -3982,6 +3982,7 @@ export default function DashboardJourneyExperience({
         }
 
         const next: BibleYearCompletedCardsByDay = {};
+        const notesViewedNext: Record<number, boolean> = {};
         Array.from(progressRowByDay.values()).forEach((row) => {
           next[row.day_number] = {
             reading: row.reading_completed === true,
@@ -3989,7 +3990,38 @@ export default function DashboardJourneyExperience({
             trivia: row.trivia_completed === true,
             reflection: row.reflection_completed === true,
           };
+          if (row.study_notes_completed === true) {
+            notesViewedNext[row.day_number] = true;
+          }
         });
+        if (!cancelled) {
+          setBibleYearScriptureNotesViewedByDay(notesViewedNext);
+        }
+
+        const discussionSlugToDayNumber = new Map(
+          GENESIS_BIBLE_IN_ONE_YEAR_SERIES.map((day) => [getBibleYearReflectionSlug(day), day.dayNumber]),
+        );
+        const { data: discussionRows, error: discussionError } = await supabase
+          .from("article_comments")
+          .select("article_slug")
+          .eq("user_id", userId)
+          .eq("is_deleted", false)
+          .in("article_slug", Array.from(discussionSlugToDayNumber.keys()));
+
+        if (discussionError) {
+          console.warn("[BIBLE_YEAR_DISCUSSION] Could not preload saved discussion posts:", discussionError);
+        } else {
+          const reflectionPostedNext: Record<number, boolean> = {};
+          (discussionRows || []).forEach((row) => {
+            const dayNumber = discussionSlugToDayNumber.get(row.article_slug);
+            if (dayNumber) {
+              reflectionPostedNext[dayNumber] = true;
+            }
+          });
+          if (!cancelled) {
+            setBibleYearReflectionPostedByDay(reflectionPostedNext);
+          }
+        }
 
         const actionTypes = Array.from(new Set([
           ...Object.values(BIBLE_YEAR_CARD_ACTION_TYPE).filter((value): value is ActionType => Boolean(value)),
@@ -9206,7 +9238,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     const completed = completedOverride || bibleYearCompletedCardsByDay[day.dayNumber] || {};
     return {
       reading: completed.reading === true,
-      study_notes: completed.study_notes === true,
+      study_notes: completed.study_notes === true || bibleYearScriptureNotesViewedByDay[day.dayNumber] === true,
       trivia: completed.trivia === true,
       reflection: completed.reflection === true || bibleYearReflectionPostedByDay[day.dayNumber] === true,
     };
@@ -11690,7 +11722,9 @@ Before we understand redemption, we need to understand what God made humanity fo
       `Study ${readingSummary} with Scripture, storytelling, and teaching.`;
     const audio = content.audio;
     const readingComplete = bibleYearCompletedCardsByDay[day.dayNumber]?.reading === true;
-    const studyNotesComplete = bibleYearCompletedCardsByDay[day.dayNumber]?.study_notes === true;
+    const studyNotesComplete =
+      bibleYearCompletedCardsByDay[day.dayNumber]?.study_notes === true ||
+      bibleYearScriptureNotesViewedByDay[day.dayNumber] === true;
     const showCompletionMoment = isBibleYearDayComplete(day) && bibleYearJustCompletedDayRef.current === day.dayNumber;
     const triviaComplete = bibleYearCompletedCardsByDay[day.dayNumber]?.trivia === true;
     const reflectionPosted =
@@ -11731,6 +11765,9 @@ Before we understand redemption, we need to understand what God made humanity fo
         badge: null,
         icon: "📖",
         onClick: () => {
+          if (!studyNotesComplete) {
+            markBibleYearDayCardComplete(day, "study_notes");
+          }
           setActiveBibleYearDayCard(null);
           setBibleYearOptionalDiscussionDay(null);
           setBibleYearScriptureNotesViewedByDay((current) => ({ ...current, [day.dayNumber]: true }));
@@ -11939,7 +11976,6 @@ Before we understand redemption, we need to understand what God made humanity fo
             <div className="flex items-center justify-between gap-3 px-1">
               <div className="min-w-0">
                 <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">Bible In One Year</p>
-                <h2 className="mt-0.5 text-[17px] font-black leading-tight text-[var(--bb-text-primary,#111827)]">Journey Map</h2>
               </div>
               <div className="relative shrink-0">
                 <button
@@ -16671,3 +16707,4 @@ Before we understand redemption, we need to understand what God made humanity fo
     </div>
   );
 }
+
