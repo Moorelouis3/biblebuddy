@@ -11060,48 +11060,44 @@ Before we understand redemption, we need to understand what God made humanity fo
 
       setBibleProgressSharePending(true);
       try {
-        const exportShell = document.createElement("div");
-        exportShell.style.position = "fixed";
-        exportShell.style.left = "-99999px";
-        exportShell.style.top = "0";
-        exportShell.style.width = "1080px";
-        exportShell.style.height = "1920px";
-        exportShell.style.background = "#000000";
-        exportShell.style.display = "flex";
-        exportShell.style.alignItems = "center";
-        exportShell.style.justifyContent = "center";
-        exportShell.style.padding = "120px";
-        exportShell.style.boxSizing = "border-box";
+        const cardBlob = await toBlob(bibleProgressShareCardRef.current, {
+          cacheBust: true,
+          pixelRatio: 2,
+          backgroundColor: "#f8fbff",
+        });
 
-        const sourceComputedStyle = window.getComputedStyle(bibleProgressShareCardRef.current);
-        for (const propertyName of Array.from(sourceComputedStyle)) {
-          if (!propertyName.startsWith("--")) continue;
-          exportShell.style.setProperty(propertyName, sourceComputedStyle.getPropertyValue(propertyName));
+        if (!cardBlob) {
+          throw new Error("Could not generate progress image.");
         }
 
-        const shareCardClone = bibleProgressShareCardRef.current.cloneNode(true) as HTMLDivElement;
-        shareCardClone.style.width = "100%";
-        shareCardClone.style.maxWidth = "760px";
-        shareCardClone.style.boxShadow = "0 30px 80px rgba(0, 0, 0, 0.35)";
-        shareCardClone.style.borderRadius = "28px";
-        shareCardClone.style.overflow = "hidden";
-
-        exportShell.appendChild(shareCardClone);
-        document.body.appendChild(exportShell);
-
-        let blob: Blob | null = null;
-        try {
-          blob = await toBlob(exportShell, {
-            cacheBust: true,
-            pixelRatio: 2,
-            backgroundColor: "#000000",
-          });
-        } finally {
-          exportShell.remove();
+        const cardBitmap = await createImageBitmap(cardBlob);
+        const canvas = document.createElement("canvas");
+        canvas.width = 1080;
+        canvas.height = 1920;
+        const context = canvas.getContext("2d");
+        if (!context) {
+          throw new Error("Could not prepare progress image.");
         }
+
+        context.fillStyle = "#000000";
+        context.fillRect(0, 0, canvas.width, canvas.height);
+
+        const maxCardWidth = 760;
+        const horizontalPadding = 120;
+        const targetWidth = Math.min(maxCardWidth, canvas.width - horizontalPadding * 2);
+        const scale = targetWidth / cardBitmap.width;
+        const targetHeight = Math.round(cardBitmap.height * scale);
+        const x = Math.round((canvas.width - targetWidth) / 2);
+        const y = Math.round((canvas.height - targetHeight) / 2);
+
+        context.drawImage(cardBitmap, x, y, targetWidth, targetHeight);
+
+        const blob = await new Promise<Blob | null>((resolve) => {
+          canvas.toBlob(resolve, "image/png");
+        });
 
         if (!blob) {
-          throw new Error("Could not generate progress image.");
+          throw new Error("Could not prepare story image.");
         }
 
         const file = new File([blob], `bible-buddy-progress-day-${currentDay}.png`, { type: "image/png" });
