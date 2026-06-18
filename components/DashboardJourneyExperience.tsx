@@ -11076,14 +11076,9 @@ Before we understand redemption, we need to understand what God made humanity fo
               >
                 <div className="grid gap-4 p-5 sm:p-6">
                   <div className="text-center">
-                    <div className="mx-auto flex w-full max-w-[220px] items-center justify-center gap-3">
-                      <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_14%,white)] shadow-[inset_0_1px_0_rgba(255,255,255,0.7)]">
-                        <img src="/TherealiconforBB.png" alt="" width="32" height="32" className="h-8 w-8 rounded-xl object-cover" />
-                      </span>
-                      <div className="min-w-0 text-left">
-                        <p className="text-lg font-black leading-tight text-[var(--bb-text-primary,#111827)]">Bible Buddy</p>
-                        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">mybiblebuddy.net</p>
-                      </div>
+                    <div className="mx-auto w-full max-w-[220px] text-center">
+                      <p className="text-lg font-black leading-tight text-[var(--bb-text-primary,#111827)]">Bible Buddy</p>
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">mybiblebuddy.net</p>
                     </div>
                     <p className="mt-4 text-[11px] font-black uppercase tracking-[0.24em] text-[var(--bb-text-muted,#6b7280)]">My Bible Buddy Progress</p>
                   </div>
