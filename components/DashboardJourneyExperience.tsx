@@ -10931,14 +10931,14 @@ Before we understand redemption, we need to understand what God made humanity fo
                       expanded
                         ? "border-[var(--bb-accent,#2f7fe8)] bg-[var(--bb-accent-soft,#eaf5ff)]"
                         : activity.done
-                          ? "border-sky-300 bg-sky-50"
+                          ? "border-emerald-300 bg-emerald-50"
                           : "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)]"
                     }`}
                   >
                     <div className="flex items-start justify-between gap-3">
                       <span className="grid h-11 w-11 place-items-center rounded-full bg-white text-2xl shadow-sm" aria-hidden="true">{activity.icon}</span>
                       <span className={`rounded-full px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.12em] ${
-                        activity.done ? "bg-sky-500 text-white" : "bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-text-muted,#6b7280)]"
+                        activity.done ? "bg-emerald-500 text-white" : "bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-text-muted,#6b7280)]"
                       }`}>
                         {activity.done ? "✓ " : ""}{activity.status}
                       </span>
@@ -11796,7 +11796,11 @@ Before we understand redemption, we need to understand what God made humanity fo
           "order-3"
         )}
         {showCompletionMoment ? renderBibleYearLessonCompleteCard(day, nextBibleYearDay, () => openAdjacentBibleYearDay(nextBibleYearDay)) : (
-        <article className="order-4 overflow-hidden rounded-[20px] border border-[var(--bb-card-border,#dbe7f4)] bg-[linear-gradient(145deg,color-mix(in_srgb,var(--bb-card,#ffffff)_94%,var(--bb-surface-soft,#f8fbff)),var(--bb-surface-soft,#f8fbff))] p-5 text-[var(--bb-text-primary,#111827)] shadow-[0_18px_48px_rgba(38,63,99,0.12),inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-xl sm:p-6">
+        <article className={`order-4 overflow-hidden rounded-[20px] border p-5 text-[var(--bb-text-primary,#111827)] shadow-[0_18px_48px_rgba(38,63,99,0.12),inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-xl sm:p-6 ${
+          readingComplete
+            ? "border-emerald-300 bg-[linear-gradient(145deg,#f4fff7,#e8f8ee)]"
+            : "border-[var(--bb-card-border,#dbe7f4)] bg-[linear-gradient(145deg,color-mix(in_srgb,var(--bb-card,#ffffff)_94%,var(--bb-surface-soft,#f8fbff)),var(--bb-surface-soft,#f8fbff))]"
+        }`}>
           <div className="min-w-0">
             <div className="min-w-0">
               <div className="flex min-w-0 items-center justify-between gap-3 text-[10px] font-bold uppercase tracking-[0.22em] text-[var(--bb-text-muted,#6b7280)]">
@@ -11807,7 +11811,11 @@ Before we understand redemption, we need to understand what God made humanity fo
           </div>
 
           <div className="mt-4 grid gap-4 sm:grid-cols-[142px_minmax(0,1fr)] lg:grid-cols-[164px_minmax(0,1fr)] xl:grid-cols-[176px_minmax(0,1fr)] xl:items-start">
-            <div className="mx-auto aspect-square w-full max-w-[176px] overflow-hidden rounded-[12px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f4f8ff)] shadow-[0_12px_26px_rgba(38,63,99,0.12)] sm:mx-0">
+            <div className={`mx-auto aspect-square w-full max-w-[176px] overflow-hidden rounded-[12px] border shadow-[0_12px_26px_rgba(38,63,99,0.12)] sm:mx-0 ${
+              readingComplete
+                ? "border-emerald-200 bg-emerald-50"
+                : "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f4f8ff)]"
+            }`}>
               <img src={cover} alt="" loading="eager" decoding="async" onError={handleBibleYearCoverImageError} className="h-full w-full object-cover" />
             </div>
             <div className="flex min-w-0 flex-col justify-start pt-0.5">
@@ -11880,19 +11888,19 @@ Before we understand redemption, we need to understand what God made humanity fo
                   ? bibleYearOptionalDiscussionDay === day.dayNumber
                   : activeBibleYearDayCard === item.key;
             return (
-              <div key={item.key} className={index > 0 ? "border-t border-[var(--bb-card-border,#dbe7f4)]" : ""}>
+              <div key={item.key} className={`${index > 0 ? "border-t" : ""} ${item.done ? "border-emerald-200 bg-emerald-50/70" : "border-[var(--bb-card-border,#dbe7f4)]"}`}>
                 <button
                   type="button"
                   onClick={item.onClick}
-                  className="flex w-full items-center justify-between gap-3 px-3.5 py-3 text-left transition hover:bg-[var(--bb-surface-soft,#f4f8ff)] sm:grid sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:gap-4 sm:p-4"
+                  className={`flex w-full items-center justify-between gap-3 px-3.5 py-3 text-left transition sm:grid sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:gap-4 sm:p-4 ${item.done ? "hover:bg-emerald-100/80" : "hover:bg-[var(--bb-surface-soft,#f4f8ff)]"}`}
                   aria-expanded={expanded}
                 >
                   <div className="flex min-w-0 flex-1 gap-3">
-                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[var(--bb-surface-soft,#f4f8ff)] text-xl shadow-[0_10px_22px_rgba(38,63,99,0.10)] sm:h-12 sm:w-12 sm:text-2xl" aria-hidden="true">
+                    <span className={`grid h-10 w-10 shrink-0 place-items-center rounded-full text-xl shadow-[0_10px_22px_rgba(38,63,99,0.10)] sm:h-12 sm:w-12 sm:text-2xl ${item.done ? "bg-emerald-100" : "bg-[var(--bb-surface-soft,#f4f8ff)]"}`} aria-hidden="true">
                       {item.icon}
                     </span>
                     <div className="min-w-0">
-                      <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-[var(--bb-text-muted,#6b7280)]">{item.eyebrow}</p>
+                      <p className={`text-[10px] font-bold uppercase tracking-[0.24em] ${item.done ? "text-emerald-700" : "text-[var(--bb-text-muted,#6b7280)]"}`}>{item.eyebrow}</p>
                       {item.badge ? (
                         <p className="mt-1 text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">{item.badge}</p>
                       ) : null}
@@ -11900,12 +11908,12 @@ Before we understand redemption, we need to understand what God made humanity fo
                       <p className="mt-1 text-[13px] font-medium leading-5 text-[var(--bb-text-secondary,#4b5563)]">{item.body}</p>
                     </div>
                   </div>
-                  <span className={`shrink-0 self-center justify-self-end text-xl font-black text-[var(--bb-text-muted,#6b7280)] transition ${expanded ? "rotate-90 text-[var(--bb-accent,#2f7fe8)]" : ""}`} aria-hidden="true">
+                  <span className={`shrink-0 self-center justify-self-end text-xl font-black transition ${expanded ? "rotate-90 text-[var(--bb-accent,#2f7fe8)]" : item.done ? "text-emerald-700" : "text-[var(--bb-text-muted,#6b7280)]"}`} aria-hidden="true">
                     ›
                   </span>
                 </button>
                 {expanded ? (
-                  <div className="border-t border-[var(--bb-card-border,#dbe7f4)] px-1 pb-4 pt-2">
+                  <div className={`border-t px-1 pb-4 pt-2 ${item.done ? "border-emerald-200 bg-emerald-50/30" : "border-[var(--bb-card-border,#dbe7f4)]"}`}>
                     {item.key === "scripture"
                       ? renderBibleYearScriptureNotesTask(day)
                       : item.key === "discussion"
