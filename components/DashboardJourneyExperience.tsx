@@ -1,6 +1,4 @@
 "use client";
-
-import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
@@ -10993,7 +10991,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     async function shareBibleYearProgress() {
       if (typeof window === "undefined" || !bibleProgressShareCardRef.current || bibleProgressSharePending) return;
       const shareUrl = window.location.origin;
-      const shareText = `My Bible Buddy progress: ${currentStreak} ${currentStreak === 1 ? "day" : "days"} streak, Day ${currentDay} of 365, ${overallPercent}% completed. Start your own journey at mybiblebuddy.net`;
+      const shareText = "Check out my Bible progress from https://www.mybiblebuddy.net/";
 
       setBibleProgressSharePending(true);
       try {
@@ -11017,8 +11015,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         ) {
           await navigator.share({
             title: "My Bible Buddy Progress",
-            text: "Start your Bible in One Year journey at https://www.mybiblebuddy.net/",
-            url: "https://www.mybiblebuddy.net/",
+            text: shareText,
             files: [file],
           });
           return;
@@ -11081,7 +11078,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   <div className="text-center">
                     <div className="mx-auto flex w-full max-w-[220px] items-center justify-center gap-3">
                       <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_14%,white)] shadow-[inset_0_1px_0_rgba(255,255,255,0.7)]">
-                        <Image src="/TherealiconforBB.png" alt="" width={32} height={32} className="h-8 w-8 rounded-xl object-cover" />
+                        <img src="/TherealiconforBB.png" alt="" width="32" height="32" className="h-8 w-8 rounded-xl object-cover" />
                       </span>
                       <div className="min-w-0 text-left">
                         <p className="text-lg font-black leading-tight text-[var(--bb-text-primary,#111827)]">Bible Buddy</p>
