@@ -11073,6 +11073,12 @@ Before we understand redemption, we need to understand what God made humanity fo
         exportShell.style.padding = "120px";
         exportShell.style.boxSizing = "border-box";
 
+        const sourceComputedStyle = window.getComputedStyle(bibleProgressShareCardRef.current);
+        for (const propertyName of Array.from(sourceComputedStyle)) {
+          if (!propertyName.startsWith("--")) continue;
+          exportShell.style.setProperty(propertyName, sourceComputedStyle.getPropertyValue(propertyName));
+        }
+
         const shareCardClone = bibleProgressShareCardRef.current.cloneNode(true) as HTMLDivElement;
         shareCardClone.style.width = "100%";
         shareCardClone.style.maxWidth = "760px";
@@ -13909,7 +13915,7 @@ Before we understand redemption, we need to understand what God made humanity fo
   }
 
   return (
-    <div className="space-y-4 pb-[calc(90px+env(safe-area-inset-bottom,0px))] lg:pb-4">
+    <div className="space-y-4 pb-[calc(142px+env(safe-area-inset-bottom,0px))] lg:pb-4">
       <style>{`
         @keyframes task-complete-pop {
           0% {
