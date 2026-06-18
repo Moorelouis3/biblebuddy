@@ -54,6 +54,7 @@
     "@vercel/analytics": "^1.6.1",
     "canvas-confetti": "^1.9.4",
     "dotenv": "^17.2.3",
+    "html-to-image": "^1.11.13",
     "lamejs": "^1.2.1",
     "next": "^16.0.7",
     "openai": "^6.9.1",

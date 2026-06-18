@@ -1,9 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import { Fragment, useCallback, useEffect, useRef, useState, type FormEvent, type MouseEvent, type ReactNode, type SyntheticEvent } from "react";
+import { toBlob } from "html-to-image";
 import { LouisAvatar } from "./LouisAvatar";
 import { ModalShell } from "./ModalShell";
 import BibleReadingModal from "./BibleReadingModal";
@@ -2074,6 +2076,8 @@ export default function DashboardJourneyExperience({
   const [isResettingBibleYearPlan, setIsResettingBibleYearPlan] = useState(false);
   const [bibleYearPlanMessage, setBibleYearPlanMessage] = useState<string | null>(null);
   const [showBibleProgressDetails, setShowBibleProgressDetails] = useState(false);
+  const bibleProgressShareCardRef = useRef<HTMLDivElement | null>(null);
+  const [bibleProgressSharePending, setBibleProgressSharePending] = useState(false);
   const [bibleYearOpenVerseBreakdownKey, setBibleYearOpenVerseBreakdownKey] = useState<string | null>(null);
   const [bibleYearOpenScriptureNotesSectionKey, setBibleYearOpenScriptureNotesSectionKey] = useState<string | null>(null);
   const [bibleYearOpenScriptureNotesPhraseKey, setBibleYearOpenScriptureNotesPhraseKey] = useState<string | null>(null);
@@ -10953,58 +10957,99 @@ Before we understand redemption, we need to understand what God made humanity fo
     const currentDay = Math.max(1, Math.min(365, report?.currentDay ?? getCurrentBibleYearSeriesDayNumber()));
     const dayProgressPercent = Math.max(0, Math.min(100, Math.round((currentDay / 365) * 100)));
     const remainingDays = Math.max(0, 365 - currentDay);
-    const statusLabel = report?.statusLabel ?? "On track";
-    const statusDirection = report?.statusDirection ?? "on-track";
-    const progressMessages = overallPercent < 5
-      ? ["You're building a daily habit of understanding God's Word.", "Your journey through Scripture is just beginning."]
-      : overallPercent < 10
-        ? ["Small daily steps lead to lasting spiritual growth.", "Keep going. Every day in God's Word matters."]
-        : overallPercent < 20
-          ? ["You're creating consistency that will transform your understanding of Scripture.", "Your Bible rhythm is getting stronger."]
-          : overallPercent < 30
-            ? ["You're moving deeper into God's Word one day at a time.", "Every chapter is helping the bigger story come alive."]
-            : overallPercent < 40
-              ? ["Your consistency is becoming a lifestyle.", "You're building a steady rhythm centered around Scripture."]
-              : overallPercent < 50
-                ? ["You've already gone farther than most people ever do.", "Stay with it. You're seeing more of the whole Bible story."]
-                : overallPercent < 60
-                  ? ["You're halfway through an incredible journey through Scripture.", "Halfway through, and still growing in God's Word."]
-                  : overallPercent < 80
-                    ? ["You're deep into the story of Scripture now.", "Your steady faithfulness is carrying you forward."]
-                    : ["You're nearing the finish of a beautiful journey through God's Word.", "Keep showing up. The full story is coming together."];
-    const topMessage = progressMessages[(currentDay + currentStreak) % progressMessages.length];
-    const paceMessages =
-      statusDirection === "ahead"
-        ? ["Great job! You're ahead of schedule.", "Your consistency is paying off.", "You're building incredible momentum."]
-        : statusDirection === "behind"
-          ? ["A small step today gets you back on track.", "Consistency matters more than perfection.", "Keep going. Every day counts."]
-          : ["You're making steady progress.", "You're right where you need to keep moving.", "Stay steady. The rhythm is working."];
-    const paceMessage = paceMessages[(currentDay + overallPercent) % paceMessages.length];
-    const bottomMessages = [
-      "Stay consistent. God's Word changes lives.",
-      "Every chapter brings deeper understanding.",
-      "Small faithful steps create lasting transformation.",
-      "You're building a rhythm centered around Scripture.",
-      "Keep showing up. Growth happens daily.",
-    ];
-    const bottomMessage = bottomMessages[(currentStreak + currentDay) % bottomMessages.length];
+    const streakMilestone =
+      currentStreak >= 365
+        ? {
+            displayDays: 365,
+            message: "You have read the Bible 365 days straight!",
+            comparison: "You completed a full year in God's Word.",
+          }
+        : currentStreak >= 90
+          ? {
+              displayDays: 90,
+              message: "You have read the Bible 90 days straight!",
+              comparison: "Only 3% of people reach a 90-day streak.",
+            }
+          : currentStreak >= 30
+            ? {
+                displayDays: 30,
+                message: "You have read the Bible 30 days straight!",
+                comparison: "Most people never make it this far.",
+              }
+            : currentStreak >= 7
+              ? {
+                  displayDays: 7,
+                  message: "You have read the Bible 7 days straight!",
+                  comparison: "You are building a real rhythm.",
+                }
+              : {
+                  displayDays: currentStreak,
+                  message: currentStreak <= 0 ? "Start today and build your first Bible streak." : `You have read the Bible ${currentStreak} ${currentStreak === 1 ? "day" : "days"} straight!`,
+                  comparison: currentStreak <= 0 ? "One day at a time is enough to begin." : "Keep going. Consistency grows one day at a time.",
+                };
+    const encouragementTitle = "Stay steady. The rhythm is working.";
+    const encouragementBody = "Consistency today leads to transformation tomorrow.";
 
     async function shareBibleYearProgress() {
-      if (typeof window === "undefined") return;
-      const shareText = `Here's my Bible in One Year progress on BibleBuddy.\n\n${overallPercent}% of the Bible studied\n${currentStreak} Day Streak\nDay ${currentDay} of 365\n\n${topMessage}\n\nGet your own journey started: mybiblebuddy.net`;
+      if (typeof window === "undefined" || !bibleProgressShareCardRef.current || bibleProgressSharePending) return;
       const shareUrl = window.location.origin;
-      if (typeof navigator !== "undefined" && navigator.share) {
+      const shareText = `My Bible Buddy progress: ${currentStreak} ${currentStreak === 1 ? "day" : "days"} streak, Day ${currentDay} of 365, ${overallPercent}% completed. Start your own journey at mybiblebuddy.net`;
+
+      setBibleProgressSharePending(true);
+      try {
+        const blob = await toBlob(bibleProgressShareCardRef.current, {
+          cacheBust: true,
+          pixelRatio: 2,
+          backgroundColor: "#f5f9ff",
+        });
+
+        if (!blob) {
+          throw new Error("Could not generate progress image.");
+        }
+
+        const file = new File([blob], `bible-buddy-progress-day-${currentDay}.png`, { type: "image/png" });
+
+        if (
+          typeof navigator !== "undefined" &&
+          navigator.share &&
+          typeof navigator.canShare === "function" &&
+          navigator.canShare({ files: [file] })
+        ) {
+          await navigator.share({
+            title: "My Bible Buddy Progress",
+            text: shareText,
+            files: [file],
+          });
+          return;
+        }
+
+        const objectUrl = URL.createObjectURL(blob);
         try {
-          await navigator.share({ title: "My Bible in One Year Progress", text: shareText, url: shareUrl });
+          const downloadLink = document.createElement("a");
+          downloadLink.href = objectUrl;
+          downloadLink.download = `bible-buddy-progress-day-${currentDay}.png`;
+          document.body.appendChild(downloadLink);
+          downloadLink.click();
+          downloadLink.remove();
+          await navigator.clipboard?.writeText(`${shareText} ${shareUrl}`);
+          setBibleYearPlanMessage("Progress image downloaded and share text copied.");
           return;
         } catch {
-          // Fall through to clipboard.
+          window.open(objectUrl, "_blank", "noopener,noreferrer");
+          setBibleYearPlanMessage("Progress image opened in a new tab.");
+          return;
+        } finally {
+          window.setTimeout(() => URL.revokeObjectURL(objectUrl), 1000);
         }
-      }
-      try {
-        await navigator.clipboard?.writeText(`${shareText}\n${shareUrl}`);
       } catch {
-        window.location.href = `sms:?&body=${encodeURIComponent(`${shareText} ${shareUrl}`)}`;
+        try {
+          await navigator.clipboard?.writeText(`${shareText} ${shareUrl}`);
+          setBibleYearPlanMessage("Share text copied. Image export was not available on this device.");
+        } catch {
+          window.location.href = `sms:?&body=${encodeURIComponent(`${shareText} ${shareUrl}`)}`;
+        }
+      } finally {
+        setBibleProgressSharePending(false);
       }
     }
 
@@ -11013,96 +11058,91 @@ Before we understand redemption, we need to understand what God made humanity fo
         isOpen={showBibleProgressDetails}
         onClose={() => setShowBibleProgressDetails(false)}
         backdropColor="bg-black/35"
-        scrollable={true}
+        scrollable={false}
         zIndex="z-[75]"
       >
-        <div className="w-full max-w-[460px] overflow-hidden rounded-[24px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] shadow-[0_20px_56px_rgba(14,26,58,0.16)]">
-          <div className="flex items-center justify-between gap-3 px-4 pb-2 pt-4 sm:px-5">
-            <h2 className="text-lg font-black">Bible in One Year Progress</h2>
+        <div className="w-full max-w-[420px] px-2 sm:px-0">
+          <div className="mb-3 flex items-center justify-end">
             <button
               type="button"
               onClick={() => setShowBibleProgressDetails(false)}
-              className="grid h-8 w-8 place-items-center rounded-full text-xl font-light text-[var(--bb-text-secondary,#4b5563)] transition hover:bg-[var(--bb-surface-soft,#f8fbff)]"
+              className="rounded-full bg-white/90 px-3 py-1.5 text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-text-secondary,#4b5563)] shadow-[0_10px_24px_rgba(14,26,58,0.08)] transition hover:bg-white"
               aria-label="Close progress details"
             >
-              x
+              Close
             </button>
           </div>
-
-          <div className="grid gap-3 p-4 sm:p-5">
-            <div className="grid items-center gap-4 rounded-[20px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_16%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_28%,var(--bb-card,#ffffff))] p-4 sm:grid-cols-[128px_1fr]">
-              <div className="mx-auto grid h-32 w-32 place-items-center rounded-full" style={{ background: `conic-gradient(var(--bb-accent,#2f7fe8) ${overallPercent}%, var(--bb-progress-track,#e5e7eb) 0)` }}>
-                <div className="grid h-[102px] w-[102px] place-items-center rounded-full bg-[var(--bb-card,#ffffff)] text-center shadow-inner">
-                  <span>
-                    <span className="block text-3xl font-black text-[var(--bb-accent,#2f7fe8)]">{overallPercent}%</span>
-                    <span className="block text-xs font-bold text-[var(--bb-text-secondary,#4b5563)]">Studied</span>
+          <div
+            ref={bibleProgressShareCardRef}
+            className="overflow-hidden rounded-[28px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_16%,#dbe7f4)] bg-[linear-gradient(180deg,#ffffff_0%,#f8fbff_100%)] text-[var(--bb-text-primary,#111827)] shadow-[0_24px_60px_rgba(14,26,58,0.16)]"
+          >
+            <div className="grid gap-4 p-5 sm:p-6">
+              <div className="text-center">
+                <div className="mx-auto flex w-full max-w-[220px] items-center justify-center gap-3">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_14%,white)] shadow-[inset_0_1px_0_rgba(255,255,255,0.7)]">
+                    <Image src="/TherealiconforBB.png" alt="" width={32} height={32} className="h-8 w-8 rounded-xl object-cover" />
                   </span>
+                  <div className="min-w-0 text-left">
+                    <p className="text-lg font-black leading-tight text-[var(--bb-text-primary,#111827)]">Bible Buddy</p>
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">mybiblebuddy.net</p>
+                  </div>
                 </div>
+                <p className="mt-4 text-[11px] font-black uppercase tracking-[0.24em] text-[var(--bb-text-muted,#6b7280)]">My Bible Buddy Progress</p>
               </div>
-              <div className="text-center sm:text-left">
-                <div className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-[var(--bb-accent-soft,#eaf5ff)] text-3xl sm:mx-0" aria-hidden="true">??</div>
-                <p className="mt-2 text-base font-black leading-6 text-[var(--bb-text-primary,#111827)]">{topMessage}</p>
-                <p className="mt-2 text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">Keep going. Every day matters.</p>
-              </div>
-            </div>
 
-            <div className="rounded-[18px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_16%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_28%,var(--bb-card,#ffffff))] p-3">
-              <div className="flex items-center gap-3">
-                <span className="grid h-16 w-16 shrink-0 place-items-center rounded-full bg-[var(--bb-accent-soft,#eaf5ff)] text-3xl" aria-hidden="true">??</span>
-                <span className="min-w-0 flex-1">
-                <p className="text-xs font-black uppercase tracking-[0.12em] text-[var(--bb-text-muted,#6b7280)]">Daily Streak</p>
-                <span className="mt-0.5 block text-3xl font-black leading-none text-[var(--bb-accent,#2f7fe8)]">{currentStreak}</span>
-                <span className="mt-0.5 block text-xs font-bold text-[var(--bb-text-secondary,#4b5563)]">{currentStreak === 1 ? "day" : "days"}</span>
-                </span>
-                <span className="grid h-10 w-10 place-items-center rounded-full border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_28%,transparent)] text-[var(--bb-accent,#2f7fe8)]" aria-hidden="true">??</span>
-              </div>
-            </div>
+              <section className="rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_14%,#dbe7f4)] bg-white/90 px-4 py-4 text-center shadow-[0_10px_24px_rgba(14,26,58,0.06)]">
+                <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[var(--bb-text-muted,#6b7280)]">Bible Streak</p>
+                <p className="mt-2 text-4xl font-black leading-none text-[var(--bb-accent,#2f7fe8)]">
+                  {currentStreak} <span className="text-xl align-top">{currentStreak === 1 ? "day" : "days"}</span>
+                </p>
+                <p className="mt-3 text-sm font-black leading-5 text-[var(--bb-text-primary,#111827)]">{streakMilestone.message}</p>
+                <p className="mt-1 text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">{streakMilestone.comparison}</p>
+              </section>
 
-            <div className="rounded-[20px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] p-4 shadow-[0_10px_24px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_7%,transparent)]">
-              <div className="flex items-center justify-between gap-3">
-                <p className="text-base font-black text-[var(--bb-text-primary,#111827)]">Bible in One Year Progress</p>
-                <p className="rounded-full bg-[var(--bb-accent-soft,#eaf5ff)] px-2.5 py-1 text-[11px] font-black text-[var(--bb-accent,#2f7fe8)]">{statusLabel}</p>
-              </div>
-              <p className="mt-3 text-xl font-black text-[var(--bb-accent,#2f7fe8)]">Day {currentDay} of 365</p>
-              <div className="mt-3 h-2.5 overflow-hidden rounded-full bg-[var(--bb-progress-track,#dbe7f4)]">
-                <div className="h-full rounded-full bg-[var(--bb-progress-fill,var(--bb-accent,#2f7fe8))]" style={{ width: `${dayProgressPercent}%` }} />
-              </div>
-              <p className="mt-2 text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">{report?.statusDetail}</p>
-              <div className="mt-2 flex items-center justify-between gap-3 text-xs font-semibold text-[var(--bb-text-secondary,#4b5563)]">
-                <span>{dayProgressPercent}% completed</span>
-                <span>{remainingDays} days remaining</span>
-              </div>
-              <div className="mt-3 rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_32%,var(--bb-card,#ffffff))] p-3">
-                <div className="flex gap-2.5">
-                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[var(--bb-card,#ffffff)] text-xl" aria-hidden="true">??</span>
-                  <span>
-                    <span className="block text-sm font-black text-[var(--bb-accent,#2f7fe8)]">{paceMessage}</span>
-                    <span className="mt-1 block text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">Consistency today leads to transformation tomorrow.</span>
-                  </span>
+              <section className="rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_14%,#dbe7f4)] bg-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_5%,white)] px-4 py-4 shadow-[0_10px_24px_rgba(14,26,58,0.06)]">
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[var(--bb-text-muted,#6b7280)]">Bible In One Year</p>
+                    <p className="mt-2 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Day {currentDay} of 365</p>
+                  </div>
+                  <div className="rounded-full bg-white px-3 py-1 text-[11px] font-black text-[var(--bb-accent,#2f7fe8)] shadow-[0_6px_14px_rgba(14,26,58,0.08)]">
+                    {overallPercent}%
+                  </div>
                 </div>
-              </div>
-              <div className="mt-3 border-t border-[var(--bb-card-border,#dbe7f4)] pt-3 text-sm font-semibold text-[var(--bb-text-secondary,#4b5563)]">
-                Started: <span className="font-black text-[var(--bb-accent,#2f7fe8)]">{startDateLabel}</span>
-              </div>
-              <div className="mt-2 text-sm font-semibold text-[var(--bb-text-secondary,#4b5563)]">
-                Expected Finish: <span className="font-black text-[var(--bb-accent,#2f7fe8)]">{expectedFinishDateLabel}</span>
-              </div>
-            </div>
+                <div className="mt-4 h-3 overflow-hidden rounded-full bg-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_14%,#dbe7f4)]">
+                  <div className="h-full rounded-full bg-[var(--bb-accent,#2f7fe8)]" style={{ width: `${Math.max(2, dayProgressPercent)}%` }} />
+                </div>
+                <div className="mt-3 flex items-center justify-between gap-3 text-xs font-semibold text-[var(--bb-text-secondary,#4b5563)]">
+                  <span>{overallPercent}% completed</span>
+                  <span>{remainingDays} days left</span>
+                </div>
+              </section>
 
-            <div className="rounded-[20px] border border-[color-mix(in_srgb,#f0b84d_26%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,#fff7e6_42%,var(--bb-card,#ffffff))] p-3">
-              <div className="flex items-center gap-3">
-                <span className="grid h-16 w-16 shrink-0 place-items-center rounded-full bg-[var(--bb-accent-soft,#eaf5ff)] text-3xl" aria-hidden="true">??</span>
-                <span className="min-w-0 flex-1">
-                  <span className="block text-base font-black text-[var(--bb-text-primary,#111827)]">You're making progress!</span>
-                  <span className="mt-1 block text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">{bottomMessage}</span>
-                </span>
-                <span className="text-3xl text-[#f0b84d]" aria-hidden="true">?</span>
-              </div>
-            </div>
+              <section className="rounded-[20px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_12%,#dbe7f4)] bg-white/85 px-4 py-3 text-center">
+                <p className="text-sm font-black text-[var(--bb-text-primary,#111827)]">{encouragementTitle}</p>
+                <p className="mt-1 text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">{encouragementBody}</p>
+              </section>
 
-            <button type="button" onClick={shareBibleYearProgress} className="rounded-2xl bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-5 py-3.5 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-[0_12px_24px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_20%,transparent)] transition hover:brightness-95">
-              Share Your Progress
-            </button>
+              <section className="grid grid-cols-2 gap-3 rounded-[20px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_12%,#dbe7f4)] bg-white/85 px-4 py-3">
+                <div className="min-w-0 text-center">
+                  <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--bb-text-muted,#6b7280)]">Started</p>
+                  <p className="mt-1 text-sm font-black leading-5 text-[var(--bb-text-primary,#111827)]">{startDateLabel}</p>
+                </div>
+                <div className="min-w-0 text-center">
+                  <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--bb-text-muted,#6b7280)]">Expected Finish</p>
+                  <p className="mt-1 text-sm font-black leading-5 text-[var(--bb-text-primary,#111827)]">{expectedFinishDateLabel}</p>
+                </div>
+              </section>
+
+              <button
+                type="button"
+                onClick={shareBibleYearProgress}
+                disabled={bibleProgressSharePending}
+                className="w-full rounded-[18px] bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-5 py-3.5 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-[0_12px_24px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_20%,transparent)] transition hover:brightness-95 disabled:cursor-wait disabled:opacity-70"
+              >
+                {bibleProgressSharePending ? "Preparing Share Image..." : "Share Progress"}
+              </button>
+            </div>
           </div>
         </div>
       </ModalShell>
