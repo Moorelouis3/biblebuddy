@@ -39,6 +39,7 @@ import { ACTION_TYPE } from "../lib/actionTypes";
 import { trackNavigationActionOnce } from "../lib/navigationActionTracker";
 import { ACTIVE_STREAK_FLAME_STORAGE_KEY, normalizeFlameCosmeticId, persistActiveStreakFlame, type FlameCosmeticId } from "../lib/flameCosmetics";
 import { getActivePopupFromQueue, markPopupShown, POPUP_QUEUE_PRIORITIES, type PopupQueueItem } from "../lib/popupQueue";
+import FirstLoginOnboardingModal from "./FirstLoginOnboardingModal";
 const ConversationPage = dynamic(() => import("../app/messages/[conversationId]/page"), { ssr: false });
 
 const FeedbackModal = dynamic(() => import("./FeedbackModal").then((mod) => mod.FeedbackModal), {
@@ -89,6 +90,34 @@ function normalizeLandingExperienceForProfile(experience: string | null | undefi
   if (experience === "Less than 1 year") return "beginner";
   if (experience === "1-3 years") return "intermediate";
   return "experienced";
+}
+
+function normalizeFirstLoginExperienceForProfile(experience: string | null | undefined) {
+  if (experience === "beginner") return "brand_new";
+  if (experience === "intermediate") return "beginner";
+  if (experience === "advanced") return "intermediate";
+  return "experienced";
+}
+
+function normalizeFirstLoginGoalForProfile(goal: string | null | undefined) {
+  if (goal === "understanding") return "understand_bible";
+  if (goal === "completion") return "finish_bible";
+  if (goal === "spiritual_growth") return "grow_closer_to_god";
+  return "build_consistency";
+}
+
+function formatFirstLoginExperienceLabel(experience: string | null | undefined) {
+  if (experience === "beginner") return "I'm brand new";
+  if (experience === "intermediate") return "I've read some of the Bible";
+  if (experience === "advanced") return "I've read most of it";
+  return "I've finished the Bible before";
+}
+
+function formatFirstLoginGoalLabel(goal: string | null | undefined) {
+  if (goal === "understanding") return "Understand the Bible better";
+  if (goal === "completion") return "Finish the Bible";
+  if (goal === "spiritual_growth") return "Grow closer to God";
+  return "Build a daily habit";
 }
 
 type PendingLandingOnboarding = {
@@ -278,6 +307,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const [fullNameLast, setFullNameLast] = useState("");
   const [fullNameSaving, setFullNameSaving] = useState(false);
   const [fullNameError, setFullNameError] = useState<string | null>(null);
+  const [showFirstLoginOnboarding, setShowFirstLoginOnboarding] = useState(false);
+  const [firstLoginOnboardingName, setFirstLoginOnboardingName] = useState("");
+  const [firstLoginOnboardingSaving, setFirstLoginOnboardingSaving] = useState(false);
+  const [firstLoginOnboardingError, setFirstLoginOnboardingError] = useState<string | null>(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -706,14 +739,14 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     try {
       let { data: profileStats, error: profileStatsError } = await supabase
         .from("profile_stats")
-        .select("onboarding_completed, traffic_source, bible_experience_level, free_devotional_id, louis_primary_devotional_id, louis_primary_devotional_day, bible_year_started_at, bible_year_launch_seen_at, preferred_study_mode")
+        .select("onboarding_completed, traffic_source, bible_experience_level, display_name, username, free_devotional_id, louis_primary_devotional_id, louis_primary_devotional_day, bible_year_started_at, bible_year_launch_seen_at, preferred_study_mode")
         .eq("user_id", currentUserId)
         .maybeSingle();
 
       if (profileStatsError && /preferred_study_mode/i.test(profileStatsError.message || "")) {
         const fallback = await supabase
           .from("profile_stats")
-          .select("onboarding_completed, traffic_source, bible_experience_level, free_devotional_id, louis_primary_devotional_id, louis_primary_devotional_day, bible_year_started_at, bible_year_launch_seen_at")
+          .select("onboarding_completed, traffic_source, bible_experience_level, display_name, username, free_devotional_id, louis_primary_devotional_id, louis_primary_devotional_day, bible_year_started_at, bible_year_launch_seen_at")
           .eq("user_id", currentUserId)
           .maybeSingle();
         profileStats = fallback.data as typeof profileStats;
@@ -732,9 +765,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         const { error: upsertError } = await supabase.from("profile_stats").upsert(
           {
             user_id: currentUserId,
-            onboarding_completed: true,
+            onboarding_completed: false,
             app_theme: "light",
             traffic_source: "direct_signup",
+            preferred_study_mode: "bible_year",
             bible_year_started_at: todayKey,
             bible_year_launch_seen_at: nowIso,
             louis_primary_devotional_day: 1,
@@ -751,42 +785,55 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             user_id: currentUserId,
             day_number: 1,
             reading_completed: false,
+            study_notes_completed: false,
             trivia_completed: false,
             reflection_completed: false,
           },
           { onConflict: "user_id,day_number" },
         );
 
+        const derivedName = headerProfileName !== "You" ? headerProfileName : username || userEmail?.split("@")[0] || "";
+        setFirstLoginOnboardingName(derivedName);
+        setShowFirstLoginOnboarding(true);
         return;
       }
 
       const onboardingCompleted = profileStats.onboarding_completed === true;
-
       const isDevotionalMode = profileStats.preferred_study_mode === "devotional";
 
-      if (!onboardingCompleted || (!isDevotionalMode && (!profileStats.bible_year_started_at || !profileStats.bible_year_launch_seen_at))) {
+      if (!isDevotionalMode && (!profileStats.bible_year_started_at || !profileStats.bible_year_launch_seen_at)) {
         await supabase
           .from("profile_stats")
           .update({
-            onboarding_completed: true,
-            bible_year_started_at: isDevotionalMode ? profileStats.bible_year_started_at : profileStats.bible_year_started_at || todayKey,
-            bible_year_launch_seen_at: isDevotionalMode ? profileStats.bible_year_launch_seen_at : profileStats.bible_year_launch_seen_at || nowIso,
+            bible_year_started_at: profileStats.bible_year_started_at || todayKey,
+            bible_year_launch_seen_at: profileStats.bible_year_launch_seen_at || nowIso,
             louis_primary_devotional_day: profileStats.louis_primary_devotional_id ? 1 : profileStats.louis_primary_devotional_day ?? 1,
           })
           .eq("user_id", currentUserId);
 
-        if (!isDevotionalMode) {
-          await supabase.from("bible_year_day_progress").upsert(
-            {
-              user_id: currentUserId,
-              day_number: 1,
-              reading_completed: false,
-              trivia_completed: false,
-              reflection_completed: false,
-            },
-            { onConflict: "user_id,day_number" },
-          );
-        }
+        await supabase.from("bible_year_day_progress").upsert(
+          {
+            user_id: currentUserId,
+            day_number: 1,
+            reading_completed: false,
+            study_notes_completed: false,
+            trivia_completed: false,
+            reflection_completed: false,
+          },
+          { onConflict: "user_id,day_number" },
+        );
+      }
+
+      if (!onboardingCompleted) {
+        const derivedName =
+          (typeof profileStats.display_name === "string" && profileStats.display_name.trim()) ||
+          (typeof profileStats.username === "string" && profileStats.username.trim()) ||
+          (headerProfileName !== "You" ? headerProfileName : "") ||
+          username ||
+          userEmail?.split("@")[0] ||
+          "";
+        setFirstLoginOnboardingName(derivedName);
+        setShowFirstLoginOnboarding(true);
       }
 
     } catch (_err) {
@@ -810,7 +857,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           user_id: currentUserId,
           display_name: displayName,
           username: displayName,
-          onboarding_completed: true,
           app_theme: "light",
           traffic_source: "landing_questionnaire",
           bible_experience_level: normalizeLandingExperienceForProfile(pending.answers.experience),
@@ -879,6 +925,186 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       window.localStorage.removeItem(LANDING_QUESTIONNAIRE_STORAGE_KEY);
     } catch (error) {
       console.error("[LANDING_ONBOARDING] Response save failed:", error);
+    }
+  }
+
+  async function startOnboardingUpgradeCheckout(plan: "monthly" | "yearly") {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+
+    if (!session) {
+      throw new Error("Please log in before upgrading.");
+    }
+
+    const response = await fetch("/api/stripe/checkout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${session.access_token}`,
+      },
+      body: JSON.stringify({
+        plan,
+        returnTo: "/dashboard",
+        prompt: "first_login_onboarding",
+        checkoutContext: "first_login_onboarding",
+      }),
+    });
+    const data = await response.json().catch(() => null);
+
+    if (!response.ok || !data?.url) {
+      throw new Error(data?.error || "Unable to open checkout right now.");
+    }
+
+    window.location.href = data.url;
+  }
+
+  async function handleFirstLoginOnboardingFinish(payload: {
+    answers: {
+      doomScrollMinutes: string;
+      bibleExperience: string;
+      mainGoal: string;
+      firstName: string;
+    };
+    projectedDays: number;
+    projectedLessonsPerDay: string;
+    projectedMinutesLabel: string;
+    path: "free" | "upgrade";
+    plan?: "monthly" | "yearly";
+  }) {
+    if (!userId) {
+      setFirstLoginOnboardingError("We could not find your account. Refresh the page and try again.");
+      return;
+    }
+
+    const cleanFirstName = payload.answers.firstName.trim();
+    if (!cleanFirstName) {
+      setFirstLoginOnboardingError("Please add your first name before continuing.");
+      return;
+    }
+
+    setFirstLoginOnboardingSaving(true);
+    setFirstLoginOnboardingError(null);
+
+    try {
+      const nowIso = new Date().toISOString();
+      const todayKey = getAppShellLocalDateKey();
+      const doomScrollLabel = `${payload.projectedMinutesLabel} doom scrolling`;
+      const displayName = cleanFirstName;
+
+      const { error: authError } = await supabase.auth.updateUser({
+        data: {
+          firstName: cleanFirstName,
+          first_name: cleanFirstName,
+          display_name: displayName,
+          full_name: displayName,
+        },
+      });
+      if (authError) throw authError;
+
+      let { error: profileError } = await supabase
+        .from("profile_stats")
+        .upsert(
+          {
+            user_id: userId,
+            display_name: displayName,
+            username: displayName,
+            onboarding_completed: true,
+            landing_onboarding_completed: true,
+            app_theme: "light",
+            traffic_source: "first_login_onboarding",
+            bible_experience_level: normalizeFirstLoginExperienceForProfile(payload.answers.bibleExperience),
+            onboarding_goal: normalizeFirstLoginGoalForProfile(payload.answers.mainGoal),
+            onboarding_study_focus: "bible_in_one_year",
+            onboarding_time_commitment: doomScrollLabel,
+            preferred_study_mode: "bible_year",
+            bible_year_started_at: todayKey,
+            bible_year_launch_seen_at: nowIso,
+            louis_primary_devotional_day: 1,
+            updated_at: nowIso,
+          },
+          { onConflict: "user_id" },
+        );
+
+      if (
+        profileError &&
+        /preferred_study_mode|onboarding_study_focus|onboarding_time_commitment|bible_year_started_at|bible_year_launch_seen_at/i.test(profileError.message || "")
+      ) {
+        const fallback = await supabase
+          .from("profile_stats")
+          .upsert(
+            {
+              user_id: userId,
+              display_name: displayName,
+              username: displayName,
+              onboarding_completed: true,
+              landing_onboarding_completed: true,
+              app_theme: "light",
+              traffic_source: "first_login_onboarding",
+              bible_experience_level: normalizeFirstLoginExperienceForProfile(payload.answers.bibleExperience),
+              onboarding_goal: normalizeFirstLoginGoalForProfile(payload.answers.mainGoal),
+              updated_at: nowIso,
+            },
+            { onConflict: "user_id" },
+          );
+        profileError = fallback.error;
+      }
+      if (profileError) throw profileError;
+
+      const { error: responseSaveError } = await supabase.from("landing_onboarding_responses").upsert(
+        {
+          user_id: userId,
+          full_name: displayName,
+          email: userEmail ?? null,
+          goal: formatFirstLoginGoalLabel(payload.answers.mainGoal),
+          experience: formatFirstLoginExperienceLabel(payload.answers.bibleExperience),
+          study_focus: "Bible in One Year",
+          time_commitment: doomScrollLabel,
+          difficulty: "first_login_onboarding_v2",
+          recommended_journey: "Bible in One Year",
+          recommended_days: payload.projectedDays,
+          updated_at: nowIso,
+        },
+        { onConflict: "user_id" },
+      );
+      if (responseSaveError) {
+        console.warn("[FIRST_LOGIN_ONBOARDING] Response save skipped:", responseSaveError.message);
+      }
+
+      const { error: dayProgressError } = await supabase.from("bible_year_day_progress").upsert(
+        {
+          user_id: userId,
+          day_number: 1,
+          reading_completed: false,
+          study_notes_completed: false,
+          trivia_completed: false,
+          reflection_completed: false,
+        },
+        { onConflict: "user_id,day_number" },
+      );
+      if (dayProgressError) {
+        console.warn("[FIRST_LOGIN_ONBOARDING] Day 1 seed skipped:", dayProgressError.message);
+      }
+
+      setHeaderProfileName(displayName);
+      setUsername(displayName);
+      setFirstLoginOnboardingName(displayName);
+      setShowFirstLoginOnboarding(false);
+
+      if (payload.path === "upgrade" && payload.plan) {
+        await startOnboardingUpgradeCheckout(payload.plan);
+        return;
+      }
+
+      if (pathname !== "/dashboard") {
+        router.push("/dashboard");
+      }
+    } catch (error: any) {
+      console.error("[FIRST_LOGIN_ONBOARDING] Save failed:", error);
+      setFirstLoginOnboardingError(error?.message || "We could not finish setting up your Day 1 journey.");
+      setShowFirstLoginOnboarding(true);
+    } finally {
+      setFirstLoginOnboardingSaving(false);
     }
   }
 
@@ -1717,6 +1943,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         setHeaderCurrentLevel(1);
         setHeaderCurrentStreak(0);
         setHeaderProfileImageUrl(null);
+        setShowFirstLoginOnboarding(false);
+        setFirstLoginOnboardingError(null);
+        setFirstLoginOnboardingSaving(false);
       }
 
     };
@@ -1768,6 +1997,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           setHeaderCurrentLevel(1);
           setHeaderCurrentStreak(0);
           setHeaderProfileImageUrl(null);
+          setShowFirstLoginOnboarding(false);
+          setFirstLoginOnboardingError(null);
+          setFirstLoginOnboardingSaving(false);
         }
 
       }
@@ -3030,6 +3262,14 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         )}
         {children}
       </main>
+
+      <FirstLoginOnboardingModal
+        isOpen={showFirstLoginOnboarding && isLoggedIn}
+        initialFirstName={firstLoginOnboardingName}
+        submitting={firstLoginOnboardingSaving}
+        error={firstLoginOnboardingError}
+        onFinish={handleFirstLoginOnboardingFinish}
+      />
 
       {/* BUDDY CELEBRATION MODAL */}
       {showBuddyCelebration && celebrationData && (

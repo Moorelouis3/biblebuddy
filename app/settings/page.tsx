@@ -345,7 +345,7 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
         .sort((a, b) => Number(a.day_number) - Number(b.day_number));
       const completedDays = new Set(
         progressRows
-          .filter((row) => row.reading_completed && row.study_notes_completed && row.trivia_completed && row.reflection_completed)
+          .filter((row) => row.reading_completed)
           .map((row) => Number(row.day_number)),
       );
       const touchedDays = progressRows

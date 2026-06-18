@@ -220,7 +220,7 @@ type BibleYearTriviaQuestion = {
 const BIBLE_YEAR_DAY_CARD_KEYS: BibleYearDayCardKey[] = ["reading", "study_notes", "trivia", "reflection"];
 
 function isBibleYearDayCompleteUnderLegacyRule(row?: BibleYearProgressRow | null) {
-  return Boolean(row?.reading_completed && row?.trivia_completed && row?.reflection_completed);
+  return Boolean(row?.reading_completed);
 }
 
 const BIBLE_YEAR_COMPLETION_KEY_VERSES: Record<number, BibleYearCompletionKeyVerse> = {
@@ -9213,7 +9213,7 @@ Before we understand redemption, we need to understand what God made humanity fo
   }
 
   function isBibleYearCompletionStateDone(state: ReturnType<typeof getBibleYearCompletionState>) {
-    return state.reading && state.study_notes && state.trivia && state.reflection;
+    return state.reading;
   }
 
   function getBibleYearCompletionChecklistItems(
@@ -9324,7 +9324,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     const completedCount = getBibleYearDayCompletedCount(day);
     if (isOwnerDashboard && completedCount < 1) return { label: "Open", markDone: false };
     if (completedCount <= 0) return { label: "Start", markDone: false };
-    if (completedCount >= 1) return { label: "Review", markDone: true };
+    if (completedCount >= 1) return { label: "Review", markDone: false };
     return { label: "Finish", markDone: false };
   }
 
@@ -9746,10 +9746,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     }
 
     try {
-      const result = await completeBibleYearDayCard(day, "reading");
-      if (!result.dayWillBeFullyComplete) {
-        setBibleYearIncompleteChecklistDay(day);
-      }
+      await completeBibleYearDayCard(day, "reading");
       if (options?.closeArticle) {
         closeBibleYearReadingArticle();
       }
@@ -10301,6 +10298,27 @@ Before we understand redemption, we need to understand what God made humanity fo
     }
 
     if (card === "trivia") {
+      if (!isPaidUser && !isOwnerDashboard) {
+        return (
+          <div className="px-4 pb-4">
+            <div className="dashboard-inline-task rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4">
+              <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Premium Trivia</p>
+              <h3 className="mt-2 text-lg font-black leading-tight text-[var(--bb-text-primary,#111827)]">Unlock Trivia for this day</h3>
+              <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+                Trivia is part of Bible Buddy Premium. Upgrade to test what you learned from today&apos;s reading.
+              </p>
+              <button
+                type="button"
+                onClick={() => showBibleYearStudyNotesUpgrade(day.dayNumber)}
+                className="mt-4 w-full rounded-2xl bg-[var(--bb-button,#2f7fe8)] px-5 py-3.5 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95"
+              >
+                Unlock Premium
+              </button>
+            </div>
+          </div>
+        );
+      }
+
       const triviaQuestions = buildBibleYearTriviaQuestionsForDay(day);
       const correctTriviaCount = triviaQuestions.filter((item) => bibleYearTriviaAnswers[item.id] === item.answer).length;
       const answeredTriviaCount = triviaQuestions.filter((item) => Boolean(bibleYearTriviaAnswers[item.id])).length;
@@ -10512,6 +10530,7 @@ Before we understand redemption, we need to understand what God made humanity fo
 
   function renderBibleYearScriptureNotesTask(day: GenesisBibleYearDay) {
     const sections = getBibleYearScriptureNoteSections(day);
+    const canOpenPhraseExplanation = isPaidUser || isOwnerDashboard;
 
     if (!sections.length) {
       return (
@@ -10595,6 +10614,10 @@ Before we understand redemption, we need to understand what God made humanity fo
                           <button
                             type="button"
                             onClick={() => {
+                              if (!canOpenPhraseExplanation) {
+                                showBibleYearStudyNotesUpgrade(day.dayNumber);
+                                return;
+                              }
                               const nextOpen = phraseOpen ? null : phraseKey;
                               setBibleYearOpenScriptureNotesPhraseKey(nextOpen);
                               if (nextOpen) {
@@ -10785,6 +10808,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       body: string;
       done: boolean;
       status: string;
+      badge?: string | null;
       onClick: () => void;
     }> = [
       {
@@ -10794,6 +10818,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         body: "Read today's study notes to better understand the passage.",
         done: notesViewed,
         status: notesViewed ? "Viewed" : "Optional",
+        badge: null,
         onClick: () => {
           setBibleYearOptionalDiscussionDay(null);
           setActiveBibleYearDayCard((current) => {
@@ -10813,8 +10838,13 @@ Before we understand redemption, we need to understand what God made humanity fo
         title: "Trivia",
         body: "Test what you learned from today's reading.",
         done: triviaDone,
-        status: triviaDone ? "Completed" : "Optional",
+        status: triviaDone ? "Completed" : "Premium",
+        badge: !isPaidUser && !isOwnerDashboard ? "Premium" : null,
         onClick: () => {
+          if (!isPaidUser && !isOwnerDashboard) {
+            showBibleYearStudyNotesUpgrade(day.dayNumber);
+            return;
+          }
           setBibleYearOptionalDiscussionDay(null);
           setBibleYearOpenScriptureNotesSectionKey(null);
           setBibleYearOpenScriptureNotesPhraseKey(null);
@@ -10828,6 +10858,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         body: "Answer today's discussion question and share what stood out to you.",
         done: reflectionDone,
         status: reflectionDone ? "Completed" : "Optional",
+        badge: null,
         onClick: () => {
           setBibleYearOpenScriptureNotesSectionKey(null);
           setBibleYearOpenScriptureNotesPhraseKey(null);
@@ -10912,6 +10943,9 @@ Before we understand redemption, we need to understand what God made humanity fo
                         {activity.done ? "✓ " : ""}{activity.status}
                       </span>
                     </div>
+                    {activity.badge ? (
+                      <p className="mt-2 text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">{activity.badge}</p>
+                    ) : null}
                     <h4 className="mt-3 text-base font-black text-[var(--bb-text-primary,#111827)]">{activity.title}</h4>
                     <p className="mt-1 text-sm font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">{activity.body}</p>
                   </button>
@@ -11683,6 +11717,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       body: string;
       button: string;
       done: boolean;
+      badge?: string | null;
       icon: ReactNode;
       onClick: () => void;
     }> = [
@@ -11693,6 +11728,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         body: "Read today's study notes to better understand the passage.",
         button: followAlongOpen ? "Close Notes" : "Open Notes",
         done: studyNotesComplete,
+        badge: null,
         icon: "📖",
         onClick: () => {
           setActiveBibleYearDayCard(null);
@@ -11713,10 +11749,15 @@ Before we understand redemption, we need to understand what God made humanity fo
         eyebrow: "Trivia",
         title: "Trivia",
         body: "Test what you learned from today's reading.",
-        button: triviaComplete ? "Review Trivia" : "Start Trivia",
+        button: !isPaidUser && !isOwnerDashboard ? "Unlock Premium" : triviaComplete ? "Review Trivia" : "Start Trivia",
         done: triviaComplete,
+        badge: !isPaidUser && !isOwnerDashboard ? "Premium" : null,
         icon: "🏆",
         onClick: () => {
+          if (!isPaidUser && !isOwnerDashboard) {
+            showBibleYearStudyNotesUpgrade(day.dayNumber);
+            return;
+          }
           setBibleYearOptionalDiscussionDay(null);
           setBibleYearFollowAlongOpenByDay((current) => ({ ...current, [day.dayNumber]: false }));
           setBibleYearOpenScriptureNotesSectionKey(null);
@@ -11731,6 +11772,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         body: "Answer today's discussion question and share what stood out to you.",
         button: reflectionPosted ? "View Discussion" : "Open Discussion",
         done: reflectionPosted,
+        badge: null,
         icon: "💬",
         onClick: () => {
           setActiveBibleYearDayCard(null);
@@ -11825,7 +11867,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           <>
         {renderDashboardSectionIntro(
           "Study Tools",
-          "Explore today's lesson through notes, trivia, and reflection.",
+          "Explore today's lesson through notes, trivia, and discussion.",
           "order-5"
         )}
 
@@ -11851,6 +11893,9 @@ Before we understand redemption, we need to understand what God made humanity fo
                     </span>
                     <div className="min-w-0">
                       <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-[var(--bb-text-muted,#6b7280)]">{item.eyebrow}</p>
+                      {item.badge ? (
+                        <p className="mt-1 text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">{item.badge}</p>
+                      ) : null}
                       <h3 className="mt-1 text-[17px] font-bold leading-tight text-[var(--bb-text-primary,#111827)]">{item.title}</h3>
                       <p className="mt-1 text-[13px] font-medium leading-5 text-[var(--bb-text-secondary,#4b5563)]">{item.body}</p>
                     </div>
