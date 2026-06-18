@@ -2126,6 +2126,7 @@ export default function DashboardJourneyExperience({
   const [bibleYearTriviaAnswers, setBibleYearTriviaAnswers] = useState<Record<string, string>>({});
   const [bibleYearTriviaQuestionIndexByDay, setBibleYearTriviaQuestionIndexByDay] = useState<Record<number, number>>({});
   const [bibleYearTriviaResultsOpenByDay, setBibleYearTriviaResultsOpenByDay] = useState<Record<number, boolean>>({});
+  const [bibleYearReflectionPostedByDay, setBibleYearReflectionPostedByDay] = useState<Record<number, boolean>>({});
   const [bibleYearScriptureNotesViewedByDay, setBibleYearScriptureNotesViewedByDay] = useState<Record<number, boolean>>({});
   const [continuingBibleYearDay, setContinuingBibleYearDay] = useState<number | null>(null);
   const [bibleYearPlanMenuOpen, setBibleYearPlanMenuOpen] = useState(false);
@@ -2269,7 +2270,6 @@ export default function DashboardJourneyExperience({
     expectedFinishDateLabel: bibleYearSchedule.expectedFinishDateLabel,
   };
   const [bibleYearOptionalDiscussionDay, setBibleYearOptionalDiscussionDay] = useState<number | null>(null);
-  const [bibleYearReflectionPostedByDay, setBibleYearReflectionPostedByDay] = useState<Record<number, boolean>>({});
   const [dashboardMenuOpen, setDashboardMenuOpen] = useState(false);
   const [dashboardGreeting, setDashboardGreeting] = useState("Good evening");
   const [isAnonymousGuest, setIsAnonymousGuest] = useState(false);
