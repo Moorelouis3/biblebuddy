@@ -80,13 +80,10 @@ const BOOKS = [
   "Revelation",
 ];
 
-const BOOKS_PER_PAGE = 12;
-
 // overview + 28 chapters
 const MATTHEW_TOTAL_ITEMS = 28 + 1;
 
 export default function ReadingPage() {
-  const [bookPage, setBookPage] = useState(0);
   const [currentActiveBook, setCurrentActiveBook] = useState<string | null>(null);
   const [userId, setUserId] = useState<string | null>(null);
   const [userName, setUserName] = useState<string>("buddy");
@@ -100,15 +97,10 @@ export default function ReadingPage() {
     bibleCompletionPercent: number;
   } | null>(null);
 
-  // book pagination - apply alphabetical sort if toggle is ON
+  // Apply alphabetical sort if toggle is ON
   const booksToDisplay = alphabeticalOrder
     ? [...BOOKS].sort((a, b) => a.localeCompare(b))
     : BOOKS;
-
-  const startIndex = bookPage * BOOKS_PER_PAGE;
-  const visibleBooks = booksToDisplay.slice(startIndex, startIndex + BOOKS_PER_PAGE);
-  const hasPrevPage = bookPage > 0;
-  const hasNextPage = startIndex + BOOKS_PER_PAGE < booksToDisplay.length;
 
   const [userEmail, setUserEmail] = useState<string | null>(null);
 
@@ -157,12 +149,13 @@ export default function ReadingPage() {
         const active = await getCurrentBook(userId, BOOKS);
         setCurrentActiveBook(active);
 
-        // Get completion states for all books (no locking checks - all books are open)
-        const states: Record<string, { complete: boolean }> = {};
-        for (const book of BOOKS) {
-          const complete = await isBookComplete(userId, book);
-          states[book] = { complete };
-        }
+        const completionEntries = await Promise.all(
+          BOOKS.map(async (book) => {
+            const complete = await isBookComplete(userId, book);
+            return [book, { complete }] as const;
+          }),
+        );
+        const states = Object.fromEntries(completionEntries) as Record<string, { complete: boolean }>;
         setBookStates(states);
       } catch (err) {
         console.error("Error loading book states:", err);
@@ -224,7 +217,6 @@ export default function ReadingPage() {
                 checked={alphabeticalOrder}
                 onChange={(e) => {
                   setAlphabeticalOrder(e.target.checked);
-                  setBookPage(0); // Reset to first page when toggling
                 }}
                 className="sr-only"
               />
@@ -259,16 +251,17 @@ export default function ReadingPage() {
 
           {/* BOOK GRID */}
           <div className="space-y-4">
-            <div className="grid grid-cols-3 md:grid-cols-4 gap-3 mt-2">
-              {visibleBooks.map((book) => {
+            <div className="grid grid-cols-2 gap-3 mt-2">
+              {booksToDisplay.map((book) => {
+                const isComplete = bookStates[book]?.complete ?? false;
                 const baseClasses =
                   "relative rounded-xl border px-3 py-3 text-left shadow-sm transition text-sm";
 
-                // All books are always unlocked - no locking behavior
                 const href = `/reading/books/${encodeURIComponent(book.toLowerCase())}`;
 
-                // All book cards use the same light gray styling
-                const cardClasses = "bg-gray-100 border-gray-300";
+                const cardClasses = isComplete
+                  ? "bg-emerald-50 border-emerald-300"
+                  : "bg-gray-100 border-gray-300";
 
                 return (
                   <Link
@@ -290,44 +283,24 @@ export default function ReadingPage() {
                     className={`${baseClasses} block ${cardClasses}`}
                   >
                     <p className="font-semibold">{book}</p>
-                    <p className="text-[11px] mt-1">
-                      Click to read this book.
+                    <p className={`text-[11px] mt-1 ${isComplete ? "text-emerald-800" : "text-gray-700"}`}>
+                      {isComplete
+                        ? "Completed. You've finished this book."
+                        : "Click to read this book."}
                     </p>
                   </Link>
                 );
               })}
             </div>
 
-            {/* BOOK PAGINATION + CONTROLS */}
-            <div className="flex items-center justify-between pt-2 text-xs sm:text-sm">
-              <button
-                type="button"
-                onClick={() => hasPrevPage && setBookPage((p) => p - 1)}
-                disabled={!hasPrevPage}
-                className={`text-blue-600 hover:underline ${
-                  !hasPrevPage ? "text-gray-300 cursor-default" : ""
-                }`}
-              >
-                Previous books
-              </button>
-
+            {/* CONTROLS */}
+            <div className="flex items-center justify-center pt-2 text-xs sm:text-sm">
               <button
                 type="button"
                 onClick={() => setShowStatsModal(true)}
                 className="text-blue-600 hover:underline cursor-pointer"
               >
                 📘 Your Bible Study Stats
-              </button>
-
-              <button
-                type="button"
-                onClick={() => hasNextPage && setBookPage((p) => p + 1)}
-                disabled={!hasNextPage}
-                className={`text-blue-600 hover:underline ${
-                  !hasNextPage ? "text-gray-300 cursor-default" : ""
-                }`}
-              >
-                Next books
               </button>
             </div>
           </div>
