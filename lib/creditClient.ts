@@ -77,19 +77,6 @@ function maybeShowCreditFeedback(userId: string, dailyCredits: number) {
   }
 }
 
-const LOW_CREDIT_CONFIRM_ACTIONS = new Set([
-  "keyword_viewed",
-  "person_viewed",
-  "place_viewed",
-  "study_notes_section_opened",
-]);
-
-function getLowCreditConfirmCopy(actionType: string, dailyCredits: number) {
-  const itemLabel = actionType === "study_notes_section_opened" ? "this study note" : "this database card";
-  const creditWord = dailyCredits === 1 ? "credit" : "credits";
-  return `You have ${dailyCredits} free ${creditWord} left today. Opening ${itemLabel} will use 1 credit. Do you want to continue?`;
-}
-
 export async function previewCreditAction(actionType: string): Promise<CreditClientResult> {
   const response = await fetch("/api/consume-credit", {
     method: "POST",
@@ -106,34 +93,11 @@ export async function previewCreditAction(actionType: string): Promise<CreditCli
   return result;
 }
 
-async function confirmLowCreditSpend(actionType: string) {
-  if (typeof window === "undefined" || !LOW_CREDIT_CONFIRM_ACTIONS.has(actionType)) {
-    return true;
-  }
-
-  const preview = await previewCreditAction(actionType);
-  if (!preview.ok || preview.isPaid) {
-    return true;
-  }
-
-  const dailyCredits = typeof preview.dailyCredits === "number" ? preview.dailyCredits : null;
-  if (dailyCredits === null || dailyCredits > 2 || dailyCredits <= 0) {
-    return true;
-  }
-
-  return window.confirm(getLowCreditConfirmCopy(actionType, dailyCredits));
-}
-
 export async function consumeCreditAction(
   actionType: string,
   options?: { userId?: string | null; actionLabel?: string | null }
 ): Promise<CreditClientResult> {
   try {
-    const confirmed = await confirmLowCreditSpend(actionType);
-    if (!confirmed) {
-      return { ok: false, reason: "canceled" };
-    }
-
     const response = await fetch("/api/consume-credit", {
       method: "POST",
       headers: {

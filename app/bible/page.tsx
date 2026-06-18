@@ -78,17 +78,8 @@ const BOOKS_BIBLE_ORDER = [
   "Revelation",
 ];
 
-const BOOKS_PER_PAGE = 12;
-
 export default function BiblePage() {
-  const [bookPage, setBookPage] = useState(0);
   const [bookStates, setBookStates] = useState<Record<string, { complete: boolean }>>({});
-
-  // book pagination
-  const startIndex = bookPage * BOOKS_PER_PAGE;
-  const visibleBooks = BOOKS_BIBLE_ORDER.slice(startIndex, startIndex + BOOKS_PER_PAGE);
-  const hasPrevPage = bookPage > 0;
-  const hasNextPage = startIndex + BOOKS_PER_PAGE < BOOKS_BIBLE_ORDER.length;
 
   // Get user ID and load book completion states
   useEffect(() => {
@@ -97,12 +88,14 @@ export default function BiblePage() {
       if (!user) return;
 
       try {
-        // Get completion states for all books (no loading delay)
-        const states: Record<string, { complete: boolean }> = {};
-        for (const book of BOOKS_BIBLE_ORDER) {
-          const complete = await isBookComplete(user.id, book);
-          states[book] = { complete };
-        }
+        const completionEntries = await Promise.all(
+          BOOKS_BIBLE_ORDER.map(async (book) => {
+            const complete = await isBookComplete(user.id, book);
+            return [book, { complete }] as const;
+          }),
+        );
+
+        const states = Object.fromEntries(completionEntries) as Record<string, { complete: boolean }>;
         setBookStates(states);
       } catch (err) {
         console.error("Error loading book states:", err);
@@ -139,8 +132,8 @@ export default function BiblePage() {
         <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-8">
           {/* BOOK GRID */}
           <div className="space-y-4">
-            <div className="grid grid-cols-3 md:grid-cols-4 gap-3 mt-2">
-                  {visibleBooks.map((book) => {
+            <div className="grid grid-cols-2 gap-3 mt-2">
+                  {BOOKS_BIBLE_ORDER.map((book) => {
                     const isComplete = bookStates[book]?.complete ?? false;
 
                     const baseClasses =
@@ -149,10 +142,10 @@ export default function BiblePage() {
                     // All books are unlocked and open directly in the full Bible reader.
                     const href = `/Bible/${encodeURIComponent(book.toLowerCase())}/1`;
 
-                    // Determine styling: complete = blue, default = white
+                    // Determine styling: complete = green, default = white
                     let cardClasses = "bg-white border-blue-200";
                     if (isComplete) {
-                      cardClasses = "bg-blue-100 border-blue-300";
+                      cardClasses = "bg-emerald-50 border-emerald-300";
                     }
 
                     return (
@@ -162,7 +155,7 @@ export default function BiblePage() {
                         className={`${baseClasses} block ${cardClasses} hover:shadow-md hover:scale-[1.02] transition`}
                       >
                         <p className="font-semibold">{book}</p>
-                        <p className="text-[11px] mt-1">
+                        <p className={`text-[11px] mt-1 ${isComplete ? "text-emerald-800" : "text-gray-700"}`}>
                           {isComplete
                             ? "Completed. You've finished this book."
                             : "Click to read this book."}
@@ -170,35 +163,6 @@ export default function BiblePage() {
                       </Link>
                     );
                   })}
-            </div>
-
-            {/* BOOK PAGINATION */}
-            <div className="flex items-center justify-between pt-2 text-xs sm:text-sm text-blue-600">
-              <button
-                type="button"
-                onClick={() => hasPrevPage && setBookPage((p) => p - 1)}
-                disabled={!hasPrevPage}
-                className={`hover:underline ${
-                  !hasPrevPage ? "text-gray-300 cursor-default" : ""
-                }`}
-              >
-                Previous books
-              </button>
-
-              <span className="text-gray-600 text-xs">
-                Page {bookPage + 1} of {Math.ceil(BOOKS_BIBLE_ORDER.length / BOOKS_PER_PAGE)}
-              </span>
-
-              <button
-                type="button"
-                onClick={() => hasNextPage && setBookPage((p) => p + 1)}
-                disabled={!hasNextPage}
-                className={`hover:underline ${
-                  !hasNextPage ? "text-gray-300 cursor-default" : ""
-                }`}
-              >
-                Next books
-              </button>
             </div>
           </div>
         </div>

@@ -10,8 +10,6 @@ import { getFeaturedCharactersForMatthew, FeaturedCharacter } from "../../../../
 import { FeaturedCharacterModal } from "../../../../components/FeaturedCharacterModal";
 import { useFeaturedCharacters } from "../../../../hooks/useFeaturedCharacters";
 import ReactMarkdown from "react-markdown";
-import ChapterNotesMarkdown from "../../../../components/ChapterNotesMarkdown";
-import BibleYearDeepStudySectionCards from "../../../../components/BibleYearDeepStudySectionCards";
 import { BIBLE_HIGHLIGHTING_VERSION_MARKER, enrichBibleVerses } from "../../../../lib/bibleHighlighting";
 import { logStudyView } from "../../../../lib/studyViewLimit";
 import { ACTION_TYPE } from "../../../../lib/actionTypes";
@@ -20,7 +18,6 @@ import { consumeCreditAction, isCreditActionCanceled } from "../../../../lib/cre
 import { findKeywordNotes, findPersonNotes, findPlaceNotes, getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes, saveKeywordNotes, savePersonNotes, savePlaceNotes } from "../../../../lib/bibleNotes";
 import { requestLouisNotes } from "../../../../lib/requestLouisNotes";
 import { trackNavigationActionOnce } from "../../../../lib/navigationActionTracker";
-import { trackDeepStudyInterestOnce, trackStudyNotesSectionOpened, trackStudyNotesViewed } from "../../../../lib/deepStudyInterestTracking";
 import { triggerPoints } from "../../../../components/PointsPop";
 import { ensureBibleEntityLearned } from "../../../../lib/bibleEntityProgress";
 import { dispatchLouisMoment } from "../../../../lib/louisMoments";
@@ -44,10 +41,9 @@ import { awardDiamonds } from "../../../../lib/diamondWallet";
 import { DIAMOND_REWARDS, TASK_REWARD_LABELS, TASK_XP } from "../../../../lib/progressionRewards";
 import { cacheChapterNotes, fetchBibleChapterNotes, getCanonicalBibleNotesBookKey, getOfflineChapterNotes } from "../../../../lib/chapterNotesOffline";
 import BrowserTtsButton from "../../../../components/BrowserTtsButton";
-import { getGenesisOneTtsSrc } from "../../../../lib/genesisOneTts";
 import { getBibleChapterTtsSrc } from "../../../../lib/bibleChapterTts";
 import { BIBLE_READING_BACKGROUND_VOLUME, getBibleReadingBackgroundTracks } from "../../../../lib/bibleReadingBackgroundMusic";
-import { getApprovedBibleYearDeepStudyMarkdownForChapter, getApprovedBibleYearDeepStudySectionsForChapter } from "../../../../lib/bibleYearApprovedDeepStudy";
+import { getApprovedBibleYearDeepStudyMarkdownForChapter } from "../../../../lib/bibleYearApprovedDeepStudy";
 
 type Verse = {
   num: number;
@@ -251,12 +247,6 @@ export default function BibleChapterPage() {
   const [isAnimatingKeyword, setIsAnimatingKeyword] = useState(false);
   const [learnedToast, setLearnedToast] = useState<string | null>(null);
   const [fromReadingPlan, setFromReadingPlan] = useState(false);
-  const [showReviewModal, setShowReviewModal] = useState(false);
-  const [reviewNotesText, setReviewNotesText] = useState<string>("");
-  const [activeApprovedDeepStudyReference, setActiveApprovedDeepStudyReference] = useState<string | null>(null);
-  const [reviewLoading, setReviewLoading] = useState(false);
-  const [reviewError, setReviewError] = useState<string | null>(null);
-  const reviewLoadingRef = useRef(false);
   const [showTriviaModal, setShowTriviaModal] = useState(false);
   const [showScrambledModal, setShowScrambledModal] = useState(false);
   const [triviaChapterPack, setTriviaChapterPack] = useState<TriviaChapterPack | null>(null);
@@ -272,14 +262,10 @@ export default function BibleChapterPage() {
   const autoOpenedNotesRef = useRef(false);
   const louisChapterPromptRef = useRef<string | null>(null);
   const bibleGuideShownThisVisitRef = useRef(false);
-  const approvedBibleYearDeepStudySections = useMemo(
-    () => getApprovedBibleYearDeepStudySectionsForChapter(bookDisplayName, chapter),
-    [bookDisplayName, chapter],
-  );
-  const approvedBibleYearDeepStudyMarkdown = useMemo(
-    () => getApprovedBibleYearDeepStudyMarkdownForChapter(bookDisplayName, chapter),
-    [bookDisplayName, chapter],
-  );
+  const chapterStudyNotesActionPrefix = useMemo(() => {
+    const normalizedBook = bookDisplayName.toLowerCase().replace(/[^a-z0-9]+/g, "");
+    return `opened ${normalizedBook}${chapter}-`;
+  }, [bookDisplayName, chapter]);
   const chapterSpeechText = useMemo(
     () =>
       sections
@@ -292,9 +278,15 @@ export default function BibleChapterPage() {
     [bookDisplayName, chapter, translation],
   );
 
-  useEffect(() => {
-    setActiveApprovedDeepStudyReference(approvedBibleYearDeepStudySections[0]?.reference ?? null);
-  }, [approvedBibleYearDeepStudySections]);
+  function openInlineStudyNotes() {
+    setGamesMenuOpen(false);
+    window.setTimeout(() => {
+      verseContainerRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }, 80);
+  }
 
   function stripPopupIntro(markdown: string): string {
     return markdown
@@ -1458,17 +1450,18 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
       if (!userId) return;
       const chapterLabelBase = `${book.split(" ").map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(" ")} ${chapter}`;
       const reviewOpenedLabel = `${chapterLabelBase} Review Opened`;
-      const [reviewRes, triviaRes, scrambledRes] = await Promise.all([
+      const [reviewRes, studyNotesSectionRes, triviaRes, scrambledRes] = await Promise.all([
         supabase.from("master_actions").select("id").eq("user_id", userId).eq("action_type", ACTION_TYPE.chapter_notes_viewed).eq("action_label", reviewOpenedLabel).limit(1).maybeSingle(),
+        supabase.from("master_actions").select("id").eq("user_id", userId).eq("action_type", ACTION_TYPE.study_notes_section_opened).like("action_label", `${chapterStudyNotesActionPrefix}%`).limit(1).maybeSingle(),
         supabase.from("master_actions").select("id").eq("user_id", userId).eq("action_type", ACTION_TYPE.trivia_chapter_completed).ilike("action_label", `${chapterLabelBase}%`).limit(1).maybeSingle(),
         supabase.from("master_actions").select("id").eq("user_id", userId).eq("action_type", ACTION_TYPE.scrambled_chapter_completed).ilike("action_label", `${chapterLabelBase}%`).limit(1).maybeSingle(),
       ]);
-      setReviewDone(!!reviewRes.data);
+      setReviewDone(!!reviewRes.data || !!studyNotesSectionRes.data);
       setTriviaDone(!!triviaRes.data);
       setScrambledDone(!!scrambledRes.data);
     }
     checkDone();
-  }, [book, chapter, userId]);
+  }, [book, chapter, userId, chapterStudyNotesActionPrefix]);
 
   // Load chapter summary
   useEffect(() => {
@@ -1483,170 +1476,6 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
     loadSummary();
   }, [book, chapter]);
 
-  async function openReviewModal() {
-    setShowReviewModal(true);
-    const chapterNum = Number(chapter);
-    try {
-      const bookKey = getCanonicalBibleNotesBookKey(book);
-
-      // 1. Log view + award XP once per chapter
-      if (userId) {
-        const reviewOpenedLabel = `${bookDisplayName} ${chapterNum} Review Opened`;
-        void trackDeepStudyInterestOnce({
-          userId,
-          username,
-          source: approvedBibleYearDeepStudySections.length > 0 ? "bible_in_one_year" : "bible_chapter",
-          sourceLabel: approvedBibleYearDeepStudySections.length > 0 ? "Bible in One Year" : "Bible Chapter Notes",
-          itemKey: `${bookDisplayName.toLowerCase().replace(/\s+/g, "-")}-${chapterNum}`,
-          itemTitle: `${bookDisplayName} ${chapterNum}`,
-          contentLabel: `${bookDisplayName} ${chapterNum} Study Notes`,
-        });
-        void trackStudyNotesViewed({
-          userId,
-          username,
-          source: approvedBibleYearDeepStudySections.length > 0 ? "bible_in_one_year" : "bible_chapter",
-          sourceLabel: approvedBibleYearDeepStudySections.length > 0 ? "Bible in One Year" : "Bible Chapter Notes",
-          itemKey: `${bookDisplayName.toLowerCase().replace(/\s+/g, "-")}-${chapterNum}`,
-          itemTitle: `${bookDisplayName} ${chapterNum}`,
-          contentLabel: `${bookDisplayName} ${chapterNum} Study Notes`,
-        });
-
-        // Log chapter_notes_viewed (every time)
-        await supabase.from("master_actions").insert({
-          user_id: userId,
-          action_type: ACTION_TYPE.chapter_notes_viewed,
-          action_label: reviewOpenedLabel,
-        });
-        setReviewDone(true);
-        if (typeof window !== "undefined") {
-          window.dispatchEvent(new CustomEvent("bb:daily-task-progress-updated"));
-        }
-
-        // Award XP first time only (chapter_notes_reviewed)
-        const { data: existingReviewed } = await supabase
-          .from("master_actions")
-          .select("id")
-          .eq("user_id", userId)
-          .eq("action_type", ACTION_TYPE.chapter_notes_reviewed)
-          .eq("action_label", reviewOpenedLabel)
-          .limit(1)
-          .maybeSingle();
-
-        if (!existingReviewed) {
-          const { error: insertErr } = await supabase.from("master_actions").insert({
-            user_id: userId,
-            action_type: ACTION_TYPE.chapter_notes_reviewed,
-            action_label: reviewOpenedLabel,
-          });
-          if (!insertErr) {
-            triggerPoints(TASK_XP.notes);
-            setReviewDone(true);
-            if (typeof window !== "undefined") {
-              window.dispatchEvent(new CustomEvent("bb:daily-task-progress-updated"));
-            }
-          }
-        } else {
-          setReviewDone(true);
-          if (typeof window !== "undefined") {
-            window.dispatchEvent(new CustomEvent("bb:daily-task-progress-updated"));
-          }
-        }
-      }
-
-      if (approvedBibleYearDeepStudySections.length > 0) {
-        setReviewNotesText(approvedBibleYearDeepStudyMarkdown);
-        setReviewLoading(false);
-        setReviewError(null);
-        return;
-      }
-
-      if (reviewNotesText || reviewLoadingRef.current) return;
-      reviewLoadingRef.current = true;
-      setReviewLoading(true);
-      setReviewError(null);
-
-      const offlineNotes = await getOfflineChapterNotes(bookDisplayName, chapterNum);
-      if (offlineNotes) {
-        setReviewNotesText(offlineNotes);
-      }
-
-      // 2. Check bible_notes cache first
-      const { data: cached } = await fetchBibleChapterNotes(supabase, bookDisplayName, chapterNum);
-
-      if (cached?.notes_text && cached.notes_text.trim().length > 0) {
-        cacheChapterNotes(bookDisplayName, chapterNum, cached.notes_text);
-        setReviewNotesText(cached.notes_text);
-        return;
-      }
-
-      if (offlineNotes) return;
-
-      // 2. Not cached Ã¢â‚¬â€ generate via AI
-      const prompt = `You are Little Louis. Generate beginner friendly notes for ${bookDisplayName} chapter ${chapter} using this exact template and rules.
-
-TEMPLATE
-# Ã°Å¸Â§Â  Big Idea of the Chapter
-One short paragraph explaining the heart of the chapter in simple English.
-
-# Ã°Å¸Å½Â¬ What's HappeningÃ¢â‚¬Â¦
-Include three or four cinematic story movements. Each movement follows:
-[Emoji] **Story Moment Title** (ALWAYS bold the story moment title with **)
-A short paragraph of three to four sentences explaining what happens and why it matters. Smooth, simple, friendly language.
-
-# Ã°Å¸â€œÅ’ Key Themes
-List two or three themes. Each theme is one short sentence.
-
-# Ã°Å¸â€â€” Connections to the Bigger Story
-One or two simple connections to prophecy, covenant, or Jesus mission. Beginner friendly.
-
-# Ã°Å¸â„¢Å’ Simple Life Application
-A short paragraph of three to four sentences explaining what this chapter shows about God and what the reader is invited to believe or do.
-
-# Ã°Å¸ÂÂ One Sentence Summary
-A final strong sentence that captures the message.
-
-RULES
-DO NOT include a top-level header. Start directly with "# Ã°Å¸Â§Â  Big Idea of the Chapter".
-No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
-
-      const response = await fetch("/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: [{ role: "user", content: prompt }] }),
-      });
-      if (!response.ok) throw new Error("Failed to generate review");
-      const json = await response.json();
-      let generated = (json?.reply as string) ?? "";
-      if (!generated.trim()) throw new Error("Empty response from AI");
-
-      // Clean hyphens to match existing notes format
-      generated = generated.replace(/-/g, " ");
-
-      // 3. Upsert to bible_notes
-      await supabase.from("bible_notes").upsert(
-        { book: bookKey, chapter: chapterNum, notes_text: generated },
-        { onConflict: "book,chapter" }
-      );
-
-      // 4. Re-read from DB (single source of truth)
-      const { data: saved } = await fetchBibleChapterNotes(supabase, bookDisplayName, chapterNum);
-
-      const nextNotes = saved?.notes_text ?? generated;
-      cacheChapterNotes(bookDisplayName, chapterNum, nextNotes);
-      setReviewNotesText(nextNotes);
-    } catch (err: any) {
-      console.error("Review modal error:", err);
-      const offlineNotes = await getOfflineChapterNotes(bookDisplayName, chapterNum);
-      if (offlineNotes) {
-        setReviewNotesText(offlineNotes);
-      } else {
-        setReviewError("Couldn't load the chapter notes. Please try again.");
-      }
-    } finally {
-      setReviewLoading(false);
-      reviewLoadingRef.current = false;
-    }
-  }
 
   // Detect if this chapter was opened from a reading plan or devotional
   const [sourceContext, setSourceContext] = useState<{
@@ -1801,7 +1630,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
         message: [
           "quick tip",
           "you can change the Bible translation anytime between King James, ASV, and WEB",
-          "you can also open chapter notes for a deeper breakdown or test yourself with trivia and scrambled",
+          "you can also open study notes for a deeper breakdown or test yourself with trivia and scrambled",
           "you can tap any verse number to highlight it",
           "use these tools to go deeper, not just read",
         ].join("\n\n"),
@@ -1885,7 +1714,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
 
     if (autoOpenedNotesRef.current) return;
     autoOpenedNotesRef.current = true;
-    void openReviewModal();
+    openInlineStudyNotes();
   }, [searchParams, book, chapter, userId]);
 
   function sendChapterLouisMoment(type: "completed" | "checklist") {
@@ -1915,10 +1744,10 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
         return {
           message:
             type === "completed"
-              ? `Hey, you just completed ${chapterDisplayLabel}. Great job.\n\nI would go into the chapter notes next.\n\nThat is where you slow down and really see what this chapter is saying.\n\nDo you want to do that now?`
-              : `You already finished ${chapterDisplayLabel}.\n\nI would go into the chapter notes next.\n\nThat is the best way to go deeper before you move on.\n\nDo you want to do that now?`,
+              ? `Hey, you just completed ${chapterDisplayLabel}. Great job.\n\nI would go into the study notes next.\n\nThat is where you slow down and really see what this chapter is saying.\n\nDo you want to do that now?`
+              : `You already finished ${chapterDisplayLabel}.\n\nI would go into the study notes next.\n\nThat is the best way to go deeper before you move on.\n\nDo you want to do that now?`,
           yesMessage:
-            "Tap Chapter Notes on this page and start there. That is the best next move if you want to understand the chapter better.",
+            "Tap Study Notes on this page and start there. That is the best next move if you want to understand the chapter better.",
         };
       }
 
@@ -1958,7 +1787,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
 
     const chapterLabel = `${book} chapter ${chapter}`;
     const notesLine =
-      "Ã°Å¸â€œâ€“ IÃ¢â‚¬â„¢d start with the chapter notes. If youÃ¢â‚¬â„¢re on the free plan, that will use 1 credit from your day.";
+      "I'd start with the study notes. If you're on the free plan, opening a section will use 1 credit from your day.";
     const triviaLine = triviaDone
       ? "Ã°Å¸Å½Â¯ Trivia for this chapter is already done."
       : "Ã°Å¸Å½Â¯ After that, try the trivia for this chapter and see what actually stuck.";
@@ -1975,7 +1804,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
         {
           id: `chapter-notes-${book}-${chapter}`,
           label: "How do I open the notes?",
-          message: "Tap Chapter Notes on this page and start there. That's the best next move if you want to understand the chapter better.",
+          message: "Tap Study Notes on this page and start there. That's the best next move if you want to understand the chapter better.",
         },
         !triviaDone
           ? {
@@ -2631,7 +2460,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                 <div className="group relative">
                   <button
                     type="button"
-                    onClick={openReviewModal}
+                    onClick={openInlineStudyNotes}
                     aria-label="Chapter notes"
                     className={`flex items-center justify-center rounded-xl border px-2.5 py-1.5 transition ${
                       reviewDone
@@ -2756,12 +2585,12 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                     <button
                       type="button"
                       onClick={() => {
-                        openReviewModal();
+                        openInlineStudyNotes();
                         setGamesMenuOpen(false);
                       }}
                       className={`flex w-full items-center justify-between rounded-2xl border px-4 py-3 text-sm font-semibold transition ${reviewDone ? "border-emerald-300 bg-emerald-50 text-emerald-700" : "border-gray-200 bg-white text-gray-800 hover:border-blue-200 hover:bg-blue-50"}`}
                     >
-                      <span>Chapter Notes</span>
+                      <span>Study Notes</span>
                       <span>{reviewDone ? "Done" : "Open"}</span>
                     </button>
 
@@ -2904,12 +2733,12 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                   <button
                     type="button"
                     onClick={() => {
-                      openReviewModal();
+                      openInlineStudyNotes();
                       setGamesMenuOpen(false);
                     }}
                     className={`flex w-full items-center justify-between rounded-2xl border px-4 py-3 text-sm font-semibold transition ${reviewDone ? "border-emerald-300 bg-emerald-50 text-emerald-700" : "border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] hover:brightness-95"}`}
                   >
-                    <span>Chapter Notes</span>
+                    <span>Study Notes</span>
                     <span>{reviewDone ? "Done" : "Open"}</span>
                   </button>
 
@@ -3067,101 +2896,6 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
         </div>
       </div>
 
-      {/* CHAPTER NOTES MODAL */}
-      {showReviewModal && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4"
-          style={{ backgroundColor: "rgba(0,0,0,0.55)", backdropFilter: "blur(4px)" }}
-          onClick={() => setShowReviewModal(false)}
-        >
-          <div
-            className="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto rounded-3xl bg-white shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Header */}
-            <div className="sticky top-0 z-10 flex items-center justify-between rounded-t-3xl border-b border-gray-100 bg-white/95 px-6 py-4 backdrop-blur">
-              <div className="flex items-center gap-3">
-                <div className="flex h-9 w-9 items-center justify-center rounded-2xl bg-blue-50 text-sm font-semibold text-blue-700">Notes</div>
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-widest text-blue-600">Chapter Notes</p>
-                  <h2 className="text-base font-bold text-gray-900">{bookDisplayName} {chapter}</h2>
-                </div>
-              </div>
-              <button
-                type="button"
-                onClick={() => setShowReviewModal(false)}
-                className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-gray-500 transition hover:bg-gray-200"
-                aria-label="Close review"
-              >
-                ×
-              </button>
-            </div>
-
-            {/* Body */}
-            <div className="px-6 py-5 pb-8">
-              {reviewLoading ? (
-                <div className="flex flex-col items-center gap-4 py-12">
-                  <div style={{ animation: "bounce 1s infinite" }}>
-                    <LouisAvatar mood="think" size={60} />
-                  </div>
-                  <p className="text-sm text-gray-400 italic animate-pulse">Little Louis is preparing your notes...</p>
-                </div>
-              ) : reviewError ? (
-                <div className="py-10 text-center">
-                  <p className="text-sm text-red-500">{reviewError}</p>
-                  <button
-                    type="button"
-                    onClick={() => { reviewLoadingRef.current = false; openReviewModal(); }}
-                    className="mt-3 rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700"
-                  >
-                    Try Again
-                  </button>
-                </div>
-              ) : (
-                <div className="max-w-none text-gray-800">
-                  {approvedBibleYearDeepStudySections.length > 0 ? (
-                    <div className="-mx-2 rounded-[28px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_36%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#140d09)_78%,rgba(0,0,0,0.72))] p-4 text-left text-[var(--bb-text-primary,#fff7ed)] shadow-[0_24px_70px_rgba(0,0,0,0.28)] [--bb-card-border:rgba(246,180,75,0.22)] [--bb-surface-soft:rgba(255,255,255,0.06)] [--bb-text-primary:#fff7ed] [--bb-text-secondary:#e7d4bd]">
-                      <BrowserTtsButton
-                        text={approvedBibleYearDeepStudyMarkdown}
-                        label="Listen to chapter notes"
-                        audioSrc={getGenesisOneTtsSrc("notes", bookDisplayName, chapter)}
-                      />
-                        <BibleYearDeepStudySectionCards
-                          sections={approvedBibleYearDeepStudySections}
-                          activeReference={activeApprovedDeepStudyReference}
-                          onActiveReferenceChange={setActiveApprovedDeepStudyReference}
-                          onSectionOpen={(section) => {
-                            void trackStudyNotesSectionOpened({
-                              userId,
-                              username,
-                              source: "bible_in_one_year",
-                              sourceLabel: "Bible in One Year",
-                              itemKey: `${bookDisplayName.toLowerCase().replace(/\s+/g, "-")}-${Number(chapter)}`,
-                              itemTitle: `${bookDisplayName} ${Number(chapter)}`,
-                              contentLabel: `${bookDisplayName} ${Number(chapter)} Study Notes`,
-                              sectionReference: section.reference,
-                              sectionTitle: section.title,
-                            });
-                          }}
-                          topId="bible-chapter-approved-deep-study-top"
-                        />
-                    </div>
-                  ) : (
-                    <>
-                      <BrowserTtsButton
-                        text={reviewNotesText}
-                        label="Listen to chapter notes"
-                        audioSrc={getGenesisOneTtsSrc("notes", bookDisplayName, chapter)}
-                      />
-                      <ChapterNotesMarkdown>{reviewNotesText}</ChapterNotesMarkdown>
-                    </>
-                  )}
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* TRIVIA MODAL */}
       {showTriviaModal && triviaChapterPack && (
@@ -3781,6 +3515,7 @@ function CongratsModalWithConfetti({
 
   const triviaBookKey = book.toLowerCase().trim().replace(/[^a-z0-9]+/g, "");
   const resolvedTriviaBookKey = triviaBookKey === "songofsolomon" ? "songofsongs" : triviaBookKey;
+  const chapterStudyNotesPrefix = `opened ${book.toLowerCase().replace(/[^a-z0-9]+/g, "")}${chapter}-`;
   const triviaRouteSlug =
     CHAPTER_BASED_TRIVIA_BOOK_CONFIG.find((entry) => entry.key === resolvedTriviaBookKey)?.routeSlug ?? resolvedTriviaBookKey;
 
@@ -3794,13 +3529,21 @@ function CongratsModalWithConfetti({
     try {
       const chapterLabel = `${bookDisplayName} ${chapter} Review Opened`;
 
-      const [notesRes, triviaRes, scrambledRes] = await Promise.all([
+      const [notesRes, studyNotesSectionRes, triviaRes, scrambledRes] = await Promise.all([
         supabase
           .from("master_actions")
           .select("id")
           .eq("user_id", modalUserId)
           .eq("action_type", ACTION_TYPE.chapter_notes_viewed)
           .eq("action_label", chapterLabel)
+          .limit(1)
+          .maybeSingle(),
+        supabase
+          .from("master_actions")
+          .select("id")
+          .eq("user_id", modalUserId)
+          .eq("action_type", ACTION_TYPE.study_notes_section_opened)
+          .like("action_label", `${chapterStudyNotesPrefix}%`)
           .limit(1)
           .maybeSingle(),
         supabase
@@ -3822,7 +3565,7 @@ function CongratsModalWithConfetti({
       ]);
 
       setChecklist({
-        notesReviewed: !!notesRes.data,
+        notesReviewed: !!notesRes.data || !!studyNotesSectionRes.data,
         triviaDone: !!triviaRes.data,
         scrambledDone: !!scrambledRes.data,
       });
@@ -3846,8 +3589,10 @@ function CongratsModalWithConfetti({
   }
 
   function handleReadNotes() {
-    onOpenReview?.();
     closeModal();
+    window.setTimeout(() => {
+      onOpenReview?.();
+    }, 40);
   }
 
   function handlePlayScrambled() {
@@ -3929,10 +3674,10 @@ function CongratsModalWithConfetti({
                     <div className="flex items-start justify-between gap-4">
                       <div>
                         <p className="text-base font-bold text-gray-900">
-                          Review {bookDisplayName} {chapter} Notes
+                          Open Study Notes for {bookDisplayName} {chapter}
                         </p>
                         <p className="mt-1 text-sm text-gray-700">
-                          Quick recap so you know what you just read meant.
+                          See the section cards and go deeper without leaving the reader.
                         </p>
                       </div>
                       <div className="flex flex-col items-end gap-2">
@@ -4117,3 +3862,5 @@ function LevelUpOverlay({
     </div>
   );
 }
+
+

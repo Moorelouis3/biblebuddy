@@ -10943,178 +10943,145 @@ function applyPersonalGenesisThreeStudySections() {
       endVerse: 5,
       reference: "Genesis 3:1-5",
       title: "The Serpent Questions God",
-      icon: "🐍",
+      icon: "\u{1F40D}",
       phrases: [
         [
-          "🐍 The Serpent Was More Subtil",
-          `This is the first time a new voice enters the story.
+          "\u{1F40D} The Serpent Was More Subtil",
+          `Subtil means crafty, clever, or shrewd.
 
-Genesis does not begin by telling us everything about the serpent.
+The serpent is not wise in a godly way.
 
-It shows us how he works.
+He is skilled at twisting words and leading people into doubt.
 
-The word subtil means crafty, clever, or shrewd.
+\u{1F40D} Crafty
+\u{1F4AC} Skilled with words
+\u{26A0}\u{FE0F} Dangerous deception
 
-That does not mean wise in a godly way.
+The danger is not physical force.
 
-It means the serpent knows how to twist a conversation.
-
-🐍 He does not attack with force
-❓ He starts with a question
-🌳 He shifts attention to the forbidden tree
-🧠 He makes doubt feel reasonable
-
-This matters because temptation often begins quietly.
-
-Before Eve ever touches the fruit, the serpent gets her thinking differently about God's word.`,
+The danger is a clever voice that makes disobedience sound reasonable.`,
         ],
         [
-          "❓ Hath God Said",
-          `This is the first question from the serpent.
+          "\u{2753} Hath God Said",
+          `The serpent questions what God said.
 
-And it is aimed directly at what God said.
+He is not asking for truth.
 
-The serpent does not begin by saying, "God is not real."
+He is trying to make God's command sound doubtful and unfair.
 
-He begins by making God's command sound uncertain.
+\u{2753} God's word is questioned
+\u{1F4D6} A clear command is challenged
+\u{26A0}\u{FE0F} Doubt enters the conversation
 
-That is important.
-
-Temptation often starts by making clear things feel blurry.
-
-God had given Adam a command.
-
-But the serpent turns that command into a debate.
-
-❓ Did God really say that?
-❓ Did He really mean that?
-❓ Is that command really fair?
-
-This phrase matters because the first attack in the Bible is an attack on trust.
-
-If the serpent can weaken confidence in God's word, disobedience becomes easier.`,
+Temptation often begins by turning obedience into a debate.`,
         ],
         [
-          "🌳 Every Tree Of The Garden",
-          `The serpent exaggerates what God said.
+          "\u{1F333} Every Tree Of The Garden",
+          `The serpent speaks as if God had forbidden all the trees.
 
-God had allowed Adam to eat freely from every tree except one.
+That is not true.
 
-But the serpent talks as if God has forbidden everything.
+God had provided many trees and had forbidden only one.
 
-This is one of temptation's oldest tricks.
+\u{1F333} God gave many trees
+\u{1F381} God was generous
+\u{1F6AB} One tree was forbidden
 
-It shrinks God's generosity and magnifies God's boundary.
-
-🌳 God gave a garden full of trees
-🍎 God gave food and freedom
-🚫 God gave one forbidden tree
-
-The serpent wants Eve to stare at the one limit and forget the whole garden.
-
-That matters because sin often begins when we stop seeing what God has given.
-
-The boundary starts to feel unfair only when the gift is forgotten.`,
+Temptation shrinks God's gifts and magnifies His boundary.`,
         ],
         [
-          "🚫 Ye Shall Not Surely Die",
-          `Here the serpent directly contradicts God.
+          "\u{1F4AC} And The Woman Said Unto The Serpent",
+          `Eve begins answering the serpent.
 
-At first, he questioned God's word.
+The temptation moves from being an outside voice to an active discussion.
 
-Now he denies it.
+\u{1F40D} She engages the serpent
+\u{1F4AC} She continues the conversation
+\u{26A0}\u{FE0F} She entertains the temptation
+
+Temptation often grows when people continue the conversation instead of ending it.`,
+        ],
+        [
+          "\u{1F333} We May Eat Of The Fruit Of The Trees Of The Garden",
+          `Eve knows God has provided abundance.
+
+She is not lacking anything she needs.
+
+\u{1F333} God provided many trees
+\u{1F34E} Food was plentiful
+\u{1F381} God was generous
+
+The temptation was not about survival.
+
+It was about wanting what God had forbidden.`,
+        ],
+        [
+          "\u{26A0}\u{FE0F} Neither Shall Ye Touch It, Lest Ye Die",
+          `Eve knows there is a boundary.
+
+She understands there is a consequence attached to disobedience.
+
+\u{26A0}\u{FE0F} The command is known
+\u{1F4D6} God's warning is known
+\u{2620}\u{FE0F} The consequence is known
+
+The issue is not ignorance.
+
+The issue is choosing another voice over God's voice.`,
+        ],
+        [
+          "\u{1F6AB} Ye Shall Not Surely Die",
+          `The serpent directly denies God's warning.
 
 God said disobedience would bring death.
 
-The serpent says it will not.
+The serpent says there will be no consequence.
 
-This is not a small misunderstanding.
+\u{1F6AB} God's warning is denied
+\u{1F40D} The serpent contradicts God
+\u{2620}\u{FE0F} Death is treated as unreal
 
-It is a rival message about life, death, and truth.
-
-🚫 No consequence
-🍎 No danger
-🐍 No need to trust God's warning
-
-This phrase matters because it is the first false promise in the Bible.
-
-The serpent offers safety without obedience and freedom without trust.
-
-Genesis will show that God's warning was true.`,
+This is the first direct lie in the Bible.`,
         ],
         [
-          "👀 Your Eyes Shall Be Opened",
+          "\u{1F440} Your Eyes Shall Be Opened",
           `The serpent promises a new kind of sight.
 
-He makes disobedience sound like awakening.
+He makes disobedience sound like awakening and discovery.
 
-It sounds like Eve will finally understand something hidden from her.
+\u{1F440} New sight is promised
+\u{1F9E0} Hidden knowledge is offered
+\u{26A0}\u{FE0F} The cost is concealed
 
-There is a cruel half-truth here.
+Their eyes will open, but not into freedom.
 
-Their eyes will be opened.
-
-But not in the way they hope.
-
-They will not wake up into freedom.
-
-They will wake up into shame.
-
-👀 They will see nakedness
-😨 They will feel fear
-🌿 They will cover themselves
-
-This phrase matters because temptation often advertises insight while hiding the cost.
-
-It promises, "You will finally know," but it does not say what that knowledge will do to you.`,
+They will open into shame.`,
         ],
         [
-          "⚖️ Knowing Good And Evil",
-          `This phrase is not only about learning facts.
+          "\u{2696}\u{FE0F} Knowing Good And Evil",
+          `This is not just about learning facts.
 
-It is about moral authority.
+It is about deciding good and evil apart from God.
 
-Adam and Eve already knew good because they lived in God's good world.
+\u{2696}\u{FE0F} Moral authority is in view
+\u{1F4D6} God's command is being challenged
+\u{1F464} Humanity wants to decide for itself
 
-They already had God's command.
-
-The temptation is to decide good and evil apart from God.
-
-That is the deeper issue.
-
-⚖️ Who defines good?
-⚖️ Who defines evil?
-🙏 Will humans trust God?
-👤 Or will humans try to become their own final authority?
-
-This phrase matters because the fall is not just about fruit.
-
-It is about humanity trying to take God's place in deciding what is right.`,
+The temptation is to take God's place as the final judge of what is right and wrong.`,
         ],
         [
-          "🪞 Ye Shall Be As Gods",
-          `This is the heart of the temptation.
+          "\u{1F451} Ye Shall Be As gods",
+          `The serpent promises that disobedience will make them like gods.
 
-Adam and Eve were already made in God's image.
+He makes independence from God sound like an upgrade.
 
-They were already created to reflect God.
+\u{1F451} A higher status is promised
+\u{2696}\u{FE0F} Self-rule is offered
+\u{1F6AB} Dependence on God is rejected
 
-But the serpent tempts them to reach for godlikeness in the wrong way.
+The temptation is not just to eat fruit.
 
-He makes dependence on God sound small.
-
-He makes independence from God sound wise.
-
-🪞 Be like God
-👑 Rule for yourself
-⚖️ Decide for yourself
-🚫 Do not live under God's word
-
-This phrase matters because temptation often offers a twisted version of something good.
-
-Humans were made to reflect God, but not replace Him.
-
-Trying to become like God without trusting God breaks the relationship that gave them life.`,
+It is to seek greatness without submission to God.`,
         ],
       ],
     }),
@@ -11123,159 +11090,85 @@ Trying to become like God without trusting God breaks the relationship that gave
       endVerse: 7,
       reference: "Genesis 3:6-7",
       title: "The Woman Takes The Fruit",
-      icon: "🍎",
+      icon: "\u{1F34E}",
       phrases: [
         [
-          "👀 When The Woman Saw",
-          `The temptation moves from conversation to desire.
+          "\u{1F440} When The Woman Saw",
+          `Eve now looks at the tree through the serpent's words.
 
-Eve looks at the tree differently now.
+The temptation has moved from hearing to wanting.
 
-The serpent's words have changed the way she sees it.
+\u{1F440} She sees the fruit
+\u{1F9E0} She considers the promise
+\u{1F34E} Desire begins to grow
 
-That is important.
-
-Sin often begins before the action happens.
-
-It begins when desire starts listening to a lie.
-
-👀 She sees the fruit
-🧠 She considers the promise
-🍎 She focuses on what is forbidden
-
-This phrase matters because what we keep looking at can shape what we begin wanting.
-
-The tree was there before, but now Eve is seeing it through the serpent's version of the story.`,
+Sin often starts in the heart before it appears in the hand.`,
         ],
         [
-          "🍎 Good For Food",
-          `This phrase shows that the fruit looked useful.
+          "\u{1F34E} Good For Food",
+          `The fruit looked useful for eating.
 
-It did not look ugly, dangerous, or evil.
+It did not appear dangerous or evil.
 
-That is part of what makes the temptation powerful.
+\u{1F34E} It looked nourishing
+\u{1F440} It looked harmless
+\u{26A0}\u{FE0F} Appearance hid the danger
 
-Sin does not always look destructive at first.
+The problem was not how it looked.
 
-Sometimes it looks practical.
-
-Sometimes it looks helpful.
-
-Sometimes it looks like something that will make life better.
-
-🍎 It looked good for food
-👀 It looked pleasant
-🧠 It promised wisdom
-
-The problem was not that the fruit looked good.
-
-The problem was that God had forbidden it.
-
-Genesis teaches that something can look good to our eyes and still be wrong if it pulls us away from trusting God.`,
+The problem was that God had forbidden it.`,
         ],
         [
-          "✨ Pleasant To The Eyes",
-          `The fruit was attractive.
+          "\u{2728} Pleasant To The Eyes",
+          `The fruit looked delicious.
 
-It appealed to sight.
+It appealed to Eve's sight and desire.
 
-That matters because temptation often works through desire, not just logic.
+\u{2728} It looked beautiful
+\u{1F440} It drew her attention
+\u{1F34E} It seemed desirable
 
-Eve is not only thinking about the serpent's words.
-
-She is also drawn to what she sees.
-
-✨ Beautiful
-👀 Appealing
-🍎 Desirable
-
-Genesis is honest about how temptation works.
-
-It does not always come looking obviously evil.
-
-Sometimes it comes looking pleasant.
-
-This phrase helps readers understand that desire needs God's wisdom, because our eyes can be drawn toward what God has warned us about.`,
+Temptation often comes looking pleasant instead of dangerous.`,
         ],
         [
-          "🧠 Desired To Make One Wise",
-          `This is the deepest part of the temptation.
+          "\u{1F9E0} Desired To Make One Wise",
+          `Eve wants the wisdom the serpent promised.
 
-Eve does not only want food.
+She thinks the fruit will open her eyes and make her like God.
 
-She wants wisdom.
-
-The serpent has made the fruit sound like a shortcut to becoming more than she is.
-
-That makes the temptation feel spiritual, not merely physical.
-
-🧠 More wisdom
-👀 Opened eyes
-🪞 Being like God
+\u{1F9E0} Wisdom is desired
+\u{1F440} Open eyes are promised
+\u{1F451} Being like God is offered
 
 The problem is not that wisdom is bad.
 
-Wisdom is good when it is received from God.
-
-But this is wisdom seized through disobedience.
-
-This phrase matters because people can chase good things in wrong ways.
-
-The desire for wisdom becomes dangerous when it ignores the word of God.`,
+Wisdom is good only when it is received from God.`,
         ],
         [
-          "🤲 She Took Of The Fruit",
-          `This is the moment desire becomes action.
+          "\u{1F932} She Took Of The Fruit",
+          `Eve reaches out and takes what God had forbidden.
 
-The conversation is over.
+The desire in her heart becomes an act of disobedience.
 
-The looking is over.
+\u{1F932} She takes the fruit
+\u{1F6AB} She crosses God's boundary
+\u{1F34E} The sin becomes visible
 
-Now Eve takes.
-
-That word is simple, but heavy.
-
-God had given many trees freely.
-
-But this tree was not given for eating.
-
-🤲 She takes
-🍎 She eats
-🚫 She crosses the boundary
-
-This phrase matters because sin often feels small in the moment.
-
-One act.
-
-One bite.
-
-One decision.
-
-But this decision opens the door to shame, fear, blame, exile, and death.`,
+Temptation becomes sin when desire turns into action.`,
         ],
         [
-          "👨 Gave Also Unto Her Husband",
-          `Adam is not absent from the story.
+          "\u{1F468} Gave Also Unto Her Husband",
+          `Eve gives the fruit to Adam.
 
-Genesis says Eve gave the fruit to her husband with her.
+He is not absent from the moment of disobedience.
 
-That means Adam is present in the failure.
+\u{1F468} Adam is present
+\u{1F34E} Adam receives the fruit
+\u{26A0}\u{FE0F} The failure is shared
 
-He does not guard the garden.
+The fall is not Eve's sin alone.
 
-He does not resist the serpent.
-
-He eats.
-
-👨 Adam listens
-🍎 Adam eats
-🛡️ Adam fails to guard
-
-This phrase matters because the fall is not placed only on Eve.
-
-The man who was given the command also disobeys.
-
-The relationship that was meant for partnership now joins together in rebellion.`,
+Adam joins the disobedience.`,
         ],
         [
           "And He Did Eat",
@@ -11285,109 +11178,67 @@ He is not only near the sin.
 
 He joins it.
 
-That matters because Genesis does not treat Adam as innocent just because Eve ate first.
-
-He receives what God had forbidden.
-
-He crosses the same boundary.
+\u{1F34E} Adam eats
+\u{1F6AB} He does what God had forbidden
+\u{26A0}\u{FE0F} The command is broken
 
 Eve ate.
 
 Adam ate.
 
-Both disobeyed.
-
-This phrase matters because the fall becomes shared rebellion.
-
-The man and woman who were meant to walk together in trust now stand together in disobedience.`,
+Both disobeyed.`,
         ],
         [
           "The Eyes Of Them Both Were Opened",
-          `The serpent promised opened eyes.
+          `The serpent promised opened eyes, and now their eyes are opened.
 
-In one sense, that promise comes true.
+But they do not gain freedom.
 
-But it does not give them the freedom they imagined.
+They gain a painful awareness of sin and shame.
 
-Their eyes open to a painful new reality.
+\u{1F440} Their eyes are opened
+\u{1F494} Innocence is lost
+\u{26A0}\u{FE0F} Knowledge now carries pain
 
-They now know evil by experience, not just by warning.
-
-Opened eyes.
-
-Lost innocence.
-
-Knowledge with pain.
-
-This phrase matters because temptation often tells a half-truth.
-
-Sin may reveal something, but it wounds the person who sees it.`,
+Temptation told a half-truth and hid the cost.`,
         ],
         [
           "They Knew That They Were Naked",
-          `In Genesis 2, nakedness meant openness without shame.
+          `Before sin, nakedness carried no shame.
 
-After sin, the same nakedness feels threatening.
+Now they feel exposed and vulnerable.
 
-Their bodies did not suddenly become evil.
+\u{1F628} Shame enters
+\u{1F440} Nakedness feels different
+\u{1FAE3} Being seen no longer feels safe
 
-Their relationship to God, each other, and themselves has changed.
+The problem is not the body itself.
 
-Shame.
-
-Vulnerability.
-
-Self-protection.
-
-This phrase matters because shame enters immediately after sin.
-
-Being fully seen no longer feels safe.`,
+The problem is the guilt sin has brought.`,
         ],
         [
-          "🌿 They Sewed Fig Leaves Together",
-          `This is the first attempt to cover shame.
+          "\u{1F33F} They Sewed Fig Leaves Together",
+          `Adam and Eve make their own covering from fig leaves.
 
-Before sin, they were naked and not ashamed.
+They are trying to hide the shame they now feel.
 
-After sin, they feel exposed.
+\u{1F33F} Human-made covering
+\u{1F628} Shame is exposed
+\u{1FAE3} Hiding begins
 
-The first thing they do is try to cover themselves.
-
-That shows sin immediately changes how they see themselves.
-
-🌿 Covering
-😨 Shame
-🫣 Hiding begins
-
-Fig leaves are a human-made covering.
-
-They can cover skin, but they cannot fix the deeper problem.
-
-This phrase matters because people still try to cover shame with whatever they can make for themselves.
-
-Genesis will show that God must provide a better covering.`,
+The leaves can cover skin, but they cannot remove guilt.`,
         ],
         [
           "Made Themselves Aprons",
-          `The aprons are human-made protection.
+          `Aprons are the coverings Adam and Eve make for themselves.
 
-Adam and Eve are trying to feel less exposed.
+They are trying to protect themselves from the shame sin created.
 
-This is more than clothing.
+\u{1F9F5} They make their own covering
+\u{1FAE3} They try to hide exposure
+\u{26A0}\u{FE0F} Human effort is limited
 
-It is the first picture of people trying to manage shame without God.
-
-Covering.
-
-Protection.
-
-Human effort.
-
-The covering is real, but it is not enough.
-
-Later in the chapter, God will make a better covering.
-
-That shows human coverings cannot do what divine mercy can.`,
+Their solution is real, but it is not enough.`,
         ],
       ],
     }),
@@ -11396,232 +11247,155 @@ That shows human coverings cannot do what divine mercy can.`,
       endVerse: 13,
       reference: "Genesis 3:8-13",
       title: "God Comes Looking",
-      icon: "🫣",
+      icon: "\u{1FAE3}",
       phrases: [
         [
-          "🌬️ The Voice Of The Lord God",
-          `After the sin, God enters the scene.
+          "\u{1F32C}\u{FE0F} The Voice Of The Lord God",
+          `God's voice is heard in the garden after the sin.
 
-The first thing mentioned is His voice.
+The serpent's voice led them into disobedience.
 
-That matters because the serpent's voice has just led them into distrust.
+Now God's voice comes to expose what happened.
 
-Now God's voice comes into the garden.
+\u{1F32C}\u{FE0F} God speaks
+\u{2753} God searches
+\u{2696}\u{FE0F} Hidden sin is brought into the open
 
-Two voices are shaping this chapter.
-
-🐍 The serpent's voice twists
-🌬️ God's voice searches
-❓ God's voice questions
-⚖️ God's voice exposes truth
-
-This phrase matters because God does not stay silent after human failure.
-
-He comes near, speaks, and begins bringing the hidden sin into the open.`,
+God does not stay silent after human failure.`,
         ],
         [
-          "🌳 Walking In The Garden",
-          `This picture feels personal.
+          "\u{1F333} Walking In The Garden",
+          `God is described as coming through the garden where Adam and Eve are hiding.
 
-God is not described as distant from the garden.
+The same garden that once held peace now becomes a place of fear.
 
-He comes into the place where Adam and Eve are hiding.
+\u{1F333} God comes into the garden
+\u{1F628} Sin has changed the atmosphere
+\u{1FAE3} Adam and Eve hide from His presence
 
-The garden was meant to be a place of life, work, relationship, and God's presence.
+The place has not changed.
 
-Now it becomes the place where fear enters.
-
-🌳 Same garden
-😨 New fear
-🫣 Hidden people
-🌬️ God still comes
-
-This phrase matters because sin changes Adam and Eve's experience of God's presence.
-
-The presence that should have been joy now feels threatening because guilt has entered the heart.`,
+The human heart has.`,
         ],
         [
           "\u{1F32C}\u{FE0F} In The Cool Of The Day",
-          `This phrase gives the scene a quiet feeling.
+          `This phrase describes a calm time of day.
 
-It sounds like a time when walking with God should have felt peaceful.
+It should have been a peaceful moment.
 
-But after sin, the same garden feels different.
+Instead, guilt turns it into a fearful one.
 
-\u{1F32C}\u{FE0F} A gentle time
-\u{1F333} The same garden
-\u{1F628} A changed heart
+\u{1F32C}\u{FE0F} A gentle part of the day
+\u{1F333} The same garden remains
+\u{1F628} Guilt changes the experience
 
-The problem is not that God has become cruel.
-
-The problem is that guilt has made Adam and Eve afraid of His presence.`,
+Sin makes peace feel threatening.`,
         ],
         [
-          "🫣 Hid Themselves",
-          `This is one of the first effects of sin.
+          "\u{1FAE3} Hid Themselves",
+          `Adam and Eve try to hide from God.
 
-Adam and Eve hide from God.
+They do not come forward and confess.
 
-They do not run toward Him.
+They pull back in fear.
 
-They do not confess right away.
+\u{1FAE3} They hide
+\u{1F628} Guilt produces fear
+\u{1F33F} Shame drives concealment
 
-They hide.
-
-That shows how sin damages relationship.
-
-🫣 Hiding from God
-🌿 Covering shame
-😨 Fear replacing peace
-
-This phrase matters because hiding is still one of the most common human reactions to guilt.
-
-People hide through silence, blame, pretending, busyness, or distance.
-
-Genesis shows that hiding began in the garden.`,
+Hiding becomes one of the first responses to sin.`,
         ],
         [
           "\u{1F333} Amongst The Trees Of The Garden",
-          `Adam and Eve hide among the trees God made.
+          `They hide among the very trees God had made for their good.
 
-That detail is sad.
+The gifts of creation become a cover from the Creator.
 
-The gifts of creation are now being used as cover from the Creator.
+\u{1F333} Good trees become hiding places
+\u{1FAE3} Fear misuses God's gifts
+\u{1F494} Fellowship is broken
 
-\u{1F333} Trees meant for life
-\u{1FAE3} People trying to hide
-\u{1F494} Relationship now broken
-
-Sin makes people misuse good things.
-
-The garden is still good, but the human heart is no longer at peace inside it.`,
+Sin turns even good things into places of concealment.`,
         ],
         [
-          "❓ Where Art Thou",
-          `God asks Adam where he is.
+          "\u{2753} Where Art Thou",
+          `God is not asking because He lacks information.
 
-This does not mean God lost him.
+He is calling Adam to come out of hiding and answer for himself.
 
-God is not confused.
+\u{2753} A searching question
+\u{1FAE3} A call out of hiding
+\u{2696}\u{FE0F} An invitation to face the truth
 
-The question is meant to draw Adam out.
-
-It gives Adam a chance to answer, confess, and face what has happened.
-
-❓ Where art thou?
-🫣 Why are you hiding?
-😨 What has changed?
-
-This phrase matters because God's first question after sin is not a lightning bolt.
-
-It is a searching question.
-
-God confronts sin, but He begins by calling the man out of hiding.`,
+God begins by drawing the sinner into the open.`,
         ],
         [
           "\u{2753} Who Told Thee That Thou Wast Naked",
-          `God's question pushes Adam to think about what changed.
+          `God's question points to a new awareness Adam did not have before.
 
-Adam was naked before, but he was not ashamed.
+Something has changed inside him.
 
-Now shame has entered his mind.
+\u{2753} Shame now exists
+\u{1F440} Innocence has been lost
+\u{26A0}\u{FE0F} Sin has altered his inner life
 
-\u{2753} Who taught you shame?
-\u{1F440} What changed inside you?
-\u{1F494} What did sin do?
-
-God already knows the answer.
-
-The question helps Adam face the truth instead of hiding from it.`,
+God's question pushes Adam to face what disobedience has done.`,
         ],
         [
           "\u{1F34E} Hast Thou Eaten Of The Tree",
-          `God names the real issue.
+          `God names the act behind Adam's fear.
 
-Adam's fear did not appear from nowhere.
+The problem is not nakedness by itself.
 
-It came from disobedience.
+The problem is disobedience.
 
-\u{1F34E} A command was given
+\u{1F34E} The forbidden tree is named
 \u{270B} A boundary was crossed
-\u{2696}\u{FE0F} Truth must be faced
+\u{2696}\u{FE0F} Adam must face the truth
 
-God's question is direct.
-
-He is not asking for excuses.
-
-He is calling Adam to tell the truth about what he has done.`,
+God brings the hidden sin into plain speech.`,
         ],
         [
-          "😨 I Was Afraid",
-          `Fear enters the human story.
+          "\u{1F628} I Was Afraid",
+          `Adam explains that fear is why he hid.
 
-Before sin, Adam and Eve were naked and not ashamed.
+Before sin, God's presence was not frightening to him.
 
-Now Adam says he was afraid.
+Now guilt has changed that.
 
-That is a huge change.
+\u{1F628} Fear enters
+\u{1FAE3} Hiding follows
+\u{1F494} Fellowship is damaged
 
-God has not changed.
-
-Adam has.
-
-😨 Fear
-🫣 Shame
-🌿 Covering
-🌳 Hiding
-
-This phrase matters because sin makes God's presence feel unsafe to guilty people.
-
-The same Lord who made Adam, breathed life into him, and placed him in the garden is now someone Adam wants to hide from.`,
+Sin makes the guilty person afraid of the God who once brought joy.`,
         ],
         [
-          "👉 The Woman You Gave Me",
-          `Adam answers by shifting blame.
+          "\u{1F449} The Woman Whom Thou Gavest To Be With Me",
+          `Adam shifts blame to the woman and indirectly back toward God.
 
-He points to the woman.
+Instead of confessing his sin, he points to the companion God gave him.
 
-But he also points back at God by saying, "the woman You gave me."
+\u{1F449} He blames the woman
+\u{1F381} He blames the gift
+\u{26A0}\u{FE0F} He avoids owning his choice
 
-That is painful.
-
-The woman Adam celebrated in Genesis 2 is now used as an excuse in Genesis 3.
-
-👉 Blame the woman
-👉 Blame the gift
-👉 Blame God indirectly
-
-This phrase matters because sin damages how people handle responsibility.
-
-Instead of confessing, Adam explains.
-
-Instead of owning his choice, he redirects the blame.`,
+Sin distorts responsibility and turns confession into excuse.`,
         ],
         [
-          "🐍 The Serpent Beguiled Me",
-          `Eve also shifts blame.
+          "\u{1F40D} The Serpent Beguiled Me",
+          `Beguiled means deceived, tricked, or led astray.
 
-She says the serpent beguiled her.
+Eve says the serpent deceived her.
 
-That is true, but it is not the whole truth.
+That is true, but it does not remove her responsibility.
 
-Beguiled means deceived, tricked, or led astray.
+\u{1F40D} The serpent lied
+\u{1F440} Eve was deceived
+\u{2696}\u{FE0F} Responsibility still remains
 
-The serpent beguiled her, but she still ate.
+Deception explains part of what happened.
 
-Deception matters.
-
-Responsibility still matters.
-
-🐍 The serpent lied
-👀 Eve listened
-🍎 Eve ate
-
-This phrase matters because Genesis shows both things at once.
-
-Sin can involve outside temptation, but people are still responsible for their response.
-
-Blame does not undo disobedience.`,
+It does not cancel the sin.`,
         ],
       ],
     }),
@@ -11629,537 +11403,716 @@ Blame does not undo disobedience.`,
       startVerse: 14,
       endVerse: 15,
       reference: "Genesis 3:14-15",
-      title: "The Serpent Is Judged",
-      icon: "⚖️",
+      title: "Everyone Is Judged",
+      icon: "\u{2696}\u{FE0F}",
       phrases: [
         [
-          "🐍 Cursed Above All Cattle",
-          `God speaks judgment to the serpent first.
+          "\u{1F451} And The LORD God Said Unto The Serpent",
+          `God now responds to what has happened in the garden.
 
-The serpent had acted as the deceiver.
+The conversation between Eve and the serpent is over.
 
-Now he receives the first curse in the Bible.
+The temptation is finished.
 
-This curse is different from what God says to Adam and Eve.
+Now God speaks.
 
-God does not curse the man and woman directly in the same way.
+\u{1F451} God takes authority
+\u{2696}\u{FE0F} Judgment begins
+\u{1F40D} The serpent must answer
 
-But the serpent is cursed.
+Throughout Scripture, God always has the final word.
 
-🐍 The deceiver is judged
-⚖️ Evil is confronted
-🚫 God does not ignore the lie
+The serpent spoke first.
 
-This phrase matters because God takes deception seriously.
-
-The serpent may have sounded clever, but God exposes him as cursed.`,
+But God speaks last.`,
         ],
         [
-          "🪨 Upon Thy Belly Shalt Thou Go",
-          `This image shows humiliation.
+          "\u{1F40D} Because Thou Hast Done This",
+          `God points directly to the serpent's actions.
 
-The serpent is brought low.
+The deception is not ignored.
 
-Instead of rising in victory, he is pictured crawling in the dust.
+The lie is not excused.
 
-Dust is important in Genesis.
+\u{1F40D} The serpent is responsible
+\u{2696}\u{FE0F} Actions have consequences
+\u{1F6AB} Sin is addressed
 
-Adam was made from dust.
+God shows that wrongdoing must be answered.
 
-The serpent is now judged to move in dust.
-
-🪨 Low position
-🐍 Humiliation
-⚖️ Judgment from God
-
-This phrase matters because the serpent's rebellion does not lead to true glory.
-
-He promised elevation, but receives humiliation.`,
+No one escapes accountability.`,
         ],
         [
-          "⚔️ Enmity Between Thee And The Woman",
-          `Enmity means hostility or conflict.
+          "\u{1F40D} Cursed Above All Cattle",
+          `God places a special curse upon the serpent.
 
-God says there will be ongoing conflict between the serpent and the woman.
+The serpent is not the only thing affected by sin.
 
-This is bigger than a dislike of snakes.
+The entire creation will suffer because of what happened in Eden.
 
-It points to a spiritual conflict that will continue through the Bible.
+But the serpent receives a greater judgment.
 
-⚔️ Conflict begins
-🐍 The deceiver opposes
-👶 The woman's offspring matters
+\u{1F40D} The serpent is singled out
+\u{2696}\u{FE0F} The punishment is greater
+\u{1F6AB} Deception brings consequences
 
-This phrase matters because God Himself puts a line of hostility between the deceiver and the human line.
-
-The story will not end with humanity simply joining the serpent.
-
-God promises conflict against evil.`,
+"Above all cattle" means the serpent receives the most severe curse among the animals.`,
         ],
         [
-          "👶 Thy Seed And Her Seed",
-          `Seed means offspring or descendants.
+          "\u{2B07}\u{FE0F} Upon Thy Belly Shalt Thou Go",
+          `God says the serpent will crawl upon its belly.
 
-The Bible now begins making us watch family lines.
+Many people believe this means the serpent moved differently before the curse.
 
-There will be the serpent's seed and the woman's seed.
+Whether physical, symbolic, or both, the meaning is clear.
 
-This does not only mean biological children in a simple way.
+\u{1F40D} The serpent is brought low
+\u{2B07}\u{FE0F} Pride becomes humiliation
+\u{2696}\u{FE0F} Judgment is visible
 
-It points to people and powers aligned with rebellion versus the promised line of hope.
+Instead of being lifted up, the serpent becomes a picture of defeat.
 
-👶 Offspring
-🌱 Promise line
-⚔️ Ongoing conflict
-
-This phrase matters because Genesis will keep tracing seed, family, promise, and conflict.
-
-The rest of the Bible grows out of this first promise.`,
+The deceiver who promised elevation receives humiliation.`,
         ],
         [
-          "🦶 It Shall Bruise Thy Head",
-          `This is one of the first great promises of the Bible.
+          "\u{1FAA8} Dust Shalt Thou Eat All The Days Of Thy Life",
+          `Eating dust is a picture of defeat and shame.
 
-The offspring of the woman will crush the serpent's head.
+God is not saying the serpent will literally live on dust.
 
-A head wound is final and defeating.
+He is using an image that shows humiliation.
 
-This means evil will not win forever.
+\u{1F40D} The serpent is humbled
+\u{2B07}\u{FE0F} Pride is brought down
+\u{2696}\u{FE0F} Judgment continues
 
-God promises victory before Adam and Eve are even sent out of the garden.
+Throughout the Bible, dust is often connected with weakness, mortality, and defeat.
 
-🦶 The serpent will be struck
-⚔️ Evil will be defeated
-🌱 Hope begins here
-
-Christians have long seen this as the first promise pointing forward to Jesus.
-
-The Savior will come from humanity and defeat the deceiver.`,
+The serpent's future is marked by humiliation.`,
         ],
         [
-          "🐍 Thou Shalt Bruise His Heel",
-          `The serpent will wound the promised offspring.
+          "\u{2694}\u{FE0F} I Will Put Enmity Between Thee And The Woman",
+          `"Enmity" means hostility, hatred, or opposition.
 
-A heel wound hurts, but it is not the same as a crushed head.
+Before this moment, Eve spoke with the serpent.
 
-This means the victory will involve suffering.
+Now God declares that peace between them is over.
 
-The promised deliverer will defeat evil, but not without being struck.
+\u{2694}\u{FE0F} Friendship becomes conflict
+\u{1F40D} The deceiver becomes an enemy
+\u{1F6AB} Trust is broken
 
-🐍 The serpent wounds
-🦶 The offspring suffers
-⚔️ But the serpent is crushed
+Many people see a reflection of this in the natural fear and distrust humans often have toward snakes.
 
-This phrase matters because it points to victory through suffering.
+But the meaning goes deeper.
 
-That pattern becomes clearer in Jesus.
+God is declaring an ongoing conflict between humanity and the forces of evil.`,
+        ],
+        [
+          "\u{1F476} Between Thy Seed And Her Seed",
+          `"Seed" means offspring, descendants, or future generations.
 
-At the cross, Jesus is wounded, but through His death and resurrection He defeats sin, Satan, and death.`,
+God expands the story beyond Adam and Eve.
+
+This conflict will continue long after Eden.
+
+\u{1F476} Future generations are involved
+\u{1F40D} Evil continues working
+\u{1F468}\u{200D}\u{1F469}\u{200D}\u{1F467} Humanity continues growing
+
+The struggle between good and evil will continue throughout history.
+
+The rest of the Bible follows this conflict.`,
+        ],
+        [
+          "\u{1F3C6} It Shall Bruise Thy Head",
+          `A wound to the head is a crushing and deadly blow.
+
+God promises that one day the serpent will be defeated.
+
+\u{1F3C6} A final victory is coming
+\u{1F40D} Evil will not rule forever
+\u{1F451} God's promise will stand
+
+Just as crushing a snake's head destroys its power to harm, God promises a future defeat for the serpent.
+
+Christians have long understood this as the first promise of Jesus Christ.
+
+Through His death and resurrection, Jesus defeats sin, death, and Satan.`,
+        ],
+        [
+          "\u{1FA79} Thou Shalt Bruise His Heel",
+          `A wound to the heel is painful, but it is not usually fatal.
+
+God says the serpent will strike the promised offspring.
+
+\u{1FA79} There will be suffering
+\u{2694}\u{FE0F} There will be opposition
+\u{1F614} There will be pain
+
+The serpent causes a real wound.
+
+But unlike the crushed head, the heel wound is temporary.
+
+Christians connect this to Jesus suffering on the cross.
+
+Jesus was wounded.
+
+But He rose again.
+
+The serpent wounds.
+
+Jesus wins.`,
         ],
       ],
     }),
     makePersonalGenesisThreeSection({
       startVerse: 16,
-      endVerse: 19,
-      reference: "Genesis 3:16-19",
-      title: "The Consequences Of Sin",
-      icon: "💔",
+      endVerse: 16,
+      reference: "Genesis 3:16",
+      title: "The Woman Is Judged",
+      icon: "\u{1F494}",
       phrases: [
         [
-          "🤰 I Will Greatly Multiply Thy Sorrow",
-          `God speaks to the woman about pain and sorrow.
+          "\u{1F469} Unto The Woman He Said",
+          `God now turns from the serpent to the woman.
 
-Sin has entered the world, and now the places of blessing will be touched by pain.
+The serpent has been judged.
 
-This does not mean womanhood is cursed.
+Now Eve must hear the consequences of her actions.
 
-It means life in a fallen world will now carry grief where there should have been only joy.
+\u{1F469} God addresses the woman
+\u{2696}\u{FE0F} Judgment continues
+\u{1F4D6} Responsibility remains personal
 
-🤰 Pain connected to childbirth
-💔 Sorrow connected to family life
-😢 Brokenness entering human experience
-
-This phrase matters because sin does not stay abstract.
-
-It reaches bodies, families, relationships, and daily life.`,
+Each person involved in the rebellion must answer for what they have done.`,
         ],
         [
-          "👶 In Sorrow Thou Shalt Bring Forth Children",
-          `Childbirth is still connected to life and blessing.
+          "\u{1F494} I Will Greatly Multiply Thy Sorrow",
+          `"Multiply" means increase.
 
-But now it is also connected to pain.
+God tells the woman that sorrow and suffering will become greater.
 
-That is the tragedy of sin.
+\u{1F494} Sorrow increases
+\u{1F622} Pain becomes part of life
+\u{26A0}\u{FE0F} Sin brings consequences
 
-It does not erase God's gifts, but it brings suffering into them.
+The blessing of life remains.
 
-Children are still a gift.
-
-Family is still part of God's design.
-
-But the path of bringing life into the world now includes sorrow.
-
-👶 Life continues
-😢 Pain enters
-🌱 Hope still moves through offspring
-
-This phrase matters because the promised seed will still come through childbirth.
-
-Even in pain, God's promise keeps moving.`,
+But suffering now becomes part of the human experience.`,
         ],
         [
-          "💔 Thy Desire Shall Be To Thy Husband",
-          `This phrase is difficult, but it points to tension entering the marriage relationship.
+          "\u{1F476} In Sorrow Thou Shalt Bring Forth Children",
+          `God is speaking specifically about childbirth.
 
-Genesis 2 showed unity, joy, and no shame.
+Children remain a blessing.
 
-Genesis 3 shows that sin will now affect that relationship.
+But bringing them into the world will now involve pain.
 
-The partnership becomes strained.
+\u{1F476} Children remain a gift
+\u{1F622} Childbirth includes suffering
+\u{1F331} Life continues
 
-Desire and rule become part of the broken pattern.
-
-💔 Tension enters marriage
-😢 Unity is damaged
-⚖️ Power struggles begin
-
-This phrase matters because sin does not only separate people from God.
-
-It also damages how people relate to each other.
-
-The first marriage now feels the effects of the fall.`,
+Even after sin enters the world, God continues His plan through future generations.`,
         ],
         [
-          "🌍 Cursed Is The Ground",
-          `God does not curse Adam directly here.
+          "\u{1F494} Thy Desire Shall Be To Thy Husband",
+          `This phrase describes a change in the marriage relationship.
 
-He curses the ground because of Adam.
+Genesis 2 showed harmony and unity.
 
-That means creation itself is affected by human sin.
+Genesis 3 introduces tension.
 
-The ground that was meant to produce freely will now resist him.
+\u{1F494} Sin affects relationships
+\u{1F468}\u{200D}\u{1F469}\u{200D}\u{1F467} Harmony is damaged
+\u{26A0}\u{FE0F} Marriage becomes more difficult
 
-Work is still his calling, but now it will be painful.
+The relationship still exists.
 
-🌍 Ground cursed
-🌱 Growth becomes harder
-😓 Work becomes frustrating
-
-This phrase matters because sin affects more than private thoughts.
-
-It touches the world people live in.
-
-The created order now bears the weight of human rebellion.`,
+But it will now experience struggles that were not present before sin.`,
         ],
         [
-          "😓 In The Sweat Of Thy Face",
-          `Work existed before sin, but sweat and painful toil enter after sin.
+          "\u{1F468} And He Shall Rule Over Thee",
+          `The relationship between man and woman changes after sin.
 
-Adam was placed in the garden to work and keep it.
+This describes the reality of life after the fall.
 
-That was good.
+\u{1F468} Leadership becomes emphasized
+\u{26A0}\u{FE0F} The relationship changes
+\u{1F494} Sin affects partnership
 
-But now the ground will fight back.
+Genesis 2 presented cooperation and unity.
 
-Work will still be meaningful, but it will also be exhausting.
+Genesis 3 introduces a new struggle into that relationship.`,
+        ],
+      ],
+    }),
+    makePersonalGenesisThreeSection({
+      startVerse: 17,
+      endVerse: 19,
+      reference: "Genesis 3:17-19",
+      title: "The Man Is Judged",
+      icon: "\u{1F494}",
+      phrases: [
+        [
+          "\u{1F468} And Unto Adam He Said",
+          `God now turns to Adam.
 
-😓 Sweat
-🌱 Thorns
-🛠️ Frustration
-🍞 Labor for bread
+The woman has been addressed.
 
-This phrase matters because it explains why work can feel both purposeful and painful.
+Now the man must answer.
 
-We were made to work, but we now work in a world affected by the fall.`,
+\u{1F468} God addresses Adam
+\u{2696}\u{FE0F} Responsibility continues
+\u{1F4D6} Adam must answer for his choice
+
+No one can hide behind someone else's actions.`,
         ],
         [
-          "🪦 Dust Thou Art",
+          "\u{1F442} Because Thou Hast Hearkened Unto The Voice Of Thy Wife",
+          `"Hearkened" means listened to or obeyed.
+
+God is not condemning Adam for listening to his wife.
+
+God is addressing the fact that Adam followed Eve into disobedience.
+
+\u{1F442} Adam listened
+\u{1F6AB} Adam followed the wrong voice
+\u{2696}\u{FE0F} Responsibility remains his own
+
+Adam knew God's command.
+
+Yet he chose another voice over God's voice.`,
+        ],
+        [
+          "\u{1F34E} And Hast Eaten Of The Tree",
+          `God reminds Adam exactly what he did.
+
+The problem was not ignorance.
+
+Adam knowingly disobeyed.
+
+\u{1F34E} Adam ate the fruit
+\u{1F4D6} The command was known
+\u{1F6AB} The choice was deliberate
+
+Sin became reality through a decision Adam willingly made.`,
+        ],
+        [
+          "\u{1F4D6} Of Which I Commanded Thee, Saying, Thou Shalt Not Eat Of It",
+          `God reminds Adam that the command had been clear.
+
+There was no confusion.
+
+There was no misunderstanding.
+
+\u{1F4D6} God's command was known
+\u{2696}\u{FE0F} Accountability follows knowledge
+\u{1F6AB} Adam crossed a clear boundary
+
+The issue was not lack of information.
+
+The issue was disobedience.`,
+        ],
+        [
+          "\u{1F30D} Cursed Is The Ground For Thy Sake",
+          `God does not curse Adam directly.
+
+Instead, He curses the ground Adam must work.
+
+\u{1F30E} Creation is affected
+\u{1F613} Work becomes harder
+\u{26A0}\u{FE0F} Sin impacts the world around him
+
+The earth will still provide food.
+
+But it will no longer do so easily.`,
+        ],
+        [
+          "\u{1F613} In Sorrow Shalt Thou Eat Of It",
+          `Before sin, Adam worked in the garden.
+
+After sin, that work becomes painful and difficult.
+
+\u{1F331} Work still exists
+\u{1F613} Work becomes harder
+\u{26A0}\u{FE0F} Sin affects daily life
+
+God is not cursing work itself.
+
+He is showing that work will now include struggle.`,
+        ],
+        [
+          "\u{1F335} Thorns Also And Thistles Shall It Bring Forth To Thee",
+          `Thorns and thistles are unwanted plants.
+
+They make farming harder.
+
+\u{1F335} Obstacles appear
+\u{1F613} Work becomes frustrating
+\u{1F331} Growth requires effort
+
+The ground still produces food.
+
+But now it also produces resistance.`,
+        ],
+        [
+          "\u{1F96C} And Thou Shalt Eat The Herb Of The Field",
+          `Adam will still receive food from the earth.
+
+But obtaining it will require effort.
+
+\u{1F331} Food remains available
+\u{1F4AA} Labor becomes necessary
+\u{26A0}\u{FE0F} Survival requires work
+
+God still provides.
+
+But life is now harder than before.`,
+        ],
+        [
+          "\u{23F3} All The Days Of Thy Life",
+          `This is not a temporary consequence.
+
+The struggle will continue throughout Adam's life.
+
+\u{1F4C5} Every season of life
+\u{1F613} Ongoing difficulty
+\u{23F3} A lifelong reality
+
+Life outside Eden will never be the same.`,
+        ],
+        [
+          "\u{1F613} In The Sweat Of Thy Face",
+          `Sweat represents hard work and effort.
+
+Adam will still eat.
+
+But obtaining food will require labor.
+
+\u{1F613} Work requires effort
+\u{1F4AA} Survival takes energy
+\u{1F331} Provision comes through labor
+
+Life outside Eden requires struggle.`,
+        ],
+        [
+          "\u{1FAA8} Till Thou Return Unto The Ground",
+          `Death now becomes part of the human story.
+
+Adam came from the ground.
+
+One day he will return to it.
+
+\u{1FAA8} Death enters human experience
+\u{23F3} Life has an ending
+\u{26A0}\u{FE0F} Sin carries consequences
+
+This is the first direct statement that human life will end in physical death.`,
+        ],
+        [
+          "\u{1F30D} For Out Of It Wast Thou Taken",
+          `God reminds Adam of his origin.
+
+He was formed from the earth itself.
+
+\u{1F30E} Created from the ground
+\u{1F464} Formed by God
+\u{1F4D6} Humanity has a beginning
+
+Adam's life began when God formed him from the dust.`,
+        ],
+        [
+          "\u{1FAA6} Dust Thou Art",
           `God reminds Adam where he came from.
 
-Adam was formed from dust in Genesis 2.
+Adam was formed from the dust of the ground.
 
-Now God says he will return to dust.
+\u{1FAA6} Created from dust
+\u{1F464} Given life by God
+\u{26A0}\u{FE0F} Human life is dependent on God
 
-This is death entering the human future.
-
-The warning in Genesis 2 was true.
-
-Disobedience brings death.
-
-🪦 From dust
-👤 Living by God's breath
-💔 Returning to dust after sin
-
-This phrase matters because death is not treated as natural friendship in Genesis.
-
-It is the result of sin.
-
-The rest of Scripture will move toward God's answer to death.`,
+Without God's breath, Adam is only dust.`,
         ],
         [
-          "\u{1F33E} Thorns Also And Thistles",
-          `The ground will still produce food.
+          "\u{1FAA6} For Dust Thou Art, And Unto Dust Shalt Thou Return",
+          `This is God's summary of mortality.
 
-But now it will also produce resistance.
+Because sin entered the world, death now becomes part of human life.
 
-Thorns and thistles show that creation is frustrated by sin.
+\u{1FAA6} Dust is our origin
+\u{23F3} Death is now certain
+\u{26A0}\u{FE0F} Sin changes everything
 
-\u{1F33E} Food will grow
-\u{1F335} Thorns will grow too
-\u{1F613} Work becomes harder
+Adam began as dust.
 
-Adam will still work the ground.
-
-But the work will now include struggle, frustration, and pain.`,
-        ],
-        [
-          "\u{1F35E} Till Thou Return Unto The Ground",
-          `Adam's life outside Eden will be marked by work until death.
-
-He came from the ground.
-
-Now he will return to the ground.
-
-\u{1F35E} Daily bread
-\u{1F613} Daily labor
-\u{1FAA6} A final return to dust
-
-This phrase shows how serious sin is.
-
-Life continues, but death now stands at the end of the road.`,
+And one day his body will return to dust again.`,
         ],
       ],
     }),
     makePersonalGenesisThreeSection({
       startVerse: 20,
-      endVerse: 24,
-      reference: "Genesis 3:20-24",
-      title: "Covered And Sent Out",
-      icon: "🧥",
+      endVerse: 21,
+      reference: "Genesis 3:20-21",
+      title: "Man Names Woman",
+      icon: "\u{1F9E5}",
       phrases: [
         [
-          "👩 Adam Called His Wife's Name Eve",
-          `Eve means life or living.
+          "\u{1F468} And Adam Called His Wife's Name Eve",
+          `Adam gives his wife a name.
 
-This name matters because it comes after judgment.
+Earlier in Genesis, Adam named the animals.
 
-Adam has heard about pain, conflict, cursed ground, and death.
+Now he gives a name to the woman.
 
-But he names his wife Eve because she will be the mother of all living.
+\u{1F468} Adam names his wife
+\u{1F4D6} Naming shows responsibility
+\u{1F469} The woman receives her name
 
-That is hope.
-
-👩 Mother of life
-🌱 The promise continues
-👶 The seed will come
-
-This phrase matters because Adam is not only thinking about death.
-
-He is also responding to the promise that life will continue through the woman.`,
+This is the first time the name "Eve" appears in Scripture.`,
         ],
         [
-          "\u{1F469} Mother Of All Living",
-          `Eve's name is connected to life.
+          "\u{1F469} Because She Was The Mother Of All Living",
+          `The name Eve is connected to life.
 
-That is important because Genesis 3 has just spoken about death.
+The word Eve is related to living or life giver.
 
-Even after judgment, life will continue.
+\u{1F469} Eve becomes the mother of humanity
+\u{1F476} Future generations will come through her
+\u{1F331} Life continues after judgment
 
-\u{1F469} Mother
-\u{1F476} Children
-\u{1F331} Life continuing
+Genesis 3 has just spoken about death.
 
-This does not erase the consequences of sin.
+Yet Adam gives her a name connected to life.
 
-But it shows hope still alive inside the story.`,
+Hope remains inside the story.`,
         ],
         [
-          "🧥 Coats Of Skins",
-          `Adam and Eve made fig leaves for themselves.
+          "\u{2764}\u{FE0F} Unto Adam Also And To His Wife",
+          `God provides for both Adam and Eve.
 
-But God provides a better covering.
+The judgment has already been spoken.
 
-The coats of skins show God's mercy after sin.
+But God does not abandon them.
 
-They are still guilty.
+\u{1F468} Adam is included
+\u{1F469} Eve is included
+\u{2764}\u{FE0F} God still shows care
 
-They still face consequences.
-
-But God covers them.
-
-🧥 God provides covering
-🌿 Human covering was not enough
-🙏 Mercy appears after judgment
-
-This phrase matters because it is the first picture of God covering human shame.
-
-Many readers also notice that skins imply death, which points forward to the Bible's larger theme of covering through sacrifice.`,
+Even after sin enters the world, God continues to care for the people He created.`,
         ],
         [
-          "\u{1F9E5} The Lord God Made Coats Of Skins",
-          `God Himself makes the covering.
+          "\u{1F9E5} Did The LORD God Make Coats Of Skins",
+          `God makes clothing for Adam and Eve.
 
-Adam and Eve had already tried to cover themselves with fig leaves.
+Unlike the fig leaves they made for themselves, these coverings come directly from God.
 
-But God gives a better covering.
+\u{1F9E5} God provides clothing
+\u{1F411} Animal skins are stronger
+\u{1F6E0}\u{FE0F} God's solution is better
 
-\u{1F9E5} God provides
-\u{1F33F} Human covering was not enough
-\u{1F64F} Mercy comes from the Lord
+Fig leaves can dry out, tear, and wear away.
 
-This is more than clothing.
+Animal skins provide a more durable covering.
 
-It shows that God is still caring for guilty people.`,
+Adam and Eve tried to solve the problem themselves.
+
+God provides something better.
+
+This shows that God's provision is greater than anything they could make on their own.`,
         ],
         [
-          "\u{1F451} The Man Is Become As One Of Us",
-          `This phrase shows that something serious has changed.
+          "\u{1F9E5} And Clothed Them",
+          `God personally covers Adam and Eve.
 
-Adam and Eve now know evil by experience.
+They tried to cover themselves.
 
-They wanted wisdom apart from God.
+Now God provides the covering.
 
-\u{1F440} Eyes opened
-\u{2696}\u{FE0F} Evil now known
-\u{1F494} Innocence lost
+\u{1F9E5} God covers their shame
+\u{2764}\u{FE0F} Mercy follows judgment
+\u{1F64F} God still cares for sinners
 
-They did not become gods.
+The story shows that God's response to sin includes both justice and mercy.`,
+        ],
+      ],
+    }),
+    makePersonalGenesisThreeSection({
+      startVerse: 22,
+      endVerse: 24,
+      reference: "Genesis 3:22-24",
+      title: "Man Removed From Eden",
+      icon: "\u{1F6AA}",
+      phrases: [
+        [
+          "\u{1F451} And The LORD God Said",
+          `God speaks again after Adam and Eve have been judged and clothed.
 
-They became sinners who now understand evil from the inside.`,
+The story is now moving toward their removal from Eden.
+
+\u{1F451} God speaks
+\u{1F4D6} A new decision is announced
+\u{2696}\u{FE0F} God acts with authority
+
+What happens next is not Adam's decision.
+
+It is God's decision.`,
+        ],
+        [
+          "\u{1F468} Behold, The Man Is Become As One Of Us",
+          `Adam and Eve now know the difference between good and evil through experience.
+
+Before sin, they knew only God's goodness.
+
+Now they have personally experienced rebellion and its consequences.
+
+\u{1F468} Humanity has changed
+\u{1F4D6} Good and evil are now known
+\u{2696}\u{FE0F} Sin has altered mankind
+
+This does not mean Adam became equal with God.
+
+It means humanity now possesses a knowledge it did not have before.`,
+        ],
+        [
+          "\u{1F4D6} To Know Good And Evil",
+          `Adam and Eve now understand good and evil in a new way.
+
+Before sin, they knew God's commands.
+
+After sin, they know what it feels like to disobey.
+
+\u{1F4D6} Good is understood
+\u{1F6AB} Evil is experienced
+\u{26A0}\u{FE0F} Innocence is gone
+
+The knowledge came with a cost.
+
+Humanity gained experience but lost innocence.`,
         ],
         [
           "\u{270B} Lest He Put Forth His Hand",
-          `God stops Adam from reaching for the tree of life.
+          `God now prevents Adam from taking something he should not take.
 
-That may sound harsh at first.
+The phrase means reaching out to grasp or obtain something.
 
-But it is actually mercy.
+\u{270B} Adam could reach for it
+\u{1F6AB} God prevents it
+\u{26A0}\u{FE0F} A boundary is established
 
-\u{270B} Access is stopped
-\u{1F333} The tree of life is guarded
-\u{1F494} Fallen life must not last forever
-
-God does not allow humans to live forever in a broken condition.
-
-The way back to life will have to come through God's rescue.`,
+God is acting to stop something from happening.`,
         ],
         [
-          "🚪 The Lord God Sent Him Forth",
-          `God sends Adam out of the garden.
+          "\u{1F333} And Take Also Of The Tree Of Life",
+          `The Tree of Life first appeared in the Garden of Eden.
 
-This is painful, but it is not random.
+It represented ongoing life.
 
-Adam and Eve cannot remain in Eden as if nothing happened.
+\u{1F333} The Tree of Life remains
+\u{1F468} Adam still has access
+\u{26A0}\u{FE0F} God intervenes
 
-Sin has broken the relationship and changed their condition.
+The problem is not the tree itself.
 
-🚪 Sent out
-🌳 Away from the garden
-💔 Life outside Eden begins
-
-This phrase matters because exile becomes a major Bible theme.
-
-People are pushed away from the place of blessing because of sin, and the rest of Scripture begins moving toward restoration.`,
+The problem is sinful humanity having access to it.`,
         ],
         [
-          "\u{1F331} To Till The Ground",
-          `Adam is sent out to work the ground.
+          "\u{23F3} And Eat, And Live Forever",
+          `God does not want fallen humanity to live forever in its sinful condition.
 
-This connects back to his calling in Genesis 2.
+Sin has already entered the world.
 
-But now the work happens outside Eden.
+Death will now become part of God's plan to deal with sin.
 
-\u{1F331} Work continues
-\u{1F6AA} Eden is behind him
-\u{1F613} The ground is harder now
+\u{23F3} Human life now has an end
+\u{1F6AB} Eternal life is withheld
+\u{2696}\u{FE0F} God acts for a purpose
 
-God does not remove Adam's calling.
-
-But sin changes the place and pain of that calling.`,
+Living forever while trapped in sin would not be a blessing.`,
         ],
         [
-          "🌳 The Tree Of Life",
-          `The tree of life appears again at the end of the chapter.
+          "\u{1F6AA} Therefore The LORD God Sent Him Forth From The Garden Of Eden",
+          `Adam is removed from the garden.
 
-This time, access to it is blocked.
+The place God prepared for him can no longer be his home.
 
-That is heartbreaking.
+\u{1F6AA} Adam is sent out
+\u{1F333} Eden is left behind
+\u{2696}\u{FE0F} Sin has consequences
 
-The tree represents life in God's presence.
+The removal is not random punishment.
 
-If Adam and Eve eat from it now, they would remain in their fallen condition.
-
-So God blocks the way.
-
-🌳 Life is still real
-🚪 Access is lost
-🙏 Restoration will be needed
-
-This phrase matters because the Bible's story is not only about punishment.
-
-It is about regaining access to life with God.
-
-The tree of life returns in Revelation, where access is restored.`,
+It is the result of humanity's rebellion.`,
         ],
         [
-          "\u{1F305} At The East Of The Garden",
-          `The guard is placed at the east of Eden.
+          "\u{1F331} To Till The Ground From Whence He Was Taken",
+          `Adam returns to working the ground.
 
-That detail helps the reader picture the closed way back.
+The ground he came from is now the ground he must work.
 
-The garden has an entrance, but the entrance is guarded.
+\u{1F331} Adam still works
+\u{1F613} Work is harder now
+\u{1F30E} Humanity returns to ordinary life
 
-\u{1F305} East of Eden
-\u{1F6AA} The way is closed
-\u{1F525} Access is guarded
+Adam's purpose to work remains.
 
-Humanity is now outside the place of life.
-
-The rest of the Bible will keep showing the need for a way back to God.`,
+But life outside Eden is very different.`,
         ],
         [
-          "🛡️ Cherubims",
-          `Cherubim are heavenly beings connected with God's holy presence.
+          "\u{1F6AA} So He Drove Out The Man",
+          `Adam does not leave by choice.
 
-Here, they guard the way to the tree of life.
+God removes him from the garden.
 
-Later in the Bible, cherubim appear in the tabernacle and temple imagery.
+\u{1F6AA} Adam is expelled
+\u{2696}\u{FE0F} God's decision stands
+\u{1F333} Eden is closed
 
-That connection matters.
+This shows how serious sin is.
 
-The garden begins to feel like a holy place people can no longer enter freely.
-
-🛡️ Guarding holy space
-🌳 Blocking the tree of life
-✨ Protecting access to God's presence
-
-This phrase matters because sin creates separation from holy space.
-
-People cannot simply walk back in on their own terms.`,
+Humanity can no longer remain where everything was perfect.`,
         ],
         [
-          "🔥 A Flaming Sword",
-          `The flaming sword guards the way to the tree of life.
+          "\u{1F47C} And He Placed At The East Of The Garden Of Eden Cherubims",
+          `Cherubim are powerful heavenly beings that serve God.
 
-The image is serious.
+They appear throughout Scripture around God's presence and holiness.
 
-Access to Eden is closed.
+\u{1F47C} Heavenly guardians
+\u{1F451} Servants of God
+\u{26A0}\u{FE0F} Protectors of a sacred place
 
-Humanity cannot force its way back to life.
+God places them at the entrance to Eden.
 
-The way is guarded by God's command.
+The way back is now guarded.`,
+        ],
+        [
+          "\u{1F525} And A Flaming Sword Which Turned Every Way",
+          `The flaming sword guards the entrance to Eden.
 
-🔥 Judgment
-🛡️ Guarded access
-🚪 No return by human effort
+It turns in every direction.
 
-This phrase matters because Genesis 3 ends with both mercy and loss.
+\u{1F525} The entrance is protected
+\u{2694}\u{FE0F} No path is left open
+\u{1F6AB} Access is blocked
 
-God covers Adam and Eve, but He also sends them out.
+The image shows that returning to Eden is impossible by human effort.`,
+        ],
+        [
+          "\u{1F333} To Keep The Way Of The Tree Of Life",
+          `"Keep" means guard, protect, or watch over.
 
-The rest of the Bible will answer the question this scene leaves open:
+The Tree of Life is now under protection.
 
-How will people ever get back to life with God?`,
+\u{1F333} The tree is guarded
+\u{1F47C} Cherubim stand watch
+\u{1F6AB} Access is denied
+
+The way to the Tree Of Life is closed.
+
+Humanity cannot simply walk back into Eden and reclaim what was lost.
+
+The story ends with mankind outside the garden, waiting for God's future plan of redemption.`,
         ],
       ],
     }),
@@ -21887,12 +21840,25 @@ function appendDayOnePhrase(reference: string, heading: string, body: string) {
   category.content.push(makeDayOneReviewedPhrase(heading, body));
 }
 
+function removeDayOnePhrase(reference: string, title: string) {
+  const section = BIBLE_READER_STUDY_SECTIONS.find(
+    (item) => item.book === "genesis" && (item.chapter === 1 || item.chapter === 2) && item.reference === reference,
+  );
+  const category = section ? getKeyPhraseCategory(section) : undefined;
+  if (!category) return;
+
+  const normalizedTitle = title.toLowerCase();
+  category.content = category.content.filter((content) => normalizeDayOnePhraseTitle(content) !== normalizedTitle);
+}
+
 function cleanDayOneReviewedCard(content: string) {
   return content
     .replace(/\n\n[^\n]+ helps the reader understand what this part of the passage means\./gi, "")
     .replace(/\n\nThis helps the original audience connect the early chapters of Genesis to the world they knew\./gi, "")
     .replace(/\n\nMoses mentions it because the original readers would know this river mattered\./gi, "")
+    .replace(/\n\nMoses includes this detail because [^\n]+\./gi, "")
     .replace(/\n\nThe card is not mainly explaining the word generations\./gi, "")
+    .replace(/\n🧭 It helps the reader understand why this detail belongs in the story\./gi, "")
     .replace(/\bexpanse\b/g, "firmament")
     .replace(/\bExpanse\b/g, "Firmament")
     .replace(/\bCalled The Firmament Sky\b/g, "Called The Firmament Heaven")
@@ -21929,7 +21895,65 @@ function cleanDayOneReviewedCard(content: string) {
     .replace(/\bsea animals\b/g, "great whales");
 }
 
+function dedupeDayOneReviewedCards(content: string[]) {
+  const seen = new Set<string>();
+  return [...content].reverse().filter((item) => {
+    const key = normalizeDayOnePhraseTitle(item);
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  }).reverse();
+}
+
 function applyDayOneQualityReviewUpgrade() {
+  replaceDayOnePhrase(
+    "Genesis 1:3-5",
+    "Called The Light Day",
+    "🌞 Called The Light Day",
+    `Day is the name God gives to the lighted portion of the cycle He has just established.
+
+God is not only creating light; He is assigning it a place and function in the world.
+
+🌞 Day is the time of light
+👑 God names what He orders
+⏱️ Time begins to take shape
+📖 Creation receives rhythm
+
+The name shows that light is now part of an ordered world, not a passing flash.`,
+  );
+
+  replaceDayOnePhrase(
+    "Genesis 1:3-5",
+    "Called The Darkness Night",
+    "🌙 Called The Darkness Night",
+    `Night is the name God gives to the darkness after separating it from the light.
+
+Darkness is not removed from creation, but it is given limits and a place under God's rule.
+
+🌙 Night is named
+⚖️ Darkness has boundaries
+👑 God rules both day and night
+⏱️ The world receives order
+
+The phrase shows that even darkness exists within the order God establishes.`,
+  );
+
+  replaceDayOnePhrase(
+    "Genesis 1:3-5",
+    "Evening And Morning: The First Day",
+    "🌇 Evening And Morning: The First Day",
+    `Evening and morning mark one complete day in the creation account.
+
+The phrase shows the close of the first day's work and the beginning of creation's daily rhythm.
+
+🌆 Evening closes the day
+🌅 Morning opens the next
+📅 The first day is complete
+⏱️ Creation moves with order
+
+Genesis presents God's work unfolding in measured days, not in confusion.`,
+  );
+
   replaceDayOnePhrase(
     "Genesis 1:6-8",
     "Let There Be An Expanse",
@@ -21963,6 +21987,102 @@ The world is not nameless confusion; it is ordered by God's word.`,
   );
 
   replaceDayOnePhrase(
+    "Genesis 1:6-8",
+    "Evening And Morning: The Second Day",
+    "🌇 Evening And Morning: The Second Day",
+    `This phrase marks the full completion of the second day.
+
+God has finished separating the waters and establishing the firmament.
+
+🌆 Evening closes the work
+🌅 Morning opens what comes next
+☁️ The firmament stands in place
+🌊 The waters are divided
+
+The second day ends with the world more ordered and more ready for life.`,
+  );
+
+  replaceDayOnePhrase(
+    "Genesis 1:9-13",
+    "Called The Dry Land Earth",
+    "🌍 Called The Dry Land Earth",
+    `Earth is the name God gives to the dry land that appears when the waters are gathered.
+
+The land is no longer hidden under the deep. It now stands as the place where later life can grow and live.
+
+🌍 Dry land is named
+👑 God claims what He forms
+🌱 Life now has a place
+⚖️ Creation becomes ordered
+
+The phrase shows the land as a real part of God's ordered world, not an accidental emergence.`,
+  );
+
+  replaceDayOnePhrase(
+    "Genesis 1:9-13",
+    "Called The Gathering Of Waters Seas",
+    "🌊 Called The Gathering Of Waters Seas",
+    `Seas is the name God gives to the gathered waters.
+
+What once covered everything is now assigned a place and boundary under His command.
+
+🌊 The waters are gathered
+📛 The seas are named
+⚖️ Boundaries are established
+👑 God rules the deep
+
+The sea is not a rival power in Genesis. It is part of the world God orders.`,
+  );
+
+  replaceDayOnePhrase(
+    "Genesis 1:9-13",
+    "Let The Earth Bring Forth Grass",
+    "🌱 Let The Earth Bring Forth Grass",
+    `God commands the earth to produce vegetation from itself.
+
+Grass here is the beginning of plant life covering the land God has just revealed.
+
+🌱 The earth becomes fruitful
+🌿 Plant life begins to appear
+🌍 Dry land is prepared for life
+🙌 God provides before man exists
+
+The phrase shows God turning bare land into a place of growth and provision.`,
+  );
+
+  replaceDayOnePhrase(
+    "Genesis 1:9-13",
+    "God Saw That It Was Good",
+    "✅ God Saw That It Was Good",
+    `God declares the land, seas, and plant life good because they match His wise design.
+
+Good does not mean merely pleasant. It means fitting, complete, and exactly as He intended.
+
+✅ God approves His work
+🌍 The earth is rightly ordered
+🌱 Life is ready to grow
+👑 Creation answers His purpose
+
+The phrase teaches that the world is good because it comes from God's hand and serves His design.`,
+  );
+
+  replaceDayOnePhrase(
+    "Genesis 1:14-19",
+    "To Divide The Day From The Night",
+    "⚖️ To Divide The Day From The Night",
+    `The lights are appointed to keep day and night distinct in the world God ordered on the first day.
+
+They do not create light and darkness from nothing. They govern and mark the distinction God already made.
+
+⚖️ Day and night stay distinct
+☀️ The greater light serves the day
+🌙 The lesser light serves the night
+⏱️ Time becomes visible
+
+The phrase shows the heavenly lights serving God's order, not creating their own.`,
+  );
+
+  replaceDayOnePhrase(
     "Genesis 1:20-23",
     "God Created Large Sea Creatures",
     "🐋 God Created Great Whales",
@@ -21979,6 +22099,54 @@ Even the largest creatures in the waters answer to the LORD who made them.`,
   );
 
   replaceDayOnePhrase(
+    "Genesis 1:14-19",
+    "He Made The Stars Also",
+    "⭐ He Made The Stars Also",
+    `The stars are mentioned briefly, but the phrase points to an immense part of creation.
+
+What people later fear, study, or worship is here presented as something God simply made.
+
+⭐ The stars are created
+🌌 The heavens are filled by God
+👑 No heavenly body rivals Him
+📖 The vast universe is His work
+
+The short phrase quietly magnifies God's power over everything above the earth.`,
+  );
+
+  replaceDayOnePhrase(
+    "Genesis 1:14-19",
+    "Evening And Morning: The Fourth Day",
+    "🌇 Evening And Morning: The Fourth Day",
+    `This phrase closes the fourth day, when God set the lights in the firmament of the heaven.
+
+The rulers of day and night are now in place to mark time for the world below.
+
+🌆 Evening closes the day
+🌅 Morning opens the next
+☀️ Sun and moon are appointed
+⭐ The heavens receive their lights
+
+The fourth day ends with creation gaining rhythm for days, seasons, and years.`,
+  );
+
+  replaceDayOnePhrase(
+    "Genesis 1:20-23",
+    "Let The Waters Bring Forth Abundantly",
+    "🌊 Let The Waters Bring Forth Abundantly",
+    `God commands the waters to teem with living creatures in great number.
+
+The empty seas are now filled with active, multiplying life because God speaks fruitfulness into them.
+
+🌊 The waters teem with life
+🐟 Small creatures fill the seas
+🐋 Great whales are included
+📈 The deep becomes abundant
+
+The phrase shows God's power not only to make life, but to make it plentiful.`,
+  );
+
+  replaceDayOnePhrase(
     "Genesis 1:20-23",
     "And God Blessed Them",
     "🙌 And God Blessed Them",
@@ -21992,6 +22160,54 @@ The blessing gives life the power to multiply and fill the places God prepared.
 📈 Life spreads by God's command
 
 The first blessing in creation shows that life increases because God gives it fruitfulness.`,
+  );
+
+  replaceDayOnePhrase(
+    "Genesis 1:20-23",
+    "After Their Kind",
+    "🌱 After Their Kind",
+    `This phrase means each living creature reproduces according to the order God gave it.
+
+Life is fruitful, but it is not chaotic. God's creation multiplies within the patterns He established.
+
+🌱 Life reproduces in order
+🐟 Fish bring forth their kind
+🐦 Fowls bring forth their kind
+🐋 Great whales bring forth their kind
+
+The phrase shows abundance governed by God's design, not random confusion.`,
+  );
+
+  replaceDayOnePhrase(
+    "Genesis 1:20-23",
+    "Be Fruitful And Multiply",
+    "📈 Be Fruitful And Multiply",
+    `God commands the creatures of sea and heaven to increase and fill the places prepared for them.
+
+Fruitfulness is not automatic self-power. It is a gift and command from the Creator.
+
+📈 God gives increase
+🌊 The waters are meant to be filled
+🐦 The heaven is meant to be filled
+🙌 Life spreads by His blessing
+
+The phrase shows that growth and multiplication come because God wills life to abound.`,
+  );
+
+  replaceDayOnePhrase(
+    "Genesis 1:20-23",
+    "Evening And Morning: The Fifth Day",
+    "🌇 Evening And Morning: The Fifth Day",
+    `This phrase marks the completion of the fifth day.
+
+The waters and the heaven are no longer empty. They now abound with living creatures under God's blessing.
+
+🌆 Evening closes the day
+🌅 Morning opens the next
+🐋 The waters are filled
+🐦 The heaven is filled
+
+The fifth day ends with creation overflowing with life where there had once been emptiness.`,
   );
 
   replaceDayOnePhrase(
@@ -22069,6 +22285,22 @@ The first thing called holy in the Bible is time, not a building.
 🙌 Creation is complete
 
 God sanctifies the day so rest becomes part of His good design.`,
+  );
+
+  replaceDayOnePhrase(
+    "Genesis 2:1-3",
+    "Made It Holy",
+    "✨ Sanctified It",
+    `Sanctified means God set the seventh day apart as holy.
+
+The first thing called holy in the Bible is time, not a building or altar.
+
+✨ The day is set apart
+🛑 Rest is marked as holy
+📅 Time belongs to God
+🙌 Worship grows from finished work
+
+God sanctifies the day so rest becomes part of life under His good order.`,
   );
 
   replaceDayOnePhrase(
@@ -22198,13 +22430,77 @@ As Adam sees each creature, the absence of a fitting human companion becomes cle
 God states that aloneness is not good, and the story lets Adam feel that need before God forms the woman.`,
   );
 
+  replaceDayOnePhrase(
+    "Genesis 2:8-9",
+    "The LORD God Planted A Garden",
+    "🌳 The LORD God Planted A Garden",
+    `God Himself prepares the garden before placing the man there.
+
+Eden is not a vague symbol of happiness. It is a planted place prepared by God for human life, work, and fellowship.
+
+🌳 God plants the garden
+📍 The place is prepared
+🍎 Provision is already there
+👤 Man is welcomed into God's care
+
+The phrase shows that human life begins in a world God personally readied.`,
+  );
+
+  replaceDayOnePhrase(
+    "Genesis 2:8-9",
+    "Eastward In Eden",
+    "📍 Eastward In Eden",
+    `Eden is presented as a real place with direction, land, trees, and later rivers.
+
+Genesis says the garden is planted eastward in Eden, showing the garden as a specific garden inside a larger region.
+
+📍 Eden is located, not imagined
+🌳 The garden is planted there
+🌊 Rivers later flow from it
+🗺️ Early history is tied to geography
+
+The geographical detail shows Genesis presenting Eden as part of the real world, with place, direction, and rivers that anchor the story in history.`,
+  );
+
+  replaceDayOnePhrase(
+    "Genesis 2:10-14",
+    "A River Went Out Of Eden",
+    "🌊 A River Went Out Of Eden",
+    `A river flows out from Eden to water the garden and then divides into four heads.
+
+That detail shows Eden as a place of abundance and life-giving provision, not a dry or imaginary setting.
+
+🌊 Water flows from Eden
+🌳 The garden is supplied
+🗺️ Four river systems spread outward
+📖 Eden touches the wider world
+
+The river matters because Genesis presents Eden as a real, fruitful source of life within the world God made.`,
+  );
+
+  replaceDayOnePhrase(
+    "Genesis 2:21-23",
+    "Brought Her To The Man",
+    "🤲 Brought Her To The Man",
+    `God brings the woman to the man after no helper comparable to him was found among the beasts.
+
+The moment answers the loneliness named earlier. Adam now receives the human companion he needed.
+
+🤲 God presents the woman
+👤 Adam does not make her
+🤝 The needed companion arrives
+❤️ Human partnership begins
+
+The phrase shows woman as God's answer to man's aloneness and the beginning of shared human life.`,
+  );
+
   for (const section of BIBLE_READER_STUDY_SECTIONS) {
     if (section.book !== "genesis" || (section.chapter !== 1 && section.chapter !== 2)) continue;
 
     section.title = cleanDayOneReviewedCard(section.title);
     section.categories = section.categories.map((category) =>
       category.id === "key-phrases"
-        ? { ...category, content: category.content.map(cleanDayOneReviewedCard) }
+        ? { ...category, content: dedupeDayOneReviewedCards(category.content.map(cleanDayOneReviewedCard)) }
         : category,
     );
   }
