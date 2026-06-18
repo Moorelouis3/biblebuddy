@@ -11060,11 +11060,39 @@ Before we understand redemption, we need to understand what God made humanity fo
 
       setBibleProgressSharePending(true);
       try {
-        const blob = await toBlob(bibleProgressShareCardRef.current, {
-          cacheBust: true,
-          pixelRatio: 2,
-          backgroundColor: "#f5f9ff",
-        });
+        const exportShell = document.createElement("div");
+        exportShell.style.position = "fixed";
+        exportShell.style.left = "-99999px";
+        exportShell.style.top = "0";
+        exportShell.style.width = "1080px";
+        exportShell.style.height = "1920px";
+        exportShell.style.background = "#000000";
+        exportShell.style.display = "flex";
+        exportShell.style.alignItems = "center";
+        exportShell.style.justifyContent = "center";
+        exportShell.style.padding = "120px";
+        exportShell.style.boxSizing = "border-box";
+
+        const shareCardClone = bibleProgressShareCardRef.current.cloneNode(true) as HTMLDivElement;
+        shareCardClone.style.width = "100%";
+        shareCardClone.style.maxWidth = "760px";
+        shareCardClone.style.boxShadow = "0 30px 80px rgba(0, 0, 0, 0.35)";
+        shareCardClone.style.borderRadius = "28px";
+        shareCardClone.style.overflow = "hidden";
+
+        exportShell.appendChild(shareCardClone);
+        document.body.appendChild(exportShell);
+
+        let blob: Blob | null = null;
+        try {
+          blob = await toBlob(exportShell, {
+            cacheBust: true,
+            pixelRatio: 2,
+            backgroundColor: "#000000",
+          });
+        } finally {
+          exportShell.remove();
+        }
 
         if (!blob) {
           throw new Error("Could not generate progress image.");
