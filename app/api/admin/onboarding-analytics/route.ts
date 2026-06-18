@@ -215,6 +215,7 @@ type BibleYearProgressRow = {
   user_id?: string | null;
   day_number?: number | null;
   reading_completed?: boolean | null;
+  study_notes_completed?: boolean | null;
   trivia_completed?: boolean | null;
   reflection_completed?: boolean | null;
   updated_at?: string | null;
@@ -2321,7 +2322,7 @@ function buildVisitorJourneys(
         .map((row) => row.created_at)
         .filter((value): value is string => Boolean(value))
         .sort()[0] || null;
-    const completedProgressRows = userProgressRows.filter((row) => row.reading_completed && row.trivia_completed && row.reflection_completed);
+    const completedProgressRows = userProgressRows.filter((row) => row.reading_completed && row.study_notes_completed && row.trivia_completed && row.reflection_completed);
     const completedDayNumbers = completedProgressRows
       .map((row) => Number(row.day_number || 0))
       .filter((day) => day > 0);
@@ -2458,7 +2459,7 @@ function buildVisitorJourneys(
           };
         }),
       ...completedProgressRows
-        .filter((row) => row.reading_completed && row.trivia_completed && row.reflection_completed)
+        .filter((row) => row.reading_completed && row.study_notes_completed && row.trivia_completed && row.reflection_completed)
         .filter((row) => Number(row.day_number || 0) >= 1 && Number(row.day_number || 0) <= 7)
         .map((row) => ({
           id: `progress-day-complete-${row.day_number}-${row.updated_at || row.user_id}`,
@@ -3480,7 +3481,7 @@ export async function GET(request: Request) {
   );
   const { data: allBibleYearProgressData } = await adminSupabase
     .from("bible_year_day_progress")
-    .select("user_id, day_number, reading_completed, trivia_completed, reflection_completed, updated_at")
+    .select("user_id, day_number, reading_completed, study_notes_completed, trivia_completed, reflection_completed, updated_at")
     .limit(250000);
   const allBibleYearProgressRows = ((allBibleYearProgressData || []) as BibleYearProgressRow[])
     .filter((row) => !isInternalAnalyticsUser(row.user_id, profileSummaryByUserId));

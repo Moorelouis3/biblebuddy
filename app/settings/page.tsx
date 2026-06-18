@@ -334,7 +334,7 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
     try {
       const { data, error } = await supabase
         .from("bible_year_day_progress")
-        .select("day_number, reading_completed, trivia_completed, reflection_completed")
+        .select("day_number, reading_completed, study_notes_completed, trivia_completed, reflection_completed")
         .eq("user_id", user.id)
         .order("day_number", { ascending: true });
 
@@ -345,11 +345,11 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
         .sort((a, b) => Number(a.day_number) - Number(b.day_number));
       const completedDays = new Set(
         progressRows
-          .filter((row) => row.reading_completed && row.trivia_completed && row.reflection_completed)
+          .filter((row) => row.reading_completed && row.study_notes_completed && row.trivia_completed && row.reflection_completed)
           .map((row) => Number(row.day_number)),
       );
       const touchedDays = progressRows
-        .filter((row) => row.reading_completed || row.trivia_completed || row.reflection_completed)
+        .filter((row) => row.reading_completed || row.study_notes_completed || row.trivia_completed || row.reflection_completed)
         .map((row) => Number(row.day_number));
 
       let nextDay = 1;

@@ -8,6 +8,7 @@ type BibleYearProgressRow = {
   user_id: string | null;
   day_number: number | null;
   reading_completed: boolean | null;
+  study_notes_completed: boolean | null;
   trivia_completed: boolean | null;
   reflection_completed: boolean | null;
   updated_at: string | null;
@@ -158,7 +159,7 @@ export async function GET(request: Request) {
       supabase.from("master_actions").select("id", { count: "exact", head: true }).eq("action_type", "user_upgraded").gte("created_at", todayStart),
       supabase.from("master_actions").select("user_id").gte("created_at", activeSince).limit(250000),
       supabase.from("profile_stats").select("user_id, last_active_at, last_active_date").or(`last_active_at.gte.${activeSince},last_active_date.gte.${activeSince.slice(0, 10)}`).limit(250000),
-      supabase.from("bible_year_day_progress").select("user_id, day_number, reading_completed, trivia_completed, reflection_completed, updated_at").limit(250000),
+      supabase.from("bible_year_day_progress").select("user_id, day_number, reading_completed, study_notes_completed, trivia_completed, reflection_completed, updated_at").limit(250000),
       supabase.from("master_actions").select("user_id, action_type, action_label, created_at").in("action_type", BIBLE_YEAR_ACTIONS).gte("created_at", since30d).limit(250000),
       supabase.from("master_actions").select("user_id, action_type, action_label, created_at").in("action_type", FREE_MODE_ACTIONS).gte("created_at", since30d).limit(250000),
       supabase.from("profile_stats").select("user_id, username, display_name, is_paid, current_level, last_active_at, last_active_date").limit(250000),
@@ -190,10 +191,10 @@ export async function GET(request: Request) {
     }
 
     const completedBibleYearTasks = progressRows.reduce(
-      (sum, row) => sum + (row.reading_completed ? 1 : 0) + (row.trivia_completed ? 1 : 0) + (row.reflection_completed ? 1 : 0),
+      (sum, row) => sum + (row.reading_completed ? 1 : 0) + (row.study_notes_completed ? 1 : 0) + (row.trivia_completed ? 1 : 0) + (row.reflection_completed ? 1 : 0),
       0,
     );
-    const completedBibleYearDays = progressRows.filter((row) => row.reading_completed && row.trivia_completed && row.reflection_completed).length;
+    const completedBibleYearDays = progressRows.filter((row) => row.reading_completed && row.study_notes_completed && row.trivia_completed && row.reflection_completed).length;
     const bibleYearUsers = progressByUser.size;
     const activeBibleYearUsers7d = uniqueCount(progressRows.filter((row) => row.updated_at && row.updated_at >= since7d));
 
@@ -230,8 +231,8 @@ export async function GET(request: Request) {
     const topBibleYearUsers = [...progressByUser.entries()]
       .map(([userId, rows]) => {
         const profile = profileByUser.get(userId);
-        const tasks = rows.reduce((sum, row) => sum + (row.reading_completed ? 1 : 0) + (row.trivia_completed ? 1 : 0) + (row.reflection_completed ? 1 : 0), 0);
-        const daysDone = rows.filter((row) => row.reading_completed && row.trivia_completed && row.reflection_completed).length;
+        const tasks = rows.reduce((sum, row) => sum + (row.reading_completed ? 1 : 0) + (row.study_notes_completed ? 1 : 0) + (row.trivia_completed ? 1 : 0) + (row.reflection_completed ? 1 : 0), 0);
+        const daysDone = rows.filter((row) => row.reading_completed && row.study_notes_completed && row.trivia_completed && row.reflection_completed).length;
         const latestDay = Math.max(...rows.map((row) => Number(row.day_number || 0)));
         const sortedUpdates = rows.map((row) => row.updated_at || "").sort();
         const lastUpdated = sortedUpdates[sortedUpdates.length - 1] || null;

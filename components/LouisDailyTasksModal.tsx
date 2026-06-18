@@ -22,7 +22,7 @@ import { cacheChapterNotes, fetchBibleChapterNotes, getCanonicalBibleNotesBookKe
 import BrowserTtsButton from "./BrowserTtsButton";
 import { getGenesisOneTtsSrc } from "../lib/genesisOneTts";
 
-type TaskKind = "devotional" | "reading" | "notes" | "trivia" | "scrambled" | "reflection";
+type TaskKind = "devotional" | "reading" | "notes" | "study_notes" | "trivia" | "scrambled" | "reflection";
 
 export type TaskState = {
   kind: TaskKind;
