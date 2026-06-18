@@ -67,6 +67,7 @@ import { enrichBibleVerses } from "../lib/bibleHighlighting";
 import { resolveBibleReference } from "../lib/bibleTermResolver";
 import { getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes } from "../lib/bibleNotes";
 import { buildPersistedFeatureTours, normalizeFeatureTours } from "../lib/featureTours";
+import { getTriviaChapter } from "../lib/triviaGameData";
 
 const EmbeddedSettingsPage = dynamic(() => import("../app/settings/page"), { ssr: false });
 
@@ -279,6 +280,57 @@ function getBibleYearTriviaFeedback(question: BibleYearTriviaQuestion, selectedA
   if (!selectedAnswer) return question.explanation;
   const prefix = selectedAnswer === question.answer ? "Right." : "Not quite.";
   return `${prefix} ${question.explanation}`;
+}
+
+function buildBibleYearTriviaQuestionsForDay(day: GenesisBibleYearDay) {
+  const chapterPacks = day.readings
+    .map((reading) => {
+      const bookKey = normalizeDashboardBookKey(reading.book);
+      return {
+        reading,
+        pack: getTriviaChapter(bookKey, reading.chapter),
+      };
+    })
+    .filter((entry): entry is { reading: GenesisBibleYearDay["readings"][number]; pack: NonNullable<ReturnType<typeof getTriviaChapter>> } => Boolean(entry.pack));
+
+  const generatedQuestions: BibleYearTriviaQuestion[] = [];
+  const seenQuestionIds = new Set<string>();
+  let questionIndex = 0;
+
+  while (generatedQuestions.length < 5) {
+    let addedInRound = false;
+
+    for (const entry of chapterPacks) {
+      const sourceQuestion = entry.pack.questions[questionIndex];
+      if (!sourceQuestion) continue;
+
+      const answerText =
+        sourceQuestion.options.find((option) => option.label === sourceQuestion.correctAnswer)?.text ||
+        sourceQuestion.options[0]?.text;
+      if (!answerText) continue;
+
+      const questionId = `bible-year-day-${day.dayNumber}-${sourceQuestion.id}`;
+      if (seenQuestionIds.has(questionId)) continue;
+      seenQuestionIds.add(questionId);
+      addedInRound = true;
+
+      generatedQuestions.push({
+        id: questionId,
+        question: sourceQuestion.question,
+        options: sourceQuestion.options.map((option) => option.text),
+        answer: answerText,
+        verse: sourceQuestion.verse,
+        explanation: sourceQuestion.explanation,
+      });
+
+      if (generatedQuestions.length >= 5) break;
+    }
+
+    if (!addedInRound) break;
+    questionIndex += 1;
+  }
+
+  return generatedQuestions;
 }
 
 const STUDY_BOOK_BY_TITLE: Record<string, string> = {
@@ -10122,14 +10174,14 @@ Before we understand redemption, we need to understand what God made humanity fo
     }
 
     if (card === "trivia") {
-      const triviaQuestions = bibleYearTriviaByDay[day.dayNumber] || bibleYearDayOneTrivia;
+      const triviaQuestions = buildBibleYearTriviaQuestionsForDay(day);
       const correctTriviaCount = triviaQuestions.filter((item) => bibleYearTriviaAnswers[item.id] === item.answer).length;
       const answeredTriviaCount = triviaQuestions.filter((item) => Boolean(bibleYearTriviaAnswers[item.id])).length;
       const triviaCardComplete = bibleYearCompletedCardsByDay[day.dayNumber]?.trivia === true;
       const triviaResultsOpen = Boolean(bibleYearTriviaResultsOpenByDay[day.dayNumber]) || triviaCardComplete;
       const currentQuestionIndex = Math.min(
         bibleYearTriviaQuestionIndexByDay[day.dayNumber] || 0,
-        triviaQuestions.length - 1,
+        Math.max(0, triviaQuestions.length - 1),
       );
       const currentQuestion = triviaQuestions[currentQuestionIndex];
       const selectedAnswer = currentQuestion ? bibleYearTriviaAnswers[currentQuestion.id] : null;
@@ -10180,6 +10232,19 @@ Before we understand redemption, we need to understand what God made humanity fo
               >
                 {triviaCardComplete ? "Close Results" : "Close Results and Complete Trivia"}
               </button>
+            </div>
+          </div>
+        );
+      }
+
+      if (!triviaQuestions.length) {
+        return (
+          <div className="px-4 pb-4">
+            <div className="dashboard-inline-task rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4">
+              <p className="text-sm font-black text-[var(--bb-text-primary,#111827)]">Trivia questions are still being prepared for this day.</p>
+              <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+                The daily quiz will appear here once chapter questions are available for the readings in this day.
+              </p>
             </div>
           </div>
         );
