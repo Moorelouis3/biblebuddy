@@ -11017,7 +11017,8 @@ Before we understand redemption, we need to understand what God made humanity fo
         ) {
           await navigator.share({
             title: "My Bible Buddy Progress",
-            text: shareText,
+            text: "Start your Bible in One Year journey at https://www.mybiblebuddy.net/",
+            url: "https://www.mybiblebuddy.net/",
             files: [file],
           });
           return;
@@ -11062,77 +11063,79 @@ Before we understand redemption, we need to understand what God made humanity fo
         zIndex="z-[75]"
       >
         <div className="w-full max-w-[420px] px-2 sm:px-0">
-          <div className="mb-3 flex items-center justify-end">
+          <div className="relative">
             <button
               type="button"
               onClick={() => setShowBibleProgressDetails(false)}
-              className="rounded-full bg-white/90 px-3 py-1.5 text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-text-secondary,#4b5563)] shadow-[0_10px_24px_rgba(14,26,58,0.08)] transition hover:bg-white"
+              className="absolute right-3 top-3 z-10 grid h-9 w-9 place-items-center rounded-full bg-white/95 text-xl font-light leading-none text-[var(--bb-text-secondary,#4b5563)] shadow-[0_10px_24px_rgba(14,26,58,0.10)] transition hover:bg-white"
               aria-label="Close progress details"
             >
-              Close
+              x
             </button>
-          </div>
-          <div
-            ref={bibleProgressShareCardRef}
-            className="overflow-hidden rounded-[28px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_16%,#dbe7f4)] bg-[linear-gradient(180deg,#ffffff_0%,#f8fbff_100%)] text-[var(--bb-text-primary,#111827)] shadow-[0_24px_60px_rgba(14,26,58,0.16)]"
-          >
-            <div className="grid gap-4 p-5 sm:p-6">
-              <div className="text-center">
-                <div className="mx-auto flex w-full max-w-[220px] items-center justify-center gap-3">
-                  <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_14%,white)] shadow-[inset_0_1px_0_rgba(255,255,255,0.7)]">
-                    <Image src="/TherealiconforBB.png" alt="" width={32} height={32} className="h-8 w-8 rounded-xl object-cover" />
-                  </span>
-                  <div className="min-w-0 text-left">
-                    <p className="text-lg font-black leading-tight text-[var(--bb-text-primary,#111827)]">Bible Buddy</p>
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">mybiblebuddy.net</p>
+            <div className="grid gap-3">
+              <div
+                ref={bibleProgressShareCardRef}
+                className="overflow-hidden rounded-[28px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_16%,#dbe7f4)] bg-[linear-gradient(180deg,#ffffff_0%,#f8fbff_100%)] text-[var(--bb-text-primary,#111827)] shadow-[0_24px_60px_rgba(14,26,58,0.16)]"
+              >
+                <div className="grid gap-4 p-5 sm:p-6">
+                  <div className="text-center">
+                    <div className="mx-auto flex w-full max-w-[220px] items-center justify-center gap-3">
+                      <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_14%,white)] shadow-[inset_0_1px_0_rgba(255,255,255,0.7)]">
+                        <Image src="/TherealiconforBB.png" alt="" width={32} height={32} className="h-8 w-8 rounded-xl object-cover" />
+                      </span>
+                      <div className="min-w-0 text-left">
+                        <p className="text-lg font-black leading-tight text-[var(--bb-text-primary,#111827)]">Bible Buddy</p>
+                        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">mybiblebuddy.net</p>
+                      </div>
+                    </div>
+                    <p className="mt-4 text-[11px] font-black uppercase tracking-[0.24em] text-[var(--bb-text-muted,#6b7280)]">My Bible Buddy Progress</p>
                   </div>
+
+                  <section className="rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_14%,#dbe7f4)] bg-white/90 px-4 py-4 text-center shadow-[0_10px_24px_rgba(14,26,58,0.06)]">
+                    <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[var(--bb-text-muted,#6b7280)]">Bible Streak</p>
+                    <p className="mt-2 text-4xl font-black leading-none text-[var(--bb-accent,#2f7fe8)]">
+                      {currentStreak} <span className="text-xl align-top">{currentStreak === 1 ? "day" : "days"}</span>
+                    </p>
+                    <p className="mt-3 text-sm font-black leading-5 text-[var(--bb-text-primary,#111827)]">{streakMilestone.message}</p>
+                    <p className="mt-1 text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">{streakMilestone.comparison}</p>
+                  </section>
+
+                  <section className="rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_14%,#dbe7f4)] bg-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_5%,white)] px-4 py-4 shadow-[0_10px_24px_rgba(14,26,58,0.06)]">
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[var(--bb-text-muted,#6b7280)]">Bible In One Year</p>
+                        <p className="mt-2 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Day {currentDay} of 365</p>
+                      </div>
+                      <div className="rounded-full bg-white px-3 py-1 text-[11px] font-black text-[var(--bb-accent,#2f7fe8)] shadow-[0_6px_14px_rgba(14,26,58,0.08)]">
+                        {overallPercent}%
+                      </div>
+                    </div>
+                    <div className="mt-4 h-3 overflow-hidden rounded-full bg-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_14%,#dbe7f4)]">
+                      <div className="h-full rounded-full bg-[var(--bb-accent,#2f7fe8)]" style={{ width: `${Math.max(2, dayProgressPercent)}%` }} />
+                    </div>
+                    <div className="mt-3 flex items-center justify-between gap-3 text-xs font-semibold text-[var(--bb-text-secondary,#4b5563)]">
+                      <span>{overallPercent}% completed</span>
+                      <span>{remainingDays} days left</span>
+                    </div>
+                  </section>
+
+                  <section className="rounded-[20px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_12%,#dbe7f4)] bg-white/85 px-4 py-3 text-center">
+                    <p className="text-sm font-black text-[var(--bb-text-primary,#111827)]">{encouragementTitle}</p>
+                    <p className="mt-1 text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">{encouragementBody}</p>
+                  </section>
+
+                  <section className="grid grid-cols-2 gap-3 rounded-[20px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_12%,#dbe7f4)] bg-white/85 px-4 py-3">
+                    <div className="min-w-0 text-center">
+                      <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--bb-text-muted,#6b7280)]">Started</p>
+                      <p className="mt-1 text-sm font-black leading-5 text-[var(--bb-text-primary,#111827)]">{startDateLabel}</p>
+                    </div>
+                    <div className="min-w-0 text-center">
+                      <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--bb-text-muted,#6b7280)]">Expected Finish</p>
+                      <p className="mt-1 text-sm font-black leading-5 text-[var(--bb-text-primary,#111827)]">{expectedFinishDateLabel}</p>
+                    </div>
+                  </section>
                 </div>
-                <p className="mt-4 text-[11px] font-black uppercase tracking-[0.24em] text-[var(--bb-text-muted,#6b7280)]">My Bible Buddy Progress</p>
               </div>
-
-              <section className="rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_14%,#dbe7f4)] bg-white/90 px-4 py-4 text-center shadow-[0_10px_24px_rgba(14,26,58,0.06)]">
-                <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[var(--bb-text-muted,#6b7280)]">Bible Streak</p>
-                <p className="mt-2 text-4xl font-black leading-none text-[var(--bb-accent,#2f7fe8)]">
-                  {currentStreak} <span className="text-xl align-top">{currentStreak === 1 ? "day" : "days"}</span>
-                </p>
-                <p className="mt-3 text-sm font-black leading-5 text-[var(--bb-text-primary,#111827)]">{streakMilestone.message}</p>
-                <p className="mt-1 text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">{streakMilestone.comparison}</p>
-              </section>
-
-              <section className="rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_14%,#dbe7f4)] bg-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_5%,white)] px-4 py-4 shadow-[0_10px_24px_rgba(14,26,58,0.06)]">
-                <div className="flex items-start justify-between gap-3">
-                  <div>
-                    <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[var(--bb-text-muted,#6b7280)]">Bible In One Year</p>
-                    <p className="mt-2 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Day {currentDay} of 365</p>
-                  </div>
-                  <div className="rounded-full bg-white px-3 py-1 text-[11px] font-black text-[var(--bb-accent,#2f7fe8)] shadow-[0_6px_14px_rgba(14,26,58,0.08)]">
-                    {overallPercent}%
-                  </div>
-                </div>
-                <div className="mt-4 h-3 overflow-hidden rounded-full bg-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_14%,#dbe7f4)]">
-                  <div className="h-full rounded-full bg-[var(--bb-accent,#2f7fe8)]" style={{ width: `${Math.max(2, dayProgressPercent)}%` }} />
-                </div>
-                <div className="mt-3 flex items-center justify-between gap-3 text-xs font-semibold text-[var(--bb-text-secondary,#4b5563)]">
-                  <span>{overallPercent}% completed</span>
-                  <span>{remainingDays} days left</span>
-                </div>
-              </section>
-
-              <section className="rounded-[20px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_12%,#dbe7f4)] bg-white/85 px-4 py-3 text-center">
-                <p className="text-sm font-black text-[var(--bb-text-primary,#111827)]">{encouragementTitle}</p>
-                <p className="mt-1 text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">{encouragementBody}</p>
-              </section>
-
-              <section className="grid grid-cols-2 gap-3 rounded-[20px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_12%,#dbe7f4)] bg-white/85 px-4 py-3">
-                <div className="min-w-0 text-center">
-                  <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--bb-text-muted,#6b7280)]">Started</p>
-                  <p className="mt-1 text-sm font-black leading-5 text-[var(--bb-text-primary,#111827)]">{startDateLabel}</p>
-                </div>
-                <div className="min-w-0 text-center">
-                  <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--bb-text-muted,#6b7280)]">Expected Finish</p>
-                  <p className="mt-1 text-sm font-black leading-5 text-[var(--bb-text-primary,#111827)]">{expectedFinishDateLabel}</p>
-                </div>
-              </section>
 
               <button
                 type="button"
