@@ -2694,7 +2694,7 @@ export default function DashboardJourneyExperience({
           selectedBibleYearSeriesDay &&
           selectedDayIsBuilt &&
           manualBibleYearStudyDayNumber === selectedBibleYearSeriesDay.dayNumber &&
-          manualBibleYearStudyDayNumber >= (currentBibleYearDay?.dayNumber ?? 1),
+          canOpenBibleYearDayInJourneyOrder(selectedBibleYearSeriesDay),
         );
 
         return shouldKeepJustCompletedDay || shouldUseManualSelectedDay
@@ -4490,6 +4490,7 @@ export default function DashboardJourneyExperience({
     if (options.markDone) {
       void markBibleYearDayCardsComplete(day, getBibleYearRequiredCardKeys(day));
     }
+    void syncBibleYearDaySavedState(day);
     setFreeStudyModeActive(false);
     setEmbeddedBibleBookSearchOpen(false);
     setEmbeddedBibleSelectedBook(null);
@@ -4762,8 +4763,7 @@ export default function DashboardJourneyExperience({
       : null;
     const shouldUseStoredDay = Boolean(
       storedDay &&
-      canOpenBibleYearDayInJourneyOrder(storedDay) &&
-      storedDay.dayNumber >= activeBibleYearDashboardDay.dayNumber,
+      canOpenBibleYearDayInJourneyOrder(storedDay),
     );
     const targetDay = shouldUseStoredDay ? storedDay! : activeBibleYearDashboardDay;
 
@@ -4775,7 +4775,8 @@ export default function DashboardJourneyExperience({
     const shouldKeepManualSelectedDay = Boolean(
       manualBibleYearStudyDayNumber &&
       selectedBibleYearSeriesDay?.dayNumber === manualBibleYearStudyDayNumber &&
-      manualBibleYearStudyDayNumber >= activeBibleYearDashboardDay.dayNumber,
+      selectedBibleYearSeriesDay &&
+      canOpenBibleYearDayInJourneyOrder(selectedBibleYearSeriesDay),
     );
     if (manualBibleYearStudyDayNumber && !shouldKeepManualSelectedDay) {
       setManualBibleYearStudyDayNumber(null);
@@ -9765,6 +9766,95 @@ Before we understand redemption, we need to understand what God made humanity fo
     return `bible-in-one-year-day-${day.dayNumber}-${day.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`;
   }
 
+  async function syncBibleYearDaySavedState(day: GenesisBibleYearDay) {
+    if (!userId) return;
+
+    try {
+      let progressRow:
+        | {
+            reading_completed?: boolean | null;
+            study_notes_completed?: boolean | null;
+            trivia_completed?: boolean | null;
+            reflection_completed?: boolean | null;
+          }
+        | null = null;
+
+      const primary = await supabase
+        .from("bible_year_day_progress")
+        .select("reading_completed, study_notes_completed, trivia_completed, reflection_completed")
+        .eq("user_id", userId)
+        .eq("day_number", day.dayNumber)
+        .maybeSingle();
+
+      if (primary.error && isMissingStudyNotesCompletedColumn(primary.error)) {
+        const fallback = await supabase
+          .from("bible_year_day_progress")
+          .select("reading_completed, trivia_completed, reflection_completed")
+          .eq("user_id", userId)
+          .eq("day_number", day.dayNumber)
+          .maybeSingle();
+        if (fallback.error) throw fallback.error;
+        progressRow = fallback.data ? { ...fallback.data, study_notes_completed: false } : null;
+      } else if (primary.error) {
+        throw primary.error;
+      } else {
+        progressRow = primary.data;
+      }
+
+      if (progressRow) {
+        setBibleYearCompletedCardsByDay((current) => ({
+          ...current,
+          [day.dayNumber]: {
+            ...(current[day.dayNumber] || {}),
+            ...(progressRow.reading_completed === true ? { reading: true } : {}),
+            ...(progressRow.study_notes_completed === true ? { study_notes: true } : {}),
+            ...(progressRow.trivia_completed === true ? { trivia: true } : {}),
+            ...(progressRow.reflection_completed === true ? { reflection: true } : {}),
+          },
+        }));
+        if (progressRow.study_notes_completed === true) {
+          setBibleYearScriptureNotesViewedByDay((current) => ({
+            ...current,
+            [day.dayNumber]: true,
+          }));
+        }
+        if (progressRow.reflection_completed === true) {
+          setBibleYearReflectionPostedByDay((current) => ({
+            ...current,
+            [day.dayNumber]: true,
+          }));
+        }
+      }
+
+      const { data: commentRow, error: commentError } = await supabase
+        .from("article_comments")
+        .select("id")
+        .eq("user_id", userId)
+        .eq("article_slug", getBibleYearReflectionSlug(day))
+        .eq("is_deleted", false)
+        .limit(1)
+        .maybeSingle();
+
+      if (commentError) throw commentError;
+
+      if (commentRow) {
+        setBibleYearReflectionPostedByDay((current) => ({
+          ...current,
+          [day.dayNumber]: true,
+        }));
+        setBibleYearCompletedCardsByDay((current) => ({
+          ...current,
+          [day.dayNumber]: {
+            ...(current[day.dayNumber] || {}),
+            reflection: true,
+          },
+        }));
+      }
+    } catch (error) {
+      console.warn(`[BIBLE_YEAR_DAY_SYNC] Could not sync saved state for day ${day.dayNumber}:`, error);
+    }
+  }
+
   function markBibleYearReflectionPosted(day: GenesisBibleYearDay) {
     setBibleYearReflectionPostedByDay((current) => ({
       ...current,
@@ -14380,24 +14470,11 @@ Before we understand redemption, we need to understand what God made humanity fo
     return `Expected Finish Date: ${effectiveBibleYearReport.expectedFinishDateLabel ?? bibleYearSchedule.expectedFinishDateLabel}`;
   }
 
-  function getBibleYearJourneyActualFinishText() {
-    const isCompleted =
-      completedBibleYearChapters >= BIBLE_IN_ONE_YEAR_TOTAL_CHAPTERS ||
-      (effectiveBibleYearReport.currentDay >= 365 && effectiveBibleYearReport.remainingChapters <= 0);
-    if (!isCompleted) return "Actual Finish Date: Not Completed Yet";
-    return `Actual Finish Date: ${new Date().toLocaleDateString(undefined, { month: "long", day: "numeric", year: "numeric" })}`;
-  }
-
   function renderBibleYearJourneyFinishRows() {
     return (
       <div className="px-2 pb-1 pt-3 text-left text-[var(--bb-text-primary,#111827)]">
         <p className="text-sm font-bold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-          <span aria-hidden="true" className="mr-2">🏁</span>
           {getBibleYearJourneyExpectedFinishText()}
-        </p>
-        <p className="mt-1 text-sm font-bold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-          <span aria-hidden="true" className="mr-2">✅</span>
-          {getBibleYearJourneyActualFinishText()}
         </p>
       </div>
     );
