@@ -2126,7 +2126,7 @@ export default function DashboardJourneyExperience({
   const [bibleYearIncompleteChecklistDay, setBibleYearIncompleteChecklistDay] = useState<GenesisBibleYearDay | null>(null);
   const [bibleYearSeriesFilter, setBibleYearSeriesFilter] = useState<BibleYearSeriesFilter>("all");
   const [bibleYearCompletedCardsByDay, setBibleYearCompletedCardsByDay] = useState<BibleYearCompletedCardsByDay>({});
-  const [bibleYearProgressLoaded, setBibleYearProgressLoaded] = useState(true);
+  const [bibleYearProgressLoaded, setBibleYearProgressLoaded] = useState(false);
   const [bibleYearTriviaAnswers, setBibleYearTriviaAnswers] = useState<Record<string, string>>({});
   const [bibleYearTriviaQuestionIndexByDay, setBibleYearTriviaQuestionIndexByDay] = useState<Record<number, number>>({});
   const [bibleYearTriviaResultsOpenByDay, setBibleYearTriviaResultsOpenByDay] = useState<Record<number, boolean>>({});
