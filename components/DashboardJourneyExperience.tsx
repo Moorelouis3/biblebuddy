@@ -2127,7 +2127,7 @@ export default function DashboardJourneyExperience({
   const [bibleYearIncompleteChecklistDay, setBibleYearIncompleteChecklistDay] = useState<GenesisBibleYearDay | null>(null);
   const [bibleYearSeriesFilter, setBibleYearSeriesFilter] = useState<BibleYearSeriesFilter>("all");
   const [bibleYearCompletedCardsByDay, setBibleYearCompletedCardsByDay] = useState<BibleYearCompletedCardsByDay>({});
-  const [bibleYearProgressLoaded, setBibleYearProgressLoaded] = useState(true);
+  const [bibleYearProgressLoaded, setBibleYearProgressLoaded] = useState(false);
   const [bibleYearTriviaAnswers, setBibleYearTriviaAnswers] = useState<Record<string, string>>({});
   const [bibleYearTriviaQuestionIndexByDay, setBibleYearTriviaQuestionIndexByDay] = useState<Record<number, number>>({});
   const [bibleYearTriviaResultsOpenByDay, setBibleYearTriviaResultsOpenByDay] = useState<Record<number, boolean>>({});
@@ -2661,7 +2661,7 @@ export default function DashboardJourneyExperience({
   }, [activePageKey, fetchShareRewards, userId]);
 
   const bibleYearCurrentDayReady = bibleYearProgressReady && bibleYearProgressLoaded;
-  const activeBibleYearDashboardDay = bibleYearDashboardActive
+  const activeBibleYearDashboardDay = bibleYearDashboardActive && bibleYearCurrentDayReady
     ? (() => {
         const builtBibleYearDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES;
         const currentBibleYearDay =
@@ -15026,6 +15026,17 @@ Before we understand redemption, we need to understand what God made humanity fo
             ) : null}
             {!bibleYearDashboardActive && !homePanelOverride && !shouldShowCompletionPanel && deepStudyNode ? (
               <div className="dashboard-inline-deep-study mb-3 sm:mb-4">{deepStudyNode}</div>
+            ) : null}
+            {bibleYearDashboardActive && !bibleYearCurrentDayReady && !homePanelOverride && !shouldShowCompletionPanel ? (
+              <div className="mx-auto w-full max-w-3xl">
+                <article className="overflow-hidden rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-5 py-6 text-[var(--bb-text-primary,#111827)] shadow-[0_16px_42px_rgba(38,63,99,0.12),inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-xl">
+                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[var(--bb-accent,#2f7fe8)]">Bible In One Year</p>
+                  <h2 className="mt-2 text-xl font-black leading-tight">Loading your progress...</h2>
+                  <p className="mt-2 text-sm font-medium text-[var(--bb-text-secondary,#4b5563)]">
+                    We&apos;re pulling in your current day before the dashboard opens.
+                  </p>
+                </article>
+              </div>
             ) : null}
             {bibleYearDashboardActive && activeBibleYearDashboardDay && !homePanelOverride && !shouldShowCompletionPanel ? (
               <>
