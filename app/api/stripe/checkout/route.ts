@@ -26,6 +26,15 @@ const normalizeOrigin = (value: string) => {
   return `${protocol}://${value}`;
 };
 
+const buildSuccessUrl = (origin: string, safeReturnTo: string) => {
+  const url = new URL("/upgrade/success", origin);
+  url.searchParams.set("session_id", "{CHECKOUT_SESSION_ID}");
+  if (safeReturnTo) {
+    url.searchParams.set("returnTo", safeReturnTo);
+  }
+  return url.toString();
+};
+
 export async function POST(req: NextRequest) {
   if (!stripe) {
     console.error("Stripe checkout error: STRIPE_SECRET_KEY missing");
@@ -120,9 +129,7 @@ export async function POST(req: NextRequest) {
         ? String(body.journeyDay)
         : "";
 
-    successUrl = safeReturnTo
-      ? new URL(`/upgrade/success?returnTo=${encodeURIComponent(safeReturnTo)}`, origin).toString()
-      : new URL("/upgrade/success", origin).toString();
+    successUrl = buildSuccessUrl(origin, safeReturnTo);
     cancelUrl = safeReturnTo ? new URL(safeReturnTo, origin).toString() : new URL("/upgrade", origin).toString();
 
     checkoutMetadata = {
