@@ -12108,7 +12108,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           "order-1"
         )}
         {showCompletionMoment ? renderBibleYearLessonCompleteCard(day, nextBibleYearDay, () => openAdjacentBibleYearDay(nextBibleYearDay)) : (
-        <article className={`order-2 overflow-hidden rounded-[20px] border p-5 text-[var(--bb-text-primary,#111827)] shadow-[0_18px_48px_rgba(38,63,99,0.12),inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-xl sm:p-6 ${
+        <article className={`order-4 overflow-hidden rounded-[20px] border p-5 text-[var(--bb-text-primary,#111827)] shadow-[0_18px_48px_rgba(38,63,99,0.12),inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-xl sm:p-6 ${
           readingComplete
             ? "border-emerald-300 bg-[linear-gradient(145deg,#f4fff7,#e8f8ee)]"
             : "border-[var(--bb-card-border,#dbe7f4)] bg-[linear-gradient(145deg,color-mix(in_srgb,var(--bb-card,#ffffff)_94%,var(--bb-surface-soft,#f8fbff)),var(--bb-surface-soft,#f8fbff))]"
@@ -12268,7 +12268,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           </>
         ) : null}
 
-        <section data-bb-dashboard-tour="journey-map" className="order-5 overflow-hidden rounded-[20px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] shadow-[0_16px_42px_rgba(38,63,99,0.12),inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-xl">
+        <section data-bb-dashboard-tour="journey-map" className="order-2 overflow-hidden rounded-[20px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] shadow-[0_16px_42px_rgba(38,63,99,0.12),inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-xl">
           <button type="button" onClick={openBibleYearSeriesDashboard} className="hidden w-full items-center justify-between gap-3 px-4 py-3.5 text-left transition hover:bg-[var(--bb-surface-soft,#f4f8ff)]">
             <span>
               <span className="block text-[17px] font-bold text-[var(--bb-text-primary,#111827)]">Journey Map</span>
