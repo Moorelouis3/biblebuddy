@@ -760,6 +760,12 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
       const todayKey = getAppShellLocalDateKey();
       const nowIso = new Date().toISOString();
+      const { data: existingBibleYearProgressRows } = await supabase
+        .from("bible_year_day_progress")
+        .select("day_number")
+        .eq("user_id", currentUserId)
+        .limit(1);
+      const hasExistingBibleYearProgress = Boolean(existingBibleYearProgressRows && existingBibleYearProgressRows.length > 0);
 
       if (!profileStats) {
         const { error: upsertError } = await supabase.from("profile_stats").upsert(
@@ -780,17 +786,19 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           console.error("[ONBOARDING] Error creating initialized profile_stats row:", upsertError);
         }
 
-        await supabase.from("bible_year_day_progress").upsert(
-          {
-            user_id: currentUserId,
-            day_number: 1,
-            reading_completed: false,
-            study_notes_completed: false,
-            trivia_completed: false,
-            reflection_completed: false,
-          },
-          { onConflict: "user_id,day_number" },
-        );
+        if (!hasExistingBibleYearProgress) {
+          await supabase.from("bible_year_day_progress").upsert(
+            {
+              user_id: currentUserId,
+              day_number: 1,
+              reading_completed: false,
+              study_notes_completed: false,
+              trivia_completed: false,
+              reflection_completed: false,
+            },
+            { onConflict: "user_id,day_number" },
+          );
+        }
 
         const derivedName = headerProfileName !== "You" ? headerProfileName : username || userEmail?.split("@")[0] || "";
         setFirstLoginOnboardingName(derivedName);
@@ -811,17 +819,19 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           })
           .eq("user_id", currentUserId);
 
-        await supabase.from("bible_year_day_progress").upsert(
-          {
-            user_id: currentUserId,
-            day_number: 1,
-            reading_completed: false,
-            study_notes_completed: false,
-            trivia_completed: false,
-            reflection_completed: false,
-          },
-          { onConflict: "user_id,day_number" },
-        );
+        if (!hasExistingBibleYearProgress) {
+          await supabase.from("bible_year_day_progress").upsert(
+            {
+              user_id: currentUserId,
+              day_number: 1,
+              reading_completed: false,
+              study_notes_completed: false,
+              trivia_completed: false,
+              reflection_completed: false,
+            },
+            { onConflict: "user_id,day_number" },
+          );
+        }
       }
 
       if (!onboardingCompleted) {
@@ -991,6 +1001,19 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       const todayKey = getAppShellLocalDateKey();
       const doomScrollLabel = `${payload.projectedMinutesLabel} doom scrolling`;
       const displayName = cleanFirstName;
+      const [{ data: existingProfile }, { data: existingBibleYearProgressRows }] = await Promise.all([
+        supabase
+          .from("profile_stats")
+          .select("bible_year_started_at, bible_year_launch_seen_at")
+          .eq("user_id", userId)
+          .maybeSingle(),
+        supabase
+          .from("bible_year_day_progress")
+          .select("day_number")
+          .eq("user_id", userId)
+          .limit(1),
+      ]);
+      const hasExistingBibleYearProgress = Boolean(existingBibleYearProgressRows && existingBibleYearProgressRows.length > 0);
 
       const { error: authError } = await supabase.auth.updateUser({
         data: {
@@ -1018,8 +1041,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             onboarding_study_focus: "bible_in_one_year",
             onboarding_time_commitment: doomScrollLabel,
             preferred_study_mode: "bible_year",
-            bible_year_started_at: todayKey,
-            bible_year_launch_seen_at: nowIso,
+            bible_year_started_at: existingProfile?.bible_year_started_at || todayKey,
+            bible_year_launch_seen_at: existingProfile?.bible_year_launch_seen_at || nowIso,
             louis_primary_devotional_day: 1,
             updated_at: nowIso,
           },
@@ -1071,19 +1094,21 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         console.warn("[FIRST_LOGIN_ONBOARDING] Response save skipped:", responseSaveError.message);
       }
 
-      const { error: dayProgressError } = await supabase.from("bible_year_day_progress").upsert(
-        {
-          user_id: userId,
-          day_number: 1,
-          reading_completed: false,
-          study_notes_completed: false,
-          trivia_completed: false,
-          reflection_completed: false,
-        },
-        { onConflict: "user_id,day_number" },
-      );
-      if (dayProgressError) {
-        console.warn("[FIRST_LOGIN_ONBOARDING] Day 1 seed skipped:", dayProgressError.message);
+      if (!hasExistingBibleYearProgress) {
+        const { error: dayProgressError } = await supabase.from("bible_year_day_progress").upsert(
+          {
+            user_id: userId,
+            day_number: 1,
+            reading_completed: false,
+            study_notes_completed: false,
+            trivia_completed: false,
+            reflection_completed: false,
+          },
+          { onConflict: "user_id,day_number" },
+        );
+        if (dayProgressError) {
+          console.warn("[FIRST_LOGIN_ONBOARDING] Day 1 seed skipped:", dayProgressError.message);
+        }
       }
 
       setHeaderProfileName(displayName);

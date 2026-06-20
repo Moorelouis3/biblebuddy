@@ -3957,6 +3957,99 @@ export default function DashboardJourneyExperience({
           }
         }
 
+        const actionTypes = Array.from(new Set([
+          ...Object.values(BIBLE_YEAR_CARD_ACTION_TYPE).filter((value): value is ActionType => Boolean(value)),
+          ACTION_TYPE.bible_in_one_year_day_viewed,
+        ]));
+        const [{ data: completedChapterRows, error: completedChapterError }, { data: actionRows, error: actionError }] = await Promise.all([
+          supabase
+            .from("completed_chapters")
+            .select("book, chapter")
+            .eq("user_id", userId),
+          supabase
+            .from("master_actions")
+            .select("action_type, action_label")
+            .eq("user_id", userId)
+            .in("action_type", actionTypes)
+            .like("action_label", "Bible in One Year Day %"),
+        ]);
+
+        if (completedChapterError) {
+          console.warn("[BIBLE_YEAR_PROGRESS] Could not inspect completed chapters for restore:", completedChapterError);
+        }
+        if (actionError) {
+          console.warn("[BIBLE_YEAR_PROGRESS] Could not backfill Bible in One Year progress from actions:", actionError);
+        }
+
+        const completedChapterKeys = new Set(
+          ((completedChapterRows || []) as Array<{ book: string | null; chapter: number | null }>)
+            .filter((row) => typeof row.book === "string" && Number.isFinite(row.chapter))
+            .map((row) => getCompletedBibleChapterKey(String(row.book), Number(row.chapter))),
+        );
+        const readingActionDays = new Set<number>();
+        ((actionRows || []) as Array<{ action_label?: string | null }>).forEach((row) => {
+          const match = (row.action_label || "").match(/^Bible in One Year Day (\d+) (Reading|Video):/);
+          if (!match) return;
+          const dayNumber = Number(match[1]);
+          if (Number.isFinite(dayNumber)) {
+            readingActionDays.add(dayNumber);
+          }
+        });
+
+        const restoredLegacyDayNumbers: number[] = [];
+        for (const day of GENESIS_BIBLE_IN_ONE_YEAR_SERIES) {
+          const existingRow = progressRowByDay.get(day.dayNumber);
+          const restoredByRow = existingRow?.reading_completed === true;
+          const restoredByAction = readingActionDays.has(day.dayNumber);
+          const restoredByChapters =
+            day.readings.length > 0 &&
+            day.readings.every((reading) => completedChapterKeys.has(getCompletedBibleChapterKey(reading.book, reading.chapter)));
+          if (!restoredByRow && !restoredByAction && !restoredByChapters) {
+            break;
+          }
+          restoredLegacyDayNumbers.push(day.dayNumber);
+        }
+
+        const restoredLegacyPayload = restoredLegacyDayNumbers
+          .map((dayNumber) => {
+            const row = progressRowByDay.get(dayNumber);
+            const alreadyGrandfathered =
+              row?.reading_completed === true &&
+              row?.study_notes_completed === true &&
+              row?.trivia_completed === true &&
+              row?.reflection_completed === true;
+            if (alreadyGrandfathered) return null;
+            return {
+              user_id: userId,
+              day_number: dayNumber,
+              reading_completed: true,
+              study_notes_completed: true,
+              trivia_completed: true,
+              reflection_completed: true,
+            };
+          })
+          .filter((row): row is { user_id: string; day_number: number; reading_completed: true; study_notes_completed: true; trivia_completed: true; reflection_completed: true } => Boolean(row));
+
+        if (restoredLegacyPayload.length) {
+          const { error: restoredLegacyError } = await supabase
+            .from("bible_year_day_progress")
+            .upsert(restoredLegacyPayload, { onConflict: "user_id,day_number" });
+          if (restoredLegacyError) {
+            console.warn("[BIBLE_YEAR_PROGRESS] Could not restore grandfathered Bible in One Year days:", restoredLegacyError);
+          } else {
+            restoredLegacyPayload.forEach((row) => {
+              progressRowByDay.set(row.day_number, {
+                day_number: row.day_number,
+                reading_completed: true,
+                study_notes_completed: true,
+                trivia_completed: true,
+                reflection_completed: true,
+                created_at: progressRowByDay.get(row.day_number)?.created_at || null,
+              });
+            });
+          }
+        }
+
         if (!profile?.bible_year_started_at) {
           const earliestProgressDate = progressRows
             .map((row) => row.created_at ? new Date(row.created_at) : null)
@@ -4021,21 +4114,6 @@ export default function DashboardJourneyExperience({
           if (!cancelled) {
             setBibleYearReflectionPostedByDay(reflectionPostedNext);
           }
-        }
-
-        const actionTypes = Array.from(new Set([
-          ...Object.values(BIBLE_YEAR_CARD_ACTION_TYPE).filter((value): value is ActionType => Boolean(value)),
-          ACTION_TYPE.bible_in_one_year_day_viewed,
-        ]));
-        const { data: actionRows, error: actionError } = await supabase
-          .from("master_actions")
-          .select("action_type, action_label")
-          .eq("user_id", userId)
-          .in("action_type", actionTypes)
-          .like("action_label", "Bible in One Year Day %");
-
-        if (actionError) {
-          console.warn("[BIBLE_YEAR_PROGRESS] Could not backfill Bible in One Year progress from actions:", actionError);
         }
 
         const cardLabelToKey: Record<string, BibleYearDayCardKey> = {
@@ -10669,8 +10747,10 @@ Before we understand redemption, we need to understand what God made humanity fo
                           </button>
                           {phraseOpen ? (
                             <div className="border-t border-[var(--bb-card-border,#dbe7f4)] px-4 py-3">
-                              <div className="whitespace-pre-wrap text-[13px] font-medium leading-6 text-[var(--bb-text-secondary,#374151)]">
-                                {phrase.body}
+                              <div className="text-[13px] font-medium leading-6 text-[var(--bb-text-secondary,#374151)]">
+                                <ChapterNotesMarkdown compactMobile databaseTermMode="light">
+                                  {phrase.body}
+                                </ChapterNotesMarkdown>
                               </div>
                             </div>
                           ) : null}

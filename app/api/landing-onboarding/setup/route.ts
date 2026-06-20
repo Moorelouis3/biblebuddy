@@ -128,6 +128,19 @@ export async function POST(request: NextRequest) {
 
   const nowIso = new Date().toISOString();
   const todayKey = getLocalDateKey();
+  const [{ data: existingProfile }, { data: existingBibleYearProgressRows }] = await Promise.all([
+    admin
+      .from("profile_stats")
+      .select("bible_year_started_at, bible_year_launch_seen_at")
+      .eq("user_id", userData.user.id)
+      .maybeSingle(),
+    admin
+      .from("bible_year_day_progress")
+      .select("day_number")
+      .eq("user_id", userData.user.id)
+      .limit(1),
+  ]);
+  const hasExistingBibleYearProgress = Boolean(existingBibleYearProgressRows && existingBibleYearProgressRows.length > 0);
 
   let profileImageUrl: string | null = null;
   const imageUpload = dataUrlToUpload(body?.profileImage);
@@ -164,8 +177,8 @@ export async function POST(request: NextRequest) {
       onboarding_study_focus: answers.studyFocus ?? null,
       onboarding_time_commitment: answers.time ?? null,
       onboarding_difficulty: answers.difficulty ?? null,
-      bible_year_started_at: todayKey,
-      bible_year_launch_seen_at: nowIso,
+      bible_year_started_at: existingProfile?.bible_year_started_at || todayKey,
+      bible_year_launch_seen_at: existingProfile?.bible_year_launch_seen_at || nowIso,
       free_devotional_id: null,
       louis_primary_devotional_id: null,
       louis_primary_devotional_day: 1,
@@ -213,17 +226,19 @@ export async function POST(request: NextRequest) {
   );
   if (responseError) console.warn("[LANDING_SETUP] onboarding response save skipped:", responseError.message);
 
-  const { error: bibleYearProgressError } = await admin.from("bible_year_day_progress").upsert(
-    {
-      user_id: userData.user.id,
-      day_number: 1,
-      reading_completed: false,
-      trivia_completed: false,
-      reflection_completed: false,
-    },
-    { onConflict: "user_id,day_number" },
-  );
-  if (bibleYearProgressError) console.warn("[LANDING_SETUP] Bible Year progress seed skipped:", bibleYearProgressError.message);
+  if (!hasExistingBibleYearProgress) {
+    const { error: bibleYearProgressError } = await admin.from("bible_year_day_progress").upsert(
+      {
+        user_id: userData.user.id,
+        day_number: 1,
+        reading_completed: false,
+        trivia_completed: false,
+        reflection_completed: false,
+      },
+      { onConflict: "user_id,day_number" },
+    );
+    if (bibleYearProgressError) console.warn("[LANDING_SETUP] Bible Year progress seed skipped:", bibleYearProgressError.message);
+  }
 
   return NextResponse.json({ ok: true, displayName: fullName });
 }
