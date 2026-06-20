@@ -6,6 +6,7 @@ import { Fragment, useCallback, useEffect, useRef, useState, type FormEvent, typ
 import { toBlob } from "html-to-image";
 import { LouisAvatar } from "./LouisAvatar";
 import { ModalShell } from "./ModalShell";
+import AppLoadingScreen from "./AppLoadingScreen";
 import BibleReadingModal from "./BibleReadingModal";
 import DashboardDailyTaskCallout, { DatabaseTermTakeover, type BibleDatabaseTerm } from "./DashboardDailyTaskCallout";
 import ChapterNotesMarkdown from "./ChapterNotesMarkdown";
@@ -6566,25 +6567,10 @@ export default function DashboardJourneyExperience({
       <button
         type="button"
         onClick={() => openBibleYearQuickUpgrade("background_audio")}
-        className="mt-3 w-full rounded-[18px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_32%,var(--bb-card-border,#dbe7f4))] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--bb-accent,#f6b44b)_12%,var(--bb-card,#ffffff)),color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_56%,var(--bb-card,#ffffff)))] px-4 py-4 text-left shadow-[0_14px_34px_rgba(15,23,42,0.08)] transition hover:-translate-y-0.5 hover:brightness-[1.02]"
+        className="text-left text-sm font-bold text-[var(--bb-accent,#2f7fe8)] underline underline-offset-4 transition hover:opacity-80"
+        aria-label={`Listen with the app closed for Day ${day.dayNumber}`}
       >
-        <div className="flex items-start gap-3">
-          <span
-            className="mt-0.5 grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_18%,transparent)] text-xl"
-            aria-hidden="true"
-          >
-            🎧
-          </span>
-          <div className="min-w-0">
-            <p className="text-sm font-black text-[var(--bb-text-primary,#111827)]">Listen With Your App Closed</p>
-            <p className="mt-1 text-sm font-medium leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-              Keep today&apos;s lesson going while your phone is locked, while driving, walking, working, or doing chores.
-            </p>
-            <p className="mt-2 text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#f6b44b)]">
-              Unlock premium audio for Day {day.dayNumber}
-            </p>
-          </div>
-        </div>
+        Listen with the app closed
       </button>
     );
   }
@@ -12141,23 +12127,29 @@ Before we understand redemption, we need to understand what God made humanity fo
             </div>
           </div>
 
-          <div className="mt-4 grid gap-4 sm:grid-cols-[142px_minmax(0,1fr)] lg:grid-cols-[164px_minmax(0,1fr)] xl:grid-cols-[176px_minmax(0,1fr)] xl:items-start">
-            <div className={`mx-auto aspect-square w-full max-w-[176px] overflow-hidden rounded-[12px] border shadow-[0_12px_26px_rgba(38,63,99,0.12)] sm:mx-0 ${
-              readingComplete
-                ? "border-emerald-200 bg-emerald-50"
-                : "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f4f8ff)]"
-            }`}>
-              <img src={cover} alt="" loading="eager" decoding="async" onError={handleBibleYearCoverImageError} className="h-full w-full object-cover" />
+          {freeYoutubeUrl ? (
+            <div className="mt-4 min-w-0 px-1">
+              <h3 className="text-[18px] font-bold leading-tight text-[var(--bb-text-primary,#111827)] sm:text-[20px]">{day.title}</h3>
             </div>
-            <div className="flex min-w-0 flex-col justify-start pt-0.5">
-              <div className="min-w-0 px-1">
-                <h3 className="mt-1 truncate whitespace-nowrap text-[18px] font-bold leading-tight text-[var(--bb-text-primary,#111827)] sm:text-[20px]">{day.title}</h3>
-                <p className="mt-1 max-w-2xl text-[13px] font-medium leading-5 text-[var(--bb-text-secondary,#4b5563)]">
-                  {playerSubline}
-                </p>
+          ) : (
+            <div className="mt-4 grid gap-4 sm:grid-cols-[142px_minmax(0,1fr)] lg:grid-cols-[164px_minmax(0,1fr)] xl:grid-cols-[176px_minmax(0,1fr)] xl:items-start">
+              <div className={`mx-auto aspect-square w-full max-w-[176px] overflow-hidden rounded-[12px] border shadow-[0_12px_26px_rgba(38,63,99,0.12)] sm:mx-0 ${
+                readingComplete
+                  ? "border-emerald-200 bg-emerald-50"
+                  : "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f4f8ff)]"
+              }`}>
+                <img src={cover} alt="" loading="eager" decoding="async" onError={handleBibleYearCoverImageError} className="h-full w-full object-cover" />
+              </div>
+              <div className="flex min-w-0 flex-col justify-start pt-0.5">
+                <div className="min-w-0 px-1">
+                  <h3 className="mt-1 truncate whitespace-nowrap text-[18px] font-bold leading-tight text-[var(--bb-text-primary,#111827)] sm:text-[20px]">{day.title}</h3>
+                  <p className="mt-1 max-w-2xl text-[13px] font-medium leading-5 text-[var(--bb-text-secondary,#4b5563)]">
+                    {playerSubline}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
+          )}
           <div className="mt-4">
             {freeYoutubeUrl ? (
               <>
@@ -12170,7 +12162,6 @@ Before we understand redemption, we need to understand what God made humanity fo
                     autoplay={false}
                   />
                 </div>
-                {renderBibleYearBackgroundListeningCta(day)}
               </>
             ) : audio ? (
               <BibleYearLessonAudioPlayer
@@ -12196,6 +12187,13 @@ Before we understand redemption, we need to understand what God made humanity fo
               </div>
             )}
           </div>
+          {freeYoutubeUrl ? (
+            <div className="mt-4 px-1">
+              <p className="max-w-2xl text-[13px] font-medium leading-5 text-[var(--bb-text-secondary,#4b5563)]">
+                {playerSubline}
+              </p>
+            </div>
+          ) : null}
           <div className="mt-2">
             <button
               type="button"
@@ -12212,6 +12210,11 @@ Before we understand redemption, we need to understand what God made humanity fo
               {readingComplete ? "Lesson Completed" : "Mark as Complete"}
             </button>
           </div>
+          {freeYoutubeUrl ? (
+            <div className="mt-4">
+              {renderBibleYearBackgroundListeningCta(day)}
+            </div>
+          ) : null}
         </article>
         )}
 
@@ -15240,15 +15243,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               <div className="dashboard-inline-deep-study mb-3 sm:mb-4">{deepStudyNode}</div>
             ) : null}
             {bibleYearDashboardActive && !bibleYearCurrentDayReady && !homePanelOverride && !shouldShowCompletionPanel ? (
-              <div className="mx-auto w-full max-w-3xl">
-                <article className="overflow-hidden rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-5 py-6 text-[var(--bb-text-primary,#111827)] shadow-[0_16px_42px_rgba(38,63,99,0.12),inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-xl">
-                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[var(--bb-accent,#2f7fe8)]">Bible In One Year</p>
-                  <h2 className="mt-2 text-xl font-black leading-tight">Loading your progress...</h2>
-                  <p className="mt-2 text-sm font-medium text-[var(--bb-text-secondary,#4b5563)]">
-                    We&apos;re pulling in your current day before the dashboard opens.
-                  </p>
-                </article>
-              </div>
+              <AppLoadingScreen className="fixed inset-0 z-[220] min-h-0" />
             ) : null}
             {bibleYearDashboardActive && activeBibleYearDashboardDay && !homePanelOverride && !shouldShowCompletionPanel ? (
               <>

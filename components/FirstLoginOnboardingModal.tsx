@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import Image from "next/image";
 
 type DoomScrollValue = "10" | "20" | "40" | "60_plus";
 type BibleExperienceValue = "beginner" | "intermediate" | "advanced" | "experienced";
@@ -266,17 +267,29 @@ export default function FirstLoginOnboardingModal({
     });
   }
 
+  const modalBorder = "border-[var(--bb-card-border,#dbe7f4)]";
+  const softSurface = "bg-[var(--bb-surface-soft,#f8fbff)]";
+  const accentText = "text-[var(--bb-accent,#2f7fe8)]";
+  const headingText = "text-[var(--bb-text-primary,#111827)]";
+  const bodyText = "text-[var(--bb-text-secondary,#4b5563)]";
+  const mutedText = "text-[var(--bb-text-muted,#6b7280)]";
+
   return (
-    <div className="fixed inset-0 z-[120] overflow-y-auto bg-[rgba(15,23,42,0.46)] px-4 py-6 backdrop-blur-sm">
+    <div className="fixed inset-0 z-[120] overflow-y-auto bg-[rgba(15,23,42,0.52)] px-4 py-6 backdrop-blur-sm">
       <div className="mx-auto flex min-h-full max-w-xl flex-col justify-center">
-        <div className="overflow-hidden rounded-[30px] border border-[#e7dccb] bg-[#fffdf8] shadow-[0_28px_80px_rgba(15,23,42,0.24)]">
-          <div className="border-b border-[#efe5d7] px-5 py-4 sm:px-6">
+        <div className={`overflow-hidden rounded-[30px] border ${modalBorder} bg-[var(--bb-card,#ffffff)] shadow-[0_28px_80px_rgba(15,23,42,0.24)]`}>
+          <div className={`border-b ${modalBorder} bg-[linear-gradient(180deg,#ffffff_0%,#f8fbff_100%)] px-5 py-4 sm:px-6`}>
             <div className="flex items-center justify-between gap-4">
-              <div>
-                <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[#b07a16]">Welcome to Bible Buddy</p>
-                <h2 className="mt-1 text-2xl font-black text-[#0f1b33]">Your Day 1 journey starts here</h2>
+              <div className="flex min-w-0 items-center gap-3">
+                <div className={`grid h-12 w-12 shrink-0 place-items-center overflow-hidden rounded-[16px] border ${modalBorder} ${softSurface}`}>
+                  <Image src="/TherealiconforBB.png" alt="Bible Buddy" width={36} height={36} className="h-9 w-9 object-contain" />
+                </div>
+                <div className="min-w-0">
+                  <p className={`text-[11px] font-black uppercase tracking-[0.2em] ${accentText}`}>Welcome to Bible Buddy</p>
+                  <h2 className={`mt-1 text-2xl font-black ${headingText}`}>Your Day 1 journey starts here</h2>
+                </div>
               </div>
-              <div className="rounded-full bg-[#f7f1e7] px-3 py-1 text-xs font-black text-[#4d5d77]">
+              <div className={`rounded-full border ${modalBorder} ${softSurface} px-3 py-1 text-xs font-black ${mutedText}`}>
                 {stepIndex + 1} / {SLIDE_ORDER.length}
               </div>
             </div>
@@ -284,7 +297,7 @@ export default function FirstLoginOnboardingModal({
               {SLIDE_ORDER.map((slide, index) => (
                 <span
                   key={slide}
-                  className={`h-1.5 flex-1 rounded-full ${index <= stepIndex ? "bg-[#2f7fe8]" : "bg-[#e7dccb]"}`}
+                  className={`h-1.5 flex-1 rounded-full ${index <= stepIndex ? "bg-[var(--bb-accent,#2f7fe8)]" : "bg-[var(--bb-accent-soft,#eaf5ff)]"}`}
                 />
               ))}
             </div>
@@ -293,9 +306,9 @@ export default function FirstLoginOnboardingModal({
           <div className="px-5 py-5 sm:px-6 sm:py-6">
             {currentSlide === "welcome_intro" ? (
               <div>
-                <p className="text-sm font-black uppercase tracking-[0.16em] text-[#b07a16]">Most Bible apps help you read the Bible</p>
-                <h3 className="mt-3 text-3xl font-black leading-tight text-[#0f1b33]">Bible Buddy helps you understand it.</h3>
-                <div className="mt-4 space-y-3 text-[15px] font-semibold leading-7 text-[#44536b]">
+                <p className={`text-sm font-black uppercase tracking-[0.16em] ${accentText}`}>Most Bible apps help you read the Bible</p>
+                <h3 className={`mt-3 text-3xl font-black leading-tight ${headingText}`}>Bible Buddy helps you understand it.</h3>
+                <div className={`mt-4 space-y-3 text-[15px] font-semibold leading-7 ${bodyText}`}>
                   <p>Bible Buddy combines audio Bible lessons with study tools designed to help you actually understand what you are reading.</p>
                   <p>Every day includes guided audio, study notes, trivia, and discussion questions to help Scripture stick.</p>
                 </div>
@@ -306,11 +319,11 @@ export default function FirstLoginOnboardingModal({
                     ["Trivia challenges", "trivia"],
                     ["Discussion questions", "discuss"],
                   ].map(([label, kind]) => (
-                    <div key={label} className="flex items-center gap-3 rounded-2xl border border-[#ece1cf] bg-white px-4 py-3">
-                      <span className="grid h-10 w-10 place-items-center rounded-2xl bg-[#edf4ff] text-[#2f7fe8]">
+                    <div key={label} className={`flex items-center gap-3 rounded-2xl border ${modalBorder} ${softSurface} px-4 py-3`}>
+                      <span className={`grid h-10 w-10 place-items-center rounded-2xl bg-[var(--bb-card,#ffffff)] ${accentText}`}>
                         <StepIcon kind={kind as any} />
                       </span>
-                      <span className="text-sm font-black text-[#0f1b33]">{label}</span>
+                      <span className={`text-sm font-black ${headingText}`}>{label}</span>
                     </div>
                   ))}
                 </div>
@@ -319,9 +332,9 @@ export default function FirstLoginOnboardingModal({
 
             {currentSlide === "what_to_expect_daily" ? (
               <div>
-                <p className="text-sm font-black uppercase tracking-[0.16em] text-[#b07a16]">Your Daily Bible Buddy Routine</p>
-                <h3 className="mt-3 text-3xl font-black leading-tight text-[#0f1b33]">Simple. Consistent. Designed for real life.</h3>
-                <div className="mt-4 space-y-3 text-[15px] font-semibold leading-7 text-[#44536b]">
+                <p className={`text-sm font-black uppercase tracking-[0.16em] ${accentText}`}>Your Daily Bible Buddy Routine</p>
+                <h3 className={`mt-3 text-3xl font-black leading-tight ${headingText}`}>Simple. Consistent. Designed for real life.</h3>
+                <div className={`mt-4 space-y-3 text-[15px] font-semibold leading-7 ${bodyText}`}>
                   <p>Every day follows the same easy-to-follow structure.</p>
                   <p>Small daily progress compounds into finishing the entire Bible.</p>
                 </div>
@@ -332,14 +345,14 @@ export default function FirstLoginOnboardingModal({
                     ["Test yourself with trivia", "trivia", "Reinforce what you just learned."],
                     ["Discuss and respond", "discuss", "Share what stood out from today's reading."],
                   ].map(([title, kind, text], index) => (
-                    <div key={title} className="flex items-start gap-3 rounded-2xl border border-[#ece1cf] bg-white px-4 py-3">
-                      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-[#edf4ff] text-[#2f7fe8]">
+                    <div key={title} className={`flex items-start gap-3 rounded-2xl border ${modalBorder} ${softSurface} px-4 py-3`}>
+                      <span className={`grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-[var(--bb-card,#ffffff)] ${accentText}`}>
                         <StepIcon kind={kind as any} />
                       </span>
                       <div className="min-w-0">
-                        <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[#b07a16]">Step {index + 1}</p>
-                        <p className="mt-1 text-sm font-black text-[#0f1b33]">{title}</p>
-                        <p className="mt-1 text-sm font-semibold leading-6 text-[#536173]">{text}</p>
+                        <p className={`text-[11px] font-black uppercase tracking-[0.18em] ${accentText}`}>Step {index + 1}</p>
+                        <p className={`mt-1 text-sm font-black ${headingText}`}>{title}</p>
+                        <p className={`mt-1 text-sm font-semibold leading-6 ${bodyText}`}>{text}</p>
                       </div>
                     </div>
                   ))}
@@ -349,9 +362,9 @@ export default function FirstLoginOnboardingModal({
 
             {currentSlide === "audio_first_vision" ? (
               <div>
-                <p className="text-sm font-black uppercase tracking-[0.16em] text-[#b07a16]">Scripture was meant to be heard</p>
-                <h3 className="mt-3 text-3xl font-black leading-tight text-[#0f1b33]">Learn while living your life.</h3>
-                <div className="mt-4 space-y-3 text-[15px] font-semibold leading-7 text-[#44536b]">
+                <p className={`text-sm font-black uppercase tracking-[0.16em] ${accentText}`}>Scripture was meant to be heard</p>
+                <h3 className={`mt-3 text-3xl font-black leading-tight ${headingText}`}>Learn while living your life.</h3>
+                <div className={`mt-4 space-y-3 text-[15px] font-semibold leading-7 ${bodyText}`}>
                   <p>For most of history, many people experienced Scripture by hearing it rather than reading it.</p>
                   <p>Bible Buddy lets you listen while driving, walking, working out, cleaning, or getting ready for the day.</p>
                 </div>
@@ -362,11 +375,11 @@ export default function FirstLoginOnboardingModal({
                     ["Working out", "lift"],
                     ["Daily chores", "clean"],
                   ].map(([label, kind]) => (
-                    <div key={label} className="flex items-center gap-3 rounded-2xl border border-[#ece1cf] bg-white px-4 py-3">
-                      <span className="grid h-10 w-10 place-items-center rounded-2xl bg-[#f2f8f3] text-[#18904a]">
+                    <div key={label} className={`flex items-center gap-3 rounded-2xl border ${modalBorder} ${softSurface} px-4 py-3`}>
+                      <span className={`grid h-10 w-10 place-items-center rounded-2xl bg-[var(--bb-card,#ffffff)] ${accentText}`}>
                         <StepIcon kind={kind as any} />
                       </span>
-                      <span className="text-sm font-black text-[#0f1b33]">{label}</span>
+                      <span className={`text-sm font-black ${headingText}`}>{label}</span>
                     </div>
                   ))}
                 </div>
@@ -375,13 +388,13 @@ export default function FirstLoginOnboardingModal({
 
             {currentSlide === "doom_scroll_question" ? (
               <div>
-                <p className="text-sm font-black uppercase tracking-[0.16em] text-[#b07a16]">Quick Question</p>
-                <h3 className="mt-3 text-3xl font-black leading-tight text-[#0f1b33]">Be honest. No judgment.</h3>
-                <div className="mt-4 space-y-3 text-[15px] font-semibold leading-7 text-[#44536b]">
+                <p className={`text-sm font-black uppercase tracking-[0.16em] ${accentText}`}>Quick Question</p>
+                <h3 className={`mt-3 text-3xl font-black leading-tight ${headingText}`}>Be honest. No judgment.</h3>
+                <div className={`mt-4 space-y-3 text-[15px] font-semibold leading-7 ${bodyText}`}>
                   <p>Most of us spend more time scrolling than we realize.</p>
                   <p>Let&apos;s see what that time could become.</p>
                 </div>
-                <p className="mt-6 text-sm font-black text-[#0f1b33]">How much doom scrolling do you think you do a day?</p>
+                <p className={`mt-6 text-sm font-black ${headingText}`}>How much doom scrolling do you think you do a day?</p>
                 <div className="mt-4 grid gap-3">
                   {DOOM_SCROLL_OPTIONS.map((option) => (
                     <button
@@ -390,11 +403,11 @@ export default function FirstLoginOnboardingModal({
                       onClick={() => setAnswers((current) => ({ ...current, doomScrollMinutes: option.value }))}
                       className={`rounded-2xl border px-4 py-4 text-left transition ${
                         answers.doomScrollMinutes === option.value
-                          ? "border-[#2f7fe8] bg-[#eef5ff] shadow-[0_10px_26px_rgba(47,127,232,0.12)]"
-                          : "border-[#ece1cf] bg-white hover:bg-[#fbf8f2]"
+                          ? "border-[var(--bb-accent,#2f7fe8)] bg-[var(--bb-accent-soft,#eaf5ff)] shadow-[0_10px_26px_rgba(47,127,232,0.12)]"
+                          : `bg-[var(--bb-card,#ffffff)] ${modalBorder} hover:bg-[var(--bb-surface-soft,#f8fbff)]`
                       }`}
                     >
-                      <span className="text-sm font-black text-[#0f1b33]">{option.label}</span>
+                      <span className={`text-sm font-black ${headingText}`}>{option.label}</span>
                     </button>
                   ))}
                 </div>
@@ -403,28 +416,28 @@ export default function FirstLoginOnboardingModal({
 
             {currentSlide === "doom_scroll_result" ? (
               <div>
-                <p className="text-sm font-black uppercase tracking-[0.16em] text-[#b07a16]">That Time Adds Up</p>
-                <h3 className="mt-3 text-3xl font-black leading-tight text-[#0f1b33]">You may be closer than you think.</h3>
-                <div className="mt-6 rounded-[28px] border border-[#d8e8ff] bg-[#f6faff] px-5 py-6 text-center">
-                  <p className="text-sm font-black uppercase tracking-[0.16em] text-[#2f7fe8]">Personalized finish estimate</p>
-                  <p className="mt-3 text-5xl font-black leading-none text-[#0f1b33]">{projected.projectedDays}</p>
-                  <p className="mt-2 text-lg font-black text-[#0f1b33]">days</p>
-                  <p className="mx-auto mt-4 max-w-md text-sm font-semibold leading-6 text-[#536173]">
+                <p className={`text-sm font-black uppercase tracking-[0.16em] ${accentText}`}>That Time Adds Up</p>
+                <h3 className={`mt-3 text-3xl font-black leading-tight ${headingText}`}>You may be closer than you think.</h3>
+                <div className={`mt-6 rounded-[28px] border ${modalBorder} bg-[linear-gradient(180deg,#ffffff_0%,#f5f9ff_100%)] px-5 py-6 text-center`}>
+                  <p className={`text-sm font-black uppercase tracking-[0.16em] ${accentText}`}>Personalized finish estimate</p>
+                  <p className={`mt-3 text-5xl font-black leading-none ${headingText}`}>{projected.projectedDays}</p>
+                  <p className={`mt-2 text-lg font-black ${headingText}`}>days</p>
+                  <p className={`mx-auto mt-4 max-w-md text-sm font-semibold leading-6 ${bodyText}`}>
                     If you replaced your daily scrolling with Bible Buddy, you could finish the Bible in about {projected.projectedDays} days.
                   </p>
                 </div>
                 <div className="mt-5 grid gap-3 sm:grid-cols-3">
-                  <div className="rounded-2xl border border-[#ece1cf] bg-white px-4 py-3">
-                    <p className="text-[11px] font-black uppercase tracking-[0.16em] text-[#7b8799]">Time used</p>
-                    <p className="mt-1 text-sm font-black text-[#0f1b33]">{projected.projectedMinutesLabel} a day</p>
+                  <div className={`rounded-2xl border ${modalBorder} ${softSurface} px-4 py-3`}>
+                    <p className={`text-[11px] font-black uppercase tracking-[0.16em] ${mutedText}`}>Time used</p>
+                    <p className={`mt-1 text-sm font-black ${headingText}`}>{projected.projectedMinutesLabel} a day</p>
                   </div>
-                  <div className="rounded-2xl border border-[#ece1cf] bg-white px-4 py-3">
-                    <p className="text-[11px] font-black uppercase tracking-[0.16em] text-[#7b8799]">Lesson pace</p>
-                    <p className="mt-1 text-sm font-black text-[#0f1b33]">{projected.projectedLessonsPerDay} lessons per day</p>
+                  <div className={`rounded-2xl border ${modalBorder} ${softSurface} px-4 py-3`}>
+                    <p className={`text-[11px] font-black uppercase tracking-[0.16em] ${mutedText}`}>Lesson pace</p>
+                    <p className={`mt-1 text-sm font-black ${headingText}`}>{projected.projectedLessonsPerDay} lessons per day</p>
                   </div>
-                  <div className="rounded-2xl border border-[#ece1cf] bg-white px-4 py-3">
-                    <p className="text-[11px] font-black uppercase tracking-[0.16em] text-[#7b8799]">What matters most</p>
-                    <p className="mt-1 text-sm font-black text-[#0f1b33]">Consistency beats intensity</p>
+                  <div className={`rounded-2xl border ${modalBorder} ${softSurface} px-4 py-3`}>
+                    <p className={`text-[11px] font-black uppercase tracking-[0.16em] ${mutedText}`}>What matters most</p>
+                    <p className={`mt-1 text-sm font-black ${headingText}`}>Consistency beats intensity</p>
                   </div>
                 </div>
               </div>
@@ -432,20 +445,20 @@ export default function FirstLoginOnboardingModal({
 
             {currentSlide === "social_proof_usage" ? (
               <div>
-                <p className="text-sm font-black uppercase tracking-[0.16em] text-[#b07a16]">Built For Consistency</p>
-                <h3 className="mt-3 text-3xl font-black leading-tight text-[#0f1b33]">Thousands of small moments become a finished Bible.</h3>
-                <div className="mt-4 space-y-3 text-[15px] font-semibold leading-7 text-[#44536b]">
+                <p className={`text-sm font-black uppercase tracking-[0.16em] ${accentText}`}>Built For Consistency</p>
+                <h3 className={`mt-3 text-3xl font-black leading-tight ${headingText}`}>Thousands of small moments become a finished Bible.</h3>
+                <div className={`mt-4 space-y-3 text-[15px] font-semibold leading-7 ${bodyText}`}>
                   <p>Many Bible Buddy users fit Scripture into moments they already have.</p>
                   <p>The goal is not finding more time. It is using the time you already have.</p>
                 </div>
-                <div className="mt-6 rounded-[28px] border border-[#ece1cf] bg-white px-5 py-5">
+                <div className={`mt-6 rounded-[28px] border ${modalBorder} bg-[linear-gradient(180deg,#ffffff_0%,#f8fbff_100%)] px-5 py-5`}>
                   <div className="flex items-center gap-3">
-                    <span className="grid h-12 w-12 place-items-center rounded-2xl bg-[#edf4ff] text-[#2f7fe8]">
+                    <span className={`grid h-12 w-12 place-items-center rounded-2xl bg-[var(--bb-accent-soft,#eaf5ff)] ${accentText}`}>
                       <StepIcon kind="chart" />
                     </span>
                     <div>
-                      <p className="text-xs font-black uppercase tracking-[0.16em] text-[#7b8799]">Average active users</p>
-                      <p className="text-xl font-black text-[#0f1b33]">20+ chapters each week</p>
+                      <p className={`text-xs font-black uppercase tracking-[0.16em] ${mutedText}`}>Average active users</p>
+                      <p className={`text-xl font-black ${headingText}`}>20+ chapters each week</p>
                     </div>
                   </div>
                   <div className="mt-4 grid gap-3 sm:grid-cols-2">
@@ -455,11 +468,11 @@ export default function FirstLoginOnboardingModal({
                       ["Listen while cleaning", "clean"],
                       ["Listen while getting ready", "clock"],
                     ].map(([label, kind]) => (
-                      <div key={label} className="flex items-center gap-3 rounded-2xl bg-[#faf7f1] px-4 py-3">
-                        <span className="grid h-9 w-9 place-items-center rounded-2xl bg-white text-[#18904a]">
+                      <div key={label} className={`flex items-center gap-3 rounded-2xl ${softSurface} px-4 py-3`}>
+                        <span className={`grid h-9 w-9 place-items-center rounded-2xl bg-[var(--bb-card,#ffffff)] ${accentText}`}>
                           <StepIcon kind={kind as any} />
                         </span>
-                        <span className="text-sm font-black text-[#0f1b33]">{label}</span>
+                        <span className={`text-sm font-black ${headingText}`}>{label}</span>
                       </div>
                     ))}
                   </div>
@@ -469,13 +482,13 @@ export default function FirstLoginOnboardingModal({
 
             {currentSlide === "bible_history_question" ? (
               <div>
-                <p className="text-sm font-black uppercase tracking-[0.16em] text-[#b07a16]">Tell Us About Your Bible Journey</p>
-                <h3 className="mt-3 text-3xl font-black leading-tight text-[#0f1b33]">We&apos;ll personalize your experience.</h3>
-                <div className="mt-4 space-y-3 text-[15px] font-semibold leading-7 text-[#44536b]">
+                <p className={`text-sm font-black uppercase tracking-[0.16em] ${accentText}`}>Tell Us About Your Bible Journey</p>
+                <h3 className={`mt-3 text-3xl font-black leading-tight ${headingText}`}>We&apos;ll personalize your experience.</h3>
+                <div className={`mt-4 space-y-3 text-[15px] font-semibold leading-7 ${bodyText}`}>
                   <p>Everyone starts somewhere.</p>
                   <p>Choose the option that best describes you.</p>
                 </div>
-                <p className="mt-6 text-sm font-black text-[#0f1b33]">How would you describe your Bible experience?</p>
+                <p className={`mt-6 text-sm font-black ${headingText}`}>How would you describe your Bible experience?</p>
                 <div className="mt-4 grid gap-3">
                   {EXPERIENCE_OPTIONS.map((option) => (
                     <button
@@ -484,11 +497,11 @@ export default function FirstLoginOnboardingModal({
                       onClick={() => setAnswers((current) => ({ ...current, bibleExperience: option.value }))}
                       className={`rounded-2xl border px-4 py-4 text-left transition ${
                         answers.bibleExperience === option.value
-                          ? "border-[#2f7fe8] bg-[#eef5ff] shadow-[0_10px_26px_rgba(47,127,232,0.12)]"
-                          : "border-[#ece1cf] bg-white hover:bg-[#fbf8f2]"
+                          ? "border-[var(--bb-accent,#2f7fe8)] bg-[var(--bb-accent-soft,#eaf5ff)] shadow-[0_10px_26px_rgba(47,127,232,0.12)]"
+                          : `bg-[var(--bb-card,#ffffff)] ${modalBorder} hover:bg-[var(--bb-surface-soft,#f8fbff)]`
                       }`}
                     >
-                      <span className="text-sm font-black text-[#0f1b33]">{option.label}</span>
+                      <span className={`text-sm font-black ${headingText}`}>{option.label}</span>
                     </button>
                   ))}
                 </div>
@@ -497,13 +510,13 @@ export default function FirstLoginOnboardingModal({
 
             {currentSlide === "bible_goal_question" ? (
               <div>
-                <p className="text-sm font-black uppercase tracking-[0.16em] text-[#b07a16]">What&apos;s Your Main Goal?</p>
-                <h3 className="mt-3 text-3xl font-black leading-tight text-[#0f1b33]">Choose what matters most right now.</h3>
-                <div className="mt-4 space-y-3 text-[15px] font-semibold leading-7 text-[#44536b]">
+                <p className={`text-sm font-black uppercase tracking-[0.16em] ${accentText}`}>What&apos;s Your Main Goal?</p>
+                <h3 className={`mt-3 text-3xl font-black leading-tight ${headingText}`}>Choose what matters most right now.</h3>
+                <div className={`mt-4 space-y-3 text-[15px] font-semibold leading-7 ${bodyText}`}>
                   <p>Your answer helps us personalize encouragement and future recommendations.</p>
                   <p>There are no wrong answers.</p>
                 </div>
-                <p className="mt-6 text-sm font-black text-[#0f1b33]">What do you want most from Bible Buddy?</p>
+                <p className={`mt-6 text-sm font-black ${headingText}`}>What do you want most from Bible Buddy?</p>
                 <div className="mt-4 grid gap-3">
                   {GOAL_OPTIONS.map((option) => (
                     <button
@@ -512,11 +525,11 @@ export default function FirstLoginOnboardingModal({
                       onClick={() => setAnswers((current) => ({ ...current, mainGoal: option.value }))}
                       className={`rounded-2xl border px-4 py-4 text-left transition ${
                         answers.mainGoal === option.value
-                          ? "border-[#2f7fe8] bg-[#eef5ff] shadow-[0_10px_26px_rgba(47,127,232,0.12)]"
-                          : "border-[#ece1cf] bg-white hover:bg-[#fbf8f2]"
+                          ? "border-[var(--bb-accent,#2f7fe8)] bg-[var(--bb-accent-soft,#eaf5ff)] shadow-[0_10px_26px_rgba(47,127,232,0.12)]"
+                          : `bg-[var(--bb-card,#ffffff)] ${modalBorder} hover:bg-[var(--bb-surface-soft,#f8fbff)]`
                       }`}
                     >
-                      <span className="text-sm font-black text-[#0f1b33]">{option.label}</span>
+                      <span className={`text-sm font-black ${headingText}`}>{option.label}</span>
                     </button>
                   ))}
                 </div>
@@ -525,20 +538,20 @@ export default function FirstLoginOnboardingModal({
 
             {currentSlide === "name_screen" ? (
               <div>
-                <p className="text-sm font-black uppercase tracking-[0.16em] text-[#b07a16]">Almost Ready</p>
-                <h3 className="mt-3 text-3xl font-black leading-tight text-[#0f1b33]">We&apos;re getting your Day 1 journey ready.</h3>
-                <div className="mt-4 space-y-3 text-[15px] font-semibold leading-7 text-[#44536b]">
+                <p className={`text-sm font-black uppercase tracking-[0.16em] ${accentText}`}>Almost Ready</p>
+                <h3 className={`mt-3 text-3xl font-black leading-tight ${headingText}`}>We&apos;re getting your Day 1 journey ready.</h3>
+                <div className={`mt-4 space-y-3 text-[15px] font-semibold leading-7 ${bodyText}`}>
                   <p>Let&apos;s make this experience a little more personal.</p>
                   <p>What should we call you?</p>
                 </div>
                 <label className="mt-6 block">
-                  <span className="text-sm font-black text-[#0f1b33]">First name</span>
+                  <span className={`text-sm font-black ${headingText}`}>First name</span>
                   <input
                     type="text"
                     value={answers.firstName}
                     onChange={(event) => setAnswers((current) => ({ ...current, firstName: event.target.value }))}
                     placeholder="Enter your first name"
-                    className="mt-3 w-full rounded-2xl border border-[#ece1cf] bg-white px-4 py-4 text-base font-semibold text-[#0f1b33] outline-none transition focus:border-[#2f7fe8] focus:ring-4 focus:ring-[#dbeafe]"
+                    className={`mt-3 w-full rounded-2xl border ${modalBorder} bg-[var(--bb-card,#ffffff)] px-4 py-4 text-base font-semibold ${headingText} outline-none transition focus:border-[var(--bb-accent,#2f7fe8)] focus:ring-4 focus:ring-[var(--bb-accent-soft,#dbeafe)]`}
                     autoFocus
                   />
                 </label>
@@ -547,16 +560,16 @@ export default function FirstLoginOnboardingModal({
 
             {currentSlide === "upgrade_or_start" ? (
               <div>
-                <p className="text-sm font-black uppercase tracking-[0.16em] text-[#b07a16]">Your Bible in One Year journey is ready</p>
-                <h3 className="mt-3 text-3xl font-black leading-tight text-[#0f1b33]">
+                <p className={`text-sm font-black uppercase tracking-[0.16em] ${accentText}`}>Your Bible in One Year journey is ready</p>
+                <h3 className={`mt-3 text-3xl font-black leading-tight ${headingText}`}>
                   Welcome{answers.firstName.trim() ? `, ${answers.firstName.trim()}` : ""}.
                 </h3>
-                <div className="mt-4 space-y-3 text-[15px] font-semibold leading-7 text-[#44536b]">
+                <div className={`mt-4 space-y-3 text-[15px] font-semibold leading-7 ${bodyText}`}>
                   <p>Start with the free experience or unlock everything Bible Buddy offers.</p>
                   <p>Either way, your Day 1 journey starts now.</p>
                 </div>
 
-                <div className="mt-6 rounded-[28px] border border-[#ece1cf] bg-white px-5 py-5">
+                <div className={`mt-6 rounded-[28px] border ${modalBorder} bg-[linear-gradient(180deg,#ffffff_0%,#f8fbff_100%)] px-5 py-5`}>
                   <div className="grid gap-3 sm:grid-cols-2">
                     {[
                       ["Full audio experience", "audio"],
@@ -566,11 +579,11 @@ export default function FirstLoginOnboardingModal({
                       ["Progress tracking", "chart"],
                       ["Bible completion journey", "goal"],
                     ].map(([label, kind]) => (
-                      <div key={label} className="flex items-center gap-3 rounded-2xl bg-[#faf7f1] px-4 py-3">
-                        <span className="grid h-9 w-9 place-items-center rounded-2xl bg-[#edf4ff] text-[#2f7fe8]">
+                      <div key={label} className={`flex items-center gap-3 rounded-2xl ${softSurface} px-4 py-3`}>
+                        <span className={`grid h-9 w-9 place-items-center rounded-2xl bg-[var(--bb-card,#ffffff)] ${accentText}`}>
                           <StepIcon kind={kind as any} />
                         </span>
-                        <span className="text-sm font-black text-[#0f1b33]">{label}</span>
+                        <span className={`text-sm font-black ${headingText}`}>{label}</span>
                       </div>
                     ))}
                   </div>
@@ -582,23 +595,23 @@ export default function FirstLoginOnboardingModal({
                       type="button"
                       disabled={submitting}
                       onClick={() => void handleFinishUpgrade("monthly")}
-                      className="flex items-center justify-between rounded-2xl border border-[#c9ddfb] bg-white px-4 py-4 text-left transition hover:bg-[#f5f9ff] disabled:opacity-60"
+                      className={`flex items-center justify-between rounded-2xl border ${modalBorder} bg-[var(--bb-card,#ffffff)] px-4 py-4 text-left transition hover:bg-[var(--bb-surface-soft,#f8fbff)] disabled:opacity-60`}
                     >
                       <span>
-                        <span className="block text-sm font-black text-[#0f1b33]">Monthly</span>
-                        <span className="mt-1 block text-xs font-semibold text-[#536173]">Flexible access</span>
+                        <span className={`block text-sm font-black ${headingText}`}>Monthly</span>
+                        <span className={`mt-1 block text-xs font-semibold ${bodyText}`}>Flexible access</span>
                       </span>
-                      <span className="text-xl font-black text-[#2f7fe8]">$4.99</span>
+                      <span className={`text-xl font-black ${accentText}`}>$4.99</span>
                     </button>
                     <button
                       type="button"
                       disabled={submitting}
                       onClick={() => void handleFinishUpgrade("yearly")}
-                      className="flex items-center justify-between rounded-2xl border border-[#f0cf8b] bg-[#f6b44b] px-4 py-4 text-left text-[#1d1200] transition hover:brightness-105 disabled:opacity-60"
+                      className="flex items-center justify-between rounded-2xl border border-[var(--bb-accent,#2f7fe8)] bg-[linear-gradient(135deg,#0f56d8,#2f7fe8)] px-4 py-4 text-left text-white shadow-[0_18px_34px_rgba(47,127,232,0.24)] transition hover:brightness-105 disabled:opacity-60"
                     >
                       <span>
                         <span className="block text-sm font-black">Full Access</span>
-                        <span className="mt-1 block text-xs font-semibold opacity-80">Lifetime one-time payment</span>
+                        <span className="mt-1 block text-xs font-semibold text-blue-100">Lifetime one-time payment</span>
                       </span>
                       <span className="text-xl font-black">$50</span>
                     </button>
@@ -606,7 +619,7 @@ export default function FirstLoginOnboardingModal({
                       type="button"
                       disabled={submitting}
                       onClick={() => setShowPlans(false)}
-                      className="rounded-2xl border border-[#d7e3f4] bg-white px-4 py-3 text-sm font-black text-[#0f1b33] transition hover:bg-[#f8fbff] disabled:opacity-60"
+                      className={`rounded-2xl border ${modalBorder} bg-[var(--bb-card,#ffffff)] px-4 py-3 text-sm font-black ${headingText} transition hover:bg-[var(--bb-surface-soft,#f8fbff)] disabled:opacity-60`}
                     >
                       Back
                     </button>
@@ -617,7 +630,7 @@ export default function FirstLoginOnboardingModal({
                       type="button"
                       disabled={submitting}
                       onClick={() => setShowPlans(true)}
-                      className="rounded-2xl bg-[#2f7fe8] px-4 py-4 text-sm font-black text-white shadow-[0_16px_32px_rgba(47,127,232,0.22)] transition hover:brightness-105 disabled:opacity-60"
+                      className="rounded-2xl bg-[var(--bb-accent,#2f7fe8)] px-4 py-4 text-sm font-black text-white shadow-[0_16px_32px_rgba(47,127,232,0.22)] transition hover:brightness-105 disabled:opacity-60"
                     >
                       Unlock Full Experience
                     </button>
@@ -625,7 +638,7 @@ export default function FirstLoginOnboardingModal({
                       type="button"
                       disabled={submitting}
                       onClick={() => void handleFinishFree()}
-                      className="rounded-2xl border border-[#d7e3f4] bg-white px-4 py-4 text-sm font-black text-[#0f1b33] transition hover:bg-[#f8fbff] disabled:opacity-60"
+                      className={`rounded-2xl border ${modalBorder} bg-[var(--bb-card,#ffffff)] px-4 py-4 text-sm font-black ${headingText} transition hover:bg-[var(--bb-surface-soft,#f8fbff)] disabled:opacity-60`}
                     >
                       Start Day 1 Free
                     </button>
@@ -642,12 +655,12 @@ export default function FirstLoginOnboardingModal({
           </div>
 
           {!isLastSlide ? (
-            <div className="flex items-center justify-between gap-3 border-t border-[#efe5d7] px-5 py-4 sm:px-6">
+            <div className={`flex items-center justify-between gap-3 border-t ${modalBorder} bg-[linear-gradient(180deg,#ffffff_0%,#f8fbff_100%)] px-5 py-4 sm:px-6`}>
               <button
                 type="button"
                 onClick={goBack}
                 disabled={stepIndex === 0 || submitting}
-                className="rounded-2xl border border-[#d7e3f4] bg-white px-4 py-3 text-sm font-black text-[#0f1b33] transition hover:bg-[#f8fbff] disabled:cursor-not-allowed disabled:opacity-40"
+                className={`rounded-2xl border ${modalBorder} bg-[var(--bb-card,#ffffff)] px-4 py-3 text-sm font-black ${headingText} transition hover:bg-[var(--bb-surface-soft,#f8fbff)] disabled:cursor-not-allowed disabled:opacity-40`}
               >
                 Back
               </button>
@@ -655,7 +668,7 @@ export default function FirstLoginOnboardingModal({
                 type="button"
                 onClick={goNext}
                 disabled={!canContinue() || submitting}
-                className="rounded-2xl bg-[#0f1b33] px-5 py-3 text-sm font-black text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
+                className="rounded-2xl bg-[var(--bb-accent,#2f7fe8)] px-5 py-3 text-sm font-black text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 Continue
               </button>
