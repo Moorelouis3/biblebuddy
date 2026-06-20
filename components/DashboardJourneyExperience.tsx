@@ -12103,27 +12103,20 @@ Before we understand redemption, we need to understand what God made humanity fo
     return (
       <section data-bible-year-study-area data-bb-dashboard-tour="study-tasks" className="dashboard-bible-year-study-area grid gap-5">
         {renderDashboardSectionIntro(
-          "Bible Study Plan",
-          "Follow your daily path through Scripture, one lesson at a time.",
-          "order-1"
-        )}
-        {renderDashboardSectionIntro(
           "Scripture Player",
           showCompletionMoment ? "Celebrate the lesson you finished and choose an optional next step." : "Press play and continue today's guided Bible lesson.",
-          "order-3"
+          "order-1"
         )}
         {showCompletionMoment ? renderBibleYearLessonCompleteCard(day, nextBibleYearDay, () => openAdjacentBibleYearDay(nextBibleYearDay)) : (
-        <article className={`order-4 overflow-hidden rounded-[20px] border p-5 text-[var(--bb-text-primary,#111827)] shadow-[0_18px_48px_rgba(38,63,99,0.12),inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-xl sm:p-6 ${
+        <article className={`order-2 overflow-hidden rounded-[20px] border p-5 text-[var(--bb-text-primary,#111827)] shadow-[0_18px_48px_rgba(38,63,99,0.12),inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-xl sm:p-6 ${
           readingComplete
             ? "border-emerald-300 bg-[linear-gradient(145deg,#f4fff7,#e8f8ee)]"
             : "border-[var(--bb-card-border,#dbe7f4)] bg-[linear-gradient(145deg,color-mix(in_srgb,var(--bb-card,#ffffff)_94%,var(--bb-surface-soft,#f8fbff)),var(--bb-surface-soft,#f8fbff))]"
         }`}>
-          <div className="min-w-0">
-            <div className="min-w-0">
-              <div className="flex min-w-0 items-center justify-between gap-3 text-[10px] font-bold uppercase tracking-[0.22em] text-[var(--bb-text-muted,#6b7280)]">
-                <span className="shrink-0">Day {day.dayNumber}</span>
-                <span className="min-w-0 truncate text-right tracking-[0.14em]">{readingSummary}</span>
-              </div>
+          <div className="min-w-0 text-center">
+            <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-[var(--bb-text-muted,#6b7280)]">
+              <span className="block">Day {day.dayNumber}</span>
+              <span className="mt-2 block tracking-[0.14em]">{readingSummary}</span>
             </div>
           </div>
 
@@ -12223,10 +12216,10 @@ Before we understand redemption, we need to understand what God made humanity fo
         {renderDashboardSectionIntro(
           "Study Tools",
           "Explore today's lesson through notes, trivia, and discussion.",
-          "order-5"
+          "order-3"
         )}
 
-        <section className="order-6 overflow-hidden rounded-[20px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] shadow-[0_16px_42px_rgba(38,63,99,0.12),inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-xl">
+        <section className="order-4 overflow-hidden rounded-[20px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] shadow-[0_16px_42px_rgba(38,63,99,0.12),inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-xl">
           {supportCards.map((item, index) => {
             const expanded =
               item.key === "scripture"
@@ -12275,7 +12268,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           </>
         ) : null}
 
-        <section data-bb-dashboard-tour="journey-map" className="order-2 overflow-hidden rounded-[20px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] shadow-[0_16px_42px_rgba(38,63,99,0.12),inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-xl">
+        <section data-bb-dashboard-tour="journey-map" className="order-5 overflow-hidden rounded-[20px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] shadow-[0_16px_42px_rgba(38,63,99,0.12),inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-xl">
           <button type="button" onClick={openBibleYearSeriesDashboard} className="hidden w-full items-center justify-between gap-3 px-4 py-3.5 text-left transition hover:bg-[var(--bb-surface-soft,#f4f8ff)]">
             <span>
               <span className="block text-[17px] font-bold text-[var(--bb-text-primary,#111827)]">Journey Map</span>
@@ -12283,11 +12276,11 @@ Before we understand redemption, we need to understand what God made humanity fo
             <span className="text-2xl text-[var(--bb-accent,#2f7fe8)]" aria-hidden="true">›</span>
           </button>
           <div className="px-3 pb-4 pt-3">
-            <div className="flex items-center justify-between gap-3 px-1">
+            <div className="relative px-1 text-center">
               <div className="min-w-0">
                 <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">Bible In One Year</p>
               </div>
-              <div className="relative shrink-0">
+              <div className="absolute right-0 top-1/2 -translate-y-1/2">
                 <button
                   type="button"
                   onClick={() => {
@@ -14475,7 +14468,7 @@ Before we understand redemption, we need to understand what God made humanity fo
 
   function renderBibleYearJourneyFinishRows() {
     return (
-      <div className="px-2 pb-1 pt-3 text-left text-[var(--bb-text-primary,#111827)]">
+      <div className="px-2 pb-1 pt-3 text-center text-[var(--bb-text-primary,#111827)]">
         <p className="text-sm font-bold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
           {getBibleYearJourneyExpectedFinishText()}
         </p>
