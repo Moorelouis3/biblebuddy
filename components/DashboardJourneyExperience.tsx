@@ -12239,7 +12239,6 @@ Before we understand redemption, we need to understand what God made humanity fo
                 ) : null}
               </div>
             </div>
-            {renderBibleYearJourneyStatusBanner(day)}
             <div
               ref={(node) => {
                 bibleYearJourneyScrollerRefs.current.home = node;
@@ -12294,6 +12293,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 })}
               </div>
             </div>
+            {renderBibleYearJourneyFinishRows()}
           </div>
         </section>
       </section>
@@ -14376,30 +14376,29 @@ Before we understand redemption, we need to understand what God made humanity fo
     return day.reference || day.readings.map((reading) => `${reading.book} ${reading.chapter}`).join(", ");
   }
 
-  function getBibleYearJourneyStatusBannerText(_day: GenesisBibleYearDay) {
-    return `Expected Bible Finish Date: ${effectiveBibleYearReport.expectedFinishDateLabel ?? bibleYearSchedule.expectedFinishDateLabel}`;
+  function getBibleYearJourneyExpectedFinishText() {
+    return `Expected Finish Date: ${effectiveBibleYearReport.expectedFinishDateLabel ?? bibleYearSchedule.expectedFinishDateLabel}`;
   }
 
-  function renderBibleYearJourneyStatusBanner(day: GenesisBibleYearDay) {
+  function getBibleYearJourneyActualFinishText() {
+    const isCompleted =
+      completedBibleYearChapters >= BIBLE_IN_ONE_YEAR_TOTAL_CHAPTERS ||
+      (effectiveBibleYearReport.currentDay >= 365 && effectiveBibleYearReport.remainingChapters <= 0);
+    if (!isCompleted) return "Actual Finish Date: Not Completed Yet";
+    return `Actual Finish Date: ${new Date().toLocaleDateString(undefined, { month: "long", day: "numeric", year: "numeric" })}`;
+  }
+
+  function renderBibleYearJourneyFinishRows() {
     return (
-      <div className="mb-3 grid min-h-[54px] grid-cols-[36px_minmax(0,1fr)_36px] items-center gap-3 rounded-[16px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_30%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-accent-soft,#e6f1ff)_68%,var(--bb-card,#ffffff))] px-3.5 py-3 text-[var(--bb-text-primary,#111827)] shadow-[inset_0_1px_0_rgba(255,255,255,0.16),0_10px_24px_rgba(47,127,232,0.08)] sm:grid-cols-[40px_minmax(0,1fr)_40px] sm:px-4">
-        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[var(--bb-button,#2f7fe8)] text-[var(--bb-button-text,#ffffff)] shadow-[0_8px_18px_rgba(47,127,232,0.20)]" aria-hidden="true">
-          <svg viewBox="0 0 24 24" className="h-4.5 w-4.5" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M8 2v4" />
-            <path d="M16 2v4" />
-            <path d="M3 10h18" />
-            <rect x="3" y="4" width="18" height="18" rx="3" />
-          </svg>
-        </span>
-        <p className="min-w-0 whitespace-nowrap text-center text-[11px] font-black leading-4 text-[var(--bb-text-primary,#111827)] sm:text-xs md:text-sm">
-          {getBibleYearJourneyStatusBannerText(day)}
+      <div className="px-2 pb-1 pt-3 text-left text-[var(--bb-text-primary,#111827)]">
+        <p className="text-sm font-bold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+          <span aria-hidden="true" className="mr-2">🏁</span>
+          {getBibleYearJourneyExpectedFinishText()}
         </p>
-        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[var(--bb-button,#2f7fe8)] text-[var(--bb-button-text,#ffffff)] shadow-[0_8px_18px_rgba(47,127,232,0.20)]" aria-hidden="true">
-          <svg viewBox="0 0 24 24" className="h-4.5 w-4.5" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M3 17l6-6 4 4 7-8" />
-            <path d="M14 7h6v6" />
-          </svg>
-        </span>
+        <p className="mt-1 text-sm font-bold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+          <span aria-hidden="true" className="mr-2">✅</span>
+          {getBibleYearJourneyActualFinishText()}
+        </p>
       </div>
     );
   }

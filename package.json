@@ -40,6 +40,7 @@
     "tts:bible-year:day23": "tsx scripts/generate-bible-year-day-one-audio.ts --day=23",
     "tts:bible-topic": "tsx scripts/generate-bible-topic-audio.ts",
     "tts:bible-topic:reels": "tsx scripts/generate-bible-topic-reel-audio.ts",
+    "repair:lifetime-customers": "tsx scripts/repair-lifetime-customers.ts",
     "start": "next start",
     "lint": "eslint"
   },
