@@ -3902,6 +3902,26 @@ export default function DashboardJourneyExperience({
       }
 
       try {
+        const sessionData = await supabase.auth.getSession();
+        const accessToken = sessionData.data.session?.access_token;
+        if (accessToken) {
+          const response = await fetch("/api/bible-year/progress", {
+            headers: { Authorization: `Bearer ${accessToken}` },
+          });
+          const payload = await response.json().catch(() => ({}));
+          if (response.ok) {
+            if (!cancelled) {
+              setBibleYearCompletedCardsByDay(payload.completedCardsByDay || {});
+              setBibleYearScriptureNotesViewedByDay(payload.notesViewedByDay || {});
+              setBibleYearReflectionPostedByDay(payload.reflectionPostedByDay || {});
+              setBibleYearResolvedCurrentDayNumber(Number(payload.resolvedCurrentDayNumber) || 1);
+              setBibleYearProgressLoaded(true);
+            }
+            return;
+          }
+          console.warn("[BIBLE_YEAR_PROGRESS] Falling back to direct progress load:", payload?.error || response.statusText);
+        }
+
         let progressRows: BibleYearProgressRow[] = [];
         let supportsStudyNotesCompleted = true;
         {
