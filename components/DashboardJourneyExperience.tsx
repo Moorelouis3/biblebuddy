@@ -3784,6 +3784,7 @@ export default function DashboardJourneyExperience({
     if (!container) return;
 
     function handleScroll() {
+      if (bibleYearDashboardActive || bibleYearSeriesActive) return;
       const current = containerRef.current;
       if (!current) return;
       const width = current.clientWidth || 1;
@@ -3792,7 +3793,19 @@ export default function DashboardJourneyExperience({
 
     container.addEventListener("scroll", handleScroll, { passive: true });
     return () => container.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [bibleYearDashboardActive, bibleYearSeriesActive]);
+
+  useEffect(() => {
+    if (!bibleYearDashboardActive && !bibleYearSeriesActive) return;
+    const container = containerRef.current;
+    if (!container) return;
+    if (container.scrollLeft !== 0) {
+      container.scrollTo({ left: 0, behavior: "auto" });
+    }
+    if (activePage !== 0) {
+      setActivePage(0);
+    }
+  }, [activePage, bibleYearDashboardActive, bibleYearSeriesActive]);
 
   useEffect(() => {
     function handleOpenExplorePage() {
