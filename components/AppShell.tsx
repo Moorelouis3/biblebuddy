@@ -120,6 +120,10 @@ function formatFirstLoginGoalLabel(goal: string | null | undefined) {
   return "Build a daily habit";
 }
 
+function isMissingStudyNotesCompletedColumn(error: { message?: string | null } | null | undefined) {
+  return /study_notes_completed/i.test(error?.message || "");
+}
+
 type PendingLandingOnboarding = {
   answers: LandingOnboardingAnswers;
   recommendation?: {
@@ -787,7 +791,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         }
 
         if (!hasExistingBibleYearProgress) {
-          await supabase.from("bible_year_day_progress").upsert(
+          let { error: dayProgressError } = await supabase.from("bible_year_day_progress").upsert(
             {
               user_id: currentUserId,
               day_number: 1,
@@ -798,6 +802,19 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             },
             { onConflict: "user_id,day_number" },
           );
+          if (dayProgressError && isMissingStudyNotesCompletedColumn(dayProgressError)) {
+            const fallback = await supabase.from("bible_year_day_progress").upsert(
+              {
+                user_id: currentUserId,
+                day_number: 1,
+                reading_completed: false,
+                trivia_completed: false,
+                reflection_completed: false,
+              },
+              { onConflict: "user_id,day_number" },
+            );
+            dayProgressError = fallback.error;
+          }
         }
 
         const derivedName = headerProfileName !== "You" ? headerProfileName : username || userEmail?.split("@")[0] || "";
@@ -820,7 +837,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           .eq("user_id", currentUserId);
 
         if (!hasExistingBibleYearProgress) {
-          await supabase.from("bible_year_day_progress").upsert(
+          let { error: dayProgressError } = await supabase.from("bible_year_day_progress").upsert(
             {
               user_id: currentUserId,
               day_number: 1,
@@ -831,6 +848,19 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             },
             { onConflict: "user_id,day_number" },
           );
+          if (dayProgressError && isMissingStudyNotesCompletedColumn(dayProgressError)) {
+            const fallback = await supabase.from("bible_year_day_progress").upsert(
+              {
+                user_id: currentUserId,
+                day_number: 1,
+                reading_completed: false,
+                trivia_completed: false,
+                reflection_completed: false,
+              },
+              { onConflict: "user_id,day_number" },
+            );
+            dayProgressError = fallback.error;
+          }
         }
       }
 
@@ -1095,7 +1125,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       }
 
       if (!hasExistingBibleYearProgress) {
-        const { error: dayProgressError } = await supabase.from("bible_year_day_progress").upsert(
+        let { error: dayProgressError } = await supabase.from("bible_year_day_progress").upsert(
           {
             user_id: userId,
             day_number: 1,
@@ -1106,6 +1136,19 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           },
           { onConflict: "user_id,day_number" },
         );
+        if (dayProgressError && isMissingStudyNotesCompletedColumn(dayProgressError)) {
+          const fallback = await supabase.from("bible_year_day_progress").upsert(
+            {
+              user_id: userId,
+              day_number: 1,
+              reading_completed: false,
+              trivia_completed: false,
+              reflection_completed: false,
+            },
+            { onConflict: "user_id,day_number" },
+          );
+          dayProgressError = fallback.error;
+        }
         if (dayProgressError) {
           console.warn("[FIRST_LOGIN_ONBOARDING] Day 1 seed skipped:", dayProgressError.message);
         }

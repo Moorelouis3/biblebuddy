@@ -223,6 +223,10 @@ function isBibleYearDayCompleteUnderLegacyRule(row?: BibleYearProgressRow | null
   return Boolean(row?.reading_completed);
 }
 
+function isMissingStudyNotesCompletedColumn(error: { message?: string | null } | null | undefined) {
+  return /study_notes_completed/i.test(error?.message || "");
+}
+
 const BIBLE_YEAR_COMPLETION_KEY_VERSES: Record<number, BibleYearCompletionKeyVerse> = {
   1: { text: "God saw everything that he had made, and, behold, it was very good.", reference: "Genesis 1:31" },
   2: { text: "I will put enmity between you and the woman, and between your offspring and her offspring.", reference: "Genesis 3:15" },
@@ -3905,15 +3909,31 @@ export default function DashboardJourneyExperience({
       }
 
       try {
-        const { data, error } = await supabase
-          .from("bible_year_day_progress")
-          .select("day_number, reading_completed, study_notes_completed, trivia_completed, reflection_completed, created_at")
-          .eq("user_id", userId)
-          .order("day_number", { ascending: true });
+        let progressRows: BibleYearProgressRow[] = [];
+        let supportsStudyNotesCompleted = true;
+        {
+          const { data, error } = await supabase
+            .from("bible_year_day_progress")
+            .select("day_number, reading_completed, study_notes_completed, trivia_completed, reflection_completed, created_at")
+            .eq("user_id", userId)
+            .order("day_number", { ascending: true });
 
-        if (error) throw error;
-
-        const progressRows = ((data || []) as BibleYearProgressRow[]).filter((row) => Number.isFinite(row.day_number));
+          if (error && isMissingStudyNotesCompletedColumn(error)) {
+            supportsStudyNotesCompleted = false;
+            const fallback = await supabase
+              .from("bible_year_day_progress")
+              .select("day_number, reading_completed, trivia_completed, reflection_completed, created_at")
+              .eq("user_id", userId)
+              .order("day_number", { ascending: true });
+            if (fallback.error) throw fallback.error;
+            progressRows = ((fallback.data || []) as Array<Omit<BibleYearProgressRow, "study_notes_completed">>)
+              .map((row) => ({ ...row, study_notes_completed: false }))
+              .filter((row) => Number.isFinite(row.day_number));
+          } else {
+            if (error) throw error;
+            progressRows = ((data || []) as BibleYearProgressRow[]).filter((row) => Number.isFinite(row.day_number));
+          }
+        }
         const progressRowByDay = new Map(progressRows.map((row) => [Number(row.day_number), row]));
         const legacyCompletedDays = new Set(
           progressRows
@@ -3934,9 +3954,9 @@ export default function DashboardJourneyExperience({
             user_id: userId,
             day_number: Number(row.day_number),
             reading_completed: true,
-            study_notes_completed: true,
             trivia_completed: true,
             reflection_completed: true,
+            ...(supportsStudyNotesCompleted ? { study_notes_completed: true } : {}),
           }));
           const { error: grandfatherError } = await supabase
             .from("bible_year_day_progress")
@@ -4023,12 +4043,12 @@ export default function DashboardJourneyExperience({
               user_id: userId,
               day_number: dayNumber,
               reading_completed: true,
-              study_notes_completed: true,
               trivia_completed: true,
               reflection_completed: true,
+              ...(supportsStudyNotesCompleted ? { study_notes_completed: true } : {}),
             };
           })
-          .filter((row): row is { user_id: string; day_number: number; reading_completed: true; study_notes_completed: true; trivia_completed: true; reflection_completed: true } => Boolean(row));
+          .filter((row): row is { user_id: string; day_number: number; reading_completed: true; trivia_completed: true; reflection_completed: true; study_notes_completed?: true } => Boolean(row));
 
         if (restoredLegacyPayload.length) {
           const { error: restoredLegacyError } = await supabase
@@ -4536,7 +4556,7 @@ export default function DashboardJourneyExperience({
       const resetAt = new Date().toISOString();
       const resetStartDate = getDashboardLocalDateKey();
       if (userId) {
-        const { error } = await supabase
+        let { error } = await supabase
           .from("bible_year_day_progress")
           .update({
             reading_completed: false,
@@ -4546,6 +4566,19 @@ export default function DashboardJourneyExperience({
             updated_at: resetAt,
           })
           .eq("user_id", userId);
+
+        if (error && isMissingStudyNotesCompletedColumn(error)) {
+          const fallback = await supabase
+            .from("bible_year_day_progress")
+            .update({
+              reading_completed: false,
+              trivia_completed: false,
+              reflection_completed: false,
+              updated_at: resetAt,
+            })
+            .eq("user_id", userId);
+          error = fallback.error;
+        }
 
         if (error) throw error;
 
@@ -9472,9 +9505,17 @@ Before we understand redemption, we need to understand what God made humanity fo
       payload[`${card}_completed`] = true;
     });
 
-    const { error } = await supabase
+    let { error } = await supabase
       .from("bible_year_day_progress")
       .upsert(payload, { onConflict: "user_id,day_number" });
+
+    if (error && isMissingStudyNotesCompletedColumn(error)) {
+      delete payload.study_notes_completed;
+      const fallback = await supabase
+        .from("bible_year_day_progress")
+        .upsert(payload, { onConflict: "user_id,day_number" });
+      error = fallback.error;
+    }
 
     if (error) throw error;
   }

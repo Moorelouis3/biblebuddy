@@ -32,6 +32,10 @@ function getLocalDateKey(date = new Date()) {
   return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
 }
 
+function isMissingStudyNotesCompletedColumn(error: { message?: string | null } | null | undefined) {
+  return /study_notes_completed/i.test(error?.message || "");
+}
+
 function dataUrlToUpload(value: unknown) {
   if (typeof value !== "string" || !value.startsWith("data:")) return null;
   const match = value.match(/^data:([^;]+);base64,(.+)$/);
@@ -227,16 +231,30 @@ export async function POST(request: NextRequest) {
   if (responseError) console.warn("[LANDING_SETUP] onboarding response save skipped:", responseError.message);
 
   if (!hasExistingBibleYearProgress) {
-    const { error: bibleYearProgressError } = await admin.from("bible_year_day_progress").upsert(
+    let { error: bibleYearProgressError } = await admin.from("bible_year_day_progress").upsert(
       {
         user_id: userData.user.id,
         day_number: 1,
         reading_completed: false,
+        study_notes_completed: false,
         trivia_completed: false,
         reflection_completed: false,
       },
       { onConflict: "user_id,day_number" },
     );
+    if (bibleYearProgressError && isMissingStudyNotesCompletedColumn(bibleYearProgressError)) {
+      const fallback = await admin.from("bible_year_day_progress").upsert(
+        {
+          user_id: userData.user.id,
+          day_number: 1,
+          reading_completed: false,
+          trivia_completed: false,
+          reflection_completed: false,
+        },
+        { onConflict: "user_id,day_number" },
+      );
+      bibleYearProgressError = fallback.error;
+    }
     if (bibleYearProgressError) console.warn("[LANDING_SETUP] Bible Year progress seed skipped:", bibleYearProgressError.message);
   }
 

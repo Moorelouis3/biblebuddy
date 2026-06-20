@@ -69,6 +69,10 @@ function getPasswordResetRedirectUrl() {
   return "https://www.mybiblebuddy.net/reset-password";
 }
 
+function isMissingStudyNotesCompletedColumn(error: { message?: string | null } | null | undefined) {
+  return /study_notes_completed/i.test(error?.message || "");
+}
+
 const DASHBOARD_GUIDED_INTRO_STORAGE_KEY = "bb:replay-dashboard-guided-intro";
 const BIBLE_YEAR_OFFLINE_WIFI_ONLY_KEY = "bb:bible-year-offline-wifi-only";
 
@@ -332,15 +336,30 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
   async function getCurrentOfflineAudioStartDay() {
     if (!user?.id) return 1;
     try {
-      const { data, error } = await supabase
-        .from("bible_year_day_progress")
-        .select("day_number, reading_completed, study_notes_completed, trivia_completed, reflection_completed")
-        .eq("user_id", user.id)
-        .order("day_number", { ascending: true });
+      let progressRowsRaw:
+        | Array<{ day_number: number; reading_completed?: boolean | null; study_notes_completed?: boolean | null; trivia_completed?: boolean | null; reflection_completed?: boolean | null }>
+        | null = null;
+      {
+        const { data, error } = await supabase
+          .from("bible_year_day_progress")
+          .select("day_number, reading_completed, study_notes_completed, trivia_completed, reflection_completed")
+          .eq("user_id", user.id)
+          .order("day_number", { ascending: true });
+        if (error && isMissingStudyNotesCompletedColumn(error)) {
+          const fallback = await supabase
+            .from("bible_year_day_progress")
+            .select("day_number, reading_completed, trivia_completed, reflection_completed")
+            .eq("user_id", user.id)
+            .order("day_number", { ascending: true });
+          if (fallback.error) throw fallback.error;
+          progressRowsRaw = (fallback.data || []).map((row) => ({ ...row, study_notes_completed: false }));
+        } else {
+          if (error) throw error;
+          progressRowsRaw = data || [];
+        }
+      }
 
-      if (error) throw error;
-
-      const progressRows = (data || [])
+      const progressRows = (progressRowsRaw || [])
         .filter((row) => typeof row.day_number === "number")
         .sort((a, b) => Number(a.day_number) - Number(b.day_number));
       const completedDays = new Set(
