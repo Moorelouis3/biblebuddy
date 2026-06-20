@@ -4767,7 +4767,15 @@ export default function DashboardJourneyExperience({
     }
 
     if (selectedBibleYearSeriesDay?.dayNumber === targetDay.dayNumber) return;
-    if (manualBibleYearStudyDayNumber && selectedBibleYearSeriesDay?.dayNumber === manualBibleYearStudyDayNumber) return;
+    const shouldKeepManualSelectedDay = Boolean(
+      manualBibleYearStudyDayNumber &&
+      selectedBibleYearSeriesDay?.dayNumber === manualBibleYearStudyDayNumber &&
+      manualBibleYearStudyDayNumber >= activeBibleYearDashboardDay.dayNumber,
+    );
+    if (manualBibleYearStudyDayNumber && !shouldKeepManualSelectedDay) {
+      setManualBibleYearStudyDayNumber(null);
+    }
+    if (shouldKeepManualSelectedDay) return;
     if (
       selectedBibleYearSeriesDay &&
       bibleYearJustCompletedDayRef.current === selectedBibleYearSeriesDay.dayNumber &&
