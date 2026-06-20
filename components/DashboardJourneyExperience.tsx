@@ -4755,7 +4755,16 @@ export default function DashboardJourneyExperience({
     const storedDay = storedDayNumber
       ? GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => day.dayNumber === storedDayNumber) ?? null
       : null;
-    const targetDay = storedDay && canOpenBibleYearDayInJourneyOrder(storedDay) ? storedDay : activeBibleYearDashboardDay;
+    const shouldUseStoredDay = Boolean(
+      storedDay &&
+      canOpenBibleYearDayInJourneyOrder(storedDay) &&
+      storedDay.dayNumber >= activeBibleYearDashboardDay.dayNumber,
+    );
+    const targetDay = shouldUseStoredDay ? storedDay! : activeBibleYearDashboardDay;
+
+    if (storedDay && !shouldUseStoredDay) {
+      clearStoredBibleYearDashboardDayNumber(userId);
+    }
 
     if (selectedBibleYearSeriesDay?.dayNumber === targetDay.dayNumber) return;
     if (manualBibleYearStudyDayNumber && selectedBibleYearSeriesDay?.dayNumber === manualBibleYearStudyDayNumber) return;
@@ -4768,7 +4777,7 @@ export default function DashboardJourneyExperience({
     }
 
     setSelectedBibleYearSeriesDay(targetDay);
-    setManualBibleYearStudyDayNumber(storedDay ? storedDay.dayNumber : null);
+    setManualBibleYearStudyDayNumber(shouldUseStoredDay ? storedDay!.dayNumber : null);
     if (typeof window !== "undefined") {
       const url = new URL(window.location.href);
       url.searchParams.set("view", "bible-year");
