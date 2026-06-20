@@ -15349,537 +15349,1433 @@ function applyPersonalGenesisFourThroughTenStudySections() {
       endVerse: 7,
       reference: "Genesis 4:1-7",
       title: "Cain And Abel Bring Offerings",
-      icon: "🔥",
+      icon: "??",
       phrases: [
         [
+          "👨 Adam Knew Eve His Wife",
+          `The word **"knew"** is the Bible's way of describing the intimate relationship between a husband and wife.
+
+Instead of using a purely physical description, Scripture uses a relational word. Adam did not merely know about Eve. He knew her personally and intimately.
+
+This verse does **not** mean this was the first time Adam and Eve were together as husband and wife.
+
+Moses is simply recording the event that led to the birth of Cain.
+
+📖 The Hebrew word *yada* means to know, recognize, or understand through personal experience.
+
+🤝 A relationship, not just an action
+
+❤️ Husband and wife united together
+
+👶 The beginning of Cain's story
+
+🌍 The first recorded conception in Scripture`,
+        ],
+        [
+          "🤰 She Conceived And Bare Cain",
+          `The phrase describes both the beginning and end of a pregnancy.
+
+**Conceived** means Eve became pregnant.
+
+**Bare** means she gave birth.
+
+This is the first human birth recorded in the Bible.
+
+Adam was created directly by God from the dust of the ground.
+
+Cain is the first person born through ordinary human reproduction.
+
+👶 Conceived = became pregnant
+
+🤱 Bare = gave birth
+
+🌍 First birth recorded in Scripture
+
+👨 Adam was created
+
+👶 Cain was born`,
+        ],
+        [
           "👶 I Have Gotten A Man From The Lord",
-          `Eve gives birth outside Eden, but she still speaks about the Lord.
+          `The word **"gotten"** means obtained, received, or acquired.
 
-That matters because Genesis 3 ended with exile, pain, and loss.
+Eve recognizes that God is the source of life.
 
-Now Genesis 4 begins with life continuing.
+Even after the fall, exile, pain, and judgment, she still acknowledges God's hand in giving her a son.
 
-Eve sees Cain's birth as something connected to God's help.
+Some Bible scholars believe Eve may have wondered whether Cain could be the promised offspring God mentioned in Genesis 3:15.
 
-👶 A child is born
-🌱 Life continues outside Eden
-🙏 Eve still names God's involvement
+Whether or not she believed that, her statement shows gratitude toward God.
 
-This phrase helps us see that judgment did not erase mercy.
+🙏 Life is still coming from God
 
-Adam and Eve are outside the garden, but God has not abandoned the human story.`,
+👶 Eve receives her first son
+
+🌱 God's blessing continues after Eden
+
+❤️ God has not abandoned humanity`,
+        ],
+        [
+          "👶 She Bare Again His Brother Abel",
+          `Eve gives birth a second time.
+
+Cain is no longer an only child.
+
+Abel enters the story as Cain's younger brother.
+
+Interestingly, Abel's name is often connected to the idea of **breath**, **vapor**, or **something temporary**.
+
+That meaning becomes significant later because Abel's life on earth will be very short.
+
+👶 The second child is born
+
+👬 Cain receives a younger brother
+
+💨 Abel's name means vapor or breath
+
+⏳ A reminder of life's brevity`,
         ],
         [
           "🐑 Abel Was A Keeper Of Sheep",
-          `Abel is introduced by his work.
+          `Abel's occupation was caring for flocks.
 
-He keeps sheep, which means he cares for flocks.
+A keeper of sheep is what we would call a shepherd.
 
-This is ordinary work, but it becomes important because his offering will come from the flock.
+He protected, guided, and cared for animals that depended on him.
 
-Genesis is showing early human life developing through labor, family, and worship.
+This is the first shepherd specifically mentioned in the Bible.
 
-🐑 Abel works with animals
-🛠️ His work becomes connected to worship
-🙏 He brings from what he has
+The image of a shepherd becomes one of the most important themes in all of Scripture.
 
-This phrase matters because the Bible often connects worship with real life.
+📖 Abel
 
-Abel does not worship with an abstract idea.
+➡️ Abraham
 
-He brings something from the life and work God gave him.`,
+➡️ Moses
+
+➡️ David
+
+➡️ Jesus the Good Shepherd
+
+🐑 Abel cared for sheep
+
+🛡️ Shepherds protected their flocks
+
+🌱 Shepherding becomes a major biblical theme`,
         ],
         [
           "🌾 Cain Was A Tiller Of The Ground",
-          `Cain works the ground.
+          `A tiller of the ground is a farmer.
 
-That connects him back to Adam's calling and also to the cursed ground from Genesis 3.
+Cain worked the soil, planted crops, and produced food from the earth.
 
-Farming is not bad.
+His work connects back to Adam's original assignment in the Garden of Eden.
 
-Growing food is good and necessary.
+It also connects to the cursed ground from Genesis 3.
 
-The issue in the story is not that Cain farms and Abel shepherds.
+The problem later in the story is **not** that Cain was a farmer.
 
-🌾 Cain works the soil
-🍞 Cain produces food
-🌍 Cain lives with the ground Adam was sent to work
+God never rejects Cain because of his occupation.
 
-This phrase matters because the offering problem is not about one job being holy and another job being worthless.
+The issue will be Cain's heart and response toward God.
 
-The deeper issue will be Cain's heart and response to God.`,
+🌾 Cain worked the soil
+
+🌱 He grew crops and food
+
+👨 His work connects back to Adam
+
+❌ His job was not the problem`,
+        ],
+        [
+          "⏳ In Process Of Time",
+          `This phrase signals that time has passed.
+
+Genesis moves quickly from the birth of Cain and Abel to adulthood without describing their childhood years.
+
+By this point, both brothers are old enough to work, produce, and bring offerings before God.
+
+Moses uses short phrases like this throughout Genesis to move the story forward rapidly.
+
+⏳ Years have passed
+
+👦 Cain and Abel are no longer children
+
+🌱 Both have established occupations
+
+📖 The story jumps forward in time`,
+        ],
+        [
+          "🌾 Cain Brought Of The Fruit Of The Ground",
+          `Cain brings produce from his work as a farmer.
+
+The phrase refers to crops he cultivated from the soil.
+
+Cain is presenting part of the results of his labor before God.
+
+The offering itself came from something he worked hard to produce.
+
+🌾 Crops from Cain's fields
+
+👨‍🌾 The result of his labor
+
+🎁 A gift presented before God
+
+🌱 Produce grown from the ground`,
         ],
         [
           "🎁 An Offering Unto The Lord",
-          `This is the first clear worship offering in Genesis.
+          `An offering is a gift presented to God in worship.
 
-Cain and Abel both bring something to the Lord.
+Long before Moses received the Law on Mount Sinai, people were already bringing offerings before God.
 
-That means people outside Eden are still approaching God.
+This suggests God had revealed instructions about worship that Genesis does not fully record.
 
-The garden is closed, but worship has not disappeared.
+Offerings were a way of honoring God and acknowledging His authority.
 
-🎁 Cain brings an offering
-🐑 Abel brings an offering
-🙏 Both acts are directed to the Lord
+🎁 A gift presented to God
 
-This phrase matters because worship begins very early in the Bible.
+🙏 An act of worship
 
-People are not only surviving outside Eden.
+👑 Acknowledges God's authority
 
-They are still dealing with God, bringing gifts, and learning that the heart behind worship matters.`,
+📖 Worship existed before Moses`,
         ],
         [
           "🐑 The Firstlings Of His Flock",
-          `Abel brings from the firstborn of his flock and from their fat portions.
+          `The word **firstlings** refers to the firstborn animals from Abel's flock.
 
-That detail shows care and value.
+In the ancient world, firstborn animals were especially valuable.
 
-He is not bringing leftovers.
+Abel did not simply bring an animal.
 
-He brings what is first and costly.
+He brought the firstborn from his flock.
 
-🐑 Firstborn
-🔥 Fat portions
-🙏 A gift that honors God
+This shows intentional worship and sacrifice.
 
-Later in the Bible, firstborn language and fat portions become important in sacrifice.
+🐑 The firstborn animals
 
-Here, Genesis is already showing worship that gives God honor, not spare pieces.
+💎 Valuable and important
 
-The phrase matters because Abel's offering reflects reverence.`,
+🙏 Given to God first
+
+🎁 A meaningful sacrifice`,
+        ],
+        [
+          "🔥 Of The Fat Thereof",
+          `The fat portions were considered the richest and best parts of an animal.
+
+Abel was not bringing leftovers.
+
+He was offering the choicest portions to God.
+
+Later in the Law of Moses, the fat portions repeatedly belong to the Lord.
+
+This detail shows Abel's offering involved giving God the best he had.
+
+🔥 The richest portions
+
+💎 The best part of the sacrifice
+
+🙏 Given specifically to God
+
+❤️ Worship through generosity`,
+        ],
+        [
+          "✅ The Lord Had Respect Unto Abel",
+          `The word **respect** means God looked favorably upon.
+
+God accepted Abel and his offering.
+
+Notice the order of the verse.
+
+God first had respect unto **Abel**, then unto his offering.
+
+The focus begins with the worshiper before moving to the gift.
+
+Hebrews 11 later explains that Abel offered by faith.
+
+✅ God accepted Abel
+
+🙏 God looked favorably upon him
+
+❤️ The worshiper comes before the gift
+
+📖 Abel offered in faith`,
+        ],
+        [
+          "❌ Unto Cain And His Offering He Had Not Respect",
+          `This phrase means God did not accept Cain and his offering.
+
+Again, notice the order.
+
+God addresses Cain first and then the offering.
+
+The issue goes deeper than crops versus animals.
+
+The Bible later points toward a problem in Cain's heart rather than simply the type of gift he brought.
+
+❌ Cain's offering was rejected
+
+👤 Cain is mentioned before the gift
+
+❤️ The issue is deeper than farming
+
+📖 Something is wrong beneath the surface`,
         ],
         [
           "😡 Cain Was Very Wroth",
-          `Cain becomes very angry when God does not regard his offering.
+          `The word **wroth** means intensely angry.
 
-Instead of asking what needs to change, Cain turns inward and burns with resentment.
+Cain becomes furious when he sees Abel accepted and himself rejected.
 
-His face falls, which means his anger becomes visible.
+Instead of responding with humility, he allows anger to take control.
 
-This is the first major warning sign before violence.
+This is the first recorded example of intense human jealousy after the fall.
 
-😡 Anger rises
-😔 His face falls
-⚠️ Sin is getting close
+😡 Deep anger
 
-This phrase matters because Genesis shows sin growing before it explodes.
+🔥 Furious frustration
 
-Cain's murder begins with a heart that refuses correction.`,
+💔 Jealousy begins to grow
+
+⚠️ A dangerous heart condition`,
+        ],
+        [
+          "😔 His Countenance Fell",
+          `A person's **countenance** refers to their face or outward appearance.
+
+When Cain's countenance fell, his emotions became visible.
+
+His disappointment, anger, and bitterness showed on his face.
+
+Before Cain says anything, his expression reveals what is happening inside him.
+
+😔 His face changed
+
+💭 Inner emotions became visible
+
+🔥 Anger affected his appearance
+
+👀 God sees what others cannot`,
+        ],
+        [
+          "🗣️ The Lord Said Unto Cain",
+          `God speaks directly to Cain.
+
+This is an act of mercy.
+
+God could have immediately judged Cain, but instead He begins a conversation.
+
+Before Cain commits a greater sin, God warns him and gives him an opportunity to respond correctly.
+
+🗣️ God speaks personally
+
+❤️ An act of mercy
+
+⚠️ A warning before disaster
+
+🙏 An opportunity to change`,
+        ],
+        [
+          "❓ Why Art Thou Wroth",
+          `God already knows why Cain is angry.
+
+The question is not for God's benefit.
+
+It is for Cain's.
+
+God is inviting Cain to examine his own heart and recognize what is happening within him.
+
+This is the first step toward repentance.
+
+❓ God asks a question
+
+🧠 Cain is called to self examination
+
+❤️ God seeks conversation
+
+🙏 An invitation to repentance`,
+        ],
+        [
+          "❓ Why Is Thy Countenance Fallen",
+          `God points directly to Cain's visible condition.
+
+His face reveals that something is wrong.
+
+The Lord is drawing Cain's attention to the bitterness growing inside him.
+
+God addresses the problem before it becomes action.
+
+😔 God notices Cain's sadness
+
+🔥 God sees Cain's anger
+
+❤️ The warning comes early
+
+⚠️ Sin often begins in the heart`,
+        ],
+        [
+          "✅ If Thou Doest Well Shalt Thou Not Be Accepted",
+          `God reminds Cain that acceptance is available.
+
+The door has not been closed.
+
+God is not rejecting Cain forever.
+
+Instead, He is calling Cain to respond rightly and walk in obedience.
+
+This verse shows God's fairness and patience.
+
+✅ Acceptance is still possible
+
+🙏 God remains patient
+
+❤️ God has not abandoned Cain
+
+⚠️ Cain still has a choice`,
         ],
         [
           "🚪 Sin Lieth At The Door",
-          `God warns Cain before Cain kills Abel.
+          `Sin is pictured as something waiting outside the door.
 
-Sin is pictured like something crouching at the door, ready to rule him.
+The image is of a dangerous threat ready to enter.
 
-That image is powerful.
+God warns Cain that anger and jealousy are leading him toward something destructive.
 
-Sin is not treated as a harmless feeling.
-
-It is dangerous and active.
+This is one of the Bible's earliest pictures of temptation.
 
 🚪 Sin is near
-⚠️ Sin desires control
-🛡️ Cain must rule over it
 
-This phrase matters because God gives Cain a chance to turn around.
+⚠️ Danger is approaching
 
-Cain is not trapped yet.
+🔥 Temptation is growing
 
-The warning is mercy before disaster.`,
+👀 God warns Cain beforehand`,
+        ],
+        [
+          "🔥 Unto Thee Shall Be His Desire",
+          `The phrase refers back to sin.
+
+Sin desires to control Cain.
+
+The Bible describes sin almost like a living enemy seeking mastery over him.
+
+God is warning Cain that sin is not passive.
+
+It actively seeks influence and control.
+
+🔥 Sin wants control
+
+⚔️ Sin acts like an enemy
+
+👀 The danger is personal
+
+⚠️ Cain is being warned`,
+        ],
+        [
+          "👑 Thou Shalt Rule Over Him",
+          `God tells Cain that he is responsible for resisting sin.
+
+The warning ends with hope.
+
+Sin is powerful, but it does not have to win.
+
+God calls Cain to master his anger rather than allowing his anger to master him.
+
+👑 Cain must choose
+
+⚔️ Resist temptation
+
+❤️ God provides a warning
+
+🙏 Victory is possible`,
         ],
       ],
     }),
     makePersonalGenesisPhraseSection({
       chapter: 4,
       startVerse: 8,
-      endVerse: 16,
-      reference: "Genesis 4:8-16",
+      endVerse: 10,
+      reference: "Genesis 4:8-10",
       title: "Cain Kills Abel",
-      icon: "💔",
+      icon: "??",
       phrases: [
         [
-          "🌾 Cain Talked With Abel His Brother",
-          `The story moves from worship to the field.
+          "🗣️ Cain Talked With Abel His Brother",
+          `The Bible does not tell us exactly what Cain said to Abel.
 
-Cain talks with Abel, but the conversation leads into violence.
+Some translations simply record that Cain spoke with his brother before the murder.
 
-Genesis keeps calling Abel his brother.
+The phrase suggests there was a conversation between them before the attack took place.
 
-That repeated word matters.
+Because Moses does not record the words, the focus is not on the conversation itself but on what follows.
 
-This is not violence against a stranger.
+The discussion may have involved Cain's anger, his rejected offering, or something else entirely.
 
-It is brother against brother.
+What matters is that the murder was not sudden or accidental.
 
-👥 Same family
-💔 Broken relationship
-🌾 A field becomes a crime scene
+Cain had time to think before acting.
 
-This phrase matters because sin quickly moves from hiding and blame in Genesis 3 to murder in Genesis 4.
+🗣️ Cain speaks with Abel
 
-The fall is spreading through the family.`,
+👬 The brothers are together
+
+🤔 The conversation is not recorded
+
+⚠️ Cain acts after speaking with him`,
+        ],
+        [
+          "⏳ It Came To Pass",
+          `This phrase is often used in Scripture to show that some time has passed.
+
+The murder did not necessarily happen immediately after God's warning.
+
+Time may have passed for Cain's anger to grow and settle into bitterness.
+
+Moses uses this phrase to move the story forward.
+
+⏳ Time has passed
+
+📖 The story moves forward
+
+😠 Cain's anger continues
+
+⚠️ The warning was ignored`,
+        ],
+        [
+          "🌾 When They Were In The Field",
+          `The field was where Cain and Abel worked.
+
+Away from others, the two brothers were alone together.
+
+The location matters because there would be no witnesses and no one nearby to intervene.
+
+The place where they worked became the place where the first murder occurred.
+
+🌾 They were working
+
+👬 The brothers were alone
+
+📍 The murder happens in the field
+
+⚠️ No one is there to stop it`,
         ],
         [
           "🩸 Cain Rose Up Against Abel",
-          `Cain's anger becomes action.
+          `To rise up against someone means to turn against them with hostile intent.
 
-God warned him that sin was crouching at the door.
+Cain's anger finally becomes action.
 
-Cain did not master it.
+God had warned him that sin was waiting at the door, but Cain chose to follow his anger instead.
 
-He followed it.
+This marks the moment jealousy becomes violence.
 
-The phrase rose up shows a deliberate movement toward harm.
+😡 Anger becomes action
 
-🩸 Anger becomes violence
-💔 Brotherhood is broken
-⚠️ The warning was ignored
+⚠️ God's warning is ignored
 
-This matters because Genesis does not treat murder as random.
+💔 Jealousy grows into violence
 
-It grows from resentment, refusal, and a heart that would not listen to God.`,
+👬 Brother turns against brother`,
+        ],
+        [
+          "⚔️ And Slew Him",
+          `The word **slew** simply means killed.
+
+This is the first murder recorded in the Bible.
+
+Abel becomes the first person to die at the hands of another human being.
+
+Sin entered the world in Genesis 3.
+
+Now its effects are spreading through the human family.
+
+⚔️ Slew means killed
+
+📖 The first murder
+
+💔 Abel becomes the first victim
+
+⚠️ Sin continues to spread`,
         ],
         [
           "❓ Where Is Abel Thy Brother",
-          `God asks Cain a question, just like He asked Adam a question in Genesis 3.
+          `God already knew what happened.
 
-God is not asking because He lacks information.
+Just as He asked Adam where he was in Genesis 3, God asks Cain a question.
 
-He is drawing hidden sin into the open.
+The question gives Cain an opportunity to confess what he has done.
 
-The question also keeps the focus on Abel as Cain's brother.
+Before judgment comes, mercy offers him a chance to tell the truth.
 
-❓ Where is he?
-👥 Your brother
-⚖️ God confronts hidden violence
+❓ God asks a question
 
-This phrase matters because God does not ignore what people try to bury.
+👀 God already knows
 
-The dead may be silent to Cain, but Abel is not forgotten by God.`,
+🙏 Cain is given a chance to confess
+
+⚠️ Mercy comes before judgment`,
         ],
         [
-          "🧍 Am I My Brother's Keeper",
-          `Cain answers with a hard question.
+          "🚶 I Know Not",
+          `Cain responds with a lie.
 
-He acts like he has no responsibility for Abel.
+He knows exactly where Abel is because he is the one who killed him.
 
-But Genesis has already taught that human beings are made in God's image.
+Instead of confessing, Cain attempts to hide his sin.
 
-Family responsibility and human dignity matter.
+His response shows that his heart has become even harder.
 
-Cain's question exposes his heart.
+❌ Cain lies
 
-🧍 Indifference
-💔 Refusal of responsibility
-😠 Defiance before God
+👀 He knows the truth
 
-This phrase matters because the Bible says yes in the background.
+⚠️ Sin leads to more sin
 
-People are responsible for how they treat one another.`,
+💔 He refuses to confess`,
         ],
         [
-          "🩸 Thy Brother's Blood Crieth",
-          `Abel's blood is pictured as crying out from the ground.
+          "🙋 Am I My Brother's Keeper?",
+          `A keeper is someone who watches over, protects, or cares for another person.
 
-That means violence has a voice before God.
+Cain asks the question sarcastically.
 
-Cain may think the field hides what happened.
+Instead of taking responsibility, he attempts to avoid it.
 
-But the ground itself becomes a witness.
+This becomes one of the most famous lines in the entire Bible and is still quoted in books, movies, speeches, and everyday conversations today.
 
-🩸 Blood cries
-🌍 The ground witnesses
-⚖️ God hears the victim
+🙋 Keeper means protector
 
-This phrase matters because God gives dignity to the harmed.
+❌ Cain avoids responsibility
 
-What people try to silence still reaches Him.`,
+😠 The response is sarcastic
+
+📖 One of the Bible's most famous questions`,
         ],
         [
-          "\u{1FA78} The Voice Of Thy Brother's Blood",
-          `God speaks as if Abel's blood has a voice.
+          "⚖️ What Hast Thou Done?",
+          `God immediately confronts Cain.
 
-That means the murder is not hidden, even though Abel cannot speak for himself.
+There is no debate and no investigation.
 
-The ground has received the blood, but God hears it.
+God already knows the truth.
 
-\u{1FA78} Blood crying out
-\u{1F442} God hears
-\u{2696}\u{FE0F} Justice is coming
+The question exposes Cain's guilt and forces him to face what he has done.
 
-This phrase matters because victims are not forgotten by God.
+⚖️ God confronts Cain
 
-Human violence may silence a person, but it cannot silence the truth before the Lord.`,
-        ],        [
-          "🌍 Cursed From The Earth",
-          `Cain is cursed from the ground that received Abel's blood.
+👀 The truth is already known
 
-This connects murder with the created world.
+❌ Cain cannot hide his sin
 
-Human sin does not stay private.
-
-It touches land, family, work, and future.
-
-Cain was a tiller of the ground, but now the ground will resist him even more.
-
-🌍 The ground is affected
-🌾 Cain's work is affected
-🚶 Cain's life becomes wandering
-
-This phrase matters because sin damages the very places people depend on.`,
+💔 The murder is exposed`,
         ],
         [
-          "🚶 A Fugitive And A Vagabond",
-          `Cain will become a restless wanderer.
+          "🩸 Thy Brother's Blood Crieth Unto Me From The Ground",
+          `This does not mean Abel's literal blood was speaking.
 
-He loses settled life.
+It is a picture showing that God sees injustice and hears the cries of the innocent.
 
-He loses the stability connected to home, land, and family.
+Even though there were no human witnesses, God witnessed everything.
 
-That is fitting because he broke the family through murder.
+Cain believed the crime was hidden.
 
-🚶 Wandering
-🏠 No settled home
-💔 Broken belonging
+God reveals that nothing is hidden from Him.
 
-This phrase matters because sin promises freedom but often produces restlessness.
+🩸 Abel's blood symbolizes injustice
 
-Cain wanted his own way, but his own way becomes exile.`,
-        ],
-        [
-          "\u{1F648} From Thy Face Shall I Be Hid",
-          `Cain understands that his sin has created separation.
+👀 God saw everything
 
-He will be driven from the ground and live away from the nearness of God's presence.
+⚖️ God defends the innocent
 
-That is one of the deepest pains in the judgment.
-
-\u{1F648} Hidden from God's face
-\u{1F6B6} Wandering begins
-\u{1F494} Sin separates
-
-Cain is worried about survival.
-
-But the bigger tragedy is life away from the face of the Lord.`,
-        ],        [
-          "🛡️ The Lord Set A Mark Upon Cain",
-          `God judges Cain, but He also protects him from revenge.
-
-That is a strange mixture of justice and mercy.
-
-Cain is guilty, and the consequence is real.
-
-But God does not allow endless violence to grow from this murder.
-
-🛡️ Cain is marked
-⚖️ Judgment remains
-🙏 Mercy restrains revenge
-
-This phrase matters because God is not soft on murder, but He also limits retaliation.
-
-He refuses to let violence multiply without boundary.`,
+❌ Sin cannot be hidden from God`,
         ],
       ],
     }),
     makePersonalGenesisPhraseSection({
       chapter: 4,
-      startVerse: 17,
-      endVerse: 24,
-      reference: "Genesis 4:17-24",
-      title: "Cain's Line Builds And Boasts",
-      icon: "🏙️",
+      startVerse: 11,
+      endVerse: 15,
+      reference: "Genesis 4:11-15",
+      title: "Cain Is Cursed",
+      icon: "??",
       phrases: [
         [
-          "🏙️ He Builded A City",
-          `Cain becomes connected with city building.
+          "🌍 Now Art Thou Cursed From The Earth",
+          `A curse in the Bible is the opposite of blessing.
 
-That shows human creativity continues after sin.
+Instead of receiving God's favor, protection, and provision, Cain will now experience the consequences of his sin.
 
-People still build, organize, plan, and create.
+This is not a random punishment.
 
-The image of God is damaged, but not erased.
+It is God's judgment for murdering Abel.
 
-At the same time, the city is built by a man marked by violence and exile.
+⚖️ A divine judgment
 
-🏙️ Culture grows
-🧱 Building begins
-💔 Broken hearts still build impressive things
+❌ The opposite of blessing
 
-This phrase matters because Genesis gives a realistic view of civilization.
+💔 Consequence for murder
 
-Human progress can be real while the human heart still needs redemption.`,
+👀 God holds Cain accountable`,
         ],
         [
-          "🐄 Father Of Such As Dwell In Tents",
-          `Jabal is connected with tents and livestock.
+          "🌎 Which Hath Opened Her Mouth",
+          `The earth is described as opening its mouth to receive Abel's blood.
 
-This points to a way of life built around animals, movement, provision, and skill.
+This is picture language used by Moses.
 
-Genesis is showing culture developing through family lines.
+The ground became the witness to Cain's crime.
 
-People are learning trades and building patterns of life.
+The place that received Abel's blood now stands as evidence against Cain.
 
-🐄 Livestock
-⛺ Tents
-🛠️ Ordinary work
+🌎 The earth received Abel's blood
 
-This phrase matters because the Bible does not ignore everyday human labor.
+👀 The crime is witnessed
 
-Work, tools, homes, and skills all become part of the growing human story.`,
+🩸 Abel's death is remembered
+
+⚖️ Nothing is hidden from God`,
         ],
         [
-          "🎵 Handle The Harp And Organ",
-          `Jubal is connected with music.
+          "🩸 Receive Thy Brother's Blood From Thy Hand",
+          `God directly connects the curse to Cain's actions.
 
-That is beautiful because this chapter has been full of anger, murder, and exile.
+Abel's blood did not accidentally reach the ground.
 
-Even in a broken world, humans make art.
+Cain shed it with his own hand.
 
-Music appears outside Eden.
+The phrase emphasizes personal responsibility.
 
-🎵 Sound
-🎶 Beauty
-❤️ Human expression
+🩸 Cain caused Abel's death
 
-This phrase matters because sin does not erase creativity.
+✋ His actions have consequences
 
-People can still make beauty, but beauty alone cannot heal the heart.
+⚖️ Personal responsibility
 
-Genesis lets both truths stand together.`,
+👀 God knows the truth`,
         ],
         [
-          "⚒️ Instructor Of Every Artificer",
-          `Tubal-cain is connected with metalwork.
+          "🌾 When Thou Tillest The Ground",
+          `Cain was a farmer.
 
-He works with bronze and iron.
+Working the ground was how he survived and provided for himself.
 
-This points to technology, tools, craft, and skill.
+God's judgment will affect the very thing Cain depends on most.
 
-Tools can be used for farming, building, protection, and creativity.
+The punishment touches his livelihood.
 
-But in a violent world, tools can also become weapons.
+🌾 Cain's occupation
 
-⚒️ Skill develops
-🧰 Technology grows
-⚠️ Tools need moral direction
+👨‍🌾 His source of income
 
-This phrase matters because Genesis shows that human ability is powerful.
+🌱 His daily work
 
-But ability without righteousness can become dangerous.`,
+⚖️ The curse affects his livelihood`,
         ],
         [
-          "\u{1F469} Adah And Zillah",
-          `Lamech has two wives.
+          "🚫 It Shall Not Henceforth Yield Unto Thee Her Strength",
+          `The ground will no longer cooperate with Cain.
 
-That is a change from the one-man and one-woman pattern in Genesis 2.
+He can plant, work, and labor, but the earth will not produce as it once did.
 
-Genesis does not pause to explain everything here.
+Farming becomes harder and less fruitful.
 
-But it lets the reader notice the family pattern moving away from Eden's design.
+The curse now reaches the work of his hands.
 
-\u{1F469} Adah
-\u{1F469} Zillah
-\u{1F3E0} A complicated household
+🚫 Less productive ground
 
-Sin affects worship, work, violence, and family life.
+🌱 Harder labor
 
-The brokenness keeps spreading.`,
+💪 The earth loses its strength
+
+⚖️ Cain's work becomes more difficult`,
         ],
         [
-          "\u{1F9CD}\u{200D}\u{2640}\u{FE0F} The Sister Of Tubalcain Was Naamah",
-          `Naamah is named briefly.
+          "🚶 A Fugitive And A Vagabond Shalt Thou Be",
+          `A fugitive is someone constantly fleeing.
 
-That small detail reminds us that women are present in these family lines too.
+A vagabond is someone who wanders without a permanent home.
 
-Genesis often moves quickly through names.
+Cain will lose stability, security, and belonging.
 
-But each name belongs to a real person in the growing human story.
+Instead of building a settled life, he will live as a restless wanderer.
 
-\u{1F9CD}\u{200D}\u{2640}\u{FE0F} A named woman
-\u{1F46A} A real family
-\u{1F4DC} A line being traced
+🚶 Always moving
 
-The Bible's genealogies are not empty lists.
+🏠 No settled home
 
-They show humanity spreading through real households.`,
+⚠️ A restless life
+
+💔 Separation and exile`,
         ],
         [
-          "\u{1F5E3}\u{FE0F} Ye Wives Of Lamech",
-          `Lamech speaks directly to his wives.
+          "🗣️ Cain Said Unto The Lord",
+          `For the first time since his punishment is announced, Cain responds.
 
-He wants them to hear his boast.
+Instead of denying his guilt, he begins speaking about the consequences he now faces.
 
-That makes the violence public inside his household.
+The conversation shifts from God's judgment to Cain's reaction.
 
-\u{1F5E3}\u{FE0F} Listen to me
-\u{1F3E0} A household hears
-\u{1FA78} Violence becomes a speech
+🗣️ Cain responds
 
-Cain tried to hide from responsibility.
+⚖️ Judgment has been declared
 
-Lamech announces his violence out loud.
+💭 Cain considers the consequences
 
-Sin is becoming more bold.`,
+👀 The conversation continues`,
         ],
         [
-          "🗣️ Hear My Voice",
-          `Lamech speaks like a man who wants attention.
+          "😔 My Punishment Is Greater Than I Can Bear",
+          `Cain believes the judgment is too severe.
 
-His words sound like a boast or a song.
+Whether he is expressing sorrow, fear, or self pity is debated.
 
-Instead of confessing violence, he announces it.
+What is clear is that Cain is overwhelmed by the consequences of his actions.
 
-That shows sin growing bolder across generations.
+He focuses on his punishment rather than Abel's death.
 
-🗣️ Public boasting
-😤 Pride
-🩸 Violence celebrated
+😔 Cain feels overwhelmed
 
-This phrase matters because Cain tried to avoid responsibility for murder.
+⚖️ He fears the consequences
 
-Lamech brags about violence.
+💔 He focuses on his suffering
 
-The family line is not only building culture; it is also growing in arrogance.`,
+👀 The weight of judgment is felt`,
         ],
         [
-          "🩸 I Have Slain A Man",
-          `Lamech admits violence, but not with repentance.
+          "🌍 Thou Hast Driven Me Out This Day From The Face Of The Earth",
+          `Cain recognizes that his life has permanently changed.
 
-He speaks as if killing proves his strength.
+He is being removed from the place where he once lived and worked.
 
-That is a terrible development in Genesis.
+The familiar life he knew is now gone.
 
-Murder has moved from hidden crime to proud speech.
+🌍 Life is changing
 
-🩸 Violence
-😤 Pride
-⚠️ A hardened conscience
+🚶 Cain is driven away
 
-This phrase matters because a culture is in danger when people celebrate what they should grieve.
+🏠 He loses stability
 
-Genesis is showing how sin can become normal, then impressive, then something to boast about.`,
+⚖️ Judgment brings separation`,
         ],
         [
-          "77️⃣ Seventy And Sevenfold",
-          `Lamech twists the language of protection into revenge.
+          "🙈 From Thy Face Shall I Be Hid",
+          `Cain fears separation from God's presence.
 
-God protected Cain by limiting vengeance.
+The phrase does not mean God stops knowing where Cain is.
 
-Lamech turns that idea into a threat.
+Rather, Cain recognizes a broken relationship between himself and God.
 
-He wants multiplied retaliation.
+🙈 Separation from God
 
-That shows how mercy can be distorted by a violent heart.
+💔 Broken fellowship
 
-77️⃣ Excessive revenge
-😤 Self-protection
-🩸 Violence multiplying
+👀 God still sees Cain
 
-This phrase matters because Genesis shows sin escalating.
+⚖️ Sin damages relationships`,
+        ],
+        [
+          "⚔️ Everyone That Findeth Me Shall Slay Me",
+          `To slay means to kill.
 
-By the end of Cain's line, revenge has become a song.`,
+Cain fears that someone will eventually take revenge for Abel's murder.
+
+For the first time, Cain experiences the fear that he himself created.
+
+⚔️ Slay means kill
+
+😨 Cain fears revenge
+
+💔 Violence creates more fear
+
+⚖️ Sin has consequences`,
+        ],
+        [
+          "🗣️ The Lord Said Unto Him",
+          `God responds directly to Cain.
+
+Even after Cain's sin, God continues speaking with him.
+
+This shows both God's justice and His mercy.
+
+🗣️ God responds
+
+⚖️ Justice remains
+
+🙏 Mercy is still present
+
+👀 God continues speaking`,
+        ],
+        [
+          "7️⃣ Vengeance Shall Be Taken On Him Sevenfold",
+          `Sevenfold means complete or severe.
+
+God warns that anyone who kills Cain will face serious consequences.
+
+The focus is not on a specific mathematical punishment.
+
+The point is that God will deal with anyone seeking personal revenge.
+
+7️⃣ A severe punishment
+
+⚖️ God handles justice
+
+🚫 Revenge is forbidden
+
+👀 God remains in control`,
+        ],
+        [
+          "🛡️ The Lord Set A Mark Upon Cain",
+          `The Bible never tells us what the mark was.
+
+Many theories exist, but Scripture does not explain it.
+
+What matters is its purpose.
+
+The mark identified Cain as being under God's protection.
+
+🛡️ A sign of protection
+
+❓ The mark is not described
+
+⚖️ Judgment remains
+
+🙏 God shows mercy`,
+        ],
+        [
+          "🚫 Lest Any Finding Him Should Kill Him",
+          `The purpose of the mark was protection.
+
+God did not excuse Cain's sin.
+
+But He prevented others from taking revenge into their own hands.
+
+This shows God's justice and mercy working together.
+
+🚫 Revenge is prevented
+
+⚖️ God controls judgment
+
+🙏 Mercy limits violence
+
+👀 God remains sovereign`,
+        ],
+      ],
+    }),
+    makePersonalGenesisPhraseSection({
+      chapter: 4,
+      startVerse: 16,
+      endVerse: 18,
+      reference: "Genesis 4:16-18",
+      title: "Cain Dwells In The Land Of Nod",
+      icon: "??",
+      phrases: [
+        [
+          "🚶 Cain Went Out From The Presence Of The Lord",
+          `This phrase describes Cain leaving after receiving God's judgment.
+
+It does not mean God stopped existing in Cain's life or could no longer see him.
+
+Rather, Cain is leaving the place where God had spoken with him.
+
+The phrase highlights a growing separation between Cain and God after his sin.
+
+🚶 Cain leaves
+
+⚖️ Judgment has been given
+
+💔 Separation increases
+
+👀 God still sees Cain`,
+        ],
+        [
+          "🧭 Dwelt In The Land Of Nod",
+          `The word **Nod** is often connected with wandering.
+
+Cain had just been told he would be a fugitive and a vagabond, and now he settles in a place whose name reflects that reality.
+
+The Bible says Nod was east of Eden.
+
+This continues the pattern of moving farther away from the Garden after the fall.
+
+🧭 Nod is linked to wandering
+
+🌍 Located east of Eden
+
+🚶 Cain begins a new life there
+
+⚠️ The effects of sin continue outward`,
+        ],
+        [
+          "🌅 On The East Of Eden",
+          `This phrase helps locate where Cain settled.
+
+He did not travel to another continent or a distant world.
+
+The Bible presents him as remaining in the same general region, east of Eden.
+
+Throughout Genesis, moving east often becomes associated with people moving away from God's blessing and presence.
+
+🌅 East of Eden
+
+📍 Same general region
+
+🚶 Cain moves farther away
+
+📖 A repeated Genesis theme`,
+        ],
+        [
+          "❤️ Cain Knew His Wife",
+          `The Bible does not tell us where Cain's wife came from.
+
+Genesis focuses on key people and events, not every birth that occurred.
+
+Later in Genesis 5:4, we learn Adam and Eve had other sons and daughters.
+
+The most common explanation is that Cain married a close relative from the growing human family.
+
+The focus of the verse is not on finding a wife but on continuing Cain's family line.
+
+❤️ Cain marries
+
+👨‍👩‍👧 Humanity is growing
+
+📖 Adam and Eve had other children
+
+🌱 Cain's family line continues`,
+        ],
+        [
+          "🤰 She Conceived And Bare Enoch",
+          `Cain's wife becomes pregnant and gives birth to a son named Enoch.
+
+This Enoch is not the famous Enoch who later walked with God in Genesis 5.
+
+This is a different person from Cain's family line.
+
+The birth of Enoch marks the beginning of a new generation.
+
+🤰 Enoch is born
+
+👶 A new generation begins
+
+📖 Different from the later Enoch
+
+🌱 Cain's family continues`,
+        ],
+        [
+          "🏙️ He Built A City",
+          `A city is a permanent settlement where people live together.
+
+Despite being told he would be a wanderer, Cain begins building a place for his family and descendants.
+
+The city represents stability, growth, and the expansion of human civilization.
+
+🏙️ Cain builds a settlement
+
+👨‍👩‍👧 Families gather together
+
+🌱 Civilization grows
+
+🛠️ Human society develops`,
+        ],
+        [
+          "👶 Called The Name Of The City Enoch",
+          `Cain names the city after his son Enoch.
+
+In the ancient world, naming something after a child was a way of establishing a family legacy.
+
+The city becomes connected to Cain's descendants and future generations.
+
+👶 Named after Enoch
+
+🏙️ A family legacy
+
+📖 Future generations are connected
+
+🌱 Cain's line continues`,
+        ],
+        [
+          "👨 Iraad Was Born Unto Enoch",
+          `The Bible now begins tracing Cain's family line.
+
+Iraad is the son of Enoch and the next generation after him.
+
+Very little is recorded about Iraad himself.
+
+His importance is primarily in showing the continuation of Cain's descendants.
+
+👨 Son of Enoch
+
+🌱 Next generation
+
+📖 Family line continues
+
+👨‍👩‍👧 Genealogy expands`,
+        ],
+        [
+          "👨 Iraad Begat Mehujael",
+          `The word **begat** means became the father of.
+
+Mehujael is introduced as the next generation in Cain's family line.
+
+The focus remains on tracing the descendants that come from Cain.
+
+👨 Begat means fathered
+
+🌱 Another generation
+
+📖 Cain's descendants continue
+
+👨‍👩‍👧 Family tree grows`,
+        ],
+        [
+          "👨 Mehujael Begat Methusael",
+          `Methusael becomes the next descendant listed in Cain's genealogy.
+
+The Bible provides his name to preserve the family record.
+
+These generations help connect Cain to later descendants, including Lamech.
+
+👨 Another generation
+
+📖 Family records preserved
+
+🌱 Cain's line continues
+
+👨‍👩‍👧 Genealogy progresses`,
+        ],
+        [
+          "👨 Methusael Begat Lamech",
+          `Lamech is the final person mentioned in this genealogy section.
+
+Unlike the earlier names, Lamech becomes an important character in the verses that follow.
+
+The Bible will soon pause the genealogy to tell us more about his life and actions.
+
+👨 Descendant of Cain
+
+📖 Important character ahead
+
+🌱 Family line continues
+
+⚠️ More details follow soon`,
+        ],
+      ],
+    }),
+    makePersonalGenesisPhraseSection({
+      chapter: 4,
+      startVerse: 19,
+      endVerse: 24,
+      reference: "Genesis 4:19-24",
+      title: "Lamech's Descendants",
+      icon: "????????",
+      phrases: [
+        [
+          "👰 Lamech Took Unto Him Two Wives",
+          `This is the first recorded case of polygamy in the Bible.
+
+God originally created one man and one woman in Eden when He joined Adam and Eve together.
+
+Lamech breaks from that pattern by taking two wives.
+
+The Bible records the action without praising it.
+
+This marks another step away from God's original design for marriage.
+
+👰 First polygamous marriage in Scripture
+
+👨 One man and two wives
+
+📖 Different from Adam and Eve
+
+⚠️ A departure from God's pattern`,
+        ],
+        [
+          "👩 The Name Of The One Was Adah",
+          `Adah was one of Lamech's wives.
+
+The Bible does not tell us much about her personally.
+
+Her importance in Genesis comes through the children she gives birth to.
+
+Her name is often connected to the idea of beauty or ornament.
+
+👩 One of Lamech's wives
+
+👶 Mother of future descendants
+
+📖 Part of Cain's family line
+
+🌸 Her name may relate to beauty`,
+        ],
+        [
+          "👩 The Name Of The Other Zillah",
+          `Zillah was Lamech's second wife.
+
+Like Adah, very little is recorded about her personal life.
+
+Her descendants become important because they are connected to the development of early technology and craftsmanship.
+
+👩 Lamech's second wife
+
+👶 Mother of future descendants
+
+📖 Part of Cain's family line
+
+🛠️ Connected to future craftsmen`,
+        ],
+        [
+          "🏕️ Adah Bare Jabal",
+          `Jabal was one of Lamech's sons.
+
+The Bible remembers him because of what he contributed to society.
+
+His descendants became known for a particular way of life.
+
+👶 Son of Adah
+
+👨 Descendant of Cain
+
+📖 Important family line
+
+🌱 Known for his influence`,
+        ],
+        [
+          "🐄 The Father Of Such As Dwell In Tents And Have Cattle",
+          `The word "father" here means founder or pioneer.
+
+It does not mean Jabal was literally the father of every shepherd.
+
+Instead, he became known as the founder of a nomadic lifestyle centered around livestock.
+
+His family line helped develop tent living, herding, and animal husbandry.
+
+This lifestyle later becomes common throughout the Bible.
+
+Abraham, Isaac, Jacob, and their families all lived in tents and raised livestock.
+
+Even the Israelites would spend forty years living in tents during their wilderness journey.
+
+🏕️ Lived in tents
+
+🐄 Raised livestock
+
+🚶 Nomadic lifestyle
+
+📖 Pioneer of herding culture`,
+        ],
+        [
+          "🎵 His Brother's Name Was Jubal",
+          `Jubal was Jabal's brother.
+
+Like his brother, he is remembered because of what he introduced and developed.
+
+The Bible connects him with music.
+
+👨 Brother of Jabal
+
+🎵 Connected to music
+
+📖 Remembered for his influence
+
+🌱 A pioneer in culture`,
+        ],
+        [
+          "🎶 The Father Of All Such As Handle The Harp And Organ",
+          `Again, "father" means pioneer or founder.
+
+Jubal became known as an early developer of musical instruments.
+
+The harp was a stringed instrument.
+
+The organ here was more like a flute or wind instrument, not a modern church organ.
+
+This is one of the earliest references to music in the Bible.
+
+🎶 Pioneer of music
+
+🎻 Harp = stringed instrument
+
+🎺 Organ = wind instrument
+
+📖 Early musical culture`,
+        ],
+        [
+          "🔨 Zillah Bare Tubal-Cain",
+          `Tubal-Cain was another son of Lamech.
+
+His mother was Zillah.
+
+His name becomes associated with metalworking and craftsmanship.
+
+He represents a major advancement in human technology.
+
+👶 Son of Zillah
+
+🛠️ Skilled craftsman
+
+📖 Descendant of Cain
+
+🌱 Connected to technology`,
+        ],
+        [
+          "⚒️ An Instructor Of Every Artificer In Brass And Iron",
+          `An artificer is a skilled craftsman.
+
+Tubal-Cain worked with metals such as bronze and iron.
+
+The verse suggests he became known for teaching and developing metalworking skills.
+
+This represents one of the earliest references to advanced toolmaking in Scripture.
+
+⚒️ Skilled craftsman
+
+🔨 Worked with metals
+
+🛠️ Developed technology
+
+📖 Early metalworker`,
+        ],
+        [
+          "👧 The Sister Of Tubal-Cain Was Naamah",
+          `Naamah is one of the few women named in Cain's genealogy.
+
+The Bible gives her name but does not tell us much about her life.
+
+Her inclusion suggests she was known or remembered for some reason, even though the text does not explain why.
+
+👧 Sister of Tubal-Cain
+
+📖 Named in the genealogy
+
+❓ Little information is given
+
+🌱 Part of Cain's family line`,
+        ],
+        [
+          "🗣️ Lamech Said Unto His Wives",
+          `Lamech now speaks directly to Adah and Zillah.
+
+What follows is one of the earliest poems recorded in the Bible.
+
+The focus shifts from genealogy to Lamech's own words.
+
+🗣️ Lamech begins speaking
+
+👩 Addressing his wives
+
+📖 An early poem
+
+👀 The focus shifts to Lamech`,
+        ],
+        [
+          "👂 Hear My Voice; Ye Wives Of Lamech",
+          `Lamech wants his wives to pay close attention.
+
+The phrase is a way of saying,
+
+"Listen carefully to what I am about to say."
+
+It introduces an important declaration.
+
+👂 Listen carefully
+
+🗣️ Lamech is making a point
+
+📖 A formal statement
+
+⚠️ Important words follow`,
+        ],
+        [
+          "📢 Hearken Unto My Speech",
+          `To hearken means to listen attentively.
+
+Lamech repeats himself for emphasis.
+
+He wants his wives to hear and remember his words.
+
+👂 Hearken means listen
+
+📢 Emphasis through repetition
+
+🗣️ Lamech demands attention
+
+📖 Important statement`,
+        ],
+        [
+          "⚔️ I Have Slain A Man To My Wounding",
+          `This is one of the most difficult verses in Genesis.
+
+Most scholars understand Lamech to be boasting about killing someone who injured him.
+
+Unlike Cain, who feared judgment, Lamech appears proud of his violence.
+
+The point is not self defense.
+
+The point is revenge and pride.
+
+⚔️ Lamech killed a man
+
+😠 Responded with violence
+
+📖 Often understood as boasting
+
+⚠️ Revenge is celebrated`,
+        ],
+        [
+          "🩸 And A Young Man To My Hurt",
+          `Lamech continues describing the killing.
+
+The phrase suggests the person who was killed was a young man.
+
+Again, Lamech presents violence as something to brag about rather than regret.
+
+🩸 A young man was killed
+
+😠 Violence continues
+
+📖 Lamech boasts about it
+
+⚠️ Sin is becoming normalized`,
+        ],
+        [
+          "⚖️ If Cain Shall Be Avenged Sevenfold",
+          `Lamech refers back to God's protection of Cain.
+
+God had promised severe consequences for anyone who killed Cain.
+
+The word "sevenfold" means complete, full, or severe.
+
+Lamech uses God's promise to support his own argument.
+
+⚖️ Refers back to Cain
+
+📖 Connected to Genesis 4
+
+🔢 Sevenfold = complete punishment
+
+👀 Lamech builds on God's words`,
+        ],
+        [
+          "💀 Truly Lamech Seventy And Sevenfold",
+          `Lamech twists God's words into a boast.
+
+His point is essentially:
+
+"If Cain was protected sevenfold, then I am protected seventy sevenfold."
+
+Instead of humility, Lamech displays pride, arrogance, and confidence in his own violence.
+
+This shows how far Cain's family line has moved from God's design.
+
+💀 A boast of pride
+
+📖 Twisting God's words
+
+😠 Violence is celebrated
+
+⚠️ Sin continues to grow`,
         ],
       ],
     }),
@@ -15888,150 +16784,139 @@ By the end of Cain's line, revenge has become a song.`,
       startVerse: 25,
       endVerse: 26,
       reference: "Genesis 4:25-26",
-      title: "Seth Is Born And Worship Begins",
-      icon: "🙏",
+      title: "The Birth Of Seth",
+      icon: "??",
       phrases: [
         [
-          "🌱 Another Seed",
-          `Eve says God has appointed another seed instead of Abel.
+          "❤️ Adam Knew His Wife Again",
+          `The story now shifts away from Cain's descendants and returns to Adam and Eve.
 
-That matters because Abel is dead and Cain is exiled.
+The word **"knew"** is the Bible's way of describing the intimate relationship between husband and wife.
 
-The family line feels broken.
+After the tragedy of Abel's murder and Cain's exile, Adam and Eve have another child.
 
-But God keeps hope moving.
+This verse marks the beginning of a new family line that will eventually lead to Noah and, later, to Jesus.
 
-🌱 Another seed
-💔 After Abel's death
-🙏 Given by God
+❤️ Adam and Eve are together again
 
-This phrase connects back to Genesis 3:15, where God promised the seed of the woman.
+👨‍👩‍👦 The story returns to Adam's family
 
-Genesis is teaching us to watch the family line.
+💔 Life continues after Abel's death
 
-Even after murder, God's promise is not dead.`,
+🌱 A new family line begins`,
         ],
         [
-          "\u{1F64F} God Hath Appointed Me Another Seed",
-          `Eve sees Seth as a gift from God.
+          "👶 She Bare A Son And Called His Name Seth",
+          `Eve gives birth to another son.
 
-She does not treat his birth as random.
+His name is Seth.
 
-She connects new life to God's mercy after grief.
+The Bible introduces Seth as the next important person in Adam's family line.
 
-\u{1F64F} God appointed
-\u{1F331} Another seed
-\u{1F494} Hope after loss
+While Cain's descendants were just discussed, Genesis now turns its attention to Seth and the generations that will follow him.
 
-This phrase helps readers see faith inside Eve's words.
+👶 Another son is born
 
-After Abel's death, she still recognizes God as the giver of life.`,
+📖 His name is Seth
+
+🌱 A new generation begins
+
+👨 Son of Adam and Eve`,
         ],
         [
-          "\u{1F494} Instead Of Abel",
-          `Abel is not forgotten.
+          "🌱 God Hath Appointed Me Another Seed Instead Of Abel",
+          `The word **seed** often refers to offspring, descendants, or a child.
 
-Seth's birth brings hope, but it does not erase the pain of Abel's murder.
+Eve sees Seth as God's gift after losing Abel.
 
-Genesis lets grief and hope stand together.
+She recognizes that God has provided another son to continue the family line.
 
-\u{1F494} Abel is gone
-\u{1F331} Seth is given
-\u{1F64F} God is still working
+This does not mean Seth replaces Abel as a person.
 
-This phrase matters because biblical hope is not pretend happiness.
+Rather, God has provided another descendant after Abel's life was taken.
 
-It is trust in God after real loss.`,
+🌱 Seed means offspring or descendant
+
+👶 Seth is God's provision
+
+💔 Abel was lost
+
+🙏 Eve acknowledges God's hand in giving life`,
         ],
         [
-          "🧍 Seth",
-          `Seth's name is connected with being appointed or granted.
+          "⚔️ Whom Cain Slew",
+          `The word **slew** means killed.
 
-Eve recognizes God's hand in his birth.
+Eve briefly reminds the reader why Seth's birth is significant.
 
-That is beautiful because she has known exile, pain, and the death of a son.
+Abel's life was cut short by Cain's violence.
 
-Yet she still sees God providing.
+The pain of that loss is still remembered.
 
-🧍 A new son
-🌱 A continuing line
-🙏 Hope after loss
+⚔️ Slew means killed
 
-This phrase matters because God's promise often moves through ordinary births.
+💔 Abel's death is remembered
 
-A child is born, and the story of hope continues.`,
+👀 The consequences of sin remain
+
+📖 The story connects back to Genesis 4:8`,
         ],
         [
-          "👶 Enos",
-          `Enos is connected with humanity, weakness, or mortal man.
+          "👶 To Seth, To Him Also There Was Born A Son",
+          `The focus now moves from Seth to the next generation.
 
-His name reminds readers that human beings are frail.
+The Bible often moves quickly through genealogy to show how God's promises continue through families.
 
-That fits the next line about calling on the Lord.
+Seth grows up, has a family of his own, and now another generation begins.
 
-Weak people need the strong name of God.
+👶 Seth becomes a father
 
-👶 Humanity continues
-😔 Mortality is real
-🙏 Dependence grows
+🌱 Another generation begins
 
-This phrase matters because Genesis does not present humans as self-sufficient heroes.
+📖 The family line continues
 
-The line of hope is made of people who need God.`,
+👨‍👦 The story moves forward`,
         ],
         [
-          "\u{1F476} To Seth, To Him Also There Was Born A Son",
-          `The line continues from Seth to Enos.
+          "📖 He Called His Name Enos",
+          `Enos was the son of Seth.
 
-Genesis is slowly tracing the family line of hope.
+His name is often connected with mankind, mortality, or human weakness.
 
-This matters after a chapter filled with death and exile.
+The name serves as a reminder that humanity is fragile and dependent on God.
 
-\u{1F476} A son is born
-\u{1F46A} The family continues
-\u{1F331} Hope moves forward
+Enos becomes an important link in the genealogy that follows.
 
-God's promise does not depend on Cain's city or Lamech's boast.
+👶 Son of Seth
 
-It continues through the line God preserves.`,
+📖 His name is Enos
+
+💨 Connected to human weakness
+
+🌱 Part of the godly family line`,
         ],
         [
-          "\u{1F64F} Then Began Men",
-          `This phrase introduces a new spiritual movement.
+          "🙏 Then Began Men To Call Upon The Name Of The Lord",
+          `This phrase marks an important moment in Genesis.
 
-People begin calling on the name of the Lord.
+To call upon the name of the Lord means to worship, pray to, trust in, and publicly identify with God.
 
-That is a hopeful ending to a dark chapter.
+It does not necessarily mean nobody worshiped God before this point.
 
-\u{1F64F} Prayer
-\u{1F5E3}\u{FE0F} Calling on God
-\u{1F331} Worship outside Eden
+Adam, Abel, and others clearly knew God already.
 
-Genesis 4 does not end with Lamech's violence.
+The phrase likely means that organized worship and public devotion to God became more widespread during this generation.
 
-It ends with people turning toward the Lord.`,
-        ],
-        [
-          "🙏 Call Upon The Name Of The Lord",
-          `This phrase points to worship, prayer, and public dependence on God.
+🙏 People begin worshiping God openly
 
-After a chapter full of anger, murder, exile, pride, and revenge, this ending matters.
+📖 Calling on God means prayer and worship
 
-Some people are calling on the Lord.
+👨‍👩‍👦 A godly family line develops
 
-That means violence does not get the final word in Genesis 4.
-
-🙏 Worship begins
-🗣️ God's name is called on
-🌱 Hope rises outside Eden
-
-This phrase matters because people are not only building cities and boasting about violence.
-
-There is also a line turning toward God.`,
+🌱 Faith begins spreading through future generations`,
         ],
       ],
-    }),
-    makePersonalGenesisPhraseSection({
+    }),    makePersonalGenesisPhraseSection({
       chapter: 5,
       startVerse: 1,
       endVerse: 5,
