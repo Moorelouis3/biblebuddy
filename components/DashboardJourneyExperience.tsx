@@ -2120,6 +2120,7 @@ export default function DashboardJourneyExperience({
   const [bibleYearJourneyPreviewDay, setBibleYearJourneyPreviewDay] = useState<GenesisBibleYearDay | null>(null);
   const [selectedBibleYearSeriesDay, setSelectedBibleYearSeriesDay] = useState<GenesisBibleYearDay | null>(null);
   const [manualBibleYearStudyDayNumber, setManualBibleYearStudyDayNumber] = useState<number | null>(null);
+  const [bibleYearResolvedCurrentDayNumber, setBibleYearResolvedCurrentDayNumber] = useState(1);
   const [activeBibleYearDayCard, setActiveBibleYearDayCard] = useState<BibleYearDayCardKey | null>(null);
   const [bibleYearCompletedTasksExpandedDay, setBibleYearCompletedTasksExpandedDay] = useState<number | null>(null);
   const [bibleYearCompletionModalDay, setBibleYearCompletionModalDay] = useState<GenesisBibleYearDay | null>(null);
@@ -2190,9 +2191,7 @@ export default function DashboardJourneyExperience({
     return isBibleYearDayComplete(day);
   });
   const computedBibleYearCurrentDay =
-    GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => {
-      return !isBibleYearDayComplete(day);
-    }) ||
+    GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => day.dayNumber === bibleYearResolvedCurrentDayNumber) ||
     GENESIS_BIBLE_IN_ONE_YEAR_SERIES[GENESIS_BIBLE_IN_ONE_YEAR_SERIES.length - 1] ||
     null;
   const completedBibleChapterKeySet = new Set(completedBibleChapterKeys);
@@ -2247,7 +2246,7 @@ export default function DashboardJourneyExperience({
     };
   })();
   const baseBibleYearReport: BibleYearReport = bibleYearReport ?? {
-    currentDay: computedBibleYearCurrentDay?.dayNumber ?? 1,
+    currentDay: bibleYearResolvedCurrentDayNumber,
     currentDayPercent: 0,
     currentDayCompletedChapters: 0,
     currentDayTotalChapters: computedBibleYearCurrentDay?.readings.length ?? 0,
@@ -2665,30 +2664,8 @@ export default function DashboardJourneyExperience({
   const activeBibleYearDashboardDay = bibleYearDashboardActive
     ? (() => {
         const builtBibleYearDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES;
-        const reportedCurrentDayNumber = Number(effectiveBibleYearReport.currentDay);
-        const boundedReportedDayNumber = Number.isFinite(reportedCurrentDayNumber)
-          ? Math.max(
-              builtBibleYearDays[0]?.dayNumber ?? 1,
-              Math.min(reportedCurrentDayNumber, builtBibleYearDays[builtBibleYearDays.length - 1]?.dayNumber ?? reportedCurrentDayNumber),
-            )
-          : null;
-        const reportedCurrentDay = boundedReportedDayNumber
-          ? builtBibleYearDays.find((day) => day.dayNumber === boundedReportedDayNumber) ?? null
-          : null;
-        const firstIncompleteDay =
-          builtBibleYearDays.find((day) => {
-            return !isBibleYearDayComplete(day);
-          }) || null;
-        const furthestCurrentDayNumber = Math.max(
-          reportedCurrentDay?.dayNumber || 0,
-          firstIncompleteDay?.dayNumber || 0,
-        );
         const currentBibleYearDay =
-          (furthestCurrentDayNumber
-            ? builtBibleYearDays.find((day) => day.dayNumber === furthestCurrentDayNumber)
-            : null) ||
-          firstIncompleteDay ||
-          reportedCurrentDay ||
+          builtBibleYearDays.find((day) => day.dayNumber === bibleYearResolvedCurrentDayNumber) ||
           builtBibleYearDays[builtBibleYearDays.length - 1] ||
           null;
 
@@ -2705,7 +2682,8 @@ export default function DashboardJourneyExperience({
         const shouldUseManualSelectedDay = Boolean(
           selectedBibleYearSeriesDay &&
           selectedDayIsBuilt &&
-          manualBibleYearStudyDayNumber === selectedBibleYearSeriesDay.dayNumber,
+          manualBibleYearStudyDayNumber === selectedBibleYearSeriesDay.dayNumber &&
+          manualBibleYearStudyDayNumber >= (currentBibleYearDay?.dayNumber ?? 1),
         );
 
         return shouldKeepJustCompletedDay || shouldUseManualSelectedDay
@@ -3918,6 +3896,7 @@ export default function DashboardJourneyExperience({
     async function loadBibleYearProgress() {
       if (!userId) {
         setBibleYearCompletedCardsByDay({});
+        setBibleYearResolvedCurrentDayNumber(1);
         setBibleYearProgressLoaded(true);
         return;
       }
@@ -4170,14 +4149,21 @@ export default function DashboardJourneyExperience({
           };
         });
 
+        const resolvedCurrentDayNumber =
+          GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => next[day.dayNumber]?.reading !== true)?.dayNumber ||
+          GENESIS_BIBLE_IN_ONE_YEAR_SERIES[GENESIS_BIBLE_IN_ONE_YEAR_SERIES.length - 1]?.dayNumber ||
+          1;
+
         if (!cancelled) {
           setBibleYearCompletedCardsByDay(next);
+          setBibleYearResolvedCurrentDayNumber(resolvedCurrentDayNumber);
           setBibleYearProgressLoaded(true);
         }
       } catch (error) {
         console.error("[BIBLE_YEAR_PROGRESS] Could not load Bible in One Year progress:", error);
         if (!cancelled) {
           setBibleYearCompletedCardsByDay({});
+          setBibleYearResolvedCurrentDayNumber(1);
           setBibleYearProgressLoaded(true);
         }
       }
@@ -4390,23 +4376,11 @@ export default function DashboardJourneyExperience({
   function openBibleYearDashboard() {
     bibleYearJustCompletedDayRef.current = null;
     const builtBibleYearDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES;
-    const firstIncompleteDay =
-      builtBibleYearDays.find((day) => {
-        return !isBibleYearDayComplete(day);
-      }) || null;
-    const reportedCurrentDayNumber = Number(effectiveBibleYearReport.currentDay);
-    const boundedReportedDayNumber = Number.isFinite(reportedCurrentDayNumber)
-      ? Math.max(
-          builtBibleYearDays[0]?.dayNumber ?? 1,
-          Math.min(reportedCurrentDayNumber, builtBibleYearDays[builtBibleYearDays.length - 1]?.dayNumber ?? reportedCurrentDayNumber),
-        )
-      : 0;
-    const nextBibleYearDayNumber = firstIncompleteDay?.dayNumber || boundedReportedDayNumber || 0;
+    const nextBibleYearDayNumber = Math.max(1, bibleYearResolvedCurrentDayNumber);
     const nextBibleYearDay =
       (nextBibleYearDayNumber
         ? builtBibleYearDays.find((day) => day.dayNumber === nextBibleYearDayNumber)
         : null) ||
-      firstIncompleteDay ||
       builtBibleYearDays[builtBibleYearDays.length - 1] ||
       null;
     setBibleYearDashboardActive(true);
@@ -9446,16 +9420,10 @@ Before we understand redemption, we need to understand what God made humanity fo
   }
 
   function getCurrentBibleYearSeriesDayNumber(days = GENESIS_BIBLE_IN_ONE_YEAR_SERIES) {
-    const reportedCurrentDayNumber = Number(effectiveBibleYearReport.currentDay);
-    const nextDay = days.find((day) => !isBibleYearDayComplete(day)) || days[days.length - 1];
     if (!days.length) return 1;
     const minDay = days[0]?.dayNumber ?? 1;
-    const maxDay = days[days.length - 1]?.dayNumber ?? reportedCurrentDayNumber;
-    const nextIncompleteDayNumber = nextDay?.dayNumber || minDay;
-    if (nextIncompleteDayNumber) return Math.max(minDay, Math.min(nextIncompleteDayNumber, maxDay));
-    return Number.isFinite(reportedCurrentDayNumber)
-      ? Math.max(minDay, Math.min(reportedCurrentDayNumber, maxDay))
-      : minDay;
+    const maxDay = days[days.length - 1]?.dayNumber ?? bibleYearResolvedCurrentDayNumber;
+    return Math.max(minDay, Math.min(bibleYearResolvedCurrentDayNumber, maxDay));
   }
 
   function freeUserCanOpenBibleYearDayTasks(day: GenesisBibleYearDay) {
