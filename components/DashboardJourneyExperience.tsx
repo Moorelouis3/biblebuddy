@@ -2297,7 +2297,8 @@ export default function DashboardJourneyExperience({
 
   const dashboardPageKeys = ["home", "buddy", "bible", "bible_studies", "bible_topics", "share", "group", "settings"] as const;
   type DashboardPageKey = (typeof dashboardPageKeys)[number];
-  const safeActivePage = Math.max(0, Math.min(activePage, dashboardPageKeys.length - 1));
+  const normalizedActivePage = Number.isFinite(activePage) ? activePage : 0;
+  const safeActivePage = Math.max(0, Math.min(normalizedActivePage, dashboardPageKeys.length - 1));
   const activePageKey = dashboardPageKeys[safeActivePage] ?? "home";
   const exploreLinkByKey = (key: string) => exploreLinks.find((link) => link.key === key) ?? null;
   const dashboardPageLinks = {
@@ -3788,7 +3789,8 @@ export default function DashboardJourneyExperience({
       const current = containerRef.current;
       if (!current) return;
       const width = current.clientWidth || 1;
-      setActivePage(Math.round(current.scrollLeft / width));
+      const nextPage = Math.round(current.scrollLeft / width);
+      setActivePage(Number.isFinite(nextPage) ? nextPage : 0);
     }
 
     container.addEventListener("scroll", handleScroll, { passive: true });
