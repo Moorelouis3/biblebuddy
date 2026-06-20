@@ -11,6 +11,7 @@ import DashboardDailyTaskCallout, { DatabaseTermTakeover, type BibleDatabaseTerm
 import ChapterNotesMarkdown from "./ChapterNotesMarkdown";
 import BibleYearDeepStudySectionCards from "./BibleYearDeepStudySectionCards";
 import BibleYearLessonAudioPlayer from "./BibleYearLessonAudioPlayer";
+import YouTubeTrackedPlayer from "./YouTubeTrackedPlayer";
 import { VerseHighlighter } from "./VerseHighlighter";
 import CreditLimitModal from "./CreditLimitModal";
 import BibleTopicsPanel from "./BibleTopicsPanel";
@@ -81,6 +82,16 @@ const BIBLE_IN_ONE_YEAR_TOTAL_CHAPTERS = generateBibleInOneYearPlan().totalChapt
 const DASHBOARD_GUIDED_INTRO_STORAGE_KEY = "bb:dashboard-guided-intro-seen";
 const BIBLE_YEAR_DASHBOARD_DAY_STORAGE_PREFIX = "bb:bible-year-dashboard-day";
 const BIBLE_YEAR_DASHBOARD_DAY_TTL_MS = 60 * 60 * 1000;
+const FREE_BIBLE_YEAR_YOUTUBE_BY_DAY: Record<number, string> = {
+  1: "https://youtu.be/ZvP93hHvwuU?si=9alIqe0oGL67dVPQ",
+  2: "https://youtu.be/sfEGArkD0So?si=DRlHZlEsMZnzNoRa",
+  3: "https://youtu.be/sfEGArkD0So?si=DRlHZlEsMZnzNoRa",
+  4: "https://youtu.be/tLF7kqVs6cs?si=_VWP5cidI1ginb1L",
+  5: "https://youtu.be/KA_2mq-pTyw?si=qOFLzH_RTNzYq2r8",
+  6: "https://youtu.be/KLyXhiLfrlE?si=6hZngBTlEmWh7jtP",
+  7: "https://youtu.be/gJg3pwT8zVs?si=4lviGQA30ek__MKO",
+  8: "https://youtu.be/vMmUiWwJQAo?si=dVE-roUEXx0Sy9mG",
+};
 type BibleYearReaderTranslation = "web" | "kjv" | "asv";
 type BibleYearReaderVerse = { verse: number; text: string };
 const BIBLE_YEAR_READER_TRANSLATION_OPTIONS: Array<{ value: BibleYearReaderTranslation; label: string }> = [
@@ -2165,7 +2176,7 @@ export default function DashboardJourneyExperience({
   const [bibleYearDeepNotesUpgradeDay, setBibleYearDeepNotesUpgradeDay] = useState<number | null>(null);
   const [bibleYearDownloadUpgradeOpen, setBibleYearDownloadUpgradeOpen] = useState(false);
   const [bibleYearQuickUpgradeOpen, setBibleYearQuickUpgradeOpen] = useState(false);
-  const [bibleYearQuickUpgradeContext, setBibleYearQuickUpgradeContext] = useState<"day3" | "day7" | "guest_pro" | null>(null);
+  const [bibleYearQuickUpgradeContext, setBibleYearQuickUpgradeContext] = useState<"day3" | "day7" | "guest_pro" | "background_audio" | null>(null);
   const [bibleYearQuickUpgradeLoading, setBibleYearQuickUpgradeLoading] = useState<"monthly" | "yearly" | null>(null);
   const [bibleYearQuickUpgradeError, setBibleYearQuickUpgradeError] = useState<string | null>(null);
   const [bibleYearLifetimeInfoOpen, setBibleYearLifetimeInfoOpen] = useState(false);
@@ -6541,6 +6552,42 @@ export default function DashboardJourneyExperience({
     return day ? getBibleYearDayContent(day).audio : null;
   }
 
+  function getFreeBibleYearYoutubeUrl(dayNumber: number) {
+    return FREE_BIBLE_YEAR_YOUTUBE_BY_DAY[dayNumber] || null;
+  }
+
+  function shouldUseFreeBibleYearYoutube(dayNumber: number) {
+    return !isPaidUser && !isOwnerDashboard && Boolean(getFreeBibleYearYoutubeUrl(dayNumber));
+  }
+
+  function renderBibleYearBackgroundListeningCta(day: GenesisBibleYearDay) {
+    return (
+      <button
+        type="button"
+        onClick={() => openBibleYearQuickUpgrade("background_audio")}
+        className="mt-3 w-full rounded-[18px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_32%,var(--bb-card-border,#dbe7f4))] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--bb-accent,#f6b44b)_12%,var(--bb-card,#ffffff)),color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_56%,var(--bb-card,#ffffff)))] px-4 py-4 text-left shadow-[0_14px_34px_rgba(15,23,42,0.08)] transition hover:-translate-y-0.5 hover:brightness-[1.02]"
+      >
+        <div className="flex items-start gap-3">
+          <span
+            className="mt-0.5 grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_18%,transparent)] text-xl"
+            aria-hidden="true"
+          >
+            🎧
+          </span>
+          <div className="min-w-0">
+            <p className="text-sm font-black text-[var(--bb-text-primary,#111827)]">Listen With Your App Closed</p>
+            <p className="mt-1 text-sm font-medium leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+              Keep today&apos;s lesson going while your phone is locked, while driving, walking, working, or doing chores.
+            </p>
+            <p className="mt-2 text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#f6b44b)]">
+              Unlock premium audio for Day {day.dayNumber}
+            </p>
+          </div>
+        </div>
+      </button>
+    );
+  }
+
   function getBibleYearLessonVerses(block: BibleYearDailyLesson["sections"][number]["verseBlock"]) {
     const book = getBibleYearBookFromReference(block.reference);
     return getBibleYearLocalChapterVerses(book, block.chapter).filter(
@@ -6809,7 +6856,7 @@ export default function DashboardJourneyExperience({
     setBibleYearTermNotesError(null);
   }
 
-  function openBibleYearQuickUpgrade(context: "day3" | "day7" | "guest_pro" | null = null) {
+  function openBibleYearQuickUpgrade(context: "day3" | "day7" | "guest_pro" | "background_audio" | null = null) {
     setBibleYearDeepNotesUpgradeOpen(false);
     setBibleYearDownloadUpgradeOpen(false);
     setBibleYearQuickUpgradeError(null);
@@ -7422,6 +7469,12 @@ export default function DashboardJourneyExperience({
   }
 
   function renderBibleYearQuickUpgradeModal() {
+    const isBackgroundAudioUpgrade = bibleYearQuickUpgradeContext === "background_audio";
+    const modalTitle = isBackgroundAudioUpgrade ? "Listen with your app closed" : "Choose your Pro plan";
+    const modalBody = isBackgroundAudioUpgrade
+      ? "Upgrade to Premium and keep your daily Bible lesson playing while your phone is locked, while using other apps, and while you drive, walk, work out, or do chores."
+      : "Unlock Study Notes and start understanding Scripture more deeply. Choose monthly or lifetime.";
+
     return (
       <ModalShell isOpen={bibleYearQuickUpgradeOpen} onClose={closeBibleYearQuickUpgrade}>
         <div className="bb-skin-glow-card relative w-full max-w-md overflow-hidden rounded-[28px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_38%,var(--bb-card-border,#dbe7f4))] bg-[radial-gradient(circle_at_18%_0%,color-mix(in_srgb,var(--bb-accent,#f6b44b)_24%,transparent),transparent_44%),linear-gradient(135deg,color-mix(in_srgb,var(--bb-card,#ffffff)_98%,transparent),color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_82%,transparent))] p-5 text-left text-[var(--bb-text-primary,#111827)] shadow-[0_28px_80px_rgba(0,0,0,0.45),0_0_38px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_22%,transparent)] backdrop-blur-xl">
@@ -7449,10 +7502,20 @@ export default function DashboardJourneyExperience({
           <div className="inline-flex rounded-full bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_16%,transparent)] px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#f6b44b)]">
             Bible Buddy Pro
           </div>
-          <h2 className="mt-4 pr-10 text-2xl font-black leading-tight">Choose your Pro plan</h2>
+          <h2 className="mt-4 pr-10 text-2xl font-black leading-tight">{modalTitle}</h2>
           <p className="mt-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-            Unlock Study Notes and start understanding Scripture more deeply. Choose monthly or lifetime.
+            {modalBody}
           </p>
+          {isBackgroundAudioUpgrade ? (
+            <div className="mt-4 rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_22%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_64%,var(--bb-card,#ffffff))] px-4 py-3">
+              <ul className="space-y-1.5 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+                <li>• Phone locked</li>
+                <li>• Using other apps</li>
+                <li>• Driving and walking</li>
+                <li>• Working out or doing chores</li>
+              </ul>
+            </div>
+          ) : null}
           <div className="mt-5 grid gap-3 sm:grid-cols-2">
             <button
               type="button"
@@ -11861,6 +11924,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       content.summary.takeawaySupport ||
       `Study ${readingSummary} with Scripture, storytelling, and teaching.`;
     const audio = content.audio;
+    const freeYoutubeUrl = shouldUseFreeBibleYearYoutube(day.dayNumber) ? getFreeBibleYearYoutubeUrl(day.dayNumber) : null;
     const readingComplete = bibleYearCompletedCardsByDay[day.dayNumber]?.reading === true;
     const studyNotesComplete =
       bibleYearCompletedCardsByDay[day.dayNumber]?.study_notes === true ||
@@ -12005,7 +12069,20 @@ Before we understand redemption, we need to understand what God made humanity fo
             </div>
           </div>
           <div className="mt-4">
-            {audio ? (
+            {freeYoutubeUrl ? (
+              <>
+                <div className="overflow-hidden rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-black shadow-[0_18px_38px_rgba(14,26,58,0.18)]">
+                  <YouTubeTrackedPlayer
+                    userId={userId}
+                    videoId={`bible-year-free-day-${day.dayNumber}`}
+                    youtubeUrl={freeYoutubeUrl}
+                    title={audio?.title || day.title}
+                    autoplay={false}
+                  />
+                </div>
+                {renderBibleYearBackgroundListeningCta(day)}
+              </>
+            ) : audio ? (
               <BibleYearLessonAudioPlayer
                 audioSrc={audio.apiSrc}
                 title={audio.title}
@@ -12693,15 +12770,29 @@ Before we understand redemption, we need to understand what God made humanity fo
     const bibleYearLesson = getBibleYearDailyLesson(day.dayNumber);
     const bibleYearAudio = getBibleYearDayAudio(day.dayNumber);
     const readingCardComplete = bibleYearCompletedCardsByDay[day.dayNumber]?.reading === true;
+    const freeYoutubeUrl = shouldUseFreeBibleYearYoutube(day.dayNumber) ? getFreeBibleYearYoutubeUrl(day.dayNumber) : null;
     const modalVideoPlayerSrc = getBibleYearVideoEmbedSrc(bibleYearAudio?.videoSrc);
-    const modalShowVideo = Boolean(modalVideoPlayerSrc);
+    const modalShowVideo = Boolean(freeYoutubeUrl || modalVideoPlayerSrc);
 
     if (bibleYearLesson) {
       return (
         <div className="space-y-3 px-4 py-4">
           {bibleYearAudio ? (
             <>
-              {modalShowVideo && modalVideoPlayerSrc ? (
+              {freeYoutubeUrl ? (
+                <div>
+                  <div className="overflow-hidden rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_34%,var(--bb-card-border,#dbe7f4))] bg-black shadow-[0_18px_38px_rgba(14,26,58,0.18)]">
+                    <YouTubeTrackedPlayer
+                      userId={userId}
+                      videoId={`bible-year-free-modal-day-${day.dayNumber}`}
+                      youtubeUrl={freeYoutubeUrl}
+                      title={bibleYearLesson?.title || day.title}
+                      autoplay={false}
+                    />
+                  </div>
+                  {renderBibleYearBackgroundListeningCta(day)}
+                </div>
+              ) : modalShowVideo && modalVideoPlayerSrc ? (
                 <div>
                   <div className="overflow-hidden rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_34%,var(--bb-card-border,#dbe7f4))] bg-black shadow-[0_18px_38px_rgba(14,26,58,0.18)]">
                     <div className="relative aspect-video overflow-hidden bg-black">
@@ -12922,8 +13013,9 @@ Before we understand redemption, we need to understand what God made humanity fo
       return renderBibleYearDayOneVideoTask(day);
     }
     const readingCardComplete = bibleYearCompletedCardsByDay[day.dayNumber]?.reading === true;
+    const freeYoutubeUrl = shouldUseFreeBibleYearYoutube(day.dayNumber) ? getFreeBibleYearYoutubeUrl(day.dayNumber) : null;
     const videoPlayerSrc = getBibleYearVideoEmbedSrc(audio.videoSrc);
-    const showVideo = Boolean(videoPlayerSrc);
+    const showVideo = Boolean(freeYoutubeUrl || videoPlayerSrc);
     const showAudio = !showVideo;
     const verseBreakdownSections = lesson.sections;
     const { markdown: deepNotesMarkdown, sections: deepStudySections } = getBibleYearDayDeepNotes(day.dayNumber);
@@ -13426,7 +13518,51 @@ Before we understand redemption, we need to understand what God made humanity fo
     return (
       <article className="relative mx-auto max-w-xl text-left text-[var(--bb-text-primary,#fff7ed)]">
         <section className="relative px-1 pb-1 pt-1">
-          {showVideo && videoPlayerSrc ? (
+          {freeYoutubeUrl ? (
+            <div className="pt-0">
+              <div className="overflow-hidden rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_42%,transparent)] bg-[#070503] shadow-[0_24px_58px_rgba(0,0,0,0.42),0_0_34px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_18%,transparent)]">
+                <YouTubeTrackedPlayer
+                  userId={userId}
+                  videoId={`bible-year-free-reader-day-${day.dayNumber}`}
+                  youtubeUrl={freeYoutubeUrl}
+                  title={lesson.title}
+                  autoplay={false}
+                />
+              </div>
+              {renderBibleYearBackgroundListeningCta(day)}
+              {renderBibleYearFollowAlongScripture(day)}
+              <button
+                type="button"
+                onClick={() => {
+                  void handleBibleYearAudioLessonCompleted(day, { closeArticle: true, closeDeepNotes: true });
+                }}
+                disabled={readingCardComplete}
+                className={`mt-3 flex w-full items-center justify-center gap-3 rounded-2xl border px-5 py-4 text-center shadow-[0_0_30px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_24%,transparent),0_18px_38px_rgba(0,0,0,0.28)] transition ${
+                  readingCardComplete
+                    ? "cursor-default border-sky-400/70 bg-sky-400 text-sky-950"
+                    : "border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_70%,transparent)] bg-[var(--bb-accent,#f6b44b)] text-black hover:scale-[1.01] hover:brightness-105"
+                }`}
+              >
+                <span className="contents">
+                  <span className={`hidden ${
+                    readingCardComplete
+                      ? "bg-sky-400 text-sky-950"
+                      : "bg-[var(--bb-accent,#f6b44b)] text-black"
+                  }`} aria-hidden="true">
+                    âœ“
+                  </span>
+                  <span className="contents">
+                    <span className="block text-base font-black leading-tight">
+                      {readingCardComplete ? "Reading Completed" : "Mark Reading Completed"}
+                    </span>
+                    <span className="hidden">
+                      {readingCardComplete ? `Day ${day.dayNumber} reading is locked in.` : "Tap after you finish the video and lesson."}
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </div>
+          ) : showVideo && videoPlayerSrc ? (
             <div className="pt-0">
               <div className="overflow-hidden rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_42%,transparent)] bg-[#070503] shadow-[0_24px_58px_rgba(0,0,0,0.42),0_0_34px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_18%,transparent)]">
                 <div className="relative aspect-video overflow-hidden bg-black">
