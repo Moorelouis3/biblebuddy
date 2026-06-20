@@ -6567,7 +6567,7 @@ export default function DashboardJourneyExperience({
       <button
         type="button"
         onClick={() => openBibleYearQuickUpgrade("background_audio")}
-        className="text-left text-sm font-bold text-[var(--bb-accent,#2f7fe8)] underline underline-offset-4 transition hover:opacity-80"
+        className="block w-full text-center text-sm font-bold text-[var(--bb-text-primary,#111827)] transition hover:opacity-80"
         aria-label={`Listen with the app closed for Day ${day.dayNumber}`}
       >
         Listen with the app closed
@@ -12128,7 +12128,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           </div>
 
           {freeYoutubeUrl ? (
-            <div className="mt-4 min-w-0 px-1">
+            <div className="mt-4 min-w-0 px-1 text-center">
               <h3 className="text-[18px] font-bold leading-tight text-[var(--bb-text-primary,#111827)] sm:text-[20px]">{day.title}</h3>
             </div>
           ) : (
