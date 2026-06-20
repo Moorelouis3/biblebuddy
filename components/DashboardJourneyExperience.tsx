@@ -2662,7 +2662,7 @@ export default function DashboardJourneyExperience({
   }, [activePageKey, fetchShareRewards, userId]);
 
   const bibleYearCurrentDayReady = bibleYearProgressReady && bibleYearProgressLoaded;
-  const activeBibleYearDashboardDay = bibleYearDashboardActive && bibleYearCurrentDayReady
+  const activeBibleYearDashboardDay = bibleYearDashboardActive
     ? (() => {
         const builtBibleYearDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES;
         const reportedCurrentDayNumber = Number(effectiveBibleYearReport.currentDay);
@@ -3914,7 +3914,6 @@ export default function DashboardJourneyExperience({
 
   useEffect(() => {
     let cancelled = false;
-    setBibleYearProgressLoaded(false);
 
     async function loadBibleYearProgress() {
       if (!userId) {
