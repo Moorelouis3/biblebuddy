@@ -20404,7 +20404,1045 @@ The nations are divided, but they still come from one human family under one Cre
     }),
   ];
 
-  sections = sections.filter((section) => section.chapter < 8 || section.chapter > 10);
+const GENESIS_5_UPDATED_SECTIONS: Array<Parameters<typeof makePersonalGenesisPhraseSection>[0]> = [
+  {
+    chapter: 5,
+    startVerse: 1,
+    endVerse: 5,
+    reference: "Genesis 5:1-5",
+    title: "Adam's Descendants",
+    icon: "\u{1F4D6}",
+    phrases: [
+      [
+        "\u{1F4D6} The Book Of The Generations Of Adam",
+        `Genesis 5 begins with a genealogy.
+
+A genealogy is a family record that traces descendants from one person to another.
+
+Genesis 4 ended by introducing Seth, but Genesis 5 now slows down and gives the official family line from Adam.
+
+This chapter shows how humanity continued to grow and spread after Adam and Eve.
+
+\u{1F4D6} A family record
+\u{1F468} Adam's descendants
+\u{1F30D} Humanity begins to multiply
+\u{1F331} The story continues through Seth`,
+      ],
+      [
+        "\u{1F54A}\uFE0F In The Day That God Created Man",
+        `This phrase takes the reader back to Genesis 1.
+
+Before listing Adam's descendants, Moses reminds us where humanity began.
+
+Man did not appear by accident.
+
+God created mankind on purpose.
+
+\u{1F54A}\uFE0F Back to creation
+\u{1F464} God made man
+\u{1F4D6} Connects to Genesis 1
+\u{1F30D} Humanity begins with God`,
+      ],
+      [
+        "\u{1F464} In The Likeness Of God Made He Him",
+        `Mankind was created in the likeness of God.
+
+This means human beings were made to reflect God in a special way.
+
+People are not animals with no purpose.
+
+Human life has value because humanity was made in God's image.
+
+\u{1F464} Made in God's likeness
+\u{1F48E} Human life has value
+\u{1F30D} People reflect God uniquely
+\u{1F4D6} Connects back to Genesis 1:26`,
+      ],
+      [
+        "\u{1F468}\u200D\u{1F469}\u200D\u{1F467} Male And Female Created He Them",
+        `God created humanity as male and female.
+
+Genesis groups Adam and Eve together as mankind.
+
+Man and woman are both part of God's design.
+
+Both carry value because both were created by God.
+
+\u{1F468} Male
+\u{1F469} Female
+\u{1F64F} Both created by God
+\u{1F48E} Both have value`,
+      ],
+      [
+        "\u{1F64F} And Blessed Them",
+        `God blessed Adam and Eve after creating them.
+
+A blessing is God's favor, approval, and life-giving purpose.
+
+In Genesis 1, that blessing included being fruitful, multiplying, and filling the earth.
+
+Genesis 5 reminds us that humanity began under God's blessing.
+
+\u{1F64F} God blessed them
+\u{1F331} Be fruitful and multiply
+\u{1F468}\u200D\u{1F469}\u200D\u{1F467} Humanity was meant to grow
+\u{1F49B} God's favor was given`,
+      ],
+      [
+        "\u{1F465} Called Their Name Adam",
+        `The word Adam can refer to the man Adam, but it can also refer to mankind or humanity.
+
+Here, God names both male and female together under the name Adam.
+
+This means Genesis is speaking about humanity as a whole.
+
+Adam represents mankind.
+
+\u{1F465} Adam can mean mankind
+\u{1F468}\u200D\u{1F469}\u200D\u{1F467} Male and female together
+\u{1F30D} Humanity as one family
+\u{1F4D6} Adam represents the human race`,
+      ],
+      [
+        "\u{23F3} Adam Lived An Hundred And Thirty Years",
+        `Adam lived 130 years before Seth was born.
+
+People in these early chapters lived much longer than people do today.
+
+Genesis presents Adam as living through many generations of his family.
+
+By the time Seth is born, Adam and Eve have already lived a long life.
+
+\u{23F3} Adam was 130 years old
+\u{1F476} Seth is born later in life
+\u{1F4D6} Early lifespans were much longer
+\u{1F30D} Humanity is still young`,
+      ],
+      [
+        "\u{1F476} Begat A Son In His Own Likeness",
+        `Begat means became the father of.
+
+Seth is described as being in Adam's own likeness and image.
+
+This connects back to Adam being made in God's likeness.
+
+But now Adam passes life, identity, and humanity on to his son.
+
+\u{1F476} Begat means fathered
+\u{1F468} Seth came from Adam
+\u{1F9EC} Father and son connection
+\u{1F4D6} Image language continues`,
+      ],
+      [
+        "\u{1F9D1} After His Image",
+        `Seth was born in Adam's image.
+
+This means Seth resembled Adam as his son and carried the same human nature.
+
+Adam was made in God's image.
+
+Seth is born from Adam's line and carries that image forward into the next generation.
+
+\u{1F9D1} Seth resembled Adam
+\u{1F468}\u200D\u{1F466} Father and son
+\u{1F331} Humanity continues
+\u{1F4D6} God's image passes through generations`,
+      ],
+      [
+        "\u{1F476} Called His Name Seth",
+        `Adam named his son Seth.
+
+This connects directly back to Genesis 4, where Eve said God had appointed another seed instead of Abel.
+
+Seth now becomes the main family line Genesis follows.
+
+His line will lead to Noah and continue the story of God's promise.
+
+\u{1F476} His name was Seth
+\u{1F4D6} Connects to Genesis 4
+\u{1F331} Seth's line continues
+\u{1F54A}\uFE0F Leads toward Noah`,
+      ],
+      [
+        "\u{23F3} The Days Of Adam After He Had Begotten Seth Were Eight Hundred Years",
+        `After Seth was born, Adam lived another 800 years.
+
+That means Adam saw many generations of his family grow.
+
+His life stretched across nearly the entire first millennium of human history.
+
+Genesis is showing how long life continued, but also that death still came.
+
+\u{23F3} 800 more years
+\u{1F468}\u200D\u{1F469}\u200D\u{1F467} Many generations
+\u{1F30D} A long life on earth
+\u{26A0}\uFE0F Death is still coming`,
+      ],
+      [
+        "\u{1F468}\u200D\u{1F469}\u200D\u{1F467} He Begat Sons And Daughters",
+        `Adam and Eve had more children besides Cain, Abel, and Seth.
+
+This helps explain how the human family continued to grow.
+
+Genesis does not name every child.
+
+It focuses only on the people needed to carry the main story forward.
+
+\u{1F468}\u200D\u{1F469}\u200D\u{1F467} More sons and daughters
+\u{1F30D} Humanity multiplied
+\u{1F4D6} Not every child is named
+\u{1F331} The family line grows`,
+      ],
+      [
+        "\u{26B0}\uFE0F All The Days That Adam Lived Were Nine Hundred And Thirty Years",
+        `Adam lived 930 years.
+
+That is almost a thousand years.
+
+His life was incredibly long compared to ours today.
+
+But even with such a long life, Adam's story still ends with death.
+
+\u{26B0}\uFE0F Adam lived 930 years
+\u{23F3} Almost a millennium
+\u{1F4D6} A very long life
+\u{26A0}\uFE0F Death still came`,
+      ],
+      [
+        "\u{1FAA6} And He Died",
+        `This short phrase is repeated throughout Genesis 5.
+
+It reminds us that the warning in Genesis 2 came true.
+
+Sin brought death into the human story.
+
+Even Adam, the first man, eventually died.
+
+\u{1FAA6} Adam died
+\u{26A0}\uFE0F Sin brought death
+\u{1F4D6} God's warning was true
+\u{1F494} Death enters every generation`,
+      ],
+    ],
+  },
+  {
+    chapter: 5,
+    startVerse: 6,
+    endVerse: 8,
+    reference: "Genesis 5:6-8",
+    title: "Seth's Descendants",
+    icon: "\u{1F468}",
+    phrases: [
+      [
+        "\u{23F3} Seth Lived An Hundred And Five Years",
+        `Seth was 105 years old when his first recorded son was born.
+
+Like Adam, Seth lived during a time when people experienced extremely long lifespans.
+
+By modern standards, 105 years old sounds old, but in Genesis this was still relatively early in life.
+
+\u{23F3} Seth was 105 years old
+\u{1F476} Before his first recorded son
+\u{1F4D6} Long lifespans were common
+\u{1F30D} Early humanity was still growing`,
+      ],
+      [
+        "\u{1F476} And Begat Enos",
+        `The word begat means became the father of.
+
+Enos was Seth's son and continued the family line that Genesis follows.
+
+His name is often connected to mankind, mortality, or human weakness.
+
+Enos reminds us that people are dependent on God and that human life is fragile.
+
+\u{1F476} Son of Seth
+\u{1F4D6} Continued the family line
+\u{1F4A8} Connected to human weakness
+\u{1F331} Important descendant`,
+      ],
+      [
+        "\u{23F3} Seth Lived After He Begat Enos Eight Hundred And Seven Years",
+        `After Enos was born, Seth lived another 807 years.
+
+This means Seth lived long enough to see many generations of descendants.
+
+His life stretched across centuries of early human history.
+
+\u{23F3} Another 807 years
+\u{1F468}\u200D\u{1F469}\u200D\u{1F467} Saw many generations
+\u{1F4D6} A remarkably long life
+\u{1F30D} Humanity continued multiplying`,
+      ],
+      [
+        "\u{1F468}\u200D\u{1F469}\u200D\u{1F467} And Begat Sons And Daughters",
+        `Enos was not Seth's only child.
+
+Over hundreds of years, Seth had many sons and daughters.
+
+Genesis only records certain names because those are the people important to the biblical family line.
+
+The population of the world could have grown very quickly during these long lifespans.
+
+\u{1F468}\u200D\u{1F469}\u200D\u{1F467} More sons and daughters
+\u{1F331} The family continued growing
+\u{1F4D6} Not every child is named
+\u{1F30D} Population increased rapidly`,
+      ],
+      [
+        "\u{23F3} All The Days Of Seth Were Nine Hundred And Twelve Years",
+        `Seth lived a total of 912 years.
+
+That is longer than most people can even imagine today.
+
+During a lifespan like that, multiple generations of children, grandchildren, and great-grandchildren could be born.
+
+Genesis emphasizes both the length of these lives and the growth of humanity during this period.
+
+\u{23F3} Seth lived 912 years
+\u{1F468}\u200D\u{1F469}\u200D\u{1F467} Multiple generations were born
+\u{1F30D} Humanity continued spreading
+\u{1F4D6} One of the longest lives in Scripture`,
+      ],
+      [
+        "\u{1FAA6} And He Died",
+        `Even after living 912 years, Seth eventually died.
+
+This short phrase repeats throughout Genesis 5.
+
+The chapter constantly reminds us that death still affects every generation.
+
+Long life could delay death, but it could not prevent it.
+
+\u{1FAA6} Seth died
+\u{26A0}\uFE0F Death reaches every generation
+\u{1F4D6} Sin's consequences remain
+\u{1F494} Even long lives come to an end`,
+      ],
+    ],
+  },
+  {
+    chapter: 5,
+    startVerse: 9,
+    endVerse: 11,
+    reference: "Genesis 5:9-11",
+    title: "Enos' Descendants",
+    icon: "\u{1F468}",
+    phrases: [
+      [
+        "\u{23F3} Enos Lived Ninety Years",
+        `Enos was 90 years old when his first recorded son was born.
+
+Like his father Seth, Enos lived during the early generations of humanity when lifespans were much longer than they are today.
+
+\u{23F3} Enos was 90 years old
+\u{1F476} Before his first recorded son
+\u{1F4D6} Long lifespans continued
+\u{1F30D} Humanity was still multiplying`,
+      ],
+      [
+        "\u{1F476} And Begat Cainan",
+        `The word begat means became the father of.
+
+Cainan was the son of Enos and continued the family line that Genesis follows.
+
+His birth marks another generation between Adam and Noah.
+
+\u{1F476} Son of Enos
+\u{1F4D6} Continued the family line
+\u{1F331} Another generation begins
+\u{1F468}\u200D\u{1F466} Descendant of Adam`,
+      ],
+      [
+        "\u{23F3} Enos Lived After He Begat Cainan Eight Hundred And Fifteen Years",
+        `After Cainan was born, Enos lived another 815 years.
+
+His long life allowed him to see many descendants and generations born after him.
+
+\u{23F3} Another 815 years
+\u{1F468}\u200D\u{1F469}\u200D\u{1F467} Many generations followed
+\u{1F30D} Humanity continued growing
+\u{1F4D6} Long life continued`,
+      ],
+      [
+        "\u{1F468}\u200D\u{1F469}\u200D\u{1F467} And Begat Sons And Daughters",
+        `Cainan was not Enos' only child.
+
+Over centuries, Enos had many sons and daughters.
+
+The Bible only records the descendants needed for the main family line.
+
+\u{1F468}\u200D\u{1F469}\u200D\u{1F467} More children were born
+\u{1F331} Humanity multiplied
+\u{1F4D6} Not every child is listed
+\u{1F440} The family tree grows`,
+      ],
+      [
+        "\u{23F3} All The Days Of Enos Were Nine Hundred And Five Years",
+        `Enos lived a total of 905 years.
+
+His lifespan stretched across many generations of early history.
+
+\u{23F3} Enos lived 905 years
+\u{1F4D6} One of the longest lives recorded
+\u{1F468}\u200D\u{1F469}\u200D\u{1F467} Saw many descendants
+\u{1F30D} Humanity continued spreading`,
+      ],
+      [
+        "\u{1FAA6} And He Died",
+        `Even after 905 years, Enos died.
+
+Genesis keeps repeating this phrase to remind us that death still affects every generation.
+
+\u{1FAA6} Enos died
+\u{26A0}\uFE0F Death reaches everyone
+\u{1F4D6} Sin's consequences remain
+\u{1F494} Long life cannot stop death`,
+      ],
+    ],
+  },
+  {
+    chapter: 5,
+    startVerse: 12,
+    endVerse: 14,
+    reference: "Genesis 5:12-14",
+    title: "Cainan's Descendants",
+    icon: "\u{1F468}",
+    phrases: [
+      [
+        "\u{23F3} Cainan Lived Seventy Years",
+        `Cainan was 70 years old when his first recorded son was born.
+
+The genealogy continues moving from generation to generation.
+
+\u{23F3} Cainan was 70 years old
+\u{1F476} Before his first recorded son
+\u{1F4D6} Another generation begins
+\u{1F331} The family line continues`,
+      ],
+      [
+        "\u{1F476} And Begat Mahalaleel",
+        `Mahalaleel became the next descendant in the family line.
+
+His name is often understood to mean something like Praise of God.
+
+\u{1F4D6} Next generation
+\u{1F476} Son of Cainan
+\u{1F64C} Connected to praise
+\u{1F331} Family line continues`,
+      ],
+      [
+        "\u{23F3} Cainan Lived After He Begat Mahalaleel Eight Hundred And Forty Years",
+        `After Mahalaleel was born, Cainan lived another 840 years.
+
+Like the generations before him, he saw many descendants born during his lifetime.
+
+\u{23F3} Another 840 years
+\u{1F468}\u200D\u{1F469}\u200D\u{1F467} Many descendants followed
+\u{1F30D} Humanity continued multiplying
+\u{1F4D6} Long lifespan`,
+      ],
+      [
+        "\u{1F468}\u200D\u{1F469}\u200D\u{1F467} And Begat Sons And Daughters",
+        `Mahalaleel was not Cainan's only child.
+
+The family continued growing through many sons and daughters.
+
+\u{1F468}\u200D\u{1F469}\u200D\u{1F467} More children
+\u{1F331} Family expansion
+\u{1F4D6} Not every descendant is listed
+\u{1F440} Population continues growing`,
+      ],
+      [
+        "\u{23F3} All The Days Of Cainan Were Nine Hundred And Ten Years",
+        `Cainan lived a total of 910 years.
+
+His life spanned nearly an entire millennium.
+
+\u{23F3} 910 years
+\u{1F4D6} Extremely long lifespan
+\u{1F468}\u200D\u{1F469}\u200D\u{1F467} Multiple generations witnessed
+\u{1F30D} Humanity continued spreading`,
+      ],
+      [
+        "\u{1FAA6} And He Died",
+        `Like Adam and Enos before him, Cainan eventually died.
+
+The pattern continues.
+
+\u{1FAA6} Cainan died
+\u{26A0}\uFE0F Death remains
+\u{1F4D6} Sin's consequences continue
+\u{1F494} No one escapes death`,
+      ],
+    ],
+  },
+  {
+    chapter: 5,
+    startVerse: 15,
+    endVerse: 17,
+    reference: "Genesis 5:15-17",
+    title: "Mahalaleel's Descendants",
+    icon: "\u{1F468}",
+    phrases: [
+      [
+        "\u{23F3} Mahalaleel Lived Sixty And Five Years",
+        `Mahalaleel was 65 years old when his first recorded son was born.
+
+His name is often understood as Praise of God.
+
+\u{23F3} Mahalaleel was 65
+\u{1F64C} Name connected to praise
+\u{1F476} Before his first recorded son
+\u{1F4D6} Family line continues`,
+      ],
+      [
+        "\u{1F476} And Begat Jared",
+        `Jared became the next generation in the genealogy.
+
+His descendants will eventually lead to Enoch and Noah.
+
+\u{1F476} Son of Mahalaleel
+\u{1F4D6} Next generation
+\u{1F331} Family line continues
+\u{1F468} Descendant of Seth`,
+      ],
+      [
+        "\u{23F3} Mahalaleel Lived After He Begat Jared Eight Hundred And Thirty Years",
+        `After Jared's birth, Mahalaleel lived another 830 years.
+
+He continued to see his family grow over many generations.
+
+\u{23F3} Another 830 years
+\u{1F468}\u200D\u{1F469}\u200D\u{1F467} Family continued growing
+\u{1F4D6} Long lifespan
+\u{1F30D} Humanity multiplied`,
+      ],
+      [
+        "\u{1F468}\u200D\u{1F469}\u200D\u{1F467} And Begat Sons And Daughters",
+        `Mahalaleel had more children than just Jared.
+
+The Bible focuses only on the line leading to Noah.
+
+\u{1F468}\u200D\u{1F469}\u200D\u{1F467} More children
+\u{1F331} Family expanded
+\u{1F4D6} Main line preserved
+\u{1F440} Population grows`,
+      ],
+      [
+        "\u{23F3} All The Days Of Mahalaleel Were Eight Hundred Ninety And Five Years",
+        `Mahalaleel lived a total of 895 years.
+
+His life stretched across centuries of human history.
+
+\u{23F3} 895 years
+\u{1F4D6} Long lifespan
+\u{1F468}\u200D\u{1F469}\u200D\u{1F467} Many descendants
+\u{1F30D} Humanity continued spreading`,
+      ],
+      [
+        "\u{1FAA6} And He Died",
+        `Despite his long life, Mahalaleel eventually died.
+
+The repeated phrase reminds us of the reality introduced in Genesis 3.
+
+\u{1FAA6} Mahalaleel died
+\u{26A0}\uFE0F Death remains
+\u{1F4D6} Sin's consequences continue
+\u{1F494} Every generation faces death`,
+      ],
+    ],
+  },
+  {
+    chapter: 5,
+    startVerse: 18,
+    endVerse: 20,
+    reference: "Genesis 5:18-20",
+    title: "Jared's Descendants",
+    icon: "\u{1F468}",
+    phrases: [
+      [
+        "\u{23F3} Jared Lived An Hundred Sixty And Two Years",
+        `Jared was 162 years old when his first recorded son was born.
+
+Among the descendants listed so far, Jared became a father later in life than many of his ancestors.
+
+Even so, this was still normal during the long lifespans recorded in Genesis.
+
+\u{23F3} Jared was 162 years old
+\u{1F476} Before his first recorded son
+\u{1F4D6} Long lifespans continued
+\u{1F30D} Humanity kept growing`,
+      ],
+      [
+        "\u{1F476} And Begat Enoch",
+        `Enoch was the son of Jared.
+
+Unlike many of the other names in Genesis 5, Enoch becomes one of the most important figures in the chapter.
+
+The Bible will soon tell us something unique about his life.
+
+\u{1F476} Son of Jared
+\u{1F4D6} Important figure ahead
+\u{1F331} Family line continues
+\u{1F468} Descendant of Seth`,
+      ],
+      [
+        "\u{23F3} Jared Lived After He Begat Enoch Eight Hundred Years",
+        `After Enoch was born, Jared lived another 800 years.
+
+Like the generations before him, he saw many descendants born throughout his lifetime.
+
+\u{23F3} Another 800 years
+\u{1F468}\u200D\u{1F469}\u200D\u{1F467} Many generations followed
+\u{1F4D6} Long lifespan
+\u{1F30D} Humanity continued multiplying`,
+      ],
+      [
+        "\u{1F468}\u200D\u{1F469}\u200D\u{1F467} And Begat Sons And Daughters",
+        `Enoch was not Jared's only child.
+
+The family line continued through many sons and daughters.
+
+Genesis records only the descendants important to the biblical story.
+
+\u{1F468}\u200D\u{1F469}\u200D\u{1F467} More children
+\u{1F331} Family expanded
+\u{1F4D6} Not every child is named
+\u{1F440} Population continued growing`,
+      ],
+      [
+        "\u{23F3} All The Days Of Jared Were Nine Hundred Sixty And Two Years",
+        `Jared lived 962 years.
+
+This makes him one of the longest-living people recorded in Scripture.
+
+Only a few people lived longer.
+
+\u{23F3} Jared lived 962 years
+\u{1F4D6} One of the longest lifespans
+\u{1F468}\u200D\u{1F469}\u200D\u{1F467} Many generations saw him
+\u{1F30D} Humanity continued spreading`,
+      ],
+      [
+        "\u{1FAA6} And He Died",
+        `Even after 962 years, Jared eventually died.
+
+Genesis continues repeating the same reminder.
+
+Death still reigns over humanity.
+
+\u{1FAA6} Jared died
+\u{26A0}\uFE0F Death remains
+\u{1F4D6} Sin's consequences continue
+\u{1F494} No one escapes death`,
+      ],
+    ],
+  },
+  {
+    chapter: 5,
+    startVerse: 21,
+    endVerse: 24,
+    reference: "Genesis 5:21-24",
+    title: "Enoch Walks With God",
+    icon: "\u{1F6B6}",
+    phrases: [
+      [
+        "\u{23F3} Enoch Lived Sixty And Five Years",
+        `Enoch was 65 years old when his first recorded son was born.
+
+His story begins like the others in Genesis 5, but it will end very differently.
+
+\u{23F3} Enoch was 65 years old
+\u{1F476} Before his first recorded son
+\u{1F4D6} Begins like the others
+\u{1F440} His story will be different`,
+      ],
+      [
+        "\u{1F476} And Begat Methuselah",
+        `Methuselah was Enoch's son.
+
+He is remembered for having the longest recorded lifespan in the Bible.
+
+His birth marks an important turning point in Enoch's life.
+
+\u{1F476} Son of Enoch
+\u{1F4D6} Important descendant
+\u{23F3} Longest lifespan recorded
+\u{1F331} Family line continues`,
+      ],
+      [
+        "\u{1F6B6} Enoch Walked With God",
+        `This is one of the most important phrases in Genesis 5.
+
+To walk with God means to live in close fellowship with Him.
+
+Enoch was known for his relationship with God rather than simply his age or accomplishments.
+
+Only a few people in Scripture receive this description.
+
+\u{1F6B6} Close relationship with God
+\u{1F64F} Lived faithfully
+\u{2764}\uFE0F Fellowship with God
+\u{1F4D6} A unique description`,
+      ],
+      [
+        "\u{23F3} After He Begat Methuselah Three Hundred Years",
+        `After Methuselah was born, Enoch continued walking with God for another 300 years.
+
+His faithfulness was not temporary.
+
+It continued throughout the rest of his life.
+
+\u{23F3} Another 300 years
+\u{1F6B6} Continued walking with God
+\u{1F64F} Lifelong faithfulness
+\u{1F4D6} A consistent relationship`,
+      ],
+      [
+        "\u{1F468}\u200D\u{1F469}\u200D\u{1F467} And Begat Sons And Daughters",
+        `Methuselah was not Enoch's only child.
+
+Like the others in Genesis 5, he had a growing family.
+
+Yet the Bible focuses most on his relationship with God.
+
+\u{1F468}\u200D\u{1F469}\u200D\u{1F467} More children
+\u{1F331} Family continued growing
+\u{1F4D6} Family life continued
+\u{1F64F} Relationship with God emphasized`,
+      ],
+      [
+        "\u{23F3} All The Days Of Enoch Were Three Hundred Sixty And Five Years",
+        `Enoch lived 365 years.
+
+Compared to the others in Genesis 5, this is a much shorter lifespan.
+
+Yet Enoch's life stands out because of how he lived rather than how long he lived.
+
+\u{23F3} Enoch lived 365 years
+\u{1F4D6} Shorter than the others
+\u{1F64F} Known for faithfulness
+\u{2764}\uFE0F Quality over length`,
+      ],
+      [
+        "\u{1F6B6} And Enoch Walked With God",
+        `The Bible repeats this phrase to emphasize Enoch's relationship with God.
+
+This was the defining characteristic of his life.
+
+More than his age, family, or achievements, Enoch is remembered for walking with God.
+
+\u{1F6B6} Walked with God
+\u{1F64F} Known for faithfulness
+\u{2764}\uFE0F Close fellowship
+\u{1F4D6} His defining characteristic`,
+      ],
+      [
+        "\u{2728} And He Was Not; For God Took Him",
+        `This is one of the most unique statements in the Bible.
+
+Instead of saying and he died, Genesis says God took him.
+
+The Bible presents Enoch as being taken by God without experiencing death in the normal way.
+
+His story stands in sharp contrast to every other genealogy in Genesis 5.
+
+\u{2728} God took Enoch
+\u{1F4D6} Different from everyone else
+\u{1F6B6} Walked with God faithfully
+\u{2764}\uFE0F A unique ending`,
+      ],
+    ],
+  },
+  {
+    chapter: 5,
+    startVerse: 25,
+    endVerse: 27,
+    reference: "Genesis 5:25-27",
+    title: "Methuselah's Descendants",
+    icon: "\u{1F468}",
+    phrases: [
+      [
+        "\u{23F3} Methuselah Lived An Hundred Eighty And Seven Years",
+        `Methuselah was 187 years old when his first recorded son was born.
+
+His life would become the longest recorded lifespan in the entire Bible.
+
+\u{23F3} Methuselah was 187 years old
+\u{1F476} Before his first recorded son
+\u{1F4D6} Longest lifespan ahead
+\u{1F331} Family line continues`,
+      ],
+      [
+        "\u{1F476} And Begat Lamech",
+        `Lamech was the son of Methuselah.
+
+This Lamech is different from the Lamech found in Cain's family line in Genesis 4.
+
+He becomes the father of Noah.
+
+\u{1F476} Son of Methuselah
+\u{1F4D6} Different from Cain's Lamech
+\u{1F331} Family line continues
+\u{1F468} Father of Noah to come`,
+      ],
+      [
+        "\u{23F3} Methuselah Lived After He Begat Lamech Seven Hundred Eighty And Two Years",
+        `After Lamech was born, Methuselah lived another 782 years.
+
+His life stretched across nearly the entire period leading up to the flood.
+
+\u{23F3} Another 782 years
+\u{1F468}\u200D\u{1F469}\u200D\u{1F467} Many generations followed
+\u{1F4D6} Long lifespan
+\u{1F30D} Humanity continued growing`,
+      ],
+      [
+        "\u{1F468}\u200D\u{1F469}\u200D\u{1F467} And Begat Sons And Daughters",
+        `Lamech was not Methuselah's only child.
+
+His family continued growing through many sons and daughters.
+
+\u{1F468}\u200D\u{1F469}\u200D\u{1F467} More children
+\u{1F331} Family expanded
+\u{1F4D6} Humanity multiplied
+\u{1F440} Population continued growing`,
+      ],
+      [
+        "\u{23F3} All The Days Of Methuselah Were Nine Hundred Sixty And Nine Years",
+        `Methuselah lived 969 years.
+
+This is the longest lifespan recorded anywhere in Scripture.
+
+No one in the Bible is recorded as living longer.
+
+\u{23F3} Methuselah lived 969 years
+\u{1F3C6} Longest lifespan in Scripture
+\u{1F4D6} Nearly a thousand years
+\u{1F30D} Witnessed many generations`,
+      ],
+      [
+        "\u{1FAA6} And He Died",
+        `Even Methuselah eventually died.
+
+The longest recorded life in the Bible still ended in death.
+
+Genesis continues reminding us that no human escapes mortality.
+
+\u{1FAA6} Methuselah died
+\u{26A0}\uFE0F Even the longest life ended
+\u{1F4D6} Death reaches everyone
+\u{1F494} Mortality remains`,
+      ],
+    ],
+  },
+  {
+    chapter: 5,
+    startVerse: 28,
+    endVerse: 31,
+    reference: "Genesis 5:28-31",
+    title: "Lamech's Descendants",
+    icon: "\u{1F468}",
+    phrases: [
+      [
+        "\u{23F3} Lamech Lived An Hundred Eighty And Two Years",
+        `Lamech was 182 years old when his first recorded son was born.
+
+Like the generations before him, Lamech lived during a time of extremely long lifespans.
+
+However, his son would become one of the most important people in the entire Old Testament.
+
+\u{23F3} Lamech was 182 years old
+\u{1F476} Before his first recorded son
+\u{1F4D6} Long lifespans continued
+\u{1F30D} An important generation begins`,
+      ],
+      [
+        "\u{1F476} And Begat A Son",
+        `The genealogy now slows down and gives more detail than it did with the previous generations.
+
+This son is not simply another name in the family line.
+
+He will become the central figure of the flood narrative.
+
+\u{1F476} A son is born
+\u{1F4D6} More detail is given
+\u{1F331} Important descendant
+\u{1F440} The story is slowing down`,
+      ],
+      [
+        "\u{1F4D6} Called His Name Noah",
+        `The name Noah is connected to rest, comfort, relief, or peace.
+
+Unlike many of the previous names in Genesis 5, Moses immediately explains why this name was chosen.
+
+Noah's name points forward to something God is about to do.
+
+\u{1F4D6} His name was Noah
+\u{1F54A}\uFE0F Connected to rest
+\u{1F64F} Connected to comfort
+\u{1F331} Important future figure`,
+      ],
+      [
+        "\u{1F614} This Same Shall Comfort Us",
+        `Lamech believed Noah would bring comfort.
+
+Humanity had been living under the effects of sin ever since Adam's fall.
+
+Life was difficult, painful, and uncertain.
+
+Lamech hoped Noah would bring relief from those burdens.
+
+\u{1F614} Life was difficult
+\u{1F64F} Hope for comfort
+\u{1F476} Noah brings expectation
+\u{1F331} Looking toward the future`,
+      ],
+      [
+        "\u{1F30D} Concerning Our Work",
+        `This phrase points to the daily labor people experienced.
+
+Ever since Genesis 3, work had become harder because of the curse on the ground.
+
+Lamech connects Noah's birth to the hope that life might improve.
+
+\u{1F30D} Daily labor
+\u{1F468}\u200D\u{1F33E} Work was difficult
+\u{1F4D6} Connects to Genesis 3
+\u{1F64F} Hope for relief`,
+      ],
+      [
+        "\u{1F33E} Because Of The Ground Which The LORD Hath Cursed",
+        `Lamech specifically connects Noah to the curse placed on the ground after Adam's sin.
+
+The difficult work of farming was a constant reminder of humanity's fall.
+
+The curse affected every generation after Adam.
+
+\u{1F33E} The cursed ground
+\u{26A0}\uFE0F Result of sin
+\u{1F468}\u200D\u{1F33E} Hard labor continued
+\u{1F4D6} Connects back to Genesis 3`,
+      ],
+      [
+        "\u{23F3} Lamech Lived After He Begat Noah Five Hundred Ninety And Five Years",
+        `After Noah was born, Lamech lived another 595 years.
+
+During those years, humanity continued growing and multiplying throughout the earth.
+
+\u{23F3} Another 595 years
+\u{1F468}\u200D\u{1F469}\u200D\u{1F467} Family continued growing
+\u{1F30D} Humanity expanded
+\u{1F4D6} Long lifespan continued`,
+      ],
+      [
+        "\u{1F468}\u200D\u{1F469}\u200D\u{1F467} And Begat Sons And Daughters",
+        `Noah was not Lamech's only child.
+
+Like the generations before him, Lamech had many sons and daughters.
+
+Genesis focuses on Noah because he is central to the story that follows.
+
+\u{1F468}\u200D\u{1F469}\u200D\u{1F467} More children
+\u{1F331} Family continued growing
+\u{1F4D6} Noah is the focus
+\u{1F30D} Population increased`,
+      ],
+      [
+        "\u{23F3} All The Days Of Lamech Were Seven Hundred Seventy And Seven Years",
+        `Lamech lived 777 years.
+
+This number stands out because it is made up entirely of sevens.
+
+The Bible does not explain why, but many readers notice the contrast between this godly Lamech and the violent Lamech from Cain's family line in Genesis 4.
+
+\u{23F3} Lamech lived 777 years
+\u{1F4D6} A memorable number
+\u{1F468} Different from Cain's Lamech
+\u{1F331} Part of Seth's family line`,
+      ],
+      [
+        "\u{1FAA6} And He Died",
+        `Even Lamech eventually died.
+
+The pattern of Genesis 5 continues.
+
+Long life could delay death, but it could not remove it.
+
+\u{1FAA6} Lamech died
+\u{26A0}\uFE0F Death reaches every generation
+\u{1F4D6} Sin's consequences remain
+\u{1F494} No one escapes mortality`,
+      ],
+    ],
+  },
+  {
+    chapter: 5,
+    startVerse: 32,
+    endVerse: 32,
+    reference: "Genesis 5:32",
+    title: "Noah's Sons",
+    icon: "\u{1F30A}",
+    phrases: [
+      [
+        "\u{23F3} Noah Was Five Hundred Years Old",
+        `Noah was 500 years old before the birth of his recorded sons.
+
+This is older than many of the previous fathers in Genesis 5.
+
+The Bible is preparing the reader for Noah's role in the coming flood narrative.
+
+\u{23F3} Noah was 500 years old
+\u{1F476} Before his recorded sons
+\u{1F4D6} Preparing for the flood story
+\u{1F30D} A new chapter is coming`,
+      ],
+      [
+        "\u{1F468} Shem, Ham, And Japheth",
+        `These are Noah's three sons.
+
+All three survive the flood and become the fathers of the nations that spread across the earth afterward.
+
+The Bible often lists them together because they represent the future of humanity after the flood.
+
+\u{1F468} Shem
+\u{1F468} Ham
+\u{1F468} Japheth
+\u{1F30D} Future nations come through them`,
+      ],
+      [
+        "\u{1F331} And Noah Begat",
+        `Begat means became the father of.
+
+Here the word marks a major turning point in Genesis.
+
+The family line that began with Adam has now reached Noah, and Noah becomes the father of the sons who will survive the flood.
+
+\u{1F331} Noah becomes a father
+\u{1F4D6} A turning point in the genealogy
+\u{1F30A} The flood story is near
+\u{1F30D} Humanity's future is narrowing to one family`,
+      ],
+      [
+        "\u{1F331} Noah Begat Shem, Ham, And Japheth",
+        `The genealogy that began with Adam now reaches Noah's family.
+
+The focus of Genesis is about to shift from long lifespans and family records to one of the most important events in Scripture: the flood.
+
+These three sons will carry humanity forward into the next chapter of history.
+
+\u{1F331} Noah becomes a father
+\u{1F4D6} The genealogy reaches Noah
+\u{1F30A} The flood story is next
+\u{1F30D} Humanity's future continues through his family`,
+      ],
+    ],
+  },
+];
+
+  sections = sections.filter((section) => (section.chapter < 8 || section.chapter > 10) && section.chapter !== 5);
+  sections.push(...GENESIS_5_UPDATED_SECTIONS.map(makePersonalGenesisPhraseSection));
   sections.push(...DAY_4_QUALITY_REVIEW_SECTIONS.map(applyDayFourPhraseFocusedExplanations).map(makePersonalGenesisPhraseSection));
 
   for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {

@@ -11600,7 +11600,7 @@ Before we understand redemption, we need to understand what God made humanity fo
 
   function renderHomeSupportStatsStrip() {
     const currentStreak = effectiveBibleYearReport.currentStreak ?? Math.max(0, profile?.current_streak ?? 0);
-    const streakLabel = `${currentStreak} ${currentStreak === 1 ? "Day" : "Days"}`;
+    const streakLabel = `${currentStreak} Day Bible Study Streak`;
     const lightThemeUsesClassicFlame = typeof document !== "undefined" && document.documentElement.dataset.bbTheme === "light";
 
     return (
@@ -11614,7 +11614,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             <StreakFlameEmoji flameId={lightThemeUsesClassicFlame ? "default" : profile?.selected_streak_flame} currentStreak={currentStreak} size={66} title={`${currentStreak} day streak - tap to learn what the flame means`} />
           </span>
           <span className="min-w-0 flex-1">
-            <span className="block text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">Daily Streak</span>
+            <span className="block text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">Bible Study Streak</span>
             <span className="mt-1 block text-4xl font-black leading-none text-[var(--bb-text-primary,#111827)]">{streakLabel}</span>
             <span className="mt-2 block text-sm font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">
               Keep opening Scripture and building your daily rhythm.
@@ -12424,7 +12424,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                       </button>
                       <p className="mt-2 truncate text-[11px] font-bold leading-tight text-[var(--bb-text-primary,#111827)]">Day {milestone.dayNumber}</p>
                       <p className={`mt-0.5 text-[10px] font-semibold leading-tight ${isComplete ? "text-[var(--bb-accent,#2f7fe8)]" : isCurrent ? "text-[var(--bb-accent,#2f7fe8)]" : "text-[var(--bb-text-muted,#6b7280)]"}`}>
-                        {isComplete ? "Done" : isCurrent ? "Current" : "Locked"}
+                        {isComplete ? "Completed" : isCurrent ? "Current" : "Locked"}
                       </p>
                     </div>
                   );
@@ -14627,7 +14627,7 @@ Before we understand redemption, we need to understand what God made humanity fo
   }
 
   return (
-    <div className="space-y-4 pb-[calc(142px+env(safe-area-inset-bottom,0px))] lg:pb-4">
+    <div className="space-y-4 pb-[calc(104px+env(safe-area-inset-bottom,0px))] sm:pb-[calc(142px+env(safe-area-inset-bottom,0px))] lg:pb-4">
       <style>{`
         @keyframes task-complete-pop {
           0% {
@@ -15421,7 +15421,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                                       ? "text-[var(--bb-accent,#2f7fe8)]"
                                       : "text-[var(--bb-text-muted,#6b7280)]"
                                 }`}>
-                                  {isComplete ? "Done" : isCurrent ? "Current Day" : "Locked"}
+                                  {isComplete ? "Completed" : isCurrent ? "Current Day" : "Locked"}
                                 </p>
                               </div>
                             );
@@ -16265,9 +16265,9 @@ Before we understand redemption, we need to understand what God made humanity fo
       ) : null}
 
       {!shouldShowBibleBuddy3ModeGate && !deepStudyFocusActive ? (
-      <nav data-bb-dashboard-tour="bottom-menu" className="fixed inset-x-0 bottom-0 z-[90] bg-[color-mix(in_srgb,var(--bb-background,#0e1218)_86%,transparent)] px-3 pb-[env(safe-area-inset-bottom,0px)] pt-2 backdrop-blur-xl">
+      <nav data-bb-dashboard-tour="bottom-menu" className="fixed inset-x-0 bottom-0 z-[90] border-t border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-0 pb-[env(safe-area-inset-bottom,0px)] pt-0 sm:border-t-0 sm:bg-[color-mix(in_srgb,var(--bb-background,#0e1218)_86%,transparent)] sm:px-3 sm:pt-2 sm:backdrop-blur-xl">
         {dashboardMenuOpen ? (
-          <div className="mx-auto mb-2 max-w-xl rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)]/95 p-2.5 shadow-[0_18px_46px_rgba(15,35,60,0.22)] backdrop-blur">
+          <div className="mb-0 w-full rounded-none border-x-0 border-b-0 border-t border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-3 pb-3 pt-3 shadow-none sm:mx-auto sm:mb-2 sm:max-w-xl sm:rounded-[24px] sm:border sm:bg-[var(--bb-card,#ffffff)]/95 sm:p-2.5 sm:shadow-[0_18px_46px_rgba(15,35,60,0.22)] sm:backdrop-blur">
             <div className="mb-2 flex justify-center">
               <button
                 type="button"
@@ -16397,7 +16397,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           </div>
         ) : null}
 
-        <div className="mx-auto max-w-xl rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)]/95 px-2 py-2 shadow-[0_12px_28px_rgba(38,63,99,0.16)] backdrop-blur">
+        <div className="w-full rounded-none border-x-0 border-b-0 bg-[var(--bb-card,#ffffff)] px-2 py-2 shadow-none sm:mx-auto sm:max-w-xl sm:rounded-[24px] sm:border sm:border-[var(--bb-card-border,#dbe7f4)] sm:bg-[var(--bb-card,#ffffff)]/95 sm:shadow-[0_12px_28px_rgba(38,63,99,0.16)] sm:backdrop-blur">
           <div className="grid grid-cols-5 items-center gap-1.5">
             <button
               type="button"
