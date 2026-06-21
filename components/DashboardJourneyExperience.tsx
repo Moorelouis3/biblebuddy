@@ -3908,6 +3908,27 @@ export default function DashboardJourneyExperience({
     };
   }, [embeddedBibleSelectedBook, userId]);
 
+  const refreshDashboardBibleProgress = useCallback(
+    async (bookName: string | null | undefined) => {
+      if (!userId || !bookName) {
+        setDashboardBibleCompletedChapters([]);
+        return;
+      }
+
+      try {
+        const chapters = await getCompletedChapters(userId, bookName);
+        setDashboardBibleCompletedChapters(chapters);
+        setDashboardBibleCompletedByBook((previous) => ({
+          ...previous,
+          [bookName]: chapters,
+        }));
+      } catch (error) {
+        console.error("[DASHBOARD_BIBLE_READER] Could not refresh chapter progress:", error);
+      }
+    },
+    [userId],
+  );
+
   useEffect(() => {
     let cancelled = false;
 
@@ -5399,6 +5420,12 @@ export default function DashboardJourneyExperience({
     !homePanelOverride &&
     !shouldShowCompletionPanel &&
     !deepStudyFocusActive;
+  const shouldShowUnifiedDashboardLoader =
+    bibleYearDashboardActive &&
+    !bibleYearCurrentDayReady &&
+    !homePanelOverride &&
+    !deepStudyFocusActive &&
+    !showCompletionPanel;
 
   const studyProgressPercent = Math.round((studyProgressCompleted / Math.max(studyProgressTotal, 1)) * 100);
   const getFeaturePageBullets = (key: DashboardPageKey) => {
@@ -5727,6 +5754,7 @@ export default function DashboardJourneyExperience({
                 <button
                   type="button"
                   onClick={() => {
+                    void refreshDashboardBibleProgress(dashboardBibleSelectedBook);
                     setDashboardBibleSelectedBook(null);
                     setDashboardBibleSelectedChapter(null);
                   }}
@@ -5764,7 +5792,10 @@ export default function DashboardJourneyExperience({
               <div className="flex items-center justify-between gap-3 border-b border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-4 py-3">
                 <button
                   type="button"
-                  onClick={() => setDashboardBibleSelectedChapter(null)}
+                  onClick={() => {
+                    void refreshDashboardBibleProgress(dashboardBibleSelectedBook);
+                    setDashboardBibleSelectedChapter(null);
+                  }}
                   className="rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-3 py-2 text-xs font-black text-[var(--bb-accent,#2f7fe8)] transition hover:brightness-95"
                 >
                   Chapters
@@ -5781,36 +5812,12 @@ export default function DashboardJourneyExperience({
               </div>
               {readerSrc ? (
                 <div className="bg-[var(--bb-background,#f8fbff)] p-3">
-                  <BibleReadingModal
+                  <iframe
                     key={readerSrc}
-                    book={dashboardBibleSelectedBook}
-                    chapter={dashboardBibleSelectedChapter}
-                    presentation="inline"
-                    onClose={() => setDashboardBibleSelectedChapter(null)}
-                    onMarkComplete={() => {
-                      if (userId) void markChapterDone(userId, dashboardBibleSelectedBook, dashboardBibleSelectedChapter);
-                      setCompletedBibleChapterKeys((previous) =>
-                        previous.includes(getCompletedBibleChapterKey(dashboardBibleSelectedBook, dashboardBibleSelectedChapter))
-                          ? previous
-                          : [...previous, getCompletedBibleChapterKey(dashboardBibleSelectedBook, dashboardBibleSelectedChapter)],
-                      );
-                      setDashboardBibleCompletedChapters((previous) =>
-                        previous.includes(dashboardBibleSelectedChapter)
-                          ? previous
-                          : [...previous, dashboardBibleSelectedChapter].sort((a, b) => a - b),
-                      );
-                      setDashboardBibleCompletedByBook((previous) => {
-                        const bookChapters = previous[dashboardBibleSelectedBook] || [];
-                        if (bookChapters.includes(dashboardBibleSelectedChapter)) {
-                          return previous;
-                        }
-
-                        return {
-                          ...previous,
-                          [dashboardBibleSelectedBook]: [...bookChapters, dashboardBibleSelectedChapter].sort((a, b) => a - b),
-                        };
-                      });
-                    }}
+                    title={`${dashboardBibleSelectedBook} ${dashboardBibleSelectedChapter}`}
+                    src={readerSrc}
+                    loading="lazy"
+                    className="h-[1750px] w-full border-0 bg-white"
                   />
                 </div>
               ) : null}
@@ -14626,8 +14633,12 @@ Before we understand redemption, we need to understand what God made humanity fo
     );
   }
 
+  if (shouldShowUnifiedDashboardLoader) {
+    return <AppLoadingScreen className="min-h-[100svh]" />;
+  }
+
   return (
-    <div className="space-y-4 pb-[calc(104px+env(safe-area-inset-bottom,0px))] sm:pb-[calc(142px+env(safe-area-inset-bottom,0px))] lg:pb-4">
+    <div className="space-y-4 pb-[calc(96px+min(env(safe-area-inset-bottom,0px),8px))] sm:pb-[calc(142px+env(safe-area-inset-bottom,0px))] lg:pb-4">
       <style>{`
         @keyframes task-complete-pop {
           0% {
@@ -15286,9 +15297,6 @@ Before we understand redemption, we need to understand what God made humanity fo
             ) : null}
             {!bibleYearDashboardActive && !homePanelOverride && !shouldShowCompletionPanel && deepStudyNode ? (
               <div className="dashboard-inline-deep-study mb-3 sm:mb-4">{deepStudyNode}</div>
-            ) : null}
-            {bibleYearDashboardActive && !bibleYearCurrentDayReady && !homePanelOverride && !shouldShowCompletionPanel ? (
-              <AppLoadingScreen className="fixed inset-0 z-[220] min-h-0" />
             ) : null}
             {bibleYearDashboardActive && activeBibleYearDashboardDay && !homePanelOverride && !shouldShowCompletionPanel ? (
               <>
@@ -16265,7 +16273,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       ) : null}
 
       {!shouldShowBibleBuddy3ModeGate && !deepStudyFocusActive ? (
-      <nav data-bb-dashboard-tour="bottom-menu" className="fixed inset-x-0 bottom-0 z-[90] border-t border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-0 pb-[env(safe-area-inset-bottom,0px)] pt-0 sm:border-t-0 sm:bg-[color-mix(in_srgb,var(--bb-background,#0e1218)_86%,transparent)] sm:px-3 sm:pt-2 sm:backdrop-blur-xl">
+      <nav data-bb-dashboard-tour="bottom-menu" className="fixed inset-x-0 bottom-0 z-[90] border-t border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-0 pb-[min(env(safe-area-inset-bottom,0px),8px)] pt-0 sm:border-t-0 sm:bg-[color-mix(in_srgb,var(--bb-background,#0e1218)_86%,transparent)] sm:px-3 sm:pt-2 sm:backdrop-blur-xl">
         {dashboardMenuOpen ? (
           <div className="mb-0 w-full rounded-none border-x-0 border-b-0 border-t border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-3 pb-3 pt-3 shadow-none sm:mx-auto sm:mb-2 sm:max-w-xl sm:rounded-[24px] sm:border sm:bg-[var(--bb-card,#ffffff)]/95 sm:p-2.5 sm:shadow-[0_18px_46px_rgba(15,35,60,0.22)] sm:backdrop-blur">
             <div className="mb-2 flex justify-center">
@@ -16397,7 +16405,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           </div>
         ) : null}
 
-        <div className="w-full rounded-none border-x-0 border-b-0 bg-[var(--bb-card,#ffffff)] px-2 py-2 shadow-none sm:mx-auto sm:max-w-xl sm:rounded-[24px] sm:border sm:border-[var(--bb-card-border,#dbe7f4)] sm:bg-[var(--bb-card,#ffffff)]/95 sm:shadow-[0_12px_28px_rgba(38,63,99,0.16)] sm:backdrop-blur">
+        <div className="w-full rounded-none border-x-0 border-b-0 bg-[var(--bb-card,#ffffff)] px-2 pb-1.5 pt-2 shadow-none sm:mx-auto sm:max-w-xl sm:rounded-[24px] sm:border sm:border-[var(--bb-card-border,#dbe7f4)] sm:bg-[var(--bb-card,#ffffff)]/95 sm:shadow-[0_12px_28px_rgba(38,63,99,0.16)] sm:backdrop-blur">
           <div className="grid grid-cols-5 items-center gap-1.5">
             <button
               type="button"

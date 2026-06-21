@@ -7,7 +7,7 @@ type Props = {
 export default function AppLoadingScreen({ className = "" }: Props) {
   return (
     <div
-      className={`relative flex min-h-screen min-h-[100svh] items-center justify-center overflow-hidden bg-white ${className}`}
+      className={`relative flex min-h-screen min-h-[100svh] items-center justify-center overflow-hidden bg-[var(--bb-background,#eef4fb)] ${className}`}
       aria-busy="true"
       aria-live="polite"
     >
@@ -20,12 +20,12 @@ export default function AppLoadingScreen({ className = "" }: Props) {
           priority
           className="h-24 w-24 rounded-[24px] object-cover sm:h-28 sm:w-28"
         />
-        <p className="mt-4 text-2xl font-black tracking-tight text-[#111827] sm:text-[2rem]">
+        <p className="mt-4 text-2xl font-black tracking-tight text-[var(--bb-text-primary,#111827)] sm:text-[2rem]">
           BibleBuddy
         </p>
         <div className="mt-8 w-44 sm:w-52">
-          <div className="h-1.5 overflow-hidden rounded-full bg-[#dbe7f4] sm:h-2">
-            <div className="bb-loading-bar h-full rounded-full bg-[#0056FD] shadow-[0_0_14px_rgba(0,86,253,0.24)]" />
+          <div className="h-1.5 overflow-hidden rounded-full bg-[var(--bb-progress-track,#dbe7f4)] sm:h-2">
+            <div className="bb-loading-bar h-full rounded-full bg-[var(--bb-accent,#0056FD)] shadow-[0_0_14px_color-mix(in_srgb,var(--bb-accent,#0056FD)_24%,transparent)]" />
           </div>
           <span className="sr-only">Loading Bible Buddy</span>
         </div>
