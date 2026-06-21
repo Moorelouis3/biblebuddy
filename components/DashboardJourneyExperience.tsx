@@ -401,12 +401,11 @@ const STUDY_BOOK_BY_TITLE: Record<string, string> = {
 
 function BibleBookIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-      <path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z" />
-      <path d="M9 7h6" />
-      <path d="M12 6v7" />
-      <path d="M9 10h6" />
+    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M6.5 3.5h10.2a1.8 1.8 0 0 1 1.8 1.8v15.2H8.2a2.7 2.7 0 0 1-2.7-2.7V6.2a2.7 2.7 0 0 1 1-2.1Z" />
+      <path d="M8.5 3.5v17" />
+      <path d="M12.3 7.1v5.8" />
+      <path d="M10.1 9.3h4.4" />
     </svg>
   );
 }
@@ -2122,6 +2121,7 @@ export default function DashboardJourneyExperience({
   const [dashboardBibleSelectedBook, setDashboardBibleSelectedBook] = useState<string | null>(null);
   const [dashboardBibleSelectedChapter, setDashboardBibleSelectedChapter] = useState<number | null>(null);
   const [dashboardBibleCompletedChapters, setDashboardBibleCompletedChapters] = useState<number[]>([]);
+  const [dashboardBibleReaderHeight, setDashboardBibleReaderHeight] = useState(2200);
   const [dashboardBibleCompletedByBook, setDashboardBibleCompletedByBook] = useState<Record<string, number[]>>({});
   const [completedBibleChapterKeys, setCompletedBibleChapterKeys] = useState<string[]>([]);
   const [embeddedBibleChapterLoading, setEmbeddedBibleChapterLoading] = useState<string | null>(null);
@@ -2657,6 +2657,22 @@ export default function DashboardJourneyExperience({
       if (options?.showLoading) setShareRewardsLoading(false);
     }
   }, [userId]);
+
+  useEffect(() => {
+    function handleBibleReaderHeight(event: MessageEvent) {
+      const payload = event.data;
+      if (!payload || payload.type !== "bb-dashboard-bible-reader-height") return;
+      if (payload.book !== dashboardBibleSelectedBook || payload.chapter !== dashboardBibleSelectedChapter) return;
+
+      const nextHeight = Number(payload.height);
+      if (Number.isFinite(nextHeight) && nextHeight > 0) {
+        setDashboardBibleReaderHeight(Math.max(900, Math.ceil(nextHeight)));
+      }
+    }
+
+    window.addEventListener("message", handleBibleReaderHeight);
+    return () => window.removeEventListener("message", handleBibleReaderHeight);
+  }, [dashboardBibleSelectedBook, dashboardBibleSelectedChapter]);
 
   useEffect(() => {
     document.documentElement.classList.add("bb-dashboard-stable-motion");
@@ -5682,6 +5698,7 @@ export default function DashboardJourneyExperience({
     return (
       <section className="w-full px-1 pb-4">
         <div className="mx-auto flex max-w-xl flex-col gap-4">
+          {!dashboardBibleSelectedChapter ? (
           <div className="rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 shadow-[0_14px_36px_rgba(38,63,99,0.10)]">
             <div className="flex items-start justify-between gap-3">
               <div className="min-w-0">
@@ -5716,6 +5733,7 @@ export default function DashboardJourneyExperience({
               ) : null}
             </div>
           </div>
+          ) : null}
 
           {!dashboardBibleSelectedBook ? (
             <div className="rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-3 shadow-sm">
@@ -5788,36 +5806,16 @@ export default function DashboardJourneyExperience({
               </div>
             </div>
           ) : (
-            <div className="-mx-4 overflow-hidden border-y border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-[0_14px_36px_rgba(38,63,99,0.10)] sm:mx-0 sm:rounded-[28px] sm:border">
-              <div className="flex items-center justify-between gap-3 border-b border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-4 py-3">
-                <button
-                  type="button"
-                  onClick={() => {
-                    void refreshDashboardBibleProgress(dashboardBibleSelectedBook);
-                    setDashboardBibleSelectedChapter(null);
-                  }}
-                  className="rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-3 py-2 text-xs font-black text-[var(--bb-accent,#2f7fe8)] transition hover:brightness-95"
-                >
-                  Chapters
-                </button>
-                <p className="min-w-0 truncate text-sm font-black text-[var(--bb-text-primary,#111827)]">
-                  {dashboardBibleSelectedBook} {dashboardBibleSelectedChapter}
-                </p>
-                <Link
-                  href={`/Bible/${encodeURIComponent(dashboardBibleSelectedBook)}/${dashboardBibleSelectedChapter}`}
-                  className="rounded-full bg-[var(--bb-button,#2f7fe8)] px-3 py-2 text-xs font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95"
-                >
-                  Open
-                </Link>
-              </div>
+            <div className="-mx-4 overflow-hidden bg-[var(--bb-background,#f8fbff)] sm:mx-0">
               {readerSrc ? (
-                <div className="bg-[var(--bb-background,#f8fbff)] p-3">
+                <div className="bg-[var(--bb-background,#f8fbff)]">
                   <iframe
                     key={readerSrc}
                     title={`${dashboardBibleSelectedBook} ${dashboardBibleSelectedChapter}`}
                     src={readerSrc}
                     loading="lazy"
-                    className="h-[1750px] w-full border-0 bg-white"
+                    style={{ height: `${dashboardBibleReaderHeight}px` }}
+                    className="w-full border-0 bg-white"
                   />
                 </div>
               ) : null}
@@ -14638,7 +14636,7 @@ Before we understand redemption, we need to understand what God made humanity fo
   }
 
   return (
-    <div className="space-y-4 pb-[calc(96px+min(env(safe-area-inset-bottom,0px),8px))] sm:pb-[calc(142px+env(safe-area-inset-bottom,0px))] lg:pb-4">
+    <div className="space-y-4 pb-[72px] sm:pb-[calc(142px+env(safe-area-inset-bottom,0px))] lg:pb-4">
       <style>{`
         @keyframes task-complete-pop {
           0% {
@@ -16273,7 +16271,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       ) : null}
 
       {!shouldShowBibleBuddy3ModeGate && !deepStudyFocusActive ? (
-      <nav data-bb-dashboard-tour="bottom-menu" className="fixed inset-x-0 bottom-0 z-[90] border-t border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-0 pb-[env(safe-area-inset-bottom,0px)] pt-0 sm:border-t-0 sm:bg-[color-mix(in_srgb,var(--bb-background,#0e1218)_86%,transparent)] sm:px-3 sm:pt-2 sm:backdrop-blur-xl">
+      <nav data-bb-dashboard-tour="bottom-menu" className="fixed inset-x-0 bottom-0 z-[90] h-[64px] overflow-hidden border-t border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-0 pb-0 pt-0 sm:h-auto sm:overflow-visible sm:border-t-0 sm:bg-[color-mix(in_srgb,var(--bb-background,#0e1218)_86%,transparent)] sm:px-3 sm:pt-2 sm:backdrop-blur-xl">
         {dashboardMenuOpen ? (
           <div className="mb-0 w-full rounded-none border-x-0 border-b-0 border-t border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-3 pb-3 pt-3 shadow-none sm:mx-auto sm:mb-2 sm:max-w-xl sm:rounded-[24px] sm:border sm:bg-[var(--bb-card,#ffffff)]/95 sm:p-2.5 sm:shadow-[0_18px_46px_rgba(15,35,60,0.22)] sm:backdrop-blur">
             <div className="mb-2 flex justify-center">
@@ -16405,14 +16403,14 @@ Before we understand redemption, we need to understand what God made humanity fo
           </div>
         ) : null}
 
-        <div className="w-full rounded-none border-x-0 border-b-0 bg-[var(--bb-card,#ffffff)] px-1 pb-0 pt-0 shadow-none sm:mx-auto sm:max-w-xl sm:rounded-[24px] sm:border sm:border-[var(--bb-card-border,#dbe7f4)] sm:bg-[var(--bb-card,#ffffff)]/95 sm:px-2 sm:pb-1.5 sm:pt-2 sm:shadow-[0_12px_28px_rgba(38,63,99,0.16)] sm:backdrop-blur">
-          <div className="grid min-h-[58px] grid-cols-5 items-stretch gap-0 sm:min-h-0 sm:gap-1.5">
+        <div className="h-full w-full rounded-none border-x-0 border-b-0 bg-[var(--bb-card,#ffffff)] px-0 pb-0 pt-0 shadow-none sm:mx-auto sm:h-auto sm:max-w-xl sm:rounded-[24px] sm:border sm:border-[var(--bb-card-border,#dbe7f4)] sm:bg-[var(--bb-card,#ffffff)]/95 sm:px-2 sm:pb-1.5 sm:pt-2 sm:shadow-[0_12px_28px_rgba(38,63,99,0.16)] sm:backdrop-blur">
+          <div className="grid h-full grid-cols-5 items-stretch gap-0 sm:min-h-0 sm:gap-1.5">
             <button
               type="button"
               onClick={openProgressPage}
               className={`flex h-full min-h-[58px] flex-col items-center justify-center rounded-none text-[10px] font-black transition sm:h-14 sm:min-h-0 sm:rounded-[18px] ${
                 progressTabActive
-                  ? "bg-[var(--bb-accent-soft,rgba(47,127,232,0.10))] text-[var(--bb-accent,#2f7fe8)] sm:ring-1 sm:ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)]"
+                  ? "bg-transparent text-[var(--bb-accent,#2f7fe8)] sm:bg-[var(--bb-accent-soft,rgba(47,127,232,0.10))] sm:ring-1 sm:ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)]"
                   : "bg-transparent text-[var(--bb-text-primary,#111827)] hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.08))] sm:bg-[var(--bb-surface-soft,#f4f8ff)] sm:hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))]"
               }`}
               aria-label="Open Progress"
@@ -16435,7 +16433,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               onClick={openBibleReaderPage}
               className={`flex h-full min-h-[58px] flex-col items-center justify-center rounded-none text-[10px] font-black transition sm:h-14 sm:min-h-0 sm:rounded-[18px] ${
                 bibleTabActive
-                  ? "bg-[var(--bb-accent-soft,rgba(47,127,232,0.10))] text-[var(--bb-accent,#2f7fe8)] sm:ring-1 sm:ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)]"
+                  ? "bg-transparent text-[var(--bb-accent,#2f7fe8)] sm:bg-[var(--bb-accent-soft,rgba(47,127,232,0.10))] sm:ring-1 sm:ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)]"
                   : "bg-transparent text-[var(--bb-text-primary,#111827)] hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.08))] sm:bg-[var(--bb-surface-soft,#f4f8ff)] sm:hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))]"
               }`}
               aria-label="Open Bible"
@@ -16452,7 +16450,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               onClick={openPreferredHomeDashboard}
               className={`flex h-full min-h-[58px] flex-col items-center justify-center rounded-none text-[10px] font-black transition sm:h-14 sm:min-h-0 sm:rounded-[18px] ${
                 homeTabActive
-                  ? "bg-[var(--bb-accent-soft,rgba(47,127,232,0.10))] text-[var(--bb-accent,#2f7fe8)] sm:ring-1 sm:ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)]"
+                  ? "bg-transparent text-[var(--bb-accent,#2f7fe8)] sm:bg-[var(--bb-accent-soft,rgba(47,127,232,0.10))] sm:ring-1 sm:ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)]"
                   : "bg-transparent text-[var(--bb-text-primary,#111827)] hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.08))] sm:bg-[var(--bb-surface-soft,#f4f8ff)] sm:hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))]"
               }`}
               aria-label="Open Home"
@@ -16473,7 +16471,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               onClick={openBuddyChatPage}
               className={`flex h-full min-h-[58px] flex-col items-center justify-center rounded-none text-[10px] font-black transition sm:h-14 sm:min-h-0 sm:rounded-[18px] ${
                 chatTabActive
-                  ? "bg-[var(--bb-accent-soft,rgba(47,127,232,0.10))] text-[var(--bb-accent,#2f7fe8)] sm:ring-1 sm:ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)]"
+                  ? "bg-transparent text-[var(--bb-accent,#2f7fe8)] sm:bg-[var(--bb-accent-soft,rgba(47,127,232,0.10))] sm:ring-1 sm:ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)]"
                   : "bg-transparent text-[var(--bb-text-primary,#111827)] hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.08))] sm:bg-[var(--bb-surface-soft,#f4f8ff)] sm:hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))]"
               }`}
               aria-label="Open BB Chat"
@@ -16494,7 +16492,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 onClick={openAnalyticsPage}
                 className={`flex h-full min-h-[58px] flex-col items-center justify-center rounded-none text-[10px] font-black transition sm:h-14 sm:min-h-0 sm:rounded-[18px] ${
                   analyticsTabActive
-                    ? "bg-[var(--bb-accent-soft,rgba(47,127,232,0.10))] text-[var(--bb-accent,#2f7fe8)] sm:ring-1 sm:ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)]"
+                    ? "bg-transparent text-[var(--bb-accent,#2f7fe8)] sm:bg-[var(--bb-accent-soft,rgba(47,127,232,0.10))] sm:ring-1 sm:ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)]"
                     : "bg-transparent text-[var(--bb-text-primary,#111827)] hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.08))] sm:bg-[var(--bb-surface-soft,#f4f8ff)] sm:shadow-[0_0_18px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent)] sm:ring-1 sm:ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_16%,transparent)] sm:hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))] sm:hover:shadow-[0_0_24px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_26%,transparent)]"
                 }`}
                 aria-label="Open Analytics"
@@ -16517,7 +16515,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 onClick={openInvitePage}
                 className={`flex h-full min-h-[58px] flex-col items-center justify-center rounded-none text-[10px] font-black transition sm:h-14 sm:min-h-0 sm:rounded-[18px] ${
                   inviteTabActive
-                    ? "bg-[var(--bb-accent-soft,rgba(47,127,232,0.10))] text-[var(--bb-accent,#2f7fe8)] sm:ring-1 sm:ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)]"
+                    ? "bg-transparent text-[var(--bb-accent,#2f7fe8)] sm:bg-[var(--bb-accent-soft,rgba(47,127,232,0.10))] sm:ring-1 sm:ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)]"
                     : "bg-transparent text-[var(--bb-text-primary,#111827)] hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.08))] sm:bg-[var(--bb-surface-soft,#f4f8ff)] sm:shadow-[0_0_18px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent)] sm:ring-1 sm:ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_16%,transparent)] sm:hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))] sm:hover:shadow-[0_0_24px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_26%,transparent)]"
                 }`}
                 aria-label="Invite friends to Bible Buddy"

@@ -258,6 +258,43 @@ export default function BibleChapterPage() {
   const [booksModalSelectedBook, setBooksModalSelectedBook] = useState<string | null>(null);
   const reflectionSectionRef = useRef<HTMLDivElement | null>(null);
   const [highlightReflectionSection, setHighlightReflectionSection] = useState(false);
+
+  useEffect(() => {
+    if (!isDashboardEmbed || typeof window === "undefined") return;
+
+    const postHeight = () => {
+      const height = Math.max(
+        document.body.scrollHeight,
+        document.documentElement.scrollHeight,
+        document.body.offsetHeight,
+        document.documentElement.offsetHeight,
+      );
+
+      window.parent?.postMessage(
+        {
+          type: "bb-dashboard-bible-reader-height",
+          book: bookDisplayName,
+          chapter,
+          height,
+        },
+        window.location.origin,
+      );
+    };
+
+    const frame = window.requestAnimationFrame(postHeight);
+    const resizeObserver = typeof ResizeObserver !== "undefined" ? new ResizeObserver(() => postHeight()) : null;
+    resizeObserver?.observe(document.body);
+    resizeObserver?.observe(document.documentElement);
+    window.addEventListener("load", postHeight);
+    window.addEventListener("resize", postHeight);
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      resizeObserver?.disconnect();
+      window.removeEventListener("load", postHeight);
+      window.removeEventListener("resize", postHeight);
+    };
+  }, [bookDisplayName, chapter, isDashboardEmbed, sections.length, enrichedContent, gamesMenuOpen, translationMenuOpen, plainTextMode, isCompleted]);
   const [studyReflectionQuestion, setStudyReflectionQuestion] = useState<string | null>(null);
   const autoOpenedNotesRef = useRef(false);
   const louisChapterPromptRef = useRef<string | null>(null);
@@ -2664,7 +2701,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
 
         {hideReaderChrome ? (
           <div className="relative z-20 mb-3" ref={gamesMenuRef}>
-            <div className="flex flex-col gap-2">
+            <div className="grid grid-cols-2 gap-2">
               <button
                 type="button"
                 onClick={() => {
@@ -2673,23 +2710,15 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
                   void handleMarkFinished();
                 }}
                 aria-label={isCompleted ? "Chapter completed" : "Mark chapter completed"}
-                className={`flex min-h-[4.25rem] w-full items-center justify-between rounded-2xl border px-4 py-3 text-left text-white shadow-lg transition ${
+                className={`flex min-h-[3.5rem] w-full items-center justify-center rounded-2xl border px-4 py-3 text-center text-sm font-black shadow-sm transition ${
                   isCompleted
-                    ? "border-emerald-300 bg-emerald-50 text-emerald-800 shadow-emerald-100 hover:bg-emerald-100"
+                    ? "border-emerald-300 bg-emerald-50 text-emerald-800 hover:bg-emerald-100"
                     : isSaving
-                      ? "cursor-not-allowed border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_42%,transparent)] bg-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_54%,var(--bb-card,#ffffff))] shadow-[0_10px_22px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_14%,transparent)]"
-                      : "border-[var(--bb-accent,#2f7fe8)] bg-[var(--bb-button,#2f7fe8)] text-[var(--bb-button-text,#ffffff)] shadow-[0_12px_24px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)] hover:brightness-95 bb-mark-pulse"
+                      ? "cursor-not-allowed border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_42%,transparent)] bg-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_54%,var(--bb-card,#ffffff))] text-[var(--bb-button-text,#ffffff)]"
+                      : "border-[var(--bb-accent,#2f7fe8)] bg-[var(--bb-button,#2f7fe8)] text-[var(--bb-button-text,#ffffff)] hover:brightness-95 bb-mark-pulse"
                 }`}
               >
-                <div className="flex flex-col">
-                  <span className="text-xs font-extrabold uppercase tracking-[0.08em]">
-                    {isCompleted ? "Completed" : "Mark Complete"}
-                  </span>
-                  <span className={`mt-1 text-[11px] font-medium ${isCompleted ? "text-emerald-700" : "text-[color-mix(in_srgb,var(--bb-button-text,#ffffff)_82%,var(--bb-card,#ffffff))]"}`}>
-                    {isCompleted ? "This chapter is finished" : "Finish this chapter"}
-                  </span>
-                </div>
-                <span className="text-sm font-bold">{isCompleted ? "Done" : "Go"}</span>
+                {isCompleted ? "Completed" : "Mark Complete"}
               </button>
 
               <button
@@ -2700,13 +2729,9 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
                 }}
                 aria-expanded={gamesMenuOpen}
                 aria-label="Bible menu"
-                className="flex min-h-[3.75rem] w-full items-center justify-between rounded-2xl border border-[var(--bb-card-border,#d1d5db)] bg-[var(--bb-surface-soft,#f3f4f6)] px-4 py-3 text-left text-[var(--bb-text-primary,#1f2937)] shadow-sm transition hover:brightness-95"
+                className="flex min-h-[3.5rem] w-full items-center justify-center rounded-2xl border border-[var(--bb-card-border,#d1d5db)] bg-[var(--bb-surface-soft,#f3f4f6)] px-4 py-3 text-center text-sm font-black text-[var(--bb-text-primary,#1f2937)] shadow-sm transition hover:brightness-95"
               >
-                <div className="flex flex-col">
-                  <span className="text-xs font-extrabold uppercase tracking-[0.12em]">Menu</span>
-                  <span className="mt-1 text-[11px] font-semibold text-[var(--bb-text-secondary,#4b5563)]">Bible tools</span>
-                </div>
-                <span className="text-xl font-bold leading-none">{gamesMenuOpen ? "-" : "+"}</span>
+                {gamesMenuOpen ? "Close Menu" : "Menu"}
               </button>
             </div>
 
@@ -2812,8 +2837,10 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
         {/* VERSE BLOCK */}
         <div
           ref={verseContainerRef}
-          className={`border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] rounded-2xl shadow-sm p-6 md:p-8 mb-6 ${
-            hideReaderChrome ? "overflow-visible" : "max-h-[60vh] overflow-y-auto"
+          className={`bg-[var(--bb-card,#ffffff)] mb-6 ${
+            hideReaderChrome
+              ? "overflow-visible rounded-none border-0 p-0 shadow-none"
+              : "max-h-[60vh] overflow-y-auto rounded-2xl border border-[var(--bb-card-border,#e5e7eb)] p-6 shadow-sm md:p-8"
           } ${
             plainTextMode ? "plain-text-mode" : ""
           }`}
