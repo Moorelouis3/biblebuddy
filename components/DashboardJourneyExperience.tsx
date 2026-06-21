@@ -12130,11 +12130,6 @@ Before we understand redemption, we need to understand what God made humanity fo
     ];
     return (
       <section data-bible-year-study-area data-bb-dashboard-tour="study-tasks" className="dashboard-bible-year-study-area grid gap-5">
-        {renderDashboardSectionIntro(
-          "Scripture Player",
-          showCompletionMoment ? "Celebrate the lesson you finished and choose an optional next step." : "Press play and continue today's guided Bible lesson.",
-          "order-1"
-        )}
         {showCompletionMoment ? renderBibleYearLessonCompleteCard(day, nextBibleYearDay, () => openAdjacentBibleYearDay(nextBibleYearDay)) : (
         <article className={`order-4 overflow-hidden rounded-[20px] border p-5 text-[var(--bb-text-primary,#111827)] shadow-[0_18px_48px_rgba(38,63,99,0.12),inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-xl sm:p-6 ${
           readingComplete
