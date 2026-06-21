@@ -11549,11 +11549,11 @@ Before we understand redemption, we need to understand what God made humanity fo
         className="w-full overflow-hidden rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-[linear-gradient(145deg,color-mix(in_srgb,var(--bb-card,#ffffff)_94%,var(--bb-surface-soft,#f8fbff)),var(--bb-surface-soft,#f8fbff))] px-4 py-4 text-[var(--bb-text-primary,#111827)] shadow-[0_16px_42px_rgba(38,63,99,0.12),inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-xl sm:px-5"
       >
         <div className="mx-auto flex max-w-3xl flex-col gap-4">
-          <div className="flex min-w-0 items-center justify-center gap-4">
-            <span className="grid h-14 w-14 shrink-0 place-items-center rounded-[16px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f4f8ff)] shadow-[0_10px_24px_rgba(38,63,99,0.10),inset_0_1px_0_rgba(255,255,255,0.32)]">
+          <div className="flex min-w-0 items-center justify-center gap-3">
+            <span className="grid shrink-0 place-items-center">
               <StreakFlameEmoji flameId={lightThemeUsesClassicFlame ? "default" : profile?.selected_streak_flame} currentStreak={currentStreak} size={38} title={`${currentStreak} day streak`} />
             </span>
-            <span className="min-w-0 text-[30px] font-black leading-none tracking-[-0.01em] text-[var(--bb-text-primary,#111827)] sm:text-[36px]">
+            <span className="min-w-0 whitespace-nowrap text-[20px] font-black leading-none text-[var(--bb-text-primary,#111827)] sm:text-[28px]">
               {streakLabel} Streak
             </span>
           </div>
