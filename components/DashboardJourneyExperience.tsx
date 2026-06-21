@@ -12339,7 +12339,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                     setBibleYearPlanMessage(null);
                     setBibleYearPlanMenuOpen((open) => !open);
                   }}
-                  className="grid h-9 w-9 place-items-center rounded-full border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_30%,transparent)] bg-[var(--bb-surface-soft,#f8fbff)] text-[var(--bb-accent,#2f7fe8)] shadow-sm transition hover:bg-[var(--bb-accent-soft,#eaf5ff)] focus:outline-none focus:ring-2 focus:ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_36%,transparent)]"
+                  className="grid h-7 w-7 place-items-center bg-transparent text-gray-950 transition hover:bg-black/5 focus:outline-none focus:ring-2 focus:ring-[#7BAFD4]/35"
                   aria-label="Journey map settings"
                   aria-expanded={bibleYearPlanMenuOpen}
                   title="Journey map settings"
