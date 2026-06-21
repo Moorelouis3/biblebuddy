@@ -2122,6 +2122,7 @@ export default function DashboardJourneyExperience({
   const [dashboardBibleSelectedBook, setDashboardBibleSelectedBook] = useState<string | null>(null);
   const [dashboardBibleSelectedChapter, setDashboardBibleSelectedChapter] = useState<number | null>(null);
   const [dashboardBibleCompletedChapters, setDashboardBibleCompletedChapters] = useState<number[]>([]);
+  const [dashboardBibleCompletedByBook, setDashboardBibleCompletedByBook] = useState<Record<string, number[]>>({});
   const [completedBibleChapterKeys, setCompletedBibleChapterKeys] = useState<string[]>([]);
   const [embeddedBibleChapterLoading, setEmbeddedBibleChapterLoading] = useState<string | null>(null);
   const [embeddedBibleSearchMessage, setEmbeddedBibleSearchMessage] = useState<string | null>(null);
@@ -3935,6 +3936,39 @@ export default function DashboardJourneyExperience({
   useEffect(() => {
     let cancelled = false;
 
+    async function loadDashboardBibleBookProgress() {
+      if (!userId) {
+        setDashboardBibleCompletedByBook({});
+        return;
+      }
+
+      try {
+        const entries = await Promise.all(
+          DASHBOARD_BIBLE_BOOKS.map(async (bookName) => {
+            const chapters = await getCompletedChapters(userId, bookName);
+            return [bookName, chapters] as const;
+          }),
+        );
+
+        if (!cancelled) {
+          setDashboardBibleCompletedByBook(Object.fromEntries(entries));
+        }
+      } catch (error) {
+        console.error("[DASHBOARD_BIBLE_READER] Could not load book progress:", error);
+        if (!cancelled) setDashboardBibleCompletedByBook({});
+      }
+    }
+
+    void loadDashboardBibleBookProgress();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [userId]);
+
+  useEffect(() => {
+    let cancelled = false;
+
     async function loadBibleYearProgress() {
       if (!userId) {
         setBibleYearCompletedCardsByDay({});
@@ -5659,19 +5693,32 @@ export default function DashboardJourneyExperience({
           {!dashboardBibleSelectedBook ? (
             <div className="rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-3 shadow-sm">
               <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-                {DASHBOARD_BIBLE_BOOKS.map((bookName) => (
-                  <button
-                    key={bookName}
-                    type="button"
-                    onClick={() => {
-                      setDashboardBibleSelectedBook(bookName);
-                      setDashboardBibleSelectedChapter(null);
-                    }}
-                    className="min-h-[64px] rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-3 text-left text-sm font-black text-[var(--bb-text-primary,#111827)] transition hover:border-[var(--bb-accent,#2f7fe8)] hover:bg-[var(--bb-card,#ffffff)] hover:shadow-sm"
-                  >
-                    {bookName}
-                  </button>
-                ))}
+                {DASHBOARD_BIBLE_BOOKS.map((bookName) => {
+                  const completedForBook = dashboardBibleCompletedByBook[bookName] || [];
+                  const totalChaptersForBook = getBookTotalChapters(bookName);
+                  const bookCompleted = totalChaptersForBook > 0 && completedForBook.length >= totalChaptersForBook;
+
+                  return (
+                    <button
+                      key={bookName}
+                      type="button"
+                      onClick={() => {
+                        setDashboardBibleSelectedBook(bookName);
+                        setDashboardBibleSelectedChapter(null);
+                      }}
+                      className={`min-h-[64px] rounded-2xl border px-3 py-3 text-left text-sm font-black transition hover:shadow-sm ${
+                        bookCompleted
+                          ? "border-green-300 bg-green-100 text-green-800 hover:border-green-400 hover:bg-green-100"
+                          : "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] text-[var(--bb-text-primary,#111827)] hover:border-[var(--bb-accent,#2f7fe8)] hover:bg-[var(--bb-card,#ffffff)]"
+                      }`}
+                    >
+                      <span className="block leading-tight">{bookName}</span>
+                      <span className={`mt-1 block text-[11px] font-bold ${bookCompleted ? "text-green-700" : "text-[var(--bb-text-muted,#6b7280)]"}`}>
+                        {completedForBook.length}/{totalChaptersForBook}
+                      </span>
+                    </button>
+                  );
+                })}
               </div>
             </div>
           ) : !dashboardBibleSelectedChapter ? (
@@ -5752,6 +5799,17 @@ export default function DashboardJourneyExperience({
                           ? previous
                           : [...previous, dashboardBibleSelectedChapter].sort((a, b) => a - b),
                       );
+                      setDashboardBibleCompletedByBook((previous) => {
+                        const bookChapters = previous[dashboardBibleSelectedBook] || [];
+                        if (bookChapters.includes(dashboardBibleSelectedChapter)) {
+                          return previous;
+                        }
+
+                        return {
+                          ...previous,
+                          [dashboardBibleSelectedBook]: [...bookChapters, dashboardBibleSelectedChapter].sort((a, b) => a - b),
+                        };
+                      });
                     }}
                   />
                 </div>
