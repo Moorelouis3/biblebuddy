@@ -9,7 +9,7 @@ import { getCompletedChapters, getBookTotalChapters } from "../../../../lib/read
 import { supabase } from "../../../../lib/supabaseClient";
 
 // Book descriptions (short subtitle under the title)
-const BOOK_DESCRIPTIONS: Record<string, string> = {
+export const BOOK_DESCRIPTIONS: Record<string, string> = {
   // Old Testament
   genesis: "The beginning of everything — creation, humanity, and God's covenant.",
   exodus: "God rescues His people from slavery and gives them the Law.",
@@ -81,7 +81,7 @@ const BOOK_DESCRIPTIONS: Record<string, string> = {
 };
 
 // Book intros (3-4 sentences shown in the Louis speech bubble)
-const BOOK_INTROS: Record<string, string> = {
+export const BOOK_INTROS: Record<string, string> = {
   // Old Testament
   genesis: "Genesis means 'beginning,' and that is exactly what this is — the beginning of everything. Written by Moses, it covers creation, the fall of humanity, Noah's flood, and the lives of the patriarchs Abraham, Isaac, Jacob, and Joseph. It sets up every major theme in the Bible: God's holiness, human failure, and His unstoppable plan to redeem the world. This is where the story starts.",
   exodus: "Exodus was written by Moses and tells one of the most dramatic stories ever — God rescuing millions of enslaved people from the most powerful empire on earth. You will see the ten plagues, the crossing of the Red Sea, and Moses meeting God on Mount Sinai. It is also where God gives the Ten Commandments and instructions for building the Tabernacle. This book shows who God is: powerful, holy, and deeply committed to His people.",
@@ -152,7 +152,7 @@ const BOOK_INTROS: Record<string, string> = {
   revelation: "Revelation was written by the apostle John while he was exiled on the island of Patmos, and it is the most symbolic and visionary book in the Bible. Jesus appears to John in blazing glory and gives him messages for seven churches, then pulls back the curtain on what is happening in heaven and what is coming to earth. It is a book about the ultimate victory of Jesus over Satan, sin, death, and evil — and the creation of a brand-new heaven and earth. It is meant to be read as hope, not fear.",
 };
 
-const BOOK_CHAPTER_TOPICS: Record<string, string[]> = {
+export const BOOK_CHAPTER_TOPICS: Record<string, string[]> = {
   genesis: [
     "Creation begins, and God fills the world with order, life, and purpose.",
     "God places Adam in Eden, gives him work, and creates Eve.",

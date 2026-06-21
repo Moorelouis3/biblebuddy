@@ -3,39 +3,67 @@ import { createClient } from "@supabase/supabase-js";
 import { getDirectMessagePreview, isMissingDirectMessageActionColumnError } from "@/lib/directMessageActions";
 
 export const runtime = "nodejs";
-// Give the function up to 30 seconds (Vercel Pro / Hobby max)
 export const maxDuration = 30;
 
 const LOUIS_EMAIL = "moorelouis3@gmail.com";
-const MSG_DAY1 = `Hey, welcome to Bible Buddy 👋🏾
+const WELCOME_MESSAGE = `Hey, welcome to Bible Buddy 👋
 
-my name is Louis, I'm the one who built the app
+My name is Louis, and I'm the one who built the app.
 
-I created Bible Buddy because I used to struggle to actually understand what I was reading in the Bible
+I created Bible Buddy because I used to struggle to actually understand what I was reading in the Bible.
 
-I needed multiple things… notebooks, videos, searching stuff up… and I still had questions
+It often felt like I needed notebooks, videos, commentaries, and Google searches just to understand a few verses. Even then, I still had questions.
 
-so I made something simpler
+So I decided to build something simpler.
 
-Bible Buddy is built to help you understand what you're reading, not just go through it
+Bible Buddy was created to help both myself and others understand the Bible and build a consistent habit of reading God's Word every day.
 
-take a look around and get familiar with everything`;
+The goal isn't just to help you read through the Bible.
 
-// ── Resolve Louis's user ID ───────────────────────────────────────────────
-// Fastest path: LOUIS_USER_ID env var (set once in Vercel → zero DB calls).
-// Fallback: scan profile_stats for the founder email's user_id via a
-//           direct HTTP call to the Supabase auth admin endpoint (much
-//           faster than fetching 1000+ users with listUsers).
+The goal is to help you actually understand what you're reading while building a daily Bible habit that lasts.
+
+Bible Buddy is currently in beta, which means we're still actively improving the app and adding new features.
+
+Right now, Bible Buddy is not available in the App Store or Google Play Store.
+
+However, you can save Bible Buddy directly to your phone and use it just like a normal app.
+
+How To Save Bible Buddy On iPhone
+
+1. Open Safari
+2. Go to mybiblebuddy.net
+3. Tap the three dots at the bottom of the screen
+4. Tap Share
+5. Tap Add to Home Screen
+6. Bible Buddy will now appear on your home screen like a normal app
+
+How To Save Bible Buddy On Android
+
+1. Open Chrome
+2. Go to mybiblebuddy.net
+3. Tap the three dots in the top right corner
+4. Tap Add to Home Screen or Install App
+5. Bible Buddy will now appear on your home screen like a normal app
+
+Once you've installed Bible Buddy, I encourage you to start Day 1 of the Bible in One Year journey.
+
+The entire app is built around helping you understand Scripture one day at a time while building a consistent Bible reading habit.
+
+And if you ever have any questions, feedback, suggestions, bug reports, or run into any problems, feel free to send me a message.
+
+I personally read and reply to every message I receive.
+
+I'm excited to have you here, and I look forward to studying through the Bible together with you 🙏`;
+
 async function resolveFounderId(supabaseUrl: string, serviceKey: string, db: any): Promise<string | null> {
-  // 1. Env var — instant
   if (process.env.LOUIS_USER_ID) return process.env.LOUIS_USER_ID;
 
-  // 2. Supabase auth REST API filtered by email — returns 1 user, not 1000
   try {
     const res = await fetch(
       `${supabaseUrl}/auth/v1/admin/users?filter=${encodeURIComponent(`email=="${LOUIS_EMAIL}"`)}`,
-      { headers: { apikey: serviceKey, Authorization: `Bearer ${serviceKey}` } }
+      { headers: { apikey: serviceKey, Authorization: `Bearer ${serviceKey}` } },
     );
+
     if (res.ok) {
       const json = await res.json();
       const found = (json?.users ?? []).find((u: any) => u.email === LOUIS_EMAIL);
@@ -43,7 +71,6 @@ async function resolveFounderId(supabaseUrl: string, serviceKey: string, db: any
     }
   } catch (_) {}
 
-  // 3. Last resort: listUsers page 1 (Louis is an early user)
   try {
     const { data } = await db.auth.admin.listUsers({ page: 1, perPage: 1000 });
     const found = (data?.users ?? []).find((u: any) => u.email === LOUIS_EMAIL);
@@ -53,37 +80,35 @@ async function resolveFounderId(supabaseUrl: string, serviceKey: string, db: any
   return null;
 }
 
-async function claimOnboardingDay(db: any, userId: string, dayNumber: number): Promise<boolean> {
+async function claimWelcomeMessage(db: any, userId: string): Promise<boolean> {
   const now = new Date().toISOString();
   const { data, error } = await db
     .from("onboarding_dm_sent")
     .upsert(
-      { user_id: userId, day_number: dayNumber, sent_at: now },
-      { onConflict: "user_id,day_number", ignoreDuplicates: true }
+      { user_id: userId, day_number: 1, sent_at: now },
+      { onConflict: "user_id,day_number", ignoreDuplicates: true },
     )
     .select("user_id")
     .single();
 
   if (error) {
-    if (error.code === "PGRST116") {
-      return false;
-    }
-    console.error(`[WELCOME_DM] Failed to claim day ${dayNumber} for ${userId}:`, error.message);
+    if (error.code === "PGRST116") return false;
+    console.error(`[WELCOME_DM] Failed to claim welcome message for ${userId}:`, error.message);
     return false;
   }
 
   return !!data;
 }
 
-async function releaseOnboardingClaim(db: any, userId: string, dayNumber: number) {
+async function releaseWelcomeClaim(db: any, userId: string) {
   const { error } = await db
     .from("onboarding_dm_sent")
     .delete()
     .eq("user_id", userId)
-    .eq("day_number", dayNumber);
+    .eq("day_number", 1);
 
   if (error) {
-    console.error(`[WELCOME_DM] Failed to release day ${dayNumber} claim for ${userId}:`, error.message);
+    console.error(`[WELCOME_DM] Failed to release welcome claim for ${userId}:`, error.message);
   }
 }
 
@@ -91,6 +116,7 @@ export async function POST(request: NextRequest) {
   let userId: string;
   let firstName: string | undefined;
   let lastName: string | undefined;
+
   try {
     const body = await request.json();
     userId = body.userId;
@@ -114,29 +140,23 @@ export async function POST(request: NextRequest) {
     auth: { autoRefreshToken: false, persistSession: false },
   });
 
-  // Set display_name in profile_stats
   const displayName = [firstName, lastName].filter(Boolean).join(" ").trim();
   if (displayName) {
-    await db.from("profile_stats").upsert(
-      { user_id: userId, display_name: displayName },
-      { onConflict: "user_id" }
-    );
+    await db.from("profile_stats").upsert({ user_id: userId, display_name: displayName }, { onConflict: "user_id" });
   }
 
-  const claimed = await claimOnboardingDay(db, userId, 1);
+  const claimed = await claimWelcomeMessage(db, userId);
   if (!claimed) {
     return NextResponse.json({ ok: true, skipped: true });
   }
 
-  // Resolve Louis's user ID (fast path first)
   const louisId = await resolveFounderId(supabaseUrl, serviceKey, db);
   if (!louisId) {
     console.error("[WELCOME_DM] Founder account not found.");
-    await releaseOnboardingClaim(db, userId, 1);
+    await releaseWelcomeClaim(db, userId);
     return NextResponse.json({ error: "Founder account not found." }, { status: 404 });
   }
 
-  // Resolve Louis's display name
   const { data: louisProfile } = await db
     .from("profile_stats")
     .select("display_name, username")
@@ -144,10 +164,8 @@ export async function POST(request: NextRequest) {
     .maybeSingle();
   const louisName = louisProfile?.display_name || louisProfile?.username || "Louis";
 
-  // conversations table requires user_id_1 < user_id_2
   const [uid1, uid2] = louisId < userId ? [louisId, userId] : [userId, louisId];
 
-  // Find or create conversation
   const { data: existingConvo } = await db
     .from("conversations")
     .select("id")
@@ -166,20 +184,20 @@ export async function POST(request: NextRequest) {
 
     if (convoError || !newConvo) {
       console.error("[WELCOME_DM] Failed to create conversation:", convoError?.message);
-      await releaseOnboardingClaim(db, userId, 1);
+      await releaseWelcomeClaim(db, userId);
       return NextResponse.json({ error: "Failed to create conversation." }, { status: 500 });
     }
+
     conversationId = newConvo.id;
   }
 
   const now = new Date().toISOString();
-  const preview = getDirectMessagePreview(MSG_DAY1);
+  const preview = getDirectMessagePreview(WELCOME_MESSAGE);
 
-  // Insert message + update convo + upsert notification in parallel
   let msgResult = await db.from("messages").insert({
     conversation_id: conversationId,
     sender_id: louisId,
-    content: MSG_DAY1,
+    content: WELCOME_MESSAGE,
     created_at: now,
   });
 
@@ -187,22 +205,19 @@ export async function POST(request: NextRequest) {
     msgResult = await db.from("messages").insert({
       conversation_id: conversationId,
       sender_id: louisId,
-      content: MSG_DAY1,
+      content: WELCOME_MESSAGE,
       created_at: now,
     });
   }
 
-  await db.from("conversations")
-    .update({ last_message_at: now, last_message_preview: preview })
-    .eq("id", conversationId);
+  await db.from("conversations").update({ last_message_at: now, last_message_preview: preview }).eq("id", conversationId);
 
   if (msgResult.error) {
     console.error("[WELCOME_DM] Failed to insert message:", msgResult.error.message);
-    await releaseOnboardingClaim(db, userId, 1);
+    await releaseWelcomeClaim(db, userId);
     return NextResponse.json({ error: "Failed to send message." }, { status: 500 });
   }
 
-  // Upsert notification
   const { data: existingNotif } = await db
     .from("notifications")
     .select("id")
@@ -230,5 +245,9 @@ export async function POST(request: NextRequest) {
     });
   }
 
-  return NextResponse.json({ ok: true });
+  return NextResponse.json({
+    ok: true,
+    sent: "welcome_only",
+    followUpsDisabled: true,
+  });
 }

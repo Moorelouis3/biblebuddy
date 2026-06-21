@@ -11216,11 +11216,7 @@ Before we understand redemption, we need to understand what God made humanity fo
   }
 
   function renderBibleYearLessonCompleteCard(day: GenesisBibleYearDay, nextDay: GenesisBibleYearDay | null, openNextDay: () => void) {
-    const keyVerse = getBibleYearCompletionKeyVerse(day);
     const completedForDay = bibleYearCompletedCardsByDay[day.dayNumber] || {};
-    const dayCount = Math.max(completedBibleYearDays.length, completedForDay.reading ? 1 : 0);
-    const streak = Math.max(0, effectiveBibleYearReport.currentStreak || profile?.current_streak || 0);
-    const completionPercent = Math.max(0, Math.min(100, effectiveBibleYearReport.overallPercent || computedBibleYearOverallPercent || 0));
     const notesViewed = completedForDay.study_notes === true;
     const triviaDone = completedForDay.trivia === true;
     const reflectionDone = bibleYearReflectionPostedByDay[day.dayNumber] === true || completedForDay.reflection === true;
@@ -11232,24 +11228,23 @@ Before we understand redemption, we need to understand what God made humanity fo
           : activeBibleYearDayCard === "reflection"
             ? "notes"
             : null;
-    const nextAudio = nextDay ? getBibleYearDayContent(nextDay).audio : null;
-    const bonusActivities: Array<{
+    const supportCards: Array<{
       key: "notes" | "trivia" | "discussion";
+      eyebrow: string;
       icon: string;
       title: string;
       body: string;
       done: boolean;
-      status: string;
       badge?: string | null;
       onClick: () => void;
     }> = [
       {
         key: "notes",
-        icon: "📖",
+        eyebrow: "Study Notes",
+        icon: "SN",
         title: "Study Notes",
         body: "Read today's study notes to better understand the passage.",
         done: notesViewed,
-        status: notesViewed ? "Viewed" : "Optional",
         badge: null,
         onClick: () => {
           setBibleYearOptionalDiscussionDay(null);
@@ -11266,11 +11261,11 @@ Before we understand redemption, we need to understand what God made humanity fo
       },
       {
         key: "trivia",
-        icon: "🧠",
+        eyebrow: "Trivia",
+        icon: "TR",
         title: "Trivia",
         body: "Test what you learned from today's reading.",
         done: triviaDone,
-        status: triviaDone ? "Completed" : "Premium",
         badge: !isPaidUser && !isOwnerDashboard ? "Premium" : null,
         onClick: () => {
           if (!isPaidUser && !isOwnerDashboard) {
@@ -11285,11 +11280,11 @@ Before we understand redemption, we need to understand what God made humanity fo
       },
       {
         key: "discussion",
-        icon: "✍️",
+        eyebrow: "Discuss",
+        icon: "DS",
         title: "Discuss",
         body: "Answer today's discussion question and share what stood out to you.",
         done: reflectionDone,
-        status: reflectionDone ? "Completed" : "Optional",
         badge: null,
         onClick: () => {
           setBibleYearOpenScriptureNotesSectionKey(null);
@@ -11301,128 +11296,93 @@ Before we understand redemption, we need to understand what God made humanity fo
     ];
 
     return (
-      <article className="order-4 overflow-hidden rounded-[20px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_28%,var(--bb-card-border,#dbe7f4))] bg-[linear-gradient(145deg,color-mix(in_srgb,var(--bb-card,#ffffff)_96%,var(--bb-surface-soft,#f8fbff)),color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_64%,var(--bb-surface-soft,#f8fbff)))] p-4 text-[var(--bb-text-primary,#111827)] shadow-[0_22px_58px_rgba(38,63,99,0.16),inset_0_1px_0_rgba(255,255,255,0.42)] backdrop-blur-xl sm:p-6">
-        <div className="overflow-hidden rounded-[18px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)] bg-[radial-gradient(circle_at_14%_0%,rgba(246,180,75,0.24),transparent_32%),radial-gradient(circle_at_92%_10%,color-mix(in_srgb,var(--bb-accent,#2f7fe8)_20%,transparent),transparent_34%),linear-gradient(145deg,var(--bb-card,#ffffff),var(--bb-surface-soft,#f8fbff))] p-5 text-center shadow-[0_16px_34px_rgba(38,63,99,0.12)]">
-          <div className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-[var(--bb-accent,#2f7fe8)] text-3xl text-white shadow-[0_0_30px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_42%,transparent)]" aria-hidden="true">
-            🔥
-          </div>
-          <p className="mt-4 text-[12px] font-black uppercase tracking-[0.22em] text-[var(--bb-accent,#2f7fe8)]">
-            Day {day.dayNumber} Complete
-          </p>
-          <h2 className="mx-auto mt-2 max-w-2xl text-[28px] font-black leading-tight text-[var(--bb-text-primary,#111827)] sm:text-[36px]">
-            {day.title}
-          </h2>
-          <p className="mt-2 text-sm font-black text-[var(--bb-text-secondary,#4b5563)]">{day.reference}</p>
-          <p className="mx-auto mt-4 max-w-xl text-[15px] font-bold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-            Great job. You completed today&apos;s lesson. You kept moving through Scripture, and that momentum matters.
-          </p>
-        </div>
-
-        <div className="mt-4 grid gap-3 sm:grid-cols-3">
-          {[
-            { label: "Current Streak", value: `${streak} Day Streak`, icon: "🔥" },
-            { label: "Days Completed", value: `${dayCount} of 365`, icon: "✅" },
-            { label: "Bible Complete", value: `${completionPercent}%`, icon: "📈" },
-          ].map((stat) => (
-            <div key={stat.label} className="rounded-[16px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm">
-              <div className="flex items-center gap-2">
-                <span className="grid h-9 w-9 place-items-center rounded-full bg-[var(--bb-accent-soft,#eaf5ff)] text-lg" aria-hidden="true">{stat.icon}</span>
-                <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--bb-text-muted,#6b7280)]">{stat.label}</p>
-              </div>
-              <p className="mt-3 text-[22px] font-black leading-none text-[var(--bb-text-primary,#111827)]">{stat.value}</p>
+      <article className="order-4 grid gap-4">
+        <section className="overflow-hidden rounded-[20px] border border-emerald-300 bg-[var(--bb-card,#ffffff)] p-4 text-[var(--bb-text-primary,#111827)] shadow-[0_16px_42px_rgba(38,63,99,0.12)] sm:p-5">
+          <div className="flex flex-wrap items-start justify-between gap-4">
+            <div className="min-w-0 flex-1">
+              <p className="text-[10px] font-black uppercase tracking-[0.18em] text-emerald-700">
+                Day {day.dayNumber} Complete
+              </p>
+              <h2 className="mt-2 text-[24px] font-black leading-tight text-[var(--bb-text-primary,#111827)] sm:text-[30px]">
+                {day.title}
+              </h2>
+              <p className="mt-2 text-sm font-black text-[var(--bb-text-secondary,#4b5563)]">{day.reference}</p>
+              <p className="mt-3 max-w-2xl text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+                Today&apos;s audio lesson is finished. Your day is complete. You can still open today&apos;s study tools below, or move straight into the next day when you&apos;re ready.
+              </p>
             </div>
-          ))}
-        </div>
-
-        <div className="mt-4 rounded-[18px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_30%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm">
-          <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">Key Verse</p>
-          <blockquote className="mt-2 text-xl font-black leading-8 text-[var(--bb-text-primary,#111827)]">
-            “{keyVerse.text}”
-          </blockquote>
-          <p className="mt-2 text-sm font-black text-[var(--bb-text-secondary,#4b5563)]">{keyVerse.reference}</p>
-        </div>
-
-        <div className="mt-5">
-          <div className="flex flex-wrap items-end justify-between gap-2">
-            <div>
-              <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">Continue Learning</p>
-              <h3 className="mt-1 text-xl font-black text-[var(--bb-text-primary,#111827)]">Optional study activities</h3>
-            </div>
-            <p className="text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">These never block completion.</p>
-          </div>
-          <div className="mt-3 grid gap-3 md:grid-cols-3">
-            {bonusActivities.map((activity) => {
-              const expanded = activeBonus === activity.key;
-              return (
-                <Fragment key={activity.key}>
-                  <button
-                    type="button"
-                    onClick={activity.onClick}
-                    aria-expanded={expanded}
-                    className={`rounded-[16px] border p-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md ${
-                      expanded
-                        ? "border-[var(--bb-accent,#2f7fe8)] bg-[var(--bb-accent-soft,#eaf5ff)]"
-                        : activity.done
-                          ? "border-emerald-300 bg-emerald-50"
-                          : "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)]"
-                    }`}
-                  >
-                    <div className="flex items-start justify-between gap-3">
-                      <span className="grid h-11 w-11 place-items-center rounded-full bg-white text-2xl shadow-sm" aria-hidden="true">{activity.icon}</span>
-                      <span className={`rounded-full px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.12em] ${
-                        activity.done ? "bg-emerald-500 text-white" : "bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-text-muted,#6b7280)]"
-                      }`}>
-                        {activity.done ? "✓ " : ""}{activity.status}
-                      </span>
-                    </div>
-                    {activity.badge ? (
-                      <p className="mt-2 text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">{activity.badge}</p>
-                    ) : null}
-                    <h4 className="mt-3 text-base font-black text-[var(--bb-text-primary,#111827)]">{activity.title}</h4>
-                    <p className="mt-1 text-sm font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">{activity.body}</p>
-                  </button>
-                  {expanded ? (
-                    <div className="overflow-hidden rounded-[18px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-sm md:col-span-3">
-                      {activity.key === "notes"
-                        ? renderBibleYearScriptureNotesTask(day)
-                        : activity.key === "discussion"
-                          ? renderBibleYearOptionalDiscussion(day)
-                      : renderBibleYearInlineTask("trivia", day)}
-                    </div>
-                  ) : null}
-                </Fragment>
-              );
-            })}
-          </div>
-        </div>
-
-        <div className="mt-5 rounded-[18px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm">
-          <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">Up Next</p>
-          {nextDay ? (
-            <div className="mt-3 grid gap-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
-              <div>
-                <p className="text-sm font-black text-[var(--bb-text-muted,#6b7280)]">Day {nextDay.dayNumber}</p>
-                <h3 className="mt-1 text-xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">{nextDay.title}</h3>
-                <p className="mt-1 text-sm font-bold text-[var(--bb-text-secondary,#4b5563)]">{nextDay.reference}</p>
-                <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">{nextDay.summary}</p>
-                <p className="mt-2 text-xs font-black uppercase tracking-[0.12em] text-[var(--bb-text-muted,#6b7280)]">
-                  {nextAudio?.estimatedDuration || nextDay.estimatedTime} lesson
-                </p>
-              </div>
+            {nextDay ? (
               <button
                 type="button"
                 onClick={openNextDay}
-                className="rounded-[14px] bg-[var(--bb-button,#2f7fe8)] px-5 py-3.5 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-[0_14px_30px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_28%,transparent)] transition hover:brightness-95"
+                className="shrink-0 rounded-[14px] bg-[var(--bb-button,#2f7fe8)] px-4 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95"
               >
                 Continue to Day {nextDay.dayNumber}
               </button>
-            </div>
-          ) : (
-            <p className="mt-2 text-sm font-bold text-[var(--bb-text-secondary,#4b5563)]">
-              You finished every available Bible in One Year lesson. That is real progress.
-            </p>
-          )}
-        </div>
+            ) : null}
+          </div>
+        </section>
+
+        <section className="overflow-hidden rounded-[20px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] shadow-[0_16px_42px_rgba(38,63,99,0.12),inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-xl">
+          {supportCards.map((item, index) => {
+            const expanded = activeBonus === item.key;
+            return (
+              <div
+                key={item.key}
+                className={`${index > 0 ? "border-t" : ""} ${item.done ? "border-emerald-200 bg-emerald-50/70" : "border-[var(--bb-card-border,#dbe7f4)]"}`}
+              >
+                <button
+                  type="button"
+                  onClick={item.onClick}
+                  aria-expanded={expanded}
+                  className="flex w-full items-center gap-3 px-4 py-4 text-left transition hover:bg-[var(--bb-surface-soft,#f8fbff)] sm:px-5"
+                >
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[var(--bb-accent-soft,#edf5ff)] text-[11px] font-black tracking-[0.12em] text-[var(--bb-accent,#2f7fe8)] shadow-sm" aria-hidden="true">
+                    {item.icon}
+                  </span>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--bb-text-muted,#6b7280)]">
+                      {item.eyebrow}
+                    </p>
+                    <div className="mt-1 flex flex-wrap items-center gap-2">
+                      <h3 className="text-[18px] font-black leading-tight text-[var(--bb-text-primary,#111827)]">
+                        {item.title}
+                      </h3>
+                      {item.badge ? (
+                        <span className="rounded-full bg-[var(--bb-accent-soft,#eaf5ff)] px-2 py-0.5 text-[10px] font-black uppercase tracking-[0.12em] text-[var(--bb-accent,#2f7fe8)]">
+                          {item.badge}
+                        </span>
+                      ) : null}
+                      {item.done ? (
+                        <span className="rounded-full bg-emerald-500 px-2 py-0.5 text-[10px] font-black uppercase tracking-[0.12em] text-white">
+                          Completed
+                        </span>
+                      ) : null}
+                    </div>
+                    <p className="mt-1 text-sm font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">
+                      {item.body}
+                    </p>
+                  </div>
+                  <span
+                    className={`text-lg font-black text-[var(--bb-text-muted,#6b7280)] transition-transform ${expanded ? "rotate-90" : ""}`}
+                    aria-hidden="true"
+                  >
+                    {">"}
+                  </span>
+                </button>
+                {expanded ? (
+                  <div className="border-t border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)]">
+                    {item.key === "notes"
+                      ? renderBibleYearScriptureNotesTask(day)
+                      : item.key === "discussion"
+                        ? renderBibleYearOptionalDiscussion(day)
+                        : renderBibleYearInlineTask("trivia", day)}
+                  </div>
+                ) : null}
+              </div>
+            );
+          })}
+        </section>
       </article>
     );
   }
@@ -12443,7 +12403,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                           openBibleYearDayOnDashboard(milestoneDay, { reviewCompleted: isComplete });
                         }}
                         disabled={!milestoneDay || isLocked}
-                        className={`relative z-10 mx-auto grid h-[82px] w-[62px] overflow-visible rounded-[15px] border bg-[var(--bb-card,#ffffff)] p-1 shadow-sm transition ${
+                        className={`relative z-10 mx-auto grid h-[72px] w-[72px] overflow-visible rounded-[15px] border bg-[var(--bb-card,#ffffff)] p-1 shadow-sm transition ${
                           isComplete
                             ? "border-[#7BAFD4] shadow-[0_0_14px_rgba(123,175,212,0.20)] ring-1 ring-[#7BAFD4]/25"
                             : isCurrent
@@ -12464,7 +12424,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                       </button>
                       <p className="mt-2 truncate text-[11px] font-bold leading-tight text-[var(--bb-text-primary,#111827)]">Day {milestone.dayNumber}</p>
                       <p className={`mt-0.5 text-[10px] font-semibold leading-tight ${isComplete ? "text-[var(--bb-accent,#2f7fe8)]" : isCurrent ? "text-[var(--bb-accent,#2f7fe8)]" : "text-[var(--bb-text-muted,#6b7280)]"}`}>
-                        {isComplete ? "Complete" : isCurrent ? "Current" : "Locked"}
+                        {isComplete ? "Done" : isCurrent ? "Current" : "Locked"}
                       </p>
                     </div>
                   );
@@ -15414,7 +15374,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                                     );
                                   }}
                                   disabled={!milestoneDay || isLocked}
-                                  className={`relative z-10 mx-auto grid h-[82px] w-[62px] overflow-visible rounded-[15px] border bg-[var(--bb-card,#ffffff)] p-1 shadow-sm transition ${
+                                  className={`relative z-10 mx-auto grid h-[72px] w-[72px] overflow-visible rounded-[15px] border bg-[var(--bb-card,#ffffff)] p-1 shadow-sm transition ${
                                     isSelectedDetail
                                       ? "border-[var(--bb-accent,#2f7fe8)] shadow-[0_0_0_3px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent),0_0_28px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_38%,transparent)] ring-2 ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_30%,transparent)]"
                                       : isComplete
@@ -15461,7 +15421,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                                       ? "text-[var(--bb-accent,#2f7fe8)]"
                                       : "text-[var(--bb-text-muted,#6b7280)]"
                                 }`}>
-                                  {isComplete ? "Complete" : isCurrent ? "Current Day" : "Locked"}
+                                  {isComplete ? "Done" : isCurrent ? "Current Day" : "Locked"}
                                 </p>
                               </div>
                             );

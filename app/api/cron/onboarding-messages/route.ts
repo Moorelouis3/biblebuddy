@@ -18,6 +18,6 @@ export async function GET(request: NextRequest) {
     ok: true,
     disabled: true,
     sent: 0,
-    message: "Automated onboarding DMs are disabled. Little Louis onboarding now owns onboarding.",
+    message: "Automated onboarding follow-up DMs are disabled. Bible Buddy now sends a single welcome message only.",
   });
 }
