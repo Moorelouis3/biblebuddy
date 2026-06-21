@@ -16273,7 +16273,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       ) : null}
 
       {!shouldShowBibleBuddy3ModeGate && !deepStudyFocusActive ? (
-      <nav data-bb-dashboard-tour="bottom-menu" className="fixed inset-x-0 bottom-0 z-[90] border-t border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-0 pb-[min(env(safe-area-inset-bottom,0px),8px)] pt-0 sm:border-t-0 sm:bg-[color-mix(in_srgb,var(--bb-background,#0e1218)_86%,transparent)] sm:px-3 sm:pt-2 sm:backdrop-blur-xl">
+      <nav data-bb-dashboard-tour="bottom-menu" className="fixed inset-x-0 bottom-0 z-[90] border-t border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-0 pb-[env(safe-area-inset-bottom,0px)] pt-0 sm:border-t-0 sm:bg-[color-mix(in_srgb,var(--bb-background,#0e1218)_86%,transparent)] sm:px-3 sm:pt-2 sm:backdrop-blur-xl">
         {dashboardMenuOpen ? (
           <div className="mb-0 w-full rounded-none border-x-0 border-b-0 border-t border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-3 pb-3 pt-3 shadow-none sm:mx-auto sm:mb-2 sm:max-w-xl sm:rounded-[24px] sm:border sm:bg-[var(--bb-card,#ffffff)]/95 sm:p-2.5 sm:shadow-[0_18px_46px_rgba(15,35,60,0.22)] sm:backdrop-blur">
             <div className="mb-2 flex justify-center">
@@ -16405,15 +16405,15 @@ Before we understand redemption, we need to understand what God made humanity fo
           </div>
         ) : null}
 
-        <div className="w-full rounded-none border-x-0 border-b-0 bg-[var(--bb-card,#ffffff)] px-2 pb-1.5 pt-2 shadow-none sm:mx-auto sm:max-w-xl sm:rounded-[24px] sm:border sm:border-[var(--bb-card-border,#dbe7f4)] sm:bg-[var(--bb-card,#ffffff)]/95 sm:shadow-[0_12px_28px_rgba(38,63,99,0.16)] sm:backdrop-blur">
-          <div className="grid grid-cols-5 items-center gap-1.5">
+        <div className="w-full rounded-none border-x-0 border-b-0 bg-[var(--bb-card,#ffffff)] px-1 pb-0 pt-0 shadow-none sm:mx-auto sm:max-w-xl sm:rounded-[24px] sm:border sm:border-[var(--bb-card-border,#dbe7f4)] sm:bg-[var(--bb-card,#ffffff)]/95 sm:px-2 sm:pb-1.5 sm:pt-2 sm:shadow-[0_12px_28px_rgba(38,63,99,0.16)] sm:backdrop-blur">
+          <div className="grid min-h-[58px] grid-cols-5 items-stretch gap-0 sm:min-h-0 sm:gap-1.5">
             <button
               type="button"
               onClick={openProgressPage}
-              className={`flex h-14 flex-col items-center justify-center rounded-[18px] text-[10px] font-black transition ${
+              className={`flex h-full min-h-[58px] flex-col items-center justify-center rounded-none text-[10px] font-black transition sm:h-14 sm:min-h-0 sm:rounded-[18px] ${
                 progressTabActive
-                  ? "bg-[var(--bb-accent-soft,rgba(47,127,232,0.14))] text-[var(--bb-accent,#2f7fe8)] ring-1 ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)]"
-                  : "bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-text-primary,#111827)] hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))]"
+                  ? "bg-[var(--bb-accent-soft,rgba(47,127,232,0.10))] text-[var(--bb-accent,#2f7fe8)] sm:ring-1 sm:ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)]"
+                  : "bg-transparent text-[var(--bb-text-primary,#111827)] hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.08))] sm:bg-[var(--bb-surface-soft,#f4f8ff)] sm:hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))]"
               }`}
               aria-label="Open Progress"
               data-dashboard-nav-key="progress"
@@ -16427,16 +16427,16 @@ Before we understand redemption, we need to understand what God made humanity fo
                   <path d="M3 19h18" />
                 </svg>
               </span>
-              <span>Progress</span>
+              <span className="sr-only sm:not-sr-only">Progress</span>
             </button>
 
             <button
               type="button"
               onClick={openBibleReaderPage}
-              className={`flex h-14 flex-col items-center justify-center rounded-[18px] text-[10px] font-black transition ${
+              className={`flex h-full min-h-[58px] flex-col items-center justify-center rounded-none text-[10px] font-black transition sm:h-14 sm:min-h-0 sm:rounded-[18px] ${
                 bibleTabActive
-                  ? "bg-[var(--bb-accent-soft,rgba(47,127,232,0.14))] text-[var(--bb-accent,#2f7fe8)] ring-1 ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)]"
-                  : "bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-text-primary,#111827)] hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))]"
+                  ? "bg-[var(--bb-accent-soft,rgba(47,127,232,0.10))] text-[var(--bb-accent,#2f7fe8)] sm:ring-1 sm:ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)]"
+                  : "bg-transparent text-[var(--bb-text-primary,#111827)] hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.08))] sm:bg-[var(--bb-surface-soft,#f4f8ff)] sm:hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))]"
               }`}
               aria-label="Open Bible"
               data-dashboard-nav-key="bible"
@@ -16444,16 +16444,16 @@ Before we understand redemption, we need to understand what God made humanity fo
               <span className={`grid h-7 w-7 place-items-center rounded-full ${bibleTabActive ? "bg-[var(--bb-accent,#2f7fe8)] text-white" : ""}`} aria-hidden="true">
                 <BibleBookIcon />
               </span>
-              <span>Bible</span>
+              <span className="sr-only sm:not-sr-only">Bible</span>
             </button>
 
             <button
               type="button"
               onClick={openPreferredHomeDashboard}
-              className={`flex h-14 flex-col items-center justify-center rounded-[18px] text-[10px] font-black transition ${
+              className={`flex h-full min-h-[58px] flex-col items-center justify-center rounded-none text-[10px] font-black transition sm:h-14 sm:min-h-0 sm:rounded-[18px] ${
                 homeTabActive
-                  ? "bg-[var(--bb-accent-soft,rgba(47,127,232,0.14))] text-[var(--bb-accent,#2f7fe8)] ring-1 ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)]"
-                  : "bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-text-primary,#111827)] hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))]"
+                  ? "bg-[var(--bb-accent-soft,rgba(47,127,232,0.10))] text-[var(--bb-accent,#2f7fe8)] sm:ring-1 sm:ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)]"
+                  : "bg-transparent text-[var(--bb-text-primary,#111827)] hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.08))] sm:bg-[var(--bb-surface-soft,#f4f8ff)] sm:hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))]"
               }`}
               aria-label="Open Home"
               data-dashboard-nav-key="home-tab"
@@ -16465,16 +16465,16 @@ Before we understand redemption, we need to understand what God made humanity fo
                   <path d="M9 20v-6h6v6" />
                 </svg>
               </span>
-              <span>Home</span>
+              <span className="sr-only sm:not-sr-only">Home</span>
             </button>
 
             <button
               type="button"
               onClick={openBuddyChatPage}
-              className={`flex h-14 flex-col items-center justify-center rounded-[18px] text-[10px] font-black transition ${
+              className={`flex h-full min-h-[58px] flex-col items-center justify-center rounded-none text-[10px] font-black transition sm:h-14 sm:min-h-0 sm:rounded-[18px] ${
                 chatTabActive
-                  ? "bg-[var(--bb-accent-soft,rgba(47,127,232,0.14))] text-[var(--bb-accent,#2f7fe8)] ring-1 ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)]"
-                  : "bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-text-primary,#111827)] hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))]"
+                  ? "bg-[var(--bb-accent-soft,rgba(47,127,232,0.10))] text-[var(--bb-accent,#2f7fe8)] sm:ring-1 sm:ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)]"
+                  : "bg-transparent text-[var(--bb-text-primary,#111827)] hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.08))] sm:bg-[var(--bb-surface-soft,#f4f8ff)] sm:hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))]"
               }`}
               aria-label="Open BB Chat"
               data-dashboard-nav-key="buddy"
@@ -16485,17 +16485,17 @@ Before we understand redemption, we need to understand what God made humanity fo
                   <path d="M9 8h6M9 11h4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                 </svg>
               </span>
-              <span>BB Chat</span>
+              <span className="sr-only sm:not-sr-only">BB Chat</span>
             </button>
 
             {isOwnerDashboard ? (
               <button
                 type="button"
                 onClick={openAnalyticsPage}
-                className={`flex h-14 flex-col items-center justify-center rounded-[18px] text-[10px] font-black transition ${
+                className={`flex h-full min-h-[58px] flex-col items-center justify-center rounded-none text-[10px] font-black transition sm:h-14 sm:min-h-0 sm:rounded-[18px] ${
                   analyticsTabActive
-                    ? "bg-[var(--bb-accent-soft,rgba(47,127,232,0.14))] text-[var(--bb-accent,#2f7fe8)] ring-1 ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)]"
-                    : "bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-text-primary,#111827)] shadow-[0_0_18px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent)] ring-1 ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_16%,transparent)] hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))] hover:shadow-[0_0_24px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_26%,transparent)]"
+                    ? "bg-[var(--bb-accent-soft,rgba(47,127,232,0.10))] text-[var(--bb-accent,#2f7fe8)] sm:ring-1 sm:ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)]"
+                    : "bg-transparent text-[var(--bb-text-primary,#111827)] hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.08))] sm:bg-[var(--bb-surface-soft,#f4f8ff)] sm:shadow-[0_0_18px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent)] sm:ring-1 sm:ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_16%,transparent)] sm:hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))] sm:hover:shadow-[0_0_24px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_26%,transparent)]"
                 }`}
                 aria-label="Open Analytics"
                 data-dashboard-nav-key="analytics"
@@ -16509,16 +16509,16 @@ Before we understand redemption, we need to understand what God made humanity fo
                     <path d="M3 19h18" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
                   </svg>
                 </span>
-                <span>Analytics</span>
+                <span className="sr-only sm:not-sr-only">Analytics</span>
               </button>
             ) : (
               <button
                 type="button"
                 onClick={openInvitePage}
-                className={`flex h-14 flex-col items-center justify-center rounded-[18px] text-[10px] font-black transition ${
+                className={`flex h-full min-h-[58px] flex-col items-center justify-center rounded-none text-[10px] font-black transition sm:h-14 sm:min-h-0 sm:rounded-[18px] ${
                   inviteTabActive
-                    ? "bg-[var(--bb-accent-soft,rgba(47,127,232,0.14))] text-[var(--bb-accent,#2f7fe8)] ring-1 ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)]"
-                    : "bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-text-primary,#111827)] shadow-[0_0_18px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent)] ring-1 ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_16%,transparent)] hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))] hover:shadow-[0_0_24px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_26%,transparent)]"
+                    ? "bg-[var(--bb-accent-soft,rgba(47,127,232,0.10))] text-[var(--bb-accent,#2f7fe8)] sm:ring-1 sm:ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)]"
+                    : "bg-transparent text-[var(--bb-text-primary,#111827)] hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.08))] sm:bg-[var(--bb-surface-soft,#f4f8ff)] sm:shadow-[0_0_18px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent)] sm:ring-1 sm:ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_16%,transparent)] sm:hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))] sm:hover:shadow-[0_0_24px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_26%,transparent)]"
                 }`}
                 aria-label="Invite friends to Bible Buddy"
                 data-dashboard-nav-key="share"
@@ -16529,7 +16529,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                     <path d="m21 3-6.7 18-3.7-7.6L3 9.7 21 3Z" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </span>
-                <span>Invite</span>
+                <span className="sr-only sm:not-sr-only">Invite</span>
               </button>
             )}
           </div>
