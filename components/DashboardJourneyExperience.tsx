@@ -5748,7 +5748,7 @@ export default function DashboardJourneyExperience({
                       onClick={() => setDashboardBibleSelectedChapter(chapterNumber)}
                       className={`aspect-square rounded-2xl border text-sm font-black transition ${
                         completed
-                          ? "border-sky-300 bg-sky-50 text-sky-700"
+                          ? "border-emerald-300 bg-emerald-50 text-emerald-700"
                           : "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] text-[var(--bb-text-primary,#111827)] hover:border-[var(--bb-accent,#2f7fe8)] hover:bg-[var(--bb-card,#ffffff)]"
                       }`}
                       aria-label={`${dashboardBibleSelectedBook} chapter ${chapterNumber}${completed ? ", completed" : ""}`}
