@@ -2164,7 +2164,7 @@ export default function DashboardJourneyExperience({
   const [bibleYearDatabaseCreditBlocked, setBibleYearDatabaseCreditBlocked] = useState(false);
   const [bibleYearStudyNotesCreditBlocked, setBibleYearStudyNotesCreditBlocked] = useState(false);
   const [bibleYearFollowAlongOpenByDay, setBibleYearFollowAlongOpenByDay] = useState<Record<number, boolean>>({});
-  const [bibleYearUnlockedStudyNotePhrasesByDay, setBibleYearUnlockedStudyNotePhrasesByDay] = useState<Record<number, Record<string, true>>>({});
+  const [bibleYearUnlockedStudyNoteSectionsByDay, setBibleYearUnlockedStudyNoteSectionsByDay] = useState<Record<number, Record<string, true>>>({});
   const [bibleYearFollowAlongEnrichedHtmlByChapter, setBibleYearFollowAlongEnrichedHtmlByChapter] = useState<Record<string, Record<number, string>>>({});
   const [bibleYearReaderTranslation, setBibleYearReaderTranslation] = useState<BibleYearReaderTranslation>("kjv");
   const [bibleYearReaderPlainText, setBibleYearReaderPlainText] = useState(false);
@@ -10873,24 +10873,52 @@ Before we understand redemption, we need to understand what God made humanity fo
             >
               <button
                 type="button"
-                onClick={() => {
-                  const nextOpen = sectionOpen ? null : sectionKey;
-                  setBibleYearOpenScriptureNotesSectionKey(nextOpen);
-                  setBibleYearOpenScriptureNotesPhraseKey(null);
-                  if (!sectionOpen) {
-                    scrollBibleYearScriptureNotesCardIntoView(bibleYearScriptureNotesSectionRefs, sectionKey);
-                    void trackStudyNotesSectionOpened({
-                      userId,
-                      username: userName,
-                      source: "bible_in_one_year",
-                      sourceLabel: "Bible in One Year",
-                      itemKey: `day-${day.dayNumber}`,
-                      itemTitle: day.title,
-                      contentLabel: `Day ${day.dayNumber} - ${day.title}`,
-                      sectionReference: section.reference,
-                      sectionTitle: section.title,
-                    });
+                onClick={async () => {
+                  if (sectionOpen) {
+                    setBibleYearOpenScriptureNotesSectionKey(null);
+                    setBibleYearOpenScriptureNotesPhraseKey(null);
+                    return;
                   }
+
+                  const sectionUnlocked =
+                    canOpenPhraseExplanation ||
+                    bibleYearUnlockedStudyNoteSectionsByDay[day.dayNumber]?.[sectionKey] === true;
+
+                  if (!sectionUnlocked) {
+                    const creditResult = await consumeCreditAction(ACTION_TYPE.study_notes_section_opened, {
+                      userId,
+                      actionLabel: `Bible Year Day ${day.dayNumber} ${section.reference} ${section.title}`,
+                    });
+
+                    if (!creditResult.ok) {
+                      if (isCreditActionCanceled(creditResult)) return;
+                      setBibleYearStudyNotesCreditBlocked(true);
+                      return;
+                    }
+
+                    setBibleYearUnlockedStudyNoteSectionsByDay((current) => ({
+                      ...current,
+                      [day.dayNumber]: {
+                        ...(current[day.dayNumber] || {}),
+                        [sectionKey]: true,
+                      },
+                    }));
+                  }
+
+                  setBibleYearOpenScriptureNotesSectionKey(sectionKey);
+                  setBibleYearOpenScriptureNotesPhraseKey(null);
+                  scrollBibleYearScriptureNotesCardIntoView(bibleYearScriptureNotesSectionRefs, sectionKey);
+                  void trackStudyNotesSectionOpened({
+                    userId,
+                    username: userName,
+                    source: "bible_in_one_year",
+                    sourceLabel: "Bible in One Year",
+                    itemKey: `day-${day.dayNumber}`,
+                    itemTitle: day.title,
+                    contentLabel: `Day ${day.dayNumber} - ${day.title}`,
+                    sectionReference: section.reference,
+                    sectionTitle: section.title,
+                  });
                 }}
                 aria-expanded={sectionOpen}
                 className="flex w-full items-center gap-3 px-4 py-4 text-left transition hover:bg-[var(--bb-surface-soft,#f4f8ff)]"
@@ -10913,9 +10941,6 @@ Before we understand redemption, we need to understand what God made humanity fo
                     {phraseCards.map((phrase, phraseIndex) => {
                       const phraseKey = `${sectionKey}:phrase-${phraseIndex}`;
                       const phraseOpen = bibleYearOpenScriptureNotesPhraseKey === phraseKey;
-                      const phraseUnlocked =
-                        canOpenPhraseExplanation ||
-                        bibleYearUnlockedStudyNotePhrasesByDay[day.dayNumber]?.[phraseKey] === true;
 
                       return (
                         <div
@@ -10927,31 +10952,10 @@ Before we understand redemption, we need to understand what God made humanity fo
                         >
                           <button
                             type="button"
-                            onClick={async () => {
+                            onClick={() => {
                               if (phraseOpen) {
                                 setBibleYearOpenScriptureNotesPhraseKey(null);
                                 return;
-                              }
-
-                              if (!phraseUnlocked) {
-                                const creditResult = await consumeCreditAction(ACTION_TYPE.study_notes_section_opened, {
-                                  userId,
-                                  actionLabel: `Bible Year Day ${day.dayNumber} ${section.reference} ${phrase.title}`,
-                                });
-
-                                if (!creditResult.ok) {
-                                  if (isCreditActionCanceled(creditResult)) return;
-                                  setBibleYearStudyNotesCreditBlocked(true);
-                                  return;
-                                }
-
-                                setBibleYearUnlockedStudyNotePhrasesByDay((current) => ({
-                                  ...current,
-                                  [day.dayNumber]: {
-                                    ...(current[day.dayNumber] || {}),
-                                    [phraseKey]: true,
-                                  },
-                                }));
                               }
 
                               setBibleYearOpenScriptureNotesPhraseKey(phraseKey);
@@ -12237,12 +12241,6 @@ Before we understand redemption, we need to understand what God made humanity fo
 
         {!showCompletionMoment ? (
           <>
-        {renderDashboardSectionIntro(
-          "Study Tools",
-          "Explore today's lesson through notes, trivia, and discussion.",
-          "order-3"
-        )}
-
         <section className="order-4 overflow-hidden rounded-[20px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] shadow-[0_16px_42px_rgba(38,63,99,0.12),inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-xl">
           {supportCards.map((item, index) => {
             const expanded =
