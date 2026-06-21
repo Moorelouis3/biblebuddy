@@ -9,9 +9,9 @@ export type CreditClientResult = {
   isPaid?: boolean;
 };
 
-type CreditFeedbackEvent =
-  | { type: "toast"; message: string }
-  | { type: "warning"; message: string };
+type CreditFeedbackEvent = {
+  message: string;
+};
 
 const CREDIT_FEEDBACK_EVENT = "bb-credit-feedback";
 
@@ -50,31 +50,11 @@ function maybeShowCreditFeedback(userId: string, dailyCredits: number) {
 
   if (!sessionStorage.getItem(firstUseKey)) {
     sessionStorage.setItem(firstUseKey, "1");
-    dispatchCreditFeedback({
-      type: "warning",
-      message: `Free plan: that used 1 of your 5 daily credits. ${dailyCredits} remaining today.`,
-    });
-    return;
   }
 
   dispatchCreditFeedback({
-    type: "toast",
-    message: `-1 credit · ${dailyCredits} remaining`,
+    message: `You used 1 free credit. ${dailyCredits} of 5 left today.`,
   });
-
-  if (dailyCredits === 2 || dailyCredits === 1) {
-    const warningKey = `bb_credit_warning_${dailyCredits}_${userId}_${today}`;
-    if (!sessionStorage.getItem(warningKey)) {
-      sessionStorage.setItem(warningKey, "1");
-      dispatchCreditFeedback({
-        type: "warning",
-        message:
-          dailyCredits === 2
-            ? "You have 2 free credits left for today."
-            : "You have 1 free credit left for today.",
-      });
-    }
-  }
 }
 
 export async function previewCreditAction(actionType: string): Promise<CreditClientResult> {
