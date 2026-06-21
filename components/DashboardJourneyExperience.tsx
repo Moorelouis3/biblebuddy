@@ -12333,11 +12333,11 @@ Before we understand redemption, we need to understand what God made humanity fo
             <span className="text-2xl text-[var(--bb-accent,#2f7fe8)]" aria-hidden="true">›</span>
           </button>
           <div className="px-3 pb-4 pt-3">
-            <div className="relative px-1 text-center">
-              <div className="min-w-0">
+            <div className="relative z-20 px-1 pt-1 text-center">
+              <div className="min-w-0 pr-10">
                 <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">Bible In One Year</p>
               </div>
-              <div className="absolute right-0 top-1/2 -translate-y-1/2">
+              <div className="absolute right-0 top-0 z-30">
                 <button
                   type="button"
                   onClick={() => {
@@ -12355,7 +12355,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   </svg>
                 </button>
                 {bibleYearPlanMenuOpen ? (
-                  <div className="absolute right-0 z-20 mt-2 w-60 overflow-hidden rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_32%,transparent)] bg-[var(--bb-card,#ffffff)] p-2 text-left shadow-[0_18px_38px_rgba(0,0,0,0.18)]">
+                  <div className="absolute right-0 z-40 mt-2 w-60 overflow-hidden rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_32%,transparent)] bg-[var(--bb-card,#ffffff)] p-2 text-left shadow-[0_18px_38px_rgba(0,0,0,0.18)]">
                     <button
                       type="button"
                       onClick={openBibleYearSeriesDashboard}
@@ -12386,7 +12386,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               ref={(node) => {
                 bibleYearJourneyScrollerRefs.current.home = node;
               }}
-              className="bible-year-journey-scroll overflow-x-auto px-1 pb-2 pt-3"
+              className="relative z-0 bible-year-journey-scroll overflow-x-auto px-1 pb-2 pt-3"
             >
               <div className="flex min-w-max items-start gap-2">
                 {bibleYearStudyPlanMilestones.map((milestone, index) => {
