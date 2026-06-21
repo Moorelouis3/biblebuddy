@@ -12358,17 +12358,9 @@ Before we understand redemption, we need to understand what God made humanity fo
                   <div className="absolute right-0 z-40 mt-2 w-60 overflow-hidden rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_32%,transparent)] bg-[var(--bb-card,#ffffff)] p-2 text-left shadow-[0_18px_38px_rgba(0,0,0,0.18)]">
                     <button
                       type="button"
-                      onClick={openBibleYearSeriesDashboard}
-                      className="flex w-full items-center justify-between rounded-xl px-3 py-2 text-sm font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
-                    >
-                      <span>Open Full Plan</span>
-                      <span aria-hidden="true" className="text-[var(--bb-accent,#2f7fe8)]">&gt;</span>
-                    </button>
-                    <button
-                      type="button"
                       onClick={handleResetBibleYearPlan}
                       disabled={isResettingBibleYearPlan}
-                      className="mt-1 flex w-full items-center justify-between rounded-xl px-3 py-2 text-sm font-black text-[var(--bb-warning,#d97706)] transition hover:bg-[color-mix(in_srgb,var(--bb-warning,#d97706)_12%,transparent)] disabled:cursor-not-allowed disabled:opacity-60"
+                      className="flex w-full items-center justify-between rounded-xl px-3 py-2 text-sm font-black text-[var(--bb-warning,#d97706)] transition hover:bg-[color-mix(in_srgb,var(--bb-warning,#d97706)_12%,transparent)] disabled:cursor-not-allowed disabled:opacity-60"
                     >
                       <span>{isResettingBibleYearPlan ? "Resetting..." : "Reset Progress"}</span>
                       <span aria-hidden="true" className="text-xs text-[var(--bb-text-secondary,#4b5563)]">Day 1</span>
