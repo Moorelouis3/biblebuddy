@@ -43,9 +43,9 @@ const emptyAnswers: Answers = {
 
 const journeyStudies = [
   { title: "Creation of the World", day: 1, status: "In Progress", cover: "/Day1cover.png", unlocked: true },
-  { title: "Fall of Man", day: 2, status: "Preview", cover: "/thefallofman.png", unlocked: false },
+  { title: "Fall of Man", day: 2, status: "Preview", cover: "/day2cover.png", unlocked: false },
   { title: "Flood of Noah", day: 3, status: "Preview", cover: "/day3cover.png", unlocked: false },
-  { title: "Obedience of Abraham", day: 5, status: "Preview", cover: "/obedienceofabrahamnewcover.png", unlocked: false },
+  { title: "Obedience of Abraham", day: 5, status: "Preview", cover: "/day5cover.png", unlocked: false },
   { title: "Life of Joseph", day: 15, status: "Preview", cover: "/TheTestingofJospehnewcover.png", unlocked: false },
   { title: "Wisdom of Proverbs", day: 1, status: "Preview", cover: "/Wisdomofproverbsnewcover.png", unlocked: false },
 ];

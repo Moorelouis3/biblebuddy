@@ -16425,7 +16425,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   <path d="M3 19h18" />
                 </svg>
               </span>
-              <span className="sr-only sm:not-sr-only">Progress</span>
+              <span className="mt-0.5 text-[9px] leading-none sm:mt-0 sm:text-[10px]">Progress</span>
             </button>
 
             <button
@@ -16442,7 +16442,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               <span className={`grid h-7 w-7 place-items-center rounded-full ${bibleTabActive ? "bg-[var(--bb-accent,#2f7fe8)] text-white" : ""}`} aria-hidden="true">
                 <BibleBookIcon />
               </span>
-              <span className="sr-only sm:not-sr-only">Bible</span>
+              <span className="mt-0.5 text-[9px] leading-none sm:mt-0 sm:text-[10px]">Bible</span>
             </button>
 
             <button
@@ -16463,7 +16463,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   <path d="M9 20v-6h6v6" />
                 </svg>
               </span>
-              <span className="sr-only sm:not-sr-only">Home</span>
+              <span className="mt-0.5 text-[9px] leading-none sm:mt-0 sm:text-[10px]">Home</span>
             </button>
 
             <button
@@ -16483,7 +16483,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   <path d="M9 8h6M9 11h4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                 </svg>
               </span>
-              <span className="sr-only sm:not-sr-only">BB Chat</span>
+              <span className="mt-0.5 text-[9px] leading-none sm:mt-0 sm:text-[10px]">BB Chat</span>
             </button>
 
             {isOwnerDashboard ? (
@@ -16507,7 +16507,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                     <path d="M3 19h18" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
                   </svg>
                 </span>
-                <span className="sr-only sm:not-sr-only">Analytics</span>
+                <span className="mt-0.5 text-[9px] leading-none sm:mt-0 sm:text-[10px]">Analytics</span>
               </button>
             ) : (
               <button
@@ -16527,7 +16527,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                     <path d="m21 3-6.7 18-3.7-7.6L3 9.7 21 3Z" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </span>
-                <span className="sr-only sm:not-sr-only">Invite</span>
+                <span className="mt-0.5 text-[9px] leading-none sm:mt-0 sm:text-[10px]">Invite</span>
               </button>
             )}
           </div>

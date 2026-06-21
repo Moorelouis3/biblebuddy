@@ -463,6 +463,7 @@ const RAW_GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     reference: "Genesis 3-4",
     estimatedTime: "about 15 min",
     summary: "Follow temptation, shame, Cain and Abel, exile, violence, and the first hints of hope.",
+    coverImage: "/day2cover.png",
     readings: buildGenesisReadings("The Fall of Man", 3, 4, 1),
   },
   {
@@ -480,7 +481,7 @@ const RAW_GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     reference: "Genesis 8-10",
     estimatedTime: "about 16 min",
     summary: "Move through the flood waters receding, Noah's altar, God's covenant, the rainbow, human weakness, and the nations.",
-    coverImage: "/Lifeafterflood.png",
+    coverImage: "/day4cover.png",
     readings: buildGenesisReadings("The Flood of Noah", 8, 10, 4),
   },
   {
@@ -489,7 +490,7 @@ const RAW_GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     reference: "Genesis 11-13",
     estimatedTime: "about 16 min",
     summary: "Begin Abraham's story with Babel, Abram's family line, God's call, Egypt, and Abram learning not to grasp.",
-    coverImage: "/obedienceofabrahamnewcover.png",
+    coverImage: "/day5cover.png",
     readings: buildGenesisReadings("The Obedience of Abraham", 11, 13, 1),
   },
   {
@@ -498,7 +499,7 @@ const RAW_GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     reference: "Genesis 14-15",
     estimatedTime: "about 16 min",
     summary: "Follow Abram rescuing Lot, meeting Melchizedek, refusing Sodom's reward, and receiving God's covenant promise.",
-    coverImage: "/TherescuseofLot.png",
+    coverImage: "/day6cover.png",
     readings: buildGenesisReadings("The Obedience of Abraham", 14, 15, 4),
   },
   {
@@ -507,7 +508,7 @@ const RAW_GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     reference: "Genesis 16-17",
     estimatedTime: "about 14 min",
     summary: "Study Hagar, waiting, human shortcuts, the God who sees, new names, circumcision, Isaac, and covenant promise.",
-    coverImage: "/Thecovenantpromise.png",
+    coverImage: "/day7cover.png",
     readings: buildGenesisReadings("The Obedience of Abraham", 16, 17, 6),
   },
   {
@@ -516,7 +517,7 @@ const RAW_GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     reference: "Genesis 18-20",
     estimatedTime: "about 20 min",
     summary: "Move through Abraham welcoming the visitors, Sarah hearing the promise, Abraham interceding, Sodom and Gomorrah's judgment, Lot's rescue, and God protecting Sarah in Gerar.",
-    coverImage: "/SodomandGomorrah.png",
+    coverImage: "/day8cover.png",
     readings: buildGenesisReadings("The Obedience of Abraham", 18, 20, 8),
   },
   {
@@ -525,7 +526,7 @@ const RAW_GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     reference: "Genesis 21-24",
     estimatedTime: "about 16 min",
     summary: "Close Abraham's main journey with Isaac's birth, Hagar and Ishmael, the test on Mount Moriah, Sarah's burial, and Isaac receiving Rebekah.",
-    coverImage: "/AbrahamsLegacy.png",
+    coverImage: "/day9cover.png",
     readings: buildGenesisReadings("The Obedience of Abraham", 21, 24, 11),
   },
   {
@@ -534,7 +535,7 @@ const RAW_GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     reference: "Genesis 25-27",
     estimatedTime: "about 35 min",
     summary: "Study Abraham's final years, Jacob and Esau's beginning, Isaac, wells, family tension, deception, and the blessing moving through weakness.",
-    coverImage: "/ThePromiseThroughIsaac.png",
+    coverImage: "/day10cover.png",
     readings: buildGenesisReadings("The Promise Through Isaac", 25, 27, 1),
   },
   {
@@ -543,6 +544,7 @@ const RAW_GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     reference: "Genesis 28-29",
     estimatedTime: "about 35 min",
     summary: "Begin Jacob's journey with Bethel, God's promise, exile, love, labor, and family complexity.",
+    coverImage: "/day11cover.png",
     readings: buildGenesisReadings("The Wrestling of Jacob", 28, 29, 1),
   },
   {
@@ -551,6 +553,7 @@ const RAW_GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     reference: "Genesis 30-31",
     estimatedTime: "about 40 min",
     summary: "Follow household tension, growth, conflict with Laban, and Jacob learning to leave by faith.",
+    coverImage: "/day12cover.png",
     readings: buildGenesisReadings("The Wrestling of Jacob", 30, 31, 3),
   },
   {
