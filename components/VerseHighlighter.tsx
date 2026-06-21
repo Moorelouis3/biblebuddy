@@ -33,11 +33,39 @@ interface VerseHighlighterProps {
   onStudyNotesCreditBlocked?: () => void;
 }
 
+function getNearestScrollContainer(element: HTMLElement | null) {
+  if (!element || typeof window === "undefined") return null;
+
+  let current: HTMLElement | null = element.parentElement;
+  while (current) {
+    const style = window.getComputedStyle(current);
+    const overflowY = style.overflowY;
+    const canScroll =
+      (overflowY === "auto" || overflowY === "scroll" || overflowY === "overlay") &&
+      current.scrollHeight > current.clientHeight;
+
+    if (canScroll) return current;
+    current = current.parentElement;
+  }
+
+  return null;
+}
+
 function scrollStudyAccordionHeaderIntoView(element: HTMLElement | null) {
   if (!element || typeof window === "undefined") return;
 
   window.requestAnimationFrame(() => {
     window.requestAnimationFrame(() => {
+      const scrollContainer = getNearestScrollContainer(element);
+
+      if (scrollContainer) {
+        const containerRect = scrollContainer.getBoundingClientRect();
+        const elementRect = element.getBoundingClientRect();
+        const top = scrollContainer.scrollTop + (elementRect.top - containerRect.top) - 12;
+        scrollContainer.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+        return;
+      }
+
       const top = element.getBoundingClientRect().top + window.scrollY - 12;
       window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
     });

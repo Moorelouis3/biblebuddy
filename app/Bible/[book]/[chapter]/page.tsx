@@ -2840,7 +2840,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
           className={`bg-[var(--bb-card,#ffffff)] mb-6 ${
             hideReaderChrome
               ? "overflow-visible rounded-none border-0 p-0 shadow-none"
-              : "max-h-[60vh] overflow-y-auto rounded-2xl border border-[var(--bb-card-border,#e5e7eb)] p-6 shadow-sm md:p-8"
+              : "overflow-visible rounded-2xl border border-[var(--bb-card-border,#e5e7eb)] p-6 shadow-sm md:max-h-[60vh] md:overflow-y-auto md:p-8"
           } ${
             plainTextMode ? "plain-text-mode" : ""
           }`}
