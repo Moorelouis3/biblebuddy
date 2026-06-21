@@ -394,7 +394,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
               {!loadingNotes && notesText && (
                 <div className="prose prose-sm md:prose-base max-w-none">
                     {approvedBibleYearDeepStudySections.length > 0 ? (
-                      <div className="not-prose rounded-[28px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_36%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#140d09)_78%,rgba(0,0,0,0.72))] p-4 text-left text-[var(--bb-text-primary,#fff7ed)] shadow-[0_24px_70px_rgba(0,0,0,0.28)] [--bb-card-border:rgba(246,180,75,0.22)] [--bb-surface-soft:rgba(255,255,255,0.06)] [--bb-text-primary:#fff7ed] [--bb-text-secondary:#e7d4bd]">
+                      <div className="not-prose rounded-[28px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_26%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] p-4 text-left text-[var(--bb-text-primary,#111827)] shadow-[0_18px_46px_rgba(38,63,99,0.12)]">
                         <BrowserTtsButton
                           text={approvedBibleYearDeepStudyMarkdown}
                           label="Listen to chapter notes"

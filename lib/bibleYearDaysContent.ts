@@ -1809,12 +1809,22 @@ function buildFallbackSummary(day: GenesisBibleYearDay): BibleYearSummaryContent
 }
 
 function buildMarkdownFromReaderSection(section: ReturnType<typeof getBibleReaderStudySections>[number]) {
+  const shouldPromoteLeadToHeading = (firstLine: string, rest: string[]) => {
+    const trimmed = firstLine.trim();
+    if (!trimmed || rest.length === 0) return false;
+    if (trimmed.length > 90) return false;
+    if (/[.!?:;]$/.test(trimmed)) return false;
+    return true;
+  };
+
   const body = section.categories
     .map((category) => {
       const content = category.content
         .map((item) => {
           const [firstLine, ...rest] = item.split("\n");
-          return rest.length ? `### ${firstLine}\n\n${rest.join("\n")}` : item;
+          return shouldPromoteLeadToHeading(firstLine, rest)
+            ? `### ${firstLine}\n\n${rest.join("\n")}`
+            : item;
         })
         .join("\n\n");
 

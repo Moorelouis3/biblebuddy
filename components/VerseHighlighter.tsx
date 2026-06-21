@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { ColorPicker } from "./ColorPicker";
+import ChapterNotesMarkdown from "./ChapterNotesMarkdown";
 import {
   deleteHighlight,
   deleteHighlightRange,
@@ -476,6 +477,11 @@ function StudyCategoryContent({
   const flatSection = category.id === "what-is-happening" || category.id === "why-this-matters";
   const itemRefs = useRef<Record<number, HTMLElement | null>>({});
   const nestedItemIcons = nestedMenu ? getNestedStudyItemIcons(category) : [];
+  const renderMarkdownBody = (markdown: string) => (
+    <div className="text-[var(--bb-text-secondary,#4b5563)]">
+      <ChapterNotesMarkdown compactMobile>{markdown}</ChapterNotesMarkdown>
+    </div>
+  );
 
   return (
     <div className="mt-3 space-y-3">
@@ -529,10 +535,8 @@ function StudyCategoryContent({
                 </svg>
               </button>
               {itemOpen ? (
-                <div className="space-y-2 border-t border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_12%,var(--bb-card-border,#dbe7f4))] px-4 py-3 pl-11 text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)] sm:text-sm sm:leading-6">
-                  {paragraphs.map((paragraph) => (
-                    <p key={paragraph}>{paragraph}</p>
-                  ))}
+                <div className="border-t border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_12%,var(--bb-card-border,#dbe7f4))] px-4 py-3 pl-11">
+                  {renderMarkdownBody(paragraphs.join("\n\n"))}
                 </div>
               ) : null}
             </section>
@@ -548,11 +552,9 @@ function StudyCategoryContent({
           return (
             <div
               key={item}
-              className="space-y-3 px-1 text-xs font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)] sm:text-sm sm:leading-7"
+              className="px-1"
             >
-              {flatParagraphs.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
+              {renderMarkdownBody(flatParagraphs.join("\n\n"))}
             </div>
           );
         }
@@ -568,12 +570,10 @@ function StudyCategoryContent({
                   <span className="mt-0.5 grid h-6 min-w-6 place-items-center rounded-full bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_14%,transparent)] text-[11px] font-black text-[var(--bb-text-primary,#111827)]">
                     {index + 1}
                   </span>
-                  <p className="font-black leading-5 text-[var(--bb-text-primary,#111827)]">{lead}</p>
+                  <p className="font-black leading-5 text-[var(--bb-text-primary,#111827)]">{cleanDisplayLead}</p>
                 </div>
-                <div className="mt-2 space-y-2 pl-8">
-                  {paragraphs.map((paragraph) => (
-                    <p key={paragraph}>{paragraph}</p>
-                  ))}
+                <div className="mt-2 pl-8">
+                  {renderMarkdownBody(paragraphs.join("\n\n"))}
                 </div>
               </>
             ) : (

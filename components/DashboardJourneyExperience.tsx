@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import { useRouter } from "next/navigation";
 import { Fragment, useCallback, useEffect, useRef, useState, type FormEvent, type MouseEvent, type ReactNode, type SyntheticEvent } from "react";
 import { toBlob } from "html-to-image";
 import { LouisAvatar } from "./LouisAvatar";
@@ -72,6 +71,7 @@ import { buildPersistedFeatureTours, normalizeFeatureTours } from "../lib/featur
 import { getTriviaChapter } from "../lib/triviaGameData";
 
 const EmbeddedSettingsPage = dynamic(() => import("../app/settings/page"), { ssr: false });
+const EmbeddedAdminAnalyticsPage = dynamic(() => import("../app/admin/analytics/page"), { ssr: false });
 
 const BIBLE_BUDDY_3_MODE_GATE_STORAGE_KEY = "bb:3-study-mode-selected";
 const BIBLE_BUDDY_3_EXISTING_USER_CUTOFF_MS = Date.parse("2026-05-17T00:00:00.000Z");
@@ -92,6 +92,30 @@ const FREE_BIBLE_YEAR_YOUTUBE_BY_DAY: Record<number, string> = {
   6: "https://youtu.be/KLyXhiLfrlE?si=6hZngBTlEmWh7jtP",
   7: "https://youtu.be/gJg3pwT8zVs?si=4lviGQA30ek__MKO",
   8: "https://youtu.be/vMmUiWwJQAo?si=dVE-roUEXx0Sy9mG",
+  9: "https://youtu.be/XbROY7Gvkco?si=V-FKbleHUUbQt4ZZ",
+  10: "https://youtu.be/t3wYYh-0EKg?si=3SeaJ4cKz-PfgVWN",
+  11: "https://youtu.be/4HkJAOs6yHU?si=UXo-Vc0f53rQ0tZi",
+  12: "https://youtu.be/og1bpcCI2r4?si=s7_q0mvmMvE28Rcd",
+  13: "https://www.youtube.com/watch?v=3_RZROLp2uw&t=9s",
+  14: "https://www.youtube.com/watch?v=d0V-Si4OfoU",
+  15: "https://www.youtube.com/watch?v=Ptq1RzYNlkI&t=1222s",
+  16: "https://www.youtube.com/watch?v=NwrDUAr-5tE&t=1s",
+  17: "https://www.youtube.com/watch?v=ooID5Q0LxJ0&t=87s",
+  18: "https://www.youtube.com/watch?v=aa2hNfTWimQ",
+  19: "https://www.youtube.com/watch?v=66ydiRG7NVA&t=588s",
+  20: "https://www.youtube.com/watch?v=UTtv6Q7IIkc&t=212s",
+  21: "https://www.youtube.com/watch?v=pQ888No_dP8&t=35s",
+  22: "https://www.youtube.com/watch?v=vNp-x4t_JCM",
+  23: "https://www.youtube.com/watch?v=moRXRCRabyE",
+  24: "https://www.youtube.com/watch?v=64iUfw-TbNo",
+  25: "https://www.youtube.com/watch?v=7hqzcpFg0mk",
+  26: "https://www.youtube.com/watch?v=Bl4XTXcTPXc",
+  27: "https://www.youtube.com/watch?v=OsanjRKCnYI",
+  28: "https://www.youtube.com/watch?v=pOHHNRNEhZM",
+  29: "https://www.youtube.com/watch?v=ILtyBcmUdko",
+  30: "https://www.youtube.com/watch?v=QHKHtDxWOZk",
+  31: "https://www.youtube.com/watch?v=uWjaXQqPkA4",
+  32: "https://www.youtube.com/watch?v=m_mGYewtfGs",
 };
 type BibleYearReaderTranslation = "web" | "kjv" | "asv";
 type BibleYearReaderVerse = { verse: number; text: string };
@@ -2055,7 +2079,6 @@ export default function DashboardJourneyExperience({
   bibleYearReport,
   bibleYearProgressReady = true,
 }: Props) {
-  const router = useRouter();
   const containerRef = useRef<HTMLDivElement | null>(null);
   const previousDoneByKindRef = useRef<Record<string, boolean> | null>(null);
   const previousCompletedCountRef = useRef<number | null>(null);
@@ -2150,7 +2173,6 @@ export default function DashboardJourneyExperience({
   const [bibleYearPlanOverviewOpen, setBibleYearPlanOverviewOpen] = useState(false);
   const [isResettingBibleYearPlan, setIsResettingBibleYearPlan] = useState(false);
   const [bibleYearPlanMessage, setBibleYearPlanMessage] = useState<string | null>(null);
-  const [showBibleProgressDetails, setShowBibleProgressDetails] = useState(false);
   const bibleProgressShareCardRef = useRef<HTMLDivElement | null>(null);
   const [bibleProgressSharePending, setBibleProgressSharePending] = useState(false);
   const [bibleYearOpenVerseBreakdownKey, setBibleYearOpenVerseBreakdownKey] = useState<string | null>(null);
@@ -2308,7 +2330,7 @@ export default function DashboardJourneyExperience({
   const [guestAccountLoading, setGuestAccountLoading] = useState(false);
   const [guestAccountMessage, setGuestAccountMessage] = useState<string | null>(null);
 
-  const dashboardPageKeys = ["home", "buddy", "bible", "bible_studies", "bible_topics", "share", "group", "settings"] as const;
+  const dashboardPageKeys = ["home", "progress", "buddy", "bible", "bible_studies", "bible_topics", "share", "group", "settings", "analytics"] as const;
   type DashboardPageKey = (typeof dashboardPageKeys)[number];
   const normalizedActivePage = Number.isFinite(activePage) ? activePage : 0;
   const safeActivePage = Math.max(0, Math.min(normalizedActivePage, dashboardPageKeys.length - 1));
@@ -2591,8 +2613,11 @@ export default function DashboardJourneyExperience({
     : [...dashboardNavItems, ...dashboardSecondaryNavItems].find((item) => item.key === activePageKey) ?? dashboardNavItems[0];
   void activeDashboardNavItem;
   const homeTabActive = bibleYearDashboardActive || (!bibleYearSeriesActive && activePageKey === "home");
+  const progressTabActive = !bibleYearDashboardActive && !bibleYearSeriesActive && activePageKey === "progress";
   const bibleTabActive = !bibleYearDashboardActive && !bibleYearSeriesActive && activePageKey === "bible";
   const chatTabActive = !bibleYearDashboardActive && !bibleYearSeriesActive && activePageKey === "buddy";
+  const inviteTabActive = !bibleYearDashboardActive && !bibleYearSeriesActive && activePageKey === "share";
+  const analyticsTabActive = !bibleYearDashboardActive && !bibleYearSeriesActive && activePageKey === "analytics";
   const isPaidUser = profile?.is_paid === true || membershipStatus === "pro";
 
   const isChecklistSyncing = isLoadingChecklist || !checklistData;
@@ -3803,7 +3828,10 @@ export default function DashboardJourneyExperience({
 
   useEffect(() => {
     function handleOpenExplorePage() {
-      snapToPage(1);
+      const buddyIndex = dashboardPageKeys.indexOf("buddy");
+      if (buddyIndex >= 0) {
+        snapToPage(buddyIndex);
+      }
     }
 
     window.addEventListener("bb:dashboard-open-explore-page", handleOpenExplorePage);
@@ -4857,8 +4885,11 @@ export default function DashboardJourneyExperience({
   }
 
   function openBibleReaderPage() {
+    const bibleIndex = dashboardPageKeys.indexOf("bible");
+    if (bibleIndex < 0) return;
+    clearBibleYearViews();
     setDashboardMenuOpen(false);
-    router.push("/reading");
+    snapToPage(bibleIndex);
   }
 
   function openBuddyChatPage() {
@@ -4885,15 +4916,19 @@ export default function DashboardJourneyExperience({
   }
 
   function openProgressPage() {
+    const progressIndex = dashboardPageKeys.indexOf("progress");
+    if (progressIndex < 0) return;
+    clearBibleYearViews();
     setDashboardMenuOpen(false);
-    setShowBibleProgressDetails(true);
+    snapToPage(progressIndex);
   }
 
   function openAnalyticsPage() {
+    const analyticsIndex = dashboardPageKeys.indexOf("analytics");
+    if (analyticsIndex < 0) return;
+    clearBibleYearViews();
     setDashboardMenuOpen(false);
-    if (typeof window !== "undefined") {
-      window.location.href = "/admin/analytics";
-    }
+    snapToPage(analyticsIndex);
   }
 
   useEffect(() => {
@@ -11572,7 +11607,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     );
   }
 
-  function renderBibleProgressDetailsModal() {
+  function renderBibleProgressDetailsPanel() {
     const report = effectiveBibleYearReport;
     const currentStreak = report?.currentStreak ?? Math.max(0, profile?.current_streak ?? 0);
     const expectedFinishDateLabel = report?.expectedFinishDateLabel ?? "Calculating";
@@ -11708,36 +11743,20 @@ Before we understand redemption, we need to understand what God made humanity fo
     }
 
     return (
-      <ModalShell
-        isOpen={showBibleProgressDetails}
-        onClose={() => setShowBibleProgressDetails(false)}
-        backdropColor="bg-black/35"
-        scrollable={false}
-        zIndex="z-[75]"
-      >
-        <div className="w-full max-w-[420px] px-2 sm:px-0">
-          <div className="relative">
-            <button
-              type="button"
-              onClick={() => setShowBibleProgressDetails(false)}
-              className="absolute right-3 top-3 z-10 grid h-9 w-9 place-items-center rounded-full bg-white/95 text-xl font-light leading-none text-[var(--bb-text-secondary,#4b5563)] shadow-[0_10px_24px_rgba(14,26,58,0.10)] transition hover:bg-white"
-              aria-label="Close progress details"
-            >
-              x
-            </button>
-            <div className="grid gap-3">
-              <div
-                ref={bibleProgressShareCardRef}
-                className="overflow-hidden rounded-[28px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_16%,#dbe7f4)] bg-[linear-gradient(180deg,#ffffff_0%,#f8fbff_100%)] text-[var(--bb-text-primary,#111827)] shadow-[0_24px_60px_rgba(14,26,58,0.16)]"
-              >
-                <div className="grid gap-4 p-5 sm:p-6">
-                  <div className="text-center">
-                    <div className="mx-auto w-full max-w-[220px] text-center">
-                      <p className="text-lg font-black leading-tight text-[var(--bb-text-primary,#111827)]">Bible Buddy</p>
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">mybiblebuddy.net</p>
-                    </div>
-                    <p className="mt-4 text-[11px] font-black uppercase tracking-[0.24em] text-[var(--bb-text-muted,#6b7280)]">My Bible Buddy Progress</p>
-                  </div>
+      <section className="mx-auto w-full max-w-[440px] px-1">
+        <div className="grid gap-3">
+          <div
+            ref={bibleProgressShareCardRef}
+            className="overflow-hidden rounded-[28px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_16%,#dbe7f4)] bg-[linear-gradient(180deg,#ffffff_0%,#f8fbff_100%)] text-[var(--bb-text-primary,#111827)] shadow-[0_24px_60px_rgba(14,26,58,0.16)]"
+          >
+            <div className="grid gap-4 p-5 sm:p-6">
+              <div className="text-center">
+                <div className="mx-auto w-full max-w-[220px] text-center">
+                  <p className="text-lg font-black leading-tight text-[var(--bb-text-primary,#111827)]">Bible Buddy</p>
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">mybiblebuddy.net</p>
+                </div>
+                <p className="mt-4 text-[11px] font-black uppercase tracking-[0.24em] text-[var(--bb-text-muted,#6b7280)]">My Bible Buddy Progress</p>
+              </div>
 
                   <section className="rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_14%,#dbe7f4)] bg-white/90 px-4 py-4 text-center shadow-[0_10px_24px_rgba(14,26,58,0.06)]">
                     <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[var(--bb-text-muted,#6b7280)]">Bible Streak</p>
@@ -11782,21 +11801,19 @@ Before we understand redemption, we need to understand what God made humanity fo
                       <p className="mt-1 text-sm font-black leading-5 text-[var(--bb-text-primary,#111827)]">{expectedFinishDateLabel}</p>
                     </div>
                   </section>
-                </div>
-              </div>
-
-              <button
-                type="button"
-                onClick={shareBibleYearProgress}
-                disabled={bibleProgressSharePending}
-                className="w-full rounded-[18px] bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-5 py-3.5 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-[0_12px_24px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_20%,transparent)] transition hover:brightness-95 disabled:cursor-wait disabled:opacity-70"
-              >
-                {bibleProgressSharePending ? "Preparing Share Image..." : "Share Progress"}
-              </button>
             </div>
           </div>
+
+          <button
+            type="button"
+            onClick={shareBibleYearProgress}
+            disabled={bibleProgressSharePending}
+            className="w-full rounded-[18px] bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-5 py-3.5 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-[0_12px_24px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_20%,transparent)] transition hover:brightness-95 disabled:cursor-wait disabled:opacity-70"
+          >
+            {bibleProgressSharePending ? "Preparing Share Image..." : "Share Progress"}
+          </button>
         </div>
-      </ModalShell>
+      </section>
     );
   }
 
@@ -12887,7 +12904,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   <div className="overflow-hidden rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_34%,var(--bb-card-border,#dbe7f4))] bg-black shadow-[0_18px_38px_rgba(14,26,58,0.18)]">
                     <YouTubeTrackedPlayer
                       userId={userId}
-                      videoId={`bible-year-free-modal-day-${day.dayNumber}`}
+                      videoId={`bible-year-free-day-${day.dayNumber}`}
                       youtubeUrl={freeYoutubeUrl}
                       title={bibleYearLesson?.title || day.title}
                       autoplay={false}
@@ -13626,7 +13643,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               <div className="overflow-hidden rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_42%,transparent)] bg-[#070503] shadow-[0_24px_58px_rgba(0,0,0,0.42),0_0_34px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_18%,transparent)]">
                 <YouTubeTrackedPlayer
                   userId={userId}
-                  videoId={`bible-year-free-reader-day-${day.dayNumber}`}
+                  videoId={`bible-year-free-day-${day.dayNumber}`}
                   youtubeUrl={freeYoutubeUrl}
                   title={lesson.title}
                   autoplay={false}
@@ -16137,31 +16154,39 @@ Before we understand redemption, we need to understand what God made humanity fo
         </div>
 
         <div className={getSlideClass(1)}>
-          {shouldRenderSlide(1) ? renderEmbeddedBuddyPage() : null}
+          {shouldRenderSlide(1) ? renderBibleProgressDetailsPanel() : null}
         </div>
 
         <div className={getSlideClass(2)}>
-          {shouldRenderSlide(2) ? renderDashboardBibleReaderPage() : null}
+          {shouldRenderSlide(2) ? renderEmbeddedBuddyPage() : null}
         </div>
 
         <div className={getSlideClass(3)}>
-          {shouldRenderSlide(3) ? renderEmbeddedBibleStudiesPage() : null}
+          {shouldRenderSlide(3) ? renderDashboardBibleReaderPage() : null}
         </div>
 
         <div className={getSlideClass(4)}>
-          {shouldRenderSlide(4) ? <BibleTopicsPanel userId={userId} /> : null}
+          {shouldRenderSlide(4) ? renderEmbeddedBibleStudiesPage() : null}
         </div>
 
         <div className={getSlideClass(5)}>
-          {shouldRenderSlide(5) ? renderEmbeddedSharePage() : null}
+          {shouldRenderSlide(5) ? <BibleTopicsPanel userId={userId} /> : null}
         </div>
 
         <div className={getSlideClass(6)}>
-          {shouldRenderSlide(6) ? renderEmbeddedGroupPage() : null}
+          {shouldRenderSlide(6) ? renderEmbeddedSharePage() : null}
         </div>
 
         <div className={getSlideClass(7)}>
-          {shouldRenderSlide(7) ? renderEmbeddedSettingsPage() : null}
+          {shouldRenderSlide(7) ? renderEmbeddedGroupPage() : null}
+        </div>
+
+        <div className={getSlideClass(8)}>
+          {shouldRenderSlide(8) ? renderEmbeddedSettingsPage() : null}
+        </div>
+
+        <div className={getSlideClass(9)}>
+          {shouldRenderSlide(9) ? <EmbeddedAdminAnalyticsPage embedded /> : null}
         </div>
 
         {false ? (
@@ -16360,14 +16385,14 @@ Before we understand redemption, we need to understand what God made humanity fo
               type="button"
               onClick={openProgressPage}
               className={`flex h-14 flex-col items-center justify-center rounded-[18px] text-[10px] font-black transition ${
-                showBibleProgressDetails
+                progressTabActive
                   ? "bg-[var(--bb-accent-soft,rgba(47,127,232,0.14))] text-[var(--bb-accent,#2f7fe8)] ring-1 ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)]"
                   : "bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-text-primary,#111827)] hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))]"
               }`}
               aria-label="Open Progress"
-              data-dashboard-nav-key="progress-tab"
+              data-dashboard-nav-key="progress"
             >
-              <span className={`grid h-7 w-7 place-items-center rounded-full ${showBibleProgressDetails ? "bg-[var(--bb-accent,#2f7fe8)] text-white" : ""}`} aria-hidden="true">
+              <span className={`grid h-7 w-7 place-items-center rounded-full ${progressTabActive ? "bg-[var(--bb-accent,#2f7fe8)] text-white" : ""}`} aria-hidden="true">
                 <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M4 19V5" />
                   <path d="M9 19v-6" />
@@ -16388,7 +16413,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   : "bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-text-primary,#111827)] hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))]"
               }`}
               aria-label="Open Bible"
-              data-dashboard-nav-key="bible-tab"
+              data-dashboard-nav-key="bible"
             >
               <span className={`grid h-7 w-7 place-items-center rounded-full ${bibleTabActive ? "bg-[var(--bb-accent,#2f7fe8)] text-white" : ""}`} aria-hidden="true">
                 <BibleBookIcon />
@@ -16426,7 +16451,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   : "bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-text-primary,#111827)] hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))]"
               }`}
               aria-label="Open BB Chat"
-              data-dashboard-nav-key="bb-chat-tab"
+              data-dashboard-nav-key="buddy"
             >
               <span className={`grid h-7 w-7 place-items-center rounded-full ${chatTabActive ? "bg-[var(--bb-accent,#2f7fe8)] text-white" : ""}`} aria-hidden="true">
                 <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none">
@@ -16441,11 +16466,15 @@ Before we understand redemption, we need to understand what God made humanity fo
               <button
                 type="button"
                 onClick={openAnalyticsPage}
-                className="flex h-14 flex-col items-center justify-center rounded-[18px] bg-[var(--bb-surface-soft,#f4f8ff)] text-[10px] font-black text-[var(--bb-text-primary,#111827)] shadow-[0_0_18px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent)] ring-1 ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_16%,transparent)] transition hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))] hover:shadow-[0_0_24px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_26%,transparent)]"
+                className={`flex h-14 flex-col items-center justify-center rounded-[18px] text-[10px] font-black transition ${
+                  analyticsTabActive
+                    ? "bg-[var(--bb-accent-soft,rgba(47,127,232,0.14))] text-[var(--bb-accent,#2f7fe8)] ring-1 ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)]"
+                    : "bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-text-primary,#111827)] shadow-[0_0_18px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent)] ring-1 ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_16%,transparent)] hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))] hover:shadow-[0_0_24px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_26%,transparent)]"
+                }`}
                 aria-label="Open Analytics"
-                data-dashboard-nav-key="analytics-tab"
+                data-dashboard-nav-key="analytics"
               >
-                <span className="grid h-7 w-7 place-items-center" aria-hidden="true">
+                <span className={`grid h-7 w-7 place-items-center rounded-full ${analyticsTabActive ? "bg-[var(--bb-accent,#2f7fe8)] text-white" : ""}`} aria-hidden="true">
                   <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none">
                     <path d="M4 19V5" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
                     <path d="M9 19v-6" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
@@ -16460,10 +16489,15 @@ Before we understand redemption, we need to understand what God made humanity fo
               <button
                 type="button"
                 onClick={openInvitePage}
-                className="flex h-14 flex-col items-center justify-center rounded-[18px] bg-[var(--bb-surface-soft,#f4f8ff)] text-[10px] font-black text-[var(--bb-text-primary,#111827)] shadow-[0_0_18px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent)] ring-1 ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_16%,transparent)] transition hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))] hover:shadow-[0_0_24px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_26%,transparent)]"
+                className={`flex h-14 flex-col items-center justify-center rounded-[18px] text-[10px] font-black transition ${
+                  inviteTabActive
+                    ? "bg-[var(--bb-accent-soft,rgba(47,127,232,0.14))] text-[var(--bb-accent,#2f7fe8)] ring-1 ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)]"
+                    : "bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-text-primary,#111827)] shadow-[0_0_18px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent)] ring-1 ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_16%,transparent)] hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))] hover:shadow-[0_0_24px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_26%,transparent)]"
+                }`}
                 aria-label="Invite friends to Bible Buddy"
+                data-dashboard-nav-key="share"
               >
-                <span className="grid h-7 w-7 place-items-center" aria-hidden="true">
+                <span className={`grid h-7 w-7 place-items-center rounded-full ${inviteTabActive ? "bg-[var(--bb-accent,#2f7fe8)] text-white" : ""}`} aria-hidden="true">
                   <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none">
                     <path d="M21 3 10.6 13.4" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" />
                     <path d="m21 3-6.7 18-3.7-7.6L3 9.7 21 3Z" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" />
@@ -16692,7 +16726,6 @@ Before we understand redemption, we need to understand what God made humanity fo
         />
       ) : null}
 
-      {renderBibleProgressDetailsModal()}
       {renderBibleYearCompletionModal()}
       {renderBibleYearIncompleteChecklistModal()}
       {renderBibleYearDeepNotesUpgradeModal()}

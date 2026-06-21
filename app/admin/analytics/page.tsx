@@ -171,6 +171,10 @@ type BibleYearDayAnalytics = {
   readingCompleted: number;
   triviaCompleted: number;
   reflectionCompleted: number;
+  videoWatchUsers: number;
+  videoCompletedUsers: number;
+  totalWatchSeconds: number;
+  averageWatchSeconds: number;
   completionRate: number;
   lastActiveAt: string | null;
   users: Array<{
@@ -188,6 +192,10 @@ type BibleYearDayAnalytics = {
     task2FinishEvent: string | null;
     task3StartEvent: string | null;
     task3FinishEvent: string | null;
+    videoWatchedSeconds: number;
+    videoDurationSeconds: number;
+    videoWatchPercent: number;
+    videoCompleted: boolean;
     completed: boolean;
     updatedAt: string | null;
   }>;
@@ -565,8 +573,8 @@ function buildJourneyPerformanceDays(days: BibleYearDayAnalytics[] | undefined):
       title: planDay.title,
       reference: planDay.reference,
       plays,
-      uniqueListeners: plays,
-      avgListenTimeLabel: "Tracking soon",
+      uniqueListeners: day?.videoWatchUsers || plays,
+      avgListenTimeLabel: formatListenDuration(day?.averageWatchSeconds || 0),
       completionRate: day?.completionRate || getRate(completedUsers, plays),
       completedUsers,
       notesOpened,
@@ -2926,12 +2934,12 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
   }
 
   if (!authChecked) {
-    return <div className={`${embedded ? "min-h-[420px]" : "min-h-screen"} bg-[var(--bb-background,#0e1218)] p-10 text-[var(--bb-text-secondary,#d1d5db)]`}>Checking analytics access...</div>;
+    return <div className={`${embedded ? "min-h-[420px] rounded-[28px] border border-[var(--bb-card-border,#374151)] bg-[var(--bb-card,#19212c)] p-6" : "min-h-screen bg-[var(--bb-background,#0e1218)] p-10"} text-[var(--bb-text-secondary,#d1d5db)]`}>Checking analytics access...</div>;
   }
 
   if (!isOwner) {
     return (
-      <div className={`grid ${embedded ? "min-h-[420px]" : "min-h-screen"} place-items-center bg-[var(--bb-background,#0e1218)] p-6`}>
+      <div className={`grid ${embedded ? "min-h-[420px]" : "min-h-screen"} ${embedded ? "" : "bg-[var(--bb-background,#0e1218)]"} place-items-center p-6`}>
         <div className="max-w-md rounded-2xl border border-[var(--bb-card-border,#374151)] bg-[var(--bb-card,#19212c)] p-6 text-center shadow-sm">
           <h1 className="text-2xl font-bold text-[var(--bb-text-primary,#f9fafb)]">Owner analytics only</h1>
           <p className="mt-2 text-sm text-[var(--bb-text-secondary,#d1d5db)]">This dashboard is only available to the Bible Buddy owner account.</p>
@@ -2941,10 +2949,53 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
   }
 
   return (
-    <div className={`bb-analytics-page ${embedded ? "min-h-0" : "min-h-screen"} bg-[var(--bb-background,#0e1218)] text-[var(--bb-text-primary,#f9fafb)]`}>
+    <div className={`bb-analytics-page ${embedded ? "min-h-0" : "min-h-screen bg-[var(--bb-background,#0e1218)]"} text-[var(--bb-text-primary,#f9fafb)]`}>
       <div className={embedded ? "min-h-0" : "min-h-screen"}>
-        <main className={`min-w-0 ${embedded ? "px-1 py-1" : "px-4 py-6 sm:px-6 lg:px-10"}`}>
-          <header className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+        <main className={`min-w-0 ${embedded ? "rounded-[28px] border border-[var(--bb-card-border,#374151)] bg-[var(--bb-card,#19212c)] px-4 py-4 shadow-[0_18px_46px_rgba(0,0,0,0.18)] sm:px-5" : "px-4 py-6 sm:px-6 lg:px-10"}`}>
+          {embedded ? (
+            <div className="mb-4 flex flex-col gap-3 border-b border-[var(--bb-card-border,#374151)] pb-4">
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <p className="text-[10px] font-black uppercase tracking-[0.22em] text-[var(--bb-accent,#60a5fa)]">Analytics</p>
+                  <h1 className="mt-1 text-2xl font-black tracking-tight text-[var(--bb-text-primary,#f9fafb)]">
+                    {activeView === "overview" ? "Audio Journey Analytics" : activeNavItem.label}
+                  </h1>
+                </div>
+              </div>
+              <div className="grid gap-2 sm:grid-cols-3">
+                <select
+                  id="analytics-view-embedded"
+                  value={activeView}
+                  onChange={(event) => setActiveView(event.target.value as AnalyticsView)}
+                  className="h-11 min-w-0 rounded-lg border border-[var(--bb-card-border,#374151)] bg-[var(--bb-card,#19212c)] px-4 text-sm font-semibold text-[var(--bb-text-primary,#f9fafb)] shadow-sm outline-none transition focus:border-[var(--bb-accent,#60a5fa)] focus:ring-4 focus:ring-[var(--bb-accent-soft,#27313d)]"
+                  aria-label="Analytics view"
+                >
+                  {ANALYTICS_NAV_ITEMS.map((item) => (
+                    <option key={item.key} value={item.key}>{item.label}</option>
+                  ))}
+                </select>
+                <select
+                  value={windowKey}
+                  onChange={(event) => setWindowKey(event.target.value as JourneyWindow)}
+                  className="h-11 min-w-0 rounded-lg border border-[var(--bb-card-border,#374151)] bg-[var(--bb-card,#19212c)] px-4 text-sm font-semibold text-[var(--bb-text-primary,#f9fafb)] shadow-sm outline-none transition focus:border-[var(--bb-accent,#60a5fa)] focus:ring-4 focus:ring-[var(--bb-accent-soft,#27313d)]"
+                  aria-label="Analytics timeframe"
+                >
+                  {WINDOW_OPTIONS.map((option) => (
+                    <option key={option.key} value={option.key}>{option.label}</option>
+                  ))}
+                </select>
+                <button
+                  type="button"
+                  onClick={exportCsv}
+                  className="inline-flex h-11 items-center justify-center gap-2 rounded-lg border border-[var(--bb-card-border,#374151)] bg-[var(--bb-card,#19212c)] px-4 text-sm font-semibold text-[var(--bb-text-primary,#f9fafb)] shadow-sm transition hover:brightness-110"
+                >
+                  <Icon name="export" />
+                  Export
+                </button>
+              </div>
+            </div>
+          ) : null}
+          <header className={`${embedded ? "hidden" : "flex"} flex-col gap-4 lg:flex-row lg:items-start lg:justify-between`}>
             <div>
               <h1 className="text-3xl font-bold tracking-tight text-[var(--bb-text-primary,#f9fafb)]">
                 {activeView === "overview" ? "Audio Journey Analytics" : activeNavItem.label}
@@ -3406,16 +3457,16 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
                       <div className="bg-slate-50 px-5 pb-5">
                         <div className="grid gap-3 rounded-xl border border-slate-200 bg-white p-4 lg:grid-cols-4">
                           <div>
-                            <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Task 1 Video done</p>
-                            <p className="mt-1 text-2xl font-black text-slate-950">{day?.readingCompleted || 0}</p>
+                            <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">YouTube viewers</p>
+                            <p className="mt-1 text-2xl font-black text-slate-950">{day?.videoWatchUsers || 0}</p>
                           </div>
                           <div>
-                            <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Task 2 Summary done</p>
-                            <p className="mt-1 text-2xl font-black text-slate-950">{day?.reflectionCompleted || 0}</p>
+                            <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Avg watch time</p>
+                            <p className="mt-1 text-2xl font-black text-slate-950">{formatListenDuration(day?.averageWatchSeconds || 0)}</p>
                           </div>
                           <div>
-                            <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Task 3 Trivia done</p>
-                            <p className="mt-1 text-2xl font-black text-slate-950">{day?.triviaCompleted || 0}</p>
+                            <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">95% watched</p>
+                            <p className="mt-1 text-2xl font-black text-slate-950">{day?.videoCompletedUsers || 0}</p>
                           </div>
                           <div>
                             <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Last activity</p>
@@ -3440,7 +3491,16 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
                                 day.users.map((user) => (
                                   <tr key={`${planDay.dayNumber}-${user.userId}`} className="hover:bg-slate-50">
                                     <td className="px-4 py-3 font-bold text-slate-900">{user.userLabel}</td>
-                                    <td className="px-4 py-3"><MiniTaskStatus status={getTaskStatus(user.readingStarted, user.readingCompleted)} evidence={user.task1FinishEvent || user.task1StartEvent} /></td>
+                                    <td className="px-4 py-3">
+                                      <div className="space-y-1.5">
+                                        <MiniTaskStatus status={getTaskStatus(user.readingStarted, user.readingCompleted)} evidence={user.task1FinishEvent || user.task1StartEvent} />
+                                        <p className="text-xs font-semibold text-slate-500">
+                                          {user.videoWatchedSeconds > 0
+                                            ? `${formatListenDuration(user.videoWatchedSeconds)} watched${user.videoWatchPercent > 0 ? ` (${user.videoWatchPercent}%)` : ""}`
+                                            : "No YouTube watch tracked"}
+                                        </p>
+                                      </div>
+                                    </td>
                                     <td className="px-4 py-3"><MiniTaskStatus status={getTaskStatus(user.reflectionStarted, user.reflectionCompleted)} evidence={user.task2FinishEvent || user.task2StartEvent} /></td>
                                     <td className="px-4 py-3"><MiniTaskStatus status={getTaskStatus(user.triviaStarted, user.triviaCompleted)} evidence={user.task3FinishEvent || user.task3StartEvent} /></td>
                                     <td className="px-4 py-3">
@@ -3593,6 +3653,6 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
   );
 }
 
-export default function AnalyticsPage() {
-  return <AnalyticsPageContent />;
+export default function AnalyticsPage({ embedded = false }: { embedded?: boolean }) {
+  return <AnalyticsPageContent embedded={embedded} />;
 }

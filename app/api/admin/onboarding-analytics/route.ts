@@ -107,6 +107,15 @@ type MasterActionFunnelRow = {
   created_at?: string | null;
 };
 
+type VideoProgressAnalyticsRow = {
+  user_id?: string | null;
+  video_id?: string | null;
+  current_time?: number | null;
+  duration?: number | null;
+  completed?: boolean | null;
+  updated_at?: string | null;
+};
+
 type ActiveUserActionRow = {
   id: string;
   actionType: string;
@@ -236,6 +245,10 @@ type BibleYearDayUserRow = {
   task2FinishEvent: string | null;
   task3StartEvent: string | null;
   task3FinishEvent: string | null;
+  videoWatchedSeconds: number;
+  videoDurationSeconds: number;
+  videoWatchPercent: number;
+  videoCompleted: boolean;
   completed: boolean;
   updatedAt: string | null;
 };
@@ -929,6 +942,12 @@ function getAnalyticsDateRange(windowKey: JourneyWindowKey) {
     return { startIso: "1970-01-01T00:00:00.000Z", endIso: null as string | null };
   }
   return { startIso: new Date(now.getTime() - 24 * 60 * 60 * 1000).toISOString(), endIso: null as string | null };
+}
+
+function parseBibleYearDayFromVideoId(videoId: string | null | undefined) {
+  if (!videoId) return 0;
+  const match = videoId.match(/bible-year-free-day-(\d+)/i);
+  return match ? Number(match[1] || 0) : 0;
 }
 
 function withinMs(leftIso: string | null | undefined, rightIso: string | null | undefined, ms: number) {
@@ -2579,6 +2598,7 @@ function buildVisitorJourneys(
 function buildBibleYearDayAnalytics(
   _progressRows: BibleYearProgressRow[],
   masterRows: MasterActionFunnelRow[],
+  videoProgressRows: VideoProgressAnalyticsRow[],
   profileByUserId: Map<string, string>,
 ) {
   const dayActors = new Map<number, Map<string, {
@@ -2596,6 +2616,9 @@ function buildBibleYearDayAnalytics(
     task2FinishEvent: string | null;
     task3StartEvent: string | null;
     task3FinishEvent: string | null;
+    videoWatchedSeconds: number;
+    videoDurationSeconds: number;
+    videoCompleted: boolean;
     updatedAt: string | null;
   }>>();
 
@@ -2615,6 +2638,9 @@ function buildBibleYearDayAnalytics(
       task2FinishEvent: string | null;
       task3StartEvent: string | null;
       task3FinishEvent: string | null;
+      videoWatchedSeconds: number;
+      videoDurationSeconds: number;
+      videoCompleted: boolean;
       updatedAt: string | null;
     }>();
     const existing = actors.get(actorId);
@@ -2635,6 +2661,9 @@ function buildBibleYearDayAnalytics(
       task2FinishEvent: null,
       task3StartEvent: null,
       task3FinishEvent: null,
+      videoWatchedSeconds: 0,
+      videoDurationSeconds: 0,
+      videoCompleted: false,
       updatedAt: null,
     };
     actors.set(actorId, next);
@@ -2688,6 +2717,30 @@ function buildBibleYearDayAnalytics(
     }
   }
 
+  for (const row of videoProgressRows) {
+    const dayNumber = parseBibleYearDayFromVideoId(row.video_id);
+    if (!dayNumber) continue;
+    const actorId = typeof row.user_id === "string" ? row.user_id : "";
+    if (!actorId) continue;
+
+    const actor = getOrCreateDayActor(dayNumber, actorId, {
+      user_id: actorId,
+      username: profileByUserId.get(actorId) || `User ${shortId(actorId)}`,
+      created_at: row.updated_at || null,
+    });
+
+    const watchedSeconds = Number(row.current_time ?? 0);
+    const durationSeconds = Number(row.duration ?? 0);
+    const updatedAt = row.updated_at || null;
+
+    actor.videoWatchedSeconds = Math.max(actor.videoWatchedSeconds, Number.isFinite(watchedSeconds) ? watchedSeconds : 0);
+    actor.videoDurationSeconds = Math.max(actor.videoDurationSeconds, Number.isFinite(durationSeconds) ? durationSeconds : 0);
+    actor.videoCompleted = actor.videoCompleted || row.completed === true;
+    actor.readingStarted = actor.readingStarted || actor.videoWatchedSeconds > 0;
+    actor.task1StartEvent = actor.task1StartEvent || `youtube_watch_day_${dayNumber}`;
+    if (!actor.updatedAt || (updatedAt || "") > actor.updatedAt) actor.updatedAt = updatedAt;
+  }
+
   return Array.from(dayActors.entries())
     .sort((a, b) => a[0] - b[0])
     .map(([dayNumber, actorMap]) => {
@@ -2722,6 +2775,13 @@ function buildBibleYearDayAnalytics(
           task2FinishEvent: row.task2FinishEvent,
           task3StartEvent: row.task3StartEvent,
           task3FinishEvent: row.task3FinishEvent,
+          videoWatchedSeconds: row.videoWatchedSeconds,
+          videoDurationSeconds: row.videoDurationSeconds,
+          videoWatchPercent:
+            row.videoDurationSeconds > 0
+              ? Number(Math.min(100, (row.videoWatchedSeconds / row.videoDurationSeconds) * 100).toFixed(1))
+              : 0,
+          videoCompleted: row.videoCompleted,
           completed: row.triviaCompleted,
           updatedAt: row.updatedAt,
         }))
@@ -2732,6 +2792,9 @@ function buildBibleYearDayAnalytics(
       const readingCompleted = actorRows.filter((row) => row.readingCompleted).length;
       const triviaCompleted = actorRows.filter((row) => row.triviaCompleted).length;
       const reflectionCompleted = actorRows.filter((row) => row.reflectionCompleted).length;
+      const videoWatchUsers = actorRows.filter((row) => row.videoWatchedSeconds > 0).length;
+      const videoCompletedUsers = actorRows.filter((row) => row.videoCompleted).length;
+      const totalWatchSeconds = actorRows.reduce((total, row) => total + row.videoWatchedSeconds, 0);
       const completedUsers = triviaCompleted;
       const lastActiveAt = actorRows
         .map((row) => row.updatedAt || "")
@@ -2747,6 +2810,10 @@ function buildBibleYearDayAnalytics(
         readingCompleted,
         triviaCompleted,
         reflectionCompleted,
+        videoWatchUsers,
+        videoCompletedUsers,
+        totalWatchSeconds,
+        averageWatchSeconds: videoWatchUsers > 0 ? Math.round(totalWatchSeconds / videoWatchUsers) : 0,
         completionRate: startedUsers > 0 ? Number(Math.min(100, (completedUsers / startedUsers) * 100).toFixed(1)) : 0,
         lastActiveAt,
         users,
@@ -3401,6 +3468,18 @@ export async function GET(request: Request) {
     activeUsersLast24Rows = (activeUsersLast24Data || []) as MasterActionFunnelRow[];
   }
 
+  const { startIso: videoSinceIso, endIso: videoBeforeIso } = getAnalyticsDateRange(journeyWindow);
+  let videoProgressQuery = adminSupabase
+    .from("video_progress")
+    .select("user_id, video_id, current_time, duration, completed, updated_at")
+    .like("video_id", "bible-year-free-day-%")
+    .gte("updated_at", videoSinceIso)
+    .order("updated_at", { ascending: false })
+    .limit(250000);
+  if (videoBeforeIso) videoProgressQuery = videoProgressQuery.lt("updated_at", videoBeforeIso);
+  const { data: videoProgressData } = await videoProgressQuery;
+  const videoProgressRows = (videoProgressData || []) as VideoProgressAnalyticsRow[];
+
   const eventUserIds = Array.from(new Set([
     ...landingEventRows.map((row) => row.user_id).filter((userId): userId is string => Boolean(userId)),
     ...upgradeRows.map((row) => row.user_id).filter((userId): userId is string => Boolean(userId)),
@@ -3409,6 +3488,7 @@ export async function GET(request: Request) {
     ...masterFunnelRows.map((row) => row.user_id).filter((userId): userId is string => Boolean(userId)),
     ...firstThreeDayRows.map((row) => row.user_id).filter((userId): userId is string => Boolean(userId)),
     ...activeUsersLast24Rows.map((row) => row.user_id).filter((userId): userId is string => Boolean(userId)),
+    ...videoProgressRows.map((row) => row.user_id).filter((userId): userId is string => Boolean(userId)),
   ]));
   const profileByUserId = new Map<string, string>();
   const profileSummaryByUserId = new Map<string, ProfileSummary>();
@@ -3513,7 +3593,7 @@ export async function GET(request: Request) {
     const updatedAt = typeof row.updated_at === "string" ? new Date(row.updated_at).getTime() : 0;
     return Number.isFinite(updatedAt) && updatedAt >= new Date(journeySinceIso).getTime();
   });
-  const bibleYearDays = buildBibleYearDayAnalytics(windowBibleYearProgressRows, masterFunnelRows, profileByUserId);
+  const bibleYearDays = buildBibleYearDayAnalytics(windowBibleYearProgressRows, masterFunnelRows, videoProgressRows, profileByUserId);
   const audioEngagement = summarizeAudioEngagement(masterFunnelRows, bibleYearDays, profileByUserId);
   const dayThreeUpgrade = buildDayThreeUpgradeAnalytics(masterFunnelRows);
   const daySevenUpgrade = buildDayUpgradeAnalytics(masterFunnelRows, 7);
