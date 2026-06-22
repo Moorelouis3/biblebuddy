@@ -3184,6 +3184,25 @@ async function buildOverviewAnalyticsResponse(
   if (endIso) masterQuery = masterQuery.lt("created_at", endIso);
   const { data: masterData } = await masterQuery;
   const masterRows = (masterData || []) as MasterActionFunnelRow[];
+  let paidProfilesQuery = adminSupabase
+    .from("profile_stats")
+    .select("user_id, display_name, username, is_paid, member_badge, updated_at")
+    .eq("is_paid", true)
+    .gte("updated_at", startIso)
+    .limit(50000);
+  if (endIso) paidProfilesQuery = paidProfilesQuery.lt("updated_at", endIso);
+  const { data: paidProfilesData } = await paidProfilesQuery;
+  const paidProfileUpgradeRows = (paidProfilesData || []) as PaidProfileUpgradeRow[];
+  const { data: allUpgradeActionData } = await adminSupabase
+    .from("master_actions")
+    .select("user_id")
+    .eq("action_type", "user_upgraded")
+    .limit(250000);
+  const allUpgradeUserIds = new Set(
+    ((allUpgradeActionData || []) as Array<{ user_id?: string | null }>)
+      .map((row) => row.user_id)
+      .filter((userId): userId is string => Boolean(userId)),
+  );
   const firstThreeDaysSinceIso = new Date(Date.now() - NEW_USER_FIRST_THREE_DAYS_LOOKBACK_DAYS * 24 * 60 * 60 * 1000).toISOString();
   const { data: firstThreeDaysData } = await adminSupabase
     .from("master_actions")
@@ -3194,12 +3213,23 @@ async function buildOverviewAnalyticsResponse(
     .limit(50000);
   const firstThreeDayRows = (firstThreeDaysData || []) as MasterActionFunnelRow[];
   const windowSummary = summarizeAcquisitionWindow(landingRows, masterRows, journeyWindow);
-  const proUpgrades = new Set(
+  const proUpgradeUsers = new Set(
     masterRows
       .filter((row) => row.action_type === "user_upgraded")
       .map((row) => row.user_id)
       .filter((userId): userId is string => Boolean(userId)),
-  ).size;
+  );
+  paidProfileUpgradeRows
+    .filter((row) => row.user_id && row.is_paid === true)
+    .filter((row) => isWithinAnalyticsWindow(row.updated_at || null, startIso, endIso))
+    .filter((row) => {
+      const badge = (row.member_badge || "").trim().toLowerCase();
+      const name = (row.display_name || row.username || "").trim().toLowerCase();
+      return !["admin", "owner", "staff", "teacher", "internal"].includes(badge) && name !== "louis" && name !== "louis moore";
+    })
+    .filter((row) => !allUpgradeUserIds.has(row.user_id as string))
+    .forEach((row) => proUpgradeUsers.add(row.user_id as string));
+  const proUpgrades = proUpgradeUsers.size;
   const audioRows = masterRows.filter((row) => row.action_type === "bible_year_audio_played" || row.action_type === "bible_year_task_started");
   const uniqueAudioActors = new Set(audioRows.map((row) => getMasterActorId(row)).filter(Boolean));
   const newUserFirstThreeDays = buildNewUserFirstThreeDaysAnalytics(firstThreeDayRows, new Map());
@@ -3366,6 +3396,26 @@ export async function GET(request: Request) {
   if (journeyBeforeIso) upgradeQuery = upgradeQuery.lt("created_at", journeyBeforeIso);
   const { data: upgradeData } = await upgradeQuery;
   const upgradeRows = (upgradeData || []) as UpgradeActionRow[];
+  let paidProfilesUpgradeQuery = adminSupabase
+    .from("profile_stats")
+    .select("user_id, display_name, username, is_paid, member_badge, updated_at")
+    .eq("is_paid", true)
+    .gte("updated_at", journeySinceIso)
+    .order("updated_at", { ascending: false })
+    .limit(50000);
+  if (journeyBeforeIso) paidProfilesUpgradeQuery = paidProfilesUpgradeQuery.lt("updated_at", journeyBeforeIso);
+  const { data: paidProfilesUpgradeData } = await paidProfilesUpgradeQuery;
+  const paidProfileUpgradeRows = (paidProfilesUpgradeData || []) as PaidProfileUpgradeRow[];
+  const { data: allUpgradeActionData } = await adminSupabase
+    .from("master_actions")
+    .select("user_id")
+    .eq("action_type", "user_upgraded")
+    .limit(250000);
+  const allUpgradeUserIds = new Set(
+    ((allUpgradeActionData || []) as Array<{ user_id?: string | null }>)
+      .map((row) => row.user_id)
+      .filter((userId): userId is string => Boolean(userId)),
+  );
   let studyNotesQuery = adminSupabase
     .from("master_actions")
     .select("user_id, username, action_type, action_label, event_metadata, created_at")
@@ -3646,9 +3696,29 @@ export async function GET(request: Request) {
     profileSummaryByUserId,
     journeyWindow,
   );
-  const proUpgrades = new Set(
+  const proUpgradeUsers = new Set(
     upgradeRows.map((row) => row.user_id).filter((userId): userId is string => Boolean(userId)),
-  ).size;
+  );
+  paidProfileUpgradeRows
+    .filter((row) => row.user_id && row.is_paid === true)
+    .filter((row) => !isOwnerAuthUser(row.user_id || null, authSummaryByUserId))
+    .filter((row) =>
+      !isInternalAnalyticsProfile({
+        displayName: (row.display_name || row.username || "").trim(),
+        isPaid: true,
+        registeredAt: null,
+        convertedFromGuestAt: null,
+        currentStreak: null,
+        currentLevel: null,
+        totalActions: null,
+        memberBadge: typeof row.member_badge === "string" ? row.member_badge : null,
+        proExpiresAt: null,
+        updatedAt: typeof row.updated_at === "string" ? row.updated_at : null,
+      }),
+    )
+    .filter((row) => !allUpgradeUserIds.has(row.user_id as string))
+    .forEach((row) => proUpgradeUsers.add(row.user_id as string));
+  const proUpgrades = proUpgradeUsers.size;
   const customerJourney = {
     window: journeyWindow,
     label: getJourneyWindowLabel(journeyWindow),

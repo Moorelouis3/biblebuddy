@@ -44,6 +44,18 @@ export async function markUserAsPaidAndTrackUpgrade({
 
   const profile = (existingProfile as ProfileStatsRow | null) ?? null;
   const wasPaid = profile?.is_paid === true;
+  const { data: existingUpgradeActions, error: existingUpgradeActionsError } = await supabase
+    .from("master_actions")
+    .select("id")
+    .eq("user_id", userId)
+    .eq("action_type", "user_upgraded")
+    .limit(1);
+
+  if (existingUpgradeActionsError) {
+    throw existingUpgradeActionsError;
+  }
+
+  const alreadyTrackedUpgrade = Boolean(existingUpgradeActions?.length);
   const updatePayload: Record<string, string | boolean | null> = {
     user_id: userId,
     is_paid: true,
@@ -65,7 +77,7 @@ export async function markUserAsPaidAndTrackUpgrade({
     throw upsertError;
   }
 
-  if (!wasPaid) {
+  if (!wasPaid || !alreadyTrackedUpgrade) {
     const username =
       profile?.display_name ||
       profile?.username ||
@@ -88,5 +100,5 @@ export async function markUserAsPaidAndTrackUpgrade({
     }
   }
 
-  return { upgradedNow: !wasPaid };
+  return { upgradedNow: !wasPaid || !alreadyTrackedUpgrade };
 }

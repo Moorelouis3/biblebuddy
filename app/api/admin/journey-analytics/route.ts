@@ -163,6 +163,7 @@ export async function GET(request: Request) {
       signupsResult,
       fallbackSignupsResult,
       upgradesResult,
+      allUpgradeActionsResult,
       activeActionsResult,
       activeProfilesResult,
       bibleYearProgressResult,
@@ -175,6 +176,7 @@ export async function GET(request: Request) {
       supabase.from("user_signups").select("user_id").gte("created_at", todayStart).limit(250000),
       supabase.from("master_actions").select("user_id").eq("action_type", "user_signup").gte("created_at", todayStart).limit(250000),
       supabase.from("master_actions").select("user_id").eq("action_type", "user_upgraded").gte("created_at", todayStart).limit(250000),
+      supabase.from("master_actions").select("user_id").eq("action_type", "user_upgraded").limit(250000),
       supabase.from("master_actions").select("user_id").gte("created_at", activeSince).limit(250000),
       supabase.from("profile_stats").select("user_id, last_active_at, last_active_date").or(`last_active_at.gte.${activeSince},last_active_date.gte.${activeSince.slice(0, 10)}`).limit(250000),
       supabase.from("bible_year_day_progress").select("user_id, day_number, reading_completed, study_notes_completed, trivia_completed, reflection_completed, updated_at").limit(250000),
@@ -199,11 +201,22 @@ export async function GET(request: Request) {
     const profiles = (profilesResult.data || []) as ProfileRow[];
     const videoHelpfulnessRows = (videoHelpfulnessResult.data || []) as VideoHelpfulnessRow[];
     const profileByUser = new Map(profiles.filter((row) => row.user_id).map((row) => [row.user_id as string, row]));
+    const allUpgradeUserIds = new Set<string>(
+      ((allUpgradeActionsResult.data || []) as Array<{ user_id?: string | null }>)
+        .map((row) => row.user_id)
+        .filter((id): id is string => Boolean(id)),
+    );
     const upgradeUserIds = new Set<string>(
       ((upgradesResult.data || []) as Array<{ user_id?: string | null }>)
         .map((row) => row.user_id)
         .filter((id): id is string => Boolean(id)),
     );
+    profiles
+      .filter((row) => row.user_id && row.is_paid === true)
+      .filter((row) => isWithinIsoWindow(row.updated_at, todayStart, todayEnd))
+      .filter((row) => !isInternalUpgradeProfile(row))
+      .filter((row) => !allUpgradeUserIds.has(row.user_id as string))
+      .forEach((row) => upgradeUserIds.add(row.user_id as string));
 
     const progressByUser = new Map<string, BibleYearProgressRow[]>();
     for (const row of progressRows) {
