@@ -551,13 +551,13 @@ export default function BibleYearLessonAudioPlayer({
   }
 
   return (
-    <section className="mb-2 overflow-hidden rounded-[16px] text-[#f8fafc]">
+    <section className="mb-2 overflow-hidden rounded-[16px] text-center text-[#f8fafc]">
       <div
-        className={`flex min-w-0 flex-col gap-2 ${controlsLocked ? "pointer-events-none select-none opacity-85" : ""}`}
+        className={`flex min-w-0 flex-col items-center gap-2 ${controlsLocked ? "pointer-events-none select-none opacity-85" : ""}`}
         aria-disabled={controlsLocked}
       >
         {!compactMediaControls ? (
-        <div className="flex items-center gap-3">
+        <div className="flex w-full flex-col items-center gap-3">
           <button
             type="button"
             onClick={toggleAudio}
@@ -573,8 +573,8 @@ export default function BibleYearLessonAudioPlayer({
               <span className="ml-0.5 h-0 w-0 border-y-[6px] border-l-[10px] border-y-transparent border-l-current" aria-hidden="true" />
             )}
           </button>
-          <div className="min-w-0 flex-1">
-            <p className="truncate text-[15px] font-bold text-white">{title}</p>
+          <div className="min-w-0 max-w-full">
+            <p className="text-[15px] font-bold text-white">{title}</p>
             <p className="mt-0.5 text-[11px] font-semibold text-[#8e9baf]">
               {playing ? "Playing" : currentTime > 2 ? "Ready to resume" : "Audio lesson"}
               {" • "}
@@ -587,7 +587,7 @@ export default function BibleYearLessonAudioPlayer({
         </div>
         ) : null}
 
-        <div className="grid gap-2">
+        <div className="grid w-full gap-2">
             <div className="grid gap-1.5 rounded-2xl bg-transparent px-0 py-1.5">
               <input
                 type="range"
@@ -705,8 +705,8 @@ export default function BibleYearLessonAudioPlayer({
             ) : null}
 
             {!compactMediaControls ? (
-            <div className="flex flex-wrap items-center justify-between gap-3">
-              <div className="flex items-center justify-start">
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <div className="flex items-center justify-center">
                 {compactMediaControls && onPreviousLesson ? (
                   <button
                     type="button"
@@ -746,7 +746,7 @@ export default function BibleYearLessonAudioPlayer({
                   )}
                 </button>
               ) : null}
-              <div className="flex items-center justify-end gap-2">
+              <div className="flex items-center justify-center gap-2">
                 {compactMediaControls && onNextLesson ? (
                   <button
                     type="button"

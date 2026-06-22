@@ -4754,6 +4754,7 @@ export default function DashboardJourneyExperience({
 
       if (typeof window !== "undefined") {
         try {
+          clearStoredBibleYearDashboardDayNumber(userId);
           Object.keys(window.localStorage)
             .filter((key) => key.startsWith("bb:bible-year-audio-progress:"))
             .forEach((key) => window.localStorage.removeItem(key));
@@ -4768,6 +4769,10 @@ export default function DashboardJourneyExperience({
         null;
 
       setBibleYearCompletedCardsByDay({});
+      setBibleYearScriptureNotesViewedByDay({});
+      setBibleYearReflectionPostedByDay({});
+      setBibleYearResolvedCurrentDayNumber(1);
+      setBibleYearProgressLoaded(true);
       bibleYearXpBackfillKeyRef.current = "";
       setBibleYearTriviaAnswers({});
       setBibleYearTriviaQuestionIndexByDay({});
@@ -12215,21 +12220,19 @@ Before we understand redemption, we need to understand what God made humanity fo
               <h3 className="text-[18px] font-bold leading-tight text-[var(--bb-text-primary,#111827)] sm:text-[20px]">{day.title}</h3>
             </div>
           ) : (
-            <div className="mt-4 grid gap-4 sm:grid-cols-[142px_minmax(0,1fr)] lg:grid-cols-[164px_minmax(0,1fr)] xl:grid-cols-[176px_minmax(0,1fr)] xl:items-start">
-              <div className={`mx-auto aspect-square w-full max-w-[176px] overflow-hidden rounded-[12px] border shadow-[0_12px_26px_rgba(38,63,99,0.12)] sm:mx-0 ${
+            <div className="mt-4 flex flex-col items-center text-center">
+              <div className={`aspect-square w-full max-w-[176px] overflow-hidden rounded-[12px] border shadow-[0_12px_26px_rgba(38,63,99,0.12)] ${
                 readingComplete
                   ? "border-emerald-200 bg-emerald-50"
                   : "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f4f8ff)]"
               }`}>
                 <img src={cover} alt="" loading="eager" decoding="async" onError={handleBibleYearCoverImageError} className="h-full w-full object-cover" />
               </div>
-              <div className="flex min-w-0 flex-col justify-start pt-0.5">
-                <div className="min-w-0 px-1">
-                  <h3 className="mt-1 truncate whitespace-nowrap text-[18px] font-bold leading-tight text-[var(--bb-text-primary,#111827)] sm:text-[20px]">{day.title}</h3>
-                  <p className="mt-1 max-w-2xl text-[13px] font-medium leading-5 text-[var(--bb-text-secondary,#4b5563)]">
-                    {playerSubline}
-                  </p>
-                </div>
+              <div className="mt-4 min-w-0 px-1">
+                <h3 className="text-[18px] font-bold leading-tight text-[var(--bb-text-primary,#111827)] sm:text-[20px]">{day.title}</h3>
+                <p className="mt-2 max-w-2xl text-[13px] font-medium leading-5 text-[var(--bb-text-secondary,#4b5563)]">
+                  {playerSubline}
+                </p>
               </div>
             </div>
           )}
@@ -13179,6 +13182,9 @@ Before we understand redemption, we need to understand what God made humanity fo
     const videoPlayerSrc = getBibleYearVideoEmbedSrc(audio.videoSrc);
     const showVideo = Boolean(freeYoutubeUrl || videoPlayerSrc);
     const showAudio = !showVideo;
+    const cover = getBibleYearDayCoverImage(day);
+    const readingSummary = formatBibleYearMediaReference(day);
+    const audioIntroCopy = day.summary?.trim() || `Study ${readingSummary} with Bible Buddy.`;
     const verseBreakdownSections = lesson.sections;
     const { markdown: deepNotesMarkdown, sections: deepStudySections } = getBibleYearDayDeepNotes(day.dayNumber);
     const hasDeepNotes = Boolean(deepNotesMarkdown);
@@ -13782,6 +13788,17 @@ Before we understand redemption, we need to understand what God made humanity fo
 
           {showAudio ? (
             <div className="pt-0">
+              <div className="mb-4 flex flex-col items-center text-center">
+                <div className="aspect-square w-full max-w-[176px] overflow-hidden rounded-[12px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f4f8ff)] shadow-[0_12px_26px_rgba(38,63,99,0.12)]">
+                  <img src={cover} alt="" loading="eager" decoding="async" onError={handleBibleYearCoverImageError} className="h-full w-full object-cover" />
+                </div>
+                <div className="mt-4 px-1">
+                  <h3 className="text-[18px] font-bold leading-tight text-[var(--bb-text-primary,#fff7ed)] sm:text-[20px]">{day.title}</h3>
+                  <p className="mt-2 max-w-2xl text-[13px] font-medium leading-5 text-[var(--bb-text-secondary,#e7d4bd)]">
+                    {audioIntroCopy}
+                  </p>
+                </div>
+              </div>
               <BibleYearLessonAudioPlayer
                 audioSrc={audio.apiSrc}
                 title={audio.title}
