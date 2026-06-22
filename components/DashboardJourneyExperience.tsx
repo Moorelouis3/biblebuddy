@@ -241,6 +241,17 @@ type BibleYearProgressRow = {
   reflection_completed: boolean | null;
   created_at?: string | null;
 };
+
+type BibleYearCompletedChapterRow = {
+  book: string | null;
+  chapter: number | null;
+  created_at?: string | null;
+};
+
+type BibleYearDiscussionCommentRow = {
+  article_slug: string;
+  created_at?: string | null;
+};
 type BibleYearCompletionKeyVerse = {
   text: string;
   reference: string;
@@ -477,8 +488,17 @@ type ProfileShape = {
   username?: string | null;
   created_at?: string | null;
   bible_year_started_at?: string | null;
+  bible_year_plan_reset_at?: string | null;
   preferred_study_mode?: string | null;
 } | null;
+
+function isBibleYearEventOnOrAfterReset(value: string | null | undefined, resetAt?: string | null) {
+  if (!resetAt) return true;
+  if (!value) return false;
+  const valueMs = new Date(value).getTime();
+  const resetMs = new Date(resetAt).getTime();
+  return Number.isFinite(valueMs) && Number.isFinite(resetMs) && valueMs >= resetMs;
+}
 
 type BuddiesDashboardTopBuddy = {
   userId: string;
@@ -4063,17 +4083,19 @@ export default function DashboardJourneyExperience({
         const progressRowByDay = new Map(progressRows.map((row) => [Number(row.day_number), row]));
         const legacyCompletedDays = new Set(
           progressRows
-            .filter((row) => isBibleYearDayCompleteUnderLegacyRule(row))
+            .filter((row) => !profile?.bible_year_plan_reset_at && isBibleYearDayCompleteUnderLegacyRule(row))
             .map((row) => Number(row.day_number)),
         );
         const legacyCurrentActiveDay =
           GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => !legacyCompletedDays.has(day.dayNumber))?.dayNumber ||
           ((GENESIS_BIBLE_IN_ONE_YEAR_SERIES[GENESIS_BIBLE_IN_ONE_YEAR_SERIES.length - 1]?.dayNumber || 0) + 1);
-        const grandfatheredRows = GENESIS_BIBLE_IN_ONE_YEAR_SERIES
+        const grandfatheredRows = !profile?.bible_year_plan_reset_at
+          ? GENESIS_BIBLE_IN_ONE_YEAR_SERIES
           .filter((day) => day.dayNumber < legacyCurrentActiveDay)
           .map((day) => progressRowByDay.get(day.dayNumber))
           .filter((row): row is BibleYearProgressRow => Boolean(row) && isBibleYearDayCompleteUnderLegacyRule(row))
-          .filter((row) => !(row.reading_completed && row.study_notes_completed && row.trivia_completed && row.reflection_completed));
+          .filter((row) => !(row.reading_completed && row.study_notes_completed && row.trivia_completed && row.reflection_completed))
+          : [];
 
         if (grandfatheredRows.length) {
           const grandfatherPayload = grandfatheredRows.map((row) => ({
@@ -4110,11 +4132,11 @@ export default function DashboardJourneyExperience({
         const [{ data: completedChapterRows, error: completedChapterError }, { data: actionRows, error: actionError }] = await Promise.all([
           supabase
             .from("completed_chapters")
-            .select("book, chapter")
+            .select("book, chapter, created_at")
             .eq("user_id", userId),
           supabase
             .from("master_actions")
-            .select("action_type, action_label")
+            .select("action_type, action_label, created_at")
             .eq("user_id", userId)
             .in("action_type", actionTypes)
             .like("action_label", "Bible in One Year Day %"),
@@ -4128,12 +4150,15 @@ export default function DashboardJourneyExperience({
         }
 
         const completedChapterKeys = new Set(
-          ((completedChapterRows || []) as Array<{ book: string | null; chapter: number | null }>)
+          ((completedChapterRows || []) as BibleYearCompletedChapterRow[])
+            .filter((row) => isBibleYearEventOnOrAfterReset(row.created_at, profile?.bible_year_plan_reset_at))
             .filter((row) => typeof row.book === "string" && Number.isFinite(row.chapter))
             .map((row) => getCompletedBibleChapterKey(String(row.book), Number(row.chapter))),
         );
         const readingActionDays = new Set<number>();
-        ((actionRows || []) as Array<{ action_label?: string | null }>).forEach((row) => {
+        ((actionRows || []) as Array<{ action_label?: string | null; created_at?: string | null }>)
+          .filter((row) => isBibleYearEventOnOrAfterReset(row.created_at, profile?.bible_year_plan_reset_at))
+          .forEach((row) => {
           const match = (row.action_label || "").match(/^Bible in One Year Day (\d+) (Reading|Video):/);
           if (!match) return;
           const dayNumber = Number(match[1]);
@@ -4143,17 +4168,19 @@ export default function DashboardJourneyExperience({
         });
 
         const restoredLegacyDayNumbers: number[] = [];
-        for (const day of GENESIS_BIBLE_IN_ONE_YEAR_SERIES) {
-          const existingRow = progressRowByDay.get(day.dayNumber);
-          const restoredByRow = existingRow?.reading_completed === true;
-          const restoredByAction = readingActionDays.has(day.dayNumber);
-          const restoredByChapters =
-            day.readings.length > 0 &&
-            day.readings.every((reading) => completedChapterKeys.has(getCompletedBibleChapterKey(reading.book, reading.chapter)));
-          if (!restoredByRow && !restoredByAction && !restoredByChapters) {
-            break;
+        if (!profile?.bible_year_plan_reset_at) {
+          for (const day of GENESIS_BIBLE_IN_ONE_YEAR_SERIES) {
+            const existingRow = progressRowByDay.get(day.dayNumber);
+            const restoredByRow = existingRow?.reading_completed === true;
+            const restoredByAction = readingActionDays.has(day.dayNumber);
+            const restoredByChapters =
+              day.readings.length > 0 &&
+              day.readings.every((reading) => completedChapterKeys.has(getCompletedBibleChapterKey(reading.book, reading.chapter)));
+            if (!restoredByRow && !restoredByAction && !restoredByChapters) {
+              break;
+            }
+            restoredLegacyDayNumbers.push(day.dayNumber);
           }
-          restoredLegacyDayNumbers.push(day.dayNumber);
         }
 
         const restoredLegacyPayload = restoredLegacyDayNumbers
@@ -9914,7 +9941,7 @@ Before we understand redemption, we need to understand what God made humanity fo
 
       const { data: commentRow, error: commentError } = await supabase
         .from("article_comments")
-        .select("id")
+        .select("id, created_at")
         .eq("user_id", userId)
         .eq("article_slug", getBibleYearReflectionSlug(day))
         .eq("is_deleted", false)
@@ -9923,7 +9950,7 @@ Before we understand redemption, we need to understand what God made humanity fo
 
       if (commentError) throw commentError;
 
-      if (commentRow) {
+      if (commentRow && isBibleYearEventOnOrAfterReset((commentRow as { created_at?: string | null }).created_at, profile?.bible_year_plan_reset_at)) {
         setBibleYearReflectionPostedByDay((current) => ({
           ...current,
           [day.dayNumber]: true,

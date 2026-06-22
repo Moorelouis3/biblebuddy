@@ -43,6 +43,13 @@ export type GenesisBibleYearDay = {
 
 export const BIBLE_YEAR_FALLBACK_COVER_IMAGE = "/genericcoverforBIOY.png";
 
+function getDefaultBibleYearCoverImage(dayNumber: number) {
+  if (Number.isFinite(dayNumber) && dayNumber >= 1 && dayNumber <= 30) {
+    return `/day${dayNumber}cover.png`;
+  }
+  return BIBLE_YEAR_FALLBACK_COVER_IMAGE;
+}
+
 export function getBibleYearDayCoverImage(day: Pick<GenesisBibleYearDay, "coverImage"> | null | undefined) {
   const coverImage = typeof day?.coverImage === "string" ? day.coverImage.trim() : "";
   return coverImage || BIBLE_YEAR_FALLBACK_COVER_IMAGE;
@@ -86,13 +93,13 @@ type BibleYearScheduleEntry = {
 const ADDITIONAL_BIBLE_YEAR_SCHEDULE_RAW = `
 22 | Exodus 1-4 | God Hears Israel's Cry
 23 | Exodus 5-8 | Pharaoh Resists God's Word
-24 | Exodus 9-12 | Passover and Deliverance
-25 | Exodus 13-16 | Through the Sea and Into the Wilderness
-26 | Exodus 17-20 | Water, Battle, and the Ten Commandments
-27 | Exodus 21-24 | Covenant Law and Covenant Blood
-28 | Exodus 25-28 | The Tabernacle and Priesthood Begin
-29 | Exodus 29-32 | Consecration and the Golden Calf
-30 | Exodus 33-36 | God's Presence and Renewed Obedience
+24 | Exodus 9-12 | Passover
+25 | Exodus 13-16 | Into the Wilderness
+26 | Exodus 17-20 | The Ten Commandments
+27 | Exodus 21-24 | The Covenant Law
+28 | Exodus 25-28 | The Tabernacle
+29 | Exodus 29-32 | The Golden Calf
+30 | Exodus 33-36 | God's Presence is Enough
 31 | Exodus 37-40 | The Tabernacle Is Finished
 32 | Leviticus 1-4 | Offerings and Atonement
 33 | Leviticus 5-8 | Guilt, Consecration, and Priests
@@ -562,14 +569,16 @@ const RAW_GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     reference: "Genesis 32-33",
     estimatedTime: "30-35 min",
     summary: "Study fear, prayer, wrestling with God, a changed name, and reconciliation with Esau.",
+    coverImage: "/day13cover.png",
     readings: buildGenesisReadings("The Wrestling of Jacob", 32, 33, 5),
   },
   {
     dayNumber: 14,
-    title: "Jacob's Family and Esau's Line",
+    title: "Esau's Line",
     reference: "Genesis 34-36",
     estimatedTime: "40-45 min",
     summary: "Close Jacob's section with grief, violence, renewal at Bethel, loss, and the Edomite line.",
+    coverImage: "/day14cover.png",
     readings: buildGenesisReadings("The Wrestling of Jacob", 34, 36, 7),
   },
   {
@@ -578,6 +587,7 @@ const RAW_GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     reference: "Genesis 37-38",
     estimatedTime: "30-35 min",
     summary: "Begin Joseph's story with dreams, betrayal, the pit, Judah, Tamar, and God working in messy places.",
+    coverImage: "/day15cover.png",
     readings: buildGenesisReadings("The Testing of Joseph", 37, 38, 1),
   },
   {
@@ -586,6 +596,7 @@ const RAW_GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     reference: "Genesis 39-40",
     estimatedTime: "30-35 min",
     summary: "Follow Joseph through integrity, false accusation, prison, forgotten service, and hidden preparation.",
+    coverImage: "/day16cover.png",
     readings: buildGenesisReadings("The Testing of Joseph", 39, 40, 3),
   },
   {
@@ -594,14 +605,16 @@ const RAW_GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     reference: "Genesis 41-42",
     estimatedTime: "30-35 min",
     summary: "Watch Joseph rise with wisdom, famine begin, and his brothers unknowingly face the one they betrayed.",
+    coverImage: "/day17cover.png",
     readings: buildGenesisReadings("The Testing of Joseph", 41, 42, 5),
   },
   {
     dayNumber: 18,
-    title: "Judah Stands in the Gap",
+    title: "Judah Defends Benjamin",
     reference: "Genesis 43-44",
     estimatedTime: "30-35 min",
     summary: "Study testing, fear, mercy, Judah's transformation, and the family reaching a breaking point.",
+    coverImage: "/day18cover.png",
     readings: buildGenesisReadings("The Testing of Joseph", 43, 44, 7),
   },
   {
@@ -610,6 +623,7 @@ const RAW_GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     reference: "Genesis 45-46",
     estimatedTime: "30-35 min",
     summary: "Move into revelation, forgiveness, reunion, and Jacob's family going down into Egypt.",
+    coverImage: "/day19cover.png",
     readings: buildGenesisReadings("The Testing of Joseph", 45, 46, 9),
   },
   {
@@ -618,6 +632,7 @@ const RAW_GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     reference: "Genesis 47-48",
     estimatedTime: "30-35 min",
     summary: "Study provision in Egypt, Jacob's final years, blessing, adoption, and covenant hope.",
+    coverImage: "/day20cover.png",
     readings: buildGenesisReadings("The Testing of Joseph", 47, 48, 11),
   },
   {
@@ -626,6 +641,7 @@ const RAW_GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     reference: "Genesis 49-50",
     estimatedTime: "30-35 min",
     summary: "Finish Genesis with Jacob's blessings, burial, Joseph's forgiveness, and hope beyond Egypt.",
+    coverImage: "/day21cover.png",
     readings: buildGenesisReadings("The Testing of Joseph", 49, 50, 13),
   },
   ...ADDITIONAL_BIBLE_YEAR_SCHEDULE.map((entry) => ({
@@ -634,6 +650,7 @@ const RAW_GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     reference: entry.reference,
     estimatedTime: "30-35 min",
     summary: `Read ${entry.reference}: ${entry.title}.`,
+    coverImage: getDefaultBibleYearCoverImage(entry.dayNumber),
     readings: buildReadingsFromReference(entry.title, entry.reference),
   })),
 ];

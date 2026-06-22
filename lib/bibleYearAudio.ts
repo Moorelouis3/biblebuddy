@@ -162,7 +162,7 @@ export const BIBLE_YEAR_DAY_THIRTEEN_AUDIO: BibleYearAudioDay = {
 
 export const BIBLE_YEAR_DAY_FOURTEEN_AUDIO: BibleYearAudioDay = {
   dayNumber: 14,
-  title: "Day 14 - Jacob's Family and Esau's Line",
+  title: "Day 14 - Esau's Line",
   storagePath: getBibleYearAudioStoragePath(14),
   apiSrc: getBibleYearAudioApiSrc(14),
   estimatedDuration: "40-45 min",
@@ -194,7 +194,7 @@ export const BIBLE_YEAR_DAY_SEVENTEEN_AUDIO: BibleYearAudioDay = {
 
 export const BIBLE_YEAR_DAY_EIGHTEEN_AUDIO: BibleYearAudioDay = {
   dayNumber: 18,
-  title: "Day 18 - Judah Stands in the Gap",
+  title: "Day 18 - Judah Defends Benjamin",
   storagePath: getBibleYearAudioStoragePath(18),
   apiSrc: getBibleYearAudioApiSrc(18),
   estimatedDuration: "35-40 min",
@@ -242,7 +242,7 @@ export const BIBLE_YEAR_DAY_TWENTY_THREE_AUDIO: BibleYearAudioDay = {
 
 export const BIBLE_YEAR_DAY_TWENTY_FOUR_AUDIO: BibleYearAudioDay = {
   dayNumber: 24,
-  title: "Day 24 - Passover and Deliverance",
+  title: "Day 24 - Passover",
   storagePath: getBibleYearAudioStoragePath(24),
   apiSrc: getBibleYearAudioApiSrc(24),
   estimatedDuration: "35-40 min",
@@ -250,7 +250,7 @@ export const BIBLE_YEAR_DAY_TWENTY_FOUR_AUDIO: BibleYearAudioDay = {
 
 export const BIBLE_YEAR_DAY_TWENTY_FIVE_AUDIO: BibleYearAudioDay = {
   dayNumber: 25,
-  title: "Day 25 - Through the Sea and Into the Wilderness",
+  title: "Day 25 - Into the Wilderness",
   storagePath: getBibleYearAudioStoragePath(25),
   apiSrc: getBibleYearAudioApiSrc(25),
   estimatedDuration: "35-40 min",
@@ -258,7 +258,7 @@ export const BIBLE_YEAR_DAY_TWENTY_FIVE_AUDIO: BibleYearAudioDay = {
 
 export const BIBLE_YEAR_DAY_TWENTY_SIX_AUDIO: BibleYearAudioDay = {
   dayNumber: 26,
-  title: "Day 26 - Water, Battle, and the Ten Commandments",
+  title: "Day 26 - The Ten Commandments",
   storagePath: getBibleYearAudioStoragePath(26),
   apiSrc: getBibleYearAudioApiSrc(26),
   estimatedDuration: "35-40 min",
@@ -266,7 +266,7 @@ export const BIBLE_YEAR_DAY_TWENTY_SIX_AUDIO: BibleYearAudioDay = {
 
 export const BIBLE_YEAR_DAY_TWENTY_SEVEN_AUDIO: BibleYearAudioDay = {
   dayNumber: 27,
-  title: "Day 27 - Covenant Law and Covenant Blood",
+  title: "Day 27 - The Covenant Law",
   storagePath: getBibleYearAudioStoragePath(27),
   apiSrc: getBibleYearAudioApiSrc(27),
   estimatedDuration: "35-40 min",
@@ -274,7 +274,7 @@ export const BIBLE_YEAR_DAY_TWENTY_SEVEN_AUDIO: BibleYearAudioDay = {
 
 export const BIBLE_YEAR_DAY_TWENTY_EIGHT_AUDIO: BibleYearAudioDay = {
   dayNumber: 28,
-  title: "Day 28 - The Tabernacle and Priesthood Begin",
+  title: "Day 28 - The Tabernacle",
   storagePath: getBibleYearAudioStoragePath(28),
   apiSrc: getBibleYearAudioApiSrc(28),
   estimatedDuration: "35-40 min",
@@ -282,7 +282,7 @@ export const BIBLE_YEAR_DAY_TWENTY_EIGHT_AUDIO: BibleYearAudioDay = {
 
 export const BIBLE_YEAR_DAY_TWENTY_NINE_AUDIO: BibleYearAudioDay = {
   dayNumber: 29,
-  title: "Day 29 - Consecration and the Golden Calf",
+  title: "Day 29 - The Golden Calf",
   storagePath: getBibleYearAudioStoragePath(29),
   apiSrc: getBibleYearAudioApiSrc(29),
   estimatedDuration: "35-40 min",
@@ -290,7 +290,7 @@ export const BIBLE_YEAR_DAY_TWENTY_NINE_AUDIO: BibleYearAudioDay = {
 
 export const BIBLE_YEAR_DAY_THIRTY_AUDIO: BibleYearAudioDay = {
   dayNumber: 30,
-  title: "Day 30 - God's Presence and Renewed Obedience",
+  title: "Day 30 - God's Presence is Enough",
   storagePath: getBibleYearAudioStoragePath(30),
   apiSrc: getBibleYearAudioApiSrc(30),
   estimatedDuration: "35-40 min",

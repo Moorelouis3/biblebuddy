@@ -156,7 +156,7 @@ const DAY_24_SECTIONS = [
 
 export const EXODUS_DAY_TWENTY_FOUR_PASSOVER_AND_DELIVERANCE_LESSON: BibleYearDailyLesson = {
   dayNumber: 24,
-  title: "Passover and Deliverance",
+  title: "Passover",
   reference: "Exodus 9-12",
   estimatedListenTime: "35-40 min",
   opening: [

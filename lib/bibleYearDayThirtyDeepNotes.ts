@@ -156,7 +156,7 @@ const DAY_30_SECTIONS = [
 
 export const EXODUS_DAY_THIRTY_GODS_PRESENCE_AND_RENEWED_OBEDIENCE_LESSON: BibleYearDailyLesson = {
   dayNumber: 30,
-  title: "God's Presence and Renewed Obedience",
+  title: "God's Presence is Enough",
   reference: "Exodus 33-36",
   estimatedListenTime: "35-40 min",
   opening: [

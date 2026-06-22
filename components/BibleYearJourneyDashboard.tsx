@@ -21,6 +21,7 @@ type DashboardProfile = {
   username?: string | null;
   created_at?: string | null;
   bible_year_started_at?: string | null;
+  bible_year_plan_reset_at?: string | null;
   preferred_study_mode?: string | null;
 };
 
@@ -100,7 +101,7 @@ export default function BibleYearJourneyDashboard() {
     const { data } = await supabase
       .from("profile_stats")
       .select(
-        "is_paid,daily_credits,last_active_date,verse_of_the_day_shown,current_streak,selected_streak_flame,selected_buddy_avatar,profile_image_url,display_name,username,created_at,bible_year_started_at",
+        "is_paid,daily_credits,last_active_date,verse_of_the_day_shown,current_streak,selected_streak_flame,selected_buddy_avatar,profile_image_url,display_name,username,created_at,bible_year_started_at,bible_year_plan_reset_at",
       )
       .eq("user_id", user.id)
       .maybeSingle();
@@ -121,6 +122,7 @@ export default function BibleYearJourneyDashboard() {
       username: data?.username ?? null,
       created_at: data?.created_at ?? null,
       bible_year_started_at: data?.bible_year_started_at ?? null,
+      bible_year_plan_reset_at: data?.bible_year_plan_reset_at ?? null,
       preferred_study_mode: "bible_year",
     });
     setLoading(false);

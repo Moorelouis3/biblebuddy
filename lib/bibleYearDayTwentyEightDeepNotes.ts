@@ -156,7 +156,7 @@ const DAY_28_SECTIONS = [
 
 export const EXODUS_DAY_TWENTY_EIGHT_TABERNACLE_AND_PRIESTHOOD_LESSON: BibleYearDailyLesson = {
   dayNumber: 28,
-  title: "The Tabernacle and Priesthood Begin",
+  title: "The Tabernacle",
   reference: "Exodus 25-28",
   estimatedListenTime: "35-40 min",
   opening: [

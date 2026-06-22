@@ -908,7 +908,7 @@ const DAY_13: DayBlueprint = {
 
 const DAY_14: DayBlueprint = {
   dayNumber: 14,
-  title: "Jacob's Family and Esau's Line",
+  title: "Esau's Line",
   reference: "Genesis 34-36",
   listenTime: "40-45 min",
   opening: [

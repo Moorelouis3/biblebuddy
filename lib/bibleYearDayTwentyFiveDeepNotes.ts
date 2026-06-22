@@ -326,7 +326,7 @@ const DAY_25_SECTIONS = [
 
 export const EXODUS_DAY_TWENTY_FIVE_THROUGH_THE_SEA_LESSON: BibleYearDailyLesson = {
   dayNumber: 25,
-  title: "Through the Sea and Into the Wilderness",
+  title: "Into the Wilderness",
   reference: "Exodus 13-16",
   estimatedListenTime: "35-40 min",
   opening: [

@@ -156,7 +156,7 @@ const DAY_26_SECTIONS = [
 
 export const EXODUS_DAY_TWENTY_SIX_WATER_BATTLE_AND_COMMANDMENTS_LESSON: BibleYearDailyLesson = {
   dayNumber: 26,
-  title: "Water, Battle, and the Ten Commandments",
+  title: "The Ten Commandments",
   reference: "Exodus 17-20",
   estimatedListenTime: "35-40 min",
   opening: [

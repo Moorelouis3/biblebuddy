@@ -186,7 +186,7 @@ const DAY_29_SECTIONS = [
 
 export const EXODUS_DAY_TWENTY_NINE_CONSECRATION_AND_GOLDEN_CALF_LESSON: BibleYearDailyLesson = {
   dayNumber: 29,
-  title: "Consecration and the Golden Calf",
+  title: "The Golden Calf",
   reference: "Exodus 29-32",
   estimatedListenTime: "35-40 min",
   opening: [

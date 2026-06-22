@@ -11,6 +11,27 @@ type ProgressRow = {
   created_at?: string | null;
 };
 
+type ProfileResetRow = {
+  bible_year_plan_reset_at?: string | null;
+};
+
+type CompletedChapterRow = {
+  book: string | null;
+  chapter: number | null;
+  created_at?: string | null;
+};
+
+type BibleYearActionRow = {
+  action_type?: string | null;
+  action_label?: string | null;
+  created_at?: string | null;
+};
+
+type DiscussionRow = {
+  article_slug: string;
+  created_at?: string | null;
+};
+
 function isLegacyComplete(row?: ProgressRow | null) {
   return Boolean(row?.reading_completed);
 }
@@ -26,6 +47,19 @@ function getBibleYearReflectionSlug(day: (typeof GENESIS_BIBLE_IN_ONE_YEAR_SERIE
 function isMissingStudyNotesCompletedColumn(error: { message?: string | null; details?: string | null; hint?: string | null } | null | undefined) {
   const text = `${error?.message || ""} ${error?.details || ""} ${error?.hint || ""}`.toLowerCase();
   return text.includes("study_notes_completed");
+}
+
+function isMissingBibleYearResetColumn(error: { message?: string | null; details?: string | null; hint?: string | null } | null | undefined) {
+  const text = `${error?.message || ""} ${error?.details || ""} ${error?.hint || ""}`.toLowerCase();
+  return text.includes("bible_year_plan_reset_at");
+}
+
+function isOnOrAfterReset(value: string | null | undefined, resetAt: string | null) {
+  if (!resetAt) return true;
+  if (!value) return false;
+  const valueMs = new Date(value).getTime();
+  const resetMs = new Date(resetAt).getTime();
+  return Number.isFinite(valueMs) && Number.isFinite(resetMs) && valueMs >= resetMs;
 }
 
 export async function GET(request: NextRequest) {
@@ -56,6 +90,20 @@ export async function GET(request: NextRequest) {
   });
 
   try {
+    let bibleYearPlanResetAt: string | null = null;
+    const profileReset = await admin
+      .from("profile_stats")
+      .select("bible_year_plan_reset_at")
+      .eq("user_id", userData.user.id)
+      .maybeSingle();
+
+    if (profileReset.error && !isMissingBibleYearResetColumn(profileReset.error)) {
+      throw profileReset.error;
+    }
+    if (!profileReset.error) {
+      bibleYearPlanResetAt = ((profileReset.data || {}) as ProfileResetRow).bible_year_plan_reset_at || null;
+    }
+
     let progressRows: ProgressRow[] = [];
     let supportsStudyNotesCompleted = true;
 
@@ -83,17 +131,21 @@ export async function GET(request: NextRequest) {
 
     const progressRowByDay = new Map(progressRows.map((row) => [Number(row.day_number), row]));
     const legacyCompletedDays = new Set(
-      progressRows.filter((row) => isLegacyComplete(row)).map((row) => Number(row.day_number)),
+      progressRows
+        .filter((row) => !bibleYearPlanResetAt && isLegacyComplete(row))
+        .map((row) => Number(row.day_number)),
     );
     const legacyCurrentActiveDay =
       GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => !legacyCompletedDays.has(day.dayNumber))?.dayNumber ||
       ((GENESIS_BIBLE_IN_ONE_YEAR_SERIES[GENESIS_BIBLE_IN_ONE_YEAR_SERIES.length - 1]?.dayNumber || 0) + 1);
 
-    const grandfatheredRows = GENESIS_BIBLE_IN_ONE_YEAR_SERIES
+    const grandfatheredRows = !bibleYearPlanResetAt
+      ? GENESIS_BIBLE_IN_ONE_YEAR_SERIES
       .filter((day) => day.dayNumber < legacyCurrentActiveDay)
       .map((day) => progressRowByDay.get(day.dayNumber))
       .filter((row): row is ProgressRow => Boolean(row) && isLegacyComplete(row))
-      .filter((row) => !(row.reading_completed && row.study_notes_completed && row.trivia_completed && row.reflection_completed));
+      .filter((row) => !(row.reading_completed && row.study_notes_completed && row.trivia_completed && row.reflection_completed))
+      : [];
 
     if (grandfatheredRows.length) {
       const grandfatherPayload = grandfatheredRows.map((row) => ({
@@ -120,10 +172,10 @@ export async function GET(request: NextRequest) {
     }
 
     const [completedChapterRows, actionRows, discussionRows] = await Promise.all([
-      admin.from("completed_chapters").select("book, chapter").eq("user_id", userData.user.id),
+      admin.from("completed_chapters").select("book, chapter, created_at").eq("user_id", userData.user.id),
       admin
         .from("master_actions")
-        .select("action_type, action_label")
+        .select("action_type, action_label, created_at")
         .eq("user_id", userData.user.id)
         .in("action_type", [
           "bible_in_one_year_reading_completed",
@@ -135,20 +187,23 @@ export async function GET(request: NextRequest) {
         .like("action_label", "Bible in One Year Day %"),
       admin
         .from("article_comments")
-        .select("article_slug")
+        .select("article_slug, created_at")
         .eq("user_id", userData.user.id)
         .eq("is_deleted", false)
         .in("article_slug", GENESIS_BIBLE_IN_ONE_YEAR_SERIES.map((day) => getBibleYearReflectionSlug(day))),
     ]);
 
     const completedChapterKeys = new Set(
-      ((completedChapterRows.data || []) as Array<{ book: string | null; chapter: number | null }>)
+      ((completedChapterRows.data || []) as CompletedChapterRow[])
+        .filter((row) => isOnOrAfterReset(row.created_at, bibleYearPlanResetAt))
         .filter((row) => typeof row.book === "string" && Number.isFinite(row.chapter))
         .map((row) => getCompletedBibleChapterKey(String(row.book), Number(row.chapter))),
     );
 
     const readingActionDays = new Set<number>();
-    ((actionRows.data || []) as Array<{ action_label?: string | null }>).forEach((row) => {
+    ((actionRows.data || []) as BibleYearActionRow[])
+      .filter((row) => isOnOrAfterReset(row.created_at, bibleYearPlanResetAt))
+      .forEach((row) => {
       const match = (row.action_label || "").match(/^Bible in One Year Day (\d+) (Reading|Video):/);
       if (!match) return;
       const dayNumber = Number(match[1]);
@@ -156,15 +211,17 @@ export async function GET(request: NextRequest) {
     });
 
     const restoredLegacyDayNumbers: number[] = [];
-    for (const day of GENESIS_BIBLE_IN_ONE_YEAR_SERIES) {
-      const existingRow = progressRowByDay.get(day.dayNumber);
-      const restoredByRow = existingRow?.reading_completed === true;
-      const restoredByAction = readingActionDays.has(day.dayNumber);
-      const restoredByChapters =
-        day.readings.length > 0 &&
-        day.readings.every((reading) => completedChapterKeys.has(getCompletedBibleChapterKey(reading.book, reading.chapter)));
-      if (!restoredByRow && !restoredByAction && !restoredByChapters) break;
-      restoredLegacyDayNumbers.push(day.dayNumber);
+    if (!bibleYearPlanResetAt) {
+      for (const day of GENESIS_BIBLE_IN_ONE_YEAR_SERIES) {
+        const existingRow = progressRowByDay.get(day.dayNumber);
+        const restoredByRow = existingRow?.reading_completed === true;
+        const restoredByAction = readingActionDays.has(day.dayNumber);
+        const restoredByChapters =
+          day.readings.length > 0 &&
+          day.readings.every((reading) => completedChapterKeys.has(getCompletedBibleChapterKey(reading.book, reading.chapter)));
+        if (!restoredByRow && !restoredByAction && !restoredByChapters) break;
+        restoredLegacyDayNumbers.push(day.dayNumber);
+      }
     }
 
     const restoredLegacyPayload = restoredLegacyDayNumbers
@@ -226,7 +283,9 @@ export async function GET(request: NextRequest) {
       Summary: "reflection",
     };
 
-    ((actionRows.data || []) as Array<{ action_label?: string | null }>).forEach((row) => {
+    ((actionRows.data || []) as BibleYearActionRow[])
+      .filter((row) => isOnOrAfterReset(row.created_at, bibleYearPlanResetAt))
+      .forEach((row) => {
       const match = (row.action_label || "").match(/^Bible in One Year Day (\d+) (Reading|Video|Trivia|Reflection|Summary):/);
       if (!match) return;
       const dayNumber = Number(match[1]);
@@ -239,7 +298,9 @@ export async function GET(request: NextRequest) {
     });
 
     const reflectionPostedByDay: Record<number, boolean> = {};
-    ((discussionRows.data || []) as Array<{ article_slug: string }>).forEach((row) => {
+    ((discussionRows.data || []) as DiscussionRow[])
+      .filter((row) => isOnOrAfterReset(row.created_at, bibleYearPlanResetAt))
+      .forEach((row) => {
       const dayNumber = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => getBibleYearReflectionSlug(day) === row.article_slug)?.dayNumber;
       if (dayNumber) reflectionPostedByDay[dayNumber] = true;
     });

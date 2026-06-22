@@ -141,7 +141,7 @@ const DAY_27_SECTIONS = [
 
 export const EXODUS_DAY_TWENTY_SEVEN_COVENANT_LAW_AND_BLOOD_LESSON: BibleYearDailyLesson = {
   dayNumber: 27,
-  title: "Covenant Law and Covenant Blood",
+  title: "The Covenant Law",
   reference: "Exodus 21-24",
   estimatedListenTime: "35-40 min",
   opening: [
