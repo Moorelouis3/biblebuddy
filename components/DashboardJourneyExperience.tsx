@@ -12604,40 +12604,42 @@ Before we understand redemption, we need to understand what God made humanity fo
               </>
             ) : (
               <>
-                <div className="min-w-0 text-center">
+                <div className="relative min-w-0 pt-1 text-center">
                   <button
                     type="button"
                     onClick={openBibleYearSeriesDashboard}
-                    className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-[18px] border border-[var(--bb-card-border,#dbe7f4)] bg-white text-[var(--bb-text-primary,#111827)] shadow-[0_14px_30px_rgba(38,63,99,0.08)] transition hover:border-[var(--bb-accent,#2f7fe8)] hover:text-[var(--bb-accent,#2f7fe8)]"
+                    className="absolute left-0 top-0 inline-flex h-[78px] w-[78px] items-center justify-center rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-white text-[var(--bb-text-primary,#111827)] shadow-[0_18px_36px_rgba(38,63,99,0.10)] transition hover:border-[var(--bb-accent,#2f7fe8)] hover:text-[var(--bb-accent,#2f7fe8)]"
                     aria-label="Back to journey map"
                   >
-                    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" className="h-8 w-8" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                       <path d="m15 18-6-6 6-6" />
                     </svg>
                   </button>
-                  <div className="mx-auto inline-flex rounded-full bg-[var(--bb-accent-soft,#eaf5ff)] px-6 py-2 text-[13px] font-black uppercase tracking-[0.2em] text-[var(--bb-accent,#2f7fe8)]">
+                  <div className="mx-auto inline-flex rounded-full bg-[var(--bb-accent-soft,#eaf5ff)] px-8 py-3 text-[15px] font-black uppercase tracking-[0.2em] text-[var(--bb-accent,#2f7fe8)]">
                     Day {day.dayNumber}
                   </div>
-                  <p className="mt-4 text-[14px] font-bold uppercase tracking-[0.22em] text-[var(--bb-text-muted,#6b7280)]">
+                  <p className="mt-6 text-[16px] font-bold uppercase tracking-[0.22em] text-[var(--bb-text-muted,#6b7280)]">
                     {readingSummary}
                   </p>
-                  <h3 className="mt-4 text-[34px] font-black leading-tight text-[var(--bb-text-primary,#111827)] sm:text-[44px]">{day.title}</h3>
-                  <div className="mx-auto mt-5 flex max-w-[540px] items-center gap-4 text-[var(--bb-accent,#2f7fe8)]">
+                  <h3 className="mt-4 text-[48px] font-black leading-[0.98] text-[var(--bb-text-primary,#111827)] sm:text-[64px]">{day.title}</h3>
+                  <div className="mx-auto mt-6 flex max-w-[720px] items-center gap-5 text-[var(--bb-accent,#2f7fe8)]">
                     <span className="h-px flex-1 bg-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_32%,transparent)]" aria-hidden="true" />
-                    <span className="text-sm" aria-hidden="true">✦</span>
+                    <span className="text-base" aria-hidden="true">✦</span>
                     <span className="h-px flex-1 bg-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_32%,transparent)]" aria-hidden="true" />
                   </div>
                 </div>
                 <div className="mt-8 flex flex-col items-center text-center">
-                  <div className={`aspect-square w-full max-w-[320px] overflow-hidden rounded-[28px] border bg-white p-3 shadow-[0_20px_42px_rgba(38,63,99,0.12)] ${
+                  <div className={`w-full overflow-hidden rounded-[28px] border bg-white p-2 shadow-[0_20px_42px_rgba(38,63,99,0.12)] ${
                     readingComplete ? "border-emerald-200" : "border-[var(--bb-card-border,#dbe7f4)]"
                   }`}>
-                    <img src={cover} alt="" loading="eager" decoding="async" onError={handleBibleYearCoverImageError} className="h-full w-full object-cover" />
+                    <div className="aspect-[16/9] w-full overflow-hidden rounded-[24px] bg-[var(--bb-surface-soft,#f4f8ff)]">
+                      <img src={cover} alt="" loading="eager" decoding="async" onError={handleBibleYearCoverImageError} className="h-full w-full object-cover object-center" />
+                    </div>
                   </div>
                 </div>
                 <div className="mt-8 overflow-hidden rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-white p-5 shadow-[0_18px_42px_rgba(38,63,99,0.12)] sm:p-6">
                   <div className="flex items-start gap-4">
-                    <div className="grid h-16 w-16 shrink-0 place-items-center rounded-full bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-accent,#2f7fe8)] shadow-[0_10px_24px_rgba(38,63,99,0.08)]">
+                    <div className="grid h-20 w-20 shrink-0 place-items-center rounded-full bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-accent,#2f7fe8)] shadow-[0_10px_24px_rgba(38,63,99,0.08)]">
                       <svg viewBox="0 0 24 24" className="h-8 w-8" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                         <path d="M4 12v-1a8 8 0 0 1 16 0v1" />
                         <rect x="3" y="12" width="5" height="8" rx="2" />
@@ -12645,7 +12647,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                       </svg>
                     </div>
                     <div className="min-w-0 flex-1">
-                      <p className="text-[13px] font-black uppercase tracking-[0.24em] text-[var(--bb-accent,#2f7fe8)]">Audio Player</p>
+                      <p className="text-[16px] font-black uppercase tracking-[0.24em] text-[var(--bb-accent,#2f7fe8)]">Audio Player</p>
                       <div className="mt-3">
                         {audio ? (
                           <BibleYearLessonAudioPlayer
@@ -12678,7 +12680,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 </div>
                 <div className="mt-5 overflow-hidden rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-white p-5 shadow-[0_18px_42px_rgba(38,63,99,0.12)] sm:p-6">
                   <div className="flex items-start gap-4">
-                    <div className="grid h-16 w-16 shrink-0 place-items-center rounded-full bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-accent,#2f7fe8)] shadow-[0_10px_24px_rgba(38,63,99,0.08)]">
+                    <div className="grid h-20 w-20 shrink-0 place-items-center rounded-full bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-accent,#2f7fe8)] shadow-[0_10px_24px_rgba(38,63,99,0.08)]">
                       <svg viewBox="0 0 24 24" className="h-8 w-8" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                         <path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20" />
                         <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z" />
@@ -12687,7 +12689,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                       </svg>
                     </div>
                     <div className="min-w-0 flex-1 text-left">
-                      <p className="text-[13px] font-black uppercase tracking-[0.24em] text-[var(--bb-accent,#2f7fe8)]">Today&apos;s Lesson</p>
+                      <p className="text-[16px] font-black uppercase tracking-[0.24em] text-[var(--bb-accent,#2f7fe8)]">Today&apos;s Lesson</p>
                       <p className="mt-3 max-w-3xl text-[18px] font-medium leading-8 text-[var(--bb-text-primary,#111827)]">
                         {playerSubline}
                       </p>

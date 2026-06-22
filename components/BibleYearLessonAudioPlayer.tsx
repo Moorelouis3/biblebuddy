@@ -605,7 +605,7 @@ export default function BibleYearLessonAudioPlayer({
             </div>
           ) : null}
 
-          <div className="w-full grid gap-2">
+          <div className="w-full grid gap-3">
             <input
               type="range"
               min={0}
@@ -634,14 +634,14 @@ export default function BibleYearLessonAudioPlayer({
               aria-label="Audio progress"
               className="h-2 w-full cursor-pointer accent-[var(--bb-accent,#2f7fe8)] disabled:cursor-not-allowed disabled:opacity-50"
             />
-            <div className="grid grid-cols-3 items-center gap-2 text-[12px] font-semibold text-[var(--bb-text-muted,#6b7280)]">
+            <div className="grid grid-cols-[auto_1fr_auto] items-center gap-2 text-[12px] font-semibold text-[var(--bb-text-muted,#6b7280)]">
               <span className="text-left">{formatTime(displayTime)}</span>
-              <span className="text-center">{positionSummaryLabel}</span>
+              <span className="text-center opacity-0">{positionSummaryLabel}</span>
               <span className="text-right">{duration ? `${formatTime(remainingTime)} left` : effectiveDuration ? `${formatTime(remainingTime)} left` : durationLabel || "Audio time"}</span>
             </div>
           </div>
 
-          <div className="flex w-full min-w-0 flex-nowrap items-center justify-between gap-2 sm:gap-3">
+          <div className="flex w-full min-w-0 flex-nowrap items-center justify-between gap-3 sm:gap-4">
             <div className="shrink-0">
               <label className="sr-only" htmlFor={speedControlId}>Playback speed</label>
               <select
@@ -649,12 +649,12 @@ export default function BibleYearLessonAudioPlayer({
                 value={playbackRate}
                 onChange={(event) => changePlaybackRate(Number(event.target.value))}
                 disabled={controlsLocked}
-                className="h-11 min-w-[64px] rounded-[14px] border border-[var(--bb-card-border,#dbe7f4)] bg-white px-3 text-center text-sm font-black text-[var(--bb-text-primary,#111827)] outline-none shadow-[0_10px_22px_rgba(15,23,42,0.06)] transition hover:border-[var(--bb-accent,#2f7fe8)] focus:border-[var(--bb-accent,#2f7fe8)]"
+                className="h-14 min-w-[88px] rounded-[16px] border border-[var(--bb-card-border,#dbe7f4)] bg-white px-4 text-center text-[17px] font-black text-[var(--bb-text-primary,#111827)] outline-none shadow-[0_10px_22px_rgba(15,23,42,0.06)] transition hover:border-[var(--bb-accent,#2f7fe8)] focus:border-[var(--bb-accent,#2f7fe8)]"
                 aria-label="Playback speed"
               >
-                {[0.75, 1, 1.25, 1.5, 2].map((rate) => (
+                {[1, 1.25, 1.5, 2].map((rate) => (
                   <option key={rate} value={rate}>
-                    {rate.toFixed(rate === 1 ? 1 : rate % 1 === 0 ? 0 : 2)}x
+                    {rate.toFixed(rate === 1 ? 0 : rate % 1 === 0 ? 0 : 2)}x
                   </option>
                 ))}
               </select>
@@ -662,25 +662,14 @@ export default function BibleYearLessonAudioPlayer({
 
             <button
               type="button"
-              onClick={onPreviousLesson}
-              disabled={controlsLocked || !onPreviousLesson}
-              className="grid h-11 w-11 shrink-0 place-items-center rounded-[14px] border border-[var(--bb-card-border,#dbe7f4)] bg-white text-[var(--bb-text-primary,#111827)] shadow-[0_10px_22px_rgba(15,23,42,0.08)] transition hover:border-[var(--bb-accent,#2f7fe8)] disabled:opacity-40"
-              aria-label={previousLessonLabel}
-              title={previousLessonLabel}
-            >
-              {renderControlIcon("previous")}
-            </button>
-
-            <button
-              type="button"
               onClick={() => seekBy(-15)}
               disabled={controlsLocked}
-              className="grid h-11 w-[58px] shrink-0 place-items-center rounded-[14px] border border-[var(--bb-card-border,#dbe7f4)] bg-white text-[var(--bb-text-primary,#111827)] shadow-[0_10px_22px_rgba(15,23,42,0.08)] transition hover:border-[var(--bb-accent,#2f7fe8)] disabled:opacity-50"
+              className="grid h-14 w-[96px] shrink-0 place-items-center rounded-[16px] border border-[var(--bb-card-border,#dbe7f4)] bg-white text-[var(--bb-text-primary,#111827)] shadow-[0_10px_22px_rgba(15,23,42,0.08)] transition hover:border-[var(--bb-accent,#2f7fe8)] disabled:opacity-50"
               aria-label="Rewind 15 seconds"
             >
-              <span className="relative flex items-center justify-center">
-                {renderControlIcon("rewind")}
-                <span className="absolute text-[9px] font-black">15</span>
+              <span className="flex items-center gap-2 text-[16px] font-black">
+                <span className="text-xl" aria-hidden="true">‹</span>
+                <span>15</span>
               </span>
             </button>
 
@@ -688,15 +677,15 @@ export default function BibleYearLessonAudioPlayer({
               type="button"
               onClick={toggleAudio}
               disabled={controlsLocked || loading}
-              className="grid h-[78px] w-[78px] shrink-0 place-items-center rounded-full bg-[var(--bb-accent,#2f7fe8)] text-white shadow-[0_18px_36px_rgba(47,127,232,0.34)] disabled:opacity-60"
+              className="grid h-[96px] w-[96px] shrink-0 place-items-center rounded-full bg-[var(--bb-accent,#2f7fe8)] text-white shadow-[0_18px_36px_rgba(47,127,232,0.34)] disabled:opacity-60"
               aria-label={playing ? "Pause audio lesson" : "Play audio lesson"}
             >
               {loading ? (
-                <span className="h-6 w-6 animate-spin rounded-full border-2 border-current border-t-transparent" aria-hidden="true" />
+                <span className="h-7 w-7 animate-spin rounded-full border-2 border-current border-t-transparent" aria-hidden="true" />
               ) : playing ? (
-                <span className="text-[28px] font-black leading-none" aria-hidden="true">II</span>
+                <span className="text-[32px] font-black leading-none" aria-hidden="true">II</span>
               ) : (
-                <span className="ml-1 h-0 w-0 border-y-[12px] border-l-[18px] border-y-transparent border-l-current" aria-hidden="true" />
+                <span className="ml-1 h-0 w-0 border-y-[14px] border-l-[22px] border-y-transparent border-l-current" aria-hidden="true" />
               )}
             </button>
 
@@ -704,12 +693,12 @@ export default function BibleYearLessonAudioPlayer({
               type="button"
               onClick={() => seekBy(15)}
               disabled={controlsLocked}
-              className="grid h-11 w-[58px] shrink-0 place-items-center rounded-[14px] border border-[var(--bb-card-border,#dbe7f4)] bg-white text-[var(--bb-text-primary,#111827)] shadow-[0_10px_22px_rgba(15,23,42,0.08)] transition hover:border-[var(--bb-accent,#2f7fe8)] disabled:opacity-50"
+              className="grid h-14 w-[96px] shrink-0 place-items-center rounded-[16px] border border-[var(--bb-card-border,#dbe7f4)] bg-white text-[var(--bb-text-primary,#111827)] shadow-[0_10px_22px_rgba(15,23,42,0.08)] transition hover:border-[var(--bb-accent,#2f7fe8)] disabled:opacity-50"
               aria-label="Forward 15 seconds"
             >
-              <span className="relative flex items-center justify-center">
-                {renderControlIcon("forward")}
-                <span className="absolute text-[9px] font-black">15</span>
+              <span className="flex items-center gap-2 text-[16px] font-black">
+                <span>15</span>
+                <span className="text-xl" aria-hidden="true">›</span>
               </span>
             </button>
 
@@ -717,11 +706,11 @@ export default function BibleYearLessonAudioPlayer({
               type="button"
               onClick={onNextLesson}
               disabled={controlsLocked || !onNextLesson}
-              className="grid h-11 w-11 shrink-0 place-items-center rounded-[14px] border border-[var(--bb-card-border,#dbe7f4)] bg-white text-[var(--bb-text-primary,#111827)] shadow-[0_10px_22px_rgba(15,23,42,0.08)] transition hover:border-[var(--bb-accent,#2f7fe8)] disabled:opacity-40"
+              className="grid h-14 w-14 shrink-0 place-items-center rounded-[16px] border border-[var(--bb-card-border,#dbe7f4)] bg-white text-[var(--bb-text-primary,#111827)] shadow-[0_10px_22px_rgba(15,23,42,0.08)] transition hover:border-[var(--bb-accent,#2f7fe8)] disabled:opacity-40"
               aria-label={nextLessonLabel}
               title={nextLessonLabel}
             >
-              {renderControlIcon("next")}
+              <span className="text-[28px] font-black leading-none" aria-hidden="true">›</span>
             </button>
           </div>
         </div>
