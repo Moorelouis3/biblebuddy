@@ -9,24 +9,24 @@ type UpgradeRequiredModalProps = {
   onClose: () => void;
 };
 
-const studyNoteFeatures = [
+const proFeatures = [
+  {
+    icon: "Audio",
+    iconClass: "bg-[#ddecff] text-[#2f6bcf]",
+    title: "Listen with the app closed",
+    description: "Keep your daily audio lesson playing while your phone is locked or while you use other apps.",
+  },
   {
     icon: "Book",
     iconClass: "bg-[#eadcff] text-[#6d3fd1]",
-    title: "Verse by verse breakdowns",
-    description: "Understand difficult passages one section at a time.",
+    title: "Full Study Notes",
+    description: "Unlock every section, key phrase, and explanation for each day.",
   },
   {
-    icon: "Search",
-    iconClass: "bg-[#dff0d8] text-[#3b7a39]",
-    title: "Word studies",
-    description: "See what key words and phrases originally meant.",
-  },
-  {
-    icon: "Link",
-    iconClass: "bg-[#ddecff] text-[#2f6bcf]",
-    title: "Scripture connections",
-    description: "Connect stories, themes, and people across the Bible.",
+    icon: "Trivia",
+    iconClass: "bg-[#fff1cf] text-[#a66b00]",
+    title: "All Trivia Games",
+    description: "Play the full daily trivia experience without getting stopped by the free plan.",
   },
 ];
 
@@ -104,13 +104,13 @@ export default function UpgradeRequiredModal({ isOpen, onClose }: UpgradeRequire
           {showLifetimeInfo ? (
             <div className="absolute inset-0 z-20 grid place-items-center bg-[#fffdf8]/92 px-4 backdrop-blur-sm">
               <div className="rounded-[22px] border border-[#ead9bd] bg-white p-4 text-left shadow-[0_18px_48px_rgba(15,23,42,0.18)]">
-                <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[#a66b00]">What is lifetime?</p>
-                <h3 className="mt-2 text-xl font-black leading-tight text-[#0b162f]">$50 full access for life</h3>
+                <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[#a66b00]">Best offer</p>
+                <h3 className="mt-2 text-xl font-black leading-tight text-[#0b162f]">$50 lifetime access</h3>
                 <p className="mt-2 text-sm font-semibold leading-6 text-[#52627b]">
-                  This is a Founder Buddy price. Bible Buddy is a new Bible reading app, and we depend on the support of early users to keep growing.
+                  Pay once and keep Bible Buddy Pro as the app grows.
                 </p>
                 <p className="mt-2 text-sm font-semibold leading-6 text-[#52627b]">
-                  In return, we are offering one $50 payment for full access to Bible Buddy for life. No yearly renewal. You keep Pro study notes, guided tools, and Bible journey features as Bible Buddy grows.
+                  That includes background listening, full Study Notes, and full trivia access without a monthly renewal.
                 </p>
                 <button
                   type="button"
@@ -138,9 +138,24 @@ export default function UpgradeRequiredModal({ isOpen, onClose }: UpgradeRequire
           <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[#a66b00]">Bible Buddy Pro</p>
           <h2 className="mt-2 pr-10 text-2xl font-black leading-tight">Choose your plan</h2>
           <p className="mt-2 text-sm font-semibold leading-6 text-[#52627b]">
-            Unlock Study Notes and start understanding Scripture more deeply.
+            Unlock background audio, full Study Notes, and all trivia games.
           </p>
           <div className="mt-4 grid gap-2">
+            <button
+              type="button"
+              onClick={() => startCheckout("yearly")}
+              disabled={Boolean(loadingPlan)}
+              className="relative flex items-center justify-between rounded-2xl border border-[#f0cf8b] bg-[#f6b44b] px-4 py-3 text-left text-[#201100] shadow-sm transition hover:-translate-y-0.5 hover:brightness-105 disabled:cursor-wait disabled:opacity-60 disabled:hover:translate-y-0"
+            >
+              <span className="absolute right-3 top-2 rounded-full bg-white/70 px-2 py-0.5 text-[10px] font-black uppercase tracking-[0.14em] text-[#8a5a00]">
+                Best offer
+              </span>
+              <span>
+                <span className="block text-sm font-black">Lifetime Access</span>
+                <span className="block text-xs font-semibold opacity-80">One payment. Keep Pro for life.</span>
+              </span>
+              <span className="text-xl font-black">$50</span>
+            </button>
             <button
               type="button"
               onClick={() => startCheckout("monthly")}
@@ -149,21 +164,9 @@ export default function UpgradeRequiredModal({ isOpen, onClose }: UpgradeRequire
             >
               <span>
                 <span className="block text-sm font-black">Monthly</span>
-                <span className="block text-xs font-semibold text-[#52627b]">Flexible access</span>
+                <span className="block text-xs font-semibold text-[#52627b]">Full Pro access for $4.99/month</span>
               </span>
               <span className="text-xl font-black text-[#2f7fe8]">$4.99</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => startCheckout("yearly")}
-              disabled={Boolean(loadingPlan)}
-              className="flex items-center justify-between rounded-2xl border border-[#f0cf8b] bg-[#f6b44b] px-4 py-3 text-left text-[#201100] shadow-sm transition hover:-translate-y-0.5 hover:brightness-105 disabled:cursor-wait disabled:opacity-60 disabled:hover:translate-y-0"
-            >
-              <span>
-                <span className="block text-sm font-black">Full Access</span>
-                <span className="block text-xs font-semibold opacity-80">Lifetime one-time payment</span>
-              </span>
-              <span className="text-xl font-black">$50</span>
             </button>
           </div>
           <button
@@ -207,16 +210,16 @@ export default function UpgradeRequiredModal({ isOpen, onClose }: UpgradeRequire
             <div className="mx-auto mt-1.5 h-1 w-36 rounded-full bg-[#8eb8ee] opacity-70 sm:w-44" aria-hidden="true" />
           </div>
 
-          <div className="mx-auto mt-3 max-w-sm space-y-1.5 text-left text-[13px] font-semibold leading-5 text-[#263855] sm:text-center">
-            <p>Bible Buddy Free helps you stay consistent.</p>
-            <p>
-              Bible Buddy Pro helps you <span className="font-black text-[#1f65c7]">understand Scripture more deeply</span> with Study Notes, context, and clearer explanations.
-            </p>
-          </div>
+            <div className="mx-auto mt-3 max-w-sm space-y-1.5 text-left text-[13px] font-semibold leading-5 text-[#263855] sm:text-center">
+              <p>Bible Buddy Free helps you stay consistent.</p>
+              <p>
+              Bible Buddy Pro gives you <span className="font-black text-[#1f65c7]">background audio, full Study Notes, and full trivia access</span>.
+              </p>
+            </div>
 
           <div className="mt-3 rounded-[18px] border border-[#ead9bd] bg-white/72 px-3 py-2.5 text-left shadow-[0_8px_22px_rgba(102,65,12,0.07)]">
             <div className="grid gap-2">
-              {studyNoteFeatures.map((feature, index) => (
+              {proFeatures.map((feature, index) => (
                 <div key={feature.title} className={`flex gap-2.5 ${index > 0 ? "border-t border-[#eadfce] pt-2" : ""}`}>
                   <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full text-[10px] font-black ${feature.iconClass}`} aria-hidden="true">
                     {feature.icon}
@@ -237,8 +240,8 @@ export default function UpgradeRequiredModal({ isOpen, onClose }: UpgradeRequire
               className="flex w-full items-center justify-center rounded-[17px] bg-[#2f7fe8] px-4 py-3 text-center text-white shadow-[0_12px_24px_rgba(47,127,232,0.24)] transition hover:brightness-105"
             >
               <span>
-                <span className="block text-sm font-black leading-tight">Unlock Study Notes</span>
-                <span className="mt-0.5 block text-[11px] font-semibold text-white/88">Start understanding Scripture more deeply</span>
+                <span className="block text-sm font-black leading-tight">Unlock Bible Buddy Pro</span>
+                <span className="mt-0.5 block text-[11px] font-semibold text-white/88">Get background audio, full notes, and all trivia</span>
               </span>
             </button>
             <button
