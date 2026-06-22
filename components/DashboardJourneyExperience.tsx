@@ -12369,6 +12369,24 @@ Before we understand redemption, we need to understand what God made humanity fo
             );
           })}
         </section>
+        {!isPaidUser && !isOwnerDashboard ? (
+          <button
+            type="button"
+            onClick={() => openBibleYearQuickUpgrade("background_audio")}
+            className="order-4 flex w-full items-center justify-between gap-3 rounded-[18px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_92%,var(--bb-accent-soft,#eef6ff))] px-4 py-3 text-left shadow-[0_12px_30px_rgba(38,63,99,0.08)] transition hover:border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_36%,var(--bb-card-border,#dbe7f4))] hover:bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_84%,var(--bb-accent-soft,#eef6ff))]"
+            aria-label="Upgrade to unlock background audio, full study notes, and more trivia"
+          >
+            <div className="min-w-0">
+              <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">Premium</p>
+              <p className="mt-1 text-sm font-black leading-5 text-[var(--bb-text-primary,#111827)]">
+                Unlock background audio, full study notes, and more trivia.
+              </p>
+            </div>
+            <span className="shrink-0 text-lg font-black text-[var(--bb-accent,#2f7fe8)]" aria-hidden="true">
+              ›
+            </span>
+          </button>
+        ) : null}
           </>
         ) : null}
 
