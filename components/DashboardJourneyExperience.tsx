@@ -5026,6 +5026,11 @@ export default function DashboardJourneyExperience({
     clearBibleYearViews();
     setDashboardMenuOpen(false);
     snapToPage(progressIndex);
+    if (typeof window !== "undefined") {
+      window.requestAnimationFrame(() => {
+        window.scrollTo({ top: 0, behavior: "auto" });
+      });
+    }
   }
 
   function openAnalyticsPage() {
@@ -11589,7 +11594,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     const report = effectiveBibleYearReport;
     const overallPercent = report?.overallPercent ?? 0;
     const currentStreak = report?.currentStreak ?? Math.max(0, profile?.current_streak ?? 0);
-    const streakLabel = `${currentStreak} Day Bible Study`;
+    const streakLabel = `${currentStreak} ${currentStreak === 1 ? "Day" : "Days"} Bible Study`;
     const lightThemeUsesClassicFlame = typeof document !== "undefined" && document.documentElement.dataset.bbTheme === "light";
 
     return (
@@ -11648,7 +11653,7 @@ Before we understand redemption, we need to understand what God made humanity fo
 
   function renderHomeSupportStatsStrip() {
     const currentStreak = effectiveBibleYearReport.currentStreak ?? Math.max(0, profile?.current_streak ?? 0);
-    const streakLabel = `${currentStreak} Day Bible Study Streak`;
+    const streakLabel = `${currentStreak} ${currentStreak === 1 ? "Day" : "Days"} Bible Study Streak`;
     const lightThemeUsesClassicFlame = typeof document !== "undefined" && document.documentElement.dataset.bbTheme === "light";
 
     return (
@@ -11739,7 +11744,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           throw new Error("Could not prepare progress image.");
         }
 
-        context.fillStyle = "#000000";
+        context.fillStyle = "#eef4fb";
         context.fillRect(0, 0, canvas.width, canvas.height);
 
         const maxCardWidth = 760;
@@ -11868,7 +11873,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                     {shareStreakDays}
                   </div>
                   <div className="relative mt-[-8px] min-w-[116px] rounded-[6px] bg-[linear-gradient(180deg,#2567ff_0%,#1253eb_100%)] px-5 py-1.5 text-[16px] font-black uppercase tracking-[0.2em] text-white shadow-[0_10px_20px_rgba(37,103,255,0.18)]">
-                    DAY
+                    {shareStreakDays === 1 ? "DAY" : "DAYS"}
                   </div>
                   <p className="mt-4 text-[20px] font-black leading-tight tracking-[-0.03em] text-[#10224b]">
                     I have read the Bible
