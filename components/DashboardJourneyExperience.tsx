@@ -12625,17 +12625,24 @@ Before we understand redemption, we need to understand what God made humanity fo
                   </div>
                 </div>
                 <div className="mt-4 flex flex-col items-center text-center">
-                  <div className={`w-full max-w-[430px] overflow-hidden rounded-[24px] border bg-white p-1.5 shadow-[0_14px_28px_rgba(14,26,58,0.14)] ${
+                  <div className={`w-full max-w-[320px] overflow-hidden rounded-[24px] border bg-white p-1.5 shadow-[0_14px_28px_rgba(14,26,58,0.14)] ${
                     readingComplete ? "border-emerald-200" : "border-[var(--bb-card-border,#dbe7f4)]"
                   }`}>
-                    <div className="aspect-[16/9] w-full overflow-hidden rounded-[20px] bg-[var(--bb-surface-soft,#f4f8ff)]">
-                      <img src={cover} alt="" loading="eager" decoding="async" onError={handleBibleYearCoverImageError} className="h-full w-full object-cover object-center" />
+                    <div className="aspect-square w-full overflow-hidden rounded-[20px] bg-[var(--bb-surface-soft,#f4f8ff)]">
+                      <img
+                        src={cover}
+                        alt=""
+                        loading="eager"
+                        decoding="async"
+                        onError={handleBibleYearCoverImageError}
+                        className="h-full w-full object-contain object-center"
+                      />
                     </div>
                   </div>
                 </div>
-                <div className="mt-4 overflow-hidden rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-white px-4 py-4 shadow-[0_12px_24px_rgba(38,63,99,0.08)]">
-                  <div className="grid gap-3 sm:grid-cols-[56px_minmax(0,1fr)] sm:items-start">
-                    <div className="grid h-14 w-14 place-items-center rounded-full bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-accent,#2f7fe8)]">
+                <div className="mt-4 overflow-hidden rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-white px-4 py-3.5 shadow-[0_12px_24px_rgba(38,63,99,0.08)]">
+                  <div className="grid gap-3 sm:grid-cols-[52px_minmax(0,1fr)] sm:items-start">
+                    <div className="grid h-12 w-12 place-items-center rounded-full bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-accent,#2f7fe8)]">
                       <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                         <path d="M4 12v-1a8 8 0 0 1 16 0v1" />
                         <rect x="3" y="12" width="5" height="8" rx="2" />
@@ -12644,7 +12651,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                     </div>
                     <div className="min-w-0 flex-1">
                       <p className="text-[12px] font-black uppercase tracking-[0.22em] text-[var(--bb-accent,#2f7fe8)]">Audio Player</p>
-                      <div className="mt-2">
+                      <div className="mt-1.5">
                         {audio ? (
                           <BibleYearLessonAudioPlayer
                             audioSrc={audio.apiSrc}
