@@ -11055,15 +11055,22 @@ Before we understand redemption, we need to understand what God made humanity fo
                 aria-expanded={sectionOpen}
                 className="flex w-full items-center gap-3 px-4 py-4 text-left transition hover:bg-[var(--bb-surface-soft,#f4f8ff)]"
               >
-                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[var(--bb-accent-soft,#eaf5ff)] text-xl" aria-hidden="true">
-                  {section.icon || "ðŸ“–"}
-                </span>
                 <span className="min-w-0 flex-1">
                   <span className="block text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--bb-accent,#2f7fe8)]">{section.reference}</span>
-                  <span className="mt-1 block text-[15px] font-extrabold leading-snug text-[var(--bb-text-primary,#111827)]">{section.title}</span></span>
-                <span className={`text-xl font-black text-[var(--bb-text-muted,#6b7280)] transition ${sectionOpen ? "rotate-90 text-[var(--bb-accent,#2f7fe8)]" : ""}`} aria-hidden="true">
-                  â€º
+                  <span className="mt-1 block text-[15px] font-extrabold leading-snug text-[var(--bb-text-primary,#111827)]">{section.title}</span>
                 </span>
+                <svg
+                  viewBox="0 0 16 16"
+                  className={`h-4 w-4 shrink-0 text-[var(--bb-text-muted,#6b7280)] transition ${sectionOpen ? "rotate-90 text-[var(--bb-accent,#2f7fe8)]" : ""}`}
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.1"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M6 3.5 10.5 8 6 12.5" />
+                </svg>
               </button>
 
               {sectionOpen ? (
@@ -12600,17 +12607,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               </>
             ) : (
               <>
-                <div className="relative min-w-0 pt-1 text-center">
-                  <button
-                    type="button"
-                    onClick={openBibleYearSeriesDashboard}
-                    className="absolute left-0 top-0 inline-flex h-12 w-12 items-center justify-center rounded-[18px] border border-[var(--bb-card-border,#dbe7f4)] bg-white text-[var(--bb-text-primary,#111827)] shadow-[0_12px_24px_rgba(38,63,99,0.08)] transition hover:border-[var(--bb-accent,#2f7fe8)] hover:text-[var(--bb-accent,#2f7fe8)]"
-                    aria-label="Back to journey map"
-                  >
-                    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      <path d="m15 18-6-6 6-6" />
-                    </svg>
-                  </button>
+                <div className="min-w-0 pt-1 text-center">
                   <div className="mx-auto inline-flex rounded-full bg-[var(--bb-accent-soft,#eaf5ff)] px-5 py-2 text-[13px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)] shadow-[0_10px_22px_rgba(38,63,99,0.06)]">
                     Day {day.dayNumber}
                   </div>
@@ -12640,17 +12637,14 @@ Before we understand redemption, we need to understand what God made humanity fo
                     </div>
                   </div>
                 </div>
-                <div className="mt-4 overflow-hidden rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-white px-4 py-3.5 shadow-[0_12px_24px_rgba(38,63,99,0.08)]">
-                  <div className="grid gap-3 sm:grid-cols-[52px_minmax(0,1fr)] sm:items-start">
-                    <div className="grid h-12 w-12 place-items-center rounded-full bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-accent,#2f7fe8)]">
-                      <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                        <path d="M4 12v-1a8 8 0 0 1 16 0v1" />
-                        <rect x="3" y="12" width="5" height="8" rx="2" />
-                        <rect x="16" y="12" width="5" height="8" rx="2" />
-                      </svg>
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <p className="text-[12px] font-black uppercase tracking-[0.22em] text-[var(--bb-accent,#2f7fe8)]">Audio Player</p>
+                <div className={`mt-4 overflow-hidden rounded-[22px] border px-4 py-3.5 shadow-[0_12px_24px_rgba(38,63,99,0.08)] ${
+                  readingComplete
+                    ? "border-emerald-200 bg-emerald-50/80"
+                    : "border-[var(--bb-card-border,#dbe7f4)] bg-white"
+                }`}>
+                  <div className="grid gap-2 text-center">
+                    <div className="min-w-0">
+                      <p className={`text-[12px] font-black uppercase tracking-[0.22em] ${readingComplete ? "text-emerald-700" : "text-[var(--bb-accent,#2f7fe8)]"}`}>Audio Player</p>
                       <div className="mt-1.5">
                         {audio ? (
                           <BibleYearLessonAudioPlayer
@@ -12681,22 +12675,16 @@ Before we understand redemption, we need to understand what God made humanity fo
                     </div>
                   </div>
                 </div>
-                <div className="mt-4 rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-white px-4 py-4 shadow-[0_12px_24px_rgba(38,63,99,0.08)]">
-                  <div className="grid gap-3 sm:grid-cols-[56px_minmax(0,1fr)] sm:items-center">
-                    <div className="grid h-14 w-14 place-items-center rounded-full bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-accent,#2f7fe8)]">
-                      <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                        <path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20" />
-                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z" />
-                        <path d="M8 7h8" />
-                        <path d="M8 11h8" />
-                      </svg>
-                    </div>
-                    <div>
-                      <p className="text-[12px] font-black uppercase tracking-[0.22em] text-[var(--bb-accent,#2f7fe8)]">Today&apos;s Lesson</p>
-                      <p className="mt-2 max-w-[32rem] text-[15px] font-medium leading-6 text-[#20345f] line-clamp-2 sm:text-[16px] sm:leading-7">
+                <div className={`mt-4 rounded-[22px] border px-4 py-4 text-center shadow-[0_12px_24px_rgba(38,63,99,0.08)] ${
+                  readingComplete
+                    ? "border-emerald-200 bg-emerald-50/80"
+                    : "border-[var(--bb-card-border,#dbe7f4)] bg-white"
+                }`}>
+                  <div>
+                    <p className={`text-[12px] font-black uppercase tracking-[0.22em] ${readingComplete ? "text-emerald-700" : "text-[var(--bb-accent,#2f7fe8)]"}`}>Today&apos;s Lesson</p>
+                    <p className="mx-auto mt-2 max-w-[34rem] text-[15px] font-medium leading-6 text-[#20345f] line-clamp-2 sm:text-[16px] sm:leading-7">
                         {playerSubline}
-                      </p>
-                    </div>
+                    </p>
                   </div>
                 </div>
                 <div className="mt-4">
@@ -12816,7 +12804,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                           {isLocked ? <span className="absolute inset-0 bg-black/24" aria-hidden="true" /> : null}
                         </span>
                         <span className={`absolute -right-2 -top-2 z-20 grid h-6 w-6 place-items-center rounded-full text-[11px] font-black shadow-[0_6px_14px_rgba(0,0,0,0.22)] ${isComplete ? "bg-sky-500 text-white" : isCurrent ? "bg-[var(--bb-accent,#2f7fe8)] text-white" : "border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-muted,#6b7280)]"}`} aria-hidden="true">
-                          {isComplete ? "âœ“" : isCurrent ? "â€¢" : "ðŸ”’"}
+                          {isComplete ? <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="m3.5 8.5 2.5 2.5 6-6" /></svg> : isCurrent ? <span className="h-2.5 w-2.5 rounded-full bg-current" /> : <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round"><path d="M5.75 7V5.75a2.25 2.25 0 1 1 4.5 0V7" /><rect x="4.25" y="7" width="7.5" height="5.75" rx="1.25" /></svg>}
                         </span>
                       </button>
                       <p className="mt-2 truncate text-[11px] font-bold leading-tight text-[var(--bb-text-primary,#111827)]">Day {milestone.dayNumber}</p>
@@ -15727,7 +15715,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                                     }`}
                                     aria-hidden="true"
                                   >
-                                    {isComplete ? "\u2713" : isCurrent ? "\u2022" : "\uD83D\uDD12"}
+                                    {isComplete ? <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="m3.5 8.5 2.5 2.5 6-6" /></svg> : isCurrent ? <span className="h-2.5 w-2.5 rounded-full bg-current" /> : <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round"><path d="M5.75 7V5.75a2.25 2.25 0 1 1 4.5 0V7" /><rect x="4.25" y="7" width="7.5" height="5.75" rx="1.25" /></svg>}
                                   </span>
                                 </button>
                                 <p className="mt-2 truncate text-[11px] font-black leading-tight text-[var(--bb-text-primary,#111827)]">{milestoneDayLabel}</p>
