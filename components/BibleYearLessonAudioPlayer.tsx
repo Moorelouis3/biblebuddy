@@ -25,6 +25,7 @@ type BibleYearLessonAudioPlayerProps = {
   controlsLocked?: boolean;
   showHeader?: boolean;
   audiobookMode?: boolean;
+  showHelpfulPoll?: boolean;
 };
 
 function formatTime(totalSeconds: number) {
@@ -53,6 +54,7 @@ export default function BibleYearLessonAudioPlayer({
   controlsLocked = false,
   showHeader = true,
   audiobookMode = false,
+  showHelpfulPoll = true,
 }: BibleYearLessonAudioPlayerProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const backgroundAudioRef = useRef<HTMLAudioElement | null>(null);
@@ -639,52 +641,75 @@ export default function BibleYearLessonAudioPlayer({
             </div>
           </div>
 
-          <div className="grid w-full grid-cols-5 items-start gap-3">
-            <button
-              type="button"
-              onClick={() => seekBy(-15)}
-              disabled={controlsLocked}
-              className="flex flex-col items-center gap-2"
-              aria-label="Rewind 15 seconds"
-            >
-              <span className="grid h-12 w-12 place-items-center rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-white text-[var(--bb-text-primary,#111827)] shadow-[0_10px_22px_rgba(15,23,42,0.08)]">
-                <span className="relative flex items-center justify-center">
-                  {renderControlIcon("rewind")}
-                  <span className="absolute text-[9px] font-black">15</span>
-                </span>
-              </span>
-              <span className="text-[11px] font-semibold text-[var(--bb-text-muted,#6b7280)]">Rewind 15s</span>
-            </button>
+          <div className="flex w-full min-w-0 flex-nowrap items-center justify-between gap-2 sm:gap-3">
+            <div className="shrink-0">
+              <label className="sr-only" htmlFor={speedControlId}>Playback speed</label>
+              <select
+                id={speedControlId}
+                value={playbackRate}
+                onChange={(event) => changePlaybackRate(Number(event.target.value))}
+                disabled={controlsLocked}
+                className="h-11 min-w-[64px] rounded-[14px] border border-[var(--bb-card-border,#dbe7f4)] bg-white px-3 text-center text-sm font-black text-[var(--bb-text-primary,#111827)] outline-none shadow-[0_10px_22px_rgba(15,23,42,0.06)] transition hover:border-[var(--bb-accent,#2f7fe8)] focus:border-[var(--bb-accent,#2f7fe8)]"
+                aria-label="Playback speed"
+              >
+                {[0.75, 1, 1.25, 1.5, 2].map((rate) => (
+                  <option key={rate} value={rate}>
+                    {rate.toFixed(rate === 1 ? 1 : rate % 1 === 0 ? 0 : 2)}x
+                  </option>
+                ))}
+              </select>
+            </div>
 
             <button
               type="button"
               onClick={onPreviousLesson}
               disabled={controlsLocked || !onPreviousLesson}
-              className="flex flex-col items-center gap-2 disabled:opacity-40"
+              className="grid h-11 w-11 shrink-0 place-items-center rounded-[14px] border border-[var(--bb-card-border,#dbe7f4)] bg-white text-[var(--bb-text-primary,#111827)] shadow-[0_10px_22px_rgba(15,23,42,0.08)] transition hover:border-[var(--bb-accent,#2f7fe8)] disabled:opacity-40"
               aria-label={previousLessonLabel}
               title={previousLessonLabel}
             >
-              <span className="grid h-12 w-12 place-items-center rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-white text-[var(--bb-text-primary,#111827)] shadow-[0_10px_22px_rgba(15,23,42,0.08)]">
-                {renderControlIcon("previous")}
+              {renderControlIcon("previous")}
+            </button>
+
+            <button
+              type="button"
+              onClick={() => seekBy(-15)}
+              disabled={controlsLocked}
+              className="grid h-11 w-[58px] shrink-0 place-items-center rounded-[14px] border border-[var(--bb-card-border,#dbe7f4)] bg-white text-[var(--bb-text-primary,#111827)] shadow-[0_10px_22px_rgba(15,23,42,0.08)] transition hover:border-[var(--bb-accent,#2f7fe8)] disabled:opacity-50"
+              aria-label="Rewind 15 seconds"
+            >
+              <span className="relative flex items-center justify-center">
+                {renderControlIcon("rewind")}
+                <span className="absolute text-[9px] font-black">15</span>
               </span>
-              <span className="text-[11px] font-semibold text-[var(--bb-text-muted,#6b7280)]">Previous</span>
             </button>
 
             <button
               type="button"
               onClick={toggleAudio}
               disabled={controlsLocked || loading}
-              className="flex flex-col items-center gap-2 disabled:opacity-60"
+              className="grid h-[78px] w-[78px] shrink-0 place-items-center rounded-full bg-[var(--bb-accent,#2f7fe8)] text-white shadow-[0_18px_36px_rgba(47,127,232,0.34)] disabled:opacity-60"
               aria-label={playing ? "Pause audio lesson" : "Play audio lesson"}
             >
-              <span className="grid h-[88px] w-[88px] place-items-center rounded-full bg-[var(--bb-accent,#2f7fe8)] text-white shadow-[0_18px_36px_rgba(47,127,232,0.34)]">
-                {loading ? (
-                  <span className="h-6 w-6 animate-spin rounded-full border-2 border-current border-t-transparent" aria-hidden="true" />
-                ) : playing ? (
-                  <span className="text-[28px] font-black leading-none" aria-hidden="true">II</span>
-                ) : (
-                  <span className="ml-1 h-0 w-0 border-y-[12px] border-l-[18px] border-y-transparent border-l-current" aria-hidden="true" />
-                )}
+              {loading ? (
+                <span className="h-6 w-6 animate-spin rounded-full border-2 border-current border-t-transparent" aria-hidden="true" />
+              ) : playing ? (
+                <span className="text-[28px] font-black leading-none" aria-hidden="true">II</span>
+              ) : (
+                <span className="ml-1 h-0 w-0 border-y-[12px] border-l-[18px] border-y-transparent border-l-current" aria-hidden="true" />
+              )}
+            </button>
+
+            <button
+              type="button"
+              onClick={() => seekBy(15)}
+              disabled={controlsLocked}
+              className="grid h-11 w-[58px] shrink-0 place-items-center rounded-[14px] border border-[var(--bb-card-border,#dbe7f4)] bg-white text-[var(--bb-text-primary,#111827)] shadow-[0_10px_22px_rgba(15,23,42,0.08)] transition hover:border-[var(--bb-accent,#2f7fe8)] disabled:opacity-50"
+              aria-label="Forward 15 seconds"
+            >
+              <span className="relative flex items-center justify-center">
+                {renderControlIcon("forward")}
+                <span className="absolute text-[9px] font-black">15</span>
               </span>
             </button>
 
@@ -692,53 +717,15 @@ export default function BibleYearLessonAudioPlayer({
               type="button"
               onClick={onNextLesson}
               disabled={controlsLocked || !onNextLesson}
-              className="flex flex-col items-center gap-2 disabled:opacity-40"
+              className="grid h-11 w-11 shrink-0 place-items-center rounded-[14px] border border-[var(--bb-card-border,#dbe7f4)] bg-white text-[var(--bb-text-primary,#111827)] shadow-[0_10px_22px_rgba(15,23,42,0.08)] transition hover:border-[var(--bb-accent,#2f7fe8)] disabled:opacity-40"
               aria-label={nextLessonLabel}
               title={nextLessonLabel}
             >
-              <span className="grid h-12 w-12 place-items-center rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-white text-[var(--bb-text-primary,#111827)] shadow-[0_10px_22px_rgba(15,23,42,0.08)]">
-                {renderControlIcon("next")}
-              </span>
-              <span className="text-[11px] font-semibold text-[var(--bb-text-muted,#6b7280)]">Next</span>
+              {renderControlIcon("next")}
             </button>
-
-            <button
-              type="button"
-              onClick={() => seekBy(15)}
-              disabled={controlsLocked}
-              className="flex flex-col items-center gap-2"
-              aria-label="Forward 15 seconds"
-            >
-              <span className="grid h-12 w-12 place-items-center rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-white text-[var(--bb-text-primary,#111827)] shadow-[0_10px_22px_rgba(15,23,42,0.08)]">
-                <span className="relative flex items-center justify-center">
-                  {renderControlIcon("forward")}
-                  <span className="absolute text-[9px] font-black">15</span>
-                </span>
-              </span>
-              <span className="text-[11px] font-semibold text-[var(--bb-text-muted,#6b7280)]">Forward 15s</span>
-            </button>
-          </div>
-
-          <div className="flex flex-col items-center gap-1">
-            <label className="sr-only" htmlFor={speedControlId}>Playback speed</label>
-            <select
-              id={speedControlId}
-              value={playbackRate}
-              onChange={(event) => changePlaybackRate(Number(event.target.value))}
-              disabled={controlsLocked}
-              className="h-11 min-w-[88px] rounded-[14px] border border-[var(--bb-card-border,#dbe7f4)] bg-white px-4 text-center text-sm font-black text-[var(--bb-text-primary,#111827)] outline-none shadow-[0_10px_22px_rgba(15,23,42,0.06)] transition hover:border-[var(--bb-accent,#2f7fe8)] focus:border-[var(--bb-accent,#2f7fe8)]"
-              aria-label="Playback speed"
-            >
-              {[0.75, 1, 1.25, 1.5, 2].map((rate) => (
-                <option key={rate} value={rate}>
-                  {rate.toFixed(rate === 1 ? 1 : rate % 1 === 0 ? 0 : 2)}x
-                </option>
-              ))}
-            </select>
-            <span className="text-[11px] font-semibold text-[var(--bb-text-muted,#6b7280)]">Speed</span>
           </div>
         </div>
-        {!controlsLocked ? (
+        {!controlsLocked && showHelpfulPoll ? (
           <VideoHelpfulPoll
             userId={userId}
             videoId={`audio:${videoId || audioSrc || title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")}`}
