@@ -2208,6 +2208,7 @@ export default function DashboardJourneyExperience({
   const [bibleYearStudyNotesCreditBlocked, setBibleYearStudyNotesCreditBlocked] = useState(false);
   const [bibleYearFollowAlongOpenByDay, setBibleYearFollowAlongOpenByDay] = useState<Record<number, boolean>>({});
   const [bibleYearUnlockedStudyNoteSectionsByDay, setBibleYearUnlockedStudyNoteSectionsByDay] = useState<Record<number, Record<string, true>>>({});
+  const [bibleYearUnlockedTriviaByDay, setBibleYearUnlockedTriviaByDay] = useState<Record<number, true>>({});
   const [bibleYearFollowAlongEnrichedHtmlByChapter, setBibleYearFollowAlongEnrichedHtmlByChapter] = useState<Record<string, Record<number, string>>>({});
   const [bibleYearReaderTranslation, setBibleYearReaderTranslation] = useState<BibleYearReaderTranslation>("kjv");
   const [bibleYearReaderPlainText, setBibleYearReaderPlainText] = useState(false);
@@ -11017,7 +11018,7 @@ Before we understand redemption, we need to understand what God made humanity fo
 
                     if (!creditResult.ok) {
                       if (isCreditActionCanceled(creditResult)) return;
-                      setBibleYearStudyNotesCreditBlocked(true);
+                      showBibleYearStudyNotesUpgrade(day.dayNumber);
                       return;
                     }
 
@@ -11247,6 +11248,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     const completedForDay = bibleYearCompletedCardsByDay[day.dayNumber] || {};
     const notesViewed = completedForDay.study_notes === true;
     const triviaDone = completedForDay.trivia === true;
+    const triviaUnlocked = isPaidUser || isOwnerDashboard || bibleYearUnlockedTriviaByDay[day.dayNumber] === true;
     const reflectionDone = bibleYearReflectionPostedByDay[day.dayNumber] === true || completedForDay.reflection === true;
     const activeBonus =
       bibleYearOptionalDiscussionDay === day.dayNumber
@@ -11294,12 +11296,26 @@ Before we understand redemption, we need to understand what God made humanity fo
         title: "Trivia",
         body: "Test what you learned.",
         done: triviaDone,
-        badge: !isPaidUser && !isOwnerDashboard ? "Premium" : null,
-        onClick: () => {
-          if (!isPaidUser && !isOwnerDashboard) {
-            showBibleYearStudyNotesUpgrade(day.dayNumber);
-            return;
+        badge: !isPaidUser && !isOwnerDashboard && !triviaUnlocked ? "1 Credit" : null,
+        onClick: async () => {
+          if (!triviaUnlocked) {
+            const creditResult = await consumeCreditAction(ACTION_TYPE.trivia_started, {
+              userId,
+              actionLabel: `Bible Year Day ${day.dayNumber} Trivia`,
+            });
+
+            if (!creditResult.ok) {
+              if (isCreditActionCanceled(creditResult)) return;
+              showBibleYearStudyNotesUpgrade(day.dayNumber);
+              return;
+            }
+
+            setBibleYearUnlockedTriviaByDay((current) => ({
+              ...current,
+              [day.dayNumber]: true,
+            }));
           }
+
           setBibleYearOptionalDiscussionDay(null);
           setBibleYearOpenScriptureNotesSectionKey(null);
           setBibleYearOpenScriptureNotesPhraseKey(null);
@@ -11796,23 +11812,23 @@ Before we understand redemption, we need to understand what God made humanity fo
     const shareRingOffset = shareRingCircumference - (shareRingPercent / 100) * shareRingCircumference;
 
     return (
-      <section className="mx-auto w-full max-w-[440px] px-1">
+      <section className="mx-auto w-full max-w-[390px] px-1">
         <div className="grid gap-3">
           <div
             ref={bibleProgressShareCardRef}
-            className="overflow-hidden rounded-[34px] bg-[radial-gradient(circle_at_top,#fdfefe_0%,#f6f9ff_62%,#eef5ff_100%)] p-4 text-[var(--bb-text-primary,#111827)] shadow-[0_30px_80px_rgba(14,26,58,0.18)]"
+            className="overflow-hidden rounded-[28px] bg-[radial-gradient(circle_at_top,#fdfefe_0%,#f6f9ff_62%,#eef5ff_100%)] p-3 text-[var(--bb-text-primary,#111827)] shadow-[0_24px_56px_rgba(14,26,58,0.16)]"
           >
-            <div className="relative overflow-hidden rounded-[30px] border-2 border-[#8eb6ff] bg-white px-5 py-6 shadow-[inset_0_0_0_4px_rgba(142,182,255,0.38)] sm:px-7 sm:py-7">
-              <div className="pointer-events-none absolute inset-[12px] rounded-[24px] border border-[#8eb6ff]" aria-hidden="true" />
+            <div className="relative overflow-hidden rounded-[24px] border-2 border-[#8eb6ff] bg-white px-4 py-4 shadow-[inset_0_0_0_3px_rgba(142,182,255,0.38)] sm:px-5 sm:py-5">
+              <div className="pointer-events-none absolute inset-[10px] rounded-[18px] border border-[#8eb6ff]" aria-hidden="true" />
 
               {[
-                "left-4 top-4",
-                "right-4 top-4 rotate-90",
-                "left-4 bottom-4 -rotate-90",
-                "right-4 bottom-4 rotate-180",
+                "left-3 top-3",
+                "right-3 top-3 rotate-90",
+                "left-3 bottom-3 -rotate-90",
+                "right-3 bottom-3 rotate-180",
               ].map((position) => (
                 <div key={position} className={`pointer-events-none absolute ${position} text-[#8eb6ff] opacity-95`} aria-hidden="true">
-                  <svg width="94" height="94" viewBox="0 0 94 94" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg width="70" height="70" viewBox="0 0 94 94" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M11 82C11 53 11 35 27 19C36 10 49 7 68 7" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
                     <path d="M13 61C16 49 22 40 31 31C38 24 49 20 63 18" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity=".75"/>
                     <path d="M57 12C61 18 63 24 63 31C57 29 53 26 49 21C51 17 54 14 57 12Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round"/>
@@ -11826,19 +11842,19 @@ Before we understand redemption, we need to understand what God made humanity fo
 
               <div className="relative z-10">
                 <div className="flex items-center justify-center gap-3">
-                  <div className="grid h-11 w-11 place-items-center rounded-[12px] bg-[linear-gradient(180deg,#2567ff_0%,#0f4fe8_100%)] text-[25px] font-black text-white shadow-[0_12px_22px_rgba(37,103,255,0.28)]">
+                  <div className="grid h-10 w-10 place-items-center rounded-[11px] bg-[linear-gradient(180deg,#2567ff_0%,#0f4fe8_100%)] text-[22px] font-black text-white shadow-[0_10px_18px_rgba(37,103,255,0.24)]">
                     B
                   </div>
-                  <p className="text-[24px] font-black tracking-[-0.02em] text-[#10224b]">Bible Buddy</p>
+                  <p className="text-[21px] font-black tracking-[-0.02em] text-[#10224b]">Bible Buddy</p>
                 </div>
 
-                <p className="mt-8 text-center text-[13px] font-bold uppercase tracking-[0.42em] text-[#496ab3]">
+                <p className="mt-5 text-center text-[11px] font-bold uppercase tracking-[0.34em] text-[#496ab3]">
                   Bible Reading Streak
                 </p>
 
-                <div className="relative mx-auto mt-7 flex max-w-[360px] flex-col items-center text-center">
-                  <div className="pointer-events-none absolute top-5 h-[148px] w-[236px] bg-[radial-gradient(circle_at_center,rgba(37,103,255,0.14)_0%,rgba(37,103,255,0.08)_28%,transparent_72%)]" aria-hidden="true" />
-                  <div className="pointer-events-none absolute top-5 h-[150px] w-[250px] opacity-80" aria-hidden="true">
+                <div className="relative mx-auto mt-4 flex max-w-[320px] flex-col items-center text-center">
+                  <div className="pointer-events-none absolute top-4 h-[116px] w-[190px] bg-[radial-gradient(circle_at_center,rgba(37,103,255,0.14)_0%,rgba(37,103,255,0.08)_28%,transparent_72%)]" aria-hidden="true" />
+                  <div className="pointer-events-none absolute top-4 h-[118px] w-[206px] opacity-80" aria-hidden="true">
                     <svg viewBox="0 0 250 150" className="h-full w-full">
                       {Array.from({ length: 17 }).map((_, index) => {
                         const x = 125 + Math.cos(((index - 8) * 10 * Math.PI) / 180) * 104;
@@ -11848,38 +11864,35 @@ Before we understand redemption, we need to understand what God made humanity fo
                     </svg>
                   </div>
                   <div className="flex w-full items-center justify-between px-5 text-[#89a9ef]" aria-hidden="true">
-                    <span className="text-[30px]">✦</span>
-                    <span className="text-[30px]">✦</span>
+                    <span className="text-[24px]">✦</span>
+                    <span className="text-[24px]">✦</span>
                   </div>
-                  <div className="relative mt-[-8px] text-[116px] font-black leading-none tracking-[-0.05em] text-[#1860ff] sm:text-[132px]">
+                  <div className="relative mt-[-4px] text-[84px] font-black leading-none tracking-[-0.05em] text-[#1860ff] sm:text-[96px]">
                     {shareStreakDays}
                   </div>
-                  <div className="relative mt-[-10px] min-w-[164px] bg-[linear-gradient(180deg,#2567ff_0%,#1253eb_100%)] px-8 py-2.5 text-[22px] font-black uppercase tracking-[0.26em] text-white shadow-[0_16px_28px_rgba(37,103,255,0.22)] before:absolute before:left-[-18px] before:top-0 before:border-b-[22px] before:border-r-[18px] before:border-t-[22px] before:border-b-transparent before:border-r-[#174fe0] before:border-t-transparent before:content-[''] after:absolute after:right-[-18px] after:top-0 after:border-b-[22px] after:border-l-[18px] after:border-t-[22px] after:border-b-transparent after:border-l-[#174fe0] after:border-t-transparent after:content-['']">
+                  <div className="relative mt-[-8px] min-w-[132px] bg-[linear-gradient(180deg,#2567ff_0%,#1253eb_100%)] px-6 py-2 text-[18px] font-black uppercase tracking-[0.22em] text-white shadow-[0_12px_24px_rgba(37,103,255,0.2)] before:absolute before:left-[-14px] before:top-0 before:border-b-[18px] before:border-r-[14px] before:border-t-[18px] before:border-b-transparent before:border-r-[#174fe0] before:border-t-transparent before:content-[''] after:absolute after:right-[-14px] after:top-0 after:border-b-[18px] after:border-l-[14px] after:border-t-[18px] after:border-b-transparent after:border-l-[#174fe0] after:border-t-transparent after:content-['']">
                     DAY
                   </div>
-                  <p className="mt-8 text-[28px] font-black leading-tight tracking-[-0.03em] text-[#10224b]">
+                  <p className="mt-5 text-[22px] font-black leading-tight tracking-[-0.03em] text-[#10224b]">
                     I have read the Bible
                     <br />
                     {shareStreakDays} {shareStreakDays === 1 ? "day" : "days"} straight!
                   </p>
-                  <p className="mt-4 max-w-[340px] text-[16px] font-medium leading-7 text-[#5d78b4]">
-                    {currentStreak <= 0 ? "Start today. One day at a time is enough to begin." : streakMilestone.comparison}
-                  </p>
                 </div>
 
-                <div className="mt-8 flex items-center gap-4 text-[#89a9ef]" aria-hidden="true">
+                <div className="mt-5 flex items-center gap-3 text-[#89a9ef]" aria-hidden="true">
                   <div className="h-px flex-1 bg-[#a6c2ff]" />
-                  <span className="text-[22px]">✦</span>
+                  <span className="text-[18px]">✦</span>
                   <div className="h-px flex-1 bg-[#a6c2ff]" />
                 </div>
 
-                <div className="mt-8 grid gap-6 sm:grid-cols-[1fr_auto] sm:items-center">
+                <div className="mt-5 grid gap-4 sm:grid-cols-[1fr_auto] sm:items-center">
                   <div className="min-w-0">
-                    <p className="text-[13px] font-black uppercase tracking-[0.34em] text-[#185cff]">Bible In One Year</p>
-                    <p className="mt-3 text-[38px] font-black leading-none tracking-[-0.04em] text-[#10224b] sm:text-[44px]">Day {currentDay} of 365</p>
+                    <p className="text-[11px] font-black uppercase tracking-[0.26em] text-[#185cff]">Bible In One Year</p>
+                    <p className="mt-2 text-[30px] font-black leading-none tracking-[-0.04em] text-[#10224b] sm:text-[34px]">Day {currentDay} of 365</p>
                   </div>
                   <div className="mx-auto sm:mx-0">
-                    <div className="relative h-[94px] w-[94px]">
+                    <div className="relative h-[74px] w-[74px]">
                       <svg viewBox="0 0 88 88" className="h-full w-full -rotate-90">
                         <circle cx="44" cy="44" r={shareRingRadius} fill="none" stroke="#e4edff" strokeWidth="8" />
                         <circle
@@ -11894,51 +11907,51 @@ Before we understand redemption, we need to understand what God made humanity fo
                           strokeDashoffset={shareRingOffset}
                         />
                       </svg>
-                      <div className="absolute inset-0 grid place-items-center text-[22px] font-black text-[#185cff]">{shareRingPercent}%</div>
+                      <div className="absolute inset-0 grid place-items-center text-[18px] font-black text-[#185cff]">{shareRingPercent}%</div>
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-5 h-4 overflow-hidden rounded-full bg-[#e7efff]">
+                <div className="mt-3 h-3 overflow-hidden rounded-full bg-[#e7efff]">
                   <div className="h-full rounded-full bg-[linear-gradient(90deg,#2567ff_0%,#1454eb_100%)]" style={{ width: `${Math.max(2, dayProgressPercent)}%` }} />
                 </div>
 
-                <div className="mt-3 flex items-center justify-between gap-3 text-[15px] font-semibold text-[#2f4c8c]">
+                <div className="mt-2 flex items-center justify-between gap-3 text-[13px] font-semibold text-[#2f4c8c]">
                   <span>{overallPercent}% completed</span>
                   <span>{remainingDays} days left</span>
                 </div>
 
-                <div className="mt-8 flex items-center gap-4 text-[#89a9ef]" aria-hidden="true">
+                <div className="mt-5 flex items-center gap-3 text-[#89a9ef]" aria-hidden="true">
                   <div className="h-px flex-1 bg-[#a6c2ff]" />
-                  <span className="text-[22px]">✦</span>
+                  <span className="text-[18px]">✦</span>
                   <div className="h-px flex-1 bg-[#a6c2ff]" />
                 </div>
 
-                <div className="mt-8 grid gap-5 sm:grid-cols-[1fr_auto_1fr] sm:items-center">
+                <div className="mt-5 grid gap-4 sm:grid-cols-[1fr_auto_1fr] sm:items-center">
                   <div className="flex items-center gap-3">
-                    <div className="grid h-12 w-12 shrink-0 place-items-center rounded-[14px] bg-[#f5f9ff] text-[24px] text-[#5c7ed3]">🗓</div>
+                    <div className="grid h-10 w-10 shrink-0 place-items-center rounded-[12px] bg-[#f5f9ff] text-[20px] text-[#5c7ed3]">🗓</div>
                     <div>
-                      <p className="text-[11px] font-black uppercase tracking-[0.28em] text-[#185cff]">Started</p>
-                      <p className="mt-1 text-[18px] font-black text-[#10224b]">{startDateLabel}</p>
+                      <p className="text-[10px] font-black uppercase tracking-[0.22em] text-[#185cff]">Started</p>
+                      <p className="mt-1 text-[16px] font-black text-[#10224b]">{startDateLabel}</p>
                     </div>
                   </div>
 
                   <div className="hidden items-center justify-center text-[#89a9ef] sm:flex" aria-hidden="true">
-                    <span className="text-[22px]">✦</span>
+                    <span className="text-[18px]">✦</span>
                   </div>
 
                   <div className="flex items-center justify-start gap-3 sm:justify-end">
                     <div className="text-right">
-                      <p className="text-[11px] font-black uppercase tracking-[0.28em] text-[#185cff]">Expected Finish</p>
-                      <p className="mt-1 text-[18px] font-black text-[#10224b]">{expectedFinishDateLabel}</p>
+                      <p className="text-[10px] font-black uppercase tracking-[0.22em] text-[#185cff]">Expected Finish</p>
+                      <p className="mt-1 text-[16px] font-black text-[#10224b]">{expectedFinishDateLabel}</p>
                     </div>
-                    <div className="grid h-12 w-12 shrink-0 place-items-center rounded-[14px] bg-[#f5f9ff] text-[24px] text-[#5c7ed3]">⚑</div>
+                    <div className="grid h-10 w-10 shrink-0 place-items-center rounded-[12px] bg-[#f5f9ff] text-[20px] text-[#5c7ed3]">⚑</div>
                   </div>
                 </div>
 
-                <div className="mt-8 border-t border-[#dbe7ff] pt-7 text-center">
-                  <p className="text-[13px] font-bold uppercase tracking-[0.42em] text-[#496ab3]">Start Your Streak @</p>
-                  <p className="mt-2 text-[22px] font-black uppercase tracking-[0.24em] text-[#1860ff] sm:text-[28px]">MyBibleBuddy.net</p>
+                <div className="mt-5 border-t border-[#dbe7ff] pt-4 text-center">
+                  <p className="text-[11px] font-bold uppercase tracking-[0.34em] text-[#496ab3]">Start Your Streak @</p>
+                  <p className="mt-1 text-[18px] font-black uppercase tracking-[0.18em] text-[#1860ff] sm:text-[22px]">MyBibleBuddy.net</p>
                 </div>
               </div>
             </div>
@@ -12448,7 +12461,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         {!isPaidUser && !isOwnerDashboard ? (
           <button
             type="button"
-            onClick={() => openBibleYearQuickUpgrade("background_audio")}
+            onClick={() => showBibleYearStudyNotesUpgrade(activeBibleYearDashboardDay?.dayNumber || selectedBibleYearSeriesDay?.dayNumber || null)}
             className="order-4 flex w-full items-center justify-between gap-3 rounded-[18px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_92%,var(--bb-accent-soft,#eef6ff))] px-4 py-3 text-left shadow-[0_12px_30px_rgba(38,63,99,0.08)] transition hover:border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_36%,var(--bb-card-border,#dbe7f4))] hover:bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_84%,var(--bb-accent-soft,#eef6ff))]"
             aria-label="Upgrade to unlock background audio, full study notes, and more trivia"
           >
