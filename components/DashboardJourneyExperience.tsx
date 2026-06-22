@@ -11660,7 +11660,7 @@ Before we understand redemption, we need to understand what God made humanity fo
 
   function renderHomeSupportStatsStrip() {
     const currentStreak = effectiveBibleYearReport.currentStreak ?? Math.max(0, profile?.current_streak ?? 0);
-    const streakLabel = `${currentStreak} ${currentStreak === 1 ? "Day" : "Days"} Bible Study Streak`;
+    const streakLabel = `${currentStreak} Day Bible Study Streak`;
     const lightThemeUsesClassicFlame = typeof document !== "undefined" && document.documentElement.dataset.bbTheme === "light";
 
     return (
