@@ -512,7 +512,7 @@ const RAW_GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     reference: "Genesis 5-7",
     estimatedTime: "about 15 min",
     summary: BIBLE_YEAR_DAY_AUDIO_SUMMARIES[3],
-    coverImage: "/day3cover.png",
+    coverImage: "/day3newcover.png",
     readings: buildGenesisReadings("The Flood of Noah", 5, 7, 1),
   },
   {
