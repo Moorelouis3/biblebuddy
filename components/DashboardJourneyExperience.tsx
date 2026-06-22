@@ -13185,6 +13185,8 @@ Before we understand redemption, we need to understand what God made humanity fo
     const cover = getBibleYearDayCoverImage(day);
     const readingSummary = formatBibleYearMediaReference(day);
     const audioIntroCopy = day.summary?.trim() || `Study ${readingSummary} with Bible Buddy.`;
+    const previousBibleYearDay = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((item) => item.dayNumber === day.dayNumber - 1) || null;
+    const nextBibleYearDay = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((item) => item.dayNumber === day.dayNumber + 1) || null;
     const verseBreakdownSections = lesson.sections;
     const { markdown: deepNotesMarkdown, sections: deepStudySections } = getBibleYearDayDeepNotes(day.dayNumber);
     const hasDeepNotes = Boolean(deepNotesMarkdown);
@@ -13684,8 +13686,29 @@ Before we understand redemption, we need to understand what God made humanity fo
     }
 
     return (
-      <article className="relative mx-auto max-w-xl text-left text-[var(--bb-text-primary,#fff7ed)]">
-        <section className="relative px-1 pb-1 pt-1">
+      <article className="mx-auto max-w-xl overflow-hidden rounded-[32px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-4 pb-6 pt-4 text-[var(--bb-text-primary,#111827)] shadow-[0_24px_60px_rgba(15,23,42,0.10)] sm:px-6">
+        <section className="relative">
+          <div className="mb-6">
+            <div className="grid grid-cols-[48px_1fr_48px] items-start">
+              <button
+                type="button"
+                onClick={closeBibleYearReadingArticle}
+                className="grid h-11 w-11 place-items-center rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] text-xl font-black text-[var(--bb-text-primary,#111827)] shadow-sm transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
+                aria-label="Back"
+              >
+                ‹
+              </button>
+              <div className="flex flex-col items-center text-center">
+                <span className="inline-flex rounded-full bg-[var(--bb-accent-soft,#eaf5ff)] px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">
+                  Day {day.dayNumber}
+                </span>
+                <p className="mt-3 text-[14px] font-black uppercase tracking-[0.18em] text-[var(--bb-text-secondary,#4b5563)]">
+                  {readingSummary}
+                </p>
+              </div>
+              <span aria-hidden="true" />
+            </div>
+          </div>
           {freeYoutubeUrl ? (
             <div className="pt-0">
               <div className="overflow-hidden rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_42%,transparent)] bg-[#070503] shadow-[0_24px_58px_rgba(0,0,0,0.42),0_0_34px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_18%,transparent)]">
@@ -13788,13 +13811,13 @@ Before we understand redemption, we need to understand what God made humanity fo
 
           {showAudio ? (
             <div className="pt-0">
-              <div className="mb-4 flex flex-col items-center text-center">
-                <div className="aspect-square w-full max-w-[176px] overflow-hidden rounded-[12px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f4f8ff)] shadow-[0_12px_26px_rgba(38,63,99,0.12)]">
+              <div className="mb-5 flex flex-col items-center text-center">
+                <div className="aspect-square w-full max-w-[280px] overflow-hidden rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f4f8ff)] shadow-[0_18px_36px_rgba(15,23,42,0.12)]">
                   <img src={cover} alt="" loading="eager" decoding="async" onError={handleBibleYearCoverImageError} className="h-full w-full object-cover" />
                 </div>
-                <div className="mt-4 px-1">
-                  <h3 className="text-[18px] font-bold leading-tight text-[var(--bb-text-primary,#fff7ed)] sm:text-[20px]">{day.title}</h3>
-                  <p className="mt-2 max-w-2xl text-[13px] font-medium leading-5 text-[var(--bb-text-secondary,#e7d4bd)]">
+                <div className="mt-5 px-2">
+                  <h3 className="text-[32px] font-black leading-tight text-[var(--bb-text-primary,#111827)]">{day.title}</h3>
+                  <p className="mx-auto mt-3 max-w-[34rem] text-[15px] font-medium leading-7 text-[var(--bb-text-secondary,#4b5563)]">
                     {audioIntroCopy}
                   </p>
                 </div>
@@ -13806,23 +13829,26 @@ Before we understand redemption, we need to understand what God made humanity fo
                 storagePath={audio.storagePath}
                 userId={userId}
                 videoId={`bible-year-day-${day.dayNumber}`}
+                onPreviousLesson={previousBibleYearDay ? () => openBibleYearDayOnDashboard(previousBibleYearDay, { reviewCompleted: isBibleYearDayComplete(previousBibleYearDay) }) : undefined}
+                onNextLesson={nextBibleYearDay ? () => openBibleYearDayOnDashboard(nextBibleYearDay, { reviewCompleted: isBibleYearDayComplete(nextBibleYearDay) }) : undefined}
+                previousLessonLabel={previousBibleYearDay ? `Open Day ${previousBibleYearDay.dayNumber}` : "No previous day"}
+                nextLessonLabel={nextBibleYearDay ? `Open Day ${nextBibleYearDay.dayNumber}` : "No next day"}
+                showHeader={false}
+                audiobookMode
               />
-              {renderBibleYearFollowAlongScripture(day)}
               <button
                 type="button"
                 onClick={() => {
                   void handleBibleYearAudioLessonCompleted(day, { closeArticle: true, closeDeepNotes: true });
                 }}
                 disabled={readingCardComplete}
-                className={`mt-3 flex w-full items-center justify-center gap-3 rounded-2xl border px-5 py-4 text-center shadow-[0_0_30px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_24%,transparent),0_18px_38px_rgba(0,0,0,0.28)] transition ${
+                className={`mt-5 flex w-full items-center justify-center gap-3 rounded-[18px] px-5 py-4 text-center text-base font-black shadow-[0_18px_38px_rgba(47,127,232,0.24)] transition ${
                   readingCardComplete
-                    ? "cursor-default border-sky-400/70 bg-sky-400 text-sky-950"
-                    : "border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_70%,transparent)] bg-[var(--bb-accent,#f6b44b)] text-black hover:scale-[1.01] hover:brightness-105"
+                    ? "cursor-default border border-emerald-300 bg-emerald-50 text-emerald-700"
+                    : "bg-[var(--bb-button,#2f7fe8)] text-[var(--bb-button-text,#ffffff)] hover:brightness-105"
                 }`}
               >
-                <span className="block text-base font-black leading-tight">
-                  {readingCardComplete ? "Reading Completed" : "Mark Audio Complete"}
-                </span>
+                <span className="block leading-tight">{readingCardComplete ? "Lesson Completed" : "Mark as Complete"}</span>
               </button>
             </div>
           ) : null}
@@ -13861,14 +13887,14 @@ Before we understand redemption, we need to understand what God made humanity fo
             </div>
           ) : null}
 
-          {true ? (
+          {false ? (
           <div className="mt-4 grid grid-cols-2 overflow-hidden rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_22%,transparent)] bg-black/18">
             {[
               { label: "Favorite", premium: false, icon: "heart" },
               { label: "Share Lesson", premium: false, icon: "share", action: "share" },
             ].map((item, index) => {
-              const usesYouTubeVideo = Boolean(getYouTubeVideoId(audio.videoSrc));
-              const disabled = (item.action === "download" && (usesYouTubeVideo || (isPaidUser && !audio.videoSrc))) || (item.action === "complete" && readingCardComplete);
+              const usesYouTubeVideo = Boolean(getYouTubeVideoId(audio?.videoSrc || ""));
+              const disabled = (item.action === "download" && (usesYouTubeVideo || (isPaidUser && !audio?.videoSrc))) || (item.action === "complete" && readingCardComplete);
               const isMarkComplete = item.action === "complete";
               return (
                 <button
@@ -13877,7 +13903,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   disabled={disabled}
                   onClick={() => {
                     if (item.action === "complete" && !readingCardComplete) markBibleYearDayCardComplete(day, "reading");
-                    if (item.action === "download") requestBibleYearVideoDownload(day, audio.videoSrc);
+                    if (item.action === "download") requestBibleYearVideoDownload(day, audio?.videoSrc || "");
                     if (item.action === "share") void shareDayOne();
                   }}
                   className={`min-h-[78px] border-r border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_14%,transparent)] px-1.5 py-3 text-center transition last:border-r-0 ${

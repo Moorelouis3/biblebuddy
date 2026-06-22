@@ -102,6 +102,21 @@ export default function VideoHelpfulPoll({
 
   if (dismissState === "hidden") return null;
 
+  function renderThumbIcon(kind: "up" | "down") {
+    if (kind === "up") {
+      return (
+        <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true">
+          <path d="M10 11V5.8c0-.9.3-1.7.9-2.4l.9-1.1c.3-.4.9-.4 1.3-.1.2.2.4.5.4.8v2.8h4.2c1 0 1.8.9 1.6 1.9l-1.1 7c-.1.8-.8 1.4-1.6 1.4H10m0-5H6.8c-.4 0-.8.4-.8.8v5.4c0 .4.4.8.8.8H10V11Z" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      );
+    }
+    return (
+      <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true">
+        <path d="M14 13v5.2c0 .9-.3 1.7-.9 2.4l-.9 1.1c-.3.4-.9.4-1.3.1-.2-.2-.4-.5-.4-.8v-2.8H6.3c-1 0-1.8-.9-1.6-1.9l1.1-7c.1-.8.8-1.4 1.6-1.4H14m0 5h3.2c.4 0 .8-.4.8-.8V6.8c0-.4-.4-.8-.8-.8H14V13Z" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    );
+  }
+
   return (
     <div
       className={`video-helpful-poll relative mt-3 overflow-hidden rounded-2xl border px-3 py-3 ${
@@ -144,14 +159,21 @@ export default function VideoHelpfulPoll({
           <span className="absolute h-7 w-7 rounded-full bg-white/75 [--smoke-x:-90px] [--smoke-y:34px]" />
         </div>
       ) : null}
-      <div className={`flex flex-col gap-3 sm:flex-row sm:items-center ${mediaType === "audio" ? "text-center sm:justify-center" : "sm:justify-between"}`}>
-        <p className="text-sm font-black text-[var(--bb-text-primary,#111827)]">
-          Was this {mediaLabel} helpful?
-        </p>
-        <div className="grid grid-cols-2 gap-2 sm:w-40">
+      <div className={`flex flex-col gap-3 sm:flex-row sm:items-center ${mediaType === "audio" ? "sm:justify-between" : "sm:justify-between"}`}>
+        {mediaType === "audio" ? (
+          <div className="text-left">
+            <p className="text-sm font-black text-[var(--bb-text-primary,#111827)]">Was this audio helpful?</p>
+            <p className="mt-1 text-xs font-semibold text-[var(--bb-text-secondary,#4b5563)]">Your feedback helps us improve.</p>
+          </div>
+        ) : (
+          <p className="text-sm font-black text-[var(--bb-text-primary,#111827)]">
+            Was this {mediaLabel} helpful?
+          </p>
+        )}
+        <div className={`grid grid-cols-2 gap-2 ${mediaType === "audio" ? "sm:w-[164px]" : "sm:w-40"}`}>
           {[
-            { label: "Yes", value: true },
-            { label: "No", value: false },
+            { label: "Yes", value: true, icon: "up" as const },
+            { label: "No", value: false, icon: "down" as const },
           ].map((option) => {
             const active = vote === option.value;
             return (
@@ -164,11 +186,14 @@ export default function VideoHelpfulPoll({
                   active
                     ? "border-[var(--bb-accent,#2f7fe8)] bg-[var(--bb-accent,#2f7fe8)] text-[var(--bb-button-text,#ffffff)] shadow-sm"
                     : mediaType === "audio"
-                      ? "border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] hover:border-[var(--bb-accent,#2f7fe8)]"
+                      ? "border-[var(--bb-accent,#2f7fe8)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-accent,#2f7fe8)] hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
                       : "border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] hover:border-[var(--bb-accent,#2f7fe8)]"
                 }`}
               >
-                {option.label}
+                <span className="inline-flex items-center gap-1.5">
+                  {mediaType === "audio" ? renderThumbIcon(option.icon) : null}
+                  <span>{option.label}</span>
+                </span>
               </button>
             );
           })}
