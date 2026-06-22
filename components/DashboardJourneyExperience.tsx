@@ -6399,8 +6399,7 @@ export default function DashboardJourneyExperience({
                       <span className="min-w-0 flex-1">
                         <span className="block text-[11px] font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#2f7fe8)]">{game.eyebrow}</span>
                         <span className="mt-1 block text-lg font-black text-[var(--bb-text-primary,#111827)]">{game.title}</span>
-                        <span className="mt-1 block text-sm font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">{game.subtitle}</span>
-                      </span>
+                        <span className="mt-1 block text-sm font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">{game.subtitle}</span>{">"}</span>
                       <span className="shrink-0 rounded-full bg-[var(--bb-card,#ffffff)] px-3 py-1 text-xs font-black text-[var(--bb-text-muted,#6b7280)] ring-1 ring-[var(--bb-card-border,#dbe7f4)]">
                         {game.stat}
                       </span>
@@ -6565,8 +6564,7 @@ export default function DashboardJourneyExperience({
                   {currentDevotionalTitle || "Choose Your Bible Study"}
                 </span>
                 <span className="mt-0.5 block truncate text-xs font-bold text-[var(--bb-text-secondary,#4b5563)]">{activeChapterLabel}</span>
-                <span className="mt-0.5 block line-clamp-1 text-[11px] font-medium text-[var(--bb-text-muted,#6b7280)]">{currentStudySummary}</span>
-              </span>
+                <span className="mt-0.5 block line-clamp-1 text-[11px] font-medium text-[var(--bb-text-muted,#6b7280)]">{currentStudySummary}</span>{">"}</span>
             </button>
             <button
               type="button"
@@ -6627,8 +6625,7 @@ export default function DashboardJourneyExperience({
                         <span className="block text-sm font-black text-[var(--bb-text-primary,#111827)]">{chapterLabel}</span>
                         <span className="mt-0.5 block text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">
                           {studyChapter.day_title || `Chapter ${studyChapter.day_number}`}
-                        </span>
-                      </span>
+                        </span>{">"}</span>
                       <span className={`shrink-0 text-xs font-black ${isPastOrCurrent && !isCurrent ? "text-[#2f6685]" : "text-[var(--bb-accent,#2f7fe8)]"}`}>
                         {isLocked ? "🔒" : isCurrent ? "Review" : switchingStudyChapter === studyChapter.day_number ? "Loading" : "Load"}
                       </span>
@@ -7514,7 +7511,7 @@ export default function DashboardJourneyExperience({
           <div className="pr-9 text-left sm:text-center">
             <h2 className="font-serif text-[26px] font-black leading-[1.02] tracking-normal text-[var(--bb-text-primary,#111827)] sm:text-[28px]">
               Don&apos;t just read.
-              <span className="block">Finally <span className="text-[var(--bb-accent,#2f7fe8)]">understand.</span></span>
+              <span className="block">Finally <span className="text-[var(--bb-accent,#2f7fe8)]">understand.</span>{">"}</span>
             </h2>
             <div className="mx-auto mt-1.5 h-1 w-36 rounded-full bg-[var(--bb-accent,#2f7fe8)] opacity-70 sm:w-44" aria-hidden="true" />
           </div>
@@ -7535,8 +7532,7 @@ export default function DashboardJourneyExperience({
                   </span>
                   <span className="min-w-0">
                     <span className="block text-sm font-black leading-tight text-[var(--bb-text-primary,#111827)]">{feature.title}</span>
-                    <span className="mt-0.5 block text-[11px] font-semibold leading-4 text-[var(--bb-text-secondary,#4b5563)]">{feature.description}</span>
-                  </span>
+                    <span className="mt-0.5 block text-[11px] font-semibold leading-4 text-[var(--bb-text-secondary,#4b5563)]">{feature.description}</span>{">"}</span>
                 </div>
               ))}
             </div>
@@ -7558,8 +7554,7 @@ export default function DashboardJourneyExperience({
               <span className="text-xl" aria-hidden="true">👑</span>
               <span>
                 <span className="block text-sm font-black leading-tight">Unlock Study Notes</span>
-                <span className="mt-0.5 block text-[11px] font-semibold text-white/88">Start understanding Scripture more deeply</span>
-              </span>
+                <span className="mt-0.5 block text-[11px] font-semibold text-white/88">Start understanding Scripture more deeply</span>{">"}</span>
             </button>
             <button
               type="button"
@@ -7644,8 +7639,7 @@ export default function DashboardJourneyExperience({
             >
               <span>
                 <span className="block text-sm font-black text-[var(--bb-text-primary,#111827)]">Monthly</span>
-                <span className="block text-xs font-bold text-[var(--bb-text-secondary,#4b5563)]">Flexible access</span>
-              </span>
+                <span className="block text-xs font-bold text-[var(--bb-text-secondary,#4b5563)]">Flexible access</span>{">"}</span>
               <span className="mt-4 text-2xl font-black text-[var(--bb-accent,#f6b44b)]">$4.99</span>
             </button>
             <button
@@ -7656,8 +7650,7 @@ export default function DashboardJourneyExperience({
             >
               <span>
                 <span className="block text-sm font-black">Full Access</span>
-                <span className="block text-xs font-bold opacity-80">Lifetime one-time payment</span>
-              </span>
+                <span className="block text-xs font-bold opacity-80">Lifetime one-time payment</span>{">"}</span>
               <span className="mt-4 text-2xl font-black">$50</span>
             </button>
           </div>
@@ -7774,7 +7767,7 @@ export default function DashboardJourneyExperience({
           <div className="pr-9 text-left sm:text-center">
             <h2 className="font-serif text-[26px] font-black leading-[1.02] tracking-normal text-[var(--bb-text-primary,#111827)] sm:text-[28px]">
               Congratulations.
-              <span className="block">You finished <span className="text-[#2f7fe8]">Day 3.</span></span>
+              <span className="block">You finished <span className="text-[#2f7fe8]">Day 3.</span>{">"}</span>
             </h2>
             <div className="mx-auto mt-1.5 h-1 w-36 rounded-full bg-[var(--bb-accent,#2f7fe8)] opacity-70 sm:w-44" aria-hidden="true" />
           </div>
@@ -7800,16 +7793,14 @@ export default function DashboardJourneyExperience({
                     aria-expanded={isOpen}
                   >
                     <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full ${section.iconClass}`} aria-hidden="true">
-                      <UpgradeFeatureIcon name={section.icon as UpgradeFeatureIconName} />
-                    </span>
+                      <UpgradeFeatureIcon name={section.icon as UpgradeFeatureIconName} />{">"}</span>
                     <span className="min-w-0 flex-1">
                       <span className="block text-sm font-black leading-tight text-[var(--bb-text-primary,#111827)]">{section.title}</span>
                       {isOpen ? (
                         <span className="mt-2 block space-y-1.5 text-[11px] font-semibold leading-4 text-[var(--bb-text-secondary,#4b5563)]">
                           <span className="block"><span className="font-black text-[var(--bb-text-primary,#111827)]">Pain:</span> {section.pain}</span>
                           <span className="block"><span className="font-black text-[var(--bb-accent,#2f7fe8)]">Pro helps:</span> {section.pro}</span>
-                          <span className="block"><span className="font-black text-[#3b7a39]">Result:</span> {section.result}</span>
-                        </span>
+                          <span className="block"><span className="font-black text-[#3b7a39]">Result:</span> {section.result}</span>{">"}</span>
                       ) : null}
                     </span>
                     <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-[#d9e6fb] bg-[#f4f8ff] text-sm font-black text-[#2f7fe8]" aria-hidden="true">
@@ -7832,12 +7823,10 @@ export default function DashboardJourneyExperience({
               className="flex w-full items-center justify-center gap-2.5 rounded-[17px] bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-4 py-3 text-left text-[var(--bb-button-text,#ffffff)] shadow-[0_12px_24px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)] transition hover:brightness-105"
             >
               <span className="grid h-7 w-7 place-items-center rounded-full bg-white/18" aria-hidden="true">
-                <UpgradeFeatureIcon name="crown" />
-              </span>
+                <UpgradeFeatureIcon name="crown" />{">"}</span>
               <span>
                 <span className="block text-sm font-black leading-tight">Unlock lifetime access</span>
-                <span className="mt-0.5 block text-[11px] font-semibold text-white/88">$50 one time, or choose monthly</span>
-              </span>
+                <span className="mt-0.5 block text-[11px] font-semibold text-white/88">$50 one time, or choose monthly</span>{">"}</span>
             </button>
             <button
               type="button"
@@ -7949,16 +7938,14 @@ export default function DashboardJourneyExperience({
                     aria-expanded={isOpen}
                   >
                     <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full ${section.iconClass}`} aria-hidden="true">
-                      <UpgradeFeatureIcon name={section.icon as UpgradeFeatureIconName} />
-                    </span>
+                      <UpgradeFeatureIcon name={section.icon as UpgradeFeatureIconName} />{">"}</span>
                     <span className="min-w-0 flex-1">
                       <span className="block text-sm font-black leading-tight text-[var(--bb-text-primary,#111827)]">{section.title}</span>
                       {isOpen ? (
                         <span className="mt-2 block space-y-1.5 text-[11px] font-semibold leading-4 text-[var(--bb-text-secondary,#4b5563)]">
                           <span className="block"><span className="font-black text-[var(--bb-text-primary,#111827)]">Pain:</span> {section.pain}</span>
                           <span className="block"><span className="font-black text-[var(--bb-accent,#2f7fe8)]">Pro helps:</span> {section.pro}</span>
-                          <span className="block"><span className="font-black text-[#3b7a39]">Result:</span> {section.result}</span>
-                        </span>
+                          <span className="block"><span className="font-black text-[#3b7a39]">Result:</span> {section.result}</span>{">"}</span>
                       ) : null}
                     </span>
                     <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-[#d9e6fb] bg-[#f4f8ff] text-sm font-black text-[#2f7fe8]" aria-hidden="true">
@@ -7981,12 +7968,10 @@ export default function DashboardJourneyExperience({
               className="flex w-full items-center justify-center gap-2.5 rounded-[17px] bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-4 py-3 text-left text-[var(--bb-button-text,#ffffff)] shadow-[0_12px_24px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)] transition hover:brightness-105"
             >
               <span className="grid h-7 w-7 place-items-center rounded-full bg-white/18" aria-hidden="true">
-                <UpgradeFeatureIcon name="crown" />
-              </span>
+                <UpgradeFeatureIcon name="crown" />{">"}</span>
               <span>
                 <span className="block text-sm font-black leading-tight">Unlock lifetime access</span>
-                <span className="mt-0.5 block text-[11px] font-semibold text-white/88">$50 one time, or choose monthly</span>
-              </span>
+                <span className="mt-0.5 block text-[11px] font-semibold text-white/88">$50 one time, or choose monthly</span>{">"}</span>
             </button>
             <button
               type="button"
@@ -8095,16 +8080,14 @@ export default function DashboardJourneyExperience({
                     aria-expanded={isOpen}
                   >
                     <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full ${section.iconClass}`} aria-hidden="true">
-                      <UpgradeFeatureIcon name={section.icon as UpgradeFeatureIconName} />
-                    </span>
+                      <UpgradeFeatureIcon name={section.icon as UpgradeFeatureIconName} />{">"}</span>
                     <span className="min-w-0 flex-1">
                       <span className="block text-sm font-black leading-tight text-[var(--bb-text-primary,#111827)]">{section.title}</span>
                       {isOpen ? (
                         <span className="mt-2 block space-y-1.5 text-[11px] font-semibold leading-4 text-[var(--bb-text-secondary,#4b5563)]">
                           <span className="block"><span className="font-black text-[var(--bb-text-primary,#111827)]">Pain:</span> {section.pain}</span>
                           <span className="block"><span className="font-black text-[var(--bb-accent,#2f7fe8)]">Pro helps:</span> {section.pro}</span>
-                          <span className="block"><span className="font-black text-[#3b7a39]">Result:</span> {section.result}</span>
-                        </span>
+                          <span className="block"><span className="font-black text-[#3b7a39]">Result:</span> {section.result}</span>{">"}</span>
                       ) : null}
                     </span>
                     <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-[#d9e6fb] bg-[#f4f8ff] text-sm font-black text-[#2f7fe8]" aria-hidden="true">
@@ -8128,8 +8111,7 @@ export default function DashboardJourneyExperience({
               <span className="grid h-7 w-7 place-items-center rounded-full bg-white/18 text-[10px] font-black" aria-hidden="true">PRO</span>
               <span>
                 <span className="block text-sm font-black leading-tight">Upgrade to BibleBuddy Pro</span>
-                <span className="mt-0.5 block text-[11px] font-semibold text-white/88">Unlock deeper study tools</span>
-              </span>
+                <span className="mt-0.5 block text-[11px] font-semibold text-white/88">Unlock deeper study tools</span>{">"}</span>
             </button>
             <button
               type="button"
@@ -10371,7 +10353,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       {
         kind: "study_notes",
         title: "Study Notes",
-        subtitle: "Read today's study notes to better understand the passage.",
+        subtitle: "Read today's study notes.",
         pointsLabel: "Complete",
         timeEstimateLabel: "3 min",
         href: `#bible-year-day-${day.dayNumber}-study_notes`,
@@ -10382,7 +10364,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       {
         kind: "trivia",
         title: "Trivia",
-        subtitle: "Test what you learned from today's reading.",
+        subtitle: "Test what you learned.",
         pointsLabel: "Complete",
         timeEstimateLabel: "3 min",
         href: `#bible-year-day-${day.dayNumber}-trivia`,
@@ -10393,7 +10375,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       {
         kind: "reflection",
         title: "Discuss",
-        subtitle: "Answer today's discussion question and share what stood out to you.",
+        subtitle: "Share what stood out to you.",
         pointsLabel: "Complete",
         timeEstimateLabel: "3 min",
         href: `#bible-year-day-${day.dayNumber}-reflection`,
@@ -10449,8 +10431,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           className={`flex w-full items-center justify-center gap-2 rounded-xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_42%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_9%,var(--bb-card,#ffffff))] px-4 py-2.5 text-sm font-black text-[var(--bb-accent,#2f7fe8)] transition hover:bg-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_15%,var(--bb-card,#ffffff))] ${isOpen ? "" : "bb-follow-scripture-nudge"}`}
         >
           <span className="grid h-5 w-5 place-items-center rounded-md border border-current" aria-hidden="true">
-            <span className="h-2.5 w-2.5 rounded-sm border border-current border-r-0" />
-          </span>
+            <span className="h-2.5 w-2.5 rounded-sm border border-current border-r-0" />{">"}</span>
           <span>Follow Along in Scripture</span>
           <span className={`ml-auto text-base leading-none transition ${isOpen ? "rotate-180" : ""}`} aria-hidden="true">
             ^
@@ -11058,8 +11039,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 </span>
                 <span className="min-w-0 flex-1">
                   <span className="block text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--bb-accent,#2f7fe8)]">{section.reference}</span>
-                  <span className="mt-1 block text-[15px] font-extrabold leading-snug text-[var(--bb-text-primary,#111827)]">{section.title}</span>
-                </span>
+                  <span className="mt-1 block text-[15px] font-extrabold leading-snug text-[var(--bb-text-primary,#111827)]">{section.title}</span>{">"}</span>
                 <span className={`text-xl font-black text-[var(--bb-text-muted,#6b7280)] transition ${sectionOpen ? "rotate-90 text-[var(--bb-accent,#2f7fe8)]" : ""}`} aria-hidden="true">
                   ›
                 </span>
@@ -11280,7 +11260,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         eyebrow: "Study Notes",
         icon: "SN",
         title: "Study Notes",
-        body: "Read today's study notes to better understand the passage.",
+        body: "Read today's study notes.",
         done: notesViewed,
         badge: null,
         onClick: () => {
@@ -11301,7 +11281,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         eyebrow: "Trivia",
         icon: "TR",
         title: "Trivia",
-        body: "Test what you learned from today's reading.",
+        body: "Test what you learned.",
         done: triviaDone,
         badge: !isPaidUser && !isOwnerDashboard ? "Premium" : null,
         onClick: () => {
@@ -11320,7 +11300,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         eyebrow: "Discuss",
         icon: "DS",
         title: "Discuss",
-        body: "Answer today's discussion question and share what stood out to you.",
+        body: "Share what stood out to you.",
         done: reflectionDone,
         badge: null,
         onClick: () => {
@@ -11372,7 +11352,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   type="button"
                   onClick={item.onClick}
                   aria-expanded={expanded}
-                  className="flex w-full items-center gap-3 px-4 py-4 text-left transition hover:bg-[var(--bb-surface-soft,#f8fbff)] sm:px-5"
+                  className="grid w-full grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 py-4 text-left transition hover:bg-[var(--bb-surface-soft,#f8fbff)] sm:px-5"
                 >
                   <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[var(--bb-accent-soft,#edf5ff)] text-[11px] font-black tracking-[0.12em] text-[var(--bb-accent,#2f7fe8)] shadow-sm" aria-hidden="true">
                     {item.icon}
@@ -11397,7 +11377,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   </div>
                   <div className="shrink-0 self-center text-right">
                     <span
-                      className={`inline-flex rounded-full px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.12em] ${
+                      className={`inline-flex min-w-[78px] items-center justify-center rounded-full px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.12em] ${
                         item.done
                           ? "bg-emerald-500 text-white"
                           : "bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-text-muted,#6b7280)]"
@@ -11507,8 +11487,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             </span>
             <span className={`mt-0.5 block text-[11px] font-bold ${dayFullyComplete ? "text-sky-900 dark:text-sky-100/85" : "text-[var(--bb-text-secondary,#2f6685)]"}`}>
               {dayFullyComplete ? "All tasks done" : `${completedTasksForDay.length} of ${requiredTasksCount} tasks done`}
-            </span>
-          </span>
+            </span>{">"}</span>
           <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full border transition ${
             dayFullyComplete
               ? `border-sky-300 text-sky-950 ${isExpanded ? "rotate-180 bg-sky-300" : "bg-sky-200/80"}`
@@ -11516,8 +11495,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           }`} aria-hidden="true">
             <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
               <path d="m6 9 6 6 6-6" />
-            </svg>
-          </span>
+            </svg>{">"}</span>
         </button>
         {isExpanded ? (
         <div className={`relative z-10 grid gap-2 border-t px-3 pb-3 pt-3 ${dayFullyComplete ? "border-sky-300/50" : "border-[var(--bb-card-border,#b9dcf4)]"}`}>
@@ -11594,8 +11572,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         <div className="mx-auto flex max-w-3xl flex-col gap-4">
           <div className="flex min-w-0 items-center justify-center gap-3">
             <span className="grid shrink-0 place-items-center">
-              <StreakFlameEmoji flameId={lightThemeUsesClassicFlame ? "default" : profile?.selected_streak_flame} currentStreak={currentStreak} size={38} title={`${currentStreak} day streak`} />
-            </span>
+              <StreakFlameEmoji flameId={lightThemeUsesClassicFlame ? "default" : profile?.selected_streak_flame} currentStreak={currentStreak} size={38} title={`${currentStreak} day streak`} />{">"}</span>
             <span className="min-w-0 whitespace-nowrap text-[20px] font-black leading-none text-[var(--bb-text-primary,#111827)] sm:text-[28px]">
               {streakLabel} Streak
             </span>
@@ -11654,15 +11631,13 @@ Before we understand redemption, we need to understand what God made humanity fo
           className="flex w-full items-center gap-4 text-left"
         >
           <span className="grid h-24 w-24 shrink-0 place-items-center rounded-[28px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_22%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_84%,transparent)] shadow-[0_10px_24px_rgba(14,26,58,0.08)]">
-            <StreakFlameEmoji flameId={lightThemeUsesClassicFlame ? "default" : profile?.selected_streak_flame} currentStreak={currentStreak} size={66} title={`${currentStreak} day streak - tap to learn what the flame means`} />
-          </span>
+            <StreakFlameEmoji flameId={lightThemeUsesClassicFlame ? "default" : profile?.selected_streak_flame} currentStreak={currentStreak} size={66} title={`${currentStreak} day streak - tap to learn what the flame means`} />{">"}</span>
           <span className="min-w-0 flex-1">
             <span className="block text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">Bible Study Streak</span>
             <span className="mt-1 block text-4xl font-black leading-none text-[var(--bb-text-primary,#111827)]">{streakLabel}</span>
             <span className="mt-2 block text-sm font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">
               Keep opening Scripture and building your daily rhythm.
-            </span>
-          </span>
+            </span>{">"}</span>
         </button>
       </section>
     );
@@ -12016,8 +11991,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   <span className="done-sparkle pointer-events-none absolute -inset-x-2 -top-3 flex justify-between text-[10px] text-amber-400" aria-hidden="true">
                     <span>✦</span>
                     <span>✧</span>
-                    <span>✦</span>
-                  </span>
+                    <span>✦</span>{">"}</span>
                 ) : null}
                 {activeTaskPrompt ? (
                   <span className="flex flex-col items-end leading-tight">
@@ -12145,7 +12119,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         key: "scripture",
         eyebrow: "Study Notes",
         title: "Study Notes",
-        body: "Read today's study notes to better understand the passage.",
+        body: "Read today's study notes.",
         button: followAlongOpen ? "Close Notes" : "Open Notes",
         done: studyNotesComplete,
         badge: null,
@@ -12171,7 +12145,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         key: "trivia",
         eyebrow: "Trivia",
         title: "Trivia",
-        body: "Test what you learned from today's reading.",
+        body: "Test what you learned.",
         button: !isPaidUser && !isOwnerDashboard ? "Unlock Premium" : triviaComplete ? "Review Trivia" : "Start Trivia",
         done: triviaComplete,
         badge: !isPaidUser && !isOwnerDashboard ? "Premium" : null,
@@ -12192,7 +12166,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         key: "discussion",
         eyebrow: "Discuss",
         title: "Discuss",
-        body: "Answer today's discussion question and share what stood out to you.",
+        body: "Share what stood out to you.",
         button: reflectionPosted ? "View Discussion" : "Open Discussion",
         done: reflectionPosted,
         badge: null,
@@ -12325,7 +12299,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 <button
                   type="button"
                   onClick={item.onClick}
-                  className={`flex w-full items-center justify-between gap-3 px-3.5 py-3 text-left transition sm:grid sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:gap-4 sm:p-4 ${item.done ? "hover:bg-emerald-100/80" : "hover:bg-[var(--bb-surface-soft,#f4f8ff)]"}`}
+                  className={`grid w-full grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-3.5 py-3 text-left transition sm:gap-4 sm:p-4 ${item.done ? "hover:bg-emerald-100/80" : "hover:bg-[var(--bb-surface-soft,#f4f8ff)]"}`}
                   aria-expanded={expanded}
                 >
                   <div className="flex min-w-0 flex-1 gap-3">
@@ -12337,24 +12311,22 @@ Before we understand redemption, we need to understand what God made humanity fo
                       {item.badge ? (
                         <p className="mt-1 text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">{item.badge}</p>
                       ) : null}
-                      <div className="mt-1 flex items-start justify-between gap-3">
-                        <h3 className="min-w-0 text-[17px] font-bold leading-tight text-[var(--bb-text-primary,#111827)]">{item.title}</h3>
-                        <span
-                          className={`shrink-0 rounded-full px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.12em] ${
-                            item.done
-                              ? "bg-emerald-500 text-white"
-                              : "bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-text-muted,#6b7280)]"
-                          }`}
-                        >
-                          {item.done ? "Done" : "Not done"}
-                        </span>
-                      </div>
+                      <h3 className="mt-1 text-[17px] font-bold leading-tight text-[var(--bb-text-primary,#111827)]">{item.title}</h3>
                       <p className="mt-1 text-[13px] font-medium leading-5 text-[var(--bb-text-secondary,#4b5563)]">{item.body}</p>
                     </div>
                   </div>
-                  <span className={`shrink-0 self-center justify-self-end text-xl font-black transition ${expanded ? "rotate-90 text-[var(--bb-accent,#2f7fe8)]" : item.done ? "text-emerald-700" : "text-[var(--bb-text-muted,#6b7280)]"}`} aria-hidden="true">
-                    ›
-                  </span>
+                  <div className="shrink-0 self-center justify-self-end text-right">
+                    <span
+                      className={`inline-flex min-w-[78px] items-center justify-center rounded-full px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.12em] ${
+                        item.done
+                          ? "bg-emerald-500 text-white"
+                          : "bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-text-muted,#6b7280)]"
+                      }`}
+                    >
+                      {item.done ? "Done" : "Not done"}
+                    </span>
+                    <span className={`mt-2 block text-xl font-black transition ${expanded ? "rotate-90 text-[var(--bb-accent,#2f7fe8)]" : item.done ? "text-emerald-700" : "text-[var(--bb-text-muted,#6b7280)]"}`} aria-hidden="true">{">"}</span>
+                  </div>
                 </button>
                 {expanded ? (
                   <div className={`border-t px-1 pb-4 pt-2 ${item.done ? "border-emerald-200 bg-emerald-50/30" : "border-[var(--bb-card-border,#dbe7f4)]"}`}>
@@ -12393,8 +12365,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         <section data-bb-dashboard-tour="journey-map" className="order-2 overflow-hidden rounded-[20px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] shadow-[0_16px_42px_rgba(38,63,99,0.12),inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-xl">
           <button type="button" onClick={openBibleYearSeriesDashboard} className="hidden w-full items-center justify-between gap-3 px-4 py-3.5 text-left transition hover:bg-[var(--bb-surface-soft,#f4f8ff)]">
             <span>
-              <span className="block text-[17px] font-bold text-[var(--bb-text-primary,#111827)]">Journey Map</span>
-            </span>
+              <span className="block text-[17px] font-bold text-[var(--bb-text-primary,#111827)]">Journey Map</span>{">"}</span>
             <span className="text-2xl text-[var(--bb-accent,#2f7fe8)]" aria-hidden="true">›</span>
           </button>
           <div className="px-3 pb-4 pt-3">
@@ -12509,8 +12480,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               <path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z" />
               <path d="M8 7h8" />
               <path d="M8 11h6" />
-            </svg>
-          </span>
+            </svg>{">"}</span>
           <div className="min-w-0">
             <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">Today&apos;s Bible Study Task</p>
             <h2 className="mt-0.5 truncate text-lg font-black leading-tight text-[var(--bb-text-primary,#111827)]">
@@ -12804,8 +12774,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 <div className="flex items-center justify-between gap-3">
                   <span>
                     <span className="block text-[11px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Your Progress</span>
-                    <span className="mt-1 block text-sm font-bold text-[var(--bb-text-secondary,#4b5563)]">{completedCount} of {totalCount} tasks completed</span>
-                  </span>
+                    <span className="mt-1 block text-sm font-bold text-[var(--bb-text-secondary,#4b5563)]">{completedCount} of {totalCount} tasks completed</span>{">"}</span>
                   <span className="text-lg font-black text-[var(--bb-accent,#2f7fe8)]">{progressPercent}%</span>
                 </div>
                 <div className="mt-3 h-2.5 overflow-hidden rounded-full bg-[var(--bb-progress-track,#dbe7f4)]">
@@ -13045,8 +13014,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                     </span>
                     <span className="mt-1 block text-sm font-bold opacity-80">
                       {readingCardComplete ? "This reading task is done." : "Tap after you finish the video and lesson."}
-                    </span>
-                  </span>
+                    </span>{">"}</span>
                 </span>
               </button>
             </>
@@ -13065,8 +13033,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 <span className="block text-lg font-black leading-tight text-[var(--bb-text-primary,#111827)]">Study Notes</span>
                 <span className="mt-1 block text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">
                   {bibleYearStudyNotesOpen ? "Click to close" : "Click to read"}
-                </span>
-              </span>
+                </span>{">"}</span>
               <span
                 className={`grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_28%,transparent)] bg-[var(--bb-surface-soft,#f8fbff)] text-lg font-black text-[var(--bb-accent,#2f7fe8)] transition ${
                   bibleYearStudyNotesOpen ? "rotate-180" : ""
@@ -13185,8 +13152,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                     </span>
                     <span className="mt-0.5 block truncate text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">
                       {reading.studyTitle}
-                    </span>
-                  </span>
+                    </span>{">"}</span>
                   <span className="shrink-0 text-xs font-black text-[var(--bb-accent,#2f7fe8)]">
                     {isCurrentReading ? "Current" : switchingStudyChapter === reading.studyDayNumber ? "Loading" : "Load"}
                   </span>
@@ -13783,8 +13749,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                     </span>
                     <span className="hidden">
                       {readingCardComplete ? `Day ${day.dayNumber} reading is locked in.` : "Tap after you finish the video and lesson."}
-                    </span>
-                  </span>
+                    </span>{">"}</span>
                 </span>
               </button>
             </div>
@@ -13837,8 +13802,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                     </span>
                     <span className="hidden">
                       {readingCardComplete ? `Day ${day.dayNumber} reading is locked in.` : "Tap after you finish the video and lesson."}
-                    </span>
-                  </span>
+                    </span>{">"}</span>
                 </span>
               </button>
             </div>
@@ -13957,8 +13921,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                       <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
                         <circle cx="11" cy="11" r="7" />
                         <path d="m20 20-3.5-3.5" />
-                      </svg>
-                    </span>
+                      </svg>{">"}</span>
                   ) : null}
                   <span className="mt-1 block text-[11px] font-bold text-[var(--bb-text-primary,#fff7ed)] sm:text-xs">{item.label}</span>
                   {item.premium ? (
@@ -14065,13 +14028,11 @@ Before we understand redemption, we need to understand what God made humanity fo
                 aria-expanded={bibleYearStudyNotesOpen}
               >
                 <span className="min-w-0">
-                  <span className="block text-2xl font-black text-[var(--bb-text-primary,#fff7ed)]">Today's Reading Overview</span>
-                </span>
+                  <span className="block text-2xl font-black text-[var(--bb-text-primary,#fff7ed)]">Today's Reading Overview</span>{">"}</span>
                 <span className={`grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_10%,transparent)] text-[var(--bb-text-primary,#fff7ed)] transition ${bibleYearStudyNotesOpen ? "rotate-180" : ""}`} aria-hidden="true">
                   <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
                     <path d="m6 9 6 6 6-6" />
-                  </svg>
-                </span>
+                  </svg>{">"}</span>
               </button>
 
               {false && bibleYearStudyNotesOpen ? (
@@ -14105,8 +14066,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                       <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_12%,transparent)] text-sm">{noteIcon}</span>
                       <span className="min-w-0 flex-1">
                         <span className="block text-sm font-black text-[var(--bb-text-primary,#fff7ed)]">{section.verseBlock.reference}</span>
-                        <span className="mt-0.5 block text-xs font-semibold text-[var(--bb-text-secondary,#e7d4bd)]">{section.heading}</span>
-                      </span>
+                        <span className="mt-0.5 block text-xs font-semibold text-[var(--bb-text-secondary,#e7d4bd)]">{section.heading}</span>{">"}</span>
                       <svg aria-hidden="true" viewBox="0 0 24 24" className={`h-5 w-5 shrink-0 text-[var(--bb-accent,#f6b44b)] transition ${isOpen ? "rotate-90" : ""}`} fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
                         <path d="m9 18 6-6-6-6" />
                       </svg>
@@ -14397,8 +14357,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               >
                 <span>
                   <span className="block text-sm font-black text-[var(--bb-text-primary,#111827)]">Monthly</span>
-                  <span className="block text-xs font-bold text-[var(--bb-text-secondary,#4b5563)]">Flexible access</span>
-                </span>
+                  <span className="block text-xs font-bold text-[var(--bb-text-secondary,#4b5563)]">Flexible access</span>{">"}</span>
                 <span className="mt-4 text-2xl font-black text-[var(--bb-accent,#f6b44b)]">$4.99</span>
               </button>
               <button
@@ -14409,8 +14368,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               >
                 <span>
                   <span className="block text-sm font-black">Full Access</span>
-                  <span className="block text-xs font-bold opacity-80">Lifetime one-time payment</span>
-                </span>
+                  <span className="block text-xs font-bold opacity-80">Lifetime one-time payment</span>{">"}</span>
                 <span className="mt-4 text-2xl font-black">$50</span>
               </button>
             </div>
@@ -15291,8 +15249,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               >
                 <span className="min-w-0">
                   <span className="block text-sm font-black text-[var(--bb-text-primary,#111827)]">Go deeper with Bible Buddy Pro</span>
-                  <span className="mt-0.5 block text-xs font-semibold text-[var(--bb-text-secondary,#4b5563)]">Unlock deeper study notes, protect progress, and keep your Bible journey connected.</span>
-                </span>
+                  <span className="mt-0.5 block text-xs font-semibold text-[var(--bb-text-secondary,#4b5563)]">Unlock deeper study notes, protect progress, and keep your Bible journey connected.</span>{">"}</span>
                 <span className="shrink-0 rounded-full bg-[var(--bb-button,#2f7fe8)] px-3 py-1.5 text-xs font-black text-[var(--bb-button-text,#ffffff)]">
                   Learn more
                 </span>
@@ -15372,8 +15329,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                             <span className="bb-text-primary block text-sm font-black">{chapterLabel}</span>
                             <span className="bb-text-muted mt-0.5 block text-xs font-bold">
                               {studyChapter.day_title || `Chapter ${studyChapter.day_number}`}
-                            </span>
-                          </span>
+                            </span>{">"}</span>
                           <span className={`shrink-0 text-xs font-black ${isPastOrCurrent && !isCurrent ? "text-[#2f6685]" : "bb-accent"}`}>
                             {isLocked ? "🔒" : isCurrent ? "Review" : switchingStudyChapter === studyChapter.day_number ? "Loading" : "Load"}
                           </span>
@@ -15415,21 +15371,18 @@ Before we understand redemption, we need to understand what God made humanity fo
                         <path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z" />
                         <path d="M8 7h8" />
                         <path d="M8 11h6" />
-                      </svg>
-                    </span>
+                      </svg>{">"}</span>
                       <span className="min-w-0 flex-1">
                       <span className="mt-0.5 block text-lg font-black leading-tight text-[var(--bb-text-primary,#111827)]">Journey Map</span>
                       <span className="mt-1 block text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">
                         {isOwnerDashboard
                           ? "Owner preview - every built day is unlocked"
                           : `Day ${effectiveBibleYearReport.currentDay ?? getCurrentBibleYearSeriesDayNumber()} - past days checked, today active, future days locked`}
-                      </span>
-                    </span>
+                      </span>{">"}</span>
                     <span className="shrink-0 text-[var(--bb-accent,#2f7fe8)] transition" aria-hidden="true">
                       <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.7" strokeLinecap="round" strokeLinejoin="round">
                         <path d="m9 18 6-6-6-6" />
-                      </svg>
-                    </span>
+                      </svg>{">"}</span>
                   </button>
 
                   {activeBibleYearDashboardDay ? (
@@ -16033,8 +15986,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                             <span className="done-sparkle pointer-events-none absolute -inset-x-2 -top-3 flex justify-between text-[10px] text-amber-400" aria-hidden="true">
                               <span>✦</span>
                               <span>✧</span>
-                              <span>✦</span>
-                            </span>
+                              <span>✦</span>{">"}</span>
                           ) : null}
                           {activeTaskPrompt ? (
                             <span className="flex flex-col items-end leading-tight">
@@ -16388,8 +16340,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   }`}
                   aria-hidden="true"
                 >
-                  <BibleBookIcon />
-                </span>
+                  <BibleBookIcon />{">"}</span>
                 <span className="leading-tight">Home</span>
               </button>
               <button
@@ -16408,8 +16359,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   }`}
                   aria-hidden="true"
                 >
-                  <BibleBookIcon />
-                </span>
+                  <BibleBookIcon />{">"}</span>
                 <span className="leading-tight">Journey Map</span>
               </button>
             </div>
@@ -16520,8 +16470,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   <path d="M14 19V9" />
                   <path d="M19 19V3" />
                   <path d="M3 19h18" />
-                </svg>
-              </span>
+                </svg>{">"}</span>
               <span className="mt-0.5 text-[9px] leading-none sm:mt-0 sm:text-[10px]">Progress</span>
             </button>
 
@@ -16537,8 +16486,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               data-dashboard-nav-key="bible"
             >
               <span className={`grid h-7 w-7 place-items-center rounded-full ${bibleTabActive ? "bg-[var(--bb-accent,#2f7fe8)] text-white" : ""}`} aria-hidden="true">
-                <BibleBookIcon />
-              </span>
+                <BibleBookIcon />{">"}</span>
               <span className="mt-0.5 text-[9px] leading-none sm:mt-0 sm:text-[10px]">Bible</span>
             </button>
 
@@ -16558,8 +16506,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   <path d="M3 10.5 12 3l9 7.5" />
                   <path d="M5 10v10h14V10" />
                   <path d="M9 20v-6h6v6" />
-                </svg>
-              </span>
+                </svg>{">"}</span>
               <span className="mt-0.5 text-[9px] leading-none sm:mt-0 sm:text-[10px]">Home</span>
             </button>
 
@@ -16578,8 +16525,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none">
                   <path d="M5 6.8A4.8 4.8 0 0 1 9.8 2h4.4A4.8 4.8 0 0 1 19 6.8v4.4a4.8 4.8 0 0 1-4.8 4.8h-3.1L6.8 20v-4.3A4.8 4.8 0 0 1 5 12V6.8Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
                   <path d="M9 8h6M9 11h4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                </svg>
-              </span>
+                </svg>{">"}</span>
               <span className="mt-0.5 text-[9px] leading-none sm:mt-0 sm:text-[10px]">BB Chat</span>
             </button>
 
@@ -16602,8 +16548,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                     <path d="M14 19V9" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
                     <path d="M19 19V3" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
                     <path d="M3 19h18" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
-                  </svg>
-                </span>
+                  </svg>{">"}</span>
                 <span className="mt-0.5 text-[9px] leading-none sm:mt-0 sm:text-[10px]">Analytics</span>
               </button>
             ) : (
@@ -16622,8 +16567,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none">
                     <path d="M21 3 10.6 13.4" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" />
                     <path d="m21 3-6.7 18-3.7-7.6L3 9.7 21 3Z" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </span>
+                  </svg>{">"}</span>
                 <span className="mt-0.5 text-[9px] leading-none sm:mt-0 sm:text-[10px]">Invite</span>
               </button>
             )}
@@ -16778,8 +16722,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               </span>
               <span className="min-w-0 flex-1">
                 <span className="block text-sm font-black text-[var(--bb-text-primary,#111827)]">Add profile picture</span>
-                <span className="mt-0.5 block text-xs font-semibold text-[var(--bb-text-secondary,#4b5563)]">Required for comments and community features.</span>
-              </span>
+                <span className="mt-0.5 block text-xs font-semibold text-[var(--bb-text-secondary,#4b5563)]">Required for comments and community features.</span>{">"}</span>
               <input
                 type="file"
                 accept="image/*"
