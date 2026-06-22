@@ -7446,34 +7446,22 @@ export default function DashboardJourneyExperience({
   function renderBibleYearDeepNotesUpgradeModal() {
     const upgradeFeatures = [
       {
-        icon: "📖",
-        iconClass: "bg-[#eadcff] text-[#6d3fd1]",
-        title: "Verse by verse breakdowns",
-        description: "Understand difficult passages one section at a time.",
-      },
-      {
-        icon: "🏺",
-        iconClass: "bg-[#f5e3c3] text-[#9a6517]",
-        title: "Cultural & historical context",
-        description: "See what was happening in the world behind the verses.",
-      },
-      {
-        icon: "🔍",
-        iconClass: "bg-[#dff0d8] text-[#3b7a39]",
-        title: "Hebrew & Greek word studies",
-        description: "Discover what key words and phrases originally meant.",
-      },
-      {
-        icon: "🔗",
+        icon: "??",
         iconClass: "bg-[#ddecff] text-[#2f6bcf]",
-        title: "Themes & Scripture connections",
-        description: "See how stories, ideas, and people connect across the Bible.",
+        title: "Listen with the app closed",
+        description: "Keep your daily audio lesson playing while your phone is locked or while you use other apps.",
       },
       {
-        icon: "✨",
-        iconClass: "bg-[#ffefc2] text-[#b37a00]",
-        title: "Bible Buddy Pro perks",
-        description: "Unlock deeper Bible study notes, context, downloads, and study tools.",
+        icon: "??",
+        iconClass: "bg-[#eadcff] text-[#6d3fd1]",
+        title: "Full Study Notes",
+        description: "Unlock every section, key phrase, and explanation for each day.",
+      },
+      {
+        icon: "??",
+        iconClass: "bg-[#fff1cf] text-[#a66b00]",
+        title: "All Trivia Games",
+        description: "Play the full daily trivia experience without getting stopped by the free plan.",
       },
     ];
 
@@ -7519,7 +7507,7 @@ export default function DashboardJourneyExperience({
           <div className="mx-auto mt-3 max-w-sm space-y-1.5 text-left text-[13px] font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)] sm:text-center">
             <p>Bible Buddy Free helps you stay consistent.</p>
             <p>
-              Bible Buddy Pro helps you <span className="font-black text-[var(--bb-accent,#2f7fe8)]">understand Scripture more deeply</span> through guided explanations, cultural context, word studies, and verse by verse breakdowns.
+              Bible Buddy Pro gives you <span className="font-black text-[var(--bb-accent,#2f7fe8)]">background audio, full Study Notes, and full trivia access</span>.
             </p>
           </div>
 
@@ -7532,7 +7520,8 @@ export default function DashboardJourneyExperience({
                   </span>
                   <span className="min-w-0">
                     <span className="block text-sm font-black leading-tight text-[var(--bb-text-primary,#111827)]">{feature.title}</span>
-                    <span className="mt-0.5 block text-[11px] font-semibold leading-4 text-[var(--bb-text-secondary,#4b5563)]">{feature.description}</span></span>
+                    <span className="mt-0.5 block text-[11px] font-semibold leading-4 text-[var(--bb-text-secondary,#4b5563)]">{feature.description}</span>
+                  </span>
                 </div>
               ))}
             </div>
@@ -7545,16 +7534,38 @@ export default function DashboardJourneyExperience({
                 void logStudyNotesUpgradeAction(
                   ACTION_TYPE.upgrade_popup_cta_clicked,
                   bibleYearDeepNotesUpgradeDay,
-                  `Bible in One Year Day ${bibleYearDeepNotesUpgradeDay || "Unknown"} Study Notes upgrade clicked`,
+                  `Bible in One Year Day ${bibleYearDeepNotesUpgradeDay || "Unknown"} lifetime upgrade clicked`,
                 );
-                openBibleYearQuickUpgrade();
+                void startBibleYearQuickUpgrade("yearly");
               }}
-              className="flex w-full items-center justify-center gap-2.5 rounded-[17px] bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-4 py-3 text-left text-[var(--bb-button-text,#ffffff)] shadow-[0_12px_24px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)] transition hover:brightness-105"
+              className="relative flex w-full items-center justify-between rounded-[17px] border border-[#f0cf8b] bg-[#f6b44b] px-4 py-3 text-left text-[#201100] shadow-sm transition hover:-translate-y-0.5 hover:brightness-105"
             >
-              <span className="text-xl" aria-hidden="true">👑</span>
               <span>
-                <span className="block text-sm font-black leading-tight">Unlock Study Notes</span>
-                <span className="mt-0.5 block text-[11px] font-semibold text-white/88">Start understanding Scripture more deeply</span></span>
+                <span className="block text-sm font-black leading-tight">Lifetime Access</span>
+                <span className="mt-0.5 block text-[11px] font-semibold opacity-80">One payment. Keep Pro for life.</span>
+              </span>
+              <span className="text-xl font-black">$50</span>
+              <span className="absolute right-3 top-2 rounded-full bg-white/70 px-2 py-0.5 text-[10px] font-black uppercase tracking-[0.14em] text-[#8a5a00]">
+                Best offer
+              </span>
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                void logStudyNotesUpgradeAction(
+                  ACTION_TYPE.upgrade_popup_cta_clicked,
+                  bibleYearDeepNotesUpgradeDay,
+                  `Bible in One Year Day ${bibleYearDeepNotesUpgradeDay || "Unknown"} monthly upgrade clicked`,
+                );
+                void startBibleYearQuickUpgrade("monthly");
+              }}
+              className="flex w-full items-center justify-between rounded-[17px] border border-[#c9ddfb] bg-white px-4 py-3 text-left shadow-sm transition hover:-translate-y-0.5 hover:bg-[#f4f8ff]"
+            >
+              <span>
+                <span className="block text-sm font-black leading-tight">Monthly</span>
+                <span className="mt-0.5 block text-[11px] font-semibold text-[var(--bb-text-secondary,#4b5563)]">Full Pro access for $4.99/month</span>
+              </span>
+              <span className="text-xl font-black text-[var(--bb-accent,#2f7fe8)]">$4.99</span>
             </button>
             <button
               type="button"
@@ -7575,7 +7586,7 @@ export default function DashboardJourneyExperience({
           </div>
 
           <p className="mt-3 text-[11px] font-semibold leading-4 text-[var(--bb-text-secondary,#4b5563)]">
-            Monthly cancels anytime. Lifetime is one $50 payment. Secure and private.
+            Upgrade for background audio, full Study Notes, and all trivia games.
           </p>
         </div>
       </ModalShell>
@@ -7587,7 +7598,7 @@ export default function DashboardJourneyExperience({
     const modalTitle = isBackgroundAudioUpgrade ? "Listen with your app closed" : "Choose your Pro plan";
     const modalBody = isBackgroundAudioUpgrade
       ? "Upgrade to Premium and keep your daily Bible lesson playing while your phone is locked, while using other apps, and while you drive, walk, work out, or do chores."
-      : "Unlock Study Notes and start understanding Scripture more deeply. Choose monthly or lifetime.";
+      : "Unlock background audio, full Study Notes, and all trivia games.";
 
     return (
       <ModalShell isOpen={bibleYearQuickUpgradeOpen} onClose={closeBibleYearQuickUpgrade}>
@@ -7630,7 +7641,21 @@ export default function DashboardJourneyExperience({
               </ul>
             </div>
           ) : null}
-          <div className="mt-5 grid gap-3 sm:grid-cols-2">
+          <div className="mt-5 grid gap-3">
+            <button
+              type="button"
+              onClick={() => startBibleYearQuickUpgrade("yearly")}
+              disabled={Boolean(bibleYearQuickUpgradeLoading)}
+              className="relative flex min-h-28 w-full flex-col justify-between overflow-hidden rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_44%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-button,var(--bb-accent,#f6b44b))] px-4 py-4 text-left text-[var(--bb-button-text,#000000)] shadow-[0_0_28px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_32%,transparent)] transition hover:-translate-y-0.5 hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
+            >
+              <span className="absolute right-3 top-2 rounded-full bg-white/70 px-2 py-0.5 text-[10px] font-black uppercase tracking-[0.14em] text-[#8a5a00]">
+                Best offer
+              </span>
+              <span>
+                <span className="block text-sm font-black">Lifetime Access</span>
+                <span className="block text-xs font-bold opacity-80">One payment. Keep Pro for life.</span></span>
+              <span className="mt-4 text-2xl font-black">$50</span>
+            </button>
             <button
               type="button"
               onClick={() => startBibleYearQuickUpgrade("monthly")}
@@ -7639,19 +7664,8 @@ export default function DashboardJourneyExperience({
             >
               <span>
                 <span className="block text-sm font-black text-[var(--bb-text-primary,#111827)]">Monthly</span>
-                <span className="block text-xs font-bold text-[var(--bb-text-secondary,#4b5563)]">Flexible access</span></span>
+                <span className="block text-xs font-bold text-[var(--bb-text-secondary,#4b5563)]">Full Pro access for $4.99/month</span></span>
               <span className="mt-4 text-2xl font-black text-[var(--bb-accent,#f6b44b)]">$4.99</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => startBibleYearQuickUpgrade("yearly")}
-              disabled={Boolean(bibleYearQuickUpgradeLoading)}
-              className="relative flex min-h-28 w-full flex-col justify-between overflow-hidden rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_44%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-button,var(--bb-accent,#f6b44b))] px-4 py-4 text-left text-[var(--bb-button-text,#000000)] shadow-[0_0_28px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_32%,transparent)] transition hover:-translate-y-0.5 hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
-            >
-              <span>
-                <span className="block text-sm font-black">Full Access</span>
-                <span className="block text-xs font-bold opacity-80">Lifetime one-time payment</span></span>
-              <span className="mt-4 text-2xl font-black">$50</span>
             </button>
           </div>
           <button
@@ -11775,65 +11789,158 @@ Before we understand redemption, we need to understand what God made humanity fo
       }
     }
 
+    const shareStreakDays = Math.max(currentStreak, 0);
+    const shareRingPercent = Math.max(0, Math.min(100, overallPercent));
+    const shareRingRadius = 34;
+    const shareRingCircumference = 2 * Math.PI * shareRingRadius;
+    const shareRingOffset = shareRingCircumference - (shareRingPercent / 100) * shareRingCircumference;
+
     return (
       <section className="mx-auto w-full max-w-[440px] px-1">
         <div className="grid gap-3">
           <div
             ref={bibleProgressShareCardRef}
-            className="overflow-hidden rounded-[28px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_16%,#dbe7f4)] bg-[linear-gradient(180deg,#ffffff_0%,#f8fbff_100%)] text-[var(--bb-text-primary,#111827)] shadow-[0_24px_60px_rgba(14,26,58,0.16)]"
+            className="overflow-hidden rounded-[34px] bg-[radial-gradient(circle_at_top,#fdfefe_0%,#f6f9ff_62%,#eef5ff_100%)] p-4 text-[var(--bb-text-primary,#111827)] shadow-[0_30px_80px_rgba(14,26,58,0.18)]"
           >
-            <div className="grid gap-4 p-5 sm:p-6">
-              <div className="text-center">
-                <div className="mx-auto w-full max-w-[220px] text-center">
-                  <p className="text-lg font-black leading-tight text-[var(--bb-text-primary,#111827)]">Bible Buddy</p>
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">mybiblebuddy.net</p>
+            <div className="relative overflow-hidden rounded-[30px] border-2 border-[#8eb6ff] bg-white px-5 py-6 shadow-[inset_0_0_0_4px_rgba(142,182,255,0.38)] sm:px-7 sm:py-7">
+              <div className="pointer-events-none absolute inset-[12px] rounded-[24px] border border-[#8eb6ff]" aria-hidden="true" />
+
+              {[
+                "left-4 top-4",
+                "right-4 top-4 rotate-90",
+                "left-4 bottom-4 -rotate-90",
+                "right-4 bottom-4 rotate-180",
+              ].map((position) => (
+                <div key={position} className={`pointer-events-none absolute ${position} text-[#8eb6ff] opacity-95`} aria-hidden="true">
+                  <svg width="94" height="94" viewBox="0 0 94 94" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11 82C11 53 11 35 27 19C36 10 49 7 68 7" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
+                    <path d="M13 61C16 49 22 40 31 31C38 24 49 20 63 18" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity=".75"/>
+                    <path d="M57 12C61 18 63 24 63 31C57 29 53 26 49 21C51 17 54 14 57 12Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round"/>
+                    <path d="M30 28C34 32 37 37 38 44C31 44 26 42 22 39C23 34 26 31 30 28Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round"/>
+                    <path d="M18 53C22 57 24 61 24 67C18 67 14 65 11 62C12 58 14 55 18 53Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round"/>
+                    <path d="M69 7C76 8 81 10 86 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                    <path d="M75 19C73 23 70 26 65 28C65 22 66 18 69 14C72 15 74 16 75 19Z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+                  </svg>
                 </div>
-                <p className="mt-4 text-[11px] font-black uppercase tracking-[0.24em] text-[var(--bb-text-muted,#6b7280)]">My Bible Buddy Progress</p>
+              ))}
+
+              <div className="relative z-10">
+                <div className="flex items-center justify-center gap-3">
+                  <div className="grid h-11 w-11 place-items-center rounded-[12px] bg-[linear-gradient(180deg,#2567ff_0%,#0f4fe8_100%)] text-[25px] font-black text-white shadow-[0_12px_22px_rgba(37,103,255,0.28)]">
+                    B
+                  </div>
+                  <p className="text-[24px] font-black tracking-[-0.02em] text-[#10224b]">Bible Buddy</p>
+                </div>
+
+                <p className="mt-8 text-center text-[13px] font-bold uppercase tracking-[0.42em] text-[#496ab3]">
+                  Bible Reading Streak
+                </p>
+
+                <div className="relative mx-auto mt-7 flex max-w-[360px] flex-col items-center text-center">
+                  <div className="pointer-events-none absolute top-5 h-[148px] w-[236px] bg-[radial-gradient(circle_at_center,rgba(37,103,255,0.14)_0%,rgba(37,103,255,0.08)_28%,transparent_72%)]" aria-hidden="true" />
+                  <div className="pointer-events-none absolute top-5 h-[150px] w-[250px] opacity-80" aria-hidden="true">
+                    <svg viewBox="0 0 250 150" className="h-full w-full">
+                      {Array.from({ length: 17 }).map((_, index) => {
+                        const x = 125 + Math.cos(((index - 8) * 10 * Math.PI) / 180) * 104;
+                        const y = 118 - Math.sin(((index - 8) * 10 * Math.PI) / 180) * 104;
+                        return <line key={index} x1="125" y1="118" x2={x} y2={y} stroke="#dce8ff" strokeWidth={index % 4 === 0 ? 2.4 : 1.5} strokeLinecap="round" />;
+                      })}
+                    </svg>
+                  </div>
+                  <div className="flex w-full items-center justify-between px-5 text-[#89a9ef]" aria-hidden="true">
+                    <span className="text-[30px]">✦</span>
+                    <span className="text-[30px]">✦</span>
+                  </div>
+                  <div className="relative mt-[-8px] text-[116px] font-black leading-none tracking-[-0.05em] text-[#1860ff] sm:text-[132px]">
+                    {shareStreakDays}
+                  </div>
+                  <div className="relative mt-[-10px] min-w-[164px] bg-[linear-gradient(180deg,#2567ff_0%,#1253eb_100%)] px-8 py-2.5 text-[22px] font-black uppercase tracking-[0.26em] text-white shadow-[0_16px_28px_rgba(37,103,255,0.22)] before:absolute before:left-[-18px] before:top-0 before:border-b-[22px] before:border-r-[18px] before:border-t-[22px] before:border-b-transparent before:border-r-[#174fe0] before:border-t-transparent before:content-[''] after:absolute after:right-[-18px] after:top-0 after:border-b-[22px] after:border-l-[18px] after:border-t-[22px] after:border-b-transparent after:border-l-[#174fe0] after:border-t-transparent after:content-['']">
+                    DAY
+                  </div>
+                  <p className="mt-8 text-[28px] font-black leading-tight tracking-[-0.03em] text-[#10224b]">
+                    I have read the Bible
+                    <br />
+                    {shareStreakDays} {shareStreakDays === 1 ? "day" : "days"} straight!
+                  </p>
+                  <p className="mt-4 max-w-[340px] text-[16px] font-medium leading-7 text-[#5d78b4]">
+                    {currentStreak <= 0 ? "Start today. One day at a time is enough to begin." : streakMilestone.comparison}
+                  </p>
+                </div>
+
+                <div className="mt-8 flex items-center gap-4 text-[#89a9ef]" aria-hidden="true">
+                  <div className="h-px flex-1 bg-[#a6c2ff]" />
+                  <span className="text-[22px]">✦</span>
+                  <div className="h-px flex-1 bg-[#a6c2ff]" />
+                </div>
+
+                <div className="mt-8 grid gap-6 sm:grid-cols-[1fr_auto] sm:items-center">
+                  <div className="min-w-0">
+                    <p className="text-[13px] font-black uppercase tracking-[0.34em] text-[#185cff]">Bible In One Year</p>
+                    <p className="mt-3 text-[38px] font-black leading-none tracking-[-0.04em] text-[#10224b] sm:text-[44px]">Day {currentDay} of 365</p>
+                  </div>
+                  <div className="mx-auto sm:mx-0">
+                    <div className="relative h-[94px] w-[94px]">
+                      <svg viewBox="0 0 88 88" className="h-full w-full -rotate-90">
+                        <circle cx="44" cy="44" r={shareRingRadius} fill="none" stroke="#e4edff" strokeWidth="8" />
+                        <circle
+                          cx="44"
+                          cy="44"
+                          r={shareRingRadius}
+                          fill="none"
+                          stroke="#185cff"
+                          strokeWidth="8"
+                          strokeLinecap="round"
+                          strokeDasharray={shareRingCircumference}
+                          strokeDashoffset={shareRingOffset}
+                        />
+                      </svg>
+                      <div className="absolute inset-0 grid place-items-center text-[22px] font-black text-[#185cff]">{shareRingPercent}%</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-5 h-4 overflow-hidden rounded-full bg-[#e7efff]">
+                  <div className="h-full rounded-full bg-[linear-gradient(90deg,#2567ff_0%,#1454eb_100%)]" style={{ width: `${Math.max(2, dayProgressPercent)}%` }} />
+                </div>
+
+                <div className="mt-3 flex items-center justify-between gap-3 text-[15px] font-semibold text-[#2f4c8c]">
+                  <span>{overallPercent}% completed</span>
+                  <span>{remainingDays} days left</span>
+                </div>
+
+                <div className="mt-8 flex items-center gap-4 text-[#89a9ef]" aria-hidden="true">
+                  <div className="h-px flex-1 bg-[#a6c2ff]" />
+                  <span className="text-[22px]">✦</span>
+                  <div className="h-px flex-1 bg-[#a6c2ff]" />
+                </div>
+
+                <div className="mt-8 grid gap-5 sm:grid-cols-[1fr_auto_1fr] sm:items-center">
+                  <div className="flex items-center gap-3">
+                    <div className="grid h-12 w-12 shrink-0 place-items-center rounded-[14px] bg-[#f5f9ff] text-[24px] text-[#5c7ed3]">🗓</div>
+                    <div>
+                      <p className="text-[11px] font-black uppercase tracking-[0.28em] text-[#185cff]">Started</p>
+                      <p className="mt-1 text-[18px] font-black text-[#10224b]">{startDateLabel}</p>
+                    </div>
+                  </div>
+
+                  <div className="hidden items-center justify-center text-[#89a9ef] sm:flex" aria-hidden="true">
+                    <span className="text-[22px]">✦</span>
+                  </div>
+
+                  <div className="flex items-center justify-start gap-3 sm:justify-end">
+                    <div className="text-right">
+                      <p className="text-[11px] font-black uppercase tracking-[0.28em] text-[#185cff]">Expected Finish</p>
+                      <p className="mt-1 text-[18px] font-black text-[#10224b]">{expectedFinishDateLabel}</p>
+                    </div>
+                    <div className="grid h-12 w-12 shrink-0 place-items-center rounded-[14px] bg-[#f5f9ff] text-[24px] text-[#5c7ed3]">⚑</div>
+                  </div>
+                </div>
+
+                <div className="mt-8 border-t border-[#dbe7ff] pt-7 text-center">
+                  <p className="text-[13px] font-bold uppercase tracking-[0.42em] text-[#496ab3]">Start Your Streak @</p>
+                  <p className="mt-2 text-[22px] font-black uppercase tracking-[0.24em] text-[#1860ff] sm:text-[28px]">MyBibleBuddy.net</p>
+                </div>
               </div>
-
-                  <section className="rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_14%,#dbe7f4)] bg-white/90 px-4 py-4 text-center shadow-[0_10px_24px_rgba(14,26,58,0.06)]">
-                    <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[var(--bb-text-muted,#6b7280)]">Bible Streak</p>
-                    <p className="mt-2 text-4xl font-black leading-none text-[var(--bb-accent,#2f7fe8)]">
-                      {currentStreak} <span className="text-xl align-top">{currentStreak === 1 ? "day" : "days"}</span>
-                    </p>
-                    <p className="mt-3 text-sm font-black leading-5 text-[var(--bb-text-primary,#111827)]">{streakMilestone.message}</p>
-                    <p className="mt-1 text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">{streakMilestone.comparison}</p>
-                  </section>
-
-                  <section className="rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_14%,#dbe7f4)] bg-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_5%,white)] px-4 py-4 shadow-[0_10px_24px_rgba(14,26,58,0.06)]">
-                    <div className="flex items-start justify-between gap-3">
-                      <div>
-                        <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[var(--bb-text-muted,#6b7280)]">Bible In One Year</p>
-                        <p className="mt-2 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Day {currentDay} of 365</p>
-                      </div>
-                      <div className="rounded-full bg-white px-3 py-1 text-[11px] font-black text-[var(--bb-accent,#2f7fe8)] shadow-[0_6px_14px_rgba(14,26,58,0.08)]">
-                        {overallPercent}%
-                      </div>
-                    </div>
-                    <div className="mt-4 h-3 overflow-hidden rounded-full bg-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_14%,#dbe7f4)]">
-                      <div className="h-full rounded-full bg-[var(--bb-accent,#2f7fe8)]" style={{ width: `${Math.max(2, dayProgressPercent)}%` }} />
-                    </div>
-                    <div className="mt-3 flex items-center justify-between gap-3 text-xs font-semibold text-[var(--bb-text-secondary,#4b5563)]">
-                      <span>{overallPercent}% completed</span>
-                      <span>{remainingDays} days left</span>
-                    </div>
-                  </section>
-
-                  <section className="rounded-[20px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_12%,#dbe7f4)] bg-white/85 px-4 py-3 text-center">
-                    <p className="text-sm font-black text-[var(--bb-text-primary,#111827)]">{encouragementTitle}</p>
-                    <p className="mt-1 text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">{encouragementBody}</p>
-                  </section>
-
-                  <section className="grid grid-cols-2 gap-3 rounded-[20px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_12%,#dbe7f4)] bg-white/85 px-4 py-3">
-                    <div className="min-w-0 text-center">
-                      <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--bb-text-muted,#6b7280)]">Started</p>
-                      <p className="mt-1 text-sm font-black leading-5 text-[var(--bb-text-primary,#111827)]">{startDateLabel}</p>
-                    </div>
-                    <div className="min-w-0 text-center">
-                      <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--bb-text-muted,#6b7280)]">Expected Finish</p>
-                      <p className="mt-1 text-sm font-black leading-5 text-[var(--bb-text-primary,#111827)]">{expectedFinishDateLabel}</p>
-                    </div>
-                  </section>
             </div>
           </div>
 
