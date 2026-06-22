@@ -169,7 +169,6 @@ export async function GET(request: Request) {
       bibleYearActionsResult,
       freeModeActionsResult,
       profilesResult,
-      paidProfilesResult,
       videoHelpfulnessResult,
     ] = await Promise.all([
       countAuthUsers(url, key),
@@ -182,7 +181,6 @@ export async function GET(request: Request) {
       supabase.from("master_actions").select("user_id, action_type, action_label, created_at").in("action_type", BIBLE_YEAR_ACTIONS).gte("created_at", since30d).limit(250000),
       supabase.from("master_actions").select("user_id, action_type, action_label, created_at").in("action_type", FREE_MODE_ACTIONS).gte("created_at", since30d).limit(250000),
       supabase.from("profile_stats").select("user_id, username, display_name, is_paid, current_level, last_active_at, last_active_date, updated_at, member_badge").limit(250000),
-      supabase.from("profile_stats").select("user_id, username, display_name, is_paid, updated_at, member_badge").eq("is_paid", true).limit(250000),
       supabase.from("video_helpfulness_votes").select("video_id, video_title, video_url, video_context, helpful, updated_at").limit(250000),
     ]);
 
@@ -199,17 +197,13 @@ export async function GET(request: Request) {
     const bibleYearActions = (bibleYearActionsResult.data || []) as ActionRow[];
     const freeModeActions = (freeModeActionsResult.data || []) as ActionRow[];
     const profiles = (profilesResult.data || []) as ProfileRow[];
-    const paidProfiles = (paidProfilesResult.data || []) as ProfileRow[];
     const videoHelpfulnessRows = (videoHelpfulnessResult.data || []) as VideoHelpfulnessRow[];
     const profileByUser = new Map(profiles.filter((row) => row.user_id).map((row) => [row.user_id as string, row]));
-    const upgradeUserIds = new Set<string>([
-      ...((upgradesResult.data || []) as Array<{ user_id?: string | null }>).map((row) => row.user_id).filter((id): id is string => Boolean(id)),
-      ...paidProfiles
-        .filter((row) => row.user_id && row.is_paid === true)
-        .filter((row) => isWithinIsoWindow(row.updated_at, todayStart, todayEnd))
-        .filter((row) => !isInternalUpgradeProfile(row))
-        .map((row) => row.user_id as string),
-    ]);
+    const upgradeUserIds = new Set<string>(
+      ((upgradesResult.data || []) as Array<{ user_id?: string | null }>)
+        .map((row) => row.user_id)
+        .filter((id): id is string => Boolean(id)),
+    );
 
     const progressByUser = new Map<string, BibleYearProgressRow[]>();
     for (const row of progressRows) {
@@ -383,7 +377,7 @@ export async function GET(request: Request) {
       errors: {
         signups: signupsResult.error?.message || fallbackSignupsResult.error?.message || null,
         activeUsers: activeActionsResult.error?.message || activeProfilesResult.error?.message || null,
-        upgrades: upgradesResult.error?.message || paidProfilesResult.error?.message || null,
+        upgrades: upgradesResult.error?.message || null,
         bibleYear: bibleYearProgressResult.error?.message || bibleYearActionsResult.error?.message || null,
         freeMode: freeModeActionsResult.error?.message || null,
         videoHelpfulness: videoHelpfulnessResult.error?.message || null,

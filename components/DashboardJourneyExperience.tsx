@@ -11390,22 +11390,28 @@ Before we understand redemption, we need to understand what God made humanity fo
                           {item.badge}
                         </span>
                       ) : null}
-                      {item.done ? (
-                        <span className="rounded-full bg-emerald-500 px-2 py-0.5 text-[10px] font-black uppercase tracking-[0.12em] text-white">
-                          Completed
-                        </span>
-                      ) : null}
                     </div>
                     <p className="mt-1 text-sm font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">
                       {item.body}
                     </p>
                   </div>
-                  <span
-                    className={`text-lg font-black text-[var(--bb-text-muted,#6b7280)] transition-transform ${expanded ? "rotate-90" : ""}`}
-                    aria-hidden="true"
-                  >
-                    {">"}
-                  </span>
+                  <div className="shrink-0 self-center text-right">
+                    <span
+                      className={`inline-flex rounded-full px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.12em] ${
+                        item.done
+                          ? "bg-emerald-500 text-white"
+                          : "bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-text-muted,#6b7280)]"
+                      }`}
+                    >
+                      {item.done ? "Done" : "Not done"}
+                    </span>
+                    <span
+                      className={`mt-2 block text-lg font-black text-[var(--bb-text-muted,#6b7280)] transition-transform ${expanded ? "rotate-90" : ""}`}
+                      aria-hidden="true"
+                    >
+                      {">"}
+                    </span>
+                  </div>
                 </button>
                 {expanded ? (
                   <div className="border-t border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)]">
@@ -12331,7 +12337,18 @@ Before we understand redemption, we need to understand what God made humanity fo
                       {item.badge ? (
                         <p className="mt-1 text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">{item.badge}</p>
                       ) : null}
-                      <h3 className="mt-1 text-[17px] font-bold leading-tight text-[var(--bb-text-primary,#111827)]">{item.title}</h3>
+                      <div className="mt-1 flex items-start justify-between gap-3">
+                        <h3 className="min-w-0 text-[17px] font-bold leading-tight text-[var(--bb-text-primary,#111827)]">{item.title}</h3>
+                        <span
+                          className={`shrink-0 rounded-full px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.12em] ${
+                            item.done
+                              ? "bg-emerald-500 text-white"
+                              : "bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-text-muted,#6b7280)]"
+                          }`}
+                        >
+                          {item.done ? "Done" : "Not done"}
+                        </span>
+                      </div>
                       <p className="mt-1 text-[13px] font-medium leading-5 text-[var(--bb-text-secondary,#4b5563)]">{item.body}</p>
                     </div>
                   </div>
