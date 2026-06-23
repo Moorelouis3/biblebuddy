@@ -61,7 +61,7 @@ type LandingEventRow = {
   created_at?: string | null;
 };
 
-type JourneyWindowKey = "today" | "yesterday" | "24h" | "7d" | "30d" | "this_month" | "lifetime";
+type JourneyWindowKey = "today" | "yesterday" | "24h" | "7d" | "30d" | "90d" | "this_month" | "lifetime";
 
 type UpgradeActionRow = {
   user_id?: string | null;
@@ -902,6 +902,7 @@ function getJourneyWindowKey(request: Request): JourneyWindowKey {
     raw === "24h" ||
     raw === "7d" ||
     raw === "30d" ||
+    raw === "90d" ||
     raw === "this_month" ||
     raw === "lifetime"
     ? raw
@@ -911,6 +912,7 @@ function getJourneyWindowKey(request: Request): JourneyWindowKey {
 function getJourneyWindowMs(windowKey: JourneyWindowKey) {
   if (windowKey === "7d") return 7 * 24 * 60 * 60 * 1000;
   if (windowKey === "30d") return 30 * 24 * 60 * 60 * 1000;
+  if (windowKey === "90d") return 90 * 24 * 60 * 60 * 1000;
   if (windowKey === "this_month" || windowKey === "lifetime") return Date.now();
   if (windowKey === "yesterday") return 2 * 24 * 60 * 60 * 1000;
   return 24 * 60 * 60 * 1000;
@@ -921,6 +923,7 @@ function getJourneyWindowLabel(windowKey: JourneyWindowKey) {
   if (windowKey === "yesterday") return "Yesterday";
   if (windowKey === "7d") return "Last 7 days";
   if (windowKey === "30d") return "Last 30 days";
+  if (windowKey === "90d") return "Last 90 days";
   if (windowKey === "this_month") return "This month";
   if (windowKey === "lifetime") return "Lifetime";
   return "Last 24 hours";
@@ -945,6 +948,9 @@ function getAnalyticsDateRange(windowKey: JourneyWindowKey) {
   if (windowKey === "30d") {
     return { startIso: new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000).toISOString(), endIso: null as string | null };
   }
+  if (windowKey === "90d") {
+    return { startIso: new Date(now.getTime() - 90 * 24 * 60 * 60 * 1000).toISOString(), endIso: null as string | null };
+  }
   if (windowKey === "this_month") {
     return { startIso: new Date(now.getFullYear(), now.getMonth(), 1).toISOString(), endIso: null as string | null };
   }
@@ -952,6 +958,111 @@ function getAnalyticsDateRange(windowKey: JourneyWindowKey) {
     return { startIso: "1970-01-01T00:00:00.000Z", endIso: null as string | null };
   }
   return { startIso: new Date(now.getTime() - 24 * 60 * 60 * 1000).toISOString(), endIso: null as string | null };
+}
+
+function getPreviousAnalyticsDateRange(windowKey: JourneyWindowKey) {
+  const now = new Date();
+  const todayStart = new Date(now);
+  todayStart.setHours(0, 0, 0, 0);
+
+  if (windowKey === "today") {
+    const previousStart = new Date(todayStart);
+    previousStart.setDate(previousStart.getDate() - 1);
+    return { startIso: previousStart.toISOString(), endIso: todayStart.toISOString() };
+  }
+  if (windowKey === "yesterday") {
+    const previousEnd = new Date(todayStart);
+    previousEnd.setDate(previousEnd.getDate() - 1);
+    const previousStart = new Date(previousEnd);
+    previousStart.setDate(previousStart.getDate() - 1);
+    return { startIso: previousStart.toISOString(), endIso: previousEnd.toISOString() };
+  }
+  if (windowKey === "24h") {
+    const end = new Date(now.getTime() - 24 * 60 * 60 * 1000);
+    const start = new Date(end.getTime() - 24 * 60 * 60 * 1000);
+    return { startIso: start.toISOString(), endIso: end.toISOString() };
+  }
+  if (windowKey === "7d") {
+    const end = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+    const start = new Date(end.getTime() - 7 * 24 * 60 * 60 * 1000);
+    return { startIso: start.toISOString(), endIso: end.toISOString() };
+  }
+  if (windowKey === "30d") {
+    const end = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
+    const start = new Date(end.getTime() - 30 * 24 * 60 * 60 * 1000);
+    return { startIso: start.toISOString(), endIso: end.toISOString() };
+  }
+  if (windowKey === "90d") {
+    const end = new Date(now.getTime() - 90 * 24 * 60 * 60 * 1000);
+    const start = new Date(end.getTime() - 90 * 24 * 60 * 60 * 1000);
+    return { startIso: start.toISOString(), endIso: end.toISOString() };
+  }
+  if (windowKey === "this_month" || windowKey === "lifetime") {
+    return null;
+  }
+  return null;
+}
+
+function percentChange(current: number, previous: number) {
+  if (previous <= 0 && current <= 0) return 0;
+  if (previous <= 0) return 100;
+  return Number((((current - previous) / previous) * 100).toFixed(1));
+}
+
+function getSimpleSeriesBucket(windowKey: JourneyWindowKey) {
+  if (windowKey === "today" || windowKey === "24h" || windowKey === "yesterday") return "hour";
+  if (windowKey === "90d") return "week";
+  if (windowKey === "lifetime") return "month";
+  return "day";
+}
+
+function startOfWeek(date: Date) {
+  const copy = new Date(date);
+  copy.setHours(0, 0, 0, 0);
+  const day = copy.getDay();
+  const diff = (day + 6) % 7;
+  copy.setDate(copy.getDate() - diff);
+  return copy;
+}
+
+function buildSimpleMetricSeries(
+  timestamps: Array<string | null | undefined>,
+  windowKey: JourneyWindowKey,
+) {
+  const bucket = getSimpleSeriesBucket(windowKey);
+  const counts = new Map<string, number>();
+  const labelByKey = new Map<string, string>();
+
+  for (const raw of timestamps) {
+    if (!raw) continue;
+    const date = new Date(raw);
+    if (!Number.isFinite(date.getTime())) continue;
+
+    let key = "";
+    let label = "";
+
+    if (bucket === "hour") {
+      key = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}-${date.getHours()}`;
+      label = date.toLocaleTimeString("en-US", { hour: "numeric" });
+    } else if (bucket === "week") {
+      const weekStart = startOfWeek(date);
+      key = weekStart.toISOString().slice(0, 10);
+      label = weekStart.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+    } else if (bucket === "month") {
+      key = `${date.getFullYear()}-${date.getMonth() + 1}`;
+      label = date.toLocaleDateString("en-US", { month: "short", year: "2-digit" });
+    } else {
+      key = date.toISOString().slice(0, 10);
+      label = date.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+    }
+
+    counts.set(key, (counts.get(key) || 0) + 1);
+    labelByKey.set(key, label);
+  }
+
+  return Array.from(counts.entries())
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([key, value]) => ({ label: labelByKey.get(key) || key, value }));
 }
 
 function parseBibleYearDayFromVideoId(videoId: string | null | undefined) {
@@ -3256,6 +3367,14 @@ async function buildOverviewAnalyticsResponse(
       source: "day_task_events",
       playDetails: [],
     },
+    simpleSeries: {
+      signups: [],
+      upgrades: [],
+    },
+    simpleComparisons: {
+      signups: { current: 0, previous: 0, change: 0 },
+      upgrades: { current: 0, previous: 0, change: 0 },
+    },
     customerJourney: {
       window: journeyWindow,
       label: getJourneyWindowLabel(journeyWindow),
@@ -3328,6 +3447,8 @@ export async function GET(request: Request) {
   }
 
   const { startIso: journeySinceIso, endIso: journeyBeforeIso } = getAnalyticsDateRange(journeyWindow);
+  const previousRange = getPreviousAnalyticsDateRange(journeyWindow);
+  const analyticsFetchSinceIso = previousRange?.startIso && previousRange.startIso < journeySinceIso ? previousRange.startIso : journeySinceIso;
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
 
@@ -3390,25 +3511,23 @@ export async function GET(request: Request) {
     .from("master_actions")
     .select("user_id, username, action_label, created_at")
     .eq("action_type", "user_upgraded")
-    .gte("created_at", journeySinceIso)
+    .gte("created_at", analyticsFetchSinceIso)
     .order("created_at", { ascending: false })
     .limit(200);
-  if (journeyBeforeIso) upgradeQuery = upgradeQuery.lt("created_at", journeyBeforeIso);
   const { data: upgradeData } = await upgradeQuery;
   const upgradeRows = (upgradeData || []) as UpgradeActionRow[];
   let paidProfilesUpgradeQuery = adminSupabase
     .from("profile_stats")
     .select("user_id, display_name, username, is_paid, member_badge, updated_at")
     .eq("is_paid", true)
-    .gte("updated_at", journeySinceIso)
+    .gte("updated_at", analyticsFetchSinceIso)
     .order("updated_at", { ascending: false })
     .limit(50000);
-  if (journeyBeforeIso) paidProfilesUpgradeQuery = paidProfilesUpgradeQuery.lt("updated_at", journeyBeforeIso);
   const { data: paidProfilesUpgradeData } = await paidProfilesUpgradeQuery;
   const paidProfileUpgradeRows = (paidProfilesUpgradeData || []) as PaidProfileUpgradeRow[];
   const { data: allUpgradeActionData } = await adminSupabase
     .from("master_actions")
-    .select("user_id")
+    .select("user_id, created_at")
     .eq("action_type", "user_upgraded")
     .limit(250000);
   const allUpgradeUserIds = new Set(
@@ -3697,8 +3816,48 @@ export async function GET(request: Request) {
     journeyWindow,
   );
   const proUpgradeUsers = new Set(
-    upgradeRows.map((row) => row.user_id).filter((userId): userId is string => Boolean(userId)),
+    upgradeRows
+      .filter((row) => isWithinAnalyticsWindow(row.created_at || null, journeySinceIso, journeyBeforeIso))
+      .map((row) => row.user_id)
+      .filter((userId): userId is string => Boolean(userId)),
   );
+  paidProfileUpgradeRows
+    .filter((row) => row.user_id && row.is_paid === true)
+    .filter((row) => !isOwnerAuthUser(row.user_id || null, authSummaryByUserId))
+    .filter((row) => isWithinAnalyticsWindow(row.updated_at || null, journeySinceIso, journeyBeforeIso))
+    .filter((row) =>
+      !isInternalAnalyticsProfile({
+        displayName: (row.display_name || row.username || "").trim(),
+        isPaid: true,
+        registeredAt: null,
+        convertedFromGuestAt: null,
+        currentStreak: null,
+        currentLevel: null,
+        totalActions: null,
+        memberBadge: typeof row.member_badge === "string" ? row.member_badge : null,
+        proExpiresAt: null,
+        updatedAt: typeof row.updated_at === "string" ? row.updated_at : null,
+      }),
+    )
+    .filter((row) => !allUpgradeUserIds.has(row.user_id as string))
+    .forEach((row) => proUpgradeUsers.add(row.user_id as string));
+  const proUpgrades = proUpgradeUsers.size;
+  const previousSignups = previousRange
+    ? allAuthUsers.filter((user) => isWithinAnalyticsWindow(user.createdAt || null, previousRange.startIso, previousRange.endIso)).length
+    : 0;
+  const signupSeries = buildSimpleMetricSeries(
+    allAuthUsers
+      .map((user) => user.createdAt || null)
+      .filter((createdAt) => isWithinAnalyticsWindow(createdAt, journeySinceIso, journeyBeforeIso)),
+    journeyWindow,
+  );
+  const upgradeSeriesByUser = new Map<string, string>();
+  upgradeRows.forEach((row, index) => {
+    const key = row.user_id || `upgrade-row-${index}`;
+    if (!row.created_at) return;
+    const current = upgradeSeriesByUser.get(key);
+    if (!current || row.created_at < current) upgradeSeriesByUser.set(key, row.created_at);
+  });
   paidProfileUpgradeRows
     .filter((row) => row.user_id && row.is_paid === true)
     .filter((row) => !isOwnerAuthUser(row.user_id || null, authSummaryByUserId))
@@ -3717,8 +3876,47 @@ export async function GET(request: Request) {
       }),
     )
     .filter((row) => !allUpgradeUserIds.has(row.user_id as string))
-    .forEach((row) => proUpgradeUsers.add(row.user_id as string));
-  const proUpgrades = proUpgradeUsers.size;
+    .forEach((row) => {
+      if (!row.user_id || !row.updated_at) return;
+      const current = upgradeSeriesByUser.get(row.user_id);
+      if (!current || row.updated_at < current) upgradeSeriesByUser.set(row.user_id, row.updated_at);
+    });
+  const previousUpgradeSeriesByUser = new Map<string, string>();
+  if (previousRange) {
+    upgradeRows.forEach((row, index) => {
+      const key = row.user_id || `upgrade-row-${index}`;
+      if (!row.created_at || !isWithinAnalyticsWindow(row.created_at, previousRange.startIso, previousRange.endIso)) return;
+      const current = previousUpgradeSeriesByUser.get(key);
+      if (!current || row.created_at < current) previousUpgradeSeriesByUser.set(key, row.created_at);
+    });
+    paidProfileUpgradeRows
+      .filter((row) => row.user_id && row.is_paid === true)
+      .filter((row) => !isOwnerAuthUser(row.user_id || null, authSummaryByUserId))
+      .filter((row) =>
+        !isInternalAnalyticsProfile({
+          displayName: (row.display_name || row.username || "").trim(),
+          isPaid: true,
+          registeredAt: null,
+          convertedFromGuestAt: null,
+          currentStreak: null,
+          currentLevel: null,
+          totalActions: null,
+          memberBadge: typeof row.member_badge === "string" ? row.member_badge : null,
+          proExpiresAt: null,
+          updatedAt: typeof row.updated_at === "string" ? row.updated_at : null,
+        }),
+      )
+      .filter((row) => !allUpgradeUserIds.has(row.user_id as string))
+      .forEach((row) => {
+        if (!row.user_id || !row.updated_at || !isWithinAnalyticsWindow(row.updated_at, previousRange.startIso, previousRange.endIso)) return;
+        const current = previousUpgradeSeriesByUser.get(row.user_id);
+        if (!current || row.updated_at < current) previousUpgradeSeriesByUser.set(row.user_id, row.updated_at);
+      });
+  }
+  const upgradeSeries = buildSimpleMetricSeries(Array.from(upgradeSeriesByUser.values()), journeyWindow);
+  const currentSignups = signupSeries.reduce((sum, point) => sum + point.value, 0);
+  const currentUpgrades = upgradeSeries.reduce((sum, point) => sum + point.value, 0);
+  const previousUpgrades = previousUpgradeSeriesByUser.size;
   const customerJourney = {
     window: journeyWindow,
     label: getJourneyWindowLabel(journeyWindow),
@@ -3781,6 +3979,22 @@ export async function GET(request: Request) {
     funnel,
     landingLast24h,
     businessMetrics,
+    simpleSeries: {
+      signups: signupSeries,
+      upgrades: upgradeSeries,
+    },
+    simpleComparisons: {
+      signups: {
+        current: currentSignups,
+        previous: previousSignups,
+        change: percentChange(currentSignups, previousSignups),
+      },
+      upgrades: {
+        current: currentUpgrades,
+        previous: previousUpgrades,
+        change: percentChange(currentUpgrades, previousUpgrades),
+      },
+    },
     registeredUsers: registeredUserAnalytics,
     audioEngagement,
     audioHelpfulness,

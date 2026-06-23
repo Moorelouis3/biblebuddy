@@ -11743,24 +11743,27 @@ Before we understand redemption, we need to understand what God made humanity fo
         }
 
         const cardBitmap = await createImageBitmap(cardBlob);
+        const exportFrame = 28;
+        const exportWidth = 1200;
+        const availableWidth = exportWidth - exportFrame * 2;
+        const scale = availableWidth / cardBitmap.width;
+        const exportHeight = Math.round(cardBitmap.height * scale) + exportFrame * 2;
+
         const canvas = document.createElement("canvas");
-        canvas.width = 1080;
-        canvas.height = 1920;
+        canvas.width = exportWidth;
+        canvas.height = exportHeight;
         const context = canvas.getContext("2d");
         if (!context) {
           throw new Error("Could not prepare progress image.");
         }
 
-        context.fillStyle = "#eef4fb";
+        context.fillStyle = "#f1f6fc";
         context.fillRect(0, 0, canvas.width, canvas.height);
 
-        const maxCardWidth = 760;
-        const horizontalPadding = 120;
-        const targetWidth = Math.min(maxCardWidth, canvas.width - horizontalPadding * 2);
-        const scale = targetWidth / cardBitmap.width;
+        const targetWidth = availableWidth;
         const targetHeight = Math.round(cardBitmap.height * scale);
-        const x = Math.round((canvas.width - targetWidth) / 2);
-        const y = Math.round((canvas.height - targetHeight) / 2);
+        const x = exportFrame;
+        const y = exportFrame;
 
         context.drawImage(cardBitmap, x, y, targetWidth, targetHeight);
 
@@ -11825,7 +11828,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         <div className="grid gap-3">
           <div
             ref={bibleProgressShareCardRef}
-            className="overflow-hidden rounded-[24px] bg-[radial-gradient(circle_at_top,#fdfefe_0%,#f6f9ff_62%,#eef5ff_100%)] p-2.5 text-[var(--bb-text-primary,#111827)] shadow-[0_20px_48px_rgba(14,26,58,0.14)]"
+            className="overflow-hidden rounded-[22px] bg-[#f1f6fc] p-1.5 text-[var(--bb-text-primary,#111827)] shadow-[0_20px_48px_rgba(14,26,58,0.14)]"
           >
             <div className="relative overflow-hidden rounded-[20px] border-2 border-[#8eb6ff] bg-white px-3 py-3.5 shadow-[inset_0_0_0_3px_rgba(142,182,255,0.38)] sm:px-4 sm:py-4">
               <div className="pointer-events-none absolute inset-[8px] rounded-[14px] border border-[#8eb6ff]" aria-hidden="true" />

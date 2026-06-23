@@ -1,14 +1,16 @@
 "use client";
 
+import Link from "next/link";
 import { Fragment, useEffect, useMemo, useState } from "react";
 import { GENESIS_BIBLE_IN_ONE_YEAR_SERIES } from "@/lib/bibleInOneYearPlan";
 import { supabase } from "@/lib/supabaseClient";
 import { applyAppThemeToDocument, readCachedAppTheme } from "@/lib/appThemes";
 import { getCachedAdminAnalytics, getCachedAdminAnalyticsOverview, loadAdminAnalytics } from "@/lib/adminAnalyticsPreload";
 
-type JourneyWindow = "today" | "yesterday" | "24h" | "7d" | "30d" | "this_month" | "lifetime";
+type JourneyWindow = "today" | "yesterday" | "24h" | "7d" | "30d" | "90d" | "this_month" | "lifetime";
 type AccountFilter = "all" | "guest" | "free" | "pro";
 type AnalyticsView = "overview" | "bible-year" | "study-notes" | "traffic-sources";
+type SimpleAnalyticsMetric = "overview" | "revenue" | "signups" | "upgrades";
 
 type VisitorJourneyStatus =
   | "active"
@@ -230,6 +232,14 @@ type AudioHelpfulnessAnalytics = {
 
 type AnalyticsResponse = {
   partial?: boolean;
+  simpleSeries?: {
+    signups: Array<{ label: string; value: number }>;
+    upgrades: Array<{ label: string; value: number }>;
+  };
+  simpleComparisons?: {
+    signups: { current: number; previous: number; change: number };
+    upgrades: { current: number; previous: number; change: number };
+  };
   businessMetrics?: {
     totalUsers: number;
     registeredUsers: number;
@@ -409,6 +419,8 @@ type StripeRevenueSummary = {
   oneTime30d: string;
   oneTimeRangeCents?: number;
   oneTimeRange?: string;
+  series?: Array<{ label: string; value: number }>;
+  comparison?: { current: number; previous: number; change: number };
   recentPayments: StripeRecentPayment[];
   updatedAt: string;
   error?: string;
@@ -427,8 +439,24 @@ const WINDOW_OPTIONS: Array<{ key: JourneyWindow; label: string }> = [
   { key: "24h", label: "Last 24 hours" },
   { key: "7d", label: "Last 7 days" },
   { key: "30d", label: "Last 30 days" },
+  { key: "90d", label: "Last 90 days" },
   { key: "this_month", label: "This month" },
   { key: "lifetime", label: "Lifetime" },
+];
+
+const SIMPLE_METRIC_OPTIONS: Array<{ key: SimpleAnalyticsMetric; label: string }> = [
+  { key: "overview", label: "Overview" },
+  { key: "revenue", label: "Revenue" },
+  { key: "signups", label: "Signups" },
+  { key: "upgrades", label: "Upgrades" },
+];
+
+const SIMPLE_WINDOW_OPTIONS: Array<{ key: JourneyWindow; label: string }> = [
+  { key: "today", label: "Today" },
+  { key: "7d", label: "7 Days" },
+  { key: "30d", label: "30 Days" },
+  { key: "90d", label: "90 Days" },
+  { key: "lifetime", label: "All Time" },
 ];
 
 const STATUS_STYLES: Record<VisitorJourneyStatus, string> = {
@@ -643,7 +671,7 @@ function OnboardingCell({ value }: { value: string | null }) {
   );
 }
 
-function Icon({ name }: { name: "visitors" | "check" | "book" | "flame" | "user" | "pro" | "search" | "filter" | "export" | "play" | "headphones" | "spark" | "arrow" }) {
+function Icon({ name }: { name: "visitors" | "check" | "book" | "flame" | "user" | "pro" | "search" | "filter" | "export" | "play" | "headphones" | "spark" | "arrow" | "analytics" }) {
   const common = "h-5 w-5";
   if (name === "check") {
     return <svg viewBox="0 0 24 24" className={common} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /><circle cx="12" cy="12" r="9" /></svg>;
@@ -681,7 +709,248 @@ function Icon({ name }: { name: "visitors" | "check" | "book" | "flame" | "user"
   if (name === "arrow") {
     return <svg viewBox="0 0 24 24" className={common} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m13 6 6 6-6 6" /></svg>;
   }
+  if (name === "analytics") {
+    return <svg viewBox="0 0 24 24" className={common} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5V5.5" /><path d="M4 19.5h16" /><path d="m7 14 3-3 3 2 4-5" /></svg>;
+  }
   return <svg viewBox="0 0 24 24" className={common} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="4" /><path d="M4 21a8 8 0 0 1 16 0" /></svg>;
+}
+
+function formatMoneyValue(value: number) {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: 0,
+  }).format(value);
+}
+
+function getSimpleMetricSeries(
+  metric: Exclude<SimpleAnalyticsMetric, "overview">,
+  data: AnalyticsResponse | null,
+  stripeRevenue: StripeRevenueSummary | null,
+) {
+  if (metric === "revenue") return stripeRevenue?.series || [];
+  if (metric === "signups") return data?.simpleSeries?.signups || [];
+  return data?.simpleSeries?.upgrades || [];
+}
+
+function getSimpleMetricTotal(
+  metric: Exclude<SimpleAnalyticsMetric, "overview">,
+  data: AnalyticsResponse | null,
+  stripeRevenue: StripeRevenueSummary | null,
+) {
+  if (metric === "revenue") {
+    return stripeRevenue?.revenueRange || stripeRevenue?.revenue30d || "$0";
+  }
+  if (metric === "signups") {
+    const total = (data?.simpleSeries?.signups || []).reduce((sum, point) => sum + point.value, 0);
+    return formatNumber(total);
+  }
+  const total = (data?.simpleSeries?.upgrades || []).reduce((sum, point) => sum + point.value, 0);
+  return formatNumber(total);
+}
+
+function getSimpleMetricTitle(metric: Exclude<SimpleAnalyticsMetric, "overview">) {
+  if (metric === "revenue") return "Revenue";
+  if (metric === "signups") return "Signups";
+  return "Upgrades";
+}
+
+function getSimpleMetricHelper(metric: Exclude<SimpleAnalyticsMetric, "overview">) {
+  if (metric === "revenue") return "Cash collected in the selected timeframe.";
+  if (metric === "signups") return "New accounts created in the selected timeframe.";
+  return "Users who upgraded to Pro in the selected timeframe.";
+}
+
+function getSimpleMetricAccent(metric: Exclude<SimpleAnalyticsMetric, "overview">) {
+  if (metric === "revenue") return "text-blue-600 bg-blue-50 ring-blue-100";
+  if (metric === "signups") return "text-emerald-600 bg-emerald-50 ring-emerald-100";
+  return "text-violet-600 bg-violet-50 ring-violet-100";
+}
+
+function getSimpleMetricGranularity(windowKey: JourneyWindow) {
+  if (windowKey === "today") return "Hourly";
+  if (windowKey === "7d" || windowKey === "30d") return "Daily";
+  if (windowKey === "90d") return "Weekly";
+  return "Monthly";
+}
+
+function getComparisonLabel(windowKey: JourneyWindow) {
+  if (windowKey === "today") return "vs previous day";
+  if (windowKey === "7d") return "vs previous 7 days";
+  if (windowKey === "30d") return "vs previous 30 days";
+  if (windowKey === "90d") return "vs previous 90 days";
+  return "";
+}
+
+function ComparisonChip({ change, label }: { change: number; label: string }) {
+  const positive = change >= 0;
+  return (
+    <div className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-sm font-black ring-1 ${positive ? "bg-emerald-50 text-emerald-700 ring-emerald-100" : "bg-rose-50 text-rose-700 ring-rose-100"}`}>
+      <span>{positive ? "↑" : "↓"}</span>
+      <span>{Math.abs(change).toFixed(1)}%</span>
+      {label ? <span className="font-semibold opacity-80">{label}</span> : null}
+    </div>
+  );
+}
+
+function SimpleAnalyticsKpiCard({
+  title,
+  value,
+  helper,
+  accent = "blue",
+  comparison,
+  comparisonLabel,
+}: {
+  title: string;
+  value: string;
+  helper: string;
+  accent?: "blue" | "green" | "violet";
+  comparison?: number | null;
+  comparisonLabel?: string;
+}) {
+  const accentStyles =
+    accent === "green"
+      ? "bg-emerald-50 text-emerald-700 ring-emerald-100"
+      : accent === "violet"
+        ? "bg-violet-50 text-violet-700 ring-violet-100"
+        : "bg-blue-50 text-blue-700 ring-blue-100";
+
+  return (
+    <div className="rounded-[24px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-5 shadow-[0_16px_40px_rgba(15,23,42,0.08)]">
+      <div className={`inline-flex rounded-full px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] ring-1 ${accentStyles}`}>
+        {title}
+      </div>
+      <p className="mt-4 text-4xl font-black tracking-tight text-[var(--bb-text-primary,#101827)]">{value}</p>
+      {typeof comparison === "number" && comparisonLabel ? (
+        <div className="mt-3">
+          <ComparisonChip change={comparison} label={comparisonLabel} />
+        </div>
+      ) : null}
+      <p className="mt-2 text-sm font-semibold text-[var(--bb-text-secondary,#64748b)]">{helper}</p>
+    </div>
+  );
+}
+
+function SimpleAnalyticsChart({
+  points,
+  valueFormatter,
+}: {
+  points: Array<{ label: string; value: number }>;
+  valueFormatter?: (value: number) => string;
+}) {
+  if (!points.length) {
+    return (
+      <div className="flex h-[220px] items-center justify-center rounded-[22px] border border-dashed border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#f8fbff)] text-sm font-semibold text-[var(--bb-text-secondary,#64748b)]">
+        No data yet for this timeframe.
+      </div>
+    );
+  }
+
+  const width = 680;
+  const height = 220;
+  const leftPad = 14;
+  const rightPad = 14;
+  const topPad = 22;
+  const bottomPad = 34;
+  const maxValue = Math.max(...points.map((point) => point.value), 1);
+  const stepX = points.length === 1 ? 0 : (width - leftPad - rightPad) / (points.length - 1);
+  const coordinates = points.map((point, index) => {
+    const x = leftPad + index * stepX;
+    const normalized = point.value / maxValue;
+    const y = topPad + (1 - normalized) * (height - topPad - bottomPad);
+    return { ...point, x, y };
+  });
+  const linePath = coordinates.map((point, index) => `${index === 0 ? "M" : "L"} ${point.x} ${point.y}`).join(" ");
+  const areaPath = `${linePath} L ${coordinates[coordinates.length - 1]?.x ?? leftPad} ${height - bottomPad} L ${coordinates[0]?.x ?? leftPad} ${height - bottomPad} Z`;
+  const yTicks = 4;
+  const tickValues = Array.from({ length: yTicks }, (_, index) => Math.round((maxValue / (yTicks - 1)) * (yTicks - 1 - index)));
+
+  return (
+    <div className="overflow-hidden rounded-[24px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-4 shadow-[0_16px_40px_rgba(15,23,42,0.08)]">
+      <div className="h-[260px]">
+        <svg viewBox={`0 0 ${width} ${height}`} className="h-full w-full" preserveAspectRatio="none" role="img" aria-label="Analytics chart">
+          <defs>
+            <linearGradient id="analytics-area-gradient" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stopColor="#2563eb" stopOpacity="0.24" />
+              <stop offset="100%" stopColor="#2563eb" stopOpacity="0.03" />
+            </linearGradient>
+          </defs>
+          {tickValues.map((tick, index) => {
+            const y = topPad + (index / (tickValues.length - 1 || 1)) * (height - topPad - bottomPad);
+            return (
+              <g key={`${tick}-${index}`}>
+                <line x1={leftPad} x2={width - rightPad} y1={y} y2={y} stroke="#dbe7f3" strokeDasharray="4 6" />
+                <text x={0} y={y + 4} fontSize="12" fill="#7c8aa5">
+                  {valueFormatter ? valueFormatter(tick) : formatNumber(tick)}
+                </text>
+              </g>
+            );
+          })}
+          <path d={areaPath} fill="url(#analytics-area-gradient)" />
+          <path d={linePath} fill="none" stroke="#2563eb" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+          {coordinates.map((point) => (
+            <g key={`${point.label}-${point.x}`}>
+              <circle cx={point.x} cy={point.y} r="6.5" fill="#2563eb" />
+              <circle cx={point.x} cy={point.y} r="3" fill="#ffffff" />
+            </g>
+          ))}
+          {coordinates.map((point) => (
+            <text key={`label-${point.label}`} x={point.x} y={height - 8} textAnchor="middle" fontSize="12" fill="#64748b">
+              {point.label}
+            </text>
+          ))}
+        </svg>
+      </div>
+    </div>
+  );
+}
+
+function SimpleAnalyticsChartCard({
+  metric,
+  windowKey,
+  value,
+  points,
+  loading,
+  comparison,
+}: {
+  metric: Exclude<SimpleAnalyticsMetric, "overview">;
+  windowKey: JourneyWindow;
+  value: string;
+  points: Array<{ label: string; value: number }>;
+  loading: boolean;
+  comparison?: number | null;
+}) {
+  const accentClass = getSimpleMetricAccent(metric);
+  const granularity = getSimpleMetricGranularity(windowKey);
+  const timeframeLabel = SIMPLE_WINDOW_OPTIONS.find((option) => option.key === windowKey)?.label || "Selected timeframe";
+
+  return (
+    <section className="rounded-[28px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-5 shadow-[0_18px_46px_rgba(15,23,42,0.08)]">
+      <div className="flex items-start justify-between gap-4">
+        <div className="min-w-0">
+          <p className="text-[15px] font-bold text-[var(--bb-text-secondary,#64748b)]">{getSimpleMetricTitle(metric)}</p>
+          <div className="mt-2 flex flex-wrap items-center gap-3">
+            <p className="text-[44px] font-black leading-none tracking-tight text-[var(--bb-text-primary,#101827)]">
+              {loading ? "..." : value}
+            </p>
+            {typeof comparison === "number" ? <ComparisonChip change={comparison} label={getComparisonLabel(windowKey)} /> : null}
+          </div>
+          <p className="mt-2 text-sm font-semibold text-[var(--bb-text-secondary,#64748b)]">
+            {getSimpleMetricHelper(metric)}
+          </p>
+          <p className="mt-1 text-sm text-[var(--bb-text-muted,#94a3b8)]">
+            {timeframeLabel}
+          </p>
+        </div>
+        <div className="shrink-0 rounded-[18px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] px-4 py-3 text-sm font-bold text-[var(--bb-text-primary,#101827)] shadow-[0_8px_20px_rgba(15,23,42,0.05)]">
+          {granularity}
+        </div>
+      </div>
+      <div className="mt-5">
+        <SimpleAnalyticsChart points={points} valueFormatter={metric === "revenue" ? formatMoneyValue : undefined} />
+      </div>
+    </section>
+  );
 }
 
 function MetricCard({
@@ -2741,10 +3010,11 @@ function VisitorJourneyTableSection({
   );
 }
 
-function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {}) {
+function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?: boolean; legacy?: boolean } = {}) {
   const [isOwner, setIsOwner] = useState(false);
   const [authChecked, setAuthChecked] = useState(false);
-  const [windowKey, setWindowKey] = useState<JourneyWindow>("today");
+  const [windowKey, setWindowKey] = useState<JourneyWindow>("7d");
+  const [simpleMetric, setSimpleMetric] = useState<SimpleAnalyticsMetric>("overview");
   const [data, setData] = useState<AnalyticsResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [detailsLoading, setDetailsLoading] = useState(false);
@@ -2780,6 +3050,23 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
   useEffect(() => {
     if (!authChecked || !isOwner) return;
     async function loadAnalytics() {
+      if (!legacy) {
+        setLoading(true);
+        setDetailsLoading(false);
+        setError(null);
+        try {
+          const { data: sessionData } = await supabase.auth.getSession();
+          const token = sessionData.session?.access_token;
+          if (!token) throw new Error("Owner session expired. Please sign in again.");
+          const json = await loadAdminAnalytics<AnalyticsResponse>(windowKey, token, { force: Boolean(getCachedAdminAnalytics<AnalyticsResponse>(windowKey)) });
+          setData(json);
+        } catch (loadError) {
+          setError(loadError instanceof Error ? loadError.message : "Could not load analytics.");
+        } finally {
+          setLoading(false);
+        }
+        return;
+      }
       const cachedFull = getCachedAdminAnalytics<AnalyticsResponse>(windowKey);
       const cachedOverview = getCachedAdminAnalyticsOverview<AnalyticsResponse>(windowKey);
       if (cachedFull || cachedOverview) {
@@ -2813,7 +3100,7 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
       }
     }
     void loadAnalytics();
-  }, [authChecked, isOwner, windowKey]);
+  }, [authChecked, isOwner, legacy, windowKey]);
 
   useEffect(() => {
     if (!authChecked || !isOwner) return;
@@ -2943,6 +3230,126 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
         <div className="max-w-md rounded-2xl border border-[var(--bb-card-border,#374151)] bg-[var(--bb-card,#19212c)] p-6 text-center shadow-sm">
           <h1 className="text-2xl font-bold text-[var(--bb-text-primary,#f9fafb)]">Owner analytics only</h1>
           <p className="mt-2 text-sm text-[var(--bb-text-secondary,#d1d5db)]">This dashboard is only available to the Bible Buddy owner account.</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!legacy) {
+    const totalUsersLabel = formatNumber(businessMetrics.totalUsers || 0);
+    const revenueLabel = stripeRevenue?.revenueRange || stripeRevenue?.revenue30d || "$0";
+    const signupsLabel = formatNumber((data?.simpleSeries?.signups || []).reduce((sum, point) => sum + point.value, 0));
+    const upgradesLabel = formatNumber((data?.simpleSeries?.upgrades || []).reduce((sum, point) => sum + point.value, 0));
+    const chartSeries = simpleMetric === "overview" ? [] : getSimpleMetricSeries(simpleMetric, data, stripeRevenue);
+    const comparisonLabel = getComparisonLabel(windowKey);
+    const signupComparison = data?.simpleComparisons?.signups?.change;
+    const upgradesComparison = data?.simpleComparisons?.upgrades?.change;
+    const revenueComparison = stripeRevenue?.comparison?.change;
+
+    return (
+      <div className={`bb-analytics-page ${embedded ? "min-h-0" : "min-h-screen bg-[var(--bb-background,#f4f8fc)]"} text-[var(--bb-text-primary,#101827)]`}>
+        <div className={embedded ? "min-h-0" : "min-h-screen"}>
+          <main className={`min-w-0 ${embedded ? "rounded-[28px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] px-4 py-5 shadow-[0_18px_46px_rgba(15,23,42,0.10)] sm:px-5" : "mx-auto max-w-5xl px-4 py-6 sm:px-6"}`}>
+            <div className="space-y-5">
+              <div className="border-b border-[var(--bb-card-border,#e5edf5)] pb-5">
+                <div className="flex items-center gap-3">
+                  <div className="grid h-12 w-12 place-items-center rounded-2xl bg-[linear-gradient(180deg,#f8fbff_0%,#edf4ff_100%)] text-blue-600 ring-1 ring-blue-100 shadow-[0_10px_26px_rgba(37,99,235,0.10)]">
+                    <Icon name="analytics" />
+                  </div>
+                  <div>
+                    <h1 className="text-[42px] font-black leading-none tracking-tight text-[var(--bb-text-primary,#101827)] sm:text-[48px]">Analytics</h1>
+                    <p className="mt-2 text-sm font-semibold text-[var(--bb-text-secondary,#64748b)]">Users, signups, revenue, and upgrades at a glance.</p>
+                  </div>
+                </div>
+              </div>
+
+              {error ? (
+                <div className="rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm font-semibold text-rose-700">{error}</div>
+              ) : null}
+
+              <SimpleAnalyticsKpiCard
+                title="Total Users (All Time)"
+                value={loading ? "..." : totalUsersLabel}
+                helper="Registered + guest users"
+              />
+
+              <div className="grid grid-cols-2 gap-3">
+                <label className="space-y-2">
+                  <span className="block text-sm font-bold text-[var(--bb-text-primary,#101827)]">Overview</span>
+                  <select
+                    value={simpleMetric}
+                    onChange={(event) => setSimpleMetric(event.target.value as SimpleAnalyticsMetric)}
+                    className="h-14 w-full rounded-[18px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] px-4 text-base font-semibold text-[var(--bb-text-primary,#101827)] shadow-[0_12px_30px_rgba(15,23,42,0.06)] outline-none transition focus:border-blue-400 focus:ring-4 focus:ring-blue-100"
+                  >
+                    {SIMPLE_METRIC_OPTIONS.map((option) => (
+                      <option key={option.key} value={option.key}>{option.label}</option>
+                    ))}
+                  </select>
+                </label>
+                <label className="space-y-2">
+                  <span className="block text-sm font-bold text-[var(--bb-text-primary,#101827)]">Timeframe</span>
+                  <select
+                    value={windowKey}
+                    onChange={(event) => setWindowKey(event.target.value as JourneyWindow)}
+                    className="h-14 w-full rounded-[18px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] px-4 text-base font-semibold text-[var(--bb-text-primary,#101827)] shadow-[0_12px_30px_rgba(15,23,42,0.06)] outline-none transition focus:border-blue-400 focus:ring-4 focus:ring-blue-100"
+                  >
+                    {SIMPLE_WINDOW_OPTIONS.map((option) => (
+                      <option key={option.key} value={option.key}>{option.label}</option>
+                    ))}
+                  </select>
+                </label>
+              </div>
+
+              {simpleMetric === "overview" ? (
+                <div className="grid gap-3 md:grid-cols-3">
+                  <SimpleAnalyticsKpiCard
+                    title="Signups"
+                    value={loading ? "..." : signupsLabel}
+                    helper="Accounts created in this timeframe"
+                    accent="green"
+                    comparison={windowKey === "lifetime" ? null : signupComparison}
+                    comparisonLabel={windowKey === "lifetime" ? "" : comparisonLabel}
+                  />
+                  <SimpleAnalyticsKpiCard
+                    title="Revenue"
+                    value={stripeRevenueLoading ? "..." : revenueLabel}
+                    helper="Stripe cash collected in this timeframe"
+                    accent="blue"
+                    comparison={windowKey === "lifetime" ? null : revenueComparison}
+                    comparisonLabel={windowKey === "lifetime" ? "" : comparisonLabel}
+                  />
+                  <SimpleAnalyticsKpiCard
+                    title="Upgrades"
+                    value={loading ? "..." : upgradesLabel}
+                    helper="Users who upgraded to Pro"
+                    accent="violet"
+                    comparison={windowKey === "lifetime" ? null : upgradesComparison}
+                    comparisonLabel={windowKey === "lifetime" ? "" : comparisonLabel}
+                  />
+                </div>
+              ) : (
+                <SimpleAnalyticsChartCard
+                  metric={simpleMetric}
+                  windowKey={windowKey}
+                  value={getSimpleMetricTotal(simpleMetric, data, stripeRevenue)}
+                  points={chartSeries}
+                  loading={loading || stripeRevenueLoading}
+                  comparison={windowKey === "lifetime" ? null : simpleMetric === "revenue" ? revenueComparison : simpleMetric === "signups" ? signupComparison : upgradesComparison}
+                />
+              )}
+
+              <Link
+                href="/admin/analytics/advanced"
+                className="flex min-h-[64px] w-full items-center justify-between rounded-[22px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] px-5 py-4 text-left shadow-[0_16px_40px_rgba(15,23,42,0.08)] transition hover:border-blue-300 hover:bg-[var(--bb-surface-soft,#f8fbff)]"
+              >
+                <span>
+                  <span className="block text-lg font-black text-[var(--bb-text-primary,#101827)]">View Advanced Analytics</span>
+                  <span className="mt-1 block text-sm font-semibold text-[var(--bb-text-secondary,#64748b)]">Funnels, cohorts, retention, traffic sources, and detailed reports</span>
+                </span>
+                <span className="text-blue-600"><Icon name="arrow" /></span>
+              </Link>
+            </div>
+          </main>
         </div>
       </div>
     );
@@ -3653,6 +4060,6 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
   );
 }
 
-export default function AnalyticsPage({ embedded = false }: { embedded?: boolean }) {
-  return <AnalyticsPageContent embedded={embedded} />;
+export default function AnalyticsPage({ embedded = false, legacy = false }: { embedded?: boolean; legacy?: boolean }) {
+  return <AnalyticsPageContent embedded={embedded} legacy={legacy} />;
 }

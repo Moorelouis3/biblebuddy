@@ -1,6 +1,6 @@
 "use client";
 
-export type AdminAnalyticsWindow = "today" | "yesterday" | "24h" | "7d" | "30d" | "this_month" | "lifetime";
+export type AdminAnalyticsWindow = "today" | "yesterday" | "24h" | "7d" | "30d" | "90d" | "this_month" | "lifetime";
 
 type CacheEntry<T> = {
   data: T | null;

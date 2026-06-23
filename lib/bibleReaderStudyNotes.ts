@@ -4198,7 +4198,7 @@ Before God fills the earth with life, He first creates the order that life will 
       icon: "☁️",
       phrases: [
         [
-          "☁️ Let There Be An Expanse",
+          "☁️ Let There Be A Firmament",
           `The word expanse means a spread-out space.
 
 Think of it as the sky stretching above the earth.
@@ -4246,7 +4246,7 @@ The waters below refer to the oceans, seas, rivers, and waters on the earth.
 The important point is that God is separating and organizing His creation.`,
         ],
         [
-          "🌌 Called The Expanse Sky",
+          "🌌 Called The Firmament Heaven",
           `In Genesis 1:1, the heavens and the earth refers to all creation.
 
 Here, God is naming the expanse as the sky above the earth.
@@ -4644,7 +4644,7 @@ God fills the heavens He created on Day 2.
 The sky now has life moving through it.`,
         ],
         [
-          "🐋 God Created Large Sea Creatures",
+          "🐋 Great Whales",
           `Moses could have simply said sea creatures.
 
 But the verse specifically mentions the large sea creatures.
@@ -5019,7 +5019,7 @@ Then He invites mankind to participate in caring for it.`,
       icon: "🍎",
       phrases: [
         [
-          "🌱 Every Seed Bearing Plant",
+          "🌱 Herb Yielding Seed",
           `God provides food before mankind ever asks for it.
 
 Before Adam works.
@@ -5041,7 +5041,7 @@ God does not create mankind and then leave them to figure it out.
 He provides for them.`,
         ],
         [
-          "🌳 Every Tree Bearing Fruit",
+          "🌳 Fruit Tree Yielding Fruit",
           `God's provision is abundant.
 
 🍎 Fruit trees
@@ -24448,6 +24448,4674 @@ applyPersonalLeviticusSeventeenThroughTwentyStudySections();
 applyPersonalLeviticusTwentyOneThroughTwentySevenStudySections();
 applyPersonalNumbersOneThroughNineStudySections();
 applyPersonalNumbersTenThroughTwentyFiveStudySections();
+
+function applyGenesisOneDeepWordExplanations() {
+  const reviewedGenesisOnePhrases: Record<string, Array<[string, string]>> = {
+    "Genesis 1:1-2": [
+      [
+        "🌅 In The Beginning",
+        `These words mean the beginning of creation, not the beginning of God.
+
+God did not start existing here. He was already there before heaven, earth, light, time, and human history began.
+
+🌅 The beginning of creation
+👑 God exists before all things
+🕰️ Time and history begin here
+📖 The Bible starts with God, not man
+
+This phrase teaches that the world has a beginning, but God does not.`,
+      ],
+      [
+        "🌎 Created The Heaven And The Earth",
+        `This phrase means God made the whole created world.
+
+"Heaven and earth" is a way of speaking about everything above and below. Moses is not only naming the sky and the land. He is saying all creation came from God.
+
+🌌 The heavens above
+🌍 The earth below
+🙌 All creation comes from God
+📖 The whole world is introduced at once
+
+This is the summary statement before the chapter begins showing creation day by day.`,
+      ],
+      [
+        "🌀 Without Form And Void",
+        `Without form means the earth was not yet shaped into an ordered world.
+
+Void means it was empty, unfilled, and not yet prepared for life. The earth was real, but it was still unfinished.
+
+🌀 Without form means unshaped
+📭 Void means empty or unfilled
+🛠️ Creation is unfinished here
+📖 God will form and fill the world
+
+The phrase shows the earth before God arranges it into a place fit for life.`,
+      ],
+      [
+        "🌑 Darkness Was Upon The Face Of The Deep",
+        `This phrase describes the world before light was spoken.
+
+Darkness covered everything, and the deep means the great watery depths covering the earth. The world existed, but it was still dark and unprepared.
+
+🌑 Darkness covered the world
+🌊 The deep means the great waters
+💡 Light had not yet been spoken
+📖 Creation is still unfinished here
+
+The phrase helps the reader picture the world before God begins bringing order to it.`,
+      ],
+      [
+        "🕊️ The Spirit Of God Moved",
+        `This means God's Spirit was present and active over the waters.
+
+The word moved carries the idea of hovering. The world may look dark and unfinished, but it is not abandoned. God is already there and already preparing it.
+
+🕊️ God's Spirit is present
+🌊 He moves over the waters
+👀 Creation is under God's care
+📖 God is preparing the world for order and life
+
+The phrase teaches that God's presence comes before the finished beauty of creation appears.`,
+      ],
+    ],
+    "Genesis 1:3-5": [
+      [
+        "💡 Let There Be Light",
+        `These are the first recorded words God speaks in Scripture.
+
+God brings light into existence by His command alone. The sun, moon, and stars do not appear until Day 4, so light does not ultimately come from them. It comes because God speaks.
+
+💡 Light begins by God's command
+🗣️ God creates by speaking
+☀️ The sun is not the source of all light
+👑 God's word rules creation
+
+This phrase teaches that creation depends on God, not the other way around.`,
+      ],
+      [
+        "✨ And There Was Light",
+        `God does not struggle, search, or build with tools.
+
+He speaks, and light appears. Genesis wants the reader to feel the ease of God's power. What He says becomes reality.
+
+🗣️ God said it
+✨ It happened
+👑 His word has authority
+📖 Creation responds to its Maker
+
+The phrase shows the power of God's word from the very first day.`,
+      ],
+      [
+        "✅ God Saw That It Was Good",
+        `When God calls something good, He means it is right, fitting, and exactly as He intended.
+
+This is more than saying light is pleasant. It means light is functioning according to God's design.
+
+✅ Right
+✅ Ordered
+✅ Fitting its purpose
+👀 God approves His work
+
+The phrase teaches that creation begins in goodness because it comes from a good Creator.`,
+      ],
+      [
+        "⚖️ Divided The Light From The Darkness",
+        `God does not leave light and darkness mixed together without order.
+
+He separates them and gives each its place. God is not only making things. He is arranging them.
+
+🌞 Light has its place
+🌑 Darkness has its place
+⚖️ Creation receives boundaries
+📖 Order replaces what was unformed
+
+The phrase shows that God's world is built with rhythm, distinction, and purpose.`,
+      ],
+      [
+        "🌞 Called The Light Day",
+        `God gives the light a name: Day.
+
+In Scripture, naming often shows authority. God names what belongs to Him and what He rules.
+
+📛 Day is named by God
+👑 Naming shows authority
+📖 Time begins to take shape
+
+The phrase reminds the reader that even the ordinary rhythm of day belongs to God.`,
+      ],
+      [
+        "🌙 Called The Darkness Night",
+        `God also gives darkness a name: Night.
+
+Darkness is not outside His control. He names it just as He names the day.
+
+📛 Night is named by God
+🌑 Darkness has its place
+⚖️ The cycle of time is forming
+
+The phrase shows that both day and night exist inside God's ordered world.`,
+      ],
+      [
+        "🌇 Evening And Morning: The First Day",
+        `This marks the completion of Day One.
+
+🌆 Evening closes the day
+🌅 Morning opens the next
+📅 The first day is complete
+⏱️ Creation moves with order
+
+The rhythm of creation has begun. Before God fills the earth with life, He first creates the order that life will live within.`,
+      ],
+    ],
+    "Genesis 1:6-8": [
+      [
+        "☁️ Let There Be A Firmament",
+        `Firmament is the KJV word for a spread-out space.
+
+It refers to the heaven stretched above the earth. God creates this space between the waters so the world can begin to take shape.
+
+🌊 Waters above
+☁️ Firmament in the middle
+🌊 Waters below
+📖 God makes room inside creation
+
+The phrase explains the firmament as part of God's ordered design.`,
+      ],
+      [
+        "🌊 In The Midst Of The Waters",
+        `In the midst means in the middle.
+
+God places the firmament between the waters above and the waters below. This wording matters because it tells the reader exactly where the firmament is placed.
+
+🌊 Waters above
+☁️ Heaven in the middle
+🌊 Waters below
+⚖️ God creates separation and order
+
+The phrase shows God making a structured world, not a confused one.`,
+      ],
+      [
+        "🌊 Divide The Waters From The Waters",
+        `Before this, the waters are described as together.
+
+Now God divides the waters from the waters. Many readers understand the waters above as the moisture and clouds above, while the waters below are the seas on the earth.
+
+🌊 Waters above
+☁️ Firmament between
+🌊 Waters below
+📖 God organizes creation
+
+The phrase matters because it shows God setting boundaries where there were none before.`,
+      ],
+      [
+        "🌌 Called The Firmament Heaven",
+        `Here the reader needs to notice an important word.
+
+In Genesis 1:1, heaven refers broadly to the created realm above the earth. Here, heaven refers more specifically to the sky or firmament above the earth.
+
+☁️ Heaven here means the sky above
+🐦 Fowls will later fly there
+🌧️ Clouds and rain belong there
+👑 God names it because He rules it
+
+The phrase helps a new reader see that heaven can speak either of the whole created heavens or of the sky above us, depending on the context.`,
+      ],
+      [
+        "🌇 Evening And Morning: The Second Day",
+        `This marks the completion of Day Two.
+
+🌆 Evening closes the work
+🌅 Morning opens what comes next
+☁️ The firmament stands in place
+🌊 The waters are divided
+
+The second day ends with the world more ordered and more ready for life.`,
+      ],
+    ],
+    "Genesis 1:9-13": [
+      [
+        "🌊 Let The Waters Be Gathered Together",
+        `Until now, the earth is described as covered by water.
+
+God gathers the waters together so dry land can appear.
+
+🌊 Waters are gathered
+🏔️ Dry land appears
+⚖️ Boundaries are established
+📖 Order continues
+
+The phrase shows God making room for life on the earth.`,
+      ],
+      [
+        "🏔️ Let The Dry Land Appear",
+        `As the waters gather, the dry land appears.
+
+This matters because God is making a real home for future life, not just creating scenery.
+
+🏔️ Land appears
+🌍 The earth becomes habitable
+🙌 God prepares before He fills
+
+The phrase shows God making a place where life can live.`,
+      ],
+      [
+        "🌍 Called The Dry Land Earth",
+        `God gives the dry land a name: Earth.
+
+Naming again shows authority. The earth belongs to the One who made and named it.
+
+📛 Earth is named by God
+👑 Naming shows authority
+📖 The world is being ordered
+
+The phrase reminds the reader that the earth is God's possession before it is ours.`,
+      ],
+      [
+        "🌊 Called The Gathering Of Waters Seas",
+        `The gathered waters also receive a name: Seas.
+
+The world is no longer one undefined mass. Land and sea now have distinct places.
+
+🌊 Seas are named
+🏔️ Land and water are distinguished
+📖 Creation is becoming organized
+
+The phrase shows God giving structure to the world He made.`,
+      ],
+      [
+        "🌱 Let The Earth Bring Forth Grass",
+        `Now the earth begins to produce plant life.
+
+The world is no longer only land and water. It is becoming a place full of living growth.
+
+🌱 Grass appears
+🌿 Plants begin to grow
+📖 The earth is being filled
+
+The phrase marks the beginning of life growing up from the ground God prepared.`,
+      ],
+      [
+        "🌾 Yielding Seed",
+        `This is the idea behind the KJV wording herb yielding seed.
+
+It means the plants God makes are able to reproduce and keep producing more life. The seed already carries the future harvest inside it.
+
+🌾 Seed can produce more seed
+🌱 Life can continue
+📈 Growth is built into creation
+📖 God makes life fruitful for the future
+
+The phrase shows that God creates life with the power to keep multiplying.`,
+      ],
+      [
+        "🌳 Fruit Tree Yielding Fruit",
+        `God makes trees that do not only exist. They bear food, and that fruit carries seed for future growth.
+
+Before people are even created, God is already preparing provision for them.
+
+🌳 Trees are made to bear fruit
+🍎 Food is prepared before man arrives
+🌱 Fruit carries seed for more life
+🙌 God's provision comes early
+
+The phrase teaches that the Creator prepares a fruitful world before He places mankind in it.`,
+      ],
+      [
+        "✅ God Saw That It Was Good",
+        `God looks at His work and calls it good.
+
+Good means the land, seas, and plant life fit His wise design and are ready for the purpose He intends.
+
+✅ Ordered
+✅ Purposeful
+✅ Fitting His design
+👀 Approved by the Creator
+
+The phrase teaches that the earth and its growth are good because they come from God's hand.`,
+      ],
+      [
+        "🌇 Evening And Morning: The Third Day",
+        `This marks the completion of Day Three.
+
+🌆 Evening
+🌅 Morning
+📅 Third Day
+
+The waters have been gathered, the land has appeared, and the earth is now growing life. God is preparing the world before He fills it with creatures.`,
+      ],
+    ],
+    "Genesis 1:14-19": [
+      [
+        "💡 Let There Be Lights In The Firmament Of The Heaven",
+        `On Day 1, God created light.
+
+On Day 4, He creates the lights that govern that light in the heavens. These are appointed lights with a purpose inside God's world.
+
+☀️ Sun
+🌙 Moon
+⭐ Stars
+📖 Lights with assigned roles
+
+The phrase shows God giving the heavens visible rulers for time, rhythm, and order.`,
+      ],
+      [
+        "⚖️ To Divide The Day From The Night",
+        `God gives the lights a purpose.
+
+Light and darkness were already separated on Day 1. Now God creates the heavenly rulers that govern that pattern.
+
+🌞 Day
+🌙 Night
+⚖️ Distinction continues
+📖 Day 4 matches Day 1
+
+The phrase shows God filling what He previously formed.`,
+      ],
+      [
+        "📅 For Signs, Seasons, Days, And Years",
+        `The lights do more than shine. They help mark time.
+
+Signs means visible markers in the sky. Seasons means recurring times and patterns. Days and years mean the ordinary measuring of life.
+
+📅 Signs mark time visibly
+🍂 Seasons bring recurring patterns
+🌅 Days form daily rhythm
+📆 Years shape memory and history
+
+This phrase explains how God gives creation a calendar and rhythm that human life will depend on.`,
+      ],
+      [
+        "☀️ The Greater Light",
+        `The greater light is the sun.
+
+It is greater because it rules the day, not because it is a god.
+
+☀️ It rules the day
+🌡️ It warms the earth
+🌱 It helps sustain life
+👑 It still serves under God
+
+The phrase lowers the sun from an object of worship to a servant inside God's creation.`,
+      ],
+      [
+        "🌙 The Lesser Light",
+        `The lesser light is the moon.
+
+It is lesser not because it is unimportant, but because it serves a different role than the greater light.
+
+🌙 Light for the night
+📆 Helps mark time
+🌊 Serves the order of creation
+👑 Created by the same God as the sun
+
+The phrase teaches difference of role, not difference of Creator.`,
+      ],
+      [
+        "⭐ He Made The Stars Also",
+        `Moses mentions the stars in only a few words, but those words are powerful.
+
+Ancient people often treated the stars as divine or controlling forces. Genesis cuts through that by saying simply that God made them too.
+
+⭐ The stars are created
+🌌 They are not gods
+👑 They belong to God
+📖 Even the heavens are under His rule
+
+The phrase teaches that the largest lights in the universe are still only part of creation.`,
+      ],
+      [
+        "🌌 God Set Them In The Firmament Of The Heaven",
+        `God did not only create the lights. He set them where they belonged.
+
+Everything has an assignment and a place within His order.
+
+☀️ Sun in its place
+🌙 Moon in its place
+⭐ Stars in their place
+📖 Creation is designed, not random
+
+The phrase shows God's wisdom in arranging what He creates.`,
+      ],
+      [
+        "👑 To Rule Over The Day And Over The Night",
+        `The sun and moon rule by serving the purpose God gave them.
+
+They do not rule independently. They rule under God's command.
+
+☀️ Rule the day
+🌙 Rule the night
+⚖️ Separate light from darkness
+👑 Even rulers in creation serve God
+
+The phrase shows that every created authority remains under the Creator's authority.`,
+      ],
+      [
+        "✅ God Saw That It Was Good",
+        `God looks at the lights and calls them good.
+
+✅ Ordered
+✅ Purposeful
+✅ Working as designed
+👀 Approved by the Creator
+
+The phrase reminds the reader that time, rhythm, and order are good gifts from God.`,
+      ],
+      [
+        "🌇 Evening And Morning: The Fourth Day",
+        `This marks the completion of Day Four.
+
+🌆 Evening
+🌅 Morning
+📅 Fourth Day
+
+The heavens now have their lights, and time now has visible markers. God continues preparing creation for the life still to come.`,
+      ],
+    ],
+    "Genesis 1:20-23": [
+      [
+        "🌊 Let The Waters Bring Forth Abundantly",
+        `Now God fills the waters He previously formed.
+
+The seas are no longer empty. They begin to swarm with living creatures.
+
+🐟 The waters are filled with life
+📈 Life increases abundantly
+📖 God fills what He formed earlier
+
+The phrase shows the sea becoming full, active, and alive by God's command.`,
+      ],
+      [
+        "🐦 Let Fowls Fly Above The Earth",
+        `The heaven is no longer empty either.
+
+God fills the heaven above the earth with fowls and winged creatures.
+
+🐦 Fowls fill the heaven
+☁️ Heaven above becomes alive
+📖 Day 5 fills what Day 2 formed
+
+The phrase shows God bringing life into the space He prepared.`,
+      ],
+      [
+        "🐋 Great Whales",
+        `Great whales refers to the great creatures of the sea.
+
+Moses slows down here so the reader sees that even the largest and most awe-inspiring creatures in the waters belong to God.
+
+🐋 Great creatures of the sea
+🌊 Nothing in the deep is outside God's rule
+👑 The largest creatures still have a Creator
+📖 The sea is part of God's ordered world
+
+The phrase teaches that even what feels huge, deep, or frightening is still under God's authority.`,
+      ],
+      [
+        "🌱 After Their Kind",
+        `This means each living thing reproduces according to the order God gave it.
+
+Fish produce fish. Fowls produce fowls. Life continues in structured ways, not random ones.
+
+🌱 Each creature reproduces by its kind
+📈 Life multiplies by God's order
+📖 Creation has built-in structure
+
+The phrase shows that fruitfulness in creation is ordered, not chaotic.`,
+      ],
+      [
+        "🙌 And God Blessed Them",
+        `This is the first blessing spoken in creation.
+
+God blesses the living creatures because they are meant to grow, spread, and fill the world He made.
+
+🙌 God blesses living creatures
+📈 Blessing is tied to multiplication
+📖 Life is meant to overflow
+
+The phrase shows God's favor resting on living, multiplying creation.`,
+      ],
+      [
+        "📈 Be Fruitful And Multiply",
+        `God does not create life to remain small.
+
+He commands the creatures to increase and fill the places prepared for them.
+
+📈 Grow
+📈 Multiply
+🌊 Fill the waters
+🐦 Fill the heaven
+
+The phrase shows that increase and fruitfulness are part of God's design from the beginning.`,
+      ],
+      [
+        "🌇 Evening And Morning: The Fifth Day",
+        `This marks the completion of Day Five.
+
+🌆 Evening
+🌅 Morning
+📅 Fifth Day
+
+What God formed on Day Two has now been filled with living creatures. The world is becoming more alive with each passing day.`,
+      ],
+    ],
+    "Genesis 1:24-25": [
+      [
+        "🦁 Let The Earth Bring Forth Living Creatures",
+        `Now God fills the dry land.
+
+The land that appeared on Day Three is no longer empty. It becomes full of animal life.
+
+🦁 Beasts
+🐄 Cattle
+🐾 Creeping things
+🐘 Beasts of the earth
+
+The phrase shows the same pattern again: God forms a place, then fills it.`,
+      ],
+      [
+        "🐄 Cattle",
+        `Cattle refers to animals that live close to human life.
+
+It includes animals such as oxen, sheep, and goats. God is already preparing the kind of world human beings will live in.
+
+🐄 Animals connected to daily life
+📖 God prepares a world fit for mankind
+🙌 Useful creatures are part of His design
+
+The phrase matters because God is already preparing the world mankind will enter.`,
+      ],
+      [
+        "🐾 Creeping Things",
+        `This phrase points to the smaller creatures that move low to the earth.
+
+It can include reptiles, insects, and other low-moving creatures. Nothing is too small to belong inside God's creation.
+
+🐾 Small creatures matter too
+📖 Nothing is too small for God's creation
+👑 Even lowly creatures belong to Him
+
+The phrase teaches that God's care and authority include even the smallest forms of land life.`,
+      ],
+      [
+        "🐘 Beasts Of The Earth",
+        `This phrase refers to the larger wild animals of the land.
+
+They may be strong and impressive, but they are still created beings, not powers outside God's control.
+
+🐘 Wild beasts
+👑 Powerful but created
+📖 Part of God's ordered world
+
+The phrase shows that even untamed strength exists under the Creator's rule.`,
+      ],
+      [
+        "✅ God Saw That It Was Good",
+        `God looks at the land creatures and calls them good.
+
+✅ Ordered
+✅ Living
+✅ Fitting His design
+👀 Ready for the next stage
+
+The phrase shows that the land is now properly filled and prepared for the creation of mankind.`,
+      ],
+    ],
+    "Genesis 1:26-28": [
+      [
+        "👤 Let Us Make Man",
+        `This is the first time God speaks this way in Genesis.
+
+Until now the commands have been let there be or let the earth bring forth. Here the wording slows down and gives special attention to mankind.
+
+👤 Humanity is introduced uniquely
+📖 The wording slows down here
+👀 Man is made with special intention
+
+The phrase shows that human beings are not just one more creature in the list.`,
+      ],
+      [
+        "🪞 In Our Image",
+        `Nothing else in creation is described this way.
+
+Being made in God's image does not mean people look physically like God. It means people uniquely reflect Him.
+
+🧠 Humans can think
+❤️ Humans can love
+⚖️ Humans can choose
+🎨 Humans can create and rule responsibly
+
+The phrase explains why human life has a unique dignity in Genesis 1.`,
+      ],
+      [
+        "🤝 After Our Likeness",
+        `Image and likeness are closely connected.
+
+God creates mankind to represent Him on the earth, not to replace Him. This is why every human life matters.
+
+👶 The child matters
+👵 The old matter
+👨 The strong matter
+👩 The weak matter
+
+The phrase teaches the dignity of every human life.`,
+      ],
+      [
+        "👑 Have Dominion",
+        `Dominion does not mean abuse. It means stewardship under God.
+
+Humanity is given responsibility over the creatures and the earth, but God remains the true owner.
+
+🐟 Fish
+🐦 Fowls
+🦁 Beasts
+🌍 Earth
+
+The phrase teaches responsible rule, not selfish control.`,
+      ],
+      [
+        "👨 Male And Female",
+        `God creates humanity as male and female.
+
+Both are created by God. Both belong to His design. Both share the dignity of bearing His image.
+
+👨 Male
+👩 Female
+🙌 Both created by God
+📖 Both share human dignity
+
+The phrase shows equality of worth at the beginning of the Bible story.`,
+      ],
+      [
+        "🙌 God Blessed Them",
+        `This is the first blessing spoken over mankind.
+
+God does not create human beings and leave them alone. He creates them and speaks blessing over them.
+
+🙌 Favor
+🙌 Purpose
+🙌 Provision
+🙌 Responsibility
+
+The phrase shows that human life begins under God's blessing.`,
+      ],
+      [
+        "📈 Be Fruitful And Multiply",
+        `This command is both a blessing and a responsibility.
+
+Human life is meant to grow, spread, and fill the world God has prepared.
+
+📈 Grow
+📈 Multiply
+🌍 Fill the earth
+📖 Human life is meant to continue
+
+The phrase shows that humanity was created to increase, not remain isolated.`,
+      ],
+      [
+        "🌍 Fill The Earth",
+        `The earth was created to be inhabited.
+
+God prepares the world and then sends mankind into it.
+
+🌍 Live in it
+🌍 Build in it
+🌍 Explore it
+🌍 Care for it
+
+The phrase shows that human beings are part of God's plan for the world He made.`,
+      ],
+      [
+        "🏔️ Subdue It",
+        `To subdue means to bring under wise management.
+
+This is not a command to destroy creation. It is a command to cultivate, govern, and develop it responsibly under God.
+
+🌱 Plant
+🏠 Build
+🐄 Care for creatures
+🌍 Develop the earth wisely
+
+The phrase explains human responsibility inside God's world.`,
+      ],
+    ],
+    "Genesis 1:29-31": [
+      [
+        "🌱 Herb Yielding Seed",
+        `This phrase means God provides plants that are not only edible, but also able to reproduce through seed.
+
+Before mankind ever asks for food, God has already prepared it.
+
+🌱 Herbs and plants are given for food
+🌾 Seed means the supply can continue
+🙌 God provides before man asks
+📖 Provision is built into creation
+
+The phrase shows that God's world is both fruitful and prepared.`,
+      ],
+      [
+        "🌳 Fruit Tree Yielding Fruit",
+        `God makes trees that bear food, and the fruit also carries seed for future growth.
+
+Creation is not only beautiful. It is nourishing and fruitful.
+
+🌳 Trees bear fruit by God's design
+🍎 Food is ready for mankind
+🌱 Fruit carries seed for future growth
+🙌 The Creator also provides
+
+The phrase shows abundance, provision, and continuing fruitfulness in God's world.`,
+      ],
+      [
+        "🐾 Food For Every Living Creature",
+        `God's care extends beyond mankind.
+
+Every living creature receives provision from the Creator.
+
+🦁 Beasts
+🐦 Fowls
+🐟 Fish
+🐄 Cattle
+
+The phrase teaches that creation is not surviving by accident. God sustains what He has made.`,
+      ],
+      [
+        "👀 God Saw Everything That He Had Made",
+        `Earlier in Genesis, God looked at individual parts of creation and called them good.
+
+Now He steps back and looks at everything together as one completed whole.
+
+🌌 The heavens
+🌍 The earth
+☀️ The lights
+🐟 The fish
+🐦 The fowls
+👤 Mankind
+
+The phrase shows the finished order and fullness of creation as a whole.`,
+      ],
+      [
+        "✅ It Was Very Good",
+        `Earlier God said creation was good. Now He says it was very good.
+
+The difference matters. The world is now formed, filled, and complete.
+
+✅ Nothing is missing
+✅ Nothing needs fixing
+✅ Everything fits God's design
+🙌 The finished creation is very good
+
+The phrase shows the strongest statement of goodness in the chapter.`,
+      ],
+      [
+        "🌇 Evening And Morning: The Sixth Day",
+        `This marks the completion of Day Six.
+
+🌆 Evening
+🌅 Morning
+📅 Sixth Day
+
+The beasts have been created, mankind has been created, blessing has been spoken, and food has been provided. The world is now filled, ordered, and prepared for life.`,
+      ],
+      [
+        "🍽️ To You It Shall Be For Meat",
+        `In older KJV English, meat here means food.
+
+God is telling mankind that the herbs and fruit trees are given for nourishment and provision.
+
+🍽️ Meat here means food
+🌱 Herbs are given
+🌳 Fruit trees provide
+🙌 God feeds what He creates
+
+The phrase reminds the reader that God not only makes life. He also provides what life needs.`,
+      ],
+    ],
+  };
+
+  for (const section of BIBLE_READER_STUDY_SECTIONS) {
+    const nextPhrases = reviewedGenesisOnePhrases[section.reference];
+    if (!nextPhrases) continue;
+
+    section.categories = section.categories.map((category) =>
+      category.id === "key-phrases"
+        ? {
+            ...category,
+            content: nextPhrases.map(([heading, body]) => formatBibleYearPhraseCard(heading, body, section.reference)),
+          }
+        : category,
+    );
+  }
+}
+
+applyGenesisOneDeepWordExplanations();
+
+function applyGenesisTwoDeepWordExplanations() {
+  const reviewedGenesisTwoPhrases: Record<string, Array<[string, string]>> = {
+    "Genesis 2:1-3": [
+      [
+        "✅ The Heavens And The Earth Were Finished",
+        `This means God's work of creating the world was completed.
+
+Finished does not mean God became tired or ran out of ideas. It means creation was fully made the way He intended.
+
+✅ Creation is complete
+🌌 Heaven is complete
+🌍 Earth is complete
+👑 God's work lacks nothing
+
+This phrase shows that the world did not begin unfinished forever. God brought it to completion.`,
+      ],
+      [
+        "🛑 God Finished His Work",
+        `This means God completed the work He had been doing through the six days.
+
+The wording matters because Genesis presents creation as intentional work with a real completion point.
+
+🛠️ God truly worked
+✅ His work reached completion
+📅 The six days had an end
+👑 The Creator finishes what He begins
+
+This phrase shows order, purpose, and completion in God's creation.`,
+      ],
+      [
+        "😌 He Rested On The Seventh Day",
+        `This does not mean God rested because He was weak or exhausted.
+
+It means He ceased from His work of creation. The work was done, so He entered rest.
+
+😌 Rest means ceasing from the work
+🛑 Creation work stopped
+✅ The world was complete
+📖 Rest begins after completion
+
+This phrase teaches that God's rest comes from finished work, not from tiredness.`,
+      ],
+      [
+        "🙌 God Blessed The Seventh Day",
+        `God sets the seventh day apart with blessing.
+
+Blessed means this day is given special favor and significance by God Himself.
+
+🙌 The seventh day receives blessing
+📅 One day is marked out from the others
+👑 God gives the day its meaning
+📖 Time itself can be set apart by God
+
+This phrase shows that the rhythm of time belongs to God, not just the things inside time.`,
+      ],
+      [
+        "🌌 And All The Host Of Them",
+        `Host means everything arranged within the heavens and the earth.
+
+It includes all the fullness of creation, the things above and the things below.
+
+🌌 The fullness of heaven
+🌍 The fullness of earth
+⭐ All that fills creation
+📖 Nothing is left outside God's work
+
+This phrase means the created world was not only started. It was fully furnished.`,
+      ],
+      [
+        "✨ Sanctified It",
+        `Sanctified means set apart as holy.
+
+God gives the seventh day a distinct place, not because the day made itself special, but because God marked it off for a holy purpose.
+
+✨ Sanctified means set apart
+📅 The seventh day is different
+🙏 Holiness touches time
+👑 God makes the day holy
+
+This phrase shows that what God sets apart becomes special because it belongs to Him in a unique way.`,
+      ],
+    ],
+    "Genesis 2:4-6": [
+      [
+        "📖 These Are The Generations Of The Heavens And Of The Earth",
+        `Generations does not mean heaven and earth had children.
+
+Here it means the account or story that comes from the heavens and the earth God made. Moses is moving from the broad creation week to the closer story of man's world.
+
+📖 Generations can mean the account that follows
+🌍 The focus shifts to life on earth
+👤 The story moves toward man
+🧭 Genesis 2 zooms in on creation
+
+This phrase introduces the next section of the creation story, not a family tree of heaven and earth.`,
+      ],
+      [
+        "🌌 Of The Heavens And Of The Earth",
+        `This phrase points back to the whole created world God made.
+
+Heavens and earth together means everything above and below. Genesis 2 is still talking about the same creation, but now from a closer angle.
+
+🌌 The heavens above
+🌍 The earth below
+📖 The same creation is still in view
+👀 The story is narrowing in focus
+
+This phrase reminds the reader that man's story begins inside God's already-created world.`,
+      ],
+      [
+        "🌱 No Plant Of The Field",
+        `This means cultivated field growth had not yet appeared in the way it later would.
+
+Genesis is not denying that God made plants in chapter 1. It is describing the earth before ordinary human farming life had begun.
+
+🌱 Field growth is not active yet
+🚜 Farming life has not begun
+📖 The scene is being narrowed
+👤 Man's role is about to matter
+
+This phrase prepares the reader for the creation of man and his work on the ground.`,
+      ],
+      [
+        "🌧️ The LORD God Had Not Caused It To Rain",
+        `This means rain had not yet been God's way of watering the earth.
+
+The wording matters because it shows the world was being sustained differently at this early stage.
+
+🌧️ Rain had not begun this way
+💧 God still provided water
+📖 The earth was cared for differently
+👑 God controls how creation is sustained
+
+This phrase teaches that even ordinary things like rain depend on God's ordering of the world.`,
+      ],
+      [
+        "👤 There Was Not A Man To Till The Ground",
+        `Till means work, cultivate, or serve the ground.
+
+The point is that human work had not started yet because man had not yet been made.
+
+👤 Man is not there yet
+🛠️ The ground has no human worker
+🌱 Human labor belongs to creation
+📖 Man's role is about to begin
+
+This phrase shows that mankind will have a real task in God's world, not just a passive existence.`,
+      ],
+      [
+        "💧 A Mist Went Up From The Earth",
+        `A mist is a rising moisture that watered the ground.
+
+Before rain is mentioned, God is already sustaining the earth with another source of water.
+
+💧 Moisture rises from the earth
+🌍 The ground is being watered
+🙌 God is already providing
+📖 Creation is cared for before man arrives
+
+This phrase shows God's provision at work even before ordinary human life begins.`,
+      ],
+    ],
+    "Genesis 2:7": [
+      [
+        "👐 Formed Man Of The Dust",
+        `Formed means shaped with intention, like a craftsman working carefully.
+
+Dust reminds man that his body comes from the earth and is not self-made. Human life is humble in origin, even though it is precious in God's hands.
+
+👐 Formed means shaped with purpose
+🪨 Dust points to humble origin
+👤 Man is made by God directly
+📖 Human life is crafted, not accidental
+
+This phrase teaches both humility and design in the making of man.`,
+      ],
+      [
+        "🌬️ Breathed Into His Nostrils",
+        `This shows God giving life personally to the man He formed.
+
+The image is close and intentional. Man does not simply appear alive. God gives him life directly.
+
+🌬️ God gives breath
+👤 Man receives life personally
+🙌 Life is a gift, not self-produced
+📖 Humanity has a special creation moment
+
+This phrase shows the personal care of God in the making of man.`,
+      ],
+      [
+        "👤 Man Became A Living Soul",
+        `This means man became a living person or living being.
+
+Soul here does not mean Adam received only an invisible part. It means the man, as a whole, became alive by God's gift of breath.
+
+👤 A living person
+🌬️ Life comes from God's breath
+🙌 Human life is given, not self-made
+📖 Man lives because God gives life
+
+This phrase shows that human life is personal, living, and God-given.`,
+      ],
+      [
+        "🌬️ Breath Of Life",
+        `This means the life-giving breath that comes from God.
+
+Adam is alive because God shares life with the man He formed from dust.
+
+🌬️ Breath comes from God
+👤 Dust becomes living man
+🙌 Life is received, not earned
+📖 God's breath makes the difference
+
+This phrase highlights the exact gift that turns formed dust into a living human being.`,
+      ],
+    ],
+    "Genesis 2:8-9": [
+      [
+        "🌳 The LORD God Planted A Garden",
+        `This means God prepared a special place for the man He made.
+
+The garden is not random wilderness. It is a place God Himself arranges for life, provision, and fellowship.
+
+🌳 God prepares the garden
+👑 The garden belongs to Him
+👤 Man is placed in a prepared place
+📖 God's care appears before man's work
+
+This phrase shows God as the One who makes a home before placing man in it.`,
+      ],
+      [
+        "📍 Eastward In Eden",
+        `This gives the garden a real location within the created world.
+
+Eden is the region, and the garden is planted there. Genesis wants the reader to picture a real place, not only a symbol.
+
+📍 A real location is given
+🌍 The garden belongs to the earth
+🧭 Eden names the region
+📖 The story is grounded in place
+
+This phrase helps the garden feel like part of real human history.`,
+      ],
+      [
+        "👤 There He Put The Man Whom He Had Formed",
+        `God does not create man and leave him nowhere.
+
+He places the man in the garden with purpose. The wording shows intention, placement, and care.
+
+👤 The man is placed by God
+🌳 He belongs in the garden
+🙌 God gives him a place
+📖 Human life is not aimless
+
+This phrase shows that man's life begins under God's direction, not by wandering.`,
+      ],
+      [
+        "🌱 Out Of The Ground Made The LORD God To Grow Every Tree",
+        `This means God caused the trees to grow from the ground He had made.
+
+The garden's life is not self-generated. God brings growth from the earth.
+
+🌱 Growth comes from God
+🌳 Trees rise from the ground
+🙌 The garden is provided by God
+📖 Life in Eden is sustained by Him
+
+This phrase shows God as the source of the garden's fruitfulness.`,
+      ],
+      [
+        "👀 Pleasant To The Sight And Good For Food",
+        `God did not make a world that only works.
+
+Pleasant to the sight means the trees were beautiful. Good for food means they were also useful and nourishing.
+
+👀 God made beauty
+🍎 God made provision
+🌳 The garden was lovely and useful
+🙌 Beauty and nourishment both come from God
+
+This phrase shows that God's creation is made for more than survival alone.`,
+      ],
+      [
+        "🌲 The Tree Of Life",
+        `This tree is singled out because it represents life in a special way inside the garden.
+
+Genesis does not explain every detail yet, but it clearly marks this tree as important.
+
+🌲 A unique tree is named
+💚 Life is connected to it
+📖 It will matter later in the story
+👀 The reader is meant to notice it
+
+This phrase sets apart one tree as especially tied to life in God's garden.`,
+      ],
+      [
+        "📍 In The Midst Of The Garden",
+        `In the midst means in the middle.
+
+This wording shows that the important trees are placed centrally, not hidden away at the edge.
+
+📍 In the middle
+👀 Easy to notice
+🌳 Important trees are central
+📖 The reader's attention is being directed
+
+This phrase helps show that these trees stand at the heart of the garden scene.`,
+      ],
+      [
+        "⚖️ The Tree Of The Knowledge Of Good And Evil",
+        `This tree is about moral knowledge and authority.
+
+The issue is not that knowledge itself is bad. The issue is that this tree represents a boundary where man must trust God's definition of good and evil.
+
+⚖️ A moral boundary is set
+👑 God defines good and evil
+🚧 Not every tree is given freely
+📖 Obedience will matter here
+
+This phrase introduces the tree that will later test whether man will trust God or himself.`,
+      ],
+    ],
+    "Genesis 2:10-14": [
+      [
+        "🌊 A River Went Out Of Eden",
+        `This means water flowed out from Eden to nourish the land.
+
+The garden is not pictured as dry or fragile. It is supplied with living water.
+
+🌊 Water flows from Eden
+🌱 The land is nourished
+🙌 God provides abundance
+📖 The garden is full of life
+
+This phrase shows Eden as a place of overflowing provision.`,
+      ],
+      [
+        "➗ It Was Parted And Became Four Heads",
+        `Parted means the river divided, and four heads means four river beginnings or branches.
+
+One river becomes four flowing directions from the same source.
+
+➗ One river divides
+🌊 Four branches are formed
+🧭 Water spreads outward
+📖 Life flows beyond one spot
+
+This phrase shows abundance spreading from Eden outward.`,
+      ],
+      [
+        "🌊 River One: Pishon",
+        `Pishon is the name of the first river branch.
+
+Genesis names it to ground the story in geography and to show Eden's rivers were treated as real features.
+
+🌊 A specific river is named
+📍 The story is tied to place
+📖 Eden is described concretely
+👀 Details matter in the account
+
+This phrase helps the reader see that Genesis is describing a world with real locations.`,
+      ],
+      [
+        "🌊 River Two: Gihon",
+        `Gihon is the second river named from Eden's flowing waters.
+
+The naming continues the sense that Eden is connected to a real world beyond the garden itself.
+
+🌊 Another branch is named
+🧭 Eden's water reaches outward
+📖 Geography is part of the story
+👀 The world of Genesis has real detail
+
+This phrase continues grounding the garden account in named places.`,
+      ],
+      [
+        "🌊 River Three: Hiddekel",
+        `Hiddekel is the third river named in the passage.
+
+Its mention shows that Eden's setting is being described with real directional and geographic detail.
+
+🌊 A third river is named
+📍 The account stays concrete
+🧭 Direction and place matter
+📖 Genesis is not speaking vaguely here
+
+This phrase adds to the realism of the garden world.`,
+      ],
+      [
+        "🌊 River Four: Euphrates",
+        `Euphrates is the fourth river named, and it is a well-known river name in Scripture.
+
+Its mention especially makes the setting feel tied to the wider world readers would recognize.
+
+🌊 A major river is named
+📖 The account connects to known geography
+🌍 Eden touches the wider world
+👀 The reader is meant to picture a real place
+
+This phrase helps anchor the garden story in the language of real rivers and regions.`,
+      ],
+    ],
+    "Genesis 2:15-17": [
+      [
+        "🛠️ To Dress It And To Keep It",
+        `To dress it means to work or tend the garden.
+
+To keep it means to guard, watch over, or care for it. This matters because work existed before sin and was part of God's good design.
+
+🛠️ Dress it means tend or work it
+👀 Keep it means guard or care for it
+🌱 Work existed before the fall
+📖 Adam receives responsibility from God
+
+This phrase shows that meaningful work and stewardship are part of human purpose from the beginning.`,
+      ],
+      [
+        "🍽️ Of Every Tree Thou Mayest Freely Eat",
+        `This is a statement of generosity before it is a statement of restriction.
+
+God gives Adam wide freedom in the garden. The command begins with abundance, not with lack.
+
+🍽️ Freedom is given
+🌳 Many trees are allowed
+🙌 God's generosity comes first
+📖 The command begins with provision
+
+This phrase shows that God's boundaries are set inside a much larger field of goodness.`,
+      ],
+      [
+        "🚫 But Of The Tree",
+        `This phrase introduces the one tree that is not given to Adam freely.
+
+The wording matters because it marks a real boundary in the middle of abundant provision.
+
+🚫 One tree is withheld
+🌳 The boundary is specific
+⚖️ Obedience will be tested here
+📖 Freedom still has limits
+
+This phrase shows that God's generosity does not erase His right to set boundaries.`,
+      ],
+      [
+        "⚖️ Knowledge Of Good And Evil",
+        `This phrase points to moral authority, not just information.
+
+Adam is being told there is a realm of judgment and definition that belongs to God.
+
+⚖️ Good and evil are not self-defined
+👑 God holds moral authority
+🚧 Man must trust God's wisdom
+📖 The boundary is spiritual, not random
+
+This phrase shows that obedience is tied to trusting God's right to define what is good and evil.`,
+      ],
+      [
+        "💀 Thou Shalt Surely Die",
+        `This is a strong warning, not a casual possibility.
+
+Surely die means death will truly follow disobedience. God is not giving an empty threat.
+
+💀 Death is the consequence
+⚠️ The warning is serious
+👑 God's word must be trusted
+📖 Disobedience has real results
+
+This phrase teaches that rebellion against God leads to death because His warning is true.`,
+      ],
+    ],
+    "Genesis 2:18-20": [
+      [
+        "💔 It Is Not Good",
+        `This is the first time in creation something is called not good.
+
+The problem is not evil in creation. The problem is incompleteness in the man's human situation.
+
+💔 Something is incomplete
+📖 This is the first not good
+👤 The issue concerns the man
+👀 The reader should feel the need here
+
+This phrase marks an important shift: even in a good world, man alone is not the finished picture.`,
+      ],
+      [
+        "👤 Man Should Be Alone",
+        `This means solitary human life is not God's full design for the man.
+
+Alone here points to the absence of a matching human companion.
+
+👤 The man is by himself
+💭 Human isolation is not the goal
+🤝 A companion is needed
+📖 Relationship belongs to creation
+
+This phrase shows that human beings were not made for isolated existence.`,
+      ],
+      [
+        "🤝 A Helper Comparable To Him",
+        `Helper does not mean weaker servant.
+
+It means real support, and comparable means suited to him, matching him as the right companion.
+
+🤝 Helper means real support
+👩 Comparable means suited or matching
+💪 The woman is not lesser
+📖 Man was not meant to live alone
+
+This phrase shows that the woman is created as the man's fitting partner, not as an afterthought.`,
+      ],
+      [
+        "🐾 God Brought Them To The Man",
+        `This means God presented the animals to Adam.
+
+The moment shows Adam exercising observation and authority, but it also helps reveal that none of the animals matches him.
+
+🐾 The animals are presented by God
+👤 Adam must observe them
+📛 Naming begins here
+📖 No true companion is found among them
+
+This phrase helps prepare the reader to see why a human companion is needed.`,
+      ],
+      [
+        "📛 The Man Gave Names",
+        `Naming shows recognition and authority.
+
+Adam is not creating the animals, but he is given the task of identifying them within God's world.
+
+📛 Adam names what he sees
+👑 Naming reflects delegated authority
+🧠 Man observes and distinguishes
+📖 Human rule begins with order and recognition
+
+This phrase shows man actively participating in the ordered world God made.`,
+      ],
+    ],
+    "Genesis 2:21-23": [
+      [
+        "😴 A Deep Sleep",
+        `This means God causes the man to sleep deeply while He acts.
+
+Adam does not create the woman or assist in making her. God alone performs this work.
+
+😴 Adam is put to sleep
+👑 God acts while man rests
+👩 The woman is God's work
+📖 This creation is fully God's doing
+
+This phrase shows that the woman's creation comes from God's direct action, not man's invention.`,
+      ],
+      [
+        "🦴 One Of His Ribs",
+        `The rib shows that the woman is made from the man in a close and meaningful way.
+
+The point is not to reduce her to a body part. It is to show shared human nature and deep connection.
+
+🦴 She comes from the man
+👥 They share the same human nature
+🤝 Their bond is close
+📖 The woman is not a separate kind of being
+
+This phrase helps explain why the man immediately recognizes her as truly corresponding to him.`,
+      ],
+      [
+        "👩 God Made A Woman",
+        `This means God built or fashioned the woman from what He had taken from the man.
+
+The wording slows down because this is the answer to the man's aloneness.
+
+👩 God makes the woman
+🙌 She is His gift
+🤝 She answers the need for companionship
+📖 Human relationship is part of God's design
+
+This phrase shows that the woman is intentionally made by God, not second-rate or accidental.`,
+      ],
+      [
+        "🤲 Brought Her To The Man",
+        `God does not leave the man and woman to discover each other by chance.
+
+He brings the woman to the man, like a gift being presented.
+
+🤲 God brings her
+👤 The man receives her
+🙌 The relationship begins under God's hand
+📖 Union begins with divine initiative
+
+This phrase shows God as the One who joins the first man and woman together.`,
+      ],
+      [
+        "🦴 Bone Of My Bones",
+        `The man recognizes that the woman shares his own human nature.
+
+This is language of closeness, sameness, and recognition.
+
+🦴 She is truly like him
+👥 Shared human nature is clear
+❤️ Recognition happens immediately
+📖 He sees a real counterpart
+
+This phrase shows that the woman is not foreign to the man, but deeply connected to him.`,
+      ],
+      [
+        "❤️ Flesh Of My Flesh",
+        `This means the woman shares the same human life and nature as the man.
+
+The phrase deepens the idea of closeness beyond physical similarity alone.
+
+❤️ Shared human life
+👥 Real unity
+🤝 A true corresponding partner
+📖 The bond is deeper than appearance
+
+This phrase helps explain why marriage later becomes a one-flesh union.`,
+      ],
+      [
+        "👩 She Shall Be Called Woman",
+        `The man names her Woman because she was taken out of Man.
+
+The wording highlights both connection and distinction. She is like him, but she is also her own person.
+
+👩 She is named in relation to the man
+🦴 Her origin explains the name
+👥 Connection and distinction both appear
+📖 The first human relationship is being defined
+
+This phrase shows shared nature without erasing personal identity.`,
+      ],
+    ],
+    "Genesis 2:24-25": [
+      [
+        "🏠 Leave His Father And Mother",
+        `This means marriage creates a new primary human bond.
+
+Leaving does not mean abandoning parents with no care. It means the husband now forms a new household with his wife.
+
+🏠 A new household begins
+👨‍👩‍👦 Old family ties are not the highest bond now
+💍 Marriage changes priorities
+📖 A new unit is formed
+
+This phrase explains that marriage establishes a new family relationship.`,
+      ],
+      [
+        "💞 Cleave Unto His Wife",
+        `Cleave means hold fast, cling, or be joined closely.
+
+It describes a strong, faithful attachment, not a loose or casual relationship.
+
+💞 Cleave means hold fast
+🤝 Marriage is meant to be bonded
+🛡️ The union is meant to endure
+📖 This is covenant-like attachment
+
+This phrase shows that marriage is designed as a close and lasting union.`,
+      ],
+      [
+        "👥 One Flesh",
+        `One flesh means husband and wife are joined in a real union.
+
+It includes bodily union, but it also speaks of a shared life, covenant bond, and new family unity.
+
+👥 A real union
+💍 A covenant bond
+🏠 A new family begins
+📖 Marriage joins two lives together
+
+This phrase explains marriage as deep union, not just living near each other.`,
+      ],
+      [
+        "🌿 They Were Both Naked",
+        `This means the man and woman were fully uncovered before each other.
+
+The phrase matters because it describes openness without fear before sin enters the story.
+
+🌿 Nothing is hidden
+👥 They are open before one another
+📖 Innocence is still present
+👀 Exposure is not yet threatening
+
+This phrase sets up the contrast with the shame that will come in Genesis 3.`,
+      ],
+      [
+        "😌 Not Ashamed",
+        `This means their nakedness carried no shame, fear, or self-protection.
+
+They were fully open and fully safe because sin had not yet damaged their relationship to God, each other, or themselves.
+
+😌 No shame is present
+🤝 Openness is safe
+💚 Innocence still remains
+📖 Human relationship is whole here
+
+This phrase shows the peace and trust that existed before the fall broke it.`,
+      ],
+    ],
+  };
+
+  for (const section of BIBLE_READER_STUDY_SECTIONS) {
+    const nextPhrases = reviewedGenesisTwoPhrases[section.reference];
+    if (!nextPhrases) continue;
+
+    section.categories = section.categories.map((category) =>
+      category.id === "key-phrases"
+        ? {
+            ...category,
+            content: nextPhrases.map(([heading, body]) => formatBibleYearPhraseCard(heading, body, section.reference)),
+          }
+        : category,
+    );
+  }
+}
+
+applyGenesisTwoDeepWordExplanations();
+
+function applyGenesisThreeDeepWordExplanations() {
+  const reviewedGenesisThreePhrases: Record<string, Array<[string, string]>> = {
+    "Genesis 3:1-5": [
+      [
+        "🐍 The Serpent Was More Subtil",
+        `Subtil means crafty, shrewd, and skilled at twisting a conversation.
+
+The serpent is introduced this way so the reader will watch how he works. He does not begin with open attack. He begins with clever distortion.
+
+🐍 Subtil means crafty
+🧠 Evil speaks with strategy
+⚠️ The danger begins in conversation
+📖 The tempter is deceptive, not harmless
+
+This phrase teaches that the serpent's power in this scene is his cunning way of speaking.`,
+      ],
+      [
+        "❓ Hath God Said",
+        `This question is aimed directly at God's word.
+
+The serpent does not begin by denying God exists. He begins by making God's command sound uncertain.
+
+❓ The question targets God's word
+🧠 Doubt enters before disobedience
+⚠️ Temptation starts by blurring truth
+📖 The battle begins with what God said
+
+This phrase shows how temptation often starts with uncertainty before it moves into rebellion.`,
+      ],
+      [
+        "🌳 Every Tree Of The Garden",
+        `The serpent brings up the trees of the garden in a distorted way.
+
+God had given Adam and Eve wide freedom in the garden, but the serpent speaks as if God's command is mostly restriction.
+
+🌳 The garden was full of provision
+🙌 God had given abundance
+🚧 One boundary is being exaggerated
+📖 Temptation shrinks generosity
+
+This phrase matters because it shows how evil can make God's goodness look small.`,
+      ],
+      [
+        "💬 And The Woman Said Unto The Serpent",
+        `This marks the moment Eve answers the serpent instead of turning away.
+
+The conversation is continuing, and the danger is growing because the lie is now being entertained rather than rejected.
+
+💬 Eve enters the conversation
+👂 She is responding to the tempter
+⚠️ The exchange is moving deeper
+📖 Temptation often grows through dialogue
+
+This phrase shows that the temptation is no longer only heard. It is now being discussed.`,
+      ],
+      [
+        "🌳 We May Eat Of The Fruit Of The Trees Of The Garden",
+        `Eve correctly says there is broad freedom in the garden.
+
+This matters because God's command was not mostly denial. It was generous permission with one boundary.
+
+🌳 Many trees were allowed
+🙌 God's generosity is real
+🍎 Provision came before restriction
+📖 Freedom was part of God's command
+
+This phrase reminds the reader that God's rule began with abundance, not scarcity.`,
+      ],
+      [
+        "⚠️ Neither Shall Ye Touch It, Lest Ye Die",
+        `This adds wording not stated in Genesis 2.
+
+Whether Eve is repeating Adam's explanation or speaking imprecisely, the command is now being handled less carefully. Lest ye die also sounds softer than God's original warning of certain death.
+
+⚠️ The wording becomes less exact
+🧠 God's command is being blurred
+💬 The boundary is not being repeated clearly
+📖 Distorted truth weakens obedience
+
+This phrase shows how temptation often grows when God's word is no longer held carefully.`,
+      ],
+      [
+        "🚫 Ye Shall Not Surely Die",
+        `Here the serpent directly contradicts God's warning.
+
+This is no longer a question. It is a denial. The serpent offers a rival message about sin and its consequences.
+
+🚫 God is being contradicted
+💀 Death is being denied
+⚠️ The lie becomes direct
+📖 Rebellion is made to sound safe
+
+This phrase shows the first flat contradiction of God's word in the Bible story.`,
+      ],
+      [
+        "👀 Your Eyes Shall Be Opened",
+        `The serpent promises a new kind of sight.
+
+He makes disobedience sound like awakening and insight. But the opened eyes that come later bring shame, not freedom.
+
+👀 A new sight is promised
+🧠 Sin is made to sound enlightening
+⚠️ The cost is being hidden
+📖 Temptation advertises gain, not loss
+
+This phrase shows how the lie makes rebellion sound like growth.`,
+      ],
+      [
+        "⚖️ Knowing Good And Evil",
+        `This phrase is about moral authority, not just learning facts.
+
+The temptation is to know good and evil independently, as if humans can define reality for themselves instead of receiving it from God.
+
+⚖️ Good and evil are moral categories
+👑 God alone defines them rightly
+🧠 Independence is being offered
+📖 The issue is authority, not curiosity alone
+
+This phrase shows the temptation to step into God's place as judge.`,
+      ],
+      [
+        "👑 Ye Shall Be As gods",
+        `This is the heart of the temptation.
+
+Adam and Eve were already made in God's image, but the serpent tempts them to seek God-likeness by distrusting God instead of receiving life from Him.
+
+👑 The lie promises elevation
+🪞 Image-bearing is being twisted
+⚠️ Dependence on God is being rejected
+📖 Rebellion is dressed up as maturity
+
+This phrase shows the human temptation to grasp what should only be received from God.`,
+      ],
+    ],
+    "Genesis 3:6-7": [
+      [
+        "👀 When The Woman Saw",
+        `This marks the shift from hearing the lie to seeing through the lie.
+
+The tree was already there, but now Eve is looking at it differently because the serpent has reshaped how she views it.
+
+👀 Attention has changed
+🧠 The lie affects perception
+🍎 Desire is beginning to lead
+📖 Temptation changes how the object looks
+
+This phrase shows that sin often begins by reshaping what seems attractive to us.`,
+      ],
+      [
+        "🍎 Good For Food",
+        `The fruit now appears useful and harmless.
+
+Food itself is not bad. The danger is that Eve is judging by appetite without submitting that desire to God's word.
+
+🍎 The fruit looks useful
+⚠️ Desire is judging the tree
+🙌 A good appetite is being misdirected
+📖 Something useful can still be forbidden
+
+This phrase shows that something can look beneficial and still lead away from God.`,
+      ],
+      [
+        "✨ Pleasant To The Eyes",
+        `The fruit is visually appealing.
+
+Beauty itself is not the problem. The problem is beauty being separated from obedience, so that what looks good begins to overrule what God said.
+
+✨ The fruit looks beautiful
+👀 Appearance gains power
+⚠️ Beauty is being detached from truth
+📖 The senses are not meant to rule alone
+
+This phrase shows how outward attractiveness can become spiritually dangerous when truth is ignored.`,
+      ],
+      [
+        "🧠 Desired To Make One Wise",
+        `Wisdom is good when it comes from God.
+
+But here wisdom is being desired through disobedience. The issue is not the desire for wisdom itself, but wanting it apart from trusting God.
+
+🧠 Wisdom is being sought wrongly
+⚠️ Desire is reaching past obedience
+👑 God is not being trusted as the source
+📖 Grasped wisdom is different from received wisdom
+
+This phrase shows the desire to gain insight without submission to God.`,
+      ],
+      [
+        "🤲 She Took Of The Fruit",
+        `The temptation now becomes action.
+
+Taking matters because Eve reaches for what God had not given. The object is fruit, but the deeper act is rebellion.
+
+🤲 Desire becomes action
+🚫 She takes what was forbidden
+⚠️ Sin crosses the boundary
+📖 Rebellion becomes visible
+
+This phrase shows the moment when temptation turns into disobedience.`,
+      ],
+      [
+        "👨 Gave Also Unto Her Husband",
+        `Eve does not eat alone.
+
+The sin spreads into shared action as she gives the fruit to Adam too.
+
+👨 Adam is drawn in
+🍎 The act becomes shared
+⚠️ Disobedience spreads relationally
+📖 Sin rarely stays private
+
+This phrase shows the fall becoming a joint act, not an isolated one.`,
+      ],
+      [
+        "💬 And He Did Eat",
+        `Adam personally eats the forbidden fruit.
+
+He is not only nearby. He joins the disobedience himself.
+
+💬 Adam acts for himself
+🚫 He crosses the same boundary
+⚠️ Shared rebellion is complete
+📖 The man is fully responsible
+
+This phrase shows that Adam's role is active participation, not mere presence.`,
+      ],
+      [
+        "👁️ The Eyes Of Them Both Were Opened",
+        `The serpent promised opened eyes, and in one sense that happens.
+
+But the result is not glory or freedom. Their eyes open to guilt, shame, and a painful new awareness.
+
+👁️ The promise partly comes true
+💔 The result is painful
+⚠️ Sin reveals, but it also wounds
+📖 The lie hid the cost
+
+This phrase shows the bitter half-truth at the center of temptation.`,
+      ],
+      [
+        "💬 They Knew That They Were Naked",
+        `In Genesis 2, nakedness was safe and unashamed.
+
+Now the same nakedness feels exposed and threatening because sin has changed their relationship to God, each other, and themselves.
+
+💬 Exposure now feels unsafe
+💔 Innocence is gone
+🫣 Shame has entered
+📖 Sin changes how people experience being seen
+
+This phrase shows shame entering human life immediately after sin.`,
+      ],
+      [
+        "🌿 They Sewed Fig Leaves Together",
+        `This is the first human attempt to deal with shame.
+
+Instead of confession, Adam and Eve start making coverings for themselves.
+
+🌿 Shame leads to self-covering
+🧵 Humans try to manage exposure
+⚠️ The response is self-protection
+📖 Guilt often hides before it confesses
+
+This phrase shows the beginning of human efforts to cover what sin has exposed.`,
+      ],
+      [
+        "💬 Made Themselves Aprons",
+        `Aprons are coverings Adam and Eve make for themselves.
+
+The material covering is real, but it cannot heal what has been broken with God.
+
+💬 They try to cover themselves
+🛡️ Self-protection begins
+⚠️ Human coverings are limited
+📖 Shame produces hiding strategies
+
+This phrase shows people trying to solve exposed guilt without returning to God.`,
+      ],
+    ],
+    "Genesis 3:8-13": [
+      [
+        "🌬️ The Voice Of The Lord God",
+        `Voice here refers to the sound of the LORD God coming in the garden.
+
+The same presence that should have brought peace now brings fear because sin has changed the human heart.
+
+🌬️ God is coming near
+👂 His presence is heard
+💔 Sin changes the response to God
+📖 The guilty now fear what was once good
+
+This phrase shows that sin has turned God's approach into something Adam and Eve dread.`,
+      ],
+      [
+        "🌳 Walking In The Garden",
+        `This describes God's presence moving in the garden.
+
+The image shows nearness, not distance. God comes into the place where the man and woman are hiding.
+
+🌳 God is present in the garden
+👑 He comes near to the guilty
+🫣 Hiding happens in His presence
+📖 The sinner is confronted where he is
+
+This phrase shows that God is not absent after sin. He comes into the scene.`,
+      ],
+      [
+        "🌬️ In The Cool Of The Day",
+        `This refers to the time of day when the air was moving or cooler.
+
+The phrase gives the moment a real setting and calmness, which makes the fear of Adam and Eve stand out even more.
+
+🌬️ A real time of day is given
+🌳 The setting is peaceful
+💔 The humans are not peaceful
+📖 The calm setting highlights their guilt
+
+This phrase helps the reader feel the contrast between the garden's peace and the sinner's fear.`,
+      ],
+      [
+        "🫣 Hid Themselves",
+        `This is the first hiding in Scripture.
+
+Before sin, Adam and Eve were open and unashamed. After sin, they try to avoid being seen by God.
+
+🫣 Shame leads to hiding
+💔 Trust has been damaged
+⚠️ Guilt avoids the light
+📖 Sin makes openness feel dangerous
+
+This phrase shows one of shame's first instincts: hide if you can.`,
+      ],
+      [
+        "🌳 Amongst The Trees Of The Garden",
+        `They hide among the very trees God had given them for blessing and provision.
+
+The garden that was meant to be a place of life now becomes a place of concealment.
+
+🌳 The trees become cover
+🫣 Blessing is used for hiding
+💔 The good place now feels unsafe
+📖 Sin twists the use of God's gifts
+
+This phrase shows how guilt can turn even good things into tools of avoidance.`,
+      ],
+      [
+        "❓ Where Art Thou",
+        `God's question is not about location because He already knows where Adam is.
+
+It is an invitation to step out of hiding and face the truth.
+
+❓ God is calling Adam out
+👀 The question exposes the heart
+🙌 Mercy speaks before judgment fully falls
+📖 God invites truth into the open
+
+This phrase shows God's question as confrontation mixed with mercy.`,
+      ],
+      [
+        "❓ Who Told Thee That Thou Wast Naked",
+        `God presses deeper than Adam's fear.
+
+This question exposes that Adam's new shame came from disobedience and from listening to another voice.
+
+❓ God probes beneath the excuse
+🫣 Shame has a source
+👂 Another voice has been trusted
+📖 The heart is being exposed
+
+This phrase shows God leading Adam back to the real issue behind his fear.`,
+      ],
+      [
+        "🍎 Hast Thou Eaten Of The Tree",
+        `God names the real act behind the shame.
+
+The question moves from feelings and hiding to the specific command that was broken.
+
+🍎 The forbidden act is named
+⚖️ The broken command is in view
+👑 God confronts disobedience directly
+📖 Sin must be faced truthfully
+
+This phrase shows that the heart of the problem is eating from the forbidden tree.`,
+      ],
+      [
+        "😨 I Was Afraid",
+        `Fear now enters the human relationship with God.
+
+God has not changed, but Adam has. Guilt makes the presence of God feel threatening instead of life-giving.
+
+😨 Fear replaces openness
+💔 Sin damages trust
+🫣 Guilt runs from God
+📖 The heart no longer feels safe before Him
+
+This phrase shows one of sin's deepest effects: fear before the God who made us.`,
+      ],
+      [
+        "👉 The Woman Whom Thou Gavest To Be With Me",
+        `Adam shifts the blame to Eve, and indirectly toward God as well.
+
+Instead of confessing plainly, he explains himself by pointing outward.
+
+👉 Responsibility is shifted
+💔 The human relationship is now strained
+⚠️ Blame replaces honest confession
+📖 Sin fractures trust both upward and outward
+
+This phrase shows blame becoming one of sin's first languages.`,
+      ],
+      [
+        "🐍 The Serpent Beguiled Me",
+        `Beguiled means deceived or tricked.
+
+Eve tells part of the truth, because the serpent did deceive her. But the statement still shifts attention away from her own act of disobedience.
+
+🐍 Beguiled means deceived
+🧠 The tempter is real
+⚖️ Deception does not erase responsibility
+📖 Both temptation and choice matter
+
+This phrase shows that being deceived explains the battle, but does not remove accountability.`,
+      ],
+    ],
+    "Genesis 3:14-15": [
+      [
+        "👑 And The LORD God Said Unto The Serpent",
+        `God now speaks directly to the serpent in judgment.
+
+The one who questioned God's word is now answered by God's own sentence.
+
+👑 God takes the lead in judgment
+🐍 The serpent is addressed directly
+⚖️ Evil is not ignored
+📖 The deceiver must answer to the Creator
+
+This phrase marks the beginning of God's response to the tempter.`,
+      ],
+      [
+        "🐍 Because Thou Hast Done This",
+        `God names the serpent's guilt clearly.
+
+The judgment that follows is not arbitrary. It comes because the serpent acted in deception and rebellion.
+
+🐍 The serpent is guilty
+⚖️ Judgment has a reason
+👑 God judges with justice
+📖 Evil is answered for what it has done
+
+This phrase shows that the curse is a response to real wrongdoing.`,
+      ],
+      [
+        "🐍 Cursed Above All Cattle",
+        `Cursed means placed under judgment.
+
+The wording sets the serpent apart under a special sentence because of his role in the temptation.
+
+🐍 The serpent is put under curse
+⚖️ Judgment is pronounced
+👑 God distinguishes the deceiver
+📖 Evil is singled out and condemned
+
+This phrase shows the serpent being placed under divine judgment in a unique way.`,
+      ],
+      [
+        "⬇️ Upon Thy Belly Shalt Thou Go",
+        `This describes humiliation and abasement under God's judgment.
+
+The serpent is being brought low in a visible way as part of the curse.
+
+⬇️ The serpent is brought low
+💔 Judgment includes humiliation
+👑 God opposes the deceiver
+📖 Evil is not exalted before God
+
+This phrase shows the serpent under a lowered and humiliated condition.`,
+      ],
+      [
+        "🪨 Dust Shalt Thou Eat All The Days Of Thy Life",
+        `Dust here is an image of humiliation and defeat.
+
+The phrase is not mainly about a diet. It is a picture of lowliness under curse.
+
+🪨 Dust points to humiliation
+⚖️ Defeat is being pictured
+👑 The serpent is under lifelong judgment
+📖 The curse is ongoing
+
+This phrase shows the serpent's condition as one of shame and defeat before God.`,
+      ],
+      [
+        "⚔️ I Will Put Enmity Between Thee And The Woman",
+        `Enmity means hostility, opposition, or conflict.
+
+God declares that there will be real warfare between the serpent and the woman.
+
+⚔️ Enmity means hostility
+👩 The woman is now set against the serpent
+👑 God Himself establishes the conflict
+📖 Evil and humanity will not remain at peace
+
+This phrase shows God declaring lasting conflict between the tempter and the human line.`,
+      ],
+      [
+        "👶 Between Thy Seed And Her Seed",
+        `Seed here means offspring or descendants.
+
+The conflict will not stop with the serpent and Eve alone. It will continue through lines that come after them.
+
+👶 Seed means offspring
+📖 The conflict continues into the future
+⚔️ Two lines are now in view
+👀 The promise reaches beyond Eden
+
+This phrase expands the struggle from one moment into a continuing story.`,
+      ],
+      [
+        "🏆 It Shall Bruise Thy Head",
+        `The head is the decisive place of defeat in this image.
+
+This points to a future victory over the serpent that will be crushing and final in its meaning.
+
+🏆 A future victory is promised
+🐍 The serpent's head is targeted
+⚖️ Evil will not win forever
+📖 Hope enters the judgment scene
+
+This phrase is one of the earliest promises that the serpent will ultimately be defeated.`,
+      ],
+      [
+        "🩹 Thou Shalt Bruise His Heel",
+        `The heel is wounded, but the picture is not the same as the crushing of the head.
+
+The coming conflict will involve real suffering, but the serpent's strike will not be the final victory.
+
+🩹 The wound is real
+⚔️ Conflict brings suffering
+👀 The struggle is costly
+📖 The promise includes pain before victory
+
+This phrase shows that the victory over evil will come through conflict, not without suffering.`,
+      ],
+    ],
+    "Genesis 3:16": [
+      [
+        "👩 Unto The Woman He Said",
+        `God now addresses the woman directly.
+
+The judgment is personal and specific, just as the sin involved her personally.
+
+👩 The woman is addressed
+⚖️ God speaks specifically
+👑 Judgment is personal
+📖 Her part in the story is being answered
+
+This phrase marks the beginning of God's words to the woman.`,
+      ],
+      [
+        "💔 I Will Greatly Multiply Thy Sorrow",
+        `Sorrow means pain, grief, and hardship.
+
+Multiply means the woman's experience of pain in this fallen world will be intensified.
+
+💔 Sorrow means pain and grief
+⚠️ Life in the fallen world becomes harder
+👩 Womanhood now carries suffering
+📖 Sin affects ordinary human life deeply
+
+This phrase shows that the fall brings real pain into the woman's experience.`,
+      ],
+      [
+        "👶 In Sorrow Thou Shalt Bring Forth Children",
+        `Bring forth means give birth.
+
+What should be deeply good and life-giving will now be joined with pain.
+
+👶 Childbirth remains a gift
+💔 Childbirth now includes pain
+⚖️ Blessing and sorrow are now intertwined
+📖 The fall touches family life
+
+This phrase shows that even the bringing of life into the world is now marked by suffering.`,
+      ],
+      [
+        "💔 Thy Desire Shall Be To Thy Husband",
+        `Desire here points to a strong relational pull toward the husband.
+
+Because the fall has entered the relationship, that desire now exists inside a world where harmony has been damaged.
+
+💔 Desire remains in the relationship
+👩 The bond is still real
+⚠️ The relationship is now touched by the fall
+📖 Human love now lives with struggle
+
+This phrase shows that the marriage bond remains, but it is no longer untouched by sin.`,
+      ],
+      [
+        "👨 And He Shall Rule Over Thee",
+        `Rule here speaks of authority, but now in a fallen setting.
+
+What was meant to be safe and harmonious partnership will now feel the strain of brokenness, power, and pain.
+
+👨 Rule enters the relationship
+💔 The marriage relationship is now strained
+⚠️ Sin damages partnership
+📖 The fall affects love and authority
+
+This phrase shows the human relationship now carrying tension it did not have before sin.`,
+      ],
+    ],
+    "Genesis 3:17-19": [
+      [
+        "👨 And Unto Adam He Said",
+        `God now addresses Adam directly.
+
+The man who received the command in Genesis 2 is now answered personally for his disobedience.
+
+👨 Adam is addressed
+⚖️ Responsibility is personal
+👑 God speaks to the man directly
+📖 The one commanded is now confronted
+
+This phrase marks the beginning of God's words of judgment to Adam.`,
+      ],
+      [
+        "👂 Because Thou Hast Hearkened Unto The Voice Of Thy Wife",
+        `Hearkened means listened with obedience or yielded to.
+
+The problem is not that Adam heard Eve's voice at all. The problem is that he followed it against God's clear command.
+
+👂 Hearkened means yielded to
+⚖️ Adam followed the wrong voice
+👑 God's word should have ruled
+📖 Disobedience begins with misdirected obedience
+
+This phrase shows Adam obeying a human voice over the voice of God.`,
+      ],
+      [
+        "🍎 And Hast Eaten Of The Tree",
+        `This names Adam's direct act of disobedience.
+
+The issue is not only what happened around him. It is what he himself did.
+
+🍎 Adam personally ate
+🚫 The forbidden act is named
+⚖️ The broken command is in view
+📖 The man is accountable for his choice
+
+This phrase shows Adam's own participation in the fall.`,
+      ],
+      [
+        "📖 Of Which I Commanded Thee, Saying, Thou Shalt Not Eat Of It",
+        `God reminds Adam of the exact command that had been given.
+
+The sin is serious because it happened against a clear word from God, not against something unclear.
+
+📖 The command had been explicit
+👑 God had spoken plainly
+⚠️ Disobedience was knowing
+📖 Adam sinned against revealed truth
+
+This phrase shows that the judgment is tied to a clear command that was broken.`,
+      ],
+      [
+        "🌍 Cursed Is The Ground For Thy Sake",
+        `The ground is now placed under curse because of Adam's sin.
+
+This does not mean the ground sinned. It means the world Adam works in will now bear the effects of the fall.
+
+🌍 The ground is affected
+💔 Creation suffers because of sin
+🛠️ Work becomes harder
+📖 The fall reaches beyond the individual
+
+This phrase shows that sin damages not only the sinner, but the world around him.`,
+      ],
+      [
+        "😓 In Sorrow Shalt Thou Eat Of It",
+        `Eat of it means Adam will still live from the ground, but now with grief and hardship.
+
+Provision remains, but it will no longer come easily.
+
+😓 Eating now includes toil
+🌍 The ground still provides
+💔 Work and sorrow are now linked
+📖 Life continues under hardship
+
+This phrase shows survival continuing, but under the burden of the curse.`,
+      ],
+      [
+        "🌵 Thorns Also And Thistles Shall It Bring Forth To Thee",
+        `Thorns and thistles picture resistance from the ground.
+
+The earth will no longer yield its fruit with ease. Work will face frustration.
+
+🌵 The ground resists
+🛠️ Labor becomes frustrating
+💔 Fruitfulness is harder now
+📖 Creation no longer feels effortless to man
+
+This phrase shows the world pushing back against human work after the fall.`,
+      ],
+      [
+        "🥬 And Thou Shalt Eat The Herb Of The Field",
+        `Herb of the field means the plants of ordinary field labor.
+
+The wording points to life outside the easy abundance of Eden.
+
+🥬 Food still comes from the earth
+🌾 Life moves toward field labor
+💔 Eden's ease is gone
+📖 Human life now feels more difficult
+
+This phrase shows man living from the ground in a harder world than before.`,
+      ],
+      [
+        "⏳ All The Days Of Thy Life",
+        `This means the hardship is not momentary.
+
+The struggle tied to the curse will mark the whole course of human life.
+
+⏳ The burden lasts through life
+💔 The curse is ongoing
+👤 This is now the human condition
+📖 The fall changes ordinary life permanently
+
+This phrase shows that the effects of sin are lasting, not temporary.`,
+      ],
+      [
+        "😓 In The Sweat Of Thy Face",
+        `This is a picture of painful effort and exhausting labor.
+
+Adam will still work for bread, but now that work will involve strain.
+
+😓 Labor becomes exhausting
+🛠️ Work is still necessary
+💔 Survival now costs more
+📖 Human effort is burdened by the fall
+
+This phrase shows work continuing under sweat, strain, and difficulty.`,
+      ],
+      [
+        "🪨 Till Thou Return Unto The Ground",
+        `Return unto the ground means man will die and go back to the earth from which he was taken.
+
+The sentence of death is now spoken over human life.
+
+🪨 Man returns to the earth
+💀 Death is now certain
+📖 The body goes back to the ground
+⚖️ God's warning is proving true
+
+This phrase shows mortality becoming the destiny of fallen man.`,
+      ],
+      [
+        "🌍 For Out Of It Wast Thou Taken",
+        `This points back to Adam's creation from the dust of the ground.
+
+His origin now explains his return. The body that came from the earth will go back to it.
+
+🌍 Man came from the ground
+👐 His beginning explains his end
+📖 Genesis 2 and 3 connect here
+💀 Mortality is tied to creatureliness
+
+This phrase reminds Adam of his humble origin as part of the judgment.`,
+      ],
+      [
+        "🪦 Dust Thou Art",
+        `This is a plain statement of human frailty.
+
+Adam is being reminded that he is a creature formed from dust, not a self-sustaining god.
+
+🪦 Dust points to frailty
+👤 Man is a creature
+👑 He is not divine
+📖 Human pride is brought low
+
+This phrase humbles man by reminding him what he is apart from God's breath.`,
+      ],
+      [
+        "🪦 For Dust Thou Art, And Unto Dust Shalt Thou Return",
+        `This completes the sentence of mortality.
+
+The man formed from dust will return to dust. God's warning of death is now clearly in view.
+
+🪦 Man began in dust
+💀 Man will return to dust
+⚖️ The judgment is certain
+📖 Death enters the human story
+
+This phrase shows that sin has brought death into ordinary human life.`,
+      ],
+    ],
+    "Genesis 3:20-21": [
+      [
+        "👨 And Adam Called His Wife's Name Eve",
+        `Adam gives his wife a name: Eve.
+
+Naming here marks recognition and identity at a significant moment after judgment has been spoken.
+
+👨 Adam names his wife
+📛 Identity is being marked
+👀 The story is moving forward after judgment
+📖 Life continues even after the fall
+
+This phrase shows Adam speaking a name of identity in the shadow of death.`,
+      ],
+      [
+        "👩 Because She Was The Mother Of All Living",
+        `Eve is named in connection with life.
+
+That matters because the woman who has just heard sorrow in childbirth spoken over her is still also connected to the future of human life.
+
+👩 Eve is linked with life
+👶 Humanity will come through her
+💚 Hope remains after judgment
+📖 Life continues in the story
+
+This phrase shows that even after the fall, the future of human life still moves forward through the woman.`,
+      ],
+      [
+        "❤️ Unto Adam Also And To His Wife",
+        `This wording shows that God is acting for both the man and the woman together.
+
+His care reaches both of them in their guilt and exposure.
+
+❤️ God acts toward both
+👨 The man is included
+👩 The woman is included
+📖 Mercy is being shown to the guilty pair
+
+This phrase shows God's care extending to both sinners, not only one of them.`,
+      ],
+      [
+        "🧥 Did The LORD God Make Coats Of Skins",
+        `God Himself makes coverings for Adam and Eve.
+
+Unlike the fig leaves they made, these coverings come from God. They are a stronger provision than human self-covering.
+
+🧥 God provides the covering
+🙌 Mercy replaces human insufficiency
+⚠️ Their own covering was not enough
+📖 God addresses exposed shame
+
+This phrase shows God doing for them what they could not do fully for themselves.`,
+      ],
+      [
+        "🧥 And Clothed Them",
+        `God does not only make the coverings. He clothes them.
+
+The action is personal and caring, even in the middle of judgment.
+
+🧥 Their shame is covered
+👑 God acts personally
+💚 Mercy appears in judgment
+📖 The guilty are not abandoned
+
+This phrase shows God's compassionate action toward sinners even after disobedience.`,
+      ],
+    ],
+    "Genesis 3:22-24": [
+      [
+        "👑 And The LORD God Said",
+        `God speaks again at the close of the chapter.
+
+His words now explain why man must be removed from the garden.
+
+👑 God gives the final word
+📖 The chapter closes under His authority
+⚖️ Judgment is still unfolding
+👀 The removal from Eden is being explained
+
+This phrase marks the beginning of God's final explanation in the chapter.`,
+      ],
+      [
+        "👨 Behold, The Man Is Become As One Of Us",
+        `This does not mean man has become equal to God.
+
+It means man has entered into the knowledge of good and evil in a tragic and broken way through disobedience.
+
+👨 Man has crossed a boundary
+⚖️ He now knows by experience
+💔 The result is fallen knowledge
+📖 This is not a promotion into deity
+
+This phrase shows that the serpent's promise was twisted and costly, not glorious.`,
+      ],
+      [
+        "📖 To Know Good And Evil",
+        `This repeats the moral issue at the center of the fall.
+
+Man now knows good and evil in a new way, not as innocent trusters of God, but as sinners who have crossed the boundary.
+
+📖 The moral issue returns
+⚖️ Knowledge now includes guilt
+💔 Innocence is gone
+👑 God's definition was still right
+
+This phrase shows that the knowledge gained through sin is painful, not life-giving.`,
+      ],
+      [
+        "✋ Lest He Put Forth His Hand",
+        `Lest means so that he may not.
+
+God is acting to prevent man from reaching for something further in his fallen state.
+
+✋ A further act is being prevented
+⚖️ God is restraining the sinner
+👑 The boundary is protective
+📖 Mercy and judgment are mixed together
+
+This phrase shows God stopping man from deepening the ruin.`,
+      ],
+      [
+        "🌳 And Take Also Of The Tree Of Life",
+        `Tree of life returns here as a crucial tree in the garden.
+
+The concern is that fallen man must not now seize life in an unhealed state.
+
+🌳 The tree of life is still present
+⚠️ Access now matters deeply
+👤 Fallen man must be restrained
+📖 Eternal life in sin is not the answer
+
+This phrase shows why access to the tree of life must now be blocked.`,
+      ],
+      [
+        "⏳ And Eat, And Live Forever",
+        `Live forever here means continuing endlessly in a fallen condition.
+
+God's removal of man from the garden is not cruelty. It prevents everlasting life under sin and curse.
+
+⏳ Endless life is in view
+💔 Fallen immortality would not be mercy
+⚖️ God restrains for a reason
+📖 The boundary now protects as well as judges
+
+This phrase shows that removal from the tree of life carries a merciful purpose within judgment.`,
+      ],
+      [
+        "🚪 Therefore The LORD God Sent Him Forth From The Garden Of Eden",
+        `Sent him forth means man is removed from the garden.
+
+Eden was the place of special provision and fellowship, but man can no longer remain there as before.
+
+🚪 Man is sent out
+🌳 Eden is no longer his home
+⚖️ Judgment changes his place
+📖 The fall leads to exile
+
+This phrase shows the beginning of exile from the garden.`,
+      ],
+      [
+        "🌱 To Till The Ground From Whence He Was Taken",
+        `Man is sent out to work the ground from which he originally came.
+
+The wording ties exile, labor, and origin together.
+
+🌱 Life continues outside Eden
+🛠️ Work remains part of human life
+🌍 Man returns to the world of dust
+📖 His origin shapes his new condition
+
+This phrase shows man living under labor in the world outside the garden.`,
+      ],
+      [
+        "🚪 So He Drove Out The Man",
+        `Drove out is strong language of expulsion.
+
+Man does not leave Eden casually. He is put out under God's sentence.
+
+🚪 The expulsion is forceful
+⚖️ Eden is truly lost
+💔 The break is real
+📖 Sin leads to removal from blessing
+
+This phrase shows that exile from Eden is decisive and serious.`,
+      ],
+      [
+        "👼 And He Placed At The East Of The Garden Of Eden Cherubims",
+        `Cherubims are heavenly beings stationed by God.
+
+Their presence shows that the way back into Eden is now guarded by divine authority.
+
+👼 Heavenly guardians are stationed
+🚪 Access is blocked
+👑 God guards the boundary
+📖 The garden is no longer open to man
+
+This phrase shows Eden being guarded by God's own appointed beings.`,
+      ],
+      [
+        "🔥 And A Flaming Sword Which Turned Every Way",
+        `The flaming sword is a picture of active, total protection.
+
+Turned every way means no path through is left open.
+
+🔥 Judgment guards the way
+⚔️ The barrier is complete
+🚫 No human path back is open
+📖 Return cannot happen on man's own terms
+
+This phrase shows how completely access to the garden is now closed.`,
+      ],
+      [
+        "🌳 To Keep The Way Of The Tree Of Life",
+        `Keep here means guard or protect the way.
+
+The path to the tree of life is now shut off from fallen humanity.
+
+🌳 The tree of life is guarded
+🚫 The way is closed
+⚖️ Access is no longer free
+📖 Humanity cannot restore Eden by itself
+
+This phrase closes the chapter by showing that life in God's presence cannot be seized after sin. It must one day be given again by God.`,
+      ],
+    ],
+  };
+
+  for (const section of BIBLE_READER_STUDY_SECTIONS) {
+    const nextPhrases = reviewedGenesisThreePhrases[section.reference];
+    if (!nextPhrases) continue;
+
+    section.categories = section.categories.map((category) =>
+      category.id === "key-phrases"
+        ? {
+            ...category,
+            content: nextPhrases.map(([heading, body]) => formatBibleYearPhraseCard(heading, body, section.reference)),
+          }
+        : category,
+    );
+  }
+}
+
+applyGenesisThreeDeepWordExplanations();
+
+function applyGenesisFourDeepWordExplanations() {
+  const reviewedGenesisFourPhrases: Record<string, Array<[string, string]>> = {
+    "Genesis 4:1-7": [
+      [
+        "👨 Adam Knew Eve His Wife",
+        `Knew here is the Bible's way of describing the intimate union of husband and wife.
+
+It is relational language, not just biological description. Scripture presents this union as personal and covenantal.
+
+👨 Husband and wife are united
+❤️ The language is relational
+📖 Marriage is treated with dignity
+👶 Cain's story begins in family life
+
+This phrase shows the close marital union that leads to the birth of Cain.`,
+      ],
+      [
+        "🤰 She Conceived And Bare Cain",
+        `Conceived means Eve became pregnant, and bare means she gave birth.
+
+Genesis is moving from Adam and Eve as a couple to Adam and Eve as parents.
+
+🤰 A child is conceived
+👶 A first son is born
+📖 Human life continues after Eden
+🌱 The family story begins to grow
+
+This phrase marks the beginning of the first child born in the Bible story.`,
+      ],
+      [
+        "👶 I Have Gotten A Man From The Lord",
+        `Eve is saying the child has come with the LORD's help.
+
+Gotten here means obtained or received. She sees the birth of Cain as something given by God, not merely achieved by human effort.
+
+👶 A son has been received
+🙌 Eve connects the birth to the LORD
+📖 Life is still seen as God's gift
+💚 Hope continues after the fall
+
+This phrase shows Eve recognizing God as the giver of life.`,
+      ],
+      [
+        "👶 She Bare Again His Brother Abel",
+        `Bare again means Eve gave birth a second time.
+
+Abel is introduced immediately in relation to Cain, and that prepares the reader to see their lives side by side.
+
+👶 A second son is born
+👬 The brothers are linked together
+📖 Their stories will be compared
+👀 The family line is widening
+
+This phrase introduces Abel as Cain's brother and sets up the contrast between them.`,
+      ],
+      [
+        "🐑 Abel Was A Keeper Of Sheep",
+        `Keeper of sheep means Abel cared for flocks.
+
+His work is pastoral. He watches, tends, and manages living animals.
+
+🐑 Abel works with flocks
+🛠️ His calling is hands-on care
+📖 Human labor takes different forms
+👀 His work will matter in the offering scene
+
+This phrase shows Abel's occupation as a shepherd-like keeper of sheep.`,
+      ],
+      [
+        "🌾 Cain Was A Tiller Of The Ground",
+        `Tiller of the ground means Cain worked the soil.
+
+He is a cultivator, someone whose labor is tied to the earth that now bears the effects of the curse from Genesis 3.
+
+🌾 Cain works the soil
+🛠️ His labor is agricultural
+🌍 His life is tied to the ground
+📖 The family is now spreading into different kinds of work
+
+This phrase shows Cain as a worker of the earth.`,
+      ],
+      [
+        "⏳ In Process Of Time",
+        `This means after some time had passed.
+
+The phrase marks a later point, not the immediate next moment after the boys were born.
+
+⏳ Time has passed
+📖 The story moves forward
+👬 The brothers are now old enough to act
+👀 A new scene is beginning
+
+This phrase signals a transition into the offering event.`,
+      ],
+      [
+        "🌾 Cain Brought Of The Fruit Of The Ground",
+        `Fruit of the ground means produce from the soil.
+
+Cain brings part of what he has grown through his labor.
+
+🌾 Produce comes from the ground
+🛠️ Cain brings from his work
+📖 The offering is tied to his occupation
+👀 The details of what is brought matter
+
+This phrase shows Cain bringing an offering from his agricultural produce.`,
+      ],
+      [
+        "🎁 An Offering Unto The Lord",
+        `An offering is a gift presented to God.
+
+The word shows that the brothers are not merely handling food or animals. They are approaching the LORD in worship.
+
+🎁 An offering is a presented gift
+🙏 Worship is in view
+👑 The LORD is the one being approached
+📖 This is more than ordinary work
+
+This phrase shows the act as worship offered directly to God.`,
+      ],
+      [
+        "🐑 The Firstlings Of His Flock",
+        `Firstlings means the firstborn of Abel's flock.
+
+The phrase points to the earliest and choicest part of what Abel has.
+
+🐑 Firstlings means firstborn animals
+🎁 Abel brings from the first of his flock
+👀 The quality of the gift is emphasized
+📖 The offering is described carefully
+
+This phrase shows Abel bringing the firstborn from his flock, not something random.`,
+      ],
+      [
+        "🔥 Of The Fat Thereof",
+        `Fat here points to the best or richest portion.
+
+The wording highlights that Abel is not bringing carelessly. He is bringing a valued part of the offering.
+
+🔥 The best portion is emphasized
+🎁 The gift is not casual
+🐑 The offering is carefully described
+📖 The quality of worship matters
+
+This phrase shows Abel bringing a choice part of what he offers.`,
+      ],
+      [
+        "✅ The Lord Had Respect Unto Abel",
+        `Had respect means the LORD looked with favor on Abel and his offering.
+
+The phrase is about divine acceptance. God receives Abel's worship favorably.
+
+✅ Respect means favor
+🙌 Abel is accepted by God
+🙏 Worship can be received or refused
+📖 God's response matters most
+
+This phrase shows God accepting Abel with favor.`,
+      ],
+      [
+        "❌ Unto Cain And His Offering He Had Not Respect",
+        `Had not respect means God did not receive Cain and his offering with favor.
+
+The text does not only say the offering was refused. It says Cain and his offering were not respected together.
+
+❌ Cain is not accepted with favor
+🎁 His offering is also refused
+⚖️ God's judgment reaches the worshiper and the gift
+📖 Divine response is personal
+
+This phrase shows God withholding favor from Cain and what he brought.`,
+      ],
+      [
+        "😡 Cain Was Very Wroth",
+        `Wroth means intensely angry.
+
+Cain does not respond with humility or repentance. He burns with anger.
+
+😡 Wroth means deeply angry
+💔 His heart reacts badly
+⚠️ Refusal turns into rage
+📖 The real danger is now moving inward
+
+This phrase shows Cain's heart filling with anger after God's rejection.`,
+      ],
+      [
+        "😔 His Countenance Fell",
+        `Countenance means the face or facial expression.
+
+His countenance fell means Cain's face showed his inward collapse, anger, and bitterness.
+
+😔 His face changes visibly
+💔 The inner state shows outwardly
+👀 His mood is written on his face
+📖 The heart is already turning dark
+
+This phrase shows Cain's inner anger becoming outwardly visible.`,
+      ],
+      [
+        "🗣️ The Lord Said Unto Cain",
+        `God speaks directly to Cain even in this dangerous moment.
+
+The LORD does not leave Cain alone with his anger. He confronts him with words before judgment falls further.
+
+🗣️ God speaks personally
+🙌 Warning comes before worse sin
+👀 Cain is being addressed directly
+📖 Mercy still speaks into danger
+
+This phrase shows God confronting Cain before the murder happens.`,
+      ],
+      [
+        "❓ Why Art Thou Wroth",
+        `God's question exposes Cain's anger.
+
+The LORD is not seeking information He lacks. He is pressing Cain to face the condition of his own heart.
+
+❓ The anger is being exposed
+🧠 Cain is being forced to look inward
+⚠️ The heart issue is being named
+📖 God questions before Cain acts further
+
+This phrase shows God confronting Cain's anger directly.`,
+      ],
+      [
+        "❓ Why Is Thy Countenance Fallen",
+        `God points to Cain's visible expression as evidence of his inner state.
+
+The fallen countenance matters because outward mood is revealing inward trouble.
+
+❓ The face reveals the heart
+😔 Cain's expression is not ignored
+🧠 Inner bitterness is being exposed
+📖 God sees both action and attitude
+
+This phrase shows God calling attention to the spiritual problem already showing on Cain's face.`,
+      ],
+      [
+        "✅ If Thou Doest Well Shalt Thou Not Be Accepted",
+        `Accepted here means lifted up, received, or regarded with favor.
+
+God is telling Cain there is still a right path before him. The problem is not that Cain has no hope. The problem is what he will do next.
+
+✅ Acceptance is still set before Cain
+🛤️ A right response is still possible
+🙌 God is not shutting the door without warning
+📖 Cain is being called to do what is right
+
+This phrase shows that Cain is warned and invited toward the better path.`,
+      ],
+      [
+        "🚪 Sin Lieth At The Door",
+        `Lieth at the door pictures sin like a dangerous beast waiting close by.
+
+Sin is not being described as far away. It is right at the entrance, ready to seize him.
+
+🚪 Sin is near
+🐾 Danger is crouching
+⚠️ The threat is immediate
+📖 Temptation is no longer distant
+
+This phrase shows sin as an active danger waiting to master Cain.`,
+      ],
+      [
+        "🔥 Unto Thee Shall Be His Desire",
+        `Desire here means a strong urge moving toward Cain.
+
+The phrase shows sin reaching toward him in a controlling way.
+
+🔥 Sin reaches toward Cain
+⚠️ The pressure is personal
+🧠 The struggle is inward and near
+📖 Sin wants more than a momentary act
+
+This phrase shows sin as something seeking to take hold of Cain.`,
+      ],
+      [
+        "👑 Thou Shalt Rule Over Him",
+        `Rule over him means Cain must master sin rather than be mastered by it.
+
+The wording presents a real struggle of control and moral responsibility.
+
+👑 Cain is called to mastery
+⚖️ Sin must not rule him
+🛡️ Responsibility is laid on him
+📖 The warning is serious and personal
+
+This phrase shows God's call for Cain to resist and master the sin pressing against him.`,
+      ],
+    ],
+    "Genesis 4:8-10": [
+      [
+        "🗣️ Cain Talked With Abel His Brother",
+        `Cain speaks to Abel before the murder.
+
+The verse slows down the movement so the reader feels the deliberate nature of what follows.
+
+🗣️ Cain addresses Abel
+👬 The relationship is still named as brotherhood
+⚠️ The scene is moving toward violence
+📖 The act is not accidental
+
+This phrase shows the murder growing out of a real interaction between brothers.`,
+      ],
+      [
+        "⏳ It Came To Pass",
+        `This means the moment arrived or happened.
+
+The phrase moves the story from conversation into the event itself.
+
+⏳ The moment arrives
+📖 The scene advances
+⚠️ The warning was not heeded
+👀 Action is about to follow
+
+This phrase signals the arrival of the fatal moment.`,
+      ],
+      [
+        "🌾 When They Were In The Field",
+        `The field is the place where the murder happens.
+
+This detail matters because it places the act away from immediate observation and in a work setting tied to Cain's world.
+
+🌾 A real location is given
+👬 The brothers are alone in the field
+⚠️ The place becomes the setting of violence
+📖 The story stays grounded in real space
+
+This phrase places the murder in a concrete setting.`,
+      ],
+      [
+        "🩸 Cain Rose Up Against Abel",
+        `Rose up against means Cain turned violently on Abel.
+
+The phrase shows hostile action against his own brother.
+
+🩸 Violence begins
+👬 Brother turns against brother
+⚠️ Anger becomes attack
+📖 The inner sin now breaks outward
+
+This phrase shows Cain moving from anger into violent action.`,
+      ],
+      [
+        "⚔️ And Slew Him",
+        `Slew means killed.
+
+This is the Bible's first murder, and it happens inside the first family.
+
+⚔️ Abel is killed
+💔 Sin reaches deadly form
+👬 Family life is shattered
+📖 Death now enters human relationships directly
+
+This phrase shows the terrible completion of Cain's violent act.`,
+      ],
+      [
+        "❓ Where Is Abel Thy Brother",
+        `God again asks a question, not because He lacks information, but to bring Cain into truth.
+
+The question keeps stressing Abel's identity as Cain's brother.
+
+❓ God confronts Cain
+👬 Brotherly responsibility is in view
+👀 The truth is being called for
+📖 Sin is brought into the light
+
+This phrase shows God confronting the murderer with the reality of his brother's absence.`,
+      ],
+      [
+        "🚶 I Know Not",
+        `Cain answers with denial.
+
+The statement is false, and it shows hardness rather than confession.
+
+🚶 Cain denies knowledge
+❌ The answer is a lie
+💔 Sin is now joined to deception
+📖 The heart is not softening
+
+This phrase shows Cain refusing honesty before God.`,
+      ],
+      [
+        "🙋 Am I My Brother's Keeper?",
+        `Keeper means guardian, watcher, or one responsible to care for another.
+
+Cain's question is defiant. He rejects responsibility for his brother, even after killing him.
+
+🙋 Keeper means guardian
+👬 Brotherhood is being denied
+⚠️ Cain rejects responsibility
+📖 Sin hardens the heart further
+
+This phrase shows Cain speaking with cold defiance instead of repentance.`,
+      ],
+      [
+        "⚖️ What Hast Thou Done?",
+        `God's question brings the act into judgment.
+
+The murder will not be hidden under denial. God names the seriousness of the deed.
+
+⚖️ God exposes the act
+💔 Murder is under judgment
+👀 The truth cannot stay buried
+📖 Divine justice is now speaking
+
+This phrase shows God confronting Cain with the weight of what he has done.`,
+      ],
+      [
+        "🩸 Thy Brother's Blood Crieth Unto Me From The Ground",
+        `This means Abel's spilled blood calls out to God for justice.
+
+The ground that received the blood becomes witness to the crime.
+
+🩸 Blood speaks of violent death
+🌍 The ground becomes witness
+👑 God hears the cry for justice
+📖 Murder is never hidden from Him
+
+This phrase shows that innocent bloodshed is seen and answered by God.`,
+      ],
+    ],
+    "Genesis 4:11-15": [
+      [
+        "🌍 Now Art Thou Cursed From The Earth",
+        `Cain is now placed under judgment in relation to the ground.
+
+The earth tied to his work and to Abel's blood now stands as part of his curse.
+
+🌍 Cain is cursed in relation to the earth
+⚖️ Judgment follows the murder
+💔 His ordinary world is changed
+📖 The curse touches his place of labor
+
+This phrase shows Cain judged through the very ground connected to his crime and work.`,
+      ],
+      [
+        "🌎 Which Hath Opened Her Mouth",
+        `This pictures the ground as having received Abel's blood.
+
+The image makes the earth seem like a witness that has taken in the evidence of the murder.
+
+🌎 The ground received the blood
+👀 Creation is pictured as witness
+⚖️ The crime has been absorbed into the earth
+📖 The scene is morally charged
+
+This phrase shows the earth as a witness-bearing ground after Abel's death.`,
+      ],
+      [
+        "🩸 Receive Thy Brother's Blood From Thy Hand",
+        `From thy hand makes Cain's responsibility unmistakable.
+
+Abel's blood did not reach the ground by accident. Cain's own action put it there.
+
+🩸 The blood came by Cain's act
+✋ His hand is implicated
+⚖️ Responsibility is direct
+📖 Murder is laid personally on him
+
+This phrase shows God's judgment tracing the blood directly back to Cain's hand.`,
+      ],
+      [
+        "🌾 When Thou Tillest The Ground",
+        `This points to Cain's future work as a farmer.
+
+The ground he once worked will now be tied to frustration and loss.
+
+🌾 Cain will still face the ground
+🛠️ His work is still in view
+💔 Labor becomes more broken
+📖 The curse touches his vocation
+
+This phrase shows the judgment reaching into Cain's ordinary calling.`,
+      ],
+      [
+        "🚫 It Shall Not Henceforth Yield Unto Thee Her Strength",
+        `Yield her strength means give its full produce or fruitfulness.
+
+The earth will no longer respond to Cain's labor with its former strength.
+
+🚫 The ground's fruitfulness is reduced
+🌾 Labor becomes more futile
+💔 The curse affects provision
+📖 Creation resists Cain
+
+This phrase shows the earth withholding its strength from Cain after the murder.`,
+      ],
+      [
+        "🚶 A Fugitive And A Vagabond Shalt Thou Be",
+        `A fugitive is one who is driven and unsettled. A vagabond is one who wanders without stable place.
+
+Cain will live with restlessness and displacement.
+
+🚶 Cain will be unsettled
+🧭 Wandering becomes part of his condition
+💔 Stability is lost
+📖 The judgment includes restless exile
+
+This phrase shows Cain sentenced to a life of wandering unrest.`,
+      ],
+      [
+        "🗣️ Cain Said Unto The Lord",
+        `Cain now answers God's judgment directly.
+
+His words show fear and distress, but not clear repentance.
+
+🗣️ Cain responds to the LORD
+😔 He feels the weight of judgment
+⚠️ Fear is present
+📖 The response is troubled, but not truly repentant
+
+This phrase introduces Cain's reply to the sentence.`,
+      ],
+      [
+        "😔 My Punishment Is Greater Than I Can Bear",
+        `Punishment here can also carry the idea of guilt or consequence too great to carry.
+
+Cain is overwhelmed by the sentence now upon him.
+
+😔 Cain feels crushed by the judgment
+⚖️ The consequence feels too heavy
+💔 He is focused on his burden
+📖 The weight of sin is now being felt
+
+This phrase shows Cain overwhelmed by the consequences of his sin.`,
+      ],
+      [
+        "🌍 Thou Hast Driven Me Out This Day From The Face Of The Earth",
+        `Driven me out means expelled or forced away.
+
+Cain feels himself pushed away from settled life on the earth he knew.
+
+🌍 Cain is expelled from ordinary settled life
+🚶 He is driven outward
+💔 The sentence feels immediate
+📖 Exile is part of his judgment
+
+This phrase shows Cain describing his condition as a kind of expulsion from the life he knew.`,
+      ],
+      [
+        "🙈 From Thy Face Shall I Be Hid",
+        `From thy face shall I be hid means Cain now feels cut off from God's favorable presence.
+
+This is more than geographic movement. It is spiritual alienation.
+
+🙈 Cain feels hidden from God's face
+💔 Favor is lost
+⚖️ The judgment is relational too
+📖 Distance from God is part of the curse
+
+This phrase shows Cain sensing separation from God's presence.`,
+      ],
+      [
+        "⚔️ Everyone That Findeth Me Shall Slay Me",
+        `Cain fears being killed in return.
+
+The murderer now lives under fear of violent death himself.
+
+⚔️ Cain fears retaliation
+😨 Violence now threatens him
+💔 Fear follows the act of murder
+📖 Sin turns the sinner anxious and exposed
+
+This phrase shows Cain living under fear that bloodshed will come back on him.`,
+      ],
+      [
+        "🗣️ The Lord Said Unto Him",
+        `The LORD answers Cain even here.
+
+God's response shows that Cain's life will not simply be handed over to immediate human revenge.
+
+🗣️ God answers again
+⚖️ The matter remains under divine control
+🛡️ Human retaliation is restrained
+📖 God's justice is not replaced by man's impulse
+
+This phrase shows the LORD still speaking sovereignly over Cain's future.`,
+      ],
+      [
+        "💬 7️⃣ Vengeance Shall Be Taken On Him Sevenfold",
+        `Sevenfold means complete, full, or severe.
+
+God is warning that anyone who kills Cain will come under a serious judgment from Him.
+
+7️⃣ Sevenfold means full judgment
+⚖️ Vengeance belongs to God
+🛡️ Cain is not to be killed casually
+📖 Divine restraint is being declared
+
+This phrase shows God placing a strong warning against taking Cain's life.`,
+      ],
+      [
+        "🛡️ The Lord Set A Mark Upon Cain",
+        `A mark upon Cain is some sign God gives for Cain's protection.
+
+The text does not explain exactly what the mark looked like. Its purpose matters more than its appearance.
+
+🛡️ The mark is protective
+👑 God controls Cain's fate
+📖 The sign belongs to God's judgment and mercy
+👀 Its purpose matters more than its form
+
+This phrase shows God placing a protective sign on Cain.`,
+      ],
+      [
+        "🚫 Lest Any Finding Him Should Kill Him",
+        `Lest means so that not.
+
+The mark is given to stop others from killing Cain.
+
+🚫 The purpose is protection
+⚔️ Retaliation is restrained
+🛡️ Cain is preserved from immediate death
+📖 God limits human revenge
+
+This phrase shows the exact purpose of the mark: preventing Cain's death by others.`,
+      ],
+    ],
+    "Genesis 4:16-18": [
+      [
+        "🚶 Cain Went Out From The Presence Of The Lord",
+        `This means Cain left the place of the LORD's favorable presence under judgment.
+
+The phrase carries the sadness of spiritual distance, not just physical travel.
+
+🚶 Cain goes out
+💔 Distance from God is emphasized
+⚖️ The judgment continues
+📖 Exile is both spiritual and physical
+
+This phrase shows Cain living under separation from the presence of the LORD.`,
+      ],
+      [
+        "🧭 Dwelt In The Land Of Nod",
+        `Dwelt means settled or lived, and Nod is connected with wandering.
+
+There is irony here: Cain lives in a land whose name fits his restless condition.
+
+🧭 Nod is linked with wandering
+🚶 Cain's life remains unsettled
+📖 His condition and location fit together
+💔 Exile shapes his identity
+
+This phrase shows Cain living in a place marked by the idea of wandering.`,
+      ],
+      [
+        "🌅 On The East Of Eden",
+        `East of Eden shows Cain living farther from the garden.
+
+The phrase keeps reminding the reader of movement away from the original place of life and fellowship.
+
+🌅 Cain is farther from Eden
+🚪 Distance from the garden increases
+💔 The direction is away from blessing
+📖 Exile keeps moving outward
+
+This phrase shows Cain's life unfolding farther from Eden's nearness to God.`,
+      ],
+      [
+        "❤️ Cain Knew His Wife",
+        `Knew here again refers to marital union.
+
+Even under judgment, ordinary family life continues.
+
+❤️ Husband and wife are united
+👶 Family life continues
+📖 Human history keeps moving forward
+💔 Life goes on even outside Eden
+
+This phrase shows Cain's family line continuing through marriage and childbirth.`,
+      ],
+      [
+        "🤰 She Conceived And Bare Enoch",
+        `Conceived means became pregnant, and bare means gave birth.
+
+Cain's line is now continuing into the next generation.
+
+🤰 A child is conceived
+👶 Enoch is born
+🌱 Cain's line continues
+📖 The family story expands
+
+This phrase marks the birth of Cain's son Enoch.`,
+      ],
+      [
+        "🏙️ He Built A City",
+        `Built a city means Cain established a settled human center.
+
+This is striking because the wanderer now begins building something permanent.
+
+🏙️ Human settlement is developing
+🛠️ Cain builds despite his curse
+👀 Civilization is beginning to grow
+📖 Human culture expands outside Eden
+
+This phrase shows early city-building beginning in Cain's line.`,
+      ],
+      [
+        "👶 Called The Name Of The City Enoch",
+        `Cain names the city after his son Enoch.
+
+The act connects the city to family identity and legacy.
+
+👶 The city bears his son's name
+📛 Naming marks legacy
+🏙️ Family identity enters public life
+📖 Human memory is being built into culture
+
+This phrase shows Cain tying the city to his own family line.`,
+      ],
+      [
+        "👨 Iraad Was Born Unto Enoch",
+        `This begins a genealogy in Cain's line.
+
+Genesis is tracing how families continue and how human history broadens.
+
+👨 Another generation is named
+🌱 The line continues forward
+📖 Genealogy marks unfolding history
+👀 Cain's descendants matter to the story
+
+This phrase shows the next generation in Cain's family line.`,
+      ],
+      [
+        "👨 Iraad Begat Mehujael",
+        `Begat means became the father of.
+
+The word is standard genealogy language showing one generation leading to the next.
+
+👨 Begat means fathered
+🌱 One generation leads to another
+📖 Family history is being traced
+👀 The line keeps moving forward
+
+This phrase continues the genealogy of Cain's descendants.`,
+      ],
+      [
+        "👨 Mehujael Begat Methusael",
+        `Again, begat means fathered.
+
+The repetition shows the steady movement of the family line through time.
+
+👨 Another father-son link is named
+⏳ Time is passing through generations
+📖 Genealogy builds continuity
+🌱 Cain's line is expanding
+
+This phrase continues the unfolding line of Cain's family.`,
+      ],
+      [
+        "👨 Methusael Begat Lamech",
+        `This brings the genealogy to Lamech, an important figure in the next section.
+
+The line is narrowing toward someone the story wants us to watch more closely.
+
+👨 Lamech now comes into view
+📖 The genealogy is leading somewhere
+👀 The story is preparing for the next focus
+🌱 Cain's line reaches a key figure
+
+This phrase introduces the next major person in Cain's descendants.`,
+      ],
+    ],
+    "Genesis 4:19-24": [
+      [
+        "👰 Lamech Took Unto Him Two Wives",
+        `This means Lamech married two women.
+
+The wording shows a move away from the one-man, one-woman pattern presented in Genesis 2.
+
+👰 Two wives are taken
+📖 Marriage design is being departed from
+👀 Cain's line shows growing disorder
+💔 Human relationships are becoming more broken
+
+This phrase shows polygamy appearing in the line of Cain.`,
+      ],
+      [
+        "👩 The Name Of The One Was Adah",
+        `Genesis names Adah to identify one of Lamech's wives.
+
+The detail slows the story and gives personal identity inside the family line.
+
+👩 A real person is named
+📖 The family is described concretely
+👀 The story is not generic
+🌱 The household is taking shape
+
+This phrase introduces Adah as one of Lamech's wives.`,
+      ],
+      [
+        "👩 The Name Of The Other Zillah",
+        `Zillah is named as Lamech's second wife.
+
+The naming continues the picture of his household and prepares for the children connected to each woman.
+
+👩 A second wife is identified
+📖 The household is being mapped out
+👀 Her descendants will matter next
+🌱 Family structure is being traced
+
+This phrase introduces Zillah within Lamech's household.`,
+      ],
+      [
+        "🏕️ Adah Bare Jabal",
+        `Bare means gave birth.
+
+Jabal is introduced as a son of Adah, and the text is about to connect him with a major pattern of human life.
+
+🏕️ A son is born
+👩 Adah's line is continuing
+📖 The next cultural development is about to be named
+🌱 The family line is expanding
+
+This phrase introduces Jabal as Adah's son.`,
+      ],
+      [
+        "🐄 The Father Of Such As Dwell In Tents And Have Cattle",
+        `Father here means pioneer or early ancestor of this way of life.
+
+Jabal becomes associated with tent-dwelling and livestock culture, a pattern later seen in men like Abraham, Isaac, and Jacob, and even in Israel's wilderness life.
+
+🐄 He is linked with livestock culture
+🏕️ He is linked with tent-dwelling
+📖 A major human way of life is beginning
+🌱 This pattern will matter later in Scripture
+
+This phrase shows Jabal as an early pioneer of pastoral, tent-dwelling life.`,
+      ],
+      [
+        "🎵 His Brother's Name Was Jubal",
+        `Jubal is introduced as Jabal's brother.
+
+The story is now moving from one kind of cultural development to another.
+
+🎵 Another brother is named
+👬 The family line broadens in influence
+📖 A new area of human culture is coming into view
+👀 The text is preparing the next contribution
+
+This phrase introduces Jubal as another significant descendant in Lamech's line.`,
+      ],
+      [
+        "🎶 The Father Of All Such As Handle The Harp And Organ",
+        `Father here again means pioneer or early ancestor of this practice.
+
+Jubal becomes associated with music and instrumental skill.
+
+🎶 Music culture is developing
+🎼 Instruments are part of human creativity
+📖 Art and skill are growing in the world
+🌱 Human culture is becoming richer
+
+This phrase shows Jubal as an early pioneer of musical life and instruments.`,
+      ],
+      [
+        "🔨 Zillah Bare Tubal-Cain",
+        `Tubal-Cain was another son of Lamech.
+
+His mother was Zillah. His name becomes associated with metalworking and craftsmanship.
+
+👶 Son of Zillah
+🛠️ Skilled craftsman
+📖 Descendant of Cain
+🌱 Connected to technology
+
+This phrase introduces Tubal-Cain as another key figure in early human development.`,
+      ],
+      [
+        "⚒️ An Instructor Of Every Artificer In Brass And Iron",
+        `Artificer means skilled worker or craftsman.
+
+Brass and iron point to metalwork. The phrase shows Tubal-Cain connected with the shaping of tools and metal skill.
+
+⚒️ Artificer means craftsman
+🛠️ Brass and iron point to metalwork
+📖 Human technology is advancing
+👀 Skill is becoming specialized
+
+This phrase shows Tubal-Cain as an early figure in metalworking and craftsmanship.`,
+      ],
+      [
+        "👧 The Sister Of Tubal-Cain Was Naamah",
+        `Naamah is named as Tubal-Cain's sister.
+
+The text does not explain more here, but it slows down enough to preserve her name within the genealogy.
+
+👧 A daughter is named
+📖 Her presence is remembered in the line
+👀 The family record includes more than sons alone
+🌱 The household is being described personally
+
+This phrase shows Naamah included by name in Lamech's family.`,
+      ],
+      [
+        "🗣️ Lamech Said Unto His Wives",
+        `Lamech now speaks directly in the text.
+
+This makes the scene more personal and dramatic because his own words reveal his heart.
+
+🗣️ Lamech begins to speak
+👀 The reader hears his mindset directly
+📖 The story slows for his speech
+⚠️ His words will reveal moral darkness
+
+This phrase marks the start of Lamech's personal speech.`,
+      ],
+      [
+        "👂 Hear My Voice; Ye Wives Of Lamech",
+        `Lamech calls his wives to listen carefully.
+
+The wording sounds formal and forceful, drawing attention to what he is about to boast.
+
+👂 He demands attention
+🗣️ His speech is deliberate
+👰 His wives are his audience
+📖 The reader is meant to listen closely too
+
+This phrase introduces Lamech's self-important address.`,
+      ],
+      [
+        "📢 Hearken Unto My Speech",
+        `Hearken means listen attentively.
+
+Lamech wants his words received with weight and seriousness.
+
+📢 He wants full attention
+🗣️ His speech is meant to sound important
+👀 The words reveal his spirit
+📖 Pride is rising in the tone
+
+This phrase deepens the force and self-importance of Lamech's speech.`,
+      ],
+      [
+        "⚔️ I Have Slain A Man To My Wounding",
+        `Slain means killed.
+
+Lamech is speaking of killing a man in response to being wounded. The wording sounds like violent retaliation.
+
+⚔️ A killing is being boasted about
+🩸 Violence has escalated in Cain's line
+⚠️ Revenge is now part of the speech
+📖 Sin is growing louder and prouder
+
+This phrase shows Lamech boasting in violent retaliation.`,
+      ],
+      [
+        "🩸 And A Young Man To My Hurt",
+        `Lamech adds that even a young man was killed in response to his own injury.
+
+The wording stresses how quickly violence is answered with more violence.
+
+🩸 Injury leads to deadly retaliation
+⚠️ Violence is disproportionate
+👀 The boast grows darker
+📖 Human revenge is intensifying
+
+This phrase shows how far violent revenge has grown in Cain's line.`,
+      ],
+      [
+        "⚖️ If Cain Shall Be Avenged Sevenfold",
+        `Sevenfold means complete, full, or severe.
+
+Lamech is referring back to God's warning about Cain and then using it to support his own violent reasoning.
+
+⚖️ Refers back to Cain
+📖 Connected to Genesis 4
+🔢 Sevenfold means complete punishment
+👀 Lamech builds on God's words
+
+This phrase shows Lamech borrowing God's earlier warning as part of his own boast.`,
+      ],
+      [
+        "💀 Truly Lamech Seventy And Sevenfold",
+        `Seventy and sevenfold is an exaggerated escalation.
+
+Lamech is boasting that his vengeance is far greater than Cain's protection.
+
+💀 The retaliation is multiplied
+⚠️ Violence is escalating
+🗣️ Pride now boasts in revenge
+📖 Sin is becoming more open and more severe
+
+This phrase shows revenge swelling from Cain's story into proud, multiplied violence.`,
+      ],
+    ],
+    "Genesis 4:25-26": [
+      [
+        "❤️ Adam Knew His Wife Again",
+        `Again means another time after what has already happened in the family story.
+
+The phrase marks a new beginning after the grief of Abel's death and Cain's departure.
+
+❤️ Husband and wife are united again
+🌱 Life continues after sorrow
+📖 A new family chapter is opening
+💚 Hope is returning into the story
+
+This phrase shows the family line continuing after great loss.`,
+      ],
+      [
+        "👶 She Bare A Son And Called His Name Seth",
+        `Bare means gave birth, and Seth is the name given to this new son.
+
+The naming matters because Eve sees this child in relation to what was lost.
+
+👶 A new son is born
+📛 He is named Seth
+💚 The family line continues
+📖 This birth carries special meaning
+
+This phrase introduces Seth as a significant new son in Adam and Eve's family.`,
+      ],
+      [
+        "🌱 God Hath Appointed Me Another Seed Instead Of Abel",
+        `Appointed means given or established by God.
+
+Seed here means offspring. Eve understands Seth as another child given in place of Abel, who was taken by murder.
+
+🌱 Seed means offspring
+🙌 Seth is seen as God's gift
+💔 Abel's loss is still in view
+📖 Hope is spoken after grief
+
+This phrase shows Eve receiving Seth as a God-given continuation after Abel's death.`,
+      ],
+      [
+        "⚔️ Whom Cain Slew",
+        `Slew means killed.
+
+Eve's words do not forget Abel. Seth's birth is being understood in the shadow of Cain's violence.
+
+⚔️ Abel's death is remembered
+💔 The wound in the family remains real
+📖 The new birth does not erase the old grief
+👀 The story keeps both sorrow and hope together
+
+This phrase keeps Abel's murder in view even while hope begins again.`,
+      ],
+      [
+        "👶 To Seth, To Him Also There Was Born A Son",
+        `This means Seth's own family line now begins.
+
+The story is not stopping with Seth himself. A continuing line is being established through him.
+
+👶 Seth's line begins
+🌱 The family continues forward
+📖 The story is moving into another generation
+💚 Hope is becoming a lasting line
+
+This phrase shows Seth becoming the start of a continuing family line.`,
+      ],
+      [
+        "📖 He Called His Name Enos",
+        `Enos is the name given to Seth's son.
+
+The naming continues the family record and marks another important step in the unfolding human story.
+
+📖 A son is named
+👶 Another generation is identified
+🌱 The line continues clearly
+👀 The genealogy is being shaped
+
+This phrase introduces Enos as the next named generation after Seth.`,
+      ],
+      [
+        "🙏 Then Began Men To Call Upon The Name Of The Lord",
+        `Call upon the name of the LORD means openly worship, pray to, and depend on the LORD.
+
+The phrase points to a marked beginning or renewed pattern of public worship and reliance on God.
+
+🙏 People begin calling on the LORD
+🗣️ Worship becomes openly expressed
+🙌 Dependence on God is emphasized
+📖 A godly pattern is reappearing in the story
+
+This phrase shows worship and dependence on the LORD becoming a recognized pattern in Seth's line.`,
+      ],
+    ],
+  };
+
+  for (const section of BIBLE_READER_STUDY_SECTIONS) {
+    const nextPhrases = reviewedGenesisFourPhrases[section.reference];
+    if (!nextPhrases) continue;
+
+    section.categories = section.categories.map((category) =>
+      category.id === "key-phrases"
+        ? {
+            ...category,
+            content: nextPhrases.map(([heading, body]) => formatBibleYearPhraseCard(heading, body, section.reference)),
+          }
+        : category,
+    );
+  }
+}
+
+applyGenesisFourDeepWordExplanations();
+
+function applyGenesisFiveDeepWordExplanations() {
+  const reviewedGenesisFivePhrases: Record<string, Array<[string, string]>> = {
+    "Genesis 5:1-5": [
+      [
+        "📖 The Book Of The Generations Of Adam",
+        `Generations here means the family record or historical account that comes from Adam's line.
+
+This is not a random name list. It is the beginning of the line through which the human story continues after Eden.
+
+📖 Generations means family record
+🌱 Adam's line is being traced
+👀 The story is moving forward through descendants
+📜 This section preserves human history
+
+This phrase introduces the genealogy of Adam's family line.`,
+      ],
+      [
+        "🕊️ In The Day That God Created Man",
+        `In the day means at the time when God created mankind.
+
+The phrase points back to creation and reminds the reader that this family line begins with God's own act.
+
+🕊️ The line begins at creation
+👑 God is the starting point
+📖 Genealogy is tied back to Genesis 1
+👀 The family story begins with God's work
+
+This phrase connects Adam's descendants back to the original creation of man.`,
+      ],
+      [
+        "👤 In The Likeness Of God Made He Him",
+        `Likeness means resemblance or correspondence.
+
+Adam was made to reflect God in a unique way. The genealogy begins by reminding the reader of human dignity before it starts listing generations and deaths.
+
+👤 Humanity reflects God
+🪞 Likeness means resemblance
+📖 Human dignity begins with creation
+👑 Man's worth comes from God
+
+This phrase reminds the reader that the human line begins with man made in God's likeness.`,
+      ],
+      [
+        "👨‍👩‍👧 Male And Female Created He Them",
+        `This points back to God's creation of humanity as male and female.
+
+The genealogy is rooted in the original design of human life as shared male and female humanity.
+
+👨 Male and female are both created by God
+👩 Human life begins under His design
+📖 The line grows from both together
+👀 Genesis keeps both in view
+
+This phrase ties the family line back to God's original creation pattern.`,
+      ],
+      [
+        "🙏 And Blessed Them",
+        `Blessed means God spoke favor over mankind.
+
+Even in a chapter full of generations and death, the line begins with the reminder that humanity first received God's blessing.
+
+🙏 Blessing came first
+🙌 Human life began under God's favor
+📖 The genealogy starts with grace before loss
+👀 Blessing stands at the beginning of the line
+
+This phrase reminds the reader that human history begins under God's blessing.`,
+      ],
+      [
+        "👥 Called Their Name Adam",
+        `Adam here can refer to mankind or humanity, not only to the individual man.
+
+The phrase shows the shared human identity of the man and woman together.
+
+👥 Adam can mean mankind
+👨‍👩‍👧 Humanity is being named together
+📖 Shared human identity is emphasized
+👀 The line begins with one human family
+
+This phrase shows that the human family is viewed together under the name Adam.`,
+      ],
+      [
+        "⏳ Adam Lived An Hundred And Thirty Years",
+        `This gives Adam's age at the time this next part of the family line begins.
+
+The long lifespan also reminds the reader that the early generations are being described in the Bible's own terms and timeline.
+
+⏳ Adam's age is recorded
+📖 Time is being tracked carefully
+👀 The genealogy is structured, not vague
+🌱 The family line moves through real years
+
+This phrase marks the timing of Seth's birth within Adam's life.`,
+      ],
+      [
+        "👶 Begat A Son In His Own Likeness",
+        `Begat means became the father of.
+
+In his own likeness means Seth resembled Adam as his human son. Adam was made in God's likeness, and now Seth comes in Adam's likeness as the next generation.
+
+👶 Begat means fathered
+🪞 Seth resembles Adam
+📖 A human line is continuing through resemblance
+🌱 The family image is being passed on
+
+This phrase shows Seth entering the line as Adam's true human son.`,
+      ],
+      [
+        "🧑 After His Image",
+        `Image here again points to resemblance.
+
+The phrase strengthens the idea that Seth is truly Adam's descendant, sharing his human nature and place in the family line.
+
+🧑 Image means resemblance
+👨 Seth belongs fully to Adam's line
+📖 Family identity is being emphasized
+🌱 The human line continues clearly
+
+This phrase deepens the connection between Adam and Seth as father and son.`,
+      ],
+      [
+        "👶 Called His Name Seth",
+        `This means Adam gave the child the name Seth.
+
+The naming marks Seth as the chosen continuation of the line after Abel's death.
+
+👶 The son is named Seth
+📛 Naming marks identity
+🌱 The family line continues through him
+📖 Hope is carried forward in this son
+
+This phrase shows Seth becoming the next named link in Adam's line.`,
+      ],
+      [
+        "⏳ The Days Of Adam After He Had Begotten Seth Were Eight Hundred Years",
+        `This records the years Adam lived after Seth was born.
+
+Genesis is carefully showing both the beginning point of a son and the remaining span of the father's life.
+
+⏳ More years are counted
+📖 The genealogy tracks full lifespans
+🌱 Family history continues over time
+👀 The record is structured and deliberate
+
+This phrase shows the continuing length of Adam's life after Seth's birth.`,
+      ],
+      [
+        "👨‍👩‍👧 He Begat Sons And Daughters",
+        `This means Adam had more children beyond Seth.
+
+Genesis names the key line it is following, but it also reminds the reader that the human family was growing broadly.
+
+👨‍👩‍👧 More children were born
+🌱 The family expanded widely
+📖 The named line is not the only line
+👀 Human population is growing
+
+This phrase shows the wider growth of Adam's family beyond the son being highlighted.`,
+      ],
+      [
+        "⚰️ All The Days That Adam Lived Were Nine Hundred And Thirty Years",
+        `This sums up Adam's total lifespan.
+
+The phrase gathers Adam's life into one full number before the chapter moves to its repeated closing line.
+
+⚰️ Adam's whole lifespan is counted
+📖 The record is complete
+⏳ His life had a full measured span
+👀 The chapter emphasizes total years lived
+
+This phrase gives the full length of Adam's earthly life.`,
+      ],
+      [
+        "🪦 And He Died",
+        `This short phrase is one of the most important refrains in Genesis 5.
+
+It shows that God's warning about death in Genesis 2 and 3 is now working itself out through the human family line.
+
+🪦 Death has entered the line
+⚖️ God's warning is proving true
+📖 The genealogy is marked by mortality
+💔 Even long lives still end in death
+
+This phrase shows the certainty of death in Adam's descendants.`,
+      ],
+    ],
+    "Genesis 5:6-8": [
+      [
+        "⏳ Seth Lived An Hundred And Five Years",
+        `This records Seth's age when the next key generation begins.
+
+The genealogy keeps moving through measured years, showing that this is family history unfolding in time.
+
+⏳ Seth's age is recorded
+📖 Time is tracked carefully
+🌱 The family line continues in order
+👀 The record stays structured
+
+This phrase marks the timing of Enos in Seth's life.`,
+      ],
+      [
+        "👶 And Begat Enos",
+        `Begat means became the father of.
+
+The phrase marks Enos as the next named son in the line the chapter is following.
+
+👶 Begat means fathered
+🌱 The line moves to Enos
+📖 Another generation is identified
+👀 The genealogy continues forward
+
+This phrase shows Seth becoming the father of Enos.`,
+      ],
+      [
+        "⏳ Seth Lived After He Begat Enos Eight Hundred And Seven Years",
+        `This gives the remaining span of Seth's life after Enos was born.
+
+Genesis is not only naming descendants. It is carefully measuring whole lifetimes.
+
+⏳ The rest of Seth's years are counted
+📖 Lifespans are being recorded fully
+🌱 Life continues after the key birth
+👀 The pattern stays consistent
+
+This phrase shows the long remainder of Seth's life after Enos.`,
+      ],
+      [
+        "👨‍👩‍👧 And Begat Sons And Daughters",
+        `This means Seth had more children besides the named son.
+
+The chapter follows one main line, but the family itself was larger.
+
+👨‍👩‍👧 More children were born
+🌱 The family widened beyond one son
+📖 The chosen line is part of a larger family
+👀 Human life keeps multiplying
+
+This phrase shows the broader growth of Seth's family.`,
+      ],
+      [
+        "⏳ All The Days Of Seth Were Nine Hundred And Twelve Years",
+        `This is the total length of Seth's life.
+
+The wording gathers his whole earthly span into one complete number.
+
+⏳ Seth's full lifespan is counted
+📖 The record is complete
+⚰️ His life is measured fully
+👀 The genealogy emphasizes total years lived
+
+This phrase gives the full number of Seth's years.`,
+      ],
+      [
+        "🪦 And He Died",
+        `The repeated ending returns again here.
+
+Even Seth, through whom the line of hope continued, still dies.
+
+🪦 Death still reigns in the line
+💔 Long life does not cancel mortality
+📖 The chapter keeps pressing the reality of death
+⚖️ Genesis 3 still echoes here
+
+This phrase shows that Seth also lives under the sentence of death.`,
+      ],
+    ],
+    "Genesis 5:9-11": [
+      [
+        "⏳ Enos Lived Ninety Years",
+        `This records Enos's age when the next key son is born.
+
+The genealogy continues by marking the age at which each generation advances.
+
+⏳ Enos's age is recorded
+📖 The line moves through measured time
+🌱 Another generation is about to appear
+👀 The structure remains steady
+
+This phrase marks the timing of the next link in Enos's life.`,
+      ],
+      [
+        "👶 And Begat Cainan",
+        `Begat means became the father of.
+
+Cainan is the next named son in the line being traced.
+
+👶 Begat means fathered
+🌱 Cainan enters the line
+📖 The genealogy moves forward
+👀 Another generation is identified
+
+This phrase shows Enos becoming the father of Cainan.`,
+      ],
+      [
+        "⏳ Enos Lived After He Begat Cainan Eight Hundred And Fifteen Years",
+        `This records the rest of Enos's life after Cainan's birth.
+
+The chapter keeps combining key births with full lifespan measurement.
+
+⏳ Enos's remaining years are counted
+📖 The record stays complete
+🌱 Life continues after the named son
+👀 The pattern remains deliberate
+
+This phrase shows the long span of Enos's life after Cainan.`,
+      ],
+      [
+        "👨‍👩‍👧 And Begat Sons And Daughters",
+        `Enos had more children besides Cainan.
+
+The main line is named, but the family itself was larger and growing.
+
+👨‍👩‍👧 The family continues growing
+🌱 More children are born
+📖 The named line is part of a bigger family
+👀 Population is still increasing
+
+This phrase shows the wider growth of Enos's family.`,
+      ],
+      [
+        "⏳ All The Days Of Enos Were Nine Hundred And Five Years",
+        `This is the total number of Enos's years.
+
+It gathers the full span of his earthly life into one final measure.
+
+⏳ Enos's lifespan is totaled
+📖 The genealogy records full lives
+⚰️ Time is measured completely
+👀 The record reaches its close
+
+This phrase gives the full length of Enos's life.`,
+      ],
+      [
+        "🪦 And He Died",
+        `Once again the genealogy ends with death.
+
+The repetition is meant to be felt. Generation after generation lives, fathers children, and dies.
+
+🪦 The pattern ends in death again
+💔 Mortality keeps repeating
+📖 The chapter is shaped by this refrain
+⚖️ Sin's consequence keeps showing
+
+This phrase shows Enos sharing the same mortal end as those before him.`,
+      ],
+    ],
+    "Genesis 5:12-14": [
+      [
+        "⏳ Cainan Lived Seventy Years",
+        `This gives Cainan's age at the start of the next named generation.
+
+The chapter continues to tie family history to precise time.
+
+⏳ Cainan's age is recorded
+📖 Time and family stay linked
+🌱 Another generation is about to begin
+👀 The genealogy stays ordered
+
+This phrase marks the timing of Mahalaleel's birth in Cainan's life.`,
+      ],
+      [
+        "👶 And Begat Mahalaleel",
+        `Begat means became the father of.
+
+Mahalaleel becomes the next named link in the genealogy.
+
+👶 Begat means fathered
+🌱 Mahalaleel enters the line
+📖 The family record moves forward
+👀 Another generation is identified
+
+This phrase shows Cainan becoming the father of Mahalaleel.`,
+      ],
+      [
+        "⏳ Cainan Lived After He Begat Mahalaleel Eight Hundred And Forty Years",
+        `This gives the years Cainan lived after Mahalaleel's birth.
+
+Genesis keeps balancing the key son with the broader span of the father's remaining life.
+
+⏳ The remaining years are counted
+📖 Lifespans stay fully recorded
+🌱 Family life continues beyond the named birth
+👀 The pattern remains consistent
+
+This phrase shows the continued length of Cainan's life after Mahalaleel.`,
+      ],
+      [
+        "👨‍👩‍👧 And Begat Sons And Daughters",
+        `Cainan had more children than the one son named.
+
+The chapter continues to follow one line while acknowledging a larger growing family.
+
+👨‍👩‍👧 More children were born
+🌱 The family expanded
+📖 One named line sits inside a larger household
+👀 Human multiplication continues
+
+This phrase shows the wider growth of Cainan's family.`,
+      ],
+      [
+        "⏳ All The Days Of Cainan Were Nine Hundred And Ten Years",
+        `This totals Cainan's full lifespan.
+
+The wording closes his place in the genealogy with a complete number.
+
+⏳ Cainan's years are totaled
+📖 The record is completed
+⚰️ His full life is measured
+👀 The chapter moves toward its closing refrain
+
+This phrase gives the total length of Cainan's life.`,
+      ],
+      [
+        "🪦 And He Died",
+        `The repeated line returns again.
+
+Each generation continues the family, yet each generation still meets death.
+
+🪦 Death ends another life
+💔 The refrain keeps pressing mortality
+📖 The chapter teaches through repetition
+⚖️ The consequence of sin remains
+
+This phrase shows Cainan ending in the same mortality as the generations before him.`,
+      ],
+    ],
+    "Genesis 5:15-17": [
+      [
+        "⏳ Mahalaleel Lived Sixty And Five Years",
+        `This records Mahalaleel's age when the next named generation begins.
+
+The genealogy continues by measuring life through the age of fatherhood and total years.
+
+⏳ Mahalaleel's age is given
+📖 Time remains central to the record
+🌱 The line is about to continue
+👀 The structure stays careful
+
+This phrase marks the timing of Jared's birth in Mahalaleel's life.`,
+      ],
+      [
+        "👶 And Begat Jared",
+        `Begat means became the father of.
+
+Jared is the next named son in the family line being followed.
+
+👶 Begat means fathered
+🌱 Jared enters the line
+📖 The genealogy moves forward
+👀 The next generation is identified
+
+This phrase shows Mahalaleel becoming the father of Jared.`,
+      ],
+      [
+        "⏳ Mahalaleel Lived After He Begat Jared Eight Hundred And Thirty Years",
+        `This gives the remaining years of Mahalaleel's life after Jared's birth.
+
+The chapter continues to record not only births but the full span of life around them.
+
+⏳ The remaining years are counted
+📖 The life record stays complete
+🌱 Family life continues onward
+👀 The pattern remains steady
+
+This phrase shows the long continuation of Mahalaleel's life after Jared.`,
+      ],
+      [
+        "👨‍👩‍👧 And Begat Sons And Daughters",
+        `Mahalaleel had more children beyond the named son.
+
+The genealogy focuses one line while still noting the family's wider growth.
+
+👨‍👩‍👧 More children were born
+🌱 The household grew larger
+📖 The line is part of a broader family
+👀 Human life keeps multiplying
+
+This phrase shows the continuing expansion of Mahalaleel's family.`,
+      ],
+      [
+        "⏳ All The Days Of Mahalaleel Were Eight Hundred Ninety And Five Years",
+        `This sums up Mahalaleel's full lifespan.
+
+The wording closes his years as one completed life in the genealogy.
+
+⏳ Mahalaleel's life is totaled
+📖 The record is made complete
+⚰️ His full span is counted
+👀 The chapter prepares to move on
+
+This phrase gives the total number of Mahalaleel's years.`,
+      ],
+      [
+        "🪦 And He Died",
+        `Again the same ending appears.
+
+The long years do not remove the final sentence of death.
+
+🪦 Another generation dies
+💔 Length of life does not remove mortality
+📖 The refrain keeps teaching the same truth
+⚖️ Death remains universal in the line
+
+This phrase shows Mahalaleel sharing the same end as the others before him.`,
+      ],
+    ],
+    "Genesis 5:18-20": [
+      [
+        "⏳ Jared Lived An Hundred Sixty And Two Years",
+        `This records Jared's age at the point the next key son is born.
+
+The genealogy continues to move through exact years and named descendants.
+
+⏳ Jared's age is given
+📖 Time stays central to the record
+🌱 Another generation is about to begin
+👀 The structure remains deliberate
+
+This phrase marks the timing of Enoch's birth in Jared's life.`,
+      ],
+      [
+        "👶 And Begat Enoch",
+        `Begat means became the father of.
+
+Enoch is introduced here as the next named son, and he will become especially important later in the chapter.
+
+👶 Begat means fathered
+🌱 Enoch enters the line
+📖 The genealogy moves toward a key figure
+👀 The story is preparing a contrast
+
+This phrase shows Jared becoming the father of Enoch.`,
+      ],
+      [
+        "⏳ Jared Lived After He Begat Enoch Eight Hundred Years",
+        `This gives Jared's remaining years after Enoch's birth.
+
+The chapter continues its pattern of full lifespan measurement.
+
+⏳ Jared's remaining years are counted
+📖 The record stays complete
+🌱 Family life continues beyond the key birth
+👀 The structure is consistent
+
+This phrase shows the continued length of Jared's life after Enoch.`,
+      ],
+      [
+        "👨‍👩‍👧 And Begat Sons And Daughters",
+        `Jared had more children than the named son alone.
+
+The line being followed is specific, but the family itself was broader.
+
+👨‍👩‍👧 More children were born
+🌱 The household continued growing
+📖 The chosen line belongs to a larger family
+👀 Population keeps increasing
+
+This phrase shows the wider growth of Jared's family.`,
+      ],
+      [
+        "⏳ All The Days Of Jared Were Nine Hundred Sixty And Two Years",
+        `This is the full total of Jared's lifespan.
+
+The genealogy closes his life by summing its measured years.
+
+⏳ Jared's whole life is counted
+📖 The record is rounded off fully
+⚰️ His years are complete
+👀 The chapter moves toward its refrain
+
+This phrase gives the total number of Jared's years.`,
+      ],
+      [
+        "🪦 And He Died",
+        `Even Jared, with his long life, still dies.
+
+The repeated line keeps building the sense that death overshadows the whole genealogy.
+
+🪦 Another life ends
+💔 The refrain continues
+📖 The chapter keeps emphasizing mortality
+⚖️ Death remains the common end
+
+This phrase shows Jared ending under the same sentence of death.`,
+      ],
+    ],
+    "Genesis 5:21-24": [
+      [
+        "⏳ Enoch Lived Sixty And Five Years",
+        `This records Enoch's age when the next named son is born.
+
+The same genealogy pattern begins, but Enoch's story will soon stand out from the others.
+
+⏳ Enoch's age is given
+📖 The familiar pattern begins
+🌱 Methuselah is about to appear
+👀 A different ending is coming
+
+This phrase marks the timing of Methuselah's birth in Enoch's life.`,
+      ],
+      [
+        "👶 And Begat Methuselah",
+        `Begat means became the father of.
+
+Methuselah is the next named son in the line, but the main emphasis of the section will soon turn back to Enoch himself.
+
+👶 Begat means fathered
+🌱 Methuselah enters the line
+📖 The genealogy continues
+👀 Enoch's own walk will be emphasized next
+
+This phrase shows Enoch becoming the father of Methuselah.`,
+      ],
+      [
+        "🚶 Enoch Walked With God",
+        `Walked with God means Enoch lived in close fellowship, faithfulness, and communion with God.
+
+The phrase describes more than ordinary life. It shows a life marked by nearness to God.
+
+🚶 Walked means lived in steady fellowship
+🙏 Enoch's life was Godward
+📖 The relationship is close and personal
+👀 This makes Enoch stand out in the chapter
+
+This phrase shows Enoch living in a uniquely close relationship with God.`,
+      ],
+      [
+        "⏳ After He Begat Methuselah Three Hundred Years",
+        `This records the years Enoch lived after Methuselah's birth.
+
+The key difference is that those years are described alongside the statement that he walked with God.
+
+⏳ The years are counted
+🚶 His walk with God continues through them
+📖 Time and faithfulness are joined together
+👀 His life is measured by more than years alone
+
+This phrase shows Enoch's ongoing life of faithful walking after Methuselah's birth.`,
+      ],
+      [
+        "👨‍👩‍👧 And Begat Sons And Daughters",
+        `Enoch, like the others, had a broader family beyond the named son.
+
+His special walk with God did not remove him from ordinary family life.
+
+👨‍👩‍👧 Enoch had a larger family
+🌱 Ordinary family life continued
+🚶 Faithfulness existed inside normal life
+📖 Godliness and family life are not opposites
+
+This phrase shows Enoch's household growing like the others, even while his life stands out spiritually.`,
+      ],
+      [
+        "⏳ All The Days Of Enoch Were Three Hundred Sixty And Five Years",
+        `This gives Enoch's total years on earth.
+
+The number is shorter than many others in the chapter, but his story is not presented as lesser because of that.
+
+⏳ Enoch's total years are counted
+📖 His life still has a measured span
+👀 Length is not the main point here
+🚶 His walk matters more than his age alone
+
+This phrase records Enoch's full years before the chapter gives his unusual ending.`,
+      ],
+      [
+        "🚶 And Enoch Walked With God",
+        `The phrase is repeated to emphasize what defined Enoch's life.
+
+His identity in the chapter is not mainly how many years he lived, but how he lived before God.
+
+🚶 The repetition makes the point stronger
+🙏 Godward fellowship defines his life
+📖 The chapter pauses on his character
+👀 Enoch is being highlighted
+
+This phrase reinforces that Enoch's life was marked by close fellowship with God.`,
+      ],
+      [
+        "✨ And He Was Not; For God Took Him",
+        `He was not means Enoch was no longer found among the living in the ordinary way.
+
+God took him means God removed him directly, and unlike the others the refrain and he died does not appear.
+
+✨ Enoch's ending is different
+👑 God takes him directly
+📖 The death refrain is broken here
+👀 Hope flashes inside the genealogy
+
+This phrase shows Enoch's unique departure as a striking exception in a chapter dominated by death.`,
+      ],
+    ],
+    "Genesis 5:25-27": [
+      [
+        "⏳ Methuselah Lived An Hundred Eighty And Seven Years",
+        `This records Methuselah's age when the next named son is born.
+
+The genealogy returns to its regular pattern after Enoch's exceptional ending.
+
+⏳ Methuselah's age is recorded
+📖 The family line continues in order
+🌱 Another generation is beginning
+👀 The structure settles back into its pattern
+
+This phrase marks the timing of Lamech's birth in Methuselah's life.`,
+      ],
+      [
+        "👶 And Begat Lamech",
+        `Begat means became the father of.
+
+Lamech is the next named son in the line leading toward Noah.
+
+👶 Begat means fathered
+🌱 Lamech enters the line
+📖 The genealogy is moving toward Noah
+👀 Another key generation is introduced
+
+This phrase shows Methuselah becoming the father of Lamech.`,
+      ],
+      [
+        "⏳ Methuselah Lived After He Begat Lamech Seven Hundred Eighty And Two Years",
+        `This gives the years Methuselah lived after Lamech's birth.
+
+The chapter continues its full accounting of life after the key son is born.
+
+⏳ The remaining years are counted
+📖 The record stays complete
+🌱 Life continues after the named birth
+👀 The pattern remains steady
+
+This phrase shows the long continuation of Methuselah's life after Lamech.`,
+      ],
+      [
+        "👨‍👩‍👧 And Begat Sons And Daughters",
+        `Methuselah had more children beyond the named son.
+
+The main line is followed closely, but the family itself was broader.
+
+👨‍👩‍👧 More children were born
+🌱 The family expanded further
+📖 The line belongs to a larger household
+👀 Human life keeps spreading
+
+This phrase shows the wider growth of Methuselah's family.`,
+      ],
+      [
+        "⏳ All The Days Of Methuselah Were Nine Hundred Sixty And Nine Years",
+        `This is Methuselah's total lifespan.
+
+It is the longest recorded lifespan in the chapter, but even that length does not remove the final pattern.
+
+⏳ His life is counted fully
+👀 The years are remarkably long
+📖 Length is recorded, not glorified
+⚰️ Even the longest life is still finite
+
+This phrase gives the full length of Methuselah's life.`,
+      ],
+      [
+        "🪦 And He Died",
+        `The familiar ending comes again, even after the longest lifespan listed.
+
+The point lands strongly: no length of life in this chapter can escape death except where God intervenes as with Enoch.
+
+🪦 Even the longest life ends
+💔 Mortality still wins over years
+📖 The refrain keeps its force
+⚖️ Death remains universal
+
+This phrase shows that even Methuselah's long life ends under death.`,
+      ],
+    ],
+    "Genesis 5:28-31": [
+      [
+        "⏳ Lamech Lived An Hundred Eighty And Two Years",
+        `This records Lamech's age when Noah is born.
+
+The genealogy is now moving toward the key figure who will dominate the next stage of the story.
+
+⏳ Lamech's age is recorded
+📖 The line is moving toward Noah
+🌱 A major generation is arriving
+👀 The story is narrowing in focus
+
+This phrase marks the timing of Noah's birth in Lamech's life.`,
+      ],
+      [
+        "👶 And Begat A Son",
+        `The wording slows slightly here before giving the son's name.
+
+That pause helps prepare the reader for the significance of this child.
+
+👶 A son is born
+👀 The reader is prepared for his importance
+📖 The moment is being highlighted
+🌱 The family line is reaching a key figure
+
+This phrase introduces the birth of a son whose name will immediately be explained.`,
+      ],
+      [
+        "📖 Called His Name Noah",
+        `Noah is the name given to the child.
+
+The naming matters because Lamech connects the name with hope and relief from the hardship of the cursed ground.
+
+📖 The son is named Noah
+📛 Naming carries expectation
+💚 Hope is tied to this child
+👀 His story will matter greatly next
+
+This phrase introduces Noah as a named child of special hope.`,
+      ],
+      [
+        "😔 This Same Shall Comfort Us",
+        `Comfort means bring relief, ease, or consolation.
+
+Lamech is expressing hope that Noah will somehow bring relief in a hard world.
+
+😔 The world feels heavy
+💚 Comfort is being hoped for
+👶 Noah is linked with relief
+📖 The name is tied to expectation
+
+This phrase shows Lamech placing hope in Noah as a source of comfort.`,
+      ],
+      [
+        "🌍 Concerning Our Work",
+        `Work here points to the hard labor of life on the ground.
+
+Lamech is speaking about the burden people feel in a world shaped by the curse.
+
+🌍 Ordinary labor is in view
+🛠️ Human work feels heavy
+💔 The curse affects daily life
+📖 Noah is linked to hope in that burden
+
+This phrase shows Lamech connecting Noah with relief from exhausting human labor.`,
+      ],
+      [
+        "🌾 Because Of The Ground Which The LORD Hath Cursed",
+        `This points directly back to Genesis 3.
+
+The hardness of life is being traced to the cursed ground under which humanity now labors.
+
+🌾 The ground is still under curse
+📖 Genesis 3 is still shaping the world
+💔 Hard labor has a theological cause
+👀 Noah is hoped to touch that burden
+
+This phrase shows Lamech understanding human hardship in light of the curse on the ground.`,
+      ],
+      [
+        "⏳ Lamech Lived After He Begat Noah Five Hundred Ninety And Five Years",
+        `This gives the years Lamech lived after Noah's birth.
+
+The chapter continues its pattern even while Noah is being singled out as important.
+
+⏳ The remaining years are counted
+📖 The genealogy keeps its structure
+🌱 Life continues after Noah's birth
+👀 The record stays complete
+
+This phrase shows the continuing span of Lamech's life after Noah was born.`,
+      ],
+      [
+        "👨‍👩‍👧 And Begat Sons And Daughters",
+        `Lamech also had more children beyond Noah.
+
+Noah is the key figure being followed, but he belongs to a larger family story.
+
+👨‍👩‍👧 More children were born
+🌱 The family remained broad
+📖 The chosen line sits inside a wider household
+👀 Noah is highlighted within a bigger family
+
+This phrase shows the broader family life around Noah's line.`,
+      ],
+      [
+        "⏳ All The Days Of Lamech Were Seven Hundred Seventy And Seven Years",
+        `This is the total length of Lamech's life.
+
+The number closes his place in the genealogy as the chapter moves toward Noah.
+
+⏳ Lamech's years are totaled
+📖 His life is fully measured
+⚰️ The record is complete
+👀 The chapter is approaching its next stage
+
+This phrase gives the full length of Lamech's life.`,
+      ],
+      [
+        "🪦 And He Died",
+        `Even Lamech, who spoke hope over Noah, still dies.
+
+The refrain continues to remind the reader that the world is still living under death.
+
+🪦 Lamech also dies
+💔 Hope has not yet removed mortality
+📖 The refrain keeps its pressure
+⚖️ Death still marks the human line
+
+This phrase shows that even hopeful expectation has not yet removed death from the story.`,
+      ],
+    ],
+    "Genesis 5:32": [
+      [
+        "⏳ Noah Was Five Hundred Years Old",
+        `This records Noah's age at the point his sons are introduced.
+
+The chapter is now handing the story forward to the household that will matter in Genesis 6 and beyond.
+
+⏳ Noah's age is recorded
+📖 The story is shifting toward Noah's family
+🌱 A new stage is opening
+👀 The next major section is being prepared
+
+This phrase marks the timing of the transition into Noah's household.`,
+      ],
+      [
+        "👨 Shem, Ham, And Japheth",
+        `These are the names of Noah's three sons.
+
+The naming matters because the future of the human story after the flood will move through these sons.
+
+👨 Three sons are named
+🌱 Noah's household is now in view
+📖 Future nations and stories will come through them
+👀 The next stage of Genesis is being prepared
+
+This phrase introduces the three sons through whom the story will continue.`,
+      ],
+      [
+        "🌱 And Noah Begat",
+        `Begat means became the father of.
+
+The phrase introduces Noah as the father of the sons now named.
+
+🌱 Noah becomes the father
+👨 The next generation is tied to him
+📖 The line is moving into a new household
+👀 Fatherhood now shapes the next stage
+
+This phrase presents Noah as the father at the head of the next family section.`,
+      ],
+      [
+        "🌱 Noah Begat Shem, Ham, And Japheth",
+        `This sums up Noah's fatherhood in full by naming all three sons together.
+
+The phrase sets the stage for the coming flood narrative and the continuation of humanity through Noah's family.
+
+🌱 Noah fathers three sons
+👨 The household is fully named
+📖 The future story will run through them
+👀 A major transition is being completed
+
+This phrase closes Genesis 5 by placing Noah's full household before the reader.`,
+      ],
+    ],
+  };
+
+  for (const section of BIBLE_READER_STUDY_SECTIONS) {
+    const nextPhrases = reviewedGenesisFivePhrases[section.reference];
+    if (!nextPhrases) continue;
+
+    section.categories = section.categories.map((category) =>
+      category.id === "key-phrases"
+        ? {
+            ...category,
+            content: nextPhrases.map(([heading, body]) => formatBibleYearPhraseCard(heading, body, section.reference)),
+          }
+        : category,
+    );
+  }
+}
+
+applyGenesisFiveDeepWordExplanations();
 applyPersonalNumbersTwentySixThroughThirtySixStudySections();
 applyPersonalDeuteronomyOneThroughThirteenStudySections();
 applyPersonalDeuteronomyFourteenThroughTwentyNineStudySections();

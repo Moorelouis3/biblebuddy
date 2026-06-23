@@ -32,7 +32,7 @@ type ChargeWithInvoice = Stripe.Charge & {
   invoice?: string | Stripe.Invoice | null;
 };
 
-type RevenueWindowKey = "today" | "yesterday" | "24h" | "7d" | "30d" | "this_month" | "lifetime";
+type RevenueWindowKey = "today" | "yesterday" | "24h" | "7d" | "30d" | "90d" | "this_month" | "lifetime";
 
 function getRevenueWindowKey(req: NextRequest): RevenueWindowKey {
   const raw = req.nextUrl.searchParams.get("window");
@@ -41,6 +41,7 @@ function getRevenueWindowKey(req: NextRequest): RevenueWindowKey {
     raw === "24h" ||
     raw === "7d" ||
     raw === "30d" ||
+    raw === "90d" ||
     raw === "this_month" ||
     raw === "lifetime"
     ? raw
@@ -59,9 +60,90 @@ function getRevenueDateRange(windowKey: RevenueWindowKey) {
   }
   if (windowKey === "7d") return { start: Math.floor((now.getTime() - 7 * 24 * 60 * 60 * 1000) / 1000), end: null as number | null, label: "Last 7 days" };
   if (windowKey === "30d") return { start: Math.floor((now.getTime() - 30 * 24 * 60 * 60 * 1000) / 1000), end: null as number | null, label: "Last 30 days" };
+  if (windowKey === "90d") return { start: Math.floor((now.getTime() - 90 * 24 * 60 * 60 * 1000) / 1000), end: null as number | null, label: "Last 90 days" };
   if (windowKey === "this_month") return { start: Math.floor(new Date(now.getFullYear(), now.getMonth(), 1).getTime() / 1000), end: null as number | null, label: "This month" };
   if (windowKey === "lifetime") return { start: 0, end: null as number | null, label: "Lifetime" };
   return { start: Math.floor((now.getTime() - 24 * 60 * 60 * 1000) / 1000), end: null as number | null, label: "Last 24 hours" };
+}
+
+function getPreviousRevenueDateRange(windowKey: RevenueWindowKey) {
+  const now = new Date();
+  const todayStart = new Date(now);
+  todayStart.setHours(0, 0, 0, 0);
+
+  if (windowKey === "today") {
+    const previousStart = new Date(todayStart);
+    previousStart.setDate(previousStart.getDate() - 1);
+    return { start: Math.floor(previousStart.getTime() / 1000), end: Math.floor(todayStart.getTime() / 1000), label: "Previous day" };
+  }
+  if (windowKey === "yesterday") {
+    const previousEnd = new Date(todayStart);
+    previousEnd.setDate(previousEnd.getDate() - 1);
+    const previousStart = new Date(previousEnd);
+    previousStart.setDate(previousStart.getDate() - 1);
+    return { start: Math.floor(previousStart.getTime() / 1000), end: Math.floor(previousEnd.getTime() / 1000), label: "Previous day" };
+  }
+  if (windowKey === "24h") return { start: Math.floor((now.getTime() - 48 * 24 * 60 * 60 * 1000) / 1000), end: Math.floor((now.getTime() - 24 * 60 * 60 * 1000) / 1000), label: "Previous 24 hours" };
+  if (windowKey === "7d") return { start: Math.floor((now.getTime() - 14 * 24 * 60 * 60 * 1000) / 1000), end: Math.floor((now.getTime() - 7 * 24 * 60 * 60 * 1000) / 1000), label: "Previous 7 days" };
+  if (windowKey === "30d") return { start: Math.floor((now.getTime() - 60 * 24 * 60 * 60 * 1000) / 1000), end: Math.floor((now.getTime() - 30 * 24 * 60 * 60 * 1000) / 1000), label: "Previous 30 days" };
+  if (windowKey === "90d") return { start: Math.floor((now.getTime() - 180 * 24 * 60 * 60 * 1000) / 1000), end: Math.floor((now.getTime() - 90 * 24 * 60 * 60 * 1000) / 1000), label: "Previous 90 days" };
+  return null;
+}
+
+function percentChange(current: number, previous: number) {
+  if (previous <= 0 && current <= 0) return 0;
+  if (previous <= 0) return 100;
+  return Number((((current - previous) / previous) * 100).toFixed(1));
+}
+
+function getRevenueSeriesBucket(windowKey: RevenueWindowKey) {
+  if (windowKey === "today" || windowKey === "24h" || windowKey === "yesterday") return "hour";
+  if (windowKey === "90d") return "week";
+  if (windowKey === "lifetime") return "month";
+  return "day";
+}
+
+function startOfWeek(date: Date) {
+  const copy = new Date(date);
+  copy.setHours(0, 0, 0, 0);
+  const day = copy.getDay();
+  const diff = (day + 6) % 7;
+  copy.setDate(copy.getDate() - diff);
+  return copy;
+}
+
+function buildRevenueSeries(charges: Stripe.Charge[], windowKey: RevenueWindowKey) {
+  const bucket = getRevenueSeriesBucket(windowKey);
+  const counts = new Map<string, number>();
+  const labelByKey = new Map<string, string>();
+
+  charges.forEach((charge) => {
+    const date = new Date(charge.created * 1000);
+    let key = "";
+    let label = "";
+
+    if (bucket === "hour") {
+      key = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}-${date.getHours()}`;
+      label = date.toLocaleTimeString("en-US", { hour: "numeric" });
+    } else if (bucket === "week") {
+      const weekStart = startOfWeek(date);
+      key = weekStart.toISOString().slice(0, 10);
+      label = weekStart.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+    } else if (bucket === "month") {
+      key = `${date.getFullYear()}-${date.getMonth() + 1}`;
+      label = date.toLocaleDateString("en-US", { month: "short", year: "2-digit" });
+    } else {
+      key = date.toISOString().slice(0, 10);
+      label = date.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+    }
+
+    counts.set(key, (counts.get(key) || 0) + (charge.amount_captured || charge.amount));
+    labelByKey.set(key, label);
+  });
+
+  return Array.from(counts.entries())
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([key, value]) => ({ label: labelByKey.get(key) || key, value: Math.round(value / 100) }));
 }
 
 async function requireOwner(req: NextRequest) {
@@ -92,7 +174,9 @@ export async function GET(req: NextRequest) {
   try {
     const windowKey = getRevenueWindowKey(req);
     const revenueRange = getRevenueDateRange(windowKey);
+    const previousRange = getPreviousRevenueDateRange(windowKey);
     const createdRange = revenueRange.end ? { gte: revenueRange.start, lt: revenueRange.end } : { gte: revenueRange.start };
+    const broadestStart = previousRange ? Math.min(revenueRange.start, previousRange.start) : revenueRange.start;
 
     const [activeSubscriptions, trialingSubscriptions, recentCharges, rangeCharges] = await Promise.all([
       stripe.subscriptions.list({
@@ -111,7 +195,7 @@ export async function GET(req: NextRequest) {
       }),
       stripe.charges.list({
         limit: 100,
-        created: createdRange,
+        created: previousRange ? { gte: broadestStart } : createdRange,
         expand: ["data.customer"],
       }),
     ]);
@@ -123,8 +207,23 @@ export async function GET(req: NextRequest) {
     );
     const mrrCents = activePaidSubscriptions.reduce((total, subscription) => total + getSubscriptionMrrCents(subscription), 0);
     const currency = activePaidSubscriptions[0]?.currency || recentCharges.data[0]?.currency || "usd";
-    const paidRangeCharges = rangeCharges.data.filter((charge) => charge.paid && !charge.refunded);
+    const paidAllFetchedCharges = rangeCharges.data.filter((charge) => charge.paid && !charge.refunded);
+    const paidRangeCharges = paidAllFetchedCharges.filter((charge) => {
+      const created = charge.created;
+      if (created < revenueRange.start) return false;
+      if (revenueRange.end && created >= revenueRange.end) return false;
+      return true;
+    });
+    const paidPreviousCharges = previousRange
+      ? paidAllFetchedCharges.filter((charge) => {
+          const created = charge.created;
+          if (created < previousRange.start) return false;
+          if (previousRange.end && created >= previousRange.end) return false;
+          return true;
+        })
+      : [];
     const revenueRangeCents = paidRangeCharges.reduce((total, charge) => total + charge.amount_captured, 0);
+    const previousRevenueRangeCents = paidPreviousCharges.reduce((total, charge) => total + charge.amount_captured, 0);
     const oneTimeRangeCents = paidRangeCharges
       .filter((charge) => {
         const chargeWithInvoice = charge as ChargeWithInvoice;
@@ -155,6 +254,7 @@ export async function GET(req: NextRequest) {
           receiptUrl: charge.receipt_url,
         };
       });
+    const series = buildRevenueSeries(paidRangeCharges, windowKey);
 
     return NextResponse.json({
       currency,
@@ -170,10 +270,16 @@ export async function GET(req: NextRequest) {
       revenue30d: formatMoney(revenueRangeCents, currency),
       revenueRangeCents,
       revenueRange: formatMoney(revenueRangeCents, currency),
+      comparison: {
+        current: Math.round(revenueRangeCents / 100),
+        previous: Math.round(previousRevenueRangeCents / 100),
+        change: percentChange(revenueRangeCents, previousRevenueRangeCents),
+      },
       oneTime30dCents: oneTimeRangeCents,
       oneTime30d: formatMoney(oneTimeRangeCents, currency),
       oneTimeRangeCents,
       oneTimeRange: formatMoney(oneTimeRangeCents, currency),
+      series,
       recentPayments,
       updatedAt: new Date().toISOString(),
     });
