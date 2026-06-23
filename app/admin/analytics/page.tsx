@@ -1186,104 +1186,125 @@ function MobileHighlightCard({
 function MobileAnalyticsHighlights({
   windowKey,
   setWindowKey,
+  simpleMetric,
+  setSimpleMetric,
   data,
+  businessMetrics,
   stripeRevenue,
   stripeRevenueLoading,
   loading,
-  totalUsers,
-  moneyEarned,
-  upgrades,
-  landingViews,
-  signups,
-  dayPlays,
 }: {
   windowKey: JourneyWindow;
   setWindowKey: (value: JourneyWindow) => void;
+  simpleMetric: SimpleAnalyticsMetric;
+  setSimpleMetric: (value: SimpleAnalyticsMetric) => void;
   data: AnalyticsResponse | null;
+  businessMetrics: AnalyticsResponse["businessMetrics"] | null | undefined;
   stripeRevenue: StripeRevenueSummary | null;
   stripeRevenueLoading: boolean;
   loading: boolean;
-  totalUsers: number;
-  moneyEarned: string;
-  upgrades: number;
-  landingViews: number;
-  signups: number;
-  dayPlays: number;
 }) {
-  const windowLabel = data?.customerJourney?.label || WINDOW_OPTIONS.find((option) => option.key === windowKey)?.label || "Selected range";
+  const totalUsersLabel = formatNumber(businessMetrics?.totalUsers || 0);
+  const revenueLabel = stripeRevenue?.revenueRange || stripeRevenue?.revenue30d || "$0";
+  const signupsSeriesTotal = (data?.simpleSeries?.signups || []).reduce((sum, point) => sum + point.value, 0);
+  const upgradesSeriesTotal = (data?.simpleSeries?.upgrades || []).reduce((sum, point) => sum + point.value, 0);
+  const signupsFallbackTotal = data?.customerJourney?.freeAccounts || data?.visitorJourneys?.metrics?.createdFreeAccount || 0;
+  const upgradesFallbackTotal = data?.customerJourney?.proUpgrades || data?.visitorJourneys?.metrics?.upgradedToPro || 0;
+  const signupsLabel = formatNumber(signupsSeriesTotal || signupsFallbackTotal);
+  const upgradesLabel = formatNumber(upgradesSeriesTotal || upgradesFallbackTotal);
+  const chartSeries = simpleMetric === "overview" ? [] : getSimpleMetricSeries(simpleMetric, data, stripeRevenue);
+  const comparisonLabel = getComparisonLabel(windowKey);
+  const signupComparison = data?.simpleComparisons?.signups?.change;
+  const upgradesComparison = data?.simpleComparisons?.upgrades?.change;
+  const revenueComparison = stripeRevenue?.comparison?.change;
 
   return (
     <section className="mt-5 space-y-4 md:hidden">
-      <div className="rounded-[24px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-4 shadow-[0_16px_40px_rgba(15,23,42,0.10)]">
-        <div className="flex items-start justify-between gap-3">
-          <div>
-            <p className="text-[10px] font-black uppercase tracking-[0.22em] text-[var(--bb-accent,#2f7fe8)]">Analytics</p>
-            <h2 className="mt-2 text-2xl font-black leading-tight text-[var(--bb-text-primary,#101827)]">Bible Buddy today</h2>
-            <p className="mt-1 text-xs font-bold text-[var(--bb-text-secondary,#334155)] opacity-80">{windowLabel}</p>
-          </div>
+      <SimpleAnalyticsKpiCard
+        title="Total Users (All Time)"
+        value={loading ? "..." : totalUsersLabel}
+        helper="Registered + guest users"
+      />
+
+      <div className="grid grid-cols-2 gap-3">
+        <label className="space-y-2">
+          <span className="block text-sm font-bold text-[var(--bb-text-primary,#101827)]">Metric</span>
           <select
-            value={windowKey}
-            onChange={(event) => setWindowKey(event.target.value as JourneyWindow)}
-            className="h-10 max-w-[150px] rounded-xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] px-3 text-xs font-black text-[var(--bb-text-primary,#101827)] outline-none focus:border-[var(--bb-accent,#2f7fe8)] focus:ring-4 focus:ring-[var(--bb-accent-soft,#e6f1ff)]"
-            aria-label="Analytics timeframe"
+            value={simpleMetric}
+            onChange={(event) => setSimpleMetric(event.target.value as SimpleAnalyticsMetric)}
+            className="h-14 w-full rounded-[18px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] px-4 text-base font-semibold text-[var(--bb-text-primary,#101827)] shadow-[0_12px_30px_rgba(15,23,42,0.06)] outline-none transition focus:border-blue-400 focus:ring-4 focus:ring-blue-100"
           >
-            {WINDOW_OPTIONS.map((option) => (
+            {SIMPLE_METRIC_OPTIONS.map((option) => (
               <option key={option.key} value={option.key}>{option.label}</option>
             ))}
           </select>
-        </div>
+        </label>
+        <label className="space-y-2">
+          <span className="block text-sm font-bold text-[var(--bb-text-primary,#101827)]">Timeframe</span>
+          <select
+            value={windowKey}
+            onChange={(event) => setWindowKey(event.target.value as JourneyWindow)}
+            className="h-14 w-full rounded-[18px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] px-4 text-base font-semibold text-[var(--bb-text-primary,#101827)] shadow-[0_12px_30px_rgba(15,23,42,0.06)] outline-none transition focus:border-blue-400 focus:ring-4 focus:ring-blue-100"
+          >
+            {SIMPLE_WINDOW_OPTIONS.map((option) => (
+              <option key={option.key} value={option.key}>{option.label}</option>
+            ))}
+          </select>
+        </label>
       </div>
 
       {loading ? (
         <div className="rounded-2xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-5 text-sm font-bold text-[var(--bb-text-secondary,#334155)]">
           Loading analytics...
         </div>
-      ) : (
-        <div className="grid grid-cols-2 gap-3">
-          <MobileHighlightCard
-            label="Total Users"
-            value={formatNumber(totalUsers)}
-            helper="Registered plus guest users."
-            icon="visitors"
+      ) : simpleMetric === "overview" ? (
+        <div className="grid gap-3">
+          <SimpleAnalyticsKpiCard
+            title="Signups"
+            value={signupsLabel}
+            helper="Accounts created in this timeframe"
+            accent="green"
+            comparison={windowKey === "lifetime" ? null : signupComparison}
+            comparisonLabel={windowKey === "lifetime" ? "" : comparisonLabel}
           />
-          <MobileHighlightCard
-            label="Money Earned"
-            value={stripeRevenueLoading ? "..." : moneyEarned}
-            helper="Stripe cash for this time frame."
-            icon="pro"
+          <SimpleAnalyticsKpiCard
+            title="Revenue"
+            value={stripeRevenueLoading ? "..." : revenueLabel}
+            helper="Stripe cash collected in this timeframe"
+            accent="blue"
+            comparison={windowKey === "lifetime" ? null : revenueComparison}
+            comparisonLabel={windowKey === "lifetime" ? "" : comparisonLabel}
           />
-          <MobileHighlightCard
-            label="Upgrades"
-            value={formatNumber(upgrades)}
-            helper="People who upgraded to Pro."
-            icon="spark"
-          />
-          <MobileHighlightCard
-            label="Landing Views"
-            value={formatNumber(landingViews)}
-            helper="Unique landing page visitors."
-            icon="user"
-          />
-          <MobileHighlightCard
-            label="Sign Ups"
-            value={formatNumber(signups)}
-            helper="Accounts created."
-            icon="check"
-          />
-          <MobileHighlightCard
-            label="Day Plays"
-            value={formatNumber(dayPlays)}
-            helper="Daily lesson starts."
-            icon="play"
+          <SimpleAnalyticsKpiCard
+            title="Upgrades"
+            value={upgradesLabel}
+            helper="Users who upgraded to Pro"
+            accent="violet"
+            comparison={windowKey === "lifetime" ? null : upgradesComparison}
+            comparisonLabel={windowKey === "lifetime" ? "" : comparisonLabel}
           />
         </div>
+      ) : (
+        <SimpleAnalyticsChartCard
+          metric={simpleMetric}
+          windowKey={windowKey}
+          value={getSimpleMetricTotal(simpleMetric, data, stripeRevenue)}
+          points={chartSeries}
+          loading={loading || stripeRevenueLoading}
+          comparison={windowKey === "lifetime" ? null : simpleMetric === "revenue" ? revenueComparison : simpleMetric === "signups" ? signupComparison : upgradesComparison}
+        />
       )}
 
-      {stripeRevenue?.mrr ? (
-        <div className="rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,var(--bb-card-border,#d8e3ec))] bg-[var(--bb-accent-soft,#e6f1ff)] p-4 text-sm font-black text-[var(--bb-accent,#2f7fe8)]">
-          MRR: {stripeRevenue.mrr}
-        </div>
-      ) : null}
+      <Link
+        href="/admin/analytics/advanced"
+        className="flex min-h-[64px] w-full items-center justify-between rounded-[22px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] px-5 py-4 text-left shadow-[0_16px_40px_rgba(15,23,42,0.08)] transition hover:border-blue-300 hover:bg-[var(--bb-surface-soft,#f8fbff)]"
+      >
+        <span>
+          <span className="block text-lg font-black text-[var(--bb-text-primary,#101827)]">View Advanced Analytics</span>
+          <span className="mt-1 block text-sm font-semibold text-[var(--bb-text-secondary,#64748b)]">Funnels, cohorts, retention, traffic sources, and detailed reports</span>
+        </span>
+        <span className="text-blue-600"><Icon name="arrow" /></span>
+      </Link>
     </section>
   );
 }
@@ -3177,9 +3198,6 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
       .map((user) => user.userId),
   ).size;
   const dayOnePlays = journeyPerformanceDays.find((day) => day.dayNumber === 1)?.plays || 0;
-  const mobileMoneyEarned = stripeRevenue?.revenueRange || stripeRevenue?.revenue30d || "$0";
-  const mobileUpgrades = data?.customerJourney?.proUpgrades || metrics.upgradedToPro || 0;
-  const mobileDayPlays = data?.audioEngagement?.totalPlays || journeyPerformanceDays.reduce((total, day) => total + day.plays, 0);
 
   const filteredRows = useMemo(() => {
     const cleanSearch = search.trim().toLowerCase();
@@ -3503,16 +3521,13 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
             <MobileAnalyticsHighlights
               windowKey={windowKey}
               setWindowKey={setWindowKey}
+              simpleMetric={simpleMetric}
+              setSimpleMetric={setSimpleMetric}
               data={data}
+              businessMetrics={businessMetrics}
               stripeRevenue={stripeRevenue}
               stripeRevenueLoading={stripeRevenueLoading}
               loading={loading}
-              totalUsers={businessMetrics.totalUsers}
-              moneyEarned={mobileMoneyEarned}
-              upgrades={mobileUpgrades}
-              landingViews={landingStageUsers}
-              signups={signupsCompleted}
-              dayPlays={mobileDayPlays}
             />
           ) : null}
 

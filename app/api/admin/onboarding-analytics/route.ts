@@ -1076,6 +1076,27 @@ function buildSimpleMetricSeries(
     .map(([key, value]) => ({ label: labelByKey.get(key) || key, value }));
 }
 
+function collectUniqueUpgradeTimestamps(
+  rows: Array<{ user_id?: string | null; created_at?: string | null }>,
+  startIso: string,
+  endIso?: string | null,
+) {
+  const timestampsByUser = new Map<string, string>();
+
+  rows.forEach((row) => {
+    const userId = typeof row.user_id === "string" ? row.user_id : null;
+    const createdAt = typeof row.created_at === "string" ? row.created_at : null;
+    if (!userId || !createdAt) return;
+    if (!isWithinAnalyticsWindow(createdAt, startIso, endIso || null)) return;
+    const current = timestampsByUser.get(userId);
+    if (!current || createdAt < current) {
+      timestampsByUser.set(userId, createdAt);
+    }
+  });
+
+  return Array.from(timestampsByUser.values());
+}
+
 function parseBibleYearDayFromVideoId(videoId: string | null | undefined) {
   if (!videoId) return 0;
   const match = videoId.match(/bible-year-free-day-(\d+)/i);
@@ -3309,29 +3330,18 @@ async function buildOverviewAnalyticsResponse(
   const previousSignups = previousRange
     ? validProfileAnalyticsRows.filter((row) => isWithinAnalyticsWindow(row.registered_at || null, previousRange.startIso, previousRange.endIso)).length
     : 0;
-  const currentUpgradeRowsByUser = new Map<string, string>();
-  validProfileAnalyticsRows
-    .filter((row) => row.user_id && row.is_paid === true && isWithinAnalyticsWindow(row.updated_at || null, startIso, endIso))
-    .forEach((row) => {
-      const userId = row.user_id as string;
-      const updatedAt = row.updated_at as string;
-      const current = currentUpgradeRowsByUser.get(userId);
-      if (!current || updatedAt < current) currentUpgradeRowsByUser.set(userId, updatedAt);
-    });
-  const upgradeSeries = buildSimpleMetricSeries(Array.from(currentUpgradeRowsByUser.values()), journeyWindow);
+  const { data: allUpgradeActionData } = await adminSupabase
+    .from("master_actions")
+    .select("user_id, created_at")
+    .eq("action_type", "user_upgraded")
+    .limit(250000);
+  const allUpgradeRows = (allUpgradeActionData || []) as UpgradeActionRow[];
+  const currentUpgradeTimestamps = collectUniqueUpgradeTimestamps(allUpgradeRows, startIso, endIso);
+  const upgradeSeries = buildSimpleMetricSeries(currentUpgradeTimestamps, journeyWindow);
   const currentUpgrades = upgradeSeries.reduce((sum, point) => sum + point.value, 0);
-  const previousUpgradeRowsByUser = new Map<string, string>();
-  if (previousRange) {
-    validProfileAnalyticsRows
-      .filter((row) => row.user_id && row.is_paid === true && isWithinAnalyticsWindow(row.updated_at || null, previousRange.startIso, previousRange.endIso))
-      .forEach((row) => {
-        const userId = row.user_id as string;
-        const updatedAt = row.updated_at as string;
-        const current = previousUpgradeRowsByUser.get(userId);
-        if (!current || updatedAt < current) previousUpgradeRowsByUser.set(userId, updatedAt);
-      });
-  }
-  const previousUpgrades = previousUpgradeRowsByUser.size;
+  const previousUpgrades = previousRange
+    ? collectUniqueUpgradeTimestamps(allUpgradeRows, previousRange.startIso, previousRange.endIso).length
+    : 0;
 
   let landingQuery = adminSupabase
     .from("landing_page_events")
@@ -3364,25 +3374,6 @@ async function buildOverviewAnalyticsResponse(
   if (endIso) masterQuery = masterQuery.lt("created_at", endIso);
   const { data: masterData } = await masterQuery;
   const masterRows = (masterData || []) as MasterActionFunnelRow[];
-  let paidProfilesQuery = adminSupabase
-    .from("profile_stats")
-    .select("user_id, display_name, username, is_paid, member_badge, updated_at")
-    .eq("is_paid", true)
-    .gte("updated_at", startIso)
-    .limit(50000);
-  if (endIso) paidProfilesQuery = paidProfilesQuery.lt("updated_at", endIso);
-  const { data: paidProfilesData } = await paidProfilesQuery;
-  const paidProfileUpgradeRows = (paidProfilesData || []) as PaidProfileUpgradeRow[];
-  const { data: allUpgradeActionData } = await adminSupabase
-    .from("master_actions")
-    .select("user_id")
-    .eq("action_type", "user_upgraded")
-    .limit(250000);
-  const allUpgradeUserIds = new Set(
-    ((allUpgradeActionData || []) as Array<{ user_id?: string | null }>)
-      .map((row) => row.user_id)
-      .filter((userId): userId is string => Boolean(userId)),
-  );
   const firstThreeDaysSinceIso = new Date(Date.now() - NEW_USER_FIRST_THREE_DAYS_LOOKBACK_DAYS * 24 * 60 * 60 * 1000).toISOString();
   const { data: firstThreeDaysData } = await adminSupabase
     .from("master_actions")
@@ -3399,16 +3390,6 @@ async function buildOverviewAnalyticsResponse(
       .map((row) => row.user_id)
       .filter((userId): userId is string => Boolean(userId)),
   );
-  paidProfileUpgradeRows
-    .filter((row) => row.user_id && row.is_paid === true)
-    .filter((row) => isWithinAnalyticsWindow(row.updated_at || null, startIso, endIso))
-    .filter((row) => {
-      const badge = (row.member_badge || "").trim().toLowerCase();
-      const name = (row.display_name || row.username || "").trim().toLowerCase();
-      return !["admin", "owner", "staff", "teacher", "internal"].includes(badge) && name !== "louis" && name !== "louis moore";
-    })
-    .filter((row) => !allUpgradeUserIds.has(row.user_id as string))
-    .forEach((row) => proUpgradeUsers.add(row.user_id as string));
   const proUpgrades = proUpgradeUsers.size;
   const audioRows = masterRows.filter((row) => row.action_type === "bible_year_audio_played" || row.action_type === "bible_year_task_started");
   const uniqueAudioActors = new Set(audioRows.map((row) => getMasterActorId(row)).filter(Boolean));
@@ -3604,28 +3585,9 @@ export async function GET(request: Request) {
     .eq("action_type", "user_upgraded")
     .gte("created_at", analyticsFetchSinceIso)
     .order("created_at", { ascending: false })
-    .limit(200);
+    .limit(50000);
   const { data: upgradeData } = await upgradeQuery;
   const upgradeRows = (upgradeData || []) as UpgradeActionRow[];
-  let paidProfilesUpgradeQuery = adminSupabase
-    .from("profile_stats")
-    .select("user_id, display_name, username, is_paid, member_badge, updated_at")
-    .eq("is_paid", true)
-    .gte("updated_at", analyticsFetchSinceIso)
-    .order("updated_at", { ascending: false })
-    .limit(50000);
-  const { data: paidProfilesUpgradeData } = await paidProfilesUpgradeQuery;
-  const paidProfileUpgradeRows = (paidProfilesUpgradeData || []) as PaidProfileUpgradeRow[];
-  const { data: allUpgradeActionData } = await adminSupabase
-    .from("master_actions")
-    .select("user_id, created_at")
-    .eq("action_type", "user_upgraded")
-    .limit(250000);
-  const allUpgradeUserIds = new Set(
-    ((allUpgradeActionData || []) as Array<{ user_id?: string | null }>)
-      .map((row) => row.user_id)
-      .filter((userId): userId is string => Boolean(userId)),
-  );
   let studyNotesQuery = adminSupabase
     .from("master_actions")
     .select("user_id, username, action_type, action_label, event_metadata, created_at")
@@ -3912,26 +3874,6 @@ export async function GET(request: Request) {
       .map((row) => row.user_id)
       .filter((userId): userId is string => Boolean(userId)),
   );
-  paidProfileUpgradeRows
-    .filter((row) => row.user_id && row.is_paid === true)
-    .filter((row) => !isOwnerAuthUser(row.user_id || null, authSummaryByUserId))
-    .filter((row) => isWithinAnalyticsWindow(row.updated_at || null, journeySinceIso, journeyBeforeIso))
-    .filter((row) =>
-      !isInternalAnalyticsProfile({
-        displayName: (row.display_name || row.username || "").trim(),
-        isPaid: true,
-        registeredAt: null,
-        convertedFromGuestAt: null,
-        currentStreak: null,
-        currentLevel: null,
-        totalActions: null,
-        memberBadge: typeof row.member_badge === "string" ? row.member_badge : null,
-        proExpiresAt: null,
-        updatedAt: typeof row.updated_at === "string" ? row.updated_at : null,
-      }),
-    )
-    .filter((row) => !allUpgradeUserIds.has(row.user_id as string))
-    .forEach((row) => proUpgradeUsers.add(row.user_id as string));
   const proUpgrades = proUpgradeUsers.size;
   const signupSeries = buildSimpleMetricSeries(
     simpleProfileAnalyticsRows
@@ -3942,30 +3884,15 @@ export async function GET(request: Request) {
   const previousSignups = previousRange
     ? simpleProfileAnalyticsRows.filter((row) => isWithinAnalyticsWindow(row.registered_at || null, previousRange.startIso, previousRange.endIso)).length
     : 0;
-  const upgradeSeriesByUser = new Map<string, string>();
-  simpleProfileAnalyticsRows
-    .filter((row) => row.user_id && row.is_paid === true && isWithinAnalyticsWindow(row.updated_at || null, journeySinceIso, journeyBeforeIso))
-    .forEach((row) => {
-      const userId = row.user_id as string;
-      const updatedAt = row.updated_at as string;
-      const current = upgradeSeriesByUser.get(userId);
-      if (!current || updatedAt < current) upgradeSeriesByUser.set(userId, updatedAt);
-    });
-  const previousUpgradeSeriesByUser = new Map<string, string>();
-  if (previousRange) {
-    simpleProfileAnalyticsRows
-      .filter((row) => row.user_id && row.is_paid === true && isWithinAnalyticsWindow(row.updated_at || null, previousRange.startIso, previousRange.endIso))
-      .forEach((row) => {
-        const userId = row.user_id as string;
-        const updatedAt = row.updated_at as string;
-        const current = previousUpgradeSeriesByUser.get(userId);
-        if (!current || updatedAt < current) previousUpgradeSeriesByUser.set(userId, updatedAt);
-      });
-  }
-  const upgradeSeries = buildSimpleMetricSeries(Array.from(upgradeSeriesByUser.values()), journeyWindow);
+  const upgradeSeries = buildSimpleMetricSeries(
+    collectUniqueUpgradeTimestamps(upgradeRows, journeySinceIso, journeyBeforeIso),
+    journeyWindow,
+  );
   const currentSignups = signupSeries.reduce((sum, point) => sum + point.value, 0);
   const currentUpgrades = upgradeSeries.reduce((sum, point) => sum + point.value, 0);
-  const previousUpgrades = previousUpgradeSeriesByUser.size;
+  const previousUpgrades = previousRange
+    ? collectUniqueUpgradeTimestamps(upgradeRows, previousRange.startIso, previousRange.endIso).length
+    : 0;
   const customerJourney = {
     window: journeyWindow,
     label: getJourneyWindowLabel(journeyWindow),

@@ -2411,6 +2411,7 @@ export default function DashboardJourneyExperience({
     expectedFinishDateLabel: bibleYearSchedule.expectedFinishDateLabel,
   };
   const [bibleYearOptionalDiscussionDay, setBibleYearOptionalDiscussionDay] = useState<number | null>(null);
+  const [bibleYearUndoneSupportCue, setBibleYearUndoneSupportCue] = useState<{ dayNumber: number; nonce: number } | null>(null);
   const [dashboardMenuOpen, setDashboardMenuOpen] = useState(false);
   const [dashboardGreeting, setDashboardGreeting] = useState("Good evening");
   const [isAnonymousGuest, setIsAnonymousGuest] = useState(false);
@@ -10092,6 +10093,12 @@ Before we understand redemption, we need to understand what God made humanity fo
         window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
       }
     }
+    const unfinishedSupportCards = (["study_notes", "trivia", "reflection"] as BibleYearDayCardKey[]).filter(
+      (supportCard) => nextCompletedForDay[supportCard] !== true,
+    );
+    if (cards.includes("reading") && unfinishedSupportCards.length > 0) {
+      triggerBibleYearUndoneSupportCue(day.dayNumber);
+    }
     await persistBibleYearDayProgress(day.dayNumber, cards);
     if (dayWillBeFullyComplete) {
       await markBibleYearDayCoveredChaptersRead(day);
@@ -10250,6 +10257,14 @@ Before we understand redemption, we need to understand what God made humanity fo
       colors: ["#2f7fe8", "#7BAFD4", "#22c55e", "#f59e0b", "#a855f7"],
       zIndex: 10000,
     });
+  }
+
+  function triggerBibleYearUndoneSupportCue(dayNumber: number) {
+    const nonce = Date.now();
+    setBibleYearUndoneSupportCue({ dayNumber, nonce });
+    window.setTimeout(() => {
+      setBibleYearUndoneSupportCue((current) => (current?.nonce === nonce ? null : current));
+    }, 2200);
   }
 
   async function handleContinueToNextBibleYearDay(day: GenesisBibleYearDay, nextDay: GenesisBibleYearDay) {
@@ -12348,6 +12363,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
           {supportCards.map((item) => {
             const expanded = getSupportCardExpanded(item.key);
+            const shouldCueUndone = bibleYearUndoneSupportCue?.dayNumber === day.dayNumber && !item.done;
             return (
               <button
                 key={item.key}
@@ -12357,7 +12373,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   item.done
                     ? "border-emerald-300 bg-[linear-gradient(145deg,#f4fff7,#e8f8ee)]"
                     : "border-[var(--bb-card-border,#dbe7f4)]"
-                }`}
+                } ${shouldCueUndone ? "bb-undone-support-card-cue" : ""}`}
                 aria-expanded={expanded}
               >
                 <div className={`grid h-14 w-14 place-items-center rounded-[18px] ${item.done ? "bg-emerald-100 text-emerald-700" : "bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-accent,#2f7fe8)]"}`}>
@@ -12367,9 +12383,15 @@ Before we understand redemption, we need to understand what God made humanity fo
                 <h3 className={`mt-2 text-[18px] font-black leading-tight ${item.done ? "text-emerald-800" : "text-[var(--bb-text-primary,#111827)]"}`}>{item.title}</h3>
                 <p className="mt-2 min-h-[88px] text-[15px] font-medium leading-7 text-[var(--bb-text-secondary,#4b5563)]">{item.body}</p>
                 <div className="mt-auto flex items-center justify-between pt-5">
-                  <span className={`text-[13px] font-black ${item.done ? "text-emerald-700" : "text-[var(--bb-accent,#2f7fe8)]"}`}>
-                    {item.badge || (item.done ? "Completed" : "Open")}
-                  </span>
+                  {shouldCueUndone ? (
+                    <span className="bb-undone-support-pill-cue inline-flex min-w-[88px] items-center justify-center rounded-full px-3 py-1 text-[10px] font-black uppercase tracking-[0.14em]">
+                      Not done
+                    </span>
+                  ) : (
+                    <span className={`text-[13px] font-black ${item.done ? "text-emerald-700" : "text-[var(--bb-accent,#2f7fe8)]"}`}>
+                      {item.badge || (item.done ? "Completed" : "Open")}
+                    </span>
+                  )}
                   <span className={`text-xl font-black transition ${expanded ? "translate-x-1 text-[var(--bb-accent,#2f7fe8)]" : "text-[var(--bb-accent,#2f7fe8)]/80 group-hover:translate-x-1"}`} aria-hidden="true">
                     &rarr;
                   </span>
@@ -12392,12 +12414,13 @@ Before we understand redemption, we need to understand what God made humanity fo
         <section className="order-4 overflow-hidden rounded-[20px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] shadow-[0_16px_42px_rgba(38,63,99,0.12),inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-xl">
           {supportCards.map((item, index) => {
             const expanded = getSupportCardExpanded(item.key);
+            const shouldCueUndone = bibleYearUndoneSupportCue?.dayNumber === day.dayNumber && !item.done;
             return (
               <div key={item.key} className={`${index > 0 ? "border-t" : ""} ${item.done ? "border-emerald-200 bg-emerald-50/70" : "border-[var(--bb-card-border,#dbe7f4)]"}`}>
                 <button
                   type="button"
                   onClick={item.onClick}
-                  className={`grid w-full grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-3.5 py-3 text-left transition sm:gap-4 sm:p-4 ${item.done ? "hover:bg-emerald-100/80" : "hover:bg-[var(--bb-surface-soft,#f4f8ff)]"}`}
+                  className={`grid w-full grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-3.5 py-3 text-left transition sm:gap-4 sm:p-4 ${item.done ? "hover:bg-emerald-100/80" : "hover:bg-[var(--bb-surface-soft,#f4f8ff)]"} ${shouldCueUndone ? "bb-undone-support-card-cue" : ""}`}
                   aria-expanded={expanded}
                 >
                   <div className="flex min-w-0 flex-1 gap-3">
@@ -12418,7 +12441,9 @@ Before we understand redemption, we need to understand what God made humanity fo
                       className={`inline-flex min-w-[78px] items-center justify-center rounded-full px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.12em] ${
                         item.done
                           ? "bg-emerald-500 text-white"
-                          : "bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-text-muted,#6b7280)]"
+                          : shouldCueUndone
+                            ? "bb-undone-support-pill-cue"
+                            : "bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-text-muted,#6b7280)]"
                       }`}
                     >
                       {item.done ? "Done" : "Not done"}
@@ -15124,11 +15149,11 @@ Before we understand redemption, we need to understand what God made humanity fo
           64%, 88% { transform: translateX(0) translateY(0) rotate(0deg) scale(1); }
         }
 
-          @keyframes bible-year-task-soft-pulse {
-            0%, 100% {
-              transform: scale(1);
-              box-shadow: 0 8px 20px color-mix(in srgb, var(--bb-accent, #2f7fe8) 8%, transparent);
-              border-color: color-mix(in srgb, var(--bb-card-border, #dbe7f4) 82%, transparent);
+        @keyframes bible-year-task-soft-pulse {
+          0%, 100% {
+            transform: scale(1);
+            box-shadow: 0 8px 20px color-mix(in srgb, var(--bb-accent, #2f7fe8) 8%, transparent);
+            border-color: color-mix(in srgb, var(--bb-card-border, #dbe7f4) 82%, transparent);
             }
             50% {
               transform: scale(1.012);
@@ -15138,6 +15163,50 @@ Before we understand redemption, we need to understand what God made humanity fo
               border-color: color-mix(in srgb, var(--bb-accent, #2f7fe8) 38%, var(--bb-card-border, #dbe7f4));
             }
           }
+
+        @keyframes bb-undone-support-card-cue {
+          0%, 100% {
+            transform: translateX(0) scale(1);
+            box-shadow: 0 14px 30px rgba(38, 63, 99, 0.08);
+          }
+          8% {
+            transform: translateX(-3px) scale(1.01);
+          }
+          16% {
+            transform: translateX(3px) scale(1.014);
+            box-shadow:
+              0 18px 38px rgba(38, 63, 99, 0.12),
+              0 0 0 4px rgba(47, 127, 232, 0.10);
+          }
+          24% {
+            transform: translateX(-2px) scale(1.012);
+          }
+          32% {
+            transform: translateX(2px) scale(1.016);
+          }
+          44% {
+            transform: translateX(0) scale(1.02);
+            box-shadow:
+              0 20px 42px rgba(38, 63, 99, 0.14),
+              0 0 0 8px rgba(47, 127, 232, 0.08);
+          }
+          60% {
+            transform: translateX(0) scale(1.01);
+          }
+        }
+
+        @keyframes bb-undone-support-pill-cue {
+          0%, 100% {
+            background: color-mix(in srgb, var(--bb-surface-soft, #f4f8ff) 92%, white);
+            color: var(--bb-text-muted, #6b7280);
+            box-shadow: 0 0 0 0 rgba(47, 127, 232, 0);
+          }
+          50% {
+            background: color-mix(in srgb, var(--bb-accent, #2f7fe8) 20%, white);
+            color: var(--bb-accent, #2f7fe8);
+            box-shadow: 0 0 0 5px rgba(47, 127, 232, 0.12);
+          }
+        }
 
         @keyframes bible-year-current-milestone {
           0%, 100% {
@@ -15236,6 +15305,13 @@ Before we understand redemption, we need to understand what God made humanity fo
         }
         .dashboard-task-shell-open {
           transform: translateY(-1px);
+        }
+        .bb-undone-support-card-cue {
+          animation: bb-undone-support-card-cue 0.9s ease-in-out 2;
+          transform-origin: center;
+        }
+        .bb-undone-support-pill-cue {
+          animation: bb-undone-support-pill-cue 0.78s ease-in-out infinite;
         }
         .chapter-card-drop::after {
           content: "";
