@@ -11673,7 +11673,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           <span className="grid h-24 w-24 shrink-0 place-items-center rounded-[28px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_22%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_84%,transparent)] shadow-[0_10px_24px_rgba(14,26,58,0.08)]">
             <StreakFlameEmoji flameId={lightThemeUsesClassicFlame ? "default" : profile?.selected_streak_flame} currentStreak={currentStreak} size={66} title={`${currentStreak} day streak - tap to learn what the flame means`} /></span>
           <span className="min-w-0 flex-1">
-            <span className="block text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">Bible Study Streak</span>
+            <span className="block text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">Day Bible Study Streak</span>
             <span className="mt-1 block text-4xl font-black leading-none text-[var(--bb-text-primary,#111827)]">{streakLabel}</span>
             <span className="mt-2 block text-sm font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">
               Keep opening Scripture and building your daily rhythm.
