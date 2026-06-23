@@ -743,10 +743,12 @@ function getSimpleMetricTotal(
   }
   if (metric === "signups") {
     const total = (data?.simpleSeries?.signups || []).reduce((sum, point) => sum + point.value, 0);
-    return formatNumber(total);
+    const fallback = data?.customerJourney?.freeAccounts || data?.visitorJourneys?.metrics?.createdFreeAccount || 0;
+    return formatNumber(total || fallback);
   }
   const total = (data?.simpleSeries?.upgrades || []).reduce((sum, point) => sum + point.value, 0);
-  return formatNumber(total);
+  const fallback = data?.customerJourney?.proUpgrades || data?.visitorJourneys?.metrics?.upgradedToPro || 0;
+  return formatNumber(total || fallback);
 }
 
 function getSimpleMetricTitle(metric: Exclude<SimpleAnalyticsMetric, "overview">) {
@@ -3013,7 +3015,7 @@ function VisitorJourneyTableSection({
 function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?: boolean; legacy?: boolean } = {}) {
   const [isOwner, setIsOwner] = useState(false);
   const [authChecked, setAuthChecked] = useState(false);
-  const [windowKey, setWindowKey] = useState<JourneyWindow>("7d");
+  const [windowKey, setWindowKey] = useState<JourneyWindow>("today");
   const [simpleMetric, setSimpleMetric] = useState<SimpleAnalyticsMetric>("overview");
   const [data, setData] = useState<AnalyticsResponse | null>(null);
   const [loading, setLoading] = useState(true);
@@ -3238,8 +3240,12 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
   if (!legacy) {
     const totalUsersLabel = formatNumber(businessMetrics.totalUsers || 0);
     const revenueLabel = stripeRevenue?.revenueRange || stripeRevenue?.revenue30d || "$0";
-    const signupsLabel = formatNumber((data?.simpleSeries?.signups || []).reduce((sum, point) => sum + point.value, 0));
-    const upgradesLabel = formatNumber((data?.simpleSeries?.upgrades || []).reduce((sum, point) => sum + point.value, 0));
+    const signupsSeriesTotal = (data?.simpleSeries?.signups || []).reduce((sum, point) => sum + point.value, 0);
+    const upgradesSeriesTotal = (data?.simpleSeries?.upgrades || []).reduce((sum, point) => sum + point.value, 0);
+    const signupsFallbackTotal = data?.customerJourney?.freeAccounts || metrics.createdFreeAccount || 0;
+    const upgradesFallbackTotal = data?.customerJourney?.proUpgrades || metrics.upgradedToPro || 0;
+    const signupsLabel = formatNumber(signupsSeriesTotal || signupsFallbackTotal);
+    const upgradesLabel = formatNumber(upgradesSeriesTotal || upgradesFallbackTotal);
     const chartSeries = simpleMetric === "overview" ? [] : getSimpleMetricSeries(simpleMetric, data, stripeRevenue);
     const comparisonLabel = getComparisonLabel(windowKey);
     const signupComparison = data?.simpleComparisons?.signups?.change;

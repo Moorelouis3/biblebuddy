@@ -7,7 +7,7 @@ type Props = {
 export default function AppLoadingScreen({ className = "" }: Props) {
   return (
     <div
-      className={`relative flex min-h-screen min-h-[100svh] items-center justify-center overflow-hidden bg-[var(--bb-background,#eef4fb)] ${className}`}
+      className={`fixed inset-0 z-[9999] flex h-screen h-[100svh] w-screen items-center justify-center overflow-hidden bg-[var(--bb-background,#eef4fb)] ${className}`}
       aria-busy="true"
       aria-live="polite"
     >
