@@ -3053,19 +3053,28 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
     if (!authChecked || !isOwner) return;
     async function loadAnalytics() {
       if (!legacy) {
-        setLoading(true);
-        setDetailsLoading(false);
+        const cachedFull = getCachedAdminAnalytics<AnalyticsResponse>(windowKey);
+        const cachedOverview = getCachedAdminAnalyticsOverview<AnalyticsResponse>(windowKey);
+        if (cachedFull || cachedOverview) {
+          setData(cachedFull || cachedOverview);
+          setLoading(false);
+          setDetailsLoading(true);
+        } else {
+          setLoading(true);
+          setDetailsLoading(false);
+        }
         setError(null);
         try {
           const { data: sessionData } = await supabase.auth.getSession();
           const token = sessionData.session?.access_token;
           if (!token) throw new Error("Owner session expired. Please sign in again.");
-          const json = await loadAdminAnalytics<AnalyticsResponse>(windowKey, token, { force: Boolean(getCachedAdminAnalytics<AnalyticsResponse>(windowKey)) });
+          const json = await loadAdminAnalytics<AnalyticsResponse>(windowKey, token);
           setData(json);
         } catch (loadError) {
           setError(loadError instanceof Error ? loadError.message : "Could not load analytics.");
         } finally {
           setLoading(false);
+          setDetailsLoading(false);
         }
         return;
       }

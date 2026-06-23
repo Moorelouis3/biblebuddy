@@ -68,6 +68,7 @@ import { BIBLE_YEAR_GENESIS_WEB_VERSES } from "../lib/bibleYearGenesisVerses";
 import { enrichBibleVerses } from "../lib/bibleHighlighting";
 import { resolveBibleReference } from "../lib/bibleTermResolver";
 import { getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes } from "../lib/bibleNotes";
+import { preloadAdminAnalytics } from "../lib/adminAnalyticsPreload";
 import { buildPersistedFeatureTours, normalizeFeatureTours } from "../lib/featureTours";
 import { getTriviaChapter } from "../lib/triviaGameData";
 
@@ -2100,6 +2101,7 @@ export default function DashboardJourneyExperience({
   bibleYearProgressReady = true,
 }: Props) {
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const analyticsDashboardPreloadStartedRef = useRef(false);
   const previousDoneByKindRef = useRef<Record<string, boolean> | null>(null);
   const previousCompletedCountRef = useRef<number | null>(null);
   const previousJourneyKeyRef = useRef<string | null>(null);
@@ -2701,6 +2703,23 @@ export default function DashboardJourneyExperience({
     document.documentElement.classList.add("bb-dashboard-stable-motion");
     return () => document.documentElement.classList.remove("bb-dashboard-stable-motion");
   }, []);
+
+  useEffect(() => {
+    if (!isOwnerDashboard || analyticsDashboardPreloadStartedRef.current) return;
+    analyticsDashboardPreloadStartedRef.current = true;
+    let cancelled = false;
+
+    const timer = window.setTimeout(async () => {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const token = sessionData.session?.access_token;
+      if (!cancelled && token) void preloadAdminAnalytics("today", token);
+    }, 1200);
+
+    return () => {
+      cancelled = true;
+      window.clearTimeout(timer);
+    };
+  }, [isOwnerDashboard]);
 
   useEffect(() => {
     if (!isOwnerDashboard || !userId) {
