@@ -151,6 +151,15 @@ export default function BibleYearJourneyDashboard() {
     void loadDashboardUser();
   }, [loadDashboardUser]);
 
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    window.dispatchEvent(
+      new CustomEvent("bb:dashboard-loader-state", {
+        detail: { loading },
+      }),
+    );
+  }, [loading]);
+
   if (loading) {
     return <DashboardLoadingShell />;
   }

@@ -6,7 +6,6 @@ import { toBlob } from "html-to-image";
 import confetti from "canvas-confetti";
 import { LouisAvatar } from "./LouisAvatar";
 import { ModalShell } from "./ModalShell";
-import AppLoadingScreen from "./AppLoadingScreen";
 import BibleReadingModal from "./BibleReadingModal";
 import DashboardDailyTaskCallout, { DatabaseTermTakeover, type BibleDatabaseTerm } from "./DashboardDailyTaskCallout";
 import ChapterNotesMarkdown from "./ChapterNotesMarkdown";
@@ -2835,7 +2834,7 @@ export default function DashboardJourneyExperience({
     }
   }, [activePageKey, fetchShareRewards, userId]);
 
-  const bibleYearCurrentDayReady = bibleYearProgressReady && bibleYearProgressLoaded;
+  const bibleYearCurrentDayReady = bibleYearProgressReady;
   const activeBibleYearDashboardDay = bibleYearDashboardActive && bibleYearCurrentDayReady
     ? (() => {
         const builtBibleYearDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES;
@@ -5413,13 +5412,6 @@ export default function DashboardJourneyExperience({
     !homePanelOverride &&
     !shouldShowCompletionPanel &&
     !deepStudyFocusActive;
-  const shouldShowUnifiedDashboardLoader =
-    bibleYearDashboardActive &&
-    !bibleYearCurrentDayReady &&
-    !homePanelOverride &&
-    !deepStudyFocusActive &&
-    !showCompletionPanel;
-
   const studyProgressPercent = Math.round((studyProgressCompleted / Math.max(studyProgressTotal, 1)) * 100);
   const getFeaturePageBullets = (key: DashboardPageKey) => {
     switch (key) {
@@ -14961,10 +14953,6 @@ Before we understand redemption, we need to understand what God made humanity fo
         </div>
       </div>
     );
-  }
-
-  if (shouldShowUnifiedDashboardLoader) {
-    return <AppLoadingScreen className="min-h-[calc(100svh-68px)] sm:min-h-[calc(100svh-76px)]" />;
   }
 
   return (

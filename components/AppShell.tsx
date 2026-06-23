@@ -248,9 +248,31 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   // When loaded inside an iframe (group hub embed), skip the shell entirely
   const [isEmbedded, setIsEmbedded] = useState(false);
+  const [dashboardFullscreenLoading, setDashboardFullscreenLoading] = useState(false);
   useEffect(() => {
     try { setIsEmbedded(window.self !== window.top); } catch { setIsEmbedded(true); }
   }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const isDashboardRoute = Boolean(pathname?.startsWith("/dashboard"));
+    if (!isDashboardRoute) {
+      setDashboardFullscreenLoading(false);
+      return;
+    }
+
+    const handleDashboardLoaderState = (event: Event) => {
+      const customEvent = event as CustomEvent<{ loading?: boolean }>;
+      setDashboardFullscreenLoading(Boolean(customEvent.detail?.loading));
+    };
+
+    setDashboardFullscreenLoading(true);
+    window.addEventListener("bb:dashboard-loader-state", handleDashboardLoaderState as EventListener);
+    return () => {
+      window.removeEventListener("bb:dashboard-loader-state", handleDashboardLoaderState as EventListener);
+    };
+  }, [pathname]);
 
   useEffect(() => {
     function loadSelectedBuddy(event?: Event) {
@@ -2195,6 +2217,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   const isAdmin = isLoggedIn && userEmail === "moorelouis3@gmail.com";
   const isModerator = normalizeCustomMemberBadge(headerMemberBadge) === "moderator";
+  const shouldHideShellChrome = Boolean(pathname?.startsWith("/dashboard")) && dashboardFullscreenLoading;
 
   const shouldShowNavMenu = isLoggedIn && !isBarePage && pathname && !pathname.startsWith("/dashboard");
   const breadcrumbItems = buildBreadcrumbs(pathname);
@@ -2652,8 +2675,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       )}
 
       {/* NAVBAR (hidden on landing/login/signup) */}
-      {!isBarePage && !isDashboardStoreOpen && (
-        <header className={`bb-safe-top-header w-full bg-[var(--bb-background,#0e1218)] ${shouldBlendHeaderIntoPage ? "" : "border-b border-[var(--bb-card-border,#374151)]"}`}>
+      {!isBarePage && !isDashboardStoreOpen && !shouldHideShellChrome && (
+        <header className={`bb-safe-top-header w-full bg-[var(--bb-background,#eef4fb)] ${shouldBlendHeaderIntoPage ? "" : "border-b border-[var(--bb-card-border,#dbe7f4)]"}`}>
           <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
             <div className="flex items-center gap-3">
               <Link
@@ -3322,7 +3345,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       )}
 
       {/* PAGE CONTENT */}
-      <main className={!isBarePage ? "pt-2 pb-2 bg-[var(--bb-background,#0e1218)] min-h-screen" : ""}>
+      <main className={!isBarePage ? `min-h-screen bg-[var(--bb-background,#eef4fb)] ${shouldHideShellChrome ? "" : "pt-2 pb-2"}` : ""}>
         {shouldShowBreadcrumbs && (
           <div className="max-w-5xl mx-auto px-4 pt-2">
             <BibleStudyBreadcrumb items={breadcrumbItems} className="mb-2" />
