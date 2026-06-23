@@ -3,6 +3,7 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import { Fragment, useCallback, useEffect, useRef, useState, type FormEvent, type MouseEvent, type ReactNode, type SyntheticEvent } from "react";
 import { toBlob } from "html-to-image";
+import confetti from "canvas-confetti";
 import { LouisAvatar } from "./LouisAvatar";
 import { ModalShell } from "./ModalShell";
 import AppLoadingScreen from "./AppLoadingScreen";
@@ -10142,6 +10143,11 @@ Before we understand redemption, we need to understand what God made humanity fo
     setActiveBibleYearDayCard(null);
     if (dayWillBeFullyComplete) {
       bibleYearJustCompletedDayRef.current = day.dayNumber;
+      if (!dayWasFullyComplete) {
+        window.setTimeout(() => {
+          fireBibleYearDayCompleteConfetti();
+        }, 0);
+      }
       setBibleYearIncompleteChecklistDay((current) => current?.dayNumber === day.dayNumber ? null : current);
       setSelectedBibleYearSeriesDay(day);
       if (!dayWasFullyComplete && newlyCompletedCards.length > 0) {
@@ -10285,6 +10291,36 @@ Before we understand redemption, we need to understand what God made humanity fo
     window.setTimeout(() => {
       setBibleYearRewardToast((current) => current?.nonce === nonce ? null : current);
     }, 1800);
+  }
+
+  function fireBibleYearDayCompleteConfetti() {
+    if (typeof window === "undefined") return;
+    confetti({
+      particleCount: 110,
+      spread: 82,
+      startVelocity: 34,
+      origin: { y: 0.62 },
+      colors: ["#2f7fe8", "#7BAFD4", "#22c55e", "#f59e0b", "#a855f7"],
+      zIndex: 10000,
+    });
+    confetti({
+      particleCount: 70,
+      angle: 60,
+      spread: 58,
+      startVelocity: 28,
+      origin: { x: 0.1, y: 0.66 },
+      colors: ["#2f7fe8", "#7BAFD4", "#22c55e", "#f59e0b", "#a855f7"],
+      zIndex: 10000,
+    });
+    confetti({
+      particleCount: 70,
+      angle: 120,
+      spread: 58,
+      startVelocity: 28,
+      origin: { x: 0.9, y: 0.66 },
+      colors: ["#2f7fe8", "#7BAFD4", "#22c55e", "#f59e0b", "#a855f7"],
+      zIndex: 10000,
+    });
   }
 
   async function handleContinueToNextBibleYearDay(day: GenesisBibleYearDay, nextDay: GenesisBibleYearDay) {
@@ -12183,7 +12219,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     const studyNotesComplete =
       bibleYearCompletedCardsByDay[day.dayNumber]?.study_notes === true ||
       bibleYearScriptureNotesViewedByDay[day.dayNumber] === true;
-    const showCompletionMoment = isBibleYearDayComplete(day) && bibleYearJustCompletedDayRef.current === day.dayNumber;
+    const showCompletionMoment = false;
     const triviaComplete = bibleYearCompletedCardsByDay[day.dayNumber]?.trivia === true;
     const reflectionPosted =
       bibleYearReflectionPostedByDay[day.dayNumber] === true ||
@@ -12206,7 +12242,19 @@ Before we understand redemption, we need to understand what God made humanity fo
       openBibleYearDayOnDashboard(targetDay, { reviewCompleted: isBibleYearDayComplete(targetDay) });
     };
 
-    const markAudioComplete = () => {
+    const justCompletedThisVisit = readingComplete && bibleYearJustCompletedDayRef.current === day.dayNumber;
+    const primaryCompleteButtonLabel = readingComplete
+      ? justCompletedThisVisit && nextBibleYearDay
+        ? `Move to Day ${nextBibleYearDay.dayNumber}`
+        : "Day Completed"
+      : "Mark as Complete";
+    const handlePrimaryCompleteButton = () => {
+      if (readingComplete) {
+        if (justCompletedThisVisit && nextBibleYearDay) {
+          openAdjacentBibleYearDay(nextBibleYearDay);
+        }
+        return;
+      }
       void handleBibleYearAudioLessonCompleted(day);
     };
 
@@ -12595,19 +12643,25 @@ Before we understand redemption, we need to understand what God made humanity fo
                 <div className="mt-5">
                   <button
                     type="button"
-                    onClick={markAudioComplete}
-                    disabled={readingComplete}
+                    onClick={handlePrimaryCompleteButton}
                     className={`inline-flex w-full items-center justify-center gap-2 rounded-[18px] px-5 py-4 text-[16px] font-black shadow-[0_10px_24px_rgba(123,175,212,0.10)] transition ${
                       readingComplete
-                        ? "cursor-default border border-emerald-300 bg-emerald-50 text-emerald-700"
+                        ? justCompletedThisVisit && nextBibleYearDay
+                          ? "bg-[var(--bb-button,#2f7fe8)] text-[var(--bb-button-text,#ffffff)] hover:brightness-105"
+                          : "cursor-default border border-emerald-300 bg-emerald-50 text-emerald-700"
                         : "bg-[var(--bb-button,#2f7fe8)] text-[var(--bb-button-text,#ffffff)] hover:brightness-105"
                     }`}
                   >
                     <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                       <path d="m5 12 4 4L19 6" />
                     </svg>
-                    {readingComplete ? "Lesson Completed" : "Mark as Complete"}
+                    {primaryCompleteButtonLabel}
                   </button>
+                  {justCompletedThisVisit ? (
+                    <p className="mt-2 text-center text-sm font-semibold text-emerald-700">
+                      You completed Day {day.dayNumber}.
+                    </p>
+                  ) : null}
                 </div>
               </>
             ) : (
@@ -12696,19 +12750,25 @@ Before we understand redemption, we need to understand what God made humanity fo
                   {audio ? (
                     <button
                       type="button"
-                      onClick={markAudioComplete}
-                      disabled={readingComplete}
+                      onClick={handlePrimaryCompleteButton}
                       className={`inline-flex w-full items-center justify-center gap-2 rounded-[18px] px-5 py-3.5 text-[15px] font-black shadow-[0_18px_38px_rgba(47,127,232,0.24)] transition ${
                         readingComplete
-                          ? "cursor-default border border-emerald-300 bg-emerald-50 text-emerald-700"
+                          ? justCompletedThisVisit && nextBibleYearDay
+                            ? "bg-[var(--bb-button,#2f7fe8)] text-[var(--bb-button-text,#ffffff)] hover:brightness-105"
+                            : "cursor-default border border-emerald-300 bg-emerald-50 text-emerald-700"
                           : "bg-[var(--bb-button,#2f7fe8)] text-[var(--bb-button-text,#ffffff)] hover:brightness-105"
                       }`}
                     >
                       <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                         <path d="m5 12 4 4L19 6" />
                       </svg>
-                      {readingComplete ? "Lesson Completed" : "Mark as Complete"}
+                      {primaryCompleteButtonLabel}
                     </button>
+                  ) : null}
+                  {justCompletedThisVisit ? (
+                    <p className="mt-2 text-center text-sm font-semibold text-emerald-700">
+                      You completed Day {day.dayNumber}.
+                    </p>
                   ) : null}
                 </div>
               </>
@@ -13914,6 +13974,8 @@ Before we understand redemption, we need to understand what God made humanity fo
         });
       }
     };
+    const articleJustCompletedThisVisit = readingCardComplete && bibleYearJustCompletedDayRef.current === day.dayNumber;
+    const articleNextBibleYearDay = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((item) => item.dayNumber === day.dayNumber + 1) || null;
     const sectionDeepNotesFocus = useSectionDeepStudy && hasDeepNotes && Boolean(deepNotesMarkdown) && bibleYearDeepNotesOpen;
 
     if (!useSectionDeepStudy && hasDeepNotes && deepNotesMarkdown && bibleYearDeepNotesOpen) {
@@ -13980,12 +14042,19 @@ Before we understand redemption, we need to understand what God made humanity fo
               <button
                 type="button"
                 onClick={() => {
+                  if (readingCardComplete) {
+                    if (articleJustCompletedThisVisit && articleNextBibleYearDay) {
+                      openBibleYearDayOnDashboard(articleNextBibleYearDay, { reviewCompleted: isBibleYearDayComplete(articleNextBibleYearDay) });
+                    }
+                    return;
+                  }
                   void handleBibleYearAudioLessonCompleted(day, { closeArticle: true, closeDeepNotes: true });
                 }}
-                disabled={readingCardComplete}
                 className={`mt-3 flex w-full items-center justify-center gap-3 rounded-2xl border px-5 py-4 text-center shadow-[0_0_30px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_24%,transparent),0_18px_38px_rgba(0,0,0,0.28)] transition ${
                   readingCardComplete
-                    ? "cursor-default border-sky-400/70 bg-sky-400 text-sky-950"
+                    ? articleJustCompletedThisVisit && articleNextBibleYearDay
+                      ? "border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_70%,transparent)] bg-[var(--bb-accent,#f6b44b)] text-black hover:scale-[1.01] hover:brightness-105"
+                      : "cursor-default border-sky-400/70 bg-sky-400 text-sky-950"
                     : "border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_70%,transparent)] bg-[var(--bb-accent,#f6b44b)] text-black hover:scale-[1.01] hover:brightness-105"
                 }`}
               >
@@ -13999,10 +14068,10 @@ Before we understand redemption, we need to understand what God made humanity fo
                   </span>
                   <span className="contents">
                     <span className="block text-base font-black leading-tight">
-                      {readingCardComplete ? "Reading Completed" : "Mark Reading Completed"}
+                      {readingCardComplete ? articleJustCompletedThisVisit && articleNextBibleYearDay ? `Move to Day ${articleNextBibleYearDay.dayNumber}` : "Day Completed" : "Mark Reading Completed"}
                     </span>
                     <span className="hidden">
-                      {readingCardComplete ? `Day ${day.dayNumber} reading is locked in.` : "Tap after you finish the video and lesson."}
+                      {readingCardComplete ? articleJustCompletedThisVisit ? `You completed Day ${day.dayNumber}.` : `Day ${day.dayNumber} reading is locked in.` : "Tap after you finish the video and lesson."}
                     </span></span>
                 </span>
               </button>
@@ -14033,12 +14102,21 @@ Before we understand redemption, we need to understand what God made humanity fo
               <button
                 type="button"
                 onClick={() => {
+                  if (readingCardComplete) {
+                    if (articleJustCompletedThisVisit && articleNextBibleYearDay) {
+                      openBibleYearDayOnDashboard(articleNextBibleYearDay, {
+                        reviewCompleted: isBibleYearDayComplete(articleNextBibleYearDay),
+                      });
+                    }
+                    return;
+                  }
                   void handleBibleYearAudioLessonCompleted(day, { closeArticle: true, closeDeepNotes: true });
                 }}
-                disabled={readingCardComplete}
                 className={`mt-3 flex w-full items-center justify-center gap-3 rounded-2xl border px-5 py-4 text-center shadow-[0_0_30px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_24%,transparent),0_18px_38px_rgba(0,0,0,0.28)] transition ${
                   readingCardComplete
-                    ? "cursor-default border-sky-400/70 bg-sky-400 text-sky-950"
+                    ? articleJustCompletedThisVisit && articleNextBibleYearDay
+                      ? "border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_70%,transparent)] bg-[var(--bb-accent,#f6b44b)] text-black hover:scale-[1.01] hover:brightness-105"
+                      : "cursor-default border-sky-400/70 bg-sky-400 text-sky-950"
                     : "border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_70%,transparent)] bg-[var(--bb-accent,#f6b44b)] text-black hover:scale-[1.01] hover:brightness-105"
                 }`}
               >
@@ -14052,10 +14130,18 @@ Before we understand redemption, we need to understand what God made humanity fo
                   </span>
                   <span className="contents">
                     <span className="block text-base font-black leading-tight">
-                      {readingCardComplete ? "Reading Completed" : "Mark Reading Completed"}
+                      {readingCardComplete
+                        ? articleJustCompletedThisVisit && articleNextBibleYearDay
+                          ? `Move to Day ${articleNextBibleYearDay.dayNumber}`
+                          : "Day Completed"
+                        : "Mark Reading Completed"}
                     </span>
                     <span className="hidden">
-                      {readingCardComplete ? `Day ${day.dayNumber} reading is locked in.` : "Tap after you finish the video and lesson."}
+                      {readingCardComplete
+                        ? articleJustCompletedThisVisit
+                          ? `You completed Day ${day.dayNumber}.`
+                          : `Day ${day.dayNumber} reading is locked in.`
+                        : "Tap after you finish the video and lesson."}
                     </span></span>
                 </span>
               </button>
