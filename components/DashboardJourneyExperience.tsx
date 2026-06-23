@@ -14944,7 +14944,7 @@ Before we understand redemption, we need to understand what God made humanity fo
   }
 
   if (shouldShowUnifiedDashboardLoader) {
-    return <AppLoadingScreen className="min-h-[100svh]" />;
+    return <AppLoadingScreen className="min-h-[calc(100svh-68px)] sm:min-h-[calc(100svh-76px)]" />;
   }
 
   return (
