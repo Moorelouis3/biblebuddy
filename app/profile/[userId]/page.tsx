@@ -616,7 +616,7 @@ export default function PublicProfilePage() {
               ...prev,
               member_badge: payload.memberBadge || null,
               is_paid: payload.isPaid === true ? true : prev.is_paid,
-              membership_status: payload.memberBadge === "pro_trial" ? "pro" : prev.membership_status,
+              membership_status: payload.membershipStatus ?? (payload.memberBadge === "pro_trial" ? "pro" : prev.membership_status),
               pro_expires_at: payload.proExpiresAt ?? prev.pro_expires_at,
             }
           : prev
@@ -1093,7 +1093,7 @@ export default function PublicProfilePage() {
                     <div className="flex-1">
                       <p className="text-sm font-semibold text-gray-900">Buddy Badge</p>
                       <p className="mt-1 text-xs text-gray-500">
-                        Pro Buddy is automatic for paid buddies. A custom badge overrides it.
+                        Paid buddies get Pro Buddy automatically. You can also assign Pro Buddy manually to grant full premium access.
                       </p>
                       <select
                         value={badgeDraft}

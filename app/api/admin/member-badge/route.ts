@@ -33,9 +33,7 @@ export async function POST(request: NextRequest) {
   const body = await request.json().catch(() => null);
   const targetUserId = typeof body?.userId === "string" ? body.userId : "";
   const normalizedBadge = normalizeCustomMemberBadge(body?.memberBadge);
-  const shouldForcePaid =
-    normalizedBadge === "founder_buddy" ||
-    normalizedBadge === "moderator";
+  const shouldForcePaid = normalizedBadge === "pro_buddy";
 
   if (!targetUserId) {
     return NextResponse.json({ error: "Missing userId." }, { status: 400 });
@@ -73,24 +71,44 @@ export async function POST(request: NextRequest) {
     } catch (error: any) {
       return NextResponse.json({ error: error?.message || "Could not start Pro trial." }, { status: 500 });
     }
-  } else {
-  const { error } = await supabaseAdmin
-    .from("profile_stats")
-    .upsert(
-      {
-        user_id: targetUserId,
-        member_badge: normalizedBadge,
-        is_paid: shouldForcePaid ? true : undefined,
-        membership_status: shouldForcePaid ? "pro" : undefined,
-        pro_expires_at: shouldForcePaid ? null : undefined,
-        updated_at: new Date().toISOString(),
-      },
-      { onConflict: "user_id" },
-    );
+  } else if (normalizedBadge === "pro_buddy") {
+    try {
+      await markUserAsPaidAndTrackUpgrade({
+        supabase: supabaseAdmin,
+        userId: targetUserId,
+        source: "admin_pro_buddy",
+        membershipStatus: "pro",
+        actionLabel: "Admin Pro Buddy assigned",
+      });
 
-  if (error) {
-    return NextResponse.json({ error: error.message || "Could not save badge." }, { status: 500 });
-  }
+      const { error: badgeError } = await supabaseAdmin
+        .from("profile_stats")
+        .update({
+          member_badge: "pro_buddy",
+          updated_at: now.toISOString(),
+        })
+        .eq("user_id", targetUserId);
+
+      if (badgeError) {
+        return NextResponse.json({ error: badgeError.message || "Could not save badge." }, { status: 500 });
+      }
+    } catch (error: any) {
+      return NextResponse.json({ error: error?.message || "Could not assign Pro Buddy." }, { status: 500 });
+    }
+  } else {
+    const updatePayload: Record<string, string | null> = {
+      user_id: targetUserId,
+      member_badge: normalizedBadge,
+      updated_at: new Date().toISOString(),
+    };
+
+    const { error } = await supabaseAdmin
+      .from("profile_stats")
+      .upsert(updatePayload, { onConflict: "user_id" });
+
+    if (error) {
+      return NextResponse.json({ error: error.message || "Could not save badge." }, { status: 500 });
+    }
   }
 
   // If assigning buddy_partner, auto-create ambassador_profile if needed
@@ -138,6 +156,7 @@ export async function POST(request: NextRequest) {
     ok: true,
     memberBadge: normalizedBadge,
     isPaid: shouldForcePaid ? true : null,
+    membershipStatus: normalizedBadge === "pro_trial" || normalizedBadge === "pro_buddy" ? "pro" : null,
     proExpiresAt: normalizedBadge === "pro_trial" ? trialExpiresAt.toISOString() : null,
   });
 }

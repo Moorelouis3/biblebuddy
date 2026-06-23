@@ -1,4 +1,4 @@
-export type CustomMemberBadge = "teacher" | "moderator" | "top_buddy" | "founder_buddy" | "buddy_partner" | "pro_trial";
+export type CustomMemberBadge = "teacher" | "moderator" | "top_buddy" | "founder_buddy" | "buddy_partner" | "pro_trial" | "pro_buddy";
 
 export type ResolvedUserBadge = {
   key: "teacher" | "moderator" | "top_buddy" | "founder_buddy" | "pro_buddy" | "buddy_partner" | "pro_trial";
@@ -20,6 +20,7 @@ export const CUSTOM_MEMBER_BADGE_OPTIONS: Array<{
   { value: "top_buddy", label: "Top Buddy" },
   { value: "founder_buddy", label: "Founder Buddy" },
   { value: "buddy_partner", label: "Buddy Partner" },
+  { value: "pro_buddy", label: "Pro Buddy" },
   { value: "pro_trial", label: "Pro Trial" },
 ];
 
@@ -30,6 +31,7 @@ export function normalizeCustomMemberBadge(value: string | null | undefined): Cu
     value === "top_buddy" ||
     value === "founder_buddy" ||
     value === "buddy_partner" ||
+    value === "pro_buddy" ||
     value === "pro_trial"
   ) {
     return value;
@@ -119,6 +121,18 @@ export function resolveUserBadge(input: {
       title: "Founder Buddy",
       description: "This member has been with Bible Buddy from the beginning and has been instrumental in the growth and direction of Bible Buddy.",
       louisMood: "bible",
+    };
+  }
+
+  if (customBadge === "pro_buddy") {
+    return {
+      key: "pro_buddy",
+      label: "Pro Buddy",
+      emoji: "🙏",
+      className: "bg-violet-100 text-violet-700",
+      title: "Pro Buddy",
+      description: "This buddy has full Bible Buddy premium access unlocked. Pro Buddy members support the app and get access to the deeper study experience.",
+      louisMood: "pray",
     };
   }
 
