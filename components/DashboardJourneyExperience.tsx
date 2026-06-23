@@ -12407,6 +12407,14 @@ Before we understand redemption, we need to understand what God made humanity fo
 
     const renderPaidSupportCards = () => (
       <>
+        <div className="order-4 px-1">
+          <p className="flex items-center gap-2 text-[13px] font-black uppercase tracking-[0.24em] text-[var(--bb-accent,#2f7fe8)]">
+            <svg viewBox="0 0 20 20" className="h-4 w-4 fill-current" aria-hidden="true">
+              <path d="M10 1.8l1.7 5.2 5.4 1.7-5.4 1.7L10 15.6l-1.7-5.2-5.4-1.7 5.4-1.7L10 1.8Z" />
+            </svg>
+            <span>Extra Bible Study Help</span>
+          </p>
+        </div>
         <section className="order-4 overflow-hidden rounded-[20px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] shadow-[0_16px_42px_rgba(38,63,99,0.12),inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-xl">
           {supportCards.map((item, index) => {
             const expanded = getSupportCardExpanded(item.key);
