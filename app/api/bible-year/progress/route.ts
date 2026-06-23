@@ -13,6 +13,7 @@ type ProgressRow = {
 
 type ProfileResetRow = {
   bible_year_plan_reset_at?: string | null;
+  bible_year_progress_backfilled_at?: string | null;
 };
 
 type CompletedChapterRow = {
@@ -54,6 +55,11 @@ function isMissingBibleYearResetColumn(error: { message?: string | null; details
   return text.includes("bible_year_plan_reset_at");
 }
 
+function isMissingBibleYearBackfillColumn(error: { message?: string | null; details?: string | null; hint?: string | null } | null | undefined) {
+  const text = `${error?.message || ""} ${error?.details || ""} ${error?.hint || ""}`.toLowerCase();
+  return text.includes("bible_year_progress_backfilled_at");
+}
+
 function isOnOrAfterReset(value: string | null | undefined, resetAt: string | null) {
   if (!resetAt) return true;
   if (!value) return false;
@@ -91,17 +97,35 @@ export async function GET(request: NextRequest) {
 
   try {
     let bibleYearPlanResetAt: string | null = null;
+    let bibleYearProgressBackfilledAt: string | null = null;
     const profileReset = await admin
       .from("profile_stats")
-      .select("bible_year_plan_reset_at")
+      .select("bible_year_plan_reset_at, bible_year_progress_backfilled_at")
       .eq("user_id", userData.user.id)
       .maybeSingle();
 
-    if (profileReset.error && !isMissingBibleYearResetColumn(profileReset.error)) {
+    if (
+      profileReset.error &&
+      !isMissingBibleYearResetColumn(profileReset.error) &&
+      !isMissingBibleYearBackfillColumn(profileReset.error)
+    ) {
       throw profileReset.error;
     }
     if (!profileReset.error) {
       bibleYearPlanResetAt = ((profileReset.data || {}) as ProfileResetRow).bible_year_plan_reset_at || null;
+      bibleYearProgressBackfilledAt = ((profileReset.data || {}) as ProfileResetRow).bible_year_progress_backfilled_at || null;
+    } else if (isMissingBibleYearBackfillColumn(profileReset.error)) {
+      const resetOnlyProfile = await admin
+        .from("profile_stats")
+        .select("bible_year_plan_reset_at")
+        .eq("user_id", userData.user.id)
+        .maybeSingle();
+      if (resetOnlyProfile.error && !isMissingBibleYearResetColumn(resetOnlyProfile.error)) {
+        throw resetOnlyProfile.error;
+      }
+      if (!resetOnlyProfile.error) {
+        bibleYearPlanResetAt = ((resetOnlyProfile.data || {}) as ProfileResetRow).bible_year_plan_reset_at || null;
+      }
     }
 
     let progressRows: ProgressRow[] = [];
@@ -139,7 +163,9 @@ export async function GET(request: NextRequest) {
       GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => !legacyCompletedDays.has(day.dayNumber))?.dayNumber ||
       ((GENESIS_BIBLE_IN_ONE_YEAR_SERIES[GENESIS_BIBLE_IN_ONE_YEAR_SERIES.length - 1]?.dayNumber || 0) + 1);
 
-    const grandfatheredRows = !bibleYearPlanResetAt
+    const shouldRunLegacyBackfill = !bibleYearPlanResetAt && !bibleYearProgressBackfilledAt;
+
+    const grandfatheredRows = shouldRunLegacyBackfill
       ? GENESIS_BIBLE_IN_ONE_YEAR_SERIES
       .filter((day) => day.dayNumber < legacyCurrentActiveDay)
       .map((day) => progressRowByDay.get(day.dayNumber))
@@ -211,7 +237,7 @@ export async function GET(request: NextRequest) {
     });
 
     const restoredLegacyDayNumbers: number[] = [];
-    if (!bibleYearPlanResetAt) {
+    if (shouldRunLegacyBackfill) {
       for (const day of GENESIS_BIBLE_IN_ONE_YEAR_SERIES) {
         const existingRow = progressRowByDay.get(day.dayNumber);
         const restoredByRow = existingRow?.reading_completed === true;
@@ -257,6 +283,23 @@ export async function GET(request: NextRequest) {
             created_at: progressRowByDay.get(row.day_number)?.created_at || null,
           });
         });
+      }
+    }
+
+    if (shouldRunLegacyBackfill) {
+      const nowIso = new Date().toISOString();
+      const { error: backfillMarkerError } = await admin
+        .from("profile_stats")
+        .upsert(
+          {
+            user_id: userData.user.id,
+            bible_year_progress_backfilled_at: nowIso,
+            updated_at: nowIso,
+          },
+          { onConflict: "user_id" },
+        );
+      if (backfillMarkerError && !isMissingBibleYearBackfillColumn(backfillMarkerError)) {
+        console.warn("[BIBLE_YEAR_PROGRESS_API] Could not save backfill marker:", backfillMarkerError);
       }
     }
 

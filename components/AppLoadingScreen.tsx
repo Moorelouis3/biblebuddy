@@ -11,7 +11,7 @@ export default function AppLoadingScreen({ className = "" }: Props) {
       aria-busy="true"
       aria-live="polite"
     >
-      <div className="flex w-full max-w-sm -translate-y-[9vh] flex-col items-center justify-center px-6 text-center sm:-translate-y-[6vh]">
+      <div className="flex w-full max-w-sm -translate-y-[13vh] flex-col items-center justify-center px-6 text-center sm:-translate-y-[8vh]">
         <Image
           src="/TherealiconforBB.png"
           alt="Bible Buddy"

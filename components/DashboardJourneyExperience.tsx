@@ -28,7 +28,7 @@ import { ACTION_TYPE, type ActionType } from "../lib/actionTypes";
 import { consumeCreditAction, isCreditActionCanceled } from "../lib/creditClient";
 import { trackDeepStudyInterestOnce, trackStudyNotesSectionOpened, trackStudyNotesViewed } from "../lib/deepStudyInterestTracking";
 import { getBibleBuddyLocalDayKey, rememberLouisDailyTaskTarget } from "../lib/louisDailyFlow";
-import { getBookTotalChapters, getCompletedChapters, markChapterDone } from "../lib/readingProgress";
+import { getBookTotalChapters, getCompletedChapters, getCompletedChaptersByBooks, markChapterDone } from "../lib/readingProgress";
 import {
   canFreeUserUnlockChapter,
   formatFreePlanCountdown,
@@ -85,6 +85,8 @@ const BIBLE_IN_ONE_YEAR_TOTAL_CHAPTERS = generateBibleInOneYearPlan().totalChapt
 const DASHBOARD_GUIDED_INTRO_STORAGE_KEY = "bb:dashboard-guided-intro-seen";
 const BIBLE_YEAR_DASHBOARD_DAY_STORAGE_PREFIX = "bb:bible-year-dashboard-day";
 const BIBLE_YEAR_DASHBOARD_DAY_TTL_MS = 60 * 60 * 1000;
+const BIBLE_YEAR_PROGRESS_CACHE_STORAGE_PREFIX = "bb:bible-year-progress";
+const BIBLE_YEAR_PROGRESS_CACHE_TTL_MS = 30 * 60 * 1000;
 const FREE_BIBLE_YEAR_YOUTUBE_BY_DAY: Record<number, string> = {
   1: "https://youtu.be/ZvP93hHvwuU?si=9alIqe0oGL67dVPQ",
   2: "https://youtu.be/sfEGArkD0So?si=DRlHZlEsMZnzNoRa",
@@ -202,6 +204,81 @@ function rememberBibleYearDashboardDayNumber(userId: string | null | undefined, 
 function clearStoredBibleYearDashboardDayNumber(userId?: string | null) {
   if (typeof window === "undefined") return;
   window.sessionStorage.removeItem(getBibleYearDashboardDayStorageKey(userId));
+}
+
+function getBibleYearProgressCacheStorageKey(userId?: string | null) {
+  return `${BIBLE_YEAR_PROGRESS_CACHE_STORAGE_PREFIX}:${userId || "guest"}`;
+}
+
+function readStoredBibleYearProgress(userId?: string | null) {
+  if (typeof window === "undefined") return null;
+
+  try {
+    const raw = window.sessionStorage.getItem(getBibleYearProgressCacheStorageKey(userId));
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as {
+      cachedAt?: unknown;
+      resolvedCurrentDayNumber?: unknown;
+      completedCardsByDay?: unknown;
+      notesViewedByDay?: unknown;
+      reflectionPostedByDay?: unknown;
+    };
+    const cachedAt = Number(parsed.cachedAt);
+    const resolvedCurrentDayNumber = Number(parsed.resolvedCurrentDayNumber);
+    if (!Number.isFinite(cachedAt) || !Number.isFinite(resolvedCurrentDayNumber)) {
+      window.sessionStorage.removeItem(getBibleYearProgressCacheStorageKey(userId));
+      return null;
+    }
+    if (Date.now() - cachedAt > BIBLE_YEAR_PROGRESS_CACHE_TTL_MS) {
+      window.sessionStorage.removeItem(getBibleYearProgressCacheStorageKey(userId));
+      return null;
+    }
+    return {
+      resolvedCurrentDayNumber,
+      completedCardsByDay:
+        parsed.completedCardsByDay && typeof parsed.completedCardsByDay === "object"
+          ? (parsed.completedCardsByDay as BibleYearCompletedCardsByDay)
+          : {},
+      notesViewedByDay:
+        parsed.notesViewedByDay && typeof parsed.notesViewedByDay === "object"
+          ? (parsed.notesViewedByDay as Record<number, boolean>)
+          : {},
+      reflectionPostedByDay:
+        parsed.reflectionPostedByDay && typeof parsed.reflectionPostedByDay === "object"
+          ? (parsed.reflectionPostedByDay as Record<number, boolean>)
+          : {},
+    };
+  } catch {
+    window.sessionStorage.removeItem(getBibleYearProgressCacheStorageKey(userId));
+    return null;
+  }
+}
+
+function rememberStoredBibleYearProgress(
+  userId: string | null | undefined,
+  payload: {
+    resolvedCurrentDayNumber: number;
+    completedCardsByDay: BibleYearCompletedCardsByDay;
+    notesViewedByDay: Record<number, boolean>;
+    reflectionPostedByDay: Record<number, boolean>;
+  },
+) {
+  if (typeof window === "undefined") return;
+
+  try {
+    window.sessionStorage.setItem(
+      getBibleYearProgressCacheStorageKey(userId),
+      JSON.stringify({
+        cachedAt: Date.now(),
+        resolvedCurrentDayNumber: payload.resolvedCurrentDayNumber,
+        completedCardsByDay: payload.completedCardsByDay,
+        notesViewedByDay: payload.notesViewedByDay,
+        reflectionPostedByDay: payload.reflectionPostedByDay,
+      }),
+    );
+  } catch {
+    // Session storage is only a speed-up layer.
+  }
 }
 
 const DASHBOARD_GUIDED_INTRO_STEPS = [
@@ -4016,18 +4093,17 @@ export default function DashboardJourneyExperience({
     let cancelled = false;
 
     async function loadDashboardBibleBookProgress() {
-      if (!userId) {
+      if (!userId || activePageKey !== "bible") {
         setDashboardBibleCompletedByBook({});
         return;
       }
 
       try {
-        const entries = await Promise.all(
-          DASHBOARD_BIBLE_BOOKS.map(async (bookName) => {
-            const chapters = await getCompletedChapters(userId, bookName);
-            return [bookName, chapters] as const;
-          }),
-        );
+        const grouped = await getCompletedChaptersByBooks(userId, DASHBOARD_BIBLE_BOOKS);
+        const entries = DASHBOARD_BIBLE_BOOKS.map((bookName) => [
+          bookName,
+          grouped[bookName.toLowerCase().trim()] || [],
+        ] as const);
 
         if (!cancelled) {
           setDashboardBibleCompletedByBook(Object.fromEntries(entries));
@@ -4043,7 +4119,7 @@ export default function DashboardJourneyExperience({
     return () => {
       cancelled = true;
     };
-  }, [userId]);
+  }, [activePageKey, userId]);
 
   useEffect(() => {
     let cancelled = false;
@@ -4051,9 +4127,20 @@ export default function DashboardJourneyExperience({
     async function loadBibleYearProgress() {
       if (!userId) {
         setBibleYearCompletedCardsByDay({});
+        setBibleYearScriptureNotesViewedByDay({});
+        setBibleYearReflectionPostedByDay({});
         setBibleYearResolvedCurrentDayNumber(1);
         setBibleYearProgressLoaded(true);
         return;
+      }
+
+      const cachedProgress = readStoredBibleYearProgress(userId);
+      if (cachedProgress && !cancelled) {
+        setBibleYearCompletedCardsByDay(cachedProgress.completedCardsByDay || {});
+        setBibleYearScriptureNotesViewedByDay(cachedProgress.notesViewedByDay || {});
+        setBibleYearReflectionPostedByDay(cachedProgress.reflectionPostedByDay || {});
+        setBibleYearResolvedCurrentDayNumber(Number(cachedProgress.resolvedCurrentDayNumber) || 1);
+        setBibleYearProgressLoaded(true);
       }
 
       try {
@@ -4066,11 +4153,21 @@ export default function DashboardJourneyExperience({
           const payload = await response.json().catch(() => ({}));
           if (response.ok) {
             if (!cancelled) {
-              setBibleYearCompletedCardsByDay(payload.completedCardsByDay || {});
-              setBibleYearScriptureNotesViewedByDay(payload.notesViewedByDay || {});
-              setBibleYearReflectionPostedByDay(payload.reflectionPostedByDay || {});
-              setBibleYearResolvedCurrentDayNumber(Number(payload.resolvedCurrentDayNumber) || 1);
+              const completedCardsByDay = payload.completedCardsByDay || {};
+              const notesViewedByDay = payload.notesViewedByDay || {};
+              const reflectionPostedByDay = payload.reflectionPostedByDay || {};
+              const resolvedCurrentDayNumber = Number(payload.resolvedCurrentDayNumber) || 1;
+              setBibleYearCompletedCardsByDay(completedCardsByDay);
+              setBibleYearScriptureNotesViewedByDay(notesViewedByDay);
+              setBibleYearReflectionPostedByDay(reflectionPostedByDay);
+              setBibleYearResolvedCurrentDayNumber(resolvedCurrentDayNumber);
               setBibleYearProgressLoaded(true);
+              rememberStoredBibleYearProgress(userId, {
+                completedCardsByDay,
+                notesViewedByDay,
+                reflectionPostedByDay,
+                resolvedCurrentDayNumber,
+              });
             }
             return;
           }
@@ -4078,7 +4175,6 @@ export default function DashboardJourneyExperience({
         }
 
         let progressRows: BibleYearProgressRow[] = [];
-        let supportsStudyNotesCompleted = true;
         {
           const { data, error } = await supabase
             .from("bible_year_day_progress")
@@ -4087,7 +4183,6 @@ export default function DashboardJourneyExperience({
             .order("day_number", { ascending: true });
 
           if (error && isMissingStudyNotesCompletedColumn(error)) {
-            supportsStudyNotesCompleted = false;
             const fallback = await supabase
               .from("bible_year_day_progress")
               .select("day_number, reading_completed, trivia_completed, reflection_completed, created_at")
@@ -4102,176 +4197,10 @@ export default function DashboardJourneyExperience({
             progressRows = ((data || []) as BibleYearProgressRow[]).filter((row) => Number.isFinite(row.day_number));
           }
         }
-        const progressRowByDay = new Map(progressRows.map((row) => [Number(row.day_number), row]));
-        const legacyCompletedDays = new Set(
-          progressRows
-            .filter((row) => !profile?.bible_year_plan_reset_at && isBibleYearDayCompleteUnderLegacyRule(row))
-            .map((row) => Number(row.day_number)),
-        );
-        const legacyCurrentActiveDay =
-          GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => !legacyCompletedDays.has(day.dayNumber))?.dayNumber ||
-          ((GENESIS_BIBLE_IN_ONE_YEAR_SERIES[GENESIS_BIBLE_IN_ONE_YEAR_SERIES.length - 1]?.dayNumber || 0) + 1);
-        const grandfatheredRows = !profile?.bible_year_plan_reset_at
-          ? GENESIS_BIBLE_IN_ONE_YEAR_SERIES
-          .filter((day) => day.dayNumber < legacyCurrentActiveDay)
-          .map((day) => progressRowByDay.get(day.dayNumber))
-          .filter((row): row is BibleYearProgressRow => Boolean(row) && isBibleYearDayCompleteUnderLegacyRule(row))
-          .filter((row) => !(row.reading_completed && row.study_notes_completed && row.trivia_completed && row.reflection_completed))
-          : [];
-
-        if (grandfatheredRows.length) {
-          const grandfatherPayload = grandfatheredRows.map((row) => ({
-            user_id: userId,
-            day_number: Number(row.day_number),
-            reading_completed: true,
-            trivia_completed: true,
-            reflection_completed: true,
-            ...(supportsStudyNotesCompleted ? { study_notes_completed: true } : {}),
-          }));
-          const { error: grandfatherError } = await supabase
-            .from("bible_year_day_progress")
-            .upsert(grandfatherPayload, { onConflict: "user_id,day_number" });
-          if (grandfatherError) {
-            console.warn("[BIBLE_YEAR_PROGRESS] Could not grandfather old completed days:", grandfatherError);
-          } else {
-            grandfatherPayload.forEach((row) => {
-              progressRowByDay.set(row.day_number, {
-                day_number: row.day_number,
-                reading_completed: true,
-                study_notes_completed: true,
-                trivia_completed: true,
-                reflection_completed: true,
-                created_at: progressRowByDay.get(row.day_number)?.created_at || null,
-              });
-            });
-          }
-        }
-
-        const actionTypes = Array.from(new Set([
-          ...Object.values(BIBLE_YEAR_CARD_ACTION_TYPE).filter((value): value is ActionType => Boolean(value)),
-          ACTION_TYPE.bible_in_one_year_day_viewed,
-        ]));
-        const [{ data: completedChapterRows, error: completedChapterError }, { data: actionRows, error: actionError }] = await Promise.all([
-          supabase
-            .from("completed_chapters")
-            .select("book, chapter, created_at")
-            .eq("user_id", userId),
-          supabase
-            .from("master_actions")
-            .select("action_type, action_label, created_at")
-            .eq("user_id", userId)
-            .in("action_type", actionTypes)
-            .like("action_label", "Bible in One Year Day %"),
-        ]);
-
-        if (completedChapterError) {
-          console.warn("[BIBLE_YEAR_PROGRESS] Could not inspect completed chapters for restore:", completedChapterError);
-        }
-        if (actionError) {
-          console.warn("[BIBLE_YEAR_PROGRESS] Could not backfill Bible in One Year progress from actions:", actionError);
-        }
-
-        const completedChapterKeys = new Set(
-          ((completedChapterRows || []) as BibleYearCompletedChapterRow[])
-            .filter((row) => isBibleYearEventOnOrAfterReset(row.created_at, profile?.bible_year_plan_reset_at))
-            .filter((row) => typeof row.book === "string" && Number.isFinite(row.chapter))
-            .map((row) => getCompletedBibleChapterKey(String(row.book), Number(row.chapter))),
-        );
-        const readingActionDays = new Set<number>();
-        ((actionRows || []) as Array<{ action_label?: string | null; created_at?: string | null }>)
-          .filter((row) => isBibleYearEventOnOrAfterReset(row.created_at, profile?.bible_year_plan_reset_at))
-          .forEach((row) => {
-          const match = (row.action_label || "").match(/^Bible in One Year Day (\d+) (Reading|Video):/);
-          if (!match) return;
-          const dayNumber = Number(match[1]);
-          if (Number.isFinite(dayNumber)) {
-            readingActionDays.add(dayNumber);
-          }
-        });
-
-        const restoredLegacyDayNumbers: number[] = [];
-        if (!profile?.bible_year_plan_reset_at) {
-          for (const day of GENESIS_BIBLE_IN_ONE_YEAR_SERIES) {
-            const existingRow = progressRowByDay.get(day.dayNumber);
-            const restoredByRow = existingRow?.reading_completed === true;
-            const restoredByAction = readingActionDays.has(day.dayNumber);
-            const restoredByChapters =
-              day.readings.length > 0 &&
-              day.readings.every((reading) => completedChapterKeys.has(getCompletedBibleChapterKey(reading.book, reading.chapter)));
-            if (!restoredByRow && !restoredByAction && !restoredByChapters) {
-              break;
-            }
-            restoredLegacyDayNumbers.push(day.dayNumber);
-          }
-        }
-
-        const restoredLegacyPayload = restoredLegacyDayNumbers
-          .map((dayNumber) => {
-            const row = progressRowByDay.get(dayNumber);
-            const alreadyGrandfathered =
-              row?.reading_completed === true &&
-              row?.study_notes_completed === true &&
-              row?.trivia_completed === true &&
-              row?.reflection_completed === true;
-            if (alreadyGrandfathered) return null;
-            return {
-              user_id: userId,
-              day_number: dayNumber,
-              reading_completed: true,
-              trivia_completed: true,
-              reflection_completed: true,
-              ...(supportsStudyNotesCompleted ? { study_notes_completed: true } : {}),
-            };
-          })
-          .filter((row): row is { user_id: string; day_number: number; reading_completed: true; trivia_completed: true; reflection_completed: true; study_notes_completed?: true } => Boolean(row));
-
-        if (restoredLegacyPayload.length) {
-          const { error: restoredLegacyError } = await supabase
-            .from("bible_year_day_progress")
-            .upsert(restoredLegacyPayload, { onConflict: "user_id,day_number" });
-          if (restoredLegacyError) {
-            console.warn("[BIBLE_YEAR_PROGRESS] Could not restore grandfathered Bible in One Year days:", restoredLegacyError);
-          } else {
-            restoredLegacyPayload.forEach((row) => {
-              progressRowByDay.set(row.day_number, {
-                day_number: row.day_number,
-                reading_completed: true,
-                study_notes_completed: true,
-                trivia_completed: true,
-                reflection_completed: true,
-                created_at: progressRowByDay.get(row.day_number)?.created_at || null,
-              });
-            });
-          }
-        }
-
-        if (!profile?.bible_year_started_at) {
-          const earliestProgressDate = progressRows
-            .map((row) => row.created_at ? new Date(row.created_at) : null)
-            .filter((date): date is Date => Boolean(date && !Number.isNaN(date.getTime())))
-            .sort((a, b) => a.getTime() - b.getTime())[0];
-          const startDateKey = getDashboardLocalDateKey(earliestProgressDate || new Date());
-          const nowIso = new Date().toISOString();
-          const { error: startDateError } = await supabase
-            .from("profile_stats")
-            .upsert(
-              {
-                user_id: userId,
-                bible_year_started_at: startDateKey,
-                bible_year_launch_seen_at: nowIso,
-                updated_at: nowIso,
-              },
-              { onConflict: "user_id" },
-            );
-
-          if (startDateError) {
-            console.warn("[BIBLE_YEAR_PROGRESS] Could not save Bible in One Year start date:", startDateError);
-          }
-        }
 
         const next: BibleYearCompletedCardsByDay = {};
         const notesViewedNext: Record<number, boolean> = {};
-        Array.from(progressRowByDay.values()).forEach((row) => {
+        progressRows.forEach((row) => {
           next[row.day_number] = {
             reading: row.reading_completed === true,
             study_notes: row.study_notes_completed === true,
@@ -4296,40 +4225,17 @@ export default function DashboardJourneyExperience({
           .eq("is_deleted", false)
           .in("article_slug", Array.from(discussionSlugToDayNumber.keys()));
 
+        const reflectionPostedNext: Record<number, boolean> = {};
         if (discussionError) {
           console.warn("[BIBLE_YEAR_DISCUSSION] Could not preload saved discussion posts:", discussionError);
         } else {
-          const reflectionPostedNext: Record<number, boolean> = {};
           (discussionRows || []).forEach((row) => {
             const dayNumber = discussionSlugToDayNumber.get(row.article_slug);
             if (dayNumber) {
               reflectionPostedNext[dayNumber] = true;
             }
           });
-          if (!cancelled) {
-            setBibleYearReflectionPostedByDay(reflectionPostedNext);
-          }
         }
-
-        const cardLabelToKey: Record<string, BibleYearDayCardKey> = {
-          Reading: "reading",
-          Video: "reading",
-          Trivia: "trivia",
-          Reflection: "reflection",
-          Summary: "reflection",
-        };
-
-        ((actionRows || []) as Array<{ action_label?: string | null }>).forEach((row) => {
-          const match = (row.action_label || "").match(/^Bible in One Year Day (\d+) (Reading|Video|Trivia|Reflection|Summary):/);
-          if (!match) return;
-          const dayNumber = Number(match[1]);
-          const card = cardLabelToKey[match[2]];
-          if (!Number.isFinite(dayNumber) || !card) return;
-          next[dayNumber] = {
-            ...(next[dayNumber] || {}),
-            [card]: true,
-          };
-        });
 
         const resolvedCurrentDayNumber =
           GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => next[day.dayNumber]?.reading !== true)?.dayNumber ||
@@ -4338,15 +4244,27 @@ export default function DashboardJourneyExperience({
 
         if (!cancelled) {
           setBibleYearCompletedCardsByDay(next);
+          setBibleYearScriptureNotesViewedByDay(notesViewedNext);
+          setBibleYearReflectionPostedByDay(reflectionPostedNext);
           setBibleYearResolvedCurrentDayNumber(resolvedCurrentDayNumber);
           setBibleYearProgressLoaded(true);
+          rememberStoredBibleYearProgress(userId, {
+            completedCardsByDay: next,
+            notesViewedByDay: notesViewedNext,
+            reflectionPostedByDay: reflectionPostedNext,
+            resolvedCurrentDayNumber,
+          });
         }
       } catch (error) {
         console.error("[BIBLE_YEAR_PROGRESS] Could not load Bible in One Year progress:", error);
         if (!cancelled) {
-          setBibleYearCompletedCardsByDay({});
-          setBibleYearResolvedCurrentDayNumber(1);
-          setBibleYearProgressLoaded(true);
+          if (!cachedProgress) {
+            setBibleYearCompletedCardsByDay({});
+            setBibleYearScriptureNotesViewedByDay({});
+            setBibleYearReflectionPostedByDay({});
+            setBibleYearResolvedCurrentDayNumber(1);
+            setBibleYearProgressLoaded(true);
+          }
         }
       }
     }
@@ -4356,7 +4274,7 @@ export default function DashboardJourneyExperience({
     return () => {
       cancelled = true;
     };
-  }, [profile?.bible_year_started_at, userId]);
+  }, [userId]);
 
   function snapToPage(index: number) {
     const nextIndex = Math.max(0, Math.min(index, dashboardPageKeys.length - 1));

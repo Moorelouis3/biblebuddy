@@ -124,6 +124,60 @@ export async function getCompletedChapters(userId: string, book: string): Promis
 }
 
 /**
+ * Get completed chapters for multiple books in one query for a specific user.
+ */
+export async function getCompletedChaptersByBooks(
+  userId: string,
+  books: string[],
+): Promise<Record<string, number[]>> {
+  try {
+    const normalizedBooks = Array.from(
+      new Set(
+        books
+          .map((book) => book.toLowerCase().trim())
+          .filter(Boolean),
+      ),
+    );
+
+    if (!normalizedBooks.length) return {};
+
+    const { data, error } = await supabase
+      .from("completed_chapters")
+      .select("book, chapter")
+      .eq("user_id", userId)
+      .in("book", normalizedBooks)
+      .order("chapter", { ascending: true });
+
+    if (error) {
+      console.error("[READING_PROGRESS] Error fetching completed chapters by books:", error);
+      return {};
+    }
+
+    const grouped: Record<string, number[]> = {};
+    normalizedBooks.forEach((book) => {
+      grouped[book] = [];
+    });
+
+    (data || []).forEach((row) => {
+      const book = String(row.book || "").toLowerCase().trim();
+      const chapter = Number(row.chapter);
+      if (!book || !Number.isFinite(chapter)) return;
+      if (!grouped[book]) grouped[book] = [];
+      grouped[book].push(chapter);
+    });
+
+    Object.keys(grouped).forEach((book) => {
+      grouped[book] = grouped[book].sort((a, b) => a - b);
+    });
+
+    return grouped;
+  } catch (err) {
+    console.error("[READING_PROGRESS] Error in getCompletedChaptersByBooks:", err);
+    return {};
+  }
+}
+
+/**
  * Get total completed chapters across all books for a user
  * This is the shared function used by both dashboard and Bible Study Stats
  */

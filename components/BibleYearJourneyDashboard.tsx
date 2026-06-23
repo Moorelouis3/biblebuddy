@@ -97,35 +97,54 @@ export default function BibleYearJourneyDashboard() {
 
     setUserId(user.id);
     setUserName(String(fallbackName || "Bible Buddy"));
-
-    const { data } = await supabase
-      .from("profile_stats")
-      .select(
-        "is_paid,daily_credits,last_active_date,verse_of_the_day_shown,current_streak,selected_streak_flame,selected_buddy_avatar,profile_image_url,display_name,username,created_at,bible_year_started_at,bible_year_plan_reset_at",
-      )
-      .eq("user_id", user.id)
-      .maybeSingle();
-
-    const displayName = data?.display_name || data?.username || fallbackName || "Bible Buddy";
-    setUserName(String(displayName));
-    setProfile({
-      is_paid: data?.is_paid ?? false,
-      daily_credits: data?.daily_credits ?? null,
-      last_active_date: data?.last_active_date ?? null,
-      verse_of_the_day_shown: data?.verse_of_the_day_shown ?? null,
-      current_streak: data?.current_streak ?? 0,
-      selected_streak_flame: data?.selected_streak_flame ?? null,
-      selected_buddy_avatar: data?.selected_buddy_avatar ?? null,
+    setProfile((current) => current || {
+      is_paid: false,
+      daily_credits: null,
+      last_active_date: null,
+      verse_of_the_day_shown: null,
+      current_streak: 0,
+      selected_streak_flame: null,
+      selected_buddy_avatar: null,
       diamonds_count: null,
-      profile_image_url: data?.profile_image_url ?? null,
-      display_name: data?.display_name ?? null,
-      username: data?.username ?? null,
-      created_at: data?.created_at ?? null,
-      bible_year_started_at: data?.bible_year_started_at ?? null,
-      bible_year_plan_reset_at: data?.bible_year_plan_reset_at ?? null,
+      profile_image_url: null,
+      display_name: null,
+      username: null,
+      created_at: null,
+      bible_year_started_at: null,
+      bible_year_plan_reset_at: null,
       preferred_study_mode: "bible_year",
     });
     setLoading(false);
+
+    void (async () => {
+      const { data } = await supabase
+        .from("profile_stats")
+        .select(
+          "is_paid,daily_credits,last_active_date,verse_of_the_day_shown,current_streak,selected_streak_flame,selected_buddy_avatar,profile_image_url,display_name,username,created_at,bible_year_started_at,bible_year_plan_reset_at",
+        )
+        .eq("user_id", user.id)
+        .maybeSingle();
+
+      const displayName = data?.display_name || data?.username || fallbackName || "Bible Buddy";
+      setUserName(String(displayName));
+      setProfile({
+        is_paid: data?.is_paid ?? false,
+        daily_credits: data?.daily_credits ?? null,
+        last_active_date: data?.last_active_date ?? null,
+        verse_of_the_day_shown: data?.verse_of_the_day_shown ?? null,
+        current_streak: data?.current_streak ?? 0,
+        selected_streak_flame: data?.selected_streak_flame ?? null,
+        selected_buddy_avatar: data?.selected_buddy_avatar ?? null,
+        diamonds_count: null,
+        profile_image_url: data?.profile_image_url ?? null,
+        display_name: data?.display_name ?? null,
+        username: data?.username ?? null,
+        created_at: data?.created_at ?? null,
+        bible_year_started_at: data?.bible_year_started_at ?? null,
+        bible_year_plan_reset_at: data?.bible_year_plan_reset_at ?? null,
+        preferred_study_mode: "bible_year",
+      });
+    })();
   }, [router]);
 
   useEffect(() => {
