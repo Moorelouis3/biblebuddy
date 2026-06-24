@@ -4153,13 +4153,6 @@ export default function DashboardJourneyExperience({
       }
 
       const cachedProgress = readStoredBibleYearProgress(userId);
-      if (cachedProgress && !cancelled) {
-        setBibleYearCompletedCardsByDay(cachedProgress.completedCardsByDay || {});
-        setBibleYearScriptureNotesViewedByDay(cachedProgress.notesViewedByDay || {});
-        setBibleYearReflectionPostedByDay(cachedProgress.reflectionPostedByDay || {});
-        setBibleYearResolvedCurrentDayNumber(Number(cachedProgress.resolvedCurrentDayNumber) || 1);
-        setBibleYearProgressLoaded(true);
-      }
 
       try {
         const sessionData = await supabase.auth.getSession();
@@ -4276,13 +4269,11 @@ export default function DashboardJourneyExperience({
       } catch (error) {
         console.error("[BIBLE_YEAR_PROGRESS] Could not load Bible in One Year progress:", error);
         if (!cancelled) {
-          if (!cachedProgress) {
-            setBibleYearCompletedCardsByDay({});
-            setBibleYearScriptureNotesViewedByDay({});
-            setBibleYearReflectionPostedByDay({});
-            setBibleYearResolvedCurrentDayNumber(1);
-            setBibleYearProgressLoaded(true);
-          }
+          setBibleYearCompletedCardsByDay(cachedProgress?.completedCardsByDay || {});
+          setBibleYearScriptureNotesViewedByDay(cachedProgress?.notesViewedByDay || {});
+          setBibleYearReflectionPostedByDay(cachedProgress?.reflectionPostedByDay || {});
+          setBibleYearResolvedCurrentDayNumber(Number(cachedProgress?.resolvedCurrentDayNumber) || 1);
+          setBibleYearProgressLoaded(true);
         }
       }
     }
@@ -4571,7 +4562,6 @@ export default function DashboardJourneyExperience({
     setBibleYearJourneyPreviewDay(null);
     setSelectedBibleYearSeriesDay(day);
     setManualBibleYearStudyDayNumber(day.dayNumber);
-    rememberBibleYearDashboardDayNumber(userId, day.dayNumber);
     setActiveBibleYearDayCard(null);
     setBibleYearCompletedTasksExpandedDay(options.reviewCompleted || isBibleYearDayComplete(day) ? day.dayNumber : null);
     if (options.markDone) {
@@ -4849,19 +4839,8 @@ export default function DashboardJourneyExperience({
 
   useEffect(() => {
     if (!bibleYearProgressLoaded || !bibleYearDashboardActive || !activeBibleYearDashboardDay) return;
-    const storedDayNumber = getStoredBibleYearDashboardDayNumber(userId);
-    const storedDay = storedDayNumber
-      ? GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => day.dayNumber === storedDayNumber) ?? null
-      : null;
-    const shouldUseStoredDay = Boolean(
-      storedDay &&
-      canOpenBibleYearDayInJourneyOrder(storedDay),
-    );
-    const targetDay = shouldUseStoredDay ? storedDay! : activeBibleYearDashboardDay;
-
-    if (storedDay && !shouldUseStoredDay) {
-      clearStoredBibleYearDashboardDayNumber(userId);
-    }
+    clearStoredBibleYearDashboardDayNumber(userId);
+    const targetDay = activeBibleYearDashboardDay;
 
     if (selectedBibleYearSeriesDay?.dayNumber === targetDay.dayNumber) return;
     const shouldKeepManualSelectedDay = Boolean(
@@ -4883,7 +4862,7 @@ export default function DashboardJourneyExperience({
     }
 
     setSelectedBibleYearSeriesDay(targetDay);
-    setManualBibleYearStudyDayNumber(shouldUseStoredDay ? storedDay!.dayNumber : null);
+    setManualBibleYearStudyDayNumber(null);
     if (typeof window !== "undefined") {
       const url = new URL(window.location.href);
       url.searchParams.set("view", "bible-year");
