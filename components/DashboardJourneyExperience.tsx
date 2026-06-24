@@ -11641,12 +11641,12 @@ Before we understand redemption, we need to understand what God made humanity fo
     ] as const;
 
     return (
-      <article className="completion-panel-enter order-4 overflow-hidden rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-white p-4 text-center text-[var(--bb-text-primary,#111827)] shadow-[0_22px_56px_rgba(38,63,99,0.14)] sm:p-6">
+      <article className="completion-panel-enter order-4 overflow-hidden rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-white p-3.5 text-center text-[var(--bb-text-primary,#111827)] shadow-[0_18px_40px_rgba(38,63,99,0.12)] sm:p-4">
         <div className="relative">
           <button
             type="button"
             onClick={() => closeInlineBibleYearCompletionUpgrade(day.dayNumber)}
-            className="absolute right-0 top-0 grid h-10 w-10 place-items-center rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-white text-[#42557f] shadow-[0_10px_22px_rgba(38,63,99,0.08)] transition hover:bg-[var(--bb-surface-soft,#f8fbff)]"
+            className="absolute right-0 top-0 grid h-9 w-9 place-items-center rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-white text-[#42557f] shadow-[0_8px_18px_rgba(38,63,99,0.08)] transition hover:bg-[var(--bb-surface-soft,#f8fbff)]"
             aria-label="Close completion upgrade"
           >
             <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
@@ -11655,7 +11655,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             </svg>
           </button>
 
-          <div className="chapter-confetti pointer-events-none absolute left-1/2 top-12" aria-hidden="true">
+          <div className="chapter-confetti pointer-events-none absolute left-1/2 top-9" aria-hidden="true">
             <span className="absolute h-2 w-3 rounded-sm bg-amber-400 [--confetti-rotate:160deg] [--confetti-x:-104px] [--confetti-y:-78px]" />
             <span className="absolute h-2 w-2 rounded-full bg-sky-400 [--confetti-rotate:-120deg] [--confetti-x:86px] [--confetti-y:-92px]" />
             <span className="absolute h-3 w-2 rounded-sm bg-[#7BAFD4] [--confetti-rotate:210deg] [--confetti-x:-72px] [--confetti-y:52px]" />
@@ -11666,57 +11666,57 @@ Before we understand redemption, we need to understand what God made humanity fo
             <span className="absolute h-2 w-2 rounded-full bg-cyan-400 [--confetti-rotate:-130deg] [--confetti-x:132px] [--confetti-y:-22px]" />
           </div>
 
-          <div className="mx-auto grid h-24 w-24 place-items-center rounded-full bg-[#32d74b] text-white shadow-[0_18px_38px_rgba(50,215,75,0.32)]">
-            <svg viewBox="0 0 24 24" className="h-12 w-12" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
+          <div className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-[#32d74b] text-white shadow-[0_14px_28px_rgba(50,215,75,0.28)]">
+            <svg viewBox="0 0 24 24" className="h-8 w-8" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
               <path d="m5 12 5 5L19 8" />
             </svg>
           </div>
 
-          <h2 className="mt-6 text-[42px] font-black leading-none tracking-[-0.05em] text-[#10224b] sm:text-[56px]">
+          <h2 className="mt-4 text-[30px] font-black leading-none tracking-[-0.04em] text-[#10224b] sm:text-[36px]">
             Great Job!
           </h2>
-          <p className="mt-3 text-[18px] font-medium leading-8 text-[#5c6f94] sm:text-[20px]">
+          <p className="mt-2 text-[15px] font-medium leading-6 text-[#5c6f94] sm:text-[17px]">
             You just completed today&apos;s lesson.
           </p>
-          <p className="mx-auto mt-5 max-w-[34rem] text-[20px] font-black leading-9 text-[#10224b] sm:text-[22px] sm:leading-10">
+          <p className="mx-auto mt-4 max-w-[34rem] text-[17px] font-black leading-7 text-[#10224b] sm:text-[18px] sm:leading-8">
             Upgrade to unlock Bible Buddy Premium for full access to powerful study tools.
           </p>
         </div>
 
-        <div className="mt-7 rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[#f8fbff] p-4 text-left sm:p-5">
+        <div className="mt-5 rounded-[20px] border border-[var(--bb-card-border,#dbe7f4)] bg-[#f8fbff] p-3.5 text-left sm:p-4">
           {featureRows.map((item, index) => (
-            <div key={item.title} className={`${index > 0 ? "mt-4 border-t border-[var(--bb-card-border,#dbe7f4)] pt-4" : ""} flex items-start gap-4`}>
-              <div className={`grid h-16 w-16 shrink-0 place-items-center rounded-full bg-gradient-to-br ${item.accent} text-[var(--bb-accent,#2f7fe8)]`}>
+            <div key={item.title} className={`${index > 0 ? "mt-3 border-t border-[var(--bb-card-border,#dbe7f4)] pt-3" : ""} flex items-start gap-3`}>
+              <div className={`grid h-12 w-12 shrink-0 place-items-center rounded-full bg-gradient-to-br ${item.accent} text-[var(--bb-accent,#2f7fe8)]`}>
                 {item.icon}
               </div>
               <div className="min-w-0">
-                <h3 className="text-[20px] font-black leading-tight text-[#10224b]">{item.title}</h3>
-                <p className="mt-1 text-[16px] font-medium leading-7 text-[#5c6f94]">{item.body}</p>
+                <h3 className="text-[17px] font-black leading-tight text-[#10224b]">{item.title}</h3>
+                <p className="mt-1 text-[14px] font-medium leading-6 text-[#5c6f94]">{item.body}</p>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="mt-7">
+        <div className="mt-5">
           <button
             type="button"
             onClick={() => void startBibleYearQuickUpgrade("yearly")}
             disabled={Boolean(bibleYearQuickUpgradeLoading)}
-            className="flex w-full flex-col items-center justify-center rounded-[24px] bg-[linear-gradient(135deg,#2f7fe8,#1757db)] px-5 py-5 text-center text-white shadow-[0_18px_38px_rgba(47,127,232,0.30)] transition hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-60"
+            className="flex w-full flex-col items-center justify-center rounded-[20px] bg-[linear-gradient(135deg,#2f7fe8,#1757db)] px-4 py-4 text-center text-white shadow-[0_16px_32px_rgba(47,127,232,0.24)] transition hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-60"
           >
-            <span className="text-[42px] font-black leading-none tracking-[-0.05em]">👑 $49.99</span>
-            <span className="mt-2 text-[19px] font-bold">One Time Fee</span>
+            <span className="text-[32px] font-black leading-none tracking-[-0.04em]">👑 $49.99</span>
+            <span className="mt-1.5 text-[16px] font-bold">One Time Fee</span>
           </button>
-          <div className="mt-5 flex items-center justify-center gap-4 text-[#8fa1c2]">
-            <div className="h-px w-20 bg-[var(--bb-card-border,#dbe7f4)]" />
-            <span className="text-[15px] font-bold">or</span>
-            <div className="h-px w-20 bg-[var(--bb-card-border,#dbe7f4)]" />
+          <div className="mt-4 flex items-center justify-center gap-3 text-[#8fa1c2]">
+            <div className="h-px w-16 bg-[var(--bb-card-border,#dbe7f4)]" />
+            <span className="text-[13px] font-bold">or</span>
+            <div className="h-px w-16 bg-[var(--bb-card-border,#dbe7f4)]" />
           </div>
           <button
             type="button"
             onClick={() => void startBibleYearQuickUpgrade("monthly")}
             disabled={Boolean(bibleYearQuickUpgradeLoading)}
-            className="mt-4 text-[18px] font-bold text-[#10224b] underline-offset-4 transition hover:text-[var(--bb-accent,#2f7fe8)] hover:underline disabled:cursor-not-allowed disabled:opacity-60"
+            className="mt-3 text-[16px] font-bold text-[#10224b] underline-offset-4 transition hover:text-[var(--bb-accent,#2f7fe8)] hover:underline disabled:cursor-not-allowed disabled:opacity-60"
           >
             $4.99 per month
           </button>
