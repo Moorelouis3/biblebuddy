@@ -2299,7 +2299,6 @@ export default function DashboardJourneyExperience({
   const [bibleYearFollowAlongOpenByDay, setBibleYearFollowAlongOpenByDay] = useState<Record<number, boolean>>({});
   const [bibleYearUnlockedStudyNoteSectionsByDay, setBibleYearUnlockedStudyNoteSectionsByDay] = useState<Record<number, Record<string, true>>>({});
   const [bibleYearUnlockedTriviaByDay, setBibleYearUnlockedTriviaByDay] = useState<Record<number, true>>({});
-  const [bibleYearAudioAccessDismissStateByDay, setBibleYearAudioAccessDismissStateByDay] = useState<Record<number, "visible" | "puffing" | "hidden">>({});
   const [bibleYearFollowAlongEnrichedHtmlByChapter, setBibleYearFollowAlongEnrichedHtmlByChapter] = useState<Record<string, Record<number, string>>>({});
   const [bibleYearReaderTranslation, setBibleYearReaderTranslation] = useState<BibleYearReaderTranslation>("kjv");
   const [bibleYearReaderPlainText, setBibleYearReaderPlainText] = useState(false);
@@ -2333,6 +2332,7 @@ export default function DashboardJourneyExperience({
   const bibleYearCompletionUpgradeResolverRef = useRef<(() => void) | null>(null);
   const bibleYearCompletionUpgradeDayRef = useRef<number | null>(null);
   const bibleYearJustCompletedDayRef = useRef<number | null>(null);
+  const [bibleYearInlineCompletionUpgradeDay, setBibleYearInlineCompletionUpgradeDay] = useState<number | null>(null);
   const bibleYearTermTakeoverRef = useRef<HTMLDivElement | null>(null);
   const bibleYearTermReturnScrollYRef = useRef<number | null>(null);
   const bibleYearScriptureNotesSectionRefs = useRef<Record<string, HTMLDivElement | null>>({});
@@ -6916,6 +6916,7 @@ export default function DashboardJourneyExperience({
     setBibleYearQuickUpgradeContext(null);
     setBibleYearQuickUpgradeLoading(null);
     setBibleYearQuickUpgradeError(null);
+    setBibleYearInlineCompletionUpgradeDay(null);
     setBibleYearLifetimeInfoOpen(false);
     setBibleYearDownloadPrompt(null);
     setBibleYearOpenVerseBreakdownKey(null);
@@ -6939,6 +6940,19 @@ export default function DashboardJourneyExperience({
     resolve?.();
   }
 
+  function closeInlineBibleYearCompletionUpgrade(dayNumber?: number | null) {
+    const resolvedDayNumber = dayNumber ?? bibleYearCompletionUpgradeDayRef.current;
+    if (resolvedDayNumber) {
+      void logBibleYearCompletionUpgradeAction(
+        ACTION_TYPE.upgrade_popup_dismissed,
+        `Bible in One Year Day ${resolvedDayNumber} completion upgrade popup closed`,
+      );
+    }
+    setBibleYearInlineCompletionUpgradeDay(null);
+    bibleYearCompletionUpgradeDayRef.current = null;
+    resolveBibleYearCompletionUpgradeGate();
+  }
+
   async function openBibleYearCompletionUpgradePrompt(day: GenesisBibleYearDay) {
     if (isPaidUser) return;
     bibleYearCompletionUpgradeDayRef.current = day.dayNumber;
@@ -6946,8 +6960,9 @@ export default function DashboardJourneyExperience({
     setBibleYearDownloadUpgradeOpen(false);
     setBibleYearQuickUpgradeError(null);
     setBibleYearQuickUpgradeContext("completion");
-    setBibleYearQuickUpgradeOpen(true);
+    setBibleYearQuickUpgradeOpen(false);
     setBibleYearLifetimeInfoOpen(false);
+    setBibleYearInlineCompletionUpgradeDay(day.dayNumber);
     void logBibleYearCompletionUpgradeAction(
       ACTION_TYPE.upgrade_popup_viewed,
       `Bible in One Year Day ${day.dayNumber} completion upgrade popup viewed`,
@@ -7240,6 +7255,7 @@ export default function DashboardJourneyExperience({
         setBibleYearQuickUpgradeOpen(false);
         setBibleYearQuickUpgradeContext(null);
         setBibleYearLifetimeInfoOpen(false);
+        setBibleYearInlineCompletionUpgradeDay(null);
         resolveBibleYearCompletionUpgradeGate();
       }
 
@@ -10222,9 +10238,11 @@ Before we understand redemption, we need to understand what God made humanity fo
     if (dayWillBeFullyComplete) {
       bibleYearJustCompletedDayRef.current = day.dayNumber;
       if (!dayWasFullyComplete) {
-        window.setTimeout(() => {
-          fireBibleYearDayCompleteConfetti();
-        }, 0);
+        if (isPaidUser || isOwnerDashboard) {
+          window.setTimeout(() => {
+            fireBibleYearDayCompleteConfetti();
+          }, 0);
+        }
       }
       setBibleYearIncompleteChecklistDay((current) => current?.dayNumber === day.dayNumber ? null : current);
       setSelectedBibleYearSeriesDay(day);
@@ -11581,6 +11599,135 @@ Before we understand redemption, we need to understand what God made humanity fo
     );
   }
 
+  function renderBibleYearInlineCompletionUpgradeCard(day: GenesisBibleYearDay) {
+    const featureRows = [
+      {
+        title: "All Bible Study Notes",
+        body: "Access detailed study notes across the entire Bible.",
+        accent: "from-[#e7f0ff] to-[#f4f8ff]",
+        icon: (
+          <svg viewBox="0 0 24 24" className="h-8 w-8" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+            <path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z" />
+            <path d="M8 7h8" />
+            <path d="M8 11h6" />
+          </svg>
+        ),
+      },
+      {
+        title: "Hundreds of Trivia Questions",
+        body: "Test your knowledge and strengthen what you learn.",
+        accent: "from-[#fff4d7] to-[#fff9ea]",
+        icon: (
+          <svg viewBox="0 0 24 24" className="h-8 w-8" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="12" cy="12" r="9" />
+            <path d="M9.3 9a3 3 0 1 1 5.4 1.8c-.7.9-1.7 1.3-2.2 2.2" />
+            <path d="M12 17h.01" />
+          </svg>
+        ),
+      },
+      {
+        title: "Audio Lessons & Background Play",
+        body: "Listen with your screen locked or while using other apps.",
+        accent: "from-[#e0f8e7] to-[#f1fcf4]",
+        icon: (
+          <svg viewBox="0 0 24 24" className="h-8 w-8" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M4 12a8 8 0 0 1 16 0" />
+            <path d="M4 12v5a2 2 0 0 0 2 2h1v-7H6a2 2 0 0 0-2 2Z" />
+            <path d="M20 12v5a2 2 0 0 1-2 2h-1v-7h1a2 2 0 0 1 2 2Z" />
+          </svg>
+        ),
+      },
+    ] as const;
+
+    return (
+      <article className="completion-panel-enter order-4 overflow-hidden rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-white p-4 text-center text-[var(--bb-text-primary,#111827)] shadow-[0_22px_56px_rgba(38,63,99,0.14)] sm:p-6">
+        <div className="relative">
+          <button
+            type="button"
+            onClick={() => closeInlineBibleYearCompletionUpgrade(day.dayNumber)}
+            className="absolute right-0 top-0 grid h-10 w-10 place-items-center rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-white text-[#42557f] shadow-[0_10px_22px_rgba(38,63,99,0.08)] transition hover:bg-[var(--bb-surface-soft,#f8fbff)]"
+            aria-label="Close completion upgrade"
+          >
+            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M18 6 6 18" />
+              <path d="m6 6 12 12" />
+            </svg>
+          </button>
+
+          <div className="chapter-confetti pointer-events-none absolute left-1/2 top-12" aria-hidden="true">
+            <span className="absolute h-2 w-3 rounded-sm bg-amber-400 [--confetti-rotate:160deg] [--confetti-x:-104px] [--confetti-y:-78px]" />
+            <span className="absolute h-2 w-2 rounded-full bg-sky-400 [--confetti-rotate:-120deg] [--confetti-x:86px] [--confetti-y:-92px]" />
+            <span className="absolute h-3 w-2 rounded-sm bg-[#7BAFD4] [--confetti-rotate:210deg] [--confetti-x:-72px] [--confetti-y:52px]" />
+            <span className="absolute h-2 w-3 rounded-sm bg-rose-400 [--confetti-rotate:-190deg] [--confetti-x:108px] [--confetti-y:36px]" />
+            <span className="absolute h-2 w-2 rounded-full bg-violet-400 [--confetti-rotate:140deg] [--confetti-x:-28px] [--confetti-y:-118px]" />
+            <span className="absolute h-3 w-2 rounded-sm bg-lime-400 [--confetti-rotate:-155deg] [--confetti-x:30px] [--confetti-y:76px]" />
+            <span className="absolute h-2 w-3 rounded-sm bg-orange-400 [--confetti-rotate:190deg] [--confetti-x:-126px] [--confetti-y:4px]" />
+            <span className="absolute h-2 w-2 rounded-full bg-cyan-400 [--confetti-rotate:-130deg] [--confetti-x:132px] [--confetti-y:-22px]" />
+          </div>
+
+          <div className="mx-auto grid h-24 w-24 place-items-center rounded-full bg-[#32d74b] text-white shadow-[0_18px_38px_rgba(50,215,75,0.32)]">
+            <svg viewBox="0 0 24 24" className="h-12 w-12" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
+              <path d="m5 12 5 5L19 8" />
+            </svg>
+          </div>
+
+          <h2 className="mt-6 text-[42px] font-black leading-none tracking-[-0.05em] text-[#10224b] sm:text-[56px]">
+            Great Job!
+          </h2>
+          <p className="mt-3 text-[18px] font-medium leading-8 text-[#5c6f94] sm:text-[20px]">
+            You just completed today&apos;s lesson.
+          </p>
+          <p className="mx-auto mt-5 max-w-[34rem] text-[20px] font-black leading-9 text-[#10224b] sm:text-[22px] sm:leading-10">
+            Upgrade to unlock Bible Buddy Premium for full access to powerful study tools.
+          </p>
+        </div>
+
+        <div className="mt-7 rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[#f8fbff] p-4 text-left sm:p-5">
+          {featureRows.map((item, index) => (
+            <div key={item.title} className={`${index > 0 ? "mt-4 border-t border-[var(--bb-card-border,#dbe7f4)] pt-4" : ""} flex items-start gap-4`}>
+              <div className={`grid h-16 w-16 shrink-0 place-items-center rounded-full bg-gradient-to-br ${item.accent} text-[var(--bb-accent,#2f7fe8)]`}>
+                {item.icon}
+              </div>
+              <div className="min-w-0">
+                <h3 className="text-[20px] font-black leading-tight text-[#10224b]">{item.title}</h3>
+                <p className="mt-1 text-[16px] font-medium leading-7 text-[#5c6f94]">{item.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-7">
+          <button
+            type="button"
+            onClick={() => void startBibleYearQuickUpgrade("yearly")}
+            disabled={Boolean(bibleYearQuickUpgradeLoading)}
+            className="flex w-full flex-col items-center justify-center rounded-[24px] bg-[linear-gradient(135deg,#2f7fe8,#1757db)] px-5 py-5 text-center text-white shadow-[0_18px_38px_rgba(47,127,232,0.30)] transition hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            <span className="text-[42px] font-black leading-none tracking-[-0.05em]">👑 $49.99</span>
+            <span className="mt-2 text-[19px] font-bold">One Time Fee</span>
+          </button>
+          <div className="mt-5 flex items-center justify-center gap-4 text-[#8fa1c2]">
+            <div className="h-px w-20 bg-[var(--bb-card-border,#dbe7f4)]" />
+            <span className="text-[15px] font-bold">or</span>
+            <div className="h-px w-20 bg-[var(--bb-card-border,#dbe7f4)]" />
+          </div>
+          <button
+            type="button"
+            onClick={() => void startBibleYearQuickUpgrade("monthly")}
+            disabled={Boolean(bibleYearQuickUpgradeLoading)}
+            className="mt-4 text-[18px] font-bold text-[#10224b] underline-offset-4 transition hover:text-[var(--bb-accent,#2f7fe8)] hover:underline disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            $4.99 per month
+          </button>
+          {bibleYearQuickUpgradeError ? (
+            <p className="mt-3 text-sm font-semibold text-rose-600">{bibleYearQuickUpgradeError}</p>
+          ) : null}
+        </div>
+      </article>
+    );
+  }
+
   function renderBibleYearCompletedTasksPanel(day: GenesisBibleYearDay) {
     const completedTasksForDay = buildBibleYearDayTasks(day).filter((task) => task.done);
     const requiredTasksCount = getBibleYearRequiredCardKeys(day).length;
@@ -12314,14 +12461,12 @@ Before we understand redemption, we need to understand what God made humanity fo
     const studyNotesComplete =
       bibleYearCompletedCardsByDay[day.dayNumber]?.study_notes === true ||
       bibleYearScriptureNotesViewedByDay[day.dayNumber] === true;
-    const showCompletionMoment = false;
+    const showCompletionMoment = !isPaidUser && !isOwnerDashboard && bibleYearInlineCompletionUpgradeDay === day.dayNumber;
     const triviaComplete = bibleYearCompletedCardsByDay[day.dayNumber]?.trivia === true;
     const reflectionPosted =
       bibleYearReflectionPostedByDay[day.dayNumber] === true ||
       bibleYearCompletedCardsByDay[day.dayNumber]?.reflection === true;
     const followAlongOpen = Boolean(bibleYearFollowAlongOpenByDay[day.dayNumber]);
-    const audioAccessDismissState = bibleYearAudioAccessDismissStateByDay[day.dayNumber] || "visible";
-    const showAudioAccessCard = freeYoutubeUrl && audioAccessDismissState !== "hidden";
     const previousBibleYearDay = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((item) => item.dayNumber === day.dayNumber - 1) || null;
     const nextBibleYearDay = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((item) => item.dayNumber === day.dayNumber + 1) || null;
 
@@ -12351,19 +12496,6 @@ Before we understand redemption, we need to understand what God made humanity fo
         return;
       }
       void handleBibleYearAudioLessonCompleted(day);
-    };
-
-    const dismissAudioAccessCard = () => {
-      setBibleYearAudioAccessDismissStateByDay((current) => ({
-        ...current,
-        [day.dayNumber]: "puffing",
-      }));
-      window.setTimeout(() => {
-        setBibleYearAudioAccessDismissStateByDay((current) => ({
-          ...current,
-          [day.dayNumber]: "hidden",
-        }));
-      }, 420);
     };
 
     const getSupportCardExpanded = (key: BibleYearDayCardKey | "scripture" | "discussion") =>
@@ -12530,8 +12662,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 <div className={`grid h-14 w-14 place-items-center rounded-[18px] ${item.done ? "bg-emerald-100 text-emerald-700" : "bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-accent,#2f7fe8)]"}`}>
                   {item.icon}
                 </div>
-                <p className={`mt-5 text-[11px] font-black uppercase tracking-[0.22em] ${item.done ? "text-emerald-700" : "text-[var(--bb-accent,#2f7fe8)]"}`}>{item.eyebrow}</p>
-                <h3 className={`mt-2 text-[18px] font-black leading-tight ${item.done ? "text-emerald-800" : "text-[var(--bb-text-primary,#111827)]"}`}>{item.title}</h3>
+                <h3 className={`mt-5 text-[18px] font-black leading-tight ${item.done ? "text-emerald-800" : "text-[var(--bb-text-primary,#111827)]"}`}>{item.title}</h3>
                 <p className="mt-2 min-h-[88px] text-[15px] font-medium leading-7 text-[var(--bb-text-secondary,#4b5563)]">{item.body}</p>
                 <div className="mt-auto flex items-center justify-between pt-5">
                   {shouldCueUndone ? (
@@ -12579,11 +12710,10 @@ Before we understand redemption, we need to understand what God made humanity fo
                       {item.icon}
                     </span>
                     <div className="min-w-0">
-                      <p className={`text-[10px] font-bold uppercase tracking-[0.24em] ${item.done ? "text-emerald-700" : "text-[var(--bb-text-muted,#6b7280)]"}`}>{item.eyebrow}</p>
                       {item.badge ? (
-                        <p className="mt-1 text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">{item.badge}</p>
+                        <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">{item.badge}</p>
                       ) : null}
-                      <h3 className="mt-1 text-[17px] font-bold leading-tight text-[var(--bb-text-primary,#111827)]">{item.title}</h3>
+                      <h3 className="text-[17px] font-bold leading-tight text-[var(--bb-text-primary,#111827)]">{item.title}</h3>
                       <p className="mt-1 text-[13px] font-medium leading-5 text-[var(--bb-text-secondary,#4b5563)]">{item.body}</p>
                     </div>
                   </div>
@@ -12614,28 +12744,12 @@ Before we understand redemption, we need to understand what God made humanity fo
             );
           })}
         </section>
-        {!isPaidUser && !isOwnerDashboard ? (
-          <button
-            type="button"
-            onClick={() => showBibleYearStudyNotesUpgrade(activeBibleYearDashboardDay?.dayNumber || selectedBibleYearSeriesDay?.dayNumber || null)}
-            className="order-4 flex w-full items-center justify-between gap-3 rounded-[18px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_92%,var(--bb-accent-soft,#eef6ff))] px-4 py-3 text-left shadow-[0_12px_30px_rgba(38,63,99,0.08)] transition hover:border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_36%,var(--bb-card-border,#dbe7f4))] hover:bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_84%,var(--bb-accent-soft,#eef6ff))]"
-            aria-label="Upgrade to unlock background audio, full study notes, and more trivia"
-          >
-            <div className="min-w-0">
-              <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">Premium</p>
-              <p className="mt-1 text-sm font-black leading-5 text-[var(--bb-text-primary,#111827)]">
-                Unlock background audio, full study notes, and more trivia.
-              </p>
-            </div>
-            <span className="shrink-0 text-lg font-black text-[var(--bb-accent,#2f7fe8)]" aria-hidden="true">&gt;</span>
-          </button>
-        ) : null}
       </>
     );
 
     return (
       <section data-bible-year-study-area data-bb-dashboard-tour="study-tasks" className="dashboard-bible-year-study-area grid gap-5">
-        {showCompletionMoment ? renderBibleYearLessonCompleteCard(day, nextBibleYearDay, () => openAdjacentBibleYearDay(nextBibleYearDay)) : (
+        {showCompletionMoment ? renderBibleYearInlineCompletionUpgradeCard(day) : (
           <article className={`order-4 overflow-hidden rounded-[20px] border p-5 text-[var(--bb-text-primary,#111827)] shadow-[0_18px_48px_rgba(38,63,99,0.12),inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-xl sm:p-6 ${
             readingComplete
               ? "border-emerald-300 bg-[linear-gradient(145deg,#f4fff7,#e8f8ee)]"
@@ -12644,16 +12758,6 @@ Before we understand redemption, we need to understand what God made humanity fo
             {freeYoutubeUrl ? (
               <>
                 <div className="relative flex items-start justify-center">
-                  <button
-                    type="button"
-                    onClick={openBibleYearSeriesDashboard}
-                    className="absolute left-0 top-0 grid h-12 w-12 place-items-center rounded-[18px] border border-[var(--bb-card-border,#dbe7f4)] bg-white text-[#10224b] shadow-[0_12px_24px_rgba(38,63,99,0.08)] transition hover:bg-[var(--bb-surface-soft,#f8fbff)]"
-                    aria-label="Back to journey"
-                  >
-                    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M15 18l-6-6 6-6" />
-                    </svg>
-                  </button>
                   <div className="w-full text-center">
                     <div className="mx-auto inline-flex rounded-full bg-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_12%,white)] px-5 py-2 text-[13px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)] shadow-[0_10px_22px_rgba(38,63,99,0.06)]">
                       Day {day.dayNumber}
