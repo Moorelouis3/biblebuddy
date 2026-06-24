@@ -1151,6 +1151,28 @@ function collectSignupTimestampsFromAuthUsers(
     .filter((createdAt) => isWithinAnalyticsWindow(createdAt, startIso, endIso || null));
 }
 
+function collectFirstSignupTimestamps(
+  rows: Array<{ user_id?: string | null; created_at?: string | null; action_type?: string | null }>,
+  startIso: string,
+  endIso?: string | null,
+) {
+  const firstSignupByUser = new Map<string, string>();
+
+  rows.forEach((row) => {
+    const userId = typeof row.user_id === "string" ? row.user_id : null;
+    const createdAt = typeof row.created_at === "string" ? row.created_at : null;
+    if (!userId || !createdAt || row.action_type !== "user_signup") return;
+    const current = firstSignupByUser.get(userId);
+    if (!current || createdAt < current) {
+      firstSignupByUser.set(userId, createdAt);
+    }
+  });
+
+  return Array.from(firstSignupByUser.values()).filter((createdAt) =>
+    isWithinAnalyticsWindow(createdAt, startIso, endIso || null),
+  );
+}
+
 function parseBibleYearDayFromVideoId(videoId: string | null | undefined) {
   if (!videoId) return 0;
   const match = videoId.match(/bible-year-free-day-(\d+)/i);
@@ -3375,14 +3397,6 @@ async function buildOverviewAnalyticsResponse(
       }),
     );
   const validAuthUsers = allAuthUsers.filter((user) => !isOwnerAuthUser(user.id, allAuthSummaryByUserId));
-  const signupSeries = buildSimpleMetricSeries(
-    collectSignupTimestampsFromAuthUsers(validAuthUsers, startIso, endIso),
-    journeyWindow,
-  );
-  const currentSignups = signupSeries.reduce((sum, point) => sum + point.value, 0);
-  const previousSignups = previousRange
-    ? collectSignupTimestampsFromAuthUsers(validAuthUsers, previousRange.startIso, previousRange.endIso).length
-    : 0;
   const { data: allUpgradeActionData } = await adminSupabase
     .from("master_actions")
     .select("user_id, action_label, event_metadata, created_at")
@@ -3427,6 +3441,20 @@ async function buildOverviewAnalyticsResponse(
   if (endIso) masterQuery = masterQuery.lt("created_at", endIso);
   const { data: masterData } = await masterQuery;
   const masterRows = (masterData || []) as MasterActionFunnelRow[];
+  const signupTimestamps = collectFirstSignupTimestamps(masterRows, startIso, endIso);
+  const signupSeries = buildSimpleMetricSeries(
+    signupTimestamps.length ? signupTimestamps : collectSignupTimestampsFromAuthUsers(validAuthUsers, startIso, endIso),
+    journeyWindow,
+  );
+  const currentSignups = signupSeries.reduce((sum, point) => sum + point.value, 0);
+  const previousSignups = previousRange
+    ? (() => {
+        const previousSignupTimestamps = collectFirstSignupTimestamps(masterRows, previousRange.startIso, previousRange.endIso);
+        return previousSignupTimestamps.length
+          ? previousSignupTimestamps.length
+          : collectSignupTimestampsFromAuthUsers(validAuthUsers, previousRange.startIso, previousRange.endIso).length;
+      })()
+    : 0;
   const firstThreeDaysSinceIso = new Date(Date.now() - NEW_USER_FIRST_THREE_DAYS_LOOKBACK_DAYS * 24 * 60 * 60 * 1000).toISOString();
   const { data: firstThreeDaysData } = await adminSupabase
     .from("master_actions")
@@ -3917,12 +3945,20 @@ export async function GET(request: Request) {
   const validSimpleAuthUsers = allAuthUsers.filter((user) => !isOwnerAuthUser(user.id, allAuthSummaryByUserId));
   const paidUpgradeTimestamps = collectFirstPaidUpgradeTimestamps(upgradeRows, journeySinceIso, journeyBeforeIso);
   const proUpgrades = paidUpgradeTimestamps.length;
+  const signupTimestamps = collectFirstSignupTimestamps(masterFunnelRows, journeySinceIso, journeyBeforeIso);
   const signupSeries = buildSimpleMetricSeries(
-    collectSignupTimestampsFromAuthUsers(validSimpleAuthUsers, journeySinceIso, journeyBeforeIso),
+    signupTimestamps.length
+      ? signupTimestamps
+      : collectSignupTimestampsFromAuthUsers(validSimpleAuthUsers, journeySinceIso, journeyBeforeIso),
     journeyWindow,
   );
   const previousSignups = previousRange
-    ? collectSignupTimestampsFromAuthUsers(validSimpleAuthUsers, previousRange.startIso, previousRange.endIso).length
+    ? (() => {
+        const previousSignupTimestamps = collectFirstSignupTimestamps(masterFunnelRows, previousRange.startIso, previousRange.endIso);
+        return previousSignupTimestamps.length
+          ? previousSignupTimestamps.length
+          : collectSignupTimestampsFromAuthUsers(validSimpleAuthUsers, previousRange.startIso, previousRange.endIso).length;
+      })()
     : 0;
   const upgradeSeries = buildSimpleMetricSeries(
     paidUpgradeTimestamps,
