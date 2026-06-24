@@ -1,4 +1,4 @@
-import { GENESIS_11_20_PERSONAL_SECTIONS } from "./genesisElevenToTwentyPersonalNotes";
+﻿import { GENESIS_11_20_PERSONAL_SECTIONS } from "./genesisElevenToTwentyPersonalNotes";
 import { GENESIS_21_30_PERSONAL_SECTIONS } from "./genesisTwentyOneToThirtyPersonalNotes";
 import { GENESIS_31_40_PERSONAL_SECTIONS } from "./genesisThirtyOneToFortyPersonalNotes";
 import { GENESIS_41_50_PERSONAL_SECTIONS } from "./genesisFortyOneToFiftyPersonalNotes";
@@ -964,157 +964,7 @@ That is mercy moving ahead of judgment.`,
 ⏳ A long life is still not enough without God's mercy.
 🛟 Before judgment comes, God is already preparing preservation.
 This section helps us read Noah correctly. He is not just a boat builder; he is introduced as hope in a world that needs comfort.`,
-    }),
-    makeGenesisStudySection({
-      chapter: 7,
-      startVerse: 1,
-      endVerse: 10,
-      reference: "Genesis 7:1-10",
-      title: "Come Into The Ark",
-      icon: "🚪",
-      summary: "God calls Noah, his family, and the animals into the ark before the flood begins.",
-      what: `Genesis 7 begins with God calling Noah into the ark. The ark has been built, the warning has been given, and now the place of refuge must be entered.
-🚪 God says "come," which makes the ark feel like an invitation into safety.
-👨‍👩‍👦 Noah's household enters with him, showing his obedience affects more than himself.
-🐾 Animals are gathered and preserved according to God's command.
-⏳ Seven days pass before the flood comes, creating a waiting space between obedience and visible judgment.
-🌧️ The rain has not fallen yet, but Noah enters because God spoke.
-This section teaches that refuge must be received. The ark is available, but Noah must step inside the place God provided.`,
-      phrases: [
-        `🚪 Come Into The Ark
-The wording feels personal. God is not only saying "go"; He is calling Noah into refuge.
-The ark is not Noah's escape plan. It is God's provided shelter.
-That makes the invitation both gracious and urgent.`,
-        `🐾 Clean And Unclean
-Clean and unclean animals appear before the law of Moses, which surprises many readers.
-This shows that some worship categories already existed in some form.
-The clean animals will matter after the flood when Noah offers sacrifice.`,
-        `⏳ Seven Days
-Noah enters the ark, and then there is a waiting period before the flood begins.
-That waiting must have felt strange: inside the ark, door closing soon, no rain yet.
-Faith often includes waiting after obedience but before fulfillment.`,
-      ],
-      truths: [
-        `🚪 God's refuge must be entered.
-The ark was built, but Noah still had to come in.
-Hearing about rescue is not the same as receiving it.
-Faith responds to God's invitation.`,
-        `👨‍👩‍👦 Obedience can shelter others.
-Noah's household comes with him.
-One person's faithfulness can bless more than one life.
-Genesis shows family preservation tied to Noah's obedience.`,
-        `⏳ Waiting is part of faith.
-Noah enters before the flood begins.
-He waits inside what God provided before the evidence appears outside.
-Trust often has a waiting room.`,
-      ],
-      why: `Genesis 7:1-10 matters because it moves from building refuge to entering refuge. Noah does not only believe the ark matters; he steps inside.
-🚪 God's invitation into safety should be taken seriously.
-⏳ Waiting after obedience does not mean obedience was wrong.
-👨‍👩‍👦 Faithfulness can affect the people around you.
-🐾 God preserves more life than Noah alone.
-This section reminds us that God's warnings are not meant to scare people for no reason. They are meant to move people into the refuge He provides.`,
-    }),
-    makeGenesisStudySection({
-      chapter: 7,
-      startVerse: 11,
-      endVerse: 16,
-      reference: "Genesis 7:11-16",
-      title: "The Flood Begins",
-      icon: "🌧️",
-      summary: "The waters break open, Noah enters with the living creatures, and the Lord shuts him in.",
-      what: `The flood begins with water from below and above. Genesis describes the fountains of the deep breaking open and the windows of heaven opening.
-🌊 The creation boundaries that held back the waters now give way.
-🌧️ Rain falls for forty days and forty nights.
-🐾 Noah, his family, and the creatures enter the ark as God commanded.
-🚪 The Lord shuts Noah in, securing the place of refuge.
-⚖️ The time for warning has become the time of judgment.
-This is one of the most sobering moments in Genesis. The same God who patiently gave instruction now closes the door, and the flood begins.`,
-      phrases: [
-        `🌊 Fountains Of The Great Deep
-This phrase points to waters bursting from below, not only rain from above.
-Genesis wants us to feel the flood as a cosmic undoing, like the ordered world is being overwhelmed.
-The waters that God ordered in creation now become instruments of judgment.`,
-        `🌧️ Windows Of Heaven
-The rain is described as heaven opening. Water comes from above as well as below.
-This makes the flood feel total and terrifying.
-The whole created order is involved in the judgment scene.`,
-        `🚪 The Lord Shut Him In
-This line is both tender and serious. God Himself secures Noah inside the ark.
-It is tender because Noah is protected. It is serious because the door is closed.
-The time for entering has ended, and judgment has begun.`,
-      ],
-      truths: [
-        `⚖️ God's warnings are serious.
-The flood begins after long warning and preparation.
-Genesis teaches that God's patience should not be mistaken for empty talk.
-When God speaks, His word stands.`,
-        `🛟 God secures His refuge.
-The Lord shuts Noah in.
-Noah is not left to hold the door closed himself.
-The safety of the ark rests on God's action.`,
-        `🌊 Judgment can look like creation being undone.
-Genesis 1 ordered the waters for life.
-Genesis 7 shows waters overwhelming a corrupt world.
-Sin attacks creation's purpose, and judgment reveals the seriousness of that damage.`,
-      ],
-      why: `Genesis 7:11-16 matters because it shows the moment warning becomes reality. This is not a cute boat scene; it is judgment and rescue happening at the same time.
-🌧️ God's word about judgment should be taken seriously.
-🚪 There is mercy in being shut inside God's refuge.
-🌊 Sin can bring creation-level consequences.
-🐾 God remembers living creatures even in judgment.
-This section teaches holy seriousness. The door that protects Noah also marks the end of delay.`,
-    }),
-    makeGenesisStudySection({
-      chapter: 7,
-      startVerse: 17,
-      endVerse: 24,
-      reference: "Genesis 7:17-24",
-      title: "The Waters Prevail",
-      icon: "🌊",
-      summary: "The waters rise over the earth, judge life outside the ark, and carry the ark above the flood.",
-      what: `Genesis 7 ends with the waters prevailing over the earth. The language is heavy because the flood is judgment, not background scenery.
-🌊 The waters rise and cover even the mountains.
-🛟 The same waters that judge the world lift the ark.
-⚖️ Life outside the ark dies, showing that God's judgment is real.
-🐾 Life inside the ark is preserved because God provided refuge.
-⏳ The waters prevail for 150 days, so this rescue includes a long season of waiting.
-This section is hard to read, but it matters. Genesis shows that God judges corruption seriously while also preserving life through the refuge He commanded.`,
-      phrases: [
-        `🌊 The Waters Prevailed
-The repeated idea of prevailing shows the flood's strength. The waters dominate the landscape.
-Genesis wants the reader to feel that this is not a small local inconvenience in the story.
-It is a judgment scene where the corrupt world is overwhelmed.`,
-        `🛟 The Ark Went Upon The Face Of The Waters
-The waters destroy outside the ark, but they carry the ark.
-That contrast is one of the deepest images in the flood story.
-The difference is not the water; the difference is being inside the refuge God provided.`,
-        `⚖️ All Flesh Died
-This is the hardest phrase in the chapter. Genesis does not soften the reality of judgment.
-The Bible wants us to understand that violence and corruption are not light things.
-Judgment is terrible because sin has become terrible.`,
-      ],
-      truths: [
-        `⚖️ God does not treat evil as harmless.
-The flood is a severe judgment on severe corruption.
-Genesis will not let us make sin small.
-Violence, corruption, and rebellion matter to God.`,
-        `🛟 Refuge changes the meaning of the waters.
-Outside the ark, the waters judge.
-Inside the ark, the waters lift.
-God's provided refuge is the difference between destruction and preservation.`,
-        `⏳ Rescue can include waiting.
-The waters prevail for many days.
-Noah is saved, but he is not instantly settled on dry ground.
-Being preserved by God can still involve patience.`,
-      ],
-      why: `Genesis 7:17-24 matters because it makes us take the flood seriously. This is judgment, but it is also preservation.
-⚖️ Evil is not ignored by God.
-🛟 Safety is found inside what God provides.
-⏳ Being saved does not always mean the waiting ends quickly.
-🌱 God preserves life so the story can continue.
-The flood is heavy, but it is not the end. The ark remains, and that means mercy is still floating above the judgment.`,
-    }),
+    }),
     makeGenesisStudySection({
       chapter: 8,
       startVerse: 1,
@@ -5274,55 +5124,6 @@ const DAY_THREE_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; t
       "🏷️ Names can carry theology.\nNoah's name is not just a label. It carries hope, longing, and interpretation.\nBiblical names often help us understand what a parent believes, fears, or hopes God will do. Here, Noah's name tells us the world is weary and looking for comfort.",
       "⚰️ Even the longest life cannot solve death.\nMethuselah's life is incredibly long, but it still ends. Genesis will not let age become salvation.\nThat is a sobering truth. Humanity needs more than extra years. We need deliverance from the death pattern itself.",
       "🌅 God keeps the promise moving through weary people.\nLamech is tired, but he still speaks hope over his son. The promised line does not move through perfect people with easy lives.\nIt moves through families who feel the curse and still look for God's mercy. That is part of the beauty of Genesis.",
-    ],
-  },
-  "Genesis 7:1-10": {
-    phrases: [
-      "🚪 Come Into The Ark\nGod does not merely tell Noah to build the ark; He calls him into it. The language feels personal and protective. Noah must enter the refuge God provided.\nThat matters because knowing about rescue is not the same as being inside it. The ark only saves those who actually come in.",
-      "👀 I Have Seen Your Righteousness\nGod sees Noah's life in the middle of his generation. This does not mean Noah earned salvation by perfection. It means God recognizes Noah's faithful direction and covenant loyalty.\nThis phrase is encouraging because hidden faithfulness is not hidden from God. Noah may look strange to his world, but God sees clearly.",
-      "🕊️ Clean Animals\nClean and unclean categories appear before the law of Moses. That surprises many readers. It shows that some kind of worship distinction was already understood in the story world of Genesis.\nThe extra clean animals will matter after the flood because Noah offers sacrifice. God is preserving not only animals for survival, but also the possibility of worship.",
-      "⏳ Seven Days\nGod gives a final seven-day window before the flood begins. This pause creates tension, but it also shows patience. Judgment is announced, the ark is ready, and still there is a short waiting period.\nIn Scripture, waiting periods often test trust. Noah has obeyed, but he still has to wait for God's word to happen exactly when God says.",
-      "✅ Noah Did All That Yahweh Commanded\nThis repeated statement is important. Noah's obedience is not partial or selective. He does what God commands.\nThe repetition teaches that faithfulness is not flashy here. It is steady obedience to God's word in a world that does not share Noah's urgency.",
-    ],
-    truths: [
-      "🚪 Rescue must be entered.\nThe ark exists, but Noah still has to go in. God's provision calls for response.\nThis truth is simple but important. It is possible to know the right facts about God's rescue and still need to personally entrust yourself to what God has provided.",
-      "👁️ God sees faithfulness in dark times.\nNoah's generation is corrupt, but God sees Noah. The faithful life is not lost in the crowd.\nThat matters for readers who feel outnumbered. God is not confused by the majority. He sees the person walking with Him.",
-      "🕯️ Worship is preserved through judgment.\nThe clean animals point forward to sacrifice after the flood. God is not only preserving biological life; He is preserving worship.\nThat shows the heart of the story. Humanity needs more than survival. Humanity needs restored relationship with God.",
-      "⏳ God's patience does not mean His warning is empty.\nThe seven days show patience, but the flood still comes. Delay is not denial.\nThis is a serious truth. God's mercy gives space, but His word remains true. Waiting should lead to repentance and trust, not carelessness.",
-      "✅ Obedience is often repeated before it is rewarded.\nNoah obeys, then waits, then obeys again. The visible result comes later.\nGenesis teaches that faithfulness often looks like doing the next commanded thing before the outcome arrives.",
-    ],
-  },
-  "Genesis 7:11-16": {
-    phrases: [
-      "📅 The Six Hundredth Year Of Noah's Life\nGenesis gives a specific time marker, which grounds the flood in the flow of Noah's life. This is not written like a vague myth floating outside history. The writer wants the reader to feel the moment arriving.\nThe date also slows us down. After years of warning and preparation, there is a real day when the door closes and the waters begin.",
-      "🌊 Fountains Of The Great Deep\nThe waters come from below as well as above. This sounds like creation being undone, because in Genesis 1 God ordered the waters so dry land could appear. Now those boundaries are breaking open.\nThat is an important aha moment. The flood is not just bad weather. It is a judgment scene where the ordered world is overwhelmed by the waters God once restrained.",
-      "🌧️ Windows Of Heaven\nThe waters also pour from above. Ancient readers pictured the heavens as holding waters that God could restrain or release. Genesis uses that image to show God ruling over the whole created order.\nThe point is not that nature is out of control. The point is that the Creator is in control, and creation itself responds to His judgment.",
-      "⏱️ Forty Days And Forty Nights\nForty often becomes a period of testing, judgment, or preparation in Scripture. Moses, Israel, Elijah, and Jesus are all connected with forty-day or forty-year periods later in the Bible.\nHere, the number marks the intensity and completeness of the flood rains. It is long enough to show this is not a passing storm; it is a world-changing judgment.",
-      "🐾 Two By Two\nThe animals entering the ark show God's concern for preserving creaturely life. The flood is judgment, but not annihilation of creation's future. God carries life through the waters.\nThis detail helps us remember that the ark is not only about Noah's family. It is about God's commitment to continue the created world after judgment.",
-      "🔒 Yahweh Shut Him In\nThis is one of the most powerful lines in the flood story. Noah enters, but God shuts the door. Safety is finally sealed by the Lord Himself.\nThat means Noah's security rests on God's action, not merely Noah's construction skill. The same God who warned him now protects him inside the refuge.",
-    ],
-    truths: [
-      "🌊 Judgment can look like creation unraveling.\nThe flood waters reverse the ordered boundaries of Genesis 1. The deep breaks open, the heavens pour down, and dry land disappears.\nThis teaches that sin is anti-creation. When humanity fills the world with corruption, judgment shows how serious it is to rebel against the Creator's order.",
-      "👑 God rules over the waters.\nThe deep and the heavens are not independent powers. God commands and restrains them.\nThat matters because ancient people often feared chaotic waters. Genesis says even the most terrifying waters are still under the authority of Yahweh.",
-      "🔒 God's protection is personal.\nThe Lord shuts Noah in. That is a tender detail in a terrifying scene.\nNoah obeyed by entering, but God secured the door. The passage holds human obedience and divine protection together.",
-      "🐾 God's mercy includes creation.\nAnimals are preserved in the ark. God is not throwing creation away.\nThe flood judges corruption, but God's rescue carries forward life, blessing, and the possibility of a renewed world after the waters.",
-      "⏳ A warning can become a day on the calendar.\nFor a long time, the flood was a future warning. Then Genesis gives the exact moment it began.\nThis truth sobers the reader. God's words are not vague religious ideas. What He says will happen truly happens.",
-    ],
-  },
-  "Genesis 7:17-24": {
-    phrases: [
-      "📈 The Waters Prevailed\nThis phrase is repeated to show the overwhelming power of the flood. The waters rise, increase, and dominate the landscape. Human strength, buildings, and normal life cannot stand against them.\nGenesis wants the reader to feel the seriousness of judgment. The world that ignored God is now covered by waters no one can control.",
-      "⛰️ Covered All The High Mountains\nThe highest places are covered, which means there is no natural refuge outside the ark. Mountains often feel like places of safety, but here even they disappear beneath the waters.\nThat detail teaches that when God's judgment comes, human escape routes fail. Safety is not found in height, strength, or strategy, but in the refuge God provided.",
-      "🫁 All Flesh Died\nThis is intentionally sobering. The flood is about real death, not just dramatic scenery. Genesis names humans, animals, creeping things, and birds to show the scope of the judgment.\nThe phrase should not be softened into a cartoon. It teaches that sin is deadly, and a world filled with violence brings devastation to the whole created order.",
-      "🛶 Only Noah Was Left\nThis phrase highlights preservation by grace. Noah survives because he is in the ark God commanded and God sealed. The point is not that Noah is naturally stronger than everyone else.\nThe wording also creates a remnant theme that will appear again in the Bible. God preserves a people through judgment so His promise can continue.",
-      "📆 One Hundred Fifty Days\nThe waters prevail for a long time. Noah is rescued, but he is not immediately released. Salvation from judgment includes a season of waiting inside the ark.\nThat is a helpful detail for real life. Being safe in God's will does not always mean the situation changes quickly. Sometimes rescue has a waiting room.",
-    ],
-    truths: [
-      "⚖️ Sin's judgment is severe.\nGenesis 7 does not let us treat evil lightly. The flood shows that corruption and violence matter to God.\nThis is uncomfortable, but it is part of understanding God's holiness. A good God cannot be endlessly indifferent to a world destroying itself.",
-      "🛟 The ark is the only refuge in the passage.\nThe mountains are covered, the land disappears, and every other place fails. The ark alone carries life through judgment.\nThat makes the ark a powerful picture of God-provided rescue. Safety comes from trusting the refuge God gives, not inventing our own.",
-      "🌱 God preserves a remnant.\nOnly Noah and those with him remain. That sounds small, but it is enough for God to continue the story.\nThe Bible often works through a preserved remnant. God does not need the majority to keep His promise alive.",
-      "⏳ Waiting can continue after rescue begins.\nNoah is safe, but the waters remain for 150 days. Rescue does not instantly become normal life.\nThis truth helps readers understand seasons where God has protected them, but they are still waiting for the next step. Waiting inside the ark is still part of faith.",
-      "🕊️ Judgment and mercy stand together.\nGenesis 7 is severe, but it is not hopeless. The same flood that judges corruption also carries the ark.\nThis is the tension of the passage. God is holy enough to judge evil and merciful enough to preserve life for a new beginning.",
     ],
   },
 };
@@ -18193,539 +17994,7 @@ That means the ark carries the future of creation inside it.
 🌍 God has not given up on creation`,
         ],
       ],
-    }),
-    makePersonalGenesisPhraseSection({
-      chapter: 7,
-      startVerse: 1,
-      endVerse: 10,
-      reference: "Genesis 7:1-10",
-      title: "Noah Enters The Ark",
-      icon: "🚪",
-      phrases: [
-        [
-          "🚪 Come Thou And All Thy House",
-          `God does not merely tell Noah to build the ark.
-
-He calls him into it.
-
-The language feels personal and protective.
-
-Noah must enter the refuge God provided.
-
-🚪 The ark is ready
-👨‍👩‍👧‍👦 Noah's household enters
-🙏 God calls them in
-
-This phrase matters because knowing about rescue is not the same as entering it.
-
-The ark only protects those who come inside.`,
-        ],
-        [
-          "👀 Thee Have I Seen Righteous",
-          `God sees Noah's life in the middle of his generation.
-
-This does not mean Noah earned rescue by perfection.
-
-It means God recognizes Noah's faithful direction.
-
-Noah's world is corrupt, but Noah is not invisible to God.
-
-👀 God sees
-🚶 Noah walks differently
-⚖️ Righteousness stands out
-
-This phrase matters because hidden faithfulness is not hidden from God.`,
-        ],
-        [
-          "🕊️ Clean Beasts",
-          `Clean and unclean animals are mentioned before the law of Moses.
-
-That surprises many readers.
-
-It shows that some kind of worship distinction already exists in the story.
-
-The extra clean animals will matter after the flood because Noah offers sacrifice.
-
-🕊️ Clean animals
-🔥 Future worship
-🙏 Life preserved for sacrifice
-
-This phrase matters because God is preserving more than survival.
-
-He is preserving worship.`,
-        ],
-        [
-          "7️⃣ By Sevens",
-          `God tells Noah to take clean animals by sevens.
-
-This detail can feel strange until we remember what happens after the flood.
-
-Noah will offer sacrifice.
-
-If only one pair of clean animals entered the ark, sacrifice would threaten the continuation of that animal kind.
-
-The extra clean animals show that God is already preparing for worship after rescue.
-
-7️⃣ Extra clean animals
-🔥 Future sacrifice
-🙏 Worship preserved`,
-        ],
-        [
-          "♂️ The Male And His Female",
-          `This phrase shows how God preserves future life.
-
-The animals enter as male and female so life can continue after the flood.
-
-Genesis is connecting back to creation, where living creatures multiply according to their kinds.
-
-Judgment is coming, but God is still protecting the possibility of a future.
-
-♂️ Male
-♀️ Female
-🌱 Life after judgment`,
-        ],
-        [
-          "🌱 To Keep Seed Alive",
-          `This phrase explains why the animals enter the ark.
-
-God is not only saving Noah's household.
-
-He is preserving the future of living creatures on the earth.
-
-The word seed points to continuation, future life, and the ability for creation to keep multiplying after the flood.
-
-Judgment is coming, but God is not giving up on the world He made.
-
-Inside the ark, God is carrying the future through the waters.
-
-That makes the ark a place of both rescue and new beginning.`,
-        ],
-        [
-          "👴 Noah Was Six Hundred Years Old",
-          `This phrase gives the flood a place in Noah's real life.
-
-The story is not floating in vague time.
-
-Genesis marks Noah's age when the flood comes.
-
-That helps readers feel the long obedience behind the moment.
-
-Noah has lived many years before this day arrives.
-
-God's warning has now become a dated event in his life.
-
-👴 Noah's age
-📅 A real moment
-⚠️ Warning fulfilled`,
-        ],
-        [
-          "⏳ Yet Seven Days",
-          `God gives a final seven-day window before the flood begins.
-
-This pause creates tension.
-
-The ark is ready.
-
-The warning has been given.
-
-But there is still a short waiting period.
-
-⏳ Final delay
-⚠️ Warning remains
-🌧️ Judgment is near
-
-This phrase matters because God's patience does not mean His warning is empty.
-
-Delay is not denial.`,
-        ],
-        [
-          "✅ Noah Did According Unto All",
-          `The text repeats Noah's obedience.
-
-That repetition matters.
-
-Noah does not obey only the parts that make sense to him.
-
-He follows God's command.
-
-✅ He enters
-🐾 He brings the animals
-⏳ He waits
-
-This phrase matters because biblical faith is steady.
-
-Noah keeps obeying even before the visible outcome arrives.`,
-        ],
-        [
-          "🌧️ I Will Cause It To Rain",
-          `God says He will cause the rain to come.
-
-The flood is not presented as nature acting on its own apart from God.
-
-Creation belongs to the Creator.
-
-The waters that were separated and ordered in Genesis 1 can be released in judgment here.
-
-This phrase helps readers connect creation and flood.
-
-The same God who rules the waters in the beginning still rules the waters now.
-
-🌧️ Rain comes
-🌊 Waters rise
-👑 God rules creation`,
-        ],
-      ],
-    }),
-    makePersonalGenesisPhraseSection({
-      chapter: 7,
-      startVerse: 11,
-      endVerse: 16,
-      reference: "Genesis 7:11-16",
-      title: "The Flood Begins",
-      icon: "🌊",
-      phrases: [
-        [
-          "📅 The Six Hundredth Year",
-          `Genesis gives a specific time marker.
-
-That makes the flood feel like an event in Noah's life, not a vague story floating outside time.
-
-After years of warning and preparation, there is a real day when the waters begin.
-
-📅 A real moment
-⏳ A warning fulfilled
-🌧️ Judgment begins
-
-This phrase matters because God's words eventually become days on the calendar.
-
-What He says will happen truly happens.`,
-        ],
-        [
-          "🗓️ The Second Month, The Seventeenth Day",
-          `Genesis gives the flood a specific date.
-
-That detail makes the story feel concrete.
-
-The flood is not treated like a vague myth or a general memory of hard times.
-
-It is marked as an event that arrives on a particular day in Noah's life.
-
-For Bible readers, dates like this slow the story down.
-
-They tell us the warning became reality in time and history.
-
-🗓️ Specific date
-📖 Serious record
-⚠️ God's word arrives`,
-        ],
-        [
-          "🌊 Fountains Of The Great Deep",
-          `The waters come from below as well as above.
-
-This sounds like creation being undone.
-
-In Genesis 1, God ordered the waters so dry land could appear.
-
-Now those boundaries break open.
-
-🌊 Waters from below
-🌧️ Waters from above
-🌍 Dry land overwhelmed
-
-This phrase matters because the flood is not just bad weather.
-
-It is judgment that makes the ordered world feel undone.`,
-        ],
-        [
-          "🌧️ Windows Of Heaven",
-          `The waters also pour from above.
-
-Ancient readers pictured the heavens as holding waters that God could restrain or release.
-
-Genesis uses that picture to show God ruling over creation.
-
-🌧️ Rain falls
-☁️ Heaven opens
-👑 God rules the waters
-
-This phrase matters because nature is not out of control.
-
-The Creator is in control, even over the terrifying waters.`,
-        ],
-        [
-          "👨‍👩‍👧‍👦 Noah, And Shem, And Ham, And Japheth",
-          `Genesis names Noah's family as they enter.
-
-This matters because the ark is carrying the future human family.
-
-Noah is not preserved alone.
-
-His sons and their wives are also brought through the waters.
-
-The names prepare readers for the world after the flood, where the nations will come through Noah's sons.
-
-👨‍👩‍👧‍👦 A household enters
-🌍 Future nations
-🛶 Life preserved`,
-        ],
-        [
-          "🐾 Every Beast After His Kind",
-          `This phrase reaches back to Genesis 1.
-
-God created living creatures according to their kinds.
-
-Now He preserves them according to their kinds.
-
-The flood judges corruption, but it does not cancel God's care for ordered life.
-
-The ark carries creation's future through the waters.
-
-🐾 Kinds preserved
-🌱 Creation continues
-🛶 The ark carries life`,
-        ],
-        [
-          "⏱️ Forty Days And Forty Nights",
-          `Forty becomes an important number in Scripture.
-
-It often marks testing, judgment, or preparation.
-
-Here, it shows the flood is not a passing storm.
-
-It is a world-changing judgment.
-
-⏱️ Forty days
-🌧️ Continuous rain
-⚖️ Serious judgment
-
-This phrase matters because Genesis wants the reader to feel the weight of what is happening.`,
-        ],
-        [
-          "🐾 Two And Two",
-          `The animals entering the ark show God's concern for preserving creaturely life.
-
-The flood is judgment, but it is not the end of creation's future.
-
-God carries life through the waters.
-
-🐾 Animals enter
-🛶 Life is preserved
-🌱 A future remains
-
-This phrase matters because the ark is about more than Noah's family.
-
-It is about God's commitment to continue the created world.`,
-        ],
-        [
-          "🔒 The Lord Shut Him In",
-          `This is one of the strongest lines in the flood story.
-
-Noah enters the ark, but God shuts the door.
-
-Safety is finally sealed by the Lord Himself.
-
-Noah's security rests on God's action.
-
-🔒 God shuts the door
-🛶 The refuge is sealed
-🌊 Judgment stays outside
-
-This phrase matters because obedience and divine protection stand together.
-
-Noah enters by faith, and God secures him inside.`,
-        ],
-        [
-          "📅 The Selfsame Day",
-          `This phrase means everything happened on that very day.
-
-Genesis is slowing down to mark the exact moment when warning becomes reality.
-
-Noah, his family, and the animals enter the ark, and the flood begins according to God's word.
-
-The phrase gives the story a feeling of certainty.
-
-God had warned, Noah had prepared, and now the day arrives.
-
-It reminds readers that God's patience may feel long, but His word is never empty.
-
-📅 A real day
-⚠️ Warning fulfilled
-🛶 Refuge entered`,
-        ],
-        [
-          "🐾 After His Kind",
-          `This phrase reaches back to Genesis 1.
-
-God created living creatures according to their kinds, and now He preserves them according to their kinds.
-
-The flood is judgment, but it is not the cancellation of creation.
-
-God is carrying the created order through the waters.
-
-Fish, birds, animals, and creeping things are still part of the world God intends to continue.
-
-This phrase shows God's care for ordered life even in judgment.
-
-🐾 Kinds preserved
-🌍 Creation continues
-🛶 Life carried through`,
-        ],
-      ],
-    }),
-    makePersonalGenesisPhraseSection({
-      chapter: 7,
-      startVerse: 17,
-      endVerse: 24,
-      reference: "Genesis 7:17-24",
-      title: "The Waters Prevail",
-      icon: "⛰️",
-      phrases: [
-        [
-          "📈 The Waters Increased",
-          `The waters rise higher and higher.
-
-Genesis repeats this idea so the reader feels the overwhelming power of the flood.
-
-Human strength cannot stop it.
-
-Human buildings cannot escape it.
-
-📈 Waters rise
-🌊 The earth is covered
-⚖️ Judgment overwhelms the old world
-
-This phrase matters because the flood is meant to feel serious.
-
-The world that ignored God is now under waters no one can control.`,
-        ],
-        [
-          "🛶 The Ark Went Upon The Face Of The Waters",
-          `The same waters that judge the world carry the ark.
-
-That is a powerful picture.
-
-Judgment is real, but God's refuge floats above it.
-
-Noah is not safe because the waters are gentle.
-
-He is safe because God provided the ark.
-
-🛶 Refuge
-🌊 Waters below
-🙏 Life carried through judgment
-
-This phrase matters because God's rescue does not deny judgment.
-
-It brings people safely through it.`,
-        ],
-        [
-          "⛰️ All The High Hills Were Covered",
-          `Even the high places disappear under the water.
-
-Mountains and hills usually feel like places of safety.
-
-But in the flood, no natural refuge is high enough.
-
-⛰️ Hills covered
-🌍 Land disappears
-🚪 Only the ark remains safe
-
-This phrase matters because human escape routes fail before God's judgment.
-
-Safety is found in the refuge God gives, not in height, strength, or strategy.`,
-        ],
-        [
-          "🩸 All Flesh Died",
-          `This phrase is intentionally heavy.
-
-The flood is not a cartoon.
-
-Genesis is describing real judgment and real death.
-
-Humans, animals, creeping things, and birds are named to show the scope.
-
-🩸 Life lost
-⚖️ Judgment on violence and corruption
-🌍 Creation affected by human sin
-
-This phrase matters because sin is deadly.
-
-Genesis does not let readers treat evil lightly.`,
-        ],
-        [
-          "🕊️ Noah Only Remained Alive",
-          `Noah survives because he is inside the ark God commanded.
-
-The point is not that Noah is naturally stronger than everyone else.
-
-He is preserved by grace through obedience.
-
-🕊️ Noah remains
-👨‍👩‍👧‍👦 His household remains
-🛶 The ark carries the future
-
-This phrase matters because the Bible often preserves a remnant through judgment.
-
-God can keep His promise alive through a small group.`,
-        ],
-        [
-          "📅 An Hundred And Fifty Days",
-          `The waters prevail for a long time.
-
-Noah is safe, but he is not immediately released.
-
-Rescue begins before normal life returns.
-
-That is important.
-
-📅 Long waiting
-🛶 Safe inside
-🌊 Waters still present
-
-This phrase matters because being preserved by God does not always mean the situation changes quickly.
-
-Sometimes rescue includes waiting.`,
-        ],
-        [
-          "🌊 Fifteen Cubits Upward",
-          `This measurement shows how completely the waters covered the high places.
-
-Genesis is making clear that the flood was not a small inconvenience in the story.
-
-The waters rose above the mountains, and no ordinary place of safety remained.
-
-That matters because hills and mountains often feel like places of escape.
-
-Here, even the highest places cannot save anyone.
-
-Only the ark God provided carries life through judgment.
-
-🌊 Waters rise
-⛰️ High places covered
-🛶 Only God's refuge remains`,
-        ],
-        [
-          "🫁 The Breath Of Life",
-          `This phrase reaches back to the creation of life.
-
-In Genesis 2, God breathed life into the man.
-
-Here, creatures with the breath of life die in the flood.
-
-That connection makes the scene heavy.
-
-The life God gave is now being lost because the world has become filled with corruption and violence.
-
-Genesis wants readers to feel that sin is not small.
-
-It damages the world God filled with breath and life.
-
-🫁 Breath
-🌍 Living creatures
-💔 Sin brings death`,
-        ],
-      ],
-    }),
+    }),
     makePersonalGenesisPhraseSection({
       chapter: 8,
       startVerse: 1,
@@ -24314,6 +23583,1039 @@ applyPersonalGenesisTwoStudySections();
 applyDayOneQualityReviewUpgrade();
 applyPersonalGenesisThreeStudySections();
 applyPersonalGenesisFourThroughTenStudySections();
+
+function replaceGenesisSevenPhraseSections() {
+  const replacementSections = [
+    makePersonalGenesisPhraseSection({
+      chapter: 7,
+      startVerse: 1,
+      endVerse: 3,
+      reference: "Genesis 7:1-3",
+      title: "Entering The Ark",
+      icon: "🚢",
+      phrases: [
+        [
+          "🗣️ And The Lord Said Unto Noah",
+          `God speaks directly to Noah once again.
+
+Genesis 6 ended with Noah obeying everything God commanded him to do.
+
+Now God gives the next set of instructions as the flood draws near.
+
+The focus shifts from building the ark to entering it.
+
+🗣️ God speaks
+👂 Noah receives instructions
+🚢 The ark is ready
+🌊 The flood is approaching`,
+        ],
+        [
+          "🏠 Come Thou And All Thy House Into The Ark",
+          `The word “house” here means household or family.
+
+God is not talking about Noah’s possessions.
+
+He is talking about the people who belong to Noah’s family.
+
+This includes Noah, his wife, his three sons, and their wives.
+
+Eight people will enter the ark together.
+
+🏠 House means household
+👨 Noah
+👩 Noah’s wife
+👨‍👩‍👦‍👦 Noah’s family enters the ark`,
+        ],
+        [
+          "🙏 For Thee Have I Seen Righteous",
+          `The word “righteous” means upright, just, or faithful before God.
+
+This does not mean Noah was sinless.
+
+Rather, Noah trusted God and lived in a way that honored Him.
+
+God sees Noah’s faith and obedience.
+
+🙏 Righteous means upright
+👀 God sees Noah’s faithfulness
+❤️ Noah trusted God
+📖 God recognizes his obedience`,
+        ],
+        [
+          "🌍 Before Me In This Generation",
+          `The word “generation” refers to the people living during Noah’s lifetime.
+
+God has already described the earth as being filled with corruption and violence.
+
+Among the people of his day, Noah stood apart.
+
+He was not perfect, but he was living differently from the world around him.
+
+🌍 Refers to Noah’s generation
+⚠️ The world is corrupt
+👀 God sees the difference
+🙏 Noah stands apart`,
+        ],
+        [
+          "🐑 Of Every Clean Beast Thou Shalt Take",
+          `God now gives more detailed instructions about the animals.
+
+A clean animal was an animal acceptable for sacrifice and worship.
+
+Examples later include sheep, goats, cattle, oxen, and certain birds.
+
+Even though Moses had not yet written Leviticus, Noah apparently already understood the difference between clean and unclean animals.
+
+🐑 Clean animals are acceptable for sacrifice
+🐐 Sheep, goats, and cattle
+📖 Noah understood the distinction
+🙏 Worship will continue after the flood`,
+        ],
+        [
+          "7️⃣ By Sevens",
+          `God tells Noah to bring extra clean animals onto the ark.
+
+The most likely reason is that some of these animals will later be used for sacrifice after the flood.
+
+If Noah only brought one pair, sacrificing one would eliminate that animal from the earth.
+
+The extra animals allow both survival and worship.
+
+7️⃣ Extra clean animals
+🙏 Animals available for sacrifice
+🌱 Species continue after the flood
+📖 God is planning ahead`,
+        ],
+        [
+          "👨 The Male And His Female",
+          `God specifies male and female animals.
+
+This ensures reproduction after the flood.
+
+The goal is not merely survival but the continuation of life.
+
+👨 Male
+👩 Female
+🌱 Future generations
+📖 Life continues after the flood`,
+        ],
+        [
+          "🐾 Of Beasts That Are Not Clean By Two",
+          `Unclean animals are brought in pairs rather than by sevens.
+
+Later in Leviticus, examples of unclean animals include pigs, camels, rabbits, and other animals not used for sacrifice.
+
+God only requires one male and one female of these animals because they are being preserved, not prepared for worship.
+
+🐾 Unclean animals come in pairs
+🐖 Pigs and similar animals
+👨 One male
+👩 One female`,
+        ],
+        [
+          "🐦 Of Fowls Also Of The Air By Sevens",
+          `Fowls means birds.
+
+This would include birds such as doves, ravens, pigeons, eagles, hawks, and many others.
+
+Like the clean animals, extra birds are brought onto the ark.
+
+Some birds were later used in sacrifices and offerings, which helps explain why more than one pair was needed.
+
+🐦 Fowls means birds
+🕊️ Doves, ravens, pigeons, and more
+🙏 Extra birds for preservation and sacrifice
+🌱 Life continues after the flood`,
+        ],
+        [
+          "🌱 To Keep Seed Alive Upon The Face Of All The Earth",
+          `The word “seed” here means offspring, descendants, or future generations.
+
+God’s goal is not simply to save individual animals.
+
+His goal is to preserve life so that the earth can be filled again after the flood.
+
+The animals will survive, reproduce, and repopulate the world.
+
+🌱 Seed means offspring
+🦁 Animals will reproduce
+🌍 Life will continue
+🚢 The future is being preserved`,
+        ],
+      ],
+    }),
+    makePersonalGenesisPhraseSection({
+      chapter: 7,
+      startVerse: 4,
+      endVerse: 10,
+      reference: "Genesis 7:4-10",
+      title: "The Flood Begins",
+      icon: "🌧️",
+      phrases: [
+        [
+          "⏳ For Yet Seven Days",
+          `God gives Noah a final countdown before the flood begins.
+
+The ark is complete.
+
+The animals have been gathered.
+
+The time for preparation is almost over.
+
+In seven days, God’s judgment will begin.
+
+⏳ Seven day warning
+🚢 The ark is ready
+⚠️ Judgment is near
+📖 Final preparations`,
+        ],
+        [
+          "🌧️ I Will Cause It To Rain Upon The Earth",
+          `God makes it clear that the coming flood is not a natural accident.
+
+The rain is coming because God is sending it.
+
+This is a direct act of divine judgment upon the earth.
+
+🌧️ God sends the rain
+⚖️ Judgment is coming
+🌍 The flood begins with God
+📖 A direct act of God`,
+        ],
+        [
+          "⏳ Forty Days And Forty Nights",
+          `The number forty becomes an important number throughout the Bible.
+
+It is often connected with testing, preparation, judgment, or a significant period of time.
+
+Examples include:
+
+🌧️ Forty days of rain during the flood
+🏜️ Forty years in the wilderness
+🍞 Moses fasting forty days on Mount Sinai
+✝️ Jesus fasting forty days in the wilderness
+
+The number does not always mean exactly the same thing, but it often marks an important season in God’s plan.
+
+⏳ Forty is a significant biblical number
+🌧️ Forty days of rain
+🏜️ Forty years in the wilderness
+✝️ Jesus fasted forty days`,
+        ],
+        [
+          "🌍 Every Living Substance That I Have Made",
+          `God reminds Noah that He is the Creator.
+
+Everything living ultimately belongs to Him.
+
+The flood is not destroying something outside of God’s authority.
+
+It is affecting a creation that God Himself made.
+
+🌍 God created all life
+👀 Everything belongs to Him
+📖 God is the Creator
+⚖️ God has authority over creation`,
+        ],
+        [
+          "⚖️ Will I Destroy From Off The Face Of The Earth",
+          `God announces the coming judgment.
+
+The phrase “face of the earth” means the surface of the earth where people and animals live.
+
+The flood will remove the corrupt generation that has filled the earth with violence.
+
+⚖️ Judgment is declared
+🌍 Refers to life on the earth
+🌊 The flood is coming
+📖 God’s warning is clear`,
+        ],
+        [
+          "🙌 Noah Did According",
+          `This short phrase highlights Noah’s obedience.
+
+When God spoke, Noah responded.
+
+His faith was shown through action.
+
+🙌 Noah obeyed
+👂 He listened to God
+📖 Faith led to action
+🚢 Noah followed through`,
+        ],
+        [
+          "📖 Unto All That The Lord Commanded Him",
+          `Noah did not partially obey God.
+
+He followed all of God’s instructions.
+
+The ark, the animals, the food, and the preparations were done according to God’s commands.
+
+📖 Noah followed God’s instructions
+🙏 Complete obedience
+🚢 Everything was prepared
+👀 Noah trusted God`,
+        ],
+        [
+          "⏳ Noah Was Six Hundred Years Old",
+          `Genesis 5 ended with Noah being 500 years old when his sons were born.
+
+Now the Bible tells us Noah is 600 years old.
+
+About 100 years have passed since the birth of Shem, Ham, and Japheth.
+
+During that time Noah built the ark and prepared for the flood.
+
+⏳ Noah is now 600 years old
+👨‍👦‍👦 About 100 years later
+🚢 The ark has been built
+📖 Time has passed`,
+        ],
+        [
+          "🌊 When The Flood Of Waters Was Upon The Earth",
+          `The moment God warned about has finally arrived.
+
+The flood is no longer a future event.
+
+The waters are beginning to come upon the earth.
+
+🌊 The flood begins
+⚖️ Judgment arrives
+📖 God’s warning comes true
+🌍 The earth is changing`,
+        ],
+        [
+          "🚢 Noah Went In",
+          `Noah obeys God’s command and enters the ark.
+
+This is an act of faith.
+
+Noah enters before the floodwaters arrive.
+
+He trusts God’s warning and acts upon it.
+
+🚢 Noah enters the ark
+🙏 An act of faith
+👂 Noah obeys God
+⚠️ Judgment is near`,
+        ],
+        [
+          "👨‍👩‍👦‍👦 His Sons, His Wife, And His Sons’ Wives",
+          `The entire family enters the ark together.
+
+These are the same eight people God promised to preserve.
+
+Through them, humanity will continue after the flood.
+
+👨 Noah
+👩 Noah’s wife
+👨‍👦‍👦 His three sons
+👩‍👩‍👦 Their wives`,
+        ],
+        [
+          "🌊 Because Of The Waters Of The Flood",
+          `The reason they enter the ark is because the flood is coming.
+
+Noah is not entering out of fear.
+
+He is entering because he believes God’s warning.
+
+🌊 The flood is approaching
+🙏 Noah believes God
+🚢 The ark provides safety
+📖 Faith produces action`,
+        ],
+        [
+          "🐑 Of Clean Beasts And Of Beasts That Are Not Clean",
+          `The animals arrive exactly as God commanded.
+
+Both clean and unclean animals are included.
+
+Clean animals were acceptable for sacrifice and worship.
+
+Unclean animals were still preserved because they were part of God’s creation.
+
+🐑 Clean animals
+🐾 Unclean animals
+🌍 All kinds are preserved
+📖 God cares for creation`,
+        ],
+        [
+          "🐦 And Of Fowls",
+          `Fowls means birds.
+
+This includes creatures such as doves, ravens, pigeons, eagles, hawks, and many others.
+
+The birds are preserved alongside the land animals.
+
+🐦 Fowls means birds
+🕊️ Doves and ravens
+🦅 Eagles and hawks
+🌍 Bird life is preserved`,
+        ],
+        [
+          "🐛 And Of Every Thing That Creepeth Upon The Earth",
+          `This includes smaller creatures that move along the ground.
+
+God’s preservation extends to all kinds of land life, from the largest animals to the smallest.
+
+🐛 Small creatures included
+🦎 Lizards and reptiles
+🐜 Insects and bugs
+🌍 All creation is represented`,
+        ],
+        [
+          "🐾 There Went In Two And Two Unto Noah Into The Ark",
+          `The animals enter in pairs just as God commanded.
+
+The emphasis is on God’s provision.
+
+Noah does not gather them through his own power.
+
+God brings them to the ark.
+
+🐾 Animals enter in pairs
+🚢 They come into the ark
+🙏 God provides
+📖 God’s plan unfolds`,
+        ],
+        [
+          "👨 The Male And The Female",
+          `Each pair consists of a male and a female.
+
+This allows the animals to reproduce after the flood.
+
+God is preserving future generations of life.
+
+👨 Male
+👩 Female
+🌱 Future reproduction
+🌍 Life continues`,
+        ],
+        [
+          "📖 As God Had Commanded Noah",
+          `The animals enter exactly according to God’s instructions.
+
+This phrase again emphasizes obedience.
+
+Everything is happening according to God’s plan.
+
+📖 God commanded
+🙌 Noah obeyed
+🐾 The animals obeyed
+🚢 God’s plan is fulfilled`,
+        ],
+        [
+          "⏳ It Came To Pass After Seven Days",
+          `The seven day countdown God gave Noah has now ended.
+
+The waiting period is over.
+
+The flood is about to begin.
+
+⏳ Seven days have passed
+⚠️ The countdown ends
+🌊 The flood begins
+📖 God’s timing is perfect`,
+        ],
+        [
+          "🌊 The Waters Of The Flood Were Upon The Earth",
+          `The floodwaters finally arrive.
+
+What God promised in warning now becomes reality.
+
+The judgment Noah spent decades preparing for has begun.
+
+🌊 The flood arrives
+⚖️ Judgment begins
+📖 God’s word proves true
+🚢 Noah is safe inside the ark`,
+        ],
+      ],
+    }),
+    makePersonalGenesisPhraseSection({
+      chapter: 7,
+      startVerse: 11,
+      endVerse: 17,
+      reference: "Genesis 7:11-17",
+      title: "The Flood Begins",
+      icon: "🚢",
+      phrases: [
+        [
+          "🎂 In The Six Hundredth Year Of Noah's Life",
+          `Noah is now 600 years old when the Flood begins.
+
+The last time Noah's age was mentioned, he was around 500 years old (Genesis 5:32).
+
+That means roughly 100 years have passed since God first told Noah about the coming judgment.
+
+For decades Noah obeyed God, built the ark, and waited for what God promised.
+
+Sometimes God's instructions require years of faithful obedience before we see the results.
+
+🎂 Noah is 600 years old
+⏳ About 100 years have passed
+🚢 The ark is complete
+🙏 Noah waited faithfully`,
+        ],
+        [
+          "📅 In The Second Month, The Seventeenth Day Of The Month",
+          `God records the exact date the Flood began.
+
+This is not written like a legend or fairy tale.
+
+The Bible presents the Flood as a real event that happened at a specific time in Noah's life.
+
+The detailed date emphasizes the historical nature of the account.
+
+📅 An exact date is given
+📖 A specific historical event
+🌍 The Flood begins
+⏳ God's timing arrives`,
+        ],
+        [
+          "🌊 All The Fountains Of The Great Deep Were Broken Up",
+          `The phrase "great deep" refers to the vast waters beneath the earth.
+
+The Flood did not come only from rain falling from the sky.
+
+Water also erupted from below the earth's surface.
+
+God used both the waters above and the waters below to bring judgment upon the world.
+
+🌊 Waters burst forth from below
+🌍 The earth itself is affected
+💧 More than ordinary rainfall
+⚖️ God's judgment begins`,
+        ],
+        [
+          "☁️ The Windows Of Heaven Were Opened",
+          `This expression describes rain pouring down from above.
+
+The heavens that had previously held back the waters were now opened.
+
+The Flood came from both directions.
+
+Water rose from beneath the earth while rain fell from the sky.
+
+☁️ Rain falls from above
+💧 Heaven's waters are released
+🌊 Water comes from every direction
+⚖️ God's judgment continues`,
+        ],
+        [
+          "🌧️ Forty Days And Forty Nights",
+          `Rain fell continuously for forty days and forty nights.
+
+This was not a normal storm.
+
+The amount of water involved was unlike anything humanity had ever experienced.
+
+Throughout Scripture, the number forty is often connected with testing, judgment, and preparation.
+
+🌧️ Continuous rainfall
+⏳ Forty days and nights
+⚖️ A time of judgment
+📖 A significant biblical number`,
+        ],
+        [
+          "🚪 In The Selfsame Day Entered Noah",
+          `The phrase "selfsame day" means "that very day."
+
+God's instructions were carried out immediately.
+
+The day Noah entered the ark was the same day the Flood began.
+
+There was no delay between God's command and God's judgment.
+
+🚪 Selfsame means "that very day"
+⏳ No delay
+🚢 Noah enters the ark
+⚖️ Judgment is about to begin`,
+        ],
+        [
+          "🦁 Every Beast After His Kind",
+          `God preserved every type of land animal He intended to save.
+
+The phrase "after his kind" means each animal reproduced according to its own kind.
+
+God's focus was preserving life for the future world after the Flood.
+
+🦁 Land animals enter
+🌱 Each kind is preserved
+🚢 Life is protected
+🌍 The future is being prepared`,
+        ],
+        [
+          "🐄 All The Cattle After Their Kind",
+          `Cattle refers to domesticated animals such as oxen, cattle, sheep, and goats.
+
+These animals would be important for food, work, sacrifice, and daily life after the Flood.
+
+God was preserving both wild animals and domesticated animals.
+
+🐄 Domesticated animals
+🐑 Sheep and goats
+🌱 Life after the Flood
+🚢 God preserves them`,
+        ],
+        [
+          "🐛 Every Creeping Thing That Creepeth Upon The Earth",
+          `This refers to smaller land creatures that move along the ground.
+
+Examples may include insects, reptiles, and other small creatures.
+
+Even the smallest forms of life were included in God's plan of preservation.
+
+🐛 Small creatures
+🦎 Reptiles and insects
+🌍 Part of creation
+🚢 Preserved on the ark`,
+        ],
+        [
+          "🐦 Every Fowl After His Kind",
+          `Fowl simply means birds.
+
+This would include doves, ravens, pigeons, hawks, eagles, and many other birds.
+
+God preserved the creatures of the air just as He preserved the creatures of the land.
+
+🐦 Fowl means birds
+🕊️ Various bird species
+🌱 Future generations preserved
+🚢 Brought onto the ark`,
+        ],
+        [
+          "👥 Two And Two Unto Noah Into The Ark",
+          `The animals came in pairs.
+
+One male and one female ensured future generations after the Flood.
+
+God was not only saving life.
+
+He was preparing for life to continue.
+
+👥 Animals come in pairs
+👨 Male
+👩 Female
+🌱 Future generations`,
+        ],
+        [
+          "💨 Wherein Is The Breath Of Life",
+          `The breath of life refers to living creatures that possess God's gift of physical life.
+
+This phrase highlights the difference between living creatures and lifeless things.
+
+God was preserving the living creatures He had made.
+
+💨 Breath of life
+❤️ Living creatures
+👑 God's creation
+🚢 Preserved through the Flood`,
+        ],
+        [
+          "🙏 As God Had Commanded Him",
+          `Noah continued to obey exactly what God instructed.
+
+The ark, the animals, and the timing all happened according to God's commands.
+
+Noah's obedience remains one of the central themes of the Flood account.
+
+🙏 Noah obeys
+📖 God's instructions
+🚢 Faithful obedience
+👑 Trust in God`,
+        ],
+        [
+          "🔒 And The Lord Shut Him In",
+          `Noah did not close the door.
+
+God closed it.
+
+This reminds us that God was in control of the ark from beginning to end.
+
+No steering wheel, rudder, or navigation system is ever mentioned.
+
+The ark's safety depended entirely on God's protection and guidance.
+
+🔒 God shut the door
+👑 God is in control
+🚢 Noah trusts God
+🛡️ God provides safety`,
+        ],
+        [
+          "🌊 The Waters Increased And Bare Up The Ark",
+          `The phrase "bare up" means the waters lifted the ark upward.
+
+As the Flood waters rose, the ark began floating higher and higher above the earth.
+
+The ark was doing exactly what God designed it to do.
+
+🌊 Waters rise
+🚢 The ark floats
+⬆️ Lifted upward
+👑 God's design works`,
+        ],
+        [
+          "⬆️ It Was Lift Up Above The Earth",
+          `The ark was no longer resting on dry ground.
+
+The rising waters lifted it far above the earth below.
+
+The same waters that brought judgment upon the world carried Noah and his family safely through it.
+
+⬆️ Lifted above the earth
+🌊 Judgment below
+🚢 Safety above
+🙏 God preserves Noah`,
+        ],
+      ],
+    }),
+    makePersonalGenesisPhraseSection({
+      chapter: 7,
+      startVerse: 18,
+      endVerse: 24,
+      reference: "Genesis 7:18-24",
+      title: "The Waters Take Over The Earth",
+      icon: "🌊",
+      phrases: [
+        [
+          "🌊 And The Waters Prevailed",
+          `The word "prevailed" means the waters became stronger, greater, and impossible to stop.
+
+Picture what Noah and his family would have experienced.
+
+For days the rain crashed against the ark.
+
+Thunder shook the sky.
+
+Lightning flashed through the darkness.
+
+Winds howled across the waters.
+
+The fountains of the great deep continued erupting below.
+
+Every day the water climbed higher.
+
+Every day the waves became stronger.
+
+The Flood was no longer coming.
+
+The Flood had arrived.
+
+🌊 The waters become unstoppable
+⚡ Thunder and lightning fill the sky
+💨 Powerful winds drive the waves
+🌍 The world is being overwhelmed`,
+        ],
+        [
+          "📈 And Were Increased Greatly Upon The Earth",
+          `The Flood was not standing still.
+
+The waters continued rising day after day.
+
+Rivers disappeared.
+
+Valleys vanished.
+
+Forests were swallowed.
+
+Places that had stood for generations slowly disappeared beneath the water.
+
+Every morning Noah would have looked out and seen less land than the day before.
+
+📈 Waters continue rising
+🌊 Flood levels increase
+🌲 Forests disappear
+🌍 The earth is being swallowed`,
+        ],
+        [
+          "🚢 And The Ark Went Upon The Face Of The Waters",
+          `The ark was now completely afloat.
+
+Noah and his family were no longer sitting on dry ground.
+
+The world they had always known was disappearing beneath them.
+
+The same waters that brought judgment upon the earth were carrying God's people safely above it.
+
+🚢 The ark floats freely
+🌊 Surrounded by water
+🛡️ God preserves Noah
+🙏 Safety in the midst of judgment`,
+        ],
+        [
+          "🌊 And The Waters Prevailed Exceedingly Upon The Earth",
+          `Moses repeats the word "prevailed" because he wants us to understand the scale of what is happening.
+
+This was not a flood in one city.
+
+This was not a flood in one nation.
+
+The waters continued advancing until nothing could resist them.
+
+Every passing day the Flood became more overwhelming.
+
+Everything outside the ark was losing the battle against the rising waters.
+
+🌊 The Flood grows stronger
+📈 The waters keep rising
+🌍 The whole earth is affected
+⚖️ Judgment continues`,
+        ],
+        [
+          "🏔️ And All The High Hills That Were Under The Whole Heaven Were Covered",
+          `The waters rose so high that even the highest hills disappeared.
+
+Landmarks people had known their entire lives vanished beneath the Flood.
+
+Imagine standing on the ark and realizing that every hill, valley, and field you once knew was now gone.
+
+The earth was becoming one vast sea.
+
+🏔️ Hills disappear beneath the water
+🌊 The Flood reaches new heights
+👀 Familiar landmarks vanish
+🌍 The world is transformed`,
+        ],
+        [
+          "📏 Fifteen Cubits Upward Did The Waters Prevail",
+          `A cubit is about 18 inches (45 cm).
+
+Fifteen cubits is roughly 22 feet (6.8 meters).
+
+Most understand this verse to mean that the waters rose about 15 cubits above the mountain tops.
+
+This gave the ark enough depth to float safely over everything below.
+
+The Flood was not merely touching the mountains.
+
+It completely covered them.
+
+📏 Fifteen cubits ≈ 22 feet
+🌊 Water rises above the mountains
+🚢 The ark can float safely
+🏔️ The highest places disappear`,
+        ],
+        [
+          "⛰️ And The Mountains Were Covered",
+          `The Flood had now reached a level beyond anything humanity had ever seen.
+
+Not only valleys.
+
+Not only fields.
+
+Not only hills.
+
+Even mountains disappeared beneath the waters.
+
+Nothing remained visible above the Flood except the ark.
+
+⛰️ Mountains vanish
+🌊 Water covers the earth
+🚢 The ark remains
+⚖️ Judgment reaches its fullness`,
+        ],
+        [
+          "💀 And All Flesh Died That Moved Upon The Earth",
+          `Everything living outside the ark perished.
+
+God had warned that judgment was coming.
+
+Now that judgment had arrived.
+
+Every creature that lived on the earth was affected by the Flood.
+
+💀 Life outside the ark perishes
+⚖️ God's warning is fulfilled
+🌍 Judgment falls
+🚢 Only those in the ark survive`,
+        ],
+        [
+          "🐦 Both Of Fowl, And Of Cattle, And Of Beast",
+          `Moses emphasizes that no category of land animal escaped.
+
+Birds.
+
+Livestock.
+
+Wild animals.
+
+Everything outside the ark was swept away by the Flood.
+
+This highlights the total scope of God's judgment.
+
+🐦 Birds
+🐄 Livestock
+🦁 Wild animals
+⚖️ All are affected`,
+        ],
+        [
+          "🐛 And Of Every Creeping Thing That Creepeth Upon The Earth",
+          `Even the smallest creatures were included.
+
+The Flood affected all life on the land.
+
+Nothing was too small or insignificant to be impacted by what was taking place.
+
+🐛 Small creatures perish
+🌍 The whole earth is affected
+⚖️ Judgment is complete
+📖 Every part of creation is mentioned`,
+        ],
+        [
+          "👤 And Every Man",
+          `Humanity had filled the earth with violence and corruption.
+
+Now mankind faced the judgment God had warned about.
+
+Every person outside the ark perished.
+
+Only Noah, his wife, his three sons, and their wives survived.
+
+👤 Humanity faces judgment
+⚖️ God's warning is fulfilled
+👨‍👩‍👦‍👦 Eight people survive
+🚢 Safety is found in the ark`,
+        ],
+        [
+          "💨 In Whose Nostrils Was The Breath Of Life",
+          `The phrase "breath of life" reminds us that life comes from God.
+
+Every living creature depends upon the breath that God gives.
+
+The same God who gives life also has authority over life.
+
+This phrase points us back to Genesis 2 when God breathed life into Adam.
+
+💨 Life comes from God
+❤️ God is the giver of life
+📖 Connects back to Genesis 2
+⚖️ God has authority over life`,
+        ],
+        [
+          "🏜️ Of All That Was In The Dry Land Died",
+          `Before the Flood, the earth was dry land.
+
+Now the dry land was gone.
+
+Everything that depended on that land for life perished beneath the waters.
+
+The old world was passing away.
+
+🏜️ Dry land disappears
+🌊 Water covers the earth
+💀 Life outside the ark ends
+⚖️ The old world passes away`,
+        ],
+        [
+          "❌ Every Living Substance Was Destroyed",
+          `Nothing outside the ark escaped.
+
+The destruction was complete.
+
+God's judgment reached every part of the corrupted world.
+
+Moses repeats this truth several times because he wants the reader to understand the totality of what happened.
+
+❌ Complete destruction
+🌍 Nothing escapes
+⚖️ God's judgment is thorough
+📖 Moses emphasizes the point`,
+        ],
+        [
+          "👨 Noah Only Remained Alive",
+          `After all the destruction, Noah remained.
+
+Not because Noah was stronger.
+
+Not because Noah was smarter.
+
+Not because Noah built a better boat.
+
+Noah survived because he trusted God and obeyed His instructions.
+
+👨 Noah remains alive
+🙏 Noah trusted God
+🚢 God provided safety
+👑 Salvation came from God`,
+        ],
+        [
+          "👨‍👩‍👦‍👦 And They That Were With Him In The Ark",
+          `Noah was not saved alone.
+
+His family was saved with him.
+
+The ark became a place of refuge while judgment fell outside.
+
+For months, eight people lived entirely by faith inside the vessel God had provided.
+
+👨‍👩‍👦‍👦 Noah's family survives
+🚢 Safety inside the ark
+🙏 God protects His people
+🛡️ Refuge during judgment`,
+        ],
+        [
+          "🌊 And The Waters Prevailed Upon The Earth An Hundred And Fifty Days",
+          `The rain lasted forty days and forty nights.
+
+But the Flood itself lasted much longer.
+
+For one hundred and fifty days the waters dominated the earth.
+
+Imagine being Noah.
+
+For five months there was no dry land.
+
+No hills.
+
+No mountains.
+
+No roads.
+
+No fields.
+
+No cities.
+
+Only water stretching to the horizon in every direction.
+
+The storms may have quieted, but the Flood remained.
+
+Day after day the ark drifted across a world that had completely disappeared beneath the waters.
+
+The same waves that brought destruction to the earth carried Noah safely through it.
+
+For one hundred and fifty days Noah and his family had nothing to trust except the God who had shut them inside the ark.
+
+🌊 Waters prevail for 150 days
+⏳ Five months of flooding
+🚢 The ark drifts across a world of water
+🙏 Noah must trust God completely`,
+        ],
+      ],
+    }),
+  ];
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "genesis" && section.chapter === 7) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  const genesisEightIndex = BIBLE_READER_STUDY_SECTIONS.findIndex(
+    (section) => section.book === "genesis" && section.chapter === 8,
+  );
+
+  if (genesisEightIndex === -1) {
+    BIBLE_READER_STUDY_SECTIONS.push(...replacementSections);
+    return;
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.splice(genesisEightIndex, 0, ...replacementSections);
+}
+
+replaceGenesisSevenPhraseSections();
 applyPersonalGenesisElevenThroughTwentyStudySections();
 applyPersonalGenesisTwentyOneThroughThirtyStudySections();
 applyPersonalGenesisThirtyOneThroughFortyStudySections();

@@ -11688,17 +11688,6 @@ Before we understand redemption, we need to understand what God made humanity fo
             </svg>
           </button>
 
-          <div className="chapter-confetti pointer-events-none absolute left-1/2 top-9" aria-hidden="true">
-            <span className="absolute h-2 w-3 rounded-sm bg-amber-400 [--confetti-rotate:160deg] [--confetti-x:-104px] [--confetti-y:-78px]" />
-            <span className="absolute h-2 w-2 rounded-full bg-sky-400 [--confetti-rotate:-120deg] [--confetti-x:86px] [--confetti-y:-92px]" />
-            <span className="absolute h-3 w-2 rounded-sm bg-[#7BAFD4] [--confetti-rotate:210deg] [--confetti-x:-72px] [--confetti-y:52px]" />
-            <span className="absolute h-2 w-3 rounded-sm bg-rose-400 [--confetti-rotate:-190deg] [--confetti-x:108px] [--confetti-y:36px]" />
-            <span className="absolute h-2 w-2 rounded-full bg-violet-400 [--confetti-rotate:140deg] [--confetti-x:-28px] [--confetti-y:-118px]" />
-            <span className="absolute h-3 w-2 rounded-sm bg-lime-400 [--confetti-rotate:-155deg] [--confetti-x:30px] [--confetti-y:76px]" />
-            <span className="absolute h-2 w-3 rounded-sm bg-orange-400 [--confetti-rotate:190deg] [--confetti-x:-126px] [--confetti-y:4px]" />
-            <span className="absolute h-2 w-2 rounded-full bg-cyan-400 [--confetti-rotate:-130deg] [--confetti-x:132px] [--confetti-y:-22px]" />
-          </div>
-
           <h2 className="mt-2 text-[30px] font-black leading-none tracking-[-0.04em] text-[#10224b] sm:text-[36px]">
             Great Job!
           </h2>
@@ -12784,7 +12773,11 @@ Before we understand redemption, we need to understand what God made humanity fo
           nextDay: nextBibleYearDay,
           onContinueFree: nextBibleYearDay ? () => {
             closeInlineBibleYearCompletionUpgrade(day.dayNumber);
-            openAdjacentBibleYearDay(nextBibleYearDay);
+            window.setTimeout(() => {
+              openBibleYearDayOnDashboard(nextBibleYearDay, {
+                reviewCompleted: isBibleYearDayComplete(nextBibleYearDay),
+              });
+            }, 0);
           } : null,
         }) : (
           <article className={`order-4 overflow-hidden rounded-[20px] border p-5 text-[var(--bb-text-primary,#111827)] shadow-[0_18px_48px_rgba(38,63,99,0.12),inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-xl sm:p-6 ${
