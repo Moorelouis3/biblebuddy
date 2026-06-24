@@ -2226,10 +2226,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const shouldHideShellChrome = Boolean(pathname?.startsWith("/dashboard")) && dashboardFullscreenLoading;
   const shouldShowOnlyLoadingScreen = Boolean(pathname?.startsWith("/dashboard")) && appShellBooting;
 
-  if (shouldShowOnlyLoadingScreen) {
-    return <AppLoadingScreen />;
-  }
-
   const shouldShowNavMenu = isLoggedIn && !isBarePage && pathname && !pathname.startsWith("/dashboard");
   const breadcrumbItems = buildBreadcrumbs(pathname);
   const shouldShowBreadcrumbs = isLoggedIn && !isBarePage && breadcrumbItems.length > 0;
@@ -2527,6 +2523,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   return (
     <FeatureRenderPriorityProvider value={{ featureToursEnabled: true }}>
+      {shouldShowOnlyLoadingScreen ? (
+        <AppLoadingScreen />
+      ) : (
+        <>
 
       {guestLogoutWarningOpen && (
         <div className="fixed inset-0 z-[300] flex items-center justify-center bg-black/55 px-4">
@@ -3391,6 +3391,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           externalId={openConversationId}
           onExternalClose={() => setOpenConversationId(null)}
         />
+      )}
+        </>
       )}
     </FeatureRenderPriorityProvider>
   );
