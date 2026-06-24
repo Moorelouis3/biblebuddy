@@ -221,6 +221,29 @@ type StudyNotesUpgradeAnalytics = {
   days: StudyNotesUpgradeDayAnalytics[];
 };
 
+type CompletionUpgradeAnalytics = {
+  totalViews: number;
+  totalCloses: number;
+  totalUpgradeClicks: number;
+  totalSuccessfulUpgrades: number;
+  closeRate: number;
+  upgradeClickRate: number;
+  upgradeRate: number;
+  upgradeFromClickRate: number;
+  series: {
+    views: Array<{ label: string; value: number }>;
+    closes: Array<{ label: string; value: number }>;
+    upgradeClicks: Array<{ label: string; value: number }>;
+    successfulUpgrades: Array<{ label: string; value: number }>;
+  };
+  comparisons: {
+    views: { current: number; previous: number; change: number };
+    closes: { current: number; previous: number; change: number };
+    upgradeClicks: { current: number; previous: number; change: number };
+    successfulUpgrades: { current: number; previous: number; change: number };
+  };
+};
+
 type BibleYearProgressRow = {
   user_id?: string | null;
   day_number?: number | null;
@@ -888,6 +911,99 @@ function buildStudyNotesUpgradeAnalytics(masterRows: MasterActionFunnelRow[]): S
     upgradeClickRate: percent(totalUpgradeClicks, totalViews),
     stayFreeRate: percent(totalStayFreeClicks, totalViews),
     days,
+  };
+}
+
+function isCompletionUpgradeRow(row: {
+  event_metadata?: Record<string, unknown> | null;
+  action_label?: string | null;
+}) {
+  const metadata = row.event_metadata && typeof row.event_metadata === "object" ? row.event_metadata : {};
+  const prompt = typeof metadata.prompt === "string" ? metadata.prompt.toLowerCase() : "";
+  const checkoutContext = typeof metadata.checkoutContext === "string" ? metadata.checkoutContext.toLowerCase() : "";
+  const source = typeof metadata.source === "string" ? metadata.source.toLowerCase() : "";
+  const label = String(row.action_label || "").toLowerCase();
+  return (
+    prompt === "bible_year_completion_upgrade" ||
+    checkoutContext === "bible_year_completion_upgrade_offer" ||
+    source === "bible_year_day_completion" ||
+    label.includes("completion upgrade popup") ||
+    label.includes("completion checkout")
+  );
+}
+
+function collectCompletionUpgradeEventTimestamps(
+  rows: Array<{ action_type?: string | null; created_at?: string | null; event_metadata?: Record<string, unknown> | null; action_label?: string | null }>,
+  actionType: "upgrade_popup_viewed" | "upgrade_popup_dismissed" | "upgrade_popup_cta_clicked",
+  startIso: string,
+  endIso?: string | null,
+) {
+  return rows
+    .filter((row) => row.action_type === actionType && isCompletionUpgradeRow(row))
+    .map((row) => row.created_at)
+    .filter((createdAt): createdAt is string => Boolean(createdAt))
+    .filter((createdAt) => isWithinAnalyticsWindow(createdAt, startIso, endIso || null));
+}
+
+function collectCompletionUpgradeSuccessTimestamps(
+  rows: Array<{ user_id?: string | null; action_type?: string | null; created_at?: string | null; event_metadata?: Record<string, unknown> | null; action_label?: string | null }>,
+  startIso: string,
+  endIso?: string | null,
+) {
+  const firstUpgradeByUser = new Map<string, string>();
+
+  rows.forEach((row) => {
+    const userId = typeof row.user_id === "string" ? row.user_id : null;
+    const createdAt = typeof row.created_at === "string" ? row.created_at : null;
+    if (!userId || !createdAt || row.action_type !== "user_upgraded" || !isCompletionUpgradeRow(row)) return;
+    const current = firstUpgradeByUser.get(userId);
+    if (!current || createdAt < current) {
+      firstUpgradeByUser.set(userId, createdAt);
+    }
+  });
+
+  return Array.from(firstUpgradeByUser.values()).filter((createdAt) =>
+    isWithinAnalyticsWindow(createdAt, startIso, endIso || null),
+  );
+}
+
+function buildCompletionUpgradeAnalytics(
+  rows: Array<{ user_id?: string | null; action_type?: string | null; created_at?: string | null; event_metadata?: Record<string, unknown> | null; action_label?: string | null }>,
+  windowKey: JourneyWindowKey,
+  previousRange: { startIso: string; endIso: string | null } | null,
+): CompletionUpgradeAnalytics {
+  const { startIso, endIso } = getAnalyticsDateRange(windowKey);
+  const currentViews = collectCompletionUpgradeEventTimestamps(rows, "upgrade_popup_viewed", startIso, endIso);
+  const currentCloses = collectCompletionUpgradeEventTimestamps(rows, "upgrade_popup_dismissed", startIso, endIso);
+  const currentClicks = collectCompletionUpgradeEventTimestamps(rows, "upgrade_popup_cta_clicked", startIso, endIso);
+  const currentSuccesses = collectCompletionUpgradeSuccessTimestamps(rows, startIso, endIso);
+
+  const previousViews = previousRange ? collectCompletionUpgradeEventTimestamps(rows, "upgrade_popup_viewed", previousRange.startIso, previousRange.endIso) : [];
+  const previousCloses = previousRange ? collectCompletionUpgradeEventTimestamps(rows, "upgrade_popup_dismissed", previousRange.startIso, previousRange.endIso) : [];
+  const previousClicks = previousRange ? collectCompletionUpgradeEventTimestamps(rows, "upgrade_popup_cta_clicked", previousRange.startIso, previousRange.endIso) : [];
+  const previousSuccesses = previousRange ? collectCompletionUpgradeSuccessTimestamps(rows, previousRange.startIso, previousRange.endIso) : [];
+
+  return {
+    totalViews: currentViews.length,
+    totalCloses: currentCloses.length,
+    totalUpgradeClicks: currentClicks.length,
+    totalSuccessfulUpgrades: currentSuccesses.length,
+    closeRate: percent(currentCloses.length, currentViews.length),
+    upgradeClickRate: percent(currentClicks.length, currentViews.length),
+    upgradeRate: percent(currentSuccesses.length, currentViews.length),
+    upgradeFromClickRate: percent(currentSuccesses.length, currentClicks.length),
+    series: {
+      views: buildSimpleMetricSeries(currentViews, windowKey),
+      closes: buildSimpleMetricSeries(currentCloses, windowKey),
+      upgradeClicks: buildSimpleMetricSeries(currentClicks, windowKey),
+      successfulUpgrades: buildSimpleMetricSeries(currentSuccesses, windowKey),
+    },
+    comparisons: {
+      views: { current: currentViews.length, previous: previousViews.length, change: percentChange(currentViews.length, previousViews.length) },
+      closes: { current: currentCloses.length, previous: previousCloses.length, change: percentChange(currentCloses.length, previousCloses.length) },
+      upgradeClicks: { current: currentClicks.length, previous: previousClicks.length, change: percentChange(currentClicks.length, previousClicks.length) },
+      successfulUpgrades: { current: currentSuccesses.length, previous: previousSuccesses.length, change: percentChange(currentSuccesses.length, previousSuccesses.length) },
+    },
   };
 }
 
@@ -3403,12 +3519,19 @@ async function buildOverviewAnalyticsResponse(
     .eq("action_type", "user_upgraded")
     .limit(250000);
   const allUpgradeRows = (allUpgradeActionData || []) as UpgradeActionRow[];
+  const { data: allCompletionUpgradeActionData } = await adminSupabase
+    .from("master_actions")
+    .select("user_id, action_type, action_label, event_metadata, created_at")
+    .in("action_type", ["upgrade_popup_viewed", "upgrade_popup_cta_clicked", "upgrade_popup_dismissed", "user_upgraded"])
+    .limit(250000);
+  const allCompletionUpgradeRows = (allCompletionUpgradeActionData || []) as MasterActionFunnelRow[];
   const currentUpgradeTimestamps = collectFirstPaidUpgradeTimestamps(allUpgradeRows, startIso, endIso);
   const upgradeSeries = buildSimpleMetricSeries(currentUpgradeTimestamps, journeyWindow);
   const currentUpgrades = upgradeSeries.reduce((sum, point) => sum + point.value, 0);
   const previousUpgrades = previousRange
     ? collectFirstPaidUpgradeTimestamps(allUpgradeRows, previousRange.startIso, previousRange.endIso).length
     : 0;
+  const completionUpgrade = buildCompletionUpgradeAnalytics(allCompletionUpgradeRows, journeyWindow, previousRange);
 
   let landingQuery = adminSupabase
     .from("landing_page_events")
@@ -3422,7 +3545,7 @@ async function buildOverviewAnalyticsResponse(
 
   let masterQuery = adminSupabase
     .from("master_actions")
-    .select("user_id, session_id, action_type, action_label, journey_day, created_at")
+    .select("user_id, session_id, action_type, action_label, journey_day, event_metadata, created_at")
     .in("action_type", [
       "landing_page_visited",
       "landing_cta_clicked",
@@ -3434,6 +3557,9 @@ async function buildOverviewAnalyticsResponse(
       "bible_in_one_year_reading_completed",
       "bible_in_one_year_trivia_completed",
       "bible_in_one_year_reflection_completed",
+      "upgrade_popup_viewed",
+      "upgrade_popup_cta_clicked",
+      "upgrade_popup_dismissed",
     ])
     .gte("created_at", startIso)
     .order("created_at", { ascending: false })
@@ -3500,6 +3626,7 @@ async function buildOverviewAnalyticsResponse(
       signups: { current: currentSignups, previous: previousSignups, change: percentChange(currentSignups, previousSignups) },
       upgrades: { current: currentUpgrades, previous: previousUpgrades, change: percentChange(currentUpgrades, previousUpgrades) },
     },
+    completionUpgrade,
     customerJourney: {
       window: journeyWindow,
       label: getJourneyWindowLabel(journeyWindow),
@@ -3662,6 +3789,13 @@ export async function GET(request: Request) {
     .limit(250000);
   const { data: upgradeData } = await upgradeQuery;
   const upgradeRows = (upgradeData || []) as UpgradeActionRow[];
+  const { data: completionUpgradeActionData } = await adminSupabase
+    .from("master_actions")
+    .select("user_id, action_type, action_label, event_metadata, created_at")
+    .in("action_type", ["upgrade_popup_viewed", "upgrade_popup_cta_clicked", "upgrade_popup_dismissed", "user_upgraded"])
+    .order("created_at", { ascending: false })
+    .limit(250000);
+  const completionUpgradeRows = (completionUpgradeActionData || []) as MasterActionFunnelRow[];
   let studyNotesQuery = adminSupabase
     .from("master_actions")
     .select("user_id, username, action_type, action_label, event_metadata, created_at")
@@ -3917,6 +4051,7 @@ export async function GET(request: Request) {
   const dayThreeUpgrade = buildDayThreeUpgradeAnalytics(masterFunnelRows);
   const daySevenUpgrade = buildDayUpgradeAnalytics(masterFunnelRows, 7);
   const studyNotesUpgrade = buildStudyNotesUpgradeAnalytics(masterFunnelRows);
+  const completionUpgrade = buildCompletionUpgradeAnalytics(completionUpgradeRows, journeyWindow, previousRange);
   const activeUsersLast24Hours = buildActiveUsersLast24Hours(activeUsersLast24Rows, profileByUserId);
   const newUserFirstThreeDays = buildNewUserFirstThreeDaysAnalytics(firstThreeDayRows, profileByUserId);
   const bibleBuddyFunnelStages = buildBibleBuddyFunnelStages(validLandingEventRows, masterFunnelRows, windowBibleYearProgressRows, dayThreeUpgrade, daySevenUpgrade);
@@ -4059,6 +4194,7 @@ export async function GET(request: Request) {
     dayThreeUpgrade,
     daySevenUpgrade,
     studyNotesUpgrade,
+    completionUpgrade,
     bibleYearDays,
     studyNotes,
     activeUsersLast24Hours,

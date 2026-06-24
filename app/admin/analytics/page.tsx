@@ -10,7 +10,7 @@ import { getCachedAdminAnalytics, getCachedAdminAnalyticsOverview, loadAdminAnal
 type JourneyWindow = "today" | "yesterday" | "24h" | "7d" | "30d" | "90d" | "this_month" | "lifetime";
 type AccountFilter = "all" | "guest" | "free" | "pro";
 type AnalyticsView = "overview" | "bible-year" | "study-notes" | "traffic-sources";
-type SimpleAnalyticsMetric = "overview" | "revenue" | "signups" | "upgrades";
+type SimpleAnalyticsMetric = "overview" | "revenue" | "signups" | "upgrades" | "completion_popup";
 
 type VisitorJourneyStatus =
   | "active"
@@ -163,6 +163,29 @@ type StudyNotesUpgradeAnalytics = {
     upgradeClickRate: number;
     stayFreeRate: number;
   }>;
+};
+
+type CompletionUpgradeAnalytics = {
+  totalViews: number;
+  totalCloses: number;
+  totalUpgradeClicks: number;
+  totalSuccessfulUpgrades: number;
+  closeRate: number;
+  upgradeClickRate: number;
+  upgradeRate: number;
+  upgradeFromClickRate: number;
+  series: {
+    views: Array<{ label: string; value: number }>;
+    closes: Array<{ label: string; value: number }>;
+    upgradeClicks: Array<{ label: string; value: number }>;
+    successfulUpgrades: Array<{ label: string; value: number }>;
+  };
+  comparisons: {
+    views: { current: number; previous: number; change: number };
+    closes: { current: number; previous: number; change: number };
+    upgradeClicks: { current: number; previous: number; change: number };
+    successfulUpgrades: { current: number; previous: number; change: number };
+  };
 };
 
 type BibleYearDayAnalytics = {
@@ -334,6 +357,7 @@ type AnalyticsResponse = {
   dayThreeUpgrade?: DayThreeUpgradeAnalytics;
   daySevenUpgrade?: DayThreeUpgradeAnalytics;
   studyNotesUpgrade?: StudyNotesUpgradeAnalytics;
+  completionUpgrade?: CompletionUpgradeAnalytics;
   bibleYearDays?: BibleYearDayAnalytics[];
   studyNotes?: {
     totalOpens: number;
@@ -449,6 +473,7 @@ const SIMPLE_METRIC_OPTIONS: Array<{ key: SimpleAnalyticsMetric; label: string }
   { key: "revenue", label: "Revenue" },
   { key: "signups", label: "Signups" },
   { key: "upgrades", label: "Upgrades" },
+  { key: "completion_popup", label: "Completion Popup" },
 ];
 
 const SIMPLE_WINDOW_OPTIONS: Array<{ key: JourneyWindow; label: string }> = [
@@ -730,7 +755,8 @@ function getSimpleMetricSeries(
 ) {
   if (metric === "revenue") return stripeRevenue?.series || [];
   if (metric === "signups") return data?.simpleSeries?.signups || [];
-  return data?.simpleSeries?.upgrades || [];
+  if (metric === "upgrades") return data?.simpleSeries?.upgrades || [];
+  return data?.completionUpgrade?.series.views || [];
 }
 
 function getSimpleMetricTotal(
@@ -746,6 +772,9 @@ function getSimpleMetricTotal(
     const fallback = data?.customerJourney?.freeAccounts || data?.visitorJourneys?.metrics?.createdFreeAccount || 0;
     return formatNumber(total || fallback);
   }
+  if (metric === "completion_popup") {
+    return formatNumber(data?.completionUpgrade?.totalViews || 0);
+  }
   const total = (data?.simpleSeries?.upgrades || []).reduce((sum, point) => sum + point.value, 0);
   const fallback = data?.customerJourney?.proUpgrades || data?.visitorJourneys?.metrics?.upgradedToPro || 0;
   return formatNumber(total || fallback);
@@ -754,18 +783,21 @@ function getSimpleMetricTotal(
 function getSimpleMetricTitle(metric: Exclude<SimpleAnalyticsMetric, "overview">) {
   if (metric === "revenue") return "Revenue";
   if (metric === "signups") return "Signups";
+  if (metric === "completion_popup") return "Completion Popup";
   return "Upgrades";
 }
 
 function getSimpleMetricHelper(metric: Exclude<SimpleAnalyticsMetric, "overview">) {
   if (metric === "revenue") return "Cash collected in the selected timeframe.";
   if (metric === "signups") return "New accounts created in the selected timeframe.";
+  if (metric === "completion_popup") return "How often the free completion upgrade prompt was shown.";
   return "Users who upgraded to Pro in the selected timeframe.";
 }
 
 function getSimpleMetricAccent(metric: Exclude<SimpleAnalyticsMetric, "overview">) {
   if (metric === "revenue") return "text-blue-600 bg-blue-50 ring-blue-100";
   if (metric === "signups") return "text-emerald-600 bg-emerald-50 ring-emerald-100";
+  if (metric === "completion_popup") return "text-amber-600 bg-amber-50 ring-amber-100";
   return "text-violet-600 bg-violet-50 ring-violet-100";
 }
 
@@ -952,6 +984,56 @@ function SimpleAnalyticsChartCard({
         <SimpleAnalyticsChart points={points} valueFormatter={metric === "revenue" ? formatMoneyValue : undefined} />
       </div>
     </section>
+  );
+}
+
+function CompletionPopupAnalyticsSection({
+  stats,
+  windowKey,
+  loading,
+}: {
+  stats: CompletionUpgradeAnalytics | undefined;
+  windowKey: JourneyWindow;
+  loading: boolean;
+}) {
+  const comparison = stats?.comparisons.views.change ?? null;
+  return (
+    <div className="space-y-4">
+      <SimpleAnalyticsChartCard
+        metric="completion_popup"
+        windowKey={windowKey}
+        value={loading ? "..." : formatNumber(stats?.totalViews || 0)}
+        points={stats?.series.views || []}
+        loading={loading}
+        comparison={windowKey === "lifetime" ? null : comparison}
+      />
+      <div className="grid grid-cols-2 gap-3">
+        <SimpleAnalyticsKpiCard
+          title="Shown"
+          value={loading ? "..." : formatNumber(stats?.totalViews || 0)}
+          helper="Popup impressions"
+          accent="blue"
+        />
+        <SimpleAnalyticsKpiCard
+          title="Closed"
+          value={loading ? "..." : formatNumber(stats?.totalCloses || 0)}
+          helper={`${stats?.closeRate ?? 0}% of views`}
+          accent="violet"
+        />
+        <SimpleAnalyticsKpiCard
+          title="Upgrade Clicks"
+          value={loading ? "..." : formatNumber(stats?.totalUpgradeClicks || 0)}
+          helper={`${stats?.upgradeClickRate ?? 0}% clicked upgrade`}
+          accent="green"
+        />
+        <SimpleAnalyticsKpiCard
+          title="Paid Upgrades"
+          value={loading ? "..." : formatNumber(stats?.totalSuccessfulUpgrades || 0)}
+          helper={`${stats?.upgradeFromClickRate ?? 0}% of clicks converted`}
+          accent="blue"
+        />
+      </div>
+    </div>
   );
 }
 
@@ -1217,6 +1299,7 @@ function MobileAnalyticsHighlights({
   const signupComparison = data?.simpleComparisons?.signups?.change;
   const upgradesComparison = data?.simpleComparisons?.upgrades?.change;
   const revenueComparison = stripeRevenue?.comparison?.change;
+  const completionPopupComparison = data?.completionUpgrade?.comparisons.views.change;
 
   return (
     <section className="mt-5 space-y-4 md:hidden">
@@ -1286,40 +1369,50 @@ function MobileAnalyticsHighlights({
         </div>
       ) : (
         <div className="space-y-4">
-          <SimpleAnalyticsChartCard
-            metric={simpleMetric}
-            windowKey={windowKey}
-            value={getSimpleMetricTotal(simpleMetric, data, stripeRevenue)}
-            points={chartSeries}
-            loading={loading || stripeRevenueLoading}
-            comparison={windowKey === "lifetime" ? null : simpleMetric === "revenue" ? revenueComparison : simpleMetric === "signups" ? signupComparison : upgradesComparison}
-          />
-          <div className="grid grid-cols-3 gap-3">
-            <SimpleAnalyticsKpiCard
-              title="Signups"
-              value={signupsLabel}
-              helper={windowKey === "lifetime" ? "All signups" : comparisonLabel}
-              accent="green"
-              comparison={windowKey === "lifetime" ? null : signupComparison}
-              comparisonLabel=""
+          {simpleMetric === "completion_popup" ? (
+            <CompletionPopupAnalyticsSection
+              stats={data?.completionUpgrade}
+              windowKey={windowKey}
+              loading={loading}
             />
-            <SimpleAnalyticsKpiCard
-              title="Revenue"
-              value={stripeRevenueLoading ? "..." : revenueLabel}
-              helper={windowKey === "lifetime" ? "All revenue" : comparisonLabel}
-              accent="blue"
-              comparison={windowKey === "lifetime" ? null : revenueComparison}
-              comparisonLabel=""
+          ) : (
+            <SimpleAnalyticsChartCard
+              metric={simpleMetric}
+              windowKey={windowKey}
+              value={getSimpleMetricTotal(simpleMetric, data, stripeRevenue)}
+              points={chartSeries}
+              loading={loading || stripeRevenueLoading}
+              comparison={windowKey === "lifetime" ? null : simpleMetric === "revenue" ? revenueComparison : simpleMetric === "signups" ? signupComparison : simpleMetric === "upgrades" ? upgradesComparison : completionPopupComparison}
             />
-            <SimpleAnalyticsKpiCard
-              title="Upgrades"
-              value={upgradesLabel}
-              helper={windowKey === "lifetime" ? "All upgrades" : comparisonLabel}
-              accent="violet"
-              comparison={windowKey === "lifetime" ? null : upgradesComparison}
-              comparisonLabel=""
-            />
-          </div>
+          )}
+          {simpleMetric !== "completion_popup" ? (
+            <div className="grid grid-cols-3 gap-3">
+              <SimpleAnalyticsKpiCard
+                title="Signups"
+                value={signupsLabel}
+                helper={windowKey === "lifetime" ? "All signups" : comparisonLabel}
+                accent="green"
+                comparison={windowKey === "lifetime" ? null : signupComparison}
+                comparisonLabel=""
+              />
+              <SimpleAnalyticsKpiCard
+                title="Revenue"
+                value={stripeRevenueLoading ? "..." : revenueLabel}
+                helper={windowKey === "lifetime" ? "All revenue" : comparisonLabel}
+                accent="blue"
+                comparison={windowKey === "lifetime" ? null : revenueComparison}
+                comparisonLabel=""
+              />
+              <SimpleAnalyticsKpiCard
+                title="Upgrades"
+                value={upgradesLabel}
+                helper={windowKey === "lifetime" ? "All upgrades" : comparisonLabel}
+                accent="violet"
+                comparison={windowKey === "lifetime" ? null : upgradesComparison}
+                comparisonLabel=""
+              />
+            </div>
+          ) : null}
         </div>
       )}
 
@@ -3306,6 +3399,7 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
     const signupComparison = data?.simpleComparisons?.signups?.change;
     const upgradesComparison = data?.simpleComparisons?.upgrades?.change;
     const revenueComparison = stripeRevenue?.comparison?.change;
+    const completionPopupComparison = data?.completionUpgrade?.comparisons.views.change;
 
     return (
       <div className={`bb-analytics-page ${embedded ? "min-h-0" : "min-h-screen bg-[var(--bb-background,#f4f8fc)]"} text-[var(--bb-text-primary,#101827)]`}>
@@ -3389,14 +3483,22 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
                   />
                 </div>
               ) : (
-                <SimpleAnalyticsChartCard
-                  metric={simpleMetric}
-                  windowKey={windowKey}
-                  value={getSimpleMetricTotal(simpleMetric, data, stripeRevenue)}
-                  points={chartSeries}
-                  loading={loading || stripeRevenueLoading}
-                  comparison={windowKey === "lifetime" ? null : simpleMetric === "revenue" ? revenueComparison : simpleMetric === "signups" ? signupComparison : upgradesComparison}
-                />
+                simpleMetric === "completion_popup" ? (
+                  <CompletionPopupAnalyticsSection
+                    stats={data?.completionUpgrade}
+                    windowKey={windowKey}
+                    loading={loading}
+                  />
+                ) : (
+                  <SimpleAnalyticsChartCard
+                    metric={simpleMetric}
+                    windowKey={windowKey}
+                    value={getSimpleMetricTotal(simpleMetric, data, stripeRevenue)}
+                    points={chartSeries}
+                    loading={loading || stripeRevenueLoading}
+                    comparison={windowKey === "lifetime" ? null : simpleMetric === "revenue" ? revenueComparison : simpleMetric === "signups" ? signupComparison : simpleMetric === "upgrades" ? upgradesComparison : completionPopupComparison}
+                  />
+                )
               )}
 
               <Link

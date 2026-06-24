@@ -2331,6 +2331,7 @@ export default function DashboardJourneyExperience({
   const bibleYearReflectionSyncKeyRef = useRef("");
   const bibleYearChapterSyncKeyRef = useRef("");
   const bibleYearCompletionUpgradeResolverRef = useRef<(() => void) | null>(null);
+  const bibleYearCompletionUpgradeDayRef = useRef<number | null>(null);
   const bibleYearJustCompletedDayRef = useRef<number | null>(null);
   const bibleYearTermTakeoverRef = useRef<HTMLDivElement | null>(null);
   const bibleYearTermReturnScrollYRef = useRef<number | null>(null);
@@ -6938,14 +6939,19 @@ export default function DashboardJourneyExperience({
     resolve?.();
   }
 
-  async function openBibleYearCompletionUpgradePrompt() {
+  async function openBibleYearCompletionUpgradePrompt(day: GenesisBibleYearDay) {
     if (isPaidUser) return;
+    bibleYearCompletionUpgradeDayRef.current = day.dayNumber;
     setBibleYearDeepNotesUpgradeOpen(false);
     setBibleYearDownloadUpgradeOpen(false);
     setBibleYearQuickUpgradeError(null);
     setBibleYearQuickUpgradeContext("completion");
     setBibleYearQuickUpgradeOpen(true);
     setBibleYearLifetimeInfoOpen(false);
+    void logBibleYearCompletionUpgradeAction(
+      ACTION_TYPE.upgrade_popup_viewed,
+      `Bible in One Year Day ${day.dayNumber} completion upgrade popup viewed`,
+    );
     await new Promise<void>((resolve) => {
       bibleYearCompletionUpgradeResolverRef.current = resolve;
     });
@@ -7029,6 +7035,40 @@ export default function DashboardJourneyExperience({
 
   function logDayThreeProPromptAction(actionType: ActionType, label: string) {
     return logDayProPromptAction(3, actionType, label);
+  }
+
+  async function logBibleYearCompletionUpgradeAction(actionType: ActionType, label: string) {
+    if (!userId) return;
+    try {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      const meta = user?.user_metadata || {};
+      const username =
+        meta.firstName ||
+        meta.first_name ||
+        (user?.email ? user.email.split("@")[0] : null) ||
+        "User";
+      const dayNumber = bibleYearCompletionUpgradeDayRef.current;
+      await supabase.from("master_actions").insert({
+        user_id: userId,
+        username,
+        action_type: actionType,
+        action_label: label,
+        journey_day: dayNumber,
+        account_status: isPaidUser ? "pro" : "free_or_guest",
+        event_metadata: {
+          plan: "bible_in_one_year",
+          prompt: "bible_year_completion_upgrade",
+          checkoutContext: "bible_year_completion_upgrade_offer",
+          source: "bible_year_day_completion",
+          dayNumber,
+          label,
+        },
+      });
+    } catch (error) {
+      console.warn("[BIBLE_YEAR_COMPLETION_UPGRADE] Could not log prompt action:", error);
+    }
   }
 
   async function logStudyNotesUpgradeAction(actionType: ActionType, dayNumber: number | null, label: string) {
@@ -7128,6 +7168,11 @@ export default function DashboardJourneyExperience({
       return;
     }
     if (bibleYearQuickUpgradeContext === "completion") {
+      const dayNumber = bibleYearCompletionUpgradeDayRef.current;
+      void logBibleYearCompletionUpgradeAction(
+        ACTION_TYPE.upgrade_popup_dismissed,
+        `Bible in One Year Day ${dayNumber || "Unknown"} completion upgrade popup closed`,
+      );
       setBibleYearQuickUpgradeOpen(false);
       setBibleYearQuickUpgradeError(null);
       setBibleYearQuickUpgradeContext(null);
@@ -7184,6 +7229,13 @@ export default function DashboardJourneyExperience({
       if (bibleYearQuickUpgradeContext === "day7") {
         void logDayProPromptAction(7, ACTION_TYPE.upgrade_popup_cta_clicked, `Day 7 checkout ${plan} clicked`);
       }
+      if (bibleYearQuickUpgradeContext === "completion") {
+        const dayNumber = bibleYearCompletionUpgradeDayRef.current;
+        void logBibleYearCompletionUpgradeAction(
+          ACTION_TYPE.upgrade_popup_cta_clicked,
+          `Bible in One Year Day ${dayNumber || "Unknown"} completion checkout ${plan} clicked`,
+        );
+      }
       if (shouldContinueDayCompletionAfterUpgradeClick) {
         setBibleYearQuickUpgradeOpen(false);
         setBibleYearQuickUpgradeContext(null);
@@ -7191,7 +7243,14 @@ export default function DashboardJourneyExperience({
         resolveBibleYearCompletionUpgradeGate();
       }
 
-      const upgradeDay = bibleYearQuickUpgradeContext === "day3" ? 3 : bibleYearQuickUpgradeContext === "day7" ? 7 : null;
+      const upgradeDay =
+        bibleYearQuickUpgradeContext === "day3"
+          ? 3
+          : bibleYearQuickUpgradeContext === "day7"
+            ? 7
+            : bibleYearQuickUpgradeContext === "completion"
+              ? bibleYearCompletionUpgradeDayRef.current
+              : null;
       const {
         data: { session },
       } = await supabase.auth.getSession();
@@ -7209,10 +7268,20 @@ export default function DashboardJourneyExperience({
         body: JSON.stringify({
           plan,
           returnTo,
-          checkoutContext: upgradeDay ? `day_${upgradeDay}_upgrade_offer` : "bible_year_quick_upgrade",
-          prompt: upgradeDay ? `day_${upgradeDay}_pro_upgrade` : "bible_year_pro_upgrade",
+          checkoutContext:
+            bibleYearQuickUpgradeContext === "completion"
+              ? "bible_year_completion_upgrade_offer"
+              : upgradeDay
+                ? `day_${upgradeDay}_upgrade_offer`
+                : "bible_year_quick_upgrade",
+          prompt:
+            bibleYearQuickUpgradeContext === "completion"
+              ? "bible_year_completion_upgrade"
+              : upgradeDay
+                ? `day_${upgradeDay}_pro_upgrade`
+                : "bible_year_pro_upgrade",
           journeyDay: upgradeDay || undefined,
-          source: "bible_year_dashboard",
+          source: bibleYearQuickUpgradeContext === "completion" ? "bible_year_day_completion" : "bible_year_dashboard",
         }),
       });
 
@@ -10212,7 +10281,7 @@ Before we understand redemption, we need to understand what God made humanity fo
 
     try {
       if (!isOwnerDashboard && !isPaidUser) {
-        await openBibleYearCompletionUpgradePrompt();
+        await openBibleYearCompletionUpgradePrompt(day);
       }
       await completeBibleYearDayCard(day, "reading");
       if (options?.closeArticle) {
@@ -12574,17 +12643,6 @@ Before we understand redemption, we need to understand what God made humanity fo
           }`}>
             {freeYoutubeUrl ? (
               <>
-                <style jsx>{`
-                  @keyframes bible-year-audio-access-collapse {
-                    0% { opacity: 1; transform: scale(1); max-height: 220px; margin-top: 1rem; }
-                    100% { opacity: 0; transform: scale(0.9); max-height: 0; margin-top: 0; padding-top: 0; padding-bottom: 0; }
-                  }
-                  .bible-year-audio-access-puff {
-                    animation: bible-year-audio-access-collapse 420ms ease forwards;
-                    transform-origin: center top;
-                    overflow: hidden;
-                  }
-                `}</style>
                 <div className="relative flex items-start justify-center">
                   <button
                     type="button"
@@ -12618,64 +12676,21 @@ Before we understand redemption, we need to understand what God made humanity fo
                     autoplay={false}
                   />
                 </div>
-                <div className="mt-5 rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-white px-5 py-5 shadow-[0_14px_30px_rgba(38,63,99,0.08)]">
-                  <div className="grid gap-4 sm:grid-cols-[88px_minmax(0,1fr)] sm:items-center">
-                    <div className="grid h-[88px] w-[88px] place-items-center rounded-full bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-accent,#2f7fe8)]">
-                      <svg viewBox="0 0 24 24" className="h-10 w-10" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-                        <path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z" />
-                        <path d="M8 7h8" />
-                        <path d="M8 11h6" />
-                      </svg>
-                    </div>
-                    <div>
-                      <p className="text-[13px] font-black uppercase tracking-[0.24em] text-[var(--bb-accent,#2f7fe8)]">Today&apos;s Lesson</p>
-                      <p className="mt-3 text-[18px] font-medium leading-9 text-[#20345f] sm:text-[20px] sm:leading-10">
-                        {playerSubline}
-                      </p>
-                    </div>
+                <div className={`mt-4 rounded-[22px] border px-4 py-4 text-center shadow-[0_12px_24px_rgba(38,63,99,0.08)] ${
+                  readingComplete
+                    ? "border-emerald-200 bg-emerald-50/80"
+                    : "border-[var(--bb-card-border,#dbe7f4)] bg-white"
+                }`}>
+                  <div>
+                    <p className={`text-[12px] font-black uppercase tracking-[0.22em] ${readingComplete ? "text-emerald-700" : "text-[var(--bb-accent,#2f7fe8)]"}`}>Today&apos;s Lesson</p>
+                    <p className="mx-auto mt-2 max-w-[34rem] text-[15px] font-medium leading-6 text-[#20345f] line-clamp-2 sm:text-[16px] sm:leading-7">
+                      {playerSubline}
+                    </p>
                   </div>
                 </div>
-                {showAudioAccessCard ? (
-                  <div className={`mt-4 rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-white px-5 py-5 shadow-[0_14px_30px_rgba(38,63,99,0.08)] ${audioAccessDismissState === "puffing" ? "bible-year-audio-access-puff" : ""}`}>
-                    <div className="grid gap-4 sm:grid-cols-[88px_minmax(0,1fr)_auto] sm:items-center">
-                      <div className="grid h-[88px] w-[88px] place-items-center rounded-full bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-accent,#2f7fe8)]">
-                        <svg viewBox="0 0 24 24" className="h-10 w-10" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M4 12a8 8 0 0 1 16 0" />
-                          <path d="M4 12v5a2 2 0 0 0 2 2h1v-7H6a2 2 0 0 0-2 2Z" />
-                          <path d="M20 12v5a2 2 0 0 1-2 2h-1v-7h1a2 2 0 0 1 2 2Z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <p className="text-[13px] font-black uppercase tracking-[0.24em] text-[var(--bb-accent,#2f7fe8)]">Audio Access</p>
-                        <h4 className="mt-2 text-[20px] font-black leading-tight text-[#10224b]">Listen with the App Closed</h4>
-                        <p className="mt-2 text-[15px] font-medium leading-7 text-[#4b5f89]">
-                          Listen while driving, walking, working out, or with your phone locked.
-                        </p>
-                      </div>
-                      <div className="flex flex-col items-start gap-3 sm:items-end">
-                        <button
-                          type="button"
-                          onClick={() => openBibleYearQuickUpgrade("background_audio")}
-                          className="inline-flex min-w-[188px] items-center justify-center gap-2 rounded-[18px] bg-[var(--bb-button,#2f7fe8)] px-5 py-3 text-base font-black text-[var(--bb-button-text,#ffffff)] shadow-[0_14px_28px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)] transition hover:brightness-105"
-                        >
-                          <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                            <rect x="5" y="11" width="14" height="10" rx="2" />
-                            <path d="M8 11V8a4 4 0 1 1 8 0v3" />
-                          </svg>
-                          <span>Unlock Audio</span>
-                        </button>
-                        <button
-                          type="button"
-                          onClick={dismissAudioAccessCard}
-                          className="text-base font-black text-[var(--bb-accent,#2f7fe8)] transition hover:opacity-80"
-                        >
-                          Maybe later
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                ) : null}
+                <div className="mt-4">
+                  {renderBibleYearBackgroundListeningCta(day)}
+                </div>
                 <div className="mt-5">
                   <button
                     type="button"
@@ -12812,7 +12827,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           </article>
         )}
 
-        {!showCompletionMoment ? (freeYoutubeUrl ? renderFreeSupportCards() : renderPaidSupportCards()) : null}
+        {!showCompletionMoment ? renderPaidSupportCards() : null}
 
         <section data-bb-dashboard-tour="journey-map" className="order-2 overflow-hidden rounded-[20px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] shadow-[0_16px_42px_rgba(38,63,99,0.12),inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-xl">
           <button type="button" onClick={openBibleYearSeriesDashboard} className="hidden w-full items-center justify-between gap-3 px-4 py-3.5 text-left transition hover:bg-[var(--bb-surface-soft,#f8fbff)]">
