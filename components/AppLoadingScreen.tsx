@@ -21,7 +21,7 @@ export default function AppLoadingScreen({ className = "" }: Props) {
           className="h-24 w-24 rounded-[24px] object-cover sm:h-28 sm:w-28"
         />
         <p className="mt-4 text-2xl font-black tracking-tight text-[var(--bb-text-primary,#111827)] sm:text-[2rem]">
-          BibleBuddy
+          Bible Buddy
         </p>
         <div className="mt-8 w-44 sm:w-52">
           <div className="h-1.5 overflow-hidden rounded-full bg-[var(--bb-progress-track,#dbe7f4)] sm:h-2">

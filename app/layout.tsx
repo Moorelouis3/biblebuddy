@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
-    statusBarStyle: "black-translucent",
+    statusBarStyle: "default",
     title: "BibleBuddy",
   },
   openGraph: {
@@ -69,7 +69,7 @@ export const viewport: Viewport = {
   maximumScale: 1,
   userScalable: false,
   viewportFit: "cover",
-  themeColor: "#061322",
+  themeColor: "#F7FAFC",
 };
 
 const appThemeFirstPaintScript = `

@@ -35,6 +35,7 @@ import type { BuddyCelebrationUser } from "./BuddyCelebrationModal";
 import UserBadge from "./UserBadge";
 import StreakFlameBadge from "./StreakFlameBadge";
 import StreakFlameEmoji from "./StreakFlameEmoji";
+import AppLoadingScreen from "./AppLoadingScreen";
 import { ACTION_TYPE } from "../lib/actionTypes";
 import { trackNavigationActionOnce } from "../lib/navigationActionTracker";
 import { ACTIVE_STREAK_FLAME_STORAGE_KEY, normalizeFlameCosmeticId, persistActiveStreakFlame, type FlameCosmeticId } from "../lib/flameCosmetics";
@@ -248,7 +249,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   // When loaded inside an iframe (group hub embed), skip the shell entirely
   const [isEmbedded, setIsEmbedded] = useState(false);
-  const [dashboardFullscreenLoading, setDashboardFullscreenLoading] = useState(false);
+  const [dashboardFullscreenLoading, setDashboardFullscreenLoading] = useState(Boolean(pathname?.startsWith("/dashboard")));
+  const [appShellBooting, setAppShellBooting] = useState(Boolean(pathname?.startsWith("/dashboard")));
   useEffect(() => {
     try { setIsEmbedded(window.self !== window.top); } catch { setIsEmbedded(true); }
   }, []);
@@ -257,6 +259,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     if (typeof window === "undefined") return;
 
     const isDashboardRoute = Boolean(pathname?.startsWith("/dashboard"));
+    setDashboardFullscreenLoading(isDashboardRoute);
     if (!isDashboardRoute) {
       setDashboardFullscreenLoading(false);
       return;
@@ -2038,12 +2041,15 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         setFirstLoginOnboardingSaving(false);
       }
 
+      setAppShellBooting(false);
+
     };
 
     getSession();
 
     const { data: listener } = supabase.auth.onAuthStateChange(
       async (_event, session) => {
+        setAppShellBooting(false);
         let activeSession = session;
         if (!activeSession && _event !== "SIGNED_OUT" && browserHasSupabaseAuthCookie()) {
           activeSession = await getSessionWithRefreshGrace();
@@ -2218,6 +2224,11 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const isAdmin = isLoggedIn && userEmail === "moorelouis3@gmail.com";
   const isModerator = normalizeCustomMemberBadge(headerMemberBadge) === "moderator";
   const shouldHideShellChrome = Boolean(pathname?.startsWith("/dashboard")) && dashboardFullscreenLoading;
+  const shouldShowOnlyLoadingScreen = Boolean(pathname?.startsWith("/dashboard")) && appShellBooting;
+
+  if (shouldShowOnlyLoadingScreen) {
+    return <AppLoadingScreen />;
+  }
 
   const shouldShowNavMenu = isLoggedIn && !isBarePage && pathname && !pathname.startsWith("/dashboard");
   const breadcrumbItems = buildBreadcrumbs(pathname);
