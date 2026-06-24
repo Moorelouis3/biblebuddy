@@ -225,6 +225,9 @@ type CompletionUpgradeAnalytics = {
   totalViews: number;
   totalCloses: number;
   totalUpgradeClicks: number;
+  totalLifetimeClicks: number;
+  totalMonthlyClicks: number;
+  totalContinueFreeClicks: number;
   totalSuccessfulUpgrades: number;
   closeRate: number;
   upgradeClickRate: number;
@@ -234,12 +237,18 @@ type CompletionUpgradeAnalytics = {
     views: Array<{ label: string; value: number }>;
     closes: Array<{ label: string; value: number }>;
     upgradeClicks: Array<{ label: string; value: number }>;
+    lifetimeClicks: Array<{ label: string; value: number }>;
+    monthlyClicks: Array<{ label: string; value: number }>;
+    continueFreeClicks: Array<{ label: string; value: number }>;
     successfulUpgrades: Array<{ label: string; value: number }>;
   };
   comparisons: {
     views: { current: number; previous: number; change: number };
     closes: { current: number; previous: number; change: number };
     upgradeClicks: { current: number; previous: number; change: number };
+    lifetimeClicks: { current: number; previous: number; change: number };
+    monthlyClicks: { current: number; previous: number; change: number };
+    continueFreeClicks: { current: number; previous: number; change: number };
     successfulUpgrades: { current: number; previous: number; change: number };
   };
 };
@@ -937,9 +946,25 @@ function collectCompletionUpgradeEventTimestamps(
   actionType: "upgrade_popup_viewed" | "upgrade_popup_dismissed" | "upgrade_popup_cta_clicked",
   startIso: string,
   endIso?: string | null,
+  options?: {
+    cta?: "lifetime" | "monthly" | "continue_free";
+  },
 ) {
   return rows
-    .filter((row) => row.action_type === actionType && isCompletionUpgradeRow(row))
+    .filter((row) => {
+      if (row.action_type !== actionType || !isCompletionUpgradeRow(row)) return false;
+      if (!options?.cta) return true;
+      const metadata = row.event_metadata && typeof row.event_metadata === "object" ? row.event_metadata : {};
+      const cta = typeof metadata.cta === "string" ? metadata.cta.toLowerCase() : "";
+      const label = String(row.action_label || "").toLowerCase();
+      if (options.cta === "lifetime") {
+        return cta === "lifetime" || label.includes("checkout yearly clicked") || label.includes("checkout lifetime clicked");
+      }
+      if (options.cta === "monthly") {
+        return cta === "monthly" || label.includes("checkout monthly clicked");
+      }
+      return cta === "continue_free" || label.includes("continue as free");
+    })
     .map((row) => row.created_at)
     .filter((createdAt): createdAt is string => Boolean(createdAt))
     .filter((createdAt) => isWithinAnalyticsWindow(createdAt, startIso, endIso || null));
@@ -976,17 +1001,26 @@ function buildCompletionUpgradeAnalytics(
   const currentViews = collectCompletionUpgradeEventTimestamps(rows, "upgrade_popup_viewed", startIso, endIso);
   const currentCloses = collectCompletionUpgradeEventTimestamps(rows, "upgrade_popup_dismissed", startIso, endIso);
   const currentClicks = collectCompletionUpgradeEventTimestamps(rows, "upgrade_popup_cta_clicked", startIso, endIso);
+  const currentLifetimeClicks = collectCompletionUpgradeEventTimestamps(rows, "upgrade_popup_cta_clicked", startIso, endIso, { cta: "lifetime" });
+  const currentMonthlyClicks = collectCompletionUpgradeEventTimestamps(rows, "upgrade_popup_cta_clicked", startIso, endIso, { cta: "monthly" });
+  const currentContinueFreeClicks = collectCompletionUpgradeEventTimestamps(rows, "upgrade_popup_dismissed", startIso, endIso, { cta: "continue_free" });
   const currentSuccesses = collectCompletionUpgradeSuccessTimestamps(rows, startIso, endIso);
 
   const previousViews = previousRange ? collectCompletionUpgradeEventTimestamps(rows, "upgrade_popup_viewed", previousRange.startIso, previousRange.endIso) : [];
   const previousCloses = previousRange ? collectCompletionUpgradeEventTimestamps(rows, "upgrade_popup_dismissed", previousRange.startIso, previousRange.endIso) : [];
   const previousClicks = previousRange ? collectCompletionUpgradeEventTimestamps(rows, "upgrade_popup_cta_clicked", previousRange.startIso, previousRange.endIso) : [];
+  const previousLifetimeClicks = previousRange ? collectCompletionUpgradeEventTimestamps(rows, "upgrade_popup_cta_clicked", previousRange.startIso, previousRange.endIso, { cta: "lifetime" }) : [];
+  const previousMonthlyClicks = previousRange ? collectCompletionUpgradeEventTimestamps(rows, "upgrade_popup_cta_clicked", previousRange.startIso, previousRange.endIso, { cta: "monthly" }) : [];
+  const previousContinueFreeClicks = previousRange ? collectCompletionUpgradeEventTimestamps(rows, "upgrade_popup_dismissed", previousRange.startIso, previousRange.endIso, { cta: "continue_free" }) : [];
   const previousSuccesses = previousRange ? collectCompletionUpgradeSuccessTimestamps(rows, previousRange.startIso, previousRange.endIso) : [];
 
   return {
     totalViews: currentViews.length,
     totalCloses: currentCloses.length,
     totalUpgradeClicks: currentClicks.length,
+    totalLifetimeClicks: currentLifetimeClicks.length,
+    totalMonthlyClicks: currentMonthlyClicks.length,
+    totalContinueFreeClicks: currentContinueFreeClicks.length,
     totalSuccessfulUpgrades: currentSuccesses.length,
     closeRate: percent(currentCloses.length, currentViews.length),
     upgradeClickRate: percent(currentClicks.length, currentViews.length),
@@ -996,12 +1030,18 @@ function buildCompletionUpgradeAnalytics(
       views: buildSimpleMetricSeries(currentViews, windowKey),
       closes: buildSimpleMetricSeries(currentCloses, windowKey),
       upgradeClicks: buildSimpleMetricSeries(currentClicks, windowKey),
+      lifetimeClicks: buildSimpleMetricSeries(currentLifetimeClicks, windowKey),
+      monthlyClicks: buildSimpleMetricSeries(currentMonthlyClicks, windowKey),
+      continueFreeClicks: buildSimpleMetricSeries(currentContinueFreeClicks, windowKey),
       successfulUpgrades: buildSimpleMetricSeries(currentSuccesses, windowKey),
     },
     comparisons: {
       views: { current: currentViews.length, previous: previousViews.length, change: percentChange(currentViews.length, previousViews.length) },
       closes: { current: currentCloses.length, previous: previousCloses.length, change: percentChange(currentCloses.length, previousCloses.length) },
       upgradeClicks: { current: currentClicks.length, previous: previousClicks.length, change: percentChange(currentClicks.length, previousClicks.length) },
+      lifetimeClicks: { current: currentLifetimeClicks.length, previous: previousLifetimeClicks.length, change: percentChange(currentLifetimeClicks.length, previousLifetimeClicks.length) },
+      monthlyClicks: { current: currentMonthlyClicks.length, previous: previousMonthlyClicks.length, change: percentChange(currentMonthlyClicks.length, previousMonthlyClicks.length) },
+      continueFreeClicks: { current: currentContinueFreeClicks.length, previous: previousContinueFreeClicks.length, change: percentChange(currentContinueFreeClicks.length, previousContinueFreeClicks.length) },
       successfulUpgrades: { current: currentSuccesses.length, previous: previousSuccesses.length, change: percentChange(currentSuccesses.length, previousSuccesses.length) },
     },
   };

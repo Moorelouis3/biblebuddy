@@ -76,6 +76,7 @@ export default function BibleYearJourneyDashboard() {
   const [userName, setUserName] = useState("Bible Buddy");
   const [profile, setProfile] = useState<DashboardProfile | null>(null);
   const [loading, setLoading] = useState(true);
+  const [bibleYearJourneyReady, setBibleYearJourneyReady] = useState(false);
   const [isOwnerDashboard, setIsOwnerDashboard] = useState(false);
 
   const loadDashboardUser = useCallback(async () => {
@@ -96,6 +97,7 @@ export default function BibleYearJourneyDashboard() {
       (user.email ? user.email.split("@")[0] : "Bible Buddy");
 
     setUserId(user.id);
+    setBibleYearJourneyReady(false);
     setUserName(String(fallbackName || "Bible Buddy"));
     setProfile((current) => current || {
       is_paid: false,
@@ -160,13 +162,15 @@ export default function BibleYearJourneyDashboard() {
     );
   }, [loading]);
 
-  if (loading) {
+  if (loading || !userId) {
     return <DashboardLoadingShell />;
   }
 
   return (
-    <main className="min-h-screen pb-10 text-[#111827]">
-      <div className="mx-auto w-full max-w-3xl px-3 py-4 sm:px-4">
+    <>
+      {!bibleYearJourneyReady ? <DashboardLoadingShell /> : null}
+      <main className="min-h-screen pb-10 text-[#111827]">
+        <div className="mx-auto w-full max-w-3xl px-3 py-4 sm:px-4">
         <DashboardJourneyExperience
           key="bible-year-journey-dashboard"
           userId={userId}
@@ -198,8 +202,10 @@ export default function BibleYearJourneyDashboard() {
           isOwnerDashboard={isOwnerDashboard}
           bibleYearReport={null}
           bibleYearProgressReady
+          onBibleYearProgressLoadedChange={setBibleYearJourneyReady}
         />
-      </div>
-    </main>
+        </div>
+      </main>
+    </>
   );
 }

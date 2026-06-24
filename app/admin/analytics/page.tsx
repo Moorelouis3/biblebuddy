@@ -169,6 +169,9 @@ type CompletionUpgradeAnalytics = {
   totalViews: number;
   totalCloses: number;
   totalUpgradeClicks: number;
+  totalLifetimeClicks: number;
+  totalMonthlyClicks: number;
+  totalContinueFreeClicks: number;
   totalSuccessfulUpgrades: number;
   closeRate: number;
   upgradeClickRate: number;
@@ -178,12 +181,18 @@ type CompletionUpgradeAnalytics = {
     views: Array<{ label: string; value: number }>;
     closes: Array<{ label: string; value: number }>;
     upgradeClicks: Array<{ label: string; value: number }>;
+    lifetimeClicks: Array<{ label: string; value: number }>;
+    monthlyClicks: Array<{ label: string; value: number }>;
+    continueFreeClicks: Array<{ label: string; value: number }>;
     successfulUpgrades: Array<{ label: string; value: number }>;
   };
   comparisons: {
     views: { current: number; previous: number; change: number };
     closes: { current: number; previous: number; change: number };
     upgradeClicks: { current: number; previous: number; change: number };
+    lifetimeClicks: { current: number; previous: number; change: number };
+    monthlyClicks: { current: number; previous: number; change: number };
+    continueFreeClicks: { current: number; previous: number; change: number };
     successfulUpgrades: { current: number; previous: number; change: number };
   };
 };
@@ -987,6 +996,42 @@ function SimpleAnalyticsChartCard({
   );
 }
 
+function CompletionPopupBreakdownChartCard({
+  title,
+  helper,
+  value,
+  points,
+  loading,
+  comparison,
+}: {
+  title: string;
+  helper: string;
+  value: string;
+  points: Array<{ label: string; value: number }>;
+  loading: boolean;
+  comparison?: number | null;
+}) {
+  return (
+    <section className="rounded-[24px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-4 shadow-[0_12px_32px_rgba(15,23,42,0.06)]">
+      <div className="flex items-start justify-between gap-3">
+        <div className="min-w-0">
+          <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">{title}</p>
+          <div className="mt-2 flex flex-wrap items-center gap-2">
+            <p className="text-3xl font-black leading-none tracking-tight text-[var(--bb-text-primary,#101827)]">
+              {loading ? "..." : value}
+            </p>
+            {typeof comparison === "number" ? <ComparisonChip change={comparison} label="vs previous" /> : null}
+          </div>
+          <p className="mt-2 text-xs font-semibold text-[var(--bb-text-secondary,#64748b)]">{helper}</p>
+        </div>
+      </div>
+      <div className="mt-4">
+        <SimpleAnalyticsChart points={points} />
+      </div>
+    </section>
+  );
+}
+
 function CompletionPopupAnalyticsSection({
   stats,
   windowKey,
@@ -1007,6 +1052,32 @@ function CompletionPopupAnalyticsSection({
         loading={loading}
         comparison={windowKey === "lifetime" ? null : comparison}
       />
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
+        <CompletionPopupBreakdownChartCard
+          title="Lifetime CTA"
+          value={loading ? "..." : formatNumber(stats?.totalLifetimeClicks || 0)}
+          helper="Tapped $49.99 lifetime"
+          points={stats?.series.lifetimeClicks || []}
+          loading={loading}
+          comparison={windowKey === "lifetime" ? null : stats?.comparisons.lifetimeClicks.change ?? null}
+        />
+        <CompletionPopupBreakdownChartCard
+          title="Monthly CTA"
+          value={loading ? "..." : formatNumber(stats?.totalMonthlyClicks || 0)}
+          helper="Tapped $4.99 monthly"
+          points={stats?.series.monthlyClicks || []}
+          loading={loading}
+          comparison={windowKey === "lifetime" ? null : stats?.comparisons.monthlyClicks.change ?? null}
+        />
+        <CompletionPopupBreakdownChartCard
+          title="Continue Free"
+          value={loading ? "..." : formatNumber(stats?.totalContinueFreeClicks || 0)}
+          helper="Went on to the next day free"
+          points={stats?.series.continueFreeClicks || []}
+          loading={loading}
+          comparison={windowKey === "lifetime" ? null : stats?.comparisons.continueFreeClicks.change ?? null}
+        />
+      </div>
       <div className="grid grid-cols-2 gap-3">
         <SimpleAnalyticsKpiCard
           title="Shown"
@@ -1031,6 +1102,24 @@ function CompletionPopupAnalyticsSection({
           value={loading ? "..." : formatNumber(stats?.totalSuccessfulUpgrades || 0)}
           helper={`${stats?.upgradeFromClickRate ?? 0}% of clicks converted`}
           accent="blue"
+        />
+        <SimpleAnalyticsKpiCard
+          title="Lifetime Clicks"
+          value={loading ? "..." : formatNumber(stats?.totalLifetimeClicks || 0)}
+          helper="Tapped $49.99 lifetime"
+          accent="violet"
+        />
+        <SimpleAnalyticsKpiCard
+          title="Monthly Clicks"
+          value={loading ? "..." : formatNumber(stats?.totalMonthlyClicks || 0)}
+          helper="Tapped $4.99 monthly"
+          accent="blue"
+        />
+        <SimpleAnalyticsKpiCard
+          title="Continue Free"
+          value={loading ? "..." : formatNumber(stats?.totalContinueFreeClicks || 0)}
+          helper="Went to the next day free"
+          accent="green"
         />
       </div>
     </div>

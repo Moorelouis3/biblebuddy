@@ -1,4 +1,4 @@
-import type { BibleYearDeepStudySection } from "./bibleYearDayOneDeepStudy";
+﻿import type { BibleYearDeepStudySection } from "./bibleYearDayOneDeepStudy";
 
 export const BIBLE_YEAR_DAY_THREE_DEEP_NOTES = `Genesis 5-7 shows what happens when sin spreads from one family into the whole world.
 
@@ -12,59 +12,59 @@ This is where Noah enters the story.
 
 Noah does not live in an easy time. He lives in a generation where almost everything around him is moving away from God. But Genesis says Noah walked with God. That matters because it shows that faithfulness is still possible in a broken world.
 
-🧬 Genesis 5 traces Adam's family line.
+ðŸ§¬ Genesis 5 traces Adam's family line.
 
-⚰️ The phrase "then he died" keeps repeating.
+âš°ï¸ The phrase "then he died" keeps repeating.
 
-🚶 Enoch shows what it means to walk with God.
+ðŸš¶ Enoch shows what it means to walk with God.
 
-🕊️ Noah is born into a tired world longing for comfort.
+ðŸ•Šï¸ Noah is born into a tired world longing for comfort.
 
-🌍 Genesis 6 shows corruption filling the earth.
+ðŸŒ Genesis 6 shows corruption filling the earth.
 
-💔 Violence becomes the public fruit of human sin.
+ðŸ’” Violence becomes the public fruit of human sin.
 
-🛠️ God gives Noah detailed instructions for the ship.
+ðŸ› ï¸ God gives Noah detailed instructions for the ship.
 
-🌧️ Genesis 7 shows judgment beginning.
+ðŸŒ§ï¸ Genesis 7 shows judgment beginning.
 
-🚪 Yahweh shuts Noah in, securing the place of rescue.
+ðŸšª Yahweh shuts Noah in, securing the place of rescue.
 
-> 🔥 **Big idea:** Genesis 5-7 teaches that God judges evil seriously, but He also preserves life mercifully through the refuge He provides.
+> ðŸ”¥ **Big idea:** Genesis 5-7 teaches that God judges evil seriously, but He also preserves life mercifully through the refuge He provides.
 
 # Death Moves Through The Generations
 
 ## Genesis 5:1-5
 
-> 📖 **1** This is the book of the generations of Adam. In the day that God created man, he made him in God's likeness.
+> ðŸ“– **1** This is the book of the generations of Adam. In the day that God created man, he made him in God's likeness.
 >
-> 📖 **2** He created them male and female, and blessed them, and called their name Man, in the day when they were created.
+> ðŸ“– **2** He created them male and female, and blessed them, and called their name Man, in the day when they were created.
 >
-> 📖 **3** Adam lived one hundred thirty years, and became the father of a son in his own likeness, after his image, and named him Seth.
+> ðŸ“– **3** Adam lived one hundred thirty years, and became the father of a son in his own likeness, after his image, and named him Seth.
 >
-> 📖 **4** The days of Adam after he became the father of Seth were eight hundred years, and he became the father of sons and daughters.
+> ðŸ“– **4** The days of Adam after he became the father of Seth were eight hundred years, and he became the father of sons and daughters.
 >
-> 📖 **5** All the days that Adam lived were nine hundred thirty years, then he died.
+> ðŸ“– **5** All the days that Adam lived were nine hundred thirty years, then he died.
 
-## 🧭 What Is Happening Here?
+## ðŸ§­ What Is Happening Here?
 
 Genesis 5 starts with a family record, but it is teaching more than names and ages.
 
-👤 Adam is still connected to God's image.
+ðŸ‘¤ Adam is still connected to God's image.
 
-👶 Seth is born in Adam's likeness and image.
+ðŸ‘¶ Seth is born in Adam's likeness and image.
 
-🏠 Sons and daughters keep filling the family story.
+ðŸ  Sons and daughters keep filling the family story.
 
-⚰️ Adam's long life still ends in death.
+âš°ï¸ Adam's long life still ends in death.
 
-### 📜 "The Book Of The Generations Of Adam"
+### ðŸ“œ "The Book Of The Generations Of Adam"
 
 This phrase tells us Genesis is starting a new family section.
 
 The Bible is not jumping away from creation. It is showing what happened to the people God made after sin entered the world. The story now moves through a real family line.
 
-### 👤 "God Created Man In God's Likeness"
+### ðŸ‘¤ "God Created Man In God's Likeness"
 
 Verse 1 reaches back to Genesis 1.
 
@@ -72,67 +72,67 @@ Even after sin, Genesis reminds us that humanity began with dignity. People are 
 
 This matters because Genesis 5 will talk a lot about death. Before the chapter says people die, it reminds us that people matter.
 
-### 👨‍👩‍👧 "Male And Female... Blessed Them"
+### ðŸ‘¨â€ðŸ‘©â€ðŸ‘§ "Male And Female... Blessed Them"
 
 Verse 2 repeats that God made humanity male and female and blessed them.
 
 The blessing of creation has not disappeared. Families are still growing. Children are still being born. Life is still moving forward. Sin damaged the world, but it did not erase God's original blessing.
 
-### 👶 "A Son In His Own Likeness, After His Image"
+### ðŸ‘¶ "A Son In His Own Likeness, After His Image"
 
 Verse 3 says Adam had a son in his own likeness and image.
 
 This does not mean Seth is no longer in God's image. It means Adam's family now carries both dignity and brokenness. Seth belongs to the human family created by God, but he is also born into the family line affected by Adam's sin.
 
-### ⚰️ "Then He Died"
+### âš°ï¸ "Then He Died"
 
 This is the sentence Genesis wants us to feel.
 
 Adam lived nine hundred thirty years. That sounds incredibly long, but the ending is still the same: then he died. Long life is not the same as eternal life. God's warning in Eden was true. Sin brought death into the human story.
 
-## 🧠 Words To Know
+## ðŸ§  Words To Know
 
-### 📜 Generations
+### ðŸ“œ Generations
 
 **Generations** means family history, family line, or the story that comes from someone.
 
 Genesis uses this word to show whose family line we are following.
 
-### 👤 Likeness And Image
+### ðŸ‘¤ Likeness And Image
 
 **Likeness** and **image** point back to Genesis 1.
 
 They teach that humans were made to represent God in creation.
 
-### ⚰️ Then He Died
+### âš°ï¸ Then He Died
 
 **Then he died** is repeated because death is now part of life outside Eden.
 
 The phrase is simple, but heavy.
 
-## 🗣️ Hebrew Word Study
+## ðŸ—£ï¸ Hebrew Word Study
 
-### 📜 Toledot
+### ðŸ“œ Toledot
 
 **Toledot** is the Hebrew word behind "generations."
 
 It can mean descendants, family record, or the story that comes from a person.
 
-### 👤 Tselem
+### ðŸ‘¤ Tselem
 
 **Tselem** is the Hebrew word behind "image."
 
 In the ancient world, an image represented someone. Genesis says humans are God's image bearers.
 
-## 🏺 Culture And History
+## ðŸº Culture And History
 
 Ancient genealogies preserved identity.
 
 They told people where they came from, what family line they belonged to, and how the story continued. Genesis uses genealogy to teach theology. It shows life continuing, but death spreading.
 
-> 🔥 **Callout:** Genesis 5 is not just counting years. It is showing that every human life still has value, but every human life is now touched by death.
+> ðŸ”¥ **Callout:** Genesis 5 is not just counting years. It is showing that every human life still has value, but every human life is now touched by death.
 
-## 🔗 Bible Connections
+## ðŸ”— Bible Connections
 
 Adam's death connects back to Genesis 3, where God said dust would return to dust.
 
@@ -140,7 +140,7 @@ The image language connects back to Genesis 1.
 
 The family line points forward to Luke 3, where Jesus' genealogy goes back to Adam. Jesus enters the human family marked by death so He can defeat death from inside the story.
 
-## 🙏 What This Teaches Us
+## ðŸ™ What This Teaches Us
 
 The Bible is honest about human life.
 
@@ -150,107 +150,107 @@ People are valuable because God made them. Death is real because sin broke the w
 
 ## Genesis 5:6-20
 
-> 📖 **6** Seth lived one hundred five years, and became the father of Enosh.
+> ðŸ“– **6** Seth lived one hundred five years, and became the father of Enosh.
 >
-> 📖 **8** All the days of Seth were nine hundred twelve years, then he died.
+> ðŸ“– **8** All the days of Seth were nine hundred twelve years, then he died.
 >
-> 📖 **9** Enosh lived ninety years, and became the father of Kenan.
+> ðŸ“– **9** Enosh lived ninety years, and became the father of Kenan.
 >
-> 📖 **11** All the days of Enosh were nine hundred five years, then he died.
+> ðŸ“– **11** All the days of Enosh were nine hundred five years, then he died.
 >
-> 📖 **18** Jared lived one hundred sixty-two years, and became the father of Enoch.
+> ðŸ“– **18** Jared lived one hundred sixty-two years, and became the father of Enoch.
 >
-> 📖 **20** All the days of Jared were nine hundred sixty-two years, then he died.
+> ðŸ“– **20** All the days of Jared were nine hundred sixty-two years, then he died.
 
-## 🧭 What Is Happening Here?
+## ðŸ§­ What Is Happening Here?
 
 This section repeats the same rhythm again and again.
 
-👶 Someone becomes a father.
+ðŸ‘¶ Someone becomes a father.
 
-🏠 Sons and daughters are born.
+ðŸ  Sons and daughters are born.
 
-⏳ Years pass.
+â³ Years pass.
 
-⚰️ Then he died.
+âš°ï¸ Then he died.
 
-### 👶 "Became The Father"
+### ðŸ‘¶ "Became The Father"
 
 The phrase "became the father" shows the family line continuing.
 
 This matters because Genesis 3 promised that the seed of the woman would one day crush the serpent. Genesis 5 keeps tracing the line of human life. The promise has not disappeared.
 
-### 🏠 "Sons And Daughters"
+### ðŸ  "Sons And Daughters"
 
 Genesis only names certain people in the line, but it keeps reminding us there were sons and daughters.
 
 That means these were not empty names. These were households. There were families, daily work, meals, grief, worship, memory, and ordinary life happening between the big Bible moments.
 
-### ⏳ "All The Days"
+### â³ "All The Days"
 
 The phrase "all the days" gathers up a whole life into one sentence.
 
 Genesis is helping us feel time passing. These people lived long lives, but each life still had a boundary. Their days could be counted.
 
-### ⚰️ "Then He Died"
+### âš°ï¸ "Then He Died"
 
 The repeated ending is the point.
 
 Genesis wants the reader to hear death like a drumbeat. Seth died. Enosh died. Kenan died. Mahalalel died. Jared died. The curse is moving through the generations.
 
-### 🌱 Hope Still Moves
+### ðŸŒ± Hope Still Moves
 
 Even though death repeats, life also continues.
 
 That is important. Sin brings death, but God is still preserving the human family. The line keeps moving toward Noah.
 
-## 🧠 Words To Know
+## ðŸ§  Words To Know
 
-### 👶 Fathered
+### ðŸ‘¶ Fathered
 
 **Fathered** means the family line continued through children.
 
 Genesis is tracing the family line that will lead to Noah.
 
-### ⏳ Years
+### â³ Years
 
 **Years** matter because they show real time passing.
 
 The Bible places God's work inside history.
 
-### ⚰️ Died
+### âš°ï¸ Died
 
 **Died** means the warning of Genesis 2 and 3 is now being seen in family history.
 
 Death is not natural in the deepest Bible sense. It is an enemy that entered through sin.
 
-## 🗣️ Hebrew Word Study
+## ðŸ—£ï¸ Hebrew Word Study
 
-### 👶 Yalad
+### ðŸ‘¶ Yalad
 
 **Yalad** is the Hebrew word often behind fathered, begat, or gave birth.
 
 It reminds us that Genesis is tracing life from one generation to another.
 
-### ⚰️ Mut
+### âš°ï¸ Mut
 
 **Mut** is the Hebrew word behind died.
 
 Genesis 5 repeats death because God's word in Eden was true.
 
-## 🏺 Culture And History
+## ðŸº Culture And History
 
 Family lines were one of the main ways ancient people understood identity.
 
 To know someone's family was to know their place in the story. Genesis uses family lines to show that God works through real people, real homes, and real generations.
 
-## 🔗 Bible Connections
+## ðŸ”— Bible Connections
 
 Romans 5 says death came through Adam, but life comes through Christ.
 
 That means Genesis 5 is part of the problem Jesus came to answer.
 
-## 🙏 What This Teaches Us
+## ðŸ™ What This Teaches Us
 
 Ordinary faithfulness matters.
 
@@ -260,93 +260,93 @@ Most of this section is not dramatic. It is birth, family, time, aging, and deat
 
 ## Genesis 5:21-24
 
-> 📖 **21** Enoch lived sixty-five years, and became the father of Methuselah.
+> ðŸ“– **21** Enoch lived sixty-five years, and became the father of Methuselah.
 >
-> 📖 **22** Enoch walked with God after he became the father of Methuselah three hundred years, and became the father of sons and daughters.
+> ðŸ“– **22** Enoch walked with God after he became the father of Methuselah three hundred years, and became the father of sons and daughters.
 >
-> 📖 **23** All the days of Enoch were three hundred sixty-five years.
+> ðŸ“– **23** All the days of Enoch were three hundred sixty-five years.
 >
-> 📖 **24** Enoch walked with God, and he was not, for God took him.
+> ðŸ“– **24** Enoch walked with God, and he was not, for God took him.
 
-## 🧭 What Is Happening Here?
+## ðŸ§­ What Is Happening Here?
 
 Enoch interrupts the pattern.
 
-🚶 Enoch walked with God.
+ðŸš¶ Enoch walked with God.
 
-🏠 Enoch still had sons and daughters.
+ðŸ  Enoch still had sons and daughters.
 
-⏳ Enoch lived three hundred sixty-five years.
+â³ Enoch lived three hundred sixty-five years.
 
-🙌 Enoch was not, because God took him.
+ðŸ™Œ Enoch was not, because God took him.
 
-### 👶 "Became The Father Of Methuselah"
+### ðŸ‘¶ "Became The Father Of Methuselah"
 
 Enoch's story begins like the others.
 
 He becomes a father. He has family responsibilities. He lives in the real world. This is important because walking with God does not mean escaping normal life. Enoch walked with God while being a husband, father, neighbor, and member of a broken world.
 
-### 🚶 "Enoch Walked With God"
+### ðŸš¶ "Enoch Walked With God"
 
 This is the main phrase.
 
 To walk with God means to live in close fellowship with Him. It means Enoch's life moved in God's direction. It does not mean Enoch was perfect or floating above everyone else. It means his life was marked by nearness, trust, and obedience.
 
-### 🏠 "Sons And Daughters"
+### ðŸ  "Sons And Daughters"
 
 The text says Enoch had sons and daughters after Methuselah.
 
 That detail keeps Enoch grounded. His faith was not private fantasy. It happened in daily life. Family life, work, conversations, decisions, and responsibility became the place where he walked with God.
 
-### ⏳ "Three Hundred Sixty-Five Years"
+### â³ "Three Hundred Sixty-Five Years"
 
 Enoch's years are shorter than many around him in Genesis 5.
 
 But the point is not that Enoch had the longest life. The point is that Enoch had a life with God. A long life without God is not better than a faithful life with God.
 
-### 🙌 "He Was Not, For God Took Him"
+### ðŸ™Œ "He Was Not, For God Took Him"
 
 This ending breaks the death pattern.
 
 Genesis does not say, then he died. It says God took him. Enoch becomes a sign that death is real, but death is not stronger than God. The chapter is full of graves, but Enoch's story opens a window of hope.
 
-## 🧠 Words To Know
+## ðŸ§  Words To Know
 
-### 🚶 Walked
+### ðŸš¶ Walked
 
 **Walked** means a way of life.
 
 It describes daily direction, not one emotional moment.
 
-### 🙌 Took
+### ðŸ™Œ Took
 
 **Took** means God received Enoch to Himself.
 
 The text is short, but it clearly shows God doing something different with Enoch.
 
-## 🗣️ Hebrew Word Study
+## ðŸ—£ï¸ Hebrew Word Study
 
-### 🚶 Halak
+### ðŸš¶ Halak
 
 **Halak** is the Hebrew word often used for walk.
 
 It can describe physical walking, but it also describes how someone lives.
 
-### 🙌 Laqach
+### ðŸ™Œ Laqach
 
 **Laqach** means take.
 
 In Genesis 5:24, God is the one who takes Enoch, showing divine action and care.
 
-## 🏺 Culture And History
+## ðŸº Culture And History
 
 Ancient genealogies usually followed predictable patterns.
 
 Enoch's section breaks the pattern, so readers are supposed to notice. The break teaches that fellowship with God is possible even in a dying world.
 
-> 🔥 **Callout:** Enoch lived ordinary family life with extraordinary nearness to God.
+> ðŸ”¥ **Callout:** Enoch lived ordinary family life with extraordinary nearness to God.
 
-## 🔗 Bible Connections
+## ðŸ”— Bible Connections
 
 Hebrews 11 says Enoch was taken so that he would not see death and that he pleased God.
 
@@ -354,7 +354,7 @@ Jude also remembers Enoch as someone who spoke about judgment.
 
 Enoch points forward to the hope that death will not have the final word.
 
-## 🙏 What This Teaches Us
+## ðŸ™ What This Teaches Us
 
 Walking with God happens in real life.
 
@@ -364,99 +364,99 @@ You can walk with God in family responsibilities, work, waiting, grief, and ordi
 
 ## Genesis 5:25-32
 
-> 📖 **25** Methuselah lived one hundred eighty-seven years, and became the father of Lamech.
+> ðŸ“– **25** Methuselah lived one hundred eighty-seven years, and became the father of Lamech.
 >
-> 📖 **28** Lamech lived one hundred eighty-two years, and became the father of a son.
+> ðŸ“– **28** Lamech lived one hundred eighty-two years, and became the father of a son.
 >
-> 📖 **29** He named him Noah, saying, "This same will comfort us in our work and in the toil of our hands, caused by the ground which Yahweh has cursed."
+> ðŸ“– **29** He named him Noah, saying, "This same will comfort us in our work and in the toil of our hands, caused by the ground which Yahweh has cursed."
 >
-> 📖 **32** Noah was five hundred years old, then Noah became the father of Shem, Ham, and Japheth.
+> ðŸ“– **32** Noah was five hundred years old, then Noah became the father of Shem, Ham, and Japheth.
 
-## 🧭 What Is Happening Here?
+## ðŸ§­ What Is Happening Here?
 
 Noah is born into a world that feels tired.
 
-🧓 Methuselah and Lamech continue the family line.
+ðŸ§“ Methuselah and Lamech continue the family line.
 
-😓 Lamech speaks about work, toil, and the cursed ground.
+ðŸ˜“ Lamech speaks about work, toil, and the cursed ground.
 
-🕊️ Noah's name is connected to comfort and rest.
+ðŸ•Šï¸ Noah's name is connected to comfort and rest.
 
-👨‍👦 Noah becomes the father of Shem, Ham, and Japheth.
+ðŸ‘¨â€ðŸ‘¦ Noah becomes the father of Shem, Ham, and Japheth.
 
-### 😓 "Our Work And The Toil Of Our Hands"
+### ðŸ˜“ "Our Work And The Toil Of Our Hands"
 
 Lamech is feeling the weight of Genesis 3.
 
 After Adam sinned, God said the ground would bring pain, thorns, sweat, and difficult labor. Lamech names that pain. Work itself is not bad, but work has become hard because the ground is cursed.
 
-### 🌾 "The Ground Which Yahweh Has Cursed"
+### ðŸŒ¾ "The Ground Which Yahweh Has Cursed"
 
 This phrase directly connects Noah's birth to Eden.
 
 Lamech knows the problem is bigger than one bad week. The world itself is under the effects of sin. The soil, work, bodies, and families are all touched by the fall.
 
-### 🕊️ "This Same Will Comfort Us"
+### ðŸ•Šï¸ "This Same Will Comfort Us"
 
 Lamech hopes Noah will bring comfort.
 
 Noah will not fully remove the curse, but his life will become a major turning point. Through Noah, God will preserve life through judgment.
 
-### 👨‍👦 "Shem, Ham, And Japheth"
+### ðŸ‘¨â€ðŸ‘¦ "Shem, Ham, And Japheth"
 
 These three sons matter because the post-flood world will come through them.
 
 Genesis names them now because the story is preparing for the flood, the nations, and the promise line that will later move through Shem.
 
-## 🧠 Words To Know
+## ðŸ§  Words To Know
 
-### 🕊️ Comfort
+### ðŸ•Šï¸ Comfort
 
 **Comfort** means relief, rest, or encouragement.
 
 Noah's name is connected to the hope that God will bring relief to a tired world.
 
-### 😓 Toil
+### ðŸ˜“ Toil
 
 **Toil** means painful, exhausting work.
 
 It points back to the curse on the ground in Genesis 3.
 
-### 🌾 Cursed Ground
+### ðŸŒ¾ Cursed Ground
 
 **Cursed ground** means creation is no longer experienced the way it was in Eden.
 
 Work is still meaningful, but it is now difficult.
 
-## 🗣️ Hebrew Word Study
+## ðŸ—£ï¸ Hebrew Word Study
 
-### 🕊️ Noach
+### ðŸ•Šï¸ Noach
 
 **Noach** is Noah's name in Hebrew.
 
 It is connected to rest. The sound of his name fits Lamech's hope for comfort.
 
-### 😮‍💨 Nacham
+### ðŸ˜®â€ðŸ’¨ Nacham
 
 **Nacham** can mean comfort or relent depending on context.
 
 Genesis uses wordplay around Noah's name to show that people are longing for relief.
 
-## 🏺 Culture And History
+## ðŸº Culture And History
 
 Names often carried meaning in the ancient world.
 
 Parents named children with hope, memory, grief, prayer, or expectation. Noah's name carries the longing of a tired generation.
 
-> 🔥 **Callout:** Noah's birth shows that people outside Eden are longing for rest they cannot create for themselves.
+> ðŸ”¥ **Callout:** Noah's birth shows that people outside Eden are longing for rest they cannot create for themselves.
 
-## 🔗 Bible Connections
+## ðŸ”— Bible Connections
 
 Noah's connection to rest points forward to bigger rest themes in Scripture.
 
 Jesus later says, "Come to me... and I will give you rest." Noah gives temporary preservation, but Jesus gives deeper rest for the soul.
 
-## 🙏 What This Teaches Us
+## ðŸ™ What This Teaches Us
 
 The Bible understands tired people.
 
@@ -466,109 +466,109 @@ Lamech's words sound like a person who knows life is heavy. God meets that tired
 
 ## Genesis 6:1-8
 
-> 📖 **3** Yahweh said, "My Spirit will not strive with man forever, because he also is flesh; so his days will be one hundred twenty years."
+> ðŸ“– **3** Yahweh said, "My Spirit will not strive with man forever, because he also is flesh; so his days will be one hundred twenty years."
 >
-> 📖 **5** Yahweh saw that the wickedness of man was great in the earth, and that every imagination of the thoughts of man's heart was continually only evil.
+> ðŸ“– **5** Yahweh saw that the wickedness of man was great in the earth, and that every imagination of the thoughts of man's heart was continually only evil.
 >
-> 📖 **6** Yahweh was sorry that he had made man on the earth, and it grieved him in his heart.
+> ðŸ“– **6** Yahweh was sorry that he had made man on the earth, and it grieved him in his heart.
 >
-> 📖 **7** Yahweh said, "I will destroy man whom I have created from the surface of the ground."
+> ðŸ“– **7** Yahweh said, "I will destroy man whom I have created from the surface of the ground."
 >
-> 📖 **8** But Noah found favor in Yahweh's eyes.
+> ðŸ“– **8** But Noah found favor in Yahweh's eyes.
 
-## 🧭 What Is Happening Here?
+## ðŸ§­ What Is Happening Here?
 
 Genesis 6 shows sin spreading deeply.
 
-🌍 Wickedness becomes great in the earth.
+ðŸŒ Wickedness becomes great in the earth.
 
-🧠 Human thoughts are continually bent toward evil.
+ðŸ§  Human thoughts are continually bent toward evil.
 
-💔 Yahweh is grieved in His heart.
+ðŸ’” Yahweh is grieved in His heart.
 
-⚖️ Judgment is announced.
+âš–ï¸ Judgment is announced.
 
-✨ Noah finds favor in Yahweh's eyes.
+âœ¨ Noah finds favor in Yahweh's eyes.
 
-### 🌍 "Wickedness Of Man Was Great In The Earth"
+### ðŸŒ "Wickedness Of Man Was Great In The Earth"
 
 Sin is no longer only one hidden act.
 
 It has spread through human society. Genesis says wickedness was great, meaning evil had grown strong and public. The world God made good is now filled with human rebellion.
 
-### 🧠 "Every Imagination Of The Thoughts"
+### ðŸ§  "Every Imagination Of The Thoughts"
 
 This phrase moves from actions to the inner life.
 
 God sees more than behavior. He sees imagination, thoughts, motives, and desires. The problem is not only what people do with their hands. It is what is happening in the heart.
 
-### 🔁 "Continually Only Evil"
+### ðŸ” "Continually Only Evil"
 
 The wording is intense.
 
 Continually means ongoing. Only evil means the direction of the heart is deeply corrupted. Genesis is showing total moral collapse.
 
-### 💔 "It Grieved Him In His Heart"
+### ðŸ’” "It Grieved Him In His Heart"
 
 God is not cold about human evil.
 
 Yahweh grieves. This shows that sin matters personally to God. Evil wounds the world God loves. Judgment comes from a holy God who deeply cares about what sin destroys.
 
-### ✨ "But Noah Found Favor"
+### âœ¨ "But Noah Found Favor"
 
 This is the turn in the story.
 
 The world is corrupt, but grace is still present. Noah finding favor does not mean Noah saved himself. Favor means grace. God is about to preserve life through Noah.
 
-## 🧠 Words To Know
+## ðŸ§  Words To Know
 
-### 🌍 Wickedness
+### ðŸŒ Wickedness
 
 **Wickedness** means evil that is active, strong, and opposed to God.
 
 Genesis says it became great in the earth.
 
-### 🧠 Imagination
+### ðŸ§  Imagination
 
 **Imagination** points to the plans and thoughts forming inside a person.
 
 God sees the heart, not just outside behavior.
 
-### ✨ Favor
+### âœ¨ Favor
 
 **Favor** means grace or kindness shown by God.
 
 Noah's hope begins with God's favor.
 
-## 🗣️ Hebrew Word Study
+## ðŸ—£ï¸ Hebrew Word Study
 
-### 💔 Ra'ah
+### ðŸ’” Ra'ah
 
 **Ra'ah** is connected to evil or wickedness.
 
 In Genesis 6, the word shows moral evil spreading through humanity.
 
-### ✨ Chen
+### âœ¨ Chen
 
 **Chen** is the Hebrew word often translated favor or grace.
 
 Noah found chen in Yahweh's eyes, meaning God showed him gracious favor.
 
-## 🏺 Culture And History
+## ðŸº Culture And History
 
 Ancient flood stories often blame humans for being noisy or annoying.
 
 Genesis is different. The problem is moral evil. God judges because violence and corruption have filled the world.
 
-> 🔥 **Callout:** Genesis 6 teaches that God sees both public evil and hidden heart corruption.
+> ðŸ”¥ **Callout:** Genesis 6 teaches that God sees both public evil and hidden heart corruption.
 
-## 🔗 Bible Connections
+## ðŸ”— Bible Connections
 
 Jesus later compares the days of Noah to a world unprepared for judgment.
 
 Romans 3 also says sin is a heart-deep problem. Humanity needs more than better circumstances. Humanity needs grace.
 
-## 🙏 What This Teaches Us
+## ðŸ™ What This Teaches Us
 
 God is patient, but He is not passive.
 
@@ -578,107 +578,107 @@ He sees evil. He grieves over evil. He judges evil. But He also gives grace.
 
 ## Genesis 6:9-13
 
-> 📖 **9** This is the history of the generations of Noah. Noah was a righteous man, blameless among the people of his time. Noah walked with God.
+> ðŸ“– **9** This is the history of the generations of Noah. Noah was a righteous man, blameless among the people of his time. Noah walked with God.
 >
-> 📖 **11** The earth was corrupt before God, and the earth was filled with violence.
+> ðŸ“– **11** The earth was corrupt before God, and the earth was filled with violence.
 >
-> 📖 **12** God saw the earth, and saw that it was corrupt, for all flesh had corrupted their way on the earth.
+> ðŸ“– **12** God saw the earth, and saw that it was corrupt, for all flesh had corrupted their way on the earth.
 >
-> 📖 **13** God said to Noah, "The end of all flesh has come before me, for the earth is filled with violence through them. Behold, I will destroy them with the earth."
+> ðŸ“– **13** God said to Noah, "The end of all flesh has come before me, for the earth is filled with violence through them. Behold, I will destroy them with the earth."
 
-## 🧭 What Is Happening Here?
+## ðŸ§­ What Is Happening Here?
 
 Genesis now focuses on Noah's character and Noah's world.
 
-✅ Noah is called righteous.
+âœ… Noah is called righteous.
 
-🧼 Noah is called blameless among his generation.
+ðŸ§¼ Noah is called blameless among his generation.
 
-🚶 Noah walked with God.
+ðŸš¶ Noah walked with God.
 
-💔 The earth was filled with violence.
+ðŸ’” The earth was filled with violence.
 
-⚖️ God announces judgment.
+âš–ï¸ God announces judgment.
 
-### ✅ "Noah Was A Righteous Man"
+### âœ… "Noah Was A Righteous Man"
 
 Righteous means Noah's life was rightly ordered before God.
 
 This does not mean Noah was sinless. The Bible later shows Noah's weakness. But compared to his generation, Noah's life was turned toward God.
 
-### 🧼 "Blameless Among The People Of His Time"
+### ðŸ§¼ "Blameless Among The People Of His Time"
 
 Blameless means whole, sincere, or complete in devotion.
 
 Noah lived in a corrupt generation, but he was not controlled by the corruption around him. He stood out.
 
-### 🚶 "Noah Walked With God"
+### ðŸš¶ "Noah Walked With God"
 
 This phrase connects Noah to Enoch.
 
 Noah's faith was not only belief in his mind. It shaped his daily walk. He lived with God in a world moving away from God.
 
-### 💔 "Filled With Violence"
+### ðŸ’” "Filled With Violence"
 
 Violence is the visible fruit of sin.
 
 Cain killed Abel in Genesis 4. Lamech bragged about violence. Now the earth is filled with violence. Sin has grown from one family murder into a world condition.
 
-### ⚖️ "The End Of All Flesh Has Come Before Me"
+### âš–ï¸ "The End Of All Flesh Has Come Before Me"
 
 God tells Noah judgment is coming.
 
 This shows that the flood is not random disaster. It is divine judgment against a world corrupted by violence.
 
-## 🧠 Words To Know
+## ðŸ§  Words To Know
 
-### ✅ Righteous
+### âœ… Righteous
 
 **Righteous** means living in a way that is right before God.
 
 Noah is not perfect, but he is faithful.
 
-### 🧼 Blameless
+### ðŸ§¼ Blameless
 
 **Blameless** means whole or sincere.
 
 It points to Noah's integrity among his generation.
 
-### 💔 Violence
+### ðŸ’” Violence
 
 **Violence** means harm, cruelty, and bloodshed.
 
 Genesis says the earth was filled with it.
 
-## 🗣️ Hebrew Word Study
+## ðŸ—£ï¸ Hebrew Word Study
 
-### ✅ Tsaddiq
+### âœ… Tsaddiq
 
 **Tsaddiq** is the Hebrew word behind righteous.
 
 It describes someone who lives rightly in relationship to God and others.
 
-### 🧼 Tamim
+### ðŸ§¼ Tamim
 
 **Tamim** means blameless, whole, or complete.
 
 It does not mean Noah had no sin. It means his life had integrity before God.
 
-### 💔 Hamas
+### ðŸ’” Hamas
 
 **Hamas** is the Hebrew word translated violence.
 
 It describes destructive wrongdoing, oppression, and harm.
 
-## 🏺 Culture And History
+## ðŸº Culture And History
 
 Noah's righteousness is described against the background of his generation.
 
 Ancient readers would understand the pressure of belonging to a group. Noah's faithfulness means he did not simply follow the moral direction of his culture.
 
-> 🔥 **Callout:** Noah shows that one person can walk with God even when the world around them is corrupt.
+> ðŸ”¥ **Callout:** Noah shows that one person can walk with God even when the world around them is corrupt.
 
-## 🔗 Bible Connections
+## ðŸ”— Bible Connections
 
 Hebrews 11 says Noah acted by faith when warned about things not yet seen.
 
@@ -686,7 +686,7 @@ Peter later calls Noah a preacher of righteousness.
 
 Jesus uses Noah's days as a warning about being spiritually asleep before judgment.
 
-## 🙏 What This Teaches Us
+## ðŸ™ What This Teaches Us
 
 Faithfulness can be lonely, but it is possible.
 
@@ -696,133 +696,133 @@ Noah did not need the whole world to agree with him in order to obey God.
 
 ## Genesis 6:14-22
 
-> 📖 **14** Make a ship of gopher wood. You shall make rooms in the ship, and shall seal it inside and outside with pitch.
+> ðŸ“– **14** Make a ship of gopher wood. You shall make rooms in the ship, and shall seal it inside and outside with pitch.
 >
-> 📖 **15** This is how you shall make it. The length of the ship will be three hundred cubits, its width fifty cubits, and its height thirty cubits.
+> ðŸ“– **15** This is how you shall make it. The length of the ship will be three hundred cubits, its width fifty cubits, and its height thirty cubits.
 >
-> 📖 **18** But I will establish my covenant with you. You shall come into the ship, you, your sons, your wife, and your sons' wives with you.
+> ðŸ“– **18** But I will establish my covenant with you. You shall come into the ship, you, your sons, your wife, and your sons' wives with you.
 >
-> 📖 **19** Of every living thing of all flesh, you shall bring two of every sort into the ship, to keep them alive with you.
+> ðŸ“– **19** Of every living thing of all flesh, you shall bring two of every sort into the ship, to keep them alive with you.
 >
-> 📖 **22** Thus Noah did. He did all that God commanded him.
+> ðŸ“– **22** Thus Noah did. He did all that God commanded him.
 
-## 🧭 What Is Happening Here?
+## ðŸ§­ What Is Happening Here?
 
 God gives Noah a rescue plan with details.
 
-🛠️ Noah must make a ship.
+ðŸ› ï¸ Noah must make a ship.
 
-📏 God gives measurements.
+ðŸ“ God gives measurements.
 
-🧴 The ship must be sealed with pitch.
+ðŸ§´ The ship must be sealed with pitch.
 
-🤝 God promises covenant.
+ðŸ¤ God promises covenant.
 
-🐾 Animals will be kept alive.
+ðŸ¾ Animals will be kept alive.
 
-✅ Noah does all God commanded.
+âœ… Noah does all God commanded.
 
-### 🛠️ "Make A Ship"
+### ðŸ› ï¸ "Make A Ship"
 
 God does not only tell Noah judgment is coming.
 
 God gives Noah a concrete act of obedience. Noah's faith will take shape in wood, rooms, measurements, pitch, labor, and time.
 
-### 🧴 "Seal It Inside And Outside With Pitch"
+### ðŸ§´ "Seal It Inside And Outside With Pitch"
 
 The pitch made the ship waterproof.
 
 This detail shows that God's rescue is not vague. The ship must actually preserve life through water. God cares about the practical details of salvation.
 
-### 📏 "This Is How You Shall Make It"
+### ðŸ“ "This Is How You Shall Make It"
 
 God gives dimensions.
 
 Noah does not invent his own rescue plan. He receives God's instructions and obeys them. The ship is God's provided refuge, built according to God's word.
 
-### 🤝 "I Will Establish My Covenant With You"
+### ðŸ¤ "I Will Establish My Covenant With You"
 
 Covenant is the promise at the center of the instructions.
 
 God is not only saving Noah from water. God is binding Himself to preserve Noah, his family, and the living creatures with him.
 
-### 🐾 "To Keep Them Alive With You"
+### ðŸ¾ "To Keep Them Alive With You"
 
 The ship is about preserving life.
 
 Judgment is coming, but God's purpose is not the end of creation. God preserves animals and humans so life can continue.
 
-### ✅ "Noah Did All"
+### âœ… "Noah Did All"
 
 This is Noah's obedience.
 
 The verse does not say Noah argued, delayed, redesigned the ship, or waited until rain started. Noah did all that God commanded.
 
-## 🧠 Words To Know
+## ðŸ§  Words To Know
 
-### 🛠️ Ship
+### ðŸ› ï¸ Ship
 
 **Ship** is the rescue vessel God tells Noah to build.
 
 It becomes the place where life is preserved through judgment.
 
-### 🧴 Pitch
+### ðŸ§´ Pitch
 
 **Pitch** was a sealing material.
 
 It kept water out and helped the ship survive the flood.
 
-### 🤝 Covenant
+### ðŸ¤ Covenant
 
 **Covenant** is a serious promise or relationship commitment.
 
 God promises to establish His covenant with Noah.
 
-## 🗣️ Hebrew Word Study
+## ðŸ—£ï¸ Hebrew Word Study
 
-### 🛠️ Tevah
+### ðŸ› ï¸ Tevah
 
 **Tevah** is the Hebrew word used for Noah's ship.
 
 The same word is used later for the basket that carries baby Moses on the water. Both are small places of rescue through water.
 
-### 🧴 Kaphar
+### ðŸ§´ Kaphar
 
 **Kaphar** is connected to covering or sealing.
 
 The pitch covers the ship so water cannot destroy what is inside.
 
-### 🤝 Berit
+### ðŸ¤ Berit
 
 **Berit** means covenant.
 
 Noah's rescue is tied to God's promise, not just Noah's skill.
 
-## 🏺 Culture And History
+## ðŸº Culture And History
 
 The ship was not a normal sailing vessel for travel or trade.
 
 It was a floating refuge. The point was not steering to a destination. The point was preservation through judgment.
 
-> 🔥 **Callout:** Faith is not only feeling. For Noah, faith looked like obedient work before the rain came.
+> ðŸ”¥ **Callout:** Faith is not only feeling. For Noah, faith looked like obedient work before the rain came.
 
-## 🔗 Bible Connections
+## ðŸ”— Bible Connections
 
 Noah's ship points forward to Moses' basket, where another life is preserved through water.
 
 It also points to salvation in Christ, because God provides the refuge His people need.
 
-## 🙏 What This Teaches Us
+## ðŸ™ What This Teaches Us
 
 Obedience often becomes practical.
 
 Noah trusted God with details, labor, waiting, and preparation.
 
-# **🚢 Genesis 7:1–3**
+# **🚢 Genesis 7:1–10**
 
 **Entering The Ark**
 
-**🗣️ And The Lord Said Unto Noah**
+**ðŸ—£ï¸ And The Lord Said Unto Noah**
 
 God speaks directly to Noah once again.
 
@@ -832,55 +832,55 @@ Now God gives the next set of instructions as the flood draws near.
 
 The focus shifts from building the ark to entering it.
 
-🗣️ God speaks
+ðŸ—£ï¸ God speaks
 
-👂 Noah receives instructions
+ðŸ‘‚ Noah receives instructions
 
-🚢 The ark is ready
+ðŸš¢ The ark is ready
 
-🌊 The flood is approaching
+ðŸŒŠ The flood is approaching
 
-**🏠 Come Thou And All Thy House Into The Ark**
+**ðŸ  Come Thou And All Thy House Into The Ark**
 
-The word “house” here means household or family.
+The word â€œhouseâ€ here means household or family.
 
-God is not talking about Noah’s possessions.
+God is not talking about Noahâ€™s possessions.
 
-He is talking about the people who belong to Noah’s family.
+He is talking about the people who belong to Noahâ€™s family.
 
 This includes Noah, his wife, his three sons, and their wives.
 
 Eight people will enter the ark together.
 
-🏠 House means household
+ðŸ  House means household
 
-👨 Noah
+ðŸ‘¨ Noah
 
-👩 Noah’s wife
+ðŸ‘© Noahâ€™s wife
 
-👨‍👩‍👦‍👦 Noah’s family enters the ark
+ðŸ‘¨â€ðŸ‘©â€ðŸ‘¦â€ðŸ‘¦ Noahâ€™s family enters the ark
 
-**🙏 For Thee Have I Seen Righteous**
+**ðŸ™ For Thee Have I Seen Righteous**
 
-The word “righteous” means upright, just, or faithful before God.
+The word â€œrighteousâ€ means upright, just, or faithful before God.
 
 This does not mean Noah was sinless.
 
 Rather, Noah trusted God and lived in a way that honored Him.
 
-God sees Noah’s faith and obedience.
+God sees Noahâ€™s faith and obedience.
 
-🙏 Righteous means upright
+ðŸ™ Righteous means upright
 
-👀 God sees Noah’s faithfulness
+ðŸ‘€ God sees Noahâ€™s faithfulness
 
-❤️ Noah trusted God
+â¤ï¸ Noah trusted God
 
-📖 God recognizes his obedience
+ðŸ“– God recognizes his obedience
 
-**🌍 Before Me In This Generation**
+**ðŸŒ Before Me In This Generation**
 
-The word “generation” refers to the people living during Noah’s lifetime.
+The word â€œgenerationâ€ refers to the people living during Noahâ€™s lifetime.
 
 God has already described the earth as being filled with corruption and violence.
 
@@ -888,15 +888,15 @@ Among the people of his day, Noah stood apart.
 
 He was not perfect, but he was living differently from the world around him.
 
-🌍 Refers to Noah’s generation
+ðŸŒ Refers to Noahâ€™s generation
 
-⚠️ The world is corrupt
+âš ï¸ The world is corrupt
 
-👀 God sees the difference
+ðŸ‘€ God sees the difference
 
-🙏 Noah stands apart
+ðŸ™ Noah stands apart
 
-**🐑 Of Every Clean Beast Thou Shalt Take**
+**ðŸ‘ Of Every Clean Beast Thou Shalt Take**
 
 God now gives more detailed instructions about the animals.
 
@@ -906,15 +906,15 @@ Examples later include sheep, goats, cattle, oxen, and certain birds.
 
 Even though Moses had not yet written Leviticus, Noah apparently already understood the difference between clean and unclean animals.
 
-🐑 Clean animals are acceptable for sacrifice
+ðŸ‘ Clean animals are acceptable for sacrifice
 
-🐐 Sheep, goats, and cattle
+ðŸ Sheep, goats, and cattle
 
-📖 Noah understood the distinction
+ðŸ“– Noah understood the distinction
 
-🙏 Worship will continue after the flood
+ðŸ™ Worship will continue after the flood
 
-**7️⃣ By Sevens**
+**7ï¸âƒ£ By Sevens**
 
 God tells Noah to bring extra clean animals onto the ark.
 
@@ -924,15 +924,15 @@ If Noah only brought one pair, sacrificing one would eliminate that animal from 
 
 The extra animals allow both survival and worship.
 
-7️⃣ Extra clean animals
+7ï¸âƒ£ Extra clean animals
 
-🙏 Animals available for sacrifice
+ðŸ™ Animals available for sacrifice
 
-🌱 Species continue after the flood
+ðŸŒ± Species continue after the flood
 
-📖 God is planning ahead
+ðŸ“– God is planning ahead
 
-**👨 The Male And His Female**
+**ðŸ‘¨ The Male And His Female**
 
 God specifies male and female animals.
 
@@ -940,15 +940,15 @@ This ensures reproduction after the flood.
 
 The goal is not merely survival but the continuation of life.
 
-👨 Male
+ðŸ‘¨ Male
 
-👩 Female
+ðŸ‘© Female
 
-🌱 Future generations
+ðŸŒ± Future generations
 
-📖 Life continues after the flood
+ðŸ“– Life continues after the flood
 
-**🐾 Of Beasts That Are Not Clean By Two**
+**ðŸ¾ Of Beasts That Are Not Clean By Two**
 
 Unclean animals are brought in pairs rather than by sevens.
 
@@ -956,15 +956,15 @@ Later in Leviticus, examples of unclean animals include pigs, camels, rabbits, a
 
 God only requires one male and one female of these animals because they are being preserved, not prepared for worship.
 
-🐾 Unclean animals come in pairs
+ðŸ¾ Unclean animals come in pairs
 
-🐖 Pigs and similar animals
+ðŸ– Pigs and similar animals
 
-👨 One male
+ðŸ‘¨ One male
 
-👩 One female
+ðŸ‘© One female
 
-**🐦 Of Fowls Also Of The Air By Sevens**
+**ðŸ¦ Of Fowls Also Of The Air By Sevens**
 
 Fowls means birds.
 
@@ -974,37 +974,34 @@ Like the clean animals, extra birds are brought onto the ark.
 
 Some birds were later used in sacrifices and offerings, which helps explain why more than one pair was needed.
 
-🐦 Fowls means birds
+ðŸ¦ Fowls means birds
 
-🕊️ Doves, ravens, pigeons, and more
+ðŸ•Šï¸ Doves, ravens, pigeons, and more
 
-🙏 Extra birds for preservation and sacrifice
+ðŸ™ Extra birds for preservation and sacrifice
 
-🌱 Life continues after the flood
+ðŸŒ± Life continues after the flood
 
-**🌱 To Keep Seed Alive Upon The Face Of All The Earth**
+**ðŸŒ± To Keep Seed Alive Upon The Face Of All The Earth**
 
-The word “seed” here means offspring, descendants, or future generations.
+The word â€œseedâ€ here means offspring, descendants, or future generations.
 
-God’s goal is not simply to save individual animals.
+Godâ€™s goal is not simply to save individual animals.
 
 His goal is to preserve life so that the earth can be filled again after the flood.
 
 The animals will survive, reproduce, and repopulate the world.
 
-🌱 Seed means offspring
+ðŸŒ± Seed means offspring
 
-🦁 Animals will reproduce
+ðŸ¦ Animals will reproduce
 
-🌍 Life will continue
+ðŸŒ Life will continue
 
-🚢 The future is being preserved
+ðŸš¢ The future is being preserved
 
-# **🌧️ Genesis 7:4–10**
 
-**The Flood Begins**
-
-**⏳ For Yet Seven Days**
+**â³ For Yet Seven Days**
 
 God gives Noah a final countdown before the flood begins.
 
@@ -1014,17 +1011,17 @@ The animals have been gathered.
 
 The time for preparation is almost over.
 
-In seven days, God’s judgment will begin.
+In seven days, Godâ€™s judgment will begin.
 
-⏳ Seven day warning
+â³ Seven day warning
 
-🚢 The ark is ready
+ðŸš¢ The ark is ready
 
-⚠️ Judgment is near
+âš ï¸ Judgment is near
 
-📖 Final preparations
+ðŸ“– Final preparations
 
-**🌧️ I Will Cause It To Rain Upon The Earth**
+**ðŸŒ§ï¸ I Will Cause It To Rain Upon The Earth**
 
 God makes it clear that the coming flood is not a natural accident.
 
@@ -1032,15 +1029,15 @@ The rain is coming because God is sending it.
 
 This is a direct act of divine judgment upon the earth.
 
-🌧️ God sends the rain
+ðŸŒ§ï¸ God sends the rain
 
-⚖️ Judgment is coming
+âš–ï¸ Judgment is coming
 
-🌍 The flood begins with God
+ðŸŒ The flood begins with God
 
-📖 A direct act of God
+ðŸ“– A direct act of God
 
-**⏳ Forty Days And Forty Nights**
+**â³ Forty Days And Forty Nights**
 
 The number forty becomes an important number throughout the Bible.
 
@@ -1048,91 +1045,91 @@ It is often connected with testing, preparation, judgment, or a significant peri
 
 Examples include:
 
-🌧️ Forty days of rain during the flood
+ðŸŒ§ï¸ Forty days of rain during the flood
 
-🏜️ Forty years in the wilderness
+ðŸœï¸ Forty years in the wilderness
 
-🍞 Moses fasting forty days on Mount Sinai
+ðŸž Moses fasting forty days on Mount Sinai
 
-✝️ Jesus fasting forty days in the wilderness
+âœï¸ Jesus fasting forty days in the wilderness
 
-The number does not always mean exactly the same thing, but it often marks an important season in God’s plan.
+The number does not always mean exactly the same thing, but it often marks an important season in Godâ€™s plan.
 
-⏳ Forty is a significant biblical number
+â³ Forty is a significant biblical number
 
-🌧️ Forty days of rain
+ðŸŒ§ï¸ Forty days of rain
 
-🏜️ Forty years in the wilderness
+ðŸœï¸ Forty years in the wilderness
 
-✝️ Jesus fasted forty days
+âœï¸ Jesus fasted forty days
 
-**🌍 Every Living Substance That I Have Made**
+**ðŸŒ Every Living Substance That I Have Made**
 
 God reminds Noah that He is the Creator.
 
 Everything living ultimately belongs to Him.
 
-The flood is not destroying something outside of God’s authority.
+The flood is not destroying something outside of Godâ€™s authority.
 
 It is affecting a creation that God Himself made.
 
-🌍 God created all life
+ðŸŒ God created all life
 
-👀 Everything belongs to Him
+ðŸ‘€ Everything belongs to Him
 
-📖 God is the Creator
+ðŸ“– God is the Creator
 
-⚖️ God has authority over creation
+âš–ï¸ God has authority over creation
 
-**⚖️ Will I Destroy From Off The Face Of The Earth**
+**âš–ï¸ Will I Destroy From Off The Face Of The Earth**
 
 God announces the coming judgment.
 
-The phrase “face of the earth” means the surface of the earth where people and animals live.
+The phrase â€œface of the earthâ€ means the surface of the earth where people and animals live.
 
 The flood will remove the corrupt generation that has filled the earth with violence.
 
-⚖️ Judgment is declared
+âš–ï¸ Judgment is declared
 
-🌍 Refers to life on the earth
+ðŸŒ Refers to life on the earth
 
-🌊 The flood is coming
+ðŸŒŠ The flood is coming
 
-📖 God’s warning is clear
+ðŸ“– Godâ€™s warning is clear
 
-**🙌 Noah Did According**
+**ðŸ™Œ Noah Did According**
 
-This short phrase highlights Noah’s obedience.
+This short phrase highlights Noahâ€™s obedience.
 
 When God spoke, Noah responded.
 
 His faith was shown through action.
 
-🙌 Noah obeyed
+ðŸ™Œ Noah obeyed
 
-👂 He listened to God
+ðŸ‘‚ He listened to God
 
-📖 Faith led to action
+ðŸ“– Faith led to action
 
-🚢 Noah followed through
+ðŸš¢ Noah followed through
 
-**📖 Unto All That The Lord Commanded Him**
+**ðŸ“– Unto All That The Lord Commanded Him**
 
 Noah did not partially obey God.
 
-He followed all of God’s instructions.
+He followed all of Godâ€™s instructions.
 
-The ark, the animals, the food, and the preparations were done according to God’s commands.
+The ark, the animals, the food, and the preparations were done according to Godâ€™s commands.
 
-📖 Noah followed God’s instructions
+ðŸ“– Noah followed Godâ€™s instructions
 
-🙏 Complete obedience
+ðŸ™ Complete obedience
 
-🚢 Everything was prepared
+ðŸš¢ Everything was prepared
 
-👀 Noah trusted God
+ðŸ‘€ Noah trusted God
 
-**⏳ Noah Was Six Hundred Years Old**
+**â³ Noah Was Six Hundred Years Old**
 
 Genesis 5 ended with Noah being 500 years old when his sons were born.
 
@@ -1142,15 +1139,15 @@ About 100 years have passed since the birth of Shem, Ham, and Japheth.
 
 During that time Noah built the ark and prepared for the flood.
 
-⏳ Noah is now 600 years old
+â³ Noah is now 600 years old
 
-👨‍👦‍👦 About 100 years later
+ðŸ‘¨â€ðŸ‘¦â€ðŸ‘¦ About 100 years later
 
-🚢 The ark has been built
+ðŸš¢ The ark has been built
 
-📖 Time has passed
+ðŸ“– Time has passed
 
-**🌊 When The Flood Of Waters Was Upon The Earth**
+**ðŸŒŠ When The Flood Of Waters Was Upon The Earth**
 
 The moment God warned about has finally arrived.
 
@@ -1158,33 +1155,33 @@ The flood is no longer a future event.
 
 The waters are beginning to come upon the earth.
 
-🌊 The flood begins
+ðŸŒŠ The flood begins
 
-⚖️ Judgment arrives
+âš–ï¸ Judgment arrives
 
-📖 God’s warning comes true
+ðŸ“– Godâ€™s warning comes true
 
-🌍 The earth is changing
+ðŸŒ The earth is changing
 
-**🚢 Noah Went In**
+**ðŸš¢ Noah Went In**
 
-Noah obeys God’s command and enters the ark.
+Noah obeys Godâ€™s command and enters the ark.
 
 This is an act of faith.
 
 Noah enters before the floodwaters arrive.
 
-He trusts God’s warning and acts upon it.
+He trusts Godâ€™s warning and acts upon it.
 
-🚢 Noah enters the ark
+ðŸš¢ Noah enters the ark
 
-🙏 An act of faith
+ðŸ™ An act of faith
 
-👂 Noah obeys God
+ðŸ‘‚ Noah obeys God
 
-⚠️ Judgment is near
+âš ï¸ Judgment is near
 
-**👨‍👩‍👦‍👦 His Sons, His Wife, And His Sons’ Wives**
+**ðŸ‘¨â€ðŸ‘©â€ðŸ‘¦â€ðŸ‘¦ His Sons, His Wife, And His Sonsâ€™ Wives**
 
 The entire family enters the ark together.
 
@@ -1192,31 +1189,31 @@ These are the same eight people God promised to preserve.
 
 Through them, humanity will continue after the flood.
 
-👨 Noah
+ðŸ‘¨ Noah
 
-👩 Noah’s wife
+ðŸ‘© Noahâ€™s wife
 
-👨‍👦‍👦 His three sons
+ðŸ‘¨â€ðŸ‘¦â€ðŸ‘¦ His three sons
 
-👩‍👩‍👦 Their wives
+ðŸ‘©â€ðŸ‘©â€ðŸ‘¦ Their wives
 
-**🌊 Because Of The Waters Of The Flood**
+**ðŸŒŠ Because Of The Waters Of The Flood**
 
 The reason they enter the ark is because the flood is coming.
 
 Noah is not entering out of fear.
 
-He is entering because he believes God’s warning.
+He is entering because he believes Godâ€™s warning.
 
-🌊 The flood is approaching
+ðŸŒŠ The flood is approaching
 
-🙏 Noah believes God
+ðŸ™ Noah believes God
 
-🚢 The ark provides safety
+ðŸš¢ The ark provides safety
 
-📖 Faith produces action
+ðŸ“– Faith produces action
 
-**🐑 Of Clean Beasts And Of Beasts That Are Not Clean**
+**ðŸ‘ Of Clean Beasts And Of Beasts That Are Not Clean**
 
 The animals arrive exactly as God commanded.
 
@@ -1224,17 +1221,17 @@ Both clean and unclean animals are included.
 
 Clean animals were acceptable for sacrifice and worship.
 
-Unclean animals were still preserved because they were part of God’s creation.
+Unclean animals were still preserved because they were part of Godâ€™s creation.
 
-🐑 Clean animals
+ðŸ‘ Clean animals
 
-🐾 Unclean animals
+ðŸ¾ Unclean animals
 
-🌍 All kinds are preserved
+ðŸŒ All kinds are preserved
 
-📖 God cares for creation
+ðŸ“– God cares for creation
 
-**🐦 And Of Fowls**
+**ðŸ¦ And Of Fowls**
 
 Fowls means birds.
 
@@ -1242,47 +1239,47 @@ This includes creatures such as doves, ravens, pigeons, eagles, hawks, and many 
 
 The birds are preserved alongside the land animals.
 
-🐦 Fowls means birds
+ðŸ¦ Fowls means birds
 
-🕊️ Doves and ravens
+ðŸ•Šï¸ Doves and ravens
 
-🦅 Eagles and hawks
+ðŸ¦… Eagles and hawks
 
-🌍 Bird life is preserved
+ðŸŒ Bird life is preserved
 
-**🐛 And Of Every Thing That Creepeth Upon The Earth**
+**ðŸ› And Of Every Thing That Creepeth Upon The Earth**
 
 This includes smaller creatures that move along the ground.
 
-God’s preservation extends to all kinds of land life, from the largest animals to the smallest.
+Godâ€™s preservation extends to all kinds of land life, from the largest animals to the smallest.
 
-🐛 Small creatures included
+ðŸ› Small creatures included
 
-🦎 Lizards and reptiles
+ðŸ¦Ž Lizards and reptiles
 
-🐜 Insects and bugs
+ðŸœ Insects and bugs
 
-🌍 All creation is represented
+ðŸŒ All creation is represented
 
-**🐾 There Went In Two And Two Unto Noah Into The Ark**
+**ðŸ¾ There Went In Two And Two Unto Noah Into The Ark**
 
 The animals enter in pairs just as God commanded.
 
-The emphasis is on God’s provision.
+The emphasis is on Godâ€™s provision.
 
 Noah does not gather them through his own power.
 
 God brings them to the ark.
 
-🐾 Animals enter in pairs
+ðŸ¾ Animals enter in pairs
 
-🚢 They come into the ark
+ðŸš¢ They come into the ark
 
-🙏 God provides
+ðŸ™ God provides
 
-📖 God’s plan unfolds
+ðŸ“– Godâ€™s plan unfolds
 
-**👨 The Male And The Female**
+**ðŸ‘¨ The Male And The Female**
 
 Each pair consists of a male and a female.
 
@@ -1290,31 +1287,31 @@ This allows the animals to reproduce after the flood.
 
 God is preserving future generations of life.
 
-👨 Male
+ðŸ‘¨ Male
 
-👩 Female
+ðŸ‘© Female
 
-🌱 Future reproduction
+ðŸŒ± Future reproduction
 
-🌍 Life continues
+ðŸŒ Life continues
 
-**📖 As God Had Commanded Noah**
+**ðŸ“– As God Had Commanded Noah**
 
-The animals enter exactly according to God’s instructions.
+The animals enter exactly according to Godâ€™s instructions.
 
 This phrase again emphasizes obedience.
 
-Everything is happening according to God’s plan.
+Everything is happening according to Godâ€™s plan.
 
-📖 God commanded
+ðŸ“– God commanded
 
-🙌 Noah obeyed
+ðŸ™Œ Noah obeyed
 
-🐾 The animals obeyed
+ðŸ¾ The animals obeyed
 
-🚢 God’s plan is fulfilled
+ðŸš¢ Godâ€™s plan is fulfilled
 
-**⏳ It Came To Pass After Seven Days**
+**â³ It Came To Pass After Seven Days**
 
 The seven day countdown God gave Noah has now ended.
 
@@ -1322,15 +1319,15 @@ The waiting period is over.
 
 The flood is about to begin.
 
-⏳ Seven days have passed
+â³ Seven days have passed
 
-⚠️ The countdown ends
+âš ï¸ The countdown ends
 
-🌊 The flood begins
+ðŸŒŠ The flood begins
 
-📖 God’s timing is perfect
+ðŸ“– Godâ€™s timing is perfect
 
-**🌊 The Waters Of The Flood Were Upon The Earth**
+**ðŸŒŠ The Waters Of The Flood Were Upon The Earth**
 
 The floodwaters finally arrive.
 
@@ -1338,19 +1335,19 @@ What God promised in warning now becomes reality.
 
 The judgment Noah spent decades preparing for has begun.
 
-🌊 The flood arrives
+ðŸŒŠ The flood arrives
 
-⚖️ Judgment begins
+âš–ï¸ Judgment begins
 
-📖 God’s word proves true
+ðŸ“– Godâ€™s word proves true
 
-🚢 Noah is safe inside the ark
+ðŸš¢ Noah is safe inside the ark
 
-# 🚢 Genesis 7:11–17
+# ðŸš¢ Genesis 7:11â€“17
 
 **The Flood Begins**
 
-**🎂 In The Six Hundredth Year Of Noah's Life**
+**ðŸŽ‚ In The Six Hundredth Year Of Noah's Life**
 
 Noah is now 600 years old when the Flood begins.
 
@@ -1362,15 +1359,15 @@ For decades Noah obeyed God, built the ark, and waited for what God promised.
 
 Sometimes God's instructions require years of faithful obedience before we see the results.
 
-🎂 Noah is 600 years old
+ðŸŽ‚ Noah is 600 years old
 
-⏳ About 100 years have passed
+â³ About 100 years have passed
 
-🚢 The ark is complete
+ðŸš¢ The ark is complete
 
-🙏 Noah waited faithfully
+ðŸ™ Noah waited faithfully
 
-**📅 In The Second Month, The Seventeenth Day Of The Month**
+**ðŸ“… In The Second Month, The Seventeenth Day Of The Month**
 
 God records the exact date the Flood began.
 
@@ -1380,15 +1377,15 @@ The Bible presents the Flood as a real event that happened at a specific time in
 
 The detailed date emphasizes the historical nature of the account.
 
-📅 An exact date is given
+ðŸ“… An exact date is given
 
-📖 A specific historical event
+ðŸ“– A specific historical event
 
-🌍 The Flood begins
+ðŸŒ The Flood begins
 
-⏳ God's timing arrives
+â³ God's timing arrives
 
-**🌊 All The Fountains Of The Great Deep Were Broken Up**
+**ðŸŒŠ All The Fountains Of The Great Deep Were Broken Up**
 
 The phrase "great deep" refers to the vast waters beneath the earth.
 
@@ -1398,15 +1395,15 @@ Water also erupted from below the earth's surface.
 
 God used both the waters above and the waters below to bring judgment upon the world.
 
-🌊 Waters burst forth from below
+ðŸŒŠ Waters burst forth from below
 
-🌍 The earth itself is affected
+ðŸŒ The earth itself is affected
 
-💧 More than ordinary rainfall
+ðŸ’§ More than ordinary rainfall
 
-⚖️ God's judgment begins
+âš–ï¸ God's judgment begins
 
-**☁️ The Windows Of Heaven Were Opened**
+**â˜ï¸ The Windows Of Heaven Were Opened**
 
 This expression describes rain pouring down from above.
 
@@ -1416,15 +1413,15 @@ The Flood came from both directions.
 
 Water rose from beneath the earth while rain fell from the sky.
 
-☁️ Rain falls from above
+â˜ï¸ Rain falls from above
 
-💧 Heaven's waters are released
+ðŸ’§ Heaven's waters are released
 
-🌊 Water comes from every direction
+ðŸŒŠ Water comes from every direction
 
-⚖️ God's judgment continues
+âš–ï¸ God's judgment continues
 
-**🌧️ Forty Days And Forty Nights**
+**ðŸŒ§ï¸ Forty Days And Forty Nights**
 
 Rain fell continuously for forty days and forty nights.
 
@@ -1434,15 +1431,15 @@ The amount of water involved was unlike anything humanity had ever experienced.
 
 Throughout Scripture, the number forty is often connected with testing, judgment, and preparation.
 
-🌧️ Continuous rainfall
+ðŸŒ§ï¸ Continuous rainfall
 
-⏳ Forty days and nights
+â³ Forty days and nights
 
-⚖️ A time of judgment
+âš–ï¸ A time of judgment
 
-📖 A significant biblical number
+ðŸ“– A significant biblical number
 
-**🚪 In The Selfsame Day Entered Noah**
+**ðŸšª In The Selfsame Day Entered Noah**
 
 The phrase "selfsame day" means "that very day."
 
@@ -1452,15 +1449,15 @@ The day Noah entered the ark was the same day the Flood began.
 
 There was no delay between God's command and God's judgment.
 
-🚪 Selfsame means "that very day"
+ðŸšª Selfsame means "that very day"
 
-⏳ No delay
+â³ No delay
 
-🚢 Noah enters the ark
+ðŸš¢ Noah enters the ark
 
-⚖️ Judgment is about to begin
+âš–ï¸ Judgment is about to begin
 
-**🦁 Every Beast After His Kind**
+**ðŸ¦ Every Beast After His Kind**
 
 God preserved every type of land animal He intended to save.
 
@@ -1468,15 +1465,15 @@ The phrase "after his kind" means each animal reproduced according to its own ki
 
 God's focus was preserving life for the future world after the Flood.
 
-🦁 Land animals enter
+ðŸ¦ Land animals enter
 
-🌱 Each kind is preserved
+ðŸŒ± Each kind is preserved
 
-🚢 Life is protected
+ðŸš¢ Life is protected
 
-🌍 The future is being prepared
+ðŸŒ The future is being prepared
 
-**🐄 All The Cattle After Their Kind**
+**ðŸ„ All The Cattle After Their Kind**
 
 Cattle refers to domesticated animals such as oxen, cattle, sheep, and goats.
 
@@ -1484,15 +1481,15 @@ These animals would be important for food, work, sacrifice, and daily life after
 
 God was preserving both wild animals and domesticated animals.
 
-🐄 Domesticated animals
+ðŸ„ Domesticated animals
 
-🐑 Sheep and goats
+ðŸ‘ Sheep and goats
 
-🌱 Life after the Flood
+ðŸŒ± Life after the Flood
 
-🚢 God preserves them
+ðŸš¢ God preserves them
 
-**🐛 Every Creeping Thing That Creepeth Upon The Earth**
+**ðŸ› Every Creeping Thing That Creepeth Upon The Earth**
 
 This refers to smaller land creatures that move along the ground.
 
@@ -1500,15 +1497,15 @@ Examples may include insects, reptiles, and other small creatures.
 
 Even the smallest forms of life were included in God's plan of preservation.
 
-🐛 Small creatures
+ðŸ› Small creatures
 
-🦎 Reptiles and insects
+ðŸ¦Ž Reptiles and insects
 
-🌍 Part of creation
+ðŸŒ Part of creation
 
-🚢 Preserved on the ark
+ðŸš¢ Preserved on the ark
 
-**🐦 Every Fowl After His Kind**
+**ðŸ¦ Every Fowl After His Kind**
 
 Fowl simply means birds.
 
@@ -1516,15 +1513,15 @@ This would include doves, ravens, pigeons, hawks, eagles, and many other birds.
 
 God preserved the creatures of the air just as He preserved the creatures of the land.
 
-🐦 Fowl means birds
+ðŸ¦ Fowl means birds
 
-🕊️ Various bird species
+ðŸ•Šï¸ Various bird species
 
-🌱 Future generations preserved
+ðŸŒ± Future generations preserved
 
-🚢 Brought onto the ark
+ðŸš¢ Brought onto the ark
 
-**👥 Two And Two Unto Noah Into The Ark**
+**ðŸ‘¥ Two And Two Unto Noah Into The Ark**
 
 The animals came in pairs.
 
@@ -1534,15 +1531,15 @@ God was not only saving life.
 
 He was preparing for life to continue.
 
-👥 Animals come in pairs
+ðŸ‘¥ Animals come in pairs
 
-👨 Male
+ðŸ‘¨ Male
 
-👩 Female
+ðŸ‘© Female
 
-🌱 Future generations
+ðŸŒ± Future generations
 
-**💨 Wherein Is The Breath Of Life**
+**ðŸ’¨ Wherein Is The Breath Of Life**
 
 The breath of life refers to living creatures that possess God's gift of physical life.
 
@@ -1550,15 +1547,15 @@ This phrase highlights the difference between living creatures and lifeless thin
 
 God was preserving the living creatures He had made.
 
-💨 Breath of life
+ðŸ’¨ Breath of life
 
-❤️ Living creatures
+â¤ï¸ Living creatures
 
-👑 God's creation
+ðŸ‘‘ God's creation
 
-🚢 Preserved through the Flood
+ðŸš¢ Preserved through the Flood
 
-**🙏 As God Had Commanded Him**
+**ðŸ™ As God Had Commanded Him**
 
 Noah continued to obey exactly what God instructed.
 
@@ -1566,15 +1563,15 @@ The ark, the animals, and the timing all happened according to God's commands.
 
 Noah's obedience remains one of the central themes of the Flood account.
 
-🙏 Noah obeys
+ðŸ™ Noah obeys
 
-📖 God's instructions
+ðŸ“– God's instructions
 
-🚢 Faithful obedience
+ðŸš¢ Faithful obedience
 
-👑 Trust in God
+ðŸ‘‘ Trust in God
 
-**🔒 And The Lord Shut Him In**
+**ðŸ”’ And The Lord Shut Him In**
 
 Noah did not close the door.
 
@@ -1586,15 +1583,15 @@ No steering wheel, rudder, or navigation system is ever mentioned.
 
 The ark's safety depended entirely on God's protection and guidance.
 
-🔒 God shut the door
+ðŸ”’ God shut the door
 
-👑 God is in control
+ðŸ‘‘ God is in control
 
-🚢 Noah trusts God
+ðŸš¢ Noah trusts God
 
-🛡️ God provides safety
+ðŸ›¡ï¸ God provides safety
 
-**🌊 The Waters Increased And Bare Up The Ark**
+**ðŸŒŠ The Waters Increased And Bare Up The Ark**
 
 The phrase "bare up" means the waters lifted the ark upward.
 
@@ -1602,15 +1599,15 @@ As the Flood waters rose, the ark began floating higher and higher above the ear
 
 The ark was doing exactly what God designed it to do.
 
-🌊 Waters rise
+ðŸŒŠ Waters rise
 
-🚢 The ark floats
+ðŸš¢ The ark floats
 
-⬆️ Lifted upward
+â¬†ï¸ Lifted upward
 
-👑 God's design works
+ðŸ‘‘ God's design works
 
-**⬆️ It Was Lift Up Above The Earth**
+**â¬†ï¸ It Was Lift Up Above The Earth**
 
 The ark was no longer resting on dry ground.
 
@@ -1618,19 +1615,19 @@ The rising waters lifted it far above the earth below.
 
 The same waters that brought judgment upon the world carried Noah and his family safely through it.
 
-⬆️ Lifted above the earth
+â¬†ï¸ Lifted above the earth
 
-🌊 Judgment below
+ðŸŒŠ Judgment below
 
-🚢 Safety above
+ðŸš¢ Safety above
 
-🙏 God preserves Noah
+ðŸ™ God preserves Noah
 
-# 🌊 Genesis 7:18–24
+# ðŸŒŠ Genesis 7:18â€“24
 
 **The Waters Take Over The Earth**
 
-**🌊 And The Waters Prevailed**
+**ðŸŒŠ And The Waters Prevailed**
 
 The word "prevailed" means the waters became stronger, greater, and impossible to stop.
 
@@ -1654,15 +1651,15 @@ The Flood was no longer coming.
 
 The Flood had arrived.
 
-🌊 The waters become unstoppable
+ðŸŒŠ The waters become unstoppable
 
-⚡ Thunder and lightning fill the sky
+âš¡ Thunder and lightning fill the sky
 
-💨 Powerful winds drive the waves
+ðŸ’¨ Powerful winds drive the waves
 
-🌍 The world is being overwhelmed
+ðŸŒ The world is being overwhelmed
 
-**📈 And Were Increased Greatly Upon The Earth**
+**ðŸ“ˆ And Were Increased Greatly Upon The Earth**
 
 The Flood was not standing still.
 
@@ -1678,15 +1675,15 @@ Places that had stood for generations slowly disappeared beneath the water.
 
 Every morning Noah would have looked out and seen less land than the day before.
 
-📈 Waters continue rising
+ðŸ“ˆ Waters continue rising
 
-🌊 Flood levels increase
+ðŸŒŠ Flood levels increase
 
-🌲 Forests disappear
+ðŸŒ² Forests disappear
 
-🌍 The earth is being swallowed
+ðŸŒ The earth is being swallowed
 
-**🚢 And The Ark Went Upon The Face Of The Waters**
+**ðŸš¢ And The Ark Went Upon The Face Of The Waters**
 
 The ark was now completely afloat.
 
@@ -1696,15 +1693,15 @@ The world they had always known was disappearing beneath them.
 
 The same waters that brought judgment upon the earth were carrying God's people safely above it.
 
-🚢 The ark floats freely
+ðŸš¢ The ark floats freely
 
-🌊 Surrounded by water
+ðŸŒŠ Surrounded by water
 
-🛡️ God preserves Noah
+ðŸ›¡ï¸ God preserves Noah
 
-🙏 Safety in the midst of judgment
+ðŸ™ Safety in the midst of judgment
 
-**🌊 And The Waters Prevailed Exceedingly Upon The Earth**
+**ðŸŒŠ And The Waters Prevailed Exceedingly Upon The Earth**
 
 Moses repeats the word "prevailed" because he wants us to understand the scale of what is happening.
 
@@ -1718,15 +1715,15 @@ Every passing day the Flood became more overwhelming.
 
 Everything outside the ark was losing the battle against the rising waters.
 
-🌊 The Flood grows stronger
+ðŸŒŠ The Flood grows stronger
 
-📈 The waters keep rising
+ðŸ“ˆ The waters keep rising
 
-🌍 The whole earth is affected
+ðŸŒ The whole earth is affected
 
-⚖️ Judgment continues
+âš–ï¸ Judgment continues
 
-**🏔️ And All The High Hills That Were Under The Whole Heaven Were Covered**
+**ðŸ”ï¸ And All The High Hills That Were Under The Whole Heaven Were Covered**
 
 The waters rose so high that even the highest hills disappeared.
 
@@ -1736,15 +1733,15 @@ Imagine standing on the ark and realizing that every hill, valley, and field you
 
 The earth was becoming one vast sea.
 
-🏔️ Hills disappear beneath the water
+ðŸ”ï¸ Hills disappear beneath the water
 
-🌊 The Flood reaches new heights
+ðŸŒŠ The Flood reaches new heights
 
-👀 Familiar landmarks vanish
+ðŸ‘€ Familiar landmarks vanish
 
-🌍 The world is transformed
+ðŸŒ The world is transformed
 
-**📏 Fifteen Cubits Upward Did The Waters Prevail**
+**ðŸ“ Fifteen Cubits Upward Did The Waters Prevail**
 
 A cubit is about 18 inches (45 cm).
 
@@ -1758,15 +1755,15 @@ The Flood was not merely touching the mountains.
 
 It completely covered them.
 
-📏 Fifteen cubits ≈ 22 feet
+ðŸ“ Fifteen cubits â‰ˆ 22 feet
 
-🌊 Water rises above the mountains
+ðŸŒŠ Water rises above the mountains
 
-🚢 The ark can float safely
+ðŸš¢ The ark can float safely
 
-🏔️ The highest places disappear
+ðŸ”ï¸ The highest places disappear
 
-**⛰️ And The Mountains Were Covered**
+**â›°ï¸ And The Mountains Were Covered**
 
 The Flood had now reached a level beyond anything humanity had ever seen.
 
@@ -1780,15 +1777,15 @@ Even mountains disappeared beneath the waters.
 
 Nothing remained visible above the Flood except the ark.
 
-⛰️ Mountains vanish
+â›°ï¸ Mountains vanish
 
-🌊 Water covers the earth
+ðŸŒŠ Water covers the earth
 
-🚢 The ark remains
+ðŸš¢ The ark remains
 
-⚖️ Judgment reaches its fullness
+âš–ï¸ Judgment reaches its fullness
 
-**💀 And All Flesh Died That Moved Upon The Earth**
+**ðŸ’€ And All Flesh Died That Moved Upon The Earth**
 
 Everything living outside the ark perished.
 
@@ -1798,15 +1795,15 @@ Now that judgment had arrived.
 
 Every creature that lived on the earth was affected by the Flood.
 
-💀 Life outside the ark perishes
+ðŸ’€ Life outside the ark perishes
 
-⚖️ God's warning is fulfilled
+âš–ï¸ God's warning is fulfilled
 
-🌍 Judgment falls
+ðŸŒ Judgment falls
 
-🚢 Only those in the ark survive
+ðŸš¢ Only those in the ark survive
 
-**🐦 Both Of Fowl, And Of Cattle, And Of Beast**
+**ðŸ¦ Both Of Fowl, And Of Cattle, And Of Beast**
 
 Moses emphasizes that no category of land animal escaped.
 
@@ -1820,15 +1817,15 @@ Everything outside the ark was swept away by the Flood.
 
 This highlights the total scope of God's judgment.
 
-🐦 Birds
+ðŸ¦ Birds
 
-🐄 Livestock
+ðŸ„ Livestock
 
-🦁 Wild animals
+ðŸ¦ Wild animals
 
-⚖️ All are affected
+âš–ï¸ All are affected
 
-**🐛 And Of Every Creeping Thing That Creepeth Upon The Earth**
+**ðŸ› And Of Every Creeping Thing That Creepeth Upon The Earth**
 
 Even the smallest creatures were included.
 
@@ -1836,15 +1833,15 @@ The Flood affected all life on the land.
 
 Nothing was too small or insignificant to be impacted by what was taking place.
 
-🐛 Small creatures perish
+ðŸ› Small creatures perish
 
-🌍 The whole earth is affected
+ðŸŒ The whole earth is affected
 
-⚖️ Judgment is complete
+âš–ï¸ Judgment is complete
 
-📖 Every part of creation is mentioned
+ðŸ“– Every part of creation is mentioned
 
-**👤 And Every Man**
+**ðŸ‘¤ And Every Man**
 
 Humanity had filled the earth with violence and corruption.
 
@@ -1854,15 +1851,15 @@ Every person outside the ark perished.
 
 Only Noah, his wife, his three sons, and their wives survived.
 
-👤 Humanity faces judgment
+ðŸ‘¤ Humanity faces judgment
 
-⚖️ God's warning is fulfilled
+âš–ï¸ God's warning is fulfilled
 
-👨‍👩‍👦‍👦 Eight people survive
+ðŸ‘¨â€ðŸ‘©â€ðŸ‘¦â€ðŸ‘¦ Eight people survive
 
-🚢 Safety is found in the ark
+ðŸš¢ Safety is found in the ark
 
-**💨 In Whose Nostrils Was The Breath Of Life**
+**ðŸ’¨ In Whose Nostrils Was The Breath Of Life**
 
 The phrase "breath of life" reminds us that life comes from God.
 
@@ -1872,15 +1869,15 @@ The same God who gives life also has authority over life.
 
 This phrase points us back to Genesis 2 when God breathed life into Adam.
 
-💨 Life comes from God
+ðŸ’¨ Life comes from God
 
-❤️ God is the giver of life
+â¤ï¸ God is the giver of life
 
-📖 Connects back to Genesis 2
+ðŸ“– Connects back to Genesis 2
 
-⚖️ God has authority over life
+âš–ï¸ God has authority over life
 
-**🏜️ Of All That Was In The Dry Land Died**
+**ðŸœï¸ Of All That Was In The Dry Land Died**
 
 Before the Flood, the earth was dry land.
 
@@ -1890,15 +1887,15 @@ Everything that depended on that land for life perished beneath the waters.
 
 The old world was passing away.
 
-🏜️ Dry land disappears
+ðŸœï¸ Dry land disappears
 
-🌊 Water covers the earth
+ðŸŒŠ Water covers the earth
 
-💀 Life outside the ark ends
+ðŸ’€ Life outside the ark ends
 
-⚖️ The old world passes away
+âš–ï¸ The old world passes away
 
-**❌ Every Living Substance Was Destroyed**
+**âŒ Every Living Substance Was Destroyed**
 
 Nothing outside the ark escaped.
 
@@ -1908,15 +1905,15 @@ God's judgment reached every part of the corrupted world.
 
 Moses repeats this truth several times because he wants the reader to understand the totality of what happened.
 
-❌ Complete destruction
+âŒ Complete destruction
 
-🌍 Nothing escapes
+ðŸŒ Nothing escapes
 
-⚖️ God's judgment is thorough
+âš–ï¸ God's judgment is thorough
 
-📖 Moses emphasizes the point
+ðŸ“– Moses emphasizes the point
 
-**👨 Noah Only Remained Alive**
+**ðŸ‘¨ Noah Only Remained Alive**
 
 After all the destruction, Noah remained.
 
@@ -1928,15 +1925,15 @@ Not because Noah built a better boat.
 
 Noah survived because he trusted God and obeyed His instructions.
 
-👨 Noah remains alive
+ðŸ‘¨ Noah remains alive
 
-🙏 Noah trusted God
+ðŸ™ Noah trusted God
 
-🚢 God provided safety
+ðŸš¢ God provided safety
 
-👑 Salvation came from God
+ðŸ‘‘ Salvation came from God
 
-**👨‍👩‍👦‍👦 And They That Were With Him In The Ark**
+**ðŸ‘¨â€ðŸ‘©â€ðŸ‘¦â€ðŸ‘¦ And They That Were With Him In The Ark**
 
 Noah was not saved alone.
 
@@ -1946,15 +1943,15 @@ The ark became a place of refuge while judgment fell outside.
 
 For months, eight people lived entirely by faith inside the vessel God had provided.
 
-👨‍👩‍👦‍👦 Noah's family survives
+ðŸ‘¨â€ðŸ‘©â€ðŸ‘¦â€ðŸ‘¦ Noah's family survives
 
-🚢 Safety inside the ark
+ðŸš¢ Safety inside the ark
 
-🙏 God protects His people
+ðŸ™ God protects His people
 
-🛡️ Refuge during judgment
+ðŸ›¡ï¸ Refuge during judgment
 
-**🌊 And The Waters Prevailed Upon The Earth An Hundred And Fifty Days**
+**ðŸŒŠ And The Waters Prevailed Upon The Earth An Hundred And Fifty Days**
 
 The rain lasted forty days and forty nights.
 
@@ -1986,13 +1983,13 @@ The same waves that brought destruction to the earth carried Noah safely through
 
 For one hundred and fifty days Noah and his family had nothing to trust except the God who had shut them inside the ark.
 
-🌊 Waters prevail for 150 days
+ðŸŒŠ Waters prevail for 150 days
 
-⏳ Five months of flooding
+â³ Five months of flooding
 
-🚢 The ark drifts across a world of water
+ðŸš¢ The ark drifts across a world of water
 
-🙏 Noah must trust God completely
+ðŸ™ Noah must trust God completely
 
 # Final Reflection
 
@@ -2048,56 +2045,50 @@ const DAY_THREE_SECTION_META: Array<Omit<BibleYearDeepStudySection, "markdown">>
   {
     reference: "Genesis 5:1-5",
     title: "Death Enters The Family Record",
-    icon: "⚰️",
+    icon: "âš°ï¸",
     summary: "Adam's line still carries God's image, but the sentence 'then he died' starts echoing through the story.",
   },
   {
     reference: "Genesis 5:6-20",
     title: "The Line Keeps Moving",
-    icon: "🧬",
+    icon: "ðŸ§¬",
     summary: "Families grow, years pass, and death repeats, but God's promise keeps moving through the generations.",
   },
   {
     reference: "Genesis 5:21-24",
     title: "Enoch Walked With God",
-    icon: "🚶",
+    icon: "ðŸš¶",
     summary: "Enoch breaks the pattern by walking with God, showing that faithful closeness is still possible outside Eden.",
   },
   {
     reference: "Genesis 5:25-32",
     title: "Noah Is Born Into A Tired World",
-    icon: "🕊️",
+    icon: "ðŸ•Šï¸",
     summary: "Noah's birth points to comfort in a world weighed down by cursed ground, grief, and long waiting.",
   },
   {
     reference: "Genesis 6:1-8",
     title: "The Earth Becomes Corrupt",
-    icon: "🌍",
+    icon: "ðŸŒ",
     summary: "Human wickedness fills the earth, violence grieves God's heart, and judgment becomes unavoidable.",
   },
   {
     reference: "Genesis 6:9-13",
     title: "Noah Walks With God",
-    icon: "✨",
+    icon: "âœ¨",
     summary: "Noah stands out as righteous in a corrupt generation, not because the world is easy, but because he walks with God.",
   },
   {
     reference: "Genesis 6:14-22",
     title: "God Tells Noah To Build",
-    icon: "🛠️",
+    icon: "ðŸ› ï¸",
     summary: "God gives Noah detailed instructions for the ship, turning obedience into the place of rescue.",
   },
   {
-    reference: "Genesis 7:1-3",
+    reference: "Genesis 7:1-10",
     title: "Entering The Ark",
     icon: "🚢",
-    summary: "God shifts Noah from building the ark to entering it, and explains who will come inside and why.",
-  },
-  {
-    reference: "Genesis 7:4-10",
-    title: "The Flood Begins",
-    icon: "🌧️",
-    summary: "God gives the final countdown, announces the rain, and Noah enters the ark before the waters arrive.",
+    summary: "God shifts Noah from building to entering the ark, gathering his household and the animals before judgment begins.",
   },
   {
     reference: "Genesis 7:11-17",
@@ -2108,7 +2099,7 @@ const DAY_THREE_SECTION_META: Array<Omit<BibleYearDeepStudySection, "markdown">>
   {
     reference: "Genesis 7:18-24",
     title: "The Waters Take Over The Earth",
-    icon: "🌊",
+    icon: "ðŸŒŠ",
     summary: "The waters overpower the whole earth, yet the ark carries Noah and his family safely through judgment.",
   },
 ];
@@ -2125,3 +2116,4 @@ export const BIBLE_YEAR_DAY_THREE_DEEP_STUDY_SECTIONS: BibleYearDeepStudySection
   ...section,
   markdown: getDayThreeSectionMarkdown(section.reference),
 }));
+

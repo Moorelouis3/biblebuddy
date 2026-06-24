@@ -964,7 +964,10 @@ That is mercy moving ahead of judgment.`,
 ⏳ A long life is still not enough without God's mercy.
 🛟 Before judgment comes, God is already preparing preservation.
 This section helps us read Noah correctly. He is not just a boat builder; he is introduced as hope in a world that needs comfort.`,
-    }),
+    }),
+
+
+
     makeGenesisStudySection({
       chapter: 8,
       startVerse: 1,
@@ -17994,7 +17997,10 @@ That means the ark carries the future of creation inside it.
 🌍 God has not given up on creation`,
         ],
       ],
-    }),
+    }),
+
+
+
     makePersonalGenesisPhraseSection({
       chapter: 8,
       startVerse: 1,
@@ -23589,8 +23595,8 @@ function replaceGenesisSevenPhraseSections() {
     makePersonalGenesisPhraseSection({
       chapter: 7,
       startVerse: 1,
-      endVerse: 3,
-      reference: "Genesis 7:1-3",
+      endVerse: 10,
+      reference: "Genesis 7:1-10",
       title: "Entering The Ark",
       icon: "🚢",
       phrases: [
@@ -23741,295 +23747,6 @@ The animals will survive, reproduce, and repopulate the world.
 🦁 Animals will reproduce
 🌍 Life will continue
 🚢 The future is being preserved`,
-        ],
-      ],
-    }),
-    makePersonalGenesisPhraseSection({
-      chapter: 7,
-      startVerse: 4,
-      endVerse: 10,
-      reference: "Genesis 7:4-10",
-      title: "The Flood Begins",
-      icon: "🌧️",
-      phrases: [
-        [
-          "⏳ For Yet Seven Days",
-          `God gives Noah a final countdown before the flood begins.
-
-The ark is complete.
-
-The animals have been gathered.
-
-The time for preparation is almost over.
-
-In seven days, God’s judgment will begin.
-
-⏳ Seven day warning
-🚢 The ark is ready
-⚠️ Judgment is near
-📖 Final preparations`,
-        ],
-        [
-          "🌧️ I Will Cause It To Rain Upon The Earth",
-          `God makes it clear that the coming flood is not a natural accident.
-
-The rain is coming because God is sending it.
-
-This is a direct act of divine judgment upon the earth.
-
-🌧️ God sends the rain
-⚖️ Judgment is coming
-🌍 The flood begins with God
-📖 A direct act of God`,
-        ],
-        [
-          "⏳ Forty Days And Forty Nights",
-          `The number forty becomes an important number throughout the Bible.
-
-It is often connected with testing, preparation, judgment, or a significant period of time.
-
-Examples include:
-
-🌧️ Forty days of rain during the flood
-🏜️ Forty years in the wilderness
-🍞 Moses fasting forty days on Mount Sinai
-✝️ Jesus fasting forty days in the wilderness
-
-The number does not always mean exactly the same thing, but it often marks an important season in God’s plan.
-
-⏳ Forty is a significant biblical number
-🌧️ Forty days of rain
-🏜️ Forty years in the wilderness
-✝️ Jesus fasted forty days`,
-        ],
-        [
-          "🌍 Every Living Substance That I Have Made",
-          `God reminds Noah that He is the Creator.
-
-Everything living ultimately belongs to Him.
-
-The flood is not destroying something outside of God’s authority.
-
-It is affecting a creation that God Himself made.
-
-🌍 God created all life
-👀 Everything belongs to Him
-📖 God is the Creator
-⚖️ God has authority over creation`,
-        ],
-        [
-          "⚖️ Will I Destroy From Off The Face Of The Earth",
-          `God announces the coming judgment.
-
-The phrase “face of the earth” means the surface of the earth where people and animals live.
-
-The flood will remove the corrupt generation that has filled the earth with violence.
-
-⚖️ Judgment is declared
-🌍 Refers to life on the earth
-🌊 The flood is coming
-📖 God’s warning is clear`,
-        ],
-        [
-          "🙌 Noah Did According",
-          `This short phrase highlights Noah’s obedience.
-
-When God spoke, Noah responded.
-
-His faith was shown through action.
-
-🙌 Noah obeyed
-👂 He listened to God
-📖 Faith led to action
-🚢 Noah followed through`,
-        ],
-        [
-          "📖 Unto All That The Lord Commanded Him",
-          `Noah did not partially obey God.
-
-He followed all of God’s instructions.
-
-The ark, the animals, the food, and the preparations were done according to God’s commands.
-
-📖 Noah followed God’s instructions
-🙏 Complete obedience
-🚢 Everything was prepared
-👀 Noah trusted God`,
-        ],
-        [
-          "⏳ Noah Was Six Hundred Years Old",
-          `Genesis 5 ended with Noah being 500 years old when his sons were born.
-
-Now the Bible tells us Noah is 600 years old.
-
-About 100 years have passed since the birth of Shem, Ham, and Japheth.
-
-During that time Noah built the ark and prepared for the flood.
-
-⏳ Noah is now 600 years old
-👨‍👦‍👦 About 100 years later
-🚢 The ark has been built
-📖 Time has passed`,
-        ],
-        [
-          "🌊 When The Flood Of Waters Was Upon The Earth",
-          `The moment God warned about has finally arrived.
-
-The flood is no longer a future event.
-
-The waters are beginning to come upon the earth.
-
-🌊 The flood begins
-⚖️ Judgment arrives
-📖 God’s warning comes true
-🌍 The earth is changing`,
-        ],
-        [
-          "🚢 Noah Went In",
-          `Noah obeys God’s command and enters the ark.
-
-This is an act of faith.
-
-Noah enters before the floodwaters arrive.
-
-He trusts God’s warning and acts upon it.
-
-🚢 Noah enters the ark
-🙏 An act of faith
-👂 Noah obeys God
-⚠️ Judgment is near`,
-        ],
-        [
-          "👨‍👩‍👦‍👦 His Sons, His Wife, And His Sons’ Wives",
-          `The entire family enters the ark together.
-
-These are the same eight people God promised to preserve.
-
-Through them, humanity will continue after the flood.
-
-👨 Noah
-👩 Noah’s wife
-👨‍👦‍👦 His three sons
-👩‍👩‍👦 Their wives`,
-        ],
-        [
-          "🌊 Because Of The Waters Of The Flood",
-          `The reason they enter the ark is because the flood is coming.
-
-Noah is not entering out of fear.
-
-He is entering because he believes God’s warning.
-
-🌊 The flood is approaching
-🙏 Noah believes God
-🚢 The ark provides safety
-📖 Faith produces action`,
-        ],
-        [
-          "🐑 Of Clean Beasts And Of Beasts That Are Not Clean",
-          `The animals arrive exactly as God commanded.
-
-Both clean and unclean animals are included.
-
-Clean animals were acceptable for sacrifice and worship.
-
-Unclean animals were still preserved because they were part of God’s creation.
-
-🐑 Clean animals
-🐾 Unclean animals
-🌍 All kinds are preserved
-📖 God cares for creation`,
-        ],
-        [
-          "🐦 And Of Fowls",
-          `Fowls means birds.
-
-This includes creatures such as doves, ravens, pigeons, eagles, hawks, and many others.
-
-The birds are preserved alongside the land animals.
-
-🐦 Fowls means birds
-🕊️ Doves and ravens
-🦅 Eagles and hawks
-🌍 Bird life is preserved`,
-        ],
-        [
-          "🐛 And Of Every Thing That Creepeth Upon The Earth",
-          `This includes smaller creatures that move along the ground.
-
-God’s preservation extends to all kinds of land life, from the largest animals to the smallest.
-
-🐛 Small creatures included
-🦎 Lizards and reptiles
-🐜 Insects and bugs
-🌍 All creation is represented`,
-        ],
-        [
-          "🐾 There Went In Two And Two Unto Noah Into The Ark",
-          `The animals enter in pairs just as God commanded.
-
-The emphasis is on God’s provision.
-
-Noah does not gather them through his own power.
-
-God brings them to the ark.
-
-🐾 Animals enter in pairs
-🚢 They come into the ark
-🙏 God provides
-📖 God’s plan unfolds`,
-        ],
-        [
-          "👨 The Male And The Female",
-          `Each pair consists of a male and a female.
-
-This allows the animals to reproduce after the flood.
-
-God is preserving future generations of life.
-
-👨 Male
-👩 Female
-🌱 Future reproduction
-🌍 Life continues`,
-        ],
-        [
-          "📖 As God Had Commanded Noah",
-          `The animals enter exactly according to God’s instructions.
-
-This phrase again emphasizes obedience.
-
-Everything is happening according to God’s plan.
-
-📖 God commanded
-🙌 Noah obeyed
-🐾 The animals obeyed
-🚢 God’s plan is fulfilled`,
-        ],
-        [
-          "⏳ It Came To Pass After Seven Days",
-          `The seven day countdown God gave Noah has now ended.
-
-The waiting period is over.
-
-The flood is about to begin.
-
-⏳ Seven days have passed
-⚠️ The countdown ends
-🌊 The flood begins
-📖 God’s timing is perfect`,
-        ],
-        [
-          "🌊 The Waters Of The Flood Were Upon The Earth",
-          `The floodwaters finally arrive.
-
-What God promised in warning now becomes reality.
-
-The judgment Noah spent decades preparing for has begun.
-
-🌊 The flood arrives
-⚖️ Judgment begins
-📖 God’s word proves true
-🚢 Noah is safe inside the ark`,
         ],
       ],
     }),
@@ -29562,3 +29279,4 @@ export function getBibleReaderStudySections(book: string | null | undefined, cha
     (section) => section.book === normalizedBook && section.chapter === chapterNumber,
   );
 }
+

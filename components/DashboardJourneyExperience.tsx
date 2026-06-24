@@ -754,6 +754,7 @@ type Props = {
   isOwnerDashboard?: boolean;
   bibleYearReport?: BibleYearReport | null;
   bibleYearProgressReady?: boolean;
+  onBibleYearProgressLoadedChange?: (loaded: boolean) => void;
 };
 
 type BibleYearReport = {
@@ -2186,6 +2187,7 @@ export default function DashboardJourneyExperience({
   isOwnerDashboard = false,
   bibleYearReport,
   bibleYearProgressReady = true,
+  onBibleYearProgressLoadedChange,
 }: Props) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const analyticsDashboardPreloadStartedRef = useRef(false);
@@ -2856,7 +2858,7 @@ export default function DashboardJourneyExperience({
     }
   }, [activePageKey, fetchShareRewards, userId]);
 
-  const bibleYearCurrentDayReady = bibleYearProgressReady;
+  const bibleYearCurrentDayReady = bibleYearProgressReady && bibleYearProgressLoaded;
   const activeBibleYearDashboardDay = bibleYearDashboardActive && bibleYearCurrentDayReady
     ? (() => {
         const builtBibleYearDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES;
@@ -3114,6 +3116,10 @@ export default function DashboardJourneyExperience({
     if (!bibleYearProgressLoaded) return;
     cacheBibleYearOfflineTextPack();
   }, [bibleYearProgressLoaded]);
+
+  useEffect(() => {
+    onBibleYearProgressLoadedChange?.(bibleYearProgressLoaded);
+  }, [bibleYearProgressLoaded, onBibleYearProgressLoadedChange]);
 
   useEffect(() => {
     if (!activeBibleYearDashboardDay || typeof window === "undefined" || !("serviceWorker" in navigator)) return;
@@ -4777,6 +4783,7 @@ export default function DashboardJourneyExperience({
     if (typeof window === "undefined") return;
     const params = new URLSearchParams(window.location.search);
     const view = params.get("view");
+    if (!bibleYearProgressLoaded && (view === "bible-year" || view === "bible-year-series" || !view)) return;
     if (view === "bible-year") {
       const dayNumber = Number(params.get("day") || 0);
       const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((seriesDay) => seriesDay.dayNumber === dayNumber);
@@ -4821,7 +4828,7 @@ export default function DashboardJourneyExperience({
       setManualBibleYearStudyDayNumber(null);
       setActivePage(0);
     }
-  }, [profile?.preferred_study_mode]);
+  }, [bibleYearProgressLoaded, profile?.preferred_study_mode]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -7056,7 +7063,11 @@ export default function DashboardJourneyExperience({
     return logDayProPromptAction(3, actionType, label);
   }
 
-  async function logBibleYearCompletionUpgradeAction(actionType: ActionType, label: string) {
+  async function logBibleYearCompletionUpgradeAction(
+    actionType: ActionType,
+    label: string,
+    eventMetadata?: Record<string, unknown>,
+  ) {
     if (!userId) return;
     try {
       const {
@@ -7083,6 +7094,7 @@ export default function DashboardJourneyExperience({
           source: "bible_year_day_completion",
           dayNumber,
           label,
+          ...(eventMetadata || {}),
         },
       });
     } catch (error) {
@@ -7253,6 +7265,10 @@ export default function DashboardJourneyExperience({
         void logBibleYearCompletionUpgradeAction(
           ACTION_TYPE.upgrade_popup_cta_clicked,
           `Bible in One Year Day ${dayNumber || "Unknown"} completion checkout ${plan} clicked`,
+          {
+            cta: plan === "yearly" ? "lifetime" : "monthly",
+            clickedPlan: plan === "yearly" ? "lifetime" : "monthly",
+          },
         );
       }
       if (shouldContinueDayCompletionAfterUpgradeClick) {
@@ -12772,7 +12788,16 @@ Before we understand redemption, we need to understand what God made humanity fo
         {showCompletionMoment ? renderBibleYearInlineCompletionUpgradeCard(day, {
           nextDay: nextBibleYearDay,
           onContinueFree: nextBibleYearDay ? () => {
-            closeInlineBibleYearCompletionUpgrade(day.dayNumber);
+            void logBibleYearCompletionUpgradeAction(
+              ACTION_TYPE.upgrade_popup_dismissed,
+              `Bible in One Year Day ${day.dayNumber} completion upgrade continue as free clicked`,
+              {
+                cta: "continue_free",
+              },
+            );
+            setBibleYearInlineCompletionUpgradeDay(null);
+            bibleYearCompletionUpgradeDayRef.current = null;
+            resolveBibleYearCompletionUpgradeGate();
             window.setTimeout(() => {
               openBibleYearDayOnDashboard(nextBibleYearDay, {
                 reviewCompleted: isBibleYearDayComplete(nextBibleYearDay),
