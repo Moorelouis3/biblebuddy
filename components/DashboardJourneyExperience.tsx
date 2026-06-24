@@ -2268,19 +2268,28 @@ export default function DashboardJourneyExperience({
   const [bibleYearJourneyPreviewDay, setBibleYearJourneyPreviewDay] = useState<GenesisBibleYearDay | null>(null);
   const [selectedBibleYearSeriesDay, setSelectedBibleYearSeriesDay] = useState<GenesisBibleYearDay | null>(null);
   const [manualBibleYearStudyDayNumber, setManualBibleYearStudyDayNumber] = useState<number | null>(null);
-  const [bibleYearResolvedCurrentDayNumber, setBibleYearResolvedCurrentDayNumber] = useState(1);
+  const initialStoredBibleYearProgress = userId ? readStoredBibleYearProgress(userId) : null;
+  const [bibleYearResolvedCurrentDayNumber, setBibleYearResolvedCurrentDayNumber] = useState(
+    Number(initialStoredBibleYearProgress?.resolvedCurrentDayNumber) || 1,
+  );
   const [activeBibleYearDayCard, setActiveBibleYearDayCard] = useState<BibleYearDayCardKey | null>(null);
   const [bibleYearCompletedTasksExpandedDay, setBibleYearCompletedTasksExpandedDay] = useState<number | null>(null);
   const [bibleYearCompletionModalDay, setBibleYearCompletionModalDay] = useState<GenesisBibleYearDay | null>(null);
   const [bibleYearIncompleteChecklistDay, setBibleYearIncompleteChecklistDay] = useState<GenesisBibleYearDay | null>(null);
   const [bibleYearSeriesFilter, setBibleYearSeriesFilter] = useState<BibleYearSeriesFilter>("all");
-  const [bibleYearCompletedCardsByDay, setBibleYearCompletedCardsByDay] = useState<BibleYearCompletedCardsByDay>({});
-  const [bibleYearProgressLoaded, setBibleYearProgressLoaded] = useState(false);
+  const [bibleYearCompletedCardsByDay, setBibleYearCompletedCardsByDay] = useState<BibleYearCompletedCardsByDay>(
+    initialStoredBibleYearProgress?.completedCardsByDay || {},
+  );
+  const [bibleYearProgressLoaded, setBibleYearProgressLoaded] = useState(Boolean(initialStoredBibleYearProgress));
   const [bibleYearTriviaAnswers, setBibleYearTriviaAnswers] = useState<Record<string, string>>({});
   const [bibleYearTriviaQuestionIndexByDay, setBibleYearTriviaQuestionIndexByDay] = useState<Record<number, number>>({});
   const [bibleYearTriviaResultsOpenByDay, setBibleYearTriviaResultsOpenByDay] = useState<Record<number, boolean>>({});
-  const [bibleYearReflectionPostedByDay, setBibleYearReflectionPostedByDay] = useState<Record<number, boolean>>({});
-  const [bibleYearScriptureNotesViewedByDay, setBibleYearScriptureNotesViewedByDay] = useState<Record<number, boolean>>({});
+  const [bibleYearReflectionPostedByDay, setBibleYearReflectionPostedByDay] = useState<Record<number, boolean>>(
+    initialStoredBibleYearProgress?.reflectionPostedByDay || {},
+  );
+  const [bibleYearScriptureNotesViewedByDay, setBibleYearScriptureNotesViewedByDay] = useState<Record<number, boolean>>(
+    initialStoredBibleYearProgress?.notesViewedByDay || {},
+  );
   const [continuingBibleYearDay, setContinuingBibleYearDay] = useState<number | null>(null);
   const [bibleYearPlanMenuOpen, setBibleYearPlanMenuOpen] = useState(false);
   const [bibleYearPlanOverviewOpen, setBibleYearPlanOverviewOpen] = useState(false);
@@ -4294,7 +4303,7 @@ export default function DashboardJourneyExperience({
     return () => {
       cancelled = true;
     };
-  }, [bibleYearProgressLoaded, userId]);
+  }, [userId]);
 
   function snapToPage(index: number) {
     const nextIndex = Math.max(0, Math.min(index, dashboardPageKeys.length - 1));
