@@ -280,6 +280,17 @@ function rememberStoredBibleYearProgress(
   }
 }
 
+function getResolvedBibleYearCurrentDayNumberFromCards(
+  completedCardsByDay: BibleYearCompletedCardsByDay,
+  days = GENESIS_BIBLE_IN_ONE_YEAR_SERIES,
+) {
+  return (
+    days.find((day) => completedCardsByDay[day.dayNumber]?.reading !== true)?.dayNumber ||
+    days[days.length - 1]?.dayNumber ||
+    1
+  );
+}
+
 const DASHBOARD_GUIDED_INTRO_STEPS = [
   {
     target: "bible-progress",
@@ -2403,6 +2414,13 @@ export default function DashboardJourneyExperience({
   };
   const effectiveBibleYearReport: BibleYearReport = {
     ...baseBibleYearReport,
+    currentDay: bibleYearResolvedCurrentDayNumber,
+    currentDayCompletedChapters: completedBibleYearChapters,
+    currentDayTotalChapters: computedBibleYearCurrentDay?.readings.length ?? baseBibleYearReport.currentDayTotalChapters,
+    completedChapters: completedBibleYearChapters,
+    totalChapters: BIBLE_IN_ONE_YEAR_TOTAL_CHAPTERS,
+    remainingChapters: Math.max(0, BIBLE_IN_ONE_YEAR_TOTAL_CHAPTERS - completedBibleYearChapters),
+    overallPercent: computedBibleYearOverallPercent,
     statusLabel: bibleYearSchedule.statusLabel,
     statusDetail: bibleYearSchedule.statusDetail,
     statusDays: bibleYearSchedule.statusDays,
@@ -10055,6 +10073,20 @@ Before we understand redemption, we need to understand what God made humanity fo
       ...alreadyCompleted,
       ...Object.fromEntries(cards.map((card) => [card, true])),
     };
+    const nextCompletedCardsByDay: BibleYearCompletedCardsByDay = {
+      ...bibleYearCompletedCardsByDay,
+      [day.dayNumber]: {
+        ...alreadyCompleted,
+        ...nextCompletedForDay,
+      },
+    };
+    const nextNotesViewedByDay = cards.includes("study_notes")
+      ? { ...bibleYearScriptureNotesViewedByDay, [day.dayNumber]: true }
+      : bibleYearScriptureNotesViewedByDay;
+    const nextReflectionPostedByDay = cards.includes("reflection")
+      ? { ...bibleYearReflectionPostedByDay, [day.dayNumber]: true }
+      : bibleYearReflectionPostedByDay;
+    const nextResolvedCurrentDayNumber = getResolvedBibleYearCurrentDayNumberFromCards(nextCompletedCardsByDay);
     const dayWasFullyComplete = isBibleYearCompletionStateDone(getBibleYearCompletionState(day, alreadyCompleted));
     const dayWillBeFullyComplete = isBibleYearCompletionStateDone(getBibleYearCompletionState(day, nextCompletedForDay));
     if (newlyCompletedCards.length > 0) {
@@ -10063,13 +10095,31 @@ Before we understand redemption, we need to understand what God made humanity fo
     if (dayWillBeFullyComplete) {
       setBibleYearCompletedTasksExpandedDay(null);
     }
-    setBibleYearCompletedCardsByDay((current) => ({
-      ...current,
-      [day.dayNumber]: {
-        ...(current[day.dayNumber] || {}),
-        ...nextCompletedForDay,
-      },
-    }));
+    setBibleYearCompletedCardsByDay(nextCompletedCardsByDay);
+    if (cards.includes("study_notes")) {
+      setBibleYearScriptureNotesViewedByDay(nextNotesViewedByDay);
+    }
+    if (cards.includes("reflection")) {
+      setBibleYearReflectionPostedByDay(nextReflectionPostedByDay);
+    }
+    setBibleYearResolvedCurrentDayNumber(nextResolvedCurrentDayNumber);
+    rememberStoredBibleYearProgress(userId, {
+      completedCardsByDay: nextCompletedCardsByDay,
+      notesViewedByDay: nextNotesViewedByDay,
+      reflectionPostedByDay: nextReflectionPostedByDay,
+      resolvedCurrentDayNumber: nextResolvedCurrentDayNumber,
+    });
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(
+        new CustomEvent("bb:bible-year-progress-updated", {
+          detail: {
+            dayNumber: day.dayNumber,
+            resolvedCurrentDayNumber: nextResolvedCurrentDayNumber,
+            completedCardsByDay: nextCompletedCardsByDay,
+          },
+        }),
+      );
+    }
     setActiveBibleYearDayCard(null);
     if (dayWillBeFullyComplete) {
       bibleYearJustCompletedDayRef.current = day.dayNumber;
