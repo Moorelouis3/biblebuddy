@@ -11729,23 +11729,18 @@ Before we understand redemption, we need to understand what God made humanity fo
             type="button"
             onClick={() => void startBibleYearQuickUpgrade("yearly")}
             disabled={Boolean(bibleYearQuickUpgradeLoading)}
-            className="flex w-full flex-col items-center justify-center rounded-[20px] bg-[linear-gradient(135deg,#2f7fe8,#1757db)] px-4 py-4 text-center text-white shadow-[0_16px_32px_rgba(47,127,232,0.24)] transition hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-60"
+            className="flex w-full animate-pulse flex-col items-center justify-center rounded-[20px] border border-[#f4d389] bg-[linear-gradient(135deg,#2f7fe8,#1757db)] px-4 py-4 text-center text-white shadow-[0_16px_32px_rgba(47,127,232,0.24)] transition hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-60"
           >
             <span className="text-[32px] font-black leading-none tracking-[-0.04em]">👑 $49.99</span>
             <span className="mt-1.5 text-[16px] font-bold">One Time Fee</span>
           </button>
-          <div className="mt-4 flex items-center justify-center gap-3 text-[#8fa1c2]">
-            <div className="h-px w-16 bg-[var(--bb-card-border,#dbe7f4)]" />
-            <span className="text-[13px] font-bold">or</span>
-            <div className="h-px w-16 bg-[var(--bb-card-border,#dbe7f4)]" />
-          </div>
           <button
             type="button"
             onClick={() => void startBibleYearQuickUpgrade("monthly")}
             disabled={Boolean(bibleYearQuickUpgradeLoading)}
-            className="mt-3 text-[16px] font-bold text-[#10224b] underline-offset-4 transition hover:text-[var(--bb-accent,#2f7fe8)] hover:underline disabled:cursor-not-allowed disabled:opacity-60"
+            className="mt-4 text-[16px] font-bold text-[#10224b] underline-offset-4 transition hover:text-[var(--bb-accent,#2f7fe8)] hover:underline disabled:cursor-not-allowed disabled:opacity-60"
           >
-            $4.99 per month
+            or $4.99 per month
           </button>
           {options?.nextDay && options?.onContinueFree ? (
             <button
