@@ -4144,11 +4144,13 @@ export default function DashboardJourneyExperience({
 
     async function loadBibleYearProgress() {
       if (!userId) {
-        setBibleYearCompletedCardsByDay({});
-        setBibleYearScriptureNotesViewedByDay({});
-        setBibleYearReflectionPostedByDay({});
-        setBibleYearResolvedCurrentDayNumber(1);
-        setBibleYearProgressLoaded(true);
+        if (!bibleYearProgressLoaded) {
+          setBibleYearCompletedCardsByDay({});
+          setBibleYearScriptureNotesViewedByDay({});
+          setBibleYearReflectionPostedByDay({});
+          setBibleYearResolvedCurrentDayNumber(1);
+          setBibleYearProgressLoaded(true);
+        }
         return;
       }
 
@@ -4283,7 +4285,7 @@ export default function DashboardJourneyExperience({
     return () => {
       cancelled = true;
     };
-  }, [userId]);
+  }, [bibleYearProgressLoaded, userId]);
 
   function snapToPage(index: number) {
     const nextIndex = Math.max(0, Math.min(index, dashboardPageKeys.length - 1));
@@ -4773,7 +4775,20 @@ export default function DashboardJourneyExperience({
     const params = new URLSearchParams(window.location.search);
     const view = params.get("view");
     if (view === "bible-year") {
-      resetBibleYearDashboardToCurrentDay();
+      const dayNumber = Number(params.get("day") || 0);
+      const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((seriesDay) => seriesDay.dayNumber === dayNumber);
+      if (day && canOpenBibleYearDayInJourneyOrder(day)) {
+        bibleYearJustCompletedDayRef.current = null;
+        setBibleYearDashboardActive(true);
+        setBibleYearSeriesActive(false);
+        setBibleYearSeriesDetailDay(null);
+        setBibleYearJourneyPreviewDay(null);
+        setSelectedBibleYearSeriesDay(day);
+        setManualBibleYearStudyDayNumber(day.dayNumber);
+        setActivePage(0);
+      } else {
+        resetBibleYearDashboardToCurrentDay();
+      }
     } else if (view === "bible-year-series") {
       setBibleYearDashboardActive(false);
       setBibleYearSeriesActive(true);
