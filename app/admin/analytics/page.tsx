@@ -1285,14 +1285,42 @@ function MobileAnalyticsHighlights({
           />
         </div>
       ) : (
-        <SimpleAnalyticsChartCard
-          metric={simpleMetric}
-          windowKey={windowKey}
-          value={getSimpleMetricTotal(simpleMetric, data, stripeRevenue)}
-          points={chartSeries}
-          loading={loading || stripeRevenueLoading}
-          comparison={windowKey === "lifetime" ? null : simpleMetric === "revenue" ? revenueComparison : simpleMetric === "signups" ? signupComparison : upgradesComparison}
-        />
+        <div className="space-y-4">
+          <SimpleAnalyticsChartCard
+            metric={simpleMetric}
+            windowKey={windowKey}
+            value={getSimpleMetricTotal(simpleMetric, data, stripeRevenue)}
+            points={chartSeries}
+            loading={loading || stripeRevenueLoading}
+            comparison={windowKey === "lifetime" ? null : simpleMetric === "revenue" ? revenueComparison : simpleMetric === "signups" ? signupComparison : upgradesComparison}
+          />
+          <div className="grid grid-cols-3 gap-3">
+            <SimpleAnalyticsKpiCard
+              title="Signups"
+              value={signupsLabel}
+              helper={windowKey === "lifetime" ? "All signups" : comparisonLabel}
+              accent="green"
+              comparison={windowKey === "lifetime" ? null : signupComparison}
+              comparisonLabel=""
+            />
+            <SimpleAnalyticsKpiCard
+              title="Revenue"
+              value={stripeRevenueLoading ? "..." : revenueLabel}
+              helper={windowKey === "lifetime" ? "All revenue" : comparisonLabel}
+              accent="blue"
+              comparison={windowKey === "lifetime" ? null : revenueComparison}
+              comparisonLabel=""
+            />
+            <SimpleAnalyticsKpiCard
+              title="Upgrades"
+              value={upgradesLabel}
+              helper={windowKey === "lifetime" ? "All upgrades" : comparisonLabel}
+              accent="violet"
+              comparison={windowKey === "lifetime" ? null : upgradesComparison}
+              comparisonLabel=""
+            />
+          </div>
+        </div>
       )}
 
       <Link
@@ -3037,7 +3065,7 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
   const [isOwner, setIsOwner] = useState(false);
   const [authChecked, setAuthChecked] = useState(false);
   const [windowKey, setWindowKey] = useState<JourneyWindow>("today");
-  const [simpleMetric, setSimpleMetric] = useState<SimpleAnalyticsMetric>("overview");
+  const [simpleMetric, setSimpleMetric] = useState<SimpleAnalyticsMetric>("revenue");
   const [data, setData] = useState<AnalyticsResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [detailsLoading, setDetailsLoading] = useState(false);
