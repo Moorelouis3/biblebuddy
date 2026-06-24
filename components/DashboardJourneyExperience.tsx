@@ -2314,7 +2314,7 @@ export default function DashboardJourneyExperience({
   const [bibleYearDeepNotesUpgradeDay, setBibleYearDeepNotesUpgradeDay] = useState<number | null>(null);
   const [bibleYearDownloadUpgradeOpen, setBibleYearDownloadUpgradeOpen] = useState(false);
   const [bibleYearQuickUpgradeOpen, setBibleYearQuickUpgradeOpen] = useState(false);
-  const [bibleYearQuickUpgradeContext, setBibleYearQuickUpgradeContext] = useState<"day3" | "day7" | "guest_pro" | "background_audio" | null>(null);
+  const [bibleYearQuickUpgradeContext, setBibleYearQuickUpgradeContext] = useState<"day3" | "day7" | "guest_pro" | "background_audio" | "completion" | null>(null);
   const [bibleYearQuickUpgradeLoading, setBibleYearQuickUpgradeLoading] = useState<"monthly" | "yearly" | null>(null);
   const [bibleYearQuickUpgradeError, setBibleYearQuickUpgradeError] = useState<string | null>(null);
   const [bibleYearLifetimeInfoOpen, setBibleYearLifetimeInfoOpen] = useState(false);
@@ -2330,6 +2330,7 @@ export default function DashboardJourneyExperience({
   const bibleYearXpBackfillKeyRef = useRef("");
   const bibleYearReflectionSyncKeyRef = useRef("");
   const bibleYearChapterSyncKeyRef = useRef("");
+  const bibleYearCompletionUpgradeResolverRef = useRef<(() => void) | null>(null);
   const bibleYearJustCompletedDayRef = useRef<number | null>(null);
   const bibleYearTermTakeoverRef = useRef<HTMLDivElement | null>(null);
   const bibleYearTermReturnScrollYRef = useRef<number | null>(null);
@@ -2938,7 +2939,7 @@ export default function DashboardJourneyExperience({
     32: "Offerings",
     33: "Guilt",
     34: "Holiness",
-    35: "Atonement",
+    35: "The Day of Atonement",
     36: "Holy Living",
     37: "Feasts",
     38: "Jubilee",
@@ -6931,6 +6932,25 @@ export default function DashboardJourneyExperience({
     setBibleYearLifetimeInfoOpen(false);
   }
 
+  function resolveBibleYearCompletionUpgradeGate() {
+    const resolve = bibleYearCompletionUpgradeResolverRef.current;
+    bibleYearCompletionUpgradeResolverRef.current = null;
+    resolve?.();
+  }
+
+  async function openBibleYearCompletionUpgradePrompt() {
+    if (isPaidUser) return;
+    setBibleYearDeepNotesUpgradeOpen(false);
+    setBibleYearDownloadUpgradeOpen(false);
+    setBibleYearQuickUpgradeError(null);
+    setBibleYearQuickUpgradeContext("completion");
+    setBibleYearQuickUpgradeOpen(true);
+    setBibleYearLifetimeInfoOpen(false);
+    await new Promise<void>((resolve) => {
+      bibleYearCompletionUpgradeResolverRef.current = resolve;
+    });
+  }
+
   function getDayProPromptConfig(dayNumber: 3 | 7) {
     return {
       promptId: dayNumber === 3 ? DAY_THREE_PRO_UPGRADE_PROMPT_ID : DAY_SEVEN_PRO_UPGRADE_PROMPT_ID,
@@ -7107,6 +7127,14 @@ export default function DashboardJourneyExperience({
       continueAfterDaySevenProPrompt();
       return;
     }
+    if (bibleYearQuickUpgradeContext === "completion") {
+      setBibleYearQuickUpgradeOpen(false);
+      setBibleYearQuickUpgradeError(null);
+      setBibleYearQuickUpgradeContext(null);
+      setBibleYearLifetimeInfoOpen(false);
+      resolveBibleYearCompletionUpgradeGate();
+      return;
+    }
     setBibleYearQuickUpgradeOpen(false);
     setBibleYearQuickUpgradeError(null);
     setBibleYearQuickUpgradeContext(null);
@@ -7141,6 +7169,7 @@ export default function DashboardJourneyExperience({
 
   async function startBibleYearQuickUpgrade(plan: "monthly" | "yearly") {
     try {
+      const shouldContinueDayCompletionAfterUpgradeClick = bibleYearQuickUpgradeContext === "completion";
       setBibleYearQuickUpgradeLoading(plan);
       setBibleYearQuickUpgradeError(null);
       const returnTo =
@@ -7154,6 +7183,12 @@ export default function DashboardJourneyExperience({
       }
       if (bibleYearQuickUpgradeContext === "day7") {
         void logDayProPromptAction(7, ACTION_TYPE.upgrade_popup_cta_clicked, `Day 7 checkout ${plan} clicked`);
+      }
+      if (shouldContinueDayCompletionAfterUpgradeClick) {
+        setBibleYearQuickUpgradeOpen(false);
+        setBibleYearQuickUpgradeContext(null);
+        setBibleYearLifetimeInfoOpen(false);
+        resolveBibleYearCompletionUpgradeGate();
       }
 
       const upgradeDay = bibleYearQuickUpgradeContext === "day3" ? 3 : bibleYearQuickUpgradeContext === "day7" ? 7 : null;
@@ -10176,6 +10211,9 @@ Before we understand redemption, we need to understand what God made humanity fo
     }
 
     try {
+      if (!isOwnerDashboard && !isPaidUser) {
+        await openBibleYearCompletionUpgradePrompt();
+      }
       await completeBibleYearDayCard(day, "reading");
       if (options?.closeArticle) {
         closeBibleYearReadingArticle();

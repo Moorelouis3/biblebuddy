@@ -137,7 +137,7 @@ const ADDITIONAL_BIBLE_YEAR_SCHEDULE_RAW = `
 32 | Leviticus 1-4 | Offerings and Atonement
 33 | Leviticus 5-8 | Guilt, Consecration, and Priests
 34 | Leviticus 9-12 | Worship, Holiness, and Clean Living
-35 | Leviticus 13-16 | Cleansing and the Day of Atonement
+35 | Leviticus 13-16 | The Day of Atonement
 36 | Leviticus 17-20 | Holy Living Before a Holy God
 37 | Leviticus 21-24 | Priests, Feasts, and Sacred Order
 38 | Leviticus 25-27; Numbers 1 | Jubilee, Covenant, and Israel Counted

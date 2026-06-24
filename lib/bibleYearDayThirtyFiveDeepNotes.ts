@@ -126,7 +126,7 @@ const DAY_35_SECTIONS = [
 
 export const LEVITICUS_DAY_THIRTY_FIVE_CLEANSING_AND_DAY_OF_ATONEMENT_LESSON: BibleYearDailyLesson = {
   dayNumber: 35,
-  title: "Cleansing and the Day of Atonement",
+  title: "The Day of Atonement",
   reference: "Leviticus 13-16",
   estimatedListenTime: "35-40 min",
   opening: [

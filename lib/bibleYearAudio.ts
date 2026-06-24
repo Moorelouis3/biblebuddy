@@ -330,7 +330,7 @@ export const BIBLE_YEAR_DAY_THIRTY_FOUR_AUDIO: BibleYearAudioDay = {
 
 export const BIBLE_YEAR_DAY_THIRTY_FIVE_AUDIO: BibleYearAudioDay = {
   dayNumber: 35,
-  title: "Day 35 - Cleansing and the Day of Atonement",
+  title: "Day 35 - The Day of Atonement",
   storagePath: getBibleYearAudioStoragePath(35),
   apiSrc: getBibleYearAudioApiSrc(35),
   estimatedDuration: "35-40 min",
