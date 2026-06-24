@@ -6963,6 +6963,9 @@ export default function DashboardJourneyExperience({
     setBibleYearQuickUpgradeOpen(false);
     setBibleYearLifetimeInfoOpen(false);
     setBibleYearInlineCompletionUpgradeDay(day.dayNumber);
+    window.setTimeout(() => {
+      fireBibleYearDayCompleteConfetti();
+    }, 0);
     void logBibleYearCompletionUpgradeAction(
       ACTION_TYPE.upgrade_popup_viewed,
       `Bible in One Year Day ${day.dayNumber} completion upgrade popup viewed`,
@@ -11458,7 +11461,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         title: "Trivia",
         body: "Test what you learned.",
         done: triviaDone,
-        badge: !isPaidUser && !isOwnerDashboard && !triviaUnlocked ? "1 Credit" : null,
+        badge: null,
         onClick: async () => {
           if (!triviaUnlocked) {
             const creditResult = await consumeCreditAction(ACTION_TYPE.trivia_started, {
@@ -12553,7 +12556,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         title: "Trivia",
         body: "Test your understanding of today's lesson.",
         done: triviaComplete,
-        badge: !isPaidUser && !isOwnerDashboard && !bibleYearUnlockedTriviaByDay[day.dayNumber] ? "1 Credit" : null,
+        badge: null,
         icon: (
           <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <circle cx="12" cy="12" r="9" />
