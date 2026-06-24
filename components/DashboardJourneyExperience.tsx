@@ -2333,6 +2333,7 @@ export default function DashboardJourneyExperience({
   const bibleYearCompletionUpgradeDayRef = useRef<number | null>(null);
   const bibleYearJustCompletedDayRef = useRef<number | null>(null);
   const [bibleYearInlineCompletionUpgradeDay, setBibleYearInlineCompletionUpgradeDay] = useState<number | null>(null);
+  const bibleYearInlineCompletionUpgradeRef = useRef<HTMLElement | null>(null);
   const bibleYearTermTakeoverRef = useRef<HTMLDivElement | null>(null);
   const bibleYearTermReturnScrollYRef = useRef<number | null>(null);
   const bibleYearScriptureNotesSectionRefs = useRef<Record<string, HTMLDivElement | null>>({});
@@ -10384,6 +10385,26 @@ Before we understand redemption, we need to understand what God made humanity fo
     void syncPostedBibleYearDiscussions();
   }, [userId]);
 
+  useEffect(() => {
+    if (!bibleYearInlineCompletionUpgradeDay) return;
+    if (typeof window === "undefined") return;
+
+    const scrollCardIntoView = () => {
+      const card = bibleYearInlineCompletionUpgradeRef.current;
+      if (!card) return;
+      card.scrollIntoView({ behavior: "smooth", block: "center" });
+    };
+
+    const frameOne = window.requestAnimationFrame(() => {
+      const frameTwo = window.requestAnimationFrame(scrollCardIntoView);
+      void frameTwo;
+    });
+
+    return () => {
+      window.cancelAnimationFrame(frameOne);
+    };
+  }, [bibleYearInlineCompletionUpgradeDay]);
+
   function startBibleYearCompletionAnimation(dayNumber: number, card: BibleYearDayCardKey) {
     const nonce = Date.now();
     setBibleYearCompletionAnimation({ dayNumber, card, nonce });
@@ -11602,11 +11623,17 @@ Before we understand redemption, we need to understand what God made humanity fo
     );
   }
 
-  function renderBibleYearInlineCompletionUpgradeCard(day: GenesisBibleYearDay) {
+  function renderBibleYearInlineCompletionUpgradeCard(
+    day: GenesisBibleYearDay,
+    options?: {
+      nextDay?: GenesisBibleYearDay | null;
+      onContinueFree?: (() => void) | null;
+    },
+  ) {
     const featureRows = [
       {
         title: "All Bible Study Notes",
-        body: "Access detailed study notes across the entire Bible.",
+        body: "Access detailed study notes.",
         accent: "from-[#e7f0ff] to-[#f4f8ff]",
         icon: (
           <svg viewBox="0 0 24 24" className="h-8 w-8" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
@@ -11619,7 +11646,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       },
       {
         title: "Hundreds of Trivia Questions",
-        body: "Test your knowledge and strengthen what you learn.",
+        body: "Test your knowledge with our trivia.",
         accent: "from-[#fff4d7] to-[#fff9ea]",
         icon: (
           <svg viewBox="0 0 24 24" className="h-8 w-8" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -11630,8 +11657,8 @@ Before we understand redemption, we need to understand what God made humanity fo
         ),
       },
       {
-        title: "Audio Lessons & Background Play",
-        body: "Listen with your screen locked or while using other apps.",
+        title: "Audio & Background Play",
+        body: "Listen while your screen is locked.",
         accent: "from-[#e0f8e7] to-[#f1fcf4]",
         icon: (
           <svg viewBox="0 0 24 24" className="h-8 w-8" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -11644,7 +11671,10 @@ Before we understand redemption, we need to understand what God made humanity fo
     ] as const;
 
     return (
-      <article className="completion-panel-enter order-4 overflow-hidden rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-white p-3.5 text-center text-[var(--bb-text-primary,#111827)] shadow-[0_18px_40px_rgba(38,63,99,0.12)] sm:p-4">
+      <article
+        ref={bibleYearInlineCompletionUpgradeRef}
+        className="completion-panel-enter order-4 overflow-hidden rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-white p-3.5 text-center text-[var(--bb-text-primary,#111827)] shadow-[0_18px_40px_rgba(38,63,99,0.12)] sm:p-4"
+      >
         <div className="relative">
           <button
             type="button"
@@ -11669,13 +11699,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             <span className="absolute h-2 w-2 rounded-full bg-cyan-400 [--confetti-rotate:-130deg] [--confetti-x:132px] [--confetti-y:-22px]" />
           </div>
 
-          <div className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-[#32d74b] text-white shadow-[0_14px_28px_rgba(50,215,75,0.28)]">
-            <svg viewBox="0 0 24 24" className="h-8 w-8" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
-              <path d="m5 12 5 5L19 8" />
-            </svg>
-          </div>
-
-          <h2 className="mt-4 text-[30px] font-black leading-none tracking-[-0.04em] text-[#10224b] sm:text-[36px]">
+          <h2 className="mt-2 text-[30px] font-black leading-none tracking-[-0.04em] text-[#10224b] sm:text-[36px]">
             Great Job!
           </h2>
           <p className="mt-2 text-[15px] font-medium leading-6 text-[#5c6f94] sm:text-[17px]">
@@ -11723,6 +11747,15 @@ Before we understand redemption, we need to understand what God made humanity fo
           >
             $4.99 per month
           </button>
+          {options?.nextDay && options?.onContinueFree ? (
+            <button
+              type="button"
+              onClick={options.onContinueFree}
+              className="mt-4 inline-flex items-center justify-center rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-5 py-2.5 text-[14px] font-black text-[#10224b] transition hover:border-[var(--bb-accent,#2f7fe8)] hover:text-[var(--bb-accent,#2f7fe8)]"
+            >
+              Continue as free user to Day {options.nextDay.dayNumber}
+            </button>
+          ) : null}
           {bibleYearQuickUpgradeError ? (
             <p className="mt-3 text-sm font-semibold text-rose-600">{bibleYearQuickUpgradeError}</p>
           ) : null}
@@ -12752,7 +12785,13 @@ Before we understand redemption, we need to understand what God made humanity fo
 
     return (
       <section data-bible-year-study-area data-bb-dashboard-tour="study-tasks" className="dashboard-bible-year-study-area grid gap-5">
-        {showCompletionMoment ? renderBibleYearInlineCompletionUpgradeCard(day) : (
+        {showCompletionMoment ? renderBibleYearInlineCompletionUpgradeCard(day, {
+          nextDay: nextBibleYearDay,
+          onContinueFree: nextBibleYearDay ? () => {
+            closeInlineBibleYearCompletionUpgrade(day.dayNumber);
+            openAdjacentBibleYearDay(nextBibleYearDay);
+          } : null,
+        }) : (
           <article className={`order-4 overflow-hidden rounded-[20px] border p-5 text-[var(--bb-text-primary,#111827)] shadow-[0_18px_48px_rgba(38,63,99,0.12),inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-xl sm:p-6 ${
             readingComplete
               ? "border-emerald-300 bg-[linear-gradient(145deg,#f4fff7,#e8f8ee)]"
