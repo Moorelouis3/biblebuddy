@@ -38,6 +38,7 @@ import { PSALMS_37_51_PERSONAL_SECTIONS } from "./psalmsThirtySevenToFiftyOnePer
 import { PSALMS_52_66_PERSONAL_SECTIONS } from "./psalmsFiftyTwoToSixtySixPersonalNotes";
 import { PSALMS_67_96_PERSONAL_SECTIONS } from "./psalmsSixtySevenToNinetySixPersonalNotes";
 import { PSALMS_97_126_PERSONAL_SECTIONS } from "./psalmsNinetySevenToOneTwentySixPersonalNotes";
+import { FLOOD_OF_NOAH_DEEP_NOTES } from "./floodOfNoahDeepNotes";
 import { PSALMS_127_150_PERSONAL_SECTIONS } from "./psalmsOneTwentySevenToOneFiftyPersonalNotes";
 import { PROVERBS_1_6_PERSONAL_SECTIONS } from "./proverbsOneToSixPersonalNotes";
 import { PROVERBS_7_31_PERSONAL_SECTIONS } from "./proverbsSevenToThirtyOnePersonalNotes";
@@ -12157,6 +12158,85 @@ function makePersonalGenesisPhraseSection(section: {
   };
 }
 
+function buildPersonalGenesisPhraseSectionsFromMarkdown(markdown: string): BibleReaderStudySection[] {
+  const lines = markdown.replace(/\r/g, "").split("\n");
+  const sections: BibleReaderStudySection[] = [];
+  let index = 0;
+
+  while (index < lines.length) {
+    const headingLine = lines[index]?.trim() || "";
+    if (!headingLine.startsWith("# **")) {
+      index += 1;
+      continue;
+    }
+
+    const headingText = headingLine.replace(/^#\s*\*\*/, "").replace(/\*\*$/, "").trim();
+    const headingMatch = headingText.match(/^(.+?)\s+Genesis\s+(\d+):(\d+)[–-](\d+)$/u);
+    if (!headingMatch) {
+      index += 1;
+      continue;
+    }
+
+    const [, icon, chapterText, startVerseText, endVerseText] = headingMatch;
+    const chapter = Number(chapterText);
+    const startVerse = Number(startVerseText);
+    const endVerse = Number(endVerseText);
+    const reference = `Genesis ${chapter}:${startVerse}-${endVerse}`;
+
+    index += 1;
+    while (index < lines.length && !lines[index].trim()) index += 1;
+
+    const titleLine = lines[index]?.trim() || "";
+    const title = titleLine.replace(/^\*\*/, "").replace(/\*\*$/, "").trim();
+    index += 1;
+
+    const phrases: Array<[string, string]> = [];
+
+    while (index < lines.length) {
+      const line = lines[index]?.trim() || "";
+      if (line.startsWith("# **")) break;
+      if (!line) {
+        index += 1;
+        continue;
+      }
+
+      if (line.startsWith("**") && line.endsWith("**")) {
+        const phraseTitle = line.replace(/^\*\*/, "").replace(/\*\*$/, "").trim();
+        index += 1;
+        const bodyLines: string[] = [];
+
+        while (index < lines.length) {
+          const bodyLine = lines[index] ?? "";
+          const trimmedBodyLine = bodyLine.trim();
+          if (trimmedBodyLine.startsWith("# **")) break;
+          if (trimmedBodyLine.startsWith("**") && trimmedBodyLine.endsWith("**")) break;
+          bodyLines.push(bodyLine);
+          index += 1;
+        }
+
+        phrases.push([phraseTitle, bodyLines.join("\n").trim()]);
+        continue;
+      }
+
+      index += 1;
+    }
+
+    sections.push(
+      makePersonalGenesisPhraseSection({
+        chapter,
+        startVerse,
+        endVerse,
+        reference,
+        title,
+        icon: icon.trim(),
+        phrases,
+      }),
+    );
+  }
+
+  return sections;
+}
+
 const DAY_4_QUALITY_REVIEW_SECTIONS: Array<Parameters<typeof makePersonalGenesisPhraseSection>[0]> = [
   {
     chapter: 8,
@@ -21441,8 +21521,10 @@ These three sons will carry humanity forward into the next chapter of history.
   },
 ];
 
-  sections = sections.filter((section) => (section.chapter < 8 || section.chapter > 10) && section.chapter !== 5);
+  const genesisSixUpdatedSections = buildPersonalGenesisPhraseSectionsFromMarkdown(FLOOD_OF_NOAH_DEEP_NOTES[1] || "");
+  sections = sections.filter((section) => (section.chapter < 8 || section.chapter > 10) && section.chapter !== 5 && section.chapter !== 6);
   sections.push(...GENESIS_5_UPDATED_SECTIONS.map(makePersonalGenesisPhraseSection));
+  sections.push(...genesisSixUpdatedSections);
   sections.push(...DAY_4_QUALITY_REVIEW_SECTIONS.map(applyDayFourPhraseFocusedExplanations).map(makePersonalGenesisPhraseSection));
 
   for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
