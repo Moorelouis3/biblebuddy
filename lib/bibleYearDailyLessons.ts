@@ -370,7 +370,7 @@ export const GENESIS_DAY_THREE_NOAH_ARK_LESSON: BibleYearDailyLesson = {
       ],
     },
     {
-      heading: "Come Into the Ark",
+      heading: "Entering The Ark",
       verseBlock: { reference: "Genesis 7:1-10", chapter: 7, startVerse: 1, endVerse: 10 },
       teaching: [
         "God says: come with all of your household into the ship. That word feels personal. God is inviting Noah into the place of rescue.",
@@ -382,7 +382,7 @@ export const GENESIS_DAY_THREE_NOAH_ARK_LESSON: BibleYearDailyLesson = {
     },
     {
       heading: "The Flood Begins",
-      verseBlock: { reference: "Genesis 7:11-16", chapter: 7, startVerse: 11, endVerse: 16 },
+      verseBlock: { reference: "Genesis 7:11-17", chapter: 7, startVerse: 11, endVerse: 17 },
       teaching: [
         "The flood does not come only from rain. Genesis says the fountains of the deep burst open and the windows of heaven open.",
         "This feels like creation boundaries being released. Genesis 1 showed God ordering the waters so life could flourish. Genesis 7 shows the waters overwhelming the world because the world has become corrupt.",
@@ -392,7 +392,7 @@ export const GENESIS_DAY_THREE_NOAH_ARK_LESSON: BibleYearDailyLesson = {
       ],
     },
     {
-      heading: "The Waters Prevail",
+      heading: "The Waters Take Over The Earth",
       verseBlock: { reference: "Genesis 7:17-24", chapter: 7, startVerse: 17, endVerse: 24 },
       teaching: [
         "The same waters that judge the world lift the ark. That is one of the deepest pictures in the chapter.",

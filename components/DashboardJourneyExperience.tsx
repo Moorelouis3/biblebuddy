@@ -8551,19 +8551,19 @@ export default function DashboardJourneyExperience({
         list: ["ðŸ› ï¸ faith became work", "ðŸ“ obedience had details", "ðŸšª the ship had one door", "ðŸ›Ÿ God provided refuge", "âœ… Noah did what God commanded"],
       },
       "Genesis 7:1-10": {
-        heading: "ðŸšª Come Into the Ark",
-        teachingTitle: "ðŸšª The Place of Refuge",
-        list: ["ðŸšª God calls Noah in", "ðŸ‘¨â€ðŸ‘©â€ðŸ‘¦ family enters together", "ðŸ˜ animals are preserved", "â³ seven days of waiting", "ðŸŒ§ï¸ judgment is near"],
+        heading: "🚢 Entering The Ark",
+        teachingTitle: "🚢 God Moves Noah From Building To Entering",
+        list: ["🗣️ God speaks to Noah", "🏠 Noah's household enters", "🐑 clean and unclean animals come", "⏳ seven days of waiting", "🌊 judgment is near"],
       },
-      "Genesis 7:11-16": {
-        heading: "ðŸŒ§ï¸ The Flood Begins",
-        teachingTitle: "ðŸŒ§ï¸ Creation Boundaries Break Open",
-        list: ["ðŸŒ§ï¸ rain falls", "ðŸŒŠ the deep opens", "ðŸšª the door closes", "ðŸ›Ÿ God secures Noah", "âš–ï¸ judgment begins"],
+      "Genesis 7:11-17": {
+        heading: "🚢 The Flood Begins",
+        teachingTitle: "🌧️ The Waters Break From Above And Below",
+        list: ["🎂 Noah is 600 years old", "🌊 the deep breaks open", "☁️ heaven opens", "🔒 the LORD shuts Noah in", "🚢 the ark is lifted"],
       },
       "Genesis 7:17-24": {
-        heading: "ðŸŒŠ The Waters Prevail",
-        teachingTitle: "ðŸŒŠ The Same Water Judges and Carries",
-        list: ["ðŸŒŠ waters rise", "â›°ï¸ mountains are covered", "âš–ï¸ judgment is real", "ðŸ›Ÿ the ark is lifted", "ðŸŒ± life is preserved"],
+        heading: "🌊 The Waters Take Over The Earth",
+        teachingTitle: "🌊 The Flood Overpowers Everything Outside The Ark",
+        list: ["📈 waters keep rising", "⛰️ hills and mountains are covered", "💀 life outside the ark perishes", "👨 Noah and his family remain", "⏳ the waters prevail 150 days"],
       },
     };
 
@@ -12596,7 +12596,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 Help us fix it faster
               </h2>
               <p className="mt-2 text-sm font-medium leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-                Send a structured message so we know where it happened and can reply in a normal DM thread.
+                Report a bug, issue, or suggestion.
               </p>
             </div>
             <button
@@ -12957,7 +12957,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             Report a problem
           </p>
           <p className="mt-1 text-sm font-medium leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-            Send a structured message so we can reply and fix it faster.
+            Report a bug, issue, or suggestion.
           </p>
         </button>
       </section>
@@ -13033,7 +13033,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             Report a problem
           </p>
           <p className="mt-1 text-sm font-medium leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-            Send a structured message so we can reply and fix it faster.
+            Report a bug, issue, or suggestion.
           </p>
         </button>
       </>
@@ -14300,33 +14300,33 @@ Before we understand redemption, we need to understand what God made humanity fo
         ],
       },
       "Genesis 7:1-10": {
-        title: "Noah Enters the Ship",
-        icon: "ðŸšª",
+        title: "Entering The Ark",
+        icon: "🚢",
         paragraphs: [
-          "God told Noah to come into the ship with his household.",
-          "The ship was God's provided place of rescue.",
-          "Noah obeyed and entered before the flood began.",
-          "Faith sometimes means obeying God while you are still waiting to see what comes next.",
+          "God shifts Noah from building the ark to entering it with his household.",
+          "The clean and unclean animals come exactly as God commanded.",
+          "Noah obeys before the flood arrives and waits through the final seven-day countdown.",
+          "The ark is God's provided place of rescue before judgment begins.",
         ],
       },
-      "Genesis 7:11-16": {
+      "Genesis 7:11-17": {
         title: "The Flood Begins",
-        icon: "ðŸŒ§ï¸",
+        icon: "🚢",
         paragraphs: [
-          "The waters came from below and above.",
-          "The world God had ordered in creation was now being overwhelmed by judgment.",
-          "Noah, his family, and the animals entered the ship.",
-          "Then Yahweh shut Noah in and secured the place of rescue.",
+          "The flood begins at a real moment in Noah's life when the deep breaks open and the heavens release rain.",
+          "God shuts Noah in, showing that the safety of the ark depends on God's protection, not Noah's control.",
+          "The world God once ordered is now being overwhelmed by judgment from above and below.",
+          "As the waters rise, the ark begins carrying Noah and his family safely through the flood.",
         ],
       },
-      "Genesis 7:17-24": {
-        title: "The Waters Rise",
-        icon: "ðŸŒŠ",
+      "Genesis 7:18-24": {
+        title: "The Waters Take Over The Earth",
+        icon: "🌊",
         paragraphs: [
-          "The flood waters rose and covered the earth.",
-          "Outside the ship, the waters brought judgment.",
-          "Inside the ship, the same waters lifted Noah and carried the rescue God provided.",
-          "Genesis 7 is heavy, but it also shows that God preserves life through judgment.",
+          "The floodwaters keep rising until even the highest places disappear beneath them.",
+          "Everything outside the ark is overwhelmed, but Noah and those with him remain alive.",
+          "The same waters that judge the earth carry the ark above the destruction.",
+          "For one hundred and fifty days, the waters prevail over the earth.",
         ],
       },
     };

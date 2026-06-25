@@ -156,7 +156,7 @@ export async function POST(request: NextRequest) {
       kind: "problem_report",
       title: `Problem report: ${category}`,
       content: structuredMessage,
-      metadata: {
+      meta: {
         category,
         area,
         dayNumber,
