@@ -2,6 +2,7 @@
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { Fragment, useCallback, useEffect, useRef, useState, type FormEvent, type MouseEvent, type ReactNode, type SyntheticEvent } from "react";
+import { useRouter } from "next/navigation";
 import { toBlob } from "html-to-image";
 import confetti from "canvas-confetti";
 import { LouisAvatar } from "./LouisAvatar";
@@ -2189,6 +2190,7 @@ export default function DashboardJourneyExperience({
   bibleYearProgressReady = true,
   onBibleYearProgressLoadedChange,
 }: Props) {
+  const router = useRouter();
   const containerRef = useRef<HTMLDivElement | null>(null);
   const analyticsDashboardPreloadStartedRef = useRef(false);
   const previousDoneByKindRef = useRef<Record<string, boolean> | null>(null);
@@ -2464,6 +2466,16 @@ export default function DashboardJourneyExperience({
   const [guestAccountProfileImagePreview, setGuestAccountProfileImagePreview] = useState<string | null>(null);
   const [guestAccountLoading, setGuestAccountLoading] = useState(false);
   const [guestAccountMessage, setGuestAccountMessage] = useState<string | null>(null);
+  const [bibleYearProblemReportDraft, setBibleYearProblemReportDraft] = useState<{
+    dayNumber: number;
+    dayTitle: string;
+    reference: string;
+    category: string;
+    area: string;
+    message: string;
+  } | null>(null);
+  const [submittingBibleYearProblemReport, setSubmittingBibleYearProblemReport] = useState(false);
+  const [bibleYearProblemReportError, setBibleYearProblemReportError] = useState<string | null>(null);
 
   const dashboardPageKeys = ["home", "progress", "buddy", "bible", "bible_studies", "bible_topics", "share", "group", "settings", "analytics"] as const;
   type DashboardPageKey = (typeof dashboardPageKeys)[number];
@@ -6957,12 +6969,13 @@ export default function DashboardJourneyExperience({
     resolve?.();
   }
 
-  function closeInlineBibleYearCompletionUpgrade(dayNumber?: number | null) {
+  async function closeInlineBibleYearCompletionUpgrade(dayNumber?: number | null) {
     const resolvedDayNumber = dayNumber ?? bibleYearCompletionUpgradeDayRef.current;
     if (resolvedDayNumber) {
-      void logBibleYearCompletionUpgradeAction(
+      await logBibleYearCompletionUpgradeAction(
         ACTION_TYPE.upgrade_popup_dismissed,
         `Bible in One Year Day ${resolvedDayNumber} completion upgrade popup closed`,
+        resolvedDayNumber,
       );
     }
     setBibleYearInlineCompletionUpgradeDay(null);
@@ -6983,9 +6996,10 @@ export default function DashboardJourneyExperience({
     window.setTimeout(() => {
       fireBibleYearDayCompleteConfetti();
     }, 0);
-    void logBibleYearCompletionUpgradeAction(
+    await logBibleYearCompletionUpgradeAction(
       ACTION_TYPE.upgrade_popup_viewed,
       `Bible in One Year Day ${day.dayNumber} completion upgrade popup viewed`,
+      day.dayNumber,
     );
     await new Promise<void>((resolve) => {
       bibleYearCompletionUpgradeResolverRef.current = resolve;
@@ -7075,37 +7089,33 @@ export default function DashboardJourneyExperience({
   async function logBibleYearCompletionUpgradeAction(
     actionType: ActionType,
     label: string,
+    dayNumberOverride?: number | null,
     eventMetadata?: Record<string, unknown>,
   ) {
     if (!userId) return;
     try {
       const {
-        data: { user },
-      } = await supabase.auth.getUser();
-      const meta = user?.user_metadata || {};
-      const username =
-        meta.firstName ||
-        meta.first_name ||
-        (user?.email ? user.email.split("@")[0] : null) ||
-        "User";
-      const dayNumber = bibleYearCompletionUpgradeDayRef.current;
-      await supabase.from("master_actions").insert({
-        user_id: userId,
-        username,
-        action_type: actionType,
-        action_label: label,
-        journey_day: dayNumber,
-        account_status: isPaidUser ? "pro" : "free_or_guest",
-        event_metadata: {
-          plan: "bible_in_one_year",
-          prompt: "bible_year_completion_upgrade",
-          checkoutContext: "bible_year_completion_upgrade_offer",
-          source: "bible_year_day_completion",
-          dayNumber,
-          label,
-          ...(eventMetadata || {}),
+        data: { session },
+      } = await supabase.auth.getSession();
+      if (!session?.access_token) return;
+      const dayNumber = dayNumberOverride ?? bibleYearCompletionUpgradeDayRef.current;
+      const response = await fetch("/api/bible-year/completion-upgrade-action", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${session.access_token}`,
         },
+        body: JSON.stringify({
+          actionType,
+          label,
+          dayNumber,
+          eventMetadata: eventMetadata || {},
+        }),
       });
+      if (!response.ok) {
+        const errorText = await response.text().catch(() => "");
+        throw new Error(errorText || "Could not log completion upgrade action.");
+      }
     } catch (error) {
       console.warn("[BIBLE_YEAR_COMPLETION_UPGRADE] Could not log prompt action:", error);
     }
@@ -7195,7 +7205,7 @@ export default function DashboardJourneyExperience({
     void handleContinueToNextBibleYearDay(prompt.day, prompt.nextDay);
   }
 
-  function closeBibleYearQuickUpgrade() {
+  async function closeBibleYearQuickUpgrade() {
     if (bibleYearQuickUpgradeLoading) return;
     if (bibleYearQuickUpgradeContext === "day3") {
       void logDayThreeProPromptAction(ACTION_TYPE.upgrade_popup_dismissed, "Day 3 upgrade plan choices closed");
@@ -7209,9 +7219,10 @@ export default function DashboardJourneyExperience({
     }
     if (bibleYearQuickUpgradeContext === "completion") {
       const dayNumber = bibleYearCompletionUpgradeDayRef.current;
-      void logBibleYearCompletionUpgradeAction(
+      await logBibleYearCompletionUpgradeAction(
         ACTION_TYPE.upgrade_popup_dismissed,
         `Bible in One Year Day ${dayNumber || "Unknown"} completion upgrade popup closed`,
+        dayNumber,
       );
       setBibleYearQuickUpgradeOpen(false);
       setBibleYearQuickUpgradeError(null);
@@ -7271,9 +7282,10 @@ export default function DashboardJourneyExperience({
       }
       if (bibleYearQuickUpgradeContext === "completion") {
         const dayNumber = bibleYearCompletionUpgradeDayRef.current;
-        void logBibleYearCompletionUpgradeAction(
+        await logBibleYearCompletionUpgradeAction(
           ACTION_TYPE.upgrade_popup_cta_clicked,
           `Bible in One Year Day ${dayNumber || "Unknown"} completion checkout ${plan} clicked`,
+          dayNumber,
           {
             cta: plan === "yearly" ? "lifetime" : "monthly",
             clickedPlan: plan === "yearly" ? "lifetime" : "monthly",
@@ -11703,7 +11715,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         <div className="relative">
           <button
             type="button"
-            onClick={() => closeInlineBibleYearCompletionUpgrade(day.dayNumber)}
+            onClick={() => void closeInlineBibleYearCompletionUpgrade(day.dayNumber)}
             className="absolute right-0 top-0 grid h-9 w-9 place-items-center rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-white text-[#42557f] shadow-[0_8px_18px_rgba(38,63,99,0.08)] transition hover:bg-[var(--bb-surface-soft,#f8fbff)]"
             aria-label="Close completion upgrade"
           >
@@ -12492,6 +12504,211 @@ Before we understand redemption, we need to understand what God made humanity fo
     });
   }
 
+  function openBibleYearProblemReport(day: GenesisBibleYearDay) {
+    setBibleYearProblemReportError(null);
+    setBibleYearProblemReportDraft({
+      dayNumber: day.dayNumber,
+      dayTitle: day.title,
+      reference: day.reference,
+      category: "App bug",
+      area: "Bible in One Year Day",
+      message: "",
+    });
+  }
+
+  async function submitBibleYearProblemReport(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (!bibleYearProblemReportDraft || submittingBibleYearProblemReport) return;
+
+    if (!bibleYearProblemReportDraft.message.trim()) {
+      setBibleYearProblemReportError("Please describe what happened.");
+      return;
+    }
+
+    setSubmittingBibleYearProblemReport(true);
+    setBibleYearProblemReportError(null);
+
+    try {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
+      if (!session?.access_token) {
+        throw new Error("Please sign in again and try one more time.");
+      }
+
+      const response = await fetch("/api/messages/support-report", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${session.access_token}`,
+        },
+        body: JSON.stringify({
+          category: bibleYearProblemReportDraft.category,
+          area: bibleYearProblemReportDraft.area,
+          message: bibleYearProblemReportDraft.message,
+          dayNumber: bibleYearProblemReportDraft.dayNumber,
+          dayTitle: bibleYearProblemReportDraft.dayTitle,
+          reference: bibleYearProblemReportDraft.reference,
+          source: "Bible in One Year Dashboard",
+          currentUrl: typeof window !== "undefined" ? window.location.pathname + window.location.search : "/dashboard",
+        }),
+      });
+
+      const payload = await response.json().catch(() => null);
+      if (!response.ok || !payload?.ok) {
+        throw new Error(payload?.error || "Could not send your report.");
+      }
+
+      const conversationId = typeof payload?.conversationId === "string" ? payload.conversationId : null;
+      setBibleYearProblemReportDraft(null);
+
+      if (conversationId) {
+        router.push(`/messages/${conversationId}`);
+      } else {
+        window.alert("Your report was saved. You can check Messages if a follow-up is needed.");
+      }
+    } catch (error) {
+      setBibleYearProblemReportError(error instanceof Error ? error.message : "Could not send your report.");
+    } finally {
+      setSubmittingBibleYearProblemReport(false);
+    }
+  }
+
+  function renderBibleYearProblemReportModal() {
+    if (!bibleYearProblemReportDraft) return null;
+
+    return (
+      <ModalShell
+        isOpen={true}
+        onClose={() => {
+          if (submittingBibleYearProblemReport) return;
+          setBibleYearProblemReportDraft(null);
+          setBibleYearProblemReportError(null);
+        }}
+        backdropColor="bg-black/55"
+      >
+        <div className="mx-4 w-full max-w-lg rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-white p-5 text-left shadow-2xl">
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">Report a problem</p>
+              <h2 className="mt-2 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">
+                Help us fix it faster
+              </h2>
+              <p className="mt-2 text-sm font-medium leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+                Send a structured message so we know where it happened and can reply in a normal DM thread.
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => {
+                if (submittingBibleYearProblemReport) return;
+                setBibleYearProblemReportDraft(null);
+                setBibleYearProblemReportError(null);
+              }}
+              className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[var(--bb-surface-soft,#f4f8ff)] text-xl font-bold text-[var(--bb-text-secondary,#4b5563)] transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
+              aria-label="Close problem report"
+            >
+              ×
+            </button>
+          </div>
+
+          <div className="mt-4 rounded-[20px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-4 py-3">
+            <p className="text-[11px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">
+              Day {bibleYearProblemReportDraft.dayNumber}
+            </p>
+            <p className="mt-1 text-sm font-black text-[var(--bb-text-primary,#111827)]">{bibleYearProblemReportDraft.dayTitle}</p>
+            <p className="mt-1 text-sm font-medium text-[var(--bb-text-secondary,#4b5563)]">{bibleYearProblemReportDraft.reference}</p>
+          </div>
+
+          <form className="mt-5 grid gap-4" onSubmit={submitBibleYearProblemReport}>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <label className="grid gap-2 text-sm font-bold text-[var(--bb-text-primary,#111827)]">
+                Type
+                <select
+                  value={bibleYearProblemReportDraft.category}
+                  onChange={(event) =>
+                    setBibleYearProblemReportDraft((current) =>
+                      current ? { ...current, category: event.target.value } : current,
+                    )
+                  }
+                  className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-white px-4 py-3 text-sm font-semibold text-[var(--bb-text-primary,#111827)] outline-none transition focus:border-[var(--bb-accent,#2f7fe8)]"
+                >
+                  {["App bug", "Audio or video", "Study Notes", "Trivia", "Billing or upgrade", "Account or login", "Other"].map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </label>
+
+              <label className="grid gap-2 text-sm font-bold text-[var(--bb-text-primary,#111827)]">
+                Where
+                <select
+                  value={bibleYearProblemReportDraft.area}
+                  onChange={(event) =>
+                    setBibleYearProblemReportDraft((current) =>
+                      current ? { ...current, area: event.target.value } : current,
+                    )
+                  }
+                  className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-white px-4 py-3 text-sm font-semibold text-[var(--bb-text-primary,#111827)] outline-none transition focus:border-[var(--bb-accent,#2f7fe8)]"
+                >
+                  {["Bible in One Year Day", "Dashboard", "Bible Reader", "Study Notes", "Trivia", "Discussion", "Analytics", "Profile", "Other"].map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
+
+            <label className="grid gap-2 text-sm font-bold text-[var(--bb-text-primary,#111827)]">
+              What happened?
+              <textarea
+                value={bibleYearProblemReportDraft.message}
+                onChange={(event) =>
+                  setBibleYearProblemReportDraft((current) =>
+                    current ? { ...current, message: event.target.value } : current,
+                  )
+                }
+                rows={6}
+                placeholder="Tell us what broke, what you expected, and anything that helps us reproduce it."
+                className="rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-white px-4 py-3 text-sm font-medium leading-6 text-[var(--bb-text-primary,#111827)] outline-none transition placeholder:text-[var(--bb-text-muted,#6b7280)] focus:border-[var(--bb-accent,#2f7fe8)]"
+              />
+            </label>
+
+            {bibleYearProblemReportError ? (
+              <div className="rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm font-semibold text-rose-700">
+                {bibleYearProblemReportError}
+              </div>
+            ) : null}
+
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-end">
+              <button
+                type="button"
+                onClick={() => {
+                  if (submittingBibleYearProblemReport) return;
+                  setBibleYearProblemReportDraft(null);
+                  setBibleYearProblemReportError(null);
+                }}
+                className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-white px-5 py-3 text-sm font-black text-[var(--bb-text-secondary,#4b5563)] transition hover:bg-[var(--bb-surface-soft,#f8fbff)]"
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                disabled={submittingBibleYearProblemReport}
+                className="rounded-2xl bg-[var(--bb-button,#2f7fe8)] px-5 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-[0_12px_24px_rgba(47,127,232,0.18)] transition hover:brightness-105 disabled:cursor-wait disabled:opacity-70"
+              >
+                {submittingBibleYearProblemReport ? "Sending..." : "Send to Louis"}
+              </button>
+            </div>
+          </form>
+        </div>
+      </ModalShell>
+    );
+  }
+
   function renderBibleYearDashboardStudyArea(day: GenesisBibleYearDay, tasksToRender: TaskState[]) {
     void tasksToRender;
     const cover = getBibleYearDayCoverImage(day);
@@ -12728,6 +12945,21 @@ Before we understand redemption, we need to understand what God made humanity fo
           })}
         </div>
         {renderExpandedSupportContent()}
+        <button
+          type="button"
+          onClick={() => openBibleYearProblemReport(day)}
+          className="rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-white px-5 py-4 text-center shadow-[0_14px_30px_rgba(38,63,99,0.08)] transition hover:-translate-y-0.5 hover:bg-[var(--bb-surface-soft,#f8fbff)]"
+        >
+          <p className="text-[12px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">
+            Need help?
+          </p>
+          <p className="mt-2 text-[18px] font-black text-[var(--bb-text-primary,#111827)]">
+            Report a problem
+          </p>
+          <p className="mt-1 text-sm font-medium leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+            Send a structured message so we can reply and fix it faster.
+          </p>
+        </button>
       </section>
     );
 
@@ -12789,6 +13021,21 @@ Before we understand redemption, we need to understand what God made humanity fo
             );
           })}
         </section>
+        <button
+          type="button"
+          onClick={() => openBibleYearProblemReport(day)}
+          className="order-4 rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-white px-5 py-4 text-center shadow-[0_14px_30px_rgba(38,63,99,0.08)] transition hover:-translate-y-0.5 hover:bg-[var(--bb-surface-soft,#f8fbff)]"
+        >
+          <p className="text-[12px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">
+            Need help?
+          </p>
+          <p className="mt-2 text-[18px] font-black text-[var(--bb-text-primary,#111827)]">
+            Report a problem
+          </p>
+          <p className="mt-1 text-sm font-medium leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+            Send a structured message so we can reply and fix it faster.
+          </p>
+        </button>
       </>
     );
 
@@ -12796,10 +13043,11 @@ Before we understand redemption, we need to understand what God made humanity fo
       <section data-bible-year-study-area data-bb-dashboard-tour="study-tasks" className="dashboard-bible-year-study-area grid gap-5">
         {showCompletionMoment ? renderBibleYearInlineCompletionUpgradeCard(day, {
           nextDay: nextBibleYearDay,
-          onContinueFree: nextBibleYearDay ? () => {
-            void logBibleYearCompletionUpgradeAction(
+          onContinueFree: nextBibleYearDay ? async () => {
+            await logBibleYearCompletionUpgradeAction(
               ACTION_TYPE.upgrade_popup_dismissed,
               `Bible in One Year Day ${day.dayNumber} completion upgrade continue as free clicked`,
+              day.dayNumber,
               {
                 cta: "continue_free",
               },
@@ -17398,6 +17646,7 @@ Before we understand redemption, we need to understand what God made humanity fo
 
       {renderBibleYearCompletionModal()}
       {renderBibleYearIncompleteChecklistModal()}
+      {renderBibleYearProblemReportModal()}
       {renderBibleYearDeepNotesUpgradeModal()}
       {renderBibleYearDayThreeProUpgradePrompt()}
       {renderBibleYearDaySevenProUpgradePrompt()}

@@ -822,7 +822,7 @@ Noah trusted God with details, labor, waiting, and preparation.
 
 **Entering The Ark**
 
-**ðŸ—£ï¸ And The Lord Said Unto Noah**
+**🗣️ And The Lord Said Unto Noah**
 
 God speaks directly to Noah once again.
 
@@ -832,55 +832,55 @@ Now God gives the next set of instructions as the flood draws near.
 
 The focus shifts from building the ark to entering it.
 
-ðŸ—£ï¸ God speaks
+🗣️ God speaks
 
-ðŸ‘‚ Noah receives instructions
+👂 Noah receives instructions
 
-ðŸš¢ The ark is ready
+🚢 The ark is ready
 
-ðŸŒŠ The flood is approaching
+🌊 The flood is approaching
 
-**ðŸ  Come Thou And All Thy House Into The Ark**
+**🏠 Come Thou And All Thy House Into The Ark**
 
-The word â€œhouseâ€ here means household or family.
+The word “house” here means household or family.
 
-God is not talking about Noahâ€™s possessions.
+God is not talking about Noah’s possessions.
 
-He is talking about the people who belong to Noahâ€™s family.
+He is talking about the people who belong to Noah’s family.
 
 This includes Noah, his wife, his three sons, and their wives.
 
 Eight people will enter the ark together.
 
-ðŸ  House means household
+🏠 House means household
 
-ðŸ‘¨ Noah
+👨 Noah
 
-ðŸ‘© Noahâ€™s wife
+👩 Noah’s wife
 
-ðŸ‘¨â€ðŸ‘©â€ðŸ‘¦â€ðŸ‘¦ Noahâ€™s family enters the ark
+👨‍👩‍👦‍👦 Noah’s family enters the ark
 
-**ðŸ™ For Thee Have I Seen Righteous**
+**🙏 For Thee Have I Seen Righteous**
 
-The word â€œrighteousâ€ means upright, just, or faithful before God.
+The word “righteous” means upright, just, or faithful before God.
 
 This does not mean Noah was sinless.
 
 Rather, Noah trusted God and lived in a way that honored Him.
 
-God sees Noahâ€™s faith and obedience.
+God sees Noah’s faith and obedience.
 
-ðŸ™ Righteous means upright
+🙏 Righteous means upright
 
-ðŸ‘€ God sees Noahâ€™s faithfulness
+👀 God sees Noah’s faithfulness
 
-â¤ï¸ Noah trusted God
+❤️ Noah trusted God
 
-ðŸ“– God recognizes his obedience
+📖 God recognizes his obedience
 
-**ðŸŒ Before Me In This Generation**
+**🌍 Before Me In This Generation**
 
-The word â€œgenerationâ€ refers to the people living during Noahâ€™s lifetime.
+The word “generation” refers to the people living during Noah’s lifetime.
 
 God has already described the earth as being filled with corruption and violence.
 
@@ -888,15 +888,15 @@ Among the people of his day, Noah stood apart.
 
 He was not perfect, but he was living differently from the world around him.
 
-ðŸŒ Refers to Noahâ€™s generation
+🌍 Refers to Noah’s generation
 
-âš ï¸ The world is corrupt
+⚠️ The world is corrupt
 
-ðŸ‘€ God sees the difference
+👀 God sees the difference
 
-ðŸ™ Noah stands apart
+🙏 Noah stands apart
 
-**ðŸ‘ Of Every Clean Beast Thou Shalt Take**
+**🐑 Of Every Clean Beast Thou Shalt Take**
 
 God now gives more detailed instructions about the animals.
 
@@ -906,15 +906,15 @@ Examples later include sheep, goats, cattle, oxen, and certain birds.
 
 Even though Moses had not yet written Leviticus, Noah apparently already understood the difference between clean and unclean animals.
 
-ðŸ‘ Clean animals are acceptable for sacrifice
+🐑 Clean animals are acceptable for sacrifice
 
-ðŸ Sheep, goats, and cattle
+🐐 Sheep, goats, and cattle
 
-ðŸ“– Noah understood the distinction
+📖 Noah understood the distinction
 
-ðŸ™ Worship will continue after the flood
+🙏 Worship will continue after the flood
 
-**7ï¸âƒ£ By Sevens**
+**7️⃣ By Sevens**
 
 God tells Noah to bring extra clean animals onto the ark.
 
@@ -924,15 +924,15 @@ If Noah only brought one pair, sacrificing one would eliminate that animal from 
 
 The extra animals allow both survival and worship.
 
-7ï¸âƒ£ Extra clean animals
+7️⃣ Extra clean animals
 
-ðŸ™ Animals available for sacrifice
+🙏 Animals available for sacrifice
 
-ðŸŒ± Species continue after the flood
+🌱 Species continue after the flood
 
-ðŸ“– God is planning ahead
+📖 God is planning ahead
 
-**ðŸ‘¨ The Male And His Female**
+**👨 The Male And His Female**
 
 God specifies male and female animals.
 
@@ -940,15 +940,15 @@ This ensures reproduction after the flood.
 
 The goal is not merely survival but the continuation of life.
 
-ðŸ‘¨ Male
+👨 Male
 
-ðŸ‘© Female
+👩 Female
 
-ðŸŒ± Future generations
+🌱 Future generations
 
-ðŸ“– Life continues after the flood
+📖 Life continues after the flood
 
-**ðŸ¾ Of Beasts That Are Not Clean By Two**
+**🐾 Of Beasts That Are Not Clean By Two**
 
 Unclean animals are brought in pairs rather than by sevens.
 
@@ -956,15 +956,15 @@ Later in Leviticus, examples of unclean animals include pigs, camels, rabbits, a
 
 God only requires one male and one female of these animals because they are being preserved, not prepared for worship.
 
-ðŸ¾ Unclean animals come in pairs
+🐾 Unclean animals come in pairs
 
-ðŸ– Pigs and similar animals
+🐖 Pigs and similar animals
 
-ðŸ‘¨ One male
+👨 One male
 
-ðŸ‘© One female
+👩 One female
 
-**ðŸ¦ Of Fowls Also Of The Air By Sevens**
+**🐦 Of Fowls Also Of The Air By Sevens**
 
 Fowls means birds.
 
@@ -974,34 +974,33 @@ Like the clean animals, extra birds are brought onto the ark.
 
 Some birds were later used in sacrifices and offerings, which helps explain why more than one pair was needed.
 
-ðŸ¦ Fowls means birds
+🐦 Fowls means birds
 
-ðŸ•Šï¸ Doves, ravens, pigeons, and more
+🕊️ Doves, ravens, pigeons, and more
 
-ðŸ™ Extra birds for preservation and sacrifice
+🙏 Extra birds for preservation and sacrifice
 
-ðŸŒ± Life continues after the flood
+🌱 Life continues after the flood
 
-**ðŸŒ± To Keep Seed Alive Upon The Face Of All The Earth**
+**🌱 To Keep Seed Alive Upon The Face Of All The Earth**
 
-The word â€œseedâ€ here means offspring, descendants, or future generations.
+The word “seed” here means offspring, descendants, or future generations.
 
-Godâ€™s goal is not simply to save individual animals.
+God’s goal is not simply to save individual animals.
 
 His goal is to preserve life so that the earth can be filled again after the flood.
 
 The animals will survive, reproduce, and repopulate the world.
 
-ðŸŒ± Seed means offspring
+🌱 Seed means offspring
 
-ðŸ¦ Animals will reproduce
+🦁 Animals will reproduce
 
-ðŸŒ Life will continue
+🌍 Life will continue
 
-ðŸš¢ The future is being preserved
+🚢 The future is being preserved
 
-
-**â³ For Yet Seven Days**
+**⏳ For Yet Seven Days**
 
 God gives Noah a final countdown before the flood begins.
 
@@ -1011,17 +1010,17 @@ The animals have been gathered.
 
 The time for preparation is almost over.
 
-In seven days, Godâ€™s judgment will begin.
+In seven days, God’s judgment will begin.
 
-â³ Seven day warning
+⏳ Seven day warning
 
-ðŸš¢ The ark is ready
+🚢 The ark is ready
 
-âš ï¸ Judgment is near
+⚠️ Judgment is near
 
-ðŸ“– Final preparations
+📖 Final preparations
 
-**ðŸŒ§ï¸ I Will Cause It To Rain Upon The Earth**
+**🌧️ I Will Cause It To Rain Upon The Earth**
 
 God makes it clear that the coming flood is not a natural accident.
 
@@ -1029,15 +1028,15 @@ The rain is coming because God is sending it.
 
 This is a direct act of divine judgment upon the earth.
 
-ðŸŒ§ï¸ God sends the rain
+🌧️ God sends the rain
 
-âš–ï¸ Judgment is coming
+⚖️ Judgment is coming
 
-ðŸŒ The flood begins with God
+🌍 The flood begins with God
 
-ðŸ“– A direct act of God
+📖 A direct act of God
 
-**â³ Forty Days And Forty Nights**
+**⏳ Forty Days And Forty Nights**
 
 The number forty becomes an important number throughout the Bible.
 
@@ -1045,91 +1044,91 @@ It is often connected with testing, preparation, judgment, or a significant peri
 
 Examples include:
 
-ðŸŒ§ï¸ Forty days of rain during the flood
+🌧️ Forty days of rain during the flood
 
-ðŸœï¸ Forty years in the wilderness
+🏜️ Forty years in the wilderness
 
-ðŸž Moses fasting forty days on Mount Sinai
+🍞 Moses fasting forty days on Mount Sinai
 
-âœï¸ Jesus fasting forty days in the wilderness
+✝️ Jesus fasting forty days in the wilderness
 
-The number does not always mean exactly the same thing, but it often marks an important season in Godâ€™s plan.
+The number does not always mean exactly the same thing, but it often marks an important season in God’s plan.
 
-â³ Forty is a significant biblical number
+⏳ Forty is a significant biblical number
 
-ðŸŒ§ï¸ Forty days of rain
+🌧️ Forty days of rain
 
-ðŸœï¸ Forty years in the wilderness
+🏜️ Forty years in the wilderness
 
-âœï¸ Jesus fasted forty days
+✝️ Jesus fasted forty days
 
-**ðŸŒ Every Living Substance That I Have Made**
+**🌍 Every Living Substance That I Have Made**
 
 God reminds Noah that He is the Creator.
 
 Everything living ultimately belongs to Him.
 
-The flood is not destroying something outside of Godâ€™s authority.
+The flood is not destroying something outside of God’s authority.
 
 It is affecting a creation that God Himself made.
 
-ðŸŒ God created all life
+🌍 God created all life
 
-ðŸ‘€ Everything belongs to Him
+👀 Everything belongs to Him
 
-ðŸ“– God is the Creator
+📖 God is the Creator
 
-âš–ï¸ God has authority over creation
+⚖️ God has authority over creation
 
-**âš–ï¸ Will I Destroy From Off The Face Of The Earth**
+**⚖️ Will I Destroy From Off The Face Of The Earth**
 
 God announces the coming judgment.
 
-The phrase â€œface of the earthâ€ means the surface of the earth where people and animals live.
+The phrase “face of the earth” means the surface of the earth where people and animals live.
 
 The flood will remove the corrupt generation that has filled the earth with violence.
 
-âš–ï¸ Judgment is declared
+⚖️ Judgment is declared
 
-ðŸŒ Refers to life on the earth
+🌍 Refers to life on the earth
 
-ðŸŒŠ The flood is coming
+🌊 The flood is coming
 
-ðŸ“– Godâ€™s warning is clear
+📖 God’s warning is clear
 
-**ðŸ™Œ Noah Did According**
+**🙌 Noah Did According**
 
-This short phrase highlights Noahâ€™s obedience.
+This short phrase highlights Noah’s obedience.
 
 When God spoke, Noah responded.
 
 His faith was shown through action.
 
-ðŸ™Œ Noah obeyed
+🙌 Noah obeyed
 
-ðŸ‘‚ He listened to God
+👂 He listened to God
 
-ðŸ“– Faith led to action
+📖 Faith led to action
 
-ðŸš¢ Noah followed through
+🚢 Noah followed through
 
-**ðŸ“– Unto All That The Lord Commanded Him**
+**📖 Unto All That The Lord Commanded Him**
 
 Noah did not partially obey God.
 
-He followed all of Godâ€™s instructions.
+He followed all of God’s instructions.
 
-The ark, the animals, the food, and the preparations were done according to Godâ€™s commands.
+The ark, the animals, the food, and the preparations were done according to God’s commands.
 
-ðŸ“– Noah followed Godâ€™s instructions
+📖 Noah followed God’s instructions
 
-ðŸ™ Complete obedience
+🙏 Complete obedience
 
-ðŸš¢ Everything was prepared
+🚢 Everything was prepared
 
-ðŸ‘€ Noah trusted God
+👀 Noah trusted God
 
-**â³ Noah Was Six Hundred Years Old**
+**⏳ Noah Was Six Hundred Years Old**
 
 Genesis 5 ended with Noah being 500 years old when his sons were born.
 
@@ -1139,15 +1138,15 @@ About 100 years have passed since the birth of Shem, Ham, and Japheth.
 
 During that time Noah built the ark and prepared for the flood.
 
-â³ Noah is now 600 years old
+⏳ Noah is now 600 years old
 
-ðŸ‘¨â€ðŸ‘¦â€ðŸ‘¦ About 100 years later
+👨‍👦‍👦 About 100 years later
 
-ðŸš¢ The ark has been built
+🚢 The ark has been built
 
-ðŸ“– Time has passed
+📖 Time has passed
 
-**ðŸŒŠ When The Flood Of Waters Was Upon The Earth**
+**🌊 When The Flood Of Waters Was Upon The Earth**
 
 The moment God warned about has finally arrived.
 
@@ -1155,33 +1154,33 @@ The flood is no longer a future event.
 
 The waters are beginning to come upon the earth.
 
-ðŸŒŠ The flood begins
+🌊 The flood begins
 
-âš–ï¸ Judgment arrives
+⚖️ Judgment arrives
 
-ðŸ“– Godâ€™s warning comes true
+📖 God’s warning comes true
 
-ðŸŒ The earth is changing
+🌍 The earth is changing
 
-**ðŸš¢ Noah Went In**
+**🚢 Noah Went In**
 
-Noah obeys Godâ€™s command and enters the ark.
+Noah obeys God’s command and enters the ark.
 
 This is an act of faith.
 
 Noah enters before the floodwaters arrive.
 
-He trusts Godâ€™s warning and acts upon it.
+He trusts God’s warning and acts upon it.
 
-ðŸš¢ Noah enters the ark
+🚢 Noah enters the ark
 
-ðŸ™ An act of faith
+🙏 An act of faith
 
-ðŸ‘‚ Noah obeys God
+👂 Noah obeys God
 
-âš ï¸ Judgment is near
+⚠️ Judgment is near
 
-**ðŸ‘¨â€ðŸ‘©â€ðŸ‘¦â€ðŸ‘¦ His Sons, His Wife, And His Sonsâ€™ Wives**
+**👨‍👩‍👦‍👦 His Sons, His Wife, And His Sons’ Wives**
 
 The entire family enters the ark together.
 
@@ -1189,31 +1188,31 @@ These are the same eight people God promised to preserve.
 
 Through them, humanity will continue after the flood.
 
-ðŸ‘¨ Noah
+👨 Noah
 
-ðŸ‘© Noahâ€™s wife
+👩 Noah’s wife
 
-ðŸ‘¨â€ðŸ‘¦â€ðŸ‘¦ His three sons
+👨‍👦‍👦 His three sons
 
-ðŸ‘©â€ðŸ‘©â€ðŸ‘¦ Their wives
+👩‍👩‍👦 Their wives
 
-**ðŸŒŠ Because Of The Waters Of The Flood**
+**🌊 Because Of The Waters Of The Flood**
 
 The reason they enter the ark is because the flood is coming.
 
 Noah is not entering out of fear.
 
-He is entering because he believes Godâ€™s warning.
+He is entering because he believes God’s warning.
 
-ðŸŒŠ The flood is approaching
+🌊 The flood is approaching
 
-ðŸ™ Noah believes God
+🙏 Noah believes God
 
-ðŸš¢ The ark provides safety
+🚢 The ark provides safety
 
-ðŸ“– Faith produces action
+📖 Faith produces action
 
-**ðŸ‘ Of Clean Beasts And Of Beasts That Are Not Clean**
+**🐑 Of Clean Beasts And Of Beasts That Are Not Clean**
 
 The animals arrive exactly as God commanded.
 
@@ -1221,17 +1220,17 @@ Both clean and unclean animals are included.
 
 Clean animals were acceptable for sacrifice and worship.
 
-Unclean animals were still preserved because they were part of Godâ€™s creation.
+Unclean animals were still preserved because they were part of God’s creation.
 
-ðŸ‘ Clean animals
+🐑 Clean animals
 
-ðŸ¾ Unclean animals
+🐾 Unclean animals
 
-ðŸŒ All kinds are preserved
+🌍 All kinds are preserved
 
-ðŸ“– God cares for creation
+📖 God cares for creation
 
-**ðŸ¦ And Of Fowls**
+**🐦 And Of Fowls**
 
 Fowls means birds.
 
@@ -1239,47 +1238,47 @@ This includes creatures such as doves, ravens, pigeons, eagles, hawks, and many 
 
 The birds are preserved alongside the land animals.
 
-ðŸ¦ Fowls means birds
+🐦 Fowls means birds
 
-ðŸ•Šï¸ Doves and ravens
+🕊️ Doves and ravens
 
-ðŸ¦… Eagles and hawks
+🦅 Eagles and hawks
 
-ðŸŒ Bird life is preserved
+🌍 Bird life is preserved
 
-**ðŸ› And Of Every Thing That Creepeth Upon The Earth**
+**🐛 And Of Every Thing That Creepeth Upon The Earth**
 
 This includes smaller creatures that move along the ground.
 
-Godâ€™s preservation extends to all kinds of land life, from the largest animals to the smallest.
+God’s preservation extends to all kinds of land life, from the largest animals to the smallest.
 
-ðŸ› Small creatures included
+🐛 Small creatures included
 
-ðŸ¦Ž Lizards and reptiles
+🦎 Lizards and reptiles
 
-ðŸœ Insects and bugs
+🐜 Insects and bugs
 
-ðŸŒ All creation is represented
+🌍 All creation is represented
 
-**ðŸ¾ There Went In Two And Two Unto Noah Into The Ark**
+**🐾 There Went In Two And Two Unto Noah Into The Ark**
 
 The animals enter in pairs just as God commanded.
 
-The emphasis is on Godâ€™s provision.
+The emphasis is on God’s provision.
 
 Noah does not gather them through his own power.
 
 God brings them to the ark.
 
-ðŸ¾ Animals enter in pairs
+🐾 Animals enter in pairs
 
-ðŸš¢ They come into the ark
+🚢 They come into the ark
 
-ðŸ™ God provides
+🙏 God provides
 
-ðŸ“– Godâ€™s plan unfolds
+📖 God’s plan unfolds
 
-**ðŸ‘¨ The Male And The Female**
+**👨 The Male And The Female**
 
 Each pair consists of a male and a female.
 
@@ -1287,31 +1286,31 @@ This allows the animals to reproduce after the flood.
 
 God is preserving future generations of life.
 
-ðŸ‘¨ Male
+👨 Male
 
-ðŸ‘© Female
+👩 Female
 
-ðŸŒ± Future reproduction
+🌱 Future reproduction
 
-ðŸŒ Life continues
+🌍 Life continues
 
-**ðŸ“– As God Had Commanded Noah**
+**📖 As God Had Commanded Noah**
 
-The animals enter exactly according to Godâ€™s instructions.
+The animals enter exactly according to God’s instructions.
 
 This phrase again emphasizes obedience.
 
-Everything is happening according to Godâ€™s plan.
+Everything is happening according to God’s plan.
 
-ðŸ“– God commanded
+📖 God commanded
 
-ðŸ™Œ Noah obeyed
+🙌 Noah obeyed
 
-ðŸ¾ The animals obeyed
+🐾 The animals obeyed
 
-ðŸš¢ Godâ€™s plan is fulfilled
+🚢 God’s plan is fulfilled
 
-**â³ It Came To Pass After Seven Days**
+**⏳ It Came To Pass After Seven Days**
 
 The seven day countdown God gave Noah has now ended.
 
@@ -1319,15 +1318,15 @@ The waiting period is over.
 
 The flood is about to begin.
 
-â³ Seven days have passed
+⏳ Seven days have passed
 
-âš ï¸ The countdown ends
+⚠️ The countdown ends
 
-ðŸŒŠ The flood begins
+🌊 The flood begins
 
-ðŸ“– Godâ€™s timing is perfect
+📖 God’s timing is perfect
 
-**ðŸŒŠ The Waters Of The Flood Were Upon The Earth**
+**🌊 The Waters Of The Flood Were Upon The Earth**
 
 The floodwaters finally arrive.
 
@@ -1335,19 +1334,19 @@ What God promised in warning now becomes reality.
 
 The judgment Noah spent decades preparing for has begun.
 
-ðŸŒŠ The flood arrives
+🌊 The flood arrives
 
-âš–ï¸ Judgment begins
+⚖️ Judgment begins
 
-ðŸ“– Godâ€™s word proves true
+📖 God’s word proves true
 
-ðŸš¢ Noah is safe inside the ark
+🚢 Noah is safe inside the ark
 
-# ðŸš¢ Genesis 7:11â€“17
+# 🚢 Genesis 7:11–17
 
 **The Flood Begins**
 
-**ðŸŽ‚ In The Six Hundredth Year Of Noah's Life**
+**🎂 In The Six Hundredth Year Of Noah's Life**
 
 Noah is now 600 years old when the Flood begins.
 
@@ -1359,15 +1358,15 @@ For decades Noah obeyed God, built the ark, and waited for what God promised.
 
 Sometimes God's instructions require years of faithful obedience before we see the results.
 
-ðŸŽ‚ Noah is 600 years old
+🎂 Noah is 600 years old
 
-â³ About 100 years have passed
+⏳ About 100 years have passed
 
-ðŸš¢ The ark is complete
+🚢 The ark is complete
 
-ðŸ™ Noah waited faithfully
+🙏 Noah waited faithfully
 
-**ðŸ“… In The Second Month, The Seventeenth Day Of The Month**
+**📅 In The Second Month, The Seventeenth Day Of The Month**
 
 God records the exact date the Flood began.
 
@@ -1377,15 +1376,15 @@ The Bible presents the Flood as a real event that happened at a specific time in
 
 The detailed date emphasizes the historical nature of the account.
 
-ðŸ“… An exact date is given
+📅 An exact date is given
 
-ðŸ“– A specific historical event
+📖 A specific historical event
 
-ðŸŒ The Flood begins
+🌍 The Flood begins
 
-â³ God's timing arrives
+⏳ God's timing arrives
 
-**ðŸŒŠ All The Fountains Of The Great Deep Were Broken Up**
+**🌊 All The Fountains Of The Great Deep Were Broken Up**
 
 The phrase "great deep" refers to the vast waters beneath the earth.
 
@@ -1395,15 +1394,15 @@ Water also erupted from below the earth's surface.
 
 God used both the waters above and the waters below to bring judgment upon the world.
 
-ðŸŒŠ Waters burst forth from below
+🌊 Waters burst forth from below
 
-ðŸŒ The earth itself is affected
+🌍 The earth itself is affected
 
-ðŸ’§ More than ordinary rainfall
+💧 More than ordinary rainfall
 
-âš–ï¸ God's judgment begins
+⚖️ God's judgment begins
 
-**â˜ï¸ The Windows Of Heaven Were Opened**
+**☁️ The Windows Of Heaven Were Opened**
 
 This expression describes rain pouring down from above.
 
@@ -1413,15 +1412,15 @@ The Flood came from both directions.
 
 Water rose from beneath the earth while rain fell from the sky.
 
-â˜ï¸ Rain falls from above
+☁️ Rain falls from above
 
-ðŸ’§ Heaven's waters are released
+💧 Heaven's waters are released
 
-ðŸŒŠ Water comes from every direction
+🌊 Water comes from every direction
 
-âš–ï¸ God's judgment continues
+⚖️ God's judgment continues
 
-**ðŸŒ§ï¸ Forty Days And Forty Nights**
+**🌧️ Forty Days And Forty Nights**
 
 Rain fell continuously for forty days and forty nights.
 
@@ -1431,15 +1430,15 @@ The amount of water involved was unlike anything humanity had ever experienced.
 
 Throughout Scripture, the number forty is often connected with testing, judgment, and preparation.
 
-ðŸŒ§ï¸ Continuous rainfall
+🌧️ Continuous rainfall
 
-â³ Forty days and nights
+⏳ Forty days and nights
 
-âš–ï¸ A time of judgment
+⚖️ A time of judgment
 
-ðŸ“– A significant biblical number
+📖 A significant biblical number
 
-**ðŸšª In The Selfsame Day Entered Noah**
+**🚪 In The Selfsame Day Entered Noah**
 
 The phrase "selfsame day" means "that very day."
 
@@ -1449,15 +1448,15 @@ The day Noah entered the ark was the same day the Flood began.
 
 There was no delay between God's command and God's judgment.
 
-ðŸšª Selfsame means "that very day"
+🚪 Selfsame means "that very day"
 
-â³ No delay
+⏳ No delay
 
-ðŸš¢ Noah enters the ark
+🚢 Noah enters the ark
 
-âš–ï¸ Judgment is about to begin
+⚖️ Judgment is about to begin
 
-**ðŸ¦ Every Beast After His Kind**
+**🦁 Every Beast After His Kind**
 
 God preserved every type of land animal He intended to save.
 
@@ -1465,15 +1464,15 @@ The phrase "after his kind" means each animal reproduced according to its own ki
 
 God's focus was preserving life for the future world after the Flood.
 
-ðŸ¦ Land animals enter
+🦁 Land animals enter
 
-ðŸŒ± Each kind is preserved
+🌱 Each kind is preserved
 
-ðŸš¢ Life is protected
+🚢 Life is protected
 
-ðŸŒ The future is being prepared
+🌍 The future is being prepared
 
-**ðŸ„ All The Cattle After Their Kind**
+**🐄 All The Cattle After Their Kind**
 
 Cattle refers to domesticated animals such as oxen, cattle, sheep, and goats.
 
@@ -1481,15 +1480,15 @@ These animals would be important for food, work, sacrifice, and daily life after
 
 God was preserving both wild animals and domesticated animals.
 
-ðŸ„ Domesticated animals
+🐄 Domesticated animals
 
-ðŸ‘ Sheep and goats
+🐑 Sheep and goats
 
-ðŸŒ± Life after the Flood
+🌱 Life after the Flood
 
-ðŸš¢ God preserves them
+🚢 God preserves them
 
-**ðŸ› Every Creeping Thing That Creepeth Upon The Earth**
+**🐛 Every Creeping Thing That Creepeth Upon The Earth**
 
 This refers to smaller land creatures that move along the ground.
 
@@ -1497,15 +1496,15 @@ Examples may include insects, reptiles, and other small creatures.
 
 Even the smallest forms of life were included in God's plan of preservation.
 
-ðŸ› Small creatures
+🐛 Small creatures
 
-ðŸ¦Ž Reptiles and insects
+🦎 Reptiles and insects
 
-ðŸŒ Part of creation
+🌍 Part of creation
 
-ðŸš¢ Preserved on the ark
+🚢 Preserved on the ark
 
-**ðŸ¦ Every Fowl After His Kind**
+**🐦 Every Fowl After His Kind**
 
 Fowl simply means birds.
 
@@ -1513,15 +1512,15 @@ This would include doves, ravens, pigeons, hawks, eagles, and many other birds.
 
 God preserved the creatures of the air just as He preserved the creatures of the land.
 
-ðŸ¦ Fowl means birds
+🐦 Fowl means birds
 
-ðŸ•Šï¸ Various bird species
+🕊️ Various bird species
 
-ðŸŒ± Future generations preserved
+🌱 Future generations preserved
 
-ðŸš¢ Brought onto the ark
+🚢 Brought onto the ark
 
-**ðŸ‘¥ Two And Two Unto Noah Into The Ark**
+**👥 Two And Two Unto Noah Into The Ark**
 
 The animals came in pairs.
 
@@ -1531,15 +1530,15 @@ God was not only saving life.
 
 He was preparing for life to continue.
 
-ðŸ‘¥ Animals come in pairs
+👥 Animals come in pairs
 
-ðŸ‘¨ Male
+👨 Male
 
-ðŸ‘© Female
+👩 Female
 
-ðŸŒ± Future generations
+🌱 Future generations
 
-**ðŸ’¨ Wherein Is The Breath Of Life**
+**💨 Wherein Is The Breath Of Life**
 
 The breath of life refers to living creatures that possess God's gift of physical life.
 
@@ -1547,15 +1546,15 @@ This phrase highlights the difference between living creatures and lifeless thin
 
 God was preserving the living creatures He had made.
 
-ðŸ’¨ Breath of life
+💨 Breath of life
 
-â¤ï¸ Living creatures
+❤️ Living creatures
 
-ðŸ‘‘ God's creation
+👑 God's creation
 
-ðŸš¢ Preserved through the Flood
+🚢 Preserved through the Flood
 
-**ðŸ™ As God Had Commanded Him**
+**🙏 As God Had Commanded Him**
 
 Noah continued to obey exactly what God instructed.
 
@@ -1563,15 +1562,15 @@ The ark, the animals, and the timing all happened according to God's commands.
 
 Noah's obedience remains one of the central themes of the Flood account.
 
-ðŸ™ Noah obeys
+🙏 Noah obeys
 
-ðŸ“– God's instructions
+📖 God's instructions
 
-ðŸš¢ Faithful obedience
+🚢 Faithful obedience
 
-ðŸ‘‘ Trust in God
+👑 Trust in God
 
-**ðŸ”’ And The Lord Shut Him In**
+**🔒 And The Lord Shut Him In**
 
 Noah did not close the door.
 
@@ -1583,15 +1582,15 @@ No steering wheel, rudder, or navigation system is ever mentioned.
 
 The ark's safety depended entirely on God's protection and guidance.
 
-ðŸ”’ God shut the door
+🔒 God shut the door
 
-ðŸ‘‘ God is in control
+👑 God is in control
 
-ðŸš¢ Noah trusts God
+🚢 Noah trusts God
 
-ðŸ›¡ï¸ God provides safety
+🛡️ God provides safety
 
-**ðŸŒŠ The Waters Increased And Bare Up The Ark**
+**🌊 The Waters Increased And Bare Up The Ark**
 
 The phrase "bare up" means the waters lifted the ark upward.
 
@@ -1599,15 +1598,15 @@ As the Flood waters rose, the ark began floating higher and higher above the ear
 
 The ark was doing exactly what God designed it to do.
 
-ðŸŒŠ Waters rise
+🌊 Waters rise
 
-ðŸš¢ The ark floats
+🚢 The ark floats
 
-â¬†ï¸ Lifted upward
+⬆️ Lifted upward
 
-ðŸ‘‘ God's design works
+👑 God's design works
 
-**â¬†ï¸ It Was Lift Up Above The Earth**
+**⬆️ It Was Lift Up Above The Earth**
 
 The ark was no longer resting on dry ground.
 
@@ -1615,19 +1614,19 @@ The rising waters lifted it far above the earth below.
 
 The same waters that brought judgment upon the world carried Noah and his family safely through it.
 
-â¬†ï¸ Lifted above the earth
+⬆️ Lifted above the earth
 
-ðŸŒŠ Judgment below
+🌊 Judgment below
 
-ðŸš¢ Safety above
+🚢 Safety above
 
-ðŸ™ God preserves Noah
+🙏 God preserves Noah
 
-# ðŸŒŠ Genesis 7:18â€“24
+# 🌊 Genesis 7:18–24
 
 **The Waters Take Over The Earth**
 
-**ðŸŒŠ And The Waters Prevailed**
+**🌊 And The Waters Prevailed**
 
 The word "prevailed" means the waters became stronger, greater, and impossible to stop.
 
@@ -1651,15 +1650,15 @@ The Flood was no longer coming.
 
 The Flood had arrived.
 
-ðŸŒŠ The waters become unstoppable
+🌊 The waters become unstoppable
 
-âš¡ Thunder and lightning fill the sky
+⚡ Thunder and lightning fill the sky
 
-ðŸ’¨ Powerful winds drive the waves
+💨 Powerful winds drive the waves
 
-ðŸŒ The world is being overwhelmed
+🌍 The world is being overwhelmed
 
-**ðŸ“ˆ And Were Increased Greatly Upon The Earth**
+**📈 And Were Increased Greatly Upon The Earth**
 
 The Flood was not standing still.
 
@@ -1675,15 +1674,15 @@ Places that had stood for generations slowly disappeared beneath the water.
 
 Every morning Noah would have looked out and seen less land than the day before.
 
-ðŸ“ˆ Waters continue rising
+📈 Waters continue rising
 
-ðŸŒŠ Flood levels increase
+🌊 Flood levels increase
 
-ðŸŒ² Forests disappear
+🌲 Forests disappear
 
-ðŸŒ The earth is being swallowed
+🌍 The earth is being swallowed
 
-**ðŸš¢ And The Ark Went Upon The Face Of The Waters**
+**🚢 And The Ark Went Upon The Face Of The Waters**
 
 The ark was now completely afloat.
 
@@ -1693,15 +1692,15 @@ The world they had always known was disappearing beneath them.
 
 The same waters that brought judgment upon the earth were carrying God's people safely above it.
 
-ðŸš¢ The ark floats freely
+🚢 The ark floats freely
 
-ðŸŒŠ Surrounded by water
+🌊 Surrounded by water
 
-ðŸ›¡ï¸ God preserves Noah
+🛡️ God preserves Noah
 
-ðŸ™ Safety in the midst of judgment
+🙏 Safety in the midst of judgment
 
-**ðŸŒŠ And The Waters Prevailed Exceedingly Upon The Earth**
+**🌊 And The Waters Prevailed Exceedingly Upon The Earth**
 
 Moses repeats the word "prevailed" because he wants us to understand the scale of what is happening.
 
@@ -1715,15 +1714,15 @@ Every passing day the Flood became more overwhelming.
 
 Everything outside the ark was losing the battle against the rising waters.
 
-ðŸŒŠ The Flood grows stronger
+🌊 The Flood grows stronger
 
-ðŸ“ˆ The waters keep rising
+📈 The waters keep rising
 
-ðŸŒ The whole earth is affected
+🌍 The whole earth is affected
 
-âš–ï¸ Judgment continues
+⚖️ Judgment continues
 
-**ðŸ”ï¸ And All The High Hills That Were Under The Whole Heaven Were Covered**
+**🏔️ And All The High Hills That Were Under The Whole Heaven Were Covered**
 
 The waters rose so high that even the highest hills disappeared.
 
@@ -1733,15 +1732,15 @@ Imagine standing on the ark and realizing that every hill, valley, and field you
 
 The earth was becoming one vast sea.
 
-ðŸ”ï¸ Hills disappear beneath the water
+🏔️ Hills disappear beneath the water
 
-ðŸŒŠ The Flood reaches new heights
+🌊 The Flood reaches new heights
 
-ðŸ‘€ Familiar landmarks vanish
+👀 Familiar landmarks vanish
 
-ðŸŒ The world is transformed
+🌍 The world is transformed
 
-**ðŸ“ Fifteen Cubits Upward Did The Waters Prevail**
+**📏 Fifteen Cubits Upward Did The Waters Prevail**
 
 A cubit is about 18 inches (45 cm).
 
@@ -1755,15 +1754,15 @@ The Flood was not merely touching the mountains.
 
 It completely covered them.
 
-ðŸ“ Fifteen cubits â‰ˆ 22 feet
+📏 Fifteen cubits ≈ 22 feet
 
-ðŸŒŠ Water rises above the mountains
+🌊 Water rises above the mountains
 
-ðŸš¢ The ark can float safely
+🚢 The ark can float safely
 
-ðŸ”ï¸ The highest places disappear
+🏔️ The highest places disappear
 
-**â›°ï¸ And The Mountains Were Covered**
+**⛰️ And The Mountains Were Covered**
 
 The Flood had now reached a level beyond anything humanity had ever seen.
 
@@ -1777,15 +1776,15 @@ Even mountains disappeared beneath the waters.
 
 Nothing remained visible above the Flood except the ark.
 
-â›°ï¸ Mountains vanish
+⛰️ Mountains vanish
 
-ðŸŒŠ Water covers the earth
+🌊 Water covers the earth
 
-ðŸš¢ The ark remains
+🚢 The ark remains
 
-âš–ï¸ Judgment reaches its fullness
+⚖️ Judgment reaches its fullness
 
-**ðŸ’€ And All Flesh Died That Moved Upon The Earth**
+**💀 And All Flesh Died That Moved Upon The Earth**
 
 Everything living outside the ark perished.
 
@@ -1795,15 +1794,15 @@ Now that judgment had arrived.
 
 Every creature that lived on the earth was affected by the Flood.
 
-ðŸ’€ Life outside the ark perishes
+💀 Life outside the ark perishes
 
-âš–ï¸ God's warning is fulfilled
+⚖️ God's warning is fulfilled
 
-ðŸŒ Judgment falls
+🌍 Judgment falls
 
-ðŸš¢ Only those in the ark survive
+🚢 Only those in the ark survive
 
-**ðŸ¦ Both Of Fowl, And Of Cattle, And Of Beast**
+**🐦 Both Of Fowl, And Of Cattle, And Of Beast**
 
 Moses emphasizes that no category of land animal escaped.
 
@@ -1817,15 +1816,15 @@ Everything outside the ark was swept away by the Flood.
 
 This highlights the total scope of God's judgment.
 
-ðŸ¦ Birds
+🐦 Birds
 
-ðŸ„ Livestock
+🐄 Livestock
 
-ðŸ¦ Wild animals
+🦁 Wild animals
 
-âš–ï¸ All are affected
+⚖️ All are affected
 
-**ðŸ› And Of Every Creeping Thing That Creepeth Upon The Earth**
+**🐛 And Of Every Creeping Thing That Creepeth Upon The Earth**
 
 Even the smallest creatures were included.
 
@@ -1833,15 +1832,15 @@ The Flood affected all life on the land.
 
 Nothing was too small or insignificant to be impacted by what was taking place.
 
-ðŸ› Small creatures perish
+🐛 Small creatures perish
 
-ðŸŒ The whole earth is affected
+🌍 The whole earth is affected
 
-âš–ï¸ Judgment is complete
+⚖️ Judgment is complete
 
-ðŸ“– Every part of creation is mentioned
+📖 Every part of creation is mentioned
 
-**ðŸ‘¤ And Every Man**
+**👤 And Every Man**
 
 Humanity had filled the earth with violence and corruption.
 
@@ -1851,15 +1850,15 @@ Every person outside the ark perished.
 
 Only Noah, his wife, his three sons, and their wives survived.
 
-ðŸ‘¤ Humanity faces judgment
+👤 Humanity faces judgment
 
-âš–ï¸ God's warning is fulfilled
+⚖️ God's warning is fulfilled
 
-ðŸ‘¨â€ðŸ‘©â€ðŸ‘¦â€ðŸ‘¦ Eight people survive
+👨‍👩‍👦‍👦 Eight people survive
 
-ðŸš¢ Safety is found in the ark
+🚢 Safety is found in the ark
 
-**ðŸ’¨ In Whose Nostrils Was The Breath Of Life**
+**💨 In Whose Nostrils Was The Breath Of Life**
 
 The phrase "breath of life" reminds us that life comes from God.
 
@@ -1869,15 +1868,15 @@ The same God who gives life also has authority over life.
 
 This phrase points us back to Genesis 2 when God breathed life into Adam.
 
-ðŸ’¨ Life comes from God
+💨 Life comes from God
 
-â¤ï¸ God is the giver of life
+❤️ God is the giver of life
 
-ðŸ“– Connects back to Genesis 2
+📖 Connects back to Genesis 2
 
-âš–ï¸ God has authority over life
+⚖️ God has authority over life
 
-**ðŸœï¸ Of All That Was In The Dry Land Died**
+**🏜️ Of All That Was In The Dry Land Died**
 
 Before the Flood, the earth was dry land.
 
@@ -1887,15 +1886,15 @@ Everything that depended on that land for life perished beneath the waters.
 
 The old world was passing away.
 
-ðŸœï¸ Dry land disappears
+🏜️ Dry land disappears
 
-ðŸŒŠ Water covers the earth
+🌊 Water covers the earth
 
-ðŸ’€ Life outside the ark ends
+💀 Life outside the ark ends
 
-âš–ï¸ The old world passes away
+⚖️ The old world passes away
 
-**âŒ Every Living Substance Was Destroyed**
+**❌ Every Living Substance Was Destroyed**
 
 Nothing outside the ark escaped.
 
@@ -1905,15 +1904,15 @@ God's judgment reached every part of the corrupted world.
 
 Moses repeats this truth several times because he wants the reader to understand the totality of what happened.
 
-âŒ Complete destruction
+❌ Complete destruction
 
-ðŸŒ Nothing escapes
+🌍 Nothing escapes
 
-âš–ï¸ God's judgment is thorough
+⚖️ God's judgment is thorough
 
-ðŸ“– Moses emphasizes the point
+📖 Moses emphasizes the point
 
-**ðŸ‘¨ Noah Only Remained Alive**
+**👨 Noah Only Remained Alive**
 
 After all the destruction, Noah remained.
 
@@ -1925,15 +1924,15 @@ Not because Noah built a better boat.
 
 Noah survived because he trusted God and obeyed His instructions.
 
-ðŸ‘¨ Noah remains alive
+👨 Noah remains alive
 
-ðŸ™ Noah trusted God
+🙏 Noah trusted God
 
-ðŸš¢ God provided safety
+🚢 God provided safety
 
-ðŸ‘‘ Salvation came from God
+👑 Salvation came from God
 
-**ðŸ‘¨â€ðŸ‘©â€ðŸ‘¦â€ðŸ‘¦ And They That Were With Him In The Ark**
+**👨‍👩‍👦‍👦 And They That Were With Him In The Ark**
 
 Noah was not saved alone.
 
@@ -1943,15 +1942,15 @@ The ark became a place of refuge while judgment fell outside.
 
 For months, eight people lived entirely by faith inside the vessel God had provided.
 
-ðŸ‘¨â€ðŸ‘©â€ðŸ‘¦â€ðŸ‘¦ Noah's family survives
+👨‍👩‍👦‍👦 Noah's family survives
 
-ðŸš¢ Safety inside the ark
+🚢 Safety inside the ark
 
-ðŸ™ God protects His people
+🙏 God protects His people
 
-ðŸ›¡ï¸ Refuge during judgment
+🛡️ Refuge during judgment
 
-**ðŸŒŠ And The Waters Prevailed Upon The Earth An Hundred And Fifty Days**
+**🌊 And The Waters Prevailed Upon The Earth An Hundred And Fifty Days**
 
 The rain lasted forty days and forty nights.
 
@@ -1983,63 +1982,14 @@ The same waves that brought destruction to the earth carried Noah safely through
 
 For one hundred and fifty days Noah and his family had nothing to trust except the God who had shut them inside the ark.
 
-ðŸŒŠ Waters prevail for 150 days
+🌊 Waters prevail for 150 days
 
-â³ Five months of flooding
+⏳ Five months of flooding
 
-ðŸš¢ The ark drifts across a world of water
+🚢 The ark drifts across a world of water
 
-ðŸ™ Noah must trust God completely
-
-# Final Reflection
-
-Genesis 5-7 is a heavy reading, but it is not only dark.
-
-It tells the truth about death.
-
-It tells the truth about corruption.
-
-It tells the truth about violence.
-
-It tells the truth about judgment.
-
-But it also tells the truth about grace.
-
-God preserves a family line.
-
-God shows Enoch walking with Him.
-
-God gives Noah favor.
-
-God warns before judgment.
-
-God gives instructions for rescue.
-
-God makes a covenant promise.
-
-God shuts Noah into the ship.
-
-And God carries life through the waters.
-
-## Pause And Reflect
-
-Where do you see the repeated pattern of sin and death in the world today?
-
-What would it look like for you to walk with God in ordinary life like Enoch?
-
-Where do you need Noah-like obedience before you can see the outcome?
-
-What does the flood teach you about the seriousness of evil?
-
-What does the ship teach you about God's mercy?
-
-Day 3 reminds us that judgment is real, but God's rescue is real too.
-
-The world is broken, but God is still preserving hope.
-
-The waters rise, but the refuge holds.
-
-And the story keeps moving toward Jesus.`;
+🙏 Noah must trust God completely
+`;
 
 const DAY_THREE_SECTION_META: Array<Omit<BibleYearDeepStudySection, "markdown">> = [
   {
