@@ -184,6 +184,611 @@ function makeLeviticusStudySection(section: ReaderStudySectionInput): BibleReade
   };
 }
 
+const WINDOWS_1252_BYTE_BY_CODE_POINT: Record<number, number> = {
+  0x20ac: 0x80,
+  0x201a: 0x82,
+  0x0192: 0x83,
+  0x201e: 0x84,
+  0x2026: 0x85,
+  0x2020: 0x86,
+  0x2021: 0x87,
+  0x02c6: 0x88,
+  0x2030: 0x89,
+  0x0160: 0x8a,
+  0x2039: 0x8b,
+  0x0152: 0x8c,
+  0x017d: 0x8e,
+  0x2018: 0x91,
+  0x2019: 0x92,
+  0x201c: 0x93,
+  0x201d: 0x94,
+  0x2022: 0x95,
+  0x2013: 0x96,
+  0x2014: 0x97,
+  0x02dc: 0x98,
+  0x2122: 0x99,
+  0x0161: 0x9a,
+  0x203a: 0x9b,
+  0x0153: 0x9c,
+  0x017e: 0x9e,
+  0x0178: 0x9f,
+};
+
+type PersonalPhraseSectionInput = {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+};
+
+function repairMojibake(input: string) {
+  if (!input || !/[ðâ]/.test(input)) {
+    return input;
+  }
+
+  const bytes: number[] = [];
+  for (const char of input) {
+    const codePoint = char.codePointAt(0) || 0;
+    if (codePoint <= 0xff) {
+      bytes.push(codePoint);
+      continue;
+    }
+
+    const byte = WINDOWS_1252_BYTE_BY_CODE_POINT[codePoint];
+    if (byte === undefined) {
+      return input;
+    }
+
+    bytes.push(byte);
+  }
+
+  try {
+    return decodeURIComponent(bytes.map((byte) => `%${byte.toString(16).padStart(2, "0")}`).join(""));
+  } catch {
+    return input;
+  }
+}
+
+function stripPhraseIcon(input: string) {
+  return repairMojibake(input)
+    .replace(/^[^A-Za-z0-9'"]+/u, "")
+    .replace(/\*\*/g, "")
+    .trim();
+}
+
+function isEmojiTeachingLine(line: string) {
+  const trimmed = line.trim();
+  return Boolean(trimmed) && !/^[A-Za-z0-9"'\u201c\u2018(]/.test(trimmed);
+}
+
+function trimSentence(line: string) {
+  return line.trim().replace(/\s+/g, " ");
+}
+
+function inferPhraseFocus(phrase: string) {
+  const lower = phrase.toLowerCase();
+
+  if (/\blord\b|\bgod\b/.test(lower)) return "God is the main actor in this phrase, so the reader should notice His authority, mercy, holiness, or covenant faithfulness.";
+  if (/inheritance|land|canaan|possession|border|coast/.test(lower)) return "This phrase points to the promised land and the inheritance God is giving His people.";
+  if (/command|statute|judgment|law|word|spake|said|hear/.test(lower)) return "This phrase points to God's instruction, so the reader should hear it as covenant direction, not random information.";
+  if (/offering|sacrifice|altar|atonement|blood|priest|levite|tabernacle|sanctuary/.test(lower)) return "This phrase belongs to worship, sacrifice, priesthood, or holy service before the LORD.";
+  if (/remember|forget|teach|children|heart|love|soul|might/.test(lower)) return "This phrase reaches into memory, love, and the heart, not only outward religious action.";
+  if (/wilderness|journey|camp|jordan|egypt|moab|midian/.test(lower)) return "This phrase helps the reader follow where Israel is in the journey and what God is teaching there.";
+  if (/moses|joshua|aaron|balaam|balak|caleb|eleazar|zelophehad/.test(lower)) return "This phrase names people involved in the story, so the reader can follow who is acting and why it matters.";
+  if (/bless|curse|covenant|oath|promise/.test(lower)) return "This phrase is covenant language, showing blessing, warning, promise, or loyalty before God.";
+  if (/sin|rebel|iniquity|unclean|plague|serpent|death|judgment/.test(lower)) return "This phrase shows the seriousness of sin, uncleanness, judgment, or the mercy God provides in response.";
+
+  return `${phrase} gives the reader a concrete detail for understanding the passage.`;
+}
+
+function buildPhraseTeachingBullets(phrase: string, sourceLines: string[]) {
+  const usefulLines = sourceLines
+    .map(trimSentence)
+    .filter(Boolean)
+    .filter((line) => !/^this phrase (matters|helps|shows|points)/i.test(line))
+    .slice(0, 3);
+
+  if (usefulLines.length >= 3) {
+    return [`🔎 ${usefulLines[0]}`, `📖 ${usefulLines[1]}`, `🧭 ${usefulLines[2]}`];
+  }
+
+  const focus = inferPhraseFocus(phrase);
+  const lower = phrase.toLowerCase();
+  const meaning = usefulLines[0] || `${phrase} is a phrase the reader should slow down and understand in context.`;
+  const context = usefulLines[1] || focus;
+  const why =
+    usefulLines[2] ||
+    (/lord|god/.test(lower)
+      ? "It helps the reader see what the LORD is revealing about Himself."
+      : "It helps the reader understand why this detail belongs in the story.");
+
+  return [`🔎 ${meaning}`, `📖 ${context}`, `🧭 ${why}`];
+}
+
+function isGenesisQualityControlReference(reference?: string) {
+  if (!reference) return false;
+  const match = /^Genesis (\d+):/.exec(reference);
+  if (!match) return false;
+  const chapter = Number(match[1]);
+  return chapter >= 7 && chapter <= 35;
+}
+
+function isPhraseCardFillerLine(line: string) {
+  return /^(This phrase matters because|This matters because|That matters because|This helps the reader|This helps readers|The reader should notice|A beginner should notice|This passage reminds us|We learn that|The lesson here is|This phrase helps|This phrase shows|This phrase points to|This phrase means)\b/i.test(line.trim());
+}
+
+function formatBibleYearPhraseCard(rawHeading: string, rawBody: string, reference?: string) {
+  const heading = repairMojibake(rawHeading).trim().replace(/^\?{2,3}\s+/, "📌 ");
+  const phrase = stripPhraseIcon(heading);
+  const lines = repairMojibake(rawBody)
+    .replace(/\r/g, "")
+    .split("\n")
+    .map(trimSentence)
+    .filter(Boolean);
+
+  if (isGenesisQualityControlReference(reference)) {
+    const cleanedLines = lines.filter((line) => !isPhraseCardFillerLine(line));
+    const textLines = cleanedLines.filter((line) => !isEmojiTeachingLine(line));
+    const emojiLines = cleanedLines.filter(isEmojiTeachingLine).slice(0, 4);
+    const intro = textLines.slice(0, 2);
+    const remainder = textLines.slice(2);
+    if (emojiLines.length >= 2) {
+      return [heading, ...intro, emojiLines.join("\n\n")].filter(Boolean).join("\n\n");
+    }
+
+    const outro = remainder.length ? [remainder[remainder.length - 1]] : [];
+    return [heading, ...intro, ...outro].filter(Boolean).join("\n\n");
+  }
+
+  const textLines = lines.filter((line) => !isEmojiTeachingLine(line));
+  const firstEmojiIndex = lines.findIndex(isEmojiTeachingLine);
+  const preEmojiText =
+    firstEmojiIndex >= 0 ? lines.slice(0, firstEmojiIndex).filter((line) => !isEmojiTeachingLine(line)) : textLines;
+  const postEmojiText =
+    firstEmojiIndex >= 0 ? lines.slice(firstEmojiIndex + 1).filter((line) => !isEmojiTeachingLine(line)) : [];
+  const emojiLines = lines.filter(isEmojiTeachingLine).slice(0, 4);
+  const introSource = preEmojiText.slice(0, 2);
+  const intro = [
+    introSource[0] || `${phrase} is the exact phrase being explained in this card.`,
+    introSource[1] || `${phrase} helps the reader understand what this part of the passage means.`,
+  ];
+  const teachingSource = [...preEmojiText.slice(2), ...postEmojiText];
+  const bullets = emojiLines.length >= 2 ? emojiLines : buildPhraseTeachingBullets(phrase, teachingSource.length ? teachingSource : textLines);
+  const outroSource = emojiLines.length >= 2 ? postEmojiText : textLines.slice(2);
+  const outro = outroSource.slice(0, 2);
+  const bulletBlock = bullets.slice(0, 4).join("\n");
+
+  return [heading, ...intro.slice(0, 2), bulletBlock, ...outro.slice(0, 2)].filter(Boolean).join("\n\n");
+}
+
+function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, book: string): BibleReaderStudySection {
+  return {
+    book,
+    chapter: section.chapter,
+    startVerse: section.startVerse,
+    endVerse: section.endVerse,
+    reference: section.reference,
+    title: repairMojibake(section.title),
+    icon: repairMojibake(section.icon),
+    summary: "",
+    categories: [
+      {
+        id: "key-phrases",
+        icon: "💬",
+        title: "Key Phrases",
+        content: section.phrases.map(([heading, body]) => formatBibleYearPhraseCard(heading, body, section.reference)),
+      },
+    ],
+  };
+}
+
+function replaceStudySectionsForBookRange(
+  book: string,
+  startChapter: number,
+  endChapter: number,
+  sections: readonly PersonalPhraseSectionInput[],
+) {
+  const normalized = normalizeBook(book);
+  const mappedSections = sections.map((section) => makePersonalPhraseSectionForBook(section, normalized));
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (normalizeBook(section.book) === normalized && section.chapter >= startChapter && section.chapter <= endChapter) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...mappedSections);
+}
+
+function applyPersonalNumbersTwentySixThroughThirtySixStudySections() {
+  replaceStudySectionsForBookRange("numbers", 26, 36, NUMBERS_26_36_PERSONAL_SECTIONS);
+}
+
+function applyPersonalDeuteronomyOneThroughThirteenStudySections() {
+  replaceStudySectionsForBookRange("deuteronomy", 1, 13, DEUTERONOMY_1_13_PERSONAL_SECTIONS);
+}
+
+function applyPersonalDeuteronomyFourteenThroughTwentyNineStudySections() {
+  replaceStudySectionsForBookRange("deuteronomy", 14, 29, DEUTERONOMY_14_29_PERSONAL_SECTIONS);
+}
+
+function applyPersonalJoshuaTwentyThroughTwentyFourStudySections() {
+  replaceStudySectionsForBookRange("joshua", 20, 24, JOSHUA_20_24_PERSONAL_SECTIONS);
+}
+
+function applyPersonalJudgesOneThroughFifteenStudySections() {
+  replaceStudySectionsForBookRange("judges", 1, 15, JUDGES_1_15_PERSONAL_SECTIONS);
+}
+
+function applyPersonalJudgesSixteenThroughTwentyOneStudySections() {
+  replaceStudySectionsForBookRange("judges", 16, 21, JUDGES_16_21_PERSONAL_SECTIONS);
+}
+
+function applyPersonalRuthOneThroughFourStudySections() {
+  replaceStudySectionsForBookRange("ruth", 1, 4, RUTH_1_4_PERSONAL_SECTIONS);
+}
+
+function applyPersonalDeuteronomyThirtyThroughThirtyFourStudySections() {
+  replaceStudySectionsForBookRange("deuteronomy", 30, 34, DEUTERONOMY_30_34_PERSONAL_SECTIONS);
+}
+
+function applyPersonalJoshuaOneThroughElevenStudySections() {
+  replaceStudySectionsForBookRange("joshua", 1, 11, JOSHUA_1_11_PERSONAL_SECTIONS);
+}
+
+function applyPersonalJoshuaTwelveThroughNineteenStudySections() {
+  replaceStudySectionsForBookRange("joshua", 12, 19, JOSHUA_12_19_PERSONAL_SECTIONS);
+}
+
+function applyPersonalFirstSamuelOneThroughTenStudySections() {
+  replaceStudySectionsForBookRange("1 samuel", 1, 10, FIRST_SAMUEL_1_10_PERSONAL_SECTIONS);
+}
+
+function applyPersonalFirstSamuelElevenThroughThirtyStudySections() {
+  replaceStudySectionsForBookRange("1 samuel", 11, 30, FIRST_SAMUEL_11_30_PERSONAL_SECTIONS);
+}
+
+function applyPersonalFirstSamuelThirtyOneStudySections() {
+  replaceStudySectionsForBookRange("1 samuel", 31, 31, FIRST_SAMUEL_31_PERSONAL_SECTIONS);
+}
+
+function applyPersonalSecondSamuelOneThroughTwentyFourStudySections() {
+  replaceStudySectionsForBookRange("2 samuel", 1, 24, SECOND_SAMUEL_1_24_PERSONAL_SECTIONS);
+}
+
+function applyPersonalFirstKingsOneThroughFifteenStudySections() {
+  replaceStudySectionsForBookRange("1 kings", 1, 15, FIRST_KINGS_1_15_PERSONAL_SECTIONS);
+}
+
+function applyPersonalFirstKingsSixteenThroughTwentyTwoStudySections() {
+  replaceStudySectionsForBookRange("1 kings", 16, 22, FIRST_KINGS_16_22_PERSONAL_SECTIONS);
+}
+
+function applyPersonalSecondKingsOneThroughTwentyFiveStudySections() {
+  replaceStudySectionsForBookRange("2 kings", 1, 25, SECOND_KINGS_1_25_PERSONAL_SECTIONS);
+}
+
+function applyPersonalFirstChroniclesOneThroughEightStudySections() {
+  replaceStudySectionsForBookRange("1 chronicles", 1, 8, FIRST_CHRONICLES_1_8_PERSONAL_SECTIONS);
+}
+
+function applyPersonalFirstChroniclesNineThroughTwentyNineStudySections() {
+  replaceStudySectionsForBookRange("1 chronicles", 9, 29, FIRST_CHRONICLES_9_29_PERSONAL_SECTIONS);
+}
+
+function applyPersonalSecondChroniclesOneThroughNineteenStudySections() {
+  replaceStudySectionsForBookRange("2 chronicles", 1, 19, SECOND_CHRONICLES_1_19_PERSONAL_SECTIONS);
+}
+
+function applyPersonalSecondChroniclesTwentyThroughThirtySixStudySections() {
+  replaceStudySectionsForBookRange("2 chronicles", 20, 36, SECOND_CHRONICLES_20_36_PERSONAL_SECTIONS);
+}
+
+function applyPersonalEzraOneThroughThreeStudySections() {
+  replaceStudySectionsForBookRange("ezra", 1, 3, EZRA_1_3_PERSONAL_SECTIONS);
+}
+
+function applyPersonalEzraFourThroughTenStudySections() {
+  replaceStudySectionsForBookRange("ezra", 4, 10, EZRA_4_10_PERSONAL_SECTIONS);
+}
+
+function applyPersonalNehemiahOneThroughThirteenStudySections() {
+  replaceStudySectionsForBookRange("nehemiah", 1, 13, NEHEMIAH_1_13_PERSONAL_SECTIONS);
+}
+
+function applyPersonalEstherOneThroughTenStudySections() {
+  replaceStudySectionsForBookRange("esther", 1, 10, ESTHER_1_10_PERSONAL_SECTIONS);
+}
+
+function applyPersonalJobOneThroughTenStudySections() {
+  replaceStudySectionsForBookRange("job", 1, 10, JOB_1_10_PERSONAL_SECTIONS);
+}
+
+function applyPersonalJobElevenThroughThirtyStudySections() {
+  replaceStudySectionsForBookRange("job", 11, 30, JOB_11_30_PERSONAL_SECTIONS);
+}
+
+function applyPersonalJobThirtyOneThroughFortyTwoStudySections() {
+  replaceStudySectionsForBookRange("job", 31, 42, JOB_31_42_PERSONAL_SECTIONS);
+}
+
+function applyPersonalPsalmsOneThroughSixStudySections() {
+  replaceStudySectionsForBookRange("psalms", 1, 6, PSALMS_1_6_PERSONAL_SECTIONS);
+}
+
+function applyPersonalPsalmsSevenThroughTwentyOneStudySections() {
+  replaceStudySectionsForBookRange("psalms", 7, 21, PSALMS_7_21_PERSONAL_SECTIONS);
+}
+
+function applyPersonalPsalmsTwentyTwoThroughThirtySixStudySections() {
+  replaceStudySectionsForBookRange("psalms", 22, 36, PSALMS_22_36_PERSONAL_SECTIONS);
+}
+
+function applyPersonalPsalmsThirtySevenThroughFiftyOneStudySections() {
+  replaceStudySectionsForBookRange("psalms", 37, 51, PSALMS_37_51_PERSONAL_SECTIONS);
+}
+
+function applyPersonalPsalmsFiftyTwoThroughSixtySixStudySections() {
+  replaceStudySectionsForBookRange("psalms", 52, 66, PSALMS_52_66_PERSONAL_SECTIONS);
+}
+
+function applyPersonalPsalmsSixtySevenThroughNinetySixStudySections() {
+  replaceStudySectionsForBookRange("psalms", 67, 96, PSALMS_67_96_PERSONAL_SECTIONS);
+}
+
+function applyPersonalPsalmsNinetySevenThroughOneTwentySixStudySections() {
+  replaceStudySectionsForBookRange("psalms", 97, 126, PSALMS_97_126_PERSONAL_SECTIONS);
+}
+
+function applyPersonalPsalmsOneTwentySevenThroughOneFiftyStudySections() {
+  replaceStudySectionsForBookRange("psalms", 127, 150, PSALMS_127_150_PERSONAL_SECTIONS);
+}
+
+function applyPersonalProverbsOneThroughSixStudySections() {
+  replaceStudySectionsForBookRange("proverbs", 1, 6, PROVERBS_1_6_PERSONAL_SECTIONS);
+}
+
+function applyPersonalProverbsSevenThroughThirtyOneStudySections() {
+  replaceStudySectionsForBookRange("proverbs", 7, 31, PROVERBS_7_31_PERSONAL_SECTIONS);
+}
+
+function applyPersonalEcclesiastesOneThroughFiveStudySections() {
+  replaceStudySectionsForBookRange("ecclesiastes", 1, 5, ECCLESIASTES_1_5_PERSONAL_SECTIONS);
+}
+
+function applyPersonalEcclesiastesSixThroughTwelveStudySections() {
+  replaceStudySectionsForBookRange("ecclesiastes", 6, 12, ECCLESIASTES_6_12_PERSONAL_SECTIONS);
+}
+
+function applyPersonalSongOfSolomonOneThroughEightStudySections() {
+  replaceStudySectionsForBookRange("song of solomon", 1, 8, SONG_OF_SOLOMON_1_8_PERSONAL_SECTIONS);
+}
+
+function applyPersonalIsaiahOneThroughFifteenStudySections() {
+  replaceStudySectionsForBookRange("isaiah", 1, 15, ISAIAH_1_15_PERSONAL_SECTIONS);
+}
+
+function applyPersonalIsaiahSixteenThroughSixtySixStudySections() {
+  replaceStudySectionsForBookRange("isaiah", 16, 66, ISAIAH_16_66_PERSONAL_SECTIONS);
+}
+
+function applyPersonalJeremiahOneThroughNineStudySections() {
+  replaceStudySectionsForBookRange("jeremiah", 1, 9, JEREMIAH_1_9_PERSONAL_SECTIONS);
+}
+
+function applyPersonalJeremiahTenThroughFiftyTwoStudySections() {
+  replaceStudySectionsForBookRange("jeremiah", 10, 52, JEREMIAH_10_52_PERSONAL_SECTIONS);
+}
+
+function applyPersonalLamentationsOneThroughFiveStudySections() {
+  replaceStudySectionsForBookRange("lamentations", 1, 5, LAMENTATIONS_1_5_PERSONAL_SECTIONS);
+}
+
+function applyPersonalEzekielOneThroughTwelveStudySections() {
+  replaceStudySectionsForBookRange("ezekiel", 1, 12, EZEKIEL_1_12_PERSONAL_SECTIONS);
+}
+
+function applyPersonalEzekielThirteenThroughFortyEightStudySections() {
+  replaceStudySectionsForBookRange("ezekiel", 13, 48, EZEKIEL_13_48_PERSONAL_SECTIONS);
+}
+
+function applyPersonalDanielOneThroughTwelveStudySections() {
+  replaceStudySectionsForBookRange("daniel", 1, 12, DANIEL_1_12_PERSONAL_SECTIONS);
+}
+
+function applyPersonalHoseaOneThroughTwelveStudySections() {
+  replaceStudySectionsForBookRange("hosea", 1, 12, HOSEA_1_12_PERSONAL_SECTIONS);
+}
+
+function applyPersonalHoseaThirteenThroughFourteenStudySections() {
+  replaceStudySectionsForBookRange("hosea", 13, 14, HOSEA_13_14_PERSONAL_SECTIONS);
+}
+
+function applyPersonalJoelOneThroughThreeStudySections() {
+  replaceStudySectionsForBookRange("joel", 1, 3, JOEL_1_3_PERSONAL_SECTIONS);
+}
+
+function applyPersonalAmosOneThroughNineStudySections() {
+  replaceStudySectionsForBookRange("amos", 1, 9, AMOS_1_9_PERSONAL_SECTIONS);
+}
+
+function applyPersonalObadiahOneStudySections() {
+  replaceStudySectionsForBookRange("obadiah", 1, 1, OBADIAH_1_PERSONAL_SECTIONS);
+}
+
+function applyPersonalJonahOneThroughFourStudySections() {
+  replaceStudySectionsForBookRange("jonah", 1, 4, JONAH_1_4_PERSONAL_SECTIONS);
+}
+
+function applyPersonalMicahOneThroughSevenStudySections() {
+  replaceStudySectionsForBookRange("micah", 1, 7, MICAH_1_7_PERSONAL_SECTIONS);
+}
+
+function applyPersonalNahumOneThroughThreeStudySections() {
+  replaceStudySectionsForBookRange("nahum", 1, 3, NAHUM_1_3_PERSONAL_SECTIONS);
+}
+
+function applyPersonalHabakkukOneThroughThreeStudySections() {
+  replaceStudySectionsForBookRange("habakkuk", 1, 3, HABAKKUK_1_3_PERSONAL_SECTIONS);
+}
+
+function applyPersonalZephaniahOneThroughThreeStudySections() {
+  replaceStudySectionsForBookRange("zephaniah", 1, 3, ZEPHANIAH_1_3_PERSONAL_SECTIONS);
+}
+
+function applyPersonalHaggaiOneThroughTwoStudySections() {
+  replaceStudySectionsForBookRange("haggai", 1, 2, HAGGAI_1_2_PERSONAL_SECTIONS);
+}
+
+function applyPersonalZechariahOneThroughFourteenStudySections() {
+  replaceStudySectionsForBookRange("zechariah", 1, 14, ZECHARIAH_1_14_PERSONAL_SECTIONS);
+}
+
+function applyPersonalMalachiOneThroughFourStudySections() {
+  replaceStudySectionsForBookRange("malachi", 1, 4, MALACHI_1_4_PERSONAL_SECTIONS);
+}
+
+function applyPersonalMatthewOneThroughFiveStudySections() {
+  replaceStudySectionsForBookRange("matthew", 1, 5, MATTHEW_1_5_PERSONAL_SECTIONS);
+}
+
+function applyPersonalMatthewSixThroughTwentyEightStudySections() {
+  replaceStudySectionsForBookRange("matthew", 6, 28, MATTHEW_6_28_PERSONAL_SECTIONS);
+}
+
+function applyPersonalMarkOneThroughSixteenStudySections() {
+  replaceStudySectionsForBookRange("mark", 1, 16, MARK_1_16_PERSONAL_SECTIONS);
+}
+
+function applyPersonalLukeOneThroughTwentyOneStudySections() {
+  replaceStudySectionsForBookRange("luke", 1, 21, LUKE_1_21_PERSONAL_SECTIONS);
+}
+
+function applyPersonalLukeTwentyTwoThroughTwentyFourStudySections() {
+  replaceStudySectionsForBookRange("luke", 22, 24, LUKE_22_24_PERSONAL_SECTIONS);
+}
+
+function applyPersonalJohnOneThroughTwentyOneStudySections() {
+  replaceStudySectionsForBookRange("john", 1, 21, JOHN_1_21_PERSONAL_SECTIONS);
+}
+
+function applyPersonalActsOneThroughTwentyEightStudySections() {
+  replaceStudySectionsForBookRange("acts", 1, 28, ACTS_1_28_PERSONAL_SECTIONS);
+}
+
+function applyPersonalRomansOneThroughEightStudySections() {
+  replaceStudySectionsForBookRange("romans", 1, 8, ROMANS_1_8_PERSONAL_SECTIONS);
+}
+
+function applyPersonalRomansNineThroughSixteenStudySections() {
+  replaceStudySectionsForBookRange("romans", 9, 16, ROMANS_9_16_PERSONAL_SECTIONS);
+}
+
+function applyPersonalFirstCorinthiansOneThroughSixteenStudySections() {
+  replaceStudySectionsForBookRange("1 corinthians", 1, 16, FIRST_CORINTHIANS_1_16_PERSONAL_SECTIONS);
+}
+
+function applyPersonalSecondCorinthiansOneThroughThirteenStudySections() {
+  replaceStudySectionsForBookRange("2 corinthians", 1, 13, SECOND_CORINTHIANS_1_13_PERSONAL_SECTIONS);
+}
+
+function applyPersonalGalatiansOneThroughSixStudySections() {
+  replaceStudySectionsForBookRange("galatians", 1, 6, GALATIANS_1_6_PERSONAL_SECTIONS);
+}
+
+function applyPersonalEphesiansOneThroughSixStudySections() {
+  replaceStudySectionsForBookRange("ephesians", 1, 6, EPHESIANS_1_6_PERSONAL_SECTIONS);
+}
+
+function applyPersonalPhilippiansOneThroughFourStudySections() {
+  replaceStudySectionsForBookRange("philippians", 1, 4, PHILIPPIANS_1_4_PERSONAL_SECTIONS);
+}
+
+function applyPersonalColossiansOneThroughFourStudySections() {
+  replaceStudySectionsForBookRange("colossians", 1, 4, COLOSSIANS_1_4_PERSONAL_SECTIONS);
+}
+
+function applyPersonalFirstThessaloniansOneThroughThreeStudySections() {
+  replaceStudySectionsForBookRange("1 thessalonians", 1, 3, FIRST_THESSALONIANS_1_3_PERSONAL_SECTIONS);
+}
+
+function applyPersonalFirstThessaloniansFourThroughFiveStudySections() {
+  replaceStudySectionsForBookRange("1 thessalonians", 4, 5, FIRST_THESSALONIANS_4_5_PERSONAL_SECTIONS);
+}
+
+function applyPersonalSecondThessaloniansOneThroughThreeStudySections() {
+  replaceStudySectionsForBookRange("2 thessalonians", 1, 3, SECOND_THESSALONIANS_1_3_PERSONAL_SECTIONS);
+}
+
+function applyPersonalFirstTimothyOneThroughSixStudySections() {
+  replaceStudySectionsForBookRange("1 timothy", 1, 6, FIRST_TIMOTHY_1_6_PERSONAL_SECTIONS);
+}
+
+function applyPersonalSecondTimothyOneThroughFourStudySections() {
+  replaceStudySectionsForBookRange("2 timothy", 1, 4, SECOND_TIMOTHY_1_4_PERSONAL_SECTIONS);
+}
+
+function applyPersonalTitusOneThroughThreeStudySections() {
+  replaceStudySectionsForBookRange("titus", 1, 3, TITUS_1_3_PERSONAL_SECTIONS);
+}
+
+function applyPersonalPhilemonOneStudySections() {
+  replaceStudySectionsForBookRange("philemon", 1, 1, PHILEMON_1_PERSONAL_SECTIONS);
+}
+
+function applyPersonalHebrewsOneThroughThirteenStudySections() {
+  replaceStudySectionsForBookRange("hebrews", 1, 13, HEBREWS_1_13_PERSONAL_SECTIONS);
+}
+
+function applyPersonalJamesOneThroughFiveStudySections() {
+  replaceStudySectionsForBookRange("james", 1, 5, JAMES_1_5_PERSONAL_SECTIONS);
+}
+
+function applyPersonalFirstPeterOneThroughFiveStudySections() {
+  replaceStudySectionsForBookRange("1 peter", 1, 5, FIRST_PETER_1_5_PERSONAL_SECTIONS);
+}
+
+function applyPersonalSecondPeterOneThroughThreeStudySections() {
+  replaceStudySectionsForBookRange("2 peter", 1, 3, SECOND_PETER_1_3_PERSONAL_SECTIONS);
+}
+
+function applyPersonalFirstJohnOneThroughFiveStudySections() {
+  replaceStudySectionsForBookRange("1 john", 1, 5, FIRST_JOHN_1_5_PERSONAL_SECTIONS);
+}
+
+function applyPersonalSecondJohnOneStudySections() {
+  replaceStudySectionsForBookRange("2 john", 1, 1, SECOND_JOHN_1_PERSONAL_SECTIONS);
+}
+
+function applyPersonalThirdJohnOneStudySections() {
+  replaceStudySectionsForBookRange("3 john", 1, 1, THIRD_JOHN_1_PERSONAL_SECTIONS);
+}
+
+function applyPersonalJudeOneStudySections() {
+  replaceStudySectionsForBookRange("jude", 1, 1, JUDE_1_PERSONAL_SECTIONS);
+}
+
+function applyPersonalRevelationOneThroughSevenStudySections() {
+  replaceStudySectionsForBookRange("revelation", 1, 7, REVELATION_1_7_PERSONAL_SECTIONS);
+}
+
+function applyPersonalRevelationEightThroughTwentyTwoStudySections() {
+  replaceStudySectionsForBookRange("revelation", 8, 22, REVELATION_8_22_PERSONAL_SECTIONS);
+}
+
+function applyPersonalExodusTextureStudySections() {
+  replaceStudySectionsForBookRange("exodus", 2, 40, [
+    ...EXODUS_2_10_PERSONAL_SECTIONS,
+    ...EXODUS_11_20_PERSONAL_SECTIONS,
+    ...EXODUS_21_30_PERSONAL_SECTIONS,
+    ...EXODUS_31_40_PERSONAL_SECTIONS,
+  ]);
+}
+
 export const BIBLE_READER_STUDY_SECTIONS: BibleReaderStudySection[] = [
   {
     book: "genesis",
