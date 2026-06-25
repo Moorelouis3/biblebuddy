@@ -340,6 +340,20 @@ export async function GET(request: NextRequest) {
       };
     });
 
+    GENESIS_BIBLE_IN_ONE_YEAR_SERIES.forEach((day) => {
+      const hasCompletedReadingAction = readingActionDays.has(day.dayNumber);
+      const hasCompletedChapters =
+        day.readings.length > 0 &&
+        day.readings.every((reading) => completedChapterKeys.has(getCompletedBibleChapterKey(reading.book, reading.chapter)));
+
+      if (!hasCompletedReadingAction && !hasCompletedChapters) return;
+
+      completedCardsByDay[day.dayNumber] = {
+        ...(completedCardsByDay[day.dayNumber] || {}),
+        reading: true,
+      };
+    });
+
     const reflectionPostedByDay: Record<number, boolean> = {};
     ((discussionRows.data || []) as DiscussionRow[])
       .filter((row) => isOnOrAfterReset(row.created_at, bibleYearPlanResetAt))
