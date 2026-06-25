@@ -39,6 +39,7 @@ import { PSALMS_52_66_PERSONAL_SECTIONS } from "./psalmsFiftyTwoToSixtySixPerson
 import { PSALMS_67_96_PERSONAL_SECTIONS } from "./psalmsSixtySevenToNinetySixPersonalNotes";
 import { PSALMS_97_126_PERSONAL_SECTIONS } from "./psalmsNinetySevenToOneTwentySixPersonalNotes";
 import { BIBLE_YEAR_DAY_THREE_DEEP_NOTES } from "./bibleYearDayThreeDeepNotes";
+import { BIBLE_YEAR_DAY_ONE_DEEP_NOTES } from "./bibleYearDayOneDeepNotes";
 import { PSALMS_127_150_PERSONAL_SECTIONS } from "./psalmsOneTwentySevenToOneFiftyPersonalNotes";
 import { PROVERBS_1_6_PERSONAL_SECTIONS } from "./proverbsOneToSixPersonalNotes";
 import { PROVERBS_7_31_PERSONAL_SECTIONS } from "./proverbsSevenToThirtyOnePersonalNotes";
@@ -4215,6 +4216,90 @@ function enforceStudySectionVerseLimit(maxVerses = 10) {
 }
 
 function applyApprovedGenesisOneStudySections() {
+  const approvedGenesisOneMeta = [
+    { reference: "Genesis 1:1-2", startVerse: 1, endVerse: 2, icon: "🌅" },
+    { reference: "Genesis 1:3-5", startVerse: 3, endVerse: 5, icon: "💡" },
+    { reference: "Genesis 1:6-8", startVerse: 6, endVerse: 8, icon: "☁️" },
+    { reference: "Genesis 1:9-13", startVerse: 9, endVerse: 13, icon: "🌍" },
+    { reference: "Genesis 1:14-19", startVerse: 14, endVerse: 19, icon: "☀️" },
+    { reference: "Genesis 1:20-23", startVerse: 20, endVerse: 23, icon: "🌊" },
+    { reference: "Genesis 1:24-25", startVerse: 24, endVerse: 25, icon: "🦁" },
+    { reference: "Genesis 1:26-28", startVerse: 26, endVerse: 28, icon: "👤" },
+    { reference: "Genesis 1:29-31", startVerse: 29, endVerse: 31, icon: "🌿" },
+  ] as const;
+
+  const repairedDayOneNotes = repairMojibake(BIBLE_YEAR_DAY_ONE_DEEP_NOTES).replace(/\r\n/g, "\n");
+  const buildReferencePattern = (reference: string) => reference.replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/-/g, "[-–]");
+
+  const extractSectionMarkdown = (reference: string) => {
+    const match = repairedDayOneNotes.match(new RegExp(`(?:^|\\n)# .*?${buildReferencePattern(reference)}[\\s\\S]*?(?=\\n# |$)`));
+    return match?.[0].trim() ?? "";
+  };
+
+  const parseGenesisOnePhraseBlocks = (markdown: string) => {
+    const lines = markdown.split("\n");
+    const phraseBlocks: string[] = [];
+    let currentTitle = "";
+    let currentBody: string[] = [];
+
+    const flushCurrent = () => {
+      if (!currentTitle) return;
+      const body = currentBody.join("\n").trim();
+      phraseBlocks.push(body ? `${currentTitle}\n\n${body}` : currentTitle);
+      currentTitle = "";
+      currentBody = [];
+    };
+
+    for (const rawLine of lines) {
+      const line = rawLine.trimEnd();
+      const trimmed = line.trim();
+
+      if (!trimmed || trimmed.startsWith("# ") || trimmed.startsWith("## ")) {
+        if (currentTitle) currentBody.push("");
+        continue;
+      }
+
+      if (trimmed === "---") {
+        flushCurrent();
+        continue;
+      }
+
+      if (trimmed.startsWith("### ")) {
+        flushCurrent();
+        currentTitle = trimmed.slice(4).trim();
+        continue;
+      }
+
+      if (currentTitle) {
+        currentBody.push(line);
+      }
+    }
+
+    flushCurrent();
+    return phraseBlocks;
+  };
+
+  for (const section of BIBLE_READER_STUDY_SECTIONS) {
+    const meta = approvedGenesisOneMeta.find((item) => item.reference === section.reference);
+    if (!meta) continue;
+
+    const markdown = extractSectionMarkdown(meta.reference);
+    const sectionTitleMatch = markdown.match(/^## (.+)$/m);
+    section.title = sectionTitleMatch?.[1]?.trim() || section.title;
+    section.icon = meta.icon;
+    section.summary = "";
+    section.categories = [
+      {
+        id: "key-phrases",
+        icon: "💬",
+        title: "Key Phrases",
+        content: parseGenesisOnePhraseBlocks(markdown),
+      },
+    ];
+  }
+
+  return;
+
   const approvedGenesisOneSections: Record<
     string,
     {
