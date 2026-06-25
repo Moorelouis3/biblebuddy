@@ -1171,6 +1171,14 @@ function getPreviousAnalyticsDateRange(windowKey: JourneyWindowKey) {
   return null;
 }
 
+function getAnalyticsQueryStartIso(
+  startIso: string,
+  previousRange: { startIso: string; endIso: string | null } | null,
+) {
+  if (!previousRange?.startIso) return startIso;
+  return previousRange.startIso < startIso ? previousRange.startIso : startIso;
+}
+
 function percentChange(current: number, previous: number) {
   if (previous <= 0 && current <= 0) return 0;
   if (previous <= 0) return 100;
@@ -3557,13 +3565,19 @@ async function buildOverviewAnalyticsResponse(
     .from("master_actions")
     .select("user_id, action_label, event_metadata, created_at")
     .eq("action_type", "user_upgraded")
+    .order("created_at", { ascending: false })
     .limit(250000);
   const allUpgradeRows = (allUpgradeActionData || []) as UpgradeActionRow[];
-  const { data: allCompletionUpgradeActionData } = await adminSupabase
+  const completionUpgradeQueryStartIso = getAnalyticsQueryStartIso(startIso, previousRange);
+  let allCompletionUpgradeQuery = adminSupabase
     .from("master_actions")
     .select("user_id, action_type, action_label, event_metadata, created_at")
     .in("action_type", ["upgrade_popup_viewed", "upgrade_popup_cta_clicked", "upgrade_popup_dismissed", "user_upgraded"])
+    .gte("created_at", completionUpgradeQueryStartIso)
+    .order("created_at", { ascending: false })
     .limit(250000);
+  if (endIso) allCompletionUpgradeQuery = allCompletionUpgradeQuery.lt("created_at", endIso);
+  const { data: allCompletionUpgradeActionData } = await allCompletionUpgradeQuery;
   const allCompletionUpgradeRows = (allCompletionUpgradeActionData || []) as MasterActionFunnelRow[];
   const currentUpgradeTimestamps = collectFirstPaidUpgradeTimestamps(allUpgradeRows, startIso, endIso);
   const upgradeSeries = buildSimpleMetricSeries(currentUpgradeTimestamps, journeyWindow);
@@ -3829,12 +3843,16 @@ export async function GET(request: Request) {
     .limit(250000);
   const { data: upgradeData } = await upgradeQuery;
   const upgradeRows = (upgradeData || []) as UpgradeActionRow[];
-  const { data: completionUpgradeActionData } = await adminSupabase
+  const completionUpgradeQueryStartIso = getAnalyticsQueryStartIso(journeySinceIso, previousRange);
+  let completionUpgradeQuery = adminSupabase
     .from("master_actions")
     .select("user_id, action_type, action_label, event_metadata, created_at")
     .in("action_type", ["upgrade_popup_viewed", "upgrade_popup_cta_clicked", "upgrade_popup_dismissed", "user_upgraded"])
+    .gte("created_at", completionUpgradeQueryStartIso)
     .order("created_at", { ascending: false })
     .limit(250000);
+  if (journeyBeforeIso) completionUpgradeQuery = completionUpgradeQuery.lt("created_at", journeyBeforeIso);
+  const { data: completionUpgradeActionData } = await completionUpgradeQuery;
   const completionUpgradeRows = (completionUpgradeActionData || []) as MasterActionFunnelRow[];
   let studyNotesQuery = adminSupabase
     .from("master_actions")
