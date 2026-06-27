@@ -2,7 +2,7 @@ import { GENESIS_BIBLE_IN_ONE_YEAR_SERIES, generateBibleInOneYearPlan, getBibleY
 import { getBibleYearDayContent, type BibleYearSummaryContent } from "./bibleYearDaysContent";
 
 export const BIBLE_YEAR_OFFLINE_TEXT_PACK_KEY = "bb:bible-year-offline-text-pack";
-export const BIBLE_YEAR_OFFLINE_TEXT_PACK_VERSION = "2026-05-25-v1";
+export const BIBLE_YEAR_OFFLINE_TEXT_PACK_VERSION = "2026-06-27-v2";
 
 type BibleYearOfflineDay = {
   dayNumber: number;
