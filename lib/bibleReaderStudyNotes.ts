@@ -1,3 +1,4 @@
+import { GENESIS_1_PERSONAL_SECTIONS } from "./genesisOnePersonalNotes";
 import { GENESIS_11_20_PERSONAL_SECTIONS } from "./genesisElevenToTwentyPersonalNotes";
 import { GENESIS_21_30_PERSONAL_SECTIONS } from "./genesisTwentyOneToThirtyPersonalNotes";
 import { GENESIS_31_40_PERSONAL_SECTIONS } from "./genesisThirtyOneToFortyPersonalNotes";
@@ -9919,7 +9920,9 @@ function applyApprovedGenesisSevenReaderSections() {
   }
 }
 
+applyApprovedGenesisOneStudySections();
 applyApprovedGenesisSevenReaderSections();
+replaceStudySectionsForBookRange("genesis", 1, 1, GENESIS_1_PERSONAL_SECTIONS);
 
 for (const section of BIBLE_READER_STUDY_SECTIONS) {
   section.categories = section.categories
