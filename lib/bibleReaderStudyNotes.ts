@@ -226,7 +226,7 @@ type PersonalPhraseSectionInput = {
 };
 
 function repairMojibake(input: string) {
-  if (!input || !/[ðâ]/.test(input)) {
+  if (!input || !/[Ã°Ã¢]/.test(input)) {
     return input;
   }
 
@@ -293,7 +293,7 @@ function buildPhraseTeachingBullets(phrase: string, sourceLines: string[]) {
     .slice(0, 3);
 
   if (usefulLines.length >= 3) {
-    return [`🔎 ${usefulLines[0]}`, `📖 ${usefulLines[1]}`, `🧭 ${usefulLines[2]}`];
+    return [`ðŸ”Ž ${usefulLines[0]}`, `ðŸ“– ${usefulLines[1]}`, `ðŸ§­ ${usefulLines[2]}`];
   }
 
   const focus = inferPhraseFocus(phrase);
@@ -306,7 +306,7 @@ function buildPhraseTeachingBullets(phrase: string, sourceLines: string[]) {
       ? "It helps the reader see what the LORD is revealing about Himself."
       : "It helps the reader understand why this detail belongs in the story.");
 
-  return [`🔎 ${meaning}`, `📖 ${context}`, `🧭 ${why}`];
+  return [`ðŸ”Ž ${meaning}`, `ðŸ“– ${context}`, `ðŸ§­ ${why}`];
 }
 
 function isGenesisQualityControlReference(reference?: string) {
@@ -322,7 +322,7 @@ function isPhraseCardFillerLine(line: string) {
 }
 
 function formatBibleYearPhraseCard(rawHeading: string, rawBody: string, reference?: string) {
-  const heading = repairMojibake(rawHeading).trim().replace(/^\?{2,3}\s+/, "📌 ");
+  const heading = repairMojibake(rawHeading).trim().replace(/^\?{2,3}\s+/, "ðŸ“Œ ");
   const phrase = stripPhraseIcon(heading);
   const lines = repairMojibake(rawBody)
     .replace(/\r/g, "")
@@ -378,7 +378,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     categories: [
       {
         id: "key-phrases",
-        icon: "💬",
+        icon: "ðŸ’¬",
         title: "Key Phrases",
         content: section.phrases.map(([heading, body]) => formatBibleYearPhraseCard(heading, body, section.reference)),
       },
@@ -4217,19 +4217,20 @@ function enforceStudySectionVerseLimit(maxVerses = 10) {
 
 function applyApprovedGenesisOneStudySections() {
   const approvedGenesisOneMeta = [
-    { reference: "Genesis 1:1-2", startVerse: 1, endVerse: 2, icon: "🌅" },
-    { reference: "Genesis 1:3-5", startVerse: 3, endVerse: 5, icon: "💡" },
-    { reference: "Genesis 1:6-8", startVerse: 6, endVerse: 8, icon: "☁️" },
-    { reference: "Genesis 1:9-13", startVerse: 9, endVerse: 13, icon: "🌍" },
-    { reference: "Genesis 1:14-19", startVerse: 14, endVerse: 19, icon: "☀️" },
-    { reference: "Genesis 1:20-23", startVerse: 20, endVerse: 23, icon: "🌊" },
-    { reference: "Genesis 1:24-25", startVerse: 24, endVerse: 25, icon: "🦁" },
-    { reference: "Genesis 1:26-28", startVerse: 26, endVerse: 28, icon: "👤" },
-    { reference: "Genesis 1:29-31", startVerse: 29, endVerse: 31, icon: "🌿" },
+    { reference: "Genesis 1:1-2", startVerse: 1, endVerse: 2, icon: "ðŸŒ…" },
+    { reference: "Genesis 1:3-5", startVerse: 3, endVerse: 5, icon: "ðŸ’¡" },
+    { reference: "Genesis 1:6-8", startVerse: 6, endVerse: 8, icon: "â˜ï¸" },
+    { reference: "Genesis 1:9-13", startVerse: 9, endVerse: 13, icon: "ðŸŒ" },
+    { reference: "Genesis 1:14-19", startVerse: 14, endVerse: 19, icon: "â˜€ï¸" },
+    { reference: "Genesis 1:20-23", startVerse: 20, endVerse: 23, icon: "ðŸŒŠ" },
+    { reference: "Genesis 1:24-25", startVerse: 24, endVerse: 25, icon: "ðŸ¦" },
+    { reference: "Genesis 1:26-28", startVerse: 26, endVerse: 28, icon: "ðŸ‘¤" },
+    { reference: "Genesis 1:29-31", startVerse: 29, endVerse: 31, icon: "ðŸŒ¿" },
   ] as const;
 
   const repairedDayOneNotes = repairMojibake(BIBLE_YEAR_DAY_ONE_DEEP_NOTES).replace(/\r\n/g, "\n");
-  const buildReferencePattern = (reference: string) => reference.replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/-/g, "[-–]");
+  const buildReferencePattern = (reference: string) =>
+    reference.replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/-/g, "[-–—â€“â€”]");
 
   const extractSectionMarkdown = (reference: string) => {
     const match = repairedDayOneNotes.match(new RegExp(`(?:^|\\n)# .*?${buildReferencePattern(reference)}[\\s\\S]*?(?=\\n# |$)`));
@@ -4291,7 +4292,7 @@ function applyApprovedGenesisOneStudySections() {
     section.categories = [
       {
         id: "key-phrases",
-        icon: "💬",
+        icon: "ðŸ’¬",
         title: "Key Phrases",
         content: parseGenesisOnePhraseBlocks(markdown),
       },
@@ -9797,7 +9798,7 @@ const APPROVED_GENESIS_SEVEN_SECTION_META: ApprovedGenesisSevenSectionMeta[] = [
   {
     reference: "Genesis 7:1-10",
     title: "Entering The Ark",
-    icon: "🚢",
+    icon: "ðŸš¢",
     summary: "God shifts Noah from building to entering the ark, gathering his household and the animals before judgment begins.",
     startVerse: 1,
     endVerse: 10,
@@ -9805,7 +9806,7 @@ const APPROVED_GENESIS_SEVEN_SECTION_META: ApprovedGenesisSevenSectionMeta[] = [
   {
     reference: "Genesis 7:11-17",
     title: "The Flood Begins",
-    icon: "🚢",
+    icon: "ðŸš¢",
     summary: "The flood starts at a real moment in Noah's life, the waters break from above and below, and God shuts him in.",
     startVerse: 11,
     endVerse: 17,
@@ -9813,7 +9814,7 @@ const APPROVED_GENESIS_SEVEN_SECTION_META: ApprovedGenesisSevenSectionMeta[] = [
   {
     reference: "Genesis 7:18-24",
     title: "The Waters Take Over The Earth",
-    icon: "🌊",
+    icon: "ðŸŒŠ",
     summary: "The waters overpower the whole earth, yet the ark carries Noah and his family safely through judgment.",
     startVerse: 18,
     endVerse: 24,
@@ -9821,7 +9822,7 @@ const APPROVED_GENESIS_SEVEN_SECTION_META: ApprovedGenesisSevenSectionMeta[] = [
 ];
 
 function buildApprovedGenesisSevenReferencePattern(reference: string) {
-  return reference.replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/-/g, "[-–]");
+  return reference.replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/-/g, "[-–—â€“â€”]");
 }
 
 function extractApprovedGenesisSevenSectionMarkdown(reference: string) {
@@ -9909,7 +9910,7 @@ function applyApprovedGenesisSevenReaderSections() {
       categories: [
         {
           id: "key-phrases",
-          icon: "💬",
+          icon: "ðŸ’¬",
           title: "Key Phrases",
           content: phraseBlocks,
         },
@@ -9944,4 +9945,5 @@ export function getBibleReaderStudySections(book: string | null | undefined, cha
     (section) => section.book === normalizedBook && section.chapter === chapterNumber,
   );
 }
+
 

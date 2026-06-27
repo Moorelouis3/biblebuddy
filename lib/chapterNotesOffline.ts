@@ -1,5 +1,3 @@
-import { getChapterNotesFallback } from "./proverbsChapterNotesFallback";
-
 const CHAPTER_NOTES_CACHE_PREFIX = "bb:chapter-notes:v1";
 
 function normalizeBookKey(book: string | null | undefined) {
@@ -32,7 +30,9 @@ export function cacheChapterNotes(book: string | null | undefined, chapter: numb
 }
 
 export async function getOfflineChapterNotes(book: string | null | undefined, chapter: number | null | undefined) {
-  return getCachedChapterNotes(book, chapter) || (await getChapterNotesFallback(book, chapter));
+  void book;
+  void chapter;
+  return null;
 }
 
 export function getCanonicalBibleNotesBookKey(book: string | null | undefined) {

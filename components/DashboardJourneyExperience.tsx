@@ -63,7 +63,7 @@ import { getBibleYearDayContent } from "../lib/bibleYearDaysContent";
 import type { BibleYearDeepStudySection } from "../lib/bibleYearDayOneDeepStudy";
 import { BIBLE_YEAR_DAY_ONE_STUDY_NOTES_FRAME } from "../lib/bibleYearDayOneDeepStudy";
 import { getBibleReaderStudySections, type BibleReaderStudySection } from "../lib/bibleReaderStudyNotes";
-import { cacheBibleYearOfflineTextPack } from "../lib/bibleYearOfflinePack";
+import { clearLegacyBibleYearOfflineStorage } from "../lib/bibleYearOfflinePack";
 import { BIBLE_YEAR_GENESIS_WEB_VERSES } from "../lib/bibleYearGenesisVerses";
 import { enrichBibleVerses } from "../lib/bibleHighlighting";
 import { resolveBibleReference } from "../lib/bibleTermResolver";
@@ -3183,39 +3183,12 @@ export default function DashboardJourneyExperience({
   });
 
   useEffect(() => {
-    if (!bibleYearProgressLoaded) return;
-    cacheBibleYearOfflineTextPack();
-  }, [bibleYearProgressLoaded]);
+    clearLegacyBibleYearOfflineStorage();
+  }, []);
 
   useEffect(() => {
     onBibleYearProgressLoadedChange?.(bibleYearProgressLoaded);
   }, [bibleYearProgressLoaded, onBibleYearProgressLoadedChange]);
-
-  useEffect(() => {
-    if (!activeBibleYearDashboardDay || typeof window === "undefined" || !("serviceWorker" in navigator)) return;
-
-    const builtBibleYearDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES;
-    void builtBibleYearDays;
-    const mediaUrls: string[] = [];
-    const urls = [
-      "/dashboard",
-      "/dashboard?view=bible-year",
-      `/dashboard?view=bible-year&day=${activeBibleYearDashboardDay.dayNumber}`,
-    ];
-
-    navigator.serviceWorker.ready
-      .then((registration) => {
-        const target = registration.active || navigator.serviceWorker.controller;
-        target?.postMessage({
-          type: "CACHE_BIBLE_YEAR_OFFLINE",
-          urls,
-          mediaUrls,
-        });
-      })
-      .catch((error) => {
-        console.warn("[BIBLE_YEAR_OFFLINE] Could not start offline cache:", error);
-      });
-  }, [activeBibleYearDashboardDay?.dayNumber]);
 
   const streak = profile?.current_streak ?? 0;
   const skeletonTasks = [
