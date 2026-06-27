@@ -292,6 +292,30 @@ function getResolvedBibleYearCurrentDayNumberFromCards(
   );
 }
 
+function normalizeBibleYearDayNumber(value: unknown, fallback = 1) {
+  const maxDayNumber = GENESIS_BIBLE_IN_ONE_YEAR_SERIES[GENESIS_BIBLE_IN_ONE_YEAR_SERIES.length - 1]?.dayNumber || 1;
+  const numericValue = Number(value);
+  if (!Number.isFinite(numericValue)) return Math.max(1, Math.min(fallback, maxDayNumber));
+  return Math.max(1, Math.min(Math.trunc(numericValue), maxDayNumber));
+}
+
+function chooseResolvedBibleYearDayNumber(options: {
+  incomingDayNumber: unknown;
+  previousDayNumber: unknown;
+  reportDayNumber: unknown;
+  progressLoaded: boolean;
+}) {
+  const incoming = normalizeBibleYearDayNumber(options.incomingDayNumber);
+  const previous = normalizeBibleYearDayNumber(options.previousDayNumber);
+  const reportDay = normalizeBibleYearDayNumber(options.reportDayNumber);
+
+  if (!options.progressLoaded) {
+    return Math.max(incoming, previous, reportDay);
+  }
+
+  return Math.max(incoming, previous);
+}
+
 const DASHBOARD_GUIDED_INTRO_STEPS = [
   {
     target: "bible-progress",
@@ -2271,9 +2295,16 @@ export default function DashboardJourneyExperience({
   const [selectedBibleYearSeriesDay, setSelectedBibleYearSeriesDay] = useState<GenesisBibleYearDay | null>(null);
   const [manualBibleYearStudyDayNumber, setManualBibleYearStudyDayNumber] = useState<number | null>(null);
   const initialStoredBibleYearProgress = userId ? readStoredBibleYearProgress(userId) : null;
+  const initialBibleYearResolvedCurrentDayNumber = chooseResolvedBibleYearDayNumber({
+    incomingDayNumber: initialStoredBibleYearProgress?.resolvedCurrentDayNumber,
+    previousDayNumber: initialStoredBibleYearProgress?.resolvedCurrentDayNumber,
+    reportDayNumber: bibleYearReport?.currentDay,
+    progressLoaded: false,
+  });
   const [bibleYearResolvedCurrentDayNumber, setBibleYearResolvedCurrentDayNumber] = useState(
-    Number(initialStoredBibleYearProgress?.resolvedCurrentDayNumber) || 1,
+    initialBibleYearResolvedCurrentDayNumber,
   );
+  const bibleYearResolvedCurrentDayNumberRef = useRef(initialBibleYearResolvedCurrentDayNumber);
   const [activeBibleYearDayCard, setActiveBibleYearDayCard] = useState<BibleYearDayCardKey | null>(null);
   const [bibleYearCompletedTasksExpandedDay, setBibleYearCompletedTasksExpandedDay] = useState<number | null>(null);
   const [bibleYearCompletionModalDay, setBibleYearCompletionModalDay] = useState<GenesisBibleYearDay | null>(null);
@@ -2477,6 +2508,10 @@ export default function DashboardJourneyExperience({
   const [submittingBibleYearProblemReport, setSubmittingBibleYearProblemReport] = useState(false);
   const [bibleYearProblemReportError, setBibleYearProblemReportError] = useState<string | null>(null);
 
+  useEffect(() => {
+    bibleYearResolvedCurrentDayNumberRef.current = bibleYearResolvedCurrentDayNumber;
+  }, [bibleYearResolvedCurrentDayNumber]);
+
   const dashboardPageKeys = ["home", "progress", "buddy", "bible", "bible_studies", "bible_topics", "share", "group", "settings", "analytics"] as const;
   type DashboardPageKey = (typeof dashboardPageKeys)[number];
   const normalizedActivePage = Number.isFinite(activePage) ? activePage : 0;
@@ -2505,6 +2540,20 @@ export default function DashboardJourneyExperience({
   useEffect(() => {
     setDashboardGreeting(getDashboardGreeting());
   }, []);
+
+  useEffect(() => {
+    if (bibleYearProgressLoaded) return;
+    const reportCurrentDay = Number(bibleYearReport?.currentDay);
+    if (!Number.isFinite(reportCurrentDay)) return;
+    setBibleYearResolvedCurrentDayNumber((previousDayNumber) =>
+      chooseResolvedBibleYearDayNumber({
+        incomingDayNumber: reportCurrentDay,
+        previousDayNumber,
+        reportDayNumber: reportCurrentDay,
+        progressLoaded: false,
+      }),
+    );
+  }, [bibleYearProgressLoaded, bibleYearReport?.currentDay]);
 
   const getDashboardGuidedIntroStorageKey = useCallback(() => {
     return `${DASHBOARD_GUIDED_INTRO_STORAGE_KEY}:${userId || "guest"}`;
@@ -4175,10 +4224,16 @@ export default function DashboardJourneyExperience({
     async function loadBibleYearProgress() {
       if (!userId) {
         if (!bibleYearProgressLoaded) {
+          const resolvedCurrentDayNumber = chooseResolvedBibleYearDayNumber({
+            incomingDayNumber: 1,
+            previousDayNumber: bibleYearResolvedCurrentDayNumberRef.current,
+            reportDayNumber: bibleYearReport?.currentDay,
+            progressLoaded: false,
+          });
           setBibleYearCompletedCardsByDay({});
           setBibleYearScriptureNotesViewedByDay({});
           setBibleYearReflectionPostedByDay({});
-          setBibleYearResolvedCurrentDayNumber(1);
+          setBibleYearResolvedCurrentDayNumber(resolvedCurrentDayNumber);
           setBibleYearProgressLoaded(true);
         }
         return;
@@ -4199,7 +4254,12 @@ export default function DashboardJourneyExperience({
               const completedCardsByDay = payload.completedCardsByDay || {};
               const notesViewedByDay = payload.notesViewedByDay || {};
               const reflectionPostedByDay = payload.reflectionPostedByDay || {};
-              const resolvedCurrentDayNumber = Number(payload.resolvedCurrentDayNumber) || 1;
+              const resolvedCurrentDayNumber = chooseResolvedBibleYearDayNumber({
+                incomingDayNumber: payload.resolvedCurrentDayNumber,
+                previousDayNumber: bibleYearResolvedCurrentDayNumberRef.current,
+                reportDayNumber: bibleYearReport?.currentDay,
+                progressLoaded: bibleYearProgressLoaded,
+              });
               setBibleYearCompletedCardsByDay(completedCardsByDay);
               setBibleYearScriptureNotesViewedByDay(notesViewedByDay);
               setBibleYearReflectionPostedByDay(reflectionPostedByDay);
@@ -4281,9 +4341,15 @@ export default function DashboardJourneyExperience({
         }
 
         const resolvedCurrentDayNumber =
-          GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => next[day.dayNumber]?.reading !== true)?.dayNumber ||
-          GENESIS_BIBLE_IN_ONE_YEAR_SERIES[GENESIS_BIBLE_IN_ONE_YEAR_SERIES.length - 1]?.dayNumber ||
-          1;
+          chooseResolvedBibleYearDayNumber({
+            incomingDayNumber:
+              GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => next[day.dayNumber]?.reading !== true)?.dayNumber ||
+              GENESIS_BIBLE_IN_ONE_YEAR_SERIES[GENESIS_BIBLE_IN_ONE_YEAR_SERIES.length - 1]?.dayNumber ||
+              1,
+            previousDayNumber: bibleYearResolvedCurrentDayNumberRef.current,
+            reportDayNumber: bibleYearReport?.currentDay,
+            progressLoaded: bibleYearProgressLoaded,
+          });
 
         if (!cancelled) {
           setBibleYearCompletedCardsByDay(next);
@@ -4301,10 +4367,16 @@ export default function DashboardJourneyExperience({
       } catch (error) {
         console.error("[BIBLE_YEAR_PROGRESS] Could not load Bible in One Year progress:", error);
         if (!cancelled) {
+          const resolvedCurrentDayNumber = chooseResolvedBibleYearDayNumber({
+            incomingDayNumber: cachedProgress?.resolvedCurrentDayNumber,
+            previousDayNumber: bibleYearResolvedCurrentDayNumberRef.current,
+            reportDayNumber: bibleYearReport?.currentDay,
+            progressLoaded: bibleYearProgressLoaded,
+          });
           setBibleYearCompletedCardsByDay(cachedProgress?.completedCardsByDay || {});
           setBibleYearScriptureNotesViewedByDay(cachedProgress?.notesViewedByDay || {});
           setBibleYearReflectionPostedByDay(cachedProgress?.reflectionPostedByDay || {});
-          setBibleYearResolvedCurrentDayNumber(Number(cachedProgress?.resolvedCurrentDayNumber) || 1);
+          setBibleYearResolvedCurrentDayNumber(resolvedCurrentDayNumber);
           setBibleYearProgressLoaded(true);
         }
       }
@@ -4315,7 +4387,7 @@ export default function DashboardJourneyExperience({
     return () => {
       cancelled = true;
     };
-  }, [userId]);
+  }, [bibleYearReport?.currentDay, userId]);
 
   function snapToPage(index: number) {
     const nextIndex = Math.max(0, Math.min(index, dashboardPageKeys.length - 1));

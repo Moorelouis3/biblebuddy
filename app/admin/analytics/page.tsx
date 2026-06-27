@@ -3247,7 +3247,7 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
   const [isOwner, setIsOwner] = useState(false);
   const [authChecked, setAuthChecked] = useState(false);
   const [windowKey, setWindowKey] = useState<JourneyWindow>("today");
-  const [simpleMetric, setSimpleMetric] = useState<SimpleAnalyticsMetric>("revenue");
+  const [simpleMetric, setSimpleMetric] = useState<SimpleAnalyticsMetric>("overview");
   const [data, setData] = useState<AnalyticsResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [detailsLoading, setDetailsLoading] = useState(false);
@@ -3545,7 +3545,7 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
               </div>
 
               {simpleMetric === "overview" ? (
-                <div className="grid gap-3 md:grid-cols-3">
+                <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
                   <SimpleAnalyticsKpiCard
                     title="Signups"
                     value={loading ? "..." : signupsLabel}
@@ -3569,6 +3569,12 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
                     accent="violet"
                     comparison={windowKey === "lifetime" ? null : upgradesComparison}
                     comparisonLabel={windowKey === "lifetime" ? "" : comparisonLabel}
+                  />
+                  <SimpleAnalyticsKpiCard
+                    title="Landing Page Views"
+                    value={loading ? "..." : formatNumber(landingStageUsers)}
+                    helper="Unique landing page visitors"
+                    accent="blue"
                   />
                 </div>
               ) : (
