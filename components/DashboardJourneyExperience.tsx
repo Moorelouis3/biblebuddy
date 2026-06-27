@@ -10554,7 +10554,6 @@ Before we understand redemption, we need to understand what God made humanity fo
   async function handleContinueToNextBibleYearDay(day: GenesisBibleYearDay, nextDay: GenesisBibleYearDay) {
     if (continuingBibleYearDay === day.dayNumber) return;
     if (!isBibleYearDayComplete(day)) {
-      setBibleYearIncompleteChecklistDay(day);
       return;
     }
     if (day.dayNumber === 3 && !isOwnerDashboard && !isPaidUser && await openDayThreeProPrompt(day, nextDay)) return;
@@ -11814,14 +11813,16 @@ Before we understand redemption, we need to understand what God made humanity fo
             <span className="text-[32px] font-black leading-none tracking-[-0.04em]">👑 $49.99</span>
             <span className="mt-1.5 text-[16px] font-bold">One Time Fee</span>
           </button>
-          <button
-            type="button"
-            onClick={() => void startBibleYearQuickUpgrade("monthly")}
-            disabled={Boolean(bibleYearQuickUpgradeLoading)}
-            className="mt-4 text-[16px] font-bold text-[#10224b] underline-offset-4 transition hover:text-[var(--bb-accent,#2f7fe8)] hover:underline disabled:cursor-not-allowed disabled:opacity-60"
-          >
-            or $4.99 per month
-          </button>
+          <div className="mt-4">
+            <button
+              type="button"
+              onClick={() => void startBibleYearQuickUpgrade("monthly")}
+              disabled={Boolean(bibleYearQuickUpgradeLoading)}
+              className="text-[16px] font-bold text-[#10224b] underline-offset-4 transition hover:text-[var(--bb-accent,#2f7fe8)] hover:underline disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              or $4.99 per month
+            </button>
+          </div>
           {options?.nextDay && options?.onContinueFree ? (
             <button
               type="button"
