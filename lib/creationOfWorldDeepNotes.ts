@@ -1,5 +1,5 @@
 import { BIBLE_YEAR_DAY_ONE_DEEP_NOTES } from "./bibleYearDayOneDeepNotes";
-import { GENESIS_TWO_OFFICIAL_NOTES } from "./genesisTwoOfficialNotes";
+import { GENESIS_TWO_DEEP_NOTES } from "./genesisTwoSource";
 
 type CreationSection = {
   reference: string;
@@ -788,6 +788,6 @@ export const CREATION_OF_WORLD_DEEP_NOTES = creationNotes.map((chapter) =>
   chapter.chapter === 1
     ? BIBLE_YEAR_DAY_ONE_DEEP_NOTES
     : chapter.chapter === 2
-      ? GENESIS_TWO_OFFICIAL_NOTES
+      ? GENESIS_TWO_DEEP_NOTES
       : buildCreationNotesWithBigLessonFirst(chapter),
 );
