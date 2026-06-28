@@ -485,7 +485,8 @@ import { BIBLE_YEAR_DAY_SEVEN_DEEP_NOTES, BIBLE_YEAR_DAY_SEVEN_DEEP_STUDY_SECTIO
 import { BIBLE_YEAR_DAY_SIX_DEEP_NOTES, BIBLE_YEAR_DAY_SIX_DEEP_STUDY_SECTIONS } from "./bibleYearDaySixDeepNotes";
 import { BIBLE_YEAR_DAY_EIGHT_DEEP_NOTES, BIBLE_YEAR_DAY_EIGHT_DEEP_STUDY_SECTIONS } from "./bibleYearDayEightDeepNotes";
 import { BIBLE_YEAR_DAY_NINE_DEEP_NOTES, BIBLE_YEAR_DAY_NINE_DEEP_STUDY_SECTIONS } from "./bibleYearDayNineDeepNotes";
-import { BIBLE_YEAR_DAY_TWO_DEEP_NOTES, BIBLE_YEAR_DAY_TWO_DEEP_STUDY_SECTIONS } from "./fallOfManDeepNotes";
+import { BIBLE_YEAR_DAY_TWO_DEEP_NOTES } from "./fallOfManDeepNotes";
+import { BIBLE_YEAR_DAY_TWO_DEEP_STUDY_SECTIONS } from "./bibleYearDayTwoDeepStudy";
 import type { GenesisBibleYearDay } from "./bibleInOneYearPlan";
 import { getBibleReaderStudySections } from "./bibleReaderStudyNotes";
 

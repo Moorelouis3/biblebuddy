@@ -1,4 +1,5 @@
 ﻿import { GENESIS_1_PERSONAL_SECTIONS } from "./genesisOnePersonalNotes";
+import { GENESIS_THREE_PERSONAL_SECTIONS } from "./genesisThreeSource";
 import { GENESIS_TWO_PERSONAL_SECTIONS } from "./genesisTwoSource";
 import { GENESIS_11_20_PERSONAL_SECTIONS } from "./genesisElevenToTwentyPersonalNotes";
 import { GENESIS_21_30_PERSONAL_SECTIONS } from "./genesisTwentyOneToThirtyPersonalNotes";
@@ -368,7 +369,8 @@ function formatBibleYearPhraseCard(rawHeading: string, rawBody: string, referenc
 }
 
 function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, book: string): BibleReaderStudySection {
-  const preserveExactPhraseBodies = normalizeBook(book) === "genesis" && (section.chapter === 1 || section.chapter === 2);
+  const preserveExactPhraseBodies =
+    normalizeBook(book) === "genesis" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3);
   return {
     book,
     chapter: section.chapter,
@@ -8453,6 +8455,7 @@ applyApprovedGenesisOneStudySections();
 applyApprovedGenesisSevenReaderSections();
 replaceStudySectionsForBookRange("genesis", 1, 1, GENESIS_1_PERSONAL_SECTIONS);
 replaceStudySectionsForBookRange("genesis", 2, 2, GENESIS_TWO_PERSONAL_SECTIONS);
+replaceStudySectionsForBookRange("genesis", 3, 3, GENESIS_THREE_PERSONAL_SECTIONS);
 
 for (const section of BIBLE_READER_STUDY_SECTIONS) {
   section.categories = section.categories
@@ -8478,6 +8481,4 @@ export function getBibleReaderStudySections(book: string | null | undefined, cha
     (section) => section.book === normalizedBook && section.chapter === chapterNumber,
   );
 }
-
-
 
