@@ -2313,7 +2313,8 @@ export default function DashboardJourneyExperience({
   const [bibleYearCompletedCardsByDay, setBibleYearCompletedCardsByDay] = useState<BibleYearCompletedCardsByDay>(
     initialStoredBibleYearProgress?.completedCardsByDay || {},
   );
-  const [bibleYearProgressLoaded, setBibleYearProgressLoaded] = useState(Boolean(initialStoredBibleYearProgress));
+  const [bibleYearProgressLoaded, setBibleYearProgressLoaded] = useState(false);
+  const [bibleYearProgressResolved, setBibleYearProgressResolved] = useState(false);
   const [bibleYearTriviaAnswers, setBibleYearTriviaAnswers] = useState<Record<string, string>>({});
   const [bibleYearTriviaQuestionIndexByDay, setBibleYearTriviaQuestionIndexByDay] = useState<Record<number, number>>({});
   const [bibleYearTriviaResultsOpenByDay, setBibleYearTriviaResultsOpenByDay] = useState<Record<number, boolean>>({});
@@ -2928,7 +2929,7 @@ export default function DashboardJourneyExperience({
     }
   }, [activePageKey, fetchShareRewards, userId]);
 
-  const bibleYearCurrentDayReady = bibleYearProgressReady && bibleYearProgressLoaded;
+  const bibleYearCurrentDayReady = bibleYearProgressReady && bibleYearProgressLoaded && bibleYearProgressResolved;
   const activeBibleYearDashboardDay = bibleYearDashboardActive && bibleYearCurrentDayReady
     ? (() => {
         const builtBibleYearDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES;
@@ -4196,19 +4197,18 @@ export default function DashboardJourneyExperience({
 
     async function loadBibleYearProgress() {
       if (!userId) {
-        if (!bibleYearProgressLoaded) {
-          const resolvedCurrentDayNumber = chooseResolvedBibleYearDayNumber({
-            incomingDayNumber: 1,
-            previousDayNumber: bibleYearResolvedCurrentDayNumberRef.current,
-            reportDayNumber: bibleYearReport?.currentDay,
-            progressLoaded: false,
-          });
-          setBibleYearCompletedCardsByDay({});
-          setBibleYearScriptureNotesViewedByDay({});
-          setBibleYearReflectionPostedByDay({});
-          setBibleYearResolvedCurrentDayNumber(resolvedCurrentDayNumber);
-          setBibleYearProgressLoaded(true);
-        }
+        const resolvedCurrentDayNumber = chooseResolvedBibleYearDayNumber({
+          incomingDayNumber: 1,
+          previousDayNumber: bibleYearResolvedCurrentDayNumberRef.current,
+          reportDayNumber: bibleYearReport?.currentDay,
+          progressLoaded: false,
+        });
+        setBibleYearCompletedCardsByDay({});
+        setBibleYearScriptureNotesViewedByDay({});
+        setBibleYearReflectionPostedByDay({});
+        setBibleYearResolvedCurrentDayNumber(resolvedCurrentDayNumber);
+        setBibleYearProgressLoaded(true);
+        setBibleYearProgressResolved(true);
         return;
       }
 
@@ -4238,6 +4238,7 @@ export default function DashboardJourneyExperience({
               setBibleYearReflectionPostedByDay(reflectionPostedByDay);
               setBibleYearResolvedCurrentDayNumber(resolvedCurrentDayNumber);
               setBibleYearProgressLoaded(true);
+              setBibleYearProgressResolved(true);
               rememberStoredBibleYearProgress(userId, {
                 completedCardsByDay,
                 notesViewedByDay,
@@ -4330,6 +4331,7 @@ export default function DashboardJourneyExperience({
           setBibleYearReflectionPostedByDay(reflectionPostedNext);
           setBibleYearResolvedCurrentDayNumber(resolvedCurrentDayNumber);
           setBibleYearProgressLoaded(true);
+          setBibleYearProgressResolved(true);
           rememberStoredBibleYearProgress(userId, {
             completedCardsByDay: next,
             notesViewedByDay: notesViewedNext,
@@ -4351,6 +4353,7 @@ export default function DashboardJourneyExperience({
           setBibleYearReflectionPostedByDay(cachedProgress?.reflectionPostedByDay || {});
           setBibleYearResolvedCurrentDayNumber(resolvedCurrentDayNumber);
           setBibleYearProgressLoaded(true);
+          setBibleYearProgressResolved(true);
         }
       }
     }
@@ -4853,7 +4856,7 @@ export default function DashboardJourneyExperience({
     if (typeof window === "undefined") return;
     const params = new URLSearchParams(window.location.search);
     const view = params.get("view");
-    if (!bibleYearProgressLoaded && (view === "bible-year" || view === "bible-year-series" || !view)) return;
+    if ((!bibleYearProgressLoaded || !bibleYearProgressResolved) && (view === "bible-year" || view === "bible-year-series" || !view)) return;
     if (view === "bible-year") {
       const dayNumber = Number(params.get("day") || 0);
       const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((seriesDay) => seriesDay.dayNumber === dayNumber);
@@ -4903,7 +4906,7 @@ export default function DashboardJourneyExperience({
       setManualBibleYearStudyDayNumber(null);
       setActivePage(0);
     }
-  }, [bibleYearProgressLoaded, bibleYearResolvedCurrentDayNumber, profile?.preferred_study_mode, userId]);
+  }, [bibleYearProgressLoaded, bibleYearProgressResolved, bibleYearResolvedCurrentDayNumber, profile?.preferred_study_mode, userId]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
