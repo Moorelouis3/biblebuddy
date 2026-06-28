@@ -118,6 +118,7 @@ export type BibleReaderStudySection = {
   icon: string;
   summary: string;
   categories: BibleReaderStudyNoteCategory[];
+  preserveExactPhraseFormatting?: boolean;
 };
 
 function normalizeBook(book: string | null | undefined) {
@@ -366,6 +367,7 @@ function formatBibleYearPhraseCard(rawHeading: string, rawBody: string, referenc
 }
 
 function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, book: string): BibleReaderStudySection {
+  const preserveExactPhraseBodies = normalizeBook(book) === "genesis" && section.chapter === 1;
   return {
     book,
     chapter: section.chapter,
@@ -375,12 +377,15 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     title: repairMojibake(section.title),
     icon: repairMojibake(section.icon),
     summary: "",
+    preserveExactPhraseFormatting: preserveExactPhraseBodies,
     categories: [
       {
         id: "key-phrases",
         icon: "ðŸ’¬",
         title: "Key Phrases",
-        content: section.phrases.map(([heading, body]) => formatBibleYearPhraseCard(heading, body, section.reference)),
+        content: section.phrases.map(([heading, body]) =>
+          preserveExactPhraseBodies ? `${heading}\n\n${body}` : formatBibleYearPhraseCard(heading, body, section.reference),
+        ),
       },
     ],
   };
@@ -8292,6 +8297,7 @@ function formatKeyPhraseLikeDayOne(content: string) {
 }
 
 function shouldFormatLikeDayOne(section: BibleReaderStudySection) {
+  if (section.preserveExactPhraseFormatting) return false;
   return (
     (section.book === "genesis" && section.chapter >= 1 && section.chapter <= 50) ||
     (section.book === "exodus" && section.chapter >= 1 && section.chapter <= 36) ||
