@@ -10158,6 +10158,10 @@ Before we understand redemption, we need to understand what God made humanity fo
     return `Bible in One Year Day ${day.dayNumber} Discussion: ${day.title}`;
   }
 
+  function getBibleYearDayCompletedActionLabel(day: GenesisBibleYearDay) {
+    return `Bible in One Year Day ${day.dayNumber} Completed: ${day.title}`;
+  }
+
   async function logBibleYearDayViewed(day: GenesisBibleYearDay) {
     if (!userId) return;
     if (lastLoggedBibleYearViewedDayRef.current === day.dayNumber) return;
@@ -10330,6 +10334,49 @@ Before we understand redemption, we need to understand what God made humanity fo
     void showPoints;
   }
 
+  async function ensureBibleYearDayCompletedActionLogged(day: GenesisBibleYearDay) {
+    if (!userId) return;
+    const actionLabel = getBibleYearDayCompletedActionLabel(day);
+    const { data, error } = await supabase
+      .from("master_actions")
+      .select("id")
+      .eq("user_id", userId)
+      .eq("action_type", ACTION_TYPE.bible_in_one_year_day_completed)
+      .eq("action_label", actionLabel)
+      .limit(1);
+
+    if (error) throw error;
+    if (data && data.length > 0) return;
+
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    const meta = user?.user_metadata || {};
+    const username =
+      meta.firstName ||
+      meta.first_name ||
+      (user?.email ? user.email.split("@")[0] : null) ||
+      "User";
+
+    const { error: insertError } = await supabase.from("master_actions").insert({
+      user_id: userId,
+      action_type: ACTION_TYPE.bible_in_one_year_day_completed,
+      action_label: actionLabel,
+      username,
+      journey_day: day.dayNumber,
+      account_status: isPaidUser ? "pro" : "free_or_guest",
+      event_metadata: {
+        plan: "bible_in_one_year",
+        dayNumber: day.dayNumber,
+        dayTitle: day.title,
+        status: "finished",
+        completedCards: getBibleYearRequiredCardKeys(day),
+      },
+    });
+    if (insertError) throw insertError;
+    await incrementProfileTotalActions();
+  }
+
   async function markBibleYearDayCardsComplete(day: GenesisBibleYearDay, cards: BibleYearDayCardKey[]) {
     const alreadyCompleted = bibleYearCompletedCardsByDay[day.dayNumber] || {};
     const newlyCompletedCards = cards.filter((card) => alreadyCompleted[card] !== true);
@@ -10421,6 +10468,9 @@ Before we understand redemption, we need to understand what God made humanity fo
     }
     if (newlyCompletedCards.length > 0) {
       await Promise.all(newlyCompletedCards.map((card) => ensureBibleYearCardActionLogged(day, card, true)));
+      if (dayWillBeFullyComplete && !dayWasFullyComplete) {
+        await ensureBibleYearDayCompletedActionLogged(day);
+      }
       onDevotionalChanged();
     }
     return { dayWillBeFullyComplete, nextCompletedForDay };

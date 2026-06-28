@@ -1907,7 +1907,7 @@ function buildActivitySummaryMetrics(
       .filter(Boolean),
   );
 
-  const daysCompleted = rows.filter((row) => row.action_type === "bible_year_next_day_clicked").length;
+  const daysCompleted = rows.filter((row) => row.action_type === "bible_in_one_year_day_completed").length;
 
   return {
     activeUsers: uniqueActors.size,
@@ -2369,6 +2369,7 @@ function getMasterActionTitle(action: MasterActionFunnelRow) {
   const day = Number(action.journey_day || parseBibleYearDayFromLabel(label) || 0);
   const task = getTaskTypeFromAction(action);
   if (actionType === "bible_year_task_started") return task ? `Started ${task} task` : `Started Day ${day || ""} task`.trim();
+  if (actionType === "bible_in_one_year_day_completed") return "Completed a Bible in One Year day";
   if (actionType === "bible_in_one_year_reading_completed") return "Completed video / reading task";
   if (actionType === "bible_in_one_year_trivia_completed") return "Completed trivia";
   if (actionType === "bible_in_one_year_reflection_completed") return "Completed day summary";
@@ -3640,6 +3641,7 @@ async function buildOverviewAnalyticsResponse(
       "bible_year_audio_played",
       "bible_year_task_started",
       "bible_year_task_completed",
+      "bible_in_one_year_day_completed",
       "bible_in_one_year_reading_completed",
       "bible_in_one_year_trivia_completed",
       "bible_in_one_year_reflection_completed",
@@ -3966,6 +3968,7 @@ export async function GET(request: Request) {
     "free_account_popup_viewed",
     "free_account_popup_skipped",
     "bible_in_one_year_day_viewed",
+    "bible_in_one_year_day_completed",
     "bible_in_one_year_reading_completed",
     "bible_in_one_year_trivia_completed",
     "bible_in_one_year_reflection_completed",
