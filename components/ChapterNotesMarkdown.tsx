@@ -90,6 +90,16 @@ function normalizeEmojiLists(markdown: string): string {
   return output.join("\n");
 }
 
+function boldShortQuotedPhrases(markdown: string): string {
+  return markdown.replace(/(^|[\s(])([“"])([^"\n”]{1,60}?)([”"])(?=$|[\s).,:;!?])/g, (match, prefix, openQuote, content, closeQuote) => {
+    const trimmedContent = content.trim();
+    if (!trimmedContent) return match;
+    if (trimmedContent.includes("**")) return match;
+    if (trimmedContent.split(/\s+/).length > 8) return match;
+    return `${prefix}**${openQuote}${trimmedContent}${closeQuote}**`;
+  });
+}
+
 function escapeHtml(text: string) {
   return text
     .replace(/&/g, "&amp;")
@@ -156,7 +166,7 @@ export default function ChapterNotesMarkdown({
   compactMobile = false,
 }: ChapterNotesMarkdownProps) {
   const [deferredTermsReady, setDeferredTermsReady] = useState(false);
-  const normalizedChildren = useMemo(() => normalizeEmojiLists(children), [children]);
+  const normalizedChildren = useMemo(() => boldShortQuotedPhrases(normalizeEmojiLists(children)), [children]);
   const canHighlightTerms = Boolean(onDatabaseTermClick) && (enableLargeDatabaseTerms || children.length < 8000);
   const enableTermHighlighting = canHighlightTerms && deferredTermsReady;
   const childRenderOptions = {
