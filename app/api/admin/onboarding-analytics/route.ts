@@ -221,6 +221,15 @@ type StudyNotesUpgradeAnalytics = {
   days: StudyNotesUpgradeDayAnalytics[];
 };
 
+type ActivitySummaryMetrics = {
+  activeUsers: number;
+  totalActions: number;
+  daysCompleted: number;
+  landingConversionRate: number;
+  landingVisitors: number;
+  signups: number;
+};
+
 type CompletionUpgradeAnalytics = {
   totalViews: number;
   totalCloses: number;
@@ -1884,6 +1893,29 @@ function summarizeAcquisitionWindow(
     rawVisitEvents: visitEvents,
     rawGuestEvents: startEvents,
     rawSignupEvents: accountEvents,
+  };
+}
+
+function buildActivitySummaryMetrics(
+  rows: MasterActionFunnelRow[],
+  landingVisitors: number,
+  signups: number,
+): ActivitySummaryMetrics {
+  const uniqueActors = new Set(
+    rows
+      .map((row) => getMasterActorId(row))
+      .filter(Boolean),
+  );
+
+  const daysCompleted = rows.filter((row) => row.action_type === "bible_year_next_day_clicked").length;
+
+  return {
+    activeUsers: uniqueActors.size,
+    totalActions: rows.length,
+    daysCompleted,
+    landingConversionRate: percent(signups, landingVisitors),
+    landingVisitors,
+    signups,
   };
 }
 
@@ -3611,6 +3643,7 @@ async function buildOverviewAnalyticsResponse(
       "bible_in_one_year_reading_completed",
       "bible_in_one_year_trivia_completed",
       "bible_in_one_year_reflection_completed",
+      "bible_year_next_day_clicked",
       "upgrade_popup_viewed",
       "upgrade_popup_cta_clicked",
       "upgrade_popup_dismissed",
@@ -3621,6 +3654,18 @@ async function buildOverviewAnalyticsResponse(
   if (endIso) masterQuery = masterQuery.lt("created_at", endIso);
   const { data: masterData } = await masterQuery;
   const masterRows = (masterData || []) as MasterActionFunnelRow[];
+
+  let activitySummaryQuery = adminSupabase
+    .from("master_actions")
+    .select("user_id, session_id, action_type, created_at")
+    .gte("created_at", startIso)
+    .order("created_at", { ascending: false })
+    .limit(250000);
+  if (endIso) activitySummaryQuery = activitySummaryQuery.lt("created_at", endIso);
+  const { data: activitySummaryData } = await activitySummaryQuery;
+  const activitySummaryRows = ((activitySummaryData || []) as MasterActionFunnelRow[]).filter(
+    (row) => !isOwnerAuthUser(row.user_id || null, allAuthSummaryByUserId),
+  );
   const signupTimestamps = collectFirstSignupTimestamps(masterRows, startIso, endIso);
   const signupSeries = buildSimpleMetricSeries(
     signupTimestamps.length ? signupTimestamps : collectSignupTimestampsFromAuthUsers(validAuthUsers, startIso, endIso),
@@ -3652,6 +3697,7 @@ async function buildOverviewAnalyticsResponse(
   const landingUsers = windowSummary.visits;
   const signupUsers = windowSummary.accountsCreated || windowSummary.signups || 0;
   const conversionRate = landingUsers > 0 ? Number(((signupUsers / landingUsers) * 100).toFixed(1)) : 0;
+  const activitySummary = buildActivitySummaryMetrics(activitySummaryRows, landingUsers, signupUsers);
   const bibleBuddyFunnelStages: FunnelStageRow[] = [
     { key: "landing", label: "Landing Page", users: landingUsers, conversionRate: 100, dropoffRate: 0, retentionRate: 100 },
     { key: "accountsCreated", label: "Accounts Created", users: signupUsers, conversionRate, dropoffRate: Math.max(0, Number((100 - conversionRate).toFixed(1))), retentionRate: conversionRate },
@@ -3662,6 +3708,7 @@ async function buildOverviewAnalyticsResponse(
     personaLine: "Overview loaded first. Full analytics are loading in the background.",
     questions: [],
     businessMetrics,
+    activitySummary,
     registeredUsers,
     audioEngagement: {
       totalPlays: audioRows.length,
@@ -3914,6 +3961,7 @@ export async function GET(request: Request) {
     "bible_year_audio_completed",
     "bible_year_task_started",
     "bible_year_task_completed",
+    "bible_year_next_day_clicked",
     "follow_along_scripture_opened",
     "free_account_popup_viewed",
     "free_account_popup_skipped",
@@ -3956,6 +4004,18 @@ export async function GET(request: Request) {
   } else {
     masterFunnelRows = (masterFunnelData || []) as MasterActionFunnelRow[];
   }
+
+  let activitySummaryQuery = adminSupabase
+    .from("master_actions")
+    .select("user_id, session_id, action_type, created_at")
+    .gte("created_at", journeySinceIso)
+    .order("created_at", { ascending: false })
+    .limit(250000);
+  if (journeyBeforeIso) activitySummaryQuery = activitySummaryQuery.lt("created_at", journeyBeforeIso);
+  const { data: activitySummaryData } = await activitySummaryQuery;
+  const activitySummaryRows = ((activitySummaryData || []) as MasterActionFunnelRow[]).filter(
+    (row) => !isOwnerAuthUser(row.user_id || null, allAuthSummaryByUserId),
+  );
 
   const firstThreeDaysSinceIso = new Date(Date.now() - NEW_USER_FIRST_THREE_DAYS_LOOKBACK_DAYS * 24 * 60 * 60 * 1000).toISOString();
   const { data: firstThreeDaysData, error: firstThreeDaysError } = await adminSupabase
@@ -4172,6 +4232,11 @@ export async function GET(request: Request) {
     proUpgrades,
     guestToAccountRate: windowSummary.guestToAccountRate || 0,
   };
+  const activitySummary = buildActivitySummaryMetrics(
+    activitySummaryRows,
+    customerJourney.visits,
+    customerJourney.freeAccounts,
+  );
 
   if (error) {
     return cachedAnalyticsJson(cacheKey, {
@@ -4180,6 +4245,7 @@ export async function GET(request: Request) {
       funnel,
       landingLast24h,
       businessMetrics,
+      activitySummary,
       registeredUsers: registeredUserAnalytics,
       audioEngagement,
       audioHelpfulness,
@@ -4224,6 +4290,7 @@ export async function GET(request: Request) {
     funnel,
     landingLast24h,
     businessMetrics,
+    activitySummary,
     simpleSeries: {
       signups: signupSeries,
       upgrades: upgradeSeries,

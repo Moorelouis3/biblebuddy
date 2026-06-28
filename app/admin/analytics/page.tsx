@@ -281,6 +281,14 @@ type AnalyticsResponse = {
     monthlySignupChange: number;
     lifetimeSignups: number;
   };
+  activitySummary?: {
+    activeUsers: number;
+    totalActions: number;
+    daysCompleted: number;
+    landingConversionRate: number;
+    landingVisitors: number;
+    signups: number;
+  };
   registeredUsers?: {
     total: number;
     withEmail: number;
@@ -3398,6 +3406,14 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
     monthlySignupChange: 0,
     lifetimeSignups: 0,
   };
+  const activitySummary = data?.activitySummary || {
+    activeUsers: 0,
+    totalActions: 0,
+    daysCompleted: 0,
+    landingConversionRate: 0,
+    landingVisitors: 0,
+    signups: 0,
+  };
   const landingStageUsers = bibleBuddyFunnelStages.find((stage) => stage.key === "landing")?.users ?? metrics.totalVisitors;
   const journeyPerformanceDays = useMemo(() => buildJourneyPerformanceDays(data?.bibleYearDays), [data?.bibleYearDays]);
   const signupsCompleted = getStageUsers(bibleBuddyFunnelStages, "accountsCreated") || data?.customerJourney?.freeAccounts || metrics.createdFreeAccount || 0;
@@ -3575,6 +3591,30 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
                     value={loading ? "..." : formatNumber(landingStageUsers)}
                     helper="Unique landing page visitors"
                     accent="blue"
+                  />
+                  <SimpleAnalyticsKpiCard
+                    title="Active Users"
+                    value={loading ? "..." : formatNumber(activitySummary.activeUsers)}
+                    helper="People with at least one action in this timeframe"
+                    accent="green"
+                  />
+                  <SimpleAnalyticsKpiCard
+                    title="Total Actions"
+                    value={loading ? "..." : formatNumber(activitySummary.totalActions)}
+                    helper="All tracked actions in this timeframe"
+                    accent="blue"
+                  />
+                  <SimpleAnalyticsKpiCard
+                    title="Days Completed"
+                    value={loading ? "..." : formatNumber(activitySummary.daysCompleted)}
+                    helper="Bible in One Year day completions in this timeframe"
+                    accent="violet"
+                  />
+                  <SimpleAnalyticsKpiCard
+                    title="Landing Conversion"
+                    value={loading ? "..." : `${activitySummary.landingConversionRate}%`}
+                    helper="Landing page visitors who became signups"
+                    accent="green"
                   />
                 </div>
               ) : (
