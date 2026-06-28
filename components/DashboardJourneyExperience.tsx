@@ -2295,9 +2295,16 @@ export default function DashboardJourneyExperience({
   const [selectedBibleYearSeriesDay, setSelectedBibleYearSeriesDay] = useState<GenesisBibleYearDay | null>(null);
   const [manualBibleYearStudyDayNumber, setManualBibleYearStudyDayNumber] = useState<number | null>(null);
   const initialStoredBibleYearProgress = userId ? readStoredBibleYearProgress(userId) : null;
+  const initialStoredBibleYearDashboardDayNumber = userId ? getStoredBibleYearDashboardDayNumber(userId) : null;
   const initialBibleYearResolvedCurrentDayNumber = chooseResolvedBibleYearDayNumber({
-    incomingDayNumber: initialStoredBibleYearProgress?.resolvedCurrentDayNumber,
-    previousDayNumber: initialStoredBibleYearProgress?.resolvedCurrentDayNumber,
+    incomingDayNumber: Math.max(
+      Number(initialStoredBibleYearProgress?.resolvedCurrentDayNumber || 0),
+      Number(initialStoredBibleYearDashboardDayNumber || 0),
+    ),
+    previousDayNumber: Math.max(
+      Number(initialStoredBibleYearProgress?.resolvedCurrentDayNumber || 0),
+      Number(initialStoredBibleYearDashboardDayNumber || 0),
+    ),
     reportDayNumber: bibleYearReport?.currentDay,
     progressLoaded: false,
   });
@@ -2383,6 +2390,7 @@ export default function DashboardJourneyExperience({
   const bibleYearTermReturnScrollYRef = useRef<number | null>(null);
   const bibleYearScriptureNotesSectionRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const bibleYearScriptureNotesPhraseRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const lastLoggedBibleYearViewedDayRef = useRef<number | null>(null);
   const getCompletedBibleChapterKey = (book: string, chapter: number) => `${book.trim().toLowerCase()}:${chapter}`;
   const completedBibleYearDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => {
     return isBibleYearDayComplete(day);
@@ -4589,6 +4597,7 @@ export default function DashboardJourneyExperience({
     snapToPage(0);
     if (nextBibleYearDay) {
       rememberBibleYearDashboardDayNumber(userId, nextBibleYearDay.dayNumber);
+      void logBibleYearDayViewed(nextBibleYearDay);
     }
     if (typeof window !== "undefined") {
       const url = new URL(window.location.href);
@@ -4658,6 +4667,7 @@ export default function DashboardJourneyExperience({
     setDashboardMenuOpen(false);
     setBibleYearPlanMenuOpen(false);
     rememberBibleYearDashboardDayNumber(userId, day.dayNumber);
+    void logBibleYearDayViewed(day);
     onHomeReset?.();
     snapToPage(0);
     if (options.reviewCompleted || isBibleYearDayComplete(day)) {
@@ -10146,6 +10156,48 @@ Before we understand redemption, we need to understand what God made humanity fo
 
   function getBibleYearDiscussionActionLabel(day: GenesisBibleYearDay) {
     return `Bible in One Year Day ${day.dayNumber} Discussion: ${day.title}`;
+  }
+
+  async function logBibleYearDayViewed(day: GenesisBibleYearDay) {
+    if (!userId) return;
+    if (lastLoggedBibleYearViewedDayRef.current === day.dayNumber) return;
+
+    lastLoggedBibleYearViewedDayRef.current = day.dayNumber;
+
+    try {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      const meta = user?.user_metadata || {};
+      const username =
+        meta.firstName ||
+        meta.first_name ||
+        (user?.email ? user.email.split("@")[0] : null) ||
+        "User";
+
+      const { error } = await supabase.from("master_actions").insert({
+        user_id: userId,
+        username,
+        action_type: ACTION_TYPE.bible_in_one_year_day_viewed,
+        action_label: `Bible in One Year Day ${day.dayNumber}`,
+        journey_day: day.dayNumber,
+        account_status: isPaidUser ? "pro" : "free_or_guest",
+        event_metadata: {
+          plan: "bible_in_one_year",
+          source: "dashboard_journey",
+          dayNumber: day.dayNumber,
+          dayTitle: day.title,
+        },
+      });
+
+      if (error) {
+        lastLoggedBibleYearViewedDayRef.current = null;
+        console.warn("[BIBLE_YEAR_ANALYTICS] Could not save day viewed action:", error);
+      }
+    } catch (error) {
+      lastLoggedBibleYearViewedDayRef.current = null;
+      console.warn("[BIBLE_YEAR_ANALYTICS] Could not log day viewed:", error);
+    }
   }
 
   async function logBibleYearDiscussionParticipation(day: GenesisBibleYearDay) {

@@ -68,6 +68,24 @@ function isOnOrAfterReset(value: string | null | undefined, resetAt: string | nu
   return Number.isFinite(valueMs) && Number.isFinite(resetMs) && valueMs >= resetMs;
 }
 
+function getBibleYearDayNumberFromActionLabel(actionLabel: string | null | undefined) {
+  if (!actionLabel) return null;
+
+  const directDayMatch = actionLabel.match(/^Bible in One Year Day (\d+)(?:\b|:)/i);
+  if (directDayMatch) {
+    const dayNumber = Number(directDayMatch[1]);
+    return Number.isFinite(dayNumber) ? dayNumber : null;
+  }
+
+  const nextDayMatch = actionLabel.match(/^Day \d+ Next Day clicked - Open Day (\d+)/i);
+  if (nextDayMatch) {
+    const dayNumber = Number(nextDayMatch[1]);
+    return Number.isFinite(dayNumber) ? dayNumber : null;
+  }
+
+  return null;
+}
+
 export async function GET(request: NextRequest) {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
@@ -208,9 +226,9 @@ export async function GET(request: NextRequest) {
           "bible_in_one_year_trivia_completed",
           "bible_in_one_year_reflection_completed",
           "bible_year_task_started",
+          "bible_year_next_day_clicked",
           "bible_in_one_year_day_viewed",
-        ])
-        .like("action_label", "Bible in One Year Day %"),
+        ]),
       admin
         .from("article_comments")
         .select("article_slug, created_at")
@@ -226,15 +244,26 @@ export async function GET(request: NextRequest) {
         .map((row) => getCompletedBibleChapterKey(String(row.book), Number(row.chapter))),
     );
 
+    const filteredActionRows = ((actionRows.data || []) as BibleYearActionRow[]).filter((row) =>
+      isOnOrAfterReset(row.created_at, bibleYearPlanResetAt),
+    );
+
     const readingActionDays = new Set<number>();
-    ((actionRows.data || []) as BibleYearActionRow[])
-      .filter((row) => isOnOrAfterReset(row.created_at, bibleYearPlanResetAt))
-      .forEach((row) => {
+    filteredActionRows.forEach((row) => {
       const match = (row.action_label || "").match(/^Bible in One Year Day (\d+) (Reading|Video):/);
       if (!match) return;
       const dayNumber = Number(match[1]);
       if (Number.isFinite(dayNumber)) readingActionDays.add(dayNumber);
     });
+
+    const latestTouchedActionRow = [...filteredActionRows]
+      .filter((row) => Number.isFinite(getBibleYearDayNumberFromActionLabel(row.action_label)))
+      .sort((a, b) => {
+        const aMs = new Date(a.created_at || 0).getTime();
+        const bMs = new Date(b.created_at || 0).getTime();
+        return bMs - aMs;
+      })[0];
+    const latestTouchedDayNumber = getBibleYearDayNumberFromActionLabel(latestTouchedActionRow?.action_label);
 
     const restoredLegacyDayNumbers: number[] = [];
     if (shouldRunLegacyBackfill) {
@@ -326,9 +355,7 @@ export async function GET(request: NextRequest) {
       Summary: "reflection",
     };
 
-    ((actionRows.data || []) as BibleYearActionRow[])
-      .filter((row) => isOnOrAfterReset(row.created_at, bibleYearPlanResetAt))
-      .forEach((row) => {
+    filteredActionRows.forEach((row) => {
       const match = (row.action_label || "").match(/^Bible in One Year Day (\d+) (Reading|Video|Trivia|Reflection|Summary):/);
       if (!match) return;
       const dayNumber = Number(match[1]);
@@ -362,10 +389,11 @@ export async function GET(request: NextRequest) {
       if (dayNumber) reflectionPostedByDay[dayNumber] = true;
     });
 
-    const resolvedCurrentDayNumber =
+    const firstIncompleteDayNumber =
       GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => completedCardsByDay[day.dayNumber]?.reading !== true)?.dayNumber ||
       GENESIS_BIBLE_IN_ONE_YEAR_SERIES[GENESIS_BIBLE_IN_ONE_YEAR_SERIES.length - 1]?.dayNumber ||
       1;
+    const resolvedCurrentDayNumber = Math.max(firstIncompleteDayNumber, latestTouchedDayNumber || 0) || 1;
 
     return NextResponse.json({
       completedCardsByDay,
