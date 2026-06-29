@@ -1,4 +1,5 @@
 ﻿import { GENESIS_1_PERSONAL_SECTIONS } from "./genesisOnePersonalNotes";
+import { GENESIS_FOUR_PERSONAL_SECTIONS } from "./genesisFourSource";
 import { GENESIS_THREE_PERSONAL_SECTIONS } from "./genesisThreeSource";
 import { GENESIS_TWO_PERSONAL_SECTIONS } from "./genesisTwoSource";
 import { GENESIS_11_20_PERSONAL_SECTIONS } from "./genesisElevenToTwentyPersonalNotes";
@@ -7098,8 +7099,6 @@ This phrase shows worship and dependence on the LORD becoming a recognized patte
   }
 }
 
-applyGenesisFourDeepWordExplanations();
-
 function applyGenesisFiveDeepWordExplanations() {
   const reviewedGenesisFivePhrases: Record<string, Array<[string, string]>> = {
     "Genesis 5:1-5": [
@@ -8456,6 +8455,7 @@ applyApprovedGenesisSevenReaderSections();
 replaceStudySectionsForBookRange("genesis", 1, 1, GENESIS_1_PERSONAL_SECTIONS);
 replaceStudySectionsForBookRange("genesis", 2, 2, GENESIS_TWO_PERSONAL_SECTIONS);
 replaceStudySectionsForBookRange("genesis", 3, 3, GENESIS_THREE_PERSONAL_SECTIONS);
+replaceStudySectionsForBookRange("genesis", 4, 4, GENESIS_FOUR_PERSONAL_SECTIONS);
 
 for (const section of BIBLE_READER_STUDY_SECTIONS) {
   section.categories = section.categories
