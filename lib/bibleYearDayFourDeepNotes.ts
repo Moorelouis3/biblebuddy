@@ -1,3 +1,4 @@
+﻿import { getBibleReaderStudySections } from "./bibleReaderStudyNotes";
 import type { BibleYearDeepStudySection } from "./bibleYearDayOneDeepStudy";
 
 export const BIBLE_YEAR_DAY_FOUR_DEEP_NOTES = `Genesis 8-10 shows life after the flood.
@@ -22,737 +23,1204 @@ Day 4 is important because it teaches us that God does not only save people from
 
 But Genesis is also honest. The flood judged wickedness, but it did not erase sin from the human heart. Noah leaves the ship, worships God, receives blessing, sees the rainbow, and then still fails. That means the Bible is preparing us to look for a deeper rescue than water, a better beginning than Noah, and a Savior greater than any human hero.
 
-🌊 The waters begin to go down.
+ðŸŒŠ The waters begin to go down.
 
-🌬️ God sends wind over the earth.
+ðŸŒ¬ï¸ God sends wind over the earth.
 
-⛰️ The ship rests on the mountains.
+â›°ï¸ The ship rests on the mountains.
 
-🕊️ The dove brings back an olive leaf.
+ðŸ•Šï¸ The dove brings back an olive leaf.
 
-🚪 God tells Noah to go out.
+ðŸšª God tells Noah to go out.
 
-🔥 Noah builds an altar before anything else.
+ðŸ”¥ Noah builds an altar before anything else.
 
-🌈 God gives the rainbow as a covenant sign.
+ðŸŒˆ God gives the rainbow as a covenant sign.
 
-👑 Human life is protected because people bear God's image.
+ðŸ‘‘ Human life is protected because people bear God's image.
 
-🍇 Noah's failure shows sin is still inside the human heart.
+ðŸ‡ Noah's failure shows sin is still inside the human heart.
 
-🗺️ Genesis 10 shows the nations spreading across the earth.
+ðŸ—ºï¸ Genesis 10 shows the nations spreading across the earth.
 
-🌱 Shem's line quietly prepares the road toward Abraham.
+ðŸŒ± Shem's line quietly prepares the road toward Abraham.
 
-> 🔥 **Big idea:** Genesis 8-10 teaches that God remembers, restores, and keeps His promise, but the world still needs a deeper salvation than the flood could bring.
+> ðŸ”¥ **Big idea:** Genesis 8-10 teaches that God remembers, restores, and keeps His promise, but the world still needs a deeper salvation than the flood could bring.
 
-# God Remembers Noah
+# **ðŸŒˆ Genesis 8:1â€“3**
 
-## Genesis 8:1-5
+**The Waters Recede**
 
-> 📖 **1** God remembered Noah, all the animals, and all the livestock that were with him in the ship; and God made a wind to pass over the earth. The waters subsided.
->
-> 📖 **2** The deep's fountains and the sky's windows were also stopped, and the rain from the sky was restrained.
->
-> 📖 **3** The waters receded from the earth continually. After the end of one hundred fifty days the waters decreased.
->
-> 📖 **4** The ship rested in the seventh month, on the seventeenth day of the month, on Ararat's mountains.
->
-> 📖 **5** The waters receded continually until the tenth month. In the tenth month, on the first day of the month, the tops of the mountains were visible.
+**â¤ï¸ And God Remembered Noah**
 
-## 🧭 What Is Happening Here?
+The word â€œrememberedâ€ does not mean God had forgotten Noah.
 
-Genesis 8 begins with one of the most comforting lines in the flood story: God remembered Noah.
+In the Bible, when God â€œremembersâ€ someone, it often means He is about to act on their behalf.
 
-That does not mean God had forgotten Noah and suddenly remembered him again. In the Bible, when God remembers, He turns His covenant attention toward someone and acts for them. God remembered Noah means God remained faithful to Noah inside the ship, inside the waiting, inside the long silence, and inside a world covered with water.
+For 150 days Noah, his family, and the animals had remained safely inside the ark while the flood covered the earth.
 
-The flood story now begins to reverse. In Genesis 7, the waters rose. In Genesis 8, the waters go down. In Genesis 7, the fountains of the deep and the windows of the sky opened. In Genesis 8, they are stopped and restrained. In Genesis 7, the earth was overwhelmed. In Genesis 8, the tops of the mountains become visible again.
+Now the story shifts from judgment to rescue.
 
-This is a restoration movement. God is not finished with the world. Judgment has happened, but mercy is also moving. The ship rests on the mountains of Ararat, and that resting is a sign that the rescued family is being carried toward a new beginning.
+God turns His attention toward bringing Noah safely through the flood.
 
-Notice that hope comes in stages. First, the waters subside. Then the waters decrease. Then the ship rests. Then the mountaintops appear. Noah is not instantly walking on dry land. God is restoring the world step by step.
+â¤ï¸ God had not forgotten Noah
 
-That matters because many times God's rescue does not feel instant. A storm may end, but the ground may still need time to dry. The danger may pass, but the next step may still require waiting. Genesis 8 teaches that slow restoration is still restoration.
+ðŸ™ God is about to act
 
-## 🧠 Words To Know
+ðŸš¢ Noah has been protected
 
-### Remembered
+ðŸŒˆ The rescue begins
 
-**Remembered** means God turned His faithful attention toward Noah and acted.
+**ðŸ¦ Every Living Thing, And All The Cattle That Was With Him In The Ark**
 
-This word is used when God keeps covenant mercy. It does not mean God forgot. It means God is now moving the story forward in faithfulness.
+Godâ€™s care extends beyond Noah and his family.
 
-### Wind
+He also remembers every living creature inside the ark.
 
-**Wind** is important because it connects back to creation.
+This includes the livestock, wild animals, birds, and every other creature God had preserved.
 
-In Genesis 1, the Spirit of God hovered over the waters. Here God sends wind over the flooded earth. The picture feels like a new creation moment, as if God is bringing order back after chaos.
+The same God who saved mankind was also preserving the rest of His creation.
 
-### Rested
+ðŸ¦ God remembers the animals
 
-**Rested** means the ship came to a settled place.
+ðŸ„ Livestock and cattle
 
-The same ship that had floated over judgment now rests on the mountain. It is a picture of safety after danger and stability after the storm.
+ðŸ¦ Birds and other creatures
 
-### Ararat
+ðŸŒ God cares for all creation
 
-**Ararat** is a mountain region connected with ancient Armenia and the broader area north of Mesopotamia.
+**ðŸ’¨ God Made A Wind To Pass Over The Earth**
 
-Genesis does not give us a modern tourist map. It gives us a real region where the ship comes to rest, showing that the rescue story is grounded in the world of history and geography.
+God sends a wind across the earth to begin drying the floodwaters.
 
-## 🗣️ Hebrew Word Study
+This is not simply mentioning ordinary weather.
 
-### Zakar
+The wind becomes part of Godâ€™s plan to bring the flood to an end.
 
-**Zakar** is the Hebrew word behind "remembered."
+Interestingly, the Hebrew word for â€œwindâ€ is the same word that can also mean â€œspiritâ€ or â€œbreath.â€
 
-When God remembers, He acts according to His promise and character. This same idea appears later when God remembers Abraham, Rachel, and His covenant with Israel. It is not weak memory. It is faithful action.
+Earlier, Godâ€™s Spirit moved upon the waters in Genesis 1.
 
-### Ruach
+Now God sends a wind over the floodwaters as creation begins to return to normal.
 
-**Ruach** can mean wind, breath, or spirit.
+ðŸ’¨ God sends the wind
 
-In Genesis 8:1, God makes a wind pass over the earth. That word helps us hear creation echoes because God's breath or wind is connected to life, movement, and renewal.
+ðŸŒŠ The waters begin to recede
 
-### Nuach
+ðŸ“– Wind can also mean spirit or breath
 
-**Nuach** is related to rest.
+ðŸŒ Restoration begins
 
-The ship resting after the flood points to the relief and settlement Noah's family needed. Noah's own name is also connected to rest, which makes this moment feel deeply fitting.
+**ðŸŒŠ And The Waters Assuaged**
 
-## 🏺 Culture And History
+The word â€œassuagedâ€ means to calm down, decrease, or subside.
 
-Ancient flood stories existed in the world around Israel, but Genesis tells the story differently.
+The floodwaters no longer continued rising.
 
-In many ancient stories, the gods are chaotic, selfish, afraid, or annoyed by humanity. In Genesis, the one true God is holy, just, patient, merciful, and faithful. He judges evil, but He also preserves life. He remembers His servant, cares for the animals, and brings the world toward restoration.
+Instead, they slowly began to settle and recede.
 
-The mountains of Ararat also matter because mountains often represent places of safety, visibility, and divine encounter in the ancient world. The ship resting on a mountain signals that the flood has turned. The waters are not ruling forever. God is still Lord over creation.
+The judgment was beginning to come to an end.
 
-> 🔥 **Callout:** God remembering Noah means Noah was never abandoned in the ship. Waiting is not the same as being forgotten.
+ðŸŒŠ Assuaged means subsided
 
-## 🔗 Bible Connections
+ðŸ“‰ The waters decreased
 
-Genesis 8 connects back to Genesis 1 because God is once again separating waters and bringing dry land into view.
+âš–ï¸ Judgment begins to end
 
-It connects forward to Exodus because God will later bring Israel through water and into a new beginning.
+ðŸŒˆ Hope returns
 
-It also points toward Jesus because the New Testament presents Christ as the true place of refuge. Noah was safe inside the ship while judgment passed over. Believers are safe in Christ, not because the world is easy, but because God provides the rescue.
+**ðŸŒ‹ The Fountains Also Of The Deep Were Stopped**
 
-## 🙏 What This Teaches Us
+The fountains of the deep were the underground waters that burst open during the flood.
 
-God remembers His people even when they cannot see the next step.
+Now God stops those waters from continuing to rise.
 
-Noah could not control the waters. He could not hurry the drying ground. He could not open the door before God gave the word. But he could trust the God who remembered him.
+The source of the flood beneath the earth is shut off.
 
-Sometimes faith looks like staying faithful inside a long waiting season.
+ðŸŒ‹ Underground waters stop
 
-# Noah Waits For A Sign
+ðŸŒŠ The flood begins ending
 
-## Genesis 8:6-12
+ðŸ“– Connects back to Genesis 7
 
-> 📖 **6** At the end of forty days, Noah opened the window of the ship which he had made,
->
-> 📖 **7** and he sent out a raven. It went back and forth, until the waters were dried up from the earth.
->
-> 📖 **8** He sent out a dove from him, to see if the waters were abated from the surface of the ground,
->
-> 📖 **9** but the dove found no place to rest her foot, and she returned to him into the ship; for the waters were on the surface of the whole earth. He put out his hand, and took her, and brought her to him into the ship.
->
-> 📖 **10** He waited yet another seven days; and again he sent the dove out of the ship.
->
-> 📖 **11** The dove came back to him at evening, and, behold, in her mouth was a freshly plucked olive leaf. So Noah knew that the waters were abated from the earth.
->
-> 📖 **12** He waited yet another seven days, and sent out the dove; and she didn't return to him anymore.
+âš–ï¸ Godâ€™s judgment is slowing
 
-## 🧭 What Is Happening Here?
+**â˜ï¸ The Windows Of Heaven Were Stopped**
 
-Noah begins looking for signs that the earth is ready.
+Earlier, the windows of heaven were opened, allowing rain to pour upon the earth.
 
-He opens the window and sends out a raven. Then he sends out a dove. The raven goes back and forth. The dove returns because it cannot find a place to rest. Noah takes the dove back into the ship with his hand. Then he waits seven more days and sends the dove again.
+Now those windows are closed.
 
-This time the dove returns with a freshly plucked olive leaf.
+The rain from above comes to an end.
 
-That small leaf is a huge sign. It means the waters are going down, plant life is returning, and the earth is becoming livable again. Noah is still inside the ship, but he now has evidence that God is restoring the world outside.
+â˜ï¸ The windows are closed
 
-The detail of Noah reaching out his hand to bring the dove back is tender. Genesis has been full of judgment, water, death, and destruction, but here we see patience and care. Noah does not throw the dove away because it failed to find land. He receives it back into the place of safety.
+ðŸŒ§ï¸ Rain stops falling
 
-Noah still waits. Even after the olive leaf, he does not rush out. He waits another seven days. The dove does not return after the final sending, which shows that the bird has found a place outside the ship. But Noah still waits for God's instruction in the next section.
+ðŸ“– Connects back to Genesis 7
 
-Faith pays attention to signs of hope, but faith also waits for God's timing.
+ðŸŒˆ The flood begins ending
 
-## 🧠 Words To Know
+**ðŸŒ§ï¸ The Rain From Heaven Was Restrained**
 
-### Raven
+This phrase emphasizes that the rain completely stopped.
 
-**Raven** is a strong bird that can survive in rough conditions.
+While the previous phrase tells us the windows of heaven were closed, this verse makes it clear that the rain itself ended.
 
-It goes back and forth until the waters are dried. The raven shows that the world is changing, but it does not give Noah the clear sign that the dove later gives.
+Moses repeats the idea to show that the flood was no longer increasing.
 
-### Dove
+ðŸŒ§ï¸ Rain stopped
 
-**Dove** becomes a gentle symbol of peace, rest, and new life.
+â˜ï¸ No more floodwaters from above
 
-In this verse, the dove searches for a place to rest. When it returns with the olive leaf, it tells Noah that life is coming back.
+ðŸ“– The flood is ending
 
-### Olive Leaf
+ðŸŒˆ God is restoring the earth
 
-**Olive leaf** points to fresh growth after judgment.
+**ðŸŒ The Waters Returned From Off The Earth Continually**
 
-Olive trees were valuable in the ancient world for food, oil, light, medicine, and worship. A fresh olive leaf means the earth is not dead. God is renewing it.
+The floodwaters did not disappear all at once.
 
-### Waited
+They gradually receded day after day.
 
-**Waited** is one of the most important actions in this section.
+The word â€œcontinuallyâ€ reminds us this was a slow process, not an instant miracle.
 
-Noah does not panic, force the door open, or act like the first sign means everything is ready. He waits again and again.
+As the waters lowered, the land slowly began to appear again.
 
-## 🗣️ Hebrew Word Study
+ðŸŒ The waters slowly receded
 
-### Yonah
+ðŸ“‰ Continually means gradually
 
-**Yonah** is the Hebrew word for dove.
+â³ This happened over time
 
-The dove in Genesis 8 is connected to rest and return. Later, the prophet Jonah has a name related to dove, and his story also involves water, judgment, mercy, and a mission to nations.
+ðŸŒ± Dry land would soon appear
 
-### Aleh Zayit
+**â³ After The End Of The Hundred And Fifty Days**
 
-**Aleh zayit** means olive leaf.
+The flood had covered the earth for 150 days.
 
-The olive leaf is not just a random plant detail. It signals that vegetation has survived or returned, and that the ground is becoming fruitful again.
+Now that period comes to an end.
 
-### Yachal
+Godâ€™s timing is precise throughout the flood account.
 
-**Yachal** can carry the idea of waiting or hoping.
+Moses carefully records the timeline to show that every stage happened according to Godâ€™s plan.
 
-Noah's waiting is not empty. It is patient expectation. He is watching for what God is doing while staying inside the refuge God provided.
+â³ 150 days have passed
 
-## 🏺 Culture And History
+ðŸ“– Godâ€™s timing is exact
 
-Birds were useful in ancient navigation and observation.
+ðŸŒŠ The flood reaches a turning point
 
-Before modern maps, satellites, and weather tools, people watched animals, wind, water, land, and plant life. Sending out birds would be a practical way to learn whether the land was livable.
+ðŸŒˆ A new beginning is coming
 
-Olive trees were also deeply important in the ancient Near East. Olive oil was used for cooking, lamps, healing, anointing, and offerings. The olive leaf is therefore a sign of more than survival. It points to life, daily provision, light, worship, and stability returning to the world.
+**ðŸ“‰ The Waters Were Abated**
 
-> 🔥 **Callout:** The olive leaf is small, but it carries big hope. Sometimes God's signs of renewal begin quietly.
+The word â€œabatedâ€ means reduced, diminished, or lowered.
 
-## 🔗 Bible Connections
+The floodwaters continue to decrease.
 
-The dove connects forward to Jesus' baptism, where the Spirit descends like a dove.
+Although the earth is not yet dry, the worst of the flood has passed.
 
-The olive leaf connects to later biblical images of olive trees, oil, anointing, and fruitfulness.
+The process of restoring creation has begun.
 
-The waiting connects to many biblical stories where God's people must wait between promise and fulfillment. Abraham waits. Joseph waits. Israel waits. David waits. The disciples wait. Waiting is not wasted when God is working.
+ðŸ“‰ Abated means reduced
 
-## 🙏 What This Teaches Us
+ðŸŒŠ The waters continue lowering
 
-Noah teaches us that hope and patience belong together.
+ðŸŒ± Dry land is coming
 
-It is good to notice signs of life. It is good to celebrate an olive leaf. But it is also wise to wait for God's word before stepping into the next season.
+ðŸŒˆ Restoration continues
 
-God can send small signs of hope before the full door opens.
+# **ðŸ”ï¸ Genesis 8:4â€“5**
 
-# God Says Go Out
+**The Ark Rests On Ararat**
 
-## Genesis 8:13-19
+**ðŸš¢ And The Ark Rested**
 
-> 📖 **13** In the six hundred first year, in the first month, the first day of the month, the waters were dried up from the earth. Noah removed the covering of the ship, and looked. He saw that the surface of the ground was dried.
->
-> 📖 **15** God spoke to Noah, saying,
->
-> 📖 **16** "Go out of the ship, you, and your wife, and your sons, and your sons' wives with you.
->
-> 📖 **17** Bring out with you every living thing that is with you of all flesh, including birds, livestock, and every creeping thing that creeps on the earth, that they may breed abundantly in the earth, and be fruitful, and multiply on the earth."
->
-> 📖 **18** Noah went out, with his sons, his wife, and his sons' wives with him.
+For months the ark had floated wherever the floodwaters carried it.
 
-## 🧭 What Is Happening Here?
+Noah had no sail, no rudder, and no way to control its direction.
 
-Noah sees that the ground is dry, but he still waits for God to speak.
+His family simply trusted God while the waters carried them across the flooded world.
 
-That detail is powerful. Noah could have looked outside and said, "It looks ready, so I am leaving." But Genesis presents Noah as someone whose life is shaped by God's word. God told him to build. God told him to enter. Now God tells him to go out.
+Now, for the first time since the flood began, the ark comes to rest.
 
-This is obedience after rescue.
+This marks a major turning point in the flood story.
 
-Noah's life is not just about escaping destruction. It is about stepping into God's renewed calling. The animals are brought out so they can breed abundantly, be fruitful, and multiply on the earth. That language intentionally echoes Genesis 1. God is restarting the creation mission through the life He preserved.
+ðŸš¢ The ark finally stops
 
-The ship was a place of rescue, but it was not meant to become a permanent home. There comes a time when the place that protected you during judgment is no longer the place where you are called to stay. God opens the way forward, and Noah follows.
+ðŸŒŠ Months of drifting come to an end
 
-The order matters too. Noah goes out with his family, and then the animals go out by their families. Life comes out in order, not chaos. The God who brings order from darkness in Genesis 1 is still bringing order after the flood.
+ðŸ™ Noah continues trusting God
 
-## 🧠 Words To Know
+ðŸŒˆ The flood is beginning to end
 
-### Covering
+**ðŸ“… In The Seventh Month, On The Seventeenth Day Of The Month**
 
-**Covering** refers to the covering of the ship that Noah removes.
+Moses records the exact date to show Godâ€™s perfect timing.
 
-When Noah removes it, he can see the condition of the ground. The act feels like opening a new chapter after a long season of enclosure.
+The flood began in the second month (Genesis 7:11).
 
-### Go Out
+Now, about five months later, the ark comes to rest.
 
-**Go out** is a command from God.
+Although the ark is no longer drifting, Noah and his family are still not able to leave.
 
-Noah entered the ship by God's word, and he leaves by God's word. The same God who knows when to close the door knows when to open the door.
+God is teaching them patience as they continue waiting inside the ark.
 
-### Be Fruitful And Multiply
+ðŸ“… Five months have passed
 
-**Be fruitful and multiply** repeats creation language.
+â³ Godâ€™s timing is precise
 
-God is blessing life again and sending it back into the earth. This is a fresh start, but it is happening in a world that still remembers judgment.
+ðŸš¢ The ark has stopped
 
-## 🗣️ Hebrew Word Study
+ðŸ™ Noah must continue waiting
 
-### Yatsa
+**ðŸ”ï¸ Upon The Mountains Of Ararat**
 
-**Yatsa** means go out or come forth.
+Ararat is a mountainous region located in what is now eastern Turkey, near the borders of Armenia and Iran.
 
-In Genesis 8, this word marks movement from preservation into mission. Noah is not only exiting a boat. He is stepping into a renewed world under God's command.
+The Bible does not say the ark landed on one specific mountain called Mount Ararat.
 
-### Parah
+Instead, it says it rested in the mountains of Ararat, meaning a mountain range in that region.
 
-**Parah** means be fruitful.
+After months of floating, the ark finally comes to rest on solid ground.
 
-It is the same kind of blessing language connected to creation. God wants life to grow, spread, and fill the earth according to His purpose.
+ðŸ”ï¸ A mountainous region
 
-### Rabah
+ðŸŒ Located in modern day eastern Turkey
 
-**Rabah** means multiply or become many.
+ðŸš¢ The ark rests on solid ground
 
-The word shows that God's blessing is not tiny. God intends life to spread abundantly after the flood.
+ðŸ“– The flood journey reaches a milestone
 
-## 🏺 Culture And History
+**ðŸŒŠ The Waters Decreased Continually**
 
-Ancient people understood survival after disaster differently than modern readers often do.
+Even though the ark had stopped moving, the flood was not over.
 
-Leaving the ship meant entering a world that had to be rebuilt from almost nothing. There were no stores, cities, roads, markets, farms ready to harvest, or neighbors waiting next door. Noah and his family were stepping into a renewed but emptied world.
+Day after day, the waters continued to go down.
 
-That makes Noah's obedience even more serious. Leaving the ship required trust. The ship had been safe. The outside world was unknown. But God does not rescue Noah so he can stay sealed away forever. God sends him back into the world with purpose.
+Noah and his family remained inside the ark, patiently waiting for Godâ€™s timing.
 
-> 🔥 **Callout:** The ark was shelter for a season, not the final destination.
+The process was gradual, not immediate.
 
-## 🔗 Bible Connections
+ðŸŒŠ The waters kept lowering
 
-This section connects strongly to Genesis 1 because the animals and people are commanded to multiply on the earth.
+â³ The process took time
 
-It also connects to the Exodus. Israel will later be brought out of Egypt and then called to live as God's people in the land.
+ðŸš¢ Noah remained inside the ark
 
-It connects to resurrection themes too. Life comes out after judgment. A new world begins after waters cover the old one.
+ðŸ™ God continued working
 
-## 🙏 What This Teaches Us
+**ðŸ“… Until The Tenth Month**
 
-God's rescue leads to responsibility.
+The ark rested in the seventh month.
 
-Noah is saved, but he is also sent. He is preserved, but he is also called to move forward.
+The mountain tops would not become visible until the tenth month.
 
-Sometimes God shelters us for a season, then calls us to step out in faith.
+That means Noah and his family waited about another two and a half months after the ark stopped moving.
 
-# Noah Worships After Rescue
+Even after reaching land, they still had to trust Godâ€™s timing.
 
-## Genesis 8:20-22
+ðŸ“… About two and a half more months
 
-> 📖 **20** Noah built an altar to Yahweh, and took of every clean animal, and of every clean bird, and offered burnt offerings on the altar.
->
-> 📖 **21** Yahweh smelled the pleasant aroma. Yahweh said in his heart, "I will not again curse the ground any more for man's sake, because the imagination of man's heart is evil from his youth. I will never again strike every living thing, as I have done.
->
-> 📖 **22** While the earth remains, seed time and harvest, and cold and heat, and summer and winter, and day and night shall not cease."
+â³ Waiting continued
 
-## 🧭 What Is Happening Here?
+ðŸš¢ The ark remained on the mountain
 
-Noah's first recorded action after leaving the ship is worship.
+ðŸ™ Patience was required
 
-That is huge. Noah does not first build a house. He does not first build a city. He does not first plan his own comfort. He builds an altar to Yahweh.
+**â›°ï¸ In The Tenth Month, On The First Day Of The Month, Were The Tops Of The Mountains Seen**
 
-This shows that Noah understands rescue as mercy. He knows he is alive because God preserved him. Worship is the right response to grace.
+The floodwaters had dropped enough for other mountain peaks to become visible.
 
-The clean animals mentioned earlier now make sense. Noah had brought extra clean animals into the ship, and now he offers burnt offerings. That means the story was already preparing for worship before Noah ever stepped out onto dry ground.
+This did not mean the earth was dry.
 
-God receives the offering and makes a promise. He says He will not again curse the ground in the same way or strike every living thing as He has done. Then God promises the stability of seasons: seedtime and harvest, cold and heat, summer and winter, day and night.
+It simply meant the water level had fallen below the highest mountain tops.
 
-But notice something surprising. God says the imagination of man's heart is evil from his youth. That means God's promise is not based on humanity suddenly becoming perfect. It is based on God's mercy.
+There was still a long wait before Noah could leave the ark.
 
-The flood did not make humanity sinless. Yet God chooses to preserve the world and continue the story.
+Moses records these details to show that the flood ended gradually over many months, not all at once.
 
-## 🧠 Words To Know
+â›°ï¸ Mountain tops become visible
 
-### Altar
+ðŸŒŠ The water continues receding
 
-**Altar** is a place of worship and sacrifice.
+â³ The earth is still not dry
 
-Noah builds an altar to Yahweh because he knows his life has been spared by God's mercy.
+ðŸŒˆ Restoration happens step by step
 
-### Clean Animal
+# **ðŸ•Šï¸ Genesis 8:6â€“14**
 
-**Clean animal** refers to animals suitable for sacrifice and later for Israel's worship laws.
+**The Raven And The Dove**
 
-Genesis mentions clean animals before Moses because the story already understands certain animals as connected to worship.
+**â³ It Came To Pass At The End Of Forty Days**
 
-### Burnt Offering
+Forty more days passed after the mountain tops became visible.
 
-**Burnt offering** was an offering completely given over to God.
+Noah had already spent months inside the ark waiting for the floodwaters to recede.
 
-It represented worship, surrender, and devotion. Noah's offering says that the rescued life belongs to God.
+Even though land could now be seen, God had not yet told Noah to leave the ark.
 
-### Pleasant Aroma
+Once again, Noah waited patiently for Godâ€™s timing.
 
-**Pleasant aroma** is worship language.
+â³ Forty more days passed
 
-It does not mean God needs smoke like a human needs food. It means God accepts the offering.
+ðŸš¢ Noah continued waiting
 
-## 🗣️ Hebrew Word Study
+ðŸŒ„ Mountain tops were visible
 
-### Mizbeach
+ðŸ™ Godâ€™s timing came first
 
-**Mizbeach** is the Hebrew word for altar.
+**ðŸªŸ Noah Opened The Window Of The Ark Which He Had Made**
 
-It comes from the idea of sacrifice. Altars become important throughout the Bible because they mark places where people respond to God with worship.
+This is the same window God instructed Noah to build back in Genesis 6.
 
-### Olah
+What seemed like a small construction detail now became essential.
 
-**Olah** is the word often used for burnt offering.
+The window allowed Noah to observe the world outside and send out birds without opening the large door of the ark.
 
-It is related to going up, because the smoke rises from the altar. The whole offering is given to God.
+God had already provided exactly what Noah would need.
 
-### Reyach Nichoach
+ðŸªŸ The window is finally used
 
-**Reyach nichoach** means pleasing aroma or restful aroma.
+ðŸ“– Connects back to Genesis 6
 
-This phrase becomes important in later sacrifice language. In Genesis 8, it signals that God receives Noah's worship after rescue.
+ðŸ‘€ Noah observes the outside world
 
-## 🏺 Culture And History
+ðŸ™ God had planned ahead
 
-Sacrifice was common in the ancient world, but Genesis gives it a covenant meaning.
+**ðŸ¦ He Sent Forth A Raven**
 
-Noah's sacrifice is not magic. It is not bribing God. It is worship after deliverance. The altar says, "God saved us, and our life belongs to Him."
+A raven is a large black bird, similar to a crow.
 
-Ancient people also depended deeply on seasons. Seedtime and harvest were life and death matters. Without stable seasons, crops failed. Without crops, families starved. God's promise of seasons is a promise of ordered mercy for the whole earth.
+Unlike a dove, ravens can survive by feeding on dead animals, fish, insects, and almost anything they find.
 
-> 🔥 **Callout:** Noah builds an altar before he builds his own future.
+Noah sends the raven out to see whether the earth has become livable again.
 
-## 🔗 Bible Connections
+If the raven finds enough food and places to rest, it can survive outside the ark without returning.
 
-Noah's altar points forward to Abraham, Isaac, Jacob, Moses, and Israel's worship.
+ðŸ¦ Large black bird
 
-The burnt offering points forward to the sacrificial system, where offerings teach that sin is serious and worship requires surrender.
+ðŸ– Eats almost anything
 
-The promise about seasons connects to God's faithfulness in creation. Every sunrise, harvest, and season becomes a quiet testimony that God is still preserving the world.
+ðŸŒ Testing conditions outside
 
-## 🙏 What This Teaches Us
+ðŸ“– Sent out first
 
-Rescue should lead to worship.
+**ðŸ”„ Which Went Forth To And Fro**
 
-Noah does not treat God's mercy like a small thing. He responds with devotion.
+â€œTo and froâ€ means back and forth.
 
-When God brings us through something, the right response is not pride. It is worship.
+The raven flew around searching for places to land and food to eat.
 
-# God Blesses Noah Again
+Because ravens can rest on floating debris and feed on dead animals left by the flood, it had little reason to return to the ark.
 
-## Genesis 9:1-7
+Its behavior gave Noah very little information about whether the earth was actually ready for people and animals to live on.
 
-> 📖 **1** God blessed Noah and his sons, and said to them, "Be fruitful, multiply, and fill the earth.
->
-> 📖 **3** Every moving thing that lives will be food for you. As I gave you the green herb, I have given everything to you.
->
-> 📖 **4** But flesh with its life, that is, its blood, you shall not eat.
->
-> 📖 **6** Whoever sheds man's blood, his blood will be shed by man, for God made man in his own image.
->
-> 📖 **7** Be fruitful and multiply. Increase abundantly in the earth, and multiply in it."
+ðŸ”„ Back and forth
 
-## 🧭 What Is Happening Here?
+ðŸ¦ Searching for food and resting places
 
-Genesis 9 sounds like a second beginning.
+ðŸŒŠ Could survive outside the ark
 
-God blesses Noah and his sons, then repeats the creation calling: be fruitful, multiply, and fill the earth. This is not accidental. The Bible wants us to hear Genesis 1 again. Humanity is being sent into the world again with responsibility under God.
+ðŸ“– Did not clearly answer Noahâ€™s question
 
-God also speaks about food. Animals are now given as food, but blood is forbidden because blood represents life. This teaches that life belongs to God. Even when humans are allowed to eat animals, they must not treat life as meaningless.
+**ðŸŒ Until The Waters Were Dried Up From Off The Earth**
 
-Then God speaks about human blood. Human life is sacred because God made man in His own image. This is one of the clearest statements in Genesis about human dignity. Every person has value because every person bears God's image.
+The raven continued flying while the floodwaters slowly disappeared.
 
-This matters after the flood because violence was one of the major reasons the old world was judged. Genesis 6 said the earth was filled with violence. Genesis 9 says the new world must not be built on bloodshed.
+Since it could survive outside the ark, Noah could not tell whether the land was truly ready simply because the raven never returned.
 
-## 🧠 Words To Know
+He needed a better way to judge the condition of the earth.
 
-### Blessed
+ðŸŒ Waters continued drying
 
-**Blessed** means God speaks favor, purpose, and life over Noah's family.
+ðŸ¦ Raven remained outside
 
-The blessing is not just a nice feeling. It gives Noah and his sons a calling to fill the earth.
+ðŸ¤” Noah still needed answers
 
-### Blood
+ðŸ“– A different approach was needed
 
-**Blood** represents life.
+**ðŸ•Šï¸ Also He Sent Forth A Dove**
 
-God teaches Noah that life is sacred. People cannot treat blood lightly because life belongs to God.
+Noah now tries a different approach.
 
-### Image
+Unlike a raven, a dove prefers clean, dry places to land and cannot survive for long on floating debris.
 
-**Image** points back to Genesis 1.
+If the dove found dry ground, trees, and food, it would stay.
 
-Even after sin and judgment, human beings still bear God's image. That is why murder is so serious.
+If not, it would return to the ark.
 
-## 🗣️ Hebrew Word Study
+The dove becomes Noahâ€™s way of measuring how much the earth has recovered.
 
-### Dam
+ðŸ•Šï¸ Noah tries a different bird
 
-**Dam** is the Hebrew word for blood.
+ðŸŒ¿ Doves need dry land
 
-Genesis uses blood language to teach that life is precious. Later, blood becomes central in sacrifice, covenant, Passover, and ultimately the cross.
+ðŸ‘€ Looking for signs of life
 
-### Tselem Elohim
+ðŸ“– A better test
 
-**Tselem Elohim** means image of God.
+**ðŸŒŠ To See If The Waters Were Abated**
 
-This phrase means humans were made to represent God in creation. Human dignity does not come from strength, success, beauty, age, money, or status. It comes from God.
+The word â€œabatedâ€ means reduced or lowered.
 
-### Barak
+Noah is not simply checking whether water is disappearing.
 
-**Barak** means bless.
+He wants to know whether enough dry land has appeared for birds, animals, and eventually people to live safely again.
 
-God blesses Noah just as He blessed the first humans. This shows that God's creation purpose has not been thrown away.
+ðŸŒŠ Abated means lowered
 
-## 🏺 Culture And History
+ðŸ‘€ Noah checks the earthâ€™s condition
 
-Ancient cultures often valued people based on class, power, tribe, gender, wealth, or usefulness.
+ðŸŒ± Looking for signs of life
 
-Genesis gives a stronger foundation. Human life is sacred because God made humanity in His image. That truth stands over every nation, every family, every body, every age, and every social level.
+ðŸ“– The flood is ending
 
-The command about blood also prepared Israel to think differently about life. Blood was not just a biological detail. It represented life before God.
+**ðŸ•Šï¸ The Dove Found No Rest For The Sole Of Her Foot**
 
-> 🔥 **Callout:** The new world must not repeat the violence that corrupted the old one.
+The dove could not find a dry place to land.
 
-## 🔗 Bible Connections
+Unlike the raven, it would not settle on floating carcasses or debris.
 
-Genesis 9 connects to Genesis 1 through the command to be fruitful and multiply.
+Since there were no trees, dry ground, or safe resting places, it returned to Noah.
 
-It connects to the Ten Commandments through the protection of human life.
+Its return told Noah the earth was still not ready.
 
-It connects to the cross because the Bible's story of blood reaches its deepest meaning in Jesus, whose blood is given for the life of the world.
+ðŸ•Šï¸ No safe place to land
 
-## 🙏 What This Teaches Us
+ðŸŒŠ Water still covered the earth
 
-Every person matters because every person is made in God's image.
+ðŸŒ³ No trees available
 
-The flood did not erase the creation calling. God still blesses life, protects life, and commands humanity to honor life.
+ðŸ“– The earth was not ready
 
-To follow God means refusing to treat people as disposable.
+**ðŸš¢ She Returned Unto Him Into The Ark**
 
-# God Gives The Rainbow Covenant
+The dove returned because it could not survive outside yet.
 
-## Genesis 9:8-17
+This confirmed to Noah that there was still nowhere suitable for birds or land animals to live.
 
-> 📖 **9** "As for me, behold, I establish my covenant with you, and with your offspring after you,
->
-> 📖 **10** and with every living creature that is with you: the birds, the livestock, and every animal of the earth with you.
->
-> 📖 **11** I will establish my covenant with you: All flesh will not be cut off any more by the waters of the flood. There will never again be a flood to destroy the earth."
->
-> 📖 **13** "I set my rainbow in the cloud, and it will be a sign of a covenant between me and the earth.
->
-> 📖 **16** The rainbow will be in the cloud. I will look at it, that I may remember the everlasting covenant between God and every living creature of all flesh that is on the earth."
+The ark remained the only safe place.
 
-## 🧭 What Is Happening Here?
+ðŸš¢ The dove returned
 
-God makes a covenant with Noah, his descendants, and every living creature.
+ðŸ•Šï¸ No place to live
 
-This covenant is wide. It is not only for Noah's family. It includes every living creature and the earth itself. God promises that all flesh will never again be cut off by floodwaters in the same way.
+ðŸŒŠ Floodwaters remained
 
-The sign of the covenant is the rainbow.
+ðŸ™ Safety was still inside the ark
 
-The rainbow appears in the clouds, which matters because clouds can bring fear after a flood story. Dark clouds could remind people of rain, storm, and judgment. But God places a sign of mercy in the very place where fear might rise.
+**ðŸŒ For The Waters Were On The Face Of The Whole Earth**
 
-The rainbow does not mean storms never come. It means God's promise stands in the middle of the clouds.
+Although mountain peaks could now be seen, most of the land was still underwater.
 
-God says He will look at the rainbow and remember the everlasting covenant. Again, remember means covenant faithfulness. The sign reassures creation that God is committed to preserving the world.
+There was not enough exposed ground for life to begin again.
 
-## 🧠 Words To Know
+Noah understood he still needed to wait.
 
-### Covenant
+ðŸŒ Water still covered the earth
 
-**Covenant** is a serious promise or relationship commitment.
+ðŸŒŠ The flood had not fully ended
 
-God's covenant with Noah is His promise to preserve the earth and never destroy all flesh by flood again.
+â³ More waiting was necessary
 
-### Sign
+ðŸ™ Noah remained patient
 
-**Sign** is a visible reminder of God's promise.
+**ðŸ¤² He Put Forth His Hand And Took Her**
 
-The rainbow is not the promise itself. It points to the promise and helps people remember God's mercy.
+Noah reaches out and gently brings the dove back into the ark.
 
-### Everlasting
+The doveâ€™s short journey had answered Noahâ€™s question.
 
-**Everlasting** means enduring and ongoing.
+The world was improving, but it was still not ready.
 
-God's covenant promise is not temporary. It stands over the world generation after generation.
+ðŸ¤² Noah receives the dove
 
-## 🗣️ Hebrew Word Study
+ðŸ•Šï¸ The journey is complete
 
-### Berit
+ðŸ“– Noah learns from the dove
 
-**Berit** is the Hebrew word for covenant.
+ðŸš¢ Waiting continues
 
-It is one of the most important words in the Bible. God's story with Noah, Abraham, Israel, David, and the new covenant in Christ is shaped by covenant promises.
+**â³ He Stayed Yet Other Seven Days**
 
-### Qeshet
+Instead of rushing out, Noah waits another full week.
 
-**Qeshet** means bow.
+His patience reflects the same faith and obedience that has marked his life from the beginning.
 
-The word can refer to a warrior's bow, but here it describes the rainbow. Many Bible teachers notice that the bow is placed in the clouds, not aimed at the earth. The picture suggests that God is showing mercy, not war against creation.
+He continues trusting Godâ€™s timing.
 
-### Olam
+â³ Seven more days
 
-**Olam** can mean everlasting, ancient, or age-long.
+ðŸ™ Noah waits patiently
 
-In Genesis 9, it describes the lasting nature of God's covenant with living creatures.
+â¤ï¸ Faith produces patience
 
-## 🏺 Culture And History
+ðŸ“– Trust before action
 
-Covenants were serious in the ancient world.
+**ðŸ•Šï¸ Again He Sent Forth The Dove**
 
-Kings made covenants. Families made covenants. Nations made covenants. A covenant created obligations, promises, and identity. What is amazing here is that God Himself freely makes a covenant with the world after judgment.
+After another week, Noah sends the dove out a second time.
 
-The rainbow sign would have been easy for every generation to understand. You do not need to be rich, educated, powerful, or priestly to see a rainbow. God places His sign in the sky where all kinds of people can see it.
+He is once again looking for evidence that life is returning.
 
-> 🔥 **Callout:** The rainbow is mercy shining inside the clouds.
+This time, the result is different.
 
-## 🔗 Bible Connections
+ðŸ•Šï¸ The dove is sent again
 
-Noah's covenant prepares us for later covenants in Scripture.
+ðŸ‘€ Looking for new signs
 
-God will make a covenant with Abraham that all families of the earth will be blessed.
+ðŸŒ± The earth is changing
 
-God will make a covenant with Israel at Sinai.
+ðŸ“– Another test
 
-God will make a covenant with David.
+**ðŸŒ† The Dove Came To Him In The Evening**
 
-Jesus will speak of the new covenant in His blood.
+The dove returns before nightfall after spending the day searching.
 
-The Bible is a covenant story from beginning to end.
+This tells Noah the bird found something during its journey before coming back to the ark.
 
-## 🙏 What This Teaches Us
+ðŸŒ† Returned in the evening
 
-God gives His people visible reminders because He knows we forget.
+ðŸ•Šï¸ Searched throughout the day
 
-The rainbow tells us that God's mercy is not fragile. It stands over creation even when clouds gather.
+ðŸ‘€ Noah waits for its return
 
-When fear rises, remember that God's promise is stronger than the storm.
+ðŸ“– The search was successful
 
-# Noah Fails And Shame Returns
+**ðŸŒ¿ In Her Mouth Was An Olive Leaf Plucked Off**
 
-## Genesis 9:18-29
+The olive leaf is the first visible evidence that vegetation is growing again.
 
-> 📖 **20** Noah began to be a farmer, and planted a vineyard.
->
-> 📖 **21** He drank of the wine and got drunk. He was uncovered within his tent.
->
-> 📖 **22** Ham, the father of Canaan, saw the nakedness of his father, and told his two brothers outside.
->
-> 📖 **23** Shem and Japheth took a garment, laid it on both their shoulders, went in backwards, and covered the nakedness of their father.
->
-> 📖 **24** Noah awoke from his wine, and knew what his youngest son had done to him.
->
-> 📖 **25** He said, "Canaan is cursed. He will be a servant of servants to his brothers."
+Trees cannot produce fresh leaves while completely submerged under water.
 
-## 🧭 What Is Happening Here?
+The dove bringing back a freshly plucked leaf tells Noah that the floodwaters have dropped enough for trees to live again.
 
-This section is uncomfortable on purpose.
+This becomes one of the Bibleâ€™s greatest symbols of hope after judgment.
 
-After the altar, blessing, and rainbow, Noah fails. He plants a vineyard, drinks wine, becomes drunk, and lies uncovered in his tent. Ham sees his father's nakedness and tells his brothers. Shem and Japheth respond differently by covering their father without looking on his shame.
+ðŸŒ¿ Fresh olive leaf
 
-Genesis is showing us that the flood did not remove sin from the human heart.
+ðŸŒ³ Trees are growing again
 
-Noah is righteous compared to his generation, but Noah is not sinless. He is saved by grace, preserved through judgment, and used by God, but he is still human. The Bible does not turn him into a fake superhero.
+ðŸŒˆ A sign of hope
 
-The language of nakedness and covering reminds us of Genesis 3. Adam and Eve were naked and ashamed after sin. God covered them. Now Noah is uncovered, shame enters the family story again, and two sons cover him.
+ðŸ“– Life is returning
 
-The curse falls on Canaan, not all of Ham's descendants. This matters deeply. Genesis 9 has been terribly misused in history to support racism and slavery. That is a sinful misuse of Scripture. The passage does not curse all people of African descent. It speaks specifically about Canaan, whose descendants later become connected to the land where Israel's story unfolds.
+**ðŸ‘€ Noah Knew That The Waters Were Abated From Off The Earth**
 
-The main point is not permission to hate anyone. The main point is that sin and family brokenness still continue after the flood.
+The olive leaf answered Noahâ€™s question.
 
-## 🧠 Words To Know
+The earth was beginning to recover.
 
-### Vineyard
+If trees were alive again, then the floodwaters had fallen enough for vegetation to grow.
 
-**Vineyard** is a place where grapes are grown.
+Life was slowly returning to the world.
 
-Vineyards can be signs of blessing in the Bible, but here the fruit of the vineyard becomes connected to Noah's failure.
+ðŸ‘€ Noah understands the sign
 
-### Drunk
+ðŸŒ¿ Vegetation has returned
 
-**Drunk** means Noah lost self-control through wine.
+ðŸŒŠ Waters continue decreasing
 
-The Bible is honest that even rescued people can fall into foolishness and shame.
+ðŸŒˆ Restoration is underway
 
-### Nakedness
+**â³ He Stayed Yet Other Seven Days**
 
-**Nakedness** connects back to Eden.
+Even after seeing the olive leaf, Noah waits another full week.
 
-In Genesis 2, nakedness was without shame. After sin, nakedness becomes connected with shame, exposure, and brokenness.
+He refuses to leave before Godâ€™s timing.
 
-### Covered
+His patience continues to demonstrate his faith.
 
-**Covered** means Shem and Japheth acted with respect instead of using Noah's shame against him.
+â³ Another seven days
 
-Their action echoes God's covering of Adam and Eve.
+ðŸ™ Continued patience
 
-## 🗣️ Hebrew Word Study
+â¤ï¸ Continued faith
 
-### Yayin
+ðŸ“– Noah waits on God
 
-**Yayin** is the Hebrew word for wine.
+**ðŸ•Šï¸ Sent Forth The Dove**
 
-Wine can appear as blessing in Scripture, but it can also become dangerous when abused. Genesis 9 shows the danger of losing wisdom and self-control.
+Noah sends the dove out for a third time.
 
-### Galah
+He is looking for one final confirmation that the earth is ready.
 
-**Galah** can mean uncover or reveal.
+ðŸ•Šï¸ The dove is sent again
 
-The language of uncovering is serious in Scripture because it often deals with shame, exposure, and dishonor.
+ðŸ‘€ One final test
 
-### Kalah
+ðŸŒ The earth has changed
 
-**Kalah** is connected to curse language.
+ðŸ“– Noah waits for the result
 
-The curse of Canaan prepares for later conflict in the land, but it must be read carefully and not twisted into hatred toward people God made in His image.
+**ðŸŒ Which Returned Not Again Unto Him Any More**
 
-## 🏺 Culture And History
+This time the dove never returns.
 
-Honor and shame were major categories in ancient family life.
+It has found enough dry land, trees, food, and shelter to live outside the ark.
 
-To expose or mock a parent's shame was not treated lightly. Shem and Japheth show honor by refusing to gaze on Noah's nakedness and by covering him carefully.
+Unlike before, it no longer needs the safety of the ark.
 
-This story also explains later tensions between Israel and Canaan. Genesis often shows where nations came from and why later relationships are complicated. But again, this text should never be used as a weapon against whole races or ethnic groups.
+For Noah, this is the clearest sign yet that life can exist outside again.
 
-> 🔥 **Callout:** Noah survived the flood, but the human heart still needed rescue.
+ðŸŒ The dove stays outside
 
-## 🔗 Bible Connections
+ðŸŒ¿ Food and shelter are available
 
-Noah's nakedness connects back to Adam and Eve's nakedness in Genesis 3.
+ðŸ•Šï¸ Life has returned
 
-The covering by Shem and Japheth connects back to God covering Adam and Eve with garments.
+ðŸ“– The earth is ready
 
-The Canaan theme points forward to Abraham's descendants and the land of Canaan.
+**ðŸ“… It Came To Pass In The Six Hundred And First Year, In The First Month, The First Day Of The Month**
 
-The failure of Noah points forward to the need for Jesus, the truly righteous one who does not fall into shame but bears shame to cover sinners.
+Noah is now 601 years old.
 
-## 🙏 What This Teaches Us
+More than a year has passed since the flood began.
 
-The Bible is honest about its heroes.
+Moses carefully records the dates to show Godâ€™s precise timing throughout the flood.
 
-Noah's failure teaches us not to put ultimate hope in any human leader. God uses Noah, but Noah cannot save the human heart.
+ðŸ“… Noah is 601 years old
 
-We need more than a fresh start. We need a new heart.
+â³ More than one year has passed
 
+ðŸ“– Godâ€™s timing is precise
+
+ðŸŒˆ The flood is nearly over
+
+**ðŸšª Noah Removed The Covering Of The Ark**
+
+The covering was part of the roof or upper covering of the ark.
+
+Noah removes it so he can finally look directly at the earth below.
+
+For the first time in over a year, he can clearly see the world outside.
+
+ðŸšª Noah opens the ark
+
+ðŸ‘€ He looks outside
+
+ðŸš¢ The covering is removed
+
+ðŸ“– The earth is inspected
+
+**ðŸŒ Behold, The Face Of The Ground Was Dry**
+
+The surface of the ground had finally dried.
+
+The floodwaters were gone.
+
+Even so, Noah still waited for God to tell him when it was time to leave.
+
+ðŸŒ The ground is dry
+
+ðŸŒŠ Floodwaters have receded
+
+ðŸ™ Noah still waits
+
+ðŸ“– God gives the timing
+
+**ðŸ“… In The Second Month, On The Seven And Twentieth Day Of The Month**
+
+Almost two more months pass after Noah first sees the dry ground.
+
+Although the earth looked ready, Noah waited until God gave permission to leave.
+
+In total, Noah and his family spent about one full year inside the ark.
+
+ðŸ“… Nearly two more months pass
+
+â³ About one year in the ark
+
+ðŸ™ Noah waits for Godâ€™s command
+
+ðŸŒˆ The flood account comes to an end
+
+# **ðŸŒˆ Genesis 8:15â€“19**
+
+**Leaving The Ark**
+
+**ðŸ—£ï¸ And God Spake Unto Noah**
+
+The word **â€œspakeâ€** is an older English word meaning **â€œspoke.â€**
+
+This is the first recorded time God speaks to Noah since telling him to enter the ark in Genesis 7.
+
+For more than a year, Noah, his family, and every animal remained inside the ark while the flood covered the earth.
+
+During that entire time, the Bible records no new instructions from God.
+
+Noah could not steer the ark.
+
+He could not leave the ark.
+
+He could not make the flood end sooner.
+
+He simply trusted God while God seemed silent.
+
+Now, after more than a year of waiting, God finally speaks again and tells Noah it is time to leave.
+
+ðŸ—£ï¸ Spake means spoke
+
+â³ God speaks again after more than a year
+
+ðŸ™ Noah trusted God during the silence
+
+ðŸŒˆ A new beginning is about to start
+
+**ðŸšª Go Forth Of The Ark**
+
+For the first time since entering the ark, God commands Noah to leave.
+
+The season of waiting has ended.
+
+The season of beginning again is about to start.
+
+God alone decides when Noah enters and when Noah leaves.
+
+ðŸšª God tells Noah to leave
+
+ðŸŒˆ The flood is over
+
+ðŸ™ Noah obeys
+
+ðŸŒ A new beginning begins
+
+**ðŸ‘¨ Thou, And Thy Wife, And Thy Sons, And Thy Sonsâ€™ Wives With Thee**
+
+The same eight people who entered the ark now leave it together.
+
+God has preserved Noahâ€™s entire family through the flood.
+
+They will become the beginning of the worldâ€™s new population.
+
+ðŸ‘¨ Noah
+
+ðŸ‘© Noahâ€™s wife
+
+ðŸ‘¨â€ðŸ‘©â€ðŸ‘¦â€ðŸ‘¦ His sons and their wives
+
+ðŸŒ Humanity begins again
+
+**ðŸ¦ Bring Forth With Thee Every Living Thing That Is With Thee**
+
+God tells Noah to release every living creature from the ark.
+
+The time for protection is over.
+
+Now it is time for life to return to the earth.
+
+ðŸ¦ Every living creature leaves
+
+ðŸš¢ The arkâ€™s purpose is complete
+
+ðŸŒ Life returns to the earth
+
+ðŸ“– Godâ€™s plan continues
+
+**ðŸ¦ Of All Flesh, Both Of Fowl, And Of Cattle, And Of Every Creeping Thing**
+
+God specifically lists the different kinds of creatures leaving the ark.
+
+This includes birds, livestock such as sheep, goats, oxen, and cattle, wild animals, reptiles, insects, and every other creature that had been preserved.
+
+Every part of Godâ€™s creation is included.
+
+ðŸ¦ Birds
+
+ðŸ„ Livestock
+
+ðŸ› Creeping things
+
+ðŸŒ All creation leaves the ark
+
+**ðŸŒ± That They May Breed Abundantly In The Earth**
+
+The flood preserved life.
+
+Now God commands that life should grow again.
+
+The animals are to reproduce and once again fill the earth.
+
+The earth is beginning a new chapter after the flood.
+
+ðŸŒ± Animals reproduce
+
+ðŸŒ Life spreads again
+
+ðŸ“– A new beginning
+
+ðŸ™ Godâ€™s plan continues
+
+**ðŸ‘¨â€ðŸ‘©â€ðŸ‘§ Be Fruitful And Multiply Upon The Earth**
+
+This command echoes what God first told Adam and Eve in Genesis 1.
+
+Humanity is beginning again through Noahâ€™s family.
+
+Godâ€™s original plan for the earth has not changed.
+
+Noahâ€™s family is to have children, fill the earth, and continue the human race.
+
+ðŸ‘¨â€ðŸ‘©â€ðŸ‘§ Noahâ€™s family will grow
+
+ðŸŒ Humanity begins again
+
+ðŸ“– Connects back to Genesis 1
+
+ðŸŒ± Godâ€™s plan continues
+
+**ðŸš¶ And Noah Went Forth**
+
+Noah immediately obeys Godâ€™s command.
+
+He does not hesitate.
+
+Just as he obeyed God by entering the ark, he now obeys God by leaving it.
+
+His obedience has become one of the defining characteristics of his life.
+
+ðŸš¶ Noah leaves the ark
+
+ðŸ™ Immediate obedience
+
+ðŸ“– Noah trusts God
+
+ðŸŒˆ A new beginning
+
+**ðŸ‘¨ His Sons, And His Wife, And His Sonsâ€™ Wives With Him**
+
+Noahâ€™s entire family leaves together.
+
+The same eight people who entered the ark now step onto dry ground.
+
+Through this family, the nations of the earth will eventually be populated.
+
+ðŸ‘¨ Eight people leave
+
+ðŸ‘¨â€ðŸ‘©â€ðŸ‘¦â€ðŸ‘¦ Noahâ€™s family is preserved
+
+ðŸŒ Future generations begin here
+
+ðŸ“– Godâ€™s promise continues
+
+**ðŸ¦ Every Beast, Every Creeping Thing, And Every Fowl**
+
+The animals also leave the ark.
+
+Every kind of land animal, bird, reptile, insect, and creeping creature begins returning to its natural habitat.
+
+Creation is beginning to recover after the flood.
+
+ðŸ¦ Land animals
+
+ðŸ¦ Birds
+
+ðŸ› Creeping creatures
+
+ðŸŒ Creation is restored
+
+**ðŸŒ¿ After Their Kind**
+
+The phrase **â€œafter their kindâ€** reminds us that each created kind continues reproducing according to Godâ€™s design.
+
+Dogs produce dogs.
+
+Birds produce birds.
+
+Sheep produce sheep.
+
+The flood did not change Godâ€™s created order.
+
+ðŸŒ¿ Each kind reproduces
+
+ðŸ“– Godâ€™s design continues
+
+ðŸŒ± Life multiplies
+
+ðŸŒ Creation is restored
+
+**ðŸš¢ Went Forth Out Of The Ark**
+
+After spending more than one year inside the ark, Noah, his family, and every living creature finally leave.
+
+The ark had protected life during Godâ€™s judgment.
+
+Now everyone steps into a world that has been completely reshaped by the flood.
+
+The story of survival now becomes the story of rebuilding.
+
+ðŸš¢ Everyone leaves the ark
+
+ðŸŒ The flood is over
+
+ðŸŒˆ A new world begins
+
+ðŸ“– The rebuilding of humanity starts
+
+# **ðŸ”¥ Genesis 8:20â€“22**
+
+**Noahâ€™s Sacrifice**
+
+**ðŸª¨ Noah Built An Altar Unto The Lord**
+
+An altar was a place of worship where sacrifices were offered to God.
+
+It was usually built from stones or earth rather than as a permanent building.
+
+This is the first time the word **â€œaltarâ€** appears in the Bible.
+
+After surviving the flood, Noahâ€™s first recorded action is not building a house for himself.
+
+It is worshiping God.
+
+ðŸª¨ An altar was a place of worship
+
+ðŸ™ Sacrifices were offered there
+
+ðŸ“– First altar mentioned in Scripture
+
+â¤ï¸ Noah worships before anything else
+
+**ðŸ‘ Took Of Every Clean Beast**
+
+A clean beast was an animal acceptable for sacrifice before God.
+
+Examples later include sheep, goats, cattle, and oxen.
+
+The phrase most likely means Noah took at least one from every kind of clean animal, not all seven of each kind.
+
+This helps explain why God instructed Noah to bring extra clean animals onto the ark.
+
+Without the extra animals, Noahâ€™s sacrifices could have caused some species to disappear.
+
+ðŸ‘ Clean animals were used for worship
+
+ðŸ Sheep, goats, cattle, and oxen
+
+ðŸ™ Noah offers one from each clean kind
+
+ðŸ“– The extra animals now make sense
+
+**ðŸ•Šï¸ And Of Every Clean Fowl**
+
+Noah also offered clean birds.
+
+Later in the Bible, birds such as doves and pigeons were commonly used in sacrifices.
+
+God had preserved extra clean birds so worship could continue after the flood.
+
+ðŸ•Šï¸ Clean birds were offered
+
+ðŸ¦ Doves and pigeons
+
+ðŸ™ Worship included birds
+
+ðŸ“– God planned ahead
+
+**ðŸ”¥ Offered Burnt Offerings On The Altar**
+
+A burnt offering was a sacrifice completely offered to God.
+
+Unlike some later offerings, the whole animal was placed on the altar and burned.
+
+The burnt offering symbolized complete devotion, worship, thanksgiving, and surrender to God.
+
+For Noah, this was an act of gratitude after God had preserved his family through the flood.
+
+ðŸ”¥ A complete sacrifice
+
+ðŸ™ Worship and thanksgiving
+
+â¤ï¸ Total devotion to God
+
+ðŸ“– Noah thanks God for His deliverance
+
+**ðŸŒ¿ The Lord Smelled A Sweet Savour**
+
+The phrase â€œsweet savourâ€ does not mean God enjoyed the smell of burning meat.
+
+It is a figure of speech meaning that God accepted Noahâ€™s worship.
+
+The sacrifice pleased God because it came from a faithful and obedient heart.
+
+Throughout the Old Testament, a â€œsweet savourâ€ often refers to a sacrifice that God accepts.
+
+ðŸŒ¿ Sweet savour means an accepted sacrifice
+
+ðŸ™ God accepted Noahâ€™s worship
+
+â¤ï¸ The heart behind the sacrifice mattered
+
+ðŸ“– A figure of speech
+
+**â¤ï¸ The Lord Said In His Heart**
+
+This phrase describes Godâ€™s own decision or determination.
+
+It does not mean God spoke these words out loud to Noah.
+
+Instead, Moses allows us to see Godâ€™s thoughts after receiving Noahâ€™s sacrifice.
+
+â¤ï¸ God speaks within Himself
+
+ðŸ‘€ We see Godâ€™s decision
+
+ðŸ“– God responds to Noahâ€™s worship
+
+ðŸ™ A personal declaration
+
+**ðŸŒ I Will Not Again Curse The Ground Any More For Manâ€™s Sake**
+
+The word â€œcurseâ€ means to bring judgment or hardship.
+
+God promises that He will never again destroy the earth with a worldwide flood because of mankindâ€™s sin.
+
+This does not mean sin no longer has consequences.
+
+Rather, God promises that this particular judgment will not happen again.
+
+ðŸŒ God makes a promise
+
+âš–ï¸ A worldwide flood will not happen again
+
+ðŸ“– This judgment will not be repeated
+
+ðŸ™ Godâ€™s mercy is shown
+
+**â¤ï¸ For The Imagination Of Manâ€™s Heart Is Evil From His Youth**
+
+God acknowledges that the human heart is still affected by sin.
+
+The flood did not remove mankindâ€™s sinful nature.
+
+People still struggle with selfishness, temptation, and rebellion from an early age.
+
+This explains why humanity will continue needing Godâ€™s grace.
+
+â¤ï¸ The human heart is still sinful
+
+ðŸ‘¶ Sin affects people from youth
+
+ðŸ“– The flood did not remove sin
+
+ðŸ™ Humanity still needs God
+
+**âš”ï¸ Neither Will I Again Smite Any More Every Living Thing**
+
+The word â€œsmiteâ€ means to strike, destroy, or judge.
+
+God promises that He will not again destroy all living creatures through a worldwide flood.
+
+The animals had suffered because of humanityâ€™s corruption.
+
+God declares that this specific judgment will not happen again.
+
+âš”ï¸ Smite means strike or destroy
+
+ðŸŒ God will not flood the whole earth again
+
+ðŸ¾ Creation is preserved
+
+ðŸ“– A promise of mercy
+
+**ðŸŒ± While The Earth Remaineth**
+
+God now describes the stability of creation.
+
+As long as the earth continues, certain patterns will remain.
+
+God promises to preserve the natural order of the world.
+
+ðŸŒ The earth will continue
+
+ðŸ™ God sustains creation
+
+ðŸ“– Order replaces chaos
+
+ðŸŒˆ A lasting promise
+
+**ðŸŒ¾ Seedtime And Harvest**
+
+Seedtime is the season for planting.
+
+Harvest is the season for gathering crops.
+
+God promises that the normal cycle of farming and food production will continue.
+
+People can once again plant, grow, and harvest food.
+
+ðŸŒ¾ Planting and harvesting
+
+ðŸŒ± Life begins again
+
+ðŸ‡ Food will continue
+
+ðŸ“– Godâ€™s provision remains
+
+**â˜€ï¸ Cold And Heat**
+
+God promises that the regular patterns of weather will continue.
+
+The seasons will function as He designed them.
+
+The flood did not permanently disrupt the order of creation.
+
+â˜€ï¸ Weather continues
+
+â„ï¸ Cold and heat remain
+
+ðŸŒ Creation is stable
+
+ðŸ“– Godâ€™s order continues
+
+**ðŸ‚ Summer And Winter**
+
+The yearly seasons will continue after the flood.
+
+God promises stability for the earth and its future generations.
+
+The world will continue functioning according to His design.
+
+ðŸ‚ Summer
+
+â„ï¸ Winter
+
+ðŸŒ The seasons continue
+
+ðŸ™ Godâ€™s faithfulness remains
+
+**ðŸŒž Day And Night Shall Not Cease**
+
+God promises that the daily rhythm of creation will continue.
+
+The sun will rise.
+
+The sun will set.
+
+Day and night will continue for as long as the earth remains.
+
+This is Godâ€™s promise that creation will continue in an orderly way after the flood.
+
+ðŸŒž Day and night continue
+
+â³ Creation remains orderly
+
+ðŸŒ Life continues
+
+ðŸŒˆ Godâ€™s promise endures
 # Japheth's Line Spreads
 
 ## Genesis 10:1-5
 
-> 📖 **1** Now this is the history of the generations of the sons of Noah and of Shem, Ham, and Japheth. Sons were born to them after the flood.
+> ðŸ“– **1** Now this is the history of the generations of the sons of Noah and of Shem, Ham, and Japheth. Sons were born to them after the flood.
 >
-> 📖 **2** The sons of Japheth: Gomer, Magog, Madai, Javan, Tubal, Meshech, and Tiras.
+> ðŸ“– **2** The sons of Japheth: Gomer, Magog, Madai, Javan, Tubal, Meshech, and Tiras.
 >
-> 📖 **5** Of these were the islands of the nations divided in their lands, everyone after his language, after their families, in their nations.
+> ðŸ“– **5** Of these were the islands of the nations divided in their lands, everyone after his language, after their families, in their nations.
 
-## 🧭 What Is Happening Here?
+## ðŸ§­ What Is Happening Here?
 
 Genesis 10 begins what is often called the Table of Nations.
 
@@ -764,7 +1232,7 @@ This section also prepares us for Genesis 11. Genesis 10 describes nations and l
 
 God sees nations. God sees families. God sees people groups. The Bible does not treat the spread of humanity like an accident.
 
-## 🧠 Words To Know
+## ðŸ§  Words To Know
 
 ### Generations
 
@@ -784,7 +1252,7 @@ Genesis 10 is not only about individuals. It is about the beginning of peoples s
 
 Genesis 10 names different languages before Genesis 11 explains the event that scattered them.
 
-## 🗣️ Hebrew Word Study
+## ðŸ—£ï¸ Hebrew Word Study
 
 ### Toledot
 
@@ -804,7 +1272,7 @@ This word becomes important throughout the Bible because God's promise to Abraha
 
 Genesis 10 shows people grouped by language, preparing for the Babel story.
 
-## 🏺 Culture And History
+## ðŸº Culture And History
 
 Ancient genealogies were maps of identity.
 
@@ -812,9 +1280,9 @@ They helped people understand where nations came from and how groups were relate
 
 For modern readers, lists of names can feel dry. For ancient readers, these names were connected to real peoples, lands, memories, conflicts, trade routes, and histories.
 
-> 🔥 **Callout:** Genesis 10 teaches that the nations are not invisible to God.
+> ðŸ”¥ **Callout:** Genesis 10 teaches that the nations are not invisible to God.
 
-## 🔗 Bible Connections
+## ðŸ”— Bible Connections
 
 Genesis 10 points forward to Genesis 12, where God promises Abraham that all families of the earth will be blessed.
 
@@ -822,7 +1290,7 @@ It also points forward to Acts 2, where people from many nations hear the mighty
 
 The nations scattered after Babel will one day be gathered around Christ.
 
-## 🙏 What This Teaches Us
+## ðŸ™ What This Teaches Us
 
 God's plan is bigger than one family, one place, or one nation.
 
@@ -834,19 +1302,19 @@ The Bible's story is global from the beginning.
 
 ## Genesis 10:6-20
 
-> 📖 **6** The sons of Ham: Cush, Mizraim, Put, and Canaan.
+> ðŸ“– **6** The sons of Ham: Cush, Mizraim, Put, and Canaan.
 >
-> 📖 **8** Cush became the father of Nimrod. He began to be a mighty one in the earth.
+> ðŸ“– **8** Cush became the father of Nimrod. He began to be a mighty one in the earth.
 >
-> 📖 **10** The beginning of his kingdom was Babel, Erech, Accad, and Calneh, in the land of Shinar.
+> ðŸ“– **10** The beginning of his kingdom was Babel, Erech, Accad, and Calneh, in the land of Shinar.
 >
-> 📖 **11** Out of that land he went into Assyria, and built Nineveh, Rehoboth Ir, Calah,
+> ðŸ“– **11** Out of that land he went into Assyria, and built Nineveh, Rehoboth Ir, Calah,
 >
-> 📖 **15** Canaan became the father of Sidon his firstborn, Heth,
+> ðŸ“– **15** Canaan became the father of Sidon his firstborn, Heth,
 >
-> 📖 **19** The border of the Canaanites was from Sidon, as you go toward Gerar, to Gaza.
+> ðŸ“– **19** The border of the Canaanites was from Sidon, as you go toward Gerar, to Gaza.
 
-## 🧭 What Is Happening Here?
+## ðŸ§­ What Is Happening Here?
 
 Ham's line includes names and places that will matter for the whole Bible.
 
@@ -858,7 +1326,7 @@ This section shows that culture and civilization continue after the flood. Peopl
 
 Canaan also matters because Canaan becomes the land connected to Abraham's promise and Israel's future. Genesis is setting up geography and theology at the same time.
 
-## 🧠 Words To Know
+## ðŸ§  Words To Know
 
 ### Mighty One
 
@@ -884,7 +1352,7 @@ Its mention here prepares the reader for the next major story.
 
 The land of Canaan becomes central to Abraham, Israel, conquest, exile, and promise.
 
-## 🗣️ Hebrew Word Study
+## ðŸ—£ï¸ Hebrew Word Study
 
 ### Gibbor
 
@@ -904,7 +1372,7 @@ The rise of kingdoms after the flood shows human organization and power developi
 
 It becomes a symbol of human pride, empire, and resistance to God's command to fill the earth.
 
-## 🏺 Culture And History
+## ðŸº Culture And History
 
 Cities in the ancient world were centers of power, worship, trade, protection, and identity.
 
@@ -912,9 +1380,9 @@ To build a city or kingdom was to organize people under authority. That could be
 
 The places named here were familiar to Israel's later world. Egypt, Canaan, Assyria, Nineveh, Babel, and Philistia all become major names in the biblical story.
 
-> 🔥 **Callout:** Genesis 10 shows civilization rising again, but power without surrender to God can become dangerous.
+> ðŸ”¥ **Callout:** Genesis 10 shows civilization rising again, but power without surrender to God can become dangerous.
 
-## 🔗 Bible Connections
+## ðŸ”— Bible Connections
 
 Babel connects directly to Genesis 11.
 
@@ -928,7 +1396,7 @@ Assyria connects to the exile of the northern kingdom of Israel.
 
 Genesis 10 is quietly planting seeds for the rest of the Bible.
 
-## 🙏 What This Teaches Us
+## ðŸ™ What This Teaches Us
 
 Power is not automatically evil, but power must be submitted to God.
 
@@ -940,17 +1408,17 @@ The question is not only what humans can build. The question is whether what we 
 
 ## Genesis 10:21-32
 
-> 📖 **21** Children were also born to Shem, the father of all the children of Eber, the elder brother of Japheth.
+> ðŸ“– **21** Children were also born to Shem, the father of all the children of Eber, the elder brother of Japheth.
 >
-> 📖 **22** The sons of Shem: Elam, Asshur, Arpachshad, Lud, and Aram.
+> ðŸ“– **22** The sons of Shem: Elam, Asshur, Arpachshad, Lud, and Aram.
 >
-> 📖 **25** To Eber were born two sons. The name of the one was Peleg, for in his days the earth was divided.
+> ðŸ“– **25** To Eber were born two sons. The name of the one was Peleg, for in his days the earth was divided.
 >
-> 📖 **31** These are the sons of Shem, by their families, according to their languages, lands, and nations.
+> ðŸ“– **31** These are the sons of Shem, by their families, according to their languages, lands, and nations.
 >
-> 📖 **32** These are the families of the sons of Noah, by their generations, according to their nations. The nations divided from these in the earth after the flood.
+> ðŸ“– **32** These are the families of the sons of Noah, by their generations, according to their nations. The nations divided from these in the earth after the flood.
 
-## 🧭 What Is Happening Here?
+## ðŸ§­ What Is Happening Here?
 
 Genesis now turns to Shem.
 
@@ -962,7 +1430,7 @@ The chapter ends by summarizing families, generations, nations, lands, and langu
 
 Shem's line is important because God will not abandon the nations. He will choose one family through Abraham so blessing can eventually reach all families.
 
-## 🧠 Words To Know
+## ðŸ§  Words To Know
 
 ### Eber
 
@@ -982,7 +1450,7 @@ His name prepares the reader for the division of peoples and languages around Ba
 
 God's plan is not abstract. It moves through families, names, and generations.
 
-## 🗣️ Hebrew Word Study
+## ðŸ—£ï¸ Hebrew Word Study
 
 ### Shem
 
@@ -1002,7 +1470,7 @@ Genesis says the earth was divided in his days, which points forward to the scat
 
 This word becomes important when God promises Abraham that all families of the earth will be blessed through him.
 
-## 🏺 Culture And History
+## ðŸº Culture And History
 
 Genealogies helped ancient people understand relationships between nations.
 
@@ -1010,9 +1478,9 @@ Genesis 10 is not trying to give every nation in world history. It is giving the
 
 The focus on Shem prepares for the next major movement. Genesis will soon slow down and focus on one man, Abram, but that focus is never meant to forget the nations. It is meant to bless them.
 
-> 🔥 **Callout:** God narrows the story through Shem so He can eventually bless the nations.
+> ðŸ”¥ **Callout:** God narrows the story through Shem so He can eventually bless the nations.
 
-## 🔗 Bible Connections
+## ðŸ”— Bible Connections
 
 Shem's line points forward to Abraham in Genesis 12.
 
@@ -1022,7 +1490,7 @@ That promise moves forward through Isaac, Jacob, Israel, David, and ultimately J
 
 The nations listed in Genesis 10 are not outside God's concern. Revelation ends with people from every nation, tribe, people, and language worshiping God.
 
-## 🙏 What This Teaches Us
+## ðŸ™ What This Teaches Us
 
 God works through long family histories.
 
@@ -1104,68 +1572,99 @@ And He keeps moving the story toward Jesus.`;
 
 const DAY_FOUR_SECTION_META: Array<Omit<BibleYearDeepStudySection, "markdown">> = [
   {
-    reference: "Genesis 8:1-5",
-    title: "God Remembers Noah",
-    icon: "🌊",
-    summary: "The waters begin to go down because God has not forgotten Noah inside the ship.",
+    reference: "Genesis 8:1-3",
+    title: "The Waters Recede",
+    icon: "ðŸŒˆ",
+    summary: "God remembers Noah, the flood begins to subside, and rescue starts replacing judgment.",
   },
   {
-    reference: "Genesis 8:6-12",
-    title: "Noah Waits For A Sign",
-    icon: "🕊️",
-    summary: "Noah waits patiently, and the dove's olive leaf becomes a small sign that restoration is coming.",
+    reference: "Genesis 8:4-5",
+    title: "The Ark Rests On Ararat",
+    icon: "ðŸ”ï¸",
+    summary: "The ark comes to rest, but Noah still has to wait as the waters keep going down.",
   },
   {
-    reference: "Genesis 8:13-19",
-    title: "God Says Go Out",
-    icon: "🚪",
-    summary: "God brings Noah out at the right time, and rescued life steps into a washed world.",
+    reference: "Genesis 8:6-14",
+    title: "The Raven And The Dove",
+    icon: "ðŸ•Šï¸",
+    summary: "Noah waits for signs of life as the raven and dove reveal the earth is slowly recovering.",
+  },
+  {
+    reference: "Genesis 8:15-19",
+    title: "Leaving The Ark",
+    icon: "ðŸŒˆ",
+    summary: "God tells Noah it is finally time to leave the ark and begin life again on the earth.",
   },
   {
     reference: "Genesis 8:20-22",
-    title: "Noah Worships After Rescue",
-    icon: "🔥",
-    summary: "Noah builds an altar first, showing that rescue should lead the heart back to worship.",
+    title: "Noahâ€™s Sacrifice",
+    icon: "ðŸ”¥",
+    summary: "Noah worships first, and God promises the earth will continue in stable order after the flood.",
   },
   {
     reference: "Genesis 9:1-7",
-    title: "God Blesses Noah Again",
-    icon: "👑",
-    summary: "God repeats creation language, protects human life, and reminds us that people bear His image.",
+    title: "God Blesses Noah",
+    icon: "🙏🏾",
+    summary: "God blesses Noah's family, gives a new beginning, and protects human life in the post-flood world.",
   },
   {
-    reference: "Genesis 9:8-17",
-    title: "God Gives The Rainbow Covenant",
+    reference: "Genesis 9:8-11",
+    title: "God's Covenant With Noah",
+    icon: "🤝",
+    summary: "God makes a covenant with Noah that the world will never again be destroyed by a flood.",
+  },
+  {
+    reference: "Genesis 9:12-19",
+    title: "The Rainbow",
     icon: "🌈",
-    summary: "The rainbow becomes a covenant sign that God's mercy stands over creation after judgment.",
+    summary: "The rainbow is given as the covenant sign reminding future generations of God's promise.",
   },
   {
-    reference: "Genesis 9:18-29",
-    title: "Noah Fails And Shame Returns",
-    icon: "🍇",
-    summary: "Noah's failure shows that a fresh start cannot heal the human heart by itself.",
+    reference: "Genesis 9:20-24",
+    title: "Noah Gets Drunk",
+    icon: "🍷",
+    summary: "Noah's drunkenness exposes that sin still remains in the human heart after the flood.",
+  },
+  {
+    reference: "Genesis 9:25-29",
+    title: "Canaan Cursed",
+    icon: "⚖️",
+    summary: "Noah's words over Canaan, Shem, and Japheth show that the story of blessing and curse continues.",
   },
   {
     reference: "Genesis 10:1-5",
     title: "Japheth's Line Spreads",
-    icon: "🗺️",
+    icon: "ðŸ—ºï¸",
     summary: "The nations begin spreading, showing that life continues after the flood.",
   },
   {
     reference: "Genesis 10:6-20",
     title: "Ham's Line Builds Kingdoms",
-    icon: "🏙️",
+    icon: "ðŸ™ï¸",
     summary: "Cities and kingdoms rise, but human power still needs to be read through the bigger story of sin and promise.",
   },
   {
     reference: "Genesis 10:21-32",
     title: "Shem's Line Carries The Promise",
-    icon: "🌱",
+    icon: "ðŸŒ±",
     summary: "Shem's family line quietly prepares the road toward Abraham and the promise God will keep moving forward.",
   },
 ];
 
 function getDayFourSectionMarkdown(reference: string) {
+  if (reference.startsWith("Genesis 9:")) {
+    const section = getBibleReaderStudySections("Genesis", 9).find((entry) => entry.reference === reference);
+
+    if (section) {
+      const blocks = section.categories
+        .flatMap((category) => category.content)
+        .map((content) => content.trim())
+        .filter(Boolean);
+
+      return [`## ${section.reference}`, `### ${section.title}`, ...blocks].join("\n\n").trim();
+    }
+  }
+
   const escapedReference = reference.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const match = BIBLE_YEAR_DAY_FOUR_DEEP_NOTES.match(
     new RegExp(`(?:^|\\n)(# [^\\n]+\\n\\n)?## ${escapedReference}[\\s\\S]*?(?=\\n# [^\\n]+\\n\\n## Genesis|\\n# Final Reflection|$)`),

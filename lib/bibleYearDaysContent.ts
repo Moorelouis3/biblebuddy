@@ -1854,6 +1854,18 @@ function getReaderAlignedStudySections(day: GenesisBibleYearDay, fallback: Bible
   return readerSections.length ? readerSections : fallback ?? null;
 }
 
+function getReaderAlignedStudyMarkdown(day: GenesisBibleYearDay, fallback: string | null | undefined) {
+  if (day.dayNumber < 1 || day.dayNumber > 300) return fallback ?? null;
+
+  const readerSections = day.readings.flatMap((reading) =>
+    getBibleReaderStudySections(reading.book, reading.chapter).map((section) =>
+      buildMarkdownFromReaderSection(section),
+    ),
+  );
+
+  return readerSections.length ? readerSections.join("\n\n") : fallback ?? null;
+}
+
 export const BIBLE_YEAR_DAY_CONTENT: Partial<Record<number, Omit<BibleYearDayContent, "summary"> & { summary?: BibleYearSummaryContent }>> = {
   1: {
     lesson: GENESIS_DAY_ONE_CREATION_LESSON,
@@ -2672,7 +2684,7 @@ export function getBibleYearDayContent(day: GenesisBibleYearDay): BibleYearDayCo
   return {
     lesson: content?.lesson ?? null,
     audio: content?.audio ?? null,
-    studyNotesMarkdown: content?.studyNotesMarkdown ?? null,
+    studyNotesMarkdown: getReaderAlignedStudyMarkdown(day, content?.studyNotesMarkdown),
     studyNotesSections: getReaderAlignedStudySections(day, content?.studyNotesSections),
     summary: content?.summary ?? buildFallbackSummary(day),
     discussionPrompt: content?.discussionPrompt ?? `What stood out to you from ${day.title}?`,
