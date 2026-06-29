@@ -1,5 +1,6 @@
 ﻿import type { BibleYearDeepStudySection } from "./bibleYearDayOneDeepStudy";
 import { GENESIS_FIVE_PERSONAL_SECTIONS } from "./genesisFiveSource";
+import { GENESIS_SIX_PERSONAL_SECTIONS } from "./genesisSixSource";
 
 export const BIBLE_YEAR_DAY_THREE_DEEP_NOTES = `Genesis 5-7 shows what happens when sin spreads from one family into the whole world.
 
@@ -2016,25 +2017,31 @@ const GENESIS_FIVE_DAY_THREE_SECTIONS: BibleYearDeepStudySection[] = GENESIS_FIV
   markdown: buildGenesisFiveDayThreeMarkdown(section),
 }));
 
+function getGenesisSixSummaryFromBody(body: string) {
+  const lines = body
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter((line) => Boolean(line) && line !== "---" && !/^[\p{Emoji_Presentation}\p{Extended_Pictographic}]/u.test(line));
+  return lines[0] || "";
+}
+
+function buildGenesisSixDayThreeMarkdown(section: (typeof GENESIS_SIX_PERSONAL_SECTIONS)[number]) {
+  const phrases = section.phrases
+    .map(([heading, body]) => `### ${heading}\n\n${body}`)
+    .join("\n\n---\n\n");
+
+  return `## ${section.reference}\n\n### ${section.title}\n\n${phrases}`.trim();
+}
+
+const GENESIS_SIX_DAY_THREE_SECTIONS: BibleYearDeepStudySection[] = GENESIS_SIX_PERSONAL_SECTIONS.map((section) => ({
+  reference: section.reference,
+  title: section.title,
+  icon: section.icon,
+  summary: getGenesisSixSummaryFromBody(section.phrases[0]?.[1] ?? ""),
+  markdown: buildGenesisSixDayThreeMarkdown(section),
+}));
+
 const DAY_THREE_SECTION_META: Array<Omit<BibleYearDeepStudySection, "markdown">> = [
-  {
-    reference: "Genesis 6:1-8",
-    title: "The Earth Becomes Corrupt",
-    icon: "ðŸŒ",
-    summary: "Human wickedness fills the earth, violence grieves God's heart, and judgment becomes unavoidable.",
-  },
-  {
-    reference: "Genesis 6:9-13",
-    title: "Noah Walks With God",
-    icon: "âœ¨",
-    summary: "Noah stands out as righteous in a corrupt generation, not because the world is easy, but because he walks with God.",
-  },
-  {
-    reference: "Genesis 6:14-22",
-    title: "God Tells Noah To Build",
-    icon: "ðŸ› ï¸",
-    summary: "God gives Noah detailed instructions for the ship, turning obedience into the place of rescue.",
-  },
   {
     reference: "Genesis 7:1-10",
     title: "Entering The Ark",
@@ -2058,6 +2065,8 @@ const DAY_THREE_SECTION_META: Array<Omit<BibleYearDeepStudySection, "markdown">>
 function getDayThreeSectionMarkdown(reference: string) {
   const genesisFiveSection = GENESIS_FIVE_DAY_THREE_SECTIONS.find((section) => section.reference === reference);
   if (genesisFiveSection) return genesisFiveSection.markdown;
+  const genesisSixSection = GENESIS_SIX_DAY_THREE_SECTIONS.find((section) => section.reference === reference);
+  if (genesisSixSection) return genesisSixSection.markdown;
   const escapedReference = reference.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const match = BIBLE_YEAR_DAY_THREE_DEEP_NOTES.match(
     new RegExp(`(?:^|\\n)(# [^\\n]+\\n\\n)?## ${escapedReference}[\\s\\S]*?(?=\\n# [^\\n]+\\n\\n## Genesis|$)`),
@@ -2067,6 +2076,7 @@ function getDayThreeSectionMarkdown(reference: string) {
 
 export const BIBLE_YEAR_DAY_THREE_DEEP_STUDY_SECTIONS: BibleYearDeepStudySection[] = [
   ...GENESIS_FIVE_DAY_THREE_SECTIONS,
+  ...GENESIS_SIX_DAY_THREE_SECTIONS,
   ...DAY_THREE_SECTION_META.map((section) => ({
     ...section,
     markdown: getDayThreeSectionMarkdown(section.reference),
