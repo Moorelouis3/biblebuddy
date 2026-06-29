@@ -14828,17 +14828,39 @@ Before we understand redemption, we need to understand what God made humanity fo
               <button
                 type="button"
                 onClick={() => {
+                  if (readingCardComplete) {
+                    if (articleJustCompletedThisVisit && articleNextBibleYearDay) {
+                      openBibleYearDayOnDashboard(articleNextBibleYearDay, {
+                        reviewCompleted: isBibleYearDayComplete(articleNextBibleYearDay),
+                      });
+                    }
+                    return;
+                  }
                   void handleBibleYearAudioLessonCompleted(day, { closeArticle: true, closeDeepNotes: true });
                 }}
-                disabled={readingCardComplete}
                 className={`mt-5 flex w-full items-center justify-center gap-3 rounded-[18px] px-5 py-4 text-center text-base font-black shadow-[0_18px_38px_rgba(47,127,232,0.24)] transition ${
                   readingCardComplete
-                    ? "cursor-default border border-emerald-300 bg-emerald-50 text-emerald-700"
+                    ? articleJustCompletedThisVisit && articleNextBibleYearDay
+                      ? "bg-[var(--bb-button,#2f7fe8)] text-[var(--bb-button-text,#ffffff)] hover:brightness-105"
+                      : "cursor-default border border-emerald-300 bg-emerald-50 text-emerald-700"
                     : "bg-[var(--bb-button,#2f7fe8)] text-[var(--bb-button-text,#ffffff)] hover:brightness-105"
                 }`}
               >
-                <span className="block leading-tight">{readingCardComplete ? "Lesson Completed" : "Mark as Complete"}</span>
+                <span className="block leading-tight">
+                  {readingCardComplete
+                    ? articleJustCompletedThisVisit && articleNextBibleYearDay
+                      ? `Move to Day ${articleNextBibleYearDay.dayNumber}`
+                      : "Day Completed"
+                    : "Mark as Complete"}
+                </span>
               </button>
+              {readingCardComplete ? (
+                <p className={`mt-2 text-center text-sm font-semibold ${articleJustCompletedThisVisit ? "text-emerald-700" : "text-[var(--bb-text-secondary,#4b5563)]"}`}>
+                  {articleJustCompletedThisVisit
+                    ? `You completed Day ${day.dayNumber}.`
+                    : `Day ${day.dayNumber} reading is locked in.`}
+                </p>
+              ) : null}
             </div>
           ) : null}
 
