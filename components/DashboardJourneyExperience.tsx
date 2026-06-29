@@ -164,16 +164,28 @@ function getBibleYearDashboardDayStorageKey(userId?: string | null) {
   return `${BIBLE_YEAR_DASHBOARD_DAY_STORAGE_PREFIX}:${userId || "guest"}`;
 }
 
-function getStoredBibleYearDashboardDayNumber(userId?: string | null) {
+type StoredBibleYearDashboardDaySource = "manual" | "continue" | "current";
+
+type StoredBibleYearDashboardDay = {
+  dayNumber: number;
+  selectedAt: number;
+  source: StoredBibleYearDashboardDaySource;
+};
+
+function readStoredBibleYearDashboardDay(userId?: string | null): StoredBibleYearDashboardDay | null {
   if (typeof window === "undefined") return null;
 
   try {
     const raw = window.sessionStorage.getItem(getBibleYearDashboardDayStorageKey(userId));
     if (!raw) return null;
-    const parsed = JSON.parse(raw) as { dayNumber?: unknown; selectedAt?: unknown };
+    const parsed = JSON.parse(raw) as { dayNumber?: unknown; selectedAt?: unknown; source?: unknown };
     const dayNumber = Number(parsed.dayNumber);
     const selectedAt = Number(parsed.selectedAt);
-    if (!Number.isFinite(dayNumber) || !Number.isFinite(selectedAt)) {
+    const source =
+      parsed.source === "manual" || parsed.source === "continue" || parsed.source === "current"
+        ? parsed.source
+        : null;
+    if (!Number.isFinite(dayNumber) || !Number.isFinite(selectedAt) || !source) {
       window.sessionStorage.removeItem(getBibleYearDashboardDayStorageKey(userId));
       return null;
     }
@@ -181,20 +193,33 @@ function getStoredBibleYearDashboardDayNumber(userId?: string | null) {
       window.sessionStorage.removeItem(getBibleYearDashboardDayStorageKey(userId));
       return null;
     }
-    return dayNumber;
+    return { dayNumber, selectedAt, source };
   } catch {
     window.sessionStorage.removeItem(getBibleYearDashboardDayStorageKey(userId));
     return null;
   }
 }
 
-function rememberBibleYearDashboardDayNumber(userId: string | null | undefined, dayNumber: number) {
+function getStoredBibleYearDashboardDayNumber(
+  userId?: string | null,
+  allowedSources: StoredBibleYearDashboardDaySource[] = ["manual", "continue"],
+) {
+  const stored = readStoredBibleYearDashboardDay(userId);
+  if (!stored) return null;
+  return allowedSources.includes(stored.source) ? stored.dayNumber : null;
+}
+
+function rememberBibleYearDashboardDayNumber(
+  userId: string | null | undefined,
+  dayNumber: number,
+  source: StoredBibleYearDashboardDaySource = "manual",
+) {
   if (typeof window === "undefined") return;
 
   try {
     window.sessionStorage.setItem(
       getBibleYearDashboardDayStorageKey(userId),
-      JSON.stringify({ dayNumber, selectedAt: Date.now() }),
+      JSON.stringify({ dayNumber, selectedAt: Date.now(), source }),
     );
   } catch {
     // Session storage is a convenience only. The dashboard can always fall back to the current day.
@@ -2295,16 +2320,9 @@ export default function DashboardJourneyExperience({
   const [selectedBibleYearSeriesDay, setSelectedBibleYearSeriesDay] = useState<GenesisBibleYearDay | null>(null);
   const [manualBibleYearStudyDayNumber, setManualBibleYearStudyDayNumber] = useState<number | null>(null);
   const initialStoredBibleYearProgress = userId ? readStoredBibleYearProgress(userId) : null;
-  const initialStoredBibleYearDashboardDayNumber = userId ? getStoredBibleYearDashboardDayNumber(userId) : null;
   const initialBibleYearResolvedCurrentDayNumber = chooseResolvedBibleYearDayNumber({
-    incomingDayNumber: Math.max(
-      Number(initialStoredBibleYearProgress?.resolvedCurrentDayNumber || 0),
-      Number(initialStoredBibleYearDashboardDayNumber || 0),
-    ),
-    previousDayNumber: Math.max(
-      Number(initialStoredBibleYearProgress?.resolvedCurrentDayNumber || 0),
-      Number(initialStoredBibleYearDashboardDayNumber || 0),
-    ),
+    incomingDayNumber: Number(initialStoredBibleYearProgress?.resolvedCurrentDayNumber || 0),
+    previousDayNumber: Number(initialStoredBibleYearProgress?.resolvedCurrentDayNumber || 0),
     reportDayNumber: bibleYearReport?.currentDay,
     progressLoaded: false,
   });
@@ -4596,7 +4614,6 @@ export default function DashboardJourneyExperience({
     onHomeReset?.();
     snapToPage(0);
     if (nextBibleYearDay) {
-      rememberBibleYearDashboardDayNumber(userId, nextBibleYearDay.dayNumber);
       void logBibleYearDayViewed(nextBibleYearDay);
     }
     if (typeof window !== "undefined") {
@@ -4666,7 +4683,7 @@ export default function DashboardJourneyExperience({
     setEmbeddedBibleStudyId(null);
     setDashboardMenuOpen(false);
     setBibleYearPlanMenuOpen(false);
-    rememberBibleYearDashboardDayNumber(userId, day.dayNumber);
+    rememberBibleYearDashboardDayNumber(userId, day.dayNumber, "manual");
     void logBibleYearDayViewed(day);
     onHomeReset?.();
     snapToPage(0);
@@ -4870,7 +4887,7 @@ export default function DashboardJourneyExperience({
     if (view === "bible-year") {
       const dayNumber = Number(params.get("day") || 0);
       const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((seriesDay) => seriesDay.dayNumber === dayNumber);
-      const rememberedDayNumber = getStoredBibleYearDashboardDayNumber(userId);
+      const rememberedDayNumber = getStoredBibleYearDashboardDayNumber(userId, ["manual", "continue"]);
       const shouldHonorRequestedDay = day
         ? canOpenBibleYearDayInJourneyOrder(day) &&
           (rememberedDayNumber === day.dayNumber || day.dayNumber === bibleYearResolvedCurrentDayNumber)
