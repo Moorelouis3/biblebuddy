@@ -1479,18 +1479,22 @@ type ParsedGenesisSixSection = GenesisSixPersonalSection & {
 };
 
 function parseReferenceParts(reference: string) {
-  const normalized = reference.replace(/[??]/g, '-');
-  const match = normalized.match(/^Genesis\s+(\d+):(\d+)-(\d+)$/i);
+  const normalized = reference.replace(/[–—]/g, '-').trim();
+  const match = normalized.match(/^Genesis\s+(\d+):(\d+)(?:-(\d+))?$/i);
   if (!match) {
     throw new Error(`Invalid Genesis 6 reference: ${reference}`);
   }
 
   const [, chapterText, startText, endText] = match;
+  const chapter = Number(chapterText);
+  const startVerse = Number(startText);
+  const endVerse = Number(endText || startText);
+
   return {
-    chapter: Number(chapterText),
-    startVerse: Number(startText),
-    endVerse: Number(endText),
-    reference: `Genesis ${Number(chapterText)}:${Number(startText)}-${Number(endText)}`,
+    chapter,
+    startVerse,
+    endVerse,
+    reference: endVerse === startVerse ? `Genesis ${chapter}:${startVerse}` : `Genesis ${chapter}:${startVerse}-${endVerse}`,
   };
 }
 
@@ -1524,7 +1528,7 @@ function parseGenesisSixRawNotes(rawNotes: string): ParsedGenesisSixSection[] {
     if (sectionMatch) {
       flushSection();
       const heading = sectionMatch[1].trim();
-      const headingMatch = heading.match(/^(.+?)\s+(Genesis\s+\d+:\d+(?:-|–|—)\d+)$/);
+      const headingMatch = heading.match(/^(.+?)\s+(Genesis\s+\d+:\d+(?:(?:-|–|—)\d+)?)$/);
       const icon = headingMatch?.[1]?.trim() || '';
       const displayReference = headingMatch?.[2]?.trim() || heading;
       const parsed = parseReferenceParts(displayReference);

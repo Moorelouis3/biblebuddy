@@ -1325,16 +1325,20 @@ function normalizeReference(reference: string) {
 
 function parseReferenceParts(reference: string) {
   const normalized = normalizeReference(reference);
-  const match = normalized.match(/^Genesis\s+(\d+):(\d+)-(\d+)$/i);
+  const match = normalized.match(/^Genesis\s+(\d+):(\d+)(?:-(\d+))?$/i);
   if (!match) {
     throw new Error(`Could not parse Genesis 5 reference: ${reference}`);
   }
 
+  const chapter = Number(match[1]);
+  const startVerse = Number(match[2]);
+  const endVerse = Number(match[3] || match[2]);
+
   return {
-    reference: `Genesis ${match[1]}:${match[2]}-${match[3]}`,
-    chapter: Number(match[1]),
-    startVerse: Number(match[2]),
-    endVerse: Number(match[3]),
+    reference: endVerse === startVerse ? `Genesis ${chapter}:${startVerse}` : `Genesis ${chapter}:${startVerse}-${endVerse}`,
+    chapter,
+    startVerse,
+    endVerse,
   };
 }
 
@@ -1368,7 +1372,7 @@ function parseGenesisFiveRawNotes(raw: string): ParsedGenesisFiveSection[] {
     if (sectionMatch && !trimmed.startsWith('##') && !trimmed.startsWith('###')) {
       flushSection();
       const heading = sectionMatch[1].trim();
-      const headingMatch = heading.match(/^(.+?)\s+(Genesis\s+\d+:\d+(?:-|–|—)\d+)$/);
+      const headingMatch = heading.match(/^(.+?)\s+(Genesis\s+\d+:\d+(?:(?:-|–|—)\d+)?)$/);
       const icon = headingMatch?.[1]?.trim() || '';
       const displayReference = headingMatch?.[2]?.trim() || heading;
       const parsed = parseReferenceParts(displayReference);
