@@ -12921,7 +12921,12 @@ Before we understand redemption, we need to understand what God made humanity fo
       openBibleYearDayOnDashboard(targetDay, { reviewCompleted: isBibleYearDayComplete(targetDay) });
     };
 
-    const justCompletedThisVisit = readingComplete && bibleYearJustCompletedDayRef.current === day.dayNumber;
+    const justCompletedThisVisit =
+      readingComplete &&
+      (
+        bibleYearJustCompletedDayRef.current === day.dayNumber ||
+        bibleYearResolvedCurrentDayNumber === day.dayNumber + 1
+      );
     const primaryCompleteButtonLabel = readingComplete
       ? justCompletedThisVisit && nextBibleYearDay
         ? `Move to Day ${nextBibleYearDay.dayNumber}`
@@ -13290,9 +13295,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                     onClick={handlePrimaryCompleteButton}
                     className={`inline-flex w-full items-center justify-center gap-2 rounded-[18px] px-5 py-4 text-[16px] font-black shadow-[0_10px_24px_rgba(123,175,212,0.10)] transition ${
                       readingComplete
-                        ? justCompletedThisVisit && nextBibleYearDay
-                          ? "bg-[var(--bb-button,#2f7fe8)] text-[var(--bb-button-text,#ffffff)] hover:brightness-105"
-                          : "cursor-default border border-emerald-300 bg-emerald-50 text-emerald-700"
+                        ? "border border-emerald-300 bg-emerald-50 text-emerald-700"
                         : "bg-[var(--bb-button,#2f7fe8)] text-[var(--bb-button-text,#ffffff)] hover:brightness-105"
                     }`}
                   >
@@ -13397,9 +13400,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                       onClick={handlePrimaryCompleteButton}
                       className={`inline-flex w-full items-center justify-center gap-2 rounded-[18px] px-5 py-3.5 text-[15px] font-black shadow-[0_18px_38px_rgba(47,127,232,0.24)] transition ${
                         readingComplete
-                          ? justCompletedThisVisit && nextBibleYearDay
-                            ? "bg-[var(--bb-button,#2f7fe8)] text-[var(--bb-button-text,#ffffff)] hover:brightness-105"
-                            : "cursor-default border border-emerald-300 bg-emerald-50 text-emerald-700"
+                          ? "border border-emerald-300 bg-emerald-50 text-emerald-700"
                           : "bg-[var(--bb-button,#2f7fe8)] text-[var(--bb-button-text,#ffffff)] hover:brightness-105"
                       }`}
                     >
@@ -14618,7 +14619,12 @@ Before we understand redemption, we need to understand what God made humanity fo
         });
       }
     };
-    const articleJustCompletedThisVisit = readingCardComplete && bibleYearJustCompletedDayRef.current === day.dayNumber;
+    const articleJustCompletedThisVisit =
+      readingCardComplete &&
+      (
+        bibleYearJustCompletedDayRef.current === day.dayNumber ||
+        bibleYearResolvedCurrentDayNumber === day.dayNumber + 1
+      );
     const articleNextBibleYearDay = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((item) => item.dayNumber === day.dayNumber + 1) || null;
     const sectionDeepNotesFocus = useSectionDeepStudy && hasDeepNotes && Boolean(deepNotesMarkdown) && bibleYearDeepNotesOpen;
 
