@@ -4887,13 +4887,21 @@ export default function DashboardJourneyExperience({
     if (view === "bible-year") {
       const dayNumber = Number(params.get("day") || 0);
       const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((seriesDay) => seriesDay.dayNumber === dayNumber);
+      const shouldKeepJustCompletedRequestedDay = Boolean(
+        day &&
+        bibleYearJustCompletedDayRef.current === day.dayNumber &&
+        isBibleYearDayComplete(day),
+      );
       const rememberedDayNumber = getStoredBibleYearDashboardDayNumber(userId, ["manual", "continue"]);
       const shouldHonorRequestedDay = day
         ? canOpenBibleYearDayInJourneyOrder(day) &&
-          (rememberedDayNumber === day.dayNumber || day.dayNumber === bibleYearResolvedCurrentDayNumber)
+          (
+            rememberedDayNumber === day.dayNumber ||
+            day.dayNumber === bibleYearResolvedCurrentDayNumber ||
+            shouldKeepJustCompletedRequestedDay
+          )
         : false;
       if (day && shouldHonorRequestedDay) {
-        bibleYearJustCompletedDayRef.current = null;
         setBibleYearDashboardActive(true);
         setBibleYearSeriesActive(false);
         setBibleYearSeriesDetailDay(null);
@@ -12929,7 +12937,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       );
     const primaryCompleteButtonLabel = readingComplete
       ? justCompletedThisVisit && nextBibleYearDay
-        ? `Move to Day ${nextBibleYearDay.dayNumber}`
+        ? `Continue to Day ${nextBibleYearDay.dayNumber}`
         : "Day Completed"
       : "Mark as Complete";
     const handlePrimaryCompleteButton = () => {
@@ -13306,7 +13314,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   </button>
                   {justCompletedThisVisit ? (
                     <p className="mt-2 text-center text-sm font-semibold text-emerald-700">
-                      You completed Day {day.dayNumber}.
+                      Day {day.dayNumber} Completed!!!
                     </p>
                   ) : null}
                 </div>
@@ -13412,7 +13420,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   ) : null}
                   {justCompletedThisVisit ? (
                     <p className="mt-2 text-center text-sm font-semibold text-emerald-700">
-                      You completed Day {day.dayNumber}.
+                      Day {day.dayNumber} Completed!!!
                     </p>
                   ) : null}
                 </div>
@@ -13898,6 +13906,13 @@ Before we understand redemption, we need to understand what God made humanity fo
     const bibleYearLesson = getBibleYearDailyLesson(day.dayNumber);
     const bibleYearAudio = getBibleYearDayAudio(day.dayNumber);
     const readingCardComplete = bibleYearCompletedCardsByDay[day.dayNumber]?.reading === true;
+    const modalNextBibleYearDay = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((seriesDay) => seriesDay.dayNumber === day.dayNumber + 1) || null;
+    const modalJustCompletedThisVisit =
+      readingCardComplete &&
+      (
+        bibleYearJustCompletedDayRef.current === day.dayNumber ||
+        bibleYearResolvedCurrentDayNumber === day.dayNumber + 1
+      );
     const freeYoutubeUrl = shouldUseFreeBibleYearYoutube(day.dayNumber) ? getFreeBibleYearYoutubeUrl(day.dayNumber) : null;
     const modalVideoPlayerSrc = getBibleYearVideoEmbedSrc(bibleYearAudio?.videoSrc);
     const modalShowVideo = Boolean(freeYoutubeUrl || modalVideoPlayerSrc);
@@ -13950,12 +13965,21 @@ Before we understand redemption, we need to understand what God made humanity fo
               <button
                 type="button"
                 onClick={() => {
+                  if (readingCardComplete) {
+                    if (modalJustCompletedThisVisit && modalNextBibleYearDay) {
+                      openBibleYearDayOnDashboard(modalNextBibleYearDay, {
+                        reviewCompleted: isBibleYearDayComplete(modalNextBibleYearDay),
+                      });
+                    }
+                    return;
+                  }
                   void handleBibleYearAudioLessonCompleted(day, { closeArticle: true, closeDeepNotes: true });
                 }}
-                disabled={readingCardComplete}
                 className={`w-full rounded-[24px] border px-4 py-4 text-left shadow-[0_14px_34px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent)] transition ${
                   readingCardComplete
-                    ? "cursor-default border-sky-300 bg-sky-50 text-sky-950"
+                    ? modalJustCompletedThisVisit && modalNextBibleYearDay
+                      ? "border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_42%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-button,#2f7fe8)] text-[var(--bb-button-text,#ffffff)] hover:scale-[1.01] hover:brightness-[1.02]"
+                      : "cursor-default border-sky-300 bg-sky-50 text-sky-950"
                     : "border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_42%,var(--bb-card-border,#dbe7f4))] bg-[linear-gradient(135deg,var(--bb-accent-soft,#eaf5ff),var(--bb-card,#ffffff))] text-[var(--bb-text-primary,#111827)] hover:scale-[1.01] hover:brightness-[1.02]"
                 }`}
               >
@@ -13969,10 +13993,18 @@ Before we understand redemption, we need to understand what God made humanity fo
                   </span>
                   <span className="contents">
                     <span className="block text-base font-black leading-tight">
-                      {readingCardComplete ? "Reading Completed" : "Mark Reading Completed"}
+                      {readingCardComplete
+                        ? modalJustCompletedThisVisit && modalNextBibleYearDay
+                          ? `Continue to Day ${modalNextBibleYearDay.dayNumber}`
+                          : "Day Completed"
+                        : "Mark as Complete"}
                     </span>
                     <span className="mt-1 block text-sm font-bold opacity-80">
-                      {readingCardComplete ? "This reading task is done." : "Tap after you finish the video and lesson."}
+                      {readingCardComplete
+                        ? modalJustCompletedThisVisit
+                          ? `Day ${day.dayNumber} Completed!!!`
+                          : "This reading task is done."
+                        : "Tap after you finish the video and lesson."}
                     </span></span>
                 </span>
               </button>
@@ -14718,10 +14750,18 @@ Before we understand redemption, we need to understand what God made humanity fo
                   </span>
                   <span className="contents">
                     <span className="block text-base font-black leading-tight">
-                      {readingCardComplete ? articleJustCompletedThisVisit && articleNextBibleYearDay ? `Move to Day ${articleNextBibleYearDay.dayNumber}` : "Day Completed" : "Mark Reading Completed"}
+                      {readingCardComplete
+                        ? articleJustCompletedThisVisit && articleNextBibleYearDay
+                          ? `Continue to Day ${articleNextBibleYearDay.dayNumber}`
+                          : "Day Completed"
+                        : "Mark as Complete"}
                     </span>
                     <span className="hidden">
-                      {readingCardComplete ? articleJustCompletedThisVisit ? `You completed Day ${day.dayNumber}.` : `Day ${day.dayNumber} reading is locked in.` : "Tap after you finish the video and lesson."}
+                      {readingCardComplete
+                        ? articleJustCompletedThisVisit
+                          ? `Day ${day.dayNumber} Completed!!!`
+                          : `Day ${day.dayNumber} reading is locked in.`
+                        : "Tap after you finish the video and lesson."}
                     </span></span>
                 </span>
               </button>
@@ -14782,14 +14822,14 @@ Before we understand redemption, we need to understand what God made humanity fo
                     <span className="block text-base font-black leading-tight">
                       {readingCardComplete
                         ? articleJustCompletedThisVisit && articleNextBibleYearDay
-                          ? `Move to Day ${articleNextBibleYearDay.dayNumber}`
+                          ? `Continue to Day ${articleNextBibleYearDay.dayNumber}`
                           : "Day Completed"
-                        : "Mark Reading Completed"}
+                        : "Mark as Complete"}
                     </span>
                     <span className="hidden">
                       {readingCardComplete
                         ? articleJustCompletedThisVisit
-                          ? `You completed Day ${day.dayNumber}.`
+                          ? `Day ${day.dayNumber} Completed!!!`
                           : `Day ${day.dayNumber} reading is locked in.`
                         : "Tap after you finish the video and lesson."}
                     </span></span>
@@ -14849,7 +14889,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 <span className="block leading-tight">
                   {readingCardComplete
                     ? articleJustCompletedThisVisit && articleNextBibleYearDay
-                      ? `Move to Day ${articleNextBibleYearDay.dayNumber}`
+                      ? `Continue to Day ${articleNextBibleYearDay.dayNumber}`
                       : "Day Completed"
                     : "Mark as Complete"}
                 </span>
@@ -14857,7 +14897,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               {readingCardComplete ? (
                 <p className={`mt-2 text-center text-sm font-semibold ${articleJustCompletedThisVisit ? "text-emerald-700" : "text-[var(--bb-text-secondary,#4b5563)]"}`}>
                   {articleJustCompletedThisVisit
-                    ? `You completed Day ${day.dayNumber}.`
+                    ? `Day ${day.dayNumber} Completed!!!`
                     : `Day ${day.dayNumber} reading is locked in.`}
                 </p>
               ) : null}
