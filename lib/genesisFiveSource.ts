@@ -114,7 +114,7 @@ Genesis 5 reminds us that humanity began under God’s blessing.
 
 ### 👥 Called Their Name Adam
 
-The word Adam can refer to the man Adam, but it can also refer to mankind or humanity.
+The word **Adam** can refer to the man Adam, but it can also refer to mankind or humanity.
 
 Here, God names both male and female together under the name Adam.
 
@@ -154,7 +154,7 @@ By the time Seth is born, Adam and Eve have already lived a long life.
 
 ### 👶 Begat A Son In His Own Likeness
 
-Begat means became the father of.
+**Begat** means became the father of.
 
 Seth is described as being in Adam’s own likeness and image.
 
@@ -314,7 +314,7 @@ By modern standards, 105 years old sounds old, but in Genesis this was still rel
 
 ### 👶 And Begat Enos
 
-The word "begat" means became the father of.
+The word **"begat"** means became the father of.
 
 Enos was Seth's son and continued the family line that Genesis follows.
 
@@ -430,7 +430,7 @@ Like his father Seth, Enos lived during the early generations of humanity when l
 
 ### 👶 And Begat Cainan
 
-The word "begat" means became the father of.
+The word **"begat"** means became the father of.
 
 Cainan was the son of Enos and continued the family line that Genesis follows.
 
@@ -862,7 +862,7 @@ His birth marks an important turning point in Enoch's life.
 
 This is one of the most important phrases in Genesis 5.
 
-To walk with God means to live in close fellowship with Him.
+To **walk with God** means to live in close fellowship with Him.
 
 Enoch was known for his relationship with God rather than simply his age or accomplishments.
 
