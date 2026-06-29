@@ -1218,6 +1218,304 @@ Lamech will show how Cain's family line continues moving farther away from God's
 
 ➡️ Lamech becomes important next
 
+# 👨‍👩‍👦 Genesis 4:19–24
+
+## Lamech's Descendants
+
+### 💍 And Lamech Took Unto Him Two Wives
+
+Lamech is the descendant of Cain we were just introduced to in the previous verses.
+
+This is the first time the Bible records one man having more than one wife.
+
+God's original design for marriage was one man and one woman, established with Adam and Eve in Genesis 2.
+
+The Bible records Lamech's actions, but it does not say God approved of them.
+
+This marks another step away from God's original design.
+
+💍 First recorded case of polygamy
+
+👨 Lamech is Cain's descendant
+
+📖 God records it but does not approve it
+
+➡️ Cain's family continues moving away from God's design
+
+---
+
+### 👩 The Name Of The One Was Adah, And The Name Of The Other Zillah
+
+Lamech's wives are introduced by name.
+
+**Adah** is often connected with the idea of **beauty** or **ornament.**
+
+**Zillah** is often connected with the idea of **shade** or **shadow.**
+
+The Bible gives their names because their children become important in the development of civilization.
+
+👩 Adah means beauty or ornament
+
+👩 Zillah means shade or shadow
+
+📖 Their children become important later
+
+➡️ Moses introduces Lamech's family
+
+---
+
+### 🐑 And Adah Bare Jabal
+
+Adah gave birth to a son named **Jabal**.
+
+His name is connected with the beginning of a new way of life that Moses explains in the next phrase.
+
+👶 Adah gives birth to Jabal
+
+🌳 Another generation is added to Cain's family
+
+📖 Jabal's accomplishments are explained next
+
+➡️ Civilization continues to develop
+
+---
+
+### 🏕️ He Was The Father Of Such As Dwell In Tents, And Of Such As Have Cattle
+
+The word **father** here does not mean Jabal was literally the father of every shepherd.
+
+It means he became the **founder**, **pioneer**, or **originator** of this way of life.
+
+Jabal is remembered as the first great livestock herder and the one who developed life in tents.
+
+This describes the beginning of nomadic shepherding communities.
+
+🏕️ Father means founder or pioneer
+
+🐑 Jabal developed life with livestock
+
+⛺ He lived in tents while moving with his herds
+
+➡️ New occupations begin developing
+
+---
+
+### 🎵 And His Brother's Name Was Jubal
+
+Jubal was Jabal's brother.
+
+Like his brother, Jubal becomes known for beginning something that would influence future generations.
+
+🎵 Jubal is Jabal's brother
+
+👨 Another son of Lamech
+
+📖 Moses now shifts to his contribution
+
+➡️ Another occupation begins
+
+---
+
+### 🎼 He Was The Father Of All Such As Handle The Harp And Organ
+
+Again, **father** means **founder** or **pioneer.**
+
+Jubal is remembered as the first great musician.
+
+The **harp** was a stringed instrument similar to a small lyre.
+
+The **organ** in the King James Bible does **not** refer to a modern church organ.
+
+It was likely a simple wind instrument similar to a flute or pipe.
+
+🎼 Father means founder or pioneer
+
+🎻 Jubal pioneered music
+
+🪈 Organ refers to an ancient wind instrument
+
+➡️ Music begins developing in human culture
+
+---
+
+### 🔨 And Zillah, She Also Bare Tubal-cain
+
+Zillah gave birth to another son named **Tubal-cain**.
+
+His work would be different from that of his half brothers.
+
+Instead of working with animals or music, Tubal-cain became known for craftsmanship.
+
+👶 Zillah gives birth to Tubal-cain
+
+👨 Another son of Lamech
+
+📖 His occupation is explained next
+
+➡️ Human skills continue expanding
+
+---
+
+### ⚒️ An Instructor Of Every Artificer In Brass And Iron
+
+An **artificer** is a skilled craftsman or metalworker.
+
+Tubal-cain became known for working with **brass (bronze)** and **iron**, teaching others how to shape metal into tools, weapons, and other useful objects.
+
+This marks one of the Bible's earliest references to metalworking and technological development.
+
+⚒️ Artificer means skilled craftsman
+
+🔩 Tubal-cain worked with bronze and iron
+
+🛠️ He helped develop metalworking
+
+➡️ Technology continues advancing
+
+---
+
+### 👧 And The Sister Of Tubal-cain Was Naamah
+
+Naamah is the first daughter in Cain's genealogy whose name is specifically mentioned.
+
+The Bible does not tell us why she is mentioned or what became of her.
+
+Many ideas have been suggested, but Scripture gives no explanation.
+
+We simply know she was Tubal-cain's sister.
+
+👧 Naamah is Tubal-cain's sister
+
+📖 The Bible gives no further details
+
+🤔 Her significance is not explained
+
+➡️ Moses simply records her name
+
+---
+
+### 🗣️ And Lamech Said Unto His Wives
+
+Lamech now speaks directly to his wives.
+
+This is the first recorded poem or song spoken by a person in the Bible.
+
+It is often called **The Song of Lamech.**
+
+Instead of praising God, Lamech boasts about himself.
+
+🗣️ Lamech speaks to his wives
+
+📖 This is the Bible's first recorded human poem
+
+👨 Lamech boasts about himself
+
+➡️ His words reveal his heart
+
+---
+
+### 👂 Adah And Zillah, Hear My Voice
+
+Lamech calls for his wives to pay close attention.
+
+The phrase **hear my voice** means **listen carefully to what I am about to say.**
+
+👂 Lamech demands attention
+
+📖 He wants his wives to listen carefully
+
+➡️ He prepares to boast
+
+---
+
+### 👂 Ye Wives Of Lamech, Hearken Unto My Speech
+
+The word **hearken** means **listen carefully** or **pay close attention.**
+
+Lamech repeats himself for emphasis.
+
+He wants his wives to remember what he is about to declare.
+
+👂 Hearken means listen carefully
+
+🗣️ Lamech repeats himself for emphasis
+
+📖 His speech is intentional
+
+➡️ He wants his words remembered
+
+---
+
+### ⚔️ For I Have Slain A Man To My Wounding
+
+The word **slain** means **killed.**
+
+This is one of the most difficult verses in Genesis because the details are not given.
+
+Most scholars understand Lamech to be boasting that he killed a man who wounded him.
+
+Others believe he is threatening what he would do if someone injured him.
+
+The Bible does not tell us exactly which is correct.
+
+What is clear is that Lamech is speaking proudly about violence rather than expressing regret.
+
+⚔️ Slain means killed
+
+📖 The exact situation is not explained
+
+💔 Lamech speaks proudly about violence
+
+➡️ Sin continues growing in Cain's family
+
+---
+
+### 🩸 And A Young Man To My Hurt
+
+This phrase continues Lamech's statement.
+
+Whether the young man merely injured Lamech or whether Lamech is speaking hypothetically is debated.
+
+Either way, Lamech's response is excessive.
+
+Instead of seeking justice, he boasts about revenge.
+
+🩸 The exact event is uncertain
+
+📖 Lamech's response is violent
+
+💔 Revenge replaces mercy
+
+➡️ Violence continues increasing
+
+---
+
+### ⚖️ If Cain Shall Be Avenged Sevenfold, Truly Lamech Seventy And Sevenfold
+
+Lamech compares himself to Cain.
+
+God had promised to protect Cain from personal revenge.
+
+Lamech twists that promise into a reason to boast.
+
+He claims that if Cain was protected sevenfold, then he deserves protection **seventy and sevenfold**.
+
+He is not speaking God's words.
+
+He is expressing his own pride and arrogance.
+
+This shows how far Cain's family has drifted from God.
+
+Instead of humbly receiving God's mercy, Lamech glorifies violence and exalts himself.
+
+⚖️ Lamech twists God's promise to Cain
+
+😔 Sevenfold becomes seventy and sevenfold
+
+💔 Pride replaces humility
+
+➡️ Cain's family continues moving farther from God
+
 # 👶 Genesis 4:25–26
 
 ## The Birth of Seth
