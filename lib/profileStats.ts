@@ -224,8 +224,8 @@ export async function getHeatMapData(
  * Calculate current streak from master_actions table
  * Returns streak data including last 7 days
  * 
- * Streak Definition: a user earns a streak day by opening/logging in to
- * Bible Buddy that day. Bible Study actions grow levels and points.
+ * Streak Definition: a user earns a streak day by showing up and doing
+ * real activity in Bible Buddy that day.
  */
 export interface StreakData {
   currentStreak: number;
@@ -310,7 +310,10 @@ async function getUserActivitySummary(
     if (action.action_type === ACTION_TYPE.user_login) {
       current.loginCount += 1;
     }
-    if (action.action_type === ACTION_TYPE.user_login) {
+    if (
+      action.action_type === ACTION_TYPE.user_login ||
+      isMeaningfulActionType(action.action_type)
+    ) {
       completedDates.add(dateStr);
     }
     if (isMeaningfulActionType(action.action_type)) {
@@ -339,7 +342,6 @@ export async function calculateStreakFromActions(
       .from("master_actions")
       .select("created_at, action_type")
       .eq("user_id", userId)
-      .eq("action_type", ACTION_TYPE.user_login)
       .order("created_at", { ascending: false });
 
     const { data, error } = actionsResponse;
@@ -349,7 +351,7 @@ export async function calculateStreakFromActions(
       return { currentStreak: 0, last7Days: [] };
     }
 
-    console.log(`[STREAK] Found ${data?.length || 0} valid streak actions`);
+    console.log(`[STREAK] Found ${data?.length || 0} streak-eligible actions`);
 
     // Helper function to get YYYY-MM-DD from a Date in local timezone
     const getLocalDateString = (date: Date): string => {
@@ -366,7 +368,12 @@ export async function calculateStreakFromActions(
       // Parse as UTC timestamp, then convert to user's local date
       const actionDate = new Date(action.created_at);
       const dateStr = getLocalDateString(actionDate);
-      completedDates.add(dateStr);
+      if (
+        action.action_type === ACTION_TYPE.user_login ||
+        isMeaningfulActionType(action.action_type)
+      ) {
+        completedDates.add(dateStr);
+      }
       console.log(`[STREAK] Action on ${dateStr} (${action.action_type}) - UTC was: ${action.created_at}`);
     });
 

@@ -2,6 +2,13 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import { ACTION_TYPE } from "./actionTypes";
 
 export const STREAK_TIME_ZONE = "America/New_York";
+const NON_STREAK_ACTION_TYPES = new Set([
+  ACTION_TYPE.user_signup,
+]);
+
+function isStreakEligibleActionType(actionType: string) {
+  return !NON_STREAK_ACTION_TYPES.has(actionType as typeof ACTION_TYPE.user_signup);
+}
 
 function resolveStreakTimeZone(timeZone?: string) {
   if (!timeZone) return STREAK_TIME_ZONE;
@@ -164,7 +171,7 @@ export async function getLiveStreakMapForUsers(
 
   actionRows.forEach((row) => {
     if (!row.user_id) return;
-    if (row.action_type !== ACTION_TYPE.user_login) return;
+    if (!isStreakEligibleActionType(row.action_type)) return;
     ensureUserSet(row.user_id).add(getStreakDateKey(row.created_at, resolvedTimeZone));
   });
 
@@ -230,7 +237,7 @@ export async function getLiveStreakMapForRecentUsers(
 
   actionRows.forEach((row) => {
     if (!row.user_id) return;
-    if (row.action_type !== ACTION_TYPE.user_login) return;
+    if (!isStreakEligibleActionType(row.action_type)) return;
     ensureUserSet(row.user_id).add(getStreakDateKey(row.created_at, resolvedTimeZone));
   });
 
