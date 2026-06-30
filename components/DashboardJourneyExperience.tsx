@@ -8805,29 +8805,44 @@ export default function DashboardJourneyExperience({
     };
     const dayFiveDisplay: Record<string, { heading: string; teachingTitle: string; list?: string[] }> = {
       "Genesis 11:1-9": {
-        heading: "Ã°Å¸Ââ„¢Ã¯Â¸Â Babel Tries to Make a Name",
+        heading: "🏗️ The Tower of Babel",
         teachingTitle: "Ã°Å¸Â§Â± Pride Builds Without Trust",
         list: ["Ã°Å¸Â§Â± bricks are made", "Ã°Å¸Ââ„¢Ã¯Â¸Â a city rises", "Ã°Å¸â€”Â¼ a tower reaches upward", "Ã°Å¸â€˜â€˜ people seek a name", "Ã°Å¸Å’Â God scatters pride"],
       },
-      "Genesis 11:10-32": {
-        heading: "Ã°Å¸Â§Â¬ The Story Narrows Toward Abram",
+      "Genesis 11:10-26": {
+        heading: "🌳 From Shem to Abram",
         teachingTitle: "Ã°Å¸â€ºÂ¤Ã¯Â¸Â An Unfinished Road",
-        list: ["Ã°Å¸Â§Â¬ Shem's line continues", "Ã°Å¸â€˜Â¤ Abram appears", "Ã°Å¸â€™â€ Sarai is barren", "Ã°Å¸â€ºÂ¤Ã¯Â¸Â the family moves toward Canaan", "Ã¢ÂÂ¸Ã¯Â¸Â the journey stops in Haran"],
+        list: ["📖 Shem's line continues", "🌳 the family line leads to Abram", "👨 Terah is introduced", "➡️ the promise story narrows"],
+      },
+      "Genesis 11:27-30": {
+        heading: "👨‍👩‍👦 Terah's Family",
+        teachingTitle: "🌳 Abram's Family Comes Into View",
+        list: ["👨 Abram is introduced", "👤 Lot is Haran's son", "👩 Sarai enters the story", "💔 Sarai is barren"],
+      },
+      "Genesis 11:31-32": {
+        heading: "🚶 Terah Moves To Haran",
+        teachingTitle: "🛤️ The Journey Begins",
+        list: ["🚶 the family leaves Ur", "🌍 Canaan is the destination", "🏠 they settle in Haran", "➡️ Abram's story is ready to begin"],
       },
       "Genesis 12:1-3": {
-        heading: "Ã°Å¸â€œÂ£ God Calls Abram",
+        heading: "🌎 God Calls Abram",
         teachingTitle: "Ã¢Å“Â¨ Promise Before the Map",
         list: ["Ã°Å¸â€œÂ£ God speaks", "Ã°Å¸ÂÂ  Abram must leave", "Ã°Å¸Å’Â land is promised", "Ã°Å¸â€˜Â¨Ã¢â‚¬ÂÃ°Å¸â€˜Â©Ã¢â‚¬ÂÃ°Å¸â€˜Â§Ã¢â‚¬ÂÃ°Å¸â€˜Â¦ nation is promised", "Ã¢Å“Â¨ all families will be blessed"],
       },
       "Genesis 12:4-9": {
-        heading: "Ã°Å¸Å¡Â¶ Abram Goes",
+        heading: "🌍 Abram Enters Canaan",
         teachingTitle: "Ã¢â€ºÂº Obedience Starts Moving",
         list: ["Ã°Å¸Å¡Â¶ Abram departs", "Ã°Å¸â€˜Â¨Ã¢â‚¬ÂÃ°Å¸â€˜Â©Ã¢â‚¬ÂÃ°Å¸â€˜Â§ family comes with him", "Ã¢â€ºÂº he enters Canaan", "Ã°Å¸â€Â¥ he builds altars", "Ã°Å¸â„¢Â he calls on the LORD"],
       },
-      "Genesis 12:10-20": {
-        heading: "Ã°Å¸Å’Â¾ Fear Takes Abram to Egypt",
+      "Genesis 12:10-16": {
+        heading: "🌾 Abram's Fear In Egypt",
         teachingTitle: "Ã°Å¸ËœÅ¸ Faith Still Needs Formation",
-        list: ["Ã°Å¸Å’Â¾ famine comes", "Ã°Å¸â€¡ÂªÃ°Å¸â€¡Â¬ Abram goes to Egypt", "Ã°Å¸ËœÅ¸ fear takes over", "Ã°Å¸â€˜â€˜ Sarai is taken", "Ã°Å¸â€ºÂ¡Ã¯Â¸Â God protects the promise"],
+        list: ["🌾 famine comes", "🇪🇬 Abram goes to Egypt", "😟 fear takes over", "👑 Sarai is taken"],
+      },
+      "Genesis 12:17-20": {
+        heading: "✋ God Rescues Sarai",
+        teachingTitle: "🛡️ God Protects The Promise",
+        list: ["✋ the LORD intervenes", "⚠️ Pharaoh confronts Abram", "👩 Sarai is returned", "➡️ Abram leaves Egypt"],
       },
       "Genesis 13:1-7": {
         heading: "Ã°Å¸â€Â¥ Abram Returns to the Altar",

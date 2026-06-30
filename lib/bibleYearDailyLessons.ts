@@ -573,7 +573,7 @@ export const GENESIS_DAY_FIVE_ABRAHAM_OBEDIENCE_LESSON: BibleYearDailyLesson = {
   ],
   sections: [
     {
-      heading: "Babel Tries to Make a Name",
+      heading: "The Tower of Babel",
       verseBlock: { reference: "Genesis 11:1-9", chapter: 11, startVerse: 1, endVerse: 9 },
       teaching: [
         "Babel is humanity trying to build security without surrender.",
@@ -583,13 +583,28 @@ export const GENESIS_DAY_FIVE_ABRAHAM_OBEDIENCE_LESSON: BibleYearDailyLesson = {
       ],
     },
     {
-      heading: "The Story Narrows Toward Abram",
-      verseBlock: { reference: "Genesis 11:10-32", chapter: 11, startVerse: 10, endVerse: 32 },
+      heading: "From Shem to Abram",
+      verseBlock: { reference: "Genesis 11:10-26", chapter: 11, startVerse: 10, endVerse: 26 },
       teaching: [
         "After Babel scatters humanity, Genesis narrows the camera to Shem's family line.",
         "These names carry the story toward Abram.",
-        "Terah's family begins moving toward Canaan, but they stop in Haran.",
-        "Genesis 11 ends with an unfinished road, and that is exactly where God's call will meet Abram.",
+        "The genealogy follows the promise line from Shem through Terah to Abram.",
+      ],
+    },
+    {
+      heading: "Terah's Family",
+      verseBlock: { reference: "Genesis 11:27-30", chapter: 11, startVerse: 27, endVerse: 30 },
+      teaching: [
+        "Terah's family introduces Abram, Sarai, Nahor, Haran, and Lot.",
+        "Sarai's barrenness creates the human impossibility that God's promise will answer.",
+      ],
+    },
+    {
+      heading: "Terah Moves To Haran",
+      verseBlock: { reference: "Genesis 11:31-32", chapter: 11, startVerse: 31, endVerse: 32 },
+      teaching: [
+        "Terah leads the family away from Ur toward Canaan, but the journey stops in Haran.",
+        "Genesis 11 ends with Terah's death and prepares for God's call to Abram.",
       ],
     },
     {
@@ -603,7 +618,7 @@ export const GENESIS_DAY_FIVE_ABRAHAM_OBEDIENCE_LESSON: BibleYearDailyLesson = {
       ],
     },
     {
-      heading: "Abram Goes",
+      heading: "Abram Enters Canaan",
       verseBlock: { reference: "Genesis 12:4-9", chapter: 12, startVerse: 4, endVerse: 9 },
       teaching: [
         "Abram departs as the LORD had spoken.",
@@ -613,12 +628,18 @@ export const GENESIS_DAY_FIVE_ABRAHAM_OBEDIENCE_LESSON: BibleYearDailyLesson = {
       ],
     },
     {
-      heading: "Fear Takes Abram to Egypt",
-      verseBlock: { reference: "Genesis 12:10-20", chapter: 12, startVerse: 10, endVerse: 20 },
+      heading: "Abram's Fear In Egypt",
+      verseBlock: { reference: "Genesis 12:10-16", chapter: 12, startVerse: 10, endVerse: 16 },
       teaching: [
         "Famine tests Abram almost immediately after obedience.",
         "In Egypt, fear takes over, and Abram tells Sarai to say she is his sister.",
         "The Bible is honest: Abram is chosen, but still afraid.",
+      ],
+    },
+    {
+      heading: "God Rescues Sarai",
+      verseBlock: { reference: "Genesis 12:17-20", chapter: 12, startVerse: 17, endVerse: 20 },
+      teaching: [
         "God protects Sarai and preserves the promise even when Abram fails.",
       ],
     },

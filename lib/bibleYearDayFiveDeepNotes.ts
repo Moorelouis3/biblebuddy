@@ -1,4 +1,6 @@
 import type { BibleYearDeepStudySection } from "./bibleYearDayOneDeepStudy";
+import { GENESIS_ELEVEN_PERSONAL_SECTIONS } from "./genesisElevenSource";
+import { GENESIS_TWELVE_PERSONAL_SECTIONS } from "./genesisTwelveSource";
 
 export const BIBLE_YEAR_DAY_FIVE_DEEP_NOTES = `Genesis 11-13 moves from the pride of Babel into the call of Abram.
 
@@ -25,7 +27,7 @@ Abram's story does not begin with perfect faith. He obeys, worships, fears, fail
 
 That is why Day 5 matters. It shows that God's promise is stronger than human pride, stronger than family weakness, stronger than famine, stronger than fear, and stronger than Abram's failure.`;
 
-export const BIBLE_YEAR_DAY_FIVE_DEEP_STUDY_SECTIONS: BibleYearDeepStudySection[] = [
+const LEGACY_BIBLE_YEAR_DAY_FIVE_DEEP_STUDY_SECTIONS: BibleYearDeepStudySection[] = [
   {
     reference: "Genesis 11:1-9",
     title: "Babel Tries To Make A Name",
@@ -486,4 +488,40 @@ That is one of the deepest lessons in Day 5.
 
 When Abram lets Lot choose, God reminds him that the promise was never dependent on Abram fighting for control. It depended on God's faithful word.`,
   },
+];
+
+const GENESIS_ELEVEN_DEEP_STUDY_SECTIONS: BibleYearDeepStudySection[] = GENESIS_ELEVEN_PERSONAL_SECTIONS.map(
+  (section) => ({
+    reference: section.reference,
+    title: section.title,
+    icon: section.icon,
+    summary: section.phrases[0]?.[1].split("\n\n")[0] || "",
+    markdown: [
+      `## ${section.reference}`,
+      `### ${section.title}`,
+      ...section.phrases.map(([title, body]) => `### ${title}\n\n${body}`),
+    ].join("\n\n"),
+  }),
+);
+
+const GENESIS_TWELVE_DEEP_STUDY_SECTIONS: BibleYearDeepStudySection[] = GENESIS_TWELVE_PERSONAL_SECTIONS.map(
+  (section) => ({
+    reference: section.reference,
+    title: section.title,
+    icon: section.icon,
+    summary: section.phrases[0]?.[1].split("\n\n")[0] || "",
+    markdown: [
+      `## ${section.reference}`,
+      `### ${section.title}`,
+      ...section.phrases.map(([title, body]) => `### ${title}\n\n${body}`),
+    ].join("\n\n"),
+  }),
+);
+
+export const BIBLE_YEAR_DAY_FIVE_DEEP_STUDY_SECTIONS: BibleYearDeepStudySection[] = [
+  ...GENESIS_ELEVEN_DEEP_STUDY_SECTIONS,
+  ...GENESIS_TWELVE_DEEP_STUDY_SECTIONS,
+  ...LEGACY_BIBLE_YEAR_DAY_FIVE_DEEP_STUDY_SECTIONS.filter(
+    (section) => !section.reference.startsWith("Genesis 11:") && !section.reference.startsWith("Genesis 12:"),
+  ),
 ];
