@@ -1632,28 +1632,41 @@ const DAY_FOUR_SECTION_META: Array<Omit<BibleYearDeepStudySection, "markdown">> 
     summary: "Noah's words over Canaan, Shem, and Japheth show that the story of blessing and curse continues.",
   },
   {
-    reference: "Genesis 10:1-5",
-    title: "Japheth's Line Spreads",
-    icon: "ðŸ—ºï¸",
-    summary: "The nations begin spreading, showing that life continues after the flood.",
+    reference: "Genesis 10:1-2",
+    title: "Noah’s Descendants",
+    icon: "🌍",
+    summary: "Noah’s sons become the starting point for the nations that fill the earth after the flood.",
   },
   {
-    reference: "Genesis 10:6-20",
-    title: "Ham's Line Builds Kingdoms",
-    icon: "ðŸ™ï¸",
-    summary: "Cities and kingdoms rise, but human power still needs to be read through the bigger story of sin and promise.",
+    reference: "Genesis 10:3-5",
+    title: "The Sons Of Japheth",
+    icon: "🌍",
+    summary: "Japheth’s descendants spread into coastlands, territories, and the early nations of the post-flood world.",
+  },
+  {
+    reference: "Genesis 10:6-11",
+    title: "The Sons of Ham",
+    icon: "🌍",
+    summary: "Ham’s line introduces Cush, Egypt, Canaan, and Nimrod as the nations begin rising again after the flood.",
+  },
+  {
+    reference: "Genesis 10:12-20",
+    title: "The Sons of Ham Continued",
+    icon: "🌍",
+    summary: "The rest of Ham’s line traces the peoples of Egypt, the Philistines, and the Canaanite tribes.",
   },
   {
     reference: "Genesis 10:21-32",
-    title: "Shem's Line Carries The Promise",
-    icon: "ðŸŒ±",
-    summary: "Shem's family line quietly prepares the road toward Abraham and the promise God will keep moving forward.",
+    title: "The Sons of Shem",
+    icon: "🌍",
+    summary: "Shem’s family line receives special attention because it leads toward Eber, Abraham, and the promise story.",
   },
 ];
 
 function getDayFourSectionMarkdown(reference: string) {
-  if (reference.startsWith("Genesis 9:")) {
-    const section = getBibleReaderStudySections("Genesis", 9).find((entry) => entry.reference === reference);
+  if (reference.startsWith("Genesis 9:") || reference.startsWith("Genesis 10:")) {
+    const chapter = reference.startsWith("Genesis 9:") ? 9 : 10;
+    const section = getBibleReaderStudySections("Genesis", chapter).find((entry) => entry.reference === reference);
 
     if (section) {
       const blocks = section.categories

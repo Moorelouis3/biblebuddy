@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { Fragment, useCallback, useEffect, useRef, useState, type FormEvent, type MouseEvent, type ReactNode, type SyntheticEvent } from "react";
@@ -1093,7 +1093,7 @@ function getTaskCardCopy(task: TaskState, _index: number) {
         task.subtitle ||
         task.chapterTitle ||
         "Start with the big picture before you read the chapter.",
-      emoji: "ðŸ“•",
+      emoji: "Ã°Å¸â€œâ€¢",
       doneAccent: "from-[#b9dcf4] to-[#7BAFD4]",
       idleAccent: "from-[#dbeafe] to-[#bfdbfe]",
     };
@@ -1103,7 +1103,7 @@ function getTaskCardCopy(task: TaskState, _index: number) {
     return {
       title: task.title,
       subtitle: task.subtitle || "Read today's Bible chapter and reflect on it.",
-      emoji: "âœï¸",
+      emoji: "Ã¢Å“ÂÃ¯Â¸Â",
       doneAccent: "from-[#b9dcf4] to-[#7BAFD4]",
       idleAccent: "from-[#dbeafe] to-[#bfdbfe]",
     };
@@ -1113,7 +1113,7 @@ function getTaskCardCopy(task: TaskState, _index: number) {
     return {
       title: task.title,
       subtitle: "Read and study the notes to understand more deeply.",
-      emoji: "ðŸ“",
+      emoji: "Ã°Å¸â€œÂ",
       doneAccent: "from-[#b9dcf4] to-[#7BAFD4]",
       idleAccent: "from-[#dbeafe] to-[#bfdbfe]",
     };
@@ -1123,7 +1123,7 @@ function getTaskCardCopy(task: TaskState, _index: number) {
     return {
       title: task.title,
       subtitle: task.subtitle || "Test your understanding with 5 quick questions.",
-      emoji: "ðŸ§ ",
+      emoji: "Ã°Å¸Â§Â ",
       doneAccent: "from-[#b9dcf4] to-[#7BAFD4]",
       idleAccent: "from-[#dbeafe] to-[#bfdbfe]",
     };
@@ -1134,7 +1134,7 @@ function getTaskCardCopy(task: TaskState, _index: number) {
     return {
       title: task.title || "Answer The Discussion Question",
       subtitle: task.subtitle || `Share what ${chapterLabel} is stirring in you.`,
-      emoji: "Ã¢Å“ÂÃ¯Â¸Â",
+      emoji: "ÃƒÂ¢Ã…â€œÃ‚ÂÃƒÂ¯Ã‚Â¸Ã‚Â",
       doneAccent: "from-[#b9dcf4] to-[#7BAFD4]",
       idleAccent: "from-[#dbeafe] to-[#bfdbfe]",
     };
@@ -1143,7 +1143,7 @@ function getTaskCardCopy(task: TaskState, _index: number) {
   return {
     title: task.title,
     subtitle: "Unscramble words from today's chapter.",
-    emoji: "ðŸ”¤",
+    emoji: "Ã°Å¸â€Â¤",
     doneAccent: "from-[#b9dcf4] to-[#7BAFD4]",
     idleAccent: "from-[#dbeafe] to-[#bfdbfe]",
   };
@@ -2830,7 +2830,7 @@ export default function DashboardJourneyExperience({
     },
   ];
   const activeDashboardNavItem = bibleYearSeriesActive
-    ? { label: "Bible In One Year", icon: "ðŸ“–" }
+    ? { label: "Bible In One Year", icon: "Ã°Å¸â€œâ€“" }
     : bibleYearDashboardActive
     ? { label: "Home", icon: "\u2302" }
     : [...dashboardNavItems, ...dashboardSecondaryNavItems].find((item) => item.key === activePageKey) ?? dashboardNavItems[0];
@@ -3219,11 +3219,11 @@ export default function DashboardJourneyExperience({
 
   const streak = profile?.current_streak ?? 0;
   const skeletonTasks = [
-    { emoji: "ðŸ“•", title: "Read Chapter Intro", subtitleWidth: "w-52" },
-    { emoji: "âœï¸", title: "Read Chapter", subtitleWidth: "w-44" },
-    { emoji: "ðŸ“", title: "Review Notes", subtitleWidth: "w-56" },
-    { emoji: "ðŸ§ ", title: "Play Trivia", subtitleWidth: "w-48" },
-    { emoji: "âœï¸", title: "Discuss Today", subtitleWidth: "w-40" },
+    { emoji: "Ã°Å¸â€œâ€¢", title: "Read Chapter Intro", subtitleWidth: "w-52" },
+    { emoji: "Ã¢Å“ÂÃ¯Â¸Â", title: "Read Chapter", subtitleWidth: "w-44" },
+    { emoji: "Ã°Å¸â€œÂ", title: "Review Notes", subtitleWidth: "w-56" },
+    { emoji: "Ã°Å¸Â§Â ", title: "Play Trivia", subtitleWidth: "w-48" },
+    { emoji: "Ã¢Å“ÂÃ¯Â¸Â", title: "Discuss Today", subtitleWidth: "w-40" },
   ];
   const devotionalTask = visibleTasks.find((task) => task.kind === "devotional") ?? null;
   const readingTask = visibleTasks.find((task) => task.kind === "reading") ?? null;
@@ -5610,7 +5610,7 @@ export default function DashboardJourneyExperience({
                 className="grid h-10 w-10 place-items-center rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] text-xl font-black text-[var(--bb-text-secondary,#4b5563)] transition hover:bg-[var(--bb-card,#ffffff)] hover:text-[var(--bb-text-primary,#111827)]"
                 aria-label="Close Bible book search"
               >
-                Ã—
+                Ãƒâ€”
               </button>
               ) : null}
               </div>
@@ -5761,7 +5761,7 @@ export default function DashboardJourneyExperience({
               className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-[#2f7fe8] px-5 py-3 text-sm font-black text-white shadow-sm transition hover:bg-[#256fd1]"
             >
               Open {card.title}
-              <span className="ml-2" aria-hidden="true">â€º</span>
+              <span className="ml-2" aria-hidden="true">Ã¢â‚¬Âº</span>
             </Link>
           </div>
         </div>
@@ -6047,7 +6047,7 @@ export default function DashboardJourneyExperience({
                 style={{ background: dashboardGroup?.cover_color || "var(--bb-accent-soft,#eaf5ff)" }}
                 aria-hidden="true"
               >
-                {dashboardGroup?.cover_emoji || "ðŸ‘¥"}
+                {dashboardGroup?.cover_emoji || "Ã°Å¸â€˜Â¥"}
               </div>
               <div className="min-w-0 flex-1">
                 <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Bible Buddy Group</p>
@@ -6152,7 +6152,7 @@ export default function DashboardJourneyExperience({
                         <div className="min-w-0">
                         <p className="text-sm font-black text-[var(--bb-text-primary,#111827)]">{post.display_name || "Bible Buddy"}</p>
                         <p className="mt-0.5 text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">
-                          {post.is_pinned ? "Pinned â€¢ " : ""}
+                          {post.is_pinned ? "Pinned Ã¢â‚¬Â¢ " : ""}
                           {formatGroupTime(post.created_at)}
                         </p>
                         </div>
@@ -6333,7 +6333,7 @@ export default function DashboardJourneyExperience({
                 <div className="min-w-0">
                   <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Now Playing</p>
                   <h2 className="mt-1 text-xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">{episode.title}</h2>
-                  <p className="mt-1 text-xs font-semibold text-[var(--bb-text-secondary,#5f6368)]">{title.title} â€¢ {episode.duration}</p>
+                  <p className="mt-1 text-xs font-semibold text-[var(--bb-text-secondary,#5f6368)]">{title.title} Ã¢â‚¬Â¢ {episode.duration}</p>
                 </div>
                 <button
                   type="button"
@@ -6341,7 +6341,7 @@ export default function DashboardJourneyExperience({
                   className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface,#f8fbff)] text-lg font-black text-[var(--bb-text-primary,#111827)]"
                   aria-label="Close video"
                 >
-                  Ã—
+                  Ãƒâ€”
                 </button>
               </div>
               <div className="bg-black">
@@ -6390,7 +6390,7 @@ export default function DashboardJourneyExperience({
                 <p className="text-xs font-black uppercase tracking-[0.18em] text-white/80">Bible Buddy TV</p>
                 <h2 className="mt-1 text-3xl font-black leading-tight">{featuredTitle.title}</h2>
                 <p className="mt-2 line-clamp-2 text-sm font-semibold leading-5 text-white/85">{featuredEpisode.summary}</p>
-                <span className="mt-4 inline-flex rounded-full bg-white px-5 py-2.5 text-sm font-black text-black">â–¶ Play</span>
+                <span className="mt-4 inline-flex rounded-full bg-white px-5 py-2.5 text-sm font-black text-black">Ã¢â€“Â¶ Play</span>
               </div>
             </button>
           ) : null}
@@ -6432,7 +6432,7 @@ export default function DashboardJourneyExperience({
         stat: "5 quick questions",
         href: triviaTask?.href || "/bible-trivia",
         button: triviaTask ? `Play ${triviaTask.chapterLabel || "Today's"} Trivia` : "Browse Trivia",
-        icon: "ðŸ§ ",
+        icon: "Ã°Å¸Â§Â ",
       },
       {
         key: "scrambled" as const,
@@ -6442,7 +6442,7 @@ export default function DashboardJourneyExperience({
         stat: "Daily response",
         href: "/dashboard",
         button: "Open Discussion",
-        icon: "ðŸ”¤",
+        icon: "Ã°Å¸â€Â¤",
       },
     ].filter((game) => game.key !== "scrambled");
     const selectedGame = gameCards.find((game) => game.key === embeddedGameView) ?? null;
@@ -6495,7 +6495,7 @@ export default function DashboardJourneyExperience({
                   className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] text-xl font-black text-[var(--bb-text-secondary,#4b5563)] transition hover:bg-[var(--bb-card,#ffffff)] hover:text-[var(--bb-text-primary,#111827)]"
                   aria-label="Close game view"
                 >
-                  Ã—
+                  Ãƒâ€”
                 </button>
               </div>
               <div className="mt-5 rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] p-4">
@@ -6626,7 +6626,7 @@ export default function DashboardJourneyExperience({
                 {currentStudyCover ? (
                   <img src={currentStudyCover} alt="" loading="lazy" decoding="async" className="h-full w-full object-contain" />
                 ) : (
-                  <span className="grid h-full w-full place-items-center text-xl" aria-hidden="true">ðŸ“–</span>
+                  <span className="grid h-full w-full place-items-center text-xl" aria-hidden="true">Ã°Å¸â€œâ€“</span>
                 )}
               </span>
               <span className="min-w-0 flex-1">
@@ -6700,7 +6700,7 @@ export default function DashboardJourneyExperience({
                           {studyChapter.day_title || `Chapter ${studyChapter.day_number}`}
                         </span></span>
                       <span className={`shrink-0 text-xs font-black ${isPastOrCurrent && !isCurrent ? "text-[#2f6685]" : "text-[var(--bb-accent,#2f7fe8)]"}`}>
-                        {isLocked ? "ðŸ”’" : isCurrent ? "Review" : switchingStudyChapter === studyChapter.day_number ? "Loading" : "Load"}
+                        {isLocked ? "Ã°Å¸â€â€™" : isCurrent ? "Review" : switchingStudyChapter === studyChapter.day_number ? "Loading" : "Load"}
                       </span>
                     </button>
                   );
@@ -7596,8 +7596,8 @@ export default function DashboardJourneyExperience({
       >
         <div className="bb-skin-glow-card relative w-full max-w-[430px] overflow-hidden rounded-[34px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_34%,var(--bb-card-border,#dbe7f4))] bg-[radial-gradient(circle_at_84%_8%,color-mix(in_srgb,var(--bb-accent,#2f7fe8)_20%,transparent),transparent_34%),radial-gradient(circle_at_12%_0%,color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_76%,transparent),transparent_40%),linear-gradient(145deg,color-mix(in_srgb,var(--bb-card,#ffffff)_96%,transparent),color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_84%,transparent))] px-5 pb-5 pt-6 text-center text-[var(--bb-text-primary,#111827)] shadow-[0_32px_90px_rgba(0,0,0,0.46),0_0_42px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_22%,transparent)] sm:px-6">
           <div className="pointer-events-none absolute -right-10 -top-12 h-36 w-36 rounded-full bg-[#f6b44b]/20 blur-2xl" aria-hidden="true" />
-          <div className="pointer-events-none absolute left-8 top-16 text-sm text-[#f6b44b]/70" aria-hidden="true">âœ¦</div>
-          <div className="pointer-events-none absolute right-12 top-24 text-lg text-[#d89b28]/70" aria-hidden="true">âœ¦</div>
+          <div className="pointer-events-none absolute left-8 top-16 text-sm text-[#f6b44b]/70" aria-hidden="true">Ã¢Å“Â¦</div>
+          <div className="pointer-events-none absolute right-12 top-24 text-lg text-[#d89b28]/70" aria-hidden="true">Ã¢Å“Â¦</div>
           <button
             type="button"
             onClick={() => setBibleYearDayOneDeepNotesGiftOpen(false)}
@@ -7608,7 +7608,7 @@ export default function DashboardJourneyExperience({
           </button>
 
           <div className="mx-auto inline-flex items-center gap-2 rounded-full bg-[#fff0cf] px-4 py-2 text-[11px] font-black uppercase tracking-[0.18em] text-[#a66d00] shadow-[inset_0_1px_0_rgba(255,255,255,0.82)]">
-            <span aria-hidden="true">ðŸŽ</span>
+            <span aria-hidden="true">Ã°Å¸Å½Â</span>
             <span>Bible Buddy Pro Gift</span>
           </div>
 
@@ -7625,7 +7625,7 @@ export default function DashboardJourneyExperience({
               onClick={openBibleYearDayOneGiftDeepNotes}
               className="w-full rounded-[24px] bg-[linear-gradient(135deg,#f7c35f,#d99a21_52%,#b87300)] px-5 py-4 text-center text-white shadow-[0_18px_34px_rgba(183,115,0,0.28)] transition hover:brightness-105"
             >
-              <span className="block text-base font-black leading-tight">ðŸŽ Open My Free Day 1 Study Notes</span>
+              <span className="block text-base font-black leading-tight">Ã°Å¸Å½Â Open My Free Day 1 Study Notes</span>
               <span className="mt-1 block text-xs font-semibold text-white/88">Your Day 1 Study Notes are unlocked</span>
             </button>
             <button
@@ -7639,7 +7639,7 @@ export default function DashboardJourneyExperience({
           </div>
 
           <p className="mx-auto mt-4 max-w-xs text-center text-[11px] font-bold leading-5 text-[#7b8497]">
-            ðŸŽ Gift unlocks Day 1 Study Notes only. <span className="text-[#b77900]">Upgrade</span> anytime to unlock all Days.
+            Ã°Å¸Å½Â Gift unlocks Day 1 Study Notes only. <span className="text-[#b77900]">Upgrade</span> anytime to unlock all Days.
           </p>
         </div>
       </ModalShell>
@@ -7837,10 +7837,10 @@ export default function DashboardJourneyExperience({
           {isBackgroundAudioUpgrade ? (
             <div className="mt-4 rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_22%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_64%,var(--bb-card,#ffffff))] px-4 py-3">
               <ul className="space-y-1.5 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-                <li>â€¢ Phone locked</li>
-                <li>â€¢ Using other apps</li>
-                <li>â€¢ Driving and walking</li>
-                <li>â€¢ Working out or doing chores</li>
+                <li>Ã¢â‚¬Â¢ Phone locked</li>
+                <li>Ã¢â‚¬Â¢ Using other apps</li>
+                <li>Ã¢â‚¬Â¢ Driving and walking</li>
+                <li>Ã¢â‚¬Â¢ Working out or doing chores</li>
               </ul>
             </div>
           ) : null}
@@ -8497,44 +8497,44 @@ export default function DashboardJourneyExperience({
     };
     const dayOneDisplay: Record<string, { heading: string; teachingTitle: string; list?: string[] }> = {
       "Genesis 1:1-5": {
-        heading: "ðŸŒŒ God Speaks Into the Beginning",
-        teachingTitle: "ðŸ—£ï¸ God Is Already There",
-        list: ["ðŸŒ‘ darkness is not too much for God", "ðŸ•Šï¸ God's Spirit is already near", "ðŸ’¡ light comes from His voice", "âš–ï¸ order begins with God speaking"],
+        heading: "Ã°Å¸Å’Å’ God Speaks Into the Beginning",
+        teachingTitle: "Ã°Å¸â€”Â£Ã¯Â¸Â God Is Already There",
+        list: ["Ã°Å¸Å’â€˜ darkness is not too much for God", "Ã°Å¸â€¢Å Ã¯Â¸Â God's Spirit is already near", "Ã°Å¸â€™Â¡ light comes from His voice", "Ã¢Å¡â€“Ã¯Â¸Â order begins with God speaking"],
       },
       "Genesis 1:6-13": {
-        heading: "ðŸŒŠ God Forms a World That Can Hold Life",
-        teachingTitle: "ðŸŒ God Makes Room for Life",
-        list: ["ðŸŒŠ waters are separated", "â˜ï¸ sky opens", "ðŸŒ dry ground appears", "ðŸŒ± seeds carry future life"],
+        heading: "Ã°Å¸Å’Å  God Forms a World That Can Hold Life",
+        teachingTitle: "Ã°Å¸Å’Â God Makes Room for Life",
+        list: ["Ã°Å¸Å’Å  waters are separated", "Ã¢ËœÂÃ¯Â¸Â sky opens", "Ã°Å¸Å’Â dry ground appears", "Ã°Å¸Å’Â± seeds carry future life"],
       },
       "Genesis 1:14-25": {
-        heading: "âœ¨ God Fills the Sky, Waters, and Earth",
-        teachingTitle: "ðŸ¦ Creation Comes Alive",
-        list: ["â˜€ï¸ time has rhythm", "ðŸŒ™ lights serve God's purpose", "ðŸ‹ waters move with life", "ðŸ¦ birds fill the sky", "ðŸ¾ animals move across the land"],
+        heading: "Ã¢Å“Â¨ God Fills the Sky, Waters, and Earth",
+        teachingTitle: "Ã°Å¸ÂÂ¦ Creation Comes Alive",
+        list: ["Ã¢Ëœâ‚¬Ã¯Â¸Â time has rhythm", "Ã°Å¸Å’â„¢ lights serve God's purpose", "Ã°Å¸Ââ€¹ waters move with life", "Ã°Å¸ÂÂ¦ birds fill the sky", "Ã°Å¸ÂÂ¾ animals move across the land"],
       },
       "Genesis 1:26-31": {
-        heading: "ðŸ‘¤ Humanity Is Made in God's Image",
-        teachingTitle: "ðŸ‘‘ Human Life Has God-Given Worth",
-        list: ["ðŸ‘¤ you are not an accident", "ðŸ’ male and female carry dignity", "ðŸŒ dominion means responsibility", "âœ¨ creation is very good"],
+        heading: "Ã°Å¸â€˜Â¤ Humanity Is Made in God's Image",
+        teachingTitle: "Ã°Å¸â€˜â€˜ Human Life Has God-Given Worth",
+        list: ["Ã°Å¸â€˜Â¤ you are not an accident", "Ã°Å¸â€™Â male and female carry dignity", "Ã°Å¸Å’Â dominion means responsibility", "Ã¢Å“Â¨ creation is very good"],
       },
       "Genesis 2:1-3": {
-        heading: "ðŸ•Šï¸ God Rests and Makes Time Holy",
-        teachingTitle: "ðŸ•¯ï¸ Rest Is Built Into Creation",
-        list: ["âœ… the work is complete", "ðŸ“… time with God is holy", "ðŸ•Šï¸ rest is trust", "ðŸ™ rest is worship"],
+        heading: "Ã°Å¸â€¢Å Ã¯Â¸Â God Rests and Makes Time Holy",
+        teachingTitle: "Ã°Å¸â€¢Â¯Ã¯Â¸Â Rest Is Built Into Creation",
+        list: ["Ã¢Å“â€¦ the work is complete", "Ã°Å¸â€œâ€¦ time with God is holy", "Ã°Å¸â€¢Å Ã¯Â¸Â rest is trust", "Ã°Å¸â„¢Â rest is worship"],
       },
       "Genesis 2:4-9": {
-        heading: "ðŸŒ¿ God Forms Humanity With Breath",
-        teachingTitle: "ðŸŒ¬ï¸ Dust Touched by God",
-        list: ["ðŸŒ humanity is formed from dust", "ðŸŒ¬ï¸ life comes from God's breath", "ðŸŒ³ Eden is prepared", "ðŸ¡ provision comes before the command"],
+        heading: "Ã°Å¸Å’Â¿ God Forms Humanity With Breath",
+        teachingTitle: "Ã°Å¸Å’Â¬Ã¯Â¸Â Dust Touched by God",
+        list: ["Ã°Å¸Å’Â humanity is formed from dust", "Ã°Å¸Å’Â¬Ã¯Â¸Â life comes from God's breath", "Ã°Å¸Å’Â³ Eden is prepared", "Ã°Å¸ÂÂ¡ provision comes before the command"],
       },
       "Genesis 2:10-17": {
-        heading: "ðŸ’§ Work, Freedom, and One Boundary",
-        teachingTitle: "ðŸŽ The Question Is Trust",
-        list: ["ðŸ’§ the garden is supplied", "ðŸ› ï¸ work is good before sin", "ðŸŒ³ freedom comes before restriction", "âš–ï¸ one boundary teaches trust"],
+        heading: "Ã°Å¸â€™Â§ Work, Freedom, and One Boundary",
+        teachingTitle: "Ã°Å¸ÂÅ½ The Question Is Trust",
+        list: ["Ã°Å¸â€™Â§ the garden is supplied", "Ã°Å¸â€ºÂ Ã¯Â¸Â work is good before sin", "Ã°Å¸Å’Â³ freedom comes before restriction", "Ã¢Å¡â€“Ã¯Â¸Â one boundary teaches trust"],
       },
       "Genesis 2:18-25": {
-        heading: "ðŸ¤ God Creates Relationship",
-        teachingTitle: "âœ¨ Fully Known and Not Ashamed",
-        list: ["ðŸ¤ aloneness is not good", "ðŸ¾ animals are not enough", "ðŸ’ woman is formed for partnership", "âœ¨ no hiding, no fear, no shame"],
+        heading: "Ã°Å¸Â¤Â God Creates Relationship",
+        teachingTitle: "Ã¢Å“Â¨ Fully Known and Not Ashamed",
+        list: ["Ã°Å¸Â¤Â aloneness is not good", "Ã°Å¸ÂÂ¾ animals are not enough", "Ã°Å¸â€™Â woman is formed for partnership", "Ã¢Å“Â¨ no hiding, no fear, no shame"],
       },
     };
     const dayOneOpening = [
@@ -8561,322 +8561,347 @@ export default function DashboardJourneyExperience({
     ];
     const dayTwoDisplay: Record<string, { heading: string; teachingTitle: string; list?: string[] }> = {
       "Genesis 3:1-5": {
-        heading: "ðŸ The Lie Enters the Garden",
-        teachingTitle: "ðŸ Has God Really Said?",
-        list: ["ðŸŒ³ every tree was provision", "ðŸŽ one tree was boundary", "ðŸ the serpent made God sound restrictive", "ðŸ§  the lie was about trust"],
+        heading: "Ã°Å¸ÂÂ The Lie Enters the Garden",
+        teachingTitle: "Ã°Å¸ÂÂ Has God Really Said?",
+        list: ["Ã°Å¸Å’Â³ every tree was provision", "Ã°Å¸ÂÅ½ one tree was boundary", "Ã°Å¸ÂÂ the serpent made God sound restrictive", "Ã°Å¸Â§Â  the lie was about trust"],
       },
       "Genesis 3:6-7": {
-        heading: "ðŸ‘€ Shame Enters the Story",
-        teachingTitle: "ðŸŽ Sin Looks Good Before It Hurts",
-        list: ["ðŸƒ fig leaves", "ðŸ˜” shame", "ðŸ‘€ opened eyes", "ðŸ’” broken trust"],
+        heading: "Ã°Å¸â€˜â‚¬ Shame Enters the Story",
+        teachingTitle: "Ã°Å¸ÂÅ½ Sin Looks Good Before It Hurts",
+        list: ["Ã°Å¸ÂÆ’ fig leaves", "Ã°Å¸Ëœâ€ shame", "Ã°Å¸â€˜â‚¬ opened eyes", "Ã°Å¸â€™â€ broken trust"],
       },
       "Genesis 3:8-13": {
-        heading: "ðŸŒ³ God Comes Looking",
-        teachingTitle: "â“ Where Are You?",
-        list: ["ðŸ˜¨ fear enters", "ðŸŒ³ hiding begins", "ðŸ‘‰ blame spreads", "ðŸ’” relationship breaks"],
+        heading: "Ã°Å¸Å’Â³ God Comes Looking",
+        teachingTitle: "Ã¢Ââ€œ Where Are You?",
+        list: ["Ã°Å¸ËœÂ¨ fear enters", "Ã°Å¸Å’Â³ hiding begins", "Ã°Å¸â€˜â€° blame spreads", "Ã°Å¸â€™â€ relationship breaks"],
       },
       "Genesis 3:14-19": {
-        heading: "âš–ï¸ Judgment and the First Promise",
-        teachingTitle: "ðŸŒ± The First Gospel Promise",
-        list: ["ðŸŒ¾ work becomes painful", "ðŸŒµ thorns grow", "ðŸ˜” relationships strain", "âš°ï¸ dust returns to dust", "ðŸŒ± promise still lives"],
+        heading: "Ã¢Å¡â€“Ã¯Â¸Â Judgment and the First Promise",
+        teachingTitle: "Ã°Å¸Å’Â± The First Gospel Promise",
+        list: ["Ã°Å¸Å’Â¾ work becomes painful", "Ã°Å¸Å’Âµ thorns grow", "Ã°Å¸Ëœâ€ relationships strain", "Ã¢Å¡Â°Ã¯Â¸Â dust returns to dust", "Ã°Å¸Å’Â± promise still lives"],
       },
       "Genesis 3:20-24": {
-        list: ["ðŸ§¥ God covers shame", "ðŸŒ³ Eden is guarded", "ðŸ”¥ the way back is blocked", "ðŸŒ± hope still moves forward"],
-        heading: "ðŸ§¥ Mercy Outside Eden",
-        teachingTitle: "ðŸ§¥ God Covers Them",
+        list: ["Ã°Å¸Â§Â¥ God covers shame", "Ã°Å¸Å’Â³ Eden is guarded", "Ã°Å¸â€Â¥ the way back is blocked", "Ã°Å¸Å’Â± hope still moves forward"],
+        heading: "Ã°Å¸Â§Â¥ Mercy Outside Eden",
+        teachingTitle: "Ã°Å¸Â§Â¥ God Covers Them",
       },
       "Genesis 4:1-7": {
-        heading: "ðŸ‘¶ Sin Moves Into the Family",
-        teachingTitle: "ðŸ˜  Sin Crouches at the Door",
-        list: ["ðŸ˜  anger", "ðŸ˜’ jealousy", "ðŸšª sin at the door", "âš ï¸ warning before destruction"],
+        heading: "Ã°Å¸â€˜Â¶ Sin Moves Into the Family",
+        teachingTitle: "Ã°Å¸ËœÂ  Sin Crouches at the Door",
+        list: ["Ã°Å¸ËœÂ  anger", "Ã°Å¸Ëœâ€™ jealousy", "Ã°Å¸Å¡Âª sin at the door", "Ã¢Å¡Â Ã¯Â¸Â warning before destruction"],
       },
       "Genesis 4:8-16": {
-        list: ["ðŸ©¸ blood cries", "ðŸŒ the ground witnesses", "ðŸš¶ Cain becomes a wanderer", "âš–ï¸ judgment comes", "ðŸ›¡ï¸ mercy still limits revenge"],
-        heading: "ðŸ©¸ The First Murder",
-        teachingTitle: "ðŸ©¸ Blood Cries From the Ground",
+        list: ["Ã°Å¸Â©Â¸ blood cries", "Ã°Å¸Å’Â the ground witnesses", "Ã°Å¸Å¡Â¶ Cain becomes a wanderer", "Ã¢Å¡â€“Ã¯Â¸Â judgment comes", "Ã°Å¸â€ºÂ¡Ã¯Â¸Â mercy still limits revenge"],
+        heading: "Ã°Å¸Â©Â¸ The First Murder",
+        teachingTitle: "Ã°Å¸Â©Â¸ Blood Cries From the Ground",
       },
       "Genesis 4:17-24": {
-        heading: "ðŸ™ï¸ A Broken World Still Builds",
-        teachingTitle: "ðŸ™ï¸ Culture and Corruption",
-        list: ["ðŸ™ï¸ city", "ðŸŽ¶ music", "ðŸ”¨ tools", "ðŸ’” pride", "ðŸ©¸ violence"],
+        heading: "Ã°Å¸Ââ„¢Ã¯Â¸Â A Broken World Still Builds",
+        teachingTitle: "Ã°Å¸Ââ„¢Ã¯Â¸Â Culture and Corruption",
+        list: ["Ã°Å¸Ââ„¢Ã¯Â¸Â city", "Ã°Å¸Å½Â¶ music", "Ã°Å¸â€Â¨ tools", "Ã°Å¸â€™â€ pride", "Ã°Å¸Â©Â¸ violence"],
       },
       "Genesis 4:25-26": {
-        list: ["ðŸŒ± another child", "ðŸ™ people call on Yahweh", "ðŸ•¯ï¸ hope continues", "âœï¸ the promise keeps moving"],
-        heading: "ðŸŒ± Hope Keeps Moving",
-        teachingTitle: "ðŸŒ± Another Seed",
+        list: ["Ã°Å¸Å’Â± another child", "Ã°Å¸â„¢Â people call on Yahweh", "Ã°Å¸â€¢Â¯Ã¯Â¸Â hope continues", "Ã¢Å“ÂÃ¯Â¸Â the promise keeps moving"],
+        heading: "Ã°Å¸Å’Â± Hope Keeps Moving",
+        teachingTitle: "Ã°Å¸Å’Â± Another Seed",
       },
     };
     const dayThreeDisplay: Record<string, { heading: string; teachingTitle: string; list?: string[] }> = {
       "Genesis 5:1-5": {
-        heading: "ðŸ§¬ Death Moves Through the Generations",
-        teachingTitle: "ðŸ§¬ Still Made in God's Image",
-        list: ["ðŸ§¬ made in God's image", "ðŸ‘¶ family line continues", "â³ long life is still temporary", "âš°ï¸ death has entered the story"],
+        heading: "Ã°Å¸Â§Â¬ Death Moves Through the Generations",
+        teachingTitle: "Ã°Å¸Â§Â¬ Still Made in God's Image",
+        list: ["Ã°Å¸Â§Â¬ made in God's image", "Ã°Å¸â€˜Â¶ family line continues", "Ã¢ÂÂ³ long life is still temporary", "Ã¢Å¡Â°Ã¯Â¸Â death has entered the story"],
       },
       "Genesis 5:6-20": {
-        heading: "â³ The Same Sentence Keeps Falling",
-        teachingTitle: "ðŸ”” The Bell of Death",
-        list: ["ðŸ“œ names are remembered", "ðŸ‘¶ children are born", "âš°ï¸ death keeps repeating", "ðŸŒ± hope still moves through the family line"],
+        heading: "Ã¢ÂÂ³ The Same Sentence Keeps Falling",
+        teachingTitle: "Ã°Å¸â€â€ The Bell of Death",
+        list: ["Ã°Å¸â€œÅ“ names are remembered", "Ã°Å¸â€˜Â¶ children are born", "Ã¢Å¡Â°Ã¯Â¸Â death keeps repeating", "Ã°Å¸Å’Â± hope still moves through the family line"],
       },
       "Genesis 5:21-24": {
-        heading: "ðŸš¶ Enoch Walked With God",
-        teachingTitle: "ðŸš¶ A Different Ending",
-        list: ["ðŸš¶ walking with God", "ðŸ•Šï¸ closeness with God", "ðŸŒ‘ faith in a dark world", "âœ¨ a different ending"],
+        heading: "Ã°Å¸Å¡Â¶ Enoch Walked With God",
+        teachingTitle: "Ã°Å¸Å¡Â¶ A Different Ending",
+        list: ["Ã°Å¸Å¡Â¶ walking with God", "Ã°Å¸â€¢Å Ã¯Â¸Â closeness with God", "Ã°Å¸Å’â€˜ faith in a dark world", "Ã¢Å“Â¨ a different ending"],
       },
       "Genesis 5:25-32": {
-        heading: "ðŸ‘¶ Noah Is Born Into a Tired World",
-        teachingTitle: "ðŸ˜®â€ðŸ’¨ A World Looking for Relief",
-        list: ["ðŸ˜®â€ðŸ’¨ tired world", "ðŸŒ¾ painful work", "ðŸŒ cursed ground", "ðŸ‘¶ Noah brings hope", "ðŸ›Ÿ God prepares preservation"],
+        heading: "Ã°Å¸â€˜Â¶ Noah Is Born Into a Tired World",
+        teachingTitle: "Ã°Å¸ËœÂ®Ã¢â‚¬ÂÃ°Å¸â€™Â¨ A World Looking for Relief",
+        list: ["Ã°Å¸ËœÂ®Ã¢â‚¬ÂÃ°Å¸â€™Â¨ tired world", "Ã°Å¸Å’Â¾ painful work", "Ã°Å¸Å’Â cursed ground", "Ã°Å¸â€˜Â¶ Noah brings hope", "Ã°Å¸â€ºÅ¸ God prepares preservation"],
       },
       "Genesis 6:1-8": {
-        heading: "ðŸŒ‘ The Earth Becomes Corrupt",
-        teachingTitle: "ðŸŒ‘ Corruption Reaches the Heart",
-        list: ["ðŸŒ‘ corruption spreads", "ðŸ§  the heart turns evil", "ðŸ’” God grieves", "âš–ï¸ judgment is coming", "ðŸ›Ÿ Noah finds favor"],
+        heading: "Ã°Å¸Å’â€˜ The Earth Becomes Corrupt",
+        teachingTitle: "Ã°Å¸Å’â€˜ Corruption Reaches the Heart",
+        list: ["Ã°Å¸Å’â€˜ corruption spreads", "Ã°Å¸Â§Â  the heart turns evil", "Ã°Å¸â€™â€ God grieves", "Ã¢Å¡â€“Ã¯Â¸Â judgment is coming", "Ã°Å¸â€ºÅ¸ Noah finds favor"],
       },
       "Genesis 6:9-13": {
-        heading: "ðŸš¶ Noah Walked With God",
-        teachingTitle: "ðŸ›¡ï¸ Different From His Generation",
-        list: ["ðŸš¶ Noah walked with God", "ðŸŒ the world was corrupt", "ðŸ©¸ violence filled the earth", "ðŸ›¡ï¸ Noah lived differently", "ðŸ™ obedience starts with walking close"],
+        heading: "Ã°Å¸Å¡Â¶ Noah Walked With God",
+        teachingTitle: "Ã°Å¸â€ºÂ¡Ã¯Â¸Â Different From His Generation",
+        list: ["Ã°Å¸Å¡Â¶ Noah walked with God", "Ã°Å¸Å’Â the world was corrupt", "Ã°Å¸Â©Â¸ violence filled the earth", "Ã°Å¸â€ºÂ¡Ã¯Â¸Â Noah lived differently", "Ã°Å¸â„¢Â obedience starts with walking close"],
       },
       "Genesis 6:14-22": {
-        heading: "ðŸ› ï¸ God Commands the Ark",
-        teachingTitle: "ðŸ› ï¸ Faith Becomes Construction",
-        list: ["ðŸ› ï¸ faith became work", "ðŸ“ obedience had details", "ðŸšª the ship had one door", "ðŸ›Ÿ God provided refuge", "âœ… Noah did what God commanded"],
+        heading: "Ã°Å¸â€ºÂ Ã¯Â¸Â God Commands the Ark",
+        teachingTitle: "Ã°Å¸â€ºÂ Ã¯Â¸Â Faith Becomes Construction",
+        list: ["Ã°Å¸â€ºÂ Ã¯Â¸Â faith became work", "Ã°Å¸â€œÂ obedience had details", "Ã°Å¸Å¡Âª the ship had one door", "Ã°Å¸â€ºÅ¸ God provided refuge", "Ã¢Å“â€¦ Noah did what God commanded"],
       },
       "Genesis 7:1-10": {
-        heading: "🚢 Entering The Ark",
-        teachingTitle: "🚢 God Moves Noah From Building To Entering",
-        list: ["🗣️ God speaks to Noah", "🏠 Noah's household enters", "🐑 clean and unclean animals come", "⏳ seven days of waiting", "🌊 judgment is near"],
+        heading: "ðŸš¢ Entering The Ark",
+        teachingTitle: "ðŸš¢ God Moves Noah From Building To Entering",
+        list: ["ðŸ—£ï¸ God speaks to Noah", "ðŸ  Noah's household enters", "ðŸ‘ clean and unclean animals come", "â³ seven days of waiting", "ðŸŒŠ judgment is near"],
       },
       "Genesis 7:11-17": {
-        heading: "🚢 The Flood Begins",
-        teachingTitle: "🌧️ The Waters Break From Above And Below",
-        list: ["🎂 Noah is 600 years old", "🌊 the deep breaks open", "☁️ heaven opens", "🔒 the LORD shuts Noah in", "🚢 the ark is lifted"],
+        heading: "ðŸš¢ The Flood Begins",
+        teachingTitle: "ðŸŒ§ï¸ The Waters Break From Above And Below",
+        list: ["ðŸŽ‚ Noah is 600 years old", "ðŸŒŠ the deep breaks open", "â˜ï¸ heaven opens", "ðŸ”’ the LORD shuts Noah in", "ðŸš¢ the ark is lifted"],
       },
       "Genesis 7:17-24": {
-        heading: "🌊 The Waters Take Over The Earth",
-        teachingTitle: "🌊 The Flood Overpowers Everything Outside The Ark",
-        list: ["📈 waters keep rising", "⛰️ hills and mountains are covered", "💀 life outside the ark perishes", "👨 Noah and his family remain", "⏳ the waters prevail 150 days"],
+        heading: "ðŸŒŠ The Waters Take Over The Earth",
+        teachingTitle: "ðŸŒŠ The Flood Overpowers Everything Outside The Ark",
+        list: ["ðŸ“ˆ waters keep rising", "â›°ï¸ hills and mountains are covered", "ðŸ’€ life outside the ark perishes", "ðŸ‘¨ Noah and his family remain", "â³ the waters prevail 150 days"],
       },
     };
 
     const dayFourDisplay: Record<string, { heading: string; teachingTitle: string; list?: string[] }> = {
-      "Genesis 8:1-5": {
-        heading: "ðŸŒ¬ï¸ God Remembers Noah",
-        teachingTitle: "ðŸŒˆ Mercy Begins to Move",
-        list: ["ðŸ•Šï¸ God remembers Noah", "ðŸŒ¬ï¸ wind passes over the earth", "ðŸŒŠ waters begin to go down", "â›°ï¸ the ark rests", "ðŸŒ± hope returns in stages"],
+      "Genesis 8:1-3": {
+        heading: "?? The Waters Recede",
+        teachingTitle: "?? God Turns Toward Rescue",
+        list: ["?? God remembered Noah", "?? wind passes over the earth", "?? waters begin to subside", "? 150 days reach their turning point", "?? restoration begins"],
       },
-      "Genesis 8:6-12": {
-        heading: "ðŸ•Šï¸ The Raven, the Dove, and the Olive Leaf",
-        teachingTitle: "ðŸŒ¿ The First Sign of Life",
-        list: ["ðŸªŸ Noah opens the window", "ðŸ¦ the raven goes out", "ðŸ•Šï¸ the dove searches for rest", "ðŸŒ¿ the olive leaf appears", "â³ Noah keeps waiting"],
+      "Genesis 8:4-5": {
+        heading: "??? The Ark Rests On Ararat",
+        teachingTitle: "?? The Drifting Finally Stops",
+        list: ["?? the ark comes to rest", "?? the timing is exact", "??? Ararat is a mountain region", "?? the waters keep lowering", "? Noah still must wait"],
       },
-      "Genesis 8:13-19": {
-        heading: "ðŸšª God Says Go Forth",
-        teachingTitle: "ðŸš¶ Rescue Becomes Responsibility",
-        list: ["ðŸŒ the ground is dry", "ðŸ—£ï¸ God speaks again", "ðŸšª Noah leaves the ark", "ðŸ¾ animals go out by kind", "ðŸŒ± life begins again"],
+      "Genesis 8:6-14": {
+        heading: "??? The Raven And The Dove",
+        teachingTitle: "?? Small Signs Of Life Return",
+        list: ["?? Noah opens the window", "?? the raven goes out", "??? the dove tests the earth", "?? the olive leaf appears", "? Noah keeps waiting"],
+      },
+      "Genesis 8:15-19": {
+        heading: "?? Leaving The Ark",
+        teachingTitle: "?? God Finally Says Go Forth",
+        list: ["??? God speaks again", "?? Noah is told to leave", "?? Noah's family steps out", "?? the creatures are released", "?? life begins again"],
       },
       "Genesis 8:20-22": {
-        heading: "ðŸ”¥ Worship After Rescue",
-        teachingTitle: "ðŸ™ The First Act Is Worship",
-        list: ["ðŸ”¥ Noah builds an altar", "ðŸ‘ clean animals are offered", "ðŸ™ rescue becomes worship", "ðŸŒ¾ seedtime and harvest continue", "â˜€ï¸ day and night shall not cease"],
+        heading: "?? Noah's Sacrifice",
+        teachingTitle: "?? Noah Worships Before Anything Else",
+        list: ["?? Noah builds an altar", "?? clean animals are offered", "?? burnt offerings rise to God", "?? seedtime and harvest continue", "?? day and night shall not cease"],
       },
       "Genesis 9:1-7": {
-        heading: "ðŸ©¸ Blessing, Blood, and Human Dignity",
-        teachingTitle: "ðŸ‘¤ The Image of God Still Matters",
-        list: ["ðŸ™Œ God blesses Noah", "ðŸŒ fill the earth", "ðŸ©¸ blood represents life", "ðŸ‘¤ people bear God's image", "âš–ï¸ violence is not normal"],
+        heading: "🙌 God Blesses Noah",
+        teachingTitle: "🪞 Human Life Still Bears God's Image",
+        list: ["🙌 God blesses Noah and his sons", "👨‍👩‍👧 be fruitful and multiply", "🩸 blood represents life", "🪞 people still bear God's image", "⚖️ violence must be answered for"],
       },
-      "Genesis 9:8-17": {
-        heading: "ðŸŒˆ The Rainbow Covenant",
-        teachingTitle: "â˜ï¸ Mercy in the Clouds",
-        list: ["ðŸ¤ God establishes covenant", "ðŸ¾ every living creature is included", "ðŸŒˆ the bow is the sign", "â˜ï¸ clouds carry promise", "ðŸ•Šï¸ God remembers mercy"],
+      "Genesis 9:8-11": {
+        heading: "🤝 God's Covenant With Noah",
+        teachingTitle: "🌍 God Gives Peace About The Future",
+        list: ["🤝 God establishes covenant", "🌱 future generations are included", "🐦 every living creature is included", "🌊 no worldwide flood again", "📖 God gives reassurance"],
       },
-      "Genesis 9:18-29": {
-        heading: "ðŸ‡ Noah's Failure After the Flood",
-        teachingTitle: "ðŸ§¥ Rescued People Still Need Grace",
-        list: ["ðŸ‡ Noah plants a vineyard", "ðŸ˜” drunkenness brings shame", "ðŸ‘€ Ham exposes", "ðŸ§¥ Shem and Japheth cover", "âš°ï¸ Noah still dies"],
+      "Genesis 9:12-19": {
+        heading: "🌈 The Rainbow",
+        teachingTitle: "☁️ Mercy Appears In The Clouds",
+        list: ["🌈 the rainbow is the sign", "🤝 the covenant is God's promise", "☁️ storms still happen", "💭 God remembers His covenant", "❤️ Noah can live without fear"],
       },
-      "Genesis 10:1-5": {
-        heading: "ðŸ—ºï¸ The Nations After the Flood",
-        teachingTitle: "ðŸŒ Families Become Peoples",
-        list: ["ðŸ‘¨â€ðŸ‘¦ Noah's sons have sons", "ðŸ—ºï¸ lands are named", "ðŸ—£ï¸ tongues are named", "ðŸ˜ï¸ families spread", "ðŸŒ nations begin to form"],
+      "Genesis 9:20-24": {
+        heading: "🍇 Noah Gets Drunk",
+        teachingTitle: "⚠️ The Flood Did Not Remove Sin",
+        list: ["👨‍🌾 Noah becomes a farmer", "🍷 Noah drinks the wine", "🍺 drunkenness brings shame", "👀 Ham dishonors his father", "🤝 Shem and Japheth respond with honor"],
       },
-      "Genesis 10:6-20": {
-        heading: "ðŸ™ï¸ Ham, Nimrod, and Early Kingdoms",
-        teachingTitle: "ðŸ‘‘ Power Rises Again",
-        list: ["ðŸ›ï¸ Egypt and Canaan appear", "ðŸ‘‘ Nimrod becomes mighty", "ðŸ™ï¸ Babel is named", "ðŸ° kingdoms begin", "âš ï¸ pride is already near"],
+      "Genesis 9:25-29": {
+        heading: "🌾 Canaan Cursed",
+        teachingTitle: "📖 Noah's Words Look Far Ahead",
+        list: ["⚖️ Noah speaks about Canaan", "🙌 Shem's line is blessed", "🌍 Japheth is enlarged", "🌳 the focus is future generations", "⚰️ Noah still dies"],
+      },
+      "Genesis 10:1-2": {
+        heading: "🌍 Noah’s Descendants",
+        teachingTitle: "👨‍👩‍👦 The Nations Begin Forming",
+        list: ["👨‍👩‍👦 Noah’s sons become fathers", "📖 the story shifts from Noah to his sons", "🌍 the earth begins filling again", "➡️ the nations start to spread"],
+      },
+      "Genesis 10:3-5": {
+        heading: "🌍 The Sons Of Japheth",
+        teachingTitle: "🗺️ Coastlands And Nations",
+        list: ["🌍 Japheth’s line spreads", "🗺️ lands and coastlands are named", "🗣️ languages begin to separate", "➡️ families become nations"],
+      },
+      "Genesis 10:6-11": {
+        heading: "🌍 The Sons of Ham",
+        teachingTitle: "👑 Nimrod And Early Kingdoms",
+        list: ["🌍 Ham’s family expands", "👑 Nimrod becomes mighty", "🏙️ Babel is named", "➡️ kingdoms begin rising again"],
+      },
+      "Genesis 10:12-20": {
+        heading: "🌍 The Sons of Ham Continued",
+        teachingTitle: "🏙️ Cities, Peoples, And Borders",
+        list: ["🏙️ Nineveh and Assyria grow", "🇪🇬 Egypt’s peoples are listed", "🌍 Canaan’s tribes spread", "➡️ the land’s borders are described"],
       },
       "Genesis 10:21-32": {
-        heading: "ðŸŒ± Shem and the Line Toward Promise",
-        teachingTitle: "ðŸ§µ The Story Moves Toward Abram",
-        list: ["ðŸŒ± Shem's line continues", "ðŸ§µ Eber is highlighted", "ðŸŒ the earth is divided", "ðŸ—£ï¸ nations spread", "âœ¨ promise is getting closer"],
+        heading: "🌍 The Sons of Shem",
+        teachingTitle: "📖 The Line Toward Abraham",
+        list: ["📖 Shem’s line is highlighted", "🌳 Eber becomes important", "🌍 Peleg marks division", "➡️ the story moves toward Genesis 11 and 12"],
       },
     };
     const dayFiveDisplay: Record<string, { heading: string; teachingTitle: string; list?: string[] }> = {
       "Genesis 11:1-9": {
-        heading: "ðŸ™ï¸ Babel Tries to Make a Name",
-        teachingTitle: "ðŸ§± Pride Builds Without Trust",
-        list: ["ðŸ§± bricks are made", "ðŸ™ï¸ a city rises", "ðŸ—¼ a tower reaches upward", "ðŸ‘‘ people seek a name", "ðŸŒ God scatters pride"],
+        heading: "Ã°Å¸Ââ„¢Ã¯Â¸Â Babel Tries to Make a Name",
+        teachingTitle: "Ã°Å¸Â§Â± Pride Builds Without Trust",
+        list: ["Ã°Å¸Â§Â± bricks are made", "Ã°Å¸Ââ„¢Ã¯Â¸Â a city rises", "Ã°Å¸â€”Â¼ a tower reaches upward", "Ã°Å¸â€˜â€˜ people seek a name", "Ã°Å¸Å’Â God scatters pride"],
       },
       "Genesis 11:10-32": {
-        heading: "ðŸ§¬ The Story Narrows Toward Abram",
-        teachingTitle: "ðŸ›¤ï¸ An Unfinished Road",
-        list: ["ðŸ§¬ Shem's line continues", "ðŸ‘¤ Abram appears", "ðŸ’” Sarai is barren", "ðŸ›¤ï¸ the family moves toward Canaan", "â¸ï¸ the journey stops in Haran"],
+        heading: "Ã°Å¸Â§Â¬ The Story Narrows Toward Abram",
+        teachingTitle: "Ã°Å¸â€ºÂ¤Ã¯Â¸Â An Unfinished Road",
+        list: ["Ã°Å¸Â§Â¬ Shem's line continues", "Ã°Å¸â€˜Â¤ Abram appears", "Ã°Å¸â€™â€ Sarai is barren", "Ã°Å¸â€ºÂ¤Ã¯Â¸Â the family moves toward Canaan", "Ã¢ÂÂ¸Ã¯Â¸Â the journey stops in Haran"],
       },
       "Genesis 12:1-3": {
-        heading: "ðŸ“£ God Calls Abram",
-        teachingTitle: "âœ¨ Promise Before the Map",
-        list: ["ðŸ“£ God speaks", "ðŸ  Abram must leave", "ðŸŒ land is promised", "ðŸ‘¨â€ðŸ‘©â€ðŸ‘§â€ðŸ‘¦ nation is promised", "âœ¨ all families will be blessed"],
+        heading: "Ã°Å¸â€œÂ£ God Calls Abram",
+        teachingTitle: "Ã¢Å“Â¨ Promise Before the Map",
+        list: ["Ã°Å¸â€œÂ£ God speaks", "Ã°Å¸ÂÂ  Abram must leave", "Ã°Å¸Å’Â land is promised", "Ã°Å¸â€˜Â¨Ã¢â‚¬ÂÃ°Å¸â€˜Â©Ã¢â‚¬ÂÃ°Å¸â€˜Â§Ã¢â‚¬ÂÃ°Å¸â€˜Â¦ nation is promised", "Ã¢Å“Â¨ all families will be blessed"],
       },
       "Genesis 12:4-9": {
-        heading: "ðŸš¶ Abram Goes",
-        teachingTitle: "â›º Obedience Starts Moving",
-        list: ["ðŸš¶ Abram departs", "ðŸ‘¨â€ðŸ‘©â€ðŸ‘§ family comes with him", "â›º he enters Canaan", "ðŸ”¥ he builds altars", "ðŸ™ he calls on the LORD"],
+        heading: "Ã°Å¸Å¡Â¶ Abram Goes",
+        teachingTitle: "Ã¢â€ºÂº Obedience Starts Moving",
+        list: ["Ã°Å¸Å¡Â¶ Abram departs", "Ã°Å¸â€˜Â¨Ã¢â‚¬ÂÃ°Å¸â€˜Â©Ã¢â‚¬ÂÃ°Å¸â€˜Â§ family comes with him", "Ã¢â€ºÂº he enters Canaan", "Ã°Å¸â€Â¥ he builds altars", "Ã°Å¸â„¢Â he calls on the LORD"],
       },
       "Genesis 12:10-20": {
-        heading: "ðŸŒ¾ Fear Takes Abram to Egypt",
-        teachingTitle: "ðŸ˜Ÿ Faith Still Needs Formation",
-        list: ["ðŸŒ¾ famine comes", "ðŸ‡ªðŸ‡¬ Abram goes to Egypt", "ðŸ˜Ÿ fear takes over", "ðŸ‘‘ Sarai is taken", "ðŸ›¡ï¸ God protects the promise"],
+        heading: "Ã°Å¸Å’Â¾ Fear Takes Abram to Egypt",
+        teachingTitle: "Ã°Å¸ËœÅ¸ Faith Still Needs Formation",
+        list: ["Ã°Å¸Å’Â¾ famine comes", "Ã°Å¸â€¡ÂªÃ°Å¸â€¡Â¬ Abram goes to Egypt", "Ã°Å¸ËœÅ¸ fear takes over", "Ã°Å¸â€˜â€˜ Sarai is taken", "Ã°Å¸â€ºÂ¡Ã¯Â¸Â God protects the promise"],
       },
       "Genesis 13:1-7": {
-        heading: "ðŸ”¥ Abram Returns to the Altar",
-        teachingTitle: "ðŸ” Back to Worship",
-        list: ["ðŸ‡ªðŸ‡¬ Abram leaves Egypt", "ðŸ”¥ he returns to the altar", "ðŸ‘ flocks increase", "âš ï¸ strife begins", "ðŸŒ the land feels crowded"],
+        heading: "Ã°Å¸â€Â¥ Abram Returns to the Altar",
+        teachingTitle: "Ã°Å¸â€Â Back to Worship",
+        list: ["Ã°Å¸â€¡ÂªÃ°Å¸â€¡Â¬ Abram leaves Egypt", "Ã°Å¸â€Â¥ he returns to the altar", "Ã°Å¸Ââ€˜ flocks increase", "Ã¢Å¡Â Ã¯Â¸Â strife begins", "Ã°Å¸Å’Â the land feels crowded"],
       },
       "Genesis 13:8-13": {
-        heading: "ðŸ‘€ Lot Chooses by Sight",
-        teachingTitle: "ðŸ¤ Faith Does Not Have to Grab",
-        list: ["ðŸ¤ Abram chooses peace", "ðŸ‘€ Lot looks outward", "ðŸŒ¿ the plain looks good", "ðŸ™ï¸ Lot moves toward Sodom", "âš ï¸ beauty can hide danger"],
+        heading: "Ã°Å¸â€˜â‚¬ Lot Chooses by Sight",
+        teachingTitle: "Ã°Å¸Â¤Â Faith Does Not Have to Grab",
+        list: ["Ã°Å¸Â¤Â Abram chooses peace", "Ã°Å¸â€˜â‚¬ Lot looks outward", "Ã°Å¸Å’Â¿ the plain looks good", "Ã°Å¸Ââ„¢Ã¯Â¸Â Lot moves toward Sodom", "Ã¢Å¡Â Ã¯Â¸Â beauty can hide danger"],
       },
       "Genesis 13:14-18": {
-        heading: "ðŸŒ„ God Repeats the Promise",
-        teachingTitle: "ðŸŒ± Abram Receives What God Gives",
-        list: ["ðŸŒ„ Abram lifts his eyes", "ðŸŒ land is promised", "ðŸŒ± descendants are promised", "ðŸš¶ Abram walks by faith", "ðŸ”¥ another altar is built"],
+        heading: "Ã°Å¸Å’â€ž God Repeats the Promise",
+        teachingTitle: "Ã°Å¸Å’Â± Abram Receives What God Gives",
+        list: ["Ã°Å¸Å’â€ž Abram lifts his eyes", "Ã°Å¸Å’Â land is promised", "Ã°Å¸Å’Â± descendants are promised", "Ã°Å¸Å¡Â¶ Abram walks by faith", "Ã°Å¸â€Â¥ another altar is built"],
       },
     };
     const daySixDisplay: Record<string, { heading: string; teachingTitle: string; list?: string[] }> = {
       "Genesis 14:1-12": {
-        heading: "âš”ï¸ War Reaches Lot",
-        teachingTitle: "ðŸ™ï¸ Lot's Direction Becomes Dangerous",
-        list: ["ðŸ‘‘ kings go to war", "ðŸ™ï¸ Sodom is pulled in", "â›“ï¸ Lot is captured", "ðŸ“¦ goods are taken", "âš ï¸ choices have consequences"],
+        heading: "Ã¢Å¡â€Ã¯Â¸Â War Reaches Lot",
+        teachingTitle: "Ã°Å¸Ââ„¢Ã¯Â¸Â Lot's Direction Becomes Dangerous",
+        list: ["Ã°Å¸â€˜â€˜ kings go to war", "Ã°Å¸Ââ„¢Ã¯Â¸Â Sodom is pulled in", "Ã¢â€ºâ€œÃ¯Â¸Â Lot is captured", "Ã°Å¸â€œÂ¦ goods are taken", "Ã¢Å¡Â Ã¯Â¸Â choices have consequences"],
       },
       "Genesis 14:13-16": {
-        heading: "ðŸ›¡ï¸ Abram Rescues Lot",
-        teachingTitle: "ðŸ’ª Faith Moves Toward Rescue",
-        list: ["ðŸ“£ Abram hears", "ðŸ›¡ï¸ trained servants gather", "ðŸŒ™ night pursuit begins", "â›“ï¸ captives are freed", "ðŸ¤ Lot is brought back"],
+        heading: "Ã°Å¸â€ºÂ¡Ã¯Â¸Â Abram Rescues Lot",
+        teachingTitle: "Ã°Å¸â€™Âª Faith Moves Toward Rescue",
+        list: ["Ã°Å¸â€œÂ£ Abram hears", "Ã°Å¸â€ºÂ¡Ã¯Â¸Â trained servants gather", "Ã°Å¸Å’â„¢ night pursuit begins", "Ã¢â€ºâ€œÃ¯Â¸Â captives are freed", "Ã°Å¸Â¤Â Lot is brought back"],
       },
       "Genesis 14:17-20": {
-        heading: "ðŸž Melchizedek Blesses Abram",
-        teachingTitle: "ðŸ™Œ Victory Belongs to God Most High",
-        list: ["ðŸž bread and wine appear", "ðŸ‘‘ Melchizedek blesses Abram", "ðŸ™Œ God Most High is praised", "ðŸ›¡ï¸ God delivered the victory", "ðŸ”Ÿ Abram gives a tenth"],
+        heading: "Ã°Å¸ÂÅ¾ Melchizedek Blesses Abram",
+        teachingTitle: "Ã°Å¸â„¢Å’ Victory Belongs to God Most High",
+        list: ["Ã°Å¸ÂÅ¾ bread and wine appear", "Ã°Å¸â€˜â€˜ Melchizedek blesses Abram", "Ã°Å¸â„¢Å’ God Most High is praised", "Ã°Å¸â€ºÂ¡Ã¯Â¸Â God delivered the victory", "Ã°Å¸â€Å¸ Abram gives a tenth"],
       },
       "Genesis 14:21-24": {
-        heading: "ðŸš« Abram Refuses Sodom's Reward",
-        teachingTitle: "ðŸ§­ Discernment After Victory",
-        list: ["ðŸ™ï¸ Sodom offers goods", "âœ‹ Abram refuses", "ðŸ™Œ God gets the credit", "ðŸ§µ not even a thread is taken", "ðŸ§­ blessing must stay clean"],
+        heading: "Ã°Å¸Å¡Â« Abram Refuses Sodom's Reward",
+        teachingTitle: "Ã°Å¸Â§Â­ Discernment After Victory",
+        list: ["Ã°Å¸Ââ„¢Ã¯Â¸Â Sodom offers goods", "Ã¢Å“â€¹ Abram refuses", "Ã°Å¸â„¢Å’ God gets the credit", "Ã°Å¸Â§Âµ not even a thread is taken", "Ã°Å¸Â§Â­ blessing must stay clean"],
       },
       "Genesis 15:1-6": {
-        heading: "âœ¨ God Speaks to Abram's Fear",
-        teachingTitle: "ðŸŒŒ Faith Under the Stars",
-        list: ["ðŸ›¡ï¸ God is Abram's shield", "ðŸ’¬ Abram is honest", "ðŸ‘¶ the heir is promised", "ðŸŒŒ stars fill the sky", "âœ… Abram believes"],
+        heading: "Ã¢Å“Â¨ God Speaks to Abram's Fear",
+        teachingTitle: "Ã°Å¸Å’Å’ Faith Under the Stars",
+        list: ["Ã°Å¸â€ºÂ¡Ã¯Â¸Â God is Abram's shield", "Ã°Å¸â€™Â¬ Abram is honest", "Ã°Å¸â€˜Â¶ the heir is promised", "Ã°Å¸Å’Å’ stars fill the sky", "Ã¢Å“â€¦ Abram believes"],
       },
       "Genesis 15:7-11": {
-        heading: "ðŸ•Šï¸ Abram Asks for Assurance",
-        teachingTitle: "ðŸ¤ God Meets Honest Questions",
-        list: ["ðŸœï¸ God remembers Ur", "â“ Abram asks how", "ðŸ covenant pieces are prepared", "ðŸ•Šï¸ birds come down", "â³ Abram waits"],
+        heading: "Ã°Å¸â€¢Å Ã¯Â¸Â Abram Asks for Assurance",
+        teachingTitle: "Ã°Å¸Â¤Â God Meets Honest Questions",
+        list: ["Ã°Å¸ÂÅ“Ã¯Â¸Â God remembers Ur", "Ã¢Ââ€œ Abram asks how", "Ã°Å¸ÂÂ covenant pieces are prepared", "Ã°Å¸â€¢Å Ã¯Â¸Â birds come down", "Ã¢ÂÂ³ Abram waits"],
       },
       "Genesis 15:12-16": {
-        heading: "ðŸŒ‘ God Tells Abram the Long Road",
-        teachingTitle: "â³ Promise Does Not Mean Instant",
-        list: ["ðŸŒ‘ darkness falls", "â›“ï¸ affliction is foretold", "âš–ï¸ God will judge", "ðŸš¶ descendants will return", "ðŸ•Šï¸ Abram will die in peace"],
+        heading: "Ã°Å¸Å’â€˜ God Tells Abram the Long Road",
+        teachingTitle: "Ã¢ÂÂ³ Promise Does Not Mean Instant",
+        list: ["Ã°Å¸Å’â€˜ darkness falls", "Ã¢â€ºâ€œÃ¯Â¸Â affliction is foretold", "Ã¢Å¡â€“Ã¯Â¸Â God will judge", "Ã°Å¸Å¡Â¶ descendants will return", "Ã°Å¸â€¢Å Ã¯Â¸Â Abram will die in peace"],
       },
       "Genesis 15:17-21": {
-        heading: "ðŸ”¥ God Makes Covenant",
-        teachingTitle: "ðŸ”¥ God Carries the Promise",
-        list: ["ðŸŒ‘ night comes", "ðŸ”¥ fire passes through", "ðŸ¤ covenant is made", "ðŸŒ land is promised", "ðŸ™Œ God binds Himself to His word"],
+        heading: "Ã°Å¸â€Â¥ God Makes Covenant",
+        teachingTitle: "Ã°Å¸â€Â¥ God Carries the Promise",
+        list: ["Ã°Å¸Å’â€˜ night comes", "Ã°Å¸â€Â¥ fire passes through", "Ã°Å¸Â¤Â covenant is made", "Ã°Å¸Å’Â land is promised", "Ã°Å¸â„¢Å’ God binds Himself to His word"],
       },
     };
     const daySevenDisplay: Record<string, { heading: string; teachingTitle: string; list?: string[] }> = {
       "Genesis 16:1-3": {
-        heading: "âš ï¸ Sarai Tries to Force the Promise",
-        teachingTitle: "â³ Waiting Turns Into Control",
-        list: ["ðŸ’” Sarai has no child", "ðŸ‘¤ Hagar is brought in", "â³ the promise feels delayed", "âš ï¸ control replaces trust", "ðŸ  the household is wounded"],
+        heading: "Ã¢Å¡Â Ã¯Â¸Â Sarai Tries to Force the Promise",
+        teachingTitle: "Ã¢ÂÂ³ Waiting Turns Into Control",
+        list: ["Ã°Å¸â€™â€ Sarai has no child", "Ã°Å¸â€˜Â¤ Hagar is brought in", "Ã¢ÂÂ³ the promise feels delayed", "Ã¢Å¡Â Ã¯Â¸Â control replaces trust", "Ã°Å¸ÂÂ  the household is wounded"],
       },
       "Genesis 16:4-6": {
-        heading: "ðŸ’” Hagar Is Mistreated",
-        teachingTitle: "ðŸ•¯ï¸ Shortcuts Create Pain",
-        list: ["ðŸ‘¶ Hagar conceives", "ðŸ’” contempt grows", "ðŸ˜  Sarai blames Abram", "ðŸšª Hagar flees", "âš ï¸ everyone is wounded"],
+        heading: "Ã°Å¸â€™â€ Hagar Is Mistreated",
+        teachingTitle: "Ã°Å¸â€¢Â¯Ã¯Â¸Â Shortcuts Create Pain",
+        list: ["Ã°Å¸â€˜Â¶ Hagar conceives", "Ã°Å¸â€™â€ contempt grows", "Ã°Å¸ËœÂ  Sarai blames Abram", "Ã°Å¸Å¡Âª Hagar flees", "Ã¢Å¡Â Ã¯Â¸Â everyone is wounded"],
       },
       "Genesis 16:7-12": {
-        heading: "ðŸ•Šï¸ God Finds Hagar",
-        teachingTitle: "ðŸ‘€ God Sees the One Who Runs",
-        list: ["ðŸœï¸ Hagar is in the wilderness", "ðŸ•Šï¸ the angel finds her", "ðŸ‘‚ God hears affliction", "ðŸ‘¶ Ishmael is named", "ðŸŒ± her future is spoken"],
+        heading: "Ã°Å¸â€¢Å Ã¯Â¸Â God Finds Hagar",
+        teachingTitle: "Ã°Å¸â€˜â‚¬ God Sees the One Who Runs",
+        list: ["Ã°Å¸ÂÅ“Ã¯Â¸Â Hagar is in the wilderness", "Ã°Å¸â€¢Å Ã¯Â¸Â the angel finds her", "Ã°Å¸â€˜â€š God hears affliction", "Ã°Å¸â€˜Â¶ Ishmael is named", "Ã°Å¸Å’Â± her future is spoken"],
       },
       "Genesis 16:13-16": {
-        heading: "ðŸ‘€ The God Who Sees",
-        teachingTitle: "ðŸ›Ÿ Seen in the Wilderness",
-        list: ["ðŸ‘€ Hagar names God", "ðŸ’§ the well is remembered", "ðŸ‘¶ Ishmael is born", "â³ Abram is eighty-six", "ðŸ•Šï¸ God sees the wounded"],
+        heading: "Ã°Å¸â€˜â‚¬ The God Who Sees",
+        teachingTitle: "Ã°Å¸â€ºÅ¸ Seen in the Wilderness",
+        list: ["Ã°Å¸â€˜â‚¬ Hagar names God", "Ã°Å¸â€™Â§ the well is remembered", "Ã°Å¸â€˜Â¶ Ishmael is born", "Ã¢ÂÂ³ Abram is eighty-six", "Ã°Å¸â€¢Å Ã¯Â¸Â God sees the wounded"],
       },
       "Genesis 17:1-8": {
-        heading: "ðŸªª Abram Becomes Abraham",
-        teachingTitle: "âœ¨ God Names the Future",
-        list: ["â³ thirteen years pass", "ðŸ™‡ Abram falls down", "ðŸªª Abram gets a new name", "ðŸŒ nations are promised", "ðŸ¤ covenant is established"],
+        heading: "Ã°Å¸ÂªÂª Abram Becomes Abraham",
+        teachingTitle: "Ã¢Å“Â¨ God Names the Future",
+        list: ["Ã¢ÂÂ³ thirteen years pass", "Ã°Å¸â„¢â€¡ Abram falls down", "Ã°Å¸ÂªÂª Abram gets a new name", "Ã°Å¸Å’Â nations are promised", "Ã°Å¸Â¤Â covenant is established"],
       },
       "Genesis 17:9-14": {
-        heading: "âœ‚ï¸ The Covenant Sign",
-        teachingTitle: "ðŸ¤ Promise Marked in the Flesh",
-        list: ["ðŸ¤ covenant is kept", "âœ‚ï¸ circumcision is the sign", "ðŸ‘¶ eight days old is named", "ðŸ  the whole house is included", "âš ï¸ covenant is serious"],
+        heading: "Ã¢Å“â€šÃ¯Â¸Â The Covenant Sign",
+        teachingTitle: "Ã°Å¸Â¤Â Promise Marked in the Flesh",
+        list: ["Ã°Å¸Â¤Â covenant is kept", "Ã¢Å“â€šÃ¯Â¸Â circumcision is the sign", "Ã°Å¸â€˜Â¶ eight days old is named", "Ã°Å¸ÂÂ  the whole house is included", "Ã¢Å¡Â Ã¯Â¸Â covenant is serious"],
       },
       "Genesis 17:15-22": {
-        heading: "ðŸ‘‘ Sarah and Isaac Are Named",
-        teachingTitle: "ðŸ˜‚ Laughter Meets Promise",
-        list: ["ðŸªª Sarai becomes Sarah", "ðŸ‘¶ Isaac is promised", "ðŸ˜‚ Abraham laughs", "ðŸ™ Ishmael is blessed", "ðŸŽ¯ covenant goes through Isaac"],
+        heading: "Ã°Å¸â€˜â€˜ Sarah and Isaac Are Named",
+        teachingTitle: "Ã°Å¸Ëœâ€š Laughter Meets Promise",
+        list: ["Ã°Å¸ÂªÂª Sarai becomes Sarah", "Ã°Å¸â€˜Â¶ Isaac is promised", "Ã°Å¸Ëœâ€š Abraham laughs", "Ã°Å¸â„¢Â Ishmael is blessed", "Ã°Å¸Å½Â¯ covenant goes through Isaac"],
       },
       "Genesis 17:23-27": {
-        heading: "âœ… Abraham Obeys That Same Day",
-        teachingTitle: "ðŸš¶ Covenant Faith Responds",
-        list: ["âœ… Abraham obeys", "ðŸ‘¦ Ishmael is included", "ðŸ  the household follows", "ðŸ“… obedience happens that day", "ðŸ¤ promise becomes marked"],
+        heading: "Ã¢Å“â€¦ Abraham Obeys That Same Day",
+        teachingTitle: "Ã°Å¸Å¡Â¶ Covenant Faith Responds",
+        list: ["Ã¢Å“â€¦ Abraham obeys", "Ã°Å¸â€˜Â¦ Ishmael is included", "Ã°Å¸ÂÂ  the household follows", "Ã°Å¸â€œâ€¦ obedience happens that day", "Ã°Å¸Â¤Â promise becomes marked"],
       },
     };
     const dayEightDisplay: Record<string, { heading: string; teachingTitle: string; list?: string[] }> = {
       "Genesis 18:1-8": {
-        heading: "ðŸ•ï¸ Abraham Welcomes the Visitors",
-        teachingTitle: "ðŸ¤² Holy Attention at the Tent",
-        list: ["ðŸ•ï¸ Abraham sits by the tent", "ðŸ‘€ three visitors appear", "ðŸƒ Abraham runs to welcome them", "ðŸž a meal is prepared", "âœ¨ promise comes near"],
+        heading: "Ã°Å¸Ââ€¢Ã¯Â¸Â Abraham Welcomes the Visitors",
+        teachingTitle: "Ã°Å¸Â¤Â² Holy Attention at the Tent",
+        list: ["Ã°Å¸Ââ€¢Ã¯Â¸Â Abraham sits by the tent", "Ã°Å¸â€˜â‚¬ three visitors appear", "Ã°Å¸ÂÆ’ Abraham runs to welcome them", "Ã°Å¸ÂÅ¾ a meal is prepared", "Ã¢Å“Â¨ promise comes near"],
       },
       "Genesis 18:9-15": {
-        heading: "ðŸ˜‚ Sarah Hears the Promise",
-        teachingTitle: "â“ Is Anything Too Hard for the LORD?",
-        list: ["ðŸ‘‚ Sarah hears from the tent", "ðŸ˜‚ she laughs within herself", "â³ the promise has felt impossible", "â“ God asks the central question", "ðŸ‘¶ Isaac is still coming"],
+        heading: "Ã°Å¸Ëœâ€š Sarah Hears the Promise",
+        teachingTitle: "Ã¢Ââ€œ Is Anything Too Hard for the LORD?",
+        list: ["Ã°Å¸â€˜â€š Sarah hears from the tent", "Ã°Å¸Ëœâ€š she laughs within herself", "Ã¢ÂÂ³ the promise has felt impossible", "Ã¢Ââ€œ God asks the central question", "Ã°Å¸â€˜Â¶ Isaac is still coming"],
       },
       "Genesis 18:16-21": {
-        heading: "ðŸŒ† The Lord Looks Toward Sodom",
-        teachingTitle: "âš–ï¸ God Sees What Is Grievous",
-        list: ["ðŸŒ† Sodom comes into view", "ðŸ¤ Abraham is brought near", "ðŸ“£ the cry is great", "âš–ï¸ sin is grievous", "ðŸ‘ï¸ God judges with knowledge"],
+        heading: "Ã°Å¸Å’â€  The Lord Looks Toward Sodom",
+        teachingTitle: "Ã¢Å¡â€“Ã¯Â¸Â God Sees What Is Grievous",
+        list: ["Ã°Å¸Å’â€  Sodom comes into view", "Ã°Å¸Â¤Â Abraham is brought near", "Ã°Å¸â€œÂ£ the cry is great", "Ã¢Å¡â€“Ã¯Â¸Â sin is grievous", "Ã°Å¸â€˜ÂÃ¯Â¸Â God judges with knowledge"],
       },
       "Genesis 18:22-33": {
-        heading: "ðŸ™ Abraham Intercedes",
-        teachingTitle: "âš–ï¸ Shall Not the Judge Do Right?",
-        list: ["ðŸ™ Abraham draws near", "âš–ï¸ he asks about justice", "ðŸ”¢ fifty becomes ten", "ðŸ•Šï¸ mercy is sought", "ðŸ™‡ prayer stays humble"],
+        heading: "Ã°Å¸â„¢Â Abraham Intercedes",
+        teachingTitle: "Ã¢Å¡â€“Ã¯Â¸Â Shall Not the Judge Do Right?",
+        list: ["Ã°Å¸â„¢Â Abraham draws near", "Ã¢Å¡â€“Ã¯Â¸Â he asks about justice", "Ã°Å¸â€Â¢ fifty becomes ten", "Ã°Å¸â€¢Å Ã¯Â¸Â mercy is sought", "Ã°Å¸â„¢â€¡ prayer stays humble"],
       },
       "Genesis 19:1-11": {
-        heading: "ðŸŒƒ Sodom's Violence Is Exposed",
-        teachingTitle: "ðŸšª A City Shows Its Heart",
-        list: ["ðŸŒƒ angels enter Sodom", "ðŸšª Lot brings them inside", "âš ï¸ the city gathers", "ðŸ›¡ï¸ the visitors protect Lot", "ðŸ‘ï¸ blindness falls at the door"],
+        heading: "Ã°Å¸Å’Æ’ Sodom's Violence Is Exposed",
+        teachingTitle: "Ã°Å¸Å¡Âª A City Shows Its Heart",
+        list: ["Ã°Å¸Å’Æ’ angels enter Sodom", "Ã°Å¸Å¡Âª Lot brings them inside", "Ã¢Å¡Â Ã¯Â¸Â the city gathers", "Ã°Å¸â€ºÂ¡Ã¯Â¸Â the visitors protect Lot", "Ã°Å¸â€˜ÂÃ¯Â¸Â blindness falls at the door"],
       },
       "Genesis 19:12-22": {
-        heading: "ðŸ¤² Mercy Pulls Lot Out",
-        teachingTitle: "ðŸƒ Do Not Linger in Judgment",
-        list: ["ðŸ“£ Lot warns his family", "ðŸ˜¶ they think he is joking", "â³ Lot lingers", "ðŸ¤² mercy takes his hand", "ðŸƒ escape is commanded"],
+        heading: "Ã°Å¸Â¤Â² Mercy Pulls Lot Out",
+        teachingTitle: "Ã°Å¸ÂÆ’ Do Not Linger in Judgment",
+        list: ["Ã°Å¸â€œÂ£ Lot warns his family", "Ã°Å¸ËœÂ¶ they think he is joking", "Ã¢ÂÂ³ Lot lingers", "Ã°Å¸Â¤Â² mercy takes his hand", "Ã°Å¸ÂÆ’ escape is commanded"],
       },
       "Genesis 19:23-29": {
-        heading: "ðŸ”¥ Sodom and Gomorrah Fall",
-        teachingTitle: "âš–ï¸ Judgment and Mercy Are Both Real",
-        list: ["â˜€ï¸ Lot reaches Zoar", "ðŸ”¥ fire falls", "ðŸ§‚ Lot's wife looks back", "ðŸŒ«ï¸ smoke rises", "ðŸ¤² God remembers Abraham"],
+        heading: "Ã°Å¸â€Â¥ Sodom and Gomorrah Fall",
+        teachingTitle: "Ã¢Å¡â€“Ã¯Â¸Â Judgment and Mercy Are Both Real",
+        list: ["Ã¢Ëœâ‚¬Ã¯Â¸Â Lot reaches Zoar", "Ã°Å¸â€Â¥ fire falls", "Ã°Å¸Â§â€š Lot's wife looks back", "Ã°Å¸Å’Â«Ã¯Â¸Â smoke rises", "Ã°Å¸Â¤Â² God remembers Abraham"],
       },
       "Genesis 19:30-38": {
-        heading: "ðŸ’” Lot's Family After Sodom",
-        teachingTitle: "ðŸšï¸ Rescue Does Not Erase Damage",
-        list: ["â›°ï¸ Lot hides in a cave", "ðŸ’” fear remains", "ðŸ· sin continues", "ðŸ‘¶ Moab and Ammon begin", "âš ï¸ compromise leaves scars"],
+        heading: "Ã°Å¸â€™â€ Lot's Family After Sodom",
+        teachingTitle: "Ã°Å¸ÂÅ¡Ã¯Â¸Â Rescue Does Not Erase Damage",
+        list: ["Ã¢â€ºÂ°Ã¯Â¸Â Lot hides in a cave", "Ã°Å¸â€™â€ fear remains", "Ã°Å¸ÂÂ· sin continues", "Ã°Å¸â€˜Â¶ Moab and Ammon begin", "Ã¢Å¡Â Ã¯Â¸Â compromise leaves scars"],
       },
     };
 
@@ -8941,7 +8966,7 @@ ${closing.join("\n\n")}`;
 
   function buildBibleYearLessonMarkdown(lesson: BibleYearDailyLesson) {
     const teachingByReference: Record<string, string> = {
-      "Genesis 1:1-5": `### ðŸŒŒ God Is Before Creation
+      "Genesis 1:1-5": `### Ã°Å¸Å’Å’ God Is Before Creation
 
 The story starts with God already there.
 
@@ -8953,21 +8978,21 @@ Not fighting for control.
 
 Just God, Creator over everything.
 
-### ðŸŒ The Heavens and the Earth
+### Ã°Å¸Å’Â The Heavens and the Earth
 
 This means the whole created order.
 
-ðŸŒŒ everything above
+Ã°Å¸Å’Å’ everything above
 
-ðŸŒ everything below
+Ã°Å¸Å’Â everything below
 
-ðŸ‘ï¸ everything visible
+Ã°Å¸â€˜ÂÃ¯Â¸Â everything visible
 
-ðŸ™ everything humans will live inside
+Ã°Å¸â„¢Â everything humans will live inside
 
 The first verse puts everything under God's authority.
 
-### ðŸŒŠ Formless and Empty
+### Ã°Å¸Å’Å  Formless and Empty
 
 The earth is unshaped, unfilled, dark, and watery.
 
@@ -8975,7 +9000,7 @@ But unfinished does not mean abandoned.
 
 Before the world looks complete, God's Spirit is already near.
 
-### ðŸ—£ï¸ God Speaks Light
+### Ã°Å¸â€”Â£Ã¯Â¸Â God Speaks Light
 
 God says, "Let there be light," and light comes.
 
@@ -8985,7 +9010,7 @@ He speaks, and creation responds.
 
 Light appears before the sun and moon, so light comes from God, not from a sun god.
 
-### âš–ï¸ God Brings Order
+### Ã¢Å¡â€“Ã¯Â¸Â God Brings Order
 
 God separates light from darkness and names Day and Night.
 
@@ -8994,7 +9019,7 @@ Naming shows authority.
 Separation shows order.
 
 God is putting things where they belong.`,
-      "Genesis 1:6-13": `### ðŸŒŠ Waters Are Given Boundaries
+      "Genesis 1:6-13": `### Ã°Å¸Å’Å  Waters Are Given Boundaries
 
 To ancient readers, deep waters could feel like danger and chaos.
 
@@ -9002,7 +9027,7 @@ Here, the waters do not rule themselves.
 
 God gives them boundaries.
 
-### ðŸŒ Dry Land Appears
+### Ã°Å¸Å’Â Dry Land Appears
 
 God gathers the seas and lets dry land appear.
 
@@ -9010,47 +9035,47 @@ The world is becoming livable.
 
 Life needs a place, so God prepares a place.
 
-### ðŸŒ± Life Begins to Grow
+### Ã°Å¸Å’Â± Life Begins to Grow
 
 Plants, trees, fruit, and seeds fill the earth.
 
 The seed detail matters because God creates life that can keep producing life.
 
-ðŸŒ± life can multiply
+Ã°Å¸Å’Â± life can multiply
 
-ðŸŽ food can be provided
+Ã°Å¸ÂÅ½ food can be provided
 
-ðŸŒ the earth can sustain creatures
+Ã°Å¸Å’Â the earth can sustain creatures
 
-â³ one generation can lead to another`,
-      "Genesis 1:14-25": `### â˜€ï¸ The Lights Serve God's Order
+Ã¢ÂÂ³ one generation can lead to another`,
+      "Genesis 1:14-25": `### Ã¢Ëœâ‚¬Ã¯Â¸Â The Lights Serve God's Order
 
 The sun and moon are not gods.
 
 They are lights in God's sky.
 
-### ðŸ“… Time Has Rhythm
+### Ã°Å¸â€œâ€¦ Time Has Rhythm
 
 The lights mark days, seasons, and years.
 
 God is making a world humans can live in, work in, rest in, and worship in.
 
-ðŸ“… seasons for planting and harvesting
+Ã°Å¸â€œâ€¦ seasons for planting and harvesting
 
-ðŸŒ™ days and nights for work and rest
+Ã°Å¸Å’â„¢ days and nights for work and rest
 
-â³ years for memory and history
+Ã¢ÂÂ³ years for memory and history
 
-ðŸ™ appointed times for worship
+Ã°Å¸â„¢Â appointed times for worship
 
-### ðŸ‹ The Waters, Sky, and Land Are Filled
+### Ã°Å¸Ââ€¹ The Waters, Sky, and Land Are Filled
 
 God fills the waters, sky, and land with life.
 
 Creation is no longer empty.
 
 It is full, alive, layered, and blessed.`,
-      "Genesis 1:26-31": `### ðŸ‘¤ Humans Reflect God
+      "Genesis 1:26-31": `### Ã°Å¸â€˜Â¤ Humans Reflect God
 
 This is the high point of creation.
 
@@ -9058,7 +9083,7 @@ Human beings are made in God's image.
 
 People are not accidents and not disposable.
 
-### ðŸ’ Male and Female Share That Dignity
+### Ã°Å¸â€™Â Male and Female Share That Dignity
 
 Male and female are both created in God's image.
 
@@ -9066,7 +9091,7 @@ Human worth is not based on power, gender, money, beauty, success, or strength.
 
 Every person matters because every person is made by God.
 
-### ðŸ‘‘ Dominion Means Stewardship
+### Ã°Å¸â€˜â€˜ Dominion Means Stewardship
 
 Dominion does not mean abuse.
 
@@ -9074,47 +9099,47 @@ It means responsibility.
 
 Humans are called to care for God's world under God's authority.
 
-ðŸ‘¤ every person has dignity
+Ã°Å¸â€˜Â¤ every person has dignity
 
-ðŸ‘‘ every person has responsibility
+Ã°Å¸â€˜â€˜ every person has responsibility
 
-ðŸŒ creation is entrusted to human care
+Ã°Å¸Å’Â creation is entrusted to human care
 
-âœ¨ life is meant to reflect God's goodness
+Ã¢Å“Â¨ life is meant to reflect God's goodness
 
-### âœ¨ Creation Is Very Good
+### Ã¢Å“Â¨ Creation Is Very Good
 
 Before sin enters the story, creation is good, human life is good, and God's purpose for the world is good.`,
-      "Genesis 2:1-3": `### âœ… Creation Is Complete
+      "Genesis 2:1-3": `### Ã¢Å“â€¦ Creation Is Complete
 
 God does not leave creation half done.
 
 What He made has order, purpose, and goodness.
 
-### ðŸ•Šï¸ God Rests
+### Ã°Å¸â€¢Å Ã¯Â¸Â God Rests
 
 God rests because the work is complete.
 
 Rest is built into creation before sin enters the world.
 
-### ðŸ“… The Seventh Day Is Blessed
+### Ã°Å¸â€œâ€¦ The Seventh Day Is Blessed
 
 God sets the seventh day apart.
 
 From the beginning, time with God can be holy.
 
-ðŸ“… time can be set apart
+Ã°Å¸â€œâ€¦ time can be set apart
 
-ðŸ•Šï¸ rest belongs in human life
+Ã°Å¸â€¢Å Ã¯Â¸Â rest belongs in human life
 
-ðŸ™ worship grows from God's finished work
+Ã°Å¸â„¢Â worship grows from God's finished work
 
-âœ¨ creation has rhythm, not endless striving`,
-      "Genesis 2:4-9": `### ðŸŒ¿ The Story Moves Closer
+Ã¢Å“Â¨ creation has rhythm, not endless striving`,
+      "Genesis 2:4-9": `### Ã°Å¸Å’Â¿ The Story Moves Closer
 
 The lesson slows down and focuses on human life with God.
 
-### ðŸŒ Man Is Formed From Dust
+### Ã°Å¸Å’Â Man Is Formed From Dust
 
 God forms man from the dust.
 
@@ -9124,7 +9149,7 @@ We are not gods.
 
 We are physical, dependent, and connected to God's world.
 
-### ðŸŒ¬ï¸ God Gives the Breath of Life
+### Ã°Å¸Å’Â¬Ã¯Â¸Â God Gives the Breath of Life
 
 But humanity is not only dust.
 
@@ -9132,14 +9157,14 @@ God breathes life into the man.
 
 We are dust touched by God: humble, valuable, and dependent.
 
-### ðŸŒ³ Eden Is Prepared
+### Ã°Å¸Å’Â³ Eden Is Prepared
 
 God plants a garden and places the man there.
 
 He prepares a home before He gives a command.
 
 Eden is a picture of provision, beauty, purpose, and peace.`,
-      "Genesis 2:10-17": `### ðŸ’§ Rivers Flow From Eden
+      "Genesis 2:10-17": `### Ã°Å¸â€™Â§ Rivers Flow From Eden
 
 The garden is abundance.
 
@@ -9149,7 +9174,7 @@ Precious materials are named.
 
 Life near God is supplied.
 
-### ðŸ› ï¸ Work Is Good
+### Ã°Å¸â€ºÂ Ã¯Â¸Â Work Is Good
 
 God gives the man work before sin enters the world.
 
@@ -9157,26 +9182,26 @@ So work itself is not the curse.
 
 Meaningful responsibility is part of God's good design.
 
-### ðŸŒ³ Freedom Comes First
+### Ã°Å¸Å’Â³ Freedom Comes First
 
 God says the man may freely eat from every tree except one.
 
 God gives abundance, then sets one boundary.
 
-### âš–ï¸ The Command Teaches Trust
+### Ã¢Å¡â€“Ã¯Â¸Â The Command Teaches Trust
 
 The tree introduces choice and trust.
 
 Will humanity trust God's word about life and death?
 
-ðŸŽ provision is generous
+Ã°Å¸ÂÅ½ provision is generous
 
-ðŸŒ³ boundaries are real
+Ã°Å¸Å’Â³ boundaries are real
 
-âš–ï¸ obedience matters
+Ã¢Å¡â€“Ã¯Â¸Â obedience matters
 
-ðŸ™ trust is part of life with God`,
-      "Genesis 2:18-25": `### ðŸ¤ The First Not Good
+Ã°Å¸â„¢Â trust is part of life with God`,
+      "Genesis 2:18-25": `### Ã°Å¸Â¤Â The First Not Good
 
 For the first time, God says something is not good.
 
@@ -9184,7 +9209,7 @@ Sin has not entered yet.
 
 The problem is aloneness.
 
-### ðŸ„ The Animals Are Named
+### Ã°Å¸Ââ€ž The Animals Are Named
 
 The man names the animals, showing responsibility.
 
@@ -9192,7 +9217,7 @@ But none of them can answer his loneliness.
 
 None is a helper comparable to him.
 
-### ðŸ§© A Helper Comparable To Him
+### Ã°Å¸Â§Â© A Helper Comparable To Him
 
 Helper does not mean weak or lesser.
 
@@ -9200,17 +9225,17 @@ The point is partnership, not inferiority.
 
 The man needs someone who is truly comparable to him.
 
-### ðŸ’ Woman Is Made From Man
+### Ã°Å¸â€™Â Woman Is Made From Man
 
 God makes woman from the man's side and brings her to him.
 
 The man's response is joy: bone of my bones and flesh of my flesh.
 
-### ðŸ§¬ One Flesh
+### Ã°Å¸Â§Â¬ One Flesh
 
 Marriage is pictured as covenant closeness, loyalty, and shared life.
 
-### âœ¨ No Shame Yet
+### Ã¢Å“Â¨ No Shame Yet
 
 The man and woman are naked and not ashamed.
 
@@ -9222,13 +9247,13 @@ No guilt.
 
 No pretending.
 
-ðŸ‘¤ fully known
+Ã°Å¸â€˜Â¤ fully known
 
-ðŸ¤ fully welcomed
+Ã°Å¸Â¤Â fully welcomed
 
-ðŸ’ joined in covenant love
+Ã°Å¸â€™Â joined in covenant love
 
-âœ¨ not yet covered by shame`,
+Ã¢Å“Â¨ not yet covered by shame`,
     };
 
     if (lesson.dayNumber === 1 || lesson.dayNumber === 2 || lesson.dayNumber === 3 || lesson.dayNumber === 4 || lesson.dayNumber === 5 || lesson.dayNumber === 6 || lesson.dayNumber === 7 || lesson.dayNumber === 8) {
@@ -9275,17 +9300,17 @@ Today we are reading every verse and slowing down just enough to understand the 
 
 ## Why Day 1 Matters
 
-ðŸŒŒ God creates before anything else exists.
+Ã°Å¸Å’Å’ God creates before anything else exists.
 
-ðŸ—£ï¸ Creation responds to God's voice.
+Ã°Å¸â€”Â£Ã¯Â¸Â Creation responds to God's voice.
 
-ðŸŒŠ Darkness and emptiness become order and life.
+Ã°Å¸Å’Å  Darkness and emptiness become order and life.
 
-ðŸ‘¤ Human beings carry God's image.
+Ã°Å¸â€˜Â¤ Human beings carry God's image.
 
-ðŸ•Šï¸ Rest, work, and relationship belong to God's good design.
+Ã°Å¸â€¢Å Ã¯Â¸Â Rest, work, and relationship belong to God's good design.
 
-âœ¨ Creation is good before the world is broken.
+Ã¢Å“Â¨ Creation is good before the world is broken.
 
 ${verseBlocks}
 
@@ -9443,7 +9468,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         question: "What happens to the flood waters in Genesis 8?",
         options: ["They recede", "They turn to blood", "They become fire"],
         answer: "They recede",
-        verse: "Genesis 8:1-5",
+        verse: "Genesis 8:1-3",
         explanation: "God remembers Noah, sends wind over the earth, and the waters begin to go down.",
       },
       {
@@ -11631,7 +11656,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   }`}
                   aria-hidden="true"
                 >
-                  {item.done ? "âœ“" : ""}
+                  {item.done ? "Ã¢Å“â€œ" : ""}
                 </span>
               </div>
             ))}
@@ -11940,7 +11965,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             disabled={Boolean(bibleYearQuickUpgradeLoading)}
             className="flex w-full animate-pulse flex-col items-center justify-center rounded-[20px] border border-[#f4d389] bg-[linear-gradient(135deg,#2f7fe8,#1757db)] px-4 py-4 text-center text-white shadow-[0_16px_32px_rgba(47,127,232,0.24)] transition hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-60"
           >
-            <span className="text-[32px] font-black leading-none tracking-[-0.04em]">👑 $49.99</span>
+            <span className="text-[32px] font-black leading-none tracking-[-0.04em]">ðŸ‘‘ $49.99</span>
             <span className="mt-1.5 text-[16px] font-bold">One Time Fee</span>
           </button>
           <div className="mt-4">
@@ -12011,12 +12036,12 @@ Before we understand redemption, we need to understand what God made humanity fo
               <span className="absolute left-[72%] top-[54%] h-2 w-2 rounded-full bg-yellow-300 [--fx-x:26px] [--fx-y:46px] [--fx-r:-210deg]" />
             </div>
             <div className="bible-year-completed-task-stars pointer-events-none absolute inset-y-0 left-0 right-0 z-20" aria-hidden="true">
-              <span className="absolute -left-2 top-3 text-[13px] text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.9)]">âœ¦</span>
-              <span className="absolute left-7 -top-1 text-[9px] text-white/90 drop-shadow-[0_0_8px_rgba(255,255,255,0.85)]">âœ§</span>
-              <span className="absolute -left-3 bottom-4 text-[10px] text-white/95 drop-shadow-[0_0_8px_rgba(255,255,255,0.85)]">âœ¦</span>
-              <span className="absolute -right-2 top-4 text-[13px] text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.9)]">âœ¦</span>
-              <span className="absolute right-8 -top-1 text-[9px] text-white/90 drop-shadow-[0_0_8px_rgba(255,255,255,0.85)]">âœ§</span>
-              <span className="absolute -right-3 bottom-3 text-[10px] text-white/95 drop-shadow-[0_0_8px_rgba(255,255,255,0.85)]">âœ¦</span>
+              <span className="absolute -left-2 top-3 text-[13px] text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.9)]">Ã¢Å“Â¦</span>
+              <span className="absolute left-7 -top-1 text-[9px] text-white/90 drop-shadow-[0_0_8px_rgba(255,255,255,0.85)]">Ã¢Å“Â§</span>
+              <span className="absolute -left-3 bottom-4 text-[10px] text-white/95 drop-shadow-[0_0_8px_rgba(255,255,255,0.85)]">Ã¢Å“Â¦</span>
+              <span className="absolute -right-2 top-4 text-[13px] text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.9)]">Ã¢Å“Â¦</span>
+              <span className="absolute right-8 -top-1 text-[9px] text-white/90 drop-shadow-[0_0_8px_rgba(255,255,255,0.85)]">Ã¢Å“Â§</span>
+              <span className="absolute -right-3 bottom-3 text-[10px] text-white/95 drop-shadow-[0_0_8px_rgba(255,255,255,0.85)]">Ã¢Å“Â¦</span>
             </div>
           </>
         ) : null}
@@ -12039,7 +12064,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           <span className={`grid h-9 w-9 shrink-0 place-items-center rounded-xl text-sm font-black ${
             dayFullyComplete ? "bg-sky-400 text-sky-950 shadow-[0_0_18px_rgba(123,175,212,0.65)]" : "bg-[var(--bb-accent-soft,#eaf5ff)] text-[var(--bb-accent,#2f7fe8)]"
           }`} aria-hidden="true">
-            {dayFullyComplete ? "âœ“" : completedTasksForDay.length}
+            {dayFullyComplete ? "Ã¢Å“â€œ" : completedTasksForDay.length}
           </span>
           <span className="min-w-0 flex-1">
             <span className={`block truncate text-sm font-black ${dayFullyComplete ? "text-sky-950 dark:text-sky-100" : "text-[var(--bb-text-primary,#111827)]"}`}>
@@ -12094,7 +12119,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   aria-expanded={isActiveCompletedTask}
                 >
                   <span className="grid h-5 w-5 shrink-0 place-items-center rounded-md bg-[var(--bb-button,var(--bb-accent,#7BAFD4))] text-[11px] font-black text-[var(--bb-button-text,#ffffff)] shadow-sm" aria-hidden="true">
-                    âœ“
+                    Ã¢Å“â€œ
                   </span>
                   <span className="min-w-0 flex-1 truncate text-xs font-black text-[var(--bb-text-primary,#1f2937)]">
                     {taskCopy.title}
@@ -12582,7 +12607,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             <span className={`drop-shadow-sm ${isCardDisabled ? "opacity-75" : ""}`} aria-hidden="true">{getTaskEmoji(task)}</span>
             {task.done ? (
               <span className="absolute -right-0.5 -top-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-[#7BAFD4] text-xs font-black text-white ring-2 ring-white">
-                âœ“
+                Ã¢Å“â€œ
               </span>
             ) : null}
           </div>
@@ -12603,12 +12628,12 @@ Before we understand redemption, we need to understand what God made humanity fo
                     ? "start-here-flash text-gray-950 font-black tracking-wide"
                     : "font-medium text-gray-500"
               }`}>
-                <span aria-hidden="true">{task.done ? "â–¡" : "â—‹"}</span>
+                <span aria-hidden="true">{task.done ? "Ã¢â€“Â¡" : "Ã¢â€”â€¹"}</span>
                 {task.done ? (
                   <span className="done-sparkle pointer-events-none absolute -inset-x-2 -top-3 flex justify-between text-[10px] text-amber-400" aria-hidden="true">
-                    <span>âœ¦</span>
-                    <span>âœ§</span>
-                    <span>âœ¦</span></span>
+                    <span>Ã¢Å“Â¦</span>
+                    <span>Ã¢Å“Â§</span>
+                    <span>Ã¢Å“Â¦</span></span>
                 ) : null}
                 {activeTaskPrompt ? (
                   <span className="flex flex-col items-end leading-tight">
@@ -12654,7 +12679,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             </div>
           </div>
           {!isCardDisabled && !isActiveInlineTask ? (
-            <span className="mt-5 shrink-0 text-xl leading-none text-[var(--bb-text-muted,#9ca3af)]" aria-hidden="true">â€º</span>
+            <span className="mt-5 shrink-0 text-xl leading-none text-[var(--bb-text-muted,#9ca3af)]" aria-hidden="true">Ã¢â‚¬Âº</span>
           ) : null}
         </div>
         {isCelebrating ? (
@@ -12794,7 +12819,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[var(--bb-surface-soft,#f4f8ff)] text-xl font-bold text-[var(--bb-text-secondary,#4b5563)] transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
               aria-label="Close problem report"
             >
-              ×
+              Ã—
             </button>
           </div>
 
@@ -13730,7 +13755,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   <p className="mt-1 text-sm font-black text-[var(--bb-accent,#2f7fe8)]">{day.reference}</p>
                 </div>
                 <div className="hidden" aria-hidden="true">
-                  {isComplete ? "âœ“" : isLocked ? "ðŸ”’" : "ðŸ“–"}
+                  {isComplete ? "Ã¢Å“â€œ" : isLocked ? "Ã°Å¸â€â€™" : "Ã°Å¸â€œâ€“"}
                 </div>
               </div>
               <p className="mt-4 max-w-3xl text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">{getBibleYearJourneyDayOverview(day)}</p>
@@ -13989,7 +14014,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                       ? "bg-sky-400 text-sky-950"
                       : "bg-[var(--bb-accent,#2f7fe8)] text-[var(--bb-button-text,#ffffff)]"
                   }`} aria-hidden="true">
-                    âœ“
+                    Ã¢Å“â€œ
                   </span>
                   <span className="contents">
                     <span className="block text-base font-black leading-tight">
@@ -14031,7 +14056,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 }`}
                 aria-hidden="true"
               >
-                â†“
+                Ã¢â€ â€œ
               </span>
             </button>
             {bibleYearStudyNotesOpen ? (
@@ -14202,40 +14227,40 @@ Before we understand redemption, we need to understand what God made humanity fo
       1: {
         intro: "Quick recap: Day 1 shows the world before anything is broken.",
         points: [
-          "ðŸŒ… God speaks into darkness and brings light.",
-          "ðŸŒ God shapes the world into a home for life.",
-          "ðŸ‘‘ People are made in God's image with value and purpose.",
-          "ðŸŒ¿ Eden shows work, rest, freedom, boundaries, and relationship.",
+          "Ã°Å¸Å’â€¦ God speaks into darkness and brings light.",
+          "Ã°Å¸Å’Â God shapes the world into a home for life.",
+          "Ã°Å¸â€˜â€˜ People are made in God's image with value and purpose.",
+          "Ã°Å¸Å’Â¿ Eden shows work, rest, freedom, boundaries, and relationship.",
         ],
         outro: "Big takeaway: before the damage, God's design was good, beautiful, and full of life.",
       },
       2: {
         intro: "Quick recap: Day 2 shows what happens when trust breaks.",
         points: [
-          "ðŸ The serpent questions God's word.",
-          "ðŸŽ Adam and Eve disobey, then shame and hiding enter the story.",
-          "ðŸŒ± God judges sin, but gives the first promise that evil will not win.",
-          "ðŸ’” Cain's anger becomes murder, yet God keeps preserving hope through Seth.",
+          "Ã°Å¸ÂÂ The serpent questions God's word.",
+          "Ã°Å¸ÂÅ½ Adam and Eve disobey, then shame and hiding enter the story.",
+          "Ã°Å¸Å’Â± God judges sin, but gives the first promise that evil will not win.",
+          "Ã°Å¸â€™â€ Cain's anger becomes murder, yet God keeps preserving hope through Seth.",
         ],
         outro: "Big takeaway: sin spreads fast, but God keeps pursuing, warning, covering, and keeping hope alive.",
       },
       3: {
         intro: "Quick recap: Day 3 shows a broken world getting darker, but not hopeless.",
         points: [
-          "ðŸ§¬ Genesis 5 traces the family line from Adam to Noah.",
-          "âš°ï¸ The phrase 'then he died' keeps reminding us that sin brought death.",
-          "ðŸš¶ Enoch shows that people can still walk with God in a broken world.",
-          "ðŸŒ§ï¸ Noah obeys, the flood begins, and God provides a refuge that carries life through judgment.",
+          "Ã°Å¸Â§Â¬ Genesis 5 traces the family line from Adam to Noah.",
+          "Ã¢Å¡Â°Ã¯Â¸Â The phrase 'then he died' keeps reminding us that sin brought death.",
+          "Ã°Å¸Å¡Â¶ Enoch shows that people can still walk with God in a broken world.",
+          "Ã°Å¸Å’Â§Ã¯Â¸Â Noah obeys, the flood begins, and God provides a refuge that carries life through judgment.",
         ],
         outro: "Big takeaway: judgment is real, but God's rescue is real too. The waters rise, but the refuge holds.",
       },
       4: {
         intro: "Quick recap: Day 4 shows life after the flood and hope after the storm.",
         points: [
-          "ðŸŒŠ God remembers Noah, and the waters begin to go down.",
-          "ðŸ•Šï¸ The dove returns with an olive leaf, showing restoration is starting.",
-          "ðŸ”¥ Noah worships first after rescue, before rebuilding anything else.",
-          "ðŸŒˆ God gives the rainbow covenant, but Noah's failure shows the world still needs deeper rescue.",
+          "Ã°Å¸Å’Å  God remembers Noah, and the waters begin to go down.",
+          "Ã°Å¸â€¢Å Ã¯Â¸Â The dove returns with an olive leaf, showing restoration is starting.",
+          "Ã°Å¸â€Â¥ Noah worships first after rescue, before rebuilding anything else.",
+          "Ã°Å¸Å’Ë† God gives the rainbow covenant, but Noah's failure shows the world still needs deeper rescue.",
         ],
         outro: "Big takeaway: God is faithful after the storm. He restores, keeps His promise, and keeps moving the story toward Jesus.",
       },
@@ -14267,7 +14292,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     const dayOneVerseBreakdownNotes: Record<string, VerseBreakdownNote> = {
       "Genesis 1:1-5": {
         title: "God Makes Light",
-        icon: "ðŸ’¡",
+        icon: "Ã°Å¸â€™Â¡",
         paragraphs: [
           "Before anything was made, God was already there.",
           "The world was dark and empty, but God was not worried.",
@@ -14277,7 +14302,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       },
       "Genesis 1:6-13": {
         title: "God Makes a Place for Life",
-        icon: "ðŸŒ",
+        icon: "Ã°Å¸Å’Â",
         paragraphs: [
           "God separated the waters and made the sky.",
           "Then He gathered the seas and brought out dry land.",
@@ -14287,7 +14312,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       },
       "Genesis 1:14-25": {
         title: "God Fills the World",
-        icon: "ðŸ¦",
+        icon: "Ã°Å¸ÂÂ¦",
         paragraphs: [
           "God put lights in the sky to mark days, seasons, and years.",
           "He filled the waters with sea creatures and the sky with birds.",
@@ -14297,7 +14322,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       },
       "Genesis 1:26-31": {
         title: "People Are Made in God's Image",
-        icon: "ðŸ‘‘",
+        icon: "Ã°Å¸â€˜â€˜",
         paragraphs: [
           "God made people in His image.",
           "That means every person has value because God made them.",
@@ -14307,7 +14332,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       },
       "Genesis 2:1-3": {
         title: "God Rests",
-        icon: "ðŸ•Šï¸",
+        icon: "Ã°Å¸â€¢Å Ã¯Â¸Â",
         paragraphs: [
           "God finished making the heavens and the earth.",
           "Then He rested on the seventh day.",
@@ -14317,7 +14342,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       },
       "Genesis 2:4-9": {
         title: "God Gives Life",
-        icon: "ðŸŒ¬ï¸",
+        icon: "Ã°Å¸Å’Â¬Ã¯Â¸Â",
         paragraphs: [
           "God formed the man from the dust of the ground.",
           "Then God breathed life into him.",
@@ -14327,7 +14352,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       },
       "Genesis 2:10-17": {
         title: "God Gives Work and a Rule",
-        icon: "ðŸŒ³",
+        icon: "Ã°Å¸Å’Â³",
         paragraphs: [
           "God put the man in the garden to care for it.",
           "The man could eat from every tree except one.",
@@ -14337,7 +14362,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       },
       "Genesis 2:18-25": {
         title: "God Makes Woman",
-        icon: "ðŸ¤",
+        icon: "Ã°Å¸Â¤Â",
         paragraphs: [
           "God said it was not good for the man to be alone.",
           "The animals were good, but none of them were the right partner for him.",
@@ -14349,7 +14374,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     const dayTwoVerseBreakdownNotes: Record<string, VerseBreakdownNote> = {
       "Genesis 3:1-5": {
         title: "The Serpent Lies",
-        icon: "ðŸ",
+        icon: "Ã°Å¸ÂÂ",
         paragraphs: [
           "The serpent asked Eve if God really said not to eat from the tree.",
           "He made God's rule sound unfair.",
@@ -14359,7 +14384,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       },
       "Genesis 3:6-7": {
         title: "Adam and Eve Disobey",
-        icon: "ðŸŽ",
+        icon: "Ã°Å¸ÂÅ½",
         paragraphs: [
           "Eve saw that the fruit looked good and ate it.",
           "She gave some to Adam, and he ate too.",
@@ -14369,7 +14394,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       },
       "Genesis 3:8-13": {
         title: "God Finds Them",
-        icon: "ðŸ‘€",
+        icon: "Ã°Å¸â€˜â‚¬",
         paragraphs: [
           "God came to the garden and called for Adam.",
           "Adam and Eve hid because they were afraid.",
@@ -14379,7 +14404,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       },
       "Genesis 3:14-19": {
         title: "God Gives Judgment and Hope",
-        icon: "ðŸŒ±",
+        icon: "Ã°Å¸Å’Â±",
         paragraphs: [
           "God told the serpent, Eve, and Adam that sin would bring pain.",
           "Life would now be harder because they disobeyed.",
@@ -14389,7 +14414,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       },
       "Genesis 3:20-24": {
         title: "Adam and Eve Leave Eden",
-        icon: "ðŸ§¥",
+        icon: "Ã°Å¸Â§Â¥",
         paragraphs: [
           "Adam named his wife Eve, which points to life.",
           "God made clothes for Adam and Eve and covered them.",
@@ -14399,7 +14424,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       },
       "Genesis 4:1-7": {
         title: "Cain Gets Angry",
-        icon: "ðŸ˜ ",
+        icon: "Ã°Å¸ËœÂ ",
         paragraphs: [
           "Adam and Eve had two sons named Cain and Abel.",
           "Cain became angry when God accepted Abel's offering.",
@@ -14409,7 +14434,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       },
       "Genesis 4:8-16": {
         title: "Cain Kills Abel",
-        icon: "ðŸ©¸",
+        icon: "Ã°Å¸Â©Â¸",
         paragraphs: [
           "Cain did not listen to God's warning.",
           "He killed his brother Abel.",
@@ -14419,7 +14444,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       },
       "Genesis 4:17-24": {
         title: "People Build, but Sin Grows",
-        icon: "ðŸ™ï¸",
+        icon: "Ã°Å¸Ââ„¢Ã¯Â¸Â",
         paragraphs: [
           "Cain's family built a city and made music and tools.",
           "People were still creative because they were made by God.",
@@ -14429,7 +14454,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       },
       "Genesis 4:25-26": {
         title: "Hope Continues",
-        icon: "ðŸŒ±",
+        icon: "Ã°Å¸Å’Â±",
         paragraphs: [
           "Adam and Eve had another son named Seth.",
           "This showed that Abel's death was not the end of hope.",
@@ -14441,7 +14466,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     const dayThreeVerseBreakdownNotes: Record<string, VerseBreakdownNote> = {
       "Genesis 5:1-5": {
         title: "Death Enters the Family Record",
-        icon: "âš°ï¸",
+        icon: "Ã¢Å¡Â°Ã¯Â¸Â",
         paragraphs: [
           "Genesis 5 starts with Adam's family line.",
           "People are still made in God's likeness, so human life still matters.",
@@ -14451,7 +14476,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       },
       "Genesis 5:6-20": {
         title: "The Family Line Keeps Going",
-        icon: "ðŸ§¬",
+        icon: "Ã°Å¸Â§Â¬",
         paragraphs: [
           "This part repeats names, children, years, and death.",
           "The repetition helps us feel that every generation is touched by the fall.",
@@ -14461,7 +14486,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       },
       "Genesis 5:21-24": {
         title: "Enoch Walks With God",
-        icon: "ðŸš¶",
+        icon: "Ã°Å¸Å¡Â¶",
         paragraphs: [
           "Enoch is different from the pattern around him.",
           "Instead of only saying he died, Genesis says he walked with God.",
@@ -14471,7 +14496,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       },
       "Genesis 5:25-32": {
         title: "Noah Is Born Into a Tired World",
-        icon: "ðŸ•Šï¸",
+        icon: "Ã°Å¸â€¢Å Ã¯Â¸Â",
         paragraphs: [
           "Noah's name is connected to comfort and rest.",
           "His father hoped Noah would bring relief from painful work and the cursed ground.",
@@ -14481,7 +14506,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       },
       "Genesis 6:1-8": {
         title: "The Earth Becomes Corrupt",
-        icon: "ðŸŒ",
+        icon: "Ã°Å¸Å’Â",
         paragraphs: [
           "Genesis 6 shows sin spreading across the earth.",
           "People's hearts and choices had become deeply evil.",
@@ -14491,7 +14516,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       },
       "Genesis 6:9-13": {
         title: "Noah Walks With God",
-        icon: "âœ¨",
+        icon: "Ã¢Å“Â¨",
         paragraphs: [
           "Noah lived in a violent and corrupt generation.",
           "But Noah's life moved in a different direction because he walked with God.",
@@ -14501,7 +14526,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       },
       "Genesis 6:14-22": {
         title: "God Tells Noah to Build",
-        icon: "ðŸ› ï¸",
+        icon: "Ã°Å¸â€ºÂ Ã¯Â¸Â",
         paragraphs: [
           "God gave Noah clear instructions for building the ship.",
           "Noah's faith became practical through work, details, and obedience.",
@@ -14511,7 +14536,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       },
       "Genesis 7:1-10": {
         title: "Entering The Ark",
-        icon: "🚢",
+        icon: "ðŸš¢",
         paragraphs: [
           "God shifts Noah from building the ark to entering it with his household.",
           "The clean and unclean animals come exactly as God commanded.",
@@ -14521,7 +14546,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       },
       "Genesis 7:11-17": {
         title: "The Flood Begins",
-        icon: "🚢",
+        icon: "ðŸš¢",
         paragraphs: [
           "The flood begins at a real moment in Noah's life when the deep breaks open and the heavens release rain.",
           "God shuts Noah in, showing that the safety of the ark depends on God's protection, not Noah's control.",
@@ -14531,7 +14556,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       },
       "Genesis 7:18-24": {
         title: "The Waters Take Over The Earth",
-        icon: "🌊",
+        icon: "ðŸŒŠ",
         paragraphs: [
           "The floodwaters keep rising until even the highest places disappear beneath them.",
           "Everything outside the ark is overwhelmed, but Noah and those with him remain alive.",
@@ -14541,104 +14566,138 @@ Before we understand redemption, we need to understand what God made humanity fo
       },
     };
     const dayFourVerseBreakdownNotes: Record<string, VerseBreakdownNote> = {
-      "Genesis 8:1-5": {
-        title: "God Remembers Noah",
-        icon: "ðŸŒ¬ï¸",
+      "Genesis 8:1-3": {
+        title: "The Waters Recede",
+        icon: "??",
         paragraphs: [
-          "God remembered Noah, which means God turned His faithful care toward him.",
-          "The water started going down, and the ark came to rest.",
-          "The mountaintops began to appear again.",
-          "God was moving the story from judgment toward a new beginning.",
+          "God remembered Noah, which means He turned toward Noah with faithful action.",
+          "The wind passes over the earth and the waters begin to subside.",
+          "The flood is beginning to reverse as the story turns from judgment toward rescue.",
         ],
       },
-      "Genesis 8:6-12": {
-        title: "Noah Waits for a Sign",
-        icon: "ðŸ•Šï¸",
+      "Genesis 8:4-5": {
+        title: "The Ark Rests On Ararat",
+        icon: "???",
         paragraphs: [
-          "Noah sent out birds to see if the land was ready.",
-          "The dove came back at first because there was nowhere to rest.",
-          "Later the dove returned with an olive leaf.",
-          "That little leaf showed that life was beginning again.",
+          "The ark finally comes to rest after months of drifting.",
+          "Moses records the exact timing to show God's precise control over the flood.",
+          "The waters keep decreasing, but Noah still has to wait patiently inside the ark.",
         ],
       },
-      "Genesis 8:13-19": {
-        title: "God Says Go Out",
-        icon: "ðŸšª",
+      "Genesis 8:6-14": {
+        title: "The Raven And The Dove",
+        icon: "???",
         paragraphs: [
-          "Noah saw the ground was dry, but he still waited for God's word.",
-          "God told Noah, his family, and the animals to leave the ship.",
-          "The animals went out by their families.",
-          "God had rescued them so life could spread again on the earth.",
+          "Noah sends out the raven and the dove to test whether the earth is ready again.",
+          "The olive leaf becomes the first clear sign that vegetation and life are returning.",
+          "Even after seeing progress, Noah keeps waiting for God's timing.",
+        ],
+      },
+      "Genesis 8:15-19": {
+        title: "Leaving The Ark",
+        icon: "??",
+        paragraphs: [
+          "God finally speaks and tells Noah it is time to leave the ark.",
+          "Noah, his family, and every living creature step into a renewed world together.",
+          "Life begins again as God sends them out to multiply upon the earth.",
         ],
       },
       "Genesis 8:20-22": {
-        title: "Noah Worships After Rescue",
-        icon: "ðŸ”¥",
+        title: "Noah's Sacrifice",
+        icon: "??",
         paragraphs: [
-          "Noah's first recorded action after leaving the ship was worship.",
-          "He built an altar and gave offerings to God.",
-          "God promised that the seasons and days would continue.",
-          "This shows that rescue should lead our hearts back to worship.",
+          "Noah's first recorded action after leaving the ark is worship.",
+          "He builds an altar and offers burnt offerings from the clean animals and birds.",
+          "God promises that the rhythms of creation will continue while the earth remains.",
         ],
       },
       "Genesis 9:1-7": {
-        title: "God Blesses Noah Again",
-        icon: "ðŸ‘‘",
+        title: "God Blesses Noah",
+        icon: "🙌",
         paragraphs: [
-          "God blessed Noah and his sons and told them to fill the earth.",
-          "This sounds like the blessing God gave humanity in Genesis 1.",
-          "God also said human life is sacred because people are made in His image.",
-          "The new world must not be filled with violence like the old one.",
+          "God blesses Noah and his sons for the new world after the flood.",
+          "He repeats the command to be fruitful, multiply, and fill the earth.",
+          "God also teaches that human life is sacred because people bear His image.",
+          "The new world must not return to the violence that filled the old one.",
         ],
       },
-      "Genesis 9:8-17": {
-        title: "God Gives the Rainbow",
-        icon: "ðŸŒˆ",
+      "Genesis 9:8-11": {
+        title: "God's Covenant With Noah",
+        icon: "🤝",
         paragraphs: [
-          "God made a covenant with Noah, his family, and every living creature.",
-          "The rainbow became the sign of God's promise.",
-          "Storms would still come, but God promised not to flood the whole earth again.",
-          "The rainbow reminds us that God's mercy stands over the world.",
+          "God makes a covenant with Noah, his descendants, and every living creature.",
+          "He promises that all flesh will never again be destroyed by a worldwide flood.",
+          "This covenant gives peace about the future after judgment.",
         ],
       },
-      "Genesis 9:18-29": {
-        title: "Sin Still Remains",
-        icon: "ðŸ‡",
+      "Genesis 9:12-19": {
+        title: "The Rainbow",
+        icon: "🌈",
         paragraphs: [
-          "Genesis does not hide Noah's weakness after the flood.",
-          "Noah got drunk, and shame entered the story again.",
-          "The flood judged evil, but it did not remove sin from human hearts.",
-          "This shows why the world still needs a deeper rescue.",
+          "God gives the rainbow as the visible sign of His covenant.",
+          "The sign appears in the clouds, the same place that once brought fear.",
+          "The rainbow reminds Noah that God's promise still stands.",
+          "It brings peace after the greatest judgment the world had ever seen.",
         ],
       },
-      "Genesis 10:1-5": {
-        title: "Families Spread Out",
-        icon: "ðŸ—ºï¸",
+      "Genesis 9:20-24": {
+        title: "Noah Gets Drunk",
+        icon: "🍇",
         paragraphs: [
-          "Genesis 10 begins showing how Noah's family spread across the earth.",
-          "Japheth's line moved into different lands and coastlands.",
-          "God sees nations, places, languages, and families.",
-          "The Bible is showing how the world after the flood began to fill again.",
+          "Noah begins ordinary life again, plants a vineyard, and becomes drunk.",
+          "His shame is exposed, and Ham dishonors him instead of protecting him.",
+          "Shem and Japheth respond with honor and cover their father.",
+          "The flood ended, but sin was still present in the human heart.",
         ],
       },
-      "Genesis 10:6-20": {
-        title: "Kingdoms Begin to Rise",
-        icon: "ðŸ™ï¸",
+      "Genesis 9:25-29": {
+        title: "Canaan Cursed",
+        icon: "🌾",
         paragraphs: [
-          "Ham's family line includes important places like Egypt, Canaan, Babel, and Nineveh.",
-          "Nimrod is described as a mighty man and kingdom builder.",
-          "These names will matter later in the Bible story.",
-          "Genesis is preparing us to see how nations can build with pride or stand under God.",
+          "Noah speaks words over Canaan, Shem, and Japheth that reach into the future.",
+          "Shem's line receives blessing, and Japheth is enlarged.",
+          "The focus is on the future direction of these family lines and nations.",
+          "Even Noah dies, reminding us that the world still needs deeper rescue.",
+        ],
+      },
+      "Genesis 10:1-2": {
+        title: "Noah’s Descendants",
+        icon: "🌍",
+        paragraphs: [
+          "Genesis 10 shifts from Noah himself to the nations that came from his sons.",
+          "This chapter explains how the earth was repopulated after the flood.",
+        ],
+      },
+      "Genesis 10:3-5": {
+        title: "The Sons Of Japheth",
+        icon: "🌍",
+        paragraphs: [
+          "Japheth’s descendants spread into coastlands, territories, and early nations.",
+          "Moses is showing how real family lines became peoples and lands across the earth.",
+        ],
+      },
+      "Genesis 10:6-11": {
+        title: "The Sons of Ham",
+        icon: "🌍",
+        paragraphs: [
+          "Ham’s line introduces Cush, Mizraim, Put, Canaan, and Nimrod.",
+          "Babel appears here as one of the first rising centers of kingdom power after the flood.",
+        ],
+      },
+      "Genesis 10:12-20": {
+        title: "The Sons of Ham Continued",
+        icon: "🌍",
+        paragraphs: [
+          "The rest of Ham’s line traces cities, peoples, and the tribes of Canaan.",
+          "These names matter because they return throughout the Old Testament story.",
         ],
       },
       "Genesis 10:21-32": {
-        title: "The Promise Line Keeps Moving",
-        icon: "ðŸŒ±",
+        title: "The Sons of Shem",
+        icon: "🌍",
         paragraphs: [
-          "Shem's family line becomes very important for the rest of Genesis.",
-          "The promise story will move through Shem toward Abram.",
-          "Genesis 10 ends with families, languages, lands, and nations.",
-          "God's plan is still moving forward, even across the whole world.",
+          "Shem’s line receives special attention because it leads toward Eber, Abraham, Israel, and ultimately Jesus.",
+          "Genesis 10 ends by preparing the way for Babel in Genesis 11 and Abram in Genesis 12.",
         ],
       },
     };
@@ -14674,7 +14733,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_26%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-surface-soft,#f8fbff)] text-2xl font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
               aria-label="Close study notes"
             >
-              Ã—
+              Ãƒâ€”
             </button>
           </div>
           <div className="px-4 pb-24 pt-5">
@@ -14695,7 +14754,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 className="grid h-11 w-11 place-items-center rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] text-xl font-black text-[var(--bb-text-primary,#111827)] shadow-sm transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
                 aria-label="Back"
               >
-                â€¹
+                Ã¢â‚¬Â¹
               </button>
               <div className="flex flex-col items-center text-center">
                 <span className="inline-flex rounded-full bg-[var(--bb-accent-soft,#eaf5ff)] px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">
@@ -14746,7 +14805,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                       ? "bg-sky-400 text-sky-950"
                       : "bg-[var(--bb-accent,#f6b44b)] text-black"
                   }`} aria-hidden="true">
-                    Ã¢Å“â€œ
+                    ÃƒÂ¢Ã…â€œÃ¢â‚¬Å“
                   </span>
                   <span className="contents">
                     <span className="block text-base font-black leading-tight">
@@ -14816,7 +14875,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                       ? "bg-sky-400 text-sky-950"
                       : "bg-[var(--bb-accent,#f6b44b)] text-black"
                   }`} aria-hidden="true">
-                    âœ“
+                    Ã¢Å“â€œ
                   </span>
                   <span className="contents">
                     <span className="block text-base font-black leading-tight">
@@ -14966,7 +15025,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   }`}
                 >
                   <span className={`mx-auto h-7 w-7 place-items-center text-[var(--bb-accent,#f6b44b)] ${item.icon === "search" ? "hidden" : "grid"}`} aria-hidden="true">
-                    {item.icon === "heart" ? "â™¡" : item.icon === "download" ? "â†“" : item.icon === "lock" ? "â–¡" : item.icon === "check" ? "âœ“" : "â†‘"}
+                    {item.icon === "heart" ? "Ã¢â„¢Â¡" : item.icon === "download" ? "Ã¢â€ â€œ" : item.icon === "lock" ? "Ã¢â€“Â¡" : item.icon === "check" ? "Ã¢Å“â€œ" : "Ã¢â€ â€˜"}
                   </span>
                   {item.icon === "search" ? (
                     <span className="mx-auto grid h-7 w-7 place-items-center text-[var(--bb-accent,#f6b44b)]" aria-hidden="true">
@@ -15102,7 +15161,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                           ? dayFourVerseBreakdownNotes[section.verseBlock.reference]
                           : undefined;
                 const paragraphs = (note?.paragraphs || section.teaching).slice(0, 4);
-                const noteIcon = note?.icon || "â€¢";
+                const noteIcon = note?.icon || "Ã¢â‚¬Â¢";
                 return (
                   <div key={`expanded-${section.verseBlock.reference}`}>
                     <button
@@ -15144,16 +15203,16 @@ Before we understand redemption, we need to understand what God made humanity fo
           {hasDeepNotes ? (
             <div className="mt-5 border-t border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_24%,transparent)] pt-5">
               <div className="rounded-[24px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_26%,transparent)] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--bb-accent,#f6b44b)_14%,transparent),rgba(0,0,0,0.16))] p-4 shadow-[0_0_28px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_18%,transparent)]">
-                <p className="text-xl font-black leading-tight text-[var(--bb-text-primary,#fff7ed)]">ðŸ“– Want to Go Deeper?</p>
+                <p className="text-xl font-black leading-tight text-[var(--bb-text-primary,#fff7ed)]">Ã°Å¸â€œâ€“ Want to Go Deeper?</p>
                 <p className="mt-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#e7d4bd)]">
                   This was just a simple introduction to today's reading.
                 </p>
                 <p className="mt-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#e7d4bd)]">If you want to understand:</p>
                 <div className="mt-2 grid gap-1.5 text-sm font-bold leading-6 text-[var(--bb-text-primary,#fff7ed)]">
-                  <p>ðŸ“š the historical and cultural context</p>
-                  <p>ðŸ§  the meaning behind important words and phrases</p>
-                  <p>ðŸ” hidden connections throughout Scripture</p>
-                  <p>ðŸ”¥ and how this chapter fits into God's bigger story</p>
+                  <p>Ã°Å¸â€œÅ¡ the historical and cultural context</p>
+                  <p>Ã°Å¸Â§Â  the meaning behind important words and phrases</p>
+                  <p>Ã°Å¸â€Â hidden connections throughout Scripture</p>
+                  <p>Ã°Å¸â€Â¥ and how this chapter fits into God's bigger story</p>
                 </div>
                 <p className="mt-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#e7d4bd)]">
                   check out the Study Notes for today's study inside Bible Buddy.
@@ -15217,7 +15276,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_26%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-surface-soft,#f8fbff)] text-2xl font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
                 aria-label="Close study notes"
               >
-                Ã—
+                Ãƒâ€”
               </button>
             </div>
             <div className="bible-year-study-notes-scroll h-[calc(100%-68px)] overflow-y-auto px-4 py-5" data-bible-year-deep-notes-scroll="day-one">
@@ -15251,7 +15310,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               aria-label="Close upgrade prompt"
             >
               <span className="text-xl">x</span>
-              Ã—
+              Ãƒâ€”
             </button>
             <div className="inline-flex rounded-full bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_16%,transparent)] px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#f6b44b)]">
               Bible Buddy Pro
@@ -15268,10 +15327,10 @@ Before we understand redemption, we need to understand what God made humanity fo
               <p>Receive deeper Bible study tools focused on Scripture and daily consistency</p>
             </div>
             <div className="hidden">
-              <p>ðŸ“š Unlock every Bible in One Year Deep Note</p>
-              <p>ðŸ§  Study key words and phrases with more depth</p>
-              <p>ðŸ” See more connections across Scripture</p>
-              <p>ðŸ”¥ Go beyond the intro and study the full teaching</p>
+              <p>Ã°Å¸â€œÅ¡ Unlock every Bible in One Year Deep Note</p>
+              <p>Ã°Å¸Â§Â  Study key words and phrases with more depth</p>
+              <p>Ã°Å¸â€Â See more connections across Scripture</p>
+              <p>Ã°Å¸â€Â¥ Go beyond the intro and study the full teaching</p>
             </div>
             <div className="mt-5 grid gap-2">
               <button
@@ -15335,7 +15394,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               aria-label="Close upgrade prompt"
             >
               <span className="text-xl">x</span>
-              Ãƒâ€”
+              ÃƒÆ’Ã¢â‚¬â€
             </button>
             <div className="inline-flex rounded-full bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_16%,transparent)] px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#f6b44b)]">
               Bible Buddy Pro
@@ -15466,7 +15525,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             className="absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-full border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_34%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_82%,transparent)] text-xl font-black text-[var(--bb-text-primary,#111827)] shadow-sm transition hover:scale-105"
             aria-label="Close reading"
           >
-            Ã—
+            Ãƒâ€”
           </button>
           <p className="pr-12 text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Bible In One Year</p>
           <h1 className="mt-1 pr-12 text-3xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">
@@ -16388,7 +16447,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   <p className="truncate text-sm font-black text-gray-950">{activeChapterLabel}</p>
                   <p className="mt-0.5 text-xs font-semibold leading-5 text-gray-500">{studyProgressMotivation}</p>
                 </div>
-                <span className="text-xl text-gray-400" aria-hidden="true">â€º</span>
+                <span className="text-xl text-gray-400" aria-hidden="true">Ã¢â‚¬Âº</span>
               </div>
               {false ? (
                 <div className="hidden">
@@ -16430,7 +16489,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                               {studyChapter.day_title || `Chapter ${studyChapter.day_number}`}
                             </span></span>
                           <span className={`shrink-0 text-xs font-black ${isPastOrCurrent && !isCurrent ? "text-[#2f6685]" : "bb-accent"}`}>
-                            {isLocked ? "ðŸ”’" : isCurrent ? "Review" : switchingStudyChapter === studyChapter.day_number ? "Loading" : "Load"}
+                            {isLocked ? "Ã°Å¸â€â€™" : isCurrent ? "Review" : switchingStudyChapter === studyChapter.day_number ? "Loading" : "Load"}
                           </span>
                         </button>
                       );
@@ -16619,7 +16678,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                     <path d="M12 15.5A3.5 3.5 0 1 0 12 8a3.5 3.5 0 0 0 0 7.5Z" />
                     <path d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.05.05a2 2 0 1 1-2.83 2.83l-.05-.05a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1.04 1.56V21a2 2 0 1 1-4 0v-.08a1.7 1.7 0 0 0-1.04-1.56 1.7 1.7 0 0 0-1.87.34l-.05.05a2 2 0 1 1-2.83-2.83l.05-.05A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-1.56-1.04H3a2 2 0 1 1 0-4h.08A1.7 1.7 0 0 0 4.6 8a1.7 1.7 0 0 0-.34-1.87l-.05-.05a2 2 0 1 1 2.83-2.83l.05.05A1.7 1.7 0 0 0 8.96 3.6 1.7 1.7 0 0 0 10 2.04V2a2 2 0 1 1 4 0v.08a1.7 1.7 0 0 0 1.04 1.56 1.7 1.7 0 0 0 1.87-.34l.05-.05a2 2 0 1 1 2.83 2.83l-.05.05A1.7 1.7 0 0 0 19.4 8c.17.6.78 1.04 1.56 1.04H21a2 2 0 1 1 0 4h-.08A1.7 1.7 0 0 0 19.4 15Z" />
                   </svg>
-                  âš™
+                  Ã¢Å¡â„¢
                 </button>
               ) : null}
               <button
@@ -16723,7 +16782,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                       className="flex h-7 w-7 items-center justify-center rounded-full bg-gray-100 text-sm font-bold text-gray-500 transition hover:bg-gray-200"
                       aria-label="Close devotional settings"
                     >
-                      Ã—
+                      Ãƒâ€”
                     </button>
                   </div>
 
@@ -16756,7 +16815,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                                   {cover ? (
                                     <img src={cover} alt="" loading="lazy" decoding="async" className="h-full w-full object-cover" />
                                   ) : (
-                                    <div className="grid h-full w-full place-items-center text-lg">ðŸ“–</div>
+                                    <div className="grid h-full w-full place-items-center text-lg">Ã°Å¸â€œâ€“</div>
                                   )}
                                 </div>
                                 <div className="min-w-0 flex-1">
@@ -16861,7 +16920,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                         <div className="h-7 w-16 rounded-full bg-[#dfeafe]" />
                         <div className="h-3 w-16 rounded-full bg-[#edf1f7]" />
                       </div>
-                      <span className="text-xl leading-none text-gray-300" aria-hidden="true">â€º</span>
+                      <span className="text-xl leading-none text-gray-300" aria-hidden="true">Ã¢â‚¬Âº</span>
                     </div>
                   </div>
                 </div>
@@ -16928,7 +16987,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   </>
                 ) : (
                   <>
-                    <p className="relative mt-4 text-2xl font-black text-gray-950">ðŸŽ‰ Congratulations!</p>
+                    <p className="relative mt-4 text-2xl font-black text-gray-950">Ã°Å¸Å½â€° Congratulations!</p>
                     <p className="mt-2 text-base font-bold text-gray-800">You completed {completedChapterLabel}.</p>
                     <p className="mt-1 text-sm font-medium leading-6 text-gray-500">
                       Ready to continue to {nextChapterLabel}?
@@ -17059,7 +17118,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                       <span className={`drop-shadow-sm ${isCardDisabled ? "opacity-75" : ""}`} aria-hidden="true">{getTaskEmoji(task)}</span>
                       {task.done ? (
                         <span className="absolute -right-0.5 -top-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-[#7BAFD4] text-xs font-black text-white ring-2 ring-white">
-                          âœ“
+                          Ã¢Å“â€œ
                         </span>
                       ) : null}
                     </div>
@@ -17080,12 +17139,12 @@ Before we understand redemption, we need to understand what God made humanity fo
                               ? "start-here-flash text-gray-950 font-black tracking-wide"
                               : "font-medium text-gray-500"
                         }`}>
-                          <span aria-hidden="true">{task.done ? "â–£" : "â—‹"}</span>
+                          <span aria-hidden="true">{task.done ? "Ã¢â€“Â£" : "Ã¢â€”â€¹"}</span>
                           {task.done ? (
                             <span className="done-sparkle pointer-events-none absolute -inset-x-2 -top-3 flex justify-between text-[10px] text-amber-400" aria-hidden="true">
-                              <span>âœ¦</span>
-                              <span>âœ§</span>
-                              <span>âœ¦</span></span>
+                              <span>Ã¢Å“Â¦</span>
+                              <span>Ã¢Å“Â§</span>
+                              <span>Ã¢Å“Â¦</span></span>
                           ) : null}
                           {activeTaskPrompt ? (
                             <span className="flex flex-col items-end leading-tight">
@@ -17140,7 +17199,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                       </div>
                     </div>
                     {!isCardDisabled && !isActiveInlineTask ? (
-                      <span className="mt-5 shrink-0 text-xl leading-none text-gray-400" aria-hidden="true">â€º</span>
+                      <span className="mt-5 shrink-0 text-xl leading-none text-gray-400" aria-hidden="true">Ã¢â‚¬Âº</span>
                     ) : null}
                   </div>
                   {isCelebrating ? (
@@ -17244,7 +17303,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                           aria-expanded={isActiveCompletedTask}
                         >
                         <span className="grid h-5 w-5 shrink-0 place-items-center rounded-md bg-[var(--bb-button,var(--bb-accent,#7BAFD4))] text-[11px] font-black text-[var(--bb-button-text,#ffffff)] shadow-sm" aria-hidden="true">
-                          âœ“
+                          Ã¢Å“â€œ
                         </span>
                         <span className="min-w-0 flex-1 truncate text-xs font-black text-[var(--bb-text-primary,#1f2937)]">
                           {taskCopy.title}
@@ -17253,7 +17312,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                           {task.completedAtLabel || "Completed"}
                         </span>
                         <span className="hidden">
-                          â€º
+                          Ã¢â‚¬Âº
                         </span>
                         </button>
                       </div>
@@ -17285,7 +17344,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                       <img src={currentStudyCover || undefined} alt="" loading="lazy" decoding="async" className="h-full w-full object-cover" />
                     ) : (
                       <div className="grid h-full w-full place-items-center text-2xl" aria-hidden="true">
-                        ðŸ“–
+                        Ã°Å¸â€œâ€“
                       </div>
                     )}
                   </div>
@@ -17508,7 +17567,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   className="grid h-10 w-10 place-items-center rounded-full bg-[var(--bb-surface-soft,#f4f8ff)] text-xl"
                   aria-hidden="true"
                 >
-                  ðŸ’Ž
+                  Ã°Å¸â€™Å½
                 </span>
                 <span className="leading-tight">Store</span>
               </button>
@@ -17678,11 +17737,11 @@ Before we understand redemption, we need to understand what God made humanity fo
       <nav className="hidden">
         <div className="mx-auto grid max-w-md grid-cols-5 items-end gap-1 text-center">
           {[
-            { label: "Home", href: "/dashboard", icon: "âŒ‚", active: true },
-            { label: "Bible", href: "/reading", icon: "ðŸ“–" },
-            { label: "Group", href: "/study-groups", icon: "ðŸ‘¥" },
-            { label: "TV", href: "/biblebuddy-tv", icon: "â–¶" },
-            { label: "Games", href: "/bible-study-games", icon: "ðŸŽ®" },
+            { label: "Home", href: "/dashboard", icon: "Ã¢Å’â€š", active: true },
+            { label: "Bible", href: "/reading", icon: "Ã°Å¸â€œâ€“" },
+            { label: "Group", href: "/study-groups", icon: "Ã°Å¸â€˜Â¥" },
+            { label: "TV", href: "/biblebuddy-tv", icon: "Ã¢â€“Â¶" },
+            { label: "Games", href: "/bible-study-games", icon: "Ã°Å¸Å½Â®" },
           ].map((item) => (
             <Link
               key={item.label}
@@ -17726,7 +17785,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           <div className="mt-5 grid gap-2 text-left">
             {["Save your streak", "Use Bible Buddy on phone and desktop", "Post reflections and keep notes permanently"].map((benefit) => (
               <div key={benefit} className="flex items-center gap-3 rounded-2xl bg-[var(--bb-surface-soft,#f4f8ff)] px-4 py-3 text-sm font-black text-[var(--bb-text-primary,#111827)]">
-                <span className="grid h-7 w-7 place-items-center rounded-full bg-[var(--bb-accent,#2f7fe8)] text-white" aria-hidden="true">âœ“</span>
+                <span className="grid h-7 w-7 place-items-center rounded-full bg-[var(--bb-accent,#2f7fe8)] text-white" aria-hidden="true">Ã¢Å“â€œ</span>
                 <span>{benefit}</span>
               </div>
             ))}
@@ -17961,7 +18020,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                         {cover ? (
                           <img src={cover} alt="" loading="lazy" decoding="async" className="h-full w-full object-cover" />
                         ) : (
-                          <div className="grid h-full w-full place-items-center text-lg">ðŸ“–</div>
+                          <div className="grid h-full w-full place-items-center text-lg">Ã°Å¸â€œâ€“</div>
                         )}
                       </div>
                       <div className="min-w-0 flex-1">
@@ -18178,7 +18237,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-2xl font-bold text-gray-500 transition hover:bg-gray-100 hover:text-gray-800"
                 aria-label="Close Bible study help"
               >
-                Ã—
+                Ãƒâ€”
               </button>
             </div>
 
@@ -18203,7 +18262,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               </div>
 
               <section>
-                <h3 className="text-lg font-bold text-gray-950">ðŸ”¥ Your Daily Streak</h3>
+                <h3 className="text-lg font-bold text-gray-950">Ã°Å¸â€Â¥ Your Daily Streak</h3>
                 <p className="mt-2 leading-7">
                   To keep your streak going, log in to Bible Buddy each day. The streak is about showing up consistently.
                 </p>
@@ -18213,7 +18272,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               </section>
 
               <section>
-                <h3 className="text-lg font-bold text-gray-950">ðŸ“– Your Chapter Study</h3>
+                <h3 className="text-lg font-bold text-gray-950">Ã°Å¸â€œâ€“ Your Chapter Study</h3>
                 <p className="mt-2 leading-7">
                   Your current chapter stays active until the chapter tasks are complete. If Proverbs 1 takes one day, great. If it takes a few days, or even a week, that is okay too.
                 </p>
@@ -18226,25 +18285,25 @@ Before we understand redemption, we need to understand what God made humanity fo
                 <h3 className="text-lg font-bold text-gray-950">The 6 Chapter Tasks</h3>
                 <div className="mt-3 space-y-3">
                   <div className="rounded-xl border border-gray-200 bg-white p-3">
-                    <p className="font-bold text-gray-950">1. ðŸ“• Bible Study Intro</p>
+                    <p className="font-bold text-gray-950">1. Ã°Å¸â€œâ€¢ Bible Study Intro</p>
                     <p className="mt-1 text-sm leading-6 text-gray-700">
                       This sets the scene for the chapter so you understand what you are about to read.
                     </p>
                   </div>
                   <div className="rounded-xl border border-gray-200 bg-white p-3">
-                    <p className="font-bold text-gray-950">2. âœï¸ Read The Chapter</p>
+                    <p className="font-bold text-gray-950">2. Ã¢Å“ÂÃ¯Â¸Â Read The Chapter</p>
                     <p className="mt-1 text-sm leading-6 text-gray-700">
                       This is the Scripture itself. Read slowly and let the chapter be the center of the study.
                     </p>
                   </div>
                   <div className="rounded-xl border border-gray-200 bg-white p-3">
-                    <p className="font-bold text-gray-950">3. ðŸ“ Chapter Notes</p>
+                    <p className="font-bold text-gray-950">3. Ã°Å¸â€œÂ Chapter Notes</p>
                     <p className="mt-1 text-sm leading-6 text-gray-700">
                       Notes help you understand the chapter more deeply, verse by verse and section by section.
                     </p>
                   </div>
                   <div className="rounded-xl border border-gray-200 bg-white p-3">
-                    <p className="font-bold text-gray-950">4. ðŸ§  Trivia</p>
+                    <p className="font-bold text-gray-950">4. Ã°Å¸Â§Â  Trivia</p>
                     <p className="mt-1 text-sm leading-6 text-gray-700">
                       Trivia checks what is sticking from the chapter and helps you remember the story and details.
                     </p>
@@ -18265,7 +18324,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               </section>
 
               <section className="rounded-2xl border border-[#b9dcf4] bg-[#eaf5ff] p-4">
-                <h3 className="text-lg font-bold text-gray-950">âœ… When A Chapter Is Complete</h3>
+                <h3 className="text-lg font-bold text-gray-950">Ã¢Å“â€¦ When A Chapter Is Complete</h3>
                 <p className="mt-2 leading-7">
                   Once the chapter study is finished, Bible Buddy celebrates the completion and moves you to the next chapter. The goal is simple: keep showing up, keep learning, and keep moving forward at a healthy pace.
                 </p>
