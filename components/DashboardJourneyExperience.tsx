@@ -317,6 +317,10 @@ function getResolvedBibleYearCurrentDayNumberFromCards(
   );
 }
 
+function hasAnyBibleYearReadingProgress(completedCardsByDay: BibleYearCompletedCardsByDay) {
+  return Object.values(completedCardsByDay).some((day) => day?.reading === true);
+}
+
 function normalizeBibleYearDayNumber(value: unknown, fallback = 1) {
   const maxDayNumber = GENESIS_BIBLE_IN_ONE_YEAR_SERIES[GENESIS_BIBLE_IN_ONE_YEAR_SERIES.length - 1]?.dayNumber || 1;
   const numericValue = Number(value);
@@ -4223,6 +4227,42 @@ export default function DashboardJourneyExperience({
 
     async function loadBibleYearProgress() {
       if (!userId) {
+        const preservedCompletedCardsByDay =
+          initialStoredBibleYearProgress?.completedCardsByDay ||
+          bibleYearCompletedCardsByDay ||
+          {};
+        const preservedNotesViewedByDay =
+          initialStoredBibleYearProgress?.notesViewedByDay ||
+          bibleYearScriptureNotesViewedByDay ||
+          {};
+        const preservedReflectionPostedByDay =
+          initialStoredBibleYearProgress?.reflectionPostedByDay ||
+          bibleYearReflectionPostedByDay ||
+          {};
+        const shouldPreserveKnownBibleYearProgress =
+          hasAnyBibleYearReadingProgress(preservedCompletedCardsByDay) ||
+          bibleYearResolvedCurrentDayNumberRef.current > 1 ||
+          Number(initialStoredBibleYearProgress?.resolvedCurrentDayNumber || 0) > 1;
+
+        if (shouldPreserveKnownBibleYearProgress) {
+          const preservedCurrentDayNumber = chooseResolvedBibleYearDayNumber({
+            incomingDayNumber:
+              getResolvedBibleYearCurrentDayNumberFromCards(preservedCompletedCardsByDay) ||
+              initialStoredBibleYearProgress?.resolvedCurrentDayNumber ||
+              bibleYearResolvedCurrentDayNumberRef.current,
+            previousDayNumber: bibleYearResolvedCurrentDayNumberRef.current,
+            reportDayNumber: bibleYearReport?.currentDay,
+            progressLoaded: false,
+          });
+          setBibleYearCompletedCardsByDay(preservedCompletedCardsByDay);
+          setBibleYearScriptureNotesViewedByDay(preservedNotesViewedByDay);
+          setBibleYearReflectionPostedByDay(preservedReflectionPostedByDay);
+          setBibleYearResolvedCurrentDayNumber(preservedCurrentDayNumber);
+          setBibleYearProgressLoaded(true);
+          setBibleYearProgressResolved(true);
+          return;
+        }
+
         const resolvedCurrentDayNumber = chooseResolvedBibleYearDayNumber({
           incomingDayNumber: 1,
           previousDayNumber: bibleYearResolvedCurrentDayNumberRef.current,
@@ -4253,8 +4293,11 @@ export default function DashboardJourneyExperience({
               const completedCardsByDay = payload.completedCardsByDay || {};
               const notesViewedByDay = payload.notesViewedByDay || {};
               const reflectionPostedByDay = payload.reflectionPostedByDay || {};
+              const authoritativeCurrentDayNumber =
+                Number(payload.authoritativeCurrentDayNumber) ||
+                getResolvedBibleYearCurrentDayNumberFromCards(completedCardsByDay);
               const resolvedCurrentDayNumber = chooseResolvedBibleYearDayNumber({
-                incomingDayNumber: payload.resolvedCurrentDayNumber,
+                incomingDayNumber: Math.max(Number(payload.resolvedCurrentDayNumber || 0), authoritativeCurrentDayNumber),
                 previousDayNumber: bibleYearResolvedCurrentDayNumberRef.current,
                 reportDayNumber: bibleYearReport?.currentDay,
                 progressLoaded: bibleYearProgressLoaded,

@@ -393,12 +393,14 @@ export async function GET(request: NextRequest) {
       GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => completedCardsByDay[day.dayNumber]?.reading !== true)?.dayNumber ||
       GENESIS_BIBLE_IN_ONE_YEAR_SERIES[GENESIS_BIBLE_IN_ONE_YEAR_SERIES.length - 1]?.dayNumber ||
       1;
-    const resolvedCurrentDayNumber = Math.max(firstIncompleteDayNumber, latestTouchedDayNumber || 0) || 1;
+    const authoritativeCurrentDayNumber = firstIncompleteDayNumber;
+    const resolvedCurrentDayNumber = Math.max(authoritativeCurrentDayNumber, latestTouchedDayNumber || 0) || 1;
 
     return NextResponse.json({
       completedCardsByDay,
       notesViewedByDay,
       reflectionPostedByDay,
+      authoritativeCurrentDayNumber,
       resolvedCurrentDayNumber,
     });
   } catch (error) {
