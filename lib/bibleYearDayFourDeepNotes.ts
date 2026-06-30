@@ -1632,19 +1632,19 @@ const DAY_FOUR_SECTION_META: Array<Omit<BibleYearDeepStudySection, "markdown">> 
     summary: "Noah's words over Canaan, Shem, and Japheth show that the story of blessing and curse continues.",
   },
   {
-    reference: "Genesis 10:1-2",
+    reference: "Genesis 10:1",
     title: "Noah’s Descendants",
     icon: "🌍",
     summary: "Noah’s sons become the starting point for the nations that fill the earth after the flood.",
   },
   {
-    reference: "Genesis 10:3-5",
+    reference: "Genesis 10:2-5",
     title: "The Sons Of Japheth",
     icon: "🌍",
     summary: "Japheth’s descendants spread into coastlands, territories, and the early nations of the post-flood world.",
   },
   {
-    reference: "Genesis 10:6-20",
+    reference: "Genesis 10:6-11",
     title: "The Sons of Ham",
     icon: "🌍",
     summary: "Ham’s line introduces Cush, Egypt, Canaan, and Nimrod as the nations begin rising again after the flood.",

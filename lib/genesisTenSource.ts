@@ -20,11 +20,14 @@ function parseReferenceParts(reference: string) {
     throw new Error(`Could not parse Genesis 10 reference: ${reference}`);
   }
 
+  const endVerse = Number(match[3]);
   return {
-    reference: `Genesis ${match[1]}:${match[2]}-${match[3]}`,
+    reference: endVerse === Number(match[2])
+      ? `Genesis ${match[1]}:${match[2]}`
+      : `Genesis ${match[1]}:${match[2]}-${endVerse}`,
     chapter: Number(match[1]),
     startVerse: Number(match[2]),
-    endVerse: Number(match[3]),
+    endVerse,
   };
 }
 
@@ -121,7 +124,7 @@ function parseGenesisTenRawNotes(rawText: string): GenesisTenPersonalSection[] {
 }
 
 export const GENESIS_TEN_RAW_NOTES = [
-  "# **🌍 Genesis 10:1–2**",
+  "# **🌍 Genesis 10:1–1**",
   "",
   "**Noah’s Descendants** ",
   "",
@@ -159,7 +162,7 @@ export const GENESIS_TEN_RAW_NOTES = [
   "",
   "👨‍👩‍👧 Not every child is listed",
   "",
-  "# **🌍 Genesis 10:3–5**",
+  "# **🌍 Genesis 10:2–5**",
   "",
   "**🌍 The Sons Of Japheth**",
   "",
@@ -287,7 +290,7 @@ export const GENESIS_TEN_RAW_NOTES = [
   "",
   "➡️ The nations of the earth began",
   "",
-  "# **🌍 Genesis 10:6–20**",
+  "# **🌍 Genesis 10:6–11**",
   "",
   "**The Sons of Ham**",
   "",

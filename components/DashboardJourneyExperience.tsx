@@ -8777,17 +8777,17 @@ export default function DashboardJourneyExperience({
         teachingTitle: "📖 Noah's Words Look Far Ahead",
         list: ["⚖️ Noah speaks about Canaan", "🙌 Shem's line is blessed", "🌍 Japheth is enlarged", "🌳 the focus is future generations", "⚰️ Noah still dies"],
       },
-      "Genesis 10:1-2": {
+      "Genesis 10:1": {
         heading: "🌍 Noah’s Descendants",
         teachingTitle: "👨‍👩‍👦 The Nations Begin Forming",
         list: ["👨‍👩‍👦 Noah’s sons become fathers", "📖 the story shifts from Noah to his sons", "🌍 the earth begins filling again", "➡️ the nations start to spread"],
       },
-      "Genesis 10:3-5": {
+      "Genesis 10:2-5": {
         heading: "🌍 The Sons Of Japheth",
         teachingTitle: "🗺️ Coastlands And Nations",
         list: ["🌍 Japheth’s line spreads", "🗺️ lands and coastlands are named", "🗣️ languages begin to separate", "➡️ families become nations"],
       },
-      "Genesis 10:6-20": {
+      "Genesis 10:6-11": {
         heading: "🌍 The Sons of Ham",
         teachingTitle: "👑 Nimrod And Early Kingdoms",
         list: ["🌍 Ham’s family expands", "👑 Nimrod becomes mighty", "🏙️ Babel is named", "➡️ kingdoms begin rising again"],
@@ -14730,7 +14730,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           "Even Noah dies, reminding us that the world still needs deeper rescue.",
         ],
       },
-      "Genesis 10:1-2": {
+      "Genesis 10:1": {
         title: "Noah’s Descendants",
         icon: "🌍",
         paragraphs: [
@@ -14738,7 +14738,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           "This chapter explains how the earth was repopulated after the flood.",
         ],
       },
-      "Genesis 10:3-5": {
+      "Genesis 10:2-5": {
         title: "The Sons Of Japheth",
         icon: "🌍",
         paragraphs: [
@@ -14746,7 +14746,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           "Moses is showing how real family lines became peoples and lands across the earth.",
         ],
       },
-      "Genesis 10:6-20": {
+      "Genesis 10:6-11": {
         title: "The Sons of Ham",
         icon: "🌍",
         paragraphs: [
