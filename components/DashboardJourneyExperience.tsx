@@ -4892,11 +4892,9 @@ export default function DashboardJourneyExperience({
         bibleYearJustCompletedDayRef.current === day.dayNumber &&
         isBibleYearDayComplete(day),
       );
-      const rememberedDayNumber = getStoredBibleYearDashboardDayNumber(userId, ["manual", "continue"]);
       const shouldHonorRequestedDay = day
         ? canOpenBibleYearDayInJourneyOrder(day) &&
           (
-            rememberedDayNumber === day.dayNumber ||
             day.dayNumber === bibleYearResolvedCurrentDayNumber ||
             shouldKeepJustCompletedRequestedDay
           )
