@@ -79,8 +79,13 @@ export async function POST(_req: NextRequest) {
     }
 
     const liveCurrentStreak = liveStreakMap.get(targetUserId) ?? 0;
-    const storedCurrentStreak = Math.max(0, Number(existingProfile?.current_streak || 0));
-    const currentStreak = Math.max(liveCurrentStreak, storedCurrentStreak);
+    const hasStoredStreak = typeof existingProfile?.current_streak === "number";
+    // master_actions is the source of truth for streaks. Only fall back to the
+    // stored value if we truly have no live streak data yet for this user.
+    const currentStreak =
+      liveCurrentStreak > 0 || !hasStoredStreak
+        ? liveCurrentStreak
+        : Math.max(0, Number(existingProfile?.current_streak || 0));
     const nowIso = new Date().toISOString();
     const todayKey = new Intl.DateTimeFormat("en-CA", {
       timeZone: targetTimeZone || "America/New_York",

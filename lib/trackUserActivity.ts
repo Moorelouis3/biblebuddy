@@ -172,13 +172,6 @@ export async function trackUserActivity(userId: string): Promise<boolean> {
       }
     }
 
-    const nextCurrentStreak =
-      lastActiveDate === yesterday
-        ? currentStoredStreak + 1
-        : lastActiveDate === today
-          ? currentStoredStreak
-          : 1;
-
     // Get username from auth
     const { data: { user } } = await supabase.auth.getUser();
     let username = currentStats?.username || "User";
@@ -210,6 +203,12 @@ export async function trackUserActivity(userId: string): Promise<boolean> {
     }
 
     if (insertedAction?.id) {
+      const nextCurrentStreak =
+        lastActiveDate === yesterday
+          ? currentStoredStreak + 1
+          : lastActiveDate === today
+            ? currentStoredStreak
+            : 1;
       const streakBonusPoints = Math.min(30, Math.max(0, nextCurrentStreak));
       const streakBonusLabel = `streak_day:${streakBonusPoints}:${today}`;
       const { error: labelUpdateError } = await supabase
@@ -223,10 +222,30 @@ export async function trackUserActivity(userId: string): Promise<boolean> {
     }
 
     const shouldEarnGraceDay =
-      nextCurrentStreak > 0 &&
-      nextCurrentStreak % 7 === 0 &&
+      // Use the lightweight local estimate only for grace-day earning logic.
+      // The actual streak displayed in the app is synced from master_actions.
+      (
+        lastActiveDate === yesterday
+          ? currentStoredStreak + 1
+          : lastActiveDate === today
+            ? currentStoredStreak
+            : 1
+      ) > 0 &&
+      (
+        lastActiveDate === yesterday
+          ? currentStoredStreak + 1
+          : lastActiveDate === today
+            ? currentStoredStreak
+            : 1
+      ) % 7 === 0 &&
       currentGraceDays < 5 &&
       currentStats?.last_grace_day_earned_at !== today;
+    const estimatedCurrentStreak =
+      lastActiveDate === yesterday
+        ? currentStoredStreak + 1
+        : lastActiveDate === today
+          ? currentStoredStreak
+          : 1;
     const nextGraceDays = shouldEarnGraceDay ? Math.min(5, currentGraceDays + 1) : currentGraceDays;
 
     const nowIso = new Date().toISOString();
@@ -240,7 +259,6 @@ export async function trackUserActivity(userId: string): Promise<boolean> {
           last_active_at: nowIso,
           last_active_date: today,
           username: username,
-          current_streak: nextCurrentStreak,
           grace_days_count: nextGraceDays,
           ...(shouldEarnGraceDay ? { last_grace_day_earned_at: today } : {}),
           updated_at: nowIso,
@@ -256,7 +274,6 @@ export async function trackUserActivity(userId: string): Promise<boolean> {
         user_id: userId,
         last_active_date: today,
         username: username,
-        current_streak: nextCurrentStreak,
         updated_at: nowIso,
       };
 
@@ -282,7 +299,7 @@ export async function trackUserActivity(userId: string): Promise<boolean> {
 
     if (shouldEarnGraceDay) {
       setGraceDayLocalEvent(userId, `earned:${today}`, {
-        streak: nextCurrentStreak,
+        streak: estimatedCurrentStreak,
         graceDays: nextGraceDays,
         earnedGraceDays: 1,
       });
