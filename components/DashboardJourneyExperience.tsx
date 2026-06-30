@@ -238,8 +238,8 @@ function getBibleYearProgressCacheStorageKey(userId?: string | null) {
 function readStoredBibleYearProgress(userId?: string | null) {
   if (typeof window === "undefined") return null;
 
-  try {
-    const raw = window.sessionStorage.getItem(getBibleYearProgressCacheStorageKey(userId));
+  function readFromStorage(storage: Storage) {
+    const raw = storage.getItem(getBibleYearProgressCacheStorageKey(userId));
     if (!raw) return null;
     const parsed = JSON.parse(raw) as {
       cachedAt?: unknown;
@@ -251,14 +251,15 @@ function readStoredBibleYearProgress(userId?: string | null) {
     const cachedAt = Number(parsed.cachedAt);
     const resolvedCurrentDayNumber = Number(parsed.resolvedCurrentDayNumber);
     if (!Number.isFinite(cachedAt) || !Number.isFinite(resolvedCurrentDayNumber)) {
-      window.sessionStorage.removeItem(getBibleYearProgressCacheStorageKey(userId));
+      storage.removeItem(getBibleYearProgressCacheStorageKey(userId));
       return null;
     }
     if (Date.now() - cachedAt > BIBLE_YEAR_PROGRESS_CACHE_TTL_MS) {
-      window.sessionStorage.removeItem(getBibleYearProgressCacheStorageKey(userId));
+      storage.removeItem(getBibleYearProgressCacheStorageKey(userId));
       return null;
     }
     return {
+      cachedAt,
       resolvedCurrentDayNumber,
       completedCardsByDay:
         parsed.completedCardsByDay && typeof parsed.completedCardsByDay === "object"
@@ -273,8 +274,19 @@ function readStoredBibleYearProgress(userId?: string | null) {
           ? (parsed.reflectionPostedByDay as Record<number, boolean>)
           : {},
     };
+  }
+
+  try {
+    const candidates = [readFromStorage(window.sessionStorage), readFromStorage(window.localStorage)].filter(
+      (candidate): candidate is NonNullable<ReturnType<typeof readFromStorage>> => Boolean(candidate),
+    );
+    if (!candidates.length) return null;
+    return candidates.sort((a, b) =>
+      b.resolvedCurrentDayNumber - a.resolvedCurrentDayNumber || b.cachedAt - a.cachedAt,
+    )[0];
   } catch {
     window.sessionStorage.removeItem(getBibleYearProgressCacheStorageKey(userId));
+    window.localStorage.removeItem(getBibleYearProgressCacheStorageKey(userId));
     return null;
   }
 }
@@ -291,19 +303,25 @@ function rememberStoredBibleYearProgress(
   if (typeof window === "undefined") return;
 
   try {
-    window.sessionStorage.setItem(
-      getBibleYearProgressCacheStorageKey(userId),
-      JSON.stringify({
-        cachedAt: Date.now(),
-        resolvedCurrentDayNumber: payload.resolvedCurrentDayNumber,
-        completedCardsByDay: payload.completedCardsByDay,
-        notesViewedByDay: payload.notesViewedByDay,
-        reflectionPostedByDay: payload.reflectionPostedByDay,
-      }),
-    );
+    const serialized = JSON.stringify({
+      cachedAt: Date.now(),
+      resolvedCurrentDayNumber: payload.resolvedCurrentDayNumber,
+      completedCardsByDay: payload.completedCardsByDay,
+      notesViewedByDay: payload.notesViewedByDay,
+      reflectionPostedByDay: payload.reflectionPostedByDay,
+    });
+    window.sessionStorage.setItem(getBibleYearProgressCacheStorageKey(userId), serialized);
+    window.localStorage.setItem(getBibleYearProgressCacheStorageKey(userId), serialized);
   } catch {
-    // Session storage is only a speed-up layer.
+    // Browser storage is only a speed-up layer.
   }
+}
+
+function clearStoredBibleYearProgress(userId?: string | null) {
+  if (typeof window === "undefined") return;
+  const key = getBibleYearProgressCacheStorageKey(userId);
+  window.sessionStorage.removeItem(key);
+  window.localStorage.removeItem(key);
 }
 
 function getResolvedBibleYearCurrentDayNumberFromCards(
@@ -4385,10 +4403,7 @@ export default function DashboardJourneyExperience({
 
         const resolvedCurrentDayNumber =
           chooseResolvedBibleYearDayNumber({
-            incomingDayNumber:
-              GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => next[day.dayNumber]?.reading !== true)?.dayNumber ||
-              GENESIS_BIBLE_IN_ONE_YEAR_SERIES[GENESIS_BIBLE_IN_ONE_YEAR_SERIES.length - 1]?.dayNumber ||
-              1,
+            incomingDayNumber: getResolvedBibleYearCurrentDayNumberFromCards(next),
             previousDayNumber: bibleYearResolvedCurrentDayNumberRef.current,
             reportDayNumber: bibleYearReport?.currentDay,
             progressLoaded: bibleYearProgressLoaded,
@@ -4634,7 +4649,17 @@ export default function DashboardJourneyExperience({
   function openBibleYearDashboard() {
     bibleYearJustCompletedDayRef.current = null;
     const builtBibleYearDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES;
-    const nextBibleYearDayNumber = Math.max(1, bibleYearResolvedCurrentDayNumber);
+    const cachedProgress = readStoredBibleYearProgress(userId);
+    const nextBibleYearDayNumber = chooseResolvedBibleYearDayNumber({
+      incomingDayNumber: getResolvedBibleYearCurrentDayNumberFromCards(bibleYearCompletedCardsByDay),
+      previousDayNumber: Math.max(
+        bibleYearResolvedCurrentDayNumber,
+        bibleYearResolvedCurrentDayNumberRef.current,
+        Number(cachedProgress?.resolvedCurrentDayNumber || 0),
+      ),
+      reportDayNumber: bibleYearReport?.currentDay,
+      progressLoaded: bibleYearProgressLoaded,
+    });
     const nextBibleYearDay =
       (nextBibleYearDayNumber
         ? builtBibleYearDays.find((day) => day.dayNumber === nextBibleYearDayNumber)
@@ -4857,6 +4882,7 @@ export default function DashboardJourneyExperience({
       if (typeof window !== "undefined") {
         try {
           clearStoredBibleYearDashboardDayNumber(userId);
+          clearStoredBibleYearProgress(userId);
           Object.keys(window.localStorage)
             .filter((key) => key.startsWith("bb:bible-year-audio-progress:"))
             .forEach((key) => window.localStorage.removeItem(key));
@@ -8761,7 +8787,7 @@ export default function DashboardJourneyExperience({
         teachingTitle: "🗺️ Coastlands And Nations",
         list: ["🌍 Japheth’s line spreads", "🗺️ lands and coastlands are named", "🗣️ languages begin to separate", "➡️ families become nations"],
       },
-      "Genesis 10:6-11": {
+      "Genesis 10:6-20": {
         heading: "🌍 The Sons of Ham",
         teachingTitle: "👑 Nimrod And Early Kingdoms",
         list: ["🌍 Ham’s family expands", "👑 Nimrod becomes mighty", "🏙️ Babel is named", "➡️ kingdoms begin rising again"],
@@ -14720,7 +14746,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           "Moses is showing how real family lines became peoples and lands across the earth.",
         ],
       },
-      "Genesis 10:6-11": {
+      "Genesis 10:6-20": {
         title: "The Sons of Ham",
         icon: "🌍",
         paragraphs: [

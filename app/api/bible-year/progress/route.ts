@@ -25,6 +25,7 @@ type CompletedChapterRow = {
 type BibleYearActionRow = {
   action_type?: string | null;
   action_label?: string | null;
+  journey_day?: number | null;
   created_at?: string | null;
 };
 
@@ -219,10 +220,11 @@ export async function GET(request: NextRequest) {
       admin.from("completed_chapters").select("book, chapter, created_at").eq("user_id", userData.user.id),
       admin
         .from("master_actions")
-        .select("action_type, action_label, created_at")
+        .select("action_type, action_label, journey_day, created_at")
         .eq("user_id", userData.user.id)
         .in("action_type", [
           "bible_in_one_year_reading_completed",
+          "bible_in_one_year_day_completed",
           "bible_in_one_year_trivia_completed",
           "bible_in_one_year_reflection_completed",
           "bible_year_task_started",
@@ -249,7 +251,16 @@ export async function GET(request: NextRequest) {
     );
 
     const readingActionDays = new Set<number>();
+    const completedDayActionDays = new Set<number>();
     filteredActionRows.forEach((row) => {
+      const actionDayNumber = Number(row.journey_day) || getBibleYearDayNumberFromActionLabel(row.action_label);
+      if (row.action_type === "bible_in_one_year_day_completed" && Number.isFinite(actionDayNumber)) {
+        completedDayActionDays.add(Number(actionDayNumber));
+      }
+      if (row.action_type === "bible_in_one_year_reading_completed" && Number.isFinite(actionDayNumber)) {
+        readingActionDays.add(Number(actionDayNumber));
+      }
+
       const match = (row.action_label || "").match(/^Bible in One Year Day (\d+) (Reading|Video):/);
       if (!match) return;
       const dayNumber = Number(match[1]);
@@ -367,6 +378,13 @@ export async function GET(request: NextRequest) {
       };
     });
 
+    completedDayActionDays.forEach((dayNumber) => {
+      completedCardsByDay[dayNumber] = {
+        ...(completedCardsByDay[dayNumber] || {}),
+        reading: true,
+      };
+    });
+
     GENESIS_BIBLE_IN_ONE_YEAR_SERIES.forEach((day) => {
       const hasCompletedReadingAction = readingActionDays.has(day.dayNumber);
       const hasCompletedChapters =
@@ -389,11 +407,10 @@ export async function GET(request: NextRequest) {
       if (dayNumber) reflectionPostedByDay[dayNumber] = true;
     });
 
-    const firstIncompleteDayNumber =
+    const authoritativeCurrentDayNumber =
       GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => completedCardsByDay[day.dayNumber]?.reading !== true)?.dayNumber ||
       GENESIS_BIBLE_IN_ONE_YEAR_SERIES[GENESIS_BIBLE_IN_ONE_YEAR_SERIES.length - 1]?.dayNumber ||
       1;
-    const authoritativeCurrentDayNumber = firstIncompleteDayNumber;
     const resolvedCurrentDayNumber = Math.max(authoritativeCurrentDayNumber, latestTouchedDayNumber || 0) || 1;
 
     return NextResponse.json({

@@ -530,7 +530,7 @@ export const GENESIS_DAY_FOUR_NOAH_FLOOD_LESSON: BibleYearDailyLesson = {
     },
     {
       heading: "The Sons of Ham",
-      verseBlock: { reference: "Genesis 10:6-11", chapter: 10, startVerse: 6, endVerse: 11 },
+      verseBlock: { reference: "Genesis 10:6-20", chapter: 10, startVerse: 6, endVerse: 20 },
       teaching: [
         "Ham's line introduces Cush, Mizraim, Put, Canaan, and Nimrod's early kingdom.",
         "Babel first appears here, showing human power and civilization beginning to rise again after the flood.",

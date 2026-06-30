@@ -1644,7 +1644,7 @@ const DAY_FOUR_SECTION_META: Array<Omit<BibleYearDeepStudySection, "markdown">> 
     summary: "Japheth’s descendants spread into coastlands, territories, and the early nations of the post-flood world.",
   },
   {
-    reference: "Genesis 10:6-11",
+    reference: "Genesis 10:6-20",
     title: "The Sons of Ham",
     icon: "🌍",
     summary: "Ham’s line introduces Cush, Egypt, Canaan, and Nimrod as the nations begin rising again after the flood.",

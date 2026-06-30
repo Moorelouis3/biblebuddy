@@ -376,7 +376,7 @@ function formatBibleYearPhraseCard(rawHeading: string, rawBody: string, referenc
 
 function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, book: string): BibleReaderStudySection {
   const preserveExactPhraseBodies =
-    normalizeBook(book) === "genesis" && section.chapter >= 1 && section.chapter <= 6;
+    normalizeBook(book) === "genesis" && section.chapter >= 1 && section.chapter <= 10;
   return {
     book,
     chapter: section.chapter,
@@ -393,7 +393,9 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
         icon: "ðŸ’¬",
         title: "Key Phrases",
         content: section.phrases.map(([heading, body]) =>
-          preserveExactPhraseBodies ? `${heading}\n\n${body}` : formatBibleYearPhraseCard(heading, body, section.reference),
+          preserveExactPhraseBodies
+            ? `${repairMojibake(heading)}\n\n${repairMojibake(body)}`
+            : formatBibleYearPhraseCard(heading, body, section.reference),
         ),
       },
     ],
