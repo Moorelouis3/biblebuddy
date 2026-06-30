@@ -10548,10 +10548,10 @@ Before we understand redemption, we need to understand what God made humanity fo
     }
 
     try {
+      await completeBibleYearDayCard(day, "reading");
       if (!isOwnerDashboard && !isPaidUser) {
         await openBibleYearCompletionUpgradePrompt(day);
       }
-      await completeBibleYearDayCard(day, "reading");
       if (options?.closeArticle) {
         closeBibleYearReadingArticle();
       }
@@ -13259,6 +13259,9 @@ Before we understand redemption, we need to understand what God made humanity fo
         {showCompletionMoment ? renderBibleYearInlineCompletionUpgradeCard(day, {
           nextDay: nextBibleYearDay,
           onContinueFree: nextBibleYearDay ? async () => {
+            if (!isBibleYearDayComplete(day)) {
+              await completeBibleYearDayCard(day, "reading");
+            }
             await logBibleYearCompletionUpgradeAction(
               ACTION_TYPE.upgrade_popup_dismissed,
               `Bible in One Year Day ${day.dayNumber} completion upgrade continue as free clicked`,
