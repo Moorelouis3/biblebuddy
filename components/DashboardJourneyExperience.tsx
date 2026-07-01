@@ -2318,6 +2318,7 @@ export default function DashboardJourneyExperience({
     initialBibleYearResolvedCurrentDayNumber,
   );
   const bibleYearResolvedCurrentDayNumberRef = useRef(initialBibleYearResolvedCurrentDayNumber);
+  const bibleYearAuthoritativeCurrentDayNumberRef = useRef(initialBibleYearResolvedCurrentDayNumber);
   const [activeBibleYearDayCard, setActiveBibleYearDayCard] = useState<BibleYearDayCardKey | null>(null);
   const [bibleYearCompletedTasksExpandedDay, setBibleYearCompletedTasksExpandedDay] = useState<number | null>(null);
   const [bibleYearCompletionModalDay, setBibleYearCompletionModalDay] = useState<GenesisBibleYearDay | null>(null);
@@ -2524,8 +2525,17 @@ export default function DashboardJourneyExperience({
   const [bibleYearProblemReportError, setBibleYearProblemReportError] = useState<string | null>(null);
 
   useEffect(() => {
+    const authoritativeDay = bibleYearAuthoritativeCurrentDayNumberRef.current;
+    if (
+      bibleYearProgressResolved &&
+      !isResettingBibleYearPlan &&
+      bibleYearResolvedCurrentDayNumber < authoritativeDay
+    ) {
+      setBibleYearResolvedCurrentDayNumber(authoritativeDay);
+      return;
+    }
     bibleYearResolvedCurrentDayNumberRef.current = bibleYearResolvedCurrentDayNumber;
-  }, [bibleYearResolvedCurrentDayNumber]);
+  }, [bibleYearProgressResolved, bibleYearResolvedCurrentDayNumber, isResettingBibleYearPlan]);
 
   const dashboardPageKeys = ["home", "progress", "buddy", "bible", "bible_studies", "bible_topics", "share", "group", "settings", "analytics"] as const;
   type DashboardPageKey = (typeof dashboardPageKeys)[number];
@@ -4280,12 +4290,9 @@ export default function DashboardJourneyExperience({
               const authoritativeCurrentDayNumber =
                 Number(payload.authoritativeCurrentDayNumber) ||
                 getResolvedBibleYearCurrentDayNumberFromCards(completedCardsByDay);
-              const resolvedCurrentDayNumber = chooseResolvedBibleYearDayNumber({
-                incomingDayNumber: Math.max(Number(payload.resolvedCurrentDayNumber || 0), authoritativeCurrentDayNumber),
-                previousDayNumber: bibleYearResolvedCurrentDayNumberRef.current,
-                reportDayNumber: bibleYearReport?.currentDay,
-                progressLoaded: bibleYearProgressLoaded,
-              });
+              const resolvedCurrentDayNumber = normalizeBibleYearDayNumber(authoritativeCurrentDayNumber);
+              bibleYearAuthoritativeCurrentDayNumberRef.current = resolvedCurrentDayNumber;
+              bibleYearResolvedCurrentDayNumberRef.current = resolvedCurrentDayNumber;
               setBibleYearCompletedCardsByDay(completedCardsByDay);
               setBibleYearScriptureNotesViewedByDay(notesViewedByDay);
               setBibleYearReflectionPostedByDay(reflectionPostedByDay);
@@ -4367,13 +4374,9 @@ export default function DashboardJourneyExperience({
           });
         }
 
-        const resolvedCurrentDayNumber =
-          chooseResolvedBibleYearDayNumber({
-            incomingDayNumber: getResolvedBibleYearCurrentDayNumberFromCards(next),
-            previousDayNumber: bibleYearResolvedCurrentDayNumberRef.current,
-            reportDayNumber: bibleYearReport?.currentDay,
-            progressLoaded: bibleYearProgressLoaded,
-          });
+        const resolvedCurrentDayNumber = getResolvedBibleYearCurrentDayNumberFromCards(next);
+        bibleYearAuthoritativeCurrentDayNumberRef.current = resolvedCurrentDayNumber;
+        bibleYearResolvedCurrentDayNumberRef.current = resolvedCurrentDayNumber;
 
         if (!cancelled) {
           setBibleYearCompletedCardsByDay(next);
@@ -4862,6 +4865,8 @@ export default function DashboardJourneyExperience({
         GENESIS_BIBLE_IN_ONE_YEAR_SERIES[0] ||
         null;
 
+      bibleYearAuthoritativeCurrentDayNumberRef.current = 1;
+      bibleYearResolvedCurrentDayNumberRef.current = 1;
       setBibleYearCompletedCardsByDay({});
       setBibleYearScriptureNotesViewedByDay({});
       setBibleYearReflectionPostedByDay({});
@@ -10485,7 +10490,13 @@ Before we understand redemption, we need to understand what God made humanity fo
     const nextReflectionPostedByDay = cards.includes("reflection")
       ? { ...bibleYearReflectionPostedByDay, [day.dayNumber]: true }
       : bibleYearReflectionPostedByDay;
-    const nextResolvedCurrentDayNumber = getResolvedBibleYearCurrentDayNumberFromCards(nextCompletedCardsByDay);
+    const nextResolvedCurrentDayNumber = Math.max(
+      bibleYearAuthoritativeCurrentDayNumberRef.current,
+      bibleYearResolvedCurrentDayNumberRef.current,
+      getResolvedBibleYearCurrentDayNumberFromCards(nextCompletedCardsByDay),
+    );
+    bibleYearAuthoritativeCurrentDayNumberRef.current = nextResolvedCurrentDayNumber;
+    bibleYearResolvedCurrentDayNumberRef.current = nextResolvedCurrentDayNumber;
     const dayWasFullyComplete = isBibleYearCompletionStateDone(getBibleYearCompletionState(day, alreadyCompleted));
     const dayWillBeFullyComplete = isBibleYearCompletionStateDone(getBibleYearCompletionState(day, nextCompletedForDay));
     if (newlyCompletedCards.length > 0) {

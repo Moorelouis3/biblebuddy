@@ -267,15 +267,6 @@ export async function GET(request: NextRequest) {
       if (Number.isFinite(dayNumber)) readingActionDays.add(dayNumber);
     });
 
-    const latestTouchedActionRow = [...filteredActionRows]
-      .filter((row) => Number.isFinite(getBibleYearDayNumberFromActionLabel(row.action_label)))
-      .sort((a, b) => {
-        const aMs = new Date(a.created_at || 0).getTime();
-        const bMs = new Date(b.created_at || 0).getTime();
-        return bMs - aMs;
-      })[0];
-    const latestTouchedDayNumber = getBibleYearDayNumberFromActionLabel(latestTouchedActionRow?.action_label);
-
     const restoredLegacyDayNumbers: number[] = [];
     if (shouldRunLegacyBackfill) {
       for (const day of GENESIS_BIBLE_IN_ONE_YEAR_SERIES) {
@@ -411,7 +402,7 @@ export async function GET(request: NextRequest) {
       GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => completedCardsByDay[day.dayNumber]?.reading !== true)?.dayNumber ||
       GENESIS_BIBLE_IN_ONE_YEAR_SERIES[GENESIS_BIBLE_IN_ONE_YEAR_SERIES.length - 1]?.dayNumber ||
       1;
-    const resolvedCurrentDayNumber = Math.max(authoritativeCurrentDayNumber, latestTouchedDayNumber || 0) || 1;
+    const resolvedCurrentDayNumber = authoritativeCurrentDayNumber;
 
     return NextResponse.json({
       completedCardsByDay,
