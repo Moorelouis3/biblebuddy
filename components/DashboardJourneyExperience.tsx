@@ -58,7 +58,7 @@ import {
   type GenesisBibleYearDay,
 } from "../lib/bibleInOneYearPlan";
 import type { BibleYearDailyLesson } from "../lib/bibleYearDailyLessons";
-import { getBibleYearVideoEmbedSrc, getYouTubeVideoId, type BibleYearAudioDay } from "../lib/bibleYearAudio";
+import { getYouTubeVideoId, type BibleYearAudioDay } from "../lib/bibleYearAudio";
 import { getBibleYearDayContent } from "../lib/bibleYearDaysContent";
 import type { BibleYearDeepStudySection } from "../lib/bibleYearDayOneDeepStudy";
 import { BIBLE_YEAR_DAY_ONE_STUDY_NOTES_FRAME } from "../lib/bibleYearDayOneDeepStudy";
@@ -87,40 +87,6 @@ const BIBLE_YEAR_DASHBOARD_DAY_STORAGE_PREFIX = "bb:bible-year-dashboard-day";
 const BIBLE_YEAR_DASHBOARD_DAY_TTL_MS = 60 * 60 * 1000;
 const BIBLE_YEAR_PROGRESS_CACHE_STORAGE_PREFIX = "bb:bible-year-progress";
 const BIBLE_YEAR_PROGRESS_CACHE_TTL_MS = 30 * 60 * 1000;
-const FREE_BIBLE_YEAR_YOUTUBE_BY_DAY: Record<number, string> = {
-  1: "https://youtu.be/ZvP93hHvwuU?si=9alIqe0oGL67dVPQ",
-  2: "https://youtu.be/sfEGArkD0So?si=DRlHZlEsMZnzNoRa",
-  3: "https://youtu.be/sfEGArkD0So?si=DRlHZlEsMZnzNoRa",
-  4: "https://youtu.be/tLF7kqVs6cs?si=_VWP5cidI1ginb1L",
-  5: "https://youtu.be/KA_2mq-pTyw?si=qOFLzH_RTNzYq2r8",
-  6: "https://youtu.be/KLyXhiLfrlE?si=6hZngBTlEmWh7jtP",
-  7: "https://youtu.be/gJg3pwT8zVs?si=4lviGQA30ek__MKO",
-  8: "https://youtu.be/vMmUiWwJQAo?si=dVE-roUEXx0Sy9mG",
-  9: "https://youtu.be/XbROY7Gvkco?si=V-FKbleHUUbQt4ZZ",
-  10: "https://youtu.be/t3wYYh-0EKg?si=3SeaJ4cKz-PfgVWN",
-  11: "https://youtu.be/4HkJAOs6yHU?si=UXo-Vc0f53rQ0tZi",
-  12: "https://youtu.be/og1bpcCI2r4?si=s7_q0mvmMvE28Rcd",
-  13: "https://www.youtube.com/watch?v=3_RZROLp2uw&t=9s",
-  14: "https://www.youtube.com/watch?v=d0V-Si4OfoU",
-  15: "https://www.youtube.com/watch?v=Ptq1RzYNlkI&t=1222s",
-  16: "https://www.youtube.com/watch?v=NwrDUAr-5tE&t=1s",
-  17: "https://www.youtube.com/watch?v=ooID5Q0LxJ0&t=87s",
-  18: "https://www.youtube.com/watch?v=aa2hNfTWimQ",
-  19: "https://www.youtube.com/watch?v=66ydiRG7NVA&t=588s",
-  20: "https://www.youtube.com/watch?v=UTtv6Q7IIkc&t=212s",
-  21: "https://www.youtube.com/watch?v=pQ888No_dP8&t=35s",
-  22: "https://www.youtube.com/watch?v=vNp-x4t_JCM",
-  23: "https://www.youtube.com/watch?v=moRXRCRabyE",
-  24: "https://www.youtube.com/watch?v=64iUfw-TbNo",
-  25: "https://www.youtube.com/watch?v=7hqzcpFg0mk",
-  26: "https://www.youtube.com/watch?v=Bl4XTXcTPXc",
-  27: "https://www.youtube.com/watch?v=OsanjRKCnYI",
-  28: "https://www.youtube.com/watch?v=pOHHNRNEhZM",
-  29: "https://www.youtube.com/watch?v=ILtyBcmUdko",
-  30: "https://www.youtube.com/watch?v=QHKHtDxWOZk",
-  31: "https://www.youtube.com/watch?v=uWjaXQqPkA4",
-  32: "https://www.youtube.com/watch?v=m_mGYewtfGs",
-};
 type BibleYearReaderTranslation = "web" | "kjv" | "asv";
 type BibleYearReaderVerse = { verse: number; text: string };
 const BIBLE_YEAR_READER_TRANSLATION_OPTIONS: Array<{ value: BibleYearReaderTranslation; label: string }> = [
@@ -6823,14 +6789,6 @@ export default function DashboardJourneyExperience({
     return day ? getBibleYearDayContent(day).audio : null;
   }
 
-  function getFreeBibleYearYoutubeUrl(dayNumber: number) {
-    return FREE_BIBLE_YEAR_YOUTUBE_BY_DAY[dayNumber] || null;
-  }
-
-  function shouldUseFreeBibleYearYoutube(dayNumber: number) {
-    return !isPaidUser && !isOwnerDashboard && Boolean(getFreeBibleYearYoutubeUrl(dayNumber));
-  }
-
   function renderBibleYearBackgroundListeningCta(day: GenesisBibleYearDay) {
     return (
       <button
@@ -11109,9 +11067,9 @@ Before we understand redemption, we need to understand what God made humanity fo
     const lesson = content.lesson;
     const audio = content.audio;
     const videoComplete = bibleYearCompletedCardsByDay[day.dayNumber]?.reading === true;
-    const videoPlayerSrc = getBibleYearVideoEmbedSrc(audio?.videoSrc);
-    const showVideo = Boolean(videoPlayerSrc);
-    const showAudio = Boolean(audio && !showVideo);
+    const videoPlayerSrc: string | null = null;
+    const showVideo = false;
+    const showAudio = Boolean(audio);
 
     return (
       <div className="px-4 pb-4">
@@ -13055,7 +13013,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       content.summary.takeawaySupport ||
       `Study ${readingSummary} with Scripture, storytelling, and teaching.`;
     const audio = content.audio;
-    const freeYoutubeUrl = shouldUseFreeBibleYearYoutube(day.dayNumber) ? getFreeBibleYearYoutubeUrl(day.dayNumber) : null;
+    const freeYoutubeUrl: string | null = null;
     const readingComplete = bibleYearCompletedCardsByDay[day.dayNumber]?.reading === true;
     const studyNotesComplete =
       bibleYearCompletedCardsByDay[day.dayNumber]?.study_notes === true ||
@@ -13514,7 +13472,6 @@ Before we understand redemption, we need to understand what God made humanity fo
                             title={audio.title}
                             durationLabel={audio.estimatedDuration}
                             storagePath={audio.storagePath}
-                            videoSrc={audio.videoSrc}
                             userId={userId}
                             videoId={`bible-year-day-${day.dayNumber}`}
                             previousLessonLabel={previousBibleYearDay ? `Open Day ${previousBibleYearDay.dayNumber}` : "No previous day"}
@@ -14061,9 +14018,9 @@ Before we understand redemption, we need to understand what God made humanity fo
         bibleYearJustCompletedDayRef.current === day.dayNumber ||
         bibleYearResolvedCurrentDayNumber === day.dayNumber + 1
       );
-    const freeYoutubeUrl = shouldUseFreeBibleYearYoutube(day.dayNumber) ? getFreeBibleYearYoutubeUrl(day.dayNumber) : null;
-    const modalVideoPlayerSrc = getBibleYearVideoEmbedSrc(bibleYearAudio?.videoSrc);
-    const modalShowVideo = Boolean(freeYoutubeUrl || modalVideoPlayerSrc);
+    const freeYoutubeUrl: string | null = null;
+    const modalVideoPlayerSrc: string | null = null;
+    const modalShowVideo = false;
 
     if (bibleYearLesson) {
       return (
@@ -14318,10 +14275,10 @@ Before we understand redemption, we need to understand what God made humanity fo
       return renderBibleYearDayOneVideoTask(day);
     }
     const readingCardComplete = bibleYearCompletedCardsByDay[day.dayNumber]?.reading === true;
-    const freeYoutubeUrl = shouldUseFreeBibleYearYoutube(day.dayNumber) ? getFreeBibleYearYoutubeUrl(day.dayNumber) : null;
-    const videoPlayerSrc = getBibleYearVideoEmbedSrc(audio.videoSrc);
-    const showVideo = Boolean(freeYoutubeUrl || videoPlayerSrc);
-    const showAudio = !showVideo;
+    const freeYoutubeUrl: string | null = null;
+    const videoPlayerSrc: string | null = null;
+    const showVideo = false;
+    const showAudio = true;
     const cover = getBibleYearDayCoverImage(day);
     const readingSummary = formatBibleYearMediaReference(day);
     const audioIntroCopy = day.summary?.trim() || `Study ${readingSummary} with Bible Buddy.`;

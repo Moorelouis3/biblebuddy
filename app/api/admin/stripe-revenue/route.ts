@@ -28,9 +28,7 @@ function getSubscriptionMrrCents(subscription: Stripe.Subscription) {
   }, 0);
 }
 
-type ChargeWithInvoice = Stripe.Charge & {
-  invoice?: string | Stripe.Invoice | null;
-};
+type BibleBuddyChargeType = "monthly" | "lifetime" | "yearly" | "other";
 
 type RevenueWindowKey = "today" | "yesterday" | "24h" | "7d" | "30d" | "90d" | "this_month" | "lifetime";
 
@@ -190,6 +188,58 @@ function getChargeCustomerKey(charge: Stripe.Charge) {
   return `charge:${charge.id}`;
 }
 
+function classifyBibleBuddyCharge(charge: Stripe.Charge): BibleBuddyChargeType {
+  const plan = `${charge.metadata?.plan || ""} ${charge.metadata?.checkout_context || ""}`.toLowerCase();
+  const description = (charge.description || "").toLowerCase();
+  const amount = charge.amount_captured || charge.amount;
+
+  if (plan.includes("lifetime")) return "lifetime";
+  if (!description && amount === 5000) return "lifetime";
+  if (description.startsWith("subscription") && amount >= 4000) return "yearly";
+  if (description.startsWith("subscription")) return "monthly";
+  return "other";
+}
+
+function isWithinRange(created: number, range: { start: number; end: number | null }) {
+  return created >= range.start && (!range.end || created < range.end);
+}
+
+function buildMonthlyRevenueSeries(charges: Stripe.Charge[], months = 12) {
+  const now = new Date();
+  const buckets = Array.from({ length: months }, (_, index) => {
+    const date = new Date(now.getFullYear(), now.getMonth() - (months - 1 - index), 1);
+    const key = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}`;
+    return {
+      key,
+      month: key,
+      label: date.toLocaleDateString("en-US", { month: "short" }),
+      monthly: 0,
+      lifetime: 0,
+      total: 0,
+    };
+  });
+  const byMonth = new Map(buckets.map((bucket) => [bucket.key, bucket]));
+
+  charges.forEach((charge) => {
+    const date = new Date(charge.created * 1000);
+    const key = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}`;
+    const bucket = byMonth.get(key);
+    if (!bucket) return;
+    const amount = (charge.amount_captured || charge.amount) / 100;
+    const type = classifyBibleBuddyCharge(charge);
+    if (type === "lifetime") bucket.lifetime += amount;
+    if (type === "monthly" || type === "yearly") bucket.monthly += amount;
+    bucket.total += amount;
+  });
+
+  return buckets.map(({ key: _key, ...bucket }) => ({
+    ...bucket,
+    monthly: Number(bucket.monthly.toFixed(2)),
+    lifetime: Number(bucket.lifetime.toFixed(2)),
+    total: Number(bucket.total.toFixed(2)),
+  }));
+}
+
 async function loadAllPaidCharges() {
   const charges: Stripe.Charge[] = [];
   let startingAfter: string | undefined;
@@ -206,6 +256,25 @@ async function loadAllPaidCharges() {
   }
 
   return charges;
+}
+
+async function loadAllSubscriptions() {
+  const subscriptions: Stripe.Subscription[] = [];
+  let startingAfter: string | undefined;
+
+  for (;;) {
+    const page = await stripe!.subscriptions.list({
+      status: "all",
+      limit: 100,
+      ...(startingAfter ? { starting_after: startingAfter } : {}),
+      expand: ["data.customer"],
+    });
+    subscriptions.push(...page.data);
+    if (!page.has_more || page.data.length === 0) break;
+    startingAfter = page.data[page.data.length - 1]?.id;
+  }
+
+  return subscriptions;
 }
 
 async function requireOwner(req: NextRequest) {
@@ -239,17 +308,8 @@ export async function GET(req: NextRequest) {
     const previousRange = getPreviousRevenueDateRange(windowKey);
     const broadestStart = previousRange ? Math.min(revenueRange.start, previousRange.start) : revenueRange.start;
 
-    const [activeSubscriptions, trialingSubscriptions, recentCharges, allPaidCharges] = await Promise.all([
-      stripe.subscriptions.list({
-        status: "active",
-        limit: 100,
-        expand: ["data.customer"],
-      }),
-      stripe.subscriptions.list({
-        status: "trialing",
-        limit: 100,
-        expand: ["data.customer"],
-      }),
+    const [allSubscriptions, recentCharges, allPaidCharges] = await Promise.all([
+      loadAllSubscriptions(),
       stripe.charges.list({
         limit: 25,
         expand: ["data.customer"],
@@ -257,40 +317,47 @@ export async function GET(req: NextRequest) {
       loadAllPaidCharges(),
     ]);
 
-    const subscriptions = [...activeSubscriptions.data, ...trialingSubscriptions.data];
-    const activePaidSubscriptions = activeSubscriptions.data;
+    const activePaidSubscriptions = allSubscriptions.filter((subscription) => subscription.status === "active");
+    const trialingSubscriptions = allSubscriptions.filter((subscription) => subscription.status === "trialing");
     const monthlySubscriptions = activePaidSubscriptions.filter((subscription) =>
       subscription.items.data.some((item) => item.price.recurring?.interval === "month")
     );
+    const yearlySubscriptions = activePaidSubscriptions.filter((subscription) =>
+      subscription.items.data.some((item) => item.price.recurring?.interval === "year")
+    );
     const mrrCents = activePaidSubscriptions.reduce((total, subscription) => total + getSubscriptionMrrCents(subscription), 0);
     const currency = activePaidSubscriptions[0]?.currency || recentCharges.data[0]?.currency || "usd";
-    const paidAllFetchedCharges = allPaidCharges.filter((charge) => charge.created >= broadestStart);
+    const bibleBuddyPaidCharges = allPaidCharges.filter((charge) => classifyBibleBuddyCharge(charge) !== "other");
+    const paidAllFetchedCharges = bibleBuddyPaidCharges.filter((charge) => charge.created >= broadestStart);
     const paidRangeCharges = paidAllFetchedCharges.filter((charge) => {
-      const created = charge.created;
-      if (created < revenueRange.start) return false;
-      if (revenueRange.end && created >= revenueRange.end) return false;
-      return true;
+      return isWithinRange(charge.created, revenueRange);
     });
     const paidPreviousCharges = previousRange
-      ? paidAllFetchedCharges.filter((charge) => {
-          const created = charge.created;
-          if (created < previousRange.start) return false;
-          if (previousRange.end && created >= previousRange.end) return false;
-          return true;
-        })
+      ? paidAllFetchedCharges.filter((charge) => isWithinRange(charge.created, previousRange))
       : [];
-    const revenueRangeCents = paidRangeCharges.reduce((total, charge) => total + charge.amount_captured, 0);
-    const previousRevenueRangeCents = paidPreviousCharges.reduce((total, charge) => total + charge.amount_captured, 0);
-    const oneTimeRangeCents = paidRangeCharges
-      .filter((charge) => {
-        const chargeWithInvoice = charge as ChargeWithInvoice;
-        const plan = (charge.metadata?.plan || charge.metadata?.checkout_context || "").toLowerCase();
-        return plan.includes("lifetime") || !chargeWithInvoice.invoice;
-      })
-      .reduce((total, charge) => total + charge.amount_captured, 0);
+    const sumCharges = (charges: Stripe.Charge[]) => charges.reduce((total, charge) => total + (charge.amount_captured || charge.amount), 0);
+    const monthlyRangeCharges = paidRangeCharges.filter((charge) => classifyBibleBuddyCharge(charge) === "monthly");
+    const lifetimeRangeCharges = paidRangeCharges.filter((charge) => classifyBibleBuddyCharge(charge) === "lifetime");
+    const yearlyRangeCharges = paidRangeCharges.filter((charge) => classifyBibleBuddyCharge(charge) === "yearly");
+    const revenueRangeCents = sumCharges(paidRangeCharges);
+    const previousRevenueRangeCents = sumCharges(paidPreviousCharges);
+    const monthlyRevenueRangeCents = sumCharges(monthlyRangeCharges);
+    const lifetimeRevenueRangeCents = sumCharges(lifetimeRangeCharges);
+    const yearlyRevenueRangeCents = sumCharges(yearlyRangeCharges);
+
+    const monthlySignupSubscriptions = allSubscriptions.filter((subscription) =>
+      subscription.items.data.some((item) => item.price.recurring?.interval === "month") &&
+      isWithinRange(subscription.created, revenueRange)
+    );
+    const lifetimeSignupKeys = new Set(lifetimeRangeCharges.map(getChargeCustomerKey));
+    const allLifetimeCustomerKeys = new Set(
+      bibleBuddyPaidCharges
+        .filter((charge) => classifyBibleBuddyCharge(charge) === "lifetime")
+        .map(getChargeCustomerKey)
+    );
 
     const firstPaidChargeByCustomer = new Map<string, Stripe.Charge>();
-    allPaidCharges
+    bibleBuddyPaidCharges
       .slice()
       .sort((a, b) => a.created - b.created)
       .forEach((charge) => {
@@ -312,14 +379,13 @@ export async function GET(req: NextRequest) {
       : [];
 
     const recentPayments = recentCharges.data
-      .filter((charge) => charge.paid && !charge.refunded)
+      .filter((charge) => charge.paid && !charge.refunded && classifyBibleBuddyCharge(charge) !== "other")
       .slice(0, 12)
       .map((charge) => {
-        const chargeWithInvoice = charge as ChargeWithInvoice;
         const customer = typeof charge.customer === "object" && charge.customer && !("deleted" in charge.customer)
           ? charge.customer
           : null;
-        const plan = charge.metadata?.plan || (chargeWithInvoice.invoice ? "monthly" : "one_time");
+        const plan = classifyBibleBuddyCharge(charge);
         return {
           id: charge.id,
           amount: formatMoney(charge.amount_captured || charge.amount, charge.currency),
@@ -335,6 +401,7 @@ export async function GET(req: NextRequest) {
       });
     const series = buildRevenueSeries(paidRangeCharges, windowKey);
     const upgradeSeries = buildUpgradeSeries(upgradeRangeCharges, windowKey);
+    const monthlyRevenueSeries = buildMonthlyRevenueSeries(bibleBuddyPaidCharges);
 
     return NextResponse.json({
       currency,
@@ -344,12 +411,23 @@ export async function GET(req: NextRequest) {
       mrr: formatMoney(mrrCents, currency),
       activeSubscriptions: activePaidSubscriptions.length,
       monthlySubscriptions: monthlySubscriptions.length,
-      trialingSubscriptions: trialingSubscriptions.data.length,
-      totalSubscriptionsTracked: subscriptions.length,
+      yearlySubscriptions: yearlySubscriptions.length,
+      trialingSubscriptions: trialingSubscriptions.length,
+      totalSubscriptionsTracked: allSubscriptions.length,
       revenue30dCents: revenueRangeCents,
       revenue30d: formatMoney(revenueRangeCents, currency),
       revenueRangeCents,
       revenueRange: formatMoney(revenueRangeCents, currency),
+      monthlyRevenueRangeCents,
+      monthlyRevenueRange: formatMoney(monthlyRevenueRangeCents, currency),
+      lifetimeRevenueRangeCents,
+      lifetimeRevenueRange: formatMoney(lifetimeRevenueRangeCents, currency),
+      yearlyRevenueRangeCents,
+      yearlyRevenueRange: formatMoney(yearlyRevenueRangeCents, currency),
+      monthlySignupsRange: monthlySignupSubscriptions.length,
+      lifetimeSignupsRange: lifetimeSignupKeys.size,
+      lifetimeCustomers: allLifetimeCustomerKeys.size,
+      monthlyRevenueSeries,
       comparison: {
         current: Math.round(revenueRangeCents / 100),
         previous: Math.round(previousRevenueRangeCents / 100),
@@ -362,10 +440,10 @@ export async function GET(req: NextRequest) {
         previous: previousUpgradeCharges.length,
         change: percentChange(upgradeRangeCharges.length, previousUpgradeCharges.length),
       },
-      oneTime30dCents: oneTimeRangeCents,
-      oneTime30d: formatMoney(oneTimeRangeCents, currency),
-      oneTimeRangeCents,
-      oneTimeRange: formatMoney(oneTimeRangeCents, currency),
+      oneTime30dCents: lifetimeRevenueRangeCents,
+      oneTime30d: formatMoney(lifetimeRevenueRangeCents, currency),
+      oneTimeRangeCents: lifetimeRevenueRangeCents,
+      oneTimeRange: formatMoney(lifetimeRevenueRangeCents, currency),
       series,
       recentPayments,
       updatedAt: new Date().toISOString(),

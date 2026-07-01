@@ -495,12 +495,29 @@ type StripeRevenueSummary = {
   mrr: string;
   activeSubscriptions: number;
   monthlySubscriptions: number;
+  yearlySubscriptions?: number;
   trialingSubscriptions: number;
   totalSubscriptionsTracked: number;
   revenue30dCents: number;
   revenue30d: string;
   revenueRangeCents?: number;
   revenueRange?: string;
+  monthlyRevenueRangeCents?: number;
+  monthlyRevenueRange?: string;
+  lifetimeRevenueRangeCents?: number;
+  lifetimeRevenueRange?: string;
+  yearlyRevenueRangeCents?: number;
+  yearlyRevenueRange?: string;
+  monthlySignupsRange?: number;
+  lifetimeSignupsRange?: number;
+  lifetimeCustomers?: number;
+  monthlyRevenueSeries?: Array<{
+    month: string;
+    label: string;
+    monthly: number;
+    lifetime: number;
+    total: number;
+  }>;
   oneTime30dCents: number;
   oneTime30d: string;
   oneTimeRangeCents?: number;
@@ -1207,6 +1224,105 @@ function SimpleAnalyticsChartCard({
   );
 }
 
+function RevenueAnalyticsSection({
+  revenue,
+  loading,
+}: {
+  revenue: StripeRevenueSummary | null;
+  loading: boolean;
+}) {
+  const points = revenue?.monthlyRevenueSeries || [];
+  const width = 780;
+  const height = 300;
+  const left = 54;
+  const baseline = 244;
+  const chartHeight = 190;
+  const barWidth = 34;
+  const step = (width - left - 26) / Math.max(points.length, 1);
+  const maxValue = Math.max(1, ...points.map((point) => point.total));
+  const gridValues = [maxValue, maxValue / 2, 0];
+
+  return (
+    <div className="space-y-4">
+      <div className="grid gap-3 sm:grid-cols-3">
+        <SimpleAnalyticsKpiCard
+          title="Overall Revenue"
+          value={loading ? "..." : revenue?.revenueRange || "$0"}
+          helper="Bible Buddy revenue in this timeframe"
+          accent="blue"
+        />
+        <SimpleAnalyticsKpiCard
+          title="Monthly Signups"
+          value={loading ? "..." : formatNumber(revenue?.monthlySignupsRange || 0)}
+          helper={`${formatNumber(revenue?.monthlySubscriptions || 0)} active monthly subscribers`}
+          accent="green"
+        />
+        <SimpleAnalyticsKpiCard
+          title="Lifetime Signups"
+          value={loading ? "..." : formatNumber(revenue?.lifetimeSignupsRange || 0)}
+          helper={`${formatNumber(revenue?.lifetimeCustomers || 0)} lifetime customers overall`}
+          accent="violet"
+        />
+      </div>
+
+      <section className="rounded-[28px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-4 shadow-[0_18px_46px_rgba(15,23,42,0.08)] sm:p-6">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+          <div>
+            <p className="text-sm font-bold text-[var(--bb-text-secondary,#64748b)]">Revenue by Month</p>
+            <p className="mt-1 text-3xl font-black tracking-tight text-[var(--bb-text-primary,#101827)]">Last 12 months</p>
+          </div>
+          <div className="flex flex-wrap items-center gap-4 text-xs font-bold text-[var(--bb-text-secondary,#64748b)]">
+            <span className="inline-flex items-center gap-2"><span className="h-3 w-3 rounded-sm bg-blue-600" />Monthly</span>
+            <span className="inline-flex items-center gap-2"><span className="h-3 w-3 rounded-sm bg-violet-500" />Lifetime</span>
+          </div>
+        </div>
+
+        <div className="mt-5 overflow-x-auto pb-2">
+          {loading ? (
+            <div className="grid h-[300px] min-w-[680px] place-items-center rounded-[18px] bg-[var(--bb-surface-soft,#f8fbff)] text-sm font-bold text-[var(--bb-text-secondary,#64748b)]">Loading revenue...</div>
+          ) : (
+            <svg viewBox={`0 0 ${width} ${height}`} className="h-[300px] min-w-[700px] w-full" role="img" aria-label="Monthly and lifetime revenue stacked by month">
+              {gridValues.map((value, index) => {
+                const y = baseline - (value / maxValue) * chartHeight;
+                return (
+                  <g key={value}>
+                    <line x1={left} x2={width - 16} y1={y} y2={y} stroke="#dbe7f3" strokeDasharray={index === 2 ? "0" : "5 5"} />
+                    <text x={left - 8} y={y + 4} textAnchor="end" fill="#64748b" fontSize="11" fontWeight="700">{formatMoneyValue(value)}</text>
+                  </g>
+                );
+              })}
+              {points.map((point, index) => {
+                const x = left + index * step + (step - barWidth) / 2;
+                const monthlyHeight = (point.monthly / maxValue) * chartHeight;
+                const lifetimeHeight = (point.lifetime / maxValue) * chartHeight;
+                return (
+                  <g key={point.month}>
+                    <rect x={x} y={baseline - monthlyHeight} width={barWidth} height={monthlyHeight} rx="5" fill="#2563eb" />
+                    <rect x={x} y={baseline - monthlyHeight - lifetimeHeight} width={barWidth} height={lifetimeHeight} rx="5" fill="#8b5cf6" />
+                    {point.total > 0 ? <text x={x + barWidth / 2} y={Math.max(14, baseline - monthlyHeight - lifetimeHeight - 8)} textAnchor="middle" fill="#101827" fontSize="11" fontWeight="800">{formatMoneyValue(point.total)}</text> : null}
+                    <text x={x + barWidth / 2} y={baseline + 24} textAnchor="middle" fill="#64748b" fontSize="11" fontWeight="700">{point.label}</text>
+                  </g>
+                );
+              })}
+            </svg>
+          )}
+        </div>
+
+        <div className="mt-3 grid grid-cols-2 gap-3">
+          <div className="rounded-[18px] bg-blue-50 px-4 py-3">
+            <p className="text-xs font-black uppercase tracking-[0.12em] text-blue-700">Monthly Revenue</p>
+            <p className="mt-1 text-xl font-black text-slate-950">{loading ? "..." : revenue?.monthlyRevenueRange || "$0"}</p>
+          </div>
+          <div className="rounded-[18px] bg-violet-50 px-4 py-3">
+            <p className="text-xs font-black uppercase tracking-[0.12em] text-violet-700">Lifetime Revenue</p>
+            <p className="mt-1 text-xl font-black text-slate-950">{loading ? "..." : revenue?.lifetimeRevenueRange || "$0"}</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
 function CompletionPopupBreakdownChartCard({
   title,
   helper,
@@ -1599,7 +1715,6 @@ function MobileAnalyticsHighlights({
   const signupComparison = data?.simpleComparisons?.signups?.change;
   const upgradesComparison = stripeRevenue?.upgradeComparison?.change ?? data?.simpleComparisons?.upgrades?.change;
   const revenueComparison = stripeRevenue?.comparison?.change;
-  const completionPopupComparison = data?.completionUpgrade?.comparisons.views.change;
 
   return (
     <section className="mt-5 space-y-4 md:hidden">
@@ -1669,7 +1784,9 @@ function MobileAnalyticsHighlights({
         </div>
       ) : (
         <div className="space-y-4">
-          {simpleMetric === "completion_popup" ? (
+          {simpleMetric === "revenue" ? (
+            <RevenueAnalyticsSection revenue={stripeRevenue} loading={stripeRevenueLoading} />
+          ) : simpleMetric === "completion_popup" ? (
             <CompletionPopupAnalyticsSection
               stats={data?.completionUpgrade}
               windowKey={windowKey}
@@ -1682,10 +1799,10 @@ function MobileAnalyticsHighlights({
               value={getSimpleMetricTotal(simpleMetric, data, stripeRevenue)}
               points={chartSeries}
               loading={loading || stripeRevenueLoading}
-              comparison={windowKey === "lifetime" ? null : simpleMetric === "revenue" ? revenueComparison : simpleMetric === "signups" ? signupComparison : simpleMetric === "upgrades" ? upgradesComparison : completionPopupComparison}
+              comparison={windowKey === "lifetime" ? null : simpleMetric === "signups" ? signupComparison : upgradesComparison}
             />
           )}
-          {simpleMetric !== "completion_popup" ? (
+          {simpleMetric !== "completion_popup" && simpleMetric !== "revenue" ? (
             <div className="grid grid-cols-3 gap-3">
               <SimpleAnalyticsKpiCard
                 title="Signups"
@@ -3743,7 +3860,6 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
     const signupComparison = data?.simpleComparisons?.signups?.change;
     const upgradesComparison = stripeRevenue?.upgradeComparison?.change ?? data?.simpleComparisons?.upgrades?.change;
     const revenueComparison = stripeRevenue?.comparison?.change;
-    const completionPopupComparison = data?.completionUpgrade?.comparisons.views.change;
 
     return (
       <div className={`bb-analytics-page ${embedded ? "min-h-0" : "min-h-screen bg-[var(--bb-background,#f4f8fc)]"} text-[var(--bb-text-primary,#101827)]`}>
@@ -3886,7 +4002,9 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
                 </div>
                 </>
               ) : (
-                simpleMetric === "completion_popup" ? (
+                simpleMetric === "revenue" ? (
+                  <RevenueAnalyticsSection revenue={stripeRevenue} loading={stripeRevenueLoading} />
+                ) : simpleMetric === "completion_popup" ? (
                   <CompletionPopupAnalyticsSection
                     stats={data?.completionUpgrade}
                     windowKey={windowKey}
@@ -3899,7 +4017,7 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
                     value={getSimpleMetricTotal(simpleMetric, data, stripeRevenue)}
                     points={chartSeries}
                     loading={loading || stripeRevenueLoading}
-                    comparison={windowKey === "lifetime" || simpleMetric === "revenue" ? null : simpleMetric === "signups" ? signupComparison : simpleMetric === "upgrades" ? upgradesComparison : completionPopupComparison}
+                    comparison={windowKey === "lifetime" ? null : simpleMetric === "signups" ? signupComparison : upgradesComparison}
                   />
                 )
               )}
