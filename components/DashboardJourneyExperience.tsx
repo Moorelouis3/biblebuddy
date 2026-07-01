@@ -8913,23 +8913,31 @@ export default function DashboardJourneyExperience({
         teachingTitle: "Ã°Å¸â€ºÅ¸ Seen in the Wilderness",
         list: ["Ã°Å¸â€˜â‚¬ Hagar names God", "Ã°Å¸â€™Â§ the well is remembered", "Ã°Å¸â€˜Â¶ Ishmael is born", "Ã¢ÂÂ³ Abram is eighty-six", "Ã°Å¸â€¢Å Ã¯Â¸Â God sees the wounded"],
       },
-      "Genesis 17:1-8": {
-        heading: "Ã°Å¸ÂªÂª Abram Becomes Abraham",
+      "Genesis 17:1-4": {
+        heading: "🤝 God Renews His Covenant",
         teachingTitle: "Ã¢Å“Â¨ God Names the Future",
         list: ["Ã¢ÂÂ³ thirteen years pass", "Ã°Å¸â„¢â€¡ Abram falls down", "Ã°Å¸ÂªÂª Abram gets a new name", "Ã°Å¸Å’Â nations are promised", "Ã°Å¸Â¤Â covenant is established"],
       },
-      "Genesis 17:9-14": {
-        heading: "Ã¢Å“â€šÃ¯Â¸Â The Covenant Sign",
+      "Genesis 17:5-14": {
+        heading: "✍️ God Renames Abraham",
         teachingTitle: "Ã°Å¸Â¤Â Promise Marked in the Flesh",
         list: ["Ã°Å¸Â¤Â covenant is kept", "Ã¢Å“â€šÃ¯Â¸Â circumcision is the sign", "Ã°Å¸â€˜Â¶ eight days old is named", "Ã°Å¸ÂÂ  the whole house is included", "Ã¢Å¡Â Ã¯Â¸Â covenant is serious"],
       },
-      "Genesis 17:15-22": {
-        heading: "Ã°Å¸â€˜â€˜ Sarah and Isaac Are Named",
+      "Genesis 17:15": {
+        heading: "👩 God Renames Sarah",
+        teachingTitle: "Sarah Is Central To The Promise",
+      },
+      "Genesis 17:16-19": {
+        heading: "👶 God Promises Sarah A Son",
         teachingTitle: "Ã°Å¸Ëœâ€š Laughter Meets Promise",
         list: ["Ã°Å¸ÂªÂª Sarai becomes Sarah", "Ã°Å¸â€˜Â¶ Isaac is promised", "Ã°Å¸Ëœâ€š Abraham laughs", "Ã°Å¸â„¢Â Ishmael is blessed", "Ã°Å¸Å½Â¯ covenant goes through Isaac"],
       },
+      "Genesis 17:20-22": {
+        heading: "👦 God Blesses Ishmael",
+        teachingTitle: "God Hears Abraham's Prayer",
+      },
       "Genesis 17:23-27": {
-        heading: "Ã¢Å“â€¦ Abraham Obeys That Same Day",
+        heading: "✂️ Abraham Circumcises His Household",
         teachingTitle: "Ã°Å¸Å¡Â¶ Covenant Faith Responds",
         list: ["Ã¢Å“â€¦ Abraham obeys", "Ã°Å¸â€˜Â¦ Ishmael is included", "Ã°Å¸ÂÂ  the household follows", "Ã°Å¸â€œâ€¦ obedience happens that day", "Ã°Å¸Â¤Â promise becomes marked"],
       },

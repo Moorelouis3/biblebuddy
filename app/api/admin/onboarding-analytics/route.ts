@@ -35,6 +35,28 @@ type AnalyticsResponseCacheEntry = {
 
 const analyticsResponseCache = new Map<string, AnalyticsResponseCacheEntry>();
 
+type PaginatedQueryResult<T> = {
+  data: T[] | null;
+  error: { message?: string } | null;
+};
+
+async function collectPaginatedRows<T>(
+  loadPage: (from: number, to: number) => PromiseLike<PaginatedQueryResult<T>>,
+  pageSize = 1000,
+) {
+  const rows: T[] = [];
+
+  for (let from = 0; ; from += pageSize) {
+    const { data, error } = await loadPage(from, from + pageSize - 1);
+    if (error) throw new Error(error.message || "Could not load analytics rows.");
+    const page = data || [];
+    rows.push(...page);
+    if (page.length < pageSize) break;
+  }
+
+  return rows;
+}
+
 type AnswerSummary = {
   answer: string;
   count: number;
@@ -3620,67 +3642,59 @@ async function buildOverviewAnalyticsResponse(
     : 0;
   const completionUpgrade = buildCompletionUpgradeAnalytics(allCompletionUpgradeRows, journeyWindow, previousRange);
 
-  let landingQuery = adminSupabase
-    .from("landing_page_events")
-    .select("event_name, session_id, user_id, created_at")
-    .gte("created_at", startIso)
-    .order("created_at", { ascending: false })
-    .limit(50000);
-  if (endIso) landingQuery = landingQuery.lt("created_at", endIso);
-  const { data: landingData } = await landingQuery;
-  const landingRows = (landingData || []) as LandingEventRow[];
+  const landingRows = await collectPaginatedRows<LandingEventRow>((from, to) => {
+    let query = adminSupabase
+      .from("landing_page_events")
+      .select("event_name, session_id, user_id, created_at")
+      .gte("created_at", startIso)
+      .order("created_at", { ascending: false });
+    if (endIso) query = query.lt("created_at", endIso);
+    return query.range(from, to);
+  });
 
-  let masterQuery = adminSupabase
-    .from("master_actions")
-    .select("user_id, session_id, action_type, action_label, journey_day, event_metadata, created_at")
-    .in("action_type", [
-      "landing_page_visited",
-      "landing_cta_clicked",
-      "user_signup",
-      "user_upgraded",
-      "bible_year_audio_played",
-      "bible_year_task_started",
-      "bible_year_task_completed",
-      "bible_in_one_year_day_completed",
-      "bible_in_one_year_reading_completed",
-      "bible_in_one_year_trivia_completed",
-      "bible_in_one_year_reflection_completed",
-      "bible_year_next_day_clicked",
-      "upgrade_popup_viewed",
-      "upgrade_popup_cta_clicked",
-      "upgrade_popup_dismissed",
-    ])
-    .gte("created_at", startIso)
-    .order("created_at", { ascending: false })
-    .limit(50000);
-  if (endIso) masterQuery = masterQuery.lt("created_at", endIso);
-  const { data: masterData } = await masterQuery;
-  const masterRows = (masterData || []) as MasterActionFunnelRow[];
+  const masterRows = await collectPaginatedRows<MasterActionFunnelRow>((from, to) => {
+    let query = adminSupabase
+      .from("master_actions")
+      .select("user_id, session_id, action_type, action_label, journey_day, event_metadata, created_at")
+      .in("action_type", [
+        "landing_page_visited",
+        "landing_cta_clicked",
+        "user_signup",
+        "user_upgraded",
+        "bible_year_audio_played",
+        "bible_year_task_started",
+        "bible_year_task_completed",
+        "bible_in_one_year_day_completed",
+        "bible_in_one_year_reading_completed",
+        "bible_in_one_year_trivia_completed",
+        "bible_in_one_year_reflection_completed",
+        "bible_year_next_day_clicked",
+        "upgrade_popup_viewed",
+        "upgrade_popup_cta_clicked",
+        "upgrade_popup_dismissed",
+      ])
+      .gte("created_at", startIso)
+      .order("created_at", { ascending: false });
+    if (endIso) query = query.lt("created_at", endIso);
+    return query.range(from, to);
+  });
 
-  let activitySummaryQuery = adminSupabase
-    .from("master_actions")
-    .select("user_id, session_id, action_type, created_at")
-    .gte("created_at", startIso)
-    .order("created_at", { ascending: false })
-    .limit(250000);
-  if (endIso) activitySummaryQuery = activitySummaryQuery.lt("created_at", endIso);
-  const { data: activitySummaryData } = await activitySummaryQuery;
-  const activitySummaryRows = ((activitySummaryData || []) as MasterActionFunnelRow[]).filter(
+  const activitySummaryRows = (await collectPaginatedRows<MasterActionFunnelRow>((from, to) => {
+    let query = adminSupabase
+      .from("master_actions")
+      .select("user_id, session_id, action_type, created_at")
+      .gte("created_at", startIso)
+      .order("created_at", { ascending: false });
+    if (endIso) query = query.lt("created_at", endIso);
+    return query.range(from, to);
+  })).filter(
     (row) => !isOwnerAuthUser(row.user_id || null, allAuthSummaryByUserId),
   );
-  const signupTimestamps = collectFirstSignupTimestamps(masterRows, startIso, endIso);
-  const signupSeries = buildSimpleMetricSeries(
-    signupTimestamps.length ? signupTimestamps : collectSignupTimestampsFromAuthUsers(validAuthUsers, startIso, endIso),
-    journeyWindow,
-  );
+  const signupTimestamps = collectSignupTimestampsFromAuthUsers(validAuthUsers, startIso, endIso);
+  const signupSeries = buildSimpleMetricSeries(signupTimestamps, journeyWindow);
   const currentSignups = signupSeries.reduce((sum, point) => sum + point.value, 0);
   const previousSignups = previousRange
-    ? (() => {
-        const previousSignupTimestamps = collectFirstSignupTimestamps(masterRows, previousRange.startIso, previousRange.endIso);
-        return previousSignupTimestamps.length
-          ? previousSignupTimestamps.length
-          : collectSignupTimestampsFromAuthUsers(validAuthUsers, previousRange.startIso, previousRange.endIso).length;
-      })()
+    ? collectSignupTimestampsFromAuthUsers(validAuthUsers, previousRange.startIso, previousRange.endIso).length
     : 0;
   const firstThreeDaysSinceIso = new Date(Date.now() - NEW_USER_FIRST_THREE_DAYS_LOOKBACK_DAYS * 24 * 60 * 60 * 1000).toISOString();
   const { data: firstThreeDaysData } = await adminSupabase
@@ -3697,7 +3711,7 @@ async function buildOverviewAnalyticsResponse(
   const uniqueAudioActors = new Set(audioRows.map((row) => getMasterActorId(row)).filter(Boolean));
   const newUserFirstThreeDays = buildNewUserFirstThreeDaysAnalytics(firstThreeDayRows, new Map());
   const landingUsers = windowSummary.visits;
-  const signupUsers = windowSummary.accountsCreated || windowSummary.signups || 0;
+  const signupUsers = currentSignups;
   const conversionRate = landingUsers > 0 ? Number(((signupUsers / landingUsers) * 100).toFixed(1)) : 0;
   const activitySummary = buildActivitySummaryMetrics(activitySummaryRows, landingUsers, signupUsers);
   const bibleBuddyFunnelStages: FunnelStageRow[] = [
@@ -3873,16 +3887,15 @@ export async function GET(request: Request) {
     .from("landing_onboarding_responses")
     .select("goal, experience, study_focus, time_commitment, difficulty, created_at");
 
-  let landingQuery = adminSupabase
-    .from("landing_page_events")
-    .select("event_name, session_id, user_id, source, referrer, page_path, metadata, created_at")
-    .gte("created_at", journeySinceIso)
-    .order("created_at", { ascending: false })
-    .limit(250000);
-  if (journeyBeforeIso) landingQuery = landingQuery.lt("created_at", journeyBeforeIso);
-  const { data: eventData, error: eventError } = await landingQuery;
-
-  const eventRows = eventError ? [] : ((eventData || []) as Record<string, unknown>[]);
+  const eventRows = await collectPaginatedRows<Record<string, unknown>>((from, to) => {
+    let query = adminSupabase
+      .from("landing_page_events")
+      .select("event_name, session_id, user_id, source, referrer, page_path, metadata, created_at")
+      .gte("created_at", journeySinceIso)
+      .order("created_at", { ascending: false });
+    if (journeyBeforeIso) query = query.lt("created_at", journeyBeforeIso);
+    return query.range(from, to);
+  });
   const landingEventRows = eventRows as LandingEventRow[];
   let upgradeQuery = adminSupabase
     .from("master_actions")
@@ -3984,39 +3997,39 @@ export async function GET(request: Request) {
     "user_signup",
     "user_upgraded",
   ];
-  let masterFunnelQuery = adminSupabase
-    .from("master_actions")
-    .select("user_id, username, session_id, action_type, action_label, journey_day, account_status, event_metadata, created_at")
-    .in("action_type", masterFunnelActionTypes)
-    .gte("created_at", journeySinceIso)
-    .order("created_at", { ascending: false })
-    .limit(250000);
-  if (journeyBeforeIso) masterFunnelQuery = masterFunnelQuery.lt("created_at", journeyBeforeIso);
-  const { data: masterFunnelData, error: masterFunnelError } = await masterFunnelQuery;
-  if (masterFunnelError) {
-    let fallbackMasterFunnelQuery = adminSupabase
-      .from("master_actions")
-      .select("user_id, username, action_type, action_label, created_at")
-      .in("action_type", masterFunnelActionTypes)
-      .gte("created_at", journeySinceIso)
-      .order("created_at", { ascending: false })
-      .limit(250000);
-    if (journeyBeforeIso) fallbackMasterFunnelQuery = fallbackMasterFunnelQuery.lt("created_at", journeyBeforeIso);
-    const { data: fallbackMasterFunnelData } = await fallbackMasterFunnelQuery;
-    masterFunnelRows = (fallbackMasterFunnelData || []) as MasterActionFunnelRow[];
-  } else {
-    masterFunnelRows = (masterFunnelData || []) as MasterActionFunnelRow[];
+  try {
+    masterFunnelRows = await collectPaginatedRows<MasterActionFunnelRow>((from, to) => {
+      let query = adminSupabase
+        .from("master_actions")
+        .select("user_id, username, session_id, action_type, action_label, journey_day, account_status, event_metadata, created_at")
+        .in("action_type", masterFunnelActionTypes)
+        .gte("created_at", journeySinceIso)
+        .order("created_at", { ascending: false });
+      if (journeyBeforeIso) query = query.lt("created_at", journeyBeforeIso);
+      return query.range(from, to);
+    });
+  } catch {
+    masterFunnelRows = await collectPaginatedRows<MasterActionFunnelRow>((from, to) => {
+      let query = adminSupabase
+        .from("master_actions")
+        .select("user_id, username, action_type, action_label, created_at")
+        .in("action_type", masterFunnelActionTypes)
+        .gte("created_at", journeySinceIso)
+        .order("created_at", { ascending: false });
+      if (journeyBeforeIso) query = query.lt("created_at", journeyBeforeIso);
+      return query.range(from, to);
+    });
   }
 
-  let activitySummaryQuery = adminSupabase
-    .from("master_actions")
-    .select("user_id, session_id, action_type, created_at")
-    .gte("created_at", journeySinceIso)
-    .order("created_at", { ascending: false })
-    .limit(250000);
-  if (journeyBeforeIso) activitySummaryQuery = activitySummaryQuery.lt("created_at", journeyBeforeIso);
-  const { data: activitySummaryData } = await activitySummaryQuery;
-  const activitySummaryRows = ((activitySummaryData || []) as MasterActionFunnelRow[]).filter(
+  const activitySummaryRows = (await collectPaginatedRows<MasterActionFunnelRow>((from, to) => {
+    let query = adminSupabase
+      .from("master_actions")
+      .select("user_id, session_id, action_type, created_at")
+      .gte("created_at", journeySinceIso)
+      .order("created_at", { ascending: false });
+    if (journeyBeforeIso) query = query.lt("created_at", journeyBeforeIso);
+    return query.range(from, to);
+  })).filter(
     (row) => !isOwnerAuthUser(row.user_id || null, allAuthSummaryByUserId),
   );
 
@@ -4201,20 +4214,10 @@ export async function GET(request: Request) {
   const validSimpleAuthUsers = allAuthUsers.filter((user) => !isOwnerAuthUser(user.id, allAuthSummaryByUserId));
   const paidUpgradeTimestamps = collectFirstPaidUpgradeTimestamps(upgradeRows, journeySinceIso, journeyBeforeIso);
   const proUpgrades = paidUpgradeTimestamps.length;
-  const signupTimestamps = collectFirstSignupTimestamps(masterFunnelRows, journeySinceIso, journeyBeforeIso);
-  const signupSeries = buildSimpleMetricSeries(
-    signupTimestamps.length
-      ? signupTimestamps
-      : collectSignupTimestampsFromAuthUsers(validSimpleAuthUsers, journeySinceIso, journeyBeforeIso),
-    journeyWindow,
-  );
+  const signupTimestamps = collectSignupTimestampsFromAuthUsers(validSimpleAuthUsers, journeySinceIso, journeyBeforeIso);
+  const signupSeries = buildSimpleMetricSeries(signupTimestamps, journeyWindow);
   const previousSignups = previousRange
-    ? (() => {
-        const previousSignupTimestamps = collectFirstSignupTimestamps(masterFunnelRows, previousRange.startIso, previousRange.endIso);
-        return previousSignupTimestamps.length
-          ? previousSignupTimestamps.length
-          : collectSignupTimestampsFromAuthUsers(validSimpleAuthUsers, previousRange.startIso, previousRange.endIso).length;
-      })()
+    ? collectSignupTimestampsFromAuthUsers(validSimpleAuthUsers, previousRange.startIso, previousRange.endIso).length
     : 0;
   const upgradeSeries = buildSimpleMetricSeries(
     paidUpgradeTimestamps,
@@ -4231,7 +4234,7 @@ export async function GET(request: Request) {
     visits: windowSummary.visits,
     startClicks: windowSummary.startClicks || 0,
     guestStarts: windowSummary.guestStarts || 0,
-    freeAccounts: windowSummary.accountsCreated || windowSummary.signups || 0,
+    freeAccounts: currentSignups,
     proUpgrades,
     guestToAccountRate: windowSummary.guestToAccountRate || 0,
   };
@@ -4268,7 +4271,7 @@ export async function GET(request: Request) {
       dataHealth,
       publicOnboardingFlow,
       sources,
-      eventSetupRequired: Boolean(eventError),
+      eventSetupRequired: false,
       questions: QUESTION_CONFIG.map((question) => ({
         key: question.key,
         title: question.title,
@@ -4331,7 +4334,7 @@ export async function GET(request: Request) {
     publicOnboardingFlow,
     sources,
     setupRequired: false,
-    eventSetupRequired: Boolean(eventError),
-    eventError: eventError?.message,
+    eventSetupRequired: false,
+    eventError: null,
   });
 }

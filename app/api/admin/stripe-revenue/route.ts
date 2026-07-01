@@ -146,6 +146,68 @@ function buildRevenueSeries(charges: Stripe.Charge[], windowKey: RevenueWindowKe
     .map(([key, value]) => ({ label: labelByKey.get(key) || key, value: Math.round(value / 100) }));
 }
 
+function buildUpgradeSeries(charges: Stripe.Charge[], windowKey: RevenueWindowKey) {
+  const bucket = getRevenueSeriesBucket(windowKey);
+  const counts = new Map<string, number>();
+  const labelByKey = new Map<string, string>();
+
+  charges.forEach((charge) => {
+    const date = new Date(charge.created * 1000);
+    let key = "";
+    let label = "";
+
+    if (bucket === "hour") {
+      key = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}-${date.getHours()}`;
+      label = date.toLocaleTimeString("en-US", { hour: "numeric" });
+    } else if (bucket === "week") {
+      const weekStart = startOfWeek(date);
+      key = weekStart.toISOString().slice(0, 10);
+      label = weekStart.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+    } else if (bucket === "month") {
+      key = `${date.getFullYear()}-${date.getMonth() + 1}`;
+      label = date.toLocaleDateString("en-US", { month: "short", year: "2-digit" });
+    } else {
+      key = date.toISOString().slice(0, 10);
+      label = date.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+    }
+
+    counts.set(key, (counts.get(key) || 0) + 1);
+    labelByKey.set(key, label);
+  });
+
+  return Array.from(counts.entries())
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([key, value]) => ({ label: labelByKey.get(key) || key, value }));
+}
+
+function getChargeCustomerKey(charge: Stripe.Charge) {
+  const customer = typeof charge.customer === "object" && charge.customer && !("deleted" in charge.customer)
+    ? charge.customer
+    : null;
+  const email = (charge.billing_details.email || charge.receipt_email || customer?.email || "").trim().toLowerCase();
+  if (email) return `email:${email}`;
+  if (typeof charge.customer === "string" && charge.customer) return `customer:${charge.customer}`;
+  return `charge:${charge.id}`;
+}
+
+async function loadAllPaidCharges() {
+  const charges: Stripe.Charge[] = [];
+  let startingAfter: string | undefined;
+
+  for (;;) {
+    const page = await stripe!.charges.list({
+      limit: 100,
+      ...(startingAfter ? { starting_after: startingAfter } : {}),
+      expand: ["data.customer"],
+    });
+    charges.push(...page.data.filter((charge) => charge.paid && !charge.refunded && (charge.amount_captured || charge.amount) > 0));
+    if (!page.has_more || page.data.length === 0) break;
+    startingAfter = page.data[page.data.length - 1]?.id;
+  }
+
+  return charges;
+}
+
 async function requireOwner(req: NextRequest) {
   const authHeader = req.headers.get("authorization");
   const token = authHeader?.startsWith("Bearer ") ? authHeader.slice(7) : null;
@@ -175,10 +237,9 @@ export async function GET(req: NextRequest) {
     const windowKey = getRevenueWindowKey(req);
     const revenueRange = getRevenueDateRange(windowKey);
     const previousRange = getPreviousRevenueDateRange(windowKey);
-    const createdRange = revenueRange.end ? { gte: revenueRange.start, lt: revenueRange.end } : { gte: revenueRange.start };
     const broadestStart = previousRange ? Math.min(revenueRange.start, previousRange.start) : revenueRange.start;
 
-    const [activeSubscriptions, trialingSubscriptions, recentCharges, rangeCharges] = await Promise.all([
+    const [activeSubscriptions, trialingSubscriptions, recentCharges, allPaidCharges] = await Promise.all([
       stripe.subscriptions.list({
         status: "active",
         limit: 100,
@@ -193,11 +254,7 @@ export async function GET(req: NextRequest) {
         limit: 25,
         expand: ["data.customer"],
       }),
-      stripe.charges.list({
-        limit: 100,
-        created: previousRange ? { gte: broadestStart } : createdRange,
-        expand: ["data.customer"],
-      }),
+      loadAllPaidCharges(),
     ]);
 
     const subscriptions = [...activeSubscriptions.data, ...trialingSubscriptions.data];
@@ -207,7 +264,7 @@ export async function GET(req: NextRequest) {
     );
     const mrrCents = activePaidSubscriptions.reduce((total, subscription) => total + getSubscriptionMrrCents(subscription), 0);
     const currency = activePaidSubscriptions[0]?.currency || recentCharges.data[0]?.currency || "usd";
-    const paidAllFetchedCharges = rangeCharges.data.filter((charge) => charge.paid && !charge.refunded);
+    const paidAllFetchedCharges = allPaidCharges.filter((charge) => charge.created >= broadestStart);
     const paidRangeCharges = paidAllFetchedCharges.filter((charge) => {
       const created = charge.created;
       if (created < revenueRange.start) return false;
@@ -232,6 +289,28 @@ export async function GET(req: NextRequest) {
       })
       .reduce((total, charge) => total + charge.amount_captured, 0);
 
+    const firstPaidChargeByCustomer = new Map<string, Stripe.Charge>();
+    allPaidCharges
+      .slice()
+      .sort((a, b) => a.created - b.created)
+      .forEach((charge) => {
+        const customerKey = getChargeCustomerKey(charge);
+        if (!firstPaidChargeByCustomer.has(customerKey)) firstPaidChargeByCustomer.set(customerKey, charge);
+      });
+    const firstPaidCharges = Array.from(firstPaidChargeByCustomer.values());
+    const upgradeRangeCharges = firstPaidCharges.filter((charge) => {
+      if (charge.created < revenueRange.start) return false;
+      if (revenueRange.end && charge.created >= revenueRange.end) return false;
+      return true;
+    });
+    const previousUpgradeCharges = previousRange
+      ? firstPaidCharges.filter((charge) => {
+          if (charge.created < previousRange.start) return false;
+          if (previousRange.end && charge.created >= previousRange.end) return false;
+          return true;
+        })
+      : [];
+
     const recentPayments = recentCharges.data
       .filter((charge) => charge.paid && !charge.refunded)
       .slice(0, 12)
@@ -255,6 +334,7 @@ export async function GET(req: NextRequest) {
         };
       });
     const series = buildRevenueSeries(paidRangeCharges, windowKey);
+    const upgradeSeries = buildUpgradeSeries(upgradeRangeCharges, windowKey);
 
     return NextResponse.json({
       currency,
@@ -274,6 +354,13 @@ export async function GET(req: NextRequest) {
         current: Math.round(revenueRangeCents / 100),
         previous: Math.round(previousRevenueRangeCents / 100),
         change: percentChange(revenueRangeCents, previousRevenueRangeCents),
+      },
+      upgradesRange: upgradeRangeCharges.length,
+      upgradeSeries,
+      upgradeComparison: {
+        current: upgradeRangeCharges.length,
+        previous: previousUpgradeCharges.length,
+        change: percentChange(upgradeRangeCharges.length, previousUpgradeCharges.length),
       },
       oneTime30dCents: oneTimeRangeCents,
       oneTime30d: formatMoney(oneTimeRangeCents, currency),

@@ -815,8 +815,8 @@ export const GENESIS_DAY_SEVEN_COVENANT_PROMISE_LESSON: BibleYearDailyLesson = {
       ],
     },
     {
-      heading: "Abram Becomes Abraham",
-      verseBlock: { reference: "Genesis 17:1-8", chapter: 17, startVerse: 1, endVerse: 8 },
+      heading: "God Renews His Covenant",
+      verseBlock: { reference: "Genesis 17:1-4", chapter: 17, startVerse: 1, endVerse: 4 },
       teaching: [
         "Thirteen years pass before Genesis 17 begins.",
         "God appears to Abram as Almighty God and calls him to walk before Him.",
@@ -825,8 +825,8 @@ export const GENESIS_DAY_SEVEN_COVENANT_PROMISE_LESSON: BibleYearDailyLesson = {
       ],
     },
     {
-      heading: "The Covenant Sign",
-      verseBlock: { reference: "Genesis 17:9-14", chapter: 17, startVerse: 9, endVerse: 14 },
+      heading: "God Renames Abraham",
+      verseBlock: { reference: "Genesis 17:5-14", chapter: 17, startVerse: 5, endVerse: 14 },
       teaching: [
         "God gives circumcision as the sign of the covenant.",
         "The covenant is not just an idea Abraham thinks about. It is marked into the life of the household.",
@@ -835,17 +835,31 @@ export const GENESIS_DAY_SEVEN_COVENANT_PROMISE_LESSON: BibleYearDailyLesson = {
       ],
     },
     {
-      heading: "Sarah and Isaac Are Named",
-      verseBlock: { reference: "Genesis 17:15-22", chapter: 17, startVerse: 15, endVerse: 22 },
+      heading: "God Renames Sarah",
+      verseBlock: { reference: "Genesis 17:15", chapter: 17, startVerse: 15, endVerse: 15 },
       teaching: [
-        "God changes Sarai's name to Sarah and speaks blessing over her.",
-        "Then God names the promised son before he is born: Isaac.",
-        "Abraham laughs and asks that Ishmael might live before God, and God graciously promises blessing for Ishmael too.",
-        "But the covenant line will go through Isaac, the son God promised.",
+        "God changes Sarai's name to Sarah and makes her central to the covenant promise.",
+        "The promised son will come through Sarah, not through Hagar or another woman.",
       ],
     },
     {
-      heading: "Abraham Obeys That Same Day",
+      heading: "God Promises Sarah A Son",
+      verseBlock: { reference: "Genesis 17:16-19", chapter: 17, startVerse: 16, endVerse: 19 },
+      teaching: [
+        "God promises that Sarah herself will bear the promised son.",
+        "Abraham laughs at what sounds humanly impossible, but God names the child Isaac before he is born.",
+      ],
+    },
+    {
+      heading: "God Blesses Ishmael",
+      verseBlock: { reference: "Genesis 17:20-22", chapter: 17, startVerse: 20, endVerse: 22 },
+      teaching: [
+        "God hears Abraham's prayer for Ishmael and promises to bless him.",
+        "Ishmael will become fruitful, but God's covenant will continue through Isaac.",
+      ],
+    },
+    {
+      heading: "Abraham Circumcises His Household",
       verseBlock: { reference: "Genesis 17:23-27", chapter: 17, startVerse: 23, endVerse: 27 },
       teaching: [
         "Abraham responds to God's word with obedience that same day.",

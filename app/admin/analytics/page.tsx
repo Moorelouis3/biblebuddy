@@ -507,6 +507,9 @@ type StripeRevenueSummary = {
   oneTimeRange?: string;
   series?: Array<{ label: string; value: number }>;
   comparison?: { current: number; previous: number; change: number };
+  upgradesRange?: number;
+  upgradeSeries?: Array<{ label: string; value: number }>;
+  upgradeComparison?: { current: number; previous: number; change: number };
   recentPayments: StripeRecentPayment[];
   updatedAt: string;
   error?: string;
@@ -817,7 +820,7 @@ function getSimpleMetricSeries(
 ) {
   if (metric === "revenue") return stripeRevenue?.series || [];
   if (metric === "signups") return data?.simpleSeries?.signups || [];
-  if (metric === "upgrades") return data?.simpleSeries?.upgrades || [];
+  if (metric === "upgrades") return stripeRevenue?.upgradeSeries || data?.simpleSeries?.upgrades || [];
   return data?.completionUpgrade?.series.views || [];
 }
 
@@ -837,6 +840,7 @@ function getSimpleMetricTotal(
   if (metric === "completion_popup") {
     return formatNumber(data?.completionUpgrade?.totalViews || 0);
   }
+  if (typeof stripeRevenue?.upgradesRange === "number") return formatNumber(stripeRevenue.upgradesRange);
   const total = (data?.simpleSeries?.upgrades || []).reduce((sum, point) => sum + point.value, 0);
   const fallback = data?.customerJourney?.proUpgrades || data?.visitorJourneys?.metrics?.upgradedToPro || 0;
   return formatNumber(total || fallback);
@@ -1080,6 +1084,78 @@ function SimpleAnalyticsChart({
         </svg>
       </div>
     </div>
+  );
+}
+
+function SimpleAnalyticsOverviewChart({
+  title,
+  value,
+  points,
+  loading,
+  valueFormatter,
+}: {
+  title: string;
+  value: string;
+  points: Array<{ label: string; value: number }>;
+  loading: boolean;
+  valueFormatter?: (value: number) => string;
+}) {
+  const width = 320;
+  const height = 120;
+  const pad = 10;
+  const maxValue = Math.max(...points.map((point) => point.value), 1);
+  const stepX = points.length <= 1 ? 0 : (width - pad * 2) / (points.length - 1);
+  const coordinates = points.map((point, index) => ({
+    ...point,
+    x: pad + index * stepX,
+    y: pad + (1 - point.value / maxValue) * (height - pad * 2),
+  }));
+  const linePath = coordinates.map((point, index) => `${index === 0 ? "M" : "L"} ${point.x} ${point.y}`).join(" ");
+  const areaPath = coordinates.length
+    ? `${linePath} L ${coordinates[coordinates.length - 1].x} ${height - pad} L ${coordinates[0].x} ${height - pad} Z`
+    : "";
+  const gradientId = `overview-${title.toLowerCase().replace(/[^a-z]+/g, "-")}`;
+
+  return (
+    <section className="rounded-[24px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-4 shadow-[0_14px_34px_rgba(15,23,42,0.07)]">
+      <div className="flex items-end justify-between gap-3">
+        <div>
+          <p className="text-xs font-black uppercase tracking-[0.16em] text-blue-600">{title}</p>
+          <p className="mt-1 text-3xl font-black text-[var(--bb-text-primary,#101827)]">{loading ? "..." : value}</p>
+        </div>
+        {points.length ? (
+          <p className="text-xs font-bold text-[var(--bb-text-secondary,#64748b)]">
+            Peak {valueFormatter ? valueFormatter(maxValue) : formatNumber(maxValue)}
+          </p>
+        ) : null}
+      </div>
+      <div className="mt-3 h-[140px]">
+        {points.length ? (
+          <svg viewBox={`0 0 ${width} ${height}`} className="h-full w-full" preserveAspectRatio="none" role="img" aria-label={`${title} trend chart`}>
+            <defs>
+              <linearGradient id={gradientId} x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stopColor="#2563eb" stopOpacity="0.22" />
+                <stop offset="100%" stopColor="#2563eb" stopOpacity="0.02" />
+              </linearGradient>
+            </defs>
+            <line x1={pad} x2={width - pad} y1={height - pad} y2={height - pad} stroke="#dbe7f3" strokeWidth="1" />
+            <path d={areaPath} fill={`url(#${gradientId})`} />
+            <path d={linePath} fill="none" stroke="#2563eb" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
+            {coordinates.map((point) => <circle key={`${title}-${point.label}`} cx={point.x} cy={point.y} r="4" fill="#2563eb" />)}
+          </svg>
+        ) : (
+          <div className="grid h-full place-items-center rounded-[18px] bg-[var(--bb-surface-soft,#f8fbff)] text-sm font-bold text-[var(--bb-text-secondary,#64748b)]">
+            No data in this timeframe.
+          </div>
+        )}
+      </div>
+      {points.length ? (
+        <div className="mt-1 flex justify-between text-xs font-semibold text-[var(--bb-text-secondary,#64748b)]">
+          <span>{points[0]?.label}</span>
+          <span>{points[points.length - 1]?.label}</span>
+        </div>
+      ) : null}
+    </section>
   );
 }
 
@@ -1517,11 +1593,11 @@ function MobileAnalyticsHighlights({
   const signupsFallbackTotal = data?.customerJourney?.freeAccounts || data?.visitorJourneys?.metrics?.createdFreeAccount || 0;
   const upgradesFallbackTotal = data?.customerJourney?.proUpgrades || data?.visitorJourneys?.metrics?.upgradedToPro || 0;
   const signupsLabel = formatNumber(signupsSeriesTotal || signupsFallbackTotal);
-  const upgradesLabel = formatNumber(upgradesSeriesTotal || upgradesFallbackTotal);
+  const upgradesLabel = formatNumber(stripeRevenue?.upgradesRange ?? (upgradesSeriesTotal || upgradesFallbackTotal));
   const chartSeries = simpleMetric === "overview" ? [] : getSimpleMetricSeries(simpleMetric, data, stripeRevenue);
   const comparisonLabel = getComparisonLabel(windowKey);
   const signupComparison = data?.simpleComparisons?.signups?.change;
-  const upgradesComparison = data?.simpleComparisons?.upgrades?.change;
+  const upgradesComparison = stripeRevenue?.upgradeComparison?.change ?? data?.simpleComparisons?.upgrades?.change;
   const revenueComparison = stripeRevenue?.comparison?.change;
   const completionPopupComparison = data?.completionUpgrade?.comparisons.views.change;
 
@@ -3661,11 +3737,11 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
     const signupsFallbackTotal = data?.customerJourney?.freeAccounts || metrics.createdFreeAccount || 0;
     const upgradesFallbackTotal = data?.customerJourney?.proUpgrades || metrics.upgradedToPro || 0;
     const signupsLabel = formatNumber(signupsSeriesTotal || signupsFallbackTotal);
-    const upgradesLabel = formatNumber(upgradesSeriesTotal || upgradesFallbackTotal);
+    const upgradesLabel = formatNumber(stripeRevenue?.upgradesRange ?? (upgradesSeriesTotal || upgradesFallbackTotal));
     const chartSeries = simpleMetric === "overview" ? [] : getSimpleMetricSeries(simpleMetric, data, stripeRevenue);
     const comparisonLabel = getComparisonLabel(windowKey);
     const signupComparison = data?.simpleComparisons?.signups?.change;
-    const upgradesComparison = data?.simpleComparisons?.upgrades?.change;
+    const upgradesComparison = stripeRevenue?.upgradeComparison?.change ?? data?.simpleComparisons?.upgrades?.change;
     const revenueComparison = stripeRevenue?.comparison?.change;
     const completionPopupComparison = data?.completionUpgrade?.comparisons.views.change;
 
@@ -3724,6 +3800,7 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
               </div>
 
               {simpleMetric === "overview" ? (
+                <>
                 <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
                   <SimpleAnalyticsKpiCard
                     title="Signups"
@@ -3786,6 +3863,28 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
                     accent="green"
                   />
                 </div>
+                <div className="grid gap-3 lg:grid-cols-3">
+                  <SimpleAnalyticsOverviewChart
+                    title="Signup Trend"
+                    value={loading ? "..." : signupsLabel}
+                    points={data?.simpleSeries?.signups || []}
+                    loading={loading}
+                  />
+                  <SimpleAnalyticsOverviewChart
+                    title="Revenue Trend"
+                    value={stripeRevenueLoading ? "..." : revenueLabel}
+                    points={stripeRevenue?.series || []}
+                    loading={stripeRevenueLoading}
+                    valueFormatter={formatMoneyValue}
+                  />
+                  <SimpleAnalyticsOverviewChart
+                    title="Upgrade Trend"
+                    value={stripeRevenueLoading ? "..." : upgradesLabel}
+                    points={stripeRevenue?.upgradeSeries || data?.simpleSeries?.upgrades || []}
+                    loading={stripeRevenueLoading || loading}
+                  />
+                </div>
+                </>
               ) : (
                 simpleMetric === "completion_popup" ? (
                   <CompletionPopupAnalyticsSection

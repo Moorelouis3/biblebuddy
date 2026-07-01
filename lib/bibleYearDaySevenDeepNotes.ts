@@ -1,5 +1,6 @@
 import type { BibleYearDeepStudySection } from "./bibleYearDayOneDeepStudy";
 import { GENESIS_SIXTEEN_PERSONAL_SECTIONS } from "./genesisSixteenSource";
+import { GENESIS_SEVENTEEN_PERSONAL_SECTIONS } from "./genesisSeventeenSource";
 
 export const BIBLE_YEAR_DAY_SEVEN_DEEP_NOTES = `Genesis 16-17 walks through waiting, human shortcuts, the God who sees, new names, covenant signs, and the promise of Isaac.
 
@@ -246,9 +247,26 @@ const GENESIS_SIXTEEN_DEEP_STUDY_SECTIONS: BibleYearDeepStudySection[] = GENESIS
   }),
 );
 
+const GENESIS_SEVENTEEN_DEEP_STUDY_SECTIONS: BibleYearDeepStudySection[] = GENESIS_SEVENTEEN_PERSONAL_SECTIONS.map(
+  (section) => ({
+    reference: section.reference,
+    title: section.title,
+    icon: section.icon,
+    summary: section.phrases[0]?.[1].split("\n\n")[0] || "",
+    markdown: [
+      `## ${section.reference}`,
+      `### ${section.title}`,
+      ...section.phrases.map(([title, body]) => `### ${title}\n\n${body}`),
+    ].join("\n\n"),
+  }),
+);
+
 export const BIBLE_YEAR_DAY_SEVEN_DEEP_STUDY_SECTIONS: BibleYearDeepStudySection[] = [
   ...GENESIS_SIXTEEN_DEEP_STUDY_SECTIONS,
+  ...GENESIS_SEVENTEEN_DEEP_STUDY_SECTIONS,
   ...LEGACY_BIBLE_YEAR_DAY_SEVEN_DEEP_STUDY_SECTIONS.filter(
-    (section) => !section.reference.startsWith("Genesis 16:"),
+    (section) =>
+      !section.reference.startsWith("Genesis 16:") &&
+      !section.reference.startsWith("Genesis 17:"),
   ),
 ];

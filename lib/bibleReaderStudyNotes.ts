@@ -11,6 +11,7 @@ import { GENESIS_THIRTEEN_PERSONAL_SECTIONS } from "./genesisThirteenSource";
 import { GENESIS_FOURTEEN_PERSONAL_SECTIONS } from "./genesisFourteenSource";
 import { GENESIS_FIFTEEN_PERSONAL_SECTIONS } from "./genesisFifteenSource";
 import { GENESIS_SIXTEEN_PERSONAL_SECTIONS } from "./genesisSixteenSource";
+import { GENESIS_SEVENTEEN_PERSONAL_SECTIONS } from "./genesisSeventeenSource";
 import { GENESIS_THREE_PERSONAL_SECTIONS } from "./genesisThreeSource";
 import { GENESIS_TWO_PERSONAL_SECTIONS } from "./genesisTwoSource";
 import { GENESIS_11_20_PERSONAL_SECTIONS } from "./genesisElevenToTwentyPersonalNotes";
@@ -8151,6 +8152,7 @@ replaceStudySectionsForBookRange("genesis", 13, 13, GENESIS_THIRTEEN_PERSONAL_SE
 replaceStudySectionsForBookRange("genesis", 14, 14, GENESIS_FOURTEEN_PERSONAL_SECTIONS);
 replaceStudySectionsForBookRange("genesis", 15, 15, GENESIS_FIFTEEN_PERSONAL_SECTIONS);
 replaceStudySectionsForBookRange("genesis", 16, 16, GENESIS_SIXTEEN_PERSONAL_SECTIONS);
+replaceStudySectionsForBookRange("genesis", 17, 17, GENESIS_SEVENTEEN_PERSONAL_SECTIONS);
 
 for (const section of BIBLE_READER_STUDY_SECTIONS) {
   section.categories = section.categories
