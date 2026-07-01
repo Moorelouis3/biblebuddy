@@ -149,6 +149,9 @@ export async function GET(request: Request) {
     dayNumber: parseDay(row),
     createdAt: row.created_at || "",
   }));
+  const inAppActionRows = actionRows.filter(
+    (row) => row.actionType !== "landing_page_visited" && row.actionType !== "landing_cta_clicked",
+  );
 
   const grouped = new Map<string, typeof actionRows>();
   actionRows.forEach((row) => {
@@ -209,7 +212,7 @@ export async function GET(request: Request) {
   return NextResponse.json({
     window: windowKey,
     activeUsers,
-    actions: actionRows,
+    actions: inAppActionRows,
     signups,
     daysCompleted,
   }, { headers: { "Cache-Control": "private, max-age=15" } });

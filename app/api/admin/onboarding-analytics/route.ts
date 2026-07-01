@@ -1930,10 +1930,13 @@ function buildActivitySummaryMetrics(
   );
 
   const daysCompleted = rows.filter((row) => row.action_type === "bible_in_one_year_day_completed").length;
+  const inAppActionRows = rows.filter(
+    (row) => row.action_type !== "landing_page_visited" && row.action_type !== "landing_cta_clicked",
+  );
 
   return {
     activeUsers: uniqueActors.size,
-    totalActions: rows.length,
+    totalActions: inAppActionRows.length,
     daysCompleted,
     landingConversionRate: percent(signups, landingVisitors),
     landingVisitors,
