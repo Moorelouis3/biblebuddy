@@ -9901,13 +9901,17 @@ Before we understand redemption, we need to understand what God made humanity fo
 
   function isBibleYearDayVisuallyLocked(day: GenesisBibleYearDay) {
     if (isOwnerDashboard) return false;
-    return !isBibleYearDayComplete(day) && day.dayNumber !== getCurrentBibleYearSeriesDayNumber();
+    return day.dayNumber > getCurrentBibleYearSeriesDayNumber();
   }
 
   function canOpenBibleYearDayInJourneyOrder(day: GenesisBibleYearDay | null | undefined) {
     if (!day) return false;
     if (isOwnerDashboard) return true;
-    return isBibleYearDayComplete(day) || day.dayNumber === getCurrentBibleYearSeriesDayNumber();
+    return day.dayNumber <= getCurrentBibleYearSeriesDayNumber();
+  }
+
+  function isBibleYearJourneyDayComplete(day: GenesisBibleYearDay) {
+    return day.dayNumber < getCurrentBibleYearSeriesDayNumber() || isBibleYearDayComplete(day);
   }
 
   function isBibleYearTaskLockedForFree(day: GenesisBibleYearDay, card: BibleYearDayCardKey) {
@@ -13605,8 +13609,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               <div className="flex min-w-max items-start gap-2">
                 {bibleYearStudyPlanMilestones.map((milestone, index) => {
                   const milestoneDay = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((item) => item.dayNumber === milestone.dayNumber);
-                  const completed = bibleYearCompletedCardsByDay[milestone.dayNumber] || {};
-                  const isComplete = Boolean(completed.reading);
+                  const isComplete = milestoneDay ? isBibleYearJourneyDayComplete(milestoneDay) : false;
                   const isCurrent = getCurrentBibleYearSeriesDayNumber() === milestone.dayNumber;
                   const isLocked = milestoneDay ? isBibleYearDayVisuallyLocked(milestoneDay) : true;
                   const milestoneCover = getBibleYearDayCoverImage(milestoneDay);
@@ -13881,8 +13884,8 @@ Before we understand redemption, we need to understand what God made humanity fo
     const visibleChapterCount = visibleSeriesDays.reduce((total, day) => total + day.readings.length, 0);
     const currentSeriesDayNumber = getCurrentBibleYearSeriesDayNumber(visibleSeriesDays);
     const orderedSeriesDays = [...visibleSeriesDays].sort((a, b) => {
-      const aComplete = isBibleYearDayComplete(a);
-      const bComplete = isBibleYearDayComplete(b);
+      const aComplete = isBibleYearJourneyDayComplete(a);
+      const bComplete = isBibleYearJourneyDayComplete(b);
       if (a.dayNumber === currentSeriesDayNumber) return -1;
       if (b.dayNumber === currentSeriesDayNumber) return 1;
       if (aComplete !== bComplete) return aComplete ? 1 : -1;
@@ -13890,7 +13893,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     });
     const filteredSeriesDays = orderedSeriesDays.filter((day) => {
       if (bibleYearSeriesFilter === "current") return day.dayNumber === currentSeriesDayNumber;
-      if (bibleYearSeriesFilter === "completed") return isBibleYearDayComplete(day);
+      if (bibleYearSeriesFilter === "completed") return isBibleYearJourneyDayComplete(day);
       return true;
     });
     if (bibleYearSeriesDetailDay) {
@@ -13957,7 +13960,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               {filteredSeriesDays.map((day) => {
                 const cover = getBibleYearDayCoverImage(day);
                 const isCurrent = day.dayNumber === currentSeriesDayNumber;
-                const isComplete = isBibleYearDayComplete(day);
+                const isComplete = isBibleYearJourneyDayComplete(day);
                 const isLocked = isBibleYearDayVisuallyLocked(day);
                 const seriesStatusLabel = getBibleYearSeriesStatusLabel(day, isCurrent, isComplete, isLocked);
                 const seriesReference =
