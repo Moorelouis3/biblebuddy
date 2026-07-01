@@ -1639,7 +1639,7 @@ const DAY_FOUR_SECTION_META: Array<Omit<BibleYearDeepStudySection, "markdown">> 
   },
   {
     reference: "Genesis 10:2-5",
-    title: "The Sons Of Japheth",
+    title: "Japheth's Descendants",
     icon: "🌍",
     summary: "Japheth’s descendants spread into coastlands, territories, and the early nations of the post-flood world.",
   },

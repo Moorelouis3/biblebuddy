@@ -7,6 +7,7 @@ import { GENESIS_SIX_PERSONAL_SECTIONS } from "./genesisSixSource";
 import { GENESIS_TEN_PERSONAL_SECTIONS } from "./genesisTenSource";
 import { GENESIS_ELEVEN_PERSONAL_SECTIONS } from "./genesisElevenSource";
 import { GENESIS_TWELVE_PERSONAL_SECTIONS } from "./genesisTwelveSource";
+import { GENESIS_THIRTEEN_PERSONAL_SECTIONS } from "./genesisThirteenSource";
 import { GENESIS_FOURTEEN_PERSONAL_SECTIONS } from "./genesisFourteenSource";
 import { GENESIS_FIFTEEN_PERSONAL_SECTIONS } from "./genesisFifteenSource";
 import { GENESIS_SIXTEEN_PERSONAL_SECTIONS } from "./genesisSixteenSource";
@@ -8146,6 +8147,7 @@ replaceStudySectionsForBookRange("genesis", 9, 9, GENESIS_NINE_PERSONAL_SECTIONS
 replaceStudySectionsForBookRange("genesis", 10, 10, GENESIS_TEN_PERSONAL_SECTIONS);
 replaceStudySectionsForBookRange("genesis", 11, 11, GENESIS_ELEVEN_PERSONAL_SECTIONS);
 replaceStudySectionsForBookRange("genesis", 12, 12, GENESIS_TWELVE_PERSONAL_SECTIONS);
+replaceStudySectionsForBookRange("genesis", 13, 13, GENESIS_THIRTEEN_PERSONAL_SECTIONS);
 replaceStudySectionsForBookRange("genesis", 14, 14, GENESIS_FOURTEEN_PERSONAL_SECTIONS);
 replaceStudySectionsForBookRange("genesis", 15, 15, GENESIS_FIFTEEN_PERSONAL_SECTIONS);
 replaceStudySectionsForBookRange("genesis", 16, 16, GENESIS_SIXTEEN_PERSONAL_SECTIONS);

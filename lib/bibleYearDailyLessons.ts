@@ -521,7 +521,7 @@ export const GENESIS_DAY_FOUR_NOAH_FLOOD_LESSON: BibleYearDailyLesson = {
       ],
     },
     {
-      heading: "The Sons Of Japheth",
+      heading: "Japheth's Descendants",
       verseBlock: { reference: "Genesis 10:2-5", chapter: 10, startVerse: 2, endVerse: 5 },
       teaching: [
         "Japheth's descendants spread into coastlands, territories, and early nations.",
@@ -644,8 +644,8 @@ export const GENESIS_DAY_FIVE_ABRAHAM_OBEDIENCE_LESSON: BibleYearDailyLesson = {
       ],
     },
     {
-      heading: "Abram Returns to the Altar",
-      verseBlock: { reference: "Genesis 13:1-7", chapter: 13, startVerse: 1, endVerse: 7 },
+      heading: "Abram Returns Home",
+      verseBlock: { reference: "Genesis 13:1-4", chapter: 13, startVerse: 1, endVerse: 4 },
       teaching: [
         "Abram comes back from Egypt to the place of the altar.",
         "That feels like a reset after fear.",
@@ -654,8 +654,8 @@ export const GENESIS_DAY_FIVE_ABRAHAM_OBEDIENCE_LESSON: BibleYearDailyLesson = {
       ],
     },
     {
-      heading: "Lot Chooses by Sight",
-      verseBlock: { reference: "Genesis 13:8-13", chapter: 13, startVerse: 8, endVerse: 13 },
+      heading: "Abram And Lot Separate",
+      verseBlock: { reference: "Genesis 13:5-13", chapter: 13, startVerse: 5, endVerse: 13 },
       teaching: [
         "Abram chooses peace and lets Lot pick first.",
         "Lot lifts up his eyes and chooses what looks best.",
@@ -664,7 +664,7 @@ export const GENESIS_DAY_FIVE_ABRAHAM_OBEDIENCE_LESSON: BibleYearDailyLesson = {
       ],
     },
     {
-      heading: "God Repeats the Promise",
+      heading: "God Renews His Promise To Abram",
       verseBlock: { reference: "Genesis 13:14-18", chapter: 13, startVerse: 14, endVerse: 18 },
       teaching: [
         "After Lot separates from Abram, God tells Abram to lift up his eyes.",

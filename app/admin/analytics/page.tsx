@@ -429,6 +429,51 @@ type AnalyticsResponse = {
   error?: string;
 };
 
+type AnalyticsDrilldownKind = "active_users" | "actions" | "signups" | "days_completed";
+
+type AnalyticsDrilldownResponse = {
+  error?: string;
+  window: JourneyWindow;
+  activeUsers: Array<{
+    actorId: string;
+    userId: string | null;
+    userLabel: string;
+    streak: number;
+    currentDay: number | null;
+    totalActions: number;
+    lifetimeActions: number;
+    accountType: string;
+    lastAction: string;
+    lastActiveAt: string;
+  }>;
+  actions: Array<{
+    id: string;
+    userId: string | null;
+    userLabel: string;
+    actionType: string;
+    actionTitle: string;
+    detail: string;
+    dayNumber: number | null;
+    createdAt: string;
+  }>;
+  signups: Array<{
+    userId: string;
+    userLabel: string;
+    source: string;
+    currentDay: number;
+    accountType: string;
+    createdAt: string;
+  }>;
+  daysCompleted: Array<{
+    id: string;
+    userId: string | null;
+    userLabel: string;
+    dayNumber: number | null;
+    streak: number;
+    createdAt: string;
+  }>;
+};
+
 type StripeRecentPayment = {
   id: string;
   amount: string;
@@ -851,6 +896,8 @@ function SimpleAnalyticsKpiCard({
   accent = "blue",
   comparison,
   comparisonLabel,
+  onClick,
+  active = false,
 }: {
   title: string;
   value: string;
@@ -858,6 +905,8 @@ function SimpleAnalyticsKpiCard({
   accent?: "blue" | "green" | "violet";
   comparison?: number | null;
   comparisonLabel?: string;
+  onClick?: () => void;
+  active?: boolean;
 }) {
   const accentStyles =
     accent === "green"
@@ -866,8 +915,8 @@ function SimpleAnalyticsKpiCard({
         ? "bg-violet-50 text-violet-700 ring-violet-100"
         : "bg-blue-50 text-blue-700 ring-blue-100";
 
-  return (
-    <div className="rounded-[24px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-5 shadow-[0_16px_40px_rgba(15,23,42,0.08)]">
+  const content = (
+    <>
       <div className={`inline-flex rounded-full px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] ring-1 ${accentStyles}`}>
         {title}
       </div>
@@ -878,7 +927,85 @@ function SimpleAnalyticsKpiCard({
         </div>
       ) : null}
       <p className="mt-2 text-sm font-semibold text-[var(--bb-text-secondary,#64748b)]">{helper}</p>
-    </div>
+      {onClick ? <p className="mt-3 text-xs font-black uppercase tracking-[0.12em] text-blue-600">View details</p> : null}
+    </>
+  );
+
+  const className = `w-full rounded-[24px] border bg-[var(--bb-card,#ffffff)] p-5 text-left shadow-[0_16px_40px_rgba(15,23,42,0.08)] ${active ? "border-blue-500 ring-4 ring-blue-100" : "border-[var(--bb-card-border,#d8e3ec)]"}`;
+  return onClick ? (
+    <button type="button" onClick={onClick} className={`${className} transition hover:-translate-y-0.5 hover:border-blue-300 hover:shadow-[0_20px_48px_rgba(37,99,235,0.14)]`} aria-expanded={active}>
+      {content}
+    </button>
+  ) : <div className={className}>{content}</div>;
+}
+
+function AnalyticsDrilldownPanel({
+  kind,
+  data,
+  loading,
+  error,
+  onClose,
+}: {
+  kind: AnalyticsDrilldownKind;
+  data: AnalyticsDrilldownResponse | null;
+  loading: boolean;
+  error: string | null;
+  onClose: () => void;
+}) {
+  const config = {
+    active_users: { title: "Active Users", subtitle: "Everyone with at least one tracked action in this timeframe." },
+    actions: { title: "Master Actions", subtitle: "The complete tracked activity feed for this timeframe." },
+    signups: { title: "Signups", subtitle: "Who joined, where they came from, and where they are now." },
+    days_completed: { title: "Days Completed", subtitle: "Every Bible in One Year completion recorded in this timeframe." },
+  }[kind];
+  const rowCount = kind === "active_users" ? data?.activeUsers.length : kind === "actions" ? data?.actions.length : kind === "signups" ? data?.signups.length : data?.daysCompleted.length;
+
+  return (
+    <section className="overflow-hidden rounded-[26px] border border-blue-200 bg-white shadow-[0_20px_52px_rgba(15,23,42,0.10)]">
+      <div className="flex items-start justify-between gap-4 border-b border-slate-200 px-5 py-4">
+        <div>
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-blue-600">Details</p>
+          <h2 className="mt-1 text-2xl font-black text-slate-950">{config.title}</h2>
+          <p className="mt-1 text-sm font-semibold text-slate-600">{config.subtitle}</p>
+        </div>
+        <button type="button" onClick={onClose} className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-slate-200 text-xl font-black text-slate-700" aria-label="Close details">×</button>
+      </div>
+
+      {loading ? <p className="px-5 py-12 text-center text-sm font-bold text-slate-600">Loading details...</p> : null}
+      {error ? <p className="m-5 rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm font-bold text-rose-700">{error}</p> : null}
+
+      {!loading && !error ? (
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[760px] border-collapse text-left text-sm">
+            {kind === "active_users" ? (
+              <>
+                <thead className="bg-slate-50 text-xs font-black uppercase tracking-[0.12em] text-slate-500"><tr><th className="px-5 py-3">User</th><th className="px-4 py-3">Streak</th><th className="px-4 py-3">BIOY Day</th><th className="px-4 py-3">Actions</th><th className="px-4 py-3">Last Action</th><th className="px-5 py-3">Last Active</th></tr></thead>
+                <tbody className="divide-y divide-slate-200">{data?.activeUsers.map((row) => <tr key={row.actorId}><td className="px-5 py-4"><p className="font-black text-slate-950">{row.userLabel}</p><p className="text-xs font-semibold text-slate-500">{row.accountType}</p></td><td className="px-4 py-4 font-bold">{row.streak} days</td><td className="px-4 py-4 font-bold">{row.currentDay ? `Day ${row.currentDay}` : "—"}</td><td className="px-4 py-4"><p className="font-black text-blue-600">{row.totalActions}</p><p className="text-xs text-slate-500">{row.lifetimeActions} lifetime</p></td><td className="px-4 py-4 font-semibold">{row.lastAction}</td><td className="px-5 py-4 font-semibold">{formatDateTime(row.lastActiveAt)}</td></tr>)}</tbody>
+              </>
+            ) : null}
+            {kind === "actions" ? (
+              <>
+                <thead className="bg-slate-50 text-xs font-black uppercase tracking-[0.12em] text-slate-500"><tr><th className="px-5 py-3">User</th><th className="px-4 py-3">Action</th><th className="px-4 py-3">Details</th><th className="px-4 py-3">Day</th><th className="px-5 py-3">Time</th></tr></thead>
+                <tbody className="divide-y divide-slate-200">{data?.actions.map((row) => <tr key={row.id}><td className="px-5 py-4 font-black text-slate-950">{row.userLabel}</td><td className="px-4 py-4 font-bold">{row.actionTitle}</td><td className="max-w-[300px] px-4 py-4 text-slate-600">{row.detail}</td><td className="px-4 py-4 font-semibold">{row.dayNumber ? `Day ${row.dayNumber}` : "—"}</td><td className="px-5 py-4 font-semibold">{formatDateTime(row.createdAt)}</td></tr>)}</tbody>
+              </>
+            ) : null}
+            {kind === "signups" ? (
+              <>
+                <thead className="bg-slate-50 text-xs font-black uppercase tracking-[0.12em] text-slate-500"><tr><th className="px-5 py-3">User</th><th className="px-4 py-3">Source</th><th className="px-4 py-3">BIOY Day</th><th className="px-4 py-3">Account</th><th className="px-5 py-3">Signed Up</th></tr></thead>
+                <tbody className="divide-y divide-slate-200">{data?.signups.map((row) => <tr key={row.userId}><td className="px-5 py-4 font-black text-slate-950">{row.userLabel}</td><td className="px-4 py-4 font-semibold">{row.source}</td><td className="px-4 py-4 font-bold">Day {row.currentDay}</td><td className="px-4 py-4 font-semibold">{row.accountType}</td><td className="px-5 py-4 font-semibold">{formatDateTime(row.createdAt)}</td></tr>)}</tbody>
+              </>
+            ) : null}
+            {kind === "days_completed" ? (
+              <>
+                <thead className="bg-slate-50 text-xs font-black uppercase tracking-[0.12em] text-slate-500"><tr><th className="px-5 py-3">User</th><th className="px-4 py-3">Completed Day</th><th className="px-4 py-3">Current Streak</th><th className="px-5 py-3">Completed At</th></tr></thead>
+                <tbody className="divide-y divide-slate-200">{data?.daysCompleted.map((row) => <tr key={row.id}><td className="px-5 py-4 font-black text-slate-950">{row.userLabel}</td><td className="px-4 py-4 font-black text-blue-600">{row.dayNumber ? `Day ${row.dayNumber}` : "Unknown"}</td><td className="px-4 py-4 font-semibold">{row.streak} days</td><td className="px-5 py-4 font-semibold">{formatDateTime(row.createdAt)}</td></tr>)}</tbody>
+              </>
+            ) : null}
+          </table>
+          {!rowCount ? <p className="px-5 py-12 text-center text-sm font-bold text-slate-500">No records in this timeframe.</p> : null}
+        </div>
+      ) : null}
+    </section>
   );
 }
 
@@ -3273,6 +3400,10 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
   const [selectedJourneyDay, setSelectedJourneyDay] = useState<JourneyPerformanceDay | null>(null);
   const [showAllJourneyDays, setShowAllJourneyDays] = useState(false);
   const [expandedJourneyPerformanceDay, setExpandedJourneyPerformanceDay] = useState(0);
+  const [drilldownKind, setDrilldownKind] = useState<AnalyticsDrilldownKind | null>(null);
+  const [drilldownData, setDrilldownData] = useState<AnalyticsDrilldownResponse | null>(null);
+  const [drilldownLoading, setDrilldownLoading] = useState(false);
+  const [drilldownError, setDrilldownError] = useState<string | null>(null);
 
   useEffect(() => {
     applyAppThemeToDocument(readCachedAppTheme(null));
@@ -3376,6 +3507,38 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
     }
     void loadStripeRevenue();
   }, [authChecked, isOwner, windowKey]);
+
+  useEffect(() => {
+    setDrilldownKind(null);
+    setDrilldownData(null);
+    setDrilldownError(null);
+  }, [windowKey]);
+
+  async function openDrilldown(kind: AnalyticsDrilldownKind) {
+    if (drilldownKind === kind && drilldownData) {
+      setDrilldownKind(null);
+      return;
+    }
+    setDrilldownKind(kind);
+    setDrilldownLoading(true);
+    setDrilldownError(null);
+    try {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const token = sessionData.session?.access_token;
+      if (!token) throw new Error("Owner session expired. Please sign in again.");
+      const response = await fetch(`/api/admin/analytics-drilldown?window=${windowKey}`, {
+        cache: "no-store",
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      const json = await response.json() as AnalyticsDrilldownResponse;
+      if (!response.ok) throw new Error(json.error || "Could not load analytics details.");
+      setDrilldownData(json);
+    } catch (loadError) {
+      setDrilldownError(loadError instanceof Error ? loadError.message : "Could not load analytics details.");
+    } finally {
+      setDrilldownLoading(false);
+    }
+  }
 
   const journeys = data?.visitorJourneys;
   const rows = journeys?.rows || [];
@@ -3569,14 +3732,14 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
                     accent="green"
                     comparison={windowKey === "lifetime" ? null : signupComparison}
                     comparisonLabel={windowKey === "lifetime" ? "" : comparisonLabel}
+                    onClick={() => void openDrilldown("signups")}
+                    active={drilldownKind === "signups"}
                   />
                   <SimpleAnalyticsKpiCard
                     title="Revenue"
                     value={stripeRevenueLoading ? "..." : revenueLabel}
                     helper="Stripe cash collected in this timeframe"
                     accent="blue"
-                    comparison={windowKey === "lifetime" ? null : revenueComparison}
-                    comparisonLabel={windowKey === "lifetime" ? "" : comparisonLabel}
                   />
                   <SimpleAnalyticsKpiCard
                     title="Upgrades"
@@ -3597,18 +3760,24 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
                     value={loading ? "..." : formatNumber(activitySummary.activeUsers)}
                     helper="People with at least one action in this timeframe"
                     accent="green"
+                    onClick={() => void openDrilldown("active_users")}
+                    active={drilldownKind === "active_users"}
                   />
                   <SimpleAnalyticsKpiCard
                     title="Total Actions"
                     value={loading ? "..." : formatNumber(activitySummary.totalActions)}
                     helper="All tracked actions in this timeframe"
                     accent="blue"
+                    onClick={() => void openDrilldown("actions")}
+                    active={drilldownKind === "actions"}
                   />
                   <SimpleAnalyticsKpiCard
                     title="Days Completed"
                     value={loading ? "..." : formatNumber(activitySummary.daysCompleted)}
                     helper="Bible in One Year day completions in this timeframe"
                     accent="violet"
+                    onClick={() => void openDrilldown("days_completed")}
+                    active={drilldownKind === "days_completed"}
                   />
                   <SimpleAnalyticsKpiCard
                     title="Landing Conversion"
@@ -3631,10 +3800,20 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
                     value={getSimpleMetricTotal(simpleMetric, data, stripeRevenue)}
                     points={chartSeries}
                     loading={loading || stripeRevenueLoading}
-                    comparison={windowKey === "lifetime" ? null : simpleMetric === "revenue" ? revenueComparison : simpleMetric === "signups" ? signupComparison : simpleMetric === "upgrades" ? upgradesComparison : completionPopupComparison}
+                    comparison={windowKey === "lifetime" || simpleMetric === "revenue" ? null : simpleMetric === "signups" ? signupComparison : simpleMetric === "upgrades" ? upgradesComparison : completionPopupComparison}
                   />
                 )
               )}
+
+              {simpleMetric === "overview" && drilldownKind ? (
+                <AnalyticsDrilldownPanel
+                  kind={drilldownKind}
+                  data={drilldownData}
+                  loading={drilldownLoading}
+                  error={drilldownError}
+                  onClose={() => setDrilldownKind(null)}
+                />
+              ) : null}
 
               <Link
                 href="/admin/analytics/advanced"

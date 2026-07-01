@@ -76,6 +76,27 @@ export async function consumeCredit(
     return { ok: false, reason: "missing_profile" };
   }
 
+  // Starting a Bible in One Year day should cost at most one credit. A reload,
+  // revisit, or double tap must not charge the same day again.
+  if (actionType === "bible_in_one_year_day_viewed" && actionLabel) {
+    const { data: existingAction, error: existingActionError } = await supabaseAdmin
+      .from("master_actions")
+      .select("id")
+      .eq("user_id", userId)
+      .eq("action_type", actionType)
+      .eq("action_label", actionLabel)
+      .limit(1);
+
+    if (existingActionError) {
+      console.error("[CONSUME_CREDIT] Error checking an existing Bible year day:", existingActionError);
+      return { ok: false, reason: "error" };
+    }
+
+    if (existingAction && existingAction.length > 0) {
+      return { ok: true, isPaid: profileStats.is_paid === true };
+    }
+  }
+
   if (profileStats.is_paid) {
     const insertData: {
       user_id: string;

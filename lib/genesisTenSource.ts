@@ -164,6 +164,8 @@ export const GENESIS_TEN_RAW_NOTES = [
   "",
   "# **🌍 Genesis 10:2–5**",
   "",
+  "**Japheth’s Descendants**",
+  "",
   "**🌍 The Sons Of Japheth**",
   "",
   "Japheth had seven sons:",

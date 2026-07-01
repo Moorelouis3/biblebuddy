@@ -8783,7 +8783,7 @@ export default function DashboardJourneyExperience({
         list: ["👨‍👩‍👦 Noah’s sons become fathers", "📖 the story shifts from Noah to his sons", "🌍 the earth begins filling again", "➡️ the nations start to spread"],
       },
       "Genesis 10:2-5": {
-        heading: "🌍 The Sons Of Japheth",
+        heading: "🌍 Japheth's Descendants",
         teachingTitle: "🗺️ Coastlands And Nations",
         list: ["🌍 Japheth’s line spreads", "🗺️ lands and coastlands are named", "🗣️ languages begin to separate", "➡️ families become nations"],
       },
@@ -8844,18 +8844,18 @@ export default function DashboardJourneyExperience({
         teachingTitle: "🛡️ God Protects The Promise",
         list: ["✋ the LORD intervenes", "⚠️ Pharaoh confronts Abram", "👩 Sarai is returned", "➡️ Abram leaves Egypt"],
       },
-      "Genesis 13:1-7": {
-        heading: "Ã°Å¸â€Â¥ Abram Returns to the Altar",
+      "Genesis 13:1-4": {
+        heading: "🏕️ Abram Returns Home",
         teachingTitle: "Ã°Å¸â€Â Back to Worship",
         list: ["Ã°Å¸â€¡ÂªÃ°Å¸â€¡Â¬ Abram leaves Egypt", "Ã°Å¸â€Â¥ he returns to the altar", "Ã°Å¸Ââ€˜ flocks increase", "Ã¢Å¡Â Ã¯Â¸Â strife begins", "Ã°Å¸Å’Â the land feels crowded"],
       },
-      "Genesis 13:8-13": {
-        heading: "Ã°Å¸â€˜â‚¬ Lot Chooses by Sight",
+      "Genesis 13:5-13": {
+        heading: "🤝 Abram And Lot Separate",
         teachingTitle: "Ã°Å¸Â¤Â Faith Does Not Have to Grab",
         list: ["Ã°Å¸Â¤Â Abram chooses peace", "Ã°Å¸â€˜â‚¬ Lot looks outward", "Ã°Å¸Å’Â¿ the plain looks good", "Ã°Å¸Ââ„¢Ã¯Â¸Â Lot moves toward Sodom", "Ã¢Å¡Â Ã¯Â¸Â beauty can hide danger"],
       },
       "Genesis 13:14-18": {
-        heading: "Ã°Å¸Å’â€ž God Repeats the Promise",
+        heading: "🌍 God Renews His Promise To Abram",
         teachingTitle: "Ã°Å¸Å’Â± Abram Receives What God Gives",
         list: ["Ã°Å¸Å’â€ž Abram lifts his eyes", "Ã°Å¸Å’Â land is promised", "Ã°Å¸Å’Â± descendants are promised", "Ã°Å¸Å¡Â¶ Abram walks by faith", "Ã°Å¸â€Â¥ another altar is built"],
       },
@@ -10785,11 +10785,46 @@ Before we understand redemption, we need to understand what God made humanity fo
     }
     if (day.dayNumber === 3 && !isOwnerDashboard && !isPaidUser && await openDayThreeProPrompt(day, nextDay)) return;
     if (day.dayNumber === 7 && !isOwnerDashboard && !isPaidUser && await openDaySevenProPrompt(day, nextDay)) return;
-    void logBibleYearNextDayClicked(day, nextDay);
     setContinuingBibleYearDay(day.dayNumber);
     try {
+      if (!isPaidUser && !isOwnerDashboard) {
+        const actionLabel = `Bible in One Year Day ${nextDay.dayNumber} Started With Credit`;
+        const creditResult = await consumeCreditAction(ACTION_TYPE.bible_in_one_year_day_viewed, {
+          userId,
+          actionLabel,
+        });
+        if (!creditResult.ok) {
+          bibleYearCompletionUpgradeDayRef.current = day.dayNumber;
+          setBibleYearQuickUpgradeContext("completion");
+          setBibleYearInlineCompletionUpgradeDay(day.dayNumber);
+          setBibleYearQuickUpgradeError(
+            creditResult.reason === "no_credits"
+              ? "You have used all 5 free credits today. Upgrade for unlimited Bible in One Year days."
+              : "We could not start the next day. Please try again.",
+          );
+          if (bibleYearInlineCompletionUpgradeDay !== day.dayNumber) {
+            void logBibleYearCompletionUpgradeAction(
+              ACTION_TYPE.upgrade_popup_viewed,
+              `Bible in One Year Day ${day.dayNumber} credit limit upgrade popup viewed`,
+              day.dayNumber,
+            );
+          }
+          return;
+        }
+
+        // The credit action already records this day view. Prevent the regular
+        // dashboard view logger from creating a duplicate action immediately.
+        lastLoggedBibleYearViewedDayRef.current = nextDay.dayNumber;
+      }
+
+      void logBibleYearNextDayClicked(day, nextDay);
       setBibleYearCompletionModalDay(null);
       bibleYearJustCompletedDayRef.current = null;
+      if (bibleYearInlineCompletionUpgradeDay === day.dayNumber) {
+        setBibleYearInlineCompletionUpgradeDay(null);
+        bibleYearCompletionUpgradeDayRef.current = null;
+        resolveBibleYearCompletionUpgradeGate();
+      }
       onDevotionalChanged();
       openBibleYearDayOnDashboard(nextDay);
     } catch (error) {
@@ -11949,6 +11984,18 @@ Before we understand redemption, we need to understand what God made humanity fo
   ) {
     const featureRows = [
       {
+        title: "Unlimited Bible in One Year Days",
+        body: "Finish as many days as you want with no daily limit.",
+        accent: "from-[#e8efff] to-[#f5f8ff]",
+        icon: (
+          <svg viewBox="0 0 24 24" className="h-8 w-8" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M7 3v3M17 3v3M4 9h16" />
+            <rect x="3" y="5" width="18" height="16" rx="3" />
+            <path d="M8 15c1.2-2 2.5-2 4 0s2.8 2 4 0" />
+          </svg>
+        ),
+      },
+      {
         title: "All Bible Study Notes",
         body: "Access detailed study notes.",
         accent: "from-[#e7f0ff] to-[#f4f8ff]",
@@ -13040,7 +13087,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     const handlePrimaryCompleteButton = () => {
       if (readingComplete) {
         if (justCompletedThisVisit && nextBibleYearDay) {
-          openAdjacentBibleYearDay(nextBibleYearDay);
+          void handleContinueToNextBibleYearDay(day, nextBibleYearDay);
         }
         return;
       }
@@ -13342,14 +13389,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 cta: "continue_free",
               },
             );
-            setBibleYearInlineCompletionUpgradeDay(null);
-            bibleYearCompletionUpgradeDayRef.current = null;
-            resolveBibleYearCompletionUpgradeGate();
-            window.setTimeout(() => {
-              openBibleYearDayOnDashboard(nextBibleYearDay, {
-                reviewCompleted: isBibleYearDayComplete(nextBibleYearDay),
-              });
-            }, 0);
+            await handleContinueToNextBibleYearDay(day, nextBibleYearDay);
           } : null,
         }) : (
           <article className={`order-4 overflow-hidden rounded-[20px] border p-5 text-[var(--bb-text-primary,#111827)] shadow-[0_18px_48px_rgba(38,63,99,0.12),inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-xl sm:p-6 ${
@@ -14744,7 +14784,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         ],
       },
       "Genesis 10:2-5": {
-        title: "The Sons Of Japheth",
+        title: "Japheth's Descendants",
         icon: "🌍",
         paragraphs: [
           "Japheth’s descendants spread into coastlands, territories, and early nations.",

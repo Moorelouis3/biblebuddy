@@ -1,6 +1,7 @@
 import type { BibleYearDeepStudySection } from "./bibleYearDayOneDeepStudy";
 import { GENESIS_ELEVEN_PERSONAL_SECTIONS } from "./genesisElevenSource";
 import { GENESIS_TWELVE_PERSONAL_SECTIONS } from "./genesisTwelveSource";
+import { GENESIS_THIRTEEN_PERSONAL_SECTIONS } from "./genesisThirteenSource";
 
 export const BIBLE_YEAR_DAY_FIVE_DEEP_NOTES = `Genesis 11-13 moves from the pride of Babel into the call of Abram.
 
@@ -518,10 +519,28 @@ const GENESIS_TWELVE_DEEP_STUDY_SECTIONS: BibleYearDeepStudySection[] = GENESIS_
   }),
 );
 
+const GENESIS_THIRTEEN_DEEP_STUDY_SECTIONS: BibleYearDeepStudySection[] = GENESIS_THIRTEEN_PERSONAL_SECTIONS.map(
+  (section) => ({
+    reference: section.reference,
+    title: section.title,
+    icon: section.icon,
+    summary: section.phrases[0]?.[1].split("\n\n")[0] || "",
+    markdown: [
+      `## ${section.reference}`,
+      `### ${section.title}`,
+      ...section.phrases.map(([title, body]) => `### ${title}\n\n${body}`),
+    ].join("\n\n"),
+  }),
+);
+
 export const BIBLE_YEAR_DAY_FIVE_DEEP_STUDY_SECTIONS: BibleYearDeepStudySection[] = [
   ...GENESIS_ELEVEN_DEEP_STUDY_SECTIONS,
   ...GENESIS_TWELVE_DEEP_STUDY_SECTIONS,
+  ...GENESIS_THIRTEEN_DEEP_STUDY_SECTIONS,
   ...LEGACY_BIBLE_YEAR_DAY_FIVE_DEEP_STUDY_SECTIONS.filter(
-    (section) => !section.reference.startsWith("Genesis 11:") && !section.reference.startsWith("Genesis 12:"),
+    (section) =>
+      !section.reference.startsWith("Genesis 11:") &&
+      !section.reference.startsWith("Genesis 12:") &&
+      !section.reference.startsWith("Genesis 13:"),
   ),
 ];
