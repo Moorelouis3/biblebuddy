@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
-import { markUserAsPaidAndTrackUpgrade } from "@/lib/server/upgradeTracking";
 
 function buildReferralCode(seed: string | null | undefined) {
   const letters = (seed || "BUDDY").toUpperCase().replace(/[^A-Z]/g, "").slice(0, 7) || "BUDDY";
@@ -113,34 +112,24 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "You already have an active Pro subscription." }, { status: 400 });
   }
 
-  const trialStartedAt = new Date();
-  const trialEndsAt = new Date(trialStartedAt.getTime() + 30 * 24 * 60 * 60 * 1000); // +30 days
+  const referralTrackedAt = new Date();
 
   // Create referral record
   const { error: referralError } = await supabase.from("ambassador_referrals").insert({
     ambassador_user_id: ambassador.user_id,
     referred_user_id: user.id,
     referral_code: ambassador.referral_code || "INVITE_LINK",
-    trial_started_at: trialStartedAt.toISOString(),
-    trial_ends_at: trialEndsAt.toISOString(),
+    trial_started_at: referralTrackedAt.toISOString(),
+    // Legacy non-null column retained for compatibility. Invite links no longer grant a trial.
+    trial_ends_at: referralTrackedAt.toISOString(),
   });
 
   if (referralError) {
     return NextResponse.json({ error: referralError.message || "Could not apply Bible Buddy invite." }, { status: 400 });
   }
 
-  // Grant 30-day Pro trial and log the upgrade event if this is a new paid conversion.
-  await markUserAsPaidAndTrackUpgrade({
-    supabase,
-    userId: user.id,
-    source: "buddy_rewards_trial",
-    membershipStatus: "pro",
-    proExpiresAt: trialEndsAt.toISOString(),
-    actionLabel: "Bible Buddy invite 30-day Pro trial started",
-  });
-
   return NextResponse.json({
     success: true,
-    trialEndsAt: trialEndsAt.toISOString(),
+    referralTracked: true,
   });
 }
