@@ -695,8 +695,8 @@ export const GENESIS_DAY_SIX_RESCUE_OF_LOT_LESSON: BibleYearDailyLesson = {
   ],
   sections: [
     {
-      heading: "War Reaches Lot",
-      verseBlock: { reference: "Genesis 14:1-12", chapter: 14, startVerse: 1, endVerse: 12 },
+      heading: "The War Of The Kings",
+      verseBlock: { reference: "Genesis 14:1-11", chapter: 14, startVerse: 1, endVerse: 11 },
       teaching: [
         "Genesis 14 opens with a world of kings, alliances, rebellion, and war.",
         "The fighting eventually reaches Sodom, where Lot has settled.",
@@ -706,7 +706,7 @@ export const GENESIS_DAY_SIX_RESCUE_OF_LOT_LESSON: BibleYearDailyLesson = {
     },
     {
       heading: "Abram Rescues Lot",
-      verseBlock: { reference: "Genesis 14:13-16", chapter: 14, startVerse: 13, endVerse: 16 },
+      verseBlock: { reference: "Genesis 14:12-17", chapter: 14, startVerse: 12, endVerse: 17 },
       teaching: [
         "When Abram hears that Lot has been captured, he does not pretend it is not his problem.",
         "He gathers trained servants from his own household and pursues the enemy.",
@@ -716,7 +716,7 @@ export const GENESIS_DAY_SIX_RESCUE_OF_LOT_LESSON: BibleYearDailyLesson = {
     },
     {
       heading: "Melchizedek Blesses Abram",
-      verseBlock: { reference: "Genesis 14:17-20", chapter: 14, startVerse: 17, endVerse: 20 },
+      verseBlock: { reference: "Genesis 14:18-24", chapter: 14, startVerse: 18, endVerse: 24 },
       teaching: [
         "After the rescue, Melchizedek appears as king of Salem and priest of the Most High God.",
         "He brings bread and wine, blesses Abram, and blesses God Most High who delivered Abram's enemies into his hand.",
@@ -725,18 +725,8 @@ export const GENESIS_DAY_SIX_RESCUE_OF_LOT_LESSON: BibleYearDailyLesson = {
       ],
     },
     {
-      heading: "Abram Refuses Sodom's Reward",
-      verseBlock: { reference: "Genesis 14:21-24", chapter: 14, startVerse: 21, endVerse: 24 },
-      teaching: [
-        "The king of Sodom offers Abram goods after the battle.",
-        "Abram refuses because he does not want Sodom to say, I have made Abram rich.",
-        "This is a major faith moment. Abram will receive blessing from God, not from a corrupt city.",
-        "Victory can be followed by temptation. Abram shows discernment after courage.",
-      ],
-    },
-    {
-      heading: "God Speaks to Abram's Fear",
-      verseBlock: { reference: "Genesis 15:1-6", chapter: 15, startVerse: 1, endVerse: 6 },
+      heading: "Abram Has A Vision",
+      verseBlock: { reference: "Genesis 15:1-3", chapter: 15, startVerse: 1, endVerse: 3 },
       teaching: [
         "After these things, God's word comes to Abram in a vision.",
         "God says, Fear not, Abram: I am thy shield, and thy exceeding great reward.",
@@ -745,7 +735,16 @@ export const GENESIS_DAY_SIX_RESCUE_OF_LOT_LESSON: BibleYearDailyLesson = {
       ],
     },
     {
-      heading: "Abram Asks for Assurance",
+      heading: "Abram Is Promised An Heir",
+      verseBlock: { reference: "Genesis 15:4-6", chapter: 15, startVerse: 4, endVerse: 6 },
+      teaching: [
+        "God promises that Abram's heir will come from his own body.",
+        "God points Abram toward the stars and promises descendants beyond counting.",
+        "Abram believes the LORD, and God counts his faith as righteousness.",
+      ],
+    },
+    {
+      heading: "The Covenant Renewed",
       verseBlock: { reference: "Genesis 15:7-11", chapter: 15, startVerse: 7, endVerse: 11 },
       teaching: [
         "God reminds Abram that He brought him out of Ur to give him the land.",
@@ -755,23 +754,13 @@ export const GENESIS_DAY_SIX_RESCUE_OF_LOT_LESSON: BibleYearDailyLesson = {
       ],
     },
     {
-      heading: "God Tells Abram the Long Road",
-      verseBlock: { reference: "Genesis 15:12-16", chapter: 15, startVerse: 12, endVerse: 16 },
+      heading: "Abram's Deep Sleep And Vision",
+      verseBlock: { reference: "Genesis 15:12-21", chapter: 15, startVerse: 12, endVerse: 21 },
       teaching: [
         "As the sun goes down, a deep sleep falls on Abram, and great darkness comes over him.",
         "God tells Abram that his descendants will be strangers in a land that is not theirs and will be afflicted for four hundred years.",
         "The promise is real, but the road will not be easy or instant.",
         "God also promises judgment on the oppressing nation, future deliverance, and Abram's own peace. The covenant includes both suffering and rescue.",
-      ],
-    },
-    {
-      heading: "God Makes Covenant",
-      verseBlock: { reference: "Genesis 15:17-21", chapter: 15, startVerse: 17, endVerse: 21 },
-      teaching: [
-        "When darkness falls, a smoking furnace and a burning lamp pass between the pieces.",
-        "This is the covenant moment. God binds Himself to His promise.",
-        "Abram does not walk between the pieces. God does.",
-        "The land promise is named again, and the future is placed in God's faithful hands. The promise rests on God, not on Abram's ability to control the timeline.",
       ],
     },
   ],
@@ -796,8 +785,8 @@ export const GENESIS_DAY_SEVEN_COVENANT_PROMISE_LESSON: BibleYearDailyLesson = {
   ],
   sections: [
     {
-      heading: "Sarai Tries to Force the Promise",
-      verseBlock: { reference: "Genesis 16:1-3", chapter: 16, startVerse: 1, endVerse: 3 },
+      heading: "Abram Marries Hagar",
+      verseBlock: { reference: "Genesis 16:1-6", chapter: 16, startVerse: 1, endVerse: 6 },
       teaching: [
         "Sarai has no child, and the waiting has become heavy.",
         "Instead of waiting on God's promise, she tries to solve the problem through Hagar.",
@@ -806,18 +795,8 @@ export const GENESIS_DAY_SEVEN_COVENANT_PROMISE_LESSON: BibleYearDailyLesson = {
       ],
     },
     {
-      heading: "Hagar Is Mistreated",
-      verseBlock: { reference: "Genesis 16:4-6", chapter: 16, startVerse: 4, endVerse: 6 },
-      teaching: [
-        "Hagar conceives, and the pressure inside the household grows.",
-        "Sarai feels despised, Abram avoids responsibility, and Hagar is treated harshly.",
-        "This is what human control often creates: blame, pain, and people being used.",
-        "Genesis is not hiding the damage. It is showing why forcing the promise cannot produce peace.",
-      ],
-    },
-    {
-      heading: "God Finds Hagar",
-      verseBlock: { reference: "Genesis 16:7-12", chapter: 16, startVerse: 7, endVerse: 12 },
+      heading: "Hagar Meets The Angel Of The LORD",
+      verseBlock: { reference: "Genesis 16:7-14", chapter: 16, startVerse: 7, endVerse: 14 },
       teaching: [
         "Hagar runs into the wilderness, but she is not invisible to God.",
         "The angel of the LORD finds her by a fountain of water.",
@@ -826,8 +805,8 @@ export const GENESIS_DAY_SEVEN_COVENANT_PROMISE_LESSON: BibleYearDailyLesson = {
       ],
     },
     {
-      heading: "The God Who Sees",
-      verseBlock: { reference: "Genesis 16:13-16", chapter: 16, startVerse: 13, endVerse: 16 },
+      heading: "The Birth Of Ishmael",
+      verseBlock: { reference: "Genesis 16:15-16", chapter: 16, startVerse: 15, endVerse: 16 },
       teaching: [
         "Hagar names the LORD as the God who sees her.",
         "That is one of the most tender moments in Abraham's story.",

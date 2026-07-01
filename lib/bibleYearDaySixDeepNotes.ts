@@ -1,4 +1,6 @@
 import type { BibleYearDeepStudySection } from "./bibleYearDayOneDeepStudy";
+import { GENESIS_FOURTEEN_PERSONAL_SECTIONS } from "./genesisFourteenSource";
+import { GENESIS_FIFTEEN_PERSONAL_SECTIONS } from "./genesisFifteenSource";
 
 export const BIBLE_YEAR_DAY_SIX_DEEP_NOTES = `Genesis 14-15 shows Abram after the first steps of obedience.
 
@@ -26,7 +28,7 @@ Then God confirms the promise with covenant. Abram does not walk between the pie
 
 Day 6 teaches that God's promise is not fragile. It is not carried by Abram's control. It is carried by the Lord Himself.`;
 
-export const BIBLE_YEAR_DAY_SIX_DEEP_STUDY_SECTIONS: BibleYearDeepStudySection[] = [
+const LEGACY_BIBLE_YEAR_DAY_SIX_DEEP_STUDY_SECTIONS: BibleYearDeepStudySection[] = [
   {
     reference: "Genesis 14:1-12",
     title: "War Reaches Lot",
@@ -479,4 +481,40 @@ The deepest comfort in Genesis 15 is not that Abram now knows how to control the
 
 The comfort is that God has taken responsibility for the promise.`,
   },
+];
+
+const GENESIS_FOURTEEN_DEEP_STUDY_SECTIONS: BibleYearDeepStudySection[] = GENESIS_FOURTEEN_PERSONAL_SECTIONS.map(
+  (section) => ({
+    reference: section.reference,
+    title: section.title,
+    icon: section.icon,
+    summary: section.phrases[0]?.[1].split("\n\n")[0] || "",
+    markdown: [
+      `## ${section.reference}`,
+      `### ${section.title}`,
+      ...section.phrases.map(([title, body]) => `### ${title}\n\n${body}`),
+    ].join("\n\n"),
+  }),
+);
+
+const GENESIS_FIFTEEN_DEEP_STUDY_SECTIONS: BibleYearDeepStudySection[] = GENESIS_FIFTEEN_PERSONAL_SECTIONS.map(
+  (section) => ({
+    reference: section.reference,
+    title: section.title,
+    icon: section.icon,
+    summary: section.phrases[0]?.[1].split("\n\n")[0] || "",
+    markdown: [
+      `## ${section.reference}`,
+      `### ${section.title}`,
+      ...section.phrases.map(([title, body]) => `### ${title}\n\n${body}`),
+    ].join("\n\n"),
+  }),
+);
+
+export const BIBLE_YEAR_DAY_SIX_DEEP_STUDY_SECTIONS: BibleYearDeepStudySection[] = [
+  ...GENESIS_FOURTEEN_DEEP_STUDY_SECTIONS,
+  ...GENESIS_FIFTEEN_DEEP_STUDY_SECTIONS,
+  ...LEGACY_BIBLE_YEAR_DAY_SIX_DEEP_STUDY_SECTIONS.filter(
+    (section) => !section.reference.startsWith("Genesis 14:") && !section.reference.startsWith("Genesis 15:"),
+  ),
 ];

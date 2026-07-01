@@ -8861,65 +8861,55 @@ export default function DashboardJourneyExperience({
       },
     };
     const daySixDisplay: Record<string, { heading: string; teachingTitle: string; list?: string[] }> = {
-      "Genesis 14:1-12": {
-        heading: "Ã¢Å¡â€Ã¯Â¸Â War Reaches Lot",
+      "Genesis 14:1-11": {
+        heading: "⚔️ The War Of The Kings",
         teachingTitle: "Ã°Å¸Ââ„¢Ã¯Â¸Â Lot's Direction Becomes Dangerous",
         list: ["Ã°Å¸â€˜â€˜ kings go to war", "Ã°Å¸Ââ„¢Ã¯Â¸Â Sodom is pulled in", "Ã¢â€ºâ€œÃ¯Â¸Â Lot is captured", "Ã°Å¸â€œÂ¦ goods are taken", "Ã¢Å¡Â Ã¯Â¸Â choices have consequences"],
       },
-      "Genesis 14:13-16": {
-        heading: "Ã°Å¸â€ºÂ¡Ã¯Â¸Â Abram Rescues Lot",
+      "Genesis 14:12-17": {
+        heading: "⚔️ Abram Rescues Lot",
         teachingTitle: "Ã°Å¸â€™Âª Faith Moves Toward Rescue",
         list: ["Ã°Å¸â€œÂ£ Abram hears", "Ã°Å¸â€ºÂ¡Ã¯Â¸Â trained servants gather", "Ã°Å¸Å’â„¢ night pursuit begins", "Ã¢â€ºâ€œÃ¯Â¸Â captives are freed", "Ã°Å¸Â¤Â Lot is brought back"],
       },
-      "Genesis 14:17-20": {
-        heading: "Ã°Å¸ÂÅ¾ Melchizedek Blesses Abram",
+      "Genesis 14:18-24": {
+        heading: "🍞 Melchizedek Blesses Abram",
         teachingTitle: "Ã°Å¸â„¢Å’ Victory Belongs to God Most High",
         list: ["Ã°Å¸ÂÅ¾ bread and wine appear", "Ã°Å¸â€˜â€˜ Melchizedek blesses Abram", "Ã°Å¸â„¢Å’ God Most High is praised", "Ã°Å¸â€ºÂ¡Ã¯Â¸Â God delivered the victory", "Ã°Å¸â€Å¸ Abram gives a tenth"],
       },
-      "Genesis 14:21-24": {
-        heading: "Ã°Å¸Å¡Â« Abram Refuses Sodom's Reward",
-        teachingTitle: "Ã°Å¸Â§Â­ Discernment After Victory",
-        list: ["Ã°Å¸Ââ„¢Ã¯Â¸Â Sodom offers goods", "Ã¢Å“â€¹ Abram refuses", "Ã°Å¸â„¢Å’ God gets the credit", "Ã°Å¸Â§Âµ not even a thread is taken", "Ã°Å¸Â§Â­ blessing must stay clean"],
-      },
-      "Genesis 15:1-6": {
-        heading: "Ã¢Å“Â¨ God Speaks to Abram's Fear",
+      "Genesis 15:1-3": {
+        heading: "👀 Abram Has A Vision",
         teachingTitle: "Ã°Å¸Å’Å’ Faith Under the Stars",
         list: ["Ã°Å¸â€ºÂ¡Ã¯Â¸Â God is Abram's shield", "Ã°Å¸â€™Â¬ Abram is honest", "Ã°Å¸â€˜Â¶ the heir is promised", "Ã°Å¸Å’Å’ stars fill the sky", "Ã¢Å“â€¦ Abram believes"],
       },
+      "Genesis 15:4-6": {
+        heading: "⭐ Abram Is Promised An Heir",
+        teachingTitle: "🌌 Faith Under The Stars",
+        list: ["👶 God promises an heir", "⭐ Abram sees the stars", "🌱 descendants are promised", "🙏 Abram believes", "⚖️ faith is counted as righteousness"],
+      },
       "Genesis 15:7-11": {
-        heading: "Ã°Å¸â€¢Å Ã¯Â¸Â Abram Asks for Assurance",
+        heading: "🤝 The Covenant Renewed",
         teachingTitle: "Ã°Å¸Â¤Â God Meets Honest Questions",
         list: ["Ã°Å¸ÂÅ“Ã¯Â¸Â God remembers Ur", "Ã¢Ââ€œ Abram asks how", "Ã°Å¸ÂÂ covenant pieces are prepared", "Ã°Å¸â€¢Å Ã¯Â¸Â birds come down", "Ã¢ÂÂ³ Abram waits"],
       },
-      "Genesis 15:12-16": {
-        heading: "Ã°Å¸Å’â€˜ God Tells Abram the Long Road",
+      "Genesis 15:12-21": {
+        heading: "😴 Abram's Deep Sleep And Vision",
         teachingTitle: "Ã¢ÂÂ³ Promise Does Not Mean Instant",
         list: ["Ã°Å¸Å’â€˜ darkness falls", "Ã¢â€ºâ€œÃ¯Â¸Â affliction is foretold", "Ã¢Å¡â€“Ã¯Â¸Â God will judge", "Ã°Å¸Å¡Â¶ descendants will return", "Ã°Å¸â€¢Å Ã¯Â¸Â Abram will die in peace"],
       },
-      "Genesis 15:17-21": {
-        heading: "Ã°Å¸â€Â¥ God Makes Covenant",
-        teachingTitle: "Ã°Å¸â€Â¥ God Carries the Promise",
-        list: ["Ã°Å¸Å’â€˜ night comes", "Ã°Å¸â€Â¥ fire passes through", "Ã°Å¸Â¤Â covenant is made", "Ã°Å¸Å’Â land is promised", "Ã°Å¸â„¢Å’ God binds Himself to His word"],
-      },
     };
     const daySevenDisplay: Record<string, { heading: string; teachingTitle: string; list?: string[] }> = {
-      "Genesis 16:1-3": {
-        heading: "Ã¢Å¡Â Ã¯Â¸Â Sarai Tries to Force the Promise",
+      "Genesis 16:1-6": {
+        heading: "👶 Abram Marries Hagar",
         teachingTitle: "Ã¢ÂÂ³ Waiting Turns Into Control",
         list: ["Ã°Å¸â€™â€ Sarai has no child", "Ã°Å¸â€˜Â¤ Hagar is brought in", "Ã¢ÂÂ³ the promise feels delayed", "Ã¢Å¡Â Ã¯Â¸Â control replaces trust", "Ã°Å¸ÂÂ  the household is wounded"],
       },
-      "Genesis 16:4-6": {
-        heading: "Ã°Å¸â€™â€ Hagar Is Mistreated",
-        teachingTitle: "Ã°Å¸â€¢Â¯Ã¯Â¸Â Shortcuts Create Pain",
-        list: ["Ã°Å¸â€˜Â¶ Hagar conceives", "Ã°Å¸â€™â€ contempt grows", "Ã°Å¸ËœÂ  Sarai blames Abram", "Ã°Å¸Å¡Âª Hagar flees", "Ã¢Å¡Â Ã¯Â¸Â everyone is wounded"],
-      },
-      "Genesis 16:7-12": {
-        heading: "Ã°Å¸â€¢Å Ã¯Â¸Â God Finds Hagar",
+      "Genesis 16:7-14": {
+        heading: "👼 Hagar Meets The Angel Of The LORD",
         teachingTitle: "Ã°Å¸â€˜â‚¬ God Sees the One Who Runs",
         list: ["Ã°Å¸ÂÅ“Ã¯Â¸Â Hagar is in the wilderness", "Ã°Å¸â€¢Å Ã¯Â¸Â the angel finds her", "Ã°Å¸â€˜â€š God hears affliction", "Ã°Å¸â€˜Â¶ Ishmael is named", "Ã°Å¸Å’Â± her future is spoken"],
       },
-      "Genesis 16:13-16": {
-        heading: "Ã°Å¸â€˜â‚¬ The God Who Sees",
+      "Genesis 16:15-16": {
+        heading: "👶 The Birth Of Ishmael",
         teachingTitle: "Ã°Å¸â€ºÅ¸ Seen in the Wilderness",
         list: ["Ã°Å¸â€˜â‚¬ Hagar names God", "Ã°Å¸â€™Â§ the well is remembered", "Ã°Å¸â€˜Â¶ Ishmael is born", "Ã¢ÂÂ³ Abram is eighty-six", "Ã°Å¸â€¢Å Ã¯Â¸Â God sees the wounded"],
       },
