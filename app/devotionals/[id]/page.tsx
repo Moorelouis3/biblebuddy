@@ -901,6 +901,17 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
         return next;
       });
 
+      if (isChapterJourneyStudyTitle(devotional?.title)) {
+        setChapterTaskProgress((prev) => {
+          const next = new Map(prev);
+          next.set(dayNumber, {
+            completed: WISDOM_TASK_TOTAL,
+            total: WISDOM_TASK_TOTAL,
+          });
+          return next;
+        });
+      }
+
       // Close day modal
       setSelectedDay(null);
 
