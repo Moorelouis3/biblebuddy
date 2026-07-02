@@ -12065,7 +12065,18 @@ Before we understand redemption, we need to understand what God made humanity fo
             disabled={Boolean(bibleYearQuickUpgradeLoading)}
             className="flex w-full animate-pulse flex-col items-center justify-center rounded-[20px] border border-[#f4d389] bg-[linear-gradient(135deg,#2f7fe8,#1757db)] px-4 py-4 text-center text-white shadow-[0_16px_32px_rgba(47,127,232,0.24)] transition hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-60"
           >
-            <span className="text-[32px] font-black leading-none tracking-[-0.04em]">ðŸ‘‘ $49.99</span>
+            <span className="flex items-center justify-center gap-2 text-[32px] font-black leading-none tracking-[-0.04em]">
+              <svg
+                viewBox="0 0 24 24"
+                className="h-8 w-8 shrink-0 text-[#ffd86b]"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path d="M3.2 7.15a1 1 0 0 1 1.55-.98l3.6 2.7 2.74-4.12a1.1 1.1 0 0 1 1.82 0l2.74 4.12 3.6-2.7a1 1 0 0 1 1.55.98l-1.52 9.12H4.72L3.2 7.15Z" />
+                <path d="M5 18.25h14a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+              </svg>
+              <span>$49.99</span>
+            </span>
             <span className="mt-1.5 text-[16px] font-bold">One Time Fee</span>
           </button>
           <div className="mt-4">
