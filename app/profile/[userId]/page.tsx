@@ -652,52 +652,52 @@ export default function PublicProfilePage() {
           const match = label.match(/^(.+?)\s+(\d+)$/);
           if (match) url = `/Bible/${encodeURIComponent(match[1])}/${match[2]}`;
         }
-        actions.push({ date: d, text: label ? `${d} â€” Read ${label}` : `${d} â€” Read a chapter`, sortKey: actionDate.getTime(), actionType: "chapter_completed", url });
+        actions.push({ date: d, text: label ? `${d} — Read ${label}` : `${d} — Read a chapter`, sortKey: actionDate.getTime(), actionType: "chapter_completed", url });
       } else if (action.action_type === "book_completed") {
-        actions.push({ date: d, text: label ? `${d} â€” Finished ${label}` : `${d} â€” Finished a book`, sortKey: actionDate.getTime(), actionType: "book_completed" });
+        actions.push({ date: d, text: label ? `${d} — Finished ${label}` : `${d} — Finished a book`, sortKey: actionDate.getTime(), actionType: "book_completed" });
       } else if (action.action_type === "person_learned") {
-        actions.push({ date: d, text: label ? `${d} â€” Learned about ${label}` : `${d} â€” Learned about a Bible person`, sortKey: actionDate.getTime(), actionType: "person_learned" });
+        actions.push({ date: d, text: label ? `${d} — Learned about ${label}` : `${d} — Learned about a Bible person`, sortKey: actionDate.getTime(), actionType: "person_learned" });
       } else if (action.action_type === "place_discovered") {
-        actions.push({ date: d, text: label ? `${d} â€” Discovered ${label}` : `${d} â€” Discovered a Bible place`, sortKey: actionDate.getTime(), actionType: "place_discovered" });
+        actions.push({ date: d, text: label ? `${d} — Discovered ${label}` : `${d} — Discovered a Bible place`, sortKey: actionDate.getTime(), actionType: "place_discovered" });
       } else if (action.action_type === "keyword_mastered") {
-        actions.push({ date: d, text: label ? `${d} â€” Mastered the keyword "${label}"` : `${d} â€” Mastered a Bible keyword`, sortKey: actionDate.getTime(), actionType: "keyword_mastered" });
+        actions.push({ date: d, text: label ? `${d} — Mastered the keyword "${label}"` : `${d} — Mastered a Bible keyword`, sortKey: actionDate.getTime(), actionType: "keyword_mastered" });
       } else if (action.action_type === "note_created") {
-        actions.push({ date: d, text: `${d} â€” Created a note`, sortKey: actionDate.getTime(), actionType: "note_created" });
+        actions.push({ date: d, text: `${d} — Created a note`, sortKey: actionDate.getTime(), actionType: "note_created" });
       } else if (action.action_type === "verse_highlighted") {
-        actions.push({ date: d, text: label ? `${d} â€” Highlighted ${label}` : `${d} â€” Highlighted a verse`, sortKey: actionDate.getTime(), actionType: "verse_highlighted" });
+        actions.push({ date: d, text: label ? `${d} — Highlighted ${label}` : `${d} — Highlighted a verse`, sortKey: actionDate.getTime(), actionType: "verse_highlighted" });
       } else if (action.action_type === "devotional_day_completed") {
-        actions.push({ date: d, text: label ? `${d} â€” Completed ${label}` : `${d} â€” Completed a devotional day`, sortKey: actionDate.getTime(), actionType: "devotional_day_completed" });
+        actions.push({ date: d, text: label ? `${d} — Completed ${label}` : `${d} — Completed a devotional day`, sortKey: actionDate.getTime(), actionType: "devotional_day_completed" });
       } else if (action.action_type === "trivia_question_answered") {
-        actions.push({ date: d, text: label ? `${d} â€” Answered a trivia question (${label})` : `${d} â€” Answered a trivia question`, sortKey: actionDate.getTime(), actionType: "trivia_question_answered" });
+        actions.push({ date: d, text: label ? `${d} — Answered a trivia question (${label})` : `${d} — Answered a trivia question`, sortKey: actionDate.getTime(), actionType: "trivia_question_answered" });
       } else if (action.action_type === "feed_post_thought") {
-        actions.push({ date: d, text: label ? `${d} â€” Posted a thought: "${label}"` : `${d} â€” Posted a thought to the feed`, sortKey: actionDate.getTime(), actionType: "feed_post_thought", url: "/dashboard" });
+        actions.push({ date: d, text: label ? `${d} — Posted a thought: "${label}"` : `${d} — Posted a thought to the feed`, sortKey: actionDate.getTime(), actionType: "feed_post_thought", url: "/dashboard" });
       } else if (action.action_type === "feed_post_prayer") {
-        actions.push({ date: d, text: `${d} â€” Posted a prayer to the feed`, sortKey: actionDate.getTime(), actionType: "feed_post_prayer", url: "/dashboard" });
+        actions.push({ date: d, text: `${d} — Posted a prayer to the feed`, sortKey: actionDate.getTime(), actionType: "feed_post_prayer", url: "/dashboard" });
       } else if (action.action_type === "feed_post_prayer_request") {
-        actions.push({ date: d, text: `${d} â€” Posted a prayer request to the feed`, sortKey: actionDate.getTime(), actionType: "feed_post_prayer_request", url: "/dashboard" });
+        actions.push({ date: d, text: `${d} — Posted a prayer request to the feed`, sortKey: actionDate.getTime(), actionType: "feed_post_prayer_request", url: "/dashboard" });
       } else if (action.action_type === "feed_post_photo") {
-        actions.push({ date: d, text: `${d} â€” Posted a photo to the feed`, sortKey: actionDate.getTime(), actionType: "feed_post_photo", url: "/dashboard" });
+        actions.push({ date: d, text: `${d} — Posted a photo to the feed`, sortKey: actionDate.getTime(), actionType: "feed_post_photo", url: "/dashboard" });
       } else if (action.action_type === "feed_post_video") {
-        actions.push({ date: d, text: `${d} â€” Posted a video to the feed`, sortKey: actionDate.getTime(), actionType: "feed_post_video", url: "/dashboard" });
+        actions.push({ date: d, text: `${d} — Posted a video to the feed`, sortKey: actionDate.getTime(), actionType: "feed_post_video", url: "/dashboard" });
       } else if (action.action_type === "feed_post_liked") {
-        // action_label may contain post_id â€” try to build a link with a hash anchor
+        // action_label may contain post_id — try to build a link with a hash anchor
         const postUrl = label ? `/dashboard#post-${label}` : "/dashboard";
-        actions.push({ date: d, text: `${d} â€” Liked a post`, sortKey: actionDate.getTime(), actionType: "feed_post_liked", url: postUrl });
+        actions.push({ date: d, text: `${d} — Liked a post`, sortKey: actionDate.getTime(), actionType: "feed_post_liked", url: postUrl });
       } else if (action.action_type === "feed_post_commented") {
         const postUrl = label ? `/dashboard#post-${label}` : "/dashboard";
-        actions.push({ date: d, text: `${d} â€” Commented on a post`, sortKey: actionDate.getTime(), actionType: "feed_post_commented", url: postUrl });
+        actions.push({ date: d, text: `${d} — Commented on a post`, sortKey: actionDate.getTime(), actionType: "feed_post_commented", url: postUrl });
       } else if (action.action_type === "feed_post_replied") {
         const postUrl = label ? `/dashboard#post-${label}` : "/dashboard";
-        actions.push({ date: d, text: `${d} â€” Replied to a comment`, sortKey: actionDate.getTime(), actionType: "feed_post_replied", url: postUrl });
+        actions.push({ date: d, text: `${d} — Replied to a comment`, sortKey: actionDate.getTime(), actionType: "feed_post_replied", url: postUrl });
       } else if (action.action_type === "group_message_sent") {
-        actions.push({ date: d, text: label ? `${d} â€” Sent a message in ${label}` : `${d} â€” Sent a group message`, sortKey: actionDate.getTime(), actionType: "group_message_sent", url: "/dashboard" });
+        actions.push({ date: d, text: label ? `${d} — Sent a message in ${label}` : `${d} — Sent a group message`, sortKey: actionDate.getTime(), actionType: "group_message_sent", url: "/dashboard" });
       } else if (action.action_type === "buddy_added") {
-        actions.push({ date: d, text: label ? `${d} â€” Added ${label} as a Bible Buddy` : `${d} â€” Added a Bible Buddy`, sortKey: actionDate.getTime(), actionType: "buddy_added" });
+        actions.push({ date: d, text: label ? `${d} — Added ${label} as a Bible Buddy` : `${d} — Added a Bible Buddy`, sortKey: actionDate.getTime(), actionType: "buddy_added" });
       } else if (action.action_type === "series_week_started") {
-        actions.push({ date: d, text: label ? `${d} â€” Started ${label}` : `${d} â€” Started a Bible series week`, sortKey: actionDate.getTime(), actionType: "series_week_started", url: "/dashboard" });
+        actions.push({ date: d, text: label ? `${d} — Started ${label}` : `${d} — Started a Bible series week`, sortKey: actionDate.getTime(), actionType: "series_week_started", url: "/dashboard" });
       } else if (action.action_type === "user_login" && !loginDates.has(dateKey)) {
         loginDates.add(dateKey);
-        actions.push({ date: d, text: `${d} â€” Logged in`, sortKey: actionDate.getTime(), actionType: "user_login" });
+        actions.push({ date: d, text: `${d} — Logged in`, sortKey: actionDate.getTime(), actionType: "user_login" });
       }
     }
     actions.sort((a, b) => b.sortKey - a.sortKey);
@@ -1408,7 +1408,7 @@ export default function PublicProfilePage() {
                 };
                 const icon = POST_TYPE_ICONS[post.post_type] || "ðŸ’¬";
                 const preview = post.verse_ref
-                  ? `${post.verse_ref} â€” ${post.content.slice(0, 60)}`
+                  ? `${post.verse_ref} — ${post.content.slice(0, 60)}`
                   : post.content.slice(0, 80);
                 const diffMs = Date.now() - new Date(post.created_at).getTime();
                 const diffDays = Math.floor(diffMs / 86400000);
@@ -1418,7 +1418,7 @@ export default function PublicProfilePage() {
                     <span className="text-base flex-shrink-0 mt-0.5">{icon}</span>
                     <div className="flex-1 min-w-0">
                       <p className="text-sm text-gray-800 leading-snug truncate">
-                        {preview}{post.content.length > 80 ? "â€¦" : ""}
+                        {preview}{post.content.length > 80 ? "…" : ""}
                       </p>
                       <div className="flex items-center gap-2 mt-0.5">
                         <span className="text-[10px] text-gray-400">{timeStr}</span>
@@ -1453,7 +1453,7 @@ export default function PublicProfilePage() {
                     }`}
                   >
                     <span>{action.text}</span>
-                    <span className="text-xs text-blue-500 flex-shrink-0">View â†’</span>
+                    <span className="text-xs text-blue-500 flex-shrink-0">View →</span>
                   </a>
                 ) : (
                   <div
@@ -1481,7 +1481,7 @@ export default function PublicProfilePage() {
                   onClick={() => setShowEditModal(false)}
                   className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition text-gray-500 text-xl"
                 >
-                  Ã—
+                  ×
                 </button>
               </div>
 

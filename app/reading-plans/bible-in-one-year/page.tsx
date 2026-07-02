@@ -52,6 +52,10 @@ export default function BibleInOneYearPage() {
   const [nextIncompleteDay, setNextIncompleteDay] = useState<number | null>(null);
   const [featureTours, setFeatureTours] = useState<FeatureToursState>({ ...DEFAULT_FEATURE_TOURS });
   const [featureToursLoaded, setFeatureToursLoaded] = useState(false);
+  const [dailyCredits, setDailyCredits] = useState<number | null>(null);
+  const [lastCreditReset, setLastCreditReset] = useState<string | null>(null);
+  const [isPaidProfile, setIsPaidProfile] = useState(false);
+  const [creditResetCountdown, setCreditResetCountdown] = useState<string | null>(null);
   const weekRefs = useRef<Record<number, HTMLDivElement | null>>({});
   const monthRefs = useRef<Record<number, HTMLDivElement | null>>({});
 
@@ -142,12 +146,15 @@ export default function BibleInOneYearPage() {
 
         const { data: profileStats } = await supabase
           .from("profile_stats")
-          .select("feature_tours")
+          .select("is_paid, daily_credits, last_credit_reset, feature_tours")
           .eq("user_id", uid)
           .maybeSingle();
 
         setFeatureTours(normalizeFeatureTours(profileStats?.feature_tours));
         setFeatureToursLoaded(true);
+        setIsPaidProfile(profileStats?.is_paid === true);
+        setDailyCredits(profileStats?.daily_credits ?? null);
+        setLastCreditReset(profileStats?.last_credit_reset ?? null);
 
         // Load all completed chapters for all books in the plan
         const allBooks = new Set<string>();
@@ -355,10 +362,66 @@ export default function BibleInOneYearPage() {
     return !!progress && progress.completedChapters.size === progress.totalChapters;
   };
 
-  const isDayUnlocked = (dayNumber: number): boolean => {
+  const isDayProgressUnlocked = (dayNumber: number): boolean => {
     if (dayNumber === 1) return true;
     const prevProgress = dayProgress[dayNumber - 1];
     return !!prevProgress && prevProgress.completedChapters.size === prevProgress.totalChapters;
+  };
+
+  const getNextCreditResetAt = (): number | null => {
+    if (!lastCreditReset) return null;
+    const lastResetDate = new Date(lastCreditReset);
+    if (Number.isNaN(lastResetDate.getTime())) return null;
+    return lastResetDate.getTime() + 24 * 60 * 60 * 1000;
+  };
+
+  const formatResetCountdown = (millis: number) => {
+    const totalSeconds = Math.max(0, Math.floor(millis / 1000));
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+    return `${hours}h ${String(minutes).padStart(2, "0")}m ${String(seconds).padStart(2, "0")}s`;
+  };
+
+  useEffect(() => {
+    if (isPaidProfile || dailyCredits === null) {
+      setCreditResetCountdown(null);
+      return;
+    }
+
+    let intervalId: ReturnType<typeof setInterval> | null = null;
+    const nextResetAt = getNextCreditResetAt();
+
+    const updateCountdown = () => {
+      if (!nextResetAt) {
+        setCreditResetCountdown(null);
+        return;
+      }
+
+      const remaining = nextResetAt - Date.now();
+      if (remaining <= 0) {
+        setCreditResetCountdown("0h 00m 00s");
+        return;
+      }
+      setCreditResetCountdown(formatResetCountdown(remaining));
+    };
+
+    updateCountdown();
+    intervalId = setInterval(updateCountdown, 1000);
+
+    return () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+      }
+    };
+  }, [isPaidProfile, dailyCredits, lastCreditReset]);
+
+  const isCreditLocked = !isPaidProfile && dailyCredits !== null && dailyCredits <= 0;
+
+  const isDayUnlocked = (dayNumber: number): boolean => {
+    if (dayNumber === 1) return !isCreditLocked;
+    if (!isDayProgressUnlocked(dayNumber)) return false;
+    return !isCreditLocked;
   };
 
   const handleDayClick = (day: DayReading) => {

@@ -606,6 +606,14 @@ function formatDateTime(value: string | null) {
   });
 }
 
+function getAdminActionColorClass(actionType: string) {
+  if (actionType.includes("completed") || actionType.includes("upgraded")) return "bg-emerald-50 text-emerald-700 ring-emerald-200";
+  if (actionType.includes("opened") || actionType.includes("viewed") || actionType.includes("read")) return "bg-blue-50 text-blue-700 ring-blue-200";
+  if (actionType.includes("posted") || actionType.includes("created") || actionType.includes("added") || actionType.includes("sent")) return "bg-violet-50 text-violet-700 ring-violet-200";
+  if (actionType.includes("liked") || actionType.includes("comment") || actionType.includes("reply")) return "bg-amber-50 text-amber-700 ring-amber-200";
+  return "bg-slate-50 text-slate-700 ring-slate-200";
+}
+
 function formatLastActive(value: string) {
   const time = new Date(value).getTime();
   if (!Number.isFinite(time)) return "Unknown";
@@ -3597,6 +3605,9 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
   const [drilldownData, setDrilldownData] = useState<AnalyticsDrilldownResponse | null>(null);
   const [drilldownLoading, setDrilldownLoading] = useState(false);
   const [drilldownError, setDrilldownError] = useState<string | null>(null);
+  const [adminActionLog, setAdminActionLog] = useState<AnalyticsActionRow[]>([]);
+  const [loadingAdminActionLog, setLoadingAdminActionLog] = useState(false);
+  const [adminActionLogError, setAdminActionLogError] = useState<string | null>(null);
 
   useEffect(() => {
     applyAppThemeToDocument(readCachedAppTheme(null));
@@ -3678,6 +3689,11 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
 
   useEffect(() => {
     if (!authChecked || !isOwner) return;
+    void loadAdminActionLog();
+  }, [authChecked, isOwner, windowKey]);
+
+  useEffect(() => {
+    if (!authChecked || !isOwner) return;
     async function loadStripeRevenue() {
       setStripeRevenueLoading(true);
       setStripeRevenueError(null);
@@ -3730,6 +3746,28 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
       setDrilldownError(loadError instanceof Error ? loadError.message : "Could not load analytics details.");
     } finally {
       setDrilldownLoading(false);
+    }
+  }
+
+  async function loadAdminActionLog() {
+    setLoadingAdminActionLog(true);
+    setAdminActionLogError(null);
+    try {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const token = sessionData.session?.access_token;
+      if (!token) throw new Error("Owner session expired. Please sign in again.");
+      const response = await fetch(`/api/admin/analytics-drilldown?window=${windowKey}`, {
+        cache: "no-store",
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      const json = await response.json() as AnalyticsDrilldownResponse;
+      if (!response.ok) throw new Error(json.error || "Could not load action log.");
+      setAdminActionLog(json.actions.slice(0, 60));
+    } catch (loadError) {
+      setAdminActionLogError(loadError instanceof Error ? loadError.message : "Could not load action log.");
+      setAdminActionLog([]);
+    } finally {
+      setLoadingAdminActionLog(false);
     }
   }
 
@@ -3957,7 +3995,7 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
                     active={drilldownKind === "active_users"}
                   />
                   <SimpleAnalyticsKpiCard
-                    title="Total Actions"
+                    title="Action Log"
                     value={loading ? "..." : formatNumber(activitySummary.totalActions)}
                     helper="All tracked actions in this timeframe"
                     accent="blue"
@@ -4000,6 +4038,38 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
                     loading={stripeRevenueLoading || loading}
                   />
                 </div>
+
+                <section className="rounded-[28px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-5 shadow-[0_18px_46px_rgba(15,23,42,0.08)]">
+                  <div className="flex items-center justify-between gap-4">
+                    <div>
+                      <p className="text-sm font-semibold text-[var(--bb-text-secondary,#64748b)]">Action Log</p>
+                      <h2 className="mt-1 text-xl font-black text-[var(--bb-text-primary,#101827)]">All users, recent activity</h2>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => void openDrilldown("actions")}
+                      className="inline-flex h-11 items-center justify-center rounded-2xl border border-[var(--bb-card-border,#d8e3ec)] bg-white px-4 text-sm font-semibold text-[var(--bb-text-primary,#101827)] shadow-sm transition hover:border-blue-300 hover:bg-blue-50"
+                    >
+                      View all actions
+                    </button>
+                  </div>
+                  {loadingAdminActionLog ? (
+                    <p className="mt-5 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-5 text-sm font-semibold text-slate-600">Loading action log...</p>
+                  ) : adminActionLogError ? (
+                    <p className="mt-5 rounded-2xl border border-rose-200 bg-rose-50 px-4 py-5 text-sm font-semibold text-rose-700">{adminActionLogError}</p>
+                  ) : adminActionLog.length === 0 ? (
+                    <p className="mt-5 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-5 text-sm font-semibold text-slate-600">No tracked actions in this timeframe.</p>
+                  ) : (
+                    <div className="mt-5 grid gap-2">
+                      {adminActionLog.slice(0, 12).map((action) => (
+                        <div key={action.id} className={`rounded-3xl border p-4 ${getAdminActionColorClass(action.actionType)} ring-1 ring-inset`}>
+                          <p className="text-sm font-semibold text-[var(--bb-text-primary,#101827)]">{action.userLabel} {action.detail}</p>
+                          <p className="mt-1 text-xs text-[var(--bb-text-secondary,#64748b)]">{action.actionTitle} · {formatDateTime(action.createdAt)}</p>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </section>
                 </>
               ) : (
                 simpleMetric === "revenue" ? (

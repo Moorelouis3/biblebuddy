@@ -44,15 +44,49 @@ function actionTitle(row: MasterActionRow) {
   const day = parseDay(row);
   if (type === "user_signup") return "Created an account";
   if (type === "user_login") return "Signed in";
-  if (type === "bible_in_one_year_day_completed") return day ? `Completed Bible in One Year Day ${day}` : "Completed a Bible in One Year day";
-  if (type === "bible_in_one_year_reading_completed") return day ? `Completed Day ${day} audio lesson` : "Completed an audio lesson";
-  if (type === "bible_in_one_year_trivia_completed") return day ? `Completed Day ${day} trivia` : "Completed trivia";
-  if (type === "bible_in_one_year_reflection_completed") return day ? `Completed Day ${day} discussion` : "Completed discussion";
-  if (type === "study_notes_section_opened") return "Opened a study-note section";
-  if (type === "chapter_notes_viewed" || type === "study_notes_viewed") return "Opened study notes";
+  if (type === "bible_in_one_year_day_completed") return day ? `Completed Day ${day}` : "Completed a Bible in One Year day";
+  if (type === "bible_in_one_year_reading_completed") return day ? `Finished Day ${day} reading` : "Completed an audio lesson";
+  if (type === "bible_in_one_year_trivia_completed") return day ? `Finished Day ${day} trivia` : "Completed trivia";
+  if (type === "bible_in_one_year_reflection_completed") return day ? `Finished Day ${day} discussion` : "Completed discussion";
+  if (type === "study_notes_section_opened") return "Opened study notes";
+  if (type === "chapter_notes_viewed" || type === "study_notes_viewed") return "Viewed study notes";
   if (type === "chapter_completed") return row.action_label || "Completed a Bible chapter";
   if (type === "user_upgraded") return "Upgraded to Pro";
   return type.replaceAll("_", " ").replace(/\b\w/g, (letter) => letter.toUpperCase());
+}
+
+function actionDetail(row: MasterActionRow) {
+  const type = row.action_type || "tracked_action";
+  const label = String(row.action_label || "").trim();
+  const day = parseDay(row);
+
+  if (type === "user_signup") return "Created an account";
+  if (type === "user_login") return "Signed in";
+  if (type === "bible_in_one_year_day_completed") return day ? `Marked Day ${day} as completed` : "Marked a Bible in One Year day complete";
+  if (type === "bible_in_one_year_reading_completed") return label ? `Checked out "${label}"` : "Completed an audio lesson";
+  if (type === "bible_in_one_year_trivia_completed") return label ? `Answered trivia for "${label}"` : "Answered trivia";
+  if (type === "bible_in_one_year_reflection_completed") return label ? `Completed discussion on "${label}"` : "Completed a discussion";
+  if (type === "study_notes_section_opened") return label ? `Opened study notes for "${label}"` : "Opened a study-note section";
+  if (type === "chapter_notes_viewed" || type === "study_notes_viewed") return label ? `Viewed study notes for ${label}` : "Viewed study notes";
+  if (type === "chapter_completed") return label ? `Read ${label}` : "Read a Bible chapter";
+  if (type === "user_upgraded") return "Upgraded to Pro";
+  if (type === "note_created") return "Created a note";
+  if (type === "verse_highlighted") return label ? `Highlighted ${label}` : "Highlighted a verse";
+  if (type === "devotional_day_completed") return label ? `Completed ${label}` : "Completed a devotional day";
+  if (type === "trivia_question_answered") return label ? `Answered trivia question (${label})` : "Answered a trivia question";
+  if (type === "feed_post_thought") return label ? `Posted a thought: "${label}"` : "Posted a thought";
+  if (type === "feed_post_prayer") return "Posted a prayer";
+  if (type === "feed_post_prayer_request") return "Posted a prayer request";
+  if (type === "feed_post_photo") return "Posted a photo";
+  if (type === "feed_post_video") return "Posted a video";
+  if (type === "feed_post_liked") return "Liked a post";
+  if (type === "feed_post_commented") return "Commented on a post";
+  if (type === "feed_post_replied") return "Replied to a post";
+  if (type === "group_message_sent") return label ? `Sent a message in ${label}` : "Sent a group message";
+  if (type === "buddy_added") return label ? `Added ${label} as a Bible Buddy` : "Added a Bible Buddy";
+  if (type === "series_week_started") return label ? `Started ${label}` : "Started a Bible series week";
+
+  return label || type.replaceAll("_", " ").replace(/\b\w/g, (letter) => letter.toUpperCase());
 }
 
 function signupSource(row: MasterActionRow | undefined) {
@@ -145,7 +179,7 @@ export async function GET(request: Request) {
     userLabel: nameFor(row),
     actionType: row.action_type || "tracked_action",
     actionTitle: actionTitle(row),
-    detail: row.action_label || "Tracked action",
+    detail: actionDetail(row),
     dayNumber: parseDay(row),
     createdAt: row.created_at || "",
   }));
