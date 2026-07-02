@@ -370,7 +370,7 @@ export const BIBLE_YEAR_DAY_THIRTY_NINE_AUDIO: BibleYearAudioDay = {
 
 export const BIBLE_YEAR_DAY_FORTY_AUDIO: BibleYearAudioDay = {
   dayNumber: 40,
-  title: "Day 40 - Blessing, Dedication, and Passover",
+  title: "Day 40 - PAssover",
   storagePath: getBibleYearAudioStoragePath(40),
   apiSrc: getBibleYearAudioApiSrc(40),
   estimatedDuration: "20-30 min",
