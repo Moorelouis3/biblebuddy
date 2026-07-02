@@ -21,7 +21,7 @@ import UserBadge from "@/components/UserBadge";
 import StreakFlameBadge from "@/components/StreakFlameBadge";
 import { CUSTOM_MEMBER_BADGE_OPTIONS, normalizeCustomMemberBadge } from "@/lib/userBadges";
 
-// â”€â”€ Avatar color helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// --- Avatar color helpers ---
 const AVATAR_COLORS = ["#4a9b6f", "#5b8dd9", "#c97b3e", "#9b6bb5", "#d45f7a", "#3ea8a8"];
 function avatarColor(uid: string): string {
   let hash = 0;
@@ -29,7 +29,7 @@ function avatarColor(uid: string): string {
   return AVATAR_COLORS[Math.abs(hash) % AVATAR_COLORS.length];
 }
 
-// â”€â”€ Time helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// --- Time helpers ---
 function formatLastActive(dateStr: string | null | undefined): string {
   if (!dateStr) return "Unknown";
   const date = new Date(dateStr);
@@ -181,7 +181,7 @@ export default function PublicProfilePage() {
   const [saving, setSaving] = useState(false);
   const [uploadingImage, setUploadingImage] = useState(false);
 
-  // â”€â”€ Buddy state â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // --- Buddy state ---
   const [buddyState, setBuddyState] = useState<BuddyState>("none");
   const [buddyRequestId, setBuddyRequestId] = useState<string | null>(null);
   const [conversationId, setConversationId] = useState<string | null>(null);
@@ -827,7 +827,7 @@ export default function PublicProfilePage() {
     }
   }
 
-  // â”€â”€ Loading â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // --- Loading ---
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 pb-12">
@@ -838,18 +838,18 @@ export default function PublicProfilePage() {
     );
   }
 
-  // â”€â”€ Not found â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // --- Not found ---
   if (notFound) {
     return (
       <div className="min-h-screen bg-gray-50 pb-12">
         <div className="max-w-2xl mx-auto px-4 py-8">
           <nav className="text-sm text-gray-500 mb-6">
             <Link href="/dashboard" className="hover:text-gray-700 transition">Dashboard</Link>
-            <span className="mx-2">â€º</span>
+            <span className="mx-2">&gt;</span>
             <span className="text-gray-800 font-medium">Profile</span>
           </nav>
           <div className="bg-white border border-gray-200 rounded-xl p-12 shadow-sm text-center">
-            <p className="text-4xl mb-4">ðŸ”</p>
+            <p className="text-4xl mb-4">🔍</p>
             <h1 className="text-2xl font-bold text-gray-900 mb-2">Profile not found</h1>
             <p className="text-gray-500">This user doesn't exist or their profile isn't available.</p>
             <Link href="/dashboard" className="inline-block mt-6 px-5 py-2.5 bg-gray-900 text-white rounded-xl text-sm font-medium hover:bg-gray-700 transition">
@@ -861,7 +861,7 @@ export default function PublicProfilePage() {
     );
   }
 
-  // â”€â”€ Derived display values â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // --- Derived display values ---
   const displayStats = stats
     ? {
         ...stats,
@@ -908,7 +908,7 @@ export default function PublicProfilePage() {
           <span className="text-gray-800 font-medium">{displayName}</span>
         </nav>
 
-        {/* â”€â”€ PROFILE HEADER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+        {/* --- PROFILE HEADER --- */}
         {showProTrialBanner && proTrialTimeLeft && (
           <div className="mb-6 overflow-hidden rounded-2xl border border-violet-200 bg-gradient-to-r from-violet-50 via-white to-emerald-50 shadow-sm">
             <div className="flex flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
@@ -967,7 +967,7 @@ export default function PublicProfilePage() {
                   </div>
                 </div>
 
-                {/* Action buttons â€” owner: Edit Profile; visitor: buddy button */}
+                {/* Action buttons — owner: Edit Profile; visitor: buddy button */}
                 {isOwner ? (
                   <div className="flex flex-col items-end gap-2 flex-shrink-0">
                     <button
@@ -1378,7 +1378,7 @@ export default function PublicProfilePage() {
                       className="w-10 h-10 rounded-lg flex items-center justify-center text-xl flex-shrink-0"
                       style={{ backgroundColor: group.cover_color || "#d4ecd4" }}
                     >
-                      {group.cover_emoji || "ðŸ¤"}
+                      {group.cover_emoji || "🤝"}
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="font-semibold text-gray-900 text-sm truncate">{group.name}</p>
@@ -1399,14 +1399,14 @@ export default function PublicProfilePage() {
           <div className="bg-white border border-gray-200 rounded-xl shadow-sm mb-6 p-5">
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-lg font-semibold text-gray-900">Recent Posts</h2>
-              <Link href="/dashboard" className="text-xs text-green-600 hover:underline font-medium">View Feed â†’</Link>
+              <Link href="/dashboard" className="text-xs text-green-600 hover:underline font-medium">View Feed →</Link>
             </div>
             <div className="flex flex-col gap-2">
               {recentPosts.map((post) => {
                 const POST_TYPE_ICONS: Record<string, string> = {
-                  thought: "ðŸ’­", verse: "ðŸ“–", prayer: "ðŸ™", photo: "ðŸ“·", link: "ðŸ”—",
+                  thought: "💭", verse: "📖", prayer: "🙏", photo: "📷", link: "🔗",
                 };
-                const icon = POST_TYPE_ICONS[post.post_type] || "ðŸ’¬";
+                const icon = POST_TYPE_ICONS[post.post_type] || "💬";
                 const preview = post.verse_ref
                   ? `${post.verse_ref} — ${post.content.slice(0, 60)}`
                   : post.content.slice(0, 80);
@@ -1434,7 +1434,7 @@ export default function PublicProfilePage() {
           </div>
         )}
 
-        {/* â”€â”€ ACTION LOG â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+        {/* --- ACTION LOG --- */}
         <div className="profile-skin-card bg-white border border-gray-200 rounded-xl shadow-sm">
           <div className="px-6 py-4 border-b border-gray-100">
             <h2 className="text-xl font-semibold">Action Log</h2>
@@ -1470,7 +1470,7 @@ export default function PublicProfilePage() {
           )}
         </div>
 
-        {/* â”€â”€ EDIT PROFILE MODAL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+        {/* --- EDIT PROFILE MODAL --- */}
         {showEditModal && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4">
             <div className="bg-white rounded-2xl shadow-xl w-full sm:max-w-md max-h-[90vh] overflow-y-auto">
@@ -1588,7 +1588,7 @@ export default function PublicProfilePage() {
           </div>
         )}
 
-        {/* â”€â”€ BUDDIES LIST MODAL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+        {/* --- BUDDIES LIST MODAL --- */}
         {showBuddiesModal && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4">
             <div className="bg-white rounded-2xl shadow-xl w-full sm:max-w-md max-h-[80vh] flex flex-col">
@@ -1603,7 +1603,7 @@ export default function PublicProfilePage() {
                   onClick={() => { setShowBuddiesModal(false); setBuddiesSearch(""); setBuddiesPage(1); }}
                   className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition text-gray-500 text-xl"
                 >
-                  Ã—
+                  ×
                 </button>
               </div>
 
@@ -1687,10 +1687,10 @@ export default function PublicProfilePage() {
                       onClick={() => { const p = buddiesPage - 1; setBuddiesPage(p); loadBuddiesPage(p); }}
                       disabled={buddiesPage === 1 || buddiesLoadingPage}
                       className="px-2 py-1 text-sm rounded-lg text-gray-500 hover:bg-gray-100 disabled:opacity-30 transition"
-                    >â€¹</button>
+                    >‹</button>
                     {getPages().map((p, i) =>
                       p === "..." ? (
-                        <span key={`ellipsis-${i}`} className="px-1 text-gray-400 text-sm">â€¦</span>
+                        <span key={`ellipsis-${i}`} className="px-1 text-gray-400 text-sm">…</span>
                       ) : (
                         <button
                           key={p}
@@ -1705,7 +1705,7 @@ export default function PublicProfilePage() {
                       onClick={() => { const p = buddiesPage + 1; setBuddiesPage(p); loadBuddiesPage(p); }}
                       disabled={buddiesPage === totalPages || buddiesLoadingPage}
                       className="px-2 py-1 text-sm rounded-lg text-gray-500 hover:bg-gray-100 disabled:opacity-30 transition"
-                    >â€º</button>
+                    >›</button>
                   </div>
                 );
               })()}
@@ -1714,7 +1714,7 @@ export default function PublicProfilePage() {
           </div>
         )}
 
-        {/* â”€â”€ REMOVE BUDDY CONFIRM â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+        {/* --- REMOVE BUDDY CONFIRM --- */}
         {showRemoveBuddyConfirm && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4">
             <div className="bg-white rounded-2xl shadow-xl w-full max-w-sm p-6">
