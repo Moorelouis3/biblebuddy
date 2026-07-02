@@ -474,6 +474,8 @@ type AnalyticsDrilldownResponse = {
   }>;
 };
 
+type AnalyticsActionRow = AnalyticsDrilldownResponse["actions"][number];
+
 type StripeRecentPayment = {
   id: string;
   amount: string;
