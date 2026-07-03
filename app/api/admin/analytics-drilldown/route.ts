@@ -20,6 +20,7 @@ const MAIN_ACTION_LOG_ALLOWLIST = new Set([
   "bible_in_one_year_started",
   "bible_in_one_year_day_viewed",
   "bible_in_one_year_day_completed",
+  "bible_in_one_year_reading_completed",
   "bible_in_one_year_trivia_completed",
   "trivia_chapter_completed",
   "bible_in_one_year_reflection_completed",
@@ -87,9 +88,7 @@ function safeDecode(value: string) {
 
 function parseStudyNotesLabel(label: string) {
   const trimmed = label.trim();
-  if (!trimmed.includes("|")) return null;
-
-  const parts = trimmed.split("|");
+  const parts = trimmed.includes("|") ? trimmed.split("|") : [trimmed];
   const entries = new Map<string, string>();
   for (const part of parts) {
     const eq = part.indexOf("=");
@@ -100,9 +99,28 @@ function parseStudyNotesLabel(label: string) {
     entries.set(key, safeDecode(rawValue));
   }
 
-  const reference = (entries.get("reference") || "").trim();
-  const sectionTitle = (entries.get("sectionTitle") || "").trim();
-  if (!reference && !sectionTitle) return null;
+  const reference = (
+    entries.get("reference") ||
+    entries.get("sectionReference") ||
+    entries.get("chapterReference") ||
+    entries.get("verseReference") ||
+    entries.get("itemReference") ||
+    ""
+  ).trim();
+  const sectionTitle = (
+    entries.get("sectionTitle") ||
+    entries.get("chapterTitle") ||
+    entries.get("itemTitle") ||
+    entries.get("title") ||
+    entries.get("content") ||
+    entries.get("contentLabel") ||
+    entries.get("label") ||
+    ""
+  ).trim();
+  if (!reference && !sectionTitle) {
+    const stripped = trimmed.replace(/^opened\s+/i, "").replace(/^study\s*notes\s*opened\s*[-:]*\s*/i, "").trim();
+    return stripped || null;
+  }
 
   if (reference && sectionTitle) return `${reference} ${sectionTitle}`.trim();
   return reference || sectionTitle;
@@ -118,11 +136,12 @@ function dedupeActionRows<T extends { userId: string | null; userLabel: string; 
   const seen = new Set<string>();
   const deduped: T[] = [];
   for (const row of rows) {
+    const dayNumber = (row as { dayNumber?: number | null }).dayNumber ?? null;
     const key = [
       row.userId || row.userLabel,
+      dayNumber ? `day:${dayNumber}` : `time:${row.createdAt}`,
       row.actionTitle.trim().toLowerCase(),
       row.detail.trim().toLowerCase(),
-      row.createdAt,
     ].join("|");
     if (seen.has(key)) continue;
     seen.add(key);
@@ -183,7 +202,7 @@ function actionTitle(row: MasterActionRow) {
   if (type === "bible_in_one_year_started") return "Started Bible in One Year";
   if (type === "bible_in_one_year_day_viewed") return day ? `Opened Day ${day}` : "Opened a Bible in One Year day";
   if (type === "bible_in_one_year_day_completed") return day ? `Completed Day ${day}` : "Completed a Bible in One Year day";
-  if (type === "bible_in_one_year_reading_completed") return day ? `Finished Day ${day} reading` : "Completed a reading";
+  if (type === "bible_in_one_year_reading_completed") return day ? `Completed Day ${day}` : "Completed a Bible in One Year day";
   if (type === "bible_in_one_year_trivia_completed") return day ? `Finished Day ${day} trivia` : "Completed trivia";
   if (type === "bible_in_one_year_reflection_completed") return day ? `Finished Day ${day} discussion` : "Completed discussion";
   if (type === "trivia_chapter_completed") return "Completed trivia";
@@ -218,7 +237,7 @@ function actionDetail(row: MasterActionRow) {
   if (type === "bible_in_one_year_started") return "Started Bible in One Year";
   if (type === "bible_in_one_year_day_viewed") return day ? `Opened Day ${day}` : "Opened a Bible in One Year day";
   if (type === "bible_in_one_year_day_completed") return day ? `Marked Day ${day} as completed` : "Marked a Bible in One Year day complete";
-  if (type === "bible_in_one_year_reading_completed") return label ? `Completed reading for "${label}"` : "Completed a reading";
+  if (type === "bible_in_one_year_reading_completed") return day ? `Marked Day ${day} as completed` : "Marked a Bible in One Year day complete";
   if (type === "bible_in_one_year_trivia_completed") return label ? `Answered trivia for "${label}"` : "Answered trivia";
   if (type === "bible_in_one_year_reflection_completed") return label ? `Completed discussion on "${label}"` : "Completed a discussion";
   if (type === "trivia_chapter_completed") return label ? `Completed trivia for ${label}` : "Completed trivia";
