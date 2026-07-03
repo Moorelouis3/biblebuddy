@@ -156,6 +156,33 @@ function dedupeActionRows<T extends { userId: string | null; userLabel: string; 
   return Array.from(chosenByKey.values());
 }
 
+function removeRedundantBibleYearOpens<T extends { userId: string | null; userLabel: string; actionTitle: string; createdAt: string }>(rows: T[]) {
+  const bibleYearReferenceKeys = new Set<string>();
+
+  for (const row of rows) {
+    const match = row.actionTitle.match(/^Opened\s+Bible\s+Year\s+Day\s+\d+\s+(.+)$/i);
+    if (!match) continue;
+    const reference = match[1].trim().toLowerCase();
+    if (!reference) continue;
+    const minuteKey = row.createdAt ? row.createdAt.slice(0, 16) : "";
+    const userKey = row.userId || row.userLabel;
+    bibleYearReferenceKeys.add([userKey, minuteKey, reference].join("|"));
+  }
+
+  return rows.filter((row) => {
+    const genericMatch = row.actionTitle.match(/^Opened\s+(.+)$/i);
+    if (!genericMatch) return true;
+    if (/^Opened\s+Bible\s+Year\s+Day\s+\d+\s+/i.test(row.actionTitle)) return true;
+
+    const reference = genericMatch[1].trim().toLowerCase();
+    if (!reference) return true;
+    const minuteKey = row.createdAt ? row.createdAt.slice(0, 16) : "";
+    const userKey = row.userId || row.userLabel;
+    const key = [userKey, minuteKey, reference].join("|");
+    return !bibleYearReferenceKeys.has(key);
+  });
+}
+
 function getBibleYearTaskFromRow(row: MasterActionRow) {
   const metadata = row.event_metadata || {};
   const metaTask = metadata.task;
@@ -388,7 +415,9 @@ export async function GET(request: Request) {
       sourceIndex: number;
     } => Boolean(row)));
 
-  const sortedMainActionRows = [...mainActionRows].sort((left, right) => {
+  const filteredMainActionRows = removeRedundantBibleYearOpens(mainActionRows);
+
+  const sortedMainActionRows = [...filteredMainActionRows].sort((left, right) => {
     const leftTime = new Date(left.createdAt).getTime();
     const rightTime = new Date(right.createdAt).getTime();
     if (leftTime !== rightTime) return rightTime - leftTime;

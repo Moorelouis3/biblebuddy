@@ -477,6 +477,15 @@ type AnalyticsDrilldownResponse = {
 
 type AnalyticsActionRow = AnalyticsDrilldownResponse["actions"][number];
 
+type ActionLogUserSummary = {
+  streak: number;
+  currentDay: number | null;
+  accountType: string;
+  lifetimeActions: number;
+  totalActionsInWindow: number;
+  lastActiveAt: string;
+};
+
 type StripeRecentPayment = {
   id: string;
   amount: string;
@@ -953,13 +962,6 @@ function SimpleAnalyticsKpiCard({
         {title}
       </div>
       <p className="mt-4 text-4xl font-black tracking-tight text-[var(--bb-text-primary,#101827)]">{value}</p>
-      {typeof comparison === "number" && comparisonLabel ? (
-        <div className="mt-3">
-          <ComparisonChip change={comparison} label={comparisonLabel} />
-        </div>
-      ) : null}
-      <p className="mt-2 text-sm font-semibold text-[var(--bb-text-secondary,#64748b)]">{helper}</p>
-      {onClick ? <p className="mt-3 text-xs font-black uppercase tracking-[0.12em] text-blue-600">View details</p> : null}
     </>
   );
 
@@ -3611,8 +3613,14 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
   const [adminActionLog, setAdminActionLog] = useState<AnalyticsActionRow[]>([]);
   const [loadingAdminActionLog, setLoadingAdminActionLog] = useState(false);
   const [adminActionLogError, setAdminActionLogError] = useState<string | null>(null);
+  const [actionLogUserSummaries, setActionLogUserSummaries] = useState<Record<string, ActionLogUserSummary>>({});
   const [visibleActionLogCount, setVisibleActionLogCount] = useState(30);
-  const [selectedProfileOverlay, setSelectedProfileOverlay] = useState<{ userId: string; userLabel: string } | null>(null);
+  const [selectedUserInsight, setSelectedUserInsight] = useState<{ userId: string; userLabel: string } | null>(null);
+  const [selectedUserLifetimeActions, setSelectedUserLifetimeActions] = useState<AnalyticsActionRow[]>([]);
+  const [selectedUserInsightSummary, setSelectedUserInsightSummary] = useState<ActionLogUserSummary | null>(null);
+  const [selectedUserInsightLoading, setSelectedUserInsightLoading] = useState(false);
+  const [selectedUserInsightError, setSelectedUserInsightError] = useState<string | null>(null);
+  const [visibleSelectedUserActionsCount, setVisibleSelectedUserActionsCount] = useState(30);
 
   useEffect(() => {
     applyAppThemeToDocument(readCachedAppTheme(null));
@@ -3732,6 +3740,67 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
     setDrilldownError(null);
   }, [windowKey]);
 
+  useEffect(() => {
+    if (!selectedUserInsight) {
+      setSelectedUserLifetimeActions([]);
+      setSelectedUserInsightSummary(null);
+      setSelectedUserInsightLoading(false);
+      setSelectedUserInsightError(null);
+      setVisibleSelectedUserActionsCount(30);
+      return;
+    }
+
+    setSelectedUserInsightLoading(true);
+    setSelectedUserInsightError(null);
+    setVisibleSelectedUserActionsCount(30);
+    const selectedUserId = selectedUserInsight.userId;
+
+    let cancelled = false;
+    async function loadSelectedUserLifetimeActions() {
+      try {
+        const { data: sessionData } = await supabase.auth.getSession();
+        const token = sessionData.session?.access_token;
+        if (!token) throw new Error("Owner session expired. Please sign in again.");
+
+        const response = await fetch(`/api/admin/analytics-drilldown?window=lifetime`, {
+          cache: "no-store",
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        const json = await response.json() as AnalyticsDrilldownResponse;
+        if (!response.ok) throw new Error(json.error || "Could not load lifetime user activity.");
+
+        if (cancelled) return;
+
+        const userActions = (json.actions || []).filter((row) => row.userId === selectedUserId);
+        const summaryRow = (json.activeUsers || []).find((row) => row.userId === selectedUserId);
+        setSelectedUserLifetimeActions(userActions);
+        setSelectedUserInsightSummary(summaryRow
+          ? {
+              streak: summaryRow.streak,
+              currentDay: summaryRow.currentDay,
+              accountType: summaryRow.accountType,
+              lifetimeActions: summaryRow.lifetimeActions,
+              totalActionsInWindow: summaryRow.totalActions,
+              lastActiveAt: summaryRow.lastActiveAt,
+            }
+          : null);
+      } catch (loadError) {
+        if (cancelled) return;
+        setSelectedUserLifetimeActions([]);
+        setSelectedUserInsightSummary(null);
+        setSelectedUserInsightError(loadError instanceof Error ? loadError.message : "Could not load lifetime user activity.");
+      } finally {
+        if (!cancelled) setSelectedUserInsightLoading(false);
+      }
+    }
+
+    void loadSelectedUserLifetimeActions();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [selectedUserInsight]);
+
   async function openDrilldown(kind: AnalyticsDrilldownKind) {
     if (drilldownKind === kind && drilldownData) {
       setDrilldownKind(null);
@@ -3772,10 +3841,24 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
       const json = await response.json() as AnalyticsDrilldownResponse;
       if (!response.ok) throw new Error(json.error || "Could not load action log.");
       setAdminActionLog(json.actions);
+      const summaries: Record<string, ActionLogUserSummary> = {};
+      for (const row of json.activeUsers || []) {
+        if (!row.userId) continue;
+        summaries[row.userId] = {
+          streak: row.streak,
+          currentDay: row.currentDay,
+          accountType: row.accountType,
+          lifetimeActions: row.lifetimeActions,
+          totalActionsInWindow: row.totalActions,
+          lastActiveAt: row.lastActiveAt,
+        };
+      }
+      setActionLogUserSummaries(summaries);
       setVisibleActionLogCount(30);
     } catch (loadError) {
       setAdminActionLogError(loadError instanceof Error ? loadError.message : "Could not load action log.");
       setAdminActionLog([]);
+      setActionLogUserSummaries({});
     } finally {
       setLoadingAdminActionLog(false);
     }
@@ -3848,6 +3931,12 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
     });
   }, [accountFilter, rows, search, sourceFilter, statusFilter]);
 
+  const selectedUserSummary = selectedUserInsightSummary || (selectedUserInsight ? actionLogUserSummaries[selectedUserInsight.userId] : null);
+
+  const visibleSelectedUserActions = useMemo(() => {
+    return selectedUserLifetimeActions.slice(0, visibleSelectedUserActionsCount);
+  }, [selectedUserLifetimeActions, visibleSelectedUserActionsCount]);
+
   function exportCsv() {
     const headers = [
       "Visitor",
@@ -3883,6 +3972,12 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
     const element = event.currentTarget;
     if (element.scrollTop + element.clientHeight < element.scrollHeight - 48) return;
     setVisibleActionLogCount((current) => Math.min(current + 30, adminActionLog.length));
+  }
+
+  function loadMoreSelectedUserActionsOnScroll(event: UIEvent<HTMLDivElement>) {
+    const element = event.currentTarget;
+    if (element.scrollTop + element.clientHeight < element.scrollHeight - 48) return;
+    setVisibleSelectedUserActionsCount((current) => Math.min(current + 30, selectedUserLifetimeActions.length));
   }
 
   if (!authChecked) {
@@ -4085,7 +4180,7 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
                                 type="button"
                                 onClick={() => {
                                   if (!action.userId) return;
-                                  setSelectedProfileOverlay({ userId: action.userId, userLabel: action.userLabel });
+                                  setSelectedUserInsight({ userId: action.userId, userLabel: action.userLabel });
                                 }}
                                 className="font-black text-blue-700 underline decoration-blue-300 underline-offset-2 hover:text-blue-800"
                               >
@@ -4150,26 +4245,63 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
                 <span className="text-blue-600"><Icon name="arrow" /></span>
               </Link>
 
-              {selectedProfileOverlay && typeof document !== "undefined"
+              {selectedUserInsight && typeof document !== "undefined"
                 ? createPortal(
-                    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-slate-950/65 p-3 sm:p-4" role="dialog" aria-modal="true" aria-label="User profile overlay">
-                      <div className="flex h-[94vh] w-[min(98vw,1700px)] flex-col overflow-hidden rounded-3xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] shadow-[0_28px_80px_rgba(15,23,42,0.28)]">
+                    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-slate-950/65 p-3 sm:p-4" role="dialog" aria-modal="true" aria-label="User activity insights">
+                      <div className="flex h-[94vh] w-[min(98vw,1300px)] flex-col overflow-hidden rounded-3xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] shadow-[0_28px_80px_rgba(15,23,42,0.28)]">
                         <div className="flex items-center justify-between border-b border-[var(--bb-card-border,#d8e3ec)] px-5 py-3">
-                          <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">{selectedProfileOverlay.userLabel} Profile</p>
+                          <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">{selectedUserInsight.userLabel} Activity Snapshot</p>
                           <button
                             type="button"
-                            onClick={() => setSelectedProfileOverlay(null)}
+                            onClick={() => setSelectedUserInsight(null)}
                             className="inline-flex h-10 items-center justify-center rounded-xl border border-[var(--bb-card-border,#d8e3ec)] px-3 text-sm font-semibold text-[var(--bb-text-primary,#101827)] hover:bg-slate-50"
                           >
                             Close
                           </button>
                         </div>
-                        <div className="min-h-0 flex-1 bg-white">
-                          <iframe
-                            title={`${selectedProfileOverlay.userLabel} profile`}
-                            src={`/profile/${selectedProfileOverlay.userId}`}
-                            className="block h-full w-full border-0 bg-white"
-                          />
+                        <div className="grid gap-3 border-b border-[var(--bb-card-border,#d8e3ec)] bg-slate-50 p-4 sm:grid-cols-4">
+                          <div className="rounded-2xl border border-slate-200 bg-white px-4 py-3">
+                            <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Current Day</p>
+                            <p className="mt-1 text-lg font-black text-slate-900">
+                              {selectedUserSummary?.currentDay ? `Day ${selectedUserSummary.currentDay}` : "Unknown"}
+                            </p>
+                          </div>
+                          <div className="rounded-2xl border border-slate-200 bg-white px-4 py-3">
+                            <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Current Streak</p>
+                            <p className="mt-1 text-lg font-black text-slate-900">{selectedUserSummary?.streak ?? 0} days</p>
+                          </div>
+                          <div className="rounded-2xl border border-slate-200 bg-white px-4 py-3">
+                            <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Lifetime Actions</p>
+                            <p className="mt-1 text-lg font-black text-slate-900">{selectedUserSummary?.lifetimeActions ?? selectedUserLifetimeActions.length}</p>
+                          </div>
+                          <div className="rounded-2xl border border-slate-200 bg-white px-4 py-3">
+                            <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Last Active</p>
+                            <p className="mt-1 text-base font-black text-slate-900">{selectedUserSummary?.lastActiveAt ? formatDateTime(selectedUserSummary.lastActiveAt) : "Unknown"}</p>
+                          </div>
+                        </div>
+                        <div className="min-h-0 flex-1 overflow-y-auto bg-white p-4" onScroll={loadMoreSelectedUserActionsOnScroll}>
+                          <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-500">Personal Action Log (Lifetime)</p>
+                          {selectedUserInsightLoading ? (
+                            <div className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-5 text-sm font-semibold text-slate-600">Loading lifetime actions...</div>
+                          ) : selectedUserInsightError ? (
+                            <div className="rounded-2xl border border-rose-200 bg-rose-50 px-4 py-5 text-sm font-semibold text-rose-700">{selectedUserInsightError}</div>
+                          ) : selectedUserLifetimeActions.length === 0 ? (
+                            <div className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-5 text-sm font-semibold text-slate-600">No lifetime actions found for this user.</div>
+                          ) : (
+                            <div className="space-y-2">
+                              {visibleSelectedUserActions.map((action) => (
+                                <div key={`user-insight-${action.id}`} className={`rounded-2xl border p-3 ${getAdminActionColorClass(action.actionType)} ring-1 ring-inset`}>
+                                  <p className="text-sm font-bold text-[var(--bb-text-primary,#101827)]">{action.actionTitle}</p>
+                                  <p className="mt-1 text-xs font-medium text-[var(--bb-text-secondary,#64748b)]">{formatDateTime(action.createdAt)}</p>
+                                </div>
+                              ))}
+                              {visibleSelectedUserActionsCount < selectedUserLifetimeActions.length ? (
+                                <p className="px-1 py-2 text-xs font-semibold text-[var(--bb-text-secondary,#64748b)]">
+                                  Scroll to load more ({visibleSelectedUserActionsCount}/{selectedUserLifetimeActions.length})
+                                </p>
+                              ) : null}
+                            </div>
+                          )}
                         </div>
                       </div>
                     </div>,
