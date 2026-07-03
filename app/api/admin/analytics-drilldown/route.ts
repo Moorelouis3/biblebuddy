@@ -391,11 +391,7 @@ export async function GET(request: Request) {
   const sortedMainActionRows = [...mainActionRows].sort((left, right) => {
     const leftTime = new Date(left.createdAt).getTime();
     const rightTime = new Date(right.createdAt).getTime();
-    if (leftTime !== rightTime) return leftTime - rightTime;
-
-    const leftDay = left.dayNumber || 0;
-    const rightDay = right.dayNumber || 0;
-    if (leftDay !== rightDay) return leftDay - rightDay;
+    if (leftTime !== rightTime) return rightTime - leftTime;
 
     if (left.sourceIndex !== right.sourceIndex) return left.sourceIndex - right.sourceIndex;
 
