@@ -15,6 +15,31 @@ type MasterActionRow = {
   created_at?: string | null;
 };
 
+const MAIN_ACTION_LOG_ALLOWLIST = new Set([
+  "user_signup",
+  "bible_in_one_year_started",
+  "bible_in_one_year_day_viewed",
+  "bible_in_one_year_day_completed",
+  "bible_in_one_year_reading_completed",
+  "bible_in_one_year_trivia_completed",
+  "trivia_chapter_completed",
+  "bible_in_one_year_reflection_completed",
+  "study_notes_viewed",
+  "bible_book_opened",
+  "bible_chapter_opened",
+  "chapter_completed",
+  "book_completed",
+  "verse_highlighted",
+  "upgrade_popup_viewed",
+  "upgrade_popup_cta_clicked",
+  "upgrade_popup_dismissed",
+  "trial_started",
+  "trial_canceled",
+  "trial_converted",
+  "user_upgraded",
+  "badge_earned",
+]);
+
 function getDateRange(windowKey: WindowKey) {
   const now = new Date();
   const todayStart = new Date(now);
@@ -39,19 +64,67 @@ function parseDay(row: MasterActionRow) {
   return Number(row.journey_day || labelMatch?.[1] || 0) || null;
 }
 
+function getBibleYearTaskFromRow(row: MasterActionRow) {
+  const metadata = row.event_metadata || {};
+  const metaTask = metadata.task;
+  if (typeof metaTask === "string") {
+    const normalized = metaTask.trim().toLowerCase();
+    if (normalized.includes("read") || normalized.includes("audio") || normalized.includes("video")) return "reading";
+    if (normalized.includes("trivia")) return "trivia";
+    if (normalized.includes("reflection") || normalized.includes("discussion") || normalized.includes("summary")) return "reflection";
+  }
+
+  const label = String(row.action_label || "").toLowerCase();
+  if (label.includes("trivia")) return "trivia";
+  if (label.includes("reflection") || label.includes("discussion") || label.includes("summary")) return "reflection";
+  if (label.includes("reading") || label.includes("audio") || label.includes("video")) return "reading";
+  return null;
+}
+
+function normalizeActionTypeForMainLog(row: MasterActionRow) {
+  const type = row.action_type || "";
+
+  if (type === "bible_book_viewed") return "bible_book_opened";
+  if (type === "bible_chapter_viewed") return "bible_chapter_opened";
+  if (type === "chapter_notes_viewed" || type === "study_notes_section_opened") return "study_notes_viewed";
+  if (type === "bible_year_day_start_popup_clicked") return "bible_in_one_year_started";
+
+  if (type === "bible_year_task_completed") {
+    const task = getBibleYearTaskFromRow(row);
+    if (task === "reading") return "bible_in_one_year_reading_completed";
+    if (task === "trivia") return "bible_in_one_year_trivia_completed";
+    if (task === "reflection") return "bible_in_one_year_reflection_completed";
+    return null;
+  }
+
+  return type || null;
+}
+
 function actionTitle(row: MasterActionRow) {
   const type = row.action_type || "tracked_action";
   const day = parseDay(row);
   if (type === "user_signup") return "Created an account";
-  if (type === "user_login") return "Signed in";
+  if (type === "bible_in_one_year_started") return "Started Bible in One Year";
+  if (type === "bible_in_one_year_day_viewed") return day ? `Opened Day ${day}` : "Opened a Bible in One Year day";
   if (type === "bible_in_one_year_day_completed") return day ? `Completed Day ${day}` : "Completed a Bible in One Year day";
-  if (type === "bible_in_one_year_reading_completed") return day ? `Finished Day ${day} reading` : "Completed an audio lesson";
+  if (type === "bible_in_one_year_reading_completed") return day ? `Finished Day ${day} reading` : "Completed a reading";
   if (type === "bible_in_one_year_trivia_completed") return day ? `Finished Day ${day} trivia` : "Completed trivia";
   if (type === "bible_in_one_year_reflection_completed") return day ? `Finished Day ${day} discussion` : "Completed discussion";
-  if (type === "study_notes_section_opened") return "Opened study notes";
-  if (type === "chapter_notes_viewed" || type === "study_notes_viewed") return "Viewed study notes";
+  if (type === "trivia_chapter_completed") return "Completed trivia";
+  if (type === "study_notes_viewed") return "Opened study notes";
+  if (type === "bible_book_opened") return "Opened a Bible book";
+  if (type === "bible_chapter_opened") return "Opened a Bible chapter";
   if (type === "chapter_completed") return row.action_label || "Completed a Bible chapter";
-  if (type === "user_upgraded") return "Upgraded to Pro";
+  if (type === "book_completed") return row.action_label || "Completed a Bible book";
+  if (type === "verse_highlighted") return "Highlighted a verse";
+  if (type === "upgrade_popup_viewed") return "Viewed upgrade popup";
+  if (type === "upgrade_popup_cta_clicked") return "Clicked upgrade";
+  if (type === "upgrade_popup_dismissed") return "Dismissed upgrade";
+  if (type === "trial_started") return "Started trial";
+  if (type === "trial_canceled") return "Canceled trial";
+  if (type === "trial_converted") return "Converted from trial";
+  if (type === "user_upgraded") return "Upgraded to Premium";
+  if (type === "badge_earned") return "Earned a badge";
   return type.replaceAll("_", " ").replace(/\b\w/g, (letter) => letter.toUpperCase());
 }
 
@@ -61,30 +134,27 @@ function actionDetail(row: MasterActionRow) {
   const day = parseDay(row);
 
   if (type === "user_signup") return "Created an account";
-  if (type === "user_login") return "Signed in";
+  if (type === "bible_in_one_year_started") return "Started Bible in One Year";
+  if (type === "bible_in_one_year_day_viewed") return day ? `Opened Day ${day}` : "Opened a Bible in One Year day";
   if (type === "bible_in_one_year_day_completed") return day ? `Marked Day ${day} as completed` : "Marked a Bible in One Year day complete";
-  if (type === "bible_in_one_year_reading_completed") return label ? `Checked out "${label}"` : "Completed an audio lesson";
+  if (type === "bible_in_one_year_reading_completed") return label ? `Completed reading for "${label}"` : "Completed a reading";
   if (type === "bible_in_one_year_trivia_completed") return label ? `Answered trivia for "${label}"` : "Answered trivia";
   if (type === "bible_in_one_year_reflection_completed") return label ? `Completed discussion on "${label}"` : "Completed a discussion";
-  if (type === "study_notes_section_opened") return label ? `Opened study notes for "${label}"` : "Opened a study-note section";
-  if (type === "chapter_notes_viewed" || type === "study_notes_viewed") return label ? `Viewed study notes for ${label}` : "Viewed study notes";
+  if (type === "trivia_chapter_completed") return label ? `Completed trivia for ${label}` : "Completed trivia";
+  if (type === "study_notes_viewed") return label ? `Opened study notes for ${label}` : "Opened study notes";
+  if (type === "bible_book_opened") return label ? `Opened ${label}` : "Opened a Bible book";
+  if (type === "bible_chapter_opened") return label ? `Opened ${label}` : "Opened a Bible chapter";
   if (type === "chapter_completed") return label ? `Read ${label}` : "Read a Bible chapter";
-  if (type === "user_upgraded") return "Upgraded to Pro";
-  if (type === "note_created") return "Created a note";
+  if (type === "book_completed") return label ? `Finished ${label}` : "Completed a Bible book";
   if (type === "verse_highlighted") return label ? `Highlighted ${label}` : "Highlighted a verse";
-  if (type === "devotional_day_completed") return label ? `Completed ${label}` : "Completed a devotional day";
-  if (type === "trivia_question_answered") return label ? `Answered trivia question (${label})` : "Answered a trivia question";
-  if (type === "feed_post_thought") return label ? `Posted a thought: "${label}"` : "Posted a thought";
-  if (type === "feed_post_prayer") return "Posted a prayer";
-  if (type === "feed_post_prayer_request") return "Posted a prayer request";
-  if (type === "feed_post_photo") return "Posted a photo";
-  if (type === "feed_post_video") return "Posted a video";
-  if (type === "feed_post_liked") return "Liked a post";
-  if (type === "feed_post_commented") return "Commented on a post";
-  if (type === "feed_post_replied") return "Replied to a post";
-  if (type === "group_message_sent") return label ? `Sent a message in ${label}` : "Sent a group message";
-  if (type === "buddy_added") return label ? `Added ${label} as a Bible Buddy` : "Added a Bible Buddy";
-  if (type === "series_week_started") return label ? `Started ${label}` : "Started a Bible series week";
+  if (type === "upgrade_popup_viewed") return "Viewed upgrade popup";
+  if (type === "upgrade_popup_cta_clicked") return "Clicked upgrade";
+  if (type === "upgrade_popup_dismissed") return "Dismissed upgrade popup";
+  if (type === "trial_started") return "Started trial";
+  if (type === "trial_canceled") return "Canceled trial";
+  if (type === "trial_converted") return "Converted from trial";
+  if (type === "user_upgraded") return "Upgraded to Premium";
+  if (type === "badge_earned") return label || "Earned a badge";
 
   return label || type.replaceAll("_", " ").replace(/\b\w/g, (letter) => letter.toUpperCase());
 }
@@ -183,9 +253,33 @@ export async function GET(request: Request) {
     dayNumber: parseDay(row),
     createdAt: row.created_at || "",
   }));
-  const inAppActionRows = actionRows.filter(
-    (row) => row.actionType !== "landing_page_visited" && row.actionType !== "landing_cta_clicked",
-  );
+
+  const mainActionRows = actions
+    .map((row, index) => {
+      const normalizedType = normalizeActionTypeForMainLog(row);
+      if (!normalizedType || !MAIN_ACTION_LOG_ALLOWLIST.has(normalizedType)) return null;
+      const normalizedRow: MasterActionRow = { ...row, action_type: normalizedType };
+      return {
+        id: String(row.id || `${normalizedType}-${row.created_at}-${index}`),
+        userId: row.user_id || null,
+        userLabel: nameFor(row),
+        actionType: normalizedType,
+        actionTitle: actionTitle(normalizedRow),
+        detail: actionDetail(normalizedRow),
+        dayNumber: parseDay(normalizedRow),
+        createdAt: row.created_at || "",
+      };
+    })
+    .filter((row): row is {
+      id: string;
+      userId: string | null;
+      userLabel: string;
+      actionType: string;
+      actionTitle: string;
+      detail: string;
+      dayNumber: number | null;
+      createdAt: string;
+    } => Boolean(row));
 
   const grouped = new Map<string, typeof actionRows>();
   actionRows.forEach((row) => {
@@ -246,7 +340,7 @@ export async function GET(request: Request) {
   return NextResponse.json({
     window: windowKey,
     activeUsers,
-    actions: inAppActionRows,
+    actions: mainActionRows,
     signups,
     daysCompleted,
   }, { headers: { "Cache-Control": "private, max-age=15" } });
