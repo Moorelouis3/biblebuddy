@@ -33,7 +33,6 @@ const OWNER_MAIN_ACTION_LOG_ALLOWLIST = new Set([
   "bible_in_one_year_started",
   "bible_in_one_year_day_viewed",
   "bible_in_one_year_day_completed",
-  "bible_in_one_year_reading_completed",
   "bible_in_one_year_trivia_completed",
   "trivia_chapter_completed",
   "bible_in_one_year_reflection_completed",
@@ -2493,7 +2492,7 @@ function normalizeActionTypeForOwnerLog(action: MasterActionFunnelRow) {
 
   if (actionType === "bible_year_task_completed") {
     const task = getTaskTypeFromAction(action);
-    if (task === "video") return "bible_in_one_year_reading_completed";
+    if (task === "video") return null;
     if (task === "trivia") return "bible_in_one_year_trivia_completed";
     if (task === "summary") return "bible_in_one_year_reflection_completed";
     return null;

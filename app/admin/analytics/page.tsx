@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Fragment, useEffect, useMemo, useState } from "react";
+import { Fragment, type UIEvent, useEffect, useMemo, useState } from "react";
 import { GENESIS_BIBLE_IN_ONE_YEAR_SERIES } from "@/lib/bibleInOneYearPlan";
 import { supabase } from "@/lib/supabaseClient";
 import { applyAppThemeToDocument, readCachedAppTheme } from "@/lib/appThemes";
@@ -3610,6 +3610,8 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
   const [adminActionLog, setAdminActionLog] = useState<AnalyticsActionRow[]>([]);
   const [loadingAdminActionLog, setLoadingAdminActionLog] = useState(false);
   const [adminActionLogError, setAdminActionLogError] = useState<string | null>(null);
+  const [visibleActionLogCount, setVisibleActionLogCount] = useState(30);
+  const [selectedProfileOverlay, setSelectedProfileOverlay] = useState<{ userId: string; userLabel: string } | null>(null);
 
   useEffect(() => {
     applyAppThemeToDocument(readCachedAppTheme(null));
@@ -3695,6 +3697,10 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
   }, [authChecked, isOwner, windowKey]);
 
   useEffect(() => {
+    setVisibleActionLogCount(30);
+  }, [windowKey]);
+
+  useEffect(() => {
     if (!authChecked || !isOwner) return;
     async function loadStripeRevenue() {
       setStripeRevenueLoading(true);
@@ -3764,7 +3770,8 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
       });
       const json = await response.json() as AnalyticsDrilldownResponse;
       if (!response.ok) throw new Error(json.error || "Could not load action log.");
-      setAdminActionLog(json.actions.slice(0, 60));
+      setAdminActionLog(json.actions);
+      setVisibleActionLogCount(30);
     } catch (loadError) {
       setAdminActionLogError(loadError instanceof Error ? loadError.message : "Could not load action log.");
       setAdminActionLog([]);
@@ -3869,6 +3876,12 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
     link.download = `bible-buddy-journeys-${windowKey}.csv`;
     link.click();
     URL.revokeObjectURL(url);
+  }
+
+  function loadMoreActionLogRowsOnScroll(event: UIEvent<HTMLDivElement>) {
+    const element = event.currentTarget;
+    if (element.scrollTop + element.clientHeight < element.scrollHeight - 48) return;
+    setVisibleActionLogCount((current) => Math.min(current + 30, adminActionLog.length));
   }
 
   if (!authChecked) {
@@ -4062,13 +4075,31 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
                   ) : adminActionLog.length === 0 ? (
                     <p className="mt-5 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-5 text-sm font-semibold text-slate-600">No tracked actions in this timeframe.</p>
                   ) : (
-                    <div className="mt-5 grid gap-2">
-                      {adminActionLog.slice(0, 12).map((action) => (
+                    <div className="mt-5 max-h-[560px] space-y-2 overflow-y-auto pr-1" onScroll={loadMoreActionLogRowsOnScroll}>
+                      {adminActionLog.slice(0, visibleActionLogCount).map((action) => (
                         <div key={action.id} className={`rounded-3xl border p-4 ${getAdminActionColorClass(action.actionType)} ring-1 ring-inset`}>
-                          <p className="text-sm font-semibold text-[var(--bb-text-primary,#101827)]">{action.userLabel} {action.actionTitle}</p>
-                          <p className="mt-1 text-xs text-[var(--bb-text-secondary,#64748b)]">{action.detail} | {formatDateTime(action.createdAt)}</p>
+                          <p className="text-sm font-semibold text-[var(--bb-text-primary,#101827)]">
+                            {action.userId ? (
+                              <button
+                                type="button"
+                                onClick={() => setSelectedProfileOverlay({ userId: action.userId, userLabel: action.userLabel })}
+                                className="font-black text-blue-700 underline decoration-blue-300 underline-offset-2 hover:text-blue-800"
+                              >
+                                {action.userLabel}
+                              </button>
+                            ) : (
+                              <span>{action.userLabel}</span>
+                            )}{" "}
+                            <span>{action.actionTitle}</span>
+                          </p>
+                          <p className="mt-1 text-xs text-[var(--bb-text-secondary,#64748b)]">{formatDateTime(action.createdAt)}</p>
                         </div>
                       ))}
+                      {visibleActionLogCount < adminActionLog.length ? (
+                        <p className="px-1 py-2 text-xs font-semibold text-[var(--bb-text-secondary,#64748b)]">
+                          Scroll to load more ({visibleActionLogCount}/{adminActionLog.length})
+                        </p>
+                      ) : null}
                     </div>
                   )}
                 </section>
@@ -4114,6 +4145,28 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
                 </span>
                 <span className="text-blue-600"><Icon name="arrow" /></span>
               </Link>
+
+              {selectedProfileOverlay ? (
+                <div className="fixed inset-0 z-[120] flex items-center justify-center bg-slate-950/60 p-4" role="dialog" aria-modal="true" aria-label="User profile overlay">
+                  <div className="w-full max-w-5xl overflow-hidden rounded-3xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] shadow-[0_28px_80px_rgba(15,23,42,0.28)]">
+                    <div className="flex items-center justify-between border-b border-[var(--bb-card-border,#d8e3ec)] px-5 py-3">
+                      <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">{selectedProfileOverlay.userLabel} Profile</p>
+                      <button
+                        type="button"
+                        onClick={() => setSelectedProfileOverlay(null)}
+                        className="inline-flex h-10 items-center justify-center rounded-xl border border-[var(--bb-card-border,#d8e3ec)] px-3 text-sm font-semibold text-[var(--bb-text-primary,#101827)] hover:bg-slate-50"
+                      >
+                        Close
+                      </button>
+                    </div>
+                    <iframe
+                      title={`${selectedProfileOverlay.userLabel} profile`}
+                      src={`/profile/${selectedProfileOverlay.userId}`}
+                      className="h-[78vh] w-full border-0 bg-white"
+                    />
+                  </div>
+                </div>
+              ) : null}
             </div>
           </main>
         </div>

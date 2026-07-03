@@ -20,7 +20,6 @@ const MAIN_ACTION_LOG_ALLOWLIST = new Set([
   "bible_in_one_year_started",
   "bible_in_one_year_day_viewed",
   "bible_in_one_year_day_completed",
-  "bible_in_one_year_reading_completed",
   "bible_in_one_year_trivia_completed",
   "trivia_chapter_completed",
   "bible_in_one_year_reflection_completed",
@@ -64,6 +63,20 @@ function parseDay(row: MasterActionRow) {
   return Number(row.journey_day || labelMatch?.[1] || 0) || null;
 }
 
+function parseAutoCompleted(row: MasterActionRow) {
+  const metadata = row.event_metadata || {};
+  if (metadata.auto_completed === true || metadata.autoCompleted === true) return true;
+  const label = String(row.action_label || "").toLowerCase();
+  return label.includes("auto completed") || label.includes("auto-completed") || label.includes("auto completion");
+}
+
+function cleanAutoCompletedLabel(label: string) {
+  return label
+    .replace(/^auto(?:\s|-)?completed\s*[:\-]?\s*/i, "")
+    .replace(/^auto\s*completion\s*[:\-]?\s*/i, "")
+    .trim();
+}
+
 function getBibleYearTaskFromRow(row: MasterActionRow) {
   const metadata = row.event_metadata || {};
   const metaTask = metadata.task;
@@ -91,7 +104,7 @@ function normalizeActionTypeForMainLog(row: MasterActionRow) {
 
   if (type === "bible_year_task_completed") {
     const task = getBibleYearTaskFromRow(row);
-    if (task === "reading") return "bible_in_one_year_reading_completed";
+    if (task === "reading") return null;
     if (task === "trivia") return "bible_in_one_year_trivia_completed";
     if (task === "reflection") return "bible_in_one_year_reflection_completed";
     return null;
@@ -103,6 +116,9 @@ function normalizeActionTypeForMainLog(row: MasterActionRow) {
 function actionTitle(row: MasterActionRow) {
   const type = row.action_type || "tracked_action";
   const day = parseDay(row);
+  const label = String(row.action_label || "").trim();
+  const cleanedLabel = cleanAutoCompletedLabel(label);
+  const isAutoCompleted = parseAutoCompleted(row);
   if (type === "user_signup") return "Created an account";
   if (type === "bible_in_one_year_started") return "Started Bible in One Year";
   if (type === "bible_in_one_year_day_viewed") return day ? `Opened Day ${day}` : "Opened a Bible in One Year day";
@@ -111,11 +127,11 @@ function actionTitle(row: MasterActionRow) {
   if (type === "bible_in_one_year_trivia_completed") return day ? `Finished Day ${day} trivia` : "Completed trivia";
   if (type === "bible_in_one_year_reflection_completed") return day ? `Finished Day ${day} discussion` : "Completed discussion";
   if (type === "trivia_chapter_completed") return "Completed trivia";
-  if (type === "study_notes_viewed") return "Opened study notes";
-  if (type === "bible_book_opened") return "Opened a Bible book";
-  if (type === "bible_chapter_opened") return "Opened a Bible chapter";
-  if (type === "chapter_completed") return row.action_label || "Completed a Bible chapter";
-  if (type === "book_completed") return row.action_label || "Completed a Bible book";
+  if (type === "study_notes_viewed") return cleanedLabel ? `Opened ${cleanedLabel}` : "Opened study notes";
+  if (type === "bible_book_opened") return cleanedLabel ? `Opened ${cleanedLabel}` : "Opened a Bible book";
+  if (type === "bible_chapter_opened") return cleanedLabel ? `Opened ${cleanedLabel}` : "Opened a Bible chapter";
+  if (type === "chapter_completed") return cleanedLabel ? `${isAutoCompleted ? "Auto completed" : "Completed"} ${cleanedLabel}` : "Completed a Bible chapter";
+  if (type === "book_completed") return cleanedLabel ? `${isAutoCompleted ? "Auto completed" : "Completed"} ${cleanedLabel}` : "Completed a Bible book";
   if (type === "verse_highlighted") return "Highlighted a verse";
   if (type === "upgrade_popup_viewed") return "Viewed upgrade popup";
   if (type === "upgrade_popup_cta_clicked") return "Clicked upgrade";
@@ -131,6 +147,8 @@ function actionTitle(row: MasterActionRow) {
 function actionDetail(row: MasterActionRow) {
   const type = row.action_type || "tracked_action";
   const label = String(row.action_label || "").trim();
+  const cleanedLabel = cleanAutoCompletedLabel(label);
+  const isAutoCompleted = parseAutoCompleted(row);
   const day = parseDay(row);
 
   if (type === "user_signup") return "Created an account";
@@ -141,11 +159,11 @@ function actionDetail(row: MasterActionRow) {
   if (type === "bible_in_one_year_trivia_completed") return label ? `Answered trivia for "${label}"` : "Answered trivia";
   if (type === "bible_in_one_year_reflection_completed") return label ? `Completed discussion on "${label}"` : "Completed a discussion";
   if (type === "trivia_chapter_completed") return label ? `Completed trivia for ${label}` : "Completed trivia";
-  if (type === "study_notes_viewed") return label ? `Opened study notes for ${label}` : "Opened study notes";
-  if (type === "bible_book_opened") return label ? `Opened ${label}` : "Opened a Bible book";
-  if (type === "bible_chapter_opened") return label ? `Opened ${label}` : "Opened a Bible chapter";
-  if (type === "chapter_completed") return label ? `Read ${label}` : "Read a Bible chapter";
-  if (type === "book_completed") return label ? `Finished ${label}` : "Completed a Bible book";
+  if (type === "study_notes_viewed") return cleanedLabel ? `Opened ${cleanedLabel}` : "Opened study notes";
+  if (type === "bible_book_opened") return cleanedLabel ? `Opened ${cleanedLabel}` : "Opened a Bible book";
+  if (type === "bible_chapter_opened") return cleanedLabel ? `Opened ${cleanedLabel}` : "Opened a Bible chapter";
+  if (type === "chapter_completed") return cleanedLabel ? `${isAutoCompleted ? "Auto completed" : "Completed"} ${cleanedLabel}` : "Completed a Bible chapter";
+  if (type === "book_completed") return cleanedLabel ? `${isAutoCompleted ? "Auto completed" : "Completed"} ${cleanedLabel}` : "Completed a Bible book";
   if (type === "verse_highlighted") return label ? `Highlighted ${label}` : "Highlighted a verse";
   if (type === "upgrade_popup_viewed") return "Viewed upgrade popup";
   if (type === "upgrade_popup_cta_clicked") return "Clicked upgrade";
