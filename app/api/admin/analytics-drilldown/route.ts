@@ -131,6 +131,12 @@ function dedupeActionRows<T extends { userId: string | null; userLabel: string; 
   return deduped;
 }
 
+function actionOrderRank(actionType: string) {
+  if (actionType.includes("completed")) return 0;
+  if (actionType.includes("opened") || actionType.includes("viewed")) return 1;
+  return 2;
+}
+
 function getBibleYearTaskFromRow(row: MasterActionRow) {
   const metadata = row.event_metadata || {};
   const metaTask = metadata.task;
@@ -339,6 +345,7 @@ export async function GET(request: Request) {
       const normalizedRow: MasterActionRow = { ...row, action_type: normalizedType };
       return {
         id: String(row.id || `${normalizedType}-${row.created_at}-${index}`),
+        actorId: row.user_id || (row.session_id ? `guest:${row.session_id}` : `unknown:${row.username || index}`),
         userId: row.user_id || null,
         userLabel: nameFor(row),
         actionType: normalizedType,
@@ -352,12 +359,39 @@ export async function GET(request: Request) {
       id: string;
       userId: string | null;
       userLabel: string;
+      actorId: string;
       actionType: string;
       actionTitle: string;
       detail: string;
       dayNumber: number | null;
       createdAt: string;
     } => Boolean(row)));
+
+  const actionRowsByActor = new Map<string, typeof mainActionRows>();
+  for (const row of mainActionRows) {
+    actionRowsByActor.set(row.actorId, [...(actionRowsByActor.get(row.actorId) || []), row]);
+  }
+
+  const sortedMainActionRows = Array.from(actionRowsByActor.entries())
+    .map(([actorId, rows]) => {
+      const sortedRows = [...rows].sort((left, right) => {
+        const timeDiff = new Date(left.createdAt).getTime() - new Date(right.createdAt).getTime();
+        if (timeDiff !== 0) return timeDiff;
+        const leftDay = left.dayNumber || 0;
+        const rightDay = right.dayNumber || 0;
+        if (leftDay !== rightDay) return leftDay - rightDay;
+        const rankDiff = actionOrderRank(left.actionType) - actionOrderRank(right.actionType);
+        if (rankDiff !== 0) return rankDiff;
+        return left.actionTitle.localeCompare(right.actionTitle);
+      });
+      return {
+        actorId,
+        rows: sortedRows,
+        lastActiveAt: sortedRows[sortedRows.length - 1]?.createdAt || "",
+      };
+    })
+    .sort((left, right) => right.lastActiveAt.localeCompare(left.lastActiveAt))
+    .flatMap((group) => group.rows);
 
   const grouped = new Map<string, typeof actionRows>();
   actionRows.forEach((row) => {
@@ -418,7 +452,7 @@ export async function GET(request: Request) {
   return NextResponse.json({
     window: windowKey,
     activeUsers,
-    actions: mainActionRows,
+    actions: sortedMainActionRows,
     signups,
     daysCompleted,
   }, { headers: { "Cache-Control": "private, max-age=15" } });
