@@ -124,112 +124,178 @@ Abraham knows Sodom is wicked, but he also knows God is just and merciful.
 Close relationship with God should make us humble, bold, merciful, and serious about justice.`,
   },
   {
-    reference: "Genesis 19:1-11",
-    title: "Sodom's Violence Is Exposed",
+    reference: "Genesis 19:1-3",
+    title: "The Angels Visit Lot",
+    icon: "🏠",
+    summary: "The same angels from Genesis 18 arrive in Sodom at evening, and Lot urgently receives them.",
+    markdown: `## Genesis 19:1-3
+
+> 📖 Read Genesis 19:1-3.
+
+## 🧭 Section Flow
+
+- Evening falls as two angels arrive in Sodom.
+- Lot is seated in the city gate, showing how deeply connected he has become to Sodom's public life.
+- Lot rises, bows, and strongly urges the visitors to come inside.
+- The angels first say they will remain in the street, then accept Lot's urgent plea.
+
+## 🔎 Key Phrases
+
+### "There Came Two Angels To Sodom At Even"
+
+These are the same two angels from Genesis 18. The story continues directly from Abraham's intercession into Sodom's crisis.
+
+### "Lot Sat In The Gate Of Sodom"
+
+The gate was a place of leadership, legal decisions, and influence. Lot is not merely nearby anymore. He is established inside Sodom's civic life.
+
+### "He Pressed Upon Them Greatly"
+
+Lot's urgency signals danger. He knows the city is unsafe at night and insists they take shelter.
+
+## 🔥 Big Idea
+
+Compromise often happens gradually: near Sodom, then in Sodom, then in the gate of Sodom.`,
+  },
+  {
+    reference: "Genesis 19:4-11",
+    title: "The Evilness Of Sodom",
     icon: "⚠️",
-    summary: "The angels enter Sodom, and the city quickly reveals the corruption God was judging.",
-    markdown: `## Genesis 19:1-11
+    summary: "Before the visitors even sleep, Sodom's violence and corruption are fully exposed.",
+    markdown: `## Genesis 19:4-11
 
-> 📖 Read Genesis 19:1-11.
+> 📖 Read Genesis 19:4-11.
 
-## ⚠️ What Is Happening Here?
+## 🧭 Section Flow
 
-Two angels arrive in Sodom, and Lot is sitting in the gate.
+- The men of Sodom surround Lot's house from every quarter.
+- They demand the visitors for evil purposes.
+- Lot pleads with the mob and makes a deeply tragic, sinful proposal.
+- The crowd turns on Lot and moves to break the door.
+- The angels pull Lot back inside and strike the mob with blindness.
 
-That detail matters. Lot is not simply near Sodom anymore. He is connected to the city's public life.
+## 🔎 Key Phrases
 
-When the city gathers around Lot's house, the violence of Sodom is exposed. The scene shows danger, pressure, corruption, and moral collapse.
+### "Compassed The House Round"
 
-## 🙏 What This Means
+The crowd completely surrounds the house. The text shows citywide corruption, not an isolated incident.
 
-Genesis wants us to understand why Sodom's cry was great.
+### "That We May Know Them"
 
-This judgment is not random. The city is deeply broken.
+The intent is violent sexual assault. Scripture also describes Sodom's sins more broadly: pride, injustice, neglect of the vulnerable, and moral corruption.
+
+### "They Smote The Men...With Blindness"
+
+God intervenes directly through the angels. Even then, the crowd wears itself out trying to find the door, showing hardened hearts.
 
 ## 🔥 Big Idea
 
-Compromise can pull people close to places they cannot control and cannot heal.`,
+Sodom is judged for entrenched, communal wickedness that refuses correction.`,
   },
   {
-    reference: "Genesis 19:12-22",
-    title: "Mercy Pulls Lot Out",
+    reference: "Genesis 19:12-23",
+    title: "Lot Flees Sodom",
     icon: "🤲",
-    summary: "Lot hesitates, but the angels take him by the hand because the LORD is merciful.",
-    markdown: `## Genesis 19:12-22
+    summary: "Judgment is certain, Lot hesitates, and mercy physically pulls him and his family out.",
+    markdown: `## Genesis 19:12-23
 
-> 📖 Read Genesis 19:12-22.
+> 📖 Read Genesis 19:12-23.
 
-## 🤲 What Is Happening Here?
+## 🧭 Section Flow
 
-The angels tell Lot to gather his family and leave.
+- The angels command Lot to gather family and leave immediately.
+- Lot warns his sons-in-law, but they treat him like he is mocking.
+- Morning comes and Lot still lingers.
+- The angels seize Lot, his wife, and daughters by the hand.
+- Lot requests Zoar, and God grants mercy again before judgment falls.
 
-Lot warns his sons-in-law, but they think he is joking. Morning comes, and Lot still lingers.
+## 🔎 Key Phrases
 
-Then the angels take him, his wife, and his daughters by the hand. Genesis says this happened because the LORD was merciful to him.
+### "For We Will Destroy This Place"
 
-## 🙏 What This Means
+The investigation is over. The city's sin has reached full measure, and judgment is now declared.
 
-Lot is rescued, but he is not impressive here.
+### "While He Lingered"
 
-He is slow, hesitant, and attached to a place being judged. Mercy has to pull him out.
+Lot knows the warning but delays. Attachment to a corrupt place can persist even when danger is obvious.
+
+### "The Lord Being Merciful Unto Him"
+
+Lot is rescued by mercy, not by decisive strength. Grace drags him out when he cannot move fast enough.
 
 ## 🔥 Big Idea
 
-God's mercy often rescues us more strongly than we know how to rescue ourselves.`,
+Mercy often arrives before our obedience feels strong, but it still calls us to leave judgment behind.`,
   },
   {
-    reference: "Genesis 19:23-29",
-    title: "Sodom and Gomorrah Fall",
+    reference: "Genesis 19:24-29",
+    title: "Sodom And Gomorrah Are Destroyed",
     icon: "🔥",
-    summary: "Judgment falls on Sodom and Gomorrah, but Lot is rescued because God remembers Abraham.",
-    markdown: `## Genesis 19:23-29
+    summary: "After Lot reaches safety, God's judgment falls on the plain while covenant mercy still preserves Lot.",
+    markdown: `## Genesis 19:24-29
 
-> 📖 Read Genesis 19:23-29.
+> 📖 Read Genesis 19:24-29.
 
-## 🔥 What Is Happening Here?
+## 🧭 Section Flow
 
-Lot reaches Zoar, and judgment falls on Sodom and Gomorrah.
+- Brimstone and fire fall from the Lord out of heaven.
+- The cities of the plain are overthrown.
+- Lot's wife looks back and becomes a pillar of salt.
+- Abraham sees smoke rising like a furnace.
+- God remembers Abraham and brings Lot out of the overthrow.
 
-Fire and brimstone come from the LORD out of heaven. Lot's wife looks back and becomes a warning about divided affection.
+## 🔎 Key Phrases
 
-Then Genesis says God remembered Abraham and sent Lot out of the overthrow.
+### "From The Lord Out Of Heaven"
 
-## 🙏 What This Means
+The text stresses divine judgment, not accident or rumor. God acts justly with full knowledge.
 
-Judgment and mercy stand side by side in this passage.
+### "His Wife Looked Back"
 
-Sodom is judged, but Lot is rescued. Abraham's intercession mattered, and God's mercy was active even in a terrible scene.
+The warning was not only about turning the head, but about divided loyalty. Her heart remained tied to the city under judgment.
+
+### "God Remembered Abraham"
+
+Remembered means covenant action, not forgotten memory. Abraham's intercession mattered, and mercy reached Lot.
 
 ## 🔥 Big Idea
 
-God does not ignore evil, but He also knows how to rescue with mercy.`,
+Judgment is real, and covenant mercy is real. Both stand in this chapter.`,
   },
   {
     reference: "Genesis 19:30-38",
-    title: "Lot's Family After Sodom",
+    title: "The Birth Of Moab And Ben-ammi",
     icon: "💔",
-    summary: "Lot escapes Sodom, but the ending shows that Sodom's damage still casts a long shadow.",
+    summary: "Lot survives Sodom, but fear and moral collapse continue in the cave, shaping future nations.",
     markdown: `## Genesis 19:30-38
 
 > 📖 Read Genesis 19:30-38.
 
-## 💔 What Is Happening Here?
+## 🧭 Section Flow
 
-Genesis 19 ends in a painful and disturbing way.
+- Lot leaves Zoar and lives in a cave with his two daughters.
+- The daughters, acting in fear, plan to preserve their father's line through deception.
+- Lot is made drunk and unaware during both nights.
+- Both daughters conceive.
+- Moab and Ben-ammi are born, ancestors of Moabites and Ammonites.
 
-Lot leaves Zoar and lives in a cave with his daughters. The family that escaped Sodom still carries deep fear, confusion, and brokenness.
+## 🔎 Key Phrases
 
-The birth of Moab and Ammon becomes part of the wider Bible story later.
+### "He Dwelt In A Cave"
 
-## 🙏 What This Means
+Lot once chose the richest plain. Now he is isolated in fear. Rescue did not erase all consequences.
 
-Leaving a place physically does not always mean its damage has left the heart.
+### "Let Us Make Our Father Drink Wine"
 
-Genesis shows the consequences of long compromise without softening the ending.
+Their plan is deliberate and sinful, driven by panic rather than trust in God.
+
+### "The Father Of The Moabites...And The Children Of Ammon"
+
+Genesis records painful origins honestly because these family outcomes will matter later in Israel's story.
 
 ## 🔥 Big Idea
 
-Lot's rescue was real, but his story warns us that compromise can leave wounds that last beyond the escape.`,
+Escaping judgment physically does not mean all inner damage is healed immediately.`,
   },
   {
     reference: "Genesis 20:1-18",
