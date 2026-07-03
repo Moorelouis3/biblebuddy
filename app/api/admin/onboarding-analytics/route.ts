@@ -28,6 +28,31 @@ const NEW_USER_FIRST_THREE_DAYS_ACTION_TYPES = [
   "profile_creation_popup_skipped",
 ] as const;
 
+const OWNER_MAIN_ACTION_LOG_ALLOWLIST = new Set([
+  "user_signup",
+  "bible_in_one_year_started",
+  "bible_in_one_year_day_viewed",
+  "bible_in_one_year_day_completed",
+  "bible_in_one_year_reading_completed",
+  "bible_in_one_year_trivia_completed",
+  "trivia_chapter_completed",
+  "bible_in_one_year_reflection_completed",
+  "study_notes_viewed",
+  "bible_book_opened",
+  "bible_chapter_opened",
+  "chapter_completed",
+  "book_completed",
+  "verse_highlighted",
+  "upgrade_popup_viewed",
+  "upgrade_popup_cta_clicked",
+  "upgrade_popup_dismissed",
+  "trial_started",
+  "trial_canceled",
+  "trial_converted",
+  "user_upgraded",
+  "badge_earned",
+]);
+
 type AnalyticsResponseCacheEntry = {
   body: unknown;
   cachedAt: number;
@@ -2393,11 +2418,14 @@ function getMasterActionTitle(action: MasterActionFunnelRow) {
   const label = action.action_label || "";
   const day = Number(action.journey_day || parseBibleYearDayFromLabel(label) || 0);
   const task = getTaskTypeFromAction(action);
+  if (actionType === "bible_in_one_year_started") return "Started Bible in One Year";
+  if (actionType === "bible_in_one_year_day_viewed") return day ? `Opened Day ${day}` : "Opened a Bible in One Year day";
   if (actionType === "bible_year_task_started") return task ? `Started ${task} task` : `Started Day ${day || ""} task`.trim();
   if (actionType === "bible_in_one_year_day_completed") return "Completed a Bible in One Year day";
   if (actionType === "bible_in_one_year_reading_completed") return "Completed video / reading task";
   if (actionType === "bible_in_one_year_trivia_completed") return "Completed trivia";
   if (actionType === "bible_in_one_year_reflection_completed") return "Completed day summary";
+  if (actionType === "trivia_chapter_completed") return "Completed trivia";
   if (actionType === "dashboard_tour_started") return "Started dashboard walkthrough";
   if (actionType === "dashboard_tour_completed") return "Finished dashboard walkthrough";
   if (actionType === "dashboard_tour_skipped") return "Skipped dashboard walkthrough";
@@ -2416,6 +2444,12 @@ function getMasterActionTitle(action: MasterActionFunnelRow) {
   if (actionType === "trial_converted") return "Converted after trial";
   if (actionType === "user_signup") return "Created free account";
   if (actionType === "user_upgraded") return "Converted to Pro";
+  if (actionType === "bible_book_opened") return "Opened a Bible book";
+  if (actionType === "bible_chapter_opened") return "Opened a Bible chapter";
+  if (actionType === "chapter_completed") return "Completed a Bible chapter";
+  if (actionType === "book_completed") return "Completed a Bible book";
+  if (actionType === "verse_highlighted") return "Highlighted a verse";
+  if (actionType === "badge_earned") return "Earned a badge";
   if (actionType === "chapter_notes_viewed" || actionType === "study_notes_viewed") return "Opened study notes";
   if (actionType === "study_notes_section_opened") return "Opened study note section";
   if (actionType === "chapter_notes_reviewed") return "Completed notes task";
@@ -2425,15 +2459,47 @@ function getMasterActionTitle(action: MasterActionFunnelRow) {
 }
 
 function getMasterActionDetail(action: MasterActionFunnelRow) {
+  const actionType = action.action_type || "";
   const label = action.action_label || "";
   const day = Number(action.journey_day || parseBibleYearDayFromLabel(label) || 0);
   const task = getTaskTypeFromAction(action);
+
+  if (actionType === "bible_in_one_year_started") return "Started Bible in One Year";
+  if (actionType === "bible_in_one_year_day_viewed") return day ? `Opened Day ${day}` : "Opened a Bible in One Year day";
+  if (actionType === "bible_book_opened") return label ? `Opened ${label}` : "Opened a Bible book";
+  if (actionType === "bible_chapter_opened") return label ? `Opened ${label}` : "Opened a Bible chapter";
+  if (actionType === "chapter_completed") return label ? `Read ${label}` : "Read a Bible chapter";
+  if (actionType === "book_completed") return label ? `Finished ${label}` : "Completed a Bible book";
+  if (actionType === "verse_highlighted") return label ? `Highlighted ${label}` : "Highlighted a verse";
+  if (actionType === "trivia_chapter_completed") return label ? `Completed trivia for ${label}` : "Completed trivia";
+  if (actionType === "badge_earned") return label || "Earned a badge";
+
   const pieces = [
     day ? `Day ${day}` : "",
     task ? `Task: ${task}` : "",
     label && !label.startsWith("BibleBuddy Funnel") ? label : "",
   ].filter(Boolean);
   return pieces.length ? pieces.join(" | ") : "Tracked in the master action log.";
+}
+
+function normalizeActionTypeForOwnerLog(action: MasterActionFunnelRow) {
+  const actionType = action.action_type || "";
+  if (!actionType) return null;
+
+  if (actionType === "bible_book_viewed") return "bible_book_opened";
+  if (actionType === "bible_chapter_viewed") return "bible_chapter_opened";
+  if (actionType === "chapter_notes_viewed" || actionType === "study_notes_section_opened") return "study_notes_viewed";
+  if (actionType === "bible_year_day_start_popup_clicked") return "bible_in_one_year_started";
+
+  if (actionType === "bible_year_task_completed") {
+    const task = getTaskTypeFromAction(action);
+    if (task === "video") return "bible_in_one_year_reading_completed";
+    if (task === "trivia") return "bible_in_one_year_trivia_completed";
+    if (task === "summary") return "bible_in_one_year_reflection_completed";
+    return null;
+  }
+
+  return actionType;
 }
 
 function buildActiveUsersLast24Hours(masterRows: MasterActionFunnelRow[], profileByUserId: Map<string, string>) {
@@ -2447,6 +2513,11 @@ function buildActiveUsersLast24Hours(masterRows: MasterActionFunnelRow[], profil
   for (const row of masterRows) {
     const createdAt = row.created_at || "";
     if (!createdAt) continue;
+
+    const normalizedActionType = normalizeActionTypeForOwnerLog(row);
+    if (!normalizedActionType || !OWNER_MAIN_ACTION_LOG_ALLOWLIST.has(normalizedActionType)) continue;
+
+    const normalizedRow: MasterActionFunnelRow = { ...row, action_type: normalizedActionType };
 
     const userId = row.user_id || null;
     const sessionId = row.session_id || null;
@@ -2463,13 +2534,13 @@ function buildActiveUsersLast24Hours(masterRows: MasterActionFunnelRow[], profil
     };
 
     current.actions.push({
-      id: `${row.action_type || "action"}-${createdAt}-${current.actions.length}`,
-      actionType: row.action_type || "tracked_action",
-      title: getMasterActionTitle(row),
-      detail: getMasterActionDetail(row),
-      category: getMasterActionCategory(row.action_type || ""),
+      id: `${normalizedActionType}-${createdAt}-${current.actions.length}`,
+      actionType: normalizedActionType,
+      title: getMasterActionTitle(normalizedRow),
+      detail: getMasterActionDetail(normalizedRow),
+      category: getMasterActionCategory(normalizedActionType),
       dayNumber: Number(row.journey_day || parseBibleYearDayFromLabel(row.action_label || "") || 0) || null,
-      taskType: getTaskTypeFromAction(row),
+      taskType: getTaskTypeFromAction(normalizedRow),
       createdAt,
     });
     rowsByActor.set(actorId, current);
