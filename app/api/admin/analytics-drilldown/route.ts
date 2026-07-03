@@ -132,27 +132,34 @@ function getStudyNotesDisplayLabel(label: string) {
   return cleanAutoCompletedLabel(label);
 }
 
-function dedupeActionRows<T extends { userId: string | null; userLabel: string; actionTitle: string; detail: string; createdAt: string }>(rows: T[]) {
-  const seen = new Set<string>();
-  const deduped: T[] = [];
+function dedupeActionRows<T extends { userId: string | null; userLabel: string; actionType: string; actionTitle: string; detail: string; createdAt: string; dayNumber?: number | null }>(rows: T[]) {
+  const chosenByKey = new Map<string, T>();
   for (const row of rows) {
-    const dayNumber = (row as { dayNumber?: number | null }).dayNumber ?? null;
-    const key = [
-      row.userId || row.userLabel,
-      dayNumber ? `day:${dayNumber}` : `time:${row.createdAt}`,
-      row.actionTitle.trim().toLowerCase(),
-      row.detail.trim().toLowerCase(),
-    ].join("|");
-    if (seen.has(key)) continue;
-    seen.add(key);
-    deduped.push(row);
+    const userKey = row.userId || row.userLabel;
+    const titleKey = row.actionTitle.trim().toLowerCase();
+    const detailKey = row.detail.trim().toLowerCase();
+    const minuteKey = row.createdAt ? row.createdAt.slice(0, 16) : "";
+    const isCompletionRow = row.actionType === "chapter_completed" || row.actionType === "book_completed";
+    const key = isCompletionRow
+      ? [userKey, row.actionType, titleKey, detailKey, minuteKey].join("|")
+      : [userKey, row.dayNumber ? `day:${row.dayNumber}` : `time:${row.createdAt}`, titleKey, detailKey].join("|");
+    const existing = chosenByKey.get(key);
+    if (!existing) {
+      chosenByKey.set(key, row);
+      continue;
+    }
+
+    const existingAuto = existing.actionTitle.toLowerCase().startsWith("auto completed");
+    const nextAuto = row.actionTitle.toLowerCase().startsWith("auto completed");
+    if (existingAuto && !nextAuto) chosenByKey.set(key, row);
   }
-  return deduped;
+  return Array.from(chosenByKey.values());
 }
 
 function actionOrderRank(actionType: string) {
-  if (actionType.includes("completed")) return 0;
-  if (actionType.includes("opened") || actionType.includes("viewed")) return 1;
+  if (actionType.includes("opened") || actionType.includes("viewed")) return 0;
+  if (actionType.includes("started")) return 1;
+  if (actionType.includes("completed")) return 2;
   return 2;
 }
 

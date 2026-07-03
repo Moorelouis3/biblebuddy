@@ -5,6 +5,8 @@
 import { supabase } from "./supabaseClient";
 import { ACTION_TYPE } from "./actionTypes";
 
+const chapterCompletionInFlight = new Set<string>();
+
 /**
  * Get total chapters for a book
  */
@@ -372,6 +374,10 @@ export async function isChapterUnlocked(userId: string, book: string, chapter: n
  * Uses UPSERT to prevent duplicates (unique constraint on user_id, book, chapter)
  */
 export async function markChapterDone(userId: string, book: string, chapter: number): Promise<void> {
+  const completionKey = `${userId}:${book.toLowerCase().trim()}:${chapter}`;
+  if (chapterCompletionInFlight.has(completionKey)) return;
+  chapterCompletionInFlight.add(completionKey);
+
   try {
     const bookKey = book.toLowerCase().trim();
     const actionLabel = `${book} ${chapter}`;
@@ -419,6 +425,8 @@ export async function markChapterDone(userId: string, book: string, chapter: num
   } catch (err) {
     console.error("[READING_PROGRESS] Error in markChapterDone:", err);
     throw err;
+  } finally {
+    chapterCompletionInFlight.delete(completionKey);
   }
 }
 

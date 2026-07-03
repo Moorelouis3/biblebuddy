@@ -4152,8 +4152,8 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
 
               {selectedProfileOverlay && typeof document !== "undefined"
                 ? createPortal(
-                    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-slate-950/65 p-4" role="dialog" aria-modal="true" aria-label="User profile overlay">
-                      <div className="flex max-h-[92vh] w-full max-w-5xl flex-col overflow-hidden rounded-3xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] shadow-[0_28px_80px_rgba(15,23,42,0.28)]">
+                    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-slate-950/65 p-3 sm:p-4" role="dialog" aria-modal="true" aria-label="User profile overlay">
+                      <div className="flex h-[94vh] w-[min(98vw,1700px)] flex-col overflow-hidden rounded-3xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] shadow-[0_28px_80px_rgba(15,23,42,0.28)]">
                         <div className="flex items-center justify-between border-b border-[var(--bb-card-border,#d8e3ec)] px-5 py-3">
                           <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">{selectedProfileOverlay.userLabel} Profile</p>
                           <button
@@ -4168,7 +4168,7 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
                           <iframe
                             title={`${selectedProfileOverlay.userLabel} profile`}
                             src={`/profile/${selectedProfileOverlay.userId}`}
-                            className="h-full w-full border-0 bg-white"
+                            className="block h-full w-full border-0 bg-white"
                           />
                         </div>
                       </div>
