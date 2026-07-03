@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
+import { resolveUserBadge } from "@/lib/userBadges";
 
 type WindowKey = "today" | "yesterday" | "24h" | "7d" | "30d" | "90d" | "this_month" | "lifetime";
 
@@ -130,6 +131,26 @@ function getStudyNotesDisplayLabel(label: string) {
   const parsed = parseStudyNotesLabel(label);
   if (parsed) return parsed;
   return cleanAutoCompletedLabel(label);
+}
+
+function getEffectiveEventTimestamp(row: MasterActionRow) {
+  const metadata = row.event_metadata || {};
+  const candidates = [
+    metadata.occurredAt,
+    metadata.eventOccurredAt,
+    metadata.clientOccurredAt,
+    metadata.completedAt,
+    metadata.openedAt,
+    row.created_at,
+  ];
+
+  for (const candidate of candidates) {
+    if (typeof candidate !== "string" || !candidate.trim()) continue;
+    const parsed = new Date(candidate);
+    if (!Number.isNaN(parsed.getTime())) return parsed.toISOString();
+  }
+
+  return row.created_at || "";
 }
 
 function dedupeActionRows<T extends { userId: string | null; userLabel: string; actionType: string; actionTitle: string; detail: string; createdAt: string; dayNumber?: number | null }>(rows: T[]) {
@@ -334,13 +355,24 @@ export async function GET(request: Request) {
 
   const actions = ((actionData || []) as MasterActionRow[]).filter((row) => row.user_id !== ownerId);
   const userIds = Array.from(new Set(actions.map((row) => row.user_id).filter((id): id is string => Boolean(id))));
-  const profiles = new Map<string, { name: string; streak: number; totalActions: number; paid: boolean }>();
+  const profiles = new Map<string, {
+    name: string;
+    streak: number;
+    totalActions: number;
+    paid: boolean;
+    customBadge: string | null;
+    proExpiresAt: string | null;
+    membershipStatus: string | null;
+  }>();
   const currentDays = new Map<string, number>();
 
   for (let index = 0; index < userIds.length; index += 500) {
     const batch = userIds.slice(index, index + 500);
     const [{ data: profileRows }, { data: progressRows }] = await Promise.all([
-      admin.from("profile_stats").select("user_id, display_name, username, current_streak, total_actions, is_paid").in("user_id", batch),
+      admin
+        .from("profile_stats")
+        .select("user_id, display_name, username, current_streak, total_actions, is_paid, member_badge, pro_expires_at, membership_status")
+        .in("user_id", batch),
       admin.from("bible_year_day_progress").select("user_id, day_number, reading_completed").in("user_id", batch),
     ]);
     for (const profile of profileRows || []) {
@@ -351,6 +383,9 @@ export async function GET(request: Request) {
         streak: Number(profile.current_streak || 0),
         totalActions: Number(profile.total_actions || 0),
         paid: profile.is_paid === true,
+        customBadge: typeof profile.member_badge === "string" ? profile.member_badge : null,
+        proExpiresAt: typeof profile.pro_expires_at === "string" ? profile.pro_expires_at : null,
+        membershipStatus: typeof profile.membership_status === "string" ? profile.membership_status : null,
       });
     }
     for (const progress of progressRows || []) {
@@ -382,6 +417,7 @@ export async function GET(request: Request) {
     detail: actionDetail(row),
     dayNumber: parseDay(row),
     createdAt: row.created_at || "",
+    eventAt: getEffectiveEventTimestamp(row),
   }));
 
   const mainActionRows = dedupeActionRows(actions
@@ -399,6 +435,7 @@ export async function GET(request: Request) {
         detail: actionDetail(normalizedRow),
         dayNumber: parseDay(normalizedRow),
         createdAt: row.created_at || "",
+        eventAt: getEffectiveEventTimestamp(normalizedRow),
         sourceIndex: index,
       };
     })
@@ -412,15 +449,20 @@ export async function GET(request: Request) {
       detail: string;
       dayNumber: number | null;
       createdAt: string;
+      eventAt: string;
       sourceIndex: number;
     } => Boolean(row)));
 
   const filteredMainActionRows = removeRedundantBibleYearOpens(mainActionRows);
 
   const sortedMainActionRows = [...filteredMainActionRows].sort((left, right) => {
-    const leftTime = new Date(left.createdAt).getTime();
-    const rightTime = new Date(right.createdAt).getTime();
+    const leftTime = new Date(left.eventAt || left.createdAt).getTime();
+    const rightTime = new Date(right.eventAt || right.createdAt).getTime();
     if (leftTime !== rightTime) return rightTime - leftTime;
+
+    const leftCreatedTime = new Date(left.createdAt).getTime();
+    const rightCreatedTime = new Date(right.createdAt).getTime();
+    if (leftCreatedTime !== rightCreatedTime) return rightCreatedTime - leftCreatedTime;
 
     if (left.sourceIndex !== right.sourceIndex) return left.sourceIndex - right.sourceIndex;
 
@@ -434,6 +476,12 @@ export async function GET(request: Request) {
   const activeUsers = Array.from(grouped.entries()).map(([key, rows]) => {
     const first = rows[0];
     const profile = first.userId ? profiles.get(first.userId) : undefined;
+    const resolvedBadge = resolveUserBadge({
+      customBadge: profile?.customBadge,
+      isPaid: profile?.paid,
+      proExpiresAt: profile?.proExpiresAt,
+    });
+    const userBadgeLabel = resolvedBadge?.label || (profile?.membershipStatus === "pro" ? "Pro" : first.userId ? "Free" : "Guest");
     return {
       actorId: key,
       userId: first.userId,
@@ -443,6 +491,7 @@ export async function GET(request: Request) {
       totalActions: rows.length,
       lifetimeActions: profile?.totalActions || 0,
       accountType: profile?.paid ? "Pro" : first.userId ? "Free" : "Guest",
+      userBadgeLabel,
       lastAction: first.actionTitle,
       lastActiveAt: first.createdAt,
     };

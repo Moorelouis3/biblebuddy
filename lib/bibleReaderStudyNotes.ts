@@ -384,7 +384,7 @@ function formatBibleYearPhraseCard(rawHeading: string, rawBody: string, referenc
 
 function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, book: string): BibleReaderStudySection {
   const preserveExactPhraseBodies =
-    normalizeBook(book) === "genesis" && section.chapter >= 1 && section.chapter <= 18;
+    normalizeBook(book) === "genesis" && section.chapter >= 1 && section.chapter <= 19;
   return {
     book,
     chapter: section.chapter,

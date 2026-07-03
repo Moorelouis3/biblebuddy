@@ -49,10 +49,27 @@ function toDateString(value: string | null): string | null {
   return parsed.toISOString().slice(0, 10);
 }
 
+function buildEventMetadata(details?: {
+  journeyDay?: number | null;
+  eventOccurredAt?: string | null;
+  eventMetadata?: Record<string, unknown> | null;
+}) {
+  return {
+    ...(details?.eventMetadata || {}),
+    ...(details?.journeyDay !== undefined && details?.journeyDay !== null ? { dayNumber: details.journeyDay } : {}),
+    ...(details?.eventOccurredAt ? { occurredAt: details.eventOccurredAt } : {}),
+  };
+}
+
 export async function consumeCredit(
   userId: string,
   actionType: ActionType,
-  actionLabel?: string | null
+  actionLabel?: string | null,
+  details?: {
+    journeyDay?: number | null;
+    eventOccurredAt?: string | null;
+    eventMetadata?: Record<string, unknown> | null;
+  }
 ): Promise<ConsumeCreditResult> {
   const supabaseAdmin = getSupabaseAdmin();
   if (!supabaseAdmin) {
@@ -102,6 +119,8 @@ export async function consumeCredit(
       user_id: string;
       action_type: ActionType;
       action_label?: string | null;
+      journey_day?: number | null;
+      event_metadata?: Record<string, unknown>;
     } = {
       user_id: userId,
       action_type: actionType,
@@ -109,6 +128,15 @@ export async function consumeCredit(
 
     if (actionLabel !== undefined && actionLabel !== null) {
       insertData.action_label = actionLabel;
+    }
+    if (typeof details?.journeyDay === "number") {
+      insertData.journey_day = details.journeyDay;
+    }
+    if (details?.eventMetadata || details?.eventOccurredAt) {
+      insertData.event_metadata = {
+        ...(details?.eventMetadata || {}),
+        ...(details?.eventOccurredAt ? { occurredAt: details.eventOccurredAt } : {}),
+      };
     }
 
     const { error: actionError } = await supabaseAdmin
@@ -144,6 +172,17 @@ export async function consumeCredit(
   }
 
   if (dailyCredits <= 0) {
+    const { error: exhaustedError } = await supabaseAdmin.from("master_actions").insert({
+      user_id: userId,
+      action_type: actionType,
+      action_label: actionLabel || `Out of credits for ${actionType}`,
+      event_metadata: buildEventMetadata(details),
+    });
+
+    if (exhaustedError) {
+      console.error("[CONSUME_CREDIT] Error logging credit exhaustion:", exhaustedError);
+    }
+
     return { ok: false, reason: "no_credits", dailyCredits };
   }
 
@@ -164,6 +203,8 @@ export async function consumeCredit(
     user_id: string;
     action_type: ActionType;
     action_label?: string | null;
+    journey_day?: number | null;
+    event_metadata?: Record<string, unknown>;
   } = {
     user_id: userId,
     action_type: actionType,
@@ -171,6 +212,12 @@ export async function consumeCredit(
 
   if (actionLabel !== undefined && actionLabel !== null) {
     insertData.action_label = actionLabel;
+  }
+  if (typeof details?.journeyDay === "number") {
+    insertData.journey_day = details.journeyDay;
+  }
+  if (details?.eventMetadata || details?.eventOccurredAt) {
+    insertData.event_metadata = buildEventMetadata(details);
   }
 
   const { error: actionError } = await supabaseAdmin

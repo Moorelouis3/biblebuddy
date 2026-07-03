@@ -444,6 +444,7 @@ type AnalyticsDrilldownResponse = {
     totalActions: number;
     lifetimeActions: number;
     accountType: string;
+    userBadgeLabel?: string;
     lastAction: string;
     lastActiveAt: string;
   }>;
@@ -481,6 +482,7 @@ type ActionLogUserSummary = {
   streak: number;
   currentDay: number | null;
   accountType: string;
+  userBadgeLabel: string;
   lifetimeActions: number;
   totalActionsInWindow: number;
   lastActiveAt: string;
@@ -3621,6 +3623,7 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
   const [selectedUserInsightLoading, setSelectedUserInsightLoading] = useState(false);
   const [selectedUserInsightError, setSelectedUserInsightError] = useState<string | null>(null);
   const [visibleSelectedUserActionsCount, setVisibleSelectedUserActionsCount] = useState(30);
+  const [showSelectedUserProfileFrame, setShowSelectedUserProfileFrame] = useState(false);
 
   useEffect(() => {
     applyAppThemeToDocument(readCachedAppTheme(null));
@@ -3747,6 +3750,7 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
       setSelectedUserInsightLoading(false);
       setSelectedUserInsightError(null);
       setVisibleSelectedUserActionsCount(30);
+      setShowSelectedUserProfileFrame(false);
       return;
     }
 
@@ -3779,6 +3783,7 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
               streak: summaryRow.streak,
               currentDay: summaryRow.currentDay,
               accountType: summaryRow.accountType,
+              userBadgeLabel: summaryRow.userBadgeLabel || summaryRow.accountType || "Free",
               lifetimeActions: summaryRow.lifetimeActions,
               totalActionsInWindow: summaryRow.totalActions,
               lastActiveAt: summaryRow.lastActiveAt,
@@ -3848,6 +3853,7 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
           streak: row.streak,
           currentDay: row.currentDay,
           accountType: row.accountType,
+          userBadgeLabel: row.userBadgeLabel || row.accountType || "Free",
           lifetimeActions: row.lifetimeActions,
           totalActionsInWindow: row.totalActions,
           lastActiveAt: row.lastActiveAt,
@@ -3936,6 +3942,16 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
   const visibleSelectedUserActions = useMemo(() => {
     return selectedUserLifetimeActions.slice(0, visibleSelectedUserActionsCount);
   }, [selectedUserLifetimeActions, visibleSelectedUserActionsCount]);
+
+  const selectedUserActivityDays = useMemo(() => {
+    const daySet = new Set<number>();
+    for (const action of selectedUserLifetimeActions) {
+      if (typeof action.dayNumber === "number" && action.dayNumber > 0 && action.dayNumber <= 365) {
+        daySet.add(action.dayNumber);
+      }
+    }
+    return Array.from(daySet).sort((a, b) => a - b);
+  }, [selectedUserLifetimeActions]);
 
   function exportCsv() {
     const headers = [
@@ -4250,7 +4266,13 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
                     <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-slate-950/65 p-3 sm:p-4" role="dialog" aria-modal="true" aria-label="User activity insights">
                       <div className="flex h-[94vh] w-[min(98vw,1300px)] flex-col overflow-hidden rounded-3xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] shadow-[0_28px_80px_rgba(15,23,42,0.28)]">
                         <div className="flex items-center justify-between border-b border-[var(--bb-card-border,#d8e3ec)] px-5 py-3">
-                          <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">{selectedUserInsight.userLabel} Activity Snapshot</p>
+                          <button
+                            type="button"
+                            onClick={() => setShowSelectedUserProfileFrame((current) => !current)}
+                            className="text-sm font-black text-blue-700 underline decoration-blue-300 underline-offset-2 hover:text-blue-800"
+                          >
+                            {selectedUserInsight.userLabel} Activity Snapshot
+                          </button>
                           <button
                             type="button"
                             onClick={() => setSelectedUserInsight(null)}
@@ -4275,11 +4297,38 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
                             <p className="mt-1 text-lg font-black text-slate-900">{selectedUserSummary?.lifetimeActions ?? selectedUserLifetimeActions.length}</p>
                           </div>
                           <div className="rounded-2xl border border-slate-200 bg-white px-4 py-3">
+                            <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Label</p>
+                            <p className="mt-1 text-base font-black text-slate-900">{selectedUserSummary?.userBadgeLabel || selectedUserSummary?.accountType || "Free"}</p>
+                          </div>
+                          <div className="rounded-2xl border border-slate-200 bg-white px-4 py-3">
                             <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Last Active</p>
                             <p className="mt-1 text-base font-black text-slate-900">{selectedUserSummary?.lastActiveAt ? formatDateTime(selectedUserSummary.lastActiveAt) : "Unknown"}</p>
                           </div>
                         </div>
+                        {showSelectedUserProfileFrame ? (
+                          <div className="border-b border-[var(--bb-card-border,#d8e3ec)] bg-white p-3">
+                            <iframe
+                              title={`${selectedUserInsight.userLabel} profile`}
+                              src={`/profile/${selectedUserInsight.userId}`}
+                              className="block h-[340px] w-full rounded-2xl border border-slate-200 bg-white"
+                            />
+                          </div>
+                        ) : null}
                         <div className="min-h-0 flex-1 overflow-y-auto bg-white p-4" onScroll={loadMoreSelectedUserActionsOnScroll}>
+                          <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-500">Activity</p>
+                          <div className="mb-4 rounded-2xl border border-slate-200 bg-slate-50 p-3">
+                            {selectedUserActivityDays.length === 0 ? (
+                              <p className="text-sm font-semibold text-slate-600">No day activity tracked yet.</p>
+                            ) : (
+                              <div className="flex flex-wrap gap-1.5">
+                                {selectedUserActivityDays.map((day) => (
+                                  <span key={`activity-day-${day}`} className="inline-flex rounded-full border border-blue-200 bg-blue-50 px-2.5 py-1 text-xs font-black text-blue-700">
+                                    Day {day}
+                                  </span>
+                                ))}
+                              </div>
+                            )}
+                          </div>
                           <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-500">Personal Action Log (Lifetime)</p>
                           {selectedUserInsightLoading ? (
                             <div className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-5 text-sm font-semibold text-slate-600">Loading lifetime actions...</div>

@@ -8,6 +8,9 @@ import { ACTION_TYPE, isActionType } from "@/lib/actionTypes";
 type ConsumeCreditRequest = {
   actionType?: string;
   actionLabel?: string;
+  journeyDay?: number | null;
+  eventOccurredAt?: string | null;
+  eventMetadata?: Record<string, unknown> | null;
   preview?: boolean;
 };
 
@@ -126,7 +129,11 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(preview, { status: preview.ok ? 200 : 500 });
   }
 
-  const result = await consumeCredit(user.id, actionType, actionLabel);
+  const result = await consumeCredit(user.id, actionType, actionLabel, {
+    journeyDay: typeof body.journeyDay === "number" ? body.journeyDay : null,
+    eventOccurredAt: typeof body.eventOccurredAt === "string" ? body.eventOccurredAt : null,
+    eventMetadata: body.eventMetadata && typeof body.eventMetadata === "object" ? body.eventMetadata : null,
+  });
 
   if (!result.ok && result.reason !== "no_credits") {
     return NextResponse.json(result, { status: 500 });

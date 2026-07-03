@@ -473,9 +473,18 @@ export default function BibleInOneYearPage() {
     }
 
     const consume = async () => {
+      const eventOccurredAt = new Date().toISOString();
       const creditResult = await consumeCreditAction(ACTION_TYPE.bible_in_one_year_day_viewed, {
         userId,
         actionLabel: `Bible in One Year Day ${selectedDay.dayNumber}`,
+        journeyDay: selectedDay.dayNumber,
+        eventOccurredAt,
+        eventMetadata: {
+          plan: "bible_in_one_year",
+          source: "reading_plan_page",
+          dayNumber: selectedDay.dayNumber,
+          dayTitle: selectedDay.title,
+        },
       });
       if (creditResult.ok === false) {
         setShowCreditBlocked(true);

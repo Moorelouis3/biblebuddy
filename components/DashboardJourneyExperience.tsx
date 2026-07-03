@@ -4651,7 +4651,7 @@ export default function DashboardJourneyExperience({
     onHomeReset?.();
     snapToPage(0);
     if (nextBibleYearDay) {
-      void logBibleYearDayViewed(nextBibleYearDay);
+      void logBibleYearDayViewed(nextBibleYearDay, new Date().toISOString());
     }
     if (typeof window !== "undefined") {
       const url = new URL(window.location.href);
@@ -4721,7 +4721,7 @@ export default function DashboardJourneyExperience({
     setDashboardMenuOpen(false);
     setBibleYearPlanMenuOpen(false);
     rememberBibleYearDashboardDayNumber(userId, day.dayNumber, "manual");
-    void logBibleYearDayViewed(day);
+    void logBibleYearDayViewed(day, new Date().toISOString());
     onHomeReset?.();
     snapToPage(0);
     if (options.reviewCompleted || isBibleYearDayComplete(day)) {
@@ -10259,7 +10259,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     return `Bible in One Year Day ${day.dayNumber} Completed: ${day.title}`;
   }
 
-  async function logBibleYearDayViewed(day: GenesisBibleYearDay) {
+  async function logBibleYearDayViewed(day: GenesisBibleYearDay, occurredAt?: string) {
     if (!userId) return;
     if (lastLoggedBibleYearViewedDayRef.current === day.dayNumber) return;
 
@@ -10288,6 +10288,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           source: "dashboard_journey",
           dayNumber: day.dayNumber,
           dayTitle: day.title,
+          occurredAt: occurredAt || new Date().toISOString(),
         },
       });
 
@@ -10381,7 +10382,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     }
   }
 
-  async function ensureBibleYearCardActionLogged(day: GenesisBibleYearDay, card: BibleYearDayCardKey, showPoints = false) {
+  async function ensureBibleYearCardActionLogged(day: GenesisBibleYearDay, card: BibleYearDayCardKey, showPoints = false, occurredAt?: string) {
     if (!userId) return;
     const actionType = BIBLE_YEAR_CARD_ACTION_TYPE[card];
     if (!actionType || card === "study_notes") return;
@@ -10423,6 +10424,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         canonicalEventName: getBibleYearCanonicalEventName(day, card, "finished"),
         dayNumber: day.dayNumber,
         dayTitle: day.title,
+        occurredAt: occurredAt || new Date().toISOString(),
       },
     };
     const { error: insertError } = await supabase.from("master_actions").insert(insertPayload);
@@ -10431,7 +10433,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     void showPoints;
   }
 
-  async function ensureBibleYearDayCompletedActionLogged(day: GenesisBibleYearDay) {
+  async function ensureBibleYearDayCompletedActionLogged(day: GenesisBibleYearDay, occurredAt?: string) {
     if (!userId) return;
     const actionLabel = getBibleYearDayCompletedActionLabel(day);
     const { data, error } = await supabase
@@ -10468,6 +10470,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         dayTitle: day.title,
         status: "finished",
         completedCards: getBibleYearRequiredCardKeys(day),
+        occurredAt: occurredAt || new Date().toISOString(),
       },
     });
     if (insertError) throw insertError;
@@ -10475,6 +10478,7 @@ Before we understand redemption, we need to understand what God made humanity fo
   }
 
   async function markBibleYearDayCardsComplete(day: GenesisBibleYearDay, cards: BibleYearDayCardKey[]) {
+    const completionOccurredAt = new Date().toISOString();
     const alreadyCompleted = bibleYearCompletedCardsByDay[day.dayNumber] || {};
     const newlyCompletedCards = cards.filter((card) => alreadyCompleted[card] !== true);
     const nextCompletedForDay = {
@@ -10570,9 +10574,9 @@ Before we understand redemption, we need to understand what God made humanity fo
       await markBibleYearDayCoveredChaptersRead(day);
     }
     if (newlyCompletedCards.length > 0) {
-      await Promise.all(newlyCompletedCards.map((card) => ensureBibleYearCardActionLogged(day, card, true)));
+      await Promise.all(newlyCompletedCards.map((card) => ensureBibleYearCardActionLogged(day, card, true, completionOccurredAt)));
       if (dayWillBeFullyComplete && !dayWasFullyComplete) {
-        await ensureBibleYearDayCompletedActionLogged(day);
+        await ensureBibleYearDayCompletedActionLogged(day, completionOccurredAt);
       }
       onDevotionalChanged();
     }

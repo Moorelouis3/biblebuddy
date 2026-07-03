@@ -75,7 +75,13 @@ export async function previewCreditAction(actionType: string): Promise<CreditCli
 
 export async function consumeCreditAction(
   actionType: string,
-  options?: { userId?: string | null; actionLabel?: string | null }
+  options?: {
+    userId?: string | null;
+    actionLabel?: string | null;
+    journeyDay?: number | null;
+    eventOccurredAt?: string | null;
+    eventMetadata?: Record<string, unknown> | null;
+  }
 ): Promise<CreditClientResult> {
   try {
     const response = await fetch("/api/consume-credit", {
@@ -83,7 +89,13 @@ export async function consumeCreditAction(
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ actionType, actionLabel: options?.actionLabel ?? null }),
+      body: JSON.stringify({
+        actionType,
+        actionLabel: options?.actionLabel ?? null,
+        journeyDay: options?.journeyDay ?? null,
+        eventOccurredAt: options?.eventOccurredAt ?? null,
+        eventMetadata: options?.eventMetadata ?? null,
+      }),
     });
 
     const result = (await response.json().catch(() => ({}))) as CreditClientResult;
