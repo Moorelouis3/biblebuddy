@@ -4082,7 +4082,10 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
                             {action.userId ? (
                               <button
                                 type="button"
-                                onClick={() => setSelectedProfileOverlay({ userId: action.userId, userLabel: action.userLabel })}
+                                onClick={() => {
+                                  if (!action.userId) return;
+                                  setSelectedProfileOverlay({ userId: action.userId, userLabel: action.userLabel });
+                                }}
                                 className="font-black text-blue-700 underline decoration-blue-300 underline-offset-2 hover:text-blue-800"
                               >
                                 {action.userLabel}
