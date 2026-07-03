@@ -4065,8 +4065,8 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
                     <div className="mt-5 grid gap-2">
                       {adminActionLog.slice(0, 12).map((action) => (
                         <div key={action.id} className={`rounded-3xl border p-4 ${getAdminActionColorClass(action.actionType)} ring-1 ring-inset`}>
-                          <p className="text-sm font-semibold text-[var(--bb-text-primary,#101827)]">{action.userLabel} {action.detail}</p>
-                          <p className="mt-1 text-xs text-[var(--bb-text-secondary,#64748b)]">{action.actionTitle} · {formatDateTime(action.createdAt)}</p>
+                          <p className="text-sm font-semibold text-[var(--bb-text-primary,#101827)]">{action.userLabel} {action.actionTitle}</p>
+                          <p className="mt-1 text-xs text-[var(--bb-text-secondary,#64748b)]">{action.detail} | {formatDateTime(action.createdAt)}</p>
                         </div>
                       ))}
                     </div>

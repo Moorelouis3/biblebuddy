@@ -351,7 +351,12 @@ export default function PublicProfilePage() {
         setUserGroups(groups);
       }
 
-      await buildActionLog(profileUserId);
+      const profileActorName =
+        (typeof profileData.display_name === "string" && profileData.display_name.trim()) ||
+        (typeof profileData.username === "string" && profileData.username.trim()) ||
+        "Bible Buddy Member";
+
+      await buildActionLog(profileUserId, profileActorName);
 
       // Load buddy data (only if viewer is logged in and not owner)
       const { data: { user: currentUser } } = await supabase.auth.getUser();
@@ -629,7 +634,7 @@ export default function PublicProfilePage() {
     }
   }
 
-  async function buildActionLog(uid: string) {
+  async function buildActionLog(uid: string, actorNameOverride?: string) {
     const actions: Array<{ date: string; text: string; sortKey: number; actionType: string; url?: string }> = [];
     const { data: masterActions, error } = await supabase
       .from("master_actions")
@@ -640,7 +645,7 @@ export default function PublicProfilePage() {
     if (error || !masterActions) { setActionLog([]); return; }
 
       const loginDates = new Set<string>();
-      const actorName = stats?.display_name || stats?.username || "This user";
+      const actorName = actorNameOverride || stats?.display_name || stats?.username || "Bible Buddy Member";
       for (const action of masterActions) {
         const actionDate = new Date(action.created_at);
         const dateKey = getBrowserDateKey(actionDate);
@@ -1083,7 +1088,7 @@ export default function PublicProfilePage() {
                   }}
                   className="hover:text-gray-700 transition font-medium"
                 >
-                  ðŸ¤ {buddyCount} {buddyCount === 1 ? "Buddy" : "Buddies"}
+                  {"\u{1F91D}"} {buddyCount} {buddyCount === 1 ? "Buddy" : "Buddies"}
                 </button>
               </div>
 
