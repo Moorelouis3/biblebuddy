@@ -77,6 +77,60 @@ function cleanAutoCompletedLabel(label: string) {
     .trim();
 }
 
+function safeDecode(value: string) {
+  try {
+    return decodeURIComponent(value.replace(/\+/g, "%20"));
+  } catch {
+    return value;
+  }
+}
+
+function parseStudyNotesLabel(label: string) {
+  const trimmed = label.trim();
+  if (!trimmed.includes("|")) return null;
+
+  const parts = trimmed.split("|");
+  const entries = new Map<string, string>();
+  for (const part of parts) {
+    const eq = part.indexOf("=");
+    if (eq <= 0) continue;
+    const key = part.slice(0, eq).trim();
+    const rawValue = part.slice(eq + 1).trim();
+    if (!key) continue;
+    entries.set(key, safeDecode(rawValue));
+  }
+
+  const reference = (entries.get("reference") || "").trim();
+  const sectionTitle = (entries.get("sectionTitle") || "").trim();
+  if (!reference && !sectionTitle) return null;
+
+  if (reference && sectionTitle) return `${reference} ${sectionTitle}`.trim();
+  return reference || sectionTitle;
+}
+
+function getStudyNotesDisplayLabel(label: string) {
+  const parsed = parseStudyNotesLabel(label);
+  if (parsed) return parsed;
+  return cleanAutoCompletedLabel(label);
+}
+
+function dedupeActionRows<T extends { userId: string | null; userLabel: string; actionTitle: string; detail: string; createdAt: string }>(rows: T[]) {
+  const seen = new Set<string>();
+  const deduped: T[] = [];
+  for (const row of rows) {
+    const key = [
+      row.userId || row.userLabel,
+      row.actionTitle.trim().toLowerCase(),
+      row.detail.trim().toLowerCase(),
+      row.createdAt,
+    ].join("|");
+    if (seen.has(key)) continue;
+    seen.add(key);
+    deduped.push(row);
+  }
+  return deduped;
+}
+
 function getBibleYearTaskFromRow(row: MasterActionRow) {
   const metadata = row.event_metadata || {};
   const metaTask = metadata.task;
@@ -127,7 +181,10 @@ function actionTitle(row: MasterActionRow) {
   if (type === "bible_in_one_year_trivia_completed") return day ? `Finished Day ${day} trivia` : "Completed trivia";
   if (type === "bible_in_one_year_reflection_completed") return day ? `Finished Day ${day} discussion` : "Completed discussion";
   if (type === "trivia_chapter_completed") return "Completed trivia";
-  if (type === "study_notes_viewed") return cleanedLabel ? `Opened ${cleanedLabel}` : "Opened study notes";
+  if (type === "study_notes_viewed") {
+    const displayLabel = getStudyNotesDisplayLabel(label);
+    return displayLabel ? `Opened ${displayLabel}` : "Opened note section";
+  }
   if (type === "bible_book_opened") return cleanedLabel ? `Opened ${cleanedLabel}` : "Opened a Bible book";
   if (type === "bible_chapter_opened") return cleanedLabel ? `Opened ${cleanedLabel}` : "Opened a Bible chapter";
   if (type === "chapter_completed") return cleanedLabel ? `${isAutoCompleted ? "Auto completed" : "Completed"} ${cleanedLabel}` : "Completed a Bible chapter";
@@ -159,7 +216,10 @@ function actionDetail(row: MasterActionRow) {
   if (type === "bible_in_one_year_trivia_completed") return label ? `Answered trivia for "${label}"` : "Answered trivia";
   if (type === "bible_in_one_year_reflection_completed") return label ? `Completed discussion on "${label}"` : "Completed a discussion";
   if (type === "trivia_chapter_completed") return label ? `Completed trivia for ${label}` : "Completed trivia";
-  if (type === "study_notes_viewed") return cleanedLabel ? `Opened ${cleanedLabel}` : "Opened study notes";
+  if (type === "study_notes_viewed") {
+    const displayLabel = getStudyNotesDisplayLabel(label);
+    return displayLabel ? `Opened ${displayLabel}` : "Opened note section";
+  }
   if (type === "bible_book_opened") return cleanedLabel ? `Opened ${cleanedLabel}` : "Opened a Bible book";
   if (type === "bible_chapter_opened") return cleanedLabel ? `Opened ${cleanedLabel}` : "Opened a Bible chapter";
   if (type === "chapter_completed") return cleanedLabel ? `${isAutoCompleted ? "Auto completed" : "Completed"} ${cleanedLabel}` : "Completed a Bible chapter";
@@ -272,7 +332,7 @@ export async function GET(request: Request) {
     createdAt: row.created_at || "",
   }));
 
-  const mainActionRows = actions
+  const mainActionRows = dedupeActionRows(actions
     .map((row, index) => {
       const normalizedType = normalizeActionTypeForMainLog(row);
       if (!normalizedType || !MAIN_ACTION_LOG_ALLOWLIST.has(normalizedType)) return null;
@@ -297,7 +357,7 @@ export async function GET(request: Request) {
       detail: string;
       dayNumber: number | null;
       createdAt: string;
-    } => Boolean(row));
+    } => Boolean(row)));
 
   const grouped = new Map<string, typeof actionRows>();
   actionRows.forEach((row) => {
