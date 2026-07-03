@@ -640,6 +640,7 @@ export default function PublicProfilePage() {
     if (error || !masterActions) { setActionLog([]); return; }
 
       const loginDates = new Set<string>();
+      const actorName = stats?.display_name || stats?.username || "This user";
       for (const action of masterActions) {
         const actionDate = new Date(action.created_at);
         const dateKey = getBrowserDateKey(actionDate);
@@ -652,52 +653,51 @@ export default function PublicProfilePage() {
           const match = label.match(/^(.+?)\s+(\d+)$/);
           if (match) url = `/Bible/${encodeURIComponent(match[1])}/${match[2]}`;
         }
-        actions.push({ date: d, text: label ? `${d} — Read ${label}` : `${d} — Read a chapter`, sortKey: actionDate.getTime(), actionType: "chapter_completed", url });
+        actions.push({ date: d, text: label ? `${actorName} completed ${label}` : `${actorName} completed a chapter`, sortKey: actionDate.getTime(), actionType: "chapter_completed", url });
       } else if (action.action_type === "book_completed") {
-        actions.push({ date: d, text: label ? `${d} — Finished ${label}` : `${d} — Finished a book`, sortKey: actionDate.getTime(), actionType: "book_completed" });
+        actions.push({ date: d, text: label ? `${actorName} finished ${label}` : `${actorName} finished a book`, sortKey: actionDate.getTime(), actionType: "book_completed" });
       } else if (action.action_type === "person_learned") {
-        actions.push({ date: d, text: label ? `${d} — Learned about ${label}` : `${d} — Learned about a Bible person`, sortKey: actionDate.getTime(), actionType: "person_learned" });
+        actions.push({ date: d, text: label ? `${actorName} learned about ${label}` : `${actorName} learned about a Bible person`, sortKey: actionDate.getTime(), actionType: "person_learned" });
       } else if (action.action_type === "place_discovered") {
-        actions.push({ date: d, text: label ? `${d} — Discovered ${label}` : `${d} — Discovered a Bible place`, sortKey: actionDate.getTime(), actionType: "place_discovered" });
+        actions.push({ date: d, text: label ? `${actorName} discovered ${label}` : `${actorName} discovered a Bible place`, sortKey: actionDate.getTime(), actionType: "place_discovered" });
       } else if (action.action_type === "keyword_mastered") {
-        actions.push({ date: d, text: label ? `${d} — Mastered the keyword "${label}"` : `${d} — Mastered a Bible keyword`, sortKey: actionDate.getTime(), actionType: "keyword_mastered" });
+        actions.push({ date: d, text: label ? `${actorName} mastered the keyword "${label}"` : `${actorName} mastered a Bible keyword`, sortKey: actionDate.getTime(), actionType: "keyword_mastered" });
       } else if (action.action_type === "note_created") {
-        actions.push({ date: d, text: `${d} — Created a note`, sortKey: actionDate.getTime(), actionType: "note_created" });
+        actions.push({ date: d, text: label ? `${actorName} created a note: "${label}"` : `${actorName} created a note`, sortKey: actionDate.getTime(), actionType: "note_created" });
       } else if (action.action_type === "verse_highlighted") {
-        actions.push({ date: d, text: label ? `${d} — Highlighted ${label}` : `${d} — Highlighted a verse`, sortKey: actionDate.getTime(), actionType: "verse_highlighted" });
+        actions.push({ date: d, text: label ? `${actorName} highlighted ${label}` : `${actorName} highlighted a verse`, sortKey: actionDate.getTime(), actionType: "verse_highlighted" });
       } else if (action.action_type === "devotional_day_completed") {
-        actions.push({ date: d, text: label ? `${d} — Completed ${label}` : `${d} — Completed a devotional day`, sortKey: actionDate.getTime(), actionType: "devotional_day_completed" });
+        actions.push({ date: d, text: label ? `${actorName} completed ${label}` : `${actorName} completed a devotional day`, sortKey: actionDate.getTime(), actionType: "devotional_day_completed" });
       } else if (action.action_type === "trivia_question_answered") {
-        actions.push({ date: d, text: label ? `${d} — Answered a trivia question (${label})` : `${d} — Answered a trivia question`, sortKey: actionDate.getTime(), actionType: "trivia_question_answered" });
+        actions.push({ date: d, text: label ? `${actorName} answered a trivia question: "${label}"` : `${actorName} answered a trivia question`, sortKey: actionDate.getTime(), actionType: "trivia_question_answered" });
       } else if (action.action_type === "feed_post_thought") {
-        actions.push({ date: d, text: label ? `${d} — Posted a thought: "${label}"` : `${d} — Posted a thought to the feed`, sortKey: actionDate.getTime(), actionType: "feed_post_thought", url: "/dashboard" });
+        actions.push({ date: d, text: label ? `${actorName} posted a thought: "${label}"` : `${actorName} posted a thought`, sortKey: actionDate.getTime(), actionType: "feed_post_thought", url: "/dashboard" });
       } else if (action.action_type === "feed_post_prayer") {
-        actions.push({ date: d, text: `${d} — Posted a prayer to the feed`, sortKey: actionDate.getTime(), actionType: "feed_post_prayer", url: "/dashboard" });
+        actions.push({ date: d, text: `${actorName} posted a prayer`, sortKey: actionDate.getTime(), actionType: "feed_post_prayer", url: "/dashboard" });
       } else if (action.action_type === "feed_post_prayer_request") {
-        actions.push({ date: d, text: `${d} — Posted a prayer request to the feed`, sortKey: actionDate.getTime(), actionType: "feed_post_prayer_request", url: "/dashboard" });
+        actions.push({ date: d, text: `${actorName} posted a prayer request`, sortKey: actionDate.getTime(), actionType: "feed_post_prayer_request", url: "/dashboard" });
       } else if (action.action_type === "feed_post_photo") {
-        actions.push({ date: d, text: `${d} — Posted a photo to the feed`, sortKey: actionDate.getTime(), actionType: "feed_post_photo", url: "/dashboard" });
+        actions.push({ date: d, text: `${actorName} posted a photo`, sortKey: actionDate.getTime(), actionType: "feed_post_photo", url: "/dashboard" });
       } else if (action.action_type === "feed_post_video") {
-        actions.push({ date: d, text: `${d} — Posted a video to the feed`, sortKey: actionDate.getTime(), actionType: "feed_post_video", url: "/dashboard" });
+        actions.push({ date: d, text: `${actorName} posted a video`, sortKey: actionDate.getTime(), actionType: "feed_post_video", url: "/dashboard" });
       } else if (action.action_type === "feed_post_liked") {
-        // action_label may contain post_id — try to build a link with a hash anchor
         const postUrl = label ? `/dashboard#post-${label}` : "/dashboard";
-        actions.push({ date: d, text: `${d} — Liked a post`, sortKey: actionDate.getTime(), actionType: "feed_post_liked", url: postUrl });
+        actions.push({ date: d, text: `${actorName} liked a post`, sortKey: actionDate.getTime(), actionType: "feed_post_liked", url: postUrl });
       } else if (action.action_type === "feed_post_commented") {
         const postUrl = label ? `/dashboard#post-${label}` : "/dashboard";
-        actions.push({ date: d, text: `${d} — Commented on a post`, sortKey: actionDate.getTime(), actionType: "feed_post_commented", url: postUrl });
+        actions.push({ date: d, text: `${actorName} commented on a post`, sortKey: actionDate.getTime(), actionType: "feed_post_commented", url: postUrl });
       } else if (action.action_type === "feed_post_replied") {
         const postUrl = label ? `/dashboard#post-${label}` : "/dashboard";
-        actions.push({ date: d, text: `${d} — Replied to a comment`, sortKey: actionDate.getTime(), actionType: "feed_post_replied", url: postUrl });
+        actions.push({ date: d, text: `${actorName} replied to a comment`, sortKey: actionDate.getTime(), actionType: "feed_post_replied", url: postUrl });
       } else if (action.action_type === "group_message_sent") {
-        actions.push({ date: d, text: label ? `${d} — Sent a message in ${label}` : `${d} — Sent a group message`, sortKey: actionDate.getTime(), actionType: "group_message_sent", url: "/dashboard" });
+        actions.push({ date: d, text: label ? `${actorName} sent a message in ${label}` : `${actorName} sent a group message`, sortKey: actionDate.getTime(), actionType: "group_message_sent", url: "/dashboard" });
       } else if (action.action_type === "buddy_added") {
-        actions.push({ date: d, text: label ? `${d} — Added ${label} as a Bible Buddy` : `${d} — Added a Bible Buddy`, sortKey: actionDate.getTime(), actionType: "buddy_added" });
+        actions.push({ date: d, text: label ? `${actorName} added ${label} as a Bible Buddy` : `${actorName} added a Bible Buddy`, sortKey: actionDate.getTime(), actionType: "buddy_added" });
       } else if (action.action_type === "series_week_started") {
-        actions.push({ date: d, text: label ? `${d} — Started ${label}` : `${d} — Started a Bible series week`, sortKey: actionDate.getTime(), actionType: "series_week_started", url: "/dashboard" });
+        actions.push({ date: d, text: label ? `${actorName} started ${label}` : `${actorName} started a Bible series week`, sortKey: actionDate.getTime(), actionType: "series_week_started", url: "/dashboard" });
       } else if (action.action_type === "user_login" && !loginDates.has(dateKey)) {
         loginDates.add(dateKey);
-        actions.push({ date: d, text: `${d} — Logged in`, sortKey: actionDate.getTime(), actionType: "user_login" });
+        actions.push({ date: d, text: `${actorName} logged in`, sortKey: actionDate.getTime(), actionType: "user_login" });
       }
     }
     actions.sort((a, b) => b.sortKey - a.sortKey);
@@ -902,9 +902,9 @@ export default function PublicProfilePage() {
         {/* Breadcrumb */}
         <nav className="profile-skin-breadcrumb text-sm text-gray-500 mb-6">
           <Link href="/dashboard" className="hover:text-gray-700 transition">Dashboard</Link>
-          <span className="mx-2">â€º</span>
+          <span className="mx-2">›</span>
           <Link href="/profile" className="hover:text-gray-700 transition">Profile</Link>
-          <span className="mx-2">â€º</span>
+          <span className="mx-2">›</span>
           <span className="text-gray-800 font-medium">{displayName}</span>
         </nav>
 
@@ -1069,11 +1069,11 @@ export default function PublicProfilePage() {
               {/* Meta row */}
               <div className="profile-skin-secondary flex flex-wrap items-center gap-x-4 gap-y-1 mt-3 text-xs text-gray-500">
                 {stats?.location && (
-                  <span>ðŸ“ {stats.location}</span>
+                  <span>📍 {stats.location}</span>
                 )}
-                <span>ðŸ• {formatLastActive(stats?.last_active_at || stats?.last_active_date)}</span>
+                <span>⏱️ {formatLastActive(stats?.last_active_at || stats?.last_active_date)}</span>
                 {stats?.created_at && (
-                  <span>ðŸ“… Joined {formatJoined(stats.created_at)}</span>
+                  <span>🎉 Joined {formatJoined(stats.created_at)}</span>
                 )}
                 <button
                   onClick={() => {
