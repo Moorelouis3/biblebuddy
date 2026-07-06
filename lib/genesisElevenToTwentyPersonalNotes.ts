@@ -8,6 +8,8 @@ export type PersonalGenesisPhraseSectionInput = {
   phrases: Array<[string, string]>;
 };
 
+import { GENESIS_NINETEEN_PERSONAL_SECTIONS } from "./genesisNineteenSource";
+
 const note = (lines: string[]) => lines.join("\n\n");
 const phrase = (title: string, lines: string[]): [string, string] => [title, note(lines)];
 
@@ -9286,8 +9288,9 @@ export const GENESIS_11_20_PERSONAL_SECTIONS = [
   ...addGenesisElevenToTwentyPhraseTitleEmojis(DAY_5_QUALITY_REVIEW_SECTIONS),
   ...addGenesisElevenToTwentyPhraseTitleEmojis(DAY_6_QUALITY_REVIEW_SECTIONS),
   ...addGenesisElevenToTwentyPhraseTitleEmojis(DAY_7_QUALITY_REVIEW_SECTIONS),
-  ...addGenesisElevenToTwentyPhraseTitleEmojis(DAY_8_QUALITY_REVIEW_SECTIONS),
-  ...addGenesisElevenTwelveSectionTexture(GENESIS_15_20_PERSONAL_REWRITE_SECTIONS).filter((section) => section.chapter > 20),
+  ...addGenesisElevenToTwentyPhraseTitleEmojis(DAY_8_QUALITY_REVIEW_SECTIONS).filter((section) => section.chapter !== 19),
+  ...addGenesisElevenTwelveSectionTexture(GENESIS_15_20_PERSONAL_REWRITE_SECTIONS).filter((section) => section.chapter > 20 && section.chapter !== 19),
+  ...GENESIS_NINETEEN_PERSONAL_SECTIONS,
   ...expandSplitSections(RAW_GENESIS_11_20_PERSONAL_SECTIONS).filter(
     (section) => section.chapter < 11 || section.chapter > 20,
   ),

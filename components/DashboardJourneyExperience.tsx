@@ -2834,7 +2834,7 @@ export default function DashboardJourneyExperience({
     : [...dashboardNavItems, ...dashboardSecondaryNavItems].find((item) => item.key === activePageKey) ?? dashboardNavItems[0];
   void activeDashboardNavItem;
   const homeTabActive = bibleYearDashboardActive || (!bibleYearSeriesActive && activePageKey === "home");
-  const progressTabActive = !bibleYearDashboardActive && !bibleYearSeriesActive && activePageKey === "progress";
+  const groupTabActive = !bibleYearDashboardActive && !bibleYearSeriesActive && activePageKey === "group";
   const bibleTabActive = !bibleYearDashboardActive && !bibleYearSeriesActive && activePageKey === "bible";
   const chatTabActive = !bibleYearDashboardActive && !bibleYearSeriesActive && activePageKey === "buddy";
   const inviteTabActive = !bibleYearDashboardActive && !bibleYearSeriesActive && activePageKey === "share";
@@ -12584,8 +12584,15 @@ Before we understand redemption, we need to understand what God made humanity fo
                     <p className="mt-1 text-[15px] font-black text-[#10224b]">{startDateLabel}</p>
                   </div>
                   <div>
-                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#185cff]">Expected Finish</p>
-                    <p className="mt-1 text-[15px] font-black text-[#10224b]">{expectedFinishDateLabel}</p>
+                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#185cff]">Progress</p>
+                    <button
+                      type="button"
+                      onClick={openProgressPage}
+                      className="mt-1 inline-flex items-center justify-center text-[15px] font-black text-[#185cff] underline decoration-[#185cff]/35 decoration-2 underline-offset-4 transition hover:text-[#0f4fe8] hover:decoration-[#0f4fe8]/50"
+                      aria-label="See my progress"
+                    >
+                      See my Progress
+                    </button>
                   </div>
                 </div>
 
@@ -17721,24 +17728,24 @@ Before we understand redemption, we need to understand what God made humanity fo
           <div className="grid h-[64px] grid-cols-5 items-stretch gap-0 sm:min-h-0 sm:gap-1.5">
             <button
               type="button"
-              onClick={openProgressPage}
+              onClick={openGroupPage}
               className={`flex h-full min-h-[58px] flex-col items-center justify-center rounded-none text-[10px] font-black transition sm:h-14 sm:min-h-0 sm:rounded-[18px] ${
-                progressTabActive
+                groupTabActive
                   ? "bg-transparent text-[var(--bb-accent,#2f7fe8)] sm:bg-[var(--bb-accent-soft,rgba(47,127,232,0.10))] sm:ring-1 sm:ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)]"
                   : "bg-transparent text-[var(--bb-text-primary,#111827)] hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.08))] sm:bg-[var(--bb-surface-soft,#f4f8ff)] sm:hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))]"
               }`}
-              aria-label="Open Progress"
-              data-dashboard-nav-key="progress"
+              aria-label="Open Group"
+              data-dashboard-nav-key="group"
             >
-              <span className={`grid h-7 w-7 place-items-center rounded-full ${progressTabActive ? "bg-[var(--bb-accent,#2f7fe8)] text-white" : ""}`} aria-hidden="true">
-                <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M4 19V5" />
-                  <path d="M9 19v-6" />
-                  <path d="M14 19V9" />
-                  <path d="M19 19V3" />
-                  <path d="M3 19h18" />
-                </svg></span>
-              <span className="mt-0.5 text-[9px] leading-none sm:mt-0 sm:text-[10px]">Progress</span>
+              <span className={`grid h-7 w-7 place-items-center rounded-full ${groupTabActive ? "bg-[var(--bb-accent,#2f7fe8)] text-white" : ""}`} aria-hidden="true">
+                <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="3" />
+                  <path d="M22 21v-2a3.5 3.5 0 0 0-2.5-3.35" />
+                  <path d="M16 3.2a3 3 0 0 1 0 5.8" />
+                </svg>
+              </span>
+              <span className="mt-0.5 text-[9px] leading-none sm:mt-0 sm:text-[10px]">Group</span>
             </button>
 
             <button
