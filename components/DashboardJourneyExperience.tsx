@@ -5125,9 +5125,16 @@ export default function DashboardJourneyExperience({
   }
 
   function openGroupPage() {
+    const groupIndex = dashboardPageKeys.indexOf("group");
+    if (groupIndex < 0) return;
     setDashboardMenuOpen(false);
+    clearBibleYearViews();
+    snapToPage(groupIndex);
     if (typeof window !== "undefined") {
-      window.location.href = "/study-groups";
+      const url = new URL(window.location.href);
+      url.searchParams.set("view", "group");
+      url.searchParams.delete("day");
+      window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
     }
   }
 
@@ -6078,50 +6085,6 @@ export default function DashboardJourneyExperience({
     return (
       <section className="w-full px-1 pb-4">
         <div className="mx-auto flex max-w-2xl flex-col gap-4">
-          <div className="rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-5 shadow-sm">
-            <div className="flex items-start gap-4">
-              <div
-                className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl text-2xl"
-                style={{ background: dashboardGroup?.cover_color || "var(--bb-accent-soft,#eaf5ff)" }}
-                aria-hidden="true"
-              >
-                {dashboardGroup?.cover_emoji || "Ã°Å¸â€˜Â¥"}
-              </div>
-              <div className="min-w-0 flex-1">
-                <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Bible Buddy Group</p>
-                <h2 className="mt-1 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">
-                  {dashboardGroup?.name || "Bible Buddy Group"}
-                </h2>
-                <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-                  {dashboardGroup?.description || "Read what people are sharing, jump into prayer requests, and talk through Scripture together."}
-                </p>
-                <div className="mt-3 flex flex-wrap gap-2 text-xs font-black text-[var(--bb-text-secondary,#4b5563)]">
-                  <span className="rounded-full bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-1">{dashboardGroup?.member_count ?? 0} members</span>
-                  {dashboardGroup?.current_weekly_study ? (
-                    <span className="rounded-full bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-1">{dashboardGroup.current_weekly_study}</span>
-                  ) : null}
-                </div>
-              </div>
-              <div className="flex shrink-0 flex-col gap-2 sm:flex-row">
-                {isOwnerDashboard && dashboardGroup?.id ? (
-                  <Link
-                    href={`/study-groups/${dashboardGroup.id}/scheduler`}
-                    className="rounded-full bg-[var(--bb-accent,#2f7fe8)] px-3 py-2 text-center text-xs font-black text-white shadow-sm transition hover:brightness-95"
-                  >
-                    Scheduler
-                  </Link>
-                ) : null}
-                <button
-                  type="button"
-                  onClick={() => void loadDashboardGroup(true)}
-                  className="rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-2 text-xs font-black text-[var(--bb-accent,#2f7fe8)] transition hover:brightness-95"
-                >
-                  Refresh
-                </button>
-              </div>
-            </div>
-          </div>
-
           {dashboardGroupError ? (
             <div className="rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm font-bold text-rose-700">
               {dashboardGroupError}
@@ -6129,9 +6092,6 @@ export default function DashboardJourneyExperience({
           ) : null}
 
           <div className="rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm">
-            <label className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-text-secondary,#4b5563)]" htmlFor="dashboard-group-post">
-              Share with the group
-            </label>
             <textarea
               id="dashboard-group-post"
               value={dashboardGroupPostDraft}
@@ -6139,13 +6099,10 @@ export default function DashboardJourneyExperience({
               disabled={!canPostInGroup || dashboardGroupPosting}
               rows={4}
               maxLength={900}
-              className="mt-3 w-full resize-none rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-4 py-3 text-sm font-semibold leading-6 text-[var(--bb-text-primary,#111827)] outline-none transition focus:border-[var(--bb-accent,#2f7fe8)] disabled:cursor-not-allowed disabled:opacity-60"
+              className="w-full resize-none rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-4 py-3 text-sm font-semibold leading-6 text-[var(--bb-text-primary,#111827)] outline-none transition focus:border-[var(--bb-accent,#2f7fe8)] disabled:cursor-not-allowed disabled:opacity-60"
               placeholder={canPostInGroup ? "Post a thought, prayer request, verse, or what God showed you today..." : "You can read the group now. Posting opens when your group access is approved."}
             />
             <div className="mt-3 flex items-center justify-between gap-3">
-              <p className="text-xs font-semibold text-[var(--bb-text-muted,#6b7280)]">
-                Posts load only on this tab so the rest of Bible Buddy stays fast.
-              </p>
               <button
                 type="button"
                 onClick={() => void submitDashboardGroupPost()}
