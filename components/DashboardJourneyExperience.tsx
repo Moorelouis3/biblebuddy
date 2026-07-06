@@ -12547,13 +12547,14 @@ Before we understand redemption, we need to understand what God made humanity fo
                   </div>
                   <div>
                     <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#185cff]">Progress</p>
+                    <p className="mt-1 text-[13px] font-black text-[#10224b]">{effectiveBibleYearReport.expectedFinishDateLabel}</p>
                     <button
                       type="button"
                       onClick={openProgressPage}
-                      className="mt-1 inline-flex items-center justify-center text-[15px] font-black text-[#185cff] underline decoration-[#185cff]/35 decoration-2 underline-offset-4 transition hover:text-[#0f4fe8] hover:decoration-[#0f4fe8]/50"
-                      aria-label="See my progress"
+                      className="mt-1 inline-flex items-center justify-center text-[15px] font-black text-black transition hover:text-[#111827]"
+                      aria-label="Share my progress"
                     >
-                      See my Progress
+                      Share my Progress
                     </button>
                   </div>
                 </div>
@@ -15766,13 +15767,15 @@ Before we understand redemption, we need to understand what God made humanity fo
   function renderBibleYearJourneyFinishRows() {
     return (
       <div className="px-2 pb-1 pt-3 text-center text-[var(--bb-text-primary,#111827)]">
+        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#185cff]">Expected Finish Date</p>
+        <p className="mt-1 text-sm font-black text-[#10224b]">{effectiveBibleYearReport.expectedFinishDateLabel}</p>
         <button
           type="button"
           onClick={openProgressPage}
-          className="text-sm font-bold leading-6 text-[var(--bb-accent,#185cff)] underline decoration-[var(--bb-accent,#185cff)]/30 decoration-2 underline-offset-4 transition hover:decoration-[var(--bb-accent,#185cff)]/60"
-          aria-label="See my progress"
+          className="mt-1 text-sm font-black leading-6 text-black transition hover:text-[#111827]"
+          aria-label="Share my progress"
         >
-          See my Progress
+          Share my Progress
         </button>
       </div>
     );
