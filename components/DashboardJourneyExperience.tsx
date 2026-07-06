@@ -15711,7 +15711,10 @@ Before we understand redemption, we need to understand what God made humanity fo
   function renderBibleYearJourneyFinishRows() {
     return (
       <div className="px-2 pb-1 pt-3 text-center text-[var(--bb-text-primary,#111827)]">
-        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#185cff]">Expected Finish Date: <span className="text-sm text-[#10224b]">{effectiveBibleYearReport.expectedFinishDateLabel}</span></p>
+        <p className="inline-flex max-w-full items-center justify-center gap-1 whitespace-nowrap text-[10px] font-black uppercase tracking-[0.18em] text-[#185cff]">
+          <span className="shrink-0">Expected Finish Date:</span>
+          <span className="text-[11px] text-[#10224b]">{effectiveBibleYearReport.expectedFinishDateLabel}</span>
+        </p>
       </div>
     );
   }
