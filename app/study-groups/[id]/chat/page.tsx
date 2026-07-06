@@ -3508,7 +3508,8 @@ export default function GroupChatPage() {
 
   async function loadPosts(page = 0, options?: { append?: boolean }) {
     if (!group) return;
-    setLoadingPosts(true);
+    const shouldAppend = !!options?.append && page > 0;
+    if (!shouldAppend) setLoadingPosts(true);
     setPostsHasMore(false);
     const postCategory = getGroupPostCategory(activeTab);
 
@@ -3579,7 +3580,7 @@ export default function GroupChatPage() {
       .range(rangeStart, rangeStart + FEED_PAGE_SIZE - 1);
 
     if (error) {
-      setLoadingPosts(false);
+      if (!shouldAppend) setLoadingPosts(false);
       return;
     }
 
@@ -3604,7 +3605,7 @@ export default function GroupChatPage() {
     }
     setPostsPage(Math.max(page, 0));
     setPostsHasMore(fetchedRows.length >= FEED_PAGE_SIZE);
-    setLoadingPosts(false);
+    if (!shouldAppend) setLoadingPosts(false);
   }
 
   async function openFeedPostById(postId: string) {
@@ -6680,8 +6681,8 @@ export default function GroupChatPage() {
       {activeTab !== "members" && activeTab !== "bible_studies" && !hubCategories.some((c) => c.id === activeTab) && !selectedPost && (
         <>
           {showPostComposerModal && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 modal-backdrop-in" onClick={() => setShowPostComposerModal(false)}>
-              <div className="bg-white rounded-3xl shadow-xl w-full max-w-2xl max-h-[92vh] overflow-y-auto modal-panel-in" onClick={(e) => e.stopPropagation()}>
+            <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/40 px-4 py-4 modal-backdrop-in sm:py-8" onClick={() => setShowPostComposerModal(false)}>
+              <div className="mt-0 w-full max-w-2xl overflow-y-auto rounded-3xl bg-white shadow-xl modal-panel-in max-h-[calc(100vh-2rem)] sm:max-h-[92vh]" onClick={(e) => e.stopPropagation()}>
                 <div className="flex items-center justify-between px-6 py-5 border-b border-[#efe5d9]">
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-[0.18em]" style={{ color: SAGE }}>Community</p>
