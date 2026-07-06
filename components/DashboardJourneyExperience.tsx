@@ -2806,7 +2806,7 @@ export default function DashboardJourneyExperience({
     { key: "bible_studies", label: "Devotionals", icon: "\uD83C\uDF05", href: "/bible-studies" },
     { key: "bible_topics", label: "Bible Topics", icon: "\uD83D\uDCDA", href: "#bible-topics" },
     { key: "share", label: "Invite", icon: "\u2197", href: dashboardPageLinks.share?.href || "#share-bible-buddy", onClick: dashboardPageLinks.share?.onClick },
-    { key: "group", label: "Group", icon: "\uD83D\uDC65", href: "/study-groups" },
+    { key: "group", label: "Group", icon: "\uD83D\uDC65", href: "/dashboard?view=group" },
     { key: "settings", label: "Settings", icon: "\u2699", href: "#settings" },
   ];
   const dashboardSecondaryNavItems: Array<{
@@ -5131,9 +5131,11 @@ export default function DashboardJourneyExperience({
   }
 
   function openGroupPage() {
-    if (typeof window !== "undefined") {
-      window.location.href = "/study-groups";
-    }
+    const groupIndex = dashboardPageKeys.indexOf("group");
+    if (groupIndex < 0) return;
+    clearBibleYearViews();
+    setDashboardMenuOpen(false);
+    snapToPage(groupIndex);
   }
 
   function openProgressPage() {
@@ -5160,7 +5162,12 @@ export default function DashboardJourneyExperience({
   useEffect(() => {
     function handleShowGroupTab() {
       if (typeof window !== "undefined") window.localStorage.removeItem("bb:dashboard-open-group");
-      openGroupPage();
+      const groupIndex = dashboardPageKeys.indexOf("group");
+      if (groupIndex >= 0) {
+        clearBibleYearViews();
+        setDashboardMenuOpen(false);
+        snapToPage(groupIndex);
+      }
     }
 
     if (typeof window !== "undefined") {
@@ -17811,7 +17818,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           {[
             { label: "Home", href: "/dashboard", icon: "Ã¢Å’â€š", active: true },
             { label: "Bible", href: "/reading", icon: "Ã°Å¸â€œâ€“" },
-            { label: "Group", href: "/study-groups", icon: "Ã°Å¸â€˜Â¥" },
+            { label: "Group", href: "/dashboard?view=group", icon: "Ã°Å¸â€˜Â¥" },
             { label: "TV", href: "/biblebuddy-tv", icon: "Ã¢â€“Â¶" },
             { label: "Games", href: "/bible-study-games", icon: "Ã°Å¸Å½Â®" },
           ].map((item) => (

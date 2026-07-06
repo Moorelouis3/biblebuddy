@@ -21,7 +21,7 @@ export default function StudyGroupsPage() {
       if (cancelled) return;
 
       if (data?.id) {
-        router.replace(`/study-groups/${data.id}/chat?embedded=dashboard`);
+        router.replace(`/dashboard?view=group`);
         return;
       }
 
