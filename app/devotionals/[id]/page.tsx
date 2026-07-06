@@ -85,6 +85,7 @@ function getPreviewDescription(title: string, fallback: string): string {
 import { useEffect, useRef, useState } from "react";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
+import ChapterNotesMarkdown from "../../../components/ChapterNotesMarkdown";
 import { supabase } from "../../../lib/supabaseClient";
 import DevotionalDayModal from "../../../components/DevotionalDayModal";
 import DevotionalDayCompletionModal from "../../../components/DevotionalDayCompletionModal";
@@ -1484,9 +1485,15 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                       <p className="text-sm font-semibold text-[var(--bb-text-primary,#111827)]">
                         {isChapterJourneyStudy ? chapterLabel : `Day ${day.day_number}`}: {day.day_title}
                       </p>
-                      <p className="mt-2 text-sm leading-6 text-[var(--bb-text-secondary,#5f6368)]">
-                        {day.devotional_text || "Tap open to read this day."}
-                      </p>
+                      <div className="mt-2 text-sm leading-6 text-[var(--bb-text-secondary,#5f6368)]">
+                        {day.devotional_text ? (
+                          <ChapterNotesMarkdown compactMobile databaseTermMode="light">
+                            {day.devotional_text}
+                          </ChapterNotesMarkdown>
+                        ) : (
+                          <p>Tap open to read this day.</p>
+                        )}
+                      </div>
                       <div className="mt-4 flex flex-wrap gap-2">
                         <button
                           type="button"

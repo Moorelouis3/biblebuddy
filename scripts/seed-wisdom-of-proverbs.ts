@@ -1788,6 +1788,12 @@ const devotionalDays: DevotionalDay[] = chapterPlans.map((day) => ({
   devotional_text: buildProverbsStudyIntro(day),
 }));
 
+const bibleNotesRows = devotionalDays.map((day) => ({
+  book: "proverbs",
+  chapter: day.day_number,
+  notes_text: day.devotional_text,
+}));
+
 async function main() {
   console.log("Starting Proverbs 31-day chapter devotional seed...");
 
@@ -1847,6 +1853,15 @@ async function main() {
     }
 
     console.log(`Updated ${devotionalIds.length} Proverbs devotional row(s).`);
+  }
+
+  const { error: bibleNotesError } = await supabase
+    .from("bible_notes")
+    .upsert(bibleNotesRows, { onConflict: "book,chapter" });
+
+  if (bibleNotesError) {
+    console.error("Failed to update Proverbs chapter notes:", bibleNotesError);
+    process.exit(1);
   }
 
   for (const devotionalId of devotionalIds) {
