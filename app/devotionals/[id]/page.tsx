@@ -301,6 +301,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
   const handledLouisDayRef = useRef<string | null>(null);
   const [featureTours, setFeatureTours] = useState<FeatureToursState>({ ...DEFAULT_FEATURE_TOURS });
   const [featureToursLoaded, setFeatureToursLoaded] = useState(false);
+  const expandedDayStorageKey = userId ? `bb:devotional-expanded-day:${userId}:${devotionalId}` : null;
 
   useEffect(() => {
     async function loadUserAndProfile() {
@@ -557,6 +558,32 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
   const currentDayData = orderedDays.find((day) => day.day_number === currentDay) || orderedDays[0] || null;
   const totalUnits = Math.max(devotional?.total_days || orderedDays.length || 1, 1);
   const remainingUnits = Math.max(totalUnits - completedDays, 0);
+
+  useEffect(() => {
+    if (!expandedDayStorageKey || typeof window === "undefined") return;
+
+    const storedValue = window.localStorage.getItem(expandedDayStorageKey);
+    if (!storedValue) return;
+
+    const parsedValue = Number.parseInt(storedValue, 10);
+    if (Number.isNaN(parsedValue)) return;
+
+    const matchingDay = orderedDays.find((day) => day.day_number === parsedValue);
+    if (matchingDay && isDayUnlocked(matchingDay.day_number)) {
+      setExpandedDayNumber(parsedValue);
+    }
+  }, [expandedDayStorageKey, orderedDays, userId]);
+
+  useEffect(() => {
+    if (!expandedDayStorageKey || typeof window === "undefined") return;
+
+    if (expandedDayNumber === null) {
+      window.localStorage.removeItem(expandedDayStorageKey);
+      return;
+    }
+
+    window.localStorage.setItem(expandedDayStorageKey, String(expandedDayNumber));
+  }, [expandedDayNumber, expandedDayStorageKey]);
 
   const isDayUnlocked = (dayNumber: number) => {
     if (userEmail === "moorelouis3@gmail.com") return true;
@@ -1496,18 +1523,24 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                         )}
                       </div>
                       <div className="mt-4 space-y-4">
-                        <div className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-4 py-4">
+                        <div className="rounded-3xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-4 py-5 shadow-[0_10px_24px_rgba(47,127,232,0.06)]">
                           <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Attached Reading</p>
-                          <p className="mt-2 text-sm font-bold text-[var(--bb-text-primary,#111827)]">
+                          <p className="mt-2 text-lg font-black text-[var(--bb-text-primary,#111827)]">
                             {day.bible_reading_book} {day.bible_reading_chapter}
                           </p>
                           <p className="mt-1 text-sm leading-6 text-[var(--bb-text-secondary,#5f6368)]">
-                            Tap into the Bible reading tied to this day before you move on.
+                            Open the actual chapter in the Bible Reader tab, then come back here and keep this day open.
                           </p>
+                          <div className="mt-4 rounded-2xl bg-white px-3 py-3">
+                            <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-text-muted,#6b7280)]">Actual Reading</p>
+                            <p className="mt-1 text-sm font-semibold text-[var(--bb-text-primary,#111827)]">
+                              {day.bible_reading_book} {day.bible_reading_chapter}
+                            </p>
+                          </div>
                           <button
                             type="button"
                             onClick={() => handleDayClick(day)}
-                            className="mt-3 rounded-full bg-[var(--bb-accent,#2f7fe8)] px-4 py-2 text-sm font-semibold text-white transition hover:opacity-95"
+                            className="mt-4 rounded-full bg-[var(--bb-accent,#2f7fe8)] px-4 py-2 text-sm font-semibold text-white transition hover:opacity-95"
                           >
                             Open Reading
                           </button>
