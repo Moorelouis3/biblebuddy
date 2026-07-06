@@ -1753,6 +1753,7 @@ export default function GroupChatPage() {
   const groupVideoInputRef = useRef<HTMLInputElement>(null);
   const scriptureContainerRef = useRef<HTMLDivElement>(null);
   const feedLoadMoreRef = useRef<HTMLDivElement>(null);
+  const weeklyEnsureGroupIdRef = useRef<string | null>(null);
 
   function handleScriptureClick(event: MouseEvent<HTMLDivElement>) {
     const target = event.target as HTMLElement | null;
@@ -3325,16 +3326,49 @@ export default function GroupChatPage() {
     const nextWeeklyTriviaByPostId: Record<string, WeeklyGroupTriviaFeedSet> = {};
     const nextWeeklyQuestionByPostId: Record<string, WeeklyGroupQuestionFeedSet> = {};
     const rootCommentCountMap: Record<string, number> = {};
+    const authorIds = [...new Set(rows.map((p) => p.user_id))];
+    let likeResult: { data: any[] | null } = { data: [] };
+    let commentResult: { data: any[] | null } = { data: [] };
+    let peopleResult: any = [{ data: [] }, { data: [] }];
     rows.forEach((row) => {
       rootCommentCountMap[row.id] = 0;
     });
 
     if (rows.length > 0) {
-      const { data: triviaRows } = await supabase
-        .from("weekly_group_trivia_sets")
-        .select("id, post_id, group_id, week_key, subject_key, subject_title, intro, questions, created_at")
-        .in("post_id", rows.map((row) => row.id));
+      const postIds = rows.map((row) => row.id);
+      const [triviaResult, questionResult, pollResult, likeResultValue, commentResultValue, peopleResultValue] = await Promise.all([
+        supabase
+          .from("weekly_group_trivia_sets")
+          .select("id, post_id, group_id, week_key, subject_key, subject_title, intro, questions, created_at")
+          .in("post_id", postIds),
+        supabase
+          .from("weekly_group_questions")
+          .select("id, group_id, post_id, week_key, prompt_key, subject_title, prompt, intro, comment_prompt, created_at")
+          .in("post_id", postIds),
+        supabase
+          .from("weekly_group_polls")
+          .select("id, group_id, post_id, week_key, poll_key, subject_title, question, intro, options, created_at")
+          .in("post_id", postIds),
+        supabase
+          .from("group_post_likes")
+          .select("post_id, user_id")
+          .in("post_id", postIds),
+        supabase
+          .from("group_posts")
+          .select("id, parent_post_id")
+          .in("parent_post_id", postIds),
+        authorIds.length > 0 && group
+          ? Promise.all([
+              supabase.from("group_members").select("user_id, role").eq("group_id", group.id).in("user_id", authorIds),
+              supabase.from("profile_stats").select("user_id, profile_image_url, is_paid, member_badge, current_streak, selected_streak_flame, current_level, active_premium_skin").in("user_id", authorIds),
+            ])
+          : Promise.resolve([{ data: [] }, { data: [] }]),
+      ]);
+      likeResult = likeResultValue;
+      commentResult = commentResultValue;
+      peopleResult = peopleResultValue;
 
+      const triviaRows = triviaResult.data || [];
       (triviaRows || []).forEach((row: any) => {
         nextWeeklyTriviaByPostId[row.post_id] = {
           id: row.id,
@@ -3349,11 +3383,7 @@ export default function GroupChatPage() {
         };
       });
 
-      const { data: questionRows } = await supabase
-        .from("weekly_group_questions")
-        .select("id, group_id, post_id, week_key, prompt_key, subject_title, prompt, intro, comment_prompt, created_at")
-        .in("post_id", rows.map((row) => row.id));
-
+      const questionRows = questionResult.data || [];
       (questionRows || []).forEach((row: any) => {
         nextWeeklyQuestionByPostId[row.post_id] = {
           id: row.id,
@@ -3369,11 +3399,7 @@ export default function GroupChatPage() {
         };
       });
 
-      const { data: pollRows } = await supabase
-        .from("weekly_group_polls")
-        .select("id, group_id, post_id, week_key, poll_key, subject_title, question, intro, options, created_at")
-        .in("post_id", rows.map((row) => row.id));
-
+      const pollRows = pollResult.data || [];
       const pollIds = (pollRows || []).map((row: any) => row.id);
       const { data: pollVoteRows } = pollIds.length > 0
         ? await supabase
@@ -3415,13 +3441,7 @@ export default function GroupChatPage() {
     }
 
     if (rows.length > 0) {
-      const rootIds = rows.map((row) => row.id);
-      const { data: topLevelComments } = await supabase
-        .from("group_posts")
-        .select("id, parent_post_id")
-        .in("parent_post_id", rootIds);
-
-      const directComments = topLevelComments || [];
+      const directComments = commentResult.data || [];
       const topLevelMap: Record<string, string> = {};
 
       directComments.forEach((comment) => {
@@ -3445,7 +3465,6 @@ export default function GroupChatPage() {
       }
     }
 
-    const authorIds = [...new Set(rows.map((p) => p.user_id))];
     const roleMap: Record<string, string> = {};
     const imageMap: Record<string, string | null> = {};
     const badgeMap: Record<string, { is_paid: boolean; member_badge: string | null; current_streak: number | null; selected_streak_flame: string | null; current_level: number | null; active_premium_skin: PremiumSkinId }> = {};
@@ -3457,9 +3476,7 @@ export default function GroupChatPage() {
     });
 
     if (rows.length > 0) {
-      const { data: likes } = await supabase
-        .from("group_post_likes").select("post_id, user_id")
-        .in("post_id", rows.map((p) => p.id));
+      const likes = likeResult.data || [];
       (likes || []).forEach((like) => {
         likeCountMap[like.post_id] = (likeCountMap[like.post_id] || 0) + 1;
         if (userId && like.user_id === userId) likedSet.add(like.post_id);
@@ -3467,10 +3484,9 @@ export default function GroupChatPage() {
     }
 
     if (authorIds.length > 0 && group) {
-      const [{ data: mems }, { data: pics }] = await Promise.all([
-        supabase.from("group_members").select("user_id, role").eq("group_id", group.id).in("user_id", authorIds),
-        supabase.from("profile_stats").select("user_id, profile_image_url, is_paid, member_badge, current_streak, selected_streak_flame, current_level, active_premium_skin").in("user_id", authorIds),
-      ]);
+      const [memsResult, picsResult] = peopleResult as [{ data: any[] | null }, { data: any[] | null }];
+      const mems = memsResult.data || [];
+      const pics = picsResult.data || [];
       (mems || []).forEach((m) => { roleMap[m.user_id] = m.role; });
       (pics || []).forEach((p: any) => {
         imageMap[p.user_id] = p.profile_image_url ?? null;
@@ -3510,52 +3526,26 @@ export default function GroupChatPage() {
     if (!group) return;
     const shouldAppend = !!options?.append && page > 0;
     if (!shouldAppend) setLoadingPosts(true);
-    setPostsHasMore(false);
+    if (shouldAppend) setLoadingMorePosts(true);
+    else setPostsHasMore(false);
     const postCategory = getGroupPostCategory(activeTab);
 
     if (activeTab === "home") {
       try {
         const { data: sessionData } = await supabase.auth.getSession();
         const accessToken = sessionData.session?.access_token;
-        if (accessToken) {
-          await Promise.all([
-            fetch(`/api/groups/${group.id}/update-monday/ensure`, {
-              method: "POST",
-              headers: {
-                Authorization: `Bearer ${accessToken}`,
-              },
-            }),
-            fetch(`/api/groups/${group.id}/weekly-trivia/ensure`, {
-              method: "POST",
-              headers: {
-                Authorization: `Bearer ${accessToken}`,
-              },
-            }),
-            fetch(`/api/groups/${group.id}/weekly-question/ensure`, {
-              method: "POST",
-              headers: {
-                Authorization: `Bearer ${accessToken}`,
-              },
-            }),
-            fetch(`/api/groups/${group.id}/who-was-this-friday/ensure`, {
-              method: "POST",
-              headers: {
-                Authorization: `Bearer ${accessToken}`,
-              },
-            }),
-            fetch(`/api/groups/${group.id}/prayer-request-sunday/ensure`, {
-              method: "POST",
-              headers: {
-                Authorization: `Bearer ${accessToken}`,
-              },
-            }),
-            fetch(`/api/groups/${group.id}/weekly-poll/ensure`, {
-              method: "POST",
-              headers: {
-                Authorization: `Bearer ${accessToken}`,
-              },
-            }),
-          ]);
+        if (accessToken && weeklyEnsureGroupIdRef.current !== group.id) {
+          weeklyEnsureGroupIdRef.current = group.id;
+          void Promise.all([
+            fetch(`/api/groups/${group.id}/update-monday/ensure`, { method: "POST", headers: { Authorization: `Bearer ${accessToken}` } }),
+            fetch(`/api/groups/${group.id}/weekly-trivia/ensure`, { method: "POST", headers: { Authorization: `Bearer ${accessToken}` } }),
+            fetch(`/api/groups/${group.id}/weekly-question/ensure`, { method: "POST", headers: { Authorization: `Bearer ${accessToken}` } }),
+            fetch(`/api/groups/${group.id}/who-was-this-friday/ensure`, { method: "POST", headers: { Authorization: `Bearer ${accessToken}` } }),
+            fetch(`/api/groups/${group.id}/prayer-request-sunday/ensure`, { method: "POST", headers: { Authorization: `Bearer ${accessToken}` } }),
+            fetch(`/api/groups/${group.id}/weekly-poll/ensure`, { method: "POST", headers: { Authorization: `Bearer ${accessToken}` } }),
+          ]).catch((error) => {
+            console.error("[GROUP_WEEKLY_AUTOMATIONS] Ensure failed:", error);
+          });
         }
       } catch (error) {
         console.error("[GROUP_WEEKLY_AUTOMATIONS] Ensure failed:", error);
@@ -3606,6 +3596,7 @@ export default function GroupChatPage() {
     setPostsPage(Math.max(page, 0));
     setPostsHasMore(fetchedRows.length >= FEED_PAGE_SIZE);
     if (!shouldAppend) setLoadingPosts(false);
+    if (shouldAppend) setLoadingMorePosts(false);
   }
 
   async function openFeedPostById(postId: string) {
@@ -7710,11 +7701,11 @@ export default function GroupChatPage() {
           </div>
         )})}
         {postsHasMore ? (
-          <div ref={feedLoadMoreRef} className="flex items-center justify-center py-3">
-            <div className="rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-4 py-2 text-xs font-semibold text-[var(--bb-text-secondary,#6b7280)] shadow-sm">
-              {loadingMorePosts ? "Loading more posts..." : "Scroll for more posts"}
-            </div>
+        <div ref={feedLoadMoreRef} className="flex items-center justify-center py-3">
+          <div className="rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-4 py-2 text-xs font-semibold text-[var(--bb-text-secondary,#6b7280)] shadow-sm">
+            {loadingMorePosts ? "Loading more posts!!!" : "Scroll for more posts"}
           </div>
+        </div>
         ) : (
           <div className="py-3 text-center text-xs font-semibold text-[var(--bb-text-muted,#9ca3af)]">
             You&apos;re caught up
