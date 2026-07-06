@@ -4924,6 +4924,16 @@ export default function DashboardJourneyExperience({
     const params = new URLSearchParams(window.location.search);
     const view = params.get("view");
     if ((!bibleYearProgressLoaded || !bibleYearProgressResolved) && (view === "bible-year" || view === "bible-year-series" || !view)) return;
+    if (view === "group") {
+      setBibleYearDashboardActive(false);
+      setBibleYearSeriesActive(false);
+      setBibleYearSeriesDetailDay(null);
+      setBibleYearJourneyPreviewDay(null);
+      setSelectedBibleYearSeriesDay(null);
+      setManualBibleYearStudyDayNumber(null);
+      setActivePage(dashboardPageKeys.indexOf("group"));
+      return;
+    }
     if (view === "bible-year") {
       const dayNumber = Number(params.get("day") || 0);
       const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((seriesDay) => seriesDay.dayNumber === dayNumber);
