@@ -1747,7 +1747,7 @@ export default function GroupChatPage() {
   const [composerVideoDurationError, setComposerVideoDurationError] = useState(false);
   const [composerUploadError, setComposerUploadError] = useState<string | null>(null);
   // Weekly cards plus a small batch of posts keep first paint fast; later loads append ten at a time.
-  const FEED_PAGE_SIZE = 10;
+  const FEED_PAGE_SIZE = 5;
   const [mentionItems, setMentionItems] = useState<MentionCatalogItem[]>([]);
   const groupPhotoInputRef = useRef<HTMLInputElement>(null);
   const groupVideoInputRef = useRef<HTMLInputElement>(null);
@@ -3100,6 +3100,21 @@ export default function GroupChatPage() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [group, activeTab, hubCategories]);
+
+  useEffect(() => {
+    if (!group) return;
+    if (activeTab !== "home") return;
+    if (selectedFeedPost || selectedHubItem || showTopBuddiesDetail) return;
+    if (loadingPosts || loadingMorePosts) return;
+    if (postsPage !== 0) return;
+    if (!posts.length || !postsHasMore) return;
+
+    const timer = window.setTimeout(() => {
+      void loadPosts(1, { append: true });
+    }, 900);
+
+    return () => window.clearTimeout(timer);
+  }, [activeTab, group, loadPosts, loadingMorePosts, loadingPosts, posts.length, postsHasMore, postsPage, selectedFeedPost, selectedHubItem, showTopBuddiesDetail]);
 
   useEffect(() => {
     const targetPostId = searchParams.get("post");
@@ -4956,7 +4971,7 @@ export default function GroupChatPage() {
     <div ref={communityRootRef} className={`bb-community-page ${isDashboardEmbed ? "bb-community-embedded" : "min-h-screen"} text-[var(--bb-text-primary,#111827)]`}>
 
       {/* â”€â”€ Header banner â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
-      {!isDashboardEmbed && (
+      {!isDashboardEmbed ? (
         <div className="bb-community-header relative z-20" style={{ backgroundColor: coverColor }}>
           <div className="max-w-2xl mx-auto px-4 pt-4 pb-2">
             <div className="bb-community-hero-card rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-5 py-4 shadow-sm">
@@ -5035,7 +5050,6 @@ export default function GroupChatPage() {
               </div>
             </div>
           </div>
-
           {/* Header navigation */}
           <div className="hidden md:block max-w-2xl mx-auto px-4 pb-4">
           {(() => {
@@ -5109,6 +5123,48 @@ export default function GroupChatPage() {
             );
           })()}
         </div>
+        </div>
+      ) : (
+        <div className="bb-community-header relative z-20 bg-transparent">
+          <div className="max-w-2xl mx-auto px-4 pt-4 pb-1">
+            <div className="rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-5 py-4 shadow-sm">
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[var(--bb-accent,#4a9b6f)]">{displayGroupName}</p>
+                  <h1 className="mt-1 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Bible Buddy Group</h1>
+                  <p className="mt-1 max-w-xl text-sm font-semibold leading-relaxed text-[var(--bb-text-secondary,#5f6368)]">
+                    Connect with Bible Buddies across the world.
+                  </p>
+                </div>
+                <div className="flex flex-wrap items-center gap-3">
+                  <button
+                    onClick={() => {
+                      setActiveTab("members");
+                    }}
+                    className="text-xs font-medium text-[var(--bb-text-secondary,#5f6368)] transition hover:text-[var(--bb-text-primary,#111827)]"
+                  >
+                    See All Buddies
+                  </button>
+                  {isLouisAdmin && (
+                    <>
+                      <Link
+                        href={`/study-groups/${group.id}/analytics`}
+                        className="text-xs font-medium text-[var(--bb-text-secondary,#5f6368)] transition hover:text-[var(--bb-text-primary,#111827)]"
+                      >
+                        Group Analytics
+                      </Link>
+                      <Link
+                        href={`/study-groups/${group.id}/scheduler`}
+                        className="text-xs font-medium text-[var(--bb-text-secondary,#5f6368)] transition hover:text-[var(--bb-text-primary,#111827)]"
+                      >
+                        Scheduler
+                      </Link>
+                    </>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       )}
 

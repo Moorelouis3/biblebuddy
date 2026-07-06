@@ -2582,6 +2582,7 @@ export default function DashboardJourneyExperience({
   const [dashboardGroupError, setDashboardGroupError] = useState<string | null>(null);
   const [dashboardGroupMembershipStatus, setDashboardGroupMembershipStatus] = useState<string | null>(null);
   const [dashboardGroupLoadedOnce, setDashboardGroupLoadedOnce] = useState(false);
+  const [dashboardGroupEmbedHeight, setDashboardGroupEmbedHeight] = useState(1200);
 
   useEffect(() => {
     setDashboardGreeting(getDashboardGreeting());
@@ -2914,6 +2915,19 @@ export default function DashboardJourneyExperience({
     window.addEventListener("message", handleBibleReaderHeight);
     return () => window.removeEventListener("message", handleBibleReaderHeight);
   }, [dashboardBibleSelectedBook, dashboardBibleSelectedChapter]);
+
+  useEffect(() => {
+    function handleCommunityEmbedHeight(event: MessageEvent) {
+      const payload = event.data;
+      if (!payload || payload.type !== "bb-community-height") return;
+      const nextHeight = Number(payload.height);
+      if (!Number.isFinite(nextHeight) || nextHeight <= 0) return;
+      setDashboardGroupEmbedHeight(Math.max(900, Math.ceil(nextHeight)));
+    }
+
+    window.addEventListener("message", handleCommunityEmbedHeight);
+    return () => window.removeEventListener("message", handleCommunityEmbedHeight);
+  }, []);
 
   useEffect(() => {
     document.documentElement.classList.add("bb-dashboard-stable-motion");
@@ -6145,8 +6159,10 @@ export default function DashboardJourneyExperience({
               key={dashboardGroup.id}
               title="Bible Buddy Group"
               src={`/study-groups/${dashboardGroup.id}/chat?embedded=dashboard`}
-              className="h-[calc(100dvh-180px)] w-full border-0 bg-[var(--bb-card,#ffffff)]"
+              className="w-full border-0 bg-[var(--bb-card,#ffffff)]"
+              style={{ height: `${dashboardGroupEmbedHeight}px` }}
               referrerPolicy="same-origin"
+              scrolling="no"
             />
           </div>
         )}
