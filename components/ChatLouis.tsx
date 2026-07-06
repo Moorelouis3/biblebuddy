@@ -513,8 +513,8 @@ function buildDirectRouteFromMessage(message: string, currentPage: LouisPageCont
   const simpleRoutes: Array<{ match: RegExp; href: string; reply: string }> = [
     { match: /\b(dashboard|home)\b/, href: "/dashboard", reply: "Okay.\n\nI’m taking you to the dashboard now." },
     { match: /\b(the )?bible( reader)?\b/, href: "/Bible", reply: "Okay.\n\nI’m opening the Bible reader now." },
-    { match: /\b(devotionals?|bible studies?)\b/, href: "/bible-studies", reply: "Okay.\n\nI’m taking you to the Bible Studies page now." },
-    { match: /\b(reading plans?|plans?)\b/, href: "/reading-plans", reply: "Okay.\n\nI’m opening the reading plans now." },
+    { match: /\b(devotionals?|bible studies?)\b/, href: "/plans", reply: "Okay.\n\nI’m taking you to Plans now." },
+    { match: /\b(reading plans?|plans?)\b/, href: "/plans", reply: "Okay.\n\nI’m opening Plans now." },
     { match: /\b(group|bible study group|the group)\b/, href: "/dashboard", reply: "Okay.\n\nI’m taking you to The Bible Study Group now." },
     { match: /\b(tv|sermons?|bible buddy tv)\b/, href: "/biblebuddy-tv", reply: "Okay.\n\nI’m opening Bible Buddy TV now." },
     { match: /\b(profile)\b/, href: "/profile", reply: "Okay.\n\nI’m taking you to your profile now." },

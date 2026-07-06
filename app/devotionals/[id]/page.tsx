@@ -372,7 +372,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
           if (embedded) {
             onBack?.();
           } else {
-            router.push("/bible-studies");
+            router.push("/plans");
           }
           return;
         }
@@ -778,7 +778,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
     const day = days.find((entry) => entry.day_number === requestedDay);
     if (!day) {
       handledLouisDayRef.current = requestKey;
-      router.replace(`/bible-studies/${devotionalId}`);
+      router.replace(`/plans/${devotionalId}`);
       return;
     }
 
@@ -787,7 +787,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
     void (async () => {
       await handleDayClick(day);
       if (!isChapterJourneyStudyTitle(devotional.title) || embedded) {
-        router.replace(`/bible-studies/${devotionalId}`);
+        router.replace(`/plans/${devotionalId}`);
       }
     })();
   }, [days, devotional, devotionalId, embedded, router, searchParams]);
@@ -1259,7 +1259,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
     return (
       <div className={embedded ? "bg-transparent" : "min-h-screen bg-gray-50"}>
         <div className="max-w-5xl mx-auto px-4 py-8">
-          <div className="text-gray-500">Loading Bible study...</div>
+          <div className="text-gray-500">Loading plan...</div>
         </div>
       </div>
     );
@@ -1271,7 +1271,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
         dayNumber={null}
         devotionalTitle={null}
         customTitle="You Need Bible Buddy Pro"
-        customBody={"This Bible study is part of the Bible Buddy Pro library. Upgrade to unlock full access to all Bible studies, deeper studies, and future releases."}
+        customBody={"This plan is part of the Bible Buddy Pro library. Upgrade to unlock full access to all plans, deeper studies, and future releases."}
         primaryButtonText="Upgrade to Pro"
         secondaryButtonText="Maybe Later"
         onPrimary={() => router.push('/upgrade')}
@@ -1280,7 +1280,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
           if (embedded) {
             onBack?.();
           } else {
-            router.push('/bible-studies');
+            router.push('/plans');
           }
         }}
       />
@@ -1291,14 +1291,14 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
     return (
       <div className={embedded ? "bg-transparent" : "min-h-screen bg-gray-50"}>
         <div className="max-w-5xl mx-auto px-4 py-8">
-          <div className="text-gray-500">Bible study not found.</div>
+          <div className="text-gray-500">Plan not found.</div>
           {embedded ? (
             <button type="button" onClick={onBack} className="text-blue-600 hover:underline mt-4 inline-block">
-              Back to Bible Studies
+              Back to Plans
             </button>
           ) : (
-          <Link href="/bible-studies" className="text-blue-600 hover:underline mt-4 inline-block">
-            ← Back to Bible Studies
+          <Link href="/plans" className="text-blue-600 hover:underline mt-4 inline-block">
+            ← Back to Plans
           </Link>
           )}
         </div>
@@ -1312,11 +1312,11 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
         {/* HEADER */}
         {embedded ? (
           <button type="button" onClick={onBack} className="mb-4 inline-flex rounded-full bg-blue-50 px-4 py-2 text-sm font-black text-blue-700 transition hover:bg-blue-100">
-            Back to Bible Studies
+            Back to Plans
           </button>
         ) : (
-        <Link href="/bible-studies" className="text-blue-600 hover:underline mb-4 inline-block">
-          ← Back to Bible Studies
+        <Link href="/plans" className="text-blue-600 hover:underline mb-4 inline-block">
+          ← Back to Plans
         </Link>
         )}
 
@@ -1337,7 +1337,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
             </div>
 
             <div className="min-w-0 text-center md:text-left">
-              <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Devotional Progress</p>
+              <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Plan Progress</p>
               <h1 className="mt-1 text-3xl font-black leading-tight text-[var(--bb-text-primary,#111827)] sm:text-4xl">{devotional.title}</h1>
               <p className="mt-2 text-sm font-bold text-[var(--bb-text-secondary,#5f6368)]">{scriptureRange ?? devotional.subtitle}</p>
 
@@ -1551,11 +1551,11 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
             className="relative w-full max-w-md rounded-2xl bg-white shadow-2xl p-6"
             onClick={(e) => e.stopPropagation()}
           >
-            <h2 className="text-xl font-bold text-gray-900 mb-3">🎁 You have one free Bible study</h2>
+          <h2 className="text-xl font-bold text-gray-900 mb-3">🎁 You have one free plan</h2>
             <p className="text-gray-700 leading-relaxed mb-6">
-              As a free user, you're gifted <strong>one complete Bible study</strong> — all {devotional.total_days} {isChapterJourneyStudy ? "chapters" : "sections"}, fully unlocked.
+              As a free user, you're gifted <strong>one complete plan</strong> — all {devotional.total_days} {isChapterJourneyStudy ? "chapters" : "sections"}, fully unlocked.
               <br /><br />
-              Once you choose, this will be your free Bible study. Is <strong>{devotional.title}</strong> the one you want to start?
+              Once you choose, this will be your free plan. Is <strong>{devotional.title}</strong> the one you want to start?
             </p>
             <div className="flex flex-col gap-3">
               <button
@@ -1594,9 +1594,9 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
             >
               ✕
             </button>
-            <h2 className="text-xl font-bold text-gray-900 mb-3">Unlock All Bible Studies</h2>
+            <h2 className="text-xl font-bold text-gray-900 mb-3">Unlock All Plans</h2>
             <p className="text-gray-700 leading-relaxed mb-6">
-              You've already started your free Bible study. Upgrade to Bible Buddy Pro to unlock every Bible study — including this one — plus all future releases.
+              You've already started your free plan. Upgrade to Bible Buddy Pro to unlock every plan — including this one — plus all future releases.
             </p>
             <div className="flex flex-col gap-3">
               <button

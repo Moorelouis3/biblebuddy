@@ -2827,7 +2827,7 @@ export default function DashboardJourneyExperience({
   }> = [
     { key: "home", label: "Home", icon: "\u2302", href: "/dashboard" },
     { key: "bible", label: "Bible", icon: <BibleBookIcon />, href: "/reading" },
-    { key: "bible_studies", label: "Devotionals", icon: "\uD83C\uDF05", href: "/bible-studies" },
+    { key: "bible_studies", label: "Plans", icon: "\uD83C\uDF05", href: "/plans" },
     { key: "bible_topics", label: "Bible Topics", icon: "\uD83D\uDCDA", href: "#bible-topics" },
     { key: "share", label: "Invite", icon: "\u2197", href: dashboardPageLinks.share?.href || "#share-bible-buddy", onClick: dashboardPageLinks.share?.onClick },
     { key: "group", label: "Group", icon: "\uD83D\uDC65", href: "/dashboard?view=group" },

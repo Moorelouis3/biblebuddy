@@ -73,7 +73,7 @@ export default function ReadingPlansPage() {
       userId,
       username,
       actionType: ACTION_TYPE.reading_plans_viewed,
-      actionLabel: "Bible Reading Plans",
+      actionLabel: "Plans",
       dedupeKey: "reading-plans-viewed",
     }).catch((error) => console.error("[NAV] Failed to track reading plans view:", error));
   }, [userId, username]);
@@ -81,12 +81,12 @@ export default function ReadingPlansPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-5xl mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold mb-8">Bible Reading Plans</h1>
+        <h1 className="text-3xl font-bold mb-8">Plans</h1>
 
         {/* Intro blurb (lightweight, similar tone to Devotionals intro) */}
         <div className="bg-blue-50 border border-blue-200 rounded-xl shadow-sm mb-6 px-6 py-4">
           <p className="text-gray-800 text-sm leading-relaxed">
-            Bible Reading Plans help you move through Scripture in a guided order —
+            Plans help you move through Scripture in a guided order -
             not by adding anything new, but by reusing the same Bible pages you already know.
             Pick a plan, follow the flow, and let the story unfold one chapter at a time.
           </p>

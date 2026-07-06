@@ -3358,7 +3358,7 @@ html[data-bb-skin="no-fuss"] .bb-skin-glow-tile {
 html[data-bb-skin="no-fuss"] .streak-flame-earned {
   filter: drop-shadow(0 0 12px rgba(108, 184, 255, 0.3));
 }
-`r`n
+
 html[data-bb-skin="no-fuss"] img[alt="Your profile"],
 html[data-bb-skin="no-fuss"] [data-louis-avatar] {
   box-shadow:
