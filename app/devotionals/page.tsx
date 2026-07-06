@@ -33,14 +33,6 @@ type StudyProgressSummary = {
 type StudyFilter = "all" | "done" | "started";
 
 const FEATURED_STUDY_ORDER = [
-  "The Wrestling of Jacob",
-  "The Testing of Joseph",
-  "The Deliverance of Moses",
-  "The Presence of God",
-  "Holiness Before God",
-  "The Wilderness Journey",
-  "The Rebellion in the Wilderness",
-  "The Promised Land Ahead",
   "The Calling of Moses",
   "The Heart of David",
   "The Rise of Esther",
@@ -51,6 +43,7 @@ const FEATURED_STUDY_ORDER = [
   "The Disciples of Jesus",
   "The Transforming of Paul",
   "Women of the Bible",
+  "The Testing of Joseph",
 ];
 const KEEP_DEVOTIONAL_TITLES = new Set(FEATURED_STUDY_ORDER);
 const FEATURED_STUDY_ORDER_INDEX = new Map(

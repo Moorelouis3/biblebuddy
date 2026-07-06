@@ -288,6 +288,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
   const [profileStats, setProfileStats] = useState<any>(null);
   const [selectedDay, setSelectedDay] = useState<DevotionalDay | null>(null);
   const [selectedBibleReading, setSelectedBibleReading] = useState<{ book: string; chapter: number } | null>(null);
+  const [expandedDayNumber, setExpandedDayNumber] = useState<number | null>(null);
   const [showCreditBlocked, setShowCreditBlocked] = useState(false);
   const [showReadingRequiredModal, setShowReadingRequiredModal] = useState(false);
   const [showProModal, setShowProModal] = useState(false);
@@ -1411,7 +1412,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
             </div>
             <p className="text-xs font-black text-[var(--bb-text-muted,#6b7280)]">{completedDays}/{totalUnits} done</p>
           </div>
-          <div className="grid gap-3 sm:grid-cols-2">
+          <div className="grid gap-3">
             {orderedDays.map((day) => {
               const dayProgress = progress.get(day.day_number);
               const taskProgress = chapterTaskProgress.get(day.day_number) || { completed: 0, total: WISDOM_TASK_TOTAL };
@@ -1419,58 +1420,92 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
               const isCompleted = isChapterJourneyStudy ? taskProgress.completed >= taskProgress.total : dayProgress?.is_completed === true;
               const chapterLabel = `${day.bible_reading_book} ${day.bible_reading_chapter}`;
               const remainingTasks = Math.max(taskProgress.total - taskProgress.completed, 0);
+              const isExpanded = expandedDayNumber === day.day_number;
 
               return (
-                <button
+                <div
                   key={day.id}
-                  type="button"
-                  onClick={() => handleDayClick(day)}
-                  disabled={!isUnlocked}
-                  className={`w-full text-left px-4 py-3 rounded-lg border transition ${
+                  className={`overflow-hidden rounded-lg border transition ${
                     isCompleted
-                      ? "bg-[#eaf5ff] border-[#b9dcf4] hover:bg-[#dff0fb]"
+                      ? "bg-[#eaf5ff] border-[#b9dcf4]"
                       : isUnlocked
-                      ? "bg-white border-gray-200 hover:bg-blue-50 hover:border-blue-300 cursor-pointer"
-                      : "bg-gray-50 border-gray-200 opacity-60 cursor-not-allowed"
+                      ? "bg-white border-gray-200"
+                      : "bg-gray-50 border-gray-200 opacity-60"
                   }`}
                 >
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <span className="font-semibold text-gray-700">
-                        {isChapterJourneyStudy ? chapterLabel : `Day ${day.day_number}`}
-                      </span>
-                      <span className="text-gray-700">{day.day_title}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      {!isUnlocked && (
-                        <svg
-                          className="w-5 h-5 text-gray-400"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                          />
-                        </svg>
-                      )}
-                      {isChapterJourneyStudy && isCompleted ? (
-                        <span className="font-semibold text-[#2f6685]">✓ Complete</span>
-                      ) : isChapterJourneyStudy && isUnlocked ? (
-                        <span className="text-sm font-semibold text-gray-600">
-                          {taskProgress.completed}/{taskProgress.total} complete
-                          {remainingTasks > 0 ? `, ${remainingTasks} task${remainingTasks === 1 ? "" : "s"} left` : ""}
+                  <button
+                    type="button"
+                    onClick={() => setExpandedDayNumber((current) => (current === day.day_number ? null : day.day_number))}
+                    disabled={!isUnlocked}
+                    className={`w-full text-left px-4 py-3 transition ${
+                      isUnlocked ? "hover:bg-blue-50 hover:border-blue-300 cursor-pointer" : "cursor-not-allowed"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="flex min-w-0 items-center gap-3">
+                        <span className="font-semibold text-gray-700">
+                          {isChapterJourneyStudy ? chapterLabel : `Day ${day.day_number}`}
                         </span>
-                      ) : null}
-                      {isCompleted && !isChapterJourneyStudy && (
-                        <span className="font-semibold text-[#2f6685]">✓ Complete</span>
-                      )}
+                        <span className="truncate text-gray-700">{day.day_title}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        {!isUnlocked && (
+                          <svg
+                            className="h-5 w-5 text-gray-400"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                            />
+                          </svg>
+                        )}
+                        {isChapterJourneyStudy && isCompleted ? (
+                          <span className="font-semibold text-[#2f6685]">? Complete</span>
+                        ) : isChapterJourneyStudy && isUnlocked ? (
+                          <span className="text-sm font-semibold text-gray-600">
+                            {taskProgress.completed}/{taskProgress.total} complete
+                            {remainingTasks > 0 ? `, ${remainingTasks} task${remainingTasks === 1 ? "" : "s"} left` : ""}
+                          </span>
+                        ) : null}
+                        {isCompleted && !isChapterJourneyStudy && (
+                          <span className="font-semibold text-[#2f6685]">? Complete</span>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                </button>
+                  </button>
+
+                  {isUnlocked && isExpanded && (
+                    <div className="border-t border-[var(--bb-card-border,#dbe7f4)] bg-white px-4 py-4">
+                      <p className="text-sm font-semibold text-[var(--bb-text-primary,#111827)]">
+                        {isChapterJourneyStudy ? chapterLabel : `Day ${day.day_number}`}: {day.day_title}
+                      </p>
+                      <p className="mt-2 text-sm leading-6 text-[var(--bb-text-secondary,#5f6368)]">
+                        {day.devotional_text || "Tap open to read this day."}
+                      </p>
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        <button
+                          type="button"
+                          onClick={() => handleDayClick(day)}
+                          className="rounded-full bg-[var(--bb-accent,#2f7fe8)] px-4 py-2 text-sm font-semibold text-white transition hover:opacity-95"
+                        >
+                          Open Day
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setExpandedDayNumber(null)}
+                          className="rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-white px-4 py-2 text-sm font-semibold text-[var(--bb-text-primary,#111827)] transition hover:bg-gray-50"
+                        >
+                          Close
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
               );
             })}
           </div>

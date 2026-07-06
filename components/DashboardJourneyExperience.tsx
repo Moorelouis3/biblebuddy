@@ -17705,7 +17705,13 @@ Before we understand redemption, we need to understand what God made humanity fo
               data-dashboard-nav-key="bible_studies"
             >
               <span className={`grid h-7 w-7 place-items-center rounded-full ${plansTabActive ? "bg-[var(--bb-accent,#2f7fe8)] text-white" : ""}`} aria-hidden="true">
-                <span className="text-lg leading-none">🌅</span>
+                <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M4 5.5A1.5 1.5 0 0 1 5.5 4h12A1.5 1.5 0 0 1 19 5.5v12A1.5 1.5 0 0 1 17.5 19h-12A1.5 1.5 0 0 1 4 17.5v-12Z" />
+                  <path d="M8 4v15" />
+                  <path d="m8 8 3 1.5 3-1.5 3 1.5" />
+                  <path d="M10 13h6" />
+                  <path d="M10 16h4" />
+                </svg>
               </span>
               <span className="mt-0.5 text-[9px] leading-none sm:mt-0 sm:text-[10px]">Plans</span>
             </button>
