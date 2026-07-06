@@ -38,6 +38,7 @@ import { consumeCreditAction } from "@/lib/creditClient";
 import { countCompletedSeriesWeekSections, isSeriesWeekComplete, SERIES_WEEK_TOTAL_SECTIONS, toSeriesWeekProgressState } from "@/lib/seriesWeekProgress";
 import { isSeriesWeekNotesActionEvent, parseSeriesWeekNotesWeekNumber } from "@/lib/seriesWeekNotesTracking";
 import { hasLazySeriesNotes } from "@/lib/seriesNotes";
+import { readGroupFeedCache, writeGroupFeedCache } from "@/lib/groupFeedCache";
 import {
   extractMentionedItemsFromText,
   linkMentionItemsInHtml,
@@ -1747,7 +1748,7 @@ export default function GroupChatPage() {
   const [composerVideoDurationError, setComposerVideoDurationError] = useState(false);
   const [composerUploadError, setComposerUploadError] = useState<string | null>(null);
   // Weekly cards plus a small batch of posts keep first paint fast; later loads append ten at a time.
-  const FEED_PAGE_SIZE = 5;
+  const FEED_PAGE_SIZE = 10;
   const [mentionItems, setMentionItems] = useState<MentionCatalogItem[]>([]);
   const groupPhotoInputRef = useRef<HTMLInputElement>(null);
   const groupVideoInputRef = useRef<HTMLInputElement>(null);
@@ -3529,6 +3530,35 @@ export default function GroupChatPage() {
     if (shouldAppend) setLoadingMorePosts(true);
     else setPostsHasMore(false);
     const postCategory = getGroupPostCategory(activeTab);
+    const cachedFeed = !shouldAppend && page === 0 ? readGroupFeedCache(group.id, activeTab) : null;
+
+    if (cachedFeed) {
+      try {
+        const hydrated = await hydrateFeedPosts((cachedFeed.posts || []) as any[]);
+        if (options?.append && page > 0) {
+          setPosts((prev) => {
+            const merged = [...prev, ...hydrated.posts];
+            const deduped = merged.filter((post, index, all) => all.findIndex((item) => item.id === post.id) === index);
+            return sortPinnedPostsFirst(deduped);
+          });
+          setWeeklyPollByPostId((prev) => ({ ...prev, ...hydrated.weeklyPollByPostId }));
+          setWeeklyTriviaByPostId((prev) => ({ ...prev, ...hydrated.weeklyTriviaByPostId }));
+          setWeeklyQuestionByPostId((prev) => ({ ...prev, ...hydrated.weeklyQuestionByPostId }));
+        } else {
+          setPosts(sortPinnedPostsFirst(hydrated.posts));
+          setWeeklyPollByPostId(hydrated.weeklyPollByPostId);
+          setWeeklyTriviaByPostId(hydrated.weeklyTriviaByPostId);
+          setWeeklyQuestionByPostId(hydrated.weeklyQuestionByPostId);
+        }
+        setPostsPage(Math.max(page, 0));
+        setPostsHasMore(cachedFeed.hasMore);
+        if (!shouldAppend) setLoadingPosts(false);
+        if (shouldAppend) setLoadingMorePosts(false);
+        return;
+      } catch {
+        // Fall through to a normal network fetch if cached data fails to hydrate.
+      }
+    }
 
     if (activeTab === "home") {
       try {
@@ -3577,6 +3607,18 @@ export default function GroupChatPage() {
     const fetchedRows = postRows || [];
     const rows = fetchedRows.slice(0, FEED_PAGE_SIZE);
     const hydrated = await hydrateFeedPosts(rows);
+    if (!shouldAppend && page === 0) {
+      writeGroupFeedCache({
+        groupId: group.id,
+        tab: activeTab,
+        fetchedAt: Date.now(),
+        posts: fetchedRows,
+        hasMore: fetchedRows.length >= FEED_PAGE_SIZE,
+        weeklyPollByPostId: hydrated.weeklyPollByPostId,
+        weeklyTriviaByPostId: hydrated.weeklyTriviaByPostId,
+        weeklyQuestionByPostId: hydrated.weeklyQuestionByPostId,
+      });
+    }
 
     if (options?.append && page > 0) {
       setPosts((prev) => {

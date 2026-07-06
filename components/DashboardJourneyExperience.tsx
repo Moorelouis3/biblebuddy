@@ -72,6 +72,7 @@ import { enrichBibleVerses } from "../lib/bibleHighlighting";
 import { resolveBibleReference } from "../lib/bibleTermResolver";
 import { getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes } from "../lib/bibleNotes";
 import { preloadAdminAnalytics } from "../lib/adminAnalyticsPreload";
+import { preloadGroupFeedForUser, writeGroupFeedCache } from "../lib/groupFeedCache";
 import { buildPersistedFeatureTours, normalizeFeatureTours } from "../lib/featureTours";
 import { getTriviaChapter } from "../lib/triviaGameData";
 
@@ -5307,6 +5308,16 @@ export default function DashboardJourneyExperience({
           ...(profileMap.get(post.user_id) || {}),
         })),
       );
+      writeGroupFeedCache({
+        groupId: group.id,
+        tab: "home",
+        fetchedAt: Date.now(),
+        posts: basePosts,
+        hasMore: basePosts.length >= 10,
+        weeklyPollByPostId: {},
+        weeklyTriviaByPostId: {},
+        weeklyQuestionByPostId: {},
+      });
       setDashboardGroupLoadedOnce(true);
     } catch (error: any) {
       setDashboardGroupError(error?.message || "Could not load the group right now.");
@@ -5320,6 +5331,17 @@ export default function DashboardJourneyExperience({
       void loadDashboardGroup();
     }
   }, [activePageKey, loadDashboardGroup]);
+
+  useEffect(() => {
+    if (!userId) return;
+    if (typeof window === "undefined") return;
+
+    const timer = window.setTimeout(() => {
+      void preloadGroupFeedForUser(userId, "home");
+    }, 1200);
+
+    return () => window.clearTimeout(timer);
+  }, [userId]);
 
   async function loadDashboardGroupComments(postId: string, force = false) {
     if (!dashboardGroup?.id) return;
@@ -15709,14 +15731,7 @@ Before we understand redemption, we need to understand what God made humanity fo
   }
 
   function renderBibleYearJourneyFinishRows() {
-    return (
-      <div className="px-2 pb-1 pt-3 text-center text-[var(--bb-text-primary,#111827)]">
-        <p className="inline-flex max-w-full items-center justify-center gap-1 whitespace-nowrap text-[10px] font-black uppercase tracking-[0.18em] text-[#185cff]">
-          <span className="shrink-0">Expected Finish Date:</span>
-          <span className="text-[11px] text-[#10224b]">{effectiveBibleYearReport.expectedFinishDateLabel}</span>
-        </p>
-      </div>
-    );
+    return null;
   }
 
   function renderDashboardGuidedIntroOverlay() {
