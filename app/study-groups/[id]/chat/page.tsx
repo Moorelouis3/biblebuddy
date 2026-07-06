@@ -7410,27 +7410,6 @@ export default function GroupChatPage() {
       <div className="flex flex-col gap-4">
         {isHomeCommunityFeed && (
           <>
-            {weeklyTriviaPost && weeklyTriviaByPostId[weeklyTriviaPost.id] ? (
-              <section className="bb-community-feature-card rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm">
-                <div className="mb-4 flex items-start justify-between gap-4">
-                  <div>
-                    <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[var(--bb-accent,#1d4ed8)]">Weekly Trivia</p>
-                    <h2 className="mt-1 text-lg font-black leading-tight text-[var(--bb-text-primary,#111827)]">
-                      Play the Group Challenge
-                    </h2>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => openFeedPostInline(weeklyTriviaPost)}
-                    className="rounded-full border border-[var(--bb-card-border)] bg-[var(--bb-surface)] px-3 py-1.5 text-xs font-bold text-[var(--bb-text-secondary,#4b5563)] transition hover:border-[var(--bb-accent)] hover:text-[var(--bb-accent)]"
-                  >
-                    Details
-                  </button>
-                </div>
-                <GroupWeeklyTriviaCard triviaSet={weeklyTriviaByPostId[weeklyTriviaPost.id]} userId={userId} compactBoard embedded />
-              </section>
-            ) : null}
-
             {renderCreatePostCard()}
 
             <div className="px-1">
