@@ -2583,6 +2583,8 @@ export default function DashboardJourneyExperience({
   const [dashboardGroupMembershipStatus, setDashboardGroupMembershipStatus] = useState<string | null>(null);
   const [dashboardGroupLoadedOnce, setDashboardGroupLoadedOnce] = useState(false);
   const [dashboardGroupEmbedHeight, setDashboardGroupEmbedHeight] = useState(1200);
+  const [dashboardGroupDeepLinkPostId, setDashboardGroupDeepLinkPostId] = useState<string | null>(null);
+  const [dashboardGroupDeepLinkCommentId, setDashboardGroupDeepLinkCommentId] = useState<string | null>(null);
 
   useEffect(() => {
     setDashboardGreeting(getDashboardGreeting());
@@ -4960,11 +4962,12 @@ export default function DashboardJourneyExperience({
     const view = params.get("view");
     if ((!bibleYearProgressLoaded || !bibleYearProgressResolved) && (view === "bible-year" || view === "bible-year-series" || !view)) return;
     if (view === "group") {
-      if (typeof window !== "undefined") {
-        window.location.href = "/study-groups";
-      }
+      setDashboardGroupDeepLinkPostId(params.get("post"));
+      setDashboardGroupDeepLinkCommentId(params.get("comment"));
       return;
     }
+    setDashboardGroupDeepLinkPostId(null);
+    setDashboardGroupDeepLinkCommentId(null);
     if (view === "bible-year") {
       const dayNumber = Number(params.get("day") || 0);
       const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((seriesDay) => seriesDay.dayNumber === dayNumber);
@@ -5169,6 +5172,8 @@ export default function DashboardJourneyExperience({
     const groupIndex = dashboardPageKeys.indexOf("group");
     if (groupIndex < 0) return;
     clearBibleYearViews();
+    setDashboardGroupDeepLinkPostId(null);
+    setDashboardGroupDeepLinkCommentId(null);
     setDashboardMenuOpen(false);
     snapToPage(groupIndex);
   }
@@ -5200,6 +5205,8 @@ export default function DashboardJourneyExperience({
       const groupIndex = dashboardPageKeys.indexOf("group");
       if (groupIndex >= 0) {
         clearBibleYearViews();
+        setDashboardGroupDeepLinkPostId(null);
+        setDashboardGroupDeepLinkCommentId(null);
         setDashboardMenuOpen(false);
         snapToPage(groupIndex);
       }
@@ -6147,6 +6154,11 @@ export default function DashboardJourneyExperience({
   );
 
   const renderEmbeddedGroupPage = () => {
+    const groupDeepLinkParams = new URLSearchParams();
+    groupDeepLinkParams.set("embedded", "dashboard");
+    if (dashboardGroupDeepLinkPostId) groupDeepLinkParams.set("post", dashboardGroupDeepLinkPostId);
+    if (dashboardGroupDeepLinkCommentId) groupDeepLinkParams.set("comment", dashboardGroupDeepLinkCommentId);
+
     return (
       <section className="w-full px-1 pb-4">
         {!dashboardGroup?.id ? (
@@ -6158,7 +6170,7 @@ export default function DashboardJourneyExperience({
             <iframe
               key={dashboardGroup.id}
               title="Bible Buddy Group"
-              src={`/study-groups/${dashboardGroup.id}/chat?embedded=dashboard`}
+              src={`/study-groups/${dashboardGroup.id}/chat?${groupDeepLinkParams.toString()}`}
               className="w-full border-0 bg-[var(--bb-card,#ffffff)]"
               style={{ height: `${dashboardGroupEmbedHeight}px` }}
               referrerPolicy="same-origin"

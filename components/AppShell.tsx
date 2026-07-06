@@ -1934,7 +1934,19 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       notif.type === "feed_post_commented" ||
       notif.type === "feed_post_replied"
     ) {
-      router.push("/dashboard");
+      const url = new URL("/dashboard", window.location.origin);
+      url.searchParams.set("view", "group");
+      if (notif.post_id) url.searchParams.set("post", notif.post_id);
+      if (notif.comment_id) url.searchParams.set("comment", notif.comment_id);
+      router.push(`${url.pathname}${url.search}`);
+      return;
+    }
+    if (notif.article_slug?.startsWith("/study-groups/")) {
+      const url = new URL("/dashboard", window.location.origin);
+      url.searchParams.set("view", "group");
+      if (notif.post_id) url.searchParams.set("post", notif.post_id);
+      if (notif.comment_id) url.searchParams.set("comment", notif.comment_id);
+      router.push(`${url.pathname}${url.search}`);
       return;
     }
     if (notif.article_slug?.startsWith("/dashboard/")) {
