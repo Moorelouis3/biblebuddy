@@ -18,6 +18,9 @@ import CreditLimitModal from "./CreditLimitModal";
 import BibleTopicsPanel from "./BibleTopicsPanel";
 import VideoHelpfulPoll from "./VideoHelpfulPoll";
 import StreakFlameEmoji from "./StreakFlameEmoji";
+import StreakFlameBadge from "./StreakFlameBadge";
+import LevelBadge from "./LevelBadge";
+import UserBadge from "./UserBadge";
 import CommentSection from "./comments/CommentSection";
 import BibleStudiesLibraryPage from "../app/devotionals/page";
 import BibleStudyDetailPage from "../app/devotionals/[id]/page";
@@ -738,6 +741,17 @@ function getDashboardGroupPostParagraphs(content?: string | null) {
     .split(/\n{2,}/)
     .map((paragraph) => paragraph.trim())
     .filter(Boolean);
+}
+
+function getDashboardGroupInitial(name: string | null | undefined) {
+  const text = (name || "B").trim();
+  return text ? text.charAt(0).toUpperCase() : "B";
+}
+
+function getDashboardGroupAvatarColor(userId: string) {
+  const palette = ["#4a9b6f", "#2f7fe8", "#f59e0b", "#8b5cf6", "#ef4444", "#14b8a6"];
+  const sum = (userId || "").split("").reduce((acc, char) => acc + char.charCodeAt(0), 0);
+  return palette[sum % palette.length];
 }
 
 type ShareRewardsReferral = {
@@ -5318,6 +5332,14 @@ export default function DashboardJourneyExperience({
     });
   }
 
+  function openDashboardGroupPost(postId: string) {
+    setDashboardGroupOpenComments((prev) => {
+      if (prev[postId]) return prev;
+      void loadDashboardGroupComments(postId);
+      return { ...prev, [postId]: true };
+    });
+  }
+
   async function submitDashboardGroupPost() {
     const content = dashboardGroupPostDraft.trim();
     if (!content || !dashboardGroup || !userId || dashboardGroupPosting) return;
@@ -6179,9 +6201,18 @@ export default function DashboardJourneyExperience({
                       : null;
 
                 return (
-                  <article
+                  <div
                     key={post.id}
-                    className="bb-community-post-card w-full rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm transition hover:shadow-md"
+                    className="bb-community-post-card w-full cursor-pointer rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm transition hover:shadow-md"
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => openDashboardGroupPost(post.id)}
+                    onKeyDown={(event) => {
+                      if (event.key === "Enter" || event.key === " ") {
+                        event.preventDefault();
+                        openDashboardGroupPost(post.id);
+                      }
+                    }}
                     style={{ animationDelay: `${Math.min(index * 0.045, 0.45)}s` }}
                   >
                     <div className="flex items-start gap-3">
@@ -6195,28 +6226,22 @@ export default function DashboardJourneyExperience({
                         />
                       ) : (
                         <div
-                          className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[var(--bb-accent-soft,#eaf5ff)] text-sm font-black text-[var(--bb-accent,#2f7fe8)]"
+                          className="grid h-9 w-9 shrink-0 place-items-center rounded-full text-sm font-black text-white"
+                          style={{ backgroundColor: getDashboardGroupAvatarColor(post.user_id) }}
                           aria-hidden="true"
                         >
-                          {(post.display_name || "Bible Buddy").trim().charAt(0).toUpperCase() || "B"}
+                          {getDashboardGroupInitial(post.display_name)}
                         </div>
                       )}
 
                       <div className="min-w-0 flex-1">
                         <div className="flex flex-wrap items-center gap-1.5">
-                          <p className="truncate text-sm font-black text-[var(--bb-text-primary,#111827)]">
+                          <Link href={`/profile/${post.user_id}`} className="truncate text-sm font-black text-[var(--bb-text-primary,#111827)] hover:underline" onClick={(event) => event.stopPropagation()}>
                             {post.display_name || "Bible Buddy"}
-                          </p>
-                          {typeof post.current_streak === "number" ? (
-                            <span className="rounded-full bg-[var(--bb-surface-soft,#f8fbff)] px-2 py-0.5 text-[10px] font-black uppercase tracking-[0.12em] text-[var(--bb-text-secondary,#4b5563)]">
-                              {post.current_streak} day streak
-                            </span>
-                          ) : null}
-                          {post.member_badge ? (
-                            <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-black uppercase tracking-[0.12em] text-emerald-700">
-                              {post.member_badge}
-                            </span>
-                          ) : null}
+                          </Link>
+                          <StreakFlameBadge currentStreak={post.current_streak} flameId={post.selected_streak_flame} />
+                          <LevelBadge currentLevel={post.current_level} skinId={post.active_premium_skin} />
+                          <UserBadge customBadge={post.member_badge} isPaid={post.is_paid} skinId={post.active_premium_skin} />
                           <span className="text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">{formatGroupTime(post.created_at)}</span>
                         </div>
 
@@ -6323,7 +6348,7 @@ export default function DashboardJourneyExperience({
                         </div>
                       </div>
                     ) : null}
-                  </article>
+                  </div>
                 );
               })}
             </div>
