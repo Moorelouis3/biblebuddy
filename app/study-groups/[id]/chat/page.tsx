@@ -4956,97 +4956,88 @@ export default function GroupChatPage() {
     <div ref={communityRootRef} className={`bb-community-page ${isDashboardEmbed ? "bb-community-embedded" : "min-h-screen"} text-[var(--bb-text-primary,#111827)]`}>
 
       {/* â”€â”€ Header banner â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
-      <div className="bb-community-header relative z-20" style={isDashboardEmbed ? undefined : { backgroundColor: coverColor }}>
-        <div className="max-w-2xl mx-auto px-4 pt-4 pb-2">
-          <div className="bb-community-hero-card rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-5 py-4 shadow-sm">
-          {!isDashboardEmbed && (
-          <div className="flex items-center gap-1 text-xs text-[var(--bb-text-secondary,#5f6368)] font-medium mb-3 flex-wrap">
-            {!isDashboardEmbed && (
-              <>
+      {!isDashboardEmbed && (
+        <div className="bb-community-header relative z-20" style={{ backgroundColor: coverColor }}>
+          <div className="max-w-2xl mx-auto px-4 pt-4 pb-2">
+            <div className="bb-community-hero-card rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-5 py-4 shadow-sm">
+              <div className="flex items-center gap-1 text-xs text-[var(--bb-text-secondary,#5f6368)] font-medium mb-3 flex-wrap">
                 <Link href="/dashboard" className="hover:text-[var(--bb-text-primary,#111827)] hover:underline transition">
                   Dashboard
                 </Link>
                 <span>/</span>
-              </>
-            )}
-            <span className="text-[var(--bb-text-primary,#111827)]">Group</span>
-            {selectedSeries && (
-              <>
-                <span>/</span>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setSelectedSeries(null);
-                    setSelectedSeriesWeek(null);
-                    setSelectedPost(null);
-                  }}
-                  className="text-[var(--bb-text-primary,#111827)] hover:underline"
-                >
-                  {selectedSeries.title}
-                </button>
-              </>
-            )}
-            {selectedPost && (
-              <>
-                <span>/</span>
-                <button
-                  type="button"
-                  onClick={() => setSelectedPost(null)}
-                  className="text-[var(--bb-text-primary,#111827)] hover:underline"
-                >
-                  {selectedPost.title}
-                </button>
-              </>
-            )}
-          </div>
-          )}
-          <div className="flex items-center gap-3">
-            {!isDashboardEmbed ? (
-              <span className="bb-community-emblem grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface,#ffffff)] text-xl shadow-sm">{group.cover_emoji || "??"}</span>
-            ) : null}
-            <div className="flex-1 min-w-0">
-              {!isDashboardEmbed ? (
-                <div>
-                  <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[var(--bb-accent,#4a9b6f)]">{displayGroupName}</p>
-                  <h1 className="mt-1 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Bible Buddy Group</h1>
-                  <p className="mt-1 max-w-xl text-sm font-semibold leading-relaxed text-[var(--bb-text-secondary,#5f6368)]">
-                    Connect with Bible Buddies across the world.
-                  </p>
+                <span className="text-[var(--bb-text-primary,#111827)]">Group</span>
+                {selectedSeries && (
+                  <>
+                    <span>/</span>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setSelectedSeries(null);
+                        setSelectedSeriesWeek(null);
+                        setSelectedPost(null);
+                      }}
+                      className="text-[var(--bb-text-primary,#111827)] hover:underline"
+                    >
+                      {selectedSeries.title}
+                    </button>
+                  </>
+                )}
+                {selectedPost && (
+                  <>
+                    <span>/</span>
+                    <button
+                      type="button"
+                      onClick={() => setSelectedPost(null)}
+                      className="text-[var(--bb-text-primary,#111827)] hover:underline"
+                    >
+                      {selectedPost.title}
+                    </button>
+                  </>
+                )}
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="bb-community-emblem grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface,#ffffff)] text-xl shadow-sm">{group.cover_emoji || "📌"}</span>
+                <div className="flex-1 min-w-0">
+                  <div>
+                    <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[var(--bb-accent,#4a9b6f)]">{displayGroupName}</p>
+                    <h1 className="mt-1 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Bible Buddy Group</h1>
+                    <p className="mt-1 max-w-xl text-sm font-semibold leading-relaxed text-[var(--bb-text-secondary,#5f6368)]">
+                      Connect with Bible Buddies across the world.
+                    </p>
+                  </div>
+                  <div className="mt-2 flex items-center gap-3 flex-wrap">
+                    <button
+                      onClick={() => {
+                        setActiveTab("members");
+                      }}
+                      className="text-xs text-[var(--bb-text-secondary,#5f6368)] hover:text-[var(--bb-text-primary,#111827)] transition font-medium"
+                    >
+                      See All Buddies
+                    </button>
+                    {isLouisAdmin && (
+                      <>
+                        <Link
+                          href={`/study-groups/${group.id}/analytics`}
+                          className="text-xs text-[var(--bb-text-secondary,#5f6368)] hover:text-[var(--bb-text-primary,#111827)] transition font-medium"
+                        >
+                          Group Analytics
+                        </Link>
+                        <Link
+                          href={`/study-groups/${group.id}/scheduler`}
+                          className="text-xs text-[var(--bb-text-secondary,#5f6368)] hover:text-[var(--bb-text-primary,#111827)] transition font-medium"
+                        >
+                          Scheduler
+                        </Link>
+                      </>
+                    )}
+                  </div>
                 </div>
-              ) : null}
-              <div className="mt-2 flex items-center gap-3 flex-wrap">
-              <button
-                onClick={() => {
-                      setActiveTab("members");
-                }}
-                className="text-xs text-[var(--bb-text-secondary,#5f6368)] hover:text-[var(--bb-text-primary,#111827)] transition font-medium"
-              >
-                See All Buddies
-              </button>
-              {isLouisAdmin && (
-                <>
-                  <Link
-                    href={`/study-groups/${group.id}/analytics`}
-                    className="text-xs text-[var(--bb-text-secondary,#5f6368)] hover:text-[var(--bb-text-primary,#111827)] transition font-medium"
-                  >
-                    Group Analytics
-                  </Link>
-                  <Link
-                    href={`/study-groups/${group.id}/scheduler`}
-                    className="text-xs text-[var(--bb-text-secondary,#5f6368)] hover:text-[var(--bb-text-primary,#111827)] transition font-medium"
-                  >
-                    Scheduler
-                  </Link>
-                </>
-              )}
+              </div>
             </div>
           </div>
-        </div>
-        </div>
-        </div>
 
-        {/* Header navigation */}
-        <div className="hidden md:block max-w-2xl mx-auto px-4 pb-4">
+          {/* Header navigation */}
+          <div className="hidden md:block max-w-2xl mx-auto px-4 pb-4">
           {(() => {
             const primaryTabs = [
               { key: "home", label: "Home", isHub: false },
@@ -5118,9 +5109,10 @@ export default function GroupChatPage() {
             );
           })()}
         </div>
-      </div>
+        </div>
+      )}
 
-      {showMoreNav && moreMenuPosition && (
+      {!isDashboardEmbed && showMoreNav && moreMenuPosition && (
         <>
           <div className="fixed inset-0 z-10" onClick={() => setShowMoreNav(false)} />
           <div
@@ -5200,7 +5192,7 @@ export default function GroupChatPage() {
 
         {!selectedHubItem && <div className="bb-community-content max-w-2xl mx-auto px-4 py-4">
 
-          {activeTab === "home" && !activeFeedPost && !showTopBuddiesDetail ? (
+          {activeTab === "home" && !activeFeedPost && !showTopBuddiesDetail && !isDashboardEmbed ? (
             <>
               <div className="mb-4 hidden md:block">
                 {renderUpdateCard()}
@@ -7475,7 +7467,7 @@ export default function GroupChatPage() {
             <div>
             {post.is_pinned && (
               <div className="mb-2 flex items-center gap-1 text-xs font-medium text-[var(--bb-accent,#1d4ed8)]">
-                <span aria-hidden="true">??</span>
+                <span aria-hidden="true">📌</span>
                 <span>Pinned</span>
               </div>
             )}
