@@ -15756,16 +15756,17 @@ Before we understand redemption, we need to understand what God made humanity fo
     return day.reference || day.readings.map((reading) => `${reading.book} ${reading.chapter}`).join(", ");
   }
 
-  function getBibleYearJourneyExpectedFinishText() {
-    return `Expected Finish Date: ${effectiveBibleYearReport.expectedFinishDateLabel ?? bibleYearSchedule.expectedFinishDateLabel}`;
-  }
-
   function renderBibleYearJourneyFinishRows() {
     return (
       <div className="px-2 pb-1 pt-3 text-center text-[var(--bb-text-primary,#111827)]">
-        <p className="text-sm font-bold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-          {getBibleYearJourneyExpectedFinishText()}
-        </p>
+        <button
+          type="button"
+          onClick={openProgressPage}
+          className="text-sm font-bold leading-6 text-[var(--bb-accent,#185cff)] underline decoration-[var(--bb-accent,#185cff)]/30 decoration-2 underline-offset-4 transition hover:decoration-[var(--bb-accent,#185cff)]/60"
+          aria-label="See my progress"
+        >
+          See my Progress
+        </button>
       </div>
     );
   }
