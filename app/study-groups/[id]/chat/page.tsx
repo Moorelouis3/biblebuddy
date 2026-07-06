@@ -1720,6 +1720,7 @@ export default function GroupChatPage() {
   const [weeklyTriviaByPostId, setWeeklyTriviaByPostId] = useState<Record<string, WeeklyGroupTriviaFeedSet>>({});
   const [weeklyQuestionByPostId, setWeeklyQuestionByPostId] = useState<Record<string, WeeklyGroupQuestionFeedSet>>({});
   const [loadingPosts, setLoadingPosts] = useState(true);
+  const [loadingMorePosts, setLoadingMorePosts] = useState(false);
   const [postsHasMore, setPostsHasMore] = useState(false);
   const [postsPage, setPostsPage] = useState(0);
   const [showPostComposerModal, setShowPostComposerModal] = useState(false);
@@ -1745,12 +1746,13 @@ export default function GroupChatPage() {
   const [composerVideoPreview, setComposerVideoPreview] = useState<string | null>(null);
   const [composerVideoDurationError, setComposerVideoDurationError] = useState(false);
   const [composerUploadError, setComposerUploadError] = useState<string | null>(null);
-  // Weekly cards plus three fresh posts keep first paint fast; later pages load five at a time.
-  const FEED_PAGE_SIZE = 5;
+  // Weekly cards plus a small batch of posts keep first paint fast; later loads append ten at a time.
+  const FEED_PAGE_SIZE = 10;
   const [mentionItems, setMentionItems] = useState<MentionCatalogItem[]>([]);
   const groupPhotoInputRef = useRef<HTMLInputElement>(null);
   const groupVideoInputRef = useRef<HTMLInputElement>(null);
   const scriptureContainerRef = useRef<HTMLDivElement>(null);
+  const feedLoadMoreRef = useRef<HTMLDivElement>(null);
 
   function handleScriptureClick(event: MouseEvent<HTMLDivElement>) {
     const target = event.target as HTMLElement | null;
@@ -3489,7 +3491,7 @@ export default function GroupChatPage() {
     };
   }
 
-  async function loadPosts(page = 0) {
+  async function loadPosts(page = 0, options?: { append?: boolean }) {
     if (!group) return;
     setLoadingPosts(true);
     setPostsHasMore(false);
@@ -3559,7 +3561,7 @@ export default function GroupChatPage() {
     const { data: postRows, error } = await categorizedPostQuery
       .order("is_pinned", { ascending: false })
       .order("created_at", { ascending: false })
-      .range(rangeStart, rangeStart + FEED_PAGE_SIZE);
+      .range(rangeStart, rangeStart + FEED_PAGE_SIZE - 1);
 
     if (error) {
       setLoadingPosts(false);
@@ -3570,12 +3572,23 @@ export default function GroupChatPage() {
     const rows = fetchedRows.slice(0, FEED_PAGE_SIZE);
     const hydrated = await hydrateFeedPosts(rows);
 
-    setPosts(sortPinnedPostsFirst(hydrated.posts));
-    setWeeklyPollByPostId(hydrated.weeklyPollByPostId);
-    setWeeklyTriviaByPostId(hydrated.weeklyTriviaByPostId);
-    setWeeklyQuestionByPostId(hydrated.weeklyQuestionByPostId);
+    if (options?.append && page > 0) {
+      setPosts((prev) => {
+        const merged = [...prev, ...hydrated.posts];
+        const deduped = merged.filter((post, index, all) => all.findIndex((item) => item.id === post.id) === index);
+        return sortPinnedPostsFirst(deduped);
+      });
+      setWeeklyPollByPostId((prev) => ({ ...prev, ...hydrated.weeklyPollByPostId }));
+      setWeeklyTriviaByPostId((prev) => ({ ...prev, ...hydrated.weeklyTriviaByPostId }));
+      setWeeklyQuestionByPostId((prev) => ({ ...prev, ...hydrated.weeklyQuestionByPostId }));
+    } else {
+      setPosts(sortPinnedPostsFirst(hydrated.posts));
+      setWeeklyPollByPostId(hydrated.weeklyPollByPostId);
+      setWeeklyTriviaByPostId(hydrated.weeklyTriviaByPostId);
+      setWeeklyQuestionByPostId(hydrated.weeklyQuestionByPostId);
+    }
     setPostsPage(Math.max(page, 0));
-    setPostsHasMore(fetchedRows.length > FEED_PAGE_SIZE);
+    setPostsHasMore(fetchedRows.length >= FEED_PAGE_SIZE);
     setLoadingPosts(false);
   }
 
@@ -4246,24 +4259,45 @@ export default function GroupChatPage() {
 
     const channel = supabase
       .channel(`group-feed-refresh:${group.id}:${activeTab}`)
-      .on(
-        "postgres_changes",
-        {
-          event: "*",
-          schema: "public",
-          table: "group_posts",
-          filter: `group_id=eq.${group.id}`,
-        },
-        () => {
-          void loadPosts(postsPage);
-        },
-      )
+        .on(
+          "postgres_changes",
+          {
+            event: "*",
+            schema: "public",
+            table: "group_posts",
+            filter: `group_id=eq.${group.id}`,
+          },
+          () => {
+          void loadPosts(0);
+          },
+        )
       .subscribe();
 
     return () => {
       void supabase.removeChannel(channel);
     };
   }, [group, activeTab, hubCategories, postsPage]);
+
+  useEffect(() => {
+    if (!group || selectedFeedPost || selectedHubItem || showTopBuddiesDetail) return;
+    const node = feedLoadMoreRef.current;
+    if (!node || !postsHasMore || loadingPosts || loadingMorePosts) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (!entry?.isIntersecting || loadingMorePosts) return;
+        setLoadingMorePosts(true);
+        void loadPosts(postsPage + 1, { append: true }).finally(() => {
+          setLoadingMorePosts(false);
+        });
+      },
+      { root: null, rootMargin: "280px 0px", threshold: 0.1 },
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [group, selectedFeedPost, selectedHubItem, showTopBuddiesDetail, postsHasMore, loadingPosts, loadingMorePosts, postsPage, activeTab]);
 
   // â”€â”€ Series â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   async function loadSeries() {
@@ -5012,7 +5046,7 @@ export default function GroupChatPage() {
         </div>
 
         {/* Header navigation */}
-        <div className="max-w-2xl mx-auto px-4 pb-4">
+        <div className="hidden md:block max-w-2xl mx-auto px-4 pb-4">
           {(() => {
             const primaryTabs = [
               { key: "home", label: "Home", isHub: false },
@@ -5168,7 +5202,7 @@ export default function GroupChatPage() {
 
           {activeTab === "home" && !activeFeedPost && !showTopBuddiesDetail ? (
             <>
-              <div className="mb-4">
+              <div className="mb-4 hidden md:block">
                 {renderUpdateCard()}
               </div>
             </>
@@ -7381,15 +7415,15 @@ export default function GroupChatPage() {
     };
 
     return (
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-4">
         {isHomeCommunityFeed && (
           <>
             {weeklyTriviaPost && weeklyTriviaByPostId[weeklyTriviaPost.id] ? (
-              <section className="bb-community-feature-card rounded-[28px] border border-[var(--bb-card-border,#d4ecd4)] bg-[var(--bb-card,#ffffff)] p-5 shadow-sm">
+              <section className="bb-community-feature-card rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm">
                 <div className="mb-4 flex items-start justify-between gap-4">
                   <div>
-                    <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[var(--bb-accent,#4a9b6f)]">Weekly Trivia</p>
-                    <h2 className="mt-1 text-xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">
+                    <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[var(--bb-accent,#1d4ed8)]">Weekly Trivia</p>
+                    <h2 className="mt-1 text-lg font-black leading-tight text-[var(--bb-text-primary,#111827)]">
                       Play the Group Challenge
                     </h2>
                   </div>
@@ -7408,7 +7442,7 @@ export default function GroupChatPage() {
             {renderCreatePostCard()}
 
             <div className="px-1">
-              <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[var(--bb-accent,#4a9b6f)]">Group Posts</p>
+              <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[var(--bb-accent,#1d4ed8)]">Feed</p>
               <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#6b7280)]">Fresh conversations from your Bible Buddies.</p>
             </div>
           </>
@@ -7435,12 +7469,12 @@ export default function GroupChatPage() {
                 openFeedPostInline(post);
               }
             }}
-            className="bb-community-post-card w-full text-left transition cursor-pointer bg-[var(--bb-card,#ffffff)] border border-[var(--bb-card-border,#e5e7eb)] rounded-[28px] p-5 shadow-sm hover:shadow-md animate-fade-in-up"
+            className="bb-community-post-card w-full text-left transition cursor-pointer rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm hover:shadow-md animate-fade-in-up"
             style={{ animationDelay: `${Math.min(index * 0.045, 0.45)}s` }}
           >
             <div>
             {post.is_pinned && (
-              <div className="mb-2 flex items-center gap-1 text-xs font-medium text-amber-600">
+              <div className="mb-2 flex items-center gap-1 text-xs font-medium text-[var(--bb-accent,#1d4ed8)]">
                 <span aria-hidden="true">??</span>
                 <span>Pinned</span>
               </div>
@@ -7480,7 +7514,7 @@ export default function GroupChatPage() {
                     </svg>
                   </button>
                   {activePostMenuId === post.id && (
-                    <div className="absolute right-0 top-10 z-10 min-w-[140px] rounded-2xl border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] shadow-lg overflow-hidden">
+                    <div className="absolute right-0 top-10 z-10 min-w-[140px] rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-lg overflow-hidden">
                       {canEditFeedPost(post) && (
                         <button
                           type="button"
@@ -7522,12 +7556,12 @@ export default function GroupChatPage() {
                 </div>
               )}
             </div>
-              {post.title && !isCoverOnlyFeedPost && !isScrambledSharePost && !isScrambledPromo && !isBibleBuddyTvShare && <h3 className={`font-bold text-[var(--bb-text-primary,#111827)] leading-snug ${hasImagePost ? "text-base mt-3" : "text-lg mt-3"}`}>{post.title}</h3>}
+              {post.title && !isCoverOnlyFeedPost && !isScrambledSharePost && !isScrambledPromo && !isBibleBuddyTvShare && <h3 className={`font-black text-[var(--bb-text-primary,#111827)] leading-snug ${hasImagePost ? "text-base mt-3" : "text-lg mt-3"}`}>{post.title}</h3>}
               {isScrambledSharePost && renderScrambledShareCard(post, true)}
               {isScrambledPromo && renderScrambledPromoCard(post, true)}
               {isBibleBuddyTvShare && renderBibleBuddyTvShareCard(post, true)}
               {!triviaSet && !questionSet && post.content && !isCoverOnlyFeedPost && !isScrambledSharePost && !isScrambledPromo && !isBibleBuddyTvShare && (
-                <p className={`text-sm text-[var(--bb-text-secondary,#374151)] mt-3 leading-relaxed whitespace-pre-line line-clamp-4`}>
+                <p className={`text-[15px] text-[var(--bb-text-secondary,#374151)] mt-3 leading-relaxed whitespace-pre-line line-clamp-4`}>
                   {getPostPreviewText(post.content)}
                 </p>
             )}
@@ -7604,7 +7638,7 @@ export default function GroupChatPage() {
                 </a>
               );
             })()}
-            <div className="flex items-center gap-4 mt-4 pt-3 border-t border-[var(--bb-card-border,#f3f4f6)]">
+            <div className="flex items-center gap-4 mt-4 pt-3 border-t border-[var(--bb-card-border,#e5eef7)]">
               <button
                 type="button"
                 onClick={(e) => {
@@ -7612,7 +7646,7 @@ export default function GroupChatPage() {
                   void handleLike(post);
                 }}
                 disabled={likeLoading.has(post.id)}
-                className="flex items-center gap-1.5 text-sm transition"
+                className="flex items-center gap-1.5 text-sm font-semibold transition"
                 style={{ color: post.liked ? "#e53e3e" : "#9ca3af" }}
               >
                 <svg className={`w-4 h-4 ${likeAnimatingIds.has(post.id) ? "animate-heart-pop" : ""}`} fill={post.liked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
@@ -7625,7 +7659,7 @@ export default function GroupChatPage() {
                   e.stopPropagation();
                   void openPostLikes(post);
                 }}
-                className="text-sm text-[var(--bb-text-secondary,#6b7280)] hover:text-[var(--bb-text-primary,#374151)] transition"
+                className="text-sm font-semibold text-[var(--bb-text-secondary,#6b7280)] hover:text-[var(--bb-text-primary,#374151)] transition"
               >
                 {post.like_count === 1 ? "1 like" : `${post.like_count || 0} likes`}
               </button>
@@ -7635,7 +7669,7 @@ export default function GroupChatPage() {
                   e.stopPropagation();
                   openFeedPostInline(post);
                 }}
-                className="flex items-center gap-1.5 text-sm text-[var(--bb-text-muted,#9ca3af)] hover:text-[var(--bb-accent,#b7794d)] transition"
+                className="flex items-center gap-1.5 text-sm font-semibold text-[var(--bb-text-muted,#9ca3af)] hover:text-[var(--bb-accent,#1d4ed8)] transition"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
@@ -7647,30 +7681,17 @@ export default function GroupChatPage() {
             </div>
           </div>
         )})}
-        <div className="bb-community-pagination flex flex-col gap-3 rounded-2xl border border-[var(--bb-card-border)] bg-[var(--bb-card)] px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-center text-xs font-semibold text-[var(--bb-text-secondary,#6b7280)] sm:text-left">
-            Page {postsPage + 1} · Weekly cards first, then group posts
-          </p>
-          <div className="flex items-center justify-center gap-2">
-            <button
-              type="button"
-              onClick={() => void loadPosts(Math.max(postsPage - 1, 0))}
-              disabled={postsPage === 0 || loadingPosts}
-              className="rounded-full border border-[var(--bb-card-border)] bg-[var(--bb-surface)] px-4 py-2 text-sm font-semibold text-[var(--bb-text-secondary,#4b5563)] shadow-sm transition hover:bg-[var(--bb-surface-soft)] disabled:cursor-not-allowed disabled:opacity-45"
-            >
-              Previous
-            </button>
-            <button
-              type="button"
-              onClick={() => void loadPosts(postsPage + 1)}
-              disabled={!postsHasMore || loadingPosts}
-              className="rounded-full px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-45"
-              style={{ backgroundColor: "var(--bb-accent)" }}
-            >
-              Next
-            </button>
+        {postsHasMore ? (
+          <div ref={feedLoadMoreRef} className="flex items-center justify-center py-3">
+            <div className="rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-4 py-2 text-xs font-semibold text-[var(--bb-text-secondary,#6b7280)] shadow-sm">
+              {loadingMorePosts ? "Loading more posts..." : "Scroll for more posts"}
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="py-3 text-center text-xs font-semibold text-[var(--bb-text-muted,#9ca3af)]">
+            You&apos;re caught up
+          </div>
+        )}
       </div>
     );
   }
