@@ -2860,6 +2860,7 @@ export default function DashboardJourneyExperience({
   void activeDashboardNavItem;
   const homeTabActive = bibleYearDashboardActive || (!bibleYearSeriesActive && activePageKey === "home");
   const groupTabActive = !bibleYearDashboardActive && !bibleYearSeriesActive && activePageKey === "group";
+  const plansTabActive = !bibleYearDashboardActive && !bibleYearSeriesActive && activePageKey === "bible_studies";
   const bibleTabActive = !bibleYearDashboardActive && !bibleYearSeriesActive && activePageKey === "bible";
   const chatTabActive = !bibleYearDashboardActive && !bibleYearSeriesActive && activePageKey === "buddy";
   const inviteTabActive = !bibleYearDashboardActive && !bibleYearSeriesActive && activePageKey === "share";
@@ -5177,6 +5178,14 @@ export default function DashboardJourneyExperience({
     setDashboardGroupDeepLinkCommentId(null);
     setDashboardMenuOpen(false);
     snapToPage(groupIndex);
+  }
+
+  function openPlansPage() {
+    const plansIndex = dashboardPageKeys.indexOf("bible_studies");
+    if (plansIndex < 0) return;
+    clearBibleYearViews();
+    setDashboardMenuOpen(false);
+    snapToPage(plansIndex);
   }
 
   function openProgressPage() {
@@ -17644,7 +17653,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         ) : null}
 
         <div className="h-full w-full rounded-none border-x-0 border-b-0 bg-[var(--bb-card,#ffffff)] px-0 pb-0 pt-0 shadow-none sm:mx-auto sm:h-auto sm:max-w-xl sm:rounded-[24px] sm:border sm:border-[var(--bb-card-border,#dbe7f4)] sm:bg-[var(--bb-card,#ffffff)]/95 sm:px-2 sm:pb-1.5 sm:pt-2 sm:shadow-[0_12px_28px_rgba(38,63,99,0.16)] sm:backdrop-blur">
-          <div className="grid h-[64px] grid-cols-5 items-stretch gap-0 sm:min-h-0 sm:gap-1.5">
+          <div className="grid h-[64px] grid-cols-6 items-stretch gap-0 sm:min-h-0 sm:gap-1.5">
             <button
               type="button"
               onClick={openGroupPage}
@@ -17679,8 +17688,26 @@ Before we understand redemption, we need to understand what God made humanity fo
               data-dashboard-nav-key="bible"
             >
               <span className={`grid h-7 w-7 place-items-center rounded-full ${bibleTabActive ? "bg-[var(--bb-accent,#2f7fe8)] text-white" : ""}`} aria-hidden="true">
-                <BibleBookIcon /></span>
+                <BibleBookIcon />
+              </span>
               <span className="mt-0.5 text-[9px] leading-none sm:mt-0 sm:text-[10px]">Bible</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={openPlansPage}
+              className={`flex h-full min-h-[58px] flex-col items-center justify-center rounded-none text-[10px] font-black transition sm:h-14 sm:min-h-0 sm:rounded-[18px] ${
+                plansTabActive
+                  ? "bg-transparent text-[var(--bb-accent,#2f7fe8)] sm:bg-[var(--bb-accent-soft,rgba(47,127,232,0.10))] sm:ring-1 sm:ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)]"
+                  : "bg-transparent text-[var(--bb-text-primary,#111827)] hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.08))] sm:bg-[var(--bb-surface-soft,#f4f8ff)] sm:hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))]"
+              }`}
+              aria-label="Open Plans"
+              data-dashboard-nav-key="bible_studies"
+            >
+              <span className={`grid h-7 w-7 place-items-center rounded-full ${plansTabActive ? "bg-[var(--bb-accent,#2f7fe8)] text-white" : ""}`} aria-hidden="true">
+                <span className="text-lg leading-none">🌅</span>
+              </span>
+              <span className="mt-0.5 text-[9px] leading-none sm:mt-0 sm:text-[10px]">Plans</span>
             </button>
 
             <button
@@ -17710,10 +17737,10 @@ Before we understand redemption, we need to understand what God made humanity fo
                 chatTabActive
                   ? "bg-transparent text-[var(--bb-accent,#2f7fe8)] sm:bg-[var(--bb-accent-soft,rgba(47,127,232,0.10))] sm:ring-1 sm:ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)]"
                   : "bg-transparent text-[var(--bb-text-primary,#111827)] hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.08))] sm:bg-[var(--bb-surface-soft,#f4f8ff)] sm:hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))]"
-              }`}
-              aria-label="Open BB Chat"
-              data-dashboard-nav-key="buddy"
-            >
+                }`}
+                aria-label="Open BB Chat"
+                data-dashboard-nav-key="buddy"
+              >
               <span className={`grid h-7 w-7 place-items-center rounded-full ${chatTabActive ? "bg-[var(--bb-accent,#2f7fe8)] text-white" : ""}`} aria-hidden="true">
                 <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none">
                   <path d="M5 6.8A4.8 4.8 0 0 1 9.8 2h4.4A4.8 4.8 0 0 1 19 6.8v4.4a4.8 4.8 0 0 1-4.8 4.8h-3.1L6.8 20v-4.3A4.8 4.8 0 0 1 5 12V6.8Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
