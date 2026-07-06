@@ -4925,13 +4925,9 @@ export default function DashboardJourneyExperience({
     const view = params.get("view");
     if ((!bibleYearProgressLoaded || !bibleYearProgressResolved) && (view === "bible-year" || view === "bible-year-series" || !view)) return;
     if (view === "group") {
-      setBibleYearDashboardActive(false);
-      setBibleYearSeriesActive(false);
-      setBibleYearSeriesDetailDay(null);
-      setBibleYearJourneyPreviewDay(null);
-      setSelectedBibleYearSeriesDay(null);
-      setManualBibleYearStudyDayNumber(null);
-      setActivePage(dashboardPageKeys.indexOf("group"));
+      if (typeof window !== "undefined") {
+        window.location.href = "/study-groups";
+      }
       return;
     }
     if (view === "bible-year") {
@@ -5135,16 +5131,8 @@ export default function DashboardJourneyExperience({
   }
 
   function openGroupPage() {
-    const groupIndex = dashboardPageKeys.indexOf("group");
-    if (groupIndex < 0) return;
-    setDashboardMenuOpen(false);
-    clearBibleYearViews();
-    snapToPage(groupIndex);
     if (typeof window !== "undefined") {
-      const url = new URL(window.location.href);
-      url.searchParams.set("view", "group");
-      url.searchParams.delete("day");
-      window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
+      window.location.href = "/study-groups";
     }
   }
 
