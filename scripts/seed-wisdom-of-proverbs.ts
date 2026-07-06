@@ -1785,7 +1785,7 @@ const devotionalDays: DevotionalDay[] = chapterPlans.map((day) => ({
   bible_reading_book: "Proverbs",
   bible_reading_chapter: day.chapter,
   reflection_question: day.reflection,
-  devotional_text: buildProverbsStudyIntro(day),
+  devotional_text: buildCinematicDevotionalText(day.chapter),
 }));
 
 const bibleNotesRows = devotionalDays.map((day) => ({

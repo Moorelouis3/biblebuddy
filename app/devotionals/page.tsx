@@ -33,11 +33,11 @@ type StudyProgressSummary = {
 type StudyFilter = "all" | "done" | "started";
 
 const FEATURED_STUDY_ORDER = [
+  "The Wisdom of Proverbs",
   "The Calling of Moses",
   "The Heart of David",
   "The Rise of Esther",
   "The Faith of Job",
-  "The Wisdom of Proverbs",
   "The Courage of Daniel",
   "The Tempting of Jesus",
   "The Disciples of Jesus",
@@ -73,7 +73,7 @@ function getStudyScriptureRange(title: string) {
     "The Rebellion in the Wilderness": "Numbers 15-25",
     "The Promised Land Ahead": "Numbers 26-36",
     "The Rise of Esther": "Esther 1-10",
-    "The Wisdom of Proverbs": "Proverbs 1-31",
+    "The Wisdom of Proverbs": "Day 1-31",
     "The Courage of Daniel": "Daniel 1-6",
   };
 
@@ -701,13 +701,22 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
             {filteredDevotionals.map((devotional) => {
               const progress = progressByDevotional[devotional.id] ?? buildEmptyProgress(devotional);
               const isComplete = progress.isComplete;
+              const isLockedPreview = devotional.title !== "The Wisdom of Proverbs";
               const card = (
-                <div className={`bb-bible-study-card group flex h-full flex-col rounded-[18px] border p-2.5 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl sm:p-3 ${
-                  isComplete ? "border-[var(--bb-accent,#2f7fe8)] bg-[var(--bb-accent-soft,#eaf5ff)]" : "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)]"
-                }`}>
+                <div className={`bb-bible-study-card group flex h-full flex-col rounded-[18px] border p-2.5 shadow-sm transition-all duration-200 sm:p-3 ${
+                  isComplete
+                    ? "border-[var(--bb-accent,#2f7fe8)] bg-[var(--bb-accent-soft,#eaf5ff)]"
+                    : isLockedPreview
+                      ? "border-[var(--bb-card-border,#dbe7f4)] bg-slate-100 grayscale opacity-65"
+                      : "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] hover:-translate-y-1 hover:shadow-xl"
+                }`}> 
                   <div className="relative">
                     {getDevotionalVisual(devotional)}
-                    {isComplete ? (
+                    {isLockedPreview ? (
+                      <span className="absolute right-2 top-2 rounded-full bg-slate-700 px-2.5 py-1 text-[10px] font-black uppercase tracking-wide text-white shadow-sm">
+                        Coming Soon
+                      </span>
+                    ) : isComplete ? (
                       <span className="absolute right-2 top-2 rounded-full bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-2.5 py-1 text-[10px] font-black uppercase tracking-wide text-[var(--bb-button-text,#ffffff)] shadow-sm">
                         Done
                       </span>
@@ -739,8 +748,10 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
                   key={devotional.id}
                   role="link"
                   tabIndex={0}
-                  className="block w-full"
+                  aria-disabled={isLockedPreview}
+                  className={`block w-full ${isLockedPreview ? "cursor-not-allowed" : "cursor-pointer"}`}
                   onClick={() => {
+                    if (isLockedPreview) return;
                     if (userId) {
                       void trackNavigationActionOnce({
                         userId,
@@ -757,6 +768,7 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
                     }
                   }}
                   onKeyDown={(event) => {
+                    if (isLockedPreview) return;
                     if (event.key === "Enter" || event.key === " ") {
                       event.preventDefault();
                       if (userId) {
