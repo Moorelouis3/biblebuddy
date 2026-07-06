@@ -13499,6 +13499,15 @@ Before we understand redemption, we need to understand what God made humanity fo
                       <span>{isResettingBibleYearPlan ? "Resetting..." : "Reset Progress"}</span>
                       <span aria-hidden="true" className="text-xs text-[var(--bb-text-secondary,#4b5563)]">Day 1</span>
                     </button>
+                    <button
+                      type="button"
+                      onClick={openProgressPage}
+                      className="mt-1 flex w-full items-center justify-between rounded-xl px-3 py-2 text-sm font-black text-black transition hover:bg-[var(--bb-surface-soft,#f4f8ff)] hover:text-[#111827]"
+                      aria-label="Share my progress"
+                    >
+                      <span>Share my Progress</span>
+                      <span aria-hidden="true" className="text-xs text-[var(--bb-text-secondary,#4b5563)]">&gt;</span>
+                    </button>
                     {bibleYearPlanMessage ? (
                       <p className="mt-2 rounded-xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent)] bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_52%,transparent)] px-3 py-2 text-xs font-bold leading-4 text-[var(--bb-text-secondary,#4b5563)]">
                         {bibleYearPlanMessage}
@@ -15690,16 +15699,7 @@ Before we understand redemption, we need to understand what God made humanity fo
   function renderBibleYearJourneyFinishRows() {
     return (
       <div className="px-2 pb-1 pt-3 text-center text-[var(--bb-text-primary,#111827)]">
-        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#185cff]">Expected Finish Date</p>
-        <p className="mt-1 text-sm font-black text-[#10224b]">{effectiveBibleYearReport.expectedFinishDateLabel}</p>
-        <button
-          type="button"
-          onClick={openProgressPage}
-          className="mt-1 text-sm font-black leading-6 text-black transition hover:text-[#111827]"
-          aria-label="Share my progress"
-        >
-          Share my Progress
-        </button>
+        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#185cff]">Expected Finish Date: <span className="text-sm text-[#10224b]">{effectiveBibleYearReport.expectedFinishDateLabel}</span></p>
       </div>
     );
   }
@@ -18341,4 +18341,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     </div>
   );
 }
+
+
+
 
