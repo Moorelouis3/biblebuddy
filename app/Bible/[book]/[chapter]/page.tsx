@@ -185,6 +185,7 @@ export default function BibleChapterPage() {
   const isDashboardEmbed = searchParams.get("dashboardEmbed") === "1";
   const hideReaderChrome = isDashboardEmbed || searchParams.get("hideReaderChrome") === "1";
   const hideEmbedControls = searchParams.get("hideEmbedControls") === "1";
+  const hideDiscussion = searchParams.get("hideDiscussion") === "1";
 
   const [sections, setSections] = useState<Section[]>([]);
   const [loading, setLoading] = useState(true);
@@ -2897,7 +2898,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
         </div>
 
 
-        <div className="mb-10" ref={reflectionSectionRef}>
+        {!hideDiscussion ? <div className="mb-10" ref={reflectionSectionRef}>
           <div className={`mx-auto mb-4 max-w-2xl rounded-2xl border bg-gradient-to-br from-white via-blue-50 to-sky-50 p-5 shadow-sm transition-all duration-500 ${
             highlightReflectionSection
               ? "border-blue-400 ring-4 ring-blue-200 shadow-[0_0_0_6px_rgba(191,219,254,0.55)]"
@@ -2921,7 +2922,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
               submitButtonText="Post Reflection"
             />
           </div>
-        </div>
+        </div> : null}
       </div>
 
 

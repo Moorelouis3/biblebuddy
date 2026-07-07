@@ -1561,7 +1561,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
               const readerChapterKey = completedReaderChapterKey(day.bible_reading_book, day.bible_reading_chapter);
               const readerChapterDone = completedReaderChapterKeys.has(readerChapterKey);
               const readerChapterMarking = markingReaderChapter === readerChapterKey;
-              const planReaderSrc = `/Bible/${encodeURIComponent(day.bible_reading_book.toLowerCase().trim())}/${day.bible_reading_chapter}?dashboardEmbed=1&hideReaderChrome=1&hideEmbedControls=1`;
+              const planReaderSrc = `/Bible/${encodeURIComponent(day.bible_reading_book.toLowerCase().trim())}/${day.bible_reading_chapter}?dashboardEmbed=1&hideReaderChrome=1&hideEmbedControls=1&hideDiscussion=1`;
               const wisdomBigPictureDone = dayProgress?.is_completed === true;
               const wisdomReadingDone = dayProgress?.reading_completed === true || readerChapterDone;
               const wisdomTriviaDone = taskProgress.completed >= 3;
