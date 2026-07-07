@@ -12,6 +12,7 @@ import { findKeywordNotes, findPersonNotes, findPlaceNotes, getKeywordPopupNotes
 import { getTriviaBook, getTriviaChapter } from "../lib/triviaGameData";
 import { getScrambledBook, getScrambledChapter } from "../lib/scrambledGameData";
 import CreditLimitModal from "./CreditLimitModal";
+import BibleReadingModal from "./BibleReadingModal";
 import ChapterNotesMarkdown from "./ChapterNotesMarkdown";
 import { LouisAvatar } from "./LouisAvatar";
 import CommentSection from "./comments/CommentSection";
@@ -874,11 +875,11 @@ Be accurate to Scripture.`;
             <>
               {useSeriesLikeProverbsLayout ? (
                 <>
-                  <StudySectionCard title="Bible Study Intro" eyebrow="Task 1">
-                    <h2 className="mb-5 text-2xl font-black leading-tight text-gray-950">{day.day_title}</h2>
+                  <StudySectionCard title="The Big Picture" eyebrow="Step 1">
+                    <h2 className="mb-4 text-2xl font-black leading-tight text-gray-950">{day.day_title}</h2>
                     <BrowserTtsButton
                       text={day.devotional_text}
-                      label="Listen to intro"
+                      label="Listen to overview"
                       audioSrc={getGenesisOneTtsSrc("intro", day.bible_reading_book, day.bible_reading_chapter)}
                     />
                     <div ref={devotionalTextRef} className="text-gray-700" style={{ fontSize: "1rem" }}>
@@ -933,55 +934,41 @@ Be accurate to Scripture.`;
                     </div>
                   </StudySectionCard>
 
-                  <StudySectionCard title={`Read "${chapterLabel}"`} eyebrow="Task 2">
-                    <div className="text-center">
-                      <button
-                        type="button"
-                        onClick={() => onBibleReadingClick(day.bible_reading_book, day.bible_reading_chapter)}
-                        className={`rounded-xl px-6 py-3 text-sm font-bold transition shadow-sm hover:opacity-90 ${
-                          readingChecked ? "bg-emerald-100 text-emerald-700" : "text-slate-950"
-                        }`}
-                        style={readingChecked ? undefined : { backgroundColor: "#7BAFD4" }}
-                      >
-                        {readingChecked ? `✓ Read ${chapterLabel}` : `Read ${chapterLabel}`}
-                      </button>
-                    </div>
+                  <StudySectionCard title="Today's Reading" eyebrow="Step 2">
+                    <BibleReadingModal
+                      book={day.bible_reading_book}
+                      chapter={day.bible_reading_chapter}
+                      presentation="inline"
+                      onClose={() => {
+                        setReadingChecked(true);
+                        onReadingComplete?.();
+                      }}
+                      onMarkComplete={() => {
+                        setReadingChecked(true);
+                        onReadingComplete?.();
+                      }}
+                    />
                   </StudySectionCard>
 
-                  <StudySectionCard title="Chapter Notes" eyebrow="Task 3">
-                    <div className="text-center">
-                      <p className="mx-auto mb-4 max-w-md text-sm leading-relaxed text-gray-600">
-                        Open the {chapterLabel} notes when you are ready to go deeper into the chapter.
-                      </p>
-                      <button
-                        type="button"
-                        onClick={() => void handleOpenChapterNotes()}
-                        className="rounded-xl px-6 py-3 text-sm font-bold text-slate-950 transition hover:opacity-90"
-                        style={{ backgroundColor: "#7BAFD4" }}
-                      >
-                        Open Chapter Notes
-                      </button>
-                    </div>
+                  <StudySectionCard title="Today's Trivia" eyebrow="Step 3">
+                    {triviaBook && triviaChapter ? (
+                      <TriviaGamePlayer
+                        bookName={triviaBook.name}
+                        bookSlug={triviaBook.routeSlug}
+                        chapter={triviaChapter}
+                        compact
+                        onComplete={() => {
+                          setShowTriviaModal(false);
+                        }}
+                      />
+                    ) : (
+                      <div className="rounded-2xl border border-dashed border-gray-200 bg-gray-50 px-4 py-10 text-center text-sm text-gray-500">
+                        Trivia is coming soon for this day.
+                      </div>
+                    )}
                   </StudySectionCard>
 
-                  <StudySectionCard title="Trivia" eyebrow="Task 4">
-                    <div className="text-center">
-                      <p className="mx-auto mb-4 max-w-md text-sm leading-relaxed text-gray-600">
-                        Test what is sticking from {chapterLabel} with a short trivia round.
-                      </p>
-                      <button
-                        type="button"
-                        onClick={() => setShowTriviaModal(true)}
-                        disabled={!triviaBook || !triviaChapter}
-                        className="rounded-xl px-6 py-3 text-sm font-bold text-slate-950 transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
-                        style={{ backgroundColor: triviaBook && triviaChapter ? "#7BAFD4" : "#cbd5e1" }}
-                      >
-                        {triviaBook && triviaChapter ? "Start Trivia" : "Trivia Coming Soon"}
-                      </button>
-                    </div>
-                  </StudySectionCard>
-
-                  <StudySectionCard title="Reflection" eyebrow="Task 5">
+                  <StudySectionCard title="Discussion" eyebrow="Step 4">
                     <p className="mb-4 text-xl font-black leading-snug text-gray-950">
                       {day.reflection_question || `What stood out to you most in ${primaryDayLabel}?`}
                     </p>

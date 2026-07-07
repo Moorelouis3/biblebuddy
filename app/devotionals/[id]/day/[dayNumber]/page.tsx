@@ -6,10 +6,8 @@ import { useParams, useRouter } from "next/navigation";
 import BibleReadingModal from "@/components/BibleReadingModal";
 import BrowserTtsButton from "@/components/BrowserTtsButton";
 import { getGenesisOneTtsSrc } from "@/lib/genesisOneTts";
-import ChapterNotesMarkdown from "@/components/ChapterNotesMarkdown";
 import CommentSection from "@/components/comments/CommentSection";
 import DevotionalDayCompletionModal from "@/components/DevotionalDayCompletionModal";
-import { ModalShell } from "@/components/ModalShell";
 import TriviaGamePlayer from "@/components/TriviaGamePlayer";
 import { ACTION_TYPE } from "@/lib/actionTypes";
 import { enrichPlainText } from "@/lib/bibleHighlighting";
@@ -283,20 +281,18 @@ export default function ProverbsStudyDayPage() {
   const [reflectionDone, setReflectionDone] = useState(false);
   const [loading, setLoading] = useState(true);
   const [openTask, setOpenTask] = useState<number | null>(null);
-  const [showReading, setShowReading] = useState(false);
-  const [showNotes, setShowNotes] = useState(false);
-  const [notesText, setNotesText] = useState("");
-  const [notesLoading, setNotesLoading] = useState(false);
-  const notesScrollRef = useRef<HTMLDivElement | null>(null);
-  const notesContentRef = useRef<HTMLDivElement | null>(null);
   const completionWatcherReadyRef = useRef(false);
   const previousDayCompleteRef = useRef(false);
-  const [showTrivia, setShowTrivia] = useState(false);
   const [showCompletionModal, setShowCompletionModal] = useState(false);
   const [finishers, setFinishers] = useState<Finisher[]>([]);
   const [breakdown, setBreakdown] = useState<Breakdown>({ intro: [], reading: [], notes: [], trivia: [], reflection: [] });
   const [showBreakdown, setShowBreakdown] = useState(false);
   const [taskEstimates, setTaskEstimates] = useState<ChapterTaskTimeEstimates>(DEFAULT_TASK_ESTIMATES);
+  const [showNotes, setShowNotes] = useState(false);
+  const [notesText, setNotesText] = useState("");
+  const [notesLoading, setNotesLoading] = useState(false);
+  const notesScrollRef = useRef<HTMLDivElement>(null);
+  const notesContentRef = useRef<HTMLDivElement>(null);
 
   const chapterLabel = day ? `${day.bible_reading_book} ${day.bible_reading_chapter}` : "";
   const devotionalBlocks = useMemo(
@@ -308,20 +304,7 @@ export default function ProverbsStudyDayPage() {
   const triviaChapter = useMemo(() => (day && bookKey ? getTriviaChapter(bookKey, day.bible_reading_chapter) : null), [bookKey, day]);
   const introDone = progress?.is_completed === true;
   const readingDone = progress?.reading_completed === true;
-  const allDayTasksComplete = introDone && readingDone && notesDone && triviaDone && reflectionDone;
-
-  function handleNotesAudioProgress(state: { currentTime: number; duration: number; playing: boolean }) {
-    if (!state.playing || state.duration <= 0) return;
-    const scrollContainer = notesScrollRef.current;
-    const notesContent = notesContentRef.current;
-    if (!scrollContainer || !notesContent) return;
-
-    const maxScroll = Math.max(0, notesContent.offsetHeight - scrollContainer.clientHeight + 24);
-    if (maxScroll <= 0) return;
-
-    const progress = Math.min(1, Math.max(0, state.currentTime / state.duration));
-    scrollContainer.scrollTo({ top: Math.round(maxScroll * progress), behavior: "smooth" });
-  }
+  const allDayTasksComplete = introDone && readingDone && triviaDone && reflectionDone;
 
   useEffect(() => {
     let cancelled = false;
@@ -901,11 +884,10 @@ export default function ProverbsStudyDayPage() {
 
   const introCompletedDate = formatCompletedDate(progress?.completed_at);
   const breakdownSections: Array<[string, Finisher[], string]> = [
-    ["Task 1 Intro", breakdown.intro, "Intro completed"],
+    ["Task 1 Overview", breakdown.intro, "Overview completed"],
     ["Task 2 Reading", breakdown.reading, "Reading completed"],
-    ["Task 3 Notes", breakdown.notes, "Notes completed"],
-    ["Task 4 Trivia", breakdown.trivia, "Trivia completed"],
-    ["Task 5 Reflection", breakdown.reflection, "Reflection posted"],
+    ["Task 3 Trivia", breakdown.trivia, "Trivia completed"],
+    ["Task 4 Discussion", breakdown.reflection, "Discussion posted"],
   ];
 
   return (
@@ -924,7 +906,7 @@ export default function ProverbsStudyDayPage() {
         <div className="mb-6 rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
           <p className="text-sm font-bold text-gray-950">Chapter Finishers</p>
           <p className="mt-2 text-lg font-black text-gray-950">
-            {finishers.length} {finishers.length === 1 ? "buddy has" : "buddies have"} finished all 5 tasks for {chapterLabel}
+            {finishers.length} {finishers.length === 1 ? "buddy has" : "buddies have"} finished all 4 parts for {chapterLabel}
           </p>
           <p className="mt-1 text-sm text-gray-600">
             Intro, reading, notes, trivia, and reflection all completed.
@@ -989,7 +971,7 @@ export default function ProverbsStudyDayPage() {
         </div>
 
         <div className="flex flex-col gap-4">
-          <CollapsibleTask taskNumber={1} title="Bible Study Intro" estimate={taskEstimates.intro} done={introDone} open={openTask === 1} onToggle={() => setOpenTask(openTask === 1 ? null : 1)}>
+          <CollapsibleTask taskNumber={1} title="The Big Picture" estimate={taskEstimates.intro} done={introDone} open={openTask === 1} onToggle={() => setOpenTask(openTask === 1 ? null : 1)}>
             <h2 className="mb-5 text-2xl font-black leading-tight text-gray-950">{day.day_title}</h2>
             <BrowserTtsButton
               text={day.devotional_text}
@@ -1061,44 +1043,52 @@ export default function ProverbsStudyDayPage() {
             </div>
           </CollapsibleTask>
 
-          <CollapsibleTask taskNumber={2} title={`Read "${chapterLabel}"`} estimate={taskEstimates.reading} done={readingDone} open={openTask === 2} onToggle={() => setOpenTask(openTask === 2 ? null : 2)}>
-            <div className="text-center">
-              <button
-                type="button"
-                onClick={() => setShowReading(true)}
-                className={`rounded-xl px-6 py-3 text-sm font-black shadow-sm ${readingDone ? "bg-emerald-100 text-emerald-700" : "text-slate-950"}`}
-                style={readingDone ? undefined : { backgroundColor: TASK_BLUE }}
-              >
-                {readingDone ? `Read ${chapterLabel}` : `Read ${chapterLabel}`}
-              </button>
+          <CollapsibleTask taskNumber={2} title="Today's Reading" estimate={taskEstimates.reading} done={readingDone} open={openTask === 2} onToggle={() => setOpenTask(openTask === 2 ? null : 2)}>
+            <div className="space-y-4">
+              <p className="mx-auto max-w-2xl text-sm leading-6 text-gray-600">
+                Open the real chapter frame below. It uses the same Bible reader the app already has, so the text, highlights, and chapter tools stay consistent.
+              </p>
+              <BibleReadingModal
+                book={day.bible_reading_book}
+                chapter={day.bible_reading_chapter}
+                presentation="inline"
+                onClose={() => void markReadingComplete()}
+                onMarkComplete={() => void markReadingComplete()}
+              />
             </div>
           </CollapsibleTask>
 
-          <CollapsibleTask taskNumber={3} title="Chapter Notes" estimate={taskEstimates.notes} done={notesDone} open={openTask === 3} onToggle={() => setOpenTask(openTask === 3 ? null : 3)}>
-            <div className="text-center">
-              <p className="mx-auto mb-4 max-w-md text-sm leading-6 text-gray-600">Open the {chapterLabel} notes when you are ready to go deeper.</p>
-              <button type="button" onClick={() => void openNotes()} className={`rounded-xl px-6 py-3 text-sm font-black shadow-sm ${notesDone ? "bg-emerald-100 text-emerald-700" : "text-slate-950"}`} style={notesDone ? undefined : { backgroundColor: TASK_BLUE }}>
-                {notesDone ? "Open Notes Again" : "Open Chapter Notes"}
-              </button>
+          <CollapsibleTask taskNumber={3} title="Today's Trivia" estimate={taskEstimates.trivia} done={triviaDone} open={openTask === 3} onToggle={() => setOpenTask(openTask === 3 ? null : 3)}>
+            <div className="space-y-4">
+              <p className="mx-auto max-w-2xl text-sm leading-6 text-gray-600">
+                Answer the chapter trivia right here. It uses the same game the app already shows, just placed inside the study flow.
+              </p>
+              {triviaBook && triviaChapter ? (
+                <TriviaGamePlayer
+                  bookName={triviaBook.name}
+                  bookSlug={triviaBook.routeSlug}
+                  chapter={triviaChapter}
+                  compact
+                  onComplete={() => {
+                    setTriviaDone(true);
+                    void loadFinishers(day);
+                  }}
+                />
+              ) : (
+                <div className="rounded-2xl border border-dashed border-gray-200 bg-gray-50 px-4 py-10 text-center text-sm text-gray-500">
+                  Trivia is coming soon for this chapter.
+                </div>
+              )}
             </div>
           </CollapsibleTask>
 
-          <CollapsibleTask taskNumber={4} title="Trivia" estimate={taskEstimates.trivia} done={triviaDone} open={openTask === 4} onToggle={() => setOpenTask(openTask === 4 ? null : 4)}>
-            <div className="text-center">
-              <p className="mx-auto mb-4 max-w-md text-sm leading-6 text-gray-600">Test what is sticking from {chapterLabel} with a short trivia round.</p>
-              <button type="button" onClick={() => setShowTrivia(true)} disabled={!triviaBook || !triviaChapter} className="rounded-xl px-6 py-3 text-sm font-black text-slate-950 shadow-sm disabled:opacity-60" style={{ backgroundColor: triviaBook && triviaChapter ? TASK_BLUE : "#cbd5e1" }}>
-                {triviaDone ? "Play Trivia Again" : "Start Trivia"}
-              </button>
-            </div>
-          </CollapsibleTask>
-
-          <CollapsibleTask taskNumber={5} title="Answer The Reflection Question" estimate={taskEstimates.reflection} done={reflectionDone} open={openTask === 5} onToggle={() => setOpenTask(openTask === 5 ? null : 5)}>
+          <CollapsibleTask taskNumber={4} title="Discussion" estimate={taskEstimates.reflection} done={reflectionDone} open={openTask === 4} onToggle={() => setOpenTask(openTask === 4 ? null : 4)}>
             <p className="mb-4 text-xl font-black leading-snug text-gray-950">{day.reflection_question}</p>
             <CommentSection
               articleSlug={chapterSlug(day.bible_reading_book, day.bible_reading_chapter)}
               headingText=""
               placeholderText="Start Typing Here"
-              submitButtonText="Post Reflection"
+              submitButtonText="Post Discussion"
               variant="plain"
               onPosted={() => {
                 setReflectionDone(true);
@@ -1109,62 +1099,6 @@ export default function ProverbsStudyDayPage() {
           </CollapsibleTask>
         </div>
       </div>
-
-      {showReading ? (
-        <BibleReadingModal
-          book={day.bible_reading_book}
-          chapter={day.bible_reading_chapter}
-          onClose={() => {
-            setShowReading(false);
-            void markReadingComplete();
-          }}
-          onMarkComplete={() => void markReadingComplete()}
-        />
-      ) : null}
-
-      <ModalShell isOpen={showNotes} onClose={() => setShowNotes(false)} scrollable backdropColor="bg-black/55">
-        <div className="relative my-6 w-full max-w-2xl overflow-hidden rounded-3xl bg-white shadow-2xl">
-          <div className="sticky top-0 z-10 flex items-center justify-between border-b border-gray-100 bg-white px-6 py-4">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#4f8fb7]">Chapter Notes</p>
-              <h2 className="text-lg font-bold text-gray-900">{chapterLabel} Study Notes</h2>
-            </div>
-            <button type="button" onClick={() => setShowNotes(false)} className="text-2xl font-bold text-gray-500">x</button>
-          </div>
-          <div ref={notesScrollRef} className="max-h-[75vh] overflow-y-auto px-6 py-5">
-            {notesLoading ? <p className="py-10 text-center text-sm text-gray-500">Loading notes...</p> : (
-              <>
-                <BrowserTtsButton
-                  text={notesText}
-                  label="Listen to chapter notes"
-                  audioSrc={getGenesisOneTtsSrc("notes", day.bible_reading_book, day.bible_reading_chapter)}
-                  onAudioProgress={handleNotesAudioProgress}
-                />
-                <div ref={notesContentRef}>
-                  <ChapterNotesMarkdown>{notesText}</ChapterNotesMarkdown>
-                </div>
-              </>
-            )}
-          </div>
-        </div>
-      </ModalShell>
-
-      {showTrivia && triviaBook && triviaChapter ? (
-        <ModalShell isOpen={showTrivia} onClose={() => { setShowTrivia(false); void loadAll(); }} scrollable backdropColor="bg-black/55">
-          <div className="my-6 w-full max-w-3xl overflow-hidden rounded-3xl bg-white shadow-2xl">
-            <TriviaGamePlayer
-              bookName={triviaBook.name}
-              bookSlug={triviaBook.routeSlug}
-              chapter={triviaChapter}
-              onComplete={() => {
-                setTriviaDone(true);
-                window.setTimeout(() => void loadFinishers(day), 500);
-              }}
-              onClose={() => { setShowTrivia(false); void loadAll(); }}
-            />
-          </div>
-        </ModalShell>
-      ) : null}
 
       {showCompletionModal ? (
         <DevotionalDayCompletionModal
