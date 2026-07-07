@@ -91,6 +91,7 @@ import { supabase } from "../../../lib/supabaseClient";
 import DevotionalDayModal from "../../../components/DevotionalDayModal";
 import DevotionalDayCompletionModal from "../../../components/DevotionalDayCompletionModal";
 import BibleReadingModal from "../../../components/BibleReadingModal";
+import TriviaGamePlayer from "../../../components/TriviaGamePlayer";
 import { ACTION_TYPE } from "../../../lib/actionTypes";
 import { consumeCreditAction } from "../../../lib/creditClient";
 import { trackNavigationActionOnce } from "../../../lib/navigationActionTracker";
@@ -558,6 +559,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
   const currentDayData = orderedDays.find((day) => day.day_number === currentDay) || orderedDays[0] || null;
   const totalUnits = Math.max(devotional?.total_days || orderedDays.length || 1, 1);
   const remainingUnits = Math.max(totalUnits - completedDays, 0);
+  const isWisdomOfProverbs = devotional?.title === "The Wisdom of Proverbs";
 
   useEffect(() => {
     if (!expandedDayStorageKey || typeof window === "undefined") return;
@@ -1378,7 +1380,9 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                     <p className="mt-1 text-lg font-black leading-tight text-[var(--bb-text-primary,#111827)]">
                       {currentDayData
                         ? isChapterJourneyStudy
-                          ? `${currentDayData.bible_reading_book} ${currentDayData.bible_reading_chapter}`
+                          ? isWisdomOfProverbs
+                            ? `Day ${currentDayData.day_number}`
+                            : `${currentDayData.bible_reading_book} ${currentDayData.bible_reading_chapter}`
                           : `Day ${currentDayData.day_number}`
                         : "Ready to begin"}
                     </p>
@@ -1404,7 +1408,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                 </div>
                 <div className="mt-2 flex items-center justify-between text-xs font-black text-[var(--bb-text-secondary,#5f6368)]">
                   <span>{Math.round(progressPercent)}% complete</span>
-                  <span>{completedDays}/{totalUnits} {isChapterJourneyStudy ? "chapters" : "sections"}</span>
+                  <span>{completedDays}/{totalUnits} {isChapterJourneyStudy ? (isWisdomOfProverbs ? "days" : "chapters") : "sections"}</span>
                 </div>
               </div>
             </div>
@@ -1437,7 +1441,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
           <div className="mb-4 flex items-end justify-between gap-3">
             <div>
               <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Progress Map</p>
-              <h2 className="mt-1 text-xl font-black text-[var(--bb-text-primary,#111827)]">{isChapterJourneyStudy ? "Chapters" : "Sections"}</h2>
+              <h2 className="mt-1 text-xl font-black text-[var(--bb-text-primary,#111827)]">{isWisdomOfProverbs ? "Days" : isChapterJourneyStudy ? "Chapters" : "Sections"}</h2>
             </div>
             <p className="text-xs font-black text-[var(--bb-text-muted,#6b7280)]">{completedDays}/{totalUnits} done</p>
           </div>
@@ -1450,6 +1454,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
               const chapterLabel = `${day.bible_reading_book} ${day.bible_reading_chapter}`;
               const remainingTasks = Math.max(taskProgress.total - taskProgress.completed, 0);
               const isExpanded = expandedDayNumber === day.day_number;
+              const wisdomTriviaConfig = getDevotionalReadingGameConfig(day);
 
               return (
                 <div
@@ -1473,7 +1478,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                     <div className="flex items-center justify-between gap-3">
                       <div className="flex min-w-0 items-center gap-3">
                         <span className="font-semibold text-gray-700">
-                          {isChapterJourneyStudy ? chapterLabel : `Day ${day.day_number}`}
+                          {isWisdomOfProverbs ? `Day ${day.day_number}` : isChapterJourneyStudy ? chapterLabel : `Day ${day.day_number}`}
                         </span>
                         <span className="truncate text-gray-700">{day.day_title}</span>
                       </div>
@@ -1510,68 +1515,150 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
 
                   {isUnlocked && isExpanded && (
                     <div className="border-t border-[var(--bb-card-border,#dbe7f4)] bg-white px-4 py-4">
-                      <p className="text-sm font-semibold text-[var(--bb-text-primary,#111827)]">
-                        {isChapterJourneyStudy ? chapterLabel : `Day ${day.day_number}`}: {day.day_title}
-                      </p>
-                      <div className="mt-2 text-sm leading-6 text-[var(--bb-text-secondary,#5f6368)]">
-                        {day.devotional_text ? (
-                          <ChapterNotesMarkdown compactMobile databaseTermMode="light">
-                            {day.devotional_text}
-                          </ChapterNotesMarkdown>
-                        ) : (
-                          <p>Tap open to read this day.</p>
-                        )}
-                      </div>
-                      <div className="mt-4 space-y-4">
-                        <div className="rounded-3xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-4 py-5 shadow-[0_10px_24px_rgba(47,127,232,0.06)]">
-                          <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Attached Reading</p>
-                          <p className="mt-2 text-lg font-black text-[var(--bb-text-primary,#111827)]">
-                            {day.bible_reading_book} {day.bible_reading_chapter}
+                      {isWisdomOfProverbs ? (
+                        <div className="space-y-3">
+                          <p className="text-sm font-semibold text-[var(--bb-text-primary,#111827)]">
+                            Day {day.day_number}: {day.day_title}
                           </p>
-                          <p className="mt-1 text-sm leading-6 text-[var(--bb-text-secondary,#5f6368)]">
-                            Open the actual chapter in the Bible Reader tab, then come back here and keep this day open.
-                          </p>
-                          <div className="mt-4 rounded-2xl bg-white px-3 py-3">
-                            <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-text-muted,#6b7280)]">Actual Reading</p>
-                            <p className="mt-1 text-sm font-semibold text-[var(--bb-text-primary,#111827)]">
-                              {day.bible_reading_book} {day.bible_reading_chapter}
-                            </p>
-                          </div>
-                          <button
-                            type="button"
-                            onClick={() => handleDayClick(day)}
-                            className="mt-4 rounded-full bg-[var(--bb-accent,#2f7fe8)] px-4 py-2 text-sm font-semibold text-white transition hover:opacity-95"
-                          >
-                            Open Reading
-                          </button>
-                        </div>
 
-                        <div className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-4 py-4">
-                          <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Discussion</p>
-                          <p className="mt-2 text-sm font-bold text-[var(--bb-text-primary,#111827)]">
-                            {day.reflection_question || `What stood out to you most in ${day.day_title}?`}
-                          </p>
-                          <div className="mt-4">
-                            <CommentSection
-                              articleSlug={chapterSlug(day.bible_reading_book, day.bible_reading_chapter)}
-                              headingText=""
-                              placeholderText="Start typing your thoughts..."
-                              submitButtonText="Post Comment"
-                              variant="plain"
-                            />
+                          <details className="overflow-hidden rounded-3xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)]">
+                            <summary className="cursor-pointer list-none px-4 py-4 text-sm font-black text-[var(--bb-text-primary,#111827)]">
+                              1. The Big Picture
+                            </summary>
+                            <div className="border-t border-[var(--bb-card-border,#dbe7f4)] px-4 py-4 text-sm leading-7 text-[var(--bb-text-secondary,#5f6368)]">
+                              <ChapterNotesMarkdown compactMobile databaseTermMode="light">
+                                {day.devotional_text}
+                              </ChapterNotesMarkdown>
+                            </div>
+                          </details>
+
+                          <details className="overflow-hidden rounded-3xl border border-[var(--bb-card-border,#dbe7f4)] bg-white">
+                            <summary className="cursor-pointer list-none px-4 py-4 text-sm font-black text-[var(--bb-text-primary,#111827)]">
+                              2. Today's Reading
+                            </summary>
+                            <div className="border-t border-[var(--bb-card-border,#dbe7f4)] px-4 py-4">
+                              <BibleReadingModal
+                                book={day.bible_reading_book}
+                                chapter={day.bible_reading_chapter}
+                                onClose={() => setExpandedDayNumber(null)}
+                                onMarkComplete={() => handleReadingComplete(day.day_number)}
+                                presentation="inline"
+                              />
+                            </div>
+                          </details>
+
+                          <details className="overflow-hidden rounded-3xl border border-[var(--bb-card-border,#dbe7f4)] bg-white">
+                            <summary className="cursor-pointer list-none px-4 py-4 text-sm font-black text-[var(--bb-text-primary,#111827)]">
+                              3. Today's Trivia
+                            </summary>
+                            <div className="border-t border-[var(--bb-card-border,#dbe7f4)] px-4 py-4">
+                              <TriviaGamePlayer
+                                bookName={day.bible_reading_book}
+                                bookSlug={wisdomTriviaConfig.triviaRouteSlug}
+                                chapter={wisdomTriviaConfig.triviaPack!}
+                                compact
+                                skipUpgradeGate
+                                enableDashboardSkip
+                              />
+                            </div>
+                          </details>
+
+                          <details className="overflow-hidden rounded-3xl border border-[var(--bb-card-border,#dbe7f4)] bg-white">
+                            <summary className="cursor-pointer list-none px-4 py-4 text-sm font-black text-[var(--bb-text-primary,#111827)]">
+                              4. Discussion
+                            </summary>
+                            <div className="border-t border-[var(--bb-card-border,#dbe7f4)] px-4 py-4">
+                              <p className="text-sm font-bold text-[var(--bb-text-primary,#111827)]">
+                                {day.reflection_question || `What stood out to you most in Day ${day.day_number}?`}
+                              </p>
+                              <div className="mt-4">
+                                <CommentSection
+                                  articleSlug={chapterSlug(day.bible_reading_book, day.bible_reading_chapter)}
+                                  headingText=""
+                                  placeholderText="Start typing your thoughts..."
+                                  submitButtonText="Post Comment"
+                                  variant="plain"
+                                />
+                              </div>
+                            </div>
+                          </details>
+
+                          <div className="flex justify-end pt-1">
+                            <button
+                              type="button"
+                              onClick={() => setExpandedDayNumber(null)}
+                              className="rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-white px-4 py-2 text-sm font-semibold text-[var(--bb-text-primary,#111827)] transition hover:bg-gray-50"
+                            >
+                              Close
+                            </button>
                           </div>
                         </div>
+                      ) : (
+                        <>
+                          <p className="text-sm font-semibold text-[var(--bb-text-primary,#111827)]">
+                            {isChapterJourneyStudy ? chapterLabel : `Day ${day.day_number}`}: {day.day_title}
+                          </p>
+                          <div className="mt-2 text-sm leading-6 text-[var(--bb-text-secondary,#5f6368)]">
+                            {day.devotional_text ? (
+                              <ChapterNotesMarkdown compactMobile databaseTermMode="light">
+                                {day.devotional_text}
+                              </ChapterNotesMarkdown>
+                            ) : (
+                              <p>Tap open to read this day.</p>
+                            )}
+                          </div>
+                          <div className="mt-4 space-y-4">
+                            <div className="rounded-3xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-4 py-5 shadow-[0_10px_24px_rgba(47,127,232,0.06)]">
+                              <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Attached Reading</p>
+                              <p className="mt-2 text-lg font-black text-[var(--bb-text-primary,#111827)]">
+                                {day.bible_reading_book} {day.bible_reading_chapter}
+                              </p>
+                              <p className="mt-1 text-sm leading-6 text-[var(--bb-text-secondary,#5f6368)]">
+                                Open the actual chapter in the Bible Reader tab, then come back here and keep this day open.
+                              </p>
+                              <div className="mt-4 rounded-2xl bg-white px-3 py-3">
+                                <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-text-muted,#6b7280)]">Actual Reading</p>
+                                <p className="mt-1 text-sm font-semibold text-[var(--bb-text-primary,#111827)]">
+                                  {day.bible_reading_book} {day.bible_reading_chapter}
+                                </p>
+                              </div>
+                              <button
+                                type="button"
+                                onClick={() => handleDayClick(day)}
+                                className="mt-4 rounded-full bg-[var(--bb-accent,#2f7fe8)] px-4 py-2 text-sm font-semibold text-white transition hover:opacity-95"
+                              >
+                                Open Reading
+                              </button>
+                            </div>
 
-                        <div className="flex justify-end">
-                          <button
-                            type="button"
-                            onClick={() => setExpandedDayNumber(null)}
-                            className="rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-white px-4 py-2 text-sm font-semibold text-[var(--bb-text-primary,#111827)] transition hover:bg-gray-50"
-                          >
-                            Close
-                          </button>
-                        </div>
-                      </div>
+                            <div className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-4 py-4">
+                              <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Discussion</p>
+                              <p className="mt-2 text-sm font-bold text-[var(--bb-text-primary,#111827)]">
+                                {day.reflection_question || `What stood out to you most in ${day.day_title}?`}
+                              </p>
+                              <div className="mt-4">
+                                <CommentSection
+                                  articleSlug={chapterSlug(day.bible_reading_book, day.bible_reading_chapter)}
+                                  headingText=""
+                                  placeholderText="Start typing your thoughts..."
+                                  submitButtonText="Post Comment"
+                                  variant="plain"
+                                />
+                              </div>
+                            </div>
+
+                            <div className="flex justify-end">
+                              <button
+                                type="button"
+                                onClick={() => setExpandedDayNumber(null)}
+                                className="rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-white px-4 py-2 text-sm font-semibold text-[var(--bb-text-primary,#111827)] transition hover:bg-gray-50"
+                              >
+                                Close
+                              </button>
+                            </div>
+                          </div>
+                        </>
+                      )}
                     </div>
                   )}
                 </div>
