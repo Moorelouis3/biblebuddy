@@ -495,8 +495,6 @@ Because wisdom isn't simply knowing what is right.
 Wisdom is choosing God's voice before the world convinces you to follow another.
 `,
   2: `
-# Wisdom Is Something You Chase
-
 Have you ever wished God would just tell you exactly what to do?
 
 Maybe you're trying to figure out your career. Maybe you're praying about a relationship. Maybe you're wondering why a certain door closed or whether you should step through the next one that's opening.
@@ -816,8 +814,6 @@ Because every step toward God's wisdom is a step away from regret and a step clo
 And that's a journey worth pursuing every single day.
 `,
   3: `
-# Learning to Trust God When You Don't Understand
-
 Have you ever looked at your life and thought, *God, I don't understand what You're doing.*
 
 Maybe you've prayed for an opportunity that never came.

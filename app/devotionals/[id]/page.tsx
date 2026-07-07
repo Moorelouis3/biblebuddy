@@ -250,6 +250,10 @@ function stripWisdomOverviewHeading(text: string) {
     .replace(/^📖\s*Day\s+1\s+of\s+The\s+Wisdom\s+of\s+Proverbs\s*/i, "")
     .replace(/^💎\s*What Kind of Book Is Proverbs\?\s*/i, "")
     .replace(/^#{1,6}\s*What Kind of Book Is Proverbs\?\s*/im, "")
+    .trim()
+    .replace(/^Proverbs\s+\d+:\s*[^\n]+\n*/i, "")
+    .replace(/^#{1,6}\s*Day\s+\d+\s+of\s+The\s+Wisdom\s+of\s+Proverbs\s*/i, "")
+    .replace(/^#{1,6}\s*[^\n]+\n+/, "")
     .trim();
 
   return cleaned
@@ -343,7 +347,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
   const [progress, setProgress] = useState<Map<number, DayProgress>>(new Map());
   const [chapterTaskProgress, setChapterTaskProgress] = useState<Map<number, ChapterTaskProgress>>(new Map());
   const [completedReaderChapterKeys, setCompletedReaderChapterKeys] = useState<Set<string>>(new Set());
-  const [readerFrameHeight, setReaderFrameHeight] = useState(1800);
+  const [readerFrameHeight, setReaderFrameHeight] = useState(920);
   const [markingReaderChapter, setMarkingReaderChapter] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [userId, setUserId] = useState<string | null>(null);
@@ -603,15 +607,23 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
       const payload = event.data;
       if (!payload || payload.type !== "bb-dashboard-bible-reader-height") return;
 
+      const activeDay = days.find((day) => day.day_number === expandedDayNumber);
+      if (!activeDay) return;
+
+      const payloadBook = String(payload.book || "").trim().toLowerCase();
+      const activeBook = String(activeDay.bible_reading_book || "").trim().toLowerCase();
+      const payloadChapter = Number(payload.chapter);
+      if (payloadBook !== activeBook || payloadChapter !== Number(activeDay.bible_reading_chapter)) return;
+
       const nextHeight = Number(payload.height);
       if (Number.isFinite(nextHeight) && nextHeight > 0) {
-        setReaderFrameHeight(Math.max(900, Math.ceil(nextHeight)));
+        setReaderFrameHeight(Math.min(1100, Math.max(720, Math.ceil(nextHeight))));
       }
     }
 
     window.addEventListener("message", handleBibleReaderHeight);
     return () => window.removeEventListener("message", handleBibleReaderHeight);
-  }, []);
+  }, [days, expandedDayNumber]);
 
   useEffect(() => {
     if (!userId || days.length === 0) {
