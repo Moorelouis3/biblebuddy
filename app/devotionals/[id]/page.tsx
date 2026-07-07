@@ -137,11 +137,25 @@ type ChapterTaskProgress = {
   total: number;
 };
 
-const WISDOM_TASK_TOTAL = 6;
+const WISDOM_TASK_TOTAL = 4;
+const CHAPTER_JOURNEY_TASK_TOTAL = 6;
+
+function normalizeStudyTitle(title: string | null | undefined) {
+  return String(title || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+function isWisdomOfProverbsTitle(title: string | null | undefined) {
+  const normalized = normalizeStudyTitle(title);
+  return normalized === "wisdom of proverbs" || normalized === "the wisdom of proverbs";
+}
 
 function isChapterJourneyStudyTitle(title: string | null | undefined) {
+  if (isWisdomOfProverbsTitle(title)) return true;
+
   return (
-    title === "The Wisdom of Proverbs" ||
     title === "The Testing of Joseph" ||
     title === "The Obedience of Abraham" ||
     title === "The Rise of Esther" ||
@@ -162,6 +176,8 @@ function isChapterJourneyStudyTitle(title: string | null | undefined) {
 }
 
 function getStudyScriptureRange(title: string | null | undefined) {
+  if (isWisdomOfProverbsTitle(title)) return "Day 1-31";
+
   const ranges: Record<string, string> = {
     "The Creation of the World": "Genesis 1 & 2",
     "The Fall of Man": "Genesis 3 & 4",
@@ -178,7 +194,6 @@ function getStudyScriptureRange(title: string | null | undefined) {
     "The Rebellion in the Wilderness": "Numbers 15-25",
     "The Promised Land Ahead": "Numbers 26-36",
     "The Rise of Esther": "Esther 1-10",
-    "The Wisdom of Proverbs": "Day 1-31",
     "The Courage of Daniel": "Daniel 1-6",
   };
 
@@ -186,7 +201,7 @@ function getStudyScriptureRange(title: string | null | undefined) {
 }
 
 function getChapterJourneyProgressLabel(title: string | null | undefined, currentDay: number, totalDays: number) {
-  if (title === "The Wisdom of Proverbs") return `Day ${currentDay} of ${totalDays}`;
+  if (isWisdomOfProverbsTitle(title)) return `Day ${currentDay} of ${totalDays}`;
   if (title === "The Testing of Joseph") return `Genesis ${currentDay + 36} of 50`;
   if (title === "The Obedience of Abraham") return `Genesis ${currentDay + 10} of 25`;
   if (title === "The Rise of Esther") return `Esther ${currentDay} of ${totalDays}`;
@@ -483,16 +498,26 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                 String(row.action_label || "").toLowerCase().startsWith(chapterLabelLower)
               );
               const hasReflection = reflectionSet.has(chapterSlug(day.bible_reading_book, day.bible_reading_chapter));
-              const completed = [
-                dayProgress?.is_completed === true,
-                dayProgress?.reading_completed === true,
-                hasNotes,
-                hasTrivia,
-                hasScrambled,
-                hasReflection,
-              ].filter(Boolean).length;
+              const completed = isWisdomOfProverbsTitle(devotionalData.title)
+                ? [
+                    dayProgress?.is_completed === true,
+                    dayProgress?.reading_completed === true,
+                    hasTrivia,
+                    hasReflection,
+                  ].filter(Boolean).length
+                : [
+                    dayProgress?.is_completed === true,
+                    dayProgress?.reading_completed === true,
+                    hasNotes,
+                    hasTrivia,
+                    hasScrambled,
+                    hasReflection,
+                  ].filter(Boolean).length;
 
-              taskProgressMap.set(day.day_number, { completed, total: WISDOM_TASK_TOTAL });
+              taskProgressMap.set(day.day_number, {
+                completed,
+                total: isWisdomOfProverbsTitle(devotionalData.title) ? WISDOM_TASK_TOTAL : CHAPTER_JOURNEY_TASK_TOTAL,
+              });
             });
 
             setChapterTaskProgress(taskProgressMap);
@@ -559,7 +584,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
   const currentDayData = orderedDays.find((day) => day.day_number === currentDay) || orderedDays[0] || null;
   const totalUnits = Math.max(devotional?.total_days || orderedDays.length || 1, 1);
   const remainingUnits = Math.max(totalUnits - completedDays, 0);
-  const isWisdomOfProverbs = devotional?.title === "The Wisdom of Proverbs";
+  const isWisdomOfProverbs = isWisdomOfProverbsTitle(devotional?.title);
 
   useEffect(() => {
     if (!expandedDayStorageKey || typeof window === "undefined") return;
@@ -937,8 +962,8 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
         setChapterTaskProgress((prev) => {
           const next = new Map(prev);
           next.set(dayNumber, {
-            completed: WISDOM_TASK_TOTAL,
-            total: WISDOM_TASK_TOTAL,
+            completed: isWisdomOfProverbsTitle(devotional?.title) ? WISDOM_TASK_TOTAL : CHAPTER_JOURNEY_TASK_TOTAL,
+            total: isWisdomOfProverbsTitle(devotional?.title) ? WISDOM_TASK_TOTAL : CHAPTER_JOURNEY_TASK_TOTAL,
           });
           return next;
         });
@@ -1448,13 +1473,33 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
           <div className="grid gap-3">
             {orderedDays.map((day) => {
               const dayProgress = progress.get(day.day_number);
-              const taskProgress = chapterTaskProgress.get(day.day_number) || { completed: 0, total: WISDOM_TASK_TOTAL };
+              const taskProgress = chapterTaskProgress.get(day.day_number) || {
+                completed: 0,
+                total: isWisdomOfProverbs ? WISDOM_TASK_TOTAL : CHAPTER_JOURNEY_TASK_TOTAL,
+              };
               const isUnlocked = isDayUnlocked(day.day_number);
               const isCompleted = isChapterJourneyStudy ? taskProgress.completed >= taskProgress.total : dayProgress?.is_completed === true;
               const chapterLabel = `${day.bible_reading_book} ${day.bible_reading_chapter}`;
               const remainingTasks = Math.max(taskProgress.total - taskProgress.completed, 0);
               const isExpanded = expandedDayNumber === day.day_number;
               const wisdomTriviaConfig = getDevotionalReadingGameConfig(day);
+              const wisdomBigPictureDone = dayProgress?.is_completed === true;
+              const wisdomReadingDone = dayProgress?.reading_completed === true;
+              const wisdomTriviaDone = taskProgress.completed >= 3;
+              const wisdomDiscussionDone = taskProgress.completed >= 4;
+              const wisdomStatusPill = (done: boolean) => (
+                <span
+                  className={`shrink-0 rounded-full px-3 py-1 text-[11px] font-black uppercase tracking-[0.14em] ${
+                    done
+                      ? "bg-emerald-500 text-white"
+                      : "bg-[var(--bb-surface-soft,#eef4f8)] text-[var(--bb-text-muted,#637083)]"
+                  }`}
+                >
+                  {done ? "Done" : "Not Done"}
+                </span>
+              );
+              const wisdomTaskSummaryClass =
+                "flex w-full cursor-pointer list-none items-center gap-3 px-4 py-4 text-left transition hover:bg-[var(--bb-surface-soft,#f8fbff)]";
 
               return (
                 <div
@@ -1517,24 +1562,51 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                     <div className="border-t border-[var(--bb-card-border,#dbe7f4)] bg-white px-4 py-4">
                       {isWisdomOfProverbs ? (
                         <div className="space-y-3">
-                          <p className="text-sm font-semibold text-[var(--bb-text-primary,#111827)]">
-                            Day {day.day_number}: {day.day_title}
-                          </p>
-
-                          <details className="overflow-hidden rounded-3xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)]">
-                            <summary className="cursor-pointer list-none px-4 py-4 text-sm font-black text-[var(--bb-text-primary,#111827)]">
-                              1. The Big Picture
+                          <details className="overflow-hidden rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-white shadow-[0_10px_24px_rgba(15,23,42,0.05)]">
+                            <summary className={wisdomTaskSummaryClass}>
+                              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--bb-surface-soft,#eef4f8)] text-[var(--bb-accent,#0b63f6)]">
+                                <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                                  <path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z" />
+                                </svg>
+                              </span>
+                              <span className="min-w-0 flex-1">
+                                <span className="block text-lg font-black leading-tight text-[var(--bb-text-primary,#111827)]">The Big Picture</span>
+                                <span className="mt-1 block text-sm leading-5 text-[var(--bb-text-secondary,#5f6368)]">Start with the cinematic overview.</span>
+                              </span>
+                              {wisdomStatusPill(wisdomBigPictureDone)}
                             </summary>
                             <div className="border-t border-[var(--bb-card-border,#dbe7f4)] px-4 py-4 text-sm leading-7 text-[var(--bb-text-secondary,#5f6368)]">
                               <ChapterNotesMarkdown compactMobile databaseTermMode="light">
                                 {day.devotional_text}
                               </ChapterNotesMarkdown>
+                              <button
+                                type="button"
+                                onClick={() => handleIntroComplete(day.day_number)}
+                                className={`mt-5 w-full rounded-2xl px-4 py-3 text-sm font-black transition ${
+                                  wisdomBigPictureDone
+                                    ? "border border-emerald-300 bg-emerald-50 text-emerald-700"
+                                    : "bg-[var(--bb-accent,#0b63f6)] text-white shadow-[0_10px_22px_rgba(11,99,246,0.18)]"
+                                }`}
+                              >
+                                {wisdomBigPictureDone ? "Overview Done" : "Mark Overview Done"}
+                              </button>
                             </div>
                           </details>
 
-                          <details className="overflow-hidden rounded-3xl border border-[var(--bb-card-border,#dbe7f4)] bg-white">
-                            <summary className="cursor-pointer list-none px-4 py-4 text-sm font-black text-[var(--bb-text-primary,#111827)]">
-                              2. Today's Reading
+                          <details className="overflow-hidden rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-white shadow-[0_10px_24px_rgba(15,23,42,0.05)]">
+                            <summary className={wisdomTaskSummaryClass}>
+                              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--bb-surface-soft,#eef4f8)] text-[var(--bb-accent,#0b63f6)]">
+                                <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+                                </svg>
+                              </span>
+                              <span className="min-w-0 flex-1">
+                                <span className="block text-lg font-black leading-tight text-[var(--bb-text-primary,#111827)]">Today's Reading</span>
+                                <span className="mt-1 block text-sm leading-5 text-[var(--bb-text-secondary,#5f6368)]">{day.bible_reading_book} {day.bible_reading_chapter}</span>
+                              </span>
+                              {wisdomStatusPill(wisdomReadingDone)}
                             </summary>
                             <div className="border-t border-[var(--bb-card-border,#dbe7f4)] px-4 py-4">
                               <BibleReadingModal
@@ -1547,9 +1619,20 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                             </div>
                           </details>
 
-                          <details className="overflow-hidden rounded-3xl border border-[var(--bb-card-border,#dbe7f4)] bg-white">
-                            <summary className="cursor-pointer list-none px-4 py-4 text-sm font-black text-[var(--bb-text-primary,#111827)]">
-                              3. Today's Trivia
+                          <details className="overflow-hidden rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-white shadow-[0_10px_24px_rgba(15,23,42,0.05)]">
+                            <summary className={wisdomTaskSummaryClass}>
+                              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--bb-surface-soft,#eef4f8)] text-[var(--bb-accent,#0b63f6)]">
+                                <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                                  <circle cx="12" cy="12" r="9" />
+                                  <path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 2-2.5 2.1-2.5 4" />
+                                  <path d="M12 17h.01" />
+                                </svg>
+                              </span>
+                              <span className="min-w-0 flex-1">
+                                <span className="block text-lg font-black leading-tight text-[var(--bb-text-primary,#111827)]">Today's Trivia</span>
+                                <span className="mt-1 block text-sm leading-5 text-[var(--bb-text-secondary,#5f6368)]">Test your understanding.</span>
+                              </span>
+                              {wisdomStatusPill(wisdomTriviaDone)}
                             </summary>
                             <div className="border-t border-[var(--bb-card-border,#dbe7f4)] px-4 py-4">
                               <TriviaGamePlayer
@@ -1563,9 +1646,18 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                             </div>
                           </details>
 
-                          <details className="overflow-hidden rounded-3xl border border-[var(--bb-card-border,#dbe7f4)] bg-white">
-                            <summary className="cursor-pointer list-none px-4 py-4 text-sm font-black text-[var(--bb-text-primary,#111827)]">
-                              4. Discussion
+                          <details className="overflow-hidden rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-white shadow-[0_10px_24px_rgba(15,23,42,0.05)]">
+                            <summary className={wisdomTaskSummaryClass}>
+                              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--bb-surface-soft,#eef4f8)] text-[var(--bb-accent,#0b63f6)]">
+                                <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                                  <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z" />
+                                </svg>
+                              </span>
+                              <span className="min-w-0 flex-1">
+                                <span className="block text-lg font-black leading-tight text-[var(--bb-text-primary,#111827)]">Discussion</span>
+                                <span className="mt-1 block text-sm leading-5 text-[var(--bb-text-secondary,#5f6368)]">Share what stood out.</span>
+                              </span>
+                              {wisdomStatusPill(wisdomDiscussionDone)}
                             </summary>
                             <div className="border-t border-[var(--bb-card-border,#dbe7f4)] px-4 py-4">
                               <p className="text-sm font-bold text-[var(--bb-text-primary,#111827)]">
