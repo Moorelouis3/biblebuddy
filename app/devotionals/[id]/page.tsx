@@ -98,6 +98,7 @@ import { trackNavigationActionOnce } from "../../../lib/navigationActionTracker"
 import { CHAPTER_BASED_TRIVIA_BOOK_CONFIG } from "../../../lib/triviaCatalog";
 import { getTriviaChapter } from "../../../lib/triviaGameData";
 import { getScrambledChapter } from "../../../lib/scrambledGameData";
+import { getCompletedChaptersByBooks, markChapterDone } from "../../../lib/readingProgress";
 import { triggerPoints } from "../../../components/PointsPop";
 import { TASK_XP } from "../../../lib/progressionRewards";
 import {
@@ -225,6 +226,10 @@ function chapterSlug(book: string, chapter: number) {
   return `bible-chapter-${book.toLowerCase().replace(/\s+/g, "-")}-${chapter}`;
 }
 
+function completedReaderChapterKey(book: string, chapter: number) {
+  return `${book.trim().toLowerCase()}:${chapter}`;
+}
+
 function notesActionLabel(book: string, chapter: number) {
   return `${book} ${chapter} Review Opened`;
 }
@@ -300,6 +305,9 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
   const [days, setDays] = useState<DevotionalDay[]>([]);
   const [progress, setProgress] = useState<Map<number, DayProgress>>(new Map());
   const [chapterTaskProgress, setChapterTaskProgress] = useState<Map<number, ChapterTaskProgress>>(new Map());
+  const [completedReaderChapterKeys, setCompletedReaderChapterKeys] = useState<Set<string>>(new Set());
+  const [readerFrameHeight, setReaderFrameHeight] = useState(1800);
+  const [markingReaderChapter, setMarkingReaderChapter] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [userId, setUserId] = useState<string | null>(null);
   const [userEmail, setUserEmail] = useState<string | null>(null);
@@ -536,6 +544,50 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
       loadDevotional();
     }
   }, [devotionalId, userId, router]);
+
+  useEffect(() => {
+    function handleBibleReaderHeight(event: MessageEvent) {
+      const payload = event.data;
+      if (!payload || payload.type !== "bb-dashboard-bible-reader-height") return;
+
+      const nextHeight = Number(payload.height);
+      if (Number.isFinite(nextHeight) && nextHeight > 0) {
+        setReaderFrameHeight(Math.max(900, Math.ceil(nextHeight)));
+      }
+    }
+
+    window.addEventListener("message", handleBibleReaderHeight);
+    return () => window.removeEventListener("message", handleBibleReaderHeight);
+  }, []);
+
+  useEffect(() => {
+    if (!userId || days.length === 0) {
+      setCompletedReaderChapterKeys(new Set());
+      return;
+    }
+
+    let active = true;
+
+    async function loadCompletedReaderChapters() {
+      const uniqueBooks = Array.from(new Set(days.map((day) => day.bible_reading_book).filter(Boolean)));
+      const completedByBook = await getCompletedChaptersByBooks(userId!, uniqueBooks);
+      if (!active) return;
+
+      const nextKeys = new Set<string>();
+      Object.entries(completedByBook).forEach(([bookName, chapters]) => {
+        chapters.forEach((chapterNumber) => {
+          nextKeys.add(completedReaderChapterKey(bookName, chapterNumber));
+        });
+      });
+      setCompletedReaderChapterKeys(nextKeys);
+    }
+
+    void loadCompletedReaderChapters();
+
+    return () => {
+      active = false;
+    };
+  }, [days, userId]);
 
   // Calculate current day and progress
   const getCurrentDay = () => {
@@ -1249,6 +1301,29 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
     }
   };
 
+  const handlePlanReaderChapterComplete = async (day: DevotionalDay) => {
+    if (!userId || !day?.bible_reading_book || !day?.bible_reading_chapter) return;
+
+    const key = completedReaderChapterKey(day.bible_reading_book, day.bible_reading_chapter);
+    if (completedReaderChapterKeys.has(key) || markingReaderChapter === key) return;
+
+    try {
+      setMarkingReaderChapter(key);
+      await markChapterDone(userId, day.bible_reading_book, day.bible_reading_chapter);
+      await handleReadingComplete(day.day_number);
+      setCompletedReaderChapterKeys((previous) => {
+        const next = new Set(previous);
+        next.add(key);
+        return next;
+      });
+    } catch (error) {
+      console.error("[DEVOTIONAL_READER] Could not mark chapter complete:", error);
+      alert("Could not mark this chapter complete. Please try again.");
+    } finally {
+      setMarkingReaderChapter(null);
+    }
+  };
+
   const handleReflectionSave = async (dayNumber: number, reflectionText: string) => {
     if (!userId || !reflectionText.trim()) return;
 
@@ -1483,8 +1558,12 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
               const remainingTasks = Math.max(taskProgress.total - taskProgress.completed, 0);
               const isExpanded = expandedDayNumber === day.day_number;
               const wisdomTriviaConfig = getDevotionalReadingGameConfig(day);
+              const readerChapterKey = completedReaderChapterKey(day.bible_reading_book, day.bible_reading_chapter);
+              const readerChapterDone = completedReaderChapterKeys.has(readerChapterKey);
+              const readerChapterMarking = markingReaderChapter === readerChapterKey;
+              const planReaderSrc = `/Bible/${encodeURIComponent(day.bible_reading_book.toLowerCase().trim())}/${day.bible_reading_chapter}?dashboardEmbed=1&hideReaderChrome=1&hideEmbedControls=1`;
               const wisdomBigPictureDone = dayProgress?.is_completed === true;
-              const wisdomReadingDone = dayProgress?.reading_completed === true;
+              const wisdomReadingDone = dayProgress?.reading_completed === true || readerChapterDone;
               const wisdomTriviaDone = taskProgress.completed >= 3;
               const wisdomDiscussionDone = taskProgress.completed >= 4;
               const wisdomStatusPill = (done: boolean) => (
@@ -1608,14 +1687,37 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                               </span>
                               {wisdomStatusPill(wisdomReadingDone)}
                             </summary>
-                            <div className="border-t border-[var(--bb-card-border,#dbe7f4)] px-4 py-4">
-                              <BibleReadingModal
-                                book={day.bible_reading_book}
-                                chapter={day.bible_reading_chapter}
-                                onClose={() => setExpandedDayNumber(null)}
-                                onMarkComplete={() => handleReadingComplete(day.day_number)}
-                                presentation="inline"
-                              />
+                            <div className="border-t border-[var(--bb-card-border,#dbe7f4)] px-0 py-0">
+                              <div className="overflow-hidden bg-[var(--bb-background,#f8fbff)]">
+                                <iframe
+                                  key={planReaderSrc}
+                                  title={`${day.bible_reading_book} ${day.bible_reading_chapter}`}
+                                  src={planReaderSrc}
+                                  loading="lazy"
+                                  style={{ height: `${readerFrameHeight}px` }}
+                                  className="w-full border-0 bg-[var(--bb-background,#f8fbff)]"
+                                />
+                              </div>
+                              <div className="border-t border-[var(--bb-card-border,#dbe7f4)] bg-white px-4 py-4">
+                                <button
+                                  type="button"
+                                  disabled={wisdomReadingDone || readerChapterMarking}
+                                  onClick={() => handlePlanReaderChapterComplete(day)}
+                                  className={`w-full rounded-2xl px-4 py-4 text-sm font-black transition ${
+                                    wisdomReadingDone
+                                      ? "cursor-not-allowed border border-emerald-300 bg-emerald-50 text-emerald-700"
+                                      : readerChapterMarking
+                                        ? "cursor-wait bg-[color-mix(in_srgb,var(--bb-accent,#0b63f6)_55%,white)] text-white"
+                                        : "bg-[var(--bb-accent,#0b63f6)] text-white shadow-[0_12px_26px_rgba(11,99,246,0.20)] hover:brightness-95"
+                                  }`}
+                                >
+                                  {wisdomReadingDone
+                                    ? `${day.bible_reading_book} ${day.bible_reading_chapter} Completed`
+                                    : readerChapterMarking
+                                      ? "Marking Chapter..."
+                                      : `Mark ${day.bible_reading_book} ${day.bible_reading_chapter} Done`}
+                                </button>
+                              </div>
                             </div>
                           </details>
 

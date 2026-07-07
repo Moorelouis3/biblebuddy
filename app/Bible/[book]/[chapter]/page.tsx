@@ -184,6 +184,7 @@ export default function BibleChapterPage() {
   const isChapterTextEmbed = searchParams.get("embedded") === "chapter-text";
   const isDashboardEmbed = searchParams.get("dashboardEmbed") === "1";
   const hideReaderChrome = isDashboardEmbed || searchParams.get("hideReaderChrome") === "1";
+  const hideEmbedControls = searchParams.get("hideEmbedControls") === "1";
 
   const [sections, setSections] = useState<Section[]>([]);
   const [loading, setLoading] = useState(true);
@@ -2699,7 +2700,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
           </div>
         </div> : null}
 
-        {hideReaderChrome ? (
+        {hideReaderChrome && !hideEmbedControls ? (
           <div className="relative z-20 mb-3" ref={gamesMenuRef}>
             <div className="grid grid-cols-2 gap-2">
               <button
