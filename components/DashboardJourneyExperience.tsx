@@ -5210,21 +5210,30 @@ export default function DashboardJourneyExperience({
   }
 
   useEffect(() => {
-    function handleShowGroupTab() {
+    function showGroupTab(preserveDeepLink = false) {
       if (typeof window !== "undefined") window.localStorage.removeItem("bb:dashboard-open-group");
       const groupIndex = dashboardPageKeys.indexOf("group");
       if (groupIndex >= 0) {
         clearBibleYearViews();
-        setDashboardGroupDeepLinkPostId(null);
-        setDashboardGroupDeepLinkCommentId(null);
+        if (!preserveDeepLink) {
+          setDashboardGroupDeepLinkPostId(null);
+          setDashboardGroupDeepLinkCommentId(null);
+        }
         setDashboardMenuOpen(false);
         snapToPage(groupIndex);
       }
     }
 
+    function handleShowGroupTab() {
+      showGroupTab(false);
+    }
+
     if (typeof window !== "undefined") {
       const params = new URLSearchParams(window.location.search);
-      if (params.get("view") === "group" || window.localStorage.getItem("bb:dashboard-open-group")) {
+      const hasGroupDeepLink = params.get("view") === "group" && (Boolean(params.get("post")) || Boolean(params.get("comment")));
+      if (hasGroupDeepLink) {
+        window.setTimeout(() => showGroupTab(true), 0);
+      } else if (params.get("view") === "group" || window.localStorage.getItem("bb:dashboard-open-group")) {
         window.setTimeout(() => handleShowGroupTab(), 0);
       }
     }

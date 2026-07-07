@@ -307,191 +307,218 @@ const chapterPlans: ChapterPlan[] = [
 
 const cinematicDevotionalTextByChapter: Record<number, string> = {
   1: `
-You have probably heard people say Proverbs is a book of wisdom.
+📖 Day 1 of The Wisdom of Proverbs
+💎 What Kind of Book Is Proverbs?
+
+You have probably heard people say that Proverbs is a book of wisdom.
 
 That is true.
 
-But a lot of people still read Proverbs the wrong way.
+But many people still read Proverbs the wrong way.
 
 They read it like a book of promises.
 
-Like if Proverbs says honesty usually leads to blessing, they treat it like a contract that says every honest person will always have an easy life.
+For example...
 
-That is not how Proverbs works.
+If Proverbs says honesty usually leads to blessing, some people assume it means every honest person will always have an easy life.
 
-A proverb is a short saying about life that teaches a general truth.
+That isn't how Proverbs works.
 
-It shows the kind of path that usually leads somewhere wise,
-and the kind of path that usually leads somewhere painful.
+A proverb is a short saying that teaches a general truth about how life usually works.
 
-Proverbs teaches patterns, not guarantees.
+It reveals the kinds of choices that normally lead toward wisdom...
+
+and the kinds of choices that usually lead toward pain.
+
+Proverbs teaches:
+
+🛤️ Patterns
+
+💡 Wisdom
+
+⚖️ Consequences
+
+👀 Discernment
 
 It is the difference between saying:
 
-> "Do this once and God owes you success."
+"Do this once and God owes you success."
 
 and saying:
 
-> "Walk this road long enough and it will shape who you become."
+"Walk this road long enough and it will shape who you become."
 
-So before Proverbs gives you hundreds of wise sayings, it teaches you how to listen.
+Proverbs isn't giving formulas.
 
-This is a father speaking to a son.
+It's teaching you how to live wisely.
 
-And not just any father.
+👑 Meet the Author
 
-### Solomon is the son of David.
+Before Proverbs gives hundreds of wise sayings...
 
-**The same David who:**
+It introduces the man writing them.
 
-* fought Goliath
-* wrote songs in the wilderness
-* ruled Israel
-* fell deeply into sin
-* cried out in repentance
-* led through war, victory, failure, and worship
+This is Solomon.
+
+The son of David.
+
+The same David who:
+
+🪨 Defeated Goliath
+
+🎵 Wrote many of the Psalms
+
+👑 Became king over Israel
+
+💔 Fell deeply into sin
+
+🙏 Repented before God
+
+⚔️ Led through victory, failure, worship, and war
 
 Solomon grew up watching all of it.
 
-**He inherited:**
+He inherited:
 
-* a throne
-* a kingdom
-* a legacy
-* the pressure of leading God's people
+👑 A throne
 
-God gave Solomon incredible wisdom. People traveled from nations away just to hear him speak.
+🌍 A kingdom
 
-And yet Solomon's own heart would later drift.
+📜 A legacy
 
-**He would be pulled away by:**
+⚖️ The responsibility of leading God's people
 
-* divided loves
-* compromise
-* foreign alliances
-* spiritual drift
+When Solomon became king, God gave him extraordinary wisdom.
 
-That makes Proverbs feel heavier.
+People traveled from distant nations just to hear him speak.
 
-This is not just advice from a perfect man sitting above everyone else.
+Yet Solomon's own heart would later drift from God.
 
-It is wisdom from a king who knew the beauty of God's truth and would also learn how painful it is when the heart stops listening.
+He was pulled away by:
 
-So when Proverbs opens, it does not sound like a philosopher writing quotes for strangers.
+❤️ Divided loyalties
 
-It sounds like a king leaning toward his son saying:
+🤝 Compromise
 
-> "Before you learn how to lead others, you need to learn how to lead yourself."
+🌎 Foreign influences
 
----
+📉 Spiritual drift
 
-# What Proverbs Really Is
+That makes Proverbs even more powerful.
 
-Proverbs is not a book of guaranteed promises.
+This isn't advice from a perfect man.
 
-It is wisdom.
+It's wisdom from someone who knew both the blessings of following God...
 
-That matters.
+and the pain of ignoring Him.
 
-**The book teaches:**
+🎯 Why Proverbs Was Written
 
-* patterns
-* paths
-* consequences
-* discernment
+Proverbs doesn't begin with random wise sayings.
 
-**It shows:**
+Solomon first explains why wisdom matters.
 
-* the kind of life that usually leads toward wisdom
-* the kind of life that slowly destroys people
+He says wisdom is meant to:
 
-This is wisdom for real life.
+🌱 Train the inexperienced
 
-Not a formula.
+🧠 Sharpen the wise
 
-Not a shortcut.
+🛡️ Protect the young
 
-Not a way to control every outcome.
+👀 Teach discernment
 
----
+❤️ Shape your character
 
-# The Point of Proverbs 1 Is This
+Then he gives the foundation for the entire book.
 
-Solomon opens the book by explaining why wisdom exists.
+"The fear of the Lord is the beginning of knowledge."
 
-**Wisdom is meant to:**
+Everything else in Proverbs grows from that one truth.
 
-* train the simple
-* sharpen the wise
-* protect the young
-* teach people how to truly see
+Not intelligence.
 
-Then he gives the foundation underneath the entire book:
+Not education.
 
-> "The fear of the Lord is the beginning of knowledge."
+Not success.
 
-Everything in Proverbs grows out of that sentence.
+Everything begins with reverence for God.
 
-Not intelligence. Not talent. Not success.
+🚶 Two Voices Compete for Your Heart
 
-Reverence for God.
+Proverbs 1 introduces two very different voices.
 
----
+🌑 The Voice of Temptation
 
-# The First Big Choice
+It says:
 
-Proverbs 1 introduces two competing voices.
+"Come with us."
 
-One voice says:
+It promises:
 
-> "Come with us."
+🤝 Acceptance
 
-**It offers:**
+💰 Quick gain
 
-* belonging
-* quick gain
-* excitement
-* temptation
+🎉 Excitement
 
-But the road ends in destruction.
+🔥 Easy pleasure
 
-The other voice is Wisdom herself.
+But it never tells you where that road ends.
 
-She cries out in the streets.
+💎 The Voice of Wisdom
 
-She warns before consequences arrive.
+Wisdom also calls out.
 
-She calls people while there is still time to listen.
+Not in secret.
 
-The chapter presses the first big decision:
+Not only inside the temple.
 
-***Will you listen when wisdom speaks?***
+She cries out in the streets where everyone can hear.
 
----
+She warns people before consequences arrive.
 
-# What To Watch For In Proverbs 1
+She invites them to choose a better path while there is still time.
 
-**As you read, pay attention to:**
+The entire chapter asks one important question:
 
-* how often wisdom calls before judgment comes
-* the contrast between the path of wisdom and the path of sinners
-* how "the fear of the Lord" becomes the foundation for everything else
-* how temptation often sounds exciting before it becomes destructive
-* how wisdom is not hidden, but ignored
+"Whose voice will you listen to?"
 
----
+👀 What To Watch For In Proverbs 1
 
-# The Bigger Takeaway
+As you read, pay attention to:
 
-Proverbs 1 is really about a decision.
+📢 How wisdom calls before judgment comes
 
-Will you listen when wisdom speaks?
+⚖️ The contrast between wisdom and foolishness
 
-Or will you wait until consequences force you to?
+🙏 Why the fear of the Lord is the foundation of true knowledge
 
-Solomon is trying to teach his son something early: wisdom is not just knowing what is right.
+🎭 How temptation often looks attractive before it becomes destructive
 
-Wisdom is choosing it before life humbles you into it.
+🛤️ How every choice begins leading you down a path
+
+🌟 The Bigger Takeaway
+
+Proverbs 1 is really about one decision.
+
+Every day, different voices compete for your attention.
+
+Some promise quick rewards.
+
+Others require patience, humility, and trust in God.
+
+One path leads toward wisdom.
+
+The other quietly leads toward destruction.
+
+The choice begins long before the consequences appear.
+
+It begins with whose voice you decide to follow.
+
+Because wisdom isn't simply knowing what is right.
+
+Wisdom is choosing God's voice before the world convinces you to follow another.
 `,
   2: `Imagine Solomon walking with his son before the city is fully awake.
 
