@@ -24,6 +24,7 @@ type TriviaGamePlayerProps = {
   skipUpgradeGate?: boolean;
   compact?: boolean;
   enableDashboardSkip?: boolean;
+  hideSkipButton?: boolean;
 };
 
 async function fetchVerseText(reference: string) {
@@ -53,6 +54,7 @@ export default function TriviaGamePlayer({
   skipUpgradeGate = false,
   compact = false,
   enableDashboardSkip = false,
+  hideSkipButton = false,
 }: TriviaGamePlayerProps) {
   const router = useRouter();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -79,7 +81,7 @@ export default function TriviaGamePlayer({
   const questions = chapter?.questions ?? [];
   const currentQuestion = questions[currentQuestionIndex] ?? null;
   const isCorrect = Boolean(currentQuestion && selectedAnswer === currentQuestion.correctAnswer);
-  const showOwnerDashboardSkip = compact && (enableDashboardSkip || userEmail?.toLowerCase() === "moorelouis3@gmail.com");
+  const showOwnerDashboardSkip = compact && !hideSkipButton && (enableDashboardSkip || userEmail?.toLowerCase() === "moorelouis3@gmail.com");
 
   useEffect(() => {
     let cancelled = false;

@@ -92,6 +92,7 @@ import DevotionalDayModal from "../../../components/DevotionalDayModal";
 import DevotionalDayCompletionModal from "../../../components/DevotionalDayCompletionModal";
 import BibleReadingModal from "../../../components/BibleReadingModal";
 import TriviaGamePlayer from "../../../components/TriviaGamePlayer";
+import BrowserTtsButton from "../../../components/BrowserTtsButton";
 import { ACTION_TYPE } from "../../../lib/actionTypes";
 import { consumeCreditAction } from "../../../lib/creditClient";
 import { trackNavigationActionOnce } from "../../../lib/navigationActionTracker";
@@ -99,6 +100,10 @@ import { CHAPTER_BASED_TRIVIA_BOOK_CONFIG } from "../../../lib/triviaCatalog";
 import { getTriviaChapter } from "../../../lib/triviaGameData";
 import { getScrambledChapter } from "../../../lib/scrambledGameData";
 import { getCompletedChaptersByBooks, markChapterDone } from "../../../lib/readingProgress";
+import {
+  BIBLE_READING_BACKGROUND_TRACKS,
+  BIBLE_READING_BACKGROUND_VOLUME,
+} from "../../../lib/bibleReadingBackgroundMusic";
 import { triggerPoints } from "../../../components/PointsPop";
 import { TASK_XP } from "../../../lib/progressionRewards";
 import {
@@ -140,6 +145,7 @@ type ChapterTaskProgress = {
 
 const WISDOM_TASK_TOTAL = 4;
 const CHAPTER_JOURNEY_TASK_TOTAL = 6;
+type WisdomTaskKey = "overview" | "reading" | "trivia" | "discussion";
 
 function normalizeStudyTitle(title: string | null | undefined) {
   return String(title || "")
@@ -224,6 +230,25 @@ function getChapterJourneyProgressLabel(title: string | null | undefined, curren
 
 function chapterSlug(book: string, chapter: number) {
   return `bible-chapter-${book.toLowerCase().replace(/\s+/g, "-")}-${chapter}`;
+}
+
+function stripWisdomOverviewHeading(text: string) {
+  const cleaned = String(text || "")
+    .replace(/^Proverbs\s+1:\s*Wisdom Starts With Reverence\s*/i, "")
+    .replace(/^📖\s*Day\s+1\s+of\s+The\s+Wisdom\s+of\s+Proverbs\s*/i, "")
+    .replace(/^💎\s*What Kind of Book Is Proverbs\?\s*/i, "")
+    .replace(/^#{1,6}\s*What Kind of Book Is Proverbs\?\s*/im, "")
+    .trim();
+
+  return cleaned
+    .replace(/^(#{1,6})\s*Meet the Author$/gim, "$1 👑 Meet the Author")
+    .replace(/^(#{1,6})\s*Why Proverbs Was Written$/gim, "$1 🎯 Why Proverbs Was Written")
+    .replace(/^(#{1,6})\s*Two Voices Compete for Your Heart$/gim, "$1 🚶 Two Voices Compete for Your Heart")
+    .replace(/^(#{1,6})\s*What To Watch For In Proverbs 1$/gim, "$1 👀 What To Watch For In Proverbs 1")
+    .replace(/^(#{1,6})\s*The Bigger Takeaway$/gim, "$1 🌟 The Bigger Takeaway")
+    .replace(/^(#{1,6})\s*What Proverbs Really Is$/gim, "$1 💎 What Proverbs Really Is")
+    .replace(/^(#{1,6})\s*The Point of Proverbs 1 Is This$/gim, "$1 🎯 The Point of Proverbs 1 Is This")
+    .trim();
 }
 
 function completedReaderChapterKey(book: string, chapter: number) {
@@ -315,6 +340,9 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
   const [selectedDay, setSelectedDay] = useState<DevotionalDay | null>(null);
   const [selectedBibleReading, setSelectedBibleReading] = useState<{ book: string; chapter: number } | null>(null);
   const [expandedDayNumber, setExpandedDayNumber] = useState<number | null>(null);
+  const [expandedWisdomTask, setExpandedWisdomTask] = useState<string | null>(null);
+  const [completedTriviaDayNumbers, setCompletedTriviaDayNumbers] = useState<Set<number>>(new Set());
+  const [completedDiscussionDayNumbers, setCompletedDiscussionDayNumbers] = useState<Set<number>>(new Set());
   const [showCreditBlocked, setShowCreditBlocked] = useState(false);
   const [showReadingRequiredModal, setShowReadingRequiredModal] = useState(false);
   const [showProModal, setShowProModal] = useState(false);
@@ -487,6 +515,8 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
             const actions = actionsRes.data || [];
             const reflectionSet = new Set((reflectionsRes.data || []).map((row: any) => row.article_slug));
             const taskProgressMap = new Map<number, ChapterTaskProgress>();
+            const triviaDaySet = new Set<number>();
+            const discussionDaySet = new Set<number>();
 
             loadedDays.forEach((day) => {
               const dayProgress = progressMap.get(day.day_number);
@@ -506,6 +536,8 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                 String(row.action_label || "").toLowerCase().startsWith(chapterLabelLower)
               );
               const hasReflection = reflectionSet.has(chapterSlug(day.bible_reading_book, day.bible_reading_chapter));
+              if (hasTrivia) triviaDaySet.add(day.day_number);
+              if (hasReflection) discussionDaySet.add(day.day_number);
               const completed = isWisdomOfProverbsTitle(devotionalData.title)
                 ? [
                     dayProgress?.is_completed === true,
@@ -529,8 +561,12 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
             });
 
             setChapterTaskProgress(taskProgressMap);
+            setCompletedTriviaDayNumbers(triviaDaySet);
+            setCompletedDiscussionDayNumbers(discussionDaySet);
           } else {
             setChapterTaskProgress(new Map());
+            setCompletedTriviaDayNumbers(new Set());
+            setCompletedDiscussionDayNumbers(new Set());
           }
         }
       } catch (err) {
@@ -673,6 +709,25 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
     }
     const prevDayProgress = progress.get(dayNumber - 1);
     return prevDayProgress?.is_completed === true;
+  };
+
+  const updateWisdomTaskProgress = (
+    dayNumber: number,
+    overrides: Partial<Record<WisdomTaskKey, boolean>> = {},
+  ) => {
+    if (!isWisdomOfProverbsTitle(devotional?.title)) return;
+
+    setChapterTaskProgress((prevTaskProgress) => {
+      const dayProgress = progress.get(dayNumber);
+      const overviewDone = overrides.overview ?? dayProgress?.is_completed === true;
+      const readingDone = overrides.reading ?? dayProgress?.reading_completed === true;
+      const triviaDone = overrides.trivia ?? completedTriviaDayNumbers.has(dayNumber);
+      const discussionDone = overrides.discussion ?? completedDiscussionDayNumbers.has(dayNumber);
+      const completed = [overviewDone, readingDone, triviaDone, discussionDone].filter(Boolean).length;
+      const next = new Map(prevTaskProgress);
+      next.set(dayNumber, { completed, total: WISDOM_TASK_TOTAL });
+      return next;
+    });
   };
 
   const setChapterOnStudyDashboard = async (day: DevotionalDay) => {
@@ -1248,6 +1303,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
         next.set(dayNumber, { ...existing, is_completed: true });
         return next;
       });
+      updateWisdomTaskProgress(dayNumber, { overview: true });
 
       if (!wasAlreadyCompleted) {
         const { data: { user: authUser } } = await supabase.auth.getUser();
@@ -1295,6 +1351,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
           next.set(dayNumber, { ...existing, reading_completed: true });
           return next;
         });
+        updateWisdomTaskProgress(dayNumber, { reading: true });
       }
     } catch (err) {
       console.error("Error updating reading status:", err);
@@ -1469,38 +1526,11 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
             </div>
 
             <div className="min-w-0 text-center md:text-left">
-              <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Plan Progress</p>
               <h1 className="mt-1 text-3xl font-black leading-tight text-[var(--bb-text-primary,#111827)] sm:text-4xl">{devotional.title}</h1>
               <p className="mt-2 text-sm font-bold text-[var(--bb-text-secondary,#5f6368)]">{scriptureRange ?? devotional.subtitle}</p>
 
-              <div className="mt-5 rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 text-left shadow-sm">
-                <div className="flex items-center justify-between gap-3">
-                  <div>
-                    <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-text-muted,#6b7280)]">Current</p>
-                    <p className="mt-1 text-lg font-black leading-tight text-[var(--bb-text-primary,#111827)]">
-                      {currentDayData
-                        ? isChapterJourneyStudy
-                          ? isWisdomOfProverbs
-                            ? `Day ${currentDayData.day_number}`
-                            : `${currentDayData.bible_reading_book} ${currentDayData.bible_reading_chapter}`
-                          : `Day ${currentDayData.day_number}`
-                        : "Ready to begin"}
-                    </p>
-                    <p className="mt-1 text-sm font-bold text-[var(--bb-text-secondary,#5f6368)]">
-                      {currentDayData?.day_title || "Start your next devotional step."}
-                    </p>
-                  </div>
-                  {currentDayData ? (
-                    <button
-                      type="button"
-                      onClick={() => handleDayClick(currentDayData)}
-                      className="shrink-0 rounded-full bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-4 py-2 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95"
-                    >
-                      Continue
-                    </button>
-                  ) : null}
-                </div>
-                <div className="mt-4 h-3 overflow-hidden rounded-full bg-[var(--bb-surface-soft,#f8fbff)]">
+              <div className="mx-auto mt-6 w-full max-w-3xl md:mx-0">
+                <div className="h-3 overflow-hidden rounded-full bg-[var(--bb-surface-soft,#f8fbff)] shadow-inner">
                   <div
                     className="h-full rounded-full bg-[var(--bb-accent,#2f7fe8)] transition-all duration-500"
                     style={{ width: `${Math.min(100, Math.max(0, progressPercent))}%` }}
@@ -1514,28 +1544,35 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
             </div>
           </div>
 
-          <div className="mt-5 grid grid-cols-3 gap-3">
-            <div className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-3 py-4 text-center shadow-sm">
-              <p className="text-2xl font-black text-[var(--bb-text-primary,#111827)]">{completedDays}</p>
-              <p className="mt-1 text-[10px] font-black uppercase tracking-wide text-[var(--bb-text-muted,#6b7280)]">Complete</p>
+          {!isWisdomOfProverbs ? (
+            <div className="mt-5 grid grid-cols-3 gap-3">
+              <div className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-3 py-4 text-center shadow-sm">
+                <p className="text-2xl font-black text-[var(--bb-text-primary,#111827)]">{completedDays}</p>
+                <p className="mt-1 text-[10px] font-black uppercase tracking-wide text-[var(--bb-text-muted,#6b7280)]">Complete</p>
+              </div>
+              <div className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-3 py-4 text-center shadow-sm">
+                <p className="text-2xl font-black text-[var(--bb-text-primary,#111827)]">{currentDay}</p>
+                <p className="mt-1 text-[10px] font-black uppercase tracking-wide text-[var(--bb-text-muted,#6b7280)]">Current</p>
+              </div>
+              <div className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-3 py-4 text-center shadow-sm">
+                <p className="text-2xl font-black text-[var(--bb-text-primary,#111827)]">{remainingUnits}</p>
+                <p className="mt-1 text-[10px] font-black uppercase tracking-wide text-[var(--bb-text-muted,#6b7280)]">Left</p>
+              </div>
             </div>
-            <div className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-3 py-4 text-center shadow-sm">
-              <p className="text-2xl font-black text-[var(--bb-text-primary,#111827)]">{currentDay}</p>
-              <p className="mt-1 text-[10px] font-black uppercase tracking-wide text-[var(--bb-text-muted,#6b7280)]">Current</p>
-            </div>
-            <div className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-3 py-4 text-center shadow-sm">
-              <p className="text-2xl font-black text-[var(--bb-text-primary,#111827)]">{remainingUnits}</p>
-              <p className="mt-1 text-[10px] font-black uppercase tracking-wide text-[var(--bb-text-muted,#6b7280)]">Left</p>
-            </div>
-          </div>
+          ) : null}
         </section>
 
-        <section className="mt-5 rounded-[26px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-5 shadow-sm">
-          <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Study Overview</p>
-          <p className="mt-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#5f6368)] whitespace-pre-line">
-            {previewDescription}
-          </p>
-        </section>
+        <details className="mt-5 overflow-hidden rounded-[26px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-sm">
+          <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)] transition hover:bg-[var(--bb-surface-soft,#f8fbff)]">
+            Study Overview
+            <span className="text-lg leading-none text-[var(--bb-text-muted,#6b7280)]">+</span>
+          </summary>
+          <div className="border-t border-[var(--bb-card-border,#dbe7f4)] px-5 py-4">
+            <p className="text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#5f6368)] whitespace-pre-line">
+              {previewDescription}
+            </p>
+          </div>
+        </details>
 
         <section className="mt-5 rounded-[26px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm sm:p-5">
           <div className="mb-4 flex items-end justify-between gap-3">
@@ -1553,9 +1590,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                 total: isWisdomOfProverbs ? WISDOM_TASK_TOTAL : CHAPTER_JOURNEY_TASK_TOTAL,
               };
               const isUnlocked = isDayUnlocked(day.day_number);
-              const isCompleted = isChapterJourneyStudy ? taskProgress.completed >= taskProgress.total : dayProgress?.is_completed === true;
               const chapterLabel = `${day.bible_reading_book} ${day.bible_reading_chapter}`;
-              const remainingTasks = Math.max(taskProgress.total - taskProgress.completed, 0);
               const isExpanded = expandedDayNumber === day.day_number;
               const wisdomTriviaConfig = getDevotionalReadingGameConfig(day);
               const readerChapterKey = completedReaderChapterKey(day.bible_reading_book, day.bible_reading_chapter);
@@ -1564,8 +1599,25 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
               const planReaderSrc = `/Bible/${encodeURIComponent(day.bible_reading_book.toLowerCase().trim())}/${day.bible_reading_chapter}?dashboardEmbed=1&hideReaderChrome=1&hideEmbedControls=1&hideDiscussion=1`;
               const wisdomBigPictureDone = dayProgress?.is_completed === true;
               const wisdomReadingDone = dayProgress?.reading_completed === true || readerChapterDone;
-              const wisdomTriviaDone = taskProgress.completed >= 3;
-              const wisdomDiscussionDone = taskProgress.completed >= 4;
+              const wisdomTriviaDone = completedTriviaDayNumbers.has(day.day_number);
+              const wisdomDiscussionDone = completedDiscussionDayNumbers.has(day.day_number);
+              const wisdomCompletedCount = [
+                wisdomBigPictureDone,
+                wisdomReadingDone,
+                wisdomTriviaDone,
+                wisdomDiscussionDone,
+              ].filter(Boolean).length;
+              const displayedTaskProgress = isWisdomOfProverbs
+                ? { completed: wisdomCompletedCount, total: WISDOM_TASK_TOTAL }
+                : taskProgress;
+              const remainingTasks = Math.max(displayedTaskProgress.total - displayedTaskProgress.completed, 0);
+              const isCompleted = isWisdomOfProverbs
+                ? wisdomCompletedCount >= WISDOM_TASK_TOTAL
+                : isChapterJourneyStudy
+                  ? taskProgress.completed >= taskProgress.total
+                  : dayProgress?.is_completed === true;
+              const wisdomOverviewText = stripWisdomOverviewHeading(day.devotional_text);
+              const wisdomTaskKey = (task: WisdomTaskKey) => `${day.day_number}:${task}`;
               const wisdomStatusPill = (done: boolean) => (
                 <span
                   className={`shrink-0 rounded-full px-3 py-1 text-[11px] font-black uppercase tracking-[0.14em] ${
@@ -1579,13 +1631,21 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
               );
               const wisdomTaskSummaryClass =
                 "flex w-full cursor-pointer list-none items-center gap-3 px-4 py-4 text-left transition hover:bg-[var(--bb-surface-soft,#f8fbff)]";
+              const wisdomTaskCardClass = (done: boolean) =>
+                `overflow-hidden rounded-[24px] border shadow-[0_10px_24px_rgba(15,23,42,0.05)] transition ${
+                  done
+                    ? "border-emerald-300 bg-emerald-50"
+                    : "border-[var(--bb-card-border,#dbe7f4)] bg-white"
+                }`;
 
               return (
                 <div
                   key={day.id}
                   className={`overflow-hidden rounded-lg border transition ${
                     isCompleted
-                      ? "bg-[#eaf5ff] border-[#b9dcf4]"
+                      ? isWisdomOfProverbs
+                        ? "border-emerald-300 bg-emerald-50"
+                        : "bg-[#eaf5ff] border-[#b9dcf4]"
                       : isUnlocked
                       ? "bg-white border-gray-200"
                       : "bg-gray-50 border-gray-200 opacity-60"
@@ -1593,7 +1653,17 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                 >
                   <button
                     type="button"
-                    onClick={() => setExpandedDayNumber((current) => (current === day.day_number ? null : day.day_number))}
+                    onClick={() => {
+                      setExpandedDayNumber((current) => {
+                        const next = current === day.day_number ? null : day.day_number;
+                        if (next === null) {
+                          setExpandedWisdomTask(null);
+                        } else if (isWisdomOfProverbs) {
+                          setExpandedWisdomTask(`${day.day_number}:overview`);
+                        }
+                        return next;
+                      });
+                    }}
                     disabled={!isUnlocked}
                     className={`w-full text-left px-4 py-3 transition ${
                       isUnlocked ? "hover:bg-blue-50 hover:border-blue-300 cursor-pointer" : "cursor-not-allowed"
@@ -1622,16 +1692,38 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                             />
                           </svg>
                         )}
-                        {isChapterJourneyStudy && isCompleted ? (
-                          <span className="font-semibold text-[#2f6685]">? Complete</span>
+                        {isWisdomOfProverbs ? (
+                          <span className="flex shrink-0 items-center gap-2">
+                            <span
+                              className={`text-sm font-black ${
+                                isCompleted ? "text-emerald-700" : "text-[var(--bb-text-secondary,#5f6368)]"
+                              }`}
+                            >
+                              {displayedTaskProgress.completed}/{displayedTaskProgress.total} completed
+                            </span>
+                            <span className="flex items-center gap-1" aria-hidden="true">
+                              {Array.from({ length: WISDOM_TASK_TOTAL }).map((_, taskIndex) => (
+                                <span
+                                  key={taskIndex}
+                                  className={`h-2.5 w-2.5 rounded-full ${
+                                    taskIndex < wisdomCompletedCount
+                                      ? "bg-emerald-500"
+                                      : "bg-[var(--bb-surface-soft,#eaf1f7)]"
+                                  }`}
+                                />
+                              ))}
+                            </span>
+                          </span>
+                        ) : isChapterJourneyStudy && isCompleted ? (
+                          <span className="font-semibold text-[#2f6685]">Complete</span>
                         ) : isChapterJourneyStudy && isUnlocked ? (
                           <span className="text-sm font-semibold text-gray-600">
-                            {taskProgress.completed}/{taskProgress.total} complete
+                            {displayedTaskProgress.completed}/{displayedTaskProgress.total} completed
                             {remainingTasks > 0 ? `, ${remainingTasks} task${remainingTasks === 1 ? "" : "s"} left` : ""}
                           </span>
                         ) : null}
                         {isCompleted && !isChapterJourneyStudy && (
-                          <span className="font-semibold text-[#2f6685]">? Complete</span>
+                          <span className="font-semibold text-[#2f6685]">Complete</span>
                         )}
                       </div>
                     </div>
@@ -1641,8 +1733,19 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                     <div className="border-t border-[var(--bb-card-border,#dbe7f4)] bg-white px-4 py-4">
                       {isWisdomOfProverbs ? (
                         <div className="space-y-3">
-                          <details className="overflow-hidden rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-white shadow-[0_10px_24px_rgba(15,23,42,0.05)]">
-                            <summary className={wisdomTaskSummaryClass}>
+                          <details
+                            open={expandedWisdomTask === wisdomTaskKey("overview")}
+                            className={wisdomTaskCardClass(wisdomBigPictureDone)}
+                          >
+                            <summary
+                              className={wisdomTaskSummaryClass}
+                              onClick={(event) => {
+                                event.preventDefault();
+                                setExpandedWisdomTask((current) =>
+                                  current === wisdomTaskKey("overview") ? null : wisdomTaskKey("overview"),
+                                );
+                              }}
+                            >
                               <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--bb-surface-soft,#eef4f8)] text-[var(--bb-accent,#0b63f6)]">
                                 <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                                   <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
@@ -1650,14 +1753,24 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                                 </svg>
                               </span>
                               <span className="min-w-0 flex-1">
-                                <span className="block text-lg font-black leading-tight text-[var(--bb-text-primary,#111827)]">The Big Picture</span>
+                                <span className="block text-lg font-black leading-tight text-[var(--bb-text-primary,#111827)]">Overview</span>
                                 <span className="mt-1 block text-sm leading-5 text-[var(--bb-text-secondary,#5f6368)]">Start with the cinematic overview.</span>
                               </span>
                               {wisdomStatusPill(wisdomBigPictureDone)}
                             </summary>
                             <div className="border-t border-[var(--bb-card-border,#dbe7f4)] px-4 py-4 text-sm leading-7 text-[var(--bb-text-secondary,#5f6368)]">
+                              {day.day_number === 1 ? (
+                                <BrowserTtsButton
+                                  text={wisdomOverviewText}
+                                  label="Listen to Overview"
+                                  backgroundMusicSrcs={BIBLE_READING_BACKGROUND_TRACKS}
+                                  backgroundMusicVolume={BIBLE_READING_BACKGROUND_VOLUME}
+                                  className="mb-5"
+                                  aiDisclosure
+                                />
+                              ) : null}
                               <ChapterNotesMarkdown compactMobile databaseTermMode="light">
-                                {day.devotional_text}
+                                {wisdomOverviewText}
                               </ChapterNotesMarkdown>
                               <button
                                 type="button"
@@ -1673,8 +1786,19 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                             </div>
                           </details>
 
-                          <details className="overflow-hidden rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-white shadow-[0_10px_24px_rgba(15,23,42,0.05)]">
-                            <summary className={wisdomTaskSummaryClass}>
+                          <details
+                            open={expandedWisdomTask === wisdomTaskKey("reading")}
+                            className={wisdomTaskCardClass(wisdomReadingDone)}
+                          >
+                            <summary
+                              className={wisdomTaskSummaryClass}
+                              onClick={(event) => {
+                                event.preventDefault();
+                                setExpandedWisdomTask((current) =>
+                                  current === wisdomTaskKey("reading") ? null : wisdomTaskKey("reading"),
+                                );
+                              }}
+                            >
                               <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--bb-surface-soft,#eef4f8)] text-[var(--bb-accent,#0b63f6)]">
                                 <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                                   <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
@@ -1693,12 +1817,12 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                                   key={planReaderSrc}
                                   title={`${day.bible_reading_book} ${day.bible_reading_chapter}`}
                                   src={planReaderSrc}
-                                  loading="lazy"
+                                  loading="eager"
                                   style={{ height: `${readerFrameHeight}px` }}
                                   className="w-full border-0 bg-[var(--bb-background,#f8fbff)]"
                                 />
                               </div>
-                              <div className="border-t border-[var(--bb-card-border,#dbe7f4)] bg-white px-4 py-4">
+                              <div className="border-t border-[var(--bb-card-border,#dbe7f4)] bg-transparent px-4 py-4">
                                 <button
                                   type="button"
                                   disabled={wisdomReadingDone || readerChapterMarking}
@@ -1721,8 +1845,19 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                             </div>
                           </details>
 
-                          <details className="overflow-hidden rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-white shadow-[0_10px_24px_rgba(15,23,42,0.05)]">
-                            <summary className={wisdomTaskSummaryClass}>
+                          <details
+                            open={expandedWisdomTask === wisdomTaskKey("trivia")}
+                            className={wisdomTaskCardClass(wisdomTriviaDone)}
+                          >
+                            <summary
+                              className={wisdomTaskSummaryClass}
+                              onClick={(event) => {
+                                event.preventDefault();
+                                setExpandedWisdomTask((current) =>
+                                  current === wisdomTaskKey("trivia") ? null : wisdomTaskKey("trivia"),
+                                );
+                              }}
+                            >
                               <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--bb-surface-soft,#eef4f8)] text-[var(--bb-accent,#0b63f6)]">
                                 <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                                   <circle cx="12" cy="12" r="9" />
@@ -1743,13 +1878,32 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                                 chapter={wisdomTriviaConfig.triviaPack!}
                                 compact
                                 skipUpgradeGate
-                                enableDashboardSkip
+                                hideSkipButton
+                                onComplete={() => {
+                                  setCompletedTriviaDayNumbers((previous) => {
+                                    const next = new Set(previous);
+                                    next.add(day.day_number);
+                                    return next;
+                                  });
+                                  updateWisdomTaskProgress(day.day_number, { trivia: true });
+                                }}
                               />
                             </div>
                           </details>
 
-                          <details className="overflow-hidden rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-white shadow-[0_10px_24px_rgba(15,23,42,0.05)]">
-                            <summary className={wisdomTaskSummaryClass}>
+                          <details
+                            open={expandedWisdomTask === wisdomTaskKey("discussion")}
+                            className={wisdomTaskCardClass(wisdomDiscussionDone)}
+                          >
+                            <summary
+                              className={wisdomTaskSummaryClass}
+                              onClick={(event) => {
+                                event.preventDefault();
+                                setExpandedWisdomTask((current) =>
+                                  current === wisdomTaskKey("discussion") ? null : wisdomTaskKey("discussion"),
+                                );
+                              }}
+                            >
                               <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--bb-surface-soft,#eef4f8)] text-[var(--bb-accent,#0b63f6)]">
                                 <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                                   <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z" />
@@ -1772,6 +1926,23 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                                   placeholderText="Start typing your thoughts..."
                                   submitButtonText="Post Comment"
                                   variant="plain"
+                                  onPosted={() => {
+                                    setCompletedDiscussionDayNumbers((previous) => {
+                                      const next = new Set(previous);
+                                      next.add(day.day_number);
+                                      return next;
+                                    });
+                                    updateWisdomTaskProgress(day.day_number, { discussion: true });
+                                  }}
+                                  onUserHasPosted={() => {
+                                    setCompletedDiscussionDayNumbers((previous) => {
+                                      if (previous.has(day.day_number)) return previous;
+                                      const next = new Set(previous);
+                                      next.add(day.day_number);
+                                      return next;
+                                    });
+                                    updateWisdomTaskProgress(day.day_number, { discussion: true });
+                                  }}
                                 />
                               </div>
                             </div>
@@ -1780,7 +1951,10 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                           <div className="flex justify-end pt-1">
                             <button
                               type="button"
-                              onClick={() => setExpandedDayNumber(null)}
+                              onClick={() => {
+                                setExpandedDayNumber(null);
+                                setExpandedWisdomTask(null);
+                              }}
                               className="rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-white px-4 py-2 text-sm font-semibold text-[var(--bb-text-primary,#111827)] transition hover:bg-gray-50"
                             >
                               Close

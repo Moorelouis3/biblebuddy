@@ -61,6 +61,7 @@ export default function BrowserTtsButton({
   const indexRef = useRef(0);
   const ownsSpeechRef = useRef(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const speechBackgroundAudioRef = useRef<HTMLAudioElement | null>(null);
   const lastSavedAudioSecondRef = useRef(-1);
   const lastAudioProgressNotifyMsRef = useRef(0);
   const audioStorageKey = useMemo(() => {
@@ -102,6 +103,7 @@ export default function BrowserTtsButton({
       if (ownsSpeechRef.current && typeof window !== "undefined" && "speechSynthesis" in window) {
         window.speechSynthesis.cancel();
       }
+      stopSpeechBackgroundMusic();
       if (audioRef.current) {
         saveAudioProgress(audioRef.current, { updateState: false });
         audioRef.current.pause();
@@ -165,6 +167,7 @@ export default function BrowserTtsButton({
   function stopSpeech() {
     if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
     window.speechSynthesis.cancel();
+    stopSpeechBackgroundMusic();
     ownsSpeechRef.current = false;
     indexRef.current = 0;
     setSpeaking(false);
@@ -180,6 +183,31 @@ export default function BrowserTtsButton({
     setSpeaking(false);
     setPaused(false);
     setLoading(false);
+  }
+
+  function stopSpeechBackgroundMusic() {
+    if (!speechBackgroundAudioRef.current) return;
+    speechBackgroundAudioRef.current.pause();
+    speechBackgroundAudioRef.current.currentTime = 0;
+    speechBackgroundAudioRef.current = null;
+  }
+
+  async function startSpeechBackgroundMusic() {
+    stopSpeechBackgroundMusic();
+    const tracks = (backgroundMusicSrcs || []).filter(Boolean);
+    if (!tracks.length) return;
+
+    const background = new Audio(tracks[0]);
+    background.loop = true;
+    background.preload = "auto";
+    background.volume = Math.max(0, Math.min(backgroundMusicVolume ?? 0.1, 0.25));
+    speechBackgroundAudioRef.current = background;
+
+    try {
+      await background.play();
+    } catch {
+      stopSpeechBackgroundMusic();
+    }
   }
 
   function seekAudioBy(seconds: number) {
@@ -212,6 +240,7 @@ export default function BrowserTtsButton({
     if (typeof window === "undefined" || !("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) return;
     const nextText = chunksRef.current[startIndex];
     if (!nextText) {
+      stopSpeechBackgroundMusic();
       ownsSpeechRef.current = false;
       indexRef.current = 0;
       setSpeaking(false);
@@ -228,6 +257,7 @@ export default function BrowserTtsButton({
       speakChunk(startIndex + 1);
     };
     utterance.onerror = () => {
+      stopSpeechBackgroundMusic();
       ownsSpeechRef.current = false;
       setSpeaking(false);
       setPaused(false);
@@ -240,12 +270,14 @@ export default function BrowserTtsButton({
 
     if (speaking && !paused) {
       window.speechSynthesis.pause();
+      speechBackgroundAudioRef.current?.pause();
       setPaused(true);
       return;
     }
 
     if (speaking && paused) {
       window.speechSynthesis.resume();
+      void speechBackgroundAudioRef.current?.play().catch(() => undefined);
       setPaused(false);
       return;
     }
@@ -254,6 +286,7 @@ export default function BrowserTtsButton({
     ownsSpeechRef.current = true;
     setSpeaking(true);
     setPaused(false);
+    void startSpeechBackgroundMusic();
     speakChunk(0);
   }
 
