@@ -306,7 +306,8 @@ const chapterPlans: ChapterPlan[] = [
 ];
 
 const cinematicDevotionalTextByChapter: Record<number, string> = {
-  1: `You have probably heard people say Proverbs is a book of wisdom.
+  1: `
+You have probably heard people say Proverbs is a book of wisdom.
 
 That is true.
 
@@ -339,16 +340,16 @@ This is a father speaking to a son.
 
 And not just any father.
 
-### 👑 Solomon is the son of David.
+### Solomon is the son of David.
 
 **The same David who:**
 
-* 🪨 fought Goliath
-* 🎶 wrote songs in the wilderness
-* 👑 ruled Israel
-* 💔 fell deeply into sin
-* 🙏 cried out in repentance
-* ⚔️ led through war, victory, failure, and worship
+* fought Goliath
+* wrote songs in the wilderness
+* ruled Israel
+* fell deeply into sin
+* cried out in repentance
+* led through war, victory, failure, and worship
 
 Solomon grew up watching all of it.
 
@@ -384,7 +385,7 @@ It sounds like a king leaning toward his son saying:
 
 ---
 
-# 📖 What Proverbs Really Is
+# What Proverbs Really Is
 
 Proverbs is not a book of guaranteed promises.
 
@@ -394,10 +395,10 @@ That matters.
 
 **The book teaches:**
 
-* 🌱 patterns
-* 🛣️ paths
-* ⚖️ consequences
-* 👀 discernment
+* patterns
+* paths
+* consequences
+* discernment
 
 **It shows:**
 
@@ -414,16 +415,16 @@ Not a way to control every outcome.
 
 ---
 
-# 🧠 The Point of Proverbs 1 Is This
+# The Point of Proverbs 1 Is This
 
 Solomon opens the book by explaining why wisdom exists.
 
 **Wisdom is meant to:**
 
-* 📚 train the simple
-* 🗡️ sharpen the wise
-* 🛡️ protect the young
-* 👀 teach people how to truly see
+* train the simple
+* sharpen the wise
+* protect the young
+* teach people how to truly see
 
 Then he gives the foundation underneath the entire book:
 
@@ -437,7 +438,7 @@ Reverence for God.
 
 ---
 
-# 🚪 The First Big Choice
+# The First Big Choice
 
 Proverbs 1 introduces two competing voices.
 
@@ -447,20 +448,20 @@ One voice says:
 
 **It offers:**
 
-* 🤝 belonging
-* 💰 quick gain
-* ⚡ excitement
-* 😈 temptation
+* belonging
+* quick gain
+* excitement
+* temptation
 
 But the road ends in destruction.
 
 The other voice is Wisdom herself.
 
-📢 She cries out in the streets.
+She cries out in the streets.
 
-📢 She warns before consequences arrive.
+She warns before consequences arrive.
 
-📢 She calls people while there is still time to listen.
+She calls people while there is still time to listen.
 
 The chapter presses the first big decision:
 
@@ -468,19 +469,19 @@ The chapter presses the first big decision:
 
 ---
 
-# 🔍 What To Watch For In Proverbs 1
+# What To Watch For In Proverbs 1
 
 **As you read, pay attention to:**
 
-* 👂 how often wisdom calls before judgment comes
-* 🚶 the contrast between the path of wisdom and the path of sinners
-* 🧠 how "the fear of the Lord" becomes the foundation for everything else
-* ⚠️ how temptation often sounds exciting before it becomes destructive
-* 📢 how wisdom is not hidden, but ignored
+* how often wisdom calls before judgment comes
+* the contrast between the path of wisdom and the path of sinners
+* how "the fear of the Lord" becomes the foundation for everything else
+* how temptation often sounds exciting before it becomes destructive
+* how wisdom is not hidden, but ignored
 
 ---
 
-# 💡 The Bigger Takeaway
+# The Bigger Takeaway
 
 Proverbs 1 is really about a decision.
 
@@ -490,8 +491,8 @@ Or will you wait until consequences force you to?
 
 Solomon is trying to teach his son something early: wisdom is not just knowing what is right.
 
-Wisdom is choosing it before life humbles you into it.`,
-
+Wisdom is choosing it before life humbles you into it.
+`,
   2: `Imagine Solomon walking with his son before the city is fully awake.
 
 The palace is quiet, but outside its walls the real world is already moving. Merchants are opening stalls. Men are making deals. Young people are choosing friends. Somewhere, temptation is dressing itself up to look harmless. Somewhere else, wisdom is waiting to be searched for.

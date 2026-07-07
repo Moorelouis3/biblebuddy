@@ -2112,6 +2112,7 @@ export default function GroupChatPage() {
   const [postLikers, setPostLikers] = useState<ArticleLikeUser[]>([]);
   const [loadingPostLikers, setLoadingPostLikers] = useState(false);
   const [deepLinkedCommentId, setDeepLinkedCommentId] = useState<string | null>(null);
+  const lastDeepLinkSignatureRef = useRef<string | null>(null);
 
   const homeFeedSeriesPreview = useMemo(() => {
     if (normalizeSeriesTitle(currentSeriesPreview?.title) === "the testing of joseph" && currentSeriesPreview) {
@@ -3121,16 +3122,43 @@ export default function GroupChatPage() {
   useEffect(() => {
     const targetPostId = searchParams.get("post");
     const targetCommentId = searchParams.get("comment");
-    if (!group || !targetPostId) return;
+    if (!group || (!targetPostId && !targetCommentId)) return;
+
+    const deepLinkSignature = `${targetPostId || ""}:${targetCommentId || ""}`;
+    if (lastDeepLinkSignatureRef.current === deepLinkSignature) return;
 
     if (activeTab === "members" || activeTab === "bible_studies" || hubCategories.some((c) => c.id === activeTab)) {
       setActiveTab("home");
       return;
     }
 
-    setDeepLinkedCommentId(targetCommentId);
-    void openFeedPostById(targetPostId);
-    router.replace(`/study-groups/${groupId}/chat`);
+    lastDeepLinkSignatureRef.current = deepLinkSignature;
+
+    const resolveAndOpen = async () => {
+      let resolvedPostId = targetPostId;
+      if (!resolvedPostId && targetCommentId) {
+        const { data: commentRow } = await supabase
+          .from("group_posts")
+          .select("id, parent_post_id")
+          .eq("group_id", group.id)
+          .eq("id", targetCommentId)
+          .maybeSingle<{ id: string; parent_post_id: string | null }>();
+
+        if (commentRow?.parent_post_id) {
+          resolvedPostId = commentRow.parent_post_id;
+        } else {
+          resolvedPostId = commentRow?.id ?? targetCommentId;
+        }
+      }
+
+      setDeepLinkedCommentId(targetCommentId);
+      if (resolvedPostId) {
+        await openFeedPostById(resolvedPostId);
+      }
+      router.replace(`/study-groups/${groupId}/chat`);
+    };
+
+    void resolveAndOpen();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [group, posts, activeTab, hubCategories, searchParams]);
 
