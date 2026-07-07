@@ -502,8 +502,11 @@ This is a powerful chapter for anyone who thinks wisdom should come easily. Solo
 
 The chapter also shows why wisdom matters. It protects. It guards the path. It helps a person recognize crooked speech, dangerous people, and seductive roads before they become traps. Wisdom is not just about sounding deep. It is about surviving the choices that quietly shape your life.
 
-As you read Proverbs 2, see a father teaching his son how to search. Not for gold, not for applause, not for control, but for the kind of understanding God gives to those who value it. Today the chapter asks: are you waiting for wisdom to fall into your lap, or are you willing to seek it like treasure?`,
+There is a fatherly urgency underneath all of it. Solomon is not sitting back and hoping his son catches wisdom by osmosis. He is urging him to build a life that receives correction early, treasures instruction while it is still available, and learns to listen before trouble starts speaking first.
 
+By the time this chapter ends, wisdom feels less like a nice idea and more like a shelter. It is something a person runs toward because the road ahead already has cliffs and pits hidden in it. Proverbs 2 wants the reader to feel that urgency before the temptation arrives, not after.
+
+As you read Proverbs 2, see a father teaching his son how to search. Not for gold, not for applause, not for control, but for the kind of understanding God gives to those who value it. Today the chapter asks: are you waiting for wisdom to fall into your lap, or are you willing to seek it like treasure?`,
   3: `Now picture Solomon standing at the edge of the royal court with his son beside him.
 
 People are coming with questions. Disputes need answers. Money must be managed. Alliances must be weighed. The young prince can see how much a king has to decide. Every day will bring moments where he can lean on his own instincts or acknowledge the Lord.
@@ -1105,24 +1108,27 @@ const studyIntroDetailsByChapter: Record<number, StudyIntroDetail> = {
   },
   2: {
     opening:
-      "Proverbs 2 opens like Solomon is taking his son on a search before the city wakes up. Wisdom is not treated like something lying on the ground. It is treasure that has to be wanted, pursued, and stored in the heart before pressure arrives.",
+      "Proverbs 2 opens like Solomon is taking his son on a search before the city wakes up. Wisdom is not treated like something lying on the ground. It is treasure that has to be wanted, pursued, and stored in the heart before pressure arrives. The whole chapter has that feeling of a father leaning in close because he knows the streets will get louder soon. Solomon is not giving his son a quick moral slogan. He is teaching him how to become the kind of man who looks for wisdom early, before the day is full of noise. That makes this chapter feel more like formation than information.",
     beginsWith: [
       "a son being told to receive and treasure wise words",
       "wisdom pictured as something to seek like hidden treasure",
       "God as the giver of understanding",
       "the first hints that wisdom protects a person's path",
+      "a father warning his son before the danger shows up",
+      "wisdom as something worth effort, not something casual",
     ],
     matters:
-      "This chapter helps readers understand that wisdom does not usually become part of a person by accident. Solomon is preparing his son to search before temptation speaks, before crooked people persuade him, and before desire starts pulling him toward the wrong road.",
-    givesUs: ["🔍 pursuit", "💎 treasure", "🛡️ protection", "🚶 two paths", "👂 a heart trained to listen"],
+      "This chapter helps readers understand that wisdom does not usually become part of a person by accident. Solomon is preparing his son to search before temptation speaks, before crooked people persuade him, and before desire starts pulling him toward the wrong road. He wants the search to begin early, while the heart is still teachable and the path is still changeable.",
+    givesUs: ["🔍 pursuit", "💎 treasure", "🛡️ protection", "🚶 two paths", "👂 a heart trained to listen", "🧠 a son trained before pressure comes"],
     watchFor: [
       "how often Solomon uses active words like receive, cry out, seek, and search",
       "how wisdom is connected to God, not just good advice",
       "how the chapter shows protection before it shows danger in full",
       "how the son is being trained before the real test arrives",
+      "how wisdom becomes a shelter instead of just a slogan",
     ],
     takeaway:
-      "Proverbs 2 is about wanting wisdom enough to go after it. Before the chapter warns you about dangerous paths, it asks whether wisdom has become valuable enough for you to seek.",
+      "Proverbs 2 is about wanting wisdom enough to go after it. Before the chapter warns you about dangerous paths, it asks whether wisdom has become valuable enough for you to seek. It turns desire into discipline and turns discipline into protection.",
   },
   3: {
     opening:
