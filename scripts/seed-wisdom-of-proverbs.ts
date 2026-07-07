@@ -1770,6 +1770,10 @@ const studyIntroDetailsByChapter: Record<number, StudyIntroDetail> = {
 };
 
 function buildProverbsStudyIntro(day: ChapterPlan) {
+  if (day.chapter === 1) {
+    return buildCinematicDevotionalText(day.chapter);
+  }
+
   const detail = studyIntroDetailsByChapter[day.chapter];
   if (!detail) return buildCinematicDevotionalText(day.chapter);
   const cinematicDepth = cinematicDepthByChapter[day.chapter]?.trim();
