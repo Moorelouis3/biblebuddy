@@ -39,7 +39,7 @@ function getPreviewDescription(title: string, fallback: string): string {
     "Women of the Bible":
       "This Bible study follows the lives of women who stood in pain, pressure, courage, grief, wisdom, and faith across the whole Bible story. Some were queens, some were mothers, some were outsiders, and some were nearly forgotten by the people around them. But every one of them reveals something important about how God works through real lives, not perfect ones. Their stories hold heartbreak, bravery, loss, loyalty, and redemption. As you move through each day, you begin to see that these women were never side notes in Scripture. They carried moments that shaped the story of God's people in lasting ways.",
     "The Wisdom of Proverbs":
-      "Proverbs is not just random one-liners.\n\nIt is a 31-chapter guide for real life when emotions, pressure, money, pride, relationships, and temptation all pull at once.\n\nEach chapter keeps everything centered on one passage:\n\n📖 Bible reading\n📝 Study notes\n🎯 Trivia\n🧩 Scrambled\n💬 Reflection\n\nThis journey helps you see the difference between what looks smart for a moment and what is actually wise before God.\n\nIf you want clearer thinking, steadier decisions, and a stronger grip on everyday faithfulness, Proverbs gives you that path.",
+      "The book of Proverbs is a practical guide to living with wisdom. Over the next 31 days, you'll read one chapter each day while learning how God's wisdom applies to everyday life.\n\nEach day includes:\n\n📖 The full Bible chapter for that day\n📝 Easy to understand study notes that explain the passage\n🎯 Five trivia questions to test what you learned\n💬 A discussion question to help you reflect and apply the chapter to your own life\n\nWhether you're reading Proverbs for the first time or studying it again, this plan will help you understand its wisdom one chapter at a time and grow in your walk with God.",
     "The Faith of Job":
       "Job's story begins with blessing and stability, then everything breaks almost at once. Family, health, security, and peace are ripped away, and what remains is a man trying to understand God in the middle of pain that feels far beyond explanation. This Bible study walks you through the grief, questions, arguments, silence, and eventual awe that shape Job's life. It is not a shallow lesson about staying positive. It is a serious story about suffering, faith, and what it means to keep bringing your pain back to God when answers feel far away. If you have ever wrestled with why hard things happen, Job's story goes straight there.",
     "The Calling of Moses":
@@ -1948,18 +1948,6 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                             </div>
                           </details>
 
-                          <div className="flex justify-end pt-1">
-                            <button
-                              type="button"
-                              onClick={() => {
-                                setExpandedDayNumber(null);
-                                setExpandedWisdomTask(null);
-                              }}
-                              className="rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-white px-4 py-2 text-sm font-semibold text-[var(--bb-text-primary,#111827)] transition hover:bg-gray-50"
-                            >
-                              Close
-                            </button>
-                          </div>
                         </div>
                       ) : (
                         <>
