@@ -249,12 +249,12 @@ export default function ChapterNotesMarkdown({
       <ReactMarkdown
         components={{
           h1: ({ children, ...props }) => (
-            <h1 className="mb-4 mt-7 text-2xl font-black leading-tight tracking-normal text-[var(--bb-text-primary,#111827)] first:mt-0 md:text-3xl" {...props}>
+            <h1 className="mb-4 mt-8 text-3xl font-black leading-tight tracking-normal text-[var(--bb-text-primary,#111827)] first:mt-0 md:text-4xl" {...props}>
               {enrichMarkdownChildren(children, childRenderOptions)}
             </h1>
           ),
           h2: ({ children, ...props }) => (
-            <h2 className="mb-3 mt-8 border-b border-[var(--bb-card-border,#e5e7eb)] pb-2 text-xl font-black leading-tight tracking-normal text-[var(--bb-text-primary,#111827)] md:text-2xl" {...props}>
+            <h2 className="mb-3 mt-9 border-b border-[var(--bb-card-border,#e5e7eb)] pb-2 text-2xl font-black leading-tight tracking-normal text-[var(--bb-text-primary,#111827)] md:text-[1.8rem]" {...props}>
               {enrichMarkdownChildren(children, childRenderOptions)}
             </h2>
           ),

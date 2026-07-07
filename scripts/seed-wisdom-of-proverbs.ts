@@ -1,4 +1,4 @@
-// Seed or update "The Wisdom of Proverbs" as a 31-day chapter-based devotional.
+﻿// Seed or update "The Wisdom of Proverbs" as a 31-day chapter-based devotional.
 // Run with: npx tsx scripts/seed-wisdom-of-proverbs.ts
 console.log("Executing: scripts/seed-wisdom-of-proverbs.ts");
 
@@ -307,8 +307,7 @@ const chapterPlans: ChapterPlan[] = [
 
 const cinematicDevotionalTextByChapter: Record<number, string> = {
   1: `
-📖 Day 1 of The Wisdom of Proverbs
-💎 What Kind of Book Is Proverbs?
+# What Kind of Book Is Proverbs?
 
 You have probably heard people say that Proverbs is a book of wisdom.
 
@@ -330,29 +329,26 @@ It reveals the kinds of choices that normally lead toward wisdom...
 
 and the kinds of choices that usually lead toward pain.
 
-Proverbs teaches:
+**Proverbs teaches:**
 
-🛤️ Patterns
-
-💡 Wisdom
-
-⚖️ Consequences
-
-👀 Discernment
+* 🛤️ Patterns
+* 💡 Wisdom
+* ⚖️ Consequences
+* 👀 Discernment
 
 It is the difference between saying:
 
-"Do this once and God owes you success."
+> "Do this once and God owes you success."
 
 and saying:
 
-"Walk this road long enough and it will shape who you become."
+> "Walk this road long enough and it will shape who you become."
 
 Proverbs isn't giving formulas.
 
 It's teaching you how to live wisely.
 
-👑 Meet the Author
+## Meet the Author
 
 Before Proverbs gives hundreds of wise sayings...
 
@@ -364,29 +360,21 @@ The son of David.
 
 The same David who:
 
-🪨 Defeated Goliath
-
-🎵 Wrote many of the Psalms
-
-👑 Became king over Israel
-
-💔 Fell deeply into sin
-
-🙏 Repented before God
-
-⚔️ Led through victory, failure, worship, and war
+* 🪨 Defeated Goliath
+* 🎵 Wrote many of the Psalms
+* 👑 Became king over Israel
+* 💔 Fell deeply into sin
+* 🙏 Repented before God
+* ⚔️ Led through victory, failure, worship, and war
 
 Solomon grew up watching all of it.
 
 He inherited:
 
-👑 A throne
-
-🌍 A kingdom
-
-📜 A legacy
-
-⚖️ The responsibility of leading God's people
+* 👑 A throne
+* 🌍 A kingdom
+* 📜 A legacy
+* ⚖️ The responsibility of leading God's people
 
 When Solomon became king, God gave him extraordinary wisdom.
 
@@ -396,13 +384,10 @@ Yet Solomon's own heart would later drift from God.
 
 He was pulled away by:
 
-❤️ Divided loyalties
-
-🤝 Compromise
-
-🌎 Foreign influences
-
-📉 Spiritual drift
+* ❤️ Divided loyalties
+* 🤝 Compromise
+* 🌎 Foreign influences
+* 📉 Spiritual drift
 
 That makes Proverbs even more powerful.
 
@@ -412,7 +397,7 @@ It's wisdom from someone who knew both the blessings of following God...
 
 and the pain of ignoring Him.
 
-🎯 Why Proverbs Was Written
+## Why Proverbs Was Written
 
 Proverbs doesn't begin with random wise sayings.
 
@@ -420,21 +405,17 @@ Solomon first explains why wisdom matters.
 
 He says wisdom is meant to:
 
-🌱 Train the inexperienced
-
-🧠 Sharpen the wise
-
-🛡️ Protect the young
-
-👀 Teach discernment
-
-❤️ Shape your character
+* 🌱 Train the inexperienced
+* 🧠 Sharpen the wise
+* 🛡️ Protect the young
+* 👀 Teach discernment
+* ❤️ Shape your character
 
 Then he gives the foundation for the entire book.
 
-"The fear of the Lord is the beginning of knowledge."
+> **"The fear of the Lord is the beginning of knowledge."**
 
-Everything else in Proverbs grows from that one truth.
+Everything else in Proverbs grows out of that one truth.
 
 Not intelligence.
 
@@ -444,29 +425,26 @@ Not success.
 
 Everything begins with reverence for God.
 
-🚶 Two Voices Compete for Your Heart
+## Two Voices Compete for Your Heart
 
 Proverbs 1 introduces two very different voices.
 
-🌑 The Voice of Temptation
+### The Voice of Temptation
 
 It says:
 
-"Come with us."
+> "Come with us."
 
 It promises:
 
-🤝 Acceptance
-
-💰 Quick gain
-
-🎉 Excitement
-
-🔥 Easy pleasure
+* 🤝 Acceptance
+* 💰 Quick gain
+* 🎉 Excitement
+* 🔥 Easy pleasure
 
 But it never tells you where that road ends.
 
-💎 The Voice of Wisdom
+### The Voice of Wisdom
 
 Wisdom also calls out.
 
@@ -482,23 +460,19 @@ She invites them to choose a better path while there is still time.
 
 The entire chapter asks one important question:
 
-"Whose voice will you listen to?"
+> "Whose voice will you listen to?"
 
-👀 What To Watch For In Proverbs 1
+## What To Watch For In Proverbs 1
 
 As you read, pay attention to:
 
-📢 How wisdom calls before judgment comes
+* 📢 How wisdom calls before judgment comes
+* ⚖️ The contrast between wisdom and foolishness
+* 🙏 Why the fear of the Lord is the foundation of true knowledge
+* 🎭 How temptation often looks attractive before it becomes destructive
+* 🛤️ How every choice begins leading you down a path
 
-⚖️ The contrast between wisdom and foolishness
-
-🙏 Why the fear of the Lord is the foundation of true knowledge
-
-🎭 How temptation often looks attractive before it becomes destructive
-
-🛤️ How every choice begins leading you down a path
-
-🌟 The Bigger Takeaway
+## The Bigger Takeaway
 
 Proverbs 1 is really about one decision.
 
@@ -1940,3 +1914,4 @@ main().catch((error) => {
   console.error(error);
   process.exit(1);
 });
+
