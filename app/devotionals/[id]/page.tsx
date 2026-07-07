@@ -1629,12 +1629,16 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                   {done ? "Done" : "Not Done"}
                 </span>
               );
-              const wisdomTaskSummaryClass =
-                "flex w-full cursor-pointer list-none items-center gap-3 px-4 py-4 text-left transition hover:bg-[var(--bb-surface-soft,#f8fbff)]";
-              const wisdomTaskCardClass = (done: boolean) =>
+              const wisdomTaskSummaryClass = (done: boolean) =>
+                `flex w-full cursor-pointer list-none items-center gap-3 px-4 py-4 text-left transition ${
+                  done ? "bg-emerald-50 hover:bg-emerald-100" : "hover:bg-[var(--bb-surface-soft,#f8fbff)]"
+                }`;
+              const wisdomTaskCardClass = (done: boolean, open: boolean) =>
                 `overflow-hidden rounded-[24px] border shadow-[0_10px_24px_rgba(15,23,42,0.05)] transition ${
                   done
-                    ? "border-emerald-300 bg-emerald-50"
+                    ? open
+                      ? "border-emerald-300 bg-white"
+                      : "border-emerald-300 bg-emerald-50"
                     : "border-[var(--bb-card-border,#dbe7f4)] bg-white"
                 }`;
 
@@ -1735,10 +1739,10 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                         <div className="space-y-3">
                           <details
                             open={expandedWisdomTask === wisdomTaskKey("overview")}
-                            className={wisdomTaskCardClass(wisdomBigPictureDone)}
+                            className={wisdomTaskCardClass(wisdomBigPictureDone, expandedWisdomTask === wisdomTaskKey("overview"))}
                           >
                             <summary
-                              className={wisdomTaskSummaryClass}
+                              className={wisdomTaskSummaryClass(wisdomBigPictureDone)}
                               onClick={(event) => {
                                 event.preventDefault();
                                 setExpandedWisdomTask((current) =>
@@ -1758,7 +1762,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                               </span>
                               {wisdomStatusPill(wisdomBigPictureDone)}
                             </summary>
-                            <div className="border-t border-[var(--bb-card-border,#dbe7f4)] px-4 py-4 text-sm leading-7 text-[var(--bb-text-secondary,#5f6368)]">
+                            <div className="border-t border-[var(--bb-card-border,#dbe7f4)] bg-white px-4 py-4 text-sm leading-7 text-[var(--bb-text-secondary,#5f6368)]">
                               {day.day_number === 1 ? (
                                 <BrowserTtsButton
                                   text={wisdomOverviewText}
@@ -1788,10 +1792,10 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
 
                           <details
                             open={expandedWisdomTask === wisdomTaskKey("reading")}
-                            className={wisdomTaskCardClass(wisdomReadingDone)}
+                            className={wisdomTaskCardClass(wisdomReadingDone, expandedWisdomTask === wisdomTaskKey("reading"))}
                           >
                             <summary
-                              className={wisdomTaskSummaryClass}
+                              className={wisdomTaskSummaryClass(wisdomReadingDone)}
                               onClick={(event) => {
                                 event.preventDefault();
                                 setExpandedWisdomTask((current) =>
@@ -1847,10 +1851,10 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
 
                           <details
                             open={expandedWisdomTask === wisdomTaskKey("trivia")}
-                            className={wisdomTaskCardClass(wisdomTriviaDone)}
+                            className={wisdomTaskCardClass(wisdomTriviaDone, expandedWisdomTask === wisdomTaskKey("trivia"))}
                           >
                             <summary
-                              className={wisdomTaskSummaryClass}
+                              className={wisdomTaskSummaryClass(wisdomTriviaDone)}
                               onClick={(event) => {
                                 event.preventDefault();
                                 setExpandedWisdomTask((current) =>
@@ -1871,7 +1875,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                               </span>
                               {wisdomStatusPill(wisdomTriviaDone)}
                             </summary>
-                            <div className="border-t border-[var(--bb-card-border,#dbe7f4)] px-4 py-4">
+                            <div className="border-t border-[var(--bb-card-border,#dbe7f4)] bg-white px-4 py-4">
                               <TriviaGamePlayer
                                 bookName={day.bible_reading_book}
                                 bookSlug={wisdomTriviaConfig.triviaRouteSlug}
@@ -1893,10 +1897,10 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
 
                           <details
                             open={expandedWisdomTask === wisdomTaskKey("discussion")}
-                            className={wisdomTaskCardClass(wisdomDiscussionDone)}
+                            className={wisdomTaskCardClass(wisdomDiscussionDone, expandedWisdomTask === wisdomTaskKey("discussion"))}
                           >
                             <summary
-                              className={wisdomTaskSummaryClass}
+                              className={wisdomTaskSummaryClass(wisdomDiscussionDone)}
                               onClick={(event) => {
                                 event.preventDefault();
                                 setExpandedWisdomTask((current) =>
@@ -1915,7 +1919,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                               </span>
                               {wisdomStatusPill(wisdomDiscussionDone)}
                             </summary>
-                            <div className="border-t border-[var(--bb-card-border,#dbe7f4)] px-4 py-4">
+                            <div className="border-t border-[var(--bb-card-border,#dbe7f4)] bg-white px-4 py-4">
                               <p className="text-sm font-bold text-[var(--bb-text-primary,#111827)]">
                                 {day.reflection_question || `What stood out to you most in Day ${day.day_number}?`}
                               </p>
