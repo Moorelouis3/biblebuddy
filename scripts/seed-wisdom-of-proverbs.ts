@@ -494,32 +494,600 @@ Because wisdom isn't simply knowing what is right.
 
 Wisdom is choosing God's voice before the world convinces you to follow another.
 `,
-  2: `Imagine Solomon walking with his son before the city is fully awake.
+  2: `
+# Wisdom Is Something You Chase
 
-The palace is quiet, but outside its walls the real world is already moving. Merchants are opening stalls. Men are making deals. Young people are choosing friends. Somewhere, temptation is dressing itself up to look harmless. Somewhere else, wisdom is waiting to be searched for.
+Have you ever wished God would just tell you exactly what to do?
 
-That is the feel of Proverbs 2. Solomon does not describe wisdom like loose change on the ground. He talks about it like buried treasure. His son will not stumble into it by accident. He must incline his ear, call out, seek, and search.
+Maybe you're trying to figure out your career. Maybe you're praying about a relationship. Maybe you're wondering why a certain door closed or whether you should step through the next one that's opening.
 
-This is a powerful chapter for anyone who thinks wisdom should come easily. Solomon is saying, "Son, the throne will give you access to power, but power will not make you wise. You have to want wisdom enough to dig for it."
+We've all had those moments where we wished God would simply write the answer across the sky.
 
-The chapter also shows why wisdom matters. It protects. It guards the path. It helps a person recognize crooked speech, dangerous people, and seductive roads before they become traps. Wisdom is not just about sounding deep. It is about surviving the choices that quietly shape your life.
+Proverbs 2 reminds us that God usually works differently.
 
-There is a fatherly urgency underneath all of it. Solomon is not sitting back and hoping his son catches wisdom by osmosis. He is urging him to build a life that receives correction early, treasures instruction while it is still available, and learns to listen before trouble starts speaking first.
+Instead of handing us every answer, He teaches us how to become wise enough to recognize the right path.
 
-By the time this chapter ends, wisdom feels less like a nice idea and more like a shelter. It is something a person runs toward because the road ahead already has cliffs and pits hidden in it. Proverbs 2 wants the reader to feel that urgency before the temptation arrives, not after.
+That's the heart of this chapter.
 
-As you read Proverbs 2, see a father teaching his son how to search. Not for gold, not for applause, not for control, but for the kind of understanding God gives to those who value it. Today the chapter asks: are you waiting for wisdom to fall into your lap, or are you willing to seek it like treasure?`,
-  3: `Now picture Solomon standing at the edge of the royal court with his son beside him.
+In Proverbs 1, Solomon explained **why wisdom is valuable.** In Proverbs 2, he explains **how you find it.**
 
-People are coming with questions. Disputes need answers. Money must be managed. Alliances must be weighed. The young prince can see how much a king has to decide. Every day will bring moments where he can lean on his own instincts or acknowledge the Lord.
+And the answer may surprise you.
 
-That is where Proverbs 3 lives. It is not advice for a quiet life with no pressure. It is wisdom for someone who will be tempted to trust his own heart, his own rank, his own intelligence, and his own resources.
+You don't stumble into wisdom.
 
-Solomon tells his son not to forget teaching, not to let mercy and truth leave him, and not to lean on his own understanding. That line is famous because it reaches into every age. But in the scene of Proverbs, it is a father warning a future king: "Your understanding is not big enough to carry your life by itself."
+You pursue it.
 
-This chapter also brings wisdom into money, correction, peace, sleep, and how you treat your neighbor. It shows that trusting God is not a slogan. It becomes visible in ordinary decisions.
+God doesn't force wisdom on anyone. He invites us to seek it. To ask questions. To read His Word. To pray. To listen. To keep showing up even on the days when we don't feel like it.
 
-As you read Proverbs 3, imagine Solomon trying to teach his son the relief of not having to be his own god. The Lord can direct paths the prince cannot see yet. Wisdom begins when the heart bows before it acts.`,
+The people who grow the most spiritually usually aren't the people with the highest IQ or the most Bible knowledge.
+
+They're the people who never stop seeking God.
+
+✨ Wisdom isn't about knowing everything.
+
+✨ It's about learning to trust the One who does.
+
+That changes everything.
+
+---
+
+# Wisdom Is Worth Searching For
+
+Solomon compares wisdom to hidden treasure.
+
+Think about that picture for a moment.
+
+If someone told you there was a chest filled with gold buried somewhere in your backyard, would you dig for five minutes and then give up?
+
+Of course not.
+
+You'd keep digging because you know what's waiting is worth every bit of effort.
+
+That's exactly how Solomon says we should approach God's wisdom.
+
+Sometimes we open the Bible expecting every chapter to immediately change our lives.
+
+Sometimes it does.
+
+Other times it feels quiet.
+
+You read.
+
+You pray.
+
+You don't feel anything extraordinary.
+
+It's tempting to think, *Maybe I'm not getting anything out of this.*
+
+But that's not how treasure works.
+
+The people who discover treasure are usually the people who keep digging long after everyone else quits.
+
+The same is true spiritually.
+
+Every chapter you read...
+
+Every question you ask...
+
+Every prayer you pray...
+
+Every Sunday you show up...
+
+Every moment you choose God over your own understanding...
+
+You're digging.
+
+Even if you can't see it today, God is shaping your heart.
+
+❤️ One day you'll face a difficult decision and realize God's Word has already prepared you for it.
+
+❤️ One day you'll comfort someone with truth that God quietly planted in your heart months earlier.
+
+❤️ One day you'll look back and realize wisdom wasn't built overnight.
+
+It was built one faithful day at a time.
+
+---
+
+# Where Wisdom Comes From
+
+The world tells us that wisdom comes from intelligence.
+
+Get another degree.
+
+Read another book.
+
+Gain more experience.
+
+Those things are valuable.
+
+But Proverbs reminds us that **knowledge and wisdom aren't the same thing.**
+
+You can know a lot and still make foolish choices.
+
+You can have talent and still destroy your life.
+
+You can be successful and still be empty.
+
+True wisdom comes from God.
+
+That means the greatest source of wisdom isn't Google.
+
+It isn't social media.
+
+It isn't even your own experience.
+
+It's your relationship with your Creator.
+
+When you spend time with Him, something begins to change inside you.
+
+Your priorities begin to shift.
+
+Your desires begin to change.
+
+The things that once seemed important don't seem quite as important anymore.
+
+Instead of asking...
+
+*"What do I want?"*
+
+You begin asking...
+
+*"Lord... what do You want?"*
+
+That's the beginning of real wisdom.
+
+🙏 God doesn't just tell us what's right.
+
+🙏 He helps us become the kind of people who actually want what's right.
+
+That's far more powerful.
+
+---
+
+# Wisdom Protects You Before Trouble Arrives
+
+One of the most beautiful promises in Proverbs 2 is that wisdom protects us.
+
+Think about how many regrets begin with one small decision.
+
+Nobody wakes up planning to ruin their marriage.
+
+Nobody plans to lose the trust of their family.
+
+Nobody plans to become addicted.
+
+Nobody plans to drift away from God.
+
+It usually starts with one compromise.
+
+One excuse.
+
+One moment where we ignore that quiet voice inside saying...
+
+*"Don't go down this road."*
+
+Wisdom helps you hear that voice before it's too late.
+
+It teaches you to slow down.
+
+To think before reacting.
+
+To pray before deciding.
+
+To ask, *"Where will this choice lead me six months from now? Five years from now?"*
+
+God isn't trying to limit your freedom.
+
+He's protecting your future.
+
+Every command He gives flows from His love.
+
+Every warning He gives comes from His desire to spare you unnecessary pain.
+
+Sometimes the greatest miracle isn't that God rescues us after we've fallen.
+
+Sometimes it's that His wisdom keeps us from falling in the first place.
+
+---
+
+# Two Dangerous Paths
+
+Solomon warns about two kinds of temptation.
+
+The first is people who enjoy doing evil and encourage others to join them.
+
+Have you noticed how rarely people sin alone?
+
+Misery loves company.
+
+Bad decisions often come with bad advice.
+
+That's why the people around you matter so much.
+
+The second warning is about the immoral woman.
+
+This isn't simply about sexual temptation.
+
+It's about anything that promises immediate pleasure while quietly leading you away from God's best.
+
+Temptation rarely looks dangerous.
+
+It looks exciting.
+
+It looks harmless.
+
+It looks fun.
+
+It whispers...
+
+*"Just this once."*
+
+*"Nobody will know."*
+
+*"You deserve this."*
+
+That's why wisdom matters so much.
+
+It helps you see beyond the moment.
+
+✨ Ask yourself today...
+
+✨ Who has the loudest voice in my life?
+
+✨ Are they leading me closer to Jesus or further away?
+
+✨ Are my daily habits helping me become the person God wants me to be?
+
+Those questions are worth asking often.
+
+---
+
+# What To Watch For Today
+
+As you read Proverbs 2 today, don't rush through it.
+
+Imagine Solomon sitting across from you.
+
+Imagine him speaking these words because he genuinely wants to spare you from years of unnecessary pain.
+
+Then ask yourself honestly...
+
+❤️ Am I seeking God's wisdom every day, or only when life becomes difficult?
+
+❤️ What area of my life have I been trying to control without asking God for direction?
+
+❤️ Is there a relationship, habit, or decision that God may be warning me about?
+
+❤️ What treasure am I really pursuing with my time, energy, and attention?
+
+Don't answer those questions quickly.
+
+Sit with them.
+
+Pray about them.
+
+Invite God into them.
+
+He loves answering honest hearts.
+
+---
+
+# The Big Lesson of Proverbs 2
+
+Proverbs 2 isn't simply telling you to become smarter.
+
+It's inviting you into a different way of living.
+
+A life where your decisions aren't driven by fear.
+
+A life where your direction isn't controlled by culture.
+
+A life where God's voice becomes louder than every other voice competing for your attention.
+
+That kind of life doesn't happen overnight.
+
+It's built chapter by chapter.
+
+Prayer by prayer.
+
+Decision by decision.
+
+Day after day.
+
+So today...
+
+📖 Open God's Word with expectation.
+
+🙏 Ask Him for wisdom before you ask Him for answers.
+
+🌱 Trust that even when you can't see immediate growth, He's still changing your heart.
+
+Keep searching.
+
+Keep asking.
+
+Keep listening.
+
+Keep walking.
+
+Because every step toward God's wisdom is a step away from regret and a step closer to the life He created you to live.
+
+And that's a journey worth pursuing every single day.
+`,
+  3: `
+# Learning to Trust God When You Don't Understand
+
+Have you ever looked at your life and thought, *God, I don't understand what You're doing.*
+
+Maybe you've prayed for an opportunity that never came.
+
+Maybe you've lost someone you loved.
+
+Maybe you've watched doors close while other people seemed to walk through them with ease.
+
+Or maybe you're simply trying to figure out your next step, wondering if you're making the right decision.
+
+If you've ever felt that way, Proverbs 3 is one of the most comforting chapters in the entire Bible.
+
+It reminds us that following God isn't about having every answer.
+
+It's about learning to trust the One who already does.
+
+Solomon isn't writing these words as a king trying to sound wise.
+
+He's speaking like a loving father who has experienced both success and failure. He knows what happens when people trust God... and he knows what happens when they trust only themselves.
+
+His message is simple.
+
+Trust God.
+
+Not just when life makes sense.
+
+Trust Him when it doesn't.
+
+That's where real faith begins.
+
+---
+
+# Wisdom Changes More Than Your Mind
+
+Sometimes we think wisdom is simply knowing the right answer.
+
+But biblical wisdom goes much deeper than that.
+
+God's wisdom changes the way you think, speak, treat people, spend your money, respond to problems, and even the way you view success.
+
+In Proverbs 3, Solomon reminds us not to let God's teaching drift away from our hearts.
+
+Why?
+
+Because what fills your heart eventually directs your life.
+
+If your heart is filled with fear, fear will guide your decisions.
+
+If it's filled with pride, pride will eventually trip you up.
+
+But when your heart is filled with God's truth, your life slowly begins reflecting His character.
+
+That's why spending time in God's Word isn't about checking off another religious task.
+
+It's about allowing God to reshape you from the inside out.
+
+✨ The goal isn't simply to know more Scripture.
+
+✨ The goal is to become more like Christ.
+
+---
+
+# Trust God Even When You Can't See The Whole Road
+
+One of the most famous verses in the Bible comes from this chapter.
+
+> "Trust in the Lord with all your heart and lean not on your own understanding."
+
+Those words sound simple.
+
+Living them is much harder.
+
+We naturally want control.
+
+We want to know what's happening next.
+
+We want guarantees before we take the first step.
+
+But that's not usually how God works.
+
+Imagine driving down a dark road at night.
+
+Your headlights don't show you the entire journey.
+
+They only show the next part of the road.
+
+Yet that's enough to keep moving forward.
+
+Faith works much the same way.
+
+God often gives us enough light for today's step, not next year's entire journey.
+
+And that's okay.
+
+Because He isn't asking you to trust the road.
+
+He's asking you to trust the One leading you down it.
+
+❤️ Sometimes God reveals His plan one step at a time because it keeps us close to Him.
+
+---
+
+# Honor God With Every Part of Your Life
+
+Proverbs 3 reminds us to honor God with our possessions and the first of everything He has given us.
+
+This isn't simply about money.
+
+It's about priorities.
+
+What comes first in your life?
+
+When someone looked at your calendar...
+
+Your spending...
+
+Your conversations...
+
+Your free time...
+
+Would they be able to tell that God comes first?
+
+Or would they assume something else has taken His place?
+
+Every one of us worships something.
+
+The question isn't **if** we worship.
+
+The question is **what** we worship.
+
+God isn't interested in being one part of your life.
+
+He wants to be at the center of it.
+
+When He becomes your highest priority, everything else begins finding its proper place.
+
+---
+
+# Don't Mistake Discipline For Rejection
+
+This chapter contains one of the most encouraging truths for every believer.
+
+God disciplines those He loves.
+
+At first that may sound harsh.
+
+But think about a loving parent.
+
+A good parent corrects their child, not because they enjoy punishment, but because they want them to grow into the person they're capable of becoming.
+
+God is the perfect Father.
+
+Sometimes He allows difficult seasons to shape our character.
+
+Sometimes He closes doors because He sees dangers we cannot.
+
+Sometimes He says "wait" because His timing is better than ours.
+
+None of those moments mean God has abandoned you.
+
+Quite the opposite.
+
+They remind us that He loves us enough to keep working in our lives.
+
+🙏 Growth is rarely comfortable.
+
+🙏 But it is always worthwhile.
+
+---
+
+# Wisdom Leads To A Better Life
+
+Throughout Proverbs 3, Solomon describes wisdom almost like a tree with deep roots.
+
+Storms may come.
+
+Winds may blow.
+
+But deeply rooted trees continue standing.
+
+That's the kind of life God wants for you.
+
+Not a life without problems.
+
+A life that remains steady when problems come.
+
+Wisdom gives peace during uncertainty.
+
+Hope during disappointment.
+
+Direction during confusion.
+
+Strength during temptation.
+
+The world often chases quick success.
+
+God is building lasting character.
+
+One fades away.
+
+The other lasts forever.
+
+✨ Ask yourself today...
+
+✨ Am I building deep roots or simply chasing temporary success?
+
+✨ Where have I been leaning on my own understanding instead of trusting God?
+
+✨ What area of my life needs to be surrendered back to Him?
+
+---
+
+# What To Watch For Today
+
+As you read Proverbs 3 today, pay attention to how often Solomon connects wisdom with trust.
+
+He's not asking you to become perfect.
+
+He's asking you to become dependent on God.
+
+❤️ Is there something you've been worrying about that you need to place back into God's hands?
+
+❤️ Have you been demanding answers when God is simply asking for your trust?
+
+❤️ Are your priorities reflecting what matters most to Him?
+
+❤️ Can you honestly say that God comes first in every area of your life?
+
+Spend a few quiet moments talking with Him before you begin reading.
+
+Sometimes the greatest act of faith isn't receiving an answer.
+
+It's choosing to trust God before the answer comes.
+
+---
+
+# The Big Lesson of Proverbs 3
+
+Life will always give you reasons to worry.
+
+There will always be questions you can't answer and situations you can't control.
+
+But Proverbs 3 reminds us that peace doesn't come from knowing everything.
+
+Peace comes from knowing the One who does.
+
+So today...
+
+📖 Fill your heart with God's Word.
+
+🙏 Trust Him more than your own understanding.
+
+🌱 Let His wisdom guide your decisions, even when the road ahead seems uncertain.
+
+One faithful step today can change the direction of your entire future.
+
+Keep walking.
+
+Keep trusting.
+
+Keep listening.
+
+The God who has faithfully led His people for generations is more than able to lead you through whatever lies ahead.
+
+And as you read Proverbs 3 today, remember this simple truth:
+
+God sees the whole picture.
+
+You only need to trust Him with the next step.
+`,
 
   4: `Picture an older Solomon remembering what it felt like to be young.
 
@@ -935,6 +1503,10 @@ Proverbs 5 warns that desire and advantage can both become chains when they pull
 function buildCinematicDevotionalText(chapter: number) {
   const baseText = cinematicDevotionalTextByChapter[chapter];
   const depthText = cinematicDepthByChapter[chapter];
+
+  if (chapter === 1 || chapter === 2 || chapter === 3) {
+    return baseText || "";
+  }
 
   if (!baseText || !depthText) return baseText || "";
 
@@ -1744,7 +2316,7 @@ const studyIntroDetailsByChapter: Record<number, StudyIntroDetail> = {
 };
 
 function buildProverbsStudyIntro(day: ChapterPlan) {
-  if (day.chapter === 1) {
+  if (day.chapter === 1 || day.chapter === 2 || day.chapter === 3) {
     return buildCinematicDevotionalText(day.chapter);
   }
 

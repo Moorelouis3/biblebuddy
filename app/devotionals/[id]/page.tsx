@@ -145,7 +145,19 @@ type ChapterTaskProgress = {
 
 const WISDOM_TASK_TOTAL = 4;
 const CHAPTER_JOURNEY_TASK_TOTAL = 6;
+const FREE_DEVOTIONAL_DAY_WINDOW_MS = 24 * 60 * 60 * 1000;
 type WisdomTaskKey = "overview" | "reading" | "trivia" | "discussion";
+
+function formatFreeDevotionalCountdown(ms: number) {
+  const safeMs = Math.max(0, ms);
+  const totalMinutes = Math.ceil(safeMs / 60000);
+  const hours = Math.floor(totalMinutes / 60);
+  const minutes = totalMinutes % 60;
+
+  if (hours <= 0) return `${minutes} minute${minutes === 1 ? "" : "s"}`;
+  if (minutes <= 0) return `${hours} hour${hours === 1 ? "" : "s"}`;
+  return `${hours} hour${hours === 1 ? "" : "s"} ${minutes} minute${minutes === 1 ? "" : "s"}`;
+}
 
 function normalizeStudyTitle(title: string | null | undefined) {
   return String(title || "")
@@ -350,7 +362,12 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
   const [showChooseFreeModal, setShowChooseFreeModal] = useState(false);
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
   const [pendingDayClick, setPendingDayClick] = useState<DevotionalDay | null>(null);
+  const [freeDevotionalGate, setFreeDevotionalGate] = useState<{
+    countdown: string;
+    planTitle: string;
+  } | null>(null);
   const handledLouisDayRef = useRef<string | null>(null);
+  const freeWisdomGateMarkedRef = useRef<Set<number>>(new Set());
   const [featureTours, setFeatureTours] = useState<FeatureToursState>({ ...DEFAULT_FEATURE_TOURS });
   const [featureToursLoaded, setFeatureToursLoaded] = useState(false);
   const expandedDayStorageKey = userId ? `bb:devotional-expanded-day:${userId}:${devotionalId}` : null;
@@ -673,6 +690,55 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
   const totalUnits = Math.max(devotional?.total_days || orderedDays.length || 1, 1);
   const remainingUnits = Math.max(totalUnits - completedDays, 0);
   const isWisdomOfProverbs = isWisdomOfProverbsTitle(devotional?.title);
+  const isFreePlanUser = profileStats?.is_paid !== true && userEmail !== "moorelouis3@gmail.com";
+  const freeDevotionalCompletionStorageKey =
+    userId && devotionalId ? `bb:free-devotional-day-completed:${userId}:${devotionalId}` : null;
+
+  const getLastFreeDevotionalCompletion = () => {
+    if (!freeDevotionalCompletionStorageKey || typeof window === "undefined") return null;
+    const rawValue = window.localStorage.getItem(freeDevotionalCompletionStorageKey);
+    const timestamp = Number(rawValue);
+    return Number.isFinite(timestamp) && timestamp > 0 ? timestamp : null;
+  };
+
+  const markFreeWisdomDayCompletedForGate = (dayNumber: number) => {
+    if (!isWisdomOfProverbs || !isFreePlanUser || !freeDevotionalCompletionStorageKey || typeof window === "undefined") {
+      return;
+    }
+
+    const markedKey = `${freeDevotionalCompletionStorageKey}:day:${dayNumber}`;
+    if (freeWisdomGateMarkedRef.current.has(dayNumber) || window.localStorage.getItem(markedKey) === "true") {
+      return;
+    }
+
+    freeWisdomGateMarkedRef.current.add(dayNumber);
+    window.localStorage.setItem(freeDevotionalCompletionStorageKey, String(Date.now()));
+    window.localStorage.setItem(markedKey, "true");
+  };
+
+  const shouldBlockFreeWisdomDay = (dayNumber: number) => {
+    if (!isWisdomOfProverbs || !isFreePlanUser || dayNumber <= 1) return false;
+
+    const currentProgress = chapterTaskProgress.get(dayNumber);
+    if (currentProgress && currentProgress.completed > 0) return false;
+
+    const previousProgress = chapterTaskProgress.get(dayNumber - 1);
+    if (!previousProgress || previousProgress.completed < previousProgress.total) return false;
+
+    const lastCompletion = getLastFreeDevotionalCompletion();
+    return lastCompletion !== null && Date.now() - lastCompletion < FREE_DEVOTIONAL_DAY_WINDOW_MS;
+  };
+
+  const openFreeWisdomDayGate = () => {
+    const lastCompletion = getLastFreeDevotionalCompletion();
+    const remainingMs =
+      lastCompletion === null ? FREE_DEVOTIONAL_DAY_WINDOW_MS : FREE_DEVOTIONAL_DAY_WINDOW_MS - (Date.now() - lastCompletion);
+
+    setFreeDevotionalGate({
+      countdown: formatFreeDevotionalCountdown(remainingMs),
+      planTitle: devotional?.title || "this study plan",
+    });
+  };
 
   useEffect(() => {
     if (!expandedDayStorageKey || typeof window === "undefined") return;
@@ -724,6 +790,10 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
       const triviaDone = overrides.trivia ?? completedTriviaDayNumbers.has(dayNumber);
       const discussionDone = overrides.discussion ?? completedDiscussionDayNumbers.has(dayNumber);
       const completed = [overviewDone, readingDone, triviaDone, discussionDone].filter(Boolean).length;
+      const previous = prevTaskProgress.get(dayNumber);
+      if (completed >= WISDOM_TASK_TOTAL && (previous?.completed ?? 0) < WISDOM_TASK_TOTAL) {
+        markFreeWisdomDayCompletedForGate(dayNumber);
+      }
       const next = new Map(prevTaskProgress);
       next.set(dayNumber, { completed, total: WISDOM_TASK_TOTAL });
       return next;
@@ -1658,6 +1728,11 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                   <button
                     type="button"
                     onClick={() => {
+                      if (shouldBlockFreeWisdomDay(day.day_number)) {
+                        openFreeWisdomDayGate();
+                        return;
+                      }
+
                       setExpandedDayNumber((current) => {
                         const next = current === day.day_number ? null : day.day_number;
                         if (next === null) {
@@ -2056,6 +2131,45 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
             }
           }}
         />
+      )}
+
+      {freeDevotionalGate && (
+        <div
+          className="fixed inset-0 z-[90] flex items-center justify-center bg-slate-950/45 px-4 backdrop-blur-sm"
+          onClick={() => setFreeDevotionalGate(null)}
+        >
+          <div
+            className="relative w-full max-w-md rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-white p-6 text-center shadow-2xl"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setFreeDevotionalGate(null)}
+              className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-[var(--bb-surface-soft,#eef4f8)] text-lg font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-card-border,#dbe7f4)]"
+              aria-label="Close free devotional limit"
+            >
+              x
+            </button>
+            <p className="text-xs font-black uppercase tracking-[0.24em] text-[var(--bb-accent,#0b63f6)]">
+              Free Plan Limit
+            </p>
+            <h2 className="mt-3 text-2xl font-black text-[var(--bb-text-primary,#111827)]">
+              One devotional day each day
+            </h2>
+            <p className="mt-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#5f6368)]">
+              As a free user, you can only do one devotional day each day. Please wait{" "}
+              <span className="font-black text-[var(--bb-text-primary,#111827)]">{freeDevotionalGate.countdown}</span>{" "}
+              to continue {freeDevotionalGate.planTitle}.
+            </p>
+            <button
+              type="button"
+              onClick={() => setFreeDevotionalGate(null)}
+              className="mt-6 w-full rounded-2xl bg-[var(--bb-accent,#0b63f6)] px-5 py-3 text-sm font-black text-white shadow-[0_12px_28px_rgba(11,99,246,0.20)] transition hover:brightness-95"
+            >
+              Got it
+            </button>
+          </div>
+        </div>
       )}
 
       {/* READING REQUIRED MODAL */}
