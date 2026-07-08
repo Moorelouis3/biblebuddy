@@ -1084,54 +1084,1088 @@ God sees the whole picture.
 
 You only need to trust Him with the next step.
 `,
+  4: `
+# 📖 Day 4 of **The Wisdom of Proverbs**
 
-  4: `Picture an older Solomon remembering what it felt like to be young.
+## ❤️ The Direction of Your Life Is Shaped One Step at a Time
 
-Before he was Israel's king, he was David's son. He heard stories of battlefields, caves, betrayal, mercy, worship, and failure. David knew what it meant to follow God, and he also knew what it meant to suffer from foolish choices. That kind of father would not pass down wisdom like a decoration. He would pass it down like survival.
+Have you ever looked back at your life and wondered, **"How did I get here?"**
 
-Proverbs 4 feels like wisdom moving from one generation to the next. Solomon tells his son, "I was my father's son too." The lesson did not begin with him. It came through family, through memory, through correction, through a father pleading with his child to choose the right path before the wrong one becomes familiar.
+Sometimes we ask that question with gratitude. We look at the blessings God has given us and realize how faithful He's been through every season.
 
-The chapter has movement in it. Get wisdom. Do not enter the path of the wicked. Keep your heart. Watch your mouth. Look straight ahead. Make your feet sure.
+Other times we ask it because we've drifted.
 
-This is not abstract. Solomon knows the heart is the spring of everything else. A crooked heart eventually produces crooked steps. A guarded heart gives life room to flow in the right direction.
+Maybe our relationship with God isn't as close as it used to be.
 
-As you read Proverbs 4, imagine a torch being handed from David to Solomon, and from Solomon to his son. Wisdom is not just something to admire. It is something to guard, carry, and walk out one step at a time.`,
+Maybe we've picked up habits we never thought we'd have.
 
-  5: `The palace could be beautiful and dangerous at the same time.
+Maybe we've become so busy that we barely make time for the things that matter most.
 
-Solomon knew that better than most. Scripture tells us his life became tangled with many women, political marriages, divided desires, and eventually a heart pulled away from the Lord. That makes Proverbs 5 feel heavier. It is not the warning of a man who knows nothing about desire. It is the warning of a man who knows desire can sound sweet and still lead a person into bitterness.
+The truth is, life rarely changes overnight.
 
-In this chapter, Solomon speaks to his son about faithfulness. He describes temptation as smooth, flattering, and close enough to seem harmless. But then he pulls back the curtain and shows where that road goes: regret, loss, shame, and a life spent wishing you had listened sooner.
+It changes one decision at a time.
 
-This is not just about avoiding scandal. It is about learning to see the end of a path before you take the first step. Wisdom teaches a person to ask, "Where will this lead if I keep walking?"
+One habit at a time.
 
-Solomon also points his son toward delight in covenant love. The answer to temptation is not only fear of consequences. It is learning to treasure what God has made good and refuse what destroys it.
+One step at a time.
 
-As you read Proverbs 5, remember that sin rarely introduces itself as destruction. It usually introduces itself as pleasure without a price. Wisdom tells the truth before the bill comes due.`,
+That's exactly what Proverbs 4 is about.
 
-  6: `Imagine the young prince watching the palace from the inside.
+Solomon isn't simply telling his son to make good choices. He's teaching him that every choice is taking him somewhere. Every decision has a destination. Every habit is building a future.
 
-He sees servants who rise early and servants who avoid work. He sees men make promises they cannot keep. He hears whispers that divide people. He watches proud eyes, lying tongues, quick feet, and hidden schemes. A kingdom is not only damaged by armies outside the walls. It can be weakened by foolish patterns inside ordinary lives.
+The question isn't whether you're walking.
 
-Proverbs 6 is Solomon giving practical warnings with urgency. Do not trap yourself with reckless promises. Do not sleep through responsibility. Learn from the ant. Do not become the kind of person who spreads trouble. Do not play with adultery like fire will not burn.
+The question is **which direction you're walking.**
 
-This chapter feels like a father saying, "Son, small choices are not small when they become habits."
+Because every day you are becoming someone.
 
-Solomon is preparing his son for the real world, not a fantasy version of it. Laziness has consequences. Dishonesty has consequences. Lust has consequences. Pride has consequences. The wise person does not wait until the house is burning to respect the flame.
+The only question is whether you're becoming more like Christ... or drifting farther away from Him.
 
-As you read Proverbs 6, let it feel practical on purpose. Wisdom is not only for temples and throne rooms. It belongs in your schedule, your promises, your work, your conversations, and your private choices.`,
+---
 
-  7: `Proverbs 7 reads almost like a night scene.
+## 🌱 Wisdom Is Worth Holding Onto
 
-Solomon looks through a window and sees a young man without direction. The sun is going down. The streets are changing. The young man is not dragged into danger. He drifts toward it. Step by step, corner by corner, he moves closer to a place he should not be.
+Throughout Proverbs 4, Solomon keeps repeating the same idea.
 
-That is what makes the chapter so vivid. Temptation does not begin at the final moment. It begins with direction. The wrong road usually looks manageable at first. Then the voice comes. Then the invitation comes. Then the trap closes.
+Hold onto wisdom.
 
-Solomon tells this story because stories can show what warnings alone sometimes cannot. He wants his son to see the whole path. The flattering words, the secrecy, the excitement, the false sense of safety, and then the sudden realization that the cost is far greater than expected.
+Don't let it go.
 
-This chapter is about more than one kind of temptation. It teaches a larger truth: do not walk casually toward what can destroy you.
+Guard it.
 
-As you read Proverbs 7, imagine Solomon pointing out the window and saying, "Watch carefully. This is how people fall when they think they are only exploring." Wisdom does not just resist sin at the door. Wisdom learns not to wander down the street that leads there.`,
+Protect it.
+
+At first that may seem repetitive.
+
+But the reason he keeps saying it is because he understands something about human nature.
+
+We forget.
+
+We get distracted.
+
+We start chasing things that seem more exciting in the moment.
+
+Think about how easy it is to begin your day with good intentions.
+
+You plan to pray.
+
+You plan to read your Bible.
+
+You plan to spend time with God.
+
+Then your phone buzzes.
+
+An email comes in.
+
+You start scrolling.
+
+One distraction turns into another, and before you know it the day is almost over.
+
+It usually isn't rebellion that pulls us away from God.
+
+It's distraction.
+
+That's why Solomon tells us to guard wisdom.
+
+Anything valuable is worth protecting.
+
+❤️ Protect your time with God.
+
+❤️ Protect the truths He's teaching you.
+
+❤️ Protect your heart from anything that slowly pulls you away from Him.
+
+The world is constantly competing for your attention.
+
+Don't let it steal what God is trying to build inside you.
+
+---
+
+## 🚶 The Path You Choose Matters
+
+One of the biggest themes in Proverbs 4 is the picture of two different paths.
+
+One leads toward wisdom.
+
+The other leads toward destruction.
+
+Every single person is walking one of them.
+
+The amazing thing is that most people don't end up on the wrong path because of one terrible decision.
+
+They get there one small compromise at a time.
+
+One lie.
+
+One shortcut.
+
+One excuse.
+
+One decision to ignore what they know God is asking them to do.
+
+Those small decisions begin adding up.
+
+The opposite is true as well.
+
+Reading your Bible today may not seem life changing.
+
+Praying before work may seem like a small thing.
+
+Choosing kindness instead of anger may feel insignificant.
+
+But every one of those choices is another step down the path of wisdom.
+
+Over time, those small decisions become the person you are.
+
+✨ The direction of your life is usually determined by the decisions nobody else notices.
+
+That's why Solomon isn't only concerned with where his son ends up.
+
+He's concerned with the road he's taking to get there.
+
+---
+
+## 🌞 Walking In God's Light
+
+One of the most beautiful verses in this chapter says that **the path of the righteous is like the morning sun, shining brighter and brighter until the full light of day.**
+
+What an incredible picture.
+
+Following Jesus doesn't mean everything suddenly becomes clear overnight.
+
+It means that as you continue walking with Him, He continues giving you more light.
+
+Think back to when you first started taking your faith seriously.
+
+There were probably passages of Scripture you didn't understand.
+
+Prayers that seemed confusing.
+
+Situations that tested your faith.
+
+Now look at where you are today.
+
+God has taught you things you never could have learned without walking through those seasons.
+
+That's how spiritual growth works.
+
+The longer you walk with God, the more clearly you begin to recognize His voice.
+
+The more you trust Him.
+
+The more your faith grows.
+
+Growth doesn't always happen quickly.
+
+But it does happen faithfully.
+
+🙏 Don't become discouraged if you're still growing.
+
+🙏 God isn't finished with you yet.
+
+Every day you continue walking with Him, His light reaches a little farther into your life.
+
+---
+
+## ❤️ Guard Your Heart Above Everything Else
+
+Perhaps the most well-known verse in Proverbs 4 says,
+
+**"Keep thy heart with all diligence; for out of it are the issues of life."**
+
+In other words...
+
+Guard your heart.
+
+Your heart is where your thoughts, desires, attitudes, and decisions begin.
+
+Whatever fills your heart eventually shapes your life.
+
+If you constantly fill it with fear...
+
+Fear will influence your choices.
+
+If you fill it with bitterness...
+
+Bitterness will eventually affect your relationships.
+
+If you fill it with God's truth...
+
+That truth will begin changing the way you think, speak, and live.
+
+This is why what we watch, listen to, and spend time thinking about matters so much.
+
+The world is always trying to shape your heart.
+
+God is too.
+
+The question is...
+
+Who are you allowing to have the greater influence?
+
+✨ Every day you're feeding your heart something.
+
+✨ Make sure it's feeding on God's truth more than the world's opinions.
+
+---
+
+## 👀 What To Watch For Today
+
+As you read Proverbs 4 today, notice how often Solomon talks about **direction.**
+
+This chapter isn't just asking whether you're making good decisions.
+
+It's asking where those decisions are leading.
+
+❤️ Is there a habit that's slowly pulling you away from God?
+
+❤️ What voices have been influencing your heart lately?
+
+❤️ Are you protecting your relationship with God, or simply hoping it stays strong on its own?
+
+❤️ If you continue living exactly the way you are today, where will that path lead five years from now?
+
+Take a few moments before you begin reading.
+
+Ask God to show you if there's an area of your life that's drifting off course.
+
+Sometimes we don't need a dramatic change.
+
+We simply need to take the next faithful step back toward Him.
+
+---
+
+## 💡 The Big Lesson of Proverbs 4
+
+Proverbs 4 reminds us that our future isn't built all at once.
+
+It's built one decision at a time.
+
+One prayer at a time.
+
+One act of obedience at a time.
+
+Every day you're choosing a direction.
+
+So today...
+
+📖 Hold tightly to God's Word.
+
+❤️ Guard your heart above everything else.
+
+🚶 Keep walking the path of wisdom, even when it isn't the easiest path.
+
+You don't have to have your entire future figured out.
+
+You simply need to keep taking the next step with God.
+
+Because when you walk with Him day after day, those small faithful steps become a life marked by wisdom, peace, and a deeper relationship with the One who has been leading you all along.
+`,
+  5: `
+# 📖 Day 5 of **The Wisdom of Proverbs**
+
+## ❤️ Your Words Reveal What's In Your Heart
+
+Have you ever said something and immediately wished you could take it back?
+
+Maybe it was spoken in anger.
+
+Maybe it came out before you had time to think.
+
+Maybe you didn't even mean it the way it sounded, but once the words left your mouth, there was no taking them back.
+
+Every one of us has experienced that feeling.
+
+Words are incredibly powerful.
+
+A few encouraging sentences can give someone hope they haven't felt in weeks.
+
+A few careless words can leave wounds that last for years.
+
+That's why Proverbs 5 may surprise you.
+
+At first glance, this chapter seems to focus almost entirely on avoiding sexual temptation and remaining faithful in marriage.
+
+But underneath that warning is a much bigger lesson.
+
+God cares deeply about the decisions we make because He knows every decision has consequences.
+
+What seems exciting for a moment can create pain for years.
+
+What seems restrictive today may actually be protecting your future.
+
+Solomon isn't trying to take joy away from his son.
+
+He's trying to keep him from experiencing unnecessary heartbreak.
+
+That's exactly how God speaks to us today.
+
+His commands aren't barriers to happiness.
+
+They're guardrails that keep us from driving off the edge of a cliff.
+
+---
+
+## 🌱 Temptation Usually Doesn't Look Dangerous
+
+One of the first things Solomon teaches is that temptation is attractive.
+
+If sin looked ugly from the beginning, very few people would choose it.
+
+Instead, temptation usually looks exciting.
+
+It promises freedom.
+
+It promises happiness.
+
+It promises satisfaction.
+
+It whispers...
+
+*"No one will ever know."*
+
+*"Just this once."*
+
+*"It's not really that big of a deal."*
+
+That's exactly why so many people fall into it.
+
+The enemy rarely begins with destruction.
+
+He begins with deception.
+
+He convinces us to focus on what we'll gain while hiding what we'll lose.
+
+A moment of pleasure can cost years of peace.
+
+One foolish decision can damage relationships that took decades to build.
+
+Solomon wants us to think beyond today.
+
+✨ Wisdom asks, **"Where does this road lead?"**
+
+✨ Foolishness asks only, **"What do I want right now?"**
+
+The difference between those two questions can change the direction of your entire life.
+
+---
+
+## 🛡️ God's Boundaries Are Acts Of Love
+
+Sometimes people read Proverbs 5 and think God is simply giving a long list of rules.
+
+But that's not what's happening.
+
+Imagine teaching a child not to touch a hot stove.
+
+The rule isn't there to keep them from having fun.
+
+It's there because you love them.
+
+God's commands work the same way.
+
+Every boundary He gives is rooted in His love.
+
+He knows what destroys marriages.
+
+He knows what breaks families.
+
+He knows what fills people with regret.
+
+Because He sees the end of every road before we ever begin walking it.
+
+When God says "no," it's often because He's protecting us from pain we cannot yet see.
+
+That changes the way we view obedience.
+
+Obedience isn't about earning God's love.
+
+It's our response to the God who already loves us enough to warn us.
+
+❤️ Sometimes God's greatest blessing is the temptation He helps you avoid.
+
+❤️ Sometimes His greatest protection is the door He refuses to let you walk through.
+
+---
+
+## 💍 Faithfulness Is A Reflection Of God's Character
+
+While Proverbs 5 speaks directly about marriage, its message reaches much farther.
+
+God values faithfulness.
+
+He's faithful to His promises.
+
+Faithful to His people.
+
+Faithful even when we fail Him.
+
+As followers of Christ, we're called to reflect that same faithfulness.
+
+Faithfulness in marriage.
+
+Faithfulness in friendships.
+
+Faithfulness at work.
+
+Faithfulness when nobody is watching.
+
+Our culture often celebrates whatever feels good in the moment.
+
+God celebrates commitment.
+
+Why?
+
+Because lasting relationships are built on faithfulness, not feelings.
+
+Feelings change.
+
+Circumstances change.
+
+But a faithful heart continues choosing what is right even when it's difficult.
+
+That's the kind of character God is building in us.
+
+And that kind of character becomes one of the greatest testimonies we can have.
+
+---
+
+## 🌳 God Sees Every Step You Take
+
+Near the end of Proverbs 5, Solomon reminds us that **the ways of man are before the eyes of the Lord.**
+
+Some people hear that and become afraid.
+
+But it should actually bring comfort.
+
+God sees your victories.
+
+He sees your struggles.
+
+He sees the temptation you resisted that no one else knows about.
+
+He sees the prayers you whispered when nobody was listening.
+
+He sees the tears you cried when you felt completely alone.
+
+Nothing escapes His attention.
+
+That also means nothing catches Him by surprise.
+
+He isn't shocked by your weaknesses.
+
+He already knows where you need His strength.
+
+The question isn't whether God sees you.
+
+The question is whether you're inviting Him into every area of your life.
+
+✨ Living with integrity begins by remembering you're never walking alone.
+
+✨ God's presence isn't something to fear.
+
+It's one of the greatest gifts He's ever given us.
+
+---
+
+## 👀 What To Watch For Today
+
+As you read Proverbs 5 today, remember that this chapter is about much more than avoiding one particular sin.
+
+It's about learning to value God's wisdom above temporary pleasure.
+
+❤️ Is there an area where I've been believing the lie that "just this once" won't matter?
+
+❤️ Am I trusting God's boundaries, or have I begun seeing them as burdens?
+
+❤️ Are my daily choices leading me closer to the person God wants me to become?
+
+❤️ Is there anything in my life that I've been hiding from God instead of surrendering to Him?
+
+Spend a few quiet moments asking God to search your heart.
+
+He already knows every struggle you're facing.
+
+The beautiful part is that He offers both forgiveness and the strength to walk a better path.
+
+---
+
+## 💡 The Big Lesson of Proverbs 5
+
+Proverbs 5 reminds us that wisdom always looks beyond the moment.
+
+The world tells us to follow our feelings.
+
+God tells us to follow His truth.
+
+One leads to temporary satisfaction.
+
+The other leads to lasting peace.
+
+So today...
+
+📖 Choose God's wisdom over temporary pleasure.
+
+❤️ Trust His boundaries, knowing they're rooted in His love.
+
+🙏 Ask Him for the strength to remain faithful, even when temptation comes.
+
+The decisions you make today are shaping the life you'll live tomorrow.
+
+Choose the path that leads toward Christ.
+
+Because the greatest freedom isn't found in doing whatever we want.
+
+It's found in walking closely with the God who loves us enough to show us a better way.
+`,
+  6: `
+# 📖 Day 6 of **The Wisdom of Proverbs**
+
+## ❤️ The Little Things Can Change Your Whole Life
+
+Have you ever noticed how easy it is to ignore the little things?
+
+We tell ourselves...
+
+*"I'll deal with it tomorrow."*
+
+*"It's only a small habit."*
+
+*"One more day won't hurt."*
+
+Whether it's putting off exercise, ignoring our finances, neglecting prayer, or refusing to have a difficult conversation, we often assume the small things don't matter very much.
+
+But over time, they become big things.
+
+A few dollars spent every day eventually become thousands.
+
+A few skipped workouts slowly become years of poor health.
+
+A few missed days in God's Word can quietly turn into months of spiritual distance.
+
+Life is often changed by the things that seem too small to notice.
+
+That's exactly what Proverbs 6 teaches.
+
+This chapter feels different from the chapters before it.
+
+Instead of focusing on one main subject, Solomon gives several practical warnings about everyday life.
+
+He talks about making careless promises.
+
+He talks about laziness.
+
+He talks about people who create conflict.
+
+He returns to the dangers of sexual temptation.
+
+At first those topics seem unrelated.
+
+But they're all connected by one simple truth.
+
+Small choices have big consequences.
+
+God cares about the little decisions because He knows they eventually shape the entire direction of our lives.
+
+---
+
+## 🤝 Think Before You Make Commitments
+
+The chapter begins with a warning about making promises too quickly.
+
+Sometimes we say yes because we don't want to disappoint someone.
+
+Sometimes we agree to something before we've really thought it through.
+
+Sometimes we commit ourselves emotionally, financially, or spiritually without counting the cost.
+
+Solomon reminds us that wisdom pauses before making commitments.
+
+That's difficult in today's world.
+
+We're encouraged to react immediately.
+
+Answer now.
+
+Buy now.
+
+Decide now.
+
+But wisdom often waits.
+
+Not because it's afraid.
+
+Because it understands that every commitment carries responsibility.
+
+✨ Before saying yes, ask yourself...
+
+✨ Can I actually keep this promise?
+
+✨ Will this decision honor God?
+
+✨ Am I acting out of wisdom or pressure?
+
+Learning to pause before making commitments can save us from many future regrets.
+
+---
+
+## 🐜 Learn From The Ant
+
+One of the most memorable parts of Proverbs 6 is Solomon pointing to something incredibly ordinary.
+
+An ant.
+
+Think about that.
+
+God uses one of the smallest creatures on earth to teach one of life's biggest lessons.
+
+The ant doesn't wait until it's starving before preparing.
+
+It works while the opportunity is there.
+
+It understands that today's effort prepares for tomorrow's needs.
+
+Solomon isn't encouraging us to become workaholics.
+
+He's encouraging us to become faithful.
+
+Whether God has given you a family, a career, a ministry, or simply responsibilities that nobody else sees, faithfulness matters.
+
+The little things you consistently do today often determine the opportunities you'll have tomorrow.
+
+❤️ Faithfulness is rarely exciting.
+
+❤️ But it is one of the greatest qualities God can build into your life.
+
+---
+
+## 😴 Beware Of Comfortable Laziness
+
+Laziness doesn't always look like someone sleeping all day.
+
+Sometimes it looks much more respectable.
+
+Putting off difficult conversations.
+
+Avoiding responsibilities.
+
+Always planning but never starting.
+
+Waiting for the "perfect time."
+
+We can become busy without actually becoming productive.
+
+Proverbs 6 reminds us that excuses have a way of multiplying.
+
+*"Tomorrow."*
+
+*"Next week."*
+
+*"When life settles down."*
+
+Those words can quietly steal years from our lives.
+
+God doesn't expect perfection.
+
+But He does call us to be faithful with what He's placed in front of us today.
+
+Maybe today your next faithful step is reading your Bible.
+
+Maybe it's making that phone call you've been avoiding.
+
+Maybe it's apologizing.
+
+Maybe it's finally beginning something God has been placing on your heart for months.
+
+Whatever it is...
+
+Don't let tomorrow become another excuse.
+
+---
+
+## 🖤 The Things God Hates
+
+One of the strongest sections in Proverbs 6 lists seven things the Lord hates.
+
+Pride.
+
+Lying.
+
+Violence.
+
+A heart that plans evil.
+
+Someone eager to do wrong.
+
+A false witness.
+
+A person who creates division.
+
+Notice something interesting.
+
+Many of these have to do with how we treat other people.
+
+God cares deeply about relationships.
+
+He cares about honesty.
+
+He cares about humility.
+
+He cares about peace.
+
+When we gossip, lie, or create unnecessary conflict, we're working against the kind of community God wants His people to have.
+
+That should cause all of us to pause.
+
+Not to make us afraid.
+
+But to remind us that our character matters.
+
+✨ Becoming more like Christ means caring about the things He cares about.
+
+✨ It means allowing Him to transform not only our actions, but our attitudes.
+
+---
+
+## 👀 What To Watch For Today
+
+As you read Proverbs 6 today, notice how often Solomon points to the small choices that quietly shape our future.
+
+Big failures usually begin with small compromises.
+
+Big victories usually begin with small acts of faithfulness.
+
+❤️ Is there an area of my life where I've been putting something off that God wants me to address?
+
+❤️ Have I been faithful with the small responsibilities He's already given me?
+
+❤️ Is there a habit that's slowly helping me grow closer to Christ... or slowly pulling me away from Him?
+
+❤️ Are my words and actions helping bring peace to the people around me?
+
+Ask God to show you one small step you can take today.
+
+Don't underestimate what He can do through one faithful decision.
+
+The little choices you make today may become the foundation of the life He is building tomorrow.
+
+---
+
+## 💡 The Big Lesson of Proverbs 6
+
+Proverbs 6 reminds us that wisdom isn't only about the big decisions.
+
+It's about the everyday ones.
+
+The promises we make.
+
+The work we do.
+
+The habits we build.
+
+The words we speak.
+
+The way we treat people.
+
+Every small act of obedience matters.
+
+So today...
+
+📖 Be faithful in the little things.
+
+❤️ Choose diligence over excuses.
+
+🙏 Ask God to shape your character one decision at a time.
+
+You don't have to change your entire life today.
+
+You simply have to take the next faithful step.
+
+Because over time, those small steps become a life marked by wisdom, integrity, and a heart that reflects the God you follow.
+`,
+  7: `
+# 📖 Day 7 of **The Wisdom of Proverbs**
+
+## ❤️ Every Temptation Begins With A Choice
+
+Have you ever looked at someone whose life completely fell apart and wondered...
+
+**"How did they end up there?"**
+
+Maybe it was a marriage that ended after years of unfaithfulness.
+
+A successful career destroyed by one terrible decision.
+
+A family torn apart because someone chose a path they never thought they would walk.
+
+Most of the time, those stories don't begin with one catastrophic mistake.
+
+They begin with one small compromise.
+
+One conversation that should never have happened.
+
+One temptation that wasn't taken seriously.
+
+One moment where someone convinced themselves...
+
+*"This won't go any further."*
+
+Proverbs 7 is one of the most vivid chapters in the entire book.
+
+Solomon doesn't simply give advice.
+
+He paints a picture.
+
+He tells the story of a young man who slowly walks toward temptation without realizing where the road will eventually lead.
+
+As you read the chapter, you'll notice something important.
+
+The tragedy didn't begin when temptation appeared.
+
+It began long before that.
+
+It began with the direction he chose to walk.
+
+That's a lesson every one of us needs.
+
+Because temptation doesn't usually surprise us.
+
+It usually finds us after we've already wandered too close to it.
+
+---
+
+## 🌱 Wisdom Is Your Best Defense
+
+One of the very first things Solomon says is to keep God's commands close.
+
+Write them on your heart.
+
+Treasure them.
+
+Hold onto them.
+
+Why?
+
+Because wisdom is your greatest defense when temptation comes.
+
+Most of us think we'll make the right decision **in the moment.**
+
+But the truth is, the decision is usually made long before the temptation arrives.
+
+If you've been filling your heart with God's truth...
+
+If you've been praying...
+
+If you've been walking closely with Him...
+
+You're far more prepared when difficult choices appear.
+
+Imagine a soldier waiting until the battle begins before learning how to use his weapon.
+
+It would be too late.
+
+The same is true spiritually.
+
+We prepare today for the battles we'll face tomorrow.
+
+✨ God's Word isn't only meant to comfort you.
+
+✨ It's meant to prepare you.
+
+The more deeply His truth is planted in your heart, the stronger you'll stand when temptation comes.
+
+---
+
+## 🚶 Be Careful Where You're Walking
+
+One detail in Proverbs 7 often gets overlooked.
+
+The young man was walking near the woman's house.
+
+That may not seem important.
+
+But Solomon included it for a reason.
+
+He didn't accidentally end up there.
+
+He chose that street.
+
+Sometimes we do the same thing.
+
+We place ourselves in situations where temptation becomes much harder to resist.
+
+We tell ourselves we're just curious.
+
+We're just looking.
+
+We're just seeing what happens.
+
+But wisdom asks a different question.
+
+**"Why am I walking so close to something I know could pull me away from God?"**
+
+That question applies to far more than sexual temptation.
+
+It applies to anything that weakens your relationship with Christ.
+
+The websites you visit.
+
+The conversations you entertain.
+
+The friendships that constantly encourage compromise.
+
+The habits that slowly become addictions.
+
+God doesn't simply want to rescue us after we fall.
+
+He wants to give us the wisdom to avoid walking into danger in the first place.
+
+❤️ Sometimes the wisest decision isn't resisting temptation.
+
+❤️ Sometimes it's refusing to walk toward it.
+
+---
+
+## 🛡️ Sin Always Promises More Than It Delivers
+
+One of the saddest parts of Proverbs 7 is watching how temptation speaks.
+
+It sounds exciting.
+
+Inviting.
+
+Pleasant.
+
+It promises happiness.
+
+Adventure.
+
+Satisfaction.
+
+That's exactly how sin works.
+
+It advertises the pleasure.
+
+It hides the consequences.
+
+It never shows the broken relationships.
+
+The sleepless nights.
+
+The regret.
+
+The guilt.
+
+The years spent trying to rebuild what was lost.
+
+If temptation showed us the entire picture from the beginning, very few people would choose it.
+
+That's why wisdom looks beyond today.
+
+It asks...
+
+*"If I continue down this road... where will I end up?"*
+
+That one question can save you from years of heartache.
+
+God isn't trying to keep you from joy.
+
+He's protecting the joy He created you to experience.
+
+---
+
+## ❤️ God Always Provides A Better Path
+
+It's easy to read Proverbs 7 and focus only on the warnings.
+
+But don't miss the hope.
+
+God doesn't give warnings because He expects us to fail.
+
+He gives them because He wants us to succeed.
+
+Every command He gives is an invitation toward life.
+
+Every boundary He sets is an expression of His love.
+
+Every time He says "don't," He's protecting a greater "yes."
+
+A yes to peace.
+
+A yes to freedom.
+
+A yes to healthy relationships.
+
+A yes to a clear conscience.
+
+The Christian life isn't simply about avoiding sin.
+
+It's about pursuing something infinitely better.
+
+A deeper relationship with God.
+
+The more you treasure Him...
+
+The less attractive temptation becomes.
+
+That's the real goal.
+
+Not just saying no to sin.
+
+Learning to love Jesus so deeply that your heart desires Him more than anything the world offers.
+
+---
+
+## 👀 What To Watch For Today
+
+As you read Proverbs 7 today, pay attention to how temptation slowly unfolds.
+
+Notice that the young man's downfall didn't begin with one terrible decision.
+
+It began with many small ones.
+
+❤️ Is there an area where I've been walking closer to temptation than I should?
+
+❤️ Have I been filling my heart with God's Word, or have I been leaving myself spiritually unprepared?
+
+❤️ Are there habits, relationships, or environments that make it harder for me to follow Christ?
+
+❤️ What practical step can I take today to move closer to God instead of closer to temptation?
+
+Remember...
+
+Wisdom isn't only about saying no when temptation comes.
+
+It's about making today's choices in a way that helps tomorrow's choices become easier.
+
+Ask God to give you the courage to choose the better path.
+
+---
+
+## 💡 The Big Lesson of Proverbs 7
+
+Proverbs 7 reminds us that every path has a destination.
+
+No one drifts into a godly life by accident.
+
+And very few people ruin their lives overnight.
+
+Both happen one step at a time.
+
+So today...
+
+📖 Fill your heart with God's truth before temptation arrives.
+
+❤️ Stay away from the paths that lead you toward compromise.
+
+🙏 Trust that God's way always leads to greater peace than anything temptation can offer.
+
+Every decision you make is moving you in a direction.
+
+Choose the path that leads toward Christ.
+
+Because the safest place you'll ever walk is the path where God is leading your next step.
+`,
 
   8: `Now the scene moves from the dark street to the open city.
 
@@ -1500,7 +2534,7 @@ function buildCinematicDevotionalText(chapter: number) {
   const baseText = cinematicDevotionalTextByChapter[chapter];
   const depthText = cinematicDepthByChapter[chapter];
 
-  if (chapter === 1 || chapter === 2 || chapter === 3) {
+  if (chapter >= 1 && chapter <= 7) {
     return baseText || "";
   }
 
@@ -2312,7 +3346,7 @@ const studyIntroDetailsByChapter: Record<number, StudyIntroDetail> = {
 };
 
 function buildProverbsStudyIntro(day: ChapterPlan) {
-  if (day.chapter === 1 || day.chapter === 2 || day.chapter === 3) {
+  if (day.chapter >= 1 && day.chapter <= 7) {
     return buildCinematicDevotionalText(day.chapter);
   }
 
