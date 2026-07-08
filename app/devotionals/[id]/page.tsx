@@ -372,6 +372,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
   } | null>(null);
   const handledLouisDayRef = useRef<string | null>(null);
   const freeWisdomGateMarkedRef = useRef<Set<number>>(new Set());
+  const hydratedExpandedDayKeyRef = useRef<string | null>(null);
   const [featureTours, setFeatureTours] = useState<FeatureToursState>({ ...DEFAULT_FEATURE_TOURS });
   const [featureToursLoaded, setFeatureToursLoaded] = useState(false);
   const expandedDayStorageKey = userId ? `bb:devotional-expanded-day:${userId}:${devotionalId}` : null;
@@ -753,7 +754,9 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
   };
 
   useEffect(() => {
-    if (!expandedDayStorageKey || typeof window === "undefined") return;
+    if (!expandedDayStorageKey || loading || days.length === 0 || typeof window === "undefined") return;
+    if (hydratedExpandedDayKeyRef.current === expandedDayStorageKey) return;
+    hydratedExpandedDayKeyRef.current = expandedDayStorageKey;
 
     const storedValue = window.localStorage.getItem(expandedDayStorageKey);
     if (!storedValue) return;
@@ -761,11 +764,14 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
     const parsedValue = Number.parseInt(storedValue, 10);
     if (Number.isNaN(parsedValue)) return;
 
-    const matchingDay = orderedDays.find((day) => day.day_number === parsedValue);
+    const matchingDay = days.find((day) => day.day_number === parsedValue);
     if (matchingDay && isDayUnlocked(matchingDay.day_number)) {
       setExpandedDayNumber(parsedValue);
+      if (isWisdomOfProverbsTitle(devotional?.title)) {
+        setExpandedWisdomTask(`${parsedValue}:overview`);
+      }
     }
-  }, [expandedDayStorageKey, orderedDays, userId]);
+  }, [expandedDayStorageKey, loading, days.length, userId]);
 
   useEffect(() => {
     if (!expandedDayStorageKey || typeof window === "undefined") return;
