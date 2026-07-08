@@ -195,7 +195,7 @@ function isChapterJourneyStudyTitle(title: string | null | undefined) {
 }
 
 function getStudyScriptureRange(title: string | null | undefined) {
-  if (isWisdomOfProverbsTitle(title)) return "Day 1-31";
+  if (isWisdomOfProverbsTitle(title)) return "31 Days";
 
   const ranges: Record<string, string> = {
     "The Creation of the World": "Genesis 1 & 2",
@@ -217,6 +217,15 @@ function getStudyScriptureRange(title: string | null | undefined) {
   };
 
   return ranges[title || ""] ?? null;
+}
+
+function getDevotionalOverviewTtsSrc(devotionalId: string | null | undefined, dayNumber: number) {
+  if (!devotionalId || !Number.isFinite(dayNumber) || dayNumber <= 0) return null;
+  const params = new URLSearchParams({
+    devotionalId,
+    day: String(dayNumber),
+  });
+  return `/api/tts/devotional-overview?${params.toString()}`;
 }
 
 function getChapterJourneyProgressLabel(title: string | null | undefined, currentDay: number, totalDays: number) {
@@ -1871,16 +1880,16 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                               {wisdomStatusPill(wisdomBigPictureDone)}
                             </summary>
                             <div className="border-t border-[var(--bb-card-border,#dbe7f4)] bg-white px-4 py-4 text-sm leading-7 text-[var(--bb-text-secondary,#5f6368)]">
-                              {day.day_number === 1 ? (
-                                <BrowserTtsButton
-                                  text={wisdomOverviewText}
-                                  label="Listen to Overview"
-                                  backgroundMusicSrcs={BIBLE_READING_BACKGROUND_TRACKS}
-                                  backgroundMusicVolume={BIBLE_READING_BACKGROUND_VOLUME}
-                                  className="mb-5"
-                                  aiDisclosure
-                                />
-                              ) : null}
+                              <BrowserTtsButton
+                                text={wisdomOverviewText}
+                                label="Listen to Overview"
+                                audioSrc={getDevotionalOverviewTtsSrc(devotional?.id, day.day_number)}
+                                progressKey={`bb:wop-overview-audio:${devotional?.id || "wisdom"}:${day.day_number}`}
+                                backgroundMusicSrcs={BIBLE_READING_BACKGROUND_TRACKS}
+                                backgroundMusicVolume={BIBLE_READING_BACKGROUND_VOLUME}
+                                className="mb-5"
+                                aiDisclosure
+                              />
                               <ChapterNotesMarkdown compactMobile databaseTermMode="light">
                                 {wisdomOverviewText}
                               </ChapterNotesMarkdown>

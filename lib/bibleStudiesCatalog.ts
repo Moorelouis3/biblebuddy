@@ -13,7 +13,7 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
   {
     key: "wisdom_of_proverbs",
     title: "The Wisdom of Proverbs",
-    subtitle: "Day 1-31",
+    subtitle: "31 Days",
     totalWeeks: 31,
     image: "/Wisdomofproverbsnewcover.png",
     description:

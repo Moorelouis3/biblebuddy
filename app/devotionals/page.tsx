@@ -73,7 +73,7 @@ function getStudyScriptureRange(title: string) {
     "The Rebellion in the Wilderness": "Numbers 15-25",
     "The Promised Land Ahead": "Numbers 26-36",
     "The Rise of Esther": "Esther 1-10",
-    "The Wisdom of Proverbs": "Day 1-31",
+    "The Wisdom of Proverbs": "31 Days",
     "The Courage of Daniel": "Daniel 1-6",
   };
 

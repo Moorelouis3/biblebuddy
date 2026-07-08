@@ -23,7 +23,7 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
 const DEVOTIONAL_TITLE = "The Wisdom of Proverbs";
 const devotionalPayload = {
   title: DEVOTIONAL_TITLE,
-  subtitle: "A 31-Day Chapter Journey",
+  subtitle: "31 Days",
   description:
     "A 31-day chapter-by-chapter journey through Proverbs. Each day follows one full chapter so the devotional, Bible reading, notes, trivia, Scrambled, and reflection all stay aligned around the same daily focus.",
   total_days: 31,
@@ -6280,124 +6280,3016 @@ Your heart.
 
 And when your heart belongs fully to Him, your life will begin reflecting Him in ways that reach far beyond anything you could accomplish on your own.
 `,
+  22: `
+Have you ever met someone and thought,
 
-  22: `Proverbs 22 sounds like a father thinking beyond one generation.
+**"I wonder what happened to make them become that kind of person?"**
 
-A good name is better than riches. The rich and poor meet together before the same Maker. Children are trained. The generous are blessed. Boundaries are respected. The words of the wise are meant to be kept in the heart and ready on the lips.
+Maybe they were incredibly patient.
 
-For Solomon's son, this chapter would have felt like preparation for legacy. A prince may inherit wealth, but he still has to build a name. He may receive a crown, but he still has to become trustworthy. He may grow up around power, but God still cares about humility and the poor.
+They seemed calm no matter what life threw at them.
 
-This chapter also begins a section that sounds like collected sayings of the wise. It is as if Solomon is opening the treasury wider and saying, "Do not only listen to me. Listen to wisdom wherever God has preserved it."
+They treated people with kindness, even when they weren't treated kindly in return.
 
-That is important. Wise people do not act like they are the only ones who know anything. They gather counsel. They store truth. They let instruction become part of them.
+Or maybe it was the opposite.
 
-As you read Proverbs 22, think about the name your habits are building. Not your brand. Not your image. Your name. The quiet reputation formed by repeated choices when God, neighbors, family, and the vulnerable are watching.`,
+Someone who was always angry.
 
-  23: `Proverbs 23 feels like Solomon warning his son about appetites.
+Always negative.
 
-Not just hunger for food, but hunger for status, wealth, pleasure, approval, wine, lust, and the life someone else seems to have. A palace can make appetite look normal because abundance is everywhere. But abundance without wisdom can train the heart to want without limits.
+Always looking for someone to blame.
 
-This chapter begins with a table. The son is told to pay attention when he sits before a ruler. Food is not just food in that scene. It represents desire, opportunity, and the need for self-control when something attractive is placed in front of you.
+It's easy to assume people simply wake up one day and become that way.
 
-Solomon warns against wearing yourself out to get rich. He warns against envying sinners. He pleads with his son to give him his heart. Then he paints the sadness of drunkenness, lust, and a life ruled by craving.
+But that's rarely true.
 
-This is not anti-joy. It is pro-freedom. Wisdom teaches desire to submit to God so desire does not become a master.
+Character is built slowly.
 
-As you read Proverbs 23, imagine Solomon watching his son enter rooms full of temptation disguised as privilege. The question is not whether you have desires. The question is whether your desires are being discipled by wisdom or fed by whatever sits on the table.`,
+One choice at a time.
 
-  24: `Proverbs 24 has the feel of a father preparing his son not to be impressed by the wrong people.
+One habit at a time.
 
-Solomon knows evil can look successful from a distance. The wicked may seem powerful. Their houses may look full. Their shortcuts may appear to work. But wisdom looks past the surface and asks what kind of foundation is underneath.
+One decision repeated over and over again until it becomes part of who we are.
 
-This chapter tells the son not to envy evil people. It says a house is built by wisdom and established by understanding. It praises counsel, strength in trouble, rescuing those in danger, and refusing to rejoice when an enemy falls.
+That's exactly what Proverbs 22 teaches.
 
-Then Solomon takes his son to a field. The field belongs to a lazy man. The wall is broken. Thorns have grown. The vineyard tells a story without saying a word. Neglect has a visible harvest.
+This chapter covers many different topics—humility, generosity, parenting, friendships, wealth, and integrity.
 
-That image is powerful because many lives do not collapse from one dramatic rebellion. They become overgrown through neglect.
+At first they may seem disconnected.
 
-As you read Proverbs 24, picture Solomon pointing first to the impressive house of the wicked, then to the neglected field of the sluggard, and asking his son to learn from both. Wisdom builds what lasts. Foolishness either chases the wrong success or lets good things fall apart.`,
+But they all point to one simple truth.
 
-  25: `Centuries after Solomon, men under King Hezekiah copied more of his proverbs.
+The life you're building tomorrow is being shaped by the choices you're making today.
 
-That detail matters. It means Solomon's wisdom outlived his reign. Long after the palace scenes changed and new kings sat on the throne, these sayings were still worth preserving. Proverbs 25 begins with that sense of recovered treasure.
+Every decision is planting a seed.
 
-The chapter feels royal in many places. It speaks of kings searching matters out, standing humbly before rulers, handling disputes carefully, and speaking words at the right time. There is wisdom here for anyone who wants to rush into visibility, rush into conflict, or rush into speech.
+Eventually, every seed produces a harvest.
 
-Solomon teaches that timing matters. A word fitly spoken is beautiful because it fits the moment. A true thing said wrongly can still do damage. A person who lacks self-control is like a city broken down without walls.
+The question is...
 
-This chapter also teaches quiet strength. Gentle speech can break resistance. Patience can accomplish what force cannot. Humility can protect a person from shame.
+**What kind of harvest are you planting for?**
 
-As you read Proverbs 25, imagine old scrolls being unrolled and Solomon's voice speaking again to a later generation. Wisdom is not always loud. Sometimes it is the right word, in the right spirit, at the right time, from a heart with walls still standing.`,
+---
 
-  26: `Proverbs 26 is one of the sharpest chapters in the book.
+## 🌱 A Good Name Is Worth More Than Great Riches
 
-Solomon pulls back the curtain on foolishness and lets his son study its patterns. The fool repeats folly. The sluggard makes excuses. The meddler grabs conflict that is not his. The gossip carries words like fuel. The deceiver hides harm behind charm.
+One of the most well-known verses in Proverbs says,
 
-This chapter can feel uncomfortable because it is so direct. But Solomon is not being harsh for entertainment. A future king must learn discernment. Not every situation deserves the same response. Not every argument deserves your energy. Not every person is safe with your trust.
+**"A good name is rather to be chosen than great riches."**
 
-There is even tension in the chapter: do not answer a fool according to his folly, and answer a fool according to his folly. That is not contradiction. It is wisdom training discernment. Sometimes answering pulls you into foolishness. Sometimes silence lets foolishness parade as truth. The wise person must learn the difference.
+Think about that.
 
-As you read Proverbs 26, picture Solomon teaching his son how to recognize patterns before they spread through a court, a home, or a heart. Wisdom is not naive. It can be gentle and still be clear-eyed.`,
+If someone hears your name...
 
-  27: `Proverbs 27 feels like wisdom sitting with real relationships.
+What comes to mind?
 
-Do not boast about tomorrow. Let another praise you. Faithful wounds are better than flattering kisses. Iron sharpens iron. Know the condition of your flocks. These are not random ideas. They are the kind of truths a person needs when life becomes personal and responsibility becomes heavy.
+Can people trust you?
 
-Solomon knows his son will be surrounded by voices. Some will flatter him because he is powerful. Some will avoid telling him the truth because truth is risky near a throne. That makes faithful friendship priceless.
+Do they know you'll keep your word?
 
-This chapter teaches that love is not always soft in the way we expect. Sometimes love wounds faithfully because it refuses to let someone drift. Sometimes wisdom comes through the person who sharpens you instead of simply agreeing with you.
+Do they know you'll tell the truth even when it's difficult?
 
-It also brings attention to stewardship. A wise person pays attention to what has been entrusted to them. Flocks, fields, friendships, family, character; all need care before neglect becomes visible.
+Money can be earned.
 
-As you read Proverbs 27, imagine Solomon telling his son, "Do not build a life where no one can correct you." Wisdom needs honest friends, humble ears, and careful attention to what God has placed in your hands.`,
+Lost.
 
-  28: `Proverbs 28 has the sound of footsteps in the dark and footsteps in the light.
+And earned again.
 
-The wicked flee when no one pursues, but the righteous are bold as a lion. That opening image sets the tone. Sin makes people restless even before consequences arrive. Righteousness gives a courage that does not have to keep hiding.
+But trust takes years to build and only moments to destroy.
 
-Solomon speaks here about justice, law, poverty, oppression, confession, greed, integrity, and generosity. The chapter is not interested in fake confidence. It is interested in the kind of boldness that comes from walking honestly before God.
+That's why God places such a high value on character.
 
-One of the clearest moments says that whoever covers sin will not prosper, but whoever confesses and forsakes it will find mercy. That is the heart of the chapter. Concealment keeps a person trapped. Confession opens the door for mercy and change.
+Your reputation isn't built by one big moment.
 
-For a future king, this matters deeply. A ruler who hides sin becomes dangerous. A person who refuses correction becomes hard. A society that ignores justice becomes unstable.
+It's built by hundreds of ordinary decisions.
 
-As you read Proverbs 28, picture two roads: one where a person keeps covering, and one where a person steps into the light. Wisdom is brave enough to be honest because it trusts God's mercy more than its own disguise.`,
+The way you treat people when you're tired.
 
-  29: `Proverbs 29 feels like the last strong warning from a father who has seen what stubbornness can do.
+The promises you keep.
 
-A person often reproved who hardens his neck will suddenly be broken. That is a serious opening. Solomon is telling his son that correction is mercy before collapse. The dangerous person is not the one who gets corrected. The dangerous person is the one who can no longer receive it.
+The honesty you show when no one else is watching.
 
-This chapter moves through leadership, justice, anger, discipline, vision, fear of man, and trust in the Lord. It shows how private character affects public life. When the righteous are in authority, people rejoice. When wickedness rules, people groan.
+Those little moments quietly become your name.
 
-For a prince, these words are not theoretical. His choices will affect households he never enters. His justice or injustice will be felt by people who cannot speak into the palace. That is why wisdom must shape leadership before power magnifies foolishness.
+❤️ Your greatest treasure isn't what you own.
 
-The fear of man also appears here. It is a trap. A leader who fears people more than God will bend truth for approval. But whoever trusts in the Lord is safe.
+❤️ It's the kind of person people know you to be.
 
-As you read Proverbs 29, listen for correction as a gift. Wisdom does not ask, "How can I avoid being challenged?" It asks, "What truth is God using to keep me from breaking?"`,
+And even more importantly...
 
-  30: `Proverbs 30 introduces a different voice: Agur.
+It's the kind of person God knows you to be.
 
-After so many sayings connected to Solomon, this chapter feels like someone stepping forward with humility. Agur does not begin by boasting about what he knows. He confesses his limits. He is aware of God's greatness, the purity of God's words, and his own need for protection from both poverty and riches.
+---
 
-That humility is part of the lesson. Wisdom is not pretending to have mastered life. Wisdom knows when to put a hand over its mouth and wonder. Agur looks at creation, human behavior, small creatures, and mysterious things, and he learns from them.
+## 🙏 Humility Opens The Door To God's Blessings
 
-His prayer is especially striking. He does not simply ask for more. He asks for what will keep him faithful. Not so little that he is tempted to steal. Not so much that he forgets God. That is a deeply wise request.
+Our world often tells us to promote ourselves.
 
-This chapter helps the Proverbs journey breathe. After many direct sayings, Agur reminds us that wisdom includes awe, limits, observation, and prayer.
+Make sure people notice you.
 
-As you read Proverbs 30, do not rush past the humility. Ask God for the kind of life that keeps your heart close to Him, not merely the kind of life that looks impressive from the outside.`,
+Fight for recognition.
 
-  31: `Proverbs ends with the words taught to King Lemuel by his mother.
+Always prove you're right.
 
-That is a beautiful turn. A book full of fatherly instruction closes by honoring a mother's wisdom. Lemuel is warned about the dangers that can weaken a king: uncontrolled desire, blurred judgment, and silence when the vulnerable need an advocate.
+God teaches something completely different.
 
-Then the chapter gives the famous portrait of the virtuous woman. This is not meant to be a shallow checklist for comparison. It is wisdom embodied. Strength, diligence, generosity, courage, business sense, care for the household, compassion for the poor, and fear of the Lord all take on flesh in one life.
+Proverbs 22 reminds us that humility and the fear of the Lord lead to riches, honor, and life.
 
-The ending matters. Proverbs began with a father teaching his son to fear the Lord. It ends by showing a life where wisdom has become visible. Not just studied. Lived.
+Humility isn't thinking you're less valuable than other people.
 
-Charm can deceive. Beauty can fade. Public attention can rise and fall. But the fear of the Lord gives a life a different kind of weight.
+It's recognizing that every blessing you have ultimately came from God.
 
-As you read Proverbs 31, let it gather the whole journey. Wisdom is not only for kings, courts, markets, and arguments. It is for homes, work, service, leadership, speech, generosity, and worship. The final question is not whether you admire wisdom. It is whether wisdom is becoming visible in the way you live.`,
+Every ability.
+
+Every opportunity.
+
+Every answered prayer.
+
+Every open door.
+
+When we remember that, gratitude naturally replaces pride.
+
+And grateful people become joyful people.
+
+The more we recognize God's goodness...
+
+The less we feel the need to compete with everyone around us.
+
+✨ Humility isn't weakness.
+
+✨ It's confidence that's rooted in God instead of ourselves.
+
+---
+
+## 👨‍👩‍👧‍👦 The Influence You Have Is Greater Than You Think
+
+One of the most quoted verses in Proverbs is found in this chapter.
+
+**"Train up a child in the way he should go..."**
+
+While this verse speaks directly to parents, the principle reaches much farther.
+
+Every one of us is influencing someone.
+
+Your children.
+
+Your friends.
+
+Your coworkers.
+
+Your neighbors.
+
+Even people you may never realize are watching you.
+
+People pay far more attention to how we live than to what we say.
+
+If we speak about trusting God but constantly live in fear...
+
+People notice.
+
+If we talk about forgiveness but refuse to forgive...
+
+People notice.
+
+If we speak about kindness but consistently tear others down...
+
+People notice.
+
+Our example often teaches louder than our words ever could.
+
+That's both a responsibility and a privilege.
+
+Because God loves using ordinary people to influence others toward Him.
+
+❤️ Someone is learning how to follow Christ by watching the way you live.
+
+❤️ Let your example point them toward Jesus.
+
+---
+
+## 🤝 Choose The Company You Keep
+
+Another powerful lesson in Proverbs 22 is about relationships.
+
+Solomon warns us about spending too much time around angry people.
+
+Why?
+
+Because attitudes are contagious.
+
+Spend enough time around someone who's constantly bitter...
+
+And bitterness begins to sound normal.
+
+Spend enough time around people who gossip...
+
+And gossip begins feeling acceptable.
+
+The opposite is also true.
+
+Spend time with people who love Jesus.
+
+People who encourage you.
+
+Challenge you.
+
+Pray for you.
+
+Point you back to Scripture.
+
+Over time, you'll begin growing because of their influence.
+
+That's why the people we surround ourselves with matter so much.
+
+They don't determine our future.
+
+But they certainly influence the direction we're walking.
+
+✨ Choose friends who encourage your faith instead of distracting you from it.
+
+✨ The people closest to you are helping shape the person you're becoming.
+
+---
+
+## 🌳 Wisdom Thinks About The Future
+
+One of the simplest but most practical verses in Proverbs 22 says,
+
+**"A prudent man foreseeth the evil, and hideth himself."**
+
+In other words...
+
+Wise people think ahead.
+
+They don't only ask...
+
+*"What feels good today?"*
+
+They ask...
+
+*"Where will this choice lead me?"*
+
+That question applies to every area of life.
+
+Your finances.
+
+Your health.
+
+Your relationships.
+
+Your spiritual life.
+
+Your career.
+
+Every choice is taking you somewhere.
+
+That's why wisdom doesn't only react to problems.
+
+It prepares before problems arrive.
+
+Think about Noah.
+
+He built the ark before the rain came.
+
+Think about Joseph.
+
+He stored grain before the famine arrived.
+
+God often prepares His people long before they understand why.
+
+The same is true for us.
+
+Every prayer.
+
+Every chapter you read.
+
+Every act of obedience.
+
+Every decision to trust God.
+
+He's using all of it to prepare you for what lies ahead.
+
+---
+
+## 👀 What To Watch For Today
+
+As you read Proverbs 22 today, notice how often Solomon talks about influence, character, and preparing for the future.
+
+Wisdom isn't only about making good decisions today.
+
+It's about becoming the kind of person who consistently makes good decisions tomorrow.
+
+❤️ What kind of reputation am I building through my everyday choices?
+
+❤️ Is humility growing in my life, or has pride quietly begun taking its place?
+
+❤️ Who has been influencing me the most lately?
+
+❤️ Are the decisions I'm making today leading me closer to the future God desires for me?
+
+Spend a few quiet moments asking God to shape your character.
+
+Because long before He changes your circumstances...
+
+He often changes you.
+
+---
+
+## 💡 The Big Lesson of Proverbs 22
+
+Proverbs 22 reminds us that a wise life doesn't happen by accident.
+
+It's built through intentional choices.
+
+One act of integrity.
+
+One humble decision.
+
+One faithful step.
+
+One day at a time.
+
+So today...
+
+📖 Let God's wisdom shape the person you're becoming.
+
+❤️ Surround yourself with people who encourage your walk with Christ.
+
+🙏 Ask God to help you build a life marked by humility, integrity, and faithfulness.
+
+Years from now, people may not remember every accomplishment you've achieved.
+
+But they will remember your character.
+
+May your life point them to the wisdom, grace, and love of the God you faithfully chose to follow.
+`,
+  23: `
+Have you ever noticed how easy it is to become distracted?
+
+You start out pursuing one thing...
+
+Then something new catches your attention.
+
+A bigger opportunity.
+
+More money.
+
+More recognition.
+
+More comfort.
+
+Before long, you're chasing goals you never planned on pursuing.
+
+It usually doesn't happen all at once.
+
+One small compromise.
+
+One shifted priority.
+
+One decision to put God off until tomorrow.
+
+Slowly, almost without realizing it, your heart begins to love different things.
+
+That's one of the biggest lessons in Proverbs 23.
+
+This chapter warns us about greed, envy, addiction, temptation, and the choices that quietly shape our hearts.
+
+At first, those subjects seem completely unrelated.
+
+But underneath them is one powerful truth.
+
+**Whatever captures your heart will eventually begin directing your life.**
+
+That's why God isn't only concerned with what we do.
+
+He's concerned with what we love.
+
+Because sooner or later, our lives always move in the direction of our deepest desires.
+
+The question Proverbs 23 asks each of us is simple.
+
+**What is my heart really chasing?**
+
+---
+
+## 🌱 The World Promises Satisfaction It Can Never Deliver
+
+One of the first warnings Solomon gives is about wealth.
+
+Not because money is evil.
+
+But because it's temporary.
+
+Our culture constantly tells us that happiness is just one purchase away.
+
+One promotion away.
+
+One bigger house.
+
+One nicer car.
+
+One more achievement.
+
+But haven't we all experienced the same thing?
+
+You finally get what you've been wanting...
+
+And before long, you're already looking for the next thing.
+
+The excitement fades.
+
+The satisfaction doesn't last.
+
+Why?
+
+Because our hearts were never created to be satisfied by temporary things.
+
+Only God can fill the deepest longing of the human soul.
+
+Money is useful.
+
+Success can be a blessing.
+
+But neither can replace the peace that comes from walking closely with Christ.
+
+✨ The things of this world make wonderful tools.
+
+✨ They make terrible gods.
+
+Don't spend your life chasing things that can never satisfy what only God can fill.
+
+---
+
+## 👨‍👩‍👧 Listen To Godly Wisdom
+
+Throughout Proverbs 23, Solomon repeatedly tells his son to listen.
+
+Listen to instruction.
+
+Listen to wisdom.
+
+Listen to correction.
+
+That's harder than it sounds.
+
+Our culture celebrates independence.
+
+We're taught to trust ourselves.
+
+Follow our hearts.
+
+Do whatever feels right.
+
+God teaches something different.
+
+He places wise people in our lives for a reason.
+
+Parents.
+
+Pastors.
+
+Mentors.
+
+Mature Christian friends.
+
+People who have already walked through seasons we're just beginning to experience.
+
+Wisdom is humble enough to listen.
+
+Not because older people are always right.
+
+But because God often speaks through the people He has placed around us.
+
+Think about the biggest lessons you've learned in life.
+
+Many of them probably came through someone else taking the time to teach you.
+
+❤️ A teachable heart keeps growing.
+
+❤️ A prideful heart eventually stops listening.
+
+Never lose the willingness to learn.
+
+---
+
+## ❤️ Guard Your Heart From Hidden Traps
+
+One of the strongest warnings in Proverbs 23 is against things that quietly take control of our lives.
+
+The chapter talks about drunkenness and destructive desires, but the principle reaches much farther.
+
+Anything that begins controlling us instead of God becomes dangerous.
+
+For one person, it may be alcohol.
+
+For another, it could be money.
+
+Success.
+
+Entertainment.
+
+Social media.
+
+Work.
+
+Even good things can become unhealthy when they begin replacing God in our hearts.
+
+Ask yourself...
+
+What do I run to when I'm stressed?
+
+Where do I turn when life feels overwhelming?
+
+What fills my thoughts the most?
+
+Those answers often reveal what our hearts trust.
+
+God isn't trying to remove joy from our lives.
+
+He's protecting us from allowing temporary things to become ultimate things.
+
+Only He deserves that place.
+
+---
+
+## 🌳 Give God Your Whole Heart
+
+One of the most beautiful verses in this chapter says,
+
+**"My son, give me thine heart."**
+
+What a simple invitation.
+
+God has never been interested in partial commitment.
+
+He doesn't want one hour of your week while something else owns the rest of your heart.
+
+He wants all of you.
+
+Your dreams.
+
+Your fears.
+
+Your relationships.
+
+Your future.
+
+Your victories.
+
+Your failures.
+
+Everything.
+
+Because He knows you'll never experience the life you were created for while your heart belongs to something else.
+
+Following Jesus has never been about perfect behavior.
+
+It's always been about surrender.
+
+Every day we choose who sits on the throne of our hearts.
+
+The world.
+
+Ourselves.
+
+Or God.
+
+❤️ Whatever sits on the throne of your heart will ultimately shape every decision you make.
+
+❤️ That's why giving your heart to God changes everything.
+
+---
+
+## 👀 What To Watch For Today
+
+As you read Proverbs 23 today, notice how often Solomon talks about the desires of the heart.
+
+The greatest battles we fight usually begin long before anyone else can see them.
+
+They begin inside us.
+
+❤️ What has been capturing my attention more than my relationship with God?
+
+❤️ Am I chasing temporary success while neglecting eternal priorities?
+
+❤️ Is there anything in my life that's beginning to control me instead of Christ?
+
+❤️ Have I truly given God every area of my heart, or am I still holding something back?
+
+Spend a few quiet moments before reading.
+
+Ask God to search your heart.
+
+Not to condemn you.
+
+But to lovingly show you if anything has quietly taken His place.
+
+He is always ready to welcome us back.
+
+---
+
+## 💡 The Big Lesson of Proverbs 23
+
+Proverbs 23 reminds us that the greatest battle we face isn't usually around us.
+
+It's within us.
+
+Our desires.
+
+Our priorities.
+
+Our hearts.
+
+When our hearts belong fully to God, everything else begins falling into its proper place.
+
+So today...
+
+📖 Pursue God's wisdom more than the temporary things of this world.
+
+❤️ Guard your heart carefully, because it will shape the direction of your life.
+
+🙏 Surrender every area of your life to Christ, trusting that nothing compares to walking closely with Him.
+
+The world will always offer something newer, bigger, and more exciting.
+
+But nothing it offers can compare to a heart that has found its true home in the presence of God.
+`,
+  24: `
+Have you ever looked at someone else's life and wondered...
+
+**"Why does everything seem to work out for them?"**
+
+Maybe they don't follow God.
+
+Maybe they cut corners at work.
+
+Maybe they're dishonest, selfish, or prideful.
+
+Yet somehow they seem successful.
+
+Meanwhile, you've been trying to do the right thing.
+
+You've prayed.
+
+You've worked hard.
+
+You've stayed faithful.
+
+And life still feels difficult.
+
+If you've ever wrestled with those thoughts, you're not alone.
+
+People have been asking those same questions for thousands of years.
+
+That's one of the reasons Proverbs 24 is so encouraging.
+
+Solomon reminds us that appearances can be deceiving.
+
+Success isn't always what it looks like.
+
+A person can have money but no peace.
+
+Popularity but no purpose.
+
+Power but no joy.
+
+From the outside, their life may seem perfect.
+
+But only God sees the whole story.
+
+Proverbs 24 invites us to stop comparing our lives to everyone else's and instead focus on becoming the person God is calling us to be.
+
+Because in the end, faithfulness will always outlast temporary success.
+
+---
+
+## 🌱 Wisdom Builds A Strong Life
+
+One of the beautiful pictures in this chapter is that wisdom builds a house.
+
+At first, Solomon isn't talking about bricks and wood.
+
+He's talking about a life.
+
+A family.
+
+A future.
+
+A legacy.
+
+Think about building a home.
+
+No one begins with the roof.
+
+Everything starts with the foundation.
+
+If the foundation is weak, eventually the entire house will suffer.
+
+Our spiritual lives work exactly the same way.
+
+Every prayer.
+
+Every chapter of Scripture.
+
+Every act of obedience.
+
+Every decision to trust God.
+
+Those are the bricks God uses to build a strong foundation.
+
+Sometimes it feels slow.
+
+Sometimes it feels like nothing is happening.
+
+But every faithful day matters.
+
+Over time, those ordinary moments become a life that can withstand storms.
+
+✨ God isn't just building your future.
+
+✨ He's building you.
+
+And that is His greatest work.
+
+---
+
+## 💪 Falling Doesn't Mean You're Finished
+
+One of the most encouraging verses in Proverbs says,
+
+**"For a just man falleth seven times, and riseth up again."**
+
+What incredible hope.
+
+Every believer falls.
+
+Every believer struggles.
+
+Every believer has moments they wish they could do over.
+
+The difference isn't that righteous people never fail.
+
+The difference is they don't stay down.
+
+When Peter denied Jesus, he failed.
+
+When David committed adultery, he failed.
+
+When Jonah ran from God, he failed.
+
+Yet God wasn't finished with any of them.
+
+Why?
+
+Because failure is never the end of the story for someone who continues turning back to God.
+
+The enemy wants you to believe your mistakes define you.
+
+God says His grace is greater than your failures.
+
+That doesn't make sin less serious.
+
+It makes God's mercy even more amazing.
+
+❤️ Your greatest failure doesn't have to become your final chapter.
+
+❤️ God's grace always invites you to get back up and keep walking.
+
+---
+
+## 🤝 Don't Ignore People Who Need Your Help
+
+One of the most challenging parts of Proverbs 24 tells us not to hold back when someone's life is in danger.
+
+The principle goes far beyond that specific situation.
+
+God calls His people to care.
+
+To notice.
+
+To act.
+
+It's easy to assume someone else will help.
+
+Someone else will encourage them.
+
+Someone else will pray for them.
+
+Someone else will step in.
+
+But what if God placed **you** in that moment for a reason?
+
+Think about how many opportunities we have every week.
+
+A friend who needs encouragement.
+
+A neighbor who feels lonely.
+
+Someone at church who's quietly struggling.
+
+A stranger who simply needs kindness.
+
+Most acts of compassion don't require extraordinary abilities.
+
+They simply require paying attention.
+
+✨ Never underestimate the impact of showing up when someone needs you.
+
+✨ Sometimes the smallest act of kindness becomes the answer to someone's prayer.
+
+---
+
+## 🌳 Be Patient—God Is Still Working
+
+One of the greatest temptations in the Christian life is becoming discouraged.
+
+We pray...
+
+But nothing seems to change.
+
+We try to grow...
+
+But we still struggle.
+
+We trust God...
+
+But the answer takes longer than we expected.
+
+Proverbs 24 reminds us that growth takes time.
+
+Farmers don't plant seeds one day and harvest crops the next.
+
+They wait.
+
+They water.
+
+They trust the process.
+
+God often works the same way.
+
+He's growing things in your life that can't happen overnight.
+
+Patience.
+
+Character.
+
+Faith.
+
+Perseverance.
+
+Those qualities are usually developed slowly.
+
+So if you feel like you're growing more slowly than you hoped...
+
+Don't give up.
+
+God is still working.
+
+Even when you can't yet see the fruit.
+
+❤️ Faithfulness today is preparing you for blessings you may not recognize until much later.
+
+❤️ Keep trusting the process God has you in.
+
+---
+
+## 👀 What To Watch For Today
+
+As you read Proverbs 24 today, notice how often Solomon encourages perseverance, wisdom, and compassion.
+
+God isn't asking you to be perfect.
+
+He's asking you to remain faithful.
+
+❤️ Have I been comparing my life to people who seem successful without God?
+
+❤️ Is there an area where I need to get back up instead of staying discouraged?
+
+❤️ Who has God placed in my life that may need encouragement today?
+
+❤️ Am I trusting God to keep building my life, even when I don't yet see the finished picture?
+
+Spend a few quiet moments before reading.
+
+Thank God that He isn't finished with you yet.
+
+Then ask Him for the strength to keep taking the next faithful step.
+
+---
+
+## 💡 The Big Lesson of Proverbs 24
+
+Proverbs 24 reminds us that wisdom isn't about living a perfect life.
+
+It's about living a faithful one.
+
+Faithful enough to keep building.
+
+Faithful enough to keep getting back up.
+
+Faithful enough to care for others.
+
+Faithful enough to trust God even when the results aren't immediate.
+
+So today...
+
+📖 Keep building your life on God's wisdom.
+
+❤️ If you've fallen, get back up and keep following Christ.
+
+🙏 Trust that God is using every faithful step to build something stronger than you can currently see.
+
+The strongest believers aren't the ones who never stumble.
+
+They're the ones who keep getting back up, trusting that God's grace is always greater than their greatest failure.
+`,
+  25: `
+By the time you've reached Proverbs 25, you've probably noticed something.
+
+Wisdom isn't complicated.
+
+It's practical.
+
+It shows up in the ordinary moments of everyday life.
+
+The way we speak.
+
+The way we work.
+
+The way we respond when someone hurts us.
+
+The way we handle success.
+
+The way we treat people who can do nothing for us in return.
+
+Sometimes we think spiritual growth only happens during dramatic moments.
+
+A powerful church service.
+
+A life-changing prayer.
+
+A miracle we never expected.
+
+Those moments are wonderful.
+
+But most of the time, God shapes us through ordinary life.
+
+A conversation with a coworker.
+
+A difficult family dinner.
+
+An unexpected inconvenience.
+
+A disagreement with a friend.
+
+Those everyday moments become opportunities to practice the wisdom we've been learning.
+
+That's exactly what Proverbs 25 teaches.
+
+This chapter is filled with practical advice about humility, patience, kindness, self-control, and knowing when to speak.
+
+At first, the verses seem unrelated.
+
+But underneath them is one beautiful truth.
+
+**The little decisions you make every day reveal whether God's wisdom is truly changing your heart.**
+
+Knowledge is important.
+
+But transformed living is even more important.
+
+---
+
+## 🌱 Humility Always Comes Before Honor
+
+One of the best-known lessons in Proverbs 25 is about humility.
+
+Solomon warns against promoting yourself.
+
+He tells us it's better for someone else to honor you than for you to constantly seek attention for yourself.
+
+That's difficult in today's world.
+
+We're surrounded by social media.
+
+Followers.
+
+Likes.
+
+Recognition.
+
+Everything seems to encourage us to build our own platform.
+
+But God's Kingdom works differently.
+
+Jesus didn't spend His life trying to make Himself famous.
+
+He spent His life serving others.
+
+True humility isn't pretending you have no gifts.
+
+It's recognizing that every gift you have came from God.
+
+Every talent.
+
+Every opportunity.
+
+Every success.
+
+When we remember that, pride begins losing its grip.
+
+We no longer have to prove ourselves to everyone around us.
+
+We simply become faithful with what God has entrusted to us.
+
+❤️ The people who chase recognition rarely find lasting satisfaction.
+
+❤️ The people who chase God often receive honor they were never looking for.
+
+---
+
+## 💬 The Right Words At The Right Time
+
+One of the most beautiful pictures in this chapter says,
+
+**"A word fitly spoken is like apples of gold in pictures of silver."**
+
+Think about how much timing matters.
+
+The right words spoken at the wrong moment can still miss the mark.
+
+But the right words at the right time...
+
+Can change someone's entire day.
+
+Maybe even their entire life.
+
+Have you ever received encouragement at exactly the moment you needed it?
+
+Someone called.
+
+Sent a text.
+
+Shared a Bible verse.
+
+Prayed with you.
+
+Those moments stay with us because God often uses people to remind us that we're not alone.
+
+The question is...
+
+Are we paying enough attention to become that person for someone else?
+
+Before speaking today, ask yourself...
+
+*"Lord, could You use my words to encourage someone?"*
+
+✨ Your words may become the answer to a prayer you never even knew someone was praying.
+
+✨ Never underestimate the power of timely encouragement.
+
+---
+
+## ❤️ Kindness Is Stronger Than Revenge
+
+One of the most surprising teachings in Proverbs 25 tells us that if our enemy is hungry, we should feed him.
+
+If he's thirsty, we should give him something to drink.
+
+That sounds completely opposite to human nature.
+
+Our natural response is to get even.
+
+To make people feel what they made us feel.
+
+To hold onto resentment until they apologize.
+
+God calls us to something much greater.
+
+Kindness.
+
+Not because people always deserve it.
+
+But because that's exactly how God has treated us.
+
+Think about how many times you've received grace instead of judgment.
+
+Patience instead of punishment.
+
+Mercy instead of what you deserved.
+
+Now God invites us to extend that same grace to others.
+
+That doesn't mean ignoring injustice.
+
+It means refusing to let bitterness take control of your heart.
+
+❤️ Revenge keeps us chained to yesterday.
+
+❤️ Forgiveness allows us to walk forward with God.
+
+---
+
+## 🌳 Self Control Protects Your Life
+
+Near the end of the chapter, Solomon gives a powerful comparison.
+
+He says that a person without self-control is like a city with broken-down walls.
+
+In ancient times, city walls provided protection.
+
+Without them, enemies could enter whenever they wanted.
+
+The same is true spiritually.
+
+When we stop practicing self-control...
+
+Anger becomes harder to manage.
+
+Temptation becomes easier to follow.
+
+Impulsive decisions begin creating unnecessary problems.
+
+Self-control isn't about making life smaller.
+
+It's about protecting the life God is building.
+
+Every time you choose patience over anger...
+
+Wisdom over impulse...
+
+Faith over fear...
+
+God is strengthening the walls around your heart.
+
+Those daily decisions prepare you for the bigger battles you'll eventually face.
+
+✨ Self-control isn't restriction.
+
+✨ It's protection.
+
+And God always protects what He loves.
+
+---
+
+## 👀 What To Watch For Today
+
+As you read Proverbs 25 today, notice how often Solomon talks about humility, wise speech, kindness, and self-control.
+
+These qualities don't usually grow overnight.
+
+They're developed through everyday obedience.
+
+❤️ Am I seeking recognition, or am I simply trying to be faithful where God has placed me?
+
+❤️ Are my words bringing encouragement to the people around me?
+
+❤️ Is there someone I need to show unexpected kindness toward today?
+
+❤️ Where is God asking me to practice greater self-control instead of simply reacting to my emotions?
+
+Spend a few quiet moments before reading.
+
+Ask God to make you more like Jesus.
+
+Not just in what you believe...
+
+But in the way you speak, serve, forgive, and love others every single day.
+
+---
+
+## 💡 The Big Lesson of Proverbs 25
+
+Proverbs 25 reminds us that wisdom isn't only revealed during life's biggest moments.
+
+It's revealed in the ordinary ones.
+
+The quiet conversations.
+
+The hidden acts of kindness.
+
+The humble decisions no one applauds.
+
+The moments when we choose God's way instead of our own.
+
+So today...
+
+📖 Let God's wisdom shape your everyday responses.
+
+❤️ Choose humility over pride and kindness over revenge.
+
+🙏 Ask God to strengthen your self-control so your life reflects His character more clearly.
+
+Every ordinary act of obedience becomes another step toward becoming the person God created you to be.
+
+And those small steps, faithfully repeated, can change the direction of your entire life.
+`,
+  26: `
+Have you ever tried giving someone advice that you knew would help them...
+
+But they wouldn't listen?
+
+Maybe they asked for your opinion.
+
+Maybe they were heading toward a decision that was obviously going to end badly.
+
+You explained the situation.
+
+You warned them.
+
+You even shared your own mistakes, hoping they could avoid making the same ones.
+
+But nothing changed.
+
+They had already made up their mind.
+
+It's one of the hardest things to watch.
+
+Not because they lacked intelligence.
+
+But because they refused wisdom.
+
+That's one of the biggest themes in Proverbs 26.
+
+This chapter spends a lot of time talking about fools.
+
+At first, that can sound harsh.
+
+But in Proverbs, a fool isn't simply someone who isn't smart.
+
+A fool is someone who repeatedly rejects God's wisdom.
+
+Someone who refuses correction.
+
+Someone who keeps making the same destructive choices while expecting different results.
+
+The opposite of a fool isn't a genius.
+
+It's someone with a humble heart that's willing to learn.
+
+That's an encouraging thought.
+
+Because every one of us has the opportunity to become wiser.
+
+Not by knowing everything.
+
+But by remaining teachable.
+
+---
+
+## 🌱 Pride Keeps Us From Growing
+
+One of the clearest lessons in Proverbs 26 is that pride can become one of our greatest obstacles.
+
+Pride tells us...
+
+*"I already know."*
+
+*"Nobody can teach me anything."*
+
+*"Everyone else is the problem."*
+
+Those thoughts quietly stop us from growing.
+
+Have you ever noticed that the people who seem to know the most are often the quickest to admit they still have more to learn?
+
+That's true spiritually too.
+
+The longer we walk with Christ...
+
+The more we realize how much we still need Him.
+
+Humility keeps our hearts open.
+
+It allows God to correct us.
+
+Shape us.
+
+Stretch us.
+
+The moment we stop being teachable...
+
+We stop growing.
+
+That's why wisdom and humility always go together.
+
+❤️ God isn't looking for people who have all the answers.
+
+❤️ He's looking for people who are willing to keep learning.
+
+Never lose your sense of wonder when you open God's Word.
+
+There is always something new He wants to teach you.
+
+---
+
+## 💬 Gossip Always Costs More Than We Think
+
+One of the strongest warnings in this chapter is about gossip.
+
+It's easy to think gossip is harmless.
+
+After all...
+
+We're "just talking."
+
+We're "just sharing."
+
+We're "just telling the truth."
+
+But Solomon reminds us that careless words spread like fire.
+
+One conversation becomes another.
+
+Misunderstandings grow.
+
+Trust disappears.
+
+Relationships begin falling apart.
+
+The frightening part is that gossip often disguises itself as concern.
+
+It sounds innocent.
+
+Even spiritual.
+
+But its effects are destructive.
+
+Before repeating something you've heard, ask yourself...
+
+Is it true?
+
+Is it necessary?
+
+Is it loving?
+
+Will sharing this help someone...
+
+Or simply satisfy my curiosity?
+
+Imagine how different our churches, families, and friendships would be if we spoke about people the way we'd want them speaking about us.
+
+✨ Wisdom protects people's reputations.
+
+✨ Love refuses to spread what doesn't need to be repeated.
+
+---
+
+## 🔥 Small Sparks Can Start Great Fires
+
+One of the pictures Solomon uses is incredibly vivid.
+
+Without wood...
+
+A fire eventually goes out.
+
+Without someone continuing the conflict...
+
+Arguments begin settling down.
+
+That's true in almost every relationship.
+
+Many disagreements continue because both people keep adding fuel.
+
+One harsh comment.
+
+Another sarcastic reply.
+
+One more attempt to prove who's right.
+
+The conflict keeps growing.
+
+But someone has the power to stop it.
+
+What if that someone was you?
+
+What if instead of reacting immediately...
+
+You paused.
+
+Prayed.
+
+Chose gentleness.
+
+Imagine how many unnecessary arguments could end if one person decided not to throw another log onto the fire.
+
+That doesn't mean ignoring truth.
+
+It means speaking truth with wisdom.
+
+❤️ Peace often begins when someone decides not to escalate the conflict.
+
+❤️ You can't always control another person's response.
+
+But you can always control your own.
+
+---
+
+## 🌳 God Wants Authentic Hearts
+
+Toward the end of Proverbs 26, Solomon warns about people whose words sound kind while their hearts are full of hatred.
+
+That's a sobering reminder.
+
+God has never been interested in fake faith.
+
+He isn't impressed by religious words if they aren't matched by a transformed heart.
+
+Christianity isn't about learning the right vocabulary.
+
+It's about allowing Jesus to genuinely change us from the inside out.
+
+As we grow closer to Him...
+
+Our words begin matching our hearts.
+
+Our private lives begin matching our public lives.
+
+Our character begins reflecting the One we follow.
+
+None of us will do that perfectly.
+
+But that's the direction God is leading us.
+
+✨ Authentic faith isn't pretending you've arrived.
+
+✨ It's honestly allowing God to keep changing you every day.
+
+---
+
+## 👀 What To Watch For Today
+
+As you read Proverbs 26 today, notice how often Solomon contrasts humility with pride and wisdom with foolishness.
+
+This chapter invites us to examine not only what we know...
+
+But how we respond when God teaches us.
+
+❤️ Am I still willing to receive correction, or have I become too comfortable with my own opinions?
+
+❤️ Have my words been building people up, or quietly tearing them down?
+
+❤️ Is there a conflict where God is calling me to become a peacemaker instead of adding fuel to the fire?
+
+❤️ Is my relationship with Christ genuine on the inside, or am I more concerned with appearances?
+
+Take a few quiet moments before reading.
+
+Ask God to give you a humble, teachable heart.
+
+Because that's the kind of heart He can continue transforming.
+
+---
+
+## 💡 The Big Lesson of Proverbs 26
+
+Proverbs 26 reminds us that wisdom isn't determined by intelligence.
+
+It's determined by humility.
+
+Wise people keep learning.
+
+They guard their words.
+
+They pursue peace.
+
+And they allow God to transform their hearts from the inside out.
+
+So today...
+
+📖 Stay teachable as you walk with Christ.
+
+❤️ Speak words that bring healing instead of division.
+
+🙏 Ask God to make your private character match your public faith.
+
+The greatest evidence of spiritual maturity isn't how much Scripture you've memorized.
+
+It's how willing you are to let Scripture continue changing the way you live.
+`,
+  27: `
+Have you ever caught yourself saying...
+
+*"I'll start tomorrow."*
+
+Tomorrow I'll spend more time with God.
+
+Tomorrow I'll forgive that person.
+
+Tomorrow I'll get serious about my health.
+
+Tomorrow I'll finally begin that dream God placed on my heart.
+
+We've all done it.
+
+There's something about tomorrow that feels safe.
+
+It gives us permission to delay the things we know we should do today.
+
+But Proverbs 27 reminds us of a truth that every one of us needs to hear.
+
+**None of us are promised tomorrow.**
+
+That isn't meant to make us afraid.
+
+It's meant to remind us how valuable today really is.
+
+Every sunrise is a gift from God.
+
+Every conversation.
+
+Every opportunity to encourage someone.
+
+Every chance to grow closer to Christ.
+
+Every act of obedience.
+
+Today matters because it's the only day we've actually been given.
+
+We can't change yesterday.
+
+We can't control tomorrow.
+
+But we can choose how we'll live today.
+
+And today's choices have a way of shaping tomorrow's life.
+
+---
+
+## 🌱 God Uses Other People To Help Us Grow
+
+One of the most famous verses in Proverbs says,
+
+**"Iron sharpeneth iron; so a man sharpeneth the countenance of his friend."**
+
+Think about how iron is sharpened.
+
+It isn't a comfortable process.
+
+There is friction.
+
+Pressure.
+
+Contact.
+
+That's exactly how many of God's greatest lessons happen in our lives.
+
+Through people.
+
+Faithful friends encourage us.
+
+Challenge us.
+
+Correct us.
+
+Celebrate with us.
+
+Pray for us.
+
+Sometimes the people God uses to sharpen us are the very people who stretch our patience the most.
+
+Not because they're trying to make life difficult.
+
+But because God is using those relationships to shape our character.
+
+The question isn't whether God is using people in your life.
+
+He is.
+
+The question is whether you're willing to learn from them.
+
+❤️ Growth is rarely comfortable.
+
+❤️ But God often uses relationships to make us more like Christ.
+
+Don't run from every difficult relationship.
+
+Ask God what He may be teaching you through it.
+
+---
+
+## 🤝 Faithful Friends Tell The Truth
+
+Proverbs 27 also says,
+
+**"Faithful are the wounds of a friend; but the kisses of an enemy are deceitful."**
+
+That's a powerful statement.
+
+A real friend doesn't simply tell you what you want to hear.
+
+A real friend loves you enough to tell you what you need to hear.
+
+That's becoming increasingly rare.
+
+Our culture often values comfort over truth.
+
+Approval over honesty.
+
+But Godly friendships are different.
+
+If you're heading toward danger...
+
+A faithful friend speaks up.
+
+If your attitude is becoming unhealthy...
+
+A faithful friend lovingly challenges you.
+
+If you're drifting from God...
+
+A faithful friend points you back to Him.
+
+Those conversations aren't always easy.
+
+But they're often life changing.
+
+The question is...
+
+Do you have people in your life who love you enough to tell you the truth?
+
+And are you humble enough to receive it?
+
+✨ Don't only ask God for comfortable friendships.
+
+✨ Ask Him for faithful ones.
+
+Those are the friendships that help us grow.
+
+---
+
+## 🌳 Be Faithful With What God Has Already Given You
+
+One of the recurring themes in Proverbs 27 is stewardship.
+
+Taking care of what God has already placed in your hands.
+
+It's easy to spend our lives dreaming about the next opportunity.
+
+The next promotion.
+
+The next house.
+
+The next season.
+
+The next blessing.
+
+Meanwhile, we overlook the responsibilities sitting right in front of us.
+
+God often prepares us for greater opportunities by watching how we handle today's responsibilities.
+
+How do we treat our family?
+
+How faithfully do we do our work?
+
+How do we care for our finances?
+
+Our health?
+
+Our relationships?
+
+Our time with Him?
+
+Faithfulness isn't glamorous.
+
+Most people won't notice it.
+
+But God does.
+
+And throughout Scripture, He consistently blesses people who remain faithful in the small things.
+
+❤️ Stop waiting for a bigger opportunity to become faithful.
+
+❤️ The opportunity you have today is already enough to begin honoring God.
+
+---
+
+## 🌞 Your Heart Will Always Chase What It Loves Most
+
+Near the end of Proverbs 27, Solomon reminds us that just as water reflects a face, the heart reflects the person.
+
+Eventually, what fills your heart becomes visible.
+
+If your heart is filled with gratitude...
+
+People will notice.
+
+If it's filled with bitterness...
+
+That will eventually become visible too.
+
+If it's filled with God's love...
+
+That love will naturally begin overflowing into the people around you.
+
+That's why spending time with God matters so much.
+
+The more time we spend with Him...
+
+The more our hearts begin changing.
+
+And changed hearts produce changed lives.
+
+That's the goal of the Christian life.
+
+Not simply becoming more religious.
+
+Becoming more like Jesus.
+
+✨ Whatever consistently fills your heart will eventually shape your life.
+
+✨ Make sure you're filling it with the things that bring you closer to Christ.
+
+---
+
+## 👀 What To Watch For Today
+
+As you read Proverbs 27 today, notice how often Solomon talks about relationships, humility, and faithfulness.
+
+God often grows us through the ordinary people and ordinary responsibilities He places in our lives.
+
+❤️ Am I making the most of the opportunities God has given me today, or am I constantly waiting for tomorrow?
+
+❤️ Who are the people God is using to sharpen my character?
+
+❤️ Am I willing to receive loving correction from faithful friends?
+
+❤️ What is my heart becoming full of through the things I watch, listen to, and think about every day?
+
+Spend a few quiet moments before reading.
+
+Thank God for the people He's placed in your life.
+
+Then ask Him to help you become the kind of friend, worker, parent, spouse, neighbor, and follower of Christ who faithfully reflects His love.
+
+---
+
+## 💡 The Big Lesson of Proverbs 27
+
+Proverbs 27 reminds us that a wise life isn't built someday.
+
+It's built today.
+
+Through faithful friendships.
+
+Faithful work.
+
+Faithful choices.
+
+Faithful obedience.
+
+God isn't asking you to control tomorrow.
+
+He's asking you to trust Him with today.
+
+So today...
+
+📖 Live faithfully with the opportunities God has already placed before you.
+
+❤️ Welcome the people He's using to sharpen your character.
+
+🙏 Fill your heart with His truth so your life reflects His goodness.
+
+Tomorrow belongs to God.
+
+Today is His gift to you.
+
+Use it well, and trust Him with everything that comes next.
+`,
+  28: `
+Have you ever tried to hide something?
+
+Maybe it was a mistake.
+
+A bad decision.
+
+A struggle you hoped nobody would ever find out about.
+
+Most of us have.
+
+There's something in human nature that wants to hide our failures.
+
+We smile when we're hurting.
+
+We say we're fine when we're struggling.
+
+We convince ourselves that if nobody knows what's happening, maybe everything will somehow be okay.
+
+But hiding has a way of becoming exhausting.
+
+The longer we carry secrets...
+
+The heavier they become.
+
+That's one of the biggest lessons in Proverbs 28.
+
+This chapter constantly contrasts two different ways of living.
+
+One person hides from God.
+
+The other runs to Him.
+
+One trusts in themselves.
+
+The other trusts in the Lord.
+
+One clings to sin.
+
+The other finds mercy through repentance.
+
+The beautiful truth is that God already knows everything about us.
+
+Our victories.
+
+Our failures.
+
+Our fears.
+
+Our hidden struggles.
+
+And yet He still invites us to come to Him.
+
+Not because He wants to shame us.
+
+But because He wants to set us free.
+
+---
+
+## 🌱 Freedom Begins With Honesty
+
+One of the most powerful verses in Proverbs says,
+
+**"He that covereth his sins shall not prosper: but whoso confesseth and forsaketh them shall have mercy."**
+
+Those words are filled with hope.
+
+Notice what Solomon doesn't say.
+
+He doesn't say perfect people receive mercy.
+
+He says honest people do.
+
+God has never expected us to pretend.
+
+He already knows every thought we've had.
+
+Every temptation we've faced.
+
+Every failure we've experienced.
+
+Confession isn't informing God of something He doesn't know.
+
+It's agreeing with Him.
+
+It's saying,
+
+*"Lord... You're right. I need Your help."*
+
+That's where healing begins.
+
+Not when we hide.
+
+Not when we make excuses.
+
+Not when we blame someone else.
+
+But when we honestly bring everything into His light.
+
+❤️ Conviction is not God's way of pushing you away.
+
+❤️ It's His loving invitation to come back home.
+
+There is incredible freedom waiting on the other side of honesty.
+
+---
+
+## 🙏 Real Confidence Comes From Trusting God
+
+Another beautiful truth in Proverbs 28 says,
+
+**"The wicked flee when no man pursueth: but the righteous are bold as a lion."**
+
+At first that seems confusing.
+
+Why would someone run if no one is chasing them?
+
+Because guilt has a way of stealing peace.
+
+Fear keeps looking over its shoulder.
+
+But a clear conscience brings confidence.
+
+Not because we're perfect.
+
+But because we're walking honestly with God.
+
+Real confidence doesn't come from believing in yourself.
+
+It comes from believing in the God who is walking with you.
+
+Think about David facing Goliath.
+
+His confidence wasn't in his own ability.
+
+It was in the Lord.
+
+Think about Daniel entering the lions' den.
+
+Or Esther standing before the king.
+
+Or Paul preaching the gospel while imprisoned.
+
+Their courage came from trusting God.
+
+The same confidence is available to us today.
+
+✨ Courage grows when trust grows.
+
+✨ The closer you walk with God, the less you have to fear.
+
+---
+
+## 💰 What You Treasure Shapes Your Life
+
+Throughout Proverbs 28, Solomon reminds us that greed can quietly pull our hearts away from God.
+
+Money itself isn't the problem.
+
+The problem begins when money becomes our greatest pursuit.
+
+Jesus later asked,
+
+*"What does it profit a man if he gains the whole world but loses his own soul?"*
+
+That's still one of the most important questions we can ask ourselves.
+
+What am I really living for?
+
+If someone watched my life...
+
+My schedule.
+
+My conversations.
+
+My spending.
+
+My priorities.
+
+What would they conclude is most important to me?
+
+The answer to that question often reveals where our treasure really is.
+
+God isn't against success.
+
+He's against anything replacing Him as first place in our hearts.
+
+❤️ Anything you love more than God will eventually disappoint you.
+
+❤️ Only Christ can carry the weight of being the center of your life.
+
+---
+
+## 🌳 A Life Built On God Will Stand Firm
+
+One of the great themes running through Proverbs 28 is trust.
+
+Some people trust their own wisdom.
+
+Others trust their wealth.
+
+Their position.
+
+Their abilities.
+
+Their reputation.
+
+But Solomon reminds us that those things can disappear.
+
+Money comes and goes.
+
+Health changes.
+
+Jobs end.
+
+People disappoint us.
+
+God never does.
+
+That's why building your life on Him is the wisest decision you'll ever make.
+
+Storms will come.
+
+Difficult seasons are part of life.
+
+But when your confidence is rooted in God's faithfulness instead of changing circumstances, you have a foundation that cannot be shaken.
+
+The goal of the Christian life isn't avoiding storms.
+
+It's learning to stand firm because Christ is standing with you.
+
+✨ A strong faith isn't built during easy seasons.
+
+✨ It's built by trusting God through difficult ones.
+
+---
+
+## 👀 What To Watch For Today
+
+As you read Proverbs 28 today, notice how often Solomon contrasts honesty with hiding and trust with self-reliance.
+
+God continually invites us into a life of freedom instead of fear.
+
+❤️ Is there an area of my life that I've been hiding instead of honestly bringing before God?
+
+❤️ Where have I been trusting myself more than I've been trusting Him?
+
+❤️ What has been receiving the greatest attention and affection in my heart lately?
+
+❤️ Am I building my confidence on changing circumstances or on the unchanging character of God?
+
+Spend a few quiet moments before reading.
+
+Thank God that His mercy is always greater than your failures.
+
+Then ask Him to help you walk honestly, humbly, and confidently with Him today.
+
+---
+
+## 💡 The Big Lesson of Proverbs 28
+
+Proverbs 28 reminds us that wisdom begins with honesty.
+
+Not pretending.
+
+Not hiding.
+
+Not relying on ourselves.
+
+But bringing our whole lives before the God who already knows us completely and loves us deeply.
+
+So today...
+
+📖 Walk honestly before God.
+
+❤️ Trust Him more than you trust yourself.
+
+🙏 Build your life on the unshakable foundation of His mercy and faithfulness.
+
+You don't have to carry the weight of pretending anymore.
+
+The God who knows you best is also the One who loves you most.
+
+And His grace is always enough for the person who is willing to come to Him with an open heart.
+`,
+  29: `
+Have you ever looked back at your life and realized how much changed because of one decision?
+
+One conversation.
+
+One job.
+
+One friendship.
+
+One prayer.
+
+One choice to obey God.
+
+At the time, it probably didn't feel like a life-changing moment.
+
+It just felt like another ordinary day.
+
+But looking back, you can clearly see that everything after that moment was different.
+
+Life is often like that.
+
+We expect the biggest changes to come through dramatic moments.
+
+Instead, they usually begin with one quiet decision.
+
+One step of obedience.
+
+One act of faith.
+
+One moment where we choose God's wisdom over our own understanding.
+
+That's one of the greatest lessons in Proverbs 29.
+
+This chapter talks about correction, leadership, pride, anger, justice, self-control, and the fear of man.
+
+At first those subjects seem disconnected.
+
+But they all point to one truth.
+
+**The direction of your life is determined by the decisions you repeatedly make.**
+
+Every choice is shaping you.
+
+Every response is forming your character.
+
+Every act of obedience is moving you closer to the person God created you to become.
+
+The question isn't whether your life is changing.
+
+It is.
+
+The question is...
+
+**Who is directing that change?**
+
+---
+
+## 🌱 A Teachable Heart Never Stops Growing
+
+Proverbs 29 begins with a powerful warning.
+
+A person who repeatedly rejects correction eventually reaches a place where the consequences become much greater.
+
+That can sound intimidating.
+
+But underneath the warning is an invitation.
+
+Stay teachable.
+
+One of the greatest dangers in the Christian life isn't making mistakes.
+
+It's becoming unwilling to learn from them.
+
+Every mature believer you admire has failed.
+
+Every pastor.
+
+Every missionary.
+
+Every godly parent.
+
+Every faithful Christian.
+
+The difference is that they allowed God to use those failures to shape them instead of hardening them.
+
+God can do incredible things with someone who says,
+
+*"Lord... teach me."*
+
+He has much more difficulty working with someone who insists,
+
+*"I already know."*
+
+❤️ Humility opens doors that pride keeps locked.
+
+❤️ Every correction God gives is another opportunity to become more like Christ.
+
+---
+
+## 😠 Anger Makes Terrible Decisions
+
+One theme that appears several times in Proverbs 29 is anger.
+
+We've all experienced it.
+
+Sometimes anger itself isn't the problem.
+
+Jesus became angry over sin and injustice.
+
+The problem is what we do with it.
+
+Uncontrolled anger rarely produces wisdom.
+
+It says things that can never be taken back.
+
+It damages relationships.
+
+It clouds our judgment.
+
+It often creates problems much bigger than the one that made us angry in the first place.
+
+Think about the biggest regrets people often have.
+
+Many begin with the words...
+
+*"I was angry."*
+
+Wisdom teaches us to slow down.
+
+To pray before reacting.
+
+To allow God's Spirit to lead instead of our emotions.
+
+That doesn't make us weak.
+
+It makes us wise.
+
+✨ Self-control is often the difference between a problem being solved and a problem becoming much worse.
+
+✨ A calm heart usually sees what an angry heart cannot.
+
+---
+
+## 👑 The Fear Of People Will Trap You
+
+One of the most important verses in Proverbs 29 says,
+
+**"The fear of man bringeth a snare: but whoso putteth his trust in the Lord shall be safe."**
+
+How many decisions have we made simply because we worried about what someone else might think?
+
+We stay silent because we fear rejection.
+
+We compromise because we want acceptance.
+
+We avoid doing what's right because we're afraid of criticism.
+
+Every one of us battles this.
+
+We want people to like us.
+
+There's nothing wrong with that.
+
+The danger comes when pleasing people becomes more important than pleasing God.
+
+The opinions of people constantly change.
+
+One day they applaud you.
+
+The next day they criticize you.
+
+God never changes.
+
+His truth never changes.
+
+His love never changes.
+
+That's why our identity must be rooted in Him instead of public opinion.
+
+❤️ You'll never experience real freedom until God's approval matters more than everyone else's.
+
+---
+
+## 🌳 Good Leadership Begins With Good Character
+
+Throughout Proverbs 29, Solomon talks about leaders.
+
+Kings.
+
+Rulers.
+
+Judges.
+
+But the principles apply to every one of us.
+
+Because leadership isn't only about having a title.
+
+Every parent is leading a family.
+
+Every teacher leads students.
+
+Every employer leads employees.
+
+Every Christian influences someone.
+
+Leadership begins long before someone gives you authority.
+
+It begins with character.
+
+Integrity.
+
+Humility.
+
+Justice.
+
+Compassion.
+
+Those qualities earn trust.
+
+People may follow a position because they have to.
+
+They follow character because they want to.
+
+That's exactly how Jesus led.
+
+He didn't demand loyalty.
+
+He inspired it through love, truth, humility, and sacrifice.
+
+As followers of Christ, we're called to lead the same way.
+
+Not by seeking power.
+
+But by serving others.
+
+✨ The greatest leaders are usually the greatest servants.
+
+✨ God measures leadership by faithfulness, not popularity.
+
+---
+
+## 👀 What To Watch For Today
+
+As you read Proverbs 29 today, notice how often Solomon connects wisdom with humility, self-control, and courage.
+
+God isn't asking us to live for the approval of people.
+
+He's calling us to live faithfully before Him.
+
+❤️ Is there an area where I've been resisting God's correction?
+
+❤️ Have I allowed anger or frustration to control my responses lately?
+
+❤️ Am I making decisions based on what people think or on what God says?
+
+❤️ How can I lead others more faithfully through my example this week?
+
+Spend a few quiet moments asking God to make you both humble and courageous.
+
+Humble enough to keep learning.
+
+Courageous enough to obey Him, even when it's difficult.
+
+---
+
+## 💡 The Big Lesson of Proverbs 29
+
+Proverbs 29 reminds us that wisdom isn't built through one extraordinary decision.
+
+It's built through countless ordinary ones.
+
+Choosing humility instead of pride.
+
+Patience instead of anger.
+
+God's approval instead of people's approval.
+
+Faithfulness instead of compromise.
+
+So today...
+
+📖 Welcome God's correction with a teachable heart.
+
+❤️ Trust His opinion more than the opinions of others.
+
+🙏 Lead by serving, love by example, and walk confidently in the wisdom He provides.
+
+One decision made in obedience today may become the turning point you look back on years from now.
+
+Choose the path that honors God.
+
+He is always faithful to lead those who are willing to follow.
+`,
+  30: `
+Thirty days ago, you opened the book of Proverbs looking for wisdom.
+
+Maybe you wanted answers.
+
+Maybe you wanted direction.
+
+Maybe you simply wanted to understand God's Word a little better.
+
+Now you've reached the final chapter.
+
+But this isn't really the end.
+
+In many ways...
+
+It's the beginning.
+
+Because wisdom was never meant to stay on these pages.
+
+It was meant to shape the way you live.
+
+The way you speak.
+
+The way you work.
+
+The way you love people.
+
+The way you respond when life doesn't go according to plan.
+
+That's what Proverbs has been teaching us from the very first chapter.
+
+Wisdom isn't simply knowing what's right.
+
+It's choosing what's right.
+
+Again.
+
+And again.
+
+And again.
+
+Until it becomes part of who you are.
+
+Proverbs 30 feels different from many of the chapters before it.
+
+Instead of focusing primarily on short comparisons between wisdom and foolishness, it invites us into a spirit of humility.
+
+It reminds us that no matter how much we've learned...
+
+We still need God.
+
+Every single day.
+
+And perhaps that's the greatest lesson in the entire book.
+
+The wisest people are not the ones who think they've arrived.
+
+They're the ones who never stop depending on the Lord.
+
+---
+
+## 🌱 The More We Learn, The More We Realize We Need God
+
+One of the first things you'll notice in Proverbs 30 is how humble the writer is.
+
+Instead of boasting about his wisdom, he openly admits his limitations.
+
+That's refreshing.
+
+Our world encourages us to appear confident all the time.
+
+To always have the answers.
+
+To never admit weakness.
+
+God's wisdom looks very different.
+
+The closer we grow to Him...
+
+The more we realize how much we still have to learn.
+
+Think about the greatest Christians you've ever known.
+
+They probably weren't the people who constantly talked about how spiritual they were.
+
+They were the people who quietly depended on God.
+
+Who prayed often.
+
+Who listened carefully.
+
+Who remained teachable.
+
+Humility isn't thinking less of yourself.
+
+It's recognizing that every good thing you know, every bit of wisdom you have, and every blessing you've received has come from God.
+
+❤️ The beginning of wisdom is realizing you still need God's wisdom tomorrow.
+
+❤️ Spiritual maturity never outgrows dependence on the Lord.
+
+---
+
+## 📖 God's Word Can Always Be Trusted
+
+Proverbs 30 reminds us that **every word of God is pure.**
+
+What an incredible promise.
+
+People change.
+
+Opinions change.
+
+Cultures change.
+
+Even our own feelings change from one day to the next.
+
+But God's Word remains the same.
+
+There will be days when your emotions tell you one thing while Scripture tells you another.
+
+Trust Scripture.
+
+There will be seasons when the world celebrates something God calls harmful.
+
+Trust Scripture.
+
+There will be moments when following Jesus feels lonely.
+
+Trust Scripture.
+
+Why?
+
+Because God's Word has never failed.
+
+Generation after generation, believers have discovered that His promises remain true.
+
+Not because life is always easy.
+
+But because God is always faithful.
+
+That's why spending time in the Bible matters so much.
+
+It gives us an anchor when everything else feels uncertain.
+
+✨ Feelings come and go.
+
+✨ God's truth remains forever.
+
+Build your life on something that will never change.
+
+---
+
+## 🙏 Learn To Be Content With What God Has Given You
+
+One of the most beautiful prayers in Proverbs appears in this chapter.
+
+The writer asks God not to make him rich...
+
+Or poor.
+
+Instead, he asks for exactly what he needs.
+
+What an unusual prayer.
+
+Our natural tendency is always to want more.
+
+More money.
+
+More opportunities.
+
+More success.
+
+More recognition.
+
+Yet contentment is one of the greatest gifts God offers His children.
+
+Contentment doesn't mean we stop working hard.
+
+It doesn't mean we stop dreaming.
+
+It simply means we stop believing that the next thing will finally satisfy us.
+
+Only Christ can do that.
+
+Think about how much peace enters your life when gratitude replaces comparison.
+
+When you stop constantly looking at what everyone else has...
+
+And begin thanking God for what He's already given you.
+
+❤️ Gratitude turns ordinary blessings into extraordinary gifts.
+
+❤️ A content heart experiences joy that money can never buy.
+
+---
+
+## 🌳 God Has Filled His Creation With Wisdom
+
+Near the end of Proverbs 30, the writer points to ants...
+
+Rock badgers...
+
+Locusts...
+
+Spiders...
+
+Small creatures that most people overlook.
+
+Why?
+
+Because even creation has something to teach us.
+
+The ant teaches diligence.
+
+The rock badger teaches the importance of finding refuge.
+
+The locust teaches unity and cooperation.
+
+The spider reminds us that even small, seemingly insignificant creatures can reach places of great influence.
+
+Jesus often taught the same way.
+
+He pointed to birds.
+
+Seeds.
+
+Trees.
+
+Sheep.
+
+Flowers.
+
+Everywhere He looked, He saw reminders of God's wisdom.
+
+What if we slowed down enough to notice them too?
+
+The next time you take a walk...
+
+Watch the sunrise...
+
+Listen to the birds...
+
+Or stand beneath a sky full of stars...
+
+Remember that creation is constantly pointing beyond itself.
+
+It points to the wisdom, creativity, power, and faithfulness of its Creator.
+
+The more closely you walk with God...
+
+The more you'll begin seeing Him everywhere.
+
+---
+
+## 👀 What To Watch For Today
+
+As you read Proverbs 30 today, notice how often humility and trust appear throughout the chapter.
+
+The writer isn't trying to impress us with his knowledge.
+
+He's reminding us that every one of us needs God's wisdom every single day.
+
+❤️ Am I still approaching God with a humble and teachable heart?
+
+❤️ Have I been trusting God's Word more than my changing emotions?
+
+❤️ Am I grateful for what God has already given me, or have I been constantly comparing my life to someone else's?
+
+❤️ What reminders of God's wisdom can I notice in His creation today?
+
+Take a few quiet moments before reading.
+
+Thank God for everything He has taught you throughout Proverbs.
+
+Then ask Him to help you carry those lessons into every area of your life.
+
+Because wisdom isn't something we finish learning.
+
+It's something we spend a lifetime living.
+
+---
+
+## 💡 The Big Lesson of Proverbs 30
+
+As we finish the book of Proverbs, one truth rises above all the others.
+
+Real wisdom doesn't begin with intelligence.
+
+It begins with humility.
+
+It grows through obedience.
+
+And it flourishes in a heart that continues trusting God every single day.
+
+So today...
+
+📖 Continue building your life on God's unchanging Word.
+
+❤️ Walk humbly, knowing you'll always need His wisdom.
+
+🙏 Thank Him for faithfully guiding you through every season of life.
+
+The book of Proverbs may be coming to an end...
+
+But your journey of wisdom is only beginning.
+
+Keep seeking God.
+
+Keep listening to His voice.
+
+Keep choosing His ways over your own.
+
+Because a life built on His wisdom is a life that will never be wasted.
+`,
+  31: `
+You've made it to the final chapter of Proverbs.
+
+Thirty-one days.
+
+Hundreds of verses.
+
+Countless reminders to pursue wisdom, reject foolishness, guard your heart, watch your words, work diligently, love people well, and trust God in every season of life.
+
+If there is one lesson that ties the entire book together, it's this:
+
+**Wisdom isn't something you achieve. It's someone you continue pursuing every day.**
+
+As we come to Proverbs 31, many people immediately think about the "virtuous woman."
+
+But this chapter is about much more than that.
+
+It's about the kind of life that honors God.
+
+Whether you're a man or a woman...
+
+Single or married...
+
+Young or old...
+
+Working full-time, raising children, retired, or still trying to figure out where God is leading you...
+
+Proverbs 31 paints a picture of a life marked by faithfulness.
+
+Not perfection.
+
+Faithfulness.
+
+It reminds us that the greatest legacy we leave behind isn't how much money we earned...
+
+Or how successful we became...
+
+It's whether our lives reflected the character of God.
+
+At the end of our lives, people won't remember every accomplishment.
+
+They'll remember the kind of person we were.
+
+And that's exactly what Proverbs has been preparing us to become.
+
+---
+
+## 🌱 Character Is Built Behind The Scenes
+
+One of the beautiful truths in Proverbs 31 is that most of the woman's work happens where few people are watching.
+
+She serves.
+
+She plans.
+
+She works.
+
+She provides.
+
+She encourages.
+
+She cares for her family.
+
+She helps those in need.
+
+Much of it happens quietly.
+
+That should encourage every believer.
+
+Our culture often celebrates the visible.
+
+The platform.
+
+The spotlight.
+
+The applause.
+
+God often celebrates the hidden things.
+
+The unseen prayers.
+
+The quiet acts of kindness.
+
+The faithful work no one notices.
+
+The sacrifices made out of love.
+
+Those are the things that build lasting character.
+
+Remember...
+
+Jesus spent thirty years in relative obscurity before beginning His public ministry.
+
+The hidden years mattered.
+
+Your hidden faithfulness matters too.
+
+✨ God sees every act of obedience, even when nobody else does.
+
+✨ Nothing done for Him is ever wasted.
+
+---
+
+## ❤️ Wisdom Changes The Way We Treat People
+
+One of the most beautiful descriptions in this chapter says,
+
+**"She openeth her mouth with wisdom; and in her tongue is the law of kindness."**
+
+Imagine if that described every one of us.
+
+Not just that we speak wisely...
+
+But that kindness naturally flows from our words.
+
+Think back over everything Proverbs has taught us about speech.
+
+Gentle answers.
+
+Truthful words.
+
+Listening before speaking.
+
+Avoiding gossip.
+
+Encouraging others.
+
+Now Proverbs 31 brings those lessons together.
+
+Wisdom isn't only seen in what we know.
+
+It's seen in how we treat people.
+
+It's possible to know a great deal about the Bible while speaking harshly to everyone around us.
+
+God wants something deeper.
+
+He wants His truth to transform our hearts so completely that kindness becomes part of who we are.
+
+People should leave our conversations feeling encouraged...
+
+Not defeated.
+
+Loved...
+
+Not judged.
+
+Pointed toward Christ...
+
+Not toward ourselves.
+
+❤️ The wisest people often make others feel seen, valued, and loved.
+
+❤️ That's exactly how Jesus treated people.
+
+---
+
+## 🤲 A Life Of Faithfulness Leaves A Legacy
+
+Toward the end of Proverbs 31, we see something beautiful.
+
+The woman's children rise up and call her blessed.
+
+Her husband praises her.
+
+Her life has become a blessing to everyone around her.
+
+Notice something important.
+
+She didn't build that legacy overnight.
+
+It was built through years of ordinary faithfulness.
+
+One meal.
+
+One prayer.
+
+One act of generosity.
+
+One day of honest work.
+
+One decision to keep trusting God.
+
+That's how every godly legacy is built.
+
+Not through one extraordinary moment.
+
+Through thousands of ordinary ones.
+
+The same is true for us.
+
+Every choice you're making today is becoming part of the story people will remember about your life.
+
+Not just your children.
+
+Your friends.
+
+Your coworkers.
+
+Your neighbors.
+
+Everyone you influence.
+
+The question isn't whether you're leaving a legacy.
+
+You are.
+
+The question is...
+
+**What kind of legacy are you leaving?**
+
+✨ Every faithful day becomes another page in the story of your life.
+
+✨ Make it a story that points people toward Jesus.
+
+---
+
+## 🌳 The Fear Of The Lord Is The Beginning... And The Goal
+
+The chapter ends with one of the most important reminders in the entire book.
+
+**"Charm is deceitful, and beauty is vain: but a woman that feareth the Lord, she shall be praised."**
+
+Isn't that interesting?
+
+Proverbs began by telling us that **the fear of the Lord is the beginning of wisdom.**
+
+Now it ends by reminding us that a life marked by the fear of the Lord is the life that truly matters.
+
+Everything comes full circle.
+
+The greatest measure of success isn't appearance.
+
+It isn't wealth.
+
+It isn't popularity.
+
+It isn't talent.
+
+It's a heart that loves, honors, and follows God.
+
+One day our careers will end.
+
+Our possessions will be left behind.
+
+Even our earthly accomplishments will fade.
+
+But a life lived for Christ will never be wasted.
+
+That's the kind of life Proverbs has been inviting us to build from the very first chapter.
+
+A life rooted in wisdom.
+
+Shaped by humility.
+
+Filled with love.
+
+Guided by truth.
+
+And centered completely on God.
+
+---
+
+## 👀 What To Watch For Today
+
+As you read Proverbs 31 today, notice how often faithfulness is displayed through ordinary responsibilities.
+
+God isn't asking you to become famous.
+
+He's asking you to become faithful.
+
+❤️ What kind of legacy am I building through my everyday choices?
+
+❤️ Do my words reflect wisdom and kindness?
+
+❤️ Am I serving God faithfully even when no one notices?
+
+❤️ If someone watched the way I lived this week, would they see someone becoming more like Christ?
+
+Spend a few quiet moments thanking God for everything He has taught you throughout Proverbs.
+
+Then ask Him to help you live out those lessons every day, not just understand them.
+
+Because wisdom was never meant to stay in our minds.
+
+It was meant to transform our lives.
+
+---
+
+## 💡 The Big Lesson of Proverbs 31
+
+As we finish the book of Proverbs, we're reminded that wisdom is more than knowledge.
+
+It's a way of life.
+
+A life marked by humility.
+
+Integrity.
+
+Compassion.
+
+Faithfulness.
+
+Generosity.
+
+Self-control.
+
+And above all, a deep reverence for God.
+
+So today...
+
+📖 Continue seeking God's wisdom every day.
+
+❤️ Let your life become a testimony of His grace and faithfulness.
+
+🙏 Ask Him to help you leave behind a legacy that points people to Christ.
+
+The book of Proverbs may now be complete.
+
+But the wisdom you've gained was never meant to stay on these pages.
+
+Take it into your home.
+
+Your workplace.
+
+Your friendships.
+
+Your church.
+
+Your family.
+
+Live it.
+
+Share it.
+
+Pass it on.
+
+Because the greatest proof that you've learned God's wisdom...
+
+Is that the people around you begin seeing more of Jesus in the way you live.
+`,
 };
 
 const cinematicDepthByChapter: Record<number, string> = {
@@ -6478,7 +9370,7 @@ function buildCinematicDevotionalText(chapter: number) {
   const baseText = cinematicDevotionalTextByChapter[chapter];
   const depthText = cinematicDepthByChapter[chapter];
 
-  if (chapter >= 1 && chapter <= 21) {
+  if (chapter >= 1 && chapter <= 31) {
     return baseText || "";
   }
 
@@ -7290,7 +10182,7 @@ const studyIntroDetailsByChapter: Record<number, StudyIntroDetail> = {
 };
 
 function buildProverbsStudyIntro(day: ChapterPlan) {
-  if (day.chapter >= 1 && day.chapter <= 21) {
+  if (day.chapter >= 1 && day.chapter <= 31) {
     return buildCinematicDevotionalText(day.chapter);
   }
 
