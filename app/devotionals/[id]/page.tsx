@@ -753,6 +753,17 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
     });
   };
 
+  const scrollDevotionalElementIntoView = (elementId: string) => {
+    if (typeof window === "undefined") return;
+
+    window.requestAnimationFrame(() => {
+      document.getElementById(elementId)?.scrollIntoView({
+        block: "start",
+        behavior: "smooth",
+      });
+    });
+  };
+
   useEffect(() => {
     if (!expandedDayStorageKey || loading || days.length === 0 || typeof window === "undefined") return;
     if (hydratedExpandedDayKeyRef.current === expandedDayStorageKey) return;
@@ -767,9 +778,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
     const matchingDay = days.find((day) => day.day_number === parsedValue);
     if (matchingDay && isDayUnlocked(matchingDay.day_number)) {
       setExpandedDayNumber(parsedValue);
-      if (isWisdomOfProverbsTitle(devotional?.title)) {
-        setExpandedWisdomTask(`${parsedValue}:overview`);
-      }
+      setExpandedWisdomTask(null);
     }
   }, [expandedDayStorageKey, loading, days.length, userId]);
 
@@ -1733,6 +1742,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
               return (
                 <div
                   key={day.id}
+                  id={`devotional-day-${day.day_number}`}
                   className={`overflow-hidden rounded-lg border transition ${
                     isCompleted
                       ? isWisdomOfProverbs
@@ -1756,7 +1766,8 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                         if (next === null) {
                           setExpandedWisdomTask(null);
                         } else if (isWisdomOfProverbs) {
-                          setExpandedWisdomTask(`${day.day_number}:overview`);
+                          setExpandedWisdomTask(null);
+                          scrollDevotionalElementIntoView(`devotional-day-${day.day_number}`);
                         }
                         return next;
                       });
@@ -1831,6 +1842,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                       {isWisdomOfProverbs ? (
                         <div className="space-y-3">
                           <details
+                            id={`devotional-day-${day.day_number}-overview`}
                             open={expandedWisdomTask === wisdomTaskKey("overview")}
                             className={wisdomTaskCardClass(wisdomBigPictureDone, expandedWisdomTask === wisdomTaskKey("overview"))}
                           >
@@ -1841,6 +1853,9 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                                 setExpandedWisdomTask((current) =>
                                   current === wisdomTaskKey("overview") ? null : wisdomTaskKey("overview"),
                                 );
+                                if (expandedWisdomTask !== wisdomTaskKey("overview")) {
+                                  scrollDevotionalElementIntoView(`devotional-day-${day.day_number}-overview`);
+                                }
                               }}
                             >
                               <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--bb-surface-soft,#eef4f8)] text-[var(--bb-accent,#0b63f6)]">
@@ -1884,6 +1899,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                           </details>
 
                           <details
+                            id={`devotional-day-${day.day_number}-reading`}
                             open={expandedWisdomTask === wisdomTaskKey("reading")}
                             className={wisdomTaskCardClass(wisdomReadingDone, expandedWisdomTask === wisdomTaskKey("reading"))}
                           >
@@ -1894,6 +1910,9 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                                 setExpandedWisdomTask((current) =>
                                   current === wisdomTaskKey("reading") ? null : wisdomTaskKey("reading"),
                                 );
+                                if (expandedWisdomTask !== wisdomTaskKey("reading")) {
+                                  scrollDevotionalElementIntoView(`devotional-day-${day.day_number}-reading`);
+                                }
                               }}
                             >
                               <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--bb-surface-soft,#eef4f8)] text-[var(--bb-accent,#0b63f6)]">
@@ -1943,6 +1962,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                           </details>
 
                           <details
+                            id={`devotional-day-${day.day_number}-trivia`}
                             open={expandedWisdomTask === wisdomTaskKey("trivia")}
                             className={wisdomTaskCardClass(wisdomTriviaDone, expandedWisdomTask === wisdomTaskKey("trivia"))}
                           >
@@ -1953,6 +1973,9 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                                 setExpandedWisdomTask((current) =>
                                   current === wisdomTaskKey("trivia") ? null : wisdomTaskKey("trivia"),
                                 );
+                                if (expandedWisdomTask !== wisdomTaskKey("trivia")) {
+                                  scrollDevotionalElementIntoView(`devotional-day-${day.day_number}-trivia`);
+                                }
                               }}
                             >
                               <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--bb-surface-soft,#eef4f8)] text-[var(--bb-accent,#0b63f6)]">
@@ -1989,6 +2012,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                           </details>
 
                           <details
+                            id={`devotional-day-${day.day_number}-discussion`}
                             open={expandedWisdomTask === wisdomTaskKey("discussion")}
                             className={wisdomTaskCardClass(wisdomDiscussionDone, expandedWisdomTask === wisdomTaskKey("discussion"))}
                           >
@@ -1999,6 +2023,9 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                                 setExpandedWisdomTask((current) =>
                                   current === wisdomTaskKey("discussion") ? null : wisdomTaskKey("discussion"),
                                 );
+                                if (expandedWisdomTask !== wisdomTaskKey("discussion")) {
+                                  scrollDevotionalElementIntoView(`devotional-day-${day.day_number}-discussion`);
+                                }
                               }}
                             >
                               <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--bb-surface-soft,#eef4f8)] text-[var(--bb-accent,#0b63f6)]">
