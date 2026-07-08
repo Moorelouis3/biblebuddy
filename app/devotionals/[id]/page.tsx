@@ -1858,7 +1858,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                                 }
                               }}
                             >
-                              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--bb-surface-soft,#eef4f8)] text-[var(--bb-accent,#0b63f6)]">
+                              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--bb-surface-soft,#eef4f8)] text-[var(--bb-text-primary,#111827)]">
                                 <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                                   <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
                                   <path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z" />
@@ -1866,7 +1866,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                               </span>
                               <span className="min-w-0 flex-1">
                                 <span className="block text-lg font-black leading-tight text-[var(--bb-text-primary,#111827)]">Overview</span>
-                                <span className="mt-1 block text-sm leading-5 text-[var(--bb-text-secondary,#5f6368)]">Start with the cinematic overview.</span>
+                                <span className="mt-1 block text-sm leading-5 text-[var(--bb-text-secondary,#5f6368)]">Understand the full chapter.</span>
                               </span>
                               {wisdomStatusPill(wisdomBigPictureDone)}
                             </summary>
@@ -1915,7 +1915,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                                 }
                               }}
                             >
-                              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--bb-surface-soft,#eef4f8)] text-[var(--bb-accent,#0b63f6)]">
+                              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--bb-surface-soft,#eef4f8)] text-[var(--bb-text-primary,#111827)]">
                                 <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                                   <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
                                   <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
@@ -1923,7 +1923,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                               </span>
                               <span className="min-w-0 flex-1">
                                 <span className="block text-lg font-black leading-tight text-[var(--bb-text-primary,#111827)]">Today's Reading</span>
-                                <span className="mt-1 block text-sm leading-5 text-[var(--bb-text-secondary,#5f6368)]">{day.bible_reading_book} {day.bible_reading_chapter}</span>
+                                <span className="mt-1 block text-sm leading-5 text-[var(--bb-text-secondary,#5f6368)]">Read Chapter {day.bible_reading_chapter}</span>
                               </span>
                               {wisdomStatusPill(wisdomReadingDone)}
                             </summary>
@@ -1978,7 +1978,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                                 }
                               }}
                             >
-                              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--bb-surface-soft,#eef4f8)] text-[var(--bb-accent,#0b63f6)]">
+                              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--bb-surface-soft,#eef4f8)] text-[var(--bb-text-primary,#111827)]">
                                 <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                                   <circle cx="12" cy="12" r="9" />
                                   <path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 2-2.5 2.1-2.5 4" />
@@ -2028,7 +2028,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                                 }
                               }}
                             >
-                              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--bb-surface-soft,#eef4f8)] text-[var(--bb-accent,#0b63f6)]">
+                              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--bb-surface-soft,#eef4f8)] text-[var(--bb-text-primary,#111827)]">
                                 <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                                   <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z" />
                                 </svg>
