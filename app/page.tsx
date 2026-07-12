@@ -1904,9 +1904,9 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
 
         <section className="grid min-h-[560px] items-center gap-10 pb-12 pt-8 lg:grid-cols-[0.88fr_1.12fr] lg:pb-16 lg:pt-10">
           <div className="mx-auto max-w-[500px] text-center lg:mx-0 lg:text-left">
-            <h1 className="bb-serif text-[clamp(2.75rem,5vw,4.75rem)] font-black leading-[0.98] tracking-[-0.02em] text-[#07162f]">
+            <h1 className="bb-serif text-[clamp(2.35rem,4.1vw,3.7rem)] font-black leading-[1.02] tracking-[-0.02em] text-[#07162f]">
               Most Bible Apps help you read the Bible.
-              <span className="mt-6 block text-[#0f63ff]">
+              <span className="mt-5 block text-[#0f63ff]">
                 Bible Buddy helps you <span className="italic">understand</span> the Bible.
               </span>
             </h1>
