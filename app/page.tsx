@@ -1084,6 +1084,7 @@ export default function LandingPage() {
               <Link href="/how-it-works" className="transition hover:text-[#135397]">How It Works</Link>
               <Link href="/features" className="transition hover:text-[#135397]">Features</Link>
               <Link href="/stories" className="transition hover:text-[#135397]">Stories</Link>
+              <Link href="/blog" className="transition hover:text-[#135397]">Blog</Link>
               <Link href="/faq" className="transition hover:text-[#135397]">FAQ</Link>
             </nav>
             <div className="hidden items-center gap-3 sm:flex">
