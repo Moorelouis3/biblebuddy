@@ -1882,20 +1882,23 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
       <LandingThemeStyles />
 
       <main className="mx-auto max-w-[1180px] px-5 py-5 sm:px-8 lg:px-10">
-        <header className="flex items-center justify-between gap-5 py-2 sm:py-5">
+        <header className="flex items-center justify-between gap-3 py-2 sm:gap-5 sm:py-5">
           <BibleBuddyMark />
           <nav className="hidden items-center gap-8 text-sm font-black text-[#07162f] md:flex">
             <a href="#about" className="transition hover:text-[#0f63ff]">About</a>
             <Link href="/blog" className="transition hover:text-[#0f63ff]">Blog</Link>
           </nav>
           <div className="flex items-center gap-2 sm:gap-3">
-            <Link href="/login" className="hidden rounded-2xl px-4 py-3 text-sm font-black text-[#07162f] transition hover:bg-white sm:inline-flex">
+            <Link href="/blog" className="rounded-xl px-2 py-2 text-sm font-black text-[#07162f] transition hover:bg-white md:hidden">
+              Blog
+            </Link>
+            <Link href="/login" className="rounded-xl px-2 py-2 text-sm font-black text-[#07162f] transition hover:bg-white sm:rounded-2xl sm:px-4 sm:py-3">
               Login
             </Link>
             <Link
               href="/signup"
               onClick={() => onStartJourney("minimal_header")}
-              className="inline-flex items-center justify-center rounded-2xl bg-[#0f63ff] px-4 py-3 text-sm font-black text-white shadow-[0_18px_40px_rgba(15,99,255,0.22)] transition hover:-translate-y-0.5 sm:px-6"
+              className="inline-flex items-center justify-center rounded-xl bg-[#0f63ff] px-3 py-2.5 text-xs font-black text-white shadow-[0_18px_40px_rgba(15,99,255,0.22)] transition hover:-translate-y-0.5 sm:rounded-2xl sm:px-6 sm:py-3 sm:text-sm"
             >
               Create Free Account
             </Link>
@@ -1929,17 +1932,15 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
             </div>
           </div>
 
-          <div className="relative mx-auto h-[500px] w-full max-w-[560px] sm:h-[560px]" aria-label="Bible Buddy app preview">
-            <div className="absolute left-[3%] top-[24%] hidden w-[180px] rotate-[-7deg] sm:block">
-              <LandingPhoneFrame variant="verse" />
-            </div>
-            <div className="absolute left-1/2 top-[5%] z-20 w-[240px] -translate-x-1/2 sm:w-[270px]">
-              <LandingPhoneFrame variant="home" featured />
-            </div>
-            <div className="absolute right-[3%] top-[25%] hidden w-[180px] rotate-[7deg] sm:block">
-              <LandingPhoneFrame variant="progress" />
-            </div>
-            <div className="absolute inset-x-10 bottom-6 h-24 rounded-[999px] bg-[#0f63ff]/10 blur-3xl" />
+          <div className="relative mx-auto h-[360px] w-full max-w-[620px] sm:h-[500px] lg:h-[540px]" aria-label="Bible Buddy app preview">
+            <Image
+              src="/mainherolanding.png"
+              alt="Bible Buddy app screens"
+              fill
+              priority
+              sizes="(max-width: 768px) 100vw, 620px"
+              className="object-contain"
+            />
           </div>
         </section>
 
@@ -1960,11 +1961,17 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
           </div>
         </section>
 
-        <section className="grid items-center gap-10 py-14 sm:py-20 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="order-2 mx-auto w-full max-w-[350px] lg:order-1">
-            <LandingPhoneFrame variant="study" featured />
+        <section className="grid items-center gap-10 py-14 sm:py-20 lg:grid-cols-[0.95fr_1.05fr]">
+          <div className="order-2 relative mx-auto h-[360px] w-full max-w-[520px] lg:order-1 lg:h-[500px]">
+            <Image
+              src="/middleimagelanding.png"
+              alt="Bible Buddy study notes preview"
+              fill
+              sizes="(max-width: 768px) 100vw, 520px"
+              className="object-contain"
+            />
           </div>
-          <div className="order-1 mx-auto max-w-[560px] text-center lg:order-2 lg:mx-0 lg:text-left">
+          <div className="order-1 mx-auto max-w-[520px] text-center lg:order-2 lg:mx-0 lg:text-left">
             <h2 className="text-[clamp(2.2rem,4vw,4rem)] font-black leading-tight tracking-[-0.02em] text-[#07162f]">
               Study the Bible without feeling overwhelmed.
             </h2>
@@ -1979,46 +1986,13 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
           </div>
         </section>
 
-        <section id="about" className="py-14 sm:py-20">
-          <div className="rounded-[36px] border border-[#dce7f5] bg-white p-8 shadow-[0_28px_90px_rgba(7,22,47,0.07)] sm:p-12 lg:grid lg:grid-cols-[0.55fr_0.45fr] lg:items-center lg:gap-12">
-            <div>
-              <p className="text-sm font-black uppercase tracking-[0.22em] text-[#0f63ff]">Built with purpose</p>
-              <h2 className="mt-4 text-[clamp(2rem,4vw,3.6rem)] font-black leading-tight tracking-[-0.02em] text-[#07162f]">
-                Built by one person.
-              </h2>
-              <p className="mt-5 max-w-2xl text-lg font-semibold leading-8 text-[#40516b]">
-                Bible Buddy isn&apos;t backed by a huge company. It&apos;s an independent project built by one person with one mission: helping people understand God&apos;s Word.
-              </p>
-              <p className="mt-4 max-w-2xl text-base font-semibold leading-7 text-[#627086]">
-                We&apos;re currently in Beta and improving the app every week based on community feedback.
-              </p>
-            </div>
-            <div className="mt-8 rounded-[28px] bg-[#f3f8ff] p-7 text-center lg:mt-0">
-              <div className="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-[#0f63ff] text-3xl text-white">B</div>
-              <p className="mt-5 text-2xl font-black leading-tight text-[#07162f]">
-                Helping people understand Scripture one day at a time.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section className="py-14 sm:py-20">
-          <div className="mx-auto max-w-3xl rounded-[36px] border border-[#dce7f5] bg-white p-8 text-center shadow-[0_28px_90px_rgba(7,22,47,0.07)] sm:p-12">
-            <p className="text-sm font-black uppercase tracking-[0.22em] text-[#0f63ff]">Currently in Beta</p>
-            <h2 className="mt-4 text-[clamp(2.1rem,4vw,3.7rem)] font-black leading-tight text-[#07162f]">
-              Use Bible Buddy from your browser today.
-            </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-lg font-semibold leading-8 text-[#40516b]">
-              Bible Buddy is currently a web app while we continue building the mobile apps. The iPhone and Android apps are coming after Beta.
-            </p>
-            <Link
-              href="/signup"
-              onClick={() => onStartJourney("minimal_beta")}
-              className="mt-8 inline-flex w-full items-center justify-center rounded-2xl bg-[#0f63ff] px-7 py-4 text-base font-black text-white shadow-[0_24px_60px_rgba(15,99,255,0.24)] transition hover:-translate-y-0.5 sm:w-auto sm:min-w-[310px]"
-            >
-              Create Free Account
-            </Link>
-          </div>
+        <section id="about" className="mx-auto max-w-3xl py-14 text-center sm:py-20">
+          <p className="text-sm font-semibold leading-7 text-[#40516b] sm:text-base">
+            Currently in Beta &bull; Bible Buddy is a free web app built by one person with one mission: helping people understand God&apos;s Word. New features are added every week. iPhone and Android apps are coming after Beta.
+          </p>
+          <p className="mt-3 text-xs font-semibold leading-6 text-[#6d7789] sm:text-sm">
+            No download required. Create your free account and start studying today.
+          </p>
         </section>
 
         <footer className="border-t border-[#dce7f5] py-8">
