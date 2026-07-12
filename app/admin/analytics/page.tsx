@@ -11,7 +11,7 @@ import { getCachedAdminAnalytics, getCachedAdminAnalyticsOverview, loadAdminAnal
 type JourneyWindow = "today" | "yesterday" | "24h" | "7d" | "30d" | "90d" | "this_month" | "lifetime";
 type AccountFilter = "all" | "guest" | "free" | "pro";
 type AnalyticsView = "overview" | "bible-year" | "study-notes" | "traffic-sources";
-type SimpleAnalyticsMetric = "overview" | "revenue" | "signups" | "upgrades" | "completion_popup";
+type SimpleAnalyticsMetric = "overview" | "revenue" | "signups" | "upgrades" | "completion_popup" | "study_plans";
 
 type VisitorJourneyStatus =
   | "active"
@@ -198,6 +198,34 @@ type CompletionUpgradeAnalytics = {
   };
 };
 
+type StudyPlanAnalytics = {
+  totalPlanOpens: number;
+  totalDayOpens: number;
+  totalDayCompletions: number;
+  uniqueUsers: number;
+  series: {
+    planOpens: Array<{ label: string; value: number }>;
+    dayOpens: Array<{ label: string; value: number }>;
+    dayCompletions: Array<{ label: string; value: number }>;
+  };
+  plans: Array<{
+    planTitle: string;
+    planOpens: number;
+    dayOpens: number;
+    dayCompletions: number;
+    uniqueUsers: number;
+  }>;
+  dayRows: Array<{
+    planTitle: string;
+    dayNumber: number | null;
+    dayLabel: string;
+    opens: number;
+    completions: number;
+    uniqueUsers: number;
+    lastActivityAt: string | null;
+  }>;
+};
+
 type BibleYearDayAnalytics = {
   dayNumber: number;
   startedUsers: number;
@@ -376,6 +404,7 @@ type AnalyticsResponse = {
   daySevenUpgrade?: DayThreeUpgradeAnalytics;
   studyNotesUpgrade?: StudyNotesUpgradeAnalytics;
   completionUpgrade?: CompletionUpgradeAnalytics;
+  studyPlans?: StudyPlanAnalytics;
   bibleYearDays?: BibleYearDayAnalytics[];
   studyNotes?: {
     totalOpens: number;
@@ -570,6 +599,7 @@ const SIMPLE_METRIC_OPTIONS: Array<{ key: SimpleAnalyticsMetric; label: string }
   { key: "signups", label: "Signups" },
   { key: "upgrades", label: "Upgrades" },
   { key: "completion_popup", label: "Completion Popup" },
+  { key: "study_plans", label: "Study Plans" },
 ];
 
 const SIMPLE_WINDOW_OPTIONS: Array<{ key: JourneyWindow; label: string }> = [
@@ -860,6 +890,7 @@ function getSimpleMetricSeries(
   if (metric === "revenue") return stripeRevenue?.series || [];
   if (metric === "signups") return data?.simpleSeries?.signups || [];
   if (metric === "upgrades") return stripeRevenue?.upgradeSeries || data?.simpleSeries?.upgrades || [];
+  if (metric === "study_plans") return data?.studyPlans?.series.dayCompletions || [];
   return data?.completionUpgrade?.series.views || [];
 }
 
@@ -879,6 +910,9 @@ function getSimpleMetricTotal(
   if (metric === "completion_popup") {
     return formatNumber(data?.completionUpgrade?.totalViews || 0);
   }
+  if (metric === "study_plans") {
+    return formatNumber(data?.studyPlans?.totalDayCompletions || 0);
+  }
   if (typeof stripeRevenue?.upgradesRange === "number") return formatNumber(stripeRevenue.upgradesRange);
   const total = (data?.simpleSeries?.upgrades || []).reduce((sum, point) => sum + point.value, 0);
   const fallback = data?.customerJourney?.proUpgrades || data?.visitorJourneys?.metrics?.upgradedToPro || 0;
@@ -889,6 +923,7 @@ function getSimpleMetricTitle(metric: Exclude<SimpleAnalyticsMetric, "overview">
   if (metric === "revenue") return "Revenue";
   if (metric === "signups") return "Signups";
   if (metric === "completion_popup") return "Completion Popup";
+  if (metric === "study_plans") return "Study Plans";
   return "Upgrades";
 }
 
@@ -896,6 +931,7 @@ function getSimpleMetricHelper(metric: Exclude<SimpleAnalyticsMetric, "overview"
   if (metric === "revenue") return "Cash collected in the selected timeframe.";
   if (metric === "signups") return "New accounts created in the selected timeframe.";
   if (metric === "completion_popup") return "How often the free completion upgrade prompt was shown.";
+  if (metric === "study_plans") return "Study plan days completed in the selected timeframe.";
   return "Users who upgraded to Pro in the selected timeframe.";
 }
 
@@ -903,6 +939,7 @@ function getSimpleMetricAccent(metric: Exclude<SimpleAnalyticsMetric, "overview"
   if (metric === "revenue") return "text-blue-600 bg-blue-50 ring-blue-100";
   if (metric === "signups") return "text-emerald-600 bg-emerald-50 ring-emerald-100";
   if (metric === "completion_popup") return "text-amber-600 bg-amber-50 ring-amber-100";
+  if (metric === "study_plans") return "text-indigo-600 bg-indigo-50 ring-indigo-100";
   return "text-violet-600 bg-violet-50 ring-violet-100";
 }
 
@@ -1468,6 +1505,118 @@ function CompletionPopupAnalyticsSection({
   );
 }
 
+function StudyPlansAnalyticsSection({
+  stats,
+  windowKey,
+  loading,
+}: {
+  stats: StudyPlanAnalytics | undefined;
+  windowKey: JourneyWindow;
+  loading: boolean;
+}) {
+  const dayRows = stats?.dayRows || [];
+  const planRows = stats?.plans || [];
+
+  return (
+    <div className="space-y-4">
+      <SimpleAnalyticsChartCard
+        metric="study_plans"
+        windowKey={windowKey}
+        value={loading ? "..." : formatNumber(stats?.totalDayCompletions || 0)}
+        points={stats?.series.dayCompletions || []}
+        loading={loading}
+        comparison={null}
+      />
+
+      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+        <SimpleAnalyticsKpiCard
+          title="Plan Opens"
+          value={loading ? "..." : formatNumber(stats?.totalPlanOpens || 0)}
+          helper="Study plans opened"
+          accent="blue"
+        />
+        <SimpleAnalyticsKpiCard
+          title="Day Opens"
+          value={loading ? "..." : formatNumber(stats?.totalDayOpens || 0)}
+          helper="Study plan days opened"
+          accent="green"
+        />
+        <SimpleAnalyticsKpiCard
+          title="Days Done"
+          value={loading ? "..." : formatNumber(stats?.totalDayCompletions || 0)}
+          helper="Study plan days completed"
+          accent="violet"
+        />
+        <SimpleAnalyticsKpiCard
+          title="Active Users"
+          value={loading ? "..." : formatNumber(stats?.uniqueUsers || 0)}
+          helper="Users with study plan actions"
+          accent="blue"
+        />
+      </div>
+
+      <section className="rounded-[22px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-5 shadow-[0_16px_40px_rgba(15,23,42,0.08)]">
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-[var(--bb-accent,#0b63f6)]">Study Plan Days</p>
+            <h3 className="mt-1 text-xl font-black text-[var(--bb-text-primary,#101827)]">Day completions</h3>
+            <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#64748b)]">
+              See which study-plan days were opened and completed.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-4 overflow-hidden rounded-2xl border border-[var(--bb-card-border,#d8e3ec)]">
+          {loading ? (
+            <p className="p-4 text-sm font-semibold text-[var(--bb-text-secondary,#64748b)]">Loading study plan analytics...</p>
+          ) : dayRows.length === 0 ? (
+            <p className="p-4 text-sm font-semibold text-[var(--bb-text-secondary,#64748b)]">No study plan activity in this timeframe.</p>
+          ) : (
+            dayRows.slice(0, 80).map((row) => (
+              <div key={`${row.planTitle}-${row.dayLabel}`} className="grid gap-3 border-b border-[var(--bb-card-border,#d8e3ec)] p-4 last:border-b-0 md:grid-cols-[1fr_auto_auto_auto] md:items-center">
+                <div>
+                  <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">{row.planTitle}</p>
+                  <p className="text-xs font-bold uppercase tracking-[0.16em] text-[var(--bb-accent,#0b63f6)]">{row.dayLabel}</p>
+                </div>
+                <div className="text-left md:text-right">
+                  <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-text-secondary,#64748b)]">Opened</p>
+                  <p className="text-lg font-black text-[var(--bb-text-primary,#101827)]">{formatNumber(row.opens)}</p>
+                </div>
+                <div className="text-left md:text-right">
+                  <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-text-secondary,#64748b)]">Done</p>
+                  <p className="text-lg font-black text-emerald-600">{formatNumber(row.completions)}</p>
+                </div>
+                <div className="text-left md:text-right">
+                  <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-text-secondary,#64748b)]">Users</p>
+                  <p className="text-lg font-black text-[var(--bb-text-primary,#101827)]">{formatNumber(row.uniqueUsers)}</p>
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+      </section>
+
+      <section className="rounded-[22px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-5 shadow-[0_16px_40px_rgba(15,23,42,0.08)]">
+        <p className="text-xs font-black uppercase tracking-[0.22em] text-[var(--bb-accent,#0b63f6)]">Plan Totals</p>
+        <div className="mt-4 grid gap-3 md:grid-cols-2">
+          {planRows.length === 0 && !loading ? (
+            <p className="text-sm font-semibold text-[var(--bb-text-secondary,#64748b)]">No plan totals yet.</p>
+          ) : (
+            planRows.map((row) => (
+              <div key={row.planTitle} className="rounded-2xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#f8fbff)] p-4">
+                <p className="text-base font-black text-[var(--bb-text-primary,#101827)]">{row.planTitle}</p>
+                <p className="mt-2 text-sm font-semibold text-[var(--bb-text-secondary,#64748b)]">
+                  {formatNumber(row.planOpens)} plan opens · {formatNumber(row.dayOpens)} day opens · {formatNumber(row.dayCompletions)} days done
+                </p>
+              </div>
+            ))
+          )}
+        </div>
+      </section>
+    </div>
+  );
+}
+
 function MetricCard({
   label,
   value,
@@ -1807,6 +1956,12 @@ function MobileAnalyticsHighlights({
               windowKey={windowKey}
               loading={loading}
             />
+          ) : simpleMetric === "study_plans" ? (
+            <StudyPlansAnalyticsSection
+              stats={data?.studyPlans}
+              windowKey={windowKey}
+              loading={loading}
+            />
           ) : (
             <SimpleAnalyticsChartCard
               metric={simpleMetric}
@@ -1817,7 +1972,7 @@ function MobileAnalyticsHighlights({
               comparison={windowKey === "lifetime" ? null : simpleMetric === "signups" ? signupComparison : upgradesComparison}
             />
           )}
-          {simpleMetric !== "completion_popup" && simpleMetric !== "revenue" ? (
+          {simpleMetric !== "completion_popup" && simpleMetric !== "revenue" && simpleMetric !== "study_plans" ? (
             <div className="grid grid-cols-3 gap-3">
               <SimpleAnalyticsKpiCard
                 title="Signups"
@@ -4225,6 +4380,12 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
                 ) : simpleMetric === "completion_popup" ? (
                   <CompletionPopupAnalyticsSection
                     stats={data?.completionUpgrade}
+                    windowKey={windowKey}
+                    loading={loading}
+                  />
+                ) : simpleMetric === "study_plans" ? (
+                  <StudyPlansAnalyticsSection
+                    stats={data?.studyPlans}
                     windowKey={windowKey}
                     loading={loading}
                   />

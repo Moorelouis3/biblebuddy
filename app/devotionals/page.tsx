@@ -34,6 +34,7 @@ type StudyFilter = "all" | "done" | "started";
 
 const FEATURED_STUDY_ORDER = [
   "The Wisdom of Proverbs",
+  "Women of the Bible",
   "The Calling of Moses",
   "The Heart of David",
   "The Rise of Esther",
@@ -42,9 +43,9 @@ const FEATURED_STUDY_ORDER = [
   "The Tempting of Jesus",
   "The Disciples of Jesus",
   "The Transforming of Paul",
-  "Women of the Bible",
   "The Testing of Joseph",
 ];
+const OWNER_EMAIL = "moorelouis3@gmail.com";
 const KEEP_DEVOTIONAL_TITLES = new Set(FEATURED_STUDY_ORDER);
 const FEATURED_STUDY_ORDER_INDEX = new Map(
   FEATURED_STUDY_ORDER.map((title, index) => [title, index]),
@@ -74,6 +75,7 @@ function getStudyScriptureRange(title: string) {
     "The Promised Land Ahead": "Numbers 26-36",
     "The Rise of Esther": "Esther 1-10",
     "The Wisdom of Proverbs": "31 Days",
+    "Women of the Bible": "21 Days",
     "The Courage of Daniel": "Daniel 1-6",
   };
 
@@ -123,6 +125,7 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
   const [dontShowAgain, setDontShowAgain] = useState(false);
   const [tempDontShowAgain, setTempDontShowAgain] = useState(false);
   const [userId, setUserId] = useState<string | null>(null);
+  const [userEmail, setUserEmail] = useState<string | null>(null);
   const [username, setUsername] = useState<string | null>(null);
   const [progressByDevotional, setProgressByDevotional] = useState<Record<string, StudyProgressSummary>>({});
 
@@ -139,6 +142,7 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
     void supabase.auth.getUser().then(({ data }) => {
       const user = data.user;
       setUserId(user?.id ?? null);
+      setUserEmail(user?.email ?? null);
       const meta: any = user?.user_metadata || {};
       setUsername(
         meta.firstName ||
@@ -701,7 +705,11 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
             {filteredDevotionals.map((devotional) => {
               const progress = progressByDevotional[devotional.id] ?? buildEmptyProgress(devotional);
               const isComplete = progress.isComplete;
-              const isLockedPreview = devotional.title !== "The Wisdom of Proverbs";
+              const isOwnerUser = userEmail?.toLowerCase() === OWNER_EMAIL;
+              const isPlanAvailable =
+                devotional.title === "The Wisdom of Proverbs" ||
+                (devotional.title === "Women of the Bible" && isOwnerUser);
+              const isLockedPreview = !isPlanAvailable;
               const card = (
                 <div className={`bb-bible-study-card group flex h-full flex-col rounded-[18px] border p-2.5 shadow-sm transition-all duration-200 sm:p-3 ${
                   isComplete

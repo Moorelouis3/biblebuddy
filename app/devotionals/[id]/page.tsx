@@ -171,8 +171,21 @@ function isWisdomOfProverbsTitle(title: string | null | undefined) {
   return normalized === "wisdom of proverbs" || normalized === "the wisdom of proverbs";
 }
 
+function isWomenOfTheBibleTitle(title: string | null | undefined) {
+  const normalized = normalizeStudyTitle(title);
+  return normalized === "women of the bible" || normalized === "the women of the bible";
+}
+
+function isModernStudyPlanTitle(title: string | null | undefined) {
+  return isWisdomOfProverbsTitle(title) || isWomenOfTheBibleTitle(title);
+}
+
+function getStudyPlanTaskTotal(title: string | null | undefined) {
+  return isModernStudyPlanTitle(title) ? WISDOM_TASK_TOTAL : CHAPTER_JOURNEY_TASK_TOTAL;
+}
+
 function isChapterJourneyStudyTitle(title: string | null | undefined) {
-  if (isWisdomOfProverbsTitle(title)) return true;
+  if (isModernStudyPlanTitle(title)) return true;
 
   return (
     title === "The Testing of Joseph" ||
@@ -196,6 +209,7 @@ function isChapterJourneyStudyTitle(title: string | null | undefined) {
 
 function getStudyScriptureRange(title: string | null | undefined) {
   if (isWisdomOfProverbsTitle(title)) return "31 Days";
+  if (isWomenOfTheBibleTitle(title)) return "21 Days";
 
   const ranges: Record<string, string> = {
     "The Creation of the World": "Genesis 1 & 2",
@@ -229,7 +243,7 @@ function getDevotionalOverviewTtsSrc(devotionalId: string | null | undefined, da
 }
 
 function getChapterJourneyProgressLabel(title: string | null | undefined, currentDay: number, totalDays: number) {
-  if (isWisdomOfProverbsTitle(title)) return `Day ${currentDay} of ${totalDays}`;
+  if (isModernStudyPlanTitle(title)) return `Day ${currentDay} of ${totalDays}`;
   if (title === "The Testing of Joseph") return `Genesis ${currentDay + 36} of 50`;
   if (title === "The Obedience of Abraham") return `Genesis ${currentDay + 10} of 25`;
   if (title === "The Rise of Esther") return `Esther ${currentDay} of ${totalDays}`;
@@ -569,7 +583,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
               const hasReflection = reflectionSet.has(chapterSlug(day.bible_reading_book, day.bible_reading_chapter));
               if (hasTrivia) triviaDaySet.add(day.day_number);
               if (hasReflection) discussionDaySet.add(day.day_number);
-              const completed = isWisdomOfProverbsTitle(devotionalData.title)
+              const completed = isModernStudyPlanTitle(devotionalData.title)
                 ? [
                     dayProgress?.is_completed === true,
                     dayProgress?.reading_completed === true,
@@ -587,7 +601,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
 
               taskProgressMap.set(day.day_number, {
                 completed,
-                total: isWisdomOfProverbsTitle(devotionalData.title) ? WISDOM_TASK_TOTAL : CHAPTER_JOURNEY_TASK_TOTAL,
+                total: getStudyPlanTaskTotal(devotionalData.title),
               });
             });
 
@@ -712,6 +726,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
   const totalUnits = Math.max(devotional?.total_days || orderedDays.length || 1, 1);
   const remainingUnits = Math.max(totalUnits - completedDays, 0);
   const isWisdomOfProverbs = isWisdomOfProverbsTitle(devotional?.title);
+  const isModernStudyPlan = isModernStudyPlanTitle(devotional?.title);
   const isFreePlanUser = profileStats?.is_paid !== true && userEmail !== "moorelouis3@gmail.com";
   const freeDevotionalCompletionStorageKey =
     userId && devotionalId ? `bb:free-devotional-day-completed:${userId}:${devotionalId}` : null;
@@ -724,7 +739,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
   };
 
   const markFreeWisdomDayCompletedForGate = (dayNumber: number) => {
-    if (!isWisdomOfProverbs || !isFreePlanUser || !freeDevotionalCompletionStorageKey || typeof window === "undefined") {
+    if (!isModernStudyPlan || !isFreePlanUser || !freeDevotionalCompletionStorageKey || typeof window === "undefined") {
       return;
     }
 
@@ -739,7 +754,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
   };
 
   const shouldBlockFreeWisdomDay = (dayNumber: number) => {
-    if (!isWisdomOfProverbs || !isFreePlanUser || dayNumber <= 1) return false;
+    if (!isModernStudyPlan || !isFreePlanUser || dayNumber <= 1) return false;
 
     const currentProgress = chapterTaskProgress.get(dayNumber);
     if (currentProgress && currentProgress.completed > 0) return false;
@@ -817,7 +832,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
     dayNumber: number,
     overrides: Partial<Record<WisdomTaskKey, boolean>> = {},
   ) => {
-    if (!isWisdomOfProverbsTitle(devotional?.title)) return;
+    if (!isModernStudyPlanTitle(devotional?.title)) return;
 
     setChapterTaskProgress((prevTaskProgress) => {
       const dayProgress = progress.get(dayNumber);
@@ -1174,9 +1189,10 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
       if (isChapterJourneyStudyTitle(devotional?.title)) {
         setChapterTaskProgress((prev) => {
           const next = new Map(prev);
+          const taskTotal = getStudyPlanTaskTotal(devotional?.title);
           next.set(dayNumber, {
-            completed: isWisdomOfProverbsTitle(devotional?.title) ? WISDOM_TASK_TOTAL : CHAPTER_JOURNEY_TASK_TOTAL,
-            total: isWisdomOfProverbsTitle(devotional?.title) ? WISDOM_TASK_TOTAL : CHAPTER_JOURNEY_TASK_TOTAL,
+            completed: taskTotal,
+            total: taskTotal,
           });
           return next;
         });
@@ -1644,13 +1660,13 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                 </div>
                 <div className="mt-2 flex items-center justify-between text-xs font-black text-[var(--bb-text-secondary,#5f6368)]">
                   <span>{Math.round(progressPercent)}% complete</span>
-                  <span>{completedDays}/{totalUnits} {isChapterJourneyStudy ? (isWisdomOfProverbs ? "days" : "chapters") : "sections"}</span>
+                  <span>{completedDays}/{totalUnits} {isChapterJourneyStudy ? (isModernStudyPlan ? "days" : "chapters") : "sections"}</span>
                 </div>
               </div>
             </div>
           </div>
 
-          {!isWisdomOfProverbs ? (
+          {!isModernStudyPlan ? (
             <div className="mt-5 grid grid-cols-3 gap-3">
               <div className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-3 py-4 text-center shadow-sm">
                 <p className="text-2xl font-black text-[var(--bb-text-primary,#111827)]">{completedDays}</p>
@@ -1684,7 +1700,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
           <div className="mb-4 flex items-end justify-between gap-3">
             <div>
               <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Progress Map</p>
-              <h2 className="mt-1 text-xl font-black text-[var(--bb-text-primary,#111827)]">{isWisdomOfProverbs ? "Days" : isChapterJourneyStudy ? "Chapters" : "Sections"}</h2>
+              <h2 className="mt-1 text-xl font-black text-[var(--bb-text-primary,#111827)]">{isModernStudyPlan ? "Days" : isChapterJourneyStudy ? "Chapters" : "Sections"}</h2>
             </div>
             <p className="text-xs font-black text-[var(--bb-text-muted,#6b7280)]">{completedDays}/{totalUnits} done</p>
           </div>
@@ -1693,7 +1709,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
               const dayProgress = progress.get(day.day_number);
               const taskProgress = chapterTaskProgress.get(day.day_number) || {
                 completed: 0,
-                total: isWisdomOfProverbs ? WISDOM_TASK_TOTAL : CHAPTER_JOURNEY_TASK_TOTAL,
+                total: getStudyPlanTaskTotal(devotional?.title),
               };
               const isUnlocked = isDayUnlocked(day.day_number);
               const chapterLabel = `${day.bible_reading_book} ${day.bible_reading_chapter}`;
@@ -1713,11 +1729,11 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                 wisdomTriviaDone,
                 wisdomDiscussionDone,
               ].filter(Boolean).length;
-              const displayedTaskProgress = isWisdomOfProverbs
+              const displayedTaskProgress = isModernStudyPlan
                 ? { completed: wisdomCompletedCount, total: WISDOM_TASK_TOTAL }
                 : taskProgress;
               const remainingTasks = Math.max(displayedTaskProgress.total - displayedTaskProgress.completed, 0);
-              const isCompleted = isWisdomOfProverbs
+              const isCompleted = isModernStudyPlan
                 ? wisdomCompletedCount >= WISDOM_TASK_TOTAL
                 : isChapterJourneyStudy
                   ? taskProgress.completed >= taskProgress.total
@@ -1754,7 +1770,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                   id={`devotional-day-${day.day_number}`}
                   className={`overflow-hidden rounded-lg border transition ${
                     isCompleted
-                      ? isWisdomOfProverbs
+                      ? isModernStudyPlan
                         ? "border-emerald-300 bg-emerald-50"
                         : "bg-[#eaf5ff] border-[#b9dcf4]"
                       : isUnlocked
@@ -1774,7 +1790,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                         const next = current === day.day_number ? null : day.day_number;
                         if (next === null) {
                           setExpandedWisdomTask(null);
-                        } else if (isWisdomOfProverbs) {
+                        } else if (isModernStudyPlan) {
                           setExpandedWisdomTask(null);
                           scrollDevotionalElementIntoView(`devotional-day-${day.day_number}`);
                         }
@@ -1789,7 +1805,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                     <div className="flex items-center justify-between gap-3">
                       <div className="flex min-w-0 items-center gap-3">
                         <span className="font-semibold text-gray-700">
-                          {isWisdomOfProverbs ? `Day ${day.day_number}` : isChapterJourneyStudy ? chapterLabel : `Day ${day.day_number}`}
+                          {isModernStudyPlan ? `Day ${day.day_number}` : isChapterJourneyStudy ? chapterLabel : `Day ${day.day_number}`}
                         </span>
                         <span className="truncate text-gray-700">{day.day_title}</span>
                       </div>
@@ -1809,7 +1825,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                             />
                           </svg>
                         )}
-                        {isWisdomOfProverbs ? (
+                        {isModernStudyPlan ? (
                           <span className="flex shrink-0 items-center gap-2">
                             <span
                               className={`text-sm font-black ${
@@ -1848,7 +1864,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
 
                   {isUnlocked && isExpanded && (
                     <div className="border-t border-[var(--bb-card-border,#dbe7f4)] bg-white px-4 py-4">
-                      {isWisdomOfProverbs ? (
+                      {isModernStudyPlan ? (
                         <div className="space-y-3">
                           <details
                             id={`devotional-day-${day.day_number}-overview`}

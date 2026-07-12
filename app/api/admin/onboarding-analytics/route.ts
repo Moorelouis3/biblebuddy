@@ -154,6 +154,40 @@ type MasterActionFunnelRow = {
   created_at?: string | null;
 };
 
+const STUDY_PLAN_ACTION_TYPES = [
+  "devotional_opened",
+  "devotional_day_opened",
+  "devotional_day_completed",
+] as const;
+
+type StudyPlanAnalyticsSummary = {
+  totalPlanOpens: number;
+  totalDayOpens: number;
+  totalDayCompletions: number;
+  uniqueUsers: number;
+  series: {
+    planOpens: Array<{ label: string; value: number }>;
+    dayOpens: Array<{ label: string; value: number }>;
+    dayCompletions: Array<{ label: string; value: number }>;
+  };
+  plans: Array<{
+    planTitle: string;
+    planOpens: number;
+    dayOpens: number;
+    dayCompletions: number;
+    uniqueUsers: number;
+  }>;
+  dayRows: Array<{
+    planTitle: string;
+    dayNumber: number | null;
+    dayLabel: string;
+    opens: number;
+    completions: number;
+    uniqueUsers: number;
+    lastActivityAt: string | null;
+  }>;
+};
+
 type VideoProgressAnalyticsRow = {
   user_id?: string | null;
   video_id?: string | null;
@@ -1099,6 +1133,187 @@ function buildCompletionUpgradeAnalytics(
       continueFreeClicks: { current: currentContinueFreeClicks.length, previous: previousContinueFreeClicks.length, change: percentChange(currentContinueFreeClicks.length, previousContinueFreeClicks.length) },
       successfulUpgrades: { current: currentSuccesses.length, previous: previousSuccesses.length, change: percentChange(currentSuccesses.length, previousSuccesses.length) },
     },
+  };
+}
+
+function getStudyPlanActorId(row: MasterActionFunnelRow) {
+  return row.user_id || row.session_id || row.username || "unknown";
+}
+
+function getStudyPlanMetadataString(metadata: Record<string, unknown> | null | undefined, keys: string[]) {
+  if (!metadata) return "";
+  for (const key of keys) {
+    const value = metadata[key];
+    if (typeof value === "string" && value.trim()) return value.trim();
+  }
+  return "";
+}
+
+function getStudyPlanMetadataDay(metadata: Record<string, unknown> | null | undefined) {
+  if (!metadata) return null;
+  const rawValue = metadata.dayNumber ?? metadata.day_number ?? metadata.day;
+  const value = typeof rawValue === "number" ? rawValue : typeof rawValue === "string" ? Number.parseInt(rawValue, 10) : Number.NaN;
+  return Number.isFinite(value) && value > 0 ? value : null;
+}
+
+function parseStudyPlanAction(row: MasterActionFunnelRow) {
+  const label = String(row.action_label || "").trim();
+  const metadata = row.event_metadata || {};
+  let planTitle =
+    getStudyPlanMetadataString(metadata, ["planTitle", "plan_title", "devotionalTitle", "devotional_title", "title"]) ||
+    "";
+  let dayNumber = getStudyPlanMetadataDay(metadata);
+
+  if (!planTitle) {
+    const dayLabelMatch = label.match(/^(.*?)\s+(?:Day|day)\s+(\d+)\b/);
+    if (dayLabelMatch) {
+      planTitle = dayLabelMatch[1].trim();
+      if (!dayNumber) dayNumber = Number.parseInt(dayLabelMatch[2] || "", 10);
+    }
+  }
+
+  if (!dayNumber) {
+    const dayMatch = label.match(/\bDay\s+(\d+)\b/i);
+    if (dayMatch) dayNumber = Number.parseInt(dayMatch[1] || "", 10);
+  }
+
+  if (!planTitle) {
+    planTitle = label
+      .replace(/\bDay\s+\d+\b/gi, "")
+      .replace(/\b(opened|started|completed|done)\b/gi, "")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  return {
+    planTitle: planTitle || "Unknown Study Plan",
+    dayNumber: Number.isFinite(dayNumber || NaN) ? dayNumber : null,
+  };
+}
+
+function buildStudyPlanAnalytics(rows: MasterActionFunnelRow[], windowKey: JourneyWindowKey): StudyPlanAnalyticsSummary {
+  const planMap = new Map<string, {
+    planTitle: string;
+    planOpens: number;
+    dayOpens: number;
+    dayCompletions: number;
+    users: Set<string>;
+  }>();
+  const dayMap = new Map<string, {
+    planTitle: string;
+    dayNumber: number | null;
+    dayLabel: string;
+    opens: number;
+    completions: number;
+    users: Set<string>;
+    lastActivityAt: string | null;
+  }>();
+  const planOpenTimestamps: string[] = [];
+  const dayOpenTimestamps: string[] = [];
+  const dayCompletionTimestamps: string[] = [];
+  const allUsers = new Set<string>();
+
+  for (const row of rows) {
+    const actionType = row.action_type || "";
+    if (!STUDY_PLAN_ACTION_TYPES.includes(actionType as (typeof STUDY_PLAN_ACTION_TYPES)[number])) continue;
+
+    const createdAt = row.created_at || "";
+    const actorId = getStudyPlanActorId(row);
+    const { planTitle, dayNumber } = parseStudyPlanAction(row);
+    const dayLabel = dayNumber ? `Day ${dayNumber}` : "Unknown Day";
+    const planKey = planTitle.toLowerCase();
+    const dayKey = `${planKey}:${dayLabel}`;
+
+    allUsers.add(actorId);
+
+    if (!planMap.has(planKey)) {
+      planMap.set(planKey, {
+        planTitle,
+        planOpens: 0,
+        dayOpens: 0,
+        dayCompletions: 0,
+        users: new Set(),
+      });
+    }
+    const plan = planMap.get(planKey)!;
+    plan.users.add(actorId);
+
+    if (actionType === "devotional_opened") {
+      plan.planOpens += 1;
+      if (createdAt) planOpenTimestamps.push(createdAt);
+      continue;
+    }
+
+    if (!dayMap.has(dayKey)) {
+      dayMap.set(dayKey, {
+        planTitle,
+        dayNumber,
+        dayLabel,
+        opens: 0,
+        completions: 0,
+        users: new Set(),
+        lastActivityAt: null,
+      });
+    }
+
+    const day = dayMap.get(dayKey)!;
+    day.users.add(actorId);
+    plan.users.add(actorId);
+    if (createdAt && (!day.lastActivityAt || new Date(createdAt).getTime() > new Date(day.lastActivityAt).getTime())) {
+      day.lastActivityAt = createdAt;
+    }
+
+    if (actionType === "devotional_day_opened") {
+      plan.dayOpens += 1;
+      day.opens += 1;
+      if (createdAt) dayOpenTimestamps.push(createdAt);
+    }
+
+    if (actionType === "devotional_day_completed") {
+      plan.dayCompletions += 1;
+      day.completions += 1;
+      if (createdAt) dayCompletionTimestamps.push(createdAt);
+    }
+  }
+
+  const plans = Array.from(planMap.values())
+    .map((plan) => ({
+      planTitle: plan.planTitle,
+      planOpens: plan.planOpens,
+      dayOpens: plan.dayOpens,
+      dayCompletions: plan.dayCompletions,
+      uniqueUsers: plan.users.size,
+    }))
+    .sort((a, b) => b.dayCompletions - a.dayCompletions || b.dayOpens - a.dayOpens || a.planTitle.localeCompare(b.planTitle));
+
+  const dayRows = Array.from(dayMap.values())
+    .map((day) => ({
+      planTitle: day.planTitle,
+      dayNumber: day.dayNumber,
+      dayLabel: day.dayLabel,
+      opens: day.opens,
+      completions: day.completions,
+      uniqueUsers: day.users.size,
+      lastActivityAt: day.lastActivityAt,
+    }))
+    .sort((a, b) => {
+      const planCompare = a.planTitle.localeCompare(b.planTitle);
+      if (planCompare !== 0) return planCompare;
+      return (a.dayNumber || 9999) - (b.dayNumber || 9999);
+    });
+
+  return {
+    totalPlanOpens: plans.reduce((sum, plan) => sum + plan.planOpens, 0),
+    totalDayOpens: plans.reduce((sum, plan) => sum + plan.dayOpens, 0),
+    totalDayCompletions: plans.reduce((sum, plan) => sum + plan.dayCompletions, 0),
+    uniqueUsers: allUsers.size,
+    series: {
+      planOpens: buildSimpleMetricSeries(planOpenTimestamps, windowKey),
+      dayOpens: buildSimpleMetricSeries(dayOpenTimestamps, windowKey),
+      dayCompletions: buildSimpleMetricSeries(dayCompletionTimestamps, windowKey),
+    },
+    plans,
+    dayRows,
   };
 }
 
@@ -3708,6 +3923,18 @@ async function buildOverviewAnalyticsResponse(
   if (endIso) allCompletionUpgradeQuery = allCompletionUpgradeQuery.lt("created_at", endIso);
   const { data: allCompletionUpgradeActionData } = await allCompletionUpgradeQuery;
   const allCompletionUpgradeRows = (allCompletionUpgradeActionData || []) as MasterActionFunnelRow[];
+  const studyPlanRows = (await collectPaginatedRows<MasterActionFunnelRow>((from, to) => {
+    let query = adminSupabase
+      .from("master_actions")
+      .select("user_id, username, session_id, action_type, action_label, event_metadata, created_at")
+      .in("action_type", [...STUDY_PLAN_ACTION_TYPES])
+      .gte("created_at", startIso)
+      .order("created_at", { ascending: false });
+    if (endIso) query = query.lt("created_at", endIso);
+    return query.range(from, to);
+  })).filter(
+    (row) => !isOwnerAuthUser(row.user_id || null, allAuthSummaryByUserId),
+  );
   const currentUpgradeTimestamps = collectFirstPaidUpgradeTimestamps(allUpgradeRows, startIso, endIso);
   const upgradeSeries = buildSimpleMetricSeries(currentUpgradeTimestamps, journeyWindow);
   const currentUpgrades = upgradeSeries.reduce((sum, point) => sum + point.value, 0);
@@ -3715,6 +3942,7 @@ async function buildOverviewAnalyticsResponse(
     ? collectFirstPaidUpgradeTimestamps(allUpgradeRows, previousRange.startIso, previousRange.endIso).length
     : 0;
   const completionUpgrade = buildCompletionUpgradeAnalytics(allCompletionUpgradeRows, journeyWindow, previousRange);
+  const studyPlans = buildStudyPlanAnalytics(studyPlanRows, journeyWindow);
 
   const landingRows = await collectPaginatedRows<LandingEventRow>((from, to) => {
     let query = adminSupabase
@@ -3818,6 +4046,7 @@ async function buildOverviewAnalyticsResponse(
       upgrades: { current: currentUpgrades, previous: previousUpgrades, change: percentChange(currentUpgrades, previousUpgrades) },
     },
     completionUpgrade,
+    studyPlans,
     customerJourney: {
       window: journeyWindow,
       label: getJourneyWindowLabel(journeyWindow),
@@ -4129,6 +4358,17 @@ export async function GET(request: Request) {
     activeUsersLast24Rows = (activeUsersLast24Data || []) as MasterActionFunnelRow[];
   }
 
+  let studyPlanRows = await collectPaginatedRows<MasterActionFunnelRow>((from, to) => {
+    let query = adminSupabase
+      .from("master_actions")
+      .select("user_id, username, session_id, action_type, action_label, event_metadata, created_at")
+      .in("action_type", [...STUDY_PLAN_ACTION_TYPES])
+      .gte("created_at", journeySinceIso)
+      .order("created_at", { ascending: false });
+    if (journeyBeforeIso) query = query.lt("created_at", journeyBeforeIso);
+    return query.range(from, to);
+  });
+
   const { startIso: videoSinceIso, endIso: videoBeforeIso } = getAnalyticsDateRange(journeyWindow);
   let videoProgressQuery = adminSupabase
     .from("video_progress")
@@ -4145,6 +4385,7 @@ export async function GET(request: Request) {
     ...landingEventRows.map((row) => row.user_id).filter((userId): userId is string => Boolean(userId)),
     ...upgradeRows.map((row) => row.user_id).filter((userId): userId is string => Boolean(userId)),
     ...studyNotesActionRows.map((row) => row.user_id).filter((userId): userId is string => Boolean(userId)),
+    ...studyPlanRows.map((row) => row.user_id).filter((userId): userId is string => Boolean(userId)),
     ...bibleYearTaskActionRows.map((row) => row.user_id).filter((userId): userId is string => Boolean(userId)),
     ...masterFunnelRows.map((row) => row.user_id).filter((userId): userId is string => Boolean(userId)),
     ...firstThreeDayRows.map((row) => row.user_id).filter((userId): userId is string => Boolean(userId)),
@@ -4220,6 +4461,9 @@ export async function GET(request: Request) {
       !isInternalAnalyticsUser(row.user_id, profileSummaryByUserId) &&
       !isOwnerAuthUser(row.user_id, authSummaryByUserId),
   );
+  studyPlanRows = studyPlanRows.filter(
+    (row) => !isInternalAnalyticsUser(row.user_id, profileSummaryByUserId) && !isOwnerAuthUser(row.user_id, authSummaryByUserId),
+  );
   const { data: allBibleYearProgressData } = await adminSupabase
     .from("bible_year_day_progress")
     .select("user_id, day_number, reading_completed, study_notes_completed, trivia_completed, reflection_completed, updated_at")
@@ -4260,6 +4504,7 @@ export async function GET(request: Request) {
   const daySevenUpgrade = buildDayUpgradeAnalytics(masterFunnelRows, 7);
   const studyNotesUpgrade = buildStudyNotesUpgradeAnalytics(masterFunnelRows);
   const completionUpgrade = buildCompletionUpgradeAnalytics(completionUpgradeRows, journeyWindow, previousRange);
+  const studyPlans = buildStudyPlanAnalytics(studyPlanRows, journeyWindow);
   const activeUsersLast24Hours = buildActiveUsersLast24Hours(activeUsersLast24Rows, profileByUserId);
   const newUserFirstThreeDays = buildNewUserFirstThreeDaysAnalytics(firstThreeDayRows, profileByUserId);
   const bibleBuddyFunnelStages = buildBibleBuddyFunnelStages(validLandingEventRows, masterFunnelRows, windowBibleYearProgressRows, dayThreeUpgrade, daySevenUpgrade);
@@ -4400,6 +4645,7 @@ export async function GET(request: Request) {
     daySevenUpgrade,
     studyNotesUpgrade,
     completionUpgrade,
+    studyPlans,
     bibleYearDays,
     studyNotes,
     activeUsersLast24Hours,
