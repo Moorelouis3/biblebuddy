@@ -1902,15 +1902,15 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
           </div>
         </header>
 
-        <section className="grid min-h-[720px] items-center gap-12 pb-16 pt-10 lg:grid-cols-[0.9fr_1.1fr] lg:pb-24 lg:pt-16">
-          <div className="mx-auto max-w-[590px] text-center lg:mx-0 lg:text-left">
-            <h1 className="bb-serif text-[clamp(3.2rem,7vw,6.4rem)] font-black leading-[0.95] tracking-[-0.02em] text-[#07162f]">
+        <section className="grid min-h-[560px] items-center gap-10 pb-12 pt-8 lg:grid-cols-[0.88fr_1.12fr] lg:pb-16 lg:pt-10">
+          <div className="mx-auto max-w-[500px] text-center lg:mx-0 lg:text-left">
+            <h1 className="bb-serif text-[clamp(2.75rem,5vw,4.75rem)] font-black leading-[0.98] tracking-[-0.02em] text-[#07162f]">
               Most Bible Apps help you read the Bible.
               <span className="mt-6 block text-[#0f63ff]">
                 Bible Buddy helps you <span className="italic">understand</span> the Bible.
               </span>
             </h1>
-            <p className="mx-auto mt-7 max-w-[520px] text-lg font-semibold leading-8 text-[#40516b] lg:mx-0">
+            <p className="mx-auto mt-6 max-w-[470px] text-base font-semibold leading-7 text-[#40516b] lg:mx-0">
               Audio-first Bible lessons with simple explanations that help you actually understand what you&apos;re reading.
             </p>
             <div className="mt-8">
@@ -1929,14 +1929,14 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
             </div>
           </div>
 
-          <div className="relative mx-auto h-[560px] w-full max-w-[620px] sm:h-[650px]" aria-label="Bible Buddy app preview">
-            <div className="absolute left-[2%] top-[24%] hidden w-[215px] rotate-[-7deg] sm:block">
+          <div className="relative mx-auto h-[500px] w-full max-w-[560px] sm:h-[560px]" aria-label="Bible Buddy app preview">
+            <div className="absolute left-[3%] top-[24%] hidden w-[180px] rotate-[-7deg] sm:block">
               <LandingPhoneFrame variant="verse" />
             </div>
-            <div className="absolute left-1/2 top-[4%] z-20 w-[265px] -translate-x-1/2 sm:w-[310px]">
+            <div className="absolute left-1/2 top-[5%] z-20 w-[240px] -translate-x-1/2 sm:w-[270px]">
               <LandingPhoneFrame variant="home" featured />
             </div>
-            <div className="absolute right-[1%] top-[26%] hidden w-[215px] rotate-[7deg] sm:block">
+            <div className="absolute right-[3%] top-[25%] hidden w-[180px] rotate-[7deg] sm:block">
               <LandingPhoneFrame variant="progress" />
             </div>
             <div className="absolute inset-x-10 bottom-6 h-24 rounded-[999px] bg-[#0f63ff]/10 blur-3xl" />
