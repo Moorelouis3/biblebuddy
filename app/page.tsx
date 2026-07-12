@@ -1905,7 +1905,7 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
           </div>
         </header>
 
-        <section className="grid min-h-[560px] items-center gap-10 pb-12 pt-8 lg:grid-cols-[0.88fr_1.12fr] lg:pb-16 lg:pt-10">
+        <section className="grid min-h-[560px] items-center gap-10 pb-12 pt-8 lg:grid-cols-[0.82fr_1.18fr] lg:pb-16 lg:pt-10">
           <div className="mx-auto max-w-[500px] text-center lg:mx-0 lg:text-left">
             <h1 className="bb-serif text-[clamp(2.35rem,4.1vw,3.7rem)] font-black leading-[1.02] tracking-[-0.02em] text-[#07162f]">
               Most Bible Apps help you read the Bible.
@@ -1932,13 +1932,13 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
             </div>
           </div>
 
-          <div className="relative mx-auto h-[360px] w-full max-w-[620px] sm:h-[500px] lg:h-[540px]" aria-label="Bible Buddy app preview">
+          <div className="relative mx-auto h-[430px] w-full max-w-[760px] sm:h-[580px] lg:h-[620px] lg:max-w-[820px]" aria-label="Bible Buddy app preview">
             <Image
               src="/mainherolanding.png"
               alt="Bible Buddy app screens"
               fill
               priority
-              sizes="(max-width: 768px) 100vw, 620px"
+              sizes="(max-width: 768px) 100vw, 820px"
               className="object-contain"
             />
           </div>
@@ -1961,13 +1961,13 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
           </div>
         </section>
 
-        <section className="grid items-center gap-10 py-14 sm:py-20 lg:grid-cols-[0.95fr_1.05fr]">
-          <div className="order-2 relative mx-auto h-[360px] w-full max-w-[520px] lg:order-1 lg:h-[500px]">
+        <section className="grid items-center gap-10 py-14 sm:py-20 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="order-2 relative mx-auto h-[430px] w-full max-w-[650px] lg:order-1 lg:h-[620px] lg:max-w-[720px]">
             <Image
               src="/middleimagelanding.png"
               alt="Bible Buddy study notes preview"
               fill
-              sizes="(max-width: 768px) 100vw, 520px"
+              sizes="(max-width: 768px) 100vw, 720px"
               className="object-contain"
             />
           </div>
