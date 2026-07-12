@@ -1071,6 +1071,8 @@ export default function LandingPage() {
 
   if (isChecking) return <AppLoadingScreen />;
 
+  return <MinimalLandingPage onStartJourney={trackStartJourneyClick} />;
+
   return (
     <div className="bb-public-landing min-h-screen bg-[#fffdf8] text-[#07162f]">
       <LegalPageThemeReset />
@@ -1830,6 +1832,320 @@ function LandingThemeStyles() {
         }
       }
     `}</style>
+  );
+}
+
+function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: string) => void }) {
+  const features = [
+    {
+      icon: "headphones",
+      title: "Audio Lessons",
+      copy: "Listen while driving, working, walking, or cleaning.",
+      color: "#0f63ff",
+      bg: "#edf4ff",
+    },
+    {
+      icon: "book",
+      title: "Understand Scripture",
+      copy: "Simple explanations directly inside every verse.",
+      color: "#16a36b",
+      bg: "#ecfbf3",
+    },
+    {
+      icon: "calendar",
+      title: "Stay Consistent",
+      copy: "Follow a daily Bible plan and build your streak.",
+      color: "#d98a00",
+      bg: "#fff6df",
+    },
+    {
+      icon: "check",
+      title: "Finish the Bible",
+      copy: "Finally understand Genesis through Revelation.",
+      color: "#7257f5",
+      bg: "#f2efff",
+    },
+  ];
+
+  const checklist = [
+    "Verse-by-verse explanations",
+    "Historical context",
+    "Key people",
+    "Difficult words explained",
+    "Optional deeper study notes",
+    "Daily audio lessons",
+  ];
+
+  return (
+    <div className="bb-public-landing min-h-screen bg-[#f7fbff] text-[#07162f]">
+      <LegalPageThemeReset />
+      <LandingThemeStyles />
+
+      <main className="mx-auto max-w-[1180px] px-5 py-5 sm:px-8 lg:px-10">
+        <header className="flex items-center justify-between gap-5 py-2 sm:py-5">
+          <BibleBuddyMark />
+          <nav className="hidden items-center gap-8 text-sm font-black text-[#07162f] md:flex">
+            <a href="#about" className="transition hover:text-[#0f63ff]">About</a>
+            <Link href="/blog" className="transition hover:text-[#0f63ff]">Blog</Link>
+          </nav>
+          <div className="flex items-center gap-2 sm:gap-3">
+            <Link href="/login" className="hidden rounded-2xl px-4 py-3 text-sm font-black text-[#07162f] transition hover:bg-white sm:inline-flex">
+              Login
+            </Link>
+            <Link
+              href="/signup"
+              onClick={() => onStartJourney("minimal_header")}
+              className="inline-flex items-center justify-center rounded-2xl bg-[#0f63ff] px-4 py-3 text-sm font-black text-white shadow-[0_18px_40px_rgba(15,99,255,0.22)] transition hover:-translate-y-0.5 sm:px-6"
+            >
+              Create Free Account
+            </Link>
+          </div>
+        </header>
+
+        <section className="grid min-h-[720px] items-center gap-12 pb-16 pt-10 lg:grid-cols-[0.9fr_1.1fr] lg:pb-24 lg:pt-16">
+          <div className="mx-auto max-w-[590px] text-center lg:mx-0 lg:text-left">
+            <h1 className="bb-serif text-[clamp(3.2rem,7vw,6.4rem)] font-black leading-[0.95] tracking-[-0.02em] text-[#07162f]">
+              Most Bible Apps help you read the Bible.
+              <span className="mt-6 block text-[#0f63ff]">
+                Bible Buddy helps you <span className="italic">understand</span> the Bible.
+              </span>
+            </h1>
+            <p className="mx-auto mt-7 max-w-[520px] text-lg font-semibold leading-8 text-[#40516b] lg:mx-0">
+              Audio-first Bible lessons with simple explanations that help you actually understand what you&apos;re reading.
+            </p>
+            <div className="mt-8">
+              <Link
+                href="/signup"
+                onClick={() => onStartJourney("minimal_hero")}
+                className="inline-flex w-full items-center justify-center gap-3 rounded-2xl bg-[#0f63ff] px-7 py-4 text-base font-black text-white shadow-[0_24px_60px_rgba(15,99,255,0.25)] transition hover:-translate-y-0.5 sm:w-auto sm:min-w-[310px]"
+              >
+                Create Free Account
+                <LandingLineIcon name="arrow" light />
+              </Link>
+              <div className="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm font-bold text-[#627086] lg:justify-start">
+                <span className="inline-flex items-center gap-2"><LandingLineIcon name="check" small color="#16a36b" /> Free Beta Access</span>
+                <span className="inline-flex items-center gap-2"><LandingLineIcon name="check" small color="#16a36b" /> No Credit Card Required</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="relative mx-auto h-[560px] w-full max-w-[620px] sm:h-[650px]" aria-label="Bible Buddy app preview">
+            <div className="absolute left-[2%] top-[24%] hidden w-[215px] rotate-[-7deg] sm:block">
+              <LandingPhoneFrame variant="verse" />
+            </div>
+            <div className="absolute left-1/2 top-[4%] z-20 w-[265px] -translate-x-1/2 sm:w-[310px]">
+              <LandingPhoneFrame variant="home" featured />
+            </div>
+            <div className="absolute right-[1%] top-[26%] hidden w-[215px] rotate-[7deg] sm:block">
+              <LandingPhoneFrame variant="progress" />
+            </div>
+            <div className="absolute inset-x-10 bottom-6 h-24 rounded-[999px] bg-[#0f63ff]/10 blur-3xl" />
+          </div>
+        </section>
+
+        <section className="py-14 sm:py-20">
+          <h2 className="mx-auto max-w-3xl text-center text-[clamp(2.1rem,4vw,3.8rem)] font-black leading-tight tracking-[-0.02em] text-[#07162f]">
+            Everything you need to understand Scripture.
+          </h2>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {features.map((feature) => (
+              <article key={feature.title} className="rounded-[30px] border border-[#dce7f5] bg-white p-7 text-center shadow-[0_24px_70px_rgba(7,22,47,0.06)]">
+                <div className="mx-auto grid h-16 w-16 place-items-center rounded-full" style={{ backgroundColor: feature.bg }}>
+                  <LandingLineIcon name={feature.icon} color={feature.color} large />
+                </div>
+                <h3 className="mt-6 text-xl font-black text-[#07162f]">{feature.title}</h3>
+                <p className="mx-auto mt-3 max-w-[230px] text-sm font-semibold leading-6 text-[#526075]">{feature.copy}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="grid items-center gap-10 py-14 sm:py-20 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="order-2 mx-auto w-full max-w-[350px] lg:order-1">
+            <LandingPhoneFrame variant="study" featured />
+          </div>
+          <div className="order-1 mx-auto max-w-[560px] text-center lg:order-2 lg:mx-0 lg:text-left">
+            <h2 className="text-[clamp(2.2rem,4vw,4rem)] font-black leading-tight tracking-[-0.02em] text-[#07162f]">
+              Study the Bible without feeling overwhelmed.
+            </h2>
+            <div className="mt-8 grid gap-3 text-left">
+              {checklist.map((item) => (
+                <div key={item} className="flex items-center gap-3 rounded-2xl border border-[#dce7f5] bg-white px-5 py-4 text-base font-black text-[#07162f] shadow-[0_16px_44px_rgba(7,22,47,0.045)]">
+                  <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#eaf8ef]"><LandingLineIcon name="check" small color="#0c9b5d" /></span>
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="about" className="py-14 sm:py-20">
+          <div className="rounded-[36px] border border-[#dce7f5] bg-white p-8 shadow-[0_28px_90px_rgba(7,22,47,0.07)] sm:p-12 lg:grid lg:grid-cols-[0.55fr_0.45fr] lg:items-center lg:gap-12">
+            <div>
+              <p className="text-sm font-black uppercase tracking-[0.22em] text-[#0f63ff]">Built with purpose</p>
+              <h2 className="mt-4 text-[clamp(2rem,4vw,3.6rem)] font-black leading-tight tracking-[-0.02em] text-[#07162f]">
+                Built by one person.
+              </h2>
+              <p className="mt-5 max-w-2xl text-lg font-semibold leading-8 text-[#40516b]">
+                Bible Buddy isn&apos;t backed by a huge company. It&apos;s an independent project built by one person with one mission: helping people understand God&apos;s Word.
+              </p>
+              <p className="mt-4 max-w-2xl text-base font-semibold leading-7 text-[#627086]">
+                We&apos;re currently in Beta and improving the app every week based on community feedback.
+              </p>
+            </div>
+            <div className="mt-8 rounded-[28px] bg-[#f3f8ff] p-7 text-center lg:mt-0">
+              <div className="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-[#0f63ff] text-3xl text-white">B</div>
+              <p className="mt-5 text-2xl font-black leading-tight text-[#07162f]">
+                Helping people understand Scripture one day at a time.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-14 sm:py-20">
+          <div className="mx-auto max-w-3xl rounded-[36px] border border-[#dce7f5] bg-white p-8 text-center shadow-[0_28px_90px_rgba(7,22,47,0.07)] sm:p-12">
+            <p className="text-sm font-black uppercase tracking-[0.22em] text-[#0f63ff]">Currently in Beta</p>
+            <h2 className="mt-4 text-[clamp(2.1rem,4vw,3.7rem)] font-black leading-tight text-[#07162f]">
+              Use Bible Buddy from your browser today.
+            </h2>
+            <p className="mx-auto mt-5 max-w-2xl text-lg font-semibold leading-8 text-[#40516b]">
+              Bible Buddy is currently a web app while we continue building the mobile apps. The iPhone and Android apps are coming after Beta.
+            </p>
+            <Link
+              href="/signup"
+              onClick={() => onStartJourney("minimal_beta")}
+              className="mt-8 inline-flex w-full items-center justify-center rounded-2xl bg-[#0f63ff] px-7 py-4 text-base font-black text-white shadow-[0_24px_60px_rgba(15,99,255,0.24)] transition hover:-translate-y-0.5 sm:w-auto sm:min-w-[310px]"
+            >
+              Create Free Account
+            </Link>
+          </div>
+        </section>
+
+        <footer className="border-t border-[#dce7f5] py-8">
+          <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+            <BibleBuddyMark small />
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-bold text-[#526075]">
+              <Link href="/privacy" className="transition hover:text-[#0f63ff]">Privacy</Link>
+              <Link href="/terms" className="transition hover:text-[#0f63ff]">Terms</Link>
+              <Link href="/contact" className="transition hover:text-[#0f63ff]">Contact</Link>
+            </div>
+          </div>
+        </footer>
+      </main>
+    </div>
+  );
+}
+
+function LandingPhoneFrame({ variant, featured = false }: { variant: "home" | "verse" | "progress" | "study"; featured?: boolean }) {
+  return (
+    <div className={`rounded-[38px] border border-[#1d293d] bg-[#08111f] p-3 shadow-[0_36px_90px_rgba(7,22,47,0.23)] ${featured ? "scale-100" : "scale-95 opacity-95"}`}>
+      <div className="overflow-hidden rounded-[30px] bg-[#0b1524] text-white">
+        <div className="flex items-center justify-between px-4 py-3 text-[10px] font-black text-white/80">
+          <span>9:41</span>
+          <span>Bible Buddy</span>
+          <span>• •</span>
+        </div>
+        {variant === "home" ? <LandingPhoneHome /> : null}
+        {variant === "verse" ? <LandingPhoneVerse /> : null}
+        {variant === "progress" ? <LandingPhoneProgress /> : null}
+        {variant === "study" ? <LandingPhoneStudy /> : null}
+      </div>
+    </div>
+  );
+}
+
+function LandingPhoneHome() {
+  return (
+    <div className="space-y-3 p-4">
+      <p className="text-sm font-black">Good Morning, Louis</p>
+      <div className="rounded-2xl bg-white/8 p-4">
+        <p className="text-xs font-bold text-white/60">Bible in One Year</p>
+        <div className="mt-3 grid grid-cols-[1fr_82px] gap-3">
+          <div>
+            <p className="text-xl font-black">Day 7 of 365</p>
+            <p className="mt-1 text-xs font-semibold text-white/60">Genesis 16-17</p>
+            <div className="mt-4 rounded-xl bg-[#0f63ff] px-4 py-2 text-center text-xs font-black">Continue</div>
+          </div>
+          <Image src="/day7cover.png" alt="" width={82} height={82} className="h-[82px] w-[82px] rounded-xl object-cover" />
+        </div>
+      </div>
+      <div className="rounded-2xl bg-white/8 p-4">
+        <p className="text-xs font-bold text-white/60">Today&apos;s Lesson</p>
+        <p className="mt-1 text-lg font-black">The Covenant Promise</p>
+        <div className="mt-3 h-1.5 rounded-full bg-white/10"><div className="h-full w-1/3 rounded-full bg-[#0f63ff]" /></div>
+        <div className="mt-4 flex items-center justify-between rounded-xl bg-white/8 px-3 py-3 text-sm font-black">
+          <span>Play Audio</span>
+          <span>▶</span>
+        </div>
+      </div>
+      <div className="rounded-2xl bg-white/8 p-4">
+        <p className="text-xs font-bold text-white/60">Study Notes</p>
+        <p className="mt-2 text-sm font-semibold leading-5 text-white/80">God hears, sees, and remembers.</p>
+      </div>
+    </div>
+  );
+}
+
+function LandingPhoneVerse() {
+  return (
+    <div className="space-y-3 p-4">
+      <p className="text-xs font-bold text-white/60">Genesis 16:13</p>
+      <p className="text-sm font-semibold leading-6 text-white/85">
+        And she called the name of the LORD that spake unto her, Thou God seest me...
+      </p>
+      <div className="rounded-2xl bg-white/8 p-4">
+        <p className="text-sm font-black">What does this mean?</p>
+        <p className="mt-2 text-xs font-semibold leading-5 text-white/70">
+          Hagar realizes God sees her pain and speaks into her situation.
+        </p>
+      </div>
+      <div className="rounded-2xl bg-white/8 p-4">
+        <p className="text-xs font-bold text-white/60">Related Verse</p>
+        <p className="mt-2 text-xs font-semibold text-white/80">Psalm 139:1</p>
+      </div>
+    </div>
+  );
+}
+
+function LandingPhoneProgress() {
+  return (
+    <div className="space-y-3 p-4">
+      <div className="rounded-2xl bg-white/8 p-4">
+        <p className="text-sm font-black">You&apos;re on a roll.</p>
+        <p className="mt-1 text-xs font-bold text-white/60">7 Day Streak</p>
+        <div className="mt-4 flex justify-between">
+          {[1, 2, 3, 4, 5].map((day) => (
+            <span key={day} className="grid h-8 w-8 place-items-center rounded-full bg-[#ffcc62] text-xs font-black text-[#07162f]">{day}</span>
+          ))}
+        </div>
+      </div>
+      <div className="rounded-2xl bg-white/8 p-4">
+        <p className="text-xs font-bold text-white/60">This Week</p>
+        <p className="mt-2 text-xl font-black">5/7 Days</p>
+        <div className="mt-4 rounded-xl bg-[#0f63ff] px-4 py-2 text-center text-xs font-black">View Plan</div>
+      </div>
+      <div className="rounded-2xl bg-white/8 p-4">
+        <p className="text-xs font-bold text-white/60">Insights</p>
+        <p className="mt-2 text-lg font-black">2h 15m</p>
+      </div>
+    </div>
+  );
+}
+
+function LandingPhoneStudy() {
+  return (
+    <div className="space-y-3 p-4">
+      <Image src="/day13cover.png" alt="" width={260} height={160} className="h-40 w-full rounded-2xl object-cover" />
+      <div className="rounded-2xl bg-white/8 p-4">
+        <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#7fb6ff]">Study Notes</p>
+        <p className="mt-2 text-lg font-black">God Names Israel</p>
+        <p className="mt-2 text-xs font-semibold leading-5 text-white/70">Jacob is no longer only known by struggle. God gives him a new name.</p>
+      </div>
+      <div className="rounded-2xl bg-white/8 p-4">
+        <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#7fb6ff]">Key Phrase</p>
+        <p className="mt-2 text-sm font-black">Thy Name Shall Be Called No More Jacob</p>
+      </div>
+    </div>
   );
 }
 
