@@ -1895,17 +1895,10 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
             <Link href="/login" className="rounded-xl px-2 py-2 text-sm font-black text-[#07162f] transition hover:bg-white sm:rounded-2xl sm:px-4 sm:py-3">
               Login
             </Link>
-            <Link
-              href="/signup"
-              onClick={() => onStartJourney("minimal_header")}
-              className="inline-flex items-center justify-center rounded-xl bg-[#0f63ff] px-3 py-2.5 text-xs font-black text-white shadow-[0_18px_40px_rgba(15,99,255,0.22)] transition hover:-translate-y-0.5 sm:rounded-2xl sm:px-6 sm:py-3 sm:text-sm"
-            >
-              Create Free Account
-            </Link>
           </div>
         </header>
 
-        <section className="grid min-h-[680px] items-center gap-10 pb-12 pt-8 lg:grid-cols-[0.72fr_1.28fr] lg:pb-16 lg:pt-10">
+        <section className="grid min-h-[560px] items-center gap-8 pb-6 pt-6 lg:grid-cols-[0.72fr_1.28fr] lg:pb-8 lg:pt-8">
           <div className="mx-auto max-w-[500px] text-center lg:mx-0 lg:text-left">
             <h1 className="bb-serif text-[clamp(2.35rem,4.1vw,3.7rem)] font-black leading-[1.02] tracking-[-0.02em] text-[#07162f]">
               Most Bible Apps help you read the Bible.
@@ -1926,29 +1919,28 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
                 <LandingLineIcon name="arrow" light />
               </Link>
               <div className="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm font-bold text-[#627086] lg:justify-start">
-                <span className="inline-flex items-center gap-2"><LandingLineIcon name="check" small color="#16a36b" /> Free Beta Access</span>
                 <span className="inline-flex items-center gap-2"><LandingLineIcon name="check" small color="#16a36b" /> No Credit Card Required</span>
               </div>
             </div>
           </div>
 
-          <div className="relative mx-auto h-[620px] w-full max-w-[980px] sm:h-[780px] lg:h-[900px] lg:max-w-[1120px]" aria-label="Bible Buddy app preview">
+          <div className="relative mx-auto h-[500px] w-full max-w-[900px] sm:h-[620px] lg:h-[700px] lg:max-w-[980px]" aria-label="Bible Buddy app preview">
             <Image
-              src="/mainherolanding.png"
+              src="/newheroimage.png"
               alt="Bible Buddy app screens"
               fill
               priority
-              sizes="(max-width: 768px) 100vw, 1120px"
+              sizes="(max-width: 768px) 100vw, 980px"
               className="object-contain"
             />
           </div>
         </section>
 
-        <section className="py-14 sm:py-20">
+        <section className="py-8 sm:py-12">
           <h2 className="mx-auto max-w-3xl text-center text-[clamp(2.1rem,4vw,3.8rem)] font-black leading-tight tracking-[-0.02em] text-[#07162f]">
             Everything you need to understand Scripture.
           </h2>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {features.map((feature) => (
               <article key={feature.title} className="rounded-[30px] border border-[#dce7f5] bg-white p-7 text-center shadow-[0_24px_70px_rgba(7,22,47,0.06)]">
                 <div className="mx-auto grid h-16 w-16 place-items-center rounded-full" style={{ backgroundColor: feature.bg }}>
@@ -1961,13 +1953,13 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
           </div>
         </section>
 
-        <section className="grid items-center gap-10 py-14 sm:py-20 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="order-2 relative mx-auto h-[620px] w-full max-w-[900px] lg:order-1 lg:h-[900px] lg:max-w-[1040px]">
+        <section className="grid items-center gap-8 py-8 sm:py-12 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="order-2 relative mx-auto h-[500px] w-full max-w-[820px] lg:order-1 lg:h-[680px] lg:max-w-[900px]">
             <Image
-              src="/middleimagelanding.png"
+              src="/newmiddleimage.png"
               alt="Bible Buddy study notes preview"
               fill
-              sizes="(max-width: 768px) 100vw, 1040px"
+              sizes="(max-width: 768px) 100vw, 900px"
               className="object-contain"
             />
           </div>
