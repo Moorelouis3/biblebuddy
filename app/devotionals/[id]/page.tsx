@@ -1792,46 +1792,117 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
         </section>
 
         {starterBuddies.length > 0 ? (
-          <button
-            type="button"
-            onClick={() => {
-              setStarterBuddyPage(0);
-              setShowStarterBuddiesModal(true);
-            }}
-            className="mt-5 block w-full rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-5 py-4 text-left shadow-sm transition hover:bg-[var(--bb-surface-soft,#f8fbff)]"
-            aria-label="Open starter buddies list"
-          >
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Community</p>
-                <p className="mt-1 text-sm font-bold text-[var(--bb-text-primary,#111827)]">
-                  Buddies have started this devotional
-                </p>
+          <div className="mt-5 rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-sm">
+            <button
+              type="button"
+              onClick={() => {
+                if (!showStarterBuddiesModal) {
+                  setStarterBuddyPage(0);
+                }
+                setShowStarterBuddiesModal((current) => !current);
+              }}
+              className="block w-full px-5 py-4 text-left transition hover:bg-[var(--bb-surface-soft,#f8fbff)]"
+              aria-expanded={showStarterBuddiesModal}
+              aria-label="Toggle starter buddies list"
+            >
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Community</p>
+                  <p className="mt-1 text-sm font-bold text-[var(--bb-text-primary,#111827)]">
+                    Buddies who started this devotional
+                  </p>
+                </div>
+                <div className="flex items-center">
+                  <div className="flex -space-x-3">
+                    {starterBuddies.slice(0, 6).map((buddy) => (
+                      <div
+                        key={buddy.user_id}
+                        className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border-2 border-white bg-[var(--bb-surface-soft,#eef4f8)] text-xs font-black text-[var(--bb-text-primary,#111827)] shadow-sm"
+                        title={buddy.display_name}
+                      >
+                        {buddy.profile_image_url ? (
+                          <img src={buddy.profile_image_url} alt={buddy.display_name} className="h-full w-full object-cover" />
+                        ) : (
+                          buddy.display_name.slice(0, 1).toUpperCase()
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                  {starterBuddies.length > 6 ? (
+                    <span className="ml-3 text-xs font-black text-[var(--bb-text-secondary,#5f6368)]">
+                      +{starterBuddies.length - 6} more
+                    </span>
+                  ) : null}
+                  <span className="ml-3 text-lg font-black text-[var(--bb-text-muted,#6b7280)]">
+                    {showStarterBuddiesModal ? "-" : "+"}
+                  </span>
+                </div>
               </div>
-              <div className="flex items-center">
-                <div className="flex -space-x-3">
-                  {starterBuddies.slice(0, 6).map((buddy) => (
+            </button>
+
+            {showStarterBuddiesModal ? (
+              <div className="border-t border-[var(--bb-card-border,#dbe7f4)] px-5 py-4">
+                <p className="text-sm font-semibold text-[var(--bb-text-secondary,#5f6368)]">
+                  Showing {starterBuddies.length === 0 ? 0 : starterBuddyPage * STARTER_BUDDIES_PER_PAGE + 1}-{Math.min((starterBuddyPage + 1) * STARTER_BUDDIES_PER_PAGE, starterBuddies.length)} of {starterBuddies.length}
+                </p>
+
+                <div className="mt-4 space-y-3">
+                  {visibleStarterBuddies.map((buddy) => (
                     <div
                       key={buddy.user_id}
-                      className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border-2 border-white bg-[var(--bb-surface-soft,#eef4f8)] text-xs font-black text-[var(--bb-text-primary,#111827)] shadow-sm"
-                      title={buddy.display_name}
+                      className="flex items-center gap-3 rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-3"
                     >
-                      {buddy.profile_image_url ? (
-                        <img src={buddy.profile_image_url} alt={buddy.display_name} className="h-full w-full object-cover" />
-                      ) : (
-                        buddy.display_name.slice(0, 1).toUpperCase()
-                      )}
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full bg-[var(--bb-surface-soft,#eef4f8)] text-sm font-black text-[var(--bb-text-primary,#111827)]">
+                        {buddy.profile_image_url ? (
+                          <img src={buddy.profile_image_url} alt={buddy.display_name} className="h-full w-full object-cover" />
+                        ) : (
+                          buddy.display_name.slice(0, 1).toUpperCase()
+                        )}
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <p className="truncate text-sm font-black text-[var(--bb-text-primary,#111827)]">
+                          {buddy.display_name}
+                        </p>
+                        <p className="mt-1 text-xs font-semibold text-[var(--bb-text-secondary,#5f6368)]">
+                          {buddy.completed_day_number > 0 ? `Finished through Day ${buddy.completed_day_number}` : "Started the devotional"}
+                        </p>
+                      </div>
+                      <Link
+                        href={`/profile/${buddy.user_id}`}
+                        className="shrink-0 rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-white px-3 py-2 text-xs font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-surface-soft,#f8fbff)]"
+                      >
+                        View profile
+                      </Link>
                     </div>
                   ))}
                 </div>
-                {starterBuddies.length > 6 ? (
-                  <span className="ml-3 text-xs font-black text-[var(--bb-text-secondary,#5f6368)]">
-                    +{starterBuddies.length - 6} more
-                  </span>
+
+                {starterBuddyPages > 1 ? (
+                  <div className="mt-5 flex items-center justify-between gap-3">
+                    <button
+                      type="button"
+                      onClick={() => setStarterBuddyPage((current) => Math.max(0, current - 1))}
+                      disabled={starterBuddyPage === 0}
+                      className="rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-white px-4 py-2 text-sm font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-surface-soft,#f8fbff)] disabled:cursor-not-allowed disabled:opacity-45"
+                    >
+                      Previous
+                    </button>
+                    <span className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-text-secondary,#5f6368)]">
+                      Page {starterBuddyPage + 1} of {starterBuddyPages}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => setStarterBuddyPage((current) => Math.min(starterBuddyPages - 1, current + 1))}
+                      disabled={starterBuddyPage >= starterBuddyPages - 1}
+                      className="rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-white px-4 py-2 text-sm font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-surface-soft,#f8fbff)] disabled:cursor-not-allowed disabled:opacity-45"
+                    >
+                      Next
+                    </button>
+                  </div>
                 ) : null}
               </div>
-            </div>
-          </button>
+            ) : null}
+          </div>
         ) : null}
 
         <details className="mt-5 overflow-hidden rounded-[26px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-sm">
@@ -2503,91 +2574,6 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
         </div>
       )}
 
-      {showStarterBuddiesModal ? (
-        <div
-          className="fixed inset-0 z-[95] flex items-center justify-center bg-slate-950/45 px-4 backdrop-blur-sm"
-          onClick={() => setShowStarterBuddiesModal(false)}
-        >
-          <div
-            className="relative w-full max-w-lg rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-white p-5 shadow-2xl"
-            onClick={(event) => event.stopPropagation()}
-          >
-            <button
-              type="button"
-              onClick={() => setShowStarterBuddiesModal(false)}
-              className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-[var(--bb-surface-soft,#eef4f8)] text-lg font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-card-border,#dbe7f4)]"
-              aria-label="Close starter buddies"
-            >
-              x
-            </button>
-
-            <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">
-              Community
-            </p>
-            <h3 className="mt-2 text-2xl font-black text-[var(--bb-text-primary,#111827)]">
-              Buddies who started this devotional
-            </h3>
-            <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#5f6368)]">
-              Showing {starterBuddies.length === 0 ? 0 : starterBuddyPage * STARTER_BUDDIES_PER_PAGE + 1}-{Math.min((starterBuddyPage + 1) * STARTER_BUDDIES_PER_PAGE, starterBuddies.length)} of {starterBuddies.length}
-            </p>
-
-            <div className="mt-5 space-y-3">
-              {visibleStarterBuddies.map((buddy) => (
-                <div
-                  key={buddy.user_id}
-                  className="flex items-center gap-3 rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-3"
-                >
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full bg-[var(--bb-surface-soft,#eef4f8)] text-sm font-black text-[var(--bb-text-primary,#111827)]">
-                    {buddy.profile_image_url ? (
-                      <img src={buddy.profile_image_url} alt={buddy.display_name} className="h-full w-full object-cover" />
-                    ) : (
-                      buddy.display_name.slice(0, 1).toUpperCase()
-                    )}
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <p className="truncate text-sm font-black text-[var(--bb-text-primary,#111827)]">
-                      {buddy.display_name}
-                    </p>
-                    <p className="mt-1 text-xs font-semibold text-[var(--bb-text-secondary,#5f6368)]">
-                      {buddy.completed_day_number > 0 ? `Finished through Day ${buddy.completed_day_number}` : "Started the devotional"}
-                    </p>
-                  </div>
-                  <Link
-                    href={`/profile/${buddy.user_id}`}
-                    className="shrink-0 rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-white px-3 py-2 text-xs font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-surface-soft,#f8fbff)]"
-                  >
-                    View profile
-                  </Link>
-                </div>
-              ))}
-            </div>
-
-            {starterBuddyPages > 1 ? (
-              <div className="mt-5 flex items-center justify-between gap-3">
-                <button
-                  type="button"
-                  onClick={() => setStarterBuddyPage((current) => Math.max(0, current - 1))}
-                  disabled={starterBuddyPage === 0}
-                  className="rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-white px-4 py-2 text-sm font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-surface-soft,#f8fbff)] disabled:cursor-not-allowed disabled:opacity-45"
-                >
-                  Previous
-                </button>
-                <span className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-text-secondary,#5f6368)]">
-                  Page {starterBuddyPage + 1} of {starterBuddyPages}
-                </span>
-                <button
-                  type="button"
-                  onClick={() => setStarterBuddyPage((current) => Math.min(starterBuddyPages - 1, current + 1))}
-                  disabled={starterBuddyPage >= starterBuddyPages - 1}
-                  className="rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-white px-4 py-2 text-sm font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-surface-soft,#f8fbff)] disabled:cursor-not-allowed disabled:opacity-45"
-                >
-                  Next
-                </button>
-              </div>
-            ) : null}
-          </div>
-        </div>
-      ) : null}
     </div>
   );
 }
