@@ -142,6 +142,7 @@ interface DevotionalStarterBuddy {
   user_id: string;
   display_name: string;
   profile_image_url: string | null;
+  completed_day_number: number;
 }
 
 type ChapterTaskProgress = {
@@ -389,6 +390,8 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
   const [completedTriviaDayNumbers, setCompletedTriviaDayNumbers] = useState<Set<number>>(new Set());
   const [completedDiscussionDayNumbers, setCompletedDiscussionDayNumbers] = useState<Set<number>>(new Set());
   const [starterBuddies, setStarterBuddies] = useState<DevotionalStarterBuddy[]>([]);
+  const [showStarterBuddiesModal, setShowStarterBuddiesModal] = useState(false);
+  const [starterBuddyPage, setStarterBuddyPage] = useState(0);
   const [showCreditBlocked, setShowCreditBlocked] = useState(false);
   const [showReadingRequiredModal, setShowReadingRequiredModal] = useState(false);
   const [showProModal, setShowProModal] = useState(false);
@@ -522,7 +525,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
         const [starterProgressRes, starterActionRes, starterProfileChoiceRes] = await Promise.all([
           supabase
             .from("devotional_progress")
-            .select("user_id")
+            .select("user_id, day_number, is_completed")
             .eq("devotional_id", devotionalId),
           supabase
             .from("master_actions")
@@ -554,6 +557,15 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
         const starterRows = starterProgressRes.data || [];
         const starterActionRows = starterActionRes.data || [];
         const starterProfileChoiceRows = starterProfileChoiceRes.data || [];
+        const completedDayMap = new Map<string, number>();
+        starterRows.forEach((row: { user_id: string | null; day_number?: number | null; is_completed?: boolean | null }) => {
+          if (!row.user_id || row.is_completed !== true) return;
+          const currentMax = completedDayMap.get(row.user_id) || 0;
+          const candidate = typeof row.day_number === "number" ? row.day_number : 0;
+          if (candidate > currentMax) {
+            completedDayMap.set(row.user_id, candidate);
+          }
+        });
         const starterIds = [...new Set(
           [
             ...starterRows.map((row: { user_id: string | null }) => row.user_id),
@@ -571,10 +583,11 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
           if (starterProfilesError) {
             console.warn("[DEVOTIONAL] Starter profiles query failed:", starterProfilesError.message);
             setStarterBuddies(
-              starterIds.slice(0, 12).map((starterId) => ({
+              starterIds.map((starterId) => ({
                 user_id: starterId,
                 display_name: "Buddy",
                 profile_image_url: null,
+                completed_day_number: completedDayMap.get(starterId) || 0,
               })),
             );
           } else {
@@ -584,13 +597,13 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
 
             setStarterBuddies(
               starterIds
-                .slice(0, 12)
                 .map((starterId) => {
                   const profile = starterProfileMap.get(starterId);
                   return {
                     user_id: starterId,
                     display_name: profile?.display_name || profile?.username || "Buddy",
                     profile_image_url: profile?.profile_image_url || null,
+                    completed_day_number: completedDayMap.get(starterId) || 0,
                   };
                 }),
             );
@@ -1704,6 +1717,13 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
     );
   }
 
+  const STARTER_BUDDIES_PER_PAGE = 10;
+  const starterBuddyPages = Math.max(1, Math.ceil(starterBuddies.length / STARTER_BUDDIES_PER_PAGE));
+  const visibleStarterBuddies = starterBuddies.slice(
+    starterBuddyPage * STARTER_BUDDIES_PER_PAGE,
+    starterBuddyPage * STARTER_BUDDIES_PER_PAGE + STARTER_BUDDIES_PER_PAGE,
+  );
+
   return (
     <div className={embedded ? "bg-transparent pb-8" : "min-h-screen bg-gray-50 pb-12"}>
       <div className={`${embedded ? "px-0 py-0" : "px-4 py-8"} max-w-5xl mx-auto`}>
@@ -1780,7 +1800,15 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                   Buddies have started this devotional
                 </p>
               </div>
-              <div className="flex items-center">
+              <button
+                type="button"
+                onClick={() => {
+                  setStarterBuddyPage(0);
+                  setShowStarterBuddiesModal(true);
+                }}
+                className="flex items-center rounded-full transition hover:opacity-90"
+                aria-label="Open starter buddies list"
+              >
                 <div className="flex -space-x-3">
                   {starterBuddies.slice(0, 6).map((buddy) => (
                     <div
@@ -1801,7 +1829,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                     +{starterBuddies.length - 6} more
                   </span>
                 ) : null}
-              </div>
+              </button>
             </div>
           </section>
         ) : null}
@@ -2474,6 +2502,92 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
           </div>
         </div>
       )}
+
+      {showStarterBuddiesModal ? (
+        <div
+          className="fixed inset-0 z-[95] flex items-center justify-center bg-slate-950/45 px-4 backdrop-blur-sm"
+          onClick={() => setShowStarterBuddiesModal(false)}
+        >
+          <div
+            className="relative w-full max-w-lg rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-white p-5 shadow-2xl"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setShowStarterBuddiesModal(false)}
+              className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-[var(--bb-surface-soft,#eef4f8)] text-lg font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-card-border,#dbe7f4)]"
+              aria-label="Close starter buddies"
+            >
+              x
+            </button>
+
+            <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">
+              Community
+            </p>
+            <h3 className="mt-2 text-2xl font-black text-[var(--bb-text-primary,#111827)]">
+              Buddies who started this devotional
+            </h3>
+            <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#5f6368)]">
+              Showing {starterBuddies.length === 0 ? 0 : starterBuddyPage * STARTER_BUDDIES_PER_PAGE + 1}-{Math.min((starterBuddyPage + 1) * STARTER_BUDDIES_PER_PAGE, starterBuddies.length)} of {starterBuddies.length}
+            </p>
+
+            <div className="mt-5 space-y-3">
+              {visibleStarterBuddies.map((buddy) => (
+                <div
+                  key={buddy.user_id}
+                  className="flex items-center gap-3 rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-3"
+                >
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full bg-[var(--bb-surface-soft,#eef4f8)] text-sm font-black text-[var(--bb-text-primary,#111827)]">
+                    {buddy.profile_image_url ? (
+                      <img src={buddy.profile_image_url} alt={buddy.display_name} className="h-full w-full object-cover" />
+                    ) : (
+                      buddy.display_name.slice(0, 1).toUpperCase()
+                    )}
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate text-sm font-black text-[var(--bb-text-primary,#111827)]">
+                      {buddy.display_name}
+                    </p>
+                    <p className="mt-1 text-xs font-semibold text-[var(--bb-text-secondary,#5f6368)]">
+                      {buddy.completed_day_number > 0 ? `Finished through Day ${buddy.completed_day_number}` : "Started the devotional"}
+                    </p>
+                  </div>
+                  <Link
+                    href={`/profile/${buddy.user_id}`}
+                    className="shrink-0 rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-white px-3 py-2 text-xs font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-surface-soft,#f8fbff)]"
+                  >
+                    View profile
+                  </Link>
+                </div>
+              ))}
+            </div>
+
+            {starterBuddyPages > 1 ? (
+              <div className="mt-5 flex items-center justify-between gap-3">
+                <button
+                  type="button"
+                  onClick={() => setStarterBuddyPage((current) => Math.max(0, current - 1))}
+                  disabled={starterBuddyPage === 0}
+                  className="rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-white px-4 py-2 text-sm font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-surface-soft,#f8fbff)] disabled:cursor-not-allowed disabled:opacity-45"
+                >
+                  Previous
+                </button>
+                <span className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-text-secondary,#5f6368)]">
+                  Page {starterBuddyPage + 1} of {starterBuddyPages}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setStarterBuddyPage((current) => Math.min(starterBuddyPages - 1, current + 1))}
+                  disabled={starterBuddyPage >= starterBuddyPages - 1}
+                  className="rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-white px-4 py-2 text-sm font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-surface-soft,#f8fbff)] disabled:cursor-not-allowed disabled:opacity-45"
+                >
+                  Next
+                </button>
+              </div>
+            ) : null}
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }
