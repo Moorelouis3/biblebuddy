@@ -6,6 +6,7 @@ export type BlogArticle = {
   categorySlug: string;
   canonicalPath: string;
   readTime: string;
+  image: string;
 };
 
 export type BlogCategory = {
@@ -56,6 +57,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     categorySlug: "bible-insights",
     canonicalPath: "/bible-study-hub/bible-insights/how-to-defend-the-bible",
     readTime: "8 min read",
+    image: "/Defenthebiblebanner.png",
   },
   {
     slug: "what-is-the-bible",
@@ -65,6 +67,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     categorySlug: "bible-insights",
     canonicalPath: "/bible-study-hub/bible-insights/what-is-the-bible",
     readTime: "7 min read",
+    image: "/Whatisthebiblebanner.png",
   },
   {
     slug: "why-so-many-bible-translations",
@@ -74,6 +77,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     categorySlug: "bible-insights",
     canonicalPath: "/bible-study-hub/bible-insights/why-so-many-bible-translations",
     readTime: "6 min read",
+    image: "/Translationsbanner.png",
   },
   {
     slug: "why-bible-study-is-hard",
@@ -83,6 +87,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     categorySlug: "bible-study-tips",
     canonicalPath: "/bible-study-tips/why-bible-study-is-hard",
     readTime: "7 min read",
+    image: "/Biblestudyhardbanner.png",
   },
   {
     slug: "how-to-read-the-bible",
@@ -92,6 +97,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     categorySlug: "bible-study-tips",
     canonicalPath: "/bible-study-tips/how-to-read-the-bible",
     readTime: "8 min read",
+    image: "/Biblereadingbanner.png",
   },
   {
     slug: "a-simple-bible-highlighting-system",
@@ -101,6 +107,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     categorySlug: "bible-study-tips",
     canonicalPath: "/bible-study-tips/a-simple-bible-highlighting-system",
     readTime: "5 min read",
+    image: "/Biblehighlightingbanner.png",
   },
   {
     slug: "what-is-hell",
@@ -110,6 +117,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     categorySlug: "christian-foundations",
     canonicalPath: "/bible-study-hub/christian-foundations/what-is-hell",
     readTime: "8 min read",
+    image: "/Whatishell.png",
   },
   {
     slug: "what-is-heaven",
@@ -119,6 +127,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     categorySlug: "christian-foundations",
     canonicalPath: "/bible-study-hub/christian-foundations/what-is-heaven",
     readTime: "7 min read",
+    image: "/Whatisheaven.png",
   },
   {
     slug: "why-so-many-denominations",
@@ -128,6 +137,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     categorySlug: "christian-foundations",
     canonicalPath: "/bible-study-hub/christian-foundations/why-so-many-denominations",
     readTime: "8 min read",
+    image: "/Whydenominations.png",
   },
   {
     slug: "your-body-is-a-temple",
@@ -137,6 +147,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     categorySlug: "verse-breakdowns",
     canonicalPath: "/bible-study-hub/verse-breakdowns/your-body-is-a-temple",
     readTime: "12 min read",
+    image: "/Bodytemplebanner.png",
   },
   {
     slug: "building-self-control",
@@ -146,6 +157,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     categorySlug: "verse-breakdowns",
     canonicalPath: "/bible-study-hub/verse-breakdowns/building-self-control",
     readTime: "6 min read",
+    image: "/Selfcontrolbanner.png",
   },
   {
     slug: "salt-and-light",
@@ -155,6 +167,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     categorySlug: "verse-breakdowns",
     canonicalPath: "/bible-study-hub/verse-breakdowns/salt-and-light",
     readTime: "6 min read",
+    image: "/Saltearthbanner.png",
   },
   {
     slug: "luke",
@@ -164,6 +177,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     categorySlug: "character-studies",
     canonicalPath: "/bible-study-hub/character-studies/luke",
     readTime: "7 min read",
+    image: "/Lukebanner.png",
   },
   {
     slug: "moses",
@@ -173,6 +187,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     categorySlug: "character-studies",
     canonicalPath: "/bible-study-hub/character-studies/moses",
     readTime: "7 min read",
+    image: "/Mosesbanner.png",
   },
   {
     slug: "paul",
@@ -182,6 +197,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     categorySlug: "character-studies",
     canonicalPath: "/bible-study-hub/character-studies/paul",
     readTime: "7 min read",
+    image: "/Paulbanner.png",
   },
   {
     slug: "the-man-who-legalized-christianity",
@@ -191,6 +207,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     categorySlug: "christian-history",
     canonicalPath: "/bible-study-hub/christian-history/the-man-who-legalized-christianity",
     readTime: "8 min read",
+    image: "/Legalized.png",
   },
   {
     slug: "st-patrick",
@@ -200,6 +217,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     categorySlug: "christian-history",
     canonicalPath: "/bible-study-hub/christian-history/st-patrick",
     readTime: "6 min read",
+    image: "/Irelandbanner.png",
   },
   {
     slug: "st-valentine",
@@ -209,6 +227,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     categorySlug: "christian-history",
     canonicalPath: "/bible-study-hub/christian-history/st-valentine",
     readTime: "6 min read",
+    image: "/Valentinebanner.png",
   },
 ];
 
