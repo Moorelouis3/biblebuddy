@@ -1897,7 +1897,7 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
           </div>
         </header>
 
-        <section className="grid min-h-[340px] items-center gap-0 pb-0 pt-0 lg:grid-cols-[0.8fr_1.2fr] lg:gap-1 lg:pb-0 lg:pt-0">
+        <section className="grid min-h-[340px] items-center gap-3 pb-0 pt-0 lg:grid-cols-[0.9fr_1.1fr] lg:gap-3 lg:pb-0 lg:pt-0">
           <div className="mx-auto max-w-[560px] text-center lg:mx-0 lg:text-left">
             <h1 className="bb-serif text-[clamp(1.8rem,3vw,3.35rem)] font-black leading-[0.95] tracking-[-0.03em] text-[#07162f]">
               Most Bible Apps help you read the Bible.
@@ -1923,19 +1923,19 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
             </div>
           </div>
 
-          <div className="relative mx-auto h-[560px] w-full max-w-[1400px] sm:h-[700px] lg:h-[860px] lg:max-w-[1600px]" aria-label="Bible Buddy app preview">
+          <div className="relative mx-auto h-[340px] w-full max-w-[720px] sm:h-[430px] sm:max-w-[840px] lg:h-[520px] lg:max-w-[980px]" aria-label="Bible Buddy app preview">
             <Image
               src="/newheroimage.png"
               alt="Bible Buddy app screens"
               fill
               priority
-              sizes="(max-width: 768px) 100vw, 1600px"
-              className="object-contain scale-[1.55] sm:scale-[1.58] lg:scale-[1.62]"
+              sizes="(max-width: 768px) 100vw, 980px"
+              className="object-contain"
             />
           </div>
         </section>
 
-        <section className="py-0">
+        <section className="py-2 sm:py-3">
           <h2 className="mx-auto max-w-3xl text-center text-[clamp(1.9rem,3.2vw,2.8rem)] font-black leading-tight tracking-[-0.02em] text-[#07162f]">
             Everything you need to understand Scripture.
           </h2>
@@ -1952,14 +1952,14 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
           </div>
         </section>
 
-        <section className="grid items-center gap-0 py-0 lg:grid-cols-[1.02fr_0.98fr]">
-          <div className="order-2 relative mx-auto h-[620px] w-full max-w-[1400px] lg:order-1 lg:h-[860px] lg:max-w-[1600px]">
+        <section className="grid items-center gap-4 py-2 sm:py-3 lg:grid-cols-[0.92fr_1.08fr]">
+          <div className="order-2 relative mx-auto h-[280px] w-full max-w-[360px] sm:h-[360px] sm:max-w-[430px] lg:order-1 lg:h-[470px] lg:max-w-[560px]">
             <Image
               src="/newmiddleimage.png"
               alt="Bible Buddy study notes preview"
               fill
-              sizes="(max-width: 768px) 100vw, 1600px"
-              className="object-contain scale-[1.48] sm:scale-[1.54] lg:scale-[1.6]"
+              sizes="(max-width: 768px) 100vw, 560px"
+              className="object-contain"
             />
           </div>
           <div className="order-1 mx-auto max-w-[520px] text-center lg:order-2 lg:mx-0 lg:text-left">
