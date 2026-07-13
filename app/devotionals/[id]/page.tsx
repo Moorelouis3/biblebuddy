@@ -1792,7 +1792,15 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
         </section>
 
         {starterBuddies.length > 0 ? (
-          <section className="mt-5 rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-5 py-4 shadow-sm">
+          <button
+            type="button"
+            onClick={() => {
+              setStarterBuddyPage(0);
+              setShowStarterBuddiesModal(true);
+            }}
+            className="mt-5 block w-full rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-5 py-4 text-left shadow-sm transition hover:bg-[var(--bb-surface-soft,#f8fbff)]"
+            aria-label="Open starter buddies list"
+          >
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Community</p>
@@ -1800,15 +1808,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                   Buddies have started this devotional
                 </p>
               </div>
-              <button
-                type="button"
-                onClick={() => {
-                  setStarterBuddyPage(0);
-                  setShowStarterBuddiesModal(true);
-                }}
-                className="flex items-center rounded-full transition hover:opacity-90"
-                aria-label="Open starter buddies list"
-              >
+              <div className="flex items-center">
                 <div className="flex -space-x-3">
                   {starterBuddies.slice(0, 6).map((buddy) => (
                     <div
@@ -1829,9 +1829,9 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                     +{starterBuddies.length - 6} more
                   </span>
                 ) : null}
-              </button>
+              </div>
             </div>
-          </section>
+          </button>
         ) : null}
 
         <details className="mt-5 overflow-hidden rounded-[26px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-sm">
