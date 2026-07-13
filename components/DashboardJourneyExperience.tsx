@@ -2828,7 +2828,7 @@ export default function DashboardJourneyExperience({
   }> = [
     { key: "home", label: "Home", icon: "\u2302", href: "/dashboard" },
     { key: "bible", label: "Bible", icon: <BibleBookIcon />, href: "/reading" },
-    { key: "bible_studies", label: "Plans", icon: "\uD83C\uDF05", href: "/plans" },
+    { key: "bible_studies", label: "Devotionals", icon: "\uD83C\uDF05", href: "/plans" },
     { key: "bible_topics", label: "Bible Topics", icon: "\uD83D\uDCDA", href: "#bible-topics" },
     { key: "share", label: "Invite", icon: "\u2197", href: dashboardPageLinks.share?.href || "#share-bible-buddy", onClick: dashboardPageLinks.share?.onClick },
     { key: "group", label: "Group", icon: "\uD83D\uDC65", href: "/dashboard?view=group" },
@@ -17710,7 +17710,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   ? "bg-transparent text-[var(--bb-accent,#2f7fe8)] sm:bg-[var(--bb-accent-soft,rgba(47,127,232,0.10))] sm:ring-1 sm:ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)]"
                   : "bg-transparent text-[var(--bb-text-primary,#111827)] hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.08))] sm:bg-[var(--bb-surface-soft,#f4f8ff)] sm:hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))]"
               }`}
-              aria-label="Open Plans"
+              aria-label="Open Devotionals"
               data-dashboard-nav-key="bible_studies"
             >
               <span className={`grid h-7 w-7 place-items-center rounded-full ${plansTabActive ? "bg-[var(--bb-accent,#2f7fe8)] text-white" : ""}`} aria-hidden="true">
@@ -17722,7 +17722,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   <path d="M10 16h4" />
                 </svg>
               </span>
-              <span className="mt-0.5 text-[9px] leading-none sm:mt-0 sm:text-[10px]">Plans</span>
+              <span className="mt-0.5 text-[9px] leading-none sm:mt-0 sm:text-[10px]">Devotionals</span>
             </button>
 
             <button

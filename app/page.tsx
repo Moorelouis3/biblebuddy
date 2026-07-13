@@ -1881,11 +1881,10 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
       <LegalPageThemeReset />
       <LandingThemeStyles />
 
-      <main className="mx-auto max-w-[1180px] px-5 py-5 sm:px-8 lg:px-10">
-        <header className="flex items-center justify-between gap-3 py-2 sm:gap-5 sm:py-5">
+      <main className="mx-auto max-w-[1400px] px-5 py-3 sm:px-8 lg:px-10">
+        <header className="flex items-center justify-between gap-3 py-1 sm:gap-5 sm:py-2">
           <BibleBuddyMark />
           <nav className="hidden items-center gap-8 text-sm font-black text-[#07162f] md:flex">
-            <a href="#about" className="transition hover:text-[#0f63ff]">About</a>
             <Link href="/blog" className="transition hover:text-[#0f63ff]">Blog</Link>
           </nav>
           <div className="flex items-center gap-2 sm:gap-3">
@@ -1898,18 +1897,18 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
           </div>
         </header>
 
-        <section className="grid min-h-[560px] items-center gap-8 pb-6 pt-6 lg:grid-cols-[0.72fr_1.28fr] lg:pb-8 lg:pt-8">
-          <div className="mx-auto max-w-[500px] text-center lg:mx-0 lg:text-left">
-            <h1 className="bb-serif text-[clamp(2.35rem,4.1vw,3.7rem)] font-black leading-[1.02] tracking-[-0.02em] text-[#07162f]">
+        <section className="grid min-h-[340px] items-center gap-0 pb-0 pt-0 lg:grid-cols-[0.8fr_1.2fr] lg:gap-1 lg:pb-0 lg:pt-0">
+          <div className="mx-auto max-w-[560px] text-center lg:mx-0 lg:text-left">
+            <h1 className="bb-serif text-[clamp(1.8rem,3vw,3.35rem)] font-black leading-[0.95] tracking-[-0.03em] text-[#07162f]">
               Most Bible Apps help you read the Bible.
-              <span className="mt-5 block text-[#0f63ff]">
+              <span className="mt-4 block text-[#0f63ff]">
                 Bible Buddy helps you <span className="italic">understand</span> the Bible.
               </span>
             </h1>
-            <p className="mx-auto mt-6 max-w-[470px] text-base font-semibold leading-7 text-[#40516b] lg:mx-0">
-              Audio-first Bible lessons with simple explanations that help you actually understand what you&apos;re reading.
+            <p className="mx-auto mt-4 max-w-[560px] text-[0.98rem] font-semibold leading-7 text-[#40516b] lg:mx-0">
+              Stop feeling lost when you read the Bible. Learn with simple explanations, guided audio, and lessons designed for everyday Christians.
             </p>
-            <div className="mt-8">
+            <div className="mt-4">
               <Link
                 href="/signup"
                 onClick={() => onStartJourney("minimal_hero")}
@@ -1918,29 +1917,29 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
                 Create Free Account
                 <LandingLineIcon name="arrow" light />
               </Link>
-              <div className="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm font-bold text-[#627086] lg:justify-start">
+              <div className="mt-3 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm font-bold text-[#627086] lg:justify-start">
                 <span className="inline-flex items-center gap-2"><LandingLineIcon name="check" small color="#16a36b" /> No Credit Card Required</span>
               </div>
             </div>
           </div>
 
-          <div className="relative mx-auto h-[500px] w-full max-w-[900px] sm:h-[620px] lg:h-[700px] lg:max-w-[980px]" aria-label="Bible Buddy app preview">
+          <div className="relative mx-auto h-[560px] w-full max-w-[1400px] sm:h-[700px] lg:h-[860px] lg:max-w-[1600px]" aria-label="Bible Buddy app preview">
             <Image
               src="/newheroimage.png"
               alt="Bible Buddy app screens"
               fill
               priority
-              sizes="(max-width: 768px) 100vw, 980px"
-              className="object-contain"
+              sizes="(max-width: 768px) 100vw, 1600px"
+              className="object-contain scale-[1.55] sm:scale-[1.58] lg:scale-[1.62]"
             />
           </div>
         </section>
 
-        <section className="py-8 sm:py-12">
-          <h2 className="mx-auto max-w-3xl text-center text-[clamp(2.1rem,4vw,3.8rem)] font-black leading-tight tracking-[-0.02em] text-[#07162f]">
+        <section className="py-0">
+          <h2 className="mx-auto max-w-3xl text-center text-[clamp(1.9rem,3.2vw,2.8rem)] font-black leading-tight tracking-[-0.02em] text-[#07162f]">
             Everything you need to understand Scripture.
           </h2>
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {features.map((feature) => (
               <article key={feature.title} className="rounded-[30px] border border-[#dce7f5] bg-white p-7 text-center shadow-[0_24px_70px_rgba(7,22,47,0.06)]">
                 <div className="mx-auto grid h-16 w-16 place-items-center rounded-full" style={{ backgroundColor: feature.bg }}>
@@ -1953,21 +1952,21 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
           </div>
         </section>
 
-        <section className="grid items-center gap-8 py-8 sm:py-12 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="order-2 relative mx-auto h-[500px] w-full max-w-[820px] lg:order-1 lg:h-[680px] lg:max-w-[900px]">
+        <section className="grid items-center gap-0 py-0 lg:grid-cols-[1.02fr_0.98fr]">
+          <div className="order-2 relative mx-auto h-[620px] w-full max-w-[1400px] lg:order-1 lg:h-[860px] lg:max-w-[1600px]">
             <Image
               src="/newmiddleimage.png"
               alt="Bible Buddy study notes preview"
               fill
-              sizes="(max-width: 768px) 100vw, 900px"
-              className="object-contain"
+              sizes="(max-width: 768px) 100vw, 1600px"
+              className="object-contain scale-[1.48] sm:scale-[1.54] lg:scale-[1.6]"
             />
           </div>
           <div className="order-1 mx-auto max-w-[520px] text-center lg:order-2 lg:mx-0 lg:text-left">
-            <h2 className="text-[clamp(2.2rem,4vw,4rem)] font-black leading-tight tracking-[-0.02em] text-[#07162f]">
+            <h2 className="text-[clamp(1.95rem,3.4vw,2.95rem)] font-black leading-tight tracking-[-0.02em] text-[#07162f]">
               Study the Bible without feeling overwhelmed.
             </h2>
-            <div className="mt-8 grid gap-3 text-left">
+            <div className="mt-6 grid gap-3 text-left">
               {checklist.map((item) => (
                 <div key={item} className="flex items-center gap-3 rounded-2xl border border-[#dce7f5] bg-white px-5 py-4 text-base font-black text-[#07162f] shadow-[0_16px_44px_rgba(7,22,47,0.045)]">
                   <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#eaf8ef]"><LandingLineIcon name="check" small color="#0c9b5d" /></span>
@@ -1978,7 +1977,7 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
           </div>
         </section>
 
-        <section id="about" className="mx-auto max-w-3xl py-14 text-center sm:py-20">
+        <section id="about" className="mx-auto max-w-3xl py-8 text-center sm:py-10">
           <p className="text-sm font-semibold leading-7 text-[#40516b] sm:text-base">
             Currently in Beta &bull; Bible Buddy is a free web app built by one person with one mission: helping people understand God&apos;s Word. New features are added every week. iPhone and Android apps are coming after Beta.
           </p>
