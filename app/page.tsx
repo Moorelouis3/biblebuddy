@@ -1939,7 +1939,7 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
           </div>
         </header>
 
-        <section className="grid min-h-[240px] items-center gap-2 pb-0 pt-0 lg:grid-cols-[0.98fr_1.02fr] lg:gap-2">
+        <section className="grid items-center gap-4 pb-0 pt-0 lg:grid-cols-[0.98fr_1.02fr] lg:gap-5 lg:pb-2">
           <div className="mx-auto max-w-[560px] text-center lg:mx-0 lg:text-left">
             <h1 className="bb-serif text-[clamp(1.55rem,2.45vw,2.75rem)] font-black leading-[0.97] tracking-[-0.03em] text-[#07162f]">
               Most Bible Apps help you read the Bible.
@@ -1965,19 +1965,19 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
             </div>
           </div>
 
-          <div className="relative mx-auto h-[140px] w-full max-w-[260px] sm:h-[210px] sm:max-w-[360px] lg:h-[230px] lg:max-w-[395px]" aria-label="Bible Buddy app preview">
+          <div className="relative mx-auto h-[430px] w-full max-w-[560px] sm:h-[310px] sm:max-w-[420px] lg:h-[300px] lg:max-w-[420px] xl:h-[320px] xl:max-w-[450px]" aria-label="Bible Buddy app preview">
             <Image
               src="/newheroimage.png"
               alt="Bible Buddy app screens"
               fill
               priority
-              sizes="(max-width: 768px) 100vw, 395px"
+              sizes="(max-width: 640px) 560px, (max-width: 1024px) 420px, 450px"
               className="object-contain"
             />
           </div>
         </section>
 
-        <section className="py-1">
+        <section className="py-1 sm:py-2">
           <h2 className="mx-auto max-w-3xl text-center text-[clamp(1.9rem,3.2vw,2.8rem)] font-black leading-tight tracking-[-0.02em] text-[#07162f]">
             Everything you need to understand Scripture.
           </h2>
@@ -1994,13 +1994,13 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
           </div>
         </section>
 
-        <section className="grid items-center gap-5 py-1 sm:gap-6 lg:grid-cols-[1fr_1.1fr] lg:gap-10">
-          <div className="order-2 relative mx-auto h-[290px] w-full max-w-[295px] self-center sm:h-[380px] sm:max-w-[390px] lg:order-1 lg:h-[560px] lg:max-w-[560px]">
+        <section className="grid items-center gap-4 py-1 sm:gap-5 lg:grid-cols-[0.9fr_1.1fr] lg:gap-6 lg:py-2">
+          <div className="order-2 relative mx-auto h-[280px] w-full max-w-[280px] self-center sm:h-[320px] sm:max-w-[320px] lg:order-1 lg:h-[340px] lg:max-w-[340px]">
             <Image
               src="/newmiddleimage.png"
               alt="Bible Buddy study notes preview"
               fill
-              sizes="(max-width: 768px) 100vw, 560px"
+              sizes="(max-width: 640px) 280px, (max-width: 1024px) 320px, 340px"
               className="object-contain"
             />
           </div>
@@ -2013,24 +2013,24 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
                 Everything you need to understand Scripture, stay consistent, and keep growing.
               </p>
             </div>
-            <div className="mt-6 grid gap-4 text-left sm:grid-cols-2">
+            <div className="mt-5 grid gap-3 text-left sm:grid-cols-2">
               {studyFeatureCards.map((item) => (
                 <article
                   key={item.title}
-                  className="flex min-h-[138px] flex-col rounded-[24px] border border-[#dce7f5] bg-white p-5 shadow-[0_18px_40px_rgba(7,22,47,0.05)]"
+                  className="rounded-[22px] border border-[#dce7f5] bg-white p-4 shadow-[0_18px_40px_rgba(7,22,47,0.05)]"
                 >
                   <div className="flex items-center gap-4">
                     <div
-                      className="flex h-14 w-14 shrink-0 items-center justify-center rounded-[18px] text-[1.8rem] leading-none shadow-[0_10px_24px_rgba(15,23,42,0.05)]"
+                      className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[16px] text-[1.5rem] leading-none shadow-[0_10px_24px_rgba(15,23,42,0.05)]"
                       style={{ backgroundColor: item.iconBg }}
                     >
                       {item.icon}
                     </div>
-                    <h3 className="text-[1rem] font-black leading-snug text-[#07162f] sm:text-[1.06rem]">
+                    <h3 className="text-[0.98rem] font-black leading-snug text-[#07162f] sm:text-[1.02rem]">
                       {item.title}
                     </h3>
                   </div>
-                  <p className="mt-4 max-w-[34ch] pl-[72px] text-[0.92rem] font-semibold leading-6 text-[#526075]">
+                  <p className="mt-3 pl-16 text-[0.9rem] font-semibold leading-6 text-[#526075]">
                     {item.copy}
                   </p>
                 </article>
