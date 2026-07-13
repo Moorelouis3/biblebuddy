@@ -1867,13 +1867,55 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
     },
   ];
 
-  const checklist = [
-    "Verse-by-verse explanations",
-    "Historical context",
-    "Key people",
-    "Difficult words explained",
-    "Optional deeper study notes",
-    "Daily audio lessons",
+  const studyFeatureCards = [
+    {
+      icon: "📖",
+      title: "Verse-by-Verse Commentary",
+      copy: "Clear explanations placed directly beside the verses you are reading.",
+      iconBg: "#eef4ff",
+    },
+    {
+      icon: "🎧",
+      title: "Guided Audio Scripture",
+      copy: "Listen to Scripture with explanations that help the passage make sense.",
+      iconBg: "#eef8ff",
+    },
+    {
+      icon: "📅",
+      title: "Bible in One Year",
+      copy: "Follow a simple daily plan from Genesis to Revelation.",
+      iconBg: "#f7f1ff",
+    },
+    {
+      icon: "🌱",
+      title: "Daily Devotionals",
+      copy: "Grow through focused devotional plans built around real biblical themes.",
+      iconBg: "#eefbf3",
+    },
+    {
+      icon: "🧠",
+      title: "Bible Trivia",
+      copy: "Test what you learned with hundreds of Bible questions.",
+      iconBg: "#fff6e6",
+    },
+    {
+      icon: "🔍",
+      title: "Difficult Words Explained",
+      copy: "Understand old language, unfamiliar phrases, people, places, and customs.",
+      iconBg: "#f3f6fb",
+    },
+    {
+      icon: "🗺️",
+      title: "Historical Context",
+      copy: "See where events happened, what life was like, and why the details matter.",
+      iconBg: "#eef7f8",
+    },
+    {
+      icon: "🔥",
+      title: "Progress and Streaks",
+      copy: "Track your Bible progress and build a consistent study habit.",
+      iconBg: "#fff1ee",
+    },
   ];
 
   return (
@@ -1897,18 +1939,18 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
           </div>
         </header>
 
-        <section className="grid min-h-[340px] items-center gap-3 pb-0 pt-0 lg:grid-cols-[0.9fr_1.1fr] lg:gap-3 lg:pb-0 lg:pt-0">
+        <section className="grid min-h-[240px] items-center gap-2 pb-0 pt-0 lg:grid-cols-[0.98fr_1.02fr] lg:gap-2">
           <div className="mx-auto max-w-[560px] text-center lg:mx-0 lg:text-left">
-            <h1 className="bb-serif text-[clamp(1.8rem,3vw,3.35rem)] font-black leading-[0.95] tracking-[-0.03em] text-[#07162f]">
+            <h1 className="bb-serif text-[clamp(1.55rem,2.45vw,2.75rem)] font-black leading-[0.97] tracking-[-0.03em] text-[#07162f]">
               Most Bible Apps help you read the Bible.
               <span className="mt-4 block text-[#0f63ff]">
                 Bible Buddy helps you <span className="italic">understand</span> the Bible.
               </span>
             </h1>
-            <p className="mx-auto mt-4 max-w-[560px] text-[0.98rem] font-semibold leading-7 text-[#40516b] lg:mx-0">
+            <p className="mx-auto mt-3 max-w-[540px] text-[0.98rem] font-semibold leading-7 text-[#40516b] lg:mx-0">
               Stop feeling lost when you read the Bible. Learn with simple explanations, guided audio, and lessons designed for everyday Christians.
             </p>
-            <div className="mt-4">
+            <div className="mt-3">
               <Link
                 href="/signup"
                 onClick={() => onStartJourney("minimal_hero")}
@@ -1923,19 +1965,19 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
             </div>
           </div>
 
-          <div className="relative mx-auto h-[340px] w-full max-w-[720px] sm:h-[430px] sm:max-w-[840px] lg:h-[520px] lg:max-w-[980px]" aria-label="Bible Buddy app preview">
+          <div className="relative mx-auto h-[140px] w-full max-w-[260px] sm:h-[210px] sm:max-w-[360px] lg:h-[230px] lg:max-w-[395px]" aria-label="Bible Buddy app preview">
             <Image
               src="/newheroimage.png"
               alt="Bible Buddy app screens"
               fill
               priority
-              sizes="(max-width: 768px) 100vw, 980px"
+              sizes="(max-width: 768px) 100vw, 395px"
               className="object-contain"
             />
           </div>
         </section>
 
-        <section className="py-2 sm:py-3">
+        <section className="py-1">
           <h2 className="mx-auto max-w-3xl text-center text-[clamp(1.9rem,3.2vw,2.8rem)] font-black leading-tight tracking-[-0.02em] text-[#07162f]">
             Everything you need to understand Scripture.
           </h2>
@@ -1952,8 +1994,8 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
           </div>
         </section>
 
-        <section className="grid items-center gap-4 py-2 sm:py-3 lg:grid-cols-[0.92fr_1.08fr]">
-          <div className="order-2 relative mx-auto h-[280px] w-full max-w-[360px] sm:h-[360px] sm:max-w-[430px] lg:order-1 lg:h-[470px] lg:max-w-[560px]">
+        <section className="grid items-center gap-5 py-1 sm:gap-6 lg:grid-cols-[1fr_1.1fr] lg:gap-10">
+          <div className="order-2 relative mx-auto h-[290px] w-full max-w-[295px] self-center sm:h-[380px] sm:max-w-[390px] lg:order-1 lg:h-[560px] lg:max-w-[560px]">
             <Image
               src="/newmiddleimage.png"
               alt="Bible Buddy study notes preview"
@@ -1962,16 +2004,34 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
               className="object-contain"
             />
           </div>
-          <div className="order-1 mx-auto max-w-[520px] text-center lg:order-2 lg:mx-0 lg:text-left">
-            <h2 className="text-[clamp(1.95rem,3.4vw,2.95rem)] font-black leading-tight tracking-[-0.02em] text-[#07162f]">
-              Study the Bible without feeling overwhelmed.
-            </h2>
-            <div className="mt-6 grid gap-3 text-left">
-              {checklist.map((item) => (
-                <div key={item} className="flex items-center gap-3 rounded-2xl border border-[#dce7f5] bg-white px-5 py-4 text-base font-black text-[#07162f] shadow-[0_16px_44px_rgba(7,22,47,0.045)]">
-                  <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#eaf8ef]"><LandingLineIcon name="check" small color="#0c9b5d" /></span>
-                  <span>{item}</span>
-                </div>
+          <div className="order-1 mx-auto flex w-full max-w-[760px] flex-col justify-center lg:order-2 lg:mx-0">
+            <div className="mx-auto max-w-[720px] text-center">
+              <h2 className="text-[clamp(1.8rem,2.6vw,2.75rem)] font-black leading-[1.06] tracking-[-0.03em] text-[#07162f]">
+                Study the Bible without feeling overwhelmed.
+              </h2>
+              <p className="mt-3 text-sm font-semibold leading-7 text-[#526075] sm:text-[1rem]">
+                Everything you need to understand Scripture, stay consistent, and keep growing.
+              </p>
+            </div>
+            <div className="mt-6 grid gap-4 text-left sm:grid-cols-2">
+              {studyFeatureCards.map((item) => (
+                <article
+                  key={item.title}
+                  className="flex min-h-[178px] flex-col rounded-[24px] border border-[#dce7f5] bg-white p-5 shadow-[0_18px_40px_rgba(7,22,47,0.05)]"
+                >
+                  <div
+                    className="flex h-14 w-14 items-center justify-center rounded-[18px] text-[1.8rem] leading-none shadow-[0_10px_24px_rgba(15,23,42,0.05)]"
+                    style={{ backgroundColor: item.iconBg }}
+                  >
+                    {item.icon}
+                  </div>
+                  <h3 className="mt-4 text-[1rem] font-black leading-snug text-[#07162f] sm:text-[1.06rem]">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 max-w-[28ch] text-[0.92rem] font-semibold leading-6 text-[#526075]">
+                    {item.copy}
+                  </p>
+                </article>
               ))}
             </div>
           </div>
