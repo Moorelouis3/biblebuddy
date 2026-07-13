@@ -138,6 +138,12 @@ interface DayProgress {
   reflection_text: string | null;
 }
 
+interface DevotionalStarterBuddy {
+  user_id: string;
+  display_name: string;
+  profile_image_url: string | null;
+}
+
 type ChapterTaskProgress = {
   completed: number;
   total: number;
@@ -382,6 +388,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
   const [expandedWisdomTask, setExpandedWisdomTask] = useState<string | null>(null);
   const [completedTriviaDayNumbers, setCompletedTriviaDayNumbers] = useState<Set<number>>(new Set());
   const [completedDiscussionDayNumbers, setCompletedDiscussionDayNumbers] = useState<Set<number>>(new Set());
+  const [starterBuddies, setStarterBuddies] = useState<DevotionalStarterBuddy[]>([]);
   const [showCreditBlocked, setShowCreditBlocked] = useState(false);
   const [showReadingRequiredModal, setShowReadingRequiredModal] = useState(false);
   const [showProModal, setShowProModal] = useState(false);
@@ -511,6 +518,86 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
         }
 
         setDays(daysData || []);
+
+        const [starterProgressRes, starterActionRes, starterProfileChoiceRes] = await Promise.all([
+          supabase
+            .from("devotional_progress")
+            .select("user_id")
+            .eq("devotional_id", devotionalId),
+          supabase
+            .from("master_actions")
+            .select("user_id, action_label")
+            .in("action_type", [
+              ACTION_TYPE.devotional_opened,
+              ACTION_TYPE.devotional_day_opened,
+              ACTION_TYPE.devotional_day_viewed,
+              ACTION_TYPE.devotional_day_completed,
+              ACTION_TYPE.devotional_bible_reading_opened,
+            ])
+            .ilike("action_label", `${devotionalData.title}%`),
+          supabase
+            .from("profile_stats")
+            .select("user_id")
+            .or(`free_devotional_id.eq.${devotionalId},louis_primary_devotional_id.eq.${devotionalId}`),
+        ]);
+
+        if (starterProgressRes.error) {
+          console.warn("[DEVOTIONAL] Starter progress query failed:", starterProgressRes.error.message);
+        }
+        if (starterActionRes.error) {
+          console.warn("[DEVOTIONAL] Starter actions query failed:", starterActionRes.error.message);
+        }
+        if (starterProfileChoiceRes.error) {
+          console.warn("[DEVOTIONAL] Starter profile choice query failed:", starterProfileChoiceRes.error.message);
+        }
+
+        const starterRows = starterProgressRes.data || [];
+        const starterActionRows = starterActionRes.data || [];
+        const starterProfileChoiceRows = starterProfileChoiceRes.data || [];
+        const starterIds = [...new Set(
+          [
+            ...starterRows.map((row: { user_id: string | null }) => row.user_id),
+            ...starterActionRows.map((row: { user_id: string | null }) => row.user_id),
+            ...starterProfileChoiceRows.map((row: { user_id: string | null }) => row.user_id),
+          ].filter((value): value is string => Boolean(value)),
+        )];
+
+        if (starterIds.length > 0) {
+          const { data: starterProfiles, error: starterProfilesError } = await supabase
+            .from("profile_stats")
+            .select("user_id, display_name, username, profile_image_url")
+            .in("user_id", starterIds);
+
+          if (starterProfilesError) {
+            console.warn("[DEVOTIONAL] Starter profiles query failed:", starterProfilesError.message);
+            setStarterBuddies(
+              starterIds.slice(0, 12).map((starterId) => ({
+                user_id: starterId,
+                display_name: "Buddy",
+                profile_image_url: null,
+              })),
+            );
+          } else {
+            const starterProfileMap = new Map(
+              (starterProfiles || []).map((profile: any) => [profile.user_id, profile]),
+            );
+
+            setStarterBuddies(
+              starterIds
+                .slice(0, 12)
+                .map((starterId) => {
+                  const profile = starterProfileMap.get(starterId);
+                  return {
+                    user_id: starterId,
+                    display_name: profile?.display_name || profile?.username || "Buddy",
+                    profile_image_url: profile?.profile_image_url || null,
+                  };
+                }),
+            );
+          }
+        } else {
+          setStarterBuddies([]);
+        }
 
         // Load progress if user is logged in
         if (userId) {
@@ -1605,11 +1692,11 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
           <div className="text-gray-500">Plan not found.</div>
           {embedded ? (
             <button type="button" onClick={onBack} className="text-blue-600 hover:underline mt-4 inline-block">
-              Back to Plans
+              Back to Devotionals
             </button>
           ) : (
           <Link href="/plans" className="text-blue-600 hover:underline mt-4 inline-block">
-            ← Back to Plans
+            ← Back to Devotionals
           </Link>
           )}
         </div>
@@ -1623,11 +1710,11 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
         {/* HEADER */}
         {embedded ? (
           <button type="button" onClick={onBack} className="mb-4 inline-flex rounded-full bg-blue-50 px-4 py-2 text-sm font-black text-blue-700 transition hover:bg-blue-100">
-            Back to Plans
+            Back to Devotionals
           </button>
         ) : (
         <Link href="/plans" className="text-blue-600 hover:underline mb-4 inline-block">
-          ← Back to Plans
+          ← Back to Devotionals
         </Link>
         )}
 
@@ -1683,6 +1770,41 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
             </div>
           ) : null}
         </section>
+
+        {starterBuddies.length > 0 ? (
+          <section className="mt-5 rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-5 py-4 shadow-sm">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Community</p>
+                <p className="mt-1 text-sm font-bold text-[var(--bb-text-primary,#111827)]">
+                  Buddies have started this devotional
+                </p>
+              </div>
+              <div className="flex items-center">
+                <div className="flex -space-x-3">
+                  {starterBuddies.slice(0, 6).map((buddy) => (
+                    <div
+                      key={buddy.user_id}
+                      className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border-2 border-white bg-[var(--bb-surface-soft,#eef4f8)] text-xs font-black text-[var(--bb-text-primary,#111827)] shadow-sm"
+                      title={buddy.display_name}
+                    >
+                      {buddy.profile_image_url ? (
+                        <img src={buddy.profile_image_url} alt={buddy.display_name} className="h-full w-full object-cover" />
+                      ) : (
+                        buddy.display_name.slice(0, 1).toUpperCase()
+                      )}
+                    </div>
+                  ))}
+                </div>
+                {starterBuddies.length > 6 ? (
+                  <span className="ml-3 text-xs font-black text-[var(--bb-text-secondary,#5f6368)]">
+                    +{starterBuddies.length - 6} more
+                  </span>
+                ) : null}
+              </div>
+            </div>
+          </section>
+        ) : null}
 
         <details className="mt-5 overflow-hidden rounded-[26px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-sm">
           <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)] transition hover:bg-[var(--bb-surface-soft,#f8fbff)]">
@@ -2329,7 +2451,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
             >
               ✕
             </button>
-            <h2 className="text-xl font-bold text-gray-900 mb-3">Unlock All Plans</h2>
+            <h2 className="text-xl font-bold text-gray-900 mb-3">Unlock All Devotionals</h2>
             <p className="text-gray-700 leading-relaxed mb-6">
               You've already started your free plan. Upgrade to Bible Buddy Pro to unlock every plan — including this one — plus all future releases.
             </p>
