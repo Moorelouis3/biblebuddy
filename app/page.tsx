@@ -1939,7 +1939,7 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
           </div>
         </header>
 
-        <section className="grid items-center gap-4 pb-0 pt-0 lg:grid-cols-[0.82fr_1.18fr] lg:gap-4 lg:pb-2">
+        <section className="grid items-center gap-3 pb-0 pt-0 lg:grid-cols-[0.8fr_1.2fr] lg:gap-3 lg:pb-1">
           <div className="mx-auto max-w-[560px] text-center lg:mx-0 lg:text-left">
             <h1 className="bb-serif text-[clamp(1.55rem,2.45vw,2.75rem)] font-black leading-[0.97] tracking-[-0.03em] text-[#07162f]">
               Most Bible Apps help you read the Bible.
@@ -1965,19 +1965,19 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
             </div>
           </div>
 
-          <div className="relative mx-auto h-[430px] w-full max-w-[560px] sm:h-[320px] sm:max-w-[430px] lg:h-[520px] lg:max-w-[740px] xl:h-[600px] xl:max-w-[860px]" aria-label="Bible Buddy app preview">
+          <div className="relative mx-auto h-[430px] w-full max-w-[560px] sm:h-[360px] sm:max-w-[500px] lg:h-[840px] lg:max-w-[1280px] xl:h-[940px] xl:max-w-[1380px]" aria-label="Bible Buddy app preview">
             <Image
               src="/newheroimage.png"
               alt="Bible Buddy app screens"
               fill
               priority
-              sizes="(max-width: 640px) 560px, (max-width: 1024px) 430px, (max-width: 1280px) 740px, 860px"
+              sizes="(max-width: 640px) 560px, (max-width: 1024px) 500px, (max-width: 1280px) 1280px, 1380px"
               className="object-contain"
             />
           </div>
         </section>
 
-        <section className="py-1 sm:py-2">
+        <section className="py-1 sm:py-1.5">
           <h2 className="mx-auto max-w-3xl text-center text-[clamp(1.9rem,3.2vw,2.8rem)] font-black leading-tight tracking-[-0.02em] text-[#07162f]">
             Everything you need to understand Scripture.
           </h2>
@@ -1994,13 +1994,13 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
           </div>
         </section>
 
-        <section className="grid items-center gap-4 py-1 sm:gap-5 lg:grid-cols-[0.98fr_1.02fr] lg:gap-5 lg:py-2">
-          <div className="order-2 relative mx-auto h-[280px] w-full max-w-[280px] self-center sm:h-[320px] sm:max-w-[320px] lg:order-1 lg:h-[500px] lg:max-w-[500px]">
+        <section className="grid items-center gap-3 py-1 sm:gap-4 lg:grid-cols-[0.98fr_1.02fr] lg:gap-4 lg:py-1.5">
+          <div className="order-2 relative mx-auto h-[320px] w-full max-w-[320px] self-center sm:h-[380px] sm:max-w-[380px] lg:order-1 lg:h-[760px] lg:max-w-[800px] xl:h-[820px] xl:max-w-[860px]">
             <Image
               src="/newmiddleimage.png"
               alt="Bible Buddy study notes preview"
               fill
-              sizes="(max-width: 640px) 280px, (max-width: 1024px) 320px, 500px"
+              sizes="(max-width: 640px) 320px, (max-width: 1024px) 380px, (max-width: 1280px) 800px, 860px"
               className="object-contain"
             />
           </div>

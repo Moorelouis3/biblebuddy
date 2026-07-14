@@ -38,7 +38,7 @@ import { consumeCreditAction } from "@/lib/creditClient";
 import { countCompletedSeriesWeekSections, isSeriesWeekComplete, SERIES_WEEK_TOTAL_SECTIONS, toSeriesWeekProgressState } from "@/lib/seriesWeekProgress";
 import { isSeriesWeekNotesActionEvent, parseSeriesWeekNotesWeekNumber } from "@/lib/seriesWeekNotesTracking";
 import { hasLazySeriesNotes } from "@/lib/seriesNotes";
-import { readGroupFeedCache, writeGroupFeedCache } from "@/lib/groupFeedCache";
+import { clearGroupFeedCache, readGroupFeedCache, writeGroupFeedCache } from "@/lib/groupFeedCache";
 import {
   extractMentionedItemsFromText,
   linkMentionItemsInHtml,
@@ -3551,14 +3551,15 @@ export default function GroupChatPage() {
     };
   }
 
-  async function loadPosts(page = 0, options?: { append?: boolean }) {
+  async function loadPosts(page = 0, options?: { append?: boolean; bypassCache?: boolean }) {
     if (!group) return;
     const shouldAppend = !!options?.append && page > 0;
     if (!shouldAppend) setLoadingPosts(true);
     if (shouldAppend) setLoadingMorePosts(true);
     else setPostsHasMore(false);
     const postCategory = getGroupPostCategory(activeTab);
-    const cachedFeed = !shouldAppend && page === 0 ? readGroupFeedCache(group.id, activeTab) : null;
+    const cachedFeed =
+      !options?.bypassCache && !shouldAppend && page === 0 ? readGroupFeedCache(group.id, activeTab) : null;
 
     if (cachedFeed) {
       try {
@@ -4013,6 +4014,7 @@ export default function GroupChatPage() {
           content: payload.post?.content ?? normalizedContent,
         };
 
+        clearGroupFeedCache(group.id, activeTab);
         setPosts((prev) => sortPinnedPostsFirst(prev.map((item) => (item.id === updatedPost.id ? updatedPost : item))));
         setSelectedFeedPost((prev) => (prev?.id === updatedPost.id ? updatedPost : prev));
         resetPostComposer();
@@ -4065,6 +4067,7 @@ export default function GroupChatPage() {
     const newPost = payload?.post as Post | undefined;
 
     if (newPost) {
+      clearGroupFeedCache(group.id, activeTab);
       setPosts((prev) => sortPinnedPostsFirst([{
         ...newPost,
       }, ...prev]));
@@ -4079,9 +4082,10 @@ export default function GroupChatPage() {
 
   async function handleDeleteGroupPost() {
     triggerSmokeDelete();
-    if (!deletePostId || deletingPost) return;
+    if (!group || !deletePostId || deletingPost) return;
     setDeletingPost(true);
     await supabase.from("group_posts").delete().eq("id", deletePostId);
+    clearGroupFeedCache(group.id, activeTab);
     setPosts((prev) => prev.filter((post) => post.id !== deletePostId));
     setSelectedFeedPost((prev) => (prev?.id === deletePostId ? null : prev));
     setDeletePostId(null);
@@ -4345,7 +4349,8 @@ export default function GroupChatPage() {
             filter: `group_id=eq.${group.id}`,
           },
           () => {
-          void loadPosts(0);
+            clearGroupFeedCache(group.id, activeTab);
+            void loadPosts(0, { bypassCache: true });
           },
         )
       .subscribe();

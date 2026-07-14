@@ -104,7 +104,7 @@ export async function POST(
     .update(updatePayload)
     .eq("id", postId)
     .eq("group_id", groupId)
-    .select("id, title, content, parent_post_id")
+    .select("id, title, content, parent_post_id, media_url, link_url, category")
     .single();
 
   if (updateError || !updatedPost) {

@@ -50,6 +50,16 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "5-things-holding-men-back-from-god",
+    title: "5 Things Holding Men Back From God",
+    description: "A clear look at five common struggles that quietly pull men away from God and how Scripture calls us to fight back.",
+    category: "Christian Foundations",
+    categorySlug: "christian-foundations",
+    canonicalPath: "/bible-study-hub/christian-foundations/5-things-holding-men-back-from-god",
+    readTime: "7 min read",
+    image: "/5thingsholdingmenback.png",
+  },
+  {
     slug: "how-to-defend-the-bible",
     title: "How to Defend the Bible",
     description: "How to respond when people say the Bible was changed, written by men, or fake.",

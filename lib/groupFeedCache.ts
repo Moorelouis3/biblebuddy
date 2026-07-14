@@ -50,6 +50,15 @@ export function writeGroupFeedCache(payload: GroupFeedCachePayload) {
   }
 }
 
+export function clearGroupFeedCache(groupId: string, tab = "home") {
+  if (!isBrowser()) return;
+  try {
+    window.sessionStorage.removeItem(cacheKey(groupId, tab));
+  } catch {
+    // Ignore storage failures and keep the feed working normally.
+  }
+}
+
 export async function preloadGroupFeedForUser(userId: string, tab = "home") {
   if (!isBrowser() || !userId) return null;
 
@@ -111,4 +120,3 @@ export async function preloadGroupFeedForUser(userId: string, tab = "home") {
     return null;
   }
 }
-

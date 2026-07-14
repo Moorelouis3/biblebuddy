@@ -12,7 +12,7 @@ import { Analytics } from "@vercel/analytics/react"; // ✅ ADD THIS
 // redeploy trigger
 
 const siteUrl = new URL("https://www.mybiblebuddy.net");
-const socialPreviewImage = new URL("/therealnewpreviewbanner.png", siteUrl).toString();
+const socialPreviewImage = new URL("/newsocialbanner.png", siteUrl).toString();
 const socialTitle = "Bible Buddy, making Bible study easier...";
 const socialDescription = "Bible Buddy, making Bible study easier...";
 const socialImageAlt = "Bible Buddy, making Bible study easier...";
