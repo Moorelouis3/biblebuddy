@@ -2,9 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 import type { BlogArticle } from "@/lib/blogContent";
 
-export default function BlogArticleGrid({ articles }: { articles: BlogArticle[] }) {
+type BlogArticleGridProps = {
+  articles: BlogArticle[];
+  compact?: boolean;
+};
+
+export default function BlogArticleGrid({ articles, compact = false }: BlogArticleGridProps) {
   return (
-    <div className="grid gap-x-8 gap-y-12 md:grid-cols-2">
+    <div className={`grid ${compact ? "gap-x-8 gap-y-10 md:grid-cols-2" : "gap-x-8 gap-y-12 md:grid-cols-2"}`}>
       {articles.map((article) => (
         <Link
           key={article.slug}
@@ -12,7 +17,7 @@ export default function BlogArticleGrid({ articles }: { articles: BlogArticle[] 
           className="group block transition hover:-translate-y-0.5"
         >
           <article className="overflow-hidden rounded-[18px] border border-[#dce7f5] bg-white shadow-[0_20px_50px_rgba(15,23,42,0.06)] transition duration-300 group-hover:shadow-[0_28px_65px_rgba(15,23,42,0.1)]">
-            <div className="relative aspect-[16/10] overflow-hidden bg-[#eef4ff]">
+            <div className={`relative overflow-hidden bg-[#eef4ff] ${compact ? "aspect-[16/10]" : "aspect-[16/10]"}`}>
               <Image
                 src={article.image}
                 alt={article.title}
@@ -22,7 +27,7 @@ export default function BlogArticleGrid({ articles }: { articles: BlogArticle[] 
               />
             </div>
 
-            <div className="p-6">
+            <div className={compact ? "p-5" : "p-6"}>
               <div className="flex flex-wrap items-center gap-3 text-[0.78rem] font-black uppercase tracking-[0.16em] text-[#6a7890]">
                 <span className="rounded-full bg-[#eef4ff] px-3 py-1 text-[#0056fd]">
                   {article.category}
@@ -30,15 +35,15 @@ export default function BlogArticleGrid({ articles }: { articles: BlogArticle[] 
                 <span>{article.readTime}</span>
               </div>
 
-              <h2 className="mt-4 text-[1.55rem] font-black leading-snug tracking-[-0.025em] text-slate-950 sm:text-[1.8rem]">
+              <h2 className={`mt-4 font-black leading-snug tracking-[-0.025em] text-slate-950 ${compact ? "text-[1.25rem] sm:text-[1.4rem]" : "text-[1.55rem] sm:text-[1.8rem]"}`}>
                 {article.title}
               </h2>
 
-              <p className="mt-4 line-clamp-3 text-[1rem] leading-8 text-slate-500">
+              <p className={`mt-4 line-clamp-3 text-slate-500 ${compact ? "text-[0.96rem] leading-7" : "text-[1rem] leading-8"}`}>
                 {article.description}
               </p>
 
-              <span className="mt-6 inline-flex border border-[#dce7f5] bg-white px-5 py-3 text-[0.74rem] font-black uppercase tracking-[0.14em] text-[#07162f] transition group-hover:border-[#0056fd] group-hover:text-[#0056fd]">
+              <span className={`mt-6 inline-flex border border-[#dce7f5] bg-white font-black uppercase tracking-[0.14em] text-[#07162f] transition group-hover:border-[#0056fd] group-hover:text-[#0056fd] ${compact ? "px-4 py-2.5 text-[0.7rem]" : "px-5 py-3 text-[0.74rem]"}`}>
                 Read more
               </span>
             </div>

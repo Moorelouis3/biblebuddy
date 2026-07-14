@@ -1965,19 +1965,19 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
             </div>
           </div>
 
-          <div className="relative mx-auto h-[430px] w-full max-w-[560px] sm:h-[360px] sm:max-w-[500px] lg:h-[840px] lg:max-w-[1280px] xl:h-[940px] xl:max-w-[1380px]" aria-label="Bible Buddy app preview">
+          <div className="relative mx-auto h-[460px] w-full max-w-[720px] sm:h-[520px] sm:max-w-[760px] lg:h-[620px] lg:max-w-[900px] xl:h-[700px] xl:max-w-[980px]" aria-label="Bible Buddy app preview">
             <Image
               src="/newheroimage.png"
               alt="Bible Buddy app screens"
               fill
               priority
-              sizes="(max-width: 640px) 560px, (max-width: 1024px) 500px, (max-width: 1280px) 1280px, 1380px"
+              sizes="(max-width: 640px) 720px, (max-width: 1024px) 760px, (max-width: 1280px) 900px, 980px"
               className="object-contain"
             />
           </div>
         </section>
 
-        <section className="py-1 sm:py-1.5">
+        <section className="py-0 sm:py-1">
           <h2 className="mx-auto max-w-3xl text-center text-[clamp(1.9rem,3.2vw,2.8rem)] font-black leading-tight tracking-[-0.02em] text-[#07162f]">
             Everything you need to understand Scripture.
           </h2>
@@ -1994,13 +1994,13 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
           </div>
         </section>
 
-        <section className="grid items-center gap-3 py-1 sm:gap-4 lg:grid-cols-[0.98fr_1.02fr] lg:gap-4 lg:py-1.5">
-          <div className="order-2 relative mx-auto h-[320px] w-full max-w-[320px] self-center sm:h-[380px] sm:max-w-[380px] lg:order-1 lg:h-[760px] lg:max-w-[800px] xl:h-[820px] xl:max-w-[860px]">
+        <section className="grid items-center gap-2 py-0 sm:gap-3 lg:grid-cols-[0.98fr_1.02fr] lg:gap-4 lg:py-1">
+          <div className="order-2 relative mx-auto h-[360px] w-full max-w-[360px] self-center sm:h-[420px] sm:max-w-[420px] lg:order-1 lg:h-[560px] lg:max-w-[560px] xl:h-[620px] xl:max-w-[620px]">
             <Image
               src="/newmiddleimage.png"
               alt="Bible Buddy study notes preview"
               fill
-              sizes="(max-width: 640px) 320px, (max-width: 1024px) 380px, (max-width: 1280px) 800px, 860px"
+              sizes="(max-width: 640px) 360px, (max-width: 1024px) 420px, (max-width: 1280px) 560px, 620px"
               className="object-contain"
             />
           </div>
