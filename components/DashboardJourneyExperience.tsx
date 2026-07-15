@@ -5228,6 +5228,13 @@ export default function DashboardJourneyExperience({
       showGroupTab(false);
     }
 
+    function handleOpenGroupPost(event: Event) {
+      const detail = (event as CustomEvent<{ postId?: string | null; commentId?: string | null }>).detail || {};
+      setDashboardGroupDeepLinkPostId(detail.postId || null);
+      setDashboardGroupDeepLinkCommentId(detail.commentId || null);
+      showGroupTab(true);
+    }
+
     if (typeof window !== "undefined") {
       const params = new URLSearchParams(window.location.search);
       const hasGroupDeepLink = params.get("view") === "group" && (Boolean(params.get("post")) || Boolean(params.get("comment")));
@@ -5239,7 +5246,11 @@ export default function DashboardJourneyExperience({
     }
 
     window.addEventListener("bb:dashboard-show-group-tab", handleShowGroupTab);
-    return () => window.removeEventListener("bb:dashboard-show-group-tab", handleShowGroupTab);
+    window.addEventListener("bb:dashboard-open-group-post", handleOpenGroupPost as EventListener);
+    return () => {
+      window.removeEventListener("bb:dashboard-show-group-tab", handleShowGroupTab);
+      window.removeEventListener("bb:dashboard-open-group-post", handleOpenGroupPost as EventListener);
+    };
   }, []);
 
   const loadDashboardGroup = useCallback(async (force = false) => {
@@ -6198,6 +6209,11 @@ export default function DashboardJourneyExperience({
     groupDeepLinkParams.set("embedded", "dashboard");
     if (dashboardGroupDeepLinkPostId) groupDeepLinkParams.set("post", dashboardGroupDeepLinkPostId);
     if (dashboardGroupDeepLinkCommentId) groupDeepLinkParams.set("comment", dashboardGroupDeepLinkCommentId);
+    const groupIframeKey = [
+      dashboardGroup?.id || "group",
+      dashboardGroupDeepLinkPostId || "",
+      dashboardGroupDeepLinkCommentId || "",
+    ].join(":");
 
     return (
       <section className="w-full px-1 pb-4">
@@ -6208,7 +6224,7 @@ export default function DashboardJourneyExperience({
         ) : (
           <div className="mx-auto w-full max-w-2xl overflow-hidden rounded-[28px] bg-[var(--bb-card,#ffffff)]">
             <iframe
-              key={dashboardGroup.id}
+              key={groupIframeKey}
               title="Bible Buddy Group"
               src={`/study-groups/${dashboardGroup.id}/chat?${groupDeepLinkParams.toString()}`}
               className="w-full border-0 bg-[var(--bb-card,#ffffff)]"

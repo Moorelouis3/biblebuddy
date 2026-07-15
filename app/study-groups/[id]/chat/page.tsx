@@ -3246,7 +3246,11 @@ export default function GroupChatPage() {
       if (resolvedPostId) {
         await openFeedPostById(resolvedPostId);
       }
-      router.replace(`/study-groups/${groupId}/chat`);
+      router.replace(
+        isDashboardEmbed
+          ? `/study-groups/${groupId}/chat?embedded=dashboard`
+          : `/study-groups/${groupId}/chat`,
+      );
     };
 
     void resolveAndOpen();

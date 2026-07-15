@@ -1920,6 +1920,46 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     setNotifications((prev) => prev.map((n) => ({ ...n, is_read: true })));
   }
 
+  function getGroupNotificationTarget(notif: typeof notifications[0]) {
+    let postId = notif.post_id || null;
+    let commentId = notif.comment_id || null;
+
+    if (notif.article_slug && typeof window !== "undefined") {
+      try {
+        const parsed = new URL(notif.article_slug, window.location.origin);
+        postId = postId || parsed.searchParams.get("post") || parsed.searchParams.get("postId");
+        commentId = commentId || parsed.searchParams.get("comment") || parsed.searchParams.get("commentId");
+        if (!commentId && parsed.hash.startsWith("#comment-")) {
+          commentId = parsed.hash.replace("#comment-", "");
+        }
+      } catch {
+        // Older notifications can have plain paths. The saved post/comment ids above are enough.
+      }
+    }
+
+    return { postId, commentId };
+  }
+
+  function openGroupNotificationTarget(notif: typeof notifications[0]) {
+    const { postId, commentId } = getGroupNotificationTarget(notif);
+    const params = new URLSearchParams();
+    params.set("view", "group");
+    if (postId) params.set("post", postId);
+    if (commentId) params.set("comment", commentId);
+
+    router.push(`/dashboard?${params.toString()}`);
+
+    if (typeof window !== "undefined") {
+      window.setTimeout(() => {
+        window.dispatchEvent(
+          new CustomEvent("bb:dashboard-open-group-post", {
+            detail: { postId, commentId },
+          }),
+        );
+      }, 150);
+    }
+  }
+
   async function handleNotifClick(notif: typeof notifications[0]) {
     // Mark this one as read
     await supabase.from("notifications").update({ is_read: true }).eq("id", notif.id);
@@ -1934,19 +1974,11 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       notif.type === "feed_post_commented" ||
       notif.type === "feed_post_replied"
     ) {
-      const url = new URL("/dashboard", window.location.origin);
-      url.searchParams.set("view", "group");
-      if (notif.post_id) url.searchParams.set("post", notif.post_id);
-      if (notif.comment_id) url.searchParams.set("comment", notif.comment_id);
-      router.push(`${url.pathname}${url.search}`);
+      openGroupNotificationTarget(notif);
       return;
     }
     if (notif.article_slug?.startsWith("/study-groups/")) {
-      const url = new URL("/dashboard", window.location.origin);
-      url.searchParams.set("view", "group");
-      if (notif.post_id) url.searchParams.set("post", notif.post_id);
-      if (notif.comment_id) url.searchParams.set("comment", notif.comment_id);
-      router.push(`${url.pathname}${url.search}`);
+      openGroupNotificationTarget(notif);
       return;
     }
     if (notif.article_slug?.startsWith("/dashboard/")) {
