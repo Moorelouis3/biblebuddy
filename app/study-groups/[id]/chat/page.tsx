@@ -790,27 +790,64 @@ async function hydratePostMediaUrls(rows: any[]) {
     return rows;
   }
 
-  const signedUrlMap = new Map<string, string>();
+  const publicUrlMap = new Map<string, string>();
 
-  await Promise.all(
-    uniquePaths.map(async (path) => {
-      const { data, error } = await supabase.storage
-        .from("post-media")
-        .createSignedUrl(path, 60 * 60 * 24 * 7);
-
-      if (!error && data?.signedUrl) {
-        signedUrlMap.set(path, data.signedUrl);
-      }
-    }),
-  );
+  uniquePaths.forEach((path) => {
+    const { data } = supabase.storage.from("post-media").getPublicUrl(path);
+    if (data?.publicUrl) {
+      publicUrlMap.set(path, data.publicUrl);
+    }
+  });
 
   return rows.map((row) => {
     const path = extractPostMediaPath(row.media_url);
     if (!path) return row;
 
-    const signedUrl = signedUrlMap.get(path);
-    return signedUrl ? { ...row, media_url: signedUrl } : row;
+    const publicUrl = publicUrlMap.get(path);
+    return publicUrl ? { ...row, media_url: publicUrl } : row;
   });
+}
+
+function preserveExistingPostMedia<T extends { id: string; media_url?: string | null }>(
+  nextPosts: T[],
+  currentPosts: T[],
+) {
+  const currentMediaById = new Map(
+    currentPosts
+      .filter((post) => Boolean(post?.id))
+      .map((post) => [post.id, post.media_url ?? null] as const),
+  );
+
+  return nextPosts.map((post) => {
+    if (post.media_url) return post;
+    const currentMedia = currentMediaById.get(post.id);
+    return currentMedia ? { ...post, media_url: currentMedia } : post;
+  });
+}
+
+function mergePostsPreservingMedia<T extends { id: string; media_url?: string | null }>(
+  currentPosts: T[],
+  incomingPosts: T[],
+) {
+  const merged = [...currentPosts];
+  const currentIndexById = new Map(currentPosts.map((post, index) => [post.id, index] as const));
+
+  incomingPosts.forEach((incomingPost) => {
+    const existingIndex = currentIndexById.get(incomingPost.id);
+    if (existingIndex == null) {
+      merged.push(incomingPost);
+      currentIndexById.set(incomingPost.id, merged.length - 1);
+      return;
+    }
+
+    const existingPost = merged[existingIndex];
+    merged[existingIndex] =
+      !incomingPost.media_url && existingPost?.media_url
+        ? { ...incomingPost, media_url: existingPost.media_url }
+        : incomingPost;
+  });
+
+  return merged;
 }
 
 function getRenderablePostContent(html: string): string {
@@ -3621,15 +3658,14 @@ export default function GroupChatPage() {
         const hydrated = await hydrateFeedPosts((cachedFeed.posts || []) as any[]);
         if (options?.append && page > 0) {
           setPosts((prev) => {
-            const merged = [...prev, ...hydrated.posts];
-            const deduped = merged.filter((post, index, all) => all.findIndex((item) => item.id === post.id) === index);
-            return sortPinnedPostsFirst(deduped);
+            const merged = mergePostsPreservingMedia(prev, hydrated.posts);
+            return sortPinnedPostsFirst(merged);
           });
           setWeeklyPollByPostId((prev) => ({ ...prev, ...hydrated.weeklyPollByPostId }));
           setWeeklyTriviaByPostId((prev) => ({ ...prev, ...hydrated.weeklyTriviaByPostId }));
           setWeeklyQuestionByPostId((prev) => ({ ...prev, ...hydrated.weeklyQuestionByPostId }));
         } else {
-          setPosts(sortPinnedPostsFirst(hydrated.posts));
+          setPosts((prev) => sortPinnedPostsFirst(preserveExistingPostMedia(hydrated.posts, prev)));
           setWeeklyPollByPostId(hydrated.weeklyPollByPostId);
           setWeeklyTriviaByPostId(hydrated.weeklyTriviaByPostId);
           setWeeklyQuestionByPostId(hydrated.weeklyQuestionByPostId);
@@ -3696,7 +3732,7 @@ export default function GroupChatPage() {
         groupId: group.id,
         tab: activeTab,
         fetchedAt: Date.now(),
-        posts: fetchedRows,
+        posts: hydrated.posts,
         hasMore: fetchedRows.length >= FEED_PAGE_SIZE,
         weeklyPollByPostId: hydrated.weeklyPollByPostId,
         weeklyTriviaByPostId: hydrated.weeklyTriviaByPostId,
@@ -3706,15 +3742,14 @@ export default function GroupChatPage() {
 
     if (options?.append && page > 0) {
       setPosts((prev) => {
-        const merged = [...prev, ...hydrated.posts];
-        const deduped = merged.filter((post, index, all) => all.findIndex((item) => item.id === post.id) === index);
-        return sortPinnedPostsFirst(deduped);
+        const merged = mergePostsPreservingMedia(prev, hydrated.posts);
+        return sortPinnedPostsFirst(merged);
       });
       setWeeklyPollByPostId((prev) => ({ ...prev, ...hydrated.weeklyPollByPostId }));
       setWeeklyTriviaByPostId((prev) => ({ ...prev, ...hydrated.weeklyTriviaByPostId }));
       setWeeklyQuestionByPostId((prev) => ({ ...prev, ...hydrated.weeklyQuestionByPostId }));
     } else {
-      setPosts(sortPinnedPostsFirst(hydrated.posts));
+      setPosts((prev) => sortPinnedPostsFirst(preserveExistingPostMedia(hydrated.posts, prev)));
       setWeeklyPollByPostId(hydrated.weeklyPollByPostId);
       setWeeklyTriviaByPostId(hydrated.weeklyTriviaByPostId);
       setWeeklyQuestionByPostId(hydrated.weeklyQuestionByPostId);
@@ -3744,12 +3779,15 @@ export default function GroupChatPage() {
 
     if (!postRow) return;
 
+    const [postRowWithMedia] = await hydratePostMediaUrls([postRow]);
+    const resolvedPostRow = postRowWithMedia ?? postRow;
+
     const [{ data: membership }, { data: profile }, { data: likeRows }, { count: directCommentCount }, { data: topLevelComments }] = await Promise.all([
-      supabase.from("group_members").select("role").eq("group_id", group.id).eq("user_id", postRow.user_id).maybeSingle(),
-      supabase.from("profile_stats").select("profile_image_url, is_paid, member_badge, current_streak, selected_streak_flame, current_level, active_premium_skin").eq("user_id", postRow.user_id).maybeSingle(),
-      supabase.from("group_post_likes").select("post_id, user_id").eq("post_id", postRow.id),
-      supabase.from("group_posts").select("id", { count: "exact", head: true }).eq("parent_post_id", postRow.id),
-      supabase.from("group_posts").select("id").eq("parent_post_id", postRow.id),
+      supabase.from("group_members").select("role").eq("group_id", group.id).eq("user_id", resolvedPostRow.user_id).maybeSingle(),
+      supabase.from("profile_stats").select("profile_image_url, is_paid, member_badge, current_streak, selected_streak_flame, current_level, active_premium_skin").eq("user_id", resolvedPostRow.user_id).maybeSingle(),
+      supabase.from("group_post_likes").select("post_id, user_id").eq("post_id", resolvedPostRow.id),
+      supabase.from("group_posts").select("id", { count: "exact", head: true }).eq("parent_post_id", resolvedPostRow.id),
+      supabase.from("group_posts").select("id").eq("parent_post_id", resolvedPostRow.id),
     ]);
 
     let replyCount = 0;
@@ -3767,24 +3805,24 @@ export default function GroupChatPage() {
       supabase
         .from("weekly_group_trivia_sets")
         .select("id, post_id, group_id, week_key, subject_key, subject_title, intro, questions, created_at")
-        .eq("post_id", postRow.id)
+        .eq("post_id", resolvedPostRow.id)
         .maybeSingle(),
       supabase
         .from("weekly_group_questions")
         .select("id, group_id, post_id, week_key, prompt_key, subject_title, prompt, intro, comment_prompt, created_at")
-        .eq("post_id", postRow.id)
+        .eq("post_id", resolvedPostRow.id)
         .maybeSingle(),
       supabase
         .from("weekly_group_polls")
         .select("id, group_id, post_id, week_key, poll_key, subject_title, question, intro, options, created_at")
-        .eq("post_id", postRow.id)
+        .eq("post_id", resolvedPostRow.id)
         .maybeSingle(),
     ]);
 
     if (triviaSetRow) {
       setWeeklyTriviaByPostId((prev) => ({
         ...prev,
-        [postRow.id]: {
+        [resolvedPostRow.id]: {
           id: triviaSetRow.id,
           post_id: triviaSetRow.post_id,
           group_id: triviaSetRow.group_id,
@@ -3801,7 +3839,7 @@ export default function GroupChatPage() {
     if (questionSetRow) {
       setWeeklyQuestionByPostId((prev) => ({
         ...prev,
-        [postRow.id]: {
+        [resolvedPostRow.id]: {
           id: questionSetRow.id,
           group_id: questionSetRow.group_id,
           post_id: questionSetRow.post_id,
@@ -3852,7 +3890,7 @@ export default function GroupChatPage() {
     }
 
     const hydratedPost: Post = {
-      ...postRow,
+      ...resolvedPostRow,
       like_count: Math.max(postRow.like_count || 0, likeRows?.length || 0),
       comment_count: (directCommentCount ?? 0) + replyCount,
       role: membership?.role || "member",
@@ -3866,7 +3904,17 @@ export default function GroupChatPage() {
       active_premium_skin: normalizePremiumSkinId(profile?.active_premium_skin),
     };
 
-    setSelectedFeedPost(hydratedPost);
+    setSelectedFeedPost((prev) => {
+      if (prev?.id === hydratedPost.id && !hydratedPost.media_url && prev.media_url) {
+        return { ...hydratedPost, media_url: prev.media_url };
+      }
+      return hydratedPost;
+    });
+    setPosts((prev) => (
+      prev.some((post) => post.id === hydratedPost.id)
+        ? sortPinnedPostsFirst(preserveExistingPostMedia(prev.map((post) => (post.id === hydratedPost.id ? hydratedPost : post)), prev))
+        : prev
+    ));
   }
 
   async function handleLike(post: Post) {
@@ -4122,9 +4170,14 @@ export default function GroupChatPage() {
     const newPost = payload?.post as Post | undefined;
 
     if (newPost) {
+      const [hydratedNewPost] = await hydratePostMediaUrls([newPost]);
+      const resolvedNewPost = {
+        ...(hydratedNewPost ?? newPost),
+        media_url: (hydratedNewPost ?? newPost).media_url || mediaUrl,
+      };
       clearGroupFeedCache(group.id, activeTab);
       setPosts((prev) => sortPinnedPostsFirst([{
-        ...newPost,
+        ...resolvedNewPost,
       }, ...prev]));
       resetPostComposer();
       setShowPostComposerModal(false);

@@ -11,7 +11,7 @@ type GroupFeedCachePayload = {
   weeklyQuestionByPostId: Record<string, any>;
 };
 
-const GROUP_FEED_CACHE_PREFIX = "bb:group-feed-cache";
+const GROUP_FEED_CACHE_PREFIX = "bb:group-feed-cache:v2";
 const GROUP_FEED_CACHE_TTL_MS = 20 * 60 * 1000;
 const GROUP_FEED_PRELOAD_LIMIT = 10;
 
@@ -44,7 +44,22 @@ export function readGroupFeedCache(groupId: string, tab = "home") {
 export function writeGroupFeedCache(payload: GroupFeedCachePayload) {
   if (!isBrowser()) return;
   try {
-    window.sessionStorage.setItem(cacheKey(payload.groupId, payload.tab), JSON.stringify(payload));
+    const existing = readGroupFeedCache(payload.groupId, payload.tab);
+    const existingMediaByPostId = new Map<string, string>();
+
+    (existing?.posts || []).forEach((post: any) => {
+      if (post?.id && post?.media_url) {
+        existingMediaByPostId.set(post.id, post.media_url);
+      }
+    });
+
+    const posts = (payload.posts || []).map((post: any) => {
+      if (!post?.id || post.media_url) return post;
+      const existingMedia = existingMediaByPostId.get(post.id);
+      return existingMedia ? { ...post, media_url: existingMedia } : post;
+    });
+
+    window.sessionStorage.setItem(cacheKey(payload.groupId, payload.tab), JSON.stringify({ ...payload, posts }));
   } catch {
     // Ignore storage failures and keep the feed working normally.
   }
