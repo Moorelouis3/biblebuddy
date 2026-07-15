@@ -759,6 +759,60 @@ function isHomeFeedCoverPost(post: Pick<Post, "media_url" | "content">): boolean
   return Boolean(post.media_url && post.content?.includes(HOME_FEED_COVER_MARKER));
 }
 
+function extractPostMediaPath(url?: string | null): string | null {
+  if (!url) return null;
+
+  try {
+    const parsed = new URL(url);
+    const markers = [
+      "/storage/v1/object/public/post-media/",
+      "/storage/v1/object/sign/post-media/",
+    ];
+    const marker = markers.find((value) => parsed.pathname.includes(value));
+    if (!marker) return null;
+
+    const markerIndex = parsed.pathname.indexOf(marker);
+    const rawPath = parsed.pathname.slice(markerIndex + marker.length);
+    return rawPath ? decodeURIComponent(rawPath) : null;
+  } catch {
+    return null;
+  }
+}
+
+async function hydratePostMediaUrls(rows: any[]) {
+  const uniquePaths = [...new Set(
+    rows
+      .map((row) => extractPostMediaPath(row.media_url))
+      .filter((value): value is string => Boolean(value)),
+  )];
+
+  if (!uniquePaths.length) {
+    return rows;
+  }
+
+  const signedUrlMap = new Map<string, string>();
+
+  await Promise.all(
+    uniquePaths.map(async (path) => {
+      const { data, error } = await supabase.storage
+        .from("post-media")
+        .createSignedUrl(path, 60 * 60 * 24 * 7);
+
+      if (!error && data?.signedUrl) {
+        signedUrlMap.set(path, data.signedUrl);
+      }
+    }),
+  );
+
+  return rows.map((row) => {
+    const path = extractPostMediaPath(row.media_url);
+    if (!path) return row;
+
+    const signedUrl = signedUrlMap.get(path);
+    return signedUrl ? { ...row, media_url: signedUrl } : row;
+  });
+}
+
 function getRenderablePostContent(html: string): string {
   return linkBibleReferencesInHtml(html.replace(HOME_FEED_COVER_MARKER, "").trim());
 }
@@ -3351,6 +3405,7 @@ export default function GroupChatPage() {
 
   // â”€â”€ Chat posts â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   async function hydrateFeedPosts(rows: any[]) {
+    rows = await hydratePostMediaUrls(rows);
     const nextWeeklyPollByPostId: Record<string, WeeklyGroupPollFeedSet> = {};
     const nextWeeklyTriviaByPostId: Record<string, WeeklyGroupTriviaFeedSet> = {};
     const nextWeeklyQuestionByPostId: Record<string, WeeklyGroupQuestionFeedSet> = {};
