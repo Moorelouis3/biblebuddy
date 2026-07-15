@@ -42,6 +42,7 @@ export default function BibleStudyHubArticleLayout({ children }: { children: Rea
 
   async function handleNativeShare() {
     if (typeof navigator === "undefined" || !navigator.share) {
+      await handleCopyLink();
       return;
     }
 
@@ -76,65 +77,102 @@ export default function BibleStudyHubArticleLayout({ children }: { children: Rea
     {
       label: "WhatsApp",
       href: `https://wa.me/?text=${encodeURIComponent(`${shareText} ${pageUrl}`)}`,
+      icon: "W",
+      color: "text-[#25D366]",
     },
     {
       label: "Facebook",
       href: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pageUrl)}`,
+      icon: "f",
+      color: "text-[#1877F2]",
     },
     {
       label: "X",
       href: `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(pageUrl)}`,
+      icon: "X",
+      color: "text-slate-950",
     },
     {
       label: "LinkedIn",
       href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(pageUrl)}`,
+      icon: "in",
+      color: "text-[#0A66C2]",
     },
     {
       label: "Email",
       href: `mailto:?subject=${encodeURIComponent(shareTitle)}&body=${encodeURIComponent(`${shareText}\n\n${pageUrl}`)}`,
+      icon: "@",
+      color: "text-[#0056fd]",
     },
   ];
 
   const sharePanel = (
-    <section className="mb-6 rounded-[24px] border border-[#d9e5ff] bg-white px-5 py-4 shadow-[0_14px_40px_rgba(15,23,42,0.06)]">
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[#0056fd]">Share This Article</p>
-          <p className="mt-1 text-sm font-semibold text-slate-600">
-            Send it by text, copy the link, or share it on your usual apps.
-          </p>
+    <section className="mb-8 rounded-[24px] border border-[#DCE8FF] bg-white p-6 shadow-[0_18px_50px_rgba(15,23,42,0.08)] sm:p-8">
+      <div className="flex flex-col gap-6">
+        <div className="flex gap-4 sm:gap-5">
+          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#0056fd] text-white shadow-[0_14px_28px_rgba(0,86,253,0.24)]">
+            <svg aria-hidden="true" viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="18" cy="5" r="3" />
+              <circle cx="6" cy="12" r="3" />
+              <circle cx="18" cy="19" r="3" />
+              <path d="m8.6 10.7 6.8-4.4M8.6 13.3l6.8 4.4" />
+            </svg>
+          </div>
+
+          <div className="min-w-0">
+            <p className="text-[11px] font-black uppercase tracking-[0.24em] text-[#0056fd]">Share this article</p>
+            <h2 className="mt-2 text-2xl font-black leading-tight text-slate-950 sm:text-3xl">
+              Help others discover God's Word.
+            </h2>
+            <p className="mt-3 text-sm font-semibold leading-6 text-slate-500 sm:text-base">
+              Share this article by text, copy the link, or send it through your favorite apps.
+            </p>
+          </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-2">
-          <button
-            type="button"
-            onClick={handleNativeShare}
-            className="rounded-full bg-[#0056fd] px-4 py-2 text-sm font-black text-white shadow-[0_12px_30px_rgba(0,86,253,0.2)]"
-          >
-            Share
-          </button>
+        <div className="grid grid-cols-2 gap-3">
           <button
             type="button"
             onClick={handleCopyLink}
-            className="rounded-full border border-[#c9d8ff] bg-[#f8fbff] px-4 py-2 text-sm font-black text-[#0056fd]"
+            className="flex min-h-14 items-center justify-center gap-2 rounded-2xl bg-[#0056fd] px-4 py-3 text-sm font-black text-white shadow-[0_14px_30px_rgba(0,86,253,0.22)] transition hover:-translate-y-0.5 hover:bg-[#0049d8] active:translate-y-0"
           >
-            {copyState === "copied" ? "Copied" : copyState === "error" ? "Copy failed" : "Copy link"}
+            <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="9" y="9" width="11" height="11" rx="2" />
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+            </svg>
+            {copyState === "copied" ? "Copied" : copyState === "error" ? "Copy Failed" : "Copy Link"}
+          </button>
+
+          <button
+            type="button"
+            onClick={handleNativeShare}
+            className="flex min-h-14 items-center justify-center gap-2 rounded-2xl bg-slate-950 px-4 py-3 text-sm font-black text-white shadow-[0_14px_30px_rgba(15,23,42,0.16)] transition hover:-translate-y-0.5 hover:bg-slate-800 active:translate-y-0"
+          >
+            <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7" />
+              <path d="M12 16V4" />
+              <path d="m7 9 5-5 5 5" />
+            </svg>
+            Share
           </button>
         </div>
-      </div>
 
-      <div className="mt-4 flex flex-wrap gap-2">
-        {socialLinks.map((item) => (
-          <a
-            key={item.label}
-            href={item.href}
-            target={item.href.startsWith("mailto:") ? undefined : "_blank"}
-            rel={item.href.startsWith("mailto:") ? undefined : "noreferrer"}
-            className="rounded-full border border-[#d9e5ff] bg-[#f8fbff] px-3 py-1.5 text-xs font-black text-slate-700 transition hover:border-[#0056fd] hover:text-[#0056fd]"
-          >
-            {item.label}
-          </a>
-        ))}
+        <div className="grid grid-cols-5 gap-3 border-t border-[#E7EEFF] pt-5">
+          {socialLinks.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              target={item.href.startsWith("mailto:") ? undefined : "_blank"}
+              rel={item.href.startsWith("mailto:") ? undefined : "noreferrer"}
+              className="group flex flex-col items-center gap-2 text-center"
+            >
+              <span className="flex h-12 w-12 items-center justify-center rounded-full border border-[#DCE8FF] bg-white text-base font-black shadow-[0_10px_24px_rgba(15,23,42,0.07)] transition group-hover:-translate-y-0.5 group-hover:shadow-[0_14px_30px_rgba(0,86,253,0.12)]">
+                <span className={item.color}>{item.icon}</span>
+              </span>
+              <span className="text-[11px] font-bold text-slate-500 sm:text-xs">{item.label}</span>
+            </a>
+          ))}
+        </div>
       </div>
     </section>
   );

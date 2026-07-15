@@ -16,7 +16,7 @@ export default function BlogArticleGrid({ articles, compact = false }: BlogArtic
           href={`/blog/${article.slug}`}
           className="group block transition hover:-translate-y-0.5"
         >
-          <article className="overflow-hidden rounded-[18px] border border-[#dce7f5] bg-white shadow-[0_20px_50px_rgba(15,23,42,0.06)] transition duration-300 group-hover:shadow-[0_28px_65px_rgba(15,23,42,0.1)]">
+          <article className="overflow-hidden rounded-[18px] border border-[#dce7f5] bg-white shadow-[0_16px_38px_rgba(15,23,42,0.06)] transition duration-300 group-hover:shadow-[0_24px_55px_rgba(15,23,42,0.1)]">
             <div className={`relative overflow-hidden bg-[#eef4ff] ${compact ? "aspect-[16/10]" : "aspect-[16/10]"}`}>
               <Image
                 src={article.image}

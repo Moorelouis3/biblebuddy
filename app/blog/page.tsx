@@ -27,8 +27,8 @@ export default function BlogPage() {
 
   return (
     <main className="min-h-screen bg-[#f7fafc] px-4 py-8 text-slate-950 sm:px-6">
-      <section className="mx-auto max-w-6xl">
-        <div className="mb-10 flex items-center justify-between gap-4">
+      <section className="mx-auto max-w-[1240px]">
+        <div className="mb-8 flex items-center justify-between gap-4">
           <Link href="/" className="text-lg font-black text-slate-950">
             Bible Buddy
           </Link>
@@ -45,17 +45,17 @@ export default function BlogPage() {
           </div>
         </div>
 
-        <div className="mb-10 text-center">
+        <div className="mb-8 max-w-3xl">
           <p className="text-sm font-black uppercase tracking-[0.22em] text-[#0056fd]">Bible Buddy Blog</p>
-          <h1 className="mt-3 text-3xl font-black leading-tight tracking-[-0.02em] text-slate-950 md:text-4xl">
-            Bible study articles that help Scripture make sense.
+          <h1 className="mt-3 text-3xl font-black leading-tight tracking-[-0.02em] text-slate-950 md:text-[3.1rem]">
+            Articles that help the Bible make sense.
           </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-8 text-slate-600">
+          <p className="mt-4 max-w-2xl text-base leading-8 text-slate-600">
             Church history, verse breakdowns, Bible study tips, and Christian foundations written to help everyday readers understand God&apos;s Word more clearly.
           </p>
         </div>
 
-        <div className="mb-8 flex gap-3 overflow-x-auto pb-2">
+        <div className="mb-10 flex gap-3 overflow-x-auto pb-2">
           <Link
             href="/blog"
             className="shrink-0 rounded-full bg-slate-950 px-4 py-2 text-sm font-black text-white"
@@ -73,12 +73,12 @@ export default function BlogPage() {
           ))}
         </div>
 
-        <section className="grid gap-6 lg:grid-cols-[1.35fr_0.95fr]">
+        <section className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
           <Link
             href={`/blog/${featuredArticle.slug}`}
             className="group block"
           >
-            <article className="overflow-hidden rounded-[22px] border border-[#dce7f5] bg-white shadow-[0_24px_60px_rgba(15,23,42,0.08)] transition duration-300 group-hover:-translate-y-0.5 group-hover:shadow-[0_30px_70px_rgba(15,23,42,0.12)]">
+            <article className="overflow-hidden rounded-[22px] border border-[#dce7f5] bg-white shadow-[0_20px_50px_rgba(15,23,42,0.07)] transition duration-300 group-hover:-translate-y-0.5 group-hover:shadow-[0_28px_65px_rgba(15,23,42,0.11)]">
               <div className="relative aspect-[16/10] overflow-hidden bg-[#eef4ff]">
                 <Image
                   src={featuredArticle.image}
@@ -87,24 +87,23 @@ export default function BlogPage() {
                   className="object-cover transition duration-500 group-hover:scale-[1.03]"
                   sizes="(min-width: 1024px) 60vw, 92vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[rgba(7,22,47,0.88)] via-[rgba(7,22,47,0.18)] to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
-                  <div className="flex flex-wrap items-center gap-3 text-[0.74rem] font-black uppercase tracking-[0.18em] text-white/82">
-                    <span className="rounded-full border border-white/30 bg-white/10 px-3 py-1 text-white">
-                      {featuredArticle.category}
-                    </span>
-                    <span>{featuredArticle.readTime}</span>
-                  </div>
-                  <h2 className="mt-4 max-w-2xl text-[1.9rem] font-black leading-tight tracking-[-0.03em] text-white sm:text-[2.35rem]">
-                    {featuredArticle.title}
-                  </h2>
-                  <p className="mt-4 max-w-2xl text-[1rem] leading-7 text-white/82 sm:text-[1.03rem]">
-                    {featuredArticle.description}
-                  </p>
-                  <span className="mt-6 inline-flex border border-white/30 bg-white/10 px-5 py-3 text-[0.72rem] font-black uppercase tracking-[0.16em] text-white">
-                    Read article
+              </div>
+              <div className="p-6 sm:p-7">
+                <div className="flex flex-wrap items-center gap-3 text-[0.74rem] font-black uppercase tracking-[0.18em] text-[#6a7890]">
+                  <span className="rounded-full bg-[#eef4ff] px-3 py-1 text-[#0056fd]">
+                    {featuredArticle.category}
                   </span>
+                  <span>{featuredArticle.readTime}</span>
                 </div>
+                <h2 className="mt-4 text-[1.8rem] font-black leading-tight tracking-[-0.03em] text-slate-950 sm:text-[2.15rem]">
+                  {featuredArticle.title}
+                </h2>
+                <p className="mt-4 max-w-2xl text-[1rem] leading-7 text-slate-600 sm:text-[1.03rem]">
+                  {featuredArticle.description}
+                </p>
+                <span className="mt-6 inline-flex border border-[#dce7f5] bg-white px-5 py-3 text-[0.72rem] font-black uppercase tracking-[0.16em] text-[#07162f] transition group-hover:border-[#0056fd] group-hover:text-[#0056fd]">
+                  Read article
+                </span>
               </div>
             </article>
           </Link>
@@ -116,7 +115,7 @@ export default function BlogPage() {
                 href={`/blog/${article.slug}`}
                 className="group block"
               >
-                <article className="overflow-hidden rounded-[22px] border border-[#dce7f5] bg-white shadow-[0_20px_50px_rgba(15,23,42,0.07)] transition duration-300 group-hover:-translate-y-0.5 group-hover:shadow-[0_28px_65px_rgba(15,23,42,0.11)]">
+                <article className="overflow-hidden rounded-[22px] border border-[#dce7f5] bg-white shadow-[0_18px_44px_rgba(15,23,42,0.06)] transition duration-300 group-hover:-translate-y-0.5 group-hover:shadow-[0_24px_55px_rgba(15,23,42,0.1)]">
                   <div className="relative aspect-[16/10] overflow-hidden bg-[#eef4ff]">
                     <Image
                       src={article.image}
@@ -125,18 +124,20 @@ export default function BlogPage() {
                       className="object-cover transition duration-500 group-hover:scale-[1.03]"
                       sizes="(min-width: 1024px) 34vw, 92vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[rgba(7,22,47,0.74)] via-[rgba(7,22,47,0.12)] to-transparent" />
-                    <div className="absolute inset-x-0 bottom-0 p-5">
-                      <div className="flex flex-wrap items-center gap-3 text-[0.68rem] font-black uppercase tracking-[0.18em] text-white/80">
-                        <span className="rounded-full border border-white/25 bg-white/10 px-3 py-1 text-white">
-                          {article.category}
-                        </span>
-                        <span>{article.readTime}</span>
-                      </div>
-                      <h3 className="mt-3 text-[1.28rem] font-black leading-tight tracking-[-0.025em] text-white">
-                        {article.title}
-                      </h3>
+                  </div>
+                  <div className="p-5">
+                    <div className="flex flex-wrap items-center gap-3 text-[0.68rem] font-black uppercase tracking-[0.18em] text-[#6a7890]">
+                      <span className="rounded-full bg-[#eef4ff] px-3 py-1 text-[#0056fd]">
+                        {article.category}
+                      </span>
+                      <span>{article.readTime}</span>
                     </div>
+                    <h3 className="mt-3 text-[1.28rem] font-black leading-tight tracking-[-0.025em] text-slate-950">
+                      {article.title}
+                    </h3>
+                    <p className="mt-3 line-clamp-3 text-[0.95rem] leading-7 text-slate-600">
+                      {article.description}
+                    </p>
                   </div>
                 </article>
               </Link>
@@ -146,24 +147,6 @@ export default function BlogPage() {
 
         <section className="mt-12">
           <BlogArticleGrid articles={gridArticles} compact />
-        </section>
-
-        <section className="mt-16 rounded-[20px] border border-[#dce7f5] bg-white p-6 text-center shadow-[0_16px_40px_rgba(15,23,42,0.05)] md:p-8">
-          <p className="text-sm font-black uppercase tracking-[0.2em] text-[#0056fd]">
-            Read with clarity
-          </p>
-          <h2 className="mt-3 text-3xl font-black text-slate-950">
-            Create your free Bible Buddy account and start studying today.
-          </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-base leading-7 text-slate-600">
-            Go beyond reading with guided audio, study notes, devotional plans, trivia, and daily Bible habits that actually stick.
-          </p>
-          <Link
-            href="/signup"
-            className="mt-6 inline-flex rounded-full bg-[#0056fd] px-7 py-4 text-sm font-black text-white shadow-[0_14px_32px_rgba(0,86,253,0.22)]"
-          >
-            Create Free Account
-          </Link>
         </section>
       </section>
     </main>
