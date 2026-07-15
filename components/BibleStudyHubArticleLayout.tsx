@@ -27,6 +27,21 @@ export default function BibleStudyHubArticleLayout({ children }: { children: Rea
     }
   }, []);
 
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+
+    const reflectionHeading = Array.from(document.querySelectorAll("h2")).find(
+      (heading) => heading.textContent?.trim().toLowerCase() === "reflection question",
+    );
+    const reflectionBlock = reflectionHeading?.closest("div");
+    const reflectionSlot = document.getElementById("blog-reflection-slot");
+
+    if (!reflectionBlock || !reflectionSlot || reflectionSlot.contains(reflectionBlock)) return;
+
+    reflectionBlock.classList.add("blog-reflection-question-block");
+    reflectionSlot.appendChild(reflectionBlock);
+  }, [pathname, isEmbed]);
+
   const isHubArticlePage = segments[0] === "bible-study-hub" && segments.length === 3;
   const isTipsArticlePage = segments[0] === "bible-study-tips" && segments.length === 2;
   const articleSlug = isHubArticlePage
@@ -199,9 +214,10 @@ export default function BibleStudyHubArticleLayout({ children }: { children: Rea
         {children}
         {(isHubArticlePage || isTipsArticlePage) && articleSlug && (
           <div className="mt-2">
+            <div id="blog-reflection-slot" className="mt-8" />
             <CommentSection
               articleSlug={articleSlug}
-              headingText="Answer the reflection question below"
+              headingText=""
               placeholderText="Type your reflection answer here to join the discussion..."
               submitButtonText="Share My Reflection"
             />
@@ -222,17 +238,17 @@ export default function BibleStudyHubArticleLayout({ children }: { children: Rea
               Keep studying with Bible Buddy
             </p>
             <h2 className="mt-3 text-2xl font-black leading-tight text-slate-950">
-              Understand the Bible one day at a time.
+              Keep learning after this article.
             </h2>
             <p className="mx-auto mt-3 max-w-xl text-sm font-semibold leading-6 text-slate-600">
-              Listen through the Bible in one year, open study notes, test yourself with trivia, and join the discussion.
+              Start Bible in One Year, listen to guided lessons, and use study notes to understand Scripture one day at a time.
             </p>
             <div className="mt-5 flex flex-col justify-center gap-3 sm:flex-row">
               <Link
                 href="/signup"
                 className="rounded-full bg-[#0056fd] px-6 py-3 text-sm font-black text-white shadow-[0_14px_32px_rgba(0,86,253,0.22)]"
               >
-                Start Free
+                Start Studying Free
               </Link>
               <Link
                 href="/blog"
@@ -243,10 +259,12 @@ export default function BibleStudyHubArticleLayout({ children }: { children: Rea
             </div>
           </section>
 
+          <div id="blog-reflection-slot" className="mt-8" />
+
           <div className="mt-2">
             <CommentSection
               articleSlug={articleSlug}
-              headingText="Answer the reflection question below"
+              headingText=""
               placeholderText="Type your reflection answer here to join the discussion..."
               submitButtonText="Share My Reflection"
             />
