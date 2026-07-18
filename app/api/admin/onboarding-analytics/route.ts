@@ -4214,6 +4214,9 @@ async function buildOverviewAnalyticsResponse(
   const signupTimestamps = collectSignupTimestampsFromAuthUsers(validAuthUsers, startIso, endIso);
   const signupSeries = buildSimpleMetricSeries(signupTimestamps, journeyWindow);
   const signupChartSeries = buildSignupChartSeries(validAuthUsers.map((user) => user.createdAt));
+  const upgradeChartSeries = buildSignupChartSeries(
+    collectFirstPaidUpgradeTimestamps(allUpgradeRows, "1970-01-01T00:00:00.000Z"),
+  );
   const currentSignups = signupSeries.reduce((sum, point) => sum + point.value, 0);
   const previousSignups = previousRange
     ? collectSignupTimestampsFromAuthUsers(validAuthUsers, previousRange.startIso, previousRange.endIso).length
@@ -4249,6 +4252,7 @@ async function buildOverviewAnalyticsResponse(
     activitySummary,
     registeredUsers,
     signupChartSeries,
+    upgradeChartSeries,
     audioEngagement: {
       totalPlays: audioRows.length,
       uniqueListeners: uniqueAudioActors.size,
@@ -4761,6 +4765,9 @@ export async function GET(request: Request) {
   const signupTimestamps = collectSignupTimestampsFromAuthUsers(validSimpleAuthUsers, journeySinceIso, journeyBeforeIso);
   const signupSeries = buildSimpleMetricSeries(signupTimestamps, journeyWindow);
   const signupChartSeries = buildSignupChartSeries(validSimpleAuthUsers.map((user) => user.createdAt));
+  const upgradeChartSeries = buildSignupChartSeries(
+    collectFirstPaidUpgradeTimestamps(upgradeRows, "1970-01-01T00:00:00.000Z"),
+  );
   const previousSignups = previousRange
     ? collectSignupTimestampsFromAuthUsers(validSimpleAuthUsers, previousRange.startIso, previousRange.endIso).length
     : 0;
@@ -4798,6 +4805,7 @@ export async function GET(request: Request) {
       businessMetrics,
       activitySummary,
       signupChartSeries,
+      upgradeChartSeries,
       registeredUsers: registeredUserAnalytics,
       audioEngagement,
       audioHelpfulness,
@@ -4844,6 +4852,7 @@ export async function GET(request: Request) {
     businessMetrics,
     activitySummary,
     signupChartSeries,
+    upgradeChartSeries,
     simpleSeries: {
       signups: signupSeries,
       upgrades: upgradeSeries,

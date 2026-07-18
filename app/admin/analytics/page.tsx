@@ -302,6 +302,11 @@ type AnalyticsResponse = {
     weekly: Array<{ label: string; value: number }>;
     monthly: Array<{ label: string; value: number }>;
   };
+  upgradeChartSeries?: {
+    daily: Array<{ label: string; value: number }>;
+    weekly: Array<{ label: string; value: number }>;
+    monthly: Array<{ label: string; value: number }>;
+  };
   simpleComparisons?: {
     signups: { current: number; previous: number; change: number };
     upgrades: { current: number; previous: number; change: number };
@@ -1292,9 +1297,13 @@ const SIGNUP_CHART_OPTIONS: Array<{ key: SignupChartMode; label: string; helper:
 function SignupBarChart({
   points,
   loading,
+  loadingLabel = "Loading signups...",
+  ariaLabel = "Signup history by period",
 }: {
   points: Array<{ label: string; value: number }>;
   loading: boolean;
+  loadingLabel?: string;
+  ariaLabel?: string;
 }) {
   const width = 780;
   const height = 300;
@@ -1311,13 +1320,13 @@ function SignupBarChart({
   if (loading) {
     return (
       <div className="grid h-[300px] min-w-[680px] place-items-center rounded-[18px] bg-[var(--bb-surface-soft,#f8fbff)] text-sm font-bold text-[var(--bb-text-secondary,#64748b)]">
-        Loading signups...
+        {loadingLabel}
       </div>
     );
   }
 
   return (
-    <svg viewBox={`0 0 ${width} ${height}`} className="h-[300px] min-w-[700px] w-full" role="img" aria-label="Signup history by period">
+    <svg viewBox={`0 0 ${width} ${height}`} className="h-[300px] min-w-[700px] w-full" role="img" aria-label={ariaLabel}>
       {gridValues.map((value, index) => {
         const y = baseline - (value / maxValue) * chartHeight;
         return (
@@ -1348,6 +1357,73 @@ function SignupBarChart({
         );
       })}
     </svg>
+  );
+}
+
+function UpgradeAnalyticsSection({
+  data,
+  value,
+  windowKey,
+  loading,
+  comparison,
+}: {
+  data: AnalyticsResponse | null;
+  value: string;
+  windowKey: JourneyWindow;
+  loading: boolean;
+  comparison?: number | null;
+}) {
+  const [chartMode, setChartMode] = useState<SignupChartMode>("daily");
+  const activeOption = SIGNUP_CHART_OPTIONS.find((option) => option.key === chartMode) || SIGNUP_CHART_OPTIONS[0];
+  const points = data?.upgradeChartSeries?.[chartMode] || [];
+
+  return (
+    <section className="rounded-[28px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-4 shadow-[0_18px_46px_rgba(15,23,42,0.08)] sm:p-6">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+        <div>
+          <p className="text-sm font-bold text-[var(--bb-text-secondary,#64748b)]">Upgrades</p>
+          <div className="mt-2 flex flex-wrap items-center gap-3">
+            <p className="text-[44px] font-black leading-none tracking-tight text-[var(--bb-text-primary,#101827)]">
+              {loading ? "..." : value}
+            </p>
+            {typeof comparison === "number" ? <ComparisonChip change={comparison} label={getComparisonLabel(windowKey)} /> : null}
+          </div>
+          <p className="mt-2 text-sm font-semibold text-[var(--bb-text-secondary,#64748b)]">
+            Users who upgraded to Pro in this timeframe.
+          </p>
+        </div>
+        <div>
+          <label className="sr-only" htmlFor="upgrade-chart-mode">Upgrade chart view</label>
+          <select
+            id="upgrade-chart-mode"
+            value={chartMode}
+            onChange={(event) => setChartMode(event.target.value as SignupChartMode)}
+            className="w-full rounded-[18px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] px-4 py-3 text-sm font-black text-[var(--bb-text-primary,#101827)] shadow-[0_8px_20px_rgba(15,23,42,0.05)] sm:w-auto"
+          >
+            {SIGNUP_CHART_OPTIONS.map((option) => (
+              <option key={option.key} value={option.key}>{option.label}</option>
+            ))}
+          </select>
+        </div>
+      </div>
+      <div className="mt-5 rounded-[24px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-4 shadow-[0_16px_40px_rgba(15,23,42,0.06)]">
+        <div className="mb-3 flex items-center justify-between gap-3">
+          <div>
+            <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">Upgrade history</p>
+            <p className="text-xs font-bold text-[var(--bb-text-secondary,#64748b)]">{activeOption.helper}</p>
+          </div>
+          <span className="rounded-full bg-violet-50 px-3 py-1 text-xs font-black text-violet-700">{activeOption.label}</span>
+        </div>
+        <div className="overflow-x-auto pb-2">
+          <SignupBarChart
+            points={points}
+            loading={loading}
+            loadingLabel="Loading upgrades..."
+            ariaLabel="Upgrade history by period"
+          />
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -2094,6 +2170,14 @@ function MobileAnalyticsHighlights({
               windowKey={windowKey}
               loading={loading}
               comparison={windowKey === "lifetime" ? null : signupComparison}
+            />
+          ) : simpleMetric === "upgrades" ? (
+            <UpgradeAnalyticsSection
+              data={data}
+              value={getSimpleMetricTotal("upgrades", data, stripeRevenue)}
+              windowKey={windowKey}
+              loading={loading || stripeRevenueLoading}
+              comparison={windowKey === "lifetime" ? null : upgradesComparison}
             />
           ) : simpleMetric === "completion_popup" ? (
             <CompletionPopupAnalyticsSection
@@ -4529,6 +4613,14 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
                     windowKey={windowKey}
                     loading={loading}
                     comparison={windowKey === "lifetime" ? null : signupComparison}
+                  />
+                ) : simpleMetric === "upgrades" ? (
+                  <UpgradeAnalyticsSection
+                    data={data}
+                    value={getSimpleMetricTotal("upgrades", data, stripeRevenue)}
+                    windowKey={windowKey}
+                    loading={loading || stripeRevenueLoading}
+                    comparison={windowKey === "lifetime" ? null : upgradesComparison}
                   />
                 ) : simpleMetric === "completion_popup" ? (
                   <CompletionPopupAnalyticsSection
