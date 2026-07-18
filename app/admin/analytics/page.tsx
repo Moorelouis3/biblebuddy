@@ -11,7 +11,7 @@ import { getCachedAdminAnalytics, getCachedAdminAnalyticsOverview, loadAdminAnal
 type JourneyWindow = "today" | "yesterday" | "24h" | "7d" | "30d" | "90d" | "this_month" | "lifetime";
 type AccountFilter = "all" | "guest" | "free" | "pro";
 type AnalyticsView = "overview" | "bible-year" | "study-notes" | "traffic-sources";
-type SimpleAnalyticsMetric = "overview" | "revenue" | "signups" | "upgrades" | "completion_popup" | "study_plans";
+type SimpleAnalyticsMetric = "overview" | "revenue" | "signups" | "upgrades" | "traffic_sources" | "completion_popup" | "study_plans";
 
 type VisitorJourneyStatus =
   | "active"
@@ -608,6 +608,7 @@ const SIMPLE_METRIC_OPTIONS: Array<{ key: SimpleAnalyticsMetric; label: string }
   { key: "revenue", label: "Revenue" },
   { key: "signups", label: "Signups" },
   { key: "upgrades", label: "Upgrades" },
+  { key: "traffic_sources", label: "Traffic Sources" },
   { key: "completion_popup", label: "Completion Popup" },
   { key: "study_plans", label: "Study Plans" },
 ];
@@ -639,6 +640,74 @@ const TRAFFIC_SOURCE_COLORS = [
   "from-rose-500/18 to-pink-400/10 text-rose-700 ring-rose-200",
   "from-slate-500/14 to-slate-400/8 text-slate-700 ring-slate-200",
 ];
+
+const MAIN_TRAFFIC_SOURCE_ORDER = ["Facebook", "Instagram", "Threads", "Google", "YouTube", "Other"] as const;
+
+type MainTrafficSourceReport = NonNullable<AnalyticsResponse["trafficSources"]>;
+type MainTrafficSourceVisitorRow = NonNullable<MainTrafficSourceReport["sources"][number]["visitorRows"]>[number];
+
+type NormalizedMainTrafficSourceRow = {
+  source: string;
+  visitors: number;
+  signups: number;
+  signupRate: number;
+  percent: number;
+  visitorRows: MainTrafficSourceVisitorRow[];
+};
+
+function normalizeMainTrafficSource(sourceValue: unknown) {
+  const raw = typeof sourceValue === "string" ? sourceValue.trim().toLowerCase() : "";
+  if (raw.includes("facebook") || raw.includes("fbclid") || raw.includes("fb.") || raw === "fb") return "Facebook";
+  if (raw.includes("instagram") || raw.includes("igshid") || raw === "ig") return "Instagram";
+  if (raw.includes("threads")) return "Threads";
+  if (raw.includes("youtube") || raw.includes("youtu.be") || raw.includes("youtu")) return "YouTube";
+  if (raw.includes("google") || raw.includes("gclid")) return "Google";
+  return "Other";
+}
+
+function getNormalizedMainTrafficSources(report?: AnalyticsResponse["trafficSources"]): NormalizedMainTrafficSourceRow[] {
+  const buckets = new Map<string, NormalizedMainTrafficSourceRow>();
+
+  for (const source of MAIN_TRAFFIC_SOURCE_ORDER) {
+    buckets.set(source, {
+      source,
+      visitors: 0,
+      signups: 0,
+      signupRate: 0,
+      percent: 0,
+      visitorRows: [],
+    });
+  }
+
+  for (const row of report?.sources || []) {
+    const source = normalizeMainTrafficSource(row.source);
+    const current = buckets.get(source) || {
+      source,
+      visitors: 0,
+      signups: 0,
+      signupRate: 0,
+      percent: 0,
+      visitorRows: [],
+    };
+    buckets.set(source, {
+      ...current,
+      visitors: current.visitors + Number(row.visitors || 0),
+      signups: current.signups + Number(row.signups || 0),
+      visitorRows: [...current.visitorRows, ...(row.visitorRows || [])].slice(0, 100),
+    });
+  }
+
+  const rows = MAIN_TRAFFIC_SOURCE_ORDER
+    .map((source) => buckets.get(source))
+    .filter(Boolean) as NormalizedMainTrafficSourceRow[];
+  const totalVisitors = rows.reduce((sum, row) => sum + row.visitors, 0);
+
+  return rows.map((row) => ({
+    ...row,
+    percent: totalVisitors > 0 ? Number(((row.visitors / totalVisitors) * 100).toFixed(1)) : 0,
+    signupRate: row.visitors > 0 ? Number(((row.signups / row.visitors) * 100).toFixed(1)) : 0,
+  }));
+}
 
 function formatNumber(value: number) {
   return value.toLocaleString();
@@ -900,6 +969,7 @@ function getSimpleMetricSeries(
   if (metric === "revenue") return stripeRevenue?.series || [];
   if (metric === "signups") return data?.simpleSeries?.signups || [];
   if (metric === "upgrades") return stripeRevenue?.upgradeSeries || data?.simpleSeries?.upgrades || [];
+  if (metric === "traffic_sources") return [];
   if (metric === "study_plans") return data?.studyPlans?.series.dayCompletions || [];
   return data?.completionUpgrade?.series.views || [];
 }
@@ -920,6 +990,10 @@ function getSimpleMetricTotal(
   if (metric === "completion_popup") {
     return formatNumber(data?.completionUpgrade?.totalViews || 0);
   }
+  if (metric === "traffic_sources") {
+    const rows = getNormalizedMainTrafficSources(data?.trafficSources);
+    return formatNumber(rows.reduce((sum, row) => sum + row.visitors, 0));
+  }
   if (metric === "study_plans") {
     return formatNumber(data?.studyPlans?.totalDayCompletions || 0);
   }
@@ -932,6 +1006,7 @@ function getSimpleMetricTotal(
 function getSimpleMetricTitle(metric: Exclude<SimpleAnalyticsMetric, "overview">) {
   if (metric === "revenue") return "Revenue";
   if (metric === "signups") return "Signups";
+  if (metric === "traffic_sources") return "Traffic Sources";
   if (metric === "completion_popup") return "Completion Popup";
   if (metric === "study_plans") return "Study Plans";
   return "Upgrades";
@@ -940,6 +1015,7 @@ function getSimpleMetricTitle(metric: Exclude<SimpleAnalyticsMetric, "overview">
 function getSimpleMetricHelper(metric: Exclude<SimpleAnalyticsMetric, "overview">) {
   if (metric === "revenue") return "Cash collected in the selected timeframe.";
   if (metric === "signups") return "New accounts created in the selected timeframe.";
+  if (metric === "traffic_sources") return "Where visitors and signups came from in the selected timeframe.";
   if (metric === "completion_popup") return "How often the free completion upgrade prompt was shown.";
   if (metric === "study_plans") return "Study plan days completed in the selected timeframe.";
   return "Users who upgraded to Pro in the selected timeframe.";
@@ -948,6 +1024,7 @@ function getSimpleMetricHelper(metric: Exclude<SimpleAnalyticsMetric, "overview"
 function getSimpleMetricAccent(metric: Exclude<SimpleAnalyticsMetric, "overview">) {
   if (metric === "revenue") return "text-blue-600 bg-blue-50 ring-blue-100";
   if (metric === "signups") return "text-emerald-600 bg-emerald-50 ring-emerald-100";
+  if (metric === "traffic_sources") return "text-sky-600 bg-sky-50 ring-sky-100";
   if (metric === "completion_popup") return "text-amber-600 bg-amber-50 ring-amber-100";
   if (metric === "study_plans") return "text-indigo-600 bg-indigo-50 ring-indigo-100";
   return "text-violet-600 bg-violet-50 ring-violet-100";
@@ -2195,6 +2272,11 @@ function MobileAnalyticsHighlights({
               loading={loading || stripeRevenueLoading}
               comparison={windowKey === "lifetime" ? null : upgradesComparison}
             />
+          ) : simpleMetric === "traffic_sources" ? (
+            <TrafficSourcesAnalyticsSection
+              report={data?.trafficSources}
+              loading={loading}
+            />
           ) : simpleMetric === "completion_popup" ? (
             <CompletionPopupAnalyticsSection
               stats={data?.completionUpgrade}
@@ -2217,7 +2299,7 @@ function MobileAnalyticsHighlights({
               comparison={windowKey === "lifetime" ? null : upgradesComparison}
             />
           )}
-          {simpleMetric !== "completion_popup" && simpleMetric !== "revenue" && simpleMetric !== "study_plans" ? (
+          {simpleMetric !== "completion_popup" && simpleMetric !== "revenue" && simpleMetric !== "study_plans" && simpleMetric !== "traffic_sources" ? (
             <div className="grid grid-cols-3 gap-3">
               <SimpleAnalyticsKpiCard
                 title="Signups"
@@ -3590,6 +3672,114 @@ function StudyNotesUpgradeCard({ stats }: { stats?: StudyNotesUpgradeAnalytics }
   );
 }
 
+function TrafficSourcesAnalyticsSection({
+  report,
+  loading,
+}: {
+  report?: AnalyticsResponse["trafficSources"];
+  loading: boolean;
+}) {
+  const sources = getNormalizedMainTrafficSources(report);
+  const totalVisitors = sources.reduce((sum, source) => sum + source.visitors, 0);
+  const totalSignups = sources.reduce((sum, source) => sum + source.signups, 0);
+  const maxVisitors = Math.max(1, ...sources.map((source) => source.visitors));
+  const trackingLinks = [
+    { label: "Facebook", href: "https://mybiblebuddy.net/?utm_source=facebook" },
+    { label: "Instagram", href: "https://mybiblebuddy.net/?utm_source=instagram" },
+    { label: "Threads", href: "https://mybiblebuddy.net/?utm_source=threads" },
+    { label: "YouTube", href: "https://mybiblebuddy.net/?utm_source=youtube" },
+    { label: "Google", href: "https://mybiblebuddy.net/?utm_source=google" },
+  ];
+
+  if (loading && !report) {
+    return (
+      <section className="rounded-[26px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-5 shadow-[0_18px_45px_rgba(15,23,42,0.08)]">
+        <p className="text-sm font-black uppercase tracking-[0.18em] text-blue-600">Traffic Sources</p>
+        <p className="mt-3 text-xl font-black text-[var(--bb-text-primary,#101827)]">Loading traffic source data...</p>
+      </section>
+    );
+  }
+
+  return (
+    <section className="space-y-4">
+      <div className="rounded-[26px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-5 shadow-[0_18px_45px_rgba(15,23,42,0.08)]">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="text-sm font-black uppercase tracking-[0.18em] text-blue-600">Traffic Sources</p>
+            <h2 className="mt-2 text-3xl font-black text-[var(--bb-text-primary,#101827)]">
+              {formatNumber(totalVisitors)} visitors
+            </h2>
+            <p className="mt-1 text-sm font-bold text-[var(--bb-text-secondary,#64748b)]">
+              {formatNumber(totalSignups)} signups attributed in this timeframe.
+            </p>
+          </div>
+          <div className="rounded-2xl bg-blue-50 px-4 py-3 text-right ring-1 ring-blue-100">
+            <p className="text-xs font-black uppercase tracking-[0.14em] text-blue-600">Overall Signup Rate</p>
+            <p className="mt-1 text-2xl font-black text-slate-950">
+              {totalVisitors > 0 ? Number(((totalSignups / totalVisitors) * 100).toFixed(1)) : 0}%
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+        {sources.map((source, index) => {
+          const color = TRAFFIC_SOURCE_COLORS[index % TRAFFIC_SOURCE_COLORS.length];
+          return (
+            <div
+              key={source.source}
+              className={`rounded-[24px] border border-[var(--bb-card-border,#d8e3ec)] bg-gradient-to-br ${color} p-4 shadow-[0_14px_35px_rgba(15,23,42,0.06)] ring-1`}
+            >
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <p className="text-lg font-black text-slate-950">{source.source}</p>
+                  <p className="mt-1 text-xs font-bold text-slate-600">{source.percent}% of landing visitors</p>
+                </div>
+                <span className="rounded-full bg-white/85 px-3 py-1 text-xs font-black text-slate-800 shadow-sm">
+                  {source.signupRate}% signup
+                </span>
+              </div>
+              <div className="mt-4 h-2.5 overflow-hidden rounded-full bg-white/75 ring-1 ring-slate-200">
+                <div
+                  className="h-full rounded-full bg-current"
+                  style={{ width: `${Math.max(3, Math.min(100, (source.visitors / maxVisitors) * 100))}%` }}
+                />
+              </div>
+              <div className="mt-4 grid grid-cols-2 gap-2">
+                <div className="rounded-xl bg-white/80 px-3 py-2 ring-1 ring-slate-200">
+                  <p className="text-[10px] font-black uppercase tracking-[0.12em] text-slate-500">Visitors</p>
+                  <p className="mt-1 text-xl font-black text-slate-950">{formatNumber(source.visitors)}</p>
+                </div>
+                <div className="rounded-xl bg-white/80 px-3 py-2 ring-1 ring-slate-200">
+                  <p className="text-[10px] font-black uppercase tracking-[0.12em] text-slate-500">Signups</p>
+                  <p className="mt-1 text-xl font-black text-slate-950">{formatNumber(source.signups)}</p>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      <div className="rounded-[24px] border border-blue-100 bg-blue-50/70 p-4 shadow-sm">
+        <p className="text-sm font-black uppercase tracking-[0.16em] text-blue-700">Use These Links</p>
+        <div className="mt-3 grid gap-2 text-sm font-bold text-slate-800 sm:grid-cols-2">
+          {trackingLinks.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              target="_blank"
+              rel="noreferrer"
+              className="truncate rounded-xl bg-white px-3 py-2 text-blue-700 ring-1 ring-blue-100"
+            >
+              {link.label}: {link.href}
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function TrafficSourcesView({ report }: { report?: AnalyticsResponse["trafficSources"] }) {
   const sources = report?.sources || [];
   const totalVisitors = report?.totalVisitors || 0;
@@ -3663,7 +3853,7 @@ function TrafficSourcesView({ report }: { report?: AnalyticsResponse["trafficSou
       ) : (
         <div className="rounded-2xl border border-dashed border-slate-300 bg-white p-10 text-center">
           <p className="text-lg font-black text-slate-950">No landing page traffic yet</p>
-          <p className="mt-2 text-sm font-medium text-slate-600">When visitors reach the landing page, sources like Threads, Instagram, Google, YouTube, and Direct will show here.</p>
+          <p className="mt-2 text-sm font-medium text-slate-600">When visitors reach the landing page, sources like Threads, Instagram, Google, YouTube, and Other will show here.</p>
         </div>
       )}
 
@@ -4637,6 +4827,11 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
                     windowKey={windowKey}
                     loading={loading || stripeRevenueLoading}
                     comparison={windowKey === "lifetime" ? null : upgradesComparison}
+                  />
+                ) : simpleMetric === "traffic_sources" ? (
+                  <TrafficSourcesAnalyticsSection
+                    report={data?.trafficSources}
+                    loading={loading}
                   />
                 ) : simpleMetric === "completion_popup" ? (
                   <CompletionPopupAnalyticsSection

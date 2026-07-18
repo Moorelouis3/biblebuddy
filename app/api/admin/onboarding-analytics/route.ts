@@ -1939,7 +1939,7 @@ function summarizeSources(rows: Record<string, unknown>[]) {
   const sessionsBySource = new Map<string, Set<string>>();
 
   for (const row of signupRows) {
-    const source = typeof row.source === "string" && row.source.trim() ? row.source.trim().replace(/^Direct \/ Unknown$/i, "Direct") : "Direct";
+    const source = normalizeTrafficSourceLabel(row.source, row.referrer, row.page_path);
     const sessionId = typeof row.session_id === "string" ? row.session_id : "";
     if (!sessionId) continue;
     if (!sessionsBySource.has(source)) sessionsBySource.set(source, new Set());
@@ -1954,6 +1954,21 @@ function summarizeSources(rows: Record<string, unknown>[]) {
       percent: total > 0 ? Number(((sessions.size / total) * 100).toFixed(1)) : 0,
     }))
     .sort((a, b) => b.signups - a.signups);
+}
+
+function normalizeTrafficSourceLabel(sourceValue: unknown, referrerValue?: unknown, pagePathValue?: unknown) {
+  const source = typeof sourceValue === "string" ? sourceValue.trim() : "";
+  const referrer = typeof referrerValue === "string" ? referrerValue.trim() : "";
+  const pagePath = typeof pagePathValue === "string" ? pagePathValue.trim() : "";
+  const combined = `${source} ${referrer} ${pagePath}`.toLowerCase();
+
+  if (combined.includes("facebook") || combined.includes("fbclid") || combined.includes("fb.") || /\bfb\b/.test(combined)) return "Facebook";
+  if (combined.includes("instagram") || combined.includes("igshid") || /\big\b/.test(combined)) return "Instagram";
+  if (combined.includes("threads")) return "Threads";
+  if (combined.includes("youtube") || combined.includes("youtu.be") || combined.includes("youtu")) return "YouTube";
+  if (combined.includes("google") || combined.includes("gclid")) return "Google";
+
+  return "Other";
 }
 
 function summarizeTrafficSources(rows: LandingEventRow[]) {
@@ -1982,11 +1997,11 @@ function summarizeTrafficSources(rows: LandingEventRow[]) {
     firstSeenAt: string | null;
   }>>();
   for (const row of firstVisitByActor.values()) {
-    const source = typeof row.source === "string" && row.source.trim() ? row.source.trim().replace(/^Direct \/ Unknown$/i, "Direct") : "Direct";
+    const source = normalizeTrafficSourceLabel(row.source, row.referrer, row.page_path);
     const actorId = getEventActorId(row);
     const referrer = typeof row.referrer === "string" && row.referrer.trim() ? row.referrer.trim() : null;
     const pagePath = typeof row.page_path === "string" && row.page_path.trim() ? row.page_path.trim() : "/";
-    const landingUrl = pagePath.startsWith("http") ? pagePath : `https://thebiblestudybuddy.com${pagePath.startsWith("/") ? pagePath : `/${pagePath}`}`;
+    const landingUrl = pagePath.startsWith("http") ? pagePath : `https://mybiblebuddy.net${pagePath.startsWith("/") ? pagePath : `/${pagePath}`}`;
     sourceCounts.set(source, (sourceCounts.get(source) || 0) + 1);
     if (!visitorsBySource.has(source)) visitorsBySource.set(source, []);
     visitorsBySource.get(source)?.push({
@@ -2008,8 +2023,9 @@ function summarizeTrafficSources(rows: LandingEventRow[]) {
     const sessionId = typeof row.session_id === "string" ? row.session_id : "";
     const userId = typeof row.user_id === "string" ? row.user_id : "";
     const firstVisit = firstVisitByActor.get(actorId) || (sessionId ? firstVisitByActor.get(sessionId) : undefined) || (userId ? firstVisitByActor.get(userId) : undefined);
-    const rawSource = firstVisit?.source || row.source;
-    const source = typeof rawSource === "string" && rawSource.trim() ? rawSource.trim().replace(/^Direct \/ Unknown$/i, "Direct") : "Direct";
+    const source = firstVisit
+      ? normalizeTrafficSourceLabel(firstVisit.source, firstVisit.referrer, firstVisit.page_path)
+      : normalizeTrafficSourceLabel(row.source, row.referrer, row.page_path);
     signupCounts.set(source, (signupCounts.get(source) || 0) + 1);
     if (!sourceCounts.has(source)) sourceCounts.set(source, 0);
   }
@@ -2068,7 +2084,7 @@ function buildAnalyticsDataHealthWarnings(
   }
 
   const missingSourceRows = trafficSources.sources.reduce((total, source) => {
-    return total + (source.visitorRows || []).filter((row) => !row.referrer && source.source === "Unknown").length;
+    return total + (source.visitorRows || []).filter((row) => !row.referrer && source.source === "Other").length;
   }, 0);
   if (missingSourceRows > 0) {
     warnings.push({
@@ -2649,7 +2665,7 @@ function buildLandingActivityLog(rows: LandingEventRow[], profileByUserId: Map<s
       title: info.title,
       detail: info.detail,
       timestamp: row.created_at || new Date().toISOString(),
-      source: typeof row.source === "string" && row.source ? row.source.replace(/^Direct \/ Unknown$/i, "Direct") : "Direct",
+      source: normalizeTrafficSourceLabel(row.source, row.referrer, row.page_path),
       pagePath: typeof row.page_path === "string" && row.page_path ? row.page_path : "/",
       referrer: typeof row.referrer === "string" && row.referrer ? row.referrer : null,
       sessionId,
@@ -2679,7 +2695,7 @@ function buildLandingActivityLog(rows: LandingEventRow[], profileByUserId: Map<s
       title: "Likely dropped off",
       detail: `Last seen: ${lastInfo.title}. Session lasted about ${formatSessionDuration(Math.max(0, lastAt - firstAt))}.`,
       timestamp: lastRow.created_at,
-      source: typeof lastRow.source === "string" && lastRow.source ? lastRow.source.replace(/^Direct \/ Unknown$/i, "Direct") : "Direct",
+      source: normalizeTrafficSourceLabel(lastRow.source, lastRow.referrer, lastRow.page_path),
       pagePath: typeof lastRow.page_path === "string" && lastRow.page_path ? lastRow.page_path : "/",
       referrer: typeof lastRow.referrer === "string" && lastRow.referrer ? lastRow.referrer : null,
       sessionId,
