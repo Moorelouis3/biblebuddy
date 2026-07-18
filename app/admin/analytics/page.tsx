@@ -297,6 +297,11 @@ type AnalyticsResponse = {
     signups: Array<{ label: string; value: number }>;
     upgrades: Array<{ label: string; value: number }>;
   };
+  signupChartSeries?: {
+    daily: Array<{ label: string; value: number }>;
+    weekly: Array<{ label: string; value: number }>;
+    monthly: Array<{ label: string; value: number }>;
+  };
   simpleComparisons?: {
     signups: { current: number; previous: number; change: number };
     upgrades: { current: number; previous: number; change: number };
@@ -1276,6 +1281,138 @@ function SimpleAnalyticsChartCard({
   );
 }
 
+type SignupChartMode = "daily" | "weekly" | "monthly";
+
+const SIGNUP_CHART_OPTIONS: Array<{ key: SignupChartMode; label: string; helper: string }> = [
+  { key: "daily", label: "Daily", helper: "Last 60 days" },
+  { key: "weekly", label: "Weekly", helper: "Last 52 weeks" },
+  { key: "monthly", label: "Monthly", helper: "Last 12 months" },
+];
+
+function SignupBarChart({
+  points,
+  loading,
+}: {
+  points: Array<{ label: string; value: number }>;
+  loading: boolean;
+}) {
+  const width = 780;
+  const height = 300;
+  const left = 54;
+  const baseline = 244;
+  const chartHeight = 190;
+  const right = 16;
+  const step = (width - left - right) / Math.max(points.length, 1);
+  const barWidth = Math.max(5, Math.min(28, step * 0.58));
+  const maxValue = Math.max(1, ...points.map((point) => point.value));
+  const gridValues = [maxValue, maxValue / 2, 0];
+  const labelEvery = points.length > 45 ? 10 : points.length > 24 ? 5 : points.length > 14 ? 3 : 1;
+
+  if (loading) {
+    return (
+      <div className="grid h-[300px] min-w-[680px] place-items-center rounded-[18px] bg-[var(--bb-surface-soft,#f8fbff)] text-sm font-bold text-[var(--bb-text-secondary,#64748b)]">
+        Loading signups...
+      </div>
+    );
+  }
+
+  return (
+    <svg viewBox={`0 0 ${width} ${height}`} className="h-[300px] min-w-[700px] w-full" role="img" aria-label="Signup history by period">
+      {gridValues.map((value, index) => {
+        const y = baseline - (value / maxValue) * chartHeight;
+        return (
+          <g key={`${value}-${index}`}>
+            <line x1={left} x2={width - right} y1={y} y2={y} stroke="#dbe7f3" strokeDasharray={index === 2 ? "0" : "5 5"} />
+            <text x={left - 8} y={y + 4} textAnchor="end" fill="#64748b" fontSize="11" fontWeight="700">{formatNumber(Math.round(value))}</text>
+          </g>
+        );
+      })}
+      {points.map((point, index) => {
+        const x = left + index * step + (step - barWidth) / 2;
+        const barHeight = point.value > 0 ? Math.max(4, (point.value / maxValue) * chartHeight) : 0;
+        const showLabel = index === 0 || index === points.length - 1 || index % labelEvery === 0;
+        return (
+          <g key={`${point.label}-${index}`}>
+            <rect x={x} y={baseline - barHeight} width={barWidth} height={barHeight} rx="5" fill="#2563eb" />
+            {point.value > 0 ? (
+              <text x={x + barWidth / 2} y={Math.max(14, baseline - barHeight - 8)} textAnchor="middle" fill="#101827" fontSize="11" fontWeight="800">
+                {formatNumber(point.value)}
+              </text>
+            ) : null}
+            {showLabel ? (
+              <text x={x + barWidth / 2} y={baseline + 24} textAnchor="middle" fill="#64748b" fontSize="11" fontWeight="700">
+                {point.label}
+              </text>
+            ) : null}
+          </g>
+        );
+      })}
+    </svg>
+  );
+}
+
+function SignupAnalyticsSection({
+  data,
+  value,
+  windowKey,
+  loading,
+  comparison,
+}: {
+  data: AnalyticsResponse | null;
+  value: string;
+  windowKey: JourneyWindow;
+  loading: boolean;
+  comparison?: number | null;
+}) {
+  const [chartMode, setChartMode] = useState<SignupChartMode>("daily");
+  const activeOption = SIGNUP_CHART_OPTIONS.find((option) => option.key === chartMode) || SIGNUP_CHART_OPTIONS[0];
+  const points = data?.signupChartSeries?.[chartMode] || [];
+
+  return (
+    <section className="rounded-[28px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-4 shadow-[0_18px_46px_rgba(15,23,42,0.08)] sm:p-6">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+        <div>
+          <p className="text-sm font-bold text-[var(--bb-text-secondary,#64748b)]">Signups</p>
+          <div className="mt-2 flex flex-wrap items-center gap-3">
+            <p className="text-[44px] font-black leading-none tracking-tight text-[var(--bb-text-primary,#101827)]">
+              {loading ? "..." : value}
+            </p>
+            {typeof comparison === "number" ? <ComparisonChip change={comparison} label={getComparisonLabel(windowKey)} /> : null}
+          </div>
+          <p className="mt-2 text-sm font-semibold text-[var(--bb-text-secondary,#64748b)]">
+            Accounts created in this timeframe.
+          </p>
+        </div>
+        <div>
+          <label className="sr-only" htmlFor="signup-chart-mode">Signup chart view</label>
+          <select
+            id="signup-chart-mode"
+            value={chartMode}
+            onChange={(event) => setChartMode(event.target.value as SignupChartMode)}
+            className="w-full rounded-[18px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] px-4 py-3 text-sm font-black text-[var(--bb-text-primary,#101827)] shadow-[0_8px_20px_rgba(15,23,42,0.05)] sm:w-auto"
+          >
+            {SIGNUP_CHART_OPTIONS.map((option) => (
+              <option key={option.key} value={option.key}>{option.label}</option>
+            ))}
+          </select>
+        </div>
+      </div>
+      <div className="mt-5 rounded-[24px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-4 shadow-[0_16px_40px_rgba(15,23,42,0.06)]">
+        <div className="mb-3 flex items-center justify-between gap-3">
+          <div>
+            <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">Signup history</p>
+            <p className="text-xs font-bold text-[var(--bb-text-secondary,#64748b)]">{activeOption.helper}</p>
+          </div>
+          <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-black text-blue-700">{activeOption.label}</span>
+        </div>
+        <div className="overflow-x-auto pb-2">
+          <SignupBarChart points={points} loading={loading} />
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function RevenueAnalyticsSection({
   revenue,
   loading,
@@ -1950,6 +2087,14 @@ function MobileAnalyticsHighlights({
         <div className="space-y-4">
           {simpleMetric === "revenue" ? (
             <RevenueAnalyticsSection revenue={stripeRevenue} loading={stripeRevenueLoading} />
+          ) : simpleMetric === "signups" ? (
+            <SignupAnalyticsSection
+              data={data}
+              value={getSimpleMetricTotal("signups", data, stripeRevenue)}
+              windowKey={windowKey}
+              loading={loading}
+              comparison={windowKey === "lifetime" ? null : signupComparison}
+            />
           ) : simpleMetric === "completion_popup" ? (
             <CompletionPopupAnalyticsSection
               stats={data?.completionUpgrade}
@@ -1969,7 +2114,7 @@ function MobileAnalyticsHighlights({
               value={getSimpleMetricTotal(simpleMetric, data, stripeRevenue)}
               points={chartSeries}
               loading={loading || stripeRevenueLoading}
-              comparison={windowKey === "lifetime" ? null : simpleMetric === "signups" ? signupComparison : upgradesComparison}
+              comparison={windowKey === "lifetime" ? null : upgradesComparison}
             />
           )}
           {simpleMetric !== "completion_popup" && simpleMetric !== "revenue" && simpleMetric !== "study_plans" ? (
@@ -4377,6 +4522,14 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
               ) : (
                 simpleMetric === "revenue" ? (
                   <RevenueAnalyticsSection revenue={stripeRevenue} loading={stripeRevenueLoading} />
+                ) : simpleMetric === "signups" ? (
+                  <SignupAnalyticsSection
+                    data={data}
+                    value={getSimpleMetricTotal("signups", data, stripeRevenue)}
+                    windowKey={windowKey}
+                    loading={loading}
+                    comparison={windowKey === "lifetime" ? null : signupComparison}
+                  />
                 ) : simpleMetric === "completion_popup" ? (
                   <CompletionPopupAnalyticsSection
                     stats={data?.completionUpgrade}
@@ -4396,7 +4549,7 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
                     value={getSimpleMetricTotal(simpleMetric, data, stripeRevenue)}
                     points={chartSeries}
                     loading={loading || stripeRevenueLoading}
-                    comparison={windowKey === "lifetime" ? null : simpleMetric === "signups" ? signupComparison : upgradesComparison}
+                    comparison={windowKey === "lifetime" ? null : upgradesComparison}
                   />
                 )
               )}

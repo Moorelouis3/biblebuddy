@@ -1628,6 +1628,104 @@ function buildSimpleMetricSeries(
     .map(([key, value]) => ({ label: labelByKey.get(key) || key, value }));
 }
 
+type SignupChartBucket = "daily" | "weekly" | "monthly";
+
+function startOfUtcDay(date: Date) {
+  return new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()));
+}
+
+function addUtcDays(date: Date, days: number) {
+  const copy = new Date(date);
+  copy.setUTCDate(copy.getUTCDate() + days);
+  return copy;
+}
+
+function startOfUtcWeek(date: Date) {
+  const copy = startOfUtcDay(date);
+  const day = copy.getUTCDay();
+  const diff = (day + 6) % 7;
+  copy.setUTCDate(copy.getUTCDate() - diff);
+  return copy;
+}
+
+function addUtcWeeks(date: Date, weeks: number) {
+  return addUtcDays(date, weeks * 7);
+}
+
+function startOfUtcMonth(date: Date) {
+  return new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), 1));
+}
+
+function addUtcMonths(date: Date, months: number) {
+  const copy = startOfUtcMonth(date);
+  copy.setUTCMonth(copy.getUTCMonth() + months);
+  return copy;
+}
+
+function getSignupChartBucketStart(date: Date, bucket: SignupChartBucket) {
+  if (bucket === "monthly") return startOfUtcMonth(date);
+  if (bucket === "weekly") return startOfUtcWeek(date);
+  return startOfUtcDay(date);
+}
+
+function getSignupChartBucketKey(date: Date, bucket: SignupChartBucket) {
+  const start = getSignupChartBucketStart(date, bucket);
+  return bucket === "monthly" ? start.toISOString().slice(0, 7) : start.toISOString().slice(0, 10);
+}
+
+function getSignupChartLabel(date: Date, bucket: SignupChartBucket) {
+  if (bucket === "monthly") {
+    return date.toLocaleDateString("en-US", { month: "short", year: "2-digit", timeZone: "UTC" });
+  }
+  return date.toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
+}
+
+function buildSignupChartSeries(timestamps: Array<string | null | undefined>) {
+  const validDates = timestamps
+    .map((raw) => (raw ? new Date(raw) : null))
+    .filter((date): date is Date => {
+      if (!date) return false;
+      return Number.isFinite(date.getTime());
+    });
+  const now = new Date();
+
+  const build = (bucket: SignupChartBucket, count: number) => {
+    const currentStart = getSignupChartBucketStart(now, bucket);
+    const buckets: Array<{ key: string; label: string }> = [];
+
+    for (let index = count - 1; index >= 0; index -= 1) {
+      const start =
+        bucket === "monthly"
+          ? addUtcMonths(currentStart, -index)
+          : bucket === "weekly"
+            ? addUtcWeeks(currentStart, -index)
+            : addUtcDays(currentStart, -index);
+      buckets.push({
+        key: getSignupChartBucketKey(start, bucket),
+        label: getSignupChartLabel(start, bucket),
+      });
+    }
+
+    const counts = new Map(buckets.map((bucketInfo) => [bucketInfo.key, 0]));
+    validDates.forEach((date) => {
+      const key = getSignupChartBucketKey(date, bucket);
+      if (!counts.has(key)) return;
+      counts.set(key, (counts.get(key) || 0) + 1);
+    });
+
+    return buckets.map((bucketInfo) => ({
+      label: bucketInfo.label,
+      value: counts.get(bucketInfo.key) || 0,
+    }));
+  };
+
+  return {
+    daily: build("daily", 60),
+    weekly: build("weekly", 52),
+    monthly: build("monthly", 12),
+  };
+}
+
 function collectUniqueUpgradeTimestamps(
   rows: Array<{ user_id?: string | null; created_at?: string | null }>,
   startIso: string,
@@ -4115,6 +4213,7 @@ async function buildOverviewAnalyticsResponse(
   );
   const signupTimestamps = collectSignupTimestampsFromAuthUsers(validAuthUsers, startIso, endIso);
   const signupSeries = buildSimpleMetricSeries(signupTimestamps, journeyWindow);
+  const signupChartSeries = buildSignupChartSeries(validAuthUsers.map((user) => user.createdAt));
   const currentSignups = signupSeries.reduce((sum, point) => sum + point.value, 0);
   const previousSignups = previousRange
     ? collectSignupTimestampsFromAuthUsers(validAuthUsers, previousRange.startIso, previousRange.endIso).length
@@ -4149,6 +4248,7 @@ async function buildOverviewAnalyticsResponse(
     businessMetrics,
     activitySummary,
     registeredUsers,
+    signupChartSeries,
     audioEngagement: {
       totalPlays: audioRows.length,
       uniqueListeners: uniqueAudioActors.size,
@@ -4660,6 +4760,7 @@ export async function GET(request: Request) {
   const proUpgrades = paidUpgradeTimestamps.length;
   const signupTimestamps = collectSignupTimestampsFromAuthUsers(validSimpleAuthUsers, journeySinceIso, journeyBeforeIso);
   const signupSeries = buildSimpleMetricSeries(signupTimestamps, journeyWindow);
+  const signupChartSeries = buildSignupChartSeries(validSimpleAuthUsers.map((user) => user.createdAt));
   const previousSignups = previousRange
     ? collectSignupTimestampsFromAuthUsers(validSimpleAuthUsers, previousRange.startIso, previousRange.endIso).length
     : 0;
@@ -4696,6 +4797,7 @@ export async function GET(request: Request) {
       landingLast24h,
       businessMetrics,
       activitySummary,
+      signupChartSeries,
       registeredUsers: registeredUserAnalytics,
       audioEngagement,
       audioHelpfulness,
@@ -4741,6 +4843,7 @@ export async function GET(request: Request) {
     landingLast24h,
     businessMetrics,
     activitySummary,
+    signupChartSeries,
     simpleSeries: {
       signups: signupSeries,
       upgrades: upgradeSeries,
