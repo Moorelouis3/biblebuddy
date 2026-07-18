@@ -174,7 +174,6 @@ export async function POST(request: NextRequest) {
       guest_started_at: isAnonymousUser ? nowIso : null,
       registered_at: isAnonymousUser ? null : nowIso,
       converted_from_guest_at: null,
-      traffic_source: "landing_questionnaire",
       bible_experience_level: normalizeExperienceForProfile(answers.experience),
       onboarding_goal: normalizeGoalForProfile(answers.goal),
       preferred_study_mode: "bible_year",

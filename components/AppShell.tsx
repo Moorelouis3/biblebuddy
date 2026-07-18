@@ -40,6 +40,12 @@ import { ACTION_TYPE } from "../lib/actionTypes";
 import { trackNavigationActionOnce } from "../lib/navigationActionTracker";
 import { ACTIVE_STREAK_FLAME_STORAGE_KEY, normalizeFlameCosmeticId, persistActiveStreakFlame, type FlameCosmeticId } from "../lib/flameCosmetics";
 import { getActivePopupFromQueue, markPopupShown, POPUP_QUEUE_PRIORITIES, type PopupQueueItem } from "../lib/popupQueue";
+import {
+  clearPendingSignupAttribution,
+  getSignupAttributionFromBrowser,
+  readPendingSignupAttribution,
+  type SignupAttribution,
+} from "../lib/signupAttribution";
 import FirstLoginOnboardingModal from "./FirstLoginOnboardingModal";
 const ConversationPage = dynamic(() => import("../app/messages/[conversationId]/page"), { ssr: false });
 
@@ -77,6 +83,52 @@ type LandingOnboardingAnswers = {
 
 function isOwnerEmail(email: string | null | undefined) {
   return email?.toLowerCase() === "moorelouis3@gmail.com";
+}
+
+function isMissingSignupAttributionColumn(error: { message?: string } | null | undefined) {
+  return /signup_source|signup_source_detail|signup_referrer_url|signup_landing_session_id|signup_utm_source|signup_utm_medium|signup_utm_campaign|signup_source_recorded_at|schema cache|column/i.test(
+    error?.message || "",
+  );
+}
+
+function getCurrentSignupAttribution() {
+  return readPendingSignupAttribution() || getSignupAttributionFromBrowser();
+}
+
+async function saveSignupAttributionForUser(
+  currentUserId: string,
+  displayName: string,
+  attribution: SignupAttribution = getCurrentSignupAttribution(),
+) {
+  const nowIso = new Date().toISOString();
+  const basePayload = {
+    user_id: currentUserId,
+    display_name: displayName,
+    username: displayName,
+    app_theme: "light",
+    traffic_source: attribution.source,
+  };
+  const fullPayload = {
+    ...basePayload,
+    signup_source: attribution.source,
+    signup_source_detail: attribution.sourceDetail,
+    signup_referrer_url: attribution.referrerUrl,
+    signup_landing_session_id: attribution.landingSessionId,
+    signup_utm_source: attribution.utmSource,
+    signup_utm_medium: attribution.utmMedium,
+    signup_utm_campaign: attribution.utmCampaign,
+    signup_source_recorded_at: nowIso,
+  };
+
+  let { error } = await supabase.from("profile_stats").upsert(fullPayload, { onConflict: "user_id" });
+  if (error && isMissingSignupAttributionColumn(error)) {
+    const fallback = await supabase.from("profile_stats").upsert(basePayload, { onConflict: "user_id" });
+    error = fallback.error;
+  }
+
+  if (error) {
+    console.warn("[SIGNUP_ATTRIBUTION] Profile source save skipped:", error.message);
+  }
 }
 
 function normalizeLandingGoalForProfile(goal: string | null | undefined) {
@@ -797,12 +849,13 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       const hasExistingBibleYearProgress = Boolean(existingBibleYearProgressRows && existingBibleYearProgressRows.length > 0);
 
       if (!profileStats) {
+        const signupAttribution = getCurrentSignupAttribution();
         const { error: upsertError } = await supabase.from("profile_stats").upsert(
           {
             user_id: currentUserId,
             onboarding_completed: false,
             app_theme: "light",
-            traffic_source: "direct_signup",
+            traffic_source: signupAttribution.source,
             preferred_study_mode: "bible_year",
             bible_year_started_at: todayKey,
             bible_year_launch_seen_at: nowIso,
@@ -814,6 +867,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         if (upsertError) {
           console.error("[ONBOARDING] Error creating initialized profile_stats row:", upsertError);
         }
+
+        void saveSignupAttributionForUser(currentUserId, username || "Bible Buddy User", signupAttribution);
 
         if (!hasExistingBibleYearProgress) {
           let { error: dayProgressError } = await supabase.from("bible_year_day_progress").upsert(
@@ -915,6 +970,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     const estimatedDays = Number(pending.recommendation?.estimatedDays || 365);
     const pendingStudyRoute = "bible_year";
     const pendingDevotionalId = null;
+    const signupAttribution = getCurrentSignupAttribution();
 
     try {
       await supabase.from("profile_stats").upsert(
@@ -923,7 +979,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           display_name: displayName,
           username: displayName,
           app_theme: "light",
-          traffic_source: "landing_questionnaire",
+          traffic_source: signupAttribution.source,
           bible_experience_level: normalizeLandingExperienceForProfile(pending.answers.experience),
           onboarding_goal: normalizeLandingGoalForProfile(pending.answers.goal),
           onboarding_study_focus: pending.answers.studyFocus,
@@ -1090,7 +1146,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             onboarding_completed: true,
             landing_onboarding_completed: true,
             app_theme: "light",
-            traffic_source: "first_login_onboarding",
             bible_experience_level: normalizeFirstLoginExperienceForProfile(payload.answers.bibleExperience),
             onboarding_goal: normalizeFirstLoginGoalForProfile(payload.answers.mainGoal),
             onboarding_study_focus: "bible_in_one_year",
@@ -1118,7 +1173,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
               onboarding_completed: true,
               landing_onboarding_completed: true,
               app_theme: "light",
-              traffic_source: "first_login_onboarding",
               bible_experience_level: normalizeFirstLoginExperienceForProfile(payload.answers.bibleExperience),
               onboarding_goal: normalizeFirstLoginGoalForProfile(payload.answers.mainGoal),
               updated_at: nowIso,
@@ -1357,8 +1411,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     const pendingProvider = window.localStorage.getItem("bb:pending-oauth-signup");
     if (!pendingProvider) return;
 
-    const landingSessionId = window.localStorage.getItem("bb:landing-session-id") || "";
-    const landingSource = window.sessionStorage.getItem("bb:landing-source") || "Direct";
+    const signupAttribution = getCurrentSignupAttribution();
+    const landingSessionId = signupAttribution.landingSessionId || window.localStorage.getItem("bb:landing-session-id") || "";
+    const landingSource = signupAttribution.source;
     const displayName = username || "Bible Buddy User";
 
     void (async () => {
@@ -1387,6 +1442,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           });
         }
 
+        await saveSignupAttributionForUser(userId, displayName, signupAttribution);
+
         await fetch("/api/landing-analytics", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -1395,11 +1452,18 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             session_id: landingSessionId,
             user_id: userId,
             source: landingSource,
-            referrer: document.referrer || null,
-            page_path: window.location.pathname,
+            referrer: signupAttribution.referrerUrl || document.referrer || null,
+            page_path: `${window.location.pathname}${window.location.search}`,
             metadata: {
               provider: pendingProvider,
               oauthSignup: true,
+              signupSource: signupAttribution.source,
+              signupSourceDetail: signupAttribution.sourceDetail,
+              signupReferrerUrl: signupAttribution.referrerUrl,
+              signupLandingSessionId: signupAttribution.landingSessionId,
+              utmSource: signupAttribution.utmSource,
+              utmMedium: signupAttribution.utmMedium,
+              utmCampaign: signupAttribution.utmCampaign,
               startJourneyClicked: window.localStorage.getItem("bb:landing-start-clicked") === "1",
               startJourneyClickedAt: window.localStorage.getItem("bb:landing-start-clicked-at"),
               startJourneyClickedFrom: window.localStorage.getItem("bb:landing-start-clicked-from"),
@@ -1411,6 +1475,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         console.warn("[SIGNUP_TRACKING] OAuth signup tracking skipped:", error);
       } finally {
         window.localStorage.removeItem("bb:pending-oauth-signup");
+        clearPendingSignupAttribution();
       }
     })();
   }, [isLoggedIn, userId, username]);

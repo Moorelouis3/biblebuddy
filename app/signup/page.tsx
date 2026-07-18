@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useEffect, useRef, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -8,6 +8,11 @@ import LegalPageThemeReset from "@/components/LegalPageThemeReset";
 import PublicHomeButton from "@/components/PublicHomeButton";
 import { supabase } from "../../lib/supabaseClient";
 import { ACTION_TYPE } from "../../lib/actionTypes";
+import {
+  getSignupAttributionFromBrowser,
+  writePendingSignupAttribution,
+  type SignupAttribution,
+} from "../../lib/signupAttribution";
 
 const DASHBOARD_ENTRY_PATH = "/dashboard";
 
@@ -24,12 +29,45 @@ function getSignupLandingSessionId() {
   return next;
 }
 
-function getSignupLandingSource() {
-  if (typeof window === "undefined") return "Direct";
-  return window.sessionStorage.getItem("bb:landing-source") || "Direct";
+function isMissingSignupAttributionColumn(error: { message?: string } | null | undefined) {
+  return /signup_source|signup_source_detail|signup_referrer_url|signup_landing_session_id|signup_utm_source|signup_utm_medium|signup_utm_campaign|signup_source_recorded_at|schema cache|column/i.test(
+    error?.message || "",
+  );
 }
 
-async function recordLandingSignupEvent(userId: string, username: string) {
+async function saveSignupAttributionToProfile(userId: string, username: string, attribution: SignupAttribution) {
+  const nowIso = new Date().toISOString();
+  const basePayload = {
+    user_id: userId,
+    display_name: username,
+    username,
+    app_theme: "light",
+    traffic_source: attribution.source,
+  };
+  const fullPayload = {
+    ...basePayload,
+    signup_source: attribution.source,
+    signup_source_detail: attribution.sourceDetail,
+    signup_referrer_url: attribution.referrerUrl,
+    signup_landing_session_id: attribution.landingSessionId,
+    signup_utm_source: attribution.utmSource,
+    signup_utm_medium: attribution.utmMedium,
+    signup_utm_campaign: attribution.utmCampaign,
+    signup_source_recorded_at: nowIso,
+  };
+
+  let { error } = await supabase.from("profile_stats").upsert(fullPayload, { onConflict: "user_id" });
+  if (error && isMissingSignupAttributionColumn(error)) {
+    const fallback = await supabase.from("profile_stats").upsert(basePayload, { onConflict: "user_id" });
+    error = fallback.error;
+  }
+
+  if (error) {
+    console.error("Signup attribution save failed (non-blocking):", error);
+  }
+}
+
+async function recordLandingSignupEvent(userId: string, username: string, attribution: SignupAttribution) {
   if (typeof window === "undefined") return;
   try {
     await fetch("/api/landing-analytics", {
@@ -37,14 +75,19 @@ async function recordLandingSignupEvent(userId: string, username: string) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         event_name: "created_account_successfully",
-        session_id: getSignupLandingSessionId(),
+        session_id: attribution.landingSessionId || getSignupLandingSessionId(),
         user_id: userId,
-        source: getSignupLandingSource(),
-        referrer: document.referrer || null,
+        source: attribution.source,
+        referrer: attribution.referrerUrl || document.referrer || null,
         page_path: `${window.location.pathname}${window.location.search}`,
         metadata: {
           username,
           signupPage: true,
+          signupSource: attribution.source,
+          signupSourceDetail: attribution.sourceDetail,
+          utmSource: attribution.utmSource,
+          utmMedium: attribution.utmMedium,
+          utmCampaign: attribution.utmCampaign,
           startJourneyClicked: window.localStorage.getItem("bb:landing-start-clicked") === "1",
           startJourneyClickedAt: window.localStorage.getItem("bb:landing-start-clicked-at"),
           startJourneyClickedFrom: window.localStorage.getItem("bb:landing-start-clicked-from"),
@@ -61,7 +104,6 @@ export default function SignupPage() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const emailInputRef = useRef<HTMLInputElement | null>(null);
   const [referrerUserId] = useState(() => {
     if (typeof window === "undefined") return "";
     const params = new URLSearchParams(window.location.search);
@@ -70,7 +112,6 @@ export default function SignupPage() {
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [showSignupPrompt, setShowSignupPrompt] = useState(true);
 
   useEffect(() => {
     if (referrerUserId) {
@@ -102,6 +143,7 @@ export default function SignupPage() {
   }, [referrerUserId, router]);
 
   async function recordSignup(userId: string, userEmail: string | undefined, username: string) {
+    const attribution = getSignupAttributionFromBrowser();
     const { data: existingSignupAction } = await supabase
       .from("master_actions")
       .select("id")
@@ -135,7 +177,8 @@ export default function SignupPage() {
       console.error("Signup action tracking error (non-blocking):", actionTrackingError);
     }
 
-    await recordLandingSignupEvent(userId, username);
+    await saveSignupAttributionToProfile(userId, username, attribution);
+    await recordLandingSignupEvent(userId, username, attribution);
 
     try {
       await fetch("/api/send-welcome-dm", {
@@ -156,6 +199,8 @@ export default function SignupPage() {
     const normalizedEmail = email.trim().toLowerCase();
     const normalizedPassword = password.trim();
     const username = normalizedEmail.split("@")[0] || "New User";
+
+    writePendingSignupAttribution();
 
     const { data, error } = await supabase.auth.signUp({
       email: normalizedEmail,
@@ -240,6 +285,7 @@ export default function SignupPage() {
 
     const redirectTo = typeof window !== "undefined" ? `${window.location.origin}${DASHBOARD_ENTRY_PATH}` : undefined;
     if (typeof window !== "undefined") {
+      writePendingSignupAttribution();
       window.localStorage.setItem("bb:pending-oauth-signup", provider);
     }
     const { error } = await supabase.auth.signInWithOAuth({
@@ -253,45 +299,9 @@ export default function SignupPage() {
     }
   }
 
-  function closeSignupPrompt() {
-    setShowSignupPrompt(false);
-    window.setTimeout(() => {
-      emailInputRef.current?.focus();
-    }, 80);
-  }
-
   return (
     <div className="bb-auth-public flex min-h-screen flex-col bg-[#fffdf8] text-[#07162f]">
       <LegalPageThemeReset />
-      {showSignupPrompt ? (
-        <div className="fixed inset-0 z-[80] flex items-center justify-center bg-[#07162f]/45 px-4 py-6 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="signup-prompt-title">
-          <div className="w-full max-w-sm rounded-2xl border border-[#dbe8f5] bg-white p-5 text-center shadow-[0_28px_90px_rgba(7,22,47,0.22)]">
-            <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[#2477f2]">Free Bible Buddy account</p>
-            <h2 id="signup-prompt-title" className="mt-2 text-2xl font-black leading-tight text-[#07162f]">
-              Start finally understanding the Bible.
-            </h2>
-            <p className="mt-3 text-sm font-semibold leading-6 text-[#526075]">
-              Sign up for your free Bible Buddy account and get help reading Scripture in a way that feels clear, encouraging, and easy to follow.
-            </p>
-            <div className="mt-5 grid gap-2">
-              <button
-                type="button"
-                onClick={closeSignupPrompt}
-                className="rounded-xl bg-[#135397] px-5 py-3 text-sm font-black text-white shadow-[0_16px_32px_rgba(19,83,151,0.22)] transition hover:bg-[#0f4279]"
-              >
-                Start free
-              </button>
-              <button
-                type="button"
-                onClick={() => setShowSignupPrompt(false)}
-                className="rounded-xl px-5 py-2.5 text-xs font-black text-[#526075] transition hover:bg-[#f4f8ff]"
-              >
-                Not now
-              </button>
-            </div>
-          </div>
-        </div>
-      ) : null}
       <header className="mx-auto flex w-full max-w-7xl items-center justify-between gap-5 px-4 py-4 md:py-6">
         <Link href="/" className="flex items-center gap-3">
           <Image
@@ -341,7 +351,6 @@ export default function SignupPage() {
                 Email
               </label>
               <input
-                ref={emailInputRef}
                 type="email"
                 required
                 value={email}

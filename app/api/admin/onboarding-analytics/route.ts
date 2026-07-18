@@ -498,6 +498,18 @@ type ProfileSummary = {
   updatedAt?: string | null;
 };
 
+type ProfileSignupAttributionRow = {
+  user_id?: string | null;
+  display_name?: string | null;
+  username?: string | null;
+  traffic_source?: string | null;
+  signup_source?: string | null;
+  signup_source_detail?: string | null;
+  signup_referrer_url?: string | null;
+  signup_landing_session_id?: string | null;
+  signup_source_recorded_at?: string | null;
+};
+
 type PaidProfileUpgradeRow = {
   user_id?: string | null;
   display_name?: string | null;
@@ -1789,6 +1801,117 @@ function collectFirstPaidUpgradeTimestamps(
   );
 }
 
+function getUpgradePlanKind(row: { event_metadata?: Record<string, unknown> | null; action_label?: string | null }) {
+  const metadata = row.event_metadata || {};
+  const parts = [
+    row.action_label,
+    metadata.source,
+    metadata.plan,
+    metadata.planType,
+    metadata.product,
+    metadata.price,
+    metadata.priceId,
+    metadata.price_id,
+    metadata.interval,
+    metadata.checkoutContext,
+    metadata.paymentType,
+  ]
+    .map((value) => (typeof value === "string" || typeof value === "number" ? String(value).toLowerCase() : ""))
+    .filter(Boolean);
+  const text = parts.join(" ");
+
+  if (
+    text.includes("lifetime") ||
+    text.includes("life time") ||
+    text.includes("one-time") ||
+    text.includes("one_time") ||
+    text.includes("one time") ||
+    text.includes("49.99") ||
+    text.includes("4999")
+  ) {
+    return "lifetime";
+  }
+
+  return "monthly";
+}
+
+function collectFirstPaidUpgradeRows(
+  rows: UpgradeActionRow[],
+  startIso: string,
+  endIso?: string | null,
+) {
+  const firstPaidUpgradeByUser = new Map<string, UpgradeActionRow>();
+
+  rows.forEach((row) => {
+    const userId = typeof row.user_id === "string" ? row.user_id : null;
+    const createdAt = typeof row.created_at === "string" ? row.created_at : null;
+    if (!userId || !createdAt || !isPaidUpgradeAction(row)) return;
+    const current = firstPaidUpgradeByUser.get(userId);
+    if (!current || createdAt < (current.created_at || "")) {
+      firstPaidUpgradeByUser.set(userId, row);
+    }
+  });
+
+  return Array.from(firstPaidUpgradeByUser.values()).filter((row) =>
+    isWithinAnalyticsWindow(row.created_at || "", startIso, endIso || null),
+  );
+}
+
+function buildUpgradeChartSeries(rows: UpgradeActionRow[]) {
+  const validUpgrades = collectFirstPaidUpgradeRows(rows, "1970-01-01T00:00:00.000Z")
+    .map((row) => ({
+      date: row.created_at ? new Date(row.created_at) : null,
+      kind: getUpgradePlanKind(row),
+    }))
+    .filter((item): item is { date: Date; kind: "monthly" | "lifetime" } => {
+      if (!item.date) return false;
+      return Number.isFinite(item.date.getTime());
+    });
+  const now = new Date();
+
+  const build = (bucket: SignupChartBucket, count: number) => {
+    const currentStart = getSignupChartBucketStart(now, bucket);
+    const buckets: Array<{ key: string; label: string }> = [];
+
+    for (let index = count - 1; index >= 0; index -= 1) {
+      const start =
+        bucket === "monthly"
+          ? addUtcMonths(currentStart, -index)
+          : bucket === "weekly"
+            ? addUtcWeeks(currentStart, -index)
+            : addUtcDays(currentStart, -index);
+      buckets.push({
+        key: getSignupChartBucketKey(start, bucket),
+        label: getSignupChartLabel(start, bucket),
+      });
+    }
+
+    const counts = new Map(buckets.map((bucketInfo) => [bucketInfo.key, { monthly: 0, lifetime: 0 }]));
+    validUpgrades.forEach((upgrade) => {
+      const key = getSignupChartBucketKey(upgrade.date, bucket);
+      const current = counts.get(key);
+      if (!current) return;
+      current[upgrade.kind] += 1;
+    });
+
+    return buckets.map((bucketInfo) => {
+      const countInfo = counts.get(bucketInfo.key) || { monthly: 0, lifetime: 0 };
+      return {
+        label: bucketInfo.label,
+        monthly: countInfo.monthly,
+        lifetime: countInfo.lifetime,
+        value: countInfo.monthly + countInfo.lifetime,
+      };
+    });
+  };
+
+  return {
+    daily: build("daily", 60),
+    weekly: build("weekly", 52),
+    monthly: build("monthly", 12),
+  };
+}
+
 function collectSignupTimestampsFromAuthUsers(
   users: AuthUserSummary[],
   startIso: string,
@@ -1971,6 +2094,52 @@ function normalizeTrafficSourceLabel(sourceValue: unknown, referrerValue?: unkno
   return "Other";
 }
 
+function getLandingMetadataText(metadata: LandingEventRow["metadata"], keys: string[]) {
+  if (!metadata || typeof metadata !== "object" || Array.isArray(metadata)) return "";
+  for (const key of keys) {
+    const value = metadata[key];
+    if (typeof value === "string" && value.trim()) return value.trim();
+    if (typeof value === "number" && Number.isFinite(value)) return String(value);
+  }
+  return "";
+}
+
+function getTrafficSourceForLandingEvent(row: LandingEventRow) {
+  const source = row.source || getLandingMetadataText(row.metadata, [
+    "utm_source",
+    "source",
+    "traffic_source",
+    "referrer_source",
+  ]);
+  const referrer = row.referrer || getLandingMetadataText(row.metadata, [
+    "referrer",
+    "document_referrer",
+    "initial_referrer",
+  ]);
+  const pagePath = row.page_path || getLandingMetadataText(row.metadata, [
+    "page_path",
+    "pathname",
+    "path",
+    "landing_path",
+    "url",
+    "landing_url",
+  ]);
+  return normalizeTrafficSourceLabel(source, referrer, pagePath);
+}
+
+function getLandingEventPagePath(row: LandingEventRow) {
+  return row.page_path || getLandingMetadataText(row.metadata, ["page_path", "pathname", "path", "landing_path", "url", "landing_url"]) || "/";
+}
+
+function getLandingEventReferrer(row: LandingEventRow) {
+  const referrer = row.referrer || getLandingMetadataText(row.metadata, ["referrer", "document_referrer", "initial_referrer"]);
+  return referrer.trim() || null;
+}
+
+function getLandingUrlFromPath(pagePath: string) {
+  return pagePath.startsWith("http") ? pagePath : `https://mybiblebuddy.net${pagePath.startsWith("/") ? pagePath : `/${pagePath}`}`;
+}
+
 function summarizeTrafficSources(rows: LandingEventRow[]) {
   const landingRows = rows
     .filter((row) => row.event_name === "landing_page_visit" || row.event_name === "landing_page_visited")
@@ -1979,11 +2148,19 @@ function summarizeTrafficSources(rows: LandingEventRow[]) {
     .filter((row) => row.event_name === "created_free_account" || row.event_name === "created_account_successfully")
     .sort((a, b) => new Date(a.created_at || 0).getTime() - new Date(b.created_at || 0).getTime());
   const firstVisitByActor = new Map<string, LandingEventRow>();
+  const firstVisitBySession = new Map<string, LandingEventRow>();
+  const firstVisitByUser = new Map<string, LandingEventRow>();
+
+  function rememberFirstVisit(map: Map<string, LandingEventRow>, key: string | null | undefined, row: LandingEventRow) {
+    if (!key || map.has(key)) return;
+    map.set(key, row);
+  }
 
   for (const row of landingRows) {
     const actorId = getEventActorId(row);
-    if (!actorId || firstVisitByActor.has(actorId)) continue;
-    firstVisitByActor.set(actorId, row);
+    rememberFirstVisit(firstVisitByActor, actorId, row);
+    rememberFirstVisit(firstVisitBySession, row.session_id, row);
+    rememberFirstVisit(firstVisitByUser, row.user_id, row);
   }
 
   const sourceCounts = new Map<string, number>();
@@ -1996,12 +2173,24 @@ function summarizeTrafficSources(rows: LandingEventRow[]) {
     landingUrl: string;
     firstSeenAt: string | null;
   }>>();
+  const signupsBySource = new Map<string, Array<{
+    actorId: string;
+    userId: string | null;
+    sessionId: string | null;
+    userLabel: string;
+    source: string;
+    referrer: string | null;
+    pagePath: string;
+    signupUrl: string;
+    signedUpAt: string | null;
+    matchedBy: string;
+  }>>();
   for (const row of firstVisitByActor.values()) {
-    const source = normalizeTrafficSourceLabel(row.source, row.referrer, row.page_path);
+    const source = getTrafficSourceForLandingEvent(row);
     const actorId = getEventActorId(row);
-    const referrer = typeof row.referrer === "string" && row.referrer.trim() ? row.referrer.trim() : null;
-    const pagePath = typeof row.page_path === "string" && row.page_path.trim() ? row.page_path.trim() : "/";
-    const landingUrl = pagePath.startsWith("http") ? pagePath : `https://mybiblebuddy.net${pagePath.startsWith("/") ? pagePath : `/${pagePath}`}`;
+    const referrer = getLandingEventReferrer(row);
+    const pagePath = getLandingEventPagePath(row);
+    const landingUrl = getLandingUrlFromPath(pagePath);
     sourceCounts.set(source, (sourceCounts.get(source) || 0) + 1);
     if (!visitorsBySource.has(source)) visitorsBySource.set(source, []);
     visitorsBySource.get(source)?.push({
@@ -2022,12 +2211,34 @@ function summarizeTrafficSources(rows: LandingEventRow[]) {
 
     const sessionId = typeof row.session_id === "string" ? row.session_id : "";
     const userId = typeof row.user_id === "string" ? row.user_id : "";
-    const firstVisit = firstVisitByActor.get(actorId) || (sessionId ? firstVisitByActor.get(sessionId) : undefined) || (userId ? firstVisitByActor.get(userId) : undefined);
-    const source = firstVisit
-      ? normalizeTrafficSourceLabel(firstVisit.source, firstVisit.referrer, firstVisit.page_path)
-      : normalizeTrafficSourceLabel(row.source, row.referrer, row.page_path);
+    const firstVisit =
+      firstVisitByActor.get(actorId) ||
+      (sessionId ? firstVisitBySession.get(sessionId) : undefined) ||
+      (userId ? firstVisitByUser.get(userId) : undefined);
+    const source = firstVisit ? getTrafficSourceForLandingEvent(firstVisit) : getTrafficSourceForLandingEvent(row);
+    const attributionRow = firstVisit || row;
+    const pagePath = getLandingEventPagePath(attributionRow);
     signupCounts.set(source, (signupCounts.get(source) || 0) + 1);
     if (!sourceCounts.has(source)) sourceCounts.set(source, 0);
+    if (!signupsBySource.has(source)) signupsBySource.set(source, []);
+    signupsBySource.get(source)?.push({
+      actorId,
+      userId: userId || null,
+      sessionId: sessionId || null,
+      userLabel: userId ? `User ${shortId(userId)}` : `Session ${shortId(sessionId || actorId)}`,
+      source,
+      referrer: getLandingEventReferrer(attributionRow),
+      pagePath,
+      signupUrl: getLandingUrlFromPath(pagePath),
+      signedUpAt: row.created_at || null,
+      matchedBy: firstVisit
+        ? firstVisit.user_id && firstVisit.user_id === userId
+          ? "user"
+          : firstVisit.session_id && firstVisit.session_id === sessionId
+            ? "session"
+            : "visitor"
+        : "signup event",
+    });
   }
 
   const totalVisitors = firstVisitByActor.size;
@@ -2041,11 +2252,108 @@ function summarizeTrafficSources(rows: LandingEventRow[]) {
       visitorRows: (visitorsBySource.get(source) || [])
         .sort((a, b) => (b.firstSeenAt || "").localeCompare(a.firstSeenAt || ""))
         .slice(0, 100),
+      signupRows: (signupsBySource.get(source) || [])
+        .sort((a, b) => (b.signedUpAt || "").localeCompare(a.signedUpAt || ""))
+        .slice(0, 100),
     }))
     .sort((a, b) => b.visitors - a.visitors || a.source.localeCompare(b.source));
 
   return {
     totalVisitors,
+    sources,
+  };
+}
+
+function isMissingSignupAttributionProfileColumn(error: { message?: string } | null | undefined) {
+  const message = error?.message || "";
+  return /signup_source|signup_source_detail|signup_referrer_url|signup_landing_session_id|signup_source_recorded_at|schema cache/i.test(message);
+}
+
+function isTimestampInAnalyticsWindow(timestamp: string | null | undefined, startIso: string, endIso: string | null) {
+  if (!timestamp) return false;
+  const time = new Date(timestamp).getTime();
+  const start = new Date(startIso).getTime();
+  const end = endIso ? new Date(endIso).getTime() : Date.now();
+  return Number.isFinite(time) && time >= start && time < end;
+}
+
+function normalizeProfileSignupSource(row: ProfileSignupAttributionRow) {
+  return normalizeTrafficSourceLabel(row.signup_source || row.traffic_source || "Other", row.signup_referrer_url || "", row.signup_source_detail || "");
+}
+
+function mergeProfileSignupAttributionIntoTrafficSources(
+  summary: ReturnType<typeof summarizeTrafficSources>,
+  profileRows: ProfileSignupAttributionRow[],
+  authUsers: AuthUserSummary[],
+  startIso: string,
+  endIso: string | null,
+  profileByUserId: Map<string, string>,
+) {
+  const authCreatedAtByUserId = new Map(authUsers.map((user) => [user.id, user.createdAt]));
+  const sourcesByName = new Map(summary.sources.map((source) => [source.source, {
+    ...source,
+    visitorRows: [...source.visitorRows],
+    signupRows: [...source.signupRows],
+  }]));
+  const countedSignupUserIds = new Set<string>();
+
+  for (const source of summary.sources) {
+    for (const signup of source.signupRows) {
+      if (signup.userId) countedSignupUserIds.add(signup.userId);
+    }
+  }
+
+  for (const profile of profileRows) {
+    const userId = typeof profile.user_id === "string" ? profile.user_id : "";
+    if (!userId || countedSignupUserIds.has(userId)) continue;
+
+    const signedUpAt = profile.signup_source_recorded_at || authCreatedAtByUserId.get(userId) || null;
+    if (!isTimestampInAnalyticsWindow(signedUpAt, startIso, endIso)) continue;
+
+    const source = normalizeProfileSignupSource(profile);
+    const existing = sourcesByName.get(source) || {
+      source,
+      visitors: 0,
+      signups: 0,
+      signupRate: 0,
+      percent: 0,
+      visitorRows: [],
+      signupRows: [],
+    };
+    const displayName = typeof profile.display_name === "string" ? profile.display_name.trim() : "";
+    const username = typeof profile.username === "string" ? profile.username.trim() : "";
+
+    existing.signups += 1;
+    existing.signupRows.push({
+      actorId: userId,
+      userId,
+      sessionId: profile.signup_landing_session_id || null,
+      userLabel: profileByUserId.get(userId) || displayName || username || `User ${shortId(userId)}`,
+      source,
+      referrer: profile.signup_referrer_url || null,
+      pagePath: "/signup",
+      signupUrl: "https://mybiblebuddy.net/signup",
+      signedUpAt,
+      matchedBy: "profile signup attribution",
+    });
+    sourcesByName.set(source, existing);
+    countedSignupUserIds.add(userId);
+  }
+
+  const totalVisitors = summary.totalVisitors;
+  const sources = Array.from(sourcesByName.values())
+    .map((source) => ({
+      ...source,
+      signupRate: source.visitors > 0 ? percent(source.signups, source.visitors) : source.signups > 0 ? 100 : 0,
+      percent: percent(source.visitors, totalVisitors),
+      signupRows: source.signupRows
+        .sort((a, b) => (b.signedUpAt || "").localeCompare(a.signedUpAt || ""))
+        .slice(0, 100),
+    }))
+    .sort((a, b) => b.visitors - a.visitors || b.signups - a.signups || a.source.localeCompare(b.source));
+
+  return {
+    ...summary,
     sources,
   };
 }
@@ -4230,9 +4538,7 @@ async function buildOverviewAnalyticsResponse(
   const signupTimestamps = collectSignupTimestampsFromAuthUsers(validAuthUsers, startIso, endIso);
   const signupSeries = buildSimpleMetricSeries(signupTimestamps, journeyWindow);
   const signupChartSeries = buildSignupChartSeries(validAuthUsers.map((user) => user.createdAt));
-  const upgradeChartSeries = buildSignupChartSeries(
-    collectFirstPaidUpgradeTimestamps(allUpgradeRows, "1970-01-01T00:00:00.000Z"),
-  );
+  const upgradeChartSeries = buildUpgradeChartSeries(allUpgradeRows);
   const currentSignups = signupSeries.reduce((sum, point) => sum + point.value, 0);
   const previousSignups = previousRange
     ? collectSignupTimestampsFromAuthUsers(validAuthUsers, previousRange.startIso, previousRange.endIso).length
@@ -4737,6 +5043,32 @@ export async function GET(request: Request) {
     }
   }
 
+  const validSimpleAuthUsers = allAuthUsers.filter((user) => !isOwnerAuthUser(user.id, allAuthSummaryByUserId));
+  const validSimpleAuthUserIds = validSimpleAuthUsers.map((user) => user.id).filter(Boolean);
+  const profileSignupAttributionRows: ProfileSignupAttributionRow[] = [];
+  for (let index = 0; index < validSimpleAuthUserIds.length; index += 1000) {
+    const userIds = validSimpleAuthUserIds.slice(index, index + 1000);
+    if (userIds.length === 0) continue;
+
+    let { data: profileSignupRows, error: profileSignupError } = await adminSupabase
+      .from("profile_stats")
+      .select("user_id, display_name, username, traffic_source, signup_source, signup_source_detail, signup_referrer_url, signup_landing_session_id, signup_source_recorded_at")
+      .in("user_id", userIds);
+
+    if (profileSignupError && isMissingSignupAttributionProfileColumn(profileSignupError)) {
+      const fallback = await adminSupabase
+        .from("profile_stats")
+        .select("user_id, display_name, username, traffic_source")
+        .in("user_id", userIds);
+      profileSignupRows = fallback.data as typeof profileSignupRows;
+      profileSignupError = fallback.error;
+    }
+
+    if (!profileSignupError && profileSignupRows) {
+      profileSignupAttributionRows.push(...(profileSignupRows as ProfileSignupAttributionRow[]));
+    }
+  }
+
   const studyNotes = buildStudyNotesAnalytics(studyNotesActionRows, profileByUserId);
   const audioHelpfulness = buildAudioHelpfulnessAnalytics(audioHelpfulnessRows, audioHelpfulnessLifetimeRows);
   const windowBibleYearProgressRows = allBibleYearProgressRows.filter((row) => {
@@ -4755,7 +5087,14 @@ export async function GET(request: Request) {
   const bibleBuddyFunnelStages = buildBibleBuddyFunnelStages(validLandingEventRows, masterFunnelRows, windowBibleYearProgressRows, dayThreeUpgrade, daySevenUpgrade);
   const funnel = summarizeFunnel(validEventRows);
   const sources = summarizeSources(validEventRows);
-  const trafficSources = summarizeTrafficSources(validLandingEventRows);
+  const trafficSources = mergeProfileSignupAttributionIntoTrafficSources(
+    summarizeTrafficSources(validLandingEventRows),
+    profileSignupAttributionRows,
+    validSimpleAuthUsers,
+    journeySinceIso,
+    journeyBeforeIso,
+    profileByUserId,
+  );
   const dataHealth = buildAnalyticsDataHealthWarnings(bibleYearDays, trafficSources);
   const publicOnboardingFlow = summarizePublicOnboardingFlow(validEventRows);
   const landingLast24h = summarizeLandingLast24Hours(validEventRows);
@@ -4775,15 +5114,12 @@ export async function GET(request: Request) {
     profileSummaryByUserId,
     journeyWindow,
   );
-  const validSimpleAuthUsers = allAuthUsers.filter((user) => !isOwnerAuthUser(user.id, allAuthSummaryByUserId));
   const paidUpgradeTimestamps = collectFirstPaidUpgradeTimestamps(upgradeRows, journeySinceIso, journeyBeforeIso);
   const proUpgrades = paidUpgradeTimestamps.length;
   const signupTimestamps = collectSignupTimestampsFromAuthUsers(validSimpleAuthUsers, journeySinceIso, journeyBeforeIso);
   const signupSeries = buildSimpleMetricSeries(signupTimestamps, journeyWindow);
   const signupChartSeries = buildSignupChartSeries(validSimpleAuthUsers.map((user) => user.createdAt));
-  const upgradeChartSeries = buildSignupChartSeries(
-    collectFirstPaidUpgradeTimestamps(upgradeRows, "1970-01-01T00:00:00.000Z"),
-  );
+  const upgradeChartSeries = buildUpgradeChartSeries(upgradeRows);
   const previousSignups = previousRange
     ? collectSignupTimestampsFromAuthUsers(validSimpleAuthUsers, previousRange.startIso, previousRange.endIso).length
     : 0;
