@@ -1299,34 +1299,43 @@ function SignupBarChart({
   loading,
   loadingLabel = "Loading signups...",
   ariaLabel = "Signup history by period",
+  tooltipNoun = "signups",
 }: {
   points: Array<{ label: string; value: number }>;
   loading: boolean;
   loadingLabel?: string;
   ariaLabel?: string;
+  tooltipNoun?: string;
 }) {
-  const width = 780;
-  const height = 300;
+  const slotWidth = points.length > 45 ? 48 : points.length > 24 ? 56 : points.length > 14 ? 64 : 78;
+  const width = Math.max(780, 54 + 26 + points.length * slotWidth);
+  const height = 340;
   const left = 54;
-  const baseline = 244;
+  const baseline = 238;
   const chartHeight = 190;
-  const right = 16;
-  const step = (width - left - right) / Math.max(points.length, 1);
-  const barWidth = Math.max(5, Math.min(28, step * 0.58));
+  const right = 26;
+  const step = slotWidth;
+  const barWidth = Math.max(16, Math.min(34, step * 0.48));
   const maxValue = Math.max(1, ...points.map((point) => point.value));
   const gridValues = [maxValue, maxValue / 2, 0];
-  const labelEvery = points.length > 45 ? 10 : points.length > 24 ? 5 : points.length > 14 ? 3 : 1;
+  const showInlineValues = points.length <= 24;
 
   if (loading) {
     return (
-      <div className="grid h-[300px] min-w-[680px] place-items-center rounded-[18px] bg-[var(--bb-surface-soft,#f8fbff)] text-sm font-bold text-[var(--bb-text-secondary,#64748b)]">
+      <div className="grid h-[340px] min-w-[680px] place-items-center rounded-[18px] bg-[var(--bb-surface-soft,#f8fbff)] text-sm font-bold text-[var(--bb-text-secondary,#64748b)]">
         {loadingLabel}
       </div>
     );
   }
 
   return (
-    <svg viewBox={`0 0 ${width} ${height}`} className="h-[300px] min-w-[700px] w-full" role="img" aria-label={ariaLabel}>
+    <svg
+      viewBox={`0 0 ${width} ${height}`}
+      className="h-[340px] max-w-none"
+      style={{ width }}
+      role="img"
+      aria-label={ariaLabel}
+    >
       {gridValues.map((value, index) => {
         const y = baseline - (value / maxValue) * chartHeight;
         return (
@@ -1339,20 +1348,26 @@ function SignupBarChart({
       {points.map((point, index) => {
         const x = left + index * step + (step - barWidth) / 2;
         const barHeight = point.value > 0 ? Math.max(4, (point.value / maxValue) * chartHeight) : 0;
-        const showLabel = index === 0 || index === points.length - 1 || index % labelEvery === 0;
         return (
-          <g key={`${point.label}-${index}`}>
-            <rect x={x} y={baseline - barHeight} width={barWidth} height={barHeight} rx="5" fill="#2563eb" />
-            {point.value > 0 ? (
+          <g key={`${point.label}-${index}`} className="cursor-pointer">
+            <title>{`${point.label}: ${formatNumber(point.value)} ${tooltipNoun}`}</title>
+            <rect x={x} y={baseline - barHeight} width={barWidth} height={barHeight} rx="7" fill="#2563eb" />
+            {showInlineValues && point.value > 0 ? (
               <text x={x + barWidth / 2} y={Math.max(14, baseline - barHeight - 8)} textAnchor="middle" fill="#101827" fontSize="11" fontWeight="800">
                 {formatNumber(point.value)}
               </text>
             ) : null}
-            {showLabel ? (
-              <text x={x + barWidth / 2} y={baseline + 24} textAnchor="middle" fill="#64748b" fontSize="11" fontWeight="700">
-                {point.label}
-              </text>
-            ) : null}
+            <text
+              x={x + barWidth / 2}
+              y={baseline + 28}
+              textAnchor="end"
+              fill="#64748b"
+              fontSize="11"
+              fontWeight="700"
+              transform={`rotate(-45 ${x + barWidth / 2} ${baseline + 28})`}
+            >
+              {point.label}
+            </text>
           </g>
         );
       })}
@@ -1420,6 +1435,7 @@ function UpgradeAnalyticsSection({
             loading={loading}
             loadingLabel="Loading upgrades..."
             ariaLabel="Upgrade history by period"
+            tooltipNoun="upgrades"
           />
         </div>
       </div>
@@ -1482,7 +1498,7 @@ function SignupAnalyticsSection({
           <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-black text-blue-700">{activeOption.label}</span>
         </div>
         <div className="overflow-x-auto pb-2">
-          <SignupBarChart points={points} loading={loading} />
+          <SignupBarChart points={points} loading={loading} tooltipNoun="signups" />
         </div>
       </div>
     </section>
