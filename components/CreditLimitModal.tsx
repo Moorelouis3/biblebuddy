@@ -36,11 +36,11 @@ export default function CreditLimitModal({
   const router = useRouter();
   const [creditCountdown, setCreditCountdown] = useState("24h 00m 00s");
   const [isResettingCredits, setIsResettingCredits] = useState(false);
-  const [loadingPlan, setLoadingPlan] = useState<"monthly" | "yearly" | null>(null);
+  const [loadingPlan, setLoadingPlan] = useState<"yearly" | null>(null);
   const [error, setError] = useState<string | null>(null);
   const resetInProgressRef = useRef(false);
 
-  async function startCheckout(plan: "monthly" | "yearly") {
+  async function startCheckout(plan: "yearly") {
     try {
       setLoadingPlan(plan);
       setError(null);
@@ -236,18 +236,6 @@ export default function CreditLimitModal({
                 <span className="block text-xs font-semibold opacity-80">One payment. Keep Pro for life.</span>
               </span>
               <span className="text-xl font-black">$50</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => void startCheckout("monthly")}
-              disabled={Boolean(loadingPlan)}
-              className="flex items-center justify-between rounded-2xl border border-[#c9ddfb] bg-white px-4 py-3 text-left shadow-sm transition hover:-translate-y-0.5 hover:bg-[#f4f8ff] disabled:cursor-wait disabled:opacity-60 disabled:hover:translate-y-0"
-            >
-              <span>
-                <span className="block text-sm font-black">Monthly</span>
-                <span className="block text-xs font-semibold text-[#52627b]">Full Pro access for $4.99/month</span>
-              </span>
-              <span className="text-xl font-black text-[#2f7fe8]">$4.99</span>
             </button>
           </div>
 

@@ -33,7 +33,7 @@ const proFeatures = [
 export default function UpgradeRequiredModal({ isOpen, onClose }: UpgradeRequiredModalProps) {
   const [showPlans, setShowPlans] = useState(false);
   const [showLifetimeInfo, setShowLifetimeInfo] = useState(false);
-  const [loadingPlan, setLoadingPlan] = useState<"monthly" | "yearly" | null>(null);
+  const [loadingPlan, setLoadingPlan] = useState<"yearly" | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const closeAll = () => {
@@ -49,7 +49,7 @@ export default function UpgradeRequiredModal({ isOpen, onClose }: UpgradeRequire
     setShowPlans(true);
   };
 
-  const startCheckout = async (plan: "monthly" | "yearly") => {
+  const startCheckout = async (plan: "yearly") => {
     try {
       setLoadingPlan(plan);
       setError(null);
@@ -96,7 +96,7 @@ export default function UpgradeRequiredModal({ isOpen, onClose }: UpgradeRequire
                 <span className="h-9 w-9 animate-spin rounded-full border-4 border-[#dcecff] border-t-[#2f7fe8]" aria-hidden="true" />
                 <p className="mt-3 text-sm font-black">Opening Stripe</p>
                 <p className="mt-1 text-xs font-semibold text-[#52627b]">
-                  Taking you to the {loadingPlan === "monthly" ? "$4.99 monthly" : "$50 full access"} checkout.
+                  Taking you to the $50 full access checkout.
                 </p>
               </div>
             </div>
@@ -155,18 +155,6 @@ export default function UpgradeRequiredModal({ isOpen, onClose }: UpgradeRequire
                 <span className="block text-xs font-semibold opacity-80">One payment. Keep Pro for life.</span>
               </span>
               <span className="text-xl font-black">$50</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => startCheckout("monthly")}
-              disabled={Boolean(loadingPlan)}
-              className="flex items-center justify-between rounded-2xl border border-[#c9ddfb] bg-white px-4 py-3 text-left shadow-sm transition hover:-translate-y-0.5 hover:bg-[#f4f8ff] disabled:cursor-wait disabled:opacity-60 disabled:hover:translate-y-0"
-            >
-              <span>
-                <span className="block text-sm font-black">Monthly</span>
-                <span className="block text-xs font-semibold text-[#52627b]">Full Pro access for $4.99/month</span>
-              </span>
-              <span className="text-xl font-black text-[#2f7fe8]">$4.99</span>
             </button>
           </div>
           <button

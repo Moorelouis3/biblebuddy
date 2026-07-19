@@ -15,7 +15,7 @@ export default function UpgradePage() {
     setMounted(true);
   }, []);
 
-  const handleCheckout = async (planType: "monthly" | "yearly") => {
+  const handleCheckout = async (planType: "yearly") => {
     try {
       setIsLoading(planType);
 
@@ -112,21 +112,6 @@ export default function UpgradePage() {
 
           {/* Pricing Buttons */}
           <div className="flex flex-col gap-3">
-            {/* Monthly Button */}
-            <button
-              className="relative w-full px-6 py-3 bg-white border-2 border-blue-500 rounded-lg font-semibold hover:shadow-md transition-all duration-200 ease-out hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
-              onClick={(e) => {
-                e.preventDefault();
-                handleCheckout("monthly");
-              }}
-              disabled={isLoading !== null}
-              style={{ color: "#2563eb" }}
-            >
-              <span className="text-lg" style={{ color: "#2563eb" }}>
-                {isLoading === "monthly" ? "Loading..." : "$4.99 Monthly"}
-              </span>
-            </button>
-
             {/* Full access one-time button */}
             <button
               className="relative w-full px-6 py-3 bg-white border-2 border-blue-500 rounded-lg font-semibold hover:shadow-md transition-all duration-200 ease-out hover:-translate-y-0.5 overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"

@@ -7739,24 +7739,6 @@ export default function DashboardJourneyExperience({
               type="button"
               onClick={() => {
                 void logStudyNotesUpgradeAction(
-                  ACTION_TYPE.upgrade_popup_cta_clicked,
-                  bibleYearDeepNotesUpgradeDay,
-                  `Bible in One Year Day ${bibleYearDeepNotesUpgradeDay || "Unknown"} monthly upgrade clicked`,
-                );
-                void startBibleYearQuickUpgrade("monthly");
-              }}
-              className="flex w-full items-center justify-between rounded-[17px] border border-[#c9ddfb] bg-white px-4 py-3 text-left shadow-sm transition hover:-translate-y-0.5 hover:bg-[#f4f8ff]"
-            >
-              <span>
-                <span className="block text-sm font-black leading-tight">Monthly</span>
-                <span className="mt-0.5 block text-[11px] font-semibold text-[var(--bb-text-secondary,#4b5563)]">Full Pro access for $4.99/month</span>
-              </span>
-              <span className="text-xl font-black text-[var(--bb-accent,#2f7fe8)]">$4.99</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                void logStudyNotesUpgradeAction(
                   ACTION_TYPE.upgrade_popup_dismissed,
                   bibleYearDeepNotesUpgradeDay,
                   `Bible in One Year Day ${bibleYearDeepNotesUpgradeDay || "Unknown"} Study Notes stayed free`,
@@ -7795,7 +7777,7 @@ export default function DashboardJourneyExperience({
                 <span className="h-9 w-9 animate-spin rounded-full border-4 border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_18%,transparent)] border-t-[var(--bb-accent,#f6b44b)]" aria-hidden="true" />
                 <span className="mt-3 text-sm font-black text-[var(--bb-text-primary,#111827)]">Opening Stripe</span>
                 <span className="mt-1 text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">
-                  Taking you to the {bibleYearQuickUpgradeLoading === "monthly" ? "$4.99 monthly" : "$50 full access"} checkout.
+                  Taking you to the $50 full access checkout.
                 </span>
               </div>
             </div>
@@ -7841,17 +7823,6 @@ export default function DashboardJourneyExperience({
                 <span className="block text-sm font-black">Lifetime Access</span>
                 <span className="block text-xs font-bold opacity-80">One payment. Keep Pro for life.</span></span>
               <span className="mt-4 text-2xl font-black">$50</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => startBibleYearQuickUpgrade("monthly")}
-              disabled={Boolean(bibleYearQuickUpgradeLoading)}
-              className="relative flex min-h-28 w-full flex-col justify-between rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_30%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_84%,transparent)] px-4 py-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_48%,transparent)] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
-            >
-              <span>
-                <span className="block text-sm font-black text-[var(--bb-text-primary,#111827)]">Monthly</span>
-                <span className="block text-xs font-bold text-[var(--bb-text-secondary,#4b5563)]">Full Pro access for $4.99/month</span></span>
-              <span className="mt-4 text-2xl font-black text-[var(--bb-accent,#f6b44b)]">$4.99</span>
             </button>
           </div>
           <button
@@ -8026,7 +7997,7 @@ export default function DashboardJourneyExperience({
                 <UpgradeFeatureIcon name="crown" /></span>
               <span>
                 <span className="block text-sm font-black leading-tight">Unlock lifetime access</span>
-                <span className="mt-0.5 block text-[11px] font-semibold text-white/88">$50 one time, or choose monthly</span></span>
+                <span className="mt-0.5 block text-[11px] font-semibold text-white/88">One payment. Keep Pro for life.</span></span>
             </button>
             <button
               type="button"
@@ -8039,7 +8010,7 @@ export default function DashboardJourneyExperience({
           </div>
 
           <p className="mt-3 text-[11px] font-semibold leading-4 text-[var(--bb-text-secondary,#4b5563)]">
-            Monthly cancels anytime. Lifetime is one $50 payment. Secure and private.
+            One $50 payment for lifetime access. Secure and private.
           </p>
         </div>
       </ModalShell>
@@ -8171,7 +8142,7 @@ export default function DashboardJourneyExperience({
                 <UpgradeFeatureIcon name="crown" /></span>
               <span>
                 <span className="block text-sm font-black leading-tight">Unlock lifetime access</span>
-                <span className="mt-0.5 block text-[11px] font-semibold text-white/88">$50 one time, or choose monthly</span></span>
+                <span className="mt-0.5 block text-[11px] font-semibold text-white/88">One payment. Keep Pro for life.</span></span>
             </button>
             <button
               type="button"
@@ -8184,7 +8155,7 @@ export default function DashboardJourneyExperience({
           </div>
 
           <p className="mt-3 text-[11px] font-semibold leading-4 text-[var(--bb-text-secondary,#4b5563)]">
-            Monthly cancels anytime. Lifetime is one $50 payment. Secure and private.
+            One $50 payment for lifetime access. Secure and private.
           </p>
         </div>
       </ModalShell>
@@ -12036,16 +12007,6 @@ Before we understand redemption, we need to understand what God made humanity fo
             </span>
             <span className="mt-1.5 text-[16px] font-bold">One Time Fee</span>
           </button>
-          <div className="mt-4">
-            <button
-              type="button"
-              onClick={() => void startBibleYearQuickUpgrade("monthly")}
-              disabled={Boolean(bibleYearQuickUpgradeLoading)}
-              className="text-[16px] font-bold text-[#10224b] underline-offset-4 transition hover:text-[var(--bb-accent,#2f7fe8)] hover:underline disabled:cursor-not-allowed disabled:opacity-60"
-            >
-              or $4.99 per month
-            </button>
-          </div>
           {options?.nextDay && options?.onContinueFree ? (
             <button
               type="button"
@@ -15516,7 +15477,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   <span className="h-9 w-9 animate-spin rounded-full border-4 border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_18%,transparent)] border-t-[var(--bb-accent,#f6b44b)]" aria-hidden="true" />
                   <span className="mt-3 text-sm font-black text-[var(--bb-text-primary,#111827)]">Opening Stripe</span>
                   <span className="mt-1 text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">
-                    Taking you to the {bibleYearQuickUpgradeLoading === "monthly" ? "$4.99 monthly" : "$50 full access"} checkout.
+                    Taking you to the $50 full access checkout.
                   </span>
                 </div>
               </div>
@@ -15536,20 +15497,9 @@ Before we understand redemption, we need to understand what God made humanity fo
             </div>
             <h2 className="mt-4 pr-10 text-2xl font-black leading-tight">Choose your Pro plan</h2>
             <p className="mt-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-              Unlock Study Notes, deeper explanations, downloads, and focused study tools. Choose monthly or lifetime.
+              Unlock Study Notes, deeper explanations, downloads, and focused study tools.
             </p>
-            <div className="mt-5 grid gap-3 sm:grid-cols-2">
-              <button
-                type="button"
-                onClick={() => startBibleYearQuickUpgrade("monthly")}
-                disabled={Boolean(bibleYearQuickUpgradeLoading)}
-                className="relative flex min-h-28 w-full flex-col justify-between rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_30%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_84%,transparent)] px-4 py-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_48%,transparent)] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
-              >
-                <span>
-                  <span className="block text-sm font-black text-[var(--bb-text-primary,#111827)]">Monthly</span>
-                  <span className="block text-xs font-bold text-[var(--bb-text-secondary,#4b5563)]">Flexible access</span></span>
-                <span className="mt-4 text-2xl font-black text-[var(--bb-accent,#f6b44b)]">$4.99</span>
-              </button>
+            <div className="mt-5 grid gap-3">
               <button
                 type="button"
                 onClick={() => startBibleYearQuickUpgrade("yearly")}

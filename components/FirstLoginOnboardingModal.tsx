@@ -594,18 +594,6 @@ export default function FirstLoginOnboardingModal({
                     <button
                       type="button"
                       disabled={submitting}
-                      onClick={() => void handleFinishUpgrade("monthly")}
-                      className={`flex items-center justify-between rounded-2xl border ${modalBorder} bg-[var(--bb-card,#ffffff)] px-4 py-4 text-left transition hover:bg-[var(--bb-surface-soft,#f8fbff)] disabled:opacity-60`}
-                    >
-                      <span>
-                        <span className={`block text-sm font-black ${headingText}`}>Monthly</span>
-                        <span className={`mt-1 block text-xs font-semibold ${bodyText}`}>Flexible access</span>
-                      </span>
-                      <span className={`text-xl font-black ${accentText}`}>$4.99</span>
-                    </button>
-                    <button
-                      type="button"
-                      disabled={submitting}
                       onClick={() => void handleFinishUpgrade("yearly")}
                       className="flex items-center justify-between rounded-2xl border border-[var(--bb-accent,#2f7fe8)] bg-[linear-gradient(135deg,#0f56d8,#2f7fe8)] px-4 py-4 text-left text-white shadow-[0_18px_34px_rgba(47,127,232,0.24)] transition hover:brightness-105 disabled:opacity-60"
                     >
