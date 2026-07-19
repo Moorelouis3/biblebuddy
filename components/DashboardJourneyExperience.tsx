@@ -9816,7 +9816,9 @@ Before we understand redemption, we need to understand what God made humanity fo
     if (!days.length) return 1;
     const minDay = days[0]?.dayNumber ?? 1;
     const maxDay = days[days.length - 1]?.dayNumber ?? bibleYearResolvedCurrentDayNumber;
-    return Math.max(minDay, Math.min(bibleYearResolvedCurrentDayNumber, maxDay));
+    const cardsBasedDayNumber = getResolvedBibleYearCurrentDayNumberFromCards(bibleYearCompletedCardsByDay, days);
+    const effectiveDayNumber = Math.max(bibleYearResolvedCurrentDayNumber, cardsBasedDayNumber);
+    return Math.max(minDay, Math.min(effectiveDayNumber, maxDay));
   }
 
   function freeUserCanOpenBibleYearDayTasks(day: GenesisBibleYearDay) {
