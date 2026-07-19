@@ -7592,20 +7592,18 @@ export default function GroupChatPage() {
       <button
         type="button"
         onClick={() => setShowPostComposerModal(true)}
-        className="bb-community-composer w-full bg-[var(--bb-card,#ffffff)] border border-[var(--bb-card-border,#d4ecd4)] rounded-[26px] px-5 py-5 shadow-sm hover:shadow-md transition text-left relative overflow-hidden"
+        className="bb-community-composer w-full rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-4 py-3 text-left shadow-sm transition hover:shadow-md"
       >
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           {userProfileImage ? (
-            <img src={userProfileImage} alt={displayName} className="bb-skin-profile-ring h-12 w-12 rounded-full object-cover flex-shrink-0" />
+            <img src={userProfileImage} alt={displayName} className="bb-skin-profile-ring h-10 w-10 rounded-full object-cover flex-shrink-0" />
           ) : (
-            <div className="bb-skin-profile-ring h-12 w-12 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0" style={{ backgroundColor: userId ? avatarColor(userId) : "#aaa" }}>
+            <div className="bb-skin-profile-ring h-10 w-10 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0" style={{ backgroundColor: userId ? avatarColor(userId) : "#aaa" }}>
               {getInitial(displayName)}
             </div>
           )}
-          <div className="flex-1 min-w-0 pr-5">
-            <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#4a9b6f)]">Create Post</p>
-            <p className="mt-1 text-base font-black leading-snug text-[var(--bb-text-primary,#111827)]">Share something with the group</p>
-            <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#6b7280)]">Add a title, write your post, and start the conversation.</p>
+          <div className="flex min-h-[46px] flex-1 items-center rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f5f9fd)] px-4 text-sm font-semibold text-[var(--bb-text-muted,#64748b)]">
+            Share something with the group...
           </div>
         </div>
       </button>
