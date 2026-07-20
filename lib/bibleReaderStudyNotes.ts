@@ -14,6 +14,8 @@ import { GENESIS_SIXTEEN_PERSONAL_SECTIONS } from "./genesisSixteenSource";
 import { GENESIS_SEVENTEEN_PERSONAL_SECTIONS } from "./genesisSeventeenSource";
 import { GENESIS_EIGHTEEN_PERSONAL_SECTIONS } from "./genesisEighteenSource";
 import { GENESIS_NINETEEN_PERSONAL_SECTIONS } from "./genesisNineteenSource";
+import { GENESIS_TWENTY_PERSONAL_SECTIONS } from "./genesisTwentySource";
+import { GENESIS_TWENTY_ONE_PERSONAL_SECTIONS } from "./genesisTwentyOneSource";
 import { GENESIS_THREE_PERSONAL_SECTIONS } from "./genesisThreeSource";
 import { GENESIS_TWO_PERSONAL_SECTIONS } from "./genesisTwoSource";
 import { GENESIS_11_20_PERSONAL_SECTIONS } from "./genesisElevenToTwentyPersonalNotes";
@@ -383,17 +385,27 @@ function formatBibleYearPhraseCard(rawHeading: string, rawBody: string, referenc
   return [heading, ...intro.slice(0, 2), bulletBlock, ...outro.slice(0, 2)].filter(Boolean).join("\n\n");
 }
 
+function ensureTitleHasIcon(title: string, icon: string) {
+  const trimmedTitle = title.trim();
+  const trimmedIcon = icon.trim();
+  if (!trimmedIcon || !/^[A-Za-z0-9]/.test(trimmedTitle)) {
+    return trimmedTitle;
+  }
+  return `${trimmedIcon} ${trimmedTitle}`;
+}
+
 function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, book: string): BibleReaderStudySection {
   const preserveExactPhraseBodies =
-    normalizeBook(book) === "genesis" && section.chapter >= 1 && section.chapter <= 19;
+    normalizeBook(book) === "genesis" && section.chapter >= 1 && section.chapter <= 21;
+  const icon = repairMojibake(section.icon);
   return {
     book,
     chapter: section.chapter,
     startVerse: section.startVerse,
     endVerse: section.endVerse,
     reference: section.reference,
-    title: repairMojibake(section.title),
-    icon: repairMojibake(section.icon),
+    title: ensureTitleHasIcon(repairMojibake(section.title), icon),
+    icon,
     summary: "",
     preserveExactPhraseFormatting: preserveExactPhraseBodies,
     categories: [
@@ -8032,7 +8044,7 @@ const APPROVED_GENESIS_SEVEN_SECTION_META: ApprovedGenesisSevenSectionMeta[] = [
   {
     reference: "Genesis 7:18-24",
     title: "The Waters Take Over The Earth",
-    icon: "ðŸŒŠ",
+    icon: "🌊",
     summary: "The waters overpower the whole earth, yet the ark carries Noah and his family safely through judgment.",
     startVerse: 18,
     endVerse: 24,
@@ -8115,6 +8127,7 @@ function applyApprovedGenesisSevenReaderSections() {
   for (const meta of APPROVED_GENESIS_SEVEN_SECTION_META) {
     const markdown = extractApprovedGenesisSevenSectionMarkdown(meta.reference);
     const phraseBlocks = parseApprovedGenesisSevenPhraseBlocks(markdown);
+    const icon = repairMojibake(meta.icon);
 
     BIBLE_READER_STUDY_SECTIONS.push({
       book: "genesis",
@@ -8122,8 +8135,8 @@ function applyApprovedGenesisSevenReaderSections() {
       startVerse: meta.startVerse,
       endVerse: meta.endVerse,
       reference: meta.reference,
-      title: meta.title,
-      icon: meta.icon,
+      title: ensureTitleHasIcon(repairMojibake(meta.title), icon),
+      icon,
       summary: meta.summary,
       categories: [
         {
@@ -8161,6 +8174,18 @@ replaceStudySectionsForBookRange(
   19,
   19,
   GENESIS_NINETEEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "genesis",
+  20,
+  20,
+  GENESIS_TWENTY_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "genesis",
+  21,
+  21,
+  GENESIS_TWENTY_ONE_PERSONAL_SECTIONS,
 );
 
 for (const section of BIBLE_READER_STUDY_SECTIONS) {

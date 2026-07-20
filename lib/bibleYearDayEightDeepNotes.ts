@@ -1,5 +1,6 @@
 import type { BibleYearDeepStudySection } from "./bibleYearDayOneDeepStudy";
 import { GENESIS_NINETEEN_PERSONAL_SECTIONS } from "./genesisNineteenSource";
+import { GENESIS_TWENTY_PERSONAL_SECTIONS } from "./genesisTwentySource";
 
 export const BIBLE_YEAR_DAY_EIGHT_DEEP_NOTES = `Genesis 18-20 brings promise, prayer, mercy, judgment, rescue, warning, and God's protection of the covenant promise together in one heavy but important day.
 
@@ -125,6 +126,17 @@ Abraham knows Sodom is wicked, but he also knows God is just and merciful.
 Close relationship with God should make us humble, bold, merciful, and serious about justice.`,
   },
   ...GENESIS_NINETEEN_PERSONAL_SECTIONS.map((section) => ({
+    reference: section.reference,
+    title: section.title,
+    icon: section.icon,
+    summary: section.phrases[0]?.[1].split("\n\n")[0] || "",
+    markdown: [
+      `## ${section.reference}`,
+      `### ${section.title}`,
+      ...section.phrases.map(([title, body]) => `### ${title}\n\n${body}`),
+    ].join("\n\n"),
+  })),
+  ...GENESIS_TWENTY_PERSONAL_SECTIONS.map((section) => ({
     reference: section.reference,
     title: section.title,
     icon: section.icon,

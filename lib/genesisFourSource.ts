@@ -12,9 +12,9 @@ type ParsedGenesisFourSection = GenesisFourPersonalSection & {
   displayReference: string;
 };
 
-export const GENESIS_FOUR_RAW_NOTES = String.raw`# Genesis 4:1–6
+export const GENESIS_FOUR_RAW_NOTES = String.raw`# 👬 Genesis 4:1–6
 
-## Cain and Abel
+## 👬 Cain and Abel
 
 ### ❤️ And Adam Knew Eve His Wife
 
