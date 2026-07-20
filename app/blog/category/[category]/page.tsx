@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import BlogArticleGrid from "@/components/BlogArticleGrid";
+import BlogCategoryNav from "@/components/blog/BlogCategoryNav";
 import { BLOG_CATEGORIES, getArticlesByCategory, getBlogCategory } from "@/lib/blogContent";
 
 type CategoryPageProps = {
@@ -63,6 +64,8 @@ export default async function BlogCategoryPage({ params }: CategoryPageProps) {
             {category.description}
           </p>
         </div>
+
+        <BlogCategoryNav activeCategorySlug={category.slug} />
 
         <BlogArticleGrid articles={articles} />
       </section>

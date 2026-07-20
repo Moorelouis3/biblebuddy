@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import BlogArticleGrid from "@/components/BlogArticleGrid";
-import { BLOG_ARTICLES, BLOG_CATEGORIES } from "@/lib/blogContent";
+import BlogCategoryNav from "@/components/blog/BlogCategoryNav";
+import { BLOG_ARTICLES } from "@/lib/blogContent";
 
 export const metadata: Metadata = {
   title: "Bible Buddy Blog | Bible Study Articles, Verse Breakdowns, and Church History",
@@ -55,23 +56,7 @@ export default function BlogPage() {
           </p>
         </div>
 
-        <div className="mb-10 flex gap-3 overflow-x-auto pb-2">
-          <Link
-            href="/blog"
-            className="shrink-0 rounded-full bg-slate-950 px-4 py-2 text-sm font-black text-white"
-          >
-            All Articles
-          </Link>
-          {BLOG_CATEGORIES.map((category) => (
-            <Link
-              key={category.slug}
-              href={`/blog/category/${category.slug}`}
-              className="shrink-0 rounded-full border border-[#d8e3ec] bg-white px-4 py-2 text-sm font-black text-slate-700 transition hover:border-[#0056fd] hover:text-[#0056fd]"
-            >
-              {category.name}
-            </Link>
-          ))}
-        </div>
+        <BlogCategoryNav />
 
         <section className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
           <Link
@@ -88,22 +73,10 @@ export default function BlogPage() {
                   sizes="(min-width: 1024px) 60vw, 92vw"
                 />
               </div>
-              <div className="p-6 sm:p-7">
-                <div className="flex flex-wrap items-center gap-3 text-[0.74rem] font-black uppercase tracking-[0.18em] text-[#6a7890]">
-                  <span className="rounded-full bg-[#eef4ff] px-3 py-1 text-[#0056fd]">
-                    {featuredArticle.category}
-                  </span>
-                  <span>{featuredArticle.readTime}</span>
-                </div>
-                <h2 className="mt-4 text-[1.8rem] font-black leading-tight tracking-[-0.03em] text-slate-950 sm:text-[2.15rem]">
+              <div className="p-5 sm:p-6">
+                <h2 className="text-[1.5rem] font-black leading-tight tracking-[-0.03em] text-slate-950 sm:text-[1.8rem]">
                   {featuredArticle.title}
                 </h2>
-                <p className="mt-4 max-w-2xl text-[1rem] leading-7 text-slate-600 sm:text-[1.03rem]">
-                  {featuredArticle.description}
-                </p>
-                <span className="mt-6 inline-flex border border-[#dce7f5] bg-white px-5 py-3 text-[0.72rem] font-black uppercase tracking-[0.16em] text-[#07162f] transition group-hover:border-[#0056fd] group-hover:text-[#0056fd]">
-                  Read article
-                </span>
               </div>
             </article>
           </Link>
@@ -125,19 +98,10 @@ export default function BlogPage() {
                       sizes="(min-width: 1024px) 34vw, 92vw"
                     />
                   </div>
-                  <div className="p-5">
-                    <div className="flex flex-wrap items-center gap-3 text-[0.68rem] font-black uppercase tracking-[0.18em] text-[#6a7890]">
-                      <span className="rounded-full bg-[#eef4ff] px-3 py-1 text-[#0056fd]">
-                        {article.category}
-                      </span>
-                      <span>{article.readTime}</span>
-                    </div>
-                    <h3 className="mt-3 text-[1.28rem] font-black leading-tight tracking-[-0.025em] text-slate-950">
+                  <div className="p-4 sm:p-5">
+                    <h3 className="text-[1.1rem] font-black leading-tight tracking-[-0.025em] text-slate-950">
                       {article.title}
                     </h3>
-                    <p className="mt-3 line-clamp-3 text-[0.95rem] leading-7 text-slate-600">
-                      {article.description}
-                    </p>
                   </div>
                 </article>
               </Link>

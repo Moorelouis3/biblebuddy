@@ -17,7 +17,7 @@ export default function BlogArticleGrid({ articles, compact = false }: BlogArtic
           className="group block transition hover:-translate-y-0.5"
         >
           <article className="overflow-hidden rounded-[18px] border border-[#dce7f5] bg-white shadow-[0_16px_38px_rgba(15,23,42,0.06)] transition duration-300 group-hover:shadow-[0_24px_55px_rgba(15,23,42,0.1)]">
-            <div className={`relative overflow-hidden bg-[#eef4ff] ${compact ? "aspect-[16/10]" : "aspect-[16/10]"}`}>
+            <div className="relative aspect-[16/10] overflow-hidden bg-[#eef4ff]">
               <Image
                 src={article.image}
                 alt={article.title}
@@ -27,25 +27,10 @@ export default function BlogArticleGrid({ articles, compact = false }: BlogArtic
               />
             </div>
 
-            <div className={compact ? "p-5" : "p-6"}>
-              <div className="flex flex-wrap items-center gap-3 text-[0.78rem] font-black uppercase tracking-[0.16em] text-[#6a7890]">
-                <span className="rounded-full bg-[#eef4ff] px-3 py-1 text-[#0056fd]">
-                  {article.category}
-                </span>
-                <span>{article.readTime}</span>
-              </div>
-
-              <h2 className={`mt-4 font-black leading-snug tracking-[-0.025em] text-slate-950 ${compact ? "text-[1.25rem] sm:text-[1.4rem]" : "text-[1.55rem] sm:text-[1.8rem]"}`}>
+            <div className={compact ? "p-4" : "p-5"}>
+              <h2 className={`font-black leading-snug tracking-[-0.025em] text-slate-950 ${compact ? "text-[1.1rem]" : "text-[1.3rem]"}`}>
                 {article.title}
               </h2>
-
-              <p className={`mt-4 line-clamp-3 text-slate-500 ${compact ? "text-[0.96rem] leading-7" : "text-[1rem] leading-8"}`}>
-                {article.description}
-              </p>
-
-              <span className={`mt-6 inline-flex border border-[#dce7f5] bg-white font-black uppercase tracking-[0.14em] text-[#07162f] transition group-hover:border-[#0056fd] group-hover:text-[#0056fd] ${compact ? "px-4 py-2.5 text-[0.7rem]" : "px-5 py-3 text-[0.74rem]"}`}>
-                Read more
-              </span>
             </div>
           </article>
         </Link>

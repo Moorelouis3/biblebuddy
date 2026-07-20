@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import CommentSection from "@/components/comments/CommentSection";
+import BlogArticleEngagementBar from "@/components/blog/BlogArticleEngagementBar";
 
 function toTitleCase(str: string) {
   return str
@@ -211,16 +212,21 @@ export default function BibleStudyHubArticleLayout({ children }: { children: Rea
   if (isEmbed) {
     return (
       <div className="mx-auto max-w-2xl px-4 py-6">
+        {(isHubArticlePage || isTipsArticlePage) && articleSlug && (
+          <BlogArticleEngagementBar articleSlug={articleSlug} />
+        )}
         {children}
         {(isHubArticlePage || isTipsArticlePage) && articleSlug && (
           <div className="mt-2">
             <div id="blog-reflection-slot" className="mt-8" />
-            <CommentSection
-              articleSlug={articleSlug}
-              headingText=""
-              placeholderText="Type your reflection answer here to join the discussion..."
-              submitButtonText="Share My Reflection"
-            />
+            <div id="blog-comments">
+              <CommentSection
+                articleSlug={articleSlug}
+                headingText=""
+                placeholderText="Type your reflection answer here to join the discussion..."
+                submitButtonText="Share My Reflection"
+              />
+            </div>
           </div>
         )}
       </div>
@@ -229,6 +235,9 @@ export default function BibleStudyHubArticleLayout({ children }: { children: Rea
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-10">
+      {(isHubArticlePage || isTipsArticlePage) && articleSlug && (
+        <BlogArticleEngagementBar articleSlug={articleSlug} />
+      )}
       {(isHubArticlePage || isTipsArticlePage) && sharePanel}
       {children}
       {(isHubArticlePage || isTipsArticlePage) && articleSlug && (
@@ -262,12 +271,14 @@ export default function BibleStudyHubArticleLayout({ children }: { children: Rea
           <div id="blog-reflection-slot" className="mt-8" />
 
           <div className="mt-2">
-            <CommentSection
-              articleSlug={articleSlug}
-              headingText=""
-              placeholderText="Type your reflection answer here to join the discussion..."
-              submitButtonText="Share My Reflection"
-            />
+            <div id="blog-comments">
+              <CommentSection
+                articleSlug={articleSlug}
+                headingText=""
+                placeholderText="Type your reflection answer here to join the discussion..."
+                submitButtonText="Share My Reflection"
+              />
+            </div>
           </div>
         </>
       )}
