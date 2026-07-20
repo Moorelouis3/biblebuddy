@@ -12502,14 +12502,6 @@ Before we understand redemption, we need to understand what God made humanity fo
                   <div>
                     <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#185cff]">Progress</p>
                     <p className="mt-1 text-[13px] font-black text-[#10224b]">{effectiveBibleYearReport.expectedFinishDateLabel}</p>
-                    <button
-                      type="button"
-                      onClick={openProgressPage}
-                      className="mt-1 inline-flex items-center justify-center text-[15px] font-black text-black transition hover:text-[#111827]"
-                      aria-label="Share my progress"
-                    >
-                      Share my Progress
-                    </button>
                   </div>
                 </div>
 
