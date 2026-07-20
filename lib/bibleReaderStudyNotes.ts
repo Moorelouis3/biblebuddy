@@ -16,6 +16,9 @@ import { GENESIS_EIGHTEEN_PERSONAL_SECTIONS } from "./genesisEighteenSource";
 import { GENESIS_NINETEEN_PERSONAL_SECTIONS } from "./genesisNineteenSource";
 import { GENESIS_TWENTY_PERSONAL_SECTIONS } from "./genesisTwentySource";
 import { GENESIS_TWENTY_ONE_PERSONAL_SECTIONS } from "./genesisTwentyOneSource";
+import { GENESIS_TWENTY_TWO_PERSONAL_SECTIONS } from "./genesisTwentyTwoSource";
+import { GENESIS_TWENTY_THREE_PERSONAL_SECTIONS } from "./genesisTwentyThreeSource";
+import { GENESIS_TWENTY_FOUR_PERSONAL_SECTIONS } from "./genesisTwentyFourSource";
 import { GENESIS_THREE_PERSONAL_SECTIONS } from "./genesisThreeSource";
 import { GENESIS_TWO_PERSONAL_SECTIONS } from "./genesisTwoSource";
 import { GENESIS_11_20_PERSONAL_SECTIONS } from "./genesisElevenToTwentyPersonalNotes";
@@ -396,7 +399,7 @@ function ensureTitleHasIcon(title: string, icon: string) {
 
 function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, book: string): BibleReaderStudySection {
   const preserveExactPhraseBodies =
-    normalizeBook(book) === "genesis" && section.chapter >= 1 && section.chapter <= 21;
+    normalizeBook(book) === "genesis" && section.chapter >= 1 && section.chapter <= 24;
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -8186,6 +8189,24 @@ replaceStudySectionsForBookRange(
   21,
   21,
   GENESIS_TWENTY_ONE_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "genesis",
+  22,
+  22,
+  GENESIS_TWENTY_TWO_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "genesis",
+  23,
+  23,
+  GENESIS_TWENTY_THREE_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "genesis",
+  24,
+  24,
+  GENESIS_TWENTY_FOUR_PERSONAL_SECTIONS,
 );
 
 for (const section of BIBLE_READER_STUDY_SECTIONS) {
