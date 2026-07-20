@@ -86,8 +86,8 @@ function parseGenesisTwentyOneRawNotes(rawText: string): GenesisTwentyOnePersona
     });
   }
 
-  if (sections.length !== 3) {
-    throw new Error("Expected 3 Genesis 21 sections, received " + sections.length);
+  if (sections.length !== 4) {
+    throw new Error("Expected 4 Genesis 21 sections, received " + sections.length);
   }
 
   return sections;
@@ -786,6 +786,10 @@ Although Hagar feels completely alone in the wilderness, God has not forgotten e
 🙏 God has not forgotten them
 
 ---
+
+# Genesis 21:17–21
+
+## 👼 God Cares For Ishmael
 
 ### 🙏 And God Heard The Voice Of The Lad
 
