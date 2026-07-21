@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Fragment, type UIEvent, useEffect, useMemo, useState } from "react";
+import { Fragment, type ReactNode, type UIEvent, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { GENESIS_BIBLE_IN_ONE_YEAR_SERIES } from "@/lib/bibleInOneYearPlan";
 import { supabase } from "@/lib/supabaseClient";
@@ -643,6 +643,7 @@ const SIMPLE_METRIC_OPTIONS: Array<{ key: SimpleAnalyticsMetric; label: string }
 
 const SIMPLE_WINDOW_OPTIONS: Array<{ key: JourneyWindow; label: string }> = [
   { key: "today", label: "Today" },
+  { key: "yesterday", label: "Yesterday" },
   { key: "7d", label: "7 Days" },
   { key: "30d", label: "30 Days" },
   { key: "90d", label: "90 Days" },
@@ -670,6 +671,75 @@ const TRAFFIC_SOURCE_COLORS = [
 ];
 
 const MAIN_TRAFFIC_SOURCE_ORDER = ["Facebook", "Instagram", "Threads", "Google", "YouTube", "Other"] as const;
+
+const TRAFFIC_SOURCE_BRAND: Record<string, { bg: string; fg: string; bar: string; icon: ReactNode }> = {
+  Facebook: {
+    bg: "#1877F2",
+    fg: "#ffffff",
+    bar: "#1877F2",
+    icon: (
+      <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden="true">
+        <path d="M13.5 21v-7.9h2.65l.4-3.08H13.5V8.06c0-.89.25-1.5 1.53-1.5h1.63V3.8A22 22 0 0 0 14.5 3.7c-2.24 0-3.77 1.37-3.77 3.87v2.16H8.07v3.08h2.66V21h2.77Z" />
+      </svg>
+    ),
+  },
+  Instagram: {
+    bg: "linear-gradient(135deg,#f58529,#dd2a7b,#8134af,#515bd4)",
+    fg: "#ffffff",
+    bar: "#dd2a7b",
+    icon: (
+      <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+        <rect x="3.5" y="3.5" width="17" height="17" rx="5" />
+        <circle cx="12" cy="12" r="3.6" />
+        <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none" />
+      </svg>
+    ),
+  },
+  Threads: {
+    bg: "#101010",
+    fg: "#ffffff",
+    bar: "#101010",
+    icon: (
+      <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden="true">
+        <path d="M12 2.2c-5.6 0-9.8 3.6-9.8 9.8s4.2 9.8 9.8 9.8c3.4 0 5.9-1.3 7.4-3.6l-1.9-1.3c-1.1 1.6-2.9 2.5-5.4 2.5-3.7 0-6.2-2-6.7-5.2h14.4c.1-.5.1-1 .1-1.5.1-6-3.2-10.5-8-10.5Zm-.2 2.3c2.7 0 4.6 1.6 5.2 4.5H6.4c.5-2.8 2.7-4.5 5.4-4.5Z" />
+      </svg>
+    ),
+  },
+  Google: {
+    bg: "#ffffff",
+    fg: "#4285F4",
+    bar: "#4285F4",
+    icon: (
+      <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true">
+        <path fill="#4285F4" d="M21.6 12.23c0-.68-.06-1.36-.18-2.02H12v3.83h5.4a4.62 4.62 0 0 1-2 3.03v2.5h3.24c1.9-1.75 3-4.32 3-7.34Z" />
+        <path fill="#34A853" d="M12 22c2.7 0 4.97-.9 6.63-2.43l-3.24-2.5c-.9.6-2.05.96-3.4.96-2.6 0-4.8-1.76-5.6-4.12H3.05v2.6A10 10 0 0 0 12 22Z" />
+        <path fill="#FBBC05" d="M6.4 13.9a5.98 5.98 0 0 1 0-3.8v-2.6H3.05a10 10 0 0 0 0 9l3.36-2.6Z" />
+        <path fill="#EA4335" d="M12 6.1c1.47 0 2.79.5 3.83 1.5l2.87-2.87A9.6 9.6 0 0 0 12 2a10 10 0 0 0-8.95 5.5l3.36 2.6c.79-2.36 3-4 5.6-4Z" />
+      </svg>
+    ),
+  },
+  YouTube: {
+    bg: "#FF0000",
+    fg: "#ffffff",
+    bar: "#FF0000",
+    icon: (
+      <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden="true">
+        <path d="M10 15.2 15.2 12.2 10 9.2v6Z" />
+      </svg>
+    ),
+  },
+  Other: {
+    bg: "var(--bb-surface-soft,#eef2f7)",
+    fg: "var(--bb-text-secondary,#64748b)",
+    bar: "#64748b",
+    icon: (
+      <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9s1.3-6.4 3.8-9Z" />
+      </svg>
+    ),
+  },
+};
 
 type MainTrafficSourceReport = NonNullable<AnalyticsResponse["trafficSources"]>;
 type MainTrafficSourceVisitorRow = NonNullable<MainTrafficSourceReport["sources"][number]["visitorRows"]>[number];
@@ -735,11 +805,13 @@ function getNormalizedMainTrafficSources(report?: AnalyticsResponse["trafficSour
     .filter(Boolean) as NormalizedMainTrafficSourceRow[];
   const totalVisitors = rows.reduce((sum, row) => sum + row.visitors, 0);
 
-  return rows.map((row) => ({
-    ...row,
-    percent: totalVisitors > 0 ? Number(((row.visitors / totalVisitors) * 100).toFixed(1)) : 0,
-    signupRate: row.visitors > 0 ? Number(((row.signups / row.visitors) * 100).toFixed(1)) : 0,
-  }));
+  return rows
+    .map((row) => ({
+      ...row,
+      percent: totalVisitors > 0 ? Number(((row.visitors / totalVisitors) * 100).toFixed(1)) : 0,
+      signupRate: row.visitors > 0 ? Math.min(100, Number(((row.signups / row.visitors) * 100).toFixed(1))) : 0,
+    }))
+    .sort((a, b) => b.visitors - a.visitors || b.signups - a.signups || a.source.localeCompare(b.source));
 }
 
 function formatNumber(value: number) {
@@ -768,6 +840,22 @@ function getAdminActionColorClass(actionType: string) {
   if (actionType.includes("posted") || actionType.includes("created") || actionType.includes("added") || actionType.includes("sent")) return "bg-violet-50 text-violet-700 ring-violet-200";
   if (actionType.includes("liked") || actionType.includes("comment") || actionType.includes("reply")) return "bg-amber-50 text-amber-700 ring-amber-200";
   return "bg-slate-50 text-slate-700 ring-slate-200";
+}
+
+function getAdminActionDotColor(actionType: string) {
+  if (actionType.includes("completed") || actionType.includes("upgraded")) return "#10b981";
+  if (actionType.includes("opened") || actionType.includes("viewed") || actionType.includes("read")) return "#3b82f6";
+  if (actionType.includes("posted") || actionType.includes("created") || actionType.includes("added") || actionType.includes("sent")) return "#8b5cf6";
+  if (actionType.includes("liked") || actionType.includes("comment") || actionType.includes("reply")) return "#f59e0b";
+  return "#94a3b8";
+}
+
+function getAdminActionAvatarPalette(actionType: string) {
+  if (actionType.includes("completed") || actionType.includes("upgraded")) return { bg: "#d1fae5", fg: "#047857" };
+  if (actionType.includes("opened") || actionType.includes("viewed") || actionType.includes("read")) return { bg: "#dbeafe", fg: "#1d4ed8" };
+  if (actionType.includes("posted") || actionType.includes("created") || actionType.includes("added") || actionType.includes("sent")) return { bg: "#ede9fe", fg: "#6d28d9" };
+  if (actionType.includes("liked") || actionType.includes("comment") || actionType.includes("reply")) return { bg: "#fef3c7", fg: "#b45309" };
+  return { bg: "#e2e8f0", fg: "#475569" };
 }
 
 function formatLastActive(value: string) {
@@ -942,7 +1030,7 @@ function OnboardingCell({ value }: { value: string | null }) {
   );
 }
 
-function Icon({ name }: { name: "visitors" | "check" | "book" | "flame" | "user" | "pro" | "search" | "filter" | "export" | "play" | "headphones" | "spark" | "arrow" | "analytics" }) {
+function Icon({ name }: { name: "visitors" | "check" | "book" | "flame" | "user" | "pro" | "search" | "filter" | "export" | "play" | "headphones" | "spark" | "arrow" | "analytics" | "users" | "dollar" | "trendingUp" | "eye" | "calendar" | "document" | "percent" | "refresh" }) {
   const common = "h-5 w-5";
   if (name === "check") {
     return <svg viewBox="0 0 24 24" className={common} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /><circle cx="12" cy="12" r="9" /></svg>;
@@ -982,6 +1070,30 @@ function Icon({ name }: { name: "visitors" | "check" | "book" | "flame" | "user"
   }
   if (name === "analytics") {
     return <svg viewBox="0 0 24 24" className={common} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5V5.5" /><path d="M4 19.5h16" /><path d="m7 14 3-3 3 2 4-5" /></svg>;
+  }
+  if (name === "users") {
+    return <svg viewBox="0 0 24 24" className={common} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="8" r="3.2" /><path d="M2.5 20a6.5 6.5 0 0 1 13 0" /><path d="M16 8.3a3.2 3.2 0 1 1 0 6.4" /><path d="M15 13.6c2.6.3 4.6 2.1 5.5 4.4" /></svg>;
+  }
+  if (name === "dollar") {
+    return <svg viewBox="0 0 24 24" className={common} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2.5v19" /><path d="M16.5 6.5c0-1.7-2-3-4.5-3s-4.5 1.2-4.5 3c0 4 9 2.5 9 6.5 0 1.8-2 3.5-4.5 3.5s-4.5-1.5-4.5-3.5" /></svg>;
+  }
+  if (name === "trendingUp") {
+    return <svg viewBox="0 0 24 24" className={common} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="m3 17 6-6 4 4 8-8" /><path d="M15 6h6v6" /></svg>;
+  }
+  if (name === "eye") {
+    return <svg viewBox="0 0 24 24" className={common} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7Z" /><circle cx="12" cy="12" r="3" /></svg>;
+  }
+  if (name === "calendar") {
+    return <svg viewBox="0 0 24 24" className={common} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><rect x="3.5" y="5" width="17" height="16" rx="3" /><path d="M8 3v4M16 3v4M3.5 10h17" /></svg>;
+  }
+  if (name === "document") {
+    return <svg viewBox="0 0 24 24" className={common} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2.5h8l4 4v15H6z" /><path d="M14 2.5v4h4" /><path d="M9 12h6M9 16h6" /></svg>;
+  }
+  if (name === "percent") {
+    return <svg viewBox="0 0 24 24" className={common} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 5 5 19" /><circle cx="7" cy="7" r="2.3" /><circle cx="17" cy="17" r="2.3" /></svg>;
+  }
+  if (name === "refresh") {
+    return <svg viewBox="0 0 24 24" className={common} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M3.5 12a8.5 8.5 0 0 1 14.6-5.9L20.5 8.5" /><path d="M20.5 4v4.5H16" /><path d="M20.5 12a8.5 8.5 0 0 1-14.6 5.9L3.5 15.5" /><path d="M3.5 20v-4.5H8" /></svg>;
   }
   return <svg viewBox="0 0 24 24" className={common} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="4" /><path d="M4 21a8 8 0 0 1 16 0" /></svg>;
 }
@@ -1072,6 +1184,7 @@ function getSimpleMetricGranularity(windowKey: JourneyWindow) {
 
 function getComparisonLabel(windowKey: JourneyWindow) {
   if (windowKey === "today") return "vs previous day";
+  if (windowKey === "yesterday") return "vs day before";
   if (windowKey === "7d") return "vs previous 7 days";
   if (windowKey === "30d") return "vs previous 30 days";
   if (windowKey === "90d") return "vs previous 90 days";
@@ -1130,6 +1243,157 @@ function SimpleAnalyticsKpiCard({
       {content}
     </button>
   ) : <div className={className}>{content}</div>;
+}
+
+function OverviewMetricCard({
+  icon,
+  title,
+  value,
+  helper,
+  color,
+  comparison,
+  comparisonLabel,
+  onClick,
+  active,
+}: {
+  icon: ReactNode;
+  title: string;
+  value: string;
+  helper?: string;
+  color: string;
+  comparison?: number | null;
+  comparisonLabel?: string;
+  onClick?: () => void;
+  active?: boolean;
+}) {
+  const content = (
+    <>
+      <div className="flex items-center gap-2.5">
+        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl" style={{ background: `${color}1a`, color }}>
+          {icon}
+        </span>
+        <p className="min-w-0 truncate text-sm font-bold text-[var(--bb-text-secondary,#64748b)]">{title}</p>
+      </div>
+      <p className="mt-3 text-[26px] font-black leading-none tracking-tight text-[var(--bb-text-primary,#101827)] sm:text-[28px]">
+        {value}
+      </p>
+      {typeof comparison === "number" ? (
+        <div className="mt-2 flex items-center gap-1 text-xs font-black">
+          <span className={comparison >= 0 ? "text-emerald-600" : "text-rose-600"}>
+            {comparison >= 0 ? "↑" : "↓"} {Math.abs(comparison).toFixed(0)}%
+          </span>
+          {comparisonLabel ? <span className="font-semibold text-[var(--bb-text-secondary,#94a3b8)]">{comparisonLabel}</span> : null}
+        </div>
+      ) : helper ? (
+        <p className="mt-2 truncate text-xs font-semibold text-[var(--bb-text-secondary,#94a3b8)]">{helper}</p>
+      ) : null}
+    </>
+  );
+
+  const baseClass = `rounded-[20px] border bg-[var(--bb-card,#ffffff)] p-4 text-left shadow-[0_10px_28px_rgba(15,23,42,0.06)] transition ${
+    active ? "border-blue-500 ring-4 ring-blue-100" : "border-[var(--bb-card-border,#d8e3ec)]"
+  }`;
+
+  return onClick ? (
+    <button
+      type="button"
+      onClick={onClick}
+      className={`${baseClass} hover:-translate-y-0.5 hover:border-blue-300 hover:shadow-[0_16px_36px_rgba(37,99,235,0.12)]`}
+      aria-expanded={active}
+    >
+      {content}
+    </button>
+  ) : (
+    <div className={baseClass}>{content}</div>
+  );
+}
+
+function AnalyticsActivityFeed({
+  actions,
+  loading,
+  error,
+  visibleCount,
+  onScrollLoadMore,
+  onSelectUser,
+}: {
+  actions: AnalyticsActionRow[];
+  loading: boolean;
+  error: string | null;
+  visibleCount: number;
+  onScrollLoadMore: (event: UIEvent<HTMLDivElement>) => void;
+  onSelectUser: (userId: string, userLabel: string) => void;
+}) {
+  if (loading) {
+    return (
+      <p className="mt-5 rounded-2xl border border-[var(--bb-card-border,#e2e8f0)] bg-[var(--bb-surface-soft,#f8fafc)] px-4 py-5 text-sm font-semibold text-[var(--bb-text-secondary,#64748b)]">
+        Loading action log...
+      </p>
+    );
+  }
+  if (error) {
+    return (
+      <p className="mt-5 rounded-2xl border border-rose-200 bg-rose-50 px-4 py-5 text-sm font-semibold text-rose-700">{error}</p>
+    );
+  }
+  if (actions.length === 0) {
+    return (
+      <p className="mt-5 rounded-2xl border border-[var(--bb-card-border,#e2e8f0)] bg-[var(--bb-surface-soft,#f8fafc)] px-4 py-5 text-sm font-semibold text-[var(--bb-text-secondary,#64748b)]">
+        No tracked actions in this timeframe.
+      </p>
+    );
+  }
+
+  return (
+    <div className="mt-4 max-h-[560px] overflow-y-auto pr-1" onScroll={onScrollLoadMore}>
+      {actions.slice(0, visibleCount).map((action) => {
+        const initial = (action.userLabel || "?").trim().charAt(0).toUpperCase() || "?";
+        const dotColor = getAdminActionDotColor(action.actionType);
+        const avatar = getAdminActionAvatarPalette(action.actionType);
+        return (
+          <div
+            key={action.id}
+            className="flex items-start gap-3 border-t border-[var(--bb-card-border,#eef2f7)] py-3.5 transition-colors first:border-t-0 hover:bg-[var(--bb-surface-soft,#f8fbff)]"
+          >
+            <span
+              className="relative grid h-8 w-8 shrink-0 place-items-center rounded-full text-xs font-black"
+              style={{ background: avatar.bg, color: avatar.fg }}
+            >
+              {initial}
+              <span
+                className="absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full ring-2 ring-[var(--bb-card,#ffffff)]"
+                style={{ background: dotColor }}
+              />
+            </span>
+            <div className="min-w-0 flex-1">
+              <p className="text-sm font-semibold leading-5 text-[var(--bb-text-primary,#101827)]">
+                {action.userId ? (
+                  <button
+                    type="button"
+                    onClick={() => onSelectUser(action.userId!, action.userLabel)}
+                    className="font-black text-blue-700 hover:underline"
+                  >
+                    {action.userLabel}
+                  </button>
+                ) : (
+                  <span className="font-black">{action.userLabel}</span>
+                )}{" "}
+                <span className="font-medium text-[var(--bb-text-secondary,#475569)]">{action.actionTitle}</span>
+              </p>
+              {action.detail ? (
+                <p className="mt-0.5 truncate text-xs font-medium text-[var(--bb-text-secondary,#94a3b8)]">{action.detail}</p>
+              ) : null}
+            </div>
+            <p className="shrink-0 text-xs font-semibold text-[var(--bb-text-secondary,#94a3b8)]">{formatDateTime(action.createdAt)}</p>
+          </div>
+        );
+      })}
+      {visibleCount < actions.length ? (
+        <p className="px-1 py-3 text-center text-xs font-semibold text-[var(--bb-text-secondary,#64748b)]">
+          Scroll to load more ({visibleCount}/{actions.length})
+        </p>
+      ) : null}
+    </div>
+  );
 }
 
 function AnalyticsDrilldownPanel({
@@ -2384,6 +2648,15 @@ function MobileAnalyticsHighlights({
   blogAnalytics,
   blogAnalyticsLoading,
   loading,
+  setRefreshTick,
+  adminActionLog,
+  loadingAdminActionLog,
+  adminActionLogError,
+  visibleActionLogCount,
+  loadMoreActionLogRowsOnScroll,
+  drilldownKind,
+  openDrilldown,
+  setSelectedUserInsight,
 }: {
   windowKey: JourneyWindow;
   setWindowKey: (value: JourneyWindow) => void;
@@ -2396,6 +2669,15 @@ function MobileAnalyticsHighlights({
   blogAnalytics: BlogAnalyticsSummary | null;
   blogAnalyticsLoading: boolean;
   loading: boolean;
+  setRefreshTick: (updater: (tick: number) => number) => void;
+  adminActionLog: AnalyticsActionRow[];
+  loadingAdminActionLog: boolean;
+  adminActionLogError: string | null;
+  visibleActionLogCount: number;
+  loadMoreActionLogRowsOnScroll: (event: UIEvent<HTMLDivElement>) => void;
+  drilldownKind: AnalyticsDrilldownKind | null;
+  openDrilldown: (kind: AnalyticsDrilldownKind) => void;
+  setSelectedUserInsight: (value: { userId: string; userLabel: string }) => void;
 }) {
   const totalUsersLabel = formatNumber(businessMetrics?.totalUsers || 0);
   const revenueLabel = stripeRevenue?.revenueRange || stripeRevenue?.revenue30d || "$0";
@@ -2410,18 +2692,24 @@ function MobileAnalyticsHighlights({
   const signupComparison = data?.simpleComparisons?.signups?.change;
   const upgradesComparison = stripeRevenue?.upgradeComparison?.change ?? data?.simpleComparisons?.upgrades?.change;
   const revenueComparison = stripeRevenue?.comparison?.change;
+  const activitySummary = data?.activitySummary || {
+    activeUsers: 0,
+    totalActions: 0,
+    daysCompleted: 0,
+    landingConversionRate: 0,
+    landingVisitors: 0,
+    signups: 0,
+  };
+  const landingStageUsers =
+    (data?.bibleBuddyFunnelStages || []).find((stage) => stage.key === "landing")?.users ??
+    data?.visitorJourneys?.metrics?.totalVisitors ??
+    0;
 
   return (
     <section className="mt-5 space-y-4 md:hidden">
-      <SimpleAnalyticsKpiCard
-        title="Total Users (All Time)"
-        value={loading ? "..." : totalUsersLabel}
-        helper="Registered + guest users"
-      />
-
-      <div className="grid grid-cols-2 gap-3">
-        <label className="space-y-2">
-          <span className="block text-sm font-bold text-[var(--bb-text-primary,#101827)]">Metric</span>
+      <div className="flex items-end gap-2.5">
+        <label className="flex-1 space-y-2">
+          <span className="block text-sm font-bold text-[var(--bb-text-primary,#101827)]">Overview</span>
           <select
             value={simpleMetric}
             onChange={(event) => setSimpleMetric(event.target.value as SimpleAnalyticsMetric)}
@@ -2432,7 +2720,7 @@ function MobileAnalyticsHighlights({
             ))}
           </select>
         </label>
-        <label className="space-y-2">
+        <label className="flex-1 space-y-2">
           <span className="block text-sm font-bold text-[var(--bb-text-primary,#101827)]">Timeframe</span>
           <select
             value={windowKey}
@@ -2444,6 +2732,14 @@ function MobileAnalyticsHighlights({
             ))}
           </select>
         </label>
+        <button
+          type="button"
+          onClick={() => setRefreshTick((tick) => tick + 1)}
+          aria-label="Refresh analytics"
+          className="grid h-14 w-14 shrink-0 place-items-center rounded-[18px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#101827)] shadow-[0_12px_30px_rgba(15,23,42,0.06)] transition active:scale-95"
+        >
+          <Icon name="refresh" />
+        </button>
       </div>
 
       {loading ? (
@@ -2451,32 +2747,108 @@ function MobileAnalyticsHighlights({
           Loading analytics...
         </div>
       ) : simpleMetric === "overview" ? (
-        <div className="grid gap-3">
-          <SimpleAnalyticsKpiCard
+        <>
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+          <OverviewMetricCard
+            icon={<Icon name="users" />}
+            title="Total Users"
+            value={totalUsersLabel}
+            helper="Registered + guest users"
+            color="#2563eb"
+          />
+          <OverviewMetricCard
+            icon={<Icon name="user" />}
             title="Signups"
             value={signupsLabel}
-            helper="Accounts created in this timeframe"
-            accent="green"
+            color="#059669"
             comparison={windowKey === "lifetime" ? null : signupComparison}
-            comparisonLabel={windowKey === "lifetime" ? "" : comparisonLabel}
+            comparisonLabel={comparisonLabel}
+            onClick={() => openDrilldown("signups")}
+            active={drilldownKind === "signups"}
           />
-          <SimpleAnalyticsKpiCard
+          <OverviewMetricCard
+            icon={<Icon name="percent" />}
+            title="Conversion Rate"
+            value={`${activitySummary.landingConversionRate}%`}
+            helper="Landing visitors who became signups"
+            color="#7c3aed"
+          />
+          <OverviewMetricCard
+            icon={<Icon name="dollar" />}
             title="Revenue"
             value={stripeRevenueLoading ? "..." : revenueLabel}
-            helper="Stripe cash collected in this timeframe"
-            accent="blue"
+            color="#2563eb"
             comparison={windowKey === "lifetime" ? null : revenueComparison}
-            comparisonLabel={windowKey === "lifetime" ? "" : comparisonLabel}
+            comparisonLabel={comparisonLabel}
           />
-          <SimpleAnalyticsKpiCard
+          <OverviewMetricCard
+            icon={<Icon name="trendingUp" />}
             title="Upgrades"
             value={upgradesLabel}
-            helper="Users who upgraded to Pro"
-            accent="violet"
+            color="#7c3aed"
             comparison={windowKey === "lifetime" ? null : upgradesComparison}
-            comparisonLabel={windowKey === "lifetime" ? "" : comparisonLabel}
+            comparisonLabel={comparisonLabel}
+          />
+          <OverviewMetricCard
+            icon={<Icon name="eye" />}
+            title="Landing Page Views"
+            value={formatNumber(landingStageUsers)}
+            helper="Unique landing page visitors"
+            color="#2563eb"
+          />
+          <OverviewMetricCard
+            icon={<Icon name="users" />}
+            title="Active Users"
+            value={formatNumber(activitySummary.activeUsers)}
+            helper="At least one action in this timeframe"
+            color="#059669"
+            onClick={() => openDrilldown("active_users")}
+            active={drilldownKind === "active_users"}
+          />
+          <OverviewMetricCard
+            icon={<Icon name="document" />}
+            title="Action Log"
+            value={formatNumber(activitySummary.totalActions)}
+            helper="All tracked actions"
+            color="#2563eb"
+            onClick={() => openDrilldown("actions")}
+            active={drilldownKind === "actions"}
+          />
+          <OverviewMetricCard
+            icon={<Icon name="calendar" />}
+            title="Days Completed"
+            value={formatNumber(activitySummary.daysCompleted)}
+            helper="Bible in One Year completions"
+            color="#7c3aed"
+            onClick={() => openDrilldown("days_completed")}
+            active={drilldownKind === "days_completed"}
           />
         </div>
+
+        <section className="rounded-[28px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-4 shadow-[0_18px_46px_rgba(15,23,42,0.08)] sm:p-5">
+          <div className="flex items-center justify-between gap-3">
+            <div>
+              <p className="text-sm font-semibold text-[var(--bb-text-secondary,#64748b)]">Action Log</p>
+              <h2 className="mt-1 text-lg font-black text-[var(--bb-text-primary,#101827)]">All users, recent activity</h2>
+            </div>
+            <button
+              type="button"
+              onClick={() => openDrilldown("actions")}
+              className="inline-flex h-10 shrink-0 items-center justify-center rounded-2xl border border-[var(--bb-card-border,#d8e3ec)] bg-white px-3 text-xs font-semibold text-[var(--bb-text-primary,#101827)] shadow-sm transition hover:border-blue-300 hover:bg-blue-50"
+            >
+              View all
+            </button>
+          </div>
+          <AnalyticsActivityFeed
+            actions={adminActionLog}
+            loading={loadingAdminActionLog}
+            error={adminActionLogError}
+            visibleCount={visibleActionLogCount}
+            onScrollLoadMore={loadMoreActionLogRowsOnScroll}
+            onSelectUser={(userId, userLabel) => setSelectedUserInsight({ userId, userLabel })}
+          />
+        </section>
+        </>
       ) : (
         <div className="space-y-4">
           {simpleMetric === "revenue" ? (
@@ -2501,6 +2873,8 @@ function MobileAnalyticsHighlights({
             <TrafficSourcesAnalyticsSection
               report={data?.trafficSources}
               loading={loading}
+              windowKey={windowKey}
+              signupsComparison={signupComparison}
             />
           ) : simpleMetric === "completion_popup" ? (
             <CompletionPopupAnalyticsSection
@@ -3903,17 +4277,247 @@ function StudyNotesUpgradeCard({ stats }: { stats?: StudyNotesUpgradeAnalytics }
   );
 }
 
+function useCountUp(target: number, durationMs = 650) {
+  const [display, setDisplay] = useState(target);
+  const fromRef = useRef(target);
+
+  useEffect(() => {
+    const from = fromRef.current;
+    if (from === target) return;
+    const start = performance.now();
+    let frame = 0;
+
+    function tick(now: number) {
+      const progress = Math.min(1, (now - start) / durationMs);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setDisplay(Math.round(from + (target - from) * eased));
+      if (progress < 1) frame = requestAnimationFrame(tick);
+      else fromRef.current = target;
+    }
+
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+  }, [target, durationMs]);
+
+  return display;
+}
+
+function relativeTimeFromNow(iso: string | null | undefined) {
+  if (!iso) return "";
+  const then = new Date(iso).getTime();
+  if (!Number.isFinite(then)) return "";
+  const diffMs = Date.now() - then;
+  const minutes = Math.floor(diffMs / 60000);
+  if (minutes < 1) return "Just now";
+  if (minutes < 60) return `${minutes}m ago`;
+  const hours = Math.floor(minutes / 60);
+  if (hours < 24) return `${hours}h ago`;
+  const days = Math.floor(hours / 24);
+  return `${days}d ago`;
+}
+
+function useFlipOrder<T extends string>(order: T[]) {
+  const positions = useRef(new Map<T, number>());
+  const elements = useRef(new Map<T, HTMLElement>());
+  const orderKey = order.join("|");
+
+  useLayoutEffect(() => {
+    order.forEach((key) => {
+      const el = elements.current.get(key);
+      if (!el) return;
+      const newTop = el.getBoundingClientRect().top;
+      const oldTop = positions.current.get(key);
+      if (oldTop !== undefined && Math.abs(oldTop - newTop) > 1) {
+        const delta = oldTop - newTop;
+        el.style.transition = "none";
+        el.style.transform = `translateY(${delta}px)`;
+        requestAnimationFrame(() => {
+          el.style.transition = "transform 480ms cubic-bezier(0.22,1,0.36,1)";
+          el.style.transform = "translateY(0px)";
+        });
+      }
+      positions.current.set(key, newTop);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [orderKey]);
+
+  return (key: T) => (el: HTMLElement | null) => {
+    if (el) elements.current.set(key, el);
+    else elements.current.delete(key);
+  };
+}
+
+function MiniSparkline({
+  points,
+  color = "#2563eb",
+  height = 44,
+}: {
+  points: number[];
+  color?: string;
+  height?: number;
+}) {
+  const width = 160;
+  const gradientId = useRef(`sparkline-${Math.random().toString(36).slice(2)}`).current;
+
+  if (points.length < 2) {
+    return <div style={{ height }} className="w-full" />;
+  }
+
+  const max = Math.max(...points, 1);
+  const min = Math.min(...points, 0);
+  const range = Math.max(1, max - min);
+  const stepX = width / (points.length - 1);
+  const coords = points.map((value, index) => ({
+    x: index * stepX,
+    y: height - 4 - ((value - min) / range) * (height - 8),
+  }));
+  const linePath = coords.map((point, index) => `${index === 0 ? "M" : "L"}${point.x.toFixed(1)},${point.y.toFixed(1)}`).join(" ");
+  const areaPath = `${linePath} L${width},${height} L0,${height} Z`;
+
+  return (
+    <svg viewBox={`0 0 ${width} ${height}`} className="h-11 w-full" preserveAspectRatio="none" role="img" aria-hidden="true">
+      <defs>
+        <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor={color} stopOpacity="0.28" />
+          <stop offset="100%" stopColor={color} stopOpacity="0" />
+        </linearGradient>
+      </defs>
+      <path d={areaPath} fill={`url(#${gradientId})`} stroke="none" />
+      <path d={linePath} fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function trendBucketStartOfWeek(date: Date) {
+  const copy = new Date(date);
+  copy.setHours(0, 0, 0, 0);
+  const day = copy.getDay();
+  const diff = (day + 6) % 7;
+  copy.setDate(copy.getDate() - diff);
+  return copy;
+}
+
+function buildDailyTrend(
+  timestamps: Array<string | null | undefined>,
+  windowKey: JourneyWindow,
+) {
+  const bucket: "hour" | "week" | "month" | "day" =
+    windowKey === "today" || windowKey === "24h" || windowKey === "yesterday"
+      ? "hour"
+      : windowKey === "90d"
+        ? "week"
+        : windowKey === "lifetime"
+          ? "month"
+          : "day";
+  const counts = new Map<string, number>();
+
+  for (const iso of timestamps) {
+    if (!iso) continue;
+    const date = new Date(iso);
+    if (Number.isNaN(date.getTime())) continue;
+    let key = "";
+    if (bucket === "hour") key = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}-${date.getHours()}`;
+    else if (bucket === "week") key = trendBucketStartOfWeek(date).toISOString().slice(0, 10);
+    else if (bucket === "month") key = `${date.getFullYear()}-${date.getMonth() + 1}`;
+    else key = date.toISOString().slice(0, 10);
+    counts.set(key, (counts.get(key) || 0) + 1);
+  }
+
+  return Array.from(counts.entries())
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([, value]) => value);
+}
+
+function TrafficSourceSummaryCard({
+  icon,
+  title,
+  value,
+  suffix = "",
+  comparison,
+  comparisonLabel,
+  points,
+  color,
+}: {
+  icon: ReactNode;
+  title: string;
+  value: number;
+  suffix?: string;
+  comparison?: number | null;
+  comparisonLabel?: string;
+  points: number[];
+  color: string;
+}) {
+  const animatedValue = useCountUp(value);
+
+  return (
+    <div className="rounded-[22px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-5 shadow-[0_14px_36px_rgba(15,23,42,0.06)]">
+      <div className="flex items-center gap-2">
+        <span className="grid h-8 w-8 shrink-0 place-items-center rounded-xl" style={{ background: `${color}1a`, color }}>
+          {icon}
+        </span>
+        <p className="text-sm font-bold text-[var(--bb-text-secondary,#64748b)]">{title}</p>
+      </div>
+      <p className="mt-3 text-4xl font-black tracking-tight text-[var(--bb-text-primary,#101827)]">
+        {formatNumber(animatedValue)}
+        {suffix}
+      </p>
+      {typeof comparison === "number" ? (
+        <div className="mt-1">
+          <ComparisonChip change={comparison} label={comparisonLabel || ""} />
+        </div>
+      ) : (
+        <p className="mt-1 text-xs font-semibold text-[var(--bb-text-secondary,#94a3b8)]">&nbsp;</p>
+      )}
+      <div className="mt-3">
+        <MiniSparkline points={points} color={color} />
+      </div>
+    </div>
+  );
+}
+
 function TrafficSourcesAnalyticsSection({
   report,
   loading,
+  windowKey,
+  signupsComparison,
 }: {
   report?: AnalyticsResponse["trafficSources"];
   loading: boolean;
+  windowKey: JourneyWindow;
+  signupsComparison?: number | null;
 }) {
   const sources = getNormalizedMainTrafficSources(report);
   const totalVisitors = sources.reduce((sum, source) => sum + source.visitors, 0);
   const totalSignups = sources.reduce((sum, source) => sum + source.signups, 0);
-  const maxVisitors = Math.max(1, ...sources.map((source) => source.visitors));
+  const conversionRate = totalVisitors > 0 ? Math.min(100, Number(((totalSignups / totalVisitors) * 100).toFixed(1))) : 0;
+  const sourceOrder = sources.map((source) => source.source);
+  const flipRef = useFlipOrder(sourceOrder);
+  const comparisonLabel = getComparisonLabel(windowKey);
+
+  const visitorTrend = useMemo(
+    () => buildDailyTrend(sources.flatMap((source) => source.visitorRows.map((row) => row.firstSeenAt)), windowKey),
+    [sources, windowKey],
+  );
+  const signupTrend = useMemo(
+    () => buildDailyTrend(sources.flatMap((source) => source.signupRows.map((row) => row.signedUpAt)), windowKey),
+    [sources, windowKey],
+  );
+  const conversionTrend = useMemo(
+    () =>
+      visitorTrend.map((visitors, index) =>
+        visitors > 0 ? Math.min(100, Math.round(((signupTrend[index] || 0) / visitors) * 100)) : 0,
+      ),
+    [visitorTrend, signupTrend],
+  );
+
+  const recentActivity = useMemo(() => {
+    return sources
+      .flatMap((source) => source.visitorRows.map((row) => ({ ...row, source: source.source })))
+      .filter((row) => row.firstSeenAt)
+      .sort((a, b) => (b.firstSeenAt || "").localeCompare(a.firstSeenAt || ""))
+      .slice(0, 8);
+  }, [sources]);
+
   const trackingLinks = [
     { label: "Facebook", href: "https://mybiblebuddy.net/?utm_source=facebook" },
     { label: "Instagram", href: "https://mybiblebuddy.net/?utm_source=instagram" },
@@ -3933,62 +4537,169 @@ function TrafficSourcesAnalyticsSection({
 
   return (
     <section className="space-y-4">
+      <div>
+        <h2 className="text-2xl font-black text-[var(--bb-text-primary,#101827)]">Traffic Sources</h2>
+        <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#64748b)]">
+          See where your visitors come from and how they convert.
+        </p>
+      </div>
+
+      <div className="grid gap-3 sm:grid-cols-3">
+        <TrafficSourceSummaryCard
+          icon={<Icon name="visitors" />}
+          title="Total Visitors"
+          value={totalVisitors}
+          points={visitorTrend}
+          color="#2563eb"
+        />
+        <TrafficSourceSummaryCard
+          icon={<Icon name="user" />}
+          title="Total Sign-ups"
+          value={totalSignups}
+          points={signupTrend}
+          color="#059669"
+          comparison={windowKey === "lifetime" ? null : signupsComparison}
+          comparisonLabel={comparisonLabel}
+        />
+        <TrafficSourceSummaryCard
+          icon={<Icon name="analytics" />}
+          title="Conversion Rate"
+          value={conversionRate}
+          suffix="%"
+          points={conversionTrend}
+          color="#7c3aed"
+        />
+      </div>
+
       <div className="rounded-[26px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-5 shadow-[0_18px_45px_rgba(15,23,42,0.08)]">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="text-sm font-black uppercase tracking-[0.18em] text-blue-600">Traffic Sources</p>
-            <h2 className="mt-2 text-3xl font-black text-[var(--bb-text-primary,#101827)]">
-              {formatNumber(totalVisitors)} visitors
-            </h2>
-            <p className="mt-1 text-sm font-bold text-[var(--bb-text-secondary,#64748b)]">
-              {formatNumber(totalSignups)} signups attributed in this timeframe.
-            </p>
-          </div>
-          <div className="rounded-2xl bg-blue-50 px-4 py-3 text-right ring-1 ring-blue-100">
-            <p className="text-xs font-black uppercase tracking-[0.14em] text-blue-600">Overall Signup Rate</p>
-            <p className="mt-1 text-2xl font-black text-slate-950">
-              {totalVisitors > 0 ? Number(((totalSignups / totalVisitors) * 100).toFixed(1)) : 0}%
-            </p>
-          </div>
+        <p className="text-lg font-black text-[var(--bb-text-primary,#101827)]">Visitors by Source</p>
+        <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#64748b)]">
+          Breakdown of your visitors and sign-ups by traffic source.
+        </p>
+
+        <div className="mt-4 overflow-x-auto">
+          <table className="w-full min-w-[620px] border-collapse text-left text-sm">
+            <thead>
+              <tr className="text-xs font-black uppercase tracking-[0.1em] text-[var(--bb-text-secondary,#94a3b8)]">
+                <th className="pb-3 pr-3 font-black">Source</th>
+                <th className="px-3 pb-3 font-black">% of Visitors</th>
+                <th className="px-3 pb-3 text-right font-black">Visitors</th>
+                <th className="px-3 pb-3 text-right font-black">Sign-ups</th>
+                <th className="pb-3 pl-3 text-right font-black">Conversion Rate</th>
+              </tr>
+            </thead>
+            <tbody>
+              {sources.map((source) => {
+                const brand = TRAFFIC_SOURCE_BRAND[source.source] || TRAFFIC_SOURCE_BRAND.Other;
+                return (
+                  <tr
+                    key={source.source}
+                    ref={flipRef(source.source)}
+                    className="border-t border-[var(--bb-card-border,#eef2f7)] will-change-transform"
+                  >
+                    <td className="py-3 pr-3">
+                      <div className="flex items-center gap-3">
+                        <span
+                          className="grid h-8 w-8 shrink-0 place-items-center rounded-full ring-1 ring-black/5"
+                          style={{ background: brand.bg, color: brand.fg }}
+                        >
+                          {brand.icon}
+                        </span>
+                        <span className="font-black text-[var(--bb-text-primary,#101827)]">{source.source}</span>
+                      </div>
+                    </td>
+                    <td className="px-3 py-3">
+                      <div className="flex items-center gap-2">
+                        <span className="w-10 shrink-0 text-xs font-bold text-[var(--bb-text-secondary,#64748b)]">
+                          {source.percent}%
+                        </span>
+                        <div className="h-2 w-24 overflow-hidden rounded-full bg-[var(--bb-surface-soft,#eef2f7)] sm:w-32">
+                          <div
+                            className="h-full rounded-full transition-[width] duration-500 ease-out"
+                            style={{ width: `${Math.max(2, source.percent)}%`, background: brand.bar }}
+                          />
+                        </div>
+                      </div>
+                    </td>
+                    <td className="px-3 py-3 text-right font-black text-[var(--bb-text-primary,#101827)]">
+                      {formatNumber(source.visitors)}
+                    </td>
+                    <td className="px-3 py-3 text-right font-black text-[var(--bb-text-primary,#101827)]">
+                      {formatNumber(source.signups)}
+                    </td>
+                    <td className="py-3 pl-3 text-right font-bold text-[var(--bb-text-secondary,#64748b)]">
+                      {source.signupRate}%
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+            <tfoot>
+              <tr className="border-t-2 border-[var(--bb-card-border,#e2e8f0)] font-black text-[var(--bb-text-primary,#101827)]">
+                <td className="py-3 pr-3">Total</td>
+                <td className="px-3 py-3">100%</td>
+                <td className="px-3 py-3 text-right">{formatNumber(totalVisitors)}</td>
+                <td className="px-3 py-3 text-right">{formatNumber(totalSignups)}</td>
+                <td className="py-3 pl-3 text-right">{conversionRate}%</td>
+              </tr>
+            </tfoot>
+          </table>
         </div>
       </div>
 
-      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
-        {sources.map((source, index) => {
-          const color = TRAFFIC_SOURCE_COLORS[index % TRAFFIC_SOURCE_COLORS.length];
-          return (
-            <div
-              key={source.source}
-              className={`rounded-[24px] border border-[var(--bb-card-border,#d8e3ec)] bg-gradient-to-br ${color} p-4 shadow-[0_14px_35px_rgba(15,23,42,0.06)] ring-1`}
-            >
-              <div className="flex items-start justify-between gap-3">
-                <div>
-                  <p className="text-lg font-black text-slate-950">{source.source}</p>
-                  <p className="mt-1 text-xs font-bold text-slate-600">{source.percent}% of landing visitors</p>
-                </div>
-                <span className="rounded-full bg-white/85 px-3 py-1 text-xs font-black text-slate-800 shadow-sm">
-                  {source.signupRate}% signup
-                </span>
-              </div>
-              <div className="mt-4 h-2.5 overflow-hidden rounded-full bg-white/75 ring-1 ring-slate-200">
-                <div
-                  className="h-full rounded-full bg-current"
-                  style={{ width: `${Math.max(3, Math.min(100, (source.visitors / maxVisitors) * 100))}%` }}
-                />
-              </div>
-              <div className="mt-4 grid grid-cols-2 gap-2">
-                <div className="rounded-xl bg-white/80 px-3 py-2 ring-1 ring-slate-200">
-                  <p className="text-[10px] font-black uppercase tracking-[0.12em] text-slate-500">Visitors</p>
-                  <p className="mt-1 text-xl font-black text-slate-950">{formatNumber(source.visitors)}</p>
-                </div>
-                <div className="rounded-xl bg-white/80 px-3 py-2 ring-1 ring-slate-200">
-                  <p className="text-[10px] font-black uppercase tracking-[0.12em] text-slate-500">Signups</p>
-                  <p className="mt-1 text-xl font-black text-slate-950">{formatNumber(source.signups)}</p>
-                </div>
-              </div>
+      <div className="rounded-[26px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-5 shadow-[0_18px_45px_rgba(15,23,42,0.08)]">
+        <div className="flex items-center justify-between gap-3">
+          <div>
+            <div className="flex items-center gap-2">
+              <p className="text-lg font-black text-[var(--bb-text-primary,#101827)]">Real-Time Activity</p>
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 text-[11px] font-black text-emerald-700 ring-1 ring-emerald-100">
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
+                Live
+              </span>
             </div>
-          );
-        })}
+            <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#64748b)]">
+              Latest visitor activity across your sources.
+            </p>
+          </div>
+          <button
+            type="button"
+            className="hidden shrink-0 items-center gap-1 rounded-full border border-[var(--bb-card-border,#d8e3ec)] px-4 py-2 text-sm font-black text-[var(--bb-text-primary,#101827)] transition hover:bg-[var(--bb-surface-soft,#f8fbff)] sm:flex"
+          >
+            View all activity
+          </button>
+        </div>
+
+        <div className="mt-4 divide-y divide-[var(--bb-card-border,#eef2f7)]">
+          {recentActivity.length ? (
+            recentActivity.map((row) => {
+              const brand = TRAFFIC_SOURCE_BRAND[row.source] || TRAFFIC_SOURCE_BRAND.Other;
+              return (
+                <div key={`${row.actorId}-${row.firstSeenAt}`} className="flex items-center gap-3 py-3">
+                  <span
+                    className="grid h-9 w-9 shrink-0 place-items-center rounded-full ring-1 ring-black/5"
+                    style={{ background: brand.bg, color: brand.fg }}
+                  >
+                    {brand.icon}
+                  </span>
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate font-black text-[var(--bb-text-primary,#101827)]">
+                      {row.source === "Other" ? "Visited Direct" : `Visited from ${row.source}`}
+                    </p>
+                    <p className="truncate text-xs font-semibold text-[var(--bb-text-secondary,#94a3b8)]">mybiblebuddy.net</p>
+                  </div>
+                  <p className="shrink-0 text-xs font-bold text-[var(--bb-text-secondary,#64748b)]">
+                    {relativeTimeFromNow(row.firstSeenAt)}
+                  </p>
+                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-400" />
+                </div>
+              );
+            })
+          ) : (
+            <p className="py-8 text-center text-sm font-semibold text-[var(--bb-text-secondary,#64748b)]">
+              No visitor activity yet in this timeframe.
+            </p>
+          )}
+        </div>
       </div>
 
       <div className="rounded-[24px] border border-blue-100 bg-blue-50/70 p-4 shadow-sm">
@@ -4485,6 +5196,7 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
   const [blogAnalytics, setBlogAnalytics] = useState<BlogAnalyticsSummary | null>(null);
   const [blogAnalyticsLoading, setBlogAnalyticsLoading] = useState(false);
   const [blogAnalyticsError, setBlogAnalyticsError] = useState<string | null>(null);
+  const [refreshTick, setRefreshTick] = useState(0);
   const [search, setSearch] = useState("");
   const [sourceFilter, setSourceFilter] = useState("all");
   const [statusFilter, setStatusFilter] = useState<VisitorJourneyStatus | "all">("all");
@@ -4588,12 +5300,12 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
       }
     }
     void loadAnalytics();
-  }, [authChecked, isOwner, legacy, windowKey]);
+  }, [authChecked, isOwner, legacy, windowKey, refreshTick]);
 
   useEffect(() => {
     if (!authChecked || !isOwner) return;
     void loadAdminActionLog();
-  }, [authChecked, isOwner, windowKey]);
+  }, [authChecked, isOwner, windowKey, refreshTick]);
 
   useEffect(() => {
     setVisibleActionLogCount(30);
@@ -4622,7 +5334,7 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
       }
     }
     void loadStripeRevenue();
-  }, [authChecked, isOwner, windowKey]);
+  }, [authChecked, isOwner, windowKey, refreshTick]);
 
   useEffect(() => {
     if (!authChecked || !isOwner) return;
@@ -4647,7 +5359,7 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
       }
     }
     void loadBlogAnalytics();
-  }, [authChecked, isOwner, windowKey]);
+  }, [authChecked, isOwner, windowKey, refreshTick]);
 
   useEffect(() => {
     setDrilldownKind(null);
@@ -4959,14 +5671,8 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
                 <div className="rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm font-semibold text-rose-700">{error}</div>
               ) : null}
 
-              <SimpleAnalyticsKpiCard
-                title="Total Users (All Time)"
-                value={loading ? "..." : totalUsersLabel}
-                helper="Registered + guest users"
-              />
-
-              <div className="grid grid-cols-2 gap-3">
-                <label className="space-y-2">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-end">
+                <label className="flex-1 space-y-2">
                   <span className="block text-sm font-bold text-[var(--bb-text-primary,#101827)]">Overview</span>
                   <select
                     value={simpleMetric}
@@ -4978,7 +5684,7 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
                     ))}
                   </select>
                 </label>
-                <label className="space-y-2">
+                <label className="flex-1 space-y-2">
                   <span className="block text-sm font-bold text-[var(--bb-text-primary,#101827)]">Timeframe</span>
                   <select
                     value={windowKey}
@@ -4990,70 +5696,92 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
                     ))}
                   </select>
                 </label>
+                <button
+                  type="button"
+                  onClick={() => setRefreshTick((tick) => tick + 1)}
+                  aria-label="Refresh analytics"
+                  className="grid h-14 w-14 shrink-0 place-items-center rounded-[18px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#101827)] shadow-[0_12px_30px_rgba(15,23,42,0.06)] transition hover:border-blue-300 hover:text-blue-600 active:scale-95"
+                >
+                  <Icon name="refresh" />
+                </button>
               </div>
 
               {simpleMetric === "overview" ? (
                 <>
-                <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
-                  <SimpleAnalyticsKpiCard
+                <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+                  <OverviewMetricCard
+                    icon={<Icon name="users" />}
+                    title="Total Users"
+                    value={loading ? "..." : totalUsersLabel}
+                    helper="Registered + guest users"
+                    color="#2563eb"
+                  />
+                  <OverviewMetricCard
+                    icon={<Icon name="user" />}
                     title="Signups"
                     value={loading ? "..." : signupsLabel}
-                    helper="Accounts created in this timeframe"
-                    accent="green"
+                    color="#059669"
                     comparison={windowKey === "lifetime" ? null : signupComparison}
-                    comparisonLabel={windowKey === "lifetime" ? "" : comparisonLabel}
+                    comparisonLabel={comparisonLabel}
                     onClick={() => void openDrilldown("signups")}
                     active={drilldownKind === "signups"}
                   />
-                  <SimpleAnalyticsKpiCard
+                  <OverviewMetricCard
+                    icon={<Icon name="percent" />}
+                    title="Conversion Rate"
+                    value={loading ? "..." : `${activitySummary.landingConversionRate}%`}
+                    helper="Landing visitors who became signups"
+                    color="#7c3aed"
+                  />
+                  <OverviewMetricCard
+                    icon={<Icon name="dollar" />}
                     title="Revenue"
                     value={stripeRevenueLoading ? "..." : revenueLabel}
-                    helper="Stripe cash collected in this timeframe"
-                    accent="blue"
+                    color="#2563eb"
+                    comparison={windowKey === "lifetime" ? null : revenueComparison}
+                    comparisonLabel={comparisonLabel}
                   />
-                  <SimpleAnalyticsKpiCard
+                  <OverviewMetricCard
+                    icon={<Icon name="trendingUp" />}
                     title="Upgrades"
                     value={loading ? "..." : upgradesLabel}
-                    helper="Users who upgraded to Pro"
-                    accent="violet"
+                    color="#7c3aed"
                     comparison={windowKey === "lifetime" ? null : upgradesComparison}
-                    comparisonLabel={windowKey === "lifetime" ? "" : comparisonLabel}
+                    comparisonLabel={comparisonLabel}
                   />
-                  <SimpleAnalyticsKpiCard
+                  <OverviewMetricCard
+                    icon={<Icon name="eye" />}
                     title="Landing Page Views"
                     value={loading ? "..." : formatNumber(landingStageUsers)}
                     helper="Unique landing page visitors"
-                    accent="blue"
+                    color="#2563eb"
                   />
-                  <SimpleAnalyticsKpiCard
+                  <OverviewMetricCard
+                    icon={<Icon name="users" />}
                     title="Active Users"
                     value={loading ? "..." : formatNumber(activitySummary.activeUsers)}
-                    helper="People with at least one action in this timeframe"
-                    accent="green"
+                    helper="At least one action in this timeframe"
+                    color="#059669"
                     onClick={() => void openDrilldown("active_users")}
                     active={drilldownKind === "active_users"}
                   />
-                  <SimpleAnalyticsKpiCard
+                  <OverviewMetricCard
+                    icon={<Icon name="document" />}
                     title="Action Log"
                     value={loading ? "..." : formatNumber(activitySummary.totalActions)}
-                    helper="All tracked actions in this timeframe"
-                    accent="blue"
+                    helper="All tracked actions"
+                    color="#2563eb"
                     onClick={() => void openDrilldown("actions")}
                     active={drilldownKind === "actions"}
                   />
-                  <SimpleAnalyticsKpiCard
+                  <OverviewMetricCard
+                    icon={<Icon name="calendar" />}
                     title="Days Completed"
                     value={loading ? "..." : formatNumber(activitySummary.daysCompleted)}
-                    helper="Bible in One Year day completions in this timeframe"
-                    accent="violet"
+                    helper="Bible in One Year completions"
+                    color="#7c3aed"
                     onClick={() => void openDrilldown("days_completed")}
                     active={drilldownKind === "days_completed"}
-                  />
-                  <SimpleAnalyticsKpiCard
-                    title="Landing Conversion"
-                    value={loading ? "..." : `${activitySummary.landingConversionRate}%`}
-                    helper="Landing page visitors who became signups"
-                    accent="green"
                   />
                 </div>
                 <section className="rounded-[28px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-5 shadow-[0_18px_46px_rgba(15,23,42,0.08)]">
@@ -5070,43 +5798,14 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
                       View all actions
                     </button>
                   </div>
-                  {loadingAdminActionLog ? (
-                    <p className="mt-5 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-5 text-sm font-semibold text-slate-600">Loading action log...</p>
-                  ) : adminActionLogError ? (
-                    <p className="mt-5 rounded-2xl border border-rose-200 bg-rose-50 px-4 py-5 text-sm font-semibold text-rose-700">{adminActionLogError}</p>
-                  ) : adminActionLog.length === 0 ? (
-                    <p className="mt-5 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-5 text-sm font-semibold text-slate-600">No tracked actions in this timeframe.</p>
-                  ) : (
-                    <div className="mt-5 max-h-[560px] space-y-2 overflow-y-auto pr-1" onScroll={loadMoreActionLogRowsOnScroll}>
-                      {adminActionLog.slice(0, visibleActionLogCount).map((action) => (
-                        <div key={action.id} className={`rounded-3xl border p-4 ${getAdminActionColorClass(action.actionType)} ring-1 ring-inset`}>
-                          <p className="text-sm font-semibold text-[var(--bb-text-primary,#101827)]">
-                            {action.userId ? (
-                              <button
-                                type="button"
-                                onClick={() => {
-                                  if (!action.userId) return;
-                                  setSelectedUserInsight({ userId: action.userId, userLabel: action.userLabel });
-                                }}
-                                className="font-black text-blue-700 underline decoration-blue-300 underline-offset-2 hover:text-blue-800"
-                              >
-                                {action.userLabel}
-                              </button>
-                            ) : (
-                              <span>{action.userLabel}</span>
-                            )}{" "}
-                            <span>{action.actionTitle}</span>
-                          </p>
-                          <p className="mt-1 text-xs text-[var(--bb-text-secondary,#64748b)]">{formatDateTime(action.createdAt)}</p>
-                        </div>
-                      ))}
-                      {visibleActionLogCount < adminActionLog.length ? (
-                        <p className="px-1 py-2 text-xs font-semibold text-[var(--bb-text-secondary,#64748b)]">
-                          Scroll to load more ({visibleActionLogCount}/{adminActionLog.length})
-                        </p>
-                      ) : null}
-                    </div>
-                  )}
+                  <AnalyticsActivityFeed
+                    actions={adminActionLog}
+                    loading={loadingAdminActionLog}
+                    error={adminActionLogError}
+                    visibleCount={visibleActionLogCount}
+                    onScrollLoadMore={loadMoreActionLogRowsOnScroll}
+                    onSelectUser={(userId, userLabel) => setSelectedUserInsight({ userId, userLabel })}
+                  />
                 </section>
                 </>
               ) : (
@@ -5132,6 +5831,8 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
                   <TrafficSourcesAnalyticsSection
                     report={data?.trafficSources}
                     loading={loading}
+                    windowKey={windowKey}
+                    signupsComparison={signupComparison}
                   />
                 ) : simpleMetric === "completion_popup" ? (
                   <CompletionPopupAnalyticsSection
@@ -5429,6 +6130,15 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
               blogAnalytics={blogAnalytics}
               blogAnalyticsLoading={blogAnalyticsLoading}
               loading={loading}
+              setRefreshTick={setRefreshTick}
+              adminActionLog={adminActionLog}
+              loadingAdminActionLog={loadingAdminActionLog}
+              adminActionLogError={adminActionLogError}
+              visibleActionLogCount={visibleActionLogCount}
+              loadMoreActionLogRowsOnScroll={loadMoreActionLogRowsOnScroll}
+              drilldownKind={drilldownKind}
+              openDrilldown={openDrilldown}
+              setSelectedUserInsight={setSelectedUserInsight}
             />
           ) : null}
 

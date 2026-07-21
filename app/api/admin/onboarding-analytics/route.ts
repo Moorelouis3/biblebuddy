@@ -2287,6 +2287,7 @@ function mergeProfileSignupAttributionIntoTrafficSources(
     signupRows: [...source.signupRows],
   }]));
   const countedSignupUserIds = new Set<string>();
+  let extraVisitors = 0;
 
   for (const source of summary.sources) {
     for (const signup of source.signupRows) {
@@ -2313,13 +2314,28 @@ function mergeProfileSignupAttributionIntoTrafficSources(
     };
     const displayName = typeof profile.display_name === "string" ? profile.display_name.trim() : "";
     const username = typeof profile.username === "string" ? profile.username.trim() : "";
+    const userLabel = profileByUserId.get(userId) || displayName || username || `User ${shortId(userId)}`;
+
+    // This user has no tracked landing_page_visit row for this source, but a
+    // signup can't happen without a visit first, so count them as one too —
+    // otherwise a source can show more signups than visitors.
+    existing.visitors += 1;
+    existing.visitorRows.push({
+      actorId: userId,
+      visitorLabel: userLabel,
+      referrer: null,
+      pagePath: "/signup",
+      landingUrl: "https://mybiblebuddy.net/signup",
+      firstSeenAt: signedUpAt,
+    });
+    extraVisitors += 1;
 
     existing.signups += 1;
     existing.signupRows.push({
       actorId: userId,
       userId,
       sessionId: null,
-      userLabel: profileByUserId.get(userId) || displayName || username || `User ${shortId(userId)}`,
+      userLabel,
       source,
       referrer: null,
       pagePath: "/signup",
@@ -2331,11 +2347,11 @@ function mergeProfileSignupAttributionIntoTrafficSources(
     countedSignupUserIds.add(userId);
   }
 
-  const totalVisitors = summary.totalVisitors;
+  const totalVisitors = summary.totalVisitors + extraVisitors;
   const sources = Array.from(sourcesByName.values())
     .map((source) => ({
       ...source,
-      signupRate: source.visitors > 0 ? percent(source.signups, source.visitors) : source.signups > 0 ? 100 : 0,
+      signupRate: source.visitors > 0 ? Math.min(100, percent(source.signups, source.visitors)) : source.signups > 0 ? 100 : 0,
       percent: percent(source.visitors, totalVisitors),
       signupRows: source.signupRows
         .sort((a, b) => (b.signedUpAt || "").localeCompare(a.signedUpAt || ""))
