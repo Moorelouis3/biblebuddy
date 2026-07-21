@@ -19,6 +19,13 @@ import { GENESIS_TWENTY_ONE_PERSONAL_SECTIONS } from "./genesisTwentyOneSource";
 import { GENESIS_TWENTY_TWO_PERSONAL_SECTIONS } from "./genesisTwentyTwoSource";
 import { GENESIS_TWENTY_THREE_PERSONAL_SECTIONS } from "./genesisTwentyThreeSource";
 import { GENESIS_TWENTY_FOUR_PERSONAL_SECTIONS } from "./genesisTwentyFourSource";
+import { GENESIS_TWENTY_FIVE_PERSONAL_SECTIONS } from "./genesisTwentyFiveSource";
+import { GENESIS_TWENTY_SIX_PERSONAL_SECTIONS } from "./genesisTwentySixSource";
+import { GENESIS_TWENTY_SEVEN_PERSONAL_SECTIONS } from "./genesisTwentySevenSource";
+import { GENESIS_TWENTY_EIGHT_PERSONAL_SECTIONS } from "./genesisTwentyEightSource";
+import { GENESIS_TWENTY_NINE_PERSONAL_SECTIONS } from "./genesisTwentyNineSource";
+import { GENESIS_THIRTY_NINE_PERSONAL_SECTIONS } from "./genesisThirtyNineSource";
+import { GENESIS_FORTY_PERSONAL_SECTIONS } from "./genesisFortySource";
 import { GENESIS_THREE_PERSONAL_SECTIONS } from "./genesisThreeSource";
 import { GENESIS_TWO_PERSONAL_SECTIONS } from "./genesisTwoSource";
 import { GENESIS_11_20_PERSONAL_SECTIONS } from "./genesisElevenToTwentyPersonalNotes";
@@ -399,7 +406,7 @@ function ensureTitleHasIcon(title: string, icon: string) {
 
 function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, book: string): BibleReaderStudySection {
   const preserveExactPhraseBodies =
-    normalizeBook(book) === "genesis" && section.chapter >= 1 && section.chapter <= 24;
+    normalizeBook(book) === "genesis" && section.chapter >= 1 && section.chapter <= 40;
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -8207,6 +8214,48 @@ replaceStudySectionsForBookRange(
   24,
   24,
   GENESIS_TWENTY_FOUR_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "genesis",
+  25,
+  25,
+  GENESIS_TWENTY_FIVE_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "genesis",
+  26,
+  26,
+  GENESIS_TWENTY_SIX_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "genesis",
+  27,
+  27,
+  GENESIS_TWENTY_SEVEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "genesis",
+  28,
+  28,
+  GENESIS_TWENTY_EIGHT_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "genesis",
+  29,
+  29,
+  GENESIS_TWENTY_NINE_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "genesis",
+  39,
+  39,
+  GENESIS_THIRTY_NINE_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "genesis",
+  40,
+  40,
+  GENESIS_FORTY_PERSONAL_SECTIONS,
 );
 
 for (const section of BIBLE_READER_STUDY_SECTIONS) {
