@@ -11,7 +11,7 @@ import { getCachedAdminAnalytics, getCachedAdminAnalyticsOverview, loadAdminAnal
 type JourneyWindow = "today" | "yesterday" | "24h" | "7d" | "30d" | "90d" | "this_month" | "lifetime";
 type AccountFilter = "all" | "guest" | "free" | "pro";
 type AnalyticsView = "overview" | "bible-year" | "study-notes" | "traffic-sources";
-type SimpleAnalyticsMetric = "overview" | "revenue" | "signups" | "upgrades" | "traffic_sources" | "completion_popup" | "study_plans";
+type SimpleAnalyticsMetric = "overview" | "revenue" | "signups" | "upgrades" | "traffic_sources" | "completion_popup" | "study_plans" | "blog";
 
 type VisitorJourneyStatus =
   | "active"
@@ -303,9 +303,9 @@ type AnalyticsResponse = {
     monthly: Array<{ label: string; value: number }>;
   };
   upgradeChartSeries?: {
-    daily: Array<{ label: string; value: number }>;
-    weekly: Array<{ label: string; value: number }>;
-    monthly: Array<{ label: string; value: number }>;
+    daily: UpgradeChartPoint[];
+    weekly: UpgradeChartPoint[];
+    monthly: UpgradeChartPoint[];
   };
   simpleComparisons?: {
     signups: { current: number; previous: number; change: number };
@@ -456,6 +456,18 @@ type AnalyticsResponse = {
         landingUrl: string;
         firstSeenAt: string | null;
       }>;
+      signupRows?: Array<{
+        actorId: string;
+        userId: string | null;
+        sessionId: string | null;
+        userLabel: string;
+        source: string;
+        referrer: string | null;
+        pagePath: string;
+        signupUrl: string;
+        signedUpAt: string | null;
+        matchedBy: string;
+      }>;
     }>;
   };
   dataHealth?: Array<{
@@ -585,6 +597,21 @@ type StripeRevenueSummary = {
   error?: string;
 };
 
+type BlogAnalyticsSummary = {
+  window?: JourneyWindow;
+  label?: string;
+  totalViews: number;
+  totalVisitors: number;
+  comparison?: { current: number; previous: number; change: number };
+  visitorsComparison?: { current: number; previous: number; change: number };
+  viewsSeries?: Array<{ label: string; value: number }>;
+  visitorsSeries?: Array<{ label: string; value: number }>;
+  topArticles?: Array<{ slug: string; title: string; views: number; visitors: number }>;
+  tableMissing?: boolean;
+  updatedAt: string;
+  error?: string;
+};
+
 const ANALYTICS_NAV_ITEMS: Array<{ key: AnalyticsView; label: string; helper: string }> = [
   { key: "overview", label: "Overview", helper: "Journey Tracker" },
   { key: "bible-year", label: "Bible in One Year", helper: "Day breakdowns" },
@@ -611,6 +638,7 @@ const SIMPLE_METRIC_OPTIONS: Array<{ key: SimpleAnalyticsMetric; label: string }
   { key: "traffic_sources", label: "Traffic Sources" },
   { key: "completion_popup", label: "Completion Popup" },
   { key: "study_plans", label: "Study Plans" },
+  { key: "blog", label: "Blog" },
 ];
 
 const SIMPLE_WINDOW_OPTIONS: Array<{ key: JourneyWindow; label: string }> = [
@@ -645,6 +673,7 @@ const MAIN_TRAFFIC_SOURCE_ORDER = ["Facebook", "Instagram", "Threads", "Google",
 
 type MainTrafficSourceReport = NonNullable<AnalyticsResponse["trafficSources"]>;
 type MainTrafficSourceVisitorRow = NonNullable<MainTrafficSourceReport["sources"][number]["visitorRows"]>[number];
+type MainTrafficSourceSignupRow = NonNullable<MainTrafficSourceReport["sources"][number]["signupRows"]>[number];
 
 type NormalizedMainTrafficSourceRow = {
   source: string;
@@ -653,6 +682,7 @@ type NormalizedMainTrafficSourceRow = {
   signupRate: number;
   percent: number;
   visitorRows: MainTrafficSourceVisitorRow[];
+  signupRows: MainTrafficSourceSignupRow[];
 };
 
 function normalizeMainTrafficSource(sourceValue: unknown) {
@@ -676,6 +706,7 @@ function getNormalizedMainTrafficSources(report?: AnalyticsResponse["trafficSour
       signupRate: 0,
       percent: 0,
       visitorRows: [],
+      signupRows: [],
     });
   }
 
@@ -688,12 +719,14 @@ function getNormalizedMainTrafficSources(report?: AnalyticsResponse["trafficSour
       signupRate: 0,
       percent: 0,
       visitorRows: [],
+      signupRows: [],
     };
     buckets.set(source, {
       ...current,
       visitors: current.visitors + Number(row.visitors || 0),
       signups: current.signups + Number(row.signups || 0),
       visitorRows: [...current.visitorRows, ...(row.visitorRows || [])].slice(0, 100),
+      signupRows: [...current.signupRows, ...(row.signupRows || [])].slice(0, 100),
     });
   }
 
@@ -1364,6 +1397,7 @@ function SimpleAnalyticsChartCard({
 }
 
 type SignupChartMode = "daily" | "weekly" | "monthly";
+type UpgradeChartPoint = { label: string; value: number; monthly: number; lifetime: number };
 
 const SIGNUP_CHART_OPTIONS: Array<{ key: SignupChartMode; label: string; helper: string }> = [
   { key: "daily", label: "Daily", helper: "Last 60 days" },
@@ -1452,6 +1486,94 @@ function SignupBarChart({
   );
 }
 
+function UpgradeStackedBarChart({
+  points,
+  loading,
+}: {
+  points: UpgradeChartPoint[];
+  loading: boolean;
+}) {
+  const slotWidth = points.length > 45 ? 48 : points.length > 24 ? 56 : points.length > 14 ? 64 : 78;
+  const width = Math.max(780, 54 + 26 + points.length * slotWidth);
+  const height = 340;
+  const left = 54;
+  const baseline = 238;
+  const chartHeight = 190;
+  const right = 26;
+  const step = slotWidth;
+  const barWidth = Math.max(16, Math.min(34, step * 0.48));
+  const maxValue = Math.max(1, ...points.map((point) => point.value));
+  const gridValues = [maxValue, maxValue / 2, 0];
+  const showInlineValues = points.length <= 24;
+
+  if (loading) {
+    return (
+      <div className="grid h-[340px] min-w-[680px] place-items-center rounded-[18px] bg-[var(--bb-surface-soft,#f8fbff)] text-sm font-bold text-[var(--bb-text-secondary,#64748b)]">
+        Loading upgrades...
+      </div>
+    );
+  }
+
+  return (
+    <svg
+      viewBox={`0 0 ${width} ${height}`}
+      className="h-[340px] max-w-none"
+      style={{ width }}
+      role="img"
+      aria-label="Upgrade history split by monthly and lifetime upgrades"
+    >
+      {gridValues.map((value, index) => {
+        const y = baseline - (value / maxValue) * chartHeight;
+        return (
+          <g key={`${value}-${index}`}>
+            <line x1={left} x2={width - right} y1={y} y2={y} stroke="#dbe7f3" strokeDasharray={index === 2 ? "0" : "5 5"} />
+            <text x={left - 8} y={y + 4} textAnchor="end" fill="#64748b" fontSize="11" fontWeight="700">{formatNumber(Math.round(value))}</text>
+          </g>
+        );
+      })}
+      {points.map((point, index) => {
+        const x = left + index * step + (step - barWidth) / 2;
+        const monthly = point.monthly || 0;
+        const lifetime = point.lifetime || 0;
+        const total = point.value || monthly + lifetime;
+        const totalHeight = total > 0 ? Math.max(4, (total / maxValue) * chartHeight) : 0;
+        const monthlyHeight = total > 0 ? totalHeight * (monthly / total) : 0;
+        const lifetimeHeight = total > 0 ? totalHeight * (lifetime / total) : 0;
+        const monthlyY = baseline - monthlyHeight;
+        const lifetimeY = baseline - monthlyHeight - lifetimeHeight;
+
+        return (
+          <g key={`${point.label}-${index}`} className="cursor-pointer">
+            <title>{`${point.label}: ${formatNumber(total)} upgrades (${formatNumber(monthly)} monthly, ${formatNumber(lifetime)} lifetime)`}</title>
+            {monthly > 0 ? (
+              <rect x={x} y={monthlyY} width={barWidth} height={monthlyHeight} rx={lifetime > 0 ? 0 : 7} fill="#2563eb" />
+            ) : null}
+            {lifetime > 0 ? (
+              <rect x={x} y={lifetimeY} width={barWidth} height={lifetimeHeight} rx="7" fill="#8b5cf6" />
+            ) : null}
+            {showInlineValues && total > 0 ? (
+              <text x={x + barWidth / 2} y={Math.max(14, baseline - totalHeight - 8)} textAnchor="middle" fill="#101827" fontSize="11" fontWeight="800">
+                {formatNumber(total)}
+              </text>
+            ) : null}
+            <text
+              x={x + barWidth / 2}
+              y={baseline + 28}
+              textAnchor="end"
+              fill="#64748b"
+              fontSize="11"
+              fontWeight="700"
+              transform={`rotate(-45 ${x + barWidth / 2} ${baseline + 28})`}
+            >
+              {point.label}
+            </text>
+          </g>
+        );
+      })}
+    </svg>
+  );
+}
+
 function UpgradeAnalyticsSection({
   data,
   value,
@@ -1504,16 +1626,20 @@ function UpgradeAnalyticsSection({
             <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">Upgrade history</p>
             <p className="text-xs font-bold text-[var(--bb-text-secondary,#64748b)]">{activeOption.helper}</p>
           </div>
-          <span className="rounded-full bg-violet-50 px-3 py-1 text-xs font-black text-violet-700">{activeOption.label}</span>
+          <div className="flex flex-wrap items-center justify-end gap-3">
+            <span className="inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-[0.12em] text-[var(--bb-text-secondary,#64748b)]">
+              <span className="h-2.5 w-2.5 rounded-full bg-[#2563eb]" />
+              Monthly
+            </span>
+            <span className="inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-[0.12em] text-[var(--bb-text-secondary,#64748b)]">
+              <span className="h-2.5 w-2.5 rounded-full bg-[#8b5cf6]" />
+              Lifetime
+            </span>
+            <span className="rounded-full bg-violet-50 px-3 py-1 text-xs font-black text-violet-700">{activeOption.label}</span>
+          </div>
         </div>
         <div className="overflow-x-auto pb-2">
-          <SignupBarChart
-            points={points}
-            loading={loading}
-            loadingLabel="Loading upgrades..."
-            ariaLabel="Upgrade history by period"
-            tooltipNoun="upgrades"
-          />
+          <UpgradeStackedBarChart points={points} loading={loading} />
         </div>
       </div>
     </section>
@@ -1675,6 +1801,101 @@ function RevenueAnalyticsSection({
             <p className="text-xs font-black uppercase tracking-[0.12em] text-violet-700">Lifetime Revenue</p>
             <p className="mt-1 text-xl font-black text-slate-950">{loading ? "..." : revenue?.lifetimeRevenueRange || "$0"}</p>
           </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function BlogAnalyticsSection({
+  blog,
+  windowKey,
+  loading,
+}: {
+  blog: BlogAnalyticsSummary | null;
+  windowKey: JourneyWindow;
+  loading: boolean;
+}) {
+  const comparisonLabel = getComparisonLabel(windowKey);
+  const topArticles = blog?.topArticles || [];
+
+  return (
+    <div className="space-y-4">
+      {blog?.tableMissing ? (
+        <div className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm font-bold text-amber-800">
+          Blog view tracking isn&apos;t set up yet. Run the ADD_BLOG_PAGE_VIEWS_TABLE.sql migration in Supabase to start collecting data.
+        </div>
+      ) : null}
+
+      <div className="grid gap-3 sm:grid-cols-2">
+        <SimpleAnalyticsKpiCard
+          title="Blog Views"
+          value={loading ? "..." : formatNumber(blog?.totalViews || 0)}
+          helper="Total blog page loads in this timeframe"
+          accent="blue"
+          comparison={windowKey === "lifetime" ? null : blog?.comparison?.change}
+          comparisonLabel={windowKey === "lifetime" ? "" : comparisonLabel}
+        />
+        <SimpleAnalyticsKpiCard
+          title="Blog Visitors"
+          value={loading ? "..." : formatNumber(blog?.totalVisitors || 0)}
+          helper="Unique visitors reading the blog in this timeframe"
+          accent="green"
+          comparison={windowKey === "lifetime" ? null : blog?.visitorsComparison?.change}
+          comparisonLabel={windowKey === "lifetime" ? "" : comparisonLabel}
+        />
+      </div>
+
+      <section className="rounded-[28px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-4 shadow-[0_18px_46px_rgba(15,23,42,0.08)] sm:p-6">
+        <p className="text-sm font-bold text-[var(--bb-text-secondary,#64748b)]">Blog Views Over Time</p>
+        <div className="mt-4">
+          {loading ? (
+            <div className="flex h-[220px] items-center justify-center rounded-[22px] border border-dashed border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#f8fbff)] text-sm font-semibold text-[var(--bb-text-secondary,#64748b)]">
+              Loading...
+            </div>
+          ) : (
+            <SimpleAnalyticsChart points={blog?.viewsSeries || []} />
+          )}
+        </div>
+      </section>
+
+      <section className="rounded-[28px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-4 shadow-[0_18px_46px_rgba(15,23,42,0.08)] sm:p-6">
+        <p className="text-sm font-bold text-[var(--bb-text-secondary,#64748b)]">Blog Visitors Over Time</p>
+        <div className="mt-4">
+          {loading ? (
+            <div className="flex h-[220px] items-center justify-center rounded-[22px] border border-dashed border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#f8fbff)] text-sm font-semibold text-[var(--bb-text-secondary,#64748b)]">
+              Loading...
+            </div>
+          ) : (
+            <SimpleAnalyticsChart points={blog?.visitorsSeries || []} />
+          )}
+        </div>
+      </section>
+
+      <section className="rounded-[28px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-4 shadow-[0_18px_46px_rgba(15,23,42,0.08)] sm:p-6">
+        <p className="text-sm font-bold text-[var(--bb-text-secondary,#64748b)]">Views By Post</p>
+        <div className="mt-4 overflow-x-auto">
+          <table className="w-full min-w-[480px] border-collapse text-left text-sm">
+            <thead className="text-xs font-black uppercase tracking-[0.12em] text-[var(--bb-text-secondary,#64748b)]">
+              <tr>
+                <th className="px-3 py-2">Post</th>
+                <th className="px-3 py-2">Views</th>
+                <th className="px-3 py-2">Visitors</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-[var(--bb-card-border,#e5edf5)]">
+              {topArticles.map((article) => (
+                <tr key={article.slug}>
+                  <td className="max-w-[320px] truncate px-3 py-3 font-bold text-[var(--bb-text-primary,#101827)]">{article.title}</td>
+                  <td className="px-3 py-3 font-black text-blue-600">{formatNumber(article.views)}</td>
+                  <td className="px-3 py-3 font-semibold text-[var(--bb-text-secondary,#64748b)]">{formatNumber(article.visitors)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          {!loading && !topArticles.length ? (
+            <p className="px-3 py-8 text-center text-sm font-bold text-[var(--bb-text-secondary,#64748b)]">No blog views yet in this timeframe.</p>
+          ) : null}
         </div>
       </section>
     </div>
@@ -2160,6 +2381,8 @@ function MobileAnalyticsHighlights({
   businessMetrics,
   stripeRevenue,
   stripeRevenueLoading,
+  blogAnalytics,
+  blogAnalyticsLoading,
   loading,
 }: {
   windowKey: JourneyWindow;
@@ -2170,6 +2393,8 @@ function MobileAnalyticsHighlights({
   businessMetrics: AnalyticsResponse["businessMetrics"] | null | undefined;
   stripeRevenue: StripeRevenueSummary | null;
   stripeRevenueLoading: boolean;
+  blogAnalytics: BlogAnalyticsSummary | null;
+  blogAnalyticsLoading: boolean;
   loading: boolean;
 }) {
   const totalUsersLabel = formatNumber(businessMetrics?.totalUsers || 0);
@@ -2288,6 +2513,12 @@ function MobileAnalyticsHighlights({
               stats={data?.studyPlans}
               windowKey={windowKey}
               loading={loading}
+            />
+          ) : simpleMetric === "blog" ? (
+            <BlogAnalyticsSection
+              blog={blogAnalytics}
+              windowKey={windowKey}
+              loading={blogAnalyticsLoading}
             />
           ) : (
             <SimpleAnalyticsChartCard
@@ -3781,11 +4012,12 @@ function TrafficSourcesAnalyticsSection({
 }
 
 function TrafficSourcesView({ report }: { report?: AnalyticsResponse["trafficSources"] }) {
-  const sources = report?.sources || [];
+  const sources = getNormalizedMainTrafficSources(report);
   const totalVisitors = report?.totalVisitors || 0;
   const totalSignups = sources.reduce((sum, source) => sum + source.signups, 0);
   const [selectedSource, setSelectedSource] = useState<(typeof sources)[number] | null>(null);
   const selectedRows = selectedSource?.visitorRows || [];
+  const selectedSignupRows = selectedSource?.signupRows || [];
 
   return (
     <section className="mt-8 space-y-5">
@@ -3845,7 +4077,7 @@ function TrafficSourcesView({ report }: { report?: AnalyticsResponse["trafficSou
                 <div className="mt-5 h-3 overflow-hidden rounded-full bg-white/70 ring-1 ring-slate-200">
                   <div className="h-full rounded-full bg-current transition-all" style={{ width: `${Math.min(100, Math.max(0, source.percent))}%` }} />
                 </div>
-                <p className="mt-3 text-xs font-black text-slate-700">Click to see referrers</p>
+                <p className="mt-3 text-xs font-black text-slate-700">Click to see signups and referrers</p>
               </button>
             );
           })}
@@ -3877,8 +4109,70 @@ function TrafficSourcesView({ report }: { report?: AnalyticsResponse["trafficSou
               </button>
             </div>
             <div className="max-h-[64vh] overflow-y-auto px-5 py-4">
+              {selectedSignupRows.length ? (
+                <div className="mb-6">
+                  <div className="mb-3 flex items-center justify-between gap-3">
+                    <div>
+                      <h3 className="text-lg font-black text-slate-950">Signups From {selectedSource.source}</h3>
+                      <p className="text-sm font-semibold text-slate-600">These are the accounts credited to this traffic source.</p>
+                    </div>
+                    <span className="rounded-full bg-blue-50 px-3 py-1 text-sm font-black text-blue-700">
+                      {formatNumber(selectedSignupRows.length)}
+                    </span>
+                  </div>
+                  <div className="overflow-x-auto rounded-xl border border-slate-200">
+                    <table className="w-full min-w-[760px] text-left text-sm">
+                      <thead className="bg-slate-50 text-xs font-black uppercase tracking-[0.12em] text-slate-500">
+                        <tr>
+                          <th className="py-3 pl-4 pr-4">Signup</th>
+                          <th className="py-3 pr-4">Matched By</th>
+                          <th className="py-3 pr-4">Signup Link</th>
+                          <th className="py-3 pr-4">Came From</th>
+                          <th className="py-3 pr-4">Signed Up</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-200 font-semibold text-slate-800">
+                        {selectedSignupRows.map((row) => (
+                          <tr key={`${row.actorId}-${row.signedUpAt || ""}`}>
+                            <td className="py-3 pl-4 pr-4 align-top">
+                              <p className="font-black text-slate-950">{row.userLabel}</p>
+                              <p className="mt-0.5 text-xs text-slate-500">{shortId(row.userId || row.sessionId || row.actorId)}</p>
+                            </td>
+                            <td className="py-3 pr-4 align-top">
+                              <span className="rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-black capitalize text-emerald-700 ring-1 ring-emerald-200">
+                                {row.matchedBy}
+                              </span>
+                            </td>
+                            <td className="max-w-[240px] py-3 pr-4 align-top">
+                              <a href={row.signupUrl} target="_blank" rel="noreferrer" className="break-all text-slate-800 underline decoration-slate-300 underline-offset-2">
+                                {row.pagePath || row.signupUrl}
+                              </a>
+                            </td>
+                            <td className="max-w-[260px] py-3 pr-4 align-top">
+                              {row.referrer ? (
+                                <a href={row.referrer} target="_blank" rel="noreferrer" className="break-all text-blue-700 underline decoration-blue-300 underline-offset-2">
+                                  {row.referrer}
+                                </a>
+                              ) : (
+                                <span className="text-slate-500">No referrer captured</span>
+                              )}
+                            </td>
+                            <td className="whitespace-nowrap py-3 pr-4 align-top text-slate-600">{row.signedUpAt ? formatDateTime(row.signedUpAt) : "Unknown"}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              ) : (
+                <p className="mb-6 rounded-xl border border-dashed border-slate-300 p-6 text-center text-sm font-bold text-slate-500">
+                  No signup rows captured for this source in this window.
+                </p>
+              )}
+
               {selectedRows.length ? (
                 <div className="overflow-x-auto">
+                  <h3 className="mb-3 text-lg font-black text-slate-950">Landing Visitors</h3>
                   <table className="w-full min-w-[760px] text-left text-sm">
                     <thead className="text-xs font-black uppercase tracking-[0.12em] text-slate-500">
                       <tr>
@@ -4188,6 +4482,9 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
   const [stripeRevenue, setStripeRevenue] = useState<StripeRevenueSummary | null>(null);
   const [stripeRevenueLoading, setStripeRevenueLoading] = useState(false);
   const [stripeRevenueError, setStripeRevenueError] = useState<string | null>(null);
+  const [blogAnalytics, setBlogAnalytics] = useState<BlogAnalyticsSummary | null>(null);
+  const [blogAnalyticsLoading, setBlogAnalyticsLoading] = useState(false);
+  const [blogAnalyticsError, setBlogAnalyticsError] = useState<string | null>(null);
   const [search, setSearch] = useState("");
   const [sourceFilter, setSourceFilter] = useState("all");
   const [statusFilter, setStatusFilter] = useState<VisitorJourneyStatus | "all">("all");
@@ -4325,6 +4622,31 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
       }
     }
     void loadStripeRevenue();
+  }, [authChecked, isOwner, windowKey]);
+
+  useEffect(() => {
+    if (!authChecked || !isOwner) return;
+    async function loadBlogAnalytics() {
+      setBlogAnalyticsLoading(true);
+      setBlogAnalyticsError(null);
+      try {
+        const { data: sessionData } = await supabase.auth.getSession();
+        const token = sessionData.session?.access_token;
+        if (!token) throw new Error("Owner session expired. Please sign in again.");
+        const response = await fetch(`/api/admin/blog-analytics?window=${windowKey}`, {
+          cache: "no-store",
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        const json = (await response.json()) as BlogAnalyticsSummary;
+        if (!response.ok) throw new Error(json.error || "Could not load blog analytics.");
+        setBlogAnalytics(json);
+      } catch (loadError) {
+        setBlogAnalyticsError(loadError instanceof Error ? loadError.message : "Could not load blog analytics.");
+      } finally {
+        setBlogAnalyticsLoading(false);
+      }
+    }
+    void loadBlogAnalytics();
   }, [authChecked, isOwner, windowKey]);
 
   useEffect(() => {
@@ -4734,28 +5056,6 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
                     accent="green"
                   />
                 </div>
-                <div className="grid gap-3 lg:grid-cols-3">
-                  <SimpleAnalyticsOverviewChart
-                    title="Signup Trend"
-                    value={loading ? "..." : signupsLabel}
-                    points={data?.simpleSeries?.signups || []}
-                    loading={loading}
-                  />
-                  <SimpleAnalyticsOverviewChart
-                    title="Revenue Trend"
-                    value={stripeRevenueLoading ? "..." : revenueLabel}
-                    points={stripeRevenue?.series || []}
-                    loading={stripeRevenueLoading}
-                    valueFormatter={formatMoneyValue}
-                  />
-                  <SimpleAnalyticsOverviewChart
-                    title="Upgrade Trend"
-                    value={stripeRevenueLoading ? "..." : upgradesLabel}
-                    points={stripeRevenue?.upgradeSeries || data?.simpleSeries?.upgrades || []}
-                    loading={stripeRevenueLoading || loading}
-                  />
-                </div>
-
                 <section className="rounded-[28px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-5 shadow-[0_18px_46px_rgba(15,23,42,0.08)]">
                   <div className="flex items-center justify-between gap-4">
                     <div>
@@ -4844,6 +5144,12 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
                     stats={data?.studyPlans}
                     windowKey={windowKey}
                     loading={loading}
+                  />
+                ) : simpleMetric === "blog" ? (
+                  <BlogAnalyticsSection
+                    blog={blogAnalytics}
+                    windowKey={windowKey}
+                    loading={blogAnalyticsLoading}
                   />
                 ) : (
                   <SimpleAnalyticsChartCard
@@ -5120,6 +5426,8 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
               businessMetrics={businessMetrics}
               stripeRevenue={stripeRevenue}
               stripeRevenueLoading={stripeRevenueLoading}
+              blogAnalytics={blogAnalytics}
+              blogAnalyticsLoading={blogAnalyticsLoading}
               loading={loading}
             />
           ) : null}

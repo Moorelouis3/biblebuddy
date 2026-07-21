@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import CommentSection from "@/components/comments/CommentSection";
 import BlogArticleEngagementBar from "@/components/blog/BlogArticleEngagementBar";
+import { trackBlogPageView } from "@/lib/blogViewTracking";
 
 function toTitleCase(str: string) {
   return str
@@ -50,6 +51,10 @@ export default function BibleStudyHubArticleLayout({ children }: { children: Rea
     : isTipsArticlePage
       ? `/bible-study-tips/${segments[1]}`
       : undefined;
+  useEffect(() => {
+    if (articleSlug) trackBlogPageView(articleSlug);
+  }, [articleSlug]);
+
   const pageUrl = `https://www.mybiblebuddy.net${pathname}`;
   const shareTitle =
     typeof document !== "undefined"

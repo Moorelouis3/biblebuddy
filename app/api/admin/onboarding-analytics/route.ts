@@ -503,11 +503,7 @@ type ProfileSignupAttributionRow = {
   display_name?: string | null;
   username?: string | null;
   traffic_source?: string | null;
-  signup_source?: string | null;
-  signup_source_detail?: string | null;
-  signup_referrer_url?: string | null;
-  signup_landing_session_id?: string | null;
-  signup_source_recorded_at?: string | null;
+  created_at?: string | null;
 };
 
 type PaidProfileUpgradeRow = {
@@ -2264,11 +2260,6 @@ function summarizeTrafficSources(rows: LandingEventRow[]) {
   };
 }
 
-function isMissingSignupAttributionProfileColumn(error: { message?: string } | null | undefined) {
-  const message = error?.message || "";
-  return /signup_source|signup_source_detail|signup_referrer_url|signup_landing_session_id|signup_source_recorded_at|schema cache/i.test(message);
-}
-
 function isTimestampInAnalyticsWindow(timestamp: string | null | undefined, startIso: string, endIso: string | null) {
   if (!timestamp) return false;
   const time = new Date(timestamp).getTime();
@@ -2278,7 +2269,7 @@ function isTimestampInAnalyticsWindow(timestamp: string | null | undefined, star
 }
 
 function normalizeProfileSignupSource(row: ProfileSignupAttributionRow) {
-  return normalizeTrafficSourceLabel(row.signup_source || row.traffic_source || "Other", row.signup_referrer_url || "", row.signup_source_detail || "");
+  return normalizeTrafficSourceLabel(row.traffic_source || "Other", "", "");
 }
 
 function mergeProfileSignupAttributionIntoTrafficSources(
@@ -2307,7 +2298,7 @@ function mergeProfileSignupAttributionIntoTrafficSources(
     const userId = typeof profile.user_id === "string" ? profile.user_id : "";
     if (!userId || countedSignupUserIds.has(userId)) continue;
 
-    const signedUpAt = profile.signup_source_recorded_at || authCreatedAtByUserId.get(userId) || null;
+    const signedUpAt = authCreatedAtByUserId.get(userId) || profile.created_at || null;
     if (!isTimestampInAnalyticsWindow(signedUpAt, startIso, endIso)) continue;
 
     const source = normalizeProfileSignupSource(profile);
@@ -2327,10 +2318,10 @@ function mergeProfileSignupAttributionIntoTrafficSources(
     existing.signupRows.push({
       actorId: userId,
       userId,
-      sessionId: profile.signup_landing_session_id || null,
+      sessionId: null,
       userLabel: profileByUserId.get(userId) || displayName || username || `User ${shortId(userId)}`,
       source,
-      referrer: profile.signup_referrer_url || null,
+      referrer: null,
       pagePath: "/signup",
       signupUrl: "https://mybiblebuddy.net/signup",
       signedUpAt,
@@ -4942,10 +4933,14 @@ export async function GET(request: Request) {
   const profileByUserId = new Map<string, string>();
   const profileSummaryByUserId = new Map<string, ProfileSummary>();
   if (eventUserIds.length > 0) {
-    const { data: profileRows } = await adminSupabase
+    const { data: profileRows, error: profileRowsError } = await adminSupabase
       .from("profile_stats")
-      .select("user_id, display_name, username, is_paid, registered_at, converted_from_guest_at, current_streak, current_level, total_actions, member_badge, pro_expires_at")
+      .select("user_id, display_name, username, is_paid, current_streak, current_level, total_actions, member_badge, pro_expires_at")
       .in("user_id", eventUserIds);
+
+    if (profileRowsError) {
+      console.error("[ONBOARDING_ANALYTICS] profile_stats lookup for eventUserIds failed:", profileRowsError.message);
+    }
 
     for (const profile of profileRows || []) {
       const userId = typeof profile.user_id === "string" ? profile.user_id : "";
@@ -4957,8 +4952,8 @@ export async function GET(request: Request) {
       profileSummaryByUserId.set(userId, {
         displayName: name,
         isPaid: Boolean(profile.is_paid),
-        registeredAt: typeof profile.registered_at === "string" ? profile.registered_at : null,
-        convertedFromGuestAt: typeof profile.converted_from_guest_at === "string" ? profile.converted_from_guest_at : null,
+        registeredAt: null,
+        convertedFromGuestAt: null,
         currentStreak: typeof profile.current_streak === "number" ? profile.current_streak : null,
         currentLevel: typeof profile.current_level === "number" ? profile.current_level : null,
         totalActions: typeof profile.total_actions === "number" ? profile.total_actions : null,
@@ -5050,18 +5045,13 @@ export async function GET(request: Request) {
     const userIds = validSimpleAuthUserIds.slice(index, index + 1000);
     if (userIds.length === 0) continue;
 
-    let { data: profileSignupRows, error: profileSignupError } = await adminSupabase
+    const { data: profileSignupRows, error: profileSignupError } = await adminSupabase
       .from("profile_stats")
-      .select("user_id, display_name, username, traffic_source, signup_source, signup_source_detail, signup_referrer_url, signup_landing_session_id, signup_source_recorded_at")
+      .select("user_id, display_name, username, traffic_source, created_at")
       .in("user_id", userIds);
 
-    if (profileSignupError && isMissingSignupAttributionProfileColumn(profileSignupError)) {
-      const fallback = await adminSupabase
-        .from("profile_stats")
-        .select("user_id, display_name, username, traffic_source")
-        .in("user_id", userIds);
-      profileSignupRows = fallback.data as typeof profileSignupRows;
-      profileSignupError = fallback.error;
+    if (profileSignupError) {
+      console.error("[ONBOARDING_ANALYTICS] profile_stats signup attribution lookup failed:", profileSignupError.message);
     }
 
     if (!profileSignupError && profileSignupRows) {
