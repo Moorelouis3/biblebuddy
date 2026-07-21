@@ -27,6 +27,12 @@ import { GENESIS_TWENTY_NINE_PERSONAL_SECTIONS } from "./genesisTwentyNineSource
 import { GENESIS_THIRTY_PERSONAL_SECTIONS } from "./genesisThirtySource";
 import { GENESIS_THIRTY_ONE_PERSONAL_SECTIONS } from "./genesisThirtyOneSource";
 import { GENESIS_THIRTY_TWO_PERSONAL_SECTIONS } from "./genesisThirtyTwoSource";
+import { GENESIS_THIRTY_THREE_PERSONAL_SECTIONS } from "./genesisThirtyThreeSource";
+import { GENESIS_THIRTY_FOUR_PERSONAL_SECTIONS } from "./genesisThirtyFourSource";
+import { GENESIS_THIRTY_FIVE_PERSONAL_SECTIONS } from "./genesisThirtyFiveSource";
+import { GENESIS_THIRTY_SIX_PERSONAL_SECTIONS } from "./genesisThirtySixSource";
+import { GENESIS_THIRTY_SEVEN_PERSONAL_SECTIONS } from "./genesisThirtySevenSource";
+import { GENESIS_THIRTY_EIGHT_PERSONAL_SECTIONS } from "./genesisThirtyEightSource";
 import { GENESIS_THIRTY_NINE_PERSONAL_SECTIONS } from "./genesisThirtyNineSource";
 import { GENESIS_FORTY_PERSONAL_SECTIONS } from "./genesisFortySource";
 import { GENESIS_THREE_PERSONAL_SECTIONS } from "./genesisThreeSource";
@@ -8265,6 +8271,42 @@ replaceStudySectionsForBookRange(
   32,
   32,
   GENESIS_THIRTY_TWO_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "genesis",
+  33,
+  33,
+  GENESIS_THIRTY_THREE_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "genesis",
+  34,
+  34,
+  GENESIS_THIRTY_FOUR_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "genesis",
+  35,
+  35,
+  GENESIS_THIRTY_FIVE_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "genesis",
+  36,
+  36,
+  GENESIS_THIRTY_SIX_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "genesis",
+  37,
+  37,
+  GENESIS_THIRTY_SEVEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "genesis",
+  38,
+  38,
+  GENESIS_THIRTY_EIGHT_PERSONAL_SECTIONS,
 );
 replaceStudySectionsForBookRange(
   "genesis",
