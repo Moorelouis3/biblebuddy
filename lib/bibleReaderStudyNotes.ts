@@ -35,12 +35,43 @@ import { GENESIS_THIRTY_SEVEN_PERSONAL_SECTIONS } from "./genesisThirtySevenSour
 import { GENESIS_THIRTY_EIGHT_PERSONAL_SECTIONS } from "./genesisThirtyEightSource";
 import { GENESIS_THIRTY_NINE_PERSONAL_SECTIONS } from "./genesisThirtyNineSource";
 import { GENESIS_FORTY_PERSONAL_SECTIONS } from "./genesisFortySource";
+import { GENESIS_FORTY_TWO_PERSONAL_SECTIONS } from "./genesisFortyTwoSource";
 import { GENESIS_THREE_PERSONAL_SECTIONS } from "./genesisThreeSource";
 import { GENESIS_TWO_PERSONAL_SECTIONS } from "./genesisTwoSource";
 import { GENESIS_11_20_PERSONAL_SECTIONS } from "./genesisElevenToTwentyPersonalNotes";
 import { GENESIS_21_30_PERSONAL_SECTIONS } from "./genesisTwentyOneToThirtyPersonalNotes";
 import { GENESIS_31_40_PERSONAL_SECTIONS } from "./genesisThirtyOneToFortyPersonalNotes";
 import { GENESIS_41_50_PERSONAL_SECTIONS } from "./genesisFortyOneToFiftyPersonalNotes";
+import { GENESIS_FORTY_ONE_PERSONAL_SECTIONS } from "./genesisFortyOneSource";
+import { GENESIS_FORTY_THREE_PERSONAL_SECTIONS } from "./genesisFortyThreeSource";
+import { GENESIS_FORTY_FOUR_PERSONAL_SECTIONS } from "./genesisFortyFourSource";
+import { GENESIS_FORTY_FIVE_PERSONAL_SECTIONS } from "./genesisFortyFiveSource";
+import { GENESIS_FORTY_SIX_PERSONAL_SECTIONS } from "./genesisFortySixSource";
+import { GENESIS_FORTY_SEVEN_PERSONAL_SECTIONS } from "./genesisFortySevenSource";
+import { GENESIS_FORTY_EIGHT_PERSONAL_SECTIONS } from "./genesisFortyEightSource";
+import { GENESIS_FORTY_NINE_PERSONAL_SECTIONS } from "./genesisFortyNineSource";
+import { GENESIS_FIFTY_PERSONAL_SECTIONS } from "./genesisFiftySource";
+import { EXODUS_ONE_PERSONAL_SECTIONS } from "./exodusOneSource";
+import { EXODUS_TWO_PERSONAL_SECTIONS } from "./exodusTwoSource";
+import { EXODUS_THREE_PERSONAL_SECTIONS } from "./exodusThreeSource";
+import { EXODUS_FOUR_PERSONAL_SECTIONS } from "./exodusFourSource";
+import { EXODUS_FIVE_PERSONAL_SECTIONS } from "./exodusFiveSource";
+import { EXODUS_SIX_PERSONAL_SECTIONS } from "./exodusSixSource";
+import { EXODUS_SEVEN_PERSONAL_SECTIONS } from "./exodusSevenSource";
+import { EXODUS_EIGHT_PERSONAL_SECTIONS } from "./exodusEightSource";
+import { EXODUS_NINE_PERSONAL_SECTIONS } from "./exodusNineSource";
+import { EXODUS_TEN_PERSONAL_SECTIONS } from "./exodusTenSource";
+import { EXODUS_ELEVEN_PERSONAL_SECTIONS } from "./exodusElevenSource";
+import { EXODUS_TWELVE_PERSONAL_SECTIONS } from "./exodusTwelveSource";
+import { EXODUS_THIRTEEN_PERSONAL_SECTIONS } from "./exodusThirteenSource";
+import { EXODUS_FOURTEEN_PERSONAL_SECTIONS } from "./exodusFourteenSource";
+import { EXODUS_FIFTEEN_PERSONAL_SECTIONS } from "./exodusFifteenSource";
+import { EXODUS_SIXTEEN_PERSONAL_SECTIONS } from "./exodusSixteenSource";
+import { EXODUS_SEVENTEEN_PERSONAL_SECTIONS } from "./exodusSeventeenSource";
+import { EXODUS_EIGHTEEN_PERSONAL_SECTIONS } from "./exodusEighteenSource";
+import { EXODUS_NINETEEN_PERSONAL_SECTIONS } from "./exodusNineteenSource";
+import { EXODUS_TWENTY_PERSONAL_SECTIONS } from "./exodusTwentySource";
+import { EXODUS_TWENTY_ONE_PERSONAL_SECTIONS } from "./exodusTwentyOneSource";
 import { EXODUS_2_10_PERSONAL_SECTIONS } from "./exodusTwoToTenPersonalNotes";
 import { EXODUS_11_20_PERSONAL_SECTIONS } from "./exodusElevenToTwentyPersonalNotes";
 import { EXODUS_21_30_PERSONAL_SECTIONS } from "./exodusTwentyOneToThirtyPersonalNotes";
@@ -332,7 +363,7 @@ function buildPhraseTeachingBullets(phrase: string, sourceLines: string[]) {
     .slice(0, 3);
 
   if (usefulLines.length >= 3) {
-    return [`ðŸ”Ž ${usefulLines[0]}`, `ðŸ“– ${usefulLines[1]}`, `ðŸ§­ ${usefulLines[2]}`];
+    return [`🔎 ${usefulLines[0]}`, `📖 ${usefulLines[1]}`, `🧭 ${usefulLines[2]}`];
   }
 
   const focus = inferPhraseFocus(phrase);
@@ -345,7 +376,7 @@ function buildPhraseTeachingBullets(phrase: string, sourceLines: string[]) {
       ? "It helps the reader see what the LORD is revealing about Himself."
       : "It helps the reader understand why this detail belongs in the story.");
 
-  return [`ðŸ”Ž ${meaning}`, `ðŸ“– ${context}`, `ðŸ§­ ${why}`];
+  return [`🔎 ${meaning}`, `📖 ${context}`, `🧭 ${why}`];
 }
 
 function isGenesisQualityControlReference(reference?: string) {
@@ -397,7 +428,7 @@ function formatBibleYearPhraseCard(rawHeading: string, rawBody: string, referenc
   ];
   const teachingSource = [...preEmojiText.slice(2), ...postEmojiText];
   const bullets = emojiLines.length >= 2 ? emojiLines : buildPhraseTeachingBullets(phrase, teachingSource.length ? teachingSource : textLines);
-  const outroSource = emojiLines.length >= 2 ? postEmojiText : textLines.slice(2);
+  const outroSource = emojiLines.length >= 2 ? postEmojiText : [];
   const outro = outroSource.slice(0, 2);
   const bulletBlock = bullets.slice(0, 4).join("\n");
 
@@ -415,7 +446,8 @@ function ensureTitleHasIcon(title: string, icon: string) {
 
 function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, book: string): BibleReaderStudySection {
   const preserveExactPhraseBodies =
-    normalizeBook(book) === "genesis" && section.chapter >= 1 && section.chapter <= 40;
+    (normalizeBook(book) === "genesis" && section.chapter >= 1 && section.chapter <= 50) ||
+    (normalizeBook(book) === "exodus" && section.chapter >= 1 && section.chapter <= 21);
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -8319,6 +8351,192 @@ replaceStudySectionsForBookRange(
   40,
   40,
   GENESIS_FORTY_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "genesis",
+  41,
+  41,
+  GENESIS_FORTY_ONE_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "genesis",
+  42,
+  42,
+  GENESIS_FORTY_TWO_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "genesis",
+  43,
+  43,
+  GENESIS_FORTY_THREE_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "genesis",
+  44,
+  44,
+  GENESIS_FORTY_FOUR_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "genesis",
+  45,
+  45,
+  GENESIS_FORTY_FIVE_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "genesis",
+  46,
+  46,
+  GENESIS_FORTY_SIX_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "genesis",
+  47,
+  47,
+  GENESIS_FORTY_SEVEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "genesis",
+  48,
+  48,
+  GENESIS_FORTY_EIGHT_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "genesis",
+  49,
+  49,
+  GENESIS_FORTY_NINE_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "genesis",
+  50,
+  50,
+  GENESIS_FIFTY_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "exodus",
+  1,
+  1,
+  EXODUS_ONE_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "exodus",
+  2,
+  2,
+  EXODUS_TWO_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "exodus",
+  3,
+  3,
+  EXODUS_THREE_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "exodus",
+  4,
+  4,
+  EXODUS_FOUR_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "exodus",
+  5,
+  5,
+  EXODUS_FIVE_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "exodus",
+  6,
+  6,
+  EXODUS_SIX_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "exodus",
+  7,
+  7,
+  EXODUS_SEVEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "exodus",
+  8,
+  8,
+  EXODUS_EIGHT_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "exodus",
+  9,
+  9,
+  EXODUS_NINE_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "exodus",
+  10,
+  10,
+  EXODUS_TEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "exodus",
+  11,
+  11,
+  EXODUS_ELEVEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "exodus",
+  12,
+  12,
+  EXODUS_TWELVE_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "exodus",
+  13,
+  13,
+  EXODUS_THIRTEEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "exodus",
+  14,
+  14,
+  EXODUS_FOURTEEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "exodus",
+  15,
+  15,
+  EXODUS_FIFTEEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "exodus",
+  16,
+  16,
+  EXODUS_SIXTEEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "exodus",
+  17,
+  17,
+  EXODUS_SEVENTEEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "exodus",
+  18,
+  18,
+  EXODUS_EIGHTEEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "exodus",
+  19,
+  19,
+  EXODUS_NINETEEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "exodus",
+  20,
+  20,
+  EXODUS_TWENTY_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "exodus",
+  21,
+  21,
+  EXODUS_TWENTY_ONE_PERSONAL_SECTIONS,
 );
 
 for (const section of BIBLE_READER_STUDY_SECTIONS) {

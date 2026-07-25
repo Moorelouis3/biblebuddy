@@ -1,0 +1,18 @@
+{
+  "purpose": "Tracks any usage limits, blocks, cooldowns, throttling, or forced waits encountered while writing Bible chapter notes. Logged in real time, permanently, every session, not just this one.",
+  "howToReadThis": "Each event has a type: chapter_count_checkpoint (periodic marker of how many chapters finished so far, no issue), block (hit an actual usage/rate limit and had to stop), cooldown_wait (waited out a limit before resuming), resumed (work started again after a block/cooldown), note (anything else worth flagging).",
+  "events": [
+    {
+      "timestamp": "2026-07-25T04:05:00Z",
+      "type": "note",
+      "chaptersCompletedSoFarTonight": 8,
+      "detail": "User asked for permanent tracking of any usage limits/blocks/cooldowns starting now. No block or throttling has occurred yet as of this timestamp -- work has been continuous since Genesis 41. Logging this as the tracking start point."
+    },
+    {
+      "timestamp": "2026-07-25T04:10:00Z",
+      "type": "chapter_count_checkpoint",
+      "chaptersCompletedSoFarTonight": 9,
+      "detail": "Genesis 1-50 fully complete (milestone). No usage limit, block, or cooldown encountered yet -- work has been continuous and uninterrupted the entire session so far. Moving into Exodus next."
+    }
+  ]
+}

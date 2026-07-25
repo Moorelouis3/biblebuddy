@@ -41,3 +41,17 @@ dev-*.log
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# debug/dev artifacts - never git
+*.log
+*.err.log
+*.out.log
+build-output.txt
+tmp-*.txt
+*_decoded.txt
+*_raw_extracted.txt
+*.mp4
+console.log(Object.keys(m)))
+
+# finished media exports - large, live elsewhere, never git
+/exports/
