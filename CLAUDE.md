@@ -22,3 +22,17 @@ Next: <what's planned for next session>
 
 Append both to `SESSION_LOG.md` in this project's root (create it if it
 doesn't exist).
+
+## Handoff to Marcus (Life Buddy)
+If Louis says "tell Marcus" or asks you to flag something for Life Buddy
+(a problem, an issue, something that needs tracking outside this
+project), append it to `MARCUS_HANDOFF.md` in this project's root
+(create it if missing) in this format:
+```
+## <short title>
+<description of the issue/problem in a sentence or two>
+```
+Life Buddy checks this file automatically every few minutes and turns
+each entry into a real tracked Problem, then clears the file. You do not
+need to tell Louis it worked — it just gets picked up.
+
