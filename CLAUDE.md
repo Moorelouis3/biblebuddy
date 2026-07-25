@@ -36,3 +36,13 @@ Life Buddy checks this file automatically every few minutes and turns
 each entry into a real tracked Problem, then clears the file. You do not
 need to tell Louis it worked — it just gets picked up.
 
+
+## Ideas from Louis (via Life Buddy)
+Louis sometimes captures ideas for this project while away from it (often
+by voice, through Life Buddy). If `IDEAS.md` exists in this project's
+root and has entries, check it at the START of a session. If there are new
+ideas, greet Louis with them and ask whether he wants to discuss, plan, or
+schedule each one -- do not just start executing them. Once an idea has
+been discussed/actioned, mark it in `IDEAS.md` (e.g. strike it or move it
+to a "handled" section) so it is not brought up again next session.
+
