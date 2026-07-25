@@ -46,3 +46,22 @@ schedule each one -- do not just start executing them. Once an idea has
 been discussed/actioned, mark it in `IDEAS.md` (e.g. strike it or move it
 to a "handled" section) so it is not brought up again next session.
 
+
+## Responding to a command from Marcus (accountability protocol)
+When Marcus sends you an idea/command via `IDEAS.md` that you accept and
+start acting on, report back via `MARCUS_HANDOFF.md` with a response that
+includes ALL of:
+1. Confirmation you understand the plan and accept it
+2. A realistic deadline for the work
+3. A check-in time/method (when and how you will prove progress is
+   actually happening, not just promised)
+Example:
+```
+## Accepted: Title Research Page
+Understood the plan, accepted. Deadline: end of day Sunday. Check-in:
+will report progress in the Wednesday DAILY_REPORT.md either way.
+```
+This is not optional politeness -- Louis wants to be able to see, for
+every command given to any buddy, whether it was accepted, by when it
+will be done, and how progress gets proven along the way.
+
