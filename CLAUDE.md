@@ -1,8 +1,24 @@
-## Nightly Session Log (for Life Buddy reporting)
-At the end of a work session in this project, append a short entry to
-`SESSION_LOG.md` in this project's root (create the file if it doesn't
-exist yet) with: the date, roughly how long the session ran, the major
-things done or decided, and anything Louis should know that's easy to
-forget. Keep it brief — a few lines, not a transcript. This file gets read
-by the "Life Buddy" project (`C:\Users\Moore\Desktop\second-brain`) to
-build Louis's nightly report across all his projects.
+## Session Log (for Life Buddy reporting)
+This project reports to "Life Buddy" (`C:\Users\Moore\Desktop\second-brain`),
+which compiles Louis's daily morning and night reports across all his
+projects. Keep entries brief — a few lines each, not a transcript.
+
+**Starting a session (morning):** read this project's PLAN.md (marching
+orders) and the most recent night entry below, then append:
+```
+## <date> (morning)
+Marching orders: <what this project's plan says the priority is>
+Today: <the concrete plan for this session>
+```
+
+**Ending a session (night):** append:
+```
+## <date> (night)
+Time spent: <rough estimate>
+Done: <what actually got done/decided>
+Still open: <unfinished or blocked items>
+Next: <what's planned for next session>
+```
+
+Append both to `SESSION_LOG.md` in this project's root (create it if it
+doesn't exist).
