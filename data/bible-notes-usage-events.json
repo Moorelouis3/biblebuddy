@@ -25,6 +25,12 @@
       "type": "resumed",
       "chaptersCompletedSoFarTonight": 1,
       "detail": "Resumed after the prior run's network block, wait length unknown (routine fires hourly, so likely under an hour). This run's instructions pointed at raw.githubusercontent.com/aruljohn/Bible-kjv (a public-domain KJV JSON mirror on GitHub's raw content host) instead of the general Bible sites that were 403'ing -- that host was reachable via curl, confirming the egress block is specific to the previously-tried hosts (biblegateway.com, kingjamesbibleonline.org, bible-api.com, biblehub.com, example.com, gutenberg.org), not a blanket outbound denial. Exodus 24 fetched and written successfully this run."
+    },
+    {
+      "timestamp": "2026-07-27T00:20:00Z",
+      "type": "chapter_count_checkpoint",
+      "chaptersCompletedSoFarTonight": 4,
+      "detail": "Exodus 25-28 shipped this run (4/4 verified), all via the raw.githubusercontent.com/aruljohn/Bible-kjv fallback confirmed reachable in the prior run. No block, cooldown, or throttling encountered this run."
     }
   ]
 }

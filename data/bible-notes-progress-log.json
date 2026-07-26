@@ -365,6 +365,50 @@
       "cards": 30,
       "verses": 18,
       "notes": "Scheduled hourly Bible Note Writer Agent run. The covenant-ratification ceremony at Sinai: elders called partway up the mountain, the people's twofold vow, blood split between altar and people ('behold the blood of the covenant', echoed by Jesus at the Last Supper), the elders seeing the God of Israel and eating in His presence, Moses called higher alone for the tables of stone, and forty days/nights in the cloud. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror. Parser check passed exactly (6/6 sections, 30 cards), npx tsc --noEmit -p . clean."
+    },
+    {
+      "book": "Exodus",
+      "chapter": 25,
+      "startedAt": "2026-07-27T00:00:00Z",
+      "finishedAt": "2026-07-27T00:00:00Z",
+      "durationMinutes": null,
+      "sections": 5,
+      "cards": 25,
+      "verses": 40,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The offering call for the sanctuary materials, the ark of the covenant and its carrying rings, the mercy seat and its guardian cherubim, the table of shewbread, and the golden candlestick. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror. Parser check passed exactly (5/5 sections, 25 cards), npx tsc --noEmit -p . showed no new errors versus the pre-existing baseline."
+    },
+    {
+      "book": "Exodus",
+      "chapter": 26,
+      "startedAt": "2026-07-27T00:00:00Z",
+      "finishedAt": "2026-07-27T00:00:00Z",
+      "durationMinutes": null,
+      "sections": 6,
+      "cards": 21,
+      "verses": 37,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The tabernacles four layered curtain coverings, the standing acacia-wood boards on silver sockets, the connecting bars, the veil dividing the holy place from the most holy, and the entrance door hanging. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror. Parser check passed exactly (6/6 sections, 21 cards), npx tsc --noEmit -p . showed no new errors versus the pre-existing baseline."
+    },
+    {
+      "book": "Exodus",
+      "chapter": 27,
+      "startedAt": "2026-07-27T00:00:00Z",
+      "finishedAt": "2026-07-27T00:00:00Z",
+      "durationMinutes": null,
+      "sections": 4,
+      "cards": 13,
+      "verses": 21,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The bronze altar of burnt offering and its brass tools, the courts linen boundary and pillars, the colorful entrance gate, and the priests nightly duty to tend the lamps oil. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror. Parser check passed exactly (4/4 sections, 13 cards), npx tsc --noEmit -p . showed no new errors versus the pre-existing baseline."
+    },
+    {
+      "book": "Exodus",
+      "chapter": 28,
+      "startedAt": "2026-07-27T00:00:00Z",
+      "finishedAt": "2026-07-27T00:00:00Z",
+      "durationMinutes": null,
+      "sections": 7,
+      "cards": 28,
+      "verses": 43,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priestly garments for glory and beauty, the ephod and its onyx shoulder stones, the breastplate of judgment and its twelve gemstones, the Urim and Thummim, the robe with its bells and pomegranates, the golden forehead plate reading Holiness To The Lord, and garments for the ordinary priests. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror. Parser check passed exactly (7/7 sections, 28 cards), npx tsc --noEmit -p . showed no new errors versus the pre-existing baseline."
     }
   ]
 }
