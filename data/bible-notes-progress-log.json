@@ -409,6 +409,17 @@
       "cards": 28,
       "verses": 43,
       "notes": "Scheduled hourly Bible Note Writer Agent run. Priestly garments for glory and beauty, the ephod and its onyx shoulder stones, the breastplate of judgment and its twelve gemstones, the Urim and Thummim, the robe with its bells and pomegranates, the golden forehead plate reading Holiness To The Lord, and garments for the ordinary priests. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror. Parser check passed exactly (7/7 sections, 28 cards), npx tsc --noEmit -p . showed no new errors versus the pre-existing baseline."
+    },
+    {
+      "book": "Exodus",
+      "chapter": 29,
+      "startedAt": "2026-07-26T23:47:00Z",
+      "finishedAt": "2026-07-26T23:56:00Z",
+      "durationMinutes": 9,
+      "sections": 11,
+      "cards": 47,
+      "verses": 46,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The priestly ordination ceremony: hallowing the materials for the ritual, dressing and anointing Aaron, the sin-offering bullock (blood on the altar horns, remains burned outside camp), the first ram as a whole burnt offering, the ram of consecration (blood applied to ear/thumb/toe, then blood and oil sprinkled on the priests and their garments, the wave offering), Aaron's priestly portion (wave/heave offerings), garments passed down to future high priests, eating the holy ordination meal, seven days of altar consecration, the continual daily morning/evening lamb offering, and the closing declaration that God will dwell among Israel and be their God. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (npm install run first per updated agent instructions). Parser check passed exactly (11/11 sections, 47 cards), npx tsc --noEmit -p . clean with zero errors."
     }
   ]
 }

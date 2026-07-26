@@ -18,3 +18,7 @@ Chapters this run: Exodus 25, Exodus 26, Exodus 27, Exodus 28
 Verified: 4/4
 Total shipped so far: 78
 Still open: none
+
+## 2026-07-26T23:56:00Z (hourly chapter notes run)
+Chapter: Exodus 29 | Duration: 9 min | Sections: 11 | Cards: 47 | Status: pass
+Next up: Exodus 30

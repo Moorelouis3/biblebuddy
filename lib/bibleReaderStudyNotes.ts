@@ -79,6 +79,7 @@ import { EXODUS_TWENTY_FIVE_PERSONAL_SECTIONS } from "./exodusTwentyFiveSource";
 import { EXODUS_TWENTY_SIX_PERSONAL_SECTIONS } from "./exodusTwentySixSource";
 import { EXODUS_TWENTY_SEVEN_PERSONAL_SECTIONS } from "./exodusTwentySevenSource";
 import { EXODUS_TWENTY_EIGHT_PERSONAL_SECTIONS } from "./exodusTwentyEightSource";
+import { EXODUS_TWENTY_NINE_PERSONAL_SECTIONS } from "./exodusTwentyNineSource";
 import { EXODUS_2_10_PERSONAL_SECTIONS } from "./exodusTwoToTenPersonalNotes";
 import { EXODUS_11_20_PERSONAL_SECTIONS } from "./exodusElevenToTwentyPersonalNotes";
 import { EXODUS_21_30_PERSONAL_SECTIONS } from "./exodusTwentyOneToThirtyPersonalNotes";
@@ -454,7 +455,7 @@ function ensureTitleHasIcon(title: string, icon: string) {
 function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, book: string): BibleReaderStudySection {
   const preserveExactPhraseBodies =
     (normalizeBook(book) === "genesis" && section.chapter >= 1 && section.chapter <= 50) ||
-    (normalizeBook(book) === "exodus" && section.chapter >= 1 && section.chapter <= 28);
+    (normalizeBook(book) === "exodus" && section.chapter >= 1 && section.chapter <= 29);
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -8586,6 +8587,12 @@ replaceStudySectionsForBookRange(
   28,
   28,
   EXODUS_TWENTY_EIGHT_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "exodus",
+  29,
+  29,
+  EXODUS_TWENTY_NINE_PERSONAL_SECTIONS,
 );
 
 for (const section of BIBLE_READER_STUDY_SECTIONS) {
