@@ -13,6 +13,12 @@
       "type": "chapter_count_checkpoint",
       "chaptersCompletedSoFarTonight": 9,
       "detail": "Genesis 1-50 fully complete (milestone). No usage limit, block, or cooldown encountered yet -- work has been continuous and uninterrupted the entire session so far. Moving into Exodus next."
+    },
+    {
+      "timestamp": "2026-07-26T23:10:50Z",
+      "type": "block",
+      "chaptersCompletedSoFarTonight": 0,
+      "detail": "Not a usage/rate limit -- a network/environment block. This run's target chapter was Exodus 24 (next uncovered chapter after Exodus 23 per the progress log). Every attempt to fetch the real KJV text failed with HTTP 403: bible-api.com and www.biblegateway.com via curl were rejected at the egress proxy itself ('gateway answered 403 to CONNECT (policy denial or upstream failure)', confirmed via the proxy status endpoint's recentRelayFailures), and separately www.biblegateway.com, www.kingjamesbibleonline.org, bible-api.com, and biblehub.com all returned 403 via the WebFetch tool. Also confirmed the block is not Bible-site-specific: a plain curl to https://example.com and https://www.gutenberg.org also failed with the same proxy-level 403 CONNECT rejection, indicating this session's network egress policy is default-deny for general web hosts (only a short allowlist like npm/pypi registries is open) or something acquired since the previous session. Per skill Step 0 (never write from memory) and the agent instructions' explicit block-and-stop rule, did not attempt to write Exodus 24 from memory. No files were written or changed for a chapter this run. Stopping cleanly rather than retrying repeatedly; needs a human to either widen the egress allowlist for this session's environment or confirm which Bible-text host is reachable."
     }
   ]
 }
