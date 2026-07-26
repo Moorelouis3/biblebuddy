@@ -332,6 +332,28 @@
       "cards": 23,
       "verses": 36,
       "notes": "Case laws: Hebrew/female servants, murder vs manslaughter, family offenses, injury liability, 'eye for eye' as a limiting principle, goring ox laws. Parser check initially failed (expected 9 sections declared, actually wrote 8) -- exactly the safety check the skill calls for; caught and fixed immediately, then verified clean. Tenth chapter run automatically under /loop wakeup, no usage/rate-limit issues encountered."
+    },
+    {
+      "book": "Exodus",
+      "chapter": 22,
+      "startedAt": "2026-07-26T20:15:00Z",
+      "finishedAt": "2026-07-26T20:28:00Z",
+      "durationMinutes": 13,
+      "sections": 10,
+      "cards": 25,
+      "verses": 31,
+      "notes": "First chapter run under the newly formalized Bible Note Writer Agent reporting structure. Case laws: restitution for theft, field/fire damage, property left in trust, borrowed items, seduction law, capital offenses (witchcraft, bestiality, idolatry), protecting strangers/widows/orphans, lending without usury, firstfruits and firstborn. KJV fetched fresh via WebFetch, not from memory. Parser check passed (10/10 sections), tsc --noEmit clean, wired into bibleReaderStudyNotes.ts and preserveExactPhraseBodies range extended to chapter 22."
+    },
+    {
+      "book": "Exodus",
+      "chapter": 23,
+      "startedAt": "2026-07-26T20:28:30Z",
+      "finishedAt": "2026-07-26T20:31:34Z",
+      "durationMinutes": 3,
+      "sections": 10,
+      "cards": 23,
+      "verses": 33,
+      "notes": "Second chapter run under /loop dynamic mode using the formalized Bible Note Writer Agent process. Justice/testimony laws, kindness to an enemy's animal, the sabbath year and sabbath day, three annual feasts, offering rules, the Angel sent ahead, destroying pagan altars, conquest by little and little, borders and no covenant with pagan nations. KJV fetched fresh via WebFetch. Parser check passed (10/10 sections), tsc --noEmit clean."
     }
   ]
 }

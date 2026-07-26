@@ -215,6 +215,14 @@ Add a row to `docs/BIBLE_BUDDY_NOTES_PROGRESS.md`: date, chapter, section count,
 
 Also add/update an entry in `data/bible-notes-progress-log.json` (book, chapter, startedAt, finishedAt, durationMinutes, sections, cards, verses, notes) — this feeds the private live dashboard at `/admin/bible-notes-progress` in the app itself (gated to the owner's account only). Get real timestamps with `date -u +"%Y-%m-%dT%H:%M:%SZ"` rather than guessing.
 
+Also append a block to this project's `SESSION_LOG.md` containing the literal phrase `hourly chapter notes run` — this is what Louis's Life Buddy system (`second-brain/bibleBuddyWatch.js`) filters on to build its "recent runs" list for the cross-project executive report. Format:
+```
+## <date/time> (hourly chapter notes run)
+Chapter: <Book Chapter> | Duration: <N> min | Sections: <N> | Cards: <N> | Status: pass
+Next up: <Book Chapter>
+```
+This is the report the "Bible Note Writer Agent" sends up to Bible Buddy after every chapter — do this every single chapter, not just once per session, so Marcus never has to guess whether the agent is still alive.
+
 ### Step 8.5 — Track usage limits and blocks, permanently, every session
 
 The user explicitly wants this watched every time this skill is used, not just once: log any usage/rate limit, block, throttling, or forced cooldown to `data/bible-notes-usage-events.json`. This is separate from the chapter progress log.
