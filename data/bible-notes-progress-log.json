@@ -354,6 +354,17 @@
       "cards": 23,
       "verses": 33,
       "notes": "Second chapter run under /loop dynamic mode using the formalized Bible Note Writer Agent process. Justice/testimony laws, kindness to an enemy's animal, the sabbath year and sabbath day, three annual feasts, offering rules, the Angel sent ahead, destroying pagan altars, conquest by little and little, borders and no covenant with pagan nations. KJV fetched fresh via WebFetch. Parser check passed (10/10 sections), tsc --noEmit clean."
+    },
+    {
+      "book": "Exodus",
+      "chapter": 24,
+      "startedAt": "2026-07-26T23:05:00Z",
+      "finishedAt": "2026-07-26T23:22:00Z",
+      "durationMinutes": 17,
+      "sections": 6,
+      "cards": 30,
+      "verses": 18,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The covenant-ratification ceremony at Sinai: elders called partway up the mountain, the people's twofold vow, blood split between altar and people ('behold the blood of the covenant', echoed by Jesus at the Last Supper), the elders seeing the God of Israel and eating in His presence, Moses called higher alone for the tables of stone, and forty days/nights in the cloud. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror. Parser check passed exactly (6/6 sections, 30 cards), npx tsc --noEmit -p . clean."
     }
   ]
 }

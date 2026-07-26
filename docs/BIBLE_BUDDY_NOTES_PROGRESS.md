@@ -43,6 +43,7 @@ Already at gold-standard quality before this log started: Genesis 1-40 (40 chapt
 | 2026-07-25 | Exodus 21 | 23 cards / 8 sections | Case laws: servants, murder vs manslaughter, injury liability, "eye for eye", goring ox. Parser + tsc verified (clean). |
 | 2026-07-26 | Exodus 22 | 25 cards / 10 sections | First chapter under the formalized Bible Note Writer Agent reporting structure. Case laws: theft restitution, field/fire damage, property trust disputes, borrowed items, seduction law, capital offenses, protecting strangers/widows/orphans, lending without usury, firstfruits/firstborn. Parser + tsc verified (clean). |
 | 2026-07-26 | Exodus 23 | 23 cards / 10 sections | Justice/testimony laws, kindness to an enemy's animal, sabbath year/day, three annual feasts, offering rules, the Angel sent ahead, destroying pagan altars, conquest "by little and little," borders and no covenant with pagan nations. Parser + tsc verified (clean). |
+| 2026-07-26 | Exodus 24 | 30 cards / 6 sections | The covenant ceremony: elders called up the mountain, the people's twofold vow, blood sprinkled on altar and people ("blood of the covenant"), the elders seeing the God of Israel and eating in His presence, Moses called higher for the tables of stone, forty days and nights in the cloud. Parser + tsc verified (clean). |
 
 ## Standing process doc
 
@@ -61,11 +62,11 @@ every time a chapter is finished — this markdown file and that JSON log should
 ## Running totals
 
 - **GENESIS IS COMPLETE — all 50 chapters at gold standard.**
-- Done under this log: 32 chapters (Genesis 41, 43, 44, 45, 46, 47, 48, 49, 50; Exodus 1-23)
+- Done under this log: 33 chapters (Genesis 41, 43, 44, 45, 46, 47, 48, 49, 50; Exodus 1-24)
 - Done before this log (pre-existing gold standard): 41 chapters (Genesis 1-40, 42)
-- Total done: 73 / 1,189 (6.1%)
-- Remaining: 1,116
-- Currently on: Exodus (40 chapters total, 23 done, 17 to go)
+- Total done: 74 / 1,189 (6.2%)
+- Remaining: 1,115
+- Currently on: Exodus (40 chapters total, 24 done, 16 to go)
 - Running under /loop (dynamic self-pacing) starting 2026-07-25 ~13:53 UTC
 - Formalized 2026-07-26 as the "Bible Note Writer Agent" reporting to Bible Buddy → Marcus (second-brain), per Louis's governance directive. Every chapter completion now also appends a `SESSION_LOG.md` block containing "hourly chapter notes run" so Marcus's watcher (`bibleBuddyWatch.js`) can see live activity, not just this log.
 - Known follow-up: Genesis 41, 43, and 44 were written before the ~2-cards/verse

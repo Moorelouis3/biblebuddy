@@ -19,6 +19,12 @@
       "type": "block",
       "chaptersCompletedSoFarTonight": 0,
       "detail": "Not a usage/rate limit -- a network/environment block. This run's target chapter was Exodus 24 (next uncovered chapter after Exodus 23 per the progress log). Every attempt to fetch the real KJV text failed with HTTP 403: bible-api.com and www.biblegateway.com via curl were rejected at the egress proxy itself ('gateway answered 403 to CONNECT (policy denial or upstream failure)', confirmed via the proxy status endpoint's recentRelayFailures), and separately www.biblegateway.com, www.kingjamesbibleonline.org, bible-api.com, and biblehub.com all returned 403 via the WebFetch tool. Also confirmed the block is not Bible-site-specific: a plain curl to https://example.com and https://www.gutenberg.org also failed with the same proxy-level 403 CONNECT rejection, indicating this session's network egress policy is default-deny for general web hosts (only a short allowlist like npm/pypi registries is open) or something acquired since the previous session. Per skill Step 0 (never write from memory) and the agent instructions' explicit block-and-stop rule, did not attempt to write Exodus 24 from memory. No files were written or changed for a chapter this run. Stopping cleanly rather than retrying repeatedly; needs a human to either widen the egress allowlist for this session's environment or confirm which Bible-text host is reachable."
+    },
+    {
+      "timestamp": "2026-07-26T23:22:00Z",
+      "type": "resumed",
+      "chaptersCompletedSoFarTonight": 1,
+      "detail": "Resumed after the prior run's network block, wait length unknown (routine fires hourly, so likely under an hour). This run's instructions pointed at raw.githubusercontent.com/aruljohn/Bible-kjv (a public-domain KJV JSON mirror on GitHub's raw content host) instead of the general Bible sites that were 403'ing -- that host was reachable via curl, confirming the egress block is specific to the previously-tried hosts (biblegateway.com, kingjamesbibleonline.org, bible-api.com, biblehub.com, example.com, gutenberg.org), not a blanket outbound denial. Exodus 24 fetched and written successfully this run."
     }
   ]
 }
