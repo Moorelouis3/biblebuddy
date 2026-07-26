@@ -12,3 +12,9 @@ Next up: Exodus 24
 ## 2026-07-26T23:22:00Z (hourly chapter notes run)
 Chapter: Exodus 24 | Duration: 17 min | Sections: 6 | Cards: 30 | Status: pass
 Next up: Exodus 25
+
+## 2026-07-27T00:20:00Z (hourly chapter notes run)
+Chapters this run: Exodus 25, Exodus 26, Exodus 27, Exodus 28
+Verified: 4/4
+Total shipped so far: 78
+Still open: none
