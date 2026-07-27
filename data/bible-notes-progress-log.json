@@ -783,6 +783,55 @@
           "at": "2026-07-27T06:55:37Z"
         }
       ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 1,
+      "startedAt": "2026-07-27T07:46:02Z",
+      "finishedAt": "2026-07-27T07:53:23Z",
+      "durationMinutes": 7,
+      "sections": 5,
+      "cards": 28,
+      "verses": 17,
+      "notes": "First chapter of Leviticus (Exodus is now fully complete, chapters 1-40). Opens with a framing card on the book itself (name from the Levites, Hebrew title Vayikra meaning \"And he called,\" and how the book picks up directly from Exodus 40's tabernacle dedication). Covers the three cost tiers of the voluntary burnt offering law: from the herd (a bull, vv1-9), from the flock (a sheep or goat, vv10-13), and from fowls (turtledoves or young pigeons, vv14-17), with a forward callback to Luke 2:24 on Mary and Joseph's bird offering at Jesus's dedication. Explained per skill Part 4's law-chapter guidance: who the command is for, what's required, key Hebrew/KJV word definitions (korban/offering, olah/burnt sacrifice, kaphar/atonement, sweet savour), the priest-vs-offerer division of labor, and the repeated theological point that acceptance never scaled with what the worshipper could afford (all three tiers close with the identical \"sweet savour\" refrain). KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror. Parser check passed exactly (5/5 sections, 28 cards against 17 verses, ~1.65 cards/verse). npx tsc --noEmit -p . clean with zero errors. Note: three older, unused Leviticus personal-notes files (leviticusOneToTenPersonalNotes.ts, leviticusSeventeenToTwentyPersonalNotes.ts, leviticusTwentyOneToTwentySevenPersonalNotes.ts) are imported in bibleReaderStudyNotes.ts but were never actually wired in via replaceStudySectionsForBookRange -- confirmed via grep that no \"leviticus\" replaceStudySectionsForBookRange call existed before this run, so Leviticus 1 had no prior dedicated coverage.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-27T07:46:35Z"
+        },
+        {
+          "name": "next chapter determined: Leviticus 1 (progress log/doc confirm Exodus complete at ch40, Leviticus next with 0 done, no leviticusOneSource.ts existed yet)",
+          "at": "2026-07-27T07:47:08Z"
+        },
+        {
+          "name": "KJV text fetched for Leviticus 1 (17 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-27T07:47:18Z"
+        },
+        {
+          "name": "reviewed reference implementation (exodusFortySource.ts) for exact voice/format",
+          "at": "2026-07-27T07:47:18Z"
+        },
+        {
+          "name": "wrote lib/leviticusOneSource.ts",
+          "at": "2026-07-27T07:51:10Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to leviticus ch1)",
+          "at": "2026-07-27T07:51:35Z"
+        },
+        {
+          "name": "parser check passed: 5 sections, 28 cards",
+          "at": "2026-07-27T07:51:50Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-27T07:52:55Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-27T07:53:23Z"
+        }
+      ]
     }
   ]
 }
