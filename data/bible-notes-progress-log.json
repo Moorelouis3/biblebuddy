@@ -1532,6 +1532,51 @@
           "at": "2026-07-27T22:58:11Z"
         }
       ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 14,
+      "startedAt": "2026-07-27T23:45:54Z",
+      "finishedAt": "2026-07-27T23:58:00Z",
+      "durationMinutes": 12,
+      "sections": 13,
+      "cards": 62,
+      "verses": 57,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The reintegration ceremony for a healed leper (priest goes outside the camp to him, a reversal of the usual come-to-the-priest pattern), the two-bird cleansing ritual (cedar wood, scarlet, hyssop, one bird killed over running water, the living bird released, previewing the two-goat Day of Atonement pattern in chapter 16), the staged seven-day return to full camp life, the eighth-day trespass/sin/burnt/grain offering set with the ear-thumb-toe blood-and-oil application echoing Aaron's own ordination in chapter 8, the poor man's sliding-scale substitute (birds instead of lambs, less flour, trespass lamb held fixed either way, per chapter 5:7-11's precedent), and the parallel house-leprosy law (emptying the house before diagnosis to protect belongings, the same color/depth two-sign test and seven-day quarantine used for skin, scraping/re-stoning/re-plastering versus full demolition if the mold returns, and the identical two-bird ritual reused to cleanse a healed house). Closes with the two-chapter law's own stated purpose -- teaching Israel to tell clean from unclean, a direct callback to Aaron's charge in chapter 10:10-11. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com/aruljohn/Bible-kjv/master/Leviticus.json), parsed chapter 14 out of the full-book JSON (57 verses). Parser check passed exactly (13/13 sections, 62 cards against 57 verses, ~1.09 cards/verse). Density landed close to the 1x floor rather than the ~2x aspiration on purpose: large stretches of this chapter repeat its own earlier ritual almost verbatim (the poor man's version in vv25-32 repeats vv10-18's blood/oil ritual near word-for-word, and the house-cleansing ritual in vv48-53 repeats the person-cleansing ritual from vv4-7), so cards leaned on what's genuinely new -- contrasts, callbacks, translation notes -- rather than re-explaining an identical procedure a third or fourth time, consistent with the honesty standard already used for chapter 13 and chapters 36-39. npx tsc --noEmit -p . clean with zero errors. Confirmed via git fetch that local checkout matched origin/main exactly at Leviticus 13 (dc30239) before starting, and confirmed via lib/bibleReaderStudyNotes.ts wiring (chapters 1-13 present, no leviticusFourteenSource.ts existed yet) that Leviticus 14 was the correct next chapter.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-27T23:46:16Z"
+        },
+        {
+          "name": "next chapter determined: Leviticus 14 (confirmed via git fetch + lib/bibleReaderStudyNotes.ts wiring, ch1-13 present, no leviticusFourteenSource.ts existed yet)",
+          "at": "2026-07-27T23:46:30Z"
+        },
+        {
+          "name": "KJV text fetched for Leviticus 14 (57 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-27T23:46:39Z"
+        },
+        {
+          "name": "wrote lib/leviticusFourteenSource.ts",
+          "at": "2026-07-27T23:52:36Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to chapter 14)",
+          "at": "2026-07-27T23:52:50Z"
+        },
+        {
+          "name": "parser check passed: 13 sections, 62 cards",
+          "at": "2026-07-27T23:52:57Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-27T23:53:15Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-27T23:54:53Z"
+        }
+      ]
     }
   ]
 }

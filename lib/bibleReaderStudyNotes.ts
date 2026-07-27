@@ -104,6 +104,7 @@ import { LEVITICUS_NINE_PERSONAL_SECTIONS } from "./leviticusNineSource";
 import { LEVITICUS_TEN_PERSONAL_SECTIONS } from "./leviticusTenSource";
 import { LEVITICUS_ELEVEN_PERSONAL_SECTIONS } from "./leviticusElevenSource";
 import { LEVITICUS_THIRTEEN_PERSONAL_SECTIONS } from "./leviticusThirteenSource";
+import { LEVITICUS_FOURTEEN_PERSONAL_SECTIONS } from "./leviticusFourteenSource";
 import { EXODUS_2_10_PERSONAL_SECTIONS } from "./exodusTwoToTenPersonalNotes";
 import { EXODUS_11_20_PERSONAL_SECTIONS } from "./exodusElevenToTwentyPersonalNotes";
 import { EXODUS_21_30_PERSONAL_SECTIONS } from "./exodusTwentyOneToThirtyPersonalNotes";
@@ -480,7 +481,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
   const preserveExactPhraseBodies =
     (normalizeBook(book) === "genesis" && section.chapter >= 1 && section.chapter <= 50) ||
     (normalizeBook(book) === "exodus" && section.chapter >= 1 && section.chapter <= 40) ||
-    (normalizeBook(book) === "leviticus" && section.chapter >= 1 && section.chapter <= 13);
+    (normalizeBook(book) === "leviticus" && section.chapter >= 1 && section.chapter <= 14);
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -8762,6 +8763,12 @@ replaceStudySectionsForBookRange(
   13,
   13,
   LEVITICUS_THIRTEEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "leviticus",
+  14,
+  14,
+  LEVITICUS_FOURTEEN_PERSONAL_SECTIONS,
 );
 
 for (const section of BIBLE_READER_STUDY_SECTIONS) {
