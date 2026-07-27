@@ -563,6 +563,55 @@
           "at": "2026-07-27T02:53:37Z"
         }
       ]
+    },
+    {
+      "book": "Exodus",
+      "chapter": 37,
+      "startedAt": "2026-07-27T03:45:54Z",
+      "finishedAt": "2026-07-27T03:54:30Z",
+      "durationMinutes": 9,
+      "sections": 6,
+      "cards": 37,
+      "verses": 29,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The fulfillment chapter for chapter 25's furniture list: Bezaleel personally builds the ark (with a callback to chapter 25:15's staves-never-removed command actually being fulfilled), the mercy seat and its one-piece hammered cherubim facing down toward it, the table of shewbread and its gold vessels (rings placed at the table's 'feet' rather than the ark's 'sides', a genuinely new engineering detail), the one-piece hammered golden lampstand with its sevenfold almond-blossom design, the altar of incense with its horns and gold overlay, and finally the holy anointing oil and incense recipes from chapter 30 actually mixed by the apothecary. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com), reachable as in recent runs. Parser check passed exactly (6/6 sections, 37 cards against 29 verses). Density (~1.28 cards/verse) mirrors chapter 36's precedent -- this content closely repeats chapters 25/30's already-detailed definitions, so notes lean on Bezaleel's personal authorship, fulfillment framing, and new positioning/engineering details rather than re-explaining terms at full density a second time, consistent with the skill's ban on padding with restated content. npx tsc --noEmit -p . clean with zero errors. This session started on a detached HEAD matching origin/main exactly (no lost work); ran `git checkout -B main origin/main` to get back onto a proper branch before committing.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-27T03:45:54Z"
+        },
+        {
+          "name": "next chapter determined: Exodus 37 (via lib files + wiring, confirmed HEAD matched origin/main at Exodus 36)",
+          "at": "2026-07-27T03:46:51Z"
+        },
+        {
+          "name": "KJV text fetched for Exodus 37 (29 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-27T03:47:08Z"
+        },
+        {
+          "name": "reviewed reference implementations (exodusThirtySixSource.ts, exodusTwentyFiveSource.ts)",
+          "at": "2026-07-27T03:50:00Z"
+        },
+        {
+          "name": "wrote lib/exodusThirtySevenSource.ts",
+          "at": "2026-07-27T03:50:43Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to 37)",
+          "at": "2026-07-27T03:51:15Z"
+        },
+        {
+          "name": "parser check passed: 6 sections, 37 cards",
+          "at": "2026-07-27T03:51:40Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-27T03:53:03Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-27T03:53:31Z"
+        }
+      ]
     }
   ]
 }

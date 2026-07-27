@@ -53,6 +53,7 @@ Already at gold-standard quality before this log started: Genesis 1-40 (40 chapt
 | *(31-34 missing from this table)* | Exodus 31-34 | — | **Gap:** these 4 chapters exist in the codebase (`lib/exodusThirtyOneSource.ts` through `exodusThirtyFourSource.ts`, wired into `bibleReaderStudyNotes.ts`) but a prior run logged them to a different, non-canonical file (`bible-notes-progress.json` at the repo root) instead of this doc and `data/bible-notes-progress-log.json`. That run also wrote all 4 chapters in one sitting, which conflicts with the one-chapter-per-run rule now in place. Flagging here rather than backfilling, to stay within this run's one-chapter scope (Exodus 35). |
 | 2026-07-27 | Exodus 35 | 42 cards / 5 sections | Moses gathers the congregation and repeats the Sabbath law before any building begins, the willing-hearted offering call (materials list echoing chapter 25), the full tabernacle equipment list restated (bridging the private chapter 25-31 mountain instructions into public, shared work), the people's actual response (men, women, and rulers giving freely — including the same kind of gold jewelry Aaron melted into the golden calf in chapter 32, now redirected to right worship), and Bezaleel and Aholiab named and Spirit-filled as lead craftsmen. Parser + tsc verified (clean). |
 | 2026-07-27 | Exodus 36 | 48 cards / 7 sections | Construction actually begins: the people give so much material Moses has to formally command them to stop; then the ten cherubim-woven linen curtains, eleven goat-hair curtains plus ram/badger-skin coverings, the acacia-wood boards and silver sockets for all three walls plus corner boards, the gold-overlaid connecting bars, and the veil and door hanging with their pillars — following chapters 26 and 31's blueprint in order, almost word for word. Density (~1.26 cards/verse) is lighter than the ~2x target since this chapter's content closely repeats chapters 26/31, already covered in depth; leaned on the new overflowing-generosity narrative (vv1-7) and fulfillment/cross-reference framing instead of padding repeated definitions. Parser + tsc verified (clean). |
+| 2026-07-27 | Exodus 37 | 37 cards / 6 sections | The fulfillment chapter for chapter 25's furniture: Bezaleel personally builds the ark (with a callback to chapter 25:15's staves-never-removed command actually being carried out), the mercy seat and its one-piece hammered cherubim facing down toward it, the table of shewbread and its gold vessels, the one-piece hammered golden lampstand with its sevenfold almond-blossom design, the altar of incense with its horns and gold overlay, and finally the holy anointing oil and incense recipes from chapter 30 actually mixed by the apothecary. Density (~1.28 cards/verse) mirrors chapter 36's precedent — this content closely repeats chapters 25/30's already-detailed definitions, so notes lean on Bezaleel's personal authorship, fulfillment framing, and new engineering/positioning details (e.g. rings at the table's "feet" vs the ark's "sides") rather than re-explaining terms at full density a second time. Parser + tsc verified (clean). |
 
 ## Standing process doc
 
@@ -71,11 +72,11 @@ every time a chapter is finished — this markdown file and that JSON log should
 ## Running totals
 
 - **GENESIS IS COMPLETE — all 50 chapters at gold standard.**
-- Done under this log: 45 chapters (Genesis 41, 43, 44, 45, 46, 47, 48, 49, 50; Exodus 1-36)
+- Done under this log: 46 chapters (Genesis 41, 43, 44, 45, 46, 47, 48, 49, 50; Exodus 1-37)
 - Done before this log (pre-existing gold standard): 41 chapters (Genesis 1-40, 42)
-- Total done: 86 / 1,189 (7.2%)
-- Remaining: 1,103
-- Currently on: Exodus (40 chapters total, 36 done, 4 to go)
+- Total done: 87 / 1,189 (7.3%)
+- Remaining: 1,102
+- Currently on: Exodus (40 chapters total, 37 done, 3 to go)
 - Running under /loop (dynamic self-pacing) starting 2026-07-25 ~13:53 UTC
 - Formalized 2026-07-26 as the "Bible Note Writer Agent" reporting to Bible Buddy → Marcus (second-brain), per Louis's governance directive. Every chapter completion now also appends a `SESSION_LOG.md` block containing "hourly chapter notes run" so Marcus's watcher (`bibleBuddyWatch.js`) can see live activity, not just this log.
 - Known follow-up: Genesis 41, 43, and 44 were written before the ~2-cards/verse

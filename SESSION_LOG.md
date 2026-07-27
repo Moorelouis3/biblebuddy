@@ -66,3 +66,7 @@ Still open: Network block — all fetch attempts to bible-api.com returned 403 (
 ## 2026-07-27T02:54:08Z (hourly chapter notes run)
 Chapter: Exodus 36 | Duration: 8 min | Sections: 7 | Cards: 48 | Status: pass
 Next up: Exodus 37
+
+## 2026-07-27T03:54:30Z (hourly chapter notes run)
+Chapter: Exodus 37 | Duration: 9 min | Sections: 6 | Cards: 37 | Status: pass
+Next up: Exodus 38
