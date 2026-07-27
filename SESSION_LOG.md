@@ -118,3 +118,7 @@ Next up: Leviticus 9
 ## 2026-07-27T15:55:07Z (hourly chapter notes run)
 Chapter: Leviticus 9 | Duration: 11 min | Sections: 6 | Cards: 47 | Status: pass
 Next up: Leviticus 10
+
+## 2026-07-27T16:52:25Z (hourly chapter notes run)
+Chapter: Leviticus 10 | Duration: 6 min | Sections: 5 | Cards: 36 | Status: pass
+Next up: Leviticus 11

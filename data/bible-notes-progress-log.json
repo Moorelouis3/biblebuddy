@@ -1304,6 +1304,55 @@
           "at": "2026-07-27T15:55:42Z"
         }
       ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 10,
+      "startedAt": "2026-07-27T16:46:30Z",
+      "finishedAt": "2026-07-27T16:52:25Z",
+      "durationMinutes": 6,
+      "sections": 5,
+      "cards": 36,
+      "verses": 20,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Nadab and Abihu offer 'strange fire' (fire from the wrong, unauthorized source, never lit from the altar's own continual flame per chapter 6:12-13) and are struck dead by the exact same 'fire from the LORD' phrase that had just consumed the people's offering in chapter 9:24 -- the identical holy fire that proved acceptance one chapter turns into judgment here. Covers Aaron's silent, restrained grief ('held his peace'), the cousins Mishael and Elzaphan (sons of Aaron's uncle Uzziel per Exodus 6:18) removing the bodies still in their coats, the ban on normal mourning customs (uncovered heads, torn clothes) for the still-active priests versus the freedom given to the rest of Israel to mourn normally, the wine/strong-drink ban given directly to Aaron for the first time in the whole book (many readers connect it to what may have caused Nadab and Abihu's fatal mistake), the reason behind that ban (sober judgment needed to 'put difference between holy and unholy'), the priestly eating rules for the 'most holy' grain offering (unleavened, eaten only beside the altar, male priests only) versus the peace offering's looser 'clean place' rule that let daughters eat too, and closes with Moses discovering the people's sin-offering goat was burned instead of eaten as required, his anger at Eleazar and Ithamar (Aaron's two surviving sons), the theological point that eating the sin offering was itself part of how atonement worked ('bear the iniquity of the congregation'), Aaron's grief-based defense ('such things have befallen me... should it have been accepted'), and Moses accepting it without further argument. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com/aruljohn/Bible-kjv/master/Leviticus.json), parsed chapter 10 out of the full-book JSON (20 verses). Parser check passed exactly (5/5 sections, 36 cards against 20 verses, 1.8 cards/verse). npx tsc --noEmit -p . clean with zero errors. Confirmed via lib/bibleReaderStudyNotes.ts wiring (chapters 1-9 present, no leviticusTenSource.ts existed yet) that Leviticus 10 was the correct next chapter -- ground truth over the log alone. Local checkout started on a detached HEAD matching origin/main exactly at Leviticus 9 (129784c) after a git fetch; moved onto the main branch pointer with git checkout -B before committing, no lost work.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-27T16:46:30Z"
+        },
+        {
+          "name": "next chapter determined: Leviticus 10 (confirmed via lib/bibleReaderStudyNotes.ts wiring, ch1-9 present, no leviticusTenSource.ts existed yet)",
+          "at": "2026-07-27T16:46:48Z"
+        },
+        {
+          "name": "KJV text fetched for Leviticus 10 (20 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-27T16:46:52Z"
+        },
+        {
+          "name": "reviewed reference implementation (leviticusNineSource.ts) and wiring pattern for exact voice/format",
+          "at": "2026-07-27T16:47:30Z"
+        },
+        {
+          "name": "wrote lib/leviticusTenSource.ts",
+          "at": "2026-07-27T16:50:20Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to chapter 10)",
+          "at": "2026-07-27T16:50:45Z"
+        },
+        {
+          "name": "parser check passed: 5 sections, 36 cards",
+          "at": "2026-07-27T16:51:05Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-27T16:51:49Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-27T16:52:25Z"
+        }
+      ]
     }
   ]
 }
