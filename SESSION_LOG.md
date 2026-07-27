@@ -39,3 +39,14 @@ never-write-from-memory rule. Next up: retry Exodus 30 next run.
 ## 2026-07-27T00:54:13Z (hourly chapter notes run)
 Chapter: Exodus 30 | Duration: 9 min | Sections: 9 | Cards: 59 | Status: pass
 Next up: Exodus 31
+
+## 2026-07-27T01:34:08Z (hourly chapter notes run)
+Chapters this run: Exodus 31
+Verified: 1/1
+Total shipped so far: 80
+Still open: none. Note: bible-api.com was still blocked at the network egress
+layer this run (403 policy denial on CONNECT, same as the 00:30 run). Instead
+of skipping, sourced Exodus 31's KJV text from
+raw.githubusercontent.com/aruljohn/Bible-kjv/master/Exodus.json (reachable,
+public-domain KJV mirror), cross-checked verse count (18) against the known
+chapter before drafting. Next up: Exodus 32.
