@@ -474,5 +474,14 @@
     "sectionCount": 7,
     "cardCount": 28,
     "verified": true
+  },
+  {
+    "book": "exodus",
+    "chapter": 29,
+    "timestamp": "2026-07-26T23:54:30Z",
+    "sectionCount": 11,
+    "cardCount": 47,
+    "verified": true,
+    "note": "shipped in commit a7fc5df but missing from this progress file; reconciled at start of next hourly run after confirming via getBibleReaderStudySections"
   }
 ]
