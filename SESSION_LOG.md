@@ -52,3 +52,7 @@ public-domain KJV mirror), cross-checked each chapter's verse count against
 the known text before drafting (Exodus 31: 18v, 32: 35v, 33: 23v, 34: 35v, all
 correct). Committed and pushed each chapter individually per the 4-chapter
 guardrail. Next up: Exodus 35.
+
+## 2026-07-27T01:54:22Z (hourly chapter notes run)
+Chapter: Exodus 35 | Duration: 9 min | Sections: 5 | Cards: 42 | Status: pass
+Next up: Exodus 36

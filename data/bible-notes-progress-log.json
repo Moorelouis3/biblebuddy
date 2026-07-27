@@ -477,6 +477,47 @@
           "at": "2026-07-27T00:55:57Z"
         }
       ]
+    },
+    {
+      "book": "Exodus",
+      "chapter": 35,
+      "startedAt": "2026-07-27T01:45:35Z",
+      "finishedAt": "2026-07-27T01:54:22Z",
+      "durationMinutes": 9,
+      "sections": 5,
+      "cards": 42,
+      "verses": 35,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Moses gathers the whole congregation and repeats the Sabbath law before any building begins, the call for a willing-hearted offering (materials list echoing chapter 25), the full tabernacle equipment list restated verse by verse (bridging the private chapter 25-31 mountain instructions into public, shared work), the people's actual response (men, women, and rulers all giving freely -- including the same kind of gold jewelry Aaron melted into the golden calf in chapter 32, now redirected to right worship), and Bezaleel and Aholiab named and Spirit-filled as the lead craftsmen. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror. Parser check passed exactly (5/5 sections, 42 cards), npx tsc --noEmit -p . clean with zero errors. PROCESS NOTE for whoever reviews this log: at the start of this run, this local checkout's origin/main ref was stale (hadn't been fetched yet) and briefly looked like it was many commits behind -- a `git fetch` resolved it immediately: origin/main had simply moved ahead because a concurrent/overlapping run had just pushed Exodus 34 moments earlier. No data was lost; this was purely a stale-local-ref issue, resolved with `git fetch` + `git reset --hard origin/main` before any new work began. Separately, while determining the next chapter, found that the commits for Exodus 31-34 (already on origin/main, confirmed via lib/bibleReaderStudyNotes.ts wiring) did NOT append entries to this file (data/bible-notes-progress-log.json) as the skill's Step 8 requires -- they instead wrote to a different, legacy file at the repo root, bible-notes-progress.json. That run's commit message also indicates 4 chapters (31-34) were written in a single run, which conflicts with the one-chapter-per-run hard limit in the current agent instructions. This run did not attempt to backfill those 4 chapters into this file -- flagging it here rather than expanding scope beyond the one chapter (Exodus 35) this run is responsible for. The live dashboard reading this file is currently missing entries for Exodus 31-34 as a result. Timestamps for this run's steps below are real wall-clock captures where a `date -u` call or file mtime was taken at that moment; a couple of in-between steps without a dedicated capture are reconstructed from the nearest real timestamp, consistent with prior entries' practice.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-27T01:47:21Z"
+        },
+        {
+          "name": "next chapter determined: Exodus 35 (via lib files + wiring, ground truth over stale JSON log)",
+          "at": "2026-07-27T01:48:00Z"
+        },
+        {
+          "name": "KJV text fetched for Exodus 35 (35 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-27T01:48:42Z"
+        },
+        {
+          "name": "wrote lib/exodusThirtyFiveSource.ts",
+          "at": "2026-07-27T01:52:33Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to 35)",
+          "at": "2026-07-27T01:52:45Z"
+        },
+        {
+          "name": "parser check passed: 5 sections, 42 cards",
+          "at": "2026-07-27T01:53:15Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-27T01:54:22Z"
+        }
+      ]
     }
   ]
 }
