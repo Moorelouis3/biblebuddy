@@ -1475,6 +1475,55 @@
           "at": "2026-07-27T18:52:35Z"
         }
       ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 13,
+      "startedAt": "2026-07-27T22:46:58Z",
+      "finishedAt": "2026-07-27T22:57:40Z",
+      "durationMinutes": 11,
+      "sections": 12,
+      "cards": 86,
+      "verses": 59,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The longest connected law in the book so far: diagnosing skin conditions (\"leprosy\"/tzaraat, a broader category than modern Hansen's disease). Covers the core two-sign test (white hair growing in the mark + the mark sitting deeper than the skin) reapplied across six different starting scenarios: ordinary skin (vv1-8), an already-advanced case (vv9-11), a healed boil (vv18-23), a burn (vv24-28), the scalp/beard \"scall\" where the marker shifts to yellow thin hair since head/beard hair isn't naturally white (vv29-37), and natural baldness with a new sore in the bald area (vv40-44). Explains the counterintuitive \"leprosy covering the entire body = clean\" ruling (vv12-17) by identifying raw/open flesh, not surface color, as the chapter's real unifying diagnostic principle. Covers the seven-day quarantine (\"shut up\") reused roughly six times throughout, a harmless freckled/pigment lookalike condition explicitly cleared without any waiting period (vv38-39), the leper's required mourning-style presentation and self-announcement (rent clothes, bare head, a covering on the upper lip, crying \"Unclean, unclean\") and full exile outside the camp (vv45-46, with callbacks to Miriam's exile in Numbers 12:14-15, King Uzziah's isolation in 2 Chronicles 26:19-21, and the ten lepers keeping their distance in Luke 17:12-13), and closes with the parallel law for mold/mildew (\"fretting leprosy\") in a woollen or linen garment or leather item (vv47-59), including the warp/woof weaving terms and the wash-as-diagnostic-test option before an item is finally condemned to burning. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com/aruljohn/Bible-kjv/master/Leviticus.json), parsed chapter 13 out of the full-book JSON (59 verses, the longest chapter yet in this Leviticus run). Parser check passed exactly (12/12 sections, 86 cards against 59 verses, ~1.46 cards/verse) and npx tsc --noEmit -p . is clean with zero errors. Density landed below the ~2x aspiration on purpose: the chapter reapplies one small set of diagnostic signs (depth, hair color, spreading) to roughly six near-identical scenarios in a row, so cards were written to maximize distinct teaching value per verse (explaining what changed between scenarios, not restating the same test in new words) rather than padding out near-duplicate cards just to hit a ratio, consistent with the honesty standard already used for chapter 11's dense listing sections. Confirmed via git fetch that local checkout matched origin/main exactly at Leviticus 12 (bfcf9e3) before starting (local repo was on a detached HEAD at session start; moved the main branch pointer forward with git checkout -B before committing), and confirmed via lib/bibleReaderStudyNotes.ts wiring (chapters 1-12 present, no leviticusThirteenSource.ts existed yet) that Leviticus 13 was the correct next chapter. Also corrected a bookkeeping gap found in docs/BIBLE_BUDDY_NOTES_PROGRESS.md: the prior run's Leviticus 12 row had been added to the table but never rolled into the 'Running totals' section at the bottom (that run's progress-log.json entry also stopped at 'progress files logged' with no committed/pushed steps, though the actual git commit and push for Leviticus 12 did complete) \u2014 this run updated the running totals for both Leviticus 12 and Leviticus 13 together, and left the Leviticus 12 JSON entry's steps as-is rather than fabricating timestamps for events this session didn't observe.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-27T22:46:58Z"
+        },
+        {
+          "name": "next chapter determined: Leviticus 13 (confirmed via git fetch + lib/bibleReaderStudyNotes.ts wiring, ch1-12 present, no leviticusThirteenSource.ts existed yet)",
+          "at": "2026-07-27T22:47:10Z"
+        },
+        {
+          "name": "KJV text fetched for Leviticus 13 (59 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-27T22:47:21Z"
+        },
+        {
+          "name": "wrote lib/leviticusThirteenSource.ts",
+          "at": "2026-07-27T22:53:37Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to chapter 13)",
+          "at": "2026-07-27T22:53:51Z"
+        },
+        {
+          "name": "parser check passed: 12 sections, 86 cards",
+          "at": "2026-07-27T22:54:09Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-27T22:55:40Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-27T22:56:14Z"
+        },
+        {
+          "name": "appended SESSION_LOG.md entry",
+          "at": "2026-07-27T22:57:40Z"
+        }
+      ]
     }
   ]
 }
