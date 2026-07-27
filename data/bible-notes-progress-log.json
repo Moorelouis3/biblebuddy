@@ -620,6 +620,47 @@
           "at": "2026-07-27T03:55:20Z"
         }
       ]
+    },
+    {
+      "book": "Exodus",
+      "chapter": 38,
+      "startedAt": "2026-07-27T04:46:12Z",
+      "finishedAt": "2026-07-27T04:55:15Z",
+      "durationMinutes": 9,
+      "sections": 8,
+      "cards": 56,
+      "verses": 31,
+      "notes": "Altar of burnt offering built in brass, the bronze laver made from women's donated mirrors (1 Samuel 2:22 callback), the court's linen walls and gate fully measured, and the closing gold/silver/brass materials audit tracing the census half-shekel silver (Exodus 30:11-16, Numbers 1:46's matching 603,550 count) down to specific sockets and pins. Density ~1.8 cards/verse. Parser + tsc verified (clean).",
+      "steps": [
+        {
+          "name": "npm_install_done",
+          "at": "2026-07-27T04:46:35Z"
+        },
+        {
+          "name": "next_chapter_determined",
+          "at": "2026-07-27T04:47:24Z"
+        },
+        {
+          "name": "kjv_text_fetched",
+          "at": "2026-07-27T04:47:37Z"
+        },
+        {
+          "name": "source_file_written",
+          "at": "2026-07-27T04:53:35Z"
+        },
+        {
+          "name": "wired_into_reader",
+          "at": "2026-07-27T04:53:50Z"
+        },
+        {
+          "name": "parser_check_passed",
+          "at": "2026-07-27T04:54:08Z"
+        },
+        {
+          "name": "tsc_clean",
+          "at": "2026-07-27T04:55:15Z"
+        }
+      ]
     }
   ]
 }

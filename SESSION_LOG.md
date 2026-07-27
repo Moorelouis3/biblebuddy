@@ -70,3 +70,7 @@ Next up: Exodus 37
 ## 2026-07-27T03:54:30Z (hourly chapter notes run)
 Chapter: Exodus 37 | Duration: 9 min | Sections: 6 | Cards: 37 | Status: pass
 Next up: Exodus 38
+
+## 2026-07-27T04:56:06Z (hourly chapter notes run)
+Chapter: Exodus 38 | Duration: 9 min | Sections: 8 | Cards: 56 | Status: pass
+Next up: Exodus 39
