@@ -31,6 +31,18 @@
       "type": "chapter_count_checkpoint",
       "chaptersCompletedSoFarTonight": 4,
       "detail": "Exodus 25-28 shipped this run (4/4 verified), all via the raw.githubusercontent.com/aruljohn/Bible-kjv fallback confirmed reachable in the prior run. No block, cooldown, or throttling encountered this run."
+    },
+    {
+      "timestamp": "2026-07-27T00:30:00Z",
+      "type": "block",
+      "chaptersCompletedSoFarTonight": 0,
+      "detail": "Reconciliation entry: the prior run (session ending ~2026-07-27T00:30:00Z, commit 5922fa8) hit a network egress block fetching Exodus 30 (bible-api.com and general internet egress both 403 at the proxy CONNECT layer) and correctly stopped without writing from memory, but only logged it to SESSION_LOG.md and not here as instructed by skill Step 8.5. Backfilling it now so this file stays the complete record. No chapter was written that run."
+    },
+    {
+      "timestamp": "2026-07-27T00:47:23Z",
+      "type": "resumed",
+      "chaptersCompletedSoFarTonight": 1,
+      "detail": "Resumed this run. The general Bible sites and plain internet egress were not retried since the prior two incidents already established they are unreliable in this sandbox; went straight to the confirmed-working raw.githubusercontent.com/aruljohn/Bible-kjv mirror, which returned HTTP 200 immediately. Exodus 30 fetched and written successfully this run."
     }
   ]
 }

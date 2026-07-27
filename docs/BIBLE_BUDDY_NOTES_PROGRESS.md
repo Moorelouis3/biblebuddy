@@ -49,6 +49,7 @@ Already at gold-standard quality before this log started: Genesis 1-40 (40 chapt
 | 2026-07-27 | Exodus 27 | 13 cards / 4 sections | The bronze altar of burnt offering and its tools, the court's linen boundary and pillars, the entrance gate, priests' nightly duty to tend the lamp oil. Parser + tsc verified (clean). |
 | 2026-07-27 | Exodus 28 | 28 cards / 7 sections | Priestly garments for glory and beauty, the ephod and onyx shoulder stones, the breastplate of judgment and its twelve gemstones, the Urim and Thummim, the robe with bells and pomegranates, the golden forehead plate, garments for ordinary priests. Parser + tsc verified (clean). |
 | 2026-07-26 | Exodus 29 | 47 cards / 11 sections | The priestly ordination ceremony: hallowing the materials, dressing and anointing Aaron, the sin-offering bullock, the first ram as a whole burnt offering, the ram of consecration (blood on ear/thumb/toe), Aaron's priestly portion, garments passed down, eating the holy food, seven days of consecration, the continual daily offering, and God's closing declaration "I will dwell among the children of Israel." Parser + tsc verified (clean). |
+| 2026-07-27 | Exodus 30 | 59 cards / 9 sections | The golden altar of incense (built like the ark, positioned facing the mercy seat), Aaron's daily morning/evening incense duty, the once-yearly Day of Atonement blood on its horns, the half-shekel census ransom money, the bronze laver and its three "that they die not" warnings, the holy anointing oil recipe (myrrh, cinnamon, calamus, cassia), anointing the whole tabernacle and priesthood with it, the ban on ordinary people wearing or copying the oil, and the matching holy incense recipe (stacte, onycha, galbanum, frankincense) with its own copying ban. Previous run's KJV fetch was blocked by a transient network 403; resolved this run via the aruljohn/Bible-kjv GitHub raw mirror. Parser + tsc verified (clean). |
 
 ## Standing process doc
 
@@ -67,11 +68,11 @@ every time a chapter is finished — this markdown file and that JSON log should
 ## Running totals
 
 - **GENESIS IS COMPLETE — all 50 chapters at gold standard.**
-- Done under this log: 38 chapters (Genesis 41, 43, 44, 45, 46, 47, 48, 49, 50; Exodus 1-29)
+- Done under this log: 39 chapters (Genesis 41, 43, 44, 45, 46, 47, 48, 49, 50; Exodus 1-30)
 - Done before this log (pre-existing gold standard): 41 chapters (Genesis 1-40, 42)
-- Total done: 79 / 1,189 (6.6%)
-- Remaining: 1,110
-- Currently on: Exodus (40 chapters total, 29 done, 11 to go)
+- Total done: 80 / 1,189 (6.7%)
+- Remaining: 1,109
+- Currently on: Exodus (40 chapters total, 30 done, 10 to go)
 - Running under /loop (dynamic self-pacing) starting 2026-07-25 ~13:53 UTC
 - Formalized 2026-07-26 as the "Bible Note Writer Agent" reporting to Bible Buddy → Marcus (second-brain), per Louis's governance directive. Every chapter completion now also appends a `SESSION_LOG.md` block containing "hourly chapter notes run" so Marcus's watcher (`bibleBuddyWatch.js`) can see live activity, not just this log.
 - Known follow-up: Genesis 41, 43, and 44 were written before the ~2-cards/verse

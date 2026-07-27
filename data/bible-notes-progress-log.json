@@ -420,6 +420,51 @@
       "cards": 47,
       "verses": 46,
       "notes": "Scheduled hourly Bible Note Writer Agent run. The priestly ordination ceremony: hallowing the materials for the ritual, dressing and anointing Aaron, the sin-offering bullock (blood on the altar horns, remains burned outside camp), the first ram as a whole burnt offering, the ram of consecration (blood applied to ear/thumb/toe, then blood and oil sprinkled on the priests and their garments, the wave offering), Aaron's priestly portion (wave/heave offerings), garments passed down to future high priests, eating the holy ordination meal, seven days of altar consecration, the continual daily morning/evening lamb offering, and the closing declaration that God will dwell among Israel and be their God. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (npm install run first per updated agent instructions). Parser check passed exactly (11/11 sections, 47 cards), npx tsc --noEmit -p . clean with zero errors."
+    },
+    {
+      "book": "Exodus",
+      "chapter": 30,
+      "startedAt": "2026-07-27T00:45:42Z",
+      "finishedAt": "2026-07-27T00:54:13Z",
+      "durationMinutes": 9,
+      "sections": 9,
+      "cards": 59,
+      "verses": 38,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The golden altar of incense (dimensions, gold overlay, carrying poles matching the ark's design, its position just outside the veil facing the mercy seat), Aaron's daily morning-and-evening incense duty tied to trimming the lampstand lamps, the once-a-year Day of Atonement blood on the altar horns, the half-shekel census ransom money (rich and poor paying the same, funding tabernacle upkeep), the bronze laver for washing hands and feet before service (three repeated 'that they die not' warnings), the holy anointing oil recipe (myrrh, cinnamon, calamus, cassia, olive oil, mixed by an apothecary), anointing the whole tabernacle system and Aaron's family with that one oil, the ban on ordinary people wearing or copying the oil, and the matching holy incense recipe (stacte, onycha, galbanum, frankincense) with its own identical copying ban -- both formulas bookended by the same 'cut off from his people' penalty. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror after last run's fetch was blocked by a transient 403 network egress issue (confirmed resolved this run). Parser check passed exactly (9/9 sections, 59 cards), npx tsc --noEmit -p . clean with zero errors.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-27T00:46:30Z"
+        },
+        {
+          "name": "next chapter determined: Exodus 30",
+          "at": "2026-07-27T00:47:11Z"
+        },
+        {
+          "name": "KJV text fetched for Exodus 30 (38 verses)",
+          "at": "2026-07-27T00:47:23Z"
+        },
+        {
+          "name": "reviewed reference implementation and wiring pattern",
+          "at": "2026-07-27T00:48:07Z"
+        },
+        {
+          "name": "wrote lib/exodusThirtySource.ts",
+          "at": "2026-07-27T00:52:01Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts",
+          "at": "2026-07-27T00:52:28Z"
+        },
+        {
+          "name": "parser check passed: 9 sections, 59 cards",
+          "at": "2026-07-27T00:52:50Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-27T00:54:05Z"
+        }
+      ]
     }
   ]
 }

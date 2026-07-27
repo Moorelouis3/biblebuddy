@@ -35,3 +35,7 @@ anthropic.com) also 403'd; only allowlisted hosts like registry.npmjs.org
 worked. Same failure mode as the 2026-07-26T23:11 incident, which resolved
 itself by the next run. No chapter content written per the
 never-write-from-memory rule. Next up: retry Exodus 30 next run.
+
+## 2026-07-27T00:54:13Z (hourly chapter notes run)
+Chapter: Exodus 30 | Duration: 9 min | Sections: 9 | Cards: 59 | Status: pass
+Next up: Exodus 31
