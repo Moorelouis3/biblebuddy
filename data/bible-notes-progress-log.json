@@ -726,6 +726,55 @@
           "at": "2026-07-27T05:57:40Z"
         }
       ]
+    },
+    {
+      "book": "Exodus",
+      "chapter": 40,
+      "startedAt": "2026-07-27T06:46:19Z",
+      "finishedAt": "2026-07-27T06:53:56Z",
+      "durationMinutes": 8,
+      "sections": 9,
+      "cards": 48,
+      "verses": 38,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. MILESTONE: last chapter of Exodus. The tabernacle is finally set up exactly one year after the Exodus (Abib 1, year 2) in the order God commanded (ark/veil first, court boundary last -- assembly runs center-outward, the reverse of how a worshipper later approaches from the gate inward), everything and everyone (the furniture, Aaron, and his sons) anointed and consecrated, Moses personally erecting the frame and lighting the lamps before Aaron's priesthood is fully functioning on its own, and the chapter's climax: the cloud covers the tent and the glory of the LORD fills the tabernacle so completely that even Moses cannot enter (with forward callbacks to Solomon's temple dedication in 1 Kings 8, and to John 1:14/Revelation 21:3's picture of God ultimately dwelling with His people). Closes with the cloud-by-day/fire-by-night system that will guide Israel's camp-and-march decisions for the rest of the Pentateuch, and a short bookend note on the book of Exodus as a whole (slavery and invisibility in ch1-2 to freedom and God's visible presence here in ch40). KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com). Parser check passed exactly (9/9 sections, 48 cards against 38 verses, ~1.26 cards/verse overall, weighted higher (~2.5x) on the theologically dense glory-cloud verses 34-35 and lighter on furniture-placement verses that recap chapters 25-30 already covered in depth -- consistent with the density precedent set by chapters 36-39). npx tsc --noEmit -p . clean with zero errors. Confirmed via lib/bibleReaderStudyNotes.ts wiring (not the flagged-incomplete legacy bible-notes-progress.json file) that Exodus 39 was the true last chapter written, making Exodus 40 the correct next chapter and completing all 40 chapters of Exodus with dedicated wiring.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-27T06:46:19Z"
+        },
+        {
+          "name": "next chapter determined: Exodus 40 (confirmed via lib/bibleReaderStudyNotes.ts wiring -- no exodusFortySource.ts existed yet)",
+          "at": "2026-07-27T06:47:24Z"
+        },
+        {
+          "name": "KJV text fetched for Exodus 40 (38 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-27T06:47:19Z"
+        },
+        {
+          "name": "reviewed reference implementation (exodusThirtyNineSource.ts) for exact voice/format",
+          "at": "2026-07-27T06:47:33Z"
+        },
+        {
+          "name": "wrote lib/exodusFortySource.ts",
+          "at": "2026-07-27T06:51:41Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to 40)",
+          "at": "2026-07-27T06:52:00Z"
+        },
+        {
+          "name": "parser check passed: 9 sections, 48 cards",
+          "at": "2026-07-27T06:52:27Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-27T06:53:56Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-27T06:55:00Z"
+        }
+      ]
     }
   ]
 }
