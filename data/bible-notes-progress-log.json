@@ -1247,6 +1247,55 @@
           "at": "2026-07-27T14:56:09Z"
         }
       ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 9,
+      "startedAt": "2026-07-27T15:46:58Z",
+      "finishedAt": "2026-07-27T15:58:00Z",
+      "durationMinutes": 11,
+      "sections": 6,
+      "cards": 47,
+      "verses": 24,
+      "notes": "The eighth day: Aaron's first actual day functioning as priest, right after chapter 8's seven-day ordination wait. Covers the self-then-others offering order (Aaron's own calf sin offering and ram burnt offering first, then the people's goat/calf/lamb sin and burnt offerings, then the shared bullock-and-ram peace offering), the species-by-rank pattern from chapter 4, the daily 'burnt sacrifice of the morning' running in the background (forward callback to Numbers 28's tamid offering), Aaron's sons taking an active blood-carrying role for the first time, and the climax: Aaron's first priestly blessing (forward callback to Numbers 6), the glory of the LORD appearing to fulfill the chapter's opening promise, and fire from the LORD consuming the offering, with an explicit flag that the same phrase returns in chapter 10 under very different circumstances. Density ~1.96 cards/verse. Parser + tsc verified (clean).",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-27T15:46:58Z"
+        },
+        {
+          "name": "next chapter determined: Leviticus 9 (confirmed via lib/bibleReaderStudyNotes.ts wiring, ch1-8 present, no leviticusNineSource.ts existed yet)",
+          "at": "2026-07-27T15:47:03Z"
+        },
+        {
+          "name": "KJV text fetched for Leviticus 9 (24 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-27T15:47:20Z"
+        },
+        {
+          "name": "wrote lib/leviticusNineSource.ts",
+          "at": "2026-07-27T15:52:10Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to chapter 9)",
+          "at": "2026-07-27T15:52:40Z"
+        },
+        {
+          "name": "parser check passed: 6 sections, 47 cards",
+          "at": "2026-07-27T15:53:30Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-27T15:54:22Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-27T15:54:43Z"
+        },
+        {
+          "name": "appended SESSION_LOG.md entry",
+          "at": "2026-07-27T15:55:17Z"
+        }
+      ]
     }
   ]
 }
