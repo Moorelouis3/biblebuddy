@@ -189,6 +189,16 @@ export default function SignupPage() {
     } catch (welcomeError) {
       console.error("Welcome DM failed (non-blocking):", welcomeError);
     }
+
+    try {
+      await fetch("/api/systeme-sync", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: userEmail, firstName: username }),
+      });
+    } catch (systemeError) {
+      console.error("Systeme.io sync failed (non-blocking):", systemeError);
+    }
   }
 
   async function handleSubmit(event: FormEvent) {
