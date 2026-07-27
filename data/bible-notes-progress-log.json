@@ -1365,6 +1365,55 @@
           "at": "2026-07-27T16:53:22Z"
         }
       ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 11,
+      "startedAt": "2026-07-27T17:46:26Z",
+      "finishedAt": "2026-07-27T17:56:29Z",
+      "durationMinutes": 10,
+      "sections": 10,
+      "cards": 54,
+      "verses": 47,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The clean/unclean animal laws. Covers the land-animal two-part test (cloven hoof + cud-chewing) and its four named exceptions (camel, coney, hare -- all failing the hoof half; swine failing the cud half), the fins-and-scales test for water creatures (quietly excluding shellfish/crustaceans), a 19-name list of unclean birds (mostly predators/scavengers, with the raven's later use to feed Elijah in 1 Kings 17 and the bat's inclusion despite being a mammal), the locust exception among flying creeping things (with a callback to Exodus 10's locust plague and John the Baptist's diet in Matthew 3:4), the graduated 'unclean until even' system for touching vs carrying carcases (contrasted with the permanent 'cut off' penalty elsewhere in the book), the contamination rules for vessels/ovens/water/seed (porous clay had to be broken, not washed; flowing water stayed clean; moisture as the deciding factor), the naturally-dead-animal exception (tightened later in Deuteronomy 14:21, tied to the blood-draining requirement in Leviticus 17:10-14), and the chapter's closing theology -- 'sanctify yourselves...be ye holy, for I am holy,' quoted directly in 1 Peter 1:15-16, and 'to make a difference between the unclean and the clean,' a direct callback to Aaron's teaching charge in chapter 10:10. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com). First parser check came back at 43 cards against 47 verses (~0.91x), below the skill's required 1x floor -- added 11 more cards across the thinner sections (the water-creatures section, the bat split out from the stork/heron/lapwing card, a locust/Exodus-10-plague callback, a 'cut off' penalty contrast, a tortoise/lizard translation-uncertainty card, a contamination-system synthesis card, a blood-draining rationale card, and two closing structural-bookend cards) before re-verifying at 54/47 (~1.15x). Density still lighter than the ~2x aspiration since much of the chapter is dense proper-noun listing (19 named birds, 8 named creeping things) rather than repeatable teaching content -- several old-English species names (ossifrage, gier eagle, cuckow, lapwing, and possibly 'tortoise') carry genuine translation uncertainty even among modern scholars, flagged honestly in the notes rather than guessed at, consistent with the skill's grounding requirement. Parser check passed exactly (10/10 sections, 54 cards), npx tsc --noEmit -p . clean with zero errors. Confirmed via git fetch that local checkout matched origin/main exactly at Leviticus 10 (6bcbba5) before starting, and confirmed via lib/bibleReaderStudyNotes.ts wiring (chapters 1-10 present, no leviticusElevenSource.ts existed yet) that Leviticus 11 was the correct next chapter.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-27T17:47:09Z"
+        },
+        {
+          "name": "next chapter determined: Leviticus 11 (confirmed via git fetch + lib/bibleReaderStudyNotes.ts wiring, ch1-10 present, no leviticusElevenSource.ts existed yet)",
+          "at": "2026-07-27T17:47:23Z"
+        },
+        {
+          "name": "KJV text fetched for Leviticus 11 (47 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-27T17:47:23Z"
+        },
+        {
+          "name": "reviewed reference implementation (leviticusTenSource.ts) for exact voice/format",
+          "at": "2026-07-27T17:47:23Z"
+        },
+        {
+          "name": "wrote lib/leviticusElevenSource.ts",
+          "at": "2026-07-27T17:51:18Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to chapter 11)",
+          "at": "2026-07-27T17:51:18Z"
+        },
+        {
+          "name": "parser check passed: 10 sections, 54 cards (first pass was 43 cards/0.91x, added 11 more cards to clear the 1x floor before re-verifying)",
+          "at": "2026-07-27T17:51:58Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-27T17:56:29Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-27T17:57:02Z"
+        }
+      ]
     }
   ]
 }
