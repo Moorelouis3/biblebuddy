@@ -1522,6 +1522,14 @@
         {
           "name": "appended SESSION_LOG.md entry",
           "at": "2026-07-27T22:57:40Z"
+        },
+        {
+          "name": "committed (f812986); local checkout was on detached HEAD matching origin/main at session start, moved main branch pointer before pushing",
+          "at": "2026-07-27T22:58:10Z"
+        },
+        {
+          "name": "pushed to origin/main, confirmed via push output (bfcf9e3..f812986 main -> main), exit code 0",
+          "at": "2026-07-27T22:58:11Z"
         }
       ]
     }
