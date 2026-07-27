@@ -1190,6 +1190,55 @@
           "at": "2026-07-27T13:58:18Z"
         }
       ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 8,
+      "startedAt": "2026-07-27T14:48:10Z",
+      "finishedAt": "2026-07-27T14:55:52Z",
+      "durationMinutes": 8,
+      "sections": 9,
+      "cards": 74,
+      "verses": 36,
+      "notes": "The ordination narrative: Aaron and his sons formally installed as priests before the whole congregation. Moses (not Aaron) performs every action since Aaron can't ordain himself yet. Covers the full priestly vestments (coat, girdle, robe, ephod, curious girdle, breastplate with the Urim and Thummim, mitre, golden plate), anointing the tabernacle/altar/laver plus Aaron's head directly (root of \"anointed one\"/messiah), three animals each with a distinct purpose (sin-offering bullock burned whole outside camp since no priest exists yet to eat a priestly portion, burnt-offering ram for total consecration, and the uniquely-named \"ram of consecration\" with blood applied to the right ear/thumb/toe of Aaron and his sons), the wave offering filling their hands (likely the literal root of the Hebrew idiom for ordination), oil-and-blood sprinkled together on the men and their garments (a mixture not described anywhere else in the book), and the seven-day confinement at the tabernacle door under penalty of death, closing with full compliance that sets up chapter 9's first actual day of priestly ministry. Density ~2.06 cards/verse. Parser + tsc verified (clean).",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-27T14:48:03Z"
+        },
+        {
+          "name": "next chapter determined: Leviticus 8 (confirmed via lib/bibleReaderStudyNotes.ts wiring, ch1-7 present, no leviticusEightSource.ts existed yet)",
+          "at": "2026-07-27T14:48:10Z"
+        },
+        {
+          "name": "KJV text fetched for Leviticus 8 (36 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-27T14:50:02Z"
+        },
+        {
+          "name": "wrote lib/leviticusEightSource.ts",
+          "at": "2026-07-27T14:52:21Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to chapter 8)",
+          "at": "2026-07-27T14:53:02Z"
+        },
+        {
+          "name": "parser check passed: 9 sections, 74 cards",
+          "at": "2026-07-27T14:53:16Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-27T14:54:32Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-27T14:55:44Z"
+        },
+        {
+          "name": "appended SESSION_LOG.md entry",
+          "at": "2026-07-27T14:55:52Z"
+        }
+      ]
     }
   ]
 }
