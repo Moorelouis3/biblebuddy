@@ -522,6 +522,47 @@
           "at": "2026-07-27T01:56:46Z"
         }
       ]
+    },
+    {
+      "book": "Exodus",
+      "chapter": 36,
+      "startedAt": "2026-07-27T02:46:00Z",
+      "finishedAt": "2026-07-27T02:54:08Z",
+      "durationMinutes": 8,
+      "sections": 7,
+      "cards": 48,
+      "verses": 38,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. This is the fulfillment chapter: Bezaleel, Aholiab, and every wise-hearted craftsman actually begin building what chapters 25-31 only described, opening with the people giving so much material that Moses has to formally command them to stop (a deliberate contrast with the golden calf's forced/eager-wrong-giving in chapter 32). The rest of the chapter walks through the actual construction in the same order as chapter 26's blueprint: the ten cherubim-woven linen curtains, the eleven goat-hair curtains plus ram- and badger-skin coverings, the shittim-wood boards and their silver sockets for the south, north, and west walls plus corner boards, the connecting bars overlaid in gold, and finally the veil and door hanging with their pillars. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com), the same fallback host confirmed reachable in recent runs after biblegateway.com/bible-api.com/etc. 403'd at the egress proxy layer for earlier chapters this project. Parser check passed (7/7 sections, 48 cards against 38 verses, every section at or above a 1-card-per-verse floor), npx tsc --noEmit -p . clean with zero errors. Card density (48/38 \u2248 1.26x) sits above the required floor but below the ~2x target described in the skill -- this chapter's content is a near line-for-line repeat of chapters 26 and 31's construction instructions, already covered in depth in those earlier chapters' notes, so the notes here lean on genuinely new material (the overflowing-generosity narrative in verses 1-7, fulfillment/cross-reference framing, a couple of engineering details like the corner-ring joinery and paired tenon sockets) rather than re-explaining terms at full density a second time. Flagging this rather than padding with restated content, consistent with the skill's ban on inflated filler.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-27T02:47:18Z"
+        },
+        {
+          "name": "next chapter determined: Exodus 36 (via lib files + wiring in bibleReaderStudyNotes.ts)",
+          "at": "2026-07-27T02:47:18Z"
+        },
+        {
+          "name": "KJV text fetched for Exodus 36 (38 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-27T02:50:45Z"
+        },
+        {
+          "name": "wrote lib/exodusThirtySixSource.ts",
+          "at": "2026-07-27T02:50:45Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to 36)",
+          "at": "2026-07-27T02:51:12Z"
+        },
+        {
+          "name": "parser check passed: 7 sections, 48 cards",
+          "at": "2026-07-27T02:52:28Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-27T02:53:37Z"
+        }
+      ]
     }
   ]
 }

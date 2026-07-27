@@ -62,3 +62,7 @@ Chapters this run: none — Exodus 36 not written
 Verified: 0/0
 Total shipped so far: 65
 Still open: Network block — all fetch attempts to bible-api.com returned 403 (gateway CONNECT rejected: "policy denial or upstream failure"). Retried 5x with backoff, all failed. Also reconciled bible-notes-progress.json: Exodus 30 and Exodus 35 were already shipped in code (commits fb7d5f8, a0cd0c3) but missing from the progress file — added their entries. Next chapter is Exodus 36, blocked on network access to fetch real KJV text.
+
+## 2026-07-27T02:54:08Z (hourly chapter notes run)
+Chapter: Exodus 36 | Duration: 8 min | Sections: 7 | Cards: 48 | Status: pass
+Next up: Exodus 37

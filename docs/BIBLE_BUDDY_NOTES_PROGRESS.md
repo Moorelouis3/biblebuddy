@@ -52,6 +52,7 @@ Already at gold-standard quality before this log started: Genesis 1-40 (40 chapt
 | 2026-07-27 | Exodus 30 | 59 cards / 9 sections | The golden altar of incense (built like the ark, positioned facing the mercy seat), Aaron's daily morning/evening incense duty, the once-yearly Day of Atonement blood on its horns, the half-shekel census ransom money, the bronze laver and its three "that they die not" warnings, the holy anointing oil recipe (myrrh, cinnamon, calamus, cassia), anointing the whole tabernacle and priesthood with it, the ban on ordinary people wearing or copying the oil, and the matching holy incense recipe (stacte, onycha, galbanum, frankincense) with its own copying ban. Previous run's KJV fetch was blocked by a transient network 403; resolved this run via the aruljohn/Bible-kjv GitHub raw mirror. Parser + tsc verified (clean). |
 | *(31-34 missing from this table)* | Exodus 31-34 | — | **Gap:** these 4 chapters exist in the codebase (`lib/exodusThirtyOneSource.ts` through `exodusThirtyFourSource.ts`, wired into `bibleReaderStudyNotes.ts`) but a prior run logged them to a different, non-canonical file (`bible-notes-progress.json` at the repo root) instead of this doc and `data/bible-notes-progress-log.json`. That run also wrote all 4 chapters in one sitting, which conflicts with the one-chapter-per-run rule now in place. Flagging here rather than backfilling, to stay within this run's one-chapter scope (Exodus 35). |
 | 2026-07-27 | Exodus 35 | 42 cards / 5 sections | Moses gathers the congregation and repeats the Sabbath law before any building begins, the willing-hearted offering call (materials list echoing chapter 25), the full tabernacle equipment list restated (bridging the private chapter 25-31 mountain instructions into public, shared work), the people's actual response (men, women, and rulers giving freely — including the same kind of gold jewelry Aaron melted into the golden calf in chapter 32, now redirected to right worship), and Bezaleel and Aholiab named and Spirit-filled as lead craftsmen. Parser + tsc verified (clean). |
+| 2026-07-27 | Exodus 36 | 48 cards / 7 sections | Construction actually begins: the people give so much material Moses has to formally command them to stop; then the ten cherubim-woven linen curtains, eleven goat-hair curtains plus ram/badger-skin coverings, the acacia-wood boards and silver sockets for all three walls plus corner boards, the gold-overlaid connecting bars, and the veil and door hanging with their pillars — following chapters 26 and 31's blueprint in order, almost word for word. Density (~1.26 cards/verse) is lighter than the ~2x target since this chapter's content closely repeats chapters 26/31, already covered in depth; leaned on the new overflowing-generosity narrative (vv1-7) and fulfillment/cross-reference framing instead of padding repeated definitions. Parser + tsc verified (clean). |
 
 ## Standing process doc
 
@@ -70,11 +71,11 @@ every time a chapter is finished — this markdown file and that JSON log should
 ## Running totals
 
 - **GENESIS IS COMPLETE — all 50 chapters at gold standard.**
-- Done under this log: 44 chapters (Genesis 41, 43, 44, 45, 46, 47, 48, 49, 50; Exodus 1-35)
+- Done under this log: 45 chapters (Genesis 41, 43, 44, 45, 46, 47, 48, 49, 50; Exodus 1-36)
 - Done before this log (pre-existing gold standard): 41 chapters (Genesis 1-40, 42)
-- Total done: 85 / 1,189 (7.1%)
-- Remaining: 1,104
-- Currently on: Exodus (40 chapters total, 35 done, 5 to go)
+- Total done: 86 / 1,189 (7.2%)
+- Remaining: 1,103
+- Currently on: Exodus (40 chapters total, 36 done, 4 to go)
 - Running under /loop (dynamic self-pacing) starting 2026-07-25 ~13:53 UTC
 - Formalized 2026-07-26 as the "Bible Note Writer Agent" reporting to Bible Buddy → Marcus (second-brain), per Louis's governance directive. Every chapter completion now also appends a `SESSION_LOG.md` block containing "hourly chapter notes run" so Marcus's watcher (`bibleBuddyWatch.js`) can see live activity, not just this log.
 - Known follow-up: Genesis 41, 43, and 44 were written before the ~2-cards/verse
