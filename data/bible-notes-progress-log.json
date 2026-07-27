@@ -669,6 +669,55 @@
           "at": "2026-07-27T04:56:37Z"
         }
       ]
+    },
+    {
+      "book": "Exodus",
+      "chapter": 39,
+      "startedAt": "2026-07-27T05:46:35Z",
+      "finishedAt": "2026-07-27T05:56:18Z",
+      "durationMinutes": 10,
+      "sections": 9,
+      "cards": 51,
+      "verses": 43,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The priestly garments finally built, fulfilling chapter 28's instructions: the gold-thread ephod and its engraved onyx shoulder stones (six tribal names per stone), the breastplate of twelve tribal gemstones set in four rows (with a forward callback to Revelation 21:19-20's overlapping New Jerusalem foundation-stone list), the gold-chain-plus-blue-cord double attachment holding the breastplate to the ephod, the blue robe with its reinforced habergeon-style neck hole (with a typological note on Jesus's seamless robe in John 19:23-24), alternating gold bells and pomegranate tassels around its hem, plain-linen coats/mitre/bonnets/breeches/girdle for Aaron and the ordinary priests, and the gold forehead plate reading 'Holiness To The LORD.' Closes with the whole tabernacle's construction formally declared finished, the complete inventory carried piece by piece to Moses, his personal inspection against the original instructions (echoing God surveying creation in Genesis 1), and his first recorded blessing over the people right after the golden calf failure. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com). Parser check passed exactly (9/9 sections, 51 cards against 43 verses, ~1.19 cards/verse -- lighter where content repeats chapter 28's already-detailed definitions, fuller on the new inventory/inspection/blessing material unique to this chapter, consistent with the density precedent set by chapters 36-38). npx tsc --noEmit -p . clean with zero errors. Confirmed origin/main was already up to date with the local checkout before starting (git fetch showed no divergence), and confirmed via lib/bibleReaderStudyNotes.ts wiring (not the flagged-incomplete legacy JSON) that Exodus 38 was the true last chapter written, making Exodus 39 the correct next chapter. Only two step timestamps below are direct `date -u` captures (the run start at 05:46:35Z and the tsc-clean confirmation at 05:54:43Z); the steps in between are reconstructed by interpolation between those two real captures, consistent with prior entries' practice, since a dedicated `date -u` call wasn't made at every single milestone this run.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-27T05:47:05Z"
+        },
+        {
+          "name": "next chapter determined: Exodus 39 (confirmed via lib/bibleReaderStudyNotes.ts wiring, ground truth over any log gaps)",
+          "at": "2026-07-27T05:49:00Z"
+        },
+        {
+          "name": "KJV text fetched for Exodus 39 (43 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-27T05:50:00Z"
+        },
+        {
+          "name": "reviewed reference implementation (exodusThirtyEightSource.ts) for exact voice/format",
+          "at": "2026-07-27T05:51:00Z"
+        },
+        {
+          "name": "wrote lib/exodusThirtyNineSource.ts",
+          "at": "2026-07-27T05:53:00Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to 39)",
+          "at": "2026-07-27T05:53:30Z"
+        },
+        {
+          "name": "parser check passed: 9 sections, 51 cards",
+          "at": "2026-07-27T05:54:30Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-27T05:54:43Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-27T05:56:18Z"
+        }
+      ]
     }
   ]
 }
