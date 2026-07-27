@@ -22,3 +22,16 @@ Still open: none
 ## 2026-07-26T23:56:00Z (hourly chapter notes run)
 Chapter: Exodus 29 | Duration: 9 min | Sections: 11 | Cards: 47 | Status: pass
 Next up: Exodus 30
+
+## 2026-07-27T00:30:00Z (hourly chapter notes run)
+Chapters this run: none
+Verified: 0/0
+Total shipped so far: 79 (reconciled Exodus 29's missing progress-log entry this run)
+Still open: network block — every attempt to fetch KJV text for Exodus 30
+(bible-api.com via curl, bible-api.com via WebFetch) failed with HTTP 403 at
+the network egress layer (agent proxy log: "gateway answered 403 to CONNECT
+(policy denial or upstream failure)"). General internet egress (google.com,
+anthropic.com) also 403'd; only allowlisted hosts like registry.npmjs.org
+worked. Same failure mode as the 2026-07-26T23:11 incident, which resolved
+itself by the next run. No chapter content written per the
+never-write-from-memory rule. Next up: retry Exodus 30 next run.
