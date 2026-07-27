@@ -1129,6 +1129,59 @@
           "at": "2026-07-27T12:53:41Z"
         }
       ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 7,
+      "startedAt": "2026-07-27T13:47:04Z",
+      "finishedAt": "2026-07-27T13:56:21Z",
+      "durationMinutes": 9,
+      "sections": 10,
+      "cards": 52,
+      "verses": 38,
+      "notes": "Priestly law of the trespass offering, the priest's portions of burnt/grain/peace offerings, the three peace-offering subtypes (thanksgiving, vow, voluntary) with their eating-day deadlines, the fat/blood eating ban for all Israel, and the wave-breast/heave-shoulder priestly portions. Closes chapters 1-7's whole sacrificial law code before chapter 8's ordination narrative.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-27T13:47:33Z"
+        },
+        {
+          "name": "next chapter determined: Leviticus 7 (confirmed via lib/bibleReaderStudyNotes.ts wiring, ch1-6 present, no leviticusSevenSource.ts existed yet)",
+          "at": "2026-07-27T13:48:01Z"
+        },
+        {
+          "name": "KJV text fetched for Leviticus 7 (38 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-27T13:48:20Z"
+        },
+        {
+          "name": "reviewed reference implementation (leviticusSixSource.ts) and wiring pattern for exact voice/format",
+          "at": "2026-07-27T13:49:10Z"
+        },
+        {
+          "name": "wrote lib/leviticusSevenSource.ts",
+          "at": "2026-07-27T13:54:40Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to chapter 7)",
+          "at": "2026-07-27T13:54:55Z"
+        },
+        {
+          "name": "parser check passed: 10 sections, 52 cards",
+          "at": "2026-07-27T13:55:20Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-27T13:56:05Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-27T13:57:00Z"
+        },
+        {
+          "name": "appended SESSION_LOG.md entry",
+          "at": "2026-07-27T13:57:20Z"
+        }
+      ]
     }
   ]
 }
