@@ -491,5 +491,13 @@
     "sectionCount": 4,
     "cardCount": 18,
     "verified": true
+  },
+  {
+    "book": "exodus",
+    "chapter": 32,
+    "timestamp": "2026-07-27T01:38:59Z",
+    "sectionCount": 7,
+    "cardCount": 27,
+    "verified": true
   }
 ]
