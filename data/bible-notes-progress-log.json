@@ -840,6 +840,51 @@
           "at": "2026-07-27T07:54:35Z"
         }
       ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 2,
+      "startedAt": "2026-07-27T08:47:18Z",
+      "finishedAt": "2026-07-27T08:55:03Z",
+      "durationMinutes": 8,
+      "sections": 5,
+      "cards": 28,
+      "verses": 16,
+      "notes": "Grain (meat) offering chapter -- law/ritual content, one law-cluster per card as Part 4 of the skill directs. Covered fine flour/oil/frankincense, the memorial portion concept, the three baking methods (oven, pan, fryingpan), the leaven/honey ban, the salt of the covenant, and the firstfruits grain offering, including the subtle distinction between v12's firstfruits oblation and vv14-16's firstfruits meat offering. Parser check and tsc --noEmit both clean.",
+      "steps": [
+        {
+          "name": "npm_install_done",
+          "at": "2026-07-27T08:47:18Z"
+        },
+        {
+          "name": "next_chapter_determined",
+          "at": "2026-07-27T08:51:54Z"
+        },
+        {
+          "name": "kjv_text_fetched",
+          "at": "2026-07-27T08:51:54Z"
+        },
+        {
+          "name": "source_file_written",
+          "at": "2026-07-27T08:53:04Z"
+        },
+        {
+          "name": "wired_into_reader",
+          "at": "2026-07-27T08:53:19Z"
+        },
+        {
+          "name": "parser_check_passed",
+          "at": "2026-07-27T08:53:37Z"
+        },
+        {
+          "name": "tsc_clean",
+          "at": "2026-07-27T08:54:51Z"
+        },
+        {
+          "name": "progress_files_logged",
+          "at": "2026-07-27T08:55:03Z"
+        }
+      ]
     }
   ]
 }
