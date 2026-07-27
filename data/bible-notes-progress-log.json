@@ -893,6 +893,51 @@
           "at": "2026-07-27T08:56:18Z"
         }
       ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 3,
+      "startedAt": "2026-07-27T09:47:05Z",
+      "finishedAt": "2026-07-27T09:54:59Z",
+      "durationMinutes": 8,
+      "sections": 3,
+      "cards": 32,
+      "verses": 17,
+      "notes": "Peace offering chapter (shelamim) -- law/ritual content, one law-cluster per card. Covered all three animal tiers (herd, flock/lamb, goat), the deliberate repetition of the hand-on-the-head gesture, blood application, and named fat portions across all three, the fat-tailed sheep 'whole rump' detail unique to the lamb tier, the kidney/conscience connection, and the closing 'all the fat is the LORD's' plus the separate permanent fat and blood bans. Parser check and tsc --noEmit both clean.",
+      "steps": [
+        {
+          "name": "npm_install_done",
+          "at": "2026-07-27T09:47:05Z"
+        },
+        {
+          "name": "next_chapter_determined",
+          "at": "2026-07-27T09:47:41Z"
+        },
+        {
+          "name": "kjv_text_fetched",
+          "at": "2026-07-27T09:47:45Z"
+        },
+        {
+          "name": "source_file_written",
+          "at": "2026-07-27T09:51:38Z"
+        },
+        {
+          "name": "wired_into_reader",
+          "at": "2026-07-27T09:51:50Z"
+        },
+        {
+          "name": "parser_check_passed",
+          "at": "2026-07-27T09:51:58Z"
+        },
+        {
+          "name": "tsc_clean",
+          "at": "2026-07-27T09:53:30Z"
+        },
+        {
+          "name": "progress_files_logged",
+          "at": "2026-07-27T09:54:59Z"
+        }
+      ]
     }
   ]
 }

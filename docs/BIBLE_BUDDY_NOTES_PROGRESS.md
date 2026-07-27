@@ -59,6 +59,7 @@ Already at gold-standard quality before this log started: Genesis 1-40 (40 chapt
 | 2026-07-27 | Exodus 40 | 48 cards / 9 sections | **MILESTONE: Exodus complete, all 40 chapters.** The tabernacle set up exactly one year after the Exodus, assembled center-outward (ark/veil first, court boundary last), everything and everyone anointed and consecrated, Moses personally erecting the frame and lighting the lamps before Aaron's priesthood is fully running on its own — then the climax: the cloud covers the tent and the glory of the LORD fills the tabernacle so fully that even Moses can't enter (forward callbacks to Solomon's temple in 1 Kings 8, and to John 1:14/Revelation 21:3's picture of God ultimately dwelling with His people), closing with the cloud-by-day/fire-by-night system that will guide Israel's camp-and-march decisions for the rest of the Pentateuch. Density ~1.26 cards/verse overall, weighted up to ~2.5x on the glory-cloud verses 34-35 and lighter on furniture-placement verses recapping chapters 25-30. Parser + tsc verified (clean). |
 | 2026-07-27 | Leviticus 1 | 28 cards / 5 sections | **MILESTONE: Leviticus begun.** First chapter of a new book — opens with a framing card on Leviticus itself (name from the Levites, Hebrew title Vayikra "And he called," picking up directly from Exodus 40's tabernacle dedication). Covers the voluntary burnt offering's three cost tiers: from the herd (vv1-9), from the flock (vv10-13), and from fowls (vv14-17, with a forward callback to Luke 2:24's turtledoves at Jesus's dedication). Key word definitions: korban (offering, "drawn near"), olah (burnt sacrifice, "that which goes up"), kaphar (atonement), "sweet savour." Confirmed via grep that three older Leviticus personal-notes files (leviticusOneToTenPersonalNotes.ts etc.) were imported but never actually wired in with `replaceStudySectionsForBookRange`, so chapter 1 had no prior dedicated coverage. Density ~1.65 cards/verse. Parser + tsc verified (clean). |
 | 2026-07-27 | Leviticus 2 | 28 cards / 5 sections | The grain (meat) offering, in fine flour, baked, and firstfruits forms. Word definitions: "meat offering" (grain, not flesh), oblation, memorial (azkarah, the token handful burned), "most holy" vs "holy." Covers the three baking methods (oven, pan, fryingpan) as one accessible offering regardless of a household's equipment, the leaven/honey ban and its symbolism, "the salt of the covenant" (with Numbers 18:19/2 Chronicles 13:5 callbacks), and untangles the easy-to-confuse distinction between v12's separate firstfruits oblation (Leviticus 23:17's leavened loaves) and vv14-16's firstfruits grain offering. Density 1.75 cards/verse. Parser + tsc verified (clean). |
+| 2026-07-27 | Leviticus 3 | 32 cards / 3 sections | The peace offering (shelamim, from shalom), the third offering type and the first where the worshipper eats part of the meal. Covers all three animal tiers (herd, flock/lamb, goat), tracking the deliberate repetition of the hand-on-the-head gesture, blood application, and named fat portions (inwards, kidneys, the caul above the liver) across all three. Word/detail definitions: "flanks," fat-tailed sheep and the "whole rump," "hard by the backbone," the kidney/conscience connection (Psalm 7:9, Jeremiah 17:10), and the closing "all the fat is the LORD's" plus the separate permanent fat/blood bans (fat belongs to God; blood is life itself, Leviticus 17:11). Density 1.88 cards/verse. Parser + tsc verified (clean). |
 
 ## Standing process doc
 
@@ -78,11 +79,11 @@ every time a chapter is finished — this markdown file and that JSON log should
 
 - **GENESIS IS COMPLETE — all 50 chapters at gold standard.**
 - **EXODUS IS COMPLETE — all 40 chapters at gold standard.**
-- Done under this log: 51 chapters (Genesis 41, 43, 44, 45, 46, 47, 48, 49, 50; Exodus 1-40; Leviticus 1-2)
+- Done under this log: 52 chapters (Genesis 41, 43, 44, 45, 46, 47, 48, 49, 50; Exodus 1-40; Leviticus 1-3)
 - Done before this log (pre-existing gold standard): 41 chapters (Genesis 1-40, 42)
-- Total done: 92 / 1,189 (7.7%)
-- Remaining: 1,097
-- Currently on: Leviticus (2 of 27 chapters done — chapters 1-2)
+- Total done: 93 / 1,189 (7.8%)
+- Remaining: 1,096
+- Currently on: Leviticus (3 of 27 chapters done — chapters 1-3)
 - Running under /loop (dynamic self-pacing) starting 2026-07-25 ~13:53 UTC
 - Formalized 2026-07-26 as the "Bible Note Writer Agent" reporting to Bible Buddy → Marcus (second-brain), per Louis's governance directive. Every chapter completion now also appends a `SESSION_LOG.md` block containing "hourly chapter notes run" so Marcus's watcher (`bibleBuddyWatch.js`) can see live activity, not just this log.
 - Known follow-up: Genesis 41, 43, and 44 were written before the ~2-cards/verse
