@@ -1007,6 +1007,55 @@
           "at": "2026-07-27T10:56:39Z"
         }
       ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 5,
+      "startedAt": "2026-07-27T11:46:02Z",
+      "finishedAt": "2026-07-27T11:51:38Z",
+      "durationMinutes": 6,
+      "sections": 6,
+      "cards": 36,
+      "verses": 19,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Two related but distinct offering categories close out chapter 5. First, the sin offering (chattat, vv1-13) covering four discovered-after-the-fact scenarios (a silent witness who stayed quiet, touching an unclean carcase, touching human uncleanness, a rash oath), all scaled through three economic tiers depending on what the sinner could afford: a female lamb or goat, or two birds (one as the sin offering, one as an added burnt offering, with a Luke 2:24 callback to Mary and Joseph's own bird offering), or, for those too poor even for birds, a tenth-ephah of plain flour with no oil or frankincense (the same amount as an omer, the daily manna portion in Exodus 16:16). Second, the trespass offering (asham, vv14-19), a genuinely distinct category introduced here for damage to 'holy things' and other unnamed forbidden acts -- a fixed ram valued by 'the shekel of the sanctuary,' plus literal repayment of the value owed plus a 20% penalty, the first time in Leviticus that real restitution is required alongside a ritual. Also covered vv17-19's point that not even total ignorance of a specific law removes guilt, while still leaving room for forgiveness. Word definitions: 'wist' (knew), 'erred' (made a mistake), 'iniquity,' 'carcase,' ephah/omer, 'shekel of the sanctuary.' KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com), reachable as in recent runs. Parser check passed exactly (6/6 sections, 36 cards against 19 verses, ~1.9 cards/verse). npx tsc --noEmit -p . clean with zero errors. Confirmed via lib/bibleReaderStudyNotes.ts wiring (no leviticusFiveSource.ts existed yet, Leviticus 1-4 already wired) that Leviticus 5 was the correct next chapter, ground truth over this log alone. Local checkout started on a detached HEAD matching origin/main exactly at Leviticus 4 (9935f39) -- no lost work, moved onto the main branch pointer before committing.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-27T11:46:26Z"
+        },
+        {
+          "name": "next chapter determined: Leviticus 5 (confirmed via lib/bibleReaderStudyNotes.ts wiring, ch1-4 present, no leviticusFiveSource.ts existed yet)",
+          "at": "2026-07-27T11:46:40Z"
+        },
+        {
+          "name": "KJV text fetched for Leviticus 5 (19 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-27T11:46:52Z"
+        },
+        {
+          "name": "reviewed reference implementation (leviticusFourSource.ts) and SKILL.md for exact voice/format",
+          "at": "2026-07-27T11:48:07Z"
+        },
+        {
+          "name": "wrote lib/leviticusFiveSource.ts",
+          "at": "2026-07-27T11:49:27Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to chapter 5)",
+          "at": "2026-07-27T11:49:47Z"
+        },
+        {
+          "name": "parser check passed: 6 sections, 36 cards",
+          "at": "2026-07-27T11:49:47Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-27T11:51:05Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-27T11:51:38Z"
+        }
+      ]
     }
   ]
 }
