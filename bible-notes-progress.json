@@ -486,6 +486,14 @@
   },
   {
     "book": "exodus",
+    "chapter": 30,
+    "sectionCount": 9,
+    "cardCount": 59,
+    "verified": true,
+    "note": "shipped in commit fb7d5f8 but missing from this progress file; reconciled at start of next hourly run after confirming via getBibleReaderStudySections"
+  },
+  {
+    "book": "exodus",
     "chapter": 31,
     "timestamp": "2026-07-27T01:34:08Z",
     "sectionCount": 4,
@@ -515,5 +523,13 @@
     "sectionCount": 6,
     "cardCount": 25,
     "verified": true
+  },
+  {
+    "book": "exodus",
+    "chapter": 35,
+    "sectionCount": 5,
+    "cardCount": 42,
+    "verified": true,
+    "note": "shipped in commit a0cd0c3 but missing from this progress file; reconciled at start of next hourly run after confirming via getBibleReaderStudySections"
   }
 ]
