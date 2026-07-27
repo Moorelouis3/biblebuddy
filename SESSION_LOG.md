@@ -102,3 +102,7 @@ Next up: Leviticus 5
 ## 2026-07-27T11:51:38Z (hourly chapter notes run)
 Chapter: Leviticus 5 | Duration: 6 min | Sections: 6 | Cards: 36 | Status: pass
 Next up: Leviticus 6
+
+## 2026-07-27T12:53:00Z (hourly chapter notes run)
+Chapter: Leviticus 6 | Duration: 7 min | Sections: 5 | Cards: 45 | Status: pass
+Next up: Leviticus 7

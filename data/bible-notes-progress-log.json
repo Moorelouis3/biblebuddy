@@ -1068,6 +1068,55 @@
           "at": "2026-07-27T11:52:24Z"
         }
       ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 6,
+      "startedAt": "2026-07-27T12:46:02Z",
+      "finishedAt": "2026-07-27T12:53:00Z",
+      "durationMinutes": 7,
+      "sections": 5,
+      "cards": 45,
+      "verses": 30,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Marks the book's shift from lay to priestly instructions: chapters 1-5 addressed the ordinary offerer, chapter 6 turns to what Aaron and his sons must actually do at the altar for each offering type. Covers trespass/theft case law continuing chapter 5:14-19 (lying about a deposit, robbery, fraud, a false oath over lost property, all requiring the same ram-plus-20%-penalty offering), the burnt offering's continual fire that must never go out (the priest's plain linen garments for ash removal, a separate set of clothes for carrying ashes outside camp, daily wood and fat added to one unbroken flame), the grain offering's priestly-food rules (unleavened, eaten only in the court of the tabernacle, restricted to male priests, ranked 'most holy'), the high priest's own perpetual twice-daily grain offering (the same one-omer measure chapter 5:11 gave the poorest sinner, but wholly burnt and never eaten, unlike the people's version in verse 16), and the sin offering's priestly law (blood-stained garments washed inside the holy place, a clay cooking vessel broken versus a bronze one scoured and reused, and the key exception carried over from chapter 4: when blood is carried inside the tent itself, the meat is burned outside camp instead of eaten). KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com). Parser check passed exactly (5/5 sections, 45 cards against 30 verses, 1.5 cards/verse). npx tsc --noEmit -p . clean with zero errors. Confirmed via lib/bibleReaderStudyNotes.ts wiring (no leviticusSixSource.ts existed yet, chapters 1-5 already wired) that Leviticus 6 was the correct next chapter. Local checkout started on a detached HEAD matching origin/main exactly at Leviticus 5 (3bec070) -- no lost work, moved onto the main branch pointer before committing.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-27T12:46:33Z"
+        },
+        {
+          "name": "next chapter determined: Leviticus 6 (confirmed via lib/bibleReaderStudyNotes.ts wiring, ch1-5 present, no leviticusSixSource.ts existed yet)",
+          "at": "2026-07-27T12:46:40Z"
+        },
+        {
+          "name": "KJV text fetched for Leviticus 6 (30 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-27T12:46:51Z"
+        },
+        {
+          "name": "reviewed reference implementation (leviticusFiveSource.ts) and wiring pattern for exact voice/format",
+          "at": "2026-07-27T12:48:30Z"
+        },
+        {
+          "name": "wrote lib/leviticusSixSource.ts",
+          "at": "2026-07-27T12:50:55Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to chapter 6)",
+          "at": "2026-07-27T12:51:05Z"
+        },
+        {
+          "name": "parser check passed: 5 sections, 45 cards",
+          "at": "2026-07-27T12:51:17Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-27T12:52:16Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-27T12:53:00Z"
+        }
+      ]
     }
   ]
 }
