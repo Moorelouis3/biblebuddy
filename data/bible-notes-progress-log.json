@@ -2534,6 +2534,55 @@
           "at": "2026-07-28T16:59:10Z"
         }
       ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 5,
+      "startedAt": "2026-07-28T17:46:31Z",
+      "finishedAt": "2026-07-28T17:59:00Z",
+      "durationMinutes": 12,
+      "sections": 7,
+      "cards": 56,
+      "verses": 31,
+      "notes": "Covers the camp-purity law, the restitution/trespass law, and the full sotah (jealousy/bitter water) ritual - three distinct legal units in one chapter. ~1.8 cards/verse, matching the Numbers 3-4 density precedent. npx tsc --noEmit -p . clean with zero errors.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T17:47:42Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 5 (confirmed via progress log + lib/bibleReaderStudyNotes.ts wiring, both agree Numbers 4 was last completed)",
+          "at": "2026-07-28T17:47:48Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 5 (31 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T17:47:52Z"
+        },
+        {
+          "name": "reviewed reference implementation (numbersFourSource.ts) for exact voice/format",
+          "at": "2026-07-28T17:48:30Z"
+        },
+        {
+          "name": "wrote lib/numbersFiveSource.ts (7 sections, 56 cards)",
+          "at": "2026-07-28T17:52:00Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to numbers ch5)",
+          "at": "2026-07-28T17:52:13Z"
+        },
+        {
+          "name": "parser check passed: 7 sections, 56 cards, matches design exactly",
+          "at": "2026-07-28T17:52:30Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T17:53:45Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-28T17:54:26Z"
+        }
+      ]
     }
   ]
 }
