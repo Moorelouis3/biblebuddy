@@ -2269,6 +2269,51 @@
           "at": "2026-07-28T11:58:09Z"
         }
       ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 27,
+      "startedAt": "2026-07-28T12:46:15Z",
+      "finishedAt": "2026-07-28T12:54:56Z",
+      "durationMinutes": 9,
+      "sections": 15,
+      "cards": 52,
+      "verses": 34,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. MILESTONE: last chapter of Leviticus (chapters 1-27 now fully complete). The vow-and-valuation law chapter: dedicating a person by a fixed age/sex \"estimation\" price table (peaking at fifty shekels for a man aged twenty to sixty, thirty for a woman, dropping for children and the elderly, with an honest note that the gap reflects ancient labor-value economics rather than a ranking of human worth), the poverty exception where the priest personally set a fair price, vowing a sacrifice-worthy animal with a doubling penalty for swapping it, valuing unclean animals/houses/fields with the recurring value-plus-a-fifth redemption formula, fields valued by barley-seed capacity and tied to the Jubile cycle from Leviticus 25 (with the inherited-vs-purchased-field distinction), the shekel of the sanctuary finally defined as twenty gerahs, the firstling already belonging to God from Exodus 13 and so exempt from being vowed, the weightier cherem (\"devoted\") category that allows no redemption at all (handled carefully with cross-references to Joshua 6/7 and Numbers 21 rather than glossing over the death-penalty clause), and the mandatory tithe of land and flock closing the chapter with no redemption option since it was never voluntary to begin with. Closes with the single verse marking the formal end of the whole Sinai law-giving section of Leviticus. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com). Parser check passed exactly (15/15 sections, 52 cards against 34 verses, ~1.53x density -- lower than the ~2x target but consistent with recent precedent for numerically formulaic law-table chapters, while still explaining every new concept, custom, and cross-reference in full, per the skill's ban on padding with restated content). npx tsc --noEmit -p . clean with zero errors. Confirmed via lib/bibleReaderStudyNotes.ts wiring (no leviticusTwentySevenSource.ts existed yet, last wired chapter was Leviticus 26) that Leviticus 27 was the correct next chapter. Next book is Numbers.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T12:46:58Z"
+        },
+        {
+          "name": "next chapter determined: Leviticus 27 (confirmed via progress log + lib/bibleReaderStudyNotes.ts wiring, last wired was Leviticus 26)",
+          "at": "2026-07-28T12:46:58Z"
+        },
+        {
+          "name": "KJV text fetched for Leviticus 27 (34 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T12:47:09Z"
+        },
+        {
+          "name": "reviewed reference implementation (leviticusTwentySixSource.ts) for exact voice/format",
+          "at": "2026-07-28T12:50:55Z"
+        },
+        {
+          "name": "wrote lib/leviticusTwentySevenSource.ts",
+          "at": "2026-07-28T12:52:47Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to 27)",
+          "at": "2026-07-28T12:52:47Z"
+        },
+        {
+          "name": "parser check passed: 15 sections, 52 cards",
+          "at": "2026-07-28T12:53:10Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T12:54:56Z"
+        }
+      ]
     }
   ]
 }
