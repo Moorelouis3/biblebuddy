@@ -162,3 +162,7 @@ Next up: Leviticus 20
 ## 2026-07-28T05:54:45Z (hourly chapter notes run)
 Chapter: Leviticus 20 | Duration: 8 min | Sections: 11 | Cards: 47 | Status: pass
 Next up: Numbers 1
+
+## 2026-07-28T06:53:21Z (hourly chapter notes run)
+Chapter: Leviticus 21 | Duration: 7 min | Sections: 8 | Cards: 36 | Status: pass
+Next up: Leviticus 22

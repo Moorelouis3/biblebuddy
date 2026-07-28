@@ -1935,6 +1935,55 @@
           "at": "2026-07-28T05:55:10Z"
         }
       ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 21,
+      "startedAt": "2026-07-28T06:46:22Z",
+      "finishedAt": "2026-07-28T06:53:21Z",
+      "durationMinutes": 7,
+      "sections": 8,
+      "cards": 36,
+      "verses": 24,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priestly holiness law, one tier stricter than the rules given to the rest of Israel in chapters 18-20: which family deaths an ordinary priest may still become ritually unclean for (parents, children, siblings, an unmarried sister only), the ban on pagan mourning marks (head-shaving, beard-cutting, self-cutting, with a 1 Kings 18:28 Baal-prophets callback), who a priest may and may not marry, the harsh burning penalty for a priest's daughter turning to prostitution (callback to the same penalty in Leviticus 20:14), the high priest's even stricter rules (no mourning rites at all, not even for his own parents, tied to the image of the anointing oil as a continual 'crown'), his requirement to marry a virgin of his own people specifically (a tier stricter than the ordinary-priest marriage rule just given), the physical-blemish list disqualifying a priest's descendant from altar service (with a direct callback to the 'without blemish' animal-offering standard explained again in Leviticus 22:20-25, an explicit card stating plainly this isn't a judgment on a person's worth since verse 22 confirms he's still fed, and a forward Hebrews 7:26 callback to Jesus as the truly undefiled high priest this law's symbolism pointed toward), and the closing provision that a disqualified priest still ate the holy food, only barred from the veil and altar specifically. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com/aruljohn/Bible-kjv/master/Leviticus.json), parsed chapter 21 out of the full-book JSON (24 verses). Parser check passed exactly (8/8 sections, 36/36 cards against 24 verses, 1.5 cards/verse). npx tsc --noEmit -p . clean with zero errors. Confirmed via a fresh git fetch + checkout of origin/main (this session started on a detached HEAD matching origin/main exactly, no lost work) and via lib/bibleReaderStudyNotes.ts wiring (preserveExactPhraseBodies range and replaceStudySectionsForBookRange calls) that Leviticus 20 was the true last chapter written, making Leviticus 21 the correct next chapter. Also corrected a real documentation error found in docs/BIBLE_BUDDY_NOTES_PROGRESS.md: the Leviticus 20 row and the 'Running totals' section both incorrectly claimed 'LEVITICUS IS COMPLETE — all 27 chapters' when only 20 of Leviticus's 27 chapters were actually done at that point (the chapter-count line lower in the same file correctly said 'Leviticus 1-20', so the milestone claims were simply wrong, not a sign of missing work) -- fixed both false claims in this run rather than repeating them, since a future run trusting that stale milestone text could have skipped ahead past chapters 22-27.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T06:46:22Z"
+        },
+        {
+          "name": "next chapter determined: Leviticus 21 (fresh git fetch + checkout of origin/main, confirmed via lib/bibleReaderStudyNotes.ts wiring that Leviticus 1-20 have dedicated source files and 21 does not)",
+          "at": "2026-07-28T06:47:37Z"
+        },
+        {
+          "name": "KJV text fetched for Leviticus 21 (24 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T06:47:18Z"
+        },
+        {
+          "name": "reviewed reference implementation (leviticusTwentySource.ts) for exact voice/format",
+          "at": "2026-07-28T06:48:20Z"
+        },
+        {
+          "name": "wrote lib/leviticusTwentyOneSource.ts",
+          "at": "2026-07-28T06:51:09Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to chapter 21)",
+          "at": "2026-07-28T06:51:09Z"
+        },
+        {
+          "name": "parser check passed: 8 sections, 36 cards",
+          "at": "2026-07-28T06:51:22Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T06:52:26Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, corrected stale Leviticus-complete claim found in the doc)",
+          "at": "2026-07-28T06:53:21Z"
+        }
+      ]
     }
   ]
 }
