@@ -2815,6 +2815,59 @@
           "at": "2026-07-28T21:54:20Z"
         }
       ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 10,
+      "startedAt": "2026-07-28T22:45:59Z",
+      "finishedAt": "2026-07-28T22:52:33Z",
+      "durationMinutes": 7,
+      "sections": 10,
+      "cards": 43,
+      "verses": 36,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The two silver trumpets law (whole-piece construction, alarm-vs-plain-blow signal distinction, priests-only sounding, war and festival uses, the 'memorial before your God' theology), the cloud finally lifting off the tabernacle after nearly eleven months camped at Sinai and the march into the wilderness of Paran, the full marching order (Judah's division first, Gershon/Merari carrying the disassembled tabernacle ahead of the Kohathites so the tent could be rebuilt before the holy furniture arrived, Reuben's division, Ephraim's division reuniting Rachel's family line, Dan's division as rearguard), Moses' appeal to his brother-in-law Hobab to join as a wilderness guide ('instead of eyes', with a forward callback to the Kenites in Judges 1:16/4:11), and the closing 'Rise up, LORD'/'Return, O LORD' liturgy spoken each time the ark set out ahead of the camp to find a resting place. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com). Parser check passed exactly (10/10 sections, 43 cards against 36 verses, ~1.19 cards/verse -- lighter on the march-order verses (14-28) that closely repeat the tribal captain names and camp positions already covered in full in Numbers 1-2, fuller on the genuinely new trumpet law (1-10) and the Hobab/ark narrative (29-36), consistent with the density precedent set by earlier repetitive-content chapters like Numbers 2 and 7. npx tsc --noEmit -p . clean with zero errors. Confirmed via lib/bibleReaderStudyNotes.ts wiring (numbersNineSource.ts was the last chapter wired, no numbersTenSource.ts existed yet) that Numbers 10 was the correct next chapter.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T22:45:59Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 10 (confirmed via lib/bibleReaderStudyNotes.ts wiring and docs progress table, no numbersTenSource.ts existed yet)",
+          "at": "2026-07-28T22:46:47Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 10 (36 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T22:46:47Z"
+        },
+        {
+          "name": "reviewed reference implementation (numbersNineSource.ts) for exact voice/format",
+          "at": "2026-07-28T22:46:51Z"
+        },
+        {
+          "name": "wrote lib/numbersTenSource.ts",
+          "at": "2026-07-28T22:49:00Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to chapter 10)",
+          "at": "2026-07-28T22:50:11Z"
+        },
+        {
+          "name": "parser check passed: 10 sections, 43 cards",
+          "at": "2026-07-28T22:50:29Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T22:52:33Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-28T22:53:09Z"
+        },
+        {
+          "name": "appended SESSION_LOG.md entry",
+          "at": "2026-07-28T22:53:15Z"
+        }
+      ]
     }
   ]
 }
