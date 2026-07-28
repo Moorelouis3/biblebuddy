@@ -1695,6 +1695,51 @@
           "at": "2026-07-28T01:55:53Z"
         }
       ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 17,
+      "startedAt": "2026-07-28T02:46:31Z",
+      "finishedAt": "2026-07-28T02:53:00Z",
+      "durationMinutes": 6.5,
+      "sections": 6,
+      "cards": 27,
+      "verses": 16,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The blood law chapter: every ox, lamb, or goat has to be brought to the tabernacle door instead of being slaughtered out in the open field, ending Israel's lingering habit of sacrificing to 'devils' (se'irim, goat-shaped idols from Egypt), described using the Old Testament's marriage-unfaithfulness idiom for idolatry ('gone a whoring'); the requirement is widened to foreign residents living among Israel ('strangers that sojourn among you'); the chapter's theological center is 'the life of the flesh is in the blood,' so blood's one sacred use is atonement on the altar, never food, with a forward callback to Hebrews 9:22's 'without shedding of blood is no remission'; the same life-in-the-blood principle is extended to hunted wild game, whose blood must be poured out and covered with dust rather than eaten; and the chapter closes by distinguishing deliberate blood-eating (the severe 'cut off'/karet penalty, repeated four times in this one chapter) from accidentally eating a carcass found dead of natural causes or torn by a predator, which is treated as ordinary same-day uncleanness resolved by washing, per the pattern already established in Leviticus 11-15. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com/aruljohn/Bible-kjv/master/Leviticus.json), parsed chapter 17 out of the full-book JSON (16 verses). Parser check passed exactly (6/6 sections, 27 cards against 16 verses, ~1.7 cards/verse -- two short sections (vv1-2's address formula, vv8-9's repeated stranger clause) ran near the 1x floor since they're brief framing/repetition verses, balanced by fuller ~2x coverage on the chapter's dense theological core in vv10-12). npx tsc --noEmit -p . clean with zero errors. Confirmed via lib/bibleReaderStudyNotes.ts wiring (chapters 1-16 present individually, no leviticusSeventeenSource.ts existed yet) that Leviticus 16 was the true last chapter written, making Leviticus 17 the correct next chapter.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T02:46:55Z"
+        },
+        {
+          "name": "next chapter determined: Leviticus 17 (confirmed via progress log + lib/bibleReaderStudyNotes.ts wiring, ch1-16 present individually, no leviticusSeventeenSource.ts existed yet)",
+          "at": "2026-07-28T02:47:10Z"
+        },
+        {
+          "name": "KJV text fetched for Leviticus 17 (16 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T02:47:35Z"
+        },
+        {
+          "name": "wrote lib/leviticusSeventeenSource.ts",
+          "at": "2026-07-28T02:50:20Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to chapter 17)",
+          "at": "2026-07-28T02:50:45Z"
+        },
+        {
+          "name": "parser check passed: 6 sections, 27 cards",
+          "at": "2026-07-28T02:51:36Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T02:52:10Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-28T02:53:00Z"
+        }
+      ]
     }
   ]
 }
