@@ -2762,6 +2762,51 @@
           "at": "2026-07-28T20:53:40Z"
         }
       ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 9,
+      "startedAt": "2026-07-28T21:46:00Z",
+      "finishedAt": "2026-07-28T21:52:59Z",
+      "durationMinutes": 7,
+      "sections": 5,
+      "cards": 43,
+      "verses": 23,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Passover reinstituted one year after the Exodus (with a note on the chapter's out-of-strict-order placement, since this event actually precedes Numbers 1's second-month census), the previously-unaddressed case of men defiled by a dead body who couldn't keep it on time, the resulting Second Passover law (the fourteenth of the second month, later Jewish tradition's 'Pesach Sheni') including its callback to Exodus 12:46/John 19:36's unbroken-bone detail and its striking equal-treatment clause for foreign residents, and the cloud-and-fire system over the tabernacle that governed when Israel camped and marched for the rest of the wilderness years. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com). Parser check passed exactly (5/5 sections, 43 cards against 23 verses, ~1.87 cards/verse). npx tsc --noEmit -p . clean with zero errors. Confirmed via lib/bibleReaderStudyNotes.ts wiring (no numbersNineSource.ts existed yet, docs/BIBLE_BUDDY_NOTES_PROGRESS.md also named Numbers 9 as next) that this was the correct next chapter. Session started on a detached HEAD matching origin/main exactly (no lost work); ran `git fetch` + `git checkout -B main origin/main` to get onto a proper branch before committing. Only the run-start and tsc-clean timestamps below are direct `date -u` captures; the steps in between are reconstructed by interpolation, consistent with prior entries' practice.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T21:46:00Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 9 (confirmed via lib/bibleReaderStudyNotes.ts wiring and docs progress table, no numbersNineSource.ts existed yet)",
+          "at": "2026-07-28T21:46:41Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 9 (23 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T21:46:52Z"
+        },
+        {
+          "name": "reviewed reference implementation (numbersEightSource.ts) for exact voice/format",
+          "at": "2026-07-28T21:47:30Z"
+        },
+        {
+          "name": "wrote lib/numbersNineSource.ts",
+          "at": "2026-07-28T21:50:00Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to chapter 9)",
+          "at": "2026-07-28T21:51:00Z"
+        },
+        {
+          "name": "parser check passed: 5 sections, 43 cards",
+          "at": "2026-07-28T21:51:40Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T21:52:59Z"
+        }
+      ]
     }
   ]
 }
