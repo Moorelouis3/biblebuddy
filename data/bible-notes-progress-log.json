@@ -2656,6 +2656,55 @@
           "at": "2026-07-28T18:57:05Z"
         }
       ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 7,
+      "startedAt": "2026-07-28T19:45:48Z",
+      "finishedAt": "2026-07-28T19:54:00Z",
+      "durationMinutes": 8,
+      "sections": 11,
+      "cards": 52,
+      "verses": 89,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The altar-dedication chapter, a chronological flashback to right after Exodus 40 (before Numbers 1's census): wagons and oxen given for hauling the tabernacle, matched to each Levite clan's cargo (Gershon's textiles, Merari's structural timber, Kohath receiving none since holy furniture had to be carried by hand on shoulders, with a forward callback to Uzzah's death in 2 Samuel 6). Then the twelve princes each bring an identical dedication gift on their own day across twelve days, in the exact order of Numbers 2's camp arrangement rather than birth order -- Nahshon of Judah's offering explained item by item as the full template (silver charger and bowl at a fixed sanctuary-shekel weight, gold incense spoon, burnt/sin/peace offering animals), with each later prince covered fresh on name meaning, tribal background, and camp-order context instead of re-explaining an identical repeated gift eleven more times. Closes with the grand total tallied exactly (2,400 shekels silver, 120 shekels gold, 252 animals) and the verse 89 climax: Moses hearing God's voice from between the cherubim on the mercy seat, a direct fulfillment of Exodus 25:22's promise. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com). Density ~0.58 cards/verse -- the lowest ratio yet in this project, but honestly warranted: verses 12-83 are six near-identical KJV verses repeated word-for-word twelve times, already fully explained once in the Nahshon template section, so cards leaned entirely on genuinely new content per prince rather than padding with a dozen re-explanations of the same silver charger and shekel weights, consistent with the Exodus 36-40/Numbers 1-2 precedent for deliberately repetitive chapters. Parser check passed exactly (11/11 sections, 52 cards), npx tsc --noEmit -p . clean with zero errors.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T19:46:09Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 7 (confirmed via lib/bibleReaderStudyNotes.ts wiring -- chapters 1-6 individually wired, 7-25 had only an unused bulk-notes import)",
+          "at": "2026-07-28T19:46:33Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 7 (89 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T19:47:00Z"
+        },
+        {
+          "name": "reviewed reference implementation (numbersSixSource.ts) for exact parser/voice format",
+          "at": "2026-07-28T19:47:33Z"
+        },
+        {
+          "name": "wrote lib/numbersSevenSource.ts",
+          "at": "2026-07-28T19:52:27Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to numbers ch7)",
+          "at": "2026-07-28T19:53:00Z"
+        },
+        {
+          "name": "parser check passed: 11 sections, 52 cards",
+          "at": "2026-07-28T19:53:20Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T19:54:00Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-28T19:54:31Z"
+        }
+      ]
     }
   ]
 }

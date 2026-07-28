@@ -214,3 +214,7 @@ Next up: Numbers 6
 ## 2026-07-28T18:56:41Z (hourly chapter notes run)
 Chapter: Numbers 6 | Duration: 10 min | Sections: 6 | Cards: 48 | Status: pass
 Next up: Numbers 7
+
+## 2026-07-28T19:54:31Z (hourly chapter notes run)
+Chapter: Numbers 7 | Duration: 8 min | Sections: 11 | Cards: 52 | Status: pass
+Next up: Numbers 8
