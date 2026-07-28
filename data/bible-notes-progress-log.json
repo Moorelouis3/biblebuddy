@@ -2599,6 +2599,55 @@
           "at": "2026-07-28T17:55:44Z"
         }
       ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 6,
+      "startedAt": "2026-07-28T18:46:31Z",
+      "finishedAt": "2026-07-28T18:56:03Z",
+      "durationMinutes": 10,
+      "sections": 6,
+      "cards": 48,
+      "verses": 27,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The Nazarite vow law (three total restrictions: grape products, razor, dead-body contact even for closest family) plus the sudden-death defilement/restart case, the full vow-completion offering sequence, and the six-line Aaronic priestly blessing. Density ~1.78 cards/verse (27 verses). Parser + tsc verified (clean).",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T18:47:12Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 6 (confirmed via progress log + lib/bibleReaderStudyNotes.ts wiring, both agree Numbers 5 was last completed and Numbers 6 is uncovered by the individual per-chapter wiring)",
+          "at": "2026-07-28T18:47:35Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 6 (27 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T18:47:46Z"
+        },
+        {
+          "name": "wrote lib/numbersSixSource.ts (6 sections, 48 cards)",
+          "at": "2026-07-28T18:53:25Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to numbers ch6)",
+          "at": "2026-07-28T18:53:38Z"
+        },
+        {
+          "name": "parser check passed: 6 sections, 48 cards, matches design exactly",
+          "at": "2026-07-28T18:53:57Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T18:55:19Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-28T18:56:28Z"
+        },
+        {
+          "name": "appended SESSION_LOG.md entry",
+          "at": "2026-07-28T18:56:41Z"
+        }
+      ]
     }
   ]
 }
