@@ -532,7 +532,7 @@
       "sections": 7,
       "cards": 48,
       "verses": 38,
-      "notes": "Scheduled hourly Bible Note Writer Agent run. This is the fulfillment chapter: Bezaleel, Aholiab, and every wise-hearted craftsman actually begin building what chapters 25-31 only described, opening with the people giving so much material that Moses has to formally command them to stop (a deliberate contrast with the golden calf's forced/eager-wrong-giving in chapter 32). The rest of the chapter walks through the actual construction in the same order as chapter 26's blueprint: the ten cherubim-woven linen curtains, the eleven goat-hair curtains plus ram- and badger-skin coverings, the shittim-wood boards and their silver sockets for the south, north, and west walls plus corner boards, the connecting bars overlaid in gold, and finally the veil and door hanging with their pillars. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com), the same fallback host confirmed reachable in recent runs after biblegateway.com/bible-api.com/etc. 403'd at the egress proxy layer for earlier chapters this project. Parser check passed (7/7 sections, 48 cards against 38 verses, every section at or above a 1-card-per-verse floor), npx tsc --noEmit -p . clean with zero errors. Card density (48/38 \u2248 1.26x) sits above the required floor but below the ~2x target described in the skill -- this chapter's content is a near line-for-line repeat of chapters 26 and 31's construction instructions, already covered in depth in those earlier chapters' notes, so the notes here lean on genuinely new material (the overflowing-generosity narrative in verses 1-7, fulfillment/cross-reference framing, a couple of engineering details like the corner-ring joinery and paired tenon sockets) rather than re-explaining terms at full density a second time. Flagging this rather than padding with restated content, consistent with the skill's ban on inflated filler.",
+      "notes": "Scheduled hourly Bible Note Writer Agent run. This is the fulfillment chapter: Bezaleel, Aholiab, and every wise-hearted craftsman actually begin building what chapters 25-31 only described, opening with the people giving so much material that Moses has to formally command them to stop (a deliberate contrast with the golden calf's forced/eager-wrong-giving in chapter 32). The rest of the chapter walks through the actual construction in the same order as chapter 26's blueprint: the ten cherubim-woven linen curtains, the eleven goat-hair curtains plus ram- and badger-skin coverings, the shittim-wood boards and their silver sockets for the south, north, and west walls plus corner boards, the connecting bars overlaid in gold, and finally the veil and door hanging with their pillars. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com), the same fallback host confirmed reachable in recent runs after biblegateway.com/bible-api.com/etc. 403'd at the egress proxy layer for earlier chapters this project. Parser check passed (7/7 sections, 48 cards against 38 verses, every section at or above a 1-card-per-verse floor), npx tsc --noEmit -p . clean with zero errors. Card density (48/38 ≈ 1.26x) sits above the required floor but below the ~2x target described in the skill -- this chapter's content is a near line-for-line repeat of chapters 26 and 31's construction instructions, already covered in depth in those earlier chapters' notes, so the notes here lean on genuinely new material (the overflowing-generosity narrative in verses 1-7, fulfillment/cross-reference framing, a couple of engineering details like the corner-ring joinery and paired tenon sockets) rather than re-explaining terms at full density a second time. Flagging this rather than padding with restated content, consistent with the skill's ban on inflated filler.",
       "steps": [
         {
           "name": "npm install done",
@@ -1485,7 +1485,7 @@
       "sections": 12,
       "cards": 86,
       "verses": 59,
-      "notes": "Scheduled hourly Bible Note Writer Agent run. The longest connected law in the book so far: diagnosing skin conditions (\"leprosy\"/tzaraat, a broader category than modern Hansen's disease). Covers the core two-sign test (white hair growing in the mark + the mark sitting deeper than the skin) reapplied across six different starting scenarios: ordinary skin (vv1-8), an already-advanced case (vv9-11), a healed boil (vv18-23), a burn (vv24-28), the scalp/beard \"scall\" where the marker shifts to yellow thin hair since head/beard hair isn't naturally white (vv29-37), and natural baldness with a new sore in the bald area (vv40-44). Explains the counterintuitive \"leprosy covering the entire body = clean\" ruling (vv12-17) by identifying raw/open flesh, not surface color, as the chapter's real unifying diagnostic principle. Covers the seven-day quarantine (\"shut up\") reused roughly six times throughout, a harmless freckled/pigment lookalike condition explicitly cleared without any waiting period (vv38-39), the leper's required mourning-style presentation and self-announcement (rent clothes, bare head, a covering on the upper lip, crying \"Unclean, unclean\") and full exile outside the camp (vv45-46, with callbacks to Miriam's exile in Numbers 12:14-15, King Uzziah's isolation in 2 Chronicles 26:19-21, and the ten lepers keeping their distance in Luke 17:12-13), and closes with the parallel law for mold/mildew (\"fretting leprosy\") in a woollen or linen garment or leather item (vv47-59), including the warp/woof weaving terms and the wash-as-diagnostic-test option before an item is finally condemned to burning. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com/aruljohn/Bible-kjv/master/Leviticus.json), parsed chapter 13 out of the full-book JSON (59 verses, the longest chapter yet in this Leviticus run). Parser check passed exactly (12/12 sections, 86 cards against 59 verses, ~1.46 cards/verse) and npx tsc --noEmit -p . is clean with zero errors. Density landed below the ~2x aspiration on purpose: the chapter reapplies one small set of diagnostic signs (depth, hair color, spreading) to roughly six near-identical scenarios in a row, so cards were written to maximize distinct teaching value per verse (explaining what changed between scenarios, not restating the same test in new words) rather than padding out near-duplicate cards just to hit a ratio, consistent with the honesty standard already used for chapter 11's dense listing sections. Confirmed via git fetch that local checkout matched origin/main exactly at Leviticus 12 (bfcf9e3) before starting (local repo was on a detached HEAD at session start; moved the main branch pointer forward with git checkout -B before committing), and confirmed via lib/bibleReaderStudyNotes.ts wiring (chapters 1-12 present, no leviticusThirteenSource.ts existed yet) that Leviticus 13 was the correct next chapter. Also corrected a bookkeeping gap found in docs/BIBLE_BUDDY_NOTES_PROGRESS.md: the prior run's Leviticus 12 row had been added to the table but never rolled into the 'Running totals' section at the bottom (that run's progress-log.json entry also stopped at 'progress files logged' with no committed/pushed steps, though the actual git commit and push for Leviticus 12 did complete) \u2014 this run updated the running totals for both Leviticus 12 and Leviticus 13 together, and left the Leviticus 12 JSON entry's steps as-is rather than fabricating timestamps for events this session didn't observe.",
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The longest connected law in the book so far: diagnosing skin conditions (\"leprosy\"/tzaraat, a broader category than modern Hansen's disease). Covers the core two-sign test (white hair growing in the mark + the mark sitting deeper than the skin) reapplied across six different starting scenarios: ordinary skin (vv1-8), an already-advanced case (vv9-11), a healed boil (vv18-23), a burn (vv24-28), the scalp/beard \"scall\" where the marker shifts to yellow thin hair since head/beard hair isn't naturally white (vv29-37), and natural baldness with a new sore in the bald area (vv40-44). Explains the counterintuitive \"leprosy covering the entire body = clean\" ruling (vv12-17) by identifying raw/open flesh, not surface color, as the chapter's real unifying diagnostic principle. Covers the seven-day quarantine (\"shut up\") reused roughly six times throughout, a harmless freckled/pigment lookalike condition explicitly cleared without any waiting period (vv38-39), the leper's required mourning-style presentation and self-announcement (rent clothes, bare head, a covering on the upper lip, crying \"Unclean, unclean\") and full exile outside the camp (vv45-46, with callbacks to Miriam's exile in Numbers 12:14-15, King Uzziah's isolation in 2 Chronicles 26:19-21, and the ten lepers keeping their distance in Luke 17:12-13), and closes with the parallel law for mold/mildew (\"fretting leprosy\") in a woollen or linen garment or leather item (vv47-59), including the warp/woof weaving terms and the wash-as-diagnostic-test option before an item is finally condemned to burning. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com/aruljohn/Bible-kjv/master/Leviticus.json), parsed chapter 13 out of the full-book JSON (59 verses, the longest chapter yet in this Leviticus run). Parser check passed exactly (12/12 sections, 86 cards against 59 verses, ~1.46 cards/verse) and npx tsc --noEmit -p . is clean with zero errors. Density landed below the ~2x aspiration on purpose: the chapter reapplies one small set of diagnostic signs (depth, hair color, spreading) to roughly six near-identical scenarios in a row, so cards were written to maximize distinct teaching value per verse (explaining what changed between scenarios, not restating the same test in new words) rather than padding out near-duplicate cards just to hit a ratio, consistent with the honesty standard already used for chapter 11's dense listing sections. Confirmed via git fetch that local checkout matched origin/main exactly at Leviticus 12 (bfcf9e3) before starting (local repo was on a detached HEAD at session start; moved the main branch pointer forward with git checkout -B before committing), and confirmed via lib/bibleReaderStudyNotes.ts wiring (chapters 1-12 present, no leviticusThirteenSource.ts existed yet) that Leviticus 13 was the correct next chapter. Also corrected a bookkeeping gap found in docs/BIBLE_BUDDY_NOTES_PROGRESS.md: the prior run's Leviticus 12 row had been added to the table but never rolled into the 'Running totals' section at the bottom (that run's progress-log.json entry also stopped at 'progress files logged' with no committed/pushed steps, though the actual git commit and push for Leviticus 12 did complete) — this run updated the running totals for both Leviticus 12 and Leviticus 13 together, and left the Leviticus 12 JSON entry's steps as-is rather than fabricating timestamps for events this session didn't observe.",
       "steps": [
         {
           "name": "npm install done",
@@ -1640,6 +1640,51 @@
         {
           "name": "pushed to origin/main, confirmed via push output (fde9034..080f491 main -> main), exit code 0",
           "at": "2026-07-28T00:55:55Z"
+        }
+      ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 16,
+      "startedAt": "2026-07-28T01:47:44Z",
+      "finishedAt": "2026-07-28T01:55:08Z",
+      "durationMinutes": 7.4,
+      "sections": 9,
+      "cards": 51,
+      "verses": 34,
+      "notes": "The Day of Atonement (Yom Kippur): the one day per year the high priest could enter the Most Holy Place. Covers the callback to Nadab and Abihus deaths in chapter 10, Aarons plain linen (a downgrade from his normal Exodus 28 garments), the two goats chosen by cast lots (one sin offering, one scapegoat/Azazel), the incense cloud shielding Aaron from the mercy seat, the two separate sevenfold blood applications in v14, atonement extended to the holy place/tent/altar horns, both hands and spoken confession transferring sin onto the live goat, graduated washing rules for everyone who contacts the sin-bearing animals, and the closing afflict your souls statute establishing the annual fast still observed today. Density ~1.5 cards/verse, matching chapter 15.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T01:47:38Z"
+        },
+        {
+          "name": "next chapter determined: Leviticus 16 (confirmed via progress log + lib/bibleReaderStudyNotes.ts wiring, ch1-15 present individually, no leviticusSixteenSource.ts existed yet)",
+          "at": "2026-07-28T01:47:44Z"
+        },
+        {
+          "name": "KJV text fetched for Leviticus 16 (34 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T01:48:03Z"
+        },
+        {
+          "name": "wrote lib/leviticusSixteenSource.ts",
+          "at": "2026-07-28T01:52:16Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to chapter 16)",
+          "at": "2026-07-28T01:52:41Z"
+        },
+        {
+          "name": "parser check passed: 9 sections, 51 cards",
+          "at": "2026-07-28T01:52:59Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T01:54:21Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-28T01:55:08Z"
         }
       ]
     }
