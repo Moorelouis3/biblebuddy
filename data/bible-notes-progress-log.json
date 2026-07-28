@@ -2473,6 +2473,67 @@
           "at": "2026-07-28T15:56:02Z"
         }
       ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 4,
+      "startedAt": "2026-07-28T16:46:40Z",
+      "finishedAt": "2026-07-28T16:58:46Z",
+      "durationMinutes": 12,
+      "sections": 13,
+      "cards": 61,
+      "verses": 49,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The working-age (30-50) census and travel-duty assignment for each Levite family: Kohath's elaborate ark/table/candlestick/two-altars covering procedure performed only by Aaron and his sons (color-coded cloths - blue, scarlet, purple - badgers'-skin/tachash weatherproofing, staves), the repeated \"touch not, lest they die\" and \"see not, lest they die\" warnings framed explicitly as life-preserving rather than punitive, Eleazar's personal oversight of Kohath and his own distinct supply-management duties (lamp oil, incense, daily offering, anointing oil) vs Ithamar's oversight of Gershon (the tent's fabric/skin) and Merari (the tent's structural frame/bones), and the three working-age headcounts (Kohath 2,750, Gershon 2,630, Merari 3,200) summing exactly to the chapter's 8,580 grand total, cross-checked against each clan's full population from Numbers 3. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com). Parser check passed exactly (13/13 sections, 61 cards against 49 verses, ~1.24 cards/verse - weighted higher on unique furniture/procedure content and lighter on the four near-identical closing-refrain census tallies, consistent with the Numbers 1-3 census-chapter precedent). npx tsc --noEmit -p . clean with zero errors.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T16:47:23Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 4 (confirmed via progress log + lib/bibleReaderStudyNotes.ts wiring, both agree Numbers 3 was last completed)",
+          "at": "2026-07-28T16:47:32Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 4 (49 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T16:47:45Z"
+        },
+        {
+          "name": "reviewed reference implementation (numbersThreeSource.ts) for exact voice/format",
+          "at": "2026-07-28T16:49:00Z"
+        },
+        {
+          "name": "wrote lib/numbersFourSource.ts (13 sections, 61 cards)",
+          "at": "2026-07-28T16:53:40Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to numbers ch4)",
+          "at": "2026-07-28T16:54:35Z"
+        },
+        {
+          "name": "parser check passed: 13 sections, 61 cards, matches design exactly",
+          "at": "2026-07-28T16:54:45Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T16:56:43Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-28T16:58:26Z"
+        },
+        {
+          "name": "appended SESSION_LOG.md entry",
+          "at": "2026-07-28T16:58:40Z"
+        },
+        {
+          "name": "committed all changed files (numbersFourSource.ts, bibleReaderStudyNotes.ts wiring, progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-07-28T16:59:06Z"
+        },
+        {
+          "name": "pushed to origin main",
+          "at": "2026-07-28T16:59:10Z"
+        }
+      ]
     }
   ]
 }
