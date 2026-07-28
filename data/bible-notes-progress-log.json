@@ -2375,6 +2375,51 @@
           "at": "2026-07-28T13:54:52Z"
         }
       ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 2,
+      "startedAt": "2026-07-28T14:47:02Z",
+      "finishedAt": "2026-07-28T14:54:40Z",
+      "durationMinutes": 8,
+      "sections": 7,
+      "cards": 38,
+      "verses": 34,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The camp-layout chapter that turns Numbers 1's census into a literal wilderness blueprint: the two-tier standard/ensign banner system, Judah's division (Judah, Issachar, Zebulun) at the honored east side facing the tabernacle's own entrance and marching first, Reuben's division (Reuben, Simeon, Gad) south and second, the tabernacle and Levites camped at the literal center with camp order doubling as march order, Ephraim's division (Ephraim, Manasseh, Benjamin - Rachel's family reunited) west and third, and Dan's division (Dan, Asher, Naphtali) north as the rear-guard 'hindmost.' Closes with the same 603,550 grand total and obedience refrain from Numbers 1, plus a clearly-flagged Jewish tradition (Numbers Rabbah) connecting the four lead tribes' emblems to the four faces in Ezekiel 1:10/Revelation 4:7. Density (~1.12 cards/verse) is lighter than the ~2x target because much of this chapter repeats Numbers 1's captain names and tribal totals verbatim -- notes lean on genuinely new material instead: captain name meanings not covered in ch1 (Elizur, Shelumiel, Eliasaph, Elishama, Gamaliel, Abidan, Ahiezer, Pagiel, Ahira), the marching-order/rank system, the standard-vs-ensign distinction, and the Ezekiel/Revelation tradition, consistent with the density precedent set by Exodus 36-40 for heavily-repeated content. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com). Parser check passed exactly (7/7 sections, 38 cards against 34 verses), npx tsc --noEmit -p . clean with zero errors.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T14:47:02Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 2 (confirmed via lib/bibleReaderStudyNotes.ts wiring -- Leviticus 1-27 and Numbers 1 wired, no numbersTwoSource.ts existed yet)",
+          "at": "2026-07-28T14:47:49Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 2 (34 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T14:48:10Z"
+        },
+        {
+          "name": "reviewed reference implementation (numbersOneSource.ts) for exact voice/format",
+          "at": "2026-07-28T14:49:00Z"
+        },
+        {
+          "name": "wrote lib/numbersTwoSource.ts",
+          "at": "2026-07-28T14:52:38Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to numbers ch2)",
+          "at": "2026-07-28T14:53:08Z"
+        },
+        {
+          "name": "parser check passed: 7 sections, 38 cards",
+          "at": "2026-07-28T14:53:26Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T14:54:40Z"
+        }
+      ]
     }
   ]
 }
