@@ -1874,6 +1874,67 @@
           "at": "2026-07-28T04:55:47Z"
         }
       ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 20,
+      "startedAt": "2026-07-28T05:46:49Z",
+      "finishedAt": "2026-07-28T05:54:45Z",
+      "durationMinutes": 8,
+      "sections": 11,
+      "cards": 47,
+      "verses": 27,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. MILESTONE: Leviticus complete, all 27 chapters. The penalty chapter pairing with chapter 18's forbidden-relations list: opens with the Molech child-sacrifice death penalty and the community's duty not to 'hide their eyes' (20:1-5), mediums/wizards and the 'sanctify yourselves...I am the LORD which sanctify you' holiness pairing (20:6-8), cursing parents and adultery (20:9-10), then a long run of sexual-sin penalties largely repeating chapter 18's bans with explicit death/burning/cut-off penalties attached -- father's wife and daughter-in-law (20:11-12), the homosexual act and wife-and-her-mother with the burning penalty (20:13-14), bestiality for both a man and a woman (20:15-16), sister and menstrual relations (20:17-18), aunt/uncle's wife/brother's wife (20:19-21) -- explicitly tracking the chapter's three-tier severity scale (stoning/death, burning, and the lighter 'cut off'/'bear their iniquity'/'die childless' penalties) rather than treating every offense as identical. Closes with the land-vomiting-out warning bookending chapter 18 (20:22-24), the clean/unclean animal law reframed under the same holiness theme as chapter 19 (20:25-26), and a closing mediums/wizards death penalty that bookends the chapter's own opening Molech stoning (20:27). Handled as a law chapter per skill Part 4, one law-cluster per card. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com/aruljohn/Bible-kjv/master/Leviticus.json), parsed chapter 20 out of the full-book JSON (27 verses). Parser check passed exactly (11/11 sections, 47/47 cards against 27 verses, ~1.74 cards/verse). npx tsc --noEmit -p . clean with zero errors. Confirmed via lib/bibleReaderStudyNotes.ts wiring and the progress log that Leviticus 19 was the true last chapter written, making Leviticus 20 the correct next chapter and the final chapter of Leviticus.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T05:47:11Z"
+        },
+        {
+          "name": "next chapter determined: Leviticus 20 (confirmed via fresh git fetch/checkout of main, progress-log.json tail, ls lib/ for leviticusTwentySource.ts absence, and grep of bibleReaderStudyNotes.ts wiring -- Leviticus 19 was the true last chapter, and Leviticus 20 is also the final chapter of the book)",
+          "at": "2026-07-28T05:47:25Z"
+        },
+        {
+          "name": "KJV text fetched for Leviticus 20 (27 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T05:47:42Z"
+        },
+        {
+          "name": "reviewed reference implementation (leviticusNineteenSource.ts) for exact voice/format",
+          "at": "2026-07-28T05:48:15Z"
+        },
+        {
+          "name": "wrote lib/leviticusTwentySource.ts",
+          "at": "2026-07-28T05:50:40Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to chapter 20)",
+          "at": "2026-07-28T05:50:55Z"
+        },
+        {
+          "name": "parser check passed: 11 sections, 47 cards",
+          "at": "2026-07-28T05:51:20Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T05:51:56Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-28T05:54:10Z"
+        },
+        {
+          "name": "appended SESSION_LOG.md entry",
+          "at": "2026-07-28T05:54:45Z"
+        },
+        {
+          "name": "committed",
+          "at": "2026-07-28T05:55:10Z"
+        },
+        {
+          "name": "pushed to origin/main",
+          "at": "2026-07-28T05:55:10Z"
+        }
+      ]
     }
   ]
 }
