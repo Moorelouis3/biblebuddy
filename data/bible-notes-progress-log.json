@@ -2326,6 +2326,55 @@
           "at": "2026-07-28T12:56:28Z"
         }
       ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 1,
+      "startedAt": "2026-07-28T13:46:18Z",
+      "finishedAt": "2026-07-28T13:54:52Z",
+      "durationMinutes": 9,
+      "sections": 9,
+      "cards": 52,
+      "verses": 54,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. First chapter of Numbers (Leviticus now fully complete through chapter 27). Confirmed via lib/bibleReaderStudyNotes.ts wiring that Numbers 1-9 and 10-25 legacy personal-notes files were imported but never wired via replaceStudySectionsForBookRange (same dead-import pattern seen with old Leviticus files) -- only Numbers 26-36 had real coverage, so Numbers 1 was the correct next chapter. The military census at Sinai one month after the tabernacle dedication: the twenty-and-up war-age draft count excluding the Levites, the twelve tribal princes (Nahshon of Judah flagged as ancestor of David and Jesus; several fathers names shown embedding God's own name), Joseph's double-portion split into Ephraim and Manasseh (with Ephraim already outnumbering older brother Manasseh, an early sign of Jacob's crossed-hands blessing in Genesis 48), the tribe-by-tribe totals grouped by mother (Leah's six, the four handmaid-sons, Rachel's two) previewing the camp layout of Numbers 2, the grand total of 603,550 fighting men as a living snapshot of the Genesis 15 stars-in-the-sky promise to Abraham, and the Levites set apart to carry and guard the tabernacle instead of serving as soldiers, camping in a protective ring around it. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com). Parser check passed exactly (9/9 sections, 52 cards against 54 verses, ~0.96 cards/verse -- below the ~2x target but consistent with the Genesis 46 precedent for genealogy/census-heavy chapters, where the repeated tribal-count formula genuinely has less new ground to cover per verse; every new concept, name, and cross-reference is still explained in full). npx tsc --noEmit -p . clean with zero errors.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T13:46:18Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 1 (Leviticus complete through 27; confirmed Numbers 1-9/10-25 personal notes were dead imports never wired via replaceStudySectionsForBookRange, only ch26-36 wired)",
+          "at": "2026-07-28T13:47:00Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 1 (54 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T13:47:23Z"
+        },
+        {
+          "name": "reviewed reference implementation (leviticusTwentySevenSource.ts) for exact voice/format",
+          "at": "2026-07-28T13:48:07Z"
+        },
+        {
+          "name": "wrote lib/numbersOneSource.ts",
+          "at": "2026-07-28T13:51:53Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to numbers ch1)",
+          "at": "2026-07-28T13:51:53Z"
+        },
+        {
+          "name": "parser check passed: 9 sections, 52 cards",
+          "at": "2026-07-28T13:53:13Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T13:53:22Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-28T13:54:52Z"
+        }
+      ]
     }
   ]
 }
