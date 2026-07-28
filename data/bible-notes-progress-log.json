@@ -2713,6 +2713,51 @@
           "at": "2026-07-28T19:55:38Z"
         }
       ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 8,
+      "startedAt": "2026-07-28T20:46:19Z",
+      "finishedAt": "2026-07-28T20:52:22Z",
+      "durationMinutes": 6,
+      "sections": 6,
+      "cards": 46,
+      "verses": 26,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Aaron lighting the seven lamps of the hand-beaten golden candlestick built \"according to the pattern,\" then the Levites' cleansing/ordination ceremony (water sprinkled but no anointing oil, unlike the priests; full-body shave paralleling a cleansed leper and a completed Nazirite vow; Israel's representatives laying hands on the Levites, who then lay hands on the sin/burnt-offering bullocks; Aaron presenting the Levites themselves as a literal wave offering before God), the Levites formally substituting nationwide for Israel's firstborn sons (tracing back to the first Passover in Exodus 12, cross-referenced against the five-shekel firstborn redemption money from Numbers 3:46-47), and the closing age brackets for active service (25 to start, 50 to retire from heavy duty into a mentoring/guard role, cross-referenced against Numbers 4's age-30 requirement as a likely apprenticeship gap, and 1 Chronicles 23's later age-20 rule once the tabernacle became a fixed temple). KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com). Density ~1.77 cards/verse (26 verses), consistent with the Numbers 3-6 precedent since this chapter is genuinely new content rather than a repeated formula. Parser check passed exactly (6/6 sections, 46 cards). npx tsc --noEmit -p . clean with zero errors. Confirmed via lib/bibleReaderStudyNotes.ts wiring (numbersSevenSource was the last import, no numbersEightSource.ts existed yet) that Numbers 8 was the correct next chapter.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T20:46:19Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 8 (confirmed via lib/bibleReaderStudyNotes.ts wiring, last import was numbersSevenSource)",
+          "at": "2026-07-28T20:46:46Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 8 (26 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T20:46:57Z"
+        },
+        {
+          "name": "reviewed reference implementation (numbersSevenSource.ts) for exact voice/format",
+          "at": "2026-07-28T20:48:45Z"
+        },
+        {
+          "name": "wrote lib/numbersEightSource.ts",
+          "at": "2026-07-28T20:50:34Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to chapter 8)",
+          "at": "2026-07-28T20:50:52Z"
+        },
+        {
+          "name": "parser check passed: 6 sections, 46 cards",
+          "at": "2026-07-28T20:50:52Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T20:52:22Z"
+        }
+      ]
     }
   ]
 }
