@@ -2057,6 +2057,55 @@
           "at": "2026-07-28T07:56:21Z"
         }
       ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 23,
+      "startedAt": "2026-07-28T08:47:19Z",
+      "finishedAt": "2026-07-28T08:56:27Z",
+      "durationMinutes": 9,
+      "sections": 8,
+      "cards": 70,
+      "verses": 44,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Leviticus's calendar chapter, covering all seven appointed feasts of the LORD in one pass: the weekly Sabbath as the first \"feast\" (vv1-4), Passover and Unleavened Bread grounded in the Exodus 12 timing (vv5-8), the Firstfruits sheaf-waving ceremony with its measures explained and the \"morrow after the sabbath\" counting-start debate noted honestly rather than resolved (vv9-14), the Feast of Weeks/Pentecost fifty-day count plus the corner-of-the-field gleaning law that underlies the whole book of Ruth (vv15-22), the brief Feast of Trumpets (ram's-horn shofar, sparse detail here vs. the fuller Numbers 29 list) (vv23-25), the Day of Atonement cross-referenced back to chapter 16's full ceremony, with its stricter \"no work\" language and evening-to-evening fast timing explained (vv26-32), and the Feast of Tabernacles/Sukkot announced and detailed across two sections -- the extra eighth-day Shemini Atzeret, the four-species boughs later forming the lulav, and living in temporary booths to remember the wilderness years (vv33-44). KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com). Parser check passed exactly (8/8 sections, 70 cards against 44 verses, ~1.59 cards/verse -- on the lower end of the 1-2/verse range given how many verses in this chapter are short repeated connector lines like \"And the LORD spake unto Moses, saying\"). npx tsc --noEmit -p . clean with zero errors. Confirmed via lib/bibleReaderStudyNotes.ts wiring (chapters 1-22 already present, no leviticusTwentyThreeSource.ts existed yet) that Leviticus 23 was the correct next chapter. Note on this run's step timestamps: only 3 distinct `date -u` checkpoints were captured this run (npm-install-start, pre-logging, and post-logging) rather than one per micro-step like the Leviticus 22 run, so several of the steps below share an identical real timestamp -- these are genuine wall-clock reads, just coarser-grained than usual, not fabricated or estimated.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T08:47:19Z"
+        },
+        {
+          "name": "next chapter determined: Leviticus 23 (confirmed via lib/bibleReaderStudyNotes.ts wiring, chapters 1-22 present, no leviticusTwentyThreeSource.ts existed yet)",
+          "at": "2026-07-28T08:55:42Z"
+        },
+        {
+          "name": "KJV text fetched for Leviticus 23 (44 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T08:55:42Z"
+        },
+        {
+          "name": "reviewed reference implementation (leviticusTwentyTwoSource.ts) for exact voice/format",
+          "at": "2026-07-28T08:55:42Z"
+        },
+        {
+          "name": "wrote lib/leviticusTwentyThreeSource.ts (8 sections, 70 cards)",
+          "at": "2026-07-28T08:55:42Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to 23)",
+          "at": "2026-07-28T08:55:42Z"
+        },
+        {
+          "name": "parser check passed: 8 sections, 70 cards",
+          "at": "2026-07-28T08:55:42Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T08:55:42Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-28T08:56:27Z"
+        }
+      ]
     }
   ]
 }
