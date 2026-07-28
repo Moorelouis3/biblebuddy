@@ -182,3 +182,7 @@ Next up: Leviticus 25
 ## 2026-07-28T10:58:21Z (hourly chapter notes run)
 Chapter: Leviticus 25 | Duration: 12 min | Sections: 9 | Cards: 87 | Status: pass
 Next up: Leviticus 26
+
+## 2026-07-28T11:57:40Z (hourly chapter notes run)
+Chapter: Leviticus 26 | Duration: 11 min | Sections: 13 | Cards: 103 | Status: pass
+Next up: Leviticus 27

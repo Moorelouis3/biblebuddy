@@ -2220,6 +2220,51 @@
           "at": "2026-07-28T10:59:30Z"
         }
       ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 26,
+      "startedAt": "2026-07-28T11:46:38Z",
+      "finishedAt": "2026-07-28T11:57:40Z",
+      "durationMinutes": 11,
+      "sections": 13,
+      "cards": 103,
+      "verses": 46,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Leviticus 26's blessings-and-curses chapter: obedience blessings (rain in due season, overlapping threshing/vintage/sowing seasons, peace, victory ratios of 5-vs-100 and 100-vs-10000, God's tabernacle and presence among them, the broken-yoke/go-upright freedom imagery), then the four-stage escalating \"seven times more\" curse cycle (terror/consumption/ague, iron sky and brass earth, wild beasts, siege pestilence and the ten-women-one-oven famine, covenant-breach horrors including siege cannibalism and defiled idols), the land finally getting its denied sabbatical rest during the exile (with the direct 2 Chronicles 36:21 seventy-years-exile-matches-seventy-skipped-sabbaths callback), the shaken-leaf paranoia imagery, and the closing confession-and-restoration section (the Jacob-Isaac-Abraham reverse-order covenant remembering, the uncircumcised-heart idiom, and the closing Sinai colophon in verse 46 marking the end of the core law-giving section). KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror. Parser check passed exactly (13/13 sections, 103 cards against 46 verses, ~2.24 cards/verse). npx tsc --noEmit -p . clean with zero errors. Session started detached from HEAD on a stale local main (a shallow clone artifact -- .git/shallow confirmed a depth-limited history, not lost work); local main was reset to match origin/main before any new work began, confirming Leviticus 25 as the true last-completed chapter.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T11:48:42Z"
+        },
+        {
+          "name": "next chapter determined: Leviticus 26 (Leviticus wired through ch 25; confirmed via grep of bibleReaderStudyNotes.ts wiring)",
+          "at": "2026-07-28T11:50:50Z"
+        },
+        {
+          "name": "KJV text fetched for Leviticus 26 (46 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T11:50:50Z"
+        },
+        {
+          "name": "wrote lib/leviticusTwentySixSource.ts",
+          "at": "2026-07-28T11:54:07Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to 26)",
+          "at": "2026-07-28T11:54:38Z"
+        },
+        {
+          "name": "parser check passed: 13 sections, 103 cards",
+          "at": "2026-07-28T11:54:59Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T11:56:21Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-28T11:57:37Z"
+        }
+      ]
     }
   ]
 }
