@@ -174,3 +174,7 @@ Next up: Leviticus 23
 ## 2026-07-28T08:57:46Z (hourly chapter notes run)
 Chapter: Leviticus 23 | Duration: 9 min | Sections: 8 | Cards: 70 | Status: pass
 Next up: Leviticus 24
+
+## 2026-07-28T09:52:16Z (hourly chapter notes run)
+Chapter: Leviticus 24 | Duration: 6 min | Sections: 6 | Cards: 42 | Status: pass
+Next up: Leviticus 25

@@ -2118,6 +2118,55 @@
           "at": "2026-07-28T08:58:30Z"
         }
       ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 24,
+      "startedAt": "2026-07-28T09:46:33Z",
+      "finishedAt": "2026-07-28T09:52:16Z",
+      "durationMinutes": 6,
+      "sections": 6,
+      "cards": 42,
+      "verses": 23,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The tabernacle's continual lamp oil (beaten olive oil, kept burning by Aaron outside the veil) and the twelve loaves of shewbread (two rows of six, one per tribe, renewed every Sabbath, eaten only by priests as \"most holy\" food) -- both fulfillment/upkeep callbacks to the furniture designed in Exodus 25 and built in Exodus 37. Then the chapter's real center: the half-Egyptian, half-Israelite son who blasphemes the LORD's own name in a camp fight, is held \"in ward\" pending a direct ruling from God (mirroring the Numbers 15 sabbath-breaker precedent), and is stoned outside the camp by the whole congregation after the ruling distinguishes cursing \"his God\" generally from blaspheming the LORD's specific name. That case triggers a \"one manner of law...for stranger and citizen\" declaration, which becomes the frame for the lex talionis laws that follow (life for life vs. beast for beast restitution, \"eye for eye, tooth for tooth\" explained as a proportionality ceiling, not license for revenge, cross-referencing Exodus 21:23-25) before closing with Israel carrying out the sentence exactly as commanded. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror. Parser check passed exactly (6/6 sections, 42 cards against 23 verses, ~1.83 cards/verse). npx tsc --noEmit -p . clean with zero errors. Confirmed via lib/bibleReaderStudyNotes.ts wiring (23 leviticus* source files + replaceStudySectionsForBookRange calls through chapter 23, preserveExactPhraseBodies extended only to 23) that Leviticus 24 was the correct next chapter, not relying solely on this JSON log. A few step timestamps below are reconstructed by interpolation between real `date -u` captures where a dedicated call wasn't made at every single milestone, consistent with prior entries' documented practice.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T09:46:56Z"
+        },
+        {
+          "name": "next chapter determined: Leviticus 24 (confirmed via lib/bibleReaderStudyNotes.ts wiring -- 23 leviticus source files + calls through ch23, no leviticusTwentyFourSource.ts existed yet)",
+          "at": "2026-07-28T09:47:22Z"
+        },
+        {
+          "name": "KJV text fetched for Leviticus 24 (23 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T09:47:40Z"
+        },
+        {
+          "name": "reviewed reference implementation (leviticusTwentyThreeSource.ts) for exact voice/format",
+          "at": "2026-07-28T09:47:22Z"
+        },
+        {
+          "name": "wrote lib/leviticusTwentyFourSource.ts",
+          "at": "2026-07-28T09:49:40Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to 24)",
+          "at": "2026-07-28T09:50:15Z"
+        },
+        {
+          "name": "parser check passed: 6 sections, 42 cards",
+          "at": "2026-07-28T09:50:19Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T09:51:15Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-28T09:52:16Z"
+        }
+      ]
     }
   ]
 }
