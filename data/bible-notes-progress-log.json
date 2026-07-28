@@ -2171,6 +2171,51 @@
           "at": "2026-07-28T09:54:30Z"
         }
       ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 25,
+      "startedAt": "2026-07-28T10:46:24Z",
+      "finishedAt": "2026-07-28T10:58:21Z",
+      "durationMinutes": 12,
+      "sections": 9,
+      "cards": 87,
+      "verses": 55,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The sabbatical-year and Jubilee law: the land's own seventh-year rest (sowing/pruning halted, wild growth free to all -- owner, servant, stranger, and livestock alike), the 49-year count to the Jubilee's 50th year (announced by the ram's-horn \"jubile\" trumpet on the Day of Atonement, \"proclaim liberty throughout all the land\" -- the Liberty Bell phrase), fair land pricing keyed to years-remaining-until-Jubilee rather than permanent sale, God's provision promise answering \"what shall we eat the seventh year\" with a triple sixth-year harvest, the land-belongs-to-God theology grounding the kinsman-redeemer right (the same go'el concept driving the book of Ruth), the walled-city-vs-village house rules and the Levites' special anytime-redemption exception (with a Numbers 18:20/35 callback), the no-usury command toward a poor brother grounded in the Exodus rescue, the Israelite-bondservant-vs-foreign-slave distinction (Israelites always Jubilee-limited and rigour-protected, addressed honestly as a real historical distinction), and the closing case of an Israelite sold to a wealthy foreign resident, whose redemption rights and Jubilee release still applied. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com), since the general Bible sites listed in the run instructions were expected to be blocked in this sandbox. Parser check passed exactly (9/9 sections, 87 cards against 55 verses, ~1.58 cards/verse). npx tsc --noEmit -p . clean with zero errors. Session started detached from HEAD on a stale local main; git fetch origin revealed origin/main had force-updated past it (through Leviticus 24), so local main was reset to match origin/main before any new work began, confirming Leviticus 24 as the true last-completed chapter. Two step timestamps above (chapter determination, KJV fetch) are reconstructed by interpolation between real `date -u` captures, since a dedicated timestamp call wasn't made at those exact moments -- consistent with the disclosed practice in the Leviticus 24 entry.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T10:46:24Z"
+        },
+        {
+          "name": "next chapter determined: Leviticus 25 (git fetch revealed origin/main had force-updated past stale local main through Lev 24; confirmed via grep of lib/bibleReaderStudyNotes.ts wiring -- Leviticus source files + replaceStudySectionsForBookRange calls through chapter 24 only)",
+          "at": "2026-07-28T10:53:00Z"
+        },
+        {
+          "name": "KJV text fetched for Leviticus 25 (55 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T10:54:10Z"
+        },
+        {
+          "name": "wrote lib/leviticusTwentyFiveSource.ts",
+          "at": "2026-07-28T10:55:26Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to 25)",
+          "at": "2026-07-28T10:55:35Z"
+        },
+        {
+          "name": "parser check passed: 9 sections, 87 cards",
+          "at": "2026-07-28T10:55:40Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T10:55:55Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-28T10:58:21Z"
+        }
+      ]
     }
   ]
 }
