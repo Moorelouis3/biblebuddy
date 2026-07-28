@@ -1945,7 +1945,7 @@
       "sections": 8,
       "cards": 36,
       "verses": 24,
-      "notes": "Scheduled hourly Bible Note Writer Agent run. Priestly holiness law, one tier stricter than the rules given to the rest of Israel in chapters 18-20: which family deaths an ordinary priest may still become ritually unclean for (parents, children, siblings, an unmarried sister only), the ban on pagan mourning marks (head-shaving, beard-cutting, self-cutting, with a 1 Kings 18:28 Baal-prophets callback), who a priest may and may not marry, the harsh burning penalty for a priest's daughter turning to prostitution (callback to the same penalty in Leviticus 20:14), the high priest's even stricter rules (no mourning rites at all, not even for his own parents, tied to the image of the anointing oil as a continual 'crown'), his requirement to marry a virgin of his own people specifically (a tier stricter than the ordinary-priest marriage rule just given), the physical-blemish list disqualifying a priest's descendant from altar service (with a direct callback to the 'without blemish' animal-offering standard explained again in Leviticus 22:20-25, an explicit card stating plainly this isn't a judgment on a person's worth since verse 22 confirms he's still fed, and a forward Hebrews 7:26 callback to Jesus as the truly undefiled high priest this law's symbolism pointed toward), and the closing provision that a disqualified priest still ate the holy food, only barred from the veil and altar specifically. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com/aruljohn/Bible-kjv/master/Leviticus.json), parsed chapter 21 out of the full-book JSON (24 verses). Parser check passed exactly (8/8 sections, 36/36 cards against 24 verses, 1.5 cards/verse). npx tsc --noEmit -p . clean with zero errors. Confirmed via a fresh git fetch + checkout of origin/main (this session started on a detached HEAD matching origin/main exactly, no lost work) and via lib/bibleReaderStudyNotes.ts wiring (preserveExactPhraseBodies range and replaceStudySectionsForBookRange calls) that Leviticus 20 was the true last chapter written, making Leviticus 21 the correct next chapter. Also corrected a real documentation error found in docs/BIBLE_BUDDY_NOTES_PROGRESS.md: the Leviticus 20 row and the 'Running totals' section both incorrectly claimed 'LEVITICUS IS COMPLETE — all 27 chapters' when only 20 of Leviticus's 27 chapters were actually done at that point (the chapter-count line lower in the same file correctly said 'Leviticus 1-20', so the milestone claims were simply wrong, not a sign of missing work) -- fixed both false claims in this run rather than repeating them, since a future run trusting that stale milestone text could have skipped ahead past chapters 22-27.",
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priestly holiness law, one tier stricter than the rules given to the rest of Israel in chapters 18-20: which family deaths an ordinary priest may still become ritually unclean for (parents, children, siblings, an unmarried sister only), the ban on pagan mourning marks (head-shaving, beard-cutting, self-cutting, with a 1 Kings 18:28 Baal-prophets callback), who a priest may and may not marry, the harsh burning penalty for a priest's daughter turning to prostitution (callback to the same penalty in Leviticus 20:14), the high priest's even stricter rules (no mourning rites at all, not even for his own parents, tied to the image of the anointing oil as a continual 'crown'), his requirement to marry a virgin of his own people specifically (a tier stricter than the ordinary-priest marriage rule just given), the physical-blemish list disqualifying a priest's descendant from altar service (with a direct callback to the 'without blemish' animal-offering standard explained again in Leviticus 22:20-25, an explicit card stating plainly this isn't a judgment on a person's worth since verse 22 confirms he's still fed, and a forward Hebrews 7:26 callback to Jesus as the truly undefiled high priest this law's symbolism pointed toward), and the closing provision that a disqualified priest still ate the holy food, only barred from the veil and altar specifically. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com/aruljohn/Bible-kjv/master/Leviticus.json), parsed chapter 21 out of the full-book JSON (24 verses). Parser check passed exactly (8/8 sections, 36/36 cards against 24 verses, 1.5 cards/verse). npx tsc --noEmit -p . clean with zero errors. Confirmed via a fresh git fetch + checkout of origin/main (this session started on a detached HEAD matching origin/main exactly, no lost work) and via lib/bibleReaderStudyNotes.ts wiring (preserveExactPhraseBodies range and replaceStudySectionsForBookRange calls) that Leviticus 20 was the true last chapter written, making Leviticus 21 the correct next chapter. Also corrected a real documentation error found in docs/BIBLE_BUDDY_NOTES_PROGRESS.md: the Leviticus 20 row and the 'Running totals' section both incorrectly claimed 'LEVITICUS IS COMPLETE \u2014 all 27 chapters' when only 20 of Leviticus's 27 chapters were actually done at that point (the chapter-count line lower in the same file correctly said 'Leviticus 1-20', so the milestone claims were simply wrong, not a sign of missing work) -- fixed both false claims in this run rather than repeating them, since a future run trusting that stale milestone text could have skipped ahead past chapters 22-27.",
       "steps": [
         {
           "name": "npm install done",
@@ -1994,6 +1994,55 @@
         {
           "name": "pushed to origin/main, confirmed via git log and git status (a8341cf..751fab9)",
           "at": "2026-07-28T06:54:08Z"
+        }
+      ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 22,
+      "startedAt": "2026-07-28T07:46:22Z",
+      "finishedAt": "2026-07-28T07:55:14Z",
+      "durationMinutes": 9,
+      "sections": 8,
+      "cards": 61,
+      "verses": 33,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Rounds out the priestly-holiness pair with chapter 21: which uncleanness conditions bar a priest from eating the holy food (leprosy, discharge, corpse contact, unclean creatures -- with a \"cut off from my presence\" penalty and the practical note that this food was priests' actual livelihood, having no farmland of their own per Numbers 18:20), the household test for who may eat it (a hired servant or sojourner may not, a purchased or home-born slave may, and a priest's daughter's eating rights shift with her marital household status), the 20%-restitution rule for an honest accidental violation (matching Leviticus 5:16's formula), the \"without blemish\" standard required of vow/freewill offerings (with the vow-vs-freewill acceptability tier for minor superfluous/lacking defects), the detailed disqualifying-blemish list (echoing chapter 21's priest list, plus the closed foreign-animal-import loophole), the seven-days-under-the-dam newborn-animal rule (echoing the eighth-day circumcision pattern) and the compassion-rule against killing a mother and young the same day, the same-day-eaten thanksgiving-offering rule (matching Passover and chapter 7:15), and the closing charge bookending the chapter's own opening line, tracing Israel's holiness back to God's own initiative in the Exodus. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com). Parser check passed exactly (8/8 sections, 61 cards against 33 verses, ~1.85 cards/verse). npx tsc --noEmit -p . clean with zero errors. Confirmed via lib/bibleReaderStudyNotes.ts wiring (chapters 1-21 already present, no leviticusTwentyTwoSource.ts existed yet) that Leviticus 22 was the correct next chapter.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T07:46:22Z"
+        },
+        {
+          "name": "next chapter determined: Leviticus 22 (confirmed via lib/bibleReaderStudyNotes.ts wiring, chapters 1-21 present)",
+          "at": "2026-07-28T07:47:18Z"
+        },
+        {
+          "name": "KJV text fetched for Leviticus 22 (33 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T07:47:24Z"
+        },
+        {
+          "name": "reviewed reference implementation (leviticusTwentyOneSource.ts) for exact voice/format",
+          "at": "2026-07-28T07:47:40Z"
+        },
+        {
+          "name": "wrote lib/leviticusTwentyTwoSource.ts",
+          "at": "2026-07-28T07:52:15Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to 22)",
+          "at": "2026-07-28T07:52:30Z"
+        },
+        {
+          "name": "parser check passed: 8 sections, 61 cards",
+          "at": "2026-07-28T07:52:55Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T07:53:05Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-28T07:55:14Z"
         }
       ]
     }
