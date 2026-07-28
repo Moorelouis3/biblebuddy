@@ -2868,6 +2868,51 @@
           "at": "2026-07-28T22:53:15Z"
         }
       ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 11,
+      "startedAt": "2026-07-28T23:46:41Z",
+      "finishedAt": "2026-07-28T23:54:07Z",
+      "durationMinutes": 8,
+      "sections": 7,
+      "cards": 61,
+      "verses": 35,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. First dedicated Numbers 11 source file (chapters 1-10 already had dedicated coverage; 11 onward previously fell back to a thin legacy generic block). Covers the fire at Taberah, the mixed multitude's craving for Egypt's food set against the manna's daily provision, Moses' raw breaking-point prayer ('kill me, I pray thee'), the seventy elders appointed to share the burden, Moses' doubt about feeding 600,000 people met with God's 'is the LORD's hand waxed short?' rebuke, the Spirit resting on the seventy (plus Eldad and Medad prophesying back in camp, and Moses' generous response to Joshua's jealousy), and the quail plague ending at Kibroth-hattaavah ('graves of craving'). KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror. Parser check passed exactly (7/7 sections, 61 cards against 35 verses, ~1.74 cards/verse). npx tsc --noEmit -p . clean with zero errors.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T23:45:59Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 11 (Numbers 1-10 have dedicated source files, confirmed via lib/ listing and bibleReaderStudyNotes.ts wiring)",
+          "at": "2026-07-28T23:46:41Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 11 (35 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T23:46:50Z"
+        },
+        {
+          "name": "reviewed reference implementation (numbersTenSource.ts) for exact voice/format",
+          "at": "2026-07-28T23:46:50Z"
+        },
+        {
+          "name": "wrote lib/numbersElevenSource.ts",
+          "at": "2026-07-28T23:52:36Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to chapter 11)",
+          "at": "2026-07-28T23:52:36Z"
+        },
+        {
+          "name": "parser check passed: 7 sections, 61 cards",
+          "at": "2026-07-28T23:53:06Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T23:54:07Z"
+        }
+      ]
     }
   ]
 }
