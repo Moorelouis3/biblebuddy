@@ -1589,6 +1589,51 @@
           "at": "2026-07-27T23:56:39Z"
         }
       ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 15,
+      "startedAt": "2026-07-28T00:46:16Z",
+      "finishedAt": "2026-07-28T00:55:32Z",
+      "durationMinutes": 9,
+      "sections": 9,
+      "cards": 51,
+      "verses": 33,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Covers the law of bodily discharges: a man's abnormal 'running issue' and everything it contaminates by contact (bed, seat, saddle, spit, earthen vessels broken vs. wooden vessels rinsed), his eighth-day two-bird cleansing offering; ordinary male seed emission and marital relations as a mild one-evening case deliberately contrasted with the abnormal issue; a woman's normal monthly separation (niddah) mirroring the man's bed/seat contamination rules almost word for word, plus the KJV's archaic 'flowers' for menstrual blood; her own abnormal extended bleeding case, which simply extends her normal-period rules rather than inventing a harsher category; and her eighth-day cleansing offering given identical wording and structure to the man's own (chapter 15:28-30 mirrors 15:13-15 deliberately). Closes with the chapter's own stated purpose in 15:31 -- separating Israel from uncleanness so they don't defile the tabernacle sitting at the center of their camp -- and a table-of-contents-style closing summary matching chapter 14:54-57's bookend pattern. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com/aruljohn/Bible-kjv/master/Leviticus.json), parsed chapter 15 out of the full-book JSON (33 verses). Parser check passed exactly (9/9 sections, 51 cards against 33 verses, ~1.55 cards/verse -- above the 1x floor, under the 2x aspiration since several verse clusters repeat an already-explained rule with only the subject changed, e.g. 15:19-24's bed/seat rules mirroring 15:4-6's, and 15:28-30 mirroring 15:13-15's cleansing offering almost verbatim). npx tsc --noEmit -p . clean with zero errors. Confirmed local checkout matched origin/main exactly at Leviticus 14 (fde9034) before starting (session began on a detached HEAD at the same commit; moved the main branch pointer there before continuing), and confirmed via lib/bibleReaderStudyNotes.ts wiring (chapters 1-14 present individually, no leviticusFifteenSource.ts existed yet, and the 17-20/21-27 personal-notes ranges leave a gap at 15-16) that Leviticus 15 was the correct next chapter.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T00:47:00Z"
+        },
+        {
+          "name": "next chapter determined: Leviticus 15 (confirmed via progress log + lib/bibleReaderStudyNotes.ts wiring, ch1-14 present individually, no leviticusFifteenSource.ts existed yet, gap at 15-16)",
+          "at": "2026-07-28T00:47:00Z"
+        },
+        {
+          "name": "KJV text fetched for Leviticus 15 (33 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T00:49:41Z"
+        },
+        {
+          "name": "wrote lib/leviticusFifteenSource.ts",
+          "at": "2026-07-28T00:51:13Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to chapter 15)",
+          "at": "2026-07-28T00:51:13Z"
+        },
+        {
+          "name": "parser check passed: 9 sections, 51 cards",
+          "at": "2026-07-28T00:51:56Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T00:53:47Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-28T00:55:32Z"
+        }
+      ]
     }
   ]
 }
