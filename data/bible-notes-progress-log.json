@@ -3047,6 +3047,47 @@
           "at": "2026-07-29T01:57:41Z"
         }
       ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 14,
+      "startedAt": "2026-07-29T02:46:31Z",
+      "finishedAt": "2026-07-29T02:56:02Z",
+      "durationMinutes": 10,
+      "sections": 9,
+      "cards": 67,
+      "verses": 45,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The climactic aftermath of the spies' report: the camp's despair and open plan to appoint a new captain and return to Egypt, Moses and Aaron falling on their faces while Joshua and Caleb rend their clothes and plead with the people (nearly stoned for it) right before the glory of the LORD appears, God's first proposal to destroy the nation and start over through Moses (a direct echo of the golden calf offer in Exodus 32:10), Moses' intercession quoting God's own Exodus 34:6-7 self-description back to Him, the pardon that still carries a real sentence (the adult generation barred from the land, Caleb and Joshua explicitly excepted, and Joshua's inclusion formally confirmed alongside Caleb's), the forty-years-for-forty-days sentence tied directly back to Numbers 13:25's scouting mission, the ten spies' individual death by plague versus Caleb and Joshua living, and the presumptuous, ark-less attack on the hill country ending in defeat at Hormah. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com). Parser check passed exactly (9/9 sections, 67 cards against 45 verses, ~1.49 cards/verse). npx tsc --noEmit -p . clean with zero errors. Confirmed via lib/bibleReaderStudyNotes.ts wiring (no numbersFourteenSource.ts existed yet, numbers 1-13 already wired) that Numbers 14 was the correct next chapter.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-29T02:46:31Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 14 (confirmed via lib/bibleReaderStudyNotes.ts wiring, Numbers 1-13 already covered)",
+          "at": "2026-07-29T02:47:28Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 14 (45 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-29T02:52:20Z"
+        },
+        {
+          "name": "wrote lib/numbersFourteenSource.ts",
+          "at": "2026-07-29T02:54:30Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to numbers ch14)",
+          "at": "2026-07-29T02:54:30Z"
+        },
+        {
+          "name": "parser check passed: 9 sections, 67 cards",
+          "at": "2026-07-29T02:54:55Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-29T02:56:02Z"
+        }
+      ]
     }
   ]
 }
