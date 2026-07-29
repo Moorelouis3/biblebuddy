@@ -3153,6 +3153,47 @@
           "at": "2026-07-29T03:56:26Z"
         }
       ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 16,
+      "startedAt": "2026-07-29T04:46:12Z",
+      "finishedAt": "2026-07-29T04:55:34Z",
+      "durationMinutes": 9,
+      "sections": 11,
+      "cards": 69,
+      "verses": 50,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Korah's Rebellion: Korah (Moses/Aaron's Levite first cousin through Kohath) joins Reubenites Dathan, Abiram, and On plus 250 respected tribal princes to challenge Aaron's exclusive priesthood, twisting the true 'kingdom of priests' promise (Exodus 19:6) into a false claim that all roles should be equal. Moses proposes a public censer test (the same ritual that killed Nadab and Abihu in Leviticus 10) rather than arguing back, rebukes the Levites for wanting the priesthood on top of their already-honored tabernacle service, and Dathan/Abiram refuse to appear at all, twisting 'a land flowing with milk and honey' to sarcastically describe Egypt. God twice offers to consume the whole congregation instantly; Moses and Aaron intercede both times (echoing Abraham's appeal for Sodom in Genesis 18), and the judgment narrows to the guilty: the earth swallows Korah, Dathan, Abiram and their households alive, fire consumes the 250 censer-bearers (mirroring Nadab/Abihu), their bronze censers are hammered into a permanent altar covering as a memorial, the people blame Moses and Aaron for the deaths the very next day, a plague breaks out, and Aaron runs with an altar-censer to stand literally between the dead and the living until it stops -- 14,700 more deaths beside those from Korah's company. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com). Parser check passed exactly (11/11 sections, 69 cards against 50 verses, ~1.4 cards/verse). npx tsc --noEmit -p . clean with zero errors. preserveExactPhraseBodies range in bibleReaderStudyNotes.ts extended from numbers chapter 15 to 16.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-29T04:46:35Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 16 (confirmed via progress log + lib/bibleReaderStudyNotes.ts wiring, both agreed on Numbers 15 as last complete)",
+          "at": "2026-07-29T04:47:24Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 16 (50 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-29T04:47:37Z"
+        },
+        {
+          "name": "wrote lib/numbersSixteenSource.ts",
+          "at": "2026-07-29T04:53:35Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to 16)",
+          "at": "2026-07-29T04:53:50Z"
+        },
+        {
+          "name": "parser check passed: 11 sections, 69 cards",
+          "at": "2026-07-29T04:54:08Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-29T04:55:15Z"
+        }
+      ]
     }
   ]
 }
