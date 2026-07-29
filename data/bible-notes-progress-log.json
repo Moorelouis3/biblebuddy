@@ -3377,6 +3377,51 @@
           "at": "2026-07-29T07:54:12Z"
         }
       ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 20,
+      "startedAt": "2026-07-29T08:46:04Z",
+      "finishedAt": "2026-07-29T08:52:23Z",
+      "durationMinutes": 6,
+      "sections": 7,
+      "cards": 38,
+      "verses": 29,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Miriam dies at Kadesh (the same site as the spies' unfaithful report roughly 38 years earlier), the people repeat Exodus 17's water complaint against a new generation of leaders, God's precise instruction to speak to the rock, Moses instead striking it twice in anger (\"must WE fetch you water\") and the resulting judgment barring both Moses and Aaron from the promised land (\"water of Meribah,\" a second place carrying that name after Exodus 17), the diplomatic appeal to \"thy brother\" Edom for passage along the King's Highway, Edom's armed refusal and Israel's restraint (matched to Deuteronomy 2:4-5's later command not to contend with Edom), and the priesthood formally passing from Aaron to Eleazar on Mount Hor via the garment-transfer ceremony, closing with Aaron's death and thirty days of national mourning (the same length later given to Moses in Deuteronomy 34:8). KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror. Density ~1.31 cards/verse (29 verses) -- narrative chapter with heavy cross-reference/callback grounding (Exodus 17, Numbers 13-14, Numbers 17/19's Eleazar foreshadowing, Genesis 27/33's Jacob-Esau history, Deuteronomy 2 and 34) rather than dense per-phrase vocabulary, consistent with the honesty standard used for prior narrative chapters. Parser check passed exactly (7/7 sections, 38 cards), npx tsc --noEmit -p . clean with zero errors, confirmed via lib/bibleReaderStudyNotes.ts wiring that Numbers 19 was the true last chapter written (matching this log), making Numbers 20 the correct next chapter.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-29T08:46:04Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 20 (confirmed via lib/bibleReaderStudyNotes.ts wiring, matches progress log)",
+          "at": "2026-07-29T08:47:17Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 20 (29 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-29T08:47:26Z"
+        },
+        {
+          "name": "reviewed reference implementation (numbersNineteenSource.ts) for exact voice/format",
+          "at": "2026-07-29T08:48:49Z"
+        },
+        {
+          "name": "wrote lib/numbersTwentySource.ts",
+          "at": "2026-07-29T08:48:49Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to 20)",
+          "at": "2026-07-29T08:50:24Z"
+        },
+        {
+          "name": "parser check passed: 7 sections, 38 cards",
+          "at": "2026-07-29T08:50:41Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-29T08:52:23Z"
+        }
+      ]
     }
   ]
 }
