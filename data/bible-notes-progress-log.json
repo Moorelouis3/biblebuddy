@@ -3638,6 +3638,55 @@
           "at": "2026-07-29T12:54:26Z"
         }
       ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 25,
+      "startedAt": "2026-07-29T13:46:00Z",
+      "finishedAt": "2026-07-29T13:54:18Z",
+      "durationMinutes": 8,
+      "sections": 6,
+      "cards": 34,
+      "verses": 18,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The Baal-Peor apostasy and Phinehas's zeal: Israel's whoredom with Moabite women sliding straight into idol feasts and bowing down to Baalpeor, God's command to execute the guilty tribal leaders publicly to turn away His anger, Zimri (a Simeonite prince) and Cozbi (a Midianite prince's daughter) brought brazenly into camp while the nation weeps at the tabernacle door, Phinehas's spontaneous javelin killing both of them and stopping the plague after 24,000 deaths, God's own commendation of Phinehas's zeal and the resulting covenant of peace and everlasting priesthood (tracing forward to Zadok), both guilty parties named and identified by rank, and the closing command to target Midian specifically, cross-referencing Numbers 31:16's later reveal that this whole scheme traced back to Balaam's advice to Balak. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com). Parser check passed exactly (6/6 sections, 34 cards against 18 verses, ~1.9 cards/verse). npx tsc --noEmit -p . clean with zero errors. Confirmed via lib/ file listing and lib/bibleReaderStudyNotes.ts wiring (numbersTwentyFourSource.ts existed, numbersTwentyFiveSource.ts did not, and the existing legacy numbersTwentySixToThirtySixPersonalNotes.ts block only covers 26-36) that Numbers 25 was the correct next chapter.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-29T13:45:40Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 25 (confirmed via lib/ file listing + bibleReaderStudyNotes.ts wiring, ground truth over log alone)",
+          "at": "2026-07-29T13:46:35Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 25 (18 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-29T13:47:15Z"
+        },
+        {
+          "name": "reviewed reference implementation (numbersTwentyFourSource.ts) for exact voice/format",
+          "at": "2026-07-29T13:48:30Z"
+        },
+        {
+          "name": "wrote lib/numbersTwentyFiveSource.ts",
+          "at": "2026-07-29T13:50:20Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to 25)",
+          "at": "2026-07-29T13:50:45Z"
+        },
+        {
+          "name": "parser check passed: 6 sections, 34 cards",
+          "at": "2026-07-29T13:51:10Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-29T13:51:34Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-29T13:54:18Z"
+        }
+      ]
     }
   ]
 }
