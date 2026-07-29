@@ -3691,6 +3691,55 @@
           "at": "2026-07-29T13:56:40Z"
         }
       ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 26,
+      "startedAt": "2026-07-29T14:46:03Z",
+      "finishedAt": "2026-07-29T14:57:51Z",
+      "durationMinutes": 12,
+      "sections": 14,
+      "cards": 66,
+      "verses": 65,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The second census, taken on the plains of Moab right after the Baalpeor plague, replacing the legacy generic numbersTwentySixToThirtySixPersonalNotes.ts block for this chapter with a dedicated source file (same override pattern used for Exodus's earlier legacy blocks). Every tribe's count compared against the first census in Numbers 1 (Simeon's collapse from 59,300 to 22,200, tied to Zimri's role in ch25; Manasseh's jump from 32,200 to 52,700), Reuben's family and the Dathan/Abiram/Korah callback (Korah's sons surviving to become Levitical singers credited in eleven Psalms), Judah's line through Pharez/Hezron toward David and Jesus, Zelophehad's five named daughters with no sons (setting up Numbers 27's inheritance-law change), the Levites counted separately from one month old including Amram/Jochebed's family and the Nadab/Abihu callback to Leviticus 10, land-by-lot division instructions, and the closing note that only Caleb and Joshua remain alive from the first census, fulfilling Numbers 14:28-35. Several tribal name-meaning callbacks to Genesis 29-30 included (Gad, Issachar, Ephraim, Benjamin, Dan, Asher, Naphtali). KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror. Density ~1.02 cards/verse (65 verses) -- appropriately lighter per skill Part 4's genealogy guidance while still explaining every meaningful name, number, and callback. Parser check passed exactly (14/14 sections, 66 cards), npx tsc --noEmit -p . clean with zero errors.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-29T14:46:03Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 26 (confirmed via lib/bibleReaderStudyNotes.ts wiring -- Numbers 1-25 have dedicated per-chapter source files, 26-36 still on the legacy generic numbersTwentySixToThirtySixPersonalNotes.ts block)",
+          "at": "2026-07-29T14:47:38Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 26 (65 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-29T14:47:50Z"
+        },
+        {
+          "name": "reviewed reference implementation (numbersTwentyFiveSource.ts) for exact voice/format",
+          "at": "2026-07-29T14:52:16Z"
+        },
+        {
+          "name": "wrote lib/numbersTwentySixSource.ts",
+          "at": "2026-07-29T14:54:15Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to 26)",
+          "at": "2026-07-29T14:54:40Z"
+        },
+        {
+          "name": "parser check passed: 14 sections, 66 cards",
+          "at": "2026-07-29T14:55:00Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-29T14:56:29Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-29T14:57:51Z"
+        }
+      ]
     }
   ]
 }
