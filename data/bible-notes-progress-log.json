@@ -2929,6 +2929,55 @@
           "at": "2026-07-28T23:55:50Z"
         }
       ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 12,
+      "startedAt": "2026-07-29T00:46:19Z",
+      "finishedAt": "2026-07-29T00:53:04Z",
+      "durationMinutes": 7,
+      "sections": 4,
+      "cards": 26,
+      "verses": 16,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Miriam and Aaron challenge Moses' unique authority over the pretext of his Cushite/Ethiopian wife, revealing the real issue in their rhetorical question ('hath he not spoken also by us?'); God summons all three suddenly to the tabernacle and draws a sharp contrast between how He normally speaks to prophets (visions, dreams, dark speeches) and His unique mouth-to-mouth relationship with Moses ('faithful in all mine house', with a forward callback to Hebrews 3:2-5); Miriam alone is struck with leprosy, Aaron's immediate reversal to calling Moses 'my lord' and confessing, and Moses' five-word intercessory prayer for the sister who just challenged him; and the seven-day shut-out-of-camp penalty (grounded in the spit-in-the-face shaming custom, also in Deuteronomy 25:9, and matched to Leviticus 13-14's existing quarantine law) with the whole camp waiting for her before the march resumes toward Paran, setting up the spies in Numbers 13. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com). Parser check passed exactly (4/4 sections, 26 cards against 16 verses, ~1.6 cards/verse). npx tsc --noEmit -p . clean with zero errors. Confirmed via lib/bibleReaderStudyNotes.ts wiring that Numbers 11 was the true last chapter written (no numbersTwelveSource.ts existed yet), making Numbers 12 the correct next chapter. Local checkout started on a detached HEAD exactly matching origin/main (no divergence, no lost work) -- ran git checkout -B main origin/main before starting, consistent with prior runs' practice.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-29T00:46:52Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 12 (confirmed via lib/bibleReaderStudyNotes.ts wiring, no numbersTwelveSource.ts existed yet)",
+          "at": "2026-07-29T00:47:14Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 12 (16 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-29T00:47:21Z"
+        },
+        {
+          "name": "reviewed reference implementation (numbersElevenSource.ts) for exact voice/format",
+          "at": "2026-07-29T00:48:30Z"
+        },
+        {
+          "name": "wrote lib/numbersTwelveSource.ts",
+          "at": "2026-07-29T00:49:45Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to chapter 12)",
+          "at": "2026-07-29T00:50:20Z"
+        },
+        {
+          "name": "parser check passed: 4 sections, 26 cards",
+          "at": "2026-07-29T00:50:58Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-29T00:52:54Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-29T00:53:04Z"
+        }
+      ]
     }
   ]
 }
