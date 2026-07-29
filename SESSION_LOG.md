@@ -278,3 +278,7 @@ Next up: Numbers 22
 ## 2026-07-29T10:55:25Z (hourly chapter notes run)
 Chapter: Numbers 22 | Duration: 8 min | Sections: 8 | Cards: 65 | Status: pass
 Next up: Numbers 23
+
+## 2026-07-29T11:53:42Z (hourly chapter notes run)
+Chapter: Numbers 23 | Duration: 8 min | Sections: 6 | Cards: 47 | Status: pass
+Next up: Numbers 24
