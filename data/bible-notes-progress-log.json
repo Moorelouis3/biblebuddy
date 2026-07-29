@@ -3100,6 +3100,51 @@
           "at": "2026-07-29T02:57:23Z"
         }
       ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 15,
+      "startedAt": "2026-07-29T03:46:25Z",
+      "finishedAt": "2026-07-29T03:55:00Z",
+      "durationMinutes": 9,
+      "sections": 9,
+      "cards": 55,
+      "verses": 41,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. First law-heavy chapter since Numbers 1-9's opening census/purity material -- comes right after chapter 14's wilderness sentence, and opens by describing the promised land in present tense ('which I give unto you') even though the current generation won't live to see it. Covers grain/oil/wine offerings scaled to lamb, ram, and bullock; the repeated one-law-for-native-and-stranger principle (stated three separate times across the chapter); the heave offering of the first of the dough (later Jewish challah); the sharp legal contrast between unintentional sin (forgiven, for both the whole congregation and an individual) and presumptuous, deliberate sin (cut off, no forgiveness offered); the real case study of the Sabbath stick-gatherer, stoned by the whole congregation outside the camp on God's direct ruling; and closing with the tassels/fringes command (tzitzit) as a daily, wearable memory aid placed immediately after the story of a man who forgot the Sabbath with fatal results. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com). Parser check passed exactly (9/9 sections, 55 cards against 41 verses, ~1.34 cards/verse, weighted lower on the mechanically repetitive lamb/ram/bullock measurement verses and higher on the presumptuous-sin verses 30-31 at 2.5 cards/verse). npx tsc --noEmit -p . clean with zero errors. Confirmed via lib/bibleReaderStudyNotes.ts wiring (numbers 1-14 already wired, no numbersFifteenSource.ts existed yet) that Numbers 15 was the correct next chapter.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-29T03:47:03Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 15 (confirmed via lib/bibleReaderStudyNotes.ts wiring, Numbers 1-14 already covered)",
+          "at": "2026-07-29T03:47:10Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 15 (41 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-29T03:47:26Z"
+        },
+        {
+          "name": "wrote lib/numbersFifteenSource.ts",
+          "at": "2026-07-29T03:51:00Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to 15)",
+          "at": "2026-07-29T03:51:39Z"
+        },
+        {
+          "name": "parser check passed: 9 sections, 55 cards",
+          "at": "2026-07-29T03:52:47Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-29T03:54:40Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-29T03:55:00Z"
+        }
+      ]
     }
   ]
 }
