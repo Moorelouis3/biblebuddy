@@ -3206,6 +3206,59 @@
           "at": "2026-07-29T04:57:18Z"
         }
       ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 17,
+      "startedAt": "2026-07-29T05:47:22Z",
+      "finishedAt": "2026-07-29T05:54:04Z",
+      "durationMinutes": 7,
+      "sections": 6,
+      "cards": 23,
+      "verses": 13,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Aaron's rod that budded: the twelve tribal rods (one per tribe, Aaron's representing Levi as God's direct answer to Korah's challenge from chapter 16), the rods laid before the ark of the testimony overnight, Aaron's rod alone budding, blossoming, and yielding almonds in a single night (with the almond tree's Hebrew name shaqed, 'watching/waking,' and its forward callback to Jeremiah 1:11-12), the rod kept permanently as a token against future rebels (with a Hebrews 9:4 callback confirming it stayed with the ark for generations), and the people's terrified overreaction ('we die, we perish, we all perish') that Numbers 18 opens by directly answering. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror. Parser check passed exactly (6/6 sections, 23 cards against 13 verses, ~1.77 cards/verse). npx tsc --noEmit -p . clean with zero errors. Confirmed via lib/bibleReaderStudyNotes.ts wiring (numbersSixteenSource imported/wired through chapter 16, no numbersSeventeenSource existing yet) that Numbers 16 was the true last chapter written, making Numbers 17 the correct next chapter. Also confirmed the docs/BIBLE_BUDDY_NOTES_PROGRESS.md table has a small logging gap around Numbers 14-15 (source files exist and are wired in, but the table jumped from 13 to 16) -- flagging here rather than backfilling, consistent with staying within this run's one-chapter scope.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-29T05:47:22Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 17 (confirmed via lib/bibleReaderStudyNotes.ts wiring and data/bible-notes-progress-log.json tail, both agreeing on Numbers 16 as last complete)",
+          "at": "2026-07-29T05:48:08Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 17 (13 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-29T05:48:16Z"
+        },
+        {
+          "name": "reviewed reference implementation (numbersSixteenSource.ts) for exact voice/format",
+          "at": "2026-07-29T05:50:40Z"
+        },
+        {
+          "name": "wrote lib/numbersSeventeenSource.ts",
+          "at": "2026-07-29T05:51:34Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to 17)",
+          "at": "2026-07-29T05:52:07Z"
+        },
+        {
+          "name": "parser check passed: 6 sections, 23 cards",
+          "at": "2026-07-29T05:52:07Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-29T05:54:04Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-29T05:54:52Z"
+        },
+        {
+          "name": "appended SESSION_LOG.md entry",
+          "at": "2026-07-29T05:55:02Z"
+        }
+      ]
     }
   ]
 }
