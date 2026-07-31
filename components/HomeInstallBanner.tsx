@@ -95,7 +95,13 @@ async function writeInstallPromptColumns(columns: Record<string, string>) {
     const { data } = await supabase.auth.getSession();
     const userId = data.session?.user?.id;
     if (!userId) return;
-    await supabase.from("profile_stats").upsert({ user_id: userId, ...columns });
+    // update, not upsert: profile_stats' primary key is not user_id, so an
+    // upsert inserts a duplicate row and dies on the user_id unique constraint.
+    // Every user already has a profile_stats row.
+    const { error } = await supabase.from("profile_stats").update(columns).eq("user_id", userId);
+    if (error) {
+      console.warn("[INSTALL_BANNER] Could not save install state:", error.message);
+    }
   } catch {
     // Banner persistence is best-effort; localStorage already has the answer.
   }
