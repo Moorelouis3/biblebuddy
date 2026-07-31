@@ -340,3 +340,9 @@ Next: Watch first install numbers come in; tweak dashboard if anything reads wro
 ## 2026-07-31T18:57:29Z (hourly chapter notes run)
 Chapter: Genesis 34 | Duration: 10 min | Sections: 7 | Cards: 33 | Status: pass
 Next up: Genesis 35
+
+## 2026-07-31 (night, part 3)
+Time spent: ~1 hour
+Done: Fixed install-state saves silently failing (profile_stats upsert vs unique constraint - switched to update), backfilled the 2 real installs, fixed analytics zeros (missing study_focus column sent the API down a fallback path lacking appInstalls - hardened the fallback + Louis ran the missing column SQL), iOS sheet-close now hides for the visit only, and redesigned the iPhone sheet as a one-step-at-a-time guided flow with illustrations. All deployed and verified against production data.
+Still open: profile_stats upsert audit running as a spawned background task.
+Next: Watch install numbers; swap in real iPhone screenshots if Louis provides them.
