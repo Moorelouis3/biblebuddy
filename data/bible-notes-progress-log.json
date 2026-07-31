@@ -3793,6 +3793,55 @@
           "at": "2026-07-31T12:40:56Z"
         }
       ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 28,
+      "startedAt": "2026-07-31T12:46:25Z",
+      "finishedAt": "2026-07-31T12:53:41Z",
+      "durationMinutes": 7,
+      "sections": 6,
+      "cards": 35,
+      "verses": 31,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Israel's full appointed-offerings calendar: the daily continual offering (two lambs, morning and evening, with grain and wine, first ordained at Sinai in Exodus 29:38-42), the doubled Sabbath offering, the monthly New Moon offering (introducing the standard 'two bullocks, one ram, seven lambs' big-occasion package plus the chapter's first sin offering), Passover and the seven-day Feast of Unleavened Bread (holy convocations bookending the week, the same big-occasion package repeated daily), and the Feast of Firstfruits/Weeks (the future Pentecost, counted 49 days out per Leviticus 23:15-16). Explains ephah/hin measurements, 'meat offering' as old English for a grain offering, 'beaten oil,' 'holy convocation,' and 'servile work,' and tracks how the same fixed offering package and three-tier grain/wine ratio recur across every appointed time rather than each getting a new formula. Replaces the legacy generic numbersTwentySixToThirtySixPersonalNotes.ts block for this chapter with a dedicated source file. Density ~1.13 cards/verse (31 verses), moderate given how much of the chapter's content deliberately repeats earlier-established offering formulas (Exodus 29-30, Leviticus 23), with fuller coverage on genuinely new material (the calendar structure itself, the recurring 'package' pattern, new measurement terms). KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror. Parser check passed exactly (6/6 sections, 35 cards), npx tsc --noEmit -p . clean with zero errors.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-31T12:46:25Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 28 (confirmed via lib/bibleReaderStudyNotes.ts wiring -- Numbers 1-27 have dedicated per-chapter source files, 28-36 still on the legacy generic numbersTwentySixToThirtySixPersonalNotes.ts block)",
+          "at": "2026-07-31T12:47:34Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 28 (31 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-31T12:50:11Z"
+        },
+        {
+          "name": "wrote lib/numbersTwentyEightSource.ts",
+          "at": "2026-07-31T12:51:20Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to 28)",
+          "at": "2026-07-31T12:51:35Z"
+        },
+        {
+          "name": "parser check passed: 6 sections, 35 cards",
+          "at": "2026-07-31T12:51:52Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-31T12:53:09Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-31T12:54:01Z"
+        },
+        {
+          "name": "appended SESSION_LOG.md entry",
+          "at": "2026-07-31T12:54:07Z"
+        }
+      ]
     }
   ]
 }
