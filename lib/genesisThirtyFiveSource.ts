@@ -88,1364 +88,784 @@ function parseGenesisThirtyFiveRawNotes(rawText: string): GenesisThirtyFivePerso
   return sections;
 }
 
-const GENESIS_THIRTY_FIVE_RAW_NOTES = `# Genesis 35:1–5
-
-# 🗣️ God Speaks To Jacob
-
+const GENESIS_THIRTY_FIVE_RAW_NOTES = `# Genesis 35:1-5
+# ⛰️ Called Back To Bethel
 ---
+## ⛺ Arise, Go Up To Bethel
 
-## 🗣️ And God Said Unto Jacob
+"Arise" means more than simply standing up.
 
-Chapter 34 ended with Jacob afraid.
+It means move now, without delay.
 
-Simeon and Levi had attacked the city of Shechem, killed all the men, rescued Dinah, and the rest of Jacob's sons plundered the city.
+God gives this command right after the violence at Shechem in the chapter before.
 
-They took the livestock, wealth, women, and children.
+Jacob's sons had just slaughtered a whole city.
 
-Jacob feared that the surrounding Canaanite people would hear what happened, join together, and destroy his entire household.
+Instead of scolding Jacob, God gives him a task and a direction.
 
-Then chapter 35 begins with these words:
+Bethel becomes the next stop on Jacob's long road home.
 
-**"And God said unto Jacob."**
+⛺ Arise means move now
+😨 Jacob's sons had just brought danger home
+🧭 God gives direction instead of scolding
+📖 God turns crisis into a new assignment
 
-God speaks into the exact situation Jacob is afraid of.
+## 🪜 That Appeared Unto Thee When Thou Fleddest From The Face Of Esau Thy Brother
 
-Jacob does not know what to do next, but God does not leave him without direction.
+God reminds Jacob of the exact place their relationship began.
 
-God tells him to leave the dangerous area around Shechem and return to the place where God first appeared to him.
+Years earlier Jacob ran from home because Esau wanted to kill him.
 
-😨 Jacob fears retaliation after the attack on Shechem
+Jacob stopped for the night with only a stone for a pillow.
 
-🗣️ God speaks directly into Jacob's crisis
+God appeared to him there in a dream and promised to bring him home.
 
-🛡️ God gives Jacob instructions instead of leaving him in fear
+Now God sends him back to that same place.
 
-➡️ Arise, Go Up To Bethel
+🏃 Jacob once fled Esau in fear
+🌙 God appeared to him in a dream
+🪨 A stone pillow marked that night
+📖 God now sends him back to that place
 
+## 🗿 Put Away The Strange Gods That Are Among You
+
+"Strange gods" means idols brought in from other households.
+
+Rachel had taken some of these from her father Laban.
+
+Others came from the plunder taken at Shechem.
+
+Jacob had let these idols stay hidden in his camp for years.
+
+Before returning to Bethel he demands they be removed.
+
+🗿 Strange gods means foreign idols
+👜 Rachel had taken some from Laban
+⚔️ Others came from Shechem's plunder
+📖 Jacob finally removes what was hidden
+
+## 🧼 Be Clean, And Change Your Garments
+
+Being clean here points to a purification ritual, not ordinary washing.
+
+Meeting God in this culture required removing anything tied to idols first.
+
+Changing garments marked leaving an old identity behind.
+
+Jacob prepares his whole household, not only himself, for this moment.
+
+This mirrors the way priests would later prepare before approaching the tabernacle.
+
+🧼 Clean means purified not just washed
+👕 New garments mark a new identity
+🙏 The whole household must prepare
+📖 This foreshadows how priests would prepare later
+
+## 😢 Who Answered Me In The Day Of My Distress
+
+Jacob openly credits God for answering him during his hardest days.
+
+"The day of my distress" points back to his flight from Esau.
+
+It also points to his hard years serving Laban.
+
+God did not only appear to Jacob in comfort.
+
+God met him in fear, in poverty, and in danger.
+
+Jacob wants his family to remember that this God has proven faithful before.
+
+😢 Distress recalls Jacob's flight from Esau
+🙏 God answered him during hard years
+🛡️ God met him in fear and danger
+📖 Jacob teaches his family God is faithful
+
+## 🌳 Hid Them Under The Oak Which Was By Shechem
+
+Jacob buries the idols and earrings instead of keeping or selling them.
+
+Earrings in this culture were often connected with pagan worship, much like small amulets.
+
+Burying these items under a tree makes a visible, permanent break from that worship.
+
+The oak near Shechem becomes a quiet marker of Jacob's obedience.
+
+🗿 Jacob buries the idols completely
+💍 Earrings often carried pagan meaning
+🌳 The oak marks a permanent break
+📖 Obedience here is visible, not just private
+
+## 😨 The Terror Of God Was Upon The Cities
+
+"The terror of God" means the surrounding cities were struck with a fear they could not explain.
+
+Simeon and Levi had just slaughtered the men of Shechem in the chapter before.
+
+By every normal expectation, nearby cities should have banded together for revenge.
+
+Instead, God supernaturally protects Jacob's traveling household.
+
+No army was needed because God controlled the fear in their enemies' hearts.
+
+😨 Terror of God means supernatural fear
+⚔️ Shechem's slaughter should have brought revenge
+🛡️ God protects Jacob without an army
+📖 God can control fear in enemies' hearts
+
+# Genesis 35:6-8
+# ⛪ Bethel At Last
 ---
+## 🏙️ Jacob Came To Luz, Which Is In The Land Of Canaan
 
-## ⛰️ Arise, Go Up To Bethel
+"Luz" was the original name of the town Jacob later called Bethel.
 
-The word **arise** means Jacob is to get up and take action.
+Jacob had been camped near Shechem before this chapter, not near this town.
 
-God does not tell him to remain near Shechem worrying about what the surrounding people might do.
+Now his whole household finally arrives at the place God commanded.
 
-He commands Jacob to leave and go to **Bethel**.
+The name Luz will soon disappear from the story in favor of Bethel.
 
-Bethel was the place where God first appeared to Jacob when he was fleeing from Esau.
+🏙️ Luz was the town's original name
+📍 Jacob had been camped near Shechem
+🚶 The household finally reaches Bethel
+📖 Luz gives way to a new name
 
-It was there that Jacob dreamed of a ladder reaching from earth to heaven, with angels ascending and descending upon it.
+## 🏠 He Built There An Altar, And Called The Place Elbethel
 
-Bethel means **"House of God."**
+"Elbethel" means "God of the house of God."
 
-⛰️ God tells Jacob to leave Shechem
+Jacob had already named this place Bethel, meaning "house of God," many years earlier.
 
-🏃 Arise means to get up and act
+Now he names the altar itself after the God who lives at that house.
 
-🪜 Bethel is where Jacob saw the ladder to heaven
+The shift is small but real.
 
-➡️ Dwell There
+🏠 Bethel means house of God
+🙏 Elbethel means God of the house of God
+⛪ Jacob builds an altar to mark it
+📖 The focus shifts from place to God
 
+## 🏃 Because There God Appeared Unto Him When He Fled From The Face Of His Brother
+
+Jacob names the altar this way because of what happened here long before.
+
+He had stopped for the night during his flight from Esau.
+
+He was alone and afraid at the time.
+
+God met him in a dream of a ladder reaching to heaven.
+
+Jacob returns now with a full family and great wealth.
+
+He remembers exactly where that first promise began.
+
+🏃 Jacob once fled here in fear
+🪜 A dream ladder marked this place
+👨‍👩‍👧‍👦 He returns now with a full family
+📖 Jacob remembers where the promise began
+
+## 👵 Deborah, Rebekah's Nurse, Died
+
+Deborah was the woman who had cared for Rebekah, Jacob's mother, since Rebekah was young.
+
+A "nurse" in this culture was often a lifelong servant and trusted companion.
+
+Genesis twenty four mentions an unnamed nurse who traveled with Rebekah to marry Isaac.
+
+That unnamed woman is revealed here to be Deborah.
+
+👵 Deborah cared for Rebekah for decades
+🛤️ She once traveled with Rebekah to Canaan
+😢 Her death brings deep family grief
+📖 Genesis reveals her identity only here
+
+## ⛰️ Buried Beneath Bethel Under An Oak
+
+"Beneath Bethel" points to a spot at a lower elevation than the town itself.
+
+Bethel sat on higher ground, so Deborah's grave lies just below the settlement.
+
+Burying her under a specific oak tree made the location easy to remember.
+
+Marking her grave this clearly shows how valued she was.
+
+⛰️ Bethel sat on higher ground
+🌳 The oak marked the grave's location
+🗺️ The spot was easy to remember
+📖 Deborah's grave marker shows her value
+
+## 🌳 The Name Of It Was Called Allonbachuth
+
+"Allonbachuth" means "oak of weeping."
+
+The Hebrew word for oak and the word for weeping are joined into this one name.
+
+Naming a tree after this moment kept Deborah's memory alive for later generations.
+
+A name like this shows real mourning, not simply a passing notice.
+
+🌳 Allonbachuth means oak of weeping
+😭 The name preserved her memory
+❤️ This shows genuine family mourning
+📖 Two Hebrew words are joined here
+
+# Genesis 35:9-15
+# ✨ God Renews The Covenant
 ---
+## 🗺️ God Appeared Unto Jacob Again, When He Came Out Of Padanaram
 
-## 🏕️ Dwell There
+"Padanaram" was the region where Jacob lived with Laban for about twenty years.
 
-To **dwell** means to live or remain in a place.
+The word "again" ties this appearance to God's earlier appearances at Bethel.
 
-God is not telling Jacob to make a quick visit to Bethel and then leave.
+Jacob has now completed the long journey God promised to bring him through.
 
-He is telling Jacob to relocate his household there and stay.
+This meeting confirms that God kept every promise made before Jacob ever left home.
 
-Jacob had stopped near Shechem and purchased land there, but after the violence of chapter 34, God redirects him.
+🗺️ Padanaram was Laban's home region
+🔁 Again links this to earlier appearances
+🚶 Jacob has finished a long journey
+📖 God kept every promise made before
 
-Bethel is where Jacob is supposed to settle at this point in his journey.
+## 🇮🇱 Thy Name Shall Not Be Called Any More Jacob, But Israel Shall Be Thy Name
 
-🏕️ Dwell means to live and remain there
+God had already renamed Jacob Israel after he wrestled through the night near the Jabbok river.
 
-📍 God is moving Jacob away from Shechem
+This moment is not a second, separate name change.
 
-🙏 Jacob must follow God's direction
+God is formally confirming the name he already gave him.
 
-➡️ Make There An Altar Unto God
+"Jacob" was tied to grasping and striving for blessing on his own terms.
 
----
+"Israel" becomes the name that marks what God is making of him.
 
-## ⛪ Make There An Altar Unto God
-
-God tells Jacob to build an altar at Bethel.
-
-An altar was a place used for sacrifice, worship, and remembrance.
-
-Jacob had built altars before, but now God specifically commands him to build one at the place where their relationship began.
-
-This return to Bethel is not only a change of location.
-
-It is a return to worship, obedience, and the promise Jacob made years earlier.
-
-⛪ Jacob must build a place of worship
-
-🙏 Returning to Bethel is also a spiritual return
-
-➡️ That Appeared Unto Thee When Thou Fleddest From Esau
-
----
-
-## 🪨 That Appeared Unto Thee When Thou Fleddest From The Face Of Esau Thy Brother
-
-God reminds Jacob of the first time He appeared to him.
-
-Years earlier, Jacob fled from home because Esau wanted to kill him after Jacob received Isaac's blessing.
-
-While traveling alone, Jacob stopped for the night, placed a stone beneath his head, and slept.
-
-God appeared to him in a dream and promised to protect him, bless him, and bring him back to the land.
-
-When Jacob awoke, he set the stone upright, poured oil upon it, and named the place Bethel.
-
-Now God is calling him back to the place where that promise was first given.
-
-🪨 Jacob set up a stone at Bethel
-
-🫒 He poured oil upon it
-
-🏃 He was fleeing from Esau at the time
-
-🙏 God had promised to bring him safely home
-
-# Genesis 35:6–15
-
-# ⛪ Jacob Builds An Altar
-
----
-
-## 🏙️ Jacob Came To Luz… Which Is In The Land Of Canaan
-
-Jacob obeys God and leaves the area around Shechem.
-
-He travels with his household to **Luz**, a town in the land of Canaan.
-
-Luz was the original name of the place Jacob had earlier called **Bethel**.
-
-The Bible says:
-
-**"Luz… that is, Bethel"**
-
-because Luz and Bethel refer to the same general location.
-
-Jacob's family had been living near the city of Shechem before this journey. They were not still near the mountain where Jacob wrestled with God.
-
-📍 Jacob leaves the area around Shechem
-
-🏙️ Luz was the location's original name
-
-🏠 Bethel was the name Jacob gave it after meeting God
-
-➡️ He And All The People That Were With Him
-
----
-
-## 👨‍👩‍👧 He And All The People That Were With Him
-
-Jacob does not arrive at Bethel alone.
-
-The people traveling with him included:
-
-- Jacob
-- Leah, Rachel, Bilhah, and Zilpah
-- His eleven sons who had already been born
-- His daughter Dinah
-- Male and female servants
-- Shepherds and workers caring for his animals
-- Members of the larger household connected to his family
-- The women and children taken captive from Shechem
-
-They also traveled with large numbers of sheep, goats, cattle, donkeys, camels, and other possessions.
-
-The Bible does not give an exact number of people.
-
-However, Jacob's household was much larger than only his wives and children. Years earlier, he had enough servants to divide his household into separate companies, and he owned enormous herds.
-
-After the captives from Shechem were added, this would have looked like a large traveling camp.
-
-👨‍👩‍👧 Jacob travels with his immediate family
-
-👥 His household includes servants and workers
-
-👩‍👧 Women and children from Shechem are also with them
-
-🐑 Large herds travel alongside the people
-
-➡️ He Built There An Altar
-
----
-
-## ⛪ He Built There An Altar
-
-After reaching Bethel, Jacob builds an altar.
-
-An altar was a place where people offered sacrifices and worshiped God.
-
-Jacob had first come to Bethel more than twenty years earlier while fleeing from Esau.
-
-At that time, he was alone and afraid.
-
-Now he returns with his wives, children, servants, livestock, and wealth.
-
-Building the altar acknowledges that God fulfilled His promise to protect Jacob and bring him safely home.
-
-⛪ Jacob builds a place of worship
-
-🙏 He recognizes God's faithfulness
-
-🏠 He has returned to the place where his journey began
-
-➡️ He Called The Place El-beth-el
-
----
-
-## 🙏 He Called The Place El-beth-el
-
-Jacob calls the place connected with the altar **El-beth-el**.
-
-**El-beth-el** means:
-
-**"God of Bethel"**
-
-or more literally:
-
-**"God of the House of God."**
-
-This does not mean Jacob is replacing the name Bethel.
-
-The town or location was called **Bethel**, meaning **"House of God."**
-
-Jacob now names the altar or sacred place **El-beth-el** because his focus is on the God who appeared to him there.
-
-Jacob once emphasized the place where he met God.
-
-Now he emphasizes the God who met him at that place.
-
-🏠 Bethel means "House of God"
-
-🙏 El-beth-el means "God of Bethel"
-
-📖 Jacob is not giving the town a completely different name
-
-➡️ There God Appeared Unto Him
-
----
-
-## ✨ There God Appeared Unto Him When He Fled From His Brother
-
-Jacob names the altar El-beth-el because this was where God appeared to him when he fled from Esau.
-
-More than twenty years earlier, Jacob left home because Esau wanted to kill him.
-
-Jacob stopped at Luz for the night and used a stone as his pillow.
-
-While sleeping, he dreamed of a ladder reaching between earth and heaven, with angels ascending and descending.
-
-God promised to:
-
-- Give Jacob the land
-- Multiply his descendants
-- Protect him wherever he traveled
-- Bring him safely back home
-
-Jacob is now standing in the place where that promise began.
-
-🏃 Jacob had been fleeing from Esau
-
-🪜 God appeared through the dream of the ladder
-
-🙏 God promised to protect and return him
-
-➡️ Deborah, Rebekah's Nurse, Died
-
----
-
-## 😢 Deborah, Rebekah's Nurse, Died
-
-Deborah was the nurse of **Rebekah**, Jacob's mother.
-
-A nurse in this setting was more than someone who briefly cared for a baby.
-
-She could remain with the family for many years as a trusted caregiver, servant, companion, and respected member of the household.
-
-Deborah first appears when Rebekah leaves Padan-aram to marry Isaac.
-
-Genesis 24 says Rebekah's family sent her away with **her nurse**.
-
-That unnamed nurse is identified here as Deborah.
-
-This means Deborah originally traveled with Rebekah from Padan-aram to Canaan many years earlier.
-
-👩 Deborah was Rebekah's longtime nurse
-
-🛤️ She traveled with Rebekah when Rebekah left to marry Isaac
-
-❤️ She had likely served the family for many decades
-
-➡️ Why Is Deborah With Jacob?
-
----
-
-## ❓ Why Is Rebekah's Nurse With Jacob's Household?
-
-Deborah belonged to the generation of Isaac and Rebekah, not originally to Jacob and Rachel's generation.
-
-The Bible does not explain when or why she began traveling with Jacob's household.
-
-She may have joined Jacob after returning to Canaan.
-
-She may have been sent to him by his mother.
-
-She may have joined him after Rebekah became elderly or died.
-
-But these are possibilities, not facts stated in Scripture.
-
-Rebekah's death is never directly recorded in Genesis.
-
-Isaac is still alive at this point and appears again at the end of the chapter.
-
-The passage mentions Rebekah because it is identifying Deborah:
-
-**She was the woman who had served Jacob's mother.**
-
-📖 Scripture does not explain when Deborah joined Jacob
-
-❓ Rebekah may or may not have already died
-
-👴 Isaac is still alive
-
-👩 Rachel is also still alive at this point
-
-➡️ She Was Buried Beneath Bethel
-
----
-
-## 🌳 She Was Buried Beneath Bethel Under An Oak
-
-Deborah is buried beneath an oak tree near Bethel.
-
-The phrase **"beneath Bethel"** means below or near the town of Bethel, likely at a lower elevation.
-
-Bethel was located in hilly territory, so Deborah's burial place was under an oak below the settlement.
-
-Her death receives special attention, which suggests she was deeply loved and respected by the family.
-
-🌳 Deborah is buried near Bethel
-
-⛰️ "Beneath Bethel" refers to the location below the town
-
-😢 Her death causes great mourning
-
-➡️ The Name Of It Was Called Allon-bachuth
-
----
-
-## 😭 The Name Of It Was Called Allon-bachuth
-
-The word **"it"** refers to the oak tree or the place around the tree where Deborah was buried.
-
-Jacob's family calls it **Allon-bachuth**.
-
-The name means:
-
-**"Oak of Weeping"**
-
-or:
-
-**"Oak of Mourning."**
-
-The name shows that Deborah's death brought deep sorrow to the household.
-
-She was not treated like an unimportant servant.
-
-She had likely been part of the family's life for generations.
-
-🌳 The oak receives a special name
-
-😭 Allon-bachuth means "Oak of Weeping"
-
-❤️ Deborah was deeply mourned
-
-➡️ God Appeared Unto Jacob Again
-
----
-
-## ✨ God Appeared Unto Jacob Again
-
-After Jacob arrives at Bethel, God appears to him again.
-
-The word **"again"** connects this appearance with Jacob's previous encounters with God.
-
-God had appeared to Jacob at Bethel when he first fled from Esau.
-
-God had also met him when he returned to Canaan and wrestled through the night.
-
-Now God appears again to confirm His promises.
-
-✨ God renews His communication with Jacob
-
-🙏 This continues the relationship that began years earlier
-
-➡️ When He Came Out Of Padan-aram
-
----
-
-## 🗺️ When He Came Out Of Padan-aram
-
-**Padan-aram** was the region where Jacob lived with Laban for approximately twenty years.
-
-It was also the homeland from which Rebekah had originally come.
-
-The verse does not mean that God appeared at the exact moment Jacob stepped out of Padan-aram.
-
-It means God appeared to Jacob after his return from that region.
-
-Jacob has completed the long journey God promised to bring him through.
-
-🗺️ Padan-aram was Laban's region
-
-⏳ Jacob lived there for about twenty years
-
-🏠 He has now returned to Canaan
-
-➡️ God Blessed Him
-
----
-
-## 🙌 God Blessed Him
-
-God does not appear merely to give Jacob instructions.
-
-He blesses him.
-
-This blessing confirms that God's covenant remains with Jacob despite the sins, failures, and violence surrounding his family.
-
-God's plan has not been cancelled.
-
-The covenant given to Abraham and Isaac will continue through Jacob.
-
-🙌 God confirms His favor
-
-📖 The covenant continues through Jacob
-
-➡️ Thy Name Is Jacob
-
----
-
-## 🇮🇱 Thy Name Is Jacob… But Israel Shall Be Thy Name
-
-God had already changed Jacob's name to Israel after Jacob wrestled with Him near the Jabbok River.
-
-This is not a second, unrelated name change.
-
-God is formally confirming the name He already gave him.
-
-Jacob was his birth name.
-
-It was connected with grasping the heel and later became associated with Jacob's history of striving, deceiving, and attempting to obtain blessings through his own plans.
-
-Israel becomes his covenant name and marks the new identity God has given him.
-
-The Bible continues using both names afterward.
-
-Sometimes he is called Jacob.
-
-Sometimes he is called Israel.
-
-The new name does not erase the old name from every sentence, but it identifies what God is making him and what nation will come from him.
-
-🇮🇱 God confirms the name Israel
-
-📖 The name was first given after the wrestling encounter
-
-👤 Scripture continues using both Jacob and Israel
-
-➡️ I Am God Almighty
-
----
+🇮🇱 Israel was already given at the Jabbok
+✅ This confirms an already given name
+🤼 Jacob's old name meant striving
+📖 Israel marks a new identity from God
 
 ## 💪 I Am God Almighty
 
-God identifies Himself as **God Almighty**.
+"God Almighty" translates the Hebrew title "El Shaddai."
 
-The Hebrew title is **El Shaddai**.
+This is the same title God used when confirming his covenant with Abraham.
 
-This is the same name God used when confirming His covenant with Abraham.
+By using it again, God reminds Jacob that he has the power to keep every promise about to be spoken.
 
-By using this title, God reminds Jacob that He has the power to accomplish everything He is about to promise.
+Jacob's family is still just one household, not yet a nation.
 
-Jacob's descendants are not yet a nation.
+💪 God Almighty translates El Shaddai
+📜 The same title was used with Abraham
+🏠 Jacob's family is still one household
+📖 God has power to keep every promise
 
-They are still one large household.
+## 🌱 Be Fruitful And Multiply
 
-But God Almighty can turn this household into nations and kings.
+This exact phrase first appears in Genesis one, spoken over all humanity.
 
-💪 God has the power to fulfill His promises
+It was also part of God's covenant promises to Abraham and Isaac.
 
-📖 El Shaddai means God Almighty
+Now the same words are spoken directly over Jacob.
 
-➡️ Be Fruitful And Multiply
+His family will grow into a great nation instead of only a small one.
 
----
-
-## 👨‍👩‍👧‍👦 Be Fruitful And Multiply
-
-God tells Jacob to be fruitful and multiply.
-
-This means Jacob's family will continue growing through children, grandchildren, and future generations.
-
-This language reaches back to God's blessing over humanity in Genesis 1.
-
-It was also part of His covenant promises to Abraham and Isaac.
-
-Jacob currently has eleven sons.
-
-Benjamin will soon be born, completing the twelve sons who become the fathers of the tribes of Israel.
-
-👨‍👩‍👧‍👦 Jacob's descendants will greatly increase
-
-📖 The promise continues through future generations
-
-➡️ A Nation And A Company Of Nations
-
----
+👨‍👩‍👧‍👦 It also blessed Abraham and Isaac
+🌱 Now it rests directly on Jacob
+🇮🇱 His family will become a great nation
+📖 This phrase echoes Genesis one
 
 ## 🌍 A Nation And A Company Of Nations Shall Be Of Thee
 
-God promises that a **nation** and a **company of nations** will come from Jacob.
+A "nation" here means the single people of Israel that Jacob's family will become.
 
-The nation is Israel.
+A "company of nations" means an entire assembly of related peoples.
 
-Jacob's twelve sons become the fathers of the twelve tribes of Israel.
+Jacob's twelve sons will become the fathers of Israel's twelve tribes.
 
-The tribes together form one nation, but they also become numerous tribal peoples and communities.
+Later kingdoms and tribal groups would also trace their roots back to this one promise.
 
-The phrase **"company of nations"** emphasizes that Jacob will not produce a small family line.
-
-An entire assembly of peoples will descend from him.
-
-Later, Jacob's descendants would also spread into different territories and kingdoms.
-
-🌍 Israel comes from Jacob
-
-👨‍👩‍👦 His sons become the heads of Israel's tribes
-
-📈 One household will become an entire people
-
-➡️ Kings Shall Come Out Of Thy Loins
-
----
+🇮🇱 Nation means the people of Israel
+🌍 Company of nations means many related peoples
+👨‍👦 Twelve sons become twelve tribes
+📖 One family becomes many nations
 
 ## 👑 Kings Shall Come Out Of Thy Loins
 
-The phrase **"out of thy loins"** means from Jacob's physical descendants.
+"Out of thy loins" is an old way of saying from Jacob's own physical descendants.
 
-God promises that kings will come through Jacob's family line.
+Israel's kings, including Saul, David, and Solomon, all trace their line back to Jacob.
 
-This includes Israelite kings such as:
+The royal line especially continues through Jacob's son Judah.
 
-- Saul
-- David
-- Solomon
-- Hezekiah
-- Josiah
+Centuries later, Jesus Christ is born through this same family line.
 
-The royal line would especially continue through Jacob's son Judah.
-
-Ultimately, Jesus Christ would also be born through Jacob's descendants and the family line of David.
-
-👑 Israel's kings descend from Jacob
-
-🦁 The royal line later comes through Judah
-
-✝️ Jesus is born through this covenant family
-
-➡️ The Land Which I Gave Abraham And Isaac
-
----
+👑 Loins means Jacob's own descendants
+🦁 Israel's kings trace back to Jacob
+✝️ Jesus is born through this family
+📖 One promise reaches all the way to Jesus
 
 ## 🌿 The Land Which I Gave Abraham And Isaac
 
-God reminds Jacob that the land promise did not begin with him.
+God reminds Jacob that this land promise did not begin with him.
 
-God first promised the land of Canaan to Abraham.
+God first gave it to Abraham, then repeated it to Isaac.
 
-He repeated the promise to Isaac.
+Now God confirms the same promise directly to Jacob.
 
-Now He confirms it to Jacob.
-
-Jacob is standing in the land, but his family does not yet possess the entire territory.
-
-They are still travelers surrounded by Canaanite peoples.
-
-The promise is about what God will give Jacob's descendants in the future.
+Jacob is standing in the land, but his family does not yet own it.
 
 🌿 The promise began with Abraham
-
-👨‍👦 It continued through Isaac
-
-🇮🇱 It is now confirmed to Jacob
-
-➡️ To Thy Seed After Thee Will I Give The Land
-
----
+👴 It continued through Isaac
+🇮🇱 Now it is confirmed to Jacob
+📖 Standing there is not yet owning it
 
 ## 🧬 To Thy Seed After Thee Will I Give The Land
 
-The word **seed** means descendants.
+"Seed" here means descendants, not literal plant seed.
 
-God promises that Jacob's descendants will inherit the land of Canaan.
+God is promising the land to a future generation, not to Jacob personally.
 
-This is a generational inheritance, but it is more than ordinary wealth passed from father to son.
+Jacob will spend his whole life as a traveler in this land, never owning it outright.
 
-Jacob does not personally own the entire land.
-
-God is promising to give it to the nation that will come from him.
-
-The fulfillment will unfold over generations.
+The promise will only be fulfilled generations later.
 
 🧬 Seed means descendants
-
-🏞️ The land will belong to future Israel
-
-⏳ The promise will be fulfilled over time
-
-➡️ God Went Up From Him
-
----
+🚶 Jacob remains a traveler in this land
+⏳ Full ownership comes generations later
+📖 The promise outlives the man who received it
 
 ## ☁️ God Went Up From Him
 
-After speaking with Jacob, God **"went up from him."**
+This does not mean God stopped being present everywhere.
 
-This means the visible manifestation of God's presence withdrew.
+It means the visible appearance God used to speak with Jacob came to an end.
 
-God did not stop being everywhere.
+Encounters like this were special and temporary, not a constant vision.
 
-The special appearance through which He communicated with Jacob came to an end.
+Jacob understood this as a real meeting with God, not simply his own thoughts.
 
-The wording also shows that Jacob understood this as a real encounter with God, not merely his own thoughts.
+☁️ God's visible presence withdraws here
+🙏 God still remains present everywhere
+⏳ These appearances were temporary, not constant
+📖 Jacob treats this as a real encounter
 
-☁️ God's visible appearance ends
+## 🪨 Jacob Set Up A Pillar In The Place Where He Talked With Him, Even A Pillar Of Stone
 
-🗣️ The conversation is completed
+A "pillar" here means a single stone stood upright as a lasting marker.
 
-➡️ In The Place Where He Talked With Him
+Jacob had done something almost identical at this same spot many years earlier.
 
----
+That was before he ever fled to Padanaram.
 
-## 📍 In The Place Where He Talked With Him
+This time he returns in blessing instead of running in fear.
 
-The phrase refers to the exact location where God had spoken with Jacob.
+The stone will outlast the memory of the conversation itself.
 
-Jacob marks the place because he wants the encounter to be remembered.
+🪨 A pillar is an upright memorial stone
+🔁 Jacob set one here once before
+🙏 Now he returns in blessing, not fear
+📖 Stones outlast any single conversation
 
-Throughout Genesis, important encounters with God are often connected with altars, stones, wells, or named locations.
+## 🍷 He Poured A Drink Offering Thereon, And He Poured Oil Thereon
 
-These physical markers helped future generations remember what God had said and done.
+A "drink offering" was liquid poured out before God as an act of worship.
 
-📍 Jacob marks the location of the encounter
+Genesis thirty five never names the exact liquid.
 
-🧠 The place becomes a memorial
+It should not be stated with certainty that it was wine.
 
-➡️ Jacob Set Up A Pillar Of Stone
+Pouring oil marked the stone as dedicated and set apart for God.
 
----
+Jacob had poured oil on a stone at this same place once before.
 
-## 🪨 Jacob Set Up A Pillar In The Place Where He Talked With Him
-
-Jacob sets up a stone vertically as a pillar.
-
-This pillar was not a building.
-
-It was a standing stone used as a memorial.
-
-Jacob had done something similar when God first appeared to him at Bethel.
-
-By raising another pillar, Jacob publicly marks the place where God repeated the covenant and confirmed his name as Israel.
-
-🪨 The pillar was a standing memorial stone
-
-🙏 It marked the place where God spoke
-
-➡️ He Poured A Drink Offering Thereon
-
----
-
-## 🍷 He Poured A Drink Offering Thereon
-
-A **drink offering** was liquid poured out before God as an act of worship.
-
-Later in the Law of Moses, drink offerings commonly used wine.
-
-Genesis 35 does not directly name the liquid Jacob poured, so we should not state with certainty that it was wine.
-
-The offering was not poured out for Jacob to drink.
-
-It was poured upon the pillar as an act of dedication, gratitude, and worship toward God.
-
-🍷 A drink offering was liquid poured out to God
-
-🙏 It expressed worship and dedication
-
-📖 The verse does not identify the exact liquid
-
-➡️ He Poured Oil Thereon
-
----
-
-## 🫒 He Poured Oil Thereon
-
-Jacob also pours oil on the stone.
-
-Pouring oil showed that the pillar was being dedicated and set apart in connection with God.
-
-Jacob had poured oil on a stone at Bethel more than twenty years earlier.
-
-Repeating the action connects his present experience with his first encounter there.
-
-Back then, Jacob was leaving Canaan alone.
-
-Now he has returned with everything God promised to give him.
-
-🫒 Oil symbolizes dedication
-
-🔄 Jacob repeats what he did during his first visit
-
-🙏 The act recognizes God's faithfulness
-
-➡️ Jacob Called The Name Of The Place Bethel
-
----
+🍷 A drink offering was worship, not a drink
+🫒 Oil marked the stone as dedicated
+🔁 Jacob repeats what he did years earlier
+📖 The exact liquid is never named here
 
 ## 🏠 Jacob Called The Name Of The Place Where God Spake With Him, Bethel
 
-Jacob had already called the place Bethel in Genesis 28.
+Jacob had already named this place Bethel many years earlier, in Genesis twenty eight.
 
-This verse does not mean that everyone forgot the name or that Jacob was inventing it for the first time again.
+This is not a brand new naming, but a renewed one.
 
-The name is being reaffirmed after God's new appearance there.
+God has now kept the promise he made at that first visit.
 
-The Bible often repeats a naming event when a place receives renewed importance.
+Jacob confirms the name because the promise behind it has been proven true.
 
-The first time Jacob called it Bethel, he was responding to God's promise.
+🏠 Bethel was already named long ago
+🔁 This renews a name, not invents one
+🙏 God has proven the earlier promise
+📖 A name can hold both promise and proof
 
-Now he calls it Bethel again after seeing that God kept that promise and brought him home.
-
-**Bethel means "House of God."**
-
-🏠 Jacob reaffirms the name Bethel
-
-📖 This is not a completely new naming
-
-🙏 The place now carries both the original promise and its fulfillment
-
-# Genesis 35:16–18
-
-# 👶 The Birth Of Benjamin
-
+# Genesis 35:16-20
+# 👶 Benjamin's Birth, Rachel's Death
 ---
+## 📍 There Was But A Little Way To Come To Ephrath
 
-## 🚶 They Journeyed From Bethel… And There Was But A Little Way To Come To Ephrath
+"Ephrath" was the older name for the area later known as Bethlehem.
 
-After worshiping God at Bethel, Jacob and his household continue their journey.
+Bethlehem would become the hometown of King David.
 
-The Bible says there was **"but a little way"** to **Ephrath**, meaning they were not far from reaching their destination when Rachel went into labor.
+Centuries later it would also become the birthplace of Jesus.
 
-**Ephrath** was the older name for the area that later became known as **Bethlehem**.
+Jacob's family is traveling through a place that will matter far beyond this moment.
 
-Bethlehem would later become the hometown of King David and, many centuries later, the birthplace of Jesus Christ.
-
-Jacob's family is now traveling through one of the most significant places in the Bible.
-
-🚶 Jacob leaves Bethel
-
-📍 Ephrath was the ancient name for Bethlehem
-
-✝️ Bethlehem would later become the birthplace of Jesus
-
-➡️ Rachel Travailed
-
----
-
-## 🤰 Rachel Travailed, And She Had Hard Labor
-
-The word **travailed** means Rachel was giving birth.
-
-The Bible says she experienced **hard labor**, meaning the delivery was extremely difficult.
-
-Her childbirth was far more painful and dangerous than normal.
-
-In the ancient world, childbirth was one of the leading causes of death for women because there were no modern hospitals, surgery, blood transfusions, or medicines.
-
-Rachel's labor became life-threatening.
-
-🤰 Travailed means she was giving birth
-
-😣 Hard labor means a very difficult and dangerous delivery
-
-⚠️ Rachel's life was in danger
-
-➡️ Fear Not
-
----
-
-## 👩‍🍼 Fear Not; Thou Shalt Have This Son Also
-
-Seeing Rachel's condition, the **midwife** tries to encourage her.
-
-She says,
-
-**"Fear not; thou shalt have this son also."**
-
-The midwife is assuring Rachel that the baby will be born.
-
-The word **"also"** reminds us that Rachel already had one son, **Joseph**.
-
-Now God is giving her another son.
-
-Sadly, although the child survives, Rachel herself does not.
-
-👩‍🍼 The midwife comforts Rachel
-
-👶 "Also" refers to Rachel's second son
-
-❤️ The baby lives, but Rachel does not
-
-➡️ Her Soul Was In Departing
-
----
-
-## 💔 As Her Soul Was In Departing… For She Died
-
-The Bible plainly tells us what happened.
-
-Rachel dies while giving birth.
-
-The phrase **"her soul was in departing"** is the Bible's way of describing her life coming to an end.
-
-As Rachel's life slipped away, she gave a name to her newborn son before she died.
-
-This marks one of the saddest moments in Jacob's life.
-
-Rachel was the wife he loved and had worked fourteen years to marry.
-
-💔 Rachel dies during childbirth
-
-📖 "Her soul was in departing" describes her death
-
-😢 Jacob loses the wife he loved most
-
-➡️ Ben-oni
-
----
-
-## 👶 She Called His Name Ben-oni
-
-With her final words, Rachel names her son **Ben-oni**.
-
-**Ben-oni** means:
-
-**"Son of my sorrow"** or **"Son of my suffering."**
-
-Rachel chooses this name because his birth is taking place during the suffering that leads to her death.
-
-The name reflects the sadness and pain of that moment.
-
-👶 Ben-oni means "Son of my sorrow"
-
-💔 Rachel names him as she is dying
-
-😢 The name reflects her suffering
-
-➡️ Benjamin
-
----
-
-## ❤️ But His Father Called Him Benjamin
-
-Jacob does not keep the name **Ben-oni**.
-
-Instead, he renames his son **Benjamin**.
-
-The name **Benjamin** means:
-
-**"Son of the right hand."**
-
-In the Bible, the **right hand** often symbolizes honor, strength, favor, and blessing.
-
-Rather than allowing his son to carry a name connected to sorrow for the rest of his life, Jacob gives him a name associated with honor and hope.
-
-Benjamin would become Jacob's youngest son and would later be the father of the tribe of Benjamin, one of the twelve tribes of Israel.
-
-❤️ Jacob changes his son's name
-
-👶 Benjamin means "Son of the right hand"
-
-🙏 Jacob chooses a name of honor instead of sorrow
-
-➡️ Rachel Is Buried
-
-# Genesis 35:19–20
-
-# 💔 The Death Of Rachel
-
----
-
-## 💔 And Rachel Died
-
-Rachel dies shortly after giving birth to Benjamin.
-
-She was the wife Jacob loved most and had worked fourteen years to marry.
-
-Her death marks one of the saddest moments in Jacob's life and fulfills the danger that was seen during her difficult labor.
-
-💔 Rachel dies after giving birth to Benjamin
-
-😢 Jacob loses the wife he loved most
-
-➡️ And Was Buried In The Way To Ephrath
-
----
-
-## 🪦 And Was Buried In The Way To Ephrath, Which Is Bethlehem
-
-Rachel is buried where she dies because Jacob's family is still traveling.
-
-The Bible explains that **Ephrath** is **Bethlehem**, the town that would later become the hometown of King David and the birthplace of Jesus.
-
-Although Rachel was Jacob's beloved wife, she was **not** buried in the family burial cave at Machpelah, where Abraham and Sarah were buried and where Isaac, Rebekah, Jacob, and Leah would later be buried.
-
-Years later, Jacob himself remembered this event when speaking to Joseph (Genesis 48:7), saying that Rachel died on the journey and was buried on the way to Ephrath.
-
-🪦 Rachel is buried where she died
+They were close to arriving when everything suddenly changed.
 
 📍 Ephrath is the ancient name for Bethlehem
+👑 David's hometown grows from this same ground
+✝️ Jesus is later born in this place
+📖 A quiet stop here holds huge meaning
 
-❤️ Rachel's burial place is different from the family burial cave
+## 🤰 Rachel Travailed, And She Had Hard Labour
 
-➡️ Jacob Set A Pillar Upon Her Grave
+"Travailed" means Rachel was in the process of giving birth.
 
+"Hard labour" means her delivery had become unusually difficult and dangerous.
+
+In the ancient world, childbirth was one of the leading causes of death for women.
+
+There were no hospitals, surgery, or modern medicine available to help her.
+
+🤰 Travailed means she was giving birth
+⚠️ Hard labour means real danger, not routine pain
+🏥 No modern medicine existed to help her
+📖 Childbirth was a genuine life risk then
+
+## 👩‍⚕️ Fear Not Thou Shalt Have This Son Also
+
+A midwife speaks these words to comfort Rachel during the danger of labor.
+
+The word "also" points back to Rachel's first son, Joseph.
+
+The midwife is promising that this second son will be born alive.
+
+Sadly, the baby survives, but Rachel herself does not.
+
+👩‍⚕️ A midwife offers this comfort
+👶 Also points back to Joseph, her first son
+❤️ The baby lives through the danger
+📖 Comfort for the child, not for Rachel
+
+## 💔 As Her Soul Was In Departing, For She Died
+
+"Her soul was in departing" is the Bible's gentle way of describing her death.
+
+Rachel dies during the same labor that had already turned dangerous.
+
+Even as her life was ending, she was still able to speak and name her son.
+
+This becomes one of the saddest moments in Jacob's whole story.
+
+💔 This phrase describes Rachel's death
+🗣️ She still names her son as she dies
+😢 This marks a deeply sad moment
+📖 Even her final act was for her child
+
+## 👶 She Called His Name Benoni
+
+"Benoni" means "son of my sorrow."
+
+Rachel names her son this way because his birth happens during the pain that costs her life.
+
+The name would have followed him for the rest of his days if it had stayed.
+
+A name like this carries real grief inside it, not just sadness in the moment.
+
+👶 Benoni means son of my sorrow
+💔 Rachel names him as she is dying
+😢 This name reflects true suffering
+📖 A name can carry lasting grief
+
+## ❤️ His Father Called Him Benjamin
+
+Jacob does not keep the name Rachel gave.
+
+He renames his son Benjamin, meaning "son of the right hand."
+
+In scripture, the right hand often stands for honor, strength, and favor.
+
+Jacob chooses hope over sorrow for the name his son will carry his whole life.
+
+❤️ Jacob changes his son's name
+👶 Benjamin means son of the right hand
+💪 The right hand often means honor
+📖 Jacob picks hope over lasting sorrow
+
+## 🪦 Buried In The Way To Ephrath, Which Is Bethlehem
+
+Rachel is buried where she died, not carried back to the family burial cave.
+
+That cave, called Machpelah, held Abraham and Sarah.
+
+Isaac and Leah would later be buried there too.
+
+Rachel alone among Jacob's close family is buried on the road instead.
+
+Jacob remembers this moment years later when speaking to Joseph.
+
+🪦 Rachel is buried where she died
+⛰️ Machpelah held the rest of the family
+🛤️ Only Rachel is buried on the road
+📖 Jacob remembers this even years later
+
+## 🪨 That Is The Pillar Of Rachel's Grave Unto This Day
+
+"Unto this day" means the grave marker was still recognized when Genesis was written.
+
+Jacob sets up a stone pillar the same way he did earlier at Bethel.
+
+A pillar like this served as a lasting, physical memorial.
+
+Rachel's grave remained a known landmark long after her death.
+
+🪨 A pillar marks Rachel's grave
+🔁 Jacob repeats what he did at Bethel
+🗺️ The grave stayed a known landmark
+📖 Stone memorials outlive the people they honor
+
+# Genesis 35:21-26
+# 👨‍👦 Twelve Sons Of Israel
 ---
+## 🗼 Israel Journeyed, And Spread His Tent Beyond The Tower Of Edar
 
-## 🪨 And Jacob Set A Pillar Upon Her Grave
+The Bible now calls Jacob "Israel" as the family continues traveling.
 
-Jacob places a standing stone over Rachel's grave.
+"Edar" means "flock," so the Tower of Edar was likely a watchtower used by shepherds.
 
-A **pillar** was a memorial marker that helped identify an important location and preserve its memory.
+This tower stood somewhere near Bethlehem, along the road toward Hebron.
 
-By setting up this pillar, Jacob honors Rachel and marks the place where she was buried.
+The family keeps moving even during this season of mourning.
 
-🪨 Jacob marks Rachel's burial place
+🇮🇱 The text now calls him Israel
+🐑 Edar means flock
+🗼 The tower likely guarded shepherds' flocks
+📖 The journey continues even through grief
 
-🙏 The pillar serves as a memorial
+## ⚠️ Reuben Went And Lay With Bilhah His Father's Concubine
 
-➡️ That Is The Pillar Of Rachel's Grave Unto This Day
+"Lay with" means Reuben had sexual relations with Bilhah.
 
----
+Bilhah was Rachel's servant and one of Jacob's wives, often called a "concubine."
 
-## 📖 That Is The Pillar Of Rachel's Grave Unto This Day
+A concubine held a real marriage relationship but ranked below the primary wives.
 
-The phrase **"unto this day"** means Rachel's grave was still known when the book of Genesis was written.
+In this culture, sleeping with a father's wife could also be read as an attempt to claim his authority.
 
-Her burial place remained a recognized landmark for generations.
-
-There is also a traditional site near Bethlehem today known as Rachel's Tomb. While many believe it marks the location of her burial, the Bible simply tells us that Rachel was buried on the way to Ephrath (Bethlehem).
-
-📖 Rachel's grave remained well known
-
-🪨 The memorial stood for many generations
-
-📍 Rachel's traditional tomb is near Bethlehem
-
-# Genesis 35:21–27
-
-# 👨‍👦 Jacob's Descendants
-
----
-
-## ⛺ And Israel Journeyed
-
-For the first time since God confirmed Jacob's new name, the Bible now refers to him as **Israel** instead of Jacob.
-
-This marks an important transition in the story.
-
-Although the Bible will continue to use both names throughout Genesis, this is the first time the narrative itself calls him **Israel** after God reaffirmed his new name.
-
-Rachel has now died and been buried near Bethlehem.
-
-After mourning her death, Israel continues the journey with his family.
-
-⛺ The Bible now calls Jacob "Israel"
-
-🇮🇱 This highlights his covenant identity
-
-💔 Rachel has been buried, and the journey continues
-
-➡️ Spread His Tent Beyond The Tower Of Eder
-
----
-
-## 🏕️ Spread His Tent Beyond The Tower Of Eder
-
-Israel moves his household and pitches his tents beyond the **Tower of Eder**.
-
-The name **Eder** means **"flock."**
-
-The Tower of Eder, or **Migdal Eder**, was likely a watchtower used by shepherds to guard their sheep and watch over the surrounding fields.
-
-It was located near Bethlehem.
-
-Jacob is continuing south toward Hebron, where his father Isaac is living.
-
-🏕️ Israel moves his camp again
-
-🐑 Tower of Eder means "Tower of the Flock"
-
-📍 It was near Bethlehem on the way to Hebron
-
-➡️ Reuben Went And Lay With Bilhah
-
----
-
-## ⚠️ Reuben Went And Lay With Bilhah, His Father's Concubine
-
-The Bible says Reuben **"lay with"** Bilhah.
-
-This means he had sexual relations with her.
-
-Bilhah was Rachel's servant and one of Jacob's wives, often called his **concubine**.
-
-A concubine was a secondary wife who had a recognized relationship with her husband but did not have the same social status as the primary wives.
-
-This was a very serious sin.
-
-In the ancient world, sleeping with a ruler's wife or concubine could also be seen as an attempt to challenge his authority and claim leadership over the family.
-
-Later in the Bible, Absalom would do something similar during his rebellion against King David.
-
-Many Bible scholars believe Reuben's actions were more than sexual sin—they were also an attempt to place himself in authority as the firstborn son.
-
-⚠️ "Lay with" means he had sexual relations with Bilhah
-
+⚠️ Lay with means sexual relations
 👩 Bilhah was Jacob's concubine and Rachel's servant
+👑 This could signal a claim on Jacob's authority
+📖 This sin runs deeper than it first appears
 
-👑 Reuben may have been attempting to assert leadership over the family
+## 🤫 Israel Heard It
 
-➡️ Israel Heard It
+No punishment is recorded here at all.
 
----
+Israel does not forget what happened, even without saying anything right away.
 
-## 👂 And Israel Heard It
+Years later, on his deathbed, Jacob strips Reuben of his rights as firstborn because of this exact sin.
 
-The Bible simply says,
+Consequences for sin are not always immediate, but they still arrive.
 
-**"And Israel heard it."**
-
-No immediate punishment is recorded here.
-
-However, Israel did not forget what Reuben had done.
-
-Many years later, when Jacob blessed his sons before his death, he removed Reuben's privileges as the firstborn because of this very sin (Genesis 49:3–4).
-
-Sometimes the consequences of sin are not immediate, but they still come.
-
-👂 Israel learns what happened
-
-⏳ Judgment is delayed, not forgotten
-
-📖 Reuben later loses the rights of the firstborn
-
-➡️ Now The Sons Of Jacob Were Twelve
-
----
+🤫 No punishment appears right away
+⏳ Israel remembers this for years
+📜 Reuben later loses his firstborn rights
+📖 Delayed judgment is still real judgment
 
 ## 👨‍👦 Now The Sons Of Jacob Were Twelve
 
-With Benjamin's birth, Jacob's family is now complete.
+With Benjamin's birth, Jacob's family reaches its complete number.
 
-He has **twelve sons**, who will become the fathers of the **twelve tribes of Israel**.
+Twelve sons will become the fathers of the twelve tribes of Israel.
 
-This verse marks an important milestone in Genesis.
+This verse marks a real milestone in the whole book of Genesis.
 
-From this point forward, God's covenant nation begins taking shape through these twelve sons.
+From here forward, the story follows this one family becoming a nation.
 
 👨‍👦 Jacob now has twelve sons
-
-🇮🇱 They become the fathers of Israel's twelve tribes
-
-➡️ The Sons Of Leah
-
----
+🇮🇱 They become Israel's twelve tribes
+📖 This is a milestone for Genesis
+➡️ The story now follows a growing nation
 
 ## 👨 The Sons Of Leah
 
-Leah bore Jacob six sons:
+Leah bore Jacob six sons.
 
-- Reuben
-- Simeon
-- Levi
-- Judah
-- Issachar
-- Zebulun
+Their names were Reuben, Simeon, Levi, Judah, Issachar, and Zebulun.
 
-Reuben was the firstborn but would later lose his special privileges because of his sin with Bilhah.
+Reuben was firstborn but would soon lose that privilege because of his sin with Bilhah.
 
-Simeon and Levi were the two brothers who led the attack on Shechem.
+Simeon and Levi were the two brothers who led the violent attack on Shechem.
 
-Judah would later become the tribe through whom Israel's kings—and eventually Jesus Christ—would come.
+Judah's family line would later produce Israel's kings.
 
-👨 Leah bore six sons
-
-👑 Judah's family line leads to King David and Jesus
-
-⚠️ Reuben, Simeon, and Levi each faced consequences for their actions
-
-➡️ The Sons Of Rachel
-
----
+👨 Leah bore six of Jacob's sons
+⚠️ Reuben would soon lose his firstborn place
+⚔️ Simeon and Levi attacked Shechem
+📖 Judah's line leads to David and Jesus
 
 ## ❤️ The Sons Of Rachel
 
-Rachel, Jacob's beloved wife, had two sons:
+Rachel bore Jacob two sons, Joseph and Benjamin.
 
-- Joseph
-- Benjamin
+Joseph would later rise to rule Egypt under Pharaoh.
 
-Joseph would later become the ruler of Egypt under Pharaoh.
+Benjamin was Rachel's last son.
 
-Benjamin was Rachel's final son, whose birth cost Rachel her life.
+His birth cost Rachel her life.
 
 ❤️ Rachel bore Joseph and Benjamin
+🇪🇬 Joseph later rules over Egypt
+💔 Benjamin's birth cost Rachel her life
+📖 Two sons carry enormous weight later
 
-🇪🇬 Joseph would later rise to power in Egypt
-
-💔 Rachel died giving birth to Benjamin
-
-➡️ The Sons Of Bilhah
-
----
-
-## 👩 The Sons Of Bilhah, Rachel's Handmaid
+## 👩 The Sons Of Bilhah, And The Sons Of Zilpah
 
 Bilhah was Rachel's servant.
 
-When Rachel was unable to have children, she gave Bilhah to Jacob as a wife according to the customs of that time.
-
-Bilhah became the mother of:
-
-- Dan
-- Naphtali
-
-These two sons would later become tribes of Israel.
-
-👩 Bilhah was Rachel's servant
-
-👨‍👦 Dan and Naphtali were her sons
-
-➡️ The Sons Of Zilpah
-
----
-
-## 👩 The Sons Of Zilpah, Leah's Handmaid
+She bore Dan and Naphtali.
 
 Zilpah was Leah's servant.
 
-Like Bilhah, she became one of Jacob's wives according to the customs of that time.
+She bore Gad and Asher.
 
-She gave birth to:
+Both women became Jacob's wives through the customs of that time.
 
-- Gad
-- Asher
+All four of these sons also become tribes of Israel.
 
-These sons also became tribes of Israel.
+👩 Bilhah bore Dan and Naphtali
+👰 Zilpah bore Gad and Asher
+🇮🇱 All four sons become tribes too
+📖 Two servants shape two tribes each
 
-👩 Zilpah was Leah's servant
+## 📜 These Are The Sons Of Jacob, Which Were Born To Him In Padanaram
 
-👨‍👦 Gad and Asher became tribes of Israel
+This summary states that Jacob's sons were born in Padanaram.
 
-➡️ These Are The Sons Of Jacob
+Padanaram was the region where Jacob lived with his uncle Laban for about twenty years.
 
+Benjamin is the one clear exception to this statement.
+
+He was born later, after Jacob returned to Canaan, near Bethlehem.
+
+📜 Most sons were born in Padanaram
+🏠 Padanaram was Laban's home region
+👶 Benjamin is the clear exception
+📖 One family, born in two different lands
+
+# Genesis 35:27-29
+# 👴 Isaac's Death
 ---
+## 👴 Jacob Came Unto Isaac His Father Unto Mamre
 
-## 📖 These Are The Sons Of Jacob, Which Were Born To Him In Padan-aram
+After more than twenty years away, Jacob is finally reunited with his father.
 
-The Bible summarizes Jacob's sons by saying they were born in **Padan-aram**.
+God had promised Jacob that he would bring him safely back to his father's house.
 
-Padan-aram was the region where Jacob lived with his uncle Laban for about twenty years.
+That promise is now fully kept.
 
-Benjamin is the one exception.
+Jacob returns not as the man who once fled with nothing.
 
-He was born later, after Jacob had returned to Canaan, near Bethlehem.
+He returns as the head of a large, wealthy family.
 
-The verse is emphasizing the family that was established during Jacob's years away from home rather than giving the exact birthplace of every son.
+👴 Jacob is reunited with his father
+🙏 God fulfills His promise to bring him home
+💰 Jacob returns wealthy, not empty handed
+📖 This fulfills a promise from decades earlier
 
-📖 Padan-aram was Laban's homeland
+## 🏙️ Unto The City Of Arbah, Which Is Hebron, Where Abraham And Isaac Sojourned
 
-🏠 Most of Jacob's sons were born there
+"Arbah" was an older name for the city later known as Hebron.
 
-👶 Benjamin was born later near Bethlehem
+"Sojourned" means to live somewhere for a time without permanently owning the land.
 
-➡️ Jacob Came Unto Isaac His Father
+Abraham and Isaac had both lived as travelers in this same area for years.
 
----
+The family burial cave at Machpelah was also located near this city.
 
-## 👴 And Jacob Came Unto Isaac His Father
+🏙️ Arbah was an older name for Hebron
+🚶 Sojourned means living there without owning it
+👴 Abraham and Isaac both lived here
+📖 The family burial cave sat nearby
 
-After more than twenty years away, Jacob is finally reunited with his father, Isaac.
+## 🔢 The Days Of Isaac Were An Hundred And Fourscore Years
 
-God had promised Jacob that He would bring him safely back to his father's house.
+"Fourscore" is an old way of saying eighty.
 
-Now that promise is fulfilled.
+One score always means twenty years.
 
-Jacob returns not as the man who fled with almost nothing, but as the head of a large family with great wealth.
+An hundred and fourscore years means Isaac lived to be one hundred eighty years old.
 
-👴 Jacob is reunited with Isaac
+Years earlier, Isaac believed he was near death when he blessed Jacob.
 
-🙏 God fulfills His promise to bring Jacob home
+Instead, he lived far longer than anyone expected.
 
-➡️ Unto Mamre… Unto The City Of Arbah
+🔢 Fourscore is an old way of saying eighty
+📏 One score always means twenty years
+👴 Isaac lived to one hundred eighty years
+📖 He lived far longer than anyone expected
 
----
+## 🕊️ Isaac Gave Up The Ghost, And Died
 
-## 📍 Unto Mamre, Unto The City Of Arbah, Which Is Hebron
+"Gave up the ghost" is an old English expression meaning simply that Isaac died.
 
-Isaac was living near **Mamre**, an area by the city of **Hebron**.
+It does not describe an actual ghost or spirit leaving in a visible way.
 
-The Bible also calls Hebron **Kirjath-arba**, meaning **"City of Arba."**
+The same expression is used elsewhere in Genesis for other deaths, including Abraham's.
 
-This was the same general area where Abraham had lived for many years.
+The KJV often uses this gentle phrase instead of a blunt word for death.
 
-It was also where the family burial cave of Machpelah was located.
+🕊️ Gave up the ghost means he died
+👻 No literal ghost is described here
+📜 The same phrase describes Abraham's death
+📖 The KJV often softens the word death
 
-From the Bethlehem area to Hebron is roughly **30 kilometers (about 18–20 miles)**.
+## ⚰️ Was Gathered Unto His People
 
-For a large household traveling with flocks and herds, this journey likely took several days.
+"Gathered unto his people" means Isaac joined those in his family who had died before him.
 
-📍 Mamre was near Hebron
+This exact phrase was also used to describe Abraham's death.
 
-🏠 Abraham and Isaac had lived there
+Isaac is later buried in the family cave at Machpelah, alongside Abraham and Sarah.
 
-🚶 It was about 30 km (18–20 miles) south of Bethlehem
+Rebekah, Jacob, and Leah would eventually be buried there as well.
 
-➡️ Where Abraham And Isaac Sojourned
-
-# Genesis 35:28–29
-
-# 👴 The Death Of Isaac
-
----
-
-## 👴 And The Days Of Isaac Were An Hundred And Fourscore Years
-
-Isaac lived to be **180 years old**.
-
-Many years earlier, when Isaac called Esau to receive the blessing, he believed he was near death because his eyesight had become very poor.
-
-However, Isaac did **not** die then.
-
-Instead, he lived for many more years.
-
-Jacob spent about **20 years** living with Laban in Padan-aram.
-
-After returning to Canaan, several more events took place before Jacob finally arrived at Hebron to see his father again.
-
-By the time Isaac died, Jacob had already been home for a number of years.
-
-Although the Bible does not give the exact number of years between Jacob's return and Isaac's death, Isaac lived **much longer** than anyone expected when he first blessed Jacob.
-
-👴 Isaac lived to be 180 years old
-
-👁️ He thought he was near death years earlier
-
-⏳ He lived many years after blessing Jacob
-
-➡️ Isaac Gave Up The Ghost
-
----
-
-## 🕊️ And Isaac Gave Up The Ghost, And Died
-
-The phrase **"gave up the ghost"** is an old English expression meaning that Isaac died.
-
-It does not describe a ghost leaving his body.
-
-It simply means that his earthly life came to an end.
-
-The same expression is also used for Abraham and later for other people in the Bible.
-
-🕊️ "Gave up the ghost" means Isaac died
-
-📖 The Bible uses this expression for others as well
-
-➡️ Was Gathered Unto His People
-
----
-
-## ⚰️ And Was Gathered Unto His People
-
-This is the same expression used when Abraham died.
-
-Being **"gathered unto his people"** means Isaac was gathered to those who had gone before him.
-
-It speaks of joining his ancestors in death.
-
-Afterward, Isaac was buried in the family burial cave at **Machpelah**, where Abraham and Sarah had been buried.
-
-Later, Rebekah, Jacob, and Leah would also be buried there.
-
-⚰️ Isaac joins those who died before him
-
-🪦 He is buried in the family burial place
-
-📖 The same expression was used for Abraham
-
-➡️ Being Old And Full Of Days
-
----
+⚰️ Gathered unto his people means joining ancestors
+📜 The same words described Abraham's death
+🪦 Isaac is buried at Machpelah
+📖 This same tomb holds several generations
 
 ## 📖 Being Old And Full Of Days
 
-The phrase **"full of days"** means Isaac lived a long and complete life.
+"Full of days" means Isaac lived a long, complete life.
 
-God had fulfilled His promises to him.
+God had already fulfilled his promises to Isaac many times over.
 
-Isaac lived to see Jacob safely return to Canaan.
+Isaac lived long enough to see his grandchildren.
 
-He also lived long enough to see his grandchildren and the beginning of the family that would become the nation of Israel.
+He also lived to see the beginning of Israel's twelve tribes.
 
-His life came to a peaceful end after many years.
+His life reached a peaceful, unhurried end.
 
-👴 Isaac lived a long life
+🙏 God fulfilled His promises to Isaac
+👨‍👩‍👦 He saw his grandchildren's generation
+🕊️ His life ended in peace
+📖 Full of days means a complete life
 
-🙏 God fulfilled His promises to him
+## 🤝 His Sons Esau And Jacob Buried Him
 
-👨‍👩‍👦 He saw the next generation of God's covenant family
+Esau and Jacob had been separated for many years by real danger.
 
-➡️ Esau And Jacob Buried Him
+Years earlier, Esau had wanted to kill Jacob over the stolen blessing.
 
----
+By the time of Isaac's death, God had already brought the brothers back together in peace.
 
-## 🤝 And His Sons Esau And Jacob Buried Him
+Standing side by side to bury their father shows how far their relationship had come.
 
-Although Jacob and Esau had been separated for many years, they came together to bury their father.
-
-Years earlier, Esau wanted to kill Jacob.
-
-But after God brought reconciliation between them, the brothers were able to stand together at Isaac's burial.
-
-This is the last recorded event involving Isaac.
-
-His death closes another generation of the covenant family.
-
-🤝 Esau and Jacob bury their father together
-
-❤️ Their earlier reconciliation made this possible
-
-📖 Isaac's death marks the end of another generation`;
+🤝 Esau and Jacob bury Isaac together
+⚔️ They had once been bitter enemies
+🕊️ God had already reconciled the brothers
+📖 This burial closes out a whole generation`.trim();
 
 export const GENESIS_THIRTY_FIVE_PERSONAL_SECTIONS = parseGenesisThirtyFiveRawNotes(GENESIS_THIRTY_FIVE_RAW_NOTES);

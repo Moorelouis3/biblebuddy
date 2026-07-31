@@ -4172,6 +4172,59 @@
           "at": "2026-07-31T18:56:05Z"
         }
       ]
+    },
+    {
+      "book": "Genesis",
+      "chapter": 35,
+      "startedAt": "2026-07-31T19:46:23Z",
+      "finishedAt": "2026-07-31T19:58:02Z",
+      "durationMinutes": 12,
+      "sections": 6,
+      "cards": 48,
+      "verses": 29,
+      "notes": "Redo-backlog chapter (fourth entry in data/bible-notes-style-redo-remaining.json), regenerated from scratch to match docs/bible-study-note-style.md. The return to Bethel: God sending Jacob back to Bethel to build an altar and put away the strange gods, the household purification, the arrival at Luz/Bethel and the naming of Elbethel, Deborah's death and burial under Allonbachuth, God appearing again to confirm the name Israel and repeat the covenant (God Almighty, fruitfulness, nation and company of nations, kings out of Jacob's loins, the land promise), the pillar with its drink and oil offering, Rachel's hard labor and death giving birth to Benjamin (Benoni renamed) on the way to Ephrath, Reuben's sin with Bilhah and its delayed consequence, the roll call of Jacob's twelve sons grouped by mother, and Isaac's death at Mamre/Hebron with Esau and Jacob burying him together in reconciliation. Density 1.66 cards/verse (48/29). Verified with scripts/check_bible_note_style.py (clean after fixing 4 over-length bullets and 4 stacked-clause/double-and prose lines found by eye), parser check (6/6 sections, 48 cards), and npx tsc --noEmit -p . (clean). data/bible-notes-style-redo-remaining.json's Genesis 35 entry removed from the front of the list as part of this commit; next redo target is Genesis 36.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-31T19:46:53Z"
+        },
+        {
+          "name": "target chapter determined: Genesis 35 (redo mode, first entry in data/bible-notes-style-redo-remaining.json)",
+          "at": "2026-07-31T19:47:05Z"
+        },
+        {
+          "name": "KJV text fetched for Genesis 35 via raw.githubusercontent.com/aruljohn/Bible-kjv/master/Genesis.json",
+          "at": "2026-07-31T19:47:23Z"
+        },
+        {
+          "name": "docs/bible-study-note-style.md read in full; lib/genesisThirtyOneSource.ts reviewed as reference implementation, old lib/genesisThirtyFiveSource.ts also reviewed for file structure",
+          "at": "2026-07-31T19:49:30Z"
+        },
+        {
+          "name": "source file written: lib/genesisThirtyFiveSource.ts (6 sections, 48 cards)",
+          "at": "2026-07-31T19:54:00Z"
+        },
+        {
+          "name": "style checker: scripts/check_bible_note_style.py clean after fixing 4 over-length bullets and 4 stacked-clause/double-and prose lines caught by manual eye scan",
+          "at": "2026-07-31T19:55:40Z"
+        },
+        {
+          "name": "wiring confirmed already correct in lib/bibleReaderStudyNotes.ts (import + preserveExactPhraseBodies genesis 1-50 range already cover chapter 35, no changes needed)",
+          "at": "2026-07-31T19:55:50Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections('Genesis', 35) -> 6 sections, 48 cards",
+          "at": "2026-07-31T19:56:10Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-31T19:56:45Z"
+        },
+        {
+          "name": "progress files logged: data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, data/bible-notes-style-redo-remaining.json",
+          "at": "2026-07-31T19:58:02Z"
+        }
+      ]
     }
   ]
 }

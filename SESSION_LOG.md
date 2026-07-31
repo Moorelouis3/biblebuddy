@@ -346,3 +346,7 @@ Time spent: ~1 hour
 Done: Fixed install-state saves silently failing (profile_stats upsert vs unique constraint - switched to update), backfilled the 2 real installs, fixed analytics zeros (missing study_focus column sent the API down a fallback path lacking appInstalls - hardened the fallback + Louis ran the missing column SQL), iOS sheet-close now hides for the visit only, and redesigned the iPhone sheet as a one-step-at-a-time guided flow with illustrations. All deployed and verified against production data.
 Still open: profile_stats upsert audit running as a spawned background task.
 Next: Watch install numbers; swap in real iPhone screenshots if Louis provides them.
+
+## 2026-07-31T19:58:29Z (hourly chapter notes run)
+Chapter: Genesis 35 | Duration: 12 min | Sections: 6 | Cards: 48 | Status: pass
+Next up: Genesis 36
