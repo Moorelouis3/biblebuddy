@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import DashboardJourneyExperience from "./DashboardJourneyExperience";
+import { reconcileInstallPromptState } from "./HomeInstallBanner";
 import AppLoadingScreen from "./AppLoadingScreen";
 import type { ChecklistData, TaskState } from "./LouisDailyTasksModal";
 import { supabase } from "../lib/supabaseClient";
@@ -120,7 +121,7 @@ export default function BibleYearJourneyDashboard() {
       const { data } = await supabase
         .from("profile_stats")
         .select(
-          "is_paid,daily_credits,last_active_date,verse_of_the_day_shown,current_streak,selected_streak_flame,selected_buddy_avatar,profile_image_url,display_name,username,created_at,bible_year_started_at,bible_year_plan_reset_at",
+          "is_paid,daily_credits,last_active_date,verse_of_the_day_shown,current_streak,selected_streak_flame,selected_buddy_avatar,profile_image_url,display_name,username,created_at,bible_year_started_at,bible_year_plan_reset_at,install_prompt_state,install_prompt_last_shown",
         )
         .eq("user_id", user.id)
         .maybeSingle();
@@ -144,6 +145,10 @@ export default function BibleYearJourneyDashboard() {
         bible_year_plan_reset_at: data?.bible_year_plan_reset_at ?? null,
         preferred_study_mode: "bible_year",
       });
+      reconcileInstallPromptState(
+        (data as { install_prompt_state?: string | null } | null)?.install_prompt_state ?? null,
+        (data as { install_prompt_last_shown?: string | null } | null)?.install_prompt_last_shown ?? null,
+      );
     })();
   }, [router]);
 

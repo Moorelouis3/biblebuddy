@@ -18,6 +18,7 @@ import CreditLimitModal from "./CreditLimitModal";
 import BibleTopicsPanel from "./BibleTopicsPanel";
 import VideoHelpfulPoll from "./VideoHelpfulPoll";
 import StreakFlameEmoji from "./StreakFlameEmoji";
+import HomeInstallBanner from "./HomeInstallBanner";
 import StreakFlameBadge from "./StreakFlameBadge";
 import LevelBadge from "./LevelBadge";
 import UserBadge from "./UserBadge";
@@ -16405,12 +16406,15 @@ Before we understand redemption, we need to understand what God made humanity fo
             ) : (
               <>
             {!homePanelOverride && !deepStudyFocusActive && !showOfficialHomeMission && !bibleYearDashboardActive ? (
+              <>
+              <HomeInstallBanner />
               <div className="mx-auto w-full max-w-xl px-1">
                 <h1 className="text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)] sm:text-3xl">
                   {dashboardGreeting}, {getFirstDashboardName(profile?.display_name || profile?.username || userName)}
                 </h1>
                 <div className="mt-3">{renderOwnerOnboardingControls()}</div>
               </div>
+              </>
             ) : null}
             {isAnonymousGuest && !homePanelOverride && !deepStudyFocusActive ? (
               <button
@@ -16522,6 +16526,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             ) : null}
             {bibleYearDashboardActive && activeBibleYearDashboardDay && !homePanelOverride && !shouldShowCompletionPanel ? (
               <>
+                <HomeInstallBanner />
                 {renderOwnerOnboardingControls()}
                 <div className="mx-auto mb-2 w-full max-w-3xl px-1 text-center">
                   <h1 className="text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)] sm:text-3xl">

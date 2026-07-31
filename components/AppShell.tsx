@@ -7,6 +7,9 @@ import { useEffect, useState, useRef, useCallback } from "react";
 import type { Session } from "@supabase/supabase-js";
 import { supabase } from "../lib/supabaseClient";
 import { syncNotesCount, shouldSyncNotesCount } from "../lib/syncNotesCount";
+// Side-effect import: registers the beforeinstallprompt/appinstalled listeners
+// at bundle load, before React hydrates, so the early Chrome event isn't missed.
+import "../hooks/useInstallPrompt";
 import { syncChaptersCount, shouldSyncChaptersCount } from "../lib/syncChaptersCount";
 import { trackUserActivity } from "../lib/trackUserActivity";
 import { recalculateTotalActions } from "../lib/recalculateTotalActions";
