@@ -4278,6 +4278,59 @@
           "at": "2026-07-31T20:55:00Z"
         }
       ]
+    },
+    {
+      "book": "Genesis",
+      "chapter": 37,
+      "startedAt": "2026-07-31T21:46:21Z",
+      "finishedAt": "2026-07-31T22:00:19Z",
+      "durationMinutes": 14,
+      "sections": 8,
+      "cards": 46,
+      "verses": 36,
+      "notes": "Sixth redo-backlog chapter (data/bible-notes-style-redo-remaining.json), regenerated from scratch to match docs/bible-study-note-style.md. Joseph sold into slavery: Jacob settling in Canaan as a sojourner, the generations of Jacob transition phrase, the Bilhah/Zilpah sons, Joseph's evil report, the coat of many colours as a status symbol, the brothers' hardening hatred, Joseph's two dreams (sheaves bowing, then sun/moon/stars bowing) and obeisance imagery, Jacob's rebuke that still kept the saying in mind, Joseph's long solo journey to Shechem and on to Dothan, the murder plot Reuben talks down into a pit instead, the coat stripped off, Judah's profit-driven pivot to selling Joseph for twenty pieces of silver, Reuben's grief at the empty pit, and the staged deception with the blood-soaked coat that leaves Jacob mourning a son who is actually alive and newly sold to Potiphar. Density 1.28 cards/verse (46/36), within the reference implementation's typical range. Verified with scripts/check_bible_note_style.py (clean after fixing 12 mechanical issues: a banned filler word inside a title, a repeated-emoji bullet set, and ten over-length bullets), parser check (8/8 sections, 46 cards), and npx tsc --noEmit -p . (clean). Also caught and fixed 3 'while'-stacked-clause prose lines by eye per spec section 3, beyond what the mechanical checker covers. data/bible-notes-style-redo-remaining.json's Genesis 37 entry removed from the front of the list as part of this commit; next redo target is Genesis 38.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-31T21:46:57Z"
+        },
+        {
+          "name": "target chapter determined: Genesis 37 (redo mode, first entry in data/bible-notes-style-redo-remaining.json)",
+          "at": "2026-07-31T21:47:30Z"
+        },
+        {
+          "name": "KJV text fetched for Genesis 37 via raw.githubusercontent.com/aruljohn/Bible-kjv/master/Genesis.json",
+          "at": "2026-07-31T21:48:10Z"
+        },
+        {
+          "name": "docs/bible-study-note-style.md read in full; lib/genesisThirtyOneSource.ts and scripts/check_bible_note_style.py reviewed; old lib/genesisThirtySevenSource.ts reviewed for prior wiring",
+          "at": "2026-07-31T21:53:05Z"
+        },
+        {
+          "name": "source file written: lib/genesisThirtySevenSource.ts (8 sections, 46 cards)",
+          "at": "2026-07-31T21:55:00Z"
+        },
+        {
+          "name": "style checker: scripts/check_bible_note_style.py clean after fixing 12 flagged mechanical issues",
+          "at": "2026-07-31T21:58:30Z"
+        },
+        {
+          "name": "wiring confirmed already correct in lib/bibleReaderStudyNotes.ts (import + preserveExactPhraseBodies genesis range already cover chapter 37, no changes needed)",
+          "at": "2026-07-31T21:55:29Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections('Genesis', 37) -> 8 sections, 46 cards",
+          "at": "2026-07-31T21:55:55Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-31T21:59:30Z"
+        },
+        {
+          "name": "progress files logged: data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, data/bible-notes-style-redo-remaining.json",
+          "at": "2026-07-31T22:00:19Z"
+        }
+      ]
     }
   ]
 }

@@ -354,3 +354,7 @@ Next up: Genesis 36
 ## 2026-07-31T20:53:16Z (hourly chapter notes run)
 Chapter: Genesis 36 | Duration: 8 min | Sections: 8 | Cards: 28 | Status: pass
 Next up: Genesis 37
+
+## 2026-07-31T22:00:19Z (hourly chapter notes run)
+Chapter: Genesis 37 | Duration: 14 min | Sections: 8 | Cards: 46 | Status: pass
+Next up: Genesis 38
