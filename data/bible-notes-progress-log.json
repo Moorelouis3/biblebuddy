@@ -3952,6 +3952,51 @@
           "at": "2026-07-31T14:55:13Z"
         }
       ]
+    },
+    {
+      "book": "Genesis",
+      "chapter": 31,
+      "startedAt": "2026-07-31T14:47:00Z",
+      "finishedAt": "2026-07-31T15:38:17Z",
+      "durationMinutes": 51,
+      "sections": 12,
+      "cards": 56,
+      "verses": 55,
+      "notes": "First chapter regenerated from scratch under the new hand-written style spec (docs/bible-study-note-style.md), adopted 2026-07-31 to replace the older looser format used for Numbers 1-30 and earlier. New rules: one idea per body line with a blank line between every line, exactly four bullets per card (3-8 words each, no repeated emoji, last bullet uses \ud83d\udcd6 or \u27a1\ufe0f), no hyphens/em dashes/semicolons/contractions in prose, and every card must open with one of four fixed moves (define the word, correct the misreading, identify the vague reference, state the point flat). Jacob and Laban's parting: the tension buildup, Jacob's case to Rachel and Leah, the dream of the ringstraked rams, the flight toward Gilead with Rachel's stolen teraphim, Laban's pursuit and accusation, the tense search, Jacob's furious twenty-year defense speech, and the covenant/heap of witness/Mizpah blessing that ends their relationship in peace. Density ~1.02 cards/verse (55 verses). This chapter is the reference implementation for the rest of the redo backlog tracked in data/bible-notes-style-redo-remaining.json (Genesis 32 through Numbers 29, plus Numbers 30 which was written by the hourly routine before it had switched over to the new style). Verified with the new scripts/check_bible_note_style.py checker (0 problems), parser check (12/12 sections, 56 cards), and npx tsc --noEmit -p . (clean).",
+      "steps": [
+        {
+          "name": "style spec supplied by Louis and committed to docs/bible-study-note-style.md, CLAUDE.md updated to require reading it before any note",
+          "at": "2026-07-31T14:52:00Z"
+        },
+        {
+          "name": "KJV text fetched for Genesis 31 (55 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-31T14:52:00Z"
+        },
+        {
+          "name": "wrote lib/genesisThirtyOneSource.ts (12 sections, 56 cards) matching the new style spec",
+          "at": "2026-07-31T15:00:00Z"
+        },
+        {
+          "name": "built scripts/check_bible_note_style.py to mechanically verify the new rules, ran it, fixed 38 then 2 more flagged issues",
+          "at": "2026-07-31T15:20:00Z"
+        },
+        {
+          "name": "checker clean, parser check passed: 12 sections, 56 cards",
+          "at": "2026-07-31T15:30:00Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-31T15:31:00Z"
+        },
+        {
+          "name": "committed and pushed to origin/main (66a12c4, then rebased to 55ba61b)",
+          "at": "2026-07-31T15:38:17Z"
+        },
+        {
+          "name": "handed remaining Genesis 32-Numbers 30 redo backlog off to the hourly Bible Note Writer Agent routine via data/bible-notes-style-redo-remaining.json rather than continuing live, per Louis's explicit request to conserve tokens",
+          "at": "2026-07-31T15:42:04Z"
+        }
+      ]
     }
   ]
 }

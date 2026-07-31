@@ -5,6 +5,48 @@ description: The complete Bible Buddy process for writing chapter study notes (s
 
 # Bible Notes — the Bible Buddy process
 
+## ⚠️ STYLE UPDATE (2026-07-31) — read this before anything else below
+
+Louis replaced the card-writing style with a stricter, hand-written spec:
+**`docs/bible-study-note-style.md`**. Read that file in full and follow it
+exactly for every card's voice, format, and rules (one idea per body line
+with a blank line between every line, exactly four bullets per card, no
+hyphens/em dashes/semicolons/contractions, four fixed opening moves, and
+so on). It supersedes the density target, bullet-count range, and voice
+guidance described further down in this file (Quick Summary bullets 3-4,
+Part 2 Step 3, the "2-4 emoji bullets" rule, etc.) — wherever this file and
+the new spec disagree on card *content and format*, the new spec wins.
+
+Everything else in this file still applies as written: fetching real KJV
+text, chunking into sections, the file/wiring/verification mechanics (Part
+2 Steps 5-8), and Part 4's guidance on different chapter types.
+
+`lib/genesisThirtyOneSource.ts` is the reference implementation of the new
+style — read it to see the exact shape before writing. After writing, run
+`python3 scripts/check_bible_note_style.py lib/<yourfile>Source.ts` and fix
+everything it reports (it checks the mechanical rules only — line length,
+exactly 4 bullets, banned words/punctuation, repeated emoji, duplicate
+titles — it cannot judge whether a note actually teaches something instead
+of reciting the verse, so also run the checklist in the spec's section 13
+by eye).
+
+### Which chapter is next — check the redo backlog first
+
+Before doing the normal "find the next uncovered chapter" lookup below,
+read `data/bible-notes-style-redo-remaining.json`. If its `remaining` array
+is non-empty, your target chapter is the FIRST entry in that array, not
+whatever the normal canonical-order lookup would find. These are chapters
+that already have an old-style file wired in (written before this spec
+existed) and need to be regenerated from scratch to match it — overwrite
+the existing file's content entirely, keeping the same exported type,
+function, and const names so nothing else needs to change (do not touch
+the wiring in `lib/bibleReaderStudyNotes.ts` for one of these — it is
+already correct). Once you finish and verify that chapter, remove its
+entry from the front of the `remaining` array as part of the same commit.
+
+Only fall back to the normal "first chapter in canonical order with no
+existing wired-in file" lookup once `remaining` is empty.
+
 ## Quick summary (read this first, details follow)
 
 - One process, all 1,189 chapters, Genesis 1 to Revelation 22. No book gets a lower bar.
