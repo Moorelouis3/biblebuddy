@@ -5319,6 +5319,17 @@ export async function GET(request: Request) {
       dayThreeUpgrade,
       daySevenUpgrade,
       studyNotesUpgrade,
+      completionUpgrade,
+      appInstalls,
+      studyPlans,
+      simpleSeries: {
+        signups: signupSeries,
+        upgrades: upgradeSeries,
+      },
+      simpleComparisons: {
+        signups: { current: currentSignups, previous: previousSignups, change: percentChange(currentSignups, previousSignups) },
+        upgrades: { current: currentUpgrades, previous: previousUpgrades, change: percentChange(currentUpgrades, previousUpgrades) },
+      },
       bibleYearDays,
       studyNotes,
       activeUsersLast24Hours,
