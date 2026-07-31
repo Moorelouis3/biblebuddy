@@ -318,3 +318,21 @@ Next up: Genesis 33
 ## 2026-07-31T17:55:00Z (hourly chapter notes run)
 Chapter: Genesis 33 | Duration: 7 min | Sections: 5 | Cards: 20 | Status: pass
 Next up: Genesis 34
+
+## 2026-07-31 (night)
+Time spent: ~1.5 hours
+Done: Built and shipped the Add to Home Screen banner (12-step plan, completed through deploy). Manifest touched up, migration ADD_INSTALL_PROMPT_TRACKING.sql run by Louis, environment detection + beforeinstallprompt capture, banner + iOS sheet UI matching the approved mockup (pulse x3), full wiring: Android real prompt / iPhone sheet with 7-day snooze / in-app-browser message, localStorage-first persistence with background profile_stats sync (no new queries, no page-load writes). Production build clean; pushed to main with [deploy] (a3637349).
+Still open: Louis will test on his iPhone once the deploy lands. Android flow untested on a real device (code-verified only).
+Next: Check how the banner behaves in the wild; tweak copy/placement if Louis spots anything on his phone.
+
+## 2026-07-31 (night)
+Time spent: ~1.5 hours
+Done: Recovered the "missing" hourly notes routine (it was disabled, not deleted) and re-enabled it with the new style spec (docs/bible-study-note-style.md) as the mandatory standard, aligned with the redo backlog (Genesis 32-Numbers 30) left by the earlier session. Set Vercel Ignored Build Step so only [deploy]-tagged commits build (~30 builds/day -> 2); Daily Report routine now tags [deploy] so accumulated chapters publish twice daily. Fixed Life Buddy agents page next-chapter logic (redo-backlog aware, book boundaries) and verified last-run/next-run/timeline all work. First redo run (Genesis 32) verified on-spec.
+Still open: Louis to eyeball a few redone chapters against the Genesis 31 voice; minor truncated bullet in Genesis 32 Seir/Edom card.
+Next: Let the redo backlog run (~5 days), spot-check quality, then confirm forward progress from Numbers 31.
+
+## 2026-07-31 (night, part 2)
+Time spent: ~1 hour
+Done: Built the App Installs analytics dashboard (new dropdown option on /admin/analytics): install banner events logged to master_actions with platform metadata, Installs vs Signups grouped chart (daily/weekly/monthly), platform breakdown, KPI cards with comparisons, lifetime account install-state totals. Deployed (8d27c31c).
+Still open: Louis must run ADD_INSTALL_BANNER_ACTION_TYPES.sql in Supabase before events start recording. iPhone real-device test of the banner still pending.
+Next: Watch first install numbers come in; tweak dashboard if anything reads wrong.
