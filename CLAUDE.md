@@ -1,3 +1,7 @@
+## Bible study note style (mandatory)
+Before writing or editing any Bible study note, read
+`docs/bible-study-note-style.md` and follow it exactly.
+
 ## Session Log (for Life Buddy reporting)
 This project reports to "Life Buddy" (`C:\Users\Moore\Desktop\second-brain`),
 which compiles Louis's daily morning and night reports across all his
