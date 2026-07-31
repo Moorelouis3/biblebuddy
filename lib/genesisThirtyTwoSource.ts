@@ -81,1301 +81,659 @@ function parseGenesisThirtyTwoRawNotes(rawText: string): GenesisThirtyTwoPersona
     });
   }
 
-  if (sections.length !== 6) {
-    throw new Error("Expected 6 Genesis 32 sections, received " + sections.length);
+  if (sections.length !== 9) {
+    throw new Error("Expected 9 Genesis 32 sections, received " + sections.length);
   }
 
   return sections;
 }
 
-const GENESIS_THIRTY_TWO_RAW_NOTES = `# Genesis 32:1–5
-
-# 📨 Jacob Sends A Message To Esau
-
+const GENESIS_THIRTY_TWO_RAW_NOTES = `# Genesis 32:1-2
+# 😇 Two Camps At Mahanaim
 ---
+## 😇 The Angels Of God Met Him
 
-## 🚶 Jacob Went On His Way
+This is not a private feeling or a dream.
 
-Jacob continues the journey God told him to take.
+Angels here means a company of heavenly messengers, visible enough for Jacob to see them himself.
 
-Twenty years earlier, he had fled from Canaan because Esau wanted to kill him after the blessing was given to Jacob.
+Jacob is heading home toward the brother he wronged years earlier.
 
-During those twenty years, Jacob lived with Laban, married Leah and Rachel, built a large family, and became a wealthy man.
+God sends this sight at the exact moment fear could have taken over.
 
-When Jacob finally left Haran, Laban chased him for about seven days before catching him in Gilead.
+Before anything else happens on this journey, Jacob is reminded he is not walking it alone.
 
-After making a covenant of peace, Laban returned home.
+😇 Angels means visible heavenly messengers
 
-Now Jacob continues south toward **Canaan**, the land God promised to Abraham, Isaac, and now Jacob.
+🚶 Jacob is heading toward Esau
 
-The only major problem left is Esau.
+😨 Fear could easily take over here
 
-🚶 Jacob continues toward Canaan
+📖 God shows up before the fear does
 
-📖 Twenty years have passed since he fled
+## 🏕️ Mahanaim
 
-🤝 His conflict with Laban is over
+Mahanaim means two camps or two companies.
 
-⚠️ Now he must face Esau
+Jacob names the place after what he just saw, God's camp meeting his own camp.
 
-➡️ God encourages Jacob
+The name captures something Jacob will need to remember for the rest of this chapter.
 
+He is never facing Esau with only his own strength.
+
+🏕️ Mahanaim means two camps
+
+👀 Named for what Jacob just saw
+
+🤝 God's camp joins Jacob's camp
+
+📖 Jacob never faces Esau alone
+
+# Genesis 32:3-5
+# ✉️ Messengers To Esau
 ---
-
-## 👼 The Angels Of God Met Him
-
-As Jacob travels, he is met by **God's angels**.
-
-The Bible does not explain exactly how many there were or what they looked like.
-
-Their appearance reminds Jacob that God has not abandoned him.
-
-Years earlier, at Bethel, Jacob saw angels ascending and descending on the ladder.
-
-Now, just before he must face Esau, God again allows him to see His heavenly messengers.
-
-It is a reminder that although Jacob may feel alone, heaven is with him.
-
-👼 God's angels meet Jacob
-
-🙏 God reminds Jacob He is still with him
-
-📖 This calls back to Jacob's dream at Bethel
-
-➡️ Jacob recognizes God's protection
-
----
-
-## 🏕️ This Is God's Host
-
-The word **host** means **army**, **camp**, or **company**.
-
-Jacob realizes these are not ordinary travelers.
-
-This is God's heavenly army surrounding him.
-
-Jacob is about to face his greatest earthly fear—meeting Esau again.
-
-Before that happens, God reminds him that Heaven's army is greater than anything on earth.
-
-🏕️ Host means army or camp
-
-👼 Jacob recognizes God's heavenly army
-
-🛡️ God is protecting Jacob
-
-➡️ Jacob names the place
-
----
-
-## 📍 He Called The Name Of That Place Mahanaim
-
-**Mahanaim** means **"Two Camps."**
-
-Jacob now sees two camps:
-
-- 🏕️ His own camp, made up of his family, servants, and livestock.
-- 👼 God's camp, made up of His angels.
-
-The name reminds Jacob that he is not traveling alone.
-
-Even though he cannot always see God's protection, it is there.
-
-📍 Mahanaim means Two Camps
-
-🏕️ Jacob has one camp
-
-👼 God has another
-
-🙏 God is traveling with Jacob
-
-➡️ Jacob prepares to meet Esau
-
----
-
-## 📨 Jacob Sent Messengers Before Him To Esau His Brother
-
-Jacob knows he is getting close to Esau.
-
-The last time they saw each other was about **twenty years earlier**, when Esau wanted to kill Jacob for taking the blessing.
-
-Rather than suddenly appearing, Jacob wisely sends messengers ahead.
-
-He wants to know whether Esau is still angry before bringing his entire family into danger.
-
-These messengers would have traveled ahead of Jacob's caravan to deliver his message and return with Esau's response.
-
-📨 Jacob sends men ahead
-
-⏳ Twenty years have passed
-
-⚠️ He wants to know whether Esau is still angry
-
-➡️ The message is sent to Seir
-
----
-
 ## 🗺️ Unto The Land Of Seir, The Country Of Edom
 
-**Seir** is the mountainous region where Esau settled.
+Seir and Edom both point to the same place, the region south and east of the Dead Sea.
 
-It is located **south of the Dead Sea**, southeast of Canaan.
+This was the land Esau had settled in after Genesis chapter thirty six.
 
-The region later became known as **Edom**.
+Sending messengers there means Jacob already knows exactly where to find his brother.
 
-The name **Edom** comes from Esau himself.
+Old distance has not erased the need to make things right with him.
 
-Earlier, after selling his birthright for the **red stew**, Esau was also called **Edom**, which means **"red."**
+🗺️ Seir and Edom name Esau's region
 
-His descendants eventually became the nation of Edom.
+🧭 Esau settled there after Genesis
 
-🗺️ Seir is where Esau settled
+✉️ Jacob knows where to send word
 
-📍 It is south of the Dead Sea
+📖 Old distance does not erase old debts
 
-🔴 Edom comes from Esau's nickname
+## 🙇 Thy Servant Jacob Saith Thus
 
-➡️ Jacob speaks humbly
+Jacob tells his messengers to call him thy servant and Esau my lord.
 
----
+This is not just polite language.
 
-## 🙇 Thus Shall Ye Speak Unto My Lord Esau
+Jacob is the one who took Esau's blessing and birthright years earlier.
 
-Jacob tells his servants to call Esau **"my lord."**
+Calling himself a servant now is a deliberate move to lower himself before his brother.
 
-This is surprising.
+🙇 Servant and lord are deliberate titles
 
-Years earlier, Isaac's blessing said that **the older would serve the younger**.
+😳 Jacob once took Esau's blessing
 
-Yet Jacob does not act proudly.
+🕊️ He lowers himself here on purpose
 
-Instead, he humbles himself before Esau.
+📖 Humility opens this whole approach
 
-He is seeking peace, not trying to prove his position.
+## 🏕️ I Have Sojourned With Laban
 
-🙇 Jacob calls Esau "my lord"
+To sojourn means to live somewhere for a while without truly belonging there.
 
-❤️ He approaches with humility
+Jacob spent twenty years working for Laban, but Padanaram was never meant to be his home.
 
-🕊️ His goal is reconciliation
+He wants Esau to hear that all those years away, Jacob never stopped intending to come back.
 
-➡️ Jacob calls himself a servant
+🏕️ Sojourn means a temporary stay
 
----
+📆 Twenty years spent away from home
 
-## 🤲 Thy Servant Jacob
+🧭 Jacob always intended to return
 
-Jacob refers to himself as **Esau's servant.**
-
-Again, this is an act of humility.
-
-He is lowering himself instead of demanding his rights.
-
-Jacob is trying to remove every reason Esau might have for feeling threatened.
-
-Rather than claiming superiority, he comes in peace.
-
-🤲 Jacob calls himself a servant
-
-🕊️ He lowers himself to seek peace
-
-🙏 Humility often opens the door to reconciliation
-
-➡️ Jacob explains where he has been
-
----
-
-## 🏠 I Have Sojourned With Laban
-
-**Sojourned** means **lived temporarily** or **stayed for a time.**
-
-Jacob is saying,
-
-**"Laban's house was never my permanent home."**
-
-God had always intended for Jacob to return to Canaan.
-
-His twenty years in Haran were temporary.
-
-🏠 Sojourned means lived temporarily
-
-📖 Haran was never Jacob's permanent home
-
-➡️ Jacob explains his prosperity
-
----
-
-## 🐂 I Have Oxen, Asses, Flocks, And Menservants And Womenservants
-
-Jacob tells Esau about the wealth God has given him.
-
-He owns:
-
-- 🐂 Oxen
-- 🫏 Donkeys
-- 🐑 Large flocks
-- 👨 Menservants
-- 👩 Womenservants
-
-Jacob is trying to communicate something important.
-
-He is **not returning to take anything from Esau.**
-
-He is already wealthy.
-
-God has provided everything he needs.
-
-🐂 Jacob has become wealthy
-
-🙏 God has blessed him greatly
-
-❤️ He is not returning to claim Esau's possessions
-
-➡️ Jacob asks for peace
-
----
+📖 A temporary stay was never the goal
 
 ## 🙏 That I May Find Grace In Thy Sight
 
-**Grace** here means **favor**, **kindness**, or **acceptance.**
+Finding grace in someone's sight is an old way of asking for their favor and good will.
 
-Jacob is asking Esau,
+Jacob is not demanding anything from Esau.
 
-**"Will you receive me peacefully?"**
+He is asking, almost pleading, for a welcome he knows he does not automatically deserve.
 
-He does not simply show up expecting forgiveness.
+The words are careful and humble because the relationship they are aimed at is still fragile.
 
-He sends word first, hoping to restore the relationship before they meet face to face.
+🙏 Grace in thy sight means favor
 
-Although God had already commanded Jacob to return, Jacob still takes practical steps toward reconciliation.
+🎁 Jacob is asking, not demanding
 
-He trusts God's promise while also approaching his brother with humility and wisdom.
+😟 The old relationship is still fragile
 
-🙏 Grace means favor or acceptance
+📖 Careful words match a careful hope
 
-🕊️ Jacob asks for reconciliation
-
-🤝 He prepares the way before arriving
-
-➡️ Jacob waits for Esau's response
-
-# Genesis 32:6–8
-
-# 🛡️ Jacob Prepares To Meet Esau
-
+# Genesis 32:6-8
+# 😨 Jacob's Fear
 ---
+## 🪖 Four Hundred Men With Him
 
-## 🏃 The Messengers Returned To Jacob
+Four hundred men was not a small welcoming party in the ancient world.
 
-The servants return after successfully finding Esau.
+That number was closer to the size of an armed raiding force.
 
-They deliver both good news and alarming news.
+Jacob has no way of knowing yet whether Esau is coming to forgive him or to attack him.
 
-Yes, Esau is coming.
+The silence about Esau's plans is exactly what makes this report so frightening.
 
-But he is not coming alone.
+🪖 Four hundred men suggests an army
 
-He is traveling with **four hundred men**.
+❓ Esau's intentions are not stated
 
-The messengers do not say whether Esau's intentions are peaceful or hostile.
+😰 The silence makes it more frightening
 
-That uncertainty immediately fills Jacob with fear.
+📖 Uncertainty can be its own fear
 
-🏃 The messengers return from Esau
+## 😰 Greatly Afraid And Distressed
 
-📨 Esau is coming to meet Jacob
+These are two different feelings stacked on top of each other.
 
-⚠️ They do not know whether he comes in peace or for war
+Afraid describes the fear of a real physical threat coming toward him.
 
-➡️ Four hundred men are with him
+Distressed describes the tight, trapped feeling of having no good way out.
 
+Jacob feels both the danger itself and the pressure of having nowhere left to run.
+
+😨 Afraid means fear of real danger
+
+😣 Distressed means feeling trapped
+
+🚧 Both feelings hit Jacob together
+
+📖 Fear and pressure often arrive as a pair
+
+## ✌️ Divided The People Into Two Bands
+
+Jacob splits his household, servants, and animals into two separate groups.
+
+If Esau's men attack the first group, the second group still has a chance to escape.
+
+This is not panic.
+
+It is a calculated plan built to protect as many people as possible.
+
+✌️ Jacob splits everyone into two groups
+
+🛡️ One group protects the other
+
+🧠 This is planning, not panic
+
+📖 Wisdom still worked while Jacob prayed
+
+## ⚔️ Smite It
+
+To smite means to strike or attack with force, often with real violence.
+
+Jacob pictures the worst case openly instead of pretending it could not happen.
+
+Facing that possibility directly is part of how he prepares both his plan and his prayer.
+
+⚔️ Smite means a violent attack
+
+😬 Jacob names the worst case plainly
+
+🧠 Honest fear shaped his planning
+
+➡️ Preparing and praying can happen together
+
+# Genesis 32:9-12
+# 🙏 Jacob's Prayer
 ---
-
-## ⚔️ He Cometh To Meet Thee, And Four Hundred Men With Him
-
-In the ancient world, **four hundred men** was a large armed company.
-
-This was not a small family visit.
-
-It looked more like a military force.
-
-From Jacob's perspective, this was terrifying.
-
-Twenty years earlier, Esau had sworn to kill him.
-
-Now the very brother he feared is approaching with hundreds of men.
-
-Jacob has no way of knowing whether Esau is coming to welcome him—or to finish what he threatened years before.
-
-The Bible never says Esau planned to attack.
-
-That was Jacob's fear, not necessarily Esau's intention.
-
-⚔️ Four hundred men looked like an army
-
-😨 Jacob remembers Esau's threat from twenty years earlier
-
-❓ Jacob does not know Esau's true intentions
-
-➡️ Jacob becomes afraid
-
----
-
-## 😨 Jacob Was Greatly Afraid And Distressed
-
-Jacob's fear is completely understandable.
-
-He has his wives.
-
-His young children.
-
-His servants.
-
-His flocks.
-
-Everything God has blessed him with is traveling together.
-
-If Esau attacks, his entire household could be destroyed.
-
-Even though Jacob has just seen God's angels at Mahanaim, he still struggles with fear.
-
-This reminds us that faith and fear can exist at the same time.
-
-Jacob believes God, but he is still human.
-
-😨 Jacob fears for his entire family
-
-👨‍👩‍👧‍👦 His wives and children are vulnerable
-
-🙏 Even believers sometimes struggle with fear
-
-➡️ Jacob makes a plan
-
----
-
-## 🏕️ He Divided The People… Into Two Bands
-
-A **band** means **a group** or **a camp**.
-
-Jacob divides everything he owns into **two separate camps**.
-
-One camp contains part of the family, servants, and animals.
-
-The second camp contains the rest.
-
-If one group is attacked, the other may have enough time to escape.
-
-This is a practical plan to protect his family.
-
-Earlier, Jacob had named the place **Mahanaim**, meaning **"Two Camps,"** because he saw his camp and God's camp.
-
-Now, interestingly, Jacob literally divides **his own camp into two camps** as well.
-
-🏕️ Band means camp or group
-
-👨‍👩‍👧‍👦 Jacob separates his household
-
-🛡️ He hopes at least one group survives
-
-➡️ Jacob explains his plan
-
----
-
-## 🛡️ If Esau Come To The One Company, And Smite It…
-
-**Smite** means **to strike**, **attack**, or **kill**.
-
-Jacob assumes the worst-case scenario.
-
-If Esau attacks one camp, the other camp may have time to flee.
-
-Jacob is not preparing for a celebration.
-
-He is preparing for the possibility of war.
-
-His plan shows both wisdom and fear.
-
-He trusts God, but he also takes practical steps to protect those under his care.
-
-🛡️ Smite means attack or strike
-
-⚔️ Jacob prepares for the possibility of battle
-
-🏃 One camp could escape if the other is attacked
-
-🙏 Jacob combines faith with practical action
-
-# Genesis 32:9–12
-
-# 🙏 Jacob Prays To God
-
----
-
 ## 🙏 O God Of My Father Abraham, And God Of My Father Isaac
 
-Jacob begins by calling on the God of Abraham and Isaac.
+Jacob does not pray to a stranger here.
 
-He is not praying to an unknown god.
+He calls on the specific God his father and grandfather already knew personally.
 
-He is praying to the same God who made the covenant with his grandfather Abraham, confirmed it to his father Isaac, and then confirmed it to Jacob at Bethel.
+This prayer is built on inherited faith, not a new idea he came up with alone.
 
-Jacob knows exactly who he is calling upon.
+Naming the family history is Jacob's way of standing on promises older than his own fear.
 
-🙏 Jacob prays to the covenant God
+🙏 Jacob names his family's God
 
-📖 The same God of Abraham and Isaac
+👴 Abraham and Isaac already knew Him
 
-➡️ Jacob reminds God of His promise
+📜 This faith was inherited, not new
 
----
-
-## 📖 The Lord Which Said Unto Me, Return Unto Thy Country… And I Will Deal Well With Thee
-
-Jacob reminds God of what He had already promised.
-
-God Himself told Jacob to return to Canaan.
-
-God Himself said,
-
-**"I will be with you."**
-
-Now Jacob is facing what appears to be a deadly situation.
-
-Esau is approaching with four hundred men.
-
-Jacob is essentially praying,
-
-**"Lord, I'm here because You told me to come. I'm trusting the promise You gave me."**
-
-This is not Jacob accusing God.
-
-It is Jacob praying based on God's own Word.
-
-This is actually a great example of biblical prayer.
-
-📖 Jacob reminds God of His promise
-
-🙏 God told Jacob to return
-
-❤️ Jacob bases his prayer on God's Word
-
-➡️ Jacob humbles himself
-
----
+📖 Old promises can steady new fear
 
 ## 🙇 I Am Not Worthy Of The Least Of All The Mercies
 
-Jacob begins by admitting he deserves nothing.
+Jacob openly admits he does not deserve any of the good things God has given him.
 
-**Mercies** are God's kindness and compassion.
+This is a striking change from the young man who once schemed for every advantage he could get.
 
-**Truth** refers to God's faithfulness in keeping His promises.
+Real fear has a way of stripping away pride.
 
-Jacob realizes everything he has—his family, wealth, protection, and blessings—came from God.
+🙇 Jacob admits he deserves nothing
 
-He is no longer the young man who left home with almost nothing.
+🔄 This is a changed Jacob speaking
 
-Everything he has is because God has been faithful.
+😨 Fear stripped away his old pride
 
-🙇 Jacob humbles himself
+📖 Humility replaces the old scheming
 
-❤️ Mercies are God's kindness
+## 🚶 With My Staff I Passed Over This Jordan
 
-📖 Truth refers to God's faithfulness
+A staff was simply a walking stick, the only real possession a poor traveler carried.
 
-➡️ Jacob remembers where he started
+Jacob is remembering that he crossed this same river once before with nothing but that staff.
 
+Now he returns with two large camps of family, servants, and animals.
+
+He is naming the size of God's blessing out loud before he even asks for help.
+
+🚶 A staff was a simple walking stick
+
+🪫 Jacob once crossed with nothing else
+
+📈 He now returns with two camps
+
+📖 Naming the blessing comes before the request
+
+## 👪 The Mother With The Children
+
+This old phrase describes a complete, merciless destruction of an entire family.
+
+Jacob is not vaguely afraid of Esau.
+
+He is afraid of a specific, total kind of violence against everyone he loves.
+
+Naming the fear this clearly is part of how he brings it honestly to God.
+
+👪 The phrase means total destruction
+
+😨 Jacob fears a specific horror
+
+🗣️ He names the fear plainly
+
+📖 Honest prayer does not hide the fear
+
+## 🏖️ Make Thy Seed As The Sand Of The Sea
+
+Jacob is quoting God's own promise back to Him, almost word for word.
+
+That promise, first given to Abraham, said Jacob's descendants would be too many to count.
+
+Reminding God of His own words is not disrespect.
+
+It is the boldest form of trust Jacob has left.
+
+🏖️ Sand of the sea means uncountable
+
+📜 This promise traces back to Abraham
+
+🗣️ Jacob quotes God's own words
+
+📖 Bold trust can sound like reminding God
+
+# Genesis 32:13-16
+# 🐐 The Present For Esau
 ---
-
-## 🥾 With My Staff I Passed Over This Jordan, And Now I Am Become Two Bands
-
-When Jacob first crossed the **Jordan River**, he owned almost nothing.
-
-His **staff** was simply the walking stick he carried.
-
-He left home alone with very few possessions.
-
-Now, twenty years later, he returns with wives, children, servants, and enormous flocks.
-
-**Two bands** refers to the **two camps** Jacob just divided his household into.
-
-God had multiplied everything Jacob possessed.
-
-This is Jacob acknowledging how much God has blessed him.
-
-🥾 Jacob left home with only a staff
-
-🏕️ Two bands means two camps
-
-🙏 God multiplied everything Jacob owned
-
-➡️ Jacob asks for deliverance
-
----
-
-## 🛡️ Deliver Me… From The Hand Of My Brother
-
-Jacob finally tells God exactly what he is afraid of.
-
-He is afraid of Esau.
-
-Not just uncomfortable.
-
-Not just nervous.
-
-He believes Esau may kill him.
-
-Jacob fears that his wives and children could also die if Esau attacks.
-
-After twenty years, Jacob still remembers Esau's last words before he fled.
-
-🛡️ Jacob honestly tells God his fear
-
-😨 He fears Esau will attack
-
-👨‍👩‍👧‍👦 He fears for his entire family
-
-➡️ Jacob reminds God again
-
----
-
-## 🌊 Thou Saidst, I Will Surely Do Thee Good…
-
-Jacob finishes his prayer by reminding God of another promise.
-
-God had promised to multiply Jacob's descendants until they would become too numerous to count.
-
-Jacob is essentially saying,
-
-**"Lord, You promised this. If Esau kills us now, how will that promise be fulfilled?"**
-
-This does **not** mean Jacob lacks faith.
-
-In fact, it shows faith.
-
-Throughout Scripture, many faithful people prayed this way.
-
-David often reminded God of His promises.
-
-Moses reminded God of His promises.
-
-The prophets did the same.
-
-Jacob is not questioning whether God can keep His Word.
-
-He is asking God to act according to the Word He has already spoken.
-
-This is one of the strongest prayers Jacob has prayed so far because it is built on God's promises instead of Jacob's own ideas.
-
-🌊 Jacob reminds God of His promise
-
-🙏 He prays according to God's Word
-
-❤️ This is an expression of faith, not unbelief
-
-📖 God's promises become the foundation of Jacob's prayer
-
-# Genesis 32:13–23
-
-# 🎁 A Present For Esau
-
----
-
 ## 🌙 He Lodged There That Same Night
 
-**Lodged** means **spent the night** or **camped there.**
+Jacob does not rush ahead toward Esau.
 
-"**There**" refers to the place where Jacob had just prayed to God.
+He stops and spends the night preparing carefully instead of acting on impulse.
 
-Instead of immediately continuing forward, Jacob spends the night making preparations for meeting Esau.
+That pause gives him time to gather the animals and plan exactly how the gift will be sent.
 
-He has prayed.
+Careful preparation, not panic, fills these quiet hours before the real meeting.
 
-Now he takes practical action.
+🌙 Jacob stops to prepare, not rush
 
-🌙 Lodged means camped for the night
+🐑 The pause allows time to gather animals
 
-🙏 Jacob has finished praying
+🧠 Planning replaces panic here
 
-➡️ He prepares a gift for Esau
+➡️ Quiet preparation precedes the real moment
 
+## 🎁 A Present For Esau His Brother
+
+A present here is not a birthday gift.
+
+It works more like a formal peace offering.
+
+Sending a gift ahead of a meeting could calm an angry party in the ancient world.
+
+Jacob does everything in his power before he ever meets Esau face to face.
+
+🎁 A present here means a peace offering
+
+🕊️ Gifts often calmed anger in advance
+
+🧠 Jacob prepares before he meets Esau
+
+📖 Preparation and prayer worked side by side
+
+## 🐐 Two Hundred She Goats, And Twenty He Goats
+
+The list of animals in these verses adds up to more than five hundred animals total.
+
+That kind of wealth in livestock made a family enormously rich in this culture.
+
+Jacob is not sending a token gift.
+
+He is sending a fortune ahead of himself to soften Esau's anger.
+
+🐐 The gift totals over five hundred animals
+
+💰 Livestock like this meant real wealth
+
+🎯 This was not a token gift
+
+📖 Jacob sent a fortune, not a trinket
+
+## 🚶 Put A Space Betwixt Drove And Drove
+
+A drove means a herd of animals traveling as one group.
+
+Jacob sends his gift in several separate waves instead of one single herd.
+
+Betwixt is an old word that simply means between.
+
+Each wave lets Esau feel the size of the gift building up slowly, one group at a time.
+
+🚶 Drove means a traveling herd
+
+🔀 Jacob sent separate waves, not one herd
+
+📖 Betwixt is an old word for between
+
+➡️ Slow waves built up the impression on purpose
+
+# Genesis 32:17-21
+# 🗣️ Instructions For The Servants
 ---
+## ❓ Whose Art Thou? And Whither Goest Thou?
 
-## 🎁 Took Of That Which Came To His Hand A Present For Esau
+This old style of speaking simply asks two plain questions.
 
-The phrase **"that which came to his hand"** means **from what he already owned.**
+Whose art thou means who do you belong to.
 
-Jacob chooses animals from his own flocks.
+Whither goest thou means where are you going.
 
-A **present** means a gift.
+Jacob expects Esau's men to stop his servants and ask exactly this.
 
-In the ancient world, expensive gifts were often used to show respect, humility, and a desire for peace.
+❓ Whose art thou means who owns you
 
-Jacob hopes the gift will soften Esau's heart before they meet face to face.
+🧭 Whither goest thou means where are you going
 
-He is not trying to buy forgiveness.
+🗣️ Jacob predicts these exact questions
 
-He is trying to show honor and goodwill.
+📖 He prepares every servant's answer in advance
 
-🎁 Jacob chooses gifts from his own wealth
+## 🙇 It Is A Present Sent Unto My Lord Esau
 
-❤️ The gift is meant to show humility
+Jacob scripts the exact words each servant should say.
 
-🕊️ Jacob hopes to restore peace
+Esau is called lord again, and Jacob is called servant again.
 
-➡️ The gift is enormous
+Repeating these titles across three separate groups was not an accident.
 
+Jacob wants the same humble message to reach Esau again and again before they ever meet.
+
+🙇 The same titles repeat on purpose
+
+🔁 Three groups deliver the same message
+
+🕊️ Humility gets repeated, not said once
+
+📖 Repetition made the message impossible to miss
+
+## 😌 I Will Appease Him With The Present
+
+To appease means to calm someone's anger by giving them something they want.
+
+Jacob says this quietly to himself, not to his servants.
+
+He is being completely honest about his own strategy here.
+
+The gift is not really about generosity, it is about survival.
+
+😌 Appease means to calm someone's anger
+
+🤫 Jacob admits this plan to himself
+
+🎯 The gift's real goal is survival
+
+📖 Honest strategy can still be wise
+
+## 🤞 Peradventure He Will Accept Of Me
+
+Peradventure is an old word that simply means perhaps or maybe.
+
+Even after all this careful planning, Jacob still cannot be certain how Esau will respond.
+
+The uncertainty in this one small word carries the weight of the whole chapter.
+
+🤞 Peradventure means perhaps or maybe
+
+😟 Jacob still cannot be certain
+
+⚖️ One word carries the chapter's tension
+
+➡️ Careful plans still leave room for fear
+
+# Genesis 32:22-24
+# 🌊 Alone At The Jabbok
 ---
+## 👪 His Two Wives, And His Two Womenservants, And His Eleven Sons
 
-## 🐑 Two Hundred She-Goats… Twenty He-Goats… Two Hundred Ewes… Twenty Rams…
+This list only mentions eleven sons, not the twelve tribes readers might expect.
 
-Jacob's gift is incredibly valuable.
+Benjamin, Jacob's youngest son, is not born yet at this point in the story.
 
-- 🐐 **She-goats** are female goats.
-- 🐐 **He-goats** are male goats.
-- 🐑 **Ewes** are female sheep.
-- 🐏 **Rams** are male sheep.
+Every other member of Jacob's growing family crosses the river together in this verse.
 
-Notice the balance between males and females.
+👪 Only eleven sons are listed here
 
-Jacob is not simply giving animals for food.
+👶 Benjamin has not been born yet
 
-He is giving breeding pairs that can multiply into large flocks.
+🌊 The whole family crosses together
 
-This is the kind of gift that could increase someone's wealth for years.
+📖 The full twelve tribes are still ahead
 
-🐐 She-goats are female goats
+## 🌊 The Ford Jabbok
 
-🐏 Rams are male sheep
+A ford means a shallow place in a river where people and animals can cross on foot.
 
-📈 The animals could multiply into much larger flocks
+The Jabbok was a real river that fed into the Jordan, marking the edge of Esau's territory.
 
-➡️ More valuable animals follow
+Crossing it meant Jacob was about to enter land close to his brother's home.
 
----
+🌊 A ford means a shallow crossing point
 
-## 🐪 Thirty Milch Camels With Their Colts
+🗺️ The Jabbok fed into the Jordan
 
-**Milch camels** are female camels that are producing milk.
+🧭 Crossing it meant nearing Esau's land
 
-**Colts** are their young offspring.
-
-These were among the most valuable animals in the ancient world.
-
-Camels provided transportation, milk, breeding, and carried heavy loads across long distances.
-
-Giving thirty nursing camels with their young was an extremely generous gift.
-
-🐪 Milch means milk-producing
-
-👶 Colts are young camels
-
-💰 These were very valuable animals
-
-➡️ Jacob continues the gift
-
----
-
-## 🐄 Forty Kine And Ten Bulls
-
-**Kine** is an old English word for **cows** (female cattle).
-
-A **bull** is an adult male cow.
-
-Unlike **rams**, which are male sheep, bulls are male cattle.
-
-Again, Jacob gives both females and males so the herd can continue growing.
-
-🐄 Kine means cows
-
-🐂 Bulls are male cattle
-
-📈 Another breeding herd is included
-
-➡️ More livestock follows
-
----
-
-## 🫏 Twenty She-Asses And Ten Foals
-
-A **she-ass** is a female donkey.
-
-A **foal** is a young donkey.
-
-Donkeys were extremely useful in Bible times.
-
-They carried supplies, transported people, and worked as pack animals.
-
-Like the rest of the gift, these animals added long-term value.
-
-🫏 She-ass means female donkey
-
-🐴 Foals are young donkeys
-
-💼 Donkeys were valuable working animals
-
-➡️ Jacob organizes the gift
-
----
-
-## 🐑 Every Drove By Themselves
-
-A **drove** is a group or herd of animals.
-
-Jacob separates each herd instead of sending everything together.
-
-This was a very wise strategy.
-
-Esau would not see one gift.
-
-He would see gift…
-
-after gift…
-
-after gift…
-
-Each new herd would remind Esau that Jacob was honoring him.
-
-The generosity would seem even greater because the gifts kept coming.
-
-🐑 Drove means herd of animals
-
-🎁 Jacob sends the gift in stages
-
-📈 Each herd makes the gift seem even larger
-
-➡️ Jacob instructs his servants
-
----
-
-## 🗣️ They Be Thy Servant Jacob's… It Is A Present Unto My Lord Esau
-
-Jacob tells every servant to say the same thing.
-
-Notice his humility.
-
-He again calls himself:
-
-**"thy servant Jacob."**
-
-He again calls Esau:
-
-**"my lord."**
-
-Jacob is trying to remove every reason for conflict.
-
-He wants Esau to know he comes in peace.
-
-🙇 Jacob calls himself a servant
-
-👑 Esau is addressed as lord
-
-🕊️ Jacob seeks reconciliation
-
-➡️ The gifts continue one after another
-
----
-
-## 🎁 The Servant Jacob Is Behind Us
-
-Every servant repeats the same message.
-
-This creates anticipation.
-
-After each gift, Esau hears,
-
-**"Jacob is still coming."**
-
-Then another gift arrives.
-
-Then another.
-
-Then another.
-
-By the time Esau finally meets Jacob, he has already received an enormous display of humility and generosity.
-
-Jacob is intentionally allowing time for Esau's anger to cool.
-
-🎁 The message is repeated with every herd
-
-⏳ The gifts arrive one after another
-
-❤️ Jacob hopes each gift softens Esau's heart
-
-➡️ Jacob explains his plan
-
----
-
-## ❤️ I Will Appease Him With The Present
-
-**Appease** means **to calm someone's anger** or **make peace.**
-
-**Peradventure** means **perhaps.**
-
-Jacob says,
-
-**"Perhaps he will accept me."**
-
-Jacob still has no idea how Esau will respond.
-
-He is doing everything he can to prepare for a peaceful reunion.
-
-❤️ Appease means calm someone's anger
-
-🙏 Peradventure means perhaps
-
-🕊️ Jacob hopes for reconciliation
-
-➡️ Jacob remains behind
-
----
-
-## 🌙 Himself Lodged That Night In The Company
-
-Jacob stays behind while the gifts go ahead.
-
-The **company** refers to his own camp.
-
-He spends one final night before meeting Esau face to face.
-
-The gifts are now traveling ahead while Jacob waits.
-
-🌙 Jacob remains with his family
-
-🎁 The gifts continue ahead
-
-➡️ Jacob moves his family
-
----
-
-## 🌊 He Took His Two Wives… His Two Womenservants… His eleven Sons
-
-That night Jacob moves his family across the stream.
-
-At this point, only **eleven sons** have been born.
-
-Benjamin has not yet been born.
-
-Jacob is carefully moving everyone into position before the meeting with Esau.
-
-👨‍👩‍👦 Jacob moves his entire family
-
-👶 Seven sons have been born so far
-
-➡️ They cross the Jabbok
-
----
-
-## 🏞️ Passed Over The Ford Jabbok
-
-The **Jabbok** was a river east of the Jordan River.
-
-A **ford** is a shallow place where people and animals can safely cross a river.
-
-Jacob leads everyone across this crossing point before remaining behind by himself.
-
-🏞️ Jabbok is a river
-
-🌊 A ford is a shallow crossing place
-
-➡️ Everyone crosses safely
-
----
-
-## 💧 He Sent Them Over The Brook
-
-A **brook** is a small river or stream.
-
-Jacob sends his wives, children, servants, animals, and possessions across first.
-
-By the end of the night, everyone else is safely on the other side.
-
-Only Jacob remains behind.
-
-This sets up one of the most important events of his life in the next section, when he will be alone with God.
-
-💧 Brook means a small river or stream
-
-👨‍👩‍👧‍👦 Jacob sends everyone across first
-
-🙏 Jacob is left alone before meeting God
-
-# Genesis 32:24–27
-
-# 🤼 Jacob Wrestles With An Angel
-
----
+➡️ Every step now brought him closer
 
 ## 🌙 Jacob Was Left Alone
 
-After sending his wives, children, servants, animals, and possessions across the **Jabbok River**, Jacob stays behind by himself.
+Jacob sends his whole family and every animal across the river ahead of him.
 
-He had already sent everyone he loved to safety.
+For the first time in this entire chapter, no one else is with him.
 
-If Esau attacked during the night or early the next morning, his family would already be on the other side.
+This quiet, solitary moment sets up the most important event of Jacob's life.
 
-Now, for the first time in many years, Jacob is completely alone.
+🌙 Jacob sends everyone else across first
 
-Before Jacob can face Esau, God first meets Jacob.
+😶 He is finally completely alone
 
-🌙 Jacob sends his family across first
+🎯 This moment sets up what comes next
 
-👨‍👩‍👧‍👦 Everyone else is safe on the other side
-
-🙏 Jacob is alone with God
-
-➡️ A mysterious man appears
-
----
+➡️ Solitude preceded the turning point
 
 ## 🤼 There Wrestled A Man With Him Until The Breaking Of The Day
 
-Yes, this was **literal physical wrestling**.
+The text simply calls this figure a man at first, with no more detail than that.
 
-The Hebrew word means to grapple, struggle, or wrestle by holding onto someone.
+Later in the chapter, this same man is revealed to be far more than human.
 
-This was not simply a dream or an inner spiritual struggle.
+The match lasts the entire night, from darkness until the sky begins to lighten.
 
-Jacob physically wrestled with a man throughout the night.
+🤼 The man's identity stays hidden at first
 
-Later in the chapter—and in Hosea 12:3–5—we learn this "man" is the **Angel of the LORD**, a visible appearance of God.
+🌌 Later verses reveal who this really was
 
-The wrestling also pictures Jacob's entire life.
+⏳ The struggle lasted all night long
 
-His life had been one long struggle:
+📖 Mystery builds before the meaning is revealed
 
-- 👶 Struggling with Esau before birth.
-- 🥣 Struggling over the birthright.
-- 🎭 Deceiving Isaac for the blessing.
-- 🤝 Struggling with Laban for twenty years.
-- ⚔️ Now preparing to face Esau.
-
-Before Jacob enters the Promised Land again, God deals with Jacob personally.
-
-🤼 This was literal wrestling
-
-🌙 The struggle lasted all night
-
-🙏 The "man" is the Angel of the LORD
-
-➡️ The wrestling reaches its climax
-
+# Genesis 32:25-29
+# 🤼 The Wrestling And The New Name
 ---
+## 🦴 Touched The Hollow Of His Thigh
 
-## 🦵 He Touched The Hollow Of His Thigh
+A single touch here does more damage than an entire night of wrestling could.
 
-The **hollow of the thigh** refers to the **hip socket**.
+That detail reveals that Jacob was never actually fighting a man his own size and strength.
 
-The Angel does not overpower Jacob through wrestling.
+Whoever this is could have ended the match at any moment he chose.
 
-Instead, He simply **touches** Jacob's hip.
+🦴 One touch caused the real injury
 
-Immediately, Jacob's hip is injured.
+💪 This was never an equal match
 
-This shows something important.
+😳 The wrestler held back his full power
 
-God could have ended the wrestling instantly at any moment.
-
-He allowed the struggle to continue because He was teaching Jacob something.
-
-🦵 The hollow of the thigh is the hip socket
-
-👆 The Angel simply touches Jacob
-
-💪 God's power is effortless
-
-➡️ Jacob's hip is injured
-
----
-
-## 🩹 The Hollow Of Jacob's Thigh Was Out Of Joint
-
-**Out of joint** means the hip was **dislocated**.
-
-Jacob could no longer wrestle using his own strength.
-
-For the rest of his life, Jacob would walk with a limp.
-
-The limp became a permanent reminder that his strength alone could never accomplish God's plan.
-
-From this point forward, Jacob would have to depend on God instead of himself.
-
-🩹 Jacob's hip is dislocated
-
-🚶 Jacob walks with a limp afterward
-
-🙏 God teaches Jacob dependence
-
-➡️ The Angel tells Jacob to let go
-
----
+📖 Restraint here reveals who was really stronger
 
 ## 🌅 Let Me Go, For The Day Breaketh
 
-The **Angel** is the one speaking here.
+The wrestler wants to leave before daylight fully arrives.
 
-He says,
+Jacob, despite being injured, refuses to release his grip.
 
-**"Let Me go, because dawn is breaking."**
+Something in Jacob recognizes this is no ordinary opponent worth holding onto this tightly.
 
-This does **not** mean the Angel is unable to leave.
+🌅 The wrestler wants to leave at dawn
 
-God is not trapped by Jacob.
+🤕 Jacob is injured but keeps holding on
 
-Instead, the Angel is giving Jacob an opportunity to respond.
+👀 Jacob senses this is no ordinary man
 
-Jacob realizes he is wrestling with someone far greater than an ordinary man.
+➡️ He holds on despite real pain
 
-🌅 The Angel speaks
+## 🙏 Except Thou Bless Me
 
-🙏 God is in complete control
+Jacob refuses to let go until he receives a blessing.
 
-➡️ Jacob refuses to let go
+This is the same word used for the blessing Jacob once took from Esau by deception.
 
+This time Jacob asks for it directly and honestly instead of scheming for it.
+
+🙏 Jacob demands a blessing, not an escape
+
+🔁 The same word as Esau's stolen blessing
+
+✅ This time he asks honestly
+
+📖 Honest asking replaces old scheming
+
+## 🏷️ Thy Name Shall Be Called No More Jacob, But Israel
+
+Jacob's name means one who grabs the heel, or more broadly one who deceives.
+
+Israel means one who struggles with God, or a prince who has power with God.
+
+Changing his name marks a real change in who Jacob has become.
+
+The trickster who once grabbed and schemed his way to blessing is being renamed.
+
+🏷️ Jacob's name means one who deceives
+
+👑 Israel means a prince with God
+
+🔄 The new name marks a real change
+
+📖 Israel replaces the identity of a trickster
+
+## ❓ Wherefore Is It That Thou Dost Ask After My Name?
+
+The wrestler refuses to answer Jacob's question about his own identity.
+
+In this culture, knowing someone's true name could mean having power over them in some sense.
+
+The refusal itself is actually an answer, since only God could get away with withholding it here.
+
+❓ The wrestler will not give his name
+
+🔒 Names could carry a sense of power
+
+👑 Only God could refuse this safely
+
+📖 The silence reveals who he really is
+
+# Genesis 32:30-32
+# 🌅 Peniel And The Limp
 ---
+## 🌄 Peniel: For I Have Seen God Face To Face
 
-## 🙏 I Will Not Let Thee Go, Except Thou Bless Me
+Peniel means the face of God.
 
-Now **Jacob** is speaking.
+Jacob names the place after the encounter he just survived.
 
-Earlier in life, Jacob tried to obtain blessings through deception.
+Many people in the ancient world believed that seeing God directly would bring certain death.
 
-Now he asks directly.
+Jacob is stunned that he is still alive after such a direct encounter.
 
-He knows only God can truly bless him.
+🌄 Peniel means the face of God
 
-Jacob is no longer wrestling simply to win a fight.
+😳 Jacob names the place after this event
 
-He is clinging to God because he knows he desperately needs His blessing before facing Esau.
+⚰️ Seeing God was thought to bring death
 
-This is one of the biggest turning points in Jacob's life.
+📖 Survival itself becomes part of the story
 
-🙏 Jacob is the one speaking
+## 😮 My Life Is Preserved
 
-❤️ He desperately seeks God's blessing
+This phrase confirms exactly what Jacob feared, that meeting God this closely could have killed him.
 
-📖 He now depends on God instead of deception
+Instead, he walks away wounded but alive, carrying a blessing and a new name.
 
-➡️ The Angel asks Jacob a question
+The encounter cost him something physical, but it did not cost him his life.
 
----
+😮 Jacob expected this could be fatal
 
-## ❓What Is Thy Name?
+🦵 He survives with a real injury
 
-The **Angel** asks,
+🎁 He leaves with a blessing instead
 
-**"What is your name?"**
+📖 Survival and blessing arrived together
 
-Of course, God already knows Jacob's name.
+## 🦵 He Halted Upon His Thigh
 
-The question is meant for Jacob.
+To halt here means to limp, not to stop moving completely.
 
-The name **Jacob** means **"heel-grabber"** and came to describe someone who **grasps, supplants, or deceives**.
+Jacob walks with a permanent reminder of this night for the rest of his life.
 
-Years earlier, Jacob lied about who he was when he stood before his blind father Isaac.
+The same body that once ran from Esau in fear now walks toward him wounded but changed.
 
-Now, standing before God, Jacob tells the truth.
+🦵 Halted means limped, not stopped
 
-He simply answers,
+📆 This limp lasts the rest of his life
 
-**"Jacob."**
+🔄 The same man now walks differently
 
-In a sense, he is admitting,
+➡️ A visible reminder of an invisible change
 
-**"This is who I have been."**
+## 🍖 The Children Of Israel Eat Not Of The Sinew Which Shrank
 
-God is preparing to give him a new name—and a new identity.
+A sinew is a tendon, the tough tissue connecting muscle to bone.
 
-❓ The Angel asks Jacob's name
+This dietary custom began with this exact injury and continued for generations afterward.
 
-📖 God already knows the answer
+Every time a later Israelite avoided that part of an animal, this story was quietly remembered.
 
-❤️ Jacob honestly admits who he is
+🍖 Sinew means a tendon
 
-➡️ God prepares to change Jacob forever
+📜 This custom began with Jacob's injury
 
-# Genesis 32:28–32
+🔁 It continued for generations after him
 
-# 👑 God Changes Jacob's Name
-
----
-
-## 👑 Thy Name Shall Be Called No More Jacob, But Israel
-
-God gives Jacob a new name.
-
-**Jacob** means **heel-grabber**, and over time it came to describe someone who grasped, deceived, and relied on his own plans to get ahead.
-
-For years, Jacob lived up to that name.
-
-He deceived Esau.
-
-He deceived Isaac.
-
-Then, for the next twenty years, God allowed Jacob to experience what it felt like to be on the other side.
-
-Laban deceived him with Leah.
-
-Laban changed his wages ten times.
-
-Laban constantly manipulated him.
-
-God was not simply punishing Jacob.
-
-He was shaping him.
-
-Now, after years of growth and one final night of wrestling with God, Jacob is no longer the same man.
-
-His identity is changing.
-
-This is more than a new name.
-
-It marks the beginning of a new life.
-
-👑 Jacob's old identity is left behind
-
-📖 God used twenty years to shape his character
-
-❤️ Israel marks a new beginning
-
-➡️ God explains the new name
-
----
-
-## 💪 For As A Prince Hast Thou Power With God And With Men, And Hast Prevailed
-
-The name **Israel** is commonly understood to mean **"He struggles with God,"** **"God prevails,"** or **"Prince with God."**
-
-The point is not that Jacob defeated God.
-
-No human can do that.
-
-Rather, Jacob persevered.
-
-He held on to God in faith and refused to let go until he received God's blessing.
-
-Throughout his life, Jacob struggled with people—Esau, Isaac, Laban—and now he has struggled with God.
-
-But instead of relying on deception, he clung to God.
-
-That is the victory.
-
-💪 Israel points to a new relationship with God
-
-🙏 Jacob prevailed by trusting God
-
-❤️ His greatest victory was surrender
-
-➡️ Jacob asks God's name
-
----
-
-## ❓Tell Me, I Pray Thee, Thy Name
-
-Jacob now asks the Man,
-
-**"What is Your name?"**
-
-He realizes he has been wrestling with someone far greater than an ordinary man.
-
-The Angel does not answer directly.
-
-Instead He asks,
-
-**"Why do you ask My name?"**
-
-Throughout the Old Testament, when God chooses not to reveal His name fully, it reminds people that His identity is far greater than they can fully understand.
-
-Jacob already knows everything he needs to know.
-
-He knows he has encountered God.
-
-Instead of answering the question, God blesses him.
-
-❓ Jacob wants to know who he wrestled
-
-🙏 God does not reveal more than Jacob needs
-
-❤️ God responds with a blessing
-
-➡️ Jacob names the place
-
----
-
-## 🌅 Jacob Called The Name Of The Place Peniel
-
-**Peniel** means **"Face of God."**
-
-Jacob says,
-
-**"I have seen God face to face, and my life is preserved."**
-
-Jacob understands that the Man he wrestled was no ordinary man.
-
-He had encountered God in a visible form.
-
-What amazes Jacob is not simply that he saw God.
-
-It is that he survived.
-
-Throughout Scripture, God's holiness is so overwhelming that people often feared seeing Him would mean death.
-
-Instead, Jacob receives mercy.
-
-🌅 Peniel means Face of God
-
-🙏 Jacob realizes he encountered God
-
-❤️ God spared his life
-
-➡️ Jacob leaves changed forever
-
----
-
-## 🦵 The Sun Rose Upon Him, And He Halted Upon His Thigh
-
-As morning arrives, Jacob continues his journey.
-
-But now he walks differently.
-
-**Halted** means **he limped**.
-
-Every step reminded Jacob of what happened that night.
-
-Years earlier, Jacob walked away from home depending on his own cleverness.
-
-Now he walks toward Esau depending on God.
-
-His limp becomes a lifelong reminder that God's strength is made perfect in human weakness.
-
-🌅 A new day begins
-
-🦵 Jacob walks with a permanent limp
-
-🙏 His weakness reminds him to depend on God
-
-➡️ Israel remembers this event
-
----
-
-## 🥩 Therefore The Children Of Israel Eat Not Of The Sinew Which Shrank
-
-**Sinew** is a **tendon**, the strong tissue that connects muscle to bone.
-
-The **sinew which shrank** refers to the tendon near the hip that was affected when God touched Jacob's thigh.
-
-Because of this event, the Israelites developed the custom of not eating that particular tendon from an animal.
-
-This was not part of the Law of Moses yet.
-
-It became a long-standing tradition that reminded God's people of the night Jacob became Israel.
-
-Every time they avoided that tendon, they remembered how God transformed the father of their nation.
-
-🥩 Sinew means tendon
-
-🦵 It refers to the tendon near Jacob's injured hip
-
-📖 The custom reminded Israel of the night God changed Jacob's life`;
+📖 A small habit preserved a big story
+`.trim();
 
 export const GENESIS_THIRTY_TWO_PERSONAL_SECTIONS = parseGenesisThirtyTwoRawNotes(GENESIS_THIRTY_TWO_RAW_NOTES);
