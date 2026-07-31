@@ -81,512 +81,416 @@ function parseGenesisThirtyThreeRawNotes(rawText: string): GenesisThirtyThreePer
     });
   }
 
-  if (sections.length !== 2) {
-    throw new Error("Expected 2 Genesis 33 sections, received " + sections.length);
+  if (sections.length !== 5) {
+    throw new Error("Expected 5 Genesis 33 sections, received " + sections.length);
   }
 
   return sections;
 }
 
-const GENESIS_THIRTY_THREE_RAW_NOTES = `# Genesis 33:1–16
-
-# 🤗 Jacob And Esau Meet
-
+const GENESIS_THIRTY_THREE_RAW_NOTES = `# Genesis 33:1-3
+# 🤝 Jacob Faces Esau At Last
 ---
+## ⚔️ Esau Came, And With Him Four Hundred Men
 
-## 👀 Jacob Lifted Up His Eyes… And Behold, Esau Came
+Twenty years ago Esau promised to kill Jacob for stealing his blessing.
 
-After twenty years away from home, the moment Jacob had feared finally arrives.
+Jacob has not seen his brother since that day.
 
-The night before, Jacob wrestled with God.
+Four hundred men is the size of a small army.
 
-God changed his name from **Jacob** to **Israel**, marking the beginning of a new life.
+Jacob still does not know if Esau is coming in anger or in peace.
 
-Now, as morning comes, Jacob looks up and sees Esau approaching with **400 men**.
+⚔️ Esau once swore to kill Jacob
 
-The last time Jacob saw Esau, his brother wanted to kill him for taking the blessing.
+👀 Twenty years have passed since then
 
-Jacob has spent twenty years wondering if that anger still remained.
+🪖 Four hundred men is a small army
 
-Now the moment of truth has arrived.
+➡️ Jacob still does not know Esau's intent
 
-👀 Jacob finally sees Esau
+## 👩 He Divided The Children
 
-⏳ Twenty years have passed since they last met
+"Handmaids" means female servants who also became Jacob's wives.
 
-⚔️ Esau still arrives with 400 men
+Bilhah served Rachel and Zilpah served Leah.
 
-🙏 God has already prepared Jacob for this moment
+Both women bore Jacob sons who became tribes of Israel.
 
-➡️ Jacob arranges his family
+Jacob places them in a very deliberate order.
 
+The order reveals exactly who Jacob loves most.
+
+👩 Handmaids means female servants and wives
+
+🧵 Bilhah served Rachel and Zilpah served Leah
+
+👶 Both women bore sons for Jacob
+
+➡️ Their placement reveals Jacob's true favorites
+
+## 🔚 Rachel And Joseph Hindermost
+
+"Hindermost" means placed at the very back of the line.
+
+The safest place in a caravan was the back, farthest from danger up front.
+
+Putting Rachel and Joseph there protected them first if Esau attacked.
+
+It also reveals who Jacob loved most.
+
+Genesis already showed Rachel as the wife Jacob wanted from the very beginning.
+
+🔚 Hindermost means placed at the very back
+
+🛡️ The back was the safest position
+
+❤️ Rachel and Joseph were protected first
+
+📖 The order reveals who Jacob loved most
+
+## 🙇 He Bowed Himself To The Ground Seven Times
+
+Bowing to the ground was a way of showing total submission to someone more powerful.
+
+Jacob does this seven times as he walks toward Esau.
+
+Seven was a number tied to completeness in the ancient world.
+
+A full sevenfold bow was an unmistakable signal of humility.
+
+Jacob is not just being polite.
+
+He is publicly surrendering any claim to being Esau's equal.
+
+🙇 Bowing showed total submission to someone
+
+🙏 Seven bows signaled complete humility
+
+🚶 Jacob approached Esau step by step
+
+➡️ Jacob surrendered any claim to equality
+
+# Genesis 33:4-7
+# 🤗 Esau Runs To Meet Him
 ---
+## 🏃 Esau Ran To Meet Him
 
-## 👨‍👩‍👧 He Divided The Children Unto Leah… Rachel… And The Two Handmaids
+Running was seen as beneath a man of Esau's rank in the ancient world.
 
-Jacob arranges his family into groups.
+Important men usually waited to be approached, not the other way around.
 
-The **two handmaids** are:
+Esau ignores that custom completely.
 
-- 👩 Bilhah (Rachel's maid)
-- 👩 Zilpah (Leah's maid)
+His run says more than any spoken words could.
 
-Years earlier, both women became Jacob's wives according to the customs of that time and each bore him children.
+Whatever anger he carried for twenty years, it does not survive this moment.
 
-Jacob is organizing everyone before meeting Esau.
+🏃 Running was beneath a man of rank
 
-👩 Bilhah and Zilpah are Jacob's wives
+👑 Important men waited to be approached
 
-👶 Each has children with Jacob
+💔 Esau ignored that custom completely
 
-🏕️ Jacob carefully arranges the family
+➡️ Twenty years of anger did not survive
 
-➡️ Rachel is placed last
+## 🫂 Fell On His Neck, And Kissed Him
 
+This is the same picture of reconciliation used later for the prodigal son's father.
+
+A kiss on the neck was a warm greeting between close family in this culture.
+
+Esau is not performing politeness.
+
+He is physically closing a distance that fear kept open for twenty years.
+
+Both brothers weep together in this moment.
+
+🫂 This mirrors the prodigal son's welcome home
+
+💋 A neck kiss was a warm greeting
+
+😭 Both brothers weep together here
+
+📖 Fear no longer separates these two brothers
+
+## 👀 Who Are Those With Thee?
+
+Esau notices the large family standing behind Jacob and asks about them.
+
+Jacob answers that God graciously gave him these children.
+
+He still calls himself "thy servant" even though the danger has clearly passed.
+
+Jacob credits God instead of taking pride in his own large family.
+
+👀 Esau notices Jacob's large family
+
+🗣️ Jacob credits God for his children
+
+🙇 Jacob still calls himself Esau's servant
+
+➡️ Humility continues even after the danger passes
+
+## 🚶 After Came Joseph Near And Rachel
+
+Each wife and her children approach Esau in a set order.
+
+The handmaids go first, then Leah, then Rachel and Joseph last.
+
+This is the same protective order Jacob arranged back in verse two.
+
+Naming Joseph ahead of his mother Rachel hints at how much Jacob favors this particular son.
+
+🚶 Each family group approaches in order
+
+🔁 This repeats the order from verse two
+
+👶 Joseph is named ahead of Rachel
+
+📖 Jacob's favorite son is already obvious
+
+# Genesis 33:8-11
+# 🎁 Jacob Insists On The Gift
 ---
+## 🐑 What Meanest Thou By All This Drove
 
-## 🛡️ He Put The Handmaids… Then Leah… Then Rachel And Joseph Hindermost
+"Drove" means a herd of animals moving together.
 
-Jacob places the handmaids and their children first.
+Esau is asking about the herds he passed on his way to meet Jacob.
 
-Leah and her children come behind them.
+Those herds were not random livestock.
 
-Rachel and Joseph are placed last.
+Jacob sent them ahead in waves as a planned gift to soften Esau's anger.
 
-This was the safest position.
+The plan already worked before the two brothers even met face to face.
 
-If Esau attacked from the front, Rachel and Joseph would have the greatest protection.
+🐑 Drove means a moving herd of animals
 
-The Bible simply records what Jacob did.
+🎁 Jacob sent the herds ahead as gifts
 
-It also shows that Rachel remained the wife Jacob loved most.
+😌 The gift was meant to soften Esau
 
-🛡️ Rachel and Joseph receive the greatest protection
-
-❤️ Rachel is still Jacob's beloved wife
-
-➡️ Jacob goes ahead alone
-
----
-
-## 🙇 He Passed Over Before Them… And Bowed Himself To The Ground Seven Times
-
-Jacob walks **ahead of everyone else**.
-
-Instead of hiding behind his family, he places himself between Esau and those he loves.
-
-As he approaches, he bows to the ground **seven times**.
-
-Seven bows showed great humility and respect before an important person.
-
-Jacob is not crawling the whole way.
-
-He walks forward, bows deeply, gets up, walks farther, and bows again until he reaches Esau.
-
-This is a public display of humility.
-
-🙇 Jacob goes first
-
-🛡️ He places himself before his family
-
-🙏 Seven bows show great humility
-
-➡️ Esau responds
-
----
-
-## 🤗 Esau Ran To Meet Him
-
-Everything changes in one moment.
-
-Instead of attacking…
-
-Esau **runs** toward Jacob.
-
-In the ancient world, powerful men usually did not run.
-
-Esau runs because he wants to reach his brother.
-
-He embraces Jacob.
-
-Falls on his neck.
-
-Kisses him.
-
-Then both brothers begin to cry.
-
-God answered Jacob's prayer.
-
-The brother Jacob feared for twenty years welcomes him with love instead of violence.
-
-This is one of the greatest moments of reconciliation in Genesis.
-
-🤗 Esau runs to Jacob
-
-🫂 The brothers embrace
-
-😭 Both men weep together
-
-🙏 God turns fear into peace
-
-➡️ Esau meets Jacob's family
-
----
-
-## 👨‍👩‍👧 Who Are These With Thee?
-
-Esau now notices the large family behind Jacob.
-
-He asks,
-
-**"Who are these?"**
-
-Jacob answers,
-
-**"The children whom God has graciously given thy servant."**
-
-Even though Esau has already welcomed him, Jacob continues speaking humbly by calling himself **"thy servant."**
-
-Instead of taking credit for his family, Jacob gives God the glory.
-
-👨‍👩‍👧 Esau asks about Jacob's family
-
-🙏 Jacob credits God for his children
-
-🙇 Jacob continues speaking humbly
-
-➡️ The family greets Esau
-
----
-
-## 🙇 The Handmaids… Leah… Rachel… And Joseph Bowed Themselves
-
-Each group approaches Esau one after another.
-
-First Bilhah and Zilpah with their children.
-
-Then Leah and her children.
-
-Finally Rachel and Joseph.
-
-Each group bows before Esau as a sign of respect.
-
-The careful order Jacob established earlier is now carried out.
-
-🙇 Each family group greets Esau
-
-❤️ Rachel and Joseph come last
-
-➡️ Esau asks about the gifts
-
----
-
-## 🎁 What Meanest Thou By All This Drove?
-
-A **drove** is a herd or group of animals.
-
-Esau is asking,
-
-**"What was all that livestock I met on the way?"**
-
-He is referring to the many herds Jacob sent ahead as gifts.
-
-Jacob answers,
-
-**"To find grace in the sight of my lord."**
-
-In other words,
-
-**"I wanted to show you honor and seek your favor before we met."**
-
-🎁 Drove means herd of animals
-
-❤️ The gifts were meant to make peace
-
-➡️ Esau refuses the gift
-
----
+📖 The plan worked before they even met
 
 ## 💰 I Have Enough, My Brother
 
-Esau surprises Jacob again.
+Esau surprises Jacob by refusing the gift at first.
 
-He says,
+"I have enough" shows Esau has already prospered on his own.
 
-**"I have enough."**
+He does not need Jacob's wealth or his charity.
 
-Years earlier, Isaac blessed Esau as well.
+Calling him "my brother" shows the old hostility is genuinely gone.
 
-Although Jacob received the covenant promises, Esau also became prosperous.
+💰 Esau has already grown wealthy himself
 
-He had servants, livestock, and enough influence to travel with four hundred men.
+🙅 He does not need Jacob's charity
 
-Esau is not looking for Jacob's wealth.
+❤️ My brother replaces old hostility with warmth
 
-He has been blessed too.
+➡️ Esau's prosperity is not Jacob's doing
 
-💰 Esau has become wealthy
+## 🙅 I Have Seen Thy Face, As Though I Had Seen The Face Of God
 
-🙏 God blessed Esau in his own way
+Jacob is not calling Esau divine.
 
-➡️ Jacob insists
+The night before, Jacob wrestled with God at a place he named Peniel.
 
----
+There, Jacob expected judgment and received mercy instead.
 
-## ❤️ Receive My Present At My Hand
+Now Esau welcomes him with that same unearned mercy.
 
-Jacob continues urging Esau to accept the gift.
+Seeing forgiveness on his brother's face reminds Jacob of the forgiveness he just received from God.
 
-For Jacob, this is more than giving away livestock.
+🙅 Jacob is not calling Esau divine
 
-Accepting the gift would show that Esau truly forgives him.
+🌙 At Peniel, Jacob wrestled with God
 
-In the ancient world, accepting a gift often confirmed that peace had been restored between two people.
+🕊️ Jacob expected judgment and received mercy
 
-❤️ Jacob wants reconciliation
-
-🤝 Accepting the gift confirms peace
-
-➡️ Jacob compares Esau's face to God's
-
----
-
-## 😊 I Have Seen Thy Face, As Though I Had Seen The Face Of God
-
-Jacob is **not** saying Esau is God.
-
-The night before, Jacob met God at Peniel and received mercy instead of judgment.
-
-Now he expected judgment from Esau…
-
-Instead, he received mercy again.
-
-Seeing Esau welcome him peacefully reminded Jacob of the grace God had just shown him.
-
-😊 Jacob receives unexpected mercy
-
-🙏 God's grace is reflected in Esau's forgiveness
-
-➡️ Esau accepts the gift
-
----
+📖 Esau's welcome echoes God's own mercy
 
 ## 🎁 He Urged Him, And He Took It
 
-Jacob continues insisting until Esau finally accepts the gift.
+Jacob keeps insisting until Esau finally accepts the gift.
 
-By receiving it, Esau shows that the relationship has been restored.
+In this culture, receiving a gift confirmed that peace was truly restored.
 
-The gift is no longer about livestock.
+A refused gift would have left the reconciliation in doubt.
 
-It becomes a symbol of forgiveness.
+Once Esau takes it, there is no question left between them.
 
-🎁 Esau accepts Jacob's gift
+🎁 Jacob insists until Esau accepts
 
-🤝 Peace is fully restored
+🤝 Accepting a gift confirmed real peace
 
-➡️ Esau offers to travel together
+❓ A refused gift would leave doubt
 
+📖 The gift settles the reconciliation for good
+
+# Genesis 33:12-16
+# 🐑 Jacob Declines Esau's Help
 ---
+## 🐑 If Men Should Overdrive Them One Day, All The Flock Will Die
 
-## 🚶 Let Us Take Our Journey Together
+"Overdrive" means pushing animals to move faster than they safely can.
 
-Esau invites Jacob to travel with him.
+Jacob's flocks include very young animals still nursing.
 
-He even offers to go ahead and lead the way.
+Esau's four hundred men could travel fast, but Jacob's flocks could not.
 
-Jacob politely declines.
+Forcing that pace even for one day could kill the weaker animals.
 
-His children are young.
+🐑 Overdrive means pushing animals too hard
 
-Many of the animals are nursing their young.
+🍼 Young nursing animals cannot move quickly
 
-Large flocks could not keep the pace of four hundred men.
+🏃 Esau's men could travel much faster
 
-If they traveled too quickly, the weaker animals could die.
+📖 One hard day could kill the flock
 
-Jacob is not making excuses.
+## 🐢 I Will Lead On Softly
 
-He is protecting the people and animals under his care.
+Jacob promises to travel slowly and catch up with Esau later at Seir.
 
-🚶 Esau invites Jacob to travel together
+"Seir" was the mountain region where Esau had already settled, later called Edom.
 
-👶 The children are still very young
+The rest of the chapter never actually shows Jacob traveling to Seir.
 
-🐑 The flocks need a slower pace
+Jacob instead heads toward Succoth and then Shechem in Canaan.
 
-➡️ Esau offers protection
+The text does not explain the change of plans.
 
+🐢 Jacob promises to travel slowly
+
+🏔️ Seir was Esau's mountain home, later Edom
+
+🚶 Jacob never actually arrives at Seir
+
+📖 The text leaves that change unexplained
+
+## 🛡️ Let Me Leave With Thee Some Of The Folk
+
+Esau offers to leave some of his four hundred men as an armed escort.
+
+On the surface, this looks like a generous, protective gesture.
+
+An escort from Esau's men would also mean traveling under Esau's authority.
+
+Jacob has already trusted God to protect his family this far.
+
+🛡️ Esau offers some men as an escort
+
+🎁 The offer looks generous on the surface
+
+👑 An escort would mean Esau's authority
+
+📖 Jacob already trusts God for protection
+
+## ❓ What Needeth It?
+
+Jacob politely turns down the offer of an escort.
+
+"What needeth it" is an old way of saying there is no real need.
+
+Jacob is not being rude or ungrateful.
+
+He simply believes God's protection is already enough.
+
+🙅 Jacob politely declines the escort
+
+❓ What needeth it means no real need
+
+😊 Jacob is not being rude here
+
+📖 God's protection is enough for Jacob
+
+# Genesis 33:17-20
+# 🏠 Jacob Settles In Canaan
 ---
+## 🏠 Built Him An House, And Made Booths For His Cattle
 
-## 🛡️ Let Me Leave With Thee Some Of The Folk That Are With Me
+Abraham and Isaac mostly lived in tents.
 
-Esau offers to leave some of his four hundred men behind to escort Jacob.
+Jacob instead builds an actual house at this stop.
 
-This was a generous offer.
+A permanent house suggests he planned to stay for a while.
 
-It would provide protection for Jacob's family on the journey.
+"Booths" were simple shelters made from branches for the animals.
 
-Jacob politely refuses.
+The place takes its name, Succoth, straight from those shelters.
 
-He says,
+"Succoth" is a Hebrew word meaning shelters.
 
-**"What needeth it?"**
+🏠 Jacob builds a real house here
 
-In other words,
+⛺ Abraham and Isaac mostly lived in tents
 
-**"There is no need."**
+🐑 Booths were branch shelters for animals
 
-Jacob has already received what he wanted—Esau's favor.
+📖 Succoth means shelters in Hebrew
 
-He does not need an armed escort because God has already protected him.
+## 🌍 Jacob Came To Shalem, A City Of Shechem
 
-🛡️ Esau offers an escort
+Jacob has finally reached Canaan, the land God promised to Abraham's family.
 
-🙏 Jacob politely declines
+"Shechem" names the wider area, and "Shalem" names the city inside it.
 
-❤️ God's protection is enough
+Jacob had lived away in Padanaram with Laban for twenty years.
 
-➡️ The brothers separate peacefully
+He pitches his tent outside the city instead of moving in.
 
----
+Even in the promised land, Jacob still lives like a traveler.
 
-## 🏔️ Esau Returned That Day Unto Seir
+🌍 Jacob has finally reached the promised land
 
-Esau returns to **Seir**, the mountainous region where he had settled and where the nation of **Edom** would later grow.
+🏙️ Shalem was a city inside Shechem
 
-Jacob continues his own journey toward Canaan.
+🏡 Padanaram was Laban's homeland far away
 
-For twenty years, Jacob feared this meeting.
+➡️ Jacob still lives like a traveler
 
-Instead of ending in violence…
+## 📜 He Bought A Parcel Of A Field
 
-It ends in forgiveness.
+"Parcel" simply means a piece of land.
 
-The chapter closes with two brothers parting in peace after God completely transformed the situation Jacob had feared most.
+Jacob buys the ground he had already pitched his tent on.
 
-# Genesis 33:17–20
+He buys it from the children of Hamor, the local ruler's family.
 
-# 🏠 Jacob Reaches Canaan
+The price was one hundred pieces of silver, paid before coins even existed.
 
----
+This purchase becomes the first piece of Canaan legally owned by Jacob's own family.
 
-## 🏠 Jacob Journeyed To Succoth… And Built Him An House
+📜 Parcel simply means a piece of land
 
-After peacefully separating from Esau, Jacob continues his journey.
+👨 Hamor's family ruled that local area
 
-He comes to a place called **Succoth**.
+💰 The price was one hundred pieces of silver
 
-Unlike Abraham and Isaac, who are usually described as living in tents, Jacob **builds a house** here.
+📖 This land becomes Jacob's first legal claim
 
-This suggests he planned to stay for a period of time rather than simply passing through.
+## ⛪ He Called It EleloheIsrael
 
-He also makes **booths** for his livestock.
+After finally reaching Canaan safely, Jacob's first act is worship.
 
-A booth was a simple shelter made from branches, wood, or other natural materials to protect animals from the sun and weather.
+An altar was a place set apart for sacrifice and worship.
 
-Because Jacob built these booths, the place became known as **Succoth**, a Hebrew word meaning **"booths"** or **"shelters."**
+The name given, EleloheIsrael, means God, the God of Israel.
 
-Although Jacob builds a house, he does not settle there permanently. God had promised him the land of Canaan, so this was only another stop along his journey.
+Not long before this, God changed Jacob's own name to Israel.
 
-🏠 Jacob builds a house, showing a temporary settlement
+The man once known for deception now worships openly as Israel.
 
-🐑 Booths are simple shelters for livestock
+The chapter that opened in fear closes in worship.
 
-📖 Succoth means "booths" or "shelters"
+⛪ Jacob's first act in Canaan is worship
 
-➡️ Jacob continues into Canaan
+📖 EleloheIsrael means God, the God of Israel
 
----
+🔄 God had just renamed Jacob as Israel
 
-## 🏙️ Jacob Came To Shalem, A City Of Shechem
-
-Jacob eventually arrives in the land of **Canaan**, the land God promised to Abraham's descendants.
-
-The verse says he came to **Shalem**, a city associated with **Shechem**.
-
-A simple way to picture it is:
-
-- 🌍 **Canaan** = the land (like a country or region)
-- 🗺️ **Shechem** = the surrounding area or district
-- 🏙️ **Shalem** = the city where Jacob arrived
-
-The Bible also reminds us that Jacob came from **Padan-aram**, the region where he had lived with his uncle Laban for about twenty years.
-
-Jacob has finally returned from his long exile.
-
-He pitches his tent outside the city, showing that although he has entered Canaan, he is still living as a traveler.
-
-🌍 Jacob returns to the Promised Land
-
-🏙️ Shalem is a city near Shechem
-
-🏡 Padan-aram was Laban's homeland
-
-⛺ Jacob pitches his tent outside the city
-
-➡️ Jacob purchases land
-
----
-
-## 💰 He Bought A Parcel Of A Field
-
-A **parcel** is simply a piece of land.
-
-Jacob purchases the land where he had set up his tents.
-
-The field is bought from the **children of Hamor**.
-
-**Hamor** was the father of **Shechem**, the local ruler after whom the area was named.
-
-Buying the land gave Jacob a lawful place to live instead of simply camping on someone else's property.
-
-The price was **one hundred pieces of money**.
-
-The Bible does not tell us exactly what type of money this was. In the ancient world, people often used pieces of silver or weighed-out metal as payment long before coins were invented.
-
-This purchase is significant because it becomes one of the first pieces of the Promised Land legally owned by Jacob's family.
-
-💰 Parcel means a piece of land
-
-👨 Hamor was Shechem's father
-
-🤝 Jacob legally purchases the property
-
-📖 One hundred pieces of money was the purchase price
-
-➡️ Jacob worships God
-
----
-
-## ⛪ He Erected There An Altar, And Called It El-Elohe-Israel
-
-After arriving safely in Canaan, Jacob's first recorded act is to worship God.
-
-He builds an **altar**, a place dedicated to sacrifice and worship.
-
-He names it **El-Elohe-Israel**, which means:
-
-**"God, the God of Israel."**
-
-This is deeply significant.
-
-Only a short time earlier, God had changed Jacob's name to **Israel** after wrestling with him.
-
-By giving the altar this name, Jacob publicly acknowledges that the God who protected him throughout his journey is now **his God**.
-
-The man once known as Jacob the deceiver now openly worships as **Israel**, the one whom God transformed.
-
-The chapter closes not with fear…
-
-but with worship.
-
-⛪ Jacob builds an altar to worship God
-
-🙏 El-Elohe-Israel means "God, the God of Israel"
-
-📖 Jacob publicly honors the God who changed his life
-
-❤️ The chapter ends with worship instead of fear`;
+➡️ Fear at the chapter's start ends in worship`.trim();
 
 export const GENESIS_THIRTY_THREE_PERSONAL_SECTIONS = parseGenesisThirtyThreeRawNotes(GENESIS_THIRTY_THREE_RAW_NOTES);
