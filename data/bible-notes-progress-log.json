@@ -4384,6 +4384,59 @@
           "at": "2026-07-31T22:59:17Z"
         }
       ]
+    },
+    {
+      "book": "Genesis",
+      "chapter": 39,
+      "startedAt": "2026-07-31T23:46:53Z",
+      "finishedAt": "2026-07-31T23:55:00Z",
+      "durationMinutes": 8,
+      "sections": 6,
+      "cards": 22,
+      "verses": 23,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Eighth redo-backlog chapter: Joseph in Potiphar's house. Joseph's rise under an Egyptian captain of the guard, the LORD-was-with-him theme opening and closing the chapter as a frame, grace and overseer defined, the blessing spreading from Joseph to Potiphar's whole household for Joseph's sake, the goodly-and-well-favoured phrase callback to Rachel in Genesis twenty nine, Potiphar's wife's repeated daily temptation and Joseph's wotteth-not/sin-against-God refusal, the garment caught and left behind (echoing the coat of many colours used to deceive Jacob back in Genesis 37), the Hebrew-to-mock-us false accusation rehearsed identically to the household servants and then to Potiphar himself, Potiphar's kindled wrath and the note that imprisonment rather than execution may hint at private doubt, the king's-prisoners detail marking this as a royal prison, and the closing mercy/overseer-of-prisoners pattern repeating the opening blessing almost verbatim. Density 0.96 cards/verse (23 verses, 22 cards), consistent with the genesisThirtyOneSource.ts reference implementation's ratio. `scripts/check_bible_note_style.py` clean after fixing one over-length bullet. Parser check passed exactly (6/6 sections, 22 cards), npx tsc --noEmit -p . clean with zero errors. Redo backlog entry popped; next redo target is Genesis 40.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-31T23:46:17Z"
+        },
+        {
+          "name": "target chapter determined: Genesis 39 (style redo mode)",
+          "at": "2026-07-31T23:46:53Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and SKILL.md read in full",
+          "at": "2026-07-31T23:47:01Z"
+        },
+        {
+          "name": "KJV text fetched for Genesis 39 (23 verses, GitHub raw mirror)",
+          "at": "2026-07-31T23:50:27Z"
+        },
+        {
+          "name": "Genesis 39 source file written (redo to new style spec)",
+          "at": "2026-07-31T23:52:02Z"
+        },
+        {
+          "name": "style checker clean (22 cards, 0 problems)",
+          "at": "2026-07-31T23:52:09Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo chapter (no changes needed)",
+          "at": "2026-07-31T23:52:22Z"
+        },
+        {
+          "name": "parser check passed (6 sections, 22 cards, verbatim)",
+          "at": "2026-07-31T23:52:36Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean (exit 0)",
+          "at": "2026-07-31T23:53:42Z"
+        },
+        {
+          "name": "progress files logged: data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, data/bible-notes-style-redo-remaining.json",
+          "at": "2026-07-31T23:55:00Z"
+        }
+      ]
     }
   ]
 }
