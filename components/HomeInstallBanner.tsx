@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import InstallBanner from "./InstallBanner";
 import InstallIOSSheet from "./InstallIOSSheet";
 import { supabase } from "../lib/supabaseClient";
-import { getInstallEnvironment, isStandalone } from "../lib/installEnvironment";
+import { getInstallEnvironment, getInstallPlatform, isStandalone } from "../lib/installEnvironment";
 import {
   INSTALL_PROMPT_STORAGE_KEY,
   clearCapturedInstallPrompt,
@@ -65,6 +65,45 @@ export function shouldShowInstallBanner(): boolean {
   return true;
 }
 
+const INSTALL_EVENT_LOGGED_KEY = "bb-install-event-logged";
+
+/** Analytics event for the admin App Installs dashboard. Fire-and-forget. */
+async function logInstallBannerEvent(
+  actionType:
+    | "install_banner_add_clicked"
+    | "install_banner_installed"
+    | "install_banner_never_clicked"
+    | "install_banner_ios_sheet_closed",
+  actionLabel: string,
+  metadata: Record<string, unknown> = {},
+) {
+  try {
+    const { data } = await supabase.auth.getSession();
+    const user = data.session?.user;
+    if (!user) return;
+    await supabase.from("master_actions").insert({
+      user_id: user.id,
+      action_type: actionType,
+      action_label: actionLabel,
+      event_metadata: { surface: "install_banner", platform: getInstallPlatform(), ...metadata },
+      created_at: new Date().toISOString(),
+    });
+  } catch {
+    // Analytics only — never let logging break the banner.
+  }
+}
+
+/** The install event should count once per device, whichever signal fires first. */
+function claimInstallEventLog(): boolean {
+  try {
+    if (window.localStorage.getItem(INSTALL_EVENT_LOGGED_KEY) === "1") return false;
+    window.localStorage.setItem(INSTALL_EVENT_LOGGED_KEY, "1");
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 /** Background Supabase write. Fire-and-forget from user actions only. */
 async function writeInstallPromptColumns(columns: Record<string, string>) {
   try {
@@ -100,6 +139,9 @@ export function reconcileInstallPromptState(
     }
     if (dbState !== "installed") {
       void writeInstallPromptColumns({ install_prompt_state: "installed" });
+      if (claimInstallEventLog()) {
+        void logInstallBannerEvent("install_banner_installed", "App detected as installed", { source: "standalone_launch" });
+      }
     }
   } else if ((dbState === "never" || dbState === "installed") && readLocalInstallState() !== dbState) {
     writeLocalInstallState(dbState);
@@ -143,6 +185,9 @@ export default function HomeInstallBanner() {
     if (!justInstalled) return;
     setVisible(false);
     void writeInstallPromptColumns({ install_prompt_state: "installed" });
+    if (claimInstallEventLog()) {
+      void logInstallBannerEvent("install_banner_installed", "App installed", { source: "appinstalled_event" });
+    }
   }, [justInstalled]);
 
   if (!visible) return null;
@@ -151,10 +196,16 @@ export default function HomeInstallBanner() {
     writeLocalInstallState("installed");
     setVisible(false);
     void writeInstallPromptColumns({ install_prompt_state: "installed" });
+    if (claimInstallEventLog()) {
+      void logInstallBannerEvent("install_banner_installed", "App installed", { source: "prompt_accepted" });
+    }
   };
 
   const handleAdd = async () => {
     const env = getInstallEnvironment();
+    void logInstallBannerEvent("install_banner_add_clicked", "Install banner Add tapped", {
+      context: env.isInAppBrowser ? "in_app_blocked" : env.isIOS ? "ios_sheet" : promptEvent ? "native_prompt" : "no_prompt_available",
+    });
 
     if (env.isInAppBrowser) {
       setBlockedMessage({
@@ -202,6 +253,7 @@ export default function HomeInstallBanner() {
     writeLocalInstallState("never");
     setVisible(false);
     void writeInstallPromptColumns({ install_prompt_state: "never" });
+    void logInstallBannerEvent("install_banner_never_clicked", "Install banner dismissed forever");
   };
 
   const handleSheetClose = () => {
@@ -215,6 +267,7 @@ export default function HomeInstallBanner() {
     }
     setVisible(false);
     void writeInstallPromptColumns({ install_prompt_last_shown: closedAtIso });
+    void logInstallBannerEvent("install_banner_ios_sheet_closed", "iPhone install sheet closed");
   };
 
   return (

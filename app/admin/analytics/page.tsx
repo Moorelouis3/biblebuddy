@@ -11,7 +11,7 @@ import { getCachedAdminAnalytics, getCachedAdminAnalyticsOverview, loadAdminAnal
 type JourneyWindow = "today" | "yesterday" | "24h" | "7d" | "30d" | "90d" | "this_month" | "lifetime";
 type AccountFilter = "all" | "guest" | "free" | "pro";
 type AnalyticsView = "overview" | "bible-year" | "study-notes" | "traffic-sources";
-type SimpleAnalyticsMetric = "overview" | "revenue" | "signups" | "upgrades" | "traffic_sources" | "completion_popup" | "study_plans" | "blog";
+type SimpleAnalyticsMetric = "overview" | "revenue" | "signups" | "upgrades" | "traffic_sources" | "completion_popup" | "app_installs" | "study_plans" | "blog";
 
 type VisitorJourneyStatus =
   | "active"
@@ -164,6 +164,33 @@ type StudyNotesUpgradeAnalytics = {
     upgradeClickRate: number;
     stayFreeRate: number;
   }>;
+};
+
+type InstallPlatformKey = "iphone" | "android" | "desktop" | "in_app" | "unknown";
+
+type AppInstallAnalytics = {
+  totalInstalls: number;
+  totalAddClicks: number;
+  totalNeverClicks: number;
+  totalIosSheetCloses: number;
+  series: {
+    installs: Array<{ label: string; value: number }>;
+    addClicks: Array<{ label: string; value: number }>;
+    neverClicks: Array<{ label: string; value: number }>;
+  };
+  comparisons: {
+    installs: { current: number; previous: number; change: number };
+    addClicks: { current: number; previous: number; change: number };
+    neverClicks: { current: number; previous: number; change: number };
+    iosSheetCloses: { current: number; previous: number; change: number };
+  };
+  platforms: Array<{ key: InstallPlatformKey; label: string; installs: number; addClicks: number; neverClicks: number }>;
+  installChartSeries: {
+    daily: Array<{ label: string; value: number }>;
+    weekly: Array<{ label: string; value: number }>;
+    monthly: Array<{ label: string; value: number }>;
+  };
+  stateTotals: { installed: number; never: number; pending: number };
 };
 
 type CompletionUpgradeAnalytics = {
@@ -414,6 +441,7 @@ type AnalyticsResponse = {
   daySevenUpgrade?: DayThreeUpgradeAnalytics;
   studyNotesUpgrade?: StudyNotesUpgradeAnalytics;
   completionUpgrade?: CompletionUpgradeAnalytics;
+  appInstalls?: AppInstallAnalytics;
   studyPlans?: StudyPlanAnalytics;
   bibleYearDays?: BibleYearDayAnalytics[];
   studyNotes?: {
@@ -637,6 +665,7 @@ const SIMPLE_METRIC_OPTIONS: Array<{ key: SimpleAnalyticsMetric; label: string }
   { key: "upgrades", label: "Upgrades" },
   { key: "traffic_sources", label: "Traffic Sources" },
   { key: "completion_popup", label: "Completion Popup" },
+  { key: "app_installs", label: "App Installs" },
   { key: "study_plans", label: "Study Plans" },
   { key: "blog", label: "Blog" },
 ];
@@ -1116,6 +1145,7 @@ function getSimpleMetricSeries(
   if (metric === "upgrades") return stripeRevenue?.upgradeSeries || data?.simpleSeries?.upgrades || [];
   if (metric === "traffic_sources") return [];
   if (metric === "study_plans") return data?.studyPlans?.series.dayCompletions || [];
+  if (metric === "app_installs") return data?.appInstalls?.series.installs || [];
   return data?.completionUpgrade?.series.views || [];
 }
 
@@ -1135,6 +1165,9 @@ function getSimpleMetricTotal(
   if (metric === "completion_popup") {
     return formatNumber(data?.completionUpgrade?.totalViews || 0);
   }
+  if (metric === "app_installs") {
+    return formatNumber(data?.appInstalls?.totalInstalls || 0);
+  }
   if (metric === "traffic_sources") {
     const rows = getNormalizedMainTrafficSources(data?.trafficSources);
     return formatNumber(rows.reduce((sum, row) => sum + row.visitors, 0));
@@ -1153,6 +1186,7 @@ function getSimpleMetricTitle(metric: Exclude<SimpleAnalyticsMetric, "overview">
   if (metric === "signups") return "Signups";
   if (metric === "traffic_sources") return "Traffic Sources";
   if (metric === "completion_popup") return "Completion Popup";
+  if (metric === "app_installs") return "App Installs";
   if (metric === "study_plans") return "Study Plans";
   return "Upgrades";
 }
@@ -1162,6 +1196,7 @@ function getSimpleMetricHelper(metric: Exclude<SimpleAnalyticsMetric, "overview"
   if (metric === "signups") return "New accounts created in the selected timeframe.";
   if (metric === "traffic_sources") return "Where visitors and signups came from in the selected timeframe.";
   if (metric === "completion_popup") return "How often the free completion upgrade prompt was shown.";
+  if (metric === "app_installs") return "Home screen installs and install banner actions in the selected timeframe.";
   if (metric === "study_plans") return "Study plan days completed in the selected timeframe.";
   return "Users who upgraded to Pro in the selected timeframe.";
 }
@@ -1171,6 +1206,7 @@ function getSimpleMetricAccent(metric: Exclude<SimpleAnalyticsMetric, "overview"
   if (metric === "signups") return "text-emerald-600 bg-emerald-50 ring-emerald-100";
   if (metric === "traffic_sources") return "text-sky-600 bg-sky-50 ring-sky-100";
   if (metric === "completion_popup") return "text-amber-600 bg-amber-50 ring-amber-100";
+  if (metric === "app_installs") return "text-cyan-600 bg-cyan-50 ring-cyan-100";
   if (metric === "study_plans") return "text-indigo-600 bg-indigo-50 ring-indigo-100";
   return "text-violet-600 bg-violet-50 ring-violet-100";
 }
@@ -2166,6 +2202,232 @@ function BlogAnalyticsSection({
   );
 }
 
+function InstallsVsSignupsChart({
+  installPoints,
+  signupPoints,
+  loading,
+}: {
+  installPoints: Array<{ label: string; value: number }>;
+  signupPoints: Array<{ label: string; value: number }>;
+  loading: boolean;
+}) {
+  const points = installPoints.map((point, index) => ({
+    label: point.label,
+    installs: point.value,
+    signups: signupPoints[index]?.value ?? 0,
+  }));
+  const slotWidth = points.length > 45 ? 52 : points.length > 24 ? 60 : points.length > 14 ? 68 : 82;
+  const width = Math.max(780, 54 + 26 + points.length * slotWidth);
+  const height = 340;
+  const left = 54;
+  const baseline = 238;
+  const chartHeight = 190;
+  const right = 26;
+  const step = slotWidth;
+  const groupWidth = Math.max(20, Math.min(40, step * 0.6));
+  const barWidth = groupWidth / 2 - 1;
+  const maxValue = Math.max(1, ...points.map((point) => Math.max(point.installs, point.signups)));
+  const gridValues = [maxValue, maxValue / 2, 0];
+
+  if (loading) {
+    return (
+      <div className="grid h-[340px] min-w-[680px] place-items-center rounded-[18px] bg-[var(--bb-surface-soft,#f8fbff)] text-sm font-bold text-[var(--bb-text-secondary,#64748b)]">
+        Loading installs...
+      </div>
+    );
+  }
+
+  return (
+    <svg viewBox={`0 0 ${width} ${height}`} className="h-[340px] max-w-none" style={{ width }} role="img" aria-label="Installs versus signups by period">
+      {gridValues.map((value, index) => {
+        const y = baseline - (value / maxValue) * chartHeight;
+        return (
+          <g key={`${value}-${index}`}>
+            <line x1={left} x2={width - right} y1={y} y2={y} stroke="#dbe7f3" strokeDasharray={index === 2 ? "0" : "5 5"} />
+            <text x={left - 8} y={y + 4} textAnchor="end" fill="#64748b" fontSize="11" fontWeight="700">{formatNumber(Math.round(value))}</text>
+          </g>
+        );
+      })}
+      {points.map((point, index) => {
+        const groupX = left + index * step + (step - groupWidth) / 2;
+        const installHeight = point.installs > 0 ? Math.max(4, (point.installs / maxValue) * chartHeight) : 0;
+        const signupHeight = point.signups > 0 ? Math.max(4, (point.signups / maxValue) * chartHeight) : 0;
+        return (
+          <g key={`${point.label}-${index}`} className="cursor-pointer">
+            <title>{`${point.label}: ${formatNumber(point.installs)} installs, ${formatNumber(point.signups)} signups`}</title>
+            <rect x={groupX} y={baseline - installHeight} width={barWidth} height={installHeight} rx="5" fill="#0891b2" />
+            <rect x={groupX + barWidth + 2} y={baseline - signupHeight} width={barWidth} height={signupHeight} rx="5" fill="#10b981" />
+            <text
+              x={groupX + groupWidth / 2}
+              y={baseline + 28}
+              textAnchor="end"
+              fill="#64748b"
+              fontSize="11"
+              fontWeight="700"
+              transform={`rotate(-45 ${groupX + groupWidth / 2} ${baseline + 28})`}
+            >
+              {point.label}
+            </text>
+          </g>
+        );
+      })}
+    </svg>
+  );
+}
+
+function AppInstallsAnalyticsSection({
+  stats,
+  signupChartSeries,
+  windowKey,
+  loading,
+}: {
+  stats: AppInstallAnalytics | undefined;
+  signupChartSeries: AnalyticsResponse["signupChartSeries"];
+  windowKey: JourneyWindow;
+  loading: boolean;
+}) {
+  const [chartMode, setChartMode] = useState<SignupChartMode>("daily");
+  const activeOption = SIGNUP_CHART_OPTIONS.find((option) => option.key === chartMode) || SIGNUP_CHART_OPTIONS[0];
+  const installPoints = stats?.installChartSeries?.[chartMode] || [];
+  const signupPoints = signupChartSeries?.[chartMode] || [];
+  const comparison = windowKey === "lifetime" ? null : stats?.comparisons.installs.change ?? null;
+  const platformRows = (stats?.platforms || []).filter((platform) => platform.installs > 0 || platform.addClicks > 0 || platform.neverClicks > 0);
+  const maxPlatformInstalls = Math.max(1, ...platformRows.map((platform) => platform.installs));
+
+  return (
+    <div className="space-y-4">
+      <section className="rounded-[28px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-4 shadow-[0_18px_46px_rgba(15,23,42,0.08)] sm:p-6">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+          <div>
+            <p className="text-sm font-bold text-[var(--bb-text-secondary,#64748b)]">App Installs</p>
+            <div className="mt-2 flex flex-wrap items-center gap-3">
+              <p className="text-[44px] font-black leading-none tracking-tight text-[var(--bb-text-primary,#101827)]">
+                {loading ? "..." : formatNumber(stats?.totalInstalls || 0)}
+              </p>
+              {typeof comparison === "number" ? <ComparisonChip change={comparison} label={getComparisonLabel(windowKey)} /> : null}
+            </div>
+            <p className="mt-2 text-sm font-semibold text-[var(--bb-text-secondary,#64748b)]">
+              Home screen installs detected in this timeframe.
+            </p>
+          </div>
+          <div>
+            <label className="sr-only" htmlFor="install-chart-mode">Install chart view</label>
+            <select
+              id="install-chart-mode"
+              value={chartMode}
+              onChange={(event) => setChartMode(event.target.value as SignupChartMode)}
+              className="w-full rounded-[18px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] px-4 py-3 text-sm font-black text-[var(--bb-text-primary,#101827)] shadow-[0_8px_20px_rgba(15,23,42,0.05)] sm:w-auto"
+            >
+              {SIGNUP_CHART_OPTIONS.map((option) => (
+                <option key={option.key} value={option.key}>{option.label}</option>
+              ))}
+            </select>
+          </div>
+        </div>
+        <div className="mt-5 rounded-[24px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-4 shadow-[0_16px_40px_rgba(15,23,42,0.06)]">
+          <div className="mb-3 flex items-center justify-between gap-3">
+            <div>
+              <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">Installs vs Signups</p>
+              <p className="text-xs font-bold text-[var(--bb-text-secondary,#64748b)]">{activeOption.helper}</p>
+            </div>
+            <div className="flex flex-wrap items-center justify-end gap-3">
+              <span className="inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-[0.12em] text-[var(--bb-text-secondary,#64748b)]">
+                <span className="h-2.5 w-2.5 rounded-full bg-[#0891b2]" />
+                Installs
+              </span>
+              <span className="inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-[0.12em] text-[var(--bb-text-secondary,#64748b)]">
+                <span className="h-2.5 w-2.5 rounded-full bg-[#10b981]" />
+                Signups
+              </span>
+              <span className="rounded-full bg-cyan-50 px-3 py-1 text-xs font-black text-cyan-700">{activeOption.label}</span>
+            </div>
+          </div>
+          <div className="overflow-x-auto pb-2">
+            <InstallsVsSignupsChart installPoints={installPoints} signupPoints={signupPoints} loading={loading} />
+          </div>
+        </div>
+      </section>
+      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+        <SimpleAnalyticsKpiCard
+          title="Installed"
+          value={loading ? "..." : formatNumber(stats?.totalInstalls || 0)}
+          helper="App added to a home screen"
+          accent="blue"
+          comparison={windowKey === "lifetime" ? null : stats?.comparisons.installs.change ?? null}
+          comparisonLabel=""
+        />
+        <SimpleAnalyticsKpiCard
+          title="Add Taps"
+          value={loading ? "..." : formatNumber(stats?.totalAddClicks || 0)}
+          helper="Tapped Add on the banner"
+          accent="green"
+          comparison={windowKey === "lifetime" ? null : stats?.comparisons.addClicks.change ?? null}
+          comparisonLabel=""
+        />
+        <SimpleAnalyticsKpiCard
+          title="Don't Show Again"
+          value={loading ? "..." : formatNumber(stats?.totalNeverClicks || 0)}
+          helper="Dismissed the banner forever"
+          accent="violet"
+          comparison={windowKey === "lifetime" ? null : stats?.comparisons.neverClicks.change ?? null}
+          comparisonLabel=""
+        />
+        <SimpleAnalyticsKpiCard
+          title="iPhone Sheets"
+          value={loading ? "..." : formatNumber(stats?.totalIosSheetCloses || 0)}
+          helper="Viewed the iPhone install steps"
+          accent="blue"
+          comparison={windowKey === "lifetime" ? null : stats?.comparisons.iosSheetCloses.change ?? null}
+          comparisonLabel=""
+        />
+      </div>
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+        <section className="rounded-[24px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-5 shadow-[0_12px_32px_rgba(15,23,42,0.06)]">
+          <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">Installs by Platform</p>
+          <p className="mt-1 text-xs font-semibold text-[var(--bb-text-secondary,#64748b)]">Where install actions happened in this timeframe.</p>
+          <div className="mt-4 space-y-3">
+            {platformRows.map((platform) => (
+              <div key={platform.key}>
+                <div className="flex items-center justify-between gap-3 text-sm">
+                  <span className="font-bold text-[var(--bb-text-primary,#101827)]">{platform.label}</span>
+                  <span className="font-black text-cyan-700">{formatNumber(platform.installs)} installs</span>
+                </div>
+                <div className="mt-1.5 h-2.5 overflow-hidden rounded-full bg-[var(--bb-surface-soft,#eef4fa)]">
+                  <div className="h-full rounded-full bg-[#0891b2]" style={{ width: `${Math.max(4, (platform.installs / maxPlatformInstalls) * 100)}%` }} />
+                </div>
+                <p className="mt-1 text-xs font-semibold text-[var(--bb-text-secondary,#64748b)]">
+                  {formatNumber(platform.addClicks)} Add taps · {formatNumber(platform.neverClicks)} opted out
+                </p>
+              </div>
+            ))}
+            {!loading && !platformRows.length ? (
+              <p className="py-6 text-center text-sm font-bold text-[var(--bb-text-secondary,#64748b)]">No install activity yet in this timeframe.</p>
+            ) : null}
+          </div>
+        </section>
+        <section className="rounded-[24px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-5 shadow-[0_12px_32px_rgba(15,23,42,0.06)]">
+          <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">All Accounts Right Now</p>
+          <p className="mt-1 text-xs font-semibold text-[var(--bb-text-secondary,#64748b)]">Lifetime install state across every user, regardless of timeframe.</p>
+          <div className="mt-4 grid grid-cols-3 gap-3">
+            <div className="rounded-[18px] bg-cyan-50 p-4 text-center ring-1 ring-cyan-100">
+              <p className="text-2xl font-black text-cyan-700">{loading ? "..." : formatNumber(stats?.stateTotals.installed || 0)}</p>
+              <p className="mt-1 text-xs font-black uppercase tracking-[0.12em] text-cyan-700">Installed</p>
+            </div>
+            <div className="rounded-[18px] bg-rose-50 p-4 text-center ring-1 ring-rose-100">
+              <p className="text-2xl font-black text-rose-700">{loading ? "..." : formatNumber(stats?.stateTotals.never || 0)}</p>
+              <p className="mt-1 text-xs font-black uppercase tracking-[0.12em] text-rose-700">Opted Out</p>
+            </div>
+            <div className="rounded-[18px] bg-slate-50 p-4 text-center ring-1 ring-slate-200">
+              <p className="text-2xl font-black text-slate-700">{loading ? "..." : formatNumber(stats?.stateTotals.pending || 0)}</p>
+              <p className="mt-1 text-xs font-black uppercase tracking-[0.12em] text-slate-600">Not Acted Yet</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  );
+}
+
 function CompletionPopupBreakdownChartCard({
   title,
   helper,
@@ -2882,6 +3144,13 @@ function MobileAnalyticsHighlights({
               windowKey={windowKey}
               loading={loading}
             />
+          ) : simpleMetric === "app_installs" ? (
+            <AppInstallsAnalyticsSection
+              stats={data?.appInstalls}
+              signupChartSeries={data?.signupChartSeries}
+              windowKey={windowKey}
+              loading={loading}
+            />
           ) : simpleMetric === "study_plans" ? (
             <StudyPlansAnalyticsSection
               stats={data?.studyPlans}
@@ -2904,7 +3173,7 @@ function MobileAnalyticsHighlights({
               comparison={windowKey === "lifetime" ? null : upgradesComparison}
             />
           )}
-          {simpleMetric !== "completion_popup" && simpleMetric !== "revenue" && simpleMetric !== "study_plans" && simpleMetric !== "traffic_sources" ? (
+          {simpleMetric !== "completion_popup" && simpleMetric !== "app_installs" && simpleMetric !== "revenue" && simpleMetric !== "study_plans" && simpleMetric !== "traffic_sources" ? (
             <div className="grid grid-cols-3 gap-3">
               <SimpleAnalyticsKpiCard
                 title="Signups"
@@ -5837,6 +6106,13 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
                 ) : simpleMetric === "completion_popup" ? (
                   <CompletionPopupAnalyticsSection
                     stats={data?.completionUpgrade}
+                    windowKey={windowKey}
+                    loading={loading}
+                  />
+                ) : simpleMetric === "app_installs" ? (
+                  <AppInstallsAnalyticsSection
+                    stats={data?.appInstalls}
+                    signupChartSeries={data?.signupChartSeries}
                     windowKey={windowKey}
                     loading={loading}
                   />

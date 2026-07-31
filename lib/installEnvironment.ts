@@ -32,6 +32,17 @@ export function isInAppBrowser(): boolean {
   return /Instagram|FBAN|FBAV/i.test(navigator.userAgent);
 }
 
+export type InstallPlatform = "iphone" | "android" | "desktop" | "in_app";
+
+/** Which device family the user is on, for install analytics. */
+export function getInstallPlatform(): InstallPlatform {
+  if (typeof navigator === "undefined") return "desktop";
+  if (isInAppBrowser()) return "in_app";
+  if (isIOS()) return "iphone";
+  if (/Android/i.test(navigator.userAgent)) return "android";
+  return "desktop";
+}
+
 export function getInstallEnvironment(): InstallEnvironment {
   const standalone = isStandalone();
   const ios = isIOS();

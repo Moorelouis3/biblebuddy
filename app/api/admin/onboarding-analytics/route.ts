@@ -1158,6 +1158,146 @@ function buildCompletionUpgradeAnalytics(
   };
 }
 
+const INSTALL_BANNER_ACTION_TYPES = [
+  "install_banner_add_clicked",
+  "install_banner_installed",
+  "install_banner_never_clicked",
+  "install_banner_ios_sheet_closed",
+] as const;
+
+type InstallPlatformKey = "iphone" | "android" | "desktop" | "in_app" | "unknown";
+
+type InstallBannerEventRow = {
+  action_type?: string | null;
+  created_at?: string | null;
+  event_metadata?: Record<string, unknown> | null;
+};
+
+type AppInstallAnalytics = {
+  totalInstalls: number;
+  totalAddClicks: number;
+  totalNeverClicks: number;
+  totalIosSheetCloses: number;
+  series: {
+    installs: Array<{ label: string; value: number }>;
+    addClicks: Array<{ label: string; value: number }>;
+    neverClicks: Array<{ label: string; value: number }>;
+  };
+  comparisons: {
+    installs: { current: number; previous: number; change: number };
+    addClicks: { current: number; previous: number; change: number };
+    neverClicks: { current: number; previous: number; change: number };
+    iosSheetCloses: { current: number; previous: number; change: number };
+  };
+  platforms: Array<{ key: InstallPlatformKey; label: string; installs: number; addClicks: number; neverClicks: number }>;
+  installChartSeries: {
+    daily: Array<{ label: string; value: number }>;
+    weekly: Array<{ label: string; value: number }>;
+    monthly: Array<{ label: string; value: number }>;
+  };
+  stateTotals: { installed: number; never: number; pending: number };
+};
+
+function getInstallEventPlatform(row: InstallBannerEventRow): InstallPlatformKey {
+  const metadata = row.event_metadata && typeof row.event_metadata === "object" ? row.event_metadata : {};
+  const platform = typeof metadata.platform === "string" ? metadata.platform.toLowerCase() : "";
+  if (platform === "iphone" || platform === "android" || platform === "desktop" || platform === "in_app") return platform;
+  return "unknown";
+}
+
+function collectInstallEventTimestamps(
+  rows: InstallBannerEventRow[],
+  actionType: string,
+  startIso: string,
+  endIso?: string | null,
+  platform?: InstallPlatformKey,
+) {
+  return rows
+    .filter((row) => row.action_type === actionType && (!platform || getInstallEventPlatform(row) === platform))
+    .map((row) => row.created_at)
+    .filter((createdAt): createdAt is string => Boolean(createdAt))
+    .filter((createdAt) => isWithinAnalyticsWindow(createdAt, startIso, endIso || null));
+}
+
+const INSTALL_PLATFORM_LABELS: Array<{ key: InstallPlatformKey; label: string }> = [
+  { key: "iphone", label: "iPhone / iPad" },
+  { key: "android", label: "Android" },
+  { key: "desktop", label: "Desktop" },
+  { key: "in_app", label: "In-app browser" },
+];
+
+function buildAppInstallAnalytics(
+  rows: InstallBannerEventRow[],
+  windowKey: JourneyWindowKey,
+  previousRange: { startIso: string; endIso: string | null } | null,
+  stateTotals: { installed: number; never: number; pending: number },
+): AppInstallAnalytics {
+  const { startIso, endIso } = getAnalyticsDateRange(windowKey);
+  const currentInstalls = collectInstallEventTimestamps(rows, "install_banner_installed", startIso, endIso);
+  const currentAddClicks = collectInstallEventTimestamps(rows, "install_banner_add_clicked", startIso, endIso);
+  const currentNeverClicks = collectInstallEventTimestamps(rows, "install_banner_never_clicked", startIso, endIso);
+  const currentSheetCloses = collectInstallEventTimestamps(rows, "install_banner_ios_sheet_closed", startIso, endIso);
+  const previousInstalls = previousRange ? collectInstallEventTimestamps(rows, "install_banner_installed", previousRange.startIso, previousRange.endIso) : [];
+  const previousAddClicks = previousRange ? collectInstallEventTimestamps(rows, "install_banner_add_clicked", previousRange.startIso, previousRange.endIso) : [];
+  const previousNeverClicks = previousRange ? collectInstallEventTimestamps(rows, "install_banner_never_clicked", previousRange.startIso, previousRange.endIso) : [];
+  const previousSheetCloses = previousRange ? collectInstallEventTimestamps(rows, "install_banner_ios_sheet_closed", previousRange.startIso, previousRange.endIso) : [];
+
+  return {
+    totalInstalls: currentInstalls.length,
+    totalAddClicks: currentAddClicks.length,
+    totalNeverClicks: currentNeverClicks.length,
+    totalIosSheetCloses: currentSheetCloses.length,
+    series: {
+      installs: buildSimpleMetricSeries(currentInstalls, windowKey),
+      addClicks: buildSimpleMetricSeries(currentAddClicks, windowKey),
+      neverClicks: buildSimpleMetricSeries(currentNeverClicks, windowKey),
+    },
+    comparisons: {
+      installs: { current: currentInstalls.length, previous: previousInstalls.length, change: percentChange(currentInstalls.length, previousInstalls.length) },
+      addClicks: { current: currentAddClicks.length, previous: previousAddClicks.length, change: percentChange(currentAddClicks.length, previousAddClicks.length) },
+      neverClicks: { current: currentNeverClicks.length, previous: previousNeverClicks.length, change: percentChange(currentNeverClicks.length, previousNeverClicks.length) },
+      iosSheetCloses: { current: currentSheetCloses.length, previous: previousSheetCloses.length, change: percentChange(currentSheetCloses.length, previousSheetCloses.length) },
+    },
+    platforms: INSTALL_PLATFORM_LABELS.map(({ key, label }) => ({
+      key,
+      label,
+      installs: collectInstallEventTimestamps(rows, "install_banner_installed", startIso, endIso, key).length,
+      addClicks: collectInstallEventTimestamps(rows, "install_banner_add_clicked", startIso, endIso, key).length,
+      neverClicks: collectInstallEventTimestamps(rows, "install_banner_never_clicked", startIso, endIso, key).length,
+    })),
+    installChartSeries: buildSignupChartSeries(
+      rows.filter((row) => row.action_type === "install_banner_installed").map((row) => row.created_at),
+    ),
+    stateTotals,
+  };
+}
+
+async function loadAppInstallAnalytics(
+  adminSupabase: SupabaseClient<any, "public", "public", any, any>,
+  windowKey: JourneyWindowKey,
+  previousRange: { startIso: string; endIso: string | null } | null,
+): Promise<AppInstallAnalytics> {
+  const chartLookbackIso = new Date(Date.now() - 370 * 24 * 60 * 60 * 1000).toISOString();
+  const [installEventsResult, installedCountResult, neverCountResult, pendingCountResult] = await Promise.all([
+    adminSupabase
+      .from("master_actions")
+      .select("action_type, event_metadata, created_at")
+      .in("action_type", [...INSTALL_BANNER_ACTION_TYPES])
+      .gte("created_at", chartLookbackIso)
+      .order("created_at", { ascending: false })
+      .limit(250000),
+    adminSupabase.from("profile_stats").select("user_id", { count: "exact", head: true }).eq("install_prompt_state", "installed"),
+    adminSupabase.from("profile_stats").select("user_id", { count: "exact", head: true }).eq("install_prompt_state", "never"),
+    adminSupabase.from("profile_stats").select("user_id", { count: "exact", head: true }).or("install_prompt_state.eq.pending,install_prompt_state.is.null"),
+  ]);
+  const rows = (installEventsResult.data || []) as InstallBannerEventRow[];
+  return buildAppInstallAnalytics(rows, windowKey, previousRange, {
+    installed: installedCountResult.count || 0,
+    never: neverCountResult.count || 0,
+    pending: pendingCountResult.count || 0,
+  });
+}
+
 function getStudyPlanActorId(row: MasterActionFunnelRow) {
   return row.user_id || row.session_id || row.username || "unknown";
 }
@@ -4492,6 +4632,7 @@ async function buildOverviewAnalyticsResponse(
     ? collectFirstPaidUpgradeTimestamps(allUpgradeRows, previousRange.startIso, previousRange.endIso).length
     : 0;
   const completionUpgrade = buildCompletionUpgradeAnalytics(allCompletionUpgradeRows, journeyWindow, previousRange);
+  const appInstalls = await loadAppInstallAnalytics(adminSupabase, journeyWindow, previousRange);
   const studyPlans = buildStudyPlanAnalytics(studyPlanRows, journeyWindow, studyPlanProgressRows, studyPlanTitleById);
 
   const landingRows = await collectPaginatedRows<LandingEventRow>((from, to) => {
@@ -4600,6 +4741,7 @@ async function buildOverviewAnalyticsResponse(
       upgrades: { current: currentUpgrades, previous: previousUpgrades, change: percentChange(currentUpgrades, previousUpgrades) },
     },
     completionUpgrade,
+    appInstalls,
     studyPlans,
     customerJourney: {
       window: journeyWindow,
@@ -5087,6 +5229,7 @@ export async function GET(request: Request) {
   const daySevenUpgrade = buildDayUpgradeAnalytics(masterFunnelRows, 7);
   const studyNotesUpgrade = buildStudyNotesUpgradeAnalytics(masterFunnelRows);
   const completionUpgrade = buildCompletionUpgradeAnalytics(completionUpgradeRows, journeyWindow, previousRange);
+  const appInstalls = await loadAppInstallAnalytics(adminSupabase, journeyWindow, previousRange);
   const studyPlans = buildStudyPlanAnalytics(studyPlanRows, journeyWindow, studyPlanProgressRows, studyPlanTitleById);
   const activeUsersLast24Hours = buildActiveUsersLast24Hours(activeUsersLast24Rows, profileByUserId);
   const newUserFirstThreeDays = buildNewUserFirstThreeDaysAnalytics(firstThreeDayRows, profileByUserId);
@@ -5240,6 +5383,7 @@ export async function GET(request: Request) {
     daySevenUpgrade,
     studyNotesUpgrade,
     completionUpgrade,
+    appInstalls,
     studyPlans,
     bibleYearDays,
     studyNotes,
