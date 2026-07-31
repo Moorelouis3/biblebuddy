@@ -358,3 +358,7 @@ Next up: Genesis 37
 ## 2026-07-31T22:00:19Z (hourly chapter notes run)
 Chapter: Genesis 37 | Duration: 14 min | Sections: 8 | Cards: 46 | Status: pass
 Next up: Genesis 38
+
+## 2026-07-31T22:59:22Z (hourly chapter notes run)
+Chapter: Genesis 38 | Duration: 13 min | Sections: 6 | Cards: 60 | Status: pass
+Next up: Genesis 39

@@ -4331,6 +4331,59 @@
           "at": "2026-07-31T22:00:19Z"
         }
       ]
+    },
+    {
+      "book": "Genesis",
+      "chapter": 38,
+      "startedAt": "2026-07-31T22:46:06Z",
+      "finishedAt": "2026-07-31T22:59:17Z",
+      "durationMinutes": 13,
+      "sections": 6,
+      "cards": 60,
+      "verses": 30,
+      "notes": "Seventh redo-backlog chapter (data/bible-notes-style-redo-remaining.json), regenerated from scratch to match docs/bible-study-note-style.md. Judah and Tamar: Judah leaving his brothers for Adullam after helping sell Joseph, marrying a Canaanite woman (Shuah's daughter, unnamed) and fathering Er, Onan, and Shelah, Tamar's marriage to Er and his death for wickedness, the levirate marriage custom explained (Deuteronomy 25 callback) and Onan's real sin correctly identified as refusing his brother's widow her rightful child rather than the private act itself, Judah's broken promise sending Tamar back to her father's house, Tamar's disguise at the roadside near Timnath during sheep shearing season, the zonah/qedeshah word distinction between what Judah privately called her and the more respectable term Hirah used while searching, the signet/bracelets/staff pledge functioning as an unmistakable ancient ID, Judah's hypocritical order to burn Tamar for the very sin he committed, Tamar's wise silent evidence instead of a public accusation, Judah's turning-point confession (\"she hath been more righteous than I\") read as the start of his transformation toward Genesis 44, and the birth of twins Pharez and Zarah (KJV spelling, matching the fetched text) with the scarlet-thread reversal echoing Genesis's recurring unexpected-son pattern (Isaac over Ishmael, Jacob over Esau) and its genealogical hinge toward Boaz, David, and Jesus (Ruth 4, Matthew 1). Density 2.0 cards/verse (60 cards / 30 verses), on the high end given how event-dense and custom-rich this chapter is. `scripts/check_bible_note_style.py` clean after fixing one banned hedge word (\"fairly\"). Parser check passed exactly (6/6 sections, 60 cards), npx tsc --noEmit -p . clean with zero errors. Redo backlog entry popped; next redo target is Genesis 39.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-31T22:46:54Z"
+        },
+        {
+          "name": "target chapter determined: Genesis 38 (style redo mode)",
+          "at": "2026-07-31T22:47:02Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and SKILL.md read in full",
+          "at": "2026-07-31T22:47:16Z"
+        },
+        {
+          "name": "KJV text fetched for Genesis 38 (30 verses, GitHub raw mirror)",
+          "at": "2026-07-31T22:47:33Z"
+        },
+        {
+          "name": "Genesis 38 source file written (redo to new style spec)",
+          "at": "2026-07-31T22:55:38Z"
+        },
+        {
+          "name": "style checker clean (60 cards, 0 problems)",
+          "at": "2026-07-31T22:55:55Z"
+        },
+        {
+          "name": "parser check passed (6 sections, 60 cards, verbatim)",
+          "at": "2026-07-31T22:56:13Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo chapter (no changes needed)",
+          "at": "2026-07-31T22:56:13Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean (exit 0)",
+          "at": "2026-07-31T22:57:44Z"
+        },
+        {
+          "name": "progress files logged: data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, data/bible-notes-style-redo-remaining.json",
+          "at": "2026-07-31T22:59:17Z"
+        }
+      ]
     }
   ]
 }
