@@ -3904,8 +3904,8 @@
       "book": "Numbers",
       "chapter": 30,
       "startedAt": "2026-07-31T14:46:32Z",
-      "finishedAt": "2026-07-31T14:52:56Z",
-      "durationMinutes": 6,
+      "finishedAt": "2026-07-31T14:55:13Z",
+      "durationMinutes": 9,
       "sections": 7,
       "cards": 32,
       "verses": 16,
@@ -3942,6 +3942,14 @@
         {
           "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
           "at": "2026-07-31T14:52:56Z"
+        },
+        {
+          "name": "committed (6ee9525, rebased onto origin/main after it advanced during the run)",
+          "at": "2026-07-31T14:52:56Z"
+        },
+        {
+          "name": "pushed to origin/main, confirmed ee81125..6ee9525 main -> main and origin/main == local HEAD",
+          "at": "2026-07-31T14:55:13Z"
         }
       ]
     }
