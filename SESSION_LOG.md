@@ -350,3 +350,7 @@ Next: Watch install numbers; swap in real iPhone screenshots if Louis provides t
 ## 2026-07-31T19:58:29Z (hourly chapter notes run)
 Chapter: Genesis 35 | Duration: 12 min | Sections: 6 | Cards: 48 | Status: pass
 Next up: Genesis 36
+
+## 2026-07-31T20:53:16Z (hourly chapter notes run)
+Chapter: Genesis 36 | Duration: 8 min | Sections: 8 | Cards: 28 | Status: pass
+Next up: Genesis 37

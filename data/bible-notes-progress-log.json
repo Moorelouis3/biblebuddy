@@ -4225,6 +4225,59 @@
           "at": "2026-07-31T19:58:02Z"
         }
       ]
+    },
+    {
+      "book": "Genesis",
+      "chapter": 36,
+      "startedAt": "2026-07-31T20:45:56Z",
+      "finishedAt": "2026-07-31T20:53:16Z",
+      "durationMinutes": 8,
+      "sections": 8,
+      "cards": 28,
+      "verses": 43,
+      "notes": "Fifth redo-backlog chapter (data/bible-notes-style-redo-remaining.json), regenerated from scratch to match docs/bible-study-note-style.md. Esau's genealogy: three wives and five sons in Canaan, the Edom/red-stew callback, the Aholibamah kinship puzzle (son/daughter terms stretching loosely), the move to Mount Seir echoing Abraham and Lot, duke defined as clan chief, Timna the Horite concubine and Amalek's first mention, the Korah name appearing in two dukes lists (flagged as a likely copying issue per several scholars), the Horite genealogy of Seir's original inhabitants, the kings of Edom who reigned before Israel had a king (no hereditary dynasty, reigned in his stead formula), Hadad smiting Midian, and the closing territorial duke list landing on Rebekah's two-nations prophecy. Per spec section 12, built cards around word definitions, why details were recorded, and where names point, rather than restating repetitive name lists. Density 0.65 cards/verse (28/43), appropriate for a heavily repetitive genealogy chapter. Verified with scripts/check_bible_note_style.py (clean on first run), parser check (8/8 sections, 28 cards), and npx tsc --noEmit -p . (clean). data/bible-notes-style-redo-remaining.json's Genesis 36 entry removed from the front of the list as part of this commit; next redo target is Genesis 37.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-31T20:45:56Z"
+        },
+        {
+          "name": "target chapter determined: Genesis 36 (redo mode, first entry in data/bible-notes-style-redo-remaining.json)",
+          "at": "2026-07-31T20:46:27Z"
+        },
+        {
+          "name": "KJV text fetched for Genesis 36 via raw.githubusercontent.com/aruljohn/Bible-kjv/master/Genesis.json",
+          "at": "2026-07-31T20:46:27Z"
+        },
+        {
+          "name": "docs/bible-study-note-style.md read in full; lib/genesisThirtyOneSource.ts reviewed as reference implementation; .claude/skills/bible-notes/SKILL.md reviewed for technical pipeline; old lib/genesisThirtySixSource.ts reviewed for prior wiring",
+          "at": "2026-07-31T20:49:00Z"
+        },
+        {
+          "name": "source file written: lib/genesisThirtySixSource.ts (8 sections, 28 cards)",
+          "at": "2026-07-31T20:52:30Z"
+        },
+        {
+          "name": "style checker: scripts/check_bible_note_style.py clean on first run",
+          "at": "2026-07-31T20:53:00Z"
+        },
+        {
+          "name": "wiring confirmed already correct in lib/bibleReaderStudyNotes.ts (import + preserveExactPhraseBodies genesis range already cover chapter 36, no changes needed)",
+          "at": "2026-07-31T20:53:00Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections('Genesis', 36) -> 8 sections, 28 cards",
+          "at": "2026-07-31T20:53:16Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-31T20:53:16Z"
+        },
+        {
+          "name": "progress files logged: data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, data/bible-notes-style-redo-remaining.json",
+          "at": "2026-07-31T20:55:00Z"
+        }
+      ]
     }
   ]
 }
