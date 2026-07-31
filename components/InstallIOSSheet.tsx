@@ -2,8 +2,8 @@
 
 import { ModalShell } from "./ModalShell";
 
-// Bottom sheet with the manual Add-to-Home-Screen steps for iPhone Safari,
-// which has no install prompt API.
+// Bottom sheet with the manual Add-to-Home-Screen steps for iPhone, which has
+// no install prompt API — Apple only allows the manual Share-menu route.
 
 type InstallIOSSheetProps = {
   isOpen: boolean;
@@ -15,6 +15,12 @@ const STEPS = [
   "Scroll down and tap Add to Home Screen",
   "Tap Add in the top corner",
 ];
+
+function isIOSSafari(): boolean {
+  if (typeof navigator === "undefined") return false;
+  const ua = navigator.userAgent;
+  return /Safari/.test(ua) && !/CriOS|FxiOS|EdgiOS|OPiOS|OPT\//.test(ua);
+}
 
 export default function InstallIOSSheet({ isOpen, onClose }: InstallIOSSheetProps) {
   return (
@@ -29,9 +35,16 @@ export default function InstallIOSSheet({ isOpen, onClose }: InstallIOSSheetProp
             height={40}
             className="h-10 w-10 shrink-0 rounded-[12px] shadow-[0_2px_6px_rgba(14,26,58,0.25)]"
           />
-          <h2 className="text-base font-extrabold leading-snug text-[var(--bb-text-primary,#111827)]">
-            Three taps and it&apos;s on your home screen
-          </h2>
+          <div className="min-w-0">
+            <h2 className="text-base font-extrabold leading-snug text-[var(--bb-text-primary,#111827)]">
+              Three taps and it&apos;s on your home screen
+            </h2>
+            {isIOSSafari() ? (
+              <p className="mt-1 text-xs font-semibold text-[var(--bb-accent,#2f7fe8)]">
+                You&apos;re already in Safari — perfect. iPhone doesn&apos;t allow one-tap installs, so here&apos;s the way:
+              </p>
+            ) : null}
+          </div>
         </div>
         <ol className="space-y-3">
           {STEPS.map((step, index) => (

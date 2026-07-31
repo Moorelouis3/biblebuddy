@@ -147,7 +147,6 @@ export default function BibleYearJourneyDashboard() {
       });
       reconcileInstallPromptState(
         (data as { install_prompt_state?: string | null } | null)?.install_prompt_state ?? null,
-        (data as { install_prompt_last_shown?: string | null } | null)?.install_prompt_last_shown ?? null,
       );
     })();
   }, [router]);

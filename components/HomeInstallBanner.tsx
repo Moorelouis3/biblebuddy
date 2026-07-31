@@ -16,10 +16,8 @@ import {
 // (instant, no network); Supabase is the background backup copy, written only
 // when the user acts — never on page load.
 
-export const INSTALL_PROMPT_LAST_SHOWN_KEY = "bb-install-prompt-last-shown";
 const SESSION_HIDE_KEY = "bb-install-prompt-session-hide";
 const SYNC_EVENT = "bb:install-prompt-sync";
-const IOS_SNOOZE_DAYS = 7;
 
 function readLocalInstallState(): string {
   try {
@@ -37,18 +35,6 @@ function writeLocalInstallState(state: "never" | "installed") {
   }
 }
 
-function iosSnoozeActive(): boolean {
-  try {
-    const raw = window.localStorage.getItem(INSTALL_PROMPT_LAST_SHOWN_KEY);
-    if (!raw) return false;
-    const shownAt = new Date(raw).getTime();
-    if (Number.isNaN(shownAt)) return false;
-    return Date.now() - shownAt < IOS_SNOOZE_DAYS * 24 * 60 * 60 * 1000;
-  } catch {
-    return false;
-  }
-}
-
 /** Synchronous, localStorage-only visibility decision — safe to run before paint. */
 export function shouldShowInstallBanner(): boolean {
   if (typeof window === "undefined") return false;
@@ -61,7 +47,6 @@ export function shouldShowInstallBanner(): boolean {
   } catch {
     // ignore
   }
-  if (env.isIOS && iosSnoozeActive()) return false;
   return true;
 }
 
@@ -125,10 +110,7 @@ async function writeInstallPromptColumns(columns: Record<string, string>) {
  * write — guarded by the already-loaded DB value, so it happens once per
  * account, ever.
  */
-export function reconcileInstallPromptState(
-  dbState: string | null,
-  dbLastShown: string | null,
-) {
+export function reconcileInstallPromptState(dbState: string | null) {
   if (typeof window === "undefined") return;
   let changed = false;
 
@@ -146,20 +128,6 @@ export function reconcileInstallPromptState(
   } else if ((dbState === "never" || dbState === "installed") && readLocalInstallState() !== dbState) {
     writeLocalInstallState(dbState);
     changed = true;
-  }
-
-  if (dbLastShown) {
-    try {
-      const local = window.localStorage.getItem(INSTALL_PROMPT_LAST_SHOWN_KEY);
-      const dbMs = new Date(dbLastShown).getTime();
-      const localMs = local ? new Date(local).getTime() : 0;
-      if (!Number.isNaN(dbMs) && dbMs > localMs) {
-        window.localStorage.setItem(INSTALL_PROMPT_LAST_SHOWN_KEY, dbLastShown);
-        changed = true;
-      }
-    } catch {
-      // ignore
-    }
   }
 
   if (changed) {
@@ -258,15 +226,16 @@ export default function HomeInstallBanner() {
 
   const handleSheetClose = () => {
     setSheetOpen(false);
-    // iOS can't confirm the install, so hide and snooze for 7 days.
-    const closedAtIso = new Date().toISOString();
+    // iOS can't confirm the install, so hide for this visit only — the banner
+    // returns next visit until the app is launched from the home screen icon
+    // (which flags the account installed) or they tap Don't show again.
     try {
-      window.localStorage.setItem(INSTALL_PROMPT_LAST_SHOWN_KEY, closedAtIso);
+      window.sessionStorage.setItem(SESSION_HIDE_KEY, "1");
     } catch {
       // ignore
     }
     setVisible(false);
-    void writeInstallPromptColumns({ install_prompt_last_shown: closedAtIso });
+    void writeInstallPromptColumns({ install_prompt_last_shown: new Date().toISOString() });
     void logInstallBannerEvent("install_banner_ios_sheet_closed", "iPhone install sheet closed");
   };
 
