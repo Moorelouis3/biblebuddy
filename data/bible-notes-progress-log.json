@@ -3899,6 +3899,51 @@
           "at": "2026-07-31T13:58:35Z"
         }
       ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 30,
+      "startedAt": "2026-07-31T14:46:32Z",
+      "finishedAt": "2026-07-31T14:52:56Z",
+      "durationMinutes": 6,
+      "sections": 7,
+      "cards": 32,
+      "verses": 16,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The law of vows: a man's vow is unconditionally binding (v2); an unmarried daughter's vow can be confirmed or nullified by her father, with God explicitly forgiving her if nullified (vv3-5); the same silence-equals-approval / same-day-objection rule applies to a husband for a vow a woman brings into marriage (vv6-8) and for a vow made during marriage (vv10-12); a widow or divorced woman answers to no one and her vow always stands (v9); a husband who waits past the window and then voids a vow late bears her guilt himself (vv13-15); closing summary bookends the chapter the way Numbers 29 closed itself (v16). \"Afflict the soul\" callback to the Day of Atonement idiom from Numbers 29:7 noted explicitly. Density 2.0 cards/verse (32 cards / 16 verses), at the top of the current target band. Parser check passed exactly (7/7 sections, 32 cards), npx tsc --noEmit -p . clean with zero errors. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-31T14:46:57Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 30 (Numbers 1-29 confirmed wired in with dedicated source files)",
+          "at": "2026-07-31T14:47:15Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 30 (16 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-31T14:47:30Z"
+        },
+        {
+          "name": "wrote lib/numbersThirtySource.ts",
+          "at": "2026-07-31T14:50:30Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to 30)",
+          "at": "2026-07-31T14:51:10Z"
+        },
+        {
+          "name": "parser check passed: 7 sections, 32 cards",
+          "at": "2026-07-31T14:52:23Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-31T14:52:44Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-31T14:52:56Z"
+        }
+      ]
     }
   ]
 }

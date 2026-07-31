@@ -147,6 +147,7 @@ import { NUMBERS_TWENTY_SIX_PERSONAL_SECTIONS } from "./numbersTwentySixSource";
 import { NUMBERS_TWENTY_SEVEN_PERSONAL_SECTIONS } from "./numbersTwentySevenSource";
 import { NUMBERS_TWENTY_EIGHT_PERSONAL_SECTIONS } from "./numbersTwentyEightSource";
 import { NUMBERS_TWENTY_NINE_PERSONAL_SECTIONS } from "./numbersTwentyNineSource";
+import { NUMBERS_THIRTY_PERSONAL_SECTIONS } from "./numbersThirtySource";
 import { EXODUS_2_10_PERSONAL_SECTIONS } from "./exodusTwoToTenPersonalNotes";
 import { EXODUS_11_20_PERSONAL_SECTIONS } from "./exodusElevenToTwentyPersonalNotes";
 import { EXODUS_21_30_PERSONAL_SECTIONS } from "./exodusTwentyOneToThirtyPersonalNotes";
@@ -524,7 +525,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "genesis" && section.chapter >= 1 && section.chapter <= 50) ||
     (normalizeBook(book) === "exodus" && section.chapter >= 1 && section.chapter <= 40) ||
     (normalizeBook(book) === "leviticus" && section.chapter >= 1 && section.chapter <= 27) ||
-    (normalizeBook(book) === "numbers" && section.chapter >= 1 && section.chapter <= 29);
+    (normalizeBook(book) === "numbers" && section.chapter >= 1 && section.chapter <= 30);
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -9064,6 +9065,12 @@ replaceStudySectionsForBookRange(
   29,
   29,
   NUMBERS_TWENTY_NINE_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "numbers",
+  30,
+  30,
+  NUMBERS_THIRTY_PERSONAL_SECTIONS,
 );
 
 for (const section of BIBLE_READER_STUDY_SECTIONS) {
