@@ -72,7 +72,7 @@ function AddConfirmIllustration() {
   );
 }
 
-const STEPS = [
+export const INSTALL_SHEET_STEPS = [
   {
     title: "Tap the Share button",
     detail: "It's at the bottom of Safari — the square with the arrow pointing up.",
@@ -98,8 +98,8 @@ export default function InstallIOSSheet({ isOpen, onClose }: InstallIOSSheetProp
     if (isOpen) setStepIndex(0);
   }, [isOpen]);
 
-  const step = STEPS[stepIndex];
-  const isLastStep = stepIndex === STEPS.length - 1;
+  const step = INSTALL_SHEET_STEPS[stepIndex];
+  const isLastStep = stepIndex === INSTALL_SHEET_STEPS.length - 1;
 
   return (
     <ModalShell isOpen={isOpen} onClose={onClose} placement="bottom">
@@ -117,7 +117,7 @@ export default function InstallIOSSheet({ isOpen, onClose }: InstallIOSSheetProp
             <p className="text-sm font-extrabold text-[var(--bb-text-primary,#111827)]">Add Bible Buddy</p>
           </div>
           <span className="rounded-full bg-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_12%,var(--bb-card,#ffffff))] px-3 py-1 text-xs font-black text-[var(--bb-accent,#2f7fe8)]">
-            Step {stepIndex + 1} of {STEPS.length}
+            Step {stepIndex + 1} of {INSTALL_SHEET_STEPS.length}
           </span>
         </div>
         <div className="h-[150px] overflow-hidden rounded-[16px] bg-[var(--bb-surface-soft,#f8fbff)]">
@@ -126,7 +126,7 @@ export default function InstallIOSSheet({ isOpen, onClose }: InstallIOSSheetProp
         <h2 className="mt-4 text-lg font-extrabold leading-snug text-[var(--bb-text-primary,#111827)]">{step.title}</h2>
         <p className="mt-1 text-sm leading-relaxed text-[var(--bb-text-secondary,#4b5563)]">{step.detail}</p>
         <div className="mt-2 flex items-center gap-1.5">
-          {STEPS.map((_, index) => (
+          {INSTALL_SHEET_STEPS.map((_, index) => (
             <span
               key={index}
               className={`h-1.5 rounded-full transition-all ${index === stepIndex ? "w-6 bg-[var(--bb-accent,#2f7fe8)]" : "w-1.5 bg-[var(--bb-card-border,#dbe7f4)]"}`}
