@@ -81,843 +81,657 @@ function parseGenesisThirtyFourRawNotes(rawText: string): GenesisThirtyFourPerso
     });
   }
 
-  if (sections.length !== 3) {
-    throw new Error("Expected 3 Genesis 34 sections, received " + sections.length);
+  if (sections.length !== 7) {
+    throw new Error("Expected 7 Genesis 34 sections, received " + sections.length);
   }
 
   return sections;
 }
 
-const GENESIS_THIRTY_FOUR_RAW_NOTES = `# Genesis 34:1–12
-
+const GENESIS_THIRTY_FOUR_RAW_NOTES = `# Genesis 34:1-3
 # 👧 Dinah Is Defiled
-
 ---
+## 👧 Went Out To See The Daughters Of The Land
 
-## 👧 Dinah Went Out To See The Daughters Of The Land
+Dinah was the daughter of Jacob and Leah.
 
-Dinah, the daughter of **Jacob and Leah**, goes out to visit the young women living in the area.
+The daughters of the land means the young women living in Canaan.
 
-The phrase **"the daughters of the land"** simply refers to the local women of Canaan.
+They were not part of Jacob's own family.
 
-Jacob's family had recently settled near **Shechem**, so Dinah was likely visiting or getting to know the women of the nearby city.
+Dinah walks out to spend time with them.
 
-The Bible does not suggest that Dinah was doing anything sinful. It simply records where she went before the events that followed.
+The Bible does not say she did anything wrong.
 
-👧 Dinah visits the local women
+It only tells us where she went before trouble found her.
 
-🏙️ "Daughters of the land" means the women living nearby
+👧 Dinah is Jacob and Leah's daughter
 
-📖 Jacob's family has recently settled near Shechem
+🏙️ Daughters of the land means Canaanite women
 
-➡️ Shechem sees Dinah
+🚶 Dinah visits the women nearby
 
----
+➡️ Shechem sees her next
 
-## 👑 Shechem… The Son Of Hamor The Hivite
+## 👑 Prince Of The Country
 
-Shechem was the son of **Hamor**, the ruler of the area.
+Hamor ruled over the city of Shechem.
 
-The Bible calls Hamor **"the prince of the country,"** meaning he was the local chief or ruler over that region.
+The Bible calls him prince of the country, meaning he was the chief ruler over that whole region.
 
-The city was also called **Shechem**.
+The city and his son shared the same name, Shechem.
 
-It is possible that the city was named after Shechem or that both the city and the prince shared the same name. In the ancient world, cities were often named after important people or founders.
+Cities in the ancient world were often named after an important founder or ruler.
 
-When Shechem saw Dinah, he **took her**, **lay with her**, and **defiled her**.
+That naming pattern still shapes place names today.
 
-This describes a sexual assault.
+👑 Hamor ruled the region
 
-Instead of honoring Dinah through marriage first, he forced himself upon her.
+🏙️ The city is also named Shechem
 
-Because of this, Dinah was dishonored according to both God's standards and the customs of that time.
+📜 Cities were often named after rulers
 
-👑 Shechem was Hamor's son
+📖 A name can outlive its ruler
 
-🏙️ Hamor ruled the city of Shechem
+## ⚠️ He Took Her, And Lay With Her, And Defiled Her
 
-⚠️ Shechem sexually assaulted Dinah
+Shechem forces himself on Dinah without her consent.
 
-➡️ Shechem unexpectedly falls in love
+The word defiled means she was violated and dishonored by what he did.
 
----
+This was not a private mistake.
+
+In that culture it brought shame on the woman and on her whole family.
+
+⚠️ Shechem sexually assaults Dinah
+
+💔 Defiled means violated and dishonored
+
+😔 This brought shame on her family
+
+📖 Genesis records this plainly without excusing it
 
 ## ❤️ His Soul Clave Unto Dinah
 
-After assaulting Dinah, something unexpected happens.
+Clave means clung or held tightly.
 
-The Bible says **"his soul clave unto Dinah."**
+After assaulting Dinah, Shechem becomes deeply attached to her.
 
-This means he became deeply attached to her.
+The Bible also says he loved her and spoke kindly to her.
 
-The word **clave** means **clung** or **held tightly.**
+This happened right after the assault, not years later.
 
-The Bible also says he **loved the damsel** and **spake kindly unto her.**
+Real affection afterward does not erase real harm done before it.
 
-In other words, after committing this terrible sin, Shechem developed genuine affection for Dinah and spoke tenderly to her.
+❤️ Clave means clung tightly
 
-This likely happened shortly after the assault, not years later.
+🗣️ Shechem speaks kindly to Dinah
 
-His feelings, however, did not erase what he had done.
+⚠️ His feelings came after his sin
 
-A person can express love afterward, but that does not undo the sin or the harm they caused.
+📖 Affection later cannot undo harm already done
 
-❤️ Shechem becomes deeply attached to Dinah
-
-🗣️ He speaks gently to her
-
-⚠️ His feelings do not excuse his sin
-
-➡️ Shechem asks to marry Dinah
-
+# Genesis 34:4-7
+# 😡 The Family Reacts
 ---
-
 ## 💍 Get Me This Damsel To Wife
 
-Shechem tells his father,
+Shechem asks his father to arrange the marriage.
 
-**"Get me this damsel to wife."**
+In this culture, fathers typically negotiated marriages for their sons.
 
-In that culture, marriages were usually arranged between families.
+Shechem does not go to Jacob directly.
 
-Rather than speaking directly to Jacob, Shechem asks Hamor to negotiate the marriage.
+He works through Hamor instead, following the custom of the time.
 
-This suggests that Shechem truly wanted Dinah as his wife after what happened.
+His request shows he wants Dinah as his wife after what happened.
 
-💍 Shechem asks his father to arrange the marriage
+💍 Shechem asks Hamor to arrange it
 
-👨 Fathers commonly negotiated marriages
+👨 Fathers usually negotiated marriages
 
-➡️ Jacob hears what happened
+📜 Shechem follows the custom of the time
 
----
+➡️ Jacob hears what happened next
 
 ## 😔 Jacob Held His Peace
 
-News reaches Jacob that Dinah has been defiled.
+Jacob learns that Dinah has been defiled.
 
-At that moment, his sons are still out in the fields caring for the livestock.
+His sons are away in the field with the cattle when the news arrives.
 
-Instead of reacting immediately, Jacob waits until they return.
+Held his peace means he stayed silent for the moment.
 
-The Bible says he **"held his peace,"** meaning he remained silent for the time being.
+He waits until his whole family is together before responding.
 
-He waits until the entire family is present before responding.
+His silence is patience, not indifference.
 
-😔 Jacob waits before responding
+😔 Jacob hears the news alone
 
-🐑 His sons are still in the fields
+🐑 His sons are still in the field
 
-➡️ Hamor comes to speak with Jacob
+🤐 Held his peace means he stayed silent
 
+📖 He waits for his whole family first
+
+## 🤝 Went Out Unto Jacob To Commune With Him
+
+Hamor comes to speak with Jacob directly.
+
+Commune means to talk something over, not just a casual greeting.
+
+He is trying to work out a peaceful arrangement after his son's sin.
+
+Dinah has not yet come home.
+
+She is still in Shechem's house while these talks happen.
+
+🤝 Hamor comes to talk with Jacob
+
+🗣️ Commune means to talk something over
+
+🏠 Dinah is still in Shechem's house
+
+➡️ Jacob's sons arrive and hear everything
+
+## 😡 The Men Were Grieved, And They Were Very Wroth
+
+Jacob's sons rush home once they hear what happened.
+
+Grieved means they were deeply hurt.
+
+Wroth means they were furious, not just annoyed.
+
+Both feelings hit them at the same time.
+
+Their sister's pain and their family's honor are both at stake.
+
+😔 Grieved means deeply hurt
+
+😡 Wroth means furious
+
+👨‍👩‍👧 Both feelings strike the brothers together
+
+📖 Family honor and Dinah's pain both matter
+
+## ⚠️ Wrought Folly In Israel
+
+Wrought folly means Shechem committed a shameful, sinful act.
+
+Which thing ought not to be done makes the point even sharper.
+
+This was not just bad manners.
+
+It broke God's standard for how a man treats a woman.
+
+Jacob's sons see the assault as an attack on the whole family's name.
+
+⚠️ Wrought folly means a shameful sin
+
+📖 The text calls it forbidden outright
+
+👨‍👩‍👧 The whole family's honor was attacked
+
+➡️ Hamor now makes his offer
+
+# Genesis 34:8-12
+# 🤝 Hamor And Shechem Make Their Case
 ---
+## ❤️ The Soul Of My Son Shechem Longeth For Your Daughter
 
-## 🤝 Hamor Communed With Them
+Longeth means to want something badly, with deep desire.
 
-Hamor comes to meet Jacob and his family.
+Hamor speaks on his son's behalf, asking Jacob's family for Dinah's hand in marriage.
 
-The word **communed** simply means **talked with** or **discussed matters together.**
+He does not deny what Shechem did.
 
-He is trying to negotiate a peaceful solution after his son's terrible actions.
+He simply asks for what his son wants now.
 
-By this time, Dinah is apparently still in Shechem's household.
+❤️ Longeth means wanting something badly
 
-Later in the chapter, the Bible says Jacob's sons brought her out from Shechem's house, showing she had remained there during these discussions.
+🗣️ Hamor speaks for his son
 
-🤝 Hamor begins peace negotiations
+🙏 He asks for Dinah in marriage
 
-🗣️ Communed means discussed together
-
-🏠 Dinah appears to still be in Shechem's house
-
-➡️ Jacob's sons arrive
-
----
-
-## 😡 The Men Were Grieved… And Very Wroth
-
-When Jacob's sons hear what happened, they immediately return from the fields.
-
-The Bible says they were **grieved**, meaning they were deeply hurt and distressed.
-
-They were also **very wroth**, meaning extremely angry.
-
-The reason is then explained.
-
-Shechem had **"wrought folly in Israel."**
-
-The phrase **wrought folly** means he committed a shameful and wicked act.
-
-By sleeping with Jacob's unmarried daughter through force, Shechem dishonored Dinah, disgraced her family, and violated God's moral standard.
-
-The Bible says,
-
-**"Which thing ought not to be done."**
-
-In other words, this was not merely considered inappropriate.
-
-It was a serious sin against both God and the family.
-
-😔 Grieved means deeply distressed
-
-😡 Wroth means extremely angry
-
-⚠️ Wrought folly means committing a shameful sin
-
-📖 Shechem dishonored Dinah and her family
-
-➡️ Hamor makes an offer
-
----
+➡️ He follows with a bigger proposal
 
 ## 🤝 Make Ye Marriages With Us
 
-Hamor proposes that the two families become joined through marriage.
+Hamor proposes that the two families intermarry going forward.
 
-He says,
+His people would marry into Jacob's family, and Jacob's family would marry into his.
 
-"Give your daughters unto us, and take our daughters unto you."
+This is bigger than one wedding.
 
-He is suggesting that Jacob's family and the people of Shechem become one larger community through intermarriage.
+He is proposing that two whole communities become one.
 
-He also offers them the freedom to live there, trade, buy land, and prosper.
+🤝 Hamor proposes ongoing intermarriage
 
-Although Jacob's family was already camping nearby, Hamor is now offering them the legal right to settle permanently among his people and enjoy the benefits of the land.
+👨‍👩‍👧 Both families would marry into each other
 
-Hamor's proposal may have been sincere, but it also served another purpose.
+🏡 Two communities would become one
 
-If Jacob accepted the marriage, it would settle the conflict caused by Shechem's actions.
+📖 Hamor's offer reaches far past Dinah
 
-🤝 Hamor proposes intermarriage
+## 🏡 Dwell And Trade Ye Therein
 
-🏡 He offers permanent settlement
+Hamor also offers Jacob's family the right to settle in the land permanently.
 
-💰 Jacob's family may buy, trade, and prosper there
+They could trade, buy property, and build a life there.
 
-➡️ Shechem makes his own appeal
+Jacob's family had already been camping nearby.
 
----
+This offer would make that arrangement official and legal.
+
+🏡 Hamor offers permanent settlement
+
+💰 Trade and property rights included
+
+🏕️ Jacob's family had only been camping
+
+📖 The offer makes their stay official
+
+## 🙏 Let Me Find Grace In Your Eyes
+
+Shechem now speaks for himself, not through his father.
+
+Find grace in your eyes means he is asking for their favor and approval.
+
+He offers to pay whatever price they ask.
+
+His words sound humble, but the harm is already done.
+
+🗣️ Shechem speaks for himself now
+
+🙏 Find grace means he seeks their favor
+
+💰 He offers to pay any price
+
+➡️ His offer cannot undo the harm
 
 ## 💰 Ask Me Never So Much Dowry And Gift
 
-Shechem now speaks personally.
+A dowry was a payment given to the bride's family before a wedding.
 
-He tells Jacob and Dinah's brothers,
+It is also called a bride price.
 
-"Whatever you ask, I will give."
+Shechem says he will pay whatever amount they name.
 
-A **dowry** or **bride-price** was a payment given to the bride's family before marriage.
+His offer shows how determined he is to marry Dinah.
 
-Shechem is willing to pay whatever amount they request if they will allow him to marry Dinah.
+No amount of money could undo what already happened to her.
 
-His offer shows how determined he is to make Dinah his wife.
+💰 Dowry means a bride price payment
 
-However, no amount of money could erase what had already happened.
+🤲 Shechem offers to pay any amount
 
-💰 Dowry was the customary bride-price
+❤️ His determination is real
 
-❤️ Shechem offers whatever they ask
+📖 Money cannot undo what happened
 
-⚠️ Wealth cannot undo his sin
-
-➡️ Jacob's sons answer with deceit
-
-# Genesis 34:13–24
-
-# ✂️ The Brothers' Requirements
-
+# Genesis 34:13-17
+# 🎭 The Brothers Answer With A Trap
 ---
+## 🎭 Answered Shechem And Hamor His Father Deceitfully
 
-## 🎭 The Sons Of Jacob Answered… Deceitfully
+Deceitfully means Jacob's sons intentionally lied.
 
-Jacob's sons do not answer Hamor and Shechem honestly.
+Their words sound like they are agreeing to the marriage.
 
-The Bible says they answered **deceitfully**, meaning they intentionally spoke in a way that would trick them.
+Their hearts are already planning revenge for what happened to Dinah.
 
-Although they appear willing to allow the marriage, they are secretly planning revenge for what Shechem did to Dinah.
+Peaceful words are about to hide a violent plan.
 
-Their words sound peaceful…
+🎭 Deceitfully means intentionally lying
 
-But their hearts are preparing for violence.
+🗣️ Their words sound like agreement
 
-🎭 Deceitfully means to intentionally deceive
+⚔️ Their hearts are planning revenge
 
-😡 The brothers are secretly planning revenge
+➡️ They set a condition first
 
-⚠️ Their true intentions are hidden
+## ✂️ To One That Is Uncircumcised
 
-➡️ The brothers give their condition
+Circumcision was the sign of God's covenant with Abraham's family.
 
----
+Uncircumcised means a man who did not carry that sign.
 
-## ✂️ We Cannot Give Our Sister To One That Is Uncircumcised
+Reproach means shame or disgrace.
 
-The brothers say they cannot allow Dinah to marry an **uncircumcised** man.
+The brothers say marrying outside the covenant would shame their family.
 
-Circumcision is the removal of the foreskin, the skin covering the tip of the penis.
+That claim is true.
 
-Years earlier, God commanded Abraham that every male in his household be circumcised.
+They use it to hide their real plan.
 
-It became the outward sign of God's covenant with Abraham and his descendants.
+✂️ Circumcision marked God's covenant people
 
-The brothers are speaking about something that is truly part of God's covenant.
+😔 Reproach means shame or disgrace
 
-However, they are not using it for God's purposes.
+⚠️ Their claim about shame was true
 
-They are using it as part of their trap.
-
-✂️ Circumcision removes the foreskin
-
-📖 God gave circumcision to Abraham
-
-🤝 It was the sign of God's covenant
-
-⚠️ The brothers misuse something holy
-
-➡️ It Were A Reproach Unto Us
-
----
-
-## 😔 It Were A Reproach Unto Us
-
-A **reproach** is something that brings shame, disgrace, or dishonor.
-
-The brothers claim it would bring shame upon their family if Dinah married someone outside God's covenant people.
-
-Although this statement is true, they are not saying it out of faith.
-
-They are using a true principle to hide their plan for revenge.
-
-😔 Reproach means disgrace or shame
-
-📖 God's covenant people were to remain separate
-
-⚠️ The brothers use the truth deceptively
-
-➡️ If Ye Will Be As We Be
-
----
+📖 They twist a true reason into a trap
 
 ## 🤝 If Ye Will Be As We Be
 
-The brothers give one condition.
+The brothers set one condition for the marriage.
 
-Every male in the city must become circumcised just as they are.
+Every male in the city must be circumcised, just like Jacob's own family.
 
-Only then, they say, can the marriage happen.
+They frame it as an invitation into God's covenant people.
 
-They make it sound like they are inviting the people of Shechem into the covenant family.
+In reality, it is the first step of their trap.
 
-In reality, they are setting a trap.
+🤝 One condition is set
 
-🤝 Every male must be circumcised
+✂️ Every male must be circumcised
 
-📖 The brothers pretend this is about God's covenant
+🎭 It sounds like a real invitation
 
-⚠️ It is actually part of their plan
+➡️ It secretly begins their trap
 
-➡️ Then Will We Give Our Daughters Unto You
+## 👨‍👩‍👧 We Will Become One People
 
+If the men agree, the brothers promise full intermarriage between the two families.
+
+Shechem's people and Jacob's people would join into a single community over time.
+
+This matches exactly what Hamor already proposed.
+
+The brothers are simply repeating Hamor's own offer back to him.
+
+👨‍👩‍👧 Full intermarriage is promised
+
+🏡 Two peoples would become one
+
+🔁 This matches Hamor's earlier offer
+
+➡️ One condition still stands
+
+## 🚶 Then Will We Take Our Daughter, And We Will Be Gone
+
+The brothers give Hamor a clear ultimatum.
+
+If the men refuse circumcision, Dinah leaves and there is no deal at all.
+
+No marriage, no alliance, no relationship between the two families.
+
+The brothers sound firm, but their real plan does not depend on this answer either way.
+
+🚶 The brothers give an ultimatum
+
+🙅 No circumcision means no deal
+
+📜 No marriage or alliance either way
+
+➡️ Their trap works regardless of the answer
+
+# Genesis 34:18-24
+# ✂️ The City Agrees
 ---
+## 😊 Their Words Pleased Hamor
 
-## 👨‍👩‍👧 Then Will We Give Our Daughters Unto You… And We Will Take Your Daughters Unto Us
+Hamor and Shechem accept the brothers' proposal gladly.
 
-The word **"daughters"** is speaking generally.
+They believe the offer is sincere.
 
-It does not mean Jacob suddenly has many unmarried daughters.
+Neither of them realizes it is actually a trap.
 
-The brothers are talking about future generations.
+They think peace, not violence, is about to follow.
 
-If the agreement is accepted, people from Jacob's family would marry people from Shechem's people, and vice versa.
+😊 Hamor believes the offer
 
-The two groups would eventually become one people through marriage.
+🤝 He expects real peace
 
-This is exactly what Hamor had proposed earlier.
+⚠️ He cannot see the trap
 
-👨‍👩‍👧 "Daughters" refers to future generations
+➡️ Shechem agrees immediately
 
-💍 The two groups would freely intermarry
+## 💍 The Young Man Deferred Not To Do The Thing
 
-🏡 They would become one people
+Deferred not means Shechem did not delay or hesitate.
 
-➡️ We Will Dwell With You
+He agrees to be circumcised right away.
 
----
+The Bible says he delighted in Jacob's daughter, meaning he truly wanted to marry her.
 
-## 🏕️ We Will Dwell With You, And We Will Become One People
+It also calls him more honourable than his father's whole house, meaning the city respected him highly.
 
-The brothers promise that if everyone is circumcised, Jacob's family will remain there permanently.
+That respect did not make his earlier sin any less real.
 
-Instead of simply camping outside the city, the two communities would live together.
+⏱️ Deferred not means he did not delay
 
-Their families…
+💍 Shechem agrees at once
 
-Their businesses…
+👑 The city respected him highly
 
-Their future generations…
+📖 Respect does not erase his sin
 
-Would all become united.
+## 🚪 Came Unto The Gate Of Their City
 
-Again, this is only part of the deception.
+The city gate was the ancient world's public meeting place.
 
-🏕️ Jacob's family promises to remain
+Leaders gathered there to settle business and make announcements.
 
-🤝 The two communities would unite
+Hamor brings this proposal before the whole city, not just his own household.
 
-👨‍👩‍👧 Future generations would become one people
+A decision this large needed public agreement.
 
-➡️ If Ye Will Not Hearken
+🚪 The gate was the public meeting place
 
----
+⚖️ Leaders settled business there
 
-## 🚶 If Ye Will Not Hearken Unto Us
+🗣️ Hamor presents the offer publicly
 
-**Hearken** means **to listen** or **to obey.**
-
-The brothers tell Hamor that if the men refuse circumcision, they will simply take Dinah and leave.
-
-There will be no marriage.
-
-No agreement.
-
-No relationship between the two families.
-
-👂 Hearken means to listen or obey
-
-🚶 The brothers threaten to leave
-
-➡️ Their Words Pleased Hamor
-
----
-
-## 😊 Their Words Pleased Hamor And Shechem
-
-Hamor and Shechem gladly accept the proposal.
-
-They believe the brothers are being sincere.
-
-Neither of them realizes they are being deceived.
-
-Instead, they believe peace is about to be restored.
-
-😊 Hamor believes the proposal
-
-🤝 They think reconciliation is possible
-
-⚠️ They do not know it is a trap
-
-➡️ The Young Man Deferred Not
-
----
-
-## ❤️ The Young Man Deferred Not To Do The Thing
-
-The word **deferred** means **delayed**.
-
-Shechem **"deferred not,"** meaning he did not delay.
-
-He immediately agreed to be circumcised.
-
-The Bible says he **delighted in Jacob's daughter**, meaning he strongly desired to marry Dinah.
-
-It also says he was **more honorable than all the house of his father.**
-
-This does not mean he was righteous.
-
-He had already committed a terrible sin.
-
-It means he was highly respected and held in high esteem among the people of the city.
-
-❤️ Deferred not means he did not delay
-
-💍 Shechem eagerly agrees
-
-👑 He was respected among his people
-
-➡️ Hamor Speaks At The City Gate
-
----
-
-## 🚪 Hamor And Shechem Came Unto The Gate Of Their City
-
-The **city gate** was the center of public life.
-
-It was where leaders met.
-
-Business agreements were made.
-
-Court cases were heard.
-
-Important announcements were given.
-
-Instead of speaking privately, Hamor presents the proposal before the city's leading men.
-
-🚪 The city gate was the public meeting place
-
-⚖️ Leaders gathered there
-
-🗣️ Hamor presents the proposal publicly
-
-➡️ These Men Are Peaceable With Us
-
----
+➡️ He makes his case to the men
 
 ## 🤝 These Men Are Peaceable With Us
 
-Hamor tells the people that Jacob's family has peaceful intentions.
+Hamor tells the city that Jacob's family means no harm.
 
-He encourages everyone to let them live in the land.
+He points out that the land is large enough for everyone.
 
-He also says they can trade, buy property, and prosper together.
+He encourages the men to let Jacob's family settle, trade, and prosper there.
 
-In other words, both groups can benefit from living side by side.
+His speech is meant to make the deal sound like an easy win for the whole city.
 
-🤝 Hamor describes Jacob's family as peaceful
+🤝 Hamor calls Jacob's family peaceful
 
-🏡 He invites them to settle permanently
+🗺️ He says the land is large enough
 
-💰 Trade and business would benefit both groups
+💰 He promises trade and prosperity
 
-➡️ Let Us Take Their Daughters
+➡️ He adds one more reason
 
+## 🐑 Shall Not Their Cattle And Their Substance Be Ours
+
+Hamor gives the city one more reason to agree.
+
+Jacob's family was wealthy, with large flocks and many possessions.
+
+Hamor tells the men that all of it will eventually belong to everyone in the city.
+
+His speech reveals that greed, not just peace, is winning the argument.
+
+🐑 Jacob's family was wealthy
+
+💰 Hamor promises shared riches
+
+😏 Greed helps seal the deal
+
+📖 Self interest can disguise itself as friendship
+
+## ✂️ Every Male Was Circumcised
+
+All that went out of the gate of his city means every man who belonged to that city.
+
+Every one of them agrees, without knowing what is coming.
+
+None of them realize Jacob's sons are setting a trap.
+
+Their agreement is about to cost them everything.
+
+🚪 The phrase means every man of the city
+
+✂️ All of them are circumcised
+
+⚠️ None of them know the trap ahead
+
+➡️ Simeon and Levi act next
+
+# Genesis 34:25-29
+# ⚔️ Simeon And Levi Take Revenge
 ---
+## 🩹 On The Third Day, When They Were Sore
 
-## 👨‍👩‍👧 Let Us Take Their Daughters… And Give Them Our Daughters
+The third day after circumcision was one of the most painful days of healing.
 
-Hamor repeats the idea of intermarriage.
+Sore means the men's wounds were still fresh and tender.
 
-The people of Shechem would marry into Jacob's family.
+Walking, let alone fighting, would have been difficult for nearly all of them.
 
-Jacob's descendants would marry into theirs.
+Jacob's sons wait for the exact moment the men are weakest.
 
-Over time, the two peoples would become one united community.
+🩹 The men are still healing
 
-👨‍👩‍👧 Hamor proposes intermarriage
+😖 Sore means painful and tender
 
-🤝 The two peoples would become one
+🏃 Fighting back would be hard
 
-➡️ Shall Not Their Cattle… Be Ours?
+📖 The brothers choose their moment carefully
 
----
+## ⚔️ Took Each Man His Sword
 
-## 🐑 Shall Not Their Cattle… And Their Substance… Be Ours?
+Simeon and Levi are named here specifically.
 
-Now Hamor gives another reason.
+They are Dinah's full brothers, sons of the same mother, Leah.
 
-Jacob is extremely wealthy.
+Each man carries his own sword into the city.
 
-God has blessed him with large flocks, herds, servants, and possessions.
+Boldly means they walked in with confidence, knowing the men could not resist.
 
-If Jacob's family becomes part of their community, Hamor tells the people that all of Jacob's prosperity will eventually benefit everyone.
+They kill every male in the city.
 
-His speech reveals that money and possessions are helping convince the men.
+⚔️ Simeon and Levi lead the attack
 
-They are not only thinking about peace.
+🗡️ Each brother carries his own sword
 
-They are thinking about profit.
+💪 Boldly means confident, unafraid
 
-🐑 Jacob is extremely wealthy
+➡️ Every male in the city dies
 
-💰 Hamor points to the financial benefits
+## 🏠 Took Dinah Out Of Shechem's House
 
-📈 The people expect to share in Jacob's prosperity
+Hamor and Shechem are both killed in the attack.
 
-➡️ Every Male Was Circumcised
+This answers a question left open earlier in the chapter.
 
----
+Dinah had stayed in Shechem's house the whole time these talks were happening.
 
-## ✂️ All That Went Out Of The Gate Of His City… Were Circumcised
-
-The phrase **"all that went out of the gate of his city"** refers to the men who belonged to the city.
-
-The city gate was where the citizens and leaders gathered for official matters.
-
-After hearing Hamor's proposal, the men accepted it.
-
-Every male agreed to be circumcised.
-
-None of them realized they had been deceived by Jacob's sons.
-
-🚪 The phrase refers to the men of the city
-
-👨 The citizens accepted Hamor's proposal
-
-✂️ Every male was circumcised
-
-⚠️ They did not know they were walking into a trap
-
-➡️ Simeon and Levi carry out their plan
-
-# Genesis 34:25–31
-
-# ⚔️ The Brothers' Revenge
-
----
-
-## 🩹 It Came To Pass On The Third Day, When They Were Sore
-
-Three days after all the men of the city were circumcised, they were still recovering.
-
-After circumcision, it is normal for the body to be painful and tender for several days.
-
-The third day would have been one of the most painful stages of healing, making it difficult to walk, fight, or defend themselves.
-
-Jacob's sons had planned this carefully.
-
-They knew the men would be at their weakest.
-
-🩹 The men were recovering from circumcision
-
-😖 Sore means painful and weak from their wounds
-
-📖 The brothers waited until the best time to attack
-
-➡️ Simeon and Levi attack
-
----
-
-## ⚔️ Simeon And Levi… Took Each Man His Sword
-
-Only **Simeon and Levi** are mentioned here.
-
-These were Dinah's full brothers, the sons of Jacob and Leah.
-
-Each man took his own sword and entered the city.
-
-The Bible says they came **boldly**, meaning they entered confidently without fear because they knew the men could not effectively resist.
-
-They then **slew all the males**, meaning they killed every male in the city.
-
-⚔️ Simeon and Levi carry out the attack
-
-🗡️ Each man brings his own sword
-
-💪 Boldly means confidently, knowing the men could not fight back
-
-⚠️ Every male in the city is killed
-
-➡️ Hamor and Shechem are killed
-
----
-
-## ⚖️ They Slew Hamor And Shechem… And Took Dinah Out Of Shechem's House
-
-Simeon and Levi kill both Hamor and his son Shechem.
-
-The Bible then says they **took Dinah out of Shechem's house**.
-
-This answers an earlier question in the chapter.
-
-Dinah had apparently remained in Shechem's house during the marriage negotiations.
-
-She had not yet returned to Jacob's family.
-
-Only after Shechem was killed did her brothers bring her home.
+Only after Shechem's death do her brothers finally bring her home.
 
 ⚖️ Hamor and Shechem are killed
 
-🏠 Dinah had remained in Shechem's house
+🏠 Dinah had stayed in Shechem's house
 
-❤️ Her brothers bring her back home
+❤️ Her brothers finally bring her home
 
-➡️ The rest of Jacob's sons arrive
+➡️ The rest of the brothers arrive
 
----
+## 💰 Spoiled The City
 
-## 🏙️ The Sons Of Jacob Came Upon The Slain, And Spoiled The City
+The text shifts from naming only Simeon and Levi to naming the sons of Jacob.
 
-At this point, the Bible changes from mentioning only **Simeon and Levi** to saying **"the sons of Jacob."**
+That shift shows the rest of the brothers join in once the fighting ends.
 
-This indicates that the rest of Jacob's sons now join in after the fighting is over.
+Spoiled means they stripped the city of everything valuable.
 
-The word **spoiled** means they stripped the city of its possessions.
-
-In other words, they looted it.
-
-They took whatever they considered valuable because they believed the city had dishonored their sister.
-
-This means Simeon and Levi carried out the killings, while the other brothers participated in taking the city's possessions.
-
-👨 Simeon and Levi attack first
+They believed the whole city shared the blame for what happened to Dinah.
 
 👨‍👦 The other brothers join afterward
 
-💰 Spoiled means they looted the city
+💰 Spoiled means stripped of valuables
 
-➡️ They take everything
+🏙️ They loot the whole city
 
----
+📖 They treat the city as fully guilty
 
-## 🐑 They Took Their Sheep… Oxen… Asses… And All Their Wealth
+## 👩 Their Wives Took They Captive
 
-The brothers take nearly everything that belonged to the people of the city.
+The little ones means the children of the men who were just killed.
 
-They seize the sheep, cattle, donkeys, and everything valuable that was found both inside the city and in the surrounding fields.
+Their wives are taken captive instead of killed.
 
-This was more than revenge.
+The text does not say how many people this included.
 
-It was the complete plundering of the city.
-
-The people lost both their lives and their possessions.
-
-🐑 The livestock is taken
-
-💰 The city's wealth is carried away
-
-🏙️ Nothing valuable is left behind
-
-➡️ Their Families Are Taken
-
----
-
-## 👩 All Their Little Ones And Their Wives Took They Captive
-
-The **little ones** were the children.
-
-The **wives** were the women whose husbands had just been killed.
-
-Instead of killing them, Jacob's sons took them captive.
-
-The Bible does not tell us exactly how many people this included.
-
-It was likely a large number, since every household would have had women and children.
-
-This greatly increased the size of Jacob's camp almost overnight.
-
-They now possessed not only more animals and possessions, but also many captives.
+Jacob's camp grows suddenly much larger, filled with people who did not choose to be there.
 
 👶 Little ones means the children
 
 👩 The wives are taken captive
 
-🏕️ Jacob's camp suddenly becomes much larger
+🏕️ Jacob's camp grows overnight
 
-➡️ Jacob rebukes Simeon and Levi
+➡️ These captives never chose this
 
+# Genesis 34:30-31
+# 😟 Jacob's Fear And His Sons' Answer
 ---
-
-## 😟 Ye Have Troubled Me
-
-Jacob is deeply disturbed by what Simeon and Levi have done.
-
-He says,
-
-**"Ye have troubled me."**
-
-In other words,
-
-"You have brought great trouble upon our family."
-
-Jacob's concern is not that Dinah was unimportant.
-
-His concern is that their actions have now placed the entire family in danger.
-
-😟 Jacob fears the consequences
-
-👨‍👩‍👧 He worries about the whole family
-
-➡️ To Make Me To Stink
-
----
-
-## 👃 To Make Me To Stink Among The Inhabitants Of The Land
-
-This is an expression.
+## 👃 Ye Have Troubled Me To Make Me To Stink
 
 Jacob is not talking about a physical smell.
 
-To **"make me to stink"** means to give someone a terrible reputation.
+To make me to stink means to ruin someone's reputation completely.
 
-Jacob is saying,
+Jacob is telling Simeon and Levi that their violence has made the whole family look dangerous.
 
-"You have made the people of this land hate us."
+The neighboring nations will now see them as people to fear and attack, not trust.
 
-The surrounding nations would now see Jacob's family as violent and dangerous.
+👃 To stink means to ruin a reputation
 
-👃 "Make me to stink" means to ruin someone's reputation
+😡 Jacob fears his sons' violence
 
-😡 The surrounding people would now hate Jacob's family
+🌍 Neighbors will now see them as dangerous
 
-➡️ The Canaanites And The Perizzites
-
----
-
-## 🌍 The Canaanites And The Perizzites
-
-The **Canaanites** were the many people groups already living throughout the land of Canaan.
-
-The **Perizzites** were another Canaanite people group who lived in villages and rural areas throughout the land.
-
-Jacob mentions both because they lived nearby.
-
-News of what happened at Shechem could quickly spread among them.
-
-🌍 The Canaanites lived throughout the land
-
-🏕️ The Perizzites were another nearby people group
-
-➡️ I Being Few In Number
-
----
+📖 A reputation can shatter fast
 
 ## 👨‍👩‍👦 I Being Few In Number
 
-Jacob says his family is **few in number.**
+Jacob's household was still small compared to the surrounding cities and tribes.
 
-Compared to all the surrounding cities and tribes, Jacob's household was still small.
+The Canaanites and the Perizzites were the peoples living closest to them.
 
-Although he had many servants and a large family, they were greatly outnumbered by the combined populations living throughout Canaan.
+Jacob fears they could unite and attack his family in revenge.
 
-Jacob fears that the neighboring people will unite against them.
+If that happened, he believes his whole household could be wiped out.
 
-👨 Jacob's household is small compared to the surrounding nations
+👨‍👩‍👦 Jacob's family was small
 
-⚔️ He fears they cannot defend themselves
+🌍 The Canaanites and Perizzites lived nearby
 
-➡️ They Shall Gather Themselves Together
+⚔️ Jacob fears a united attack
 
----
+📖 He believes his whole house is at risk
 
-## ⚔️ They Shall Gather Themselves Together Against Me
+## 💔 Should He Deal With Our Sister As With An Harlot
 
-The word **"they"** refers to the surrounding people groups, including the Canaanites and the Perizzites.
+Harlot means a prostitute.
 
-Jacob fears they will form an alliance to attack his family in revenge for what happened at Shechem.
+Simeon and Levi answer their father with a sharp question, not an apology.
 
-If that happened, Jacob believed his entire household could be destroyed.
+They believe Shechem treated Dinah as if she had no honor worth protecting.
 
-⚔️ "They" refers to the surrounding nations
+Their anger over Dinah is understandable, but their violence went far beyond what God ever commanded.
 
-😨 Jacob fears a united attack
+The chapter ends here, with the conflict still unresolved.
 
-🏕️ He worries his entire household could perish
+💔 Harlot means a prostitute
 
-➡️ Simeon And Levi Respond
+😠 The brothers refuse to apologize
 
----
+⚖️ Their anger was fair, their violence was not
 
-## 😠 Should He Deal With Our Sister As With An Harlot?
-
-Simeon and Levi answer their father with a question.
-
-A **harlot** is a prostitute.
-
-They are saying,
-
-"Should Shechem have treated our sister like a woman who could simply be taken and used without honor or marriage?"
-
-To them, Shechem had brought shame upon Dinah and their entire family.
-
-Although their anger over what happened to Dinah was understandable, the violence and destruction they carried out went far beyond what God had commanded.
-
-This brief question ends the chapter and leaves the conflict unresolved.
-
-😠 Simeon and Levi defend their actions
-
-💔 Harlot refers to a prostitute
-
-⚖️ They believed they were defending their sister's honor
-
-➡️ The consequences of their actions continue into the next chapter`;
+➡️ The chapter closes without resolving the conflict
+`.trim();
 
 export const GENESIS_THIRTY_FOUR_PERSONAL_SECTIONS = parseGenesisThirtyFourRawNotes(GENESIS_THIRTY_FOUR_RAW_NOTES);
