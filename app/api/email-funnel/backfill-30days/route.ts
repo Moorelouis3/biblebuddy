@@ -5,17 +5,8 @@ import { sendFunnelEmailViaSysteme, recordEmailSent, updateEmailFunnelState } fr
 export const runtime = "nodejs";
 export const maxDuration = 120;
 
-function isAuthorized(request: NextRequest) {
-  const secret = process.env.CRON_SECRET;
-  if (!secret) return true;
-  return request.headers.get("authorization") === `Bearer ${secret}`;
-}
-
 // Backfill: Send Day 1 emails to all users who signed up in the last 30 days
 export async function POST(request: NextRequest) {
-  if (!isAuthorized(request)) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
 
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
