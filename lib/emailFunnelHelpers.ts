@@ -1,50 +1,16 @@
 import { createClient } from "@supabase/supabase-js";
-import { EmailDay, EmailVersion, getEmailTemplate } from "./emailFunnelTemplates";
+import { EmailDay, EmailVersion } from "./emailFunnelTemplates";
+import { sendFunnelEmailViaTag } from "./systemeTagSender";
 
+// Systeme.io has no transactional send API. Instead we tag the contact and
+// a Systeme.io automation ("tag added -> send email") does the sending.
 export async function sendFunnelEmailViaSysteme(
   email: string,
   day: EmailDay,
   version?: EmailVersion,
   apiKey?: string,
 ): Promise<{ ok: boolean; error?: string; response?: any }> {
-  const key = apiKey || process.env.SYSTEME_API_KEY;
-  if (!key) {
-    return { ok: false, error: "SYSTEME_API_KEY not configured" };
-  }
-
-  const template = getEmailTemplate(day, version);
-  if (!template) {
-    return { ok: false, error: `Email template not found for day ${day}` };
-  }
-
-  try {
-    const res = await fetch("https://api.systeme.io/api/emails/send", {
-      method: "POST",
-      headers: {
-        "X-API-Key": key,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email,
-        subject: template.subject,
-        body: template.body,
-        html: formatEmailAsHtml(template.body),
-      }),
-    });
-
-    if (!res.ok) {
-      const detail = await res.text();
-      console.error(`[EMAIL_FUNNEL] Systeme.io error: ${res.status} - ${detail}`);
-      return { ok: false, error: `Systeme.io returned ${res.status}`, response: detail };
-    }
-
-    const data = await res.json();
-    return { ok: true, response: data };
-  } catch (err) {
-    const message = err instanceof Error ? err.message : "Unknown error";
-    console.error("[EMAIL_FUNNEL] Request error:", message);
-    return { ok: false, error: message };
-  }
+  return sendFunnelEmailViaTag(email, day, version, apiKey);
 }
 
 export async function determineUserTier(
