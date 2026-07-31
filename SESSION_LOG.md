@@ -310,3 +310,7 @@ Next up: Numbers 30
 ## 2026-07-31T14:52:56Z (hourly chapter notes run)
 Chapter: Numbers 30 | Duration: 6 min | Sections: 7 | Cards: 32 | Status: pass
 Next up: Numbers 31
+
+## 2026-07-31T16:57:54Z (hourly chapter notes run)
+Chapter: Genesis 32 | Duration: 12 min | Sections: 9 | Cards: 36 | Status: pass
+Next up: Genesis 33

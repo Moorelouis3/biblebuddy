@@ -3997,6 +3997,63 @@
           "at": "2026-07-31T15:42:04Z"
         }
       ]
+    },
+    {
+      "book": "Genesis",
+      "chapter": 32,
+      "startedAt": "2026-07-31T16:46:07Z",
+      "finishedAt": "2026-07-31T16:57:54Z",
+      "durationMinutes": 12,
+      "sections": 9,
+      "cards": 36,
+      "verses": 32,
+      "notes": "Redo-backlog chapter (first entry in data/bible-notes-style-redo-remaining.json), regenerated from scratch to match docs/bible-study-note-style.md, per the SKILL.md rule that the redo backlog takes priority over normal forward canonical-order progress. Jacob's return to Canaan: the angels at Mahanaim, the humble messengers sent ahead to Esau (thy servant/my lord language), the report of Esau's four hundred men, Jacob dividing his camp in two and praying by name to the God of Abraham and Isaac, the massive staged gift of livestock sent ahead in waves, the night alone at the Jabbok, the wrestling match with the unnamed man until daybreak, the hip touched out of joint, the name change from Jacob to Israel, Peniel (\"I have seen God face to face\"), and the closing note on why Israel does not eat the sinew that shrank. Density 1.13 cards/verse (36/32). Verified with scripts/check_bible_note_style.py (0 problems on first run), parser check (9/9 sections, 36 cards), and npx tsc --noEmit -p . (clean). data/bible-notes-style-redo-remaining.json's Genesis 32 entry removed from the front of the list as part of this commit; next redo target is Genesis 33.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-31T16:46:07Z"
+        },
+        {
+          "name": "initial next-chapter lookup via data/bible-notes-progress-log.json: canonical order pointed to Numbers 31, KJV text fetched for it",
+          "at": "2026-07-31T16:47:25Z"
+        },
+        {
+          "name": "read docs/bible-study-note-style.md and .claude/skills/bible-notes/SKILL.md in full; SKILL.md's redo-backlog rule found data/bible-notes-style-redo-remaining.json non-empty, redirecting the actual target from Numbers 31 to Genesis 32 (first entry in the backlog)",
+          "at": "2026-07-31T16:54:49Z"
+        },
+        {
+          "name": "KJV text fetched for Genesis 32 (32 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-31T16:54:49Z"
+        },
+        {
+          "name": "lib/genesisThirtyTwoSource.ts written (regenerated to new style spec, 9 sections, 36 cards), keeping existing type/const/function names since wiring already existed",
+          "at": "2026-07-31T16:54:49Z"
+        },
+        {
+          "name": "confirmed lib/bibleReaderStudyNotes.ts wiring already correct for Genesis 32 (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call all pre-existing) \u2014 no wiring changes needed per redo-backlog rule",
+          "at": "2026-07-31T16:54:49Z"
+        },
+        {
+          "name": "scripts/check_bible_note_style.py passed clean on first run (36 cards, 0 problems)",
+          "at": "2026-07-31T16:54:49Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections('genesis', 32) -> 9 sections, 36 cards",
+          "at": "2026-07-31T16:54:49Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-31T16:54:49Z"
+        },
+        {
+          "name": "data/bible-notes-style-redo-remaining.json popped (Genesis 32 removed from front, 115 entries left, next is Genesis 33)",
+          "at": "2026-07-31T16:56:18Z"
+        },
+        {
+          "name": "progress files logged: data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md",
+          "at": "2026-07-31T16:57:54Z"
+        }
+      ]
     }
   ]
 }
