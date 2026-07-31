@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { createClient } from "@supabase/supabase-js";
 
 export const runtime = "nodejs";
 export const maxDuration = 10;
@@ -11,11 +12,13 @@ export const maxDuration = 10;
 export async function POST(request: NextRequest) {
   let email: string | undefined;
   let firstName: string | undefined;
+  let userId: string | undefined;
 
   try {
     const body = await request.json();
     email = body.email;
     firstName = body.firstName;
+    userId = body.userId;
   } catch {
     return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
   }
@@ -45,6 +48,30 @@ export async function POST(request: NextRequest) {
       const detail = await res.text();
       console.error("[SYSTEME_SYNC] Failed to add contact:", res.status, detail);
       return NextResponse.json({ error: "Systeme.io sync failed." }, { status: 502 });
+    }
+
+    // Initialize email funnel state if userId is provided
+    if (userId) {
+      try {
+        const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+        const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+        if (supabaseUrl && serviceKey) {
+          const supabaseAdmin = createClient(supabaseUrl, serviceKey, {
+            auth: { autoRefreshToken: false, persistSession: false },
+          });
+
+          await supabaseAdmin.from("email_funnel_state").upsert(
+            {
+              user_id: userId,
+              signup_timestamp: new Date().toISOString(),
+            },
+            { onConflict: "user_id" },
+          );
+        }
+      } catch (funnelError) {
+        console.error("[SYSTEME_SYNC] Error initializing funnel state:", funnelError);
+        // Non-blocking error - don't fail the signup
+      }
     }
 
     return NextResponse.json({ ok: true });

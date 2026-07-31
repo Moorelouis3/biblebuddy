@@ -47,6 +47,10 @@
     {
       "path": "/api/cron/refresh-fire-streaks",
       "schedule": "0 5,17 * * *"
+    },
+    {
+      "path": "/api/cron/email-funnel-send-all",
+      "schedule": "0 * * * *"
     }
   ],
   "headers": [

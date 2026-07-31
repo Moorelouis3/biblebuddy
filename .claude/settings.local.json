@@ -37,7 +37,8 @@
       "Bash(wc -l c:UsersMooreDesktopbiblebuddy-64b2c5e17859ed53fac72e910f85cda25c78337eappstudy-groups[id]chatpage.tsx)",
       "Bash(grep -E \"\\\\.\\(sql|ts|tsx\\)$\")",
       "Bash(find /c/Users/Moore/Desktop/biblebuddy-64b2c5e17859ed53fac72e910f85cda25c78337e/app/notifications -type f -name *.tsx)",
-      "Bash(find /c/Users/Moore/Desktop/biblebuddy-64b2c5e17859ed53fac72e910f85cda25c78337e/app/bible-buddies -type f -name *.tsx)"
+      "Bash(find /c/Users/Moore/Desktop/biblebuddy-64b2c5e17859ed53fac72e910f85cda25c78337e/app/bible-buddies -type f -name *.tsx)",
+      "Bash(xargs cat)"
     ]
   }
 }

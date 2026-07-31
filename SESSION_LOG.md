@@ -122,3 +122,21 @@ Next up: Leviticus 10
 ## 2026-07-27T16:52:25Z (hourly chapter notes run)
 Chapter: Leviticus 10 | Duration: 6 min | Sections: 5 | Cards: 36 | Status: pass
 Next up: Leviticus 11
+## 2026-07-29 (evening)
+Marching orders: Set up 7-day email funnel job
+Done: Confirmed spec is ready. Added to Life Buddy's Jobs list (scheduled start Saturday 12 AM). Created MARCUS_HANDOFF.md with acceptance and timeline. Ready to implement.
+Next: Implementation starts Saturday at 12 AM
+
+## 2026-07-31 (morning)
+Marching orders: Complete Bible Buddy 7-Day Email Funnel implementation
+Time spent: 3 hours
+Done: Full implementation complete and ready for review
+- Created email_funnel_* tables with RLS (CREATE_EMAIL_FUNNEL_TABLES.sql)
+- Defined all 11 email templates (emailFunnelTemplates.ts)
+- Built helper functions for sending, tier detection, analytics (emailFunnelHelpers.ts)
+- Created 6 API routes for conditional sends + analytics
+- Created 3 cron routes for daily scheduling (send-all, day4, day8)
+- Updated signup flow to initialize funnel state
+- Comprehensive implementation guide with setup/testing checklist (EMAIL_FUNNEL_IMPLEMENTATION.md)
+- Total: 1,510 lines of production code
+Next: Review code, run database migration, configure cron jobs, test with 4 users over 8 days
