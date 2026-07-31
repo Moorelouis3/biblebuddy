@@ -336,3 +336,7 @@ Time spent: ~1 hour
 Done: Built the App Installs analytics dashboard (new dropdown option on /admin/analytics): install banner events logged to master_actions with platform metadata, Installs vs Signups grouped chart (daily/weekly/monthly), platform breakdown, KPI cards with comparisons, lifetime account install-state totals. Deployed (8d27c31c).
 Still open: Louis must run ADD_INSTALL_BANNER_ACTION_TYPES.sql in Supabase before events start recording. iPhone real-device test of the banner still pending.
 Next: Watch first install numbers come in; tweak dashboard if anything reads wrong.
+
+## 2026-07-31T18:57:29Z (hourly chapter notes run)
+Chapter: Genesis 34 | Duration: 10 min | Sections: 7 | Cards: 33 | Status: pass
+Next up: Genesis 35

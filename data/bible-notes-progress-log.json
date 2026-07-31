@@ -4123,6 +4123,55 @@
           "at": "2026-07-31T17:58:11Z"
         }
       ]
+    },
+    {
+      "book": "Genesis",
+      "chapter": 34,
+      "startedAt": "2026-07-31T18:46:00Z",
+      "finishedAt": "2026-07-31T18:56:05Z",
+      "durationMinutes": 10,
+      "sections": 7,
+      "cards": 33,
+      "verses": 31,
+      "notes": "Redo-backlog chapter (third entry in data/bible-notes-style-redo-remaining.json), regenerated from scratch to match docs/bible-study-note-style.md. Dinah and Shechem: Dinah going out to see the women of the land, the assault and Shechem's sudden attachment afterward, Jacob's silence until his sons returned, Hamor and Shechem's marriage proposal and offer of land and wealth, the brothers' deceitful circumcision condition built on a true covenant sign, the whole city agreeing (moved as much by greed as peace), Simeon and Levi's third-day sword attack and the rest of the brothers looting the city and taking captives, and Jacob's fear of retaliation against Simeon and Levi's unrepentant closing question. Density 1.06 cards/verse (33/31). Verified with scripts/check_bible_note_style.py (0 problems on first run), parser check (7/7 sections, 33 cards), and npx tsc --noEmit -p . (clean). data/bible-notes-style-redo-remaining.json's Genesis 34 entry removed from the front of the list as part of this commit; next redo target is Genesis 35.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-31T18:46:49Z"
+        },
+        {
+          "name": "target chapter determined: Genesis 34 (redo mode, first entry in data/bible-notes-style-redo-remaining.json)",
+          "at": "2026-07-31T18:47:05Z"
+        },
+        {
+          "name": "KJV text fetched for Genesis 34 via raw.githubusercontent.com/aruljohn/Bible-kjv/master/Genesis.json",
+          "at": "2026-07-31T18:47:19Z"
+        },
+        {
+          "name": "docs/bible-study-note-style.md read in full; lib/genesisThirtyOneSource.ts reviewed as reference implementation, old lib/genesisThirtyFourSource.ts and SKILL.md also reviewed",
+          "at": "2026-07-31T18:49:00Z"
+        },
+        {
+          "name": "source file written: lib/genesisThirtyFourSource.ts (7 sections, 33 cards)",
+          "at": "2026-07-31T18:53:12Z"
+        },
+        {
+          "name": "style checker: scripts/check_bible_note_style.py clean on first run (33 cards, 0 problems)",
+          "at": "2026-07-31T18:54:10Z"
+        },
+        {
+          "name": "wiring confirmed already correct in lib/bibleReaderStudyNotes.ts (import + preserveExactPhraseBodies genesis 1-50 range already cover chapter 34, no changes needed)",
+          "at": "2026-07-31T18:54:20Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections('Genesis', 34) -> 7 sections, 33 cards",
+          "at": "2026-07-31T18:55:30Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-31T18:56:05Z"
+        }
+      ]
     }
   ]
 }
