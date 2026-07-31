@@ -48,7 +48,7 @@ export async function sendFunnelEmailViaSysteme(
 }
 
 export async function determineUserTier(
-  supabaseAdmin: ReturnType<typeof createClient>,
+  supabaseAdmin: any,
   userId: string,
   since: Date,
 ): Promise<"power_user" | "regular_user" | "ghost"> {
@@ -97,7 +97,7 @@ export async function determineUserTier(
 }
 
 export async function checkIfUserIsPro(
-  supabaseAdmin: ReturnType<typeof createClient>,
+  supabaseAdmin: any,
   userId: string,
 ): Promise<boolean> {
   const { data, error } = await supabaseAdmin
@@ -115,7 +115,7 @@ export async function checkIfUserIsPro(
 }
 
 export async function getSignupTimestamp(
-  supabaseAdmin: ReturnType<typeof createClient>,
+  supabaseAdmin: any,
   userId: string,
 ): Promise<Date | null> {
   const { data, error } = await supabaseAdmin
@@ -133,7 +133,7 @@ export async function getSignupTimestamp(
 }
 
 export async function recordEmailSent(
-  supabaseAdmin: ReturnType<typeof createClient>,
+  supabaseAdmin: any,
   userId: string,
   day: EmailDay,
   version?: EmailVersion,
@@ -152,7 +152,7 @@ export async function recordEmailSent(
 }
 
 export async function updateEmailFunnelState(
-  supabaseAdmin: ReturnType<typeof createClient>,
+  supabaseAdmin: any,
   userId: string,
   updates: Record<string, any>,
 ): Promise<void> {
@@ -167,7 +167,7 @@ export async function updateEmailFunnelState(
 }
 
 export async function updateUserTier(
-  supabaseAdmin: ReturnType<typeof createClient>,
+  supabaseAdmin: any,
   userId: string,
   tier: "power_user" | "regular_user" | "ghost",
 ): Promise<void> {

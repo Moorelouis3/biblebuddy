@@ -83,7 +83,7 @@ export async function GET(request: NextRequest) {
         const result = await sendFunnelEmailViaSysteme(signup.email, day as any);
 
         if (result.ok) {
-          await recordEmailSent(supabaseAdmin, signup.user_id, day, undefined, result.response);
+          await recordEmailSent(supabaseAdmin, signup.user_id, day as any, undefined, result.response);
           await updateEmailFunnelState(supabaseAdmin, signup.user_id, {
             [`day${day}_sent_at`]: new Date().toISOString(),
           });
@@ -104,28 +104,3 @@ export async function GET(request: NextRequest) {
   }
 }
 
-async function recordEmailSent(
-  supabaseAdmin: ReturnType<typeof createClient>,
-  userId: string,
-  day: number,
-  version?: string,
-  response?: any,
-): Promise<void> {
-  await supabaseAdmin.from("email_funnel_sends").insert({
-    user_id: userId,
-    email_day: day,
-    template_version: version ? `day${day}_version_${version}` : `day${day}`,
-    systeme_io_response: response,
-  });
-}
-
-async function updateEmailFunnelState(
-  supabaseAdmin: ReturnType<typeof createClient>,
-  userId: string,
-  updates: Record<string, any>,
-): Promise<void> {
-  await supabaseAdmin
-    .from("email_funnel_state")
-    .update({ ...updates, updated_at: new Date().toISOString() })
-    .eq("user_id", userId);
-}

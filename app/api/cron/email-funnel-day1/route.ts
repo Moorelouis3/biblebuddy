@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { sendFunnelEmailViaSysteme, recordEmailSent, updateEmailFunnelState } from "@/lib/emailFunnelHelpers";
 
+// Helper already imported above, no need to redefine
+
 export const runtime = "nodejs";
 export const maxDuration = 60;
 export const dynamic = "force-dynamic";
@@ -88,28 +90,3 @@ export async function GET(request: NextRequest) {
   }
 }
 
-async function recordEmailSent(
-  supabaseAdmin: ReturnType<typeof createClient>,
-  userId: string,
-  day: number,
-  version?: string,
-  response?: any,
-): Promise<void> {
-  await supabaseAdmin.from("email_funnel_sends").insert({
-    user_id: userId,
-    email_day: day,
-    template_version: version ? `day${day}_version_${version}` : `day${day}`,
-    systeme_io_response: response,
-  });
-}
-
-async function updateEmailFunnelState(
-  supabaseAdmin: ReturnType<typeof createClient>,
-  userId: string,
-  updates: Record<string, any>,
-): Promise<void> {
-  await supabaseAdmin
-    .from("email_funnel_state")
-    .update({ ...updates, updated_at: new Date().toISOString() })
-    .eq("user_id", userId);
-}

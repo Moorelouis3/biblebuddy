@@ -134,17 +134,3 @@ export async function POST(request: NextRequest) {
   }
 }
 
-async function updateEmailFunnelState(
-  supabaseAdmin: ReturnType<typeof createClient>,
-  userId: string,
-  updates: Record<string, any>,
-): Promise<void> {
-  const { error } = await supabaseAdmin
-    .from("email_funnel_state")
-    .update({ ...updates, updated_at: new Date().toISOString() })
-    .eq("user_id", userId);
-
-  if (error) {
-    console.error("[EMAIL_FUNNEL] Error updating funnel state:", error);
-  }
-}

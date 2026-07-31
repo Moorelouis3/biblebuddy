@@ -109,36 +109,3 @@ export async function GET(request: NextRequest) {
   }
 }
 
-async function recordEmailSent(
-  supabaseAdmin: ReturnType<typeof createClient>,
-  userId: string,
-  day: number,
-  version?: string,
-  response?: any,
-): Promise<void> {
-  const { error } = await supabaseAdmin.from("email_funnel_sends").insert({
-    user_id: userId,
-    email_day: day,
-    template_version: version ? `day${day}_version_${version}` : `day${day}`,
-    systeme_io_response: response,
-  });
-
-  if (error) {
-    console.error("[EMAIL_FUNNEL] Error recording email send:", error);
-  }
-}
-
-async function updateEmailFunnelState(
-  supabaseAdmin: ReturnType<typeof createClient>,
-  userId: string,
-  updates: Record<string, any>,
-): Promise<void> {
-  const { error } = await supabaseAdmin
-    .from("email_funnel_state")
-    .update({ ...updates, updated_at: new Date().toISOString() })
-    .eq("user_id", userId);
-
-  if (error) {
-    console.error("[EMAIL_FUNNEL] Error updating funnel state:", error);
-  }
-}
