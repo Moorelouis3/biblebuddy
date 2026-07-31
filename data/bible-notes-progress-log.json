@@ -1365,6 +1365,2487 @@
           "at": "2026-07-27T16:53:22Z"
         }
       ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 11,
+      "startedAt": "2026-07-27T17:46:26Z",
+      "finishedAt": "2026-07-27T17:56:29Z",
+      "durationMinutes": 10,
+      "sections": 10,
+      "cards": 54,
+      "verses": 47,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The clean/unclean animal laws. Covers the land-animal two-part test (cloven hoof + cud-chewing) and its four named exceptions (camel, coney, hare -- all failing the hoof half; swine failing the cud half), the fins-and-scales test for water creatures (quietly excluding shellfish/crustaceans), a 19-name list of unclean birds (mostly predators/scavengers, with the raven's later use to feed Elijah in 1 Kings 17 and the bat's inclusion despite being a mammal), the locust exception among flying creeping things (with a callback to Exodus 10's locust plague and John the Baptist's diet in Matthew 3:4), the graduated 'unclean until even' system for touching vs carrying carcases (contrasted with the permanent 'cut off' penalty elsewhere in the book), the contamination rules for vessels/ovens/water/seed (porous clay had to be broken, not washed; flowing water stayed clean; moisture as the deciding factor), the naturally-dead-animal exception (tightened later in Deuteronomy 14:21, tied to the blood-draining requirement in Leviticus 17:10-14), and the chapter's closing theology -- 'sanctify yourselves...be ye holy, for I am holy,' quoted directly in 1 Peter 1:15-16, and 'to make a difference between the unclean and the clean,' a direct callback to Aaron's teaching charge in chapter 10:10. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com). First parser check came back at 43 cards against 47 verses (~0.91x), below the skill's required 1x floor -- added 11 more cards across the thinner sections (the water-creatures section, the bat split out from the stork/heron/lapwing card, a locust/Exodus-10-plague callback, a 'cut off' penalty contrast, a tortoise/lizard translation-uncertainty card, a contamination-system synthesis card, a blood-draining rationale card, and two closing structural-bookend cards) before re-verifying at 54/47 (~1.15x). Density still lighter than the ~2x aspiration since much of the chapter is dense proper-noun listing (19 named birds, 8 named creeping things) rather than repeatable teaching content -- several old-English species names (ossifrage, gier eagle, cuckow, lapwing, and possibly 'tortoise') carry genuine translation uncertainty even among modern scholars, flagged honestly in the notes rather than guessed at, consistent with the skill's grounding requirement. Parser check passed exactly (10/10 sections, 54 cards), npx tsc --noEmit -p . clean with zero errors. Confirmed via git fetch that local checkout matched origin/main exactly at Leviticus 10 (6bcbba5) before starting, and confirmed via lib/bibleReaderStudyNotes.ts wiring (chapters 1-10 present, no leviticusElevenSource.ts existed yet) that Leviticus 11 was the correct next chapter.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-27T17:47:09Z"
+        },
+        {
+          "name": "next chapter determined: Leviticus 11 (confirmed via git fetch + lib/bibleReaderStudyNotes.ts wiring, ch1-10 present, no leviticusElevenSource.ts existed yet)",
+          "at": "2026-07-27T17:47:23Z"
+        },
+        {
+          "name": "KJV text fetched for Leviticus 11 (47 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-27T17:47:23Z"
+        },
+        {
+          "name": "reviewed reference implementation (leviticusTenSource.ts) for exact voice/format",
+          "at": "2026-07-27T17:47:23Z"
+        },
+        {
+          "name": "wrote lib/leviticusElevenSource.ts",
+          "at": "2026-07-27T17:51:18Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to chapter 11)",
+          "at": "2026-07-27T17:51:18Z"
+        },
+        {
+          "name": "parser check passed: 10 sections, 54 cards (first pass was 43 cards/0.91x, added 11 more cards to clear the 1x floor before re-verifying)",
+          "at": "2026-07-27T17:51:58Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-27T17:56:29Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-27T17:57:02Z"
+        },
+        {
+          "name": "appended SESSION_LOG.md entry",
+          "at": "2026-07-27T17:57:29Z"
+        },
+        {
+          "name": "committed (add2939); local checkout was on detached HEAD matching origin/main, moved main branch pointer before pushing",
+          "at": "2026-07-27T17:57:40Z"
+        },
+        {
+          "name": "pushed to origin/main, confirmed via push output (6bcbba5..add2939 main -> main), exit code 0",
+          "at": "2026-07-27T17:57:50Z"
+        }
+      ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 12,
+      "startedAt": "2026-07-27T18:46:45Z",
+      "finishedAt": "2026-07-27T18:52:35Z",
+      "durationMinutes": 6,
+      "sections": 6,
+      "cards": 20,
+      "verses": 8,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Post-childbirth purification law: the two-stage uncleanness period for a mother of a son (seven days, then thirty-three more days of 'the blood of her purifying,' forty total, with a callback to forty as a recurring biblical number of testing/transition) versus a mother of a daughter (fourteen days, then sixty-six more, eighty total -- exactly double the son's count, with the text's actual reason for the difference left honestly unexplained rather than guessed at). Covers the circumcision command on the eighth day as a direct repeat of the Genesis 17:12 covenant sign, the closing required offering of a lamb plus a bird (or two birds only for families who couldn't afford a lamb, the identical sliding-scale principle already used in chapter 5:7-11's sin offering), and a direct forward callback to Mary and Joseph bringing that exact poor-family two-bird option in Luke 2:22-24 after Jesus's birth. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com/aruljohn/Bible-kjv/master/Leviticus.json), parsed chapter 12 out of the full-book JSON (8 verses). Parser check passed exactly (6/6 sections, 20 cards against 8 verses, ~2.5 cards/verse -- a short, dense chapter with genuine teaching ground on both ends: the mother's law and the Mary/Joseph forward callback). npx tsc --noEmit -p . clean with zero errors. Confirmed via git fetch that local checkout matched origin/main exactly at Leviticus 11 (edef6cb) before starting, and confirmed via lib/bibleReaderStudyNotes.ts wiring (chapters 1-11 present, no leviticusTwelveSource.ts existed yet) that Leviticus 12 was the correct next chapter.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-27T18:46:45Z"
+        },
+        {
+          "name": "next chapter determined: Leviticus 12 (confirmed via git fetch + lib/bibleReaderStudyNotes.ts wiring, ch1-11 present, no leviticusTwelveSource.ts existed yet)",
+          "at": "2026-07-27T18:48:06Z"
+        },
+        {
+          "name": "KJV text fetched for Leviticus 12 (8 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-27T18:47:55Z"
+        },
+        {
+          "name": "reviewed reference implementation (leviticusElevenSource.ts) and wiring pattern for exact voice/format",
+          "at": "2026-07-27T18:48:06Z"
+        },
+        {
+          "name": "wrote lib/leviticusTwelveSource.ts",
+          "at": "2026-07-27T18:49:32Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to chapter 12)",
+          "at": "2026-07-27T18:49:32Z"
+        },
+        {
+          "name": "parser check passed: 6 sections, 20 cards",
+          "at": "2026-07-27T18:50:36Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-27T18:52:02Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-27T18:52:35Z"
+        }
+      ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 13,
+      "startedAt": "2026-07-27T22:46:58Z",
+      "finishedAt": "2026-07-27T22:57:40Z",
+      "durationMinutes": 11,
+      "sections": 12,
+      "cards": 86,
+      "verses": 59,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The longest connected law in the book so far: diagnosing skin conditions (\"leprosy\"/tzaraat, a broader category than modern Hansen's disease). Covers the core two-sign test (white hair growing in the mark + the mark sitting deeper than the skin) reapplied across six different starting scenarios: ordinary skin (vv1-8), an already-advanced case (vv9-11), a healed boil (vv18-23), a burn (vv24-28), the scalp/beard \"scall\" where the marker shifts to yellow thin hair since head/beard hair isn't naturally white (vv29-37), and natural baldness with a new sore in the bald area (vv40-44). Explains the counterintuitive \"leprosy covering the entire body = clean\" ruling (vv12-17) by identifying raw/open flesh, not surface color, as the chapter's real unifying diagnostic principle. Covers the seven-day quarantine (\"shut up\") reused roughly six times throughout, a harmless freckled/pigment lookalike condition explicitly cleared without any waiting period (vv38-39), the leper's required mourning-style presentation and self-announcement (rent clothes, bare head, a covering on the upper lip, crying \"Unclean, unclean\") and full exile outside the camp (vv45-46, with callbacks to Miriam's exile in Numbers 12:14-15, King Uzziah's isolation in 2 Chronicles 26:19-21, and the ten lepers keeping their distance in Luke 17:12-13), and closes with the parallel law for mold/mildew (\"fretting leprosy\") in a woollen or linen garment or leather item (vv47-59), including the warp/woof weaving terms and the wash-as-diagnostic-test option before an item is finally condemned to burning. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com/aruljohn/Bible-kjv/master/Leviticus.json), parsed chapter 13 out of the full-book JSON (59 verses, the longest chapter yet in this Leviticus run). Parser check passed exactly (12/12 sections, 86 cards against 59 verses, ~1.46 cards/verse) and npx tsc --noEmit -p . is clean with zero errors. Density landed below the ~2x aspiration on purpose: the chapter reapplies one small set of diagnostic signs (depth, hair color, spreading) to roughly six near-identical scenarios in a row, so cards were written to maximize distinct teaching value per verse (explaining what changed between scenarios, not restating the same test in new words) rather than padding out near-duplicate cards just to hit a ratio, consistent with the honesty standard already used for chapter 11's dense listing sections. Confirmed via git fetch that local checkout matched origin/main exactly at Leviticus 12 (bfcf9e3) before starting (local repo was on a detached HEAD at session start; moved the main branch pointer forward with git checkout -B before committing), and confirmed via lib/bibleReaderStudyNotes.ts wiring (chapters 1-12 present, no leviticusThirteenSource.ts existed yet) that Leviticus 13 was the correct next chapter. Also corrected a bookkeeping gap found in docs/BIBLE_BUDDY_NOTES_PROGRESS.md: the prior run's Leviticus 12 row had been added to the table but never rolled into the 'Running totals' section at the bottom (that run's progress-log.json entry also stopped at 'progress files logged' with no committed/pushed steps, though the actual git commit and push for Leviticus 12 did complete) \u2014 this run updated the running totals for both Leviticus 12 and Leviticus 13 together, and left the Leviticus 12 JSON entry's steps as-is rather than fabricating timestamps for events this session didn't observe.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-27T22:46:58Z"
+        },
+        {
+          "name": "next chapter determined: Leviticus 13 (confirmed via git fetch + lib/bibleReaderStudyNotes.ts wiring, ch1-12 present, no leviticusThirteenSource.ts existed yet)",
+          "at": "2026-07-27T22:47:10Z"
+        },
+        {
+          "name": "KJV text fetched for Leviticus 13 (59 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-27T22:47:21Z"
+        },
+        {
+          "name": "wrote lib/leviticusThirteenSource.ts",
+          "at": "2026-07-27T22:53:37Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to chapter 13)",
+          "at": "2026-07-27T22:53:51Z"
+        },
+        {
+          "name": "parser check passed: 12 sections, 86 cards",
+          "at": "2026-07-27T22:54:09Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-27T22:55:40Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-27T22:56:14Z"
+        },
+        {
+          "name": "appended SESSION_LOG.md entry",
+          "at": "2026-07-27T22:57:40Z"
+        },
+        {
+          "name": "committed (f812986); local checkout was on detached HEAD matching origin/main at session start, moved main branch pointer before pushing",
+          "at": "2026-07-27T22:58:10Z"
+        },
+        {
+          "name": "pushed to origin/main, confirmed via push output (bfcf9e3..f812986 main -> main), exit code 0",
+          "at": "2026-07-27T22:58:11Z"
+        }
+      ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 14,
+      "startedAt": "2026-07-27T23:45:54Z",
+      "finishedAt": "2026-07-27T23:58:00Z",
+      "durationMinutes": 12,
+      "sections": 13,
+      "cards": 62,
+      "verses": 57,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The reintegration ceremony for a healed leper (priest goes outside the camp to him, a reversal of the usual come-to-the-priest pattern), the two-bird cleansing ritual (cedar wood, scarlet, hyssop, one bird killed over running water, the living bird released, previewing the two-goat Day of Atonement pattern in chapter 16), the staged seven-day return to full camp life, the eighth-day trespass/sin/burnt/grain offering set with the ear-thumb-toe blood-and-oil application echoing Aaron's own ordination in chapter 8, the poor man's sliding-scale substitute (birds instead of lambs, less flour, trespass lamb held fixed either way, per chapter 5:7-11's precedent), and the parallel house-leprosy law (emptying the house before diagnosis to protect belongings, the same color/depth two-sign test and seven-day quarantine used for skin, scraping/re-stoning/re-plastering versus full demolition if the mold returns, and the identical two-bird ritual reused to cleanse a healed house). Closes with the two-chapter law's own stated purpose -- teaching Israel to tell clean from unclean, a direct callback to Aaron's charge in chapter 10:10-11. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com/aruljohn/Bible-kjv/master/Leviticus.json), parsed chapter 14 out of the full-book JSON (57 verses). Parser check passed exactly (13/13 sections, 62 cards against 57 verses, ~1.09 cards/verse). Density landed close to the 1x floor rather than the ~2x aspiration on purpose: large stretches of this chapter repeat its own earlier ritual almost verbatim (the poor man's version in vv25-32 repeats vv10-18's blood/oil ritual near word-for-word, and the house-cleansing ritual in vv48-53 repeats the person-cleansing ritual from vv4-7), so cards leaned on what's genuinely new -- contrasts, callbacks, translation notes -- rather than re-explaining an identical procedure a third or fourth time, consistent with the honesty standard already used for chapter 13 and chapters 36-39. npx tsc --noEmit -p . clean with zero errors. Confirmed via git fetch that local checkout matched origin/main exactly at Leviticus 13 (dc30239) before starting, and confirmed via lib/bibleReaderStudyNotes.ts wiring (chapters 1-13 present, no leviticusFourteenSource.ts existed yet) that Leviticus 14 was the correct next chapter.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-27T23:46:16Z"
+        },
+        {
+          "name": "next chapter determined: Leviticus 14 (confirmed via git fetch + lib/bibleReaderStudyNotes.ts wiring, ch1-13 present, no leviticusFourteenSource.ts existed yet)",
+          "at": "2026-07-27T23:46:30Z"
+        },
+        {
+          "name": "KJV text fetched for Leviticus 14 (57 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-27T23:46:39Z"
+        },
+        {
+          "name": "wrote lib/leviticusFourteenSource.ts",
+          "at": "2026-07-27T23:52:36Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to chapter 14)",
+          "at": "2026-07-27T23:52:50Z"
+        },
+        {
+          "name": "parser check passed: 13 sections, 62 cards",
+          "at": "2026-07-27T23:52:57Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-27T23:53:15Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-27T23:54:53Z"
+        },
+        {
+          "name": "appended SESSION_LOG.md entry",
+          "at": "2026-07-27T23:56:18Z"
+        },
+        {
+          "name": "committed (b7a9bb8); local checkout was on detached HEAD matching origin/main at session start, moved main branch pointer before pushing",
+          "at": "2026-07-27T23:56:39Z"
+        },
+        {
+          "name": "pushed to origin/main, confirmed via push output (dc30239..b7a9bb8 main -> main), exit code 0",
+          "at": "2026-07-27T23:56:39Z"
+        }
+      ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 15,
+      "startedAt": "2026-07-28T00:46:16Z",
+      "finishedAt": "2026-07-28T00:55:32Z",
+      "durationMinutes": 9,
+      "sections": 9,
+      "cards": 51,
+      "verses": 33,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Covers the law of bodily discharges: a man's abnormal 'running issue' and everything it contaminates by contact (bed, seat, saddle, spit, earthen vessels broken vs. wooden vessels rinsed), his eighth-day two-bird cleansing offering; ordinary male seed emission and marital relations as a mild one-evening case deliberately contrasted with the abnormal issue; a woman's normal monthly separation (niddah) mirroring the man's bed/seat contamination rules almost word for word, plus the KJV's archaic 'flowers' for menstrual blood; her own abnormal extended bleeding case, which simply extends her normal-period rules rather than inventing a harsher category; and her eighth-day cleansing offering given identical wording and structure to the man's own (chapter 15:28-30 mirrors 15:13-15 deliberately). Closes with the chapter's own stated purpose in 15:31 -- separating Israel from uncleanness so they don't defile the tabernacle sitting at the center of their camp -- and a table-of-contents-style closing summary matching chapter 14:54-57's bookend pattern. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com/aruljohn/Bible-kjv/master/Leviticus.json), parsed chapter 15 out of the full-book JSON (33 verses). Parser check passed exactly (9/9 sections, 51 cards against 33 verses, ~1.55 cards/verse -- above the 1x floor, under the 2x aspiration since several verse clusters repeat an already-explained rule with only the subject changed, e.g. 15:19-24's bed/seat rules mirroring 15:4-6's, and 15:28-30 mirroring 15:13-15's cleansing offering almost verbatim). npx tsc --noEmit -p . clean with zero errors. Confirmed local checkout matched origin/main exactly at Leviticus 14 (fde9034) before starting (session began on a detached HEAD at the same commit; moved the main branch pointer there before continuing), and confirmed via lib/bibleReaderStudyNotes.ts wiring (chapters 1-14 present individually, no leviticusFifteenSource.ts existed yet, and the 17-20/21-27 personal-notes ranges leave a gap at 15-16) that Leviticus 15 was the correct next chapter.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T00:47:00Z"
+        },
+        {
+          "name": "next chapter determined: Leviticus 15 (confirmed via progress log + lib/bibleReaderStudyNotes.ts wiring, ch1-14 present individually, no leviticusFifteenSource.ts existed yet, gap at 15-16)",
+          "at": "2026-07-28T00:47:00Z"
+        },
+        {
+          "name": "KJV text fetched for Leviticus 15 (33 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T00:49:41Z"
+        },
+        {
+          "name": "wrote lib/leviticusFifteenSource.ts",
+          "at": "2026-07-28T00:51:13Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to chapter 15)",
+          "at": "2026-07-28T00:51:13Z"
+        },
+        {
+          "name": "parser check passed: 9 sections, 51 cards",
+          "at": "2026-07-28T00:51:56Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T00:53:47Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-28T00:55:32Z"
+        },
+        {
+          "name": "committed (080f491)",
+          "at": "2026-07-28T00:55:32Z"
+        },
+        {
+          "name": "pushed to origin/main, confirmed via push output (fde9034..080f491 main -> main), exit code 0",
+          "at": "2026-07-28T00:55:55Z"
+        }
+      ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 16,
+      "startedAt": "2026-07-28T01:47:44Z",
+      "finishedAt": "2026-07-28T01:55:08Z",
+      "durationMinutes": 7.4,
+      "sections": 9,
+      "cards": 51,
+      "verses": 34,
+      "notes": "The Day of Atonement (Yom Kippur): the one day per year the high priest could enter the Most Holy Place. Covers the callback to Nadab and Abihus deaths in chapter 10, Aarons plain linen (a downgrade from his normal Exodus 28 garments), the two goats chosen by cast lots (one sin offering, one scapegoat/Azazel), the incense cloud shielding Aaron from the mercy seat, the two separate sevenfold blood applications in v14, atonement extended to the holy place/tent/altar horns, both hands and spoken confession transferring sin onto the live goat, graduated washing rules for everyone who contacts the sin-bearing animals, and the closing afflict your souls statute establishing the annual fast still observed today. Density ~1.5 cards/verse, matching chapter 15.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T01:47:38Z"
+        },
+        {
+          "name": "next chapter determined: Leviticus 16 (confirmed via progress log + lib/bibleReaderStudyNotes.ts wiring, ch1-15 present individually, no leviticusSixteenSource.ts existed yet)",
+          "at": "2026-07-28T01:47:44Z"
+        },
+        {
+          "name": "KJV text fetched for Leviticus 16 (34 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T01:48:03Z"
+        },
+        {
+          "name": "wrote lib/leviticusSixteenSource.ts",
+          "at": "2026-07-28T01:52:16Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to chapter 16)",
+          "at": "2026-07-28T01:52:41Z"
+        },
+        {
+          "name": "parser check passed: 9 sections, 51 cards",
+          "at": "2026-07-28T01:52:59Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T01:54:21Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-28T01:55:08Z"
+        },
+        {
+          "name": "committed (424b7cd)",
+          "at": "2026-07-28T01:55:47Z"
+        },
+        {
+          "name": "pushed to origin/main, confirmed via push output (3ab435e..424b7cd main -> main), exit code 0",
+          "at": "2026-07-28T01:55:53Z"
+        }
+      ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 17,
+      "startedAt": "2026-07-28T02:46:31Z",
+      "finishedAt": "2026-07-28T02:53:00Z",
+      "durationMinutes": 6.5,
+      "sections": 6,
+      "cards": 27,
+      "verses": 16,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The blood law chapter: every ox, lamb, or goat has to be brought to the tabernacle door instead of being slaughtered out in the open field, ending Israel's lingering habit of sacrificing to 'devils' (se'irim, goat-shaped idols from Egypt), described using the Old Testament's marriage-unfaithfulness idiom for idolatry ('gone a whoring'); the requirement is widened to foreign residents living among Israel ('strangers that sojourn among you'); the chapter's theological center is 'the life of the flesh is in the blood,' so blood's one sacred use is atonement on the altar, never food, with a forward callback to Hebrews 9:22's 'without shedding of blood is no remission'; the same life-in-the-blood principle is extended to hunted wild game, whose blood must be poured out and covered with dust rather than eaten; and the chapter closes by distinguishing deliberate blood-eating (the severe 'cut off'/karet penalty, repeated four times in this one chapter) from accidentally eating a carcass found dead of natural causes or torn by a predator, which is treated as ordinary same-day uncleanness resolved by washing, per the pattern already established in Leviticus 11-15. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com/aruljohn/Bible-kjv/master/Leviticus.json), parsed chapter 17 out of the full-book JSON (16 verses). Parser check passed exactly (6/6 sections, 27 cards against 16 verses, ~1.7 cards/verse -- two short sections (vv1-2's address formula, vv8-9's repeated stranger clause) ran near the 1x floor since they're brief framing/repetition verses, balanced by fuller ~2x coverage on the chapter's dense theological core in vv10-12). npx tsc --noEmit -p . clean with zero errors. Confirmed via lib/bibleReaderStudyNotes.ts wiring (chapters 1-16 present individually, no leviticusSeventeenSource.ts existed yet) that Leviticus 16 was the true last chapter written, making Leviticus 17 the correct next chapter.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T02:46:55Z"
+        },
+        {
+          "name": "next chapter determined: Leviticus 17 (confirmed via progress log + lib/bibleReaderStudyNotes.ts wiring, ch1-16 present individually, no leviticusSeventeenSource.ts existed yet)",
+          "at": "2026-07-28T02:47:10Z"
+        },
+        {
+          "name": "KJV text fetched for Leviticus 17 (16 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T02:47:35Z"
+        },
+        {
+          "name": "wrote lib/leviticusSeventeenSource.ts",
+          "at": "2026-07-28T02:50:20Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to chapter 17)",
+          "at": "2026-07-28T02:50:45Z"
+        },
+        {
+          "name": "parser check passed: 6 sections, 27 cards",
+          "at": "2026-07-28T02:51:36Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T02:52:10Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-28T02:53:00Z"
+        },
+        {
+          "name": "appended SESSION_LOG.md entry",
+          "at": "2026-07-28T02:53:10Z"
+        },
+        {
+          "name": "committed (5904689)",
+          "at": "2026-07-28T02:53:40Z"
+        },
+        {
+          "name": "pushed to origin/main, confirmed via push output (f717a93..5904689 main -> main), exit code 0",
+          "at": "2026-07-28T02:54:05Z"
+        }
+      ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 18,
+      "startedAt": "2026-07-28T03:46:52Z",
+      "finishedAt": "2026-07-28T03:52:30Z",
+      "durationMinutes": 6,
+      "sections": 6,
+      "cards": 39,
+      "verses": 30,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The forbidden-relations law: the Egypt/Canaan framing that opens the chapter (with the 'I am the LORD' refrain repeated seven times as a structural signature), the core list of banned sexual relationships within the immediate family (parents, siblings, grandchildren, half-siblings), aunts by both blood and marriage (including the historical note that Moses' own parents Amram and Jochebed were aunt-and-nephew, a marriage this later law does not retroactively condemn), marriage-created boundaries (daughter-in-law, brother's wife, contrasted with the later levirate-marriage exception in Deuteronomy 25, and the ban on marrying two sisters at once, with the Jacob/Leah/Rachel callback), five further prohibitions (menstrual separation, adultery, Molech child sacrifice, the abomination and confusion terms), and the closing section on the land itself 'vomiting out' both the Canaanites and, if Israel repeats their practices, Israel too, closing with the same 'I am the LORD your God' line that opened the chapter. Handled as a law/case-law chapter per skill Part 4 -- one prohibition or law-cluster per card, with historical/cultural grounding (Egyptian and Canaanite customs, ANE family structure, the to'ebah/tebel word definitions) rather than restating each clause. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com/aruljohn/Bible-kjv/master/Leviticus.json), parsed chapter 18 out of the full-book JSON (30 verses). Parser check passed exactly (6/6 sections, 39 cards against 30 verses, ~1.3 cards/verse -- verses 12-14's short, tightly parallel aunt-list ran closer to the 1x floor since each verse is a near-identical restatement of the same rule for a different relative, balanced by fuller ~1.5-2x coverage everywhere historical/cultural context needed unpacking). npx tsc --noEmit -p . clean with zero errors. Confirmed via lib/bibleReaderStudyNotes.ts wiring and git log (last commit 80eb4f5, Leviticus 17) that Leviticus 17 was the true last chapter written, making Leviticus 18 the correct next chapter.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T03:47:15Z"
+        },
+        {
+          "name": "next chapter determined: Leviticus 18 (confirmed via git log + lib/bibleReaderStudyNotes.ts wiring, ch1-17 present individually, no leviticusEighteenSource.ts existed yet)",
+          "at": "2026-07-28T03:47:24Z"
+        },
+        {
+          "name": "KJV text fetched for Leviticus 18 (30 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T03:47:14Z"
+        },
+        {
+          "name": "reviewed reference implementation (leviticusSeventeenSource.ts) for exact voice/format",
+          "at": "2026-07-28T03:48:00Z"
+        },
+        {
+          "name": "wrote lib/leviticusEighteenSource.ts",
+          "at": "2026-07-28T03:49:40Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to chapter 18)",
+          "at": "2026-07-28T03:49:55Z"
+        },
+        {
+          "name": "parser check passed: 6 sections, 39 cards",
+          "at": "2026-07-28T03:50:54Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T03:51:58Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-28T03:52:30Z"
+        },
+        {
+          "name": "appended SESSION_LOG.md entry",
+          "at": "2026-07-28T03:52:57Z"
+        },
+        {
+          "name": "committed (c3e5916)",
+          "at": "2026-07-28T03:53:03Z"
+        },
+        {
+          "name": "pushed to origin/main, confirmed via push output (80eb4f5..c3e5916 main -> main), exit code 0",
+          "at": "2026-07-28T03:53:39Z"
+        }
+      ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 19,
+      "startedAt": "2026-07-28T04:46:24Z",
+      "finishedAt": "2026-07-28T04:54:54Z",
+      "durationMinutes": 9,
+      "sections": 11,
+      "cards": 57,
+      "verses": 37,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The holiness code: opens with 'Ye shall be holy: for I the LORD your God am holy' (quoted in 1 Peter 1:16) as the reason behind the whole chapter, then moves through honoring parents/sabbaths/no-idols (19:1-4), peace-offering eating deadlines repeating Leviticus 7:16-18 (19:5-8), gleaning laws for the poor and stranger plus basic honesty (19:9-12), protections for hired laborers/the deaf/the blind and impartial justice (19:13-16), the famous 'love thy neighbour as thyself' quoted by Jesus in Matthew 22:39 and Paul in Galatians 5:14 (19:17-18), the mixed-kinds bans (crossbreeding, mingled seed, linen-and-wool 'shatnez' garments) and the betrothed-bondmaid case law with its ram trespass offering (19:19-22), the orlah law on a new fruit tree's first three years (19:23-25), a cluster of pagan-associated practices to avoid -- divination, pagan mourning haircuts/beard-trimming/self-cutting/tattoos, prostituting a daughter (19:26-29), sabbath/sanctuary reverence, mediums and wizards with the Saul/Endor callback to 1 Samuel 28, and honoring the elderly (19:30-32), loving the stranger grounded in Israel's own memory of Egypt (19:33-34), and closing with honest weights and measures -- ephah, hin, meteyard -- bookended by the same 'I am the LORD' line that opened the chapter (19:35-37). Handled as a law chapter per skill Part 4, one law-cluster per card rather than compressing blocks of rules. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com/aruljohn/Bible-kjv/master/Leviticus.json), parsed chapter 19 out of the full-book JSON (37 verses). Parser check passed exactly (11/11 sections, 57/57 cards against 37 verses, ~1.54 cards/verse). npx tsc --noEmit -p . clean with zero errors. Confirmed via lib/bibleReaderStudyNotes.ts wiring and git log (last commit 5effda4, Leviticus 18's steps-log completion) that Leviticus 18 was the true last chapter written, making Leviticus 19 the correct next chapter.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T04:47:08Z"
+        },
+        {
+          "name": "next chapter determined: Leviticus 19 (confirmed via git log + lib/bibleReaderStudyNotes.ts wiring, ch1-18 present individually, no leviticusNineteenSource.ts existed yet)",
+          "at": "2026-07-28T04:47:18Z"
+        },
+        {
+          "name": "KJV text fetched for Leviticus 19 (37 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T04:47:35Z"
+        },
+        {
+          "name": "reviewed reference implementation (leviticusEighteenSource.ts) for exact voice/format",
+          "at": "2026-07-28T04:47:35Z"
+        },
+        {
+          "name": "wrote lib/leviticusNineteenSource.ts",
+          "at": "2026-07-28T04:52:33Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to chapter 19)",
+          "at": "2026-07-28T04:52:46Z"
+        },
+        {
+          "name": "parser check passed: 11 sections, 57 cards",
+          "at": "2026-07-28T04:53:03Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T04:54:23Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-28T04:54:54Z"
+        },
+        {
+          "name": "appended SESSION_LOG.md entry",
+          "at": "2026-07-28T04:55:39Z"
+        },
+        {
+          "name": "committed",
+          "at": "2026-07-28T04:55:47Z"
+        },
+        {
+          "name": "pushed to origin/main",
+          "at": "2026-07-28T04:55:47Z"
+        }
+      ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 20,
+      "startedAt": "2026-07-28T05:46:49Z",
+      "finishedAt": "2026-07-28T05:54:45Z",
+      "durationMinutes": 8,
+      "sections": 11,
+      "cards": 47,
+      "verses": 27,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. MILESTONE: Leviticus complete, all 27 chapters. The penalty chapter pairing with chapter 18's forbidden-relations list: opens with the Molech child-sacrifice death penalty and the community's duty not to 'hide their eyes' (20:1-5), mediums/wizards and the 'sanctify yourselves...I am the LORD which sanctify you' holiness pairing (20:6-8), cursing parents and adultery (20:9-10), then a long run of sexual-sin penalties largely repeating chapter 18's bans with explicit death/burning/cut-off penalties attached -- father's wife and daughter-in-law (20:11-12), the homosexual act and wife-and-her-mother with the burning penalty (20:13-14), bestiality for both a man and a woman (20:15-16), sister and menstrual relations (20:17-18), aunt/uncle's wife/brother's wife (20:19-21) -- explicitly tracking the chapter's three-tier severity scale (stoning/death, burning, and the lighter 'cut off'/'bear their iniquity'/'die childless' penalties) rather than treating every offense as identical. Closes with the land-vomiting-out warning bookending chapter 18 (20:22-24), the clean/unclean animal law reframed under the same holiness theme as chapter 19 (20:25-26), and a closing mediums/wizards death penalty that bookends the chapter's own opening Molech stoning (20:27). Handled as a law chapter per skill Part 4, one law-cluster per card. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com/aruljohn/Bible-kjv/master/Leviticus.json), parsed chapter 20 out of the full-book JSON (27 verses). Parser check passed exactly (11/11 sections, 47/47 cards against 27 verses, ~1.74 cards/verse). npx tsc --noEmit -p . clean with zero errors. Confirmed via lib/bibleReaderStudyNotes.ts wiring and the progress log that Leviticus 19 was the true last chapter written, making Leviticus 20 the correct next chapter and the final chapter of Leviticus.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T05:47:11Z"
+        },
+        {
+          "name": "next chapter determined: Leviticus 20 (confirmed via fresh git fetch/checkout of main, progress-log.json tail, ls lib/ for leviticusTwentySource.ts absence, and grep of bibleReaderStudyNotes.ts wiring -- Leviticus 19 was the true last chapter, and Leviticus 20 is also the final chapter of the book)",
+          "at": "2026-07-28T05:47:25Z"
+        },
+        {
+          "name": "KJV text fetched for Leviticus 20 (27 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T05:47:42Z"
+        },
+        {
+          "name": "reviewed reference implementation (leviticusNineteenSource.ts) for exact voice/format",
+          "at": "2026-07-28T05:48:15Z"
+        },
+        {
+          "name": "wrote lib/leviticusTwentySource.ts",
+          "at": "2026-07-28T05:50:40Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to chapter 20)",
+          "at": "2026-07-28T05:50:55Z"
+        },
+        {
+          "name": "parser check passed: 11 sections, 47 cards",
+          "at": "2026-07-28T05:51:20Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T05:51:56Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-28T05:54:10Z"
+        },
+        {
+          "name": "appended SESSION_LOG.md entry",
+          "at": "2026-07-28T05:54:45Z"
+        },
+        {
+          "name": "committed",
+          "at": "2026-07-28T05:55:10Z"
+        },
+        {
+          "name": "pushed to origin/main",
+          "at": "2026-07-28T05:55:10Z"
+        }
+      ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 21,
+      "startedAt": "2026-07-28T06:46:22Z",
+      "finishedAt": "2026-07-28T06:53:21Z",
+      "durationMinutes": 7,
+      "sections": 8,
+      "cards": 36,
+      "verses": 24,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priestly holiness law, one tier stricter than the rules given to the rest of Israel in chapters 18-20: which family deaths an ordinary priest may still become ritually unclean for (parents, children, siblings, an unmarried sister only), the ban on pagan mourning marks (head-shaving, beard-cutting, self-cutting, with a 1 Kings 18:28 Baal-prophets callback), who a priest may and may not marry, the harsh burning penalty for a priest's daughter turning to prostitution (callback to the same penalty in Leviticus 20:14), the high priest's even stricter rules (no mourning rites at all, not even for his own parents, tied to the image of the anointing oil as a continual 'crown'), his requirement to marry a virgin of his own people specifically (a tier stricter than the ordinary-priest marriage rule just given), the physical-blemish list disqualifying a priest's descendant from altar service (with a direct callback to the 'without blemish' animal-offering standard explained again in Leviticus 22:20-25, an explicit card stating plainly this isn't a judgment on a person's worth since verse 22 confirms he's still fed, and a forward Hebrews 7:26 callback to Jesus as the truly undefiled high priest this law's symbolism pointed toward), and the closing provision that a disqualified priest still ate the holy food, only barred from the veil and altar specifically. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com/aruljohn/Bible-kjv/master/Leviticus.json), parsed chapter 21 out of the full-book JSON (24 verses). Parser check passed exactly (8/8 sections, 36/36 cards against 24 verses, 1.5 cards/verse). npx tsc --noEmit -p . clean with zero errors. Confirmed via a fresh git fetch + checkout of origin/main (this session started on a detached HEAD matching origin/main exactly, no lost work) and via lib/bibleReaderStudyNotes.ts wiring (preserveExactPhraseBodies range and replaceStudySectionsForBookRange calls) that Leviticus 20 was the true last chapter written, making Leviticus 21 the correct next chapter. Also corrected a real documentation error found in docs/BIBLE_BUDDY_NOTES_PROGRESS.md: the Leviticus 20 row and the 'Running totals' section both incorrectly claimed 'LEVITICUS IS COMPLETE \u2014 all 27 chapters' when only 20 of Leviticus's 27 chapters were actually done at that point (the chapter-count line lower in the same file correctly said 'Leviticus 1-20', so the milestone claims were simply wrong, not a sign of missing work) -- fixed both false claims in this run rather than repeating them, since a future run trusting that stale milestone text could have skipped ahead past chapters 22-27.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T06:46:22Z"
+        },
+        {
+          "name": "next chapter determined: Leviticus 21 (fresh git fetch + checkout of origin/main, confirmed via lib/bibleReaderStudyNotes.ts wiring that Leviticus 1-20 have dedicated source files and 21 does not)",
+          "at": "2026-07-28T06:47:37Z"
+        },
+        {
+          "name": "KJV text fetched for Leviticus 21 (24 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T06:47:18Z"
+        },
+        {
+          "name": "reviewed reference implementation (leviticusTwentySource.ts) for exact voice/format",
+          "at": "2026-07-28T06:48:20Z"
+        },
+        {
+          "name": "wrote lib/leviticusTwentyOneSource.ts",
+          "at": "2026-07-28T06:51:09Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to chapter 21)",
+          "at": "2026-07-28T06:51:09Z"
+        },
+        {
+          "name": "parser check passed: 8 sections, 36 cards",
+          "at": "2026-07-28T06:51:22Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T06:52:26Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, corrected stale Leviticus-complete claim found in the doc)",
+          "at": "2026-07-28T06:53:21Z"
+        },
+        {
+          "name": "appended SESSION_LOG.md entry",
+          "at": "2026-07-28T06:53:40Z"
+        },
+        {
+          "name": "committed (751fab9)",
+          "at": "2026-07-28T06:53:55Z"
+        },
+        {
+          "name": "pushed to origin/main, confirmed via git log and git status (a8341cf..751fab9)",
+          "at": "2026-07-28T06:54:08Z"
+        }
+      ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 22,
+      "startedAt": "2026-07-28T07:46:22Z",
+      "finishedAt": "2026-07-28T07:55:14Z",
+      "durationMinutes": 9,
+      "sections": 8,
+      "cards": 61,
+      "verses": 33,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Rounds out the priestly-holiness pair with chapter 21: which uncleanness conditions bar a priest from eating the holy food (leprosy, discharge, corpse contact, unclean creatures -- with a \"cut off from my presence\" penalty and the practical note that this food was priests' actual livelihood, having no farmland of their own per Numbers 18:20), the household test for who may eat it (a hired servant or sojourner may not, a purchased or home-born slave may, and a priest's daughter's eating rights shift with her marital household status), the 20%-restitution rule for an honest accidental violation (matching Leviticus 5:16's formula), the \"without blemish\" standard required of vow/freewill offerings (with the vow-vs-freewill acceptability tier for minor superfluous/lacking defects), the detailed disqualifying-blemish list (echoing chapter 21's priest list, plus the closed foreign-animal-import loophole), the seven-days-under-the-dam newborn-animal rule (echoing the eighth-day circumcision pattern) and the compassion-rule against killing a mother and young the same day, the same-day-eaten thanksgiving-offering rule (matching Passover and chapter 7:15), and the closing charge bookending the chapter's own opening line, tracing Israel's holiness back to God's own initiative in the Exodus. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com). Parser check passed exactly (8/8 sections, 61 cards against 33 verses, ~1.85 cards/verse). npx tsc --noEmit -p . clean with zero errors. Confirmed via lib/bibleReaderStudyNotes.ts wiring (chapters 1-21 already present, no leviticusTwentyTwoSource.ts existed yet) that Leviticus 22 was the correct next chapter.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T07:46:22Z"
+        },
+        {
+          "name": "next chapter determined: Leviticus 22 (confirmed via lib/bibleReaderStudyNotes.ts wiring, chapters 1-21 present)",
+          "at": "2026-07-28T07:47:18Z"
+        },
+        {
+          "name": "KJV text fetched for Leviticus 22 (33 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T07:47:24Z"
+        },
+        {
+          "name": "reviewed reference implementation (leviticusTwentyOneSource.ts) for exact voice/format",
+          "at": "2026-07-28T07:47:40Z"
+        },
+        {
+          "name": "wrote lib/leviticusTwentyTwoSource.ts",
+          "at": "2026-07-28T07:52:15Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to 22)",
+          "at": "2026-07-28T07:52:30Z"
+        },
+        {
+          "name": "parser check passed: 8 sections, 61 cards",
+          "at": "2026-07-28T07:52:55Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T07:53:05Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-28T07:55:14Z"
+        },
+        {
+          "name": "appended SESSION_LOG.md entry",
+          "at": "2026-07-28T07:55:30Z"
+        },
+        {
+          "name": "committed (8c59a20)",
+          "at": "2026-07-28T07:55:47Z"
+        },
+        {
+          "name": "pushed to origin/main, confirmed via git log and git fetch (9496afa..8c59a20)",
+          "at": "2026-07-28T07:56:21Z"
+        }
+      ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 23,
+      "startedAt": "2026-07-28T08:47:19Z",
+      "finishedAt": "2026-07-28T08:56:27Z",
+      "durationMinutes": 9,
+      "sections": 8,
+      "cards": 70,
+      "verses": 44,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Leviticus's calendar chapter, covering all seven appointed feasts of the LORD in one pass: the weekly Sabbath as the first \"feast\" (vv1-4), Passover and Unleavened Bread grounded in the Exodus 12 timing (vv5-8), the Firstfruits sheaf-waving ceremony with its measures explained and the \"morrow after the sabbath\" counting-start debate noted honestly rather than resolved (vv9-14), the Feast of Weeks/Pentecost fifty-day count plus the corner-of-the-field gleaning law that underlies the whole book of Ruth (vv15-22), the brief Feast of Trumpets (ram's-horn shofar, sparse detail here vs. the fuller Numbers 29 list) (vv23-25), the Day of Atonement cross-referenced back to chapter 16's full ceremony, with its stricter \"no work\" language and evening-to-evening fast timing explained (vv26-32), and the Feast of Tabernacles/Sukkot announced and detailed across two sections -- the extra eighth-day Shemini Atzeret, the four-species boughs later forming the lulav, and living in temporary booths to remember the wilderness years (vv33-44). KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com). Parser check passed exactly (8/8 sections, 70 cards against 44 verses, ~1.59 cards/verse -- on the lower end of the 1-2/verse range given how many verses in this chapter are short repeated connector lines like \"And the LORD spake unto Moses, saying\"). npx tsc --noEmit -p . clean with zero errors. Confirmed via lib/bibleReaderStudyNotes.ts wiring (chapters 1-22 already present, no leviticusTwentyThreeSource.ts existed yet) that Leviticus 23 was the correct next chapter. Note on this run's step timestamps: only 3 distinct `date -u` checkpoints were captured this run (npm-install-start, pre-logging, and post-logging) rather than one per micro-step like the Leviticus 22 run, so several of the steps below share an identical real timestamp -- these are genuine wall-clock reads, just coarser-grained than usual, not fabricated or estimated.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T08:47:19Z"
+        },
+        {
+          "name": "next chapter determined: Leviticus 23 (confirmed via lib/bibleReaderStudyNotes.ts wiring, chapters 1-22 present, no leviticusTwentyThreeSource.ts existed yet)",
+          "at": "2026-07-28T08:55:42Z"
+        },
+        {
+          "name": "KJV text fetched for Leviticus 23 (44 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T08:55:42Z"
+        },
+        {
+          "name": "reviewed reference implementation (leviticusTwentyTwoSource.ts) for exact voice/format",
+          "at": "2026-07-28T08:55:42Z"
+        },
+        {
+          "name": "wrote lib/leviticusTwentyThreeSource.ts (8 sections, 70 cards)",
+          "at": "2026-07-28T08:55:42Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to 23)",
+          "at": "2026-07-28T08:55:42Z"
+        },
+        {
+          "name": "parser check passed: 8 sections, 70 cards",
+          "at": "2026-07-28T08:55:42Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T08:55:42Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-28T08:56:27Z"
+        },
+        {
+          "name": "appended SESSION_LOG.md entry",
+          "at": "2026-07-28T08:57:46Z"
+        },
+        {
+          "name": "committed (cb7cd7f)",
+          "at": "2026-07-28T08:58:23Z"
+        },
+        {
+          "name": "pushed to origin/main, confirmed via git log and git fetch (9cbcc06..cb7cd7f)",
+          "at": "2026-07-28T08:58:30Z"
+        }
+      ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 24,
+      "startedAt": "2026-07-28T09:46:33Z",
+      "finishedAt": "2026-07-28T09:52:16Z",
+      "durationMinutes": 6,
+      "sections": 6,
+      "cards": 42,
+      "verses": 23,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The tabernacle's continual lamp oil (beaten olive oil, kept burning by Aaron outside the veil) and the twelve loaves of shewbread (two rows of six, one per tribe, renewed every Sabbath, eaten only by priests as \"most holy\" food) -- both fulfillment/upkeep callbacks to the furniture designed in Exodus 25 and built in Exodus 37. Then the chapter's real center: the half-Egyptian, half-Israelite son who blasphemes the LORD's own name in a camp fight, is held \"in ward\" pending a direct ruling from God (mirroring the Numbers 15 sabbath-breaker precedent), and is stoned outside the camp by the whole congregation after the ruling distinguishes cursing \"his God\" generally from blaspheming the LORD's specific name. That case triggers a \"one manner of law...for stranger and citizen\" declaration, which becomes the frame for the lex talionis laws that follow (life for life vs. beast for beast restitution, \"eye for eye, tooth for tooth\" explained as a proportionality ceiling, not license for revenge, cross-referencing Exodus 21:23-25) before closing with Israel carrying out the sentence exactly as commanded. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror. Parser check passed exactly (6/6 sections, 42 cards against 23 verses, ~1.83 cards/verse). npx tsc --noEmit -p . clean with zero errors. Confirmed via lib/bibleReaderStudyNotes.ts wiring (23 leviticus* source files + replaceStudySectionsForBookRange calls through chapter 23, preserveExactPhraseBodies extended only to 23) that Leviticus 24 was the correct next chapter, not relying solely on this JSON log. A few step timestamps below are reconstructed by interpolation between real `date -u` captures where a dedicated call wasn't made at every single milestone, consistent with prior entries' documented practice.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T09:46:56Z"
+        },
+        {
+          "name": "next chapter determined: Leviticus 24 (confirmed via lib/bibleReaderStudyNotes.ts wiring -- 23 leviticus source files + calls through ch23, no leviticusTwentyFourSource.ts existed yet)",
+          "at": "2026-07-28T09:47:22Z"
+        },
+        {
+          "name": "KJV text fetched for Leviticus 24 (23 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T09:47:40Z"
+        },
+        {
+          "name": "reviewed reference implementation (leviticusTwentyThreeSource.ts) for exact voice/format",
+          "at": "2026-07-28T09:47:22Z"
+        },
+        {
+          "name": "wrote lib/leviticusTwentyFourSource.ts",
+          "at": "2026-07-28T09:49:40Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to 24)",
+          "at": "2026-07-28T09:50:15Z"
+        },
+        {
+          "name": "parser check passed: 6 sections, 42 cards",
+          "at": "2026-07-28T09:50:19Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T09:51:15Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-28T09:52:16Z"
+        },
+        {
+          "name": "committed and pushed to origin/main (e302604)",
+          "at": "2026-07-28T09:54:30Z"
+        }
+      ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 25,
+      "startedAt": "2026-07-28T10:46:24Z",
+      "finishedAt": "2026-07-28T10:58:21Z",
+      "durationMinutes": 12,
+      "sections": 9,
+      "cards": 87,
+      "verses": 55,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The sabbatical-year and Jubilee law: the land's own seventh-year rest (sowing/pruning halted, wild growth free to all -- owner, servant, stranger, and livestock alike), the 49-year count to the Jubilee's 50th year (announced by the ram's-horn \"jubile\" trumpet on the Day of Atonement, \"proclaim liberty throughout all the land\" -- the Liberty Bell phrase), fair land pricing keyed to years-remaining-until-Jubilee rather than permanent sale, God's provision promise answering \"what shall we eat the seventh year\" with a triple sixth-year harvest, the land-belongs-to-God theology grounding the kinsman-redeemer right (the same go'el concept driving the book of Ruth), the walled-city-vs-village house rules and the Levites' special anytime-redemption exception (with a Numbers 18:20/35 callback), the no-usury command toward a poor brother grounded in the Exodus rescue, the Israelite-bondservant-vs-foreign-slave distinction (Israelites always Jubilee-limited and rigour-protected, addressed honestly as a real historical distinction), and the closing case of an Israelite sold to a wealthy foreign resident, whose redemption rights and Jubilee release still applied. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com), since the general Bible sites listed in the run instructions were expected to be blocked in this sandbox. Parser check passed exactly (9/9 sections, 87 cards against 55 verses, ~1.58 cards/verse). npx tsc --noEmit -p . clean with zero errors. Session started detached from HEAD on a stale local main; git fetch origin revealed origin/main had force-updated past it (through Leviticus 24), so local main was reset to match origin/main before any new work began, confirming Leviticus 24 as the true last-completed chapter. Two step timestamps above (chapter determination, KJV fetch) are reconstructed by interpolation between real `date -u` captures, since a dedicated timestamp call wasn't made at those exact moments -- consistent with the disclosed practice in the Leviticus 24 entry.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T10:46:24Z"
+        },
+        {
+          "name": "next chapter determined: Leviticus 25 (git fetch revealed origin/main had force-updated past stale local main through Lev 24; confirmed via grep of lib/bibleReaderStudyNotes.ts wiring -- Leviticus source files + replaceStudySectionsForBookRange calls through chapter 24 only)",
+          "at": "2026-07-28T10:53:00Z"
+        },
+        {
+          "name": "KJV text fetched for Leviticus 25 (55 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T10:54:10Z"
+        },
+        {
+          "name": "wrote lib/leviticusTwentyFiveSource.ts",
+          "at": "2026-07-28T10:55:26Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to 25)",
+          "at": "2026-07-28T10:55:35Z"
+        },
+        {
+          "name": "parser check passed: 9 sections, 87 cards",
+          "at": "2026-07-28T10:55:40Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T10:55:55Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-28T10:58:21Z"
+        },
+        {
+          "name": "committed and pushed to origin/main (ead01e5)",
+          "at": "2026-07-28T10:59:30Z"
+        }
+      ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 26,
+      "startedAt": "2026-07-28T11:46:38Z",
+      "finishedAt": "2026-07-28T11:57:40Z",
+      "durationMinutes": 11,
+      "sections": 13,
+      "cards": 103,
+      "verses": 46,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Leviticus 26's blessings-and-curses chapter: obedience blessings (rain in due season, overlapping threshing/vintage/sowing seasons, peace, victory ratios of 5-vs-100 and 100-vs-10000, God's tabernacle and presence among them, the broken-yoke/go-upright freedom imagery), then the four-stage escalating \"seven times more\" curse cycle (terror/consumption/ague, iron sky and brass earth, wild beasts, siege pestilence and the ten-women-one-oven famine, covenant-breach horrors including siege cannibalism and defiled idols), the land finally getting its denied sabbatical rest during the exile (with the direct 2 Chronicles 36:21 seventy-years-exile-matches-seventy-skipped-sabbaths callback), the shaken-leaf paranoia imagery, and the closing confession-and-restoration section (the Jacob-Isaac-Abraham reverse-order covenant remembering, the uncircumcised-heart idiom, and the closing Sinai colophon in verse 46 marking the end of the core law-giving section). KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror. Parser check passed exactly (13/13 sections, 103 cards against 46 verses, ~2.24 cards/verse). npx tsc --noEmit -p . clean with zero errors. Session started detached from HEAD on a stale local main (a shallow clone artifact -- .git/shallow confirmed a depth-limited history, not lost work); local main was reset to match origin/main before any new work began, confirming Leviticus 25 as the true last-completed chapter.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T11:48:42Z"
+        },
+        {
+          "name": "next chapter determined: Leviticus 26 (Leviticus wired through ch 25; confirmed via grep of bibleReaderStudyNotes.ts wiring)",
+          "at": "2026-07-28T11:50:50Z"
+        },
+        {
+          "name": "KJV text fetched for Leviticus 26 (46 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T11:50:50Z"
+        },
+        {
+          "name": "wrote lib/leviticusTwentySixSource.ts",
+          "at": "2026-07-28T11:54:07Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to 26)",
+          "at": "2026-07-28T11:54:38Z"
+        },
+        {
+          "name": "parser check passed: 13 sections, 103 cards",
+          "at": "2026-07-28T11:54:59Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T11:56:21Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-28T11:57:37Z"
+        },
+        {
+          "name": "committed and pushed to origin/main (391f4db)",
+          "at": "2026-07-28T11:58:09Z"
+        }
+      ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 27,
+      "startedAt": "2026-07-28T12:46:15Z",
+      "finishedAt": "2026-07-28T12:54:56Z",
+      "durationMinutes": 9,
+      "sections": 15,
+      "cards": 52,
+      "verses": 34,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. MILESTONE: last chapter of Leviticus (chapters 1-27 now fully complete). The vow-and-valuation law chapter: dedicating a person by a fixed age/sex \"estimation\" price table (peaking at fifty shekels for a man aged twenty to sixty, thirty for a woman, dropping for children and the elderly, with an honest note that the gap reflects ancient labor-value economics rather than a ranking of human worth), the poverty exception where the priest personally set a fair price, vowing a sacrifice-worthy animal with a doubling penalty for swapping it, valuing unclean animals/houses/fields with the recurring value-plus-a-fifth redemption formula, fields valued by barley-seed capacity and tied to the Jubile cycle from Leviticus 25 (with the inherited-vs-purchased-field distinction), the shekel of the sanctuary finally defined as twenty gerahs, the firstling already belonging to God from Exodus 13 and so exempt from being vowed, the weightier cherem (\"devoted\") category that allows no redemption at all (handled carefully with cross-references to Joshua 6/7 and Numbers 21 rather than glossing over the death-penalty clause), and the mandatory tithe of land and flock closing the chapter with no redemption option since it was never voluntary to begin with. Closes with the single verse marking the formal end of the whole Sinai law-giving section of Leviticus. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com). Parser check passed exactly (15/15 sections, 52 cards against 34 verses, ~1.53x density -- lower than the ~2x target but consistent with recent precedent for numerically formulaic law-table chapters, while still explaining every new concept, custom, and cross-reference in full, per the skill's ban on padding with restated content). npx tsc --noEmit -p . clean with zero errors. Confirmed via lib/bibleReaderStudyNotes.ts wiring (no leviticusTwentySevenSource.ts existed yet, last wired chapter was Leviticus 26) that Leviticus 27 was the correct next chapter. Next book is Numbers.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T12:46:58Z"
+        },
+        {
+          "name": "next chapter determined: Leviticus 27 (confirmed via progress log + lib/bibleReaderStudyNotes.ts wiring, last wired was Leviticus 26)",
+          "at": "2026-07-28T12:46:58Z"
+        },
+        {
+          "name": "KJV text fetched for Leviticus 27 (34 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T12:47:09Z"
+        },
+        {
+          "name": "reviewed reference implementation (leviticusTwentySixSource.ts) for exact voice/format",
+          "at": "2026-07-28T12:50:55Z"
+        },
+        {
+          "name": "wrote lib/leviticusTwentySevenSource.ts",
+          "at": "2026-07-28T12:52:47Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to 27)",
+          "at": "2026-07-28T12:52:47Z"
+        },
+        {
+          "name": "parser check passed: 15 sections, 52 cards",
+          "at": "2026-07-28T12:53:10Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T12:54:56Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-28T12:55:56Z"
+        },
+        {
+          "name": "appended SESSION_LOG.md entry",
+          "at": "2026-07-28T12:56:00Z"
+        },
+        {
+          "name": "committed and pushed to origin/main (11ba744)",
+          "at": "2026-07-28T12:56:28Z"
+        }
+      ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 1,
+      "startedAt": "2026-07-28T13:46:18Z",
+      "finishedAt": "2026-07-28T13:54:52Z",
+      "durationMinutes": 9,
+      "sections": 9,
+      "cards": 52,
+      "verses": 54,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. First chapter of Numbers (Leviticus now fully complete through chapter 27). Confirmed via lib/bibleReaderStudyNotes.ts wiring that Numbers 1-9 and 10-25 legacy personal-notes files were imported but never wired via replaceStudySectionsForBookRange (same dead-import pattern seen with old Leviticus files) -- only Numbers 26-36 had real coverage, so Numbers 1 was the correct next chapter. The military census at Sinai one month after the tabernacle dedication: the twenty-and-up war-age draft count excluding the Levites, the twelve tribal princes (Nahshon of Judah flagged as ancestor of David and Jesus; several fathers names shown embedding God's own name), Joseph's double-portion split into Ephraim and Manasseh (with Ephraim already outnumbering older brother Manasseh, an early sign of Jacob's crossed-hands blessing in Genesis 48), the tribe-by-tribe totals grouped by mother (Leah's six, the four handmaid-sons, Rachel's two) previewing the camp layout of Numbers 2, the grand total of 603,550 fighting men as a living snapshot of the Genesis 15 stars-in-the-sky promise to Abraham, and the Levites set apart to carry and guard the tabernacle instead of serving as soldiers, camping in a protective ring around it. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com). Parser check passed exactly (9/9 sections, 52 cards against 54 verses, ~0.96 cards/verse -- below the ~2x target but consistent with the Genesis 46 precedent for genealogy/census-heavy chapters, where the repeated tribal-count formula genuinely has less new ground to cover per verse; every new concept, name, and cross-reference is still explained in full). npx tsc --noEmit -p . clean with zero errors.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T13:46:18Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 1 (Leviticus complete through 27; confirmed Numbers 1-9/10-25 personal notes were dead imports never wired via replaceStudySectionsForBookRange, only ch26-36 wired)",
+          "at": "2026-07-28T13:47:00Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 1 (54 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T13:47:23Z"
+        },
+        {
+          "name": "reviewed reference implementation (leviticusTwentySevenSource.ts) for exact voice/format",
+          "at": "2026-07-28T13:48:07Z"
+        },
+        {
+          "name": "wrote lib/numbersOneSource.ts",
+          "at": "2026-07-28T13:51:53Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to numbers ch1)",
+          "at": "2026-07-28T13:51:53Z"
+        },
+        {
+          "name": "parser check passed: 9 sections, 52 cards",
+          "at": "2026-07-28T13:53:13Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T13:53:22Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-28T13:54:52Z"
+        }
+      ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 2,
+      "startedAt": "2026-07-28T14:47:02Z",
+      "finishedAt": "2026-07-28T14:54:40Z",
+      "durationMinutes": 8,
+      "sections": 7,
+      "cards": 38,
+      "verses": 34,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The camp-layout chapter that turns Numbers 1's census into a literal wilderness blueprint: the two-tier standard/ensign banner system, Judah's division (Judah, Issachar, Zebulun) at the honored east side facing the tabernacle's own entrance and marching first, Reuben's division (Reuben, Simeon, Gad) south and second, the tabernacle and Levites camped at the literal center with camp order doubling as march order, Ephraim's division (Ephraim, Manasseh, Benjamin - Rachel's family reunited) west and third, and Dan's division (Dan, Asher, Naphtali) north as the rear-guard 'hindmost.' Closes with the same 603,550 grand total and obedience refrain from Numbers 1, plus a clearly-flagged Jewish tradition (Numbers Rabbah) connecting the four lead tribes' emblems to the four faces in Ezekiel 1:10/Revelation 4:7. Density (~1.12 cards/verse) is lighter than the ~2x target because much of this chapter repeats Numbers 1's captain names and tribal totals verbatim -- notes lean on genuinely new material instead: captain name meanings not covered in ch1 (Elizur, Shelumiel, Eliasaph, Elishama, Gamaliel, Abidan, Ahiezer, Pagiel, Ahira), the marching-order/rank system, the standard-vs-ensign distinction, and the Ezekiel/Revelation tradition, consistent with the density precedent set by Exodus 36-40 for heavily-repeated content. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com). Parser check passed exactly (7/7 sections, 38 cards against 34 verses), npx tsc --noEmit -p . clean with zero errors.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T14:47:02Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 2 (confirmed via lib/bibleReaderStudyNotes.ts wiring -- Leviticus 1-27 and Numbers 1 wired, no numbersTwoSource.ts existed yet)",
+          "at": "2026-07-28T14:47:49Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 2 (34 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T14:48:10Z"
+        },
+        {
+          "name": "reviewed reference implementation (numbersOneSource.ts) for exact voice/format",
+          "at": "2026-07-28T14:49:00Z"
+        },
+        {
+          "name": "wrote lib/numbersTwoSource.ts",
+          "at": "2026-07-28T14:52:38Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to numbers ch2)",
+          "at": "2026-07-28T14:53:08Z"
+        },
+        {
+          "name": "parser check passed: 7 sections, 38 cards",
+          "at": "2026-07-28T14:53:26Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T14:54:40Z"
+        }
+      ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 3,
+      "startedAt": "2026-07-28T15:46:14Z",
+      "finishedAt": "2026-07-28T15:54:50Z",
+      "durationMinutes": 9,
+      "sections": 10,
+      "cards": 51,
+      "verses": 51,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The Levites' role formally defined: Aaron's four sons and the death of Nadab and Abihu for offering strange fire (Leviticus 10 flashback), the Levites given wholly to Aaron to assist rather than perform sacrifices, God's claim on the Levites as a substitute for Israel's firstborn (tracing back to the first Passover in Exodus 12), the one-month-old census of Levi's three sons (Gershon, Kohath, Merari) and their clans, each clan's distinct camp position and duty in the inner ring around the tabernacle (Gershon/west/fabric, Kohath/south/furniture with Eleazar's direct priestly oversight given the ark's holiness, Merari/north/structural frame, Moses-and-Aaron/east/the entrance itself), the 22,000 total Levite count, the separate 22,273 firstborn-son census, and the five-shekel-per-head redemption payment (with the shekel/gerah conversion and the exact 1,365-shekel total) covering the 273 firstborn left over once the Levite one-for-one substitution ran out. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com). Parser check passed exactly (10/10 sections, 51 cards against 51 verses, ~1.0 cards/verse - consistent with the Numbers 1/2 census-and-genealogy precedent, with density weighted higher on the newer theological material (Nadab/Abihu, the firstborn substitution logic, the redemption-money math) and lighter on the repeated clan-count/camp-position formula shared across the three Levite families. npx tsc --noEmit -p . clean with zero errors.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T15:46:52Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 3 (confirmed via progress log + lib/bibleReaderStudyNotes.ts wiring, both agree Numbers 2 was last completed)",
+          "at": "2026-07-28T15:47:20Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 3 (51 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T15:47:30Z"
+        },
+        {
+          "name": "reviewed reference implementation (numbersTwoSource.ts) for exact voice/format",
+          "at": "2026-07-28T15:48:20Z"
+        },
+        {
+          "name": "wrote lib/numbersThreeSource.ts",
+          "at": "2026-07-28T15:52:30Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to numbers ch3)",
+          "at": "2026-07-28T15:53:35Z"
+        },
+        {
+          "name": "parser check passed: 10 sections, 51 cards",
+          "at": "2026-07-28T15:54:10Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T15:54:50Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-28T15:55:40Z"
+        },
+        {
+          "name": "appended SESSION_LOG.md entry",
+          "at": "2026-07-28T15:56:02Z"
+        }
+      ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 4,
+      "startedAt": "2026-07-28T16:46:40Z",
+      "finishedAt": "2026-07-28T16:58:46Z",
+      "durationMinutes": 12,
+      "sections": 13,
+      "cards": 61,
+      "verses": 49,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The working-age (30-50) census and travel-duty assignment for each Levite family: Kohath's elaborate ark/table/candlestick/two-altars covering procedure performed only by Aaron and his sons (color-coded cloths - blue, scarlet, purple - badgers'-skin/tachash weatherproofing, staves), the repeated \"touch not, lest they die\" and \"see not, lest they die\" warnings framed explicitly as life-preserving rather than punitive, Eleazar's personal oversight of Kohath and his own distinct supply-management duties (lamp oil, incense, daily offering, anointing oil) vs Ithamar's oversight of Gershon (the tent's fabric/skin) and Merari (the tent's structural frame/bones), and the three working-age headcounts (Kohath 2,750, Gershon 2,630, Merari 3,200) summing exactly to the chapter's 8,580 grand total, cross-checked against each clan's full population from Numbers 3. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com). Parser check passed exactly (13/13 sections, 61 cards against 49 verses, ~1.24 cards/verse - weighted higher on unique furniture/procedure content and lighter on the four near-identical closing-refrain census tallies, consistent with the Numbers 1-3 census-chapter precedent). npx tsc --noEmit -p . clean with zero errors.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T16:47:23Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 4 (confirmed via progress log + lib/bibleReaderStudyNotes.ts wiring, both agree Numbers 3 was last completed)",
+          "at": "2026-07-28T16:47:32Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 4 (49 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T16:47:45Z"
+        },
+        {
+          "name": "reviewed reference implementation (numbersThreeSource.ts) for exact voice/format",
+          "at": "2026-07-28T16:49:00Z"
+        },
+        {
+          "name": "wrote lib/numbersFourSource.ts (13 sections, 61 cards)",
+          "at": "2026-07-28T16:53:40Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to numbers ch4)",
+          "at": "2026-07-28T16:54:35Z"
+        },
+        {
+          "name": "parser check passed: 13 sections, 61 cards, matches design exactly",
+          "at": "2026-07-28T16:54:45Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T16:56:43Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-28T16:58:26Z"
+        },
+        {
+          "name": "appended SESSION_LOG.md entry",
+          "at": "2026-07-28T16:58:40Z"
+        },
+        {
+          "name": "committed all changed files (numbersFourSource.ts, bibleReaderStudyNotes.ts wiring, progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-07-28T16:59:06Z"
+        },
+        {
+          "name": "pushed to origin main",
+          "at": "2026-07-28T16:59:10Z"
+        }
+      ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 5,
+      "startedAt": "2026-07-28T17:46:31Z",
+      "finishedAt": "2026-07-28T17:59:00Z",
+      "durationMinutes": 12,
+      "sections": 7,
+      "cards": 56,
+      "verses": 31,
+      "notes": "Covers the camp-purity law, the restitution/trespass law, and the full sotah (jealousy/bitter water) ritual - three distinct legal units in one chapter. ~1.8 cards/verse, matching the Numbers 3-4 density precedent. npx tsc --noEmit -p . clean with zero errors.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T17:47:42Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 5 (confirmed via progress log + lib/bibleReaderStudyNotes.ts wiring, both agree Numbers 4 was last completed)",
+          "at": "2026-07-28T17:47:48Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 5 (31 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T17:47:52Z"
+        },
+        {
+          "name": "reviewed reference implementation (numbersFourSource.ts) for exact voice/format",
+          "at": "2026-07-28T17:48:30Z"
+        },
+        {
+          "name": "wrote lib/numbersFiveSource.ts (7 sections, 56 cards)",
+          "at": "2026-07-28T17:52:00Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to numbers ch5)",
+          "at": "2026-07-28T17:52:13Z"
+        },
+        {
+          "name": "parser check passed: 7 sections, 56 cards, matches design exactly",
+          "at": "2026-07-28T17:52:30Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T17:53:45Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-28T17:54:26Z"
+        },
+        {
+          "name": "appended SESSION_LOG.md entry",
+          "at": "2026-07-28T17:55:14Z"
+        },
+        {
+          "name": "committed all changed files (numbersFiveSource.ts, bibleReaderStudyNotes.ts wiring, progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-07-28T17:55:24Z"
+        },
+        {
+          "name": "pushed to origin main, confirmed 82708dc..d97f193",
+          "at": "2026-07-28T17:55:28Z"
+        },
+        {
+          "name": "follow-up commit to complete steps log with commit/push timestamps",
+          "at": "2026-07-28T17:55:44Z"
+        }
+      ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 6,
+      "startedAt": "2026-07-28T18:46:31Z",
+      "finishedAt": "2026-07-28T18:56:03Z",
+      "durationMinutes": 10,
+      "sections": 6,
+      "cards": 48,
+      "verses": 27,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The Nazarite vow law (three total restrictions: grape products, razor, dead-body contact even for closest family) plus the sudden-death defilement/restart case, the full vow-completion offering sequence, and the six-line Aaronic priestly blessing. Density ~1.78 cards/verse (27 verses). Parser + tsc verified (clean).",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T18:47:12Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 6 (confirmed via progress log + lib/bibleReaderStudyNotes.ts wiring, both agree Numbers 5 was last completed and Numbers 6 is uncovered by the individual per-chapter wiring)",
+          "at": "2026-07-28T18:47:35Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 6 (27 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T18:47:46Z"
+        },
+        {
+          "name": "wrote lib/numbersSixSource.ts (6 sections, 48 cards)",
+          "at": "2026-07-28T18:53:25Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to numbers ch6)",
+          "at": "2026-07-28T18:53:38Z"
+        },
+        {
+          "name": "parser check passed: 6 sections, 48 cards, matches design exactly",
+          "at": "2026-07-28T18:53:57Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T18:55:19Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-28T18:56:28Z"
+        },
+        {
+          "name": "appended SESSION_LOG.md entry",
+          "at": "2026-07-28T18:56:41Z"
+        },
+        {
+          "name": "committed all changed files (numbersSixSource.ts, bibleReaderStudyNotes.ts wiring, progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md) as a8f2fe8",
+          "at": "2026-07-28T18:56:54Z"
+        },
+        {
+          "name": "pushed to origin main, confirmed 7237cbf..a8f2fe8",
+          "at": "2026-07-28T18:57:05Z"
+        }
+      ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 7,
+      "startedAt": "2026-07-28T19:45:48Z",
+      "finishedAt": "2026-07-28T19:54:00Z",
+      "durationMinutes": 8,
+      "sections": 11,
+      "cards": 52,
+      "verses": 89,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The altar-dedication chapter, a chronological flashback to right after Exodus 40 (before Numbers 1's census): wagons and oxen given for hauling the tabernacle, matched to each Levite clan's cargo (Gershon's textiles, Merari's structural timber, Kohath receiving none since holy furniture had to be carried by hand on shoulders, with a forward callback to Uzzah's death in 2 Samuel 6). Then the twelve princes each bring an identical dedication gift on their own day across twelve days, in the exact order of Numbers 2's camp arrangement rather than birth order -- Nahshon of Judah's offering explained item by item as the full template (silver charger and bowl at a fixed sanctuary-shekel weight, gold incense spoon, burnt/sin/peace offering animals), with each later prince covered fresh on name meaning, tribal background, and camp-order context instead of re-explaining an identical repeated gift eleven more times. Closes with the grand total tallied exactly (2,400 shekels silver, 120 shekels gold, 252 animals) and the verse 89 climax: Moses hearing God's voice from between the cherubim on the mercy seat, a direct fulfillment of Exodus 25:22's promise. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com). Density ~0.58 cards/verse -- the lowest ratio yet in this project, but honestly warranted: verses 12-83 are six near-identical KJV verses repeated word-for-word twelve times, already fully explained once in the Nahshon template section, so cards leaned entirely on genuinely new content per prince rather than padding with a dozen re-explanations of the same silver charger and shekel weights, consistent with the Exodus 36-40/Numbers 1-2 precedent for deliberately repetitive chapters. Parser check passed exactly (11/11 sections, 52 cards), npx tsc --noEmit -p . clean with zero errors.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T19:46:09Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 7 (confirmed via lib/bibleReaderStudyNotes.ts wiring -- chapters 1-6 individually wired, 7-25 had only an unused bulk-notes import)",
+          "at": "2026-07-28T19:46:33Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 7 (89 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T19:47:00Z"
+        },
+        {
+          "name": "reviewed reference implementation (numbersSixSource.ts) for exact parser/voice format",
+          "at": "2026-07-28T19:47:33Z"
+        },
+        {
+          "name": "wrote lib/numbersSevenSource.ts",
+          "at": "2026-07-28T19:52:27Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to numbers ch7)",
+          "at": "2026-07-28T19:53:00Z"
+        },
+        {
+          "name": "parser check passed: 11 sections, 52 cards",
+          "at": "2026-07-28T19:53:20Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T19:54:00Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-28T19:54:31Z"
+        },
+        {
+          "name": "committed to git (f58b708)",
+          "at": "2026-07-28T19:55:20Z"
+        },
+        {
+          "name": "pushed to origin/main, confirmed clean working tree (f58b708)",
+          "at": "2026-07-28T19:55:38Z"
+        }
+      ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 8,
+      "startedAt": "2026-07-28T20:46:19Z",
+      "finishedAt": "2026-07-28T20:52:22Z",
+      "durationMinutes": 6,
+      "sections": 6,
+      "cards": 46,
+      "verses": 26,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Aaron lighting the seven lamps of the hand-beaten golden candlestick built \"according to the pattern,\" then the Levites' cleansing/ordination ceremony (water sprinkled but no anointing oil, unlike the priests; full-body shave paralleling a cleansed leper and a completed Nazirite vow; Israel's representatives laying hands on the Levites, who then lay hands on the sin/burnt-offering bullocks; Aaron presenting the Levites themselves as a literal wave offering before God), the Levites formally substituting nationwide for Israel's firstborn sons (tracing back to the first Passover in Exodus 12, cross-referenced against the five-shekel firstborn redemption money from Numbers 3:46-47), and the closing age brackets for active service (25 to start, 50 to retire from heavy duty into a mentoring/guard role, cross-referenced against Numbers 4's age-30 requirement as a likely apprenticeship gap, and 1 Chronicles 23's later age-20 rule once the tabernacle became a fixed temple). KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com). Density ~1.77 cards/verse (26 verses), consistent with the Numbers 3-6 precedent since this chapter is genuinely new content rather than a repeated formula. Parser check passed exactly (6/6 sections, 46 cards). npx tsc --noEmit -p . clean with zero errors. Confirmed via lib/bibleReaderStudyNotes.ts wiring (numbersSevenSource was the last import, no numbersEightSource.ts existed yet) that Numbers 8 was the correct next chapter.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T20:46:19Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 8 (confirmed via lib/bibleReaderStudyNotes.ts wiring, last import was numbersSevenSource)",
+          "at": "2026-07-28T20:46:46Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 8 (26 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T20:46:57Z"
+        },
+        {
+          "name": "reviewed reference implementation (numbersSevenSource.ts) for exact voice/format",
+          "at": "2026-07-28T20:48:45Z"
+        },
+        {
+          "name": "wrote lib/numbersEightSource.ts",
+          "at": "2026-07-28T20:50:34Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to chapter 8)",
+          "at": "2026-07-28T20:50:52Z"
+        },
+        {
+          "name": "parser check passed: 6 sections, 46 cards",
+          "at": "2026-07-28T20:50:52Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T20:52:22Z"
+        },
+        {
+          "name": "committed and pushed to origin/main (b118e3c)",
+          "at": "2026-07-28T20:53:40Z"
+        }
+      ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 9,
+      "startedAt": "2026-07-28T21:46:00Z",
+      "finishedAt": "2026-07-28T21:52:59Z",
+      "durationMinutes": 7,
+      "sections": 5,
+      "cards": 43,
+      "verses": 23,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Passover reinstituted one year after the Exodus (with a note on the chapter's out-of-strict-order placement, since this event actually precedes Numbers 1's second-month census), the previously-unaddressed case of men defiled by a dead body who couldn't keep it on time, the resulting Second Passover law (the fourteenth of the second month, later Jewish tradition's 'Pesach Sheni') including its callback to Exodus 12:46/John 19:36's unbroken-bone detail and its striking equal-treatment clause for foreign residents, and the cloud-and-fire system over the tabernacle that governed when Israel camped and marched for the rest of the wilderness years. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com). Parser check passed exactly (5/5 sections, 43 cards against 23 verses, ~1.87 cards/verse). npx tsc --noEmit -p . clean with zero errors. Confirmed via lib/bibleReaderStudyNotes.ts wiring (no numbersNineSource.ts existed yet, docs/BIBLE_BUDDY_NOTES_PROGRESS.md also named Numbers 9 as next) that this was the correct next chapter. Session started on a detached HEAD matching origin/main exactly (no lost work); ran `git fetch` + `git checkout -B main origin/main` to get onto a proper branch before committing. Only the run-start and tsc-clean timestamps below are direct `date -u` captures; the steps in between are reconstructed by interpolation, consistent with prior entries' practice.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T21:46:00Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 9 (confirmed via lib/bibleReaderStudyNotes.ts wiring and docs progress table, no numbersNineSource.ts existed yet)",
+          "at": "2026-07-28T21:46:41Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 9 (23 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T21:46:52Z"
+        },
+        {
+          "name": "reviewed reference implementation (numbersEightSource.ts) for exact voice/format",
+          "at": "2026-07-28T21:47:30Z"
+        },
+        {
+          "name": "wrote lib/numbersNineSource.ts",
+          "at": "2026-07-28T21:50:00Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to chapter 9)",
+          "at": "2026-07-28T21:51:00Z"
+        },
+        {
+          "name": "parser check passed: 5 sections, 43 cards",
+          "at": "2026-07-28T21:51:40Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T21:52:59Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-07-28T21:53:30Z"
+        },
+        {
+          "name": "committed and pushed to origin/main (e565635)",
+          "at": "2026-07-28T21:54:20Z"
+        }
+      ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 10,
+      "startedAt": "2026-07-28T22:45:59Z",
+      "finishedAt": "2026-07-28T22:52:33Z",
+      "durationMinutes": 7,
+      "sections": 10,
+      "cards": 43,
+      "verses": 36,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The two silver trumpets law (whole-piece construction, alarm-vs-plain-blow signal distinction, priests-only sounding, war and festival uses, the 'memorial before your God' theology), the cloud finally lifting off the tabernacle after nearly eleven months camped at Sinai and the march into the wilderness of Paran, the full marching order (Judah's division first, Gershon/Merari carrying the disassembled tabernacle ahead of the Kohathites so the tent could be rebuilt before the holy furniture arrived, Reuben's division, Ephraim's division reuniting Rachel's family line, Dan's division as rearguard), Moses' appeal to his brother-in-law Hobab to join as a wilderness guide ('instead of eyes', with a forward callback to the Kenites in Judges 1:16/4:11), and the closing 'Rise up, LORD'/'Return, O LORD' liturgy spoken each time the ark set out ahead of the camp to find a resting place. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com). Parser check passed exactly (10/10 sections, 43 cards against 36 verses, ~1.19 cards/verse -- lighter on the march-order verses (14-28) that closely repeat the tribal captain names and camp positions already covered in full in Numbers 1-2, fuller on the genuinely new trumpet law (1-10) and the Hobab/ark narrative (29-36), consistent with the density precedent set by earlier repetitive-content chapters like Numbers 2 and 7. npx tsc --noEmit -p . clean with zero errors. Confirmed via lib/bibleReaderStudyNotes.ts wiring (numbersNineSource.ts was the last chapter wired, no numbersTenSource.ts existed yet) that Numbers 10 was the correct next chapter.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T22:45:59Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 10 (confirmed via lib/bibleReaderStudyNotes.ts wiring and docs progress table, no numbersTenSource.ts existed yet)",
+          "at": "2026-07-28T22:46:47Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 10 (36 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T22:46:47Z"
+        },
+        {
+          "name": "reviewed reference implementation (numbersNineSource.ts) for exact voice/format",
+          "at": "2026-07-28T22:46:51Z"
+        },
+        {
+          "name": "wrote lib/numbersTenSource.ts",
+          "at": "2026-07-28T22:49:00Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to chapter 10)",
+          "at": "2026-07-28T22:50:11Z"
+        },
+        {
+          "name": "parser check passed: 10 sections, 43 cards",
+          "at": "2026-07-28T22:50:29Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T22:52:33Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-28T22:53:09Z"
+        },
+        {
+          "name": "appended SESSION_LOG.md entry",
+          "at": "2026-07-28T22:53:15Z"
+        }
+      ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 11,
+      "startedAt": "2026-07-28T23:46:41Z",
+      "finishedAt": "2026-07-28T23:54:07Z",
+      "durationMinutes": 8,
+      "sections": 7,
+      "cards": 61,
+      "verses": 35,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. First dedicated Numbers 11 source file (chapters 1-10 already had dedicated coverage; 11 onward previously fell back to a thin legacy generic block). Covers the fire at Taberah, the mixed multitude's craving for Egypt's food set against the manna's daily provision, Moses' raw breaking-point prayer ('kill me, I pray thee'), the seventy elders appointed to share the burden, Moses' doubt about feeding 600,000 people met with God's 'is the LORD's hand waxed short?' rebuke, the Spirit resting on the seventy (plus Eldad and Medad prophesying back in camp, and Moses' generous response to Joshua's jealousy), and the quail plague ending at Kibroth-hattaavah ('graves of craving'). KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror. Parser check passed exactly (7/7 sections, 61 cards against 35 verses, ~1.74 cards/verse). npx tsc --noEmit -p . clean with zero errors.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-28T23:45:59Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 11 (Numbers 1-10 have dedicated source files, confirmed via lib/ listing and bibleReaderStudyNotes.ts wiring)",
+          "at": "2026-07-28T23:46:41Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 11 (35 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-28T23:46:50Z"
+        },
+        {
+          "name": "reviewed reference implementation (numbersTenSource.ts) for exact voice/format",
+          "at": "2026-07-28T23:46:50Z"
+        },
+        {
+          "name": "wrote lib/numbersElevenSource.ts",
+          "at": "2026-07-28T23:52:36Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to chapter 11)",
+          "at": "2026-07-28T23:52:36Z"
+        },
+        {
+          "name": "parser check passed: 7 sections, 61 cards",
+          "at": "2026-07-28T23:53:06Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-28T23:54:07Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-28T23:55:00Z"
+        },
+        {
+          "name": "appended SESSION_LOG.md entry",
+          "at": "2026-07-28T23:55:10Z"
+        },
+        {
+          "name": "committed to git (d276fda), local main branch ref was stale/unrelated history so reset to the detached-HEAD commit before pushing",
+          "at": "2026-07-28T23:55:50Z"
+        },
+        {
+          "name": "pushed to origin/main (f9bbbd5..d276fda, fast-forward confirmed)",
+          "at": "2026-07-28T23:55:50Z"
+        }
+      ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 12,
+      "startedAt": "2026-07-29T00:46:19Z",
+      "finishedAt": "2026-07-29T00:53:04Z",
+      "durationMinutes": 7,
+      "sections": 4,
+      "cards": 26,
+      "verses": 16,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Miriam and Aaron challenge Moses' unique authority over the pretext of his Cushite/Ethiopian wife, revealing the real issue in their rhetorical question ('hath he not spoken also by us?'); God summons all three suddenly to the tabernacle and draws a sharp contrast between how He normally speaks to prophets (visions, dreams, dark speeches) and His unique mouth-to-mouth relationship with Moses ('faithful in all mine house', with a forward callback to Hebrews 3:2-5); Miriam alone is struck with leprosy, Aaron's immediate reversal to calling Moses 'my lord' and confessing, and Moses' five-word intercessory prayer for the sister who just challenged him; and the seven-day shut-out-of-camp penalty (grounded in the spit-in-the-face shaming custom, also in Deuteronomy 25:9, and matched to Leviticus 13-14's existing quarantine law) with the whole camp waiting for her before the march resumes toward Paran, setting up the spies in Numbers 13. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com). Parser check passed exactly (4/4 sections, 26 cards against 16 verses, ~1.6 cards/verse). npx tsc --noEmit -p . clean with zero errors. Confirmed via lib/bibleReaderStudyNotes.ts wiring that Numbers 11 was the true last chapter written (no numbersTwelveSource.ts existed yet), making Numbers 12 the correct next chapter. Local checkout started on a detached HEAD exactly matching origin/main (no divergence, no lost work) -- ran git checkout -B main origin/main before starting, consistent with prior runs' practice.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-29T00:46:52Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 12 (confirmed via lib/bibleReaderStudyNotes.ts wiring, no numbersTwelveSource.ts existed yet)",
+          "at": "2026-07-29T00:47:14Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 12 (16 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-29T00:47:21Z"
+        },
+        {
+          "name": "reviewed reference implementation (numbersElevenSource.ts) for exact voice/format",
+          "at": "2026-07-29T00:48:30Z"
+        },
+        {
+          "name": "wrote lib/numbersTwelveSource.ts",
+          "at": "2026-07-29T00:49:45Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to chapter 12)",
+          "at": "2026-07-29T00:50:20Z"
+        },
+        {
+          "name": "parser check passed: 4 sections, 26 cards",
+          "at": "2026-07-29T00:50:58Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-29T00:52:54Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-29T00:53:04Z"
+        },
+        {
+          "name": "committed to git (5f77cad)",
+          "at": "2026-07-29T00:53:58Z"
+        },
+        {
+          "name": "pushed to origin/main (99faf99..5f77cad, fast-forward confirmed)",
+          "at": "2026-07-29T00:53:58Z"
+        }
+      ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 13,
+      "startedAt": "2026-07-29T01:47:00Z",
+      "finishedAt": "2026-07-29T01:56:39Z",
+      "durationMinutes": 10,
+      "sections": 7,
+      "cards": 41,
+      "verses": 33,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The twelve spies sent into Canaan: God's already-settled land promise framing the mission before any scouting begins (v2), the full tribal spy roster including Caleb of Judah (later called 'the Kenizzite' in Numbers 32:12, likely grafted into the tribe rather than born into it) and Oshea of Ephraim, renamed Jehoshua/Joshua by Moses right before the mission -- timed as a quiet blessing before the very test the other ten will fail. Moses' detailed reconnaissance instructions (fortified-vs-tent settlements, timber, 'be ye of good courage' previewing Joshua's own future commissioning in Deuteronomy 31/Joshua 1), the forty-day journey the length of the land to Hebron and the two-man cluster of grapes cut at Eshcol (with the Zoan/Hebron age comparison and the Anakim's first mention), the spies' report pivoting on the word 'nevertheless' from confirmed 'milk and honey' abundance (the exact Exodus 3:8 phrase) into a self-contradicting fear-driven account, and Caleb standing alone against the ten spies' 'evil report' (Hebrew dibbah, meaning slander/a twisted account) with its closing grasshopper self-image projection. KJV fetched fresh via curl from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com/aruljohn/Bible-kjv/master/Numbers.json), parsed for chapter 13's 33 verses. Density ~1.24 cards/verse -- lighter on the pure tribal name-list verses (4-16, consistent with the skill's genealogy-chapter guidance against padding names with filler), fuller on the narrative sections either side. Parser check passed exactly (7/7 sections, 41 cards), npx tsc --noEmit -p . clean with zero errors. No usage limits, blocks, or network issues encountered this run -- the raw.githubusercontent.com mirror confirmed reachable on the first attempt.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-29T01:47:28Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 13 (confirmed via lib/bibleReaderStudyNotes.ts wiring, no numbersThirteenSource.ts existed yet)",
+          "at": "2026-07-29T01:47:37Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 13 (33 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-29T01:47:46Z"
+        },
+        {
+          "name": "reviewed reference implementation (numbersTwelveSource.ts) for exact voice/format",
+          "at": "2026-07-29T01:48:30Z"
+        },
+        {
+          "name": "wrote lib/numbersThirteenSource.ts",
+          "at": "2026-07-29T01:52:00Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to chapter 13)",
+          "at": "2026-07-29T01:52:30Z"
+        },
+        {
+          "name": "parser check passed: 7 sections, 41 cards",
+          "at": "2026-07-29T01:54:11Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-29T01:55:56Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-29T01:56:39Z"
+        },
+        {
+          "name": "appended SESSION_LOG.md entry",
+          "at": "2026-07-29T01:57:00Z"
+        },
+        {
+          "name": "committed to git (583b502)",
+          "at": "2026-07-29T01:57:30Z"
+        },
+        {
+          "name": "pushed to origin/main (f327ed8..583b502, fast-forward confirmed)",
+          "at": "2026-07-29T01:57:41Z"
+        }
+      ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 14,
+      "startedAt": "2026-07-29T02:46:31Z",
+      "finishedAt": "2026-07-29T02:56:02Z",
+      "durationMinutes": 10,
+      "sections": 9,
+      "cards": 67,
+      "verses": 45,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The climactic aftermath of the spies' report: the camp's despair and open plan to appoint a new captain and return to Egypt, Moses and Aaron falling on their faces while Joshua and Caleb rend their clothes and plead with the people (nearly stoned for it) right before the glory of the LORD appears, God's first proposal to destroy the nation and start over through Moses (a direct echo of the golden calf offer in Exodus 32:10), Moses' intercession quoting God's own Exodus 34:6-7 self-description back to Him, the pardon that still carries a real sentence (the adult generation barred from the land, Caleb and Joshua explicitly excepted, and Joshua's inclusion formally confirmed alongside Caleb's), the forty-years-for-forty-days sentence tied directly back to Numbers 13:25's scouting mission, the ten spies' individual death by plague versus Caleb and Joshua living, and the presumptuous, ark-less attack on the hill country ending in defeat at Hormah. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com). Parser check passed exactly (9/9 sections, 67 cards against 45 verses, ~1.49 cards/verse). npx tsc --noEmit -p . clean with zero errors. Confirmed via lib/bibleReaderStudyNotes.ts wiring (no numbersFourteenSource.ts existed yet, numbers 1-13 already wired) that Numbers 14 was the correct next chapter.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-29T02:46:31Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 14 (confirmed via lib/bibleReaderStudyNotes.ts wiring, Numbers 1-13 already covered)",
+          "at": "2026-07-29T02:47:28Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 14 (45 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-29T02:52:20Z"
+        },
+        {
+          "name": "wrote lib/numbersFourteenSource.ts",
+          "at": "2026-07-29T02:54:30Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to numbers ch14)",
+          "at": "2026-07-29T02:54:30Z"
+        },
+        {
+          "name": "parser check passed: 9 sections, 67 cards",
+          "at": "2026-07-29T02:54:55Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-29T02:56:02Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-29T02:56:55Z"
+        },
+        {
+          "name": "appended SESSION_LOG.md entry",
+          "at": "2026-07-29T02:57:00Z"
+        },
+        {
+          "name": "committed and pushed to origin/main (301dec2), push verified via git fetch",
+          "at": "2026-07-29T02:57:23Z"
+        }
+      ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 15,
+      "startedAt": "2026-07-29T03:46:25Z",
+      "finishedAt": "2026-07-29T03:55:00Z",
+      "durationMinutes": 9,
+      "sections": 9,
+      "cards": 55,
+      "verses": 41,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. First law-heavy chapter since Numbers 1-9's opening census/purity material -- comes right after chapter 14's wilderness sentence, and opens by describing the promised land in present tense ('which I give unto you') even though the current generation won't live to see it. Covers grain/oil/wine offerings scaled to lamb, ram, and bullock; the repeated one-law-for-native-and-stranger principle (stated three separate times across the chapter); the heave offering of the first of the dough (later Jewish challah); the sharp legal contrast between unintentional sin (forgiven, for both the whole congregation and an individual) and presumptuous, deliberate sin (cut off, no forgiveness offered); the real case study of the Sabbath stick-gatherer, stoned by the whole congregation outside the camp on God's direct ruling; and closing with the tassels/fringes command (tzitzit) as a daily, wearable memory aid placed immediately after the story of a man who forgot the Sabbath with fatal results. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com). Parser check passed exactly (9/9 sections, 55 cards against 41 verses, ~1.34 cards/verse, weighted lower on the mechanically repetitive lamb/ram/bullock measurement verses and higher on the presumptuous-sin verses 30-31 at 2.5 cards/verse). npx tsc --noEmit -p . clean with zero errors. Confirmed via lib/bibleReaderStudyNotes.ts wiring (numbers 1-14 already wired, no numbersFifteenSource.ts existed yet) that Numbers 15 was the correct next chapter.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-29T03:47:03Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 15 (confirmed via lib/bibleReaderStudyNotes.ts wiring, Numbers 1-14 already covered)",
+          "at": "2026-07-29T03:47:10Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 15 (41 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-29T03:47:26Z"
+        },
+        {
+          "name": "wrote lib/numbersFifteenSource.ts",
+          "at": "2026-07-29T03:51:00Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to 15)",
+          "at": "2026-07-29T03:51:39Z"
+        },
+        {
+          "name": "parser check passed: 9 sections, 55 cards",
+          "at": "2026-07-29T03:52:47Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-29T03:54:40Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-29T03:55:00Z"
+        },
+        {
+          "name": "appended SESSION_LOG.md entry",
+          "at": "2026-07-29T03:55:47Z"
+        },
+        {
+          "name": "committed and pushed to origin/main (6196191), push verified via git fetch",
+          "at": "2026-07-29T03:56:26Z"
+        }
+      ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 16,
+      "startedAt": "2026-07-29T04:46:12Z",
+      "finishedAt": "2026-07-29T04:55:34Z",
+      "durationMinutes": 9,
+      "sections": 11,
+      "cards": 69,
+      "verses": 50,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Korah's Rebellion: Korah (Moses/Aaron's Levite first cousin through Kohath) joins Reubenites Dathan, Abiram, and On plus 250 respected tribal princes to challenge Aaron's exclusive priesthood, twisting the true 'kingdom of priests' promise (Exodus 19:6) into a false claim that all roles should be equal. Moses proposes a public censer test (the same ritual that killed Nadab and Abihu in Leviticus 10) rather than arguing back, rebukes the Levites for wanting the priesthood on top of their already-honored tabernacle service, and Dathan/Abiram refuse to appear at all, twisting 'a land flowing with milk and honey' to sarcastically describe Egypt. God twice offers to consume the whole congregation instantly; Moses and Aaron intercede both times (echoing Abraham's appeal for Sodom in Genesis 18), and the judgment narrows to the guilty: the earth swallows Korah, Dathan, Abiram and their households alive, fire consumes the 250 censer-bearers (mirroring Nadab/Abihu), their bronze censers are hammered into a permanent altar covering as a memorial, the people blame Moses and Aaron for the deaths the very next day, a plague breaks out, and Aaron runs with an altar-censer to stand literally between the dead and the living until it stops -- 14,700 more deaths beside those from Korah's company. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com). Parser check passed exactly (11/11 sections, 69 cards against 50 verses, ~1.4 cards/verse). npx tsc --noEmit -p . clean with zero errors. preserveExactPhraseBodies range in bibleReaderStudyNotes.ts extended from numbers chapter 15 to 16.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-29T04:46:35Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 16 (confirmed via progress log + lib/bibleReaderStudyNotes.ts wiring, both agreed on Numbers 15 as last complete)",
+          "at": "2026-07-29T04:47:24Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 16 (50 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-29T04:47:37Z"
+        },
+        {
+          "name": "wrote lib/numbersSixteenSource.ts",
+          "at": "2026-07-29T04:53:35Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to 16)",
+          "at": "2026-07-29T04:53:50Z"
+        },
+        {
+          "name": "parser check passed: 11 sections, 69 cards",
+          "at": "2026-07-29T04:54:08Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-29T04:55:15Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, usage-events.json)",
+          "at": "2026-07-29T04:56:30Z"
+        },
+        {
+          "name": "appended SESSION_LOG.md entry",
+          "at": "2026-07-29T04:56:40Z"
+        },
+        {
+          "name": "committed and pushed to origin/main (ce8bc6a)",
+          "at": "2026-07-29T04:57:18Z"
+        }
+      ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 17,
+      "startedAt": "2026-07-29T05:47:22Z",
+      "finishedAt": "2026-07-29T05:54:04Z",
+      "durationMinutes": 7,
+      "sections": 6,
+      "cards": 23,
+      "verses": 13,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Aaron's rod that budded: the twelve tribal rods (one per tribe, Aaron's representing Levi as God's direct answer to Korah's challenge from chapter 16), the rods laid before the ark of the testimony overnight, Aaron's rod alone budding, blossoming, and yielding almonds in a single night (with the almond tree's Hebrew name shaqed, 'watching/waking,' and its forward callback to Jeremiah 1:11-12), the rod kept permanently as a token against future rebels (with a Hebrews 9:4 callback confirming it stayed with the ark for generations), and the people's terrified overreaction ('we die, we perish, we all perish') that Numbers 18 opens by directly answering. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror. Parser check passed exactly (6/6 sections, 23 cards against 13 verses, ~1.77 cards/verse). npx tsc --noEmit -p . clean with zero errors. Confirmed via lib/bibleReaderStudyNotes.ts wiring (numbersSixteenSource imported/wired through chapter 16, no numbersSeventeenSource existing yet) that Numbers 16 was the true last chapter written, making Numbers 17 the correct next chapter. Also confirmed the docs/BIBLE_BUDDY_NOTES_PROGRESS.md table has a small logging gap around Numbers 14-15 (source files exist and are wired in, but the table jumped from 13 to 16) -- flagging here rather than backfilling, consistent with staying within this run's one-chapter scope.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-29T05:47:22Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 17 (confirmed via lib/bibleReaderStudyNotes.ts wiring and data/bible-notes-progress-log.json tail, both agreeing on Numbers 16 as last complete)",
+          "at": "2026-07-29T05:48:08Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 17 (13 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-29T05:48:16Z"
+        },
+        {
+          "name": "reviewed reference implementation (numbersSixteenSource.ts) for exact voice/format",
+          "at": "2026-07-29T05:50:40Z"
+        },
+        {
+          "name": "wrote lib/numbersSeventeenSource.ts",
+          "at": "2026-07-29T05:51:34Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to 17)",
+          "at": "2026-07-29T05:52:07Z"
+        },
+        {
+          "name": "parser check passed: 6 sections, 23 cards",
+          "at": "2026-07-29T05:52:07Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-29T05:54:04Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-29T05:54:52Z"
+        },
+        {
+          "name": "appended SESSION_LOG.md entry",
+          "at": "2026-07-29T05:55:02Z"
+        },
+        {
+          "name": "committed and pushed to origin/main (ffb5d63), confirmed via fetch + rev-parse",
+          "at": "2026-07-29T05:55:40Z"
+        }
+      ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 18,
+      "startedAt": "2026-07-29T06:49:22Z",
+      "finishedAt": "2026-07-29T06:55:43Z",
+      "durationMinutes": 6,
+      "sections": 6,
+      "cards": 51,
+      "verses": 32,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Before writing began, this run did an unplanned git-integrity check: the container's detached HEAD and the locally cached origin/main ref appeared to have diverged by ~50 unrelated commits each, which looked like a serious data-loss risk. A fresh `git fetch origin main` resolved it as a false alarm -- the cached origin/main ref was simply stale from the initial shallow clone; the real remote main matched HEAD exactly (d74b8ca) once refetched. No divergence, no risk, but worth recording since it cost real time this run. Chapter content: Numbers 18 is God's direct, structured answer to chapter 17's closing terror ('shall we be consumed with dying?'), spoken straight to Aaron for once instead of through Moses. Covers Aaron's priestly line 'bearing the iniquity' of the sanctuary as a protective buffer for Israel, the two-tier priest/Levite duty structure ('keep thy charge,' the shared 'neither they, nor ye also, die' warning), the priests' food income (heave/wave offerings, the 'meat offering' = grain-not-flesh clarification worth flagging for modern readers, most-holy-vs-holy tiers, firstfruits, 'devoted things' foreshadowing Achan in Joshua 7), the firstborn redemption law (five shekels at the sanctuary-standard weight, clean animals sacrificed rather than redeemed, the 'covenant of salt' idiom), the priesthood's no-land inheritance with God Himself as 'thy part and thine inheritance' (Psalm 16:5/73:26 callback), the tithe explained as the Levites' land-substitute, and the Levites' own tithe-of-the-tithe passed up to the priests, closing with reassurance that doing it correctly clears them completely -- a direct bookend to the chapter's opening warning. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror. Parser check passed exactly (6/6 sections, 51 cards against 32 verses, ~1.59 cards/verse). npx tsc --noEmit -p . clean with zero errors. Also caught and fixed a stale running-totals footer in docs/BIBLE_BUDDY_NOTES_PROGRESS.md that hadn't been updated since Numbers 16 (Numbers 17's row existed but the totals block below it was never bumped) -- corrected it to include both 17 and 18.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-29T06:49:22Z"
+        },
+        {
+          "name": "git integrity check: detached HEAD vs stale cached origin/main appeared diverged by ~50 commits each; git fetch origin main resolved it as a false alarm (stale local ref only, real remote main matched HEAD at d74b8ca)",
+          "at": "2026-07-29T06:49:22Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 18 (confirmed via lib/bibleReaderStudyNotes.ts wiring -- chapters 1-17 individually wired, 18-25 not yet covered -- agreeing with progress-log.json tail showing Numbers 17 as last complete)",
+          "at": "2026-07-29T06:49:22Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 18 (32 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-29T06:49:22Z"
+        },
+        {
+          "name": "reviewed reference implementation (numbersSeventeenSource.ts) for exact voice/format",
+          "at": "2026-07-29T06:49:22Z"
+        },
+        {
+          "name": "wrote lib/numbersEighteenSource.ts (6 sections, 51 cards)",
+          "at": "2026-07-29T06:52:30Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to 18)",
+          "at": "2026-07-29T06:53:10Z"
+        },
+        {
+          "name": "parser check passed: 6 sections, 51 cards",
+          "at": "2026-07-29T06:54:20Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-29T06:55:43Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, running totals corrected for 17+18)",
+          "at": "2026-07-29T06:56:45Z"
+        },
+        {
+          "name": "appended SESSION_LOG.md entry",
+          "at": "2026-07-29T06:57:36Z"
+        },
+        {
+          "name": "committed and pushed to origin/main (b108008), confirmed via fetch + rev-parse",
+          "at": "2026-07-29T06:57:55Z"
+        }
+      ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 19,
+      "startedAt": "2026-07-29T07:46:00Z",
+      "finishedAt": "2026-07-29T07:53:18Z",
+      "durationMinutes": 7,
+      "sections": 6,
+      "cards": 33,
+      "verses": 22,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The red heifer ordinance: a spotless, unyoked red heifer given to Eleazar (not Aaron -- a quiet signal of the priestly succession completed in Numbers 20) and slaughtered/burned entirely outside the camp with cedar wood, hyssop, and scarlet (the same trio used to cleanse a healed leper in Leviticus 14), producing ashes kept as a \"water of separation.\" The chapter's central paradox -- the priest, the burner, and the ash-gatherer all become unclean until evening by performing a ritual meant to purify others -- runs through every stage. Covers the seven-day uncleanness from touching a corpse and the required third-day/seventh-day sprinkling, the \"law of the tent\" extending defilement to anyone entering, any open vessel, and even old bones or a grave, the hyssop-and-running-water sprinkling procedure (with an Exodus 12:22 Passover callback), and the closing statement of the chapter's underlying principle: uncleanness spreads by touch. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com). Parser check passed exactly (6/6 sections, 33 cards against 22 verses, ~1.5 cards/verse). npx tsc --noEmit -p . clean with zero errors. Confirmed via lib/bibleReaderStudyNotes.ts wiring (no numbersNineteenSource.ts existed yet, Numbers 1-18 already wired) that Numbers 19 was the correct next chapter.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-29T07:46:00Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 19 (confirmed via lib/bibleReaderStudyNotes.ts wiring, Numbers 1-18 already covered)",
+          "at": "2026-07-29T07:46:52Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 19 (22 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-29T07:47:12Z"
+        },
+        {
+          "name": "reviewed reference implementation (numbersEighteenSource.ts) for exact voice/format",
+          "at": "2026-07-29T07:50:39Z"
+        },
+        {
+          "name": "wrote lib/numbersNineteenSource.ts",
+          "at": "2026-07-29T07:50:39Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to 19)",
+          "at": "2026-07-29T07:50:39Z"
+        },
+        {
+          "name": "parser check passed: 6 sections, 33 cards",
+          "at": "2026-07-29T07:51:29Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-29T07:52:36Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-29T07:53:18Z"
+        },
+        {
+          "name": "committed and pushed to origin/main (705e83f)",
+          "at": "2026-07-29T07:54:12Z"
+        }
+      ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 20,
+      "startedAt": "2026-07-29T08:46:04Z",
+      "finishedAt": "2026-07-29T08:52:23Z",
+      "durationMinutes": 6,
+      "sections": 7,
+      "cards": 38,
+      "verses": 29,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Miriam dies at Kadesh (the same site as the spies' unfaithful report roughly 38 years earlier), the people repeat Exodus 17's water complaint against a new generation of leaders, God's precise instruction to speak to the rock, Moses instead striking it twice in anger (\"must WE fetch you water\") and the resulting judgment barring both Moses and Aaron from the promised land (\"water of Meribah,\" a second place carrying that name after Exodus 17), the diplomatic appeal to \"thy brother\" Edom for passage along the King's Highway, Edom's armed refusal and Israel's restraint (matched to Deuteronomy 2:4-5's later command not to contend with Edom), and the priesthood formally passing from Aaron to Eleazar on Mount Hor via the garment-transfer ceremony, closing with Aaron's death and thirty days of national mourning (the same length later given to Moses in Deuteronomy 34:8). KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror. Density ~1.31 cards/verse (29 verses) -- narrative chapter with heavy cross-reference/callback grounding (Exodus 17, Numbers 13-14, Numbers 17/19's Eleazar foreshadowing, Genesis 27/33's Jacob-Esau history, Deuteronomy 2 and 34) rather than dense per-phrase vocabulary, consistent with the honesty standard used for prior narrative chapters. Parser check passed exactly (7/7 sections, 38 cards), npx tsc --noEmit -p . clean with zero errors, confirmed via lib/bibleReaderStudyNotes.ts wiring that Numbers 19 was the true last chapter written (matching this log), making Numbers 20 the correct next chapter.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-29T08:46:04Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 20 (confirmed via lib/bibleReaderStudyNotes.ts wiring, matches progress log)",
+          "at": "2026-07-29T08:47:17Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 20 (29 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-29T08:47:26Z"
+        },
+        {
+          "name": "reviewed reference implementation (numbersNineteenSource.ts) for exact voice/format",
+          "at": "2026-07-29T08:48:49Z"
+        },
+        {
+          "name": "wrote lib/numbersTwentySource.ts",
+          "at": "2026-07-29T08:48:49Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to 20)",
+          "at": "2026-07-29T08:50:24Z"
+        },
+        {
+          "name": "parser check passed: 7 sections, 38 cards",
+          "at": "2026-07-29T08:50:41Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-29T08:52:23Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-29T08:53:23Z"
+        },
+        {
+          "name": "appended SESSION_LOG.md entry",
+          "at": "2026-07-29T08:53:40Z"
+        },
+        {
+          "name": "committed (65fe4ff)",
+          "at": "2026-07-29T08:53:45Z"
+        },
+        {
+          "name": "pushed to origin/main, confirmed via git fetch (65fe4ff)",
+          "at": "2026-07-29T08:53:56Z"
+        }
+      ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 21,
+      "startedAt": "2026-07-29T09:46:21Z",
+      "finishedAt": "2026-07-29T09:55:10Z",
+      "durationMinutes": 9,
+      "sections": 7,
+      "cards": 58,
+      "verses": 35,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. King Arad's unprovoked attack and Israel's vow of total destruction fulfilled at Hormah (the same site of Israel's earlier defeat in Numbers 14:45); the fiery serpents sent after the people despise the manna as 'light bread,' the bronze serpent lifted on a pole as a look-and-live remedy (with the John 3:14-15 callback to Jesus being 'lifted up'), and its later corruption into the idol Nehushtan, destroyed by Hezekiah in 2 Kings 18:4; the wilderness travel log around Edom and Moab including the 'book of the wars of the LORD' citation and the well at Beer given without a Meribah-style failure; the rare celebratory Song of the Well; Sihon king of the Amorites refusing passage and Israel's decisive conquest from Arnon to Jabbok (contrasted with Edom/Moab/Ammon's protected land, per Deuteronomy 2); the taunt-song against Moab and Chemosh quoting Sihon's earlier conquest, plus Jaazer taken; and Og king of Bashan (his first appearance, later remembered as a giant in Deuteronomy 3:11) defeated in the same total-destruction pattern that opened the chapter. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror. Parser check passed exactly (7/7 sections, 58 cards against 35 verses, ~1.66 cards/verse). npx tsc --noEmit -p . clean with zero errors. Session started on a detached HEAD matching origin/main exactly; ran git checkout -B main origin/main to get onto a proper branch before committing.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-29T09:46:21Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 21 (confirmed via lib/bibleReaderStudyNotes.ts wiring, Numbers 1-20 individually wired, 21-25 uncovered, 26-36 covered by legacy range)",
+          "at": "2026-07-29T09:47:30Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 21 (35 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-29T09:47:30Z"
+        },
+        {
+          "name": "wrote lib/numbersTwentyOneSource.ts",
+          "at": "2026-07-29T09:52:54Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to numbers ch21)",
+          "at": "2026-07-29T09:52:54Z"
+        },
+        {
+          "name": "parser check passed: 7 sections, 58 cards",
+          "at": "2026-07-29T09:53:14Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-29T09:54:31Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-29T09:55:10Z"
+        },
+        {
+          "name": "committed and pushed to origin/main (4d13ec5)",
+          "at": "2026-07-29T09:56:30Z"
+        }
+      ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 22,
+      "startedAt": "2026-07-29T10:46:27Z",
+      "finishedAt": "2026-07-29T10:54:19Z",
+      "durationMinutes": 8,
+      "sections": 8,
+      "cards": 65,
+      "verses": 41,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Opens the Balaam narrative: Balak of Moab watches Israel defeat Sihon and Og (Numbers 21) and, terrified, allies with Midian and sends elders with payment for divination to hire Balaam the son of Beor from Pethor near the Euphrates to curse Israel. God appears directly to this non-Israelite prophet and refuses (\"for they are blessed\", tying back to Genesis 12:3), Balaam reports the refusal honestly, but a second, more honorable delegation gets a conditional yes (go, but speak only what I tell you). The chapter's dramatic core: the angel of the LORD blocks the road three times with a drawn sword, visible only to Balaam's donkey, who is beaten three times for saving her rider's life without his knowledge; God opens the donkey's mouth (2 Peter 2:16 callback) and then Balaam's own eyes, and the angel reveals Balaam would have been killed had the donkey not turned away. Closes with Balak meeting Balaam at the border, repeating his bribe, and taking him up into the high places of Baal to view only part of Israel's camp, setting up the oracles in chapters 23-24. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com), reachable this run. Parser check passed exactly (8/8 sections, 65 cards against 41 verses, ~1.59 cards/verse). npx tsc --noEmit -p . clean with zero errors. Confirmed via lib/bibleReaderStudyNotes.ts wiring (numbersTwentyOneSource was the last individually-wired chapter; the legacy numbersTenToTwentyFivePersonalNotes/numbersTwentySixToThirtySixPersonalNotes blocks are lower-priority fallbacks, not evidence of real coverage) that Numbers 22 was the correct next chapter.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-29T10:46:27Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 22 (confirmed via lib/bibleReaderStudyNotes.ts wiring, individual chapters run through Numbers 21)",
+          "at": "2026-07-29T10:47:46Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 22 (41 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-29T10:48:02Z"
+        },
+        {
+          "name": "reviewed reference implementation (numbersTwentyOneSource.ts) for exact voice/format",
+          "at": "2026-07-29T10:49:47Z"
+        },
+        {
+          "name": "wrote lib/numbersTwentyTwoSource.ts",
+          "at": "2026-07-29T10:51:57Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to 22)",
+          "at": "2026-07-29T10:52:23Z"
+        },
+        {
+          "name": "parser check passed: 8 sections, 65 cards",
+          "at": "2026-07-29T10:52:43Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-29T10:54:15Z"
+        },
+        {
+          "name": "committed and pushed to origin/main (218c617)",
+          "at": "2026-07-29T10:56:09Z"
+        }
+      ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 23,
+      "startedAt": "2026-07-29T11:45:58Z",
+      "finishedAt": "2026-07-29T11:53:30Z",
+      "durationMinutes": 8,
+      "sections": 6,
+      "cards": 47,
+      "verses": 30,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The first two of Balaam's three oracles: Balak builds seven altars with seven oxen and seven rams (repeated at each of three sites), and Balaam delivers a poetic oracle declaring Israel cannot be cursed because God already blessed them (\"how shall I curse, whom God hath not cursed\"), echoing the dust-of-the-earth promise to Abraham (Genesis 13:16) and Israel's set-apart identity as a nation. Balak, shocked at the blessing instead of a curse, drags Balaam to a second site, the field of Zophim atop Pisgah (the same mountain Moses later views the promised land from in Deuteronomy 34:1), for a second oracle centered on God's unchanging character (\"God is not a man, that he should lie\"), His irreversible commitment to bless, and vivid lion/conquest imagery, including the now-famous phrase \"what hath God wrought\" (later the first telegraph message, 1844). Closes with Balak, now only hoping for silence rather than a curse, taking Balaam to a third site at Peor, linked to Baal-peor and the coming crisis in Numbers 25. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com), reachable this run. Parser check passed exactly (6/6 sections, 47 cards against 30 verses, ~1.57 cards/verse). npx tsc --noEmit -p . clean with zero errors. Confirmed via lib/bibleReaderStudyNotes.ts wiring (numbersTwentyTwoSource was the last individually-wired chapter) that Numbers 23 was the correct next chapter.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-29T11:46:53Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 23 (confirmed via lib/bibleReaderStudyNotes.ts wiring, individual chapters run through Numbers 22)",
+          "at": "2026-07-29T11:47:22Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 23 (30 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-29T11:48:10Z"
+        },
+        {
+          "name": "reviewed reference implementation (numbersTwentyTwoSource.ts) for exact voice/format",
+          "at": "2026-07-29T11:49:00Z"
+        },
+        {
+          "name": "wrote lib/numbersTwentyThreeSource.ts",
+          "at": "2026-07-29T11:51:13Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to 23)",
+          "at": "2026-07-29T11:51:24Z"
+        },
+        {
+          "name": "parser check passed: 6 sections, 47 cards",
+          "at": "2026-07-29T11:51:38Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-29T11:52:54Z"
+        },
+        {
+          "name": "committed and pushed to origin/main (9b35324)",
+          "at": "2026-07-29T11:54:06Z"
+        }
+      ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 24,
+      "startedAt": "2026-07-29T12:46:11Z",
+      "finishedAt": "2026-07-29T12:53:31Z",
+      "durationMinutes": 7,
+      "sections": 6,
+      "cards": 42,
+      "verses": 25,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Balaam's third oracle, given this time without seeking any omens at all -- the Spirit of God comes on him directly as he simply looks at Israel's ordered tribal camp, and he pours out an oracle of thriving abundance (lign aloes, cedar trees, overflowing water imagery) that closes by repeating God's original covenant promise to Abraham almost word for word (\"blessed is he that blesseth thee,\" Genesis 12:3). Balak's fury boils over (\"smote his hands together\") and he dismisses Balaam, who restates one final time that he never had power to go beyond the LORD's command, matching his own words from Numbers 22:18. Before leaving, Balaam delivers a fourth, unrequested oracle reaching into \"the latter days\" -- the messianic \"Star out of Jacob\" and \"Sceptre out of Israel\" prophecy (paired with Judah's sceptre blessing in Genesis 49:10, later read as pointing toward Matthew 2's star), plus near-term predictions against Moab and Edom historically fulfilled by David in 2 Samuel 8. Closes with short oracles against Amalek, the Kenites, and a widening view to Asshur/Eber/Chittim (Cyprus/the Mediterranean coastlands), then both men simply going their separate ways -- Balaam reappearing later as an antagonist in Numbers 31:8. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com). Parser check passed exactly (6/6 sections, 42 cards against 25 verses, ~1.68 cards/verse). npx tsc --noEmit -p . clean with zero errors. Confirmed via lib/bibleReaderStudyNotes.ts wiring (not just this JSON log) that Numbers 23 was the true last individually-wired chapter, and that the existing numbersTwentySixToThirtySixPersonalNotes.ts legacy block only covers 26-36, leaving 24 as the correct next chapter.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-29T12:46:11Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 24 (confirmed via lib/ file listing + bibleReaderStudyNotes.ts wiring, ground truth over JSON log alone)",
+          "at": "2026-07-29T12:46:35Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 24 (25 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-29T12:47:02Z"
+        },
+        {
+          "name": "reviewed reference implementation (numbersTwentyThreeSource.ts) for exact voice/format",
+          "at": "2026-07-29T12:49:52Z"
+        },
+        {
+          "name": "wrote lib/numbersTwentyFourSource.ts",
+          "at": "2026-07-29T12:49:52Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to 24)",
+          "at": "2026-07-29T12:50:30Z"
+        },
+        {
+          "name": "parser check passed: 6 sections, 42 cards",
+          "at": "2026-07-29T12:51:20Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-29T12:52:00Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-29T12:53:31Z"
+        },
+        {
+          "name": "committed and pushed to origin/main (465c843)",
+          "at": "2026-07-29T12:54:26Z"
+        }
+      ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 25,
+      "startedAt": "2026-07-29T13:46:00Z",
+      "finishedAt": "2026-07-29T13:54:18Z",
+      "durationMinutes": 8,
+      "sections": 6,
+      "cards": 34,
+      "verses": 18,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The Baal-Peor apostasy and Phinehas's zeal: Israel's whoredom with Moabite women sliding straight into idol feasts and bowing down to Baalpeor, God's command to execute the guilty tribal leaders publicly to turn away His anger, Zimri (a Simeonite prince) and Cozbi (a Midianite prince's daughter) brought brazenly into camp while the nation weeps at the tabernacle door, Phinehas's spontaneous javelin killing both of them and stopping the plague after 24,000 deaths, God's own commendation of Phinehas's zeal and the resulting covenant of peace and everlasting priesthood (tracing forward to Zadok), both guilty parties named and identified by rank, and the closing command to target Midian specifically, cross-referencing Numbers 31:16's later reveal that this whole scheme traced back to Balaam's advice to Balak. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror (raw.githubusercontent.com). Parser check passed exactly (6/6 sections, 34 cards against 18 verses, ~1.9 cards/verse). npx tsc --noEmit -p . clean with zero errors. Confirmed via lib/ file listing and lib/bibleReaderStudyNotes.ts wiring (numbersTwentyFourSource.ts existed, numbersTwentyFiveSource.ts did not, and the existing legacy numbersTwentySixToThirtySixPersonalNotes.ts block only covers 26-36) that Numbers 25 was the correct next chapter.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-29T13:45:40Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 25 (confirmed via lib/ file listing + bibleReaderStudyNotes.ts wiring, ground truth over log alone)",
+          "at": "2026-07-29T13:46:35Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 25 (18 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-29T13:47:15Z"
+        },
+        {
+          "name": "reviewed reference implementation (numbersTwentyFourSource.ts) for exact voice/format",
+          "at": "2026-07-29T13:48:30Z"
+        },
+        {
+          "name": "wrote lib/numbersTwentyFiveSource.ts",
+          "at": "2026-07-29T13:50:20Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to 25)",
+          "at": "2026-07-29T13:50:45Z"
+        },
+        {
+          "name": "parser check passed: 6 sections, 34 cards",
+          "at": "2026-07-29T13:51:10Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-29T13:51:34Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-29T13:54:18Z"
+        },
+        {
+          "name": "committed and pushed to origin/main (2086dc4)",
+          "at": "2026-07-29T13:56:40Z"
+        }
+      ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 26,
+      "startedAt": "2026-07-29T14:46:03Z",
+      "finishedAt": "2026-07-29T14:57:51Z",
+      "durationMinutes": 12,
+      "sections": 14,
+      "cards": 66,
+      "verses": 65,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The second census, taken on the plains of Moab right after the Baalpeor plague, replacing the legacy generic numbersTwentySixToThirtySixPersonalNotes.ts block for this chapter with a dedicated source file (same override pattern used for Exodus's earlier legacy blocks). Every tribe's count compared against the first census in Numbers 1 (Simeon's collapse from 59,300 to 22,200, tied to Zimri's role in ch25; Manasseh's jump from 32,200 to 52,700), Reuben's family and the Dathan/Abiram/Korah callback (Korah's sons surviving to become Levitical singers credited in eleven Psalms), Judah's line through Pharez/Hezron toward David and Jesus, Zelophehad's five named daughters with no sons (setting up Numbers 27's inheritance-law change), the Levites counted separately from one month old including Amram/Jochebed's family and the Nadab/Abihu callback to Leviticus 10, land-by-lot division instructions, and the closing note that only Caleb and Joshua remain alive from the first census, fulfilling Numbers 14:28-35. Several tribal name-meaning callbacks to Genesis 29-30 included (Gad, Issachar, Ephraim, Benjamin, Dan, Asher, Naphtali). KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror. Density ~1.02 cards/verse (65 verses) -- appropriately lighter per skill Part 4's genealogy guidance while still explaining every meaningful name, number, and callback. Parser check passed exactly (14/14 sections, 66 cards), npx tsc --noEmit -p . clean with zero errors.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-29T14:46:03Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 26 (confirmed via lib/bibleReaderStudyNotes.ts wiring -- Numbers 1-25 have dedicated per-chapter source files, 26-36 still on the legacy generic numbersTwentySixToThirtySixPersonalNotes.ts block)",
+          "at": "2026-07-29T14:47:38Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 26 (65 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-29T14:47:50Z"
+        },
+        {
+          "name": "reviewed reference implementation (numbersTwentyFiveSource.ts) for exact voice/format",
+          "at": "2026-07-29T14:52:16Z"
+        },
+        {
+          "name": "wrote lib/numbersTwentySixSource.ts",
+          "at": "2026-07-29T14:54:15Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to 26)",
+          "at": "2026-07-29T14:54:40Z"
+        },
+        {
+          "name": "parser check passed: 14 sections, 66 cards",
+          "at": "2026-07-29T14:55:00Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-29T14:56:29Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-29T14:57:51Z"
+        },
+        {
+          "name": "committed and pushed to origin/main (f5a8f70)",
+          "at": "2026-07-29T14:59:01Z"
+        }
+      ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 27,
+      "startedAt": "2026-07-31T12:31:46Z",
+      "finishedAt": "2026-07-31T12:39:41Z",
+      "durationMinutes": 8,
+      "sections": 6,
+      "cards": 36,
+      "verses": 23,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Numbers 27 splits into two halves: Zelophehad's five daughters winning the right to inherit their father's land (the case set up back in Numbers 26:33), which becomes a permanent tiered inheritance law for all of Israel (daughter, then brothers, then father's brothers, then nearest kinsman); and Moses being told from Mount Abarim that he will die without entering Canaan because of the Meribah rock incident (Numbers 20:1-13), immediately followed by Moses asking God to appoint a shepherd-leader and Joshua being publicly commissioned with the laying on of hands, receiving 'some' of Moses's honor, and needing the Urim through Eleazar rather than Moses's face-to-face access to God (Numbers 12:6-8). KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror. Density 1.57 cards/verse (36 cards over 23 verses). Parser check passed exactly (6/6 sections, 36 cards), npx tsc --noEmit -p . clean with zero errors.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-31T12:32:45Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 27 (confirmed via lib/bibleReaderStudyNotes.ts wiring -- Numbers 1-26 have dedicated per-chapter source files, 27-36 still on the legacy generic numbersTwentySixToThirtySixPersonalNotes.ts block)",
+          "at": "2026-07-31T12:32:45Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 27 (23 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-31T12:34:00Z"
+        },
+        {
+          "name": "wrote lib/numbersTwentySevenSource.ts",
+          "at": "2026-07-31T12:36:39Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to 27)",
+          "at": "2026-07-31T12:36:39Z"
+        },
+        {
+          "name": "parser check passed: 6 sections, 36 cards",
+          "at": "2026-07-31T12:37:06Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-31T12:39:41Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-31T12:39:41Z"
+        },
+        {
+          "name": "committed and pushed to origin/main (cf4c0ad)",
+          "at": "2026-07-31T12:40:56Z"
+        }
+      ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 28,
+      "startedAt": "2026-07-31T12:46:25Z",
+      "finishedAt": "2026-07-31T12:53:41Z",
+      "durationMinutes": 7,
+      "sections": 6,
+      "cards": 35,
+      "verses": 31,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Israel's full appointed-offerings calendar: the daily continual offering (two lambs, morning and evening, with grain and wine, first ordained at Sinai in Exodus 29:38-42), the doubled Sabbath offering, the monthly New Moon offering (introducing the standard 'two bullocks, one ram, seven lambs' big-occasion package plus the chapter's first sin offering), Passover and the seven-day Feast of Unleavened Bread (holy convocations bookending the week, the same big-occasion package repeated daily), and the Feast of Firstfruits/Weeks (the future Pentecost, counted 49 days out per Leviticus 23:15-16). Explains ephah/hin measurements, 'meat offering' as old English for a grain offering, 'beaten oil,' 'holy convocation,' and 'servile work,' and tracks how the same fixed offering package and three-tier grain/wine ratio recur across every appointed time rather than each getting a new formula. Replaces the legacy generic numbersTwentySixToThirtySixPersonalNotes.ts block for this chapter with a dedicated source file. Density ~1.13 cards/verse (31 verses), moderate given how much of the chapter's content deliberately repeats earlier-established offering formulas (Exodus 29-30, Leviticus 23), with fuller coverage on genuinely new material (the calendar structure itself, the recurring 'package' pattern, new measurement terms). KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror. Parser check passed exactly (6/6 sections, 35 cards), npx tsc --noEmit -p . clean with zero errors.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-31T12:46:25Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 28 (confirmed via lib/bibleReaderStudyNotes.ts wiring -- Numbers 1-27 have dedicated per-chapter source files, 28-36 still on the legacy generic numbersTwentySixToThirtySixPersonalNotes.ts block)",
+          "at": "2026-07-31T12:47:34Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 28 (31 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-31T12:50:11Z"
+        },
+        {
+          "name": "wrote lib/numbersTwentyEightSource.ts",
+          "at": "2026-07-31T12:51:20Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to 28)",
+          "at": "2026-07-31T12:51:35Z"
+        },
+        {
+          "name": "parser check passed: 6 sections, 35 cards",
+          "at": "2026-07-31T12:51:52Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-31T12:53:09Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-31T12:54:01Z"
+        },
+        {
+          "name": "appended SESSION_LOG.md entry",
+          "at": "2026-07-31T12:54:07Z"
+        },
+        {
+          "name": "committed and pushed to origin/main (1530b33)",
+          "at": "2026-07-31T12:54:36Z"
+        }
+      ]
     }
   ]
 }

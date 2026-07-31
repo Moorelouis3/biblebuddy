@@ -43,6 +43,18 @@
       "type": "resumed",
       "chaptersCompletedSoFarTonight": 1,
       "detail": "Resumed this run. The general Bible sites and plain internet egress were not retried since the prior two incidents already established they are unreliable in this sandbox; went straight to the confirmed-working raw.githubusercontent.com/aruljohn/Bible-kjv mirror, which returned HTTP 200 immediately. Exodus 30 fetched and written successfully this run."
+    },
+    {
+      "timestamp": "2026-07-29T04:55:34Z",
+      "type": "chapter_count_checkpoint",
+      "chaptersCompletedSoFarTonight": 1,
+      "detail": "Numbers 16 (Korah's Rebellion) shipped this run via the raw.githubusercontent.com/aruljohn/Bible-kjv mirror, no block/cooldown/throttling encountered. Honesty note: this is the first checkpoint logged here since 2026-07-27T00:20:00Z, well past the skill's roughly-every-10-20-chapters guidance -- in the gap, Exodus 30 and 35-40, all of Leviticus (1-27), and Numbers 1-16 shipped (~50 chapters) across many separate hourly runs with no intervening block/cooldown/resumed events, but those runs did not log periodic checkpoints as instructed. No known usage limit or block occurred in that gap; this note is flagging a process gap in the logging itself, not a hidden incident."
+    },
+    {
+      "timestamp": "2026-07-29T14:58:10Z",
+      "type": "chapter_count_checkpoint",
+      "chaptersCompletedSoFarTonight": 10,
+      "detail": "Numbers 26 shipped this run via the raw.githubusercontent.com/aruljohn/Bible-kjv mirror, no block/cooldown/throttling encountered. 10 chapters completed since the last checkpoint at Numbers 16 (chapters 17-26), each in its own separate hourly run, no usage limit or block hit in that span."
     }
   ]
 }

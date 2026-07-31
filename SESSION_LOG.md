@@ -122,21 +122,183 @@ Next up: Leviticus 10
 ## 2026-07-27T16:52:25Z (hourly chapter notes run)
 Chapter: Leviticus 10 | Duration: 6 min | Sections: 5 | Cards: 36 | Status: pass
 Next up: Leviticus 11
-## 2026-07-29 (evening)
-Marching orders: Set up 7-day email funnel job
-Done: Confirmed spec is ready. Added to Life Buddy's Jobs list (scheduled start Saturday 12 AM). Created MARCUS_HANDOFF.md with acceptance and timeline. Ready to implement.
-Next: Implementation starts Saturday at 12 AM
 
-## 2026-07-31 (morning)
-Marching orders: Complete Bible Buddy 7-Day Email Funnel implementation
-Time spent: 3 hours
-Done: Full implementation complete and ready for review
-- Created email_funnel_* tables with RLS (CREATE_EMAIL_FUNNEL_TABLES.sql)
-- Defined all 11 email templates (emailFunnelTemplates.ts)
-- Built helper functions for sending, tier detection, analytics (emailFunnelHelpers.ts)
-- Created 6 API routes for conditional sends + analytics
-- Created 3 cron routes for daily scheduling (send-all, day4, day8)
-- Updated signup flow to initialize funnel state
-- Comprehensive implementation guide with setup/testing checklist (EMAIL_FUNNEL_IMPLEMENTATION.md)
-- Total: 1,510 lines of production code
-Next: Review code, run database migration, configure cron jobs, test with 4 users over 8 days
+## 2026-07-27T17:57:29Z (hourly chapter notes run)
+Chapter: Leviticus 11 | Duration: 10 min | Sections: 10 | Cards: 54 | Status: pass
+Next up: Leviticus 12
+
+## 2026-07-27T18:52:35Z (hourly chapter notes run)
+Chapter: Leviticus 12 | Duration: 6 min | Sections: 6 | Cards: 20 | Status: pass
+Next up: Leviticus 13
+
+## 2026-07-27T22:57:40Z (hourly chapter notes run)
+Chapter: Leviticus 13 | Duration: 11 min | Sections: 12 | Cards: 86 | Status: pass
+Next up: Leviticus 14
+
+## 2026-07-27T23:56:18Z (hourly chapter notes run)
+Chapter: Leviticus 14 | Duration: 12 min | Sections: 13 | Cards: 62 | Status: pass
+Next up: Leviticus 15
+
+## 2026-07-28T00:55:32Z (hourly chapter notes run)
+Chapter: Leviticus 15 | Duration: 9 min | Sections: 9 | Cards: 51 | Status: pass
+Next up: Leviticus 16
+
+## 2026-07-28T01:55:08Z (hourly chapter notes run)
+Chapter: Leviticus 16 | Duration: 7 min | Sections: 9 | Cards: 51 | Status: pass
+Next up: Leviticus 17
+
+## 2026-07-28T02:53:00Z (hourly chapter notes run)
+Chapter: Leviticus 17 | Duration: 6.5 min | Sections: 6 | Cards: 27 | Status: pass
+Next up: Leviticus 18
+
+## 2026-07-28T03:52:57Z (hourly chapter notes run)
+Chapter: Leviticus 18 | Duration: 6 min | Sections: 6 | Cards: 39 | Status: pass
+Next up: Leviticus 19
+
+## 2026-07-28T04:55:39Z (hourly chapter notes run)
+Chapter: Leviticus 19 | Duration: 9 min | Sections: 11 | Cards: 57 | Status: pass
+Next up: Leviticus 20
+
+## 2026-07-28T05:54:45Z (hourly chapter notes run)
+Chapter: Leviticus 20 | Duration: 8 min | Sections: 11 | Cards: 47 | Status: pass
+Next up: Numbers 1
+
+## 2026-07-28T06:53:21Z (hourly chapter notes run)
+Chapter: Leviticus 21 | Duration: 7 min | Sections: 8 | Cards: 36 | Status: pass
+Next up: Leviticus 22
+
+## 2026-07-28T07:55:14Z (hourly chapter notes run)
+Chapter: Leviticus 22 | Duration: 9 min | Sections: 8 | Cards: 61 | Status: pass
+Next up: Leviticus 23
+
+## 2026-07-28T08:57:46Z (hourly chapter notes run)
+Chapter: Leviticus 23 | Duration: 9 min | Sections: 8 | Cards: 70 | Status: pass
+Next up: Leviticus 24
+
+## 2026-07-28T09:52:16Z (hourly chapter notes run)
+Chapter: Leviticus 24 | Duration: 6 min | Sections: 6 | Cards: 42 | Status: pass
+Next up: Leviticus 25
+
+## 2026-07-28T10:58:21Z (hourly chapter notes run)
+Chapter: Leviticus 25 | Duration: 12 min | Sections: 9 | Cards: 87 | Status: pass
+Next up: Leviticus 26
+
+## 2026-07-28T11:57:40Z (hourly chapter notes run)
+Chapter: Leviticus 26 | Duration: 11 min | Sections: 13 | Cards: 103 | Status: pass
+Next up: Leviticus 27
+
+## 2026-07-28T12:55:56Z (hourly chapter notes run)
+Chapter: Leviticus 27 | Duration: 9 min | Sections: 15 | Cards: 52 | Status: pass
+Next up: Numbers 1
+
+## 2026-07-28T13:55:00Z (hourly chapter notes run)
+Chapter: Numbers 1 | Duration: 9 min | Sections: 9 | Cards: 52 | Status: pass
+Next up: Numbers 2
+
+## 2026-07-28T14:55:42Z (hourly chapter notes run)
+Chapter: Numbers 2 | Duration: 8 min | Sections: 7 | Cards: 38 | Status: pass
+Next up: Numbers 3
+
+## 2026-07-28T15:56:02Z (hourly chapter notes run)
+Chapter: Numbers 3 | Duration: 9 min | Sections: 10 | Cards: 51 | Status: pass
+Next up: Numbers 4
+
+## 2026-07-28T16:58:40Z (hourly chapter notes run)
+Chapter: Numbers 4 | Duration: 12 min | Sections: 13 | Cards: 61 | Status: pass
+Next up: Numbers 5
+
+## 2026-07-28T17:55:14Z (hourly chapter notes run)
+Chapter: Numbers 5 | Duration: 12 min | Sections: 7 | Cards: 56 | Status: pass
+Next up: Numbers 6
+
+## 2026-07-28T18:56:41Z (hourly chapter notes run)
+Chapter: Numbers 6 | Duration: 10 min | Sections: 6 | Cards: 48 | Status: pass
+Next up: Numbers 7
+
+## 2026-07-28T19:54:31Z (hourly chapter notes run)
+Chapter: Numbers 7 | Duration: 8 min | Sections: 11 | Cards: 52 | Status: pass
+Next up: Numbers 8
+
+## 2026-07-28T20:53:16Z (hourly chapter notes run)
+Chapter: Numbers 8 | Duration: 6 min | Sections: 6 | Cards: 46 | Status: pass
+Next up: Numbers 9
+
+## 2026-07-28T21:52:59Z (hourly chapter notes run)
+Chapter: Numbers 9 | Duration: 7 min | Sections: 5 | Cards: 43 | Status: pass
+Next up: Numbers 10
+
+## 2026-07-28T22:52:33Z (hourly chapter notes run)
+Chapter: Numbers 10 | Duration: 7 min | Sections: 10 | Cards: 43 | Status: pass
+Next up: Numbers 11
+
+## 2026-07-28T23:54:07Z (hourly chapter notes run)
+Chapter: Numbers 11 | Duration: 8 min | Sections: 7 | Cards: 61 | Status: pass
+Next up: Numbers 12
+
+## 2026-07-29T00:53:04Z (hourly chapter notes run)
+Chapter: Numbers 12 | Duration: 7 min | Sections: 4 | Cards: 26 | Status: pass
+Next up: Numbers 13
+
+## 2026-07-29T01:56:39Z (hourly chapter notes run)
+Chapter: Numbers 13 | Duration: 10 min | Sections: 7 | Cards: 41 | Status: pass
+Next up: Numbers 14
+
+## 2026-07-29T02:57:00Z (hourly chapter notes run)
+Chapter: Numbers 14 | Duration: 10 min | Sections: 9 | Cards: 67 | Status: pass
+Next up: Numbers 15
+
+## 2026-07-29T03:55:47Z (hourly chapter notes run)
+Chapter: Numbers 15 | Duration: 9 min | Sections: 9 | Cards: 55 | Status: pass
+Next up: Numbers 16
+
+## 2026-07-29T04:55:34Z (hourly chapter notes run)
+Chapter: Numbers 16 | Duration: 9 min | Sections: 11 | Cards: 69 | Status: pass
+Next up: Numbers 17
+
+## 2026-07-29T05:54:04Z (hourly chapter notes run)
+Chapter: Numbers 17 | Duration: 7 min | Sections: 6 | Cards: 23 | Status: pass
+Next up: Numbers 18
+
+## 2026-07-29T06:55:43Z (hourly chapter notes run)
+Chapter: Numbers 18 | Duration: 6 min | Sections: 6 | Cards: 51 | Status: pass
+Next up: Numbers 19
+
+## 2026-07-29T07:53:40Z (hourly chapter notes run)
+Chapter: Numbers 19 | Duration: 7 min | Sections: 6 | Cards: 33 | Status: pass
+Next up: Numbers 20
+
+## 2026-07-29T08:52:23Z (hourly chapter notes run)
+Chapter: Numbers 20 | Duration: 6 min | Sections: 7 | Cards: 38 | Status: pass
+Next up: Numbers 21
+
+## 2026-07-29T09:55:10Z (hourly chapter notes run)
+Chapter: Numbers 21 | Duration: 9 min | Sections: 7 | Cards: 58 | Status: pass
+Next up: Numbers 22
+
+## 2026-07-29T10:55:25Z (hourly chapter notes run)
+Chapter: Numbers 22 | Duration: 8 min | Sections: 8 | Cards: 65 | Status: pass
+Next up: Numbers 23
+
+## 2026-07-29T11:53:42Z (hourly chapter notes run)
+Chapter: Numbers 23 | Duration: 8 min | Sections: 6 | Cards: 47 | Status: pass
+Next up: Numbers 24
+
+## 2026-07-29T12:53:31Z (hourly chapter notes run)
+Chapter: Numbers 24 | Duration: 7 min | Sections: 6 | Cards: 42 | Status: pass
+Next up: Numbers 25
+
+## 2026-07-29T13:54:18Z (hourly chapter notes run)
+Chapter: Numbers 25 | Duration: 8 min | Sections: 6 | Cards: 34 | Status: pass
+Next up: Numbers 26
+
+## 2026-07-29T14:57:51Z (hourly chapter notes run)
+Chapter: Numbers 26 | Duration: 12 min | Sections: 14 | Cards: 66 | Status: pass
+Next up: Numbers 27
+
+## 2026-07-31T12:39:41Z (hourly chapter notes run)
+Chapter: Numbers 27 | Duration: 8 min | Sections: 6 | Cards: 36 | Status: pass
+Next up: Numbers 28
+
+## 2026-07-31T12:53:41Z (hourly chapter notes run)
+Chapter: Numbers 28 | Duration: 7 min | Sections: 6 | Cards: 35 | Status: pass
+Next up: Numbers 29

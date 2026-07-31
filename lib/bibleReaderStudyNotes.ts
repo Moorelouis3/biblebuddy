@@ -98,9 +98,54 @@ import { LEVITICUS_FOUR_PERSONAL_SECTIONS } from "./leviticusFourSource";
 import { LEVITICUS_FIVE_PERSONAL_SECTIONS } from "./leviticusFiveSource";
 import { LEVITICUS_SIX_PERSONAL_SECTIONS } from "./leviticusSixSource";
 import { LEVITICUS_SEVEN_PERSONAL_SECTIONS } from "./leviticusSevenSource";
+import { LEVITICUS_TWELVE_PERSONAL_SECTIONS } from "./leviticusTwelveSource";
 import { LEVITICUS_EIGHT_PERSONAL_SECTIONS } from "./leviticusEightSource";
 import { LEVITICUS_NINE_PERSONAL_SECTIONS } from "./leviticusNineSource";
 import { LEVITICUS_TEN_PERSONAL_SECTIONS } from "./leviticusTenSource";
+import { LEVITICUS_ELEVEN_PERSONAL_SECTIONS } from "./leviticusElevenSource";
+import { LEVITICUS_THIRTEEN_PERSONAL_SECTIONS } from "./leviticusThirteenSource";
+import { LEVITICUS_FOURTEEN_PERSONAL_SECTIONS } from "./leviticusFourteenSource";
+import { LEVITICUS_FIFTEEN_PERSONAL_SECTIONS } from "./leviticusFifteenSource";
+import { LEVITICUS_SIXTEEN_PERSONAL_SECTIONS } from "./leviticusSixteenSource";
+import { LEVITICUS_SEVENTEEN_PERSONAL_SECTIONS } from "./leviticusSeventeenSource";
+import { LEVITICUS_EIGHTEEN_PERSONAL_SECTIONS } from "./leviticusEighteenSource";
+import { LEVITICUS_NINETEEN_PERSONAL_SECTIONS } from "./leviticusNineteenSource";
+import { LEVITICUS_TWENTY_PERSONAL_SECTIONS } from "./leviticusTwentySource";
+import { LEVITICUS_TWENTY_ONE_PERSONAL_SECTIONS } from "./leviticusTwentyOneSource";
+import { LEVITICUS_TWENTY_TWO_PERSONAL_SECTIONS } from "./leviticusTwentyTwoSource";
+import { LEVITICUS_TWENTY_THREE_PERSONAL_SECTIONS } from "./leviticusTwentyThreeSource";
+import { LEVITICUS_TWENTY_FOUR_PERSONAL_SECTIONS } from "./leviticusTwentyFourSource";
+import { LEVITICUS_TWENTY_FIVE_PERSONAL_SECTIONS } from "./leviticusTwentyFiveSource";
+import { LEVITICUS_TWENTY_SIX_PERSONAL_SECTIONS } from "./leviticusTwentySixSource";
+import { LEVITICUS_TWENTY_SEVEN_PERSONAL_SECTIONS } from "./leviticusTwentySevenSource";
+import { NUMBERS_ONE_PERSONAL_SECTIONS } from "./numbersOneSource";
+import { NUMBERS_TWO_PERSONAL_SECTIONS } from "./numbersTwoSource";
+import { NUMBERS_THREE_PERSONAL_SECTIONS } from "./numbersThreeSource";
+import { NUMBERS_FOUR_PERSONAL_SECTIONS } from "./numbersFourSource";
+import { NUMBERS_FIVE_PERSONAL_SECTIONS } from "./numbersFiveSource";
+import { NUMBERS_SIX_PERSONAL_SECTIONS } from "./numbersSixSource";
+import { NUMBERS_SEVEN_PERSONAL_SECTIONS } from "./numbersSevenSource";
+import { NUMBERS_EIGHT_PERSONAL_SECTIONS } from "./numbersEightSource";
+import { NUMBERS_NINE_PERSONAL_SECTIONS } from "./numbersNineSource";
+import { NUMBERS_TEN_PERSONAL_SECTIONS } from "./numbersTenSource";
+import { NUMBERS_ELEVEN_PERSONAL_SECTIONS } from "./numbersElevenSource";
+import { NUMBERS_TWELVE_PERSONAL_SECTIONS } from "./numbersTwelveSource";
+import { NUMBERS_THIRTEEN_PERSONAL_SECTIONS } from "./numbersThirteenSource";
+import { NUMBERS_FOURTEEN_PERSONAL_SECTIONS } from "./numbersFourteenSource";
+import { NUMBERS_FIFTEEN_PERSONAL_SECTIONS } from "./numbersFifteenSource";
+import { NUMBERS_SIXTEEN_PERSONAL_SECTIONS } from "./numbersSixteenSource";
+import { NUMBERS_SEVENTEEN_PERSONAL_SECTIONS } from "./numbersSeventeenSource";
+import { NUMBERS_EIGHTEEN_PERSONAL_SECTIONS } from "./numbersEighteenSource";
+import { NUMBERS_NINETEEN_PERSONAL_SECTIONS } from "./numbersNineteenSource";
+import { NUMBERS_TWENTY_PERSONAL_SECTIONS } from "./numbersTwentySource";
+import { NUMBERS_TWENTY_ONE_PERSONAL_SECTIONS } from "./numbersTwentyOneSource";
+import { NUMBERS_TWENTY_TWO_PERSONAL_SECTIONS } from "./numbersTwentyTwoSource";
+import { NUMBERS_TWENTY_THREE_PERSONAL_SECTIONS } from "./numbersTwentyThreeSource";
+import { NUMBERS_TWENTY_FOUR_PERSONAL_SECTIONS } from "./numbersTwentyFourSource";
+import { NUMBERS_TWENTY_FIVE_PERSONAL_SECTIONS } from "./numbersTwentyFiveSource";
+import { NUMBERS_TWENTY_SIX_PERSONAL_SECTIONS } from "./numbersTwentySixSource";
+import { NUMBERS_TWENTY_SEVEN_PERSONAL_SECTIONS } from "./numbersTwentySevenSource";
+import { NUMBERS_TWENTY_EIGHT_PERSONAL_SECTIONS } from "./numbersTwentyEightSource";
 import { EXODUS_2_10_PERSONAL_SECTIONS } from "./exodusTwoToTenPersonalNotes";
 import { EXODUS_11_20_PERSONAL_SECTIONS } from "./exodusElevenToTwentyPersonalNotes";
 import { EXODUS_21_30_PERSONAL_SECTIONS } from "./exodusTwentyOneToThirtyPersonalNotes";
@@ -477,7 +522,8 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
   const preserveExactPhraseBodies =
     (normalizeBook(book) === "genesis" && section.chapter >= 1 && section.chapter <= 50) ||
     (normalizeBook(book) === "exodus" && section.chapter >= 1 && section.chapter <= 40) ||
-    (normalizeBook(book) === "leviticus" && section.chapter >= 1 && section.chapter <= 10);
+    (normalizeBook(book) === "leviticus" && section.chapter >= 1 && section.chapter <= 27) ||
+    (normalizeBook(book) === "numbers" && section.chapter >= 1 && section.chapter <= 28);
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -8741,6 +8787,276 @@ replaceStudySectionsForBookRange(
   10,
   10,
   LEVITICUS_TEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "leviticus",
+  11,
+  11,
+  LEVITICUS_ELEVEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "leviticus",
+  12,
+  12,
+  LEVITICUS_TWELVE_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "leviticus",
+  13,
+  13,
+  LEVITICUS_THIRTEEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "leviticus",
+  14,
+  14,
+  LEVITICUS_FOURTEEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "leviticus",
+  15,
+  15,
+  LEVITICUS_FIFTEEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "leviticus",
+  16,
+  16,
+  LEVITICUS_SIXTEEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "leviticus",
+  17,
+  17,
+  LEVITICUS_SEVENTEEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "leviticus",
+  18,
+  18,
+  LEVITICUS_EIGHTEEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "leviticus",
+  19,
+  19,
+  LEVITICUS_NINETEEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "leviticus",
+  20,
+  20,
+  LEVITICUS_TWENTY_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "leviticus",
+  21,
+  21,
+  LEVITICUS_TWENTY_ONE_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "leviticus",
+  22,
+  22,
+  LEVITICUS_TWENTY_TWO_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "leviticus",
+  23,
+  23,
+  LEVITICUS_TWENTY_THREE_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "leviticus",
+  24,
+  24,
+  LEVITICUS_TWENTY_FOUR_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "leviticus",
+  25,
+  25,
+  LEVITICUS_TWENTY_FIVE_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "leviticus",
+  26,
+  26,
+  LEVITICUS_TWENTY_SIX_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "leviticus",
+  27,
+  27,
+  LEVITICUS_TWENTY_SEVEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "numbers",
+  1,
+  1,
+  NUMBERS_ONE_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "numbers",
+  2,
+  2,
+  NUMBERS_TWO_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "numbers",
+  3,
+  3,
+  NUMBERS_THREE_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "numbers",
+  4,
+  4,
+  NUMBERS_FOUR_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "numbers",
+  5,
+  5,
+  NUMBERS_FIVE_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "numbers",
+  6,
+  6,
+  NUMBERS_SIX_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "numbers",
+  7,
+  7,
+  NUMBERS_SEVEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "numbers",
+  8,
+  8,
+  NUMBERS_EIGHT_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "numbers",
+  9,
+  9,
+  NUMBERS_NINE_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "numbers",
+  10,
+  10,
+  NUMBERS_TEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "numbers",
+  11,
+  11,
+  NUMBERS_ELEVEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "numbers",
+  12,
+  12,
+  NUMBERS_TWELVE_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "numbers",
+  13,
+  13,
+  NUMBERS_THIRTEEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "numbers",
+  14,
+  14,
+  NUMBERS_FOURTEEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "numbers",
+  15,
+  15,
+  NUMBERS_FIFTEEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "numbers",
+  16,
+  16,
+  NUMBERS_SIXTEEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "numbers",
+  17,
+  17,
+  NUMBERS_SEVENTEEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "numbers",
+  18,
+  18,
+  NUMBERS_EIGHTEEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "numbers",
+  19,
+  19,
+  NUMBERS_NINETEEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "numbers",
+  20,
+  20,
+  NUMBERS_TWENTY_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "numbers",
+  21,
+  21,
+  NUMBERS_TWENTY_ONE_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "numbers",
+  22,
+  22,
+  NUMBERS_TWENTY_TWO_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "numbers",
+  23,
+  23,
+  NUMBERS_TWENTY_THREE_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "numbers",
+  24,
+  24,
+  NUMBERS_TWENTY_FOUR_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "numbers",
+  25,
+  25,
+  NUMBERS_TWENTY_FIVE_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "numbers",
+  26,
+  26,
+  NUMBERS_TWENTY_SIX_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "numbers",
+  27,
+  27,
+  NUMBERS_TWENTY_SEVEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "numbers",
+  28,
+  28,
+  NUMBERS_TWENTY_EIGHT_PERSONAL_SECTIONS,
 );
 
 for (const section of BIBLE_READER_STUDY_SECTIONS) {

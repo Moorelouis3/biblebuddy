@@ -1,49 +1,50 @@
-# Daily Report - 2026-07-27T16:18:00Z
+# Daily Report - 2026-07-29T08:13:07Z
 
 ## Latest Conversations
-Since the last report (08:16 UTC), the hourly chapter-notes pipeline has been
-the only activity: it shipped Leviticus 2 through 9 (8 chapters, one commit
-pair per chapter), per SESSION_LOG.md and the last ~20 commits. No other
-work landed in this window - the Systeme.io signup-sync commit (c2a726d)
-predates the last report and was already covered there.
+Since the last report (2026-07-28T16:16:02Z), the hourly chapter-notes
+pipeline has been the only activity: it shipped Numbers 4 through 19 (16
+chapters), one content commit plus one run-log commit per chapter, all
+status: pass per SESSION_LOG.md and git log (most recent: `21687e0` "Log
+final push step for Numbers 19 run"). No chat sessions, no IDEAS.md
+entries, no MARCUS_HANDOFF activity this window.
 
 ## Unanswered Questions
-None. IDEAS.md does not exist (no queued ideas from Louis via Life Buddy),
-and MARCUS_HANDOFF.md is currently empty (nothing flagged for Life Buddy).
+None. IDEAS.md does not exist (no queued ideas from Louis via Life
+Buddy), and MARCUS_HANDOFF.md is empty (nothing flagged for Life Buddy).
 
 ## Missed Things
-`bible-notes-progress.json` (the file this report is told to pull real
-numbers from) is still stale - same issue flagged in the last report, not
-yet fixed. It has 85 entries, covering Genesis 1-50 and only Exodus 1-35.
-It has not been updated for Exodus 36-40 or any of Leviticus 1-9 (9
-chapters missing), even though all are shipped in git and logged in
-SESSION_LOG.md and in the more detailed `data/bible-notes-progress-log.json`
-(which IS current through Leviticus 9). This drift has now been flagged in
-two consecutive reports without being reconciled - it will keep growing by
-~1 chapter/hour until someone (or the pipeline itself) runs a reconciliation
-pass so the admin dashboard shows the true count.
+Root `bible-notes-progress.json` is still stale - unchanged since the
+Leviticus 20 commit (`a8341cf`), stuck at 85 entries and stopping at
+Exodus 35. It has never recorded Exodus 36-40, any of Leviticus (1-27,
+complete), or Numbers (1-19 so far). That's now a 61-chapter gap, and
+this is at least the fifth consecutive report flagging it without a fix.
+The real, current source is `data/bible-notes-progress-log.json` (91
+entries, up to date through Numbers 19), which is what the numbers below
+are drawn from.
 
 ## Dropped Activities
-None. No incidents or skipped chapters this window per SESSION_LOG.md - all
-8 hourly runs since the last report completed with status: pass.
+None. A few runs this window (Numbers 16, 17, 18) needed a follow-up
+"backfill" commit to log their push step after the fact, but each was
+self-corrected within the same run - no chapter or step was actually
+lost.
 
 ## Unfinished Jobs
-- Reconcile `bible-notes-progress.json` with the 9 shipped-but-unlogged
-  chapters (Exodus 36-40, Leviticus 1-9) - see Missed Things above.
+- Reconcile `bible-notes-progress.json` with real shipped state (now 61
+  chapters behind). Flagged in five consecutive reports now without
+  being fixed.
 - Continue the chapter-by-chapter notes pipeline through the rest of
-  Leviticus and beyond.
+  Numbers (17 chapters left, 20-36) and beyond.
 
 ## Current Jobs / Current Build
 Chapter notes pipeline is actively running on an hourly cadence.
-Per `bible-notes-progress.json` (as of its last update, Exodus 35):
-- 85 chapters logged verified (Genesis: 50/50, Exodus: 35/40).
 
-Per git log / SESSION_LOG.md / `data/bible-notes-progress-log.json` (more
-current than the progress JSON):
-- Genesis and Exodus are both fully complete (50/50, 40/40).
-- Leviticus is in progress: 9/27 chapters shipped (1-9), last one being
-  Leviticus 9 (11 min, 6 sections, 47 cards, status: pass).
-- Next up: Leviticus 10.
-- Real total shipped so far: 99 chapters (Genesis 50 + Exodus 40 +
-  Leviticus 9), against the project's stated goal of 1189 chapters total
-  (per `data/bible-notes-progress-log.json`).
+Per `data/bible-notes-progress-log.json` (canonical, current source):
+- Genesis: 50/50 complete
+- Exodus: 40/40 complete
+- Leviticus: 27/27 complete
+- Numbers: 19/36 shipped (1-19), next up Numbers 20
+- Real total shipped so far: 136 chapters, against the project's stated
+  goal of 1,189 chapters total (~11.4%).
+
+Per `bible-notes-progress.json` (stale, do not use): 85 chapters logged,
+stuck at Genesis 50/50 + Exodus 35/40.
