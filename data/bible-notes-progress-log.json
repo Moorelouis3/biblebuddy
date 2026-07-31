@@ -3744,6 +3744,51 @@
           "at": "2026-07-29T14:59:01Z"
         }
       ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 27,
+      "startedAt": "2026-07-31T12:31:46Z",
+      "finishedAt": "2026-07-31T12:39:41Z",
+      "durationMinutes": 8,
+      "sections": 6,
+      "cards": 36,
+      "verses": 23,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Numbers 27 splits into two halves: Zelophehad's five daughters winning the right to inherit their father's land (the case set up back in Numbers 26:33), which becomes a permanent tiered inheritance law for all of Israel (daughter, then brothers, then father's brothers, then nearest kinsman); and Moses being told from Mount Abarim that he will die without entering Canaan because of the Meribah rock incident (Numbers 20:1-13), immediately followed by Moses asking God to appoint a shepherd-leader and Joshua being publicly commissioned with the laying on of hands, receiving 'some' of Moses's honor, and needing the Urim through Eleazar rather than Moses's face-to-face access to God (Numbers 12:6-8). KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror. Density 1.57 cards/verse (36 cards over 23 verses). Parser check passed exactly (6/6 sections, 36 cards), npx tsc --noEmit -p . clean with zero errors.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-31T12:32:45Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 27 (confirmed via lib/bibleReaderStudyNotes.ts wiring -- Numbers 1-26 have dedicated per-chapter source files, 27-36 still on the legacy generic numbersTwentySixToThirtySixPersonalNotes.ts block)",
+          "at": "2026-07-31T12:32:45Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 27 (23 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-31T12:34:00Z"
+        },
+        {
+          "name": "wrote lib/numbersTwentySevenSource.ts",
+          "at": "2026-07-31T12:36:39Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to 27)",
+          "at": "2026-07-31T12:36:39Z"
+        },
+        {
+          "name": "parser check passed: 6 sections, 36 cards",
+          "at": "2026-07-31T12:37:06Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-31T12:39:41Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-31T12:39:41Z"
+        }
+      ]
     }
   ]
 }
