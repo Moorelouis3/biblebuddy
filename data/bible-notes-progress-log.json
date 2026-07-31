@@ -4062,6 +4062,55 @@
           "at": "2026-07-31T17:00:05Z"
         }
       ]
+    },
+    {
+      "book": "Genesis",
+      "chapter": 33,
+      "startedAt": "2026-07-31T17:46:14Z",
+      "finishedAt": "2026-07-31T17:53:28Z",
+      "durationMinutes": 7,
+      "sections": 5,
+      "cards": 20,
+      "verses": 20,
+      "notes": "Redo-backlog chapter (second entry in data/bible-notes-style-redo-remaining.json), regenerated from scratch to match docs/bible-study-note-style.md. Jacob and Esau's reunion after twenty years apart: the protective family arrangement (handmaids first, Rachel and Joseph hindermost), the sevenfold bow, Esau running to meet him against ancient custom for a man of his rank, the reconciliation embrace, \"I have seen thy face as though I had seen the face of God\" tying back to Peniel in chapter 32, the insisted-upon gift confirming peace, Esau's declined armed escort, and Jacob settling in Canaan at Succoth and Shechem, buying land from the children of Hamor, and building the altar El-elohe-Israel. Density 1.0 cards/verse (20/20). Verified with scripts/check_bible_note_style.py (1 problem found and fixed on first run, a bullet not ending in the required emoji; clean on second run), parser check (5/5 sections, 20 cards), and npx tsc --noEmit -p . (clean). data/bible-notes-style-redo-remaining.json's Genesis 33 entry removed from the front of the list as part of this commit; next redo target is Genesis 34.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-31T17:46:14Z"
+        },
+        {
+          "name": "target chapter determined: Genesis 33 (redo mode, first entry in data/bible-notes-style-redo-remaining.json)",
+          "at": "2026-07-31T17:46:30Z"
+        },
+        {
+          "name": "KJV text fetched for Genesis 33 via raw.githubusercontent.com/aruljohn/Bible-kjv/master/Genesis.json",
+          "at": "2026-07-31T17:47:16Z"
+        },
+        {
+          "name": "docs/bible-study-note-style.md read in full; lib/genesisThirtyOneSource.ts reviewed as reference implementation",
+          "at": "2026-07-31T17:48:30Z"
+        },
+        {
+          "name": "source file written: lib/genesisThirtyThreeSource.ts (5 sections, 20 cards)",
+          "at": "2026-07-31T17:51:49Z"
+        },
+        {
+          "name": "style checker: scripts/check_bible_note_style.py found 1 problem (last-bullet emoji), fixed, reran clean",
+          "at": "2026-07-31T17:52:40Z"
+        },
+        {
+          "name": "wiring confirmed already correct in lib/bibleReaderStudyNotes.ts (import + preserveExactPhraseBodies genesis 1-50 range already cover chapter 33, no changes needed)",
+          "at": "2026-07-31T17:52:50Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections('Genesis', 33) -> 5 sections, 20 cards",
+          "at": "2026-07-31T17:53:10Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-31T17:53:28Z"
+        }
+      ]
     }
   ]
 }
