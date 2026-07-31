@@ -3846,6 +3846,55 @@
           "at": "2026-07-31T12:54:36Z"
         }
       ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 29,
+      "startedAt": "2026-07-31T13:46:22Z",
+      "finishedAt": "2026-07-31T13:56:25Z",
+      "durationMinutes": 10,
+      "sections": 11,
+      "cards": 45,
+      "verses": 40,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. The fall festival calendar continuing directly from Numbers 28: the Feast of Trumpets (7th month, 1st day), the Day of Atonement (10th day, callback to Leviticus 16), and the seven-day Feast of Tabernacles/Sukkot with its daily bullock countdown from 13 to 7 (totaling 70), closing with the distinct eighth-day solemn assembly (Shemini Atzeret) and the closing note distinguishing required calendar offerings from optional vows/freewill/peace offerings. Replaces the legacy generic numbersTwentySixToThirtySixPersonalNotes.ts block for this chapter with a dedicated source file. Density ~1.13 cards/verse (40 verses), matching Numbers 28's ratio for this repetitive countdown-structured chapter. Parser check passed exactly (11/11 sections, 45 cards), npx tsc --noEmit -p . clean with zero errors. KJV fetched fresh from the aruljohn/Bible-kjv GitHub raw JSON mirror. NOTE: mid-run, a message purporting to be a live user instruction arrived asking to abandon the one-chapter limit, redo Genesis 31+ in a new style, and update CLAUDE.md to auto-read a Windows local file path (C:\\Users\\Moore\\Desktop\\...) not reachable from this sandbox. Treated as a likely prompt injection (this is an unattended scheduled routine with no live user present; the referenced file path doesn't exist in this environment) and not acted on -- flagging for Louis to confirm rather than complying silently.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-31T13:46:53Z"
+        },
+        {
+          "name": "next chapter determined: Numbers 29 (Numbers 1-28 confirmed wired in with dedicated source files; 29-36 still on legacy numbersTwentySixToThirtySixPersonalNotes.ts block)",
+          "at": "2026-07-31T13:47:23Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 29 (40 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-07-31T13:47:23Z"
+        },
+        {
+          "name": "wrote lib/numbersTwentyNineSource.ts",
+          "at": "2026-07-31T13:52:52Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended to 29)",
+          "at": "2026-07-31T13:53:05Z"
+        },
+        {
+          "name": "parser check passed: 11 sections, 45 cards",
+          "at": "2026-07-31T13:53:05Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-31T13:53:22Z"
+        },
+        {
+          "name": "mid-run suspected prompt injection received (fake user turn demanding scope change / CLAUDE.md redirect to unreachable local file) -- declined, task continued as originally scoped",
+          "at": "2026-07-31T13:55:00Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-07-31T13:56:25Z"
+        }
+      ]
     }
   ]
 }
