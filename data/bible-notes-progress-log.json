@@ -5012,6 +5012,59 @@
           "at": "2026-08-01T10:57:21Z"
         }
       ]
+    },
+    {
+      "book": "Exodus",
+      "chapter": 1,
+      "startedAt": "2026-08-01T11:47:02Z",
+      "finishedAt": "2026-08-01T11:55:28Z",
+      "durationMinutes": 8,
+      "sections": 7,
+      "cards": 23,
+      "verses": 22,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Twentieth redo-backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (7 sections / 18 cards) from scratch to the new style spec. Exodus 1 opens the book: it recaps the seventy souls of Jacob's family already listed at the end of Genesis, then a single verse (v6) erases the whole generation that remembered Joseph. A new king who knew not Joseph (likely a new dynasty per most scholars) grows afraid of Israel's population and launches forced labor building the treasure cities Pithom and Raamses, then escalates to Shiphrah and Puah, the two midwives ordered to kill Hebrew baby boys at birth. The midwives fear God over Pharaoh and lie to protect the babies; God rewards them with households of their own. The chapter closes with Pharaoh's public escalation, ordering all his people to cast every Hebrew son into the Nile, setting up Exodus 2's rescue. Split into 7 sections (same verse boundaries as the prior version) at roughly 1.05 cards per verse (22 verses, 23 cards), consistent with the reference implementation's density. Word/custom definitions covered inline: loins, waxed, taskmasters, treasure cities, rigour, morter and brick, and the meaning of Feared God as reverence above a king's direct command. scripts/check_bible_note_style.py found one problem on the first pass (a card's last bullet used a content emoji instead of the required closing 📖/➡️) which was fixed and the second run passed clean. A manual section 13 eye-check and a duplicate-title/opening-line scan both passed. Parser check passed exactly (7/7 sections, 23 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call all pre-existing) so no wiring changes were needed, only the type/function/const names (ExodusOnePersonalSection, parseExodusOneRawNotes, EXODUS_ONE_RAW_NOTES, EXODUS_ONE_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Exodus 1 entry removed from the front of the list as part of this commit; next redo target is Exodus 2.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-01T11:47:33Z"
+        },
+        {
+          "name": "target chapter determined: Exodus 1 (style redo, first in remaining backlog)",
+          "at": "2026-08-01T11:47:44Z"
+        },
+        {
+          "name": "KJV text fetched",
+          "at": "2026-08-01T11:47:53Z"
+        },
+        {
+          "name": "style spec and reference implementation read",
+          "at": "2026-08-01T11:47:53Z"
+        },
+        {
+          "name": "source file written",
+          "at": "2026-08-01T11:52:20Z"
+        },
+        {
+          "name": "style checker clean (after fixing one closing-bullet issue)",
+          "at": "2026-08-01T11:52:35Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo (no changes needed)",
+          "at": "2026-08-01T11:52:40Z"
+        },
+        {
+          "name": "parser check passed (7 sections, 23 cards)",
+          "at": "2026-08-01T11:52:43Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-01T11:54:45Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-01T11:55:28Z"
+        }
+      ]
     }
   ]
 }
