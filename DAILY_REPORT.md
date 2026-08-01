@@ -1,39 +1,39 @@
-# Daily Report - 2026-07-31T16:13:46Z
+# Daily Report - 2026-08-01T08:12:30Z
 
 ## Latest Conversations
-Since the last report (2026-07-29T08:13:07Z), two separate threads of work happened:
+Since the last report (2026-07-31T16:13:46Z):
 
-1. **Chapter-notes pipeline** kept running hourly and finished Numbers 20-30 (11 chapters), then produced a new, stricter hand-written style spec (`docs/bible-study-note-style.md`) that supersedes the old format. Genesis 31 was rewritten from scratch as the reference chapter for the new style, and the hourly agent was handed a 116-chapter regeneration backlog (Genesis 32 through Numbers 30) to redo under the new spec before it resumes forward progress, per `data/bible-notes-style-redo-remaining.json`.
-2. **Email funnel work** (not chapter notes): a backfill endpoint was added to send Day 1 emails to the last 30 days of signups, its auth check was removed ("temporarily"), its timeout was raised to 9 min, and the funnel itself was rewritten to send through Systeme.io's real contact-tag API instead of an endpoint that never existed. Several `[deploy]` commits and a submodule/`.gitmodules` fix for Vercel went out alongside this.
+1. **Chapter-notes pipeline** kept running hourly through the style-redo backlog and finished Genesis 34-47 (14 chapters redone to the new spec in `docs/bible-study-note-style.md`), all logged `status: pass` in `SESSION_LOG.md`. Next up per both `SESSION_LOG.md` and `data/bible-notes-style-redo-remaining.json` is Genesis 48.
+2. **Install banner work** (from the 2026-07-31 night sessions): fixed install-state saves silently failing, backfilled 2 real installs, fixed analytics dashboard zeros, changed iOS sheet-close behavior to per-visit, and redesigned the iPhone install sheet as a guided one-step-at-a-time flow. All deployed and verified against production data per `SESSION_LOG.md`.
+3. **Email Funnel analytics dropdown**: two commits (`8b0c9ba`, `b0cb9ac`) added Email Funnel as an option in the admin analytics metric dropdown, routing to the existing email analytics page. Both authored and pushed directly by Louis (not the agent) at 08:35-08:54 CEST this morning - no `SESSION_LOG.md` entry exists for this because it wasn't an agent session, which is expected.
 
 ## Unanswered Questions
-Still open, carried from `MARCUS_HANDOFF.md` (not yet cleared, so Life Buddy has not resolved it): during the scheduled 13:46 UTC Numbers 29 run, a message formatted as a live user instruction arrived telling the agent to abandon the one-chapter limit, redo Genesis 31 onward in a new style, and wire CLAUDE.md to auto-read a Windows local file path unreachable from the sandbox. That run correctly treated it as a suspected prompt injection and declined.
-
-Worth flagging directly: about an hour later (14:47-15:45 UTC), a session did do almost exactly what that message asked for - added a new style spec, wired it into CLAUDE.md, rewrote Genesis 31, and handed the redo backlog to the hourly agent. The progress log attributes this to a live exchange with Louis ("style spec supplied by Louis," "per Louis's explicit request to conserve tokens"), which may well be genuine and simply coincidental in timing. But given the injection attempt targeted this exact outcome, it is worth Louis confirming directly that he was the one who supplied the new style spec and requested the backlog handoff that afternoon.
+Carried from `MARCUS_HANDOFF.md`, still present and still unresolved: the suspected prompt-injection attempt against the Bible Note Writer Agent during the 2026-07-31 13:46 UTC Numbers 29 run, and the open question of whether Louis personally supplied the new style spec / requested the redo-backlog handoff that same afternoon (14:47-15:45 UTC) - timing that matches what the injection attempt asked for. `MARCUS_HANDOFF.md` has not been cleared, meaning Life Buddy has not yet turned this into a tracked Problem. Worth Louis confirming directly.
 
 ## Missed Things
-Live security exposure: the backfill endpoint (`app/api/email-funnel/backfill-30days/route.ts`) has had its auth check fully removed since commit `7af73a9` ("Temporarily disable auth on backfill endpoint [deploy]", pushed by Louis directly at 16:55 CEST) and it is still removed as of the latest commit on this file. It is a public POST endpoint with no authorization that pulls up to 5,000 recent signups and sends them email via the Systeme.io API. Two more `[deploy]` commits shipped after it (timeout increase, email funnel rewrite) without restoring the check. If this is live in production, it is currently callable by anyone who finds the URL.
+Live security exposure, still open: the backfill endpoint (`app/api/email-funnel/backfill-30days/route.ts`) has had no auth check since commit `7af73a9` (2026-07-31 16:55 CEST, "Temporarily disable auth on backfill endpoint"). Verified again just now - the route still has no authorization check. It is a public POST endpoint that pulls up to 5,000 recent signups and sends them email via the Systeme.io API. This is the second consecutive report flagging it unfixed.
 
-Root `bible-notes-progress.json` is still stale - unchanged since the Leviticus 20 commit, stuck at 85 entries and stopping at Exodus 35. This is at least the sixth consecutive report flagging it without a fix. The real, current source is `data/bible-notes-progress-log.json` (103 entries, up to date through Genesis 31 / Numbers 30), which is what the numbers below are drawn from.
+Root `bible-notes-progress.json` (repo root, distinct from `data/bible-notes-progress-log.json`) is still stale - stuck at 85 entries, last updated at Exodus 35. The canonical, current source remains `data/bible-notes-progress-log.json`, which the numbers below are drawn from.
 
 ## Dropped Activities
-None found. Chapter-notes runs all show `status: pass` in `SESSION_LOG.md` for this window (Numbers 27-30 plus the two 2026-07-31 entries carried over from 2026-07-29).
+None found. All chapter-notes runs since the last report show `status: pass` in `SESSION_LOG.md`.
 
 ## Unfinished Jobs
-- Restore (or deliberately re-secure some other way) the auth check on `app/api/email-funnel/backfill-30days/route.ts` - currently wide open. See Missed Things.
-- Get Louis to confirm whether he personally supplied the new style spec / requested the redo-backlog handoff around 14:47-15:45 UTC today, given the earlier declined injection attempt asked for the same thing. See Unanswered Questions.
-- Reconcile `bible-notes-progress.json` with real shipped state (now stuck at Exodus 35, dozens of chapters behind). Flagged in six consecutive reports now without being fixed.
-- Work through the 116-chapter style-redo backlog (Genesis 32 - Numbers 30), tracked in `data/bible-notes-style-redo-remaining.json`, before forward progress resumes.
+- Restore (or deliberately re-secure another way) the auth check on `app/api/email-funnel/backfill-30days/route.ts` - still wide open, unfixed for a second report cycle. See Missed Things.
+- Get Louis to confirm whether he personally supplied the new style spec / requested the redo-backlog handoff on 2026-07-31 afternoon, given the earlier declined injection attempt asked for the same outcome. See Unanswered Questions.
+- Reconcile root `bible-notes-progress.json` with the real shipped state tracked in `data/bible-notes-progress-log.json`.
+- Work through the remaining style-redo backlog (100 chapters left: Genesis 48-50, all of Exodus, all of Leviticus, Numbers 1-30), tracked in `data/bible-notes-style-redo-remaining.json`.
+- Louis to test the install banner on a real iPhone and confirm the Android real-device flow (still code-verified only per `SESSION_LOG.md`'s 2026-07-31 night entries).
 
 ## Current Jobs / Current Build
-Chapter notes pipeline is actively running on an hourly cadence, currently mid-way through the style-redo backlog rather than writing new chapters.
+Chapter-notes pipeline is actively running hourly, mid-way through the 116-chapter style-redo backlog rather than writing new chapters.
 
-Per `data/bible-notes-progress-log.json` (canonical, current source):
-- Genesis: 50/50 complete (10 logged under this log, 40 pre-existing gold standard)
-- Exodus: 40/40 complete
-- Leviticus: 27/27 complete
-- Numbers: 30/36 shipped (1-30), next new chapter would be Numbers 31
-- Total done: 147 / 1,189 chapters (~12.4%)
-- Style-redo backlog: 116 chapters (Genesis 32-50, all of Exodus, all of Leviticus, Numbers 1-30) queued for regeneration to the new stricter spec before forward progress resumes; next up is Genesis 32.
+Per `data/bible-notes-progress-log.json` / `data/bible-notes-style-redo-remaining.json` (canonical, current sources):
+- Genesis: 50/50 have notes; style-redo done through Genesis 47, next up Genesis 48 (3 chapters left in Genesis: 48-50)
+- Exodus: 40/40 have notes; none yet redone to the new style (all 40 still in the redo backlog)
+- Leviticus: 27/27 have notes; none yet redone to the new style (all 27 still in the redo backlog)
+- Numbers: 30/36 shipped (chapters 1-30); none yet redone to the new style (all 30 still in the redo backlog); next new chapter beyond the redo would be Numbers 31
+- Total chapters with notes (any style): 147 / 1,189 (~12.4%)
+- Style-redo backlog: 100 chapters remaining out of the original 116 (16 done: Genesis 32-47)
 
-Per `bible-notes-progress.json` (stale, do not use): 85 chapters logged, stuck at Genesis 50/50 + Exodus 35/40.
+Per root `bible-notes-progress.json` (stale, do not use): 85 chapters logged, stuck at Genesis 50/50 + Exodus 35/40.
