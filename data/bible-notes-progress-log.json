@@ -5,6 +5,31 @@
   "entries": [
     {
       "book": "Exodus",
+      "chapter": 10,
+      "startedAt": "2026-08-01T20:45:46Z",
+      "finishedAt": "2026-08-01T20:55:46Z",
+      "durationMinutes": 10,
+      "sections": 8,
+      "cards": 30,
+      "verses": 29,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (8 sections / 17 cards) from scratch to match docs/bible-study-note-style.md. Exodus 10 covers the eighth plague (locusts), opening with God naming the larger purpose of the plagues as a story for future generations, Moses and Aaron confronting Pharaoh's ongoing pride, Pharaoh's own officials pressuring him for the first time, the locust swarm covering the land and finishing what the hail plague started, Pharaoh's negotiation tactics (offering men only, then offering people but not livestock), the locusts arriving by east wind and leaving by west wind with total removal into the Red Sea, Pharaoh's hardened heart returning immediately after real relief, the ninth plague (three days of thick, tangible darkness confronting Ra, Egypt's sun god, while Israel keeps light in Goshen), Moses refusing to leave a single animal behind since Israel does not yet know what God will require at Sinai, and the chapter's close where Pharaoh permanently bans Moses from his presence under penalty of death and Moses agrees without fear. Kept the original file's 8 section boundaries (10:1-3, 10:4-6, 10:7-11, 10:12-15, 10:16-20, 10:21-23, 10:24-27, 10:28-29) for verse-coverage continuity while rewriting every card to the new format. Word/custom/idiom definitions covered inline: snare, residue, grievous, in haste, not an hoof left behind, burnt offering versus sacrifices, coast (territory not shoreline), and historical background on Ra as Egypt's sun god and on locust swarms arriving from the east. Density about 1.03 cards/verse (29 verses, 30 cards). scripts/check_bible_note_style.py ran clean on the first pass (30 cards, no problems). A manual section 13 eye check and a hyphen/em dash/semicolon/contraction scan both passed. Parser check passed exactly (8/8 sections, 30 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (ExodusTenPersonalSection, parseExodusTenRawNotes, EXODUS_TEN_RAW_NOTES, EXODUS_TEN_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Exodus 10 entry removed from the front of the list as part of this commit; next redo target is Exodus 11.",
+      "steps": [
+        { "name": "npm install done", "at": "2026-08-01T20:45:46Z" },
+        { "name": "target chapter determined: Exodus 10 (style redo, first in remaining backlog)", "at": "2026-08-01T20:45:46Z" },
+        { "name": "KJV text fetched from raw.githubusercontent.com Exodus.json", "at": "2026-08-01T20:47:00Z" },
+        { "name": "style spec (docs/bible-study-note-style.md) and SKILL.md read", "at": "2026-08-01T20:49:30Z" },
+        { "name": "source file written (lib/exodusTenSource.ts, 8 sections, 30 cards)", "at": "2026-08-01T20:51:26Z" },
+        { "name": "style checker clean (first pass, no fixes needed)", "at": "2026-08-01T20:52:09Z" },
+        { "name": "wiring confirmed correct for redo (no changes needed)", "at": "2026-08-01T20:52:37Z" },
+        { "name": "parser check passed (8 sections, 30 cards, verbatim)", "at": "2026-08-01T20:52:37Z" },
+        { "name": "tsc --noEmit clean", "at": "2026-08-01T20:53:06Z" },
+        { "name": "progress files logged", "at": "2026-08-01T20:55:46Z" },
+        { "name": "committed", "at": "PLACEHOLDER_COMMIT_TIME" },
+        { "name": "pushed to origin main, confirmed via log/status", "at": "PLACEHOLDER_PUSH_TIME" }
+      ]
+    },
+    {
+      "book": "Exodus",
       "chapter": 9,
       "startedAt": "2026-08-01T19:46:16Z",
       "finishedAt": "2026-08-01T19:56:13Z",
