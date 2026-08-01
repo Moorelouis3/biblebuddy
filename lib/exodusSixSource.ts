@@ -89,203 +89,606 @@ function parseExodusSixRawNotes(rawText: string): ExodusSixPersonalSection[] {
 }
 
 const EXODUS_SIX_RAW_NOTES = `# Exodus 6:1-5
-
 # ✨ God Reveals The Name JEHOVAH
-
 ---
-
 ## 💪 With A Strong Hand Shall He Let Them Go
 
-God tells Moses plainly that Pharaoh's eventual release of Israel will only come through overwhelming, forceful pressure, not persuasion or gradual change of heart. This prepares Moses for a long, hard road still ahead.
+Pharaoh will not release Israel because he changes his mind.
 
-💪 God prepares Moses for a forced release, not a change of heart
+A strong hand means force applied against someone who refuses.
 
----
+This same idea repeats twice in one verse for emphasis.
+
+God says Pharaoh will not just release Israel eventually.
+
+He will actually drive them out of Egypt himself.
+
+This warns Moses that force is coming, not talk.
+
+💪 A strong hand means forced action
+🔁 The verse repeats itself for emphasis
+🚪 Pharaoh will drive them out himself
+📖 Force is coming, not persuasion
+
+## 🗣️ I Am The LORD
+
+God opens His speech to Moses with His own name spoken first.
+
+I am the LORD is not just a greeting.
+
+It is a formal claim of authority before anything else is said.
+
+This exact phrase returns three more times before the chapter ends.
+
+Each repeat reminds Moses whose promise stands behind these words.
+
+🗣️ I am the LORD opens the speech
+👑 This claims authority before anything else
+🔁 The phrase returns three more times
+📖 Every promise here rests on this name
+
+## 🏔️ By The Name Of God Almighty
+
+God Almighty translates the Hebrew title El Shaddai.
+
+Many scholars believe the name points to God as all powerful.
+
+Abraham, Isaac, and Jacob knew God mostly under this title.
+
+It described His power to provide for a small wandering family.
+
+A new stage of the story now calls for a deeper name.
+
+🏔️ God Almighty translates El Shaddai
+💪 It points to God as all powerful
+👪 The patriarchs mainly knew God by this name
+➡️ A bigger name is coming next
 
 ## 📛 By My Name JEHOVAH Was I Not Known To Them
 
-Abraham, Isaac, and Jacob knew God primarily as God Almighty, but not with the same depth of personal, covenant relationship now being revealed through the name JEHOVAH, connected to the "I AM" name given in chapter 3. God is revealing a fuller, deeper dimension of who He is for this new stage of Israel's story.
+JEHOVAH represents God's personal covenant name, often written as YHWH.
 
-📛 The patriarchs knew God mainly as God Almighty, not by this fuller name
+This is the same name connected to I AM back in chapter three.
 
-📖 This connects directly to the "I AM" name revealed back in chapter 3
+The patriarchs trusted God without experiencing this fuller side of Him.
 
----
+Now, at the start of this new stage, that name becomes central to Israel's story.
+
+A deeper relationship is opening up for a nation about to be born.
+
+📛 JEHOVAH is God's personal covenant name
+🔥 Chapter three already revealed I AM
+👪 The patriarchs never knew this side fully
+📖 This name now anchors Israel's whole story
+
+## 🗺️ To Give Them The Land Of Canaan
+
+God restates the ancient promise made first to Abraham.
+
+Canaan was the specific land promised generations earlier in Genesis.
+
+This same promise gets repeated to Isaac and then to Jacob.
+
+Slavery in Egypt never canceled that original promise.
+
+God still intends to keep every word of it.
+
+🗺️ Canaan was promised generations earlier
+📜 Abraham, Isaac, and Jacob all heard this
+⛓️ Slavery never canceled the promise
+📖 God still intends to keep His word
 
 ## 🏕️ The Land Of Their Pilgrimage, Wherein They Were Strangers
 
-Pilgrimage here means a temporary journey through a land not yet permanently possessed. Abraham, Isaac, and Jacob all lived in Canaan as outsiders, never actually owning it outright, only holding the promise that their descendants eventually would.
+Pilgrimage here means a temporary stay in a land not yet owned.
 
-🏕️ The patriarchs lived in Canaan as outsiders, never fully possessing it themselves
+Strangers means outsiders without full legal rights to the ground they walked on.
 
----
+Abraham, Isaac, and Jacob all lived in Canaan without ever owning it.
+
+They held only a promise, not a deed.
+
+Their children would be the ones to actually receive it.
+
+🏕️ Pilgrimage means a temporary stay
+🚶 Strangers means outsiders with no legal claim
+📜 The patriarchs held a promise, not a deed
+➡️ Their children would receive what they did not
 
 ## 👂 I Have Also Heard The Groaning Of The Children Of Israel
 
-God directly connects His response to Israel's specific suffering under Egyptian slavery to the ancient covenant promise, showing these two things, present suffering and ancient promise, were never separate from each other.
+Groaning describes the low, exhausted sound of people in real pain.
 
-👂 God ties Israel's present suffering directly to His ancient covenant promise
+God says plainly that He has heard this sound Himself.
+
+This is not distant or uninvolved watching from far away.
+
+Their suffering under Egyptian slavery reached God directly.
+
+He responds to Israel's own cries, not only to Moses.
+
+👂 Groaning means a sound of real pain
+👀 God hears this Himself directly
+🚫 This is not distant, uninvolved watching
+📖 Israel's own cries reach God
+
+## 🤝 I Have Remembered My Covenant
+
+Remembered does not mean God forgot and then recalled something.
+
+In scripture it usually means God is about to act on a promise.
+
+The covenant here goes back to Abraham, long before Egypt or Moses existed.
+
+God ties Israel's present suffering directly to that ancient promise.
+
+Present pain and old promises were never separate things to Him.
+
+🤝 Remembered means God is about to act
+📜 The covenant reaches back to Abraham
+⛓️ Suffering and promise were never separate
+📖 God acts because He keeps His word
 
 # Exodus 6:6-8
-
-# 🗣️ Seven "I Will" Promises
-
+# 🗣️ Seven I Will Promises
 ---
+## 🔓 I Will Bring You Out From Under The Burdens Of The Egyptians
+
+Burdens here means the forced labor Egypt piled onto Israel.
+
+This is the first of several I will promises packed into these three verses.
+
+Each promise builds on the last, moving from rescue toward a whole new future.
+
+God is not just describing an escape, He is announcing a full plan.
+
+🔓 Burdens means forced Egyptian labor
+🔢 This starts a whole list of promises
+🪜 Each promise builds on the one before
+📖 God announces a full plan, not an escape
+
+## 🕊️ I Will Rid You Out Of Their Bondage
+
+Rid is an old way of saying completely free or fully remove.
+
+Bondage means slavery, a state with no freedom or personal control.
+
+This promise goes further than simply reducing Israel's workload.
+
+It promises a full and total end to their slavery.
+
+🕊️ Rid means completely free
+⛓️ Bondage means slavery with no control
+🚫 This is more than lighter work
+📖 A total end is promised, not a break
 
 ## 🦾 I Will Redeem You With A Stretched Out Arm, And With Great Judgments
 
-Redeem means to rescue by paying a price or exerting real power on someone's behalf. A stretched out arm is a vivid image of deliberate, powerful action, not passive rescue. Great judgments foreshadows the plagues about to unfold against Egypt.
+Redeem means to rescue someone by paying a price or using real power.
 
-🦾 Redeem means to rescue through a deliberate, costly, powerful act
+A stretched out arm is a picture of strength put to direct use.
 
-🌪️ "Great judgments" foreshadows the plagues still to come
+Great judgments points forward to the plagues about to strike Egypt.
 
----
+This promise is both personal rescue and public punishment at the same time.
+
+🦾 Redeem means rescue through real power
+💪 A stretched out arm pictures strength in action
+🌪️ Great judgments points toward the coming plagues
+📖 Rescue and judgment arrive together here
 
 ## 🤝 I Will Take You To Me For A People, And I Will Be To You A God
 
-This is covenant language, a formal, binding relationship being established between God and the entire nation, not simply a rescue mission. Israel is being formed into God's own people through this moment.
+This is covenant language, the kind used to seal a lasting relationship.
 
-🤝 This formally establishes Israel as God's own covenant people
+God is not only rescuing Israel from Egypt.
 
----
+He is forming Israel into His own people on purpose.
+
+This same pattern of promise appears throughout the rest of the Old Testament.
+
+🤝 This is formal covenant language
+👪 Israel becomes God's own people
+🎯 Rescue and relationship happen together
+📖 This pattern repeats through the Old Testament
+
+## 👁️ Ye Shall Know That I Am The LORD Your God
+
+Knowing God here means more than knowing facts about Him.
+
+It means experiencing His power and faithfulness firsthand.
+
+Israel will not just hear about deliverance, they will live through it.
+
+Watching these promises come true will teach them who God really is.
+
+👁️ Knowing means real experience, not facts
+🙌 Israel will live through this deliverance
+📚 Watching it happen becomes their teacher
+📖 Experience reveals who God really is
 
 ## 🏡 I Will Bring You In Unto The Land ... I Will Give It You For An Heritage
 
-God lists a complete sequence of promises: rescue from slavery, covenant relationship, and finally, permanent inheritance of the promised land. Heritage means a lasting possession passed down through generations, not a temporary gift.
+God now completes a whole sequence of promises.
 
-🏡 Heritage means a lasting possession, not a temporary or borrowed gift
+First is rescue, then relationship, then inheritance.
 
-📖 This completes the full sequence: rescue, relationship, and inheritance
+Heritage means a lasting possession passed down through generations.
+
+This is not a loan or a temporary gift.
+
+The land was sworn to Abraham, Isaac, and Jacob long before this moment.
+
+🏡 Heritage means a lasting possession
+🪜 Rescue, relationship, and inheritance complete the set
+📜 The land was already sworn to the patriarchs
+📖 This gift was never temporary
 
 # Exodus 6:9
-
 # 😔 Israel Cannot Hear It
-
 ---
+## 😔 They Hearkened Not Unto Moses For Anguish Of Spirit
 
-## 😔 They Hearkened Not Unto Moses For Anguish Of Spirit, And For Cruel Bondage
+Hearkened is an old word for listening closely enough to obey.
 
-Even this beautiful, complete set of promises fails to reach a people utterly crushed by exhaustion and suffering. Anguish of spirit describes deep, overwhelming emotional distress, so severe that even good news struggles to break through.
+Israel did not reject Moses out of stubbornness or unbelief here.
 
-😔 Anguish of spirit means overwhelming emotional and mental distress
+Anguish of spirit describes a mind and heart worn down by suffering.
 
-💔 Severe suffering can make even genuinely good news hard to receive or believe
+Even wonderful promises can fail to reach someone this exhausted.
+
+😔 Hearkened means listening in order to obey
+💔 Israel was not being stubborn here
+😩 Anguish of spirit means deep inner exhaustion
+📖 Suffering can block even good news
+
+## ⛓️ For Cruel Bondage
+
+Cruel here means harsh treatment carried out without mercy.
+
+This phrase names the actual cause of Israel's exhaustion.
+
+Slavery in Egypt was not simply hard work, it was brutal.
+
+The text does not hide or soften how bad it really was.
+
+⛓️ Cruel means harsh and without mercy
+😣 This names the real cause of their pain
+🚫 Egypt's slavery was brutal, not just hard
+📖 Scripture does not soften how bad it was
 
 # Exodus 6:10-13
-
 # 🙋 Moses Doubts Himself Again
-
 ---
-
 ## 🗣️ Go In, Speak Unto Pharaoh King Of Egypt
 
-God repeats the same command from before, sending Moses directly to Pharaoh again, undeterred by Israel's inability to receive the message or the failed first attempt.
+God repeats almost the same command Moses already received before.
 
-🗣️ God repeats His command, undeterred by the setback that just happened
+Israel's failure to listen does not change God's instructions to Moses.
 
----
+Moses is sent back to Pharaoh with no new excuse offered.
 
-## 👄 Of Uncircumcised Lips
+God's plan moves forward even after a setback.
 
-This is an idiom describing someone who feels inadequate or unfit at speaking, similar to Moses' earlier complaint in chapter 4 about being slow of speech. Moses reasons that if his own suffering people wouldn't listen to him, Pharaoh certainly won't either.
+🗣️ God repeats His earlier command
+🚫 Israel's response does not change the plan
+🚶 Moses is sent back to Pharaoh again
+📖 A setback does not stop God's plan
 
-👄 "Uncircumcised lips" is an idiom describing a sense of inadequacy at speaking
+## 👥 The Children Of Israel Have Not Hearkened Unto Me
 
-🔁 This echoes Moses' earlier objection about his speaking ability from chapter 4
+Moses points back to what just happened in the verse before.
 
----
+His own suffering people would not listen to him.
+
+He reasons that Pharaoh certainly will not listen either.
+
+Moses argues from the evidence sitting right in front of him.
+
+👥 Moses points back to verse nine
+🚫 His own people would not listen
+👑 He assumes Pharaoh will refuse too
+📖 Moses argues from real evidence
+
+## 👄 Who Am Of Uncircumcised Lips
+
+Uncircumcised lips is an old idiom for someone who feels unfit to speak.
+
+It does not describe an actual physical condition of Moses' mouth.
+
+This echoes his same complaint about slow speech from chapter four.
+
+Moses still doubts his own ability, even after everything God has already done.
+
+👄 Uncircumcised lips means unfit to speak
+🚫 This is not a real physical condition
+🔁 Moses raised this same doubt before
+📖 Old doubts can outlast new evidence
 
 ## 📜 The LORD ... Gave Them A Charge Unto The Children Of Israel, And Unto Pharaoh
 
-Despite Moses' doubts, God formally commissions both Moses and Aaron together for this specific task, addressing both the Israelites and Pharaoh as the full scope of their mission.
+Charge means a formal, official assignment handed down with authority.
 
-📜 God formally commissions both Moses and Aaron together for this task
+God commissions Moses and Aaron together, not Moses alone.
+
+Their assignment covers two very different audiences.
+
+They must speak to their own suffering people and to a hostile king.
+
+📜 Charge means a formal official assignment
+🤝 Moses and Aaron are commissioned together
+👥 Their mission covers two different audiences
+📖 It reaches a people and a king
 
 # Exodus 6:14-19
-
 # 📜 The Family Line Of Reuben, Simeon, And Levi
-
 ---
-
 ## 📜 These Be The Heads Of Their Fathers' Houses
 
-The narrative pauses here for a genealogy, specifically tracing the tribes of Reuben, Simeon, and Levi, before quickly zooming in on Levi's line in particular, since that's the tribe Moses and Aaron themselves belong to.
+The story pauses here for a formal family record.
 
-📜 This genealogy specifically sets up Levi's line, leading directly to Moses and Aaron
+Ancient readers cared deeply about exact family lines like this.
 
----
+This genealogy specifically narrows down toward one family, the tribe of Levi.
+
+Levi's line matters because that is where Moses and Aaron come from.
+
+📜 The story pauses for a genealogy
+👪 Ancient readers valued exact family lines
+🎯 This genealogy narrows down to Levi
+📖 Levi's line leads straight to Moses
+
+## 👑 The Sons Of Reuben The Firstborn Of Israel
+
+Firstborn normally meant the first son inherited a double share and family leadership.
+
+Reuben held that honored position by simple birth order.
+
+Genesis already recorded that Reuben lost his father's blessing over a serious sin.
+
+Naming him first here still honors his birth order, even after that failure.
+
+👑 Firstborn meant a double inheritance
+📉 Reuben lost his blessing in Genesis
+📋 Birth order still gets him listed first
+📖 A title can outlast the failure behind it
+
+## 🌍 Shaul The Son Of A Canaanitish Woman
+
+This short detail marks Shaul's mother as a Canaanite, not an Israelite.
+
+Israel's family was not yet cut off from marrying outside the group at this point.
+
+Laws limiting these marriages come only once Israel reaches Sinai.
+
+The text records this plainly, without hiding or excusing it.
+
+🌍 Shaul's mother was a Canaanite
+📆 These marriage limits did not exist yet
+⚖️ Later laws come only after Sinai
+📖 Scripture records this detail plainly
 
 ## ⏳ The Years Of The Life Of Levi Were An Hundred Thirty And Seven Years
 
-Genesis-style lifespan notes continue here into Exodus, marking Levi's long life and tracing the direct generational distance between Jacob's original family and Moses' own generation, born into slavery in Egypt.
+Genesis regularly tracked lifespans this way, and Exodus continues the same habit.
 
-⏳ Lifespan notes help trace the generations between Jacob's family and Moses
+Levi's long life bridges the gap between Jacob's family and Moses' own generation.
+
+This number helps a reader measure how much time has actually passed.
+
+Slavery in Egypt did not happen overnight, it built up across generations.
+
+⏳ Genesis style lifespans continue here
+🌉 Levi's life bridges Jacob to Moses
+📏 The number measures real passing time
+📖 Slavery built up slowly across generations
+
+## 🔢 The Years Of The Life Of Kohath Were An Hundred Thirty And Three Years
+
+Kohath was Levi's son and one link further down this same family chain.
+
+His recorded lifespan keeps the same generational count moving forward.
+
+Kohath's own son Amram becomes the father of Moses and Aaron.
+
+Each lifespan here is another rung on the ladder toward the exodus.
+
+🔢 Kohath was Levi's own son
+🪜 His life adds another generational rung
+👶 Kohath's son Amram fathers Moses
+📖 Every rung leads toward the exodus
+
+## 👶 The Years Of The Life Of Amram Were An Hundred And Thirty And Seven Years
+
+Amram is Moses and Aaron's own father, ending this short chain of lifespans.
+
+Some readers notice that only four generations separate Jacob's family from Moses.
+
+Scripture elsewhere describes four hundred years of slavery in Egypt.
+
+Many scholars believe this genealogy names key generations, not a full count.
+
+The point is a clear line back to Jacob, not a perfect head count.
+
+👶 Amram is Moses and Aaron's father
+🔢 Only four names span this whole time
+📜 Many scholars see key names here
+📖 The line back to Jacob stays clear
 
 # Exodus 6:20-25
-
 # 👨‍👩‍👦 Moses And Aaron's Immediate Family
-
 ---
+## 👨‍👩‍👦 Amram Took Him Jochebed His Father's Sister To Wife
 
-## 👨‍👩‍👦 Amram Took Him Jochebed His Father's Sister To Wife ... She Bare Him Aaron And Moses
+This verse finally names Moses' parents directly, Amram and Jochebed.
 
-This finally names Moses' parents directly: Amram and Jochebed, the same unnamed couple described back in chapter 2. Notably, Jochebed was Amram's aunt, a marriage pattern later specifically forbidden once the Law is given at Sinai, showing this happened before those laws existed.
+Chapter two described this same couple without ever naming them.
 
-👨‍👩‍👦 This names Moses' parents directly for the first time: Amram and Jochebed
+Jochebed was actually Amram's aunt, his father's sister, not simply a stranger he married.
 
-⚖️ This marriage pattern is later forbidden once the Law is given, showing it predates it
+Laws given later at Sinai specifically forbid this kind of marriage.
 
----
+This detail shows the marriage happened before those laws ever existed.
 
-## 👨‍👩‍👦 Aaron Took Him Elisheba ... She Bare Him Nadab, And Abihu, Eleazar, And Ithamar
+👨‍👩‍👦 Amram and Jochebed are finally named
+📖 Chapter two described them without naming them
+⚖️ Sinai later forbids this exact marriage
+➡️ It happened before that law existed
 
-Aaron's own sons are named here, establishing the priestly line that continues throughout the rest of the Old Testament. Nadab and Abihu will later die for a serious act of disobedience in Leviticus, while Eleazar's line continues the priesthood forward.
+## 👶 She Bare Him Aaron And Moses
 
-👨‍👩‍👦 This establishes the priestly family line continuing through the Old Testament
+Aaron is named here before Moses, showing Aaron was the older brother.
 
-🔮 Nadab and Abihu's names foreshadow a serious event later told in Leviticus
+Chapter seven later confirms Aaron's exact age difference from Moses.
 
----
+Birth order in this culture usually carried real social weight.
 
-## 👤 Eleazar Aaron's Son ... She Bare Him Phinehas
+Moses becomes the primary leader anyway, despite being the younger brother.
 
-Phinehas, named here as part of this genealogy, later becomes a especially significant figure himself, known in the book of Numbers for his zealous defense of God's holiness among the people.
+👶 Aaron is listed first as the older brother
+📅 Chapter seven confirms their age gap
+👑 Birth order usually carried real weight
+📖 Moses leads anyway as the younger son
 
-👤 Phinehas becomes a notably significant priestly figure later in Numbers
+## ⚔️ Korah, And Nepheg, And Zichri
+
+These are the sons of Izhar, a cousin to Moses and Aaron.
+
+Korah's name here looks completely ordinary in this quiet list.
+
+The book of Numbers later tells how Korah leads a serious rebellion against Moses.
+
+A name that seems minor now becomes a major story later on.
+
+⚔️ Korah is Moses and Aaron's cousin
+📖 Numbers tells of Korah's later rebellion
+😐 This list gives no hint of that yet
+➡️ Small names can carry a big future
+
+## 👰 Aaron Took Him Elisheba ... To Wife
+
+Elisheba's family connects Aaron's household to the tribe of Judah.
+
+Her brother Naashon becomes an important leader within that same tribe.
+
+This marriage links the priestly line to Judah's royal future line.
+
+Two major roles in Israel's story, priest and king, meet briefly here.
+
+👰 Elisheba links Aaron to Judah's tribe
+👑 Her brother Naashon leads within Judah
+🤝 Priestly and royal lines briefly connect
+📖 Two futures meet in one marriage
+
+## 🙏 She Bare Him Nadab, And Abihu, Eleazar, And Ithamar
+
+These four sons establish the priestly family line for the rest of the Old Testament.
+
+Nadab and Abihu are named first, as the two oldest sons.
+
+Leviticus later records how Nadab and Abihu die for a serious act of disobedience.
+
+Eleazar and Ithamar are the two sons whose lines actually continue the priesthood.
+
+🙏 These sons begin the priestly line
+⚠️ Nadab and Abihu die later in Leviticus
+🔥 Their death came from real disobedience
+📖 Eleazar and Ithamar carry the line forward
+
+## 👤 She Bare Him Phinehas
+
+Phinehas is Eleazar's son, one more generation past Aaron.
+
+The book of Numbers later shows Phinehas acting with fierce zeal for God's holiness.
+
+This short mention here plants a name that matters much more later.
+
+Genealogies often work exactly this way, quiet seeds for bigger stories.
+
+👤 Phinehas is Eleazar's son
+🔥 Numbers shows his fierce zeal for God
+🌱 A quiet name planted here early
+📖 Genealogies often seed bigger stories later
 
 # Exodus 6:26-27
-
 # ✅ Confirming Moses And Aaron's Identity
-
 ---
+## ✅ These Are That Aaron And Moses
 
-## ✅ These Are That Aaron And Moses ... These Are That Moses And Aaron
+The text now steps back out of the genealogy entirely.
 
-The text deliberately repeats and confirms, after the genealogy, that this Moses and Aaron are exactly the same men who confronted Pharaoh. The genealogy wasn't a random detour, it was establishing exactly who these two leaders really are.
+This sentence confirms that this Aaron and Moses are the same men from before.
 
-✅ The genealogy exists specifically to confirm Moses and Aaron's identity and lineage
+The whole family record existed to establish exactly who these two leaders are.
+
+Nothing about the pause was a random detour from the main story.
+
+✅ The genealogy pause now ends
+🎯 This confirms Aaron and Moses' identity
+📜 The record proves exactly who they are
+📖 Nothing here was a random detour
+
+## 🔁 These Are That Moses And Aaron
+
+This verse repeats the same idea, but flips the brothers' order.
+
+Verse twenty six named Aaron first, this verse names Moses first.
+
+Ancient writers often used this kind of repeated, reversed structure on purpose.
+
+It works like a bracket, closing out the genealogy section cleanly.
+
+🔁 The same idea repeats in reverse order
+📖 Verse twenty six named Aaron first
+✍️ Ancient writers used this pattern on purpose
+➡️ It closes the genealogy like a bracket
 
 # Exodus 6:28-30
-
 # 🔁 The Objection Repeats
-
 ---
+## 📆 On The Day When The LORD Spake Unto Moses
 
-## 🔁 I Am The LORD: Speak Thou Unto Pharaoh King Of Egypt All That I Say Unto Thee
+This sentence signals the story returning to where it paused.
 
-God repeats His command once more, bringing the narrative back to exactly where it left off before the genealogy, preparing to move the story forward into the confrontation with Pharaoh and the plagues.
+Ancient writers often repeated a line like this after a long break.
 
-🔁 The narrative returns to exactly where it paused before the genealogy
+It marks a return to the main story after the genealogy.
 
----
+The confrontation with Pharaoh is about to continue from where it stopped.
 
-## 👄 I Am Of Uncircumcised Lips, And How Shall Pharaoh Hearken Unto Me?
+📆 This marks a return to the story
+✍️ Ancient writers used repeated lines this way
+📜 It signals the end of the genealogy break
+➡️ The Pharaoh confrontation picks back up now
 
-Moses repeats his self-doubt about speaking ability once more, word for word similar to his earlier objection, setting up God's patient, repeated reassurance and the plan to work through Aaron, continuing into the next chapter.
+## 🗣️ I Am The LORD: Speak Thou Unto Pharaoh King Of Egypt All That I Say Unto Thee
 
-👄 Moses repeats the same self-doubt, almost word for word, from earlier
+God repeats His command once more, word for word similar to before.
 
-➡️ This sets up God's continued plan through Aaron in the chapter ahead`;
+The instruction has not changed at all since chapter six began.
+
+Moses is told to speak everything God says, nothing more and nothing less.
+
+God's patience here matches His clear determination to see this through.
+
+🗣️ God repeats the same command again
+🔁 The instruction has not changed at all
+📢 Moses must speak exactly what God says
+📖 Patience and determination move together here
+
+## 👄 I Am Of Uncircumcised Lips, And How Shall Pharaoh Hearken Unto Me
+
+Moses repeats his own doubt from earlier in this same chapter almost word for word.
+
+He still believes his speaking ability disqualifies him from this mission.
+
+This sets up God's patient response and a plan to use Aaron's voice instead.
+
+Old doubts can resurface even after God has already answered them once.
+
+👄 Moses repeats his own earlier doubt
+🚫 He still doubts his speaking ability
+🗣️ This sets up God's plan through Aaron
+➡️ Old doubts can return even after answers`.trim();
 
 export const EXODUS_SIX_PERSONAL_SECTIONS = parseExodusSixRawNotes(EXODUS_SIX_RAW_NOTES);

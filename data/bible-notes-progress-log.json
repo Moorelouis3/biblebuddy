@@ -5,6 +5,29 @@
   "entries": [
     {
       "book": "Exodus",
+      "chapter": 6,
+      "startedAt": "2026-08-01T16:46:23Z",
+      "finishedAt": "2026-08-01T16:59:44Z",
+      "durationMinutes": 13,
+      "sections": 8,
+      "cards": 37,
+      "verses": 30,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (19 cards / 8 sections) from scratch to match docs/bible-study-note-style.md. Exodus 6 covers God revealing the name JEHOVAH to Moses and reaffirming the covenant with Abraham, Isaac, and Jacob, the seven 'I will' redemption promises, Israel unable to hear the good news through anguish of spirit and cruel bondage, Moses' repeated self doubt about his uncircumcised lips, the Reuben/Simeon/Levi genealogy that narrows down to Levi's line, the naming of Moses and Aaron's immediate family (Amram and Jochebed, Aaron's priestly sons Nadab/Abihu/Eleazar/Ithamar, and Phinehas planted for his later story in Numbers), the narrative's resumptive repetition confirming Moses and Aaron's identity after the genealogical pause, and Moses' doubt repeating almost word for word as the chapter closes. Kept the same 8 section boundaries as the prior version (6:1-5, 6:6-8, 6:9, 6:10-13, 6:14-19, 6:20-25, 6:26-27, 6:28-30) and increased card density from 19 to 37 cards over 30 verses (about 1.23 cards/verse). Word/custom definitions covered inline: strong hand, JEHOVAH vs God Almighty (El Shaddai), pilgrimage/strangers, groaning, redeem, heritage, hearkened, anguish of spirit, cruel bondage, uncircumcised lips (idiom), charge, firstborn, Canaanitish, the aunt marriage predating Sinai's law, and resumptive repetition as a literary device. scripts/check_bible_note_style.py found one bullet over the 8 word limit on the first pass, fixed, second run clean (37 cards, no problems). A manual section 13 eye check and a connector word / duplicate title scan both passed. Parser check passed exactly (8/8 sections, 37 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (ExodusSixPersonalSection, parseExodusSixRawNotes, EXODUS_SIX_RAW_NOTES, EXODUS_SIX_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Exodus 6 entry removed from the front of the list as part of this commit; next redo target is Exodus 7.",
+      "steps": [
+        { "name": "npm install done", "at": "2026-08-01T16:46:23Z" },
+        { "name": "target chapter determined: Exodus 6 (style redo, first in remaining backlog)", "at": "2026-08-01T16:47:14Z" },
+        { "name": "KJV text fetched from raw.githubusercontent.com Exodus.json", "at": "2026-08-01T16:47:14Z" },
+        { "name": "style spec (docs/bible-study-note-style.md) and reference implementation read", "at": "2026-08-01T16:47:14Z" },
+        { "name": "source file written (lib/exodusSixSource.ts, 8 sections, 37 cards)", "at": "2026-08-01T16:58:51Z" },
+        { "name": "style checker clean (after fixing 1 bullet word count issue)", "at": "2026-08-01T16:58:51Z" },
+        { "name": "wiring confirmed correct for redo (no changes needed)", "at": "2026-08-01T16:58:51Z" },
+        { "name": "parser check passed (8 sections, 37 cards, verbatim)", "at": "2026-08-01T16:58:51Z" },
+        { "name": "tsc --noEmit clean", "at": "2026-08-01T16:58:51Z" },
+        { "name": "progress files logged", "at": "2026-08-01T16:59:44Z" }
+      ]
+    },
+    {
+      "book": "Exodus",
       "chapter": 5,
       "startedAt": "2026-08-01T15:46:01Z",
       "finishedAt": "2026-08-01T15:54:04Z",
