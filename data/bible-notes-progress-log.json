@@ -4763,6 +4763,55 @@
           "at": "2026-08-01T05:59:19Z"
         }
       ]
+    },
+    {
+      "book": "Genesis",
+      "chapter": 46,
+      "startedAt": "2026-08-01T06:46:21Z",
+      "finishedAt": "2026-08-01T06:53:32Z",
+      "durationMinutes": 7,
+      "sections": 9,
+      "cards": 36,
+      "verses": 34,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Fifteenth redo-backlog chapter (data/bible-notes-style-redo-remaining.json), regenerated from scratch to match docs/bible-study-note-style.md, replacing the original pre-spec version (27 cards / 8 sections). God speaking to Israel in a night vision at Beersheba before the move to Egypt (fear not, I will there make of thee a great nation, I will also surely bring thee up again, Joseph shall put his hand upon thine eyes), Pharaoh sending wagons to carry Jacob and the household down, the four-mother genealogy of the seventy souls who entered Egypt split into one section per mother (Leah including Er and Onan dying in Canaan and daughter Dinah, Zilpah including daughter Serah, Rachel including Manasseh and Ephraim born to Asenath the daughter of Potipherah priest of On, and Bilhah), the threescore-and-six / threescore-and-ten headcount, Joseph riding out in his own chariot to meet Israel and Jacob saying now let me die since I have seen thy face, and Joseph coaching his brothers on their answer to Pharaoh so their honesty about being shepherds secures them Goshen since every shepherd is an abomination unto the Egyptians. Split the genealogy into a distinct section per mother rather than one long list, per the skills genealogy guidance (Part 4) and style spec section 12, to explain why each name and number was recorded rather than reciting it. Density 1.06 cards/verse (34 verses, 36 cards). scripts/check_bible_note_style.py found 4 problems on first pass (three over-length body lines, one over-length bullet), fixed, second run clean. Parser check passed exactly (9/9 sections, 36 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call all pre-existing) so no wiring changes were needed. data/bible-notes-style-redo-remaining.json Genesis 46 entry removed from the front of the list as part of this commit; next redo target is Genesis 47.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-01T06:46:52Z"
+        },
+        {
+          "name": "target chapter determined: Genesis 46 (style redo, first in remaining array)",
+          "at": "2026-08-01T06:46:52Z"
+        },
+        {
+          "name": "KJV text fetched for Genesis 46 (34 verses, GitHub raw mirror)",
+          "at": "2026-08-01T06:47:30Z"
+        },
+        {
+          "name": "style spec and reference implementation read",
+          "at": "2026-08-01T06:47:30Z"
+        },
+        {
+          "name": "source file written (36 cards, 9 sections)",
+          "at": "2026-08-01T06:51:10Z"
+        },
+        {
+          "name": "style checker clean (fixed 4 problems on first pass)",
+          "at": "2026-08-01T06:52:05Z"
+        },
+        {
+          "name": "wiring confirmed (already correct for redo chapter, no changes needed)",
+          "at": "2026-08-01T06:52:30Z"
+        },
+        {
+          "name": "parser check passed (9 sections, 36 cards, verbatim render)",
+          "at": "2026-08-01T06:52:50Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-01T06:53:10Z"
+        }
+      ]
     }
   ]
 }

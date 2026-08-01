@@ -81,295 +81,705 @@ function parseGenesisFortySixRawNotes(rawText: string): GenesisFortySixPersonalS
     });
   }
 
-  if (sections.length !== 8) {
-    throw new Error("Expected 8 Genesis 46 sections, received " + sections.length);
+  if (sections.length !== 9) {
+    throw new Error("Expected 9 Genesis 46 sections, received " + sections.length);
   }
 
   return sections;
 }
 
 const GENESIS_FORTY_SIX_RAW_NOTES = `# Genesis 46:1-4
+# 🐂 Sacrifice At Beersheba
+---
+## 🙏 Offered Sacrifices Unto The God Of His Father Isaac
 
-# 🙏 God Speaks To Jacob At Beersheba
+Beersheba sat at the southern edge of Canaan, the last stop before leaving the promised land.
+
+Isaac had lived there and built an altar of his own back in Genesis twenty six.
+
+Jacob stops to worship at the same place his father once worshiped.
+
+This sacrifice marks the last act of worship before Egypt begins.
+
+🗺️ Beersheba marks Canaan's southern edge
+
+🙏 Isaac had worshiped there before him
+
+📍 Jacob honors his father's ground
+
+📖 One last act of worship before Egypt
 
 ---
 
-## 🛐 Came To Beer-sheba, And Offered Sacrifices Unto The God Of His Father Isaac
+## 📛 Jacob, Jacob
 
-Beer-sheba was a significant place in the family's history, where both Abraham and Isaac had worshiped God before. Jacob stops here deliberately before leaving the promised land, to seek God's blessing on this huge, uncertain move.
+God calls Jacob by name twice in a row.
 
-🛐 Beer-sheba was a place already tied to Abraham and Isaac's worship of God
+That kind of double call marks an important moment in scripture.
 
-🚶 Jacob pauses for God's guidance before making this life-changing move
+Abraham and Moses both hear their names spoken the same way at key turning points.
 
----
+The repetition itself is a signal before God even says what comes next.
 
-## 🌙 God Spake Unto Israel In The Visions Of The Night
+📛 A name spoken twice marks importance
 
-God speaks to Jacob (called Israel here) in a night vision, calling his name twice: "Jacob, Jacob." Repeating someone's name like this in Scripture usually signals an especially important, personal moment.
+🔁 Abraham and Moses heard this too
 
-🌙 A repeated name in Scripture usually marks a significant, personal moment
+⏳ The signal comes before the message
 
-🗣️ Jacob answers immediately: "Here am I"
-
----
-
-## 🌍 Fear Not To Go Down Into Egypt; For I Will There Make Of Thee A Great Nation
-
-God directly addresses Jacob's likely fear about leaving the promised land. Egypt isn't a detour from God's promise to Abraham, it's actually where that promise will grow into a great nation, through the very famine that's forcing this move.
-
-🌍 God reassures Jacob that leaving Canaan doesn't mean leaving the promise behind
-
-📈 Egypt becomes the place the covenant family grows into a nation, not where the promise stalls
+📖 God gets full attention before He speaks
 
 ---
 
-## ✋ Joseph Shall Put His Hand Upon Thine Eyes
+## 🗣️ Here Am I
 
-This phrase describes closing a dying person's eyes after death, a tender final act performed by someone close to the deceased. God promises Jacob that Joseph, the son Jacob believed was dead for over twenty years, will be the one present at Jacob's own death.
+Jacob answers without hesitation.
 
-✋ This idiom describes closing a loved one's eyes after death
+Here am I means full attention and full willingness to listen.
 
-💛 God promises Jacob the very son he grieved will be with him at the end
+He does not ask what God wants before agreeing to listen first.
+
+This short answer matches the same words Abraham once gave in Genesis twenty two.
+
+🗣️ Here am I means ready attention
+
+✅ Jacob answers before asking why
+
+🔁 Abraham used this same phrase
+
+📖 Willingness comes before understanding
+
+---
+
+## 😨 Fear Not To Go Down Into Egypt
+
+Jacob had good reason to be afraid of this move.
+
+Egypt was a foreign land full of foreign gods, far from the land God had promised his family.
+
+God speaks directly into that fear before Jacob even asks a question.
+
+The command not to fear comes with a promise attached to it.
+
+😨 Jacob had real reason for fear
+
+🌍 Egypt worshiped different gods entirely
+
+🛡️ God speaks before Jacob can ask
+
+📖 The command comes with a promise attached
+
+---
+
+## 🌱 I Will There Make Of Thee A Great Nation
+
+This promise reaches back to God's covenant with Abraham.
+
+Jacob's family enters Egypt as a small clan of about seventy people.
+
+God says plainly that Egypt is where that clan will grow into a nation.
+
+The place Jacob fears becomes the place God chooses for growth.
+
+📜 Echoes God's covenant with Abraham
+
+👪 The family enters as a small clan
+
+🌱 Egypt becomes the place of growth
+
+📖 Fear and promise sit side by side
+
+---
+
+## ⬆️ I Will Also Surely Bring Thee Up Again
+
+This promise wraps around the whole story still to come.
+
+God says He will go down into Egypt with Jacob, and also bring him back up again.
+
+Jacob dies in Egypt, but his body later gets carried back to Canaan for burial.
+
+The promise covers far more than just this one trip.
+
+⬇️ God goes down into Egypt too
+
+⬆️ God promises to bring him back up
+
+⚰️ Jacob is later buried back in Canaan
+
+📖 One promise covers his whole future
+
+---
+
+## 👋 Joseph Shall Put His Hand Upon Thine Eyes
+
+This phrase means Joseph will be present at Jacob's death, closing his eyes as a final act of honor.
+
+In this culture, the nearest loved one performed that gesture for the dying.
+
+Jacob had believed for years that Joseph was dead.
+
+God promises the opposite ending, Joseph present and caring for him at the very end.
+
+👋 Closing the eyes was a final honor
+
+❤️ The nearest loved one performed it
+
+😭 Jacob once believed Joseph was dead
+
+📖 God promises the opposite ending
 
 # Genesis 46:5-7
+# 🛤️ The Whole Household Moves
+---
+## 🐴 Carried Jacob Their Father In The Wagons Which Pharaoh Had Sent
 
-# 🐫 The Journey Begins
+Jacob was old and could not make this journey on foot.
+
+Pharaoh had already sent wagons all the way from Egypt for this exact purpose, back in chapter forty five.
+
+Riding in a wagon instead of walking was also a mark of honor for someone this important.
+
+Every generation of the family moves together in this one caravan.
+
+👴 Jacob was too old to walk the distance
+
+🎁 Pharaoh had already sent the wagons
+
+👑 Riding marked Jacob as honored
+
+📖 The whole family travels as one group
 
 ---
 
-## 🚚 Carried Jacob Their Father ... In The Wagons Which Pharaoh Had Sent
+## 🐑 Which They Had Gotten In The Land Of Canaan
 
-The sons transport Jacob, the children, and the wives in the actual wagons Pharaoh provided back in chapter 45. This detail confirms Pharaoh's promise was already being kept before the family even reached Egypt.
+This detail proves the family left nothing behind.
 
-🚚 The wagons are the very ones Pharaoh sent, already put to good use
+Every animal and every possession earned honestly in Canaan travels with them into Egypt.
+
+They are not arriving as refugees with empty hands.
+
+They arrive as a household bringing its own wealth into a new land.
+
+🐑 Nothing was left behind in Canaan
+
+💰 Their wealth traveled with them
+
+🚫 They did not arrive empty handed
+
+📖 A household, not a band of refugees
 
 ---
 
-## 🐑 They Took Their Cattle, And Their Goods
+## 👨‍👩‍👧‍👦 His Sons, And His Sons' Sons With Him, His Daughters, And His Sons' Daughters
 
-The family doesn't leave Canaan with nothing. They bring their full flocks, herds, and possessions, everything they'd built over years in the land, into this new chapter of their story.
+This verse counts far more than the twelve named sons of Jacob.
 
-🐑 The family brings its full livestock and possessions to Egypt, not just people
+Grandsons, granddaughters, and other daughters all traveled together as one extended family.
 
----
+The text takes time to name every layer of the family tree.
 
-## 👨‍👩‍👧‍👦 His Sons' Sons ... His Daughters, And His Sons' Daughters, And All His Seed
+That level of detail sets up the exact headcount coming later in the chapter.
 
-Seed here means offspring or descendants. This move to Egypt isn't just Jacob and his twelve sons, it's the entire extended family, multiple generations, moving together into a new land.
+👨‍👩‍👧‍👦 More than twelve sons made this trip
 
-👨‍👩‍👧‍👦 Seed means descendants
+🌳 Grandchildren traveled with the family
 
-🏡 This is a full, multi-generational family relocation, not a small group
+📋 Every layer of the family gets named
+
+📖 This sets up the headcount ahead
 
 # Genesis 46:8-15
-
 # 📜 The Sons Of Leah
+---
+## 📜 These Are The Names Of The Children Of Israel, Which Came Into Egypt
+
+This genealogy is not filler placed between two more exciting scenes.
+
+The names form an official record of exactly who entered Egypt as one family.
+
+Centuries later, these same family names become the twelve tribes of Israel.
+
+Every name here is the start of an entire nation's story.
+
+📜 This is an official family record
+
+👪 These names become the twelve tribes
+
+🌱 A nation starts with this list
+
+📖 Every name here matters later
 
 ---
 
-## 📜 These Are The Names Of The Children Of Israel
+## 👩 Shaul The Son Of A Canaanitish Woman
 
-The rest of this chapter lists every member of Jacob's family by name, tribe by tribe. In Scripture, a genealogy like this isn't filler, it's a record proving exactly who belongs to God's covenant family as it enters Egypt, name by name.
+Simeon's sons are listed like the others, except for one detail added about Shaul.
 
-📜 A genealogy in Scripture functions as an official family record, not filler
+His mother was Canaanite, not part of Jacob's own family line.
 
-🔢 Every name here documents someone specifically counted as part of God's covenant people
+The text does not hide or smooth over that detail.
+
+Jacob's family already included some mixing with the surrounding nations, even at this early point.
+
+👩 Shaul's mother was Canaanite
+
+📝 The text names this openly
+
+🌍 The family already included outsiders
+
+📖 Nothing here gets hidden or smoothed over
 
 ---
 
-## 👶 Reuben, Jacob's Firstborn
+## ⚰️ But Er And Onan Died In The Land Of Canaan
 
-Reuben is named first because he's the oldest son, a position of honor in this culture even though Reuben had lost some of his father's trust earlier in Genesis. His descendants are listed by name, continuing his line despite his past mistakes.
+Er and Onan were two of Judah's sons.
 
-👶 Being firstborn was a position of honor even after Reuben's earlier failures
+Both had already died before this journey, back in Genesis thirty eight.
 
----
+The text still lists their names here, even though neither one reached Egypt.
 
-## 💔 Er And Onan Died In The Land Of Canaan
+Remembering the dead alongside the living was part of how a family genealogy worked in this culture.
 
-This is a direct callback to Genesis 38, the story of Judah, Tamar, and his sons Er and Onan, both of whom God struck down for their wickedness. Even inside a genealogy meant to celebrate the growing family, Scripture doesn't hide the family's real, painful history.
+⚰️ Er and Onan died young
 
-💔 This references the deaths of Er and Onan back in Genesis 38
+📖 Judah's sons from that earlier chapter
 
-📖 Scripture includes real family failures even inside a hopeful genealogy
+🕯️ Even the dead get remembered here
+
+➡️ A family record includes its losses
 
 ---
 
 ## 👧 With His Daughter Dinah
 
-Dinah, Jacob's daughter whose story is told in Genesis 34, is specifically named here among Leah's children, even though genealogies in this culture usually list only sons. Her inclusion shows she remained a counted, valued part of the family despite everything she went through.
+Dinah is the only daughter named by name in this branch of the family.
 
-👧 Naming a daughter here was unusual and shows she was still counted as family
+Her story filled all of Genesis thirty four, the account of her mistreatment in Shechem.
+
+Naming her here shows she was never forgotten or erased from the family record.
+
+👧 Dinah is named in this branch
+
+📖 Genesis thirty four told her story
+
+❤️ She is remembered, not erased
+
+➡️ One name can carry a whole story
 
 ---
 
-## 🔢 All The Souls ... Were Thirty And Three
+## 🔢 All The Souls Of His Sons And His Daughters Were Thirty And Three
 
-Souls here simply means people, individual persons. Leah's branch of the family alone, her sons, grandsons, and Dinah, comes to thirty-three people, giving a real sense of how large this family has already grown.
+This total counts everyone born to Jacob through Leah, plus her grandchildren.
 
-🔢 Souls means individual people, not a spiritual term here
+Thirty and three simply means thirty three in the plain counting used today.
 
-📊 Leah's line alone already totals thirty-three family members
+The number closes out Leah's branch of the family before the next branch begins.
+
+🔢 Thirty and three means thirty three
+
+👪 Leah's whole branch gets counted
+
+📊 The total closes out her section
+
+📖 Each wife's family gets its own count
 
 # Genesis 46:16-18
+# 👨‍👩‍👧 The Sons Of Zilpah
+---
+## 👧 Serah Their Sister
 
-# 📜 The Sons Of Zilpah
+Serah is the second daughter named in this whole genealogy, alongside Dinah.
+
+She belongs to the line of Asher, one of Zilpah's sons.
+
+Naming her here shows daughters were not always left out of these official family records.
+
+👧 Serah is the second daughter named
+
+👨‍👩‍👧 She belongs to Asher's family line
+
+📜 Daughters were not always left out
+
+📖 A second name worth remembering here
 
 ---
 
-## 🤝 Whom Laban Gave To Leah His Daughter
+## 👰 Whom Laban Gave To Leah His Daughter
 
-Zilpah was the handmaid Laban gave to Leah at her wedding, who later became a secondary wife to Jacob and bore him sons, Gad and Asher, whose family lines are listed here. This reflects the culture's practice of a wife's handmaid bearing children on her behalf.
+Zilpah was the servant Laban gave to Leah on her wedding day, back in Genesis twenty nine.
 
-🤝 Zilpah was Leah's handmaid, given to her by her father Laban
+Her sons through Jacob still count as full family, even though she began as a servant.
 
-👨‍👩‍👦 Handmaids bearing children for their mistress was a recognized custom of this culture
+This detail explains why Zilpah's children get their own separate count in this list.
+
+👰 Zilpah was Leah's wedding servant
+
+📖 Genesis twenty nine explains her origin
+
+👪 Her sons still count as full family
+
+➡️ Status at birth did not erase their place
 
 ---
 
 ## 🔢 Even Sixteen Souls
 
-Zilpah's branch of the family totals sixteen people. Between Leah's own children and Zilpah's, nearly half of Jacob's whole household descends from these two women alone.
+This total covers every child and grandchild counted through Zilpah.
 
-🔢 Zilpah's line contributes sixteen more family members to the total count
+Sixteen is smaller than Leah's own total of thirty three, since Zilpah had fewer sons overall.
+
+The chapter keeps every branch of the family separately numbered on purpose.
+
+🔢 Sixteen souls through Zilpah's line
+
+📊 Smaller than Leah's own total
+
+🌳 Every branch gets its own number
+
+📖 Careful counting marks the whole chapter
 
 # Genesis 46:19-22
+# 👑 The Sons Of Rachel
+---
+## ❤️ The Sons Of Rachel Jacob's Wife, Joseph, And Benjamin
 
-# 📜 The Sons Of Rachel
+Rachel was the wife Jacob loved most, and this line calls her out by name instead of just listing sons.
+
+Joseph and Benjamin were her only two children.
+
+Joseph had already risen to power in Egypt years before this list was written.
+
+Benjamin was the youngest of all Jacob's sons.
+
+❤️ Rachel is named as the favored wife
+
+👦 Joseph and Benjamin were her only sons
+
+👑 Joseph already ruled in Egypt by now
+
+📖 Benjamin was the family's youngest son
 
 ---
 
-## 💛 The Sons Of Rachel Jacob's Wife; Joseph, And Benjamin
+## 👶 Were Born Manasseh And Ephraim
 
-Rachel is specifically called "Jacob's wife" here, a small detail that quietly confirms she held Jacob's deepest love among all his wives. She had only two sons of her own, Joseph and Benjamin, the two brothers whose story has driven most of this book.
+Manasseh and Ephraim were born to Joseph in Egypt before his family ever arrived.
 
-💛 Calling Rachel "Jacob's wife" by name reflects how central she was to Jacob's heart
+These two grandsons later become full tribes of Israel in their own right.
 
-👦 Joseph and Benjamin were Rachel's only two biological sons
+No other grandson of Jacob ever receives that same honor.
+
+👶 Manasseh and Ephraim were born in Egypt
+
+🌟 Both later became full tribes
+
+🎖️ No other grandson received that honor
+
+📖 An unusual place in the family line
 
 ---
 
-## 👶 Unto Joseph ... Were Born Manasseh And Ephraim
+## 🏙️ Asenath The Daughter Of Potipherah Priest Of On
 
-Joseph's two Egyptian-born sons, introduced back in chapter 41, are formally counted here as part of Jacob's family line, even though they were born and raised entirely in Egypt to an Egyptian mother.
+On was a major Egyptian city, later known by the Greek name Heliopolis, meaning city of the sun.
 
-👶 Manasseh and Ephraim are counted as full members of Jacob's covenant family
+It served as a center of Egyptian sun worship.
+
+Joseph married the daughter of one of that city's own priests.
+
+That marriage placed Joseph firmly inside Egypt's highest religious and social circles.
+
+🏙️ On was an Egyptian city of sun worship
+
+⛩️ Later called Heliopolis by the Greeks
+
+👨‍👩‍👧 Joseph married a priest's daughter there
+
+📖 The marriage placed him among Egypt's elite
 
 ---
 
 ## 🔢 All The Souls Were Fourteen
 
-Rachel's branch, including Joseph's two sons, totals fourteen people, the smallest of the four family branches, fitting since Rachel had the fewest years with Jacob before her death.
+This count includes Joseph, Benjamin, and all of their children together.
 
-🔢 Rachel's line, the smallest branch, still totals fourteen family members
+Fourteen is the total for Rachel's entire branch, the smallest of the four branches listed in this chapter.
 
-# Genesis 46:23-27
+A small number does not mean a small legacy, since Joseph alone changes the future of the whole family.
 
-# 🔢 The Sons Of Bilhah And The Family Total
+🔢 Fourteen souls make up Rachel's branch
+
+📊 The smallest branch in this whole count
+
+👑 Joseph alone reshapes the family's future
+
+📖 Small numbers do not mean small impact
+
+# Genesis 46:23-25
+# 🕊️ The Sons Of Bilhah
+---
+## 👦 The Sons Of Dan, Hushim
+
+Only one son is listed for Dan here, named Hushim.
+
+Other Old Testament lists give Dan's descendants different names, showing how genealogies could be recorded slightly differently across books.
+
+The single name here still secures Dan's place among the twelve tribes.
+
+👦 Only one son listed for Dan
+
+📚 Other lists record him differently
+
+✅ Dan still holds a place among the tribes
+
+📖 Small entries still count in the record
 
 ---
 
-## 🤝 The Sons Of Bilhah, Which Laban Gave Unto Rachel His Daughter
+## 👰 Which Laban Gave Unto Rachel His Daughter
 
-Bilhah was Rachel's handmaid, given to her the same way Zilpah was given to Leah, and became Jacob's fourth wife, bearing Dan and Naphtali. All four women, Leah, Zilpah, Rachel, and Bilhah, are represented in this family record.
+Bilhah was the servant Laban gave to Rachel on her wedding day, the same way Zilpah went to Leah.
 
-🤝 Bilhah was Rachel's handmaid, mirroring Zilpah's role for Leah
+Rachel struggled for years to have children of her own.
 
-👨‍👩‍👧‍👦 All four of Jacob's wives are represented in this genealogy
+She offered Bilhah to Jacob to build the family through her instead.
+
+Dan and Naphtali both come from that arrangement.
+
+👰 Bilhah was Rachel's wedding servant
+
+😔 Rachel struggled to have children herself
+
+👶 Dan and Naphtali came through Bilhah
+
+📖 Family could grow through more than one path
 
 ---
 
-## 🔢 All The Souls Were Threescore And Six
+## 🔢 All The Souls Were Seven
 
-Threescore means sixty. Sixty-six is the total count of Jacob's direct descendants who physically traveled with him into Egypt, not counting his sons' wives.
+This total closes out the fourth and final branch of Jacob's family.
 
-🔢 Threescore means sixty, so sixty-six people traveled with Jacob himself
+Seven is the smallest number of any branch listed in the whole chapter.
+
+Four branches, four wives, four separate counts, all feeding into one family.
+
+🔢 Seven souls close Bilhah's branch
+
+📊 The smallest total in the chapter
+
+👪 Four branches make one family
+
+📖 Every branch still belongs to the whole
+
+# Genesis 46:26-27
+# 🔢 Counting The Whole Household
+---
+## ➕ Besides Jacob's Sons' Wives, All The Souls Were Threescore And Six
+
+Threescore means sixty, an old way of counting in groups of twenty called a score.
+
+Threescore and six means sixty six people total.
+
+That number leaves out the wives Jacob's sons married along the way, since they were not his own bloodline.
+
+🔢 Threescore means sixty
+
+➕ Threescore and six means sixty six
+
+🚫 Wives married in are not counted here
+
+📖 Only Jacob's direct bloodline gets this number
 
 ---
 
-## 🔟 All The Souls Of The House Of Jacob ... Were Threescore And Ten
+## 🌍 All The Souls Of The House Of Jacob, Which Came Into Egypt, Were Threescore And Ten
 
-Adding Joseph and his two Egyptian-born sons already in Egypt brings the grand total to seventy. Seventy is a number that shows up again and again in Scripture to represent completeness, and it becomes the well-known starting size of the nation that eventually leaves Egypt in the book of Exodus.
+Seventy is the final, complete number of Jacob's household entering Egypt.
 
-🔟 The full household total comes to seventy people
+This number includes Jacob himself, plus Joseph and his two sons already living there.
 
-📖 Seventy is a number Scripture often uses to represent completeness
+Many scholars connect this number to the seventy nations named in Genesis ten.
 
-📈 This same number seventy becomes the starting point for the story told in Exodus
+The same number later marks the seventy elders named in the book of Numbers.
+
+🔢 Threescore and ten means seventy
+
+👴 Jacob himself is counted in this number
+
+🌍 Many scholars link it to Genesis ten
+
+📖 A small family about to become a nation
 
 # Genesis 46:28-30
+# 🐴 Joseph Meets His Father
+---
+## 🏃 He Sent Judah Before Him Unto Joseph, To Direct His Face Unto Goshen
 
-# 🤗 Jacob And Joseph Reunite
+Judah travels ahead of the whole caravan as a messenger and guide.
+
+This is the same Judah who once offered himself in place of Benjamin back in chapter forty four.
+
+He is trusted now to lead his father safely to the exact meeting place.
+
+🏃 Judah travels ahead as a guide
+
+📖 The same Judah from chapter forty four
+
+🤝 He is trusted to lead his father
+
+➡️ A changed man given a new task
 
 ---
 
-## 🧭 He Sent Judah Before Him Unto Joseph, To Direct His Face Unto Goshen
+## 🐴 Joseph Made Ready His Chariot, And Went Up To Meet Israel His Father
 
-Jacob sends Judah ahead as a guide to make sure the family finds their way straight to Goshen. It's worth noticing that Judah, once the brother who suggested selling Joseph for profit, is now the one trusted to lead the family safely to him.
+Joseph does not wait for his father to arrive at the palace.
 
-🧭 Judah is sent ahead to guide the family directly to Goshen
+He personally travels out to Goshen instead, in his own chariot, ahead of everyone else in his household.
 
-🔄 The same brother who once proposed selling Joseph now leads the family to him
+A ruler of Egypt's stature could have simply sent servants to fetch his father.
 
----
+🐴 Joseph rides out in his own chariot
 
-## 🐎 Joseph Made Ready His Chariot ... Fell On His Neck, And Wept On His Neck A Good While
+🏃 He goes to his father, not the reverse
 
-Joseph doesn't wait for his father to arrive somewhere formal. He personally rides out to meet Jacob and embraces him for a long, unhurried time, "a good while," showing this reunion isn't rushed or restrained in any way.
+👑 A ruler chooses personal effort here
 
-🐎 Joseph personally travels to meet his father rather than waiting for him
-
-😭 "A good while" shows this embrace was long and unrestrained, not brief
+📖 Power did not replace love
 
 ---
 
-## 💬 Now Let Me Die, Since I Have Seen Thy Face
+## 🤗 He Fell On His Neck, And Wept On His Neck A Good While
 
-Jacob's words aren't a literal wish to die immediately. It's an old expression meaning his life now feels complete, since he's seen with his own eyes that Joseph is truly alive, after over twenty years of grieving him as dead.
+This is a full embrace, not a formal greeting between a powerful official and an old man.
 
-💬 This is an expression of complete contentment, not a literal death wish
+Joseph weeps for a long stretch of time, not just a brief tear.
 
-⏳ Over twenty years of grief are resolved in this one reunion
+About twenty two years of separation, since chapter thirty seven, come pouring out in this one moment.
+
+🤗 Falling on the neck means a full embrace
+
+😭 Joseph weeps for a long while
+
+📆 About twenty two years of separation end here
+
+📖 Grief and joy arrive together
+
+---
+
+## 😌 Now Let Me Die, Since I Have Seen Thy Face
+
+Jacob is not asking to die right away.
+
+He means his life now feels complete, since he believed for years that Joseph was dead.
+
+Seeing Joseph's face alive again gives Jacob a peace nothing else could have given him.
+
+😌 Jacob feels his life is now complete
+
+😭 He once believed Joseph was gone
+
+👀 Seeing his face brings real peace
+
+📖 A father's long grief finally ends
 
 # Genesis 46:31-34
+# 🐑 Every Shepherd Is An Abomination
+---
+## 📋 I Will Go Up, And Shew Pharaoh
 
-# 🐑 Joseph Prepares His Family To Meet Pharaoh
+Joseph plans this conversation with Pharaoh carefully before it happens.
+
+He wants to control exactly how his family gets introduced to the most powerful man in Egypt.
+
+Nothing about this reunion is left to chance.
+
+📋 Joseph plans the introduction carefully
+
+👑 Pharaoh is the most powerful man in Egypt
+
+🎯 Nothing is left to chance here
+
+📖 Careful planning protects the whole family
 
 ---
 
-## 📢 I Will Go Up, And Shew Pharaoh ... My Brethren ... Are Come Unto Me
+## ❓ What Is Your Occupation
 
-Shew is an old spelling of "show." Joseph plans to formally present his family to Pharaoh himself, taking personal responsibility for introducing them into Egyptian society rather than leaving them to explain themselves.
+Joseph predicts exactly what Pharaoh will ask before it happens.
 
-📢 Shew means show
+He is not guessing, he already knows how Pharaoh's court operates from his own years there.
 
-🛡️ Joseph personally takes responsibility for introducing his family to Pharaoh
+Preparing his brothers for this exact question protects them from stumbling into a risky answer.
+
+❓ Joseph predicts Pharaoh's exact question
+
+🎓 He knows the court from experience
+
+🛡️ Preparation protects his brothers here
+
+📖 Joseph still watches over his family
 
 ---
 
-## 🐑 The Men Are Shepherds ... They Have Brought Their Flocks
+## 🐑 Thy Servants' Trade Hath Been About Cattle From Our Youth Even Until Now
 
-Joseph coaches his family in advance on exactly how to describe their occupation to Pharaoh: shepherds, a trade the family has practiced across generations.
+Joseph coaches his brothers on exactly what to say if Pharaoh questions them.
 
-🐑 Joseph prepares his family's exact answer in advance
+He wants them to be completely honest about being shepherds, not hide it.
+
+Their honesty is actually part of the plan, not a risk to it.
+
+🗣️ Joseph coaches his brothers on their answer
+
+🐑 They should admit being shepherds plainly
+
+✅ Honesty is part of the plan
+
+📖 Truth can serve a bigger purpose
 
 ---
 
-## ❓ What Is Your Occupation?
+## 🌾 That Ye May Dwell In The Land Of Goshen
 
-Joseph anticipates Pharaoh's likely question and makes sure his family is ready with a clear, honest answer instead of being caught off guard in front of the most powerful man in Egypt.
+Goshen was a fertile region in northeastern Egypt, well suited for raising flocks.
 
-❓ Joseph prepares the family for a specific question before it's even asked
+Joseph wants his family settled there specifically, apart from the rest of Egyptian society.
+
+Being honest about their trade was the very thing that would secure them this exact land.
+
+🌾 Goshen was fertile land for flocks
+
+🗺️ Joseph wants them settled there specifically
+
+🏡 Separate land kept the family together
+
+📖 Honesty secured the exact place they needed
 
 ---
 
 ## 🚫 Every Shepherd Is An Abomination Unto The Egyptians
 
-Egyptian culture looked down on shepherding as a lowly, unclean occupation. Joseph's plan is strategic: by openly stating they're shepherds, the family will naturally be kept separate in Goshen rather than absorbed into the general Egyptian population, letting them preserve their own identity, customs, and worship of God.
+Abomination is a strong word meaning something viewed as deeply offensive.
 
-🚫 Egyptians viewed shepherding as a low, unclean occupation
+Egyptians associated shepherds with wandering foreigners and viewed the trade as beneath their own culture.
 
-🧠 Joseph turns this cultural prejudice into a strategy for keeping his family together in Goshen`;
+This built in prejudice actually works in the family's favor here.
+
+It keeps Jacob's household living apart in Goshen, away from Egyptian idolatry.
+
+🚫 Abomination means deeply offensive to them
+
+🐑 Egyptians looked down on shepherds
+
+🏡 That prejudice kept the family separate
+
+📖 Separation protected their identity for generations
+`.trim();
 
 export const GENESIS_FORTY_SIX_PERSONAL_SECTIONS = parseGenesisFortySixRawNotes(GENESIS_FORTY_SIX_RAW_NOTES);
