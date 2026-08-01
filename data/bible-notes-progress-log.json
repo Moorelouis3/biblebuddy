@@ -5,6 +5,29 @@
   "entries": [
     {
       "book": "Exodus",
+      "chapter": 7,
+      "startedAt": "2026-08-01T17:46:02Z",
+      "finishedAt": "2026-08-01T17:53:11Z",
+      "durationMinutes": 7,
+      "sections": 6,
+      "cards": 35,
+      "verses": 25,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (6 sections / 15 cards) from scratch to match docs/bible-study-note-style.md. Exodus 7 covers God restating the plan and naming Moses 'a god to Pharaoh' with Aaron as his prophet, Moses and Aaron's ages (eighty and eighty three) when the confrontation truly begins, the rod-to-serpent sign performed formally before Pharaoh and matched by Egypt's magicians until Aaron's rod swallows theirs, God announcing and then striking the first plague (the Nile turned to blood) at Pharaoh's morning ritual by the river, the plague spreading to every stream, pond, pool, and even stored water in wood and stone vessels in the sight of Pharaoh's whole court, and Pharaoh's magicians managing a smaller imitation that gives him an excuse to walk away unmoved while ordinary Egyptians dig for water over the following seven days. Kept the same 6 section boundaries as the prior version (7:1-5, 7:6-7, 7:8-13, 7:14-18, 7:19-21, 7:22-25) and increased card density from 15 to 35 cards over 25 verses (1.4 cards/verse). Word/custom definitions covered inline: prophet, hardened, signs and wonders, armies (Israel as God's), judgments, fourscore, miracle, enchantments, wise men, sorcerers, hearkened, refuseth, brink, against, Hebrews, serve (worship vs relocation), lothe, and smitten, plus historical background on Pharaoh's likely Nile worship ritual (the god Hapi). scripts/check_bible_note_style.py found two bullets over the 8 word limit on the first pass, fixed, second run clean (35 cards, no problems). A manual section 13 eye check, a hyphen/em dash/semicolon/contraction scan, and a duplicate title/opening line scan all passed. Parser check passed exactly (6/6 sections, 35 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (ExodusSevenPersonalSection, parseExodusSevenRawNotes, EXODUS_SEVEN_RAW_NOTES, EXODUS_SEVEN_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Exodus 7 entry removed from the front of the list as part of this commit; next redo target is Exodus 8.",
+      "steps": [
+        { "name": "npm install done", "at": "2026-08-01T17:46:39Z" },
+        { "name": "target chapter determined: Exodus 7 (style redo, first in remaining backlog)", "at": "2026-08-01T17:46:39Z" },
+        { "name": "KJV text fetched from raw.githubusercontent.com Exodus.json", "at": "2026-08-01T17:47:14Z" },
+        { "name": "style spec (docs/bible-study-note-style.md) and reference implementation read", "at": "2026-08-01T17:49:53Z" },
+        { "name": "source file written (lib/exodusSevenSource.ts, 6 sections, 35 cards)", "at": "2026-08-01T17:50:40Z" },
+        { "name": "style checker clean (after fixing 2 bullet word count issues)", "at": "2026-08-01T17:50:58Z" },
+        { "name": "wiring confirmed correct for redo (no changes needed)", "at": "2026-08-01T17:51:09Z" },
+        { "name": "parser check passed (6 sections, 35 cards, verbatim)", "at": "2026-08-01T17:51:34Z" },
+        { "name": "tsc --noEmit clean", "at": "2026-08-01T17:51:34Z" },
+        { "name": "progress files logged", "at": "2026-08-01T17:53:11Z" }
+      ]
+    },
+    {
+      "book": "Exodus",
       "chapter": 6,
       "startedAt": "2026-08-01T16:46:23Z",
       "finishedAt": "2026-08-01T16:59:44Z",

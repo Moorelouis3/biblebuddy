@@ -434,3 +434,7 @@ Next up: Exodus 6
 ## 2026-08-01T16:59:44Z (hourly chapter notes run)
 Chapter: Exodus 6 | Duration: 13 min | Sections: 8 | Cards: 37 | Status: pass
 Next up: Exodus 7
+
+## 2026-08-01T17:53:11Z (hourly chapter notes run)
+Chapter: Exodus 7 | Duration: 7 min | Sections: 6 | Cards: 35 | Status: pass
+Next up: Exodus 8
