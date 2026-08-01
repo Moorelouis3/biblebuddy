@@ -4714,6 +4714,55 @@
           "at": "2026-08-01T04:55:26Z"
         }
       ]
+    },
+    {
+      "book": "Genesis",
+      "chapter": 45,
+      "startedAt": "2026-08-01T05:46:27Z",
+      "finishedAt": "2026-08-01T06:01:00Z",
+      "durationMinutes": 15,
+      "sections": 7,
+      "cards": 51,
+      "verses": 28,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Fourteenth redo-backlog chapter (data/bible-notes-style-redo-remaining.json), regenerated from scratch to match docs/bible-study-note-style.md, replacing the original pre-spec version (31 cards / 7 sections). Joseph reveals his identity to his brothers: he clears the room and weeps aloud before saying \"I am Joseph,\" his first question is whether Jacob is still alive, the brothers stand troubled and silent, Joseph names the wrong directly (\"whom ye sold into Egypt\") before releasing them from guilt and reframing the whole story as God sending him ahead to preserve life and posterity, his urgent instructions to bring Jacob down to Goshen with the whole extended family, the reunion embrace with Benjamin first then all the brothers, Pharaoh's own generous response (wagons, the fat of the land, a direct royal order), Joseph's gifts for the journey including Benjamin's five-fold portion met with no jealousy this time (an intentional echo of the coat of many colours that once tore the family apart), Joseph's parting warning not to fall out by the way, and Jacob's disbelief giving way to revived spirit once he actually sees the wagons. Word definitions covered inline: refrain, earing, posterity, tarry, lade/laden, raiment, and fainted. Kept the original file's 7 section boundaries for verse-coverage continuity while rewriting every card to the four-move opening, blank-line-per-line, exactly-four-bullet format, including a genuine split of the old file's bundled \"I Am Joseph; Doth My Father Yet Live\" card into two separate cards per the skill's explicit guidance on that exact chapter. Density 1.82 cards/verse (28 verses, 51 cards), close to the ~2x target. scripts/check_bible_note_style.py found 1 problem on first pass (one 9-word bullet), fixed, second run clean. Parser check passed exactly (7/7 sections, 51 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call all pre-existing) so no wiring changes were needed. data/bible-notes-style-redo-remaining.json's Genesis 45 entry removed from the front of the list as part of this commit; next redo target is Genesis 46.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-01T05:47:28Z"
+        },
+        {
+          "name": "target chapter determined: Genesis 45 (style redo)",
+          "at": "2026-08-01T05:47:28Z"
+        },
+        {
+          "name": "KJV text fetched for Genesis 45 (28 verses, GitHub raw mirror)",
+          "at": "2026-08-01T05:54:59Z"
+        },
+        {
+          "name": "style spec and reference implementation read",
+          "at": "2026-08-01T05:54:59Z"
+        },
+        {
+          "name": "source file written (51 cards, 7 sections)",
+          "at": "2026-08-01T05:56:34Z"
+        },
+        {
+          "name": "style checker clean",
+          "at": "2026-08-01T05:56:34Z"
+        },
+        {
+          "name": "wiring confirmed (already correct for redo chapter, no changes needed)",
+          "at": "2026-08-01T05:59:19Z"
+        },
+        {
+          "name": "parser check passed (7 sections, 51 cards, verbatim render)",
+          "at": "2026-08-01T05:59:19Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-01T05:59:19Z"
+        }
+      ]
     }
   ]
 }
