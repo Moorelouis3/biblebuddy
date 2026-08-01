@@ -89,383 +89,630 @@ function parseGenesisFortyThreeRawNotes(rawText: string): GenesisFortyThreePerso
 }
 
 const GENESIS_FORTY_THREE_RAW_NOTES = `# Genesis 43:1-7
-
 # 😟 Judah Confronts Jacob About The Demand
-
 ---
-
 ## 😟 The Famine Was Sore In The Land
 
-Sore here means severe, not painful in the modern sense.
+"Sore" here does not mean painful the way it usually means today.
 
-The grain from the first trip is gone.
+It means severe, describing how bad the shortage had become.
 
-The family is right back where they started, except now there's a condition attached to going back: Benjamin has to come too.
+The grain the brothers carried home last time is already gone.
 
-😟 Sore means severe
+The family stands right back where it stood before the first trip to Egypt.
 
-🌾 The first trip's grain has already run out
+Only now Joseph has attached one hard condition to any more food.
 
-⚖️ Survival and Benjamin's safety are now tied together
+😟 Sore means severe, not painful
 
----
+🌾 The first trip's grain is already gone
+
+⏳ Right back where the story started
+
+📖 One new condition now blocks all food
+
+## 🌾 Go Again, Buy Us A Little Food
+
+Jacob's response sounds almost businesslike given how serious the famine really is.
+
+"A little food" softens what the family desperately needs.
+
+Jacob is choosing not to deal with the real problem yet.
+
+The real problem is Benjamin, and he is avoiding it completely.
+
+That avoidance cannot last through the rest of this conversation.
+
+🌾 A little food undersells a desperate need
+
+😶 Jacob avoids the real issue at first
+
+👦 The real issue is Benjamin
+
+📖 Avoidance never lasts long in this family
 
 ## 🗣️ The Man Did Solemnly Protest Unto Us
 
-Judah reminds Jacob what Joseph actually said.
+"Solemnly protest" means Joseph stated his warning firmly, almost like a sworn promise.
 
-Solemnly protest means Joseph stated it firmly and seriously, not as a casual suggestion.
+Judah is not paraphrasing what happened back in Egypt.
 
-"Ye shall not see my face" was Joseph's exact condition: no Benjamin, no more grain, no more audience with him at all.
+He repeats Joseph's own words so Jacob hears the real stakes.
 
-Judah isn't guessing at the terms. He's repeating them exactly.
+"Ye shall not see my face" was never a passing threat.
 
-🗣️ Solemnly protest means stated firmly and seriously
+It was the one fixed condition on ever coming back.
 
-🚫 "Ye shall not see my face" was a flat condition, not a suggestion
+🗣️ Solemnly protest means a firm sworn warning
 
----
+📜 Judah repeats Joseph's exact words
+
+🚫 Ye shall not see my face was fixed
+
+📖 One rule now controls the family's future
 
 ## 😠 Wherefore Dealt Ye So Ill With Me
 
-Jacob turns on his sons in frustration, blaming them for even mentioning they had another brother.
+This sounds like Jacob calmly asking what was said.
 
-"Dealt ye so ill with me" means "why did you treat me so badly."
+It is not really a question.
 
-Jacob isn't thinking about what was actually said in Egypt. He's thinking about what it costs him now.
+It is blame, aimed at his own sons.
 
-😠 Jacob blames his sons for volunteering the information
+Jacob is not thinking about what Joseph actually demanded.
 
-💭 Jacob's fear is making him reach for someone to blame
+He is thinking only about what this costs him now.
 
----
+😠 Jacob's question is really blame
 
-## 🤷 Could We Certainly Know That He Would Say, Bring Your Brother Down?
+👥 He aims it at his own sons
 
-The brothers push back. Joseph asked pointed, personal questions, and they simply answered honestly.
+💭 Fear pushes him to find someone to blame
 
-They had no way of knowing those answers would lead to this demand.
+📖 Panic often looks for a target
 
-This is the brothers' one real defense: they weren't scheming, they were just answering a powerful stranger's questions.
+## 🤷 Could We Certainly Know That He Would Say
 
-🤷 The brothers were answering honestly, not planning ahead
+The brothers push back against Jacob's accusation.
 
-❓ They had no way to predict where the questions were leading
+Joseph asked pointed personal questions about their family.
+
+They answered honestly, with no way to guess where it would lead.
+
+This is the brothers' one real defense in the whole argument.
+
+They were not scheming.
+
+They were only answering a stranger's questions.
+
+🤷 The brothers push back on the blame
+
+❓ They answered honestly, not scheming
+
+🔍 They could not guess where it would lead
+
+📖 Honest answers are not a scheme
 
 # Genesis 43:8-10
-
 # 🤝 Judah Offers Surety
-
 ---
+## 🍞 Send The Lad With Me, That We May Live, And Not Die
+
+Judah shifts the argument from pride to survival.
+
+He is not just satisfying an Egyptian official's demand anymore.
+
+He tells his father plainly that the whole family will starve otherwise.
+
+Even the children are at risk if they stay home arguing.
+
+Judah finally says the thing everyone has been avoiding.
+
+🍞 Judah shifts the argument to survival
+
+👶 Even the children are at risk
+
+🗣️ He says what everyone was avoiding
+
+📖 Survival now outweighs every other concern
 
 ## 🤝 I Will Be Surety For Him
 
-Surety means Judah is putting himself on the line as a guarantee.
+"Surety" means Judah is personally guaranteeing Benjamin's safe return.
 
-If Benjamin doesn't come home safely, Judah says the blame is his to carry forever.
+If Benjamin does not come home, Judah says the blame is his alone.
 
-This is a real shift. Back in Genesis 37, Judah was the one who suggested selling Joseph for profit. Now he's the one offering to carry the full weight of protecting a younger brother.
+This is the same Judah who once suggested selling Joseph for money.
 
-🤝 Surety means personally guaranteeing someone's safe return
+Twenty years later he is offering to carry the weight instead of causing more of it.
 
-🔄 This is the same Judah who once suggested selling Joseph
+A person can change what kind of brother he becomes.
 
-📖 A person can change what kind of brother they are
+🤝 Surety means guaranteeing someone's safe return
 
----
+🔄 This is the same Judah from before
 
-## ⏳ Except We Had Lingered, We Had Returned This Second Time
+⚖️ He now offers to carry the blame himself
 
-Judah points out the obvious: their hesitation is costing them time and food.
+📖 Judah has become a different kind of brother
 
-Lingered means delayed or dragged their feet.
+## ⏳ Except We Had Lingered, We Had Returned
 
-Every day they argue is another day the family goes hungry.
+"Lingered" means delayed, or dragged their feet instead of acting.
 
-⏳ Lingered means delayed
+Judah points out how much their hesitation has already cost them.
 
-🍞 Every day of arguing is a day closer to starving
+Every day spent arguing is another day without food in Canaan.
+
+He is not just making a moral case anymore.
+
+He is making a practical one too.
+
+⏳ Lingered means delayed or dragged their feet
+
+🍞 Every day of arguing costs the family food
+
+⚖️ Judah's case is moral and practical both
+
+📖 Hesitation has a real growing price
 
 # Genesis 43:11-14
-
 # 🎁 Jacob's Instructions
-
 ---
+## 🎁 Take Of The Best Fruits In The Land
 
-## 🎁 Take Of The Best Fruits In The Land ... A Present
+Jacob finally gives in and prepares a gift for the powerful man in Egypt.
 
-Jacob gives in and tells his sons to bring a gift: balm, honey, spices, myrrh, nuts, and almonds.
+The gift included balm, honey, spices, myrrh, nuts, and almonds.
 
-These were valuable trade goods, the best of what Canaan still had even during a famine.
+These were valuable trade goods, the best Canaan still had left during a famine.
 
-Balm and myrrh were resins used in medicine and in expensive perfumes. Spices were rare and costly. This gift is meant to soften the powerful Egyptian official's attitude toward them.
+Balm and myrrh were resins used in medicine and expensive perfume.
 
-🎁 The gift is made of Canaan's most valuable trade goods
+A gift like this was meant to soften a powerful stranger's attitude.
 
-💰 Balm and myrrh were used in medicine and costly perfume
+🎁 The gift used Canaan's best remaining goods
 
-🙇 A gift like this was a way to show respect and win favor
+💰 Balm and myrrh were valuable resins
 
----
+🙇 Gifts like this were meant to win favor
 
-## 💰 Take Double Money ... Peradventure It Was An Oversight
+📖 Even famine could not empty their hands
 
-Peradventure means perhaps or maybe.
+## 💰 Take Double Money In Your Hand
 
-Jacob tells them to bring back the money that mysteriously reappeared in their sacks, plus double money for this trip's grain.
+Jacob tells his sons to bring back the money that mysteriously reappeared in their sacks.
 
-He assumes the returned money was simply a mistake, an oversight by an Egyptian clerk.
+He also tells them to bring double money for this trip's grain.
 
-He has no idea it was a deliberate act of mercy from the son he thinks is dead.
+"Peradventure" is an old word meaning perhaps or maybe.
 
-💰 They're told to return the mystery money plus pay double
+Jacob assumes the returned money was simply a clerk's mistake.
 
-🤔 Peradventure means perhaps
+He has no idea it was mercy from the son he believes is dead.
 
-😢 Jacob assumes a mistake where there was actually mercy
+💰 They must return the mystery money too
 
----
+🤔 Peradventure means perhaps or maybe
 
-## 🙏 God Almighty Give You Mercy ... If I Be Bereaved, I Am Bereaved
+😢 Jacob assumes a mistake, not mercy
 
-Jacob finally lets go, and does it by handing the outcome to God.
+📖 He cannot see the kindness hidden in it
 
-Bereaved means robbed by loss or death.
+## 🙏 God Almighty Give You Mercy Before The Man
 
-"If I be bereaved, I am bereaved" is Jacob accepting that he cannot control what happens next. He's said it before about Joseph. Now he braces to possibly say it again about Benjamin.
+Jacob asks God directly to soften the heart of a stranger he cannot control.
 
-This is a father surrendering the one thing he's been gripping the tightest.
+"God Almighty" is a name used only a handful of times in Genesis.
 
-🙏 Jacob places the outcome in God's hands
+It points to God's total power over things far beyond Jacob's reach.
+
+Prayer here replaces the plotting Jacob has been doing the whole chapter.
+
+He finally hands the outcome to someone bigger than himself.
+
+🙏 Jacob prays instead of plotting
+
+💪 God Almighty names total, unmatched power
+
+🎯 The prayer targets one stranger's heart
+
+📖 Jacob finally hands the outcome to God
+
+## 💔 If I Be Bereaved Of My Children, I Am Bereaved
+
+"Bereaved" means robbed by loss or death.
+
+Jacob has said this same kind of thing before, about Joseph.
+
+Now he braces himself to possibly say it again about Benjamin.
+
+He is not pretending the danger away.
+
+He is choosing to let go of a grip he cannot actually keep.
 
 💔 Bereaved means robbed by loss or death
 
-📖 Letting go here costs Jacob everything he has left to lose
+🔁 Jacob said something like this once about Joseph
+
+😨 Now he braces for it again with Benjamin
+
+📖 Letting go costs him everything he has left
 
 # Genesis 43:15-18
-
 # 😨 Fear At Joseph's House
-
 ---
-
-## 🏠 Bring These Men Home ... Dine With Me At Noon
+## 🏠 Bring These Men Home, And Slay, And Make Ready
 
 Joseph sees Benjamin arrive and immediately orders a feast prepared.
 
-This is a huge shift from his rough treatment of them in chapter 42.
+This looks nothing like his rough treatment of the brothers back in chapter forty two.
 
-The brothers don't know why any of this is happening. All they see is a powerful stranger suddenly inviting them to his private home.
+A noon meal inside an official's private home was a genuine honor in this culture.
+
+The brothers have no way of knowing why their treatment has suddenly changed.
+
+All they can see is a powerful man who might be planning anything.
 
 🏠 Joseph's tone shifts the moment he sees Benjamin
 
-🍽️ A formal noon meal at an official's house was a major honor
+🍽️ A noon meal was a real honor
 
-😕 The brothers have no idea why their treatment just changed
+😕 The brothers cannot see why things changed
 
----
+📖 Guilt makes kindness look like a trap
 
-## 😨 That He May Seek Occasion Against Us
+## 📋 The Man Did As Joseph Bade
 
-The brothers assume the worst.
+"The man" here refers to the steward, the official running Joseph's household.
 
-"Seek occasion against us" means looking for an excuse to punish them.
+He follows Joseph's order without hesitation or explanation.
 
-They think the returned money is a setup, a trap meant to justify enslaving them and taking their donkeys.
+The brothers have no idea who gave the order or why.
 
-Guilt has trained them to expect punishment, even in a moment that's actually kindness.
+They only see a stranger leading them somewhere unfamiliar and frightening.
 
-😨 They believe they're walking into a trap
+Obedience up close can look like danger from the outside.
 
-⚖️ "Seek occasion" means looking for an excuse to accuse them
+🧑‍💼 The man means Joseph's household steward
+
+📋 He obeys Joseph's order at once
+
+❓ The brothers do not know the reason
+
+📖 Obedience can look like danger from outside
+
+## 😨 The Men Were Afraid, Because They Were Brought Into Joseph's House
+
+An invitation into a powerful man's private home should feel like an honor.
+
+Instead these brothers feel only dread the moment they step inside.
+
+Guilt from selling Joseph years earlier still shapes how they read every situation.
+
+Even a moment of pure kindness gets filtered through old fear.
+
+They cannot yet imagine that the man they fear is the brother they wronged.
+
+😨 An honor feels like a threat to them
+
+🏚️ Old guilt shapes how they see everything
+
+🕰️ Years of guilt still color this moment
+
+📖 They cannot yet see who is really inside
+
+## ⚖️ That He May Seek Occasion Against Us
+
+"Seek occasion against us" means looking for an excuse to accuse them.
+
+The brothers assume the returned money back in chapter forty two was a setup.
+
+They fear it was bait for a trap, meant to enslave them and take their animals.
+
+Guilt has trained them to expect punishment even in a moment of real kindness.
+
+Fear can turn an innocent gift into evidence of a plot.
+
+😨 Seek occasion means hunting for an excuse
+
+🪤 They believe the money was a trap
+
+🐴 They fear losing themselves and their donkeys
 
 📖 Guilt can make mercy look like danger
 
 # Genesis 43:19-23
-
 # 🗣️ The Steward Reassures Them
-
 ---
+## 🚪 They Came Near To The Steward Of Joseph's House
 
-## 🗣️ O Sir, We Came Indeed Down At The First Time To Buy Food
+"Communed" means they talked seriously with him, not just made small talk.
 
-The brothers rush to explain themselves to Joseph's steward before anything bad can happen.
+The brothers approach the steward before entering, not after.
 
-They lay out the whole story of the money appearing in their sacks, insisting they don't know how it got there.
+They want to explain themselves at the door, before anyone can accuse them inside.
 
-They're trying to prove their innocence before they're even accused of anything.
+Fear is shaping every move they make in this scene.
 
-🗣️ The brothers explain themselves before being accused
+Getting ahead of a problem still felt safer than waiting for it to happen.
 
-😰 Fear is driving them to over-explain
+🗣️ Communed means talked seriously
 
+🚪 They explain themselves before entering
+
+😰 Fear shapes every move they make
+
+📖 Getting ahead of trouble felt safer
+
+## 🗣️ We Came Down At The First Time To Buy Food
+
+The brothers rush to explain themselves before anything bad can happen.
+
+They lay out the whole story of the money that appeared in their sacks.
+
+They insist over and over that they do not know how it got there.
+
+They are trying to prove innocence before anyone even accuses them.
+
+Fear is pushing them to over explain a story no one has challenged yet.
+
+🗣️ The brothers explain themselves first
+
+😰 Fear pushes them to over explain
+
+💰 They insist they do not know
+
+📖 Fear defends against accusations no one made
+
+## 🤷 We Cannot Tell Who Put Our Money In Our Sacks
+
+The brothers openly admit they do not understand what happened to them.
+
+They are not hiding the mystery.
+
+They are confessing it, openly, to a stranger who could easily punish them.
+
+This honesty is a small but real crack in years of family secrecy.
+
+The last real secret this family kept was about Joseph himself.
+
+🤷 The brothers confess the mystery openly
+
+🗣️ Honesty here takes real courage
+
+🔓 A small crack appears in old family secrecy
+
+📖 The bigger secret is still about Joseph
+
+## 🕊️ Peace Be To You, Fear Not
+
+The steward's answer is calm, and it catches the brothers completely off guard.
+
+He tells them plainly not to be afraid.
+
+Then he credits their God with placing treasure in their sacks, not a trap.
+
+His words land as pure relief either way.
+
+Simeon is brought out to them, safe, right after he speaks.
+
+🕊️ Peace be to you means do not fear
+
+🎁 He credits God with the money
+
+👋 Simeon is returned to them safe
+
+📖 Relief arrives before they even ask
+
+# Genesis 43:24-25
+# 🍽️ Preparing For The Meal
 ---
-
-## 🕊️ Peace Be To You, Fear Not ... Your God ... Hath Given You Treasure
-
-The steward's answer is calm and surprising.
-
-He tells them not to be afraid, and credits their God with putting the money there as treasure, not as a trap.
-
-Then he brings Simeon out to them, safe.
-
-Whether or not the steward fully understood Joseph's private mercy, his words land as pure relief to men who expected punishment.
-
-🕊️ The steward tells them not to fear
-
-🎁 He credits their God with a gift, not a trick
-
-👋 Simeon is returned to them safe, as promised
-
----
-
 ## 🐴 He Gave Their Asses Provender
 
-Provender means feed for animals.
+"Provender" means feed for animals.
 
-Small detail, but it shows real hospitality: their donkeys are cared for along with the men themselves.
+It is a small detail buried inside a bigger act of hospitality.
+
+Water for the men, washing for their feet, and now food for their donkeys.
+
+Every part of this household is being cared for, not just the guests.
+
+Kindness here reaches all the way down to the animals.
 
 🐴 Provender means animal feed
 
-🤲 Even the animals are treated with real care
+🧺 Hospitality here covers even the donkeys
 
-# Genesis 43:24-25
+💧 Water and washing come before the meal
 
-# 🍽️ Preparing For The Meal
+📖 Real kindness reaches every detail
 
----
+## ⏳ They Made Ready The Present Against Joseph Came At Noon
 
-## 🍽️ They Made Ready The Present Against Joseph Came At Noon
+"Against Joseph came" is an old way of saying in preparation for his arrival.
 
-The brothers get their gift ready, nervously waiting for the man who holds their lives in his hands to arrive for a meal they don't understand the purpose of.
+The brothers get the gift ready while waiting nervously for noon.
 
-"Against Joseph came" is an old way of saying "in preparation for when Joseph would arrive."
+They still do not understand why any of this hospitality is happening.
 
-🍽️ They prepare the gift ahead of Joseph's arrival
+The man holding their lives in his hands is about to walk through the door.
 
-⏳ "Against" here means "in preparation for," an old use of the word
+Waiting is its own kind of pressure.
+
+⏳ Against means in preparation for
+
+🎁 The gift sits ready before Joseph arrives
+
+😟 The brothers still do not understand why
+
+📖 Waiting adds its own kind of tension
 
 # Genesis 43:26-29
-
 # 👋 Joseph Greets Them
-
 ---
-
 ## 🙇 They Bowed Themselves To Him To The Earth
 
 The brothers bow to Joseph again, presenting their gift.
 
-This is the second time in two chapters they've physically bowed before him, still not knowing they're bowing to their own brother.
+This is the second time in two chapters they have physically bowed before him.
 
-Joseph's boyhood dream keeps coming true in front of him, piece by piece.
+They still have no idea they are bowing to their own brother.
 
-🙇 The brothers bow to Joseph a second time
+Years earlier, Joseph dreamed that his brothers would bow down to him.
 
-🌙 Joseph's old dream keeps quietly fulfilling itself
+That old dream keeps quietly coming true in front of him.
 
----
+🙇 The brothers bow to Joseph again
 
-## ❤️ Is Your Father Well ... Is He Yet Alive?
+🌙 Joseph once dreamed this exact scene
 
-Joseph asks about Jacob directly, and the brothers answer that he's alive and well.
+😶 They still do not know who he is
 
-This is Joseph getting real news about the father he hasn't seen in over twenty years, delivered by the very brothers who took that father's son away from him.
+📖 An old dream keeps fulfilling itself
 
-❤️ Joseph finally gets real news about his father
+## ❤️ Is Your Father Well? Is He Yet Alive?
 
-⏳ Twenty years of separation are behind this simple question
+Joseph asks about Jacob directly, almost too casually for what this moment actually is.
 
----
+He has not seen his father in over twenty years.
 
-## 😭 Is This Your Younger Brother? ... God Be Gracious Unto Thee, My Son
+The men delivering this news are the very brothers who took Joseph away from him.
+
+A simple question is carrying two decades of separation underneath it.
+
+❤️ Joseph finally asks about his father
+
+⏳ Twenty years of separation sit behind this question
+
+😶 The messengers are the ones who caused it
+
+📖 A simple question can carry enormous weight
+
+## 😭 Is This Your Younger Brother? God Be Gracious Unto Thee, My Son
 
 Joseph sees Benjamin for the first time since Benjamin was a small child.
 
-Benjamin is his only full brother, both sons of Rachel.
+Benjamin is his only full brother, both of them sons of Rachel.
 
-Joseph blesses him warmly, calling him "my son" even though Joseph is Benjamin's brother, not his father. It's a term of deep affection here, not a literal claim.
+Calling Benjamin "my son" does not mean Joseph thinks he is Benjamin's father.
 
-😭 Benjamin is Joseph's only full brother, both sons of Rachel
+It is a term of warmth for someone much younger.
 
-💛 "My son" here is affectionate warmth, not a literal title
+Joseph is barely holding himself together as he says it.
+
+😭 Benjamin is Joseph's only full brother
+
+💛 My son here means warmth, not fatherhood
+
+🫂 Joseph speaks with an older man's warmth
+
+📖 Joseph is holding back a flood of emotion
 
 # Genesis 43:30-31
-
 # 😢 Joseph Weeps Privately
-
 ---
-
 ## 😭 His Bowels Did Yearn Upon His Brother
 
-In the Bible's language, the bowels were thought of as the seat of deep emotion, similar to how we say something is felt "in your gut" today.
+In the Bible's language, the bowels were thought of as the seat of deep emotion.
 
-"His bowels did yearn" means Joseph was overwhelmed with love and emotion the moment he saw Benjamin.
+That is close to how we say something is felt in the gut today.
 
-He can't hold it together in front of everyone, so he leaves the room to weep alone.
+"Bowels did yearn" means Joseph was suddenly overwhelmed with love the moment he saw Benjamin.
 
-😭 "Bowels yearning" is old language for being overwhelmed with deep feeling
+He cannot hold it together in front of everyone in the room.
 
-🚪 Joseph leaves the room rather than break down in public
+So he leaves and finds a private place to weep alone.
 
----
+😭 Bowels meant the seat of deep feeling
 
-## 💧 He Washed His Face ... And Refrained Himself
+❤️ Bowels yearning means overwhelming love
 
-Joseph composes himself before coming back out.
+🚪 Joseph leaves rather than break down in public
 
-Refrained himself means he held back his emotion by force of will.
+📖 Deep feeling still needed a private place
 
-He's still testing his brothers. Breaking down completely, right now, would end the test before it's finished.
+## 💧 He Washed His Face, And Refrained Himself
 
-💧 Refrained means held back deliberately
+Joseph composes himself before walking back out to his brothers.
 
-🎭 Joseph is still managing the test even while overwhelmed personally
+"Refrained" means he held back his emotion on purpose, by sheer will.
+
+He is still testing his brothers, and the test is not finished yet.
+
+Breaking down completely right now would end it too soon.
+
+So he sets his own grief aside and returns to the table.
+
+💧 Refrained means held back on purpose
+
+🎭 Joseph is still managing an unfinished test
+
+⏸️ Full honesty would end the test too soon
+
+📖 He sets his grief aside for now
 
 # Genesis 43:32-34
-
-# 🍽️ The Meal
-
+# 🍞 The Meal
 ---
+## 🚫 The Egyptians Might Not Eat Bread With The Hebrews
 
-## 🚫 The Egyptians Might Not Eat Bread With The Hebrews ... An Abomination
+Egyptians ate at a separate table from the Hebrews during this meal.
 
-Egyptians ate separately from Hebrews at this meal, and the text says it was because doing otherwise would be an abomination to Egyptians.
+The text says the reason was that eating together would be offensive to Egyptians.
 
-Egyptian culture viewed shepherding peoples like the Hebrews as ritually unclean or socially beneath them.
+Egyptian culture looked down on shepherding peoples like the Hebrews as unclean or beneath them.
 
-Joseph himself, though ruling as an Egyptian official, still sits apart from the Egyptians in this scene, in a kind of in-between position.
+Joseph himself sits apart from the Egyptians too, caught between two worlds.
 
-🚫 Egyptians avoided eating with Hebrews as a cultural boundary
+He rules as an Egyptian official but was born a Hebrew shepherd's son.
 
-🐑 Hebrew shepherd life was looked down on by Egyptian custom
+🚫 Egyptians avoided eating with Hebrews
 
----
+🐑 Shepherd life was looked down on in Egypt
 
-## 😲 The Firstborn According To His Birthright ... The Men Marvelled
+🎭 Joseph sits between two different worlds
 
-The brothers are seated in exact birth order, oldest to youngest, something no stranger could have guessed correctly.
+📖 His identity never fully belonged to either side
 
-Marvelled means they were amazed, even a little unsettled.
+## 😲 The Firstborn According To His Birthright
 
-This detail is another quiet clue that "the man" running this whole encounter knows far more about their family than he should.
+The brothers are seated in exact birth order, oldest all the way to youngest.
+
+No stranger meeting them for the first time could have guessed that order.
+
+"Marvelled" means they were amazed, even a little unsettled by it.
+
+It is another clue the man knows far more than he should.
+
+The brothers still cannot connect the clues in front of them.
+
+🎯 They are seated in exact birth order
 
 😲 Marvelled means amazed and unsettled
 
-🔍 Being seated in exact birth order is a clue they don't yet understand
+🔍 No stranger should know that order
 
----
+📖 The clues are there, but unseen
 
 ## 🍽️ Benjamin's Mess Was Five Times So Much As Any Of Theirs
 
-Mess here means a portion or serving of food, not a mess in the modern sense.
+"Mess" here means a portion of food, not disorder or clutter.
 
-Joseph gives Benjamin five times as much food as everyone else, a deliberate favoring of his one full brother.
+Joseph gives Benjamin five times as much food as anyone else at the table.
 
-It may also be another quiet test: watching whether the brothers respond to a favored younger brother with jealousy, the same way they once did with Joseph himself.
+This openly favors his one full brother in front of everyone.
 
-🍽️ Mess means a portion of food, not disorder
+It may also be another quiet test.
 
-⚖️ Benjamin openly receives special favor, just like Joseph once did
+Joseph may be watching for the same jealousy that once targeted him.
 
-🔍 Joseph may be watching to see if old jealousy resurfaces`;
+🍽️ Mess means a portion of food
+
+⚖️ Benjamin openly receives special favor
+
+👀 Joseph may be watching for old jealousy
+
+📖 The past quietly tests the present`.trim();
 
 export const GENESIS_FORTY_THREE_PERSONAL_SECTIONS = parseGenesisFortyThreeRawNotes(GENESIS_FORTY_THREE_RAW_NOTES);

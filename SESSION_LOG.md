@@ -346,3 +346,47 @@ Time spent: ~1 hour
 Done: Fixed install-state saves silently failing (profile_stats upsert vs unique constraint - switched to update), backfilled the 2 real installs, fixed analytics zeros (missing study_focus column sent the API down a fallback path lacking appInstalls - hardened the fallback + Louis ran the missing column SQL), iOS sheet-close now hides for the visit only, and redesigned the iPhone sheet as a one-step-at-a-time guided flow with illustrations. All deployed and verified against production data.
 Still open: profile_stats upsert audit running as a spawned background task.
 Next: Watch install numbers; swap in real iPhone screenshots if Louis provides them.
+
+## 2026-07-31T19:58:29Z (hourly chapter notes run)
+Chapter: Genesis 35 | Duration: 12 min | Sections: 6 | Cards: 48 | Status: pass
+Next up: Genesis 36
+
+## 2026-07-31T20:53:16Z (hourly chapter notes run)
+Chapter: Genesis 36 | Duration: 8 min | Sections: 8 | Cards: 28 | Status: pass
+Next up: Genesis 37
+
+## 2026-07-31T22:00:19Z (hourly chapter notes run)
+Chapter: Genesis 37 | Duration: 14 min | Sections: 8 | Cards: 46 | Status: pass
+Next up: Genesis 38
+
+## 2026-07-31T22:59:22Z (hourly chapter notes run)
+Chapter: Genesis 38 | Duration: 13 min | Sections: 6 | Cards: 60 | Status: pass
+Next up: Genesis 39
+
+## 2026-07-31T23:55:00Z (hourly chapter notes run)
+Chapter: Genesis 39 | Duration: 8 min | Sections: 6 | Cards: 22 | Status: pass
+Next up: Genesis 40
+
+## 2026-08-01T00:56:51Z (hourly chapter notes run)
+Chapter: Genesis 40 | Duration: 10 min | Sections: 6 | Cards: 40 | Status: pass
+Next up: Genesis 41
+
+## 2026-08-01T01:58:10Z (hourly chapter notes run)
+Chapter: Genesis 41 | Duration: 12 min | Sections: 14 | Cards: 55 | Status: pass
+Next up: Genesis 42
+
+## 2026-08-01T02:59:41Z (hourly chapter notes run)
+Chapter: Genesis 42 | Duration: 10 min | Sections: 9 | Cards: 39 | Status: pass
+Next up: Genesis 43
+
+## 2026-08-01T03:58:04Z (hourly chapter notes run)
+Chapter: Genesis 43 | Duration: 12 min | Sections: 9 | Cards: 30 | Status: pass
+Next up: Genesis 44
+
+## 2026-08-01T04:56:30Z (hourly chapter notes run)
+Chapter: Genesis 44 | Duration: 10 min | Sections: 8 | Cards: 34 | Status: pass
+Next up: Genesis 45
+
+## 2026-08-01T06:01:00Z (hourly chapter notes run)
+Chapter: Genesis 45 | Duration: 15 min | Sections: 7 | Cards: 51 | Status: pass
+Next up: Genesis 46

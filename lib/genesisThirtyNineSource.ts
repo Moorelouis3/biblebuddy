@@ -81,581 +81,462 @@ function parseGenesisThirtyNineRawNotes(rawText: string): GenesisThirtyNinePerso
     });
   }
 
-  if (sections.length !== 4) {
-    throw new Error("Expected 4 Genesis 39 sections, received " + sections.length);
+  if (sections.length !== 6) {
+    throw new Error("Expected 6 Genesis 39 sections, received " + sections.length);
   }
 
   return sections;
 }
 
-const GENESIS_THIRTY_NINE_RAW_NOTES = `# Genesis 39:1–6
+const GENESIS_THIRTY_NINE_RAW_NOTES = `# Genesis 39:1-6
+# 🏺 Joseph Rises In Potiphar's House
+---
+## ⚔️ Captain Of The Guard
 
-# 🏺 Joseph Prospers In Potiphar's House
+"Officer" here means a royal official who served Pharaoh directly.
+
+"Captain of the guard" means Potiphar commanded Pharaoh's own bodyguard.
+
+He also oversaw executions for the king.
+
+That made him one of the most powerful men in Egypt.
+
+A slave in a house like that could vanish without notice.
+
+God had already placed Joseph inside Egypt's highest circles.
+
+⚔️ Officer means a royal official
+
+👮 Captain of the guard led Pharaoh's bodyguard
+
+☠️ He also oversaw executions
+
+📖 God placed Joseph among Egypt's most powerful
 
 ---
+## 🌟 The LORD Was With Joseph
 
-## 📦 Joseph Was Brought Down To Egypt
+"Prosperous" does not mean he had an easy life.
 
-This picks up right where chapter 37 left off.
+It means everything he touched moved forward under God's hand.
 
-Joseph's brothers sold him to a caravan of traders heading to Egypt, and now Moses returns to that thread.
+Joseph was still a slave in a foreign country.
 
-**Potiphar** bought him from the hands of the Ishmeelites, the same traders his brothers had sold him to.
+Yet the text credits his success to the LORD, not luck or skill.
 
-What looked like the end of Joseph's story to his brothers was actually God moving him into position for everything that comes next.
+That pattern will repeat again after Joseph loses everything a second time.
 
-📦 Joseph arrives in Egypt as a slave
+🌟 Prosperous means God caused it to succeed
 
-🐫 He is bought from the same traders his brothers sold him to
+⛓️ Joseph was still a slave
 
-🙏 God is already at work behind what looks like tragedy
+🙌 His success came from the LORD
 
-➡️ Moses tells us who bought him
-
----
-
-## 👑 Potiphar, An Officer Of Pharaoh, Captain Of The Guard
-
-**Potiphar** was not an ordinary Egyptian.
-
-He was an **officer of Pharaoh**, meaning he served in the royal court, and **captain of the guard**, a title connected to Pharaoh's personal bodyguard and, likely, the execution of prisoners.
-
-This was a position of real power and trust close to the throne.
-
-Joseph did not land in just any household. He landed in one connected directly to the highest levels of Egyptian government — a detail that matters later.
-
-👑 Potiphar served in Pharaoh's royal court
-
-🛡️ Captain of the guard was a position of high trust
-
-📖 This connection to the palace matters later in Joseph's story
-
-➡️ Moses reveals the real reason for Joseph's success
+📖 The same pattern will repeat later
 
 ---
+## 🎁 Found Grace In His Sight
 
-## 🙏 The LORD Was With Joseph
+"Grace" here means favor a person did not earn or deserve.
 
-This is the key sentence of the entire chapter.
+Potiphar noticed something in Joseph beyond ordinary slave labor.
 
-Not "Joseph was talented." Not "Joseph worked hard." **The LORD was with him.**
+He made Joseph "overseer," meaning Joseph now ran the entire household.
 
-Everything that follows — his rise in Potiphar's house, his integrity under temptation, his favor in prison — flows from this one fact.
+Every decision Potiphar once made himself now belonged to Joseph.
 
-This phrase repeats again later in the chapter (verse 21), forming a frame around the whole story: God's presence at the beginning, and God's presence at the end, no matter what happens in between.
+Trust like that from a powerful Egyptian toward a foreign slave was rare.
 
-🙏 God's presence is the true source of Joseph's success
+🎁 Grace means unearned favor
 
-📖 This phrase reappears later in the chapter
+🏠 Overseer means Joseph ran the household
 
-⭐ Everything Joseph experiences flows from this one reality
+🔑 Potiphar handed over full control
 
-➡️ That presence produces real results
-
----
-
-## 📈 He Was A Prosperous Man
-
-**Prosperous** here does not mean rich or free.
-
-Joseph is a slave in a foreign country, with no rights, no family, and no control over his own life.
-
-Yet Scripture calls him prosperous, because prosperity in the Bible is not first about circumstances — it is about God's blessing resting on a person's life and work.
-
-Joseph's chains do not cancel God's favor.
-
-📈 Prosperity here is not about freedom or wealth
-
-⛓️ Joseph is still a slave when this is written
-
-🙏 True prosperity is God's blessing on a life, not just good circumstances
-
-➡️ Even Potiphar notices something is different
+📖 Rare trust given to a foreign slave
 
 ---
+## 🌾 Blessed The Egyptian's House For Joseph's Sake
 
-## 👀 His Master Saw That The LORD Was With Him
+God's blessing on Joseph did not stay contained to Joseph alone.
 
-Potiphar was an Egyptian who worshiped Egyptian gods, not the God of Abraham.
+"For Joseph's sake" means Potiphar's entire household prospered because of one man.
 
-Yet even he could see that something set Joseph apart.
+The field and the house both grew because Joseph was in it.
 
-He could not explain it in the language of Joseph's faith, but he could see the results: everything Joseph touched succeeded.
+God often blesses the people around someone He is already blessing.
 
-Sometimes the clearest evidence of God's presence in a believer's life is what unbelievers notice from the outside.
+🌾 Blessing spread through the whole house
 
-👀 Potiphar was not a worshiper of the true God
+👤 Potiphar benefited because of Joseph
 
-✨ He still recognized God's hand on Joseph's life
+🏡 The field and house both grew
 
-📖 A godly life is visible even to those who don't share the faith
-
-➡️ Joseph earns real trust
-
----
-
-## 🤝 Joseph Found Grace In His Sight
-
-**Grace** here means favor — Joseph earned Potiphar's genuine trust and goodwill.
-
-This wasn't given automatically because Joseph was a slave who had to be tolerated. It was earned through faithful, honest, diligent service over time.
-
-Joseph's character in a foreign house, under difficult circumstances, becomes the doorway to everything that follows.
-
-🤝 Joseph earns real favor with his master
-
-⏳ This trust builds over time through faithful service
-
-📖 Character opens doors that status alone cannot
-
-➡️ Potiphar promotes him
+📖 God's blessing overflows to others nearby
 
 ---
+## 💪 Goodly Person, And Well Favoured
 
-## 🏠 He Made Him Overseer Over His House
+This phrase simply means Joseph was strikingly handsome.
 
-Potiphar puts Joseph in charge of his entire household.
+The exact same words describe his mother Rachel back in Genesis twenty nine.
 
-An **overseer** managed the practical affairs of a large estate — servants, resources, daily operations, and finances.
+Joseph shares more than character with his mother.
 
-This is a small-scale preview of what Joseph will eventually do for all of Egypt: take responsibility for someone else's house and manage it wisely and faithfully.
+He shares her appearance too.
 
-God is preparing Joseph for a much larger assignment by first trusting him with a smaller one.
+That detail is about to become dangerous instead of a compliment.
 
-🏠 Joseph is placed in charge of Potiphar's entire estate
+💪 Goodly and well favoured means handsome
 
-📖 This role foreshadows his future position over all of Egypt
+👩 The same words once described Rachel
 
-🙏 Faithfulness in a small role prepares him for a much bigger one
+🧬 Joseph resembled his mother
 
-➡️ Potiphar's whole house is blessed because of Joseph
+➡️ Beauty is about to cause trouble
+
+# Genesis 39:7-10
+# 😈 Potiphar's Wife Tempts Joseph
+---
+## 👀 Cast Her Eyes Upon Joseph
+
+This idiom means she began desiring Joseph physically.
+
+It was not a passing glance.
+
+It was a fixed, deliberate attraction.
+
+She holds real power in this house as her husband's wife.
+
+Joseph has none, since he is still legally her husband's property.
+
+👀 Cast her eyes means fixed desire
+
+👑 She held real power in the house
+
+⛓️ Joseph had none as a slave
+
+📖 Power imbalance made this dangerous
 
 ---
+## 🗣️ Lie With Me
 
-## 🌾 The LORD Blessed The Egyptian's House For Joseph's Sake
+Her request is blunt, with no disguise and no small talk.
 
-This directly echoes God's promise to Abraham: **"I will bless them that bless thee"** and **"in thee shall all families of the earth be blessed"** (Genesis 12:2–3).
+She is Joseph's master's wife, so refusing her carries real risk.
 
-Potiphar is a pagan Egyptian with no covenant relationship with God — yet his household prospers simply because Joseph, a covenant son of Abraham, lives there.
+Saying yes could have protected his position in the household.
 
-The blessing promised to Abraham's family is already beginning to spill out onto the nations, exactly as God said it would.
+Saying no could cost him everything he had built there.
 
-🌾 Potiphar's household prospers because of Joseph
+Joseph has to choose in a single moment with no time to think.
 
-📖 This fulfills God's promise to bless the nations through Abraham's family
+🗣️ Her request was blunt and direct
 
-🌍 Blessing flows outward from God's people to those around them
+⚖️ Saying yes seemed to protect him
 
-➡️ Potiphar hands Joseph total control
+🎯 Saying no risked everything he had
 
----
-
-## 🔑 He Left All That He Had In Joseph's Hand
-
-Potiphar's trust becomes total. He stops managing the details himself entirely.
-
-**"He knew not ought he had save the bread which he did eat"** — meaning Potiphar's only remaining concern was his own food, likely for ceremonial or personal reasons rather than distrust.
-
-Everything else — servants, property, business, wealth — Joseph oversees completely.
-
-🔑 Potiphar hands over full control of his estate
-
-🍞 He keeps only personal oversight of his own food
-
-🤝 This is complete, total trust from master to slave
-
-➡️ Moses describes Joseph himself
+➡️ Joseph had to decide instantly
 
 ---
+## 🤝 My Master Wotteth Not
 
-## ✨ Joseph Was A Goodly Person, And Well Favoured
+"Wotteth" is an old word meaning knows.
 
-Joseph is described as physically attractive — strong and good-looking.
+Joseph reminds her that Potiphar trusts him completely.
 
-This is the same language used earlier to describe his mother Rachel (Genesis 29:17), which is a small, tender detail connecting Joseph back to her.
+He is not arguing that he might get caught.
 
-Moses includes this detail here for a reason: it sets up exactly what happens next.
+He is arguing that betraying that trust would be wrong either way.
 
-✨ Joseph is described as strikingly attractive
+His loyalty does not depend on whether anyone is watching.
 
-👩 The same language was used to describe his mother Rachel
+📝 Wotteth means knows
 
-⚠️ This detail sets up the temptation that follows immediately
+🤝 Potiphar trusts Joseph completely
 
-# Genesis 39:7–12
+👁️ Joseph is not afraid of being caught
 
-# 🚪 Joseph Resists Temptation
-
----
-
-## 👁️ His Master's Wife Cast Her Eyes Upon Joseph
-
-Potiphar's wife notices Joseph — not just his character, but his appearance — and makes a direct, bold proposition: **"Lie with me."**
-
-There is no seduction or subtlety here. It is a blunt demand from a woman with power over a slave who, in that culture, would have had little ability to refuse without consequence.
-
-👁️ Potiphar's wife is drawn to Joseph
-
-🗣️ Her proposition is direct and immediate
-
-⚠️ Joseph has every worldly reason to fear saying no
-
-➡️ Joseph's answer is immediate
+➡️ His loyalty holds even unseen
 
 ---
+## 💔 This Great Wickedness, And Sin Against God
 
-## 🚫 But He Refused
+Joseph does not call this a betrayal of Potiphar first.
 
-Before Joseph explains anything, Moses tells us the outcome first: **he refused.**
+He calls it sin against God first.
 
-This word order matters. Joseph's character was already settled before the temptation ever needed reasoning through. His answer wasn't a long internal debate — his convictions were already in place.
+Every wrong done to another person is also a wrong done to God.
 
-🚫 Joseph's refusal is immediate, not hesitant
+Joseph sees the true audience for this choice before anyone else does.
 
-🧠 His character was decided before the moment of testing arrived
+⚖️ Wickedness names the choice honestly
 
-📖 Real integrity is prepared in advance, not invented in the moment
+🙏 Joseph names God as the real witness
 
-➡️ Joseph explains his reasoning
+💔 Sin against a person is sin against God
 
----
-
-## 🏠 My Master Wotteth Not What Is With Me In The House
-
-**"Wotteth"** is old English for "knows."
-
-Joseph's first reason is loyalty: Potiphar trusts him completely and has no idea what is happening in his own house. Betraying that trust would be a direct violation of the position Potiphar gave him.
-
-Joseph doesn't begin with fear of punishment — he begins with faithfulness to the man who trusted him.
-
-🏠 Wotteth is an old word meaning "knows"
-
-🤝 Joseph's first concern is his master's trust
-
-📖 Integrity begins with faithfulness to those who trust us
-
-➡️ Joseph continues his reasoning
+📖 Joseph sees the true audience first
 
 ---
+## 📆 She Spake To Joseph Day By Day
 
-## 🙅 There Is None Greater In This House Than I
+This was not one request Joseph refused a single time.
 
-Joseph acknowledges how much authority Potiphar has already given him — everything except one thing: his wife.
+It repeated every day, likely for months.
 
-Joseph recognizes that this single boundary exists precisely because she belongs to Potiphar alone. Crossing it would betray the one line Potiphar never crossed with him.
+Each refusal was its own separate choice, not a decision made once.
 
-🙅 Joseph has authority over everything except this one thing
+Staying faithful here took ongoing effort, not a single moment of willpower.
 
-💍 Potiphar's wife is the one boundary that was never given to him
+📆 Day by day means repeated pressure
 
-📖 Respecting boundaries is part of real trustworthiness
+🔁 Joseph had to refuse again and again
 
-➡️ Joseph reaches the real reason behind his refusal
+💪 Faithfulness took ongoing effort
+
+➡️ One good choice was not enough
+
+# Genesis 39:11-15
+# 👘 Caught By The Garment
+---
+## 🏠 Went Into The House To Do His Business
+
+This phrase simply describes an ordinary workday.
+
+Joseph was not walking into a trap he suspected.
+
+"None of the men of the house" means the two of them were completely alone.
+
+That detail matters for everything that happens next.
+
+🏠 This describes a normal workday
+
+🚶 Joseph suspected nothing
+
+🚪 No one else was in the house
+
+➡️ Being alone set up the danger
 
 ---
+## ✋ Caught Him By His Garment
 
-## ⚖️ How Then Can I Do This Great Wickedness, And Sin Against God?
+She grabs his outer robe to physically stop him from leaving.
 
-This is the heart of Joseph's answer.
+Joseph makes an instant choice to run rather than stay and argue.
 
-Notice the order: he calls it wickedness first, then names who it is ultimately against — **not primarily Potiphar, but God.**
+He leaves the garment behind rather than risk one more moment in the room.
 
-Joseph's moral compass isn't rooted in "who might find out" or "who might punish me." It's rooted in God's presence and God's standard, even in a foreign land, far from his family, with no one watching but God Himself.
+Fleeing costs him evidence, but it protects him from far worse.
 
-⚖️ Joseph names this sin as wickedness before anything else
+✋ She physically grabbed his robe
 
-🙏 He identifies God, not just Potiphar, as the one he would sin against
+🏃 Joseph chose to flee instantly
 
-📖 True integrity holds even when no one else would know
+👕 He left the garment behind
 
-➡️ The temptation doesn't stop after one conversation
-
----
-
-## 📅 As She Spake To Joseph Day By Day
-
-This wasn't a single moment of pressure Joseph resisted once and moved on from.
-
-It was **daily, repeated pressure** — the kind that wears a person down over time. Joseph didn't just win one difficult moment; he kept winning the same battle again and again.
-
-📅 The temptation was repeated, not a single event
-
-⏳ Sustained pressure is often harder to resist than a single moment
-
-🙏 Joseph's integrity held firm over time, not just once
-
-➡️ His answer never changes
+📖 Fleeing cost him evidence, not integrity
 
 ---
+## 👕 Left His Garment In Her Hand, And Fled
 
-## 🚶 He Hearkened Not Unto Her
+A garment caused Joseph's downfall once before, when his brothers dipped his coat in blood.
 
-Joseph's refusal never wavers, no matter how many times she asks.
+Now a garment is about to be used against him again.
 
-He doesn't negotiate, entertain the idea, or slowly wear down. His answer on day one is the same as his answer on the last day.
+This time the false evidence is not spilled blood but an abandoned robe.
 
-🚶 Joseph's answer never changes over time
+Joseph could not have known a piece of clothing would trap him twice.
 
-🛡️ Consistency under repeated pressure is its own kind of strength
+🩸 A coat once deceived his father
 
-➡️ One day, the danger increases sharply
+👕 A garment now becomes false evidence
 
----
+🔁 The same object type used twice
 
-## 🏡 Joseph Went Into The House To Do His Business
-
-One day, Joseph enters the house to carry out his normal duties, and this time **no other men of the household are present.**
-
-The setting itself becomes dangerous — Joseph is now alone with her, with no witnesses and no one nearby to interrupt what happens next.
-
-🏡 Joseph is simply doing his normal work
-
-🚪 No one else is in the house this time
-
-⚠️ The situation turns dangerous very quickly
-
-➡️ She escalates from words to action
+📖 Joseph never saw either coming
 
 ---
+## 🌍 He Hath Brought In An Hebrew Unto Us To Mock Us
 
-## ✋ She Caught Him By His Garment
+"Hebrew" was the word Egyptians used for foreigners like Joseph's family.
 
-Words become physical action. She grabs Joseph's garment and repeats her demand.
+It marked him as an outsider before any accusation was even made.
 
-This is the most dangerous moment in the entire chapter — the point where fleeing becomes the only real option left.
+"To mock us" does not mean to tease.
 
-✋ The temptation becomes physical, not just verbal
+It means to take advantage of us, a far more serious charge.
 
-⚠️ This is the most dangerous moment in the chapter
+She blames Potiphar for even bringing a foreigner into their home.
 
-➡️ Joseph makes his final move
+🌍 Hebrew marked Joseph as an outsider
+
+😤 Mock here means to take advantage
+
+🎯 The accusation was deliberately serious
+
+➡️ She blames Potiphar's own decision
+
+# Genesis 39:16-18
+# 🗣️ The False Accusation
+---
+## 👕 Laid Up His Garment By Her, Until His Lord Came Home
+
+She keeps the garment as staged proof rather than getting rid of it.
+
+Waiting for Potiphar to return means she plans exactly what to say.
+
+This was not a panicked reaction.
+
+It was a calculated setup aimed at Joseph specifically.
+
+👕 She kept the garment as staged proof
+
+⏳ She waited for Potiphar deliberately
+
+🧠 This was planned, not panicked
+
+➡️ The setup targeted Joseph specifically
 
 ---
+## 🔁 The Hebrew Servant, Which Thou Hast Brought Unto Us
 
-## 🏃 He Left His Garment In Her Hand, And Fled
+She repeats the same wording she already used with the household servants.
 
-Joseph doesn't stay to argue, explain, or reason further. He runs, leaving his garment behind rather than staying one more second in that room.
+Notice she also blames Potiphar directly for bringing Joseph into their lives.
 
-This becomes a picture Scripture returns to elsewhere — the wisdom of physically removing yourself from temptation rather than trusting yourself to out-argue it. Centuries later, Paul would give nearly identical instruction: **"flee fornication"** (1 Corinthians 6:18).
+Rehearsed words are harder for a listener to see through.
 
-Joseph loses a garment. He keeps his integrity. That was always the better trade.
+Her husband hears the identical story twice, which makes it feel confirmed.
 
-🏃 Joseph chooses to flee rather than reason further
+🔁 She repeats her rehearsed story
 
-📖 This foreshadows Paul's later instruction to "flee" sexual temptation
+👉 She blames Potiphar's own choice
 
-🙏 Sometimes wisdom means leaving, not debating
+🎭 Rehearsed lies sound more convincing
 
-➡️ That abandoned garment becomes dangerous evidence
-
-# Genesis 39:13–18
-
-# 🎭 Potiphar's Wife Lies About Joseph
+➡️ Repetition made the lie feel true
 
 ---
+## 🎭 As I Lifted Up My Voice And Cried
 
-## 📣 She Called Unto The Men Of Her House
+This is nearly the same wording she used with the servants back in verse fifteen.
 
-The moment Joseph flees, Potiphar's wife acts quickly. She calls the household servants together **before** Joseph has any chance to explain himself.
+Repeating the same version to different people is what makes a lie sound credible.
 
-Speed matters here — she is controlling the narrative before the truth has any opportunity to surface first.
+Potiphar has no way to know his wife rehearsed this story twice already.
 
-📣 She acts immediately after Joseph flees
+The rehearsal is the reason the lie works.
 
-⏱️ Getting her story out first was a deliberate strategy
+🔁 The same wording as verse fifteen
 
-➡️ She reframes the entire situation
+🎭 Repetition made the lie sound credible
 
+🙈 Potiphar never knew it was rehearsed
+
+📖 A rehearsed lie is what worked
+
+# Genesis 39:19-20
+# ⛓️ Joseph Thrown Into Prison
 ---
-
-## 🗯️ He Hath Brought In An Hebrew Unto Us To Mock Us
-
-Notice the word **"us."** She isn't just accusing Joseph to protect herself — she's rallying the other servants by appealing to a shared prejudice against Hebrews, framing Joseph's presence in the house as an insult to all of them, not just her.
-
-This is a manipulation tactic as old as human nature: turn a personal accusation into a group grievance to gain instant sympathy and support.
-
-🗯️ She frames this as an insult to the whole household, not just herself
-
-⚠️ She uses prejudice against Hebrews to gain sympathy
-
-📖 Manipulation often recruits others by appealing to shared bias
-
-➡️ She invents her own version of events
-
----
-
-## 😱 I Cried With A Loud Voice
-
-Here is the lie itself: she claims **she** was the one resisting, and that her cries scared Joseph into fleeing.
-
-The truth is the exact opposite of what she describes. This is a complete reversal — the pursuer recasting herself as the victim, and the one who resisted temptation recast as the aggressor.
-
-😱 She invents a story opposite of what actually happened
-
-🔄 The pursuer recasts herself as the victim
-
-➡️ She keeps physical evidence to support her lie
-
----
-
-## 👗 She Laid Up His Garment By Her, Until His Lord Came Home
-
-She doesn't destroy the garment — she **saves** it as evidence, patiently waiting for Potiphar's return so she can present her false accusation with what looks like proof in hand.
-
-This shows real premeditation. It isn't just panic — it's a calculated decision to build a convincing case against an innocent man.
-
-👗 The garment becomes manufactured evidence
-
-⏳ She waits patiently for the right moment to use it
-
-📖 This was calculated, not just a panicked reaction
-
-➡️ She repeats the same story to her husband
-
----
-
-## 🗣️ She Spake Unto Him According To These Words
-
-When Potiphar comes home, she tells him essentially the identical story she told the servants — keeping her account consistent to make it more believable.
-
-Consistency is often mistaken for truth. Her story doesn't change, but that doesn't make it true.
-
-🗣️ She repeats the same false account to Potiphar
-
-🎭 A consistent lie can still sound convincing
-
-➡️ She specifically blames Potiphar's own choice
-
----
-
-## 👤 The Hebrew Servant, Which Thou Hast Brought Unto Us
-
-There's a subtle jab buried in her wording here — **"which thou hast brought unto us."**
-
-She quietly shifts a measure of blame onto Potiphar himself for bringing Joseph into the household in the first place, even while making Joseph the primary target of her accusation.
-
-👤 She subtly blames Potiphar's own decision to bring Joseph in
-
-🎯 Joseph remains the main target of the accusation
-
-📖 A skilled lie often spreads blame in more than one direction
-
-➡️ Potiphar has to respond to what he's just heard
-
-# Genesis 39:19–23
-
-# ⛓️ Joseph Is Imprisoned, Yet The Lord Is With Him
-
----
-
 ## 🔥 His Wrath Was Kindled
 
-Potiphar hears his wife's accusation and becomes angry.
+"Kindled" compares Potiphar's anger to a fire catching and spreading.
 
-It's worth noticing what Moses doesn't say: he doesn't say Potiphar had Joseph executed, even though a slave accused of assaulting his master's wife could easily have faced death under the authority Potiphar held as captain of the guard.
+It suggests sudden, burning rage rather than a slow, careful judgment.
 
-That restraint may hint that Potiphar had at least some private doubt about the full story — though Scripture doesn't say so directly.
+Potiphar hears one side of the story and reacts immediately.
 
-🔥 Potiphar responds with real anger
+Joseph never gets the chance to explain what actually happened.
 
-⚖️ He had the authority to have Joseph killed, but didn't
+🔥 Kindled compares anger to catching fire
 
-🤔 This restraint may hint at quiet doubt about his wife's story
+⚡ The reaction was sudden, not measured
 
-➡️ Joseph still pays a heavy price
+🙉 Potiphar heard only one side
 
----
-
-## ⛓️ Joseph's Master Took Him, And Put Him Into The Prison
-
-Despite his innocence, Joseph is thrown into prison.
-
-This is the second time Joseph has suffered severely for doing the right thing — first sold by his own brothers out of jealousy, and now imprisoned by his master for refusing to sin.
-
-Doing what is right does not always protect a person from suffering for it.
-
-⛓️ Joseph is imprisoned despite being innocent
-
-📖 This is the second time doing right leads to Joseph's suffering
-
-🙏 Integrity does not guarantee an easy outcome
-
-➡️ Moses tells us exactly what kind of prison this was
+📖 Joseph never got to explain
 
 ---
+## 🏰 A Place Where The King's Prisoners Were Bound
 
-## 👑 A Place Where The King's Prisoners Were Bound
+This was not an ordinary local jail.
 
-This detail matters more than it first appears.
+It held prisoners connected to Pharaoh's own court.
 
-This wasn't an ordinary local jail — it was a **royal prison**, holding prisoners connected to Pharaoh himself. Because Potiphar was captain of the guard, this prison was likely under his direct authority.
+The law in this culture allowed a much harsher punishment for this accusation.
 
-This detail sets up the very next chapter, where Joseph will meet Pharaoh's butler and baker — the connection that eventually leads him all the way to Pharaoh's throne.
+Potiphar's choice to imprison rather than execute Joseph is worth noticing.
 
-👑 This is a royal prison, not an ordinary jail
+It may hint that even Potiphar was not fully certain of his wife's story.
 
-🔗 It connects directly to Potiphar's authority as captain of the guard
+🏰 This was Pharaoh's own royal prison
 
-📖 This sets up Joseph's meeting with Pharaoh's butler and baker in the next chapter
+⚖️ The crime allowed a harsher penalty
 
-➡️ God's presence follows Joseph into prison
+🤔 Potiphar chose prison, not execution
+
+📖 Doubt may explain his restraint
+
+# Genesis 39:21-23
+# 🕊️ The LORD Was With Joseph In Prison
+---
+## 🕊️ The LORD Was With Joseph, And Shewed Him Mercy
+
+"Shewed" is simply the old spelling of showed.
+
+Joseph's circumstances have gotten worse, not better.
+
+Yet the exact same phrase from verse two returns here, the LORD was with him.
+
+A prison cell did not put Joseph outside God's reach.
+
+📝 Shewed simply means showed
+
+⛓️ Joseph's situation had worsened
+
+🔁 The same phrase from verse two returns
+
+📖 Prison did not remove God's presence
 
 ---
+## 🔁 Committed To Joseph's Hand All The Prisoners
 
-## 🙏 But The LORD Was With Joseph
+This is the same pattern from Potiphar's house happening again.
 
-This phrase returns, word for word, from verse 2 — forming a frame around the entire chapter.
+There Joseph ran a wealthy man's home.
 
-Prosperity, slavery, temptation, false accusation, imprisonment — through every single turn, one thing never changes: **God's presence never left him.**
+Here he runs a royal prison.
 
-🙏 This exact phrase also opened the chapter in verse 2
+God keeps placing responsibility into Joseph's hands no matter where he is.
 
-📖 It forms a frame around Joseph's entire story here
+🔁 The same pattern repeats in prison
 
-⭐ Circumstances change completely, but God's presence never does
+🏠 He once ran Potiphar's house
 
-➡️ That presence produces the same results as before
+⛓️ Now he runs the prison
 
----
-
-## 🤝 Gave Him Favour In The Sight Of The Keeper Of The Prison
-
-The exact same pattern that happened with Potiphar now repeats with the prison keeper.
-
-Joseph doesn't need a title or freedom to gain trust — wherever God's presence is with him, favor follows, even inside a prison cell.
-
-🤝 The same pattern of favor repeats in a completely new setting
-
-🔁 Joseph's circumstances change, but the pattern of blessing does not
-
-➡️ The prison keeper responds the same way Potiphar did
+📖 God keeps entrusting him with responsibility
 
 ---
+## 🙌 That Which He Did, The LORD Made It To Prosper
 
-## 🗝️ The Keeper Of The Prison Committed To Joseph's Hand All The Prisoners
+This closes the chapter with the same words it opened with.
 
-Just as Potiphar once handed Joseph the entire household, the prison keeper now hands him authority over the entire prison.
+Joseph went from favored son, to slave, to overseer, to prisoner, to overseer again.
 
-Joseph rises to leadership again — even as a prisoner himself, with no freedom and no status, he becomes the one others depend on.
+Every circumstance changed, but this one sentence never did.
 
-🗝️ Joseph is again placed in charge, even while imprisoned
+The LORD made it to prosper, no matter where Joseph stood.
 
-📈 He rises to leadership regardless of his circumstances
+🔁 The chapter closes like it opened
 
-➡️ The chapter closes exactly where it began
+🎢 Joseph's circumstances kept changing
 
----
+🙌 God's presence never changed
 
-## ✨ That Which He Did, The LORD Made It To Prosper
-
-The chapter ends the same way it started: God's presence, God's blessing, and Joseph's faithfulness working together, no matter what circumstances surround him.
-
-Joseph's outward situation has completely collapsed — slave to prisoner — yet the inward reality God is building in him has never once been interrupted.
-
-✨ The chapter closes with the same truth it opened with
-
-🔄 Joseph's circumstances change completely, but God's blessing does not
-
-🙏 What God is building in a person cannot be undone by unjust circumstances`;
+📖 Prosperity followed God, not position
+`.trim();
 
 export const GENESIS_THIRTY_NINE_PERSONAL_SECTIONS = parseGenesisThirtyNineRawNotes(GENESIS_THIRTY_NINE_RAW_NOTES);

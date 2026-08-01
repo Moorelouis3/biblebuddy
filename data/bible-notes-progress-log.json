@@ -1,7 +1,7 @@
 {
   "goalTotalChapters": 1189,
-  "preExistingGoldStandardChapters": 41,
-  "preExistingGoldStandardNote": "Genesis 1-40 and 42 were already at gold-standard quality before this tracked log started on 2026-07-24.",
+  "preExistingGoldStandardChapters": 40,
+  "preExistingGoldStandardNote": "Genesis 1-40 were already at gold-standard quality before this tracked log started on 2026-07-24. Genesis 42 and 43 were also pre-existing but have since been regenerated under this log (2026-08-01) to match the new style spec.",
   "entries": [
     {
       "book": "Genesis",
@@ -4170,6 +4170,597 @@
         {
           "name": "npx tsc --noEmit -p . clean, zero errors",
           "at": "2026-07-31T18:56:05Z"
+        }
+      ]
+    },
+    {
+      "book": "Genesis",
+      "chapter": 35,
+      "startedAt": "2026-07-31T19:46:23Z",
+      "finishedAt": "2026-07-31T19:58:02Z",
+      "durationMinutes": 12,
+      "sections": 6,
+      "cards": 48,
+      "verses": 29,
+      "notes": "Redo-backlog chapter (fourth entry in data/bible-notes-style-redo-remaining.json), regenerated from scratch to match docs/bible-study-note-style.md. The return to Bethel: God sending Jacob back to Bethel to build an altar and put away the strange gods, the household purification, the arrival at Luz/Bethel and the naming of Elbethel, Deborah's death and burial under Allonbachuth, God appearing again to confirm the name Israel and repeat the covenant (God Almighty, fruitfulness, nation and company of nations, kings out of Jacob's loins, the land promise), the pillar with its drink and oil offering, Rachel's hard labor and death giving birth to Benjamin (Benoni renamed) on the way to Ephrath, Reuben's sin with Bilhah and its delayed consequence, the roll call of Jacob's twelve sons grouped by mother, and Isaac's death at Mamre/Hebron with Esau and Jacob burying him together in reconciliation. Density 1.66 cards/verse (48/29). Verified with scripts/check_bible_note_style.py (clean after fixing 4 over-length bullets and 4 stacked-clause/double-and prose lines found by eye), parser check (6/6 sections, 48 cards), and npx tsc --noEmit -p . (clean). data/bible-notes-style-redo-remaining.json's Genesis 35 entry removed from the front of the list as part of this commit; next redo target is Genesis 36.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-31T19:46:53Z"
+        },
+        {
+          "name": "target chapter determined: Genesis 35 (redo mode, first entry in data/bible-notes-style-redo-remaining.json)",
+          "at": "2026-07-31T19:47:05Z"
+        },
+        {
+          "name": "KJV text fetched for Genesis 35 via raw.githubusercontent.com/aruljohn/Bible-kjv/master/Genesis.json",
+          "at": "2026-07-31T19:47:23Z"
+        },
+        {
+          "name": "docs/bible-study-note-style.md read in full; lib/genesisThirtyOneSource.ts reviewed as reference implementation, old lib/genesisThirtyFiveSource.ts also reviewed for file structure",
+          "at": "2026-07-31T19:49:30Z"
+        },
+        {
+          "name": "source file written: lib/genesisThirtyFiveSource.ts (6 sections, 48 cards)",
+          "at": "2026-07-31T19:54:00Z"
+        },
+        {
+          "name": "style checker: scripts/check_bible_note_style.py clean after fixing 4 over-length bullets and 4 stacked-clause/double-and prose lines caught by manual eye scan",
+          "at": "2026-07-31T19:55:40Z"
+        },
+        {
+          "name": "wiring confirmed already correct in lib/bibleReaderStudyNotes.ts (import + preserveExactPhraseBodies genesis 1-50 range already cover chapter 35, no changes needed)",
+          "at": "2026-07-31T19:55:50Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections('Genesis', 35) -> 6 sections, 48 cards",
+          "at": "2026-07-31T19:56:10Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-31T19:56:45Z"
+        },
+        {
+          "name": "progress files logged: data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, data/bible-notes-style-redo-remaining.json",
+          "at": "2026-07-31T19:58:02Z"
+        }
+      ]
+    },
+    {
+      "book": "Genesis",
+      "chapter": 36,
+      "startedAt": "2026-07-31T20:45:56Z",
+      "finishedAt": "2026-07-31T20:53:16Z",
+      "durationMinutes": 8,
+      "sections": 8,
+      "cards": 28,
+      "verses": 43,
+      "notes": "Fifth redo-backlog chapter (data/bible-notes-style-redo-remaining.json), regenerated from scratch to match docs/bible-study-note-style.md. Esau's genealogy: three wives and five sons in Canaan, the Edom/red-stew callback, the Aholibamah kinship puzzle (son/daughter terms stretching loosely), the move to Mount Seir echoing Abraham and Lot, duke defined as clan chief, Timna the Horite concubine and Amalek's first mention, the Korah name appearing in two dukes lists (flagged as a likely copying issue per several scholars), the Horite genealogy of Seir's original inhabitants, the kings of Edom who reigned before Israel had a king (no hereditary dynasty, reigned in his stead formula), Hadad smiting Midian, and the closing territorial duke list landing on Rebekah's two-nations prophecy. Per spec section 12, built cards around word definitions, why details were recorded, and where names point, rather than restating repetitive name lists. Density 0.65 cards/verse (28/43), appropriate for a heavily repetitive genealogy chapter. Verified with scripts/check_bible_note_style.py (clean on first run), parser check (8/8 sections, 28 cards), and npx tsc --noEmit -p . (clean). data/bible-notes-style-redo-remaining.json's Genesis 36 entry removed from the front of the list as part of this commit; next redo target is Genesis 37.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-31T20:45:56Z"
+        },
+        {
+          "name": "target chapter determined: Genesis 36 (redo mode, first entry in data/bible-notes-style-redo-remaining.json)",
+          "at": "2026-07-31T20:46:27Z"
+        },
+        {
+          "name": "KJV text fetched for Genesis 36 via raw.githubusercontent.com/aruljohn/Bible-kjv/master/Genesis.json",
+          "at": "2026-07-31T20:46:27Z"
+        },
+        {
+          "name": "docs/bible-study-note-style.md read in full; lib/genesisThirtyOneSource.ts reviewed as reference implementation; .claude/skills/bible-notes/SKILL.md reviewed for technical pipeline; old lib/genesisThirtySixSource.ts reviewed for prior wiring",
+          "at": "2026-07-31T20:49:00Z"
+        },
+        {
+          "name": "source file written: lib/genesisThirtySixSource.ts (8 sections, 28 cards)",
+          "at": "2026-07-31T20:52:30Z"
+        },
+        {
+          "name": "style checker: scripts/check_bible_note_style.py clean on first run",
+          "at": "2026-07-31T20:53:00Z"
+        },
+        {
+          "name": "wiring confirmed already correct in lib/bibleReaderStudyNotes.ts (import + preserveExactPhraseBodies genesis range already cover chapter 36, no changes needed)",
+          "at": "2026-07-31T20:53:00Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections('Genesis', 36) -> 8 sections, 28 cards",
+          "at": "2026-07-31T20:53:16Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-31T20:53:16Z"
+        },
+        {
+          "name": "progress files logged: data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, data/bible-notes-style-redo-remaining.json",
+          "at": "2026-07-31T20:55:00Z"
+        }
+      ]
+    },
+    {
+      "book": "Genesis",
+      "chapter": 37,
+      "startedAt": "2026-07-31T21:46:21Z",
+      "finishedAt": "2026-07-31T22:00:19Z",
+      "durationMinutes": 14,
+      "sections": 8,
+      "cards": 46,
+      "verses": 36,
+      "notes": "Sixth redo-backlog chapter (data/bible-notes-style-redo-remaining.json), regenerated from scratch to match docs/bible-study-note-style.md. Joseph sold into slavery: Jacob settling in Canaan as a sojourner, the generations of Jacob transition phrase, the Bilhah/Zilpah sons, Joseph's evil report, the coat of many colours as a status symbol, the brothers' hardening hatred, Joseph's two dreams (sheaves bowing, then sun/moon/stars bowing) and obeisance imagery, Jacob's rebuke that still kept the saying in mind, Joseph's long solo journey to Shechem and on to Dothan, the murder plot Reuben talks down into a pit instead, the coat stripped off, Judah's profit-driven pivot to selling Joseph for twenty pieces of silver, Reuben's grief at the empty pit, and the staged deception with the blood-soaked coat that leaves Jacob mourning a son who is actually alive and newly sold to Potiphar. Density 1.28 cards/verse (46/36), within the reference implementation's typical range. Verified with scripts/check_bible_note_style.py (clean after fixing 12 mechanical issues: a banned filler word inside a title, a repeated-emoji bullet set, and ten over-length bullets), parser check (8/8 sections, 46 cards), and npx tsc --noEmit -p . (clean). Also caught and fixed 3 'while'-stacked-clause prose lines by eye per spec section 3, beyond what the mechanical checker covers. data/bible-notes-style-redo-remaining.json's Genesis 37 entry removed from the front of the list as part of this commit; next redo target is Genesis 38.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-31T21:46:57Z"
+        },
+        {
+          "name": "target chapter determined: Genesis 37 (redo mode, first entry in data/bible-notes-style-redo-remaining.json)",
+          "at": "2026-07-31T21:47:30Z"
+        },
+        {
+          "name": "KJV text fetched for Genesis 37 via raw.githubusercontent.com/aruljohn/Bible-kjv/master/Genesis.json",
+          "at": "2026-07-31T21:48:10Z"
+        },
+        {
+          "name": "docs/bible-study-note-style.md read in full; lib/genesisThirtyOneSource.ts and scripts/check_bible_note_style.py reviewed; old lib/genesisThirtySevenSource.ts reviewed for prior wiring",
+          "at": "2026-07-31T21:53:05Z"
+        },
+        {
+          "name": "source file written: lib/genesisThirtySevenSource.ts (8 sections, 46 cards)",
+          "at": "2026-07-31T21:55:00Z"
+        },
+        {
+          "name": "style checker: scripts/check_bible_note_style.py clean after fixing 12 flagged mechanical issues",
+          "at": "2026-07-31T21:58:30Z"
+        },
+        {
+          "name": "wiring confirmed already correct in lib/bibleReaderStudyNotes.ts (import + preserveExactPhraseBodies genesis range already cover chapter 37, no changes needed)",
+          "at": "2026-07-31T21:55:29Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections('Genesis', 37) -> 8 sections, 46 cards",
+          "at": "2026-07-31T21:55:55Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, zero errors",
+          "at": "2026-07-31T21:59:30Z"
+        },
+        {
+          "name": "progress files logged: data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, data/bible-notes-style-redo-remaining.json",
+          "at": "2026-07-31T22:00:19Z"
+        }
+      ]
+    },
+    {
+      "book": "Genesis",
+      "chapter": 38,
+      "startedAt": "2026-07-31T22:46:06Z",
+      "finishedAt": "2026-07-31T22:59:17Z",
+      "durationMinutes": 13,
+      "sections": 6,
+      "cards": 60,
+      "verses": 30,
+      "notes": "Seventh redo-backlog chapter (data/bible-notes-style-redo-remaining.json), regenerated from scratch to match docs/bible-study-note-style.md. Judah and Tamar: Judah leaving his brothers for Adullam after helping sell Joseph, marrying a Canaanite woman (Shuah's daughter, unnamed) and fathering Er, Onan, and Shelah, Tamar's marriage to Er and his death for wickedness, the levirate marriage custom explained (Deuteronomy 25 callback) and Onan's real sin correctly identified as refusing his brother's widow her rightful child rather than the private act itself, Judah's broken promise sending Tamar back to her father's house, Tamar's disguise at the roadside near Timnath during sheep shearing season, the zonah/qedeshah word distinction between what Judah privately called her and the more respectable term Hirah used while searching, the signet/bracelets/staff pledge functioning as an unmistakable ancient ID, Judah's hypocritical order to burn Tamar for the very sin he committed, Tamar's wise silent evidence instead of a public accusation, Judah's turning-point confession (\"she hath been more righteous than I\") read as the start of his transformation toward Genesis 44, and the birth of twins Pharez and Zarah (KJV spelling, matching the fetched text) with the scarlet-thread reversal echoing Genesis's recurring unexpected-son pattern (Isaac over Ishmael, Jacob over Esau) and its genealogical hinge toward Boaz, David, and Jesus (Ruth 4, Matthew 1). Density 2.0 cards/verse (60 cards / 30 verses), on the high end given how event-dense and custom-rich this chapter is. `scripts/check_bible_note_style.py` clean after fixing one banned hedge word (\"fairly\"). Parser check passed exactly (6/6 sections, 60 cards), npx tsc --noEmit -p . clean with zero errors. Redo backlog entry popped; next redo target is Genesis 39.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-31T22:46:54Z"
+        },
+        {
+          "name": "target chapter determined: Genesis 38 (style redo mode)",
+          "at": "2026-07-31T22:47:02Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and SKILL.md read in full",
+          "at": "2026-07-31T22:47:16Z"
+        },
+        {
+          "name": "KJV text fetched for Genesis 38 (30 verses, GitHub raw mirror)",
+          "at": "2026-07-31T22:47:33Z"
+        },
+        {
+          "name": "Genesis 38 source file written (redo to new style spec)",
+          "at": "2026-07-31T22:55:38Z"
+        },
+        {
+          "name": "style checker clean (60 cards, 0 problems)",
+          "at": "2026-07-31T22:55:55Z"
+        },
+        {
+          "name": "parser check passed (6 sections, 60 cards, verbatim)",
+          "at": "2026-07-31T22:56:13Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo chapter (no changes needed)",
+          "at": "2026-07-31T22:56:13Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean (exit 0)",
+          "at": "2026-07-31T22:57:44Z"
+        },
+        {
+          "name": "progress files logged: data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, data/bible-notes-style-redo-remaining.json",
+          "at": "2026-07-31T22:59:17Z"
+        }
+      ]
+    },
+    {
+      "book": "Genesis",
+      "chapter": 39,
+      "startedAt": "2026-07-31T23:46:53Z",
+      "finishedAt": "2026-07-31T23:55:00Z",
+      "durationMinutes": 8,
+      "sections": 6,
+      "cards": 22,
+      "verses": 23,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Eighth redo-backlog chapter: Joseph in Potiphar's house. Joseph's rise under an Egyptian captain of the guard, the LORD-was-with-him theme opening and closing the chapter as a frame, grace and overseer defined, the blessing spreading from Joseph to Potiphar's whole household for Joseph's sake, the goodly-and-well-favoured phrase callback to Rachel in Genesis twenty nine, Potiphar's wife's repeated daily temptation and Joseph's wotteth-not/sin-against-God refusal, the garment caught and left behind (echoing the coat of many colours used to deceive Jacob back in Genesis 37), the Hebrew-to-mock-us false accusation rehearsed identically to the household servants and then to Potiphar himself, Potiphar's kindled wrath and the note that imprisonment rather than execution may hint at private doubt, the king's-prisoners detail marking this as a royal prison, and the closing mercy/overseer-of-prisoners pattern repeating the opening blessing almost verbatim. Density 0.96 cards/verse (23 verses, 22 cards), consistent with the genesisThirtyOneSource.ts reference implementation's ratio. `scripts/check_bible_note_style.py` clean after fixing one over-length bullet. Parser check passed exactly (6/6 sections, 22 cards), npx tsc --noEmit -p . clean with zero errors. Redo backlog entry popped; next redo target is Genesis 40.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-07-31T23:46:17Z"
+        },
+        {
+          "name": "target chapter determined: Genesis 39 (style redo mode)",
+          "at": "2026-07-31T23:46:53Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and SKILL.md read in full",
+          "at": "2026-07-31T23:47:01Z"
+        },
+        {
+          "name": "KJV text fetched for Genesis 39 (23 verses, GitHub raw mirror)",
+          "at": "2026-07-31T23:50:27Z"
+        },
+        {
+          "name": "Genesis 39 source file written (redo to new style spec)",
+          "at": "2026-07-31T23:52:02Z"
+        },
+        {
+          "name": "style checker clean (22 cards, 0 problems)",
+          "at": "2026-07-31T23:52:09Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo chapter (no changes needed)",
+          "at": "2026-07-31T23:52:22Z"
+        },
+        {
+          "name": "parser check passed (6 sections, 22 cards, verbatim)",
+          "at": "2026-07-31T23:52:36Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean (exit 0)",
+          "at": "2026-07-31T23:53:42Z"
+        },
+        {
+          "name": "progress files logged: data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, data/bible-notes-style-redo-remaining.json",
+          "at": "2026-07-31T23:55:00Z"
+        }
+      ]
+    },
+    {
+      "book": "Genesis",
+      "chapter": 40,
+      "startedAt": "2026-08-01T00:46:40Z",
+      "finishedAt": "2026-08-01T00:56:51Z",
+      "durationMinutes": 10,
+      "sections": 6,
+      "cards": 40,
+      "verses": 23,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Ninth redo-backlog chapter: the butler and baker's dreams in prison. Local git state had a stale detached-HEAD clone diverged from origin/main (unrelated history); reset local main to origin/main before starting since the working tree was already clean. Covered the chief-butler/chief-baker offices and why the offense was treated so seriously, ward as guarded custody and the callback to Potiphar's prison from chapter thirty nine, the season-long trust that let Joseph read their sadness and ask, the Egyptian professional-interpreter custom and Joseph's 'interpretations belong to God' turning point, the vine/branches dream matching the butler's real job and the counted-object-as-time-symbol pattern, the lift-up-thine-head idiom and its inverted lift-up-thy-head-from-off-thee variant for the baker, the Egyptian burial/mummification stakes behind hanging on a tree, Joseph's one vulnerable personal request and the Hebrew self-identification, Pharaoh's birthday as an Egyptian (not Hebrew) custom explaining the public reckoning, and the chapter's quiet, deliberately unresolved close with the butler forgetting Joseph. Density 1.74 cards/verse (23 verses, 40 cards), the strongest coverage yet in the redo backlog. `scripts/check_bible_note_style.py` clean after fixing five over-length bullets and two bullets that did not end in \ud83d\udcd6/\u27a1\ufe0f. Parser check passed exactly (6/6 sections, 40 cards, text verbatim), npx tsc --noEmit -p . clean with zero errors. Redo backlog entry popped; next redo target is Genesis 41.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-01T00:47:12Z"
+        },
+        {
+          "name": "target chapter determined: Genesis 40 (style redo mode)",
+          "at": "2026-08-01T00:47:30Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and SKILL.md read in full",
+          "at": "2026-08-01T00:48:10Z"
+        },
+        {
+          "name": "KJV text fetched for Genesis 40 (23 verses, GitHub raw mirror)",
+          "at": "2026-08-01T00:48:30Z"
+        },
+        {
+          "name": "Genesis 40 source file written (redo to new style spec, 40 cards)",
+          "at": "2026-08-01T00:54:30Z"
+        },
+        {
+          "name": "style checker clean after fixing 7 flagged bullets",
+          "at": "2026-08-01T00:55:10Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo chapter (no changes needed)",
+          "at": "2026-08-01T00:55:20Z"
+        },
+        {
+          "name": "parser check passed (6 sections, 40 cards, verbatim)",
+          "at": "2026-08-01T00:55:40Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean (exit 0)",
+          "at": "2026-08-01T00:56:34Z"
+        },
+        {
+          "name": "progress files logged: data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, data/bible-notes-style-redo-remaining.json",
+          "at": "2026-08-01T00:56:51Z"
+        }
+      ]
+    },
+    {
+      "book": "Genesis",
+      "chapter": 41,
+      "startedAt": "2026-08-01T01:46:04Z",
+      "finishedAt": "2026-08-01T01:58:10Z",
+      "durationMinutes": 12,
+      "sections": 14,
+      "cards": 55,
+      "verses": 57,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Tenth redo-backlog chapter (data/bible-notes-style-redo-remaining.json), regenerated from scratch to match docs/bible-study-note-style.md, replacing the original 2026-07-24 pre-spec version (37 cards / 11 sections). Pharaoh's two dreams and Joseph's rise to power: the cow and grain dreams as one doubled message, the magicians and wise men failing twice, the chief butler finally remembering Joseph out of self interest, Joseph shaving and changing clothes for Egyptian custom before deflecting all credit to God (\"it is not in me\"), the interpretation (seven years of plenty followed by seven years of severe famine), Joseph's own storage and fifth-part taxation plan, Pharaoh's near instant promotion of a foreign prisoner to second-in-command, the investiture (signet ring, fine linen, gold chain, second chariot, the new Egyptian name Zaphnathpaaneah, and marriage into the priestly family of On/Heliopolis), the callback to Joseph's age thirty against his sale into slavery at seventeen in Genesis 37, the naming of Manasseh and Ephraim, and the famine finally arriving worldwide while Egypt alone has bread, setting up his brothers' arrival in chapter 42. Density 0.96 cards/verse (55 cards / 57 verses), consistent with the genesisThirtyOneSource.ts reference implementation's ratio for a long narrative chapter. `scripts/check_bible_note_style.py` clean on first run. Also manually checked for stacked-clause trigger words (while, rather than, close enough that, a second and) per spec section 3, none found. Parser check passed exactly (14/14 sections, 55 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call all pre-existing) so no wiring changes were needed. data/bible-notes-style-redo-remaining.json's Genesis 41 entry removed from the front of the list as part of this commit; next redo target is Genesis 42.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-01T01:46:04Z"
+        },
+        {
+          "name": "target chapter determined: Genesis 41 (redo mode, first entry in data/bible-notes-style-redo-remaining.json)",
+          "at": "2026-08-01T01:46:35Z"
+        },
+        {
+          "name": "KJV text fetched for Genesis 41 (57 verses, aruljohn/Bible-kjv GitHub raw mirror)",
+          "at": "2026-08-01T01:46:46Z"
+        },
+        {
+          "name": "docs/bible-study-note-style.md and .claude/skills/bible-notes/SKILL.md read in full",
+          "at": "2026-08-01T01:46:50Z"
+        },
+        {
+          "name": "reference implementation lib/genesisThirtyOneSource.ts and existing genesisFortyOneSource.ts/wiring reviewed",
+          "at": "2026-08-01T01:48:18Z"
+        },
+        {
+          "name": "wiring in lib/bibleReaderStudyNotes.ts confirmed already correct for redo chapter, no changes needed",
+          "at": "2026-08-01T01:52:08Z"
+        },
+        {
+          "name": "lib/genesisFortyOneSource.ts written (regenerated to new style spec, 14 sections, 55 cards)",
+          "at": "2026-08-01T01:53:44Z"
+        },
+        {
+          "name": "scripts/check_bible_note_style.py clean (0 problems)",
+          "at": "2026-08-01T01:53:44Z"
+        },
+        {
+          "name": "parser check passed (14/14 sections, 55 cards, text verbatim)",
+          "at": "2026-08-01T01:53:57Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean with zero errors",
+          "at": "2026-08-01T01:54:10Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, data/bible-notes-style-redo-remaining.json)",
+          "at": "2026-08-01T01:58:10Z"
+        }
+      ]
+    },
+    {
+      "book": "Genesis",
+      "chapter": 42,
+      "startedAt": "2026-08-01T02:48:00Z",
+      "finishedAt": "2026-08-01T02:57:56Z",
+      "durationMinutes": 10,
+      "sections": 9,
+      "cards": 39,
+      "verses": 38,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Eleventh redo-backlog chapter (data/bible-notes-style-redo-remaining.json), regenerated from scratch to match docs/bible-study-note-style.md, replacing the original pre-spec version (34 cards / 9 sections). Jacob sends ten sons to Egypt for grain, leaving Benjamin home out of old grief over Joseph; the brothers bow before Joseph in exact fulfillment of his boyhood dream, not recognizing him; Joseph accuses them of spying and tests them, holding Simeon as a guarantee; the brothers, alone and unaware Joseph understands their language, finally confess their guilt over selling him, with Reuben's twenty year old warning surfacing; Joseph secretly returns their silver in their sacks, which reads to the family as terror rather than mercy; and the chapter closes with Jacob refusing to risk Benjamin, still not told the truth about Joseph by the sons in the room. Word definitions covered inline: thither/thence, peradventure, mischief, made himself strange, nakedness of the land, traffick, besought, verily, ward, laded, asses, provender, espied, bereaved, and gray hairs to the grave. Kept the same 9 section boundaries as the original file for verse coverage continuity, rewrote every card to the four-move opening / blank-line-per-line / exactly-four-bullet format. `scripts/check_bible_note_style.py` found 6 mechanical problems on first pass (one banned hedge word collision where a card title's literal KJV wording, 'spake roughly,' matched the banned hedge 'roughly' -- retitled that card to a shorter contiguous KJV substring that avoids the word; five bullets over the 8-word cap) -- all fixed, second run clean. Parser check passed exactly (9/9 sections, 39 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call all pre-existing) so no wiring changes were needed. data/bible-notes-style-redo-remaining.json's Genesis 42 entry removed from the front of the list as part of this commit; next redo target is Genesis 43. A few step timestamps below are shared across nearby milestones completed between `date -u` captures, rather than a dedicated call at every single one, consistent with prior entries' documented practice.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-01T02:48:30Z"
+        },
+        {
+          "name": "target chapter determined: Genesis 42 (redo mode, first entry in data/bible-notes-style-redo-remaining.json)",
+          "at": "2026-08-01T02:48:30Z"
+        },
+        {
+          "name": "KJV text fetched for Genesis 42 (38 verses, aruljohn/Bible-kjv GitHub raw mirror)",
+          "at": "2026-08-01T02:48:30Z"
+        },
+        {
+          "name": "docs/bible-study-note-style.md and .claude/skills/bible-notes/SKILL.md read in full",
+          "at": "2026-08-01T02:48:30Z"
+        },
+        {
+          "name": "reference implementation lib/genesisThirtyOneSource.ts and existing genesisFortyTwoSource.ts/wiring reviewed",
+          "at": "2026-08-01T02:48:30Z"
+        },
+        {
+          "name": "wiring in lib/bibleReaderStudyNotes.ts confirmed already correct for redo chapter, no changes needed",
+          "at": "2026-08-01T02:48:30Z"
+        },
+        {
+          "name": "lib/genesisFortyTwoSource.ts written (regenerated to new style spec, 9 sections, 39 cards)",
+          "at": "2026-08-01T02:57:13Z"
+        },
+        {
+          "name": "scripts/check_bible_note_style.py clean after two passes (6 problems fixed: 1 banned hedge word title collision, 5 over-length bullets)",
+          "at": "2026-08-01T02:57:13Z"
+        },
+        {
+          "name": "parser check passed (9/9 sections, 39 cards, text verbatim)",
+          "at": "2026-08-01T02:57:13Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean with zero errors",
+          "at": "2026-08-01T02:57:13Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, data/bible-notes-style-redo-remaining.json)",
+          "at": "2026-08-01T02:57:56Z"
+        }
+      ]
+    },
+    {
+      "book": "Genesis",
+      "chapter": 43,
+      "startedAt": "2026-08-01T03:46:07Z",
+      "finishedAt": "2026-08-01T03:58:00Z",
+      "durationMinutes": 12,
+      "sections": 9,
+      "cards": 30,
+      "verses": 34,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Twelfth redo-backlog chapter (data/bible-notes-style-redo-remaining.json), regenerated from scratch to match docs/bible-study-note-style.md, replacing the original pre-spec version (23 cards / 9 sections). The brothers return to Egypt with Benjamin: Judah reminding Jacob of Joseph's flat condition, Jacob's blame shifting onto his sons out of fear, Judah offering personal surety for Benjamin (a real turn from the brother who once suggested selling Joseph), Jacob's gift of Canaan's best goods and double money handed over not knowing the first money was mercy not a mistake, Jacob's prayer and surrender (\"if I be bereaved, I am bereaved\"), the brothers' fear at being brought into Joseph's house and the steward's calm reassurance, Simeon returned, the meal preparations, the brothers bowing a second time in further fulfillment of Joseph's boyhood dream, Joseph's private weeping over Benjamin followed by him composing himself to keep the test going, and the meal itself with its Egyptian-Hebrew seating taboo, the brothers seated in exact birth order, and Benjamin's five-fold portion as a possible second test for old jealousy. Word definitions covered inline: sore, solemnly protest, surety, lingered, peradventure, bereaved, seek occasion, communed, provender, bowels did yearn, refrained, mess. Kept the original file's 9 section boundaries for verse-coverage continuity while rewriting every card to the four-move opening / blank-line-per-line / exactly-four-bullet format. Density 0.88 cards/verse (34 verses, 30 cards), close to the genesisThirtyOneSource.ts reference implementation's ratio. scripts/check_bible_note_style.py found 3 mechanical problems on first pass (one banned filler word, \"indeed,\" inside a title lifted directly from the KJV wording, retitled to a shorter contiguous KJV substring that avoids the word; two over-length bullets), all fixed, second run clean. Parser check passed exactly (9/9 sections, 30 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call all pre-existing) so no wiring changes were needed. data/bible-notes-style-redo-remaining.json's Genesis 43 entry removed from the front of the list as part of this commit; next redo target is Genesis 44.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-01T03:46:07Z"
+        },
+        {
+          "name": "target chapter determined: Genesis 43 (redo mode, first entry in data/bible-notes-style-redo-remaining.json)",
+          "at": "2026-08-01T03:46:07Z"
+        },
+        {
+          "name": "docs/bible-study-note-style.md and .claude/skills/bible-notes/SKILL.md read in full",
+          "at": "2026-08-01T03:46:40Z"
+        },
+        {
+          "name": "reference implementation lib/genesisThirtyOneSource.ts and existing genesisFortyThreeSource.ts/wiring reviewed",
+          "at": "2026-08-01T03:46:40Z"
+        },
+        {
+          "name": "KJV text fetched for Genesis 43 (34 verses, aruljohn/Bible-kjv GitHub raw mirror)",
+          "at": "2026-08-01T03:46:57Z"
+        },
+        {
+          "name": "lib/genesisFortyThreeSource.ts written (regenerated to new style spec, 9 sections, 30 cards)",
+          "at": "2026-08-01T03:51:50Z"
+        },
+        {
+          "name": "scripts/check_bible_note_style.py clean after two passes (3 problems fixed: 1 banned filler word title collision, 2 over-length bullets)",
+          "at": "2026-08-01T03:53:30Z"
+        },
+        {
+          "name": "wiring in lib/bibleReaderStudyNotes.ts confirmed already correct for redo chapter, no changes needed",
+          "at": "2026-08-01T03:54:06Z"
+        },
+        {
+          "name": "parser check passed (9/9 sections, 30 cards, text verbatim)",
+          "at": "2026-08-01T03:54:22Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean with zero errors",
+          "at": "2026-08-01T03:55:34Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, data/bible-notes-style-redo-remaining.json)",
+          "at": "2026-08-01T03:56:33Z"
+        }
+      ]
+    },
+    {
+      "book": "Genesis",
+      "chapter": 44,
+      "startedAt": "2026-08-01T04:46:24Z",
+      "finishedAt": "2026-08-01T04:56:30Z",
+      "durationMinutes": 10,
+      "sections": 8,
+      "cards": 34,
+      "verses": 34,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Thirteenth redo-backlog chapter (data/bible-notes-style-redo-remaining.json), regenerated from scratch to match docs/bible-study-note-style.md, replacing the prior pre-spec version (same 34 cards / 8 sections coincidentally, but full rewrite of every card body and bullet). Joseph plants the silver cup in Benjamin's sack, the brothers are overtaken and searched in birth order, the cup turns up in Benjamin's sack, Judah and the brothers fall before Joseph again (a third bow, fulfilling Joseph's boyhood dream), Judah delivers the longest single speech in Genesis retracing the whole negotiation with Jacob (the double occurrence of the gray-hairs-to-the-grave idiom, Jacob's naming of Rachel as simply \"my wife,\" Judah's own surety pledge from chapter 43), and Judah offers himself as a slave in Benjamin's place, the turning point of the whole Joseph narrative given that this is the same brother who once proposed selling Joseph. Word definitions covered inline: bondmen, speedily, rent (torn), wot, iniquity, surety, peradventure, divineth. Kept the original file's 8 section boundaries for verse-coverage continuity while rewriting every card to the four-move opening, blank-line-per-line, exactly-four-bullet format. Density 1.0 cards/verse (34 verses, 34 cards), matching the genesisThirtyOneSource.ts reference implementation's ratio closely. One title needed adjusting before writing to avoid the banned filler word \"indeed\" (verse 5's \"whereby indeed he divineth\" was retitled to the contiguous KJV substring \"Is Not This It In Which My Lord Drinketh\" instead), so scripts/check_bible_note_style.py passed clean on the first run with zero problems. Parser check passed exactly (8/8 sections, 34 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call all pre-existing) so no wiring changes were needed. data/bible-notes-style-redo-remaining.json's Genesis 44 entry removed from the front of the list as part of this commit; next redo target is Genesis 45.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-01T04:46:24Z"
+        },
+        {
+          "name": "target chapter determined: Genesis 44 (redo mode, first entry in data/bible-notes-style-redo-remaining.json)",
+          "at": "2026-08-01T04:46:24Z"
+        },
+        {
+          "name": "KJV text fetched for Genesis 44 (34 verses, aruljohn/Bible-kjv GitHub raw mirror)",
+          "at": "2026-08-01T04:46:24Z"
+        },
+        {
+          "name": "docs/bible-study-note-style.md read in full; reference implementation lib/genesisThirtyOneSource.ts and existing lib/genesisFortyFourSource.ts reviewed",
+          "at": "2026-08-01T04:46:24Z"
+        },
+        {
+          "name": "lib/genesisFortyFourSource.ts written (regenerated to new style spec, 8 sections, 34 cards)",
+          "at": "2026-08-01T04:53:17Z"
+        },
+        {
+          "name": "scripts/check_bible_note_style.py clean on first pass, no problems",
+          "at": "2026-08-01T04:53:17Z"
+        },
+        {
+          "name": "wiring in lib/bibleReaderStudyNotes.ts confirmed already correct for redo chapter, no changes needed",
+          "at": "2026-08-01T04:53:41Z"
+        },
+        {
+          "name": "parser check passed (8/8 sections, 34 cards, text verbatim)",
+          "at": "2026-08-01T04:53:41Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean with zero errors",
+          "at": "2026-08-01T04:53:41Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, data/bible-notes-style-redo-remaining.json)",
+          "at": "2026-08-01T04:55:26Z"
+        }
+      ]
+    },
+    {
+      "book": "Genesis",
+      "chapter": 45,
+      "startedAt": "2026-08-01T05:46:27Z",
+      "finishedAt": "2026-08-01T06:01:00Z",
+      "durationMinutes": 15,
+      "sections": 7,
+      "cards": 51,
+      "verses": 28,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Fourteenth redo-backlog chapter (data/bible-notes-style-redo-remaining.json), regenerated from scratch to match docs/bible-study-note-style.md, replacing the original pre-spec version (31 cards / 7 sections). Joseph reveals his identity to his brothers: he clears the room and weeps aloud before saying \"I am Joseph,\" his first question is whether Jacob is still alive, the brothers stand troubled and silent, Joseph names the wrong directly (\"whom ye sold into Egypt\") before releasing them from guilt and reframing the whole story as God sending him ahead to preserve life and posterity, his urgent instructions to bring Jacob down to Goshen with the whole extended family, the reunion embrace with Benjamin first then all the brothers, Pharaoh's own generous response (wagons, the fat of the land, a direct royal order), Joseph's gifts for the journey including Benjamin's five-fold portion met with no jealousy this time (an intentional echo of the coat of many colours that once tore the family apart), Joseph's parting warning not to fall out by the way, and Jacob's disbelief giving way to revived spirit once he actually sees the wagons. Word definitions covered inline: refrain, earing, posterity, tarry, lade/laden, raiment, and fainted. Kept the original file's 7 section boundaries for verse-coverage continuity while rewriting every card to the four-move opening, blank-line-per-line, exactly-four-bullet format, including a genuine split of the old file's bundled \"I Am Joseph; Doth My Father Yet Live\" card into two separate cards per the skill's explicit guidance on that exact chapter. Density 1.82 cards/verse (28 verses, 51 cards), close to the ~2x target. scripts/check_bible_note_style.py found 1 problem on first pass (one 9-word bullet), fixed, second run clean. Parser check passed exactly (7/7 sections, 51 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call all pre-existing) so no wiring changes were needed. data/bible-notes-style-redo-remaining.json's Genesis 45 entry removed from the front of the list as part of this commit; next redo target is Genesis 46.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-01T05:47:28Z"
+        },
+        {
+          "name": "target chapter determined: Genesis 45 (style redo)",
+          "at": "2026-08-01T05:47:28Z"
+        },
+        {
+          "name": "KJV text fetched for Genesis 45 (28 verses, GitHub raw mirror)",
+          "at": "2026-08-01T05:54:59Z"
+        },
+        {
+          "name": "style spec and reference implementation read",
+          "at": "2026-08-01T05:54:59Z"
+        },
+        {
+          "name": "source file written (51 cards, 7 sections)",
+          "at": "2026-08-01T05:56:34Z"
+        },
+        {
+          "name": "style checker clean",
+          "at": "2026-08-01T05:56:34Z"
+        },
+        {
+          "name": "wiring confirmed (already correct for redo chapter, no changes needed)",
+          "at": "2026-08-01T05:59:19Z"
+        },
+        {
+          "name": "parser check passed (7 sections, 51 cards, verbatim render)",
+          "at": "2026-08-01T05:59:19Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-01T05:59:19Z"
         }
       ]
     }
