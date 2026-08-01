@@ -5297,6 +5297,63 @@
           "at": "2026-08-01T14:52:40Z"
         }
       ]
+    },
+    {
+      "book": "Exodus",
+      "chapter": 8,
+      "startedAt": "2026-08-01T18:48:03Z",
+      "finishedAt": "2026-08-01T19:00:00Z",
+      "durationMinutes": 12,
+      "sections": 8,
+      "cards": 34,
+      "verses": 32,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Twenty fourth redo-backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version from scratch to the new style spec. This run also recovered 6 prior commits (Exodus 1-7 style redos) that were sitting on a detached local HEAD never merged into the checked out main branch; confirmed with git fetch that origin/main already had them (a stale local ref, not a real push failure), fast forwarded local main to match, no data was actually at risk. Exodus 8 covers the frog plague (tied to the frog headed fertility goddess Heqet), Pharaoh's first ever request for prayer and promise to release Israel, the choice he is given over the timing of the frogs' removal, the frogs dying in heaps versus returning to the river, Pharaoh hardening his heart the instant relief comes, the lice plague which is the first sign Egypt's magicians cannot copy at all ('the finger of God'), the flies plague which is the first plague to spare Goshen by name and put a visible division between Israel and Egypt, Pharaoh's partial compromise to allow sacrifice only inside Egypt, the real danger behind sacrificing animals sacred to Egyptian gods like Apis and Khnum, and the repeating cycle of promise and betrayal that closes the chapter. Kept the same 8 section boundaries as the prior version (8:1-4, 8:5-7, 8:8-11, 8:12-15, 8:16-19, 8:20-24, 8:25-28, 8:29-32) and increased card density from 24 to 34 cards over 32 verses (about 1.06 cards per verse), in line with the Genesis 31 reference implementation's ratio of about 1.0 cards per verse. Word/custom definitions covered inline: intreat, respite, heaps, meet, sever, corrupted, kneadingtrough, swarms, enchantments, and the finger of God idiom. scripts/check_bible_note_style.py found one banned filler word ('positioned') and six bullets over the 8 word limit on the first pass, all fixed and the second run passed clean with zero problems. A manual section 13 eye check and a duplicate title/opening line scan both passed. Parser check passed exactly (8/8 sections, 34 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct (import, preserveExactPhraseBodies range covering exodus 1-40, replaceStudySectionsForBookRange call all pre-existing) so no wiring changes were needed, only the type/function/const names (ExodusEightPersonalSection, parseExodusEightRawNotes, EXODUS_EIGHT_RAW_NOTES, EXODUS_EIGHT_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Exodus 8 entry removed from the front of the list as part of this commit; next redo target is Exodus 9.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-01T18:48:03Z"
+        },
+        {
+          "name": "recovered 6 stranded commits (Exodus 1-7 redos) onto local main, confirmed already on origin, pushed no-op",
+          "at": "2026-08-01T18:47:00Z"
+        },
+        {
+          "name": "target chapter determined: Exodus 8 (style redo, first in remaining backlog)",
+          "at": "2026-08-01T18:48:10Z"
+        },
+        {
+          "name": "style spec and reference implementation read",
+          "at": "2026-08-01T18:49:30Z"
+        },
+        {
+          "name": "KJV text fetched",
+          "at": "2026-08-01T18:50:15Z"
+        },
+        {
+          "name": "source file written",
+          "at": "2026-08-01T18:54:00Z"
+        },
+        {
+          "name": "style checker clean (after fixing 1 banned word and 6 bullet word-count issues)",
+          "at": "2026-08-01T18:56:00Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo (no changes needed)",
+          "at": "2026-08-01T18:56:15Z"
+        },
+        {
+          "name": "parser check passed (8 sections, 34 cards)",
+          "at": "2026-08-01T18:56:45Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-01T18:57:30Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-01T19:00:00Z"
+        }
+      ]
     }
   ]
 }
