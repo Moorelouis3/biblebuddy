@@ -81,711 +81,1126 @@ function parseGenesisFortyOneRawNotes(rawText: string): GenesisFortyOnePersonalS
     });
   }
 
-  if (sections.length !== 11) {
-    throw new Error("Expected 11 Genesis 41 sections, received " + sections.length);
+  if (sections.length !== 14) {
+    throw new Error("Expected 14 Genesis 41 sections, received " + sections.length);
   }
 
   return sections;
 }
 
-const GENESIS_FORTY_ONE_RAW_NOTES = `# Genesis 41:1-7
+const GENESIS_FORTY_ONE_RAW_NOTES = `# Genesis 41:1-4
+# 🐄 Two Dreams Pharaoh Cannot Shake
+---
+## 🕰️ At The End Of Two Full Years
 
-# 🐄 Pharaoh Dreams Of Cows And Corn
+Two full years have passed since the chief butler was freed from prison.
+
+Chapter forty ended with the butler forgetting Joseph completely.
+
+That silence stretched on for two more years.
+
+God was still working even when nothing seemed to be happening.
+
+🕰️ Two years passed since the butler left prison
+
+🤐 The butler forgot Joseph the whole time
+
+😶 Nothing visible seemed to be happening
+
+📖 God works even during silent seasons
 
 ---
 
 ## 🌊 He Stood By The River
 
-Pharaoh's dream starts at the Nile.
+The river here means the Nile, the source of nearly all of Egypt's water.
 
-The Nile was Egypt's whole food supply.
+Egypt has almost no rainfall, so every crop and animal depended on it.
 
-Every crop, every animal, every meal in Egypt depended on that one river flooding on time each year.
+Pharaoh dreaming beside the river was not a small detail.
 
-A dream that begins at the river is a dream about whether Egypt eats or starves.
+The dream is really about Egypt's whole food supply.
 
-🌊 The river is the Nile
+🌊 The river means the Nile
 
-🍞 Egypt's entire food supply depended on it
+🌾 Egypt depended completely on the Nile
 
-🔮 The setting of the dream already points to what it's about
+👑 Pharaoh dreams next to Egypt's lifeline
 
----
-
-## 🐄 Seven Well Favoured Kine
-
-Kine is an old word for cows.
-
-The dream starts with cows, not sheep or goats.
-
-Cows mattered to Egypt in a special way, tied to the Nile and to a good year of food.
-
-A dream about cows was really a dream about food.
-
-Well favoured means healthy, fat, and good to look at.
-
-🐄 Kine means cows
-
-🌊 The cows come up out of the Nile, Egypt's food source
-
-🍖 Healthy cows picture a year with plenty to eat
+📖 The dream is about the entire food supply
 
 ---
 
-## 💀 Ill Favoured And Leanfleshed
+## 🐄 Seven Well Favoured Kine And Fatfleshed
 
-Ill favoured means ugly or sickly-looking.
+Kine is an old word for cattle, the plural of cow.
 
-Leanfleshed means starved-thin, with almost nothing on the bones.
+Well favoured means healthy and attractive to look at.
 
-These cows are the opposite of the first seven in every way.
+Fatfleshed means thick and well fed, the opposite of starving.
 
-Then something impossible happens.
+These seven cows represent complete abundance in the dream.
 
-The thin cows eat the fat cows.
+🐄 Kine means cattle
 
-And afterward, the thin cows still look thin.
+💪 Well favoured means healthy looking
 
-Nothing about them changes.
+🍖 Fatfleshed means thick and well fed
 
-💀 Ill favoured means sickly-looking
-
-🦴 Leanfleshed means starved-thin
-
-😱 Eating the fat cows and staying thin is not normal — that's the point
-
-Real hungry cows would look bigger after a meal.
-
-These don't.
-
-That's what makes the dream a warning and not just a picture.
+📖 These cows picture full abundance
 
 ---
 
-## 🌾 Seven Ears Of Corn, Rank And Good
+## 😟 Ill Favoured And Leanfleshed
 
-Pharaoh falls back asleep and has a second dream.
+Ill favoured means ugly or unhealthy looking, not simply unlucky.
 
-This time it's not cows, it's grain.
+Leanfleshed means thin to the point of looking starved.
 
-Rank is a word that used to mean strong and healthy growth.
+These seven cows are the exact opposite of the first seven.
 
-It did not mean smelly, the way we use it today.
+The contrast is the whole point of the dream.
 
-So "rank and good" just means the grain was thick, tall, and full.
+😟 Ill favoured means ugly looking
 
-🌾 Corn here means grain in general, not modern corn
+🦴 Leanfleshed means starved thin
 
-💪 Rank meant vigorous and healthy, not smelly
+⚖️ These cows oppose the first seven
 
-🌱 The grain pictures the same good years as the healthy cows
+📖 The contrast carries the dream's meaning
+
+---
+
+## 😱 Did Eat Up The Seven Well Favoured And Fat Kine
+
+Something thin is about to swallow something strong.
+
+In the dream, the starving cows eat the healthy cows completely.
+
+Eating them did not make the lean cows look any better.
+
+That detail is strange enough that Pharaoh wakes up confused.
+
+😱 Thin cows swallow the strong cows
+
+🍽️ Eating them changed nothing visible
+
+😵 The dream disturbs Pharaoh deeply
+
+📖 Something small can consume something strong
+
+# Genesis 41:5-8
+# 🌾 A Second Dream, The Same Warning
+---
+## 🌾 Seven Ears Of Corn Upon One Stalk
+
+Corn in the King James Bible does not mean corn on the cob.
+
+It means grain in general, most likely wheat or barley in Egypt.
+
+One stalk growing seven full heads of grain was unusually abundant.
+
+Rank simply means healthy and full grown, not smelly.
+
+🌾 Corn means grain, not modern corn
+
+🌱 Wheat or barley likely grew in Egypt
+
+📈 Seven heads on one stalk means abundance
+
+📖 Rank here means healthy and full
 
 ---
 
 ## 🌬️ Blasted With The East Wind
 
-Egypt sits next to a desert.
+The east wind in Egypt was a hot dry wind blowing off the desert.
 
-A hot wind blows in from that desert sometimes.
+It could scorch a whole field of grain in a single day.
 
-It's dry, and it can wither a crop in a single day.
+Blasted means withered and destroyed by that heat.
 
-That wind is what "the east wind" means here.
+A farmer watching that wind arrive knew the harvest was already lost.
 
-Blasted does not mean exploded.
+🌬️ East wind means a hot desert wind
 
-It means scorched and ruined by heat.
+🔥 It could scorch grain quickly
 
-🌬️ The east wind was a real desert wind Egyptians knew well
+🥀 Blasted means withered and ruined
 
-🌾 Blasted means scorched or withered, not blown up
-
-☀️ This wasn't a made-up danger — it was a danger Egypt already feared
+📖 The wind alone could destroy a harvest
 
 ---
 
-## 😳 And, Behold, It Was A Dream
+## 🔁 The Thin Ears Devoured The Full Ears
 
-Both dreams end the same way.
+This mirrors the first dream exactly, thin devouring healthy.
 
-The thin, ruined grain eats the healthy grain, just like the thin cows ate the fat cows.
+Two different pictures, cows and grain, tell the same story.
 
-Pharaoh wakes up both times realizing it was only a dream.
+Repeating a warning twice in Egyptian thought signaled real certainty.
 
-But two dreams telling him the exact same thing is not something Pharaoh can shake off.
+Pharaoh senses that weight even before anyone explains it to him.
 
-😳 Both dreams end in destruction, not resolution
+🔁 This mirrors the first dream exactly
 
-🔁 The same warning came twice, in two different pictures
+🪞 Two pictures repeat one warning
 
-🚨 A repeated dream is why Pharaoh wakes up shaken, not relieved
+✋ Repetition signaled real certainty
 
-# Genesis 41:8-13
-
-# 😰 No One Can Interpret
+📖 Pharaoh feels the weight already
 
 ---
 
-## 😰 His Spirit Was Troubled
+## 😟 His Spirit Was Troubled
 
-Pharaoh wakes up shaken, not just confused.
+Troubled here means deeply disturbed, not just mildly annoyed.
 
-The Bible calls it his spirit being troubled.
+Pharaoh was shaken enough to call for help the moment morning came.
 
-That's more than curiosity.
+A ruler with total power still could not explain his own dream.
 
-Egyptians believed dreams could carry real messages from the gods.
+Power did not protect him from real fear.
 
-So a repeated dream, in Pharaoh's mind, wasn't random.
+😟 Troubled means deeply disturbed
 
-It was a message he had to understand or risk missing something serious.
+🌅 Pharaoh acted the moment morning came
 
-😰 Pharaoh is genuinely disturbed, not just puzzled
+👑 Even Pharaoh could not explain it
 
-🛕 Egyptians took dreams seriously as messages from the divine
-
-⚠️ Missing the message felt dangerous to him, not just embarrassing
+📖 Power cannot remove real fear
 
 ---
 
-## 🔮 All The Magicians ... And All The Wise Men
+## 🔮 All The Magicians Of Egypt And The Wise Men Thereof
 
-Egypt had a whole class of trained dream readers and priests.
+Magicians here were trained priests who studied dreams, magic, and secret writing.
 
-They studied omens, symbols, and magic for a living.
+Wise men were scholars and advisors who served the royal court.
 
-This was their job.
+Egypt trusted this entire class of experts to explain the unknown.
 
-Pharaoh calls in every one of them, and not a single one can explain the dream.
+Every one of them looked at the dream and had nothing to say.
 
-That's a big deal.
+🔮 Magicians were trained priest scholars
 
-The best minds in the most powerful nation on earth come up empty.
+📜 Wise men were royal advisors
 
-🔮 Magicians and wise men were Egypt's professional dream-readers
+🏛️ Egypt trusted this whole expert class
 
-🏛️ This was Egypt's whole religious and intellectual system, not just a few guessers
+📖 Every expert failed to explain the dream
 
-🚫 All of them together still can't explain it
-
+# Genesis 41:9-13
+# 🍷 The Butler Remembers
 ---
-
 ## 🍷 I Do Remember My Faults This Day
 
-The butler finally speaks up.
+The butler finally speaks up only because he needs Pharaoh's problem solved.
 
-He's talking about Joseph, but he starts by admitting his own failure.
+For two full years he said nothing about Joseph at all.
 
-"My faults" means his own wrongdoing — in this case, forgetting the man who helped him.
+His confession is really self interest wearing the shape of honesty.
 
-It takes two years and a national crisis before he says anything.
+God can still use a selfish moment to move His plan forward.
 
-🍷 The butler is the same man Joseph helped back in chapter 40
+🍷 The butler speaks only now
 
-😳 "My faults" is him admitting he should have spoken up sooner
+🤐 He stayed silent two years
 
-⏳ It takes Pharaoh's emergency to shake loose a memory the butler should have acted on already
+😬 His honesty starts from self interest
+
+📖 God uses even selfish moments
 
 ---
 
-## 😠 Pharaoh Was Wroth ... Put Me In Ward
+## 🔥 Pharaoh Was Wroth With His Servants
 
-Wroth means angry.
+Wroth is an old word for intense, burning anger.
 
-Ward means a guarded place people were held, like a holding cell.
+This callback recalls chapter forty, when both officials angered Pharaoh.
 
-The butler explains how he first met Joseph — both of them were prisoners after Pharaoh got angry at them.
+The butler is reminding Pharaoh of that whole earlier situation.
 
-That's where Joseph correctly interpreted both of their dreams.
+He needs Pharaoh to remember the dungeon before he mentions Joseph.
 
-😠 Wroth means angry
+🔥 Wroth means intense burning anger
 
-🔒 Ward means a guarded holding place
+📚 This recalls chapter forty's events
 
-🎯 Joseph's earlier interpretations turned out exactly right, which is why the butler trusts him now
+🕳️ Both officials had angered Pharaoh
+
+➡️ The butler sets up the story
+
+---
+
+## 🔒 In Ward In The Captain Of The Guard's House
+
+Ward is an old word for custody or imprisonment.
+
+The captain of the guard ran Pharaoh's personal security and prison.
+
+This is the same official named Potiphar back in chapter thirty nine.
+
+Joseph has been in that very same house the entire time.
+
+🔒 Ward means custody or prison
+
+🛡️ The captain ran Pharaoh's security
+
+🔁 This is Potiphar from chapter thirty nine
+
+📖 Joseph never left that household's reach
+
+---
+
+## 👤 A Young Man An Hebrew
+
+This young man is Joseph, though the butler never says his name.
+
+Hebrew was the word Egyptians used for foreigners from Canaan.
+
+It was not always a compliment in Egyptian society.
+
+Even without using his name, the butler is finally pointing toward Joseph.
+
+👤 The young man is Joseph
+
+🌍 Hebrew meant a foreigner from Canaan
+
+😐 The term was not a compliment
+
+📖 The butler finally points to Joseph
+
+---
+
+## 🍷 To Each Man According To His Dream He Did Interpret
+
+The butler retells chapter forty accurately, including the ending for each man.
+
+Joseph told the butler he would be restored.
+
+Joseph told the baker he would be hanged.
+
+Both predictions came true exactly as Joseph said.
+
+🍷 The butler was restored as told
+
+🍞 The baker was hanged as told
+
+✅ Both predictions came true exactly
+
+📖 Joseph's words proved completely reliable
 
 # Genesis 41:14-16
+# 🪒 Joseph Brought Before Pharaoh
+---
+## ⛓️ Brought Him Hastily Out Of The Dungeon
 
-# 🏃 Joseph Is Brought Hastily Out Of The Dungeon
+Joseph goes from a forgotten prisoner to Pharaoh's court in one sudden moment.
+
+Hastily shows how urgent Pharaoh's need had become.
+
+Thirteen years earlier Joseph was sold into slavery as a teenager.
+
+None of that history disappears just because the moment finally arrives.
+
+⛓️ Joseph leaves prison suddenly
+
+⏱️ Hastily shows real urgency
+
+📆 Thirteen years have already passed
+
+📖 A long wait ends in a moment
 
 ---
 
-## 🏃 Brought Him Hastily Out Of The Dungeon
+## 🧴 He Shaved Himself And Changed His Raiment
 
-Hastily means quickly, without any delay.
+Raiment is an old word for clothing.
 
-The moment Pharaoh hears Joseph's name, he sends for him right away.
+Egyptians shaved their faces and heads, unlike most Hebrew men of that time.
 
-A king's urgency can undo years of being forgotten in a single order.
+Joseph adjusts to Egyptian custom before stepping in front of Pharaoh.
 
-Joseph has no idea any of this is happening until guards suddenly show up for him.
+Appearance mattered before he ever said a single word.
 
-🏃 Hastily means quickly, without delay
+🧴 Raiment means clothing
 
-⛓️ Joseph goes from prisoner to summoned advisor in a moment
+🪒 Egyptians shaved, unlike most Hebrews
 
-😲 He has no warning any of this is coming
+👘 Joseph dressed for Egyptian custom
 
----
-
-## 👗 He Shaved Himself, And Changed His Raiment
-
-Raiment means clothing.
-
-Egyptians shaved their faces and often their heads.
-
-A beard, which Hebrews normally wore, would have looked foreign and unfit for Pharaoh's court.
-
-So before Joseph can even speak to Pharaoh, he has to look the part, Egyptian style.
-
-👗 Raiment means clothing
-
-🧔 Egyptians were clean-shaven; a beard would have looked out of place at court
-
-⏱️ Joseph goes from prisoner to presentable in a matter of hours
+📖 Preparation came before his first word
 
 ---
 
-## 🙏 God Shall Give Pharaoh An Answer Of Peace
+## 🙅 It Is Not In Me
 
-Pharaoh tells Joseph he's heard Joseph can interpret dreams.
+Joseph refuses credit before he has even heard the dream.
 
-Joseph's first words are not about himself at all.
+Egyptian magicians built their whole reputation on claiming special power.
 
-"It is not in me" means Joseph is saying, plainly, that he doesn't have this power on his own.
+Joseph instead says any answer will come from God, not from himself.
 
-He tells Pharaoh, straight to his face, that any answer will come from God.
+An answer of peace means a true and calming explanation, not a guess.
 
-Joseph gives God the credit before he's even said a word about the dream.
+🙅 Joseph refuses credit immediately
 
-🙏 Joseph refuses credit before doing anything
+🔮 Magicians claimed power for themselves
 
-😌 "An answer of peace" means a clear, settling answer, not a confusing one
+🙏 Joseph points straight to God
 
-📖 He puts God's name in front of the most powerful man alive, with nothing to gain yet
+📖 The answer will be true, not guessed
 
-# Genesis 41:17-24
+# Genesis 41:17-21
+# 🐄 Pharaoh Tells It Again, In His Own Words
+---
+## ➕ Such As I Never Saw In All The Land Of Egypt For Badness
 
-# 🔁 Pharaoh Repeats The Dream To Joseph
+Pharaoh adds a detail here that was not in the narrator's version.
+
+He personally emphasizes just how disturbing these thin cows looked.
+
+This extra line shows the dream genuinely shook him.
+
+A king used to comfort was not used to feeling this unsettled.
+
+➕ Pharaoh adds his own detail here
+
+😨 He stresses how disturbing they looked
+
+😳 The dream truly shook him
+
+📖 Even Pharaoh could not shake this image
 
 ---
 
-## 😱 Such As I Never Saw In All The Land For Badness
+## 🍽️ It Could Not Be Known That They Had Eaten Them
 
-Pharaoh tells the dream again, in his own words this time.
+Eating the fat cows should have made the thin cows look better.
 
-His description of the lean cows gets even worse than before.
+Instead they stayed just as sickly as before.
 
-"For badness" means for how bad, how terrible-looking, they were.
+The famine will work the same eerie way, swallowing every trace of plenty.
 
-Retelling a disturbing dream often makes the memory feel sharper, not softer.
+Nothing from the good years will remain visible once it arrives.
 
-😱 Pharaoh's own retelling is more intense than the original dream
+🍽️ Eating changed nothing visible
 
-🧠 A disturbing dream can grow more vivid the more someone talks about it
+🦴 The thin cows stayed sickly
+
+🌾 Famine will erase every trace of plenty
+
+📖 Abundance can vanish without a sign
+
+# Genesis 41:22-24
+# 🌾 The Second Dream, Retold
+---
+## 🔁 I Told This Unto The Magicians But There Was None That Could Declare It To Me
+
+This is the second time in the chapter the magicians fail completely.
+
+Pharaoh has now stated their failure out loud, in his own words.
+
+Every expert Egypt trusted came up with nothing.
+
+That silence makes Joseph's coming answer even more striking.
+
+🔁 This is their second failure
+
+🗣️ Pharaoh states it himself now
+
+🔮 Every trusted expert failed
+
+📖 Silence sets up Joseph's answer
 
 ---
 
-## 🕳️ It Could Not Be Known That They Had Eaten Them
+## 🌱 Sprung Up After Them
 
-Pharaoh adds a detail here that makes the dream worse.
+Sprung up simply means suddenly appeared and grew.
 
-After the lean cows ate the fat ones, no one could tell they'd eaten anything.
+The thin ears did not grow gradually beside the good ones.
 
-They still looked just as thin and sickly.
+They appeared right after, almost as an ambush.
 
-That detail is the whole warning of the dream, in one line.
+The suddenness matches how quickly famine can follow plenty.
 
-The good years will disappear completely into the bad ones, leaving no sign they ever happened.
+🌱 Sprung up means suddenly appeared
 
-🕳️ The lean cows show no change after eating the fat ones
+⚡ The thin ears arrived abruptly
 
-🌾 This pictures a famine bad enough to erase all memory of the good years
+🎯 It felt like an ambush
+
+📖 Famine can follow plenty suddenly
+
+# Genesis 41:25-28
+# 🔮 Joseph Interprets: One Dream
+---
+## 🎭 The Dream Of Pharaoh Is One
+
+This does not mean Pharaoh had only one dream that night.
+
+It means both dreams carry the exact same single message.
+
+Cows and grain are two pictures pointing at one truth.
+
+Joseph tells Pharaoh the confusion is already solved.
+
+🎭 Two dreams, one message
+
+🐄 Cows picture the same truth
+
+🌾 Grain pictures the same truth
+
+📖 Joseph resolves the confusion at once
 
 ---
 
-## 🌾 Withered, Thin, And Blasted With The East Wind
+## 🗣️ God Hath Shewed Pharaoh What He Is About To Do
 
-Pharaoh repeats the grain dream too.
+Shewed is an old spelling of showed.
 
-Withered means dried up and shriveled.
+Joseph tells a pagan king that Israel's God spoke directly to him.
 
-Blasted with the east wind means scorched by that hot desert wind Egyptians already knew and feared.
+Pharaoh worshiped many Egyptian gods, yet this message still reached him.
 
-Same warning, second picture, no new outcome.
+God can speak into a life even outside His own covenant people.
 
-🌾 Withered means dried up and shriveled
+🗣️ Shewed means showed
 
-🌬️ The east wind detail repeats exactly, driving the warning home twice
+👑 God spoke to a pagan king
 
----
+🛕 Pharaoh worshiped many other gods
 
-## 🚫 There Was None That Could Declare It To Me
-
-Declare here means explain or interpret.
-
-Pharaoh says again that his magicians came up empty.
-
-This is the second time that failure gets stated, once by the narrator, now by Pharaoh himself.
-
-Egypt's entire religious system has nothing to offer him.
-
-🚫 Declare means explain or interpret
-
-🔁 This is the second time Egypt's wise men are named as failing
-
-# Genesis 41:25-32
-
-# 📖 Joseph Explains The Dream Is One
+📖 God reaches beyond His covenant people
 
 ---
 
-## 🔗 The Dream Of Pharaoh Is One
+## 🔑 The Seven Good Kine Are Seven Years
 
-Joseph's first move is simple.
+Joseph decodes the first dream plainly, symbol by symbol.
 
-He tells Pharaoh both dreams mean the exact same thing.
+Each healthy cow stands for one full year, not a literal cow.
 
-One message, told twice, in two different pictures.
+The two dreams line up because they describe the exact same years.
 
-Joseph doesn't treat this like a puzzle to crack.
+Pharaoh now has a clear timeline instead of a confusing picture.
 
-He treats it like something God has already made plain.
+🔑 Joseph decodes the dream plainly
 
-🔗 Both dreams carry one single message
+🐄 Each cow stands for one year
 
-🙏 Joseph again points to God, not his own skill, as the source of the answer
+🔗 Both dreams describe the same years
 
----
-
-## 📢 God Hath Shewed Pharaoh What He Is About To Do
-
-Shewed is an old spelling of "showed."
-
-Joseph tells Pharaoh that God has already decided what's coming, and simply revealed it ahead of time.
-
-This isn't Joseph reading tea leaves.
-
-It's God telling the ruler of the nation exactly what will happen to that nation.
-
-📢 Shewed means showed
-
-🔮 This is God revealing His own plan, not Joseph guessing at symbols
+📖 Confusion becomes a clear timeline
 
 ---
 
-## 🌾 Seven Years Of Plenty ... Seven Years Of Famine
+## 🥀 Seven Years Of Famine
 
-Joseph gives Pharaoh the numbers plainly.
+The thin ears and lean cows both stand for coming famine years.
 
-The seven fat cows and seven full ears mean seven years of very good harvests.
+Famine here means a severe, extended food shortage, not a small shortage.
 
-The seven lean cows and thin ears mean seven years of famine right after.
+Joseph names the danger clearly instead of softening it.
 
-Joseph doesn't soften it.
+Pharaoh now knows exactly how many hard years are coming.
 
-He tells Pharaoh the famine will be "very grievous," meaning extremely severe.
+🥀 Both symbols point to famine
 
-🌾 Seven years of great harvests are coming first
+📉 Famine means severe extended shortage
 
-🌵 Seven years of severe famine follow right behind them
+🗣️ Joseph names the danger plainly
 
-😨 Joseph doesn't downplay how bad the famine will be
+📖 Pharaoh now knows what is coming
+
+# Genesis 41:29-32
+# 📢 Seven Years Up, Seven Years Down
+---
+## 🌾 Seven Years Of Great Plenty
+
+Egypt is about to enter its richest growing season in memory.
+
+Great plenty means harvests far beyond normal, year after year.
+
+This good season is real, but it is also temporary.
+
+How Egypt uses these years will decide who survives the next ones.
+
+🌾 Egypt enters its richest years
+
+📈 Great plenty means far more than normal
+
+⏳ These good years are temporary
+
+📖 What Egypt does now decides survival later
+
+---
+
+## 🔥 The Famine Shall Consume The Land
+
+Consume means completely used up, leaving nothing behind.
+
+This famine will not just reduce the food supply, it will erase it.
+
+Joseph is warning Pharaoh in the strongest language available.
+
+A softer word would not have matched what was actually coming.
+
+🔥 Consume means completely used up
+
+📉 The food supply will be erased
+
+⚠️ Joseph uses the strongest language
+
+📖 The warning matches the real danger
+
+---
+
+## 😖 It Shall Be Very Grievous
+
+Grievous is an old word for extremely severe or painful.
+
+Joseph is not describing mild inconvenience or a rough season.
+
+He is describing suffering serious enough to threaten survival itself.
+
+Naming it this plainly gives Pharaoh no excuse to delay.
+
+😖 Grievous means extremely severe
+
+🚫 This is not mild inconvenience
+
+⚠️ Survival itself is at risk
+
+📖 Plain warning leaves no excuse to wait
 
 ---
 
 ## 🔁 The Dream Was Doubled Unto Pharaoh Twice
 
-Joseph explains why the dream came twice instead of once.
+Doubled here means God sent the same message through two pictures.
 
-It means the matter is "established by God" — settled, certain, not a maybe.
+In this culture, a repeated sign meant a certain, unchangeable outcome.
 
-And it will happen "shortly," meaning soon, not far off.
+Established means already decided and locked in by God.
 
-In the Bible, when something important gets repeated right away, it usually means it's locked in, not up for debate.
+Shortly bring it to pass means the timeline is already close, not distant.
 
-🔁 Two dreams with one meaning means the outcome is certain
+🔁 Doubled means the same message twice
 
-⏳ Shortly means soon, not far in the future
+✅ Repetition signaled a certain outcome
+
+🔒 Established means already decided
+
+📖 The timeline was already close
 
 # Genesis 41:33-36
-
-# 🧠 Joseph Proposes A Plan
-
+# 📦 Joseph's Plan For Survival
 ---
-
 ## 🧠 A Man Discreet And Wise
 
-Discreet here means able to judge situations well, not just "quiet."
+Discreet means able to make careful, sound judgment calls.
 
-Joseph tells Pharaoh, without being asked, exactly what to do next.
+Joseph moves from interpreting a dream to proposing an actual solution.
 
-Find someone with that kind of judgment and put him in charge of preparing Egypt.
+Pharaoh never asked for a plan, only an explanation.
 
-Joseph has gone from interpreting a dream to advising a king in the same breath.
+Joseph offers wisdom Pharaoh did not even know he needed.
 
-🧠 Discreet means having sound, careful judgment
+🧠 Discreet means careful sound judgment
 
-📋 Joseph moves from interpreter to advisor without being asked to
+🔀 Joseph shifts from explaining to solving
+
+❓ Pharaoh only asked for an explanation
+
+📖 Joseph gives more than was requested
 
 ---
 
-## 🌾 Take Up The Fifth Part
+## 🧮 Take Up The Fifth Part
 
-Joseph proposes a plan: collect one-fifth of Egypt's grain during the seven good years.
+The fifth part means one out of every five measures of grain, saved.
 
-That's a twenty percent tax, stored city by city, under Pharaoh's authority.
+That works out to twenty percent set aside every single year.
 
-It's not a vague warning.
+It is a real tax, but a modest one compared to the coming need.
 
-It's a real, workable plan a government could actually run.
+A little sacrifice now prevents a much bigger disaster later.
 
-🌾 "The fifth part" means one-fifth, or twenty percent
+🧮 Fifth part means one in five saved
 
-🏙️ Grain would be stored city by city across Egypt
+📊 That equals twenty percent yearly
 
-📖 Joseph turns a frightening prophecy into something Egypt can actually do something about
+⚖️ A modest tax for a huge need
+
+📖 Small sacrifice now prevents disaster later
+
+---
+
+## 🏛️ Lay Up Corn Under The Hand Of Pharaoh
+
+Joseph proposes a nationwide system of government controlled storage.
+
+Under the hand of Pharaoh means under royal authority and control.
+
+No single farmer or city was expected to solve this problem alone.
+
+This is one of the earliest large scale famine relief plans on record.
+
+🏛️ Joseph proposes national storage
+
+👑 Under Pharaoh means royal control
+
+🤝 No one solved this alone
+
+📖 An early large scale relief plan
+
+---
+
+## 🎯 That The Land Perish Not Through The Famine
+
+Joseph states the goal plainly, keep the whole nation alive.
+
+Perish here means the complete destruction of the land and its people.
+
+Every detail of the plan serves this one purpose.
+
+Survival, not profit, is the reason for the entire system.
+
+🎯 The goal is keeping Egypt alive
+
+💀 Perish means total destruction
+
+🧩 Every detail serves this purpose
+
+📖 Survival, not profit, drives the plan
 
 # Genesis 41:37-40
-
-# 👑 Pharaoh Sets Joseph Over Egypt
-
+# 👑 Pharaoh Appoints Joseph
 ---
-
 ## ✅ The Thing Was Good In The Eyes Of Pharaoh
 
-Pharaoh and his officials approve the plan right away.
+Pharaoh accepts this plan from a foreign prisoner almost instantly.
 
-No arguing, no long debate recorded.
+Joseph had no title, no land, and no political standing in Egypt.
 
-The wisdom of it is obvious to everyone listening.
+Wisdom convinced Pharaoh faster than status ever could have.
 
-✅ Pharaoh and his officials accept the plan without recorded resistance
+God opened a door no human connection could have opened.
 
----
+✅ Pharaoh accepts the plan instantly
 
-## 🕊️ A Man In Whom The Spirit Of God Is
+⛓️ Joseph had no status at all
 
-Pharaoh is not a worshiper of the God of Israel.
+🧠 Wisdom convinced Pharaoh, not connections
 
-He worships Egyptian gods.
-
-But even he can see something different about Joseph.
-
-He says it plainly: this man has God's Spirit in him.
-
-Sometimes people outside the faith can still recognize when someone is walking with God, just from how they live.
-
-🕊️ Even a pagan king recognizes God's presence in Joseph
-
-🌍 Joseph's character has been consistent enough for outsiders to notice it
+📖 God opened a door no one else could
 
 ---
 
-## 👑 Only In The Throne Will I Be Greater Than Thou
+## 👁️ In Whom The Spirit Of God Is
 
-Pharaoh puts Joseph in charge of everything except the throne itself.
+Pharaoh, a pagan king, recognizes God's presence in Joseph without being told.
 
-The household, the officials, the whole nation's food plan — all of it now answers to Joseph.
+He does not use his own gods to explain what he sees.
 
-This happens in a single conversation.
+Something about Joseph's wisdom pointed straight to its true source.
 
-Joseph goes from prisoner to second-in-command over the most powerful country on earth without any transition period at all.
+Even outsiders can recognize when God is genuinely at work.
 
-👑 Joseph receives total authority except the throne itself
+👁️ Pharaoh recognizes God's presence
 
-⚡ The change happens in one conversation, with no gradual rise
+🛕 He does not credit his own gods
+
+🧭 Joseph's wisdom points to its source
+
+📖 Outsiders can still recognize God's work
+
+---
+
+## 🔁 None So Discreet And Wise As Thou Art
+
+Pharaoh repeats the exact word Joseph used about himself back in verse thirty three.
+
+That word choice was not an accident.
+
+Pharaoh is confirming Joseph's own description and then acting on it.
+
+Only in the throne will I be greater sets the one clear limit on Joseph's power.
+
+🔁 Pharaoh repeats Joseph's own word
+
+✅ He confirms it, not just hears it
+
+👑 Only the throne outranks Joseph now
+
+📖 Words become real authority here
+
+---
+
+## 🏛️ Thou Shalt Be Over My House
+
+This role functions like a modern prime minister or vizier.
+
+According unto thy word shall all my people be ruled means Joseph's orders carry Pharaoh's full authority.
+
+Yesterday Joseph was a forgotten prisoner in a dungeon.
+
+Today he governs the most powerful nation in the region.
+
+🏛️ The role works like a prime minister
+
+📜 Joseph's word now carries Pharaoh's authority
+
+⛓️ Yesterday he was a forgotten prisoner
+
+📖 Today he governs the whole nation
 
 # Genesis 41:41-45
-
-# 💍 Joseph Receives Pharaoh's Ring And A New Name
-
+# 💍 Joseph Is Invested With Power
 ---
-
 ## 💍 Pharaoh Took Off His Ring
 
-Pharaoh's signet ring was used to stamp wax or clay on official orders.
+This ring was Pharaoh's personal signet, used to stamp his official seal.
 
-It functioned like a royal signature.
+Whoever held that ring could sign documents with the full force of law.
 
-Giving it to Joseph means Joseph can now issue commands with Pharaoh's own legal authority behind them.
+Handing it to Joseph transferred real legal power, not just an honor.
 
-Along with the ring, Joseph gets vestures — fine linen garments — and a gold chain, both signs of high Egyptian office.
+Joseph could now act with Pharaoh's own authority.
 
-💍 The signet ring let Joseph issue orders backed by Pharaoh's authority
+💍 The ring was Pharaoh's royal seal
 
-👘 Vestures means garments; fine linen marked high status in Egypt
+✍️ It could sign documents into law
 
-⛓️ The gold chain was a public sign of rank
+⚖️ This transferred real legal power
 
----
-
-## 🚗 The Second Chariot ... Bow The Knee
-
-Joseph rides in Pharaoh's second chariot, the vehicle reserved for the nation's second-highest official.
-
-Runners go ahead of him shouting "Bow the knee," a command telling everyone watching to recognize his new authority on sight.
-
-Joseph goes from a forgotten prisoner to a public procession in the same day.
-
-🚗 The second chariot marked Joseph as second-in-command
-
-📣 "Bow the knee" publicly announced his new authority to the whole country
+📖 Joseph now acted with Pharaoh's authority
 
 ---
 
-## 🏺 Zaphnath-paaneah ... Priest Of On
+## 🧵 Vestures Of Fine Linen
 
-Pharaoh gives Joseph an Egyptian name, Zaphnath-paaneah, tied to his gift for revealing hidden things.
+Fine linen was an expensive fabric worn mainly by Egyptian royalty and priests.
 
-Joseph also marries Asenath, whose father is a priest of On.
+Joseph's prison clothes are replaced with the wardrobe of the ruling class.
 
-On is the city the Greeks later called Heliopolis, meaning "city of the sun" — a major center of Egyptian sun worship.
+His outward appearance now matches his new position completely.
 
-Joseph is now fully woven into Egyptian life: a new name, an Egyptian wife, and family ties to Egypt's priestly class.
+Every part of this scene marks a complete change of identity.
 
-🏺 Zaphnath-paaneah honors Joseph's gift for revealing hidden things
+🧵 Fine linen marked royalty and priests
 
-⛪ On (Heliopolis) was a center of Egyptian sun worship
+👘 Prison clothes become royal clothing
 
-💍 Joseph's marriage ties him directly into Egypt's priesthood
+🎭 Appearance now matches his new role
+
+📖 This scene marks a new identity
+
+---
+
+## 🔗 A Gold Chain About His Neck
+
+A gold chain in Egypt was a visible sign of high honor and rank.
+
+Anyone seeing Joseph in public would instantly know he held real power.
+
+This was not a private promotion kept quiet within the palace.
+
+Egypt is meant to see this change happen in plain sight.
+
+🔗 A gold chain marked high honor
+
+👀 Anyone would instantly recognize his power
+
+📢 This was a public announcement
+
+📖 Egypt was meant to see the change
+
+---
+
+## 🐎 Bow The Knee
+
+This phrase likely comes from an Egyptian word meaning something close to attention.
+
+Riding in the second chariot placed Joseph visibly just below Pharaoh himself.
+
+Crowds were commanded to bow as Joseph's chariot passed by.
+
+This public ceremony announced Joseph's new rank to the entire nation.
+
+🐎 The second chariot ranked just below Pharaoh
+
+🙇 Crowds were commanded to bow
+
+📣 This ceremony was fully public
+
+📖 All Egypt learned who Joseph now was
+
+---
+
+## 🖐️ No Man Lift Up His Hand Or Foot
+
+This is a strong exaggeration meaning total, complete authority.
+
+Nothing important could happen anywhere in Egypt without Joseph's approval.
+
+Pharaoh keeps only the throne itself above Joseph's reach.
+
+Few people in ancient history ever held power this total.
+
+🖐️ This phrase means total authority
+
+🚫 Nothing happened without Joseph's approval
+
+👑 Only the throne stood above him
+
+📖 Few people ever held this much power
+
+---
+
+## 📛 Zaphnathpaaneah
+
+Pharaoh gives Joseph a new Egyptian name, common practice for foreign officials.
+
+Many scholars believe it likely means something close to God speaks and lives.
+
+The new name was one more sign of Joseph's full new identity.
+
+Even under a new name, Joseph never stops honoring the true God.
+
+📛 Pharaoh gives Joseph a new name
+
+🌍 New names marked foreign officials
+
+🔤 It likely honors God speaking and living
+
+📖 A new name did not change his faith
+
+---
+
+## 🏙️ Potipherah Priest Of On
+
+On was an Egyptian city later known as Heliopolis, the city of the sun.
+
+Potipherah served as a priest inside its major sun worship temple.
+
+Joseph now marries directly into Egypt's religious establishment.
+
+God's plan moves forward even through a family devoted to other gods.
+
+🏙️ On was later called Heliopolis
+
+☀️ It centered on sun worship
+
+👰 Joseph marries into that priestly family
+
+📖 God's plan works through unlikely places
 
 # Genesis 41:46-49
-
-# 🌾 The Seven Years Of Plenty
-
+# 🌾 Seven Years Of Overflowing Harvest
 ---
+## 📆 Joseph Was Thirty Years Old
 
-## 🎂 Joseph Was Thirty Years Old
+Joseph was seventeen when his brothers sold him into slavery back in chapter thirty seven.
 
-Joseph is thirty when he stands before Pharaoh.
+That means thirteen long years passed between that betrayal and this moment.
 
-He was seventeen when his brothers sold him, back in Genesis 37.
+Most of those years were spent enslaved or wrongly imprisoned.
 
-That means thirteen years passed between the pit and the palace.
+God's timing rarely matches the timeline a person would choose.
 
-Most of those years were spent enslaved or in prison, with no way to know how the story would end.
+📆 Joseph was seventeen when betrayed
 
-🎂 Joseph is thirty when he becomes ruler of Egypt
+⏳ Thirteen years passed until now
 
-⏳ Thirteen years passed between being sold and being exalted
+⛓️ Most years were slavery or prison
+
+📖 God's timing rarely matches our own
 
 ---
 
 ## 🌾 The Earth Brought Forth By Handfuls
 
-"By handfuls" is an old way of saying the harvest was overflowing.
+By handfuls is an old way of describing overflowing abundance.
 
-Grain came in so fast it felt like it could be scooped up by the fistful.
+The harvest was not just good, it was almost more than anyone could gather.
 
-Joseph gathers so much grain that he eventually "left numbering" — he stops counting because there's simply too much to track.
+This matches exactly what both of Pharaoh's dreams had promised.
 
-🌾 "By handfuls" pictures a harvest that's overflowing
+The interpretation Joseph gave is now visibly coming true.
 
-📊 Joseph stops counting because the surplus goes beyond what can be measured
+🌾 Handfuls describes overflowing abundance
+
+📈 The harvest exceeded what people expected
+
+🔗 This matches Pharaoh's two dreams
+
+📖 The interpretation is coming true
+
+---
+
+## 🏖️ Corn As The Sand Of The Sea
+
+This is a hyperbole, an exaggeration used to describe something impossible to count.
+
+Sand on a seashore has no realistic number a person could ever finish counting.
+
+Joseph eventually just stops trying to keep an exact total.
+
+The image captures a harvest bigger than any measurement system could hold.
+
+🏖️ Sand of the sea means uncountable
+
+🌾 The harvest was that enormous
+
+🛑 Joseph stopped counting entirely
+
+📖 No measurement could hold this abundance
 
 # Genesis 41:50-52
+# 👶 Two Sons Named After The Journey
+---
+## 👶 Before The Years Of Famine Came
 
-# 👶 Manasseh And Ephraim Are Born
+Joseph's family life quietly grows even as he manages a coming crisis.
+
+These two sons are born during the good years, not the hard ones.
+
+Timing matters here, since both names will look back on Joseph's whole story.
+
+Personal joy and national responsibility exist together in Joseph's life.
+
+👶 His sons arrive during the good years
+
+📆 Timing shapes what their names mean
+
+⚖️ Personal joy and public duty coexist
+
+📖 God works in the quiet moments too
 
 ---
 
-## 👶 Manasseh: For God Hath Made Me Forget
+## 🔤 For God Hath Made Me Forget
 
-Joseph names his first son Manasseh, a name that sounds like the Hebrew word for "causing to forget."
+Manasseh sounds like the Hebrew word for causing to forget.
 
-Joseph says God made him forget his hardship and his father's house.
+Joseph is not saying the pain of his past never happened.
 
-That doesn't mean the pain never happened.
+He means God has finally healed the weight that memory carried.
 
-It means God's goodness has covered it enough that it no longer controls him.
+Naming a son this way turns private healing into a lasting testimony.
 
-👶 Manasseh sounds like the Hebrew for "causing to forget"
+🔤 Manasseh means causing to forget
 
-💛 Joseph credits God with healing him, not erasing what happened
+💔 The pain was real, not denied
+
+🩹 God healed the weight of memory
+
+📖 A name becomes a lasting testimony
 
 ---
 
-## 🌱 Ephraim: For God Hath Caused Me To Be Fruitful
+## 🔤 Caused Me To Be Fruitful
 
-Joseph's second son is Ephraim, a name tied to being fruitful.
+Ephraim sounds like the Hebrew word for being fruitful or doubly blessed.
 
-Joseph names him for what God has done "in the land of my affliction" — the very place of his slavery and prison.
+Land of my affliction is a striking phrase to describe Egypt.
 
-The place that hurt Joseph the most is the same place he becomes fruitful.
+Joseph still calls Egypt an affliction, even at the height of his power.
 
-He doesn't separate the pain from the blessing.
+Success there never erased the pain of how he first arrived.
 
-Both are true at once.
+🔤 Ephraim means fruitful or doubly blessed
 
-🌱 Ephraim points to being fruitful
+🌍 Egypt is still called an affliction
 
-🌍 Egypt is both the place of Joseph's suffering and his blessing
+👑 Power did not erase the pain
+
+📖 God brings fruit even inside affliction
 
 # Genesis 41:53-57
+# 🌍 The Famine Reaches The Whole World
+---
+## 🌾 In All The Land Of Egypt There Was Bread
 
-# 🌍 The Famine Reaches All The Earth
+Every other nation nearby is suffering exactly as Joseph predicted.
+
+Egypt alone prepared, and Egypt alone still has food.
+
+Joseph's fifth part plan from earlier in the chapter is now paying off completely.
+
+Wisdom applied early prevented a disaster everyone else is now facing.
+
+🌾 Only Egypt still has bread
+
+📦 Joseph's storage plan pays off
+
+🌍 Every neighboring nation is suffering
+
+📖 Early wisdom prevented later disaster
 
 ---
 
-## 🍞 In All The Land Of Egypt There Was Bread
+## 👑 Go Unto Joseph What He Saith To You Do
 
-The seven good years end, and the famine begins exactly as Joseph said.
+Pharaoh publicly hands his own authority over to Joseph completely.
 
-It's not local.
+Egyptians in genuine need are told to trust Joseph's word directly.
 
-It reaches "all lands."
+This is the clearest picture yet of how far Joseph's power reaches.
 
-But in Egypt, because of Joseph's plan, there is bread.
+The man once sold as a slave now speaks with Pharaoh's own voice.
 
-Egypt goes from a nation about to be blindsided to the one nation ready for it.
+👑 Pharaoh hands his authority to Joseph
 
-🍞 The famine is worldwide, but Egypt alone has stored bread
+🙏 The people are told to trust him
 
-📋 Joseph's plan turns a coming disaster into an advantage
+📢 This shows how far his power reaches
 
----
-
-## 📢 Go Unto Joseph; What He Saith To You, Do
-
-When the Egyptian people cry out for bread, Pharaoh doesn't handle it himself.
-
-He sends them straight to Joseph.
-
-"What he saith to you, do" means Pharaoh has handed over his own authority in this crisis completely.
-
-📢 Pharaoh redirects the whole crisis to Joseph's judgment
-
-🙏 Egypt's survival now runs entirely through Joseph's decisions
+📖 The rejected brother now speaks for Pharaoh
 
 ---
 
 ## 🏚️ Joseph Opened All The Storehouses
 
-Joseph opens the storehouses and sells grain as the famine grows "sore," meaning severe.
+Years of careful planning finally turn into direct action.
 
-The quiet, unglamorous work of storing grain during the good years is what saves the nation now.
+Storehouses means the granaries built during the seven years of plenty.
 
-Nobody claps for years of careful storage.
+Joseph sells the grain instead of simply giving it away for free.
 
-But it's exactly what carries Egypt through the crisis.
+Selling kept the whole relief system funded for the entire famine.
 
-🏚️ The storehouses built during the good years now save the nation
+🏚️ Storehouses were the granaries built earlier
 
-📈 The famine is described as growing more and more severe
+📦 Years of planning become real action
+
+💰 Joseph sold instead of giving freely
+
+📖 Selling kept the whole system working
 
 ---
 
 ## 🌍 All Countries Came Into Egypt To Joseph
 
-The famine is so widespread that people from every surrounding nation travel to Egypt just to buy grain from Joseph.
+The famine has grown so severe that the entire region depends on Egypt.
 
-This detail sets up what happens next.
+People are traveling from many nations just to reach Joseph directly.
 
-The same crisis that's crushing every nearby country is about to send Joseph's own brothers walking straight back into his life.
+This detail quietly sets up the next chapter of the story.
 
-🌍 The famine draws people from every surrounding nation
+Joseph's own brothers are about to walk into Egypt for exactly this reason.
 
-🔮 This sets up Joseph's brothers arriving in the very next chapter`;
+🌍 The whole region depends on Egypt
+
+🚶 People travel from many nations
+
+🔮 This sets up the next chapter
+
+📖 Joseph's brothers are coming next
+`.trim();
 
 export const GENESIS_FORTY_ONE_PERSONAL_SECTIONS = parseGenesisFortyOneRawNotes(GENESIS_FORTY_ONE_RAW_NOTES);
