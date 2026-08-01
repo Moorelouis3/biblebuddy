@@ -53,6 +53,14 @@
         {
           "name": "progress files logged",
           "at": "2026-08-01T21:56:00Z"
+        },
+        {
+          "name": "committed (9a8cb29)",
+          "at": "2026-08-01T21:55:13Z"
+        },
+        {
+          "name": "pushed to origin main (detached HEAD from a stale local main ref, same pattern as Exodus 8 run; pushed via git push origin HEAD:main, then fast-forwarded local main to match), confirmed via log/status",
+          "at": "2026-08-01T21:55:48Z"
         }
       ]
     },
