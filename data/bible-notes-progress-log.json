@@ -23,7 +23,9 @@
         { "name": "wiring confirmed correct for redo (no changes needed)", "at": "2026-08-01T19:54:45Z" },
         { "name": "parser check passed (7 sections, 33 cards, verbatim)", "at": "2026-08-01T19:54:45Z" },
         { "name": "tsc --noEmit clean", "at": "2026-08-01T19:54:45Z" },
-        { "name": "progress files logged", "at": "2026-08-01T19:56:13Z" }
+        { "name": "progress files logged", "at": "2026-08-01T19:56:13Z" },
+        { "name": "committed (e6e4ba2)", "at": "2026-08-01T19:56:38Z" },
+        { "name": "pushed to origin main, confirmed via log/status", "at": "2026-08-01T19:57:14Z" }
       ]
     },
     {
