@@ -1,7 +1,7 @@
 {
   "goalTotalChapters": 1189,
-  "preExistingGoldStandardChapters": 41,
-  "preExistingGoldStandardNote": "Genesis 1-40 and 42 were already at gold-standard quality before this tracked log started on 2026-07-24.",
+  "preExistingGoldStandardChapters": 40,
+  "preExistingGoldStandardNote": "Genesis 1-40 were already at gold-standard quality before this tracked log started on 2026-07-24. Genesis 42 was also pre-existing but has since been regenerated under this log (2026-08-01) to match the new style spec.",
   "entries": [
     {
       "book": "Genesis",
@@ -4545,6 +4545,63 @@
         {
           "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, data/bible-notes-style-redo-remaining.json)",
           "at": "2026-08-01T01:58:10Z"
+        }
+      ]
+    },
+    {
+      "book": "Genesis",
+      "chapter": 42,
+      "startedAt": "2026-08-01T02:48:00Z",
+      "finishedAt": "2026-08-01T02:57:56Z",
+      "durationMinutes": 10,
+      "sections": 9,
+      "cards": 39,
+      "verses": 38,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Eleventh redo-backlog chapter (data/bible-notes-style-redo-remaining.json), regenerated from scratch to match docs/bible-study-note-style.md, replacing the original pre-spec version (34 cards / 9 sections). Jacob sends ten sons to Egypt for grain, leaving Benjamin home out of old grief over Joseph; the brothers bow before Joseph in exact fulfillment of his boyhood dream, not recognizing him; Joseph accuses them of spying and tests them, holding Simeon as a guarantee; the brothers, alone and unaware Joseph understands their language, finally confess their guilt over selling him, with Reuben's twenty year old warning surfacing; Joseph secretly returns their silver in their sacks, which reads to the family as terror rather than mercy; and the chapter closes with Jacob refusing to risk Benjamin, still not told the truth about Joseph by the sons in the room. Word definitions covered inline: thither/thence, peradventure, mischief, made himself strange, nakedness of the land, traffick, besought, verily, ward, laded, asses, provender, espied, bereaved, and gray hairs to the grave. Kept the same 9 section boundaries as the original file for verse coverage continuity, rewrote every card to the four-move opening / blank-line-per-line / exactly-four-bullet format. `scripts/check_bible_note_style.py` found 6 mechanical problems on first pass (one banned hedge word collision where a card title's literal KJV wording, 'spake roughly,' matched the banned hedge 'roughly' -- retitled that card to a shorter contiguous KJV substring that avoids the word; five bullets over the 8-word cap) -- all fixed, second run clean. Parser check passed exactly (9/9 sections, 39 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call all pre-existing) so no wiring changes were needed. data/bible-notes-style-redo-remaining.json's Genesis 42 entry removed from the front of the list as part of this commit; next redo target is Genesis 43. A few step timestamps below are shared across nearby milestones completed between `date -u` captures, rather than a dedicated call at every single one, consistent with prior entries' documented practice.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-01T02:48:30Z"
+        },
+        {
+          "name": "target chapter determined: Genesis 42 (redo mode, first entry in data/bible-notes-style-redo-remaining.json)",
+          "at": "2026-08-01T02:48:30Z"
+        },
+        {
+          "name": "KJV text fetched for Genesis 42 (38 verses, aruljohn/Bible-kjv GitHub raw mirror)",
+          "at": "2026-08-01T02:48:30Z"
+        },
+        {
+          "name": "docs/bible-study-note-style.md and .claude/skills/bible-notes/SKILL.md read in full",
+          "at": "2026-08-01T02:48:30Z"
+        },
+        {
+          "name": "reference implementation lib/genesisThirtyOneSource.ts and existing genesisFortyTwoSource.ts/wiring reviewed",
+          "at": "2026-08-01T02:48:30Z"
+        },
+        {
+          "name": "wiring in lib/bibleReaderStudyNotes.ts confirmed already correct for redo chapter, no changes needed",
+          "at": "2026-08-01T02:48:30Z"
+        },
+        {
+          "name": "lib/genesisFortyTwoSource.ts written (regenerated to new style spec, 9 sections, 39 cards)",
+          "at": "2026-08-01T02:57:13Z"
+        },
+        {
+          "name": "scripts/check_bible_note_style.py clean after two passes (6 problems fixed: 1 banned hedge word title collision, 5 over-length bullets)",
+          "at": "2026-08-01T02:57:13Z"
+        },
+        {
+          "name": "parser check passed (9/9 sections, 39 cards, text verbatim)",
+          "at": "2026-08-01T02:57:13Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean with zero errors",
+          "at": "2026-08-01T02:57:13Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, data/bible-notes-style-redo-remaining.json)",
+          "at": "2026-08-01T02:57:56Z"
         }
       ]
     }
