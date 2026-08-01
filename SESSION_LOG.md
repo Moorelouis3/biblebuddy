@@ -406,3 +406,7 @@ Next up: Genesis 49
 ## 2026-08-01T09:58:21Z (hourly chapter notes run)
 Chapter: Genesis 49 | Duration: 12 min | Sections: 11 | Cards: 53 | Status: pass
 Next up: Genesis 50
+
+## 2026-08-01T10:57:21Z (hourly chapter notes run)
+Chapter: Genesis 50 | Duration: 11 min | Sections: 9 | Cards: 47 | Status: pass
+Next up: Exodus 1
