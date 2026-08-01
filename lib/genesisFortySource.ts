@@ -81,673 +81,620 @@ function parseGenesisFortyRawNotes(rawText: string): GenesisFortyPersonalSection
     });
   }
 
-  if (sections.length !== 5) {
-    throw new Error("Expected 5 Genesis 40 sections, received " + sections.length);
+  if (sections.length !== 6) {
+    throw new Error("Expected 6 Genesis 40 sections, received " + sections.length);
   }
 
   return sections;
 }
 
-const GENESIS_FORTY_RAW_NOTES = `# Genesis 40:1–4
-
-# 🍷 Joseph Is Given Charge Of Two New Prisoners
-
+const GENESIS_FORTY_RAW_NOTES = `# Genesis 40:1-4
+# 🍷 Joseph Is Given Charge Of Two Prisoners
 ---
+## 🍷 The Butler Of The King Of Egypt
 
-## 🍷 The Butler Of The King Of Egypt And His Baker Had Offended Their Lord
+Butler here means much more than a household servant.
 
-The word **"chief"** in front of both titles matters.
+He was the king's personal cupbearer.
 
-This is the **chief** butler and the **chief** baker.
+His job was to taste and serve Pharaoh's wine before anyone else touched it.
 
-Each man headed an entire department of Pharaoh's household staff.
+That made him the first line of defense against poison.
 
-Other bakers and cupbearers worked under them.
+A king trusted this role to almost no one.
 
-These were not individual servants. They were department heads inside the royal palace.
+Centuries later, a Hebrew named Nehemiah held this same office for a Persian king.
 
-The **chief butler**, or cupbearer, held one of the most sensitive jobs in any ancient royal court.
+🍷 Butler means cupbearer, not a general servant
+🛡️ His duty guarded against poison
+👑 Kings entrusted this role to almost no one
+📖 Nehemiah later held this same office
 
-His duty was to personally taste and serve the king's wine.
+## ⚠️ Had Offended Their Lord
 
-That meant he was the first line of defense against poisoning.
+Offended here does not mean a small annoyance.
 
-A king could not trust just anyone with this job.
+It means a real, serious breach of trust.
 
-It required someone he was confident would never conspire against him.
+Something happened that put Pharaoh's own safety or authority at risk.
 
-Centuries later, the Bible shows the same office held by a foreigner, Nehemiah, serving the king of Persia. A Hebrew was trusted with the king's own cup.
+The text never says exactly what either man did.
 
-The **chief baker** held that same kind of trust over Pharaoh's food.
+What matters is how seriously Pharaoh treated it.
 
-Both men had daily, unsupervised access to everything the king consumed.
+⚠️ Offended means a serious breach, not annoyance
+🔒 Pharaoh's safety or authority was at risk
+❓ The text never says exactly what happened
+➡️ Pharaoh's reaction shows how serious it was
 
-That is why offending the king in this role was treated far more seriously than an ordinary servant's mistake.
+## 😠 Pharaoh Was Wroth
 
-It touched on the king's own safety.
+Wroth is an old word for burning, intense anger.
 
-🍷 "Chief" means each man led an entire department of staff
+It is much stronger than ordinary irritation.
 
-🛡️ The cupbearer's job existed specifically to guard against poisoning
+Pharaoh is not mildly annoyed with these two men.
 
-👑 These roles required a level of trust few servants ever received
+He is furious enough to imprison them both.
 
-⚠️ That is why their offense was treated so seriously
+😠 Wroth means burning, intense anger
+🔥 It is stronger than irritation
+⛓️ Pharaoh responds by imprisoning both men
+➡️ Two officials now face serious consequences
 
-➡️ Pharaoh's response confirms how serious this was
+## 👑 Against The Chief Of The Butlers, And Against The Chief Of The Bakers
 
----
+Chief means the head of an entire department.
 
-## 😠 Pharaoh Was Wroth Against Two Of His Officers
+These two men were not ordinary servants.
 
-**"Wroth"** is an old English word.
+Each one ran a whole staff inside Pharaoh's household.
 
-It simply means furious, or intensely angry.
+One led all the men who handled Pharaoh's drink.
 
-It is stronger than ordinary irritation.
+The other led all the men who handled his food.
 
-Moses also calls them **"officers"** here.
+That rank is exactly why their offense mattered so much.
 
-That is a term used elsewhere in the Old Testament for men who held real administrative authority.
+👑 Chief means head of a department
+🍷 One led all of Pharaoh's cupbearers
+🍞 The other led all of Pharaoh's bakers
+📖 Their high rank made the offense serious
 
-It was not a word used for menial staff.
+## ⛓️ He Put Them In Ward
 
-Pharaoh is not angry at two random servants.
-
-He is angry at two of his own government officials.
-
-😠 Wroth means furious, not just mildly upset
-
-📖 "Officers" signals real administrative rank, not menial status
-
-➡️ Pharaoh decides their punishment
-
----
-
-## ⛓️ He Put Them In Ward In The House Of The Captain Of The Guard, The Place Where Joseph Was Bound
-
-**"Ward"** is an old legal term.
+Ward is an old legal word.
 
 It means a place of guarded custody.
 
-It is related to our modern words "guard" and "warden."
+It is related to the modern words guard and warden.
 
-It describes confinement under watch.
+It describes confinement under watch, not always a harsh dungeon.
 
-It does not necessarily mean the harsh dungeon a modern reader might picture.
+⛓️ Ward means guarded custody
+🔒 It relates to guard and warden
+👀 It describes confinement under watch
+➡️ The location itself is worth noticing
 
-The phrase **"the house of the captain of the guard"** is the same detail given in chapter 39.
+## 🏠 The House Of The Captain Of The Guard, The Place Where Joseph Was Bound
 
-This facility belonged to Potiphar.
+This is the very same prison from chapter thirty nine.
 
-He is the very man Joseph had served.
+It belonged to Potiphar, the official Joseph had served.
 
-He is also the very man whose false accusation put Joseph there in the first place.
+Potiphar is also the man whose household falsely accused Joseph.
 
-This is not a coincidence in the story.
+Now two of Pharaoh's own officials land in that same prison.
 
-Two of Pharaoh's own officials are placed in the one prison, under the one official, where Joseph already has standing.
+That is not a coincidence in this story.
 
-⛓️ Ward is an old legal word for guarded custody
-
-🏠 This is the same prison, under the same official, as chapter 39
-
-🙏 God is quietly positioning Joseph before Joseph even knows it
-
-➡️ Joseph is placed directly over them
-
----
+🏠 The same prison as chapter thirty nine
+🔁 It belonged to Potiphar, Joseph's former master
+🎯 Two officials now share Joseph's prison
+📖 God positions Joseph before he even knows it
 
 ## 🤝 The Captain Of The Guard Charged Joseph With Them
 
-This detail only makes sense with the end of chapter 39 in mind.
+The prison keeper already trusted Joseph with real responsibility.
 
-The prison keeper had already made Joseph a kind of administrator over the other prisoners.
+Chapter thirty nine ends with Joseph running the ward's daily affairs.
 
-Joseph was trusted with running the day to day affairs of the ward.
+So these two officials are not simply placed near Joseph.
 
-So when these two high ranking men arrive, Joseph is not simply thrown into a cell beside them.
+Joseph is formally assigned to attend to them personally.
 
-He is formally assigned as their personal attendant within the prison's own structure.
-
-Ancient prisons often relied on trusted inmates to help manage daily affairs.
-
-Joseph had already earned that role.
-
-🤝 Joseph was already functioning as a trusted prison administrator
-
-📖 This built directly on the trust described at the end of chapter 39
-
-➡️ Joseph's response to this new duty
-
----
-
-## 🍽️ He Served Them
-
-Joseph has lost his freedom, his family, and his name.
-
-Even so, he takes up this assignment the same way he has taken up every assignment before it.
-
-He serves faithfully. He does not serve with resentment.
-
-🍽️ Joseph's character doesn't shift with his circumstances
-
-➡️ Time passes before anything happens
-
----
+🔑 Joseph already held real trust in the prison
+📖 Chapter thirty nine set this trust in place
+🤝 Joseph is assigned to serve these two men
+➡️ How Joseph responds says everything about his character
 
 ## ⏳ They Continued A Season In Ward
 
-**"A season"** is a general Hebrew way of marking an unspecified stretch of time.
+A season is a general way of marking time.
 
-It is long enough for a real relationship of trust to form.
+It does not give an exact number of days or months.
 
-That trust develops between Joseph and these two officials before the events of this chapter begin.
+It is long enough for real trust to form between them.
 
-⏳ "A season" marks an unspecified but meaningful stretch of time
+That trust matters once both men have their dreams.
 
-🤝 This is long enough for real trust to develop
+⏳ A season means an unspecified stretch of time
+🤝 It gave time for real trust to grow
+💭 That trust matters later in the chapter
+➡️ Both men dream on the very same night
 
-➡️ Both men dream on the same night
-
-# Genesis 40:5–8
-
+# Genesis 40:5-8
 # 💭 Two Troubling Dreams
-
 ---
+## 🌙 Each Man His Dream In One Night
 
-## 🌙 They Dreamed A Dream Both Of Them, Each Man His Dream In One Night
+Two separate dreams happen on the very same night.
 
-Two separate dreams happen on the same night.
+That timing was not treated as random in the ancient world.
 
-Each dream carries its own distinct meaning for the man who dreamed it.
+Dreams were often seen as possible messages worth taking seriously.
 
-In the ancient world, timing like this was often read as significant.
+🌙 Two distinct dreams happen the same night
+👀 Ancient cultures rarely treated that as random
+📖 Dreams were often seen as real messages
+➡️ Each dream carries its own separate meaning
 
-Dreams were not dismissed as random static from the mind.
+## 🔀 Each Man According To The Interpretation Of His Dream
 
-They were treated as possible messages worth taking seriously.
+This phrase tells the reader something important before the story continues.
 
-🌙 Two distinct dreams occur on the very same night
+The two dreams are not the same dream told twice.
 
-📖 Ancient cultures generally treated dreams as meaningful, not random
+Each one carries its own distinct meaning for the man who dreamed it.
 
-➡️ Joseph notices something the next morning
+One dream's meaning will not predict the other man's outcome.
 
----
+🔀 Each dream carries its own meaning
+🚫 One dream never predicts the other
+🍷 The butler's fate is his alone
+📖 Two dreams, two very different endings
 
-## 😟 Joseph Came In Unto Them In The Morning, And They Were Sad
+## 👀 Joseph Came In Unto Them In The Morning
 
-As their appointed attendant, Joseph could have simply done his duties and moved on.
+As their assigned attendant, Joseph could have simply done his duties.
 
-Instead, he actually looks at them.
+Instead he actually studies their faces.
 
-He notices their mood.
+He notices something is wrong before either man says a word.
 
-It is a small detail, but it says a great deal about his character.
+That kind of attention says a great deal about his character.
 
-😟 Joseph pays close attention to the men in his care
-
+👀 Joseph pays close attention to the men
+😟 He notices their sadness immediately
+❤️ This reveals real care, not just duty
 ➡️ He asks them directly instead of guessing
 
----
+## ❓ Wherefore Look Ye So Sadly To Day
 
-## 🗣️ Wherefore Look Ye So Sadly To Day?
+Wherefore is an old word that simply means why.
 
-**"Wherefore"** is simply an old word for "why."
+Joseph does not assume he already knows the answer.
 
-Joseph does not assume he already knows what is wrong.
+He asks a direct question instead of guessing.
 
-He asks.
-
-🗣️ Wherefore is an old word meaning "why"
-
-➡️ Their answer reveals a specific problem
-
----
+❓ Wherefore is an old word for why
+🗣️ Joseph asks instead of assuming
+👂 He wants to actually hear their answer
+➡️ Their answer reveals a real problem
 
 ## 🔮 We Have Dreamed A Dream, And There Is No Interpreter Of It
 
-This detail only makes sense against the backdrop of Egyptian religious culture.
+Egypt had a well known class of professional dream interpreters.
 
-Egypt had a well documented class of professional dream interpreters.
+They were often priests trained in fixed methods and reference texts.
 
-They were often priests or trained specialists.
+Egyptians widely believed dreams were a channel the gods used to speak.
 
-They used established methods and reference texts to explain dreams.
+In prison, these two men have no access to that entire system.
 
-Dreams were widely believed to be a channel through which the gods communicated with people.
+That left them stuck with no way to understand something they believed truly mattered.
 
-For men accustomed to Pharaoh's court, being cut off from that professional class in prison would have felt like being cut off from any way to understand what might be a genuinely important message.
+🔮 Egypt had trained, professional dream interpreters
+🙏 Dreams were seen as messages from the gods
+🚫 Prison cut them off from that whole system
+📖 Their one hope was left unanswered
 
-This detail also quietly sets up chapter 41.
-
-There, Pharaoh's own trained magicians will fail completely to interpret his dreams.
-
-Joseph, an imprisoned foreign slave with no formal training at all, succeeds instead.
-
-🔮 Egypt had professional dream interpreters tied to its religion
-
-🚫 The butler and baker have no access to that system in prison
-
-📖 This foreshadows Egypt's own experts failing in chapter 41
-
-➡️ Joseph's answer redirects everything
-
----
-
-## 🙏 Do Not Interpretations Belong To God?
+## 🙏 Do Not Interpretations Belong To God
 
 This is the turning point of the whole chapter.
 
-Joseph does not claim to be a substitute for Egypt's professional interpreters.
+Joseph does not claim to be Egypt's replacement interpreter.
 
-He does not position himself as having personal mystical power at all.
+He does not claim any personal mystical power of his own.
 
-Instead, he says plainly that true interpretation is not a human skill that can be trained into someone.
+He says plainly that true interpretation belongs to God alone.
 
-It belongs to God alone.
+That same claim will be proven true again in chapter forty one.
 
-Whatever Joseph is about to say, he wants both men to understand where it actually comes from first.
-
-🙏 Joseph refuses to claim personal mystical power
-
-📖 He identifies God, not himself, as the true source
-
-➡️ Joseph invites them to share their dreams
-
----
+🙏 Joseph refuses to claim personal power
+📖 True interpretation belongs to God alone
+🔮 Egypt's own experts will fail later
+➡️ Joseph now asks to hear the dreams
 
 ## 🤲 Tell Me Them, I Pray You
 
-A humble, simple invitation.
+This is a humble, simple invitation.
 
-It is not a promise of results.
+It is not a promise that the news will be good.
 
-It is only a willingness to listen and trust God with whatever comes next.
+It is only a willingness to listen and trust God with what comes next.
 
-🤲 Joseph offers to listen, not a guarantee of good news
-
+🤲 Joseph offers to listen, not a guarantee
+🙏 He trusts God with the outcome
+👂 A willing ear starts this whole exchange
 ➡️ The butler shares his dream first
 
-# Genesis 40:9–15
-
-# 🍇 The Butler's Dream Interpreted
-
+# Genesis 40:9-13
+# 🍇 The Butler's Dream And Its Meaning
 ---
+## 🍇 A Vine Was Before Me
 
-## 🍇 In My Dream, Behold, A Vine Was Before Me
+This vine image is not random.
 
-It is worth noticing that the dream's imagery fits the dreamer's actual profession.
+It directly reflects the butler's real job working with Pharaoh's wine.
 
-A man who works with wine every day dreams about a vine.
+Ancient dream interpretation commonly assumed dreams spoke through images from a person's own life.
 
-Ancient dream interpretation commonly assumed that dreams spoke in images drawn from a person's own life and work.
+🍇 A vine matches the butler's real job
+🍷 He worked with wine every day
+📖 Dreams often used images from daily life
+➡️ The vine then grows in a strange way
 
-🍇 The vine directly reflects the butler's real occupation
+## 🔢 Three Branches
 
-➡️ The vine grows unusually fast
+Counting specific objects was a real pattern in ancient dream interpretation.
 
----
+Numbers like this often stood in for units of time.
 
-## 🌱 Three Branches...Budded...Blossoms...Ripe Grapes
+This same pattern appears again later in the chapter with baskets.
+
+It appears once more in Pharaoh's own dreams in chapter forty one.
+
+🔢 Counted objects often meant units of time
+🧺 Baskets repeat this same pattern later
+🐄 Pharaoh's own dreams reuse this pattern
+📖 The pattern's meaning still comes only from God
+
+## 🌱 It Budded, And Her Blossoms Shot Forth
 
 In the dream, an entire growing season happens almost instantly.
 
-Budding, blossoming, and ripening all occur together.
+Budding, blossoming, and ripening all occur together in one moment.
 
-This compression of time is itself part of the message.
+That compressed timing is part of the message itself.
 
-Whatever this dream points to is going to happen very soon. It is not months or years away.
+Whatever this dream points to will happen very soon, not months away.
 
-Counting specific objects as stand ins for units of time was a recognizable pattern in ancient dream interpretation.
+🌱 A full growing season is compressed together
+⏳ The speed itself signals how soon
+📖 This is not a distant, far off event
+➡️ The butler finishes the dream by serving Pharaoh
 
-Branches here. Baskets later in this same chapter. Even cows and ears of grain later in Pharaoh's own dreams.
+## 🍷 I Pressed Them Into Pharaoh's Cup
 
-The language God uses here would have felt familiar in its form, even though the specific meaning could only come from Him.
+The dream shows the butler succeeding at his actual job.
 
-🌱 An entire growing season is compressed into an instant
+He serves Pharaoh's cup with his own hands, just as his role required.
 
-⏳ The speed itself signals how soon this will happen
+Nothing about this image is strange or symbolic on its own.
 
-📖 Using counted objects as time symbols was a familiar interpretive pattern
+It is simply the butler doing his normal duty well.
 
-➡️ The butler completes his task in the dream
+🍷 The dream shows him doing his real job
+✅ He succeeds at his normal duty
+👋 He serves the cup with his own hands
+➡️ Joseph now explains what the dream means
 
----
+## ✅ The Three Branches Are Three Days
 
-## 🍷 I Pressed Them Into Pharaoh's Cup, And Gave The Cup Into Pharaoh's Hand
+Joseph gives a precise, testable meaning, not a vague feeling.
 
-The dream shows the butler doing his actual job successfully.
+He ties one specific number to one specific unit of time.
 
-He serves Pharaoh's cup with his own hands, exactly as his role required.
+That precision matters because it can be checked against reality within days.
 
-🍷 The dream depicts him succeeding at his real duty
-
-➡️ Joseph begins to explain what it means
-
----
-
-## 🔢 This Is The Interpretation Of It: The Three Branches Are Three Days
-
-Joseph assigns a precise, testable meaning.
-
-This is not a vague spiritual impression.
-
-It is a specific number tied to a specific unit of time.
-
-This precision matters. It means Joseph's interpretation can be checked against reality within days.
-
-🔢 Joseph gives a specific, verifiable meaning
-
-📖 This precision is what makes the interpretation testable
-
+🔢 Joseph gives a specific, checkable meaning
+📆 Three branches becomes three exact days
+✅ A testable answer, not a vague guess
 ➡️ Joseph reveals what those three days hold
 
+## 👑 Pharaoh Shall Lift Up Thine Head
+
+Lift up thine head is a Hebrew idiom.
+
+It means restoring someone's honor and status publicly.
+
+It is the opposite of hanging one's head in shame.
+
+👑 Lift up thine head means public honor restored
+😔 It is the opposite of shame
+🎉 Pharaoh will recognize the butler again
+➡️ The exact way he is restored comes next
+
+## 🔁 Restore Thee Unto Thy Place, After The Former Manner
+
+This is not just release from prison.
+
+Joseph promises the butler will get his full job back.
+
+After the former manner means everything returns exactly as it was before.
+
+🔁 The butler gets his full job back
+🚫 This is more than a simple release
+📖 Everything returns exactly as it was
+➡️ Joseph then makes one personal request
+
+# Genesis 40:14-15
+# 🙏 Joseph's Plea For Help
 ---
+## 💭 Think On Me When It Shall Be Well With Thee
 
-## 👑 Within Three Days Shall Pharaoh Lift Up Thine Head, And Restore Thee Unto Thy Place
+Joseph has endured betrayal, slavery, and false imprisonment without one recorded complaint.
 
-The phrase **"lift up thine head"** is a Hebrew idiom.
+Now, quietly, he finally asks for help.
 
-It means restoring someone's honor and status.
+This is the most personally vulnerable moment in his story so far.
 
-It is the opposite of hanging one's head in shame or disgrace.
-
-It pictures Pharaoh publicly recognizing the butler again and reinstating him fully.
-
-👑 "Lift up thine head" is an idiom for restoring honor and status
-
-✅ The butler will be fully reinstated, not just released
-
-➡️ Joseph makes his one personal request
-
----
-
-## 💭 But Think On Me When It Shall Be Well With Thee
-
-Joseph has endured betrayal, slavery, and false imprisonment without a single recorded complaint.
-
-Now, finally, quietly, he asks for help.
-
-It is the most personally vulnerable moment in his story so far.
-
-💭 This is Joseph's only recorded request for personal help
-
+💭 This is Joseph's only recorded request for help
 ❤️ It reveals real vulnerability beneath his steady exterior
+🙏 He waits until now to finally ask
+➡️ He explains exactly what help he needs
 
-➡️ Joseph explains exactly what kind of help he means
+## 🤝 Shew Kindness, I Pray Thee, Unto Me
 
----
+Shew is simply an old spelling of the word show.
 
-## 🙏 Make Mention Of Me Unto Pharaoh, And Bring Me Out Of This House
+Joseph is asking for one specific act of loyalty in return.
+
+He has served the butler faithfully during this whole ordeal.
+
+Now he asks for the same kind of faithfulness back.
+
+📖 Shew is an old spelling of show
+🤝 Joseph asks for loyalty in return
+⚖️ He served faithfully and now asks the same
+➡️ He names the exact favor he needs
+
+## 🚪 Make Mention Of Me Unto Pharaoh, And Bring Me Out Of This House
 
 Joseph is asking the butler to use his restored access to the king.
 
-That access is something Joseph himself has no way of reaching on his own.
+That access is something Joseph has no way of reaching on his own.
 
-He is asking the butler to advocate for his release.
+He is asking the butler to speak up for his release.
 
-🙏 Joseph is asking for access he has no other way to reach
+🚪 Joseph needs access he cannot reach alone
+🗣️ He asks the butler to speak for him
+👑 Only the butler can reach Pharaoh directly
+➡️ Joseph explains why he does not belong there
 
-🚪 The butler's restoration is Joseph's one hope of release
+## 🇮🇱 I Was Stolen Away Out Of The Land Of The Hebrews
 
-➡️ Joseph explains why he doesn't belong there
+Hebrew was typically the label outsiders used for Israel's people.
 
----
+It was more of an outsider's term than a name the family used for itself.
 
-## 🇮🇱 For Indeed I Was Stolen Away Out Of The Land Of The Hebrews
+Joseph uses it here because he is speaking to an Egyptian official.
 
-The term **"Hebrew"** was typically the label outsiders used for Israelites.
-
-It was more of an outsider's term than a name Israel's own family used internally for themselves.
-
-Joseph identifies himself this way because he is speaking to an Egyptian official.
-
-He uses the term that official would already recognize.
-
-In one short sentence, Joseph summarizes his entire tragic history.
+In one short sentence, he summarizes his entire tragic history.
 
 He was kidnapped and sold by his own family.
 
-He says it without bitterness. He says it without a long explanation.
+He says it without bitterness and without a long explanation.
 
-🇮🇱 "Hebrew" was the term outsiders used for Israel's people
-
-📖 Joseph summarizes years of suffering in a single honest sentence
-
+🇮🇱 Hebrew was the term outsiders used
+🗣️ Joseph uses the word his listener knows
+📖 One sentence summarizes years of suffering
 ➡️ Joseph defends his innocence in Egypt too
 
----
+## ⚖️ Here Also Have I Done Nothing
 
-## ⚖️ Here Also Have I Done Nothing That They Should Put Me Into A Prison
-
-Joseph maintains his innocence regarding Potiphar's household as well.
+Joseph maintains his innocence about Potiphar's household too.
 
 He does not name Potiphar's wife.
 
-He does not revisit the details of what happened.
+He does not revisit the details of what happened there.
 
-He states the fact plainly and moves on.
+He states the plain fact and moves on.
 
-⚖️ Joseph asserts his innocence without naming his accuser
+⚖️ Joseph states his innocence plainly
+🤐 He does not name his accuser
+📖 He shows restraint even in his own defense
+➡️ The baker feels encouraged by what he hears
 
-📖 He shows restraint even while explaining his own suffering
-
-➡️ The baker feels encouraged by what he's just heard
-
-# Genesis 40:16–19
-
-# 🍞 The Baker's Dream Interpreted
-
+# Genesis 40:16-19
+# 🍞 The Baker's Dream And Its Dark Meaning
 ---
-
 ## 😊 When The Chief Baker Saw That The Interpretation Was Good
 
-The baker hears good news for his colleague.
+The baker hears good news for his fellow prisoner.
 
-He assumes his own dream must be good news too.
+He assumes his own dream must also be good news.
 
-It is an understandable leap. It is also a mistaken one.
+That leap feels natural, but it is a mistake.
 
-One dream's meaning has no bearing on another's.
+One dream's meaning has no bearing on another dream's meaning.
 
-😊 The baker wrongly assumes his own news will also be good
+😊 The baker assumes his news will match
+🚫 One dream's meaning does not predict another
+❌ His assumption turns out to be wrong
+➡️ He describes his own dream next
 
-➡️ He describes his dream
+## 🧺 Three White Baskets On My Head
 
----
+Carrying goods balanced in stacked baskets on the head was a documented Egyptian baking practice.
 
-## 🧺 I Had Three White Baskets On My Head
+Ancient Egyptian artwork actually shows exactly this method.
 
-Carrying goods balanced on the head, especially in stacked baskets, was a well documented practice among Egyptian bakers.
+The dream's image, once again, fits the dreamer's real occupation.
 
-Ancient Egyptian artwork confirms exactly this kind of carrying method.
+🧺 Carrying baskets on the head matches Egyptian custom
+🎨 Ancient artwork confirms this exact practice
+🍞 The image fits the baker's real job
+➡️ Something in the dream goes badly wrong
 
-The dream's imagery, once again, fits the dreamer's real occupation.
+## 🍞 Bakemeats For Pharaoh
 
-🧺 Carrying baskets on the head matches real Egyptian baking practice
+Bakemeats simply means baked goods.
 
-➡️ Something goes wrong in the dream
+The top basket held food meant specifically for the king's own table.
 
----
+This detail shows the baker's high standing in Pharaoh's household.
 
-## 🐦 The Birds Did Eat Them Out Of The Basket Upon My Head
+🍞 Bakemeats simply means baked goods
+👑 The top basket was meant for Pharaoh himself
+🏆 This shows the baker's high standing
+➡️ What happens to that basket matters greatly
 
-The butler actively and successfully completed his task in his own dream.
+## 🐦 The Birds Did Eat Them Out Of The Basket
+
+The butler actively succeeded at his task inside his own dream.
 
 The baker is passive here instead.
 
-He does nothing while birds simply take what was his to protect.
+He does nothing while birds simply take what he was meant to protect.
 
-Even before any interpretation is given, this detail already carries a different, more troubling weight than the butler's dream.
+Even before Joseph explains anything, this detail already feels troubling.
 
-🐦 The baker is powerless in his own dream, unlike the butler
+🐦 The baker is powerless in his own dream
+⚠️ This detail feels different from the butler's dream
+😟 Something has clearly gone wrong
+➡️ Joseph uses the same pattern to explain it
 
-⚠️ This detail already feels different in tone before it's explained
-
-➡️ Joseph uses the same pattern to interpret it
-
----
-
-## 🔢 This Is The Interpretation Thereof: The Three Baskets Are Three Days
+## 🔢 The Three Baskets Are Three Days
 
 The same three equals three days pattern applies here as it did for the butler.
 
-Joseph does not shape his answer to soften the news.
-
-He does not try to protect himself from delivering it.
+Joseph does not shape his words to soften the news.
 
 He tells the baker the truth exactly as God has shown it to him.
 
-🔢 The same time symbol pattern is used again
-
-📖 Joseph delivers the truth without softening it
-
-➡️ Joseph reveals the devastating meaning
-
----
+🔢 The same time pattern is used again
+📖 Joseph does not soften what he says
+✅ He speaks the truth exactly as shown
+➡️ The actual meaning is far more severe
 
 ## 💀 Pharaoh Shall Lift Up Thy Head From Off Thee
 
-This is a deliberate variation on the phrase used for the butler.
+This phrase is a deliberate twist on the butler's earlier idiom.
 
-"Lift up thine head" alone meant honor and restoration.
+Lift up thine head alone meant honor and restoration.
 
-Here, the added words **"from off thee"** turn the same image inside out.
+Adding from off thee turns that same image completely inside out.
 
-Instead of the man's head being lifted in honor, his head will be lifted away from him entirely.
+Instead of honor, the baker's head will be lifted away from him entirely.
 
-The same picture, reused with one small addition, produces the opposite meaning.
+🔀 This twists the butler's own idiom
+👑 Alone, the phrase meant honor
+💀 Adding from off thee reverses it completely
+📖 One small addition changes everything
 
-This kind of wordplay is a real feature of the original language. It is not something added by translators.
+## 🌳 Shall Hang Thee On A Tree
 
-💀 The phrase is a deliberate variation of the butler's, not identical
+To an Egyptian, this threat carried weight beyond death itself.
 
-🔀 One small addition reverses the entire meaning of the image
+Egyptian religion placed enormous importance on proper burial and preserving the body.
 
-📖 This wordplay exists in the original language itself
+Being left exposed to birds meant losing any hope of that burial.
 
-➡️ The method of death is spelled out plainly
+In Egyptian belief, that fate threatened a person beyond this life.
 
----
+⚰️ Proper burial mattered deeply in Egyptian belief
+🌳 Exposure denied any hope of burial
+😨 The threat reached beyond death itself
+➡️ Three days later, both fates play out exactly
 
-## 🌳 Shall Hang Thee On A Tree; And The Birds Shall Eat Thy Flesh
-
-To an Egyptian audience, this would have carried a weight beyond the physical fear of death.
-
-Egyptian religion placed enormous importance on proper burial and preservation of the body.
-
-Egyptians widely practiced mummification specifically because they believed the body's condition mattered for the afterlife.
-
-Being hung up publicly and left exposed to birds meant total denial of a proper burial.
-
-In Egyptian belief, that fate threatened a person beyond death itself, not just in the present life.
-
-This is part of why the sentence is so severe. It strikes at what Egyptian culture feared most.
-
-🌳 Proper burial mattered enormously in Egyptian religious belief
-
-⚰️ Being left exposed denied any hope of that proper burial
-
-📖 This made the sentence far more severe than death alone
-
-➡️ Three days later, both fates play out exactly as Joseph said
-
-# Genesis 40:20–23
-
+# Genesis 40:20-23
 # 🎂 Pharaoh's Birthday Feast Fulfills Both Dreams
-
 ---
-
 ## 🎂 The Third Day, Which Was Pharaoh's Birthday
 
-This is one of very few birthday celebrations mentioned anywhere in the Old Testament.
+Birthday celebrations are rarely mentioned anywhere in the Old Testament.
 
-It is worth noticing that it belongs to a pagan Egyptian king.
+This one belongs to a pagan Egyptian king, not to God's covenant family.
 
-It does not belong to God's covenant family.
+Scripture never shows the Hebrews marking birthdays this same way.
 
-Scripture does not present the Hebrews marking birthdays this way.
+This detail also explains why Pharaoh reviews his officials' fates on this exact day.
 
-It is a small but real detail of Egyptian royal culture.
+🎂 Birthdays are rare in the Old Testament
+🇪🇬 This custom belonged to Egypt, not Israel
+👑 Kings used feasts to display their authority
+➡️ Both men are brought before Pharaoh
 
-It also explains why Pharaoh would be publicly reviewing his officials' fates on this particular day.
-
-Birthday feasts were a customary occasion for a king to display his authority in front of his entire court.
-
-🎂 Birthday celebrations were rare in Scripture and tied to Egyptian, not Hebrew, custom
-
-👑 It gives Pharaoh a public occasion to display his authority
-
-➡️ Both men are brought before him
-
----
-
-## 👑 He Lifted Up The Head Of The Chief Butler And Of The Chief Baker Among His Servants
+## 👑 He Lifted Up The Head Of The Chief Butler And Of The Chief Baker
 
 The narrator deliberately uses the same phrase for both men.
 
-Only afterward does the text reveal that it means two completely different things for each of them.
+Only afterward does the text reveal two completely different meanings.
 
-This is a literary echo of the wordplay Joseph used back in his interpretations.
+This is the same wordplay Joseph already used in his interpretations.
 
-👑 The same phrase covers both men before their outcomes diverge
-
-📖 This echoes the same wordplay from Joseph's interpretations
-
+👑 The same phrase covers both men at first
+🔀 It means two very different things
+📖 This echoes Joseph's own wordplay
 ➡️ The butler's outcome comes first
-
----
 
 ## 🍷 He Restored The Chief Butler Unto His Butlership Again
 
-Exactly as Joseph said.
+This happens exactly as Joseph said it would.
 
-The butler receives full restoration to his former rank and responsibility.
+The butler receives full reinstatement to his old rank.
 
 It is not merely release from custody.
 
-🍷 The butler receives full reinstatement, not just freedom
+🍷 The butler is fully reinstated
+✅ This matches Joseph's exact words
+🚫 It is more than simple freedom
+➡️ The baker's outcome follows right after
 
-✅ This matches Joseph's interpretation precisely
+## 🤲 He Gave The Cup Into Pharaoh's Hand
 
-➡️ The baker's outcome follows
+This is the literal action from the butler's own dream.
 
----
+The dream image and the real event now match perfectly.
 
-## 🌳 He Hanged The Chief Baker: As Joseph Had Interpreted To Them
+Nothing about Joseph's interpretation missed a single detail.
+
+🍷 This matches the dream's exact image
+🎯 The interpretation proved perfectly accurate
+✅ Every detail Joseph gave came true
+➡️ The baker's fate matches just as closely
+
+## 🌳 He Hanged The Chief Baker
 
 Moses is careful to state that both outcomes matched Joseph's words exactly.
 
 This is not framed as a lucky guess.
 
-It is presented as proof that what Joseph spoke truly did come from God, just as he said back in verse 8.
+It stands as proof that Joseph's gift truly came from God.
 
-🌳 Both outcomes matched Joseph's interpretation exactly
+🌳 Both outcomes matched Joseph's words exactly
+🎲 This was never a lucky guess
+📖 It proves Joseph's gift came from God
+➡️ One quiet, disappointing detail closes the chapter
 
-✅ This confirms Joseph's gift genuinely came from God
+## 😔 Yet Did Not The Chief Butler Remember Joseph
 
-➡️ One final, quiet detail closes the chapter
+Joseph had asked for one simple favor.
 
----
+The butler was now free to grant it easily.
 
-## 😔 Yet Did Not The Chief Butler Remember Joseph, But Forgat Him
+Instead, he simply forgets.
 
-Despite Joseph's plea. Despite everything Joseph did for him.
+This quiet ending stretches Joseph's imprisonment two more full years.
 
-The butler is now fully restored to a position where helping Joseph would have cost him almost nothing.
+God's plan for Joseph never depended on one man's memory.
 
-Even so, he simply forgets.
-
-This quiet, disappointing ending is what stretches Joseph's imprisonment for two more full years.
-
-It lasts until circumstances finally force the butler to remember him at the start of chapter 41.
-
-😔 The butler forgets Joseph despite his easy ability to help
-
-⏳ This forgetfulness costs Joseph two more years in prison
-
-🙏 God's plan for Joseph does not depend on a man's memory`;
+😔 The butler forgets, despite an easy chance
+⏳ This costs Joseph two more years in prison
+🙏 God's plan never depended on his memory
+📖 Faithfulness does not always bring quick rewards
+`.trim();
 
 export const GENESIS_FORTY_PERSONAL_SECTIONS = parseGenesisFortyRawNotes(GENESIS_FORTY_RAW_NOTES);

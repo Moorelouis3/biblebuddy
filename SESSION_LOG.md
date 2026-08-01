@@ -366,3 +366,7 @@ Next up: Genesis 39
 ## 2026-07-31T23:55:00Z (hourly chapter notes run)
 Chapter: Genesis 39 | Duration: 8 min | Sections: 6 | Cards: 22 | Status: pass
 Next up: Genesis 40
+
+## 2026-08-01T00:56:51Z (hourly chapter notes run)
+Chapter: Genesis 40 | Duration: 10 min | Sections: 6 | Cards: 40 | Status: pass
+Next up: Genesis 41

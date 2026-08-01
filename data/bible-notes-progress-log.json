@@ -4437,6 +4437,59 @@
           "at": "2026-07-31T23:55:00Z"
         }
       ]
+    },
+    {
+      "book": "Genesis",
+      "chapter": 40,
+      "startedAt": "2026-08-01T00:46:40Z",
+      "finishedAt": "2026-08-01T00:56:51Z",
+      "durationMinutes": 10,
+      "sections": 6,
+      "cards": 40,
+      "verses": 23,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Ninth redo-backlog chapter: the butler and baker's dreams in prison. Local git state had a stale detached-HEAD clone diverged from origin/main (unrelated history); reset local main to origin/main before starting since the working tree was already clean. Covered the chief-butler/chief-baker offices and why the offense was treated so seriously, ward as guarded custody and the callback to Potiphar's prison from chapter thirty nine, the season-long trust that let Joseph read their sadness and ask, the Egyptian professional-interpreter custom and Joseph's 'interpretations belong to God' turning point, the vine/branches dream matching the butler's real job and the counted-object-as-time-symbol pattern, the lift-up-thine-head idiom and its inverted lift-up-thy-head-from-off-thee variant for the baker, the Egyptian burial/mummification stakes behind hanging on a tree, Joseph's one vulnerable personal request and the Hebrew self-identification, Pharaoh's birthday as an Egyptian (not Hebrew) custom explaining the public reckoning, and the chapter's quiet, deliberately unresolved close with the butler forgetting Joseph. Density 1.74 cards/verse (23 verses, 40 cards), the strongest coverage yet in the redo backlog. `scripts/check_bible_note_style.py` clean after fixing five over-length bullets and two bullets that did not end in 📖/➡️. Parser check passed exactly (6/6 sections, 40 cards, text verbatim), npx tsc --noEmit -p . clean with zero errors. Redo backlog entry popped; next redo target is Genesis 41.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-01T00:47:12Z"
+        },
+        {
+          "name": "target chapter determined: Genesis 40 (style redo mode)",
+          "at": "2026-08-01T00:47:30Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and SKILL.md read in full",
+          "at": "2026-08-01T00:48:10Z"
+        },
+        {
+          "name": "KJV text fetched for Genesis 40 (23 verses, GitHub raw mirror)",
+          "at": "2026-08-01T00:48:30Z"
+        },
+        {
+          "name": "Genesis 40 source file written (redo to new style spec, 40 cards)",
+          "at": "2026-08-01T00:54:30Z"
+        },
+        {
+          "name": "style checker clean after fixing 7 flagged bullets",
+          "at": "2026-08-01T00:55:10Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo chapter (no changes needed)",
+          "at": "2026-08-01T00:55:20Z"
+        },
+        {
+          "name": "parser check passed (6 sections, 40 cards, verbatim)",
+          "at": "2026-08-01T00:55:40Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean (exit 0)",
+          "at": "2026-08-01T00:56:34Z"
+        },
+        {
+          "name": "progress files logged: data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, data/bible-notes-style-redo-remaining.json",
+          "at": "2026-08-01T00:56:51Z"
+        }
+      ]
     }
   ]
 }
