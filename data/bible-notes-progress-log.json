@@ -4861,6 +4861,55 @@
           "at": "2026-08-01T07:53:44Z"
         }
       ]
+    },
+    {
+      "book": "Genesis",
+      "chapter": 48,
+      "startedAt": "2026-08-01T08:46:02Z",
+      "finishedAt": "2026-08-01T08:53:52Z",
+      "durationMinutes": 8,
+      "sections": 8,
+      "cards": 24,
+      "verses": 22,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Seventeenth redo-backlog chapter (data/bible-notes-style-redo-remaining.json), replacing the original pre-spec version (24 cards / 8 sections, same card count but every card rewritten from scratch). Jacob, dying in Egypt, receives Joseph and his two sons and musters his strength to sit up for the blessing; he recounts God's El Shaddai covenant promise from Bethel (Luz) and then, mid legal moment, breaks into unprompted grief over Rachel's death and burial at Ephrath, identified here as Bethlehem; he formally adopts Ephraim and Manasseh onto equal legal standing with Reuben and Simeon, limiting the adoption to just those two grandsons; his eyesight fails him exactly as his own father Isaac's once did in Genesis 27, the same weakness Jacob once exploited now limiting him; Joseph carefully positions his sons by birth order custom but Jacob wittingly (deliberately) crosses his hands, giving the greater blessing to the younger Ephraim over the firstborn Manasseh, continuing Genesis's recurring younger-over-older pattern; Joseph's attempt to correct what he assumes is a blind man's mistake is met with Jacob's calm 'I know it, my son, I know it'; and the chapter closes with Jacob's blessing becoming a lasting formula for later generations, his plain acknowledgment of his own coming death, and an extra portion of land given to Joseph beyond his brothers' shares. Word definitions covered inline: God Almighty (El Shaddai), shewed, redeemed, wittingly. Kept the original file's 8 section boundaries for verse-coverage continuity (only the first section's verse range was corrected from 1 to 1-2 to match its two phrase cards) while rewriting every card to the four-move opening, blank-line-per-line, exactly-four-bullet format. Density 1.09 cards/verse (22 verses, 24 cards). scripts/check_bible_note_style.py passed clean on the first mechanical run; a manual section 13 eye-check pass then caught and fixed one stacked double-and body line, one double-and bullet, and five undefined terms that needed quotation marks per the reference implementation's convention (one, God Almighty, house of God, shewed/showed, wittingly, redeemed), rerun confirmed clean. Parser check passed exactly (8/8 sections, 24 cards, text verbatim). npx tsc --noEmit clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct (import, preserveExactPhraseBodies range covering Genesis 1-50, replaceStudySectionsForBookRange call all pre-existing) so no wiring changes were needed. data/bible-notes-style-redo-remaining.json Genesis 48 entry removed from the front of the list as part of this commit; next redo target is Genesis 49.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-01T08:46:33Z"
+        },
+        {
+          "name": "target chapter determined: Genesis 48 (redo mode, first entry in data/bible-notes-style-redo-remaining.json)",
+          "at": "2026-08-01T08:46:33Z"
+        },
+        {
+          "name": "KJV text fetched for Genesis 48 (22 verses, aruljohn/Bible-kjv GitHub raw mirror)",
+          "at": "2026-08-01T08:46:42Z"
+        },
+        {
+          "name": "docs/bible-study-note-style.md read in full; reference implementation lib/genesisThirtyOneSource.ts and existing lib/genesisFortyEightSource.ts reviewed",
+          "at": "2026-08-01T08:47:12Z"
+        },
+        {
+          "name": "lib/genesisFortyEightSource.ts written (regenerated to new style spec, 8 sections, 24 cards); wiring in lib/bibleReaderStudyNotes.ts confirmed already correct, no changes needed",
+          "at": "2026-08-01T08:50:41Z"
+        },
+        {
+          "name": "scripts/check_bible_note_style.py clean on first mechanical pass",
+          "at": "2026-08-01T08:50:41Z"
+        },
+        {
+          "name": "parser check passed (8/8 sections, 24 cards, text verbatim)",
+          "at": "2026-08-01T08:50:41Z"
+        },
+        {
+          "name": "npx tsc --noEmit clean with zero errors (first pass)",
+          "at": "2026-08-01T08:53:29Z"
+        },
+        {
+          "name": "manual section 13 eye-check pass fixed a stacked double-and line/bullet and five undefined terms missing quotation marks; style checker, parser check, and tsc all rerun clean",
+          "at": "2026-08-01T08:53:52Z"
+        }
+      ]
     }
   ]
 }

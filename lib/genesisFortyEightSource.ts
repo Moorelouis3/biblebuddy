@@ -89,259 +89,516 @@ function parseGenesisFortyEightRawNotes(rawText: string): GenesisFortyEightPerso
 }
 
 const GENESIS_FORTY_EIGHT_RAW_NOTES = `# Genesis 48:1-2
-
 # 🛏️ Joseph Visits His Sick Father
-
 ---
-
 ## 🤒 Thy Father Is Sick
 
-Word reaches Joseph that Jacob is dying. Joseph brings his two sons, Manasseh and Ephraim, with him, sensing this visit carries special weight.
+The word "one" never names who brought this news to Joseph.
 
-🤒 Jacob is nearing death, prompting this visit
+Joseph responds by bringing his two sons with him.
 
-👦 Joseph brings his two sons along, expecting this moment to matter
+He senses this visit will carry lasting weight.
 
----
+An ordinary report becomes the reason for an urgent trip.
+
+A father's blessing was worth rushing for.
+
+🤒 An unnamed messenger brings the news
+
+👦 Joseph brings both his sons
+
+⏱️ He responds without delay
+
+📖 A father's blessing was worth rushing for
 
 ## 💪 Israel Strengthened Himself, And Sat Upon The Bed
 
-Even weak and dying, Jacob gathers his strength to sit upright for this meeting. This is a deliberate act of respect and readiness, not just physical effort. What Jacob is about to do next matters enough to him to fight through his frailty for it.
+Jacob gathers what strength he has left to sit upright.
 
-💪 Jacob physically musters his remaining strength for this moment
+Sitting up here is a deliberate act, not just physical effort.
 
-🎯 His effort shows how important what's about to happen is to him
+In this culture, a formal blessing was given sitting up, not lying down.
+
+Jacob would rather fight through weakness than deliver it lying flat.
+
+Some moments deserve your very last strength.
+
+💪 Jacob musters his remaining strength
+
+🛏️ Sitting up signaled a formal moment
+
+😤 He refuses to bless Joseph lying down
+
+📖 Some moments deserve your very last strength
 
 # Genesis 48:3-4
-
 # 🙏 Jacob Recounts God's Promise
-
 ---
-
 ## ✝️ God Almighty Appeared Unto Me At Luz
 
-God Almighty translates the Hebrew name El Shaddai, a name emphasizing God's supreme power. Luz was the original name of the place Jacob later renamed Bethel, meaning "house of God," after his famous vision of the ladder to heaven back in Genesis 28.
+"God Almighty" translates the Hebrew name El Shaddai.
 
-✝️ God Almighty translates El Shaddai, emphasizing God's supreme power
+The name points to God's supreme, unmatched power.
 
-🏠 Luz was the original name of Bethel, where Jacob had his ladder vision
+Luz was the town later renamed Bethel, meaning "house of God."
 
----
+That renaming happened after Jacob's vision of a ladder reaching to heaven.
 
-## 🌍 A Multitude Of People ... An Everlasting Possession
+Jacob is standing in memory on the same ground where God first spoke to him.
 
-Jacob repeats God's covenant promise almost word for word: descendants beyond counting, and permanent ownership of the land. Even now, near death in Egypt, Jacob's mind is fixed on the promise God made to his family generations ago.
+✝️ God Almighty means El Shaddai
 
-🌍 Jacob restates the covenant promise of descendants and land
+💪 The name points to supreme power
 
-📖 This same promise was first given to Abraham and passed down through Isaac
+🏠 Luz became Bethel after Jacob's vision
+
+📖 Jacob recalls where God first spoke
+
+## 🌍 An Everlasting Possession
+
+Jacob repeats the covenant promise God gave him at Bethel.
+
+It included descendants too many to count.
+
+It included permanent ownership of the land of Canaan.
+
+Jacob is near death in Egypt, far from that land.
+
+His mind stays fixed on a promise not yet fulfilled.
+
+Recounting it here is Jacob's way of clinging to it.
+
+🌍 Jacob repeats God's covenant promise
+
+👶 It promised descendants beyond counting
+
+🗺️ It promised permanent ownership of Canaan
+
+📖 Jacob clings to an unfulfilled promise
 
 # Genesis 48:5-7
-
 # 👶 Jacob Adopts Ephraim And Manasseh
-
 ---
+## 👨‍👦‍👦 As Reuben And Simeon, They Shall Be Mine
 
-## 👨‍👦‍👦 Thy Two Sons ... Are Mine; As Reuben And Simeon, They Shall Be Mine
+Jacob formally adopts Joseph's two sons as his own.
 
-Jacob formally adopts Joseph's two sons as his own, placing them on equal legal standing with his own sons Reuben and Simeon. This isn't sentimental language, it's a real legal and covenant act that will shape Israel's future tribal structure.
+Ephraim and Manasseh now stand equal to Jacob's own sons.
 
-👨‍👦‍👦 Jacob is performing a formal adoption, not just an emotional gesture
+That includes Reuben and Simeon.
 
-📜 Ephraim and Manasseh become full tribes of Israel because of this moment
+This is not sentimental language.
 
----
+It is a legal, covenant act with lasting consequences.
+
+Two grandsons become founders of tribes in their own right.
+
+👨‍👦‍👦 Jacob adopts Joseph's two sons
+
+⚖️ Equal in status to Reuben and Simeon
+
+📜 This is a legal covenant act
+
+📖 Two grandsons become tribes of their own
 
 ## 🎁 Called After The Name Of Their Brethren In Their Inheritance
 
-Any children Joseph has after Ephraim and Manasseh will not get their own separate tribal inheritance, they'll be counted under Ephraim and Manasseh's tribal lines instead. This adoption is specific and limited, not open-ended.
+Any sons born to Joseph after this will not get their own tribal share.
 
-🎁 Only Ephraim and Manasseh receive this special adopted status, not future sons
+They will be counted under Ephraim and Manasseh instead.
 
----
+The adoption Jacob just made is specific, not open ended.
 
-## 💔 Rachel Died By Me ... I Buried Her There In The Way Of Ephrath; The Same Is Bethlehem
+Only these two grandsons receive this special status.
 
-In the middle of this legal moment, Jacob suddenly brings up Rachel's death, unprompted. Ephrath is identified as Bethlehem, the same town later famous as David's hometown and the birthplace of Jesus. Even decades later, Jacob's grief for Rachel, Joseph's mother, is still close to the surface.
+Jacob draws a clear boundary around an extraordinary gift.
 
-💔 Jacob's grief for Rachel resurfaces even in this legal, formal moment
+🎁 Future sons get no separate share
 
-🏘️ Ephrath is identified here as Bethlehem, later famous in Israel's history
+📋 They fall under Ephraim and Manasseh
+
+🚧 The adoption applies to two sons only
+
+📖 Jacob draws a clear boundary here
+
+## 💔 The Same Is Bethlehem
+
+In the middle of a legal adoption, Jacob suddenly brings up Rachel.
+
+Rachel died on the road, before they reached their destination.
+
+Ephrath, where Jacob buried her, is identified here as Bethlehem.
+
+Bethlehem later becomes David's hometown and the birthplace of Jesus.
+
+Decades have passed, but Jacob's grief for Joseph's mother has not faded.
+
+A legal moment breaks open into a private, personal memory.
+
+💔 Jacob interrupts himself to mention Rachel
+
+🛣️ She died before reaching their destination
+
+🏘️ Ephrath is identified here as Bethlehem
+
+📖 Old grief still surfaces in a legal moment
 
 # Genesis 48:8-11
-
 # 👀 Jacob's Fading Eyes
-
 ---
+## ❓ Who Are These?
 
-## ❓ Israel Beheld Joseph's Sons, And Said, Who Are These?
+Jacob does not recognize his own grandsons standing in front of him.
 
-Jacob doesn't recognize his own grandsons by sight. This isn't confusion about who they are in general, it's a direct result of his failing eyesight, which the text explains just two verses later.
+This is not confusion about who they are as people.
 
-❓ Jacob's question is about eyesight, not memory or confusion
+Two verses later, the text explains the real reason.
 
----
+Jacob's eyesight has failed with age.
 
-## 👓 The Eyes Of Israel Were Dim For Age, So That He Could Not See
+A question that sounds like forgetting is really about failing eyes.
 
-Jacob's blindness in old age directly echoes his own father Isaac's blindness in Genesis 27, when Jacob himself took advantage of poor eyesight to receive Isaac's blessing instead of Esau. Now Jacob is the one who can't see clearly during a blessing.
+❓ Jacob fails to recognize his grandsons
 
-👓 Jacob's blindness mirrors Isaac's blindness from Genesis 27
+👁️ The cause is revealed two verses later
 
-🔄 The same physical weakness that once helped Jacob now limits Jacob himself
+👓 His eyesight has failed with age
 
----
+📖 A question about sight, not memory
 
-## 😲 I Had Not Thought To See Thy Face: And, Lo, God Hath Shewed Me Also Thy Seed
+## 👓 The Eyes Of Israel Were Dim For Age
 
-Jacob never expected to see Joseph alive again, let alone live long enough to meet Joseph's own children. Shewed is an old spelling of "showed." This is Jacob recognizing an extra, unexpected layer of blessing on top of Joseph's survival itself.
+Jacob's blindness in old age is not the first in this family.
 
-😲 Jacob never expected to live long enough to meet Joseph's children
+His own father Isaac was also nearly blind in Genesis 27.
 
-📖 Shewed means showed
+Jacob once used Isaac's poor eyesight to receive a blessing meant for Esau.
+
+Now Jacob is the one who cannot see clearly during a blessing.
+
+The same weakness that once helped Jacob now limits him.
+
+👓 Jacob's eyesight fails him in old age
+
+🔁 Isaac was also nearly blind in Genesis 27
+
+🎭 Jacob once exploited that same weakness
+
+📖 The same weakness now limits Jacob himself
+
+## 😲 God Hath Shewed Me Also Thy Seed
+
+"Shewed" is an old spelling of "showed."
+
+Jacob never expected to see Joseph alive again.
+
+He certainly never expected to meet Joseph's own children.
+
+Meeting his grandsons feels like an extra blessing stacked on Joseph's survival.
+
+Jacob names this moment for what it is, more than he dared hope for.
+
+😲 Shewed means showed in old English
+
+🙅 Jacob never expected to see Joseph again
+
+👶 Meeting grandsons was an unexpected extra
+
+📖 This moment exceeds anything Jacob had hoped for
 
 # Genesis 48:12-14
-
-# 🤲 The Crossed-Hands Blessing
-
+# 🤲 The Crossed Hands Blessing
 ---
+## 🙇 Bowed Himself With His Face To The Earth
 
-## 🙇 Joseph Bowed Himself With His Face To The Earth
+Joseph is the second most powerful man in all of Egypt.
 
-Joseph, the second most powerful man in Egypt, bows completely to the ground before his dying father. Worldly power means nothing here, Joseph humbles himself fully in front of Jacob's authority as his father and as the covenant's patriarch.
+He still bows completely to the ground before his dying father.
 
-🙇 Joseph's political power doesn't override his respect for his father
+Worldly power carries no weight in this moment.
 
----
+Joseph submits fully to Jacob's authority as father and patriarch.
 
-## ✋ Ephraim In His Right Hand Toward Israel's Left Hand, And Manasseh In His Left Hand Toward Israel's Right Hand
+The most powerful man in the room chooses to kneel.
 
-Joseph carefully positions his sons so that Manasseh, the firstborn, lines up with Jacob's stronger right hand, following normal birth-order custom. The right hand traditionally carried the greater blessing in this culture.
+🙇 Joseph bows fully to the ground
 
-✋ Joseph positions his sons to follow normal firstborn custom
+👑 His power in Egypt means nothing here
 
-🫱 The right hand traditionally carried the greater blessing
+🙏 He submits to his father's authority
 
----
+📖 The powerful man in the room kneels
 
-## 🔄 Guiding His Hands Wittingly; For Manasseh Was The Firstborn
+## ✋ Toward Israel's Right Hand
 
-Wittingly means knowingly and deliberately, not by accident. Despite being nearly blind, Jacob crosses his arms on purpose, placing his right hand on Ephraim, the younger son, instead of Manasseh. This isn't confusion, it's an intentional reversal.
+Joseph positions his sons with care before the blessing begins.
 
-🔄 Wittingly means knowingly and on purpose, not by mistake
+Manasseh, the firstborn, is placed toward Jacob's stronger right hand.
 
-🎯 Jacob's crossed hands are a deliberate choice, not blindness causing an error
+Ephraim, the younger, is placed toward Jacob's weaker left hand.
+
+In this culture, the right hand carried the greater blessing.
+
+Joseph is following ordinary custom, not asking for anything unusual.
+
+✋ Joseph positions his sons deliberately
+
+👑 Manasseh lines up with the stronger hand
+
+🫲 Ephraim lines up with the weaker hand
+
+📖 Joseph expects nothing but ordinary custom
+
+## 🔄 Guiding His Hands Wittingly
+
+"Wittingly" means knowingly and on purpose, not by accident.
+
+Jacob is nearly blind, yet he crosses his arms with full control.
+
+He places his right hand on Ephraim, the younger son.
+
+This is not the mistake it looks like.
+
+A blind man makes one of the most deliberate choices in Genesis.
+
+🔄 Wittingly means done on purpose
+
+🙈 Jacob is nearly blind here
+
+✋ He deliberately crosses his hands
+
+📖 A blind man acts with full intention
 
 # Genesis 48:15-16
-
 # 🙏 Jacob's Blessing
-
 ---
+## 🚶 My Fathers Abraham And Isaac Did Walk
 
-## 🚶 The God Before Whom My Fathers Abraham And Isaac Did Walk
+Jacob roots this blessing in three generations of family faith.
 
-Jacob roots his blessing in three generations: Abraham, Isaac, and now himself, describing their whole lives as walking with God. This blessing is Jacob passing down a family relationship with God, not just wishing his grandsons well.
+Abraham walked with God.
 
-🚶 "Walking with God" describes a whole life lived in relationship with Him
+Isaac walked with God.
 
-📖 Jacob links three generations, Abraham, Isaac, and himself, in this one blessing
+Now Jacob describes his own life the same way.
 
----
+This blessing hands down a relationship with God, not just good wishes.
+
+🚶 Walking with God spans three generations
+
+👴 Abraham and Isaac both walked with God
+
+🙏 Jacob claims that same relationship
+
+📖 The blessing passes down a relationship, not wishes
 
 ## 👼 The Angel Which Redeemed Me From All Evil
 
-Jacob refers to God's protective presence across his whole difficult life as "the Angel who redeemed me." Redeemed here means rescued or delivered, the same idea used later in Scripture for God rescuing Israel from slavery in Egypt.
+"Redeemed" means rescued or delivered from danger.
 
-👼 Redeemed means rescued or delivered from danger
+Jacob is describing God's protection across his whole difficult life.
 
-🔮 This same rescue language later describes Israel's deliverance from Egypt
+The same word later describes Israel's rescue from slavery in Egypt.
 
----
+One man's story becomes the pattern for an entire nation's story.
 
-## 🌍 Let My Name Be Named On Them ... Let Them Grow Into A Multitude
+Jacob is not thanking luck.
 
-Jacob asks that his own name, and the names of Abraham and Isaac before him, be carried forward through Ephraim and Manasseh. He's asking God to make these two grandsons carry the whole covenant family's identity into the future.
+He is naming exactly who rescued him.
 
-🌍 Jacob asks for the whole covenant legacy to continue through these two grandsons
+👼 Redeemed means rescued or delivered
+
+🛡️ Jacob describes God's protection over his life
+
+🔮 The same word later describes Israel's rescue
+
+📖 Jacob names exactly who rescued him
+
+## 🌍 Let Them Grow Into A Multitude
+
+Jacob asks that his own name be carried into the future.
+
+He asks the same for the names of Abraham and Isaac.
+
+Ephraim and Manasseh become the ones who carry that legacy forward.
+
+This blessing asks God to keep the whole covenant family's identity alive.
+
+Two grandsons are asked to carry an entire family's story forward.
+
+🌍 Jacob asks for his name to endure
+
+👴 Abraham and Isaac's names ride along
+
+👶 Ephraim and Manasseh carry that legacy
+
+📖 Two grandsons carry a whole family's story
 
 # Genesis 48:17-19
-
 # ⚖️ Joseph's Objection And Jacob's Refusal
-
 ---
+## 😟 It Displeased Him
 
-## 😟 It Displeased Him: And He Held Up His Father's Hand
+Joseph notices his father crossing his hands and assumes a mistake.
 
-Joseph notices the crossed hands and assumes it's a mistake caused by Jacob's blindness. He tries to physically correct it, moving Jacob's right hand from Ephraim's head to Manasseh's, expecting his father simply can't see clearly.
+He believes Jacob's blindness caused him to reach for the wrong son.
 
-😟 Joseph assumes his father's blindness caused an honest mistake
+Joseph reaches out to physically move his father's hand.
 
-🖐️ He physically tries to correct what he thinks is an error
+He expects Jacob simply cannot see what he is doing.
 
----
+Joseph fixes an error that is not one.
 
-## 🚫 Not So, My Father: For This Is The Firstborn
+😟 Joseph assumes his father made a mistake
 
-Joseph respectfully but firmly pushes back, reminding Jacob which son is actually the firstborn, expecting his father to simply not realize what he's done.
+🖐️ He tries to physically correct it
 
-🚫 Joseph respectfully corrects his father, assuming genuine confusion
+👓 He blames Jacob's failing eyesight
 
----
+📖 Joseph fixes an error that is not one
+
+## 🚫 For This Is The Firstborn
+
+Joseph corrects his father, respectfully but firmly.
+
+He reminds Jacob which son was born first.
+
+Joseph still believes this is confusion, not a decision.
+
+He does not yet know his father sees everything clearly.
+
+Joseph is arguing against a choice his father already made on purpose.
+
+🚫 Joseph firmly corrects his father
+
+👴 He names Manasseh as the firstborn
+
+🙅 He assumes confusion, not a choice
+
+📖 Joseph argues against a deliberate decision
 
 ## 👴 I Know It, My Son, I Know It
 
-Jacob's response is calm and clear: he already knows exactly what he's doing. This confirms the crossing of hands back in verse 14 was never a mistake at all, it was Jacob's deliberate decision from the start.
+Jacob's answer is calm and certain.
 
-👴 Jacob confirms he made this choice fully aware, not by accident
+He already knows exactly what he is doing.
 
----
+This confirms the crossed hands in verse fourteen were never a mistake.
+
+It was Jacob's decision from the very start.
+
+A dying man corrects his own son without raising his voice.
+
+👴 Jacob answers with calm certainty
+
+✅ He already knows what he is doing
+
+🔄 The crossed hands were never accidental
+
+📖 He corrects his son without raising his voice
 
 ## 📈 His Younger Brother Shall Be Greater Than He
 
-Jacob predicts that Ephraim's tribe will grow larger and more prominent than Manasseh's, despite Manasseh being the firstborn. This continues a pattern seen again and again in Genesis: the younger repeatedly rising above the older, as with Jacob himself over Esau, and Isaac over Ishmael.
+Jacob predicts that Ephraim's line will grow larger than Manasseh's.
 
-📈 Jacob predicts Ephraim's line will surpass Manasseh's
+This happens despite Manasseh being the firstborn son.
 
-🔁 This mirrors the recurring Genesis pattern of the younger rising above the older
+Genesis keeps returning to this same pattern.
+
+The younger repeatedly rises above the older, as with Jacob over Esau.
+
+God's choices in this family rarely follow birth order.
+
+📈 Ephraim's line will surpass Manasseh's
+
+👶 The younger son rises again
+
+🔁 Genesis repeats this pattern often
+
+📖 God's choices rarely follow birth order
 
 # Genesis 48:20-22
-
 # 🌍 The Final Blessing And Parting Words
-
 ---
+## 🙏 God Make Thee As Ephraim And As Manasseh
 
-## 🙏 In Thee Shall Israel Bless, Saying, God Make Thee As Ephraim And As Manasseh
+Jacob's blessing here becomes something bigger than a private moment.
 
-Jacob's blessing becomes so significant that it turns into a lasting formula, future generations of Israel will use "God make thee as Ephraim and as Manasseh" as a standard blessing over their own children.
+It turns into a lasting formula for later generations.
 
-🙏 This blessing becomes a lasting formula used by later generations
+Israelite parents will bless their own children using these same names.
 
----
+Two grandsons become the standard for a good blessing.
+
+A single deathbed blessing outlives the room.
+
+🙏 This blessing becomes a lasting formula
+
+👶 Later parents bless children with these names
+
+📜 Ephraim and Manasseh become the standard
+
+📖 A deathbed blessing outlives the room
 
 ## ⬆️ He Set Ephraim Before Manasseh
 
-Jacob makes his intentional order official and public, formally placing Ephraim ahead of Manasseh, cementing the reversal he already explained.
+Jacob makes his choice official and public.
 
-⬆️ Jacob makes the reversed birth order official and public
+This is not a private opinion whispered between father and son.
 
----
+Ephraim is formally placed ahead of his older brother.
 
-## ⚰️ Behold, I Die: But God Shall Be With You
+The reversal Jacob already explained now becomes permanent record.
 
-Jacob acknowledges his own approaching death plainly and without fear, immediately turning the focus to God's continued presence with Joseph and the whole family after he's gone.
+Jacob makes his decision permanent before he dies.
 
-⚰️ Jacob faces his own death directly, without avoiding the subject
+⬆️ Jacob makes the order official
 
-🙏 His focus shifts immediately to God's ongoing presence with his family
+📢 It is announced publicly, not privately
 
----
+👶 Ephraim is placed ahead of his brother
 
-## ⚔️ One Portion Above Thy Brethren, Which I Took Out Of The Hand Of The Amorite With My Sword And With My Bow
+📖 Jacob makes this reversal permanent
 
-Jacob gives Joseph an extra portion of land beyond what his brothers receive, language that connects to the region near Shechem. This detail links back to the family's earlier history in that area from Genesis 33-34, giving Joseph a tangible inheritance beyond the shared blessing.
+## ⚰️ Behold, I Die
 
-⚔️ Jacob gives Joseph an extra land inheritance beyond his brothers' shares
+Jacob names his own death plainly, without flinching.
 
-🗺️ This connects back to the family's earlier history near Shechem in Genesis 33-34`;
+He does not linger on fear or dread.
+
+His focus shifts immediately to what happens after he is gone.
+
+God's presence will stay with Joseph and the whole family.
+
+Jacob's last words point away from himself and toward God.
+
+⚰️ Jacob names his death plainly
+
+😌 He shows no fear of it
+
+🙏 His focus shifts to God's presence
+
+📖 His last words point toward God
+
+## ⚔️ With My Sword And With My Bow
+
+Jacob gives Joseph one extra portion of land beyond his brothers' shares.
+
+The language here connects to the region near Shechem.
+
+That is the same area from the family's earlier history.
+
+Joseph receives a tangible inheritance on top of the shared blessing.
+
+Even a covenant this large still comes with a personal gift.
+
+⚔️ Joseph receives one extra portion of land
+
+🗺️ The land connects to the region near Shechem
+
+📜 That area appears earlier in Genesis
+
+📖 A shared blessing still includes a personal gift
+`.trim();
 
 export const GENESIS_FORTY_EIGHT_PERSONAL_SECTIONS = parseGenesisFortyEightRawNotes(GENESIS_FORTY_EIGHT_RAW_NOTES);
