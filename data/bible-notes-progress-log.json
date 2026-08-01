@@ -24,8 +24,8 @@
         { "name": "parser check passed (8 sections, 30 cards, verbatim)", "at": "2026-08-01T20:52:37Z" },
         { "name": "tsc --noEmit clean", "at": "2026-08-01T20:53:06Z" },
         { "name": "progress files logged", "at": "2026-08-01T20:55:46Z" },
-        { "name": "committed", "at": "PLACEHOLDER_COMMIT_TIME" },
-        { "name": "pushed to origin main, confirmed via log/status", "at": "PLACEHOLDER_PUSH_TIME" }
+        { "name": "committed (78c934e)", "at": "2026-08-01T20:56:20Z" },
+        { "name": "pushed to origin main, confirmed via log/status", "at": "2026-08-01T20:56:49Z" }
       ]
     },
     {
