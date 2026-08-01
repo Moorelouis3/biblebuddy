@@ -422,3 +422,7 @@ Next up: Exodus 3
 ## 2026-08-01T13:59:09Z (hourly chapter notes run)
 Chapter: Exodus 3 | Duration: 13 min | Sections: 7 | Cards: 46 | Status: pass
 Next up: Exodus 4
+
+## 2026-08-01T14:52:40Z (hourly chapter notes run)
+Chapter: Exodus 4 | Duration: 7 min | Sections: 8 | Cards: 30 | Status: pass
+Next up: Exodus 5

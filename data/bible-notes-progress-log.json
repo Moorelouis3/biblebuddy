@@ -5171,6 +5171,59 @@
           "at": "2026-08-01T13:59:09Z"
         }
       ]
+    },
+    {
+      "book": "Exodus",
+      "chapter": 4,
+      "startedAt": "2026-08-01T14:46:12Z",
+      "finishedAt": "2026-08-01T14:52:40Z",
+      "durationMinutes": 7,
+      "sections": 8,
+      "cards": 30,
+      "verses": 31,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Twenty third redo-backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (8 sections / 24 cards) from scratch to the new style spec. Exodus 4 covers the three signs God gives Moses (rod to serpent, leprous hand, water to blood foreshadowing the first plague), Moses' objection about not being eloquent and God's answer, Aaron appointed as spokesman after God's anger is kindled against Moses' reluctance, Moses leaving Midian with the rod of God, God's advance warning that He will harden Pharaoh's heart plus the firstborn son warning to Pharaoh, the difficult 'bridegroom of blood' circumcision episode with Zipporah, and the chapter's close where Aaron and Moses brief Israel's elders and the people believe and worship. Kept the same 8 section boundaries as the prior version (4:1-5, 4:6-9, 4:10-12, 4:13-17, 4:18-20, 4:21-23, 4:24-26, 4:27-31) and increased card density from 24 to 30 cards over 31 verses (~1.0 cards/verse), consistent with the Genesis 31 reference implementation's ratio. Word/custom definitions covered inline: eloquent, wroth-adjacent 'anger was kindled', spokesman, leprous, circumcision as the Genesis 17 covenant sign, and the debated 'bloody husband' phrase. scripts/check_bible_note_style.py found one bullet-word-count violation (9 words instead of 3-8) on the first pass, trimmed and the second run passed clean. A manual section 13 eye check and a duplicate title/opening line scan both passed. Parser check passed exactly (8/8 sections, 30 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct (import, preserveExactPhraseBodies range covering exodus 1-40, replaceStudySectionsForBookRange call all pre-existing) so no wiring changes were needed, only the type/function/const names (ExodusFourPersonalSection, parseExodusFourRawNotes, EXODUS_FOUR_RAW_NOTES, EXODUS_FOUR_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Exodus 4 entry removed from the front of the list as part of this commit; next redo target is Exodus 5.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-01T14:46:12Z"
+        },
+        {
+          "name": "target chapter determined: Exodus 4 (style redo, first in remaining backlog)",
+          "at": "2026-08-01T14:46:15Z"
+        },
+        {
+          "name": "style spec and reference implementation read",
+          "at": "2026-08-01T14:46:45Z"
+        },
+        {
+          "name": "KJV text fetched",
+          "at": "2026-08-01T14:47:30Z"
+        },
+        {
+          "name": "source file written",
+          "at": "2026-08-01T14:50:30Z"
+        },
+        {
+          "name": "style checker clean (after fixing 1 bullet word-count issue)",
+          "at": "2026-08-01T14:51:15Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo (no changes needed)",
+          "at": "2026-08-01T14:51:30Z"
+        },
+        {
+          "name": "parser check passed (8 sections, 30 cards)",
+          "at": "2026-08-01T14:51:50Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-01T14:52:20Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-01T14:52:40Z"
+        }
+      ]
     }
   ]
 }

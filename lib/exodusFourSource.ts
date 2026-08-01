@@ -89,243 +89,572 @@ function parseExodusFourRawNotes(rawText: string): ExodusFourPersonalSection[] {
 }
 
 const EXODUS_FOUR_RAW_NOTES = `# Exodus 4:1-5
-
-# 🐍 The Rod Becomes A Serpent
-
+# 🐍 The Sign Of The Rod
 ---
-
 ## 😟 They Will Not Believe Me, Nor Hearken Unto My Voice
 
-Moses raises a real, practical concern: why would Israel simply take his word that God appeared to him with no proof at all. This isn't defiance, it's a legitimate worry about being taken seriously.
+Moses raises a real fear here, not simple defiance.
 
-😟 Moses raises a genuine, practical concern, not simple defiance
+He worries Israel will not accept his word alone.
 
----
+No proof exists yet that God actually appeared to him.
 
-## 🐍 Cast It On The Ground ... It Became A Serpent
+God does not scold this doubt.
 
-God gives Moses a miraculous sign using something completely ordinary, his own shepherd's staff. Moses reacts with real fear, fleeing from the very snake God just created, showing this sign genuinely startled him too.
+He answers it with a sign instead.
 
-🐍 The sign uses something completely ordinary, Moses' own walking staff
+😟 Moses raises a genuine fear
 
-😨 Even Moses is startled by his own miraculous sign
+🗣️ He fears Israel will not listen
 
----
+🤝 No proof exists yet for his claim
 
-## ✋ Take It By The Tail ... It Became A Rod In His Hand
+📖 God answers doubt with a sign
 
-Grabbing a snake by the tail was actually the least safe way to handle it under normal circumstances, making Moses' obedience here an act of real trust despite his fear. The staff returns to normal the moment he obeys.
+## 👋 What Is That In Thine Hand
 
-✋ Grabbing a snake by the tail required real trust, not natural caution
+God asks Moses a simple, almost strange question.
 
+Moses is holding nothing more than a shepherd's staff.
+
+The lesson is not really about the staff itself.
+
+God can use whatever ordinary thing is already in someone's hand.
+
+👋 God asks Moses a simple question
+
+🐑 The object is a plain shepherd's staff
+
+🙌 God works through ordinary, everyday things
+
+📖 God uses what is already in your hand
+
+## 🐍 Cast It On The Ground
+
+God tells Moses to throw his staff down.
+
+The staff instantly becomes a live snake.
+
+Moses does not stay calm at all.
+
+He flees from the very sign God just gave him.
+
+Even Moses needed convincing, not only the people.
+
+🐍 The staff becomes a live snake
+
+😨 Moses flees from his own sign
+
+🤯 Even Moses is caught off guard
+
+📖 The sign convinces Moses before Israel
+
+## ✋ Take It By The Tail
+
+Grabbing a snake by the tail was the most dangerous way to handle it.
+
+Normal instinct would be to pin the head down first, not the tail.
+
+Moses obeys anyway, even while still afraid.
+
+The moment he grabs it, the snake turns back into a plain rod.
+
+Obedience came before the fear fully went away.
+
+✋ Grabbing the tail was the risky choice
+
+😰 Moses obeys even while still afraid
+
+🌀 The snake turns back into a rod
+
+📖 Obedience came before fear disappeared
+
+## 🙏 The God Of Abraham, The God Of Isaac, And The God Of Jacob
+
+This sign is meant to prove one specific thing.
+
+The LORD who just spoke to Moses is the same God the patriarchs worshipped generations before.
+
+Israel had not heard from God directly in a very long time.
+
+Naming three familiar generations makes the message impossible to mistake for someone else.
+
+🙏 The sign points to one true God
+
+👴 Abraham, Isaac, and Jacob are named directly
+
+🔗 This links Moses to the ancient promise
+
+📖 No one could mistake this message
 # Exodus 4:6-9
-
 # 🤲 Two More Signs
-
 ---
-
 ## 🤍 His Hand Was Leprous As Snow
 
-Leprosy was a serious, greatly feared skin disease in the ancient world, often making a person ritually unclean and socially isolated. God gives Moses this vivid, frightening sign, then immediately reverses it, demonstrating power over disease itself.
+Leprosy was one of the most feared diseases in the ancient world.
 
-🤍 Leprosy was a severe, feared disease causing ritual uncleanness and isolation
+It could make a person ritually unclean and cut off from the community.
 
-⚡ God demonstrates power to both cause and instantly reverse the condition
+God gives Moses this frightening sign on his own body first.
 
----
+The Israelites would recognize the disease immediately, no explanation needed.
 
-## 🔄 It Was Turned Again As His Other Flesh
+🤍 Leprosy was a feared, isolating disease
 
-The instant healing shows this sign wasn't a trick or illusion, it was a real, reversible miracle, proof that the same power that caused the leprosy could just as easily remove it completely.
+😨 God uses Moses' own body for the sign
 
-🔄 The instant reversal proves genuine miraculous power, not illusion
+👥 Everyone would recognize the disease at once
 
----
+📖 The sign speaks without needing translation
 
-## 🩸 The Water ... Shall Become Blood Upon The Dry Land
+## 🔄 Turned Again As His Other Flesh
 
-God provides a third sign in advance, water from the Nile turning to blood, in case the first two signs still aren't convincing enough. This foreshadows the very first plague that will strike Egypt in the chapters ahead.
+Moses puts his hand back and the disease disappears completely.
 
-🩸 This directly foreshadows the first plague still to come in Exodus 7
+The healing happens just as suddenly as the leprosy did.
 
-📈 Three separate signs show God anticipating exactly how much convincing is needed
+This proves the sign is real power, not a trick of the eye.
 
+The same hand that caused it also removes it.
+
+🔄 The healing is just as sudden
+
+✋ The same hand, freed of disease
+
+🎭 This rules out any kind of trick
+
+📖 Real power caused it and removed it
+
+## 📢 Believe The Voice Of The Latter Sign
+
+God expects that not everyone will be convinced by the first sign alone.
+
+A second sign is offered in case the first one is not enough.
+
+God plans for doubt instead of being surprised by it.
+
+This shows real patience toward people who need more than one proof.
+
+📢 God expects the first sign might fail
+
+🐍 The rod and the hand are separate signs
+
+🕊️ Patience meets doubt instead of anger
+
+📖 God plans ahead for unbelief
+
+## 🩸 Shall Become Blood Upon The Dry Land
+
+God offers Moses a third sign before he even leaves Midian.
+
+Water from the Nile turning to blood becomes proof if the first two signs fail.
+
+This is the exact miracle that opens the plagues still to come in Exodus seven.
+
+God is already preparing the confrontation with Pharaoh, verses before it happens.
+
+🩸 A third sign uses river water
+
+🌊 This points ahead to Exodus seven
+
+⏳ God prepares the plagues in advance
+
+📖 The confrontation is planned before it starts
 # Exodus 4:10-12
-
 # 🗣️ Moses Objects: I Am Not Eloquent
-
 ---
+## 🗣️ I Am Not Eloquent
 
-## 🗣️ I Am Not Eloquent ... Slow Of Speech, And Of A Slow Tongue
+Moses raises a brand new objection about himself.
 
-Moses raises a second objection, this time about his own speaking ability, describing himself as having some kind of speech difficulty or lack of confident public speaking skill.
+He points to some kind of struggle with speaking clearly.
 
-🗣️ Moses raises a second, different objection about his speaking ability
+This is not defiance either.
 
----
+It is a real limitation Moses feels deeply.
 
-## 👁️ Who Hath Made Man's Mouth? ... Have Not I The LORD?
+🗣️ Moses raises a new objection
 
-God's answer reframes the entire question. The same God who designed human speech, sight, and hearing in the first place is more than capable of working through Moses' specific limitation, whatever it actually was.
+😟 He struggles with confident speech
 
-👁️ God points out He personally designed human speech and every ability tied to it
+🙋 This is a real limitation, not defiance
 
----
+📖 God still has more waiting for him
 
-## 🎓 I Will Be With Thy Mouth, And Teach Thee What Thou Shalt Say
+## 👁️ Who Hath Made Man's Mouth
 
-God promises ongoing, real-time help with Moses' speaking, not simply removing the difficulty entirely. The solution is God's continued presence and guidance, not a sudden personality change in Moses himself.
+God answers Moses without dismissing the concern.
 
-🎓 God promises ongoing help, not necessarily a complete personal transformation
+He asks who designed the human mouth in the first place.
 
+The same God who made speech, sight, and hearing is asking the question.
+
+That God is more than able to work through Moses' specific weakness.
+
+👁️ God designed the human mouth
+
+👂 He also made sight and hearing
+
+💪 The designer can work through weakness
+
+📖 He works through weakness, not around it
+
+## 🎓 Teach Thee What Thou Shalt Say
+
+God promises to stay with Moses through every word.
+
+This is not a promise to fix Moses permanently.
+
+It is a promise of ongoing help, moment by moment.
+
+God's presence, not a personality change, is the real solution.
+
+🎓 God promises ongoing help
+
+🗓️ Help comes moment by moment
+
+🚫 Moses is not fixed all at once
+
+📖 God's presence is the real solution
 # Exodus 4:13-17
-
 # 😠 Aaron Is Appointed As Moses' Spokesman
-
 ---
+## 🙏 By The Hand Of Him Whom Thou Wilt Send
 
-## 🙏 Send, I Pray Thee, By The Hand Of Him Whom Thou Wilt Send
+After every objection has already been answered, Moses asks for someone else entirely.
 
-After multiple objections already answered, Moses essentially asks God to simply choose someone else entirely for this mission. This finally pushes past reasonable concern into genuine reluctance.
+This is different from his earlier concerns.
 
-🙏 This request moves past legitimate concern into Moses simply not wanting to go
+Those were real questions.
 
----
+This is plain reluctance.
+
+Moses simply does not want to go.
+
+🙏 Moses asks God to send someone else
+
+❓ His earlier concerns were real questions
+
+😕 This request is simple reluctance
+
+📖 Moses admits he does not want to go
 
 ## 😠 The Anger Of The LORD Was Kindled Against Moses
 
-This is one of the only times in Scripture that God's anger is described as directly provoked by Moses. Even so, God doesn't withdraw the calling, He adjusts the plan instead, providing Aaron as help rather than abandoning Moses.
+This is one of the few times scripture describes God's anger toward Moses directly.
 
-😠 God's anger here is real, yet doesn't cancel Moses' calling
+The anger is real, not exaggerated language.
 
-🤝 God adapts the plan rather than giving up on Moses entirely
+Even so, God does not cancel the mission.
 
----
+He adjusts the plan instead of walking away from Moses.
 
-## 🗣️ He Shall Be To Thee Instead Of A Mouth, And Thou Shalt Be To Him Instead Of God
+😠 God's anger here is real
 
-Aaron will speak Moses' words publicly, while Moses relays what God tells him privately, creating an unusual chain: God to Moses, Moses to Aaron, Aaron to the people and eventually Pharaoh.
+🚫 The anger does not cancel the mission
 
-🗣️ This sets up a specific communication chain: God, then Moses, then Aaron
+🔧 God adjusts the plan instead
 
+📖 God stays committed even when frustrated
+
+## 😊 He Will Be Glad In His Heart
+
+God tells Moses that Aaron is already on his way to meet him.
+
+Aaron will not react with resentment or reluctance.
+
+He will be glad, not burdened, by this assignment.
+
+God prepares Aaron's heart before Moses even says a word.
+
+😊 Aaron responds with genuine gladness
+
+🚶 Aaron is already coming to meet Moses
+
+❤️ His heart is prepared in advance
+
+📖 God works ahead in Aaron's heart too
+
+## 🗣️ He Shall Be To Thee Instead Of A Mouth
+
+Aaron will speak Moses' words out loud to the people.
+
+Moses will relay privately what God tells him.
+
+This creates an unusual chain of communication.
+
+God speaks to Moses, Moses speaks to Aaron, Aaron speaks to Israel and Pharaoh.
+
+🗣️ Aaron becomes Moses' spoken voice
+
+🔗 A three part chain of communication
+
+👂 Moses still hears directly from God
+
+📖 God uses two men to deliver one message
 # Exodus 4:18-20
-
 # 🚶 Moses Leaves Midian
-
 ---
-
 ## 🙏 Let Me Go, I Pray Thee, And Return Unto My Brethren
 
-Moses respectfully asks Jethro's permission before leaving, without revealing the full, extraordinary story of the burning bush yet. He simply frames it as wanting to check on his family's wellbeing back in Egypt.
+Moses asks his father in law Jethro for permission before leaving.
 
-🙏 Moses asks permission respectfully without yet explaining the full situation
+He does not explain the burning bush or his true mission yet.
 
----
+He simply frames the trip as checking on his family in Egypt.
+
+Jethro sends him off in peace, with no idea what is coming.
+
+🙏 Moses asks Jethro's permission first
+
+🤫 He does not explain the full mission
+
+👪 He frames it as visiting family
+
+📖 Jethro blesses a journey he cannot yet understand
 
 ## 💀 All The Men Are Dead Which Sought Thy Life
 
-God confirms it's now safe to return, the specific threat from decades earlier, the Pharaoh who wanted Moses executed for killing the Egyptian, is no longer a danger.
+God confirms it is finally safe for Moses to return.
 
-💀 The original danger that forced Moses to flee no longer exists
+Decades earlier Moses fled Egypt after killing an Egyptian.
 
----
+The Pharaoh who wanted him executed for that is now dead.
 
-## 🐴 Moses Took The Rod Of God In His Hand
+The old danger that forced Moses to run is finally gone.
 
-The staff Moses has carried simply as a shepherd's tool is now called "the rod of God," marking it as an instrument now dedicated to God's purposes and miraculous signs.
+💀 The old threat against Moses is gone
 
-🐴 The same ordinary shepherd's staff is now called "the rod of God"
+🏃 He once fled Egypt after a killing
 
+👑 That Pharaoh has since died
+
+📖 God clears the way before Moses returns
+
+## 🐴 Took The Rod Of God In His Hand
+
+Moses picks up the same staff he has carried for years as a shepherd.
+
+Scripture now calls it "the rod of God."
+
+The staff itself has not changed.
+
+Its purpose has.
+
+An ordinary tool is now dedicated to God's miracles.
+
+🐴 The staff is an old, familiar tool
+
+🔄 Its name changes, not its shape
+
+✨ It is now dedicated to God's work
+
+📖 Ordinary things can carry a new purpose
 # Exodus 4:21-23
-
 # ⚖️ Israel Is God's Firstborn Son
-
 ---
+## 🪨 I Will Harden His Heart
 
-## 🪨 I Will Harden His Heart, That He Shall Not Let The People Go
+God tells Moses in advance that Pharaoh will resist, and resist hard.
 
-God tells Moses in advance that Pharaoh's resistance will be severe and prolonged, part of the larger unfolding confrontation still to come, not a sudden failure of Moses' mission.
+This warning comes before Moses even reaches Egypt.
 
-🪨 God prepares Moses for a long, difficult confrontation, not a quick success
+The coming struggle is not a sign that Moses failed.
 
----
+God is preparing him for a long confrontation, not a quick win.
+
+🪨 Pharaoh's resistance is announced in advance
+
+⏳ The struggle ahead will be long
+
+🚫 Resistance does not mean Moses failed
+
+📖 God prepares Moses before the fight starts
 
 ## 👨‍👦 Israel Is My Son, Even My Firstborn
 
-God describes His entire nation using deeply personal, familial language, a firstborn son, His most treasured relationship. This elevates Israel's identity far beyond simply being an enslaved labor force.
+God describes the entire nation of Israel in deeply personal language.
 
-👨‍👦 Calling Israel "firstborn son" reflects deep, personal covenant relationship
+A firstborn son held the most treasured place in an ancient family.
 
----
+This is not a title Pharaoh's Egypt would use for slaves.
+
+It reframes Israel's identity as family, not property.
+
+👨‍👦 God calls Israel His firstborn son
+
+👑 Firstborn meant the most treasured place
+
+🚫 That title contradicts how Egypt saw them
+
+📖 Israel's identity is family, not property
 
 ## ⚠️ I Will Slay Thy Son, Even Thy Firstborn
 
-God delivers a specific, direct warning to Pharaoh, tied to the exact language Pharaoh once used against Israel's own sons back in chapter 1. This foreshadows the final, most severe plague still to come.
+God delivers a direct warning aimed straight at Pharaoh.
 
-⚠️ This warning directly foreshadows the tenth and final plague
+It uses the exact language Pharaoh once used against Israel's baby boys in chapter one.
 
-🔄 It also mirrors Pharaoh's own earlier decree against Israel's baby boys
+This is not a random threat.
 
+It mirrors Pharaoh's own past decree.
+
+It also foreshadows the tenth and final plague still to come.
+
+⚠️ God warns Pharaoh directly
+
+🔄 It mirrors Pharaoh's own earlier decree
+
+🔟 It points ahead to the final plague
+
+📖 Pharaoh's own cruelty comes back around
 # Exodus 4:24-26
-
 # 🗡️ The Strange Encounter At The Inn
-
 ---
-
 ## 🗡️ The LORD Met Him, And Sought To Kill Him
 
-This is one of the most difficult, puzzling passages in the whole Old Testament. The most widely accepted reading connects it to circumcision, the covenant sign God commanded for every male descendant of Abraham back in Genesis 17, which Moses had apparently neglected for his own son.
+This is one of the strangest, most debated passages in the entire Old Testament.
 
-🗡️ This puzzling passage is widely connected to the covenant sign of circumcision
+Many scholars connect it to circumcision, the covenant sign commanded back in Genesis seventeen.
 
-📖 Circumcision was commanded for every male descendant back in Genesis 17
+Moses had apparently left his own son uncircumcised.
 
----
+The very man sent to confront Pharaoh over God's covenant had neglected that covenant at home.
 
-## 🪨 Zipporah Took A Sharp Stone, And Cut Off The Foreskin Of Her Son
+🗡️ This passage remains widely debated
 
-Zipporah acts quickly and decisively, performing the circumcision herself in an emergency, addressing what seems to be Moses' failure to keep this covenant sign for his own family before returning to lead God's covenant people.
+📜 It connects to circumcision from Genesis seventeen
 
-🪨 Zipporah personally performs the circumcision in an urgent emergency
+🏠 Moses had neglected it in his own family
 
-⚖️ The man about to confront Pharaoh over God's covenant had neglected that same covenant in his own home
+📖 The messenger had not kept the message himself
 
----
+## 🪨 Zipporah Took A Sharp Stone
+
+Zipporah acts fast, without waiting for Moses to move.
+
+She performs the circumcision herself, right there in an emergency.
+
+This addresses the very thing Moses had neglected in his own home.
+
+The man about to confront Pharaoh over the covenant needed his own wife to keep it first.
+
+🪨 Zipporah acts quickly, without hesitation
+
+✂️ She performs the circumcision herself
+
+🏠 She fixes what Moses had neglected
+
+📖 The covenant is kept before the mission continues
 
 ## 🩸 A Bloody Husband Art Thou To Me
 
-Zipporah's exact words remain debated among scholars, but they clearly connect directly to the blood of the circumcision just performed, marking this as a serious covenant moment, not a minor family incident.
+Zipporah's exact words remain debated among scholars even today.
 
-🩸 Zipporah's words connect directly to the covenant blood just shed
+They clearly point back to the blood of the circumcision just performed.
 
+This was a serious covenant moment, not a small family argument.
+
+The blood settled something between God and Moses' household.
+
+🩸 Her words connect to the covenant blood
+
+❓ Scholars still debate the exact meaning
+
+⚖️ This was a serious covenant moment
+
+📖 Blood settles what words alone could not
 # Exodus 4:27-31
-
 # 🙌 Aaron And Moses Unite Israel
-
 ---
+## 👋 Went, And Met Him In The Mount Of God, And Kissed Him
 
-## 👋 He Went, And Met Him In The Mount Of God, And Kissed Him
+God sends Aaron out to meet Moses before he even reaches Egypt.
 
-Aaron, sent by God, travels out to meet Moses and greets him warmly with a kiss, a mark of genuine brotherly affection after what may have been many years apart.
+A kiss was a normal greeting between family in this culture.
 
-👋 Aaron's kiss shows genuine warmth after a long separation
+This was likely years since the two brothers had last seen each other.
 
----
+The reunion carries real warmth, not just formality.
 
-## 🗣️ Moses Told Aaron All The Words Of The LORD ... And All The Signs
+👋 Aaron is sent out to meet Moses
 
-Moses fully briefs Aaron on everything God said and every miraculous sign given, making sure Aaron understands the complete plan before they approach Israel's elders together.
+💋 A kiss was a normal family greeting
 
-🗣️ Moses ensures Aaron is fully informed before they act together
+📆 Years had likely passed since they met
 
----
+📖 Real warmth marks this reunion
 
-## 🙌 The People Believed ... They Bowed Their Heads And Worshipped
+## 🗣️ Told Aaron All The Words Of The LORD Who Had Sent Him
 
-After generations of suffering and silence, Israel finally believes that God has genuinely noticed their affliction, responding with worship. This moment of hope stands in sharp contrast to the harsh confrontation with Pharaoh still to come.
+Moses fully briefs Aaron before they take a single step further.
 
-🙌 The people respond with genuine worship after generations of silence
+Nothing about the message or the signs is left out.
 
-⚖️ This hopeful moment sets up the difficult confrontation with Pharaoh next`;
+Aaron needs to understand the complete plan, not a summary of it.
+
+The two brothers now carry the same mission together.
+
+🗣️ Moses briefs Aaron completely
+
+🚫 Nothing about the plan is left out
+
+🤝 Both brothers now share one mission
+
+📖 Full honesty prepares them to act together
+
+## 👴 Gathered Together All The Elders Of The Children Of Israel
+
+Moses and Aaron do not go straight to Pharaoh first.
+
+They go to Israel's own leaders before anyone else.
+
+Elders held real authority and trust within the community.
+
+Convincing Israel's own leaders mattered before confronting Egypt's throne.
+
+👴 Israel's elders are approached first
+
+🏛️ Elders held real community authority
+
+🎯 Trust at home comes before the confrontation
+
+📖 The mission starts with Israel, not Pharaoh
+
+## ✨ Did The Signs In The Sight Of The People
+
+Aaron speaks the words while performing the signs God gave Moses.
+
+The people see the proof with their own eyes, not just hear a claim.
+
+This is the exact plan God laid out back in verses one through nine.
+
+Every objection Moses raised earlier is now being answered in front of a crowd.
+
+✨ Aaron performs the signs publicly
+
+👀 The people witness proof themselves
+
+📋 This follows God's plan from earlier
+
+📖 Moses' doubts are answered before a crowd
+
+## 🙌 They Bowed Their Heads And Worshipped
+
+Israel finally believes that God has noticed their suffering.
+
+Generations of silence are met with this one moment of hope.
+
+Worship, not just relief, is their response to the news.
+
+This hopeful scene stands right before the harsh confrontation with Pharaoh still ahead.
+
+🙌 Israel responds with real worship
+
+📆 Generations of silence finally break
+
+😌 Hope arrives before the hard fight
+
+📖 Worship answers the news that God noticed`.trim();
 
 export const EXODUS_FOUR_PERSONAL_SECTIONS = parseExodusFourRawNotes(EXODUS_FOUR_RAW_NOTES);
