@@ -454,3 +454,7 @@ Next up: Exodus 11
 ## 2026-08-01T21:56:00Z (hourly chapter notes run)
 Chapter: Exodus 11 | Duration: 10 min | Sections: 4 | Cards: 21 | Status: pass
 Next up: Exodus 12
+
+## 2026-08-01T22:56:46Z (hourly chapter notes run)
+Chapter: Exodus 12 | Duration: 10 min | Sections: 11 | Cards: 48 | Status: pass
+Next up: Exodus 13

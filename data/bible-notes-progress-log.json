@@ -5465,6 +5465,59 @@
           "at": "2026-08-01T19:00:00Z"
         }
       ]
+    },
+    {
+      "book": "Exodus",
+      "chapter": 12,
+      "startedAt": "2026-08-01T22:46:43Z",
+      "finishedAt": "2026-08-01T22:56:46Z",
+      "durationMinutes": 10,
+      "sections": 11,
+      "cards": 48,
+      "verses": 51,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Kept the original file's 11 section boundaries (12:1-6, 7-11, 12-14, 15-20, 21-24, 25-28, 29-30, 31-36, 37-39, 40-42, 43-51) for verse-coverage continuity while rewriting every card to the new format. Exodus 12 covers the institution of Passover: the new religious calendar, choosing and inspecting the lamb for four days, applying its blood to the doorposts and lintel with hyssop, the roast/unleavened bread/bitter herbs meal eaten in traveling clothes, the meaning of the name Passover itself, God's judgment against Egypt's gods, the ordinance for the Feast of Unleavened Bread, the built in teaching moment for children, the midnight death of the firstborn crossing every social class, Pharaoh's urgent nighttime release of Israel and his request for a blessing, the Egyptians pushing Israel out and giving up silver, gold, and raiment (fulfilling the promise from chapters 3 and 11), the six hundred thousand men (implying a total population over two million) plus a mixed multitude leaving Rameses for Succoth, the exact four hundred thirty year sojourn fulfilling Genesis 15, and the closing rules on who may keep Passover (covenant strangers via circumcision vs. foreigners/hired servants, the unbroken bone later connected by New Testament writers to Jesus, and one law for homeborn and stranger alike). Word/custom/idiom definitions covered inline: sojourning, tarry, sodden, girded, hyssop, bason, kneadingtrough, suffer (meaning allow), the destroyer, ordinance, holy convocation, selfsame day, hosts, homeborn, and stranger versus hired servant. Density is close to 1 card per verse (51 verses, 48 cards), consistent with the density of the style spec's own reference implementation (lib/genesisThirtyOneSource.ts, 54 cards for 55 verses) now that card depth (4 to 8 line bodies, four scored bullets) replaced the older 2 cards per verse density target. scripts/check_bible_note_style.py found 6 mechanical problems on the first pass (one repeated bullet emoji, three cards whose last bullet was not 📖/➡️, two bullets over the 8 word cap) and all six were fixed and reverified clean. A manual section 13 eye check and a hyphen/em dash/semicolon/contraction scan both passed. Parser check passed exactly (11/11 sections, 48 cards, text verbatim, matching the checker's card count). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies exodus 1-40 range, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (ExodusTwelvePersonalSection, parseExodusTwelveRawNotes, EXODUS_TWELVE_RAW_NOTES, EXODUS_TWELVE_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Exodus 12 entry removed from the front of the list as part of this commit; next redo target is Exodus 13.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-01T22:46:43Z"
+        },
+        {
+          "name": "target chapter determined: Exodus 12 (style redo, first in remaining backlog)",
+          "at": "2026-08-01T22:47:00Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Exodus.json",
+          "at": "2026-08-01T22:48:10Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (lib/genesisThirtyOneSource.ts) read",
+          "at": "2026-08-01T22:49:30Z"
+        },
+        {
+          "name": "source file written (lib/exodusTwelveSource.ts, 11 sections, 48 cards)",
+          "at": "2026-08-01T22:52:00Z"
+        },
+        {
+          "name": "style checker clean (after fixing 1 repeated emoji, 3 last-bullet-emoji issues, 2 over-length bullets)",
+          "at": "2026-08-01T22:54:30Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo (no changes needed)",
+          "at": "2026-08-01T22:54:45Z"
+        },
+        {
+          "name": "parser check passed (11 sections, 48 cards)",
+          "at": "2026-08-01T22:55:30Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-01T22:56:00Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-01T22:56:46Z"
+        }
+      ]
     }
   ]
 }

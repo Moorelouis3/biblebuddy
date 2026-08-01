@@ -61,6 +61,12 @@
       "type": "chapter_count_checkpoint",
       "chaptersCompletedSoFarTonight": 1,
       "detail": "Exodus 2 regenerated to the new style spec this run via the raw.githubusercontent.com/aruljohn/Bible-kjv mirror, no block, cooldown, or throttling encountered. Roughly 26 chapters have shipped since the last checkpoint at 2026-07-29T14:58:10Z (Numbers 27-30 forward progress, then the style redo backlog: Genesis 31-50 and Exodus 1-2), each in its own separate hourly run, with no usage limit or block hit anywhere in that span."
+    },
+    {
+      "timestamp": "2026-08-01T22:56:46Z",
+      "type": "chapter_count_checkpoint",
+      "chaptersCompletedSoFarTonight": 10,
+      "detail": "Exodus 12 regenerated to the new style spec this run via the raw.githubusercontent.com/aruljohn/Bible-kjv mirror, no block, cooldown, or throttling encountered. 10 chapters shipped since the last checkpoint at 2026-08-01T12:54:06Z (Exodus 3-12, style redo backlog), each in its own separate hourly run, with no usage limit or block hit anywhere in that span."
     }
   ]
 }
