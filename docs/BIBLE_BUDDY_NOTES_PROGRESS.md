@@ -18,7 +18,7 @@ Already at gold-standard quality before this log started: Genesis 1-40 (40 chapt
 | 2026-07-25 | Genesis 46 | 27 cards / 8 sections | Genealogy-heavy chapter (vv8-27 are family lists). Per skill Part 4, used fewer cards on pure name-lists but explained the four-mother structure, the 70-souls total, and callbacks (Er/Onan, Dinah). Parser + tsc verified. |
 | 2026-07-25 | Genesis 47 | 27 cards / 8 sections | Land-for-bread economic system, Jacob's burial oath. Parser + tsc verified. |
 | 2026-07-25 | Genesis 48 | 24 cards / 8 sections | Adoption of Ephraim/Manasseh, crossed-hands blessing. Also rebuilt `/admin/bible-notes-progress` UI for readability per user feedback (big headline number, progress bar, card-based chapter list instead of a dense table). Parser + tsc verified, browser-verified. |
-| 2026-07-25 | Genesis 49 | 36 cards / 10 sections | Jacob's blessing over all 12 sons incl. the Judah "sceptre/Shiloh" messianic prophecy. Parser verified exactly. |
+| 2026-08-01 | Genesis 49 | 53 cards / 11 sections | Regenerated to the new style spec. Jacob's blessing over all 12 sons incl. the Judah "sceptre/Shiloh" messianic prophecy. Parser + tsc verified exactly. |
 | 2026-07-25 | Genesis 50 | 28 cards / 9 sections | **MILESTONE: Genesis complete, all 50 chapters.** Parser verified exactly. |
 | 2026-07-25 | Exodus 1 | 18 cards / 7 sections | First Exodus chapter — had no prior wiring at all (ch2-40 already existed thin, ch1 was uncovered). Parser verified exactly. |
 | 2026-07-25 | Exodus 2 | 24 cards / 8 sections | Moses' birth, rescue, flight to Midian, marriage to Zipporah. Overrode previous thin content. Parser + tsc verified (clean), browser-verified. |
@@ -156,11 +156,11 @@ every time a chapter is finished — this markdown file and that JSON log should
 - Done before this log (pre-existing, written by Louis by hand): 30 chapters (Genesis 1-30)
 - Total done: 147 / 1,189 (12.4%)
 - Remaining: 1,042
-- **Style redo in progress**: Genesis 31 through 47 are now regenerated to the new, stricter style spec (`docs/bible-study-note-style.md`). Genesis 48-50, Exodus 1-40, Leviticus 1-27, and Numbers 1-30 already exist and are wired in, but still need to be regenerated to match — tracked in `data/bible-notes-style-redo-remaining.json` (100 chapters left, next is Genesis 48), worked hourly by the automated agent before it resumes new forward progress.
+- **Style redo in progress**: Genesis 31 through 49 are now regenerated to the new, stricter style spec (`docs/bible-study-note-style.md`). Genesis 50, Exodus 1-40, Leviticus 1-27, and Numbers 1-30 already exist and are wired in, but still need to be regenerated to match — tracked in `data/bible-notes-style-redo-remaining.json` (98 chapters left, next is Genesis 50), worked hourly by the automated agent before it resumes new forward progress.
 - Currently on: Numbers (30 of 36 chapters done at old-or-new style — real forward progress is paused while the redo backlog above is worked off first; next real gap after the backlog empties is Numbers 31)
 - Running under /loop (dynamic self-pacing) starting 2026-07-25 ~13:53 UTC
 - Formalized 2026-07-26 as the "Bible Note Writer Agent" reporting to Bible Buddy → Marcus (second-brain), per Louis's governance directive. Every chapter completion now also appends a `SESSION_LOG.md` block containing "hourly chapter notes run" so Marcus's watcher (`bibleBuddyWatch.js`) can see live activity, not just this log.
-- Genesis 41, 42, 43, 44, 45, 46, and 47 were regenerated to the current style spec on 2026-08-01
+- Genesis 41, 42, 43, 44, 45, 46, 47, 48, and 49 were regenerated to the current style spec on 2026-08-01
   and no longer need a density/voice follow-up pass.
 
 ## Pace notes
