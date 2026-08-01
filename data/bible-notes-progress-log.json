@@ -4,6 +4,29 @@
   "preExistingGoldStandardNote": "Genesis 1-40 were already at gold-standard quality before this tracked log started on 2026-07-24. Genesis 42 and 43 were also pre-existing but have since been regenerated under this log (2026-08-01) to match the new style spec.",
   "entries": [
     {
+      "book": "Exodus",
+      "chapter": 5,
+      "startedAt": "2026-08-01T15:46:01Z",
+      "finishedAt": "2026-08-01T15:54:04Z",
+      "durationMinutes": 8,
+      "sections": 7,
+      "cards": 42,
+      "verses": 23,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (7 sections / 16 cards) from scratch to match docs/bible-study-note-style.md. Exodus 5 covers Moses and Aaron's first confrontation with Pharaoh over the modest three-day worship request, Pharaoh's flat refusal ('I know not the LORD'), his retaliation withholding straw for brick quotas, the Hebrew officers caught between Egyptian taskmasters and an impossible quota, their failed appeal to Pharaoh, their bitter turn against Moses and Aaron, and Moses' raw complaint to God closing the chapter. Kept the same 7 section boundaries as the prior version (5:1-3, 5:4-5, 5:6-9, 5:10-14, 5:15-19, 5:20-21, 5:22-23) and increased card density from 16 to 42 cards over 23 verses (about 1.8 cards/verse), close to the roughly 2 cards/verse target. Word/custom definitions covered inline: tale (quota), diminish, ought, heretofore, stubble, hasted, evil case, savour, evil entreated, and the taskmaster/officer two-tier labor structure. scripts/check_bible_note_style.py found one banned hedge word ('fairly') on the first pass, fixed, second run clean (42 cards, no problems). A manual section 13 eye check and a duplicate title/opening line scan both passed. Parser check passed exactly (7/7 sections, 42 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (ExodusFivePersonalSection, parseExodusFiveRawNotes, EXODUS_FIVE_RAW_NOTES, EXODUS_FIVE_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Exodus 5 entry removed from the front of the list as part of this commit; next redo target is Exodus 6.",
+      "steps": [
+        { "name": "npm install done", "at": "2026-08-01T15:46:01Z" },
+        { "name": "target chapter determined: Exodus 5 (style redo, first in remaining backlog)", "at": "2026-08-01T15:46:01Z" },
+        { "name": "KJV text fetched from raw.githubusercontent.com Exodus.json", "at": "2026-08-01T15:46:01Z" },
+        { "name": "style spec (docs/bible-study-note-style.md) and reference implementation read", "at": "2026-08-01T15:46:01Z" },
+        { "name": "source file written (lib/exodusFiveSource.ts, 7 sections, 42 cards)", "at": "2026-08-01T15:53:40Z" },
+        { "name": "style checker clean (after fixing 1 banned hedge word)", "at": "2026-08-01T15:53:40Z" },
+        { "name": "wiring confirmed correct for redo (no changes needed)", "at": "2026-08-01T15:53:40Z" },
+        { "name": "parser check passed (7 sections, 42 cards, verbatim)", "at": "2026-08-01T15:53:40Z" },
+        { "name": "tsc --noEmit clean", "at": "2026-08-01T15:53:40Z" },
+        { "name": "progress files logged", "at": "2026-08-01T15:54:04Z" }
+      ]
+    },
+    {
       "book": "Genesis",
       "chapter": 41,
       "startedAt": "2026-07-24T20:10:00Z",
