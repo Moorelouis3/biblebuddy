@@ -75,18 +75,54 @@
       "verses": 29,
       "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (8 sections / 17 cards) from scratch to match docs/bible-study-note-style.md. Exodus 10 covers the eighth plague (locusts), opening with God naming the larger purpose of the plagues as a story for future generations, Moses and Aaron confronting Pharaoh's ongoing pride, Pharaoh's own officials pressuring him for the first time, the locust swarm covering the land and finishing what the hail plague started, Pharaoh's negotiation tactics (offering men only, then offering people but not livestock), the locusts arriving by east wind and leaving by west wind with total removal into the Red Sea, Pharaoh's hardened heart returning immediately after real relief, the ninth plague (three days of thick, tangible darkness confronting Ra, Egypt's sun god, while Israel keeps light in Goshen), Moses refusing to leave a single animal behind since Israel does not yet know what God will require at Sinai, and the chapter's close where Pharaoh permanently bans Moses from his presence under penalty of death and Moses agrees without fear. Kept the original file's 8 section boundaries (10:1-3, 10:4-6, 10:7-11, 10:12-15, 10:16-20, 10:21-23, 10:24-27, 10:28-29) for verse-coverage continuity while rewriting every card to the new format. Word/custom/idiom definitions covered inline: snare, residue, grievous, in haste, not an hoof left behind, burnt offering versus sacrifices, coast (territory not shoreline), and historical background on Ra as Egypt's sun god and on locust swarms arriving from the east. Density about 1.03 cards/verse (29 verses, 30 cards). scripts/check_bible_note_style.py ran clean on the first pass (30 cards, no problems). A manual section 13 eye check and a hyphen/em dash/semicolon/contraction scan both passed. Parser check passed exactly (8/8 sections, 30 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (ExodusTenPersonalSection, parseExodusTenRawNotes, EXODUS_TEN_RAW_NOTES, EXODUS_TEN_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Exodus 10 entry removed from the front of the list as part of this commit; next redo target is Exodus 11.",
       "steps": [
-        { "name": "npm install done", "at": "2026-08-01T20:45:46Z" },
-        { "name": "target chapter determined: Exodus 10 (style redo, first in remaining backlog)", "at": "2026-08-01T20:45:46Z" },
-        { "name": "KJV text fetched from raw.githubusercontent.com Exodus.json", "at": "2026-08-01T20:47:00Z" },
-        { "name": "style spec (docs/bible-study-note-style.md) and SKILL.md read", "at": "2026-08-01T20:49:30Z" },
-        { "name": "source file written (lib/exodusTenSource.ts, 8 sections, 30 cards)", "at": "2026-08-01T20:51:26Z" },
-        { "name": "style checker clean (first pass, no fixes needed)", "at": "2026-08-01T20:52:09Z" },
-        { "name": "wiring confirmed correct for redo (no changes needed)", "at": "2026-08-01T20:52:37Z" },
-        { "name": "parser check passed (8 sections, 30 cards, verbatim)", "at": "2026-08-01T20:52:37Z" },
-        { "name": "tsc --noEmit clean", "at": "2026-08-01T20:53:06Z" },
-        { "name": "progress files logged", "at": "2026-08-01T20:55:46Z" },
-        { "name": "committed (78c934e)", "at": "2026-08-01T20:56:20Z" },
-        { "name": "pushed to origin main, confirmed via log/status", "at": "2026-08-01T20:56:49Z" }
+        {
+          "name": "npm install done",
+          "at": "2026-08-01T20:45:46Z"
+        },
+        {
+          "name": "target chapter determined: Exodus 10 (style redo, first in remaining backlog)",
+          "at": "2026-08-01T20:45:46Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Exodus.json",
+          "at": "2026-08-01T20:47:00Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and SKILL.md read",
+          "at": "2026-08-01T20:49:30Z"
+        },
+        {
+          "name": "source file written (lib/exodusTenSource.ts, 8 sections, 30 cards)",
+          "at": "2026-08-01T20:51:26Z"
+        },
+        {
+          "name": "style checker clean (first pass, no fixes needed)",
+          "at": "2026-08-01T20:52:09Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo (no changes needed)",
+          "at": "2026-08-01T20:52:37Z"
+        },
+        {
+          "name": "parser check passed (8 sections, 30 cards, verbatim)",
+          "at": "2026-08-01T20:52:37Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-01T20:53:06Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-01T20:55:46Z"
+        },
+        {
+          "name": "committed (78c934e)",
+          "at": "2026-08-01T20:56:20Z"
+        },
+        {
+          "name": "pushed to origin main, confirmed via log/status",
+          "at": "2026-08-01T20:56:49Z"
+        }
       ]
     },
     {
@@ -100,18 +136,54 @@
       "verses": 35,
       "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (22 cards / 7 sections) from scratch to match docs/bible-study-note-style.md. Exodus 9 covers the fifth plague (murrain killing Egypt's livestock while Israel's herds in Goshen stay untouched, confirmed by Pharaoh's own investigation), the sixth plague (boils from furnace ashes, likely recalling the brick kilns of Israel's forced labor, the first plague to strike human bodies directly and the first the magicians cannot even stand to attempt), God's direct speech to Pharaoh naming His larger purpose (raising Pharaoh up to display God's power and make His name declared through all the earth), the seventh plague (a uniquely severe hail with an escape offered in advance to anyone who brought people and animals indoors, splitting Egyptians into those who feared the LORD's word and those who ignored it regardless of nationality), the hail itself striking crops, trees, man, and beast while sparing Goshen again, Pharaoh's clearest confession yet followed by Moses predicting it will not hold, and the chapter's close where the flax and barley (already headed and podded) are destroyed while the later wheat and rye survive, Moses keeps his word in prayer, and Pharaoh hardens his heart again exactly as foretold. Kept the original file's 7 section boundaries (9:1-7, 9:8-12, 9:13-17, 9:18-21, 9:22-26, 9:27-30, 9:31-35) for verse-coverage continuity while rewriting every card to the new format. Density about 0.94 cards/verse (35 verses, 33 cards). scripts/check_bible_note_style.py found 1 problem on first pass (a bullet over the 8 word limit), fixed, second run clean (33 cards, no problems). A manual section 13 eye check and a hyphen/em dash/semicolon/contraction scan both passed. Parser check passed exactly (7/7 sections, 33 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (ExodusNinePersonalSection, parseExodusNineRawNotes, EXODUS_NINE_RAW_NOTES, EXODUS_NINE_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Exodus 9 entry removed from the front of the list as part of this commit; next redo target is Exodus 10.",
       "steps": [
-        { "name": "npm install done", "at": "2026-08-01T19:46:46Z" },
-        { "name": "target chapter determined: Exodus 9 (style redo, first in remaining backlog)", "at": "2026-08-01T19:46:59Z" },
-        { "name": "KJV text fetched from raw.githubusercontent.com Exodus.json", "at": "2026-08-01T19:46:59Z" },
-        { "name": "style spec (docs/bible-study-note-style.md) and SKILL.md read", "at": "2026-08-01T19:54:45Z" },
-        { "name": "source file written (lib/exodusNineSource.ts, 7 sections, 33 cards)", "at": "2026-08-01T19:54:45Z" },
-        { "name": "style checker clean (after fixing 1 bullet word count issue)", "at": "2026-08-01T19:54:45Z" },
-        { "name": "wiring confirmed correct for redo (no changes needed)", "at": "2026-08-01T19:54:45Z" },
-        { "name": "parser check passed (7 sections, 33 cards, verbatim)", "at": "2026-08-01T19:54:45Z" },
-        { "name": "tsc --noEmit clean", "at": "2026-08-01T19:54:45Z" },
-        { "name": "progress files logged", "at": "2026-08-01T19:56:13Z" },
-        { "name": "committed (e6e4ba2)", "at": "2026-08-01T19:56:38Z" },
-        { "name": "pushed to origin main, confirmed via log/status", "at": "2026-08-01T19:57:14Z" }
+        {
+          "name": "npm install done",
+          "at": "2026-08-01T19:46:46Z"
+        },
+        {
+          "name": "target chapter determined: Exodus 9 (style redo, first in remaining backlog)",
+          "at": "2026-08-01T19:46:59Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Exodus.json",
+          "at": "2026-08-01T19:46:59Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and SKILL.md read",
+          "at": "2026-08-01T19:54:45Z"
+        },
+        {
+          "name": "source file written (lib/exodusNineSource.ts, 7 sections, 33 cards)",
+          "at": "2026-08-01T19:54:45Z"
+        },
+        {
+          "name": "style checker clean (after fixing 1 bullet word count issue)",
+          "at": "2026-08-01T19:54:45Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo (no changes needed)",
+          "at": "2026-08-01T19:54:45Z"
+        },
+        {
+          "name": "parser check passed (7 sections, 33 cards, verbatim)",
+          "at": "2026-08-01T19:54:45Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-01T19:54:45Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-01T19:56:13Z"
+        },
+        {
+          "name": "committed (e6e4ba2)",
+          "at": "2026-08-01T19:56:38Z"
+        },
+        {
+          "name": "pushed to origin main, confirmed via log/status",
+          "at": "2026-08-01T19:57:14Z"
+        }
       ]
     },
     {
@@ -125,18 +197,54 @@
       "verses": 25,
       "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (6 sections / 15 cards) from scratch to match docs/bible-study-note-style.md. Exodus 7 covers God restating the plan and naming Moses 'a god to Pharaoh' with Aaron as his prophet, Moses and Aaron's ages (eighty and eighty three) when the confrontation truly begins, the rod-to-serpent sign performed formally before Pharaoh and matched by Egypt's magicians until Aaron's rod swallows theirs, God announcing and then striking the first plague (the Nile turned to blood) at Pharaoh's morning ritual by the river, the plague spreading to every stream, pond, pool, and even stored water in wood and stone vessels in the sight of Pharaoh's whole court, and Pharaoh's magicians managing a smaller imitation that gives him an excuse to walk away unmoved while ordinary Egyptians dig for water over the following seven days. Kept the same 6 section boundaries as the prior version (7:1-5, 7:6-7, 7:8-13, 7:14-18, 7:19-21, 7:22-25) and increased card density from 15 to 35 cards over 25 verses (1.4 cards/verse). Word/custom definitions covered inline: prophet, hardened, signs and wonders, armies (Israel as God's), judgments, fourscore, miracle, enchantments, wise men, sorcerers, hearkened, refuseth, brink, against, Hebrews, serve (worship vs relocation), lothe, and smitten, plus historical background on Pharaoh's likely Nile worship ritual (the god Hapi). scripts/check_bible_note_style.py found two bullets over the 8 word limit on the first pass, fixed, second run clean (35 cards, no problems). A manual section 13 eye check, a hyphen/em dash/semicolon/contraction scan, and a duplicate title/opening line scan all passed. Parser check passed exactly (6/6 sections, 35 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (ExodusSevenPersonalSection, parseExodusSevenRawNotes, EXODUS_SEVEN_RAW_NOTES, EXODUS_SEVEN_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Exodus 7 entry removed from the front of the list as part of this commit; next redo target is Exodus 8.",
       "steps": [
-        { "name": "npm install done", "at": "2026-08-01T17:46:39Z" },
-        { "name": "target chapter determined: Exodus 7 (style redo, first in remaining backlog)", "at": "2026-08-01T17:46:39Z" },
-        { "name": "KJV text fetched from raw.githubusercontent.com Exodus.json", "at": "2026-08-01T17:47:14Z" },
-        { "name": "style spec (docs/bible-study-note-style.md) and reference implementation read", "at": "2026-08-01T17:49:53Z" },
-        { "name": "source file written (lib/exodusSevenSource.ts, 6 sections, 35 cards)", "at": "2026-08-01T17:50:40Z" },
-        { "name": "style checker clean (after fixing 2 bullet word count issues)", "at": "2026-08-01T17:50:58Z" },
-        { "name": "wiring confirmed correct for redo (no changes needed)", "at": "2026-08-01T17:51:09Z" },
-        { "name": "parser check passed (6 sections, 35 cards, verbatim)", "at": "2026-08-01T17:51:34Z" },
-        { "name": "tsc --noEmit clean", "at": "2026-08-01T17:51:34Z" },
-        { "name": "progress files logged", "at": "2026-08-01T17:53:11Z" },
-        { "name": "committed (7855640)", "at": "2026-08-01T17:54:32Z" },
-        { "name": "pushed to origin main, confirmed via fetch", "at": "2026-08-01T17:55:10Z" }
+        {
+          "name": "npm install done",
+          "at": "2026-08-01T17:46:39Z"
+        },
+        {
+          "name": "target chapter determined: Exodus 7 (style redo, first in remaining backlog)",
+          "at": "2026-08-01T17:46:39Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Exodus.json",
+          "at": "2026-08-01T17:47:14Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation read",
+          "at": "2026-08-01T17:49:53Z"
+        },
+        {
+          "name": "source file written (lib/exodusSevenSource.ts, 6 sections, 35 cards)",
+          "at": "2026-08-01T17:50:40Z"
+        },
+        {
+          "name": "style checker clean (after fixing 2 bullet word count issues)",
+          "at": "2026-08-01T17:50:58Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo (no changes needed)",
+          "at": "2026-08-01T17:51:09Z"
+        },
+        {
+          "name": "parser check passed (6 sections, 35 cards, verbatim)",
+          "at": "2026-08-01T17:51:34Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-01T17:51:34Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-01T17:53:11Z"
+        },
+        {
+          "name": "committed (7855640)",
+          "at": "2026-08-01T17:54:32Z"
+        },
+        {
+          "name": "pushed to origin main, confirmed via fetch",
+          "at": "2026-08-01T17:55:10Z"
+        }
       ]
     },
     {
@@ -150,18 +258,54 @@
       "verses": 30,
       "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (19 cards / 8 sections) from scratch to match docs/bible-study-note-style.md. Exodus 6 covers God revealing the name JEHOVAH to Moses and reaffirming the covenant with Abraham, Isaac, and Jacob, the seven 'I will' redemption promises, Israel unable to hear the good news through anguish of spirit and cruel bondage, Moses' repeated self doubt about his uncircumcised lips, the Reuben/Simeon/Levi genealogy that narrows down to Levi's line, the naming of Moses and Aaron's immediate family (Amram and Jochebed, Aaron's priestly sons Nadab/Abihu/Eleazar/Ithamar, and Phinehas planted for his later story in Numbers), the narrative's resumptive repetition confirming Moses and Aaron's identity after the genealogical pause, and Moses' doubt repeating almost word for word as the chapter closes. Kept the same 8 section boundaries as the prior version (6:1-5, 6:6-8, 6:9, 6:10-13, 6:14-19, 6:20-25, 6:26-27, 6:28-30) and increased card density from 19 to 37 cards over 30 verses (about 1.23 cards/verse). Word/custom definitions covered inline: strong hand, JEHOVAH vs God Almighty (El Shaddai), pilgrimage/strangers, groaning, redeem, heritage, hearkened, anguish of spirit, cruel bondage, uncircumcised lips (idiom), charge, firstborn, Canaanitish, the aunt marriage predating Sinai's law, and resumptive repetition as a literary device. scripts/check_bible_note_style.py found one bullet over the 8 word limit on the first pass, fixed, second run clean (37 cards, no problems). A manual section 13 eye check and a connector word / duplicate title scan both passed. Parser check passed exactly (8/8 sections, 37 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (ExodusSixPersonalSection, parseExodusSixRawNotes, EXODUS_SIX_RAW_NOTES, EXODUS_SIX_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Exodus 6 entry removed from the front of the list as part of this commit; next redo target is Exodus 7.",
       "steps": [
-        { "name": "npm install done", "at": "2026-08-01T16:46:23Z" },
-        { "name": "target chapter determined: Exodus 6 (style redo, first in remaining backlog)", "at": "2026-08-01T16:47:14Z" },
-        { "name": "KJV text fetched from raw.githubusercontent.com Exodus.json", "at": "2026-08-01T16:47:14Z" },
-        { "name": "style spec (docs/bible-study-note-style.md) and reference implementation read", "at": "2026-08-01T16:47:14Z" },
-        { "name": "source file written (lib/exodusSixSource.ts, 8 sections, 37 cards)", "at": "2026-08-01T16:58:51Z" },
-        { "name": "style checker clean (after fixing 1 bullet word count issue)", "at": "2026-08-01T16:58:51Z" },
-        { "name": "wiring confirmed correct for redo (no changes needed)", "at": "2026-08-01T16:58:51Z" },
-        { "name": "parser check passed (8 sections, 37 cards, verbatim)", "at": "2026-08-01T16:58:51Z" },
-        { "name": "tsc --noEmit clean", "at": "2026-08-01T16:58:51Z" },
-        { "name": "progress files logged", "at": "2026-08-01T16:59:44Z" },
-        { "name": "committed (300ce8e)", "at": "2026-08-01T17:00:30Z" },
-        { "name": "pushed to origin main, confirmed via fetch", "at": "2026-08-01T17:01:48Z" }
+        {
+          "name": "npm install done",
+          "at": "2026-08-01T16:46:23Z"
+        },
+        {
+          "name": "target chapter determined: Exodus 6 (style redo, first in remaining backlog)",
+          "at": "2026-08-01T16:47:14Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Exodus.json",
+          "at": "2026-08-01T16:47:14Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation read",
+          "at": "2026-08-01T16:47:14Z"
+        },
+        {
+          "name": "source file written (lib/exodusSixSource.ts, 8 sections, 37 cards)",
+          "at": "2026-08-01T16:58:51Z"
+        },
+        {
+          "name": "style checker clean (after fixing 1 bullet word count issue)",
+          "at": "2026-08-01T16:58:51Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo (no changes needed)",
+          "at": "2026-08-01T16:58:51Z"
+        },
+        {
+          "name": "parser check passed (8 sections, 37 cards, verbatim)",
+          "at": "2026-08-01T16:58:51Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-01T16:58:51Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-01T16:59:44Z"
+        },
+        {
+          "name": "committed (300ce8e)",
+          "at": "2026-08-01T17:00:30Z"
+        },
+        {
+          "name": "pushed to origin main, confirmed via fetch",
+          "at": "2026-08-01T17:01:48Z"
+        }
       ]
     },
     {
@@ -175,16 +319,46 @@
       "verses": 23,
       "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (7 sections / 16 cards) from scratch to match docs/bible-study-note-style.md. Exodus 5 covers Moses and Aaron's first confrontation with Pharaoh over the modest three-day worship request, Pharaoh's flat refusal ('I know not the LORD'), his retaliation withholding straw for brick quotas, the Hebrew officers caught between Egyptian taskmasters and an impossible quota, their failed appeal to Pharaoh, their bitter turn against Moses and Aaron, and Moses' raw complaint to God closing the chapter. Kept the same 7 section boundaries as the prior version (5:1-3, 5:4-5, 5:6-9, 5:10-14, 5:15-19, 5:20-21, 5:22-23) and increased card density from 16 to 42 cards over 23 verses (about 1.8 cards/verse), close to the roughly 2 cards/verse target. Word/custom definitions covered inline: tale (quota), diminish, ought, heretofore, stubble, hasted, evil case, savour, evil entreated, and the taskmaster/officer two-tier labor structure. scripts/check_bible_note_style.py found one banned hedge word ('fairly') on the first pass, fixed, second run clean (42 cards, no problems). A manual section 13 eye check and a duplicate title/opening line scan both passed. Parser check passed exactly (7/7 sections, 42 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (ExodusFivePersonalSection, parseExodusFiveRawNotes, EXODUS_FIVE_RAW_NOTES, EXODUS_FIVE_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Exodus 5 entry removed from the front of the list as part of this commit; next redo target is Exodus 6.",
       "steps": [
-        { "name": "npm install done", "at": "2026-08-01T15:46:01Z" },
-        { "name": "target chapter determined: Exodus 5 (style redo, first in remaining backlog)", "at": "2026-08-01T15:46:01Z" },
-        { "name": "KJV text fetched from raw.githubusercontent.com Exodus.json", "at": "2026-08-01T15:46:01Z" },
-        { "name": "style spec (docs/bible-study-note-style.md) and reference implementation read", "at": "2026-08-01T15:46:01Z" },
-        { "name": "source file written (lib/exodusFiveSource.ts, 7 sections, 42 cards)", "at": "2026-08-01T15:53:40Z" },
-        { "name": "style checker clean (after fixing 1 banned hedge word)", "at": "2026-08-01T15:53:40Z" },
-        { "name": "wiring confirmed correct for redo (no changes needed)", "at": "2026-08-01T15:53:40Z" },
-        { "name": "parser check passed (7 sections, 42 cards, verbatim)", "at": "2026-08-01T15:53:40Z" },
-        { "name": "tsc --noEmit clean", "at": "2026-08-01T15:53:40Z" },
-        { "name": "progress files logged", "at": "2026-08-01T15:54:04Z" }
+        {
+          "name": "npm install done",
+          "at": "2026-08-01T15:46:01Z"
+        },
+        {
+          "name": "target chapter determined: Exodus 5 (style redo, first in remaining backlog)",
+          "at": "2026-08-01T15:46:01Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Exodus.json",
+          "at": "2026-08-01T15:46:01Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation read",
+          "at": "2026-08-01T15:46:01Z"
+        },
+        {
+          "name": "source file written (lib/exodusFiveSource.ts, 7 sections, 42 cards)",
+          "at": "2026-08-01T15:53:40Z"
+        },
+        {
+          "name": "style checker clean (after fixing 1 banned hedge word)",
+          "at": "2026-08-01T15:53:40Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo (no changes needed)",
+          "at": "2026-08-01T15:53:40Z"
+        },
+        {
+          "name": "parser check passed (7 sections, 42 cards, verbatim)",
+          "at": "2026-08-01T15:53:40Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-01T15:53:40Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-01T15:54:04Z"
+        }
       ]
     },
     {
@@ -5475,7 +5649,7 @@
       "sections": 11,
       "cards": 48,
       "verses": 51,
-      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Kept the original file's 11 section boundaries (12:1-6, 7-11, 12-14, 15-20, 21-24, 25-28, 29-30, 31-36, 37-39, 40-42, 43-51) for verse-coverage continuity while rewriting every card to the new format. Exodus 12 covers the institution of Passover: the new religious calendar, choosing and inspecting the lamb for four days, applying its blood to the doorposts and lintel with hyssop, the roast/unleavened bread/bitter herbs meal eaten in traveling clothes, the meaning of the name Passover itself, God's judgment against Egypt's gods, the ordinance for the Feast of Unleavened Bread, the built in teaching moment for children, the midnight death of the firstborn crossing every social class, Pharaoh's urgent nighttime release of Israel and his request for a blessing, the Egyptians pushing Israel out and giving up silver, gold, and raiment (fulfilling the promise from chapters 3 and 11), the six hundred thousand men (implying a total population over two million) plus a mixed multitude leaving Rameses for Succoth, the exact four hundred thirty year sojourn fulfilling Genesis 15, and the closing rules on who may keep Passover (covenant strangers via circumcision vs. foreigners/hired servants, the unbroken bone later connected by New Testament writers to Jesus, and one law for homeborn and stranger alike). Word/custom/idiom definitions covered inline: sojourning, tarry, sodden, girded, hyssop, bason, kneadingtrough, suffer (meaning allow), the destroyer, ordinance, holy convocation, selfsame day, hosts, homeborn, and stranger versus hired servant. Density is close to 1 card per verse (51 verses, 48 cards), consistent with the density of the style spec's own reference implementation (lib/genesisThirtyOneSource.ts, 54 cards for 55 verses) now that card depth (4 to 8 line bodies, four scored bullets) replaced the older 2 cards per verse density target. scripts/check_bible_note_style.py found 6 mechanical problems on the first pass (one repeated bullet emoji, three cards whose last bullet was not 📖/➡️, two bullets over the 8 word cap) and all six were fixed and reverified clean. A manual section 13 eye check and a hyphen/em dash/semicolon/contraction scan both passed. Parser check passed exactly (11/11 sections, 48 cards, text verbatim, matching the checker's card count). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies exodus 1-40 range, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (ExodusTwelvePersonalSection, parseExodusTwelveRawNotes, EXODUS_TWELVE_RAW_NOTES, EXODUS_TWELVE_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Exodus 12 entry removed from the front of the list as part of this commit; next redo target is Exodus 13.",
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Kept the original file's 11 section boundaries (12:1-6, 7-11, 12-14, 15-20, 21-24, 25-28, 29-30, 31-36, 37-39, 40-42, 43-51) for verse-coverage continuity while rewriting every card to the new format. Exodus 12 covers the institution of Passover: the new religious calendar, choosing and inspecting the lamb for four days, applying its blood to the doorposts and lintel with hyssop, the roast/unleavened bread/bitter herbs meal eaten in traveling clothes, the meaning of the name Passover itself, God's judgment against Egypt's gods, the ordinance for the Feast of Unleavened Bread, the built in teaching moment for children, the midnight death of the firstborn crossing every social class, Pharaoh's urgent nighttime release of Israel and his request for a blessing, the Egyptians pushing Israel out and giving up silver, gold, and raiment (fulfilling the promise from chapters 3 and 11), the six hundred thousand men (implying a total population over two million) plus a mixed multitude leaving Rameses for Succoth, the exact four hundred thirty year sojourn fulfilling Genesis 15, and the closing rules on who may keep Passover (covenant strangers via circumcision vs. foreigners/hired servants, the unbroken bone later connected by New Testament writers to Jesus, and one law for homeborn and stranger alike). Word/custom/idiom definitions covered inline: sojourning, tarry, sodden, girded, hyssop, bason, kneadingtrough, suffer (meaning allow), the destroyer, ordinance, holy convocation, selfsame day, hosts, homeborn, and stranger versus hired servant. Density is close to 1 card per verse (51 verses, 48 cards), consistent with the density of the style spec's own reference implementation (lib/genesisThirtyOneSource.ts, 54 cards for 55 verses) now that card depth (4 to 8 line bodies, four scored bullets) replaced the older 2 cards per verse density target. scripts/check_bible_note_style.py found 6 mechanical problems on the first pass (one repeated bullet emoji, three cards whose last bullet was not \ud83d\udcd6/\u27a1\ufe0f, two bullets over the 8 word cap) and all six were fixed and reverified clean. A manual section 13 eye check and a hyphen/em dash/semicolon/contraction scan both passed. Parser check passed exactly (11/11 sections, 48 cards, text verbatim, matching the checker's card count). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies exodus 1-40 range, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (ExodusTwelvePersonalSection, parseExodusTwelveRawNotes, EXODUS_TWELVE_RAW_NOTES, EXODUS_TWELVE_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Exodus 12 entry removed from the front of the list as part of this commit; next redo target is Exodus 13.",
       "steps": [
         {
           "name": "npm install done",
@@ -5516,6 +5690,59 @@
         {
           "name": "progress files logged",
           "at": "2026-08-01T22:56:46Z"
+        }
+      ]
+    },
+    {
+      "book": "Exodus",
+      "chapter": 13,
+      "startedAt": "2026-08-01T23:46:03Z",
+      "finishedAt": "2026-08-01T23:57:04Z",
+      "durationMinutes": 11,
+      "sections": 8,
+      "cards": 34,
+      "verses": 22,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Kept the original file's 8 section boundaries (13:1-2, 3-7, 8-10, 11-13, 14-16, 17-18, 19, 20-22) for verse-coverage continuity while rewriting every card to the new format. Exodus 13 covers the consecration of the firstborn (human and animal) tied directly back to the Passover judgment, the Feast of Unleavened Bread and the command to remember the exodus every year in the month Abib, the built-in father-to-son teaching pattern repeated twice in this chapter (the sign on the hand and frontlets between the eyes, later taken literally as phylacteries by some Jewish traditions), the redemption laws for firstling donkeys (substituted with a lamb or the animal's neck broken) and for human firstborn sons (never sacrificed, later fulfilled through the tribe of Levi's substitutionary service), God's deliberate choice of the longer wilderness route toward the Red Sea instead of the shorter Philistine coastal road so Israel would not face war and retreat to Egypt, Moses carrying Joseph's bones out of Egypt in fulfillment of the centuries-old oath from the end of Genesis, and the chapter's close on the pillar of cloud by day and fire by night guiding and never leaving the people. Word/idiom definitions covered inline: sanctify, openeth the womb/matrix, bondage, Abib, a land flowing with milk and honey, shew, frontlets, firstling, redeem, hardly (with great difficulty), peradventure, harnessed, straitly sworn, and visit (meaning God actively intervenes, not a casual stop by). Density is 1.55 cards per verse (22 verses, 34 cards), in the same range as the style spec's own reference implementation (lib/genesisThirtyOneSource.ts) now that card depth (4 to 8 line bodies, four scored bullets) replaced the older 2 cards per verse density target. scripts/check_bible_note_style.py was clean on the very first content pass once the RAW_NOTES constant had its required `.trim()` call restored (missed on the initial Write, caught before running the checker). A manual section 13 eye check and a forbidden-pattern grep (This shows, this verse, it's, doesn't, etc.) both passed. Parser check passed exactly (8/8 sections, 34 cards, text verbatim, matching the checker's card count). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies exodus 1-40 range, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (ExodusThirteenPersonalSection, parseExodusThirteenRawNotes, EXODUS_THIRTEEN_RAW_NOTES, EXODUS_THIRTEEN_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Exodus 13 entry removed from the front of the list as part of this commit; next redo target is Exodus 14.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-01T23:46:46Z"
+        },
+        {
+          "name": "target chapter determined: Exodus 13 (style redo, first in remaining backlog)",
+          "at": "2026-08-01T23:46:54Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Exodus.json",
+          "at": "2026-08-01T23:47:40Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (lib/genesisThirtyOneSource.ts) read",
+          "at": "2026-08-01T23:48:20Z"
+        },
+        {
+          "name": "source file written (lib/exodusThirteenSource.ts, 8 sections, 34 cards)",
+          "at": "2026-08-01T23:55:50Z"
+        },
+        {
+          "name": "style checker clean on first content pass (fixed missing .trim() call on the raw notes constant)",
+          "at": "2026-08-01T23:56:20Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo (no changes needed)",
+          "at": "2026-08-01T23:56:30Z"
+        },
+        {
+          "name": "parser check passed (8 sections, 34 cards, matches design)",
+          "at": "2026-08-01T23:56:50Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-01T23:57:04Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-01T23:58:35Z"
         }
       ]
     }

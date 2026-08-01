@@ -90,25 +90,49 @@ function parseExodusThirteenRawNotes(rawText: string): ExodusThirteenPersonalSec
 
 const EXODUS_THIRTEEN_RAW_NOTES = `# Exodus 13:1-2
 
-# 👶 Sanctify The Firstborn
+# 👑 Every Firstborn Belongs To God
 
 ---
 
-## ✨ Sanctify Unto Me All The Firstborn ... It Is Mine
+## ✨ Sanctify Unto Me All The Firstborn
 
-Sanctify means to set apart as holy for a special purpose. God claims every firstborn male, both human and animal, as belonging specifically to Him, directly connected to how He spared Israel's firstborn during the final plague.
+Sanctify means to set apart as holy for a special use.
 
-✨ Sanctify means to set apart as holy for a special purpose
+God claims every firstborn male in Israel, both human and animal.
 
-🩸 This directly connects to God sparing Israel's firstborn during the Passover
+That claim is not random.
+
+It connects directly to the tenth plague, when God spared Israel's firstborn while striking Egypt's.
+
+Because God spared them, He now claims them as His own.
+
+✨ Sanctify means set apart as holy
+
+👶 God claims every firstborn male
+
+🩸 This connects to the tenth plague
+
+📖 God spared them, so He claims them
 
 ---
 
 ## 👶 Whatsoever Openeth The Womb
 
-This phrase specifically means the first offspring born to any mother, human or animal, marking firstborn status clearly and precisely, not simply the oldest child in a household overall.
+This phrase means the very first baby or animal born to a mother.
 
-👶 This precisely means the very first birth from any mother, human or animal
+It does not mean the oldest child in a household overall.
+
+A mother's first child counts, even if older stepchildren already live in that home.
+
+Openeth the womb tracks birth order for one mother, not the whole family.
+
+👶 Openeth the womb means the first birth
+
+🚫 Not the oldest child in the house
+
+👪 It tracks one mother, not the family
+
+📖 Firstborn status is counted this way
 
 # Exodus 13:3-7
 
@@ -116,178 +140,678 @@ This phrase specifically means the first offspring born to any mother, human or 
 
 ---
 
+## 🕰️ Remember This Day, In Which Ye Came Out From Egypt
+
+Moses commands Israel to actively remember, not just to recall passively.
+
+This day marks the exact moment Israel became a free nation instead of a slave nation.
+
+The instruction to remember becomes the seed of Israel's entire calendar of feasts.
+
+Every future generation will treat this day as the anchor point of their whole story.
+
+🕰️ Remember means an active choice
+
+🕊️ This day marks freedom, not slavery
+
+📅 It becomes the start of Israel's calendar
+
+📖 Every future generation anchors here
+
+---
+
 ## 🏠 Out Of The House Of Bondage
 
-Bondage means slavery. This phrase becomes a standard, repeated description throughout the rest of the Old Testament for Egypt, Israel's identity is now permanently shaped by having once been slaves there.
+Bondage means slavery.
 
-🏠 Bondage means slavery, and this phrase becomes Egypt's standard description going forward
+This exact phrase becomes the standard way the rest of the Old Testament describes Egypt.
+
+Israel's national identity is now permanently shaped by having once been slaves there.
+
+Every law about kindness to strangers and servants will later point back to this memory.
+
+🏠 Bondage means slavery
+
+📜 This phrase becomes Egypt's standard label
+
+🪢 Israel's identity is now shaped by slavery
+
+📖 Later laws point back to this memory
+
+---
+
+## 💪 By Strength Of Hand The LORD Brought You Out
+
+Strength of hand is a Hebrew way of describing raw, unstoppable power.
+
+It is not describing Moses' arm or Israel's own effort.
+
+The ten plagues and the exodus itself were entirely God's doing, not a human escape.
+
+Israel did not fight or negotiate its way free.
+
+God simply overpowered Egypt.
+
+💪 Strength of hand means overwhelming power
+
+🙅 It is not human effort
+
+⚡ God alone caused the exodus
+
+📖 Israel did not fight its way free
 
 ---
 
 ## 📅 This Day Came Ye Out In The Month Abib
 
-Abib was the original Hebrew name for the first month of the year, later called Nisan. This specific month becomes permanently tied to Israel's national memory of freedom.
+Abib was the original Hebrew name for the first month of the year.
 
-📅 Abib was the original name for the first month, later called Nisan
+It was later called Nisan, the name still used in the Jewish calendar today.
+
+This month falls in the early spring, around March or April.
+
+From this point forward, Israel's entire calendar is reset around the exodus.
+
+📅 Abib was the first month's original name
+
+🌱 It falls in early spring
+
+🔄 It was later renamed Nisan
+
+📖 Israel's calendar restarts around this event
+
+---
+
+## 🍯 A Land Flowing With Milk And Honey
+
+This is a figure of speech describing a rich, fertile land.
+
+Milk pictures healthy herds and flocks with plenty to eat.
+
+Honey pictures a land so fertile that sweetness comes easily, without struggle.
+
+The phrase is not a literal description.
+
+It is a promise that this land can fully support the people God is bringing into it.
+
+🐐 Milk pictures healthy, well fed flocks
+
+🍯 Honey pictures easy, natural abundance
+
+🌾 It describes a fertile, generous land
+
+📖 It is a promise, not a literal claim
 
 ---
 
 ## 🍞 Seven Days Thou Shalt Eat Unleavened Bread
 
-This repeats and confirms the unleavened bread command from chapter 12, cementing it as the practical, physical reminder woven into an entire week each year, not just a single meal.
+This repeats the command already given in chapter twelve.
 
-🍞 This repeats and confirms the unleavened bread command from chapter 12
+Leaven is yeast, the ingredient that makes bread rise.
+
+Removing it for seven straight days turns a single meal into a whole week of remembering.
+
+The seventh day closes the week with its own feast to the LORD.
+
+🍞 Leaven means yeast
+
+📆 The command lasts a full week
+
+🔁 It repeats the order from chapter twelve
+
+📖 The week ends with its own feast
+
+---
+
+## 🚫 No Leavened Bread Be Seen ... In All Thy Quarters
+
+Quarters means territory, the full area where someone lives.
+
+This command is stricter than just avoiding leavened bread at meals.
+
+Leaven had to be removed from every home in the entire region for the whole week.
+
+Leaven often pictures sin or corruption spreading quietly through something.
+
+A totally leaven free camp pictures a people made completely clean before God.
+
+🗺️ Quarters means the whole territory
+
+🧹 Leaven had to be removed everywhere
+
+🦠 Leaven often pictures sin spreading
+
+📖 A clean camp pictures a clean people
 
 # Exodus 13:8-10
 
-# 👨‍👦 Teaching Your Son
+# 👨‍👦 Teach Your Son
 
 ---
 
 ## 👨‍👦 Thou Shalt Shew Thy Son In That Day
 
-Shew is an old spelling of "show." Parents are directly commanded to actively explain these events to their children, not simply hope they figure it out or absorb it passively over time.
+Shew is an old spelling of show.
 
-👨‍👦 Shew means show, and parents are commanded to actively explain, not assume
+Parents are commanded to actively explain these events to their children.
+
+They are not told to simply hope their children absorb the story over time.
+
+Faith in this culture was meant to be taught on purpose, not caught by accident.
+
+👨‍👦 Shew means show
+
+🗣️ Parents must explain, not assume
+
+🚫 Faith was not meant to be accidental
+
+📖 Teaching was a direct command
 
 ---
 
 ## ✋ A Sign Unto Thee Upon Thine Hand, And For A Memorial Between Thine Eyes
 
-This poetic language describes keeping God's actions constantly in mind and visible in daily life, later understood literally by some Jewish traditions as wearing small boxes containing Scripture, called phylacteries, on the hand and forehead.
+This is poetic language, not a command to literally attach an object yet.
 
-✋ This describes keeping God's actions constantly visible in daily life
+It pictures keeping God's actions constantly visible in everyday life and thought.
 
-📖 Some later Jewish traditions took this literally, wearing small Scripture boxes
+Centuries later, some Jewish traditions took this literally.
 
-# Exodus 13:11-13
+They wore small boxes containing Scripture, called phylacteries, on the hand and forehead during prayer.
 
-# 🐑 Redeeming The Firstborn
+✋ This pictures constant awareness of God
+
+🧠 Hand and eyes picture action and thought
+
+📦 Phylacteries later took this literally
+
+📖 The point is remembering, not decoration
 
 ---
 
-## 🐑 Every Firstling That Cometh Of A Beast ... The Males Shall Be The LORD'S
+## 🗣️ That The LORD's Law May Be In Thy Mouth
 
-Firstling means the first offspring born to an animal. Male firstborn animals specifically belong to God, connected directly to His claim over the firstborn established earlier in this same chapter.
+This means God's instruction should be spoken often, not just written down and stored away.
 
-🐑 Firstling means the first offspring born to an animal
+Ancient teaching relied heavily on speaking and repeating, since most people could not read.
+
+A law kept in the mouth gets passed on out loud, generation after generation.
+
+That is why parents were commanded to keep repeating it near their children.
+
+🗣️ In thy mouth means spoken often
+
+📚 Most people could not read back then
+
+🔁 Speaking it kept it alive across generations
+
+📖 God's law was meant to be repeated
+
+---
+
+## 📆 Keep This Ordinance In His Season From Year To Year
+
+An ordinance is a fixed rule that must be kept exactly as given.
+
+His season means its own proper, appointed time each year.
+
+This turns Passover and Unleavened Bread into a permanent, yearly fixture on Israel's calendar.
+
+It is not a one time event.
+
+📜 Ordinance means a fixed rule
+
+📅 His season means its proper yearly time
+
+🔁 This becomes a permanent yearly feast
+
+📖 History gets a fixed date on the calendar
+
+# Exodus 13:11-13
+
+# 🐑 Redeeming What Belongs To God
+
+---
+
+## 🐑 Set Apart Unto The LORD All That Openeth The Matrix
+
+Matrix is another old word for womb.
+
+This is the same command already given at the start of the chapter.
+
+Now it is repeated again for the new land Israel is entering.
+
+God's claim on the firstborn does not expire once the exodus itself is over.
+
+🐑 Matrix means womb
+
+🔁 This repeats the earlier command
+
+🗺️ It applies once Israel reaches Canaan
+
+📖 God's claim does not expire
+
+---
+
+## 🐴 Every Firstling That Cometh Of A Beast ... The Males Shall Be The LORD'S
+
+Firstling means the first offspring born to an animal.
+
+Male firstborn animals specifically belong to God, not just human sons.
+
+This connects directly to the claim over human firstborn stated earlier in this chapter.
+
+The same pattern now covers every living thing Israel owns.
+
+🐴 Firstling means an animal's first offspring
+
+🚹 Male animals, not just sons, are claimed
+
+🔗 This echoes the claim on human firstborn
+
+📖 The same pattern now covers every living thing
 
 ---
 
 ## 🔄 Every Firstling Of An Ass Thou Shalt Redeem With A Lamb
 
-Redeem means to buy back or substitute something else in its place. Donkeys weren't considered acceptable sacrificial animals, so a lamb takes its place instead, or the donkey's neck is broken if not redeemed.
+Redeem means to buy back, or to substitute one thing for another in its place.
 
-🔄 Redeem means to buy back, here by substituting one thing for another
+A donkey was not considered an acceptable sacrifice.
+
+So a lamb takes the donkey's place instead, protecting the donkey's life and value.
+
+Most other unclean animals were not given this option.
+
+🔄 Redeem means substitute one thing for another
+
+🐴 Donkeys were not acceptable sacrifices
+
+🐑 A lamb stands in the donkey's place
+
+📖 Substitution protects what cannot be sacrificed
+
+---
+
+## 💀 If Thou Wilt Not Redeem It, Then Thou Shalt Break His Neck
+
+This is not cruelty for its own sake.
+
+It shows that the firstborn animal could never simply stay ordinary and unclaimed.
+
+Either it gets redeemed with a substitute, or its life is given up entirely.
+
+There was no third option that let an owner just keep it as normal property.
+
+⚖️ There was no neutral option here
+
+🔄 Redemption was the intended way out
+
+💀 Refusing redemption still cost something
+
+📖 The firstborn could never stay unclaimed
 
 ---
 
 ## 👶 All The Firstborn Of Man Among Thy Children Shalt Thou Redeem
 
-Human firstborn sons are never sacrificed. Instead, they're symbolically redeemed, a practice continued later through the tribe of Levi serving in the place of every family's firstborn son.
+Human firstborn sons are never sacrificed.
 
-👶 Human firstborn sons are always redeemed, never sacrificed
+Instead, they are symbolically redeemed, bought back through a substitute price or offering.
 
-📖 The tribe of Levi later serves as a substitute for every family's firstborn
+Later in Israel's history, the whole tribe of Levi serves in the temple.
+
+They stand in as a substitute for every family's firstborn son.
+
+👶 Human sons are always redeemed
+
+🚫 They are never sacrificed
+
+🕎 Levi later substitutes for every firstborn son
+
+📖 A whole tribe carries this responsibility
 
 # Exodus 13:14-16
 
-# 👨‍👦 Teaching Continues
+# ❓ When Your Son Asks
 
 ---
 
 ## ❓ When Thy Son Asketh Thee In Time To Come, Saying, What Is This?
 
-This repeats the same built-in teaching pattern from chapter 12, ensuring the story of the exodus and the reason for firstborn redemption gets explained accurately across every future generation.
+This repeats the same built in teaching moment already given in chapter twelve.
 
-❓ This repeats the same built-in teaching pattern established in chapter 12
+The instructions expect this question to come up naturally, year after year.
+
+A child noticing an unusual family custom raises a natural question.
+
+That question becomes a teaching opportunity, not an interruption.
+
+❓ This repeats chapter twelve's pattern
+
+🔁 The question is expected every year
+
+👂 A child's curiosity becomes a lesson
+
+📖 Customs were meant to spark questions
+
+---
+
+## 🚪 When Pharaoh Would Hardly Let Us Go
+
+Hardly here means with great difficulty and only after a long, stubborn resistance.
+
+Pharaoh did not simply agree to release Israel.
+
+He refused across nine plagues and only broke after the tenth one struck his own household.
+
+Every earlier refusal is now summarized in this one short word.
+
+🚪 Hardly means only with great difficulty
+
+👑 Pharaoh resisted through nine plagues
+
+💔 The tenth plague finally broke him
+
+📖 Freedom came after real resistance, not ease
 
 ---
 
 ## 💀 The LORD Slew All The Firstborn In The Land Of Egypt
 
-Parents are instructed to tell their children plainly and honestly about the tenth plague itself, not softening or hiding the severity of what actually happened in Egypt.
+Parents are told to explain the tenth plague to their children honestly.
 
-💀 Parents are told to explain the tenth plague honestly, not soften it
+They are not instructed to soften it or leave out how severe it actually was.
+
+The same event that freed Israel also brought real death across Egypt.
+
+Both truths are meant to be told together, not separated.
+
+💀 Parents must explain this honestly
+
+🚫 The story is not softened for children
+
+⚖️ Israel's freedom came at a heavy cost
+
+📖 The two truths are told together
+
+---
+
+## 🐑 Therefore I Sacrifice To The LORD ... But All The Firstborn Of My Children I Redeem
+
+This is written as a personal confession, spoken by a father to his child.
+
+Animals that open the womb get sacrificed.
+
+Human sons get redeemed instead, never sacrificed.
+
+Saying this out loud kept the distinction alive in every household.
+
+It was not just a rule handed down by priests.
+
+🗣️ This is a personal, spoken confession
+
+🐑 Animals are sacrificed
+
+👶 Sons are redeemed, never sacrificed
+
+📖 Every household repeats this distinction
 
 ---
 
 ## ✋ A Token Upon Thine Hand, And For Frontlets Between Thine Eyes
 
-Frontlets means ornaments worn on the forehead. This repeats the same symbolic language from earlier in the chapter, reinforcing how deeply these events are meant to shape daily identity and memory.
+Frontlets means ornaments or bands worn across the forehead.
 
-✋ Frontlets means ornaments worn on the forehead, repeating the earlier imagery
+This repeats the same symbolic picture used earlier in the chapter.
+
+Hands picture action.
+
+The space between the eyes pictures thought.
+
+Together they mean these events should shape everything Israel does and thinks.
+
+✋ Frontlets means forehead ornaments
+
+🔁 This repeats the earlier picture
+
+🧠 Hand and eyes mean action and thought
+
+📖 God's deliverance should shape daily life
 
 # Exodus 13:17-18
 
-# 🗺️ God Chooses A Different Path
+# 🗺️ The Longer Road
 
 ---
 
 ## 🛣️ God Led Them Not Through The Way Of The Land Of The Philistines, Although That Was Near
 
-The shortest route to Canaan ran directly through Philistine territory, but God deliberately avoids it, choosing a longer, less direct path instead for a specific, protective reason.
+The shortest route from Egypt to Canaan ran directly along the coast through Philistine territory.
 
-🛣️ God deliberately avoids the shortest, most direct route to Canaan
+God deliberately avoids that quicker path.
+
+He chooses a longer, less direct route through the wilderness instead.
+
+That choice was intentional, not accidental.
+
+🛣️ The coastal route was the shortest path
+
+🚫 God avoids it on purpose
+
+🧭 A longer wilderness route is chosen instead
+
+📖 God's timing does not chase the fastest option
 
 ---
 
-## ⚔️ Lest Peradventure The People Repent When They See War, And They Return To Egypt
+## ⚔️ Lest Peradventure The People Repent When They See War
 
-Peradventure means perhaps. God anticipates that facing armed conflict immediately might discourage this newly freed people so badly they'd want to return to slavery rather than face war.
+Peradventure means perhaps.
+
+Repent here means to change their mind and turn back, not to feel sorry for sin.
+
+God knows this newly freed people is not ready to face an army so soon after leaving slavery.
+
+Facing war this early might have sent them running back to Egypt.
 
 ⚔️ Peradventure means perhaps
 
-😨 God protects the people from an immediate test they aren't yet ready to face
+🔄 Repent here means turn back, not confess sin
+
+😨 Israel was not ready for war yet
+
+📖 God protects them from a test too soon
 
 ---
 
 ## 🌊 God Led The People About, Through The Way Of The Wilderness Of The Red Sea
 
-Instead, God guides Israel on a longer route through the wilderness toward the Red Sea, a path setting up the dramatic crossing that happens just two chapters later.
+About means a longer, roundabout path instead of a straight line.
 
-🌊 This longer wilderness route sets up the dramatic Red Sea crossing soon to come
+This route sets up the dramatic sea crossing that happens just two chapters later.
 
-# Exodus 13:19
+God is already steering events toward what comes next.
 
-# ⚰️ Joseph's Bones Are Carried Out
+The wilderness road was not a detour.
+
+It was the plan.
+
+🌊 About means a roundabout path
+
+🧭 This route heads toward the Red Sea
+
+🎬 It sets up the coming crossing
+
+📖 God is steering events ahead of time
 
 ---
 
-## ⚰️ Moses Took The Bones Of Joseph With Him ... God Will Surely Visit You
+## ⚔️ The Children Of Israel Went Up Harnessed Out Of The Land Of Egypt
 
-This directly fulfills the oath Joseph required from his family back at the very end of Genesis, over three hundred years earlier, that his bones would eventually be carried out of Egypt to the promised land.
+Harnessed here does not mean tied up like an animal.
 
-⚰️ This fulfills Joseph's oath from the very end of Genesis, centuries earlier
+It means organized and equipped for travel, possibly arranged in ranks like an army.
 
-📖 A promise spoken generations before is finally being kept in this exact moment
+Israel leaves Egypt as an organized nation, not a scattered, panicked crowd.
+
+This was not a fearful, disorganized escape.
+
+⚔️ Harnessed means organized, equipped for travel
+
+🚫 It does not mean tied up
+
+🪖 It pictures orderly, army like ranks
+
+📖 Israel leaves as a nation, not a mob
+
+# Exodus 13:19
+
+# ⚰️ Carrying Joseph's Bones
+
+---
+
+## ⚰️ Moses Took The Bones Of Joseph With Him
+
+This fulfills a promise made centuries earlier, at the very end of the book of Genesis.
+
+Joseph never asked to be buried in Egypt.
+
+He asked that when God brought Israel out, his bones would go with them to the promised land.
+
+That request finally comes true here, generations later.
+
+⚰️ This fulfills a promise from Genesis
+
+🚫 Joseph never asked to stay buried in Egypt
+
+🗺️ His bones were meant for the promised land
+
+📖 A promise made generations earlier is finally kept
+
+---
+
+## 🤝 He Had Straitly Sworn The Children Of Israel
+
+Straitly means strictly or solemnly.
+
+It left no room for the promise to be forgotten or ignored.
+
+Joseph made Israel swear this oath while he was still alive.
+
+That was long before slavery in Egypt even began.
+
+🤝 Straitly means strictly, with no room to forget
+
+📜 Joseph secured this oath before slavery began
+
+⏳ The promise waited over three hundred years
+
+📖 A solemn oath outlives its maker
+
+---
+
+## 👁️ God Will Surely Visit You
+
+Visit here does not mean a casual, friendly stop by.
+
+It means God will actively step in and act on Israel's behalf.
+
+These are the same words Joseph himself used generations earlier when he predicted the exodus.
+
+A promise spoken long ago is now being kept.
+
+👁️ Visit here means God will actively act
+
+🚫 It is not a casual visit
+
+🔁 Joseph used these same words long before
+
+📖 A prophecy spoken in Genesis is now happening
 
 # Exodus 13:20-22
 
-# ☁️ The Pillar Of Cloud And Fire
+# 🔥 Cloud By Day, Fire By Night
+
+---
+
+## 🏕️ They Took Their Journey From Succoth, And Encamped In Etham
+
+Succoth and Etham were both real stops along Israel's escape route out of Egypt.
+
+Succoth means booths or temporary shelters.
+
+Etham sat right at the edge of the wilderness, the last point before open desert travel began.
+
+These were real, traceable places, not vague scenery.
+
+🏕️ Succoth and Etham were real travel stops
+
+🛖 Succoth means temporary shelters
+
+🏜️ Etham marked the edge of the wilderness
+
+📖 The exodus route can be traced precisely
 
 ---
 
 ## ☁️ The LORD Went Before Them By Day In A Pillar Of A Cloud
 
-God provides a visible, physical sign of His presence and guidance, a cloud formation leading the people during daylight hours, an unmistakable, ever-present marker of direction.
+God gives Israel a visible, physical sign of His presence and guidance.
 
-☁️ God provides a visible cloud formation to physically guide the people by day
+A cloud shaped like a pillar leads the way ahead of the people during daylight hours.
+
+Nobody has to guess which direction to walk.
+
+The sign was constant, not occasional.
+
+☁️ God provides a visible cloud by day
+
+🧭 It leads the people, not just accompanies them
+
+👀 Nobody has to guess the direction
+
+📖 God's guidance was visible, not hidden
 
 ---
 
 ## 🔥 By Night In A Pillar Of Fire, To Give Them Light
 
-At night, the same guiding presence becomes visible as fire instead, providing both direction and light through the darkness, meeting the people's need at every hour, day and night alike.
+At night, the same guiding presence appears as fire instead of cloud.
 
-🔥 The same guidance appears as fire at night, providing both direction and light
+Fire provides both direction and light through the darkness at the same time.
+
+God meets the people's need at every single hour, day and night alike.
+
+No hour of the journey is left without guidance.
+
+🔥 Fire replaces cloud at night
+
+💡 Fire gives both light and direction
+
+🌙 God's guidance never stops after dark
+
+📖 God meets every hour, day and night
 
 ---
 
 ## 🚫 He Took Not Away The Pillar ... From Before The People
 
-This guiding presence remains constant and unbroken, emphasizing God's continuous, reliable presence with Israel throughout their entire journey, never once disappearing when needed most.
+This guiding presence never disappears, not even once, throughout the entire journey.
 
-🚫 God's guiding presence remains constant, never disappearing throughout the journey`;
+Its constant presence becomes a daily, visible reminder that God has not abandoned this people.
+
+The wilderness could feel empty and uncertain.
+
+But Israel always had something to look up and see.
+
+🔁 The pillar remains constant, never missing
+
+🏜️ The wilderness never leaves Israel unguided
+
+🤝 Constant presence proves God has not left
+
+📖 God's guidance outlasts the whole journey`.trim();
 
 export const EXODUS_THIRTEEN_PERSONAL_SECTIONS = parseExodusThirteenRawNotes(EXODUS_THIRTEEN_RAW_NOTES);
