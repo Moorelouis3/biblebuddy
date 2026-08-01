@@ -4812,6 +4812,55 @@
           "at": "2026-08-01T06:53:10Z"
         }
       ]
+    },
+    {
+      "book": "Genesis",
+      "chapter": 47,
+      "startedAt": "2026-08-01T07:45:47Z",
+      "finishedAt": "2026-08-01T07:53:44Z",
+      "durationMinutes": 8,
+      "sections": 8,
+      "cards": 41,
+      "verses": 31,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Sixteenth redo-backlog chapter (data/bible-notes-style-redo-remaining.json), regenerated from scratch to match docs/bible-study-note-style.md, replacing the original pre-spec version (34 cards / 8 sections). Joseph presents five brothers to Pharaoh and coaches them to answer honestly as shepherds, Pharaoh grants Goshen and even offers royal herd oversight, Jacob blesses Pharaoh twice bookending the audience and gives his honest testimony about his hard one hundred thirty years falling short of Abraham and Isaac's lifespans, the family settles in Rameses (the same ground their descendants will later labor over as slaves in Exodus), the famine deepens and Joseph collects first money then livestock for grain, the Egyptians sell themselves and their land to Pharaoh while the priests keep theirs by royal allotment, Joseph's twenty percent tax becomes permanent Egyptian law (an explicit callback to his own storage plan from chapter forty one), and Jacob's final years close with his hand-under-thigh oath binding Joseph to bury him in Canaan's family tomb rather than Egypt. Word definitions covered inline: occupation, sojourn, sore, pilgrimage, evil (hardship, not sin), ought, nigh, and the hand-under-thigh oath gesture (cross-referenced to Abraham's servant in Genesis twenty four). Kept the original file's 8 section boundaries for verse-coverage continuity while rewriting every card to the four-move opening, blank-line-per-line, exactly-four-bullet format. Density 1.32 cards/verse (31 verses, 41 cards). One title (verse sixteen, Give Your Cattle) was shortened from the full KJV clause to avoid a semicolon banned by the checker. scripts/check_bible_note_style.py found 4 problems on first pass (one repeated-emoji pair, one bullet using a non-closing emoji, two over-length bullets), fixed, second run clean. Parser check passed exactly (8/8 sections, 41 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct (import, preserveExactPhraseBodies range covering Genesis 1-50, replaceStudySectionsForBookRange call all pre-existing) so no wiring changes were needed. data/bible-notes-style-redo-remaining.json Genesis 47 entry removed from the front of the list as part of this commit; next redo target is Genesis 48.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-01T07:45:47Z"
+        },
+        {
+          "name": "target chapter determined: Genesis 47 (redo mode, first entry in data/bible-notes-style-redo-remaining.json)",
+          "at": "2026-08-01T07:46:18Z"
+        },
+        {
+          "name": "KJV text fetched for Genesis 47 (31 verses, aruljohn/Bible-kjv GitHub raw mirror)",
+          "at": "2026-08-01T07:46:30Z"
+        },
+        {
+          "name": "docs/bible-study-note-style.md read in full; reference implementation lib/genesisThirtyOneSource.ts and existing lib/genesisFortySevenSource.ts reviewed",
+          "at": "2026-08-01T07:48:00Z"
+        },
+        {
+          "name": "lib/genesisFortySevenSource.ts written (regenerated to new style spec, 8 sections, 41 cards)",
+          "at": "2026-08-01T07:50:31Z"
+        },
+        {
+          "name": "scripts/check_bible_note_style.py clean (fixed 4 problems on first pass)",
+          "at": "2026-08-01T07:52:08Z"
+        },
+        {
+          "name": "wiring in lib/bibleReaderStudyNotes.ts confirmed already correct for redo chapter, no changes needed",
+          "at": "2026-08-01T07:52:20Z"
+        },
+        {
+          "name": "parser check passed (8/8 sections, 41 cards, text verbatim)",
+          "at": "2026-08-01T07:52:33Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean with zero errors",
+          "at": "2026-08-01T07:53:44Z"
+        }
+      ]
     }
   ]
 }

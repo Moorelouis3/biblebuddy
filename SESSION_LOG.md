@@ -394,3 +394,7 @@ Next up: Genesis 46
 ## 2026-08-01T06:53:32Z (hourly chapter notes run)
 Chapter: Genesis 46 | Duration: 7 min | Sections: 9 | Cards: 36 | Status: pass
 Next up: Genesis 47
+
+## 2026-08-01T07:55:00Z (hourly chapter notes run)
+Chapter: Genesis 47 | Duration: 8 min | Sections: 8 | Cards: 41 | Status: pass
+Next up: Genesis 48
