@@ -24,6 +24,7 @@ Already at gold-standard quality before this log started: Genesis 1-40 (40 chapt
 | 2026-07-25 | Exodus 1 | 18 cards / 7 sections | First Exodus chapter — had no prior wiring at all (ch2-40 already existed thin, ch1 was uncovered). Parser verified exactly. |
 | 2026-08-01 | Exodus 1 | 23 cards / 7 sections | Regenerated to the new style spec. Jacob's family arrives in Egypt and multiplies rapidly, a new king who forgets Joseph launches slavery, and Shiphrah and Puah's civil disobedience saves the Hebrew infant boys before Pharaoh escalates to a public drowning decree. Style checker clean, parser + tsc verified exactly. |
 | 2026-07-25 | Exodus 2 | 24 cards / 8 sections | Moses' birth, rescue, flight to Midian, marriage to Zipporah. Overrode previous thin content. Parser + tsc verified (clean), browser-verified. |
+| 2026-08-01 | Exodus 2 | 33 cards / 5 sections | Regenerated to the new style spec. Moses' birth and hidden infancy, his rescue and naming by Pharaoh's daughter at the very river his father ordered used for drowning Hebrew sons, his flight to Midian after killing an Egyptian, his marriage to Zipporah, and the chapter's close where Israel's cry finally reaches God directly. Style checker clean, parser + tsc verified exactly. |
 | 2026-07-25 | Exodus 3 | 21 cards / 7 sections | The burning bush, "I AM THAT I AM." Parser + tsc verified (clean). |
 | 2026-07-25 | Exodus 4 | 24 cards / 8 sections | The three signs, Aaron appointed, return to Egypt, "bridegroom of blood." Parser + tsc verified (clean). |
 | 2026-07-25 | Exodus 5 | 18 cards / 7 sections | First confrontation with Pharaoh, straw withheld, Moses' raw complaint to God. Parser + tsc verified (clean). |
@@ -158,11 +159,11 @@ every time a chapter is finished — this markdown file and that JSON log should
 - Done before this log (pre-existing, written by Louis by hand): 30 chapters (Genesis 1-30)
 - Total done: 147 / 1,189 (12.4%)
 - Remaining: 1,042
-- **Style redo in progress**: Genesis 31 through 50 and Exodus 1 are now regenerated to the new, stricter style spec (`docs/bible-study-note-style.md`). Exodus 2-40, Leviticus 1-27, and Numbers 1-30 already exist and are wired in, but still need to be regenerated to match — tracked in `data/bible-notes-style-redo-remaining.json` (96 chapters left, next is Exodus 2), worked hourly by the automated agent before it resumes new forward progress.
+- **Style redo in progress**: Genesis 31 through 50 and Exodus 1-2 are now regenerated to the new, stricter style spec (`docs/bible-study-note-style.md`). Exodus 3-40, Leviticus 1-27, and Numbers 1-30 already exist and are wired in, but still need to be regenerated to match — tracked in `data/bible-notes-style-redo-remaining.json` (95 chapters left, next is Exodus 3), worked hourly by the automated agent before it resumes new forward progress.
 - Currently on: Numbers (30 of 36 chapters done at old-or-new style — real forward progress is paused while the redo backlog above is worked off first; next real gap after the backlog empties is Numbers 31)
 - Running under /loop (dynamic self-pacing) starting 2026-07-25 ~13:53 UTC
 - Formalized 2026-07-26 as the "Bible Note Writer Agent" reporting to Bible Buddy → Marcus (second-brain), per Louis's governance directive. Every chapter completion now also appends a `SESSION_LOG.md` block containing "hourly chapter notes run" so Marcus's watcher (`bibleBuddyWatch.js`) can see live activity, not just this log.
-- Genesis 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, and Exodus 1 were regenerated to the current style spec on 2026-08-01
+- Genesis 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, and Exodus 1-2 were regenerated to the current style spec on 2026-08-01
   and no longer need a density/voice follow-up pass.
 
 ## Pace notes

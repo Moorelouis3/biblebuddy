@@ -414,3 +414,7 @@ Next up: Exodus 1
 ## 2026-08-01T11:55:28Z (hourly chapter notes run)
 Chapter: Exodus 1 | Duration: 8 min | Sections: 7 | Cards: 23 | Status: pass
 Next up: Exodus 2
+
+## 2026-08-01T12:54:06Z (hourly chapter notes run)
+Chapter: Exodus 2 | Duration: 8 min | Sections: 5 | Cards: 33 | Status: pass
+Next up: Exodus 3
