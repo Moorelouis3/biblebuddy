@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Fragment, type ReactNode, type UIEvent, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { GENESIS_BIBLE_IN_ONE_YEAR_SERIES } from "@/lib/bibleInOneYearPlan";
@@ -11,7 +12,9 @@ import { getCachedAdminAnalytics, getCachedAdminAnalyticsOverview, loadAdminAnal
 type JourneyWindow = "today" | "yesterday" | "24h" | "7d" | "30d" | "90d" | "this_month" | "lifetime";
 type AccountFilter = "all" | "guest" | "free" | "pro";
 type AnalyticsView = "overview" | "bible-year" | "study-notes" | "traffic-sources";
-type SimpleAnalyticsMetric = "overview" | "revenue" | "signups" | "upgrades" | "traffic_sources" | "completion_popup" | "app_installs" | "study_plans" | "blog";
+// "email" is a jump-off rather than an inline chart: the funnel needs its own
+// per-day breakdown, so picking it routes to /admin/email-analytics.
+type SimpleAnalyticsMetric = "overview" | "revenue" | "signups" | "upgrades" | "traffic_sources" | "completion_popup" | "app_installs" | "study_plans" | "blog" | "email";
 
 type VisitorJourneyStatus =
   | "active"
@@ -668,7 +671,24 @@ const SIMPLE_METRIC_OPTIONS: Array<{ key: SimpleAnalyticsMetric; label: string }
   { key: "app_installs", label: "App Installs" },
   { key: "study_plans", label: "Study Plans" },
   { key: "blog", label: "Blog" },
+  { key: "email", label: "Email Funnel" },
 ];
+
+const EMAIL_ANALYTICS_HREF = "/admin/email-analytics";
+
+// Shared by the mobile and desktop metric pickers so "Email Funnel" behaves the
+// same in both: it navigates instead of becoming the selected chart metric.
+function handleSimpleMetricChange(
+  value: string,
+  router: ReturnType<typeof useRouter>,
+  setSimpleMetric: (value: SimpleAnalyticsMetric) => void,
+) {
+  if (value === "email") {
+    router.push(EMAIL_ANALYTICS_HREF);
+    return;
+  }
+  setSimpleMetric(value as SimpleAnalyticsMetric);
+}
 
 const SIMPLE_WINDOW_OPTIONS: Array<{ key: JourneyWindow; label: string }> = [
   { key: "today", label: "Today" },
@@ -2949,6 +2969,7 @@ function MobileAnalyticsHighlights({
   const upgradesFallbackTotal = data?.customerJourney?.proUpgrades || data?.visitorJourneys?.metrics?.upgradedToPro || 0;
   const signupsLabel = formatNumber(signupsSeriesTotal || signupsFallbackTotal);
   const upgradesLabel = formatNumber(stripeRevenue?.upgradesRange ?? (upgradesSeriesTotal || upgradesFallbackTotal));
+  const router = useRouter();
   const chartSeries = simpleMetric === "overview" ? [] : getSimpleMetricSeries(simpleMetric, data, stripeRevenue);
   const comparisonLabel = getComparisonLabel(windowKey);
   const signupComparison = data?.simpleComparisons?.signups?.change;
@@ -2974,7 +2995,7 @@ function MobileAnalyticsHighlights({
           <span className="block text-sm font-bold text-[var(--bb-text-primary,#101827)]">Overview</span>
           <select
             value={simpleMetric}
-            onChange={(event) => setSimpleMetric(event.target.value as SimpleAnalyticsMetric)}
+            onChange={(event) => handleSimpleMetricChange(event.target.value, router, setSimpleMetric)}
             className="h-14 w-full rounded-[18px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] px-4 text-base font-semibold text-[var(--bb-text-primary,#101827)] shadow-[0_12px_30px_rgba(15,23,42,0.06)] outline-none transition focus:border-blue-400 focus:ring-4 focus:ring-blue-100"
           >
             {SIMPLE_METRIC_OPTIONS.map((option) => (
@@ -5451,6 +5472,7 @@ function VisitorJourneyTableSection({
 }
 
 function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?: boolean; legacy?: boolean } = {}) {
+  const router = useRouter();
   const [isOwner, setIsOwner] = useState(false);
   const [authChecked, setAuthChecked] = useState(false);
   const [windowKey, setWindowKey] = useState<JourneyWindow>("today");
@@ -5945,7 +5967,7 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
                   <span className="block text-sm font-bold text-[var(--bb-text-primary,#101827)]">Overview</span>
                   <select
                     value={simpleMetric}
-                    onChange={(event) => setSimpleMetric(event.target.value as SimpleAnalyticsMetric)}
+                    onChange={(event) => handleSimpleMetricChange(event.target.value, router, setSimpleMetric)}
                     className="h-14 w-full rounded-[18px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] px-4 text-base font-semibold text-[var(--bb-text-primary,#101827)] shadow-[0_12px_30px_rgba(15,23,42,0.06)] outline-none transition focus:border-blue-400 focus:ring-4 focus:ring-blue-100"
                   >
                     {SIMPLE_METRIC_OPTIONS.map((option) => (
