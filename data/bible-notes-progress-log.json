@@ -4661,6 +4661,59 @@
           "at": "2026-08-01T03:56:33Z"
         }
       ]
+    },
+    {
+      "book": "Genesis",
+      "chapter": 44,
+      "startedAt": "2026-08-01T04:46:24Z",
+      "finishedAt": "2026-08-01T04:56:30Z",
+      "durationMinutes": 10,
+      "sections": 8,
+      "cards": 34,
+      "verses": 34,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Thirteenth redo-backlog chapter (data/bible-notes-style-redo-remaining.json), regenerated from scratch to match docs/bible-study-note-style.md, replacing the prior pre-spec version (same 34 cards / 8 sections coincidentally, but full rewrite of every card body and bullet). Joseph plants the silver cup in Benjamin's sack, the brothers are overtaken and searched in birth order, the cup turns up in Benjamin's sack, Judah and the brothers fall before Joseph again (a third bow, fulfilling Joseph's boyhood dream), Judah delivers the longest single speech in Genesis retracing the whole negotiation with Jacob (the double occurrence of the gray-hairs-to-the-grave idiom, Jacob's naming of Rachel as simply \"my wife,\" Judah's own surety pledge from chapter 43), and Judah offers himself as a slave in Benjamin's place, the turning point of the whole Joseph narrative given that this is the same brother who once proposed selling Joseph. Word definitions covered inline: bondmen, speedily, rent (torn), wot, iniquity, surety, peradventure, divineth. Kept the original file's 8 section boundaries for verse-coverage continuity while rewriting every card to the four-move opening, blank-line-per-line, exactly-four-bullet format. Density 1.0 cards/verse (34 verses, 34 cards), matching the genesisThirtyOneSource.ts reference implementation's ratio closely. One title needed adjusting before writing to avoid the banned filler word \"indeed\" (verse 5's \"whereby indeed he divineth\" was retitled to the contiguous KJV substring \"Is Not This It In Which My Lord Drinketh\" instead), so scripts/check_bible_note_style.py passed clean on the first run with zero problems. Parser check passed exactly (8/8 sections, 34 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call all pre-existing) so no wiring changes were needed. data/bible-notes-style-redo-remaining.json's Genesis 44 entry removed from the front of the list as part of this commit; next redo target is Genesis 45.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-01T04:46:24Z"
+        },
+        {
+          "name": "target chapter determined: Genesis 44 (redo mode, first entry in data/bible-notes-style-redo-remaining.json)",
+          "at": "2026-08-01T04:46:24Z"
+        },
+        {
+          "name": "KJV text fetched for Genesis 44 (34 verses, aruljohn/Bible-kjv GitHub raw mirror)",
+          "at": "2026-08-01T04:46:24Z"
+        },
+        {
+          "name": "docs/bible-study-note-style.md read in full; reference implementation lib/genesisThirtyOneSource.ts and existing lib/genesisFortyFourSource.ts reviewed",
+          "at": "2026-08-01T04:46:24Z"
+        },
+        {
+          "name": "lib/genesisFortyFourSource.ts written (regenerated to new style spec, 8 sections, 34 cards)",
+          "at": "2026-08-01T04:53:17Z"
+        },
+        {
+          "name": "scripts/check_bible_note_style.py clean on first pass, no problems",
+          "at": "2026-08-01T04:53:17Z"
+        },
+        {
+          "name": "wiring in lib/bibleReaderStudyNotes.ts confirmed already correct for redo chapter, no changes needed",
+          "at": "2026-08-01T04:53:41Z"
+        },
+        {
+          "name": "parser check passed (8/8 sections, 34 cards, text verbatim)",
+          "at": "2026-08-01T04:53:41Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean with zero errors",
+          "at": "2026-08-01T04:53:41Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, data/bible-notes-style-redo-remaining.json)",
+          "at": "2026-08-01T04:55:26Z"
+        }
+      ]
     }
   ]
 }
