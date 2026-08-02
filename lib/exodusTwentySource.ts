@@ -89,223 +89,512 @@ function parseExodusTwentyRawNotes(rawText: string): ExodusTwentyPersonalSection
 }
 
 const EXODUS_TWENTY_RAW_NOTES = `# Exodus 20:1-3
-
 # 📜 No Other Gods
-
 ---
-
 ## 📜 I Am The LORD Thy God, Which Have Brought Thee Out Of The Land Of Egypt
 
-Before giving a single command, God first identifies Himself by what He's already done, Israel's rescuer and deliverer. Obedience is grounded in relationship and gratitude, not simply raw authority or fear.
+God does not open with a command.
 
-📜 God grounds these commands in relationship and rescue, not raw authority alone
+He opens with an introduction instead.
 
----
+The words I am the LORD name exactly who is speaking.
+
+He reminds Israel He already rescued them from slavery in Egypt.
+
+These commands are given to people God already saved.
+
+Obedience here grows out of gratitude, not fear alone.
+
+📜 I am the LORD opens the list
+
+🕊️ God introduces Himself first
+
+🙌 Israel was already rescued from Egypt
+
+📖 Obedience flows from gratitude, not fear
 
 ## 🚫 Thou Shalt Have No Other Gods Before Me
 
-This first commandment demands complete, exclusive loyalty to the LORD alone, directly confronting the reality that Egypt and every surrounding nation worshiped many different gods simultaneously.
+This command demands complete and exclusive loyalty to the LORD.
 
-🚫 This directly confronts the normal ancient practice of worshiping many gods at once
+Before me means in His presence, ranked above every other claim on worship.
+
+Egypt worshiped many gods at once, and Canaan did too.
+
+Israel is told to break from a normal ancient practice, not follow it.
+
+This is the foundation every other commandment stands on.
+
+🚫 No other gods means complete loyalty
+
+👑 Before me means ranked above all else
+
+🌍 Egypt and Canaan worshiped many gods
+
+📖 Israel breaks from the normal ancient practice
 
 # Exodus 20:4-6
-
-# 🚫 No Graven Images
-
+# 🖼️ No Graven Images
 ---
-
 ## 🖼️ Thou Shalt Not Make Unto Thee Any Graven Image
 
-A graven image means a carved idol or statue meant to represent a deity. This command bans not just worshiping other gods, but even creating physical images to represent the LORD Himself.
+A graven image means a statue or carving shaped to represent a god.
 
-🖼️ A graven image is a carved idol or statue representing a deity
+This command goes further than banning worship of other gods.
 
----
+It even bans making a carved image to represent the LORD Himself.
+
+Ancient worship almost always centered on a physical object people could see and touch.
+
+God refuses to be reduced to something carved by human hands.
+
+🖼️ Graven image means a carved idol
+
+🙅 This bans images of the LORD too
+
+👐 Ancient worship centered on physical objects
+
+📖 God will not be reduced to an object
 
 ## 😠 I The LORD Thy God Am A Jealous God
 
-Jealous here describes God's rightful, exclusive claim to Israel's worship, similar to a marriage covenant demanding exclusive faithfulness, not petty envy in the negative human sense.
+Jealous here does not mean petty envy the way people use the word today.
 
-😠 God's jealousy here means a rightful claim to exclusive devotion, like a marriage covenant
+It describes a rightful claim to complete devotion.
 
----
+Think of a marriage that demands full faithfulness from both people.
+
+God claims that same kind of exclusive relationship with Israel.
+
+Sharing worship with another god would break the relationship entirely.
+
+😠 Jealous does not mean petty envy
+
+💍 It describes a marriage like claim
+
+🙏 God demands complete devotion from Israel
+
+📖 Sharing worship would break the relationship
 
 ## 👨‍👩‍👧‍👦 Visiting The Iniquity Of The Fathers Upon The Children Unto The Third And Fourth Generation
 
-This describes how sin's real consequences naturally ripple forward through families and generations, not that children are personally punished for a parent's specific individual guilt.
+This does not mean children are punished for a parent's specific personal guilt.
 
-👨‍👩‍👧‍👦 This describes sin's rippling consequences across generations, not inherited personal guilt
+Iniquity means sin, especially sin with lasting weight.
+
+The verse describes how sin's real consequences ripple forward through a family.
+
+A parent's idol worship often shaped how children and grandchildren worshiped too.
+
+Generations were not doomed, but patterns of sin are hard to escape alone.
+
+👨‍👩‍👧‍👦 Not punishment for another's personal guilt
+
+🌊 Iniquity means sin with lasting weight
+
+🔁 Sin's consequences ripple through generations
+
+📖 Family patterns of sin are hard to escape
 
 # Exodus 20:7
-
 # 🚫 The Name Of The LORD
-
 ---
-
 ## 🚫 Thou Shalt Not Take The Name Of The LORD Thy God In Vain
 
-Taking God's name in vain means using it carelessly, dishonestly, or emptily, such as in false oaths or hollow religious claims, not simply as a casual curse word in the modern sense alone.
+Vain means empty, worthless, or without real weight behind it.
 
-🚫 This means using God's name carelessly or dishonestly, especially in false oaths
+This is not primarily about cursing the way modern language uses God's name.
 
----
+It targets using God's name in a false oath or an empty religious claim.
+
+Ancient people swore oaths by a god's name to guarantee they were telling the truth.
+
+Invoking God falsely treated His name as a tool instead of a person.
+
+🚫 Vain means empty or worthless
+
+🤥 This targets false oaths, not just curses
+
+📜 Ancient oaths invoked a god's name
+
+📖 God's name is a person, not a tool
 
 ## ⚖️ The LORD Will Not Hold Him Guiltless
 
-This command comes with a specific warning attached, God takes misuse of His own name with real, serious weight, not treating it as a minor issue.
+This command carries its own attached warning.
 
-⚖️ This attached warning shows God treats misuse of His name with real seriousness
+Guiltless means cleared of blame or considered innocent.
+
+God says plainly that misuse of His name will not go unanswered.
+
+Most of the other commands in this chapter do not include a warning like this.
+
+That difference shows how seriously God treats His own name.
+
+⚖️ Guiltless means cleared of blame
+
+🚨 This command carries its own warning
+
+🔍 Few other commands add a warning
+
+📖 God treats His name with real weight
 
 # Exodus 20:8-11
-
 # 🛐 Remember The Sabbath
-
 ---
-
 ## 🛐 Remember The Sabbath Day, To Keep It Holy
 
-Remember suggests this practice already existed informally since chapter 16's manna pattern, now being formally commanded and codified as a permanent, ongoing law.
+Remember suggests this practice already existed before this moment.
 
-🛐 "Remember" suggests this builds on the pattern already begun back in chapter 16
+Exodus chapter sixteen already showed a seven day rest pattern with the manna.
 
----
+Holy means set apart for God, different from every ordinary day.
+
+God is not introducing rest here.
+
+He is turning an existing pattern into a permanent law.
+
+🛐 Remember signals an existing practice
+
+🍞 Chapter sixteen already showed this pattern
+
+✨ Holy means set apart for God
+
+📖 An existing rhythm becomes permanent law
 
 ## 🏠 Thou, Nor Thy Son, Nor Thy Daughter ... Nor Thy Stranger That Is Within Thy Gates
 
-This rest applies broadly across the entire household and community, including servants and even foreign visitors, not just the head of the family alone.
+This list covers every person living inside an Israelite household.
 
-🏠 Sabbath rest extends to every member of the household, including servants and visitors
+Sons, daughters, servants, animals, and even foreign visitors are all named.
 
----
+Stranger here means a foreigner living among Israel, not a random passerby.
+
+In most ancient economies, servants and animals never stopped working.
+
+This command gives an entire household real rest, not just its head.
+
+🏠 Every household member is named here
+
+🧑‍🌾 Servants and animals are included too
+
+🌍 Stranger means a foreigner living among them
+
+📖 Rest here covers the whole household
 
 ## 🌍 In Six Days The LORD Made Heaven And Earth ... And Rested The Seventh Day
 
-The reason given directly ties back to the creation pattern from Genesis 1-2, God's own resting rhythm becoming the model and foundation for human rest as well.
+The reason given points straight back to creation.
 
-🌍 This ties directly back to God's own creation pattern from Genesis 1-2
+Genesis one and two already tell this same story.
+
+Six days of work, then one day of rest.
+
+God did not need to recover from being tired.
+
+His rest set the pattern Israel is now told to copy.
+
+Human rest is grounded in God's own example, not just a rule to follow.
+
+🌍 This reason points back to creation
+
+🛠️ Six days of work, one of rest
+
+😌 God rested by pattern, not fatigue
+
+📖 Human rest copies God's own example
 
 # Exodus 20:12
-
 # 👨‍👩‍👧 Honor Your Parents
-
 ---
-
 ## 👨‍👩‍👧 Honour Thy Father And Thy Mother
 
-This is the first commandment specifically addressing human relationships rather than the relationship with God directly, marking parents with a uniquely protected, honored status within the family.
+This is the first commandment aimed at relationships between people.
 
-👨‍👩‍👧 This is the first commandment addressing human relationships, not God directly
+The nine before this all concerned Israel's relationship with God directly.
 
----
+Placing it first among the human centered commands marks parents with special honor.
+
+Honour here means far more than polite manners.
+
+It calls for real respect and care across an entire lifetime.
+
+👨‍👩‍👧 First commandment about human relationships
+
+🔟 Nine earlier commands concerned God directly
+
+🙏 Parents receive a uniquely honored place
+
+📖 Honour means lifelong respect and care
 
 ## 📅 That Thy Days May Be Long Upon The Land
 
-This commandment comes with a specific attached promise, connecting family honor directly to the community's overall stability and lasting wellbeing in the promised land.
+This commandment comes with a promise attached.
 
-📅 This promise connects family honor to the whole community's long-term wellbeing
+Long days here point to a stable, lasting life in the land God was giving Israel.
+
+A society where children honor their parents tends to hold together.
+
+Family stability and community stability were never separate ideas here.
+
+This connects one household's choices to the whole nation's future.
+
+📅 A promise is attached to this command
+
+🏞️ Long days points to a stable life
+
+👪 Family stability supports community stability
+
+📖 One household's choices shape the nation
 
 # Exodus 20:13-17
-
 # ⚖️ Commandments About Others
-
 ---
-
 ## 🚫 Thou Shalt Not Kill
 
-This specifically addresses unlawful killing, murder, rather than every possible instance of taking life, such as later permitted warfare or capital punishment described elsewhere in the Law.
+Kill here means unlawful killing, in other words murder.
 
-🚫 This specifically prohibits murder, not every instance of taking life described elsewhere in the Law
+It does not ban every instance of taking a life.
 
----
+Later chapters of the Law describe warfare and capital punishment as permitted.
+
+This command protects human life from being taken by personal violence or hatred.
+
+Life carries real weight because every person bears God's image.
+
+🚫 Kill here specifically means murder
+
+⚔️ Warfare and capital punishment are addressed elsewhere
+
+❤️ This protects life from personal violence
+
+📖 Every person carries God's own image
 
 ## 💍 Thou Shalt Not Commit Adultery
 
-This protects the marriage covenant specifically, treating faithfulness within marriage as something serious enough to warrant its own direct, standalone commandment.
+This command protects the marriage covenant specifically.
 
-💍 Marriage faithfulness receives its own direct, standalone commandment here
+Adultery means breaking that covenant by being unfaithful to a spouse.
 
----
+Marriage faithfulness gets its own standalone place among the ten commands.
+
+That placement shows how seriously God treats a broken promise between spouses.
+
+💍 This protects the marriage covenant
+
+💔 Adultery means breaking that covenant
+
+🔟 It earns its own standalone place
+
+📖 God takes broken marriage promises seriously
+
+## 💰 Thou Shalt Not Steal
+
+Stealing means taking what belongs to someone else without their consent.
+
+This command assumes people have a real right to their own property.
+
+An economy built on trust cannot survive constant theft.
+
+Protecting property here also protects the trust a whole community depends on.
+
+💰 Stealing means taking without consent
+
+🏠 This assumes a real right to property
+
+🤝 Trust holds a whole community together
+
+📖 Protecting property protects shared trust
 
 ## 🗣️ Thou Shalt Not Bear False Witness Against Thy Neighbour
 
-This specifically addresses dishonest testimony, particularly relevant within legal proceedings, protecting the community's system of justice from corruption through lies.
+False witness means giving dishonest testimony, especially in a legal setting.
 
-🗣️ This specifically protects legal proceedings from being corrupted by dishonest testimony
+Ancient Israel settled disputes at the city gate in front of witnesses.
 
----
+A lie told there could cost someone their property, their freedom, or their life.
+
+This command protects the whole community's system of justice from corruption.
+
+🗣️ False witness means dishonest testimony
+
+⚖️ Ancient disputes were settled at the gate
+
+😨 A lie there could cost someone everything
+
+📖 This protects the community's justice system
 
 ## 💭 Thou Shalt Not Covet ... Any Thing That Is Thy Neighbour's
 
-Covet means to desire something belonging to someone else. This final commandment uniquely addresses internal desire and attitude directly, not just external, visible actions like the earlier commandments.
+Covet means to desire something that belongs to someone else.
 
-💭 Covet means desiring what belongs to someone else
+Every command before this one addressed an outward, visible action.
 
-🧠 This uniquely addresses internal desire, not just outward, visible actions
+This one reaches inside, targeting desire before it ever becomes an action.
+
+Wanting a neighbor's house, spouse, servant, or animal all count here.
+
+God cares about the heart behind an action, not only the action itself.
+
+💭 Covet means desiring another's belongings
+
+👀 Earlier commands addressed outward actions only
+
+❤️ This one targets desire itself
+
+📖 God cares about the heart, not just actions
 
 # Exodus 20:18-21
-
 # 😨 The People's Fear
-
 ---
-
 ## 😨 The People Saw ... They Removed, And Stood Afar Off
 
-The overwhelming, dramatic display of God's presence produces genuine terror, causing the people to physically retreat further away from the mountain out of real fear.
+Thunder, lightning, trumpet blasts, and a smoking mountain all happen at once.
 
-😨 The dramatic display produces genuine terror, causing physical retreat
+This is not a gentle scene.
 
----
+The people physically back away from the mountain out of real terror.
+
+Fear here is a genuine, bodily reaction, not poetic language.
+
+😨 The scene overwhelms the people's senses
+
+🏔️ Thunder, lightning, and smoke together
+
+🚶 They physically back away in terror
+
+📖 This fear is real, not just poetic
 
 ## 🗣️ Speak Thou With Us ... But Let Not God Speak With Us, Lest We Die
 
-The people specifically request Moses serve as an intermediary, unable to bear direct communication with God themselves, establishing his ongoing mediating role between them.
+The people ask Moses to stand between them and God.
 
-🗣️ The people request Moses as an intermediary, unable to bear direct contact with God
+They believe direct contact with God's presence would kill them.
 
----
+This request sets up Moses's ongoing role as a mediator for Israel.
+
+Later, one greater than Moses would make that kind of mediation unnecessary.
+
+🗣️ The people ask Moses to mediate
+
+😱 They fear direct contact with God
+
+🧑‍⚖️ Moses becomes Israel's ongoing mediator
+
+📖 A greater mediator comes later in scripture
 
 ## 🎯 God Is Come To Prove You, And That His Fear May Be Before Your Faces, That Ye Sin Not
 
-Moses explains the deeper purpose behind this overwhelming, frightening display, cultivating genuine, lasting reverence meant to actually help prevent future disobedience, not simply causing panic for its own sake.
+Moses explains why God allowed such a terrifying display.
 
-🎯 This fear is meant to cultivate lasting reverence that helps prevent future sin
+Prove here means test, not punish.
+
+The goal was lasting reverence, not lingering panic.
+
+Real reverence for God was meant to help Israel resist sin later.
+
+🎯 Prove here means test, not punish
+
+😌 The goal was reverence, not panic
+
+🛡️ Reverence helps prevent future sin
+
+📖 Fear of God was meant to protect them
+
+## 🌑 Moses Drew Near Unto The Thick Darkness Where God Was
+
+Everyone else stood far off, but Moses moves closer.
+
+Thick darkness describes the dense cloud covering the mountain, not an absence of God.
+
+Moses alone was permitted this kind of nearness to God's presence.
+
+His unique access here sets up his role for the rest of Exodus.
+
+🌑 Thick darkness describes a dense cloud
+
+🚶 Moses alone draws near to it
+
+🔑 He receives unique access to God
+
+📖 This access shapes his role in Exodus
 
 # Exodus 20:22-26
-
 # 🏛️ Instructions For Altars
-
 ---
-
 ## 🥇 Ye Shall Not Make With Me Gods Of Silver, Neither Shall Ye Make Unto You Gods Of Gold
 
-This repeats and reinforces the prohibition against idols, specifically naming valuable materials that made idol-crafting especially tempting and impressive-looking in the ancient world.
+This repeats the ban on idols from earlier in the chapter.
 
-🥇 This specifically names valuable materials that made idols especially tempting to create
+Silver and gold are named specifically here.
 
----
+Both metals made idols look valuable and impressive.
+
+A costly idol could tempt people more than a plain one.
+
+God wants worship aimed at Him alone, not at what an idol is made of.
+
+🥇 This repeats the earlier ban on idols
+
+✨ Silver and gold made idols look impressive
+
+😍 Costly materials made idols more tempting
+
+📖 God wants worship, not impressive material
 
 ## 🏛️ An Altar Of Earth Thou Shalt Make Unto Me
 
-God specifically requests a simple, humble altar made from plain earth, rather than something elaborate or artistically impressive, keeping the focus on worship itself rather than human craftsmanship.
+God asks for a simple altar built from plain earth.
 
-🏛️ A simple earth altar keeps the focus on worship, not impressive human craftsmanship
+This is the opposite of an elaborate, decorated structure.
 
----
+A humble altar keeps attention on the worship happening there, not the object itself.
+
+God did not need an impressive altar to be honored.
+
+🏛️ God asks for a simple earth altar
+
+🎨 This is the opposite of elaborate
+
+🙏 A humble altar centers worship, not craft
+
+📖 God is honored without an impressive altar
 
 ## 🔨 If Thou Lift Up Thy Tool Upon It, Thou Hast Polluted It
 
-Even stone altars must remain unworked and uncut by human tools, ensuring the altar's construction contributes nothing that could distract from or compete with genuine, humble worship of God alone.
+Even a stone altar had to stay uncut by human tools.
 
-🔨 Even stone altars stay uncut, preventing human craftsmanship from competing with worship
+Polluted here means made unfit or spoiled for holy use.
 
----
+Shaping the stone with a chisel would let human skill compete with worship.
+
+The altar's roughness protected the focus on God alone.
+
+🔨 Tools were not allowed on the stone
+
+⚠️ Polluted means unfit for holy use
+
+🙅 Cutting it let human skill compete
+
+📖 A rough altar kept the focus on God
 
 ## 🚶 Neither Shalt Thou Go Up By Steps Unto Mine Altar, That Thy Nakedness Be Not Discovered Thereon
 
-Ancient priestly garments were simple robes without undergarments, meaning climbing steps in front of onlookers below could cause real, accidental immodesty, a practical, culturally specific instruction protecting reverent dignity in worship.
+Ancient priestly garments were simple robes without undergarments.
 
-🚶 This addresses real modesty concerns given the simple ancient priestly garments worn
+Climbing steps in front of people below could expose the priest by accident.
 
-⚖️ A practical instruction protecting reverent dignity during worship at the altar`;
+This command is a practical safeguard, not a symbolic one.
+
+Protecting the priest's modesty protected the dignity of the entire worship.
+
+🚶 Ancient priestly robes had no undergarments
+
+👀 Steps risked exposing a priest by accident
+
+🛡️ This safeguard was practical, not symbolic
+
+📖 Protecting modesty protected worship's dignity
+`.trim();
 
 export const EXODUS_TWENTY_PERSONAL_SECTIONS = parseExodusTwentyRawNotes(EXODUS_TWENTY_RAW_NOTES);

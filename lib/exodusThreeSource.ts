@@ -89,221 +89,898 @@ function parseExodusThreeRawNotes(rawText: string): ExodusThreePersonalSection[]
 }
 
 const EXODUS_THREE_RAW_NOTES = `# Exodus 3:1-3
-
 # 🔥 The Burning Bush
-
 ---
+## 🐑 Jethro His Father In Law, The Priest Of Midian
 
-## 🐑 Jethro His Father In Law ... The Backside Of The Desert
+Jethro is the same man called Reuel back in chapter two.
 
-Jethro is the same man called Reuel in chapter 2, likely a personal name alongside a title, since "Jethro" may function more like "excellency" or a priestly title. "Backside of the desert" means the far, remote edge of the wilderness, well away from any settlement.
+Many think one name was personal.
 
-🐑 Jethro and Reuel refer to the same person, Moses' father-in-law
+The other may have been a title for the family's leader.
 
-🏜️ Moses has wandered to a remote, isolated area far from any town
+A priest of Midian led that region's worship, not Israel's.
 
----
+Moses has lived inside a different faith system for decades.
+
+🐑 Jethro and Reuel name the same man
+
+📖 Chapter two already introduced him
+
+👳 Priest of Midian means a Midianite religious leader
+
+➡️ Moses lived far from Israel's faith for years
+
+## 🏜️ The Backside Of The Desert
+
+Backside of the desert means the far edge of the wilderness.
+
+It is the emptiest, most remote part of the land.
+
+Moses is not on any kind of mission here.
+
+He is doing an ordinary day's work, watching sheep.
+
+God chooses to meet him in a completely ordinary moment.
+
+🏜️ Backside of the desert means the remote edge
+
+🚶 Far from any town or road
+
+🐑 Moses is just doing his daily work
+
+📖 God meets him in an ordinary moment
 
 ## ⛰️ The Mountain Of God, Even To Horeb
 
-Horeb is another name for the same mountain later called Sinai, the exact place Israel will receive the Ten Commandments. Moses arrives here completely by accident, simply following his flock, with no idea of what this location will soon mean.
+Horeb is another name for the same mountain.
 
-⛰️ Horeb is another name for Mount Sinai
+Later it is called Sinai.
 
-🔮 Moses unknowingly wanders onto the very mountain where Israel later meets God
+Israel will camp here and receive the Ten Commandments.
 
----
+Moses has no idea any of that is coming.
 
-## 🔥 The Bush Burned With Fire, And The Bush Was Not Consumed
+Right now it is just another hill with grazing land.
 
-This is a deliberate, impossible sign: real fire that doesn't destroy what it's burning. Fire in Scripture often represents God's holy presence, and here that presence is shown without harming the ordinary bush it rests on.
+⛰️ Horeb is another name for Sinai
 
-🔥 A fire that burns without destroying anything is physically impossible
+📜 Israel later receives the law here
 
-📖 Fire frequently symbolizes God's holy presence throughout Scripture
+🐑 Moses only sees grazing land today
+
+➡️ This place's importance is still hidden
+
+## 🔥 The Angel Of The LORD Appeared Unto Him In A Flame Of Fire
+
+The angel of the LORD is a title, not a lesser being.
+
+It often describes God himself appearing directly to someone.
+
+Fire is a common sign of God's presence in Scripture.
+
+Here that presence takes the shape of fire in a bush.
+
+Nothing about the setting was grand or expected.
+
+👼 Angel of the LORD often means God himself
+
+🔥 Fire is a common sign of His presence
+
+🌵 The bush was an ordinary desert shrub
+
+📖 God chose a plain setting for this
+
+## 🌵 The Bush Burned With Fire, And The Bush Was Not Consumed
+
+Real fire destroys whatever it burns.
+
+This fire does not.
+
+The bush keeps burning without ever turning to ash.
+
+That is the whole point of the sign.
+
+Something here cannot be explained by ordinary nature.
+
+🔥 Real fire always destroys what it burns
+
+🌵 This bush never turns to ash
+
+❗ The sign breaks the rules of nature
+
+📖 God announces His presence, unmistakably
+
+## 👣 I Will Now Turn Aside, And See This Great Sight
+
+Moses could have kept walking past the bush.
+
+Instead he stops to go look closer.
+
+That small choice puts him right where God is waiting.
+
+Curiosity, not a plan or a summons, opens this calling.
+
+👣 Moses chooses to stop and look
+
+🔍 Curiosity leads him toward the bush
+
+🚪 A small choice opens a huge moment
+
+➡️ God often meets people in everyday moments
 
 # Exodus 3:4-6
-
 # 🩴 God Calls Moses By Name
-
 ---
+## 📢 Moses, Moses
 
-## 📢 Moses, Moses. And He Said, Here Am I
+God calls Moses' name twice in a row.
 
-God calls Moses' name twice, the same repeated-name pattern used with Jacob back in Genesis 46, marking another deeply personal, significant moment. Moses answers simply and immediately, without hesitation.
+That same pattern shows up elsewhere in the Bible.
 
-📢 A repeated name in Scripture signals an especially personal, important moment
+God called Abraham's name twice before stopping his hand at the altar.
 
----
+Every time it happens, someone stands at a turning point.
 
-## 🩴 Put Off Thy Shoes From Off Thy Feet, For The Place Whereon Thou Standest Is Holy Ground
+The double call gets full attention before anything else is said.
 
-Removing sandals was a sign of humility and reverence, treating the ground itself as set apart because of God's presence there. Holy simply means set apart, different from ordinary, common space.
+📢 God repeats Moses' name twice
 
-🩴 Removing shoes was a physical act of humility and reverence
+🔁 The same pattern appears elsewhere in Scripture
 
-✨ Holy means set apart, distinct from ordinary, common ground
+🔀 It marks a major turning point
 
----
+➡️ It grabs full attention first
 
-## 😨 Moses Hid His Face; For He Was Afraid To Look Upon God
+## 🙏 Here Am I
 
-God identifies Himself using the exact covenant language from Genesis, the God of Abraham, Isaac, and Jacob, directly tying Moses' calling to the promises made generations earlier. Moses instinctively hides his face out of genuine fear and reverence.
+Moses answers with a short, ready reply.
 
-😨 Moses' fear reflects genuine reverence for God's holiness, not cowardice
+The phrase does not just mean I am over here.
 
-📖 God ties this moment directly to His covenant with Abraham, Isaac, and Jacob
+It signals full attention and a readiness to listen.
+
+Abraham gave this same answer generations earlier.
+
+Moses steps into that same readiness without knowing what comes next.
+
+🗣️ Here am I means full attention
+
+🙏 It signals readiness to listen
+
+📖 Abraham answered God the same way
+
+➡️ Moses agrees before he knows the request
+
+## 🛑 Draw Not Nigh Hither
+
+Nigh is an old word for near.
+
+Hither means to this place.
+
+God tells Moses to stop moving closer, right where he stands.
+
+The command comes before any explanation.
+
+📏 Nigh means near
+
+📍 Hither means to this place
+
+🛑 God stops Moses before he gets closer
+
+➡️ The reason comes only after the command
+
+## 👟 Put Off Thy Shoes From Off Thy Feet
+
+Removing sandals before sacred ground showed humility in the ancient world.
+
+Shoes carried the dust and dirt of ordinary travel.
+
+Taking them off meant approaching without anything common attached.
+
+This was more than simple manners.
+
+It was a physical way of admitting whose ground this was.
+
+👟 Removing sandals showed humility
+
+🌍 Shoes carried ordinary travel dust
+
+🙇 It meant approaching without anything common
+
+📖 The act admitted whose ground this was
+
+## ✨ For The Place Whereon Thou Standest Is Holy Ground
+
+Holy means set apart, different from anything ordinary.
+
+The ground itself has not physically changed.
+
+It is holy only because God's presence is there right now.
+
+Nothing about the location matters more than who has shown up.
+
+✨ Holy means set apart from the ordinary
+
+🌍 The ground is unchanged in itself
+
+👁️ God's presence is what makes it holy
+
+📖 Presence matters more than location
+
+## 📜 I Am The God Of Thy Father, The God Of Abraham, The God Of Isaac, And The God Of Jacob
+
+Thy father here points to Moses' own father, Amram.
+
+It does not mean one of the three patriarchs named next.
+
+God then names three generations by name.
+
+Abraham, Isaac, and Jacob already carried God's old promises.
+
+Moses is not meeting a new or unfamiliar God.
+
+He is meeting the same God his whole family already knew.
+
+👨‍👦 Thy father means Moses' father, Amram
+
+📜 Abraham, Isaac, and Jacob are named directly
+
+🔗 This ties Moses to his family's old promises
+
+📖 The same God, across every generation
+
+## 😨 He Was Afraid To Look Upon God
+
+Moses does not hide out of guilt.
+
+He hides out of pure reverence.
+
+Fear here means awe at God's greatness, not simple terror.
+
+Ancient tradition held that seeing God fully was more than anyone could survive.
+
+Moses' instinct protects him and honors God at the same time.
+
+🙈 Moses hides from reverence, not guilt
+
+😨 This fear means awe, not simple terror
+
+⚠️ Seeing God fully was considered unsurvivable
+
+➡️ Reverence and protection combine here
 
 # Exodus 3:7-9
-
 # 👀 God Has Seen Israel's Suffering
-
 ---
+## 😖 I Have Surely Seen The Affliction Of My People
 
-## 👀 I Have Surely Seen The Affliction ... Heard Their Cry ... I Know Their Sorrows
+Affliction means deep, ongoing suffering, not a passing hardship.
 
-God describes His awareness of Israel's suffering in three distinct ways: seeing, hearing, and knowing intimately. This directly answers what chapter 2 already described, that Israel's cry had reached God, now confirmed in God's own words.
+God does not say He merely noticed it.
 
-👀 God describes seeing, hearing, and personally knowing Israel's suffering
+Surely seen adds emphasis in the original language.
 
-📖 This directly confirms and expands what chapter 2 already described
+This directly answers the ending of chapter two.
 
----
+There, Israel's cry was described as reaching God.
+
+Now God confirms it in His own words.
+
+😖 Affliction means deep, ongoing suffering
+
+👁️ Surely seen adds emphasis, not mere notice
+
+📖 This answers chapter two's closing verses
+
+➡️ God confirms it in His own voice
+
+## 👷 Heard Their Cry By Reason Of Their Taskmasters
+
+Taskmasters were Egyptian overseers forcing impossible work quotas.
+
+By reason of means because of.
+
+Israel's cry was not a vague complaint about hard times.
+
+It was a direct response to real cruelty from real people.
+
+👷 Taskmasters were Egyptian slave overseers
+
+📏 By reason of means because of
+
+⛓️ The cry responded to specific cruelty
+
+📖 Real people caused this suffering
+
+## 🧠 For I Know Their Sorrows
+
+God moves from seeing and hearing to something closer, knowing.
+
+This is not distant awareness.
+
+It means understanding pain from the inside.
+
+Three verbs stack together here on purpose.
+
+Seeing, hearing, and knowing describe total, personal awareness.
+
+🧠 Knowing means understanding from the inside
+
+👀 Seeing, hearing, and knowing stack together
+
+🎯 Together they show total awareness
+
+📖 God's awareness is personal, not distant
 
 ## ⬇️ I Am Come Down To Deliver Them
 
-Describing God as "coming down" is anthropomorphic language, human terms used to help people understand God's active, personal involvement, not a literal physical descent, since God is already present everywhere.
+God is already present everywhere, so this is not a literal trip.
 
-⬇️ "Coming down" is human language describing God's active involvement, not literal movement
+Come down is human language describing active involvement.
 
----
+Genesis uses this same kind of phrase for the tower of Babel.
+
+It signals God is about to act personally, not stay distant.
+
+⬇️ Come down describes involvement, not motion
+
+🌍 God is already present everywhere
+
+📖 Genesis uses this same kind of phrase
+
+➡️ God is about to act personally
+
+## 🗺️ A Good Land And A Large
+
+Large here means spacious, not physically huge.
+
+God describes a land with room for a whole nation.
+
+This contrasts sharply with Egypt.
+
+There Israel was confined to hard labor with no land of their own.
+
+🗺️ Large means spacious, roomy
+
+🌾 The land can support a whole nation
+
+⛓️ Egypt gave them no land of their own
+
+➡️ Freedom includes real room to grow
 
 ## 🍯 A Land Flowing With Milk And Honey
 
-This famous phrase is an idiom for a land of rich abundance and fertility, not a literal river of dairy and honey. It becomes the defining description of the promised land throughout the rest of the Old Testament.
+This is not a literal river of dairy and honey.
 
-🍯 "Milk and honey" is an idiom for a land of rich abundance
+It is an idiom for land rich in food and grazing.
 
-📖 This becomes the Bible's standard description of the promised land going forward
+Milk points to healthy livestock.
+
+Honey points to rich, wild vegetation.
+
+This becomes the Bible's standard phrase for the promised land.
+
+🍯 Milk and honey is an idiom, not literal
+
+🐄 Milk points to healthy livestock
+
+🌿 Honey points to rich vegetation
+
+📖 This becomes the Bible's standard phrase
+
+## 🗺️ The Canaanites, And The Hittites, And The Amorites, And The Perizzites, And The Hivites, And The Jebusites
+
+This is a standard list of the land's current peoples.
+
+Naming them is not decoration.
+
+It means Israel's future home is occupied territory.
+
+It is not empty land waiting for new settlers.
+
+Taking the promise will mean a real conquest.
+
+🗺️ This lists the land's current inhabitants
+
+🏘️ The land is occupied, not empty
+
+⚔️ Taking it will require real conquest
+
+📖 This same list appears again later in Exodus
+
+## 🔁 The Cry Of The Children Of Israel Is Come Unto Me
+
+God repeats almost the same claim from verse seven.
+
+Repetition here is not filler.
+
+It builds toward the assignment God is about to hand Moses.
+
+Everything so far has been about what God has seen and heard.
+
+The next verse turns to what Moses must now do.
+
+🔁 God repeats the claim from verse seven
+
+📢 Repetition builds toward Moses' assignment
+
+👂 What God has heard now leads to action
+
+➡️ God is about to ask Moses to move
 
 # Exodus 3:10-12
-
 # 🙋 Moses Is Sent, And Objects
-
 ---
+## 👑 Come Now Therefore, And I Will Send Thee Unto Pharaoh
 
-## 📤 I Will Send Thee Unto Pharaoh
+Pharaoh is a title for Egypt's king, not a personal name.
 
-After describing His awareness and plan, God's next move is surprising: He doesn't act alone, He sends a human representative, Moses, to confront the most powerful ruler in the region on Israel's behalf.
+It works the way king or president works today.
 
-📤 God chooses to work through a human representative rather than acting alone
+God is not sending Moses to argue with a minor official.
 
----
+He is sending him straight to the region's most powerful ruler.
 
-## 🙋 Who Am I, That I Should Go Unto Pharaoh?
+👑 Pharaoh is a title, not a name
 
-Moses immediately objects, questioning his own qualifications. This is the same man who once acted boldly and violently in Egypt, now deeply unsure of himself decades later as a humble shepherd in Midian.
+🏛️ It works like the word king
 
-🙋 Moses' confidence has clearly changed since his impulsive younger years
+🎯 Moses is sent to the top ruler
 
----
+➡️ This is the highest possible confrontation
+
+## 👥 Bring Forth My People The Children Of Israel Out Of Egypt
+
+God calls Israel my people, not simply a group of slaves.
+
+That phrase carries real ownership and relationship.
+
+He has not forgotten who these people belong to.
+
+Centuries in Egypt did not erase that bond.
+
+The mission is personal to God before it reaches Moses.
+
+👥 My people shows real ownership
+
+🤝 God has not forgotten this relationship
+
+⏳ Centuries in Egypt did not erase it
+
+📖 The mission starts as personal to God
+
+## ❓ Who Am I, That I Should Go Unto Pharaoh?
+
+Moses' question is not really about his own identity.
+
+It means something closer to why would anyone listen to me.
+
+This is a striking change from chapter two's bold young man.
+
+Decades of quiet shepherd life in Midian wore down that confidence.
+
+❓ Who am I means why would they listen
+
+🔥 Moses once acted boldly in chapter two
+
+🐑 Years as a shepherd changed him
+
+➡️ Confidence had quietly worn away
 
 ## 🤝 Certainly I Will Be With Thee
 
-God's answer to Moses' self-doubt isn't a list of Moses' qualifications, it's a promise of God's own presence. The mission's success was never going to depend on Moses' personal strength or confidence.
+God does not answer Moses' doubt with a list of strengths.
 
-🤝 God's presence, not Moses' ability, is what actually guarantees success
+He answers with a promise of presence instead.
+
+This mission was never going to rest on Moses' own courage.
+
+It rests entirely on who is sending him.
+
+🤝 God promises presence, not a pep talk
+
+🚫 No list of Moses' strengths is given
+
+🎯 Success depends on God, not Moses
+
+📖 Presence, not ability, is the real guarantee
+
+## ✅ This Shall Be A Token Unto Thee, That I Have Sent Thee
+
+A token here means a confirming sign, proof a promise is real.
+
+The odd part is this sign will not happen until after Moses obeys.
+
+Normally a sign proves something before someone acts.
+
+Here, obedience comes first, and the proof follows after.
+
+✅ Token means a confirming sign
+
+⏳ This sign only comes after obedience
+
+🔄 Proof follows action here, not the reverse
+
+➡️ Moses must trust before he sees
+
+## ⛰️ Ye Shall Serve God Upon This Mountain
+
+This mountain is Horeb, the same place named back in verse one.
+
+God promises Israel will return here to worship after leaving Egypt.
+
+That promise comes true months later.
+
+Israel receives the Ten Commandments at this same mountain, now called Sinai.
+
+⛰️ This mountain is Horeb from verse one
+
+🔁 Israel will return here later
+
+📜 They receive the Ten Commandments here
+
+📖 A promise made now, fulfilled months later
 
 # Exodus 3:13-15
-
 # ✨ God Reveals His Name
-
 ---
+## 👀 Behold, When I Come Unto The Children Of Israel
 
-## ❓ What Is His Name? What Shall I Say Unto Them?
+Behold is an old word meaning look, or pay attention.
 
-Moses anticipates a real, practical question the Israelites will ask, wanting to know specifically which God has sent him, since Egypt itself worshiped many different gods.
+Moses uses it to introduce a scene he already pictures.
 
-❓ Moses expects the Israelites will want a specific, clear name for this God
+Notice the shift here.
 
----
+One verse earlier Moses was still objecting.
+
+Now he is already planning the actual conversation ahead.
+
+👀 Behold means look, or pay attention
+
+🎬 Moses pictures a future conversation
+
+🔄 His objection is already turning into planning
+
+➡️ A shift from resistance toward action
+
+## 🛕 What Is His Name? What Shall I Say Unto Them?
+
+Moses is not asking a random question.
+
+Egypt worshiped many different gods, each with its own name.
+
+Israel would want to know exactly which God sent Moses.
+
+Moses is thinking ahead to a real conversation.
+
+❓ Moses expects a real, practical question
+
+🛕 Egypt worshiped many different named gods
+
+🎯 Israel would want a specific identity
+
+➡️ Moses is preparing for that conversation
 
 ## ✨ I AM THAT I AM
 
-This is one of the most significant statements in the entire Bible. God's answer describes His own self-existence, that He simply is, depending on nothing and no one else for His existence. This name, often written as YHWH or "the LORD" in English Bibles, becomes God's personal, covenant name for Israel from this point forward.
+This is one of the most important statements in the Bible.
 
-✨ "I AM THAT I AM" describes God's self-existence, dependent on nothing else
+God does not give a title or a job description.
 
-📖 This becomes God's personal covenant name, written as YHWH or "the LORD"
+He describes His own existence, that He simply is.
 
----
+God depends on nothing and no one else to exist.
 
-## 🔁 This Is My Name For Ever, And This Is My Memorial Unto All Generations
+Every created thing depends on something else, air, food, a beginning.
 
-God confirms this name is permanent, meant to be remembered and used by every future generation of His people, not a temporary title for this one moment alone.
+God alone needs none of that.
 
-🔁 This name is meant to last permanently across every future generation
+✨ God describes His own existence, not a title
+
+🚫 God depends on nothing outside Himself
+
+🌍 Everything created depends on something else
+
+📖 This defines who God fundamentally is
+
+## 🔤 Thus Shalt Thou Say Unto The Children Of Israel, I AM Hath Sent Me Unto You
+
+God shortens the statement into a name Moses can use, I AM.
+
+In Hebrew this connects to the name written as four letters, YHWH.
+
+Most English Bibles translate that name as the LORD, in small capitals.
+
+Every time this chapter says the LORD in capitals, this name is meant.
+
+✂️ I AM becomes the name Moses can use
+
+🔤 It connects to the Hebrew name YHWH
+
+🔠 English Bibles print it as LORD, in capitals
+
+📖 This name recurs constantly through the Old Testament
+
+## 📜 The LORD God Of Your Fathers, The God Of Abraham, The God Of Isaac, And The God Of Jacob
+
+God repeats the same lineage already given back in verse six.
+
+This time it connects directly to His new, personal name, the LORD.
+
+The message to Israel is clear.
+
+The God with the eternal name is the God their ancestors knew.
+
+📜 The same lineage repeats from verse six
+
+🔗 It now connects directly to the LORD's name
+
+🤝 One God, known across every generation
+
+📖 Nothing new is introduced here, only revealed
+
+## 🕯️ This Is My Name For Ever, And This Is My Memorial Unto All Generations
+
+A memorial is something kept on purpose so it will never be forgotten.
+
+God is not giving Moses a name for one single conversation.
+
+He is establishing the name Israel will use forever.
+
+Every later use of the LORD in the Old Testament traces back here.
+
+🕯️ Memorial means kept on purpose, never forgotten
+
+♾️ This name is permanent, not temporary
+
+👨‍👩‍👧‍👦 It carries forward through every generation
+
+📖 Every later LORD in the Bible starts here
 
 # Exodus 3:16-18
-
 # 🗣️ Instructions For Israel's Elders
-
 ---
-
 ## 👴 Gather The Elders Of Israel Together
 
-Elders were the respected, recognized leaders within Israel's tribal structure even during their years of slavery. Moses is told to approach Israel's actual leadership first, not simply announce this news to the general public.
+Elders were the respected leaders inside Israel's tribal structure.
 
-👴 Elders were Israel's recognized tribal leaders, even during slavery
+Even generations of slavery did not erase that leadership.
 
----
+Moses is told to approach leaders first, not the whole nation at once.
 
-## 🗺️ Canaanites, And The Hittites, And The Amorites, And The Perizzites, And The Hivites, And The Jebusites
+Trusted voices hearing the news first helps it spread well.
 
-This is a standard list naming the various peoples already living in the promised land. Naming them honestly shows this will be a real conquest into occupied territory, not settling into empty, unclaimed land.
+👴 Elders were Israel's recognized tribal leaders
 
-🗺️ This list names the peoples already living in the land Israel is promised
+⛓️ Leadership survived even through slavery
 
-⚔️ The promised land is occupied territory, not empty land waiting for settlers
+🎯 Moses approaches leaders before the whole nation
 
----
+➡️ Trusted voices help news spread well
+
+## 📖 I Have Surely Visited You
+
+Visited here does not mean a friendly stop by.
+
+In the Old Testament this word describes God stepping in to act.
+
+It can mean help, or it can mean judgment.
+
+Israel would recognize this as a sign God is finally intervening.
+
+📖 Visited signals God actively stepping in
+
+🚫 It does not mean a casual stop by
+
+⚖️ It can mean help or judgment
+
+➡️ Here, it means help has arrived
+
+## 👂 They Shall Hearken To Thy Voice
+
+Hearken is an old word for listening that leads to action.
+
+It is more than simply hearing sound.
+
+God reassures Moses that Israel's own people will respond well.
+
+That matters, since the next hearer, Pharaoh, will not hearken at all.
+
+👂 Hearken means listening that leads to action
+
+✅ God promises Israel will respond well
+
+⚖️ This contrasts sharply with Pharaoh's response
+
+📖 Not everyone reacts to God's word alike
+
+## 🏷️ The LORD God Of The Hebrews Hath Met With Us
+
+Hebrews is the term Egyptians typically used for Israel.
+
+Israel used it less often for itself.
+
+This message targets Egypt's king, so the wording fits its audience.
+
+Even word choice served the mission here.
+
+🏷️ Hebrews was the term Egyptians used for Israel
+
+🎯 This message targets Pharaoh specifically
+
+🗣️ The wording matches its intended audience
+
+➡️ Even word choice served the mission
+
+## 🙏 We Beseech Thee
+
+Beseech means to ask earnestly, almost to beg.
+
+It is a strong request, not a casual suggestion.
+
+This is the tone Moses is told to take at first.
+
+That respectful tone will not last for long.
+
+🙏 Beseech means to ask earnestly
+
+🎭 The initial tone is respectful, not forceful
+
+⏳ This approach will not last
+
+➡️ A soft first request, before escalation
 
 ## 🚶 Three Days' Journey Into The Wilderness, That We May Sacrifice
 
-Notice the initial request to Pharaoh is deliberately modest, a short three-day trip to worship, not yet a demand for permanent departure. This is a first, smaller test of Pharaoh's willingness before the fuller confrontation escalates.
+Notice how small this first request actually is.
 
-🚶 The first request to Pharaoh is intentionally modest, not the full demand
+Moses asks for a short trip to worship, not full freedom.
 
-📈 This sets up an escalating confrontation, not one single ultimatum
+This is a deliberate opening move.
+
+It tests Pharaoh's willingness before the larger confrontation begins.
+
+The full release will take several escalating rounds to unfold.
+
+🚶 A three day trip is modest
+
+🎯 It tests Pharaoh before the bigger demand
+
+📈 The real story escalates from here
+
+➡️ A first move, not the final one
 
 # Exodus 3:19-22
-
 # ⚔️ Pharaoh Will Resist, And God Will Act
-
 ---
-
 ## 🚫 I Am Sure That The King Of Egypt Will Not Let You Go
 
-God tells Moses upfront exactly what to expect: Pharaoh will refuse. This isn't a plan that might fail, God is preparing Moses in advance for the resistance and hardship still ahead.
+God tells Moses exactly what to expect before it happens.
 
-🚫 God prepares Moses in advance for Pharaoh's expected refusal
+Pharaoh is going to refuse.
 
----
+This is not a plan that might fail.
 
-## 🌪️ I Will Stretch Out My Hand, And Smite Egypt With All My Wonders
+God prepares Moses in advance so resistance does not catch him off guard.
 
-God previews that dramatic, miraculous acts of judgment will ultimately be necessary to force Pharaoh's hand. This foreshadows the plagues described in detail throughout the chapters ahead.
+🚫 God predicts Pharaoh's refusal in advance
 
-🌪️ This foreshadows the plagues that unfold in the coming chapters
+📖 This is not a plan that might fail
 
----
+🛡️ Moses is prepared ahead of time
 
-## 🎁 Ye Shall Not Go Empty ... Ye Shall Spoil The Egyptians
+➡️ Knowing resistance is coming softens the blow
 
-Spoil here means to strip of valuables, not to ruin or destroy. God promises Israel will leave Egypt with real wealth, silver, gold, and clothing, given willingly by Egyptians themselves. This also fulfills an old promise God made to Abraham back in Genesis 15, that his descendants would leave their captivity with great possessions.
+## ❓ No, Not By A Mighty Hand
 
-🎁 Spoil means to take valuables, not to destroy or ruin
+This short phrase is genuinely hard to translate.
 
-📖 This directly fulfills God's earlier promise to Abraham in Genesis 15`;
+Many scholars read it as except by a mighty hand, meaning by force.
+
+Mighty hand later describes God's own power in Exodus, not Pharaoh's.
+
+Read that way, this line already hints at the plagues ahead.
+
+❓ This phrase is genuinely hard to translate
+
+💪 Mighty hand later describes God's own power
+
+🔮 It hints force alone will move Pharaoh
+
+📖 The coming plagues are already foreshadowed here
+
+## 💥 I Will Stretch Out My Hand, And Smite Egypt With All My Wonders
+
+Smite means to strike with force, often to bring judgment.
+
+Wonders means miraculous acts that only God could do.
+
+This line previews the plague sequence still to come.
+
+Ten separate acts of judgment fill the chapters ahead.
+
+💥 Smite means to strike with judgment
+
+✨ Wonders are miracles beyond natural cause
+
+📜 This previews the ten plagues ahead
+
+➡️ Egypt's confrontation escalates from here
+
+## ❤️ I Will Give This People Favour In The Sight Of The Egyptians
+
+Favour means good will, a positive attitude from someone who could easily be hostile.
+
+This is a striking promise after generations of Egyptian mistreatment.
+
+God promises to change how ordinary Egyptians feel toward Israel.
+
+It is not just about changing Pharaoh's final decision.
+
+❤️ Favour means good will from others
+
+⚖️ This is striking after generations of mistreatment
+
+🔄 God changes hearts, not just Pharaoh's decision
+
+📖 This favour plays out later in Exodus
+
+## 👐 Ye Shall Not Go Empty
+
+Freed slaves in the ancient world often left with nothing.
+
+No pay ever came for years of forced labor.
+
+God promises Israel's exit will look different.
+
+They will not walk away empty handed this time.
+
+⛓️ Freed slaves usually left with nothing
+
+💰 God promises a different outcome here
+
+👐 Israel will not leave empty handed
+
+📖 Unpaid generations will finally be answered
+
+## 💍 Borrow Of Her Neighbour ... Jewels Of Silver, And Jewels Of Gold, And Raiment
+
+Borrow here does not mean Israel planned to give it back.
+
+The word describes simply asking, closer to request than loan.
+
+Raiment means clothing.
+
+Silver, gold jewelry, and clothing were valuable, portable wealth.
+
+That is exactly what a traveling people would actually need.
+
+🙋 Borrow here means to ask, not a loan
+
+👗 Raiment means clothing
+
+💍 Silver and gold jewelry were portable wealth
+
+➡️ These were practical gifts for a journey ahead
+
+## 🎁 Ye Shall Spoil The Egyptians
+
+Spoil means to take valuables, not to ruin or destroy.
+
+Israel leaves Egypt carrying real wealth, given willingly, not stolen.
+
+This quietly fulfills an old promise God made to Abraham.
+
+Genesis fifteen predicted his descendants would leave captivity with great wealth.
+
+🎁 Spoil means to take valuables, not destroy
+
+🤝 The wealth is given willingly, not stolen
+
+📜 This fulfills God's promise to Abraham
+
+📖 Genesis fifteen predicted this exact moment`.trim();
 
 export const EXODUS_THREE_PERSONAL_SECTIONS = parseExodusThreeRawNotes(EXODUS_THREE_RAW_NOTES);

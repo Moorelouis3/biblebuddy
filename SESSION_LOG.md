@@ -406,3 +406,103 @@ Next up: Genesis 49
 ## 2026-08-01T09:58:21Z (hourly chapter notes run)
 Chapter: Genesis 49 | Duration: 12 min | Sections: 11 | Cards: 53 | Status: pass
 Next up: Genesis 50
+
+## 2026-08-01T10:57:21Z (hourly chapter notes run)
+Chapter: Genesis 50 | Duration: 11 min | Sections: 9 | Cards: 47 | Status: pass
+Next up: Exodus 1
+
+## 2026-08-01T11:55:28Z (hourly chapter notes run)
+Chapter: Exodus 1 | Duration: 8 min | Sections: 7 | Cards: 23 | Status: pass
+Next up: Exodus 2
+
+## 2026-08-01T12:54:06Z (hourly chapter notes run)
+Chapter: Exodus 2 | Duration: 8 min | Sections: 5 | Cards: 33 | Status: pass
+Next up: Exodus 3
+
+## 2026-08-01T13:59:09Z (hourly chapter notes run)
+Chapter: Exodus 3 | Duration: 13 min | Sections: 7 | Cards: 46 | Status: pass
+Next up: Exodus 4
+
+## 2026-08-01T14:52:40Z (hourly chapter notes run)
+Chapter: Exodus 4 | Duration: 7 min | Sections: 8 | Cards: 30 | Status: pass
+Next up: Exodus 5
+
+## 2026-08-01T15:54:04Z (hourly chapter notes run)
+Chapter: Exodus 5 | Duration: 8 min | Sections: 7 | Cards: 42 | Status: pass
+Next up: Exodus 6
+
+## 2026-08-01T16:59:44Z (hourly chapter notes run)
+Chapter: Exodus 6 | Duration: 13 min | Sections: 8 | Cards: 37 | Status: pass
+Next up: Exodus 7
+
+## 2026-08-01T17:53:11Z (hourly chapter notes run)
+Chapter: Exodus 7 | Duration: 7 min | Sections: 6 | Cards: 35 | Status: pass
+Next up: Exodus 8
+
+## 2026-08-01T19:00:00Z (hourly chapter notes run)
+Chapter: Exodus 8 | Duration: 12 min | Sections: 8 | Cards: 34 | Status: pass
+Next up: Exodus 9
+
+## 2026-08-01T19:56:13Z (hourly chapter notes run)
+Chapter: Exodus 9 | Duration: 10 min | Sections: 7 | Cards: 33 | Status: pass
+Next up: Exodus 10
+
+## 2026-08-01T20:55:46Z (hourly chapter notes run)
+Chapter: Exodus 10 | Duration: 10 min | Sections: 8 | Cards: 30 | Status: pass
+Next up: Exodus 11
+
+## 2026-08-01T21:56:00Z (hourly chapter notes run)
+Chapter: Exodus 11 | Duration: 10 min | Sections: 4 | Cards: 21 | Status: pass
+Next up: Exodus 12
+
+## 2026-08-01T22:56:46Z (hourly chapter notes run)
+Chapter: Exodus 12 | Duration: 10 min | Sections: 11 | Cards: 48 | Status: pass
+Next up: Exodus 13
+
+## 2026-08-01T23:58:35Z (hourly chapter notes run)
+Chapter: Exodus 13 | Duration: 11 min | Sections: 8 | Cards: 34 | Status: pass
+Next up: Exodus 14
+
+## 2026-08-02T00:56:00Z (hourly chapter notes run)
+Chapter: Exodus 14 | Duration: 10 min | Sections: 10 | Cards: 38 | Status: pass
+Next up: Exodus 15
+
+## 2026-08-02T01:58:10Z (hourly chapter notes run)
+Chapter: Exodus 15 | Duration: 12 min | Sections: 9 | Cards: 45 | Status: pass
+Next up: Exodus 16
+
+## 2026-08-02T02:56:25Z (hourly chapter notes run)
+Chapter: Exodus 16 | Duration: 10 min | Sections: 9 | Cards: 46 | Status: pass
+Next up: Exodus 17
+
+## 2026-08-02T03:57:00Z (hourly chapter notes run)
+Chapter: Exodus 17 | Duration: 14 min | Sections: 5 | Cards: 19 | Status: pass
+Next up: Exodus 18
+
+## 2026-08-02T04:55:00Z (hourly chapter notes run)
+Chapter: Exodus 18 | Duration: 9 min | Sections: 7 | Cards: 33 | Status: pass
+Next up: Exodus 19
+
+## 2026-08-02T05:54:23Z (hourly chapter notes run)
+Chapter: Exodus 19 | Duration: 8 min | Sections: 8 | Cards: 25 | Status: pass
+Next up: Exodus 20
+
+## 2026-08-02T06:53:16Z (hourly chapter notes run)
+Chapter: Exodus 20 | Duration: 7 min | Sections: 8 | Cards: 25 | Status: pass
+Next up: Exodus 21
+
+## 2026-08-02T08:04:30Z (hourly chapter notes run)
+Chapter: Exodus 21 | Duration: 19 min | Sections: 8 | Cards: 31 | Status: pass
+Next up: Exodus 22
+
+## 2026-08-02T08:55:10Z (hourly chapter notes run)
+Chapter: Exodus 22 | Duration: 9 min | Sections: 10 | Cards: 30 | Status: pass
+Next up: Exodus 23
+
+## 2026-08-02T09:56:26Z (hourly chapter notes run)
+Chapter: Exodus 23 | Duration: 10 min | Sections: 10 | Cards: 41 | Status: pass
+Next up: Exodus 24
+
+## 2026-08-02T10:56:55Z (hourly chapter notes run)
+Chapter: Exodus 24 | Duration: 10 min | Sections: 6 | Cards: 32 | Status: pass
+Next up: Exodus 25

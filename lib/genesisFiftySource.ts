@@ -89,289 +89,848 @@ function parseGenesisFiftyRawNotes(rawText: string): GenesisFiftyPersonalSection
 }
 
 const GENESIS_FIFTY_RAW_NOTES = `# Genesis 50:1-3
-
 # 😭 Joseph Mourns His Father
-
 ---
-
 ## 😭 Joseph Fell Upon His Father's Face, And Wept Upon Him, And Kissed Him
 
-Even as the second most powerful man in Egypt, Joseph's grief is raw and physical, falling on his father's body, weeping, kissing him. Power and position don't dull this loss at all.
+Joseph is the second most powerful man in all of Egypt right now.
 
-😭 Joseph's grief is completely unguarded, despite his high position
+He falls on his father's body anyway, in front of everyone watching.
 
----
+Weeping and kissing a body were normal ways to say a final goodbye.
+
+Power never makes real love optional.
+
+😭 Joseph weeps openly despite his high rank
+
+👑 Egypt's second most powerful man kneels here
+
+💋 Kissing was a normal way to say goodbye
+
+📖 Power never cancels real grief
 
 ## 💉 Commanded His Servants The Physicians To Embalm His Father
 
-Embalming was a specialized Egyptian practice meant to preserve a body long-term, normally reserved for Egyptian royalty and nobility. Joseph orders this rare, costly honor for Jacob, a foreign shepherd, showing how deeply Jacob is honored because of Joseph's position.
+To embalm means to treat a body so it will not decay.
 
-💉 Embalming was normally reserved for Egyptian royalty and nobility
+Egyptian embalming took real skill and specialized training.
 
-🏆 Jacob receives this rare honor because of Joseph's high standing
+It was normally reserved for Egyptian royalty and top officials.
 
----
+Joseph orders it for Jacob, a foreign shepherd, not an Egyptian noble.
 
-## 📅 Forty Days ... Threescore And Ten Days
+Joseph spends his own high rank honoring his father.
 
-Forty days was the standard time required for the embalming process itself. Threescore means sixty, so seventy days total, an unusually long formal mourning period, matching the kind of mourning normally given to Egyptian royalty.
+💉 Embalm means to preserve a body
 
-📅 Forty days was the standard embalming period in Egyptian practice
+👑 This honor was normally reserved for royalty
 
-🔟 Threescore means sixty, so seventy days of mourning total, a royal-level honor
+🐑 Jacob was a shepherd, not Egyptian nobility
+
+📖 Joseph spends his rank honoring his father
+
+## 🔁 The Physicians Embalmed Israel
+
+Israel was the name God gave Jacob after they wrestled at Peniel.
+
+Jacob was his birth name.
+
+Israel was his covenant name, the name of promise.
+
+Genesis reaches for that covenant name even here at his death.
+
+🔁 Israel was Jacob's covenant name
+
+🤼 God gave it after Jacob wrestled at Peniel
+
+👪 Israel became the name of a whole nation
+
+📖 Even in death the covenant name is used
+
+## 📅 So Are Fulfilled The Days Of Those Which Are Embalmed
+
+Forty days was the standard length of the Egyptian embalming process.
+
+This was a fixed, known number in Egyptian practice.
+
+Jacob simply received the normal treatment given to the embalmed.
+
+Custom, not favoritism, explains this exact number.
+
+📅 Forty days was the standard embalming length
+
+⚗️ This process followed known Egyptian practice
+
+🐑 Jacob received the usual treatment for the embalmed
+
+📖 Custom, not favoritism, sets this number
+
+## 🔟 The Egyptians Mourned For Him Threescore And Ten Days
+
+Threescore means sixty.
+
+Sixty plus ten adds up to seventy days of mourning.
+
+Egyptian royalty traditionally received about seventy two days of mourning.
+
+Jacob's seventy days come remarkably close to a royal mourning period.
+
+A shepherd's family receives an honor built for kings.
+
+🔟 Threescore means sixty
+
+➕ Sixty plus ten equals seventy days
+
+👑 Egyptian royalty mourned about seventy two days
+
+📖 Jacob's mourning nearly matches royal honor
 
 # Genesis 50:4-6
-
 # 🙏 Joseph Asks Permission To Bury Jacob
-
 ---
+## 🏛️ Joseph Spake Unto The House Of Pharaoh
 
-## 🙏 If Now I Have Found Grace In Your Eyes, Speak, I Pray You, In The Ears Of Pharaoh
+The house of Pharaoh means his royal officials, not Pharaoh himself.
 
-Even as one of Egypt's most powerful officials, Joseph doesn't simply leave the country on his own authority. He goes through proper, respectful channels, asking Pharaoh's household to formally request permission on his behalf.
+Joseph does not walk straight into the throne room to ask.
 
-🙏 Joseph follows proper protocol rather than acting on his own authority alone
+He works through Pharaoh's staff first, the normal channel for a request.
 
----
+That protocol mattered even for Egypt's second highest official.
 
-## ⚰️ My Father Made Me Swear ... In My Grave Which I Have Digged For Me
+🏛️ House of Pharaoh means his royal officials
 
-Joseph explains the oath from Genesis 49, that Jacob required a sworn promise to be buried in Canaan, not Egypt. Joseph presents this as a solemn obligation, not merely a personal wish.
+📋 Joseph goes through the normal channel
 
-⚰️ Joseph frames this as a binding oath, not a casual request
+👑 Even a top official follows protocol here
 
-📖 This directly follows through on Jacob's sworn request from chapter 49
+📖 Respect for order comes before the request
 
----
+## 🙏 If Now I Have Found Grace In Your Eyes
+
+This phrase was a polite, formal way to ask for a favor.
+
+It means something like, if you are willing to help me.
+
+Joseph is asking humbly here, not commanding anyone.
+
+Manners mattered even for the man running Egypt's food supply.
+
+🙏 The phrase is a polite, formal request
+
+🤝 It means, if you are willing to help
+
+👑 Joseph asks humbly despite his authority
+
+➡️ Manners mattered even at the top of Egypt
+
+## 📜 My Father Made Me Swear
+
+This oath was first recorded back in Genesis forty seven.
+
+Jacob made Joseph swear with his hand under his thigh.
+
+That gesture sealed a solemn, binding promise in this culture.
+
+Joseph is not asking Pharaoh for a personal favor here.
+
+He is fulfilling a promise made to his dying father.
+
+📜 Oath made back in Genesis forty seven
+
+✋ A hand under the thigh sealed it
+
+⚖️ This is a binding oath, not a request
+
+📖 Joseph keeps a promise to his father
+
+## 🔙 I Will Come Again
+
+Joseph promises Pharaoh he will return to Egypt.
+
+He does not use this trip as a chance to leave for good.
+
+Joseph could have simply stayed in Canaan with his family's land.
+
+Instead he commits to Egypt before he even leaves.
+
+🔙 Joseph promises to come back to Egypt
+
+🚪 He does not use this as an exit
+
+💼 His responsibilities in Egypt still matter
+
+➡️ A promise kept before the trip begins
 
 ## ✅ Go Up, And Bury Thy Father, According As He Made Thee Swear
 
-Pharaoh grants permission immediately and respectfully, honoring the seriousness of a sworn oath even though it involves Joseph, Egypt's chief administrator, leaving the country during an ongoing famine.
+Pharaoh grants the request immediately, with no negotiation at all.
 
-✅ Pharaoh honors the weight of a sworn oath without hesitation
+He specifically names the oath Joseph swore to his father.
+
+Egypt is in the middle of a famine Joseph is personally managing.
+
+Pharaoh still lets his top official leave during a crisis.
+
+A sworn promise outweighs even a national emergency.
+
+✅ Pharaoh grants the request without delay
+
+📜 He specifically names the oath Joseph swore
+
+🌾 Egypt is still deep in a famine
+
+📖 A sworn oath outweighs even a crisis
 
 # Genesis 50:7-9
-
 # 🐎 A Massive Funeral Procession
-
 ---
+## 👑 All The Servants Of Pharaoh, The Elders Of His House
 
-## 👑 All The Servants Of Pharaoh, The Elders Of His House, And All The Elders Of The Land Of Egypt
+Egypt's own royal officials personally join this funeral procession.
 
-This is an extraordinary honor: Egypt's own royal officials and elders personally join this funeral procession for a foreign shepherd. Jacob's burial becomes a state-level event because of Joseph's standing.
+These are not low ranking staff members.
 
-👑 Egyptian royal officials personally attend a foreign shepherd's funeral
+They are the senior leadership of Pharaoh's own household.
 
----
+A foreign shepherd's burial becomes a state level event.
+
+👑 Pharaoh's own officials join the procession
+
+🎖️ These are senior leaders, not staff
+
+🐑 A shepherd's funeral becomes a state event
+
+📖 Joseph's standing lifts his whole family
+
+## 🌍 All The Elders Of The Land Of Egypt
+
+This phrase widens the honor even further.
+
+It is not just Pharaoh's household attending this funeral.
+
+Senior leaders from across the entire nation of Egypt join.
+
+This becomes one of the largest displays of honor in Genesis.
+
+🌍 Elders from across all of Egypt attend
+
+📈 The honor keeps expanding in scale
+
+🐎 This becomes a massive national procession
+
+➡️ Few funerals in Genesis reach this size
+
+## 👨‍👩‍👧‍👦 All The House Of Joseph, And His Brethren, And His Father's House
+
+Three separate households travel together here.
+
+Joseph's own family, his brothers' families, and Jacob's household all go.
+
+This whole extended family unit moves as one for this burial.
+
+👨‍👩‍👧‍👦 Three households travel together
+
+🤝 Joseph and his brothers unite for this trip
+
+🏠 Jacob's whole extended family goes along
+
+📖 The family moves as one for this burial
 
 ## 🏡 Only Their Little Ones, And Their Flocks, And Their Herds, They Left In The Land Of Goshen
 
-The children, livestock, and household goods stay behind in Goshen while the adults travel to Canaan. This was a practical decision, likely for safety and logistics on a long journey, not a lack of respect for Jacob.
+The children and animals stay behind in Goshen.
 
-🏡 Leaving the children and flocks behind was a practical travel decision
+This was likely a practical decision for safety and speed.
 
----
+A slow group of children and livestock could not make this trip easily.
 
-## 🐎 Chariots And Horsemen ... A Very Great Company
+Careful planning shaped even the funeral procession itself.
 
-Military chariots and horsemen escort this procession, both as a mark of honor and as protection for such a large, wealthy traveling group. This is a massive, visible display, not a quiet family burial.
+🏡 Children and animals stay in Goshen
 
-🐎 A military escort marks this as an honored, protected procession
+🐑 Livestock would slow the trip down
+
+🛡️ Safety likely shaped this decision
+
+➡️ Even grief involved careful planning
+
+## 🐎 Both Chariots And Horsemen
+
+Chariots and horsemen were Egypt's military transport, not decoration.
+
+Their presence marks this procession as an official, protected event.
+
+A very great company traveled together on this trip.
+
+Such a large, wealthy group crossing open country needed real protection.
+
+This was a guarded state procession, not a quiet family trip.
+
+🐎 Chariots and horsemen mean military escort
+
+🛡️ Protection mattered for such a wealthy group
+
+🎖️ This marks an official state procession
+
+📖 Grief here traveled with real security
 
 # Genesis 50:10-11
-
 # 🕊️ Mourning At The Threshingfloor Of Atad
-
 ---
+## 🌾 The Threshingfloor Of Atad, Which Is Beyond Jordan
 
-## 🗺️ The Threshingfloor Of Atad, Which Is Beyond Jordan
+A threshingfloor was a flat open space used for separating grain.
 
-The procession takes a route east of the Jordan River rather than a more direct path, possibly to avoid hostile territory along the shorter route. This detour shows real, careful planning for such a large company's safety.
+It made a natural gathering place for a large group.
 
-🗺️ The route avoids the most direct path, likely for safety reasons
+Beyond Jordan means the eastern side of the Jordan River.
 
----
+That route was not the most direct path into Canaan.
 
-## 😭 A Great And Very Sore Lamentation ... Seven Days
+The longer route likely avoided danger closer to the coast.
 
-Sore here means intense, severe. The company stops for a full seven days of visible, public mourning before even crossing into Canaan itself, an extended, dramatic display of grief and honor.
+🌾 A threshingfloor was a flat grain area
 
-😭 Sore means intense or severe
+🗺️ Beyond Jordan means the river's eastern side
 
-📅 Seven days of public mourning happens even before reaching Canaan
+🧭 This was not the most direct route
 
----
+📖 The detour likely avoided danger
 
-## 🏷️ Abel-mizraim, Which Is Beyond Jordan
+## 😭 They Mourned With A Great And Very Sore Lamentation
 
-The Canaanite locals are so struck by the scale of Egyptian mourning that they rename the location Abel-mizraim, meaning "mourning of the Egyptians." Jacob's funeral becomes so significant that it permanently marks the local geography.
+Sore here means severe or intense, not painful in the modern sense.
 
-🏷️ Abel-mizraim means "mourning of the Egyptians"
+Lamentation means loud, visible grief, not quiet sadness.
 
-🗺️ This event was significant enough to permanently rename the location
+This was a public, dramatic display, not private weeping.
+
+😭 Sore means severe or intense
+
+📢 Lamentation means loud, visible grief
+
+👥 This mourning was public, not private
+
+➡️ Grief here was meant to be seen
+
+## 📅 He Made A Mourning For His Father Seven Days
+
+The procession stops for a full seven days at this spot.
+
+This happens before the group even crosses into Canaan.
+
+Seven full days is a long, deliberate pause, not a quick stop.
+
+Jacob is honored at length before he is even home.
+
+📅 Seven full days of mourning here
+
+🚶 This happens before reaching Canaan
+
+⏳ A long pause, not a quick stop
+
+📖 Jacob is honored before he is home
+
+## 👀 The Inhabitants Of The Land, The Canaanites, Saw The Mourning
+
+The Canaanites were the local people already living in this region.
+
+They watch this Egyptian style mourning from the outside.
+
+Their reaction shows how unusual and large this display looked.
+
+👥 Canaanites were the local residents there
+
+👀 They witness this mourning from outside
+
+😮 The scale clearly surprised them
+
+📖 An outsider's reaction reveals the scene's size
+
+## 🏷️ The Name Of It Was Called Abelmizraim
+
+Abelmizraim means mourning of the Egyptians.
+
+The Canaanites name the place after what they witnessed.
+
+A location on the map now marks this one event forever.
+
+Jacob's funeral leaves its name on the land itself.
+
+🏷️ Abelmizraim means mourning of the Egyptians
+
+👥 Canaanites gave the place this name
+
+🗺️ The event becomes part of the map
+
+📖 One funeral reshapes the region's memory
 
 # Genesis 50:12-14
-
 # ⚰️ Jacob Is Buried, Joseph Returns
-
 ---
-
 ## ✅ His Sons Did Unto Him According As He Commanded Them
 
-The brothers follow through completely on Jacob's specific burial instructions from chapter 49, honoring their father's final wishes exactly as he laid them out.
+Jacob gave detailed burial instructions back in Genesis forty nine.
 
-✅ The sons carry out Jacob's exact instructions without deviation
+His sons carry out those exact instructions here.
 
----
+No detail is skipped or changed along the way.
+
+A father's final wishes are honored completely.
+
+📜 Jacob's instructions came in Genesis forty nine
+
+✅ His sons follow them exactly
+
+🚫 Nothing is skipped or changed
+
+📖 A father's last wishes are honored fully
 
 ## 🏛️ Buried Him In The Cave Of The Field Of Machpelah
 
-This closes the promise made back in Genesis 49: Jacob rests in the same family tomb as Abraham, Sarah, Isaac, Rebekah, and Leah, purchased generations earlier as a permanent foothold in the promised land.
+Machpelah was a family burial cave purchased generations earlier.
 
-🏛️ Jacob joins Abraham, Isaac, and their wives in the same family tomb
+Abraham bought it from Ephron the Hittite in Genesis twenty three.
 
----
+Jacob now joins that same family tomb.
 
-## 🔙 Joseph Returned Into Egypt ... After He Had Buried His Father
+This cave anchors the family's claim to the promised land.
 
-Joseph keeps his word to Pharaoh completely, returning to Egypt as promised rather than staying in Canaan. Even in grief, Joseph honors both his father's oath and his own commitment to Pharaoh.
+🏛️ Machpelah was the family burial cave
 
-🔙 Joseph fulfills both his promise to his father and his promise to Pharaoh
+📜 Abraham bought it in Genesis twenty three
+
+👴 Jacob now joins that same tomb
+
+📖 One cave anchors the whole promise
+
+## 📜 Which Abraham Bought With The Field For A Possession Of A Buryingplace
+
+A buryingplace means a permanently owned burial site, not a borrowed grave.
+
+Possession means Abraham legally owned this land, not just used it.
+
+This was the first piece of the promised land Abraham ever owned.
+
+⚰️ Buryingplace means a permanently owned grave site
+
+📜 Possession means Abraham legally owned it
+
+🗺️ This was Abraham's first owned land in Canaan
+
+📖 A grave became the family's first foothold
+
+## 🔙 Joseph Returned Into Egypt
+
+Joseph keeps his earlier promise to Pharaoh here.
+
+He does not stay behind in Canaan once the burial ends.
+
+All who traveled with him return to Egypt together.
+
+Even in grief, Joseph follows through on his own word.
+
+🔙 Joseph returns to Egypt as promised
+
+🚪 He does not stay behind in Canaan
+
+🤝 He keeps his word even in grief
+
+➡️ A promise outlives the moment it was made
 
 # Genesis 50:15-18
-
 # 😨 The Brothers Fear Joseph's Revenge
-
 ---
+## 👴 Joseph's Brethren Saw That Their Father Was Dead
+
+Jacob had been the one steady link holding this family together.
+
+With him gone, old fears the brothers never resolved come rushing back.
+
+Their guilt over selling Joseph into slavery never actually disappeared.
+
+👴 Jacob had held the family together
+
+😨 Old guilt returns once he is gone
+
+🕳️ Their guilt was never fully resolved
+
+📖 Unresolved guilt can resurface years later
 
 ## 😨 Joseph Will Peradventure Hate Us
 
-Peradventure means perhaps. With Jacob gone, the brothers' old fear resurfaces immediately, worried that Joseph's kindness up to now was only for their father's sake, and that real revenge might still be coming.
+Peradventure is an old word meaning perhaps or what if.
 
-😨 Peradventure means perhaps
+The brothers are not actually certain Joseph forgives them.
 
-💭 The brothers assumed Joseph's mercy depended on Jacob still being alive
+They only assumed his kindness depended on Jacob still being alive.
 
----
+😨 Peradventure means perhaps or what if
+
+❓ The brothers are not actually certain
+
+👴 They assumed kindness depended on Jacob living
+
+➡️ Fear can outlast real forgiveness
+
+## ⚖️ Will Certainly Requite Us All The Evil Which We Did Unto Him
+
+Requite means to pay someone back, here in the sense of revenge.
+
+The brothers expect Joseph to finally settle the score.
+
+Their own guilt convinces them punishment must be coming.
+
+⚖️ Requite means pay back, here as revenge
+
+😟 The brothers expect punishment now
+
+🕳️ Guilt shapes what they expect from Joseph
+
+📖 Fear often assumes the worst
 
 ## 📜 Thy Father Did Command Before He Died
 
-The brothers send word claiming Jacob left a specific instruction for Joseph to forgive them. Scripture never actually records Jacob giving this command earlier, which suggests the brothers may be inventing or exaggerating it out of real fear, not necessarily lying maliciously, but desperate.
+The brothers send Joseph a message claiming Jacob left this instruction.
 
-📜 This claimed deathbed command is never recorded earlier in the text
+Scripture never actually records Jacob giving this command earlier.
 
-😰 Genuine fear, more than dishonesty, likely drives this message
+This message may be the brothers' own invention, born out of fear.
 
----
+Desperation, not necessarily dishonesty, likely shaped their words.
 
-## 🙏 Forgive The Trespass Of The Servants Of The God Of Thy Father
+📜 This claimed command is not recorded earlier
 
-Trespass means wrongdoing or sin. The brothers plead using covenant language, "the God of thy father," appealing to shared faith, not just family loyalty, as they beg for forgiveness.
+😰 The brothers may have invented it
+
+😨 Real fear likely drives the message
+
+➡️ Desperation can shape what people say
+
+## 🙏 Forgive The Trespass Of Thy Brethren, And Their Sin
+
+Trespass means wrongdoing, a violation against another person.
+
+The brothers finally name what they did without softening it.
+
+They ask directly for forgiveness rather than making excuses.
 
 🙏 Trespass means wrongdoing or sin
 
-🕊️ Their appeal is framed in shared covenant faith, not just family ties
+🗣️ The brothers finally name it plainly
 
----
+🚫 No excuses are offered here
+
+📖 Honest confession comes before forgiveness
+
+## 🕊️ Forgive The Trespass Of The Servants Of The God Of Thy Father
+
+The brothers appeal to shared faith here, not just family ties.
+
+The God of thy father points back to Jacob's own God.
+
+They ask Joseph to forgive them as fellow servants of that God.
+
+🕊️ They appeal to shared covenant faith
+
+👴 The God of thy father means Jacob's God
+
+🤝 They call themselves fellow servants of God
+
+📖 Shared faith becomes the basis for the plea
+
+## 😭 Joseph Wept When They Spake Unto Him
+
+This is the second time Joseph weeps in this very chapter.
+
+His tears here come from being feared by the people he loves.
+
+Joseph's power never stopped him from feeling deeply.
+
+😭 Joseph weeps a second time in this chapter
+
+💔 He is hurt by his brothers' fear
+
+👑 Power never stopped his real feelings
+
+📖 Strength and tears can share one man
 
 ## 🙇 His Brethren Also Went And Fell Down Before His Face
 
-The brothers physically bow before Joseph one final time. This is the last of several bowing scenes across these chapters, each one another quiet fulfillment of Joseph's boyhood dream from Genesis 37.
+The brothers physically bow before Joseph one more time.
 
-🙇 This is the final bowing scene, completing Joseph's boyhood dream
+Joseph dreamed of this exact scene decades earlier, in Genesis thirty seven.
+
+This is the last of several bowing scenes across these chapters.
+
+A boyhood dream finally reaches its complete fulfillment.
+
+🙇 The brothers bow before Joseph again
+
+💭 Joseph dreamed this in Genesis thirty seven
+
+🔁 This is the final bowing scene in Genesis
+
+📖 A childhood dream reaches full fulfillment
 
 # Genesis 50:19-21
-
 # ❤️ Joseph's Famous Forgiveness
-
 ---
-
 ## ⚖️ Fear Not: For Am I In The Place Of God?
 
-Joseph refuses to act as his brothers' judge, recognizing that vengeance and final judgment belong to God, not to him personally, no matter how much power he holds.
+Joseph refuses to act as his brothers' judge here.
 
-⚖️ Joseph refuses to place himself in God's role as ultimate judge
+He recognizes that final judgment and revenge belong to God alone.
 
----
+Joseph holds total power over his brothers' lives right now.
 
-## 🔄 Ye Thought Evil Against Me; But God Meant It Unto Good
+Even so, he will not claim that role for himself.
 
-This is one of the most quoted verses in the entire Bible. Joseph doesn't pretend his brothers' actions weren't genuinely evil, he names it plainly, "ye thought evil." But he also sees that God worked through that same evil to accomplish good, without excusing the sin itself.
+⚖️ Joseph refuses the role of judge
 
-🔄 Joseph names the brothers' sin honestly, without minimizing it
+🙏 Final judgment belongs to God alone
 
-📖 God working good through evil doesn't mean the evil itself wasn't real
+👑 He holds power but will not use it
 
----
+📖 Restraint here reflects real humility
+
+## 😔 Ye Thought Evil Against Me
+
+Joseph does not pretend his brothers' actions were harmless.
+
+He names what happened plainly, as real evil, not confusion.
+
+Forgiveness here does not require rewriting the past.
+
+😔 Joseph names the evil plainly
+
+🚫 He does not soften what happened
+
+📖 Real forgiveness does not erase real wrong
+
+➡️ Honesty and forgiveness can stand together
+
+## 🔄 But God Meant It Unto Good
+
+This is one of the most quoted lines in the whole Bible.
+
+Joseph sees God working through the very evil his brothers chose.
+
+That does not make what they did any less wrong.
+
+God's good plan and human sin can occupy the same story.
+
+🔄 God worked good through real human evil
+
+🚫 Their sin is still not excused
+
+📖 God's plan and human sin share one story
+
+➡️ Good outcomes do not erase real wrongdoing
 
 ## 🌍 To Save Much People Alive
 
-Joseph connects his personal story directly to the survival of an entire region during the famine. His years of suffering ultimately became the means of saving countless lives, not just his own family's.
+Joseph connects his own suffering to an entire region's survival.
 
-🌍 Joseph's suffering became the means of saving a whole region from famine
+Much people means far more than just his own family.
 
----
+Egypt and its neighbors were fed because Joseph once suffered greatly.
+
+🌍 Much people means the wider region
+
+🌾 Joseph's suffering fed an entire famine zone
+
+🔗 His pain connects directly to their survival
+
+📖 One life's suffering saved countless others
+
+## 🍞 I Will Nourish You, And Your Little Ones
+
+Joseph does not simply forgive his brothers in words alone.
+
+He commits to providing for them and their children going forward.
+
+Nourish means to feed and sustain over time, not one gift.
+
+🍞 Nourish means to feed and sustain
+
+👶 Joseph commits to their children too
+
+🤝 Forgiveness here becomes real provision
+
+➡️ Words of forgiveness turn into action
 
 ## 💛 He Comforted Them, And Spake Kindly Unto Them
 
-Joseph doesn't just declare forgiveness in a single formal statement, he follows through with ongoing comfort and gentle words. Real reconciliation shows up in continued kindness, not just a one-time announcement.
+Joseph follows his words with ongoing comfort, not one speech.
 
-💛 Joseph's forgiveness continues in daily kindness, not just one declaration
+Spake kindly means his gentle words continued after this moment passed.
+
+Real reconciliation shows up in a pattern, not one announcement.
+
+💛 Joseph offers ongoing comfort, not one speech
+
+🗣️ Spake kindly means gentle words continued
+
+🔁 His kindness becomes a lasting pattern
+
+📖 Reconciliation is proven over time
 
 # Genesis 50:22-23
-
 # 👴 Joseph's Long Life
-
 ---
-
 ## 🎂 Joseph Lived An Hundred And Ten Years
 
-Living to 110 was considered the ideal, complete lifespan in Egyptian culture, comparable to how some cultures view a perfect "100" today. This detail signals to an Egyptian audience that Joseph's life was seen as fully and completely blessed.
+Living to one hundred ten years was Egypt's ideal complete lifespan.
 
-🎂 110 years was considered the ideal, complete lifespan in Egyptian culture
+Some cultures today picture a full one hundred years that way.
 
----
+This number told an Egyptian audience Joseph's life was fully blessed.
 
-## 👶 Ephraim's Children Of The Third Generation ... Upon Joseph's Knees
+🎂 One hundred ten years was Egypt's ideal
 
-Joseph lives long enough to see his great-grandchildren. "Brought up upon Joseph's knees" describes a formal custom of a patriarch accepting and blessing descendants as recognized members of the family line, not simply holding a baby.
+👑 It signaled a fully complete, blessed life
 
-👶 "Upon Joseph's knees" describes a formal act of accepting descendants into the family
+🌍 This detail spoke to an Egyptian audience
 
-⏳ Joseph lives to see four generations of his own family
+📖 Joseph's story ends marked as blessed
+
+## 👶 Ephraim's Children Of The Third Generation
+
+Ephraim was Joseph's younger son, blessed ahead of his brother.
+
+That blessing happened back in Genesis forty eight.
+
+Third generation here means Joseph lives to see his great grandchildren.
+
+That was considered a rare and deeply honored kind of long life.
+
+👶 Ephraim was Joseph's younger son
+
+👴 Third generation means great grandchildren
+
+🎉 Seeing this many generations was rare
+
+📖 Joseph's life is honored with real length
+
+## 🦵 The Children Also Of Machir The Son Of Manasseh Were Brought Up Upon Joseph's Knees
+
+Machir was Manasseh's own son, Joseph's grandson through his other son.
+
+Brought up upon Joseph's knees describes a formal custom.
+
+It marked a patriarch officially accepting descendants into the family line.
+
+Joseph personally welcomes four generations into the covenant family.
+
+👨‍👦 Machir was Manasseh's own son
+
+🦵 Upon Joseph's knees marks a formal act
+
+👪 It formally welcomed descendants into the family
+
+📖 Joseph personally links four generations together
 
 # Genesis 50:24-26
-
 # ⚰️ Joseph's Final Words And Death
-
 ---
+## 👋 I Die: And God Will Surely Visit You
 
-## 🔮 I Die: And God Will Surely Visit You, And Bring You Out Of This Land
+To visit here does not mean a short friendly stop.
 
-Joseph's final recorded words look forward, not backward. He prophesies that God will one day bring the family out of Egypt entirely, directly anticipating the events of the book of Exodus, generations before they happen.
+It means God will personally step in and act for Israel.
 
-🔮 Joseph prophesies the future Exodus generations before it happens
+Joseph's final recorded words look forward, not backward.
 
-📖 This promise connects directly to the covenant given to Abraham, Isaac, and Jacob
+👋 Visit here means God will personally act
 
----
+🔮 Joseph's last words point to the future
+
+🚫 This is not a casual stop by God
+
+📖 Even in death Joseph looks ahead in faith
+
+## 📜 Bring You Out Of This Land Unto The Land Which He Sware To Abraham, To Isaac, And To Jacob
+
+Joseph names the whole covenant chain, Abraham, Isaac, and Jacob.
+
+He is directly predicting the events that later become Exodus.
+
+This promise was made generations before the family ever needed it.
+
+📜 Joseph names Abraham, Isaac, and Jacob together
+
+🔮 He predicts the events of Exodus
+
+⏳ The promise predates the family's need for it
+
+📖 One covenant carries across many generations
+
+## ⚖️ Joseph Took An Oath Of The Children Of Israel
+
+Joseph does not simply hope his family remembers this promise.
+
+He makes them swear a formal, binding oath before he dies.
+
+A promise this important deserved more than a passing wish.
+
+⚖️ Joseph secures a formal, binding oath
+
+🚫 He does not leave it as a hope
+
+👪 The whole family swears together
+
+➡️ Important promises deserve real commitment
 
 ## ⚰️ Ye Shall Carry Up My Bones From Hence
 
-Joseph takes a sworn oath from his family that his bones will eventually be carried out of Egypt and buried in the promised land. This oath is honored generations later, referenced in Exodus 13:19 and finally fulfilled in Joshua 24:32.
+Joseph asks that his bones eventually leave Egypt for the promised land.
 
-⚰️ Joseph's family swears to eventually carry his bones out of Egypt
+This exact oath gets remembered generations later, in Exodus thirteen.
 
-📖 This exact oath gets fulfilled much later, in Exodus and Joshua
+It is finally fulfilled far later still, in Joshua twenty four.
 
----
+Joseph believes the promise before he ever sees it kept.
 
-## ⚱️ So Joseph Died ... And He Was Put In A Coffin In Egypt
+⚰️ Joseph's bones are meant to leave Egypt
 
-Genesis ends not in the promised land, but with Joseph's body resting in an Egyptian coffin, still waiting for the promise to be completed. The whole book closes on a note of hope still pointing forward, not a fully resolved ending.
+📜 Exodus thirteen later recalls this oath
 
-⚱️ Genesis ends with the promise still unfulfilled, not fully resolved
+🏛️ Joshua twenty four finally fulfills it
 
-➡️ The story deliberately points forward to what Exodus will tell next`;
+➡️ Joseph trusted a promise he would not see
+
+## 👴 So Joseph Died, Being An Hundred And Ten Years Old
+
+Joseph dies at the same ideal age noted earlier in this chapter.
+
+One hundred ten years was Egypt's picture of a complete life.
+
+Even Joseph's death carries that same mark of full blessing.
+
+👴 Joseph dies at Egypt's ideal age
+
+🎂 One hundred ten years marked completeness
+
+👑 Even his death carries that blessing
+
+📖 A blessed life reaches a blessed end
+
+## ⚱️ He Was Put In A Coffin In Egypt
+
+Genesis does not end in the promised land.
+
+It ends with Joseph's body resting inside an Egyptian coffin.
+
+The whole book closes still waiting for a promise not yet kept.
+
+⚱️ Genesis ends in an Egyptian coffin
+
+🚫 The promised land is not yet reached
+
+⏳ The story closes still unresolved
+
+➡️ Genesis points forward to Exodus`.trim();
 
 export const GENESIS_FIFTY_PERSONAL_SECTIONS = parseGenesisFiftyRawNotes(GENESIS_FIFTY_RAW_NOTES);
