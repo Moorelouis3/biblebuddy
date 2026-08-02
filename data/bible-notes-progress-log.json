@@ -5928,6 +5928,67 @@
           "at": "2026-08-02T02:57:56Z"
         }
       ]
+    },
+    {
+      "book": "Exodus",
+      "chapter": 17,
+      "startedAt": "2026-08-02T03:46:05Z",
+      "finishedAt": "2026-08-02T04:00:00Z",
+      "durationMinutes": 14,
+      "sections": 5,
+      "cards": 19,
+      "verses": 16,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (16 cards / 5 sections) from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Exodus 17 covers the water from the rock at Rephidim (Israel's thirst reframed by Moses as tempting the LORD, the same rod from the plagues striking the rock, the naming of Massah and Meribah), the battle with Amalek (Joshua's first appearance in Scripture chosen to fight, Hur's first appearance supporting Aaron on the hilltop), Moses' hands held up through the whole battle with Aaron and Hur physically sustaining him until sunset, and the close on the written memorial, Joshua being told the lesson aloud, the altar named Jehovahnissi (the LORD is my banner), and God's declared multigenerational war with Amalek. Kept the original file's 5 section boundaries for verse-coverage continuity while rewriting every card to the new format. Density 1.19 cards/verse (16 verses, 19 cards). scripts/check_bible_note_style.py failed once on first run (RAW_NOTES constant was missing the required .trim() call so the checker could not locate the block), fixed by appending .trim(), second run clean. Parser check confirmed 5 sections, 19 cards, and all 16 verses covered. tsc --noEmit -p . was clean.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-02T03:46:41Z"
+        },
+        {
+          "name": "target chapter determined: Exodus 17 (style redo, first in remaining backlog)",
+          "at": "2026-08-02T03:48:00Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo (no changes needed)",
+          "at": "2026-08-02T03:48:02Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Exodus.json",
+          "at": "2026-08-02T03:48:10Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (lib/genesisThirtyOneSource.ts) read",
+          "at": "2026-08-02T03:50:00Z"
+        },
+        {
+          "name": "source file written (lib/exodusSeventeenSource.ts, 5 sections, 19 cards)",
+          "at": "2026-08-02T03:52:30Z"
+        },
+        {
+          "name": "style checker clean (after adding required .trim() call)",
+          "at": "2026-08-02T03:53:15Z"
+        },
+        {
+          "name": "parser check passed (5 sections, 19 cards, 16 verses covered)",
+          "at": "2026-08-02T03:53:20Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-02T03:53:46Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-02T03:57:00Z"
+        },
+        {
+          "name": "committed all changed files",
+          "at": "2026-08-02T03:58:00Z"
+        },
+        {
+          "name": "pushed to origin main",
+          "at": "2026-08-02T04:00:00Z"
+        }
+      ]
     }
   ]
 }

@@ -474,3 +474,7 @@ Next up: Exodus 16
 ## 2026-08-02T02:56:25Z (hourly chapter notes run)
 Chapter: Exodus 16 | Duration: 10 min | Sections: 9 | Cards: 46 | Status: pass
 Next up: Exodus 17
+
+## 2026-08-02T03:57:00Z (hourly chapter notes run)
+Chapter: Exodus 17 | Duration: 14 min | Sections: 5 | Cards: 19 | Status: pass
+Next up: Exodus 18
