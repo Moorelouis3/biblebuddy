@@ -530,3 +530,7 @@ Next up: Exodus 30
 ## 2026-08-02T16:58:00Z (hourly chapter notes run)
 Chapter: Exodus 30 | Duration: 12 min | Sections: 9 | Cards: 57 | Status: pass
 Next up: Exodus 31
+
+## 2026-08-02T17:57:00Z (hourly chapter notes run)
+Chapter: Exodus 31 | Duration: 11 min | Sections: 4 | Cards: 34 | Status: pass
+Next up: Exodus 32

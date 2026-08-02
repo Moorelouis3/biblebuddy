@@ -89,283 +89,633 @@ function parseExodusThirtyOneRawNotes(rawText: string): ExodusThirtyOnePersonalS
 }
 
 const EXODUS_THIRTY_ONE_RAW_NOTES = `# Exodus 31:1-6
-
 # 🔨 God Calls Bezaleel And Aholiab
-
 ---
+## 👤 Called By Name Bezaleel
 
-## 👤 The LORD Spake Unto Moses, Saying, See, I Have Called By Name Bezaleel
+Being called by name means God chose this man personally.
 
-For six chapters God has been describing objects — the ark, the table, the lampstand, the altars, the garments, the oil. Now, for the first time, He names the actual man who will build them.
+God did not simply need someone skilled for the work.
 
-**"Called by name"** is not a small detail. It means Bezaleel is not a random volunteer or the best hand Moses happened to find; God personally singled him out before any hammer was lifted. The blueprint mattered enough to God that He chose the builder Himself.
+He picked Bezaleel out Himself before anyone lifted a tool.
 
-👤 God names a specific individual, not just a job description
+The tabernacle mattered enough to God that He hand picked the builder.
 
-🔨 Bezaleel is chosen personally, before construction ever begins
+👤 God chooses Bezaleel personally
 
-📖 The One who designed the tabernacle also hand-picked who would build it
+🔨 The choice comes before any work starts
 
-➡️ His family line matters too
+📐 God cared who would build, not just what
 
----
+📖 God still calls people by name today
 
-## 🌳 The Son Of Uri, The Son Of Hur, Of The Tribe Of Judah
+## 👴 The Son Of Uri, The Son Of Hur
 
-Bezaleel's grandfather is Hur — very likely the same Hur who, alongside Aaron, held up Moses' tired arms during the battle with Amalek back in Exodus 17. If so, this family already has a history of quietly supporting God's work without getting the spotlight.
+Uri and Hur are Bezaleel's father and grandfather.
 
-Judah is the tribe that will later produce Israel's kings, and eventually the Messiah. It's worth noticing that the man chosen to build God's house comes from this same significant tribal line, generations before that line becomes famous for anything else.
+Many believe this Hur is the same man who held up Moses' hands in Exodus seventeen.
 
-🌳 Hur may be the same man who helped hold up Moses' hands in Exodus 17
+If that is true, this family already had a history of quiet service.
 
-👑 Judah is the tribe of Israel's future kings
+Bezaleel's gift did not appear out of nowhere.
 
-📖 God's choice of builder reaches back into a family's quiet history
+It grew from a household already devoted to God.
 
-➡️ God explains exactly what has been placed in him
+👴 Uri and Hur are his father and grandfather
 
----
+🙌 Hur may be the man from Exodus seventeen
 
-## 🔥 I Have Filled Him With The Spirit Of God, In Wisdom, And In Understanding, And In Knowledge, And In All Manner Of Workmanship
+🙏 The family already served God quietly
 
-This is one of the earliest places in Scripture where being **"filled with the Spirit of God"** has nothing to do with prophecy, leadership, or battle — it describes a craftsman's hands. Skilled work with gold, wood, and stone is treated here as a genuine spiritual gift, not a lesser, merely human talent.
+📖 Bezaleel's gift grew from that history
 
-**"Wisdom,"** **"understanding,"** and **"knowledge"** stack together to describe something bigger than raw ability: Bezaleel can design, reason through a problem, and execute it, all at once. **"Workmanship"** simply means skilled craft or handiwork.
+## 👑 Of The Tribe Of Judah
 
-🔥 Being Spirit-filled here means gifted for skilled physical work, not prophecy
+Judah is the tribe of Israel's future kings.
 
-🛠️ Wisdom, understanding, and knowledge together cover design, judgment, and execution
+Centuries later the Messiah would come from this same line.
 
-📖 Craftsmanship is treated as a real gift from God, not a separate "secular" skill
+Bezaleel is not famous the way David or Jesus would be.
 
-➡️ God lists exactly what kind of work this gift covers
+Yet God chose him from that same significant family long before either was born.
 
----
+👑 Judah later gives Israel its kings
 
-## 🥇 To Devise Cunning Works, To Work In Gold, And In Silver, And In Brass, And In Cutting Of Stones, To Set Them, And In Carving Of Timber
+✝️ The Messiah comes from this same line
 
-**"Cunning"** in the KJV does not mean sneaky or deceptive, which is how the word is almost always used today. Here it simply means highly skillful or ingeniously clever — "cunning works" are masterfully crafted works, nothing underhanded about them.
+🔨 Bezaleel comes from Judah too
 
-The list itself is wide: metalworking in three different metals, gem-cutting and setting, and woodcarving. One man is expected to be expert across several completely different trades, which is exactly why this needed to be a Spirit-given gift rather than something learned overnight.
+📖 God used this tribe before it was famous
 
-🥇 "Cunning" here means highly skillful, not sly or deceitful
+## 🔥 Filled Him With The Spirit Of God
 
-⚒️ The skill set spans metalworking, gem-setting, and woodcarving all at once
+Being filled with the Spirit of God usually brings to mind prophets or leaders.
 
-📖 This range of mastery is presented as supernatural giftedness, not just training
+Here it describes a craftsman's hands instead.
 
-➡️ Bezaleel is given a partner for the work
+Skilled work with metal, stone, and wood is treated as a real spiritual gift.
 
----
+It is not a lesser, ordinary talent kept separate from God.
 
-## 🤝 I Have Given With Him Aholiab, The Son Of Ahisamach, Of The Tribe Of Dan: And In The Hearts Of All That Are Wise Hearted I Have Put Wisdom
+🔥 Spirit filled here means gifted for skilled work
 
-Aholiab comes from Dan, one of the smaller, less prominent tribes — a striking pairing next to Bezaleel from prominent Judah. God does not build His house through one important tribe alone; a "lesser" family stands shoulder to shoulder with a "greater" one on the same sacred project.
+🛠️ Craftsmanship counts as a real gift
 
-**"Wise hearted"** is a KJV idiom that doesn't mean intellectually smart; it means skilled and gifted with the hands, the same sense as "wisdom" back in verse 3. And the gifting doesn't stop at two men — God says He has placed this skill in the hearts of "all" who are wise hearted, meaning a whole team of unnamed craftspeople is quietly included here too.
+🙌 Skill is not separate from God
 
-🤝 Judah and Dan, a prominent tribe and a lesser one, work side by side
+📖 God gifts hands as well as voices
 
-💡 "Wise hearted" means skilled with the hands, not merely intelligent
+## 💡 In Wisdom, And In Understanding, And In Knowledge
 
-👥 The gifted team is bigger than just the two named men
+These three words are not simply repeating the same idea.
 
-➡️ God lists everything this team is about to build
+Wisdom means the ability to design something new.
+
+Understanding means the judgment to solve a problem along the way.
+
+Knowledge means the learned skill to actually carry it out.
+
+Together they describe a craftsman who can plan, adjust, and build.
+
+💡 Wisdom means the ability to design
+
+🧠 Understanding means good judgment
+
+📚 Knowledge means learned skill
+
+📖 Together they describe a complete craftsman
+
+## 🛠️ In All Manner Of Workmanship
+
+Workmanship simply means skilled craft or handiwork.
+
+The phrase all manner shows just how wide that skill needed to be.
+
+Bezaleel was not a specialist in one narrow trade.
+
+God gifted him across many kinds of work at once.
+
+🛠️ Workmanship means skilled craft
+
+🌐 All manner means many kinds at once
+
+🔨 Bezaleel was not a narrow specialist
+
+📖 God's gift covered every trade needed
+
+## ✨ To Devise Cunning Works
+
+Cunning in the King James Bible does not mean sneaky or deceptive.
+
+That is how the word is almost always used today.
+
+Here it simply means highly skillful or cleverly made.
+
+A cunning work is a masterfully crafted work, nothing dishonest about it.
+
+🎭 Cunning today usually means sneaky
+
+🔨 Here it means highly skillful
+
+✨ A cunning work is a masterpiece
+
+📖 This old meaning has no dishonesty in it
+
+## 🥇 To Work In Gold, And In Silver, And In Brass
+
+Bezaleel is expected to master three different metals, not just one.
+
+Gold, silver, and brass each require completely different handling and tools.
+
+Learning even one of these trades normally took years.
+
+God gave him mastery over all three at once.
+
+🥇 Gold, silver, and brass are three separate trades
+
+⏳ Each trade normally took years to learn
+
+🔥 God gave mastery over all three
+
+📖 This points to a gift, not training
+
+## 💎 In Cutting Of Stones, To Set Them
+
+Cutting stones here means shaping gems for the priestly garments.
+
+Setting them means fixing each finished stone securely into metal.
+
+This is precise, careful work, not simple rock breaking.
+
+One mistake could ruin a stone meant to sit on Aaron's own chest.
+
+💎 Cutting means shaping gems
+
+🔩 Setting means fixing them into metal
+
+🎯 The work demanded real precision
+
+📖 These stones would rest on Aaron himself
+
+## 🪵 And In Carving Of Timber
+
+Carving timber means shaping wood by hand into finished form.
+
+The ark, the table, and several other pieces all had wooden frames underneath their gold.
+
+Nobody would ever see that wood once the gold covering went on.
+
+Bezaleel still had to carve it with full skill and care.
+
+🪵 Carving means shaping wood by hand
+
+⚱️ Wood sat hidden beneath the gold
+
+👀 No one would ever see this work
+
+📖 He carved with care unseen
+
+## 🤝 Aholiab, The Son Of Ahisamach, Of The Tribe Of Dan
+
+Dan was one of the smaller, less prominent tribes of Israel.
+
+Judah, Bezaleel's tribe, was one of the most significant.
+
+God still paired a lesser known family with a prominent one on this same sacred project.
+
+Importance in this project never depended on a tribe's status.
+
+🛠️ Aholiab comes from the tribe of Dan
+
+👑 Bezaleel comes from the greater tribe of Judah
+
+🤝 Both tribes work the same sacred project
+
+📖 God does not rank workers by tribe
+
+## 🧠 Wise Hearted
+
+Wise hearted does not mean intellectually smart in the modern sense.
+
+It means skilled and gifted with the hands.
+
+This uses the same sense of wisdom already given to Bezaleel in verse three.
+
+God says He placed this gift in every wise hearted person, not just the two named men.
+
+💡 Wise hearted means skilled with the hands
+
+🔁 It matches the wisdom given to Bezaleel
+
+👥 God gifted a whole team, not two
+
+📖 Skill spreads further than the named leaders
 
 # Exodus 31:7-11
-
 # 🏛️ Everything They Will Build
-
 ---
+## ⛺ The Tabernacle Of The Congregation
 
-## ⚱️ The Tabernacle Of The Congregation, And The Ark Of The Testimony, And The Mercy Seat That Is Thereupon
+God now runs back through the entire building list from earlier chapters.
 
-God now runs back through the entire building list from chapters 25-30, starting with the holiest object first. **"Thereupon"** is an old word simply meaning "on top of it" — the mercy seat sits directly on top of the ark, as its solid gold lid.
+The tabernacle of the congregation was the whole tent structure itself.
 
-The ark and mercy seat were described all the way back in chapter 25, at the very start of these instructions. Naming them again here, at the very end, closes a loop: everything described is now handed to real builders instead of staying words on a mountain.
+Naming it first shows it as the center of everything else on the list.
 
-⚱️ "Thereupon" means on top of it — the mercy seat is the ark's lid
+Every other item exists to serve what happens inside this tent.
 
-📖 Chapter 25 first described these; now real craftsmen will make them
+⛺ Tabernacle means the tent structure itself
 
-🔄 The list runs from the holiest object outward, just as it was first given
+📋 God reviews the whole building list here
 
-➡️ The list moves out to the furniture of the holy place
+🎯 It stands first because it is central
 
----
+📖 Every other object serves what happens inside it
 
-## 🕯️ The Table And His Furniture, And The Pure Candlestick With All His Furniture, And The Altar Of Incense
+## 📦 The Ark Of The Testimony, And The Mercy Seat
 
-**"Furniture"** here is a false friend for modern readers — it does not mean chairs and couches. In the KJV it means the accompanying equipment and utensils that belong to an object, like the bowls and spoons that went with the showbread table.
+The ark of the testimony held the stone tables of the law.
 
-The table (for showbread) and the candlestick (the golden lampstand) both come from chapter 25; the altar of incense was just given in chapter 30. All three stood inside the holy place, the room just outside the innermost curtain.
+The mercy seat was its solid gold lid, described back in chapter twenty five.
 
-🕯️ "Furniture" means an object's accompanying equipment, not chairs and couches
+These two objects were the holiest items in the entire tabernacle.
 
-🍞 The table and candlestick were first described back in chapter 25
+Naming them first here closes a loop that opened many chapters earlier.
 
-💨 The incense altar was the most recently given instruction, in chapter 30
+📦 The ark held the stone tables
 
-➡️ The list moves outward again, into the courtyard
+🥇 The mercy seat was its gold lid
 
----
+🙏 These were the holiest objects of all
+
+📖 Chapter twenty five described them first
+
+## 🍞 The Table And His Furniture
+
+Furniture here does not mean chairs or couches like it does today.
+
+It means the accompanying equipment that belonged to an object.
+
+For this table, that meant the bowls, spoons, and dishes used with it.
+
+The table itself held the bread of the presence inside the holy place.
+
+🪑 Furniture is a false friend for modern readers
+
+🥣 It means an object's accompanying equipment
+
+🍞 This table held the bread of the presence
+
+📖 Even the small pieces had a purpose
+
+## 🕯️ The Pure Candlestick With All His Furniture
+
+The candlestick was the golden lampstand first described in chapter twenty five.
+
+Pure here means it was made of solid gold, not gold plating.
+
+Its furniture included the small tools used to trim and light it.
+
+This single lampstand was the only light source inside the holy place.
+
+🕯️ Candlestick means the golden lampstand
+
+🥇 Pure means solid gold, not plating
+
+🔥 It was the only light inside
+
+📖 Small tools kept it burning properly
+
+## 💨 The Altar Of Incense
+
+The altar of incense was the most recently given instruction, from chapter thirty.
+
+It stood just outside the innermost curtain, nearest to the ark.
+
+Sweet smelling smoke rose from it every morning and evening.
+
+Its placement closest to the ark showed how highly this offering was valued.
+
+💨 This altar burned incense, not offerings
+
+📍 It stood nearest to the ark
+
+🙏 Position showed how valued this offering was
+
+📖 Chapter thirty gave this instruction most recently
 
 ## 🐂 The Altar Of Burnt Offering With All His Furniture, And The Laver And His Foot
 
-The bronze altar for burnt offerings was first described in chapter 27; the washing basin, or laver, and its pedestal **"foot,"** were just given in chapter 30. Moving from the ark to the incense altar to the courtyard traces the exact same inside-to-outside path God used when He first gave these instructions.
+The bronze altar for burnt offerings goes back to chapter twenty seven.
 
-🐂 The bronze altar goes back to chapter 27's original instructions
+The laver was a bronze basin used for washing before ministry.
 
-🥣 The laver and its "foot," or pedestal base, were given most recently, in chapter 30
+Its foot was simply the pedestal base holding the basin up.
 
-📐 The order moves from the holiest space outward to the courtyard gate
+Moving through this list retraces the same path God used when He first gave these instructions.
 
-➡️ The list turns from furniture to people
+🐂 The bronze altar comes from chapter twenty seven
 
----
+🥣 The laver was a washing basin
 
-## 👕 The Cloths Of Service, And The Holy Garments For Aaron The Priest, And The Garments Of His Sons, To Minister In The Priest's Office
+🦶 Its foot means the pedestal base
 
-The **"cloths of service"** are the specially woven garments used while ministering, described in detail back in chapter 28 alongside Aaron's holy garments and his sons' priestly clothing. **"To minister in the priest's office"** means to formally serve in the officially appointed role of priest — not a casual task anyone could pick up.
+📖 The order retraces God's original instructions
 
-👕 "Cloths of service" are the woven garments used while ministering
+## 🧵 The Cloths Of Service
 
-📖 Chapter 28 already described these garments in full detail
+Cloths of service were the specially woven garments worn while ministering.
 
-⛪ "Priest's office" is a formal, appointed role, not an informal duty
+Chapter twenty eight already described them in detail.
 
-➡️ The final items on the list are the two holy formulas
+These were not everyday clothes thrown on for the job.
 
----
+Every thread was made for this one holy purpose.
 
-## 🧴 The Anointing Oil, And Sweet Incense For The Holy Place: According To All That I Have Commanded Thee Shall They Do
+🧵 Cloths of service means woven ministry garments
 
-The anointing oil and the incense recipe, both given in chapter 30 with strict warnings against copying or misusing them, round out the list. The closing line, **"according to all that I have commanded thee shall they do,"** is a quiet but firm reminder: skilled and Spirit-filled as they are, Bezaleel and Aholiab still must build exactly to God's specification, with no creative liberty on holy things.
+🚫 They were not ordinary clothing
 
-🧴 The anointing oil and incense recipe both come from chapter 30
+🙏 Every thread served a holy purpose
 
-📋 Even gifted craftsmen must build exactly to the pattern given, not their own ideas
+📖 Chapter twenty eight describes them fully
 
-🔒 Skill was never meant to replace obedience in this project
+## 👕 The Holy Garments For Aaron The Priest, And The Garments Of His Sons
 
-➡️ God pivots from craftsmen to a command for the whole nation
+Aaron's garments marked him out as high priest before anyone saw him act.
+
+His sons wore their own garments to serve in the same holy role.
+
+To minister in the priest's office means to formally serve in that appointed position.
+
+This was not a casual task anyone could simply pick up.
+
+👕 Aaron's garments marked his office visibly
+
+👥 His sons had their own priestly clothing
+
+⛪ Priest's office means a formal appointed role
+
+📖 Clothing itself announced who could serve
+
+## 🧴 The Anointing Oil, And Sweet Incense For The Holy Place
+
+The anointing oil and the incense recipe were both given back in chapter thirty.
+
+Both carried strict warnings against being copied for ordinary use.
+
+These two formulas complete the entire list God has been reviewing.
+
+Everything from the ark to this oil now moves from words to real materials.
+
+🧴 Oil and incense both come from chapter thirty
+
+🔒 Both had strict warnings against misuse
+
+📋 These formulas complete the whole list
+
+📖 Instructions now become real materials
+
+## 📐 According To All That I Have Commanded Thee Shall They Do
+
+This closing line is a quiet but firm reminder to the builders.
+
+Skilled and gifted as they are, they must still build exactly what God specified.
+
+Talent was never a license for creative freedom on holy things.
+
+The whole building list ends the same way it began, under God's command.
+
+📐 Skill still had to follow the exact pattern
+
+🔒 Talent was not a license for creativity
+
+🙏 Obedience mattered more than creativity here
+
+📖 The whole list ends under God's command
 
 # Exodus 31:12-17
-
 # 🕊️ The Sabbath As A Sign
-
 ---
+## 📢 Verily My Sabbaths Ye Shall Keep
 
-## 📢 Speak Thou Also Unto The Children Of Israel, Saying, Verily My Sabbaths Ye Shall Keep
+Verily is an old word meaning truly or certainly.
 
-**"Verily"** is an old word for "truly" or "certainly," used here to add solemn weight to the command. Notice the shift: everything up to now addressed two skilled craftsmen; this command addresses the whole nation. Even sacred construction, no matter how urgent or holy, must still stop for the Sabbath.
+It adds solemn weight to the command that follows.
 
-📢 "Verily" means truly or certainly, adding solemn weight to the command
+Until now God had been speaking only to two skilled craftsmen.
 
-👥 The audience shifts from two craftsmen to the entire nation
+This command suddenly addresses the whole nation of Israel instead.
 
-⏸️ Not even building God's own house was allowed to override the Sabbath
+📢 Verily means truly or certainly
 
-➡️ God explains what the Sabbath is meant to represent
+⚖️ It adds solemn weight to the command
 
----
+👥 The audience widens to the whole nation
 
-## 🤝 For It Is A Sign Between Me And You Throughout Your Generations; That Ye May Know That I Am The LORD That Doth Sanctify You
+📖 Even sacred building work must pause for this
 
-A **"sign"** in this sense is a marker of a relationship, the same kind of language used for circumcision as "a token of the covenant" in Genesis 17:11. The Sabbath functions the same way — an ongoing, visible mark identifying Israel as God's own people, generation after generation.
+## 🤝 For It Is A Sign Between Me And You
 
-**"Sanctify"** means to set apart for God's exclusive use, the same word already used for the tabernacle's furniture and priests in chapter 30. Now an entire nation, not just objects and priests, is described as something God is setting apart.
+A sign in this sense marks a relationship, not just an event.
 
-🤝 "Sign" here marks a relationship, much like circumcision in Genesis 17
+Circumcision already carried this same kind of meaning back in Genesis seventeen.
 
-✨ "Sanctify" means set apart for God, the same word used for holy objects
+The Sabbath works the same way for the whole nation now.
 
-📖 The whole nation, not just the tabernacle, is being set apart here
+It is a visible mark showing that Israel belongs to God.
 
-➡️ The penalty for ignoring this sign is spelled out
+🤝 Sign here marks a relationship
 
----
+✂️ Circumcision carried this same meaning earlier
 
-## ⚠️ Ye Shall Keep The Sabbath Therefore; For It Is Holy Unto You: Every One That Defileth It Shall Surely Be Put To Death
+🕊️ The Sabbath marks the whole nation now
 
-**"Defileth"** means to violate or make unclean something that was set apart as holy. The penalty named here, death, matches the same severe weight already attached to misusing the holy anointing oil or incense back in chapter 30 — the Sabbath is placed in that same highest category of holiness.
+📖 The mark shows Israel belongs to God
 
-⚠️ "Defileth" means to violate or make unclean something holy
+## ✨ That I Am The LORD That Doth Sanctify You
 
-⚖️ The penalty matches the severity already given for misusing holy oil or incense
+Sanctify means to set apart for God's exclusive use.
 
-📊 The Sabbath is placed in the same top tier of holiness as sacred objects
+The same word already described the tabernacle's furniture and the priests.
 
-➡️ The command repeats itself for emphasis
+Now an entire nation is described the same way.
 
----
+People, not just objects, are being set apart here.
 
-## 🛌 Six Days May Work Be Done; But In The Seventh Is The Sabbath Of Rest, Holy To The LORD: Whosoever Doeth Any Work In The Sabbath Day, He Shall Surely Be Put To Death
+✨ Sanctify means set apart for God
 
-This restates, almost word for word, the Sabbath command already given in the Ten Commandments at chapter 20. Repeating it here, right after the tabernacle instructions, shows this law was never meant to be quietly set aside just because holy construction work was underway.
+📦 The word already applied to holy objects
 
-🛌 This repeats the Ten Commandments' Sabbath law from chapter 20 almost exactly
+👥 Now it applies to a whole people
 
-🔁 Repetition here shows the rule wasn't suspended for tabernacle-building
+📖 God sets people apart, not only things
 
-⚠️ The death penalty is stated a second time for full clarity
+## ⚠️ Every One That Defileth It Shall Surely Be Put To Death
 
-➡️ God ties the whole command to the nation's ongoing identity
+Defileth means to violate or treat as unclean something set apart as holy.
 
----
+The penalty named here matches the severity already given for misusing the holy oil.
 
-## 📜 Wherefore The Children Of Israel Shall Keep The Sabbath, To Observe The Sabbath Throughout Their Generations, For A Perpetual Covenant
+That places the Sabbath in the very same top tier of holiness.
 
-A **"perpetual covenant"** is a permanent agreement, never scheduled to expire or be renegotiated by a later generation — the same "perpetual" language already used for the incense offering in chapter 30. This law was never meant for one generation alone.
+Breaking it was never treated as a small matter.
 
-📜 A "perpetual covenant" is a permanent agreement, not a temporary one
+⚠️ Defileth means to violate something holy
 
-🔁 The same "perpetual" language already described the incense in chapter 30
+⚖️ The penalty matches misuse of the holy oil
 
-👨‍👦‍👦 The command was written to outlast every single generation that received it
+📊 The Sabbath sits in that same top tier
 
-➡️ God grounds the whole command in the very beginning of the world
+📖 This was never treated as a minor rule
 
----
+## ✂️ That Soul Shall Be Cut Off From Among His People
 
-## 🌍 It Is A Sign Between Me And The Children Of Israel For Ever: For In Six Days The LORD Made Heaven And Earth, And On The Seventh Day He Rested, And Was Refreshed
+Being cut off meant total separation from the community of Israel.
 
-The Sabbath is tied directly back to the creation week described in Genesis 2:2-3, long before Israel existed as a nation. **"Was refreshed"** doesn't mean God grew weary or ran out of strength; it pictures completion and satisfaction, the same rest Israel is now asked to imitate one day out of every seven.
+This could mean exile, or it could mean God ending that person's life directly.
 
-🌍 The Sabbath is anchored in creation itself, from Genesis 2
+Either way, it removed someone entirely from belonging to God's people.
 
-😌 "Was refreshed" pictures satisfaction and completion, not divine weariness
+The wording is severe because the Sabbath itself was treated as severe.
 
-🔁 Israel is asked to imitate God's own pattern of work and rest
+✂️ Cut off means total separation
 
-➡️ The scene shifts back to Moses on the mountain
+🚪 It could mean exile or death
+
+👥 It removes someone from God's people
+
+📖 Severe wording matched a severe command
+
+## 🛠️ Six Days May Work Be Done
+
+Six days of ordinary work were fully permitted and expected.
+
+Only the seventh day carried this strict command to rest.
+
+This was not a call to stop working altogether.
+
+It was a call to build one day of rest into every week.
+
+🛠️ Six days allowed ordinary work
+
+🛌 Only the seventh carried the strict rule
+
+🚫 This was not a ban on work
+
+📖 Rest was built into the rhythm of life
+
+## 🛌 The Sabbath Of Rest, Holy To The LORD
+
+This restates the Sabbath command already given in the Ten Commandments in chapter twenty.
+
+Repeating it here comes right after the tabernacle instructions were finished.
+
+That timing shows the law was never quietly set aside for holy construction work.
+
+Even building God's own house had to stop on this day.
+
+🔁 This repeats the Ten Commandments almost exactly
+
+🚧 Holy construction still had to pause
+
+🛌 The rule applied no matter the urgency
+
+📖 It follows right after the tabernacle instructions
+
+## 📜 A Perpetual Covenant
+
+A perpetual covenant is a permanent agreement, never set to expire.
+
+The same word already described the incense offering back in chapter thirty.
+
+This law was never meant to belong to just one generation.
+
+It was written to outlast every generation that received it.
+
+📜 Perpetual means permanent, not temporary
+
+🔁 The same word described the incense earlier
+
+👪 The law was meant for every generation
+
+📖 It was written to outlast its first hearers
+
+## 🌍 For In Six Days The LORD Made Heaven And Earth
+
+The Sabbath is tied directly back to the creation week in Genesis two.
+
+That means it existed long before Israel became a nation.
+
+Israel is not inventing a new custom here.
+
+They are imitating a pattern God Himself already set.
+
+🌍 The Sabbath is anchored in creation itself
+
+🕊️ Israel imitates a pattern, not a new idea
+
+🔁 God set the rhythm before Israel existed
+
+📖 Genesis two already describes this pattern
+
+## 😌 And Was Refreshed
+
+Was refreshed does not mean God grew tired or ran out of strength.
+
+God does not experience weakness the way people do.
+
+The phrase instead pictures completion and satisfaction after finished work.
+
+Israel is asked to imitate that same rhythm of rest one day out of seven.
+
+😌 Refreshed does not mean weary
+
+💪 God never runs out of strength
+
+✅ It pictures completion and satisfaction
+
+📖 Israel imitates God's rhythm of rest
 
 # Exodus 31:18
-
 # 📜 Two Tables Of Stone
-
 ---
+## ⛰️ Communing With Him Upon Mount Sinai
 
-## 🗣️ When He Had Made An End Of Communing With Him Upon Mount Sinai
+Communing is an old word for speaking closely and directly with someone.
 
-**"Communing"** is an old word for speaking directly with someone, a close conversation rather than a formal announcement. This single line quietly closes out an enormous block of instruction stretching all the way back to chapter 25 — the entire tabernacle blueprint, priesthood, and Sabbath law were given in one continuous conversation on the mountain.
+This was not a formal announcement shouted from a distance.
 
-🗣️ "Communing" means speaking directly, in close conversation
+This single line quietly closes out an enormous block of instruction.
 
-📖 This closes out everything God has been describing since chapter 25
+Everything since chapter twenty five was given in one continuous conversation on the mountain.
 
-⛰️ All of it was given during one extended meeting atop Mount Sinai
+🗣️ Communing means speaking directly and closely
 
-## 📖 He Gave Unto Moses Two Tables Of Testimony, Tables Of Stone, Written With The Finger Of God
+⛰️ It happened on Mount Sinai
 
-The **"finger of God"** is the same phrase Egypt's own magicians used back in chapter 8 when they could no longer reproduce the plague of lice and admitted, "this is the finger of God." Here that same phrase describes tablets Moses did not write himself; God wrote them directly.
+✅ This line closes that entire block of instruction
 
-While this handoff is happening on the mountain, the people below are about to grow impatient and build a golden calf in the very next chapter. The tables of the covenant and Israel's first great betrayal of it happen almost at the same moment, on opposite sides of the same mountain.
+📖 One conversation covered everything since chapter twenty five
 
-📖 "Finger of God" is the same phrase Egypt's magicians used in chapter 8
+## ✍️ Written With The Finger Of God
 
-✍️ These tablets were written directly by God, not copied out by Moses
+Finger of God is the same phrase Egypt's own magicians used earlier in the story.
 
-⛰️ Chapter 32 opens with betrayal breaking out at the foot of this same mountain`;
+In chapter eight they could no longer copy the plague of lice.
+
+They admitted that only God could have done it.
+
+These stone tables were written by that same hand, not copied out by Moses.
+
+Chapter thirty two opens with betrayal breaking out at the foot of this very mountain.
+
+✍️ Finger of God wrote these tables directly
+
+🐛 Egypt's magicians used this phrase in chapter eight
+
+🚫 Moses did not write these himself
+
+📖 Betrayal breaks out next, on this same mountain`.trim();
 
 export const EXODUS_THIRTY_ONE_PERSONAL_SECTIONS = parseExodusThirtyOneRawNotes(EXODUS_THIRTY_ONE_RAW_NOTES);

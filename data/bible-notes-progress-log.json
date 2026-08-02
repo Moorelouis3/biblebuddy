@@ -6694,6 +6694,55 @@
           "at": "2026-08-02T16:58:00Z"
         }
       ]
+    },
+    {
+      "book": "Exodus",
+      "chapter": 31,
+      "startedAt": "2026-08-02T17:46:00Z",
+      "finishedAt": "2026-08-02T17:56:50Z",
+      "durationMinutes": 11,
+      "sections": 4,
+      "cards": 34,
+      "verses": 18,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter, replacing the original pre-spec version (5 sections / 27 cards). God calling Bezaleel by name and his family line back to Hur (likely the same Hur who held up Moses' hands in Exodus 17), the Spirit-filled craftsmanship given in wisdom, understanding, and knowledge, the wide range of metalworking, gem-cutting, and woodcarving skill required, Aholiab from the lesser tribe of Dan paired alongside Bezaleel from prominent Judah, the full building list reviewed one more time from the ark down to the anointing oil, the Sabbath command addressed to the whole nation as a sign and a perpetual covenant tied back to the creation week, and the chapter's close where God hands Moses the two stone tables written by His own finger just as betrayal is about to break out at the foot of the mountain. Kept the original file's 4 section boundaries (1-6, 7-11, 12-17, 18) while rewriting every card to the new format. Density about 1.9 cards/verse (18 verses, 34 cards). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. scripts/check_bible_note_style.py found 1 problem on first pass (a bullet over the 8 word limit), fixed, second run clean. Parser check passed exactly (4/4 sections, 34 cards, text verbatim via a standalone tsx script importing the module). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter, no changes needed. Redo backlog entry popped; next redo target is Exodus 32.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-02T17:46:54Z"
+        },
+        {
+          "name": "target chapter determined: Exodus 31 (style redo, first in remaining array)",
+          "at": "2026-08-02T17:46:54Z"
+        },
+        {
+          "name": "KJV text fetched for Exodus 31 (raw.githubusercontent.com aruljohn/Bible-kjv mirror)",
+          "at": "2026-08-02T17:46:54Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and SKILL.md read in full",
+          "at": "2026-08-02T17:46:54Z"
+        },
+        {
+          "name": "source file written (lib/exodusThirtyOneSource.ts, 4 sections, 34 cards)",
+          "at": "2026-08-02T17:56:50Z"
+        },
+        {
+          "name": "style checker clean after fixing 1 flagged bullet word count issue",
+          "at": "2026-08-02T17:56:50Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo chapter, no changes needed",
+          "at": "2026-08-02T17:56:50Z"
+        },
+        {
+          "name": "parser check passed (4/4 sections, 34 cards, 18 verses, text verbatim)",
+          "at": "2026-08-02T17:56:50Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-02T17:56:50Z"
+        }
+      ]
     }
   ]
 }
