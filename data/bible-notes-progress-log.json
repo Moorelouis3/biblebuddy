@@ -7,12 +7,12 @@
       "book": "Exodus",
       "chapter": 19,
       "startedAt": "2026-08-02T05:46:28Z",
-      "finishedAt": "2026-08-02T05:54:23Z",
-      "durationMinutes": 8,
+      "finishedAt": "2026-08-02T05:56:01Z",
+      "durationMinutes": 10,
       "sections": 8,
       "cards": 25,
       "verses": 25,
-      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (8 sections / 21 cards) from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Exodus 19 is Israel's arrival at Sinai: the third month timing later tied to Pentecost, God's covenant proposal (the eagles' wings image, the peculiar treasure offer conditioned on obedience, the kingdom of priests calling), the people's united but soon-to-be-broken promise to obey, the two day sanctification and washing of clothes, the strict death-penalty boundary around the mountain with its trumpet-signaled release, the theophany itself (thunder, lightning, thick cloud, the furnace-smoke comparison, the quaking mountain), Moses' repeated trips up and down the mountain, God's concern about ordinary curiosity breaking the boundary, and the closing exception letting only Moses and Aaron ascend. Kept the original file's 8 section boundaries for verse-coverage continuity while rewriting every card to the new format. Density 1.0 cards/verse (25 verses, 25 cards). scripts/check_bible_note_style.py found 3 problems on first pass (three bullets over the 8 word limit), fixed, second run clean. Parser check passed exactly (8/8 sections, 25 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range covering Exodus 1-40, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (ExodusNineteenPersonalSection, parseExodusNineteenRawNotes, EXODUS_NINETEEN_RAW_NOTES, EXODUS_NINETEEN_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Exodus 19 entry removed from the front of the list as part of this commit; next redo target is Exodus 20.",
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (8 sections / 21 cards) from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Exodus 19 is Israel's arrival at Sinai: the third month timing later tied to Pentecost, God's covenant proposal (the eagles' wings image, the peculiar treasure offer conditioned on obedience, the kingdom of priests calling), the people's united but soon-to-be-broken promise to obey, the two day sanctification and washing of clothes, the strict death-penalty boundary around the mountain with its trumpet-signaled release, the theophany itself (thunder, lightning, thick cloud, the furnace-smoke comparison, the quaking mountain), Moses' repeated trips up and down the mountain, God's concern about ordinary curiosity breaking the boundary, and the closing exception letting only Moses and Aaron ascend. Kept the original file's 8 section boundaries for verse-coverage continuity while rewriting every card to the new format. Density 1.0 cards/verse (25 verses, 25 cards). scripts/check_bible_note_style.py found 3 problems on first pass (three bullets over the 8 word limit), fixed, second run clean. Parser check passed exactly (8/8 sections, 25 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range covering Exodus 1-40, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (ExodusNineteenPersonalSection, parseExodusNineteenRawNotes, EXODUS_NINETEEN_RAW_NOTES, EXODUS_NINETEEN_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Exodus 19 entry removed from the front of the list as part of this commit; next redo target is Exodus 20. This run's fresh clone started in a detached HEAD; confirmed origin/main pointed exactly at the detached HEAD's parent commit (befd8a6, Exodus 18) before resetting local main onto the new commit and pushing, a clean fast forward with no data loss.",
       "steps": [
         {
           "name": "npm install done",
@@ -53,6 +53,14 @@
         {
           "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, redo-remaining.json popped, SESSION_LOG.md)",
           "at": "2026-08-02T05:55:22Z"
+        },
+        {
+          "name": "committed all changed files (found repo in detached HEAD from a fresh clone, confirmed origin/main matched the detached HEAD's parent commit exactly, reset local main onto the new commit)",
+          "at": "2026-08-02T05:55:40Z"
+        },
+        {
+          "name": "pushed to origin main, confirmed via fresh fetch that origin/main matches HEAD exactly",
+          "at": "2026-08-02T05:56:01Z"
         }
       ]
     },
