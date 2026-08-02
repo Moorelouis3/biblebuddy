@@ -6274,6 +6274,59 @@
           "at": "2026-08-02T08:55:37Z"
         }
       ]
+    },
+    {
+      "book": "Exodus",
+      "chapter": 23,
+      "startedAt": "2026-08-02T09:46:30Z",
+      "finishedAt": "2026-08-02T09:56:26Z",
+      "durationMinutes": 10,
+      "sections": 10,
+      "cards": 41,
+      "verses": 33,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter, regenerating the original pre-spec version (10 sections / 24 cards, only 1 bullet per card, no blank lines between body sentences) from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Exodus 23 closes the book of the covenant's case laws and moves into covenant renewal instructions: honest courtroom testimony and the ban on following a majority into a false verdict, kindness owed even to an enemy's straying or struggling animal, justice cutting both directions for rich and poor alike, the bribery ban, oppressing a stranger forbidden on the grounds of Israel's own memory of Egypt, the sabbatical year and weekly Sabbath rest extended to servants/foreigners/animals, the three annual pilgrim feasts (Unleavened Bread, Harvest, Ingathering), offering regulations including the kid-in-its-mother's-milk ban tied to a pagan fertility practice, the Angel sent ahead carrying God's own name and authority, the command to destroy rather than merely avoid pagan altars, the promise of hornets and gradual conquest paced to Israel's population growth so the land would not sit desolate, and the chapter's close defining the promised land's real borders and banning any covenant with its pagan nations. Kept the original file's 10 section boundaries for verse-coverage continuity while rewriting every card to the new format (4 bullets each, one idea per body line with a blank line between every line). Density about 1.24 cards/verse (33 verses, 41 cards). scripts/check_bible_note_style.py found 3 problems on first pass (two banned words that happened to be literal KJV vocabulary in card titles, 'indeed' and 'quite', plus one 9-word bullet), fixed by trimming those words out of the titles and shortening the bullet, second run clean. Parser check passed exactly (10/10 sections, 41 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range covering Exodus 1-40, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (ExodusTwentyThreePersonalSection, parseExodusTwentyThreeRawNotes, EXODUS_TWENTY_THREE_RAW_NOTES, EXODUS_TWENTY_THREE_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Exodus 23 entry removed from the front of the list as part of this commit; next redo target is Exodus 24.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-02T09:46:30Z"
+        },
+        {
+          "name": "target chapter determined: Exodus 23 (style redo, first in remaining backlog)",
+          "at": "2026-08-02T09:46:30Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Exodus.json",
+          "at": "2026-08-02T09:46:30Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (lib/genesisThirtyOneSource.ts) read",
+          "at": "2026-08-02T09:46:30Z"
+        },
+        {
+          "name": "source file written",
+          "at": "2026-08-02T09:52:32Z"
+        },
+        {
+          "name": "style checker clean (after fixing 3 flagged problems)",
+          "at": "2026-08-02T09:52:47Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo chapter (no changes needed)",
+          "at": "2026-08-02T09:52:47Z"
+        },
+        {
+          "name": "parser check passed (10 sections, 41 cards, 33 verses covered)",
+          "at": "2026-08-02T09:53:21Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-02T09:55:19Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-02T09:56:26Z"
+        }
+      ]
     }
   ]
 }
