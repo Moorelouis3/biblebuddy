@@ -5872,8 +5872,8 @@
       "book": "Exodus",
       "chapter": 16,
       "startedAt": "2026-08-02T02:46:15Z",
-      "finishedAt": "2026-08-02T02:56:25Z",
-      "durationMinutes": 10,
+      "finishedAt": "2026-08-02T02:57:56Z",
+      "durationMinutes": 12,
       "sections": 9,
       "cards": 46,
       "verses": 36,
@@ -5918,6 +5918,14 @@
         {
           "name": "progress files logged",
           "at": "2026-08-02T02:56:25Z"
+        },
+        {
+          "name": "committed all changed files",
+          "at": "2026-08-02T02:57:20Z"
+        },
+        {
+          "name": "pushed to origin main (commit 4798d94), confirmed on origin/main",
+          "at": "2026-08-02T02:57:56Z"
         }
       ]
     }
