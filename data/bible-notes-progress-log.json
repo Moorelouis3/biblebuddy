@@ -6755,6 +6755,59 @@
           "at": "2026-08-02T17:59:10Z"
         }
       ]
+    },
+    {
+      "book": "Exodus",
+      "chapter": 32,
+      "startedAt": "2026-08-02T18:46:21Z",
+      "finishedAt": "2026-08-02T18:53:35Z",
+      "durationMinutes": 7,
+      "sections": 7,
+      "cards": 32,
+      "verses": 35,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter, replacing the original pre-spec version (7 sections / 21 cards, no .trim() on its raw notes constant). The golden calf built from the people's own jewelry while Moses is still on the mountain, Aaron's evasive excuse that the calf simply came out of the fire, God's offer to start a new nation through Moses alone and Moses' refusal of it, the reversal of whose people Israel is (thy people vs my people) on both sides of the argument, Moses shattering the tablets and grinding the calf into the drinking water as a kind of ordeal, the sons of Levi answering the call at a steep cost, and Moses offering to be blotted out of God's book himself. Kept the original file's 7 section boundaries (1-6, 7-10, 11-14, 15-20, 21-24, 25-29, 30-35) while rewriting every card to the new format. Density about 0.9 cards/verse (35 verses, 32 cards). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. scripts/check_bible_note_style.py found 4 problems on first pass (bullets over the 8 word limit), fixed, second run clean. Parser check passed exactly (7/7 sections, 32 cards, text verbatim via a standalone tsx script importing the module). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter, no changes needed. Redo backlog entry popped; next redo target is Exodus 33.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-02T18:46:52Z"
+        },
+        {
+          "name": "target chapter determined: Exodus 32 (style redo, first in remaining array)",
+          "at": "2026-08-02T18:47:10Z"
+        },
+        {
+          "name": "KJV text fetched for Exodus 32 (raw.githubusercontent.com aruljohn/Bible-kjv mirror)",
+          "at": "2026-08-02T18:47:30Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and SKILL.md read in full",
+          "at": "2026-08-02T18:47:00Z"
+        },
+        {
+          "name": "source file written (lib/exodusThirtyTwoSource.ts, 7 sections, 32 cards)",
+          "at": "2026-08-02T18:52:00Z"
+        },
+        {
+          "name": "style checker clean after fixing 4 flagged bullet word count issues",
+          "at": "2026-08-02T18:52:30Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo chapter, no changes needed",
+          "at": "2026-08-02T18:52:35Z"
+        },
+        {
+          "name": "parser check passed (7/7 sections, 32 cards, 35 verses, text verbatim)",
+          "at": "2026-08-02T18:52:50Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-02T18:53:05Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, data/bible-notes-style-redo-remaining.json, SESSION_LOG.md)",
+          "at": "2026-08-02T18:53:35Z"
+        }
+      ]
     }
   ]
 }

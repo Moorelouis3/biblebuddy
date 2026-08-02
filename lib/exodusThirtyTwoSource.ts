@@ -89,389 +89,647 @@ function parseExodusThirtyTwoRawNotes(rawText: string): ExodusThirtyTwoPersonalS
 }
 
 const EXODUS_THIRTY_TWO_RAW_NOTES = `# Exodus 32:1-6
-
 # 🐄 The People Build A Golden Calf
-
 ---
+## ❓ We Wot Not What Is Become Of Him
 
-## ⏳ The People Gathered Themselves Together Unto Aaron... For As For This Moses, We Wot Not What Is Become Of Him
+"Wot" means "know."
 
-Moses has been up the mountain forty days (Exodus 24:18), and the people's patience runs out first. **"Wot not"** is an old form of "wit," meaning "know" — so "we wot not" simply means "we do not know."
+"We wot not" simply means "we do not know."
 
-Notice what they ask for: not a return to Egypt, but new gods to replace the leader they assume is gone. Their fear isn't a loss of faith exactly — it's a demand for something visible and controllable to walk in front of them.
+Moses has been gone up the mountain for forty days.
 
-⏳ Forty days of waiting wears out the people's patience completely
+The people's patience for a promise they cannot see runs out first.
 
-❓ "Wot not" is an old word meaning "do not know"
+They do not ask to return to Egypt.
 
-🐄 They ask for gods they can see and control, not a return to slavery
+They ask for a new god they can see and control.
 
-➡️ Aaron's response sets the whole disaster in motion
+❓ Wot not means do not know
 
----
+⏳ Forty days already felt like forever
 
-## 💍 Break Off The Golden Earrings, Which Are In The Ears Of Your Wives, Of Your Sons, And Of Your Daughters
+🐄 They want a god they can see
 
-Aaron could have refused. Instead he asks for gold — likely much of it the very same plunder God arranged for Israel to carry out of Egypt as they left (Exodus 12:35-36), freely given by the Egyptians themselves. The same gold meant to fund a future tabernacle is redirected toward an idol before that tabernacle is even built.
+➡️ Aaron does not resist their demand
 
-💍 Aaron complies instead of resisting the crowd's demand
+## 💍 Break Off The Golden Earrings
 
-🇪🇬 This gold likely came from the plunder God provided at the Exodus
+Aaron could have refused this request outright.
 
-📖 The very resource meant for God's house is diverted into an idol first
+Instead he starts collecting gold from the frightened crowd.
 
-➡️ Aaron does more than just collect the gold
+This gold likely came from the plunder the Egyptians handed over as Israel left.
 
----
+That same gold was meant to help build the tabernacle later in this book.
 
-## 🔨 He Received Them At Their Hand, And Fashioned It With A Graving Tool, After He Had Made It A Molten Calf
+Here it funds an idol before the tabernacle is even built.
 
-A **"graving tool"** is an engraving or carving instrument, and **"molten"** means melted down and poured into shape. Aaron is named as the one actively crafting this, verse by verse — not a passive bystander swept along by the crowd.
+🙅 Aaron does not refuse the crowd
 
-The contrast with the previous chapter is sharp. Chapter 31 just described Bezaleel and Aholiab, filled with the Spirit of God, using their skilled hands to build instruments of true worship. Here Aaron, the nation's own high priest, uses his hands to build the opposite.
+💰 He starts collecting their gold instead
 
-🔨 "Graving tool" means an engraving instrument; "molten" means melted and cast
+🇪🇬 This gold came from Egypt's parting gifts
 
-👐 Aaron is described as actively shaping this calf himself
+📖 The tabernacle's future gold funds an idol first
 
-⚖️ This directly mirrors, and inverts, chapter 31's Spirit-gifted craftsmen
+## 🔨 Fashioned It With A Graving Tool
 
-➡️ Aaron then does something even stranger
+A "graving tool" is a tool for engraving or carving metal.
 
----
+"Molten" means melted down and poured into a mold.
 
-## 🎉 Aaron Built An Altar Before It... And Rose Up To Play
+Verse four names Aaron as the one shaping this calf himself.
 
-Aaron doesn't call this a new god replacing the LORD; he calls it **"a feast to the LORD"** (v5), attempting to blend the golden calf into worship of the true God rather than openly abandoning Him. That blending, not open rebellion, is exactly what makes it so dangerous.
+He is not swept along helplessly by the crowd.
 
-**"Rose up to play"** is a KJV phrase the apostle Paul quotes word for word in 1 Corinthians 10:7 while warning believers against idolatry — it's generally understood to include more than innocent games, pointing toward the loose, unrestrained revelry that followed the feast.
+Chapter thirty one just described Spirit filled craftsmen building the tabernacle with skilled hands.
 
-🎉 Aaron frames the calf as worship "to the LORD," not a new god entirely
+Aaron now uses his own hands to build the opposite.
 
-📖 1 Corinthians 10:7 quotes this exact verse as a warning against idolatry
+🔨 Graving tool means a metal engraving tool
 
-⚠️ Blending true worship with an idol proved more dangerous than open rejection
+🔥 Molten means melted and poured into shape
 
-➡️ On the mountain, God already knows exactly what's happening below
+👐 Aaron shapes this calf with his own hands
+
+📖 This mirrors and reverses chapter thirty one's craftsmen
+
+## 🙏 A Feast To The LORD
+
+Aaron does not call this a brand new god.
+
+He calls it "a feast to the LORD" instead.
+
+He is trying to blend the golden calf into worship of the true God.
+
+That blending is what makes this moment so dangerous.
+
+Open rebellion is easy to spot and resist.
+
+A mix of true worship and an idol is much harder to catch.
+
+🎉 Aaron does not name a new god openly
+
+🙏 He calls the calf a feast
+
+⚠️ Blending worship with an idol is dangerous
+
+📖 A blend is harder to catch than rebellion
+
+## 🎶 Rose Up To Play
+
+"Rose up to play" pictures a loud, unrestrained celebration around the calf.
+
+The apostle Paul quotes this exact phrase in First Corinthians chapter ten.
+
+He warns believers there to stay far from idolatry.
+
+The feast began with worship words and ended in total chaos.
+
+Words that sound like worship can still hide something rotten underneath.
+
+🎶 Rose up to play means loud celebration
+
+📖 Paul quotes this line in First Corinthians ten
+
+⚠️ He warns readers there against idolatry
+
+➡️ Worship words do not guarantee real worship
 
 # Exodus 32:7-10
-
 # 🔥 God Tells Moses What Has Happened
-
 ---
+## 👇 Thy People Have Corrupted Themselves
 
-## 👇 Thy People... Have Corrupted Themselves... Have Made Them A Molten Calf
+God calls Israel "thy people" here, not "my people."
 
-God's phrasing is pointed: He calls them **"thy people"** — Moses' people — rather than "my people." It's a subtle but real rhetorical distancing, describing a relationship under real strain because of what's happening at the foot of the mountain.
+That shift in pronoun is not an accident.
 
-👇 God calls Israel "thy people," not "my people," in this moment
+It puts real distance between God and the nation in this moment.
 
-🐄 The corruption is described as swift, happening in just forty days
+"Corrupted" means they have ruined something that was pure.
 
-➡️ God names exactly what kind of people they've shown themselves to be
+Only forty days have passed since they promised to obey every word God spoke.
 
----
+👇 God says thy people, not my people
 
-## 🐂 I Have Seen This People, And, Behold, It Is A Stiffnecked People
+📏 That shift signals real relational distance
 
-**"Stiffnecked"** pictures an ox refusing the yoke, straining stubbornly against direction rather than submitting to it. This becomes a recurring description of Israel through the rest of the wilderness story, repeated again in this very book (Exodus 33:3, 33:5) and later in Deuteronomy 9:6.
+💔 Corrupted means ruined something that was pure
 
-🐂 "Stiffnecked" pictures an ox refusing to submit to its yoke
+➡️ Only forty days have passed since their promise
 
-🔁 This same description of Israel repeats later in Exodus and Deuteronomy
+## 🐂 It Is A Stiffnecked People
 
-➡️ God proposes something drastic
+"Stiffnecked" pictures an ox that refuses to bend its neck for the yoke.
 
----
+The animal strains against the direction its master wants it to go.
 
-## 🔥 Now Therefore Let Me Alone, That My Wrath May Wax Hot Against Them, And That I May Consume Them
+This exact word describes Israel again later in this same book.
 
-**"Wax hot"** is an old idiom meaning to grow intense, the way a fire burns hotter — used here of God's anger. **"Let me alone"** is a strange request from the God who needs no permission; it functions less like a command and more like an opening, almost inviting Moses to respond rather than stay silent.
+Moses himself uses it again in chapter thirty three.
 
-🔥 "Wax hot" means to grow intense, like a fire building in strength
+Deuteronomy nine repeats the description as well.
 
-🚪 "Let me alone" reads less like a command and more like an opening
+🐂 Stiffnecked pictures an ox refusing its yoke
 
-➡️ God attaches an extraordinary offer to this moment
+🔁 The same word returns later in Exodus
 
----
+📖 Deuteronomy nine repeats this same description
 
-## 🌟 And I Will Make Of Thee A Great Nation
+➡️ God now proposes something drastic
 
-God offers to set Israel aside entirely and start over through Moses alone — effectively making Moses a new Abraham, the founding father of an entirely new nation. It's a genuine test of Moses' character: personal glory and a fresh start, handed to him on a plate.
+## 🔥 Let Me Alone, That My Wrath May Wax Hot
 
-🌟 God offers to build an entirely new nation through Moses alone
+"Wax hot" is an old way to say grow intense, the way a fire builds.
 
-👑 This would have made Moses a second Abraham, a new founding father
+Here it describes God's own rising anger at what happened below.
 
-📖 What Moses does with this offer becomes the point of the next section
+"Let me alone" sounds like a command, but God needs no one's permission.
 
-➡️ Moses' answer reveals exactly what kind of leader he is
+It reads more like an opening than a command.
+
+Moses is invited to respond, not told to stay silent.
+
+🔥 Wax hot means grow intense like fire
+
+🚪 Let me alone sounds like an opening
+
+🗣️ Moses is invited to respond here
+
+➡️ God attaches a strange offer to this moment
+
+## 🌟 I Will Make Of Thee A Great Nation
+
+God offers to set Israel aside and start over through Moses alone.
+
+That would make Moses a second Abraham, a brand new founding father.
+
+Personal glory and a fresh start are handed to Moses on a plate.
+
+What Moses does with this offer reveals exactly what kind of leader he is.
+
+🌟 God offers to build a new nation
+
+👑 Moses would become a second Abraham
+
+🎁 Personal glory is offered on a plate
+
+📖 Moses' response reveals his true character
 
 # Exodus 32:11-14
-
 # 🙏 Moses Intercedes For The People
-
 ---
+## 🗣️ Moses Besought The LORD His God
 
-## 🗣️ Moses Besought The LORD His God... Why Doth Thy Wrath Wax Hot Against Thy People
+"Besought" is the old past tense of "beseech," meaning to plead earnestly.
 
-**"Besought"** is the past tense of "beseech" — to plead or beg earnestly, not a calm, formal request. Notice the pronoun reversal: God had just called them "thy people" (Moses' people, v7); Moses immediately hands the phrase right back, calling them "thy people" — God's people once again.
+Moses does not offer a calm, polite request here.
 
-🗣️ "Besought" means pleaded or begged earnestly, not calmly requested
+God had just called Israel "thy people," meaning Moses' people.
 
-🔄 Moses reverses God's own wording, handing the people back to Him
+Moses immediately hands that phrase right back to God.
 
-➡️ Moses builds his case on more than just sympathy
+He calls them "thy people," God's people, once again.
 
----
+🗣️ Besought means pleaded earnestly, not calmly asked
 
-## 🌍 Wherefore Should The Egyptians Speak... Turn From Thy Fierce Wrath, And Repent Of This Evil
+🔄 Moses reverses God's own wording back
 
-Moses' first argument isn't about Israel's feelings at all — it's about God's reputation among the watching nations. If Israel is destroyed right after the Exodus, Egypt will read it as a rescue that failed, not a judgment that succeeded.
+🤝 He hands the people back to God
 
-🌍 Moses appeals to how the watching nations will read God's actions
+➡️ Moses builds his case on more than feelings
 
-🎯 The argument protects God's own name, not merely Israel's comfort
+## 🌍 Wherefore Should The Egyptians Speak
+
+Moses' first argument is not about how the people feel.
+
+It is about how the watching nations will read God's next move.
+
+If Israel is destroyed right after the Exodus, Egypt reads that as failure, not judgment.
+
+That reading would damage the reputation Moses is trying to protect.
+
+🌍 Moses appeals to the watching nations first
+
+🎯 The argument protects God's name, not comfort
+
+🇪🇬 Egypt would read destruction as a failed rescue
 
 ➡️ Moses reaches for an even older argument
 
----
+## 📜 Remember Abraham, Isaac, And Israel, Thy Servants
 
-## 📜 Remember Abraham, Isaac, And Israel, Thy Servants, To Whom Thou Swarest By Thine Own Self
+"Swarest" means swore, an old past tense of "swear."
 
-**"Swarest"** means swore. Moses reminds God of His own unconditional oath to the patriarchs — a promise sworn "by thine own self" because there was no one greater to swear by (Genesis 22:16-17). Moses isn't inventing a new reason for mercy; he's simply holding God to what God already promised.
+Moses reminds God of an oath already made to the patriarchs.
 
-📜 "Swarest" means swore, referring back to God's oath in Genesis 22
+That oath was sworn "by thine own self" in Genesis twenty two.
 
-🤝 Moses grounds his appeal in an existing promise, not a new argument
+There was no one greater for God to swear by.
 
-➡️ God's response to this plea is unexpected
+Moses is not inventing a new reason for mercy.
 
----
+He is holding God to a promise God already made.
 
-## 💭 The LORD Repented Of The Evil Which He Thought To Do Unto His People
+📜 Swarest means swore, an old verb form
 
-This "repenting" describes a real, relational change in God's declared course of action in response to intercession — not a correction of some prior moral error. The same relational language appears later when Nineveh repents in Jonah 3:10 and God relents of the disaster He had planned.
+🤝 The oath was made in Genesis twenty two
 
-This moment shows prayer functioning as something real, not a formality God has already decided to ignore. Moses' plea genuinely factors into what happens next.
+✋ God swore by himself, having no one greater
 
-💭 God's "repenting" describes a real change in declared action, not a moral correction
+➡️ Moses holds God to an existing promise
 
-📖 Jonah 3:10 later uses this exact same kind of relational language
+## 💭 The LORD Repented Of The Evil
 
-🙏 Intercession is shown here as something that genuinely matters, not empty ritual
+This "repenting" describes a real change in God's declared course of action.
 
-➡️ Moses now has to walk back down into the mess he interceded for
+It does not describe God correcting some past mistake.
+
+The same relational language appears later when Nineveh repents in Jonah three.
+
+God relents there too, in response to a real change below.
+
+Prayer is shown here as something that actually matters.
+
+Moses' plea genuinely factors into what happens next.
+
+💭 Repented means a real change in God's course
+
+🙅 It is not God fixing a past mistake
+
+📖 Jonah three later uses this same language
+
+➡️ Moses now must return to face the camp
 
 # Exodus 32:15-20
-
 # 💥 Moses Breaks The Tablets
-
 ---
+## ✍️ The Tables Were The Work Of God
 
-## ✍️ The Tables Were The Work Of God, And The Writing Was The Writing Of God, Graven Upon The Tables
+"Graven" means engraved or carved directly into stone.
 
-**"Graven"** means engraved or carved. This restates, almost word for word, the closing line of the previous chapter — these tablets were never Moses' own composition, but God's direct handiwork, carried down the mountain by Moses just as everything is about to fall apart.
+This line nearly repeats the last line of the previous chapter.
 
-✍️ "Graven" means engraved or carved directly into the stone
+These tablets were never Moses' own composition.
 
-🔗 This directly echoes chapter 31's closing description of the same tablets
+They are God's own handiwork, carried down the mountain by Moses.
 
-➡️ Moses isn't alone on his way down
+Everything is about to fall apart the moment he reaches the camp.
 
----
+✍️ Graven means engraved or carved into stone
 
-## ⚔️ There Is A Noise Of War In The Camp... The Noise Of Them That Sing Do I Hear
+🔗 This echoes chapter thirty one's closing line
 
-Joshua, who has been waiting partway up the mountain since chapter 24, hears the commotion and assumes it's battle. Moses, closer and more clear-eyed, correctly identifies it as singing and revelry instead — two men interpreting the exact same sound very differently.
+🎁 The tablets are God's own handiwork
 
-⚔️ Joshua has been waiting on the mountain since chapter 24
+➡️ Moses carries them straight into disaster
 
-🎶 Moses correctly identifies the noise as singing, not warfare
+## ⚔️ There Is A Noise Of War In The Camp
 
-➡️ Moses reaches the camp and sees it for himself
+Joshua has been waiting partway up the mountain since chapter twenty four.
 
----
+He hears loud noise rising from the camp below.
 
-## 💔 Moses' Anger Waxed Hot, And He Cast The Tables Out Of His Hands, And Brake Them Beneath The Mount
+He assumes it must be the sound of battle.
 
-Seeing the calf and the dancing firsthand, Moses' own anger now "waxes hot" — the identical phrase already used for God's anger in verse 10. **"Brake"** is the old past tense of "break." Shattering the tablets is almost a prophetic act: the covenant, physically represented in stone, is broken the moment it's broken in practice by the people below.
+Moses, closer and more clear eyed, will read the sound differently.
 
-💔 Moses' anger uses the same "waxed hot" language already used for God's
+⏳ Joshua has waited since chapter twenty four
 
-🪨 "Brake" is the old past tense of "break"
+👂 He hears loud noise from the camp
 
-📖 Shattering the tablets physically enacts the covenant already broken in practice
+⚔️ He assumes the noise means open battle
 
-➡️ Moses turns his fury on the calf itself
+➡️ Moses hears the same sound differently
 
----
+## 🎶 The Noise Of Them That Sing Do I Hear
 
-## 🔥 He Took The Calf... Burnt It In The Fire, And Ground It To Powder, And Strawed It Upon The Water, And Made The Children Of Israel Drink Of It
+Moses corrects Joshua's guess about what they are hearing.
 
-**"Strawed"** is an old word for strewed, or scattered. The destruction is total and deliberate: melt, grind, scatter, then force the people to physically drink the remains. It functions like an ordeal, similar in spirit to the water-based test prescribed later in Numbers 5 — making the people ingest, quite literally, the evidence of their own sin.
+It is not the shout of victory in war.
 
-🔥 "Strawed" means strewed or scattered
+It is not the cry of defeat either.
 
-⚰️ The calf is destroyed completely: melted, ground, scattered, and drunk
+Moses names it plainly as singing and celebration.
 
-📖 This works like an ordeal, similar to the later test in Numbers 5
+Two men hear the exact same sound and read it two different ways.
 
-➡️ Moses turns from the calf to the man who made it
+🎶 Moses names the sound as singing
+
+🙅 It is not the sound of war
+
+👂 Two men hear one sound differently
+
+➡️ Moses reaches the camp and sees it himself
+
+## 💔 Moses' Anger Waxed Hot
+
+Moses now sees the calf and the dancing for himself.
+
+His own anger waxes hot, the exact phrase already used for God's anger in verse ten.
+
+Moses is not calmer than God in this moment.
+
+He shares the same burning reaction to what he sees.
+
+💔 Moses' anger also waxes hot here
+
+🔥 The same phrase described God's anger earlier
+
+🤝 Moses shares God's exact reaction here
+
+➡️ His anger drives him to a drastic act
+
+## 🪨 He Cast The Tables Out Of His Hands, And Brake Them
+
+"Brake" is the old past tense of "break."
+
+Moses throws the stone tablets to the ground below the mountain.
+
+The covenant was carved into these very stones.
+
+Shattering them acts out what already happened in the camp.
+
+The covenant was already broken in practice before Moses broke the stone.
+
+🪨 Brake means the old past tense of break
+
+💥 Moses shatters the tablets at the mountain's base
+
+📖 The stones pictured the covenant God gave
+
+➡️ Moses turns his fury on the calf next
+
+## 🔥 Ground It To Powder, And Strawed It Upon The Water
+
+"Strawed" is an old word for scattered or strewn.
+
+Moses melts the calf down completely in the fire.
+
+He grinds the metal to powder and scatters it on the water.
+
+Then he forces the people to drink what is left.
+
+This works like a public test, similar to the water ordeal described later in Numbers five.
+
+The people must swallow the evidence of what they built.
+
+🔥 Strawed means scattered or strewn about
+
+⚰️ The calf is melted, ground, and scattered
+
+📖 Numbers five later describes a similar water test
+
+➡️ Moses turns from the calf to Aaron
 
 # Exodus 32:21-24
-
 # 🗣️ Moses Confronts Aaron
-
 ---
+## ❓ What Did This People Unto Thee
 
-## ❓ What Did This People Unto Thee, That Thou Hast Brought So Great A Sin Upon Them?
+Moses aims this question straight at Aaron, not at the crowd.
 
-Moses' question lands squarely on Aaron, not the crowd. The people sinned, but Moses holds the leader who allowed it — Israel's own high priest — personally accountable for what happened on his watch.
+The people sinned, but Aaron was Israel's own high priest.
 
-❓ Moses directs the question at Aaron, not the crowd itself
+Leadership carries its own separate accountability from the crowd's guilt.
 
-⚖️ Leadership carries its own distinct accountability, separate from the crowd's guilt
+Moses will not let Aaron hide behind everyone else's choices.
 
-➡️ Aaron's answer reaches for an excuse
+❓ Moses questions Aaron directly, not the crowd
 
----
+⚖️ Leadership carries its own separate accountability
 
-## 🙅 Let Not The Anger Of My Lord Wax Hot: Thou Knowest The People, That They Are Set On Mischief
+🙅 Aaron cannot hide behind everyone else
 
-Aaron's defense repeats the people's own demand from verse 1 almost word for word, quietly shifting responsibility onto the crowd rather than owning his own choice to comply with them. **"Mischief"** here means real harm or wrongdoing, not playful trouble.
+➡️ Aaron reaches for an excuse instead
 
-🙅 Aaron echoes the people's own words back, shifting the blame onto them
+## 🙅 Thou Knowest The People, That They Are Set On Mischief
 
-⚠️ "Mischief" means real wrongdoing, not playful trouble
+Aaron's defense quietly shifts the blame onto the crowd.
 
-➡️ Aaron's account of what actually happened gets even less honest
+"Mischief" here means real wrongdoing, not playful trouble.
 
----
+He almost repeats the people's own demand from verse one word for word.
 
-## 🔥 I Cast It Into The Fire, And There Came Out This Calf
+Aaron never once says he chose to comply with them.
 
-Aaron's story conveniently skips the graving tool and the deliberate shaping already described in plain detail back in verse 4 — as if the calf simply assembled itself out of the flames with no hand guiding it. It's one of Scripture's earliest examples of a leader minimizing his own role in a disaster he caused.
+🙅 Aaron shifts the blame onto the crowd
 
-🔥 Aaron's account leaves out the graving tool described back in verse 4
+⚠️ Mischief means real wrongdoing here, not play
 
-🎭 He describes the calf as if it formed itself, with no one responsible
+🔁 He echoes the people's own words back
 
-📖 This is an early biblical example of a leader minimizing his own role
+➡️ His account gets even less honest next
 
-➡️ Moses turns from Aaron to the camp itself
+## 😨 For As For This Moses, The Man That Brought Us Up
+
+Aaron quotes the crowd's exact complaint about Moses back to Moses himself.
+
+He is using their panic to explain away his own choice.
+
+Fear explains what the people said.
+
+Fear does not explain what Aaron actually did with his hands.
+
+🗣️ Aaron quotes the crowd's own complaint back
+
+😨 He blames their fear for his choice
+
+✋ Fear does not explain his own actions
+
+➡️ His story then leaves out key details
+
+## 🎭 I Cast It Into The Fire, And There Came Out This Calf
+
+Aaron's story skips the graving tool named plainly back in verse four.
+
+He describes the calf as if it shaped itself in the flames.
+
+No hand and no craftsman appear anywhere in his version.
+
+This is one of Scripture's earliest examples of a leader minimizing his own role.
+
+🔥 Aaron's story leaves out the graving tool
+
+🎭 He describes the calf shaping itself
+
+✋ No craftsman appears anywhere in his version
+
+📖 This is an early case of blame shifting
 
 # Exodus 32:25-29
-
 # ⚔️ The Sons Of Levi Answer The Call
-
 ---
+## 😳 The People Were Naked
 
-## 😳 The People Were Naked... For Aaron Had Made Them Naked Unto Their Shame Among Their Enemies
+"Naked" here means unrestrained and out of control, not simply undressed.
 
-**"Naked"** here carries the sense of unrestrained or out of control, not merely undressed — a people who had lost all discipline under the leadership meant to guard them. The blame is stated plainly: Aaron made them this way.
+The people lost all discipline under the leader meant to guard them.
 
-😳 "Naked" here means unrestrained and out of control, not simply undressed
+The text names exactly who caused this.
 
-📉 The text directly names Aaron as responsible for the people's condition
+Aaron made them this way.
+
+😳 Naked here means unrestrained, not undressed
+
+📉 The people lost all discipline that day
+
+👉 The text names Aaron as the cause
 
 ➡️ Moses draws a clear line in the sand
 
----
+## 🚩 Who Is On The LORD's Side
 
-## 🚩 Who Is On The LORD's Side? Let Him Come Unto Me. And All The Sons Of Levi Gathered Themselves Together Unto Him
+Moses issues a public call to loyalty in the middle of the chaos.
 
-Moses issues a direct, public call to loyalty in the middle of the chaos. Only the sons of Levi respond. This moment of costly loyalty becomes part of why the tribe of Levi is later set apart for priestly service — Deuteronomy 33:8-9's blessing on Levi looks directly back at this very test.
+Only the tribe of Levi steps forward to answer.
 
-🚩 Moses draws a clear, public line between loyalty and rebellion
+This moment of costly loyalty is remembered much later.
 
-🕍 Only the tribe of Levi steps forward to answer the call
+Deuteronomy thirty three ties Levi's future priestly role back to this exact test.
 
-📖 Deuteronomy 33:8-9 later ties Levi's priestly role back to this exact moment
+🚩 Moses calls the whole camp to choose
 
-➡️ Moses gives the Levites a severe, immediate task
+🕍 Only the Levites step forward that day
 
----
+📖 Deuteronomy thirty three recalls this same moment
 
-## 🗡️ Slay Every Man His Brother, And Every Man His Companion... There Fell Of The People That Day About Three Thousand Men
+➡️ Moses gives the Levites a severe task
 
-The judgment is swift and severe, carried out by the Levites themselves even against close family and friends. This detail is often placed alongside Acts 2:41's three thousand added to the church at Pentecost — a contrast frequently drawn between a broken law that condemns and a poured-out Spirit that gives life.
+## 🗡️ Slay Every Man His Brother
 
-🗡️ The judgment is carried out immediately, even against family members
+The judgment that follows is swift and severe.
 
-⚖️ About three thousand men fall as a result
+The Levites carry it out even against close family and friends.
 
-📖 This is often contrasted with the three thousand saved in Acts 2:41
+About three thousand men fall that day.
 
-➡️ Moses explains what this costly obedience actually earns them
+Some readers later place this number beside Acts two, where three thousand are added to the church.
 
----
+One number marks a judgment under the law.
 
-## 🙌 Consecrate Yourselves Today To The LORD... That He May Bestow Upon You A Blessing This Day
+The other marks life poured out through the Spirit.
 
-**"Consecrate"** means to formally set apart and dedicate for God's service. The Levites' willingness to act at real personal cost, even against their own relatives, becomes their qualification for the priestly consecration they will receive later in Israel's story.
+🗡️ The judgment is swift, even against family
 
-🙌 "Consecrate" means formally set apart and dedicated for God's service
+⚖️ About three thousand men fall that day
 
-🏆 Costly obedience here becomes the Levites' path to future priestly service
+📖 Acts two later adds three thousand believers
 
-➡️ Moses still isn't finished pleading for the nation
+➡️ Moses explains what this obedience earns them
+
+## 🙌 Consecrate Yourselves Today To The LORD
+
+"Consecrate" means to formally set apart for God's service.
+
+The Levites acted at real personal cost, even against their own relatives.
+
+That costly willingness becomes their qualification for later priestly service.
+
+Moses still is not finished pleading for the whole nation.
+
+🙌 Consecrate means set apart for God's service
+
+💪 The Levites paid a real personal cost
+
+🏆 That cost becomes their path to priesthood
+
+➡️ Moses returns to plead for the nation
 
 # Exodus 32:30-35
-
 # 🙏 Moses Returns To Intercede Again
-
 ---
+## 😔 Peradventure I Shall Make An Atonement For Your Sin
 
-## 😔 Ye Have Sinned A Great Sin: And Now I Will Go Up Unto The LORD; Peradventure I Shall Make An Atonement For Your Sin
+"Peradventure" is an old word meaning perhaps.
 
-**"Peradventure"** means perhaps. Moses does not assume forgiveness is guaranteed; he goes back up the mountain uncertain of the outcome, willing to plead anyway rather than wait for a sure result before acting.
+Moses does not assume forgiveness is already guaranteed.
 
-😔 "Peradventure" means perhaps — Moses has no guarantee of success
+He climbs back up the mountain not knowing how God will respond.
 
-🧗 He climbs back up uncertain, willing to plead regardless of the outcome
+He pleads anyway instead of waiting for a sure outcome first.
 
-➡️ Moses makes an extraordinary offer to God directly
+😔 Peradventure means perhaps, not a guarantee
 
----
+🧗 Moses climbs up without a sure outcome
 
-## 📖 If Thou Wilt Forgive Their Sin--; And If Not, Blot Me, I Pray Thee, Out Of Thy Book Which Thou Hast Written
+🙏 He pleads anyway before knowing the answer
 
-Moses offers to be erased from God's own book himself rather than see the people destroyed. This is the earliest reference in Scripture to being "blotted out" of God's book, a concept that develops later into the "book of life" language of Psalm 69:28 and Revelation 3:5 and 20:15.
+➡️ Moses makes an extraordinary offer to God
 
-📖 This is Scripture's earliest reference to being blotted out of God's book
+## 📖 Blot Me, I Pray Thee, Out Of Thy Book
 
-🔗 The idea later develops into the "book of life" language of Revelation
+Moses offers to be erased from God's own book himself.
 
-🤝 Moses offers himself as a substitute rather than see the people destroyed
+He would rather disappear than watch the people be destroyed.
+
+This is Scripture's earliest reference to being blotted out of God's book.
+
+That same idea later grows into the "book of life" language in Revelation.
+
+📖 This is Scripture's earliest blotted out reference
+
+🤝 Moses offers himself in the people's place
+
+🔗 The idea grows into Revelation's book of life
 
 ➡️ God answers Moses' offer directly
 
----
+## ⚖️ Whosoever Hath Sinned Against Me, Him Will I Blot Out
 
-## ⚖️ Whosoever Hath Sinned Against Me, Him Will I Blot Out Of My Book... Nevertheless In The Day When I Visit I Will Visit Their Sin Upon Them
+God declines the exact trade Moses just offered.
 
-God declines Moses' proposed substitution — each person remains accountable for their own sin rather than being covered by another's offer. Yet God still commits to leading the people onward toward the promised land through His Angel, mercy and accountability held together rather than one replacing the other.
+Each person remains responsible for their own sin.
 
-⚖️ God does not accept Moses' offer to be blotted out in the people's place
+One person's offer to stand in for everyone is not accepted.
 
-🧭 Each person remains responsible for their own sin
+God still commits to leading the whole nation forward regardless.
 
-🚶 God still commits to leading the people onward despite this refusal
+🙅 God does not accept Moses' proposed trade
 
-➡️ The chapter closes with a real, lasting consequence
+⚖️ Each person stays responsible for their own sin
 
----
+🧭 Mercy and accountability stand together here
+
+➡️ God still commits to leading them onward
+
+## 👼 Mine Angel Shall Go Before Thee
+
+God still promises to lead the people toward the promised land.
+
+His Angel goes ahead of them despite everything that just happened.
+
+God also adds a warning about a future day of reckoning.
+
+Mercy right now does not erase every future consequence.
+
+👼 God's Angel still leads the people onward
+
+🚶 The journey continues despite the golden calf
+
+⚠️ God warns of a future day of reckoning
+
+➡️ The chapter still ends with a real consequence
 
 ## ⚡ The LORD Plagued The People, Because They Made The Calf, Which Aaron Made
 
-The chapter's last line insists on precision: it was Aaron who made the calf, directly contradicting his evasive account back in verse 24 that it simply "came out" of the fire. Even after Moses' intercession has already spared the nation from total destruction, a real and recorded consequence still falls.
+The chapter's last line insists on precision about who is responsible.
 
-⚡ The closing line names Aaron as the calf's maker, undoing his excuse in verse 24
+It names Aaron as the calf's maker, undoing his excuse back in verse twenty four.
 
-📊 Mercy from the earlier intercession did not erase every consequence
+Moses' intercession already spared the nation from total destruction.
 
-📖 Sparing a nation from total judgment and a real plague both happen in this story`;
+A real, recorded consequence still falls on the people even so.
+
+⚡ The closing line names Aaron as the maker
+
+📖 This undoes Aaron's excuse from verse twenty four
+
+🛡️ Mercy already spared the nation from ruin
+
+➡️ A real consequence still falls even so
+`.trim();
 
 export const EXODUS_THIRTY_TWO_PERSONAL_SECTIONS = parseExodusThirtyTwoRawNotes(EXODUS_THIRTY_TWO_RAW_NOTES);
