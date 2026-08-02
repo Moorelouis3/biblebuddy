@@ -89,255 +89,561 @@ function parseExodusThirtyThreeRawNotes(rawText: string): ExodusThirtyThreePerso
 }
 
 const EXODUS_THIRTY_THREE_RAW_NOTES = `# Exodus 33:1-3
-
-# 🚶 God Tells Israel To Depart Without Him
-
+# 🚶 God Tells Israel To Leave Without Him
 ---
+## 🚶 Depart, And Go Up Hence
 
-## 🗺️ Depart, And Go Up Hence... Unto The Land Which I Sware Unto Abraham, To Isaac, And To Jacob
+God tells Moses to leave Sinai and keep moving toward Canaan.
 
-Even after the golden calf disaster, God does not cancel His covenant with the patriarchs. He still promises to send "an angel" ahead of them to drive out the nations already named earlier in this book (Exodus 23:23) — the promise stands, even though the relationship is now clearly strained.
+This command comes right after the golden calf disaster in chapter thirty two.
 
-🗺️ God's promise to the patriarchs survives the golden calf crisis intact
+The journey is not canceled because of Israel's sin.
 
-👼 An angel is still sent ahead, just as already described in chapter 23
+God still calls this the land He swore to Abraham, Isaac, and Jacob.
 
-➡️ The land itself is described in familiar terms
+That promise reaches back three generations before Moses was even born.
 
----
+God keeps an old promise even while His people are still in trouble.
 
-## 🍯 Unto A Land Flowing With Milk And Honey
+🚶 Depart means leave Sinai now
 
-This description of Canaan's abundance repeats language already used all the way back at the burning bush in chapter 3:8 — the same promise, unchanged, still waiting at the end of the journey.
+📜 This follows right after the golden calf
 
-🍯 "Flowing with milk and honey" first appeared back in chapter 3:8
+🤝 The promise reaches back three generations
 
-🔁 The destination hasn't changed even though the journey has been disrupted
+📖 God keeps His word despite their sin
 
-➡️ Then comes a devastating condition
+## 👼 I Will Send An Angel Before Thee
 
----
+God still promises to send an angel ahead of the people.
 
-## 🚫 For I Will Not Go Up In The Midst Of Thee; For Thou Art A Stiffnecked People: Lest I Consume Thee In The Way
+The angel will drive out the nations already living in Canaan.
 
-Here is the real blow: God will keep His promise of the land, but withdraws His own manifest presence from traveling among them directly. **"Stiffnecked"** repeats the exact word God used to describe Israel back in chapter 32:9. Nearness to a holy God is described here as genuinely dangerous for a people this prone to rebellion — the withdrawal is framed as protection, not simply punishment.
+Six different nations get named by name in this one verse.
 
-🚫 God offers the land but withdraws His own traveling presence
+Naming each one shows exactly how much land God still intends to give.
 
-🐂 "Stiffnecked" repeats the same description used in chapter 32:9
+The promise stays detailed even in a moment of judgment.
 
-⚠️ Closeness to God is treated as dangerous for a people this rebellious
+👼 An angel still goes ahead of them
 
-➡️ The news lands hard on the people
+🗺️ The angel clears the way to Canaan
+
+🔢 Six nations get named specifically
+
+📖 The promise stays detailed despite judgment
+
+## 🍯 A Land Flowing With Milk And Honey
+
+This description of Canaan repeats words God used all the way back at the burning bush.
+
+Exodus chapter three first used this exact phrase for the promised land.
+
+Milk pictures healthy flocks and herds grazing on good pasture.
+
+Honey pictures rich, wild abundance growing without much effort.
+
+The destination has not changed even though the journey just got harder.
+
+🍯 Milk and honey means rich abundance
+
+🔥 The phrase first appeared at the burning bush
+
+🐑 Milk pictures healthy flocks and herds
+
+➡️ The destination stays the same despite the crisis
+
+## 🐂 For Thou Art A Stiffnecked People
+
+"Stiffnecked" pictures an ox that refuses to bend its neck for the yoke.
+
+God used this exact word for Israel back in chapter thirty two.
+
+Here God adds a hard line, He will not travel in the midst of them.
+
+Nearness to a holy God is described as genuinely dangerous for a people this rebellious.
+
+The distance is framed as protection, not just punishment.
+
+🐂 Stiffnecked means an ox refusing its yoke
+
+🔁 The same word appeared in chapter thirty two
+
+⚠️ Closeness to God is treated as dangerous here
+
+📖 Distance protects them more than it punishes them
 
 # Exodus 33:4-6
-
-# 😢 The People Mourn And Strip Their Ornaments
-
+# 😢 The People Mourn And Obey
 ---
+## 😭 They Mourned, And No Man Did Put On Him His Ornaments
 
-## 😭 When The People Heard These Evil Tidings, They Mourned: And No Man Did Put On Him His Ornaments
+For the first time in this whole crisis, the people show real grief.
 
-For the first time in this whole crisis, the people show real grief over the consequence, not just fear of punishment in the moment. This is a meaningful shift after two chapters of denial, excuses, and half-hearted admissions.
+"Mourned" means an outward, physical show of grief, not just an inner feeling.
 
-😭 The people show genuine mourning, not just fear, for the first time here
+No man wears his ornaments here, meaning the jewelry normally worn with pride.
 
-📈 This marks a real shift after chapters of denial and excuse-making
+This grief comes after two chapters of denial and excuses.
 
-➡️ God repeats His warning a third time
+A real change is finally starting to show on the outside.
 
----
+😭 Mourned means an outward show of grief
 
-## ⚠️ Ye Are A Stiffnecked People: I Will Come Up Into The Midst Of Thee In A Moment, And Consume Thee: Therefore Now Put Off Thy Ornaments
+💍 Ornaments means jewelry worn with pride
 
-God restates the same warning again, having already said it twice in this short chapter (verses 3 and 5), underlining exactly how serious the danger is. Removing ornaments functions as a visible act of humility and mourning, similar to how sackcloth functions later in Scripture.
+📈 This follows chapters of denial and excuses
 
-⚠️ This is the third time this same warning is repeated in one short chapter
+📖 Their sorrow finally starts to show
 
-💍 Removing ornaments is a visible act of humility, like sackcloth later in Scripture
+## 🔁 I Will Come Up Into The Midst Of Thee In A Moment, And Consume Thee
 
-➡️ The people respond immediately
+God repeats the same stiffnecked warning from verse three here.
 
----
+This is now the second time this exact danger gets stated plainly.
 
-## 🪨 The Children Of Israel Stripped Themselves Of Their Ornaments By The Mount Horeb
+"In a moment" means suddenly, without any extra warning beyond this.
 
-Obedience follows right away. **"Horeb"** is simply another name for Mount Sinai, used elsewhere in this same book (chapter 3:1 and chapter 17:6) — this is not a different mountain, just a second name for the one they're already camped at.
+The warning is not new information, it is a reminder of real danger.
 
-🪨 "Horeb" is another name for Mount Sinai, not a separate location
+Repetition here is meant to be taken seriously, not skipped over.
 
-✅ The people obey the command immediately, without delay
+🔁 This warning repeats the one from verse three
 
-➡️ Moses sets up a new meeting place outside the camp
+⏱️ In a moment means suddenly
+
+⚠️ The danger is stated a second time
+
+📖 Repetition signals how serious this really is
+
+## 💍 Therefore Now Put Off Thy Ornaments From Thee
+
+Removing ornaments becomes a formal command here, not just something that happened.
+
+Taking off jewelry acted as a visible sign of humility and mourning.
+
+Later in Scripture, sackcloth and ashes serve this same kind of purpose.
+
+God says this so He may decide what to do with them.
+
+Even God's own response to their sin is not yet fully decided.
+
+💍 Taking off ornaments showed humility
+
+🪨 Sackcloth later serves this same purpose
+
+❓ God has not yet decided their fate
+
+➡️ Israel must wait to learn the outcome
+
+## 🪨 Stripped Themselves Of Their Ornaments By The Mount Horeb
+
+Obedience follows right away, without delay or argument.
+
+"Horeb" is simply another name for Mount Sinai.
+
+The same mountain carries both names elsewhere in this book.
+
+This is not a different location, just a second name for the one they know.
+
+Quick obedience here contrasts sharply with the disobedience of chapter thirty two.
+
+🪨 Horeb is another name for Sinai
+
+✅ The people obey without delay
+
+🔁 One mountain carries two different names
+
+📖 Obedience here contrasts chapter thirty two's failure
 
 # Exodus 33:7-11
-
 # ⛺ The Tent Of Meeting Moves Outside The Camp
-
 ---
+## 🏕️ Moses Took The Tabernacle, And Pitched It Without The Camp
 
-## 🏕️ Moses Took The Tabernacle, And Pitched It Without The Camp, Afar Off From The Camp, And Called It The Tabernacle Of The Congregation
+This is not yet the tabernacle described back in chapters twenty five through thirty one.
 
-This is not yet the tabernacle described in chapters 25-31 — that structure has not been built yet and will not be finished until Exodus 40. This is a temporary tent Moses personally pitches as a stand-in meeting place while trust between God and the camp is being rebuilt. Its location, **"without the camp"** — outside it — visibly reflects the broken closeness from the previous chapter.
+That full structure will not be finished until Exodus chapter forty.
 
-🏕️ This temporary tent is not the same as the tabernacle built in chapters 25-31
+This is a temporary tent Moses sets up himself.
 
-📍 Being pitched "without the camp" pictures the relationship's current distance
+He calls it the Tabernacle of the congregation, a meeting place.
 
-➡️ The whole camp watches when Moses goes to it
+Its location outside the camp pictures the broken closeness from chapter thirty two.
 
----
+🏕️ This tent is not the final tabernacle
 
-## 👥 All The People Rose Up, And Stood Every Man At His Tent Door, And Looked After Moses... The Cloudy Pillar Descended, And Stood At The Door Of The Tabernacle, And The Lord Talked With Moses
+🔨 The real tabernacle is not built yet
 
-The cloud pillar, already introduced back in chapter 13 to guide Israel's travels, now marks this meeting tent specifically — visible confirmation to the entire camp that God is really speaking with Moses there.
+📍 Pitched outside the camp shows real distance
 
-👥 The whole camp watches Moses approach the tent every time
+📖 Location here pictures a broken closeness
 
-☁️ The cloud pillar from chapter 13 now marks this specific meeting place
+## 🚶 Every One Which Sought The LORD Went Out Unto The Tabernacle
 
-➡️ The people respond from a distance
+Anyone who wanted to seek God now had to leave the camp to do it.
 
----
+God's presence is no longer available inside the camp itself.
 
-## 🙇 All The People Saw The Cloudy Pillar Stand At The Tabernacle Door: And All The People Rose Up And Worshipped, Every Man In His Tent Door
+This detail shows how seriously the golden calf changed things.
 
-The people worship, but each man stays at his own tent door — near enough to see, not yet able or invited to approach directly themselves. Distance and worship happen together here.
+Seeking God now took a deliberate, visible walk away from everyone else.
 
-🙇 The people worship, but only from their own tent doors
+🚶 Seeking God now meant leaving camp
 
-📏 None of them approach the tent directly themselves
+📍 God's presence sat outside, not within
 
-➡️ Moses himself has a relationship unlike anyone else's
+⚠️ This shows how much the sin cost them
 
----
+➡️ Every visit to God was now visible
 
-## 🗣️ The LORD Spake Unto Moses Face To Face, As A Man Speaketh Unto His Friend... His Servant Joshua, The Son Of Nun, A Young Man, Departed Not Out Of The Tabernacle
+## 👥 All The People Rose Up, And Stood Every Man At His Tent Door
 
-This "face to face" description of intimacy with God is unique to Moses among all the prophets — Deuteronomy 34:10 later confirms directly that no prophet like Moses ever arose again, one "whom the LORD knew face to face." Joshua's choice to stay behind in the tent quietly sets him up as Moses' eventual successor, already showing unusual devotion.
+The whole camp watches whenever Moses walks toward the tent.
 
-🗣️ "Face to face" describes an intimacy unique to Moses among the prophets
+Standing at their own tent doors, they follow him with their eyes.
 
-📖 Deuteronomy 34:10 later confirms no prophet like this arose again
+Nobody else in this story gets treated with this kind of shared attention.
 
-🔮 Joshua's lingering in the tent quietly foreshadows his future leadership
+Moses' walk to the tent becomes a public event every single time.
 
-➡️ Moses uses this closeness to press for something more
+👥 The whole camp watches Moses walk
+
+🚪 Everyone stands at their own tent door
+
+👀 They follow him the entire way
+
+➡️ Moses' walk becomes a public event
+
+## ☁️ The Cloudy Pillar Descended, And Stood At The Door Of The Tabernacle
+
+This cloud pillar first appeared back in chapter thirteen to guide Israel's travels.
+
+Now it marks this specific meeting tent whenever Moses goes inside.
+
+The cloud gives the whole camp visible proof that God really meets with Moses.
+
+Nobody has to take this meeting on faith alone.
+
+☁️ The cloud pillar first appeared in chapter thirteen
+
+📍 It now marks the meeting tent specifically
+
+👁️ It gives the camp visible proof
+
+📖 God's meetings with Moses were not hidden
+
+## 🙇 All The People Rose Up And Worshipped, Every Man In His Tent Door
+
+The people respond to the cloud with worship, not just curiosity.
+
+Each man still worships from his own tent door.
+
+Nobody approaches the tent directly themselves in this scene.
+
+Worship and distance happen together here.
+
+🙇 The people worship at a distance
+
+🚪 Each man stays at his own door
+
+📏 Nobody approaches the tent directly
+
+➡️ Distance and worship exist together here
+
+## 🗣️ The LORD Spake Unto Moses Face To Face, As A Man Speaketh Unto His Friend
+
+This face to face closeness is unique to Moses among every prophet in the Bible.
+
+Deuteronomy chapter thirty four later confirms that no prophet like Moses ever rose again.
+
+That verse calls him the one the LORD knew face to face.
+
+This friendship level access sets Moses apart from every other leader in Scripture.
+
+🗣️ Face to face describes real closeness
+
+📖 Deuteronomy thirty four confirms this uniqueness
+
+🤝 Moses is compared to a close friend
+
+➡️ No other prophet matched this closeness
+
+## 🧍 His Servant Joshua, The Son Of Nun, Departed Not Out Of The Tabernacle
+
+Joshua stays behind in the tent even after Moses leaves.
+
+He is introduced here as Moses' personal servant, not just a soldier.
+
+This small detail quietly sets Joshua up as Moses' future successor.
+
+His devotion shows up here long before he ever leads on his own.
+
+🧍 Joshua stays behind in the tent
+
+🎖️ He is named as Moses' personal servant
+
+🔮 This quietly points to his future leadership
+
+📖 Devotion here comes before any real authority
 
 # Exodus 33:12-17
-
 # 🙏 Moses Pleads For God's Presence
-
 ---
+## ❓ Thou Hast Not Let Me Know Whom Thou Wilt Send With Me
 
-## ❓ Thou Hast Not Let Me Know Whom Thou Wilt Send With Me... Shew Me Now Thy Way, That I May Know Thee
+Moses presses God on a question left unanswered since the start of this chapter.
 
-Moses presses for more than the angel escort already offered earlier (chapter 32:34 and chapter 33:2). An angel guide isn't enough for him; he wants to actually know God's own character and ways, not just receive directions toward a destination.
+God promised an angel guide back in verse two, but never named who leads it.
 
-❓ Moses wants more than the angelic escort already promised
+Moses wants a clear answer, not a vague promise.
 
-🧭 He asks to know God's own character, not just a guide toward the land
+He reminds God of God's own past words, "I know thee by name."
 
-➡️ God's answer reverses the chapter's opening warning
+❓ Moses presses for a clear answer
 
----
+👼 The angel guide was never named
+
+🙋 Moses uses God's own past words
+
+➡️ Moses is building toward a bigger request
+
+## 🧭 Shew Me Now Thy Way, That I May Know Thee
+
+Moses asks to actually know God's own character, not just directions to a destination.
+
+"Shew" is an old spelling of show.
+
+Knowing God's way means understanding how God thinks and acts, not just where to walk.
+
+Moses ties his own request directly to the future of the whole nation.
+
+🧭 Shew means show, an old spelling
+
+🙏 Moses wants to know God's character
+
+🗺️ This is bigger than directions to Canaan
+
+📖 Moses connects his request to the whole nation
 
 ## 🌟 My Presence Shall Go With Thee, And I Will Give Thee Rest
 
-This directly reverses God's own warning back in verse 3, where He said He would not go up in the midst of them at all. Mercy overturns God's previously stated plan in direct response to Moses' plea — the same pattern of intercession changing the outcome already seen in chapter 32.
+This directly reverses the warning God gave back in verse three.
 
-🌟 This directly reverses the warning God gave earlier in verse 3
+There God said He would not go up in the midst of them.
 
-🔁 The same pattern from chapter 32 repeats: intercession genuinely changes the outcome
+Here God promises the opposite, His own presence will go with them.
 
-➡️ Moses is not satisfied until this is made absolutely explicit
+Moses' plea genuinely changes the outcome, the same pattern already seen in chapter thirty two.
 
----
+🔄 This reverses the warning from verse three
 
-## 🤝 If Thy Presence Go Not With Me, Carry Us Not Up Hence... So Shall We Be Separated, I And Thy People, From All The People That Are Upon The Face Of The Earth
+🌟 God now promises His own presence
 
-Moses insists that God's presence, not merely reaching the land itself, is what actually makes Israel distinct among the nations. Without it, arriving in Canaan would mean nothing unique at all — just another nation in another territory.
+🙏 Moses' plea genuinely changes the outcome
 
-🤝 Moses insists on God's presence, not just the land itself, as the real goal
+📖 The same pattern appeared in chapter thirty two
 
-🌍 Without God's presence, Israel would be no different from any other nation
+## 🛑 If Thy Presence Go Not With Me, Carry Us Not Up Hence
 
-➡️ God grants the request outright
+Moses is still not satisfied with a general promise.
 
----
+He wants this exact point stated so clearly it cannot be missed.
 
-## ✅ I Will Do This Thing Also That Thou Hast Spoken: For Thou Hast Found Grace In My Sight, And I Know Thee By Name
+Without God's presence, Moses would rather stay right where they are.
 
-God agrees, grounding the decision in His relationship with Moses personally — "I know thee by name" — rather than in anything Israel itself has earned or deserved.
+Reaching Canaan means nothing to him without God going too.
 
-✅ God grants the request Moses just pressed for
+🛑 Moses refuses to move without God
 
-👤 The reason given is Moses' own relationship with God, not Israel's merit
+🙅 A vague promise is not enough for him
 
-➡️ Moses immediately reaches for an even bigger request
+🗺️ Canaan means nothing without God's presence
+
+➡️ Moses pushes for one more guarantee
+
+## 🌍 So Shall We Be Separated From All The People Upon The Face Of The Earth
+
+Moses names the real thing that makes Israel different from every other nation.
+
+It was never the land itself or their own effort.
+
+God's presence traveling with them is the one thing no other nation has.
+
+Without it, arriving in Canaan would make them just another people in another territory.
+
+🌍 God's presence is what sets Israel apart
+
+🗺️ The land alone was never the real difference
+
+🚶 No other nation has this presence
+
+📖 Presence, not land, marks them as distinct
+
+## ✅ I Will Do This Thing Also That Thou Hast Spoken
+
+God agrees to everything Moses just asked for.
+
+The reason given is Moses' own relationship with God, "thou hast found grace in my sight."
+
+God also repeats "I know thee by name," the same phrase Moses used back in verse twelve.
+
+The request is granted because of Moses personally, not because Israel earned it.
+
+✅ God grants the whole request
+
+🙏 The reason is Moses' own relationship with God
+
+🔁 I know thee by name repeats verse twelve
+
+➡️ Moses reaches for an even bigger request next
 
 # Exodus 33:18-23
-
 # ✨ Moses Asks To See God's Glory
-
 ---
-
 ## 🙏 I Beseech Thee, Shew Me Thy Glory
 
-**"Beseech"** means to earnestly plead, the same word already used of Moses' pleading back in chapter 32:11. Having just secured God's presence and favor, Moses now asks for something even more extraordinary: direct sight of God's own glory.
+"Beseech" means to plead earnestly, not just to ask politely.
 
-🙏 "Beseech" means to plead earnestly, echoing chapter 32:11
+Moses used this same intensity of pleading back in chapter thirty two.
 
-⬆️ Moses escalates from presence and favor to asking for glory itself
+Having just secured God's presence and favor, Moses now asks for even more.
 
-➡️ God's answer redirects what Moses will actually receive
+He wants direct sight of God's own glory, not just His nearness.
 
----
+🙏 Beseech means to plead earnestly
 
-## 📛 I Will Make All My Goodness Pass Before Thee, And I Will Proclaim The Name Of The LORD Before Thee; And Will Be Gracious To Whom I Will Be Gracious, And Will Shew Mercy On Whom I Will Shew Mercy
+🔁 Moses pleaded this way in chapter thirty two
 
-Rather than a raw visual spectacle, God promises to reveal His "goodness" and proclaim His own "name" — fulfilled directly in the next chapter's declaration in Exodus 34:6-7. Mercy is described here as God's own sovereign choice, not something owed to anyone, language the apostle Paul later quotes directly in Romans 9:15.
+⬆️ Moses asks for glory, not just presence
 
-📛 God offers His goodness and name instead of a raw visual display
+➡️ God's answer will redirect this request
 
-📖 This promise is fulfilled directly in Exodus 34:6-7's proclamation
+## ✨ I Will Make All My Goodness Pass Before Thee
 
-✝️ Romans 9:15 later quotes this exact description of God's mercy
+God does not offer Moses a raw visual spectacle.
 
-➡️ A hard limit comes with this promise
+Instead He promises to reveal His own goodness passing by.
 
----
+Goodness here means God's own kind and generous character, not a light show.
 
-## 🚫 Thou Canst Not See My Face: For There Shall No Man See Me, And Live
+This promise gets fulfilled directly in the very next chapter.
 
-A firm boundary is set: no human being can survive a full, direct sight of God's face. This limitation shapes how later Scripture consistently treats seeing God as something requiring mediation, protection, or transformation (John 1:18; 1 Timothy 6:16).
+✨ Goodness means God's kind character
 
-🚫 No human being can survive seeing God's face directly
+🚫 Not a raw visual spectacle
 
-📖 John 1:18 and 1 Timothy 6:16 echo this same limitation later
+📖 This promise is fulfilled in chapter thirty four
 
-➡️ God still provides a way to grant Moses something real
+➡️ God also promises to proclaim His name
 
----
+## 📛 I Will Proclaim The Name Of The LORD Before Thee
 
-## 🪨 There Is A Place By Me, And Thou Shalt Stand Upon A Rock... I Will Put Thee In A Clift Of The Rock, And Will Cover Thee With My Hand While I Pass By
+A name in this culture carried someone's full reputation and character.
 
-**"Clift"** is an old spelling of cleft, a crack or crevice in the rock. God provides real physical shelter and protection for Moses even while granting him an experience no one else in this story receives.
+God promises to speak His own name aloud to Moses personally.
 
-🪨 "Clift" is an old spelling of cleft, meaning a crack in the rock
+This spoken proclamation happens directly in the next chapter's opening verses.
 
-🤲 God personally shields Moses even while granting this extraordinary moment
+Hearing God's name here means hearing who God truly is.
 
-➡️ The chapter ends with what Moses is actually allowed to see
+📛 A name carried someone's full character
 
-## 👁️ I Will Take Away Mine Hand, And Thou Shalt See My Back Parts: But My Face Shall Not Be Seen
+🗣️ God will speak His own name aloud
 
-Moses receives real but limited access — not the fullness of God's face, but a genuine, unprecedented glimpse of His glory as it passes by. The chapter closes on the edge of an encounter unlike any other person receives in this way across the rest of Scripture.
+📖 This happens in the next chapter's opening
 
-👁️ Moses receives a real but limited vision, not the full sight of God's face
+➡️ Mercy gets defined in the very next line
 
-🌟 This remains one of the most unique encounters granted to anyone in Scripture
+## 🎁 I Will Be Gracious To Whom I Will Be Gracious
 
-🔒 Even this closeness has a boundary God does not remove`;
+Mercy is described here as God's own sovereign choice.
+
+It is not something owed to anyone or earned by good behavior.
+
+The apostle Paul later quotes this exact line word for word.
+
+Romans chapter nine uses it to explain how God's mercy actually works.
+
+🎁 Mercy is God's own free choice
+
+🚫 Nobody earns it through good behavior
+
+✝️ Paul quotes this line directly later
+
+📖 Romans nine explains God's mercy this way
+
+## 🚫 Thou Canst Not See My Face, For There Shall No Man See Me And Live
+
+A firm limit gets set here, no exceptions offered.
+
+No human being can survive seeing God's face fully and directly.
+
+This limit shapes how the rest of Scripture treats seeing God.
+
+Later writers describe seeing God as something that always requires protection.
+
+🚫 No human survives seeing God's face directly
+
+⚠️ This is a firm limit, no exceptions
+
+📖 Later Scripture treats seeing God this same way
+
+➡️ God still gives Moses something real
+
+## 🪨 Thou Shalt Stand Upon A Rock
+
+God does not simply refuse Moses and end the conversation there.
+
+He points to an exact physical spot for what happens next.
+
+Standing on a specific rock, Moses will get something real, just limited.
+
+God meets Moses' bold request with real care, not silence.
+
+🪨 God names an exact physical spot
+
+🙏 Moses still gets something real
+
+🤲 The limit comes with real care
+
+➡️ The rock offers Moses shelter too
+
+## 🕳️ I Will Put Thee In A Clift Of The Rock
+
+"Clift" is an old spelling of cleft, a crack or crevice in stone.
+
+God personally shelters Moses inside this crack while His glory passes by.
+
+God even covers Moses with His own hand during the moment.
+
+This is real, hands on protection, not distant permission.
+
+🕳️ Clift is an old spelling of cleft
+
+🤲 God personally shelters Moses there
+
+✋ God covers him with His own hand
+
+📖 This is hands on protection, not distance
+
+## 👁️ I Will Take Away Mine Hand, And Thou Shalt See My Back Parts
+
+Moses receives real access, but still limited access.
+
+He sees God's back, never God's face directly.
+
+This remains one of the most unique encounters in the entire Bible.
+
+Even this much closeness still carries a boundary God never removes.
+
+👁️ Moses sees God's back, not His face
+
+🌟 This is one of Scripture's most unique moments
+
+🔒 A real boundary still remains in place
+
+📖 Even great closeness has its limits
+`.trim();
 
 export const EXODUS_THIRTY_THREE_PERSONAL_SECTIONS = parseExodusThirtyThreeRawNotes(EXODUS_THIRTY_THREE_RAW_NOTES);

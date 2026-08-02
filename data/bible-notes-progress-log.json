@@ -6816,6 +6816,63 @@
           "at": "2026-08-02T18:54:25Z"
         }
       ]
+    },
+    {
+      "book": "Exodus",
+      "chapter": 33,
+      "startedAt": "2026-08-02T19:47:24Z",
+      "finishedAt": "2026-08-02T19:54:52Z",
+      "durationMinutes": 7,
+      "sections": 5,
+      "cards": 29,
+      "verses": 23,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter, replacing the original pre-spec version (5 sections / 15 cards, markdown bold and ellipsis-joined multi-clause titles, hyphens and semicolons throughout). God tells Israel to leave Sinai for Canaan without His own presence traveling among them because they are a stiffnecked people, the people's genuine mourning and removal of ornaments, Moses pitching a temporary tent of meeting outside the camp and the cloud pillar marking it, the LORD speaking to Moses face to face unlike any other prophet, Moses pressing for and receiving God's promise to go with them personally, and Moses' request to see God's glory answered with a partial, sheltered glimpse of God's back instead of His face. Kept the original file's 5 section boundaries (1-3, 4-6, 7-11, 12-17, 18-23) while rewriting every card to the new format. Density about 1.26 cards/verse (23 verses, 29 cards). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. scripts/check_bible_note_style.py found 3 problems on first pass (bullets one word over the 8 word limit), fixed, second run clean. Parser check passed exactly (5/5 sections, 29 cards, text verbatim via a standalone tsx script importing the module). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (Exodus 1-40 range), no changes needed. Also had to reset this session's stale local main branch to match origin/main (51 commits behind) before starting any work. Redo backlog entry popped; next redo target is Exodus 34.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-02T19:47:20Z"
+        },
+        {
+          "name": "target chapter determined: Exodus 33 (style redo backlog)",
+          "at": "2026-08-02T19:47:24Z"
+        },
+        {
+          "name": "KJV text fetched (Exodus 33, 23 verses)",
+          "at": "2026-08-02T19:47:35Z"
+        },
+        {
+          "name": "style spec read in full",
+          "at": "2026-08-02T19:47:49Z"
+        },
+        {
+          "name": "began writing Exodus 33 notes to style spec",
+          "at": "2026-08-02T19:48:23Z"
+        },
+        {
+          "name": "source file written (29 cards, 5 sections)",
+          "at": "2026-08-02T19:53:08Z"
+        },
+        {
+          "name": "style checker clean",
+          "at": "2026-08-02T19:53:08Z"
+        },
+        {
+          "name": "parser check passed (5 sections, 29 cards)",
+          "at": "2026-08-02T19:53:24Z"
+        },
+        {
+          "name": "wiring confirmed correct (no changes needed, redo chapter)",
+          "at": "2026-08-02T19:53:24Z"
+        },
+        {
+          "name": "tsc clean",
+          "at": "2026-08-02T19:54:36Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-02T19:54:52Z"
+        }
+      ]
     }
   ]
 }
