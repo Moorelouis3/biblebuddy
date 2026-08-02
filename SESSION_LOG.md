@@ -554,3 +554,7 @@ Next up: Exodus 36
 ## 2026-08-02T22:57:52Z (hourly chapter notes run)
 Chapter: Exodus 36 | Duration: 12 min | Sections: 7 | Cards: 40 | Status: pass
 Next up: Exodus 37
+
+## 2026-08-02T23:58:30Z (hourly chapter notes run)
+Chapter: Exodus 37 | Duration: 12 min | Sections: 6 | Cards: 26 | Status: pass
+Next up: Exodus 38

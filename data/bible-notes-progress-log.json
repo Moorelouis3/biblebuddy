@@ -7044,6 +7044,63 @@
           "at": "2026-08-02T23:00:45Z"
         }
       ]
+    },
+    {
+      "book": "Exodus",
+      "chapter": 37,
+      "startedAt": "2026-08-02T23:46:22Z",
+      "finishedAt": "2026-08-02T23:58:30Z",
+      "durationMinutes": 12,
+      "sections": 6,
+      "cards": 26,
+      "verses": 29,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (6 sections / 46 cards) from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (29 verses). Exodus 37 is the tabernacle furniture actually being built by Bezaleel: the ark of shittim wood overlaid with gold inside and out, its decorative crown rim, the cast gold carrying rings and staves that per chapter 25 could never be removed, the solid gold mercy seat hammered from one piece with its two cherubim facing inward and down toward the seat, the table of shewbread with its own crown and handbreadth border and dishes/spoons/bowls/covers, the hammered gold lampstand with its six almond-patterned branches and seven lamps (tying forward to Aaron's rod budding in Numbers 17), the small foursquare altar of incense with its horns and two carrying rings, and closing with the holy anointing oil and incense actually mixed by the apothecary per chapter 30's recipes. Kept the original file's 6 section boundaries (1-5, 6-9, 10-16, 17-24, 25-28, 29) for verse coverage continuity while rewriting every card to the new format and voice (dropped markdown bold and the old dash-heavy descriptive style entirely). Density about 0.9 cards per verse (29 verses, 26 cards), matching the style spec's section 12 guidance for a dimension and materials heavy construction chapter rather than forcing a card onto every single measurement clause. scripts/check_bible_note_style.py found 10 problems on first pass (nine last-bullet-emoji violations, one bullet over the 8 word limit, one bullet-count miss caused by a keycap 7-emoji the checker's regex does not match), fixed, second run clean (26 cards, 0 problems). A manual section 13 eye check caught two lines with two full sentences stacked on one line (a body-line rule violation the mechanical checker cannot catch); both split into separate lines with a blank line between, then the checker was re-run clean. Parser check passed exactly via getBibleReaderStudySections('exodus', 37) with no throw (6/6 sections). npx tsc --noEmit clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range covering Exodus 1-40, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (ExodusThirtySevenPersonalSection, parseExodusThirtySevenRawNotes, EXODUS_THIRTY_SEVEN_RAW_NOTES, EXODUS_THIRTY_SEVEN_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Exodus 37 entry removed from the front of the list as part of this commit; next redo target is Exodus 38. This run's fresh clone started in a detached HEAD pointed at a locally stale origin/main tracking ref (showing Genesis 50 as the tip); a fetch confirmed the real remote main had already moved to the prior run's Exodus 36 commit, so the stale ref was just a caching artifact, not real divergence. Reset local main onto the freshly fetched origin/main before starting any new work, confirming a clean fast-forward with no data loss.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-02T23:47:56Z"
+        },
+        {
+          "name": "target chapter determined: Exodus 37 (style redo, first in remaining backlog)",
+          "at": "2026-08-02T23:47:56Z"
+        },
+        {
+          "name": "KJV text fetched for Exodus 37 (29 verses, raw.githubusercontent.com aruljohn mirror)",
+          "at": "2026-08-02T23:48:05Z"
+        },
+        {
+          "name": "style spec read in full",
+          "at": "2026-08-02T23:48:12Z"
+        },
+        {
+          "name": "reference implementation (genesisThirtyOneSource.ts) and existing wired file read; drafting new notes",
+          "at": "2026-08-02T23:52:14Z"
+        },
+        {
+          "name": "source file written (redo, 6 sections, 26 phrase cards)",
+          "at": "2026-08-02T23:53:19Z"
+        },
+        {
+          "name": "style checker script clean (26 cards, 0 problems)",
+          "at": "2026-08-02T23:54:05Z"
+        },
+        {
+          "name": "eye check pass (split 2 stacked-sentence lines), style checker re-run clean",
+          "at": "2026-08-02T23:54:37Z"
+        },
+        {
+          "name": "wiring confirmed (already correct for redo, no changes needed)",
+          "at": "2026-08-02T23:55:17Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections exodus 37, 6 sections, no throw)",
+          "at": "2026-08-02T23:55:17Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-02T23:56:40Z"
+        }
+      ]
     }
   ]
 }
