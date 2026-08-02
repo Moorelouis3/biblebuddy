@@ -6398,7 +6398,7 @@
       "sections": 5,
       "cards": 42,
       "verses": 40,
-      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (5 sections / 25 cards, long dense paragraphs, only 2-3 bullets per card) from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Exodus 25 opens the tabernacle instructions: the willing-heart offering (no census tax), the gold/silver/brass value hierarchy matching holiness by proximity, the expensive dyes and fabrics (including the oil-for-the-light and incense-spice verse 6, which the old file skipped entirely), the ark of the covenant's dimensions/gold overlay/permanently-fixed carrying staves/testimony tablets, the mercy seat and its guardian cherubim facing each other over the atonement spot (reusing the spec's own approved rewrite for the 'over against the border' rings verse, since that exact verse type is the spec's canonical worked example), the table of shewbread and its twelve loaves representing the twelve tribes, and the golden candlestick's beaten-gold construction, seven lamps, and almond imagery later echoed by Aaron's rod in Numbers 17. Kept the original file's 5 section boundaries for verse-coverage continuity while rewriting every card to the new format. Density 1.05 cards/verse (40 verses, 42 cards) -- reasonable for a materials/dimension chapter per the style spec's own section 12 guidance that these chapters are harder, not exempt, rather than a shortfall. scripts/check_bible_note_style.py found 1 problem on first pass (a keycap '7⃣' emoji the checker's regex does not recognize as an emoji since it starts with a literal digit, same issue seen in the Exodus 24 run), swapped for a plain emoji, second run clean. Parser check passed exactly (5/5 sections, 42 cards, text verbatim, no reformatting artifacts). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range covering Exodus 1-40, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (ExodusTwentyFivePersonalSection, parseExodusTwentyFiveRawNotes, EXODUS_TWENTY_FIVE_RAW_NOTES, EXODUS_TWENTY_FIVE_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Exodus 25 entry removed from the front of the list as part of this commit; next redo target is Exodus 26.",
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (5 sections / 25 cards, long dense paragraphs, only 2-3 bullets per card) from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Exodus 25 opens the tabernacle instructions: the willing-heart offering (no census tax), the gold/silver/brass value hierarchy matching holiness by proximity, the expensive dyes and fabrics (including the oil-for-the-light and incense-spice verse 6, which the old file skipped entirely), the ark of the covenant's dimensions/gold overlay/permanently-fixed carrying staves/testimony tablets, the mercy seat and its guardian cherubim facing each other over the atonement spot (reusing the spec's own approved rewrite for the 'over against the border' rings verse, since that exact verse type is the spec's canonical worked example), the table of shewbread and its twelve loaves representing the twelve tribes, and the golden candlestick's beaten-gold construction, seven lamps, and almond imagery later echoed by Aaron's rod in Numbers 17. Kept the original file's 5 section boundaries for verse-coverage continuity while rewriting every card to the new format. Density 1.05 cards/verse (40 verses, 42 cards) -- reasonable for a materials/dimension chapter per the style spec's own section 12 guidance that these chapters are harder, not exempt, rather than a shortfall. scripts/check_bible_note_style.py found 1 problem on first pass (a keycap '7\u20e3' emoji the checker's regex does not recognize as an emoji since it starts with a literal digit, same issue seen in the Exodus 24 run), swapped for a plain emoji, second run clean. Parser check passed exactly (5/5 sections, 42 cards, text verbatim, no reformatting artifacts). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range covering Exodus 1-40, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (ExodusTwentyFivePersonalSection, parseExodusTwentyFiveRawNotes, EXODUS_TWENTY_FIVE_RAW_NOTES, EXODUS_TWENTY_FIVE_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Exodus 25 entry removed from the front of the list as part of this commit; next redo target is Exodus 26.",
       "steps": [
         {
           "name": "npm install done",
@@ -6484,6 +6484,59 @@
         {
           "name": "tsc --noEmit clean",
           "at": "2026-08-02T12:57:53Z"
+        }
+      ]
+    },
+    {
+      "book": "Exodus",
+      "chapter": 27,
+      "startedAt": "2026-08-02T13:46:20Z",
+      "finishedAt": "2026-08-02T13:54:14Z",
+      "durationMinutes": 8,
+      "sections": 4,
+      "cards": 16,
+      "verses": 21,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter, replacing the original pre-spec version (4 sections / 13 cards, paragraph bodies, only 3 bullets per card). The bronze altar of burnt offering (shittim wood frame, brass overlay, horns later grabbed as a plea for mercy in 1 Kings 1), its brass tools (basons, fleshhooks, firepans), the hollow-boards construction plus the carrying grate and rings skipped entirely by the old version (vv4-7), the linen court's hundred-cubit walls and silver-filleted brass-socketed pillars repeating the gold/silver/brass gradient seen throughout the tabernacle, the north side's unstated symmetry with the south (v11, also skipped by the old version), the colored entrance gate standing out against an otherwise plain white boundary, the restated silver-fillet pattern (v17) and overall court dimensions (v18) and brass-pins verse (v19), all three also newly covered, and the priests' nightly duty (not literal continuous burning) to tend the lampstand oil under a permanent statute for ever. Kept the original file's 4 section boundaries (1-8, 9-13, 14-19, 20-21) for verse-coverage continuity while rewriting every card to the new format and expanding coverage from 13 to 16 cards to reach verses the old version skipped. Density 0.76 cards/verse (21 verses, 16 cards), reasonable for a materials/dimension chapter per the style spec's own section 12 guidance. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. scripts/check_bible_note_style.py found 0 problems on first pass. Parser check passed exactly (4/4 sections, 16 cards, text verbatim via a standalone tsx script importing the module). npx tsc --noEmit clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, replaceStudySectionsForBookRange call, preserveExactPhraseBodies range all pre-existing), so only the type/function/const names (ExodusTwentySevenPersonalSection, parseExodusTwentySevenRawNotes, EXODUS_TWENTY_SEVEN_RAW_NOTES, EXODUS_TWENTY_SEVEN_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Exodus 27 entry removed from the front of the list as part of this commit; next redo target is Exodus 28.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-02T13:46:20Z"
+        },
+        {
+          "name": "target chapter determined: Exodus 27 (style redo, first in remaining backlog)",
+          "at": "2026-08-02T13:46:25Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo chapter (lib/bibleReaderStudyNotes.ts already imports EXODUS_TWENTY_SEVEN_PERSONAL_SECTIONS), no changes needed",
+          "at": "2026-08-02T13:46:35Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Exodus.json",
+          "at": "2026-08-02T13:47:55Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md), style checker script, and reference implementations (lib/genesisThirtyOneSource.ts, lib/exodusTwentySixSource.ts) read",
+          "at": "2026-08-02T13:49:30Z"
+        },
+        {
+          "name": "source file written (lib/exodusTwentySevenSource.ts, 4 sections, 16 cards)",
+          "at": "2026-08-02T13:52:40Z"
+        },
+        {
+          "name": "style checker clean on first pass (0 problems)",
+          "at": "2026-08-02T13:52:55Z"
+        },
+        {
+          "name": "parser check passed (4/4 sections, 16 cards, 21 verses covered, text verbatim)",
+          "at": "2026-08-02T13:53:20Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-02T13:53:45Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, data/bible-notes-style-redo-remaining.json)",
+          "at": "2026-08-02T13:54:14Z"
         }
       ]
     }

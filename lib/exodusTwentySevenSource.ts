@@ -89,175 +89,291 @@ function parseExodusTwentySevenRawNotes(rawText: string): ExodusTwentySevenPerso
 }
 
 const EXODUS_TWENTY_SEVEN_RAW_NOTES = `# Exodus 27:1-8
-
 # 🔥 The Bronze Altar
+---
+## 📐 An Altar Of Shittim Wood, Five Cubits Long, And Five Cubits Broad
+
+**"Shittim"** means acacia, a hard wood that grew across the Sinai desert.
+
+A cubit measured about eighteen inches, close to a man's forearm.
+
+Five cubits long and five cubits broad comes to about seven and a half feet square.
+
+The height of three cubits in this same verse adds up to about four and a half feet tall.
+
+This altar stood first, right where the court began.
+
+🌳 Shittim means acacia, a hard desert wood
+📏 A cubit was about eighteen inches
+🟫 About seven and a half feet square
+📖 This altar stood first, at the entrance
 
 ---
 
-## 📐 An Altar Of Shittim Wood, Five Cubits Long, And Five Cubits Broad... Foursquare... Height Three Cubits
+## 👑 The Horns Of It Upon The Four Corners Thereof
 
-At roughly a foot and a half per cubit, this altar measured about seven and a half feet square and four and a half feet tall. **"Foursquare"** just means square-shaped on all four sides. This is a different altar entirely from the small, gold-covered incense altar described later in chapter 30; this one, covered in brass rather than gold, is the altar of burnt offering, the very first object anyone would meet upon entering the court.
+**"Horns"** were pointed pieces built up at each of the altar's four corners.
 
-📐 The altar measured about 7.5 feet square and 4.5 feet tall
+They were not decoration.
 
-⬜ "Foursquare" simply means square-shaped on all four sides
+Blood from sin offerings was applied directly to these horns in Leviticus four.
 
-🚪 This brass altar is the first object anyone would meet entering the court
+Later, in First Kings one, a man in danger grabs the altar's horns as a plea for mercy.
 
----
+The horns turned a piece of furniture into a place of refuge.
 
-## 👑 The Horns Of It Upon The Four Corners Thereof... Overlay It With Brass
-
-**"Horns"** were projecting pieces built up at each of the altar's four corners, and they carried real weight in Israel's worship: blood from sin offerings was applied directly to these horns in Leviticus 4, and later in 1 Kings 1:50, a man in danger grabs hold of the altar's horns as a desperate plea for mercy and protection.
-
-👑 Horns were raised projections built at each of the altar's four corners
-
-🩸 Blood from sin offerings was applied directly to these horns
-
-🙏 Later in 1 Kings 1, grabbing the altar's horns becomes a plea for protection
+👑 Horns rose from the altar's four corners
+🩸 Sin offering blood touched these horns directly
+🙏 Grabbing the horns became a plea for mercy
+📖 The horns doubled as a place of refuge
 
 ---
 
-## 🍽️ Pans To Receive His Ashes, And His Shovels, And His Basons, And His Fleshhooks, And His Firepans
+## 🍽️ His Basons, And His Fleshhooks, And His Firepans
 
-**"Fleshhooks"** were large forks used to handle meat on the altar, and **"basons"** meant bowls, here used for catching sacrificial blood. Every single tool needed to run this altar day after day, ash removal, blood collection, meat handling, and carrying fire, was specified in advance, all made of the same brass as the altar itself.
+**"Basons"** meant bowls, used here to catch the blood of the sacrifice.
 
-🍽️ Fleshhooks were large forks for handling meat on the altar
+**"Fleshhooks"** were large forks for lifting meat off the fire.
 
-🥣 Basons meant bowls, here used to catch sacrificial blood
+**"Firepans"** carried hot coals from place to place.
 
-🔧 Every daily-use tool was specified in advance, matching the altar's brass
+Every tool needed to run this altar was listed before the altar was even built.
+
+All of them were made of the same brass as the altar itself.
+
+🥣 Basons were bowls that caught the blood
+🍴 Fleshhooks were forks for handling meat
+🔥 Firepans carried hot coals
+📖 Every tool matched the altar in brass
+
+---
+
+## 🕸️ A Grate Of Network Of Brass
+
+**"Grate"** here means a lattice, a metal grid much like a barbecue rack.
+
+It sat inside the hollow altar, letting air reach the fire and ashes fall through.
+
+Four rings were cast onto its corners.
+
+Poles slid through those rings so the altar could be carried without anyone touching the fire itself.
+
+🕸️ A grate was a metal lattice
+🔥 It let air reach the fire inside
+💍 Four rings were cast onto its corners
+📖 Poles let the altar travel without touching fire
 
 ---
 
 ## 🕳️ Hollow With Boards Shalt Thou Make It
 
-Unlike the solid gold ark or mercy seat, this altar was hollow, built from boards rather than solid metal. This matches God's earlier, simpler instruction for altars back in Exodus 20:24-25, and it was likely filled with earth or stones once set up on-site, making it far lighter to transport than a solid block that size would have been.
+Unlike the solid gold ark, this altar was hollow, built from boards, not a solid block of metal.
 
-🕳️ The altar was hollow, built from boards, not a solid block
+That matches the simpler altar instructions God already gave back in Exodus twenty.
 
-🔁 This matches the simpler altar instructions already given in Exodus 20
+It was likely packed with earth or stones once it stood on site.
 
-🚚 A hollow design, likely filled on-site, made it far lighter to transport
+A hollow altar this size was far lighter to carry than a solid one would have been.
+
+🕳️ The altar was hollow, built from boards
+🔁 This matches Exodus twenty's simpler pattern
+🪨 It was likely filled with earth on site
+📖 A hollow design made it lighter to carry
 
 # Exodus 27:9-13
-
 # 🏛️ The Court's Boundary
+---
+## 🧵 Hangings For The Court Of Fine Twined Linen Of An Hundred Cubits Long
+
+**"Twined"** linen was thread spun tightly from several strands, stronger than a single loose thread.
+
+A hundred cubits comes to about a hundred and fifty feet.
+
+That was the length of the court's long north and south sides.
+
+This fence surrounded the whole tabernacle tent and its altar.
+
+It marked out sacred ground before anyone ever reached the tent itself.
+
+🧵 Twined linen was thread spun from several strands
+📏 About a hundred and fifty feet long
+🏛️ This measured the court's long sides
+📖 The fence marked sacred ground before the tent
 
 ---
 
-## 🧵 The Court Of The Tabernacle... Hangings For The Court Of Fine Twined Linen Of An Hundred Cubits Long
+## 🥈 Their Fillets Shall Be Of Silver
 
-At roughly a foot and a half per cubit, this outer courtyard measured about a hundred and fifty feet long on its north and south sides. This fenced-in yard surrounded the entire tabernacle tent and its altar, marking out sacred ground before a worshipper ever reached the tent itself.
+**"Fillets"** were connecting rods that linked the tops of the pillars, like a rail along a fence.
 
-🧵 The court's long sides measured roughly 150 feet, using plain white linen
+The pillars themselves stood in sockets of brass, right at ground level.
 
-🏛️ This fence surrounded the whole tabernacle tent and its altar
+Above the ground, their hooks and fillets were finished in silver.
 
-🚧 It marked out sacred ground before anyone even reached the tent
+That same gold, silver, and brass gradient already ran through the tabernacle's furniture and walls.
 
----
+Now it reached all the way out to the court's outer fence.
 
-## 🥈 Twenty Pillars Thereof And Their Twenty Sockets Shall Be Of Brass; The Hooks Of The Pillars And Their Fillets Shall Be Of Silver
-
-**"Fillets"** were connecting rods or bands that linked the tops of the pillars together, like a rail running along a fence line. The pillars stood in brass sockets at ground level but were finished with silver hooks and fillets above, continuing the same metal gradient already seen throughout the tabernacle's construction.
-
-🥈 Fillets were connecting rods linking the tops of the pillars together
-
-🥉 Pillars stood in brass sockets at ground level, silver-finished above
-
-📊 This continues the same gold-silver-brass gradient seen throughout
+🥈 Fillets were connecting rods linking pillar tops
+🥉 Pillars stood in brass sockets at ground level
+📊 Hooks and fillets above were finished in silver
+📖 The same gradient now reached the outer fence
 
 ---
 
-## 📏 The Breadth Of The Court On The West Side... Fifty Cubits... On The East Side Eastward... Fifty Cubits
+## 🧭 Likewise For The North Side
 
-At about seventy-five feet, the shorter east and west sides completed a rectangle roughly a hundred and fifty feet by seventy-five feet, twice as long as it was wide. The entrance specifically faced east, the same direction the whole camp of Israel would later organize itself around according to Numbers 2.
+The north side of the court repeated the exact same measurements as the south.
 
-📏 The shorter sides measured about 75 feet, forming a 2-to-1 rectangle
+A hundred cubits of linen, twenty pillars, and twenty brass sockets, just like verse nine.
 
-🧭 The court's entrance specifically faced east
+God did not describe the north side in new detail because it needed none.
 
-🏕️ Numbers 2 later organizes Israel's entire camp around this same east-facing layout
+Symmetry itself was the instruction.
+
+🧭 The north side matched the south exactly
+📐 Same length, same pillars, same sockets
+🔁 No new detail was needed to repeat it
+📖 Symmetry itself was the instruction
+
+---
+
+## 🌅 The Breadth Of The Court On The East Side Eastward Shall Be Fifty Cubits
+
+Fifty cubits comes to about seventy five feet, the width of the court's shorter sides.
+
+Together with the hundred cubit length already given, the court formed a rectangle.
+
+The east side specifically held the entrance gate.
+
+Numbers two later organizes Israel's entire camp to face this same eastward entrance.
+
+📏 Fifty cubits was about seventy five feet
+📐 The court was twice as long as wide
+🌅 The east side held the entrance gate
+📖 Numbers two later orients the whole camp eastward
 
 # Exodus 27:14-19
+# 🚪 The Gate And The Court's Furnishings
+---
+## 🚪 The Hangings Of One Side Of The Gate Shall Be Fifteen Cubits
 
-# 🚪 The Gate And The Fence
+Two matching screens of plain linen flanked the entrance, fifteen cubits each.
+
+Fifteen cubits comes to about twenty two feet.
+
+Combined with the twenty cubit gate opening between them, the total reaches fifty cubits.
+
+That matches the width already given for the east side.
+
+🚪 Two linen screens flanked the entrance
+📏 Fifteen cubits was about twenty two feet
+➕ Screens plus the gate opening equal fifty cubits
+📖 The math from verse thirteen checks out
 
 ---
 
-## 🚪 The Hangings Of One Side Of The Gate Shall Be Fifteen Cubits... On The Other Side... Fifteen Cubits
+## 🎨 An Hanging Of Twenty Cubits, Of Blue, And Purple, And Scarlet
 
-Two matching fifteen-cubit screens of plain linen flanked the entrance on either side, each about twenty-two feet long. Combined with the twenty-cubit gate opening between them, this accounts for the full fifty-cubit width already given for the east side back in verse 13.
+The rest of the court's fence stayed plain white linen.
 
-🚪 Two matching linen screens, each about 22 feet, flanked the entrance
+Only the gate itself burst into blue, purple, and scarlet.
 
-➕ Combined with the gate opening, they account for the full east-side width
+Those were the same royal colors used on the tabernacle's door and inner veil.
 
-🧮 The math from verse 13 checks out exactly across these two verses
+In an otherwise plain white boundary, that splash of color marked the one true entrance.
 
----
-
-## 🎨 The Gate Of The Court Shall Be An Hanging Of Twenty Cubits, Of Blue, And Purple, And Scarlet, And Fine Twined Linen, Wrought With Needlework
-
-While the rest of the court's fence was plain white linen, the entrance gate itself burst into the same royal blue, purple, and scarlet colors used on the tabernacle's door and inner veil. In an otherwise plain white boundary wall, this splash of color made the one true entrance impossible to miss from a distance.
-
-🎨 Only the gate used the royal blue, purple, and scarlet colors
-
-⬜ Every other part of the court fence stayed plain white linen
-
-👁️ The color made the one true entrance visible from a distance
+⬜ Every other part of the fence stayed white
+🎨 Only the gate used blue, purple, and scarlet
+🚪 Those match the tabernacle's door and veil colors
+📖 Color made the one true entrance visible
 
 ---
 
-## 🥈 All The Pillars Round About The Court Shall Be Filleted With Silver; Their Hooks Shall Be Of Silver, And Their Sockets Of Brass
+## 🔁 All The Pillars Round About The Court Shall Be Filleted With Silver
 
-This verse restates the metal pattern for the entire boundary fence: brass sockets touching the ground, silver above at the hooks and connecting fillets. By this point in Exodus, that exact gold-silver-brass gradient has now been applied consistently to the furniture, the walls, and the court itself.
+This verse restates the exact metal pattern already given for the fence.
 
-🥈 Brass stayed at ground level, silver above, for every pillar in the court
+Brass touched the ground at every socket.
 
-🔁 This is a direct restatement of the pattern already set for the boards
+Silver covered every hook and fillet above it.
 
-📊 The gradient now covers furniture, walls, and the outer court alike
+By this point in Exodus, that same gradient covers the furniture, the walls, and now the court.
+
+🔁 This restates the fence's existing pattern
+🥉 Brass touched the ground at every socket
+🥈 Silver covered every hook and fillet above
+📖 The gradient now covers furniture, walls, and court
 
 ---
 
-## 📏 The Height Five Cubits... And Their Sockets Of Brass
+## 📏 The Height Five Cubits Of Fine Twined Linen
 
-At about seven and a half feet, this fence was tall enough to block a casual view in or out, but noticeably shorter than the tabernacle tent rising behind it. The court's boundary was meant to mark off sacred space, not to compete with the tabernacle itself as the visually dominant structure.
+Five cubits comes to about seven and a half feet tall.
 
-📏 The fence stood about 7.5 feet tall, blocking casual outside view
+That was tall enough to block a casual view in or out.
 
-🏠 It was shorter than the tabernacle tent rising behind it
+It was still noticeably shorter than the tabernacle tent rising behind it.
 
-🎯 The fence marked sacred space without competing with the tent visually
+The court marked off sacred space without competing with the tent itself.
+
+📏 About seven and a half feet tall
+👁️ That blocked a casual view in or out
+🏠 It stood shorter than the tent behind it
+📖 The fence marked space without rivaling the tent
+
+---
+
+## 🔨 All The Pins Thereof, And All The Pins Of The Court, Shall Be Of Brass
+
+**"Pins"** were tent stakes, driven into the ground to anchor the ropes and curtains.
+
+Every pin, every tool, and every vessel used anywhere in the tabernacle's service shared the same material.
+
+Nothing here was gold or silver.
+
+Brass was the metal of ground level contact, the parts that touched dirt, wind, and daily wear.
+
+🔨 Pins were tent stakes anchoring ropes and curtains
+🧰 Every tool and vessel shared one material
+🥉 None of it was gold or silver
+📖 Brass belonged to whatever touched the ground
 
 # Exodus 27:20-21
-
 # 🕯️ Oil For The Lamp
-
 ---
-
 ## 🫒 Pure Oil Olive Beaten For The Light, To Cause The Lamp To Burn Always
 
-**"Beaten"** oil describes the purest grade, made from olives gently crushed by hand rather than ground under a heavy millstone, producing the cleanest, clearest-burning fuel available. This oil fueled the golden candlestick built back in chapter 25, finally putting fuel into the lampstand whose shape had already been so carefully specified.
+**"Beaten"** oil was the purest grade, crushed gently by hand instead of ground under a millstone.
 
-🫒 "Beaten" oil is the purest grade, hand-crushed rather than millstone-ground
+That gentler process kept out the bitter pulp, producing the cleanest burning fuel available.
 
-💡 This fuel is specifically for the golden candlestick built in chapter 25
+This oil fueled the golden lampstand built back in chapter twenty five.
 
-✨ It produced the cleanest, clearest-burning light available
+The lamp finally had fuel to match its careful design.
+
+🫒 Beaten oil was the purest grade, hand crushed
+🕯️ Hand crushing kept the fuel clean burning
+💡 This oil fueled the golden lampstand
+📖 The lamp finally had fuel for its design
 
 ---
 
-## 🌙 Aaron And His Sons Shall Order It From Evening To Morning Before The Lord: It Shall Be A Statute For Ever
+## 🌙 Aaron And His Sons Shall Order It From Evening To Morning
 
-Verse 21 clarifies what "burn always" in verse 20 actually meant: the lamp was tended nightly, evening to morning, not literally left burning without any human attention around the clock. **"Statute for ever"** means a permanent, standing law, making this nightly duty a fixed responsibility for Aaron's priestly line for all future generations, not a one-time instruction for this first setup.
+Verse twenty said the lamp would **"burn always."**
 
-🌙 "Burn always" is defined here as tended nightly, evening to morning
+This verse defines what that actually meant.
 
-📜 "Statute for ever" means a permanent, standing law, not a one-time task
+The lamp was tended nightly, evening to morning, not left burning unattended around the clock.
 
-👨‍👦 This nightly duty became Aaron's priestly line's ongoing responsibility`;
+**"Statute for ever"** meant a permanent, standing law, not a one time instruction for this first setup.
+
+That made the nightly duty a permanent job for Aaron's family line.
+
+🌙 Burn always meant tended nightly, evening to morning
+📜 Statute for ever meant a permanent, standing law
+👨‍👦 This duty belonged to Aaron's priestly line
+📖 One instruction became a responsibility for every generation`.trim();
 
 export const EXODUS_TWENTY_SEVEN_PERSONAL_SECTIONS = parseExodusTwentySevenRawNotes(EXODUS_TWENTY_SEVEN_RAW_NOTES);
