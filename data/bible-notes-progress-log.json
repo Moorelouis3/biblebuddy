@@ -6539,6 +6539,55 @@
           "at": "2026-08-02T13:54:14Z"
         }
       ]
+    },
+    {
+      "book": "Exodus",
+      "chapter": 28,
+      "startedAt": "2026-08-02T14:46:12Z",
+      "finishedAt": "2026-08-02T15:02:00Z",
+      "durationMinutes": 16,
+      "sections": 9,
+      "cards": 40,
+      "verses": 43,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter, replacing the original pre-spec version (7 sections / 28 cards, paragraph bodies, only 3 bullets per card). Aaron's priestly garments: the six named pieces called for up front (breastplate, ephod, robe, broidered coat, mitre, girdle), the gold/blue/purple/scarlet/fine-linen materials and their royal cost, the ephod's shoulderpieces and curious girdle, the two onyx shoulder stones engraved with six tribal names each as a memorial Aaron carried on his shoulders, the foursquare doubled breastplate of judgment holding twelve named gemstones (one per tribe) and later the Urim and Thummim, the wreathen gold chains and two-tier ring system binding the breastplate permanently to the ephod, the blue robe's reinforced neck opening and its alternating gold bells and pomegranates whose sound proved the priest was alive inside the Holy Place, the forehead plate reading HOLINESS TO THE LORD that let Aaron symbolically bear the iniquity of Israel's imperfect offerings, and the ordinary priests' own linen garments, the three-part anoint/consecrate/sanctify ordination, and the modesty breeches required under a permanent statute for ever. Re-chunked from the old file's 7 sections into 9 tighter sections (1-4, 5-10, 11-14, 15-21, 22-28, 29-30, 31-35, 36-38, 39-43) for better verse-coverage density on this list-heavy law chapter. Density about 0.93 cards/verse (43 verses, 40 cards), reasonable for a repetitive garment/dimension chapter per the style spec's own section 12 guidance, and in line with the reference implementation's (Genesis 31) actual density. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. scripts/check_bible_note_style.py found 0 mechanical problems on the first pass; a manual by-eye pass against spec section 13 (which the script cannot judge) then caught and fixed 3 issues the checker does not enforce -- a stacked two-clause line joined by a second \"and,\" a \"while\" clause, and another double-\"and\" line -- rechecked clean after. Parser check passed exactly (9/9 sections, 40 cards, 43 verses covered, text verbatim via a standalone tsx script importing the module). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, replaceStudySectionsForBookRange call, preserveExactPhraseBodies range all pre-existing), so only the type/function/const names (ExodusTwentyEightPersonalSection, parseExodusTwentyEightRawNotes, EXODUS_TWENTY_EIGHT_RAW_NOTES, EXODUS_TWENTY_EIGHT_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Exodus 28 entry removed from the front of the list as part of this commit; next redo target is Exodus 29.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-02T14:46:41Z"
+        },
+        {
+          "name": "target chapter determined: Exodus 28 (style redo, first in remaining backlog)",
+          "at": "2026-08-02T14:47:10Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo chapter, no changes needed",
+          "at": "2026-08-02T14:47:15Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Exodus.json",
+          "at": "2026-08-02T14:48:05Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (lib/genesisThirtyOneSource.ts) read",
+          "at": "2026-08-02T14:50:30Z"
+        },
+        {
+          "name": "source file written (lib/exodusTwentyEightSource.ts, 9 sections, 40 cards)",
+          "at": "2026-08-02T14:56:30Z"
+        },
+        {
+          "name": "style checker clean after fixing 3 by-eye issues (stacked and-clause, while clause, double-and line)",
+          "at": "2026-08-02T14:59:00Z"
+        },
+        {
+          "name": "parser check passed (9/9 sections, 40 cards, 43 verses, text verbatim)",
+          "at": "2026-08-02T14:59:30Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-02T14:59:35Z"
+        }
+      ]
     }
   ]
 }
