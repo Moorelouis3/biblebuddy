@@ -5,6 +5,67 @@
   "entries": [
     {
       "book": "Exodus",
+      "chapter": 14,
+      "startedAt": "2026-08-02T00:45:55Z",
+      "finishedAt": "2026-08-02T00:56:00Z",
+      "durationMinutes": 10,
+      "sections": 10,
+      "cards": 38,
+      "verses": 31,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (10 sections / 26 cards) from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Exodus 14 covers the Red Sea crossing: God's deliberate positioning of Israel's camp at Pihahiroth as bait for Pharaoh, Pharaoh's regret and full military pursuit with six hundred chosen chariots, Israel trapped between the sea and the army, crying out to God while also blaming Moses, Moses' call to stand still and see the LORD's salvation, God's instruction to move forward and lift the same rod used throughout the plagues, the angel of God and the pillar of cloud repositioning from guide to guard between the two camps, the sea splitting by a real sustained east wind into standing walls of water, Egypt's army following Israel into the trap and losing its chariot wheels in the wet seabed, the sea returning and Pharaoh's whole army destroyed while Israel finishes crossing on dry ground, and the chapter's close on Israel seeing the Egyptian dead directly and believing the LORD and His servant Moses. Kept the original file's 10 section boundaries (14:1-4, 14:5-9, 14:10-12, 14:13-14, 14:15-18, 14:19-20, 14:21-22, 14:23-25, 14:26-29, 14:30-31) for verse-coverage continuity while rewriting every card to the new format. Word/idiom definitions covered inline: sore (severely), an high hand (bold and confident), hold your peace (stop struggling and stay quiet), the morning watch (the last watch of the night before dawn), and harden (grow stubborn), tracked across its three uses in this chapter (verse 4 as God's stated plan, verse 8 as its fulfillment, verse 17 as its final restatement). Density 1.23 cards/verse (31 verses, 38 cards). scripts/check_bible_note_style.py found 1 problem on first pass (one bullet at 9 words, over the 8 word limit), fixed, second run clean (38 cards, no problems). A manual section 13 eye check and a hyphen/em dash/semicolon/contraction scan both passed. Parser check passed exactly (10/10 sections, 38 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range covering Exodus 1-40, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (ExodusFourteenPersonalSection, parseExodusFourteenRawNotes, EXODUS_FOURTEEN_RAW_NOTES, EXODUS_FOURTEEN_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Exodus 14 entry removed from the front of the list as part of this commit; next redo target is Exodus 15.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-02T00:46:26Z"
+        },
+        {
+          "name": "target chapter determined: Exodus 14 (style redo, first in remaining backlog)",
+          "at": "2026-08-02T00:46:40Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Exodus.json",
+          "at": "2026-08-02T00:47:10Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation read",
+          "at": "2026-08-02T00:47:41Z"
+        },
+        {
+          "name": "source file written (lib/exodusFourteenSource.ts, 10 sections, 38 cards)",
+          "at": "2026-08-02T00:53:00Z"
+        },
+        {
+          "name": "style checker clean (1 problem found and fixed, second pass clean)",
+          "at": "2026-08-02T00:53:40Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo (no changes needed)",
+          "at": "2026-08-02T00:53:45Z"
+        },
+        {
+          "name": "parser check passed (10 sections, 38 cards, verbatim)",
+          "at": "2026-08-02T00:54:20Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-02T00:54:49Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-02T00:56:00Z"
+        },
+        {
+          "name": "committed",
+          "at": "2026-08-02T00:56:20Z"
+        },
+        {
+          "name": "pushed to origin main",
+          "at": "2026-08-02T00:56:40Z"
+        }
+      ]
+    },
+    {
+      "book": "Exodus",
       "chapter": 11,
       "startedAt": "2026-08-01T21:45:57Z",
       "finishedAt": "2026-08-01T21:56:00Z",

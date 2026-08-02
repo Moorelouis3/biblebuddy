@@ -462,3 +462,7 @@ Next up: Exodus 13
 ## 2026-08-01T23:58:35Z (hourly chapter notes run)
 Chapter: Exodus 13 | Duration: 11 min | Sections: 8 | Cards: 34 | Status: pass
 Next up: Exodus 14
+
+## 2026-08-02T00:56:00Z (hourly chapter notes run)
+Chapter: Exodus 14 | Duration: 10 min | Sections: 10 | Cards: 38 | Status: pass
+Next up: Exodus 15
