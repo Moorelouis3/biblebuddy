@@ -61,21 +61,12 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ ok: true, message: "Day 8 email already sent" });
     }
 
-    // Determine user tier based on full 7 days
+    // Tier is still computed and stored for reporting (free -- it's just a DB
+    // write), but the email SENT is a single universal version: Systeme.io's
+    // tag cap doesn't leave room for per-tier A/B variants.
     const tier = await determineUserTier(supabaseAdmin, userId, signupDate);
     const isPro = await checkIfUserIsPro(supabaseAdmin, userId);
-
-    let version: "a" | "a_pro" | "b" | "c";
-
-    if (tier === "power_user" && isPro) {
-      version = "a_pro";
-    } else if (tier === "power_user" && !isPro) {
-      version = "a";
-    } else if (tier === "regular_user") {
-      version = "b";
-    } else {
-      version = "c";
-    }
+    const version: "b" = "b";
 
     // Send email via systeme.io
     const result = await sendFunnelEmailViaSysteme(userEmail, 8, version);

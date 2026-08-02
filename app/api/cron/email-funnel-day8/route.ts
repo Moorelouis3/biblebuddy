@@ -70,8 +70,11 @@ export async function GET(request: NextRequest) {
 
     let successCount = 0;
     let failureCount = 0;
-    const versionBreakdown: Record<string, number> = { a: 0, a_pro: 0, b: 0, c: 0 };
     const tierBreakdown: Record<string, number> = { power_user: 0, regular_user: 0, ghost: 0 };
+    // Single universal version -- Systeme.io's tag cap doesn't leave room
+    // for per-tier A/B variants. Tier is still computed and stored below
+    // for reporting; it just no longer picks the email.
+    const version: "b" = "b";
 
     for (const signup of userSignups || []) {
       const signupDate = await getSignupTimestamp(supabaseAdmin, signup.user_id);
@@ -80,21 +83,8 @@ export async function GET(request: NextRequest) {
         continue;
       }
 
-      // Determine tier based on full 7 days
       const tier = await determineUserTier(supabaseAdmin, signup.user_id, signupDate);
       const isPro = await checkIfUserIsPro(supabaseAdmin, signup.user_id);
-
-      let version: "a" | "a_pro" | "b" | "c";
-
-      if (tier === "power_user" && isPro) {
-        version = "a_pro";
-      } else if (tier === "power_user" && !isPro) {
-        version = "a";
-      } else if (tier === "regular_user") {
-        version = "b";
-      } else {
-        version = "c";
-      }
 
       const result = await sendFunnelEmailViaSysteme(signup.email, 8, version);
 
@@ -110,7 +100,6 @@ export async function GET(request: NextRequest) {
         await updateUserTier(supabaseAdmin, signup.user_id, tier);
 
         successCount++;
-        versionBreakdown[version]++;
         tierBreakdown[tier]++;
       } else {
         failureCount++;
@@ -123,7 +112,6 @@ export async function GET(request: NextRequest) {
       sent: successCount,
       failed: failureCount,
       total: userSignups?.length || 0,
-      versions: versionBreakdown,
       tiers: tierBreakdown,
     });
   } catch (err) {

@@ -1,12 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import {
-  determineUserTier,
-  checkIfUserIsPro,
   sendFunnelEmailViaSysteme,
   recordEmailSent,
   updateEmailFunnelState,
-  getSignupTimestamp,
 } from "@/lib/emailFunnelHelpers";
 
 export const runtime = "nodejs";
@@ -69,31 +66,11 @@ export async function GET(request: NextRequest) {
 
     let successCount = 0;
     let failureCount = 0;
-    const versionBreakdown: Record<string, number> = { a: 0, a_pro: 0, b: 0, c: 0 };
+    // Single universal version -- Systeme.io's tag cap doesn't leave room
+    // for per-tier A/B variants, so everyone gets the same Day 4 email.
+    const version: "b" = "b";
 
     for (const signup of userSignups || []) {
-      const signupDate = await getSignupTimestamp(supabaseAdmin, signup.user_id);
-      if (!signupDate) {
-        failureCount++;
-        continue;
-      }
-
-      // Determine tier based on first 72 hours
-      const tier = await determineUserTier(supabaseAdmin, signup.user_id, signupDate);
-      const isPro = await checkIfUserIsPro(supabaseAdmin, signup.user_id);
-
-      let version: "a" | "a_pro" | "b" | "c";
-
-      if (tier === "power_user" && isPro) {
-        version = "a_pro";
-      } else if (tier === "power_user" && !isPro) {
-        version = "a";
-      } else if (tier === "regular_user") {
-        version = "b";
-      } else {
-        version = "c";
-      }
-
       const result = await sendFunnelEmailViaSysteme(signup.email, 4, version);
 
       if (result.ok) {
@@ -103,7 +80,6 @@ export async function GET(request: NextRequest) {
           day4_version: version,
         });
         successCount++;
-        versionBreakdown[version]++;
       } else {
         failureCount++;
       }
@@ -115,7 +91,6 @@ export async function GET(request: NextRequest) {
       sent: successCount,
       failed: failureCount,
       total: userSignups?.length || 0,
-      versions: versionBreakdown,
     });
   } catch (err) {
     const message = err instanceof Error ? err.message : "Unknown error";
