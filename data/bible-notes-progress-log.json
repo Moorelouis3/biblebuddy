@@ -6164,6 +6164,59 @@
           "at": "2026-08-02T06:53:16Z"
         }
       ]
+    },
+    {
+      "book": "Exodus",
+      "chapter": 21,
+      "startedAt": "2026-08-02T07:46:10Z",
+      "finishedAt": "2026-08-02T08:05:00Z",
+      "durationMinutes": 19,
+      "sections": 8,
+      "cards": 31,
+      "verses": 36,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter, regenerating the original pre-spec version (8 sections / 25 cards, only 1 bullet per card) from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Exodus 21 opens the book of the covenant's case laws: the Hebrew servant's six year term and the voluntary lifelong ear-piercing choice, protections for a sold daughter meant for betrothal, murder versus accidental killing and the seed of the cities of refuge, altar sanctuary denied to premeditated killers, capital offenses against parents and kidnapping for sale, injury in a fight and its restitution, and full new coverage added for verses 20-21 (a master beating a servant to death, and the harsh 'he is his money' clause) which the original file had skipped entirely, the pregnant bystander injury law, the eye for eye principle explained as a limiting rule rather than literal mutilation, servant eye/tooth injuries buying freedom, the goring ox laws including the thirty shekels payment that echoes forward to Judas's betrayal price, and pit/ox liability closing the chapter. Kept the original file's 8 section boundaries. Density about 0.86 cards/verse (36 verses, 31 cards). scripts/check_bible_note_style.py found 3 problems on first pass (three bullets over the 8 word limit), fixed, second run clean. Parser check passed exactly (8/8 sections, 31 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (ExodusTwentyOnePersonalSection, parseExodusTwentyOneRawNotes, EXODUS_TWENTY_ONE_RAW_NOTES, EXODUS_TWENTY_ONE_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Exodus 21 entry removed from the front of the list as part of this commit; next redo target is Exodus 22.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-02T07:46:29Z"
+        },
+        {
+          "name": "target chapter determined: Exodus 21 (style redo, first in remaining backlog)",
+          "at": "2026-08-02T07:46:45Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Exodus.json",
+          "at": "2026-08-02T07:47:10Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (lib/genesisThirtyOneSource.ts) read",
+          "at": "2026-08-02T07:47:45Z"
+        },
+        {
+          "name": "source file written",
+          "at": "2026-08-02T07:58:00Z"
+        },
+        {
+          "name": "style checker clean",
+          "at": "2026-08-02T07:59:10Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo chapter (no changes needed)",
+          "at": "2026-08-02T07:59:20Z"
+        },
+        {
+          "name": "parser check passed (8 sections, 31 cards, 36 verses covered)",
+          "at": "2026-08-02T07:59:45Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-02T08:00:10Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-02T08:04:30Z"
+        }
+      ]
     }
   ]
 }
