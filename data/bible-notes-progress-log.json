@@ -6641,6 +6641,59 @@
           "at": "2026-08-02T15:58:08Z"
         }
       ]
+    },
+    {
+      "book": "Exodus",
+      "chapter": 30,
+      "startedAt": "2026-08-02T16:46:36Z",
+      "finishedAt": "2026-08-02T16:58:00Z",
+      "durationMinutes": 11,
+      "sections": 9,
+      "cards": 57,
+      "verses": 38,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter, replacing the original pre-spec version (9 sections / 59 cards). The altar of incense and its shittim wood, gold overlay, and gold crown, the carrying rings and staves matching the ark's own design, its placement just outside the veil in line with the mercy seat, Aaron's twice daily incense duty tied to his lamp tending, the one yearly exception where its horns receive blood on the Day of Atonement, the census ransom money (the half shekel paid by rich and poor alike, tied forward to the disaster of 2 Samuel 24's unransomed census), the bronze laver Aaron and his sons had to use before every act of service under penalty of death, the holy anointing oil recipe (myrrh, cinnamon, calamus, cassia, olive oil) used to anoint the tabernacle, its furniture, and Aaron's family together, the same oil and the parallel incense recipe both barred from private or personal use under the covenant's harshest penalty (cut off from his people), and the closing incense recipe (stacte, onycha, galbanum, frankincense) ground fine and placed before the testimony. Kept the original file's 9 section boundaries for verse coverage continuity while rewriting every card to the new format. Density about 1.5 cards/verse (38 verses, 57 cards). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. scripts/check_bible_note_style.py found 6 problems on first pass (2 last-bullet-emoji ordering issues, 4 bullets over the 8 word limit), fixed, second run clean. Parser check passed exactly (9/9 sections, 57 cards, text verbatim via a standalone tsx script importing the module). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, replaceStudySectionsForBookRange call, preserveExactPhraseBodies range covering Exodus 1-40 all pre-existing), so only the type/function/const names (ExodusThirtyPersonalSection, parseExodusThirtyRawNotes, EXODUS_THIRTY_RAW_NOTES, EXODUS_THIRTY_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Exodus 30 entry removed from the front of the list as part of this commit; next redo target is Exodus 31.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-02T16:46:36Z"
+        },
+        {
+          "name": "target chapter determined: Exodus 30 (style redo, first in remaining backlog)",
+          "at": "2026-08-02T16:46:36Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Exodus.json",
+          "at": "2026-08-02T16:46:38Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (lib/genesisThirtyOneSource.ts) read",
+          "at": "2026-08-02T16:46:38Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo chapter, no changes needed",
+          "at": "2026-08-02T16:52:00Z"
+        },
+        {
+          "name": "source file written (lib/exodusThirtySource.ts, 9 sections, 57 cards)",
+          "at": "2026-08-02T16:52:00Z"
+        },
+        {
+          "name": "style checker clean after fixing 6 flagged issues",
+          "at": "2026-08-02T16:54:00Z"
+        },
+        {
+          "name": "parser check passed (9/9 sections, 57 cards, 38 verses, text verbatim)",
+          "at": "2026-08-02T16:55:30Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-02T16:56:12Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, data/bible-notes-style-redo-remaining.json)",
+          "at": "2026-08-02T16:58:00Z"
+        }
+      ]
     }
   ]
 }
