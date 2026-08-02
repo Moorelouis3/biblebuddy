@@ -6873,6 +6873,59 @@
           "at": "2026-08-02T19:54:52Z"
         }
       ]
+    },
+    {
+      "book": "Exodus",
+      "chapter": 34,
+      "startedAt": "2026-08-02T20:46:22Z",
+      "finishedAt": "2026-08-02T20:58:59Z",
+      "durationMinutes": 13,
+      "sections": 7,
+      "cards": 55,
+      "verses": 35,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter, replacing the original pre-spec version (6 sections / 24 cards, markdown bold and three-bullet cards with a trailing 'next' arrow bullet). Moses cutting new stone tablets himself after shattering the first set, the repeated mountain access boundary, the LORD proclaiming His own name and character (merciful, gracious, longsuffering, abundant in goodness and truth, keeping mercy yet not clearing the guilty), Moses' immediate worship and plea for pardon built on that proclamation, the covenant formally renewed with warnings against alliances, idols, and intermarriage with Canaan's nations (a direct callback to the golden calf), the feast calendar restated (Unleavened Bread, firstborn redemption, Sabbath even in planting and harvest, Weeks, Ingathering, the land-protection promise during pilgrimage, and the leaven/kid-in-milk sacrifice rules), Moses writing the ten commandments himself this time during a second forty day fast, and the chapter's close on Moses' shining, unknowingly glowing face and the veil he wore for the people but removed before God. Re-chunked from the original file's 6 sections into 7 (1-4, 5-9, 10-17, 18-21, 22-26, 27-28, 29-35) for tighter verse-coverage density. Density about 1.57 cards/verse (35 verses, 55 cards). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. scripts/check_bible_note_style.py found 7 problems on first pass (3 last-bullet-emoji ordering issues, 3 bullets over the 8 word limit, 1 repeated emoji within a card), fixed, second run clean. Parser check passed exactly (7/7 sections, 55 cards, text verbatim via a standalone tsx script importing the module). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (Exodus 1-40 range), no changes needed. Redo backlog entry popped; next redo target is Exodus 35.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-02T20:45:39Z"
+        },
+        {
+          "name": "target chapter determined: Exodus 34 (style redo backlog)",
+          "at": "2026-08-02T20:46:22Z"
+        },
+        {
+          "name": "KJV text fetched (Exodus 34, 35 verses)",
+          "at": "2026-08-02T20:46:49Z"
+        },
+        {
+          "name": "style spec read in full",
+          "at": "2026-08-02T20:47:10Z"
+        },
+        {
+          "name": "source file written (55 cards, 7 sections)",
+          "at": "2026-08-02T20:55:18Z"
+        },
+        {
+          "name": "style checker clean",
+          "at": "2026-08-02T20:56:01Z"
+        },
+        {
+          "name": "wiring confirmed correct (no changes needed, redo chapter)",
+          "at": "2026-08-02T20:56:01Z"
+        },
+        {
+          "name": "parser check passed (7 sections, 55 cards)",
+          "at": "2026-08-02T20:56:41Z"
+        },
+        {
+          "name": "tsc clean",
+          "at": "2026-08-02T20:56:41Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-02T20:58:59Z"
+        }
+      ]
     }
   ]
 }
