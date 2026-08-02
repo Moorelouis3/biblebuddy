@@ -6588,6 +6588,59 @@
           "at": "2026-08-02T14:59:35Z"
         }
       ]
+    },
+    {
+      "book": "Exodus",
+      "chapter": 29,
+      "startedAt": "2026-08-02T15:45:59Z",
+      "finishedAt": "2026-08-02T15:58:08Z",
+      "durationMinutes": 12,
+      "sections": 12,
+      "cards": 47,
+      "verses": 46,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter, replacing the original pre-spec version. The ordination of Aaron and his sons: gathering the bullock, two rams, and unleavened bread, dressing and anointing the priests, the bullock's sin offering with blood on the altar's horns and the fat portions burned while the rest is burned outside the camp, the first ram wholly burned as a burnt offering, the second ram (the ram of consecration) with its blood dabbed on ear, thumb, and toe to mark hearing, doing, and walking, the wave and heave offering hand motions that literally enact the word consecrate (to fill the hand), the priest's perpetual portion of the breast and shoulder since priests held no land inheritance, the garments passing down the priestly line and the seven day ordination period, the consecration meal eaten only by priests with leftovers burned rather than kept overnight, the altar's own seven days of atonement and its most holy contagious holiness, the instituting of the twice daily continual burnt offering, and the chapter's climax where God declares He will dwell among Israel, the real goal behind the whole tabernacle project. Built 12 new sections (1-4, 5-9, 10-14, 15-18, 19-21, 22-25, 26-28, 29-30, 31-34, 35-37, 38-42, 43-46), using Exodus 28's actual card density (about 0.93 cards/verse) as the calibration reference for this book under the new spec rather than the older skill's 2 cards/verse target. Density about 1.02 cards/verse (46 verses, 47 cards). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. scripts/check_bible_note_style.py found 2 problems on first pass, both a wave dash emoji character that fell outside the checker's recognized emoji code point ranges so its bullet was not being counted, swapped for a plain emoji on both occurrences, second run clean. Parser check passed exactly (12/12 sections, 47 cards, 46 verses covered, text verbatim via a standalone tsx script importing the module). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, replaceStudySectionsForBookRange call, preserveExactPhraseBodies range all pre-existing), so only the type/function/const names (ExodusTwentyNinePersonalSection, parseExodusTwentyNineRawNotes, EXODUS_TWENTY_NINE_RAW_NOTES, EXODUS_TWENTY_NINE_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Exodus 29 entry removed from the front of the list as part of this commit; next redo target is Exodus 30. This run's fresh clone started in a detached HEAD at the same commit origin/main pointed to; fast forwarded local main onto it before starting, no data loss.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-02T15:46:39Z"
+        },
+        {
+          "name": "target chapter determined: Exodus 29 (style redo, first in remaining backlog)",
+          "at": "2026-08-02T15:46:39Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Exodus.json",
+          "at": "2026-08-02T15:46:39Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (lib/exodusTwentyEightSource.ts, lib/genesisThirtyOneSource.ts) read",
+          "at": "2026-08-02T15:46:39Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo chapter, no changes needed",
+          "at": "2026-08-02T15:52:00Z"
+        },
+        {
+          "name": "source file written (lib/exodusTwentyNineSource.ts, 12 sections, 47 cards)",
+          "at": "2026-08-02T15:52:00Z"
+        },
+        {
+          "name": "style checker clean after swapping unrecognized wave dash emoji",
+          "at": "2026-08-02T15:53:30Z"
+        },
+        {
+          "name": "parser check passed (12/12 sections, 47 cards, 46 verses, text verbatim)",
+          "at": "2026-08-02T15:54:00Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-02T15:54:30Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, data/bible-notes-style-redo-remaining.json)",
+          "at": "2026-08-02T15:58:08Z"
+        }
+      ]
     }
   ]
 }

@@ -81,619 +81,908 @@ function parseExodusTwentyNineRawNotes(rawText: string): ExodusTwentyNinePersona
     });
   }
 
-  if (sections.length !== 11) {
-    throw new Error("Expected 11 Exodus 29 sections, received " + sections.length);
+  if (sections.length !== 12) {
+    throw new Error("Expected 12 Exodus 29 sections, received " + sections.length);
   }
 
   return sections;
 }
 
 const EXODUS_TWENTY_NINE_RAW_NOTES = `# Exodus 29:1-4
-
-# 🐂 Materials For The Ordination
-
+# 🐂 Gathering What The Ordination Requires
 ---
+## 🐂 Take One Young Bullock, And Two Rams Without Blemish
 
-## 🕊️ Hallow Them, To Minister Unto Me In The Priest's Office
+"Hallow" means to set someone apart for a holy task.
 
-"Hallow" means to set apart as holy, to make something belong entirely to God instead of ordinary use. This whole chapter is God giving Moses a step-by-step ceremony for turning ordinary men into holy priests - it doesn't happen automatically just because Aaron was told about it back in chapter 28.
+This ordination needed three animals, one bullock and two rams.
 
-🕊️ "Hallow" means to set apart as holy, not just to bless casually
+"Without blemish" meant no defects, no injuries, nothing weak or damaged.
 
-📜 This chapter is the actual ceremony, not just an announcement
+Only a flawless animal could represent something as important as a priest's whole life.
 
-👨‍👦 Aaron and his sons become priests through this process, not before it
+🐂 Hallow means set apart for God
 
----
+🐏 Three animals were required in all
 
-## 🐂 One Young Bullock, And Two Rams Without Blemish
+✅ Without blemish means completely flawless
 
-"Without blemish" means physically perfect - no injury, disease, or defect of any kind. Three separate animals are required for the ceremony, each one used for a different purpose later in the chapter: a bullock for a sin offering, one ram for a burnt offering, and a second ram for the consecration ritual itself.
+📖 A priest's ordination demanded nothing less
 
-🐂 "Without blemish" means physically flawless, with no injury or defect
+## 🍞 Unleavened Bread, And Cakes Unleavened Tempered With Oil
 
-3️⃣ Three separate animals are required, each with its own job
+"Unleavened" means made without yeast, so the bread could not rise.
 
-🩸 Each of the three plays a different role later in this same chapter
+Three separate baked items were required, bread, cakes, and thin wafers.
 
----
+Unleavened food pointed back to the hurried night Israel left Egypt.
 
-## 🍞 Unleavened Bread, And Cakes... And Wafers... Of Wheaten Flour
+There was no time then for bread to rise before leaving.
 
-"Unleavened" means made without yeast, so the dough could not rise. This same word connects back to the Passover meal in chapter 12, tying this new ordination service to the same theme of purity and freedom from anything that "puffs up" or corrupts.
+Everything used in this ceremony had to match that same purity.
 
-🍞 "Unleavened" means no yeast was used, so the dough stayed flat
+🍞 Unleavened means made without yeast
 
-🔗 The word echoes the unleavened bread of the Passover in chapter 12
+🥧 Three separate baked items were needed
 
-✨ It symbolized purity, free from anything that spoils or corrupts
+🏃 It recalled Israel's hurried exit from Egypt
 
----
+📖 Purity mattered even in the smallest details
 
-## 🧺 Put Them Into One Basket... With The Bullock And The Two Rams
+## 🚪 Bring Unto The Door Of The Tabernacle Of The Congregation
 
-All three breads and both animals are gathered and presented together as one complete package, brought to the tabernacle door as a single unit before anything else in the ceremony begins.
+The "door" was the entrance into the tabernacle's outer courtyard.
 
-🧺 All the food and animals were gathered into one presentation
+This was the boundary between ordinary life and God's dwelling place.
 
-🚪 Everything was brought together to the tabernacle door
+Aaron and his sons had to physically cross that line to begin.
 
-📦 This "gathering" step happens before any actual ritual begins
+Every step of this ceremony started at the threshold, not inside.
 
----
+🚪 The door marked the courtyard entrance
 
-## 💧 Bring Unto The Door Of The Tabernacle... And Shalt Wash Them With Water
+🏕️ It separated ordinary life from God's presence
 
-Before anything else happens, Aaron and his sons are physically washed. This is the first of several cleansing acts in the chapter, and it becomes permanent tabernacle practice: chapter 30 later installs a bronze basin specifically so priests could wash before every future service.
+👣 Aaron had to cross that threshold first
 
-💧 Washing came first, before any garments or offerings
+📖 Every step of the ritual began there
 
-🚪 It happened right at the tabernacle's entrance
+## 💧 Wash Them With Water
 
-🪣 Chapter 30 later installs a permanent basin for this exact purpose
+This washing came before any garment or oil touched them.
+
+Water here symbolized moral cleanness, not simply removing dirt.
+
+No one could be dressed as a priest while still unclean.
+
+The order mattered, cleansing always came before clothing.
+
+💧 Washing symbolized moral cleanness
+
+🚫 Uncleanness could not be dressed over
+
+🔢 Cleansing always came before clothing
+
+📖 Order in the ritual carried meaning
 
 # Exodus 29:5-9
-
-# 👔 Dressing And Anointing Aaron
-
+# 👘 Dressing And Anointing The Priests
 ---
+## 👘 Put Upon Aaron The Coat, And The Robe Of The Ephod, And The Ephod, And The Breastplate
 
-## 👔 Put Upon Aaron The Coat, And The Robe Of The Ephod, And The Ephod, And The Breastplate
+Chapter twenty eight already described every one of these garments in detail.
 
-These are the very garments God gave detailed sewing instructions for back in chapter 28 - here, for the first time, they are actually put onto a real person. The order matters: each layer goes on from the inside out, coat first, breastplate last of these four.
+Here they are finally placed on Aaron's body for the first time.
 
-👔 These are the same garments designed in chapter 28, now finally worn
+Each layer went on in a fixed order, coat first, then robe, then ephod.
 
-🔄 They go on in careful order, innermost layer first
+The breastplate came last, since it hung over the two earlier layers.
 
-👤 Aaron becomes the first living person to ever wear this outfit
+Putting on the garments turned Moses into the one performing Aaron's ordination.
 
----
+👘 Chapter twenty eight already described these garments
 
-## 🧣 Gird Him With The Curious Girdle Of The Ephod
+📋 Each layer went on in a fixed order
 
-"Curious" is an old word for skillfully made, not strange or unusual. This woven sash cinches the ephod snugly around Aaron's body so the whole assembly stays in place instead of hanging loose.
+🫀 The breastplate came last, over the rest
 
-🧣 "Curious" here means skillfully crafted, not odd or strange
-
-🔗 The girdle cinches the ephod tightly around the body
-
-📌 It keeps the whole outfit secure rather than loose
-
----
+📖 Moses himself performed Aaron's ordination
 
 ## 👑 Put The Mitre Upon His Head, And Put The Holy Crown Upon The Mitre
 
-The "holy crown" is the gold forehead plate from chapter 28:36, engraved "HOLINESS TO THE LORD." Calling it a "crown" here is striking - Aaron was never a king, but this crown-like plate marked him as uniquely set apart, answering directly and visibly to God alone.
+The "mitre" was a wound linen turban worn only during service.
 
-👑 The "holy crown" is the gold plate engraved in chapter 28
+The "holy crown" was the gold plate engraved Holiness To The Lord.
 
-🚫 Aaron was never a king, yet this object is called a crown
+That plate sat on the very front of the mitre, tied with blue cord.
 
-🙏 It marked him as set apart and accountable to God alone
+Layering the crown onto the turban finished the entire head covering at once.
 
----
+👑 Mitre means a wound linen turban
+
+🥇 Holy crown refers to the gold plate
+
+🔵 Blue cord tied the plate in place
+
+📖 The head covering was finished last
 
 ## 🫗 Take The Anointing Oil, And Pour It Upon His Head, And Anoint Him
 
-Pouring oil on someone's head was the ancient sign of God choosing and empowering that person for a specific role. The Hebrew word for this act, "anoint," is the root behind the word "Messiah" - literally, "the Anointed One" - the same word later translated into Greek as "Christ."
+Pouring oil on the head marked someone as chosen for a specific office.
 
-🫗 Pouring oil on the head marked God's choice and empowering
+Kings and priests both received this same kind of anointing in Israel.
 
-📖 "Anoint" is the root of the word "Messiah," the Anointed One
+Only Aaron received oil poured directly on his head this way.
 
-🌍 The Greek translation of that same title is "Christ"
+His sons would be anointed differently later, by sprinkling instead of pouring.
 
----
+This difference marked Aaron as the one high priest, not merely one among many.
 
-## 📜 The Priest's Office Shall Be Theirs For A Perpetual Statute
+🫗 Pouring oil marked someone as chosen
 
-A "perpetual statute" is a permanent law that doesn't expire or get renegotiated later. This established the priesthood as hereditary - passed down through Aaron's specific family line for generations, not something re-earned or re-elected each time.
+👑 Kings and priests both received anointing
 
-📜 A "perpetual statute" is a law meant to never expire
+🎯 Only Aaron had oil poured on his head
 
-👨‍👦‍👦 The priesthood became hereditary, passed through Aaron's family
+📖 This marked him as the one high priest
 
-🔒 It wasn't a role anyone could be elected or re-earn later
+## 🧢 Put The Bonnets On Them
+
+Aaron's sons received coats and girdles, much simpler than the high priest's outfit.
+
+A "bonnet" was a smaller linen head covering, not the tall mitre Aaron wore.
+
+Every ordinary priest still needed real garments, just not the same rank of garments.
+
+The difference in clothing marked the difference in office without erasing either one.
+
+👨‍👦 Aaron's sons wore simpler garments
+
+🧢 Bonnet means a smaller linen head covering
+
+📉 Their clothing marked a lower office
+
+📖 Simpler did not mean unimportant
+
+## ♾️ The Priest's Office Shall Be Theirs For A Perpetual Statute
+
+"Perpetual statute" means a law meant to last without any end date.
+
+The priesthood was not a temporary assignment given only to this generation.
+
+"Consecrate" comes from a phrase meaning to fill the hand.
+
+Verse twenty four later fulfills that phrase, when their hands are literally filled.
+
+This chapter does not just describe consecration, it enacts the meaning of its own word.
+
+♾️ Perpetual statute means a law without end
+
+✋ Consecrate literally means to fill the hand
+
+🙌 Verse twenty four fulfills that phrase literally
+
+📖 The ritual enacts its own meaning
 
 # Exodus 29:10-14
-
-# 🩸 The Sin Offering Bullock
-
+# 🩸 The Bullock For Sin
 ---
-
 ## ✋ Aaron And His Sons Shall Put Their Hands Upon The Head Of The Bullock
 
-Pressing both hands on the animal's head was a specific ritual act of identification. It meant this animal now stood in for the person pressing on it - carrying what was theirs to deal with onto itself.
+Laying hands on an animal's head identified the offerer with that offering.
 
-✋ Laying on hands identified the offerer with the animal
+It was a way of saying, this animal now stands in my place.
 
-🔄 The animal now stood in the person's place
+Aaron and his sons pressed their guilt and need onto this one bullock.
 
-🩸 This same gesture repeats with each animal in the chapter
+The animal would carry what belonged to them into its own death.
 
----
+✋ Laying on hands identified the offerer
 
-## 🔪 Thou Shalt Kill The Bullock Before The Lord
+🐂 The animal stood in their place
 
-Notice who is doing the killing here: Moses, not Aaron. Aaron hasn't been ordained yet - this entire ceremony is what makes him a priest - so Moses has to act as priest on Aaron's behalf until the process is finished.
+😔 Their guilt was pressed onto the bullock
 
-🔪 Moses does the killing, not Aaron, throughout this ceremony
+📖 The animal carried what belonged to them
 
-⏳ Aaron isn't a priest yet - that's exactly what this ritual creates
+## 👁️ Kill The Bullock Before The LORD, By The Door Of The Tabernacle
 
-🔄 Moses temporarily fills the priestly role until it's finished
+"Before the LORD" means this killing happened in God's own presence, not hidden away.
 
----
+The door of the tabernacle was already established as the ceremony's starting point.
 
-## 🚪 By The Door Of The Tabernacle Of The Congregation
+Nothing about this offering was done in secret or off to the side.
 
-Every act in this ordination happens at one specific, designated spot: the tabernacle's entrance. Nothing here is casual or wherever-is-convenient; the location itself was part of what made the ritual valid.
+God himself was the witness to every single step of this sacrifice.
 
-🚪 One specific location is used for the entire ceremony
+👁️ Before the LORD means done in His presence
 
-📍 The tabernacle's entrance was the designated ritual spot
+🚪 It happened again at the same doorway
 
-✅ Location mattered as much as the actions performed there
+🙈 Nothing was hidden or done in secret
 
----
+📖 God witnessed every step of the offering
 
-## 👉 Put It Upon The Horns Of The Altar With Thy Finger
+## 🐂 Put It Upon The Horns Of The Altar With Thy Finger
 
-The "horns" were four pointed corners built onto the altar, one at each corner, described back in chapter 27. Touching blood there with a finger was the specific, deliberate act that marked this as a sin offering, a detail Leviticus 4 later expands on in much more depth.
+The altar had four raised corners shaped like animal horns.
 
-👉 "Horns" were the four projecting corners of the altar
+Blood touched those horns first, before anything else happened to it.
 
-🩸 Applying blood there marked this specifically as a sin offering
+Horns represented strength and power throughout the ancient world.
 
-📖 Leviticus 4 gives much more detail on this exact ritual
+Marking the altar's points of strength with blood joined power to atonement.
 
----
+🐂 Horns were the altar's four raised corners
 
-## 🔥 The Fat That Covereth The Inwards... Burn Them Upon The Altar
+💪 Horns symbolized strength in the ancient world
 
-Only the internal fat, considered the richest part of the animal, was burned on the altar for God here. Fat was viewed as the best portion an animal had to offer, so giving it entirely to God, rather than eating it, meant setting aside the best part first.
+🩸 Blood touched the horns first
 
-🔥 Only the internal fat was burned on the altar in this step
+📖 Atonement was joined to the altar's strength
 
-⭐ Fat was considered the richest, "best" part of the animal
+## ⚖️ Pour All The Blood Beside The Bottom Of The Altar
 
-🎁 Giving it to God meant the best portion was set aside first
+After the horns, every remaining drop of blood went to the base.
 
----
+Nothing was saved back, reused, or treated as ordinary liquid.
 
-## 🔥 Burn With Fire Without The Camp: It Is A Sin Offering
+A life was being poured out completely, not partially.
 
-Unlike the fat, the bullock's actual flesh, skin, and waste were burned completely outside the camp, not on the altar. A sin offering's remains couldn't stay in the holy space, because it symbolically carried sin's weight - the New Testament book of Hebrews later connects this exact detail to Jesus suffering "outside the gate."
+This total pouring matched the seriousness of what the sin offering represented.
 
-🔥 The flesh and skin were burned outside the camp, not the altar
+🩸 Every remaining drop reached the base
 
-🚫 Sin offering remains couldn't stay inside the holy space
+🚫 Nothing was saved back or reused
 
-✝️ Hebrews 13 later connects this to Jesus dying outside the gate
+⚖️ The life was poured out completely
+
+📖 The pouring matched the offering's seriousness
+
+## 🧈 The Fat That Covereth The Inwards, And The Caul That Is Above The Liver
+
+The "caul" was a fatty membrane wrapped around the liver.
+
+Fat, kidneys, and that membrane were considered the richest parts of the animal.
+
+Ancient people prized fat as the best portion of any meal.
+
+Giving God the fat meant giving Him the best part first.
+
+🧈 Caul means a fatty membrane near the liver
+
+👑 Fat was considered the richest part
+
+🍽️ Ancient people prized fat as the best portion
+
+📖 God received the best part first
+
+## 🔥 The Flesh Of The Bullock, And His Skin, And His Dung, Shalt Thou Burn With Fire Without The Camp
+
+Only the fat and blood of this bullock went on the altar.
+
+The rest of the meat, hide, and waste burned outside the camp entirely.
+
+No one ate any part of a sin offering for the high priest.
+
+Hebrews later connects this detail to Jesus suffering outside a city gate.
+
+🔥 The remaining meat burned outside the camp
+
+🚫 No one ate this sin offering
+
+🏕️ Outside the camp meant away from holy ground
+
+📖 Hebrews later connects this to Jesus
 
 # Exodus 29:15-18
-
-# 🔥 The First Ram: A Whole Burnt Offering
-
+# 🔥 The Ram Of The Burnt Offering
 ---
+## 🐏 Aaron And His Sons Shall Put Their Hands Upon The Head Of The Ram
 
-## 🐏 Thou Shalt Also Take One Ram; And Aaron And His Sons Shall Put Their Hands Upon The Head Of The Ram
+This is the second of three animals used in the ordination.
 
-This is a second, separate animal from the bullock already used, and it serves an entirely different purpose. The bullock dealt with sin; this ram, and the one after it, deal with dedicating and equipping Aaron and his sons for service.
+Laying on hands happens again, the same identifying act as before.
 
-🐏 This ram is a separate animal from the bullock already sacrificed
+This time the animal became a burnt offering, not a sin offering.
 
-🎯 The bullock addressed sin; the rams address dedication and service
+A burnt offering was given completely to God, with nothing eaten by anyone.
 
-🔢 Two rams total are used, each for a distinct part of the ceremony
+🐏 This was the second of three animals
 
+✋ Laying on hands happened again
+
+🔥 This animal became a burnt offering
+
+📖 Burnt offerings were given completely to God
+
+## ⭕ Sprinkle It Round About Upon The Altar
+
+This blood was not placed on the horns like the bullock's blood.
+
+Instead it was thrown in a ring pattern around the altar's sides.
+
+Different offerings used different blood patterns, each one meaningful on its own.
+
+The ring pattern here marked total devotion rather than atonement for sin.
+
+🔴 This blood was not placed on the horns
+
+⭕ It was thrown in a ring pattern
+
+🔥 The ram was a different kind of offering
+
+📖 Different offerings used different blood patterns
+
+## 🔪 Cut The Ram In Pieces, And Wash The Inwards Of Him
+
+The ram's body was divided into its natural sections before burning.
+
+Even the inward parts, the organs, were washed clean first.
+
+Nothing unclean, not even hidden inward parts, could go on the altar.
+
+Purity reached all the way to the parts no one could see.
+
+🔪 The ram was divided into sections
+
+🫁 Inwards means the internal organs
+
+💧 Even hidden parts were washed clean
+
+📖 Purity reached what no one could see
+
+## 🔥 It Is A Burnt Offering Unto The LORD: It Is A Sweet Savour
+
+A burnt offering meant the entire animal was consumed by fire.
+
+Nothing from it was set aside for a priest or a family meal.
+
+"Sweet savour" is not about literal smell, it describes God's acceptance.
+
+This offering pictured complete surrender, holding nothing back for oneself.
+
+🔥 The entire animal was consumed
+
+🚫 Nothing was set aside to eat
+
+👃 Sweet savour describes God's acceptance
+
+📖 The offering pictured complete surrender
+
+# Exodus 29:19-21
+# 👂 Blood On Ear, Thumb, And Toe
 ---
+## 🐏 Take The Other Ram
 
-## 🧼 Cut The Ram In Pieces, And Wash The Inwards Of Him, And His Legs
+This third animal is the ram of consecration, named later in verse twenty two.
 
-Washing the animal's internal organs and legs made sense practically, since those parts come into contact with dirt and waste, but it also carried ritual meaning: nothing given to God on the altar could be presented unclean.
+Two rams were needed because they served two completely different purposes.
 
-🧼 Internal organs and legs were physically washed first
+The first ram was wholly burned, given up entirely to God.
 
-🐾 These are the body parts most likely to carry dirt or waste
+This second ram would instead ordain Aaron and his sons for service.
 
-✨ Nothing offered to God on the altar could be presented unclean
+🐏 This is the third and final animal
 
+🙌 It is later called the ram of consecration
+
+🔥 The first ram was wholly burned
+
+📖 This ram ordained the priests for service
+
+## 👂 Upon The Tip Of The Right Ear Of Aaron, And Upon The Tip Of The Right Ear Of His Sons, And Upon The Thumb Of Their Right Hand, And Upon The Great Toe Of Their Right Foot
+
+Blood touched three specific places on Aaron and his sons.
+
+The ear stood for hearing and obeying God's word.
+
+The thumb stood for the work their hands would do.
+
+The toe stood for the path their feet would walk.
+
+Every part of a priest's daily life was marked and set apart.
+
+👂 The ear represented hearing and obeying
+
+👍 The thumb represented the work of the hands
+
+👣 The toe represented the path they walked
+
+📖 Blood marked every part of daily life
+
+## 🔗 Sprinkle The Blood Upon The Altar Round About
+
+The same blood touched both the priests and the altar itself.
+
+That connection tied the priests permanently to the place they would serve.
+
+A priest could never be separated from the altar after this moment.
+
+The two belonged together from the very start of the office.
+
+🩸 The same blood touched priests and altar
+
+🔗 It tied the priests to the altar
+
+🚫 They could not be separated afterward
+
+📖 Priest and altar belonged together from the start
+
+## 🕯️ Sprinkle It Upon Aaron, And Upon His Garments
+
+This time blood and anointing oil were mixed together and sprinkled.
+
+Blood and oil both touched Aaron's body and his garments at once.
+
+"Hallowed" means made holy, set apart for God's own use.
+
+Even the clothing itself became holy through this final sprinkling.
+
+🩸 Blood and oil were mixed together
+
+👘 Both his body and garments were touched
+
+🕯️ Hallowed means made holy
+
+📖 Even the clothing became holy
+
+# Exodus 29:22-25
+# 🙌 The Ram Of Consecration
 ---
+## 🐑 For It Is A Ram Of Consecration
 
-## 🔥 Burn The Whole Ram Upon The Altar: It Is A Burnt Offering
+The "rump" refers to the fat tail of the sheep, a valued delicacy.
 
-A "burnt offering" meant the entire animal was consumed on the altar - nothing kept back for the priests to eat, unlike the wave and heave offerings described later in this same chapter. It represented complete, total surrender, holding nothing back.
+This is the first time the text names this ram directly, ram of consecration.
 
-🔥 The whole animal was burned, with nothing set aside to eat
+The right shoulder was added here, a portion not used with the earlier ram.
 
-🙌 This differs from the wave/heave offerings later in the chapter
+That shoulder becomes important again later, as part of the priest's regular income.
 
-💯 It pictured total surrender, holding nothing back from God
+🐑 Rump means the sheep's fat tail
 
----
+🏷️ This ram is now formally named
 
-## 🌬️ A Sweet Savour, An Offering Made By Fire Unto The Lord
+💪 The right shoulder was added here
 
-"Sweet savour" is a figure of speech describing something as pleasing, like a good smell. Scripture uses this human, relatable image throughout the offering laws to describe an offering as fully accepted by God.
+📖 That shoulder returns later as income
 
-🌬️ "Sweet savour" is a figure of speech meaning "pleasing"
+## 🧺 One Loaf Of Bread, And One Cake Of Oiled Bread, And One Wafer Out Of The Basket
 
-👃 It borrows the human experience of a pleasant smell
+The bread prepared back in verse two now enters the ceremony.
 
-✅ It signals the offering was fully accepted, not merely tolerated
+It had waited in its basket through the entire ritual so far.
 
-# Exodus 29:19-25
+Meat and bread are about to be combined into a single offering.
 
-# 👂 The Ram Of Consecration
+Nothing prepared earlier in the chapter was set aside or wasted.
 
----
+🧺 The bread waited in its basket until now
 
-## 🐏 Thou Shalt Take The Other Ram; And Aaron And His Sons Shall Put Their Hands Upon The Head Of The Ram
+🍞 It now joins the ram in one offering
 
-This second ram gets its own name later in the passage: "the ram of consecration." Where the first ram was burned whole in total surrender, this one is used for a much more detailed, hands-on ritual involving blood, oil, and specific body parts.
+🔗 Meat and bread were combined together
 
-🐏 This is a second, distinct ram with its own specific ritual
+📖 Nothing prepared earlier went unused
 
-🏷️ It's later named "the ram of consecration" in verse 22
+## 🙌 Put All In The Hands Of Aaron, And In The Hands Of His Sons
 
-✋ Its ritual is more detailed and hands-on than the first ram's
+Their hands were physically filled with meat and bread at this moment.
 
----
+This is the literal action behind the word consecrate, to fill the hand.
 
-## 👂 Put It Upon The Tip Of The Right Ear Of Aaron... The Thumb Of Their Right Hand... The Great Toe Of Their Right Foot
+A "wave offering" was moved toward the altar and then pulled back.
 
-Blood touched three specific points on the body: ear, thumb, and big toe, all on the right side. Each spot carried meaning - the ear for hearing and obeying God's word, the hand for the work a priest would do, and the foot for the direction a priest would walk. Together, the whole person, head to foot, was marked as dedicated to God.
+That motion pictured giving the gift to God and receiving it back again.
 
-👂 The ear represents hearing and obeying God's instructions
+🙌 Their hands were physically filled
 
-✋ The thumb represents the priestly work their hands would do
+✋ This enacts the word consecrate directly
 
-🦶 The foot represents the path and direction their life would take
+🌊 A wave offering moved toward the altar
 
----
+📖 It pictured giving and receiving back
 
-## 🩸 Sprinkle The Blood Upon The Altar Round About
+## 🔥 Receive Them Of Their Hands, And Burn Them Upon The Altar
 
-The same ram's blood that touched Aaron and his sons was also sprinkled all around the altar. This linked the priests and the altar together with the same blood, tying the people who served and the object they served at into one act.
+After the waving, the food was taken back and placed on the fire.
 
-🩸 The same blood touched both the priests and the altar
+None of it became a meal for Aaron or his sons this time.
 
-🔗 This visually linked the priests and altar as one unit
+Every part of this particular offering belonged entirely to God.
 
-⛪ Neither could function without the other in this system
+The hands that were just filled gave everything back immediately.
 
----
+🔥 The food was placed on the fire
 
-## 🫗 Sprinkle It Upon Aaron... And Upon His Sons, And Upon The Garments Of His Sons
+🚫 None of it became a meal here
 
-Blood already on the altar was mixed with anointing oil and sprinkled again, this time onto the men and even their clothing. Combining these two elements meant both atonement, the blood, and empowering presence, the oil, were applied together, and even the fabric of their garments was made holy by the contact.
+🙏 It belonged entirely to God
 
-🫗 Blood from the altar was mixed with anointing oil
-
-🩸 The blood represents atonement; the oil represents empowering
-
-👕 Even the garments themselves became holy through this contact
-
----
-
-## 🍞 One Loaf Of Bread, And One Cake Of Oiled Bread, And One Wafer Out Of The Basket
-
-The bread prepared all the way back in verse 2 finally gets used here, alongside the ram's meat. Combining grain offerings with the animal offering made this one complete, layered presentation instead of two separate rituals.
-
-🍞 This is the same bread first prepared back in verse 2
-
-🐏 It's combined here with the ram's meat in one presentation
-
-🎁 Grain and animal together formed one complete offering
-
----
-
-## 🙌 Wave Them For A Wave Offering Before The Lord
-
-A "wave offering" involved a priest physically moving the food toward the altar and back again, a deliberate gesture of presenting a gift to God and having it returned. This specific hand motion, forward and back, is what the word "wave" describes.
-
-🙌 A wave offering involved physically moving food toward the altar
-
-↔️ The forward-and-back motion is what "wave" specifically describes
-
-🎁 It pictured presenting a gift to God, which was then given back
+📖 Filled hands gave everything back at once
 
 # Exodus 29:26-28
-
-# 🎁 Aaron's Priestly Portion
-
+# 🍞 The Priest's Portion Forever
 ---
+## 🫀 It Shall Be Thy Part
 
-## 🍖 The Breast Of The Ram Of Aaron's Consecration... Wave It... It Shall Be Thy Part
+This one breast belonged to Moses alone, since he performed this ordination.
 
-God is speaking to Moses throughout this whole chapter, so "thy part" here means Moses' own portion, specifically for this one ordination ceremony. Moses is filling the priestly role only until Aaron's ordination is actually complete.
+No other priest would ever receive this exact portion again this way.
 
-👤 "Thy part" here refers to Moses, who is speaking to God
+Moses acted as priest only this one time, for this one ceremony.
 
-⏳ This portion applied only to this one ordination ceremony
+After this chapter, Aaron's line would carry the priesthood forward permanently.
 
-🔄 It reflects Moses still filling the priestly role temporarily
+🫀 The breast belonged to Moses this time
 
----
+👤 Moses acted as priest only once
 
-## ↕️ The Breast Of The Wave Offering, And The Shoulder Of The Heave Offering
+🔁 This exact portion was never repeated
 
-Two different offering motions get two different names here. A "wave" offering moved forward and back; a "heave" offering was physically lifted up and down. Both meant the same basic idea - present it to God, then receive it back - just performed with a different hand motion.
+📖 Aaron's line carried the priesthood forward
 
-↔️ A "wave" offering moved the food forward and back
+## 🌊 Sanctify The Breast Of The Wave Offering, And The Shoulder Of The Heave Offering
 
-⬆️ A "heave" offering was lifted up and down instead
+A wave offering moved horizontally, toward the altar and back again.
 
-🔁 Both pictured presenting a gift to God and having it returned
+A "heave offering" moved vertically instead, lifted up and set back down.
 
----
+Breast and shoulder each used one of these two ceremonial motions.
 
-## 📜 It Shall Be Aaron's And His Sons' By A Statute For Ever From The Children Of Israel
+Both motions said the same thing, this gift belongs to God first.
 
-Going forward, this breast-and-shoulder portion became the priests' permanent food provision, taken from every peace offering ordinary Israelites would bring in the future. This was, in effect, how the priesthood was fed and supported for the rest of its existence.
+🌊 Wave offerings moved side to side
 
-📜 This portion became permanent, not just for this ceremony
+⬆️ Heave offerings moved up and down
 
-🍽️ It came from every future peace offering Israelites brought
+🫀 The breast used the wave motion
 
-💰 It functioned as the priests' ongoing food and support
+📖 Both motions gave the gift to God first
+
+## 🏞️ It Shall Be Aaron's And His Sons' By A Statute For Ever
+
+The priests owned no land inheritance like the rest of Israel's tribes.
+
+This portion from every future peace offering became their steady income instead.
+
+"Statute for ever" means this arrangement was never meant to expire.
+
+God provided for the priesthood through the very sacrifices they performed.
+
+🏞️ Priests received no land inheritance
+
+🍽️ This portion became their steady income
+
+♾️ Statute for ever means it never expired
+
+📖 God provided through the sacrifices themselves
 
 # Exodus 29:29-30
-
-# 👘 Garments Passed Down
-
+# 👨‍👦 Garments Passed Down The Line
 ---
+## 👘 The Holy Garments Of Aaron Shall Be His Sons' After Him
 
-## 🧥 The Holy Garments Of Aaron Shall Be His Sons' After Him, To Be Anointed Therein
+The garments belonged to the office of high priest, not to Aaron personally.
 
-The priestly garments belonged to the office itself, not to Aaron personally. When Aaron died, these same physical clothes would be passed down to whichever son succeeded him as high priest, generation after generation.
+When Aaron died, the very same clothing passed to his successor.
 
-🧥 The garments belonged to the office, not to Aaron personally
+This meant the priesthood outlived any one man who ever wore it.
 
-🔄 They were meant to be reused by each future high priest
+The office continued even when the individual holding it did not.
 
-👨‍👦‍👦 This continued through Aaron's family line, generation to generation
+👘 The garments belonged to the office itself
 
----
+🔁 The same clothing passed to his successor
 
-## 📅 That Son That Is Priest In His Stead Shall Put Them On Seven Days
+⏳ The priesthood outlived any single man
 
-The seven-day ordination pattern being established right now in this chapter wasn't a one-time event just for Aaron. Every future high priest, whenever a new one took office generations later, would go through this same seven-day process.
+📖 The office continued beyond the individual
 
-📅 The seven-day pattern applies to every future high priest, too
+## 🔢 That Son That Is Priest In His Stead Shall Put Them On Seven Days
 
-🔄 This chapter sets a template, not a one-time exception
+The number seven marks a complete, finished period throughout this chapter.
 
-👑 Numbers 20 later shows this pattern used for Aaron's own successor
+A new high priest wore Aaron's garments continuously for a full week.
+
+This mirrored the seven days the altar itself needed to be consecrated.
+
+Nothing in this ordination was rushed or treated as optional.
+
+🔢 Seven marks a complete period
+
+👘 The garments were worn for a full week
+
+🔥 It mirrored the altar's own seven days
+
+📖 Nothing here was rushed or optional
 
 # Exodus 29:31-34
-
-# 🍽️ Eating The Holy Food
-
+# 🍲 Eating What Made Atonement
 ---
-
 ## 🍲 Seethe His Flesh In The Holy Place
 
-"Seethe" is an old word meaning to boil. This meat couldn't be cooked just anywhere convenient - it had to be prepared inside a specific holy location, tying even the cooking process itself to the ritual's holiness.
+"Seethe" is an old word that simply means to boil.
 
-🍲 "Seethe" is an old word meaning to boil
+This meal was cooked inside the holy place, not in an ordinary kitchen.
 
-📍 It had to be cooked in one specific holy location
+Even preparing food became part of a sacred act during this ceremony.
 
-✨ Even the cooking process was part of the ritual's holiness
+Nothing about this week treated cooking as separate from worship.
 
----
+🍲 Seethe means to boil
 
-## 🍽️ Aaron And His Sons Shall Eat The Flesh Of The Ram, And The Bread... By The Door Of The Tabernacle
+🏕️ The meal was cooked in the holy place
 
-This is a sacred, shared meal, not a public feast. Only the newly ordained priests themselves ate this food, and only at the tabernacle's entrance, marking it as a private, holy meal tied directly to their ordination.
+🍽️ Cooking itself became part of worship here
 
-🍽️ Only the newly ordained priests ate this particular meal
+📖 Nothing in this week was purely ordinary
 
-🚪 It happened specifically at the tabernacle's entrance
+## 🍽️ Aaron And His Sons Shall Eat The Flesh Of The Ram, And The Bread
 
-🔒 It was a private, sacred meal, not a public celebration
+This meal was shared only among the priests being ordained.
 
----
+Eating together sealed the ceremony the way a shared meal often does.
 
-## 🚫 A Stranger Shall Not Eat Thereof, Because They Are Holy
+The same animal used for atonement became the food that fed them.
 
-"Stranger" here doesn't mean a foreigner specifically - it means anyone outside the anointed priestly family, including ordinary Israelites. Access to this meal was restricted by holiness and calling, not by nationality.
+Consecration was not only symbolic, it fed real people real food.
 
-🚫 "Stranger" here means anyone outside the priestly family
+🍽️ The meal was shared among the priests
 
-🇮🇱 Even ordinary Israelites counted as "strangers" to this meal
+🤝 Shared eating sealed the ceremony
 
-✨ Access was limited by holiness and calling, not nationality
+🐑 The same animal became their food
 
----
+📖 Consecration included something as ordinary as a meal
 
-## 🔥 If Ought Of The Flesh... Remain Unto The Morning... Burn The Remainder With Fire: It Shall Not Be Eaten
+## 🚧 A Stranger Shall Not Eat Thereof, Because They Are Holy
 
-Nothing from this holy meal could be casually left over into the next day. Anything uneaten had to be completely destroyed by fire rather than saved, treated with the same seriousness as garbage that could never simply sit around.
+"Stranger" here means anyone outside Aaron's priestly family.
 
-🔥 Leftovers couldn't simply be saved for the next day
+This food had become holy, set apart for a specific purpose only.
 
-🗑️ Anything remaining had to be completely burned, not stored
+Holiness created a real boundary around who could take part.
 
-✨ This showed how seriously holy food had to be handled
+Not every gift from God was meant for every person to share.
+
+🚫 Stranger means anyone outside the priestly family
+
+🕯️ The food had become holy
+
+🚧 Holiness created a real boundary
+
+📖 Not every gift was meant for everyone
+
+## 🔥 If Ought Of The Flesh Of The Consecrations, Or Of The Bread, Remain Unto The Morning, Then Thou Shalt Burn The Remainder With Fire
+
+Nothing holy was allowed to sit out and decay overnight.
+
+Leftover food from this meal had to be burned, not saved or reused.
+
+This prevented anything sacred from being treated carelessly later on.
+
+Respect for what was holy did not end when the ceremony did.
+
+🌙 Nothing holy could sit out overnight
+
+🔥 Leftovers were burned, not saved
+
+🚫 This prevented careless reuse later
+
+📖 Respect for holy things did not end quickly
 
 # Exodus 29:35-37
-
-# 🗓️ Seven Days Of Consecration
-
+# 🧼 Seven Days To Consecrate The Altar
 ---
+## 🔁 According To All Things Which I Have Commanded Thee: Seven Days Shalt Thou Consecrate Them
 
-## 🔢 Seven Days Shalt Thou Consecrate Them
+Everything described so far had to be repeated for seven full days.
 
-Seven is used throughout Scripture as a number pointing to completeness - a full week of creation, a full cycle. Ordination wasn't a single afternoon event; it was a full seven-day process before Aaron and his sons were considered fully consecrated.
+This was not a single afternoon ceremony finished all at once.
 
-🔢 Seven often signals completeness throughout Scripture
+Exact obedience mattered more here than convenience or speed.
 
-📅 Ordination took a full week, not a single ceremony
+God specified the timing, not just the actions themselves.
 
-✅ Aaron wasn't considered fully consecrated until day seven
+🔁 The ceremony repeated for seven full days
 
----
+⏳ This was not finished in one afternoon
 
-## 🐂 Offer Every Day A Bullock For A Sin Offering For Atonement... Cleanse The Altar
+✅ Exact obedience mattered more than speed
 
-This sin offering and cleansing had to be repeated daily, for all seven days. Remarkably, even the altar itself, an object and not a person, needed repeated atonement before it was considered fit for holy use.
+📖 God specified timing, not only actions
 
-🐂 The sin offering and cleansing repeated every day for a week
+## 🐂 Offer Every Day A Bullock For A Sin Offering For Atonement: And Thou Shalt Cleanse The Altar
 
-🪨 Even the altar, an object, needed repeated atonement
+A new bullock was sacrificed once every day of the seven.
 
-✨ Holiness requirements here were extremely thorough
+The altar itself needed atonement, even though it was only wood and metal.
 
----
+"Cleanse" here means the altar had to be purified before it could be used.
 
-## ✨ Thou Shalt Anoint It, To Sanctify It
+An object could become associated with sin simply by handling something imperfect.
 
-Cleansing and anointing were two separate steps. Cleansing removed anything impure from the altar's surface; anointing was the formal act of dedicating it, setting it apart specifically for God's use going forward.
+🐂 A new bullock was offered daily
 
-✨ Cleansing removed impurity; anointing formally dedicated it
+🔥 The altar itself needed atonement
 
-🫗 These were two distinct steps, not one combined action
+🧼 Cleanse means purified before use
 
-🔒 Anointing marked the altar as set apart for God's use only
+📖 Even objects needed to be made ready
 
----
+## ✋ It Shall Be An Altar Most Holy: Whatsoever Toucheth The Altar Shall Be Holy
 
-## 🚨 It Shall Be An Altar Most Holy: Whatsoever Toucheth The Altar Shall Be Holy
+Holiness here was not just a description, it was contagious by contact.
 
-The altar's holiness was described as so intense that it affected anything touching it. This wasn't a magical rule for random objects everywhere - it applied specifically to this one altar, showing just how seriously its consecrated status was treated.
+Anything that touched this altar afterward became holy simply by touching it.
 
-🚨 The altar's holiness was described as extremely intense
+This is the opposite of how uncleanness usually worked in Israel's law.
 
-🤲 Anything touching it was affected by that holiness
+God's holiness was powerful enough to spread outward, not only to be guarded.
 
-📍 This rule applied specifically to this one consecrated object
+🔥 The altar became most holy
+
+✋ Touching it made something holy too
+
+🔄 This reversed how uncleanness usually spread
+
+📖 God's holiness spread outward by contact
 
 # Exodus 29:38-42
-
-# 🐑 The Continual Daily Offering
-
+# ☀️ The Offering Every Morning And Evening
 ---
-
 ## 🐑 Two Lambs Of The First Year Day By Day Continually
 
-"Of the first year" means young lambs still in their prime, not old or weak animals. "Continually" is the key word here - this offering wasn't part of the ordination week only; it became Israel's permanent, ongoing daily worship pattern from this point forward.
+This verse introduces an offering that never stopped, day after day.
 
-🐑 "Of the first year" means young lambs in their prime
+"Continually" means this pattern was not just for the seven ordination days.
 
-🔁 "Continually" marks this as a permanent, ongoing practice
+From this point on, Israel's altar burned every single day without fail.
 
-📆 It's separate from the one-time seven-day ordination ritual
+This daily offering later became known simply as the continual offering.
 
----
+🐑 Two lambs were required daily
 
-## 🌅 The One Lamb Thou Shalt Offer In The Morning; And The Other Lamb... At Even
+🔁 Continually means never stopping
 
-One lamb was offered at sunrise and one at sunset, bookending every single day with sacrifice. This rhythm continued for centuries in Israel's worship, and many later Jewish and Christian traditions connect Jesus's own death to roughly this same evening sacrifice hour.
+🔥 The altar burned every day from now on
 
-🌅 One lamb was offered at sunrise, one at sunset
+📖 This became known as the continual offering
 
-🔁 This bookended every day of Israel's worship for centuries
+## 🌅 The One Lamb Thou Shalt Offer In The Morning
 
-✝️ Tradition connects Jesus's death to this same evening hour
+One lamb opened each day, and a second lamb closed it.
 
----
+Morning and evening framed the entire day inside an act of worship.
 
-## 🍞 A Tenth Deal Of Flour Mingled With... Oil; And... Wine For A Drink Offering
+Every single day in Israel began and ended the exact same way.
 
-A "tenth deal" was a measurement of flour called an omer, first introduced back in chapter 16 with the manna. Grain, oil, and wine were added alongside the lamb, so each daily offering became one complete package, animal, grain, oil, and drink together, not just meat alone.
+This rhythm continued for generations, long after this chapter was written.
 
-🍞 A "tenth deal" is an omer, the same unit used for manna
+🌅 One lamb was offered each morning
 
-🫒 Grain, oil, and wine joined the lamb in one full package
+🌆 A second lamb closed the evening
 
-🎁 Together they represented complete, well-rounded provision
+📅 This framed every day in worship
 
----
+📖 The rhythm continued for generations
 
-## 🚪 A Continual Burnt Offering... Where I Will Meet You, To Speak There Unto Thee
+## 📏 A Tenth Deal Of Flour Mingled With The Fourth Part Of An Hin Of Beaten Oil
 
-This establishes the tabernacle entrance as the ongoing, designated meeting place between God and Israel through Moses. It wasn't just a place for animal sacrifice; it was specifically where God promised His own presence and communication would happen.
+A "tenth deal" was an ancient unit, about the size of a small bowl.
 
-🚪 The tabernacle entrance became the designated meeting place
+A "hin" was a liquid measure, about the size of a jug.
 
-🗣️ God promised His presence and communication would happen there
+Each lamb came with its own flour, oil, and wine, not meat alone.
 
-🔁 This was permanent, not limited to the ordination week
+Together these formed a small complete meal, not merely an animal sacrifice.
+
+Grain, oil, and wine were the everyday staple foods of Israel's tables.
+
+📏 Tenth deal was about a small bowl
+
+🏺 Hin was about the size of a jug
+
+🍽️ Each lamb came with a full meal
+
+📖 Everyday foods were offered, not just meat
+
+## ♾️ This Shall Be A Continual Burnt Offering Throughout Your Generations
+
+The evening lamb repeated the exact same flour, oil, and wine as the morning.
+
+Nothing about the pattern changed between the two ends of the day.
+
+"Continual" meant this offering would carry on throughout every future generation.
+
+God promises here to meet with Israel at this very doorway.
+
+This offering was never only about sacrifice, it was about God drawing near.
+
+🔁 The evening lamb matched the morning exactly
+
+♾️ Continual meant every future generation
+
+🚪 God promised to meet Israel at this doorway
+
+📖 Sacrifice here was about God drawing near
 
 # Exodus 29:43-46
-
-# 🏠 I Will Dwell Among Them
-
+# 🏕️ I Will Dwell Among Them
 ---
-
 ## ✨ There I Will Meet With The Children Of Israel, And The Tabernacle Shall Be Sanctified By My Glory
 
-God's own presence, called "glory" here, is what actually makes the tabernacle holy, not the gold, the skilled craftsmanship, or the careful instructions alone. This promise is fulfilled later in chapter 40, when the cloud of God's glory visibly fills the finished tabernacle.
+God repeats His promise to meet Israel at the tabernacle door.
 
-✨ God's own presence, His "glory," is what truly sanctifies the place
+This time He adds that His own glory will make the place holy.
 
-🏗️ Skilled craftsmanship alone couldn't make it holy
+No ritual, oil, or blood alone had the power to do this.
 
-☁️ Chapter 40 later shows this glory-cloud actually filling it
+Only God's own presence could finish what human hands had started.
 
----
+🤝 God repeats His promise to meet Israel
 
-## 🔗 I Will Sanctify The Tabernacle... The Altar: I Will Sanctify Also Both Aaron And His Sons
+✨ His glory would sanctify the place
 
-Three different things, a place, an object, and a group of people, are all made holy by this one single declaration from God. Holiness here isn't earned by any of them separately; it's given by God to all three together.
+🩸 Blood and oil alone could not do this
 
-🏠 The tabernacle, the altar, and the priests are named together
+📖 Only God's presence finished what hands began
 
-🎁 All three are made holy by God's declaration, not their own effort
+## 🏕️ I Will Sanctify The Tabernacle Of The Congregation, And The Altar: I Will Sanctify Also Both Aaron And His Sons
 
-🔗 This links place, object, and people into one holy system
+Every major element from this chapter appears together in one final list.
 
----
+The tabernacle, the altar, and the priests all needed the same thing.
 
-## 🕊️ I Will Dwell Among The Children Of Israel, And Will Be Their God
+Human ceremony prepared them, but God's own action truly made them holy.
 
-This sentence states the real goal behind the entire Exodus story so far, plagues, Red Sea, and all of it. God's purpose was never simply rescue from slavery, it was to actually live among His people. John 1:14 later describes Jesus doing this exact thing again, since the Greek word there for "dwelt" literally means "tabernacled."
+This verse ties the whole chapter back to its real source of power.
 
-🕊️ Rescue from Egypt was never the whole goal, only the means
+🏕️ The tabernacle needed to be sanctified
 
-🏠 God's real purpose was to actually live among His people
+🔥 So did the altar
 
-📖 John 1:14 uses the same idea, saying Jesus "tabernacled" among us
+👨‍👦 So did Aaron and his sons
 
----
+📖 God's own action made them holy
 
-## 📢 They Shall Know That I Am The Lord Their God, That Brought Them Forth Out Of The Land Of Egypt
+## 🎯 I Will Dwell Among The Children Of Israel, And Will Be Their God
 
-This closing line deliberately connects the whole tabernacle project back to the deliverance from Egypt that started the book. The two ideas, rescue and nearness, are tied together on purpose: God saved them so He could live with them, not just so He could set them free and leave.
+This is the real goal behind every instruction in this chapter.
 
-📢 This line ties the tabernacle instructions back to the Exodus itself
+God was not asking for ritual for its own sake.
 
-🔗 Rescue and nearness are presented as one connected purpose
+He wanted to live among His people, close enough to be present daily.
 
-🚶 God didn't just free Israel - He intended to stay with them`;
+This echoes the closeness lost back in the garden of Eden.
+
+🏕️ God wanted to dwell among His people
+
+🎯 Ritual was never the final goal
+
+🌳 This echoes the closeness lost in Eden
+
+📖 God wanted daily nearness, not distance
+
+## ⛓️ That Brought Them Forth Out Of The Land Of Egypt, That I May Dwell Among Them
+
+The exodus from Egypt was never only about escaping slavery.
+
+Freedom was always meant to lead somewhere, to this very moment.
+
+God rescued Israel so He could live close to them, not just release them.
+
+The whole book of Exodus points forward to this one dwelling promise.
+
+⛓️ The exodus was never only about escaping
+
+🎯 Freedom was meant to lead somewhere
+
+🏕️ God rescued Israel to live close to them
+
+📖 Exodus points forward to this dwelling promise
+`.trim();
 
 export const EXODUS_TWENTY_NINE_PERSONAL_SECTIONS = parseExodusTwentyNineRawNotes(EXODUS_TWENTY_NINE_RAW_NOTES);

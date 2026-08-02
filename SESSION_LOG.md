@@ -522,3 +522,7 @@ Next up: Exodus 28
 ## 2026-08-02T15:02:00Z (hourly chapter notes run)
 Chapter: Exodus 28 | Duration: 16 min | Sections: 9 | Cards: 40 | Status: pass
 Next up: Exodus 29
+
+## 2026-08-02T15:58:08Z (hourly chapter notes run)
+Chapter: Exodus 29 | Duration: 12 min | Sections: 12 | Cards: 47 | Status: pass
+Next up: Exodus 30
