@@ -486,3 +486,7 @@ Next up: Exodus 19
 ## 2026-08-02T05:54:23Z (hourly chapter notes run)
 Chapter: Exodus 19 | Duration: 8 min | Sections: 8 | Cards: 25 | Status: pass
 Next up: Exodus 20
+
+## 2026-08-02T06:53:16Z (hourly chapter notes run)
+Chapter: Exodus 20 | Duration: 7 min | Sections: 8 | Cards: 25 | Status: pass
+Next up: Exodus 21

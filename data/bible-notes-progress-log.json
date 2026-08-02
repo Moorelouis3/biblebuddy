@@ -6111,6 +6111,59 @@
           "at": "2026-08-02T04:57:00Z"
         }
       ]
+    },
+    {
+      "book": "Exodus",
+      "chapter": 20,
+      "startedAt": "2026-08-02T06:46:04Z",
+      "finishedAt": "2026-08-02T06:53:16Z",
+      "durationMinutes": 7,
+      "sections": 8,
+      "cards": 25,
+      "verses": 26,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter, regenerating the original pre-spec version (8 sections / 21 cards) from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Exodus 20 is the Ten Commandments chapter: God identifying Himself as Israel's rescuer before giving a single command, the ban on other gods and graven images (with the jealous/generational consequence language corrected against the common misreading of personal inherited guilt), taking the LORD's name in vain, the Sabbath command tied back to both the Exodus 16 manna pattern and the Genesis creation rhythm, honoring parents as the first human-facing commandment, all five remaining commands (kill, adultery, steal, false witness, covet) each broken into its own card instead of compressed into one, the people's terrified reaction to the theophany and Moses' unique access into the thick darkness, and the closing altar instructions (earth altar, uncut stone, no steps) read for what they protected: humility in worship and modesty in the priesthood. Kept the original file's 8 section boundaries for verse-coverage continuity while rewriting every card to the new format, and added a card each for verse 21 (Moses alone drawing near) and 'thou shalt not steal' (v15), which the original file had skipped entirely. Density about 0.96 cards/verse (26 verses, 25 cards). scripts/check_bible_note_style.py was clean on the first pass. Parser check passed exactly (8/8 sections, 25 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (ExodusTwentyPersonalSection, parseExodusTwentyRawNotes, EXODUS_TWENTY_RAW_NOTES, EXODUS_TWENTY_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Exodus 20 entry removed from the front of the list as part of this commit; next redo target is Exodus 21.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-02T06:46:29Z"
+        },
+        {
+          "name": "target chapter determined: Exodus 20 (style redo, first in remaining backlog)",
+          "at": "2026-08-02T06:46:40Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Exodus.json",
+          "at": "2026-08-02T06:46:44Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (lib/genesisThirtyOneSource.ts) read",
+          "at": "2026-08-02T06:47:01Z"
+        },
+        {
+          "name": "source file written",
+          "at": "2026-08-02T06:51:00Z"
+        },
+        {
+          "name": "style checker clean",
+          "at": "2026-08-02T06:51:21Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo chapter (no changes needed)",
+          "at": "2026-08-02T06:47:05Z"
+        },
+        {
+          "name": "parser check passed (8 sections, 25 cards, 26 verses covered)",
+          "at": "2026-08-02T06:51:25Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-02T06:52:47Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-02T06:53:16Z"
+        }
+      ]
     }
   ]
 }
