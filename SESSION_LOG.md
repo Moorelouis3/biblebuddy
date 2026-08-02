@@ -502,3 +502,7 @@ Next up: Exodus 23
 ## 2026-08-02T09:56:26Z (hourly chapter notes run)
 Chapter: Exodus 23 | Duration: 10 min | Sections: 10 | Cards: 41 | Status: pass
 Next up: Exodus 24
+
+## 2026-08-02T10:56:55Z (hourly chapter notes run)
+Chapter: Exodus 24 | Duration: 10 min | Sections: 6 | Cards: 32 | Status: pass
+Next up: Exodus 25
