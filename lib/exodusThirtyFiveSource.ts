@@ -89,523 +89,798 @@ function parseExodusThirtyFiveRawNotes(rawText: string): ExodusThirtyFivePersona
 }
 
 const EXODUS_THIRTY_FIVE_RAW_NOTES = `# Exodus 35:1-3
-
-# 🕯️ The Sabbath Comes Before Any Building
-
+# 🕯️ The Sabbath Comes Before The Building Begins
 ---
+## 👥 Moses Gathered All The Congregation Of The Children Of Israel Together
 
-## 👥 Moses Gathered All The Congregation Of The Children Of Israel Together, And Said Unto Them
+This gathering happens right after Moses comes down the mountain a second time.
 
-This is likely the very next thing Moses does after coming down the mountain the second time with his face still shining (the end of chapter 34). Before a single tool is picked up for the tabernacle, he calls the entire nation together as one group to hear from him directly.
+His face was still glowing from being with God at the end of chapter thirty four.
 
-👥 This follows right after Moses' shining-face return in chapter 34
+Every single Israelite is called together as one group.
 
-📢 The whole nation is gathered as one body, not told piecemeal
+Nobody is told the news family by family.
 
-➡️ What follows is framed as a direct command, not a suggestion
+The tabernacle instructions God gave Moses alone are about to become a whole nation's project.
 
----
+What started as a private conversation on a mountain now belongs to everyone.
 
-## 📜 These Are The Words Which The LORD Hath Commanded, That Ye Should Do Them
+👥 Everyone is gathered as one group
 
-Moses frames everything that follows as something to be done, not just heard. After the golden calf disaster, where the people acted the moment Moses' back was turned, this opening line puts obedience front and center before a single instruction is even given.
+⛰️ This follows Moses' second trip down the mountain
 
-📜 Moses frames this as commands to obey, not just information to hear
+✨ His face still glowed from being with God
 
-⚠️ This comes right after a chapter where the people acted badly on their own
+📖 A private instruction becomes a shared project
 
-➡️ The very first command given is surprising
+## 📜 These Are The Words Which The LORD Hath Commanded
 
----
+This phrase insists everything that follows came from the LORD, not from Moses.
 
-## 🛑 Six Days Shall Work Be Done, But On The Seventh Day There Shall Be To You An Holy Day, A Sabbath Of Rest To The LORD
+Just one chapter earlier, the people had acted entirely on their own.
 
-Before any mention of gold, curtains, or the ark, the Sabbath is the very first thing repeated here — the same weekly rest law already given in chapters 20, 23, and 31. Building God's own house was never allowed to become an excuse to break God's rest.
+That earlier moment built a golden calf while Moses was still on the mountain.
 
-🛑 The Sabbath is repeated first, before any building instructions at all
+Now Moses puts obedience front and center before a single instruction is even given.
 
-🏗️ Even constructing the tabernacle itself doesn't override this rest
+The word commanded means these are not requests to think over.
 
-➡️ The seriousness of this law is stated plainly next
+Obedience comes before explanation this time.
 
----
+📜 The LORD is named as the true source
+
+⚠️ Disobedience happened just one chapter earlier
+
+🫡 Obedience is framed before any details are given
+
+➡️ These are commands, not options
+
+## 🛑 An Holy Day, A Sabbath Of Rest To The LORD
+
+This same weekly rest law was already given back in chapters twenty, twenty three, and thirty one.
+
+Repeating it here, before any building begins, is not an accident.
+
+The tabernacle is God's own house, but building it never overrides resting on His day.
+
+Even sacred work must stop for the Sabbath.
+
+God does not need Israel's labor more than He wants Israel's rest.
+
+🛑 This Sabbath law already appeared three times
+
+🏗️ Building God's house does not cancel this rule
+
+📅 Rest applies even to sacred work
+
+📖 God wants rest more than He wants labor
 
 ## ⚰️ Whosoever Doeth Work Therein Shall Be Put To Death
 
-This same severe penalty already appeared back in chapter 31:15. Its repetition here, right before the building project begins, is a warning aimed squarely at the coming weeks of eager, busy construction work — enthusiasm for the project is not an excuse to skip the rest day.
+This exact penalty already appeared in chapter thirty one, verse fifteen.
 
-⚰️ This repeats the same death-penalty warning from chapter 31:15
+Saying it again here, right before construction starts, is a specific warning.
 
-🔨 It's placed here specifically to guard against "too busy building" excuses
+The coming weeks will be full of busy, urgent building work.
 
-➡️ One specific example of forbidden work is named
+Excitement about the project was never a reason to skip the day of rest.
 
----
+This warning is aimed at enthusiasm, not laziness.
+
+⚰️ This penalty already appeared in chapter thirty one
+
+🔨 It is repeated right before construction begins
+
+😊 Even eager builders are not exempt
+
+➡️ Busyness is never an excuse to skip rest
 
 ## 🔥 Ye Shall Kindle No Fire Throughout Your Habitations Upon The Sabbath Day
 
-**"Habitations"** means homes or dwelling places. Lighting a fire — needed for cooking, warmth, and light — took real ongoing effort in the ancient world, so naming it specifically shows just how completely the Sabbath rest was meant to reach into daily life, not just formal labor.
+"Habitations" means homes, the tents where each family actually lived.
 
-🔥 "Habitations" means homes or dwelling places
+Fire took real daily effort to light and keep going in the ancient world.
 
-🍲 Fire was needed for cooking and warmth, so banning it reached into daily life
+It was needed for cooking, warmth, and light every single day.
 
-➡️ With rest settled, Moses turns to the offering itself
+Naming fire specifically shows how far this rest was meant to reach.
+
+It was not only for public religious work, it reached into ordinary daily life.
+
+🏠 Habitations means the homes where families lived
+
+🔥 Fire took real daily effort to light
+
+🍲 It was needed for cooking, warmth, and light
+
+📖 Sabbath rest reached into daily life
 
 # Exodus 35:4-9
-
-# 🎁 A Willing-Hearted Offering
-
+# 🎁 A Willing Hearted Offering
 ---
+## 🗣️ This Is The Thing Which The LORD Commanded
 
-## 🗣️ Moses Spake Unto All The Congregation... This Is The Thing Which The LORD Commanded, Saying
+Moses now moves from the Sabbath law to the building project itself.
 
-Moses now moves from the Sabbath law to the building project itself, introducing it the same way — as something the LORD commanded, not Moses' own idea.
+He introduces this the exact same way, as something the LORD commanded.
 
-🗣️ Moses again credits the LORD, not himself, as the source of this instruction
+Nothing about the actual construction is Moses' own idea.
 
-➡️ The very first requirement is about the heart, not the material
+Every instruction that follows carries God's authority, not a human plan.
 
----
+🗣️ Moses again credits the LORD, not himself
+
+🔄 Same pattern as the Sabbath command before it
+
+🚫 None of this is Moses' own idea
+
+📖 God's authority stands behind every instruction
 
 ## 💛 Take Ye From Among You An Offering Unto The LORD
 
-This same call for materials already appeared in chapter 25:1-7, almost word for word. Repeating it here, right before the actual building starts, bridges God's private instructions to Moses on the mountain with the public moment the people actually respond.
+This same call for materials already appeared in chapter twenty five.
 
-💛 This nearly repeats the original call for materials from chapter 25
+That chapter recorded God's private instructions to Moses alone on the mountain.
 
-🌉 It bridges God's private instructions to Moses with the people's public response
+This moment is where that private instruction becomes a public request.
 
-➡️ The offering has one very specific condition attached
+What God said to one man now reaches an entire nation.
 
----
+💛 This call repeats chapter twenty five almost exactly
+
+⛰️ Chapter twenty five was private to Moses
+
+📢 This moment makes it public
+
+➡️ A private word becomes a shared project
 
 ## 🙌 Whosoever Is Of A Willing Heart, Let Him Bring It
 
-Nothing here is required by tax or force. Unlike major building projects in Egypt and other ancient empires, which ran on forced labor and mandatory tribute, the tabernacle is built entirely from what people choose to give.
+Nothing here is required by tax, quota, or force.
 
-🙌 Nothing is required by force, tax, or quota
+Major building projects in Egypt ran on forced labor and mandatory tribute.
 
-🏛️ Ancient building projects elsewhere typically ran on forced labor, not choice
+The tabernacle is built entirely from what people choose to give.
 
-➡️ The list of acceptable materials begins with the metals
+This is the opposite of the very system Israel just escaped.
 
----
+🙌 Nothing is required by force or tax
+
+🏛️ Egypt's building projects ran on forced labor
+
+💝 The tabernacle runs on free choice instead
+
+📖 This reverses the system Israel just left
 
 ## 🪙 Gold, And Silver, And Brass
 
-Much of this metal likely came from the jewelry the Israelites carried out of Egypt, when the Egyptians handed over their silver, gold, and clothing right before the Exodus (chapter 12:35-36). What was plunder from Egypt becomes the raw material for worship.
+Much of this metal likely came out of Egypt with the people themselves.
 
-🪙 This gold and silver likely came from the Egyptians in chapter 12:35-36
+Chapter twelve describes the Egyptians handing over silver, gold, and clothing right before the Exodus.
 
-🔄 Plunder from Egypt becomes raw material for worshiping God
+What was plunder from a hostile nation becomes material for worship.
 
-➡️ Fabric and hair-based materials come next
+God turned Egypt's own wealth into the building blocks of His house.
 
----
+🪙 This metal likely came from Egypt
+
+🎁 Egyptians gave it away before the Exodus
+
+🔄 Plunder becomes material for worship
+
+📖 God repurposed Egypt's wealth for His own house
 
 ## 🧵 Blue, And Purple, And Scarlet, And Fine Linen, And Goats' Hair
 
-Purple dye was the most expensive color in the ancient world, extracted drop by drop from a specific sea snail, so its presence here signals real costly generosity. Goats' hair was spun into the coarse, durable fabric used for the tabernacle's outer tent covering.
+Purple dye was the most expensive color in the entire ancient world.
 
-🧵 Purple dye was the most expensive color in the ancient world to produce
+It was extracted drop by drop from a specific sea snail.
 
-🐐 Goats' hair was spun into the tough outer covering fabric of the tent
+Giving it here signals real, costly generosity, not leftover scraps.
 
-➡️ Animal hides and wood are named next
+Goats' hair was spun into the tough, coarse fabric used for the tent's outer covering.
 
----
+Costly dye and ordinary hair both had a place in this offering.
+
+🧵 Purple dye was the most expensive color
+
+🐚 It came from a sea snail
+
+🐐 Goats' hair became the tough outer tent covering
+
+📖 Costly and ordinary materials both mattered here
 
 ## 🐏 Rams' Skins Dyed Red, And Badgers' Skins, And Shittim Wood
 
-Most scholars think "badgers' skins" is a KJV mistranslation of an unclear Hebrew word — real badgers didn't live in this desert region, and the word more likely refers to the tough, waterproof hide of a sea creature like a dolphin or dugong, used for the tent's weatherproof outer layer. **"Shittim wood"** is acacia, a hardy tree that actually grows in the Sinai desert and resists rot.
+Many scholars believe "badgers' skins" mistranslates an unclear Hebrew word.
 
-🐏 "Badgers' skins" likely mistranslates a word for waterproof sea-creature hide
+Real badgers did not live anywhere near this desert region.
 
-🌳 "Shittim wood" is acacia, a rot-resistant tree native to this desert region
+The word more likely describes the tough, waterproof hide of a sea creature such as a dolphin or dugong.
 
-➡️ Oil and incense ingredients round out the list
+"Shittim wood" is acacia, a hardy tree that actually grows in the Sinai desert.
 
----
+Even the driest desert supplied exactly what this project needed.
+
+🐡 Badgers' skins likely means a sea creature
+
+🏜️ Real badgers never lived in this desert
+
+🌳 "Shittim wood" is acacia, a desert tree
+
+📖 The desert itself supplied the materials needed
 
 ## 🕯️ Oil For The Light, And Spices For Anointing Oil, And For The Sweet Incense
 
-These ingredients point directly ahead to the detailed recipes for the anointing oil and incense already given in chapter 30 — specific formulas reserved only for tabernacle use.
+These ingredients point straight ahead to chapter thirty.
 
-🕯️ These point directly to the exact recipes given back in chapter 30
+That chapter already gave the exact recipes for the anointing oil and the incense.
 
-🚫 Both formulas were reserved only for tabernacle use, never for personal use
+Both formulas were reserved only for tabernacle use, never for personal use.
 
-➡️ The final materials named are precious stones
+The offering supplies raw materials for a recipe already settled on the mountain.
 
----
+🕯️ These point to chapter thirty's recipes
+
+🧪 Both formulas were reserved for tabernacle use only
+
+🚫 Neither recipe was ever meant for personal use
+
+📖 The people supply what the mountain already planned
 
 ## 💎 Onyx Stones, And Stones To Be Set For The Ephod, And For The Breastplate
 
-These specific gemstones anticipate the priestly garments described in detail back in chapter 28 — the ephod (the priest's ornate vest) and the breastplate holding twelve stones representing Israel's twelve tribes.
+These gemstones point ahead to the priestly garments described in chapter twenty eight.
 
-💎 These stones point ahead to the priestly garments detailed in chapter 28
+The ephod was the priest's ornate vest, worn only while serving.
 
-🔢 The breastplate held twelve stones, one for each tribe of Israel
+The breastplate held twelve stones, one for each tribe of Israel.
 
-➡️ Attention turns from materials to the actual builders
+Even a gemstone here already had a purpose God had planned long before it arrived.
+
+💎 These stones point to chapter twenty eight
+
+👘 The ephod was the priest's ornate vest
+
+🔢 The breastplate held one stone per tribe
+
+📖 Every stone already had a planned purpose
 
 # Exodus 35:10-19
-
-# 🛠️ The Same Blueprint, Named Again
-
+# 🛠️ Naming Every Piece Of The Blueprint
 ---
-
 ## 🧠 Every Wise Hearted Among You Shall Come, And Make All That The LORD Hath Commanded
 
-**"Wise hearted"** here means skilled at a craft, not intellectually clever — practical, hands-on ability is treated as its own form of wisdom. What follows is essentially the same equipment list already given privately to Moses on the mountain in chapters 25-31; this moment is where that private blueprint becomes a public, shared project.
+"Wise hearted" here means skilled at a craft, not intellectually clever.
 
-🧠 "Wise hearted" means skilled at a craft, not intellectually clever
+Practical, hands on ability counts as its own kind of wisdom in this culture.
 
-🔁 This repeats the private mountain instructions of chapters 25-31 publicly
+What follows repeats the same equipment list already given privately to Moses in chapters twenty five through thirty one.
 
-➡️ The tabernacle structure itself is listed first
+This is the exact moment that private blueprint becomes public work.
 
----
+🧠 Wise hearted means skilled at a craft
+
+🔨 Hands on ability counts as real wisdom
+
+📜 This repeats chapters twenty five through thirty one
+
+➡️ A private blueprint becomes public work
 
 ## ⛺ The Tabernacle, His Tent, And His Covering, His Taches, And His Boards, His Bars, His Pillars, And His Sockets
 
-**"Taches"** are clasps or hooks, used to join the tabernacle's curtain sections together into one continuous covering, first described back in chapter 26.
+"Taches" are clasps or hooks.
 
-⛺ "Taches" are clasps or hooks joining the curtain sections together
+They joined the tabernacle's curtain sections into one continuous covering.
 
-📖 This whole structure list matches chapter 26's original instructions
+This whole structure was already described in detail back in chapter twenty six.
 
-➡️ The innermost, holiest object comes next
+Every hook and board named here already had its blueprint drawn.
 
----
+⛺ Taches are clasps or hooks
+
+🧵 They joined the curtain sections together
+
+📖 Chapter twenty six already described this structure
+
+➡️ The most guarded object comes next
 
 ## 📦 The Ark, And The Staves Thereof, With The Mercy Seat, And The Vail Of The Covering
 
-The ark held the stone tablets and was topped by the mercy seat, the exact spot where God promised to meet with Moses (chapter 25:22). The **"vail"** is the curtain separating the Most Holy Place from the rest of the tabernacle, so sacred that only the high priest could pass through it, once a year.
+The ark held the stone tablets of the law inside it.
 
-📦 The mercy seat is the exact spot God promised to meet Moses, in chapter 25
+The mercy seat sat on top, the exact spot where God promised to meet with Moses in chapter twenty five.
 
-🚪 The "vail" separated the Most Holy Place, crossed only once a year
+The "vail" was the curtain separating the Most Holy Place from the rest of the tabernacle.
 
-➡️ Furniture from the holy place follows
+Only the high priest could pass through it, and only once a year.
 
----
+The most guarded object in the whole tent gets named first.
+
+📦 The ark held the stone tablets
+
+🪑 The mercy seat is where God meets Moses
+
+🚪 The vail separated the Most Holy Place
+
+📖 Only the high priest crossed it yearly
 
 ## 🍞 The Table, And His Staves, And All His Vessels, And The Shewbread
 
-The **shewbread** table held twelve loaves of bread representing Israel's twelve tribes, replaced fresh every week as a continual reminder of God's provision, first detailed in chapter 25.
+The shewbread table held twelve loaves of bread.
 
-🍞 The shewbread represented Israel's twelve tribes, refreshed weekly
+Each loaf represented one of Israel's twelve tribes.
 
-📖 This table was first detailed back in chapter 25
+The bread was replaced fresh every single week.
 
-➡️ The room's only light source is named next
+It stood as a constant reminder that God provides.
 
----
+🍞 Shewbread means twelve loaves representing Israel's tribes
+
+📅 The bread was replaced fresh weekly
+
+🍽️ Chapter twenty five first described this table
+
+📖 The bread reminded Israel God provides
 
 ## 🕎 The Candlestick Also For The Light, And His Furniture, And His Lamps, With The Oil For The Light
 
-This gold lampstand was the only light inside the holy place, since it had no windows — a picture that reappears throughout Scripture of God's presence as light in the dark, first described back in chapter 25.
+The holy place had no windows.
 
-🕎 This lampstand was the tabernacle's only source of light, with no windows
+This gold lampstand was its only source of light.
 
-📖 It was first described in chapter 25, alongside the ark and table
+Scripture repeats this picture again and again, God's presence as light in the dark.
 
-➡️ A second altar, for incense, comes next
+Without this lampstand, the holy place would have sat in total darkness.
 
----
+🕎 The holy place had no windows
+
+💡 This lampstand was its only light source
+
+📜 Chapter twenty five first described it
+
+📖 It pictures God's presence as light in darkness
 
 ## 💨 The Incense Altar, And His Staves, And The Anointing Oil, And The Sweet Incense, And The Hanging For The Door At The Entering In Of The Tabernacle
 
-This gold altar stood just outside the veil and was where Aaron burned incense every morning and evening, a duty detailed back in chapter 30, alongside the oil and incense formulas already named in this chapter's offering list.
+This gold altar stood just outside the veil, closest to the Most Holy Place.
 
-💨 Aaron burned incense here every morning and evening, per chapter 30
+Aaron burned incense on it every single morning and evening.
 
-🚪 This altar stood just outside the veil, closest to the Most Holy Place
+Chapter thirty already described this exact daily duty.
 
-➡️ The outdoor altar and washing basin are named next
+A fixed rhythm of worship happened here, twice a day, without fail.
 
----
+💨 This altar stood just outside the veil
+
+🌅 Aaron burned incense every morning and evening
+
+📜 Chapter thirty already described this duty
+
+📖 Worship here followed a fixed daily rhythm
 
 ## 🔥 The Altar Of Burnt Offering, With His Brasen Grate, His Staves, And All His Vessels, The Laver And His Foot
 
-This bronze altar stood in the outer courtyard, where animal sacrifices were actually burned — a very different, more public altar than the gold incense altar inside. The **laver** was the wash-basin priests used to clean their hands and feet before serving, "his foot" meaning its base or stand.
+This bronze altar stood out in the open courtyard.
 
-🔥 This bronze altar in the courtyard is where animal sacrifices were burned
+Animal sacrifices were actually burned here, in full public view.
 
-🚿 The laver's "foot" is its base or pedestal stand, used for washing
+That makes it very different from the gold incense altar hidden inside.
 
-➡️ The courtyard's boundary comes next
+The laver was a wash basin, and "his foot" simply means its base or stand.
 
----
+Priests washed their hands and feet at it before serving.
+
+One altar faced the public, one stood in secret, and both were required.
+
+🔥 This bronze altar stood in the public courtyard
+
+👀 Sacrifices were burned here, in full view
+
+🚿 The laver's foot means its base or stand
+
+📖 One altar was public, one was hidden
 
 ## 🧱 The Hangings Of The Court, His Pillars, And Their Sockets, And The Hanging For The Door Of The Court
 
-These linen curtain walls marked the outer boundary of the whole tabernacle complex, first detailed back in chapter 27, keeping the sacred space visibly separated from the ordinary camp around it.
+These linen curtain walls marked the outer edge of the whole tabernacle complex.
 
-🧱 These curtains marked the outer boundary of the entire sacred complex
+Chapter twenty seven already described this exact boundary.
 
-📖 This courtyard boundary was first detailed in chapter 27
+The sacred space stayed visibly separate from the ordinary camp around it.
 
-➡️ Small but essential hardware is named next
+A curtain wall told every Israelite exactly where holy ground began.
 
----
+🧱 These curtains marked the complex's outer boundary
+
+📖 Chapter twenty seven already described this
+
+🚧 The sacred space stayed visibly separate
+
+➡️ A curtain marked exactly where holy ground began
 
 ## 📌 The Pins Of The Tabernacle, And The Pins Of The Court, And Their Cords
 
-These tent pegs and ropes were the unglamorous hardware holding the entire structure steady against desert wind — a reminder that even the smallest, least impressive pieces were still part of what the LORD commanded.
+These are simple tent pegs and ropes.
 
-📌 These pegs and ropes held the whole structure steady in desert wind
+They held the entire structure steady against desert wind.
 
-🔧 Even the smallest hardware pieces still counted as commanded work
+Nobody would call a tent peg glamorous or important looking.
 
-➡️ The final items are the priestly clothing itself
+Even the smallest piece of hardware still counted as commanded work.
 
----
+📌 Pins and cords are simple tent hardware
+
+💨 They held the structure steady in desert wind
+
+🔧 Nothing about them looks impressive
+
+📖 Even small pieces counted as commanded work
 
 ## 👘 The Cloths Of Service, To Do Service In The Holy Place, The Holy Garments For Aaron The Priest, And The Garments Of His Sons, To Minister In The Priest's Office
 
-These are the detailed priestly garments described at length back in chapter 28 — the ephod, breastplate, robe, and turban Aaron and his sons wore only while serving inside the tabernacle.
+These are the priestly garments described at length back in chapter twenty eight.
 
-👘 These garments were described in full detail back in chapter 28
+The ephod, the robe, the breastplate, and the turban all belong to this list.
 
-🚫 They were worn only while actively serving inside the tabernacle
+Aaron and his sons wore these only while actively serving inside the tabernacle.
 
-➡️ The people's actual response begins next
+The list of objects ends, and attention shifts to the people who will actually build them.
+
+👘 These garments were detailed in chapter twenty eight
+
+👑 The list includes the ephod, robe, and breastplate
+
+⏱️ They were worn only while actively serving
+
+➡️ The list ends, and the builders come next
 
 # Exodus 35:20-29
-
 # 💛 Every Heart That Was Willing
-
 ---
-
 ## 🚶 All The Congregation Of The Children Of Israel Departed From The Presence Of Moses
 
-The people don't hand anything over on the spot — they go home first, back to their own tents and belongings, before returning with whatever they choose to bring. Giving here is personal and individual, not a single communal collection taken up in the moment.
+The people do not hand anything over on the spot.
 
-🚶 The people go home first, rather than giving anything on the spot
+They go home first, back to their own tents and belongings.
 
-🏠 This makes the offering personal and individual, not one shared collection
+Then they return with whatever they personally choose to bring.
 
-➡️ Two different Hebrew phrases describe why they came back
+This makes giving personal and individual, not one shared collection taken in the moment.
 
----
+🚶 The people go home before giving anything
+
+🏠 Each family decides what to bring
+
+🎁 Giving here is personal, not a single collection
+
+➡️ Two Hebrew phrases explain why they came back
 
 ## ❤️ Every One Whose Heart Stirred Him Up
 
-This is the first of two phrases describing internal motivation, both aimed at the same idea: nobody is being ordered to give. After chapter 32, where the people's hearts led them toward a golden calf, this is the same kind of heart now moving in the right direction.
+This phrase describes internal motivation, not an order from Moses.
 
-❤️ This is the first of two phrases both describing internal motivation
+Nobody commands the people to give a specific amount.
 
-🔄 The same kind of eager heart that built a calf in chapter 32 now builds rightly
+Chapter thirty two showed this same kind of stirred heart building a golden calf.
 
-➡️ The second phrase adds another layer
+The same heart that once moved toward sin now moves toward worship.
 
----
+❤️ This phrase describes internal motivation, not force
 
-## 🕊️ Every One Whom His Spirit Made Willing, And They Brought The LORD's Offering To The Work Of The Tabernacle
+🚫 No specific amount was ever ordered
 
-Pairing "heart stirred him up" with "spirit made willing" doubles down on the same point from two different angles — this response is real, personal, and un-coerced, not stage-managed or demanded.
+🐂 This same heart once built a calf
 
-🕊️ Two different phrases stack together to emphasize the same point twice
+📖 That heart now moves toward worship instead
 
-✅ The response is real and personal, not staged or demanded
+## 🕊️ Every One Whom His Spirit Made Willing, And They Brought The LORD's Offering
 
-➡️ Both men and women are named as givers
+"Heart stirred him up" and "spirit made willing" say almost the same thing twice.
 
----
+Repeating the idea from two different angles doubles down on one point.
 
-## 💍 Both Men And Women... Brought Bracelets, And Earrings, And Rings, And Tablets, All Jewels Of Gold
+This response was real and personal, not staged or demanded.
 
-**"Tablets"** here means a type of jewelry, likely a pendant or nose ornament, not a writing surface. This is strikingly the same category of jewelry — earrings especially — that Aaron collected from the people to melt down into the golden calf back in chapter 32:2-3.
+Two phrases carry one message, nobody had to be talked into this.
 
-💍 "Tablets" here means a piece of jewelry, not a writing surface
+🕊️ Two phrases repeat the same idea twice
 
-🐂 This is the same kind of jewelry Aaron melted into the golden calf in chapter 32
+✅ This emphasizes a real, personal response
 
-➡️ The text pauses to underline just how many gave
+🚫 Nothing here was staged or demanded
 
----
+➡️ Men and women both come forward next
+
+## 💍 Both Men And Women, As Many As Were Willing Hearted, And Brought Bracelets, And Earrings, And Rings, And Tablets, All Jewels Of Gold
+
+"Tablets" here means a piece of jewelry, likely a pendant or nose ornament.
+
+It does not mean a writing surface.
+
+This is the same kind of jewelry Aaron collected before.
+
+Earrings especially were melted down to build the golden calf in chapter thirty two.
+
+The very metal once melted into an idol is now given back to God.
+
+💍 Tablets here means a piece of jewelry
+
+📝 It is not a writing surface
+
+🐂 Aaron collected this jewelry for the calf
+
+📖 The same gold now goes to God instead
 
 ## ✨ Every Man That Offered Offered An Offering Of Gold Unto The LORD
 
-The repeated verb ("offered offered") in the original text emphasizes just how widespread this giving was — this wasn't a handful of wealthy donors, but a broad wave of ordinary people all choosing to give at once.
+The original text repeats this same verb, offered offered, back to back.
 
-✨ The doubled verb in the Hebrew emphasizes how widespread this giving was
+That repetition emphasizes how widespread this giving actually was.
 
-👥 This wasn't a few wealthy donors — it was a broad wave of ordinary people
+This was not a handful of wealthy donors stepping forward alone.
 
-➡️ Fabric and hide materials are given too
+A broad wave of ordinary people chose to give, all at once.
 
----
+✨ The doubled verb stresses how widespread giving was
 
-## 🧶 Every Man With Whom Was Found Blue, And Purple, And Scarlet, And Fine Linen, And Goats' Hair, And Red Skins Of Rams, And Badgers' Skins, Brought Them
+👥 This was not just a few wealthy donors
 
-The phrase **"with whom was found"** signals that people gave only from what they already personally owned — nothing here was seized or demanded from anyone's household.
+🌊 A broad wave of ordinary people gave together
 
-🧶 "With whom was found" means people gave only what they already owned
+📖 Widespread generosity, not a handful of gifts
 
-🚫 Nothing described here was seized or demanded from anyone
+## 🧶 Every Man, With Whom Was Found Blue, And Purple, And Scarlet, And Fine Linen, And Goats' Hair, And Red Skins Of Rams, And Badgers' Skins, Brought Them
 
-➡️ Metal and wood offerings are described the same way
+This phrase means people gave only from what they already personally owned.
 
----
+Nothing here was seized from anyone's household.
 
-## 🪵 Every One That Did Offer An Offering Of Silver And Brass Brought The LORD's Offering: And Every Man, With Whom Was Found Shittim Wood, Brought It
+Nobody searched tents or demanded a quota.
 
-The same voluntary pattern repeats one more time for metal and wood, reinforcing through sheer repetition just how total and complete the people's response was.
+Every gift started as something already sitting in someone's own home.
 
-🪵 The same voluntary pattern is repeated once more for metal and wood
+🧶 "With whom was found" means already personally owned
 
-🔁 The repetition itself emphasizes just how total this response was
+🚫 Nothing was seized from any household
 
-➡️ Skilled women are highlighted specifically next
+📋 No quota or search was ever ordered
 
----
+➡️ Every gift began as someone's own belonging
 
-## 🧵 All The Women That Were Wise Hearted Did Spin With Their Hands, And Brought That Which They Had Spun, Both Of Blue, And Of Purple, And Of Scarlet, And Of Fine Linen
+## 🪵 Every One That Did Offer An Offering Of Silver And Brass Brought The LORD's Offering
 
-Hand-spinning thread from raw fiber was a slow, genuinely skilled craft, not simple busywork. Naming these women specifically as **"wise hearted"** — the same term used for Bezaleel later in this chapter — puts their craftsmanship on equal footing with any other skilled worker.
+The exact same voluntary pattern repeats here for metal and wood.
 
-🧵 Hand-spinning was a slow, genuinely skilled craft, not simple busywork
+This is now the third time this chapter says the same thing in slightly different words.
 
-⚖️ These women are called "wise hearted," the same term used for Bezaleel
+Sheer repetition itself is the point.
 
-➡️ Even more women are named for a related skill
+The text keeps saying it because the response really was that complete.
 
----
+🪵 The same pattern repeats for metal and wood
+
+🔁 This is the third time this pattern appears
+
+📢 Repetition itself makes the point
+
+📖 The response really was this complete
+
+## 🧵 All The Women That Were Wise Hearted Did Spin With Their Hands
+
+Spinning thread by hand from raw fiber was a slow, genuinely skilled craft.
+
+It was never simple busywork.
+
+"Wise hearted" is the same term used for Bezaleel later in this chapter.
+
+Their skill stands on equal footing with any other craftsman named here.
+
+🧵 Hand spinning was a slow, skilled craft
+
+🚫 It was never simple busywork
+
+⚖️ Wise hearted is the same term for Bezaleel
+
+📖 Their skill equals any craftsman named here
 
 ## 🐐 All The Women Whose Heart Stirred Them Up In Wisdom Spun Goats' Hair
 
-This repeats the "heart stirred" language from earlier in the section, applying the exact same willing generosity already shown by the men specifically to these women's specialized craft.
+This repeats the "heart stirred" language already used for the whole camp earlier in this section.
 
-🐐 This repeats the "heart stirred" language used earlier for the whole camp
+The exact same willing generosity is now credited to these women by name.
 
-👩 The exact same willing generosity is credited to these women by name
+Skilled craft and a willing heart show up together again.
 
-➡️ Israel's leaders step forward too
+🐐 This repeats the "heart stirred" language from earlier
 
----
+👩 The same generosity is credited to these women
+
+🧶 Skilled craft and a willing heart appear together
+
+➡️ Israel's leaders step forward next
 
 ## 👑 The Rulers Brought Onyx Stones, And Stones To Be Set, For The Ephod, And For The Breastplate
 
-These are the tribal leaders, and their contribution — the rarest, most expensive gemstones — stands out because it directly contrasts with their near-total silence and passivity during the golden calf disaster in chapter 32, where Aaron acted almost alone as their representative.
+These are the tribal leaders, Israel's rulers.
 
-👑 These tribal leaders bring the rarest, most expensive materials of all
+They bring the rarest, most expensive materials of the whole offering.
 
-🔄 This contrasts with the leaders' near-silence during chapter 32's crisis
+Chapter thirty two showed these same leaders staying almost completely silent during the golden calf crisis.
 
-➡️ A short list of remaining items closes out the giving
+Here, finally, the leaders act, and they act well.
 
----
+👑 These are Israel's tribal leaders
 
-## 🌿 And Spice, And Oil For The Light, And For The Anointing Oil, And For The Sweet Incense
+💎 They bring the rarest materials of all
 
-This closes out the specific list of items, matching the earlier call for materials in verses 8-9 almost exactly, confirming that every single category requested was actually met.
+🐂 Chapter thirty two showed their near silence
 
-🌿 This closing list matches the earlier request in verses 8-9 almost exactly
+📖 Here, the leaders finally act well
 
-✅ Every single category of material requested was actually provided
+## 🌿 Spice, And Oil For The Light, And For The Anointing Oil, And For The Sweet Incense
 
-➡️ One final summary verse wraps up the whole response
+This closing list matches the earlier request from verses eight and nine almost exactly.
 
----
+Every single category of material asked for has now actually been supplied.
 
-## 🎁 The Children Of Israel Brought A Willing Offering Unto The LORD, Every Man And Woman, Whose Heart Made Them Willing To Bring For All Manner Of Work, Which The LORD Had Commanded To Be Made By The Hand Of Moses
+Nothing on God's original list came back empty.
 
-This closing sentence bookends the section with the same "willing heart" language it opened with, and stands in sharp contrast to Israel's forced, unpaid labor as slaves back in Egypt — this time, giving is free, personal, and eager.
+🌿 This list matches verses eight and nine closely
 
-🎁 This bookends the section with the same "willing heart" language
+✅ Every requested category was actually supplied
 
-⛓️ This freely-chosen giving contrasts sharply with their forced labor in Egypt
+📋 Nothing came back empty
 
-➡️ Two specific craftsmen are named to lead the actual construction
+➡️ One final verse wraps up the whole response
+
+## 🎁 The Children Of Israel Brought A Willing Offering Unto The LORD, Every Man And Woman, Whose Heart Made Them Willing
+
+This closing sentence repeats the same "willing heart" language the section opened with.
+
+The word "willing" now appears for the fourth time in this chapter alone.
+
+Israel's labor in Egypt was forced and unpaid, under threat of punishment.
+
+This time, the same people give freely, and nobody made them.
+
+🎁 This bookends the section with "willing heart" again
+
+🔢 Willing has now appeared four times here
+
+⛓️ Their labor in Egypt was forced and unpaid
+
+📖 This time, giving is free and chosen
 
 # Exodus 35:30-35
-
 # 🎨 Bezaleel And Aholiab, Filled And Called
-
 ---
+## 📛 The LORD Hath Called By Name Bezaleel The Son Of Uri, The Son Of Hur, Of The Tribe Of Judah
 
-## 📛 Moses Said Unto The Children Of Israel, See, The LORD Hath Called By Name Bezaleel The Son Of Uri, The Son Of Hur, Of The Tribe Of Judah
+Being called by name means personally and individually chosen.
 
-Being **"called by name"** means personally and individually chosen, not just generally gifted along with everyone else. Bezaleel comes from the tribe of Judah, the same tribe that will later produce King David and, generations further on, Jesus — though Bezaleel's calling here is about craftsmanship, not royalty.
+This is not the same as being generally gifted along with everyone else.
 
-📛 "Called by name" means personally and individually chosen by God
+Bezaleel comes from the tribe of Judah.
 
-👑 Bezaleel comes from Judah, the same tribe as David and, later, Jesus
+That same tribe later produces King David, and generations further on, Jesus.
 
-➡️ What Bezaleel is filled with is stated directly
+Bezaleel's calling here is about skill, not royalty, but the tribe still matters.
 
----
+📛 Called by name means personally chosen
 
-## 🕊️ And He Hath Filled Him With The Spirit Of God, In Wisdom, In Understanding, And In Knowledge, And In All Manner Of Workmanship
+🙅 Not the same as being generally gifted
 
-This same language first appeared in chapter 31:2-3, and it's a striking claim: skilled craftsmanship — cutting stone, working metal, designing patterns — is described here as a direct result of being filled with God's own Spirit, not a lesser gift than prophecy or leadership.
+👑 Judah later produces David, and then Jesus
 
-🕊️ This exact language first appeared back in chapter 31
+📖 This calling is about craft, not royalty
 
-🔨 Skilled craftsmanship is described here as a genuine gift of God's Spirit
+## 🕊️ He Hath Filled Him With The Spirit Of God, In Wisdom, In Understanding, And In Knowledge, And In All Manner Of Workmanship
 
-➡️ Specific skills are listed by name
+This exact language first appeared back in chapter thirty one.
 
----
+Skilled craftsmanship, cutting stone, working metal, designing patterns, is described here as a direct gift of God's Spirit.
 
-## 💍 And To Devise Curious Works, To Work In Gold, And In Silver, And In Brass
+That is a striking claim.
 
-**"Curious"** in this old English sense means carefully and skillfully made, not strange or odd. This is a case where a common word has quietly changed meaning since the KJV was translated.
+A skilled pair of hands can be just as much a gift of God as a prophetic word.
 
-💍 "Curious" here means skillfully and carefully made, not strange or odd
+🕊️ This language first appeared in chapter thirty one
 
-📖 This is a word that has quietly changed meaning since 1611
+🔨 Craftsmanship is named a gift of God's Spirit
+
+🎯 Wisdom, understanding, knowledge, and skill are named together
+
+📖 Skilled hands can be a gift too
+
+## 💍 To Devise Curious Works, To Work In Gold, And In Silver, And In Brass
+
+"Curious" in this old sense means carefully and skillfully made.
+
+It does not mean strange or odd, the way the word is used today.
+
+This is one of many words in the King James text whose meaning has quietly shifted since sixteen eleven.
+
+Reading it with today's meaning would completely miss the point.
+
+💍 Curious here means skillfully made
+
+🚫 It does not mean strange or odd
+
+📖 This word's meaning has shifted since sixteen eleven
 
 ➡️ Stonework and woodwork are named next
 
----
+## 🪨 In The Cutting Of Stones, To Set Them, And In Carving Of Wood, To Make Any Manner Of Cunning Work
 
-## 🪨 And In The Cutting Of Stones, To Set Them, And In Carving Of Wood, To Make Any Manner Of Cunning Work
+"Cunning" here means highly skilled.
 
-**"Cunning"** here means highly skilled, not sneaky or deceptive — another old word whose meaning has shifted over time. This range of skills, from gem-cutting to woodcarving, shows Bezaleel's gifting covered many different crafts at once.
+It does not mean sneaky or deceptive, the way the word is usually used now.
 
-🪨 "Cunning" here means highly skilled, not sneaky or deceptive
+This range of skill, gem cutting to woodcarving, shows Bezaleel's gifting covered many crafts at once.
 
-🎯 Bezaleel's gifting spans several very different crafts at once
+One man carried an unusually wide range of skill.
 
-➡️ A second craftsman is introduced to work alongside him
+🪨 Cunning here means highly skilled
 
----
+🚫 It does not mean sneaky or deceptive
 
-## 🤝 And He Hath Put In His Heart That He May Teach, Both He, And Aholiab, The Son Of Ahisamach, Of The Tribe Of Dan
+🎯 His gifting spanned several different crafts
 
-Bezaleel isn't just skilled — he's also gifted to teach others, so the work can multiply beyond just his own two hands. Aholiab comes from Dan, a much smaller and less prominent tribe than Judah, showing God's gifting for this sacred work wasn't limited to Israel's most notable family line.
+📖 One man, many skills
 
-🤝 Bezaleel is gifted to teach, so his skill multiplies beyond his own hands
+## 🤝 He Hath Put In His Heart That He May Teach, Both He, And Aholiab, The Son Of Ahisamach, Of The Tribe Of Dan
 
-⚖️ Aholiab's tribe, Dan, is far less prominent than Bezaleel's tribe, Judah
+Bezaleel is not only skilled, he is also gifted to teach others.
 
-➡️ A final summary names their combined specialties
+That means his skill can multiply beyond his own two hands.
 
----
+Aholiab comes from Dan, a much smaller and less prominent tribe than Judah.
+
+God's gifting for this sacred work was never limited to Israel's most notable family line.
+
+🤝 Bezaleel is also gifted to teach others
+
+✋ His skill can multiply past his own hands
+
+⚖️ Dan is far less prominent than Judah
+
+📖 This gift was not limited to Judah
 
 ## 🧵 Them Hath He Filled With Wisdom Of Heart, To Work All Manner Of Work, Of The Engraver, And Of The Cunning Workman, And Of The Embroiderer, In Blue, And In Purple, In Scarlet, And In Fine Linen, And Of The Weaver
 
-This closing verse names four distinct specialties — engraving, general skilled craft, embroidery, and weaving — echoing chapter 31's original description almost word for word, confirming that everything privately promised to Moses on the mountain is now, publicly, actually beginning.
+This closing verse names four distinct specialties.
 
-🧵 Four distinct specialties are named: engraver, craftsman, embroiderer, weaver
+Engraving, general skilled craft, embroidery, and weaving.
 
-📖 This closely echoes chapter 31's original description of these two men
+It echoes chapter thirty one's description of these two men almost word for word.
 
-➡️ The private mountain instructions have now fully become public, shared work
+What was privately promised to Moses on the mountain is now, publicly, actually happening.
 
----
+🧵 Four specialties are named here
 
-## 💛 Wisdom Of Heart, Named One Final Time
+📖 This echoes chapter thirty one closely
 
-The word "heart" has now appeared for willing givers, skilled women, and gifted craftsmen alike across this entire chapter. The same heart that can be stirred toward sin, as in chapter 32, is shown here stirred toward worship, generosity, and skilled work — all under that same word.
+✅ The private promise is now public
 
-💛 "Heart" describes givers, skilled women, and craftsmen alike in this chapter
+➡️ One closing thought ties the whole chapter together
 
-🔄 The same heart capable of sin in chapter 32 is shown capable of worship here`;
+## 🧑‍🤝‍🧑 Even Of Them That Do Any Work, And Of Those That Devise Cunning Work
+
+This closing phrase covers every remaining skilled worker, named or not.
+
+The word heart has now described willing givers, skilled women, and gifted craftsmen alike across this whole chapter.
+
+Chapter thirty two showed a heart stirred toward a golden calf.
+
+This same chapter shows that very heart stirred toward worship, generosity, and skilled work instead.
+
+🧑‍🤝‍🧑 This phrase covers every remaining skilled worker
+
+💛 "Heart" has described givers, women, and craftsmen alike
+
+🐂 Chapter thirty two showed a sinful heart
+
+📖 This chapter shows that heart stirred toward worship`.trim();
 
 export const EXODUS_THIRTY_FIVE_PERSONAL_SECTIONS = parseExodusThirtyFiveRawNotes(EXODUS_THIRTY_FIVE_RAW_NOTES);

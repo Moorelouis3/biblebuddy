@@ -6926,6 +6926,67 @@
           "at": "2026-08-02T20:58:59Z"
         }
       ]
+    },
+    {
+      "book": "Exodus",
+      "chapter": 35,
+      "startedAt": "2026-08-02T21:45:51Z",
+      "finishedAt": "2026-08-02T21:59:21Z",
+      "durationMinutes": 14,
+      "sections": 5,
+      "cards": 42,
+      "verses": 35,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (5 sections / 24 cards) from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (35 verses). Exodus 35 opens with Moses gathering the whole congregation to repeat the Sabbath law (rest even overrides tabernacle building, with the same death penalty from chapter 31 restated and fire in the home named specifically), then reissues the call for freewill offering materials that first appeared privately to Moses in chapters 25-31 (metals, dyed fabrics, badgers' skins/shittim wood, oil and incense ingredients, gemstones for the ephod and breastplate), lists the entire tabernacle equipment blueprint again by name, then narrates the people's actual response: everyone whose heart was stirred and spirit made willing brought gold jewelry (the same category Aaron melted for the golden calf in chapter 32), skilled women spun thread by hand, and the tribal rulers who stayed nearly silent during the golden calf crisis finally step up with the rarest gemstones. The chapter closes with Bezaleel of Judah and Aholiab of Dan being called by name and Spirit filled for the actual construction work. Kept the original file's 5 section boundaries (1-3, 4-9, 10-19, 20-29, 30-35) for verse coverage continuity while rewriting every card to the new format. Density 1.2 cards/verse (35 verses, 42 cards) given how much of this chapter repeats earlier material lists verbatim; every card still teaches something distinct (a definition, a callback with its own point, or the heart/golden-calf contrast running through the chapter) rather than restating inventory. scripts/check_bible_note_style.py found 32 problems on first pass (bullets outside the strict 3-8 word range, four last-bullets not using 📖/➡️, one body line over 20 words, then a second pass surfaced 3 repeated-emoji-within-a-card issues introduced while fixing the last-bullet problem), fixed all, third run clean (42 cards, no problems). A manual section 13 eye check and a hyphen/em dash/semicolon/contraction/banned-word scan all passed. Parser check passed exactly (5/5 sections, 42 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (ExodusThirtyFivePersonalSection, parseExodusThirtyFiveRawNotes, EXODUS_THIRTY_FIVE_RAW_NOTES, EXODUS_THIRTY_FIVE_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Exodus 35 entry removed from the front of the list as part of this commit; next redo target is Exodus 36. This run's fresh clone started in a detached HEAD pointed at a locally stale origin/main ref; a fresh git fetch confirmed origin/main actually matched the detached HEAD exactly (no real divergence), so local main was reset onto it cleanly before any new work.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-02T21:45:51Z"
+        },
+        {
+          "name": "target chapter determined: Exodus 35 (style redo, first in remaining backlog)",
+          "at": "2026-08-02T21:47:16Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Exodus.json (chapter 35, 35 verses)",
+          "at": "2026-08-02T21:47:16Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (lib/genesisThirtyOneSource.ts) read in full",
+          "at": "2026-08-02T21:51:56Z"
+        },
+        {
+          "name": "source file written (lib/exodusThirtyFiveSource.ts, 5 sections, 42 cards)",
+          "at": "2026-08-02T21:51:56Z"
+        },
+        {
+          "name": "style checker clean (after 3 rounds of fixes: bullet word counts, last-bullet emoji, repeated emoji within a card)",
+          "at": "2026-08-02T21:55:17Z"
+        },
+        {
+          "name": "wiring confirmed correct (no changes needed, redo chapter)",
+          "at": "2026-08-02T21:55:17Z"
+        },
+        {
+          "name": "parser check passed (5 sections, 42 cards, 35 verses)",
+          "at": "2026-08-02T21:55:40Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-02T21:57:24Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, redo-remaining.json popped, SESSION_LOG.md)",
+          "at": "2026-08-02T21:59:09Z"
+        },
+        {
+          "name": "committed all changed files",
+          "at": "2026-08-02T21:59:21Z"
+        },
+        {
+          "name": "pushed to origin main",
+          "at": "2026-08-02T21:59:50Z"
+        }
+      ]
     }
   ]
 }
