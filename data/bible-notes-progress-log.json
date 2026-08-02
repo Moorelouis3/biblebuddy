@@ -6437,6 +6437,55 @@
           "at": "2026-08-02T11:57:15Z"
         }
       ]
+    },
+    {
+      "book": "Exodus",
+      "chapter": 26,
+      "startedAt": "2026-08-02T12:45:57Z",
+      "finishedAt": "2026-08-02T12:57:53Z",
+      "durationMinutes": 12,
+      "sections": 7,
+      "cards": 31,
+      "verses": 37,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (6 sections / 21 cards) from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Exodus 26 is the tabernacle construction instructions: the cherubim woven inner linen curtains joined by gold clasps into one tabernacle, the plainer goats hair outer covering (eleven curtains instead of ten, joined by brass clasps) plus the rams' skins and badgers' skins weatherproof roof, the acacia wood standing boards on silver sockets (funded by the atonement money explained later in Exodus 30), the mirrored north and west walls with reinforced corner boards, the gold overlaid connecting bars including the hidden center bar, the veil dividing the holy place from the most holy (with a direct callback to the temple veil tearing at Jesus's death in Matthew 27 and Hebrews 10), and the entrance hanging on brass sockets closing out the gold, silver, brass gradient that runs through the whole chapter. Split several combined ideas into separate cards during drafting (the north wall and the corner boards, the corner boards and their ring coupling) rather than let one card carry two beats, per the spec's explicit warning against that mistake. Re-anchored the veil-tearing card's title to the Matthew 27 KJV phrase itself (not an invented topic label) since it does not map to an Exodus phrase. Density 0.84 cards/verse (37 verses, 31 cards), lower than the ~1-2/verse guidance because this is a dimension-and-materials-heavy Law chapter (spec section 12): every measurement, material change, and repeated instruction was checked for real teaching content rather than restated for padding. scripts/check_bible_note_style.py found 8 problems on first pass (bullets one word over the 8 word limit), fixed, second run clean. Parser check passed exactly (7/7 sections, 31 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range covering Exodus 1-40, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (ExodusTwentySixPersonalSection, parseExodusTwentySixRawNotes, EXODUS_TWENTY_SIX_RAW_NOTES, EXODUS_TWENTY_SIX_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Exodus 26 entry removed from the front of the list as part of this commit; next redo target is Exodus 27.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-02T12:45:57Z"
+        },
+        {
+          "name": "target chapter determined: Exodus 26 (style redo, first in remaining backlog)",
+          "at": "2026-08-02T12:45:57Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Exodus.json",
+          "at": "2026-08-02T12:47:30Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (lib/genesisThirtyOneSource.ts) read",
+          "at": "2026-08-02T12:49:00Z"
+        },
+        {
+          "name": "source file written (lib/exodusTwentySixSource.ts, 7 sections, 31 cards)",
+          "at": "2026-08-02T12:55:07Z"
+        },
+        {
+          "name": "style checker clean (8 problems found and fixed, all bullets one word over the limit)",
+          "at": "2026-08-02T12:56:40Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo chapter, no changes needed",
+          "at": "2026-08-02T12:56:45Z"
+        },
+        {
+          "name": "parser check passed (7/7 sections, 31 cards, text verbatim)",
+          "at": "2026-08-02T12:57:20Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-02T12:57:53Z"
+        }
+      ]
     }
   ]
 }
