@@ -574,3 +574,7 @@ Next up: Leviticus 1
 ## 2026-08-03T03:54:11Z (hourly chapter notes run)
 Chapter: Leviticus 1 | Duration: 8 min | Sections: 5 | Cards: 24 | Status: pass
 Next up: Leviticus 2
+
+## 2026-08-03T04:56:32Z (hourly chapter notes run)
+Chapter: Leviticus 2 | Duration: 10 min | Sections: 5 | Cards: 28 | Status: pass
+Next up: Leviticus 3

@@ -7325,6 +7325,59 @@
           "at": "2026-08-03T03:56:20Z"
         }
       ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 2,
+      "startedAt": "2026-08-03T04:46:39Z",
+      "finishedAt": "2026-08-03T04:56:32Z",
+      "durationMinutes": 10,
+      "sections": 5,
+      "cards": 28,
+      "verses": 16,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Second chapter in the Leviticus redo backlog (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (paragraph bodies with hyphens, three bullets per card) from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Leviticus 2 covers the grain (meat) offering: the meaning of \"meat\" as food rather than flesh, the cost of fine flour/oil/frankincense, the priest handoff and the \"memorial\" handful burned on the altar versus the remnant that fed the priestly family, the \"most holy\" tier of holiness, the word \"oblation\" as a synonym for offering, the three baking methods (oven cakes and wafers, pan, fryingpan) and how oil was applied differently in each, the repeated verses 8-10 mirroring verses 1-3 for the baked version, the ban on leaven and honey (both being fermenting agents also used in pagan offerings) tied back to Exodus 12, the distinct \"oblation of the firstfruits\" in verse 12 that is never burned (unlike the firstfruits offering in verses 14-16), the covenant of salt (Numbers 18:19, 2 Chronicles 13:5), and the roasted green-ear firstfruits offering closing the chapter. Kept the original file's 5 section boundaries (1-3, 4-7, 8-10, 11-13, 14-16) for verse-coverage continuity while rewriting every card to the new format. Density 1.75 cards/verse (16 verses, 28 cards). scripts/check_bible_note_style.py was clean on the first pass. Parser check passed exactly via getBibleReaderStudySections('Leviticus', 2) (5/5 sections, 28 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range covering Leviticus 1-27, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (LeviticusTwoPersonalSection, parseLeviticusTwoRawNotes, LEVITICUS_TWO_RAW_NOTES, LEVITICUS_TWO_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Leviticus 2 entry removed from the front of the list as part of this commit; next redo target is Leviticus 3.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-03T04:46:39Z"
+        },
+        {
+          "name": "target chapter determined: Leviticus 2 (style redo, first in remaining backlog)",
+          "at": "2026-08-03T04:46:39Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Leviticus.json",
+          "at": "2026-08-03T04:47:30Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (lib/genesisThirtyOneSource.ts) read",
+          "at": "2026-08-03T04:47:30Z"
+        },
+        {
+          "name": "source file written (lib/leviticusTwoSource.ts, 5 sections, 28 cards)",
+          "at": "2026-08-03T04:53:30Z"
+        },
+        {
+          "name": "style checker clean on first pass",
+          "at": "2026-08-03T04:53:45Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo (no changes needed, preserveExactPhraseBodies covers Leviticus 1-27)",
+          "at": "2026-08-03T04:53:50Z"
+        },
+        {
+          "name": "parser check passed (5 sections, 28 cards, 16 verses covered)",
+          "at": "2026-08-03T04:54:20Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-03T04:55:10Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-03T04:56:32Z"
+        }
+      ]
     }
   ]
 }
