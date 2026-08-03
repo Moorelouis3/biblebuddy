@@ -89,591 +89,838 @@ function parseLeviticusNineRawNotes(rawText: string): LeviticusNinePersonalSecti
 }
 
 const LEVITICUS_NINE_RAW_NOTES = `# Leviticus 9:1-7
-
 # 🌅 The Eighth Day Begins
-
 ---
-
 ## 🌅 On The Eighth Day
 
-Chapter 8 ended with Aaron and his sons spending seven full days at the tabernacle door, staying inside its boundary the entire time as part of their ordination. The eighth day is the very next morning after that week ends - the first day Aaron actually begins working as a priest instead of just being consecrated as one.
+The eighth day means the very next morning after Aaron's ordination week ended.
 
-🌅 This is the day right after chapter 8's seven-day wait
+Chapter eight already described that whole seven day ceremony in detail.
 
-🎬 Ordination is finished; actual priestly work starts now
+Aaron and his sons stayed at the tabernacle door the entire time.
 
-📖 Everything in this chapter is a genuine "first"
+This one morning marks Aaron's first day serving as an actual priest.
 
----
+Every earlier chapter built toward this exact moment.
+
+🌅 The eighth day means the morning after
+
+📖 Chapter eight covered the whole ordination week
+
+🙏 Aaron now serves as priest for real
+
+➡️ Real priestly work starts today
 
 ## 👴 The Elders Of Israel
 
-Moses calls together more than just Aaron's family this time. The elders were the recognized heads of Israel's tribes and clans, the leaders who represented the whole nation in official matters.
+The elders were not simply the oldest men in each tribe.
 
-👴 Elders were tribal and clan leaders, not just old men
+They were the recognized leaders who represented their whole family or clan.
 
-🇮🇱 They stood in for the whole nation at this moment
+Moses called them specifically, not just Aaron's household.
 
-📢 Their presence made this an official, national event
+Their presence turned this into a national event, not a private family ceremony.
 
----
+👴 Elders were tribal leaders, not just old men
 
-## 🐂 Take Thee A Young Calf For A Sin Offering
+🇮🇱 They represented the whole nation
 
-A calf is a young bull, smaller and less costly than the full-grown bullock offered on Aaron's behalf back in chapter 8's ordination ceremony. This is Aaron's very own personal sin offering, made once he's actually standing in the role of priest.
+📢 Moses called them in specifically
 
-🐂 A calf is a young, less costly bull
+➡️ This made the day a national event
 
-🔀 A different animal size than chapter 8's ordination bullock
+## 🐂 A Young Calf For A Sin Offering
 
-🙋 This offering belongs to Aaron personally, as priest
+A calf is a young bull, not yet grown to full size.
 
----
+Chapter eight already used a full grown bullock for Aaron's ordination offering.
 
-## 🐑 And A Ram For A Burnt Offering, Without Blemish
+This is a smaller, less costly animal than that one.
 
-"Without blemish" means no injury, disease, deformity, or missing part - a requirement already given for every kind of offering earlier in Leviticus. Nothing damaged or imperfect could represent someone before God.
+The size of the animal was never random in Leviticus.
 
-🐑 "Without blemish" means completely free of defect
+It always matched who was making the offering and why.
 
-📖 This rule already applies to every offering type so far
+🐂 A calf is a young, smaller bull
 
-🎯 Only a whole, undamaged animal could stand in for a person
+📖 Chapter eight used a bigger bullock instead
 
----
+💰 A calf cost less than a bullock
+
+➡️ Animal size always carried real meaning
+
+## 💎 Without Blemish
+
+Without blemish means the animal had no injury, disease, or missing part.
+
+Every offering in Leviticus so far has carried this same requirement.
+
+A damaged animal could not stand in for a person before God.
+
+Only a whole, healthy body was fit to represent someone at the altar.
+
+💎 Blemish means any injury or defect
+
+📖 Every offering type requires this already
+
+🎯 A damaged animal could not represent anyone
+
+➡️ Only a whole body belonged at the altar
 
 ## 🐐 A Kid Of The Goats For A Sin Offering
 
-Notice the people's sin offering uses a different animal than Aaron's - a young goat instead of a calf. Chapter 4 already set up this exact pattern: the animal's cost and size scaled with the offerer's position, a priest requiring a larger, costlier animal than an ordinary Israelite.
+A kid is a young goat, a different animal than Aaron's calf.
 
-🐐 The people offer a goat; Aaron offered a calf
+Chapter four already set up this pattern for sin offerings.
 
-📖 Chapter 4 already established this cost-by-rank pattern
+The animal's size and cost scaled with the offerer's position.
 
-⚖️ A priest's higher position required a costlier sin offering
+A priest required a costlier animal than an ordinary Israelite did.
 
----
+Aaron and the people never brought the exact same offering today.
+
+🐐 A kid is a young goat
+
+📖 Chapter four already set this pattern
+
+⚖️ Cost matched the offerer's position
+
+➡️ Aaron and the people brought different animals
 
 ## 📅 Both Of The First Year
 
-This means both animals had to be under a year old - young, healthy, and not yet worked or bred. A first-year animal represented the freshest, most valuable state a sacrifice could be given in.
+Both of the first year means each animal was under one year old.
 
-📅 Under one year old, not fully grown adult animals
+A first year animal had not yet been worked or bred for labor.
 
-💎 Young animals were considered the most valuable offerings
+Young, healthy animals were considered the most valuable kind of offering.
 
-🎯 Freshness and full health mattered more than size
+Freshness mattered as much as size when choosing a sacrifice.
 
----
+📅 Under one year old, not fully grown
 
-## 🐂 A Bullock And A Ram For Peace Offerings
+💎 Young animals were the most valuable
 
-Between the sin offering and burnt offering already listed, the people also bring animals for a peace offering - the fellowship meal offering explained back in chapter 3, shared between the altar, the priests, and the offerer's own family.
+🐑 Not yet worked or bred
 
-🐂 A third offering type, alongside sin and burnt offerings
+➡️ Freshness mattered as much as size
 
-🍽️ Peace offerings became a shared meal, per chapter 3
+## 🤝 A Bullock And A Ram For Peace Offerings
 
-🎉 All three offering types appear together on this one day
+This is a third offering type, joining the sin offering and burnt offering already listed.
 
----
+Chapter three already explained the peace offering as a shared meal.
+
+The altar, the priests, and the offering family each received a share.
+
+All three offering types appear together on this one single day.
+
+🤝 A third offering type joins the list
+
+📖 Chapter three explained this as a meal
+
+🍽️ The altar, priests, and family all shared
+
+➡️ Three offering types appear on one day
 
 ## 🫒 A Meat Offering Mingled With Oil
 
-"Meat offering" is the old English term for a grain offering, already explained in chapter 2 - it doesn't mean animal meat at all. Mixing in oil was part of its standard recipe, adding richness to what was essentially a bread-and-flour gift.
+Meat offering is the old English name for a grain offering, not animal meat.
 
-🫒 "Meat offering" here means a grain offering, not animal flesh
+Chapter two already laid out this offering's basic recipe.
 
-📖 Chapter 2 already laid out this offering's basic recipe
+Mingled with oil means the flour was mixed with oil before baking.
 
-🍞 Oil was mixed in as part of its standard preparation
+Oil added richness to what was really a bread and flour gift.
 
----
+🫒 Meat offering here means grain, not flesh
+
+📖 Chapter two already gave this recipe
+
+🍞 Oil was mixed into the flour
+
+➡️ This was a bread gift, not meat
 
 ## ✨ For To Day The LORD Will Appear Unto You
 
-This is the promise driving the entire chapter - after all the buildup of chapters 1 through 8, God himself is about to visibly show up in front of the whole nation. Nothing like this has happened since the instructions for the tabernacle were first given.
+This is the promise driving the entire chapter.
 
-✨ God's own visible appearance is promised for this exact day
+God himself is about to visibly show up before the whole nation.
 
-🎬 Every offering in this chapter builds toward that moment
+Nothing like this has happened since the tabernacle instructions were first given.
 
-📖 Nothing this direct has happened since the tabernacle's instructions began
+Every offering listed above was building toward this one moment.
 
----
+✨ God promises to appear this exact day
+
+🎬 Every offering built toward this moment
+
+📖 Nothing this direct had happened before
+
+➡️ The whole chapter points to today
 
 ## 👥 All The Congregation Drew Near
 
-The entire community physically moved closer to the tabernacle entrance rather than staying at a distance. This wasn't a ceremony watched from far off - the people wanted to be near enough to see it happen.
+The people did not watch from a distance.
 
-👥 The whole community moved in close, not just Aaron's family
+They physically moved in close to the tabernacle entrance together.
 
-👀 They wanted to be near enough to witness everything directly
+This was not a ceremony seen from far off.
 
-🎬 This sets up the crowd that will react in verse 24
+The crowd wanted to be near enough to witness everything directly.
 
----
+This closeness sets up their reaction later in the chapter.
+
+👥 The whole community moved in close
+
+👀 They wanted to witness this directly
+
+🚪 This happened right at the entrance
+
+➡️ Their closeness matters again later in the chapter
 
 ## 📜 This Is The Thing Which The LORD Commanded
 
-Moses used this exact phrase back in chapter 8 when introducing Aaron's ordination to the crowd. Repeating it here reminds everyone that today's ceremony, like that one, traces back to God's own instruction, not anything Moses or Aaron invented.
+Moses used this same phrase back in chapter eight when introducing Aaron's ordination.
 
-📜 This exact phrase already appeared once, back in chapter 8
+Repeating it here reminds everyone that today traces back to God's own instruction.
 
-🔁 It reminds the crowd this ceremony isn't improvised
+Nothing about this ceremony came from Moses or Aaron's own idea.
 
-⚖️ Divine command, not human decision, stands behind it
+The whole nation hears that this order comes from God alone.
 
----
+📜 This exact phrase already appeared in chapter eight
 
-## 👑 The Glory Of The LORD
+🔁 It reminds everyone this is not improvised
 
-"Glory" (Hebrew kabod) doesn't mean fame or honor the way the English word usually suggests today. It describes God's own visible weight and presence - something people could actually see and experience, not just an abstract idea.
+⚖️ God commanded it, not Moses or Aaron
 
-👑 "Glory" means God's visible, felt presence, not just honor
+➡️ The people hear where the order comes from
 
-👁️ This was something the people could actually witness
+## 👑 The Glory Of The LORD Shall Appear Unto You
 
-🎯 It's the specific event the whole chapter has been building toward
+Glory here does not mean fame or honor the way the word is used today.
 
----
+The Hebrew word is kabod, meaning weight or heaviness.
+
+It describes God's own visible presence, something people could actually see.
+
+This is the specific event the whole chapter has been building toward.
+
+👑 Glory means God's visible, felt presence
+
+🈵 The Hebrew word kabod means weight
+
+👁️ The people could actually witness this
+
+➡️ The whole chapter builds toward this moment
 
 ## 🙏 Make An Atonement For Thyself, And For The People
 
-Before Aaron can do anything on behalf of the nation, he has to deal with his own sin first. A priest who hasn't been cleansed himself has nothing to offer anyone else - the order here, self first, then others, matters.
+Aaron has to deal with his own sin before he can act for anyone else.
 
-🙏 Aaron must atone for his own sin before anyone else's
+A priest who has not been cleansed himself has nothing to offer others.
 
-🔢 The order is deliberate: self first, then the people
+The order here is deliberate.
 
-⚖️ An unclean priest couldn't represent a clean people
+Self comes first, then the whole nation follows.
+
+🙏 Aaron atones for himself first
+
+🔢 Self comes before the whole nation
+
+⚖️ An unclean priest could not represent others
+
+➡️ Order reveals what holiness requires
 
 # Leviticus 9:8-11
-
 # 🩸 Aaron's Sin Offering For Himself
-
 ---
-
 ## 🙋 Which Was For Himself
 
-This is the first sacrifice Aaron performs as an actual functioning priest, and it's for his own sin, not the people's. Chapter 8 was entirely about Moses acting on Aaron's behalf; here, for the first time, Aaron acts himself.
+This is the first sacrifice Aaron performs as an actual working priest.
 
-🙋 Aaron's very first act as a working priest
+Chapter eight was entirely Moses acting on Aaron's behalf.
 
-🔄 Chapter 8 was Moses acting for Aaron; now Aaron acts himself
+Here, for the first time, Aaron acts for himself.
 
-🙏 It starts with his own need for atonement, not the people's
+It begins with his own need for atonement, not the people's.
 
----
+🙋 Aaron's very first act as a priest
+
+🔄 Moses acted for him in chapter eight
+
+🙏 Now Aaron atones for his own sin
+
+➡️ His own need comes before the people's
 
 ## 🤝 The Sons Of Aaron Brought The Blood Unto Him
 
-Aaron's sons already stepped into supporting roles back in chapter 8, and they continue that here - catching and carrying the blood to Aaron rather than Aaron doing every single step alone.
+Aaron's sons already took supporting roles back in chapter eight.
 
-🤝 Aaron's sons take an active supporting role, not a passive one
+Here they continue that same role, carrying the blood to Aaron.
 
-🩸 They carry the blood to Aaron rather than him collecting it
+Aaron does not perform every single step completely alone.
 
-👨‍👦 This teamwork previews how the priesthood will function going forward
+This teamwork previews how the whole priesthood will function going forward.
 
----
+🤝 Aaron's sons take an active role
 
-## ☝️ Dipped His Finger, And Put It Upon The Horns Of The Altar
+🩸 They carry the blood to Aaron
 
-This is the same precise, finger-applied blood method chapter 4 already established for a sin offering, applied to the altar's corner projections known as "horns." The method doesn't change just because Aaron himself is now performing it instead of Moses.
+👨‍👦 Aaron does not work entirely alone
 
-☝️ The same finger-application method chapter 4 already described
+➡️ This previews how the priesthood will work
 
-📐 "Horns" refers to the altar's corner projections
+## ☝️ Put It Upon The Horns Of The Altar
 
-🔁 Aaron now performs a method Moses used exclusively before
+Horns refers to the four corner projections built onto the altar.
 
----
+Chapter four already described this exact finger applied method for a sin offering.
+
+Aaron dips his finger and touches blood onto each horn.
+
+The method does not change just because Aaron performs it instead of Moses.
+
+☝️ Horns means the altar's corner projections
+
+📖 Chapter four already described this method
+
+🩸 Aaron dips his finger to apply it
+
+➡️ Aaron now does what Moses did before
 
 ## ⬇️ Poured Out The Blood At The Bottom Of The Altar
 
-After the precise finger application, the rest of the blood was simply poured out at the altar's base - a second, separate disposal step, not a repeat of the first.
+This is a separate step from the finger applied blood on the horns.
 
-⬇️ A separate step from the finger-applied blood on the horns
+The remaining blood was simply poured out at the altar's base.
 
-🩸 The remaining blood was poured, not dabbed or sprinkled
+This was not a repeat of the first application.
 
-📖 This matches the standard sin-offering procedure already used in chapter 4
+Chapter four already set this exact two step pattern for sin offerings.
 
----
+⬇️ A separate step from the horns
+
+🩸 The rest of the blood was poured
+
+🔁 Not a repeat of the first step
+
+➡️ Chapter four already set this pattern
 
 ## 🫀 The Fat, And The Kidneys, And The Caul Above The Liver
 
-This is the identical fat-portion list required for sin offerings back in chapter 4 - the same specific internal parts, burned on the altar every time this offering type is used.
+This is the same specific fat parts chapter four already required for sin offerings.
 
-🫀 The same specific fat parts chapter 4 already required
+Caul above the liver refers to the fatty covering over that organ.
 
-🔥 These pieces went straight onto the altar fire
+These particular pieces went straight onto the altar fire.
 
-🔁 A consistent list used across every sin offering so far
+The same list is used every single time this offering type appears.
 
----
+🫀 The same fat parts chapter four required
 
-## 🔥 The Flesh And The Hide...Without The Camp
+🔥 These pieces went onto the altar fire
 
-Since Aaron had no other ordained priest yet to eat a priestly portion of his own sin offering, the entire animal - meat and skin both - was destroyed outside the camp instead, matching the same rule chapter 8 already used for the ordination bullock.
+🔁 A consistent list across every sin offering
 
-🔥 The whole animal was destroyed, none of it eaten
-
-🏕️ "Without the camp" means outside where Israel actually lived
-
-🔁 This matches chapter 8's handling of the ordination bullock
-
----
+➡️ Nothing here was left to guesswork
 
 ## ✅ As The LORD Commanded Moses
 
-This familiar obedience formula, repeated throughout chapters 8 and 9, now applies to Aaron's own independent actions - not just Moses relaying instructions, but Aaron himself following them exactly.
+This obedience formula repeats throughout chapters eight and nine.
 
-✅ The same recurring formula from chapter 8, used again here
+It now describes Aaron's own independent actions, not Moses relaying instructions.
 
-🙋 It now describes Aaron's own actions, not just Moses's
+Aaron follows the exact same pattern Moses already modeled.
 
-📖 Nothing here was left to Aaron's personal judgment
+Nothing here was left to Aaron's personal judgment.
+
+✅ This formula repeats across chapters eight and nine
+
+🙋 It now describes Aaron's own actions
+
+📖 Aaron follows the exact pattern Moses set
+
+➡️ Nothing was left to personal judgment
+
+## 🔥 He Burnt With Fire Without The Camp
+
+Without the camp means outside the area where Israel actually lived.
+
+Aaron had no other ordained priest yet to eat a priestly portion of his own offering.
+
+The entire animal, meat and hide both, was destroyed outside instead.
+
+Chapter eight already used this same rule for the ordination bullock.
+
+🔥 The whole animal was destroyed, none eaten
+
+🏕️ Without the camp means outside Israel's living area
+
+🔁 Chapter eight already used this same rule
+
+➡️ No priest yet existed to eat this portion
 
 # Leviticus 9:12-14
-
 # 🔥 Aaron's Burnt Offering For Himself
-
 ---
-
-## 🙏 Aaron's Own Burnt Offering
-
-Back in chapter 8, this same kind of offering was made on Aaron's behalf by Moses. Here, Aaron offers his own devotion himself for the first time - the sin offering dealt with his guilt, and this burnt offering now expresses his complete surrender to God.
-
-🙏 Aaron performs his own devotion offering, not Moses
-
-🔀 The sin offering handled guilt; this one expresses full surrender
-
-🔁 The same two-offering pattern from chapter 8, now self-performed
-
----
-
 ## 🤝 Aaron's Sons Presented Unto Him The Blood
 
-The same teamwork from the sin offering continues here - Aaron's sons hand off the blood from this second animal, the ram, keeping the same working rhythm established just a few verses earlier.
+The same teamwork from the sin offering continues here.
 
-🤝 The same sons-assist-Aaron pattern continues from verse 9
+Aaron's sons hand off blood from this second animal, the ram.
 
-🐑 This time the blood comes from the burnt offering ram
+This keeps the same working rhythm from just a few verses earlier.
 
-🔁 A consistent rhythm forms across each sacrifice in the chapter
+A consistent pattern is forming across every sacrifice in this chapter.
 
----
+🤝 The same pattern continues from before
 
-## 🩸 Sprinkled Round About Upon The Altar
+🐑 This time the blood comes from the ram
 
-"Round about" means splashed generally across every side of the altar - the standard burnt-offering blood method from chapter 1, clearly different from the horns-only technique just used on the sin offering.
+🔁 A steady rhythm forms across the chapter
 
-🩸 "Round about" means splashed on all sides of the altar
+➡️ Teamwork defines how this priesthood works
 
-📖 This matches chapter 1's standard burnt-offering procedure
+## ➰ Sprinkled Round About Upon The Altar
 
-🔀 A clear contrast from the sin offering's horns-only blood
+Round about means splashed generally across every side of the altar.
 
----
+Chapter one already set this exact method for burnt offerings.
+
+This is clearly different from the horns only method just used on the sin offering.
+
+➰ Round about means splashed on all sides
+
+📖 Chapter one already set this method
+
+🔀 Different from the sin offering's horns only method
+
+➡️ Each offering type used its own method
 
 ## 🔪 The Pieces Thereof, And The Head
 
-Burnt offerings were butchered into sections before burning, and unlike some other offering types, the head itself was included and burned along with the rest - nothing set aside.
+Burnt offerings were butchered into sections before burning.
 
-🔪 The animal was cut into sections before burning
+Unlike some other offering types, the head itself was included here.
 
-👤 The head was burned too, not set apart or excluded
+Nothing about this ram was set apart or excluded.
 
-🔥 Every part of this ram was headed for the fire
+Every part of this animal was headed for the fire.
 
----
+🔪 The animal was cut into sections
 
-## 💧 Washed The Inwards And The Legs
+👤 The head was burned too, not set apart
 
-Even though this entire animal was about to be burned completely, its internal organs and legs still had to be washed first - the same requirement chapter 1 already gave for any burnt offering.
+🔥 Every piece was headed for the fire
 
-💧 Washing happened even though everything would be burned anyway
+➡️ Nothing about this offering was held back
 
-📖 Chapter 1 already required this exact step for burnt offerings
+## 💧 Wash The Inwards And The Legs
 
-🧼 Cleanliness mattered regardless of an animal's final use
+This whole animal was about to be burned completely anyway.
 
----
+Its internal organs and legs still had to be washed first.
+
+Chapter one already required this exact step for burnt offerings.
+
+Cleanliness mattered even for an animal about to be destroyed.
+
+💧 Washing happened even though it would burn
+
+📖 Chapter one already required this step
+
+🧼 Cleanliness mattered regardless of final use
+
+➡️ Even a burnt offering had to be clean
 
 ## 🔥 Burnt Them Upon The Burnt Offering On The Altar
 
-Unlike the sin offering, where only certain fat portions burned and the rest was destroyed elsewhere, this entire ram went into the fire on the altar - a complete, total offering with nothing held back.
+The sin offering only burned certain fat portions on the altar.
 
-🔥 The whole ram was consumed on the altar, not just its fat
+The rest of that animal was destroyed elsewhere, outside the camp.
 
-🚫 Nothing from this offering was set aside or saved
+This entire ram instead went into the fire on the altar.
 
-📖 This total consumption is what makes it a true burnt offering
+Total consumption is what makes this a true burnt offering.
+
+🔥 The whole ram was consumed on the altar
+
+🚫 Nothing from this offering was saved
+
+📖 The sin offering worked differently
+
+➡️ Total consumption defines a burnt offering
 
 # Leviticus 9:15-17
-
 # 🐐 Offerings For The People
-
 ---
-
 ## 🔄 He Brought The People's Offering
 
-Having dealt with his own sin and devotion first, Aaron now turns to represent the nation. This shift - from offering for himself to offering for everyone else - is exactly the order Moses laid out back in verse 7.
+Aaron already dealt with his own sin and his own devotion first.
 
-🔄 Aaron shifts from his own offerings to the people's
+Now he turns to represent the whole nation.
 
-📖 This matches the order Moses gave back in verse 7
+This shift matches the exact order Moses laid out back in verse seven.
 
-🙏 Self first, then others - the same pattern as before
+Self came first, then everyone else.
 
----
+🔄 Aaron shifts from himself to the people
+
+📖 This matches the order set in verse seven
+
+🙏 Self first, then everyone else
+
+➡️ The same pattern holds through the chapter
 
 ## 🐐 The Goat, Which Was The Sin Offering For The People
 
-This is the same young goat first named back in verse 3, when Moses gave the people their offering instructions. What was promised then is finally carried out here.
+This is the same young goat first named back in verse three.
 
-🐐 The exact animal instructed back in verse 3
+Moses gave the people this exact instruction at the start of the chapter.
 
-✅ A promise from earlier in the chapter, now fulfilled
+What was promised there is finally carried out here.
 
-🔁 Same species pattern already explained: goat for the people
+The people's offering matches their rank, just as chapter four required.
 
----
+🐐 The exact animal instructed in verse three
+
+✅ A promise from earlier, now fulfilled
+
+⚖️ Goat matches the people's rank
+
+➡️ Every detail was planned in advance
 
 ## 🔁 As The First
 
-This phrase points back to Aaron's own sin offering just completed - the same exact procedure, blood application and all, is repeated here for the people's goat instead of being described all over again.
+As the first points back to Aaron's own sin offering just completed.
 
-🔁 Refers back to Aaron's own sin offering, just finished
+The exact same procedure applies here, blood application included.
 
-📖 The text avoids repeating a full procedure it already gave
+The text avoids repeating a full description it already gave.
 
-🎯 Same steps, same care, now applied to the people's animal
+Same steps, same care, now applied to the people's animal.
 
----
+🔁 Refers back to Aaron's own offering
+
+📖 The same procedure applies again
+
+✍️ The text saves space by not repeating
+
+➡️ Same care now given to the people
 
 ## 📏 According To The Manner
 
-"The manner" means the standard, already-established procedure - a short way of saying this burnt offering followed the same rules chapter 1 already laid out, without needing to spell them out again.
+The manner means the standard procedure already established earlier.
 
-📏 A short reference to rules already given earlier
+This burnt offering followed the same rules chapter one already laid out.
 
-📖 Points back to chapter 1's burnt offering procedure
+The text does not need to spell out every step again.
 
-✍️ The text saves space by not repeating known steps
+Repetition would only slow down an already long chapter.
 
----
+📏 The manner means the standard procedure
+
+📖 Chapter one already laid out these rules
+
+✍️ The text saves space here
+
+➡️ Familiar steps did not need repeating
 
 ## ✋ An Handful Thereof
 
-Only a small handful of the grain offering was actually burned on the altar as God's own token portion - chapter 2 already explained that the rest went to the priests as food, not wasted or destroyed.
+Only a small handful of grain was actually burned on the altar.
 
-✋ Just a handful was burned, not the whole grain offering
+Chapter two already explained that the rest went to the priests as food.
 
-📖 Chapter 2 already explained where the remainder went
+Nothing here was wasted or destroyed.
 
-🍞 A small token portion represented the whole gift
+A small token portion represented the whole gift.
 
----
+✋ Just a handful was burned
+
+📖 Chapter two explained where the rest went
+
+🍞 Nothing here was wasted
+
+➡️ A small portion represented the whole gift
 
 ## 🌅 Beside The Burnt Sacrifice Of The Morning
 
-This is a brief but important detail: a regular daily burnt offering, offered every single morning regardless of any special occasion, was still happening in the background even during this once-in-a-lifetime ceremony. This ongoing morning sacrifice becomes a fixed, permanent practice described more fully later in the Bible, in Numbers 28.
+A regular daily burnt offering was still happening even during this special ceremony.
 
-🌅 A regular daily sacrifice, separate from today's special event
+This sacrifice happened every single morning, occasion or not.
 
-🔁 It happened every morning, ceremony or not
+Numbers twenty eight later describes this ongoing practice in full detail.
 
-📖 Numbers 28 later spells out this ongoing daily practice in full
+Ordinary faithfulness kept running underneath this one extraordinary day.
+
+🌅 A daily sacrifice ran in the background
+
+🔁 It happened every morning regardless of events
+
+📖 Numbers twenty eight later spells this out fully
+
+➡️ Ordinary faithfulness underlies this extraordinary day
 
 # Leviticus 9:18-21
-
 # 🤝 The Peace Offering For The People
-
 ---
+## 🐂 A Sacrifice Of Peace Offerings
 
-## 🐂 The Bullock And The Ram For A Sacrifice Of Peace Offerings
+Two animals made up the people's peace offering, a bullock and a ram.
 
-Two animals, not one, made up the people's peace offering - matching the pair already specified back in verse 4. This is the third and final offering type completed in the chapter, after the sin offering and burnt offering.
+This matches the exact pair Moses specified back in verse four.
 
-🐂 Two animals: a bullock and a ram, as promised in verse 4
+This is the third and final offering type completed in the chapter.
 
-🥉 The third and last offering type completed in this chapter
+Peace offerings became a shared meal, unlike the other two types.
 
-🍽️ Peace offerings became a shared meal, unlike the other two types
+🐂 Two animals, as promised in verse four
 
----
+🥉 The third and final offering type today
 
-## 🤝 Aaron's Sons Presented Unto Him The Blood
+🍽️ Peace offerings became a shared meal
 
-The same assisting role from earlier in the chapter continues for this third offering - Aaron's sons keep handing off blood to Aaron throughout every single sacrifice performed today.
+➡️ A different purpose than the other two
 
-🤝 The same supporting role repeats for a third time today
+## ➰ Sprinkled Upon The Altar Round About
 
-🩸 Blood-carrying duties stayed consistent across every offering
+This is the same blood method already used for the burnt offering.
 
-🔁 A steady rhythm of teamwork runs through the whole chapter
+Aaron's sons keep handing off blood through every single sacrifice today.
 
----
+A steady rhythm of teamwork runs through this entire chapter.
+
+Nothing about the process changes from one offering to the next.
+
+➰ The same method as the burnt offering
+
+🤝 Aaron's sons keep assisting throughout
+
+🔁 A steady rhythm runs through the chapter
+
+➡️ The process never changes between offerings
 
 ## 🐑 The Rump
 
-"Rump" refers to the fat tail of certain sheep breeds common in the ancient Near East, which could weigh several pounds and was considered a genuine delicacy - valuable enough to be listed by name among the fat portions given to God.
+Rump refers to the fat tail carried by certain sheep breeds.
 
-🐑 A reference to the fat tail of certain sheep breeds
+In the ancient Near East, this fat tail could weigh several pounds.
 
-⚖️ These fat tails could weigh several pounds
+It was considered a genuine delicacy at the time.
 
-💎 It was valuable enough to be named specifically, not just assumed
+It was valuable enough to be named specifically here, not simply assumed.
 
----
+🐑 A reference to a sheep's fat tail
 
-## 🫀 The Fat Of The Bullock And Of The Ram
+⚖️ These tails could weigh several pounds
 
-This is the same specific fat-portion list - covering the inner fat, kidneys, and liver covering - already required for peace offerings back in chapters 3 and 7. The list doesn't change based on the occasion.
+💎 Considered a real delicacy back then
 
-🫀 The same fat list already required in chapters 3 and 7
-
-📖 A consistent set of portions across every peace offering
-
-🔥 These parts always went to the altar fire, never eaten
-
----
+➡️ Valuable enough to be named on purpose
 
 ## 🍽️ Put The Fat Upon The Breasts
 
-Before burning, the fat was staged and arranged directly on top of the breast portions - a specific presentation step that happens before the burning and the waving described in the next verse.
+Before burning, the fat was arranged directly on the breast portions.
 
-🍽️ The fat was arranged on the breast portions first
+This staging step happens before both the burning and the waving described next.
 
-➡️ This staging step comes before both burning and waving
+Presentation mattered here, not only the burning itself.
 
-🎯 Presentation mattered, not just the burning itself
+Every step in this ceremony followed a fixed order.
 
----
+🍽️ The fat was arranged on the breasts first
 
-## 〰️ The Breasts And The Right Shoulder Aaron Waved
+➡️ This came before burning and waving
 
-This wave offering gesture, already explained back in chapter 7, marks these specific portions as reserved for the priests to eat as their own food. For the very first time, Aaron receives this portion himself, rather than Moses keeping it as happened back in chapter 8.
+🎯 Presentation mattered, not just the burning
 
-〰️ A side-to-side gesture already explained in chapter 7
+📖 Every step followed a fixed order
 
-🍖 These portions were the priest's own personal food
+## 💪 The Breasts And The Right Shoulder Aaron Waved
 
-🔀 Aaron receives it himself now, unlike chapter 8's ordination
+This wave offering gesture was already explained back in chapter seven.
 
----
+Waving marked these portions as reserved for the priests to eat.
+
+For the very first time, Aaron receives this portion himself.
+
+Moses kept this portion back in chapter eight's ordination instead.
+
+💪 A side to side gesture from chapter seven
+
+🍖 These portions became the priest's own food
+
+🔀 Aaron receives it himself for the first time
+
+➡️ Moses held it back in chapter eight instead
 
 ## ✅ As Moses Commanded
 
-The chapter's recurring obedience formula appears once more here, confirming that even this final detail - which portions went to which person - followed exact instruction rather than being left to Aaron's own preference.
+This same obedience formula runs through the entire chapter.
 
-✅ The same obedience formula that runs through this whole chapter
+It confirms that even this small detail followed exact instruction.
 
-🍖 Even food-portion details followed a fixed rule
+Nothing about which portion went to which person was left open.
 
-📖 Nothing here was left to personal preference
+Every choice in this ceremony traced back to God's own command.
+
+✅ The same formula recurs across the chapter
+
+🍖 Even food portions followed a fixed rule
+
+📏 Nothing here was left to preference
+
+➡️ Every detail traced back to God's command
 
 # Leviticus 9:22-24
-
 # ✨ Fire From The LORD
-
 ---
+## 🙌 Lifted Up His Hand Toward The People, And Blessed Them
 
-## 🙌 Aaron Lifted Up His Hand, And Blessed Them
+This is the first priestly blessing ever recorded in the Bible.
 
-This is the first priestly blessing ever given in the Bible - a formal role that gets spelled out in much more detail later, in Numbers 6. Aaron isn't just finishing his sacrifices; he's stepping into a completely new function no one has performed before.
+Numbers six later gives this same role a detailed formula.
 
-🙌 The very first priestly blessing recorded in the Bible
+Aaron is not simply finishing his sacrifices here.
 
-📖 Numbers 6 later gives this same role a detailed formula
+He is stepping into a brand new function no one has performed before.
 
-🎬 A brand-new function, never performed by anyone before this
+🙌 The first priestly blessing in the Bible
 
----
+📖 Numbers six later gives this a formula
+
+🎬 A brand new function, never performed before
+
+➡️ Aaron steps into a new role here
 
 ## ⬇️ Came Down From Offering
 
-The altar had a ramp or elevated approach, so "came down" is a literal, physical description - Aaron stepping down from the altar's platform after finishing all three offerings: sin, burnt, and peace.
+The altar had a ramp or raised platform built onto it.
 
-⬇️ A literal physical description, not just a figure of speech
+Came down is a literal, physical description, not a figure of speech.
 
-📐 The altar had a raised platform Aaron had been standing on
+Aaron is stepping down after finishing all three offerings today.
 
-✅ This marks the moment all three offerings were fully complete
+Sin, burnt, and peace offerings are now all fully complete.
 
----
+⬇️ A literal description, not a figure of speech
+
+📐 The altar had a raised platform
+
+✅ All three offerings are now complete
+
+➡️ Aaron physically steps down from the altar
 
 ## 🚪 Moses And Aaron Went Into The Tabernacle
 
-Scripture doesn't explain exactly why the two of them went inside at this specific moment - possibly for further instruction, prayer, or simply to complete some part of the ceremony not otherwise described. It's honest to say the text doesn't spell out every reason.
+Scripture does not explain exactly why they went inside at this moment.
 
-🚪 The exact reason for going inside isn't explained in the text
+It might have been for further instruction, or simply to complete an unstated step.
 
-❓ It's honest to admit this detail isn't fully spelled out
+It is honest to say the text does not spell out every reason.
 
-🤝 Moses and Aaron do this together, not Aaron alone
+Moses and Aaron do this together, not Aaron alone.
 
----
+🚪 The exact reason is not explained
+
+❓ It is honest to admit that gap
+
+🤝 Moses and Aaron do this together
+
+➡️ Not every detail gets spelled out
 
 ## 🙌 Came Out, And Blessed The People
 
-This is a second blessing, separate from the one Aaron gave alone back in verse 22 - this time Moses and Aaron bless the people together, right after coming out of the tabernacle.
+This is a second blessing, separate from the one Aaron gave alone in verse twenty two.
 
-🙌 A second blessing, distinct from the one in verse 22
+This time Moses and Aaron bless the people together.
 
-🤝 This time Moses and Aaron bless the people jointly
+It happens right after they step out of the tabernacle.
 
-🚪 It happens immediately after they exit the tabernacle
+Two blessings bracket this entire closing scene.
 
----
+🙌 A second blessing, separate from verse twenty two
+
+🤝 Moses and Aaron bless the people together
+
+🚪 It happens right after they exit
+
+➡️ Two blessings frame this closing scene
 
 ## 👑 The Glory Of The LORD Appeared Unto All The People
 
-This is the exact promise made back in verses 4 and 6 finally coming true. After all the buildup across this whole chapter, God's visible presence actually shows up in front of the entire nation.
+This is the exact promise made back in verses four and six.
 
-👑 The promise from verses 4 and 6 is fulfilled here
+After all the buildup across this whole chapter, God's presence finally appears.
 
-✨ God's presence becomes visibly real to everyone watching
+The whole nation now witnesses it together, not just Aaron's family.
 
-🎬 This is the moment the whole chapter has been building toward
+This is the moment the entire chapter has been building toward.
 
----
+👑 The promise from verses four and six
+
+✨ God's presence becomes visibly real
+
+👥 The whole nation witnesses this together
+
+➡️ This moment is the chapter's whole point
 
 ## 🔥 There Came A Fire Out From Before The LORD
 
-This fire wasn't lit by any human hand - it came directly from God himself, instantly and visibly confirming that everything Aaron had just done was fully accepted. This same phrase, "fire from before the LORD," will appear again in the very next chapter, under very different circumstances.
+No human hand lit this fire.
 
-🔥 No human lit this fire; it came directly from God
+It came directly from God himself, instantly confirming the offerings were accepted.
 
-✅ It confirmed instant, visible acceptance of the offerings
+This same phrase, fire from before the LORD, appears again in the very next chapter.
 
-⚠️ The same phrase returns in chapter 10, under very different circumstances
+That next appearance happens under very different circumstances.
 
----
+🔥 No human hand lit this fire
+
+✅ It confirmed instant acceptance of the offerings
+
+⚠️ The same phrase returns in chapter ten
+
+➡️ That next time looks very different
 
 ## 🍖 Consumed Upon The Altar The Burnt Offering And The Fat
 
-The fire didn't just symbolically touch the offering - it fully consumed the burnt offering and the remaining fat portions still on the altar, finishing off everything that had been building throughout the entire ceremony.
+This fire did not just symbolically touch the offering.
 
-🍖 The fire fully consumed what remained on the altar
+It fully consumed the burnt offering and the leftover fat still on the altar.
 
-🎯 Both the burnt offering and the leftover fat were consumed
+This closes out every single sacrifice performed earlier in the chapter.
 
-🎬 This closes out every sacrifice performed earlier in the chapter
+Nothing remained once the fire finished its work.
 
----
+🍖 The fire fully consumed what remained
+
+🎯 Both the burnt offering and the fat
+
+🎬 This closes out the whole chapter's sacrifices
+
+➡️ Nothing was left once the fire finished
 
 ## 😲 They Shouted, And Fell On Their Faces
 
-The people's reaction combined two things at once: a loud shout, most likely of joy and awe, and immediately falling face-down on the ground, the standard posture of worship before God's realized presence.
+The people react with two things happening at once.
 
-😲 A shout, most likely one of joy and awe, not fear alone
+A loud shout, most likely one of joy and awe.
 
-🙇 Falling on their faces was the standard posture of worship
+Falling face down was the standard posture of worship in this culture.
 
-🎬 This response closes the chapter on a note of pure awe`;
+This response closes the chapter on a note of pure awe.
+
+😲 A shout, most likely joy and awe
+
+🙇 Falling face down was standard worship
+
+🎬 This closes the chapter on that note
+
+📖 God's visible presence deserved this response
+`.trim();
 
 export const LEVITICUS_NINE_PERSONAL_SECTIONS = parseLeviticusNineRawNotes(LEVITICUS_NINE_RAW_NOTES);

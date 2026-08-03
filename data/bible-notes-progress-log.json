@@ -7756,6 +7756,59 @@
           "at": "2026-08-03T11:04:29Z"
         }
       ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 9,
+      "startedAt": "2026-08-03T11:45:58Z",
+      "finishedAt": "2026-08-03T11:54:32Z",
+      "durationMinutes": 9,
+      "sections": 6,
+      "cards": 45,
+      "verses": 24,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (6 sections / 47 cards, paragraph bodies, three bullets per card, hyphens throughout) from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Leviticus 9 covers Aaron's first day functioning as a working priest right after chapter 8's seven day ordination wait: the self then others offering order (his own calf sin offering and ram burnt offering first, then the people's goat sin offering plus calf and lamb burnt offering, then the shared bullock and ram peace offering), the species by rank pattern already set in chapter 4 (goat for the people versus calf for the priest), Aaron's sons taking an active blood carrying role for the first time, the daily burnt sacrifice of the morning running in the background (forward callback to Numbers 28's fixed tamid offering), and the climax of Aaron's first priestly blessing (forward callback to Numbers 6), the glory of the LORD appearing to fulfill the chapter's opening promise, and fire from the LORD consuming the offering with an explicit flag that the same phrase returns in chapter 10 under very different circumstances. Kept the original file's 6 section boundaries for verse coverage continuity while rewriting every card to the new format. Density about 1.88 cards/verse (24 verses, 45 cards). scripts/check_bible_note_style.py found 2 problems on first pass (a wavy dash emoji character the checker's regex did not recognize, causing a bullet undercount on two cards), fixed by swapping in a recognized loop emoji (➰), second run clean. A manual section 13 eye check confirmed varied opening lines across all 45 cards and no forbidden filler phrases, hyphens, em dashes, semicolons, or contractions. Parser check passed exactly via getBibleReaderStudySections('Leviticus', 9) (6/6 sections, 45 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range covering Leviticus 1-27, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (LeviticusNinePersonalSection, parseLeviticusNineRawNotes, LEVITICUS_NINE_RAW_NOTES, LEVITICUS_NINE_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Leviticus 9 entry removed from the front of the list as part of this commit; next redo target is Leviticus 10.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-03T11:45:58Z"
+        },
+        {
+          "name": "target chapter determined: Leviticus 9 (style redo, first in remaining backlog)",
+          "at": "2026-08-03T11:46:20Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Leviticus.json",
+          "at": "2026-08-03T11:47:10Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (lib/genesisThirtyOneSource.ts) read",
+          "at": "2026-08-03T11:49:40Z"
+        },
+        {
+          "name": "source file written (lib/leviticusNineSource.ts, 6 sections, 45 cards)",
+          "at": "2026-08-03T11:51:50Z"
+        },
+        {
+          "name": "style checker clean (1 wavy dash emoji issue found and fixed across 2 cards, second pass clean)",
+          "at": "2026-08-03T11:52:50Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo (no changes needed, Leviticus 1-27 preserveExactPhraseBodies)",
+          "at": "2026-08-03T11:53:02Z"
+        },
+        {
+          "name": "parser check passed (6 sections, 45 cards, renders verbatim)",
+          "at": "2026-08-03T11:53:02Z"
+        },
+        {
+          "name": "tsc clean (npx tsc --noEmit -p ., exit 0)",
+          "at": "2026-08-03T11:54:32Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, redo-remaining.json popped)",
+          "at": "2026-08-03T11:54:45Z"
+        }
+      ]
     }
   ]
 }

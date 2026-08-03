@@ -611,3 +611,7 @@ Flagged to Marcus via MARCUS_HANDOFF.md.
 ## 2026-08-03T11:04:29Z (hourly chapter notes run)
 Chapter: Leviticus 8 | Duration: 13 min | Sections: 9 | Cards: 63 | Status: pass
 Next up: Leviticus 9
+
+## 2026-08-03T11:54:45Z (hourly chapter notes run)
+Chapter: Leviticus 9 | Duration: 9 min | Sections: 6 | Cards: 45 | Status: pass
+Next up: Leviticus 10
