@@ -19,6 +19,16 @@ async function systemeFetch(path: string, apiKey: string, init?: RequestInit) {
   });
 }
 
+// Thrown when Systeme.io's plan-level cap (contacts or tags) is hit, so
+// callers can stop a batch cleanly instead of misreading it as a per-item
+// failure. Systeme returns 422 for this AND for "already exists" -- they
+// can only be told apart by the error detail text.
+export class SystemePlanLimitError extends Error {}
+
+function isPlanLimitError(detail: string): boolean {
+  return /upgrade your plan/i.test(detail);
+}
+
 async function getOrCreateContact(email: string, apiKey: string): Promise<{ id: number } | null> {
   const lookup = await systemeFetch(`/contacts?email=${encodeURIComponent(email)}`, apiKey);
   if (lookup.ok) {
@@ -37,8 +47,12 @@ async function getOrCreateContact(email: string, apiKey: string): Promise<{ id: 
     if (data?.id) return { id: data.id };
   }
 
-  // 422 = contact already exists; retry lookup once
   if (created.status === 422) {
+    const detail = await created.text();
+    if (isPlanLimitError(detail)) {
+      throw new SystemePlanLimitError(detail);
+    }
+    // Otherwise 422 means the contact already exists; retry lookup once.
     const retry = await systemeFetch(`/contacts?email=${encodeURIComponent(email)}`, apiKey);
     if (retry.ok) {
       const data = await retry.json();
@@ -101,8 +115,9 @@ export async function sendFunnelEmailViaTag(
 
     if (!assign.ok) {
       const detail = await assign.text();
-      // Systeme returns an error if the tag is already assigned; treat as success
       if (assign.status === 422) {
+        if (isPlanLimitError(detail)) throw new SystemePlanLimitError(detail);
+        // Otherwise 422 on assign means the tag is already on the contact; treat as success.
         return { ok: true, response: { alreadyTagged: true, tagName, contactId: contact.id } };
       }
       console.error(`[EMAIL_FUNNEL] Tag assign error: ${assign.status} - ${detail}`);
@@ -111,6 +126,7 @@ export async function sendFunnelEmailViaTag(
 
     return { ok: true, response: { tagged: tagName, contactId: contact.id } };
   } catch (err) {
+    if (err instanceof SystemePlanLimitError) throw err;
     const message = err instanceof Error ? err.message : "Unknown error";
     console.error("[EMAIL_FUNNEL] Systeme tag request error:", message);
     return { ok: false, error: message };

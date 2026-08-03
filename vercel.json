@@ -59,6 +59,10 @@
     {
       "path": "/api/cron/email-funnel-day8",
       "schedule": "45 * * * *"
+    },
+    {
+      "path": "/api/cron/enroll-remaining-signups",
+      "schedule": "0 13 * * *"
     }
   ],
   "headers": [
