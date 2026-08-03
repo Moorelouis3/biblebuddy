@@ -89,461 +89,598 @@ function parseLeviticusFiveRawNotes(rawText: string): LeviticusFivePersonalSecti
 }
 
 const LEVITICUS_FIVE_RAW_NOTES = `# Leviticus 5:1-4
-
-# 🤐 Four Ways To Become Guilty Without Meaning To
-
+# 🤐 Four Silent Ways To Become Guilty
 ---
+## 🗣️ And Hear The Voice Of Swearing
 
-## 🗣️ If A Soul Sin, And Hear The Voice Of Swearing, And Is A Witness
+"The voice of swearing" means a public oath.
 
-"The voice of swearing" means a public oath - someone in a legal dispute standing up and putting a claim on oath, calling anyone who knows the truth to come forward. A "witness" here is a person who actually saw or knew the facts of the case.
+Someone stood up in a dispute and swore to the truth in front of others.
 
-🗣️ "The voice of swearing" means a formal, public legal oath
+A witness who heard that oath was expected to speak up if they knew the facts.
 
-👁️ A witness is someone who genuinely saw or knew the truth
+This law targets that silent witness, not the person already on trial.
 
-⚖️ This describes a real dispute, not a casual conversation
+🗣️ Voice of swearing means a public oath
 
----
+⚖️ A dispute needed a witness to speak
 
-## 🤐 If He Do Not Utter It, Then He Shall Bear His Iniquity
+🤐 This law targets the silent witness
 
-This is the first case in the chapter, and it's different from every sin covered in chapter 4. Chapter 4 dealt with doing something forbidden. This is a sin of staying silent - a witness who knew the truth and said nothing when the law required them to speak up.
+📖 Truth telling was treated as a duty
 
-"Iniquity" means guilt and its consequences. "Bear his iniquity" means the guilt is now his to carry and answer for, not something that just fades away with time.
+## 🤐 Then He Shall Bear His Iniquity
 
-🤐 This sin is failing to speak, not doing something forbidden
+"Iniquity" means guilt, and everything that guilt requires a person to face.
 
-⚖️ Chapter 4 covered wrong actions; this chapter starts covering wrong silence
+Bearing his iniquity means the guilt becomes his to answer for.
 
-📖 "Iniquity" means guilt, and "bear" means it becomes his responsibility to deal with
+Chapter four already covered sins of wrong action.
 
----
+This verse introduces something different, a sin of staying silent.
 
-## 🐫 Or If A Soul Touch Any Unclean Thing, Or The Carcase Of An Unclean Beast
+🤐 Silence itself could become the sin
 
-A "carcase" is a dead body. Touching a dead unclean animal made a person ceremonially unclean under the purity laws (fully explained later in Leviticus 11) - not a moral sin by itself, but a state that had to be dealt with before that person could take part in worship again.
+📜 Chapter four covered actions, not silence
 
-🐫 "Carcase" means a dead body, here a dead animal's
+⚖️ Iniquity means guilt and its full weight
 
-🚫 Touching it made a person ceremonially unclean, not automatically sinful
+📖 Staying quiet still carried real cost
 
-📖 Leviticus 11 later spells out exactly which animals count as unclean
+## 🐫 A Carcase Of An Unclean Beast
 
----
+"Carcase" means a dead body.
 
-## 🙈 And If It Be Hidden From Him; He Also Shall Be Unclean, And Guilty
+Touching a dead unclean animal made a person unclean under the purity laws.
 
-"Hidden from him" means he didn't realize at the time that he'd touched something unclean - maybe he brushed past it in the dark, or didn't recognize what it was. The guilt here isn't for touching it on purpose; it's for not dealing with the uncleanness once he does realize it.
+This uncleanness was ceremonial, not a moral failure by itself.
 
-🙈 "Hidden from him" means he didn't notice or realize it at the time
+Leviticus eleven later explains exactly which animals counted as unclean.
 
-🔁 This matches chapter 4's whole theme: unintentional guilt still needs handling
+🐫 Carcase means a dead body
 
-⏰ The guilt attaches once he becomes aware, not the moment it happened
+🚫 Touching it made a person unclean
 
----
+📏 This uncleanness was ceremonial, not moral
 
-## 🧍 Or If He Touch The Uncleanness Of Man...When He Knoweth Of It, Then He Shall Be Guilty
+📖 Leviticus eleven names the animals later
 
-This third case covers touching another person's ceremonial uncleanness - bodily conditions Leviticus 12-15 will cover in detail later (like childbirth or skin disease). Same pattern as the animal carcase: the uncleanness happens first, awareness comes later, and guilt begins at the moment of realizing it.
+## 🙈 And If It Be Hidden From Him
 
-🧍 This covers contact with another person's ceremonial uncleanness
+"Hidden from him" means he did not realize it at the time.
 
-📖 Leviticus 12-15 later explains exactly which human conditions count
+Maybe he brushed past the carcase in the dark or did not recognize it.
 
-🔁 Same pattern again: guilt starts once the person becomes aware
+The guilt was not for touching it by accident.
 
----
+The guilt began the moment he actually realized what had happened.
 
-## 🗯️ Or If A Soul Swear, Pronouncing With His Lips To Do Evil, Or To Do Good
+🙈 Hidden from him means he did not notice
 
-This fourth case is different from the courtroom oath in verse 1 - this is a personal, private vow, made rashly with the mouth, promising to do something (good or bad) without thinking it through first. "Pronouncing with his lips" stresses that words alone, spoken out loud, created a binding obligation.
+⏰ Guilt began only once he realized
 
-🗯️ This is a rash personal vow, not the courtroom oath from verse 1
+🔁 This matches chapter four's pattern
 
-🗣️ "Pronouncing with his lips" means the spoken words themselves created the obligation
+📖 Awareness, not the act, triggered guilt
 
-💭 Numbers 30 later covers vows in even more detail
+## 🧍 Or If He Touch The Uncleanness Of Man
 
----
+This third case covers contact with another person's uncleanness.
 
-## 📢 And It Be Hid From Him; When He Knoweth Of It, Then He Shall Be Guilty In One Of These
+Certain bodily conditions made a person ceremonially unclean.
 
-All four scenarios in this section - silent witness, touching an unclean carcase, touching human uncleanness, and a careless oath - end with the exact same rule: guilt begins the moment the person realizes what happened, not before. This closes the pattern before the chapter moves on to what to do about it.
+Leviticus twelve through fifteen will later explain exactly which conditions counted.
 
-📢 All four cases share one closing rule: guilt starts at the moment of realization
+The same pattern from the carcase repeats. Guilt starts once he knows.
 
-🔁 This groups four very different situations under one shared principle
+🧍 This covers contact with human uncleanness
 
-🎯 The next verses explain what a guilty person is now required to do
+📖 Leviticus twelve through fifteen explains it later
+
+🔁 The same guilt pattern repeats from before
+
+➡️ Awareness still marked when guilt began
+
+## 🗯️ Pronouncing With His Lips To Do Evil, Or To Do Good
+
+Unlike the courtroom oath back in verse one, this is a private vow.
+
+A person promised something out loud without thinking it through first.
+
+"Pronouncing with his lips" means the spoken words themselves created a real obligation.
+
+Numbers thirty later covers this same kind of vow in far more detail.
+
+🗯️ This is a rash personal vow
+
+🗣️ Spoken words alone created the obligation
+
+📖 Numbers thirty covers vows further
+
+➡️ Careless speech carried real consequences
+
+## 🔢 Then He Shall Be Guilty In One Of These
+
+Four very different situations just got covered in one short section.
+
+A silent witness, an unclean carcase, human uncleanness, and a careless oath.
+
+All four end with the exact same rule about guilt.
+
+Guilt begins the moment a person actually realizes what happened, not before.
+
+🔢 Four different situations share one rule
+
+⏰ Guilt starts at the moment of realizing
+
+🎯 The next verses explain what to do next
+
+📖 God cared about the honesty of the heart
 
 # Leviticus 5:5-6
-
 # 🗣️ Confess, Then Bring An Offering
-
 ---
-
 ## 🗣️ He Shall Confess That He Hath Sinned In That Thing
 
-This is a new requirement not spelled out back in chapter 4: an actual spoken confession, naming the specific sin, comes before the offering. It isn't enough to quietly bring an animal - the person has to first admit out loud what they did.
+Confession here means speaking the specific sin out loud, not just feeling sorry.
 
-🗣️ Confession here means speaking the specific sin out loud
+Chapter four never spelled out this step this plainly.
 
-🆕 Chapter 4 didn't spell out a confession step this plainly
+The spoken confession comes before the offering, not after it.
 
-✅ Owning the sin comes before the ritual that deals with it
+Quiet guilt was not enough. Words had to be said first.
 
----
+🗣️ Confession meant speaking the sin aloud
 
-## 🔀 One Offering Covers All Four Situations
+🆕 Chapter four did not require this step
 
-Whether the guilt came from silence as a witness, touching a dead animal, touching human uncleanness, or a careless oath, the required offering is exactly the same: a female lamb or goat, the same tier chapter 4 set for an ordinary Israelite's sin offering. Four different-looking situations, but Leviticus treats them as one category: unintentional guilt discovered after the fact.
+✅ Owning the sin came before the ritual
 
-🔀 All four scenarios in verses 1-4 share this identical offering
+📖 Words mattered as much as the offering
 
-🐑 It matches the ordinary Israelite's tier already set in chapter 4
+## 🐑 A Female From The Flock, A Lamb Or A Kid Of The Goats
 
-🧩 Leviticus treats these as one category despite looking different on the surface
+One single offering covers all four situations from verses one through four.
 
----
+Silence as a witness, touching a carcase, human uncleanness, or a careless oath.
 
-## 🐑 A Female From The Flock, A Lamb Or A Kid Of The Goats, For A Sin Offering
+The required animal stayed the same across every one of them.
 
-"Trespass offering" and "sin offering" appear together in this same verse describing one single animal - a reminder that these Hebrew terms overlapped in everyday use even though later verses in this chapter (starting at v14) will treat "trespass offering" as its own distinct, separate category.
+This matches the ordinary tier chapter four already set for a common Israelite.
 
-🐑 A female lamb or goat, the same choice given in chapter 4:28-35
+🔀 One offering covers four different sins
 
-🔤 "Trespass" and "sin offering" describe the same animal here
+🐑 A female lamb or goat was required
 
-📖 Verse 14 onward introduces a truly separate trespass offering category
+📖 Chapter four already set this same tier
 
----
+➡️ Different sins led to one shared solution
 
 ## ✝️ The Priest Shall Make An Atonement For Him Concerning His Sin
 
-The same atonement formula from chapter 4 closes this section too. No matter which of the four situations applied, the outcome is identical: the priest performs the ritual, and the guilt is dealt with. The path to being made right stays constant even while the details of the sin vary widely.
+"Trespass offering" and "sin offering" describe the exact same animal in this verse.
 
-✝️ Same atonement promise already used repeatedly in chapter 4
+Later in this chapter, starting at verse fourteen, trespass offering becomes its own separate category.
 
-🎯 One consistent outcome no matter which of the four sins applied
+Right now the two Hebrew terms still overlap in everyday use.
 
-🔁 The ritual process, not the sin itself, determines the offering required
+The priest performs the atonement no matter which of the four sins applied.
+
+🔤 Trespass and sin offering overlap here
+
+🎯 The outcome, not the sin, stayed constant
+
+✝️ The priest always performs the atonement
+
+📖 Verse fourteen splits them into separate ideas
 
 # Leviticus 5:7-10
-
-# 🕊️ Too Poor For A Lamb? Bring Two Birds
-
+# 🕊️ Too Poor For A Lamb, Bring Two Birds
 ---
-
 ## 🕊️ If He Be Not Able To Bring A Lamb
 
-This begins an economic accommodation that runs the rest of the chapter. Nobody was priced out of forgiveness - if a lamb or goat was genuinely out of reach, the law immediately offers a cheaper path instead of demanding the impossible.
+This begins an economic plan that runs through the rest of the chapter.
 
-🕊️ This introduces a cheaper option for those who can't afford a lamb
+Nobody in Israel was priced out of forgiveness by this law.
 
-💰 The system never let cost become a wall to forgiveness
+If a lamb or goat was truly out of reach, a cheaper path opened at once.
 
-📖 An even cheaper option follows in verse 11 for those who can't afford this
+An even cheaper option follows later, starting in verse eleven.
 
----
+🕊️ A cheaper offering option begins here
+
+💰 Cost never blocked the path to forgiveness
+
+📖 Verse eleven offers something cheaper still
+
+➡️ God kept lowering the bar, not the standard
 
 ## 🕊️ Two Turtledoves, Or Two Young Pigeons
 
-Turtledoves and young pigeons were common, inexpensive birds that even a poor family could usually catch or raise. Luke 2:24 records Mary and Joseph bringing exactly this offering at Jesus's dedication - a quiet detail showing Jesus's family fit this lower economic tier.
+Turtledoves and young pigeons were common birds and cheap to obtain.
 
-🕊️ These were cheap, common birds available even to the poor
+Even a poor family could usually catch or raise them nearby.
 
-✝️ Luke 2:24 shows Mary and Joseph bringing this exact offering
+Luke two twenty four shows Mary and Joseph bringing exactly this offering for Jesus.
 
-👶 It's a small clue about the economic situation of Jesus's own family
+That small detail quietly shows the economic tier Jesus's own family stood in.
 
----
+🕊️ These birds were cheap and common
+
+✝️ Luke two twenty four names this offering
+
+👶 It reveals the poverty of Jesus's family
+
+📖 God provided even for the poorest family
 
 ## 🔀 One For A Sin Offering, And The Other For A Burnt Offering
 
-The two birds don't do identical jobs. The first bird replaces the lamb or goat as the sin offering dealing with the guilt. The second bird becomes an additional burnt offering, a category covered back in chapter 1 - meaning this cheaper option actually includes an extra offering the lamb/goat tier didn't require.
+The two birds did not do the same job in this ritual.
 
-🔀 The two birds serve two different offering purposes, not one
+The first bird replaced the lamb as the sin offering for guilt.
 
-🐑 The first bird stands in for the lamb or goat sin offering
+The second bird became an added burnt offering, the category covered back in chapter one.
 
-🔥 The second bird adds a burnt offering, from chapter 1's category
+This cheaper option actually included one more offering than the lamb tier required.
 
----
+🔀 The two birds served two purposes
+
+🐑 One bird stood in for the lamb
+
+🔥 The other added a full burnt offering
+
+📖 The cheaper path still gave more
 
 ## ✂️ Wring Off His Head From His Neck, But Shall Not Divide It Asunder
 
-"Wring off" means twisting the head to kill the bird, a method suited to something this small - very different from the throat-cutting used on larger animals in chapters 1 and 4. "Not divide it asunder" means don't tear the bird fully into two pieces; it stays mostly whole.
+"Wring off" means twisting the bird's head to kill it quickly.
 
-✂️ "Wring off" means twisting, a killing method fit for a small bird
+This method suited something this small and light.
 
-🔪 This differs from the throat-cutting used on larger animals earlier
+Larger animals in chapters one and four instead had their throats cut.
 
-🧩 "Not divide it asunder" means the bird isn't torn fully apart
+"Not divide it asunder" means the bird stayed mostly whole, not torn fully apart.
 
----
+✂️ Wring off means killing by twisting
 
-## 🩸 Sprinkle Of The Blood...Upon The Side Of The Altar
+🔪 Larger animals used a different method
 
-A bird has far too little blood to apply to the altar's horns the way a bullock's or goat's blood was in chapter 4. Instead, the blood is simply sprinkled on the altar's side - the ritual scales down to match what the animal can actually provide.
+🧩 The bird was not torn fully apart
 
-🩸 A bird's blood is applied to the altar's side, not its horns
+➡️ The ritual scaled down to fit the animal
 
-📏 This scales the ritual down to match the animal's small size
+## 🩸 Sprinkle Of The Blood Of The Sin Offering Upon The Side Of The Altar
 
-🔁 The principle (blood applied to the altar) still holds even at this scale
+A bird holds far too little blood to reach the altar's horns.
 
----
+Chapter four used the horns for a bullock or a goat instead.
 
-## ⬇️ The Rest Of The Blood Shall Be Wrung Out At The Bottom Of The Altar
+Here the blood is simply sprinkled on the altar's side.
 
-Same leftover-blood principle from chapter 4, just applied to a far smaller amount. Even a few drops of leftover blood were never simply discarded - they were disposed of at the altar's base, same as a full bullock's blood.
+The ritual still applied blood to the altar, just at a much smaller scale.
 
-⬇️ Same base-of-the-altar disposal principle used throughout chapter 4
+🩸 A bird's blood went on the altar's side
 
-🔁 It applies even when the leftover amount is just a few drops
+📏 This scaled the ritual to fit its size
 
-🚫 Blood was never treated as ordinary waste, regardless of quantity
+🔁 The core principle still stayed the same
 
----
+📖 Even a small offering still counted fully
 
 ## 🔥 He Shall Offer The Second For A Burnt Offering, According To The Manner
 
-"According to the manner" points back to chapter 1's detailed fowl instructions instead of repeating them. Leviticus assumes the reader already knows the burnt-offering procedure for birds by this point in the book.
+"According to the manner" points back to chapter one's bird instructions.
 
-🔥 "According to the manner" cross-references chapter 1's bird instructions
+Leviticus does not repeat instructions it has already given in full.
 
-✂️ Leviticus shortens repeated instructions once already fully explained
+By this point in the book, the reader is expected to remember the procedure.
 
-📖 Chapter 1:14-17 is exactly where that fowl procedure was first given
+Chapter one, verses fourteen through seventeen, spelled out that exact procedure first.
 
----
+🔥 According to the manner means as before
 
-## ✝️ The Priest Shall Make An Atonement For Him...And It Shall Be Forgiven Him
+✂️ Leviticus shortens what it already explained
 
-The same closing promise as every tier so far: whether the offering was a bullock, a goat, a lamb, or now two birds, the outcome is identical forgiveness. Poverty changed the animal required; it never changed the result.
+📖 Chapter one gave the full bird procedure
 
-✝️ Same atonement-and-forgiveness formula repeated for this poorer tier
+➡️ Familiar readers needed fewer repeated details
 
-💰 A cheaper offering still produced the exact same forgiveness
+## ✝️ And It Shall Be Forgiven Him
 
-📏 Only the animal's cost changes across every tier - never the outcome
+The outcome here matches every earlier tier already covered in this chapter.
+
+A bullock, a goat, a lamb, or now two birds, all produced identical forgiveness.
+
+Poverty changed the required animal every single time.
+
+Poverty never once changed the actual result.
+
+✝️ Every tier ends in the same forgiveness
+
+💰 A cheaper offering worked just as well
+
+📏 Only the animal's cost ever changed
+
+📖 God's mercy did not scale with wealth
 
 # Leviticus 5:11-13
-
-# 🌾 Too Poor For Birds? Bring Flour
-
+# 🌾 Too Poor For Birds, Bring Flour
 ---
-
 ## 🌾 If He Be Not Able To Bring Two Turtledoves
 
-A third and even lower economic tier: someone too poor to afford even two cheap birds. Leviticus keeps lowering the bar rather than ever telling someone forgiveness is simply out of their reach.
+This is a third and even lower economic tier than the birds.
 
-🌾 This is the third and lowest economic tier in the chapter
+It exists for someone who could not afford even two cheap birds.
 
-💰 It exists for someone who can't afford even the cheap bird option
+Leviticus kept lowering the bar rather than ever shutting someone out completely.
 
-🙌 Nobody in Israel was ever priced entirely out of atonement
+Forgiveness in this system was never priced beyond anyone's reach.
 
----
+🌾 This is the lowest tier in the chapter
+
+💰 It covers those too poor for birds
+
+🙌 Nobody was ever priced out completely
+
+📖 The system bent toward the poor, not away
 
 ## 🌾 The Tenth Part Of An Ephah Of Fine Flour
 
-An ephah was a dry measure, roughly two-thirds of a bushel. A tenth of an ephah is the same amount called an "omer" elsewhere in the Bible - the exact portion of manna God provided per person, per day, in Exodus 16:16. Even the poorest sinner's offering echoes God's own daily provision for His people.
+An ephah was a large dry measure, close to two thirds of a bushel.
 
-🌾 An ephah is a dry measure, roughly two-thirds of a bushel
+A tenth of an ephah is the same amount later called an omer elsewhere in scripture.
 
-🍞 A tenth of an ephah equals one omer, the same unit from the manna story
+Exodus sixteen sixteen uses that exact portion as one person's daily food.
 
-📖 Exodus 16:16 uses this identical amount as one person's daily food portion
+Even the poorest offering here echoed God's own daily care for His people.
 
----
+🌾 An ephah was a large dry measure
+
+🍞 A tenth of it equaled one omer
+
+📖 Exodus sixteen sixteen used this same amount
+
+➡️ The smallest gift still echoed God's provision
 
 ## 🚫 He Shall Put No Oil Upon It, Neither Shall He Put Any Frankincense Thereon
 
-Chapter 2's grain offering required both oil and frankincense as marks of a joyful, willing gift. Leaving them out here is deliberate: withholding these costly extras marks this specific flour as a sin offering, dealing with guilt, not a celebratory gift like the grain offering in chapter 2.
+Chapter two required both oil and frankincense for the ordinary grain offering.
 
-🚫 Oil and frankincense were required for the joyful grain offering in chapter 2
+Those two costly ingredients marked a joyful, willing gift to God.
 
-⚠️ Leaving them out here marks this as a somber sin offering instead
+Leaving them out here was deliberate, not an oversight by the priest.
 
-🎯 The missing ingredients are a deliberate signal, not an oversight
+This flour dealt with guilt, so it stayed plain instead of festive.
 
----
+🚫 Oil and frankincense marked a joyful gift
+
+⚠️ Leaving them out here was on purpose
+
+🎯 This offering dealt with guilt, not joy
+
+📖 Even the missing ingredients carried meaning
 
 ## ✋ The Priest Shall Take His Handful Of It, Even A Memorial Thereof
 
-"Memorial" is the same term used for the grain offering's handful back in chapter 2 - a symbolic token portion representing the whole gift, burned to represent the entire offering being given to God even though only a handful actually goes on the fire.
+"Memorial" is the same word used for the grain offering's handful back in chapter two.
 
-✋ "Memorial" is the same term chapter 2 used for its symbolic handful
+Only a small portion of the flour actually went onto the fire.
 
-🔥 Only a small portion is burned, standing in for the whole offering
+That single handful stood in for the entire offering being given.
 
-🔁 This reuses chapter 2's grain-offering procedure rather than inventing a new one
+Leviticus reused a familiar pattern instead of inventing something new.
 
----
+✋ Memorial means a token portion representing all
 
-## 🔥 Burn It On The Altar, According To The Offerings Made By Fire Unto The LORD
+🔥 Only a handful was actually burned
 
-Another cross-reference back to earlier chapters instead of repeating full instructions - by this point in Leviticus, the reader is expected to already understand what "offerings made by fire" involves.
+🔁 This reused chapter two's grain pattern
 
-🔥 This phrase again links back to the burnt, grain, and peace offerings
-
-✂️ Leviticus shortens instructions once a pattern is already established
-
-🔗 It ties this flour offering into the same family as every earlier type
-
----
+📖 A small part still represented the whole
 
 ## 🍞 The Remnant Shall Be The Priest's, As A Meat Offering
 
-"Meat offering" here doesn't mean animal meat - in KJV English it's an old term for a grain offering (from chapter 2). The leftover flour, after the priest's memorial handful is burned, became food for the priests, meaning even the poorest sinner's offering still fed the men who served at the tabernacle.
+"Meat offering" in King James English is an old term for a grain offering.
 
-🍞 "Meat offering" in the KJV means a grain offering, not animal meat
+It does not mean animal meat at all.
 
-🍽️ The leftover flour became actual food for the priests
+The leftover flour, once the priest's handful was burned, became food for the priests.
 
-🙏 Even the smallest, cheapest offering still fed those who served
+Even the poorest sinner's offering still fed the men who served at the tabernacle.
+
+🍞 Meat offering here means grain, not meat
+
+🍽️ Leftover flour became food for priests
+
+🙏 Even the cheapest gift still fed someone
+
+📖 Small gifts still served a real purpose
 
 # Leviticus 5:14-16
-
 # ⚠️ Sinning Against Holy Things
-
 ---
-
 ## 📜 And The LORD Spake Unto Moses, Saying
 
-This formula marks a new topic starting mid-chapter. Everything from here to the end of chapter 5 shifts from the "sin offering" (Hebrew chattat) covered so far to a related but distinct category: the "trespass offering" (Hebrew asham).
+This formula marks a new topic starting partway through the chapter.
 
-📜 This formula signals a fresh topic beginning partway through the chapter
+Verses one through thirteen covered the ordinary sin offering.
 
-🔀 Verses 1-13 covered the sin offering; verses 14-19 cover the trespass offering
+Verses fourteen through nineteen shift to a related but separate offering instead.
 
-📖 These are related but genuinely separate categories in Leviticus
+The Hebrew word behind this new category is asham, the trespass offering.
 
----
+📜 This formula signals a fresh topic
 
-## ⚠️ If A Soul Commit A Trespass...In The Holy Things Of The LORD
+🔀 The chapter now shifts to a new offering
 
-"Holy things of the LORD" means anything set apart for God - tithes, firstfruits, or portions of offerings reserved for the priests. This case covers accidentally mishandling one of these: eating something reserved for the priests by mistake, or being careless with a tithe or dedicated gift.
+📖 Asham is the Hebrew word for trespass
 
-⚠️ "Holy things" means tithes, firstfruits, or portions set apart for God
+➡️ Related categories still stayed distinct
 
-🤝 This covers accidentally misusing or mishandling something sacred
+## ⚠️ And Sin Through Ignorance, In The Holy Things Of The LORD
 
-🍞 A common example: unknowingly eating food reserved for the priests
+"Holy things of the LORD" means anything set apart specifically for God.
 
----
+Tithes, firstfruits, and portions reserved for the priests all counted as holy things.
 
-## 🐏 A Ram Without Blemish...With Thy Estimation By Shekels Of Silver, After The Shekel Of The Sanctuary
+This case covers accidentally mishandling one of those set apart items.
 
-For the first time in this chapter, a ram is required rather than a lamb, goat, bird, or flour - a bigger, costlier animal reserved specifically for trespasses against holy things. "The shekel of the sanctuary" was a fixed, official weight standard, heavier and more precise than an everyday shekel, so nobody could shortchange the payment. "Thy estimation" means the priest set the exact monetary value owed.
+A common example was unknowingly eating food that actually belonged to the priests.
 
-🐏 A ram is required here, bigger and costlier than any earlier option in this chapter
+⚠️ Holy things means anything set apart for God
 
-⚖️ "The shekel of the sanctuary" was an official, fixed weight standard
+🤝 This covers accidentally misusing something sacred
 
-💰 "Thy estimation" means the priest set the precise value of what was owed
+🍞 Eating priestly food by mistake was one example
 
----
+📖 Even sacred things got sinned against by accident
 
-## 💰 Make Amends...And Shall Add The Fifth Part Thereto
+## 🐏 A Ram Without Blemish Out Of The Flocks, With Thy Estimation By Shekels Of Silver, After The Shekel Of The Sanctuary
 
-This is new: actual repayment, not just ritual. The guilty person had to pay back the value of whatever holy thing they'd mishandled, plus an extra 20% penalty on top. No earlier offering in Leviticus required literally repaying anything - this trespass category deals with real, measurable damage.
+A ram is required here for the first time in this whole chapter.
 
-💰 This requires real repayment, on top of the ritual offering
+It cost far more than a lamb, a goat, a bird, or flour.
 
-➕ A 20% penalty was added to whatever was owed
+"The shekel of the sanctuary" was a fixed, official weight standard.
 
-🆕 No earlier offering in Leviticus demanded literal repayment like this
+It was heavier and more exact than an everyday shekel, so nobody could shortchange the payment.
 
----
+🐏 A ram was required for this offense
+
+💰 It cost more than any earlier option
+
+⚖️ The sanctuary shekel was an official standard
+
+📖 Precision protected against underpayment
+
+## 💰 Make Amends For The Harm That He Hath Done In The Holy Thing, And Shall Add The Fifth Part Thereto
+
+Real repayment enters this chapter for the first time here.
+
+The guilty person paid back the full value of what they had mishandled.
+
+A twenty percent penalty was added on top of that repayment.
+
+No earlier offering in this chapter demanded literal repayment like this one.
+
+💰 Real repayment was required here
+
+➕ A twenty percent penalty was added
+
+🆕 No earlier offering demanded repayment
+
+📖 Measurable harm required a measurable fix
 
 ## ✝️ The Priest Shall Make An Atonement For Him With The Ram Of The Trespass Offering
 
-Both parts were required together: paying back the debt plus 20%, and the ram ritual. Repayment alone didn't finish the matter, and the ritual alone didn't either - making things right with people and making things right with God both had to happen.
+Both parts were required together, not just one or the other.
 
-✝️ Both restitution and the ritual offering were required, not either one alone
+Paying back the debt plus the penalty, and offering the ram itself.
 
-🤝 Making things right with people didn't replace making things right with God
+Repayment alone did not finish the matter by itself.
 
-🎯 This trespass category demands both repayment and atonement together
+Making things right with people never replaced making things right with God.
+
+✝️ Both repayment and ritual were required
+
+🤝 People and God both needed peace
+
+🎯 Neither part alone was ever enough
+
+📖 Justice and worship worked side by side
 
 # Leviticus 5:17-19
-
 # 🐏 Guilty Even Without Knowing The Law
-
 ---
+## ❓ Though He Wist It Not, Yet Is He Guilty
 
-## ❓ Commit Any Of These Things Which Are Forbidden...Though He Wist It Not, Yet Is He Guilty
+"Wist" is an old word meaning knew.
 
-"Wist" is an old word meaning "knew." This verse states plainly that not even knowing a specific law existed doesn't remove the guilt of breaking it. Chapter 4 already established that guilt can exist without intent - this verse pushes even further, saying guilt exists even without any awareness that a rule was being broken at all.
+This verse says not even knowing a law existed removes the guilt of breaking it.
 
-❓ "Wist" is the old word for "knew"
+Chapter four already showed that guilt can exist without any intent to sin.
 
-⚖️ Not knowing a law existed still doesn't remove the guilt of breaking it
+This verse goes further still. Guilt exists without any awareness a rule was broken.
 
-📈 This pushes chapter 4's "through ignorance" idea even further
+❓ Wist is the old word for knew
 
----
+⚖️ Not knowing the law did not excuse it
+
+📈 This pushes chapter four's idea even further
+
+📖 Ignorance did not erase real guilt
 
 ## 🐏 A Ram Without Blemish Out Of The Flock, With Thy Estimation
 
-The same ram and the same priestly valuation from the holy-things trespass in verses 14-16 applies again here, now for this broader, less specific category of "forbidden things." The required offering matches, even though the exact wrongdoing this time is left unnamed.
+This is the same ram and the same priestly valuation used back in verses fourteen through sixteen.
 
-🐏 The same ram and priestly-valuation system from verses 14-16 repeats here
+The offering matches even though the exact wrongdoing here stays unnamed.
 
-📏 This time it covers a broader, unnamed category of forbidden acts
+Leviticus reused an offering it had already defined rather than inventing a new one.
 
-🔁 Leviticus reuses the same offering rather than inventing a new one
+The category of the sin, not the specific act, decided the required offering.
 
----
+🐏 The same ram and valuation apply here
 
-## ✝️ Make An Atonement...Concerning His Ignorance Wherein He Erred And Wist It Not
+📏 The exact offense stays unnamed this time
 
-"Erred" means made a mistake, and "wist it not" repeats that he genuinely didn't know. Real ignorance doesn't erase real guilt - but it also doesn't put someone beyond forgiveness. This verse holds both truths at once: accountability stays, and grace is still available.
+🔁 Leviticus reused an offering already defined
 
-✝️ "Erred" means made a mistake, and this verse repeats he didn't know
+📖 The category decided the required offering
 
-⚖️ True ignorance doesn't erase guilt, but it also doesn't block forgiveness
+## 😟 Concerning His Ignorance Wherein He Erred And Wist It Not
 
-🎯 This verse holds accountability and grace together, not one instead of the other
+"Erred" means made a genuine mistake.
 
----
+"Wist it not" repeats plainly that he truly did not know.
 
-## 💵 Restitution Required Only Here
+Real ignorance did not erase real guilt in this system.
 
-Looking back across the whole chapter: the four situations in verses 1-6, the poor person's birds, and the poorest person's flour never mention repaying anyone. Only the trespass offering, starting at verse 14, adds the repay-plus-20%-penalty requirement - because holy things and other people's property can actually be measured and paid back, unlike the more personal, internal sins covered earlier.
+It also did not put a person beyond the reach of forgiveness.
 
-💵 Only the trespass offering (from verse 14 on) requires repayment
+⚖️ Erred means made an honest mistake
 
-📏 Earlier sins in this chapter involved no measurable damage to repay
+🔁 This repeats that he truly did not know
 
-🎯 Restitution applies specifically where real, countable loss occurred
+🎯 Guilt and grace both stayed true at once
 
----
+📖 Forgiveness reached even honest mistakes
 
-## 📋 It Is A Trespass Offering: He Hath Certainly Trespassed Against The LORD
+## 📋 It Is A Trespass Offering
 
-This closing label states plainly that the guilt was real, using the word "certainly" to remove any doubt - even when the sinner never knew they were breaking a rule. Human courts sometimes excuse genuine ignorance; this verse makes clear that before God, the guilt still stood, and still had to be dealt with.
+This closing label gives the whole section its formal name.
 
-📋 "Trespass offering" is the formal closing label for this whole section
+Everything from verse fourteen to this point falls under one category.
 
-✅ "Certainly" removes any doubt that the guilt was real
+Naming it plainly closes out the case law before the next chapter begins.
 
-⚖️ Genuine ignorance still required dealing with the guilt, not excusing it
+Leviticus six continues this same trespass category with more examples.
 
----
+📋 This section gets one formal closing name
 
-## 🎯 Two Related Offerings Close Out The Chapter
+🔀 Everything since verse fourteen fits this label
 
-Chapter 5 covers two connected but distinct categories: the sin offering (verses 1-13), scaled down through four tiers - lamb, goat, birds, or flour - based purely on what the sinner could afford; and the trespass offering (verses 14-19), a fixed ram plus repayment, for damage that could actually be measured and repaid. Leviticus 6:1-7 continues this second category with more trespass case law still to come.
+🔚 Naming it plainly closes the case law
 
-🎯 Verses 1-13 (sin offering) and 14-19 (trespass offering) are two related categories
+📖 Leviticus six continues with more examples
 
-📉 The sin offering scaled by ability to pay; the trespass offering stayed fixed
+## ✅ He Hath Certainly Trespassed Against The LORD
 
-📖 Leviticus 6:1-7 continues the trespass offering with more case law`;
+"Certainly" removes any doubt about whether the guilt was real.
+
+That word choice mattered even when the sinner never knew a rule existed.
+
+Human courts sometimes excuse genuine ignorance of the law.
+
+Before God, this verse says plainly that the guilt still stood.
+
+✅ Certainly removes any doubt about guilt
+
+⚖️ Guilt stood even without any awareness
+
+👨‍⚖️ Human courts often treat ignorance differently
+
+📖 God's standard did not bend for ignorance
+`.trim();
 
 export const LEVITICUS_FIVE_PERSONAL_SECTIONS = parseLeviticusFiveRawNotes(LEVITICUS_FIVE_RAW_NOTES);

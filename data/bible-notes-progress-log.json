@@ -7504,6 +7504,67 @@
           "at": "2026-08-03T06:58:30Z"
         }
       ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 5,
+      "startedAt": "2026-08-03T07:45:46Z",
+      "finishedAt": "2026-08-03T07:54:10Z",
+      "durationMinutes": 8,
+      "sections": 6,
+      "cards": 32,
+      "verses": 19,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Fifth chapter in the Leviticus redo backlog (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (paragraph bodies, three-bullet cards, hyphens and semicolons throughout, no .trim() on its raw notes constant) from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (Leviticus.json). Leviticus 5 continues the sin offering case law from chapter 4 into four specific unintentional-guilt scenarios (silent witness, unclean carcase, human uncleanness, careless oath, verses 1-4), the confession-then-offering requirement (verses 5-6), the three descending economic tiers of the sin offering for someone too poor for a lamb (birds in verses 7-10, flour in verses 11-13), and then the chapter pivots at verse 14 to a genuinely separate category, the trespass offering (asham) for sins against holy things (verses 14-16) and for breaking a law without even knowing it existed (verses 17-19), which uniquely requires real monetary restitution plus a 20 percent penalty on top of the ram offering. Kept the original file's 6 section boundaries (1-4, 5-6, 7-10, 11-13, 14-16, 17-19) for verse-coverage continuity while rewriting every card to the new format. Density is about 1.68 cards/verse (19 verses, 32 cards), leaning toward the lower end of the usual 2x target because this is a highly repetitive legal chapter reusing tiers and formulas chapter 4 already established, so cards were built to name what is new or different at each step rather than pad out restated ritual mechanics, per the style spec's guidance for chapters that resist teaching. scripts/check_bible_note_style.py found 3 problems on first pass (two bullets one word over the 8-word limit, one card ending its last bullet on a non-scripture/non-implication emoji), fixed, second run clean. A manual section 13 eye check caught three cards opening with the same 'This is a new...'/'This is new.' sentence shape (a forbidden repeated pattern per the spec) and rewrote each opening line for variety. Parser check passed exactly via getBibleReaderStudySections('Leviticus', 5) (6/6 sections, 32 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range covering Leviticus 1-27, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (LeviticusFivePersonalSection, parseLeviticusFiveRawNotes, LEVITICUS_FIVE_RAW_NOTES, LEVITICUS_FIVE_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Leviticus 5 entry removed from the front of the list as part of this commit; next redo target is Leviticus 6.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-03T07:46:28Z"
+        },
+        {
+          "name": "target chapter determined: Leviticus 5 (style redo, first in remaining backlog)",
+          "at": "2026-08-03T07:46:40Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Leviticus.json",
+          "at": "2026-08-03T07:47:35Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-08-03T07:49:52Z"
+        },
+        {
+          "name": "wiring in lib/bibleReaderStudyNotes.ts confirmed already correct for redo chapter",
+          "at": "2026-08-03T07:50:05Z"
+        },
+        {
+          "name": "source file lib/leviticusFiveSource.ts written (6 sections, 32 cards)",
+          "at": "2026-08-03T07:51:30Z"
+        },
+        {
+          "name": "style checker: 3 issues found (bullet word counts, last bullet emoji), fixed",
+          "at": "2026-08-03T07:52:00Z"
+        },
+        {
+          "name": "style checker clean",
+          "at": "2026-08-03T07:52:28Z"
+        },
+        {
+          "name": "manual section 13 eye check: fixed 3 cards with repeated 'this is new' opening shape",
+          "at": "2026-08-03T07:52:40Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections Leviticus 5: 6 sections, 32 cards)",
+          "at": "2026-08-03T07:52:47Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-03T07:54:10Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-03T07:55:40Z"
+        }
+      ]
     }
   ]
 }
