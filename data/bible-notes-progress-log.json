@@ -8319,52 +8319,28 @@
       "book": "Leviticus",
       "chapter": 19,
       "startedAt": "2026-08-03T21:46:43Z",
-      "finishedAt": "2026-08-03T22:00:00Z",
-      "durationMinutes": 13,
+      "finishedAt": "2026-08-03T21:56:46Z",
+      "durationMinutes": 10,
       "sections": 11,
       "cards": 56,
       "verses": 37,
       "notes": "Scheduled hourly Bible Note Writer Agent run. Nineteenth chapter in the Leviticus redo backlog, regenerated to the new style spec, replacing the original pre-spec version (11 sections / 57 cards, paragraph bodies, three bullets per card). The Holiness Code's ethics chapter: the be-holy-because-God-is-holy refrain opening the chapter (quoted directly in 1 Peter 1:16), honoring parents and the sabbath, idols named elilim (worthless things) and the golden calf callback for molten gods, the peace offering's two-day eating window and the karet (cut off) penalty for breaking it, the harvest-corner and gleaning laws that Ruth later survives on, honesty and same-day wage payment, cursing the deaf and tripping the blind as cruelty the victim cannot even detect, courtroom impartiality toward both rich and poor, the talebearer and blood-of-thy-neighbour laws, the heart-level ban on hidden hatred that Jesus later traces to anger in Matthew 5, the love-thy-neighbour verse Jesus calls the second greatest commandment, the mixed-kinds laws (cattle, seed, and the linen/wool shatnez garment) and the betrothed bondmaid's distinct penalty, the orlah fruit-tree law waiting three years plus a fourth-year firstfruits year before eating in year five, the pagan-adjacent mourning and appearance bans (shaving temple corners, marring the beard, cutting flesh for the dead, tattoo marks) echoed later by Baal's prophets in 1 Kings 18, standing for the elderly, familiar spirits and Saul's fatal disobedience at Endor, loving the stranger grounded in Israel's own memory of Egypt, and the closing honest-weights laws (meteyard, ephah, hin) tied to the same Egypt-deliverance reasoning, bookended by the chapter's opening I-am-the-LORD refrain. Kept the same 11 section boundaries as the original file for verse coverage continuity while rewriting every card to the new format from scratch. Density about 1.51 cards per verse (37 verses, 56 cards), on the richer end since this chapter packs in a distinct, self-contained command in nearly every verse. `scripts/check_bible_note_style.py` found 7 problems on first pass, all bullets running 9 words over the 3-8 word limit, fixed by trimming each, second run clean. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines the key term in plain language, and closes on meaning rather than mechanics, with no hyphens, em dashes, semicolons, contractions, or banned filler/hedge words. Parser check passed exactly (11/11 sections, 56 cards, verses 1-37 covered, text verbatim), npx tsc --noEmit -p . clean with zero errors. Wiring was already correct for this redo chapter (Leviticus 1-27 already covered by preserveExactPhraseBodies, import and replaceStudySectionsForBookRange call already present), no changes needed. Redo backlog entry popped; next redo target is Leviticus 20.",
       "steps": [
         {
-          "name": "npm install done",
-          "at": "2026-08-03T21:47:09Z"
+          "name": "npm install done; target chapter determined: Leviticus 19 (style redo, first in remaining backlog)",
+          "at": "2026-08-03T21:46:43Z"
         },
         {
-          "name": "target chapter determined: Leviticus 19 (style redo, first in remaining backlog)",
-          "at": "2026-08-03T21:47:12Z"
-        },
-        {
-          "name": "KJV text fetched",
-          "at": "2026-08-03T21:47:40Z"
-        },
-        {
-          "name": "style spec and reference implementation read",
-          "at": "2026-08-03T21:48:33Z"
-        },
-        {
-          "name": "source file written (11 sections, 56 cards)",
+          "name": "KJV text fetched; style spec, skill pipeline doc, and reference implementation (genesisThirtyOneSource.ts) read; existing file and wiring reviewed, wiring confirmed already correct",
           "at": "2026-08-03T21:50:09Z"
         },
         {
-          "name": "style checker clean (after fixing 7 over-length bullets)",
-          "at": "2026-08-03T21:53:10Z"
-        },
-        {
-          "name": "wiring confirmed correct for redo (no changes needed)",
+          "name": "source file written (11 sections, 56 cards); style checker run, fixed 7 over-length bullets, second run clean; parser check passed (11/11 sections, 56 cards, text verbatim); tsc --noEmit clean",
           "at": "2026-08-03T21:53:33Z"
         },
         {
-          "name": "parser check passed (11 sections, 56 cards)",
-          "at": "2026-08-03T21:53:47Z"
-        },
-        {
-          "name": "tsc --noEmit clean",
-          "at": "2026-08-03T21:53:52Z"
-        },
-        {
-          "name": "progress files logged",
-          "at": "2026-08-03T22:00:00Z"
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, redo-remaining.json, SESSION_LOG.md); committed and pushed to origin/main (97c1212), verified via fetch",
+          "at": "2026-08-03T21:56:46Z"
         }
       ]
     }
