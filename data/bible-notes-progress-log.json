@@ -8037,6 +8037,59 @@
           "at": "2026-08-03T16:00:55Z"
         }
       ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 14,
+      "startedAt": "2026-08-03T16:46:45Z",
+      "finishedAt": "2026-08-03T17:00:30Z",
+      "durationMinutes": 14,
+      "sections": 13,
+      "cards": 53,
+      "verses": 57,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (13 sections, paragraph bodies, three bullets per card) from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Leviticus 14 covers the leper's readmission ceremony after healing (the two-bird rite outside the camp, washing and shaving in stages, the eighth-day trespass/sin/burnt offerings with blood and oil applied to ear, thumb, and toe), the parallel provision for the poor (birds instead of lambs, less flour, same fixed trespass lamb), and the law of leprosy in a house once Israel is settled in Canaan (diagnosis, quarantine, repair, or demolition, then the same two-bird cleansing rite applied to the building). Kept the original file's 13 section boundaries for verse coverage continuity while rewriting every card to the new format. Density about 0.93 cards per verse (57 verses, 53 cards), on the lower end on purpose for the poor-man's-version section (14:25-32) and the twice-repeated ear/thumb/toe blood ritual, since those verses restate an already-taught ritual almost word for word rather than introducing new teaching. First checker pass found 106 problems, almost all bullets running 9-11 words instead of the 3-8 word limit, plus one banned hedge word ('quite') and one over-length body line; rewrote every bullet across all 53 cards to be terse, second run clean. Parser check passed exactly via getBibleReaderStudySections('Leviticus', 14) (13/13 sections, 53 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range covering Leviticus 1-27, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (LeviticusFourteenPersonalSection, parseLeviticusFourteenRawNotes, LEVITICUS_FOURTEEN_RAW_NOTES, LEVITICUS_FOURTEEN_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Leviticus 14 entry removed from the front of the list as part of this commit; next redo target is Leviticus 15.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-03T16:47:30Z"
+        },
+        {
+          "name": "target chapter determined: Leviticus 14 (style redo, first in remaining backlog)",
+          "at": "2026-08-03T16:47:50Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Leviticus.json",
+          "at": "2026-08-03T16:50:15Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md), skill pipeline, and reference implementation (lib/genesisThirtyOneSource.ts) read",
+          "at": "2026-08-03T16:52:30Z"
+        },
+        {
+          "name": "source file written: lib/leviticusFourteenSource.ts (13 sections, 53 cards)",
+          "at": "2026-08-03T16:57:00Z"
+        },
+        {
+          "name": "style checker first pass found 106 problems (bullet length, one hedge word, one long body line), fixed, second pass clean",
+          "at": "2026-08-03T16:59:10Z"
+        },
+        {
+          "name": "wiring confirmed already correct (preserveExactPhraseBodies covers Leviticus 1-27, import and replaceStudySectionsForBookRange call pre-existing)",
+          "at": "2026-08-03T16:59:20Z"
+        },
+        {
+          "name": "parser check passed: 13/13 sections, 53 cards, verbatim",
+          "at": "2026-08-03T16:59:40Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-08-03T17:00:00Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, style-redo-remaining.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-08-03T17:00:30Z"
+        }
+      ]
     }
   ]
 }

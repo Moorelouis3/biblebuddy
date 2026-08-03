@@ -89,804 +89,1011 @@ function parseLeviticusFourteenRawNotes(rawText: string): LeviticusFourteenPerso
 }
 
 const LEVITICUS_FOURTEEN_RAW_NOTES = `# Leviticus 14:1-3
-
 # 🕊️ The Law Of The Leper's Cleansing
-
 ---
-
 ## 📜 This Shall Be The Law Of The Leper In The Day Of His Cleansing
 
-Chapter 13 was about diagnosis - figuring out whether a skin problem was tzaraat (the "leprosy" condition) and declaring someone unclean. Chapter 14 runs the opposite direction: what happens once that person gets better and needs to be declared clean again and let back into the camp. This is a reintegration ceremony, not a treatment.
+Chapter thirteen was about figuring out if a skin problem was tzaraat, the disease behind the word leprosy.
 
-The healing itself already happened before any of this starts. The priest's job here is verifying that change and guiding the person back into community and worship, step by step.
+Chapter fourteen begins only once that person has already gotten better.
 
-📜 Chapter 13 diagnosed sickness; chapter 14 restores the healed
+This is not a treatment chapter.
 
-🩺 The priest didn't cure anyone here - he confirms and readmits
+It is about bringing a healed person back into the camp.
 
-🏕️ The goal is bringing an exile back into full community life
+The priest is not curing anyone here.
 
----
+He is confirming a change that already happened.
+
+📜 Chapter thirteen diagnosed sickness
+
+🩺 Chapter fourteen restores the healed
+
+🏕️ The priest confirms, not cures
+
+📖 Healing comes first, ceremony follows
 
 ## 🚶 The Priest Shall Go Forth Out Of The Camp
 
-Everywhere else in Leviticus, the worshipper brings an offering to the priest at the tabernacle door. Here the priest leaves the sacred space and walks out to find the unclean man, who is still living outside the camp under chapter 13:46's rule.
+Everywhere else in Leviticus, the worshipper comes to the priest at the tabernacle door.
 
-🚶 Normally people come to the priest; here the priest goes to him
+Here the priest leaves the sacred space instead.
 
-🏕️ The leper is still living in exile at this point, per chapter 13:46
+He walks out to find the man who is still living outside the camp.
 
-❤️ A picture of the priest reaching toward someone who can't come in
+That rule came from chapter thirteen, verse forty six.
 
----
+🚶 The worshipper usually comes to him
+
+🏕️ Here the priest goes to him
+
+📜 The exile rule is from chapter thirteen
+
+➡️ The priest seeks out the unclean man
 
 ## 🔍 If The Plague Of Leprosy Be Healed In The Leper
 
-This whole chapter only starts once the skin problem itself is already gone. Nothing here is medicine. It's entirely about status - moving someone from "unclean, outside" to "clean, welcomed home."
+This whole chapter only starts once the skin disease is already gone.
 
-🔍 This ceremony only starts after the sickness is already over
+Nothing here is medicine.
 
-⚖️ The whole chapter is about status, not treatment
+It is entirely about status.
 
-🔄 Physical healing comes first, then ceremonial cleansing follows
+The man moves from unclean and outside to clean and welcomed home.
+
+🔍 Ceremony starts after sickness ends
+
+⚖️ This chapter is about status
+
+🔄 Healing always comes before ceremony
+
+📖 Standing before God is restored
 
 # Leviticus 14:4-7
-
 # 🐦 Two Birds, Cedar, Scarlet, And Hyssop
-
 ---
-
 ## 🐦 Two Birds Alive And Clean
 
-"Clean" here means an allowed species under chapter 11's food laws, likely small wild birds such as sparrows rather than the turtledoves and pigeons used for standard sacrifices. Two birds are required because the ritual needs one to die and one to live - the death and the release both carry meaning.
+"Clean" here means an allowed species under chapter eleven's food laws.
 
-🐦 A "clean" wild-bird species, not the usual sacrificial doves
+These were likely small wild birds such as sparrows, not the doves normally used for sacrifice.
 
-🔢 Two birds because the ritual needs both a death and a release
+Two birds are required because the ritual needs one to die and one to live.
 
-🕊️ A different kind of bird than the pigeons used at the altar
+The death and the release each carry their own meaning.
 
----
+🐦 Clean means an allowed species
+
+🕊️ Likely small wild birds
+
+🔢 One bird dies, one lives
+
+📖 Each bird carries its own meaning
 
 ## 🪵 Cedar Wood, And Scarlet, And Hyssop
 
-Three items, each worth knowing: cedar wood is tough, long-lasting timber. Scarlet is a strip of wool dyed a deep red. Hyssop is a small bushy plant used like a brush for sprinkling liquid - the very same plant Israel used to apply the Passover lamb's blood to their doorposts in Exodus 12:22, and the one David later begs God for in Psalm 51:7, "purge me with hyssop."
+Cedar wood is tough, long lasting timber.
 
-🪵 Cedar wood is durable, long-lasting timber
+Scarlet is a strip of wool dyed a deep red.
 
-🧵 Scarlet is a strip of wool dyed deep red
+Hyssop is a small bushy plant used like a brush for sprinkling liquid.
 
-🌿 Hyssop is a bushy herb used as a sprinkling brush
+The same three items were used to spread the Passover lamb's blood on the doorposts in Exodus twelve.
 
-🔗 The same three items reappear at Passover and in Psalm 51
+David later begs God to be cleansed with hyssop in Psalm fifty one.
 
----
+🪵 Cedar wood is durable timber
 
-## 💧 One Of The Birds Be Killed...Over Running Water
+🧵 Scarlet is deep red dyed wool
 
-"Running water" means water from a moving source, a stream or spring, not water sitting still in a jar. The dead bird's blood is caught and mixed into that flowing water inside a plain clay bowl.
+🌿 Hyssop is a sprinkling brush plant
 
-💧 "Running water" means flowing water, not stagnant water
+📖 These three reappear at Passover
 
-🏺 Blood and water mix together in a plain clay bowl
+## 💧 Killed In An Earthen Vessel Over Running Water
 
-🌊 Moving, living water fits the purpose of a cleansing rite
+"Running water" means water from a moving source, a stream or a spring.
 
----
+It does not mean water sitting still in a jar.
 
-## 🩸 Dip Them...In The Blood Of The Bird That Was Killed
+The bird's blood is caught and mixed into that flowing water.
 
-The cedar wood, the scarlet thread, and the still-living bird are all bundled together and dipped into the blood-and-water mixture at once. The living bird ends up carrying the dead bird's blood on its wings when it eventually flies free.
+The mixing happens inside a plain clay bowl, not a fine vessel.
 
-🩸 Wood, scarlet, and the live bird are dipped together
+💧 Running water means flowing water
 
-🐦 The living bird ends up carrying the dead bird's blood
+🏺 Blood mixes into a clay bowl
 
-🔗 One bundled ritual object stands in for the whole sacrifice
+🌊 Moving water fits this cleansing
 
----
+➡️ Nothing fine or costly is used
 
-## 7️⃣ Sprinkle...Seven Times
+## 🩸 Dip Them And The Living Bird In The Blood
 
-Seven is the number of completeness running through Leviticus - the same count used for the quarantine days in chapter 13 and the ordination days in chapters 8-9. Sprinkling the man seven times marks this cleansing as fully finished, not partway done.
+The cedar wood, the scarlet thread, and the still living bird are bundled together.
 
-7️⃣ Seven signals completeness throughout Leviticus
+That bundle is dipped into the blood and water mixture all at once.
 
-🔁 Same count already used for quarantine and ordination days
+The living bird ends up carrying the dead bird's blood on its wings.
 
-✅ Marks the cleansing as fully done, not partway
+One bundled object stands in for the whole sacrifice.
 
----
+🩸 Wood, scarlet, and the bird dip together
+
+🐦 The living bird carries the blood
+
+🔗 One bundle stands for the sacrifice
+
+➡️ The bird carries the bundle's blood
+
+## 🔁 Sprinkle Upon Him Seven Times
+
+Seven is the number of completeness that runs through Leviticus.
+
+The same count marked the quarantine days back in chapter thirteen.
+
+It also marked the ordination days for the priests in chapters eight and nine.
+
+Sprinkling the man seven times marks this cleansing as fully finished.
+
+🔁 Seven means completeness in Leviticus
+
+📅 The same count marked quarantine
+
+👑 The same count marked ordination
+
+➡️ Seven means the cleansing is finished
 
 ## 🕊️ Let The Living Bird Loose Into The Open Field
 
-The dead bird's blood pays for the cleansing. The living bird, carrying that blood, is set free instead of being kept or killed. This previews the two-goat pattern in chapter 16's Day of Atonement, where one animal is sacrificed and the other carries guilt away into the wilderness.
+The dead bird's blood pays for the cleansing.
 
-🕊️ The live bird is released, not kept or killed
+The living bird, carrying that blood, is set free instead of being kept.
 
-🔗 A preview of the two-goat pattern in chapter 16's Day of Atonement
+This previews the two goat pattern in chapter sixteen's Day of Atonement.
 
-🌄 Pictures guilt being carried away and never brought back
+One animal is sacrificed there, the other carries guilt away into the wilderness.
+
+🕊️ The live bird is released
+
+🐐 It previews chapter sixteen's two goats
+
+🌄 One dies, the other carries guilt away
+
+📖 Guilt is carried away for good
 
 # Leviticus 14:8-9
-
 # 🧼 Washing, Shaving, And Waiting
-
 ---
-
 ## 👕 Wash His Clothes, And Shave Off All His Hair
 
-Every piece of clothing gets washed, not just some, and every hair on the body is shaved, not just the area near the old mark. This is a total reset, stripping away any last trace of the old unclean condition before the man starts life inside camp again.
+Every piece of clothing gets washed, not only some of it.
 
-👕 Every piece of clothing gets washed, not just some
+Every hair on the body gets shaved, not only the area near the old mark.
 
-✂️ All hair on the body is shaved off, a total reset
+This is a total reset.
 
-🔄 Symbolically stripping away every trace of the old condition
+It strips away any last trace of the old unclean condition.
 
----
+👕 Every garment gets washed
 
-## 🏕️ Come Into The Camp, And Shall Tarry Abroad Out Of His Tent Seven Days
+✂️ Every hair gets shaved
 
-He's now allowed inside the camp boundary, a real step forward, but not all the way home yet. He still can't rejoin his own household for one more week, the same staged-return pattern used elsewhere in this book, where clean status arrives in steps rather than one instant switch.
+🔄 This is a total reset
 
-🏕️ Allowed inside the camp, but not yet inside his own tent
+📖 The old condition is erased
 
-📅 One more full week before full reintegration
+## 🏕️ Come Into The Camp, And Tarry Abroad Out Of His Tent Seven Days
 
-🔁 Clean status here comes in stages, not one instant switch
+He is now allowed inside the camp boundary.
 
----
+That is real progress, but it is not all the way home yet.
+
+He still cannot rejoin his own household for one more week.
+
+Clean status here arrives in stages, not in one instant switch.
+
+🏕️ Allowed inside camp, not his tent
+
+📅 One more week before full return
+
+🔁 Clean status arrives in stages
+
+➡️ Restoration here takes real time
 
 ## ✂️ Shave All His Hair Off His Head And His Beard And His Eyebrows
 
-A second complete shave, repeated exactly one week after the first. Naming the eyebrows specifically stands out - it makes clear that literally no hair anywhere on the body is left unshaved before his full return.
+This is a second complete shave, done exactly one week after the first.
 
-✂️ A second full-body shave exactly one week later
+Naming the eyebrows on their own stands out.
 
-👁️ Eyebrows named specifically, leaving nothing unshaved
+It makes clear that no hair anywhere on the body is left unshaved.
 
-🔁 Doubling the ritual reinforces how total the change must be
+Doubling the ritual shows how total this change has to be.
+
+✂️ A second shave, one week later
+
+👁️ Eyebrows are named on their own
+
+🔍 No hair anywhere is left unshaved
+
+📖 The change must be total
 
 # Leviticus 14:10-14
-
 # 🐑 The Eighth Day Offerings Begin
-
 ---
+## 🌅 On The Eighth Day
 
-## 8️⃣ On The Eighth Day
+This is one day past a complete seven day cycle.
 
-One day past a complete seven-day cycle. This exact "eighth day" pattern also marks circumcision in Genesis 17:12 and the finish of priestly ordination in Leviticus 9:1 - a recurring biblical marker for a genuinely new beginning right after a full cycle of preparation is complete.
+The same eighth day pattern marks circumcision back in Genesis seventeen.
 
-8️⃣ One day past a full seven-day cycle
+It also marks the finish of the priests' ordination in chapter nine.
 
-🔗 Same pattern used for circumcision and priestly ordination
+An eighth day in this book usually signals a genuinely new beginning.
 
-🌅 A number pattern for a fresh start right after completion
+🌅 One day past a full week
 
----
+👶 Circumcision used this same pattern
 
-## 🐑 Two He Lambs...And One Ewe Lamb...And Three Tenth Deals Of Fine Flour...And One Log Of Oil
+👑 Ordination also used this pattern
 
-A "tenth deal" is a standard dry measure, roughly two quarts, used throughout the tabernacle offerings. A "log" is a small liquid measure, about half a pint, the smallest oil unit named in the Torah. This full set - three animals plus grain plus oil - is genuinely expensive, which matters later when a cheaper version is offered for the poor.
+📖 An eighth day signals a fresh start
 
-📏 "Tenth deal" is a standard dry measure, about two quarts
+## 🐑 Two He Lambs, And One Ewe Lamb
 
-🫗 A "log" is a small liquid measure, roughly half a pint
+He lambs are male, an ewe lamb is female.
 
-💰 Three animals plus flour plus oil - a costly full offering
+Three animals are required, two male and one female.
 
----
+Alongside them come three tenth deals of fine flour and one log of oil.
 
-## 🐑 The Priest Shall Take One He Lamb, And Offer Him For A Trespass Offering
+A tenth deal is a standard dry measure, close to two quarts.
 
-A trespass offering (also called a guilt offering) normally pays for a specific wrong someone owes God or another person. Its use here is notable, since being sick was never a sin. The likeliest reason is that the man's forced isolation cut him off from the worship and offerings he would have owed God during that whole time.
+A log is a small liquid measure, close to half a pint.
 
-⚖️ Trespass/guilt offerings normally pay for a specific wrong
+🐑 Two male lambs, one female lamb
 
-🤔 Being sick wasn't a sin, yet this offering type still applies
+📏 A tenth deal is near two quarts
 
-🕊️ Possibly restoring what his isolation kept him from giving
+🫗 A log is near half a pint
 
----
+📖 Three animals plus flour is costly
 
-## 🚪 Present The Man That Is To Be Made Clean...At The Door Of The Tabernacle Of The Congregation
+## ⚖️ Offer Him For A Trespass Offering
 
-This is the closest the man has been allowed to approach God's dwelling place since his diagnosis back in chapter 13. He still can't go inside, but standing at the tabernacle's own door is a major, visible step back toward full worship.
+A trespass offering, also called a guilt offering, normally pays for a specific wrong.
 
-🚪 The closest he's been to God's dwelling since his diagnosis
+Being sick was never a sin.
 
-👁️ A visible, public marker of his return
+So its use here stands out.
 
-📈 One more stage on the path back to full worship
+The likeliest reason is that his isolation kept him from the worship he owed God during that time.
 
----
+⚖️ Trespass offerings pay for a wrong
 
-## 🩸 Slay The Lamb In The Place Where He Shall Kill The Sin Offering And The Burnt Offering
+🤔 Being sick was never a sin
 
-This trespass offering is killed in the same holy spot used for the other two main offering types, and the text calls it "most holy," the top tier of sacrificial holiness - a rank it shares with the sin offering and the priestly portion of the grain offering from earlier chapters.
+🕊️ Isolation kept him from worship
 
-📍 Killed in the same sacred spot as the other main offerings
+📖 The offering restores what he missed
 
-👑 Called "most holy," the top tier of sacrificial holiness
+## 🚪 Present The Man At The Door Of The Tabernacle Of The Congregation
 
-🔗 Shares that top rank with the sin offering and grain offering
+This is the closest he has been allowed to approach God's dwelling place since chapter thirteen.
 
----
+He still cannot go inside.
 
-## 👂 Upon The Tip Of The Right Ear...The Thumb Of His Right Hand...The Great Toe Of His Right Foot
+Standing at the tabernacle's own door is still a major, visible step.
 
-This exact three-point blood application, ear, thumb, and toe, all on the right side, is identical to how Aaron and his sons were consecrated as priests back in Leviticus 8:23-24. Marking a returning man this same way gives his return the same ritual dignity once reserved for entering priestly service - hearing, doing, and walking, all marked as set apart to God.
+It marks a public return toward full worship.
 
-👂 The exact ritual once used to ordain Aaron's priests in chapter 8
+🚪 The closest he has come since diagnosis
 
-🖐️ Ear, hand, and foot cover hearing, doing, and walking
+👁️ He still cannot go inside
 
-🔗 A returning leper receives ritual dignity echoing priestly ordination
+📈 A visible step toward full worship
+
+➡️ His return is public, not private
+
+## 👂 Upon The Tip Of The Right Ear, And Upon The Thumb Of His Right Hand, And Upon The Great Toe Of His Right Foot
+
+Blood is applied to three points, the right ear, the right thumb, and the right great toe.
+
+This exact three point pattern already marked Aaron and his sons as priests back in chapter eight.
+
+Ear, hand, and foot cover hearing, doing, and walking.
+
+Marking a returning man this same way gives him a dignity once reserved for priests.
+
+👂 Three points, ear, thumb, and toe
+
+👑 The same pattern ordained Aaron's sons
+
+🖐️ Hearing, doing, and walking are covered
+
+📖 A returning man receives priestly dignity
 
 # Leviticus 14:15-18
-
 # 🫗 The Oil Mirrors The Blood
-
 ---
-
 ## 🫗 Pour It Into The Palm Of His Own Left Hand
 
-The priest pours oil into his own hand rather than directly onto the man, then works from there. This personal, hands-on detail appears nowhere else in Leviticus quite this way, underlining how directly the priest is personally involved in this one man's restoration.
+The priest pours the oil into his own hand rather than directly onto the man.
 
-🫗 The priest's own hand becomes the container for the oil
+He then works from there.
 
-🤲 A uniquely hands-on ritual detail not repeated elsewhere
+This personal, hands on detail appears nowhere else in Leviticus in this way.
 
-👤 Underlines the priest's direct, personal involvement
+It underlines how directly the priest is involved in this one man's return.
 
----
+🫗 The priest's hand becomes the container
 
-## 7️⃣ Sprinkle Of The Oil With His Finger Seven Times Before The LORD
+🤲 A detail unique to this ritual
 
-The same seven-fold pattern used for the blood sprinkling back in verse 7, now done with oil, and explicitly "before the LORD" rather than onto the man directly. The direction matters here - this particular sprinkling is offered toward God, not applied to the person.
+👤 It shows his personal involvement
 
-7️⃣ Same seven-count pattern as the earlier blood sprinkling
+➡️ This man gets the priest's full attention
 
-🙏 This sprinkling is offered toward God, not onto the man
+## 🔁 Sprinkle Of The Oil With His Finger Seven Times Before The LORD
 
-🔁 Oil now does parallel work to what blood did earlier
+This is the same seven fold pattern already used for the blood back in verse seven.
 
----
+Now it is done with oil instead.
 
-## Upon The Blood Of The Trespass Offering
+The phrase before the LORD matters here.
 
-The oil goes onto the exact same three spots, ear, thumb, and toe, laid directly over where the blood was just applied rather than a new location. Blood deals with guilt; oil, throughout Scripture, marks something as set apart for God's service - the very same oil anoints priests and the tabernacle in Exodus 30. Blood and oil together say this man is both forgiven and dedicated.
+This particular sprinkling is offered toward God, not applied onto the man himself.
 
-🩸 Oil is layered directly over the blood, same three spots
+🔁 The same seven fold pattern returns
 
-🫒 Oil marks something as set apart for God, same as anointing oil
+🙏 This faces God, not the man
 
-✝️ Together, blood plus oil say both forgiven and dedicated
+💧 Oil now parallels what blood did
 
----
+📖 This act faces God directly
 
-## The Remnant Of The Oil...He Shall Pour Upon The Head Of Him That Is To Be Cleansed
+## 🩸 Upon The Blood Of The Trespass Offering
 
-Whatever oil remains in the priest's hand after the ear, thumb, and toe get poured entirely onto the man's head, echoing how the high priest himself was anointed back in Leviticus 8:12. Nothing is saved back - the whole log of oil is used up on this one person.
+The oil goes onto the exact same three spots as the blood did.
 
-💧 Leftover oil goes entirely onto his head, none saved back
+It is laid directly over where the blood was just applied.
 
-👑 Echoes how the high priest himself was anointed in chapter 8
+Blood deals with guilt.
 
-🎁 The whole portion of oil is used up on this one man
+Oil throughout scripture marks something as set apart for God's service, the same oil that anointed priests in Exodus thirty.
 
----
+Blood and oil together say this man is both forgiven and dedicated.
 
-## The Priest Shall Make An Atonement For Him Before The LORD
+🩸 Oil covers the same three spots
 
-"Atonement" translates the Hebrew kaphar, meaning to cover over or make right so a relationship with God can continue undamaged. This phrase repeats at the end of nearly every step in this chapter (verses 18, 19, 20, 21, 29, and 31), tying every part of the skin-disease law back to a restored relationship with God, not just restored health.
+🫒 Oil marks something set apart for God
 
-📖 "Atonement" (kaphar) means covering over or making right
+✝️ Blood forgives, oil dedicates
 
-🔁 This exact phrase repeats through nearly the whole chapter
+📖 He is both forgiven and dedicated
 
-❤️ Ties skin healing to a restored relationship with God
+## 💧 He Shall Pour Upon The Head Of Him That Is To Be Cleansed
+
+Whatever oil is left in the priest's hand after the three points goes entirely onto the man's head.
+
+This echoes how the high priest himself was anointed back in chapter eight.
+
+Nothing is saved back.
+
+The whole log of oil gets used up on this one person.
+
+💧 Leftover oil goes onto his head
+
+👑 It echoes the high priest's anointing
+
+🎁 Nothing from the oil is saved
+
+➡️ The whole portion is spent on him
+
+## 📖 The Priest Shall Make An Atonement For Him Before The LORD
+
+"Atonement" translates a Hebrew word meaning to cover over or make right.
+
+It describes repairing a relationship with God so it can continue undamaged.
+
+This exact phrase repeats at the end of nearly every step in this chapter.
+
+It ties every part of this law back to a restored relationship with God, not only restored health.
+
+📖 Atonement means covering over or fixing
+
+🔁 This phrase repeats through the chapter
+
+❤️ It ties healing to a restored bond
+
+➡️ The relationship mattered more than health
 
 # Leviticus 14:19-20
-
 # 🔥 Sin Offering, Burnt Offering, And Full Cleanness
-
 ---
+## 🔢 The Priest Shall Offer The Sin Offering, And Afterward The Burnt Offering
 
-## 🔥 The Priest Shall Offer The Sin Offering...And Afterward He Shall Kill The Burnt Offering
+Order matters here.
 
-Order matters here. The sin offering, which deals with the specific uncleanness, always comes before the burnt offering, which represents full surrender and dedication to God. The debt gets settled before the gift is given.
+The sin offering deals with the specific uncleanness.
 
-🔢 Sin offering always goes first, burnt offering second
+It always comes before the burnt offering, which represents full surrender to God.
 
-⚖️ Debt is cleared before the gift of full dedication is given
+The debt gets settled before the gift is given.
 
-🔗 The same order pattern runs through Leviticus's rituals
+🔢 Sin offering first, burnt offering second
 
----
+⚖️ The debt is cleared before the gift
 
-## The Priest Shall Offer The Burnt Offering And The Meat Offering Upon The Altar
+🔗 This order runs through Leviticus
 
-By this point, one single ceremony has involved four separate offerings - trespass, sin, burnt, and grain ("meat") - on top of the bird ritual outside camp at the very start. No other purification law in Leviticus stacks this many offering types into one ceremony, showing how seriously this particular return to community is treated.
+📖 Forgiveness comes before full dedication
 
-🔢 Four separate offerings in all, plus the earlier bird ritual
+## 🔥 Offer The Burnt Offering And The Meat Offering Upon The Altar
 
-📚 No other Leviticus purification law stacks this many
+By this point one ceremony has involved four separate offerings.
 
-🏕️ Reflects how seriously this specific return is treated
+Trespass, sin, burnt, and grain, on top of the bird ritual outside the camp at the very start.
 
----
+No other purification law in Leviticus stacks this many offering types into one ceremony.
 
-## And He Shall Be Clean
+That says something about how seriously this particular return is treated.
 
-This exact declaration is the payoff the whole chapter has been building toward since verse 1's opening promise, "the law of the leper in the day of his cleansing." Everything from the two birds outside camp to this final offering leads to this one sentence.
+🔢 Four offerings, plus the bird ritual
 
-✅ The payoff promised back in verse 1
+📚 No other law stacks this many
 
-🔄 A full return from complete exile to complete belonging
+🏕️ This return is treated with care
 
-📜 Marks the formal, legal end of his uncleanness
+➡️ The ceremony matches the size of loss
+
+## ✅ And He Shall Be Clean
+
+This declaration is the payoff the whole chapter has been building toward.
+
+Verse one already promised the law of the leper in the day of his cleansing.
+
+Everything from the two birds outside the camp to this final offering leads to this one sentence.
+
+It marks the formal end of his uncleanness.
+
+✅ The payoff promised in verse one
+
+🔄 A full return from exile to home
+
+📜 It marks the end of uncleanness
+
+📖 One sentence closes many steps
 
 # Leviticus 14:21-24
-
 # 💰 If He Be Poor
-
 ---
-
 ## 💰 If He Be Poor, And Cannot Get So Much
 
-Leviticus builds in an economic safety valve so poverty never blocks anyone from full cleansing. This exact sliding-scale idea already appeared in chapter 5:7-11's sin offering law, and it shows up again here for the same reason - forgiveness and restoration were never meant to be priced out of reach.
+Leviticus builds in an economic allowance so poverty never blocks anyone from full cleansing.
 
-💰 A built-in safety valve so poverty can't block cleansing
+This same sliding scale already appeared in chapter five's sin offering law.
 
-🔁 Same sliding-scale idea already used in chapter 5:7-11
+It shows up again here for the same reason.
 
-❤️ Restoration was never meant to be priced out of reach
+Forgiveness and restoration were never meant to be out of reach because of money.
 
----
+💰 Poverty cannot block full cleansing
 
-## One Lamb For A Trespass Offering To Be Waved, To Make An Atonement For Him
+🔁 The same scale used in chapter five
 
-Notice what stays the same even in the poor man's version: the trespass-offering lamb is never reduced or swapped for a bird. Every other item in the ceremony can be substituted for something cheaper, but this one offering stays fixed, showing it carried a weight that couldn't be lowered no matter someone's income.
+❤️ Restoration was never priced out of reach
 
-🐑 The trespass-offering lamb stays fixed, never substituted
+📖 God's law made room for the poor
 
-💸 Every other item in the ceremony can be made cheaper
+## 🐑 One Lamb For A Trespass Offering, To Make An Atonement For Him
 
-⚖️ This one offering's weight didn't scale down with income
+Notice what stays the same even in the poor man's version.
 
----
+The trespass offering lamb is never reduced or swapped for a bird.
 
-## One Tenth Deal Of Fine Flour...And A Log Of Oil
+Every other item in the ceremony can be substituted for something cheaper.
 
-The flour drops from three-tenths deal in verse 10 down to just one-tenth, a two-thirds cut, but the log of oil stays exactly the same amount either way. The reduction targets the genuinely expensive items while leaving the cheaper ones untouched.
+This one offering stays fixed, carrying a weight that never lowers no matter someone's income.
 
-📉 Flour drops from three-tenths deal down to just one-tenth
+🐑 The trespass lamb is never swapped
 
-🫗 The oil amount stays exactly the same either way
+💸 Every other item can be cheaper
 
-💡 Cuts fall on the costliest items, not evenly across the board
+⚖️ This offering's weight never scales down
 
----
+➡️ Some things here never get discounted
 
-## Two Turtledoves, Or Two Young Pigeons, Such As He Is Able To Get
+## 📉 One Tenth Deal Of Fine Flour, And A Log Of Oil
 
-This swaps the two costly lambs used in the full sin-and-burnt offering (verse 10) for birds, the same substitution already used for the poorest worshippers in chapter 5:7 and for a new mother who couldn't afford a lamb in chapter 12:8. "Such as he is able to get" is the law stating outright that it bends to real financial hardship.
+The flour drops from three tenth deals in verse ten down to just one.
 
-🕊️ Birds replace the two costly lambs from the full version
+That is a two thirds cut.
 
-🔁 Same substitution used in chapter 5:7 and chapter 12:8
+The log of oil stays exactly the same amount either way.
 
-📜 The law states outright that it bends to real hardship
+The reduction targets the genuinely expensive items while leaving the cheaper ones untouched.
+
+📉 Flour drops from three tenths to one
+
+🫗 The oil amount stays the same
+
+💡 Cuts fall on the costliest items
+
+📖 Mercy here is precise, not vague
+
+## 🕊️ Two Turtledoves, Or Two Young Pigeons, Such As He Is Able To Get
+
+This swaps the two costly lambs used in the full offering for birds.
+
+The same substitution was already used for the poorest worshippers in chapter five.
+
+It was also used for a new mother who could not afford a lamb in chapter twelve.
+
+"Such as he is able to get" states outright that the law bends to real hardship.
+
+🕊️ Birds replace the two costly lambs
+
+🔁 Used in chapters five and twelve
+
+📜 The law states it bends to hardship
+
+📖 God leaves a door open for the poor
 
 # Leviticus 14:25-32
-
 # 🔁 The Same Ritual, Scaled Down
-
 ---
+## 🔁 He Shall Kill The Lamb Of The Trespass Offering
 
-## 🔁 The Priest Shall Take Some Of The Blood Of The Trespass Offering, And Put It Upon The Tip Of The Right Ear
+This repeats the exact ear, thumb, and toe blood ritual from verse fourteen.
 
-This repeats the exact ear, thumb, and toe blood ritual from verse 14, word for word, using the cheaper lamb. The ceremony's meaning doesn't shrink even though the offering's cost does - a poor person's cleansing carries the exact same ritual weight as a wealthy person's.
+The only change is that this version uses the cheaper lamb allowed for the poor.
 
-🔁 Word-for-word repeat of the blood ritual from verse 14
+The ceremony's meaning does not shrink even though the offering's cost does.
 
-⚖️ The ceremony's meaning doesn't shrink with the offering's cost
+A poor person's cleansing carries the same ritual weight as a wealthy person's.
 
-❤️ A poor person's cleansing carries equal ritual weight
+🔁 A repeat of the ear and toe ritual
 
----
+💸 Only the offering's cost changes
 
-## The Priest Shall Sprinkle With His Right Finger Some Of The Oil...Seven Times Before The LORD
+⚖️ The ceremony's meaning does not shrink
 
-Again identical to verses 16-18's oil ritual - poured into the palm, sprinkled seven times toward God, then applied over the same blood spots. The text simply repeats the full procedure rather than shortening it for the poor version, treating full ritual detail as owed regardless of income.
+📖 A poor man's cleansing carries equal weight
 
-🔁 An identical repeat of the full oil ritual from verses 16-18
+## 🔁 Sprinkle With His Right Finger Some Of The Oil Seven Times Before The LORD
 
-📜 Nothing about the procedure itself is shortened for the poor
+This is identical to the oil ritual already described in verses sixteen through eighteen.
 
-❤️ Full ritual detail is owed regardless of income
+Poured into the palm, sprinkled seven times toward God, then applied over the same blood spots.
 
----
+The text repeats the full procedure rather than shortening it for the poor version.
 
-## The Rest Of The Oil That Is In The Priest's Hand He Shall Put Upon The Head...To Make An Atonement For Him Before The LORD
+Full ritual detail is owed to every person regardless of income.
 
-The same remnant-on-the-head act from verse 18, closing this stage of the poor man's ceremony with the identical wording used for the wealthy version. "Before the LORD" keeps showing up through this whole chapter, a reminder that every one of these steps happens directly in God's presence, not as private paperwork a priest quietly files away.
+🔁 An identical repeat of the oil ritual
 
-👑 The same remnant-on-the-head act used in verse 18
+📜 The procedure is never shortened
 
-🙏 "Before the LORD" marks every step as happening in God's presence
+❤️ Full detail is owed to everyone
 
-🔁 Identical closing wording to the wealthy version
+➡️ No part of this gets cheaper
 
----
+## 🕊️ Offer The One Of The Turtledoves, Or Of The Young Pigeons, Such As He Can Get
 
-## 🕊️ He Shall Offer The One Of The Turtledoves, Or Of The Young Pigeons, Such As He Can Get
+These are the same two birds listed back in verse twenty two.
 
-These are the same two birds listed back in verse 22 as part of the flour-and-oil provisions, only now actually killed and offered, after the fixed trespass lamb and its blood-and-oil ritual are finished. Guilt is dealt with first, then the sin and burnt offerings follow.
+Now they are actually killed and offered.
 
-🕊️ The same birds named back in verse 22, now actually offered
+This happens only after the fixed trespass lamb and its blood and oil ritual are finished.
 
-🔢 The fixed trespass lamb and its ritual come first
+Guilt is dealt with first, then the sin and burnt offerings follow.
 
-📖 Guilt is settled before the sin and burnt offerings follow
+🕊️ The same birds named in verse twenty two
 
----
+🔢 The fixed lamb ritual comes first
 
-## The One For A Sin Offering, And The Other For A Burnt Offering, With The Meat Offering
+📖 Guilt is settled before the rest
 
-The poor man ends up completing the exact same offering categories as the wealthy version - trespass, sin, burnt, and grain - four types either way. Only the price of the animals changed. The required structure never did.
+➡️ Order still matters in the cheaper version
 
-🔢 Same four offering categories as the wealthy version
+## 📜 This Is The Law Of Him In Whom Is The Plague Of Leprosy
 
-💸 Only the price of the animals changed
+This closing line is a standard Leviticus formula, "this is the law of."
 
-📜 The required structure never scales down
+The same formula marks the end of a legal section elsewhere in chapters eleven and thirteen.
 
----
+Giving the poor man's path its own formally named law matters.
 
-## This Is The Law Of Him In Whom Is The Plague Of Leprosy, Whose Hand Is Not Able To Get
+It tells the reader this path was fully legitimate, not a lesser shortcut.
 
-This closing line is a standard Leviticus formula, "this is the law of...", used elsewhere to mark the end of a legal section (compare 13:59 and 11:46). Giving the poor man's path its own formally named "law," rather than treating it as a footnote or shortcut, tells the reader it was fully legitimate and equally valid.
+📜 A standard closing formula in Leviticus
 
-📜 A standard closing formula also used at 13:59 and 11:46
+⚖️ The poor man's path gets its own name
 
-⚖️ Given its own formal name, not treated as a lesser shortcut
+❤️ This path was legitimate, not a shortcut
 
-❤️ Marks the poor man's path as fully legitimate and equally valid
-
----
-
-## 💰 Same Four Offerings, A Fraction Of The Cost
-
-Add it up: the fixed trespass lamb, sin-offering bird instead of a lamb, burnt-offering bird instead of a lamb, and one-tenth deal of flour instead of three-tenths. The dollar cost drops sharply, yet the atonement declared complete uses identical wording to the rich man's version back in verse 20.
-
-💰 The total cost drops sharply across nearly every item
-
-📜 The atonement declaration uses identical wording either way
-
-⚖️ Cost changes; the outcome in God's eyes doesn't
+📖 Mercy here is fully lawful
 
 # Leviticus 14:33-36
-
 # 🏠 Leprosy In A House
-
 ---
+## 🏠 When Ye Be Come Into The Land Of Canaan
 
-## 🏠 When Ye Be Come Into The Land Of Canaan...And I Put The Plague Of Leprosy In A House
+This law is written for a future that has not happened yet.
 
-This law is written ahead of time, for a future that hasn't happened yet - Israel is still in the wilderness with no permanent houses at all. Leviticus is planning for Israel's settled future long before the nation actually arrives there. Also worth noticing: the text says God "puts" this plague in a house, not that it's blind chance.
+Israel is still in the wilderness with no permanent houses at all.
 
-🏠 Written for future settled life, before Israel even has houses
+Leviticus is planning ahead for Israel's settled future long before the nation arrives there.
 
-🗓️ Planning ahead for a future Israel hasn't reached yet
+The text also says God puts this plague in a house, not that it is blind chance.
 
-🤔 The text says God "puts" this plague, not random chance
+🏠 Written for a future Israel has not reached
 
----
+🗓️ Leviticus plans ahead for settled life
 
-## He That Owneth The House Shall Come And Tell The Priest, Saying, It Seemeth To Me There Is As It Were A Plague
+🤔 God puts the plague there, not chance
 
-The homeowner reports the issue himself, in careful, hedged language, "it seemeth to me... as it were," rather than making the call himself. Just like chapter 13's skin laws, an ordinary person never gets to declare something clean or unclean - that authority belongs to the priest alone, even over someone's own property.
+📖 Even mold sits under God's hand
 
-🗣️ The homeowner reports it himself, in careful hedged language
+## 🗣️ He That Owneth The House Shall Come And Tell The Priest
 
-⚖️ He doesn't diagnose it - only the priest can make that call
+The homeowner reports the issue himself, using careful, hedged language.
 
-🏠 The same rule of priestly authority applied to private property
+"It seemeth to me, there is as it were a plague," he says.
 
----
+He does not diagnose it himself.
 
-## The Priest Shall Command That They Empty The House...That All That Is In The House Be Not Made Unclean
+Just like chapter thirteen's skin laws, only the priest can declare something clean or unclean, even on someone's own property.
 
-If the priest declared the house unclean before it was emptied, everything inside, furniture, dishes, clothing, food, would become unclean by contact and have to be destroyed along with it. Emptying the house first, before any official ruling, protects the family's belongings from an automatic total loss.
+🗣️ The homeowner reports it in hedged language
 
-📦 Emptying happens before any official ruling is made
+⚖️ Only the priest can diagnose it
 
-💰 Protects belongings from an automatic total loss
+🏠 Priestly authority reaches private property
 
-🧠 A genuinely practical provision, not just ritual formality
+➡️ Nobody rules on their own case
 
----
+## 📦 The Priest Shall Command That They Empty The House
 
-## Afterward The Priest Shall Go In To See The House
+If the priest ruled the house unclean before it was emptied, everything inside would become unclean too.
 
-Just like chapter 13's skin exams, the priest inspects the house directly rather than relying on secondhand description. This same direct, physical-inspection standard runs through both this chapter's laws, whether the subject is a person or a building.
+Furniture, dishes, clothing, and food would all have to be destroyed along with it.
 
-👁️ The priest inspects the house directly, not by description
+Emptying the house first protects the family's belongings from total loss.
 
-🔗 Same direct-inspection standard used for skin conditions
+This is a genuinely practical provision, not just ceremony.
 
-🏠 Consistent method whether the subject is a person or property
+📦 Emptying happens before any ruling
+
+💰 It protects belongings from total loss
+
+🧠 A practical step, not just ceremony
+
+📖 Mercy shows up in the details
 
 # Leviticus 14:37-42
-
 # 🧱 Diagnosing And Treating The House
-
 ---
+## 🎨 Hollow Strakes, Greenish Or Reddish, Which Are Lower Than The Wall
 
-## Hollow Strakes, Greenish Or Reddish, Which In Sight Are Lower Than The Wall
+"Strakes" means streaks or marks.
 
-"Strakes" means streaks or marks. The two diagnostic signs used for a house exactly parallel the two used for skin in chapter 13: unusual color (greenish or reddish) and depth (sitting visibly lower than the surrounding wall, like a mark sitting deeper than the skin around it).
+Two signs mark a suspicious spot, an unusual color and an unusual depth.
 
-🎨 Greenish or reddish color is warning sign number one
+Greenish or reddish color is the first sign.
 
-📏 Sitting lower than the wall is warning sign number two
+Sitting visibly lower than the surrounding wall is the second.
 
-🔗 The exact same two-sign method used for skin in chapter 13
+The exact same two signs were already used to examine skin back in chapter thirteen.
 
----
+🎨 Strakes means streaks or marks
 
-## The Priest Shall Go Out Of The House To The Door Of The House
+📏 Color and depth are the signs
 
-Before ruling on an uncertain mark, the priest steps back to the doorway rather than staying inside. It's the same instinct behind verse 3's "priest shall go forth out of the camp" - assessing from a safe boundary point while the diagnosis is still undecided.
+🔗 The same signs were used for skin
 
-🚪 The priest steps back to the doorway before ruling
+📖 God's law stays consistent across subjects
 
-🔗 Same instinct as verse 3's priest stepping outside the camp
+## 🚪 The Priest Shall Go Out Of The House To The Door
 
-⚠️ A cautious boundary kept during an uncertain diagnosis
+Before ruling on an uncertain mark, the priest steps back to the doorway.
 
----
+He does not stay inside while deciding.
 
-## Shut Up The House Seven Days
+This is the same instinct behind verse three's priest stepping outside the camp.
 
-The same seven-day waiting period used throughout chapter 13's skin exams, now applied to a building instead of a body. Nobody rushes the verdict; time is given to see whether the mark spreads or holds still.
+He assesses from a safe boundary while the diagnosis is still undecided.
 
-📅 The same seven-day waiting period used in chapter 13
+🚪 The priest steps back before ruling
 
-⏳ Time reveals whether the mark spreads or holds still
+🔗 The same instinct as verse three
 
-🏠 Applied to buildings using the identical method used for skin
+⚠️ Caution matters during an undecided case
 
----
+➡️ Careful process protects the whole family
 
-## Take Away The Stones In Which The Plague Is, And They Shall Cast Them Into An Unclean Place Without The City
+## 📅 Shut Up The House Seven Days
 
-If the mold has spread after the wait, only the specific affected stones are removed at first, not the whole house. They're carried entirely outside the city to a designated unclean dumping area, kept far from anything the community would touch.
+This is the same seven day waiting period already used throughout chapter thirteen's skin exams.
 
-🧱 Only the specific affected stones are removed first
+Now it applies to a building instead of a body.
 
-🚮 Carried entirely outside the city, not just outside the house
+Nobody rushes the verdict.
 
-📍 Dumped in a designated unclean area, away from daily life
+Time is given to see whether the mark spreads or holds still.
 
----
+📅 The same seven day wait returns
 
-## Cause The House To Be Scraped Within Round About
+🏠 Now applied to a building
 
-After the bad stones come out, the whole interior surface gets scraped down, and that scraped-off dust is treated exactly like the stones were - hauled outside the city to the same unclean dumping place. Nothing potentially contaminated is allowed to stay inside town.
+⏳ Time reveals whether the mark spreads
 
-🧹 The whole interior surface gets scraped, not just the bad spot
+📖 Patience runs through this whole law
 
-♻️ The scraped dust goes to the same unclean dumping place
+## 🧱 Take Away The Stones In Which The Plague Is
 
-🏙️ Nothing potentially contaminated is allowed to stay in town
+If the mold has spread after the wait, only the affected stones are removed at first.
 
----
+The whole house is not torn down right away.
 
-## Take Other Stones, And Put Them In The Place Of Those Stones...Take Other Morter, And Shall Plaister The House
+Those stones are carried entirely outside the city to a designated unclean place.
 
-"Morter" is mortar, the material binding stones together, and "plaister" is plaster, a smooth protective coating - both older spellings of familiar words. This is a genuine repair project: new stones go in, the wall gets replastered, and the house gets a real chance to be resolved rather than automatically condemned.
+They are kept far from anything the community would touch.
 
-🧱 "Morter" is mortar, the material binding stones together
+🧱 Only the affected stones are removed
 
-🎨 "Plaister" is plaster, a protective coating spelling
+🚮 Carried entirely outside the city
 
-🔨 A genuine repair, not an automatic condemnation
+📍 Dumped in a designated unclean place
+
+➡️ The law starts with the smallest fix
+
+## 🔨 He Shall Take Other Morter, And Shall Plaister The House
+
+"Morter" is mortar, the material that binds stones together.
+
+"Plaister" is plaster, a smooth protective coating.
+
+Both are simply older spellings of familiar words.
+
+New stones go in, the wall gets replastered, and the house gets a real chance instead of automatic loss.
+
+🧱 Morter means mortar between stones
+
+🎨 Plaister means plaster, a protective coat
+
+🔨 A genuine repair, not automatic loss
+
+📖 The house gets a real second chance
 
 # Leviticus 14:43-47
-
 # 💥 If The Plague Returns
-
 ---
+## 🔁 If The Plague Come Again, And Break Out In The House
 
-## If The Plague Come Again, And Break Out In The House
+Even after a full repair, new stones and fresh plaster, the mold can still return.
 
-Even after a full repair, new stones and fresh plaster, the house gets one more real chance, since the mold can still return. This isn't a rigged outcome built into the law - it's a genuine possible result of honest repair not being enough.
+The house gets one more real chance.
 
-🔁 A full repair still gets a genuine second chance to succeed
+This is not a rigged outcome built into the law.
 
-🏠 Recurrence is a real possible outcome, not a guaranteed one
+It is a genuine possible result of honest repair not being enough.
 
-⚖️ The law isn't rigged to condemn the house no matter what
+🔁 A repaired house can still fail
 
----
+🏠 Recurrence is a genuine possible outcome
 
-## It Is A Fretting Leprosy In The House
+⚖️ The law is not rigged here
 
-"Fretting" means eating away at or steadily corroding, the same word used back in chapter 13:51-52 for the worst cases of garment mold. Calling it "fretting" marks this as the worst-case category - the mold has proven persistent and destructive, not just a one-time surface stain.
+📖 Honest effort is expected, not certainty
 
-🦠 "Fretting" means eating away at or steadily corroding
+## 🦠 It Is A Fretting Leprosy In The House
 
-🔗 The same word used for the worst garment-mold cases in ch13
+"Fretting" means eating away at something or steadily wearing it down.
 
-📉 Marks this as the persistent, destructive worst case
+The same word marked the worst cases of garment mold back in chapter thirteen.
 
----
+Calling it fretting marks this as the worst case category.
 
-## He Shall Break Down The House, The Stones Of It, And The Timber Thereof, And All The Morter Of The House
+The mold has proven persistent and destructive, not just a passing stain.
 
-Total demolition, not another round of stone-swapping - stones, wooden beams, and mortar all removed and carried entirely outside the city. Losing an entire house was a severe financial and personal loss in this culture, so the law reserves it as a last resort, only after two real chances to fix the problem.
+🦠 Fretting means steadily eating away
 
-🔨 Full demolition, not another round of stone-swapping
+🔗 The same word marked the worst mold
 
-💸 Losing an entire house was a severe financial loss
+📉 This marks the worst case category
 
-⚖️ Reserved as a true last resort, after two real chances to repair
+➡️ Precise words track how severe this is
 
----
+## 🔨 He Shall Break Down The House, The Stones Of It, And The Timber Thereof
 
-## He That Goeth Into The House All The While That It Is Shut Up Shall Be Unclean Until The Even
+This is total demolition, not another round of swapping stones.
 
-Anyone entering the quarantined house during its shut-up period picks up a mild uncleanness lasting only until evening, the standard length for minor uncleanness throughout Leviticus, not the extended isolation a diagnosed leper faced in chapter 13. Entering a house under investigation is a far smaller ritual risk than actually having the disease.
+Stones, wooden beams, and mortar are all removed.
 
-🌆 Uncleanness lasts only until evening, the standard minor length
+Everything is carried entirely outside the city.
 
-⚖️ A far lighter consequence than a diagnosed leper's isolation
+Losing an entire house was a severe financial loss in this culture.
 
-🏠 Entering a house under investigation is a small ritual risk
+The law reserves this for a true last resort.
 
----
+🔨 Full demolition, not another repair
 
-## He That Lieth In The House Shall Wash His Clothes; And He That Eateth In The House Shall Wash His Clothes
+💸 Losing a house was a real loss
 
-Two specific, everyday activities, sleeping there and eating there, are named separately, both requiring the same simple response of washing clothes. The law doesn't leave the reader to guess whether ordinary at-home activities count - it spells out the common cases directly.
+⚖️ Reserved as a true last resort
 
-🛏️ Sleeping in the house named as one specific case
+📖 The law is slow to take a home
 
-🍽️ Eating in the house named as a separate specific case
+## 🌆 He That Goeth Into The House Shall Be Unclean Until The Even
 
-👕 Both require the same simple response: wash the clothes
+Anyone entering the quarantined house during its shut up period picks up a mild uncleanness.
+
+That uncleanness lasts only until evening.
+
+That is the standard length for minor uncleanness throughout Leviticus.
+
+It is far lighter than the extended isolation a diagnosed leper faced in chapter thirteen.
+
+🌆 Uncleanness here lasts until evening
+
+📏 The standard length for minor cases
+
+⚖️ Far lighter than a leper's isolation
+
+➡️ Entering a suspect house is a small risk
 
 # Leviticus 14:48-53
-
 # 🕊️ Cleansing A Healed House
-
 ---
+## ✅ The Priest Shall Pronounce The House Clean, Because The Plague Is Healed
 
-## The Priest Shall Pronounce The House Clean, Because The Plague Is Healed
+Notice the word "healed" here.
 
-Notice the same word used for the leper's healing back in verse 3, "healed," is applied here to a building. The text treats a house's restoration with the same seriousness and vocabulary as a person's healing, not as a lesser, merely practical matter.
+The exact same word was used for the leper's healing back in verse three.
 
-🏠 Same "healed" language used for the leper back in verse 3
+It is now applied to a building.
 
-📜 The house's restoration is treated with real seriousness
+The text treats a house's restoration with the same seriousness and vocabulary as a person's healing.
 
-🔗 Same vocabulary bridges a person's healing and a building's
+✅ The same word marked the leper's healing
 
----
+🏠 Now applied to a building instead
 
-## He Shall Take To Cleanse The House Two Birds, And Cedar Wood, And Scarlet, And Hyssop
+📜 The house's restoration is treated seriously
 
-This is the exact same four-item kit used for a person's cleansing back in verses 4-7, two birds, cedar wood, scarlet, and hyssop, applied now to a building instead of a body. The whole property, not only the people living there, needed restoring to God.
+📖 One vocabulary spans both healings
 
-🔁 The identical four-item kit used for a person in verses 4-7
+## 🐦 Take To Cleanse The House Two Birds, And Cedar Wood, And Scarlet, And Hyssop
 
-🏠 A building receives the same ceremony as a healed person
+This is the exact same four item kit used for a person's cleansing back in verses four through seven.
 
-🙏 The whole property, not only the people, needed restoring
+Two birds, cedar wood, scarlet, and hyssop.
 
----
+Now it is applied to a building instead of a body.
 
-## Kill The One Of The Birds In An Earthen Vessel Over Running Water
+The whole property, not only the people living there, needed restoring to God.
 
-This duplicates verse 5's process for the person's cleansing exactly, same earthen vessel, same running water. It's a full parallel ceremony for the house, not a shortened version.
+🔁 The same kit used on a person
 
-🩸 Duplicates verse 5's process for the person's cleansing
+🏠 Now applied to a building
 
-🏺 Same earthen vessel and running water combination
+🙏 The property itself needed restoring
 
-📜 A full parallel ceremony, not a shortened version for property
+➡️ Nothing that is his sits outside this law
 
----
+## 🕊️ Let Go The Living Bird Out Of The City Into The Open Fields
 
-## Sprinkle The House Seven Times
+This is the exact same release act from verse seven.
 
-The same seven-fold sprinkling pattern used on the person in verse 7 and on the oil ritual in verse 16, now applied to a physical structure. Every version of this cleansing across the chapter, whether for skin, oil, or a house, lands on the same number of completion.
+Only the setting shifts, from the open field outside the wilderness camp to outside the city.
 
-🔁 Same seven-fold pattern used for the person and the oil
+That shift matches the move from tent camp language to settled city language.
 
-🏠 Now applied to walls instead of skin
+It is one ceremony, adapted for two different stages of Israel's life.
 
-✅ Every version of this ceremony lands on the same completion number
+🕊️ The same release act as verse seven
 
----
+🏙️ Wording shifts from camp to city
 
-## Let Go The Living Bird Out Of The City Into The Open Fields
+🔗 One ceremony spans two different eras
 
-The exact same release act from verse 7, just moved from "the open field" outside the wilderness camp to "outside the city," matching the shift from tent-camp language, used for the person, to settled land-and-city language, used once Israel actually has houses in Canaan.
+📖 God's law travels with His people
 
-🕊️ The same bird-release act as verse 7's cleansing
+## ❤️ Make An Atonement For The House, And It Shall Be Clean
 
-🏙️ Wording shifts from "camp" to "city," matching settled life
+Atonement is a term normally reserved for a person's relationship with God.
 
-🔗 One ceremony, adapted in language for two different eras
+Here scripture applies it to a building.
 
----
+Nothing, not even property, sits outside the reach of being made right with God.
 
-## Make An Atonement For The House: And It Shall Be Clean
+The chapter closes this section with the same word "clean" used for the healed person.
 
-Scripture applies "atonement," a term normally reserved for a person's relationship with God, to a building here. It's a reminder that in this worldview, nothing, not even property, sits outside the reach of being made right with God, and it closes with the same "clean" declaration used for the healed person.
+❤️ Atonement usually describes a person
 
-🏠 "Atonement," a term usually for people, applied to a building
+🏠 Here it applies to a building
 
-❤️ Nothing, not even property, sits outside being made right with God
+🌍 Nothing sits outside being made right
 
-✅ Closes with the same "clean" declaration used for the person
+📖 The same word closes both stories
 
 # Leviticus 14:54-57
-
 # 📖 The Whole Law Of Leprosy, Closed
-
 ---
+## 📋 This Is The Law For All Manner Of Plague Of Leprosy, And Scall
 
-## This Is The Law For All Manner Of Plague Of Leprosy, And Scall
+"Scall" is the scalp and beard condition from chapter thirteen, where thin yellow hair was the warning sign.
 
-"Scall" is the scalp-and-beard condition from chapter 13:30-37, where thin yellow hair, not white hair, was the warning sign. This closing list works like a table of contents, naming each specific case that chapters 13 and 14 have just covered.
+This closing list works like a table of contents.
 
-📖 "Scall" is the scalp/beard condition from chapter 13:30-37
+It names each specific case that chapters thirteen and fourteen have just covered.
 
-📋 This list works like a table of contents for both chapters
+Nothing gets left out of the summary.
 
-🔗 Ties the closing summary back to a specific earlier case
+📋 Scall is a scalp condition
 
----
+📚 This list works like a table of contents
 
-## And For The Leprosy Of A Garment, And Of A House
+🔗 It names every case just covered
 
-Stepping back, one single Hebrew concept, tzaraat, has now been applied across three completely different subjects: human skin, woven fabric, and building material. English splits this into different words like mold, mildew, and disease. The Hebrew text treats all three as variations of one underlying problem.
+📖 A careful law ends carefully
 
-🧵 The same Hebrew word covers skin, garment mold, and house mold
+## 🧵 And For The Leprosy Of A Garment, And Of A House
 
-🌐 English splits this into different words; Hebrew treats it as one
+One single Hebrew word, tzaraat, has now been applied across three very different subjects.
 
-📚 Two whole chapters build outward from a single unifying idea
+Human skin, woven fabric, and building material.
 
----
+English splits this into different words, like mold, mildew, and disease.
 
-## For A Rising, And For A Scab, And For A Bright Spot
+The Hebrew text treats all three as versions of one underlying problem.
 
-This exact three-item list is a direct callback to chapter 13:2, the opening verse of the whole section. Ending on the same three words it opened with is a deliberate literary bookend, signaling that the entire two-chapter law is now formally closed.
+🧵 One word covers skin, fabric, and house
 
-🔁 A direct callback to chapter 13:2's opening words
+🌐 English splits what Hebrew treats as one
 
-📚 Ending on the same three terms it started with
+📚 Two chapters build from one idea
 
-✅ A deliberate bookend marking the whole law as formally closed
+➡️ One word can carry more meaning
 
----
+## 🔁 For A Rising, And For A Scab, And For A Bright Spot
 
-## To Teach When It Is Unclean, And When It Is Clean: This Is The Law Of Leprosy
+This exact three item list is a direct callback to chapter thirteen, verse two.
 
-The stated purpose of this entire two-chapter law, in its own words, was never punishment. It was teaching - giving Israel a clear, consistent, learnable way to tell clean from unclean. That's the exact instructional purpose Aaron himself was charged with all the way back in chapter 10:10-11.
+That verse opened the whole section on skin disease.
 
-📖 The stated purpose is teaching, not punishment
+Ending on the same three words it opened with is a deliberate literary bookend.
 
-🎯 A clear, consistent, learnable way to tell clean from unclean
+It signals that the entire two chapter law is now formally closed.
 
-🔗 The same purpose given to Aaron back in chapter 10:10-11
-`;
+🔁 A callback to chapter thirteen's opening
+
+📚 The same three words return
+
+✅ A deliberate bookend closes the law
+
+📖 Scripture often echoes its own start
+
+## 🎯 To Teach When It Is Unclean, And When It Is Clean
+
+The stated purpose of this entire two chapter law was never punishment.
+
+It was teaching.
+
+Israel needed a clear, consistent, learnable way to tell clean from unclean.
+
+That is the exact instructional purpose Aaron himself was charged with back in chapter ten.
+
+🎯 The purpose is teaching, not punishment
+
+📖 Israel needed a learnable standard
+
+🔗 The same purpose was given to Aaron
+
+➡️ God's laws were meant to be understood
+`.trim();
 
 export const LEVITICUS_FOURTEEN_PERSONAL_SECTIONS = parseLeviticusFourteenRawNotes(LEVITICUS_FOURTEEN_RAW_NOTES);
