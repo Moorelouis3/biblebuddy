@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
-import { sendFunnelEmailViaSysteme, recordEmailSent, updateEmailFunnelState } from "@/lib/emailFunnelHelpers";
+import { sendFunnelEmailViaSysteme, updateEmailFunnelState } from "@/lib/emailFunnelHelpers";
 import { SystemePlanLimitError } from "@/lib/systemeTagSender";
 
 export const runtime = "nodejs";
@@ -20,19 +20,23 @@ const DAILY_BATCH_SIZE = 500;
 // Systeme.io's plan caps total contacts at 5,000; as of 2026-08-03 that had
 // ~1,099 used, so 3,000 new leaves ~900 slots free for organic signups.
 const CAMPAIGN_CAP = 3000;
-// Rows created by this campaign are given signup_timestamp >= this instant,
-// so later runs can count "how many has this campaign enrolled so far"
-// without a separate counter table.
-const CAMPAIGN_START = "2026-08-03T00:00:00Z";
+// Marker stamped into email_funnel_sends.template_version for rows this
+// route creates, so we can count "how many has this campaign enrolled" by
+// querying that marker directly -- NOT by signup_timestamp, which organic
+// signups going through the normal hourly cron also set to "now", and would
+// otherwise get miscounted against this campaign's cap.
+const CAMPAIGN_MARKER = "day1_bulk_backfill_aug2026";
+// Hard safety net independent of the campaign counter above: never push
+// Systeme.io's real contact count past this, regardless of any accounting
+// bug. Leaves a buffer under the actual 5,000 plan cap.
+const SYSTEME_CONTACT_SAFETY_CEILING = 4900;
 
-async function countRows(
-  supabaseAdmin: any,
-  table: string,
-  filter: (q: any) => any,
-): Promise<number> {
-  const { count, error } = await filter(
-    supabaseAdmin.from(table).select("*", { count: "exact", head: true }),
-  );
+async function countCampaignEnrollments(supabaseAdmin: any): Promise<number> {
+  const { count, error } = await supabaseAdmin
+    .from("email_funnel_sends")
+    .select("*", { count: "exact", head: true })
+    .eq("email_day", 1)
+    .eq("template_version", CAMPAIGN_MARKER);
   if (error) throw new Error(error.message);
   return count ?? 0;
 }
@@ -52,6 +56,23 @@ async function fetchAllUserIds(supabaseAdmin: any, table: string): Promise<Set<s
   return ids;
 }
 
+async function countLiveSystemeContacts(apiKey: string): Promise<number> {
+  let count = 0;
+  let cursor: number | null = null;
+  for (let page = 0; page < 60; page++) {
+    const url: string =
+      "https://api.systeme.io/api/contacts?limit=100" + (cursor ? `&startingAfter=${cursor}` : "");
+    const res: globalThis.Response = await fetch(url, { headers: { "X-API-Key": apiKey } });
+    if (!res.ok) break;
+    const data: { items?: Array<{ id: number }>; hasMore?: boolean } = await res.json();
+    const items = data?.items || [];
+    count += items.length;
+    if (!items.length || !data?.hasMore) break;
+    cursor = items[items.length - 1].id;
+  }
+  return count;
+}
+
 // Enrolls signups that were never part of the email funnel (older than the
 // original 30-day backfill) at a controlled daily pace, stopping cleanly if
 // Systeme.io's contact cap is hit mid-batch.
@@ -62,7 +83,8 @@ export async function GET(request: NextRequest) {
 
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-  if (!supabaseUrl || !serviceKey) {
+  const systemeKey = process.env.SYSTEME_API_KEY;
+  if (!supabaseUrl || !serviceKey || !systemeKey) {
     return NextResponse.json({ error: "Server not configured" }, { status: 500 });
   }
 
@@ -71,12 +93,10 @@ export async function GET(request: NextRequest) {
   });
 
   try {
-    const enrolledByCampaign = await countRows(supabaseAdmin, "email_funnel_state", (q) =>
-      q.gte("signup_timestamp", CAMPAIGN_START),
-    );
-    const remainingCapacity = CAMPAIGN_CAP - enrolledByCampaign;
+    const enrolledByCampaign = await countCampaignEnrollments(supabaseAdmin);
+    const campaignRemaining = CAMPAIGN_CAP - enrolledByCampaign;
 
-    if (remainingCapacity <= 0) {
+    if (campaignRemaining <= 0) {
       return NextResponse.json({
         ok: true,
         message: "Campaign cap reached, no more enrollments",
@@ -84,7 +104,19 @@ export async function GET(request: NextRequest) {
       });
     }
 
-    const batchTarget = Math.min(DAILY_BATCH_SIZE, remainingCapacity);
+    const liveSystemeContacts = await countLiveSystemeContacts(systemeKey);
+    const systemeRemaining = SYSTEME_CONTACT_SAFETY_CEILING - liveSystemeContacts;
+
+    if (systemeRemaining <= 0) {
+      return NextResponse.json({
+        ok: true,
+        message: "Systeme.io contact safety ceiling reached, no more enrollments",
+        liveSystemeContacts,
+        enrolledByCampaign,
+      });
+    }
+
+    const batchTarget = Math.min(DAILY_BATCH_SIZE, campaignRemaining, systemeRemaining);
     const alreadyEnrolled = await fetchAllUserIds(supabaseAdmin, "email_funnel_state");
 
     // Pull signups newest-first, skip anyone already in the funnel, until we
@@ -125,7 +157,13 @@ export async function GET(request: NextRequest) {
           { user_id: candidate.user_id, signup_timestamp: now },
           { onConflict: "user_id" },
         );
-        await recordEmailSent(supabaseAdmin, candidate.user_id, 1, undefined, result.response);
+        const { error: sendInsertError } = await supabaseAdmin.from("email_funnel_sends").insert({
+          user_id: candidate.user_id,
+          email_day: 1,
+          template_version: CAMPAIGN_MARKER,
+          systeme_io_response: result.response,
+        });
+        if (sendInsertError) console.error("[EMAIL_FUNNEL] Enroll record error:", sendInsertError.message);
         await updateEmailFunnelState(supabaseAdmin, candidate.user_id, { day1_sent_at: now });
         enrolledCount++;
       } catch (err) {
@@ -150,6 +188,7 @@ export async function GET(request: NextRequest) {
       enrolledByCampaignBeforeThisRun: enrolledByCampaign,
       enrolledByCampaignAfterThisRun: enrolledByCampaign + enrolledCount,
       campaignCap: CAMPAIGN_CAP,
+      liveSystemeContactsBeforeThisRun: liveSystemeContacts,
       failures: failures.slice(0, 10),
     });
   } catch (err) {
