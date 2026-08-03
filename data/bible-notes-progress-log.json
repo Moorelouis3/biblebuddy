@@ -7162,6 +7162,55 @@
           "at": "2026-08-02T23:56:40Z"
         }
       ]
+    },
+    {
+      "book": "Exodus",
+      "chapter": 39,
+      "startedAt": "2026-08-03T01:46:06Z",
+      "finishedAt": "2026-08-03T01:58:48Z",
+      "durationMinutes": 13,
+      "sections": 9,
+      "cards": 57,
+      "verses": 43,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Exodus 39 is Aaron's priestly garments actually built to the chapter 28 blueprint: the gold-thread ephod with gold beaten into thin plates and cut into wires before weaving, the twelve-stone breastplate (foursquare, doubled into a pouch, one engraved gemstone per tribe, four rows of three stones each), the three-point gold chain and ring system fastening the breastplate to the ephod so it could never be loosed, the blue robe with its reinforced habergeon-style neck hole and alternating gold bell/pomegranate hem (tied back to chapter 28's life-or-death warning about the sound), the plainer linen garments (coats, mitre, bonnets, breeches, girdle) made for every priest and not just Aaron, the gold forehead plate engraved HOLINESS TO THE LORD, the 'as the LORD commanded Moses' refrain repeating seven times across the chapter, the full inventory of every finished tabernacle piece brought to Moses for review (closing the list on the same 'cloths of service' phrase the chapter opened with), and Moses personally inspecting the finished work and blessing the people, echoing God blessing His finished work in Genesis. Kept the original file's 9 section boundaries (1-7, 8-14, 15-21, 22-26, 27-29, 30-31, 32, 33-41, 42-43) while rewriting every card to the new format. Density about 1.33 cards/verse (43 verses, 57 cards). `scripts/check_bible_note_style.py` was clean on the first pass (57 cards, 0 problems). Parser check passed exactly via getBibleReaderStudySections('Exodus', 39) (9/9 sections, 57 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (ExodusThirtyNinePersonalSection, parseExodusThirtyNineRawNotes, EXODUS_THIRTY_NINE_RAW_NOTES, EXODUS_THIRTY_NINE_PERSONAL_SECTIONS) were kept exactly as before. Session also had to reset a stale local main branch (one orphaned local commit, 51 commits behind origin/main) onto origin/main before starting, confirming no unique unpushed work was lost. data/bible-notes-style-redo-remaining.json Exodus 39 entry removed from the front of the list as part of this commit; next redo target is Exodus 40.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-03T01:47:10Z"
+        },
+        {
+          "name": "target chapter determined: Exodus 39 (style redo)",
+          "at": "2026-08-03T01:47:15Z"
+        },
+        {
+          "name": "KJV text fetched for Exodus 39",
+          "at": "2026-08-03T01:47:35Z"
+        },
+        {
+          "name": "style spec read",
+          "at": "2026-08-03T01:48:00Z"
+        },
+        {
+          "name": "source file written (lib/exodusThirtyNineSource.ts regenerated)",
+          "at": "2026-08-03T01:56:43Z"
+        },
+        {
+          "name": "style checker clean (57 cards, no problems)",
+          "at": "2026-08-03T01:56:48Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo chapter (no changes needed)",
+          "at": "2026-08-03T01:57:11Z"
+        },
+        {
+          "name": "parser check passed (9 sections, 57 cards)",
+          "at": "2026-08-03T01:57:11Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-03T01:58:35Z"
+        }
+      ]
     }
   ]
 }
