@@ -719,7 +719,7 @@ const TRAFFIC_SOURCE_COLORS = [
   "from-slate-500/14 to-slate-400/8 text-slate-700 ring-slate-200",
 ];
 
-const MAIN_TRAFFIC_SOURCE_ORDER = ["Facebook", "Instagram", "Threads", "Pinterest", "Google", "YouTube", "Other"] as const;
+const MAIN_TRAFFIC_SOURCE_ORDER = ["Facebook", "Instagram", "Threads", "Pinterest", "Google", "YouTube", "Email", "Other"] as const;
 
 const TRAFFIC_SOURCE_BRAND: Record<string, { bg: string; fg: string; bar: string; icon: ReactNode }> = {
   Facebook: {
@@ -787,6 +787,17 @@ const TRAFFIC_SOURCE_BRAND: Record<string, { bg: string; fg: string; bar: string
       </svg>
     ),
   },
+  Email: {
+    bg: "#0EA5E9",
+    fg: "#ffffff",
+    bar: "#0EA5E9",
+    icon: (
+      <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+        <rect x="3" y="5" width="18" height="14" rx="2" />
+        <path d="m3.5 6.5 8 6.2 8-6.2" />
+      </svg>
+    ),
+  },
   Other: {
     bg: "var(--bb-surface-soft,#eef2f7)",
     fg: "var(--bb-text-secondary,#64748b)",
@@ -822,6 +833,7 @@ function normalizeMainTrafficSource(sourceValue: unknown) {
   if (raw.includes("pinterest") || raw.includes("pin.it")) return "Pinterest";
   if (raw.includes("youtube") || raw.includes("youtu.be") || raw.includes("youtu")) return "YouTube";
   if (raw.includes("google") || raw.includes("gclid")) return "Google";
+  if (raw.includes("utm_source=email") || /\bemail\b/.test(raw)) return "Email";
   return "Other";
 }
 

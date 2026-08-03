@@ -12,9 +12,9 @@ I built Bible Buddy to help people not only read the Bible but understand it. My
 
 Here's something I want to be upfront about: Bible Buddy is still in beta, which means we're not on the App Store yet. But don't worry — you can still use Bible Buddy as a native app by saving it to your phone's home screen in just two clicks.
 
-**For iPhone users:** Open Safari → Go to mybiblebuddy.net → Log in with your password or Google account → Tap Share → Add to Home Screen
+**For iPhone users:** Open Safari → Go to [mybiblebuddy.net](https://mybiblebuddy.net?utm_source=email&utm_campaign=day1) → Log in with your password or Google account → Tap Share → Add to Home Screen
 
-**For Android users:** Open Chrome → Go to mybiblebuddy.net → Log in with your password or Google account → Tap menu → Add to Home Screen
+**For Android users:** Open Chrome → Go to [mybiblebuddy.net](https://mybiblebuddy.net?utm_source=email&utm_campaign=day1) → Log in with your password or Google account → Tap menu → Add to Home Screen
 
 Once you install the app, it'll be much easier to connect with God's word. Don't skip it.
 
@@ -43,7 +43,7 @@ That's what reading God's word does.
 
 Bible Buddy is designed to make that transformation accessible — not as a one-hour commitment, but as 20 minutes a day, woven into your actual life.
 
-Open the app today and start that process.
+[Open the app today](https://mybiblebuddy.net?utm_source=email&utm_campaign=day2) and start that process.
 
 —Louis`,
   },
@@ -68,7 +68,7 @@ That's why I added audio access to every Bible chapter.
 
 You're not doing this alone. You're listening to Scripture explained, questioned, and discussed — all in 20 minutes.
 
-Open the app and try the audio. Pick Genesis 1 or any chapter. See how it feels.
+[Open the app](https://mybiblebuddy.net?utm_source=email&utm_campaign=day3) and try the audio. Pick Genesis 1 or any chapter. See how it feels.
 
 —Louis`,
   },
@@ -85,13 +85,13 @@ Here's the thing: you're using the free version, which is great. But Pro unlocks
 
 Have you thought about upgrading to Pro? Full access to study notes, quizzes, discussion prompts, community, everything.
 
-Because you're showing up like this, I'm giving you a special price: **$29 lifetime** (instead of $50).
+Pro is **$50 lifetime**.
 
 This is a one-time payment through the app. You own it forever. No subscriptions. No monthly charges.
 
 Ready to unlock everything?
 
-[UPGRADE](https://mybiblebuddy.net/upgrade?tier=lifetime_29)
+[UPGRADE](https://mybiblebuddy.net/upgrade?tier=lifetime_50)
 
 —Louis`,
   },
@@ -119,13 +119,13 @@ I notice you've been using the app, and that's awesome.
 
 If you want to unlock more features — full access to study notes, quizzes, discussion prompts, everything — you should think about upgrading to Pro.
 
-Pro is **$29 lifetime**. One payment through the app. You own it forever.
+Pro is **$50 lifetime**. One payment through the app. You own it forever.
 
 No subscriptions. No monthly charges. Just one price and you're set.
 
 Want to dive deeper?
 
-[UPGRADE](https://mybiblebuddy.net/upgrade?tier=lifetime_29)
+[UPGRADE](https://mybiblebuddy.net/upgrade?tier=lifetime_50)
 
 —Louis`,
   },
@@ -163,7 +163,7 @@ Every single chapter in the Bible has study notes built into Bible Buddy. Verse-
 
 You don't have to guess. You don't have to spend hours researching. The explanation is right there.
 
-Open the app and check it out. Look at Genesis 1 or any chapter you're reading. Tap on the study notes section. See what I mean.
+[Open the app](https://mybiblebuddy.net?utm_source=email&utm_campaign=day5) and check it out. Look at Genesis 1 or any chapter you're reading. Tap on the study notes section. See what I mean.
 
 —Louis`,
   },
@@ -182,7 +182,7 @@ In Bible Buddy, we have the Bible Buddy Study Group at the bottom of your menu.
 
 You can join other Bible Buddies, ask questions, share insights, hold each other accountable. Scripture was meant to be discussed, not just read alone.
 
-Open the app and tap the group icon at the bottom. That's it.
+[Open the app](https://mybiblebuddy.net?utm_source=email&utm_campaign=day6) and tap the group icon at the bottom. That's it.
 
 —Louis`,
   },
@@ -203,7 +203,7 @@ I wanted a better system.
 
 That system is Bible Buddy.
 
-Now, all you need is your want to understand God's word. Press play. You get the notes. You get everything.
+Now, all you need is your want to understand God's word. [Press play](https://mybiblebuddy.net?utm_source=email&utm_campaign=day7). You get the notes. You get everything.
 
 If you're using Bible Buddy, you're already experiencing that.
 
@@ -224,13 +224,13 @@ That tells me something: you're serious about connecting with God's word.
 
 So here's what I want to do: I want to give you exclusive access to Pro, and I want to make it worth your time.
 
-Pro normally costs $50 lifetime. But because you're showing up and you care, you can get it today for just **$29**. That's almost 50% off.
+Pro is **$50 lifetime** — a one-time payment, full access, yours forever.
 
-This price is just for power users like you who prove they're committed.
+You've earned this by showing up and proving you're committed.
 
 Ready to unlock everything?
 
-[UPGRADE](https://mybiblebuddy.net/upgrade?tier=lifetime_29)
+[UPGRADE](https://mybiblebuddy.net/upgrade?tier=lifetime_50)
 
 You won't regret it.
 
@@ -260,13 +260,13 @@ You've been using Bible Buddy for a week. You've explored. You know what it does
 
 Now comes the question: are you going to go all in?
 
-Pro is **$29 lifetime**. One payment through the app. You own it forever.
+Pro is **$50 lifetime**. One payment through the app. You own it forever.
 
 No subscriptions. No surprises. Just full access to everything: study notes, quizzes, discussion prompts, community, everything.
 
 If you're ready to go deeper with Scripture, Pro is the move.
 
-[UPGRADE](https://mybiblebuddy.net/upgrade?tier=lifetime_29)
+[UPGRADE](https://mybiblebuddy.net/upgrade?tier=lifetime_50)
 
 Let me know.
 
