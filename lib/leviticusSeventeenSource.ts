@@ -90,183 +90,543 @@ function parseLeviticusSeventeenRawNotes(rawText: string): LeviticusSeventeenPer
 
 const LEVITICUS_SEVENTEEN_RAW_NOTES = `# Leviticus 17:1-2
 # 📜 A Command For Everyone, Not Just The Priests
----
+
 ## 🗣️ Speak Unto Aaron, And Unto His Sons, And Unto All The Children Of Israel
-Several of the purity laws just before this chapter, like chapters 13-15, were addressed to Moses or to Moses and Aaron. This one is addressed to the whole nation at once - priests and ordinary people together - because it's about to regulate something every household actually does: killing an animal for food.
-👨‍👩‍👧‍👦 Addressed to the entire nation, not only the priests
-🍖 It regulates something every household actually does
-📜 Signals this law reaches into everyday life, not just tabernacle duty
----
-## 📖 This Is The Thing Which The LORD Hath Commanded
-"Thing" here isn't a vague filler word - it translates a Hebrew term that can also mean "word" or "matter," and gets used to formally introduce something binding. This phrase works like a legal heading, telling the reader that what follows carries full command weight, same as any other law God has given through Moses.
-📜 Functions like a legal heading before the actual rule
-🗣️ The Hebrew word behind "thing" can also mean "word"
-⚖️ Signals binding command, not friendly advice
+
+This law is not addressed to the priests alone.
+
+It goes out to Aaron, his sons, and the whole nation together.
+
+Several laws just before this one were spoken only to Moses or to Moses and Aaron.
+
+This one reaches every household because it regulates something every family actually does.
+
+Killing an animal for food.
+
+The whole camp hears the same rule at the same time.
+
+No one in Israel can say they never got the message.
+
+👨‍👩‍👧‍👦 Addressed to the whole nation
+
+🍖 Regulates something every household does
+
+📜 Widens beyond the priests alone
+
+📖 Everyone in camp hears one rule
+
+## 📖 This Is The Thing Which The Lord Hath Commanded
+
+"Thing" sounds like a vague filler word here.
+
+The Hebrew word behind it can also mean "word" or "matter."
+
+Scripture uses that word to formally introduce something binding.
+
+This phrase works like a legal heading.
+
+It tells the reader that what follows carries full command weight.
+
+Same weight as any other law God gave through Moses.
+
+📜 Functions like a legal heading
+
+🗣️ Thing can also mean word
+
+⚖️ Signals a binding command
+
+📖 Same weight as any other law
 
 # Leviticus 17:3-7
 # 🏕️ No More Backyard Sacrifices
----
-## 🐂 That Killeth An Ox, Or Lamb, Or Goat, In The Camp, Or That Killeth It Out Of The Camp
-These are the same three animals already used throughout the sacrifice instructions in Leviticus 1-7 - the standard livestock of an Israelite household. Naming "in the camp, or out of the camp" closes off any location loophole; it doesn't matter where the animal is killed, the rule that follows still applies.
-🐂🐑🐐 Ox, lamb, and goat are the standard offering animals
-📍 Covers both inside and outside the camp - no location loophole
-📜 Sets up the rule that's about to follow
----
-## 🚪 And Bringeth It Not Unto The Door Of The Tabernacle Of The Congregation
-The tabernacle's entrance was where the bronze altar stood, the one authorized place a sacrifice could legally be offered. Israel was camped in the wilderness with the tabernacle at its literal center, so "bring it to the door" meant something concrete and realistically possible for everyone at this point in the story.
-🏛️ The tabernacle door is where the one legal altar stood
-🏕️ Israel's camp was small enough for this to be realistic
+
+## 🐂 That Killeth An Ox, Or Lamb, Or Goat, In The Camp, Or Out Of The Camp
+
+Ox, lamb, and goat are the three standard offering animals.
+
+Leviticus chapters one through seven already used this same list.
+
+Naming "in the camp" and "out of the camp" closes a loophole.
+
+It does not matter where the animal gets killed.
+
+The rule that follows still applies everywhere.
+
+🐂 Ox, lamb, and goat were standard livestock
+
+📍 Covers both inside and outside camp
+
+🚫 Closes any location loophole
+
+📖 One rule applies everywhere
+
+## 🚪 Bringeth It Not Unto The Door Of The Tabernacle Of The Congregation
+
+The tabernacle door was where the bronze altar stood.
+
+That altar was the one legal place a sacrifice could be offered.
+
+Israel was camped in the wilderness with the tabernacle at its center.
+
+"Bring it to the door" meant something concrete and realistic for everyone.
+
+A short walk from any tent in camp, not a distant demand.
+
+🏛️ The one legal altar stood there
+
+🏕️ The camp made this realistic for everyone
+
 📍 One authorized location, no exceptions
----
-## 🩸 Blood Shall Be Imputed Unto That Man; He Hath Shed Blood
-Killing an ox, lamb, or goat without bringing it to the tabernacle is described using the same language used for shedding human blood - not simple butchering, but bloodguilt. The point isn't that eating meat is wrong; it's that every animal's life belonged to God first, and skipping the altar treated that life carelessly.
-⚖️ Uses the same language as bloodguilt for a human death
-🚫 Not a ban on eating meat - a ban on skipping the altar
-🐐 Every animal's life is treated as belonging to God first
----
+
+➡️ A short walk, not a distant demand
+
+## 🩸 Blood Shall Be Imputed Unto That Man
+
+Killing an animal without bringing it to the tabernacle carries a heavy charge.
+
+The same language used for human bloodguilt gets used here.
+
+This is not simple butchering, it is treated as taking a life wrongly.
+
+The point is not that eating meat is wrong.
+
+Every animal's life belonged to God first.
+
+Skipping the altar treated that life carelessly.
+
+⚖️ Uses the same language as human bloodguilt
+
+🚫 Not a ban on eating meat
+
+🐐 Every animal's life belonged to God first
+
+📖 Skipping the altar treated life carelessly
+
 ## ☠️ That Man Shall Be Cut Off From Among His People
-"Cut off" (karet in Hebrew) is Leviticus's most severe recurring penalty, showing up for the book's most serious violations. It most likely means formal exclusion from the covenant community, and possibly an early death understood as coming directly from God rather than a human court.
-⚖️ Leviticus's most severe recurring penalty
+
+"Cut off" is Leviticus's most severe recurring penalty.
+
+It shows up only for the book's most serious violations.
+
+Many scholars believe it meant formal exclusion from the covenant community.
+
+Some believe it could also mean an early death sent directly by God.
+
+Either way, this was far heavier than a fine or a warning.
+
+⚖️ Leviticus's harshest recurring penalty
+
 🚫 Formal exclusion from the covenant community
-☠️ Possibly understood as an early death from God's hand, not a court
----
+
+☠️ Possibly an early death from God's hand
+
+📖 Far heavier than a fine or warning
+
 ## 🌾 Which They Offer In The Open Field
-Before this law, it seems Israelites had been slaughtering and sacrificing animals out in open fields rather than bringing them to the tabernacle - maybe an old habit carried over from Egypt or the patriarchal period, back when there was no single central altar to bring anything to.
-🌾 Describes an existing practice this law is correcting
-🇪🇬 Possibly a habit carried over from Egypt or earlier generations
-🏛️ There was no central altar to bring animals to before this
----
-## 🔥 The Priest Shall Sprinkle The Blood...And Burn The Fat For A Sweet Savour
-This restates the exact peace offering procedure already laid out back in Leviticus 3 - blood on the altar, fat burned as a fragrant offering. This chapter isn't introducing a new sacrifice system; it's making sure the existing one is actually used instead of bypassed.
-📖 Matches the peace offering procedure from Leviticus 3
-🆕 Not a new ritual - enforcement of the existing one
-✅ Field slaughter gets redirected into the proper system
----
-## 🐐 They Shall No More Offer Their Sacrifices Unto Devils
-"Devils" translates a Hebrew word (se'irim) that literally means "hairy ones" or "goat-demons" - goat-shaped idols worshipped in Egypt and by surrounding pagan nations. Some Israelites, even after the Exodus, were apparently still sacrificing to these false gods out in open fields instead of to the LORD.
-🐐 "Devils" translates a word meaning "goat-demons" or "hairy ones"
-🇪🇬 Goat-idol worship was practiced in Egypt and nearby nations
-😢 Shows old idolatry habits hadn't fully disappeared after the Exodus
----
+
+Before this law, Israelites had been sacrificing animals out in open fields.
+
+Not at the tabernacle, just wherever a family happened to be.
+
+Many scholars believe this habit was carried over from Egypt.
+
+There had been no central altar to bring anything to before this.
+
+This verse redirects that old habit toward the one true altar.
+
+🌾 Names a habit this law corrects
+
+🇪🇬 Likely carried over from Egypt
+
+🏛️ No central altar existed before this
+
+➡️ Redirects worship toward the one true altar
+
+## 🔥 The Priest Shall Sprinkle The Blood, And Burn The Fat For A Sweet Savour
+
+This restates the exact peace offering procedure from Leviticus chapter three.
+
+Blood goes on the altar, fat gets burned as a fragrant offering.
+
+This chapter is not introducing a brand new sacrifice system.
+
+It is making sure the existing one actually gets used.
+
+Field slaughter gets redirected back into the proper process.
+
+🔗 Matches the peace offering from Leviticus 3
+
+🆕 Not a new ritual, enforces the old one
+
+🔥 Blood on the altar, fat burned as offering
+
+📖 Redirects field slaughter into the proper system
+
+## 🐐 No More Offer Their Sacrifices Unto Devils
+
+"Devils" translates a Hebrew word meaning "hairy ones" or "goat demons."
+
+These were goat shaped idols worshipped in Egypt and nearby nations.
+
+Some Israelites kept sacrificing to these false gods even after the Exodus.
+
+Old habits from Egypt had not fully disappeared yet.
+
+This law puts an end to that practice for good.
+
+🐐 Devils means goat shaped idols
+
+🇪🇬 Worshipped in Egypt and nearby nations
+
+😢 Old idolatry had not fully disappeared
+
+📖 This law ends the practice for good
+
 ## 💔 After Whom They Have Gone A Whoring
-The Old Testament regularly compares worshipping false gods to marital unfaithfulness, since Israel's relationship with the LORD was described in covenant, almost marriage-like terms. Calling idol worship "whoring" isn't a throwaway insult - it's the Bible's normal way of naming the betrayal at the heart of idolatry.
-💍 Compares Israel's relationship with God to a marriage covenant
-💔 Idolatry is described as unfaithfulness, not just wrong belief
-📖 A recurring image used throughout the Old Testament
----
-## 🔁 This Shall Be A Statute For Ever Unto Them Throughout Their Generations
-"For ever" and "throughout their generations" mark this as a permanent law, not a temporary wilderness rule - binding on every future generation of Israel for as long as this covenant system stood.
-🔁 Marked as permanent, not a temporary fix
+
+Scripture regularly compares worshipping false gods to marital unfaithfulness.
+
+Israel's relationship with the Lord gets described in covenant terms.
+
+Almost like a marriage between God and His people.
+
+Calling idol worship "whoring" here is not a throwaway insult.
+
+It is the Bible's normal way of naming the betrayal inside idolatry.
+
+💍 Compares Israel to a marriage covenant
+
+💔 Idolatry named as unfaithfulness, not just wrong belief
+
+📖 A recurring image across the Old Testament
+
+➡️ Names betrayal, not just bad theology
+
+## 🔁 A Statute For Ever Unto Them Throughout Their Generations
+
+"For ever" and "throughout their generations" mark this as a permanent law.
+
+Not a temporary rule for one wilderness season.
+
+Every future generation of Israel stays bound by it.
+
+For as long as this whole covenant system stood.
+
+This same forever language appears elsewhere in Leviticus.
+
+🔁 Marked permanent, not temporary
+
 👨‍👦 Binding on every future generation
-📜 Same kind of "forever" language used elsewhere in Leviticus
+
+📜 Same forever language used elsewhere in Leviticus
+
+📖 A law meant to outlast one generation
 
 # Leviticus 17:8-9
 # 🚪 The Rule Widens To Everyone Living Among Israel
----
+
 ## 🌍 Or Of The Strangers Which Sojourn Among You
-A "stranger which sojourneth" is a foreigner living long-term among Israel, not a citizen by birth but someone settled within the community. This law reaches beyond native-born Israelites to include them too - no exemption just for being a foreign resident.
-🌍 A long-term foreign resident, not a citizen by birth
-🏕️ Living within Israel's community, not just passing through
+
+A "stranger which sojourneth" is a foreigner living long term among Israel.
+
+Not a citizen by birth, but someone settled within the community.
+
+This law reaches beyond native born Israelites to include them too.
+
+No exemption exists just for being a foreign resident.
+
+🌍 A long term foreign resident, not a citizen
+
+🏕️ Settled within the community, not just passing through
+
 🚫 No exemption for foreign residents
----
-## 🔥 That Offereth A Burnt Offering Or Sacrifice...Even That Man Shall Be Cut Off
-The same tabernacle-door requirement and the same "cut off" penalty from verses 3-4 are repeated here, in the same structure, now widened to cover foreign residents as well as native Israelites. One rule, applied without exception to everyone living in the camp.
-🔁 Repeats the same requirement and penalty from verses 3-4
-🌍 Widened to include foreign residents, not just native Israelites
-⚖️ One rule, no exceptions based on background
+
+📖 The law reaches everyone living in camp
+
+## 🔥 That Offereth A Burnt Offering Or Sacrifice
+
+The same tabernacle door requirement from verses three and four returns here.
+
+So does the same "cut off" penalty.
+
+Both now apply to foreign residents as well as native Israelites.
+
+One rule, applied without exception to everyone living in the camp.
+
+🔁 Repeats the rule from verses three and four
+
+🌍 Now covers foreign residents too
+
+⚖️ One rule, no exceptions by background
+
+📖 Applies to everyone living in the camp
 
 # Leviticus 17:10-12
 # 🩸 The Life Is In The Blood
----
+
 ## 🚫 That Eateth Any Manner Of Blood
-This bans consuming blood in any form at all - not just drinking it straight, but eating meat that still has blood in it, or using blood as an ingredient. It's a total ban, not a limit on quantity.
-🚫 Bans blood in any form, not just drinking it directly
+
+This bans consuming blood in absolutely any form.
+
+Not only drinking blood straight from an animal.
+
+Also eating meat that still has blood inside it.
+
+Or using blood as an ingredient in food.
+
+This is a total ban, not a limit on quantity.
+
+🚫 Bans blood in any form
+
 🍖 Includes meat still containing blood
+
 📏 A total ban, not a quantity limit
----
+
+📖 Covers eating and cooking alike
+
 ## 👁️ I Will Even Set My Face Against That Soul
-This is stronger language than the earlier "cut off" phrase - it pictures God personally, actively opposing the person, rather than just a penalty being applied at a distance. Eating blood isn't treated as a minor dietary mistake; it's treated as something God himself takes as a direct affront.
-👁️ Stronger than "cut off" - pictures God personally opposing someone
-🚫 Not treated as a minor dietary mistake
-⚖️ A direct affront taken seriously by God himself
----
+
+This is stronger language than the earlier "cut off" phrase.
+
+It pictures God personally and actively opposing the person.
+
+Not just a penalty applied from a distance.
+
+Eating blood is not treated as a minor dietary mistake.
+
+God treats it as a direct affront against Himself.
+
+👁️ Stronger than cut off, pictures God opposing someone
+
+🚫 Not treated as a minor mistake
+
+⚖️ Treated as a direct affront to God
+
+📖 God takes this rule personally
+
 ## ❤️ For The Life Of The Flesh Is In The Blood
-This states the theological reason behind the whole chapter's blood rules: blood itself represents and carries life. It's also basically biologically accurate - loss of blood is loss of life - and the Bible builds its entire sacrificial logic on this observed connection.
-❤️ Blood is treated as representing life itself
-🩸 An observation that's also biologically accurate
-📜 The foundation for every blood rule in this chapter
----
-## 🏛️ I Have Given It To You Upon The Altar To Make An Atonement For Your Souls
-Blood has exactly one sacred purpose in this system - covering sin on the altar, not being eaten as food. Treating something with this specific holy purpose as ordinary food would blur the line between what's sacred and what's common.
-🏛️ Blood's one sacred purpose is atonement on the altar
+
+This states the theological reason behind the whole chapter's blood rules.
+
+Blood itself represents and carries life.
+
+Losing blood is losing life, a fact anyone can observe.
+
+The entire sacrificial system in Leviticus builds on this one connection.
+
+❤️ Blood represents life itself
+
+🩸 An observation anyone can see is true
+
+📜 The foundation for every blood rule here
+
+📖 One idea holding up the whole system
+
+## 🏛️ Given It To You Upon The Altar To Make An Atonement
+
+Blood has exactly one sacred purpose in this system.
+
+Covering sin on the altar, not being eaten as food.
+
+Treating something with this holy purpose as ordinary food blurs a line.
+
+The line between what is sacred and what is common.
+
+🏛️ Blood's one purpose is atonement
+
 🍽️ Never meant to double as food
-⚖️ Keeps the sacred and the common clearly separated
----
-## ✝️ For It Is The Blood That Maketh An Atonement For The Soul
-This restates the principle in its plainest form, and later Scripture builds directly on it - Hebrews 9:22 in the New Testament sums up this whole idea as "without shedding of blood is no remission" (forgiveness), pointing forward to Christ's own blood as the final fulfillment of this pattern.
+
+⚖️ Keeps sacred and common clearly separated
+
+📖 One substance, one holy purpose
+
+## ✝️ It Is The Blood That Maketh An Atonement For The Soul
+
+This restates the principle in its plainest form yet.
+
+Later Scripture builds directly on this exact idea.
+
+Hebrews nine in the New Testament sums up the whole pattern.
+
+"Without shedding of blood is no remission," meaning no forgiveness.
+
+That later verse points forward to Christ's own blood as the final fulfillment.
+
 📖 Restated here in its plainest form
-✝️ Hebrews 9:22 builds directly on this same principle
-🔗 Points forward to Christ's blood as the final fulfillment
----
-## 🔁 No Soul Of You Shall Eat Blood, Neither Shall Any Stranger That Sojourneth Among You
-The rule is repeated a second time within three verses, again including foreign residents alongside native Israelites. Scripture doubles back on this specific point more than almost any other law in Leviticus, showing how seriously it was meant to be taken.
-🔁 Repeated again within the same short passage
-🌍 Still includes foreign residents, not just native Israelites
-⚖️ Rare level of repetition shows how seriously it's meant
+
+✝️ Hebrews 9 builds on this principle
+
+🔗 Points forward to Christ's own blood
+
+➡️ One pattern completed in the New Testament
+
+## 🔁 No Soul Of You Shall Eat Blood, Neither Shall Any Stranger
+
+This rule gets repeated a second time within three verses.
+
+Again it includes foreign residents alongside native Israelites.
+
+Scripture rarely doubles back on one point this many times.
+
+That repetition shows how seriously this law was meant to be taken.
+
+🔁 Repeated twice in three verses
+
+🌍 Still includes foreign residents
+
+⚖️ Rare repetition signals real seriousness
+
+📖 Some rules get said more than once
 
 # Leviticus 17:13-14
 # 🏹 Even A Hunted Animal's Blood Matters
----
+
 ## 🏹 Which Hunteth And Catcheth Any Beast Or Fowl That May Be Eaten
-This extends the same blood principle to wild game, not just the domesticated sacrificial animals named earlier. Deer, birds, or any other legally edible wild animal a hunter caught still fell under the exact same blood rule.
-🏹 Extends the rule to hunted wild game
-🐦 Includes both animals and birds
-📜 Same rule as the domesticated animals in verses 3-12
----
+
+This extends the same blood rule to wild game.
+
+Not just the domesticated animals named earlier in the chapter.
+
+A deer, a bird, or any other legally edible wild animal.
+
+All of them fall under the exact same blood rule.
+
+🏹 Extends the rule to hunted game
+
+🐦 Includes animals and birds alike
+
+📜 Same rule as earlier livestock
+
+📖 One rule, whether hunted or raised
+
 ## 🕳️ He Shall Even Pour Out The Blood Thereof, And Cover It With Dust
-A hunted animal obviously couldn't be brought to the tabernacle altar the way livestock could - so instead, its blood had to be poured out on the ground and covered with dust, treating it with respect rather than casually consuming or ignoring it.
-🏔️ A practical alternative since a wild animal can't reach the altar
-🕳️ Poured out and covered, not consumed or ignored
-🙏 Still treats the blood with respect, just differently
----
-## 🔁 For The Life Of All Flesh; The Blood Of It Is For The Life Thereof
-The chapter restates its core principle a third time, now applied specifically to wild game - underlining that this isn't only a rule about formal sacrifices, but about the nature of blood itself, in any animal, anywhere.
-🔁 The life-in-the-blood principle restated a third time
-🌍 Applies to any animal, not just sacrificial livestock
-📜 Shows the principle is about blood's nature, not just ritual
----
+
+A hunted animal could not be brought to the tabernacle altar.
+
+Not the way livestock could be walked there alive.
+
+So its blood had to be poured out on the ground instead.
+
+Then covered with dust, not casually consumed or ignored.
+
+This still treated the blood with real respect.
+
+🏔️ No altar access for wild game
+
+🕳️ Poured out and covered with dust
+
+🙏 Still treated with real respect
+
+📖 Not consumed, not ignored
+
+## 🔁 For It Is The Life Of All Flesh, The Blood Of It Is For The Life Thereof
+
+The chapter restates its core principle a third time now.
+
+This time applied specifically to wild game, not just sacrifices.
+
+The point was never only about formal ritual.
+
+It is about the nature of blood itself, in any animal, anywhere.
+
+🔁 Restated a third time here
+
+🌍 Applies to any animal, not just livestock
+
+📜 About blood's nature, not just ritual
+
+📖 One truth said three different ways
+
 ## ☠️ Whosoever Eateth It Shall Be Cut Off
-The same severe "cut off" penalty from earlier in the chapter applies here too, even for blood from an ordinary hunted meal at home, far from the tabernacle. Distance from the sanctuary never lowered the seriousness of this particular rule.
-☠️ Same severe penalty as verses 4, 9, and 10
-🏡 Applies even to ordinary meals at home
-📏 Distance from the tabernacle doesn't lower the stakes
+
+The same severe "cut off" penalty from earlier returns here.
+
+It applies even to an ordinary hunted meal eaten at home.
+
+Far away from the tabernacle, with no priest watching.
+
+Distance from the sanctuary never lowered the seriousness of this rule.
+
+☠️ Same penalty as earlier in the chapter
+
+🏡 Applies to ordinary meals at home
+
+📏 Distance does not lower the stakes
+
+📖 One rule, no matter where you eat
 
 # Leviticus 17:15-16
 # 🧼 An Accident Is Different From A Choice
----
+
 ## 💀 That Which Died Of Itself, Or That Which Was Torn With Beasts
-"Died of itself" means an animal that died from illness or old age rather than being properly slaughtered; "torn with beasts" means one killed by a predator like a lion or wolf. Either way, its blood was never drained the way a sacrificed or hunted animal's blood was.
-💀 "Died of itself" means death by illness or old age
-🐺 "Torn with beasts" means killed by a predator
-🩸 Blood was never properly drained in either case
----
+
+"Died of itself" means an animal that died from illness or old age.
+
+Not one that was properly slaughtered at all.
+
+"Torn with beasts" means one killed by a predator like a lion or wolf.
+
+Either way, its blood was never drained on purpose.
+
+💀 Death by illness or old age
+
+🐺 Killed by a predator, not slaughtered
+
+🩸 Blood never properly drained either way
+
+📖 An accident, not a deliberate choice
+
 ## ⚖️ Whether It Be One Of Your Own Country, Or A Stranger
-Once again the law applies equally to native Israelites and foreign residents alike - the third time in this one chapter the text specifically calls out "the stranger," making sure no group could claim this rule didn't apply to them.
-⚖️ Applies equally to Israelites and foreign residents
-🔁 The third time this chapter specifically includes "the stranger"
-🚫 No group could claim exemption
----
-## 🛁 He Shall Both Wash His Clothes, And Bathe Himself In Water, And Be Unclean Until The Even
-Unlike the deliberate blood-eating earlier in the chapter, eating meat from an animal that died naturally or was killed by a predator is treated as accidental uncleanness - resolved the same day with washing and waiting until evening, the same formula used throughout Leviticus 11-15.
-🔀 Treated differently from deliberate blood-eating earlier in the chapter
-🛁 Resolved same-day through washing and waiting until evening
-📖 Same cleansing formula used throughout Leviticus 11-15
----
-## ⚠️ But If He Wash Them Not, Nor Bathe His Flesh; Then He Shall Bear His Iniquity
-Skipping the required washing turns an accidental, resolvable uncleanness into personal guilt he now has to carry. "Bear his iniquity" is softer language than "cut off," but it still holds him responsible for ignoring the fix that was available to him.
-⚠️ Skipping the washing turns an accident into personal guilt
-📉 Softer than "cut off," but still real responsibility
-🔧 The fix was available - ignoring it is what causes the guilt
-`;
+
+The law applies equally to native Israelites and foreign residents alike.
+
+This is the third time this one chapter calls out "the stranger" by name.
+
+No group in the camp could claim this rule did not apply to them.
+
+⚖️ Applies equally to Israelites and residents
+
+🔁 Third time this chapter names the stranger
+
+🚫 No group could claim an exemption
+
+📖 One law, no exceptions by birth
+
+## 🛁 Wash His Clothes, And Bathe Himself In Water, And Be Unclean Until The Even
+
+Eating meat from an animal that died naturally is treated as accidental uncleanness.
+
+Different from the deliberate blood eating named earlier in the chapter.
+
+It gets resolved the same day, through washing and waiting until evening.
+
+That is the same cleansing formula used throughout Leviticus chapters eleven through fifteen.
+
+🔀 Treated differently from deliberate blood eating
+
+🛁 Resolved same day with washing and waiting
+
+📖 Same formula used earlier in Leviticus
+
+➡️ An honest mistake gets a real fix
+
+## ⚠️ If He Wash Them Not, Then He Shall Bear His Iniquity
+
+Skipping the required washing changes everything about this situation.
+
+An accidental, resolvable uncleanness turns into personal guilt he now carries.
+
+"Bear his iniquity" is softer language than "cut off."
+
+It still holds him responsible for ignoring the fix he was given.
+
+⚠️ Skipping the wash turns accident into guilt
+
+📉 Softer than cut off, still real responsibility
+
+🔧 The fix was available and ignored
+
+📖 Responsibility begins where the excuse runs out
+`.trim();
 
 export const LEVITICUS_SEVENTEEN_PERSONAL_SECTIONS = parseLeviticusSeventeenRawNotes(LEVITICUS_SEVENTEEN_RAW_NOTES);
