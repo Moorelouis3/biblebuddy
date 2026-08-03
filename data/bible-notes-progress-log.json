@@ -7211,6 +7211,59 @@
           "at": "2026-08-03T01:58:35Z"
         }
       ]
+    },
+    {
+      "book": "Exodus",
+      "chapter": 40,
+      "startedAt": "2026-08-03T02:47:04Z",
+      "finishedAt": "2026-08-03T02:57:02Z",
+      "durationMinutes": 10,
+      "sections": 9,
+      "cards": 38,
+      "verses": 38,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (48 cards / 9 sections) from scratch to match docs/bible-study-note-style.md. This was the last chapter in the Exodus redo backlog, so all of Exodus (1-40) is now on the new style spec. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Exodus 40 is the tabernacle's actual assembly: the command landing exactly one year after the Exodus (Abib/Nisan calendar, tying back to Exodus 12's Passover month), the ark of the testimony covered by the vail before anything else is carried in, every furniture piece placed (table of showbread, golden candlestick, incense altar, bronze burnt offering altar, laver, court gate), the anointing oil setting apart the whole structure, the surprising 'most holy' label applied to the outdoor bronze altar and not only the ark, Aaron and his sons washed and robed into an everlasting (generational, not literal-forever) priesthood, Moses erecting the frame himself with the repeated 'as the LORD commanded him' obedience refrain, the ark's mercy seat and gold carrying staves, a 'meat offering' word-definition moment (old English for a grain offering, not animal flesh), 'so Moses finished the work' read as a deliberate echo of Genesis's creation-finished language, and the closing cloud-and-glory scene where even Moses cannot enter and the cloud-by-day/fire-by-night guidance system begins. Kept the original file's 9 section boundaries (1-3, 4-8, 9-11, 12-15, 16-19, 20-23, 24-27, 28-33, 34-38) while rewriting every card to the new format. Density exactly 1 card/verse (38 verses, 38 cards). `scripts/check_bible_note_style.py` was clean on the first pass (38 cards, 0 problems). Parser check passed exactly via getBibleReaderStudySections('exodus', 40) (9/9 sections, 38 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (ExodusFortyPersonalSection, parseExodusFortyRawNotes, EXODUS_FORTY_RAW_NOTES, EXODUS_FORTY_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Exodus 40 entry removed from the front of the list as part of this commit; next redo target is Leviticus 1.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-03T02:46:52Z"
+        },
+        {
+          "name": "target chapter determined: Exodus 40 (style redo, last Exodus redo chapter)",
+          "at": "2026-08-03T02:47:04Z"
+        },
+        {
+          "name": "KJV text fetched for Exodus 40 (38 verses)",
+          "at": "2026-08-03T02:47:10Z"
+        },
+        {
+          "name": "style spec read in full",
+          "at": "2026-08-03T02:53:32Z"
+        },
+        {
+          "name": "source file written (lib/exodusFortySource.ts regenerated, 38 cards)",
+          "at": "2026-08-03T02:54:47Z"
+        },
+        {
+          "name": "style checker clean (38 cards, no problems)",
+          "at": "2026-08-03T02:54:47Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo chapter (no changes needed)",
+          "at": "2026-08-03T02:55:04Z"
+        },
+        {
+          "name": "parser check passed (9 sections, 38 cards)",
+          "at": "2026-08-03T02:55:18Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-03T02:56:36Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-03T02:57:02Z"
+        }
+      ]
     }
   ]
 }

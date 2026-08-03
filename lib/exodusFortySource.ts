@@ -88,233 +88,409 @@ function parseExodusFortyRawNotes(rawText: string): ExodusFortyPersonalSection[]
   return sections;
 }
 
-const EXODUS_FORTY_RAW_NOTES = `# Exodus 40:1-8
+const EXODUS_FORTY_RAW_NOTES = `# Exodus 40:1-3
 
-# 📅 One Year To The Day
-
----
-
-## 📅 On The First Day Of The First Month Shalt Thou Set Up The Tabernacle
-
-The first month of Israel's calendar was called Abib (later renamed Nisan), roughly matching our March-April. Exodus 12:2 made this the very start of Israel's religious year, because it was the month of the Passover and the Exodus itself. This command lands exactly one year, to the day, after Israel walked out of Egypt - the tabernacle is finished and raised on the first anniversary of their freedom.
-
-📅 The first month, Abib/Nisan, was set as year one, day one back in Exodus 12:2
-
-🗓️ This is exactly one year after Israel left Egypt
-
-🏗️ Freedom's anniversary becomes the day God's house is finally standing
+# 🗓️ One Year To The Day
 
 ---
 
-## 🏠 The Tabernacle Of The Tent Of The Congregation
+## 📅 On The First Day Of The First Month
 
-This structure gets two names used together throughout the book. "Tabernacle" means dwelling place - it's where God lives among His people. "Tent of the congregation" (sometimes translated "tent of meeting") means the place Israel gathers to meet with Him. One building, two purposes: God's address, and Israel's meeting point with Him.
+The first month was called Abib, later renamed Nisan.
 
-🏠 "Tabernacle" means dwelling place - where God lives
+It falls in our March or April.
 
-🤝 "Tent of the congregation" means where Israel meets with Him
+Exodus twelve made this the start of Israel's whole religious year.
 
-🏗️ One structure carries both jobs at once
+That was the month of Passover, the month Israel left Egypt.
 
----
+This command lands exactly one year after that first Passover night.
 
-## 📜 Put Therein The Ark Of The Testimony, And Cover The Ark With The Vail
+📆 Abib was Israel's first calendar month
 
-The very first item placed inside is the holiest one: the ark, holding the stone tablets of the covenant. It's covered with the veil immediately, before anything else in the building is even set up. The order isn't random - assembly starts at the center, with the most sacred object, and works outward from there.
+🌱 It falls in March or April
 
-📜 The ark, the holiest object in Israel, goes in first
+🐑 It was the month of Passover
 
-🚪 It's veiled immediately, before any other furniture is placed
-
-➡️ Assembly moves from the center outward, not the other way around
+📖 The tabernacle rises on that anniversary
 
 ---
 
-## 🕯️ Bring In The Table...And Bring In The Candlestick, And Light The Lamps Thereof
+## 🏕️ The Tabernacle Of The Tent Of The Congregation
 
-Next come the table (which will hold the shewbread) and the golden lampstand. Both belong in the Holy Place, the outer room just in front of the veiled ark, and both were already built and described in detail back in chapters 25 and 37.
+"Tabernacle" means a dwelling place.
 
-🍞 The table held the shewbread, described fully in chapter 25
+It was the tent where God's presence lived among Israel.
 
-🕯️ The candlestick (lampstand) lit the Holy Place
+"Tent of the congregation" is another name for the same tent.
 
-📖 Both were already fully built - this is placement, not construction
+It was the place Israel gathered to meet with God.
 
----
+Two names, one structure, not two separate buildings.
 
-## 🔥 Set The Altar Of Gold For The Incense Before The Ark Of The Testimony
+God did not send a building.
 
-The incense altar goes just outside the veil, positioned in a direct line with the ark on the other side of the curtain - as close to the Most Holy Place as anything could get without actually entering it.
+He sent a portable house and chose to camp among His people.
 
-🔥 The incense altar sits just outside the veil
+🏕️ Tabernacle means a dwelling place
 
-📐 It lines up directly with the ark, positioned across the curtain
+👥 Tent of congregation means the meeting tent
 
-🚫 This is as near the Most Holy Place as any daily-use object comes
+🔁 Two names for one structure
 
----
-
-## 🚪 Put The Hanging Of The Door To The Tabernacle
-
-This is the tent's own entrance curtain - not the outer court's gate, which comes later in verse 8. Think of it as the front door to the sacred tent itself, separate from the fence line around the whole property.
-
-🚪 This curtain is the tent's own front door
-
-🏗️ It's different from the court gate, set up separately in verse 8
-
-🧵 One property, two separate entrances at two separate boundaries
+📖 God chose to camp among His people
 
 ---
 
-## 🔥 Set The Altar Of The Burnt Offering Before The Door Of The Tabernacle
+## 📦 The Ark Of The Testimony
 
-Now the assembly moves out into the court: the large bronze altar, where animals were sacrificed, is placed right at the tent's entrance. This is the first object anyone entering the court from outside would actually reach.
+"The ark" was a wooden chest covered in gold.
 
-🔥 The bronze altar of burnt offering stood at the tent's entrance
+"The testimony" means the two stone tablets carved with the Ten Commandments.
 
-🚶 It's the first major object a worshipper coming in from outside would meet
+They were called the testimony because they testified to the covenant between God and Israel.
 
-🏗️ Assembly is still working from the center out to the edge
+This chest was the most sacred object in the whole tabernacle.
 
----
+Everything else in the tent was arranged around this one piece.
 
-## 💧 Set The Laver Between The Tent...And The Altar, And Shalt Put Water Therein
+📦 The ark was a gold covered chest
 
-The bronze washing basin goes between the altar and the tent door - positioned exactly where a priest would need it, after handling a sacrifice at the altar but before stepping through the tent door to serve inside.
+🪨 The testimony means the stone tablets
 
-💧 The laver sat between the altar and the tent's entrance
+🤝 They testified to God's covenant
 
-🧼 That's exactly where a priest needed to wash before going further in
-
-🏗️ Its placement follows the actual order priests would move through
+📖 Everything else centers on this one object
 
 ---
 
-## 🏛️ Set Up The Court Round About, And Hang Up The Hanging At The Court Gate
+## 🧵 Cover The Ark With The Vail
 
-The outer boundary - the linen walls and the entrance gate - is set up last of all. Notice the pattern across this whole passage: God's instructions build the tabernacle from the holiest point outward, ark first and court fence last, which is the exact reverse of the path a worshipper would walk once it's finished - gate first, then altar, then laver, then tent door, then finally toward the veiled ark at the center.
+"The vail" was a heavy curtain.
 
-🏛️ The court's outer fence and gate go up last
+It was not anything like a veil worn on someone's face.
 
-➡️ Assembly runs center-to-edge; a worshipper's path runs edge-to-center
+It hung between the ark and the rest of the tent.
 
-🚶 Approaching God and building His house move in opposite directions
+Behind it sat the Most Holy Place, the room filled with God's presence.
+
+No one could walk past that curtain except the high priest.
+
+Even he only entered once a year.
+
+The most sacred object in the tent was covered before anything else moved in.
+
+🧵 Vail means a heavy curtain
+
+🚫 It blocked the Most Holy Place
+
+🗓️ Only the high priest passed it yearly
+
+📖 The most sacred object was covered first
+
+---
+
+# Exodus 40:4-8
+
+# 🛠️ Every Piece In Its Place
+
+---
+
+## 🍞 Bring In The Table
+
+This is the table of showbread, first described back in Exodus twenty five.
+
+Bread sat on it at all times, representing God's constant provision for Israel.
+
+Twelve loaves stood for the twelve tribes.
+
+The bread was replaced weekly, and the old loaves went to the priests to eat.
+
+God's people were always represented in His presence, loaf by loaf.
+
+🍞 This is the table of showbread
+
+🙏 Bread pictured God's constant provision
+
+🔢 Twelve loaves stood for twelve tribes
+
+📖 Israel stayed represented before God
+
+---
+
+## 🕯️ Light The Lamps Thereof
+
+"The lamps" were the seven lamps of the golden candlestick.
+
+The tabernacle had no windows, so this was the only light inside.
+
+Later law required the lamps to stay lit continually, tended morning and evening.
+
+Without this light, the priests could not see to serve inside the tent.
+
+🕯️ The lamps sat on the golden candlestick
+
+🌑 The tabernacle had no windows
+
+⏰ Priests tended the lamps morning and evening
+
+📖 Light made the priests' service possible
+
+---
+
+## 🥇 The Altar Of Gold For The Incense
+
+This was a small golden altar, different from the large bronze altar outside.
+
+It stood in front of the inner vail, inside the Holy Place.
+
+Priests burned incense on it every morning and evening.
+
+The rising smoke pictured prayer rising up to God.
+
+🥇 A small golden altar, not the bronze one
+
+🚪 It stood in front of the inner vail
+
+💨 Priests burned incense morning and evening
+
+📖 Smoke rising pictured prayer to God
+
+---
+
+## 🔥 The Altar Of The Burnt Offering
+
+This was the large bronze altar, sitting out in the open courtyard.
+
+Animal sacrifices were burned whole on this altar.
+
+It stood at the very entrance, the first thing anyone met on the way in.
+
+No one reached the ark without passing this altar of blood first.
+
+🔥 The large bronze altar stood outside
+
+🐑 Animal sacrifices burned here
+
+🚪 It stood right at the entrance
+
+📖 No one bypassed this altar to reach God
+
+---
+
+## 🛁 Set The Laver Between The Tent And The Altar
+
+"The laver" was a bronze wash basin filled with water.
+
+It stood between the burnt offering altar and the tent's entrance.
+
+Priests had to wash there before they served or they could die.
+
+Washing came right after sacrifice and right before entering God's presence.
+
+🛁 The laver was a bronze wash basin
+
+📍 It stood between the altar and the tent
+
+⚠️ Priests who skipped washing risked death
+
+📖 Washing bridged sacrifice and God's presence
+
+---
+
+## 🚧 Hang Up The Hanging At The Court Gate
+
+"The court" was the fenced outer yard surrounding the whole tabernacle.
+
+Its walls were tall linen curtains, not solid stone or wood.
+
+"The hanging" at the gate was the one opening in that fence, the only way in.
+
+Everyone who entered the court entered through that single doorway.
+
+🧵 The court was a fenced linen yard
+
+🚪 The hanging was the court's one gate
+
+🔓 It was the only way inside
+
+📖 One entrance meant one way to God
+
+---
 
 # Exodus 40:9-11
 
-# 🕊️ Anointing Everything Holy
+# 🫗 The Anointing Oil
 
 ---
 
-## 🫙 Take The Anointing Oil, And Anoint The Tabernacle, And All That Is Therein
+## 🫗 Take The Anointing Oil, And Anoint The Tabernacle
 
-The special anointing oil - the exact recipe of myrrh, cinnamon, calamus, cassia, and olive oil given back in chapter 30 - gets used for the very first time here. To "anoint" means to pour or rub oil on something as a formal act of dedicating it to God. Nothing in the tabernacle becomes holy just by being expensive material; it becomes holy because it's set apart for God through this act.
+The anointing oil was a specific blend, mixed from a recipe given earlier in Exodus.
 
-🫙 This is the oil's recipe from chapter 30, used here for the first time
+"Anoint" means to pour or rub oil on something to set it apart for God.
 
-💧 "Anoint" means to pour oil on something as an act of dedication
+Every piece inside the tent received this oil, not just the priests.
 
-✨ Holiness comes from being set apart for God, not from expensive materials
+The whole structure became holy property before a single sacrifice was offered.
 
----
+🫗 A specific oil blend, given earlier
 
-## ✨ And Shalt Hallow It, And All The Vessels Thereof: And It Shall Be Holy
+✋ Anoint means set apart with oil
 
-"Hallow" means to make holy or set apart. Even the smaller tools and vessels used inside the tabernacle - not just the big furniture pieces - get included in this same declaration. Nothing inside gets left as "ordinary."
+🏕️ Every piece received this oil
 
-✨ "Hallow" means to formally set something apart as holy
-
-🔧 Even small vessels and tools are included, not just major furniture
-
-🚫 Nothing inside the tabernacle stays "ordinary" after this
+📖 The tent became holy before any sacrifice
 
 ---
 
-## 🔥 Anoint The Altar Of Burnt Offering...An Altar Most Holy
+## ✨ It Shall Be Holy
 
-This verse introduces a new phrase: "most holy." Not everything anointed carries the exact same level of holiness - the text is starting to build a hierarchy, with some objects (like this altar, and later the ark) marked as more sacred than others.
+"Holy" means set apart for God's use alone, not for anything ordinary.
 
-🔥 "Most holy" is a specific, higher-level designation
+Once anointed, these objects could never go back to normal use.
 
-📊 Not every anointed object carries the exact same degree of holiness
+A cup used at the altar could never become a kitchen cup again.
 
-📜 This starts a pattern of ranked sacredness that runs through the rest of the tabernacle system
+Holiness here is a permanent change of purpose, not a temporary label.
+
+✨ Holy means set apart for God alone
+
+🚫 Objects could not return to ordinary use
+
+🍽️ A cup here could never be reused
+
+📖 Holiness was a permanent change of purpose
 
 ---
 
-## 💧 Anoint The Laver And His Foot, And Sanctify It
+## 🥇 Sanctify The Altar, And It Shall Be An Altar Most Holy
 
-Even the washing basin - the most plain, functional piece of equipment in the whole tabernacle - receives the same anointing and the same word, "sanctify," used for the ark itself. There's no such thing as an unimportant object once it belongs to God's house.
+"Sanctify" is another word for making something holy, set apart on purpose.
 
-💧 The laver gets the same anointing as the ark and the altar
+This is the bronze altar out in the courtyard, not the ark inside.
 
-🧼 It's the most plain, purely functional item in the building
+Readers might expect only the ark to carry the label most holy.
 
-🏠 Nothing that belongs to God's house counts as unimportant
+Here even the outdoor altar of sacrifice receives that same highest rank.
+
+The most holy label follows function, not just location.
+
+🥇 Sanctify means to make holy on purpose
+
+🔥 This is the outdoor bronze altar
+
+😮 Even this altar reaches most holy rank
+
+📖 Holiness follows function, not just location
+
+---
+
+## 🦶 Anoint The Laver And His Foot
+
+"His foot" means the laver's base, the stand it rested on.
+
+The base gets anointed along with the basin itself.
+
+Nothing in the tabernacle was too small or too plain to be set apart.
+
+Even a stand holding a washbasin belonged to God now.
+
+🦶 His foot means the laver's base
+
+🛁 The base was anointed too
+
+🔍 Nothing was too small to be holy
+
+📖 Even a stand belonged to God now
+
+---
 
 # Exodus 40:12-15
 
-# 👑 Aaron And His Sons Set Apart Forever
+# 👨‍👦‍👦 Consecrating Aaron And His Sons
 
 ---
 
-## 🚿 Bring Aaron And His Sons Unto The Door...And Wash Them With Water
+## 💧 Wash Them With Water
 
-Before Aaron or his sons put on a single piece of priestly clothing, they're washed with water first. This mirrors the fuller ordination ceremony from chapter 29 - purification always comes before dressing, and dressing always comes before serving.
+Before anything else happened, Aaron and his sons were washed in water.
 
-🚿 Washing happens before any priestly garment is put on
+This was a ceremonial washing, not simply getting clean from dust.
 
-📖 This matches the fuller ordination ceremony already given in chapter 29
+It marked the first step in becoming a priest, before robes or oil.
 
-📋 Purification, then dressing, then service - always in that order
+A priest's service began with being made clean, not with a title.
 
----
+💧 A ceremonial washing, not a bath
 
-## 👔 Put Upon Aaron The Holy Garments, And Anoint Him, And Sanctify Him
+🚦 It was the very first step
 
-The elaborate garments described in chapter 28 and actually sewn in chapter 39 - the ephod, the breastplate, the blue robe, the golden forehead plate - get worn for the very first time here. And this time the anointing oil isn't just poured on an object; it's poured on a person, Aaron himself.
+👔 It came before any robes or oil
 
-👔 These are the exact garments designed in chapter 28, built in chapter 39
-
-🫙 This time the oil anoints a person, not just furniture
-
-✅ Everything built across five chapters is finally put into use
+📖 Priesthood began with being made clean
 
 ---
 
-## ⛪ That He May Minister Unto Me In The Priest's Office
+## 👑 Put Upon Aaron The Holy Garments
 
-"Minister" simply means to serve, and "the priest's office" means the formal, official role of priest. This phrase is the whole point of the last several chapters: all the garments, all the anointing oil, all the ordination steps exist for this one purpose - so Aaron can actually do the job God assigned him.
+These garments were described in detail back in Exodus twenty eight.
 
-⛪ "Minister" means to serve; "the priest's office" means the formal role itself
+They included a breastplate, an ephod, a robe, and a gold plated turban.
 
-🎯 Every garment and ritual detail exists to make this one purpose possible
+Each piece marked Aaron as the one priest who represented all of Israel.
 
-✅ This is the payoff of everything built and prepared so far
+No one else wore this exact set of clothing.
 
----
+👑 Garments detailed back in Exodus twenty eight
 
-## 🧥 Bring His Sons, And Clothe Them With Coats
+🎽 Breastplate, ephod, robe, and turban
 
-Aaron's sons receive plain linen coats, not the gold-threaded ephod or jeweled breastplate reserved for the high priest alone (already detailed in chapter 39:27). Same washing, same general anointing, but a visibly simpler wardrobe marking their different rank within the priesthood.
+🇮🇱 Aaron represented all of Israel
 
-🧥 The sons wear plain linen coats, not Aaron's elaborate garments
-
-📖 Chapter 39:27 already described this simpler priestly clothing
-
-📊 Same washing and anointing, but a clearly different rank
+📖 No one else wore this exact set
 
 ---
 
-## ♾️ Their Anointing Shall Surely Be An Everlasting Priesthood Throughout Their Generations
+## 🧥 Clothe Them With Coats
 
-"Everlasting" here means permanent for as long as this whole covenant system stood - not one generation's job, but a role passed down through Aaron's family line for centuries, all the way through the rest of the Old Testament until the temple system it belonged to came to an end.
+Aaron's sons received simple linen coats, far plainer than Aaron's own garments.
 
-♾️ "Everlasting" means permanent within this covenant system, not a one-time role
+They served as regular priests, not as the one high priest.
 
-👪 The priesthood was meant to pass down through Aaron's family line
+Simpler clothing marked a real difference in role, not a lesser worth.
 
-⏳ It continued for centuries, through the rest of Israel's history
+Every priest mattered, even without Aaron's elaborate robes.
+
+🧥 Plain linen coats, not Aaron's robes
+
+👥 They served as regular priests
+
+⚖️ Different role, not lesser worth
+
+📖 Every priest mattered in God's house
+
+---
+
+## ♾️ An Everlasting Priesthood Throughout Their Generations
+
+"Everlasting" here means lasting for generation after generation, not literally forever.
+
+This priesthood belonged to Aaron's family line alone, called the Levitical priesthood.
+
+A son could not choose this job, and no outsider could buy it.
+
+It passed down by birth, family after family, for centuries.
+
+♾️ Everlasting means generation after generation
+
+👨‍👩‍👧 It belonged to Aaron's family line
+
+🚫 No one could buy or choose it
+
+📖 It passed down by birth for centuries
+
+---
 
 # Exodus 40:16-19
 
@@ -322,382 +498,435 @@ Aaron's sons receive plain linen coats, not the gold-threaded ephod or jeweled b
 
 ---
 
-## ✅ Thus Did Moses: According To All That The LORD Commanded Him, So Did He
+## ✅ According To All That The LORD Commanded Him, So Did He
 
-This exact obedience refrain echoed through chapter 39 as the craftsmen finished each piece. Now it applies to Moses personally, doing the actual physical work of assembly himself, not just approving what others built.
+This exact sentence repeats again and again across these final chapters of Exodus.
 
-✅ This same refrain ran through chapter 39 for the craftsmen's work
+Every single instruction God gave was carried out without a single change.
 
-🙌 Now it describes Moses' own hands-on physical labor
+Moses did not improve the design or skip a step he found difficult.
 
-📏 Obedience here means matching the instructions exactly, with nothing added or skipped
+Total obedience, piece by piece, is the real climax of the whole book.
 
----
+🔁 This sentence repeats again and again
 
-## 🗓️ In The First Month In The Second Year, On The First Day Of The Month
+🛠️ Every instruction was carried out exactly
 
-This pins the date down precisely: day one of month one, year two, counting from the Exodus out of Egypt. Israel arrived at Sinai around the third month of year one (Exodus 19:1), which means the entire tabernacle project - collecting materials, building every piece, sewing every garment - took roughly nine months from start to finish.
+🚫 Nothing was changed or skipped
 
-🗓️ This is exactly one year after leaving Egypt, to the day
-
-⛰️ Israel had arrived at Sinai about nine months earlier, in month three of year one
-
-🔨 The whole building project took roughly nine months, start to finish
+📖 Total obedience is the book's real climax
 
 ---
 
-## 🔨 Moses Reared Up The Tabernacle, And Fastened His Sockets, And Set Up The Boards Thereof
+## 🗓️ In The First Month In The Second Year
 
-Moses doesn't just supervise this final assembly - the text describes him physically fastening sockets, setting up boards, fitting bars, and raising pillars, the same hands-on work the skilled craftsmen did throughout chapters 36-39.
+This dates the tabernacle's raising to exactly one year after Israel left Egypt.
 
-🔨 Moses is described doing hands-on physical assembly work
+Israel had reached Sinai in the third month of that first year.
 
-🏗️ Sockets, boards, bars, and pillars all get fitted into place
+Building the tabernacle and receiving God's instructions took most of that first year.
 
-👷 A leader who builds alongside the work, not only one who commands it
+God's timeline lands the finished tent on the anniversary of Israel's freedom.
 
----
+🗓️ Exactly one year after leaving Egypt
 
-## 🧑‍🤝‍🧑 "Moses" Standing In For The Whole Team
+⛰️ Israel reached Sinai in month three
 
-Later, in Numbers 4, moving just the tabernacle's frame and coverings required assigned teams of Levites and ox-carts - far more than one man could lift alone. Crediting "Moses" here for raising the entire structure is a common style in Hebrew narrative: naming the leader for work his whole team carried out under his direction, not claiming he did it single-handed.
+🛠️ Building took most of that year
 
-🧑‍🤝‍🧑 Numbers 4 later shows moving this structure required organized teams
-
-📖 Naming the leader for group work is a normal pattern in Hebrew narrative
-
-🔨 "Moses" here represents the whole crew working under his direction
+📖 The finished tent lands on freedom's anniversary
 
 ---
 
-## 🧵 He Spread Abroad The Tent Over The Tabernacle...As The LORD Commanded Moses
+## 🪵 Fastened His Sockets, And Set Up The Boards
 
-The layered coverings - fine linen, goat hair, ram skins, and the tough outer skin, all detailed back in chapter 26 - go on last, closing up the structure. The chapter bookends this whole section with the same phrase it started with: as the LORD commanded.
+"Sockets" were heavy silver bases the wooden boards stood in, like feet.
 
-🧵 The layered tent coverings from chapter 26 go on last
+"Boards" were the upright wooden wall frames, each covered in gold.
 
-🏗️ This finishes and seals the physical structure
+"Bars" were long rods sliding through rings to lock the boards together.
 
-🔁 The refrain "as the LORD commanded Moses" bookends the passage
+Each part had one job, and none of it worked alone.
 
-# Exodus 40:20-25
+🦶 Sockets were heavy silver bases
 
-# 📜 The Ark, The Table, And The Lamp
+🪵 Boards were the gold covered wall frames
 
----
+🔗 Bars locked the boards together
 
-## 📜 He Took And Put The Testimony Into The Ark
-
-"The testimony" refers to the two stone tablets carrying the Ten Commandments, first mentioned back in Exodus 31:18 and 34:29. They're called "the testimony" because they testify, or bear witness, to the terms of the covenant between God and Israel.
-
-📜 "The testimony" means the two stone tablets of the Ten Commandments
-
-📖 Exodus 31:18 and 34:29 already introduced these tablets
-
-⚖️ They're called testimony because they witness to the covenant's terms
+📖 Every part needed the others to stand
 
 ---
 
-## 🪶 Set The Staves On The Ark, And Put The Mercy Seat Above Upon The Ark
+## ⛺ Spread Abroad The Tent Over The Tabernacle
 
-The "staves" are the carrying poles, which chapter 25:15 said must never be removed - the ark had to stay ready to move at any time. The "mercy seat" is the solid gold lid, where the blood of atonement would later be applied once a year, and where God's presence was said to meet with Israel above the two cherubim.
+The roof of this structure actually had three separate layers.
 
-🪶 "Staves" are the carrying poles, permanently fixed per chapter 25:15
+The inner layer, the tabernacle itself, was fine linen with woven cherubim.
 
-🥇 The "mercy seat" is the ark's gold lid, the place of atonement
+The middle layer, the tent, was rougher cloth woven from goat hair.
 
-🤝 This is where God's presence was said to meet with Israel
+A final layer of animal skins covered and protected everything underneath.
 
----
+🧵 The inner layer was fine linen
 
-## 🚪 Set Up The Vail Of The Covering, And Covered The Ark Of The Testimony
+🐐 The middle layer was woven goat hair
 
-The moment the ark is placed, the veil goes up and hides it from view. From this point forward, no one sees the ark itself except the high priest, and only once a year, on the Day of Atonement (Leviticus 16).
+🐫 A tough outer layer of skins covered it
 
-🚪 The veil hides the ark from view the moment it's placed
-
-👤 Only the high priest ever saw it again after this
-
-📅 That happened just once a year, on the Day of Atonement
+📖 God layered beauty inside and protection outside
 
 ---
 
-## 🧭 Put The Table...Upon The Side Of The Tabernacle Northward, Without The Vail
+# Exodus 40:20-23
 
-This is the first time in the chapter an exact compass direction is given: the table goes on the north side of the Holy Place, outside the veil. Precise, physical placement mattered as much as which objects were included.
-
-🧭 This is the chapter's first exact compass direction: north
-
-📐 The table sat in the Holy Place, outside the veil
-
-🏗️ Exact placement mattered, not just which pieces were used
+# 📦 The Ark And The Table
 
 ---
 
-## 🍞 He Set The Bread In Order Upon It Before The LORD
+## 🎋 Set The Staves On The Ark
 
-The "bread" is the shewbread, twelve loaves representing Israel's twelve tribes, kept continually present on the table (fully explained back in chapter 25). "Before the LORD" means it stayed there as an ongoing offering, present in His sight at all times, not eaten in one sitting like a normal meal.
+"Staves" were long wooden poles overlaid in gold.
 
-🍞 The shewbread's twelve loaves represented Israel's twelve tribes
+They slid through gold rings fixed to the ark's four corners.
 
-📖 Chapter 25 already explained this bread in full
+This let the ark be carried without anyone touching it directly.
 
-⏳ "Before the LORD" means continually present, not a one-time meal
+Later, touching the ark itself proved fatal, so the staves mattered.
+
+🎋 Staves were gold covered carrying poles
+
+💍 They slid through rings on the ark
+
+🚫 No one had to touch the ark directly
+
+📖 The staves kept the ark safely distant
 
 ---
 
-## 🕯️ Put The Candlestick...Over Against The Table, On The Side Of The Tabernacle Southward
+## 👼 Put The Mercy Seat Above Upon The Ark
 
-The golden lampstand goes on the south side, directly across the room from the table on the north side - close enough that its light would actually illuminate the bread and the whole Holy Place.
+"The mercy seat" was the solid gold lid covering the ark.
 
-🕯️ The lampstand sat on the south side, facing the table
+Two gold cherubim stood on its ends, facing each other with wings spread.
 
-🧭 North and south placement put the two pieces directly across from each other
+This lid, not the tablets underneath, was where God's presence would appear.
 
-💡 Its light illuminated both the bread and the room itself
+Once a year, blood was placed here to cover the sins of the whole nation.
+
+👼 The mercy seat was the ark's gold lid
+
+🦅 Two cherubim faced each other on top
+
+✨ God's presence appeared right here
+
+📖 Blood here covered the nation's sin yearly
+
+---
+
+## 🧭 Upon The Side Of The Tabernacle Northward, Without The Vail
+
+"Without the vail" means outside the inner curtain, not lacking one.
+
+The table stood in the Holy Place, the outer room of the tent.
+
+It sat on the north side, across from where the lampstand would stand.
+
+Only the ark sat behind the vail, inside the Most Holy Place.
+
+🧭 Without the vail means outside the curtain
+
+🧎 The table stood in the outer room
+
+📍 It sat on the north side
+
+📖 Only the ark sat behind the vail
+
+---
+
+## 🍞 Set The Bread In Order Upon It
+
+Twelve loaves sat on the table in two neat rows of six.
+
+This bread is often called showbread, or the bread of the presence.
+
+Priests replaced it every week and ate the old loaves themselves.
+
+The bread pictured all twelve tribes staying continually before God.
+
+🍞 Twelve loaves sat in two rows
+
+🏷️ Also called the bread of the presence
+
+🔄 Replaced weekly, eaten by the priests
+
+📖 It pictured Israel staying before God
+
+---
+
+# Exodus 40:24-27
+
+# 🕯️ Light And Incense
+
+---
+
+## 🕯️ On The Side Of The Tabernacle Southward
+
+The candlestick stood across from the table, on the tent's south side.
+
+The table sat north, the lampstand sat south, facing each other.
+
+This layout gave the priests light to see the bread and their work.
+
+Every placement inside the tent served a real, practical purpose.
+
+🕯️ The lampstand stood on the south side
+
+🍞 The table sat north, facing it
+
+👀 This gave priests light to work by
+
+📖 Every placement served a real purpose
 
 ---
 
 ## 🔥 He Lighted The Lamps Before The LORD
 
-Notice who performs this act: Moses, not Aaron. At this exact moment, Aaron has been washed, dressed, and anointed, but the priesthood isn't yet functioning on its own - Moses is still personally handling tasks that will soon belong to Aaron's family alone.
+"Before the LORD" means the lamps burned in God's own presence, not just in a room.
 
-🔥 Moses personally lights the lamps here, not Aaron
+Later law required these lamps to burn continually, tended every morning and evening.
 
-⏳ The priesthood exists but isn't yet running independently
+This was the only light inside the tent, since it had no windows.
 
-🔄 Tasks like this one will soon transfer fully to Aaron's family
+God's house was never left dark.
 
-# Exodus 40:26-29
+🔥 Before the LORD means in God's presence
 
-# 🔥 The Golden Altar And The Brazen Altar
+⏰ Tended every morning and evening
 
----
+🌑 The only light in a windowless tent
 
-## 🔥 Put The Golden Altar In The Tent Of The Congregation Before The Vail
-
-The incense altar takes its position last among the Holy Place furniture, sitting right up against the veil - the closest object to the Most Holy Place that any priest could regularly approach without actually crossing inside.
-
-🔥 The incense altar is the last Holy Place item placed
-
-🚪 It sits directly against the veil
-
-🚫 This was the nearest a regularly-serving priest ever got to the ark
+📖 God's house was never left dark
 
 ---
 
-## 💨 And He Burnt Sweet Incense Thereon
+## 🥇 In The Tent Of The Congregation Before The Vail
 
-This is the altar's first actual use - the incense recipe of stacte, onycha, galbanum, and frankincense from chapter 30 gets burned here for the first time. Incense rising in smoke is often used elsewhere in Scripture as a picture of prayer rising up to God (see Psalm 141:2 and Revelation 5:8).
+This is the incense altar, already placed back in verse five.
 
-💨 This is the incense altar's very first recorded use
+It stood in the Holy Place, nearest the inner vail.
 
-📖 The recipe itself came from chapter 30
+Nothing inside that outer room stood closer to God's presence.
 
-🙏 Rising incense smoke often pictures prayer rising to God elsewhere in Scripture
+Position here reflected nearness, not just furniture arrangement.
 
----
+🥇 This is the same incense altar
 
-## 🚪 Set Up The Hanging At The Door Of The Tabernacle
+📍 It stood nearest the inner vail
 
-The tent's own entrance curtain, already planned back in verse 5, is now actually installed - the last piece completing the tent structure itself before attention turns to the court altar outside.
+✨ Nothing stood closer to God's presence
 
-🚪 This is the same door curtain planned earlier in verse 5
-
-✅ Its installation completes the tent structure itself
-
-➡️ Attention now shifts outward, to the court altar
+📖 Position reflected spiritual nearness
 
 ---
 
-## 🐏 Put The Altar Of Burnt Offering...And Offered Upon It The Burnt Offering And The Meat Offering
+## 💨 He Burnt Sweet Incense Thereon
 
-The large bronze altar is set up, and sacrifices are offered on it for the first time. A "burnt offering" was an animal completely consumed by fire, symbolizing total devotion. A "meat offering" is an old English term for a grain or flour offering - "meat" here means food in general, not literally animal flesh.
+"Sweet incense" was a specific blend, its recipe given earlier in Exodus thirty.
 
-🐏 This is the bronze altar's first recorded use for sacrifice
+That exact formula could never be used for anything ordinary.
 
-🔥 A "burnt offering" was an animal entirely consumed, symbolizing total devotion
+Priests burned it morning and evening, the same schedule as the lamps.
 
-🌾 A "meat offering" here means a grain offering - "meat" meant food broadly in old English
+The rising smoke pictured prayer rising up to God.
 
-# Exodus 40:30-33
+💨 A specific blend, given in Exodus thirty
 
-# 💧 Washing, And The Work Is Finished
+🚫 That formula was never for ordinary use
 
----
+⏰ Burned morning and evening, like the lamps
 
-## 💧 Set The Laver Between The Tent...And Put Water There, To Wash Withal
-
-The bronze basin, made from Israelite women's donated mirrors back in chapter 38, is filled with water and installed exactly where the plan in verse 7 called for - functional installation now matching the earlier design.
-
-💧 This is the same laver made from donated mirrors in chapter 38
-
-📐 Its placement matches the plan laid out earlier in verse 7
-
-✅ Design and execution line up exactly
+📖 Rising smoke pictured rising prayer
 
 ---
 
-## 🚿 Moses And Aaron And His Sons Washed Their Hands And Their Feet Thereat
+# Exodus 40:28-33
 
-This is the laver's first recorded use. Notice that Moses washes right alongside Aaron and his sons, even though Moses himself was never made a priest - a small detail highlighting his unique, in-between role as the one who set the whole system up.
-
-🚿 This is the laver's very first recorded use
-
-🤝 Moses washes alongside Aaron's family despite not being a priest himself
-
-🌉 It highlights Moses' unique role bridging leadership and priesthood
+# 🔥 Outer Court Finished
 
 ---
 
-## 🔁 When They Went Into The Tent...And When They Came Near Unto The Altar, They Washed
+## 🍞 Offered Upon It The Burnt Offering And The Meat Offering
 
-Chapter 30:20-21 already established this as a strict, standing rule with no exceptions: wash every single time before entering the tent or approaching the altar, on pain of death for skipping it. This verse shows the rule actually being kept in practice.
+"The burnt offering" was a whole animal, burned completely as a gift to God.
 
-📖 Chapter 30:20-21 already set this as a strict, no-exceptions rule
+"The meat offering" is confusing to modern ears, since it was not meat at all.
 
-⚠️ Skipping this washing carried a death penalty in that earlier passage
+In old English, "meat" simply meant food in general.
 
-✅ This verse shows the rule being put into real practice
+This offering was actually made of flour, oil, and sometimes frankincense.
+
+🐑 Burnt offering means a whole animal burned
+
+🌾 Meat offering meant food in general
+
+🍞 It was really flour, oil, and frankincense
+
+📖 Old English words can mislead modern readers
 
 ---
 
-## 🏁 So Moses Finished The Work
+## 💧 Washed Their Hands And Their Feet Thereat
 
-This phrase deliberately echoes Genesis 2:1-2, where God "finished" His work of creation and rested. The builder of God's dwelling place completing his labor is framed in the same language as creation itself being completed - a small but pointed way of tying this project back to the very beginning of the Bible.
+Moses, Aaron, and Aaron's sons all washed at the laver before serving.
 
-🏁 This phrasing echoes Genesis 2:1-2, where God "finished" His work
+Hands and feet covered exactly what touched blood, dust, and altar ash.
 
-🌍 Completing God's house is framed with creation-level language
+This washing came right between the altar and the tent's entrance.
 
-📖 A deliberate callback tying Exodus back to Genesis
+Skipping it was not a small matter, since the law tied it to life or death.
 
-# Exodus 40:34-35
+💧 Moses, Aaron, and his sons all washed
+
+✋ Hands and feet touched blood and ash
+
+📍 Washing came between altar and entrance
+
+📖 Skipping it was a life or death matter
+
+---
+
+## 🔁 When They Went Into The Tent, They Washed
+
+This is not a one time event, described here as an ongoing habit.
+
+Every single time a priest approached the tent or the altar, he washed first.
+
+Obedience here was not a single grand moment but a daily, repeated discipline.
+
+Holiness got built through habits, not just big decisions.
+
+🔁 This describes an ongoing habit, not one event
+
+✋ Every approach to the tent meant washing first
+
+📅 Obedience was a daily discipline
+
+📖 Holiness gets built through habits
+
+---
+
+## ✅ So Moses Finished The Work
+
+This line echoes Genesis, where God finished His work of creation in six days.
+
+The tabernacle gets built the same way creation did, in careful, ordered stages.
+
+Genesis ends with God resting in a finished world.
+
+Exodus ends with God dwelling in a finished tent.
+
+The tabernacle reads like a small, portable new creation.
+
+✅ This echoes Genesis and creation's finish
+
+🌍 Both stories move through ordered stages
+
+🏡 Genesis ends with rest, Exodus with dwelling
+
+📖 The tabernacle reads like a portable new creation
+
+---
+
+# Exodus 40:34-38
 
 # ☁️ The Glory Fills The Tabernacle
 
 ---
 
-## ☁️ Then A Cloud Covered The Tent Of The Congregation
+## ☁️ A Cloud Covered The Tent Of The Congregation
 
-This is the very same cloud that led Israel out of Egypt (Exodus 13:21-22) and came down on Mount Sinai in thunder and fire (Exodus 19:16-18). Now it settles directly onto the finished tabernacle - the instant the building is complete, God's visible presence arrives with no delay at all.
+This same cloud had led Israel out of Egypt and hovered over Sinai.
 
-☁️ This is the same cloud that led Israel out of Egypt in Exodus 13
+Here it settles down directly onto the finished tabernacle.
 
-⛰️ It's the same cloud that covered Sinai in Exodus 19
+God is not just visiting this tent.
 
-⚡ God's presence arrives the moment the building is finished - no gap, no delay
+He is moving in.
 
----
+The cloud is visible, physical proof that God kept His promise to dwell among Israel.
 
-## ✨ And The Glory Of The LORD Filled The Tabernacle
+☁️ The same cloud from Egypt and Sinai
 
-"Glory" translates a Hebrew word (kabod) meaning weightiness or substantial presence - this isn't a vague feeling, it's something visible and tangible that actually filled physical space. The same thing happens centuries later at the dedication of Solomon's temple (1 Kings 8:10-11), where priests couldn't even stand to minister because of it.
+🏠 It settles onto the finished tabernacle
 
-✨ "Glory" (kabod) means a weighty, visible, tangible presence
+🤝 God moves in, He does not just visit
 
-🏛️ The same event repeats at Solomon's temple in 1 Kings 8:10-11
-
-👀 This was something people could physically perceive, not just sense emotionally
+📖 Visible proof God kept His promise
 
 ---
 
-## 🚫 Moses Was Not Able To Enter Into The Tent Of The Congregation
+## 🙅 Moses Was Not Able To Enter
 
-This is a striking detail: Moses, who spoke with God face to face on the mountain (Exodus 33:11) more directly than anyone else in the Old Testament, is now physically unable to enter his own finished tent because God's presence is too overwhelming. Closeness to God never erases His holiness.
+Moses had climbed Mount Sinai before and stood inside God's cloud there.
 
-🚫 Even Moses, God's closest human friend so far, can't enter
+Here, even Moses cannot walk into the tent he just finished building.
 
-📖 Exodus 33:11 already described their face-to-face relationship
+God's glory filled every inch of the space, leaving no room to enter.
 
-⚡ Intimacy with God doesn't cancel out His overwhelming holiness
+Even Israel's own leader needed a safe way to approach God, not just courage.
 
----
+🏔️ Moses had entered God's cloud on Sinai before
 
-## ⏳ Because The Cloud Abode Thereon
+🚫 Even Moses could not enter this time
 
-"Abode" is old English for "remained" or "stayed put." This wasn't a brief visit or a flash of light that faded - the presence of God settled in and stayed, dwelling in the structure exactly as its name, "tabernacle," dwelling place, promised it would.
+✨ God's glory filled the whole space
 
-⏳ "Abode" means remained or stayed, not a brief visit
-
-🏠 This matches the name "tabernacle" itself - a true dwelling place
-
-✅ God's presence didn't fade; it settled in and stayed
+📖 Leaders still need a safe way to God
 
 ---
 
-## 📖 A Foretaste Of What Was Still To Come
+## 🧭 When The Cloud Was Taken Up, They Went Onward
 
-Centuries later, John 1:14 describes Jesus as the Word who "dwelt," or literally "tabernacled," among people - using the same imagery on purpose. Revelation 21:3 promises a future where "the tabernacle of God is with men" permanently, with no tent, veil, or distance left at all. The tent finished in this chapter is the first physical version of a promise that runs the entire length of Scripture: God coming to actually live with the people He saves.
+From this point forward, the cloud became Israel's only travel signal.
 
-📖 John 1:14 describes Jesus using this same "tabernacle" imagery on purpose
+No one voted, planned routes, or guessed when to move camp.
 
-🏙️ Revelation 21:3 promises this dwelling becomes permanent, with no veil left
+The cloud lifting was the only signal that mattered.
 
-🎯 One promise - God dwelling with His people - runs from here to the Bible's final pages
+This same system gets explained in even more detail later, in Numbers nine.
 
-# Exodus 40:36-38
+🧭 The cloud became Israel's only travel signal
 
-# 🔥 The Cloud By Day, The Fire By Night
+🚫 No one voted or planned the route
 
----
+⬆️ Lifting meant it was time to move
 
-## ➡️ When The Cloud Was Taken Up From Over The Tabernacle, The Children Of Israel Went Onward
-
-From this point forward, the cloud itself becomes Israel's marching orders. There's no separate signal, no human decision to strike camp - when the cloud visibly lifted off the tabernacle, that was the command to pack up and move.
-
-➡️ The cloud itself functioned as Israel's signal to move
-
-🚫 No separate human decision was needed to start traveling
-
-👀 A visible, physical sign controlled the whole nation's schedule
+📖 Numbers nine explains this system further
 
 ---
 
-## 🛑 If The Cloud Were Not Taken Up, Then They Journeyed Not Till The Day That It Was Taken Up
+## 🔥 In The Sight Of All The House Of Israel
 
-Staying put was just as much God's decision as moving was. Numbers 9:15-23 later explains this could mean staying camped for as little as a single day or as long as a full year - and either way, Israel wasn't free to decide for themselves when they'd had enough of waiting.
+Cloud by day, fire by night meant the guide never disappeared.
 
-🛑 Staying camped was God's decision, not a matter of convenience
+It was visible even in total darkness.
 
-📖 Numbers 9:15-23 explains this could last anywhere from a day to a year
+This is also the very last verse of the whole book of Exodus.
 
-⏳ Israel had no say over how long they waited in any one place
+The book opened with Israel enslaved and invisible to Egypt's rulers.
 
----
+It closes with Israel free, visible, and led openly by God Himself.
 
-## 🌙 The Cloud Of The LORD Was Upon The Tabernacle By Day, And Fire Was On It By Night
+Deliverance, law, and God's dwelling presence together close out the whole book.
 
-The visible form simply changed with the light. A cloud is easy to see against a bright daytime sky, but nearly invisible in the dark - so at night, the same presence appeared as glowing fire instead, doubling back to the exact pattern first described when Israel left Egypt in Exodus 13:21-22.
+🔥 Guidance never stopped, day or night
 
-🌙 The same presence changed appearance: cloud by day, fire by night
+⛓️ Exodus opened with Israel enslaved and unseen
 
-👀 A cloud would be hard to see against a dark night sky; fire wouldn't
+🕊️ It ends with Israel free and openly led
 
-📖 This directly matches Exodus 13:21-22's original description
-
----
-
-## 👁️ In The Sight Of All The House Of Israel, Throughout All Their Journeys
-
-This wasn't a private sign reserved for Moses or the priests alone - every person in the entire nation could see it, every single day, for the whole span of "all their journeys," which stretches across the rest of the Pentateuch, through the forty years covered in Numbers and into Deuteronomy.
-
-👁️ Every person in Israel could see this sign, not just leaders
-
-🗓️ "All their journeys" points ahead to the forty years covered in Numbers
-
-📖 This detail bridges Exodus into the rest of the Pentateuch
-
----
-
-## 🏁 The Book Of Exodus Ends Here
-
-Exodus opened with Israel enslaved, crying out under Pharaoh, invisible to the powers running their world (chapters 1-2). It closes with Israel free, organized under God's law, carrying His own visible presence with them into the wilderness. The distance between those two starting and ending points is the entire message of the book: God delivers His people, gives them His law, and comes to actually live among them.
-
-🏁 Exodus began with Israel enslaved and unseen, crying out in Egypt
-
-✅ It ends with Israel free, ordered, and carrying God's visible presence
-
-📖 Deliverance, law, and God's dwelling presence - the whole book in three moves`;
+📖 Deliverance, law, and presence close the book
+`.trim();
 
 export const EXODUS_FORTY_PERSONAL_SECTIONS = parseExodusFortyRawNotes(EXODUS_FORTY_RAW_NOTES);

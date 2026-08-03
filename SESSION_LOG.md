@@ -566,3 +566,7 @@ Next up: Exodus 39
 ## 2026-08-03T01:58:48Z (hourly chapter notes run)
 Chapter: Exodus 39 | Duration: 13 min | Sections: 9 | Cards: 57 | Status: pass
 Next up: Exodus 40
+
+## 2026-08-03T02:57:02Z (hourly chapter notes run)
+Chapter: Exodus 40 | Duration: 10 min | Sections: 9 | Cards: 38 | Status: pass
+Next up: Leviticus 1
