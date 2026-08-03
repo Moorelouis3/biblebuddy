@@ -7638,6 +7638,59 @@
           "at": "2026-08-03T09:02:43Z"
         }
       ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 7,
+      "startedAt": "2026-08-03T09:46:13Z",
+      "finishedAt": "2026-08-03T09:57:46Z",
+      "durationMinutes": 12,
+      "sections": 8,
+      "cards": 46,
+      "verses": 38,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (10 sections / 12 cards, paragraph bodies, three bullets per card) from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Leviticus 7 is the priest's side procedural chapter for the trespass offering (killed where the burnt offering is killed, blood sprinkled round about, the rump/inwards/kidneys/caul fat portions, most holy, male priests only, one identical law shared with the sin offering, the officiating priest keeps the meat), the priest's fixed portions from the burnt offering (the skin) and the grain offering (baked, panfried, or raw/dry, cooked going to the officiating priest and raw shared equally among all priests), the peace offering for thanksgiving (unleavened cakes and wafers plus the one real leavened bread exception, the heave offering, the same day eating deadline), the vow and voluntary offerings' extra day before the third day burn deadline and the abomination/iniquity language for breaking it, the uncleanness rules that disqualify meat and the repeated cut off from his people penalty, the permanent no fat/no blood dietary law for every Israelite (natural death versus predator killed fat, blood tied to life itself), the wave breast (shared by Aaron's whole family) versus heave shoulder (personal to the officiating priest) distinction, and the closing colophon anchoring the whole seven chapter sacrificial code to Aaron's ordination day and Mount Sinai. Rebuilt from the prior file's 10 sections into 8 tighter clusters, kept the same exported type/function/const names (LeviticusSevenPersonalSection, parseLeviticusSevenRawNotes, LEVITICUS_SEVEN_RAW_NOTES, LEVITICUS_SEVEN_PERSONAL_SECTIONS). Density about 1.21 cards/verse (38 verses, 46 cards), leaning toward the chapter's own precedent for repetitive priestly portion law rather than padding restated penalty clauses. scripts/check_bible_note_style.py found 4 problems on first pass (four bullets one word over the 8 word limit), fixed, second run clean. A manual section 13 eye check also split two body lines that stacked two ideas together and confirmed no banned words, hyphens, em dashes, semicolons, or contractions. Parser check passed exactly via getBibleReaderStudySections('Leviticus', 7) (8/8 sections, 46 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range covering Leviticus 1-27, replaceStudySectionsForBookRange call all pre-existing), so no wiring changes were needed. data/bible-notes-style-redo-remaining.json Leviticus 7 entry removed from the front of the list as part of this commit; next redo target is Leviticus 8.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-03T09:46:13Z"
+        },
+        {
+          "name": "target chapter determined: Leviticus 7 (style redo, first in remaining backlog)",
+          "at": "2026-08-03T09:46:43Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Leviticus.json (38 verses)",
+          "at": "2026-08-03T09:46:43Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (lib/genesisThirtyOneSource.ts) read",
+          "at": "2026-08-03T09:46:43Z"
+        },
+        {
+          "name": "source file written (lib/leviticusSevenSource.ts, 8 sections, 46 cards)",
+          "at": "2026-08-03T09:54:23Z"
+        },
+        {
+          "name": "style checker clean (after fixing 4 over-length bullets)",
+          "at": "2026-08-03T09:54:37Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo chapter (no changes needed, Leviticus 1-27 preserveExactPhraseBodies)",
+          "at": "2026-08-03T09:54:55Z"
+        },
+        {
+          "name": "parser check passed (8 sections, 46 cards, renders verbatim)",
+          "at": "2026-08-03T09:54:55Z"
+        },
+        {
+          "name": "tsc clean (npx tsc --noEmit -p ., exit 0)",
+          "at": "2026-08-03T09:56:14Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, redo-remaining.json popped)",
+          "at": "2026-08-03T09:57:46Z"
+        }
+      ]
     }
   ]
 }

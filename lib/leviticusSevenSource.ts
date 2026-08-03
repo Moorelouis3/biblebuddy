@@ -81,681 +81,974 @@ function parseLeviticusSevenRawNotes(rawText: string): LeviticusSevenPersonalSec
     });
   }
 
-  if (sections.length !== 10) {
-    throw new Error("Expected 10 Leviticus 7 sections, received " + sections.length);
+  if (sections.length !== 8) {
+    throw new Error("Expected 8 Leviticus 7 sections, received " + sections.length);
   }
 
   return sections;
 }
 
-const LEVITICUS_SEVEN_RAW_NOTES = `# Leviticus 7:1-2
+const LEVITICUS_SEVEN_RAW_NOTES = `# Leviticus 7:1-7
 
-# 🩸 One More Law: The Guilt Offering
-
----
-
-## 📜 Likewise This Is The Law Of The Trespass Offering: It Is Most Holy
-
-The trespass offering (also called the guilt offering) was already explained back in chapter 5:14-6:7 - who brings it and for what wrongs. This new "law" heading shifts to the priest's side: how the priest is supposed to handle it once it reaches the altar, matching the same pattern already used for the burnt, grain, and sin offerings in chapter 6.
-
-"Most holy" repeats the top sacredness ranking already given to the grain offering (6:17) and the sin offering (6:25) - the guilt offering shares that same highest category.
-
-📜 This restarts the trespass offering from chapter 5, now from the priest's side
-
-🔁 Same shift already made for burnt, grain, and sin offerings back in chapter 6
-
-👑 "Most holy" repeats the same top ranking given to those other offerings
+# 🩸 The Law Of The Trespass Offering
 
 ---
 
-## 📍 In The Place Where They Kill The Burnt Offering Shall They Kill The Trespass Offering
+## ⚖️ This Is The Law Of The Trespass Offering
 
-Chapter 1:11 already established that the burnt offering was killed on the north side of the altar. This verse locks the trespass offering to that same exact spot, rather than describing a new location of its own.
+A trespass offering was not the same as a sin offering.
 
-One shared killing place for multiple offering types kept the ritual simple and consistent, and physically tied every sacrifice to the same holy ground.
+It covered a specific wrong that could be measured and repaid.
 
-📍 This reuses the exact killing spot chapter 1:11 set for the burnt offering
+Stealing, lying under oath, or misusing something holy could all call for it.
 
-🔁 One shared location served several different offering types
+The guilty person still owed repayment on top of the sacrifice.
 
-🏛️ Every sacrifice was tied to the same specific holy ground
+This offering dealt with a real debt, not just a feeling of guilt.
+
+⚖️ Trespass offering covers a specific wrong
+
+💰 Repayment was owed on top of it
+
+🙅 Different from the general sin offering
+
+📖 Sin can create a real debt
+
+---
+
+## 🔝 It Is Most Holy
+
+"Most holy" was the highest level of sacredness in Israel's worship.
+
+Only priests could eat this meat, and only inside the holy place.
+
+An ordinary Israelite could never touch it, even a faithful one.
+
+Some offerings ranked lower and could be eaten by a priest's family at home.
+
+This offering stayed at the very top of that scale.
+
+🔝 Most holy marks the highest rank
+
+👨‍⚖️ Only priests could eat this meat
+
+🚫 Ordinary Israelites could never touch it
+
+📖 Some offerings ranked lower than this
+
+---
+
+## 🧭 In The Place Where They Kill The Burnt Offering
+
+This place was the north side of the altar.
+
+Leviticus chapter one already set that location for the burnt offering.
+
+The trespass offering had to die in that same exact spot.
+
+One dedicated place kept the sacrifices from becoming careless or random.
+
+Every offering pointed back to the same altar, the same system.
+
+🧭 The place means the altar's north side
+
+📜 Chapter one already set this location
+
+🔁 The trespass offering reused that spot
+
+📖 One altar, one unified system
 
 ---
 
 ## 🩸 The Blood Thereof Shall He Sprinkle Round About Upon The Altar
 
-"Round about" means the blood was splashed on all sides of the altar. This differs from the sin offering, whose blood in chapter 4 was applied to the horns (corners) of the altar. The trespass offering's blood is instead handled like the peace offering's, sprinkled generally "round about" (3:2).
+Blood stood for the life of the animal given in place of the guilty person.
 
-This quietly connects the trespass offering more closely to the burnt and peace offerings than to the sin offering, even though its purpose sounds closer to the sin offering.
+"Round about" means the priest sprinkled all four sides of the altar.
 
-🩸 "Round about" means splashed on every side of the altar
+Nothing about this act was partial or one sided.
 
-🔀 This differs from the sin offering's blood, applied to the altar's horns
+This covered the entire debt, not a portion of it.
 
-🔗 It links the trespass offering's ritual more to burnt/peace offerings
+🩸 Blood stands for a life given up
 
-# Leviticus 7:3-5
+🔄 Round about means all four sides
 
-# 🫀 Which Fat Portions Burn
+🎯 The act was never partial
+
+➡️ A whole debt got a whole covering
 
 ---
 
-## 🐑 All The Fat Thereof; The Rump
+## 🐑 He Shall Offer Of It All The Fat Thereof, The Rump
 
-"Rump" refers to the fat tail. Many sheep raised in the ancient Near East were a fat-tailed breed, and the tail itself could grow large and heavy, storing a significant amount of fat - it was considered a genuine delicacy, not a scrap. That whole tail was burned for God rather than kept as food.
+The "rump" was the broad fat tail common on sheep raised in this region.
 
-🐑 "Rump" means the fat tail of the sheep
+It was considered a rich, valuable piece of meat.
 
-⚖️ Fat-tailed sheep in this region could carry a large, heavy tail
+God received the richest parts of the animal, not the leftovers.
 
-🔥 This prized cut was burned for God, not eaten
+The best portion went to the altar before anyone else ate a bite.
+
+🐑 Rump means the sheep's fat tail
+
+💎 It was the richest cut available
+
+🔥 The best part went to the altar
+
+📖 God received first, not last
 
 ---
 
 ## 🫀 The Fat That Covereth The Inwards
 
-This is the layer of fat wrapped around the stomach and intestines. The exact same portion was already required for the sin offering (4:8) and the peace offering (3:3) - the trespass offering's fat list isn't new, it copies what earlier offerings already required.
+"Inwards" means the internal organs of the animal.
 
-🫀 This fat wraps around the stomach and intestines
+A layer of fat naturally sits over them.
 
-🔁 Chapters 3 and 4 already required this exact same portion
+That fat always belonged to God, never to the person offering it.
 
-📋 The trespass offering's fat list simply repeats earlier ones
+Fat was considered the richest part of any animal in this culture.
+
+🫀 Inwards means the internal organs
+
+🧈 Fat over them belonged to God
+
+🚫 Never eaten by the offerer
+
+📖 Fat symbolized the animal's richness
 
 ---
 
 ## 🫘 The Two Kidneys, And The Fat That Is On Them, Which Is By The Flanks
 
-In Hebrew thought, the kidneys were often connected with a person's innermost feelings, conscience, or motives - something close to how "heart" is used today. Requiring the kidneys specifically may reflect giving God the innermost, hidden parts of the animal, not merely the outer, visible ones.
+The kidneys sat near the flanks, the sides of the animal's lower body.
 
-🫘 Kidneys were connected to conscience and inner feelings in Hebrew thought
+In Hebrew thought, the kidneys were linked to a person's inner conscience.
 
-🎯 Their fat may represent giving God the hidden parts, not just the visible ones
+That is something close to how "heart" gets used in English today.
 
-🔁 This matches the same kidney requirement from chapters 3 and 4
+Giving God this piece pictured giving him the inner, hidden parts.
+
+Not just the outer, visible ones.
+
+🫘 Kidneys sat near the flanks
+
+🧠 Hebrew thought linked kidneys to conscience
+
+💭 Similar to how "heart" is used today
+
+📖 God received the hidden parts too
 
 ---
 
 ## 🍖 The Caul That Is Above The Liver
 
-The "caul" is a fatty membrane attached to the liver, sometimes translated "the lobe of the liver." This is the fourth and final specific fat portion named, completing a list that has stayed identical across the peace, sin, and now trespass offerings.
+A "caul" is the fatty membrane that wraps around the liver.
 
-🍖 "Caul" here means a fatty membrane attached to the liver
+This detail repeats from the burnt offering and the sin offering earlier in Leviticus.
 
-📋 This completes the same four-part fat list used across multiple offerings
+The same pieces get removed every time.
 
-🔁 Peace, sin, and trespass offerings all share this identical fat requirement
+It never depends on which offering is in view.
+
+One consistent pattern runs underneath several different sacrifices.
+
+🍖 Caul means the membrane over the liver
+
+🔁 The same pieces repeat across offerings
+
+📏 One pattern, many different sacrifices
+
+📖 Consistency was part of the design
 
 ---
 
 ## 🔥 The Priest Shall Burn Them Upon The Altar For An Offering Made By Fire
 
-This closing line repeats a formula used across nearly every offering type in Leviticus so far - the fat portions go entirely into the fire, none of it kept for food, regardless of which offering brought them there.
+Burning the fat sent it up as smoke toward heaven.
 
-🔥 This is the same closing fire-offering formula used throughout Leviticus
+This is what "an offering made by fire" means.
 
-🚫 None of this fat became food, no matter which offering it came from
+The smoke was the visible sign that the gift had reached God.
 
-📖 The trespass offering's fat handling ends exactly like the others
+This step was never wasted effort.
 
-# Leviticus 7:6-7
+It carried real meaning.
 
-# 👨‍⚖️ One Law For Both Guilt And Sin
+🔥 Burning sent the fat up as smoke
 
----
+☁️ Smoke was the sign of a gift given
 
-## 👑 Every Male Among The Priests Shall Eat Thereof: It Shall Be Eaten In The Holy Place
+🚫 Not a wasteful step, a real one
 
-This repeats the exact male-only, holy-place-only eating rule already set for the grain offering (6:18) and the ordinary sin offering (6:29). The trespass offering's remaining meat follows the same restriction, not a new one written just for it.
-
-👑 This repeats the male-only rule from 6:18 and 6:29
-
-🏛️ The same "holy place only" location rule applies here too
-
-🔁 No new restriction was invented for the trespass offering specifically
+📖 Fire carried the offering to God
 
 ---
 
-## ⚖️ As The Sin Offering Is, So Is The Trespass Offering: There Is One Law For Them
+## 👨‍⚖️ Every Male Among The Priests Shall Eat Thereof, In The Holy Place
 
-This sentence states directly what the last several verses have already been showing piece by piece: the sin offering and trespass offering aren't separate systems, they run on one identical set of rules. This answers exactly the question a careful reader would already be asking after noticing how similar the two offerings sound.
+This law names who could eat this meat, priests who were male.
 
-⚖️ This confirms sin and trespass offerings share one identical rulebook
+Women in priestly families were not included in this specific portion.
 
-🤔 It directly answers the "haven't I heard this already" feeling
+The meat also had to be eaten inside the holy place itself.
 
-📖 Repetition across offerings in this book is intentional, not accidental
+Location and person both mattered for this offering.
+
+👨‍⚖️ Only male priests could eat this meat
+
+🚫 Priestly women were not included here
+
+🏛️ Eaten only in the holy place
+
+📖 Person and place both mattered
 
 ---
 
-## 🎁 The Priest That Maketh Atonement Therewith Shall Have It
+## ⚖️ As The Sin Offering Is, So Is The Trespass Offering
 
-This portion goes personally to whichever priest actually performed that specific atonement ritual - not divided among all the priests in general. Being the one who did the work came with a direct, personal benefit.
+These were two different offerings for two different situations.
 
-🎁 This food goes to the one priest who did the ritual, not all priests generally
+A sin offering could cover an unintentional wrong with no clear debt attached.
 
-🙋 Personal service came with a personal, direct benefit
+A trespass offering usually involved an actual object or value that had been wronged.
 
-🔁 This same "officiating priest keeps it" principle appears again later in the chapter
+Even so, the ritual itself followed one identical set of steps.
+
+⚖️ Two offerings, two different situations
+
+💰 Trespass often involved real repayment
+
+🔁 Both followed the same ritual steps
+
+📖 Different problems, same road to atonement
+
+---
+
+## 🍽️ The Priest That Maketh Atonement Therewith Shall Have It
+
+Whichever priest actually performed the sacrifice received this meat as his own portion.
+
+Priests owned no farmland in Israel.
+
+This meat was part of how they were fed.
+
+Serving at the altar was their entire livelihood.
+
+👨‍⚖️ The officiating priest kept the meat
+
+🌾 Priests owned no farmland of their own
+
+🍽️ Offerings were how priests were fed
+
+📖 Service at the altar was their income
 
 # Leviticus 7:8-10
 
-# 🧥 Skins, Ovens, And Equal Shares
+# 🥖 What Belongs To The Priests
 
 ---
 
-## 🧥 The Priest...Shall Have To Himself The Skin Of The Burnt Offering
+## 🐑 The Priest Shall Have To Himself The Skin Of The Burnt Offering
 
-This is new information not mentioned back in chapter 6:8-13's burnt offering instructions. Even though the meat of a burnt offering was wholly burned with nothing eaten, the hide itself wasn't burned - it went to the officiating priest, likely valuable for leather and other practical use.
+Burnt offerings were entirely burned up, unlike other sacrifices.
 
-🧥 The burnt offering's hide wasn't burned along with the meat
+Almost nothing physical remained afterward except the animal's skin.
 
-💰 This hide was valuable, useful material like leather
+That single leftover piece became the priest's own payment for that sacrifice.
 
-🙋 It went personally to whichever priest performed that offering
+Even the driest case still gave the priest something.
 
----
+🔥 Burnt offerings were fully burned up
 
-## 🍞 The Meat Offering That Is Baken In The Oven...Dressed In The Fryingpan, And In The Pan
+🐑 Only the skin was left over
 
-This lists the same three grain-offering cooking methods chapter 2 already described - oven, flat pan, and fryingpan. Whichever method was used, the cooked result here goes to the officiating priest personally, the same "whoever did the ritual keeps this portion" rule already seen with the trespass offering.
+👨‍⚖️ The skin became the priest's payment
 
-🍞 These are the same three cooking methods chapter 2 already listed
-
-🙋 Cooked grain offerings go to the specific priest who officiated
-
-🔁 This matches the same personal-portion rule used elsewhere in this chapter
+📖 Even this offering still paid the priest
 
 ---
 
-## 🤲 Every Meat Offering, Mingled With Oil, And Dry, Shall All The Sons Of Aaron Have, One As Much As Another
+## 🍞 Baken In The Oven
 
-Uncooked grain offerings - raw flour mixed with oil, or offered dry - work differently than the cooked kind. Instead of going to one officiating priest, they're divided equally among the whole priestly family. "One as much as another" means an equal share regardless of age, seniority, or rank.
+"Baken" is an old form of the word baked.
 
-🤲 Raw or dry grain offerings are shared, not kept by one priest alone
+An oven in this culture was often built from clay or stone.
 
-⚖️ "One as much as another" means genuinely equal shares
+Grain offerings could be prepared this way before reaching the altar.
 
-👪 Seniority or rank made no difference to this particular division
+The finished bread still belonged to the priest who offered it.
+
+🍞 Baken is an old form of baked
+
+🏺 Ovens were clay or stone structures
+
+👨‍⚖️ The bread belonged to the offering priest
+
+📖 The cooking method never changed who received it
 
 ---
 
-## 🔀 Cooked Belongs To One Priest, Raw Is Shared By All
+## 🍳 Dressed In The Fryingpan, And In The Pan
 
-Stepping back across verses 9-10: whether a grain offering had already been cooked seems to be the deciding factor for how it was divided. Baked or fried offerings went to the one priest who handled that specific ritual, while raw or dry offerings were pooled and split evenly among the whole priestly family.
+A "fryingpan" cooked bread in a shallow layer of oil.
 
-🔀 Whether it was cooked already decided how it got divided
+A flat "pan" worked more like a griddle.
 
-🙋 Cooked portions rewarded the specific priest who officiated
+Naming both tools shows this law covered every common way Israelite homes cooked bread.
 
-👪 Raw portions kept the whole priestly family provided for equally
+No cooking method offered a way around the rule.
+
+🍳 Fryingpan meant cooking in oil
+
+🫓 A flat pan worked like a griddle
+
+🏠 Both were common household tools
+
+📖 No cooking method escaped this law
+
+---
+
+## 🤲 Mingled With Oil, And Dry, Shall All The Sons Of Aaron Have
+
+Some grain offerings were mixed with oil.
+
+Others were kept plain and dry.
+
+This type was shared equally among every priest on duty.
+
+Not only the one priest who brought it.
+
+Fairness mattered even inside the priesthood itself.
+
+🫒 Some grain offerings included oil
+
+🌾 Others stayed plain and dry
+
+🤝 This type was shared among all priests
+
+📖 Fairness applied within the priesthood too
 
 # Leviticus 7:11-15
 
-# 🙏 The Peace Offering: Three Kinds Of Thanks
+# 🍞 The Peace Offering Of Thanksgiving
 
 ---
 
-## 📖 This Is The Law Of The Sacrifice Of Peace Offerings
+## 🕊️ This Is The Law Of The Sacrifice Of Peace Offerings
 
-The peace offering itself was first introduced back in chapter 3. This verse begins the priest's-side instructions for it, following the exact same "here's the law of..." pattern already used for the burnt, grain, sin, and trespass offerings.
+A peace offering was not primarily about fixing sin.
 
-📖 Peace offerings were first introduced back in chapter 3
+It celebrated an already good relationship with God.
 
-🔁 This follows the same "law of..." pattern used for every other offering
+Thanksgiving, a fulfilled vow, or simple generosity could all prompt one.
 
-👔 These instructions are written for the priest's side of the ritual
+This offering was joyful, not corrective.
 
----
+🕊️ Peace offering was not about guilt
 
-## 🙏 If He Offer It For A Thanksgiving
+🙏 It celebrated an existing good relationship
 
-This verse introduces the first of three peace offering subtypes covered in this section: a thanksgiving offering. It was brought specifically in response to a particular blessing or answered prayer already received - a spontaneous, occasion-driven expression of gratitude.
+🎉 Thanksgiving or a kept vow could prompt it
 
-🙏 A thanksgiving offering responded to a specific blessing already received
-
-✨ It was spontaneous, tied to one particular occasion
-
-📋 Two more peace offering subtypes follow in the next verses
+📖 A joyful offering, not a corrective one
 
 ---
 
-## 🍰 Unleavened Cakes Mingled With Oil
+## 🎂 Unleavened Cakes Mingled With Oil
 
-"Cakes" here were a thicker bread, made by mixing oil directly into the flour before baking - similar to the grain offering's basic recipe already described in chapter 2:4. No yeast was used, matching the same leaven ban given for offerings burned on the altar.
+"Unleavened" means made without yeast, so the bread stayed flat.
 
-🍰 "Cakes" were a thicker bread with oil mixed into the dough
+"Cakes" were a thicker bread with oil mixed into the flour.
 
-🔁 This matches chapter 2:4's basic grain-offering recipe
+Oil added richness to what was otherwise a simple food.
 
-🚫 No yeast was used, following the standard leaven ban
+This bread accompanied the animal sacrifice for a thanksgiving offering.
+
+🍞 Unleavened means made without yeast
+
+🫒 Oil enriched the plain flour
+
+🎂 Cakes were a thicker mixed bread
+
+📖 Bread accompanied the thanksgiving sacrifice
 
 ---
 
 ## 🫓 Unleavened Wafers Anointed With Oil
 
-"Wafers" were a separate, thinner style of flatbread, brushed with oil on the outside after baking rather than mixed in beforehand. Offering multiple bread styles together (cakes and wafers) gave variety within a still-strict, unleavened requirement.
+A "wafer" was a thin, crisp piece of bread, unlike the thicker cake.
 
-🫓 "Wafers" were thin flatbread, oiled on the outside, not mixed in
+"Anointed with oil" here means the oil was brushed on top.
 
-🔀 This differs in method from the thicker "cakes" just named
+That differs from the cakes, where oil was mixed into the dough itself.
 
-🍞 Multiple bread styles were allowed, all still unleavened
+Three bread forms show real effort, not habit.
 
----
+🍘 A wafer was thin and crisp
 
-## 🍞 Leavened Bread With The Sacrifice Of Thanksgiving
+🖌️ Anointed here means oil brushed on top
 
-This is a real exception worth noticing: leavened (yeasted) bread shows up here, right alongside the unleavened cakes and wafers. Leaven was never allowed to be burned on the altar (chapter 2:11), so this leavened bread wasn't for the fire - it was extra food for the shared meal that followed the sacrifice.
+🍞 Different from oil mixed into dough
 
-🍞 Leavened bread appears here, unlike anywhere burned on the altar
-
-🚫🔥 Chapter 2:11 already banned leaven from anything burned in the fire
-
-🍽️ This bread was for the meal, not the altar
+📖 Variety here showed real effort
 
 ---
 
-## ✋ One Out Of The Whole Oblation For An Heave Offering
+## 🍞 Besides The Cakes, He Shall Offer Leavened Bread
 
-"Heave offering" describes a portion physically lifted upward as a gesture of dedication before being set aside for the priest. It's a related but distinct action from the "wave offering" mentioned later in the chapter, which moved side to side instead. Both were presentation gestures marking food as reserved for God's servants.
+Leavened bread contains yeast, so it rises.
 
-✋ "Heave offering" involved lifting the portion upward as a gesture
+Most grain offerings in Leviticus banned yeast completely.
 
-🔀 This differs from the "wave offering," a side-to-side motion
+This offering makes a rare exception, adding risen bread beside the flat cakes.
 
-🎯 Both gestures marked food as set apart for the priests
+The added variety mirrored the offerer's own overflowing gratitude.
 
----
+🍞 Leavened bread contains yeast, unlike the rest
 
-## 🙋 It Shall Be The Priest's That Sprinkleth The Blood Of The Peace Offerings
+🚫 Yeast was normally banned in offerings
 
-Just like the trespass offering and the cooked grain offering earlier in this chapter, this bread portion goes specifically to whichever priest personally performed that day's blood ritual - not shared generally among all the priests.
+🎉 This offering makes a rare exception
 
-🙋 This portion goes to the one priest who did the blood ritual
-
-🔁 The same personal-officiant rule already used twice in this chapter
-
-🎁 Performing the ritual came with a direct personal benefit again
+📖 Variety here mirrored real gratitude
 
 ---
 
-## 📅 Eaten The Same Day...Shall Not Leave Any Of It Until The Morning
+## 🎁 One Out Of The Whole Oblation For An Heave Offering
 
-The thanksgiving offering's meat had to be eaten the very same day it was sacrificed, with nothing saved overnight. This tight deadline likely encouraged inviting family, neighbors, and even the poor to share the meal immediately, rather than storing the meat for later.
+"Oblation" is an old word simply meaning an offering or gift.
 
-📅 Thanksgiving offering meat had to be eaten that same day
+A "heave offering" was a portion lifted up and set apart for God.
 
-⏰ Nothing could be saved or stored until morning
+One piece out of the whole batch of bread went to the priest this way.
 
-🤝 This likely pushed the offerer to share the meal right away
+That piece belonged to whichever priest had handled the blood of the sacrifice.
+
+🎁 Oblation means an offering or gift
+
+⬆️ Heave offering means a portion lifted up
+
+🍞 One piece was set apart from the batch
+
+📖 It paid the priest who handled the blood
+
+---
+
+## 🌙 It Shall Not Leave Any Of It Until The Morning
+
+A thanksgiving peace offering had to be eaten the very same day.
+
+Nothing could be saved until morning.
+
+Without refrigeration, meat left overnight would spoil quickly.
+
+The rule protected the worshiper, not only the ritual's meaning.
+
+🌙 Nothing could be saved until morning
+
+🍖 Meat would spoil without refrigeration
+
+⏰ The whole animal was eaten that day
+
+📖 The rule protected people, not just ritual
 
 # Leviticus 7:16-18
 
-# ⏳ Vows, Free Gifts, And A Third-Day Deadline
+# ⏳ How Long The Meat Could Wait
 
 ---
 
-## 🤝 If The Sacrifice Of His Offering Be A Vow
+## 🤝 If The Sacrifice Of His Offering Be A Vow, Or A Voluntary Offering
 
-A "vow" offering fulfilled a specific promise already made to God - something like "if you do this for me, I will offer this sacrifice." Unlike the thanksgiving offering's spontaneous gratitude, a vow offering paid off an obligation the offerer had already committed to in advance.
+A "vow" offering fulfilled a promise someone had already made to God.
 
-🤝 A vow offering fulfilled a promise already made to God
+A "voluntary offering" was given freely, with no promise attached.
 
-📜 It was an obligation the offerer had committed to in advance
+Both differ from the thanksgiving offering described one verse earlier.
 
-🔀 This differs from thanksgiving's spontaneous, unplanned gratitude
+The reason behind a gift could change its own rules.
 
----
+🤝 A vow offering fulfilled a promise
 
-## 🎁 Or A Voluntary Offering
+🎁 A voluntary offering had no promise attached
 
-A "voluntary" or freewill offering had no prior promise behind it at all - it was given purely out of the offerer's own generosity, with nothing owed and nothing prompting it beyond personal devotion.
+🔀 Different from the thanksgiving offering before it
 
-🎁 A voluntary offering came with no prior promise attached
-
-💛 It was given purely out of personal generosity
-
-📋 This is the third and final peace offering subtype named in this chapter
+📖 The reason behind a gift shaped its rules
 
 ---
 
-## 📆 It Shall Be Eaten The Same Day...And On The Morrow Also
+## 📆 On The Morrow Also The Remainder Of It Shall Be Eaten
 
-Vow and voluntary offerings got an extra day compared to thanksgiving's single-day limit. This may reflect that vow offerings could sometimes involve larger, more expensive animals, needing more time for a full meal to actually be eaten.
+These two offering types got an extra day that thanksgiving did not receive.
 
-📆 Vow/voluntary offerings allowed two days, not just one
+The meat could be eaten on the day of the sacrifice or the day after.
 
-🐄 Larger animals may have needed more time to be eaten
+That single extra day was worth spelling out clearly.
 
-🔀 This is a real, practical difference from the thanksgiving offering's rule
+Not every peace offering ran on the same clock.
 
----
+📆 An extra day was allowed here
 
-## 🔥 The Remainder...On The Third Day Shall Be Burnt With Fire
+🍖 Meat lasted through the next day
 
-Whatever meat was still left by day three had to be destroyed completely, never quietly saved, eaten late, or given away. There was no allowance for stretching this deadline for convenience.
+⏰ Worth spelling out clearly
 
-🔥 Leftover meat on day three was destroyed, not saved
-
-🚫 There was no convenient way around this deadline
-
-⏳ The two-day window was a hard limit, not a suggestion
+📖 Not every offering ran on one clock
 
 ---
 
-## 🚫 It Shall Not Be Accepted, Neither Shall It Be Imputed Unto Him
+## 🔥 The Remainder Of The Flesh On The Third Day Shall Be Burnt With Fire
 
-Eating this meat on the third day didn't just break a food rule - it retroactively canceled the entire offering, as if it had never been accepted by God at all. The timing violation reached backward and undid the whole sacrifice's purpose.
+Whatever meat remained by the third day could not be eaten at all.
 
-🚫 Breaking this deadline canceled the entire offering after the fact
+It had to be burned completely.
 
-⏳ The problem wasn't just late eating, it undid what the sacrifice was for
+By that point, meat kept without refrigeration was no longer safe to eat.
 
-⚖️ Timing here mattered as much as the sacrifice itself
+Destroying it removed the temptation to eat it anyway.
+
+🔥 Leftover meat was burned on day three
+
+🌡️ Meat spoiled quickly in a warm climate
+
+🚫 Burning removed the temptation to eat it
+
+📖 The rule closed off a real risk
 
 ---
 
-## ⚠️ It Shall Be An Abomination, And The Soul That Eateth Of It Shall Bear His Iniquity
+## 🤢 It Shall Be An Abomination, And The Soul That Eateth Of It Shall Bear His Iniquity
 
-"Abomination" describes something God finds deeply offensive or detestable. "Bear his iniquity" means the guilt for this specific failure lands personally on the person who ate the old meat - not on the priest, and not spread across the community.
+"Abomination" means something God finds deeply offensive.
 
-⚠️ "Abomination" marks this as something God finds deeply offensive
+"Iniquity" here means the guilt of that choice now rests on the person who ate it.
 
-🙋 "Bear his iniquity" places the guilt on that one person specifically
+Eating spoiled, disqualified meat was never a small mistake.
 
-🔒 This guilt didn't transfer to the priest or the wider community
+It turned an act of worship into something offensive to God.
+
+🤢 Abomination means deeply offensive to God
+
+⚖️ Iniquity means the guilt now sits on him
+
+🍖 Old meat could not become an exception
+
+📖 Careless worship can turn holy into offensive
 
 # Leviticus 7:19-21
 
-# 🚫 Clean Hands, Clean Meat
+# ⚠️ What Made The Meat Unfit
 
 ---
 
-## 🔄 The Flesh That Toucheth Any Unclean Thing Shall Not Be Eaten; It Shall Be Burnt With Fire
+## 🚫 The Flesh That Toucheth Any Unclean Thing Shall Not Be Eaten
 
-Chapter 6:18 and 6:27 already described how touching most-holy food could spread holiness onto whatever touched it. This verse describes the exact opposite direction: touching something unclean spreads uncleanness onto this meat instead, ruining it for food.
+"Unclean" describes anything unfit for worship, not simply dirty in a literal sense.
 
-🔄 This is a mirror image of the "holiness spreads by touch" rule from chapter 6
+If sacrificial meat touched something unclean, it could no longer be eaten.
 
-🚫 Here, uncleanness spreads onto meat instead of holiness
+The only option left for it was to burn it completely.
 
-🔥 Contaminated meat was destroyed by fire, never eaten
+Holiness could be lost by contact, even by accident.
 
----
+🚫 Unclean means unfit for worship
 
-## ✅ As For The Flesh, All That Be Clean Shall Eat Thereof
+🍖 Contaminated meat could not be eaten
 
-Unlike the "most holy" categories earlier in this chapter (limited to male priests only), peace offering meat could be eaten by a much wider circle - the offerer's own family and guests, as chapter 3 already implied - as long as everyone eating was ritually clean at the time.
+🔥 Burning was the only option left
 
-✅ Peace offering meat could be shared beyond priests alone
-
-👪 The offerer's own family and guests could share in this meal
-
-🧼 Being ritually clean was the requirement, not being a priest
+📖 Holiness could be lost by accident
 
 ---
 
-## ⚖️ Having His Uncleanness Upon Him, Even That Soul Shall Be Cut Off From His People
+## ⚔️ Having His Uncleanness Upon Him, Even That Soul Shall Be Cut Off
 
-"Cut off from his people" (a phrase used repeatedly through Leviticus) describes losing standing within Israel's covenant community entirely - most likely understood as God himself acting against that person, not a punishment carried out by human judges or courts.
+"Cut off from his people" was one of the most serious penalties in Israel's law.
 
-⚖️ "Cut off from his people" removes someone from the covenant community
+Many scholars believe it meant expulsion from the community, or judgment carried out by God himself.
 
-🙏 This is generally understood as God's own action, not a human court's
+Eating holy meat while personally unclean treated something sacred as ordinary food.
 
-🔁 This exact phrase repeats several more times across this chapter
+That carelessness carried the harshest consequence in the whole system.
+
+⚔️ Cut off was the harshest penalty listed
+
+🌍 It meant separation from the community
+
+🍖 Sacred meat was not ordinary food
+
+📖 Carelessness with holy things had real weight
 
 ---
 
-## 🐍 The Uncleanness Of Man, Or Any Unclean Beast, Or Any Abominable Unclean Thing
+## 🧍 Any Abominable Unclean Thing, And Eat Of The Flesh
 
-This verse names three separate sources of uncleanness at once - a person's own ritual impurity, an unclean animal (categories chapter 11 will define in detail), and anything else generally detestable. Contamination could reach this meat from several completely different directions.
+This verse repeats and widens the warning from the two verses before it.
 
-🐍 Three separate sources of uncleanness are named together here
+Human uncleanness or an unclean animal both counted the same way.
 
-📖 Chapter 11 will define exactly which animals count as unclean
+The specific source of the contamination did not matter.
 
-🔀 Ritual impurity could reach this meat from several different directions
+What mattered was being clean before approaching something holy.
+
+🔁 This verse widens the same warning
+
+🧍 Human or animal uncleanness both counted
+
+❓ The source did not change the outcome
+
+📖 Being clean came before eating something holy
 
 # Leviticus 7:22-27
 
-# 🚫 No Fat, No Blood — Ever
+# 🛑 No Fat, No Blood
 
 ---
 
-## 📣 And The LORD Spake Unto Moses, Saying
+## 🐂 Ye Shall Eat No Manner Of Fat, Of Ox, Or Of Sheep, Or Of Goat
 
-This divine speech marker signals a real shift in topic. Everything from here through the end of verse 27 moves away from priestly portions specifically and addresses a permanent dietary rule for every Israelite.
+This command applied to every Israelite, not only to priests.
 
-📣 This marker signals a genuine topic shift in the chapter
+Fat from these three animals was reserved for the altar alone.
 
-👥 What follows applies to every Israelite, not just priests
+People still raised and ate the meat of oxen, sheep, and goats every day.
 
-📋 Two short laws follow: no eating fat, no eating blood
+Only the fat itself was permanently off the table.
 
----
+🐂 Applied to ox, sheep, and goat
 
-## 🚫 Ye Shall Eat No Manner Of Fat, Of Ox, Or Of Sheep, Or Of Goat
+👥 This law covered every Israelite
 
-This fat ban applies to everyone in Israel, and specifically to the three animals used in the offering system - ox, sheep, and goat. That fat belonged to God by right, since it was the very portion always reserved for burning on the altar throughout this whole book.
+🍖 Meat was still eaten normally
 
-🚫 This ban covers all Israelites, not priests alone
-
-🐂 It specifically targets the three animals used in offerings
-
-🔥 This fat had always been God's reserved, altar-only portion
+📖 Only the fat belonged to God
 
 ---
 
-## 🕯️ The Fat Of The Beast That Dieth Of Itself...May Be Used In Any Other Use
+## 💀 The Fat Of The Beast That Dieth Of Itself
 
-Fat from an animal that died of natural causes or was killed by a wild predator - meaning it was never eligible to be offered at all - could still be put to practical, non-food use, like making tallow for lamps or working leather. The ban is specifically about eating it, not about the fat's existence or usefulness.
+An animal that died from sickness, age, or accident could never be sacrificed.
 
-🕯️ This fat could still be used practically, just not eaten
+Its fat still could not go on the altar.
 
-🐺 It came from animals never eligible to be offered in the first place
+Something not intentionally offered to God was never a valid sacrifice to begin with.
 
-🚫 The rule targets eating specifically, not all possible uses
+This fat still had ordinary, practical uses outside of eating it.
 
----
+💀 A naturally dead animal was never a sacrifice
 
-## ⛔ Ye Shall In No Wise Eat Of It
+🚫 Its fat still could not reach the altar
 
-"In no wise" is an old English phrase meaning "absolutely not, under no circumstances at all." It's one of the strongest possible negations available in the King James English, leaving no room for exceptions.
+🔧 It could still serve ordinary uses
 
-⛔ "In no wise" means absolutely not, no exceptions
-
-💪 It's one of the strongest negations the KJV language uses
-
-🚫 No loophole is left open by this wording
+📖 Not every animal death counted as an offering
 
 ---
 
-## ⚖️ Whosoever Eateth The Fat Of The Beast...Shall Be Cut Off From His People
+## 🐺 The Fat Of That Which Is Torn With Beasts
 
-This repeats the same severe covenant penalty already explained in verse 20 - now applied specifically to fat instead of general ritual uncleanness. Fat wasn't a minor dietary preference; breaking this rule carried the same serious consequence as other major covenant violations.
+This covers an animal killed by a wild predator instead of natural death.
 
-⚖️ This repeats verse 20's same severe covenant penalty
+Exodus chapter twenty two already treats a predator kill as a real, provable loss.
 
-🥩 Here it's applied specifically to eating forbidden fat
+Even in that case, the fat was still off limits for the table.
 
-📖 Fat violations were treated as seriously as other major offenses
+The rule made no exception for how the animal died.
 
----
+🐺 This covers a predator kill
 
-## 🩸 Ye Shall Eat No Manner Of Blood, Whether It Be Of Fowl Or Of Beast
+📜 Exodus twenty two treats this as loss
 
-This second ban covers blood, and it's even broader than the fat ban - it includes birds, not just the three offering animals named earlier. Blood represented life itself in this worldview, a principle Leviticus will state explicitly later, in chapter 17:11.
+🚫 The fat was still off limits
 
-🩸 This blood ban is broader than the fat ban, including birds too
-
-📖 Chapter 17:11 later explains why: blood represents life itself
-
-🔀 Two separate bans, fat and blood, sit side by side here
+📖 No exception, no matter the cause
 
 ---
 
-## 🏠 In Any Of Your Dwellings
+## ⚔️ Whosoever Eateth The Fat Shall Be Cut Off From His People
 
-"In any of your dwellings" clarifies this rule applied at home, in everyday life - not only during tabernacle rituals. This made it a permanent dietary law woven into ordinary daily eating, not a rule limited to sacrifice days.
+This repeats the same severe penalty already used in verse twenty.
 
-🏠 This rule applied to everyday home life, not just at the tabernacle
+Eating the fat meant for God was never treated as a minor slip.
 
-📅 It became a permanent part of ordinary daily eating
+It was treated as taking something that was never the offerer's to take.
 
-🔁 Not a ritual-only restriction, but a lasting dietary law
+The penalty matched the seriousness of that theft.
+
+⚔️ Cut off repeats the severe penalty
+
+🔥 The fat belonged to God alone
+
+🚫 Eating it was treated as theft
+
+📖 The penalty matched the seriousness
 
 ---
 
-## ⚖️ Whatsoever Soul It Be That Eateth Any Manner Of Blood...Cut Off From His People
+## 🐦 Ye Shall Eat No Manner Of Blood, Whether It Be Of Fowl Or Of Beast
 
-This is the third time in this short span that "cut off from his people" appears - first for peace-offering uncleanness, then for eating fat, now for eating blood. Repeating this same severe penalty three times underlines just how seriously all three violations were treated.
+This command covered every kind of animal, including birds.
 
-⚖️ This is the third "cut off" penalty in this short span of verses
+Genesis chapter nine already connects blood directly to life itself.
 
-🔁 It follows uncleanness (v.20) and forbidden fat (v.25)
+Blood represented life, and life belonged to God alone.
 
-📢 Repeating it three times underlines how seriously each one was treated
+This rule applied everywhere Israelites lived, not only near the altar.
+
+🐦 Covered birds as well as animals
+
+📜 Genesis nine ties blood to life
+
+🩸 Blood belonged to God, not the table
+
+📖 The rule followed Israel everywhere they lived
+
+---
+
+## 🩸 Whatsoever Soul It Be That Eateth Any Manner Of Blood
+
+This closes the blood law with the same penalty already used twice in this chapter.
+
+By now, the pattern is impossible to miss.
+
+Fat and blood were the two things most linked to life and richness.
+
+Both were reserved only for God, and everything else belonged to the people.
+
+🔁 The same penalty closes this law
+
+🩸 Fat and blood were both reserved for God
+
+🍖 Everything else belonged to the people
+
+📖 Life and richness pointed back to God
 
 # Leviticus 7:28-34
 
-# 🍖 The Priest's Fixed Pay: Breast And Shoulder
+# 🙌 The Wave Breast And Heave Shoulder
 
 ---
 
-## ✋ His Own Hands Shall Bring The Offerings Of The LORD Made By Fire
+## 🙋 He That Offereth The Sacrifice Of His Peace Offerings Shall Bring His Oblation
 
-The offerer personally carried the fat and breast to the priest, rather than simply handing over a live animal for someone else to process later. This kept the offerer personally involved all the way through the ritual, not just at the beginning.
+This command names the offerer specifically, not a servant or substitute.
 
-✋ The offerer personally carried these specific portions forward
+"Oblation" repeats the same word already defined for the bread gift in verse fourteen.
 
-🙋 This kept the offerer involved through the whole ritual
+Every peace offering, whether animal or bread, followed one same principle.
 
-🔁 Not just handing over an animal and walking away early
+The person making peace with God brought the gift personally.
 
----
+🙋 The offerer himself is named here
 
-## 〰️ That The Breast May Be Waved For A Wave Offering Before The LORD
+🎁 Oblation was already defined in verse fourteen
 
-The "wave offering" (sometimes described as a back-and-forth or side-to-side motion) was a priest's physical presentation gesture, visibly dedicating the breast meat to God before it then became the priest's own food. Motion, not just words, marked this transfer as real.
+🔁 One same principle covers every peace offering
 
-〰️ "Wave offering" describes a physical side-to-side presentation gesture
-
-👀 This visibly dedicated the meat to God in front of everyone present
-
-🍖 Only afterward did this same meat become the priest's food
+📖 Peace with God was brought personally
 
 ---
 
-## 🔥 The Priest Shall Burn The Fat Upon The Altar: But The Breast Shall Be Aaron's And His Sons'
+## 🙌 His Own Hands Shall Bring The Offerings Of The LORD Made By Fire
 
-One single animal's parts split two different directions here - the fat went into God's fire, while the breast became food for the entire priestly family. Two separate destinations from one sacrifice.
+The person offering the sacrifice personally carried it forward.
 
-🔥 The fat portion went entirely into the altar's fire
+This was not a task handed off to a servant.
 
-🍖 The breast instead became food for the priestly family
+Worship here meant physically showing up with the gift in hand.
 
-🔀 One sacrifice, two completely different destinations
+🙌 The offerer carried it personally
 
----
+🚫 This was not a task to delegate
 
-## 💪 The Right Shoulder...For An Heave Offering
+📿 Worship required real, physical presence
 
-The right shoulder specifically - not the left - is singled out as a second, separate priestly portion beyond the breast. In Hebrew thought, the right side commonly carried associations with strength and honor, which may explain why this particular leg was chosen over the other.
-
-💪 Specifically the right shoulder, not the left, was set aside
-
-👑 The right side often carried honor and strength in Hebrew thought
-
-🍖 This is a second, separate portion beyond the breast just mentioned
+➡️ Showing up mattered as much as the gift
 
 ---
 
-## 🙋 He...That Offereth The Blood Of The Peace Offerings, And The Fat, Shall Have The Right Shoulder For His Part
+## 👐 That The Breast May Be Waved For A Wave Offering
 
-Unlike the breast (shared among the whole priestly family), the shoulder goes personally to whichever priest performed that day's blood-and-fat ritual - the same "officiating priest keeps this specific portion" principle already seen twice earlier in this chapter.
+A "wave offering" was moved back and forth in the priest's hands.
 
-🙋 The shoulder goes to the one priest who did that day's ritual
+That motion likely pictured presenting the gift to God and receiving it back.
 
-🍖 This differs from the breast, shared among the whole family
+The breast of the animal was the specific piece waved this way.
 
-🔁 This is the third time this personal-portion principle appears
+A small physical gesture carried a big idea, this gift now belongs to you.
 
----
+👐 Wave offering means moved back and forth
 
-## 👑 The Wave Breast And The Heave Shoulder Have I Taken Of The Children Of Israel
+🎯 Presented to God, then given to the priest
 
-God speaks here in the first person, framing these two specific portions as his own rightful claim on every peace offering Israel brought. Rather than keeping this claim for himself in some other form, he hands both portions over to the priests as their food.
+🐑 The breast was the piece waved
 
-👑 God claims these two portions as rightfully his own
-
-🎁 He then hands both over to the priests as their food
-
-🔄 This turns God's own claim into permanent provision for the priesthood
+📖 A gesture that said this belongs to you
 
 ---
 
-## 📜 By A Statute For Ever...From Among The Children Of Israel
+## 🔥 The Fat Upon The Altar, But The Breast Shall Be Aaron's And His Sons'
 
-"For ever" matches the same permanent-statute language already used for the grain offering back in chapter 6:18 - meant to continue for every future generation of priests, not something limited to Aaron's own lifetime.
+The fat still went to the altar, matching the pattern from earlier in this chapter.
 
-📜 This matches chapter 6:18's identical "for ever" language
+The breast, once waved, became food for Aaron's whole priestly family.
 
-🔁 Meant to continue through every future generation of priests
+This portion was not tied to whichever priest performed the ritual that day.
 
-🏛️ Not a temporary rule limited to Aaron's own lifetime
+It was a standing right for the entire priestly line.
+
+🔥 Fat still went to the altar
+
+🍖 The breast fed Aaron's whole family
+
+👨‍👩‍👧‍👦 Not tied to one officiating priest
+
+📖 A lasting right for the priestly line
+
+---
+
+## 💪 The Right Shoulder Shall Ye Give Unto The Priest For An Heave Offering
+
+The right side was treated as the place of honor across the ancient world.
+
+This cut, the right shoulder, was lifted up and set apart like the bread in verse fourteen.
+
+It went to one particular priest, not the whole family like the breast.
+
+💪 The right shoulder was the honored cut
+
+⬆️ Heave offering means lifted up and set apart
+
+👨‍⚖️ It went to one specific priest
+
+📖 Honor was built into which cut was chosen
+
+---
+
+## 🎯 He That Offereth The Blood Shall Have The Right Shoulder For His Part
+
+This verse names exactly who receives the shoulder, the priest who handled the blood.
+
+Verse thirty one already gave the breast to the whole family.
+
+Now the shoulder rewards the one person who did the hands on work that day.
+
+A shared portion and a personal one both existed in the same offering.
+
+🎯 The officiating priest earned the shoulder
+
+🩸 Blood work was the task rewarded
+
+🍖 Breast was shared, shoulder was personal
+
+📖 Shared and personal reward both had a place
+
+---
+
+## 🗣️ For The Wave Breast And Heave Shoulder Have I Taken
+
+God speaks in the first person here, claiming credit for this arrangement.
+
+These were not portions the priests invented for themselves.
+
+God calls it "a statute for ever," a permanent law for every future priest.
+
+This was not a temporary wilderness rule.
+
+🗣️ God claims this arrangement himself
+
+🚫 Priests did not invent it themselves
+
+♾️ Statute forever means a permanent law
+
+📖 Support for priests was God's design
 
 # Leviticus 7:35-38
 
-# 📖 Sinai's Full Sacrifice Code, Closed
+# 🏔️ The Law Closes At Mount Sinai
 
 ---
 
-## 👑 The Portion Of The Anointing Of Aaron, And Of His Sons...In The Day When He Presented Them To Minister
+## 🫒 This Is The Portion Of The Anointing Of Aaron
 
-This ties these priestly food portions directly back to Aaron and his sons' ordination day - the ceremony that formally installed them into priestly service, described in full detail later in chapter 8. The food rights described throughout this chapter began on that specific day.
+"Anointing" means being set apart for a role by having oil poured on someone.
 
-👑 This connects back to the ordination day fully described in chapter 8
+Aaron and his sons were anointed to serve permanently as priests.
 
-📅 The priests' food rights began on that specific installation day
+This meat portion was tied to that anointing, the day they were set into office.
 
-🔗 This chapter's rules and chapter 8's ceremony are directly linked
+The gift and the appointment were connected from the very beginning.
 
----
+🫒 Anointing means being set apart with oil
 
-## 💰 Commanded To Be Given Them Of The Children Of Israel...By A Statute For Ever Throughout Their Generations
+👨‍⚖️ Aaron and his sons were anointed priests
 
-Israel's own offerings - not a separate treasury or outside source - were the actual means by which the priests were fed and supported. This built a permanent, direct economic relationship between the ordinary people and their priesthood.
+📅 Tied to the day they were appointed
 
-💰 The people's own offerings, not a treasury, supported the priests
-
-🤝 This created a direct, ongoing relationship between people and priesthood
-
-📜 "For ever throughout their generations" made this permanent
+📖 Provision was built in from the start
 
 ---
 
-## 📋 This Is The Law Of The Burnt Offering, Of The Meat Offering, And Of The Sin Offering, And Of The Trespass Offering, And Of The Consecrations, And Of The Sacrifice Of The Peace Offerings
+## 🔁 By A Statute For Ever Throughout Their Generations
 
-This single sentence lists every offering type covered across chapters 1 through 7 - six categories in total. It functions as the formal closing summary of the whole sacrificial law section, right before the book moves into the ordination narrative in chapter 8.
+This phrase repeats deliberately from verse thirty four.
 
-📋 This lists all six offering types covered since chapter 1
+Repetition in this kind of legal text was never filler.
 
-📖 It formally closes this whole section of sacrificial law
+It signaled a rule that later generations should still treat as fully binding.
 
-➡️ Chapter 8's ordination narrative begins right after this
+Nothing here was written only for the people standing at Sinai.
+
+🔁 This phrase repeats on purpose
+
+📜 Legal repetition was never filler
+
+♾️ It bound generations far beyond Sinai
+
+📖 A rule meant to outlast its first audience
 
 ---
 
-## ⛰️ Which The LORD Commanded Moses In Mount Sinai...In The Wilderness Of Sinai
+## 📋 This Is The Law Of The Burnt Offering And Of The Consecrations
 
-This final line grounds the entire seven-chapter law code in one specific place and moment - Mount Sinai, during Israel's wilderness journey - not a vague, timeless, or symbolic setting.
+This verse works as a summary, listing every offering type covered across several chapters.
 
-⛰️ This anchors chapters 1-7 to one specific mountain and moment
+Burnt, grain, sin, trespass, ordination, and peace offerings all get named together.
 
-🏜️ It happened during Israel's wilderness journey, a real point in time
+A list like this marks the end of one complete section of instructions.
 
-📍 Nothing about this law code is left vague or symbolic in its setting`;
+The next chapter shifts toward a different kind of story entirely.
+
+📋 This verse lists every offering type
+
+📚 It closes a complete section of law
+
+🔚 A clear marker that this part is done
+
+📖 Structure itself can carry meaning
+
+---
+
+## 🏔️ Which The LORD Commanded Moses In Mount Sinai
+
+This closing line grounds the whole law in one place and time, Mount Sinai.
+
+These were not vague customs that developed slowly over centuries.
+
+The text presents them as commands given directly to Moses himself.
+
+That claim of a specific origin is part of why Israel treated this law as binding.
+
+🏔️ Mount Sinai anchors this whole law
+
+🧑‍🦳 Given directly to Moses
+
+📍 A real place, not vague custom
+
+📖 A specific origin gave the law its authority
+`.trim();
 
 export const LEVITICUS_SEVEN_PERSONAL_SECTIONS = parseLeviticusSevenRawNotes(LEVITICUS_SEVEN_RAW_NOTES);
