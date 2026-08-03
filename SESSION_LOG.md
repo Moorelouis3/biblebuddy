@@ -655,3 +655,7 @@ Next up: Leviticus 19
 ## 2026-08-03T22:00:00Z (hourly chapter notes run)
 Chapter: Leviticus 19 | Duration: 13 min | Sections: 11 | Cards: 56 | Status: pass
 Next up: Leviticus 20
+
+## 2026-08-03T22:58:19Z (hourly chapter notes run)
+Chapter: Leviticus 20 | Duration: 12 min | Sections: 11 | Cards: 42 | Status: pass
+Next up: Leviticus 21
