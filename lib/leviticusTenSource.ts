@@ -89,471 +89,772 @@ function parseLeviticusTenRawNotes(rawText: string): LeviticusTenPersonalSection
 }
 
 const LEVITICUS_TEN_RAW_NOTES = `# Leviticus 10:1-3
-
 # 🔥 Strange Fire
-
 ---
+## 👨‍👦 Nadab And Abihu, The Sons Of Aaron
 
-## 🔥 Nadab And Abihu, The Sons Of Aaron
+Nadab and Abihu are the two oldest sons of Aaron.
 
-Nadab and Abihu are Aaron's two oldest sons. They were part of the ordination ceremony in chapter 8 and stood right next to their father through chapter 9's first day of sacrifices.
+They stood beside their father through the ordination in chapter eight.
 
-This is the same pair named back in Exodus 24:1, when God called them up partway up Mount Sinai along with Moses and the seventy elders - long before either of them had ever served as a priest.
+They also appear far earlier, in Exodus twenty four, climbing partway up Mount Sinai with Moses and the elders.
 
-Being oldest and already experienced didn't protect them here. What happens next shows that family standing and ceremony experience didn't excuse a shortcut.
+Being the oldest and already trusted did not protect them here.
 
-🔥 Aaron's two oldest sons, already ordained priests
+Standing near God was never a reason to skip His instructions.
 
-📖 Also named back in Exodus 24:1, present at Sinai
+👨‍👦 Aaron's two oldest sons
 
-⚖️ Rank and experience didn't excuse what happens next
+📜 Named earlier at Sinai in Exodus
 
----
+⚖️ Rank did not excuse what follows
 
-## 🧰 Took Either Of Them His Censer
+➡️ Closeness to God still requires obedience
 
-A censer was a small metal firepan used to carry burning coals and incense into the tabernacle. Priests used censers regularly - this wasn't a strange or forbidden tool by itself.
+## 🔥 Took Either Of Them His Censer
 
-The problem in this story was never the equipment. It was what these two men chose to put inside it.
+A censer means a small metal pan used to carry hot coals and incense.
 
-🔥 A censer was a standard priestly firepan for incense
+Priests carried censers into the tabernacle regularly as part of normal worship.
 
-🧰 A normal, approved tool - not the problem here
+The tool itself was not the problem in this story.
 
-👀 What went inside it is what mattered
+What Nadab and Abihu chose to put inside it was.
 
----
+🔥 Censer means a firepan for incense
 
-## 🚫 Offered Strange Fire Before The LORD, Which He Commanded Them Not
+🙏 A normal, approved tool for priests
 
-"Strange fire" means fire that wasn't taken from the proper source. Chapter 6:12-13 already commanded that the altar's fire must never go out and every offering must be lit from that one continual flame - not from some other source Nadab and Abihu apparently used instead.
+❓ The problem was never the equipment
 
-"Which he commanded them not" is the real charge here. Their sin wasn't breaking a rule that was unclear. It was doing something God had never authorized in the first place.
+➡️ What went inside it is what mattered
 
-🔥 "Strange" means fire from the wrong, unauthorized source
+## 🚫 Offered Strange Fire Before The LORD
 
-📖 Chapter 6 already required using only the altar's own continual fire
+Strange fire means fire taken from the wrong source.
 
-🚫 The core issue: they acted without any command to do so
+Chapter six already commanded that the altar's own fire must never go out.
 
----
+Every offering was supposed to be lit only from that one continual flame.
 
-## 🔥 There Went Out Fire From The LORD, And Devoured Them
+Nadab and Abihu used a different source instead.
 
-This is the very same phrase used one verse earlier in chapter 9:24, when fire from God consumed the offering and the whole nation shouted for joy. Here, the identical kind of fire strikes the men themselves instead of an animal on the altar.
+Their sin was not confusion about the rule.
 
-The repetition is deliberate. The same holy fire that proved God's presence and acceptance in chapter 9 becomes the instrument of judgment here, one chapter later.
+It was choosing to act without any command to do so.
 
-🔥 The same "fire from the LORD" phrase as chapter 9:24
+🔥 Strange fire means fire from the wrong source
 
-🔀 There it consumed an offering; here it consumes people
+📖 Chapter six required using only the altar's fire
 
-⚠️ One chapter separates total acceptance from sudden judgment
+🚫 They used a different source than commanded
 
----
+➡️ Acting without a command was the real sin
+
+## 😢 There Went Out Fire From The LORD, And Devoured Them
+
+This is the same phrase used one verse earlier in chapter nine.
+
+There it described fire consuming the offering while the whole nation shouted with joy.
+
+Here the same kind of fire strikes the men themselves instead of an animal.
+
+The repetition is not an accident.
+
+The same fire that proved God's acceptance in chapter nine becomes judgment here.
+
+🔥 Same phrase used in chapter nine
+
+🐂 There it consumed an offering
+
+😢 Here it consumes the men themselves
+
+📖 Acceptance and judgment sit one chapter apart
 
 ## 🕯️ They Died Before The LORD
 
-"Before the LORD" means directly in front of the tabernacle, at or near the very altar where they had just been serving. Their deaths happened in the holiest, most public place in the whole camp.
+Before the LORD means directly in front of the tabernacle itself.
 
-🕯️ "Before the LORD" means right at the tabernacle itself
+Nadab and Abihu died at or near the very altar where they had just been serving.
 
-⚡ Death came suddenly, in the middle of active service
+Their deaths happened in the holiest and most visible place in the whole camp.
 
-👀 It happened in the most visible place in the entire camp
+There was no private place to fail in this role.
 
----
+🕯️ Before the LORD means at the tabernacle
+
+⚡ Death came in the middle of active service
+
+👀 It happened in full public view
+
+📖 There was no private place to fail here
 
 ## ✨ I Will Be Sanctified In Them That Come Nigh Me
 
-"Sanctified" means treated as holy, set apart, and taken seriously. Moses explains that anyone who comes close to God - meaning anyone serving as a priest - has to treat that closeness with total seriousness, because God will make sure his holiness is respected one way or another.
+Sanctified means treated as holy and taken with total seriousness.
 
-This connects to a theme running through Leviticus from chapter 1 on: nearness to God is a privilege that comes with real weight, not a casual perk of the priestly job.
+Moses explains what Nadab and Abihu's deaths actually meant.
 
-✨ "Sanctified" means treated as holy and set apart
+Anyone who comes close to God must treat that closeness with real weight.
 
-⚖️ Nearness to God always demands total seriousness
+This has been a theme running through Leviticus since chapter one.
 
-📖 A theme running through Leviticus since chapter 1
+Nearness to God was never a casual privilege.
 
----
+✨ Sanctified means treated as holy
 
-## 👥 Before All The People I Will Be Glorified
+⚖️ Closeness to God demands real seriousness
 
-This half of Moses's statement adds a public dimension to the private one. God's holiness wasn't just going to be respected by the priests behind the scenes - it was going to be visibly clear to the entire watching nation, for better or worse.
+📜 A theme running through Leviticus since chapter one
 
-👥 God's holiness would be made visible to the whole nation
-
-🎬 Not just a private lesson for priests alone
-
-⚖️ The public and the personal stakes were tied together
-
----
+➡️ Nearness to God was never casual
 
 ## 🤐 Aaron Held His Peace
 
-This means Aaron said nothing at all. No protest, no argument, no visible breakdown recorded in the text - just silence, right after losing two of his sons in an instant.
+Held his peace means Aaron said nothing at all.
 
-This kind of restrained response doesn't mean Aaron felt nothing. Verse 19, later in this chapter, shows his grief was real and near the surface the whole time.
+No protest and no argument are recorded in the text.
 
-🤐 "Held his peace" means Aaron said nothing at all
+This does not mean Aaron felt nothing in that moment.
 
-😢 Silence here doesn't mean he felt nothing
+Verse nineteen later in this chapter shows his grief was real.
 
-📖 Verse 19 later reveals how much he was still carrying
+Silence here was restraint, not an empty heart.
+
+🤐 Held his peace means Aaron said nothing
+
+😶 No protest is recorded in the text
+
+😢 His grief surfaces later in verse nineteen
+
+📖 Silence here was restraint, not an empty heart
 
 # Leviticus 10:4-7
-
 # 😢 No Time To Mourn
-
 ---
-
 ## 👨‍👩‍👧 Mishael And Elzaphan, The Sons Of Uzziel The Uncle Of Aaron
 
-Uzziel was a brother of Aaron and Moses's own father, Amram (see Exodus 6:18, 22) - which makes Mishael and Elzaphan first cousins to Aaron and Moses, not strangers pulled in from elsewhere.
+Uzziel was a brother of Aaron and Moses's own father, Amram.
 
-Moses chose family for this job on purpose. Removing the bodies of Nadab and Abihu needed people close enough to be trusted, but not close enough to be Aaron's own sons, who were still bound by the restrictions in verse 6.
+That makes Mishael and Elzaphan first cousins to Aaron.
 
-👨‍👩‍👧 First cousins to Aaron and Moses, not outsiders
+It also makes them cousins to Moses.
 
-📖 Uzziel was Aaron's uncle, per Exodus 6:18
+Moses chose family on purpose for this task.
 
-🎯 Close family, but not under the same restrictions as Aaron's sons
+The job needed people close enough to be trusted.
 
----
+It also needed people far enough from Aaron's own sons.
+
+His sons were still bound by the mourning restrictions in verse six.
+
+👨‍👩‍👧 First cousins to Aaron and Moses
+
+📜 Uzziel was Aaron's uncle
+
+🎯 Close family, but not bound by Aaron's restrictions
+
+➡️ Moses chose trust over convenience
 
 ## ⚰️ Carry Your Brethren From Before The Sanctuary Out Of The Camp
 
-Dead bodies made a person and a place ceremonially unclean under the law, so anything dead had to be removed from the sanctuary area right away. "Out of the camp" was the same standard location used for anything unclean or destroyed, already seen with the burnt sin-offering remains in chapters 4 and 9.
+A dead body made a person and a place ceremonially unclean under the law.
 
-⚰️ A dead body made the sacred space ceremonially unclean
+Anything dead had to be removed from the sanctuary area right away.
 
-🏕️ "Out of the camp" was the standard place for anything unclean
+Out of the camp was the standard place for anything unclean or destroyed.
 
-🔁 The same location already used for offering remains in chapters 4 and 9
+The burnt remains of the sin offering in earlier chapters went to that same place.
 
----
+⚰️ A dead body made the space unclean
+
+🏕️ Anything unclean had to leave the sanctuary fast
+
+🔥 The same place used for burnt offering remains
+
+📖 Uncleanness could not stay near God's presence
 
 ## 👕 Carried Them In Their Coats
 
-This means the bodies were removed still wearing the priestly garments they died in, not stripped and redressed first. There simply wasn't time or reason to treat this like a normal burial preparation.
+This means the bodies were carried out still wearing their priestly garments.
 
-👕 The garments stayed on; nothing was removed first
+Nobody stopped to strip and redress them first.
 
-⏱️ This wasn't handled like an ordinary burial
+There was no time for a normal burial preparation.
 
-🎬 Speed and respect mattered more than ceremony here
+Speed and respect mattered more than ceremony in this moment.
 
----
+👕 Their garments were never removed
+
+⏱️ No time for normal burial preparation
+
+🏃 Speed mattered more than ceremony here
+
+➡️ Even grief followed the priestly order
 
 ## 😢 Uncover Not Your Heads, Neither Rend Your Clothes
 
-Loosening or uncovering the hair and tearing your clothes were Israel's standard mourning customs - visible signs everyone recognized as grief. Aaron and his surviving sons, Eleazar and Ithamar, were forbidden from doing either one.
+Loosening the hair and tearing the clothes were Israel's normal signs of mourning.
 
-😢 Loose hair and torn clothes were normal mourning signs
+Everyone in the camp would have recognized both signs instantly.
 
-🚫 Aaron and his surviving sons couldn't do either
+Aaron and his surviving sons were forbidden from doing either one.
 
-👨‍👦 Eleazar and Ithamar are named for the first time here
+Their grief had to stay invisible.
 
----
+They remained on active duty the whole time.
+
+😢 Loose hair and torn clothes signaled mourning
+
+🚫 Aaron's family could not use either sign
+
+👨‍👦 Eleazar and Ithamar named for the first time
+
+➡️ Duty required grief to stay hidden
 
 ## ⚠️ Lest Ye Die, And Lest Wrath Come Upon All The People
 
-The warning is severe on purpose. If Aaron and his sons stepped away from their active priestly duty to mourn normally, even for their own family members, God's anger could fall on the entire nation, not just on them personally.
+This warning is severe on purpose.
 
-⚠️ The stakes here extend beyond Aaron's own family
+Stepping away from duty to mourn was not allowed.
 
-🇮🇱 Their conduct as priests affected the whole nation's safety
+Even grief for their own sons could not excuse it.
 
-🛑 Active duty couldn't pause even for personal grief
+God's anger could fall on the whole nation instead.
 
----
+Their conduct as priests was never only a private matter.
+
+⚠️ The warning is severe on purpose
+
+🇮🇱 Their conduct affected the whole nation
+
+🛑 Duty could not pause even for grief
+
+📖 Priestly failure carried national consequences
 
 ## 👥 Let Your Brethren, The Whole House Of Israel, Bewail The Burning
 
-Ordinary Israelites, unlike the priests currently on duty, were free to mourn Nadab and Abihu in the normal way. The grief was allowed and expected - just not from the men who had to keep functioning as priests in that exact moment.
+Ordinary Israelites were free to mourn Nadab and Abihu in the normal way.
 
-👥 Ordinary Israelites could mourn in the usual way
+Their grief was allowed and even expected.
 
-🙏 Grief wasn't forbidden, only postponed for active priests
+Aaron and his surviving sons could not do the same.
 
-⚖️ The restriction was about active duty, not about caring less
+They were still needed for active duty in that exact moment.
 
----
+The restriction was about function, not about caring less.
 
-## 🚪 Ye Shall Not Go Out From The Door Of The Tabernacle Of The Congregation
+👥 Ordinary Israelites could mourn normally
 
-This echoes the exact confinement rule from chapter 8:33-35, when Aaron and his sons stayed at the tabernacle entrance for seven full days during their ordination. Here, the same boundary applies again, this time enforced through unimaginable grief.
+🙏 Their grief was allowed and expected
 
-🚪 The same boundary rule already used in chapter 8's ordination
+⚖️ Aaron's sons stayed on active duty instead
 
-🔁 A repeated restriction, now tested under real tragedy
+➡️ The restriction was about duty, not love
 
-⏳ Duty required staying put even in the worst moment
+## 🚪 Ye Shall Not Go Out From The Door Of The Tabernacle
 
----
+This repeats the same boundary rule from chapter eight.
+
+Aaron and his sons had already stayed at the tabernacle entrance for seven days during their ordination.
+
+Now the same rule applies again, this time during real tragedy.
+
+Duty required staying in place even in the worst moment of their lives.
+
+🚪 Same boundary rule as chapter eight
+
+🔁 Aaron's sons stayed put during ordination too
+
+⏳ Now the rule held during real tragedy
+
+📖 Duty required staying even in grief
 
 ## 🫒 The Anointing Oil Of The LORD Is Upon You
 
-The anointing oil from chapter 8 wasn't just a one-time ceremony - it marked Aaron and his sons as permanently set apart, and that status itself is given as the reason they couldn't step away to grieve like everyone else.
+The anointing oil in chapter eight was not only a one time ceremony.
 
-🫒 The anointing wasn't just symbolic; it created ongoing obligation
+It marked Aaron and his sons as permanently set apart for God's service.
 
-📖 Callback to the anointing oil poured out in chapter 8
+That permanent status is the reason given for why they could not step away to grieve.
 
-⚖️ Being set apart came with a cost, not only a privilege
+Being set apart came with real weight, not only privilege.
+
+🫒 The anointing marked them as permanently set apart
+
+📖 Callback to the anointing oil in chapter eight
+
+⚖️ Being set apart came with ongoing obligation
+
+➡️ Privilege and cost arrived together
 
 # Leviticus 10:8-11
-
 # 🍷 No Wine Or Strong Drink
-
 ---
-
 ## 🗣️ The LORD Spake Unto Aaron
 
-Through nearly all of Leviticus so far, God has spoken to Moses, who then relays the message to Aaron. This is the first time in the whole book that the text says God spoke directly to Aaron himself, without Moses in between.
+Through nearly all of Leviticus so far, God has spoken to Moses first.
 
-🗣️ The first direct word from God to Aaron alone in this book
+Moses then relayed each message to Aaron.
+
+This is the first time in the whole book that God speaks directly to Aaron alone.
+
+The timing matters, coming right after the tragedy of the first seven verses.
+
+🗣️ First direct word from God to Aaron alone
 
 📖 Every earlier instruction came through Moses first
 
-🎯 A notable shift, right after the tragedy of verses 1-3
+🎯 A clear shift right after the tragedy
 
----
+➡️ Grief did not close off God's voice
 
 ## 🍷 Do Not Drink Wine Nor Strong Drink
 
-"Strong drink" (Hebrew shekar) refers to a fermented beverage other than wine - made from grains, dates, or other fruit rather than grapes. Together, the command bans every kind of alcoholic drink, not just one specific type.
+Strong drink means a fermented beverage other than wine.
 
-🍷 "Strong drink" means fermented drinks besides wine
+It was made from grain, dates, or other fruit instead of grapes.
 
-🌾 Made from grain, dates, or other fruit, not just grapes
+Between the two words, this command bans every kind of alcoholic drink.
 
-🚫 Between the two words, every alcoholic drink is covered
+Nothing about being impaired was allowed near God's altar.
 
----
+🍷 Strong drink means fermented drinks besides wine
 
-## ⏱️ Thou, Nor Thy Sons With Thee, When Ye Go Into The Tabernacle...Lest Ye Die
+🌾 Made from grain, dates, or other fruit
 
-The ban applies specifically to entering the tabernacle for priestly duty, not to every moment of a priest's life. The stakes - death - are the same severe language just used for Nadab and Abihu, which is why many readers connect this law directly to what may have caused their fatal mistake.
+🚫 Together the words cover every alcoholic drink
 
-⏱️ The ban applies specifically to active tabernacle service
+➡️ Nothing impaired belonged near God's altar
 
-⚠️ The same "lest ye die" language just used in verses 1-2
+## ⏱️ When Ye Go Into The Tabernacle Of The Congregation
 
-🍷 Many readers connect this law directly to Nadab and Abihu's failure
+This ban does not cover every moment of a priest's life.
 
----
+It applies specifically to entering the tabernacle for active service.
+
+The stakes are the same severe language just used for Nadab and Abihu.
+
+Many readers connect this law directly to what caused their fatal mistake.
+
+⏱️ The ban applies to active tabernacle service
+
+🚷 Not a rule for a priest's whole life
+
+⚠️ Echoes the lest ye die warning above
+
+➡️ Many connect this law to Nadab and Abihu
 
 ## ♾️ A Statute For Ever Throughout Your Generations
 
-This phrase marks the command as permanent law, not a temporary rule for this one grieving moment. Every future priest, for as long as the priesthood exists, is bound by the same restriction.
+For ever means this command never expires.
 
-♾️ "For ever" means this law never expires
+It marks the alcohol ban as permanent law, not a rule for one grieving moment.
 
-👨‍👦‍👦 It binds every future generation of priests too
+Every future priest is bound by the same restriction.
 
-📖 A permanent rule born out of one specific tragedy
+A tragedy on one day produced a rule that lasted for centuries.
 
----
+♾️ For ever means the law never expires
 
-## 🧠 Put Difference Between Holy And Unholy, And Between Unclean And Clean
+📜 Permanent law, not a rule for one moment
 
-This explains the actual reason behind the alcohol ban: priests had to make careful, sober judgment calls constantly, telling apart what counted as holy or ordinary, clean or unclean. Impaired judgment in that role could lead straight back to something like verses 1-3.
+👨‍👦‍👦 Every future priest is bound the same way
+
+📖 One tragedy produced a lasting rule
+
+## 🧠 Put Difference Between Holy And Unholy
+
+This names the real reason behind the alcohol ban.
+
+Priests had to make careful and sober judgment calls constantly.
+
+They had to tell holy things apart from ordinary things.
+
+Impaired judgment could lead back to a mistake like verses one through three.
 
 🧠 Priests needed clear judgment for constant rulings
 
-⚖️ Holy versus unholy, clean versus unclean - real decisions
+⚖️ Holy versus ordinary was a real decision
 
-🍷 Alcohol could compromise the very judgment the job required
+🍷 Alcohol could compromise that very judgment
 
----
+➡️ Sober minds protected against another tragedy
+
+## 🧼 Between Unclean And Clean
+
+This second pair of words covers a different kind of judgment call.
+
+Holy and unholy dealt with sacred status.
+
+Unclean and clean dealt with everyday ritual purity.
+
+That purity system runs across many earlier chapters.
+
+Both pairs required the same sober, careful mind to sort correctly.
+
+🧼 Unclean and clean covers ritual purity
+
+📖 A separate judgment from holy and unholy
+
+🔁 Purity laws run through many earlier chapters
+
+➡️ Both pairs needed the same sober mind
 
 ## 📖 That Ye May Teach The Children Of Israel All The Statutes
 
-Priests weren't only responsible for performing sacrifices. Verse 11 reveals a second major job: teaching the whole nation God's laws directly, which required the same sober clarity as making ritual judgment calls.
+Priests were not only responsible for performing sacrifices.
 
-📖 A second priestly duty: teaching the law, not just sacrificing
+This verse reveals a second major job.
 
-🧠 Teaching accurately also required a clear, sober mind
+They also had to teach the whole nation God's laws directly.
 
-🇮🇱 This duty extended the priesthood's role to the entire nation
+Teaching accurately required the same sober clarity as making ritual judgment calls.
+
+📖 A second priestly duty besides sacrifice
+
+🧠 Teaching required a clear, sober mind
+
+🇮🇱 This duty reached the whole nation
+
+➡️ Knowing God's law was not only for priests
+
+## ✋ Which The LORD Hath Spoken Unto Them By The Hand Of Moses
+
+By the hand of Moses means Moses was the channel through which these laws first came.
+
+Aaron and his sons now had to pass those same laws on to the people.
+
+The chain of authority ran from God, to Moses, to the priests, to the nation.
+
+Nobody at any step was free to teach their own opinion instead.
+
+✋ By the hand of Moses names the source
+
+🔗 From God, to Moses, to the priests
+
+📖 A clear chain of authority for every law
+
+➡️ Nobody could teach their own opinion instead
 
 # Leviticus 10:12-15
-
 # 🍞 What The Priests Could Eat
-
 ---
-
 ## 🍞 The Meat Offering That Remaineth
 
-"Meat offering" is the old English name for the grain offering explained back in chapter 2 - it's flour and oil, not animal meat. "That remaineth" refers to the portion left over after a small handful was burned on the altar as God's token share.
+Meat offering is the old English name for the grain offering explained back in chapter two.
 
-🍞 "Meat offering" means the grain offering from chapter 2
+It was made of flour and oil, not animal meat.
 
-🔥 Only a handful of it was ever burned on the altar
+Only a small handful of it was ever burned on the altar as God's token share.
 
-🥖 "That remaineth" is the larger leftover portion for the priests
+That remaineth means the larger leftover portion that belonged to the priests.
 
----
+🍞 Meat offering means the grain offering
 
-## 📊 Eat It Without Leaven Beside The Altar: For It Is Most Holy
+🔥 Only a handful was ever burned
 
-"Most holy" is a specific ranking, higher than ordinary "holy," reserved for the few offerings closest to the sacrificial system's core. Because of that rank, this food could only be eaten unleavened (no yeast) and only in one specific location, right next to the altar itself.
+🥖 That remaineth means the leftover portion
 
-📊 "Most holy" is a higher rank than plain "holy"
+➡️ The rest belonged to the priests
 
-🍞 Unleavened means made without yeast, per chapter 2's rule
+## 📍 Eat It Without Leaven Beside The Altar
 
-📍 It had to be eaten in one specific place: beside the altar
+Without leaven means made with no yeast at all.
 
----
+Chapter two already set that same rule for grain offerings.
 
-## 💰 Eat It In The Holy Place...Thy Due, And Thy Sons' Due
+Beside the altar names the one place this food could be eaten.
 
-"Due" means this food was the priests' rightful payment, not a gift given out of kindness. Serving at the altar came with an actual right to a share of what was offered - this was how priests, who owned no farmland like the rest of Israel, were fed.
+The location was not optional.
 
-💰 "Due" means a rightful payment, not a generous extra
+It was part of the law itself.
 
-🌾 Priests owned no farmland, so offerings were their livelihood
+🍞 Without leaven means made without yeast
 
-📖 This system runs throughout the sacrificial laws so far
+📖 The same rule set back in chapter two
 
----
+📍 It had to be eaten beside the altar
+
+➡️ The location was part of the law
+
+## 📊 For It Is Most Holy
+
+Most holy is a specific ranking inside the sacrificial system.
+
+It sits higher than the plain word holy.
+
+Only a few offerings ever reached this top rank.
+
+That rank explains the strict rules around it.
+
+📊 Most holy ranks higher than holy
+
+🏆 Only a few offerings reached this rank
+
+📏 The rank is why the rules were strict
+
+➡️ Higher holiness meant stricter handling
+
+## 💰 It Is Thy Due, And Thy Sons' Due
+
+Due means a rightful payment, not a generous gift.
+
+Serving at the altar came with an actual right to a share of what was offered.
+
+Priests owned no farmland like the rest of Israel.
+
+This system was how they were fed.
+
+💰 Due means a rightful payment
+
+🌾 Priests owned no farmland of their own
+
+🍞 Offerings were their actual livelihood
+
+➡️ This was pay, not charity
 
 ## 📊 The Wave Breast And Heave Shoulder Shall Ye Eat In A Clean Place
 
-This portion, from the peace offering explained in chapters 3 and 7, came with looser rules than the grain offering just described. "Clean place" is a lower bar than "holy place" - any ceremonially clean spot would do, not only the area right by the altar.
+This portion comes from the peace offering explained back in chapters three and seven.
 
-📊 A lower-ranked portion than the "most holy" grain offering
+It carried looser rules than the grain offering just described.
 
-📍 "Clean place" is a wider allowance than "holy place"
+Clean place is a lower bar than holy place.
 
-🍽️ Rules matched each offering's specific holiness ranking
+Any ceremonially clean spot would do, not only the ground next to the altar.
 
----
+📊 A lower ranked portion than the grain offering
+
+📍 Clean place allowed more room than holy place
+
+🍽️ Any ceremonially clean spot would do
+
+➡️ Rules matched each offering's own rank
 
 ## 👧 Thy Sons, And Thy Daughters With Thee
 
-Unlike the "most holy" grain offering, which only male priests could eat, this peace-offering portion could be shared with daughters too. The difference in who could eat it traces directly back to the different holiness rank each offering carried.
+The most holy grain offering could only be eaten by male priests.
 
-👧 Daughters could share this portion, unlike the grain offering
+This peace offering portion was different.
 
-⚖️ The difference comes straight from each offering's holiness rank
+It could be shared with daughters too.
 
-👨‍👩‍👧‍👦 A priest's whole household benefited from this specific gift
+That difference traces straight back to each offering's holiness rank.
 
----
+A priest's whole household could benefit from this specific gift.
 
-## 〰️ The Heave Shoulder And The Wave Breast...By A Statute For Ever
+👧 Daughters could share this portion
 
-These two ceremonial gestures - "heave" (lifted up and down) and "wave" (moved side to side) - were already explained back in chapter 7. Repeating "statute for ever" here confirms this priestly food right is permanent, just like the alcohol ban given a few verses earlier.
+🚫 The grain offering did not allow that
 
-〰️ "Wave" and "heave" describe two different lifting gestures
+⚖️ The difference came from holiness rank
 
-📖 Both gestures were already defined back in chapter 7
+➡️ A whole household could share in this gift
 
-♾️ "For ever" makes this priestly right permanent, not temporary
+## 🌊 To Wave It For A Wave Offering Before The LORD
+
+Wave and heave describe two different priestly gestures.
+
+Wave meant moving the offering side to side before the altar.
+
+Heave meant lifting it up and down.
+
+Both gestures were already explained back in chapter seven.
+
+They turned a piece of meat into a small, visible act of worship.
+
+🌊 Wave meant moving side to side
+
+⬆️ Heave meant lifting up and down
+
+📖 Both gestures explained back in chapter seven
+
+➡️ A simple portion became an act of worship
+
+## ♾️ By A Statute For Ever
+
+Statute for ever repeats the exact phrase already used for the alcohol ban earlier in this chapter.
+
+That repetition confirms this priestly food right is permanent too.
+
+It was not a one time gift after one hard week.
+
+It belonged to every priest who would ever serve after Aaron.
+
+♾️ Statute for ever means permanent, not temporary
+
+🔁 The same phrase used for the alcohol ban
+
+🍞 A lasting right, not a one time gift
+
+➡️ It belonged to every priest who followed
 
 # Leviticus 10:16-20
-
 # 😠 The Goat That Was Burned
-
 ---
-
 ## 🔍 Moses Diligently Sought The Goat Of The Sin Offering, And It Was Burnt
 
-"Diligently sought" means Moses went looking for this specific animal carefully, on purpose - this wasn't a casual question. He discovered that the people's sin-offering goat from chapter 9 had been completely burned instead of eaten by the priests, the way it was supposed to be.
+Diligently sought means Moses went looking for this one animal on purpose.
 
-🔍 "Diligently sought" means Moses looked with real purpose
+This was not a casual question asked in passing.
 
-🐐 The goat is the same sin offering first named in chapter 9
+He discovered that the people's sin offering goat from chapter nine had been completely burned.
 
-🔥 It had been burned entirely instead of eaten as required
+It was supposed to be eaten by the priests instead.
 
----
+🔍 Diligently sought means Moses looked on purpose
+
+🐐 The goat first appeared back in chapter nine
+
+🔥 It was burned instead of eaten
+
+➡️ Something had gone wrong with the process
 
 ## 😠 He Was Angry With Eleazar And Ithamar
 
-These are Aaron's two surviving sons, the ones left after Nadab and Abihu died earlier in this same chapter. Moses directs his anger at them specifically, since they were the ones responsible for that particular offering.
+Eleazar and Ithamar are Aaron's two surviving sons.
 
-😠 Aaron's two remaining sons, after losing Nadab and Abihu
+They are the ones left after Nadab and Abihu died earlier in this same chapter.
 
-👨‍👦 They were the ones responsible for this offering
+Moses directs his anger at them specifically.
 
-🎬 The chapter's tragedy is still fresh in the background here
+They were the priests responsible for this particular offering.
 
----
+😠 Aaron's two remaining sons
 
-## ⚖️ Seeing It Is Most Holy, And God Hath Given It You To Bear The Iniquity Of The Congregation
+👨‍👦 The ones left after Nadab and Abihu died
 
-This reveals something surprising: eating this portion wasn't just a priestly perk, it was part of how atonement actually worked. By eating the sin offering, the priests were understood to be symbolically carrying the people's guilt themselves, as part of making things right before God.
+🎯 They were responsible for this offering
 
-🍽️ Eating this food wasn't only a benefit, it was a duty
+➡️ The chapter's grief was still fresh
 
-⚖️ "Bear the iniquity" means symbolically carrying the people's guilt
+## 🍽️ Seeing It Is Most Holy
 
-🙏 Eating it was part of how the atonement was completed
+Eating this portion was not simply a priestly perk.
 
----
+It was part of how atonement actually worked.
+
+By eating the sin offering, the priests carried the people's guilt in a symbolic way.
+
+Skipping the meal was not a small oversight.
+
+🍽️ Eating this food was a required duty
+
+⚖️ Priests symbolically carried the people's guilt
+
+🙏 Part of how atonement was completed
+
+➡️ Skipping it was a real problem
+
+## ⚖️ God Hath Given It You To Bear The Iniquity Of The Congregation
+
+Bear the iniquity means to carry the weight of someone else's guilt.
+
+The priests took on this role by eating the sin offering meat.
+
+This was not eating for pleasure or reward.
+
+It was one working part of the atonement system.
+
+⚖️ Bear the iniquity means carrying someone's guilt
+
+🍽️ Eating the meat carried out that role
+
+🚫 Not eaten for pleasure or reward
+
+➡️ One working part of the atonement system
 
 ## ✅ To Make Atonement For Them Before The LORD
 
-This confirms the deeper purpose from the previous phrase: the eating itself, not just the blood and burning, played a real role in the sin offering finishing its job of making atonement for the congregation.
+This names the purpose behind the whole sin offering process.
 
-✅ Atonement wasn't complete until every required step happened
+Atonement was not complete until every required step happened.
 
-🍽️ Eating the meat was one of those required steps
+Eating the meat was one of those required steps, not an optional extra.
 
-📖 This explains why skipping it was a real problem, not a technicality
+Skipping it left the process unfinished.
 
----
+✅ Atonement required every step, not just some
+
+🍽️ Eating the meat was one required step
+
+🚫 It was never an optional extra
+
+➡️ Skipping it left the process unfinished
 
 ## 🩸 The Blood Of It Was Not Brought In Within The Holy Place
 
-Moses points to the specific rule from chapter 6:30 that decides whether a sin offering's meat gets eaten or burned: if its blood was carried into the tabernacle itself, the meat must be burned outside camp instead of eaten. Since this goat's blood stayed outside, by that rule it should have been eaten.
+Chapter six already set the rule that decides this exact case.
 
-📖 A specific rule from chapter 6:30 governs this exact case
+If a sin offering's blood was carried into the tabernacle, the meat had to be burned outside the camp.
 
-🩸 Blood carried inside the tent meant the meat had to be burned
+If the blood stayed outside, the meat was supposed to be eaten instead.
 
-🎯 This goat's blood never went inside, so it should have been eaten
+This goat's blood never went inside.
 
----
+By that rule, it should have been eaten, not burned.
+
+📖 A rule from chapter six decides this case
+
+🩸 Blood inside meant the meat was burned
+
+🍽️ Blood outside meant the meat was eaten
+
+➡️ This goat should have been eaten
 
 ## 😢 Such Things Have Befallen Me
 
-Aaron's own defense begins here, referring to the deaths of Nadab and Abihu earlier in the chapter. He's pointing out, without needing to spell it out further, that this has been the worst day of his life.
+Aaron points back to the deaths of Nadab and Abihu earlier in the chapter.
 
-😢 Aaron references his sons' deaths without naming them again
+He does not need to name his sons again.
 
-💔 A quiet way of saying this was the worst possible day
+Everyone already knows what he means.
 
-🗣️ The start of Aaron's own explanation to Moses
+This is a quiet way of saying it has been the worst day of his life.
 
----
+😢 Aaron references his sons' deaths again
 
-## ❓ Should It Have Been Accepted In The Sight Of The LORD?
+💔 A quiet way to name the worst day
 
-Aaron's question suggests that eating a portion meant for celebration and priestly benefit, on the very day his own sons died, would have felt wrong - and possibly would not have honored God the way the ritual intended. Grief, in his reasoning, made this specific meal inappropriate even though the letter of the law allowed it.
+🗣️ The start of his explanation to Moses
 
-❓ Aaron reasons that grief made this specific meal feel wrong
+➡️ Grief needed no further explanation
 
-🍽️ Eating this portion was normally tied to celebration, not mourning
+## ❓ Should It Have Been Accepted In The Sight Of The LORD
 
-⚖️ He weighs the spirit of the law against its bare technical letter
+Aaron raises a real question, not an excuse.
 
----
+Eating this portion was normally tied to celebration among the priests.
+
+Doing that on the very day his sons died felt wrong to him.
+
+He is weighing the spirit of the law against its bare technical letter.
+
+❓ Aaron raises a genuine question
+
+🍽️ This meal was normally tied to celebration
+
+💔 Celebrating felt wrong on that specific day
+
+➡️ He weighs the law's spirit against its letter
 
 ## ✅ When Moses Heard That, He Was Content
 
-Moses accepts Aaron's reasoning without further argument. This closes the chapter on a note of mercy and flexibility - a strict system that still made room for a father's genuine, unbearable grief.
+Moses accepts Aaron's reasoning without further argument.
 
-✅ Moses accepts Aaron's explanation without further dispute
+This closes the chapter on a note of mercy, not more conflict.
 
-🤝 The chapter ends with resolution, not ongoing conflict
+A strict system of rules still made room for a father's genuine grief.
 
-❤️ Even a strict ritual system made room for real human grief`;
+The law was never meant to crush the people who had to live under it.
+
+✅ Moses accepts the explanation without dispute
+
+🤝 The chapter ends in resolution, not conflict
+
+❤️ A strict system still made room for grief
+
+📖 The law was never meant to crush people`.trim();
 
 export const LEVITICUS_TEN_PERSONAL_SECTIONS = parseLeviticusTenRawNotes(LEVITICUS_TEN_RAW_NOTES);
