@@ -7382,6 +7382,59 @@
           "at": "2026-08-03T04:59:30Z"
         }
       ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 3,
+      "startedAt": "2026-08-03T05:46:33Z",
+      "finishedAt": "2026-08-03T05:56:07Z",
+      "durationMinutes": 10,
+      "sections": 3,
+      "cards": 31,
+      "verses": 17,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Third chapter in the Leviticus redo backlog (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (paragraph bodies with hyphens, three bullets per card, no .trim() on the RAW_NOTES template literal so the style checker could not even parse it) from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (Leviticus.json). Leviticus 3 covers the peace offering (shelamim) across its three animal tiers: the herd (verses 1-5, defining peace offering, the male-or-female flexibility versus the burnt offering's male-only rule, the hand-laying gesture, the fixed tabernacle-door location, priestly blood handling and the round about application, the fat/kidneys/caul portions, sharing the altar fire with the burnt offering, and the sweet savour phrase), the flock/lamb (verses 6-11, the fat tailed sheep's rump as a new detail unique to this tier, the hard by the backbone idiom, the Aaron's sons versus the priest wording shift, and the shorter ending that omits sweet savour), and the goat (verses 12-17, the third repetition of the identical process, the all the fat is the LORD's summary line, the combined food and sweet savour phrase, and the closing perpetual statute banning fat and blood from every Israelite household, tied to Leviticus 17:11's the life of the flesh is in the blood). Kept the original file's 3 section boundaries (1-5, 6-11, 12-17) for verse-coverage continuity while rewriting every card to the new format and adding the missing .trim() call. Density 1.82 cards/verse (17 verses, 31 cards). scripts/check_bible_note_style.py was clean on the first pass (31 cards found, no problems). Parser check passed exactly via getBibleReaderStudySections('Leviticus', 3) (3/3 sections, 31 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range covering Leviticus 1-27, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (LeviticusThreePersonalSection, parseLeviticusThreeRawNotes, LEVITICUS_THREE_RAW_NOTES, LEVITICUS_THREE_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Leviticus 3 entry removed from the front of the list as part of this commit; next redo target is Leviticus 4.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-03T05:46:33Z"
+        },
+        {
+          "name": "target chapter determined: Leviticus 3 (style redo, first in remaining backlog)",
+          "at": "2026-08-03T05:46:33Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Leviticus.json",
+          "at": "2026-08-03T05:47:37Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (lib/genesisThirtyOneSource.ts) read",
+          "at": "2026-08-03T05:52:00Z"
+        },
+        {
+          "name": "source file written (lib/leviticusThreeSource.ts, 3 sections, 31 cards)",
+          "at": "2026-08-03T05:54:20Z"
+        },
+        {
+          "name": "style checker clean on first pass",
+          "at": "2026-08-03T05:54:32Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo (no changes needed, preserveExactPhraseBodies covers Leviticus 1-27)",
+          "at": "2026-08-03T05:54:40Z"
+        },
+        {
+          "name": "parser check passed (3 sections, 31 cards, 17 verses covered)",
+          "at": "2026-08-03T05:54:48Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-03T05:54:48Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-03T05:56:07Z"
+        }
+      ]
     }
   ]
 }

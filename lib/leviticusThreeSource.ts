@@ -89,399 +89,587 @@ function parseLeviticusThreeRawNotes(rawText: string): LeviticusThreePersonalSec
 }
 
 const LEVITICUS_THREE_RAW_NOTES = `# Leviticus 3:1-5
-
 # 🕊️ The Peace Offering, From The Herd
-
 ---
-
 ## 🕊️ A Sacrifice Of Peace Offering
 
-"Peace offering" translates the Hebrew word shelamim, related to shalom, meaning wholeness and well-being. This is the third offering type Leviticus explains, after the burnt offering in chapter 1 and the grain offering in chapter 2. It's the only one of the three where the worshipper actually gets to eat part of the meat himself, turning the sacrifice into a shared meal with God.
+"Peace offering" means friendship and wholeness with God.
 
-🕊️ "Peace offering" (shelamim) comes from shalom, meaning wholeness and well-being
+This is the third kind of offering explained in Leviticus.
 
-🔥🌾 Chapters 1 and 2 already covered the burnt offering and the grain offering
+The first two were the burnt offering and the grain offering.
 
-🍽️ This is the first offering type where the worshipper eats part of the meat himself
+This offering lets the worshipper eat part of the meat himself.
 
----
+It becomes a shared meal with God, not just smoke rising into the sky.
 
-## ⚧️ Whether It Be A Male Or Female
+🕊️ Peace offering means friendship with God
 
-The burnt offering in chapter 1 required a male animal every time. The peace offering relaxes that rule - either sex was acceptable here. This isn't a lower standard, just a different kind of offering with a different purpose: the burnt offering pictured total, costly surrender, while the peace offering centered on fellowship and a shared meal, so the male-only requirement didn't carry over.
+🔥 Burnt and grain offerings came first
 
-🐂 Chapter 1's burnt offering required a male animal, no exceptions
+🍽️ The worshipper eats part of this one
 
-🐄 The peace offering allowed either a male or a female
+📖 A shared meal, not just smoke
 
-🎯 Different offerings served different purposes, so their rules differed too
+## 🐂 Of The Herd
 
----
+"Herd" means cattle, the largest animals a family might own.
+
+Leviticus already used this same herd first pattern for the burnt offering in chapter one.
+
+Flock animals come next, a smaller and more affordable option.
+
+A worshipper offered whichever tier matched what he actually owned.
+
+🐂 Herd means the largest, most valuable animals
+
+🔁 Chapter one already used this same tier system
+
+🐑 Flock animals come next, a cheaper option
+
+📖 Worshippers gave according to what they owned
+
+## 🐄 Whether It Be A Male Or Female
+
+The burnt offering in chapter one required a male animal every time.
+
+This offering allows either a male or a female.
+
+That is not a lower standard, only a different purpose.
+
+The burnt offering pictured total surrender.
+
+This offering pictures fellowship instead.
+
+🐂 Chapter one required a male animal only
+
+🐄 This offering allows a male or female
+
+🎯 Different offerings serve different purposes
+
+📖 Fellowship replaces total surrender here
 
 ## ✅ Without Blemish Before The LORD
 
-Even with the male-or-female flexibility, one rule never changed: the animal still had to be physically perfect, free of injury, disease, or defect. Giving God a flawed animal was never allowed, no matter which offering type was in view.
+"Blemish" means any injury, disease, or physical flaw.
 
-✅ "Without blemish" means no injury, disease, or physical defect
+This exact standard already applied to the burnt offering in chapter one.
 
-🔁 This exact standard already applied to the burnt offering in chapter 1
+Some rules changed between offering types, like which sex was allowed.
 
-🎁 Some rules flexed between offering types; this one never did
+This rule never changed no matter which offering a worshipper brought.
 
----
+✅ Blemish means injury, disease, or a flaw
 
-## ✋ He Shall Lay His Hand Upon The Head Of His Offering
+🔁 Chapter one already required this same standard
 
-This is the same identifying gesture already seen in chapter 1 - a hand pressed on the animal's head, linking the worshipper to the animal about to die. Here it carries a slightly different weight: this offering isn't primarily about atonement for sin, it's about celebrating peace and fellowship with God, so the gesture marks this particular animal as this particular person's gift.
+🔀 Some offering rules flexed between the three types
 
-✋ Laying a hand on the head marked the animal as belonging to this offerer
+📖 A flawed animal was never acceptable to give
 
-🔁 The same gesture already appeared with the burnt offering in chapter 1
+## ✋ Lay His Hand Upon The Head Of His Offering
 
-🤝 Here it's tied to fellowship and thanksgiving, not primarily to atonement for sin
+This hand on the head gesture already appeared with the burnt offering in chapter one.
 
----
+A worshipper pressed his hand on the animal to mark it as his own gift.
+
+Here the meaning shifts slightly toward fellowship instead of guilt.
+
+This offering celebrates peace with God more than it covers sin.
+
+✋ The same hand gesture as chapter one
+
+🎁 It marked the animal as this offerer's gift
+
+🤝 Here it points to fellowship, not guilt
+
+📖 Peace with God is the focus here
 
 ## 🚪 Kill It At The Door Of The Tabernacle Of The Congregation
 
-Same fixed location as the other offerings - the entrance to the tent, where the altar stood. No matter which of the three offering types a family brought, it all happened in the same place, in full view, never privately or wherever felt convenient.
+The "door of the tabernacle" was the entrance to the tent, where the altar stood.
 
-🚪 The tabernacle's entrance, where the altar stood, was the required location
+Every offering in this chapter happened at this exact same spot.
 
-🔁 Chapters 1 and 2 already established this same fixed spot
+No family sacrificed animals at home or out in a private field.
 
-👁️ Every offering type happened openly, not in private
+Worship here always happened out in the open, in front of everyone.
 
----
+🚪 The tabernacle entrance is where the altar stood
 
-## 🩸 Aaron's Sons The Priests Shall Sprinkle The Blood Upon The Altar Round About
+🔁 Every offering type used this same location
 
-"Round about" means all four sides of the altar, a complete and deliberate application, not a quick splash. Handling the blood was a priest's job alone - a detail that stayed consistent across every offering type in Leviticus so far.
+🏠 No one sacrificed animals privately at home
 
-🩸 "Round about" means blood was applied on all four sides of the altar
+📖 Openness before God mattered more than convenience
 
-👤 Only a priest could handle the blood, never the ordinary worshipper
+## 🩸 Aaron's Sons The Priests Shall Sprinkle The Blood
 
-🔁 This same detail already applied to both earlier offering types
+Handling the blood was never the worshipper's job.
 
----
+Only Aaron's sons, the ordained priests, were allowed to touch it.
+
+This same rule already applied to the burnt offering in chapter one.
+
+The blood represented life itself, so only the priest could bring it to the altar.
+
+🩸 Only priests could handle the blood
+
+👤 Aaron's sons means the ordained priesthood
+
+🔁 Chapter one already set this same rule
+
+📖 Blood represented life, so priests alone carried it
+
+## 🔄 Round About
+
+"Round about" means every side of the altar, not just one splash of blood.
+
+The priest walked the altar and applied blood on all four sides.
+
+This was a careful, complete action, not a quick or careless one.
+
+Every offering in this chapter required this same thorough application.
+
+🔄 Round about means all four sides
+
+🩸 Blood touched the entire altar, not one spot
+
+🎯 This was careful, not quick or careless
+
+📖 Every offering type required this same care
 
 ## 🥩 The Fat That Covereth The Inwards
 
-"Inwards" means the internal organs. The fat surrounding them was set apart specifically for God - it never went to the priest or the worshipper as food. Verse 16, at the end of this chapter, states the rule plainly: all the fat belongs to the LORD.
+"Inwards" means the internal organs inside the animal's body.
 
-🥩 "Inwards" refers to the internal organs
+The fat surrounding those organs belonged to God alone.
 
-🚫 The fat covering them was never eaten by anyone, priest or worshipper
+No priest and no worshipper ever ate this particular fat.
 
-📖 Verse 16 later spells out this rule directly: the fat is the LORD's
+It belonged to God, not to people.
 
----
+Verse sixteen, later in this chapter, states the rule plainly.
 
-## 🫘 The Two Kidneys, And The Fat...By The Flanks
+🥩 Inwards means the internal organs
 
-"Flanks" means the sides of the body, near the lower back. Ancient Israelites connected the kidneys to a person's deepest emotions and conscience - Scripture elsewhere speaks of God "trying the reins" (an old word for kidneys) to describe testing what's truly inside a person (Psalm 7:9, Jeremiah 17:10). Removing this specific fat for the altar wasn't random butchery; it followed a precise, repeated pattern.
+🚫 This fat was never eaten by anyone
 
-🫘 "Flanks" means the sides of the body, near the lower back
+⭐ It belonged to God, not to people
 
-💭 Ancient Israelites connected the kidneys to a person's inner emotions and conscience
+📖 Verse sixteen later states this rule plainly
 
-📖 Psalm 7:9 and Jeremiah 17:10 describe God "trying the reins" - testing what's inside a person
+## 🫘 The Two Kidneys, Which Is By The Flanks
 
----
+"Flanks" means the sides of the body, near the lower back.
+
+Ancient Israelites connected the kidneys to a person's deepest feelings.
+
+Scripture describes God testing "the reins," an old phrase for testing what is inside a person.
+
+Removing this fat followed an exact, repeated pattern, not random butchering.
+
+🫘 Flanks means the sides near the lower back
+
+💭 Kidneys stood for a person's inner feelings
+
+📜 Scripture speaks of God testing the reins
+
+📖 This cut followed an exact pattern every time
 
 ## 🍖 The Caul Above The Liver
 
-The "caul" is a fatty membrane, sometimes called the liver's lobe, that sits over part of that organ. Naming this exact piece, every time, in every offering in this chapter, shows how precisely Leviticus tracked which parts belonged to God and which didn't - nothing was left to guesswork.
+The "caul" is a fatty membrane that covers part of the liver.
 
-🍖 "Caul" refers to a fatty membrane covering part of the liver
+This exact same body part gets named every single time this offering appears.
 
-📏 The same exact body part is named every time this offering is described
+Nothing about what belonged to God was left vague or up for guessing.
 
-🎯 Precision mattered - nothing about what belonged to God was left vague
+Precision mattered here, down to one specific piece of fat.
 
----
+🍖 Caul means a fatty membrane over the liver
+
+📏 This same body part is named every time
+
+🎯 Nothing here was left vague or unclear
+
+📖 Precision mattered, down to one exact piece
 
 ## 🔥 Burn It On The Altar Upon The Burnt Sacrifice
 
-This detail connects the peace offering directly to the offering that came before it. The altar already had a burnt offering on it, kept burning - Leviticus 6:12-13 later requires the altar fire to never go out - and the peace offering's fat portion was added on top of that fire, not lit separately. The two offerings physically shared the same flame.
+This peace offering was not burned on a separate fire of its own.
 
-🔥 The peace offering's fat was burned on top of an already-burning burnt offering
+The altar already held a burnt offering, kept burning at all times.
 
-📖 Leviticus 6:12-13 later requires this altar fire to never go out
+Leviticus six later requires that this altar fire never go out.
 
-🔗 The two offering types physically shared the same fire, not separate ones
+The fat from this offering was simply added on top of that same fire.
 
----
+🔥 The altar fire was already burning
+
+🔁 The peace offering shared that same fire
+
+🔗 Two offerings burned on one continuous flame
+
+📖 This altar fire was never allowed to die
 
 ## 🌬️ An Offering Made By Fire, Of A Sweet Savour Unto The LORD
 
-This same phrase already closed sections in chapters 1 and 2. It means the offering, brought the right way, was accepted and pleasing to God - not that God needed the smoke or the smell. The third offering type in a row ends its first tier with this identical assurance.
+"Sweet savour" means the offering was fully accepted and pleasing to God.
 
-🌬️ "Sweet savour" means the offering was accepted, not that God needed food
+It does not mean God needed the smoke or the smell for food.
 
-🔁 The identical phrase already closed sections in both chapters 1 and 2
+This same phrase already closed sections in chapters one and two.
 
-✅ All three offering types share this same note of acceptance
+Three offering types in a row end on this identical note of acceptance.
+
+🌬️ Sweet savour means fully accepted by God
+
+🚫 God did not need the smoke for food
+
+🔁 Chapters one and two already used this phrase
+
+📖 Three offering types share this same ending
 
 # Leviticus 3:6-11
-
 # 🐑 The Peace Offering, From The Flock
-
 ---
+## 🐑 Of The Flock
 
-## 🐑 Of The Flock; Male Or Female
+"Flock" means sheep and goats, a smaller and more affordable group of animals.
 
-Same flexibility as the herd offering just described - either sex was fine for this second, smaller tier. The flock tier (sheep and goats) already appeared as the second, more affordable option for the burnt offering back in chapter 1; here it works the same way for the peace offering.
+This is the second tier, just like it was for the burnt offering in chapter one.
 
-🐑 Male or female was acceptable, same as the herd offering above
+Either a male or a female was acceptable here too.
 
-🐐 "Flock" means sheep and goats, a smaller, less costly option than cattle
+The same flexibility from the herd offering carries over to this smaller tier.
 
-🔁 Chapter 1 already used this same herd-then-flock structure
+🐑 Flock means sheep and goats
 
----
+💰 A smaller, more affordable tier than cattle
+
+🐄 Male or female was fine here too
+
+📖 The same herd flexibility carries over here
 
 ## 🐏 If He Offer A Lamb
 
-This verse narrows down to a lamb specifically - the goat option comes in verse 12. Splitting "flock" into its two versions, lamb then goat, mirrors how carefully this whole chapter tracks small distinctions between very similar offerings.
+This verse narrows the flock category down to one specific animal, a lamb.
 
-🐏 "Lamb" narrows the flock category down to one specific animal
+The goat option, the other half of flock, comes later in verse twelve.
 
-🐐 The goat version of this same offering comes later, in verse 12
+Splitting flock into lamb and goat shows how carefully this chapter tracks small differences.
 
-📋 The chapter tracks each small variation with its own instructions
+Every animal type gets its own exact set of instructions.
 
----
+🐏 Lamb narrows flock down to one animal
 
-## ✋ Lay His Hand Upon The Head Of His Offering (Again)
+🐐 The goat version comes later, in verse twelve
 
-The same identifying gesture from verse 2 repeats here for the lamb. Every worshipper, whatever animal he brought, personally marked it as his before it died.
+📋 The chapter tracks each small difference on purpose
 
-✋ The same hand-on-the-head gesture already described for the herd offering
-
-🔁 This detail doesn't change based on which animal was offered
-
-🤝 Every worshipper personally identified with the animal, regardless of cost
-
----
+📖 Every animal type gets its own instructions
 
 ## 🔪 Kill It Before The Tabernacle Of The Congregation
 
-Same fixed location, same requirement already explained for the herd offering. The lamb didn't get slaughtered at home or in a field - it had to happen at the tabernacle's entrance, just like every offering in this chapter so far.
+This verse repeats the same hand on the head gesture explained back in verse two.
 
-🚪 The lamb was killed at the tabernacle's entrance, same as the herd offering
+It also repeats the same fixed location as the herd offering.
 
-🔁 Location never changed regardless of which animal a worshipper brought
+Here the text says before the tabernacle instead of at the door of it.
 
-📍 This consistency runs through every offering type in this chapter
+Both phrases point to the exact same spot, the tabernacle's entrance.
 
----
+✋ The same hand gesture repeats here again
 
-## 🩸 Aaron's Sons Shall Sprinkle The Blood Thereof Round About Upon The Altar
+📍 The same fixed location as before
 
-Same priestly duty, same "round about" thoroughness already explained for the herd offering. No matter which animal came through the door, the blood was handled by a priest, completely, on every side of the altar.
+📝 Before means the same as at the door
 
-🩸 The same "round about" application already described for the herd offering
-
-👤 Blood-handling stayed a priest's job regardless of the animal's size or cost
-
-⚖️ A lamb received exactly the same careful treatment as an ox
-
----
+📖 The lamb met the same exact standard
 
 ## 🐑 The Fat Thereof, And The Whole Rump
 
-"Rump" is a new detail that didn't appear with the herd offering - many sheep raised in the ancient Near East were a fat-tailed breed, whose tails stored a large, distinct deposit of fat prized as a delicacy. Because that tail fat was so substantial on this kind of sheep, Leviticus calls it out by name here instead of leaving it lumped in with the rest of the fat.
+"Rump" refers to the fat tail of certain sheep raised in this region.
 
-🐑 Many ancient Near Eastern sheep had large, fat-storing tails
+Many ancient Near Eastern sheep were a fat tailed breed.
 
-🍖 That tail fat was substantial enough to be named on its own
+Their tails stored a large, distinct deposit of fat, prized as a delicacy.
 
-📋 This detail wasn't needed for the herd offering, since cattle don't have this feature
+Because that tail fat was so large, Leviticus names it on its own here.
 
----
+The herd offering never mentioned this detail, since cattle do not have this feature.
+
+🐑 Rump means the fat tail of these sheep
+
+🧈 Many local sheep had large fat tails
+
+🍖 This fat was prized as a delicacy
+
+📖 Cattle lack this feature, unlike sheep
 
 ## ✂️ It Shall He Take Off Hard By The Backbone
 
-"Hard by" is an old way of saying "right next to" or "close against." The fatty tail had to be removed by cutting close to the spine, not left attached with extra flesh or taken carelessly further down.
+"Hard by" is an old phrase meaning right next to or close against.
 
-✂️ "Hard by" is an old phrase meaning "right next to" or "close against"
+The fatty tail had to be cut close to the spine.
 
-🦴 The cut was made close to the backbone, not further down the tail
+It could not be left attached with extra flesh still on it.
 
-📏 Precision, again, mattered even in this small cutting detail
+Precision mattered again, even in this small cutting detail.
 
----
+✂️ Hard by means right next to
 
-## 🥩 The Fat That Covereth The Inwards (Again)
+🦴 The cut was made close to the spine
 
-The same fat-removal instructions from the herd offering repeat here almost word for word - the inward-covering fat, the two kidneys, the caul above the liver. This isn't the chapter running out of new things to say; it's making sure a worshipper bringing a lamb followed the identical standard as one bringing an ox.
+📏 Extra flesh could not be left attached
 
-🔁 This repeats the herd offering's fat instructions almost word for word
+📖 Even small cutting details carried precise rules
 
-⚖️ A lamb owner met the exact same standard as a cattle owner
+## 🥩 The Two Kidneys, And The Caul Above The Liver
 
-🎯 Consistency, not variety, is the point of the repetition
+This verse repeats the exact same fat instructions already given for the herd offering.
 
----
+The kidneys, the flank fat, and the caul above the liver all return here.
 
-## 🔥 The Priest Shall Burn It Upon The Altar
+This is not the chapter running out of new things to say.
 
-Notice the wording shift - earlier verses said "Aaron's sons," and now it simply says "the priest." Both phrases point to the same priestly family carrying out tabernacle duties; Leviticus isn't being inconsistent, just using different ways to refer to the same office.
+It is making sure a lamb owner met the same standard as a cattle owner.
 
-👤 "The priest" and "Aaron's sons" refer to the same priestly family
+🔁 These same fat instructions already appeared once
 
-🔁 Both phrases describe the identical role already explained in chapter 1
+⚖️ A lamb owner met the same standard
 
-📖 Leviticus varies its wording without changing what's actually meant
+🐄 A cattle owner faced this exact standard too
 
----
+📖 Repetition here proves the standard never changed
+
+## 👤 The Priest Shall Burn It Upon The Altar
+
+Earlier verses said "Aaron's sons."
+
+This verse simply says "the priest."
+
+Both phrases point to the exact same priestly family and office.
+
+Leviticus varies its wording without ever changing what is actually meant.
+
+👤 Aaron's sons means the priestly family
+
+🔁 The priest refers to that same family
+
+✍️ Different words, same job every time
+
+📖 Leviticus varies wording without changing the meaning
 
 ## 🍞 It Is The Food Of The Offering Made By Fire
 
-Here Leviticus calls the burned portion "food" - not because God eats it, but because this is picture-language for an offering fully accepted and consumed, the same way a meal is fully consumed by whoever eats it. This word choice ties back to chapter 2, where the leftover grain offering literally became food for the priests.
+Leviticus calls this burned portion "food," but God does not literally eat it.
 
-🍞 "Food" here is picture-language for an offering fully given and accepted
+This is picture language for an offering that is fully given and fully accepted.
 
-🚫 God doesn't literally eat the smoke - the word is symbolic
+Chapter two already used the word "food" for the priests' actual leftover meal.
 
-🌾 Chapter 2 used "food" more literally, for the priests' actual leftover meal
+Here the same word paints a different, symbolic picture instead.
 
----
+🍞 Food here is picture language, not literal eating
 
-## 🌬️ No "Sweet Savour" This Time
+🚫 God does not literally eat the smoke
 
-Unlike verse 5's ending for the herd offering, this verse skips the words "sweet savour." That's a real difference in wording, not a difference in meaning - verse 16 brings the fuller phrase back for the goat offering, showing that both versions describe the same accepted, pleasing gift to God.
+🌾 Chapter two used food for a real meal
 
-📝 Verse 5 said "sweet savour" for the herd offering; this verse doesn't repeat it
+📖 The same word paints two different pictures
 
-🔁 Verse 16 later brings the fuller phrase back for the goat offering
+## 📝 Unto The LORD
 
-✅ The shorter and longer wording both describe the same accepted offering
+Verse five, for the herd offering, ended with the words "sweet savour."
+
+This verse, for the lamb, leaves those words out.
+
+That is a real difference in wording, not a difference in meaning.
+
+Verse sixteen later brings the fuller phrase back for the goat offering.
+
+Herd, lamb, and goat all still describe one single, accepted gift to God.
+
+📝 Verse five said sweet savour for the herd
+
+✂️ This verse leaves those words out
+
+🔁 Verse sixteen brings the fuller phrase back
+
+📖 All three offerings mean the same accepted gift
 
 # Leviticus 3:12-17
-
-# 🐐 The Goat Offering, And A Permanent Rule
-
+# 🐐 The Goat, And A Perpetual Rule
 ---
-
 ## 🐐 If His Offering Be A Goat
 
-This is the third and final animal option in the chapter. Unlike the herd and flock instructions earlier, this verse skips repeating "male or female" and "without blemish" - not because those rules no longer applied, but because Leviticus has already established them twice and doesn't need to spell them out a third time.
+The goat is the third and final animal option in this chapter.
 
-🐐 The goat is the third and final offering option in this chapter
+This verse skips repeating "male or female" and "without blemish."
 
-📏 "Male or female" and "without blemish" still applied, just weren't repeated again
+Those rules still applied here.
 
-✂️ Leviticus shortens its wording once a rule has already been fully explained
+Leviticus simply did not spell them out a third time.
 
----
+Once a rule has been fully explained twice, the text shortens.
 
-## ✋🔪 Lay His Hand Upon The Head Of It...Kill It
+🐐 Goat is the third and final option
 
-For the third time in this chapter, the same two actions repeat: the identifying hand, then the killing at the tabernacle's entrance. Three tiers, three animals, one unchanging process.
+✂️ Male or female, without blemish, stay unstated
 
-🔁 This is the third time this exact two-step process appears in this chapter
+📏 Both rules still fully applied to the goat
 
-🐂🐑🐐 Herd, flock, and now goat all follow the identical pattern
+📖 Leviticus shortens wording once a rule is clear
 
-🎯 The chapter's point: the process never bends based on the animal
+## 🔪 Lay His Hand Upon It, Kill It
 
----
+For the third time in this chapter, the same two steps repeat.
 
-## 🩸 The Sons Of Aaron Shall Sprinkle The Blood Thereof Upon The Altar Round About
+A worshipper laid his hand on the animal, then killed it at the tabernacle.
 
-Same priestly duty, same complete application on all sides of the altar, for the third and final time in this chapter. By now the pattern is unmistakable on purpose.
+Herd, flock, and now goat all follow this identical process.
 
-🩸 The same "round about" blood application already used twice in this chapter
+The process never bends based on which animal a family could afford.
 
-👤 Still exclusively a priest's task, never the worshipper's
+🔁 The third time this same process appears
 
-🔁 Three offerings, three identical blood procedures
+🐐 Herd, flock, and now goat all match
 
----
+🎯 God required this process every single time
 
-## 🥩 The Fat, The Kidneys, And The Caul Above The Liver (A Third Time)
+📖 Consistency mattered more than the animal's cost
 
-The identical fat-removal details - inward-covering fat, two kidneys, caul above the liver - repeat here for the third animal in a row. This chapter is built on repetition on purpose: no matter the animal's size, cost, or species, God claimed the exact same specific portions every time.
+## 🥩 The Fat, The Kidneys, And The Caul Above The Liver
 
-🔁 The same fat portions named for the herd and flock offerings repeat here again
+The same fat instructions repeat here for the third animal in a row.
 
-⚖️ Cattle, sheep, and now goats all met one identical standard
+The fat covering the inwards, the two kidneys, and the caul above the liver all return.
 
-🎯 Three repeats in one chapter is a deliberate teaching tool, not filler
+This chapter repeats itself on purpose, not out of laziness.
 
----
+No matter the animal's size or cost, God claimed these exact same parts every time.
+
+🔁 The same fat parts repeat a third time
+
+🥩 Inwards fat, kidneys, and caul all return
+
+🎯 Repetition here is deliberate, not accidental
+
+📖 God claimed the same parts every time
 
 ## ⭐ All The Fat Is The LORD's
 
-This exact sentence doesn't appear after the herd or lamb sections - it shows up here, at the very end of the goat instructions, as a summary statement covering the whole chapter. After three rounds of naming the same fat portions, Leviticus states the underlying rule plainly: none of that fat ever belonged to a person, priest or worshipper. It belonged to God alone.
+This exact sentence never appeared after the herd or lamb instructions.
 
-⭐ This summary line only appears once, closing out all three offering types
+It shows up only here, at the end of the goat instructions.
 
-🚫 The fat was never available for a priest or worshipper to eat
+After three rounds of naming the same fat, Leviticus states the rule plainly.
 
-🎯 Three rounds of examples end in one plain, direct statement
+That fat never belonged to a person, priest or worshipper alike.
 
----
+It belonged to God alone.
+
+⭐ This summary line appears only once
+
+🚫 The fat was never available to eat
+
+👤 Not the priest, not the worshipper either
+
+📖 Three examples end in one plain statement
 
 ## 🌬️ The Food Of The Offering Made By Fire For A Sweet Savour
 
-Here both phrases - "food" and "sweet savour" - appear together, unlike verse 11's lamb offering, which used "food" alone. Putting them back together at the chapter's close ties every version of this offering, however it was worded along the way, back to the same single meaning: a gift fully given and fully accepted.
+Here both phrases, "food" and "sweet savour," appear together.
 
-📝 Verse 11 used "food" alone; this verse brings back "sweet savour" too
+Verse eleven, for the lamb, used only the word "food" alone.
 
-🔗 Combining both phrases ties every version of this offering to the same idea
+Bringing both phrases back together closes out the chapter with one full meaning.
 
-✅ Herd, lamb, and goat all end up meaning exactly the same thing to God
+Herd, lamb, and goat all end up meaning the exact same thing to God.
 
----
+📝 Food and sweet savour appear together here
+
+✂️ Verse eleven used only the word food
+
+🔗 Both phrases together close out the chapter
+
+📖 Every offering means the same thing to God
 
 ## 📜 A Perpetual Statute For Your Generations
 
-"Perpetual statute" means a permanent law, not a temporary rule for just that moment in the wilderness. "Generations" means Israel's descendants across all future time - this command wasn't meant to expire once the original audience died out.
+"Perpetual statute" means a permanent law, not a rule only for that moment.
 
-📜 "Perpetual statute" means a law meant to last permanently
+"Generations" means Israel's descendants across all future time.
 
-👨‍👩‍👧‍👦 "Generations" means Israel's descendants across all future time
+This command was never meant to expire once the first audience died out.
 
-🚫 This wasn't a temporary wilderness-only rule
+It was built to outlast the wilderness and travel into the future.
 
----
+📜 Perpetual statute means a permanent law
+
+👨‍👩‍👧‍👦 Generations means all of Israel's future descendants
+
+🚫 This was never a temporary wilderness rule
+
+📖 The law was built to outlast that generation
 
 ## 🗺️ Throughout All Your Dwellings
 
-This rule wasn't limited to activity happening right at the tabernacle - it reached every place an Israelite family actually lived, across the whole land. Wherever Israel settled, this law traveled with them.
+"Dwellings" means every place an Israelite family actually lived.
 
-🗺️ "Dwellings" means everywhere Israelites actually lived, not just at the tabernacle
+This rule was not limited to activity right at the tabernacle.
 
-🌍 The rule applied nationwide, not only at the central place of worship
+It reached every home, across the whole land, not just the center of worship.
 
-📦 A law given in the wilderness was built to travel with Israel into the land
+Wherever Israel settled, this law traveled with them.
 
----
+🗺️ Dwellings means everywhere Israelites actually lived
 
-## 🚫 Ye Shall Eat Neither Fat...
+🏠 Not limited to activity at the tabernacle
 
-This ban covers the fat already discussed all through this chapter - the exact portions that went to the altar, never to a person's table. Verse 16 just said this fat belonged to the LORD; this final verse turns that fact into a permanent command for every Israelite household.
+🌍 The rule applied nationwide, not only centrally
 
-🚫 This fat is the exact same fat the chapter has been describing throughout
+📖 This law traveled with Israel everywhere
 
-⭐ Verse 16 already called this fat the LORD's; here it becomes a binding rule
+## 🚫 Ye Shall Eat Neither Fat
 
-🏠 The command applied to every Israelite household, not just those bringing offerings
+This ban covers the exact fat described all through this chapter.
 
----
+That fat always went to the altar, never to a family's table.
 
-## 🩸 ...Nor Blood
+Verse sixteen already called this fat the LORD's alone.
 
-Blood gets its own separate ban, for a different reason than fat. Leviticus 17:11 later spells it out: "the life of the flesh is in the blood." Blood wasn't just another body part - it stood for life itself, and life belonged to God, not to the dinner table.
+Here that fact becomes a binding command for every household.
 
-🩸 Blood was banned for a different reason than fat
+🚫 This bans the fat named in this chapter
 
-📖 Leviticus 17:11 explains it directly: "the life of the flesh is in the blood"
+⭐ Verse sixteen already called this fat the LORD's
 
-💛 Blood represented life itself, which belonged to God alone`;
+🏠 Every household was bound, not just offerers
+
+📖 A stated fact becomes a binding rule here
+
+## 🩸 Nor Blood
+
+Blood gets its own separate ban, for a different reason than fat.
+
+Leviticus seventeen later explains it directly.
+
+"The life of the flesh is in the blood."
+
+Blood was not just another body part.
+
+It stood for life itself, and life belonged to God alone.
+
+🩸 Blood was banned for a different reason
+
+❤️ The life of the flesh is blood
+
+📖 Leviticus seventeen explains this idea further
+
+➡️ Life itself belonged to God, not the table
+`.trim();
 
 export const LEVITICUS_THREE_PERSONAL_SECTIONS = parseLeviticusThreeRawNotes(LEVITICUS_THREE_RAW_NOTES);
