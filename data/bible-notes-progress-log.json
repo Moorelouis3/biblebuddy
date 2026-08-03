@@ -5,6 +5,59 @@
   "entries": [
     {
       "book": "Exodus",
+      "chapter": 38,
+      "startedAt": "2026-08-03T00:46:20Z",
+      "finishedAt": "2026-08-03T01:01:30Z",
+      "durationMinutes": 15,
+      "sections": 8,
+      "cards": 49,
+      "verses": 31,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (8 sections / 56 cards, paragraph bodies, three bullets per card, double-hyphen dashes throughout, no .trim() on its raw notes constant) from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Exodus 38 finishes the outer-court construction report: the altar of burnt offering built from shittim wood and brass with its horns, ash tools, and carrying rings; the bronze laver made from the mirrors donated by the women who assembled at the tabernacle door; the court's linen walls on all four sides with the repeating one-pillar-per-five-cubits design module; the gate's plain and embroidered sections measured out; the blue/purple/scarlet/linen entrance screen that marks every major tabernacle threshold; Ithamar, Bezaleel, and Aholiab named and held personally accountable for the count; and the closing full tally of gold, silver, and brass down to the last tent peg, including the half-shekel census payment (matching Numbers 1:46's 603,550 figure) and the silver becoming the sanctuary's structural sockets. Kept the original file's 8 section boundaries for verse-coverage continuity while rewriting every card to the new format. Density about 1.58 cards/verse (31 verses, 49 cards), leaning toward the richer end since this dimension-and-materials chapter still has real teaching in the word definitions, the metal hierarchy (brass outside/silver touching/gold inside), and the named builders. `scripts/check_bible_note_style.py` found 4 problems on first pass (two bullets over the 8 word limit, one last-bullet-emoji ordering issue, one card where a digit-based keycap emoji was not recognized by the checker's regex, causing a bullet undercount), fixed, second run clean. A manual section 13 eye check also caught and removed one stacked 'while' clause and one banned hedge word ('quite') before finalizing. Parser check passed exactly via getBibleReaderStudySections('Exodus', 38) (8/8 sections, 49 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range covering Exodus 1-40, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (ExodusThirtyEightPersonalSection, parseExodusThirtyEightRawNotes, EXODUS_THIRTY_EIGHT_RAW_NOTES, EXODUS_THIRTY_EIGHT_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Exodus 38 entry removed from the front of the list as part of this commit; next redo target is Exodus 39.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-03T00:46:44Z"
+        },
+        {
+          "name": "target chapter determined: Exodus 38 (style redo, first in remaining backlog)",
+          "at": "2026-08-03T00:46:50Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Exodus.json",
+          "at": "2026-08-03T00:47:35Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (lib/genesisThirtyOneSource.ts) read",
+          "at": "2026-08-03T00:52:10Z"
+        },
+        {
+          "name": "source file written (lib/exodusThirtyEightSource.ts, 8 sections, 49 cards)",
+          "at": "2026-08-03T00:56:54Z"
+        },
+        {
+          "name": "style checker clean (after fixing two over-length bullets, one last-bullet-emoji order issue, one unrecognized keycap emoji)",
+          "at": "2026-08-03T00:59:35Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo (no changes needed)",
+          "at": "2026-08-03T00:59:50Z"
+        },
+        {
+          "name": "parser check passed (8 sections, 49 cards, 31 verses covered)",
+          "at": "2026-08-03T01:00:05Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-03T01:00:39Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, redo-remaining.json popped, SESSION_LOG.md)",
+          "at": "2026-08-03T01:01:30Z"
+        }
+      ]
+    },
+    {
+      "book": "Exodus",
       "chapter": 19,
       "startedAt": "2026-08-02T05:46:28Z",
       "finishedAt": "2026-08-02T05:56:01Z",
