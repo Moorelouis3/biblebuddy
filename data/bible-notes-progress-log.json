@@ -7439,6 +7439,63 @@
           "at": "2026-08-03T05:58:20Z"
         }
       ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 4,
+      "startedAt": "2026-08-03T06:46:13Z",
+      "finishedAt": "2026-08-03T06:56:30Z",
+      "durationMinutes": 10,
+      "sections": 6,
+      "cards": 35,
+      "verses": 35,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Fourth chapter in the Leviticus redo backlog (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (paragraph bodies, three bullet or overlong-bullet cards, hyphens/semicolons throughout) from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (Leviticus.json). Leviticus 4 covers the sin offering across its four tiers of responsibility: the anointed priest (verses 1-4, defining soul/through ignorance/anointed priest, the young bullock without blemish, the hand-laying gesture), the first-time-in-Leviticus blood ritual carried inside the tent to the veil and the incense altar's horns plus disposal outside the camp with the Hebrews 13 cross connection (verses 5-12), the whole congregation sinning together with the elders standing in for the nation (verses 13-21), the ruler's smaller male goat and outer-altar-only blood (verses 22-26), and the ordinary Israelite's two options, a female goat or a female lamb (verses 27-35), closing on the chapter's unifying pattern that every tier, from the High Priest down to the poorest farmer, reached the identical outcome of atonement and forgiveness. Kept the original file's 6 section boundaries (1-4, 5-12, 13-21, 22-26, 27-31, 32-35) for verse-coverage continuity while rewriting every card to the new format. Density 1.0 cards/verse (35 verses, 35 cards) given how repetitive the tiered ritual structure is verse to verse; leaned each repeated-ritual card toward naming what changed or stayed the same between tiers rather than restating mechanics. scripts/check_bible_note_style.py flagged one issue on first run (a 7-emoji keycap bullet the checker's emoji regex could not match, undercounting that card's bullets to 3), fixed by swapping it for a plain numeral emoji; clean on the second pass (35 cards found, no problems). Parser check passed exactly via getBibleReaderStudySections('Leviticus', 4) (6/6 sections, 35 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range covering Leviticus 1-27, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (LeviticusFourPersonalSection, parseLeviticusFourRawNotes, LEVITICUS_FOUR_RAW_NOTES, LEVITICUS_FOUR_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Leviticus 4 entry removed from the front of the list as part of this commit; next redo target is Leviticus 5.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-03T06:46:52Z"
+        },
+        {
+          "name": "target chapter determined: Leviticus 4 (style redo, first in remaining backlog)",
+          "at": "2026-08-03T06:47:10Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Leviticus.json",
+          "at": "2026-08-03T06:47:45Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-08-03T06:49:30Z"
+        },
+        {
+          "name": "wiring in lib/bibleReaderStudyNotes.ts confirmed already correct for redo chapter",
+          "at": "2026-08-03T06:50:15Z"
+        },
+        {
+          "name": "source file lib/leviticusFourSource.ts written (6 sections, 35 cards)",
+          "at": "2026-08-03T06:53:30Z"
+        },
+        {
+          "name": "style checker: one issue found (keycap emoji miscount), fixed",
+          "at": "2026-08-03T06:54:40Z"
+        },
+        {
+          "name": "style checker clean",
+          "at": "2026-08-03T06:55:05Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections Leviticus 4: 6 sections, 35 cards)",
+          "at": "2026-08-03T06:55:30Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-03T06:55:51Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-03T06:56:30Z"
+        }
+      ]
     }
   ]
 }
