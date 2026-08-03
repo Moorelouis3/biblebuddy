@@ -635,3 +635,7 @@ Next up: Leviticus 14
 ## 2026-08-03T17:00:30Z (hourly chapter notes run)
 Chapter: Leviticus 14 | Duration: 14 min | Sections: 13 | Cards: 53 | Status: pass
 Next up: Leviticus 15
+
+## 2026-08-03T18:00:00Z (hourly chapter notes run)
+Chapter: Leviticus 15 | Duration: 14 min | Sections: 9 | Cards: 48 | Status: pass
+Next up: Leviticus 16

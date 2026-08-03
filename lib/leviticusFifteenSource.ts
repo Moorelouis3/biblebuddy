@@ -89,652 +89,920 @@ function parseLeviticusFifteenRawNotes(rawText: string): LeviticusFifteenPersona
 }
 
 const LEVITICUS_FIFTEEN_RAW_NOTES = `# Leviticus 15:1-3
-
 # 🩸 The Law Of Running Issues
-
 ---
-
 ## 🗣️ Spake Unto Moses And Unto Aaron
 
-Most laws in Leviticus open with "the LORD spake unto Moses" alone. This one names Aaron too, because a "running issue" doesn't stay private - it spreads to beds, seats, and household objects in ways that touch daily community life, not just tabernacle service, so both Israel's lawgiver and its high priest are told together.
+Most laws in Leviticus name Moses alone as the one being addressed.
 
-🗣️ Most Leviticus laws are given to Moses alone
+This law names Aaron too.
 
-👳 Aaron is named here because priests handle the fallout
+A running issue does not stay private.
 
-🏘️ This law reaches into ordinary daily life
+It spreads to beds, chairs, and household objects that reach the wider camp.
 
----
+Aaron represents the priesthood, whose job includes managing exactly that kind of spread.
+
+Naming him here signals that this law reaches past the tabernacle door and into ordinary homes.
+
+🗣️ Most Leviticus laws name Moses alone
+
+👳 Aaron is named because priests handle the fallout
+
+🏘️ This law touches ordinary homes, not the tabernacle
+
+📖 A private condition still had public consequences
 
 ## 📢 Speak Unto The Children Of Israel
 
-This instruction goes out to the whole nation, not just the priesthood. That matters, because these rules govern ordinary households and everyday contact, not only what happens at the tabernacle door.
+This instruction goes to the whole nation, not only the priests.
 
-📢 Addressed to the whole nation, not just priests
+Ordinary households needed to know these rules just as much as Aaron's sons did.
 
-🏠 Governs household life, not only tabernacle service
+The tabernacle staff could not police every home in Israel.
 
-📜 Everyone needed to know these rules, not just Aaron's sons
+Families had to recognize and manage this condition themselves.
 
----
+📢 Addressed to the whole nation
 
-## 🚹 A Running Issue Out Of His Flesh
+🏠 Ordinary households needed these rules too
 
-"Flesh" is the Bible's polite word for the male sex organ, the same word used for circumcision back in Genesis 17. A "running issue" is an abnormal discharge from it - not a normal bodily function, but something wrong, likely close to what would today be diagnosed as a genital infection.
+🙅 Priests could not police every home
 
-📖 "Flesh" is a polite Bible word for the male organ
+📖 Israel governed itself, not just its priests
 
-🩺 "Running issue" means an abnormal, unwanted discharge
+## 🩺 A Running Issue Out Of His Flesh
 
-🚫 Not describing anything about normal bodily function
+"Flesh" is the Bible's plain word for the male body, sometimes the male organ specifically.
 
----
+Genesis seventeen uses the same word for circumcision.
+
+A "running issue" means an abnormal discharge, not a normal bodily function.
+
+Modern readers would likely recognize this as describing a genital infection.
+
+The text is medical, not moral, in what it describes.
+
+🔤 Flesh means the male body, plainly
+
+✂️ Circumcision used the same word too
+
+🩺 Running issue means an abnormal discharge
+
+📖 The description is medical, not moral
 
 ## ⚖️ Because Of His Issue He Is Unclean
 
-"Unclean" throughout Leviticus is a ritual status, not a moral verdict - it doesn't mean the man sinned. Like childbirth in chapter 12 or skin disease in chapters 13-14, it temporarily blocks him from approaching the tabernacle until the condition passes and the proper steps are taken.
+"Unclean" is a technical word throughout Leviticus, not a verdict about sin.
 
-⚖️ "Unclean" is a ritual status, not a verdict of sin
+Childbirth carried the same word back in chapter twelve.
 
-🔗 Same pattern as childbirth (ch12) and skin disease (ch13-14)
+Skin disease carried it in chapters thirteen and fourteen.
 
-🚪 Blocks tabernacle access temporarily, not permanently
+None of those conditions meant the person had done something wrong.
 
----
+Unclean simply meant blocked from the tabernacle until the condition passed.
+
+⚖️ Unclean is a technical word, not a verdict
+
+👶 Childbirth used the same word in chapter twelve
+
+🌿 Skin disease used it in chapters thirteen, fourteen
+
+📖 It meant blocked access, never guilt
 
 ## 🔄 Whether His Flesh Run With His Issue, Or His Flesh Be Stopped
 
-The law covers two opposite-sounding symptoms as one problem: ongoing discharge, or the passage blocked up entirely. Both count as "his uncleanness" - the law isn't naming one narrow symptom, it's covering the whole condition however it happens to show up.
+The law names two opposite symptoms and calls them the same problem.
 
-🔄 Covers both active discharge and blockage as one condition
+One is ongoing discharge.
 
-📜 Doesn't require one exact symptom to apply
+The other is the passage blocked entirely.
 
-🩺 Written broadly enough to fit real medical variation
+Both count as "his uncleanness."
+
+The law was not written around one narrow symptom.
+
+It was written broadly enough to cover the condition however it actually showed up.
+
+🔄 Two opposite symptoms count as one condition
+
+📜 The law does not require one exact symptom
+
+🩺 Real medical cases rarely look identical
+
+📖 Broad wording protected cases a narrow rule missed
 
 # Leviticus 15:4-6
-
 # 🛏️ Bed And Seat
-
 ---
-
 ## 🛏️ Every Bed Whereon He Lieth...Is Unclean
 
-The uncleanness spreads by contact - anything he lies on picks up his ritual status. This isn't about visible dirt; it's a legal category attached to an object because of who used it.
+Uncleanness spread through contact, not through visible dirt.
 
-🛏️ Uncleanness spreads through contact, not visible dirt
+Anything the man lay on picked up his ritual status automatically.
 
-📜 A legal category, not a hygiene judgment about the object
+This was a legal category attached to an object, not a hygiene judgment about it.
 
-🔗 Sets up every rule that follows in this section
+Every rule that follows in this chapter builds on this one idea.
 
----
+🛏️ Uncleanness spread through contact, not dirt
+
+⚖️ A legal category, not a hygiene judgment
+
+🔗 Every later rule builds on this one
+
+📖 Objects carried a person's ritual status
 
 ## 🪑 Every Thing Whereon He Sitteth Shall Be Unclean
 
-This broadens beyond the bed to literally anything used as a seat. The ordinary furniture of daily life - stools, chairs, the ground he sits on - all becomes affected by his condition.
+"Every thing" widens the rule past the bed to any seat at all.
 
-🪑 Broadens beyond "bed" to any seat at all
+Stools, chairs, even the ground counted if he sat there.
 
-🏠 Ordinary household furniture is included, not just special items
+The law states a general principle instead of listing every possible object.
 
-📋 The law states a general principle, not a narrow list
+Ordinary household furniture was swept into the same rule as his bed.
 
----
+🪑 Every thing means any seat, not only chairs
+
+🏠 Ordinary furniture is included, not exempt
+
+📋 A general principle, not a specific list
+
+📖 The rule reached everywhere he sat
 
 ## 👕 Wash His Clothes, And Bathe Himself In Water
 
-This is the standard remedy for minor uncleanness across Leviticus, also used in chapters 11 and 14: washing the clothes plus a full-body bath, not just rinsing the hands.
+This exact remedy shows up again in chapters eleven and fourteen.
 
-👕 The standard Leviticus remedy for minor uncleanness
+It always means the same two steps together.
 
-🔗 Same combination used in chapter 11 and chapter 14
+Clothes get washed.
 
-🛁 A full-body bath, not just a quick hand-rinse
+The whole body gets bathed, not just the hands rinsed.
 
----
+Leviticus reused this fixed remedy instead of inventing a new one for every case.
+
+👕 The same remedy appears in chapters eleven, fourteen
+
+🛁 A full body bath, not a rinse
+
+🔁 Leviticus reused fixed remedies across chapters
+
+📖 A consistent pattern was easier to obey
 
 ## 🌆 Unclean Until The Even
 
-"Even" means evening, sundown. This is the standard length for this lighter category of uncleanness - it resets automatically at day's end, unlike the man with the actual issue, whose own uncleanness continues as long as his condition does.
+"Even" means evening, the moment the sun goes down.
 
-🌆 "Even" means evening or sundown
+This is the lightest uncleanness category in the whole chapter.
 
-⏳ The standard length for this lighter uncleanness category
+It resets automatically every single day.
 
-🔗 Resets daily, unlike his own ongoing condition
+The man's own uncleanness works differently.
 
----
+His lasts as long as his condition does, not just until sundown.
+
+🌆 Even means evening or sundown
+
+⏳ The lightest uncleanness category in the chapter
+
+🔁 It resets automatically each day
+
+📖 His own condition lasted far longer
 
 ## 🔁 He That Sitteth On Any Thing Whereon He Sat
 
-Verse 5 covers touching his bed by hand. Verse 6 covers actually sitting where he sat. Both trigger the same remedy, showing the law doesn't care how contact happened - only that it did.
+Verse five covers touching his bed directly with a hand.
 
-✋ Verse 5 covers touching his bed
+Verse six covers actually sitting down where he sat.
 
-🪑 Verse 6 covers sitting where he sat
+Both trigger the identical remedy.
 
-⚖️ Same remedy either way
+The law did not care how the contact happened.
+
+It only cared that contact happened at all.
+
+✋ Verse five covers touching his bed
+
+🪑 Verse six covers sitting where he sat
+
+⚖️ Both trigger the same remedy
+
+📖 Contact mattered, not the method of contact
 
 # Leviticus 15:7-12
-
 # 🐎 Saddle, Spit, And Touch
-
 ---
-
 ## 🤝 He That Toucheth The Flesh Of Him That Hath The Issue
 
-Direct physical contact with the man's own body, not just his belongings, carries the same "until evening" remedy. Person-to-person contact is treated exactly the same as object contact.
+Direct contact with the man's own body carried the same remedy as touching his bed.
 
-🤝 Direct contact with his body, not just his things
+The law made no distinction between a person and an object he had used.
 
-⚖️ Treated the same as touching an object he used
+Washing the clothes and bathing followed either way.
 
-🔗 One consistent rule for every kind of contact
+One consistent rule covered every kind of contact, human or otherwise.
 
----
+🤝 Touching his body matched touching his bed
 
-## 🗣️ If He That Hath The Issue Spit Upon Him That Is Clean
+⚖️ Person and object were treated identically
 
-Spit was treated as a bodily fluid capable of carrying the man's unclean status, the same as touch. A person didn't need to physically handle him for contact to count - his saliva alone was enough.
+👕 Washing and bathing followed either way
 
-🗣️ Spit counts as contact, the same as touch
+📖 One rule covered every kind of contact
 
-💧 A bodily fluid can carry the same status touch does
+## 💧 If He That Hath The Issue Spit Upon Him That Is Clean
 
-🔗 No physical handling was required for this to apply
+Spit counted as a bodily fluid capable of carrying his unclean status.
 
----
+A person did not need to physically handle him for the law to apply.
 
-## 🐎 What Saddle Soever He Rideth Upon...Shall Be Unclean
+His own saliva alone was treated as enough contact.
 
-"Saddle" broadly means any riding gear or seat used on an animal. This extends the "anything he sits on" principle from verses 4-6 out into travel equipment, not just household furniture.
+This detail shows how far the law reached beyond direct touch.
 
-🐎 "Saddle" covers riding gear in general
+🗣️ Spit counted the same as touch
 
-🔗 Extends the seat rule from verses 4-6 to travel equipment
+💧 A bodily fluid could carry his status
 
-🛣️ Shows the principle followed him outside the house
+🚫 No physical handling was required
 
----
+📖 The law reached further than direct contact
+
+## 🐎 What Saddle Soever He Rideth Upon
+
+"Saddle" means any riding gear or seat used on an animal, not one specific design.
+
+This extends the seat rule from verses four through six out onto the road.
+
+Household furniture was not the only thing affected.
+
+Travel equipment carried the exact same risk.
+
+🐎 Saddle means any riding gear, broadly
+
+🔗 Extends the seat rule onto the road
+
+🛣️ Travel equipment carried the same risk
+
+📖 The law followed him outside the house
 
 ## 📦 Whosoever Toucheth Any Thing That Was Under Him
 
-This broadens even further to "any thing," not just furniture with a specific name. The law states the general principle rather than trying to list every possible object he might sit or lie on.
+"Any thing" has no specific name attached to it on purpose.
 
-📦 "Any thing" covers objects with no specific name
+The law states a general principle instead of trying to list every possible object.
 
-📜 A general principle, not an exhaustive list
+That kind of wording covers cases no lawgiver could predict in advance.
 
-🧠 Written to cover cases the lawgiver couldn't predict
+A named list would always miss something.
 
----
+📦 Any thing covers objects with no specific name
+
+📜 A general principle instead of a list
+
+🧠 Broad wording covered unpredictable cases
+
+📖 A list would always miss something
 
 ## 🖐️ He That Beareth Any Of Those Things
 
-"Beareth" means carries. Simply carrying an object he had been on, without necessarily touching bare skin, still counted as contact requiring washing - even carrying it at arm's length didn't avoid the uncleanness.
+"Beareth" means carries.
 
-🖐️ "Beareth" means carries
+Simply carrying an object he had used counted as contact, even without touching skin.
 
-📦 Carrying alone counts, without skin contact
+Distance from the object did not remove the consequence.
 
-🚫 Distance from the object didn't avoid the consequence
+Holding something at arm's length still meant washing afterward.
 
----
+🖐️ Beareth means carries
 
-## 💧 Hath Not Rinsed His Hands In Water
+📦 Carrying counted, without skin contact
 
-An interesting detail: if the man touches someone else without having rinsed his own hands first, the other person becomes unclean. That implies rinsed hands could lessen the effect - a real, practical hygiene habit built directly into the ritual law.
+🚫 Distance did not avoid the consequence
 
-💧 Naming unrinsed hands implies rinsing could help
+📖 Contact was defined broadly on purpose
 
-🧼 A genuine hygiene practice embedded in the ritual law
+## 🧼 Hath Not Rinsed His Hands In Water
 
-🩺 Ancient Israel's law had a practical, not just symbolic, side
+If the man touched someone without first rinsing his hands, that person became unclean.
 
----
+Naming the unrinsed hands specifically implies that rinsing could lessen the effect.
+
+That is a real, practical hygiene habit sitting inside a ritual law.
+
+Ancient Israel's law carried a genuinely practical side, not only a symbolic one.
+
+💧 Naming unrinsed hands implies rinsing helped
+
+🧼 A real hygiene habit inside a ritual law
+
+🩺 The law had a real practical side
+
+📖 Small details reveal how the law worked
 
 ## 🏺 The Vessel Of Earth...Shall Be Broken
 
-A clay pot he touches must be smashed, not washed. Unglazed clay is porous, and in the ancient world there was no reliable way to fully clean something that had soaked something in - so it's destroyed instead of reused.
+A clay pot he touched had to be smashed, not washed.
 
-🏺 Unglazed clay was seen as impossible to fully clean
+Unglazed clay is porous, and ancient Israel had no reliable way to fully clean something that porous.
 
-🔨 Broken rather than reused, unlike other materials
+Breaking it removed the risk instead of trying to scrub it away.
 
-💰 A real replacement cost fell on the household
+The household bore a real replacement cost for that decision.
 
----
+🏺 Unglazed clay could not be fully cleaned
+
+🔨 Broken instead of washed and reused
+
+💰 A real replacement cost fell on the family
+
+📖 The remedy matched what the material allowed
 
 ## 🪵 Every Vessel Of Wood Shall Be Rinsed In Water
 
-Wood, by contrast, has a smooth, sealable surface, so it can be reused after a proper rinse. The law distinguishes between materials that could genuinely be cleaned and those that couldn't.
+Wood has a smoother, more sealable surface than unglazed clay.
 
-🪵 Wood's smoother surface could actually be cleaned
+That meant it could genuinely be cleaned by rinsing.
 
-♻️ Reused after rinsing, unlike the clay vessel
+The law distinguishes between materials that could be cleaned and materials that could not.
 
-🧠 The law matches its remedy to the real material involved
+It matched the remedy to the real object involved instead of applying one rule to everything.
+
+🪵 Wood's surface could actually be cleaned
+
+♻️ Rinsed and reused, unlike the clay pot
+
+🧠 The remedy matched the real material
+
+📖 Different objects earned different treatment
 
 # Leviticus 15:13-15
-
 # 🕊️ His Cleansing, Step By Step
-
 ---
-
 ## 7️⃣ He Shall Number To Himself Seven Days
 
-The same seven-day completeness pattern already seen in chapter 12's childbirth law, chapter 13's quarantine periods, and chapter 14's leper cleansing - one consistent unit of time running through every Leviticus purification law.
+Seven days is the same completeness number already used through Leviticus.
 
-7️⃣ Seven days is Leviticus's consistent purification unit
+Chapter twelve used it for childbirth.
 
-🔗 Same count used in chapters 12, 13, and 14
+Chapter thirteen used it for quarantine periods.
 
-📅 A recognizable rhythm the whole community would know
+Chapter fourteen used it for the leper's cleansing.
 
----
+One consistent rhythm runs through every purification law in this book.
+
+🔢 Seven days is Leviticus's completeness number
+
+👶 Used already for childbirth in chapter twelve
+
+🌿 Used for quarantine in chapter thirteen
+
+📖 A recognizable rhythm across every purification law
 
 ## 🌊 Bathe His Flesh In Running Water
 
-"Running water" means flowing water from a stream or spring, not water sitting still in a basin - the same term used in chapter 14:5 for the leper's cleansing. It appears to be a higher standard than the plain "bathe in water" used for lighter, one-day uncleanness earlier in this chapter.
+"Running water" means flowing water from a stream or spring, not water sitting still in a basin.
 
-🌊 "Running water" means flowing, not stagnant, water
+Chapter fourteen used the identical phrase for the leper's own cleansing.
 
-🔗 Same standard used for the leper in chapter 14:5
+This appears to be a higher standard than the plain washing used earlier in this chapter.
 
-📈 A higher bar than the lighter one-day washing rule
+That earlier standard covered only lighter, one day uncleanness.
 
----
+🌊 Running water means flowing, not standing still
+
+🔗 The same phrase describes the leper's cleansing
+
+📈 A higher standard than the earlier rule
+
+📖 The bigger the uncleanness, the higher the bar
 
 ## 8️⃣ On The Eighth Day
 
-One day past a full week - the same marker used for circumcision (Genesis 17:12), the finish of priestly ordination (Leviticus 9:1), and the healed leper (Leviticus 14:10). A recurring biblical signal for a fresh start right after a complete cycle.
+One day past a full week shows up again and again in scripture.
 
-8️⃣ One day past a full seven-day cycle
+Circumcision happened on the eighth day in Genesis seventeen.
 
-🔗 Same marker used for circumcision and priestly ordination
+Priestly ordination finished on the eighth day in Leviticus nine.
 
-🌅 A recurring signal for a fresh start after completion
+The healed leper returned on the eighth day in chapter fourteen.
 
----
+A fresh start right after a complete cycle is a recurring biblical signal.
+
+🔢 One day past a full seven day cycle
+
+✂️ Circumcision used this marker in Genesis seventeen
+
+🌿 The leper used it in chapter fourteen
+
+📖 A recurring signal for a fresh start
 
 ## 🕊️ Two Turtledoves, Or Two Young Pigeons
 
-The standard lower-cost bird offering used throughout Leviticus. Here it's required of everyone with this condition, not offered only as a concession for the poor - this particular cleansing didn't call for anything more expensive.
+This is the standard lower cost bird offering used throughout Leviticus.
 
-🕊️ The standard lower-cost bird offering in Leviticus
+It usually appears as a concession for people too poor to afford a lamb.
 
-💰 Required of everyone here, not just a poverty option
+Here it is required of everyone with this condition, rich or poor.
 
-📜 This cleansing simply didn't call for a costlier animal
+This particular cleansing simply did not call for anything more expensive.
 
----
+🕊️ The standard lower cost offering in Leviticus
+
+💰 Usually a concession for the poor
+
+✅ Required of everyone here, rich or poor
+
+📖 Some cleansings never needed a costlier animal
 
 ## 🚪 Come Before The LORD Unto The Door Of The Tabernacle Of The Congregation
 
-"Tabernacle of the congregation" means the tent of meeting, God's dwelling place at the center of Israel's camp. This is the same doorway location used throughout Leviticus for offerings, marking the formal, official end of this uncleanness.
+"Tabernacle of the congregation" means the tent of meeting, God's dwelling place at the center of Israel's camp.
 
-⛺ "Tabernacle of the congregation" is the tent of meeting
+This is the same doorway location used throughout Leviticus for offerings.
 
-🚪 The same offering location used throughout Leviticus
+Arriving here marked the formal, official end of the man's uncleanness.
 
-✅ Marks the formal, official end of his uncleanness
+It was not a private decision he made on his own.
 
----
+⛺ Congregation means the tent of meeting
 
-## ⚖️ One For A Sin Offering, And The Other For A Burnt Offering; Make An Atonement
+🚪 The same location used for offerings throughout Leviticus
 
-The sin offering deals with the specific uncleanness itself; the burnt offering represents complete dedication back to God. The same two-offering combination and order used in chapter 14:19 for the healed leper's own cleansing.
+✅ Marked the formal end of his uncleanness
 
-⚖️ Sin offering handles the uncleanness itself
+📖 Cleansing needed public confirmation, not private judgment
 
-🔥 Burnt offering represents full dedication back to God
+## ⚖️ One For A Sin Offering, And The Other For A Burnt Offering
 
-🔗 Same combination and order used for the leper in ch14:19
+The sin offering dealt with the specific uncleanness itself.
+
+The burnt offering represented complete dedication back to God.
+
+Chapter fourteen used this exact same combination and order for the healed leper.
+
+Two different offerings did two different jobs in the very same ceremony.
+
+⚖️ The sin offering handled the uncleanness itself
+
+🔥 The burnt offering represented full dedication
+
+🔗 The same combination used for the leper
+
+📖 Two offerings did two separate jobs
 
 # Leviticus 15:16-18
-
 # 💧 Ordinary Bodily Emission
-
 ---
-
 ## 💧 Any Man's Seed Of Copulation Go Out From Him
 
-"Seed of copulation" is the KJV's plain phrase for semen. This is a completely normal, healthy bodily function, not a disease like the "issue" described in verses 2-3 - it still creates a minor, one-day uncleanness, but of a very different kind.
+"Seed of copulation" is the King James Version's plain phrase for semen.
 
-💧 "Seed of copulation" means semen, plainly stated
+This describes a normal, healthy bodily function, not a disease.
 
-✅ A normal, healthy bodily function, not an illness
+It is nothing like the "issue" described back in verses two and three.
 
-⚖️ Still creates uncleanness, but a much lighter kind
+Even so, it still creates a light, one day uncleanness of its own.
 
----
+💧 Seed of copulation means semen, plainly stated
 
-## ⚖️ Unclean Until The Even
+✅ A normal function, not a disease
 
-Notice this is the mild, one-evening uncleanness, not the extended condition described at the start of the chapter. Normal reproductive function gets the lightest uncleanness category in this entire law.
+🔗 Different from the issue in verses two, three
 
-⚖️ The mild, one-evening category, not the extended one
+📖 Even healthy functions still needed cleansing
 
-📉 Normal function gets the lightest classification available
+## 🛁 He Shall Wash All His Flesh In Water
 
-🔗 Clearly separated from the actual illness in verses 2-3
+This remedy only mentions bathing, not washing clothes first.
 
----
+Earlier remedies in this chapter usually paired both steps together.
+
+Normal reproductive function received the lightest category in the entire law.
+
+The chapter matched the size of the remedy to the size of the condition.
+
+🛁 This remedy names only bathing
+
+⚖️ Earlier remedies usually paired two steps
+
+📉 The lightest category in the whole chapter
+
+📖 The remedy fit the size of the condition
 
 ## 👕 Every Garment, And Every Skin
 
-"Skin" here likely means a leather garment or hide used as clothing or bedding, common throughout the ancient Near East. Both cloth and leather items are treated the same way - washed, and unclean until evening.
+"Skin" here means a leather garment or hide used for clothing or bedding.
 
-👕 "Skin" means a leather garment or hide
+Leather was common material across the ancient Near East.
 
-🛏️ A common ancient bedding and clothing material
+Cloth and leather both received the identical remedy, washed and unclean until evening.
 
-⚖️ Cloth and leather get the identical remedy
+The material did not change how the law treated the object.
 
----
+👕 Skin means a leather garment or hide
 
-## 💑 The Woman Also With Whom Man Shall Lie...They Shall Both Bathe Themselves
+🛏️ A common ancient clothing and bedding material
 
-Normal marital relations create this same mild, temporary uncleanness for husband and wife equally. It isn't singling out one party, and it isn't treated as sin - just a ritual status that resets by evening.
+⚖️ Cloth and leather got the identical remedy
 
-💑 Applies equally to both husband and wife
+📖 The material did not change the outcome
 
-⚖️ Neither party is singled out or blamed
+## 💑 The Woman Also With Whom Man Shall Lie
 
-🌆 Resets by evening like any normal bodily function
+Normal marital relations created this same mild uncleanness for husband and wife equally.
 
----
+Neither partner was singled out.
 
-## 🔀 A Deliberate Contrast With Verses 2-3
+Neither was treated as though something shameful had happened.
 
-Placing this ordinary case right after the serious "issue" described at the start of the chapter looks deliberate. Readers can see clearly that a genuine medical problem (extended, more involved) and ordinary bodily function (mild, one evening) are treated very differently, even where English translations use similar-sounding words.
+The status simply reset itself by evening, like any ordinary bodily function.
 
-🔀 Placed right after the chapter's serious opening case
+💑 Applies equally to husband and wife
 
-📖 Shows two very different situations side by side
+🚫 Neither partner is singled out
 
-🌐 English can blur wording that Hebrew keeps distinct
+🌆 Resets by evening like any function
+
+📖 Ordinary life still touched the sacred calendar
 
 # Leviticus 15:19-24
-
 # 🌙 A Woman's Monthly Separation
-
 ---
-
 ## 🩸 If A Woman Have An Issue, And Her Issue In Her Flesh Be Blood
 
-This describes ordinary monthly menstruation, a normal, healthy process, not an illness. The Hebrew word behind this section, niddah, is the specific technical term for this monthly separation period.
+This describes ordinary monthly menstruation, a normal and healthy process.
+
+The Hebrew word behind this section is niddah, a specific technical term for this separation period.
+
+It is not treated as an illness anywhere in this chapter.
+
+The law simply gives it its own set of practical steps.
 
 🩸 Describes ordinary monthly menstruation
 
-✅ A normal, healthy process, not an illness
+✅ A normal process, not an illness
 
-📖 The Hebrew term is niddah, a specific technical word
+📜 The law gave steps, not blame
 
----
+📖 The Hebrew term is niddah, a technical word
 
 ## 📅 She Shall Be Put Apart Seven Days
 
-A fixed seven-day period regardless of how long her actual bleeding lasts - the same completeness number running through Leviticus's purity laws. "Put apart" describes a ritual status, not physical banishment from camp the way a diagnosed leper faced in chapter 13.
+This is a fixed seven day period, regardless of how long her actual bleeding lasts.
 
-📅 A fixed seven days regardless of actual bleeding length
+Seven is the same completeness number used across Leviticus.
 
-7️⃣ The same completeness number used throughout Leviticus
+"Put apart" describes a ritual status at home.
 
-🏕️ A status at home, not banishment like the leper faced
+It does not mean banishment from the camp the way a diagnosed leper faced in chapter thirteen.
 
----
+📅 A fixed seven days, whatever the length
+
+🔢 The same completeness number used across Leviticus
+
+🏕️ A status at home, not banishment
+
+📖 Ritual separation is not physical exile
 
 ## 🛏️ Every Thing That She Lieth Upon...Every Thing Also That She Sitteth Upon
 
-The same bed-and-seat rule already laid out for the man's issue in verses 4-6 is applied here to the woman, matching it almost word for word - the law treats these two situations with matching structure.
+This is almost the exact wording already used for the man's issue back in verses four through six.
 
-🛏️ Mirrors the man's bed-and-seat rule from verses 4-6
+The law applies the identical bed and seat rule to the woman.
 
-⚖️ Nearly identical wording applied to both cases
+Matching structure across both cases was a deliberate choice, not an accident.
 
-🔗 Consistent structure across the whole chapter
+Neither case received a harsher or looser version of the rule.
 
----
+🛏️ Mirrors the man's bed and seat rule
+
+📝 Nearly identical wording used for both
+
+⚖️ Neither case is treated as harsher
+
+📖 Consistency ran through the whole chapter
 
 ## 👕 Whosoever Toucheth Her Bed Shall Wash His Clothes, And Bathe Himself
 
-Again mirrors verses 5-6's remedy for the man's bed and seat. Anyone in the household during this week - husband, children, anyone - who touches her bed or seat picks up the same mild, one-evening uncleanness.
+This again mirrors the remedy already given for the man's bed in verse five.
 
-👕 Mirrors verses 5-6's remedy exactly
+Anyone in the household could be affected, not only her husband.
 
-🏠 Applies to anyone in the household, not just her spouse
+A child, a guest, or a servant touching her bed picked up the identical remedy.
 
-🌆 The same one-evening consequence as the man's rule
+The law made no exception based on the person's relationship to her.
 
----
+👕 Mirrors verse five's remedy exactly
+
+🏠 Applies to anyone in the household
+
+🚫 No exception for family relationship
+
+📖 One remedy covered every person
 
 ## 🪑 Whosoever Toucheth Any Thing That She Sat Upon
 
-Paired with the bed rule just before it, this makes sure both furniture categories - lying-surfaces and sitting-surfaces - are each spelled out on their own, rather than assuming one general statement would cover both.
+Bed and seat get named as two separate categories, not folded into one general statement.
 
-🪑 Names sitting-surfaces separately from lying-surfaces
+The same two part structure already used for the man is repeated here for the woman.
 
-📜 The law spells out both cases rather than assuming coverage
+Naming both separately closed any gap someone might try to argue around.
 
-🔗 Matches the same two-part pattern used for the man
+The law preferred being explicit over being brief.
 
----
+🪑 Bed and seat are named separately
+
+🔁 The same structure used for the man
+
+🚪 Naming both closed a possible loophole
+
+📖 Explicit wording protected the rule's intent
 
 ## 🔄 If It Be On Her Bed...When He Toucheth It
 
-Verse 23 covers a subtler case: touching an object that happens to be resting on her bed or seat, even if it isn't the bed or seat itself. The uncleanness travels through layers of contact, not only direct contact with the furniture.
+This covers a subtler case, touching an object that merely rests on her bed or seat.
 
-🔄 Covers objects resting on her bed or seat, not just the furniture
+It does not have to be the bed or seat itself.
 
-📦 Uncleanness can travel through a layer of contact
+Uncleanness could travel through a layer of contact, not only through direct touch.
 
-🧠 A carefully thought-through, not sloppy, legal detail
+That level of detail shows a carefully built law, not a rushed one.
 
----
+🔄 Covers objects resting on her bed
 
-## 💑 If Any Man Lie With Her At All, And Her Flowers Be Upon Him
+📦 Uncleanness can travel through a layer
 
-"Flowers" is the KJV's old English word for menstrual blood or flow, related to the word "flow" itself, not to actual flowers - an obsolete usage that reads confusingly to a modern reader.
+🧠 Shows a carefully built law
 
-🌸 "Flowers" is archaic English for menstrual blood
+📖 Detail reveals real legal thought
 
-📖 Related to the word "flow," not to actual flowers
+## 🌸 Her Flowers Be Upon Him
 
-🤔 An obsolete usage easy for modern readers to misread
+"Flowers" is the King James Version's old English word for menstrual blood.
 
----
+It comes from the word "flow," not from actual flowers.
 
-## 🚫 Not Shameful, Just Regulated
+That older usage can confuse a modern reader who has never met it before.
 
-It's worth stating plainly: nothing here calls a woman's monthly cycle shameful or dirty in a moral sense. "Unclean" is the same technical ritual term used for touching a dead animal (chapter 11) or having a baby (chapter 12) - an ordinary, unavoidable part of life that simply required a process before approaching the tabernacle.
+A man who lay with her during this time carried her uncleanness for seven days himself.
 
-🚫 Not framed as shameful or morally dirty
+🌸 Flowers is archaic English for menstrual blood
 
-🔗 Same technical term used for chapters 11 and 12
+🤔 An old usage easy to misread
 
-📜 An ordinary part of life with a required process, not a stigma
+⏳ He carried her uncleanness seven days too
+
+📖 It comes from the word flow
 
 # Leviticus 15:25-27
-
 # ⏳ When Bleeding Runs Long
-
 ---
+## 🩸 An Issue Of Her Blood Many Days Out Of The Time Of Her Separation
 
-## 🩸 If A Woman Have An Issue Of Her Blood Many Days Out Of The Time Of Her Separation
+This describes abnormal, extended bleeding that falls outside her normal monthly cycle.
 
-This describes abnormal, extended bleeding outside the normal monthly cycle. Unlike verses 19-24's regular period, this is closer to the medical condition the chapter opened with for men in verses 2-3 - an irregular, ongoing issue rather than a predictable, temporary one.
+It is closer to the medical condition described for men back in verses two and three.
 
-🩸 Describes abnormal bleeding outside the normal cycle
+That case was irregular and ongoing.
 
-🔗 Closer to the man's medical "issue" from verses 2-3
+A normal period, by contrast, is predictable and temporary.
 
-⏳ Irregular and ongoing, not predictable like a period
+🩸 Describes bleeding outside the normal cycle
 
----
+🔗 Echoes the man's issue from verses two, three
 
-## 🔗 As The Days Of Her Separation: She Shall Be Unclean
+⏳ Irregular and ongoing, unlike a normal period
 
-Rather than inventing a whole new, harsher category, the law simply extends her normal monthly rules for as long as the abnormal bleeding continues - the same status, just for a longer, unpredictable stretch of time.
+📖 Two situations get two different names
 
-🔗 Extends her existing rules rather than creating new ones
+## 🔗 All The Days Of The Issue Of Her Uncleanness Shall Be As The Days Of Her Separation
 
-⏳ The same status, lasting however long the bleeding does
+The law does not invent a new, harsher category for this extended bleeding.
 
-📜 A simple, consistent legal approach to an unpredictable case
+It simply extends her normal monthly rules for as long as the bleeding continues.
 
----
+The status stays the same.
+
+Only the length of time changes, however unpredictable that length turns out to be.
+
+🔗 Extends her existing rules, not new ones
+
+⏳ Same status, unpredictable length
+
+📜 A simple approach to an unpredictable case
+
+📖 The law reused what already existed
 
 ## 🛏️ Every Bed Whereon She Lieth...Shall Be Unto Her As The Bed Of Her Separation
 
-No new rule is invented here either; verses 19-23's bed-and-seat rules simply keep applying for the entire duration of the extended bleeding, however long that turns out to be.
+No new rule appears here either.
 
-🛏️ Reuses the bed-and-seat rules from verses 19-23
+The bed and seat rules from verses nineteen through twenty three simply keep applying.
 
-⏳ Applies for the whole length of the extended bleeding
+They apply for the entire length of the extended bleeding, however long that turns out to be.
 
-🔁 Consistency instead of a separate set of rules
+Consistency, not a separate rulebook, handled this harder case.
 
----
+🛏️ Reuses the bed and seat rules already given
+
+⏳ Applies for the whole extended length
+
+🔁 Consistency instead of a new rulebook
+
+📖 The same rule handled the harder case
 
 ## 👕 Whosoever Toucheth Those Things Shall Be Unclean...Until The Even
 
-Contact with her bed or seat during this extended period still only carries the lighter one-evening consequence for others, even though her own uncleanness lasts as long as the bleeding does. Only she carries the longer status personally.
+Contact with her bed or seat during this extended period still carried the lighter consequence.
 
-👕 Others touching her things still get the lighter, one-evening rule
+That consequence was only one evening, the same as usual, for other people.
 
-⏳ Only she personally carries the extended uncleanness
+Her own uncleanness lasted as long as the bleeding did.
 
-⚖️ Degree of contact still determines the consequence
+Only she personally carried the extended status.
+
+Everyone else's exposure still reset the same way it always had.
+
+👕 Others still got the lighter one evening rule
+
+⏳ Only she carried the extended status
+
+⚖️ Degree of contact still determined the outcome
+
+📖 The law scaled the consequence to the person
 
 # Leviticus 15:28-30
-
 # 🕊️ Her Cleansing, Mirrored
-
 ---
-
 ## 7️⃣ She Shall Number To Herself Seven Days
 
-The identical seven-day counting rule already given to the man back in verse 13, now applied to the woman. The chapter deliberately mirrors his cleansing process with hers, step for step.
+This is the identical seven day counting rule already given to the man back in verse thirteen.
 
-7️⃣ The same seven-day count as the man's cleansing in verse 13
+The chapter deliberately mirrors his cleansing process with hers, step for step.
 
-🪞 A deliberate, step-for-step mirror of his process
+Equal treatment is built directly into the structure of the text itself.
 
-⚖️ Equal treatment built into the text's own structure
+Nobody has to argue for fairness here.
 
----
+🔢 The same seven day count as verse thirteen
 
-## 8️⃣ On The Eighth Day...Two Turtles, Or Two Young Pigeons
+🪞 A deliberate mirror of his process
 
-The exact same bird offering and timing used for the man in verse 14. The law doesn't require a more expensive offering for a woman's cleansing than a man's, or the reverse - the process is equal either way.
+⚖️ Equal treatment built into the structure
 
-8️⃣ Same timing as the man's cleansing in verse 14
+📖 Fairness needed no separate argument
 
-🕊️ Same bird offering, no cost difference between the two
+## 8️⃣ On The Eighth Day She Shall Take Unto Her Two Turtles, Or Two Young Pigeons
 
-⚖️ An equal process for both sexes
+Same timing as the man's cleansing in verse fourteen.
 
----
+Same offering too, with no cost difference required between the two.
+
+The law did not ask more of a woman's cleansing than a man's, or the reverse.
+
+Both processes cost exactly the same.
+
+🔢 Same timing as the man's cleansing
+
+🕊️ Same bird offering, same cost
+
+⚖️ Neither sex paid more than the other
+
+📖 One standard applied to both
 
 ## 🚪 Bring Them Unto The Priest, To The Door Of The Tabernacle Of The Congregation
 
-Same location, same formal procedure as the man's cleansing in verse 14. Her return to full ritual participation is marked with the same public, official ceremony his was.
+Same location, same formal procedure already used for the man's cleansing.
 
-🚪 The same location used for the man's cleansing
+Her return to full ritual participation received the same public, official ceremony his did.
 
-📜 The same formal, public procedure either way
+Nothing about her process was quieter or less official than his.
 
-✅ Her return is marked with equal ceremony
+The text gave her the identical standing.
 
----
+🚪 The same location used for the man
 
-## ⚖️ One For A Sin Offering, And The Other For A Burnt Offering; Make An Atonement For Her
+📜 The same formal, public procedure
 
-Word for word, the same two-offering combination used for the man in verse 15. The text goes out of its way to give the woman's ceremony identical wording and structure to the man's own.
+✅ Her return got equal ceremony
 
-⚖️ Word-for-word the same offering combination as verse 15
+📖 Her standing matched his exactly
+
+## ⚖️ Make An Atonement For Her Before The LORD
+
+Word for word, this is the same two offering combination already used for the man in verse fifteen.
+
+The text goes out of its way to give her ceremony identical wording and structure.
+
+Neither ceremony reads as the lesser version of the other.
+
+The repetition itself was the point.
+
+⚖️ Same two offering combination as verse fifteen
 
 📜 Identical wording given to both ceremonies
 
-🔗 The text deliberately avoids treating either case as lesser
+🚫 Neither ceremony reads as lesser
+
+📖 Repetition made the equal treatment obvious
 
 # Leviticus 15:31-33
-
 # 📜 Why Any Of This Mattered
-
 ---
-
 ## ⚠️ Thus Shall Ye Separate The Children Of Israel From Their Uncleanness
 
-This verse states the purpose behind the whole chapter in plain language: not superstition or squeamishness about bodily functions, but keeping the community aware of anything that could compromise access to God's presence.
+This verse states the purpose of the entire chapter in plain language.
 
-⚠️ States the chapter's purpose in plain language
+The point was never squeamishness about ordinary bodily functions.
 
-🚫 Not squeamishness about ordinary bodily functions
+It was keeping the community aware of anything that could compromise access to God's presence.
+
+Every rule before this verse existed to serve that one goal.
+
+⚠️ States the chapter's purpose plainly
+
+🚫 Not squeamishness about bodily functions
 
 🙏 About protecting access to God's presence
 
----
+📖 Every earlier rule served this one goal
 
 ## ☠️ That They Die Not In Their Uncleanness, When They Defile My Tabernacle
 
-A serious warning, not a minor inconvenience. Israel's camp was arranged with the tabernacle, God's actual dwelling place, at its center (Numbers 2), so uncleanness treated carelessly was pictured as a real danger to the whole camp, not just personal embarrassment.
+This is a serious warning, not a minor inconvenience.
 
-☠️ A genuinely serious warning, not a small formality
+Israel's camp was arranged with the tabernacle at its literal center, described in Numbers two.
 
-⛺ The tabernacle sat at the literal center of the camp
+Uncleanness left uncorrected was pictured as a real danger to the whole camp.
 
-⚠️ Carelessness here was pictured as a danger to everyone
+It was never framed as personal embarrassment alone.
 
----
+☠️ A serious warning, not a small formality
+
+⛺ The tabernacle sat at the camp's center
+
+⚠️ Carelessness endangered the whole camp
+
+📖 Personal choices carried communal weight
 
 ## 🏠 My Tabernacle That Is Among Them
 
-God calling the tabernacle "mine" and describing it as sitting "among them," in the middle of the camp, is a reminder that these laws exist because God was living in close physical proximity to an ordinary, physically imperfect people.
+God calls the tabernacle His own, and describes it as sitting among the people, not apart from them.
 
-🏠 God calls the tabernacle His own dwelling
+That closeness explains why these rules existed at all.
 
-📍 Placed physically among the people, not distant from them
+An ordinary, physically imperfect people were living right next to God's own dwelling place.
 
-📜 These rules exist because of that close proximity
+The rules managed that proximity, not God's opinion of the people themselves.
 
----
+🏠 God calls the tabernacle His own
 
-## 📋 This Is The Law Of Him That Hath An Issue...Of His Seed...Of Her That Is Sick Of Her Flowers
+📍 Placed physically among the people
 
-The closing verses work like a table of contents, listing every case the chapter covered: a man's abnormal issue (2-15), a man's normal emission (16-18), a woman's normal period (19-24), and her abnormal extended bleeding (25-30).
+👥 An imperfect people lived close to God
 
-📋 Functions like a table of contents for the whole chapter
+📖 The rules managed proximity, not worth
 
-🔢 Lists all four cases the chapter actually covered
+## 📋 This Is The Law Of Him That Hath An Issue
 
-🏗️ A deliberate structural summary, not filler
+The closing verses work like a table of contents for the whole chapter.
 
----
+A man's abnormal issue covered verses two through fifteen.
 
-## 👫 Of The Man, And Of The Woman, And Of Him That Lieth With Her That Is Unclean
+A man's normal emission covered verses sixteen through eighteen.
 
-The summary names both sexes and even the sexual partner explicitly, underlining that this entire chapter treated male and female bodies with the same seriousness and the same rules, not holding one sex to a stricter standard.
+A woman's normal period and her abnormal extended bleeding covered the rest.
 
-👫 Both sexes are named explicitly in the summary
+This summary was a deliberate structure, not filler at the end.
 
-⚖️ Same seriousness and same rules applied to both
+📋 Functions like a table of contents
 
-🚫 Neither sex is held to a stricter standard
+🔢 Lists every case the chapter covered
 
----
+🏗️ A deliberate structure, not filler
 
-## 🔗 A Closing Bookend, Same As Chapter 14's
+📖 Endings in Leviticus often summarize the law
 
-Comparing this ending to chapter 14:54-57's closing list shows a consistent pattern across these purity laws: state the general rule, work through every specific case, then close with a summary "this is the law of..." statement tying it all together.
+## 👫 Of The Man, And Of The Woman, And Of Him That Lieth With Her
 
-🔗 Matches the closing pattern used in chapter 14:54-57
+The summary names both sexes and even the sexual partner by name.
 
-📜 General rule, then every case, then a summary close
+Male and female bodies received the same seriousness and the same rules throughout this chapter.
 
-📚 A consistent structure across Leviticus's purity laws
-`;
+Neither sex was held to a stricter standard than the other.
+
+The whole chapter ends the way it began, treating ordinary human bodies as worth careful, respectful law.
+
+👫 Both sexes are named in the summary
+
+⚖️ Same seriousness applied to both
+
+🚫 Neither sex held to a stricter standard
+
+📖 Ordinary bodies received careful, respectful law`.trim();
 
 export const LEVITICUS_FIFTEEN_PERSONAL_SECTIONS = parseLeviticusFifteenRawNotes(LEVITICUS_FIFTEEN_RAW_NOTES);
