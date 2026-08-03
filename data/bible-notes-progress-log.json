@@ -7923,6 +7923,63 @@
           "at": "2026-08-03T14:02:45Z"
         }
       ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 12,
+      "startedAt": "2026-08-03T14:46:39Z",
+      "finishedAt": "2026-08-03T14:59:40Z",
+      "durationMinutes": 13,
+      "sections": 6,
+      "cards": 20,
+      "verses": 8,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Twelfth chapter in the Leviticus redo backlog (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (6 sections / 17 cards, paragraph bodies with no blank line between sentences, three bullets per card) from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Leviticus 12 is a short, dense law chapter on a new mother's ceremonial purification after childbirth: the Moses to Israel relay pattern opening the chapter, conceived seed and man child defined, the first seven day uncleanness stage tied to the monthly period law in chapter 15, the son's circumcision on the eighth day repeating the Genesis 17:12 covenant sign, the second thirty three day stage restricted only from holy things and the sanctuary (not ordinary daily life), the symbolic forty day total echoing the flood, the wilderness years, and Jesus's fast in Matthew 4, the doubled fourteen plus sixty six day timeline for a daughter with an honest acknowledgment that the text never states why the sexes differ, the closing lamb and bird offering that ends the purification identically for a son or a daughter, and the poverty provision allowing two birds instead of a lamb, closing on its direct fulfillment in Luke 2:22-24 when Mary and Joseph bring exactly that substitute offering for the infant Jesus. Kept the original file's 6 section boundaries for verse coverage continuity while rewriting every card to the new format from scratch (blank line between every body line, exactly four bullets per card, titles as exact KJV phrases, no near verbatim repeats between body and bullets). Density 2.5 cards/verse (8 verses, 20 cards), leaning to the richer end since this short legal chapter still had two or more distinct teaching points in nearly every verse. scripts/check_bible_note_style.py found 0 problems on the first pass. A manual section 13 eye check confirmed every card opens with one of the four approved moves, no bullet restates a body line verbatim, and there are no hyphens, em dashes, semicolons, contractions, or banned filler/hedge words anywhere in the file. Parser check passed exactly via getBibleReaderStudySections('Leviticus', 12) (6/6 sections, 20 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range covering Leviticus 1-27, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (LeviticusTwelvePersonalSection, parseLeviticusTwelveRawNotes, LEVITICUS_TWELVE_RAW_NOTES, LEVITICUS_TWELVE_PERSONAL_SECTIONS) were kept exactly as before. This run also hit a stale local main git ref 53 commits behind origin/main (leftover from a prior run's detached HEAD state); recovered by hard resetting local main to origin/main before reapplying this chapter's changes, no data was lost since origin/main already had everything through Leviticus 11. data/bible-notes-style-redo-remaining.json Leviticus 12 entry removed from the front of the list as part of this commit; next redo target is Leviticus 13.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-03T14:47:08Z"
+        },
+        {
+          "name": "target chapter determined: Leviticus 12 (style redo, first in remaining backlog)",
+          "at": "2026-08-03T14:47:22Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Leviticus.json",
+          "at": "2026-08-03T14:47:35Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (lib/genesisThirtyOneSource.ts) read",
+          "at": "2026-08-03T14:53:16Z"
+        },
+        {
+          "name": "source file written (lib/leviticusTwelveSource.ts, 6 sections, 20 cards)",
+          "at": "2026-08-03T14:54:01Z"
+        },
+        {
+          "name": "style checker clean (0 problems on first pass)",
+          "at": "2026-08-03T14:54:01Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo (no changes needed)",
+          "at": "2026-08-03T14:54:29Z"
+        },
+        {
+          "name": "parser check passed (6 sections, 20 cards, 8 verses covered)",
+          "at": "2026-08-03T14:54:29Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-03T14:55:52Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-03T14:57:40Z"
+        },
+        {
+          "name": "recovered from stale local main ref, hard reset to origin/main and reapplied changes",
+          "at": "2026-08-03T14:59:40Z"
+        }
+      ]
     }
   ]
 }

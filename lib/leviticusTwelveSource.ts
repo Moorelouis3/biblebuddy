@@ -89,275 +89,427 @@ function parseLeviticusTwelveRawNotes(rawText: string): LeviticusTwelvePersonalS
 }
 
 const LEVITICUS_TWELVE_RAW_NOTES = `# Leviticus 12:1-2
-
-# 🤱 A New Mother's First Days
-
+# 🤱 A New Mother's First Week
 ---
+## 🗣️ Speak Unto The Children Of Israel
 
-## 🗣️ The LORD Spake Unto Moses, Saying, Speak Unto The Children Of Israel
+God speaks only to Moses first.
 
-This is the same relay pattern running through the whole book: God speaks directly to Moses, and Moses alone passes the message on to Israel. This chapter groups two related situations under one law: what happens to a woman's ceremonial status after she gives birth, first to a son, then to a daughter.
+Moses then relays every word to the whole nation.
 
-🗣️ Same Moses-to-Israel relay used for most laws in the book
+That handoff repeats through nearly every law in Leviticus.
 
-👶 One law covering two related situations: sons and daughters
+This law is not private instruction just for mothers.
 
-📖 A short chapter, tightly organized around a single theme
+The whole community learns it together, men included.
+
+🗣️ Moses alone hears God first
+
+📢 Israel hears it secondhand from Moses
+
+🔁 The pattern repeats across Leviticus
+
+📖 A woman's law reaches the whole camp
 
 ---
 
 ## 🌱 If A Woman Have Conceived Seed, And Born A Man Child
 
-"Conceived seed" is an old way of saying she became pregnant and carried the child to birth. The verse covers the whole process, from conception to delivery, before naming what changes for her ceremonially afterward.
+Conceived seed means she became pregnant and carried a child.
 
-This law addresses something completely ordinary, childbirth, not any kind of wrongdoing. Being ceremonially "unclean" in Leviticus was never the same as being guilty of sin; it just meant a temporary block from entering the sanctuary or handling holy things.
+Man child simply means a baby boy was born.
 
-🌱 "Conceived seed" means became pregnant and gave birth
+This law covers something completely normal, not any wrongdoing.
 
-⚖️ Ceremonial uncleanness here isn't tied to any wrongdoing
+Being ceremonially unclean here never meant sin or guilt.
 
-🏛️ It's a temporary block from the sanctuary, not a moral judgment
+It only meant a temporary pause from the sanctuary.
+
+🌱 An old phrase for becoming pregnant
+
+👶 Man child means a newborn son
+
+⚖️ Childbirth itself was never wrongdoing
+
+📖 Uncleanness only paused sanctuary access
 
 ---
 
-## 🗓️ Unclean Seven Days
+## 🗓️ She Shall Be Unclean Seven Days
 
-For the first week after a son's birth, the mother's ceremonial status matched the monthly-period cycle described in full later in chapter 15. During these seven days she was excused from anything connected to the tabernacle.
+Unclean here does not mean dirty or sick.
 
-This wasn't a punishment for having a baby. It worked more like a built-in recovery window, a full week where no ceremonial demands were placed on a woman who had just gone through labor.
+It means she was set apart from the sanctuary for a while.
 
-🗓️ Seven days matches the monthly-period rule in chapter 15
+Seven days matched the same length as her monthly cycle.
 
-🛌 A built-in recovery week right after childbirth
+That week worked like a built in recovery window.
 
-🏛️ No tabernacle duties expected of her during this time
+No tabernacle duties were expected of her during that time.
+
+🗓️ Unclean means set apart, not dirty
+
+🛌 A full week built in to recover
+
+🩸 Length matches her monthly cycle
+
+📖 No tabernacle work expected that week
 
 ---
 
 ## 🩸 According To The Days Of The Separation For Her Infirmity
 
-"The separation for her infirmity" points ahead to the regular monthly uncleanness law that chapter 15:19-24 lays out in full later in the book. By linking childbirth to that already-familiar category, this verse tells the first readers exactly how to treat a new mother without repeating the whole law here.
+Infirmity here is an old word for her monthly bleeding.
 
-📖 A direct cross-reference to chapter 15's monthly-period law
+The separation refers to the same monthly law from chapter fifteen.
 
-🔗 Saves the text from repeating rules already established elsewhere
+Chapter fifteen explains that law in full detail later.
 
-🩸 Ties childbirth bleeding to the same category as monthly bleeding
+This verse simply points ahead to it instead of repeating it.
+
+That saved the text from repeating the same rule twice.
+
+🩸 Infirmity is an old word for bleeding
+
+📖 Points ahead to chapter fifteen's law
+
+🔗 Chapter fifteen covers the full detail
+
+➡️ One cross reference saves repeating the rule
 
 # Leviticus 12:3
+# 🔪 The Eighth Day Sign
+---
+## 🔪 The Flesh Of His Foreskin Shall Be Circumcised
 
-# 🔪 Circumcised On The Eighth Day
+Circumcised means the foreskin was surgically removed from the child.
+
+This was not a new rule invented here in Leviticus.
+
+It repeats the covenant sign God gave Abraham long before.
+
+Genesis seventeen already commanded this same sign.
+
+Circumcision marked a boy as part of Abraham's covenant family.
+
+🔪 Surgical removal of the foreskin
+
+📜 Not a new rule in Leviticus
+
+✝️ Repeats the sign God gave Abraham
+
+📖 It marked a boy into that covenant
 
 ---
 
-## 🔪 In The Eighth Day The Flesh Of His Foreskin Shall Be Circumcised
+## 📅 In The Eighth Day
 
-This command doesn't start here. It's a direct repeat of the covenant sign God gave Abraham back in Genesis 17:12: "he that is eight days old shall be circumcised among you." Leviticus 12 simply restates that existing law in the middle of the mother's purification instructions.
+The eighth day was not a random choice.
 
-Circumcision marked a baby boy as belonging to the covenant God made with Abraham's family, generations before Israel ever reached Sinai.
+It falls right after the mother's first seven days end.
 
-📖 Repeats the Genesis 17:12 covenant law almost word for word
+The Bible does not explain every reason behind that exact timing.
 
-✝️ Marks the child as belonging to Abraham's covenant
+Still, the eighth day stayed fixed everywhere circumcision appears later.
 
-👶 Placed here even though the surrounding verses are about the mother
+A single unchanging number tied every generation back to Abraham.
 
----
+📅 Not a random number chosen here
 
-## 📅 Why The Eighth Day, Not Sooner
+🗓️ Lands right after her first week
 
-The Bible doesn't spell out the exact reasoning for choosing day eight, but the timing lines up right inside the mother's own seven-day uncleanness period from verse 2, since the son is circumcised the day after that first week ends.
+🔒 Stayed fixed everywhere circumcision appears
 
-Whatever the underlying reason, the eighth day became a fixed, unchangeable detail of the law, repeated consistently everywhere circumcision comes up in the rest of the Bible.
-
-🗓️ Falls the day right after the mother's first seven unclean days end
-
-📖 The Bible doesn't spell out every reason behind this exact timing
-
-🔒 A fixed detail repeated consistently everywhere else in Scripture
+📖 Scripture never spells out the exact reason
 
 # Leviticus 12:4
-
-# 🩸 Three And Thirty Days Of Purifying
-
+# 🩸 Thirty Three More Days
 ---
+## 🩸 Three And Thirty Days
 
-## 🩸 She Shall Then Continue In The Blood Of Her Purifying Three And Thirty Days
+Three and thirty is an old way of saying thirty three.
 
-After the sharper first seven days of uncleanness, a second, longer stage begins for a mother of a son: thirty-three more days called "the blood of her purifying." This stage was milder than the first week; it restricted her from the sanctuary specifically but didn't carry the same full uncleanness as the first stage.
+This begins a second, longer stage after the first sharp week.
 
-🩸 A second, milder 33-day stage follows the first week
+It was milder than the first seven days of uncleanness.
 
-📉 Less restrictive than the first seven days, but still limited
+She still could not touch anything holy during this stage.
 
-🔢 Thirty-three is a specific, fixed number set by the law
+🩸 An old way of saying thirty three
+
+🗓️ A second, longer stage follows
+
+📉 Milder than the first week
+
+📖 Holy things stayed off limits still
 
 ---
 
 ## 🚫 She Shall Touch No Hallowed Thing, Nor Come Into The Sanctuary
 
-This spells out exactly what the second stage restricted: contact with holy objects and entry onto the tabernacle grounds. Everything else in ordinary daily life, cooking, caring for her family, moving through the camp, stayed completely open to her.
+Hallowed means holy, something set apart for God.
 
-🚫 Restricted from holy objects and the sanctuary specifically
+This restriction covered two specific things only.
 
-🏠 Ordinary daily life and family duties were never affected
+She could not touch holy objects or enter the sanctuary.
 
-📖 A narrow, specific restriction, not a broad isolation
+Ordinary daily life continued completely unaffected.
+
+🚫 Hallowed means holy, set apart
+
+🏛️ Only holy objects and the sanctuary
+
+🏠 Daily life went on as normal
+
+📖 A narrow rule, not full isolation
 
 ---
 
-## 🔢 Forty Days Total For A Son
+## ⏳ Until The Days Of Her Purifying Be Fulfilled
 
-Add the first seven days to these next thirty-three, and a mother of a son spent a full forty days under some level of ceremonial restriction. Forty is a number that shows up again and again across the Bible marking a complete period of testing or transition: forty days of rain in Noah's flood, forty years in the wilderness, forty days of Jesus's wilderness fast in Matthew 4:2.
+Fulfilled here means the whole waiting period finally ended.
 
-🔢 Seven plus thirty-three adds up to forty days total
+Seven days plus thirty three more equal forty days total.
 
-📖 Forty repeatedly marks a complete period elsewhere in Scripture
+Forty shows up again and again across the whole Bible.
 
-🍼 A full six weeks of graduated restriction for a mother of a son
+Forty years in the wilderness used that same number.
+
+Jesus fasting forty days in Matthew four used it too.
+
+Her forty days echoed a pattern far bigger than one family.
+
+⏳ Fulfilled means the whole wait ended
+
+🔢 Seven plus thirty three makes forty
+
+📖 Forty repeats often across scripture
+
+➡️ Her wait echoed a much larger pattern
 
 # Leviticus 12:5
+# 👧 If The Child Is A Daughter
+---
+## 👧 But If She Bear A Maid Child
 
-# 👧 If She Bear A Maid Child
+Maid child is an old way of saying a baby girl.
+
+This verse now covers the second case in the same law.
+
+Only the numbers change from here, not the meaning.
+
+The son's case and the daughter's case share the same purpose.
+
+👧 An old phrase for a baby girl
+
+🔁 The chapter's second case begins here
+
+🔢 Only the numbers shift from here
+
+📖 Both cases share the same purpose
 
 ---
 
-## 👧 She Shall Be Unclean Two Weeks, As In Her Separation
+## 🩸 Unclean Two Weeks, As In Her Separation
 
-For a daughter, the first, stricter stage of uncleanness doubles to two full weeks instead of one. The text doesn't explain why the sex of the child changes the length, and honest readers today should say plainly that the reason isn't stated rather than guess at one.
+The first, stricter stage now doubles from one week to two.
 
-👧 The first stage doubles to fourteen days for a daughter
+A son required seven days, a daughter required fourteen.
 
-📖 The text gives the rule without explaining the reason
+The text never explains why the child's sex changes the length.
 
-🤔 Worth being honest that the "why" isn't stated in the text
+The honest answer is that the reason goes unstated.
 
----
+🩸 The first stage doubles to two weeks
 
-## 🔢 Threescore And Six Days — Eighty Days Total For A Daughter
+🔢 Seven for a son, fourteen for a daughter
 
-"Threescore and six" is an old way of counting, sixty plus six, meaning sixty-six days. Added to the first fourteen days, a mother of a daughter spent eighty days total under restriction, exactly double the forty days set for a son.
+🤔 No stated reason for the difference
 
-🔢 "Threescore and six" means sixty-six in plain numbers
-
-➕ Fourteen plus sixty-six adds up to eighty days total
-
-⚖️ Exactly double the forty days required for a son
+📖 Better honest than invented certainty
 
 ---
 
-## ❓ Why The Difference Between Son And Daughter
+## 🔢 Threescore And Six Days
 
-Bible scholars have offered different explanations over the centuries, some tied to ancient beliefs about childbirth and blood, some tied to the extra ceremony of circumcision required only for sons, but none of these explanations come directly from the text itself. The safest approach is to teach the law as it's actually written rather than fill in a confident reason Scripture doesn't give.
+Threescore and six is an old term for sixty six.
 
-📖 The text states the rule without stating its reason
+Add that to the first fourteen days already spent.
 
-🧠 Multiple explanations exist, but none are stated in Leviticus itself
+A daughter's mother spent eighty days total under restriction.
 
-✅ Best to be honest about what isn't explained, rather than guess
+That is exactly double the forty days set for a son.
+
+🔢 An old term meaning sixty six
+
+➕ Fourteen plus sixty six makes eighty
+
+⚖️ Exactly double a son's forty days
+
+📖 The law scaled fully by sex
 
 # Leviticus 12:6-7
-
-# 🐑 Bringing The Offering
-
+# 🐑 The Offering That Closes It Out
 ---
-
 ## 🐑 A Lamb Of The First Year For A Burnt Offering
 
-Once either purification period fully ended, the mother had one required trip to the tabernacle to formally close it out. "A lamb of the first year" means a lamb under twelve months old, the same standard used for burnt offerings throughout the sacrificial system.
+A lamb of the first year means a lamb under twelve months old.
 
-🐑 A lamb under one year old, the standard burnt-offering animal
+That age was the standard for every burnt offering in this system.
 
-🔥 The animal is fully consumed on the altar as a burnt offering
+One visit to the tabernacle closed the whole waiting period.
 
-🚪 One required visit closes out the whole purification period
+The lamb itself was completely consumed on the altar.
+
+🐑 A lamb under twelve months old
+
+🔥 The standard age across burnt offerings
+
+🚪 One visit closed the whole wait
+
+📖 The lamb was fully consumed there
 
 ---
 
 ## 🕊️ A Young Pigeon, Or A Turtledove, For A Sin Offering
 
-Alongside the lamb, a second bird was offered specifically as a sin offering, following the same pattern from chapters 4 and 5 where the sin offering deals with a ceremonial boundary rather than moral guilt. Nothing sinful happened in childbirth itself; the offering addressed the ritual line being crossed back into full sanctuary access.
+A second, smaller bird was offered specifically as a sin offering.
 
-🕊️ A separate small bird offered specifically as a sin offering
+Sin offering here does not mean she had done something wrong.
 
-⚖️ Not a punishment for wrongdoing, since childbirth wasn't a sin
+Chapters four and five already used this same pattern.
 
-🔄 Restores full access to the sanctuary and holy things
+Childbirth itself was never treated as sin in this law.
+
+🕊️ A second bird for a sin offering
+
+⚖️ Not a sign of personal guilt
+
+🔄 Same pattern as chapters four and five
+
+📖 Childbirth itself was never called sin
 
 ---
 
 ## 🚪 Unto The Door Of The Tabernacle Of The Congregation, Unto The Priest
 
-The offering had to be brought to one specific place, the entrance of the tabernacle, and handed to one specific person, the priest. The mother herself never performed the sacrifice; the priest carried out the actual ritual on her behalf.
+The offering had to go to one specific place, the entrance.
 
-🚪 Brought to the tabernacle's entrance specifically
+It also had to go to one specific person, the priest.
 
-👤 Handed over to the priest, not performed by the mother herself
+The mother herself never performed the actual sacrifice.
 
-🔄 The same division of labor used throughout Leviticus's laws
+The priest carried out the ritual on her behalf.
+
+🚪 One place only, the entrance
+
+👤 One person only, the priest
+
+🙅 The mother never did the sacrifice
+
+📖 The priest acted in her place
 
 ---
 
-## ✨ Make An Atonement For Her; And She Shall Be Cleansed From The Issue Of Her Blood
+## ✨ Make An Atonement For Her
 
-"Atonement" (Hebrew kaphar) means to cover or make right, the same word used across every offering type in Leviticus so far. "The issue of her blood" refers plainly to the bleeding that comes with childbirth, now formally closed out through this one final ritual.
+Atonement translates a Hebrew word meaning to cover or make right.
 
-✨ "Atonement" (kaphar) means to cover, make right, or restore
+That same word appears behind every offering type in Leviticus.
 
-🩸 "Issue of her blood" refers directly to childbirth bleeding
+Issue of her blood simply refers to the bleeding from childbirth.
 
-🔚 This ritual formally closes the whole purification period
+This one ritual formally closed out that whole waiting period.
+
+✨ A Hebrew word meaning cover or restore
+
+📜 The same word behind every offering
+
+🩸 Refers plainly to childbirth bleeding
+
+📖 One ritual closed the whole period
 
 ---
 
 ## ⚖️ The Law For Her That Hath Born A Male Or A Female
 
-This closing line makes clear that the same offering requirement, one lamb and one bird, applied whether the child was a son or a daughter, even though the waiting periods leading up to it were different lengths. The final ritual itself didn't scale by the child's sex, only the days beforehand did.
+This line ties both cases in the chapter back together.
 
-⚖️ The same two-animal offering, regardless of the child's sex
+The same offering applied to a son or a daughter.
 
-🔢 Only the waiting period length differed, not the offering itself
+Only the waiting period length ever differed between the two.
 
-📖 A closing summary line tying both cases back together
+The final ritual itself never scaled by the child's sex.
+
+⚖️ Ties both cases back together
+
+🔢 One offering for son or daughter
+
+👶 Only the waiting period ever differed
+
+📖 The final ritual never scaled by sex
 
 # Leviticus 12:8
-
-# 🕊️ Two Turtledoves Instead
-
+# 🕊️ When A Lamb Is Too Costly
 ---
-
 ## 💰 If She Be Not Able To Bring A Lamb
 
-This verse builds in an economic safety valve for poorer families: if a lamb was genuinely out of reach, two birds could replace the whole lamb-and-bird combination. The same principle already appeared in chapter 5:7-11's sliding scale for the sin offering, where cost never determined whether atonement was available.
+This verse builds in help for poorer families.
 
-💰 A built-in provision for families who couldn't afford a lamb
+Chapter five already used this same sliding scale.
 
-🔄 The same sliding-scale principle already used in chapter 5:7-11
+Cost never decided whether a family could receive atonement.
 
-✅ Full atonement was never priced out of a poor family's reach
+God's provision reached every family, rich or poor.
+
+💰 Built in help for poorer families
+
+🔄 Same sliding scale as chapter five
+
+✅ Cost never blocked anyone's atonement
+
+📖 God's provision reached rich and poor
 
 ---
 
 ## 🕊️ Two Turtles, Or Two Young Pigeons
 
-With this substitution, one bird still covered the burnt offering, and the second bird still covered the sin offering. The purpose of the offering stayed exactly the same, only the animal changed to fit what the family could actually afford.
+Two small birds could fully replace the lamb and bird combination.
 
-🕊️ One bird for the burnt offering, one for the sin offering
+One bird still covered the burnt offering.
 
-🔁 The purpose of the ritual stayed identical either way
+The second bird still covered the sin offering.
 
-💰 Only the cost of the animal changed, not the requirement itself
+Only the animal changed, never the purpose behind it.
+
+🕊️ Two birds replaced the whole combination
+
+🔥 One bird for the burnt offering
+
+⚖️ One bird for the sin offering
+
+📖 Only the animal changed, not the purpose
 
 ---
 
-## 👶 Mary And Joseph's Own Offering
+## 🙏 The Priest Shall Make An Atonement For Her, And She Shall Be Clean
 
-This exact provision shows up centuries later in Luke 2:22-24, when Mary and Joseph bring "a pair of turtledoves, or two young pigeons" to the temple after Jesus's birth instead of a lamb. That detail is a quiet but clear sign of the family's modest financial situation, confirmed directly by this very law in Leviticus.
+This same ritual finished the purification either way.
 
-👶 Mary and Joseph bring the exact bird-only option in Luke 2:22-24
+Centuries later, Mary and Joseph brought this exact bird offering.
 
-💰 A quiet, textual clue about their financial situation
+Luke two says they brought two turtledoves or two young pigeons.
 
-📖 This law is the direct explanation behind that Gospel detail`;
+That detail quietly shows the family was not wealthy.
+
+This one law in Leviticus explains that small Gospel detail.
+
+🙏 Either offering finished the purification
+
+👶 Mary and Joseph used this exact option
+
+📜 Luke two names the same two birds
+
+📖 One Leviticus law explains that Gospel detail`.trim();
 
 export const LEVITICUS_TWELVE_PERSONAL_SECTIONS = parseLeviticusTwelveRawNotes(LEVITICUS_TWELVE_RAW_NOTES);
