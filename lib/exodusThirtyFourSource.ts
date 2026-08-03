@@ -81,345 +81,1039 @@ function parseExodusThirtyFourRawNotes(rawText: string): ExodusThirtyFourPersona
     });
   }
 
-  if (sections.length !== 6) {
-    throw new Error("Expected 6 Exodus 34 sections, received " + sections.length);
+  if (sections.length !== 7) {
+    throw new Error("Expected 7 Exodus 34 sections, received " + sections.length);
   }
 
   return sections;
 }
 
 const EXODUS_THIRTY_FOUR_RAW_NOTES = `# Exodus 34:1-4
-
 # 🪨 New Tablets Are Prepared
-
 ---
+## 🔨 Hew Thee Two Tables Of Stone Like Unto The First
 
-## 🔨 Hew Thee Two Tables Of Stone Like Unto The First... Be Ready In The Morning, And Come Up In The Morning Unto Mount Sinai
+"Hew" means to cut and shape stone with a chisel.
 
-**"Hew"** means to cut or shape by cutting, as with a chisel or axe. This time Moses himself must do the physical work of cutting the stone, unlike the first set, which came directly from God's own hand (Exodus 31:18). The words will still be God's, but the material preparation now costs Moses real effort — a quiet consequence of the tablets he shattered in anger.
+This time Moses himself must do the physical cutting.
 
-🔨 "Hew" means to cut or shape stone by cutting
+The first tablets came directly from God's own hand instead.
 
-🪨 Moses cuts these tablets himself, unlike the first set God made directly
+Moses shattered those tablets earlier in anger.
 
-📖 This is a quiet consequence of Moses breaking the first tablets in chapter 32
+Making new ones now costs him real, personal effort.
 
-➡️ The mountain's boundary lines are drawn again
+🔨 Hew means to cut stone with a chisel
 
----
+🪨 Moses cuts these tablets himself this time
 
-## 🚧 No Man Shall Come Up With Thee, Neither Let Any Man Be Seen Throughout All The Mount; Neither Let The Flocks Nor Herds Feed Before That Mount
+💥 He shattered the first set earlier
 
-This repeats the same restricted-access boundary already established the first time Moses ascended, back in chapter 19:12-13. The mountain's holiness hasn't lessened at all despite everything that went wrong below.
+📖 The words remain fully God's own
 
-🚧 This restates the same access boundary already given in chapter 19
+## ⏳ Which Thou Brakest
 
-⛰️ The mountain's holiness is unchanged despite the golden calf disaster
+"Brakest" is an old form of the word broke.
 
-➡️ Moses obeys without delay
+Moses shattered the first tablets in furious anger back in chapter thirty two.
 
----
+He smashed the very words God had written by His own hand.
 
-## ⏰ Moses Rose Up Early In The Morning, And Went Up Unto Mount Sinai... And Took In His Hand The Two Tables Of Stone
+God does not scold Moses again for that moment here.
 
-Moses' prompt obedience — rising early — mirrors his same eager response the first time God called him up this mountain, back in chapter 24:4. Nothing about this second ascent shows any hesitation on his part.
+Instead God simply provides a way to start over.
 
-⏰ Moses' quick obedience mirrors his response the first time, in chapter 24:4
+💥 Brakest is an old form of broke
 
-🪨 He personally carries the stone tablets he cut up the mountain himself
+😡 Moses smashed the first tablets in anger
 
-➡️ God descends to meet him there
+🙏 God does not scold him again here
+
+📖 Grace repairs what anger destroyed
+
+## 🌄 Be Ready In The Morning
+
+God sets a strict appointment for Moses to keep.
+
+He must be ready and waiting the very next morning.
+
+This mirrors the same early morning meeting back in chapter nineteen.
+
+The mountain becomes a meeting place kept on God's own schedule.
+
+Nothing about this second climb happens on Moses' own timing.
+
+🌄 God sets an exact morning appointment
+
+⛰️ This mirrors the meeting in chapter nineteen
+
+⏰ The schedule belongs to God, not Moses
+
+➡️ Moses obeys without any delay
+
+## 👑 Present Thyself There To Me In The Top Of The Mount
+
+"Present thyself" is formal language used for approaching a king.
+
+Moses is not just climbing a hill to look around.
+
+He is entering a royal audience with the God of Israel.
+
+The mountain's peak becomes a throne room for this meeting.
+
+👑 Present thyself means formal royal language
+
+⛰️ The mountain's top becomes a throne room
+
+🚶 Moses climbs to meet with a king
+
+📖 God grants Moses direct royal access
+
+## 🚧 No Man Shall Come Up With Thee
+
+This repeats the same restricted access boundary from chapter nineteen.
+
+Only Moses may approach the mountain's summit this time too.
+
+The people below have already broken trust with the golden calf.
+
+Even so, the mountain's holiness has not lessened at all.
+
+🚧 This repeats the boundary from chapter nineteen
+
+🙅 Only Moses may climb to the summit
+
+🐂 The people broke trust with the golden calf
+
+📖 The mountain's holiness never changed
+
+## 🐑 Neither Let The Flocks Nor Herds Feed Before That Mount
+
+The warning extends even to grazing animals near the mountain.
+
+Herds wandering too close could not tell the ground was holy.
+
+Israel must guard this boundary completely, not almost completely.
+
+A single animal crossing the line still breaks the command.
+
+🐑 The warning covers animals, not only people
+
+🌾 Herds cannot sense holy ground on their own
+
+🚧 The boundary has to be kept completely
+
+📖 Holiness allows no small exceptions
+
+## ⏰ Moses Rose Up Early In The Morning
+
+Moses does not delay or hesitate after receiving the command.
+
+He wakes early the very next day and starts climbing.
+
+This same eager response already appeared in chapter twenty four.
+
+Nothing about this second ascent shows any reluctance.
+
+⏰ Moses rises early without any delay
+
+🔁 This matches his response in chapter twenty four
+
+🏔️ He climbs the mountain again himself
+
+➡️ Obedience here comes without hesitation
+
+## 💪 Took In His Hand The Two Tables Of Stone
+
+Moses personally carries the heavy stone tablets up the mountain.
+
+No servant or assistant helps him with this task.
+
+He cut these stones himself and now hauls them alone.
+
+The labor of this second set falls entirely on him.
+
+🪨 Moses carries the stone tablets himself
+
+🚫 No servant helps him with this climb
+
+💪 He personally bears the weight of this task
+
+📖 This second set costs Moses real labor
 
 # Exodus 34:5-9
-
 # 🌟 God Proclaims His Name
-
 ---
+## ☁️ The LORD Descended In The Cloud
 
-## 📛 The LORD Descended In The Cloud, And Stood With Him There, And Proclaimed The Name Of The LORD... Merciful And Gracious, Longsuffering, And Abundant In Goodness And Truth
+God does not appear in blinding light this time.
 
-This fulfills exactly what God promised back in chapter 33:19 — "I will proclaim the name of the LORD." **"Longsuffering"** is an old word meaning patient, slow to anger. This proclamation becomes one of the most quoted descriptions of God's character in the rest of the Old Testament, echoed later in Numbers 14:18, Psalm 103:8, Joel 2:13, and Jonah 4:2.
+He comes down wrapped inside a cloud instead.
 
-📛 This directly fulfills God's promise back in chapter 33:19
+A cloud already marked God's presence back in chapter nineteen.
 
-⏳ "Longsuffering" means patient and slow to anger
+The visible symbol has not changed since then.
 
-📖 This description is quoted again and again throughout the Old Testament
+What has changed is the trust being rebuilt between them.
 
-➡️ The proclamation continues with more detail
+☁️ God descends inside a cloud again
 
----
+⛰️ This matches chapter nineteen's earlier cloud
 
-## ⚖️ Keeping Mercy For Thousands, Forgiving Iniquity And Transgression And Sin
+🔁 The outward symbol stays the same
 
-Three separate concepts for wrongdoing are named together here: **iniquity** (guilt or a twisted wrong), **transgression** (deliberate rebellion), and **sin** (literally missing the mark). God's forgiveness is described as covering the full range of ways people fail, not one narrow category of wrongdoing alone.
+📖 Trust is what gets rebuilt here
 
-⚖️ Iniquity, transgression, and sin name three distinct kinds of wrongdoing
+## 📛 Proclaimed The Name Of The LORD
 
-🌊 Forgiveness here is described as covering the full range of human failure
+God had already promised this exact moment back in chapter thirty three.
 
-➡️ The same proclamation holds justice just as firmly
+"I will proclaim the name of the LORD," He said there.
 
----
+Now God keeps that promise out loud, in person.
 
-## ⚡ That Will By No Means Clear The Guilty; Visiting The Iniquity Of The Fathers Upon The Children... Unto The Third And To The Fourth Generation
+A name in this culture carries someone's full character, not just a label.
 
-Mercy and justice are held together in the very same breath here, neither one softening the other. Consequences of sin can ripple forward into a family's future generations — though this is balanced elsewhere in Scripture by the individual accountability described later in passages like Ezekiel 18.
+📛 God promised this back in chapter thirty three
 
-⚡ Mercy and justice are described together, not one at the expense of the other
+🗣️ He now keeps that promise aloud
 
-👨‍👦‍👦 Sin's consequences are described as capable of rippling into future generations
+🏷️ A name here means full character
 
-📖 Ezekiel 18 later balances this with individual accountability for one's own sin
+📖 God reveals who He truly is
 
-➡️ Moses responds the instant he hears this
+## 🔁 The LORD, The LORD God
 
----
+God says His own name twice in a row here.
 
-## 🙇 Moses Made Haste, And Bowed His Head Toward The Earth, And Worshipped... Let My LORD, I Pray Thee, Go Among Us; For It Is A Stiffnecked People; And Pardon Our Iniquity
+Repeating a name this way was a way of adding weight and certainty.
 
-Moses' immediate response to hearing God's own self-description is worship, then a fresh plea built directly on what he just heard. He asks for forgiveness by openly naming Israel's stubbornness rather than hiding it — using God's own proclaimed mercy as the actual basis for the request.
+It functioned almost like an official seal on a document.
 
-🙇 Moses worships immediately, without hesitation, upon hearing this proclamation
+What follows next is meant to be taken with total seriousness.
 
-🐂 He openly names Israel's stubbornness rather than minimizing it
+🔁 Saying the name twice adds emphasis
 
-🙏 The plea for pardon is built directly on the mercy God just proclaimed
+📜 It works like an official seal
 
-➡️ God answers by renewing the covenant itself
+⚖️ It marks total certainty and weight
+
+➡️ What follows deserves full attention
+
+## 💛 Merciful And Gracious, Longsuffering
+
+"Merciful" means God treats people better than their sin deserves.
+
+"Gracious" means He gives good gifts that were never earned.
+
+"Longsuffering" is an old word meaning patient and slow to anger.
+
+These three words together describe God's steady, patient character.
+
+💛 Merciful means better treatment than deserved
+
+🎁 Gracious means gifts that were never earned
+
+⏳ Longsuffering means patient and slow to anger
+
+📖 Together they describe God's steady character
+
+## 🌊 Abundant In Goodness And Truth
+
+"Abundant" means overflowing, far more than just enough.
+
+God's goodness is not measured out carefully or given sparingly.
+
+"Truth" here means God is completely reliable and never lies.
+
+This exact description gets quoted again and again across the Old Testament.
+
+🌊 Abundant means far more than enough
+
+💧 Goodness pours out without limit
+
+✅ Truth means God is fully reliable
+
+📖 This description repeats throughout the Old Testament
+
+## ⚖️ Forgiving Iniquity And Transgression And Sin
+
+Three separate words for wrongdoing appear together in this one line.
+
+"Iniquity" means a deep, twisted guilt inside a person.
+
+"Transgression" means stepping over a line on purpose.
+
+"Sin" literally means missing the mark, like an arrow that misses its target.
+
+God's forgiveness is described as covering every one of these categories.
+
+⚖️ Iniquity means a deep inner guilt
+
+🚷 Transgression means crossing a line on purpose
+
+🎯 Sin means missing the mark entirely
+
+📖 God's forgiveness covers all three categories
+
+## 🌍 Visiting The Iniquity Of The Fathers Upon The Children
+
+Mercy and justice are named together in the very same breath.
+
+Sin's effects can ripple forward into a family across generations.
+
+This does not mean children are punished for sins they never committed.
+
+Ezekiel chapter eighteen later explains that each person answers for their own sin.
+
+⚖️ Mercy and justice appear together here
+
+👨‍👦 Sin's effects can ripple into future generations
+
+🚫 Children are not blamed for another's sin
+
+📖 Ezekiel eighteen later explains this clearly
+
+## 🙇 Moses Made Haste, And Bowed His Head Toward The Earth
+
+Moses responds the instant he hears God's own description of Himself.
+
+He does not question it or ask for proof first.
+
+Bowing to the ground here is a physical act of worship.
+
+Hearing who God truly is moves Moses to instant reverence.
+
+🙇 Moses responds the instant he hears this
+
+🙏 Bowing shows a physical act of worship
+
+❤️ He asks no question and needs no proof
+
+📖 Hearing God rightly leads to reverence
+
+## 🐂 It Is A Stiffnecked People
+
+"Stiffnecked" pictures an ox that refuses to turn its neck under the yoke.
+
+Moses uses this same word God already used back in chapter thirty two.
+
+He does not hide or soften Israel's stubbornness in this prayer.
+
+Naming the problem honestly becomes the actual basis for his request.
+
+🐂 Stiffnecked pictures an ox resisting the yoke
+
+🔁 Moses repeats God's own earlier word
+
+🗣️ He names Israel's stubbornness honestly
+
+📖 Honesty becomes the basis for his plea
+
+## 🙏 Pardon Our Iniquity, And Take Us For Thine Inheritance
+
+Moses asks God to forgive and to keep Israel as His own possession.
+
+"Inheritance" means something treasured and kept within a family permanently.
+
+He builds this entire plea on the mercy God just proclaimed aloud.
+
+The request is bold, but it rests on what God already said about Himself.
+
+🙏 Moses asks for pardon and belonging
+
+💎 Inheritance means treasured and kept forever
+
+🗣️ The plea rests on God's own words
+
+➡️ God answers by renewing the covenant
 
 # Exodus 34:10-17
-
 # 📜 The Covenant Is Renewed
-
 ---
+## 🤝 Behold, I Make A Covenant
 
-## 🤝 Behold, I Make A Covenant: Before All Thy People I Will Do Marvels... I Drive Out Before Thee The Amorite, And The Canaanite, And The Hittite, And The Perizzite, And The Hivite, And The Jebusite
+God formally renews His covenant relationship with Israel here.
 
-God formally renews the covenant relationship, promising unprecedented "marvels" and repeating the same list of nations to be displaced already given back in chapter 33:2 and chapter 23:23.
+This comes right after the golden calf crisis nearly ended everything.
 
-🤝 God formally renews the covenant after the golden calf crisis
+A covenant in this culture is a binding, formal agreement between two parties.
 
-📖 This same list of nations already appeared in chapters 23 and 33
+God is choosing to start again instead of walking away.
 
-➡️ A clear warning comes with this renewal
+🤝 God formally renews the covenant here
 
----
+💥 This follows the golden calf crisis
 
-## 🪤 Take Heed To Thyself, Lest Thou Make A Covenant With The Inhabitants Of The Land Whither Thou Goest, Lest It Be For A Snare In The Midst Of Thee
+📜 A covenant is a binding formal agreement
 
-A **"snare"** is a trap, often used for catching animals. Alliances with the surrounding nations are described here as a trap Israel could easily wander into without even realizing the danger until it was too late.
+📖 God chooses to restart, not walk away
 
-🪤 A "snare" is a trap, often used for catching animals
+## 👀 Before All Thy People I Will Do Marvels
 
-🤔 Foreign alliances are described as a danger easy to miss until it's too late
+God's next work will not happen quietly or in private.
 
-➡️ Specific instructions follow for dealing with pagan worship sites
+Every person in the whole camp will watch these marvels happen.
 
----
+Public miracles rebuild public trust after a public failure.
 
-## 🪓 Ye Shall Destroy Their Altars, Break Their Images, And Cut Down Their Groves: For Thou Shalt Worship No Other God: For The LORD, Whose Name Is Jealous, Is A Jealous God
+The golden calf failure happened in front of everyone.
 
-**"Groves"** here refers to wooden poles or trees used in pagan fertility worship. God's jealousy is relational, not petty — closer to the language of a husband who will not share his wife's devotion, a marriage metaphor that runs throughout the rest of the Old Testament, especially in Hosea.
+So does this restoration.
 
-🪓 "Groves" refers to wooden poles or trees used in pagan worship
+👀 God's work here happens in full view
 
-💍 God's jealousy is described in relational, marriage-like terms
+🏕️ The whole camp will witness it
 
-📖 This same marriage imagery for idolatry reappears later in Hosea
+💥 The golden calf failure was public too
 
-➡️ The warning turns to marriage itself
+📖 Public trust is rebuilt in public
 
----
+## 😮 It Is A Terrible Thing That I Will Do With Thee
 
-## 💔 Lest Thou Make A Covenant With The Inhabitants Of The Land, And They Go A Whoring After Their Gods... And Thou Take Of Their Daughters Unto Thy Sons, And Their Daughters Go A Whoring After Their Gods
+"Terrible" in this old English sense means awe inspiring, not simply scary or evil.
 
-**"Go a whoring"** is the KJV's blunt idiom for spiritual unfaithfulness, comparing idolatry directly to marital betrayal. Intermarriage is warned against specifically because of its power to quietly pull the next generation into these same practices, not because of ethnicity itself.
+God promises to do marvels that have never been done for any other nation.
 
-💔 "Go a whoring" is a blunt KJV idiom comparing idolatry to marital betrayal
+The whole watching world will see the work of the LORD through Israel.
 
-👨‍👩‍👧 The warning targets religious influence on the next generation, not ethnicity
+This is a promise meant to inspire wonder, not fear of harm.
 
-➡️ The chapter's clearest, most pointed warning follows
+😮 Terrible here means awe inspiring
 
----
+🌍 No other nation has seen marvels like this
+
+👀 The whole world will witness this work
+
+📖 The promise inspires wonder, not harm
+
+## 🏹 I Drive Out Before Thee The Amorite, And The Canaanite
+
+This same list of nations already appeared back in chapters twenty three and thirty three.
+
+Each name here belongs to a different people group already living in Canaan.
+
+God repeats the promise to clear the land ahead of Israel.
+
+Naming each nation individually makes the promise concrete, not vague.
+
+📜 This list already appeared in chapter twenty three
+
+🗺️ Each name is a real nation in Canaan
+
+🏹 God repeats His promise to clear the land
+
+📖 Naming them makes the promise concrete
+
+## 🔢 The Hittite, And The Perizzite, And The Hivite, And The Jebusite
+
+Six different nations are named here living inside the promised land.
+
+Deuteronomy chapter seven later names a seventh nation added to this same list.
+
+Each nation had its own gods, customs, and cities already built.
+
+God promises to clear all of them out ahead of Israel's arrival.
+
+🔢 Six nations are named in this verse
+
+📜 Deuteronomy seven later adds a seventh
+
+🏙️ Each nation had its own gods and cities
+
+📖 God promises to clear them all out
+
+## 🪤 Lest It Be For A Snare In The Midst Of Thee
+
+A "snare" is a trap, often used for catching wild animals.
+
+Israel is warned against making friendly deals with nations still in the land.
+
+An alliance could quietly become a trap Israel does not even notice.
+
+The real danger is not open war.
+
+It is slow, comfortable compromise.
+
+🪤 A snare is a hidden trap
+
+🤝 Friendly deals with pagan nations are warned against
+
+👀 The danger is easy to miss at first
+
+📖 Slow compromise threatens more than open war
+
+## 🪓 Destroy Their Altars, Break Their Images, Cut Down Their Groves
+
+Three separate objects of pagan worship are named here for destruction.
+
+"Images" means carved idols shaped to represent false gods.
+
+"Groves" refers to wooden poles or trees used in pagan fertility worship.
+
+Israel is told to leave nothing standing that could pull hearts toward these gods.
+
+🪓 Three objects of pagan worship are named
+
+🗿 Images means carved idols of false gods
+
+🌳 Groves means wooden poles used in pagan worship
+
+📖 Nothing pagan is allowed to remain standing
+
+## 💍 The LORD, Whose Name Is Jealous, Is A Jealous God
+
+God's jealousy here is relational, not petty or small minded.
+
+It is closer to the jealousy of a husband who will not share his wife's devotion.
+
+This marriage picture for God's relationship with Israel runs through the rest of the Old Testament.
+
+Hosea later builds an entire book around this exact image.
+
+💍 God's jealousy is relational, like a marriage
+
+🚫 It is not petty or small minded
+
+📜 Hosea builds a whole book on it
+
+📖 This image runs through the Old Testament
+
+## 💔 They Go A Whoring After Their Gods
+
+"Go a whoring" is the KJV's blunt idiom for spiritual unfaithfulness.
+
+It compares worshipping other gods directly to betraying a marriage.
+
+Israel is warned that eating a pagan sacrifice could pull them into that same betrayal.
+
+One shared meal could open the door to a much deeper compromise.
+
+💔 Go a whoring means spiritual unfaithfulness
+
+💍 It compares idolatry to marriage betrayal
+
+🍽️ Sharing a pagan meal risked real compromise
+
+📖 A small door can lead somewhere deeper
+
+## 👨‍👩‍👧 Thou Take Of Their Daughters Unto Thy Sons
+
+Intermarriage with these nations is warned against here specifically.
+
+The concern named is religious influence, not ethnicity or bloodline.
+
+A foreign wife raised in pagan worship could quietly pull sons toward those same gods.
+
+This same warning becomes a very real problem later in Israel's history.
+
+👨‍👩‍👧 Intermarriage is warned against here
+
+🙏 The concern is religious influence, not bloodline
+
+🚸 A pagan upbringing could shape the next generation
+
+📖 This warning becomes real trouble later on
 
 ## 🐄 Thou Shalt Make Thee No Molten Gods
 
-This is a direct, pointed callback to the exact sin of chapter 32 — the molten calf — named here explicitly as the renewed covenant's single clearest warning.
+This is a direct callback to the exact sin of chapter thirty two.
 
-🐄 This directly names the golden calf sin from chapter 32
+"Molten" means melted down and poured into a mold, like the golden calf.
 
-🎯 It stands as the renewed covenant's single most pointed warning
+Of everything just commanded, this warning is stated most plainly and most briefly.
 
-➡️ The covenant then turns to Israel's yearly calendar
+Its shortness makes it land harder than a longer explanation would.
 
-# Exodus 34:18-26
+🐄 This callback points to chapter thirty two
 
-# 📅 The Feast Calendar Renewed
+🔥 Molten means melted down and poured
 
+🎯 It is the chapter's plainest warning
+
+📖 Short words can carry the heaviest weight
+
+# Exodus 34:18-21
+# 🍞 Unleavened Bread And The Firstborn
 ---
+## 📅 In The Time Of The Month Abib
 
-## 🍞 The Feast Of Unleavened Bread Shalt Thou Keep... In The Time Of The Month Abib: For In The Month Abib Thou Camest Out From Egypt
+"Abib" is the old Hebrew name for the first month of their calendar.
 
-**"Abib"** is the old Hebrew calendar name for the first month, roughly March-April, later called Nisan. This feast, first commanded back in chapters 12-13, is restated here as part of the newly renewed covenant.
+It lines up with our March and April, later renamed Nisan.
 
-🍞 "Abib" is the old name for the first month of the Hebrew calendar
+This month marks the anniversary of Israel's exit from Egypt.
 
-📖 This feast was first commanded back in chapters 12 and 13
+Every year the calendar itself becomes a yearly reminder of that rescue.
 
-➡️ The firstborn law is restated next
+📅 Abib is the old first month's name
 
+🌱 It lines up with our March and April
+
+🏃 It marks Israel's escape from Egypt
+
+📖 The calendar itself remembers that rescue
+
+## 🍞 The Feast Of Unleavened Bread Shalt Thou Keep
+
+This feast was first commanded back in chapters twelve and thirteen.
+
+Seven days without leaven recall the hurried, unrisen bread of the exodus.
+
+God restates it here as part of this freshly renewed covenant.
+
+Old commands do not expire just because a new covenant begins.
+
+🍞 This feast was first given in chapter twelve
+
+🏃 It recalls the hurried bread of the exodus
+
+📜 It gets restated in the new covenant
+
+📖 Old commands still stand under the new one
+
+## 👶 All That Openeth The Matrix Is Mine
+
+"Openeth the matrix" is an old phrase meaning the first offspring born from a womb.
+
+Every firstborn male, whether animal or child, belongs to God in a special way.
+
+This law was first given back in chapter thirteen, right after the exodus.
+
+It ties every family permanently back to the night the firstborn of Egypt died instead of Israel's.
+
+👶 Openeth the matrix means firstborn from the womb
+
+🐑 Every firstborn belongs to God specially
+
+📜 This law began back in chapter thirteen
+
+📖 It ties families to Passover night forever
+
+## 🐴 The Firstling Of An Ass Thou Shalt Redeem With A Lamb
+
+A donkey was considered an unclean animal, unlike a sheep or a lamb.
+
+"Redeem" means to buy back or pay a price to release something.
+
+A family could pay with a lamb instead of losing the donkey.
+
+If they refused to pay, the donkey's neck had to be broken instead.
+
+🐴 A donkey counted as an unclean animal
+
+💰 Redeem means to pay a price back
+
+🐑 A lamb could replace the donkey's price
+
+📖 Refusing the price cost the donkey its life
+
+## 🙌 None Shall Appear Before Me Empty
+
+Coming to worship God was never meant to be a one way transaction.
+
+Every worshipper brought something along, a firstborn animal, an offering, or a gift.
+
+Showing up with empty hands would treat God like He needed nothing from them.
+
+Worship here always includes giving something real back.
+
+🙌 Worship always came with something given
+
+🎁 Empty hands were never acceptable here
+
+🤲 Every worshipper brought a real offering
+
+📖 Giving is part of true worship
+
+## 🌾 In Earing Time And In Harvest Thou Shalt Rest
+
+"Earing" is an old word for plowing a field before planting.
+
+Plowing season and harvest season were the two busiest times of the farming year.
+
+Exactly when skipping a rest day would seem most justified, the command still stands.
+
+God builds rest into the calendar even during the most pressured seasons of work.
+
+🌾 Earing is an old word for plowing
+
+📆 Plowing and harvest were the busiest seasons
+
+🛑 Even those seasons do not excuse skipping rest
+
+📖 God builds rest into the busiest weeks
+
+# Exodus 34:22-26
+# 🎉 The Full Feast Calendar
 ---
+## 🌾 The Feast Of Weeks, Of The Firstfruits Of Wheat Harvest
 
-## 👶 All That Openeth The Matrix Is Mine... The Firstling Of An Ass Thou Shalt Redeem With A Lamb: And If Thou Redeem Him Not, Then Shalt Thou Break His Neck. All The Firstborn Of Thy Sons Thou Shalt Redeem. And None Shall Appear Before Me Empty
+This feast celebrates the very first grain cut from the wheat harvest.
 
-**"Openeth the matrix"** means the firstborn from the womb. This repeats the firstborn dedication law first given in chapter 13, tying every family's firstborn permanently back to the night of the Passover rescue from Egypt.
+It later becomes known as Pentecost, counted fifty days after Passover.
 
-👶 "Openeth the matrix" means the firstborn offspring from the womb
+Farmers thank God for the harvest before the rest of it is even gathered in.
 
-🔗 This ties every family's firstborn back to the Passover night in Egypt
+Gratitude here comes before the full reward arrives, not after.
 
-➡️ The weekly rhythm of rest gets restated too
+🌾 This feast marks the first wheat cut
 
----
+🔢 It later becomes Pentecost, on day fifty
 
-## 🌾 Six Days Thou Shalt Work, But On The Seventh Day Thou Shalt Rest: In Earing Time And In Harvest Thou Shalt Rest
+🙏 Farmers give thanks before the full harvest
 
-**"Earing"** is an old word for plowing. Even during the two busiest seasons of the farming year, exactly when skipping the Sabbath would seem most justified, the rest command still applies without exception.
+📖 Gratitude here comes before the reward
 
-🌾 "Earing" is an old word meaning plowing
+## 🧺 The Feast Of Ingathering At The Year's End
 
-⏸️ Even the busiest farming seasons don't excuse skipping the Sabbath
+This feast comes at the very end of the harvest season.
 
-➡️ The full yearly feast calendar is named next
+It later becomes known as the Feast of Tabernacles, or Sukkot.
 
----
+Families would live in temporary shelters for a week to remember the wilderness years.
 
-## 🎉 Thou Shalt Observe The Feast Of Weeks... And The Feast Of Ingathering At The Year's End. Thrice In The Year Shall All Your Menchildren Appear Before The LORD
+The whole harvest year closes with a celebration, not just quiet relief.
 
-Three annual pilgrimage feasts are named together here — Unleavened Bread already covered, the Feast of Weeks (later called Pentecost), and the Feast of Ingathering (later called Tabernacles) — the same three-feast calendar already laid out back in chapter 23:14-17.
+🧺 This feast closes out the harvest year
 
-🎉 Three annual pilgrimage feasts are named together in this section
+⛺ It later becomes the Feast of Tabernacles
 
-📖 This same three-feast calendar already appeared in chapter 23
+🏕️ Families lived in shelters for a week
 
-➡️ A remarkable promise protects the land during these feasts
+📖 The year ends in celebration, not just relief
 
----
+## 🚹 Thrice In The Year Shall All Your Menchildren Appear
 
-## 🛡️ For I Will Cast Out The Nations Before Thee, And Enlarge Thy Borders: Neither Shall Any Man Desire Thy Land, When Thou Shalt Go Up To Appear Before The LORD Thy God Thrice In The Year
+"Menchildren" means the males of Israel specifically, not the whole family.
 
-A striking promise follows: leaving the land undefended three times a year to travel and worship will not leave it vulnerable to invasion, because God Himself guards its borders during that exact window of time.
+Three times a year, every man was required to travel and appear before God.
 
-🛡️ God promises to personally guard the land while it's left undefended
+Women and young children were not required to make this exact journey.
 
-🧳 This makes obedience to the feast calendar practically safe, not risky
+This pilgrimage rhythm shaped the entire yearly calendar for every household.
 
-➡️ Two final, specific sacrifice rules close out this list
+🚹 Menchildren means the males specifically
 
----
+🔢 Three trips were required every year
 
-## 🥛 Thou Shalt Not Offer The Blood Of My Sacrifice With Leaven... Thou Shalt Not Seethe A Kid In His Mother's Milk
+🚶 Women and children were not required to go
 
-**"Seethe"** means to boil. This odd-sounding final law, repeated elsewhere in the Torah back in chapter 23:19, likely rejected a specific pagan fertility ritual practiced by Canaan's neighboring nations — closing this list with one more clear line drawn against pagan custom.
+📖 This rhythm shaped the whole year
 
-🥛 "Seethe" means to boil
+## 🛡️ Neither Shall Any Man Desire Thy Land
 
-🚫 This law likely rejected a specific pagan fertility ritual of neighboring nations
+Leaving the land undefended three times a year sounds genuinely risky.
 
-➡️ Moses is told to write all of this down
+God promises here to guard the borders personally during that exact window.
+
+No enemy nation will be tempted to invade during that time.
+
+Every man is away worshipping when this danger would normally be highest.
+
+Obedience to this calendar becomes safe because God Himself stands guard.
+
+🛡️ God personally guards the land during travel
+
+🚶 Every man leaves to worship three times yearly
+
+🚫 No enemy is tempted to invade then
+
+📖 Obedience becomes safe under God's protection
+
+## 🩸 Thou Shalt Not Offer The Blood Of My Sacrifice With Leaven
+
+"Leaven" is a substance like yeast that makes bread rise and puff up.
+
+Leaven often pictured sin or corruption spreading quietly through something pure.
+
+Mixing it into a blood sacrifice would corrupt an offering meant to stay pure.
+
+This same rule already appeared earlier for the Passover sacrifice in chapter twelve.
+
+🩸 This is a blood sacrifice rule
+
+🍞 Leaven pictures corruption spreading quietly
+
+🚫 Leaven could not touch this offering
+
+📖 The same rule covers Passover in chapter twelve
+
+## 🌙 Neither Shall The Sacrifice Of The Feast Of The Passover Be Left Unto The Morning
+
+The Passover sacrifice had to be eaten and finished the very same night.
+
+Leaving meat overnight risked it spoiling or decaying before it could be used.
+
+This rule also protected the offering from being treated carelessly the next day.
+
+Freshness and respect for the sacrifice mattered as much as the ritual itself.
+
+🌙 The sacrifice had to be finished that night
+
+🍖 Leftover meat risked spoiling by morning
+
+🙏 The rule protected the offering from carelessness
+
+📖 Freshness mattered as much as ritual
+
+## 🌱 The First Of The Firstfruits Of Thy Land
+
+"Firstfruits" means the very first crops gathered from a harvest.
+
+Bringing the first and best portion to God came before anyone kept the rest for themselves.
+
+This act placed trust in God for the harvest still to come.
+
+Giving first, not last, is the whole point of a firstfruits offering.
+
+🌱 Firstfruits means the very first crops
+
+🎁 The best portion went to God first
+
+🙏 This showed trust in the harvest ahead
+
+📖 Giving first is the whole point
+
+## 🐐 Thou Shalt Not Seethe A Kid In His Mother's Milk
+
+"Seethe" is an old word meaning to boil or cook in liquid.
+
+A "kid" here means a young goat, not a child.
+
+This law likely rejected a specific pagan fertility ritual practiced by Canaan's neighbors.
+
+The chapter closes this list with one more clear line drawn against pagan custom.
+
+🐐 Kid here means a young goat
+
+🍲 Seethe means to boil in liquid
+
+🚫 This likely rejected a pagan fertility ritual
+
+📖 It draws one more line against pagan custom
 
 # Exodus 34:27-28
-
 # ✍️ Moses Writes For Forty Days
-
 ---
+## 📝 Write Thou These Words
 
-## 📝 Write Thou These Words: For After The Tenor Of These Words I Have Made A Covenant With Thee And With Israel
+This time God commands Moses himself to do the writing.
 
-**"Tenor"** here means the substance or general sense of the words. This time Moses himself is commanded to do the writing, a contrast with the first tablets, which were "written with the finger of God" back in chapter 31:18 — Moses becomes the human scribe of God's covenant from this point forward.
+The first tablets were written directly by God's own finger back in chapter thirty one.
 
-📝 "Tenor" means the substance or general sense of what was spoken
+Moses now becomes the human scribe carrying God's covenant forward.
 
-✍️ Moses himself writes these words, unlike the first tablets in chapter 31
+The words are still fully God's, even though the hand doing the writing has changed.
 
-🖋️ This marks Moses becoming the covenant's ongoing human scribe
+📝 Moses himself is told to write this time
 
-➡️ The forty-day fast on the mountain repeats
+✍️ The first tablets were written by God's finger
 
----
+📜 Moses becomes the covenant's human scribe
 
-## 🍽️ He Was There With The LORD Forty Days And Forty Nights; He Did Neither Eat Bread, Nor Drink Water. And He Wrote Upon The Tables The Words Of The Covenant, The Ten Commandments
+📖 The words remain fully God's own
 
-Moses fasts completely through a second forty-day period on this mountain, the first having stretched across chapters 24-31. **"The ten commandments"** is literally "the ten words" in Hebrew — the same core law given the first time, now recorded again on these replacement stones.
+## 📖 After The Tenor Of These Words
 
-🍽️ Moses fasts completely for a second forty-day stretch on this mountain
+"Tenor" is an old word meaning the substance or general sense of what was said.
 
-🔟 "The ten commandments" is literally "the ten words" in the original Hebrew
+The covenant is based on the whole meaning of God's words, not just the exact letters.
 
-➡️ Moses comes back down changed in a way he can't see
+This phrase ties the covenant directly to everything just spoken in this chapter.
+
+Nothing here is a brand new agreement starting from scratch.
+
+📖 Tenor means the substance of what was said
+
+📜 The covenant follows the full meaning spoken
+
+🔗 It ties directly to this chapter's words
+
+➡️ This renews the covenant, not replaces it
+
+## 🍽️ Neither Eat Bread, Nor Drink Water
+
+Moses fasts completely for a second forty day stretch on this mountain.
+
+The first forty days already happened back across chapters twenty four through thirty one.
+
+No bread and no water for this entire time is a severe physical fast.
+
+God sustains Moses through this stretch in a way food and water normally would.
+
+🍽️ Moses fasts completely for forty days again
+
+📜 The first fast already happened earlier
+
+💪 No food and no water the entire time
+
+📖 God sustains Moses beyond normal human limits
+
+## 🔟 He Wrote Upon The Tables The Words Of The Covenant, The Ten Commandments
+
+"The ten commandments" is literally "the ten words" in the original Hebrew.
+
+These are the same core laws given the first time, back in chapter twenty.
+
+Now they get written a second time onto these new, replacement stones.
+
+The covenant's content never actually changed, only the stones carrying it did.
+
+🔟 Ten commandments literally means ten words
+
+📜 These are the same laws from chapter twenty
+
+🪨 They are written onto new replacement stones
+
+📖 The covenant's content never actually changed
 
 # Exodus 34:29-35
-
 # ✨ Moses' Shining Face
-
 ---
+## 😮 Moses Wist Not That The Skin Of His Face Shone
 
-## 😮 When Moses Came Down From Mount Sinai... Moses Wist Not That The Skin Of His Face Shone While He Talked With Him
+"Wist not" comes from the old verb "wit," meaning to know.
 
-**"Wist not"** comes from the old verb "wit," meaning to know — so Moses did not know or realize his own face was glowing after this time in God's presence. The change is visible to everyone except Moses himself.
+Moses genuinely did not realize his own face had begun to glow.
 
-😮 "Wist not" means did not know or realize, from the old word "wit"
+Time spent close to God's presence left a visible mark on him.
 
-✨ Moses' face genuinely glows, though he has no idea it's happening
+The change was obvious to everyone except Moses himself.
 
-➡️ The people's reaction reveals just how visible this change is
+😮 Wist not means did not know
 
----
+✨ Moses had no idea his face glowed
 
-## 😨 When Aaron And All The Children Of Israel Saw Moses, Behold, The Skin Of His Face Shone; And They Were Afraid To Come Nigh Him
+⛰️ Closeness with God left a visible mark
 
-**"Nigh"** means near. The same people who worshipped from a distance back in chapter 33:10 are now afraid even to approach their own leader — a visible, physical mark left behind by real closeness to God.
+📖 Everyone but Moses could see the change
 
-😨 "Nigh" means near
+## 📜 The Two Tables Of Testimony In Moses' Hand
 
-📖 This echoes the same distance the people kept back in chapter 33:10
+"Testimony" here means a formal witness document, like a signed legal agreement.
 
-➡️ Moses has to take the first step himself
+These stone tablets serve as physical proof of the covenant God just renewed.
 
----
+Moses carries this proof down the mountain along with his glowing face.
 
-## 📢 Moses Called Unto Them; And Aaron And All The Rulers Of The Congregation Returned Unto Him: And Moses Talked With Them... He Gave Them In Commandment All That The LORD Had Spoken With Him In Mount Sinai
+Both the tablets and his face now testify to what happened up there.
 
-Moses initiates contact himself, easing the people's fear enough to let him deliver everything he had just received on the mountain.
+📜 Testimony means a formal witness document
 
-📢 Moses takes the initiative to close the distance the people are too afraid to cross
+🪨 The tablets are physical proof of the covenant
 
-📜 He then delivers everything just received from God on the mountain
+⬇️ Moses carries them down the mountain
 
-➡️ A new practice begins because of this shining
+📖 His face and the tablets both testify
 
----
+## 😨 They Were Afraid To Come Nigh Him
 
-## 🧕 Till Moses Had Done Speaking With Them, He Put A Vail On His Face... When Moses Went In Before The LORD To Speak With Him, He Took The Vail Off, Until He Came Out
+"Nigh" is an old word meaning near.
 
-**"Vail"** is the old spelling of veil. The pattern reverses ordinary expectation: Moses veils his face while speaking to the people, but keeps it uncovered while speaking with God. The apostle Paul later reflects at length on this same veil in 2 Corinthians 3:13-16, using it as a picture of a fading glory that needed to be covered.
+The same people who kept their distance back in chapter thirty three now fear their own leader.
 
-🧕 "Vail" is the old spelling of veil
+A glowing face becomes physical proof of real closeness to God.
 
-🔄 Moses veils his face for the people but uncovers it before God, reversing expectation
+Fear here comes from awe, not from any danger Moses poses.
 
-📖 2 Corinthians 3:13-16 later reflects on this exact veil at length
+😨 Nigh means near
 
-## 🔁 The Children Of Israel Saw The Face Of Moses, That The Skin Of Moses' Face Shone: And Moses Put The Vail Upon His Face Again, Until He Went In To Speak With Him
+✨ A glowing face proves closeness to God
 
-The closing verse locks in a repeating rhythm that continues throughout the rest of Moses' ministry: unveiled before God, veiled before the people, over and over, every time he returns from the mountain's presence.
+🙅 The fear comes from awe, not danger
 
-🔁 This becomes a repeating rhythm for the rest of Moses' ministry
+📖 This echoes chapter thirty three's distance
 
-🌟 Unveiled before God, veiled before the people, every single time
+## 📢 Moses Called Unto Them
 
-📖 The chapter closes on this pattern as Moses' new, ongoing normal`;
+Moses takes the first step instead of waiting for the fear to pass.
+
+He calls Aaron and the leaders of the community back toward him.
+
+Someone has to close the distance the people are too afraid to cross.
+
+Moses chooses to be that someone himself.
+
+📢 Moses takes the first step himself
+
+🗣️ He calls Aaron and the leaders back
+
+🚶 Someone had to close the distance
+
+📖 Moses chooses to be that someone
+
+## 📜 He Gave Them In Commandment All That The LORD Had Spoken
+
+Once the leaders return, Moses delivers everything he just received on the mountain.
+
+Nothing from this long, dense chapter gets left out or softened.
+
+The people finally receive the covenant, the laws, and the warnings all at once.
+
+Moses' shining face becomes the visible proof behind every word he now speaks.
+
+📜 Moses delivers everything from the mountain
+
+🚫 Nothing gets left out or softened
+
+👂 The people finally hear it all
+
+📖 His glowing face backs up every word
+
+## 🧕 He Put A Vail On His Face
+
+"Vail" is the old spelling of veil, a cloth covering for the face.
+
+Moses covers his face only after he finishes speaking to the people.
+
+This detail matters, since the order is about to reverse in the next verse.
+
+A veil worn at the wrong moment would mean something completely different.
+
+🧕 Vail is the old spelling of veil
+
+⏱️ Moses veils his face after speaking, not before
+
+🔄 The order here is about to reverse
+
+📖 Timing changes what the veil means
+
+## 🔓 When Moses Went In Before The LORD, He Took The Vail Off
+
+The pattern here reverses ordinary expectation completely.
+
+Moses uncovers his face to speak with God, not to speak with people.
+
+He only veils himself again once he steps back out to the camp.
+
+The apostle Paul later reflects at length on this exact veil in Second Corinthians chapter three.
+
+🔓 Moses uncovers his face before God
+
+🙈 He veils it again for the people
+
+🔄 This reverses what most would expect
+
+📖 Paul reflects on this veil in Second Corinthians
+
+## 🔁 Moses Put The Vail Upon His Face Again
+
+This closing verse locks in a rhythm that repeats for the rest of Moses' ministry.
+
+Unveiled before God, veiled before the people, every single time he returns.
+
+The pattern becomes so routine that it needs no more explanation after this.
+
+Moses' new normal is shaped entirely by what happened on this mountain.
+
+🔁 This rhythm repeats for Moses' whole ministry
+
+👐 Unveiled before God, veiled before the people
+
+🔂 The pattern becomes Moses' new routine
+
+📖 One mountain visit reshapes his whole life
+`.trim();
 
 export const EXODUS_THIRTY_FOUR_PERSONAL_SECTIONS = parseExodusThirtyFourRawNotes(EXODUS_THIRTY_FOUR_RAW_NOTES);

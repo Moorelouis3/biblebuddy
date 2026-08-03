@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import {
-  determineUserTier,
-  checkIfUserIsPro,
   sendFunnelEmailViaSysteme,
   recordEmailSent,
   updateEmailFunnelState,
@@ -60,22 +58,9 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ ok: true, message: "Day 4 email already sent" });
     }
 
-    // Determine user tier based on first 72 hours
-    const threeDaysAgo = new Date(signupDate.getTime() + 72 * 60 * 60 * 1000);
-    const tier = await determineUserTier(supabaseAdmin, userId, signupDate);
-    const isPro = await checkIfUserIsPro(supabaseAdmin, userId);
-
-    let version: "a" | "a_pro" | "b" | "c";
-
-    if (tier === "power_user" && isPro) {
-      version = "a_pro";
-    } else if (tier === "power_user" && !isPro) {
-      version = "a";
-    } else if (tier === "regular_user") {
-      version = "b";
-    } else {
-      version = "c";
-    }
+    // Single universal version -- Systeme.io's tag cap doesn't leave room
+    // for per-tier A/B variants, so everyone gets the same Day 4 email.
+    const version: "b" = "b";
 
     // Send email via systeme.io
     const result = await sendFunnelEmailViaSysteme(userEmail, 4, version);
@@ -102,8 +87,6 @@ export async function POST(request: NextRequest) {
       user_id: userId,
       day: 4,
       version,
-      tier,
-      is_pro: isPro,
     });
   } catch (err) {
     const message = err instanceof Error ? err.message : "Unknown error";

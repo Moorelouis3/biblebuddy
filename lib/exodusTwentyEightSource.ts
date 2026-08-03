@@ -81,375 +81,793 @@ function parseExodusTwentyEightRawNotes(rawText: string): ExodusTwentyEightPerso
     });
   }
 
-  if (sections.length !== 7) {
-    throw new Error("Expected 7 Exodus 28 sections, received " + sections.length);
+  if (sections.length !== 9) {
+    throw new Error("Expected 9 Exodus 28 sections, received " + sections.length);
   }
 
   return sections;
 }
 
-const EXODUS_TWENTY_EIGHT_RAW_NOTES = `# Exodus 28:1-5
-
-# 👑 Garments For Glory And Beauty
-
+const EXODUS_TWENTY_EIGHT_RAW_NOTES = `# Exodus 28:1-4
+# 🎽 Called To Serve At The Altar
 ---
+## 👨‍👦 Aaron Thy Brother, And His Sons With Him
 
-## 👨‍👦 Aaron Thy Brother... Nadab And Abihu, Eleazar And Ithamar, Aaron's Sons
+Aaron was Moses' own brother, chosen out of the whole nation for one task.
 
-Every son is named individually before a single garment is even described, making the priesthood personal from the very first verse, not just an office. Nadab and Abihu are named here in honor, the same two sons who stood on the mountain in chapter 24; Leviticus 10 will later record both of them dying for offering "strange fire" in this very priesthood being established for them now.
+Up to this point Moses had spoken with God directly on Israel's behalf.
 
-👨‍👦 Every one of Aaron's sons is named individually before any garment is described
+Now God sets apart one family line to serve permanently at the altar.
 
-🏔️ Nadab and Abihu already appeared with Moses on the mountain in chapter 24
+This is the beginning of the priesthood as its own lasting office.
 
-😔 Leviticus 10 later records both of them dying within this same priesthood
+Aaron and his sons will carry that office long after Moses is gone.
 
+👨‍👦 Aaron was Moses' own brother
+
+🛐 God sets apart one family line
+
+🏛️ The priesthood becomes a lasting office
+
+📖 This office outlives Moses himself
+
+## 👶 Nadab And Abihu, Eleazar And Ithamar, Aaron's Sons
+
+All four of Aaron's sons are named here before any garment is even described.
+
+Nadab and Abihu already stood with Moses on the mountain in chapter twenty four.
+
+Leviticus ten later records both of them dying within this very priesthood.
+
+They will offer fire God never commanded, and judgment will fall on them.
+
+Eleazar and Ithamar are named here too.
+
+They will carry the priestly line forward after their brothers are gone.
+
+👶 All four sons are named individually
+
+🏔️ Nadab and Abihu already stood on the mountain
+
+😔 Leviticus ten records their deaths later
+
+📖 Eleazar and Ithamar carry the line forward
+
+## 🙏 That He May Minister Unto Me In The Priest's Office
+
+"Minister" means to serve in an official role, not just help out casually.
+
+In the priest's office, Aaron would represent the people before God every day.
+
+He would offer sacrifices, care for the tabernacle, and carry Israel's needs to God.
+
+No ordinary Israelite could walk into that role without being formally set apart.
+
+This office made Aaron the one official link between the nation and its God.
+
+🙏 Minister means to serve officially
+
+🏛️ Aaron represents the people before God
+
+🕯️ He offers sacrifices and tends the tabernacle
+
+📖 The priesthood links the nation to God
+
+## ✨ Holy Garments For Glory And For Beauty
+
+"Glory" here means weight, dignity, and honor.
+
+"Beauty" means genuine visual loveliness, clothes that were pleasing to look at.
+
+These were never meant to be plain, functional work clothes.
+
+Every stitch was designed to make the priesthood look as dignified as its work.
+
+God cared about how His worship looked, not only how it functioned.
+
+✨ Glory means weight and dignity
+
+🎨 Beauty means genuine visual loveliness
+
+👔 The garments were never plain or ordinary
+
+📖 God cared how His worship looked
+
+## 🧠 Wise Hearted, Whom I Have Filled With The Spirit Of Wisdom
+
+God names specific craftsmen and fills them with skill for this exact project.
+
+"Wise hearted" describes people with real hands on ability, not just good intentions.
+
+This is the same kind of gifting chapter thirty one will later name in Bezaleel.
+
+Skilled sewing and metalwork counted as a genuine gift from God's own Spirit.
+
+God does not only inspire prophets and priests, He also equips craftsmen.
+
+🧠 Wise hearted means skilled by hand
+
+🪡 God fills specific craftsmen with skill
+
+🛠️ Chapter thirty one names this gift again
+
+📖 God equips craftsmen, not only priests
+
+## 🕯️ To Consecrate Him
+
+"Consecrate" means to set someone apart as holy for one specific purpose.
+
+Aaron could not simply put on the garments and begin serving that day.
+
+The clothing itself was part of a formal ceremony that made him a priest.
+
+Once consecrated, Aaron belonged to God's service in a way no other Israelite did.
+
+🕯️ Consecrate means set apart as holy
+
+👘 The garments were part of a ceremony
+
+🚫 Aaron could not simply start serving
+
+📖 Consecration changed what Aaron belonged to
+
+## 👑 A Breastplate, And An Ephod, And A Robe, And A Broidered Coat, A Mitre, And A Girdle
+
+God lists six separate garments before a single one has been described in detail.
+
+Each piece will get its own detailed instructions later in the chapter.
+
+Together they formed a full priestly wardrobe unlike anything an ordinary Israelite wore.
+
+No detail was left for Aaron or the craftsmen to decide on their own.
+
+👑 Six garments are named up front
+
+📋 Each piece gets detailed instructions later
+
+🧵 Together they formed a full priestly wardrobe
+
+📖 God left no detail for guesswork
+
+# Exodus 28:5-10
+# ✨ The Ephod Of Gold And Blue
 ---
+## 🧵 Gold, And Blue, And Purple, And Scarlet, And Fine Linen
 
-## ✨ Holy Garments For Aaron Thy Brother For Glory And For Beauty
+Every priestly garment used the same five materials, gold thread and four colors of cloth.
 
-**"Glory"** here means weight, dignity, and honor, while **"beauty"** means genuine visual loveliness. Both words are used deliberately: these clothes were never meant to be plain, functional uniforms. They were designed to make the priesthood look as dignified and beautiful as the holy work it represented.
+Blue, purple, and scarlet dye were extremely expensive in the ancient world.
 
-✨ "Glory" means weight and dignity; "beauty" means genuine visual loveliness
+Purple dye especially came from crushed sea snails and cost more than gold.
 
-🎨 Both qualities were intentional design goals, not accidents
+"Fine linen" means tightly woven, high quality cloth, not the coarse linen common people wore.
 
-👔 The clothes were meant to visually match the dignity of the priestly work
+These were royal colors, the kind used for kings, not shepherds or slaves.
 
+🧵 Five materials repeat through every garment
+
+🐚 Purple dye came from crushed sea snails
+
+👑 These were the colors of royalty
+
+📖 God dressed the priesthood like kings
+
+## 🥋 The Ephod Of Gold, With Cunning Work
+
+An "ephod" was a decorated vest like garment worn over the robe.
+
+"Cunning work" means expert, highly skilled craftsmanship, not trickery or deception.
+
+Gold thread was woven directly into the cloth alongside the colored fibers.
+
+This single garment took real technical mastery to produce by hand.
+
+🥋 An ephod is a decorated vest
+
+🧠 Cunning work means expert craftsmanship
+
+🧵 Gold thread was woven into the cloth
+
+📖 The ephod demanded real technical mastery
+
+## 🤝 Two Shoulderpieces Thereof Joined At The Two Edges
+
+The ephod had two shoulder straps that joined its front and back panels together.
+
+Picture a modern apron that ties over both shoulders to hold it in place.
+
+Those shoulder straps become important later, since the memorial stones sit on them.
+
+The design was practical first, built to actually stay on during long hours of service.
+
+🤝 Shoulderpieces joined the front and back
+
+👕 Picture an apron worn over both shoulders
+
+💎 The memorial stones will sit here later
+
+📖 Function mattered as much as beauty
+
+## 🎗️ The Curious Girdle Of The Ephod
+
+"Curious" here does not mean odd, it means skillfully and carefully made.
+
+A "girdle" was a woven sash or belt, not underwear in the modern sense.
+
+This sash cinched the ephod snugly around Aaron's body.
+
+It was made of the very same gold and colored thread as the ephod itself.
+
+🎗️ Curious means skillfully made, not odd
+
+🪢 A girdle is a woven sash
+
+👔 It cinched the ephod around the body
+
+📖 Even the belt matched the ephod's material
+
+## 💍 Grave On Them The Names Of The Children Of Israel
+
+"Grave" here means to engrave or carve, the same root word as engraving.
+
+Two onyx stones were cut, six tribal names carved into each one.
+
+Onyx is a smooth banded gemstone, valuable and difficult to carve by hand.
+
+Every tribe's name was permanently fixed in stone before the ephod was ever worn.
+
+💍 Grave means to engrave or carve
+
+🪨 Onyx is a smooth banded gemstone
+
+🔢 Six tribal names were cut into each stone
+
+📖 Every tribe was fixed in stone
+
+# Exodus 28:11-14
+# 💍 Stones Of Memorial Upon His Shoulders
 ---
+## 🔏 Like The Engravings Of A Signet
 
-## 🧠 All That Are Wise Hearted, Whom I Have Filled With The Spirit Of Wisdom
+A "signet" was a personal seal ring, pressed into wax or clay to prove identity.
 
-"Wisdom" here does not mean intellectual knowledge; it means hands-on skill, the kind of practical craftsmanship needed for fine metalwork, weaving, and engraving. This same phrase reappears in chapter 31 when Bezaleel and Aholiab are named as the specific craftsmen filled with this Spirit-given skill to build these very garments.
+Ancient signets carried a unique design that only their owner used.
 
-🧠 "Wisdom" here means hands-on craftsmanship skill, not intellectual knowledge
+Engraving the tribal names with that same careful precision made each name official.
 
-🎨 This is skill described as a gift directly from God's Spirit
+This was not casual scratching, it was formal, permanent identification.
 
-🔨 Chapter 31 later names Bezaleel and Aholiab as these gifted craftsmen
+🔏 A signet was a personal seal ring
 
----
+🖋️ Signets proved identity in the ancient world
 
-## 👘 A Breastplate, And An Ephod, And A Robe, And A Broidered Coat, A Mitre, And A Girdle
+✅ The engraving made each name official
 
-Six specific garments are listed by name here. **"Ephod"** was an apron-like vest; **"broidered coat"** meant an embroidered inner tunic; **"mitre"** was a wrapped turban-style headdress; and **"girdle"** simply meant a sash or belt. Every garment named in this opening list gets its own detailed instructions later in the chapter.
+📖 This was permanent, formal identification
 
-👘 Six named garments are listed here, each detailed later in the chapter
+## 💪 Stones Of Memorial Unto The Children Of Israel
 
-🧥 A broidered coat is an embroidered inner tunic
+"Memorial" means something kept on purpose so it will not be forgotten.
 
-👳 A mitre is a wrapped, turban-style headdress; a girdle is a sash or belt
+The stones sat on Aaron's shoulders, the part of the body used for carrying weight.
 
-# Exodus 28:6-14
+Aaron literally carried the twelve tribes with him every time he served.
 
-# 🥋 The Ephod And Its Onyx Stones
+This was not decoration, it pictured the priest bearing Israel's full weight before God.
 
----
+💪 Memorial means kept so it is not forgotten
 
-## 🎨 They Shall Make The Ephod Of Gold, Of Blue, And Of Purple, Of Scarlet, And Fine Twined Linen, With Cunning Work
+🪨 The stones sat on Aaron's shoulders
 
-The ephod was made from the exact same royal materials, gold thread woven with blue, purple, and scarlet, as the tabernacle's own inner curtains and veil from chapters 26. This was not a coincidence; it visually tied the high priest's body to the sanctuary he served inside, dressing him like a walking piece of the tabernacle itself.
+🏋️ Shoulders are the body's carrying place
 
-🎨 The ephod used the exact same royal colors as the tabernacle's curtains and veil
+📖 Aaron carried Israel's weight before God
 
-🏠 This visually tied the high priest's body to the sanctuary he served in
+## 🥇 Ouches Of Gold
 
-👤 Aaron effectively wore a piece of the tabernacle on his own body
+"Ouches" is an old word for gold settings, the sockets that hold a gemstone in place.
 
----
+Modern jewelry still uses the same idea, just not the same word.
 
-## 🧣 The Curious Girdle Of The Ephod
+Each onyx stone needed a secure gold frame before it could be attached to the ephod.
 
-**"Curious"** is an old word meaning skillfully or carefully made, not strange or odd. This attached, woven band cinched the ephod's front and back panels together at the waist, made of the same gold-and-royal-color thread as the rest of the garment, functioning as both a fastener and a decoration.
+A stone this valuable could not simply be glued or tied on loosely.
 
-🧣 "Curious" here means skillfully made, not strange
+🥇 Ouches means gold settings for stones
 
-🔗 This woven band cinched the ephod's two panels together at the waist
+💍 The sockets held each gemstone in place
 
-🎨 It was made of the same royal thread as the rest of the ephod
+🔒 A secure frame kept the stones fixed
 
----
+📖 Valuable stones needed valuable settings
 
-## 💎 Two Onyx Stones... Six Of Their Names On One Stone, And The Other Six... On The Other, According To Their Birth
+## ⛓️ Two Chains Of Pure Gold, Of Wreathen Work
 
-The twelve tribes' names were split evenly across two stones, one on each of Aaron's shoulders, and listed **"according to their birth,"** meaning in actual birth order rather than any later ranking. Every engraving was cut "like the engravings of a signet," meaning as precisely and legibly as an official seal used to stamp legal documents.
+"Wreathen work" means twisted or braided, like a rope woven from gold wire.
 
-💎 Twelve tribe names were split six-and-six across two shoulder stones
+These chains connected the shoulder stones to the breastplate described next.
 
-📅 They were listed in actual birth order, not later rank or importance
+Pure gold was soft enough to twist by hand but still held its shape.
 
-🔏 A signet was an official seal-stamp, showing the engraving demanded real precision
+Every connecting piece on this garment was made from the same costly material.
 
----
+⛓️ Wreathen work means twisted like a rope
 
-## 🥇 Set In Ouches Of Gold... Fasten The Wreathen Chains To The Ouches
+🧑‍🎨 Craftsmen twisted gold wire by hand
 
-**"Ouches"** is an old English word for gold settings or mountings that held a gemstone securely in place, a word that has since disappeared from the language entirely. **"Wreathen work"** describes gold chain twisted or braided like a rope rather than simple linked loops, an intricate decorative technique connecting the shoulder stones to the breastplate below.
+🔗 These chains linked the shoulders to the breastplate
 
-🥇 Ouches were gold settings that held a gemstone in place, a now-vanished word
-
-⛓️ Wreathen work means gold twisted or braided like rope, not simple chain links
-
-🔗 These chains physically connected the shoulder stones down to the breastplate
-
----
-
-## 💪 Aaron Shall Bear Their Names Before The Lord Upon His Two Shoulders For A Memorial
-
-The shoulders are the part of the body associated with carrying weight and strength. By wearing the tribes' names there, Aaron literally carried the burden and identity of the whole nation into God's presence every time he served, a physical picture of representing an entire people rather than himself alone.
-
-💪 Shoulders are associated with carrying weight and bearing burdens
-
-🇮🇱 Aaron physically carried the whole nation's identity into God's presence
-
-🕊️ This pictures the high priest as a representative, not a private individual
+📖 Even the connectors were pure gold
 
 # Exodus 28:15-21
-
 # 💎 The Breastplate Of Judgment
-
 ---
+## ⚖️ The Breastplate Of Judgment
 
-## ⚖️ The Breastplate Of Judgment... After The Work Of The Ephod
+This piece hung over Aaron's chest.
 
-This breastplate gets its name, "of judgment," because it would soon hold the Urim and Thummim, objects used to seek God's direct verdict on national questions. It was made to match the ephod's exact same craftsmanship and materials, keeping the whole priestly outfit visually unified.
+It carried real legal and spiritual weight.
 
-⚖️ "Of judgment" refers to its role in seeking God's direct verdicts
+"Judgment" here refers to the rulings and decisions Aaron would make on Israel's behalf.
 
-🎨 It was made to match the ephod's exact same materials and skill level
+Verse thirty later explains this breastplate held objects used to seek God's answers.
 
-👔 This kept the entire priestly outfit visually unified as one set
+The name marked it as a tool for decisions, not just a decorated pocket.
 
+⚖️ Judgment means rulings made on Israel's behalf
+
+🫀 The breastplate hung over Aaron's chest
+
+🔮 It later holds tools for seeking God's answers
+
+📖 This was a tool, not decoration
+
+## 📐 Foursquare It Shall Be Being Doubled
+
+"Foursquare" means shaped like a perfect square, equal on every side.
+
+A "span" was an ancient measurement, about the width of a spread hand.
+
+Doubled means the cloth was folded over into a pouch.
+
+A flat panel could not have held anything inside it.
+
+That pouch mattered later, since the Urim and Thummim were kept inside it.
+
+📐 Foursquare means a perfect square shape
+
+✋ A span was about a hand's width
+
+👝 Doubled means folded into a pouch
+
+📖 The pouch held objects used later
+
+## 💎 The First Row Shall Be A Sardius, A Topaz, And A Carbuncle
+
+Twelve different gemstones filled four rows, three stones set in each row.
+
+The first row held a sardius, a topaz, and a carbuncle.
+
+The second row added an emerald, a sapphire, and a diamond.
+
+The third row added a ligure, an agate, and an amethyst.
+
+The fourth row added a beryl, an onyx, and a jasper.
+
+Precious stones like these were rare and costly for anyone outside a king's court.
+
+Together the twelve stones formed a small glittering wall across Aaron's chest.
+
+💎 Twelve stones filled four rows
+
+🌈 Nearly every color of the ancient world appeared
+
+👑 Stones this rare belonged only to royalty
+
+📖 Each stone was different, none repeated
+
+## 🔢 Twelve, According To Their Names
+
+Every single stone carried one tribe's name, not a general symbol for Israel.
+
+Each tribe was represented individually, not folded into one collective idea.
+
+The engraving matched the shoulder stones, formal and permanent.
+
+Aaron carried both the whole nation and each of its twelve parts at once.
+
+🔢 Every stone carried one tribe's name
+
+🧩 Each tribe stayed individually represented
+
+🔏 The engraving was formal and permanent
+
+📖 Aaron carried the whole and every part
+
+# Exodus 28:22-28
+# ⛓️ Chains And Rings That Hold It Together
 ---
+## ⛓️ Chains At The Ends Of Wreathen Work Of Pure Gold
 
-## 📐 Foursquare It Shall Be Being Doubled; A Span Shall Be The Length Thereof
+These twisted gold chains reappear here, now used to attach the breastplate itself.
 
-A **"span"** was an ancient measurement, the width of a spread hand from thumb to little finger, roughly nine inches. **"Being doubled"** means the fabric was folded over to form an actual pouch, about nine inches square, which is what allowed the Urim and Thummim to be carried inside it rather than simply pinned to the surface.
+The same wreathen, or twisted, technique from the shoulder chains repeats on this piece.
 
-📐 A span was the width of a spread hand, roughly nine inches
+Repeating the same materials and methods tied every part of the priestly garments together.
 
-📦 "Doubled" means the breastplate was folded to form an actual pouch
+Nothing about this outfit was mixed and matched from different workshops or styles.
 
-🎒 That pouch is what let it carry the Urim and Thummim inside
+⛓️ The same twisted gold technique repeats here
 
+🔁 Materials and methods matched across the whole garment
+
+🧵 Nothing was mixed from different styles
+
+📖 Every piece was built as one set
+
+## 💍 Two Rings Of Gold On The Two Ends
+
+Gold rings were fixed to the two top corners of the breastplate.
+
+Each ring gave the wreathen chains a fixed point to attach to.
+
+Without these rings, the heavy gemstone panel would have nothing to hang from.
+
+Every attachment point on this garment was planned before a single stone was set.
+
+💍 Rings sat on the breastplate's top corners
+
+🔗 Each ring gave the chains a fixed point
+
+⚖️ The rings supported real weight
+
+📖 Every attachment was planned in advance
+
+## 🔩 Two Other Rings On The Two Sides Of The Ephod
+
+A second, lower set of rings connected the bottom of the breastplate to the belt.
+
+Picture two straps buckled at both the shoulder and the waist.
+
+One connection point alone would let the heavy breastplate swing loose.
+
+High and low connection points kept it steady against his chest.
+
+🔩 A lower set of rings connected the base
+
+🎒 Think of straps buckled at two points
+
+🧍 One connection alone would let it swing loose
+
+📖 Two points kept it steady against his chest
+
+## 🎗️ With A Lace Of Blue
+
+A "lace" here means a cord or thin strip used to bind two things together.
+
+Blue cord tied the lower rings of the breastplate to the ephod's belt.
+
+Blue was already established as a royal, heavenly color throughout this garment.
+
+Even the small cord holding pieces together matched the same deliberate color scheme.
+
+🎗️ Lace means a binding cord
+
+🔵 Blue cord joined the breastplate to the belt
+
+👑 Blue already marked royalty throughout the garment
+
+📖 Even the small cord matched the plan
+
+## 🚫 That The Breastplate Be Not Loosed From The Ephod
+
+God gives a direct command that this piece must never come apart from the ephod.
+
+The breastplate carried Israel's names and the tools used to seek God's decisions.
+
+Something that important could not be allowed to slip, fall, or come untied.
+
+The command turns careful design into a binding rule Aaron had to obey.
+
+🚫 The breastplate could never come loose
+
+📜 It carried Israel's names and God's decisions
+
+⚠️ Something this important could not risk falling
+
+📖 Careful design became a binding command
+
+# Exodus 28:29-30
+# 🕊️ Bearing Israel Upon His Heart
 ---
+## 🫀 Aaron Shall Bear The Names Upon His Heart
 
-## 💠 Four Rows Of Stones: Sardius, A Topaz, And A Carbuncle... Ligure, An Agate, And An Amethyst
+The shoulder stones showed strength, carrying Israel's names like a weight Aaron bore.
 
-Twelve different gemstones were set in four rows of three. Some, like a **sardius** (a deep reddish-orange stone) and a **carbuncle** (an old name for a red garnet-type gem, unrelated to the modern medical term), are reasonably well identified today, while a few others, like the **ligure**, are stones scholars still debate the exact modern identity of after thousands of years.
+The breastplate sat over the heart instead, the ancient symbol of care and affection.
 
-💠 Twelve gemstones filled four rows of three across the breastplate
+Together the two pieces pictured a priest who represented Israel in both strength and love.
 
-🔴 A sardius and a carbuncle were both deep red or reddish-orange stones
+God wanted Aaron to approach Him remembering the people, not just performing a duty.
 
-❓ A few stones, like the ligure, still have debated exact modern identities
+🫀 The heart symbolized care, not just strength
 
----
+💪 Shoulders already pictured carrying and strength
 
-## 🏷️ The Stones Shall Be With The Names Of The Children Of Israel, Twelve, According To Their Names... Every One With His Name
+🤝 Together the pieces showed strength and love
 
-Unlike the shoulder stones, which grouped six names together on each stone, here every single tribe received its own individual, dedicated gem. The shoulders carried the nation as one united burden; the breastplate carried each tribe as its own distinct, named identity.
+📖 Aaron approached God remembering the people
 
-🏷️ Each tribe here got its own separate, individually engraved stone
+## 🔮 The Urim And The Thummim
 
-💪 The shoulder stones grouped names together; the breastplate kept them distinct
+These two objects were placed inside the folded pouch of the breastplate.
 
-🇮🇱 Together the two pictures show Israel as both one people and twelve names
+"Urim" likely means lights, and "Thummim" likely means perfections, though the text does not say for certain.
 
-# Exodus 28:22-30
+The text does not describe exactly what they looked like or how they worked.
 
-# 🔗 Binding The Breastplate To The Ephod
+Many believe Aaron used them to receive a clear yes or no answer from God.
 
----
+Whatever their exact form, their purpose was hearing from God on Israel's behalf.
 
-## ⛓️ Two Rings Of Gold... Fasten The Two Wreathen Chains In The Two Ouches, And Put Them On The Shoulderpieces
+🔮 Urim and Thummim sat inside the pouch
 
-The top of the breastplate attached to the shoulder stones above by these twisted gold chains, while a second, separate system of rings and cord attached its bottom corners to the ephod's waist below. Two independent attachment points, top and bottom, kept the whole piece locked firmly in place rather than swinging loose.
+💡 Urim likely means lights
 
-⛓️ Gold chains attached the breastplate's top corners to the shoulder stones
+✅ Thummim likely means perfections
 
-🔗 A separate ring-and-cord system anchored its bottom corners as well
+📖 Their purpose was hearing from God
 
-🔒 Two independent attachment points kept it locked firmly in place
+## ⚖️ Bear The Judgment Of The Children Of Israel
 
----
+Continually means this did not happen only once.
 
-## 🎗️ A Lace Of Blue, That It May Be Above The Curious Girdle Of The Ephod, And That The Breastplate Be Not Loosed From The Ephod
+It was Aaron's ongoing responsibility every time he served.
 
-A **"lace"** here simply means a cord or ribbon. The text states outright why all this engineering mattered: so the breastplate could never come loose or fall off during service, showing real, practical concern for how this sacred object would actually be worn and used, not just how it would look on paper.
+Every time Aaron entered God's presence, he carried Israel's cases and needs.
 
-🎗️ A "lace" here simply means a cord or ribbon
+This ties directly back to why the piece was called the breastplate of judgment.
 
-🛠️ The text explains its purpose directly: keeping the breastplate from falling off
+The priesthood was never a role Aaron could set down or take a break from.
 
-👔 This reflects practical concern for real use, not just appearance
+⚖️ Continually means ongoing, not just once
 
----
+🚶 Aaron carried Israel's needs every time he entered
 
-## ❤️ Aaron Shall Bear The Names Of The Children Of Israel In The Breastplate Of Judgment Upon His Heart... For A Memorial Before The Lord Continually
+🔗 This ties back to the breastplate's name
 
-Where the shoulders pictured strength and burden-bearing, the heart pictures something different: intimate care and love. Aaron carried the same twelve names in two places at once, powerfully carried by strength on his shoulders and tenderly held near his heart, at the same time.
-
-❤️ The heart symbolizes intimate care, unlike the shoulders' picture of strength
-
-🔁 The same twelve tribal names appear in both places, worn simultaneously
-
-🤲 Together they picture a priesthood that both carries and cares for its people
-
----
-
-## 🎲 The Urim And The Thummim... Aaron Shall Bear The Judgment Of The Children Of Israel Upon His Heart Before The Lord Continually
-
-**"Urim"** and **"Thummim"** are Hebrew words often translated roughly as "lights" and "perfections" or "truths." Scripture never describes exactly what they looked like or precisely how they worked, only that they were kept inside the breastplate's pouch and used to seek God's direct guidance on major national decisions, as seen later in Numbers 27:21 and 1 Samuel 28:6.
-
-🎲 Urim and Thummim mean roughly "lights" and "perfections" or "truths"
-
-❓ Scripture never describes their exact appearance or mechanism
-
-📜 Numbers 27 and 1 Samuel 28 both show them used to seek God's direct guidance
+📖 The priesthood was never off duty
 
 # Exodus 28:31-35
-
-# 🔔 The Robe, Bells, And Pomegranates
-
+# 🔔 The Robe, The Pomegranates, And The Bells
 ---
+## 🔵 The Robe Of The Ephod All Of Blue
 
-## 💙 The Robe Of The Ephod All Of Blue
+This robe was worn underneath the ephod, covering Aaron from shoulders to ankles.
 
-Unlike the ephod and breastplate's mix of gold and royal colors, the robe worn underneath was a single, solid blue, the color already associated with heaven and royalty throughout the tabernacle's design. This simpler garment formed the base layer the more elaborate ephod and breastplate were worn over.
+Unlike the ephod, this piece used only one color, blue, with no gold thread mixed in.
 
-💙 The robe was solid blue, unlike the multicolored ephod and breastplate
+Blue already marked royalty and heaven throughout this chapter's other garments.
 
-👑 Blue was already tied to heaven and royalty throughout the tabernacle
+A single solid color made this layer simpler, but no less deliberate than the rest.
 
-👕 It served as the simpler base layer worn underneath the other garments
+🔵 The robe was worn under the ephod
 
----
+📏 It covered Aaron from shoulders to ankles
 
-## 🥋 An Hole In The Top Of It... A Binding Of Woven Work... As It Were The Hole Of An Habergeon, That It Be Not Rent
+👑 Blue again marked royalty and heaven
 
-A **"habergeon"** was a coat of chain mail armor. Comparing the robe's neck opening to armor means it was reinforced with a tightly woven binding so it would not tear from being repeatedly pulled on and off over the head, a small but very practical piece of engineering hidden inside a garment otherwise focused on appearance.
+📖 Simple did not mean careless
 
-🥋 A habergeon was a coat of chain mail armor
+## 🕳️ The Hole Of An Habergeon
 
-🧵 The neck opening was reinforced like armor so it would not tear
+This robe was pulled over the head, so it needed an opening at the top.
 
-🔁 This solved the practical problem of a garment worn on and off constantly
+A "habergeon" was a coat of mail, a piece of armor worn around the neck.
 
----
+That opening was reinforced with woven binding so it would resist tearing.
 
-## 🍎 Pomegranates Of Blue, And Of Purple, And Of Scarlet, Round About The Hem Thereof; And Bells Of Gold Between Them
+"Rent" means torn, and God specifically commanded this reinforcement to prevent it.
 
-Fabric pomegranates and solid gold bells alternated all the way around the robe's lower hem. Pomegranates were a common ancient symbol of fruitfulness and abundance, so this hem visually paired that symbol of a fruitful life with the actual sound of a working bell, both surrounding the priest at every step he took.
+🕳️ The robe had an opening at the top
 
-🍎 Pomegranates and gold bells alternated all the way around the robe's hem
+🛡️ A habergeon was a piece of armor
 
-🌱 Pomegranates were an ancient symbol of fruitfulness and abundance
+🧵 Woven binding reinforced the neck opening
 
-🔔 Both a visual symbol and an audible sound accompanied every step Aaron took
+📖 Rent means torn, and God prevented it
 
----
+## 🔔 A Golden Bell And A Pomegranate, Round About The Hem
 
-## 🔊 His Sound Shall Be Heard When He Goeth In Unto The Holy Place Before The Lord, And When He Cometh Out, That He Die Not
+Around the bottom hem, cloth pomegranates alternated with small golden bells.
 
-The bells were not just decoration; they served as an audible safety check. Others waiting outside the Holy Place could hear the priest was still moving inside, still alive, while he ministered in God's presence, since approaching carelessly or unworthily carried real, deadly risk.
+A pomegranate was a well known ancient symbol of fruitfulness and blessing.
 
-🔊 The bells functioned as an audible safety check, not just decoration
+The pattern repeated all the way around, bell, pomegranate, bell, pomegranate.
 
-👂 Others outside could hear the priest was still alive and moving inside
+Fruit and sound together turned the hem into its own kind of quiet sermon.
 
-⚠️ Silence would have been an alarming sign that something had gone wrong
+🔔 Bells and pomegranates alternated around the hem
+
+🍎 Pomegranates symbolized fruitfulness and blessing
+
+🔁 The pattern repeated with no gaps
+
+📖 Even the hem carried a message
+
+## 👂 His Sound Shall Be Heard, That He Die Not
+
+The bells rang softly with every step Aaron took inside the Holy Place.
+
+That sound told anyone listening outside that the priest was alive and still moving.
+
+Entering God's presence carelessly, or in the wrong garments, carried real danger.
+
+The sound was not decoration, it was a safeguard built into the clothing itself.
+
+👂 The bells rang with every step
+
+✅ The sound proved the priest was alive
+
+⚠️ Approaching God's presence carelessly was dangerous
+
+📖 Safety was sewn into the garment itself
 
 # Exodus 28:36-38
-
-# 🏷️ The Golden Plate
-
+# 🥇 Holiness To The Lord
 ---
+## 🥇 A Plate Of Pure Gold, Holiness To The Lord
 
-## 🥇 A Plate Of Pure Gold, And Grave Upon It... HOLINESS TO THE LORD
+A separate gold plate was engraved with one short phrase, Holiness to the Lord.
 
-A **"plate"** here means a thin, flat sheet of gold, distinct from the thicker settings used elsewhere on the garments. This engraved phrase, "Holiness to the Lord," became one of the most quoted lines associated with the entire tabernacle system, summarizing its whole purpose in three words worn directly on the high priest's forehead.
+Pure gold was the most valuable and lasting material used anywhere in this outfit.
 
-🥇 A plate is a thin, flat sheet of gold, unlike the thicker gem settings
+Aaron literally wore a declaration about God's character on his own forehead.
 
-✍️ "Holiness to the Lord" summarized the tabernacle's whole purpose in three words
+Every person who saw him would see that phrase before anything else.
 
-🧠 This phrase was worn directly, visibly, on the high priest's forehead
+🥇 A gold plate carried one short phrase
 
----
+✨ Holiness to the Lord was the phrase
 
-## 👳 Put It On A Blue Lace, That It May Be Upon The Mitre; Upon The Forefront Of The Mitre It Shall Be
+👁️ Everyone who saw Aaron saw that phrase first
 
-The gold plate was tied with a blue cord to the front of the mitre, the wrapped turban-style headdress named back in verse 4. Its placement at the very front, at eye level for anyone facing the priest, meant this three-word declaration was the first thing anyone would see when they looked at Aaron's face.
+📖 Gold marked it as the most lasting piece
 
-👳 The plate was tied with blue cord to the front of the mitre
+## 🎗️ Upon The Forefront Of The Mitre
 
-👁️ Its front-and-center placement put it at eye level for anyone facing Aaron
+A "mitre" was a wound cloth turban worn on Aaron's head during service.
 
-🥇 It was designed to be the first thing anyone noticed about him
+The gold plate sat on the very front of it.
 
----
+A blue cord tied the plate onto the turban.
 
-## 🩹 That Aaron May Bear The Iniquity Of The Holy Things... That They May Be Accepted Before The Lord
+The forehead is the most visible part of a person facing you.
 
-Even Israel's most sincere gifts and offerings carried some unavoidable flaw in how imperfect people gave them. Remarkably, this verse says Aaron's forehead plate somehow covered that gap, so that flawed gifts, brought with a right heart, could still be accepted by God rather than rejected for their imperfection.
+Placing the plate there made sure the phrase was the first thing anyone noticed.
 
-🩹 Even sincere offerings carried unavoidable human flaws in how they were given
+🎗️ A mitre was a wound cloth turban
 
-🥇 Aaron's forehead plate is described as covering that gap
+🔵 A blue cord tied on the plate
 
-✅ This let imperfect gifts still be accepted rather than rejected
+👀 The forehead is the most visible spot
+
+📖 The phrase was meant to be noticed first
+
+## 😔 Bear The Iniquity Of The Holy Things
+
+"Iniquity" means guilt or wrongdoing, even the kind done without noticing it.
+
+Even Israel's best gifts and offerings were never perfectly clean or pure.
+
+Aaron symbolically carried that leftover guilt so the gifts could still be accepted.
+
+This pictures a priest absorbing fault on behalf of the people he represents.
+
+It points forward to a much greater priest who would carry sin fully.
+
+😔 Iniquity means guilt, even unnoticed guilt
+
+🎁 Even Israel's best gifts were imperfect
+
+🤲 Aaron symbolically carried that leftover guilt
+
+📖 A greater priest would carry sin fully
 
 # Exodus 28:39-43
-
-# 🧵 Garments For All The Priests
-
+# 👖 Garments For All The Priests
 ---
+## 🧵 Embroider The Coat Of Fine Linen
 
-## 🧵 Embroider The Coat Of Fine Linen, And Thou Shalt Make The Mitre Of Fine Linen, And Thou Shalt Make The Girdle Of Needlework
+"Embroider" means to stitch decorative patterns directly into the woven cloth.
 
-This verse finishes Aaron's personal set of garments in fine linen and skilled needlework, gathering together several fabric-work terms already introduced earlier in the chapter into one finished outfit, ready to be assembled and worn.
+This coat sat closest to Aaron's body, underneath the blue robe and the ephod.
 
-🧵 This finishes Aaron's own personal set of garments in fine linen
+"Needlework" describes the detailed hand stitching used on the matching girdle.
 
-🪡 It gathers several fabric-work terms from earlier in the chapter together
+Even the innermost, least visible layer received the same careful craftsmanship as the rest.
 
-👔 Aaron's full outfit is now complete and ready to be worn
+🧵 Embroider means stitching decorative patterns
 
----
+👕 This coat sat closest to Aaron's body
 
-## 👳 For Aaron's Sons Thou Shalt Make Coats, And Girdles, And Bonnets... For Glory And For Beauty
+🪡 Needlework describes the detailed hand stitching
 
-Ordinary priests, Aaron's sons, received their own coats, sashes, and **"bonnets,"** a simpler style of headdress distinct from Aaron's more elaborate "mitre." Even the vocabulary marks a rank difference: the high priest alone wore a mitre, while the rest of the priestly family wore the plainer bonnet.
+📖 Even the hidden layer was made with care
 
-👳 Bonnets were a simpler headdress, distinct in name from Aaron's mitre
+## 👨‍👩‍👦 For Aaron's Sons Thou Shalt Make Coats
 
-📊 The different words themselves mark a rank difference between the two roles
+The ordinary priests, Aaron's sons, received their own version of these garments too.
 
-✨ Both sets still shared the same purpose: glory and beauty in service
+Theirs were simpler than the high priest's, but built with the same purpose.
 
----
+"Glory and beauty" describes their clothing as well, not only Aaron's.
 
-## 🕊️ Anoint Them, And Consecrate Them, And Sanctify Them
+Every priest who served, not just the one leading, dressed with real dignity.
 
-These three words describe three related but distinct steps of ordination. **"Anoint"** means to pour oil on someone as a sign of appointment; **"consecrate"** means to formally dedicate someone to a specific task; **"sanctify"** means to set someone apart as holy. Together they move a man from ordinary life into a fully set-apart priestly role.
+👨‍👩‍👦 Aaron's sons received their own garments
 
-🕊️ Anoint means pouring oil on as a sign of appointment
+📉 Their version was simpler than Aaron's
 
-📜 Consecrate means formally dedicating someone to a specific task
+✨ Glory and beauty applied to them too
 
-✨ Sanctify means setting someone apart as holy
+📖 Every serving priest dressed with dignity
 
----
+## 🫗 Anoint Them, And Consecrate Them, And Sanctify Them
 
-## 🩲 Linen Breeches To Cover Their Nakedness... A Statute For Ever Unto Him And His Seed After Him
+Three different actions installed a priest into office, not just one.
 
-**"Breeches"** were simple linen undergarments, and **"loins"** and **"thighs"** describe where they covered. This detail connects back to Exodus 20:26, which had already banned altar steps specifically to prevent any accidental exposure; even underwear was treated as a serious, permanent requirement, "a statute for ever," for approaching God's presence without shame.
+"Anoint" means to pour oil on someone, marking them as chosen for a task.
 
-🩲 Breeches were simple linen undergarments covering the lower body
+"Consecrate" comes from a phrase meaning to fill the hand, an old idiom for taking office.
 
-🚫 This connects back to Exodus 20:26, which already banned exposing altar steps
+"Sanctify" means to make holy, set apart from ordinary, everyday use.
 
-📜 Even this detail was made a permanent, unchanging requirement`;
+All three steps were required together, no shortcut version existed.
+
+🫗 Anoint means pouring oil to mark someone chosen
+
+✋ Consecrate literally means to fill the hand
+
+🕯️ Sanctify means made holy, set apart
+
+📖 All three steps were required together
+
+## 🩲 Linen Breeches To Cover Their Nakedness
+
+These were simple undergarments worn beneath all the other priestly layers.
+
+Many surrounding nations had priests who served with parts of the body exposed.
+
+Israel's priests were required to stay fully covered, even underneath their outer robes.
+
+Modesty at the altar reflected God's holiness, not human embarrassment.
+
+🩲 Breeches were simple undergarments
+
+🙈 Other nations' priests often served exposed
+
+🙏 Israel's priests stayed fully covered
+
+📖 Modesty at the altar reflected God's holiness
+
+## ⚰️ That They Bear Not Iniquity, And Die: It Shall Be A Statute For Ever
+
+Serving at the altar improperly dressed was treated as a life or death matter.
+
+"Statute for ever" means a permanent law, not a temporary rule for one generation.
+
+God set a lasting standard for how anyone would approach Him from now on.
+
+Every detail in this chapter mattered enough to be written down as unchanging law.
+
+⚰️ Improper dress at the altar risked death
+
+📜 Statute for ever means a permanent law
+
+🕰️ The standard applied to every future generation
+
+📖 God treated every detail as unchanging law
+`.trim();
 
 export const EXODUS_TWENTY_EIGHT_PERSONAL_SECTIONS = parseExodusTwentyEightRawNotes(EXODUS_TWENTY_EIGHT_RAW_NOTES);

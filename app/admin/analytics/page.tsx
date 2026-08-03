@@ -719,7 +719,7 @@ const TRAFFIC_SOURCE_COLORS = [
   "from-slate-500/14 to-slate-400/8 text-slate-700 ring-slate-200",
 ];
 
-const MAIN_TRAFFIC_SOURCE_ORDER = ["Facebook", "Instagram", "Threads", "Google", "YouTube", "Other"] as const;
+const MAIN_TRAFFIC_SOURCE_ORDER = ["Facebook", "Instagram", "Threads", "Pinterest", "Google", "YouTube", "Other"] as const;
 
 const TRAFFIC_SOURCE_BRAND: Record<string, { bg: string; fg: string; bar: string; icon: ReactNode }> = {
   Facebook: {
@@ -751,6 +751,16 @@ const TRAFFIC_SOURCE_BRAND: Record<string, { bg: string; fg: string; bar: string
     icon: (
       <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden="true">
         <path d="M12 2.2c-5.6 0-9.8 3.6-9.8 9.8s4.2 9.8 9.8 9.8c3.4 0 5.9-1.3 7.4-3.6l-1.9-1.3c-1.1 1.6-2.9 2.5-5.4 2.5-3.7 0-6.2-2-6.7-5.2h14.4c.1-.5.1-1 .1-1.5.1-6-3.2-10.5-8-10.5Zm-.2 2.3c2.7 0 4.6 1.6 5.2 4.5H6.4c.5-2.8 2.7-4.5 5.4-4.5Z" />
+      </svg>
+    ),
+  },
+  Pinterest: {
+    bg: "#E60023",
+    fg: "#ffffff",
+    bar: "#E60023",
+    icon: (
+      <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden="true">
+        <path d="M12 2C6.48 2 2 6.48 2 12c0 4.24 2.63 7.86 6.35 9.32-.09-.79-.16-2.01.03-2.87.18-.78 1.17-4.97 1.17-4.97s-.3-.6-.3-1.48c0-1.39.81-2.43 1.81-2.43.85 0 1.27.64 1.27 1.41 0 .86-.55 2.14-.83 3.33-.24.99.5 1.81 1.48 1.81 1.78 0 3.15-1.88 3.15-4.58 0-2.39-1.72-4.07-4.18-4.07-2.85 0-4.52 2.14-4.52 4.34 0 .86.33 1.78.75 2.28.08.1.09.18.07.28-.08.31-.25 1-.28 1.14-.05.19-.15.23-.35.14-1.3-.6-2.11-2.51-2.11-4.04 0-3.29 2.39-6.31 6.89-6.31 3.62 0 6.43 2.58 6.43 6.02 0 3.59-2.27 6.49-5.41 6.49-1.06 0-2.05-.55-2.39-1.2l-.65 2.48c-.24.91-.87 2.05-1.3 2.75.98.3 2.02.46 3.1.46 5.52 0 10-4.48 10-10S17.52 2 12 2Z" />
       </svg>
     ),
   },
@@ -809,6 +819,7 @@ function normalizeMainTrafficSource(sourceValue: unknown) {
   if (raw.includes("facebook") || raw.includes("fbclid") || raw.includes("fb.") || raw === "fb") return "Facebook";
   if (raw.includes("instagram") || raw.includes("igshid") || raw === "ig") return "Instagram";
   if (raw.includes("threads")) return "Threads";
+  if (raw.includes("pinterest") || raw.includes("pin.it")) return "Pinterest";
   if (raw.includes("youtube") || raw.includes("youtu.be") || raw.includes("youtu")) return "YouTube";
   if (raw.includes("google") || raw.includes("gclid")) return "Google";
   return "Other";
@@ -4812,6 +4823,7 @@ function TrafficSourcesAnalyticsSection({
     { label: "Facebook", href: "https://mybiblebuddy.net/?utm_source=facebook" },
     { label: "Instagram", href: "https://mybiblebuddy.net/?utm_source=instagram" },
     { label: "Threads", href: "https://mybiblebuddy.net/?utm_source=threads" },
+    { label: "Pinterest", href: "https://mybiblebuddy.net/?utm_source=pinterest" },
     { label: "YouTube", href: "https://mybiblebuddy.net/?utm_source=youtube" },
     { label: "Google", href: "https://mybiblebuddy.net/?utm_source=google" },
   ];
@@ -5086,7 +5098,7 @@ function TrafficSourcesView({ report }: { report?: AnalyticsResponse["trafficSou
       ) : (
         <div className="rounded-2xl border border-dashed border-slate-300 bg-white p-10 text-center">
           <p className="text-lg font-black text-slate-950">No landing page traffic yet</p>
-          <p className="mt-2 text-sm font-medium text-slate-600">When visitors reach the landing page, sources like Threads, Instagram, Google, YouTube, and Other will show here.</p>
+          <p className="mt-2 text-sm font-medium text-slate-600">When visitors reach the landing page, sources like Threads, Instagram, Pinterest, Google, YouTube, and Other will show here.</p>
         </div>
       )}
 

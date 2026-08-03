@@ -56,6 +56,7 @@ export function normalizeSignupSource(sourceValue?: unknown, referrerValue?: unk
   if (combined.includes("facebook") || combined.includes("fbclid") || combined.includes("fb.") || /\bfb\b/.test(combined)) return "Facebook";
   if (combined.includes("instagram") || combined.includes("igshid") || /\big\b/.test(combined)) return "Instagram";
   if (combined.includes("threads")) return "Threads";
+  if (combined.includes("pinterest") || combined.includes("pin.it")) return "Pinterest";
   if (combined.includes("youtube") || combined.includes("youtu.be") || combined.includes("youtu")) return "YouTube";
   if (combined.includes("google") || combined.includes("gclid")) return "Google";
   return "Other";

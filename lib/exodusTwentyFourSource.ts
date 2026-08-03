@@ -89,367 +89,630 @@ function parseExodusTwentyFourRawNotes(rawText: string): ExodusTwentyFourPersona
 }
 
 const EXODUS_TWENTY_FOUR_RAW_NOTES = `# Exodus 24:1-2
-
 # 🏔️ Called Up The Mountain
-
 ---
+## ⛰️ Come Up Unto The Lord
+
+God speaks this command right after giving Moses the law in the four chapters before this one.
+
+This is not Moses climbing on his own initiative.
+
+God calls him up personally, by name.
+
+The mountain is Sinai, where the law was just spoken aloud.
+
+This climb turns a spoken law into a formal covenant ceremony.
+
+🗣️ God gives a personal invitation
+
+📜 This follows the law already given
+
+🏔️ Sinai is the mountain in view
+
+📖 The climb formalizes the covenant
 
 ## 👦 Thou, And Aaron, Nadab, And Abihu
 
-Nadab and Abihu were Aaron's two oldest sons. God calls them by name here, months before they would be set apart as priests. Later in Leviticus 10, these same two brothers will die for offering "strange fire" the wrong way, so this early moment of being singled out for honor makes that later failure sting even more.
+Nadab and Abihu are Aaron's two oldest sons.
 
-👦 Nadab and Abihu were Aaron's two oldest sons
+God names them here months before they become priests.
 
-🔥 Leviticus 10 later records both of them dying for disobeying God at the altar
+Leviticus chapter ten later records both of them dying for offering fire God did not command.
 
-😔 Being honored here makes their later failure harder to read
+Being singled out for honor here makes that failure land harder.
 
----
+👦 Nadab and Abihu are Aaron's sons
+
+🔥 Leviticus ten records their later deaths
+
+😔 Honor here makes that failure heavier
+
+📖 Their story starts with this invitation
 
 ## 👴 Seventy Of The Elders Of Israel
 
-These seventy men were tribal leaders, chosen not long before this in Exodus 18 when Moses' father-in-law Jethro convinced him he could not judge the whole nation alone. Having seventy representative leaders present made this covenant ceremony something the whole nation took part in through its leadership, not just Moses acting alone. Jewish tradition later points back to this group of seventy as the root of the Sanhedrin, Israel's ruling council that still existed in Jesus's day.
+These seventy men were tribal leaders.
 
-👴 These were the tribal leaders appointed back in Exodus 18
+Moses chose them back in Exodus chapter eighteen.
 
-🤝 Their presence meant the whole nation was represented at the covenant, not just Moses
+His father in law Jethro said he could not judge the whole nation alone.
 
-⚖️ Jewish tradition ties this group of seventy to the later Sanhedrin council
+Seventy leaders present meant the whole nation was represented, not just Moses.
 
----
+Jewish tradition later ties this group to the Sanhedrin.
+
+That was the ruling council still active in Jesus's day.
+
+👴 These were the elders from Exodus eighteen
+
+⚖️ Jethro urged Moses to delegate judging
+
+🤝 Seventy leaders represented the whole nation
+
+📖 Tradition ties this group to the Sanhedrin
 
 ## 🚧 Worship Ye Afar Off
 
-Everyone but Moses had to stop at a distance and worship from there. God's presence on the mountain was too holy to approach carelessly, so distance itself became part of how the people showed respect. This matches the boundary lines already set up back in Exodus 19, when the people were warned not to touch the mountain at all.
+Everyone but Moses had to stop at a distance to worship.
 
-🚧 Distance itself was a way of showing respect for God's holiness
+God's presence on the mountain was too holy to approach carelessly.
 
-📏 This repeats the boundary lines already set in Exodus 19
+Distance itself became a way of showing respect.
 
----
+Exodus chapter nineteen already warned the people not to touch the mountain at all.
 
-## 🧍 Moses Alone Shall Come Near The Lord: But They Shall Not Come Nigh; Neither Shall The People Go Up With Him
+This command repeats and reinforces that same boundary.
 
-This verse lays out three different levels of closeness to God, all at once. The regular people stayed at the bottom, the seventy elders and Aaron's sons could come partway up, and only Moses could come all the way near. This step-by-step access is exactly the pattern behind Israel's later worship system, where the ordinary person stayed in the outer court, priests could go further in, and only the high priest could enter the innermost room.
+🚧 Everyone stopped at a set distance
 
-🧍 Three different levels of closeness are set up here: people, leaders, and Moses alone
+🙏 Distance itself showed respect for God
 
-🏛️ This pattern becomes the blueprint for the tabernacle's outer court, holy place, and Most Holy Place
+📏 Exodus nineteen already set this boundary
 
-🕊️ Moses stands here as the one mediator between God and the whole nation
+📖 Holiness required careful, respectful distance
+
+## 🧍 Moses Alone Shall Come Near The Lord
+
+This verse sets up three different levels of closeness to God.
+
+The ordinary people stayed at the bottom of the mountain.
+
+The elders and Aaron's sons could come partway up.
+
+Only Moses could come all the way near.
+
+This same step by step pattern becomes the blueprint for the tabernacle.
+
+The outer court, the holy place, and the Most Holy Place mirror these three levels exactly.
+
+🧍 Three levels of closeness are set here
+
+🏛️ This maps onto the future tabernacle
+
+🕊️ Moses alone reaches the closest level
+
+📖 One mediator stands between God and Israel
 
 # Exodus 24:3-4
-
 # 📜 The People's Vow
-
 ---
+## 📜 All The Words Of The Lord, And All The Judgments
 
-## 📖 All The Words Of The Lord, And All The Judgments
+Words and judgments are two different things here.
 
-"Words" and "judgments" are two different things here. The words are the Ten Commandments God spoke directly from the mountain in Exodus 20. The judgments are the case laws just given in Exodus 21-23, the detailed rules covering everyday situations like injuries, property, and justice. Moses repeats both sets, making sure the people heard the whole law, not just the headline commandments.
+The words are the Ten Commandments God spoke directly from the mountain.
 
-📖 "Words" means the Ten Commandments from Exodus 20
+The judgments are the case laws just given for everyday life.
 
-⚖️ "Judgments" means the detailed case laws from Exodus 21-23
+They cover things like injuries, property, and fair treatment.
 
-✅ The people heard the whole law, not a summary
+Moses repeats both sets so the people hear the whole law.
 
----
+📜 Words means the commandments God spoke
 
-## 🗣️ All The People Answered With One Voice, And Said, All The Words Which The Lord Hath Said Will We Do
+⚖️ Judgments means the case laws given
 
-The whole nation agreed together, out loud, as one. This was not a quiet private decision, it was a public, spoken promise made by the entire community at once. Ancient treaties between a king and his people often worked exactly this way, terms were read aloud and the people responded with a formal yes, making the agreement official and binding.
+🩹 They cover injuries, property, and fairness
 
-🗣️ This was a public, spoken promise made by the whole nation together
+📖 The people heard the entire law
 
-📜 It follows the same pattern as ancient treaty ceremonies between a king and his people
+## 🗣️ All The People Answered With One Voice
 
-🤝 The moment made the covenant official, not just understood privately
+The whole nation agreed together, out loud, as one.
 
----
+This was not a quiet, private decision.
+
+It was a public, spoken promise made by the entire community at once.
+
+Ancient treaties between a king and his people often worked the same way.
+
+Terms were read aloud, and the people responded with a formal yes.
+
+That response made the agreement official and binding.
+
+🗣️ The nation answered together as one
+
+📜 This followed ancient treaty ceremonies
+
+🤝 A formal yes made it official
+
+📖 Public words made the promise binding
 
 ## ✍️ Moses Wrote All The Words Of The Lord
 
-This is the first time the Bible describes Moses actually writing anything down. Up to this point, God had been speaking and Moses had been listening and repeating. Now the laws become a permanent written record instead of something that could fade or get changed by memory over time.
+This is the first time the Bible shows Moses actually writing something down.
 
-✍️ This is the first time Moses is shown writing Scripture down
+Before this, God spoke and Moses listened and repeated the words aloud.
 
-📜 Writing it down made the law a permanent record, not just spoken memory
+Now the law becomes a permanent written record.
 
----
+A written record cannot fade or shift the way memory can over time.
+
+✍️ Moses writes Scripture down for the first time
+
+📜 The law becomes a permanent written record
+
+🧠 Memory alone could not be trusted forever
+
+📖 Writing protected the covenant for the future
 
 ## 🪨 Builded An Altar Under The Hill, And Twelve Pillars, According To The Twelve Tribes Of Israel
 
-The altar represented God's presence in the ceremony, and the twelve stone pillars stood in for the twelve tribes on the other side of the agreement. Setting up physical markers like this was a common way to seal a covenant in the ancient world, the stones themselves stood as permanent witnesses that both sides had made a deal.
+The altar stood in for God's side of this agreement.
 
-🪨 The altar stood in for God's side of the covenant
+The twelve stone pillars stood in for the twelve tribes on the other side.
 
-🗿 The twelve pillars stood in for the twelve tribes of Israel
+Physical markers like these were a common way to seal a covenant in the ancient world.
 
-👁️ Physical markers like these served as permanent witnesses to the agreement
+The stones themselves stood as a permanent witness that both sides had made a deal.
+
+🪨 The altar represented God's side
+
+🗿 Twelve pillars represented the twelve tribes
+
+👁️ Stone markers were common covenant seals
+
+📖 Silent stones testified to the agreement
 
 # Exodus 24:5-8
-
 # 🩸 The Blood Of The Covenant
-
 ---
-
 ## 🙋 Young Men Of The Children Of Israel
 
-These were not official priests, because there was no priesthood yet. Aaron and his sons would not be formally set apart as priests until Exodus 29, chapters later. Until then, ordinary young men from the community carried out the sacrifices, showing that at this early point, offering sacrifice was not yet limited to one special family.
+These were not official priests, because there was no priesthood yet.
 
-🙋 There was no official priesthood yet at this point in the story
+Aaron and his sons are not set apart as priests until Exodus chapter twenty nine.
 
-📅 Aaron and his sons are not formally ordained as priests until Exodus 29
+Until then, ordinary young men from the community carried out the sacrifices.
 
-🔓 Sacrifice was still open to ordinary members of the community
+Sacrifice was not yet limited to one special family.
 
----
+🙋 No official priesthood existed yet
+
+📅 Aaron is ordained later in Exodus
+
+🔓 Ordinary men could offer sacrifice here
+
+📖 Priesthood was still months away
 
 ## 🔥 Offered Burnt Offerings
 
-A burnt offering was completely burned up on the altar, nothing was kept back or eaten. Burning the whole animal pictured total surrender, the whole gift belonged to God with nothing held back for the person giving it.
+A burnt offering was completely burned up on the altar.
 
-🔥 The entire animal was burned, none of it was eaten
+Nothing was kept back and nothing was eaten.
 
-🎁 This pictured a gift that held back nothing for the giver
+Burning the whole animal pictured total surrender.
 
----
+The whole gift belonged to God with nothing held back.
+
+🔥 The entire animal was burned
+
+🚫 Nothing was kept for the giver
+
+🎁 It pictured a gift of everything
+
+📖 Surrender was the whole point
 
 ## 🍖 Sacrificed Peace Offerings Of Oxen
 
-A peace offering worked differently. Only part of the animal was burned on the altar, and the rest was eaten in a shared meal. This type of sacrifice celebrated friendship and fellowship with God, which fits perfectly with what happens later in this same chapter when the leaders go up the mountain and eat in God's presence.
+A peace offering worked differently than a burnt offering.
 
-🍖 Only part of the animal was burned, the rest became a shared meal
+Only part of the animal was burned on the altar.
 
-🤝 This type of offering celebrated friendship and fellowship with God
+The rest of the meat became a shared meal.
 
-🍽️ It sets up the meal the leaders share with God later in this chapter
+This kind of sacrifice celebrated friendship and fellowship with God.
 
----
+That fits perfectly with the meal the leaders share with God later in this chapter.
 
-## 🥣 Moses Took Half Of The Blood, And Put It In Basons; And Half Of The Blood He Sprinkled On The Altar
+🍖 Only part of the animal was burned
 
-Basons just means bowls. Splitting the blood in half connected both sides of the agreement, one half touched the altar, standing in for God, and the other half would soon be sprinkled on the people. Blood sealed the covenant because in this culture, blood represented life itself, so a blood ceremony meant the two sides were bound together at the deepest possible level.
+🍽️ The rest became a shared meal
 
-🥣 Basons simply means bowls
+🤝 It celebrated friendship with God
 
-🔗 Splitting the blood connected both sides of the covenant, God and the people
+📖 It points ahead to verse eleven's meal
 
-❤️ Blood represented life itself, making this the deepest kind of binding agreement
+## 🥣 Half Of The Blood, And Put It In Basons
 
----
+Basons is simply an old word for bowls.
 
-## 📖 He Took The Book Of The Covenant, And Read In The Audience Of The People
+Splitting the blood in half connected both sides of the agreement.
 
-The "book of the covenant" is the written record of everything just spoken, the Ten Commandments and the case laws from chapters 20 through 23. "In the audience of" is an old way of saying "within hearing of." Reading it publicly, out loud, made sure no one could later claim they never knew the terms.
+One half would touch the altar, standing in for God.
 
-📖 The book of the covenant means the laws written down in chapters 20-23
+The other half would soon be sprinkled on the people.
 
-👂 "In the audience of" is an old phrase meaning "within hearing of"
+Blood represented life itself in this culture.
 
-✅ Reading it aloud meant no one could claim they never knew the terms
+A blood ceremony meant both sides were bound together at the deepest level.
 
----
+🥣 Basons means bowls
+
+🔗 Blood connected both sides at once
+
+❤️ Blood represented life itself
+
+📖 This bound God and Israel together
+
+## 📖 The Book Of The Covenant
+
+The book of the covenant is the written record Moses just finished.
+
+It holds the Ten Commandments and the case laws from the chapters before this one.
+
+In the audience of is an old phrase meaning within hearing of.
+
+Reading the terms aloud meant no one could later claim they never knew them.
+
+📖 This book held the written law
+
+👂 In the audience of means within hearing
+
+✅ No one could claim ignorance later
+
+➡️ Public reading made the terms undeniable
 
 ## 🤝 All That The Lord Hath Said Will We Do, And Be Obedient
 
-This is the second time the people make this promise, and this time they add one more word: obedient. The first vow in verse 3 was about action, doing what God said. This second vow adds the deeper commitment of an obedient heart, not just going through the motions.
+This is the second time the people make this exact promise.
 
-🤝 This is the people's second vow in this chapter
+The first vow, back in verse three, was about action, doing what God said.
 
-➕ "And be obedient" adds a deeper level of commitment beyond just doing the actions
+This second vow adds one more word, obedient.
 
-❤️ It moves from outward action toward an inward attitude
+It moves the commitment from outward action toward an inward attitude.
 
----
+🤝 This is the people's second vow
 
-## 🩸 Moses ... Sprinkled It On The People, And Said, Behold The Blood Of The Covenant
+➕ Obedient adds a deeper commitment
 
-Sprinkling the same blood on the people that had already touched the altar formally sealed the agreement between them and God. This exact phrase, "the blood of the covenant," is not a one-time expression. Jesus uses almost the same words at the Last Supper when he says "this is my blood of the new testament," directly connecting his own death to this ancient covenant ceremony.
+❤️ The vow moves from action to attitude
 
-🩸 Sprinkling the same blood on the people sealed the agreement formally
+📖 Inward obedience was added on purpose
 
-🍷 Jesus echoes this exact phrase at the Last Supper
+## 🩸 Behold The Blood Of The Covenant
 
-🔗 The New Testament writer of Hebrews points back to this same scene to explain Jesus's sacrifice
+Sprinkling the same blood on the people formally sealed the agreement.
+
+This blood had already touched the altar back in verse six.
+
+The blood of the covenant is not a one time phrase in Scripture.
+
+Jesus uses nearly the same words at the Last Supper about his own blood.
+
+The New Testament book of Hebrews later points back to this exact scene.
+
+🩸 The same blood sealed both sides
+
+🍷 Jesus echoes this phrase at the Last Supper
+
+📜 Hebrews later points back to this scene
+
+📖 One ceremony explains two covenants
 
 # Exodus 24:9-11
-
 # 👣 They Saw The God Of Israel
-
 ---
+## ⛰️ Then Went Up Moses
 
-## 👣 Moses, And Aaron, Nadab, And Abihu, And Seventy Of The Elders Of Israel: And They Saw The God Of Israel
+This is the same group named back in verse one.
 
-This is a startling statement to read plainly. Seventy-four people, not just Moses, are described as seeing God directly and living to tell about it. This kind of direct, shared vision of God is rare anywhere in the Bible.
+Now they actually climb, instead of just being invited.
 
-👣 Seventy-four people are described seeing God directly, not just Moses
+The command from the start of the chapter finally happens.
 
-😲 This kind of shared, direct vision of God is rare in the Bible
+Obedience here follows right after the vow the people just made.
 
----
+⛰️ The same group from verse one climbs
 
-## ❗ Compared To "No Man Shall See Me, And Live"
+🚶 Invitation becomes action here
 
-Later in Exodus 33:20, God tells Moses plainly that no one can see His face and live. This earlier scene does not contradict that. What the elders saw here was almost certainly a partial or veiled glimpse, what was under God's feet, not His face directly, and it happens before Israel's later failure with the golden calf hardens the boundaries around approaching Him.
+🤝 This follows right after the vow
 
-❗ Exodus 33:20 later says no one can see God's face and live
+📖 Obedience followed the promise quickly
 
-👣 What the elders saw here was what was under His feet, not His face
+## 👣 They Saw The God Of Israel
 
-📅 This happens before the golden calf incident makes access more restricted
+Seventy four people are described seeing God directly and living to tell about it.
 
----
+That count includes Moses, Aaron, Nadab, Abihu, and the seventy elders.
 
-## 💎 A Paved Work Of A Sapphire Stone, And As It Were The Body Of Heaven In His Clearness
+This kind of shared, direct vision of God is rare anywhere in the Bible.
 
-Sapphire here describes a deep, brilliant blue, like a clear sky. The elders are trying to describe something that defies ordinary words, so they reach for the closest earthly comparison they can find, a pavement as blue and clear as the sky itself. Centuries later, the prophets Ezekiel and John reach for very similar sky-blue, glass-like imagery when they try to describe their own visions of God's throne.
+Most encounters with God in Scripture involve one person at a time.
 
-💎 Sapphire describes a deep, brilliant blue color, like a clear sky
+👣 Seventy four people saw God together
 
-🗣️ The elders are stretching ordinary language to describe something beyond it
+🙋 Not just Moses this time
 
-👁️ Ezekiel and Revelation later use very similar sky-like imagery for God's throne
+😲 Shared visions like this are rare
 
----
+📖 God let a whole leadership team witness this
 
-## ✋ Upon The Nobles Of The Children Of Israel He Laid Not His Hand
+## 💎 A Paved Work Of A Sapphire Stone
 
-"Laid not his hand" is an old way of saying God did not strike them down. Given how dangerous it normally was to see God directly, this is a specific note of mercy, God chose to hold back judgment and let them live through this encounter unharmed.
+Sapphire describes a deep, brilliant blue, like a clear sky.
 
-✋ "Laid not his hand" means God did not strike them down
+The elders are trying to describe something ordinary words cannot fully hold.
 
-🛡️ This specifically notes God's mercy in an otherwise dangerous moment
+They reach for the closest earthly picture they can find.
 
----
+Centuries later, the prophets Ezekiel and John use very similar sky blue imagery for God's throne.
 
-## 🍽️ They Saw God, And Did Eat And Drink
+💎 Sapphire means a deep brilliant blue
 
-Sharing a meal in someone's presence was a serious act of fellowship in this culture, not a casual snack. Ancient treaties between two parties were often sealed with a shared meal, so this meal on the mountain confirmed the covenant just made below, now celebrated in God's own presence.
+🗣️ Human language stretches to describe God
 
-🍽️ Sharing a meal was a serious act of fellowship, not a casual snack
+👁️ Ezekiel later sees similar imagery
 
-📜 Ancient treaties were often sealed with a shared meal between both parties
+📖 Both point toward the same throne
 
-🎉 This meal celebrated the covenant now confirmed in God's presence
+## ✋ He Laid Not His Hand
+
+Laid not his hand is an old way of saying God did not strike them down.
+
+Seeing God directly was normally considered fatally dangerous.
+
+Exodus chapter thirty three later says no one can see God's face and live.
+
+What the elders saw here was likely a glimpse of what was under God's feet, not his face.
+
+This moment stands out as a specific act of mercy.
+
+✋ Laid not his hand means no strike
+
+⚠️ Seeing God was normally dangerous
+
+👣 They saw beneath his feet, not his face
+
+📖 God showed mercy in a risky moment
+
+## 🍽️ Did Eat And Drink
+
+Sharing a meal in someone's presence was a serious act of fellowship in this culture.
+
+It was not a casual snack.
+
+Ancient treaties between two parties were often sealed with a shared meal.
+
+This meal on the mountain confirmed the covenant already made below.
+
+Now it was celebrated in God's own presence.
+
+🍽️ Sharing a meal meant real fellowship
+
+📜 Treaties were often sealed with meals
+
+🎉 This meal confirmed the covenant
+
+📖 It happened in God's own presence
 
 # Exodus 24:12-14
-
 # 🪨 Tables Of Stone
-
 ---
-
 ## ⛰️ Come Up To Me Into The Mount, And Be There
 
-This is a second call, higher up and further in than the first invitation in verse 1. Moses had already been partway up the mountain with the elders. Now God calls him alone, even further, into a level of closeness none of the others would share.
+This is a second call, higher and further than the first invitation in verse one.
 
-⛰️ This is a second, higher call than the one in verse 1
+Moses had already gone partway up the mountain with the elders.
 
-🧍 Moses alone goes further in than even the elders did
+Now God calls him alone, even further in.
 
----
+This is a level of closeness none of the others will share.
+
+⛰️ A second call goes higher up
+
+🧍 Moses alone climbs even further
+
+🔁 This builds on verse one's invitation
+
+📖 Closeness with God keeps deepening
 
 ## 🪨 Tables Of Stone, And A Law, And Commandments Which I Have Written
 
-"Tables" here means flat tablets, not furniture. This is the first mention of the stone tablets that will hold the Ten Commandments, and notice that God says He has written them, not Moses. These would be inscribed directly by God's own hand, not copied down by a human scribe.
+Tables here means flat stone tablets, not furniture.
 
-🪨 "Tables" means flat stone tablets, not furniture
+This is the first mention of the tablets that will hold the Ten Commandments.
 
-✍️ God says He has written them Himself, not Moses
+God says he has written them himself, not Moses.
 
-📜 These become the actual stone tablets of the Ten Commandments
+These would be inscribed directly by God's own hand.
 
----
+🪨 Tables means flat stone tablets
+
+✍️ God wrote them himself
+
+📜 These become the Ten Commandments
+
+📖 Divine handwriting, not human copying
 
 ## 🎓 That Thou Mayest Teach Them
 
-The purpose of writing the law down was so it could be taught, not just possessed. God gives Moses a permanent copy specifically so it could be passed on accurately to others, turning one man's private encounter with God into instruction for an entire nation.
+The law was written down so it could be taught, not just kept.
 
-🎓 The written law existed so it could be taught to others
+God gives Moses a permanent copy for a specific reason.
 
-🔁 It turned one man's encounter with God into instruction for a whole nation
+It could be passed on accurately to others.
 
----
+One man's encounter with God becomes instruction for an entire nation.
+
+🎓 Writing enabled teaching, not just keeping
+
+📋 Moses received a permanent copy
+
+🔁 Accuracy could pass to others
+
+📖 One encounter became a nation's instruction
 
 ## 🧑 His Minister Joshua
 
-"Minister" here means a personal assistant or attendant, not a religious title. This is an early, quiet introduction to Joshua, who goes partway up the mountain with Moses here, long before he becomes Israel's leader after Moses dies. Watching him serve closely here helps explain why he was ready for that role later.
+Minister here means a personal assistant, not a religious title.
 
-🧑 "Minister" means personal assistant, not a religious title
+This is a quiet, early introduction to Joshua.
 
-👣 Joshua accompanies Moses partway up the mountain here
+He goes partway up the mountain with Moses here.
 
-🔜 This is an early look at the man who later leads Israel after Moses
+This happens long before he becomes Israel's leader after Moses dies.
 
----
+Watching him serve closely here helps explain why he was ready later.
 
-## 🛡️ Tarry Ye Here For Us ... Aaron And Hur Are With You
+🧑 Minister means personal assistant here
 
-Moses did not leave the people leaderless while he was gone. Aaron and Hur, the same two men who held up Moses' hands during the battle with Amalek back in Exodus 17, were left in charge to handle any disputes below.
+👣 Joshua climbs partway with Moses
 
-🛡️ Moses left Aaron and Hur in charge while he was away
+🔜 This comes long before he leads Israel
 
-🤝 These are the same two men who held up Moses' hands during the battle in Exodus 17
+📖 Faithful service here shaped his readiness
 
-⚖️ They were left to handle any disputes among the people
+## 🛡️ Aaron And Hur Are With You
+
+Moses does not leave the people leaderless while he is gone.
+
+Aaron and Hur are left in charge to handle disputes.
+
+These are the same two men who held up Moses's hands during the battle with Amalek.
+
+That battle is recorded back in Exodus chapter seventeen.
+
+🛡️ Aaron and Hur stayed in charge
+
+⚖️ They were left to settle disputes
+
+🤝 Both held up Moses's hands before
+
+📖 Exodus seventeen records that earlier moment
 
 # Exodus 24:15-18
-
 # ☁️ Forty Days In The Cloud
-
 ---
+## ☁️ A Cloud Covered The Mount
 
-## ☁️ Moses Went Up Into The Mount, And A Cloud Covered The Mount
+This cloud was not ordinary weather.
 
-This cloud was not ordinary weather. It was the same visible sign of God's presence that had already been leading Israel by day since Exodus 13, now settling directly over the mountain itself.
+It was the same visible sign of God's presence.
 
-☁️ This was not ordinary weather, but a visible sign of God's presence
+That same cloud had led Israel by day since Exodus chapter thirteen.
 
-🔥 The same cloud had been leading Israel by day since Exodus 13
+Now it settles directly over the mountain itself.
 
----
+☁️ This was no ordinary weather
 
-## ✨ The Glory Of The Lord Abode Upon Mount Sinai, And The Cloud Covered It Six Days
+🔥 The same cloud led Israel by day
 
-"Glory" describes the visible weight of God's presence, not just a feeling or an idea. Moses had to wait six full days on the mountain, inside the cloud, before God finally spoke to him directly, a real test of patience even for someone already invited up.
+⛰️ Now it settles over the mountain
 
-✨ "Glory" describes the visible weight of God's presence
+📖 The guide becomes the meeting place
 
-⏳ Moses waited six full days before God spoke to him
+## ✨ The Glory Of The Lord Abode Upon Mount Sinai
 
----
+Glory describes the visible weight of God's presence.
 
-## 7️⃣ The Seventh Day He Called Unto Moses Out Of The Midst Of The Cloud
+It is not just a feeling or an idea.
 
-God speaking on the seventh day echoes the same seven-day pattern set at creation, where the seventh day was set apart as different from the other six. Even the timing of this meeting reinforces the rhythm of six-and-seven built into the whole created order.
+The cloud covered the mountain for six full days before anything happened.
 
-7️⃣ This echoes the same seven-day pattern set at creation
+Moses had to wait inside that cloud before God spoke to him directly.
 
-🔁 Even the timing here reinforces the six-and-seven rhythm found throughout Scripture
+✨ Glory means God's visible presence
 
----
+⏳ Six days passed before God spoke
+
+🧍 Moses waited inside the cloud
+
+📖 Even the invited had to wait
+
+## 🔢 The Seventh Day He Called Unto Moses
+
+God speaking on the seventh day echoes the pattern set at creation.
+
+The seventh day was set apart there as different from the other six.
+
+Even the timing of this meeting reflects that same rhythm.
+
+Six days of waiting are followed by one day of hearing God's voice.
+
+🔢 The seventh day matches creation's pattern
+
+🔁 Six and seven repeat through Scripture
+
+🗓️ Timing itself carries meaning here
+
+📖 The rhythm points back to creation
 
 ## 🔥 The Sight Of The Glory Of The Lord Was Like Devouring Fire
 
-"Devouring" means consuming or completely burning up. From below, the people watching the mountain would have seen what looked like a fire that fully consumed everything it touched, a visible, frightening reminder of God's holiness that everyone in the camp, not just Moses, could witness.
+Devouring means completely consuming, like a fire that burns up everything it touches.
 
-🔥 "Devouring" means completely consuming, like fire that burns up everything
+From below, the people watching the mountain saw what looked like an unstoppable blaze.
 
-👀 The whole camp below could see this, not just Moses
+The whole camp could see this, not just Moses.
 
-⚠️ It served as a visible reminder of God's holiness to everyone watching
+It served as a visible, frightening reminder of God's holiness to everyone in the camp.
 
----
+🔥 Devouring means completely consuming
 
-## 🕐 Moses Was In The Mount Forty Days And Forty Nights
+👀 The whole camp could see this
 
-Forty days and nights is a number that shows up again and again in Scripture at major turning points, the flood's rain, the spies scouting Canaan, and Jesus fasting in the wilderness. It consistently marks a period of testing or preparation before something significant happens next.
+⚠️ It reminded everyone of God's holiness
 
-🕐 The number forty repeats at major turning points throughout Scripture
+📖 Holiness was visible, not just spoken
 
-🌧️ It appears with the flood's rain, the scouting of Canaan, and Jesus's wilderness fast
+## 🌫️ Moses Went Into The Midst Of The Cloud
 
-⏳ It consistently marks a period of testing or preparation`;
+Moses does not just approach the cloud from outside.
+
+He physically walks into it.
+
+This is a step further than anything described so far in the chapter.
+
+Total immersion in God's presence follows total obedience to God's call.
+
+🌫️ Moses walks directly into the cloud
+
+🚶 This goes further than before
+
+🙏 Obedience led to full immersion
+
+📖 Nearness followed obedience, not fear
+
+## 🕐 Forty Days And Forty Nights
+
+Forty days and nights is a number that repeats again and again in Scripture.
+
+It appears with the flood's rain, the spies scouting Canaan, and Jesus fasting in the wilderness.
+
+Each of these forty day periods marks a season of testing or preparation.
+
+Something significant always follows a period of forty.
+
+🕐 Forty repeats at major turning points
+
+🌧️ The flood's rain lasted forty days
+
+🍞 Jesus fasted forty days in the wilderness
+
+📖 Forty days prepared Moses for what followed
+`.trim();
 
 export const EXODUS_TWENTY_FOUR_PERSONAL_SECTIONS = parseExodusTwentyFourRawNotes(EXODUS_TWENTY_FOUR_RAW_NOTES);

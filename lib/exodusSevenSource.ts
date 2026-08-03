@@ -89,165 +89,669 @@ function parseExodusSevenRawNotes(rawText: string): ExodusSevenPersonalSection[]
 }
 
 const EXODUS_SEVEN_RAW_NOTES = `# Exodus 7:1-5
-
-# 👑 God Restates The Plan
-
+# 👑 God Explains The Whole Plan
 ---
+## 👑 I Have Made Thee A God To Pharaoh
 
-## 👑 I Have Made Thee A God To Pharaoh: And Aaron Thy Brother Shall Be Thy Prophet
+This does not mean Moses becomes divine.
 
-This doesn't mean Moses literally becomes divine. It means Moses will represent God's authority to Pharaoh, while Aaron functions as a prophet, someone who speaks on another's behalf, relaying Moses' words the way a prophet relays God's words.
+It means Moses will carry God's authority when he stands before Pharaoh.
 
-👑 Moses represents God's authority to Pharaoh, without becoming divine himself
+Pharaoh is used to hearing from gods through priests and omens.
 
-🗣️ A prophet is someone who speaks on another's behalf, which is Aaron's role here
+Now he will hear directly from a man carrying God's own authority.
 
----
+👑 Moses carries God's authority, not divinity
 
-## 🪨 I Will Harden Pharaoh's Heart, And Multiply My Signs And My Wonders
+🎭 Pharaoh expected messages through priests and omens
 
-God states plainly in advance that this confrontation will involve repeated, escalating miraculous signs, not a single quick event. Pharaoh's resistance is treated as an expected, even necessary, part of how God will display His power.
+🗣️ Moses now speaks with real authority behind him
 
-🪨 Repeated, escalating signs are planned in advance, not a single quick event
+📖 Authority does not require becoming divine
 
----
+## 🗣️ Aaron Thy Brother Shall Be Thy Prophet
+
+A "prophet" is someone who speaks on behalf of another.
+
+Aaron will take Moses' words and speak them out loud to Pharaoh.
+
+This mirrors how a true prophet relays God's own words to people.
+
+Moses stands in God's role here, and Aaron stands in the prophet's role.
+
+The roles were assigned back in chapter four, when Moses said he was slow of speech.
+
+🗣️ Prophet means one who speaks for another
+
+🔁 Aaron relays Moses' words to Pharaoh
+
+🪞 Moses stands in God's role in this pairing
+
+📖 Chapter four already set up this arrangement
+
+## 🔗 Thou Shalt Speak All That I Command Thee
+
+God is laying out a clear chain of communication for this whole mission.
+
+God speaks to Moses.
+
+Moses speaks to Aaron.
+
+Aaron speaks to Pharaoh.
+
+Nothing gets added or changed along the way.
+
+Every plague and every warning that follows travels through this same chain.
+
+🔗 A clear chain carries God's words
+
+🗣️ God speaks first, to Moses
+
+👂 Aaron hears it next, from Moses
+
+📖 Every plague travels through this chain
+
+## 🪨 I Will Harden Pharaoh's Heart
+
+To "harden" someone's heart means to make them stubborn and unwilling to listen.
+
+God states this outcome before the confrontation even begins.
+
+Pharaoh's resistance is not a surprise that catches God off guard.
+
+It is treated here as an expected part of how this conflict will unfold.
+
+🪨 Hardened means stubborn and unwilling
+
+📜 God names this outcome in advance
+
+😤 Pharaoh's resistance is expected, not shocking
+
+📖 God works even through resistance
+
+## ✨ Multiply My Signs And My Wonders
+
+"Signs and wonders" are miracles meant to prove something, not just impress a crowd.
+
+A sign points to a truth.
+
+A wonder makes people stop and pay attention.
+
+God promises there will be many of them, not just one dramatic moment.
+
+The plagues that follow are these signs and wonders playing out one after another.
+
+✨ Signs point toward a truth
+
+😮 Wonders make people stop and notice
+
+🔢 Many signs are promised, not one
+
+📖 The plagues fulfill this promise
+
+## ⚔️ Bring Forth Mine Armies
+
+This does not describe soldiers marching out to war.
+
+God is calling the enslaved people of Israel His own armies.
+
+It is a striking title for a group of exhausted slaves with no weapons.
+
+God is claiming them as His organized people, not a scattered crowd of victims.
+
+⚔️ Armies here does not mean soldiers
+
+👥 Israel is the group being named
+
+💪 God claims them as organized, not scattered
+
+📖 God dignifies His people before freedom
+
+## ⚖️ By Great Judgments
+
+A "judgment" in this context is a legal punishment carried out by a ruling authority.
+
+The plagues that follow are not random disasters or bad luck.
+
+They are framed here as God acting as judge over Egypt.
+
+Egypt held Israel in slavery, and these judgments answer that wrong directly.
+
+⚖️ Judgment means a legal punishment
+
+🎲 The plagues are not random disasters
+
+👨‍⚖️ God acts as judge over Egypt
+
+📖 The punishment answers real wrongdoing
 
 ## 🌍 The Egyptians Shall Know That I Am The LORD
 
-The ultimate goal reaches beyond Israel's freedom alone, Egypt itself will come to recognize the LORD's power and identity through these events, a nation that currently worships many different gods entirely unfamiliar with Him.
+The goal of this whole confrontation reaches beyond freeing Israel alone.
 
-🌍 Egypt coming to know the LORD is itself a stated goal of these events
+Egypt worshiped many different gods and did not know the LORD at all.
+
+God intends for Egypt itself to recognize His identity through these events.
+
+Freedom for Israel and revelation for Egypt happen through the very same plagues.
+
+🌍 Egypt worshiped many different gods
+
+🎯 Knowing the LORD is a stated goal
+
+🔓 Israel's freedom and Egypt's knowledge come together
+
+📖 One set of plagues accomplishes both
 
 # Exodus 7:6-7
-
-# ⏳ Moses And Aaron's Ages
-
+# ⏳ Two Old Men Face Pharaoh
 ---
+## ✅ Moses And Aaron Did As The LORD Commanded
 
-## ⏳ Moses Was Fourscore Years Old, And Aaron Fourscore And Three Years Old
+This line covers both men obeying immediately, with no recorded objection or delay.
 
-Fourscore means eighty. Moses is eighty and Aaron eighty-three when this confrontation with Pharaoh actually begins. This is a significant detail, both men are elderly by the time this mission truly starts, not young, brash leaders.
+Moses had argued with God back in chapters three and four about taking on this task.
 
-⏳ Fourscore means eighty
+Here, none of that earlier hesitation shows up anymore.
 
-👴 Both Moses and Aaron are elderly, not young leaders, when this mission begins
+Obedience has replaced the resistance Moses once carried.
+
+✅ Both men obey without delay
+
+🗣️ Moses once argued with God about this
+
+🚫 No hesitation appears here now
+
+📖 Obedience has replaced earlier resistance
+
+## 🔢 Moses Was Fourscore Years Old
+
+"Fourscore" is an old way of saying eighty.
+
+Moses is eighty years old when this confrontation with Pharaoh truly begins.
+
+That is well past the age most cultures expect someone to start a demanding new mission.
+
+🔢 Fourscore means eighty
+
+👴 Moses starts this mission at eighty
+
+⏳ Most people expect new work much younger
+
+📖 God calls people at any age
+
+## 👴 Aaron Fourscore And Three Years Old
+
+Aaron is three years older than Moses, making him eighty three here.
+
+Both brothers are elderly by the time this mission actually begins.
+
+Neither one is a young, brash leader trying to prove himself.
+
+Their age adds real weight to the steady, patient obedience that follows.
+
+👴 Aaron is eighty three years old
+
+🤝 Both brothers are elderly leaders
+
+🚫 Neither is young or brash
+
+📖 Their age adds weight to their patience
 
 # Exodus 7:8-13
-
-# 🐍 The Rod Becomes A Serpent Before Pharaoh
-
+# 🐍 The Rod Becomes A Serpent
 ---
+## 🎭 Shew A Miracle For You
 
-## 🐍 Take Thy Rod, And Cast It Before Pharaoh, And It Shall Become A Serpent
+Pharaoh is expected to ask for proof before taking Moses and Aaron seriously.
 
-God instructs that this same sign from chapter 4 be repeated publicly and formally before Pharaoh himself, as the first official proof of divine authority behind Moses and Aaron's message.
+A "miracle" here means a visible sign that confirms someone truly speaks for God.
 
-🐍 This is the same sign from chapter 4, now performed formally before Pharaoh
+This exact request was already anticipated by God back in verse three.
 
----
+The whole scene is not a surprise test.
 
-## 🔮 The Magicians Of Egypt, They Also Did In Like Manner With Their Enchantments
+It is the moment God already said would come.
 
-Egyptian magicians were able to imitate this sign through their own enchantments, meaning trained occult or ritual practices. This shows Pharaoh had real access to some form of counterfeit power, making the confrontation genuinely uncertain to onlookers at first.
+🎭 Pharaoh will demand visible proof
 
-🔮 Enchantments means trained occult or ritual practices, not simple trickery
+✨ Miracle means a confirming sign
 
----
+📜 God already predicted this request
 
-## 🐍 Aaron's Rod Swallowed Up Their Rods
+📖 Nothing here catches God by surprise
 
-Despite the magicians' apparent success, Aaron's serpent consumes theirs entirely, a clear, visible sign that God's power decisively outmatches Egypt's counterfeit imitation, even when Egypt can copy the trick's surface appearance.
+## 🐍 It Shall Become A Serpent
 
-🐍 Aaron's serpent swallowing theirs shows clear, decisive superiority
+This is the same sign God first gave Moses back in chapter four.
 
-⚖️ God's power outlasts and overpowers Egypt's counterfeit imitation
+There, it was private, meant to convince Moses himself that God was really speaking to him.
 
----
+Here, the very same sign is performed publicly, in front of Pharaoh and his whole court.
 
-## 🪨 He Hardened Pharaoh's Heart, That He Hearkened Not Unto Them
+A private proof for Moses becomes a public proof for Egypt's king.
 
-Even after witnessing this clear sign, Pharaoh's heart remains hardened exactly as God predicted back in verse 3. The pattern of resistance despite evidence begins here and will repeat throughout the plagues ahead.
+🔥 The sign began privately in chapter four
 
-🪨 This first hardening happens exactly as God predicted just verses earlier
+👑 Now it happens before Pharaoh himself
+
+🔁 A private proof becomes a public one
+
+📖 The same sign now confronts a king
+
+## 🙌 Aaron Cast Down His Rod Before Pharaoh
+
+Aaron performs the miracle, not Moses, matching the roles God assigned back in verse one.
+
+Pharaoh's servants are also named as witnesses in this same verse.
+
+Egypt's royal officials and advisors watch the sign directly, alongside Pharaoh.
+
+No one in the room can later claim they did not see it happen.
+
+🙌 Aaron performs the sign, as assigned
+
+👑 Pharaoh watches directly
+
+👥 His servants witness it too
+
+📖 No one present can deny seeing it
+
+## 📚 The Wise Men And The Sorcerers
+
+"Wise men" were trained scholars and advisors attached to Pharaoh's royal court.
+
+"Sorcerers" practiced magic rituals believed to control spiritual or unseen forces.
+
+Egypt's court kept both types on hand for exactly this kind of moment.
+
+Pharaoh does not simply dismiss Moses and Aaron.
+
+He calls in his own experts to answer them instead.
+
+📚 Wise men were trained royal advisors
+
+🔮 Sorcerers practiced ritual magic
+
+🏛️ Egypt's court kept both on staff
+
+📖 Pharaoh answers with his own experts
+
+## 🔮 In Like Manner With Their Enchantments
+
+"Enchantments" were trained magical or ritual practices, not simple stage tricks.
+
+Egypt's magicians manage to copy the sign, turning their own rods into serpents too.
+
+This means Pharaoh has real access to some kind of counterfeit power.
+
+The contest between God and Egypt does not look one sided yet.
+
+🔮 Enchantments means trained ritual practices
+
+🐍 The magicians copy the sign
+
+⚖️ Pharaoh has real counterfeit power
+
+📖 The contest looks even, for now
+
+## 🏆 Aaron's Rod Swallowed Up Their Rods
+
+Despite the magicians' apparent success, Aaron's serpent consumes all of theirs completely.
+
+This single detail settles the contest that looked even just moments earlier.
+
+Egypt can copy the surface of a miracle but cannot match its true power.
+
+The swallowing becomes a visible picture of who actually holds authority here.
+
+🐍 Aaron's serpent swallows all the others
+
+🏆 The contest is settled immediately
+
+🎭 Egypt copies the surface, not the power
+
+📖 One image settles who holds authority
+
+## 👂 He Hardened Pharaoh's Heart
+
+"Hearkened" is an old word for listened and obeyed.
+
+Even after watching this clear sign, Pharaoh still refuses to listen.
+
+This happens exactly as God predicted back in verse three, before the sign was even shown.
+
+The pattern of resistance despite clear evidence starts here.
+
+It will repeat through every plague still ahead.
+
+👂 Hearkened means listened and obeyed
+
+🚫 Pharaoh refuses despite clear proof
+
+📜 This matches God's prediction exactly
+
+📖 This pattern repeats through every plague
 
 # Exodus 7:14-18
-
-# 🩸 God Announces The First Plague
-
+# 🩸 The First Plague Is Announced
 ---
+## 📖 He Refuseth To Let The People Go
 
-## 🌅 Get Thee Unto Pharaoh In The Morning; Lo, He Goeth Out Unto The Water
+"Refuseth" is an old form of refuses.
 
-Pharaoh apparently had a regular morning routine involving the Nile, possibly religious ritual, since Egyptians worshiped the Nile as connected to the god Hapi. Moses is told exactly where and when to intercept him.
+God states Pharaoh's condition plainly before sending Moses back to him again.
 
-🌅 Pharaoh's morning routine at the Nile likely connects to Egyptian river worship
+This is not a new development.
 
----
+It confirms what already happened back in verse thirteen.
 
-## 🩸 I Will Smite With The Rod ... Upon The Waters ... And They Shall Be Turned To Blood
+God moves forward with the plan anyway, even knowing exactly how Pharaoh will respond.
 
-The very first plague targets the Nile River directly, the exact source Egypt worshiped as divine and depended on completely for water, food, and transportation. This plague strikes at the heart of Egyptian religious and economic life simultaneously.
+📖 Refuseth is an old form of refuses
 
-🩸 This plague strikes Egypt's primary water source and a worshiped deity together
+🪨 This confirms Pharaoh's condition from before
 
----
+🔁 Moses is sent back anyway
 
-## 🐟 The Fish ... Shall Die ... The River Shall Stink
+➡️ God proceeds despite the expected response
 
-The plague's consequences are described in vivid, sensory detail: dead fish, a foul smell, and undrinkable water. This isn't a symbolic gesture, it's a real, immediate ecological and humanitarian crisis for the entire nation.
+## 🌅 He Goeth Out Unto The Water
 
-🐟 The plague causes an immediate, real ecological and humanitarian crisis
+Pharaoh apparently kept a regular morning routine that involved going to the Nile.
+
+Many scholars believe this was tied to worship, since Egyptians honored the Nile as the god Hapi.
+
+God tells Moses exactly where and when to find him, down to this daily habit.
+
+Nothing about this confrontation happens by accident or guesswork.
+
+🌅 Pharaoh had a regular morning routine
+
+🌊 Egyptians likely worshiped the Nile as Hapi
+
+📍 God names the exact time and place
+
+📖 Nothing here happens by accident
+
+## 🌊 Stand By The River's Brink
+
+"Brink" means the edge, in this case the edge of the riverbank.
+
+"Against" here is an old way of saying just before, or in preparation for.
+
+Moses is told to be waiting at the water's edge before Pharaoh even arrives.
+
+The confrontation is planned down to the smallest detail.
+
+🌊 Brink means the edge of the river
+
+⏳ Against means just before he arrives
+
+📍 Moses waits there ahead of time
+
+📖 Every detail of this meeting is planned
+
+## 🏷️ The LORD God Of The Hebrews
+
+"Hebrews" was the name Egyptians commonly used for Israel's people, going back to Genesis.
+
+Moses does not soften this claim or hide where his authority comes from.
+
+He states plainly that Israel's God, not Pharaoh or Egypt's gods, sent him.
+
+Every word Pharaoh hears from this point forward carries that same claim behind it.
+
+🏷️ Hebrews was Egypt's name for Israel
+
+🗣️ Moses names his source directly
+
+👑 Israel's God sent him, not Egypt's
+
+📖 This claim stands behind every word ahead
+
+## 🙏 That They May Serve Me In The Wilderness
+
+This request is not only about escaping slavery to live somewhere else freely.
+
+The stated purpose is worship, serving God in the wilderness, not just relocation.
+
+Pharaoh is being asked to release Israel for a specific reason.
+
+The exodus was always about who Israel would serve next, not simply who they would leave.
+
+🚫 This is not just about relocation
+
+🙏 Serve means worship, the real purpose
+
+🏜️ The wilderness is the stated destination
+
+📖 The exodus is about who Israel serves
+
+## 🩸 They Shall Be Turned To Blood
+
+The very first plague targets the Nile River directly.
+
+Egypt worshiped this river as sacred and depended on it completely for water, food, and travel.
+
+One plague strikes Egypt's religion and its everyday survival at the exact same time.
+
+Nothing about this first sign is a random or minor choice.
+
+🩸 The Nile itself becomes the target
+
+🌊 Egypt worshiped and depended on it
+
+⚔️ Religion and survival are struck together
+
+📖 This first plague is carefully chosen
+
+## 🐟 The River Shall Stink
+
+The consequences of this plague are described in real, physical detail.
+
+Dead fish, a rotting smell, and undrinkable water follow immediately.
+
+This is not a symbolic gesture or a distant warning.
+
+It is an immediate crisis touching food, water, and daily life across the whole nation.
+
+🐟 Dead fish appear immediately
+
+👃 The river gives off a rotting smell
+
+🚱 The water becomes undrinkable
+
+📖 This is a real crisis, not a symbol
+
+## 🤢 The Egyptians Shall Lothe To Drink
+
+"Lothe" is an old spelling of loathe, meaning to feel disgust toward something.
+
+Egyptians relied on the Nile for their everyday drinking water more than any other source.
+
+Now that same water becomes something their own bodies recoil from.
+
+The plague turns Egypt's most trusted resource into something repulsive overnight.
+
+🤢 Lothe means to feel disgust
+
+🚰 The Nile was Egypt's main water source
+
+🔄 Trust turns into disgust overnight
+
+📖 Egypt's most reliable resource becomes repulsive
 
 # Exodus 7:19-21
-
-# 💧 The Plague Strikes All Egyptian Water
-
+# 💧 Every Water Source Turns To Blood
 ---
+## 💧 Upon All Their Pools Of Water
 
-## 💧 Upon Their Streams, Upon Their Rivers, And Upon Their Ponds, And Upon All Their Pools Of Water
+This plague does not stop at the Nile River alone.
 
-The plague deliberately spreads beyond just the Nile itself to every water source across Egypt, sparing nothing. Even water already stored inside wooden and stone containers turns to blood, showing this reaches every corner of Egyptian daily life.
+It spreads to every stream, every smaller river, every pond, and every pool across Egypt.
 
-💧 The plague affects every water source in Egypt, not just the river itself
+Nothing counts as a safe backup water source once this list is covered.
 
-🏺 Even stored water in containers is affected, missing nothing
+The plague reaches into every corner of daily Egyptian life at once.
 
----
+🌊 The plague spreads beyond the Nile
 
-## 👁️ In The Sight Of Pharaoh, And In The Sight Of His Servants
+💧 Streams, ponds, and pools are all included
 
-The miracle happens publicly and visibly, directly in front of Pharaoh and his officials, leaving no room to dismiss it as rumor or exaggeration. Everyone present witnesses it firsthand.
+🚫 No backup water source remains safe
 
-👁️ The plague happens publicly, witnessed directly by Pharaoh and his court
+📖 Every corner of daily life is reached
+
+## 🏺 In Vessels Of Wood And In Vessels Of Stone
+
+Even water already collected and stored inside jars and containers turns to blood.
+
+This detail matters because stored water is normally a family's safety net during a crisis.
+
+Wood and stone containers were the common household storage of the time.
+
+The plague removes that safety net completely, reaching water that was never even in a river.
+
+🏺 Stored water turns to blood too
+
+🛡️ Stored water was normally a safety net
+
+🪵 Wood and stone were common containers
+
+📖 The plague removes every safety net
+
+## 👁️ In The Sight Of Pharaoh And His Servants
+
+This miracle happens in the open, directly in front of Pharaoh and his officials.
+
+Nobody in the royal court can later dismiss this as a rumor or exaggeration.
+
+Everyone present with real authority in Egypt witnesses it firsthand, at the same moment.
+
+The public setting removes any excuse for doubt among the people who matter most politically.
+
+👁️ Pharaoh witnesses this directly
+
+👥 His officials see it too
+
+🚫 No one can call it a rumor
+
+📖 Public proof removes political excuses
+
+## 🗺️ Blood Throughout All The Land Of Egypt
+
+This line summarizes the plague's full reach in one short sentence.
+
+Every stream, pond, pool, and stored container mentioned earlier is now included in this total.
+
+Egypt has no region and no household left untouched by this disaster.
+
+The scale of the plague matches the scale of the message God is sending Pharaoh.
+
+🩸 This line summarizes the whole plague
+
+🗺️ Every region of Egypt is affected
+
+🏠 No household is left untouched
+
+📖 The scale matches the size of the message
 
 # Exodus 7:22-25
-
-# 🚫 Pharaoh Remains Unmoved
-
+# 🚪 Pharaoh Walks Away Unmoved
 ---
-
 ## 🔮 The Magicians Of Egypt Did So With Their Enchantments
 
-The magicians manage some kind of imitation again, though the text doesn't explain exactly how, given all the water is already blood. This may have been a smaller-scale copy, enough to give Pharaoh an excuse to dismiss the plague's significance.
+This does not mean the magicians turned normal water back into blood a second time.
 
-🔮 The magicians' imitation gives Pharaoh an excuse to dismiss the plague's weight
+The text does not explain exactly how they managed to imitate the plague here.
 
----
+Nearly all the water in Egypt was already blood at this point.
 
-## 🚪 Pharaoh Turned And Went Into His House, Neither Did He Set His Heart To This Also
+Many scholars believe this was a smaller scale copy.
 
-Pharaoh simply walks away and returns home, refusing to genuinely engage with what just happened. "Set his heart" means to take something seriously or to heart, and Pharaoh deliberately chooses not to.
+That would have been enough to give Pharaoh an excuse to dismiss it.
 
-🚪 "Set his heart" means to take something seriously, which Pharaoh refuses to do
+🔮 The text does not explain their method
 
----
+🩸 Nearly all the water was already blood
 
-## ⛏️ All The Egyptians Digged Round About The River For Water To Drink
+🎭 A small copy may have been enough
 
-While Pharaoh dismisses the crisis, his own people suffer the real, practical consequences, digging desperately for any drinkable water. The gap between Pharaoh's denial and his people's suffering grows wider with each plague.
+📖 Pharaoh uses it to dismiss the whole sign
 
-⛏️ Ordinary Egyptians suffer real consequences even as Pharaoh denies the problem
+## 🔁 Neither Did He Hearken Unto Them
 
-📅 Seven full days pass with the Nile in this ruined state before anything changes`;
+This is the second time in this same chapter that Pharaoh's hardened heart is mentioned.
+
+The pattern from verse thirteen repeats here without any real change in Pharaoh's response.
+
+One dramatic plague was not enough to move him toward listening.
+
+This repetition previews exactly how the rest of the plagues will unfold.
+
+🔁 This is the second hardening in one chapter
+
+🪨 The pattern repeats without real change
+
+🚫 One plague was not enough
+
+📖 This previews the plagues still ahead
+
+## ❤️ He Set His Heart To This Also
+
+To "set his heart" to something means to take it seriously and let it matter.
+
+Pharaoh simply turns around and walks back into his house instead.
+
+He witnessed the Nile turn to blood and still refuses to genuinely engage with it.
+
+Walking away becomes Pharaoh's actual response to overwhelming evidence.
+
+❤️ Set his heart means to take seriously
+
+🚪 Pharaoh simply walks away instead
+
+👀 He witnessed the sign firsthand
+
+📖 Walking away is his real response
+
+## ⛏️ Digged Round About The River For Water
+
+While Pharaoh dismisses the crisis, his own people face its real, physical consequences.
+
+Ordinary Egyptians dig into the ground near the river, searching for any drinkable water.
+
+Pharaoh's denial does not shield his people from the suffering this plague actually causes.
+
+The gap between the ruler's response and the people's suffering only grows wider from here.
+
+⛏️ Ordinary Egyptians dig for drinkable water
+
+🚫 Pharaoh's denial does not protect them
+
+😔 The people suffer while Pharaoh dismisses it
+
+📖 This gap grows wider with each plague
+
+## 💥 The LORD Had Smitten The River
+
+"Smitten" is an old word meaning struck.
+
+Seven full days pass with the Nile left in this ruined, bloody state.
+
+Seven often marks a complete or full period of time throughout scripture.
+
+This first plague is not a quick, passing moment.
+
+It lasts a full and complete stretch of days.
+
+💥 Smitten means struck
+
+📅 Seven full days pass like this
+
+🔢 Seven often signals completeness in scripture
+
+📖 This plague lasts a full stretch of time`.trim();
 
 export const EXODUS_SEVEN_PERSONAL_SECTIONS = parseExodusSevenRawNotes(EXODUS_SEVEN_RAW_NOTES);

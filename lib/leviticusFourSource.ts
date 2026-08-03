@@ -90,257 +90,309 @@ function parseLeviticusFourRawNotes(rawText: string): LeviticusFourPersonalSecti
 
 const LEVITICUS_FOUR_RAW_NOTES = `# Leviticus 4:1-4
 
-# 🐂 Sin Without Realizing It
+# 🐂 A New Kind Of Offering
 
 ---
 
 ## 📜 The LORD Spake Unto Moses, Saying
 
-This exact sentence opens dozens of Leviticus's sections. It marks this as a direct command from God, spoken to Moses to relay to the people, not a tradition Israel invented on its own. Chapter 4 introduces a brand new offering type: the sin offering, following the burnt offering (chapter 1), grain offering (chapter 2), and peace offering (chapter 3).
+This exact sentence opens dozens of sections all through Leviticus.
 
-📜 This formula opens most of Leviticus's major sections
+It marks a direct command from God, not a custom Israel invented.
 
-🆕 Chapter 4 introduces the fourth offering type, the sin offering
+Moses received it, then relayed it to the people.
 
-🔢 Chapters 1-3 already covered the burnt, grain, and peace offerings
+Chapter four introduces a brand new kind of offering, the sin offering.
+
+The burnt, grain, and peace offerings were already covered in chapters one through three.
+
+📜 This formula marks a direct command
+
+🆕 Chapter four introduces the sin offering
+
+🔢 Three offerings already appeared before this
+
+📖 Every ritual ahead traces to God's word
 
 ---
 
 ## 😶 A Soul Shall Sin Through Ignorance
 
-"Soul" (Hebrew nephesh) is just an old way of saying "a person" - not some separate spiritual part of someone. "Through ignorance" means the person did something wrong without realizing it was wrong at the time, a genuine mistake, not open defiance.
+"Soul" is just an old way of saying "a person."
 
-This whole chapter deals only with unintentional sin. Numbers 15:30 draws a sharp line: someone who sins "with a high hand" - on purpose, knowing better - isn't covered by this offering at all.
+It does not point to a separate spiritual part of someone.
 
-😶 "Soul" (nephesh) simply means "a person," not a separate spirit-part
+"Through ignorance" means the person truly did not know it was wrong.
 
-🤷 "Through ignorance" means an honest mistake, not defiance
+This whole chapter only deals with mistakes like that.
 
-🚫 Numbers 15:30 says deliberate, "high-handed" sin isn't covered by this offering
+Numbers fifteen, verse thirty, draws a sharp line around deliberate sin.
+
+Someone who sins knowingly, on purpose, is not covered by this offering.
+
+😶 Soul just means a person
+
+🤷 Through ignorance means an honest mistake
+
+🚫 Deliberate sin is not covered here
+
+📖 Numbers fifteen marks that dividing line
 
 ---
 
 ## ⛔ Concerning Things Which Ought Not To Be Done
 
-This chapter is specifically about breaking a "thou shalt not" - a prohibition - not about failing to do something God commanded. Leviticus 5 later adds cases about failing to act, like refusing to testify; chapter 4 stays focused on things a person actively, if unknowingly, did wrong.
+This chapter covers breaking a rule, not failing to act.
 
-⛔ This chapter covers broken prohibitions, not neglected duties
+It deals with a "thou shalt not," a command about what not to do.
 
-📖 Leviticus 5 later covers different, related failure-to-act cases
+Leviticus five later covers different failures, like refusing to speak up as a witness.
 
-🎯 The distinction matters for which offering fits which situation
+Chapter four stays focused on something a person actively did, even without meaning to.
+
+⛔ This chapter covers broken rules, not neglect
+
+📋 A broken command sits behind this
+
+🔀 Leviticus five covers failing to act instead
+
+➡️ The kind of sin decides the offering
 
 ---
 
-## 👑 If The Priest That Is Anointed Do Sin According To The Sin Of The People
+## 👑 The Priest That Is Anointed
 
-"The priest that is anointed" means the High Priest - Aaron, and later whoever held his office - anointed with the special oil recipe from Exodus 30. "According to the sin of the people" is the striking part: his sin counts as seriously as if the entire nation had sinned.
+This phrase means the High Priest, Aaron and later whoever held that office.
 
-That's because of his role. The High Priest represented all of Israel before God every single day. If the one man standing between the nation and God was compromised, it put everyone's relationship with God at risk, not just his own.
+He was anointed with the special oil described back in Exodus thirty.
 
-👑 "The priest that is anointed" means the High Priest, Aaron's office
+"According to the sin of the people" is the striking part of this verse.
 
-⚖️ His sin is treated as seriously as if the whole nation had sinned
+His sin is treated as seriously as if the whole nation had sinned.
 
-🤝 His representative role meant his failure put everyone's standing with God at risk
+He represented all of Israel before God every single day.
+
+If the one man closest to God sinned, everyone's standing was put at risk.
+
+👑 Anointed priest means the High Priest
+
+🕯️ He was set apart with special oil
+
+⚖️ His sin counts as heavy as the nation's
+
+📖 One man's sin put everyone's standing at risk
 
 ---
 
 ## 🐂 A Young Bullock Without Blemish
 
-This chapter grades the size of the required offering by how much responsibility the sinner carried, and the priest sits at the very top of that scale. A bullock, a young bull, was the largest, costliest animal used in any Leviticus offering. "Without blemish" means physically flawless - no injury, disease, or defect, the same unbending standard already required in chapters 1-3.
+This chapter grades the offering by how much responsibility the sinner carried.
 
-🐂 A bullock, the costliest animal offered in Leviticus, matches the priest's high responsibility
+The priest sits at the very top of that scale.
 
-📉 Later in this chapter, the required animal gets smaller as the offender's public role shrinks
+A bullock, a young bull, was the largest and costliest animal used in Leviticus.
 
-✅ "Without blemish" - no injury, disease, or defect - never changes across any tier
+"Without blemish" means physically flawless, with no injury, disease, or defect.
 
----
+That standard never changes across any tier in this chapter.
 
-## 🚪 Unto The Door Of The Tabernacle Of The Congregation
+🐂 A bullock was the costliest animal offered
 
-Same fixed location already used for every offering type so far - the entrance to the tent, in the open, where anyone present could see. No offering in Leviticus happens in secret or wherever is convenient for the offerer.
+📉 Later tiers require smaller, cheaper animals
 
-🚪 The tabernacle's entrance was the required site for every offering type
+✅ Without blemish always means physically flawless
 
-👁️ This kept every sacrifice public and visible, never done in private
-
-🔁 Chapters 1-3 already established this exact same location
+📖 The offering always matches the offender's role
 
 ---
 
-## ✋ Shall Lay His Hand Upon The Bullock's Head, And Kill The Bullock
+## ✋ Lay His Hand Upon The Bullock's Head
 
-The same identifying gesture from chapters 1-3 - a hand pressed on the animal's head, linking the offerer to the animal about to die in his place. What's different here: normally the priest facilitates this ritual for someone else. This time he's confessing his own guilt and identifying himself with the animal.
+This gesture already appeared with every offering type back in chapters one through three.
 
-✋ Laying a hand on the head marks the animal as standing in for the offerer
+A hand pressed on the animal's head linked the offerer to the animal about to die.
 
-🔁 This same gesture already appeared with every offering type in chapters 1-3
+Normally the priest performs this ritual on behalf of someone else.
 
-🪞 Uniquely here, the priest is offering for his own sin, not someone else's
+This time the priest confesses his own guilt and stands in the offerer's place himself.
 
----
+The one who usually leads the ritual now needs it done for him.
 
-## 🔁 For His Sin, Which He Hath Sinned
+✋ This gesture already appeared in earlier chapters
 
-Hebrew often repeats a verb with its matching noun for emphasis - "sinned a sin," or here "for his sin, which he hath sinned." It reads like clunky repetition in English, but in Hebrew it's a normal way of underlining that something really happened, not softening it into something vague.
+🔗 A hand linked the man to the animal
 
-🔁 Hebrew often pairs a verb with its matching noun for emphasis
+🪞 Here the priest offers for his own sin
 
-📝 This isn't awkward repetition - it's a normal way to underline something happened
-
-🔂 This same construction repeats for nearly every tier in this chapter
+📖 Even the priest needed forgiveness like anyone else
 
 # Leviticus 4:5-12
 
-# 🩸 Blood Reaches The Veil
+# 🩸 Blood Reaches Behind The Veil
 
 ---
 
 ## 🏛️ Bring It To The Tabernacle Of The Congregation
 
-In chapters 1-3, blood only ever touched the outer bronze altar, out in the courtyard. Here, for the first time, the priest carries blood inside the tent itself - a much deeper, more serious ritual, because a sin this significant reaches further into the sanctuary than an ordinary offering.
+In chapters one through three, blood only ever touched the altar out in the courtyard.
 
-🏛️ This is the first time in Leviticus blood is carried inside the tent itself
+Here, for the first time, the priest carries blood inside the tent itself.
 
-📈 The seriousness of the sin determines how deep into the sanctuary the ritual goes
+That marks a much deeper, more serious ritual than before.
 
-🔁 Chapters 1-3's blood applications stayed at the outer altar only
+A sin this significant reaches further into the sanctuary than an ordinary offering.
+
+🏛️ This is blood's first trip inside the tent
+
+📈 A sin's seriousness decides how deep it goes
+
+🔁 Earlier offerings kept blood at the outer altar
+
+📖 Deeper guilt calls for a deeper ritual
 
 ---
 
 ## 7️⃣ Sprinkle Of The Blood Seven Times Before The LORD
 
-Seven shows up throughout the Bible as a number tied to completeness - seven days of creation, seven-day feasts, and here, seven sprinklings to fully and completely deal with this sin. It wasn't a quick flick of the finger; it was a deliberate, repeated act.
+Seven often stands for completeness throughout the Bible.
 
-7️⃣ Seven often represents completeness throughout the Bible
+Seven days of creation and seven day feasts both carry that same idea.
 
-🔁 Repeating the sprinkling seven times made this a deliberate, thorough act
+Here it means seven careful sprinklings, not one quick flick of the finger.
 
-🩸 A single drop wasn't considered sufficient for guilt this serious
+Repeating the act that many times made it deliberate and thorough.
+
+🔢 Seven often means completeness in scripture
+
+🔁 Repeating it made the act deliberate
+
+🩸 One drop was never treated as enough
+
+📖 A serious sin called for a thorough ritual
 
 ---
 
 ## 🧵 Before The Vail Of The Sanctuary
 
-The veil was the heavy curtain separating the Holy Place, where priests served daily, from the Most Holy Place, where the ark of the covenant sat and only the High Priest could enter, once a year. Sprinkling blood toward the veil brought this sin symbolically as close to God's own throne room as anyone but the High Priest on the Day of Atonement was ever allowed to go.
+The veil was the heavy curtain separating two rooms inside the tabernacle.
 
-🧵 The veil separated the Holy Place from the Most Holy Place, where the ark sat
+One side was the Holy Place, where priests served every day.
 
-🚫 Only the High Priest could pass beyond the veil, and only once a year
+The other was the Most Holy Place, where the ark of the covenant sat.
 
-📍 This ritual brought the sin's weight right up to that boundary
+Only the High Priest could pass beyond that curtain, and only once a year.
+
+Sprinkling blood toward the veil brought this sin as close to God's throne as almost anyone was ever allowed.
+
+🧵 The veil separated two rooms inside the tent
+
+🕍 One room held the ark of the covenant
+
+🚫 Only the High Priest passed that curtain
+
+📖 This ritual reached near God's own throne
 
 ---
 
 ## 🌬️ Upon The Horns Of The Altar Of Sweet Incense
 
-This is a second golden altar, standing just outside the veil, used only for burning incense (Exodus 30:1-10) - different from the large bronze altar for burnt offerings out in the courtyard. Its "horns" were pointed corner projections. Touching blood to these horns marks this as a deeper application than chapters 1-3 ever required.
+This was a second altar, smaller and made of gold, standing just outside the veil.
 
-🌬️ The incense altar was a separate, smaller golden altar just outside the veil
+It was used only for burning incense, described back in Exodus thirty.
 
-📐 "Horns" means the pointed corner projections on top of the altar
+"Horns" means the pointed corner projections built onto the top of the altar.
 
-📏 This deeper application matches how serious the priest's sin is
+Touching blood to these horns marked a deeper application than any offering before it.
 
----
+🌬️ A separate gold altar sat outside the veil
 
-## ⬇️ Pour All The Blood At The Bottom Of The Altar Of The Burnt Offering
+📐 Horns means the altar's pointed corners
 
-After the special applications inside the tent, whatever blood was left over was disposed of at the base of the main altar out in the courtyard - never reused, never handled casually, never simply discarded elsewhere.
+🔥 This altar only ever burned incense
 
-⬇️ Leftover blood was poured out at the base of the outer altar
-
-🚫 Blood in Leviticus is never treated as ordinary waste
-
-📍 Even disposal followed a fixed, required location
+📖 Blood here marked an unusually deep ritual
 
 ---
 
-## 🥩 The Fat That Covereth The Inwards, The Kidneys, And The Caul Above The Liver
+## ⬇️ Pour All The Blood At The Bottom Of The Altar
 
-"Inwards" means the internal organs, and the "caul" is a fatty membrane over part of the liver. This is the exact same list of fat portions already named for the peace offering in chapter 3 - fat that belonged to God alone, never eaten by anyone.
+Whatever blood was left over after the deeper rituals still had to go somewhere.
 
-🥩 "Inwards" means the internal organs; the "caul" covers part of the liver
+It was poured out at the base of the main altar in the courtyard.
 
-🔁 This is the identical fat list already used for the peace offering in chapter 3
+None of it was ever reused or treated as ordinary liquid.
 
-🚫 None of this fat was ever eaten - it belonged to God alone
+Even disposal followed one fixed, required location.
 
----
+⬇️ Leftover blood went to the altar's base
 
-## ⚖️ As It Was Taken Off From The Bullock Of The Sacrifice Of Peace Offerings
+🚫 Blood was never treated as ordinary waste
 
-Leviticus explicitly points back to chapter 3's instructions instead of repeating every measurement again. The fat-removal procedure stayed identical across totally different offering types with totally different purposes - only what happened to the rest of the animal changed.
+📍 Even disposal had one fixed spot
 
-⚖️ Leviticus cross-references chapter 3 instead of re-explaining the same steps
-
-🔗 The fat-removal procedure stayed the same across different offering types
-
-🎯 What changed between offerings was the purpose and the remains, not this step
+📖 Nothing about handling blood was left casual
 
 ---
 
-## 🚫 The Skin, The Flesh, The Head, The Legs, The Inwards, And The Dung
+## 🥩 The Fat That Covereth The Inwards
 
-This is nearly the entire animal, everything except the fat God claimed. Unlike the peace offering, where the worshipper ate part of the meat, or the grain offering, where the priests ate the leftovers, none of this bullock was eaten by anyone.
+"Inwards" means the internal organs inside the animal's body.
 
-🚫 This list covers almost the whole animal, minus the fat already removed
+The "caul" is a fatty membrane that covers part of the liver.
 
-🍽️ The peace offering (chapter 3) let the worshipper eat some meat; this offering didn't
+This exact list of fat portions already appeared for the peace offering back in chapter three.
 
-🙅 Nobody - not the priest, not the offerer - ate any part of this bullock
+That fat belonged to God alone and was never eaten by anyone.
+
+🥩 Inwards simply means the internal organs
+
+🫓 The caul covers part of the liver
+
+🔁 The same fat list appeared in chapter three
+
+📖 This fat was never food for anyone
+
+---
+
+## 🚫 The Skin, The Flesh, The Head, With His Legs
+
+This list covers nearly the whole animal, everything except the fat already removed.
+
+The peace offering in chapter three let the worshipper eat part of the meat.
+
+The grain offering let the priests eat the leftovers.
+
+None of this bullock was eaten by anyone at all.
+
+🚫 This is nearly the whole animal
+
+🍽️ Other offerings let someone eat the meat
+
+🙅 Nobody ate any part of this bullock
+
+📖 A sin offering gave nothing back to eat
 
 ---
 
 ## 🏕️ Carry Forth Without The Camp Unto A Clean Place
 
-"Without the camp" means outside Israel's entire tent city, past its boundaries. A "clean place" was a designated spot kept free from anything that would make it ritually impure - the remains couldn't just be dumped anywhere.
+"Without the camp" means fully outside the borders of Israel's tent city.
 
-This detail matters far beyond Leviticus. Hebrews 13:11-12 directly connects this pattern to Jesus, who "suffered without the gate" - crucified outside Jerusalem's walls - drawing a straight line from this ancient rule to the cross.
+A "clean place" was a specific spot kept free of anything ritually impure.
 
-🏕️ "Without the camp" means fully outside Israel's tent city
+The remains could not simply be dumped wherever was convenient.
 
-🧹 A "clean place" was a specific, designated, ritually pure location
+Hebrews thirteen connects this exact pattern to Jesus, who suffered outside Jerusalem's walls.
 
-✝️ Hebrews 13:11-12 ties this exact pattern to Jesus's crucifixion "without the gate"
+That ancient rule points all the way forward to the cross.
 
----
+🏕️ Without the camp means fully outside Israel's borders
 
-## 🔥 Burn Him On The Wood With Fire, Where The Ashes Are Poured Out
+🧹 A clean place was a fixed, required spot
 
-This burning is separate from the fat burned on the altar - the rest of the carcass was destroyed entirely at the ash-disposal site outside camp, not offered as a pleasant gift to God the way the fat was. It was a disposal of guilt, not a gift.
+✝️ Hebrews thirteen ties this to the cross
 
-🔥 This burning outside camp is separate from the fat burned on the altar
-
-🗑️ The ash-disposal site was the fixed location for this kind of burning
-
-⚠️ This burning disposed of guilt - it wasn't offered as a pleasing gift like the fat was
-
----
-
-## 🌬️ The Altar Of Sweet Incense
-
-"Sweet incense" wasn't a generic scent - Exodus 30:34-38 gives its exact recipe (stacte, onycha, galbanum, and frankincense) and bans anyone from making a copy for personal use. This altar sat in the Holy Place, burning that specific incense morning and evening, and this is the first time in Leviticus its horns get blood applied to them.
-
-🌬️ Exodus 30:34-38 gives this incense's exact, one-of-a-kind recipe
-
-🚫 Copying this exact blend for personal use was strictly forbidden
-
-🆕 This is the first time in Leviticus blood touches this particular altar's horns
-
----
-
-## ⚠️ Handling This Blood Was A Priest's Job Alone
-
-Every single step in this ritual - carrying the blood inside, dipping the finger, sprinkling seven times, applying it to two different altars - belongs to the priest, never the person who actually sinned. The offerer's part ends at laying his hand on the animal.
-
-⚠️ Every blood-handling step belongs to the priest, never the offerer
-
-✋ The offerer's role ends after laying a hand on the animal's head
-
-👤 This division of labor stayed consistent across every offering type in Leviticus
+📖 An ancient rule points forward to Jesus
 
 # Leviticus 4:13-21
 
@@ -350,133 +402,141 @@ Every single step in this ritual - carrying the blood inside, dipping the finger
 
 ## 👥 If The Whole Congregation Of Israel Sin Through Ignorance
 
-This covers a shared, corporate mistake - the entire community following bad direction together without realizing it broke God's law. Maybe a bad ruling from Israel's leaders, followed in good faith by everyone. The required offering matches the priest's: a bullock, the costliest animal, because this guilt belongs to the whole nation.
+This covers a shared mistake the entire community made together.
 
-👥 This covers a mistake the entire community made together, in good faith
+Maybe a bad ruling came from Israel's leaders, and everyone followed it in good faith.
 
-🐂 The offering matches the priest's tier: a bullock, the costliest animal
+The required offering matches the priest's own, a bullock, the costliest animal.
 
-⚖️ National guilt is treated with the same seriousness as the High Priest's own
+National guilt was treated with the same seriousness as the High Priest's own sin.
+
+👥 This covers a mistake the whole community made
+
+🐂 The offering matches the priest's own tier
+
+⚖️ National guilt is treated just as seriously
+
+📖 A shared mistake still needed a full answer
 
 ---
 
 ## 🙈 The Thing Be Hid From The Eyes Of The Assembly
 
-"Hid from the eyes" means nobody recognized the sin at the time - it wasn't obvious, and nobody knowingly disobeyed. That's exactly what "through ignorance" means throughout this chapter: an honest mistake that only becomes clear later.
+"Hid from the eyes" means nobody recognized the sin while it was happening.
 
-🙈 "Hid from the eyes" means the sin wasn't recognized when it happened
+It was not obvious, and nobody knowingly disobeyed on purpose.
 
-🔎 It only became clear as sin sometime after the fact
+That matches "through ignorance," the same standard used all through this chapter.
 
-🔁 This matches "through ignorance," the same standard used all through this chapter
+The mistake only became clear sometime after the fact.
+
+🙈 Hid from the eyes means unnoticed
+
+🔎 Nobody knowingly disobeyed on purpose
+
+🔁 This matches ignorance, the standard for this chapter
+
+📖 Clarity came later, not in the moment
 
 ---
 
 ## 🗣️ The Assembly
 
-"Assembly" translates the Hebrew qahal - Israel gathered together as one body, whether for worship, war, or, as here, taking responsibility for a shared mistake. The same word describes the whole nation acting as one throughout the Old Testament.
+"Assembly" translates a Hebrew word, qahal, meaning Israel gathered as one body.
 
-🗣️ "Assembly" (qahal) means Israel gathered together as one body
+The same word describes Israel gathered for worship, for war, or for a shared mistake.
 
-🤝 The same word describes the nation for worship, war, and shared responsibility
+It pictures the nation acting as a single unit before God.
 
-🌍 It pictures Israel acting as a single unit before God, not scattered individuals
+Israel is never just a crowd of scattered individuals in this picture.
 
----
+🗣️ Assembly, qahal, means Israel gathered as one
 
-## 📢 When The Sin...Is Known
+🤝 The same word covers worship, war, and guilt
 
-The offering only happens once the sin actually comes to light - Leviticus doesn't ask Israel to hunt down every possible hidden mistake, only to respond once one becomes known. Awareness triggers the responsibility to act.
+🌍 Israel acts here as a single unit
 
-📢 The requirement to offer a sacrifice starts once the sin is discovered
-
-🔍 Israel wasn't expected to search endlessly for undiscovered mistakes
-
-⏰ Discovery, not the original act, is what triggers the response
+📖 God deals with the nation as one body
 
 ---
 
 ## 👴 The Elders Of The Congregation Shall Lay Their Hands
 
-In the section above, the priest laid his own hand on the animal for his own sin. Here, since an entire nation obviously can't all physically touch one bullock, the elders - Israel's recognized leaders and representatives - do it on everyone's behalf.
+The priest laid his own hand on the animal earlier for his own sin.
 
-👴 Elders were Israel's recognized leaders and representatives
+A whole nation obviously cannot all physically touch one bullock at once.
 
-✋ They laid hands on behalf of the whole nation, not just themselves
+The elders, Israel's recognized leaders, do it on everyone's behalf instead.
 
-🔁 This is the same identifying gesture, adapted for a group instead of one person
+One gesture, done by representatives, stood in for the whole nation.
 
----
+👴 Elders were Israel's recognized leaders
 
-## 🩸 The Priest...Shall Bring Of The Bullock's Blood...Sprinkle It Seven Times...Before The Vail
+✋ They acted on behalf of the whole nation
 
-Every detail from the priest's own sin offering repeats here exactly: blood brought inside, seven sprinklings, application before the veil and on the incense altar's horns. The nation's corporate guilt is handled with the identical depth of ritual as the High Priest's own sin.
+🔁 The same identifying gesture, adapted for a group
 
-🔁 Every blood detail from the priest's offering repeats here exactly
-
-🩸 Seven sprinklings before the veil, same as verses 6-7
-
-⚖️ The whole nation's guilt receives the same depth of treatment as the priest's own
+📖 Representatives could act for everyone at once
 
 ---
 
-## 🥩 He Shall Take All His Fat From Him, And Burn It Upon The Altar
+## 🩸 Sprinkle It Seven Times, Even Before The Vail
 
-Same fat-removal and altar-burning procedure already spelled out for the priest's own bullock - Leviticus doesn't re-list every organ this time, trusting the reader to remember verses 8-10.
+Every detail from the priest's own offering repeats here exactly.
 
-🥩 Same fat portions from verses 8-10 apply here without restating them
+Blood is carried inside, sprinkled seven times, and applied before the veil.
 
-✂️ Leviticus shortens repeated instructions once they've already been fully explained
+It also touches the horns of the incense altar, just as before.
 
-🔥 The altar burning follows the identical pattern already established
+The nation's guilt receives the same depth of ritual as the High Priest's own.
+
+🔁 Every blood detail repeats from the priest's ritual
+
+🩸 Seven sprinklings happen before the veil again
+
+🌬️ Blood also reaches the incense altar's horns
+
+📖 The whole nation is treated just as seriously
 
 ---
 
 ## ✝️ The Priest Shall Make An Atonement For Them, And It Shall Be Forgiven Them
 
-"Atonement" translates the Hebrew kaphar, meaning to cover over or wipe away, restoring a broken relationship rather than just erasing a record. This is the first time this chapter states the actual outcome plainly: the ritual leads to real forgiveness, not just ritual cleanliness.
+"Atonement" translates a Hebrew word, kaphar, meaning to cover over or wipe away.
 
-✝️ "Atonement" (kaphar) means covering over sin and restoring the relationship
+It restores a broken relationship rather than just erasing a record.
 
-🎁 Forgiveness here is God's gift through the ritual He prescribed, not something earned
+This is the chapter's first time the actual outcome gets stated so plainly.
 
-📖 This is the chapter's first explicit statement that this process leads to forgiveness
+The ritual leads to real forgiveness, not just outward ritual cleanliness.
 
----
+✝️ Atonement means covering over sin completely
 
-## 🔥 Carry Forth The Bullock Without The Camp, And Burn Him As He Burned The First Bullock
+🎁 Forgiveness comes as a gift, not something earned
 
-"The first bullock" points back to the priest's own animal from verses 11-12. Same disposal, same location, same method, reinforcing that corporate guilt and the High Priest's own guilt are dealt with by an identical process from start to finish.
+📢 This is the chapter's first plain promise
 
-🔁 "The first bullock" refers back to the priest's animal in verses 11-12
-
-🏕️ Same outside-the-camp disposal used for the priest's own offering
-
-🎯 Corporate and priestly guilt are handled by an identical process, start to finish
+📖 The whole point was always real forgiveness
 
 ---
 
-## 📋 It Is A Sin Offering For The Congregation
+## 🔥 Carry Forth The Bullock, And Burn Him As He Burned The First Bullock
 
-This closing label at the end of verse 21 names the offering type explicitly, tying this whole section together under one term: a corporate sin offering. It's the same term used for individuals later in the chapter, but applied here to the nation as a single unit before God.
+"The first bullock" points back to the priest's own animal from earlier in the chapter.
 
-📋 "Sin offering" is the formal name closing out this section
+Same disposal, same location outside the camp, same method used again here.
 
-🧩 The whole nation is treated as one unit before God in this ritual
+Corporate guilt and the High Priest's own guilt get an identical process.
 
-🔁 The same term applies to individuals in the sections that follow
+The size of the crowd never changed how thoroughly the ritual was carried out.
 
----
+🔁 The first bullock means the priest's own animal
 
-## 🧮 Nine Verses For One Bullock
+🏕️ The same outside camp disposal happens again
 
-Stepping back, this entire section, covering an error made by an entire nation, takes the same nine verses and the same one bullock as the High Priest's own personal sin in the section before it. Leviticus doesn't need more ritual just because more people were involved.
+🎯 Corporate and priestly guilt match step for step
 
-🧮 The same length of ritual covers one person's sin and a whole nation's sin
-
-🐂 One bullock proves sufficient no matter how many people the guilt touches
-
-⚖️ More people involved never meant a bigger or longer ritual was required
+📖 A whole nation received no shortcuts here
 
 # Leviticus 4:22-26
 
@@ -486,254 +546,304 @@ Stepping back, this entire section, covering an error made by an entire nation, 
 
 ## 👑 When A Ruler Hath Sinned
 
-"Ruler" translates the Hebrew nasi, meaning a tribal chief or leader, not the nation's highest authority (that's the priest, spiritually, and later the king). This is the third tier in the chapter's scale, one step below the priest and the whole congregation.
+"Ruler" translates a Hebrew word, nasi, meaning a tribal chief or leader.
 
-👑 "Ruler" (nasi) means a tribal chief or leader, not the top national authority
+This is not the nation's highest authority.
 
-📊 This is the third of four tiers this chapter covers, in descending order
+That role belonged to the priest, and later the king.
 
-🔁 The same "through ignorance" standard applies to every tier
+This is the third tier in the chapter's descending scale.
+
+The same "through ignorance" standard still applies at this level too.
+
+👑 Ruler, nasi, means a tribal chief
+
+📊 This is the third of four tiers here
+
+🔁 The same ignorance standard still applies
+
+📖 Every level of leadership answers to this rule
 
 ---
 
 ## 🐐 A Kid Of The Goats, A Male Without Blemish
 
-Notice the offering shrinks: from a bullock, required of the priest and congregation, down to a male goat. The animal's size and cost tracks the offender's scope of public responsibility - a ruler affects fewer people than the priest or the whole nation, so his required offering is smaller, though still male and still physically flawless.
+Notice the offering shrinks here, from a bullock down to a goat.
 
-🐐 A goat is smaller and less costly than the bullock required above
+A goat cost far less than the bullock required of the priest or the nation.
 
-📉 The offering size tracks scope of responsibility, not how bad the sin felt
+The animal's size tracks the offender's scope of responsibility, not how bad the sin felt.
 
-✅ "Without blemish" - no injury, disease, or defect - still never changes
+A ruler affects fewer people than the priest or the whole nation does.
+
+"Without blemish" still never changes, no matter how small the animal gets.
+
+🐐 A goat is smaller than the bullock above
+
+📉 Size tracks responsibility, not how the sin felt
+
+👥 A ruler affects fewer people than a nation
+
+📖 Without blemish never changes at any tier
 
 ---
 
 ## 🔪 Kill It In The Place Where They Kill The Burnt Offering
 
-Leviticus 1:11 fixed this spot on the north side of the altar. Every animal killed in Leviticus so far, no matter the offering type, dies in this same specific location - nothing about the killing itself changes based on who's offering.
+Leviticus one already fixed this exact spot, north of the altar.
 
-🔪 Leviticus 1:11 already fixed this exact spot, north of the altar
+Every animal in Leviticus so far has died in that same location.
 
-📍 Every offering type in Leviticus uses this identical killing location
+Nothing about the killing itself changes based on who is offering it.
 
-🔁 Only the blood-handling afterward changes between offering types
+Only what happens to the blood afterward ever changes between tiers.
+
+🔪 Leviticus one already fixed this exact spot
+
+📍 Every offering type uses this same location
+
+🔁 The killing itself never changes tier to tier
+
+📖 Only the blood ritual afterward changes
 
 ---
 
 ## 🩸 Put It Upon The Horns Of The Altar Of Burnt Offering
 
-This is the key difference from the priest's and the congregation's offering above. Their blood went inside the tent, before the veil. The ruler's blood never goes past the outer courtyard - it stays on the main bronze altar, out where everyone could see.
+This is the key difference from the priest's and the nation's offering earlier.
 
-The depth of the ritual matches the depth of the damage. A ruler's sin, while serious, doesn't reach into the sanctuary the way the High Priest's own sin or the whole nation's guilt does.
+Their blood went inside the tent, in front of the veil.
 
-🩸 The ruler's blood stays on the outer altar - it never enters the tent
+A ruler's blood never goes past the outer courtyard at all.
 
-🏛️ The priest's and congregation's blood, by contrast, went inside, before the veil
+It stays on the main altar, out where everyone could see it.
 
-📏 Ritual depth is scaled to how far-reaching the sin's damage actually is
+The depth of a ritual matches how far a sin's damage actually reaches.
 
----
+🩸 A ruler's blood stays on the outer altar
 
-## ⬇️ Pour Out His Blood At The Bottom Of The Altar
+🏛️ The priest's blood went inside the tent instead
 
-Same leftover-blood disposal already used for the priest's and congregation's offerings, poured at the base of the altar, never reused, never treated as ordinary.
+📏 Ritual depth matches how far the damage reaches
 
-⬇️ Same base-of-the-altar disposal already used earlier in this chapter
-
-🔁 This detail doesn't change no matter which tier is offering
-
-🚫 Leftover blood was never simply discarded or reused
+📖 A leader's sin does not reach the sanctuary
 
 ---
 
 ## 🔥 Burn All His Fat Upon The Altar, As The Fat Of The Sacrifice Of Peace Offerings
 
-Here's a major structural shift worth catching: starting with the ruler's offering, only the fat goes on the altar - the rest of the meat is not burned outside the camp like the priest's and congregation's bullocks were. Leviticus 6:26 later clarifies what happens instead: the remaining meat becomes food for the priest.
+Starting here, only the fat goes on the altar as a gift to God.
 
-🔥 Only the fat is burned on the altar for this and every tier below it
+The rest of the meat is not burned outside the camp like the bullocks were.
 
-🍽️ Unlike the priest's/congregation's offering, the rest of the meat isn't burned outside camp
+Leviticus six later explains what happens instead, that meat becomes the priest's food.
 
-📖 Leviticus 6:26 later explains: this leftover meat becomes the priest's food
+The same atonement and forgiveness promise given above now belongs to this ruler too.
 
----
+🔥 Only the fat is burned here
 
-## ✝️ The Priest Shall Make An Atonement For Him As Concerning His Sin, And It Shall Be Forgiven Him
+🍽️ The leftover meat becomes food for the priest
 
-The same atonement-and-forgiveness promise already given to the congregation now applies personally to an individual ruler. No tier in this chapter, high or low, is left without a path to forgiveness - the size of the animal changes, but the outcome doesn't.
+✝️ Atonement and forgiveness still follow this offering
 
-✝️ The same atonement-and-forgiveness promise repeats for this individual tier
-
-🎯 Every tier in this chapter, without exception, ends in the offer of forgiveness
-
-📏 Only the required animal changes across tiers - the outcome never does
-
----
-
-## 📊 Bullock, Then Goat - The Pattern So Far
-
-A quick recap worth noticing at the halfway point of this chapter: the priest and the whole congregation both required a bullock and inside-the-veil blood; the ruler requires a smaller goat and outer-altar-only blood. Two more tiers, both smaller still, are coming next.
-
-📊 Priest and congregation: bullock, blood inside the veil
-
-📉 Ruler: a smaller goat, blood on the outer altar only
-
-🔜 Two more tiers, both even smaller, follow next in this chapter
+📖 Every tier ends with the same promise
 
 # Leviticus 4:27-31
 
-# 🐐 The Ordinary Israelite, Option One
+# 🐐 An Ordinary Person's Guilt
 
 ---
 
 ## 🧑 Any One Of The Common People
 
-This is the fourth and final tier - the ordinary Israelite, with no special office or leadership role. The scale in this chapter runs priest, then whole congregation, then ruler, and now the individual with no public position at all.
+This is the fourth and final tier in this chapter's scale.
 
-🧑 This is the fourth and last tier in the chapter's scale
+The priest, the congregation, and the ruler already came before this one.
 
-📊 Priest, congregation, ruler, and now the ordinary person, each with a matching offering
+Now comes the individual with no special office or public role at all.
 
-🔁 The same "through ignorance" standard covers every single tier equally
+The same "through ignorance" standard covers this ordinary person just as much as anyone above.
+
+🧑 This is the fourth and final tier
+
+📊 Priest, nation, ruler, and now this person
+
+🔁 The same ignorance standard covers everyone equally
+
+📖 No role was ever too small to matter
 
 ---
 
 ## ♀️ A Kid Of The Goats, A Female Without Blemish
 
-One more step down from the ruler's offering: not just a smaller animal category, but now a female instead of a male. The scale by now is unmistakable: bullock, then male goat, then female goat, shrinking with every tier, while "without blemish" never once relaxes.
+One more step down from the ruler's offering appears here.
 
-♀️ A female goat, one tier below the ruler's required male goat
+This is not just a smaller category.
 
-📉 The pattern across this chapter: the animal shrinks as public responsibility shrinks
+It is a female goat instead of a male one.
 
-✅ The flawless standard stays exactly the same at every single tier
+The pattern is now clear, bullock, then male goat, then female goat.
 
----
+"Without blemish" still holds at the same standard every time.
 
-## ✋🔪 Lay His Hand Upon The Head Of The Sin Offering, And Slay It
+♀️ A female goat replaces the ruler's male goat
 
-The same identifying gesture and the same killing location used by every tier above - an ordinary person follows the identical process as a ruler, a priest, or the whole nation, just with a smaller animal.
+📉 The animal keeps shrinking tier by tier
 
-✋ Same hand-on-the-head gesture already used by every tier in this chapter
+🔁 Bullock, male goat, then female goat, in order
 
-📍 Same killing location - "the place of the burnt offering" - as every tier above
-
-🔁 The process never changes; only the animal's size and cost does
+📖 The flawless standard never once relaxes
 
 ---
 
-## 🩸 The Priest Shall Take Of The Blood Thereof With His Finger, And Put It Upon The Horns Of The Altar Of Burnt Offering
+## ✋🔪 Slay The Sin Offering In The Place Of The Burnt Offering
 
-Same outer-altar-only blood application already used for the ruler - this offering, like the ruler's, never reaches inside the veil. An ordinary person's honest mistake is real and needs dealing with, but it doesn't require the deepest level of ritual reserved for the priest's or the whole nation's guilt.
+The same identifying gesture used by every tier above happens here too.
 
-🩸 Blood stays on the outer altar, same as the ruler's offering
+The same killing location, fixed back in Leviticus one, applies again.
 
-🚫 This offering, like the ruler's, never goes inside the veil
+An ordinary person follows the identical process as a ruler or a priest.
 
-⚖️ Depth of ritual still matches scope of the sin's reach, even at this lowest tier
+Only the size and cost of the animal ever really changes.
+
+✋ The same hand gesture repeats at every tier
+
+📍 The same killing spot applies here too
+
+🔁 The process never changes across any tier
+
+📖 Only the animal's size and cost changes
 
 ---
 
 ## 🌬️ Burn It Upon The Altar For A Sweet Savour Unto The LORD
 
-"Sweet savour" already appeared throughout chapters 1-3 for the burnt, grain, and peace offerings, but this is its first appearance in a sin offering. Even an offering dealing with real guilt is called pleasing and accepted by God when brought His prescribed way.
+"Sweet savour" already described the offerings back in chapters one through three.
 
-🌬️ "Sweet savour" already described the offerings in chapters 1-3
+This is its very first appearance tied to a sin offering.
 
-🆕 This is the phrase's first appearance tied to a sin offering
+Even an offering dealing with real guilt is called pleasing to God.
 
-🤍 Even guilt, brought rightly, results in something God calls pleasing
+That is true as long as it was brought the way God prescribed.
+
+🌬️ Sweet savour already described earlier offerings
+
+🆕 This is its first use here
+
+🤍 Guilt, brought rightly, can still please God
+
+📖 God calls a rightly brought offering pleasing
 
 ---
 
 ## ✝️ Make An Atonement For Him, And It Shall Be Forgiven Him
 
-The identical promise already given to the priest, the congregation, and the ruler now belongs to the ordinary Israelite too. No matter how small a person's role in Israel, forgiveness through this offering was never out of reach.
+The identical promise given to the priest and the ruler above now belongs here too.
 
-✝️ The same atonement-and-forgiveness promise repeats for the fourth time in this chapter
+No matter how small a person's role in Israel was, forgiveness stayed within reach.
 
-🙌 An ordinary person's access to forgiveness matched everyone else's
+Verse twenty eight adds one more detail, the sin coming "to his knowledge."
 
-🔁 Only the animal's size ever changed - never the outcome
+The same trigger already used for the ruler applies again for this tier.
 
----
+Nobody needed someone else to accuse them first before seeking forgiveness.
 
-## 🙋 Whoever Recognized Their Own Guilt Could Come
+✝️ The same promise now covers this tier too
 
-Verse 28 says "or if his sin...come to his knowledge" - the same trigger already used for the ruler in verse 23. Nobody was required to wait for someone else to point out their mistake; recognizing it themselves was enough to require, and enable, bringing this offering.
+🙌 Forgiveness stayed within everyone's reach
 
-🙋 Self-recognition of guilt was enough to trigger this requirement
+🙋 Recognizing the guilt yourself was already enough
 
-🔁 The same wording already applied to the ruler's offering in verse 23
-
-🚪 Nobody needed someone else to first accuse them before they could seek forgiveness
+📖 Nobody needed to be accused to seek forgiveness
 
 # Leviticus 4:32-35
 
-# 🐑 The Ordinary Israelite, Option Two
+# 🐑 A Second Option For The Ordinary Person
 
 ---
 
 ## 🐑 If He Bring A Lamb For A Sin Offering
 
-Here's a real flexibility this chapter hasn't offered anyone else: the ordinary Israelite gets to choose between a female goat, just described, or a female lamb, here. The priest, the congregation, and the ruler each had exactly one required animal - only the common person gets an option.
+Here is a real flexibility this chapter has not offered anyone else yet.
 
-Leviticus 5:7-13 goes even further for this same tier, allowing two birds, or even a bit of flour, for someone too poor to afford a goat or lamb at all - showing this system never let cost become a wall between a sinner and forgiveness.
+The ordinary Israelite could choose between a female goat or a female lamb.
 
-🐑 A lamb is offered as an alternative to the female goat just described
+The priest, the nation, and the ruler each had only one required animal.
 
-🆕 This is the first real choice given to any tier in this chapter
+Only the common person in this chapter actually gets an option to choose.
 
-📖 Leviticus 5:7-13 later allows birds or flour for those who couldn't afford even this
+🐑 A lamb becomes an alternative to the goat
+
+🆕 This is the chapter's first real choice
+
+👥 Only the ordinary person gets this option
+
+📖 Even here, God made room for a choice
 
 ---
 
-## ✋🔪🩸🔥 The Same Process, Now With A Lamb
+## 🩸 He Shall Bring It A Female Without Blemish
 
-Every step repeats exactly as just described for the goat: the identifying hand, the killing at the burnt offering's spot, blood on the outer altar's horns, and the fat burned on the altar. Leviticus doesn't bother re-explaining any of it - by now the pattern is fully established.
+The lamb follows the exact same requirement already set for the goat.
 
-🔁 Every ritual step repeats exactly as described for the female goat
+It must be female, and it must be physically flawless.
 
-✂️ Leviticus shortens the instructions once a pattern's been fully explained
+Every step around it, the hand, the killing, the blood, stays identical too.
 
-🎯 Only the animal itself changes; every action around it stays identical
+Only the animal chosen at the start ever really changes.
+
+🩸 Female and flawless, just like the goat
+
+🔁 Every ritual step stays exactly the same
+
+✂️ Only the animal itself changes here
+
+📖 The pattern holds steady no matter the choice
 
 ---
 
 ## 🔥 According To The Offerings Made By Fire Unto The LORD
 
-This closing phrase ties the sin offering back into the same family as the burnt, grain, and peace offerings from chapters 1-3, all of them "made by fire," meaning burned as a gift given up to God, even though each type served a completely different purpose.
+This closing phrase ties the sin offering back to the other offering types.
 
-🔥 "Made by fire" links this offering back to the burnt, grain, and peace offerings
+The burnt, grain, and peace offerings were all "made by fire" too.
 
-🎁 All are gifts given up and consumed, no matter their different purposes
+That phrase already appeared back in chapters one through three.
 
-🔗 This phrase closes the chapter by tying all four offering types together
+"Made by fire" means burned up completely as a gift to God.
 
----
+Each offering served a different purpose, yet all were given the same way.
 
-## 🤫 The One Detail Left Unsaid For The Priest
+🔥 Made by fire links this to earlier offerings
 
-Look back across this whole chapter: the congregation, the ruler, and both versions of the common person's offering each close with the plain words "it shall be forgiven him" or "forgiven them." The priest's own section back in verses 3-12 never actually says this.
+🎁 It means burned up as a gift
 
-That's likely because the priest's sin offering opens the whole chapter and sets the pattern every other tier then follows - the forgiveness promise is stated once the pattern is clear, not because the High Priest is somehow excluded from it.
+🔗 The same phrase already appeared in earlier chapters
 
-🤫 Verses 3-12, the priest's own offering, never explicitly state "forgiven"
-
-✅ Every tier after that - congregation, ruler, and both common-person options - does
-
-📖 The pattern, not an exclusion, likely explains why it's stated later, not first
+📖 Every offering type still points back to God
 
 ---
 
-## 🎯 Four Tiers, One Path Back To God
+## 🎯 For His Sin That He Hath Committed, And It Shall Be Forgiven Him
 
-By the end of this chapter, the pattern is unmistakable: priest, congregation, ruler, and ordinary person all sinned unintentionally, all brought an offering scaled to their role, and all received the exact same outcome - atonement and forgiveness. No one in Israel, from the High Priest down to the poorest farmer, was ever left without a way back.
+By the end of this chapter, one pattern is impossible to miss.
 
-🎯 Every tier in this chapter ends in the same outcome: forgiveness
+Priest, nation, ruler, and ordinary person all sinned without meaning to.
 
-📏 Only the required animal changed - the path back to God never did
+Each one brought an offering scaled to their own role.
 
-🙌 No one in Israel, regardless of role or income, was left without access to it`;
+Every single one received the exact same outcome, atonement and forgiveness.
+
+No one in Israel was ever left without a way back to God.
+
+Not the High Priest, and not the poorest farmer either.
+
+🎯 Every tier in this chapter ends in forgiveness
+
+📏 Only the required animal ever changed
+
+🙌 Rich or poor, everyone had the same path
+
+📖 No one was left without a way back`.trim();
 
 export const LEVITICUS_FOUR_PERSONAL_SECTIONS = parseLeviticusFourRawNotes(LEVITICUS_FOUR_RAW_NOTES);

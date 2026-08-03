@@ -89,607 +89,772 @@ function parseExodusThirtySixRawNotes(rawText: string): ExodusThirtySixPersonalS
 }
 
 const EXODUS_THIRTY_SIX_RAW_NOTES = `# Exodus 36:1-7
-
 # 🎁 Too Much To Give
-
 ---
+## 🛠️ Then Wrought Bezaleel And Aholiab
 
-## 🛠️ Then Wrought Bezaleel And Aholiab, And Every Wise Hearted Man
+"Wrought" means worked, an old way of saying they built something by hand.
 
-**"Wrought"** is an old past-tense word for "worked" — the same root as "wrought iron." After two full chapters of instructions and one chapter of gathering materials, this is the moment actual building finally starts. Everything before this verse was planning; this verse is hammers and looms moving.
+Chapters twenty five through thirty five were all planning and gathering materials.
 
-🛠️ "Wrought" is an old word meaning "worked"
+This is the very first verse where real building actually starts.
 
-📋 This is the first verse where real building actually begins
+Bezaleel and Aholiab were the two men God named by name back in chapter thirty one.
 
-🔄 Chapters 25-35 were all planning and gathering, leading to this moment
+Every measurement chosen on the mountain now becomes something real.
 
----
+🛠️ Wrought means worked, not fought
 
-## 🕊️ In Whom The LORD Put Wisdom And Understanding To Know How To Work
+📋 Chapters twenty five to thirty five were planning
 
-This restates, almost word for word, what chapter 31 already said about Bezaleel and Aholiab being personally filled with God's Spirit for this exact task. Skilled craftsmanship is treated here as a genuine spiritual gift, not a lesser, purely human talent separate from what God gives.
+🔨 This verse begins the real building
 
-🕊️ This echoes chapter 31's description of the Spirit filling these craftsmen
+📖 The mountain instructions now become a real object
 
-🔨 Skilled craft work is treated as a real spiritual gift, not a lesser talent
+## 🧠 Every Wise Hearted Man
 
-📖 Nothing about this chapter's building was left to guesswork or improvisation
+"Wise hearted" does not mean smart in an ordinary way.
 
----
+It means someone gifted with real hands on skill, like carpentry or weaving.
 
-## 📣 Moses Called Bezaleel And Aholiab, And Every Wise Hearted Man... Whose Heart Stirred Him Up To Come Unto The Work
+Chapter thirty one already said God filled these workers with His own Spirit for this task.
 
-Moses doesn't draft workers or assign a labor quota. He calls specifically the people whose own hearts were already stirred toward the work, the same "willing heart" language chapter 35 used for the offering itself. The volunteer spirit that supplied the materials also supplies the labor.
+Skilled craft work is treated here as a real gift from God.
 
-📣 Moses calls workers by name, not by forced assignment or quota
+It is not a lesser talent sitting apart from spiritual gifts.
 
-❤️ "Heart stirred him up" repeats chapter 35's language for willing givers
+🧠 Wise hearted means skilled, not merely smart
 
-🙌 The same volunteer spirit behind the offering now builds the actual object
+🕊️ God filled these workers with His Spirit
 
----
+🪚 Craft skill counts as a real gift
 
-## 💰 They Received Of Moses All The Offering... And They Brought Yet Unto Him Free Offerings Every Morning
+📖 Skill and spirit are not separate things
 
-The gifts didn't stop once construction started. People kept bringing fresh offerings **every morning**, even as the craftsmen were already at work, showing this wasn't a one-time collection but an ongoing outpouring that had to be actively managed.
+## ❤️ Whose Heart Stirred Him Up
 
-💰 Offerings kept arriving fresh every single morning, not just once
+"Heart stirred him up" describes an inner pull toward the work, not a paycheck.
 
-📈 This shows sustained generosity, not a single one-time collection
+Chapter thirty five used this same phrase for the people who gave the materials.
 
-⚙️ The craftsmen had to actively receive and manage an ongoing flow of gifts
+Moses does not draft workers or hand out a labor quota here.
 
----
+He calls only the ones already moved from the inside to come and help.
 
-## 🚶 The Wise Men... Came Every Man From His Work Which They Made; And They Spake Unto Moses
+The same willing spirit behind the gifts now builds the object itself.
 
-The skilled craftsmen actually leave their workstations mid-task to go find Moses. Stopping real construction work to report a problem tells you how serious and unusual the situation had become — this wasn't a minor comment in passing.
+❤️ Heart stirred means an inner pull to help
 
-🚶 The craftsmen physically stopped building to go speak with Moses directly
+🎁 Chapter thirty five used this phrase for givers
 
-⏸️ Pausing real work to report something shows how serious this was
+🙋 Moses calls people, not a labor draft
 
-🗣️ This is a direct, in-person report, not a rumor passed along
+📖 One willing spirit both gave and built
 
----
+## 🌄 Free Offerings Every Morning
 
-## 📊 The People Bring Much More Than Enough For The Service Of The Work
+The gifts did not stop once the work actually began.
 
-This is a strange complaint by any normal standard: not a shortage, but a surplus so large it had become a logistics problem. Compare this to almost every other ancient building project in the world, funded by taxes, tribute, or forced labor — here the challenge was too much free generosity, not too little.
+People kept bringing fresh offerings every single morning, even mid construction.
 
-📊 The complaint here is surplus, not shortage — an unusual problem to have
+Someone had to keep receiving those gifts.
 
-🏛️ Most ancient building projects struggled with too little funding, not too much
+That happened at the very same time as the actual building.
 
-✨ This is a direct result of the willing-heart giving described in chapter 35
+This was an ongoing outpouring, not a single one time collection.
 
----
+🌄 Offerings kept arriving morning after morning
 
-## 🛑 Moses Gave Commandment... Let Neither Man Nor Woman Make Any More Work For The Offering Of The Sanctuary
+🏗️ Building and collecting happened at the same time
 
-Moses has to formally stop the giving, having it announced camp-wide. This is the only place in the whole tabernacle story where a leader has to actively restrain generosity instead of calling for more of it.
+📈 The giving was ongoing, not a single moment
 
-🛑 Moses issues a formal, camp-wide order to stop bringing gifts
+📖 Generosity outlasted the initial call for it
 
-📢 It's proclaimed publicly, reaching the entire nation at once
+## 📊 Much More Than Enough
 
-🔄 This flips the usual pattern — restraining giving instead of requesting it
+This is an unusual complaint by any normal standard.
 
----
+The workers are not reporting a shortage but a surplus so large it became a problem.
 
-## ⛔ So The People Were Restrained From Bringing
+Most ancient building projects in that world ran on taxes, tribute, or forced labor.
 
-Notice the word **"restrained"** — it took active effort to hold people back, implying many still wanted to give even after hearing the announcement. The same nation that once gave gold too eagerly for a golden calf in chapter 32 now gives too eagerly for the right thing.
+Here the challenge was too much free generosity, not too little money.
 
-⛔ "Restrained" implies real effort was needed to actually stop the giving
+This surplus comes directly from the willing hearted giving described back in chapter thirty five.
 
-🔄 The same eager-giving instinct from chapter 32's calf now serves God rightly
+📊 The complaint is surplus, not shortage
 
-❤️ People kept wanting to give even after being told they could stop
+🏛️ Most ancient projects struggled to find enough funding
 
----
+✨ This nation gave more than it needed
 
-## ✅ For The Stuff They Had Was Sufficient For All The Work To Make It, And Too Much
+📖 Willing generosity created an unusual problem
 
-The chapter's opening scene closes with this plain summary: total, overflowing sufficiency. Every single material listed back in chapter 35's offering call — gold, silver, linen, wood, oil, gemstones — actually arrived in full, and then some.
+## 🛑 So The People Were Restrained
 
-✅ Every material category requested in chapter 35 arrived in full supply
+"Restrained" means someone had to actively hold the people back.
 
-🎯 "Too much" closes the giving story on total abundance, not scarcity
+Moses has to send out a formal order across the whole camp to stop giving.
 
-🏗️ With materials fully settled, the chapter turns to the actual construction
+This is the only place in the whole tabernacle story where a leader stops generosity instead of asking for more.
+
+The very last line of this opening scene says the stuff was already sufficient, and too much.
+
+This same people once gave gold too eagerly for a golden calf.
+
+Now they give too eagerly for the right thing instead.
+
+🛑 Restrained means people were actively held back
+
+📢 Moses stops giving with a camp wide order
+
+🔁 The calf's eager giving now serves God rightly
+
+📖 A nation prone to excess finally gives rightly
 
 # Exodus 36:8-13
-
-# 🧵 The Curtains, Actually Made
-
+# 🧵 The Curtains Take Shape
 ---
+## 🎨 Fine Twined Linen, And Blue, And Purple, And Scarlet
 
-## 🎨 Every Wise Hearted Man... Made Ten Curtains Of Fine Twined Linen, And Blue, And Purple, And Scarlet
+These are the same four costly materials first named back in chapter twenty five.
 
-These are the same four costly materials named back in chapter 25's original offering list, now actually being woven into fabric by hand. Blue, purple, and scarlet were expensive dyes reserved for royalty and the wealthy in the ancient world, not everyday clothing colors.
+Blue, purple, and scarlet were expensive dyes reserved mostly for royalty in the ancient world.
 
-🎨 These are the same royal materials first listed in chapter 25's offering call
+Fine twined linen means the thread itself was tightly spun and woven for strength.
 
-👑 Blue, purple, and scarlet dyes were expensive, associated with royalty
+What was raw offered material in chapter thirty five now becomes finished fabric.
 
-🧵 What was raw offered material in chapter 35 is now finished fabric
+🎨 These are chapter twenty five's original colors
 
----
+👑 Blue purple and scarlet marked royalty
 
-## 👼 With Cherubims Of Cunning Work Made He Them
+🧵 Fine twined linen means tightly spun thread
 
-**"Cunning work"** is an old phrase meaning highly skilled, artistic craftsmanship — not trickery, which is what the word suggests today. These guardian-figure images, matching the cherubim overshadowing the mercy seat inside the ark, were woven directly into the innermost fabric layer covering the whole structure.
+📖 Offered material becomes finished fabric here
 
-👼 "Cunning work" means expert craftsmanship, not deception
+## 👼 Cherubims Of Cunning Work
 
-🏠 Cherubim were woven right into the fabric, not painted or added on
+"Cunning work" is an old phrase for expert artistic skill, not trickery.
 
-🔁 This matches the cherubim already on the mercy seat inside the ark
+Cherubims were guardian figures woven directly into this fabric by hand.
 
----
+The same guardian image already sits on the mercy seat covering the ark.
 
-## 📏 The Length Of One Curtain Was Twenty And Eight Cubits, And The Breadth... Four Cubits
+Weaving figures this detailed into cloth took real trained skill, not a quick pattern.
 
-At roughly a foot and a half per cubit, each curtain measured about forty-two feet long and six feet wide — massive pieces of hand-woven fabric for people living as nomads in tents. This matches chapter 26's blueprint measurement exactly, down to the cubit.
+👼 Cunning work means expert skill, not deceit
 
-📏 Each curtain measured roughly 42 feet long and 6 feet wide
+🛡️ Cherubims are guardian figures, not decoration
 
-🏕️ This was an enormous weaving project for a desert-dwelling, tent-based people
+🔁 This matches the mercy seat's cherubims
 
-✅ The measurement matches chapter 26's original blueprint exactly
+📖 Skill this careful took real training
 
----
+## 📏 Twenty And Eight Cubits
 
-## 🔗 He Coupled The Five Curtains One Unto Another: And The Other Five Curtains He Coupled One Unto Another
+A cubit was close to a foot and a half in modern measurement.
 
-The ten curtains were sewn into two separate panels of five each before being joined into one, rather than stitched together one at a time in a single long strip. This two-panel method made the massive covering easier to manage during both weaving and eventual transport.
+Twenty and eight cubits works out to about forty two feet long.
 
-🔗 The ten curtains formed two panels of five, not one continuous strip
+Four cubits across works out to about six feet wide.
 
-🎒 Working in two sections made both weaving and later transport more manageable
+Picture a curtain about the length of a school bus.
 
-📐 The final result still had to become a single seamless covering
+This matches chapter twenty six's blueprint exactly, down to the cubit.
 
----
+📏 A cubit was near eighteen inches
 
-## 🪡 He Made Loops Of Blue On The Edge Of One Curtain From The Selvedge In The Coupling
+🚌 Forty two feet, like a school bus
 
-A **"selvedge"** is the self-finished edge of a woven fabric that won't fray or unravel — every hand-loomed fabric naturally has one. Loops made of blue thread were sewn along this edge specifically so the two five-curtain panels could later be joined together.
+🧵 Each curtain was six feet wide
 
-🪡 A "selvedge" is the natural, non-fraying edge of woven fabric
+📖 The build matched the blueprint exactly
 
-🔵 Loops of blue thread were sewn along this edge for later joining
+## 🔗 Coupled The Five Curtains
 
-🧩 This detail shows real weaving expertise, not simple sewing
+The ten curtains were not sewn edge to edge in one long strip.
 
----
+Instead they were joined into two separate panels of five curtains each.
 
-## 🔢 Fifty Loops Made He In One Curtain... The Loops Held One Curtain To Another
+Working in two smaller sections made weaving and later folding far more manageable.
 
-Fifty matching loops lined the edge of each five-curtain panel, precisely spaced to align with fifty loops on the other panel. That kind of exact matching, fifty to fifty, required careful measuring throughout the entire weaving process, not just at the final assembly.
+The two panels still had to become one seamless covering in the end.
 
-🔢 Fifty loops on each panel had to align exactly with fifty on the other
+🔗 Ten curtains formed two panels of five
 
-📏 This required precise measuring throughout the weaving, not just at the end
+🧺 Smaller panels were easier to weave
 
-🤝 The two panels were designed from the start to fit together perfectly
+🎒 Two panels folded and moved more easily
 
----
+📖 Two panels still became one covering
 
-## 🥇 He Made Fifty Taches Of Gold, And Coupled The Curtains Together: So It Became One Tabernacle
+## 🪡 Loops Of Blue On The Edge
 
-**"Taches"** is an old word for clasps or hooks. Fifty gold clasps locked the two panels into a single covering, and the text specifically says the result **"became one tabernacle"** — not two halves joined, but one unified structure, exactly as chapter 26 had specified it should be.
+A selvedge is the finished edge of woven fabric that will not fray.
 
-🥇 "Taches" are clasps or hooks, here made of solid gold
+Every hand loomed piece of cloth naturally has one along its border.
 
-☝️ The text emphasizes "one tabernacle," not two halves merely attached
+Loops of blue thread were sewn along this edge on purpose.
 
-✅ This fulfills chapter 26's instruction for this exact layer, word for word
+Those loops existed only so the two five curtain panels could later be joined.
+
+🪡 A selvedge is fabric's natural finished edge
+
+🔵 Blue loops lined that finished edge
+
+🧩 The loops existed only to join panels
+
+📖 Even an edge served a building purpose
+
+## 🥇 So It Became One Tabernacle
+
+"Taches" is an old word for clasps or hooks.
+
+Fifty gold clasps locked the two curtain panels into a single covering.
+
+The text does not say two halves joined together.
+
+It says plainly that the result became one tabernacle.
+
+That wording matches exactly what chapter twenty six had asked for.
+
+🥇 Taches means clasps, made of solid gold
+
+🔗 Fifty clasps locked both panels together
+
+☝️ The result is called one tabernacle
+
+📖 The finished work matched the plan exactly
 
 # Exodus 36:14-19
-
-# ⛺ The Tent's Protective Layers
-
+# ⛺ A Tougher Layer Goes On
 ---
+## 🐐 Curtains Of Goats' Hair
 
-## 🐐 He Made Curtains Of Goats' Hair For The Tent Over The Tabernacle: Eleven Curtains He Made Them
+Goats hair was the ordinary material used for everyday desert tents.
 
-A second, plainer layer went directly over the beautiful cherubim-woven linen: coarse goats' hair, the standard material used for ordinary desert tents throughout the ancient Near East. Notice there are eleven curtains here, one more than the ten linen curtains beneath.
+This second layer sat directly over the beautiful linen layer below it.
 
-🐐 Goats' hair was the standard material for everyday desert tents
+Eleven curtains were made here, one more than the ten linen curtains underneath.
 
-🔢 Eleven goat-hair curtains is one more than the ten linen curtains below
+That extra curtain was not a mistake, it had a specific job explained later in the chapter.
 
-📊 That extra curtain has a specific purpose explained a few verses later
+🐐 Goats hair was standard desert tent material
 
----
+🏕️ This layer covered the finer linen beneath
 
-## 📏 The Length Of One Curtain Was Thirty Cubits, And Four Cubits Was The Breadth
+🔢 Eleven curtains is one more than ten
 
-At roughly a foot and a half per cubit, each of these curtains measured about forty-five feet long, three feet longer than the linen curtains beneath. The extra length let this outer layer hang down and fully cover the more delicate, precious fabric underneath on every side.
+📖 The extra curtain had a real purpose
 
-📏 Each curtain measured about 45 feet long, longer than the linen layer
+## 📏 Thirty Cubits, And Four Cubits
 
-🛡️ The extra length let this tough outer layer fully cover the fabric beneath
+At about a foot and a half per cubit, this curtain measured close to forty five feet long.
 
-🔒 This protected the costly linen and cherubim work from weather exposure
+That is about three feet longer than the linen curtain beneath it.
 
----
+The extra length let this tougher outer layer hang down over every side.
 
-## 🔀 He Coupled Five Curtains By Themselves, And Six Curtains By Themselves
+That overhang fully covered and protected the finer, more costly fabric underneath.
 
-Unlike the linen layer's even five-and-five split, this layer was grouped five and six — an uneven pairing that puts the extra eleventh curtain into the larger group of six, right where it's needed at the tent's front.
+📏 Forty five feet, longer than the linen
 
-🔀 This layer splits five and six, unlike the linen layer's even five and five
+🛡️ Extra length let this layer overhang the sides
 
-➕ The extra eleventh curtain sits inside the larger six-curtain group
+🧵 The costly linen stayed fully covered
 
-🚪 That placement points toward the entrance, covered a few verses later
+📖 A plain layer protected a precious one
 
----
+## 🔀 Five Curtains By Themselves, And Six
 
-## 🔢 He Made Fifty Loops Upon The Uttermost Edge Of The Curtain In The Coupling
+The linen layer split evenly, five curtains and five curtains.
 
-The same loop-and-clasp joining method used for the inner linen layer is reused here for the outer goat-hair layer: fifty matching loops on each panel's edge. Reusing one proven system for both layers made a massive, complex structure buildable by hand.
+This goat hair layer splits unevenly instead, five curtains and six.
 
-🔢 The same fifty-loop joining system from the linen layer is reused here
+That extra sixth curtain in the larger group was not random.
 
-🛠️ Reusing one proven method made this massive structure buildable by hand
+It sat exactly where the entrance would later need extra covering.
 
-🔁 Consistency in method, not just materials, runs through the whole design
+🔀 This split is uneven, five and six
 
----
+➕ The extra curtain joins the larger group
 
-## 🥉 He Made Fifty Taches Of Brass To Couple The Tent Together, That It Might Be One
+🚪 That placement points toward the entrance
 
-The clasps joining this outer layer were brass, not the gold used for the linen layer beneath it. This matches a consistent pattern seen throughout the tabernacle's construction: gold marks what's closest to the sacred center, and plainer metal marks the more exposed, outer layers.
+📖 An uneven split still served a purpose
 
-🥉 These clasps were brass, unlike the gold clasps of the linen layer
+## 🥉 Fifty Taches Of Brass
 
-📉 Brass consistently marks the more exposed, outer parts of the structure
+The clasps joining this outer layer were brass, not the gold used before.
 
-🎯 This same gold-to-brass gradient runs throughout the whole design
+Brass cost far less than gold in the ancient world.
 
----
+This is not the first time gold marks something closer to the center.
 
-## 🐏 He Made A Covering For The Tent Of Rams' Skins Dyed Red
+Plainer metal marks the layers exposed to weather and daily wear.
 
-A third layer, dyed red ram hide, went directly over the goat-hair tent. Tanned and dyed leather was a durable, weatherproof material, adding real protection on top of the woven layers beneath it against sun, wind, and the rare desert rain.
+🥉 These clasps were brass, not gold
 
-🐏 Dyed red ram hide formed a third, more weatherproof layer
+💰 Brass cost less than gold
 
-🌧️ Tanned leather added real protection against sun, wind, and rain
+🎯 Gold marks the inner, protected layers
 
-🎨 The red dye kept even this practical layer visually rich, not plain
+📖 Material value follows a clear pattern
 
----
+## 🐏 Rams' Skins Dyed Red
 
-## 🦫 And A Covering Of Badgers' Skins Above That
+A third layer went directly over the goat hair tent.
 
-Most scholars think **"badgers' skins"** mistranslates an unclear Hebrew word, since actual badgers didn't live in this desert region. It more likely refers to the tough, waterproof hide of a sea creature like a dolphin or dugong, forming the tabernacle's final, plain, weatherproof outer roof.
+This one was tanned leather, dyed red, taken from ram hides.
 
-🦫 "Badgers' skins" likely mistranslates a word for waterproof sea-creature hide
+Tanned leather held up far better against sun, wind, and rare desert rain.
 
-🐬 A dugong or dolphin hide is the more likely source material
+This layer added real weatherproofing on top of two woven layers.
 
-🎭 This final plain layer gave no outward hint of the glory hidden inside
+🐏 Ram hide formed a third, tougher layer
+
+🌧️ Tanned leather resisted sun, wind, and rain
+
+🧴 This layer added real weatherproofing
+
+📖 Even a protective layer kept its color
+
+## 🦫 A Covering Of Badgers' Skins
+
+Actual badgers did not live in this desert region at all.
+
+Many scholars believe this phrase mistranslates a Hebrew word for a different animal.
+
+It likely points to the tough, waterproof hide of a sea creature such as a dugong.
+
+This final, plain layer became the tabernacle's outer roof, facing the world.
+
+Nothing about its outside gave any hint of the gold and cherubims hidden within.
+
+🦫 Badgers likely mistranslates a different animal
+
+🐬 A dugong hide fits the region better
+
+🎭 This plain layer faced the outside world
+
+📖 Glory stayed hidden under a plain roof
 
 # Exodus 36:20-24
-
-# 🪵 Boards For The South Side
-
+# 🪵 The Frame Beneath It All
 ---
+## 🏗️ Shittim Wood, Standing Up
 
-## 🏗️ He Made Boards For The Tabernacle Of Shittim Wood, Standing Up
+Under every curtain layer stood a real wooden skeleton.
 
-Underneath every curtain layer stood the tabernacle's real skeleton: upright boards of shittim (acacia) wood, the same rot-resistant desert timber already used for the ark and table. This was a genuine wooden structure with curtains draped over it, not a simple cloth tent held up by poles alone.
+Shittim is another name for acacia, a hard desert wood that resists rot.
 
-🏗️ Shittim (acacia) wood boards formed the tabernacle's actual wooden frame
+The same wood was already used for the ark and the table.
 
-🌳 This is the same durable desert wood already used for the ark and table
+This was never a simple cloth tent held up by a few poles.
 
-⛺ Curtains were draped over this frame, not just held up by simple poles
+It was a true wooden structure with fabric draped over the outside.
 
----
+🏗️ Shittim wood means acacia, rot resistant
 
-## 🎒 Built To Come Apart Again
+🌳 The same wood built the ark and table
 
-Despite looking like a permanent wooden building, this entire frame was designed to be taken apart and rebuilt at every campsite. Numbers 4:31-32 later assigns one specific Levite family, the Merarites, to the job of carrying these exact boards, bars, pillars, and sockets whenever Israel moved.
+⛺ Curtains covered a real wooden frame
 
-🎒 This wooden frame was fully designed to be disassembled and rebuilt
+📖 This was a building, not just cloth
 
-📦 Numbers 4 names a specific Levite family assigned to carry these pieces
+## 📐 A Cubit And A Half
 
-🚶 A structure this solid still had to travel with a nomadic nation
+At about a foot and a half per cubit, each board stood close to fifteen feet tall.
 
----
+Each board measured just over two feet wide.
 
-## 📐 The Length Of A Board Was Ten Cubits, And The Breadth Of A Board One Cubit And A Half
+A wall built from boards this size had genuine height and weight.
 
-At roughly a foot and a half per cubit, each board stood about fifteen feet tall and just over two feet wide. A wall built from boards this size had genuine height and solid structure, not a low, sagging tent roof.
+Twenty of these boards side by side formed one entire long wall.
 
-📐 Each board stood about 15 feet tall and just over 2 feet wide
+📐 Each board stood close to fifteen feet tall
 
-🏠 A structure built from boards this size had real height, not a low tent
+📏 Each board was just over two feet wide
 
-🧱 Twenty of these boards, side by side, formed one entire long wall
+🧱 Twenty boards formed one full wall
 
----
+📖 Height and weight, not a low tent
 
-## 🔩 One Board Had Two Tenons, Equally Distant One From Another
+## 🔩 Two Tenons, Equally Distant
 
-**"Tenons"** are wooden projections carved into the bottom of a board, designed to fit precisely into matching sockets below — the same basic joinery principle still used in fine woodworking today. Every board had to be shaped to fit its own exact spot, like a puzzle piece cut by hand.
+A tenon is a wooden peg carved into the bottom of a board.
 
-🔩 Tenons are wooden pegs carved to fit precisely into sockets below
+Each peg was built to fit precisely into a matching socket below it.
 
-🧩 Each board was custom-shaped to fit its own specific spot in the wall
+That same basic joinery method is still used in fine woodworking today.
 
-🛠️ This is the same basic joinery principle still used in woodworking today
+Every single board had to be shaped by hand to fit its own exact spot.
 
----
+🔩 A tenon is a peg carved into wood
 
-## 🧭 He Made Boards For The Tabernacle; Twenty Boards For The South Side Southward
+🧩 Each peg fit one matching socket
 
-The south wall gets built first, using twenty boards of matching size. Naming a direction this specifically (south, and later north and west) confirms the tabernacle had one fixed, deliberate orientation, not a random or arbitrary layout.
+🛠️ This joinery method is still used today
 
-🧭 The south wall was built first, using twenty matching boards
+📖 Every board was custom cut by hand
 
-🧭 Naming exact directions shows the tabernacle had one fixed orientation
+## 🧭 The South Side Southward
 
-📖 This matches chapter 26's original blueprint for the same wall
+The south wall was the first one actually built, using twenty matching boards.
 
----
+Naming a direction this specifically was not an accident.
 
-## 🥈 Forty Sockets Of Silver He Made Under The Twenty Boards; Two Sockets Under One Board
+It confirms the tabernacle always faced one fixed, deliberate orientation.
 
-Each board rested on two silver sockets, meaning this entire wall literally stood on a foundation of silver. Chapter 30 later explains this silver came from a required "atonement money" collected from every counted Israelite, so the tabernacle's very foundation was funded by redemption money, not ordinary taxes.
+This matches chapter twenty six's original blueprint for the same wall.
 
-🥈 Every board rested on two silver sockets as its literal foundation
+🧭 The south wall came first, twenty boards
 
-💰 Chapter 30 explains this silver came from required "atonement money"
+🎯 A named direction means a fixed layout
 
-🩸 The wall's foundation was funded by redemption money, not ordinary taxes
+📌 Direction was never left to chance
 
----
+➡️ The blueprint was followed wall by wall
 
-## 🔩 Two Sockets Under One Board For His Two Tenons
+## 🥈 Forty Sockets Of Silver
 
-The pairing here matters: each board's two wooden tenons each got their own separate silver socket to sit in, rather than both pegs sharing one wide slot. Two fixed points instead of one kept a fifteen-foot-tall board from twisting or rocking side to side once it was standing.
+Every board rested on two silver sockets underneath it.
 
-🔩 Each of a board's two tenons had its own separate silver socket
+That means this entire wall literally stood on a foundation of silver.
 
-⚖️ Two fixed points, not one, kept a tall board from twisting or rocking
+Chapter thirty already explained this silver came from required atonement money.
 
-🧱 This small detail mattered for the stability of the whole standing wall
+Every counted Israelite had to pay that price, rich or poor alike.
+
+The wall's foundation was funded by that redemption money, not ordinary taxes.
+
+🥈 Every board stood on two silver sockets
+
+💰 Chapter thirty names this silver atonement money
+
+🩸 Rich and poor paid the same price
+
+📖 Redemption money became the wall's own foundation
+
+## 🔩 Two Sockets Under One Board
+
+Each board's two wooden tenons each got its own separate silver socket.
+
+The two pegs did not share one wide slot together.
+
+Two separate fixed points kept a board this tall from twisting side to side.
+
+That small detail mattered for the stability of the entire standing wall.
+
+🔩 Each tenon got its own separate socket
+
+⚖️ Two fixed points stopped the board from twisting
+
+🧱 Stability mattered for a fifteen foot wall
+
+📖 A small detail protected the whole structure
 
 # Exodus 36:25-30
-
 # 🧱 North, West, And The Corners
-
 ---
+## 🧭 Toward The North Corner, He Made Twenty Boards
 
-## 🧭 For The Other Side Of The Tabernacle, Which Is Toward The North Corner, He Made Twenty Boards
+The north wall was built to exactly match the south wall already finished.
 
-The north wall is built to exactly match the south wall from the previous section: same count, same size, same silver sockets. Symmetry, not variation, was the rule for the tabernacle's long sides.
+Same count of boards, same size, same silver sockets underneath.
 
-🧭 The north wall exactly matches the south wall in count and size
+Symmetry, not variety, was the rule for the tabernacle's two long walls.
 
-⚖️ Symmetry between the two long walls was the deliberate design rule
+This mirrors chapter twenty six's blueprint for the north side just as closely.
 
-📖 This mirrors chapter 26's blueprint for the north side just as precisely
+🧭 The north wall matched the south exactly
 
----
+⚖️ Symmetry was the rule for both walls
 
-## 🥈 And Their Forty Sockets Of Silver; Two Sockets Under One Board, And Two Sockets Under Another Board
+📏 Same boards, same size, same sockets
 
-The exact same silver-sockets-under-every-board pattern repeats here without any change, confirming both long walls of the structure shared one identical foundation system throughout.
+📖 The blueprint held true on every side
 
-🥈 The same two-silver-sockets-per-board pattern repeats without change
+## 🥈 Their Forty Sockets Of Silver
 
-🔁 Both long walls of the structure share one identical foundation system
+The same silver sockets pattern from the south wall repeats here without change.
 
-🧱 Forty total silver sockets support each twenty-board wall
+Two sockets held every single board in place, on both long walls.
 
----
+Forty total silver sockets supported each twenty board wall.
 
-## 🌅 And For The Sides Of The Tabernacle Westward He Made Six Boards
+Repeating the same system on both sides kept the whole structure balanced.
 
-The back wall, facing west, was shorter than the two long side walls — only six boards instead of twenty. This made the tabernacle's overall footprint a rectangle, not a square, roughly fifteen feet wide by forty-five feet long.
+🥈 The same socket pattern repeats here
 
-🌅 The west-facing back wall used only six boards, far fewer than the sides
+🧱 Forty silver sockets held each long wall
 
-📐 This made the tabernacle a rectangle, not a square, in overall shape
+⚖️ Balance came from repeating one system
 
-🧭 The entrance faced east, opposite this shorter back wall
+📖 Consistency ran through the whole design
 
----
+## 🌅 Westward He Made Six Boards
 
-## 📐 And Two Boards Made He For The Corners Of The Tabernacle In The Two Sides
+The back wall, facing west, used only six boards instead of twenty.
 
-Two extra boards were built specifically for the two back corners, where the long side walls met the shorter back wall. Corners are structurally the weakest point in any framed building, so this detail shows real engineering care, not just a simple box shape.
+That made the tabernacle's overall shape a rectangle, not a square.
 
-📐 Two extra boards reinforced the two rear corners specifically
+The structure measured close to fifteen feet wide by forty five feet long.
 
-🏗️ Corners are typically the weakest point of a framed structure
+The entrance faced east, directly opposite this shorter back wall.
 
-🛠️ This detail reflects real structural engineering, not a simple box design
+🌅 The west wall used just six boards
 
----
+📐 The whole building formed a rectangle
 
-## 💍 And They Were Coupled Beneath
+🚪 The entrance faced east, opposite this wall
 
-Locking the corner boards together at the bottom, near ground level, kept the base of the corner from spreading apart under the weight and pull of the walls meeting there. This is the first of two separate connection points named for this one joint.
+📖 Shape followed function, not decoration
 
-💍 The bottom connection point kept the corner from spreading apart
+## 📐 For The Corners Of The Tabernacle
 
-🏗️ This is the first of two separate joints named for this single corner
+Two extra boards were built specifically for the two back corners.
 
-🌬️ A stable base mattered most where two heavy walls actually met
+That is where the long side walls met the shorter back wall.
 
----
+Corners are usually the weakest point in any framed structure.
 
-## 🔗 And Coupled Together At The Head Thereof, To One Ring
+This detail shows real engineering care, not just a simple box shape.
 
-**"Head thereof"** means the top of the corner. A single ring at the very top tied both corner boards together as one unit, so the corner was locked at both the bottom and the top, not just one end, making the whole frame far more rigid against desert winds.
+📐 Two extra boards reinforced the back corners
 
-🔗 "Head thereof" means the top of the corner boards
+🏗️ Corners are typically a structure's weak point
 
-🌬️ Locking both the top and bottom made the frame far more wind-resistant
+🧠 This shows real engineering thought
 
-🔒 One ring at the top tied both corner boards into a single unit
+📖 Care went into the hardest joints
 
----
+## 🔗 Coupled Together At The Head Thereof
 
-## 🔢 There Were Eight Boards; And Their Sockets Were Sixteen Sockets Of Silver
+"Head thereof" is an old way of saying the top of the corner.
 
-This closing tally confirms the west wall's total: six flat boards plus two corner boards equals eight, resting on sixteen silver sockets (two per board). The careful counting throughout this section shows nothing here was left approximate.
+The corner boards were joined at the bottom near the ground first.
 
-🔢 Six flat boards plus two corner boards totals eight for the west wall
+Then a single ring joined both corner boards again at the very top.
 
-🥈 Sixteen silver sockets support these eight boards, two per board
+Locking both ends made the whole frame far sturdier against desert wind.
 
-✅ This careful tally confirms nothing in the frame was left approximate
+🔗 Head thereof means the top of the corner
+
+⬇️ The corner was joined first at the bottom
+
+⬆️ Then joined again at the very top
+
+📖 Two joints made the frame windproof
+
+## 🔢 Sixteen Sockets Of Silver
+
+This verse tallies the whole west wall at last.
+
+Six flat boards plus two corner boards equals eight total.
+
+Eight boards rested on sixteen silver sockets, two for each board.
+
+This careful count shows nothing in the frame was left approximate.
+
+🔢 Six boards plus two corner boards equal eight
+
+🥈 Sixteen sockets supported those eight boards
+
+✅ Two sockets held up every single board
+
+📖 Careful counting left nothing to guesswork
 
 # Exodus 36:31-34
-
-# 🔗 The Bars That Locked It Together
-
+# 🔗 Bars That Locked It Together
 ---
+## 🪵 Bars Of Shittim Wood
 
-## 🪵 He Made Bars Of Shittim Wood; Five For The Boards Of The One Side Of The Tabernacle
+Long horizontal bars, also cut from acacia wood, ran the length of each wall.
 
-Long horizontal bars, also cut from acacia wood, threaded through rings attached to the boards, running the length of each wall to lock the upright boards together side to side. Without these bars, each board would have stood alone and unstable.
+They threaded through rings attached to the standing boards.
 
-🪵 Horizontal bars connected the boards side to side along each wall
+Without these bars, every single board would have stood alone and unstable.
 
-🔗 Without these bars, each individual board would have stood alone
+Five bars ran the length of the south wall specifically.
 
-🧱 Five bars ran the length of the south wall specifically
+🪵 Horizontal bars ran the length of each wall
 
----
+🔗 Bars threaded through rings on the boards
 
-## 🔁 And Five Bars For The Boards Of The Other Side... And Five Bars For The Boards... For The Sides Westward
+🧱 Without bars, each board stood alone
 
-The same five-bar system repeats for the north wall and, in an adjusted form, for the shorter west wall, tying the entire wooden frame into one connected, wind-resistant structure rather than three separate walls simply standing next to each other.
+📖 Bars turned separate boards into one wall
 
-🔁 Five bars reinforced the north wall, matching the south wall exactly
+## 🔁 For The Sides Westward
 
-🧩 An adjusted version of the same system secured the shorter west wall
+The same five bar system repeats for the north wall.
 
-🏗️ This turned three separate walls into one single, connected structure
+An adjusted version secures the shorter west wall as well.
 
----
+Three separate walls were never meant to simply stand side by side.
 
-## 🎯 He Made The Middle Bar To Shoot Through The Boards From The One End To The Other
+This turned three walls into one single, connected structure.
 
-**"Shoot through"** is an old way of saying "pass through" or "run through," not related to shooting a weapon. Unlike the other bars, which likely ran in shorter connected sections, this single central bar ran the entire length of each wall in one piece, hidden inside the boards themselves.
+🔁 Five bars matched the north wall too
 
-🎯 "Shoot through" is an old phrase meaning "pass through," not a weapon
+🧩 A shorter version secured the west wall
 
-📏 This central bar ran the full length of the wall in a single piece
+🏗️ Three walls became one connected structure
 
-👁️ It stayed completely hidden inside the boards, unseen but essential
+📖 Connection mattered as much as height
 
----
+## 🎯 Shoot Through The Boards
 
-## ✨ He Overlaid The Boards With Gold, And Made Their Rings Of Gold To Be Places For The Bars
+"Shoot through" is an old way of saying pass through, not a weapon.
 
-Every board, and every connecting ring the bars passed through, was covered in gold — hidden structural pieces no visitor would ever see got the same treatment as the most visible furniture. The standard was gold throughout the frame, not gold only where people could look at it.
+Most bars likely ran in shorter, connected sections along the wall.
 
-✨ Even hidden structural boards and rings were covered in gold
+This one middle bar ran the entire length of the wall in a single piece.
 
-👁️ No visitor would ever see this gold, since it was inside the walls
+It stayed completely hidden inside the boards, unseen but essential.
 
-🎯 The standard was gold throughout, not gold only where it would be seen
+🎯 Shoot through means to pass through
 
----
+📏 This bar ran the wall's full length
 
-## 🥇 And Overlaid The Bars With Gold
+👁️ It stayed hidden inside the boards
 
-The bars sliding through those gold rings were themselves gold-covered too, meaning the entire internal skeleton of the tabernacle's walls, boards, rings, and bars alike, was gold from the inside out, matching the same total-coverage standard already used on the ark in chapter 25.
+📖 What holds a structure up is often unseen
 
-🥇 The bars themselves were also fully overlaid with gold, inside and out
+## ✨ Overlaid The Boards With Gold
 
-🔁 This matches the ark's identical gold overlay of surfaces no one would see
+Every board, and every ring the bars passed through, was covered in gold.
 
-🏛️ The entire wall skeleton, not just the outer decoration, was gold-covered
+No visitor to the tabernacle would ever see this gold at all.
+
+It sat hidden inside the walls, never facing outward.
+
+The standard here was gold throughout, not gold only where people could look.
+
+✨ Hidden boards and rings were gold too
+
+👁️ No visitor would ever see this gold
+
+🎯 Gold covered everything, seen or unseen
+
+📖 Hidden faithfulness matched visible glory
+
+## 🥇 Overlaid The Bars With Gold
+
+The bars sliding through those gold rings were themselves gold covered too.
+
+The entire internal skeleton, boards, rings, and bars alike, was gold from the inside out.
+
+This matches the same total coverage standard already used on the ark itself.
+
+Nothing about the frame's inner skeleton was left plain or unfinished.
+
+🥇 Bars were gold covered, inside and out
+
+🔁 This matched the ark's own gold standard
+
+🏛️ The whole skeleton was gold, not just decoration
+
+📖 Even the frame reflected the same glory
 
 # Exodus 36:35-38
-
 # 🚪 The Veil And The Door
-
 ---
+## 🎨 A Vail Of Blue, And Purple, And Scarlet
 
-## 🎨 He Made A Vail Of Blue, And Purple, And Scarlet, And Fine Twined Linen: With Cherubims Made He It Of Cunning Work
+"Vail" is simply the old spelling of veil.
 
-**"Vail"** is the old spelling of veil. This curtain, dividing the Holy Place from the innermost Most Holy Place, used the exact same royal colors and cherubim imagery as the outermost linen layer covering the whole tabernacle — the same level of craftsmanship as the walls surrounding the ark itself.
+This curtain divided the Holy Place from the innermost Most Holy Place.
 
-🎨 "Vail" is simply the old spelling of veil
+It used the exact same royal colors as the outer linen ceiling.
 
-👑 It used the same royal colors and cherubim imagery as the linen ceiling
+Cherubims were woven into it too, using that same cunning work.
 
-🚧 This marked it as the most sacred barrier inside the entire structure
+This marked it as the most sacred barrier inside the whole structure.
 
----
+🎨 Vail is just the old spelling of veil
 
-## 🪵 He Made Thereunto Four Pillars Of Shittim Wood, And Overlaid Them With Gold
+👑 It reused the same royal colors
 
-Four gold-covered wooden pillars held the veil in place inside the tabernacle, standing between the Holy Place and the Most Holy Place. Because this veil stood deep inside the sacred interior, its pillars got the same fully gold-covered treatment as the ark and the boards, not a lesser finish.
+👼 Cherubims were woven in the same way
 
-🪵 Four gold-covered pillars held the veil upright inside the sanctuary
+📖 This was the most sacred inside barrier
 
-📍 These pillars stood between the Holy Place and the Most Holy Place
+## 🪵 Four Pillars Of Shittim Wood
 
-✨ Being deep inside the sacred space, they received a full gold covering
+Four gold covered wooden pillars held the veil upright inside the tabernacle.
 
----
+They stood exactly between the Holy Place and the Most Holy Place.
 
-## 🥇 Their Hooks Were Of Gold; And He Cast For Them Four Sockets Of Silver
+This veil sat deep inside the sacred interior of the whole structure.
 
-Even the small hooks holding the veil onto its pillars were gold, and the pillars themselves stood on silver sockets, matching the silver-footed boards forming the tabernacle's walls. Every detail this deep inside the structure followed the same gold-and-silver standard, nothing downgraded.
+Its pillars got the same full gold treatment as the ark and the boards.
 
-🥇 Even the small hooks attaching the veil were made of gold
+🪵 Four pillars held the veil upright
 
-🥈 These pillars stood on silver sockets, matching the wall boards nearby
+📍 They stood between the two holy rooms
 
-🎯 Nothing this deep inside the structure used a lesser material
+✨ Deep interior pieces got full gold cover
 
----
+📖 Nothing this close to the ark was plain
 
-## 🪡 He Made An Hanging For The Tabernacle Door Of Blue, And Purple, And Scarlet, And Fine Twined Linen, Of Needlework
+## 🥈 Four Sockets Of Silver
 
-**"Needlework"** describes embroidery, a real skill but one step simpler than the "cunning work" used for the inner veil. The entrance screen, the part every ordinary priest would actually see and pass through daily, used the same rich colors as the veil but with less elaborate craftsmanship than what stood hidden deepest inside.
+Even the small hooks holding the veil onto its pillars were made of gold.
 
-🪡 "Needlework" means embroidered work, a simpler skill than "cunning work"
+The pillars themselves stood on four silver sockets.
 
-🚪 This is the entrance screen every ordinary priest would see and use daily
+That matches the same silver footed pattern already seen on the wall boards.
 
-📉 The most public-facing part used less elaborate craft than the hidden veil
+Every detail this deep inside the structure followed one gold and silver standard.
 
----
+🥈 These pillars stood on silver sockets
 
-## 🥉 And The Five Pillars Of It With Their Hooks: And He Overlaid Their Chapiters And Their Fillets With Gold: But Their Five Sockets Were Of Brass
+🥇 Even the small hooks were gold
 
-**"Chapiters"** are the decorative tops (capitals) of the pillars, and **"fillets"** are decorative connecting bands or rings around them — both gold-covered here, just like the inner veil's pillars. But these entrance pillars stood on brass sockets, not silver, matching the established pattern of gold nearest the center, silver in between, and brass at the outermost, most public edge.
+🔁 This matched the wall boards' pattern
 
-🥉 "Chapiters" are pillar-top capitals; "fillets" are decorative connecting bands
+📖 One standard ran through the whole interior
 
-📊 These parts were gold, but the entrance pillars' sockets were brass, not silver
+## 🪡 An Hanging For The Tabernacle Door
 
-🎯 This closes out the whole chapter on the same gold-silver-brass gradient
+"Needlework" describes embroidery, a real skill but simpler than cunning work.
 
----
+This entrance screen used the same rich colors as the inner veil.
 
-## ✅ The Blueprint, Finally Built
+Every ordinary priest would actually see and pass through this screen daily.
 
-From the ten cherubim-woven curtains in verse 8 through this final brass-socketed doorway, this chapter has followed chapters 25 through 31's original mountain instructions in the same order, almost word for word, without a single deviation. What God privately showed Moses on the mountain has now, publicly and physically, actually been built.
+The most public facing part of the building used simpler craft than the hidden veil.
 
-✅ This chapter follows chapters 25-31's blueprint in order, without deviation
+🪡 Needlework is embroidery, simpler than cunning work
 
-⛰️ What God privately showed Moses has now become a real, physical building
+🚪 Priests saw and used this screen daily
 
-🏗️ The next chapter turns to the ark and furniture placed inside this frame`;
+🎨 Same rich colors, less elaborate craft
+
+📖 The most seen part was simplified on purpose
+
+## 🥉 Their Five Sockets Were Of Brass
+
+"Chapiters" are the decorative tops, or capitals, of the pillars.
+
+"Fillets" are decorative bands wrapped around them.
+
+Both were gold covered here, just like the inner veil's pillars.
+
+These entrance pillars stood on brass sockets instead of silver.
+
+That closes the whole chapter on one gold, silver, and brass pattern.
+
+🥉 Chapiters are pillar tops, fillets are bands
+
+🥇 Both were gold covered like the veil's pillars
+
+📉 These entrance sockets were brass, not silver
+
+📖 Gold, silver, and brass followed one pattern`.trim();
 
 export const EXODUS_THIRTY_SIX_PERSONAL_SECTIONS = parseExodusThirtySixRawNotes(EXODUS_THIRTY_SIX_RAW_NOTES);

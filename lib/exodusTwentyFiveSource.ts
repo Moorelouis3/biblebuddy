@@ -89,321 +89,824 @@ function parseExodusTwentyFiveRawNotes(rawText: string): ExodusTwentyFivePersona
 }
 
 const EXODUS_TWENTY_FIVE_RAW_NOTES = `# Exodus 25:1-9
-
 # 🎁 Bring Me An Offering
-
 ---
+## 🎁 That They Bring Me An Offering
 
-## 💛 Every Man That Giveth It Willingly With His Heart Ye Shall Take My Offering
+**"Offering"** means a gift, not a tax collected by force.
 
-God had just met with Moses on the mountain in chapter 24; now the very next instruction is about building Him a place to stay. But the materials for that place are not to be collected by force or by census tax. Only gifts given willingly count toward the sanctuary, so from the very first verse, worship here is tied to a willing heart, not a required quota.
+Moses is partway through forty days alone with God on the mountain.
 
-💛 The offering had to come from a willing heart, not a forced tax
+This is the first thing God asks him to say to Israel.
 
-🏕️ This immediately follows the covenant ceremony of chapter 24
+The entire tabernacle begins with an invitation, not an order.
 
-🙌 Worship is tied to willingness from the very first instruction
+🎁 Offering means a gift, not a tax
 
----
+⛰️ Moses is still on the mountain
 
-## 🥇 Gold, And Silver, And Brass
+📜 This is God's very first request
 
-These three metals are listed in descending value, and that order matters for the whole tabernacle. Gold will cover the innermost, holiest objects like the ark and mercy seat, silver will be used for the sockets that hold the structure together, and brass (properly bronze, a copper alloy) will be used for the outer altar that anyone could approach. The metal used for an object literally marks how close to God's presence that object sits.
+📖 The tabernacle begins with an invitation
 
-🥇 The order gold, silver, brass matches a scale of holiness, not just value
+## 🙌 Willingly With His Heart
 
-🏛️ Gold goes on the innermost furniture, brass on what sits outside
+God does not want gifts given out of guilt or pressure.
 
-📏 Where an object sits determines which metal covers it
+**"Willingly"** means each person chooses freely to give.
 
----
+No tax is assigned to anyone by a fixed amount.
 
-## 🧵 Blue, And Purple, And Scarlet, And Fine Linen, And Goats' Hair
+Exodus 35 later shows the people giving far more than needed.
 
-Blue, purple, and scarlet were the most expensive dyes in the ancient world, each one extracted from rare shellfish or insects at enormous cost. Fine linen was tightly woven Egyptian cotton-like cloth, a callback to the very land Israel had just left, now used for something holy instead of Pharaoh's projects. Goats' hair was a coarser, cheaper material used for the outer tent covering, showing that even humble materials had a place in God's house.
+Moses actually has to tell them to stop giving.
 
-🧵 Blue, purple, and scarlet were the three most expensive dyes available
+That flood of generosity traces back to this one condition.
 
-🇪🇬 Fine linen recalls Egypt's famous weaving, now repurposed for worship
+🙌 Willingly means freely chosen, not forced
 
-🐐 Goats' hair provided the plainer, functional layer of the tent
+🚫 No tax or fixed amount required
 
----
+💰 Exodus 35 shows people giving too much
 
-## 🐏 Rams' Skins Dyed Red, And Badgers' Skins, And Shittim Wood
+📖 Generosity here traces back to one condition
 
-**"Badgers' skins"** is an old translation choice; most scholars now think it means the tough, waterproof hide of a sea creature like a dugong or porpoise, used as a weatherproof outer layer over the tent. **"Shittim wood"** is acacia wood, a hard, dense, naturally rot-resistant timber that grows in the Sinai desert, exactly the kind of wood available to a nation camped in the wilderness and exactly durable enough to last for the tabernacle's centuries of use.
+## 🥇 Gold And Silver And Brass
 
-🌊 Badgers' skins likely means tough, waterproof hide, used as protection from weather
+These three metals are listed in order from most valuable to least.
 
-🌵 Shittim wood is acacia, a hard desert wood that resists rot
+Gold covers the most sacred objects, kept closest to God's presence.
 
-📍 Every material listed was something actually available to Israel in the wilderness
+Silver becomes the sockets that hold the structure together.
 
----
+**"Brass"** here means bronze, a mix of copper and tin.
 
-## 💍 Onyx Stones, And Stones To Be Set In The Ephod, And In The Breastplate
+Bronze covered the parts everyone could see and touch.
 
-The **"ephod"** and **"breastplate"** are pieces of the high priest's clothing, not described until Exodus 28. Mentioning them here, three chapters early, shows that God was already planning the whole priestly system before giving a single detail about it, the offering list and the priesthood were designed together from the start.
+The metal used on an object marks how close it sits to God.
 
-💍 The ephod and breastplate are priestly garments not detailed until Exodus 28
+🥇 Gold, silver, brass listed by value
 
-🧩 Naming them here shows the whole system was planned as one unit
+🏛️ Gold covers the most sacred objects
 
----
+🔩 Silver forms the structural sockets
 
-## 🏠 Let Them Make Me A Sanctuary; That I May Dwell Among Them
+📖 Materials marked closeness to God
 
-This is the whole reason for the entire tabernacle project stated in a single line. The word **"sanctuary"** simply means a set-apart, holy place. God does not ask for a house because He needs shelter; He asks for one so that His presence can dwell in the middle of the camp, among ordinary people, instead of staying distant on a mountain top they could not approach.
+## 🧵 Blue And Purple And Scarlet And Fine Linen And Goats' Hair
 
-🏠 A sanctuary is simply a set-apart, holy place
+Blue, purple, and scarlet were the three most expensive dyes in the ancient world.
 
-🤝 God wants to dwell among the people, not remain distant on the mountain
+Each color came from a rare shellfish or crushed insect.
 
-📖 This one verse is the purpose statement for the next fifteen chapters of instructions
+**"Fine linen"** was tightly woven cloth, famous as an Egyptian export.
 
----
+Israel had just left Egypt as slaves.
 
-## 📐 After The Pattern Of The Tabernacle... Shewed Thee
+Now that same fabric serves God instead of Pharaoh.
 
-Moses is told to build according to a **"pattern"** he was shown, meaning God gave him something like a vision or model to copy exactly, not creative freedom to design it himself. Hebrews 8:5 later looks back at this exact verse and says the earthly tabernacle was only "a shadow of heavenly things," a copy of something real that exists in heaven.
+**"Goats' hair"** was coarser and cheaper, used for the outer tent covering.
 
-📐 A pattern here means an exact model to copy, not free design
+Even the plain, ordinary material had a place in God's house.
 
-☁️ Moses was shown this pattern, likely in vision, during his time on the mountain
+🧵 Blue, purple, scarlet were the priciest dyes
 
-🌌 Hebrews 8:5 calls the whole earthly tabernacle a shadow of a heavenly original
+🐚 Each came from shellfish or insects
+
+🇪🇬 Fine linen recalls Egypt's famous weaving
+
+📖 Even goats' hair earned a place in worship
+
+## 🌊 Rams' Skins Dyed Red And Badgers' Skins And Shittim Wood
+
+**"Badgers' skins"** is an old translation guess.
+
+Most scholars now think it means the tough, waterproof hide of a sea creature.
+
+That hide became the tent's weatherproof outer layer.
+
+**"Shittim wood"** means acacia, a hard wood that resists rot.
+
+Acacia trees grow naturally in the Sinai desert, exactly where Israel was camped.
+
+Every material on this list was something the people could actually find around them.
+
+🌊 Badgers' skins likely means waterproof hide
+
+🌵 Shittim wood is acacia, a desert wood
+
+📍 Acacia grew right where Israel camped
+
+📖 God used materials the people already had
+
+## 🕯️ Spices For Anointing Oil And For Sweet Incense
+
+This oil was pure olive oil, kept burning in the lampstand described later in this chapter.
+
+**"Sweet incense"** was a specially mixed fragrance, burned only for God, never for ordinary use.
+
+Exodus 30 later gives the exact recipe for this incense.
+
+It also warns against copying that scent for anything ordinary.
+
+Light and fragrance were both part of worship, not just furniture and cloth.
+
+🕯️ Oil kept the lampstand burning
+
+🌸 Sweet incense was a specially mixed scent
+
+📜 Exodus 30 gives its exact recipe
+
+📖 Worship included smell and light, not just objects
+
+## 💍 Onyx Stones And Stones To Be Set In The Ephod
+
+The **"ephod"** and **"breastplate"** were pieces of the high priest's clothing.
+
+Exodus does not describe those garments in detail until chapter 28.
+
+God had already planned the whole priesthood before Moses knew any of its details.
+
+The offering list and the priesthood were designed together, as one connected system.
+
+👔 Ephod and breastplate are priestly garments
+
+📅 Not described in detail until Exodus 28
+
+🧩 God planned the priesthood before its details
+
+➡️ Offering and priesthood were one connected plan
+
+## 🏠 Let Them Make Me A Sanctuary
+
+**"Sanctuary"** simply means a place set apart as holy.
+
+God does not need shelter, since he owns the whole earth already.
+
+He wants a place his people can build for him, together.
+
+That act of building becomes part of the worship itself.
+
+🏠 Sanctuary means a set apart holy place
+
+🌍 God already owns the whole earth
+
+🤝 The people build it together
+
+📖 Building becomes an act of worship
+
+## 🤝 That I May Dwell Among Them
+
+This is the reason for the entire tabernacle, stated in one line.
+
+God does not want to stay distant on a mountain top no one can approach.
+
+He wants to live in the middle of the camp, among ordinary people.
+
+Every measurement and material in the chapters ahead exists to make room for that one goal.
+
+🏕️ Dwelling among them is the whole point
+
+⛰️ God refuses to stay distant on a mountain
+
+👥 He chooses to live among ordinary people
+
+📖 Every later chapter serves this one goal
+
+## 📐 According To All That I Shew Thee
+
+**"Shew"** is an old word for show.
+
+God is not asking Moses to design anything from his own imagination.
+
+Moses was shown an exact model, likely in a vision, during his time on the mountain.
+
+Hebrews 8:5 later looks back at this exact verse.
+
+It calls the whole earthly tabernacle a shadow of something real that exists in heaven.
+
+👀 Shew is an old word for show
+
+🚫 Moses invents nothing on his own
+
+🌌 He was shown an exact model to copy
+
+📖 Hebrews 8:5 quotes this exact verse
 
 # Exodus 25:10-16
-
 # 📦 The Ark Of The Covenant
-
 ---
+## 📏 Two Cubits And A Half Shall Be The Length Thereof
 
-## 📏 Two Cubits And A Half...A Cubit And A Half...A Cubit And A Half
+**"Cubit"** was the ancient measure from an elbow to a fingertip.
 
-A **"cubit"** was the ancient measurement from an adult's elbow to fingertip, roughly a foot and a half. That makes the ark of the covenant about three feet nine inches long and two feet three inches wide and tall, small enough to be carried by a few men, not a massive structure at all.
+That distance was close to a foot and a half.
 
-📏 A cubit is roughly the length from elbow to fingertip, about a foot and a half
+By that measure, the ark was about three feet nine inches long.
 
-📦 By that measure, the ark was only about 3'9" long and 2'3" wide and tall
+It stood about two feet three inches wide and the same tall.
 
-🚶 Its small size meant it was portable, carried rather than fixed in place
+An object that size could be carried by only a few men.
 
----
+📏 Cubit means elbow to fingertip length
 
-## ✨ Overlay It With Pure Gold, Within And Without
+📦 About 3 feet 9 inches long
 
-The ark's core was ordinary acacia wood, but it was covered in gold both inside and out, even on surfaces no human being would ever see once it was sealed shut. That detail matters: nothing about this object was meant to be halfway holy or cut corners where nobody was looking.
+🚶 Small enough to carry by hand
 
-✨ The wood core was covered in gold on every surface, seen or unseen
+📖 A portable box, not a monument
 
-👁️ Even the inside, which no one would ever view again once sealed, was still gold
+## ✨ Overlay It With Pure Gold
 
-🎯 Nothing about the ark's construction was meant to cut corners
+The ark's core was ordinary wood, covered completely in gold.
 
----
+Gold went on the inside and the outside alike.
 
-## 💍 Cast Four Rings Of Gold... Put Them Into The Rings By The Sides Of The Ark
+No one would ever see the inside again once the lid was set in place.
 
-The rings and staves (long carrying poles) were built into the ark's original design, not added later as an afterthought. Verse 15 goes on to say the staves were never to be removed from the rings, meaning the ark stayed permanently ready to be carried at any moment, since Israel would spend the next forty years as a moving camp.
+God still required gold there anyway.
 
-💍 Rings and carrying staves were part of the ark's original design, not an add-on
+Nothing about this object was allowed to be holy on the outside only.
 
-🚫 The staves were never to be taken out, so it stayed ready to move at all times
+✨ Gold covered both inside and outside
 
-🏕️ This fit a nation that would spend forty years traveling, not settled in one place
+👁️ The unseen inside still got gold
 
----
+🎯 Nothing here cut a hidden corner
 
-## 📜 Thou Shalt Put Into The Ark The Testimony Which I Shall Give Thee
+📖 Holiness was not just for show
 
-**"The testimony"** is another name for the two stone tablets of the Ten Commandments, called that because they testified to, or bore witness of, the covenant agreement made between God and Israel back in chapter 24. This name, "ark of the testimony," becomes one of the ark's most common titles throughout the rest of the Old Testament.
+## 👑 A Crown Of Gold Round About
 
-📜 "The testimony" refers to the two stone tablets of the Ten Commandments
+**"Crown"** here does not mean a king's headpiece.
 
-⚖️ They are called testimony because they bore witness to the covenant just made
+It means a raised gold molding that ran around the top edge of the ark.
 
-🏷️ "Ark of the testimony" becomes one of the ark's regular titles later in Scripture
+That rim likely helped hold the mercy seat lid firmly in place once it was set on top.
+
+Even a small decorative detail like this served a real, practical purpose.
+
+👑 Crown means a raised gold rim
+
+📦 It ran around the ark's top edge
+
+🔒 The rim likely helped seat the lid
+
+📖 Small details still served real purposes
+
+## 💍 Cast Four Rings Of Gold For It
+
+Four gold rings were fixed to the ark's four corners, two on each side.
+
+These rings were not decorative extras.
+
+They were the anchor points for the poles that would carry the ark.
+
+Every part of the design already assumed this box would travel.
+
+💍 Four gold rings sat at the corners
+
+🚫 Not decoration, but functional anchor points
+
+🚶 Poles would slide through these rings
+
+📖 The design assumed constant travel
+
+## 🪵 That The Ark May Be Borne With Them
+
+**"Staves"** means long carrying poles.
+
+They were made of the same shittim wood as the ark, then covered in gold.
+
+The poles slid through the four rings from the verse before.
+
+That let several men lift and carry the ark without ever touching the holy object itself.
+
+🪵 Staves means long wooden carrying poles
+
+✨ Gold covered the poles like the ark
+
+💍 Poles slid through the corner rings
+
+📖 Men carried the ark without touching it
+
+## 🚫 They Shall Not Be Taken From It
+
+This staves rule is different from anything said about the table or the altar later in this chapter.
+
+The poles were never to be removed from the rings, not even between trips.
+
+The ark stayed permanently ready to move.
+
+Israel would spend the next forty years as a traveling camp, not a settled nation.
+
+🚫 Staves were never removed from the rings
+
+🏕️ The ark stayed always ready to move
+
+📆 Israel would travel for forty years
+
+📖 Readiness was built into the design
+
+## 📜 Thou Shalt Put Into The Ark The Testimony
+
+**"The testimony"** is another name for the two stone tablets of the Ten Commandments.
+
+They are called testimony because they testified to the covenant Israel had just agreed to in chapter 24.
+
+**"Ark of the testimony"** becomes one of the ark's most common titles later in the Old Testament.
+
+The box was never meant to sit empty.
+
+It existed to hold God's own words.
+
+📜 Testimony means the two stone tablets
+
+⚖️ They testified to the covenant in chapter 24
+
+🏷️ Ark of the testimony becomes a common title
+
+📖 The ark existed to hold God's words
 
 # Exodus 25:17-22
-
 # 👼 The Mercy Seat
-
 ---
-
 ## ✨ Thou Shalt Make A Mercy Seat Of Pure Gold
 
-The **"mercy seat"** was a solid gold slab that served as the lid of the ark, and its Hebrew name is tied to the word for atonement, covering over sin. This is the exact spot where, once a year on the Day of Atonement described in Leviticus 16, the high priest would sprinkle blood to cover the nation's sin for another year.
+The **"mercy seat"** was a solid slab of gold that served as the ark's lid.
 
-✨ The mercy seat was a solid gold lid for the ark, not a separate object
+Its Hebrew name connects to the word for atonement, the covering over of sin.
 
-🩸 Its name connects to atonement, the covering over of sin
+Leviticus 16 describes the high priest sprinkling blood here once a year, on the Day of Atonement.
 
-📅 Leviticus 16 describes blood being sprinkled here once a year on the Day of Atonement
+This lid was not decoration.
 
----
+It was the most important surface in the whole tabernacle.
 
-## 🔨 Two Cherubims Of Gold, Of Beaten Work Shalt Thou Make Them
+✨ Mercy seat means the ark's gold lid
 
-**"Cherubims"** (the plural form of cherub) are a class of angelic being, not the round-cheeked infants later art would make them into; in Scripture they consistently function as guardians of holy space, the same kind of being placed at the entrance to Eden in Genesis 3:24 after Adam and Sin. **"Beaten work"** means hammered out of a single piece of gold, not cast in a mold or assembled from separate parts, an extremely difficult and skilled kind of metalwork.
+🩸 Its name connects to atonement, covering sin
 
-👼 Cherubims are guardian angelic beings, not the cherub-infants of later art
+📅 Leviticus 16 describes blood sprinkled here yearly
 
-🚪 The same kind of being guarded the entrance to Eden in Genesis 3:24
+📖 This lid was the tabernacle's most important surface
 
-🔨 "Beaten work" means hammered from one solid piece of gold, not cast or assembled
+## 👼 Two Cherubims Of Gold Of Beaten Work
 
----
+**"Cherubims"** are a class of angelic being, not the round cheeked infants later art imagined.
 
-## 🕊️ The Cherubims Shall Stretch Forth Their Wings On High, Covering The Mercy Seat
+In Scripture, cherubim consistently guard holy space.
 
-The two golden cherubim faced each other with wings spread up and over the mercy seat, forming a kind of canopy or throne above the gold lid. This imagery pictures the mercy seat as God's throne on earth, with the cherubim serving as its guardians, exactly matching how cherubim are described surrounding God's throne in Ezekiel's visions later.
+Genesis 3:24 places the same kind of being at the entrance to Eden.
 
-🕊️ Their wings formed a canopy over the mercy seat, framing it like a throne
+**"Beaten work"** means hammered from one solid piece of gold, not cast in a mold.
 
-👑 This pictures the mercy seat as God's throne on earth
+One cherub stood on each end of the mercy seat, facing inward.
 
-🔗 Ezekiel later sees cherubim surrounding God's throne in a very similar way
+👼 Cherubims are guardian angels, not infants
 
----
+🚪 The same beings guarded Eden's entrance
 
-## 🗣️ There I Will Meet With Thee, And I Will Commune With Thee From Above The Mercy Seat
+🔨 Beaten work means hammered from one piece
 
-This is the specific spot God names as His meeting point with Moses and, through him, with the whole nation. **"Commune"** simply means to talk with or converse with, so this single object becomes the designated place where heaven and earth exchange words, the very reason the entire structure is called the "tent of meeting" elsewhere in Exodus.
+📖 Guardians framed the holiest object in Israel
 
-🗣️ "Commune" simply means to talk with or converse with
+## 🕊️ Stretch Forth Their Wings On High
 
-📍 The mercy seat is the specific spot God designates for meeting with Israel
+The two cherubim spread their wings up and over the mercy seat.
 
-⛺ This is why the whole structure gets called the "tent of meeting" elsewhere
+Together the wings formed a kind of canopy above the gold lid.
+
+That image pictures the mercy seat as a throne, with wings as its covering.
+
+Ezekiel later sees cherubim surrounding God's throne in a very similar way.
+
+🕊️ Wings formed a canopy over the seat
+
+👑 The image pictures a throne, not a box
+
+🔗 Ezekiel later echoes this same picture
+
+📖 The mercy seat functioned as God's throne
+
+## 👀 Their Faces Shall Look One To Another
+
+The two cherubim did not face outward toward the room.
+
+They faced each other, with their eyes turned down toward the mercy seat between them.
+
+That posture points every line of sight toward the same spot, the place of atonement.
+
+Nothing about this design pulled attention away from where blood would be sprinkled.
+
+👀 Cherubim faced each other, not outward
+
+📍 Their gaze pointed to the mercy seat
+
+🩸 Every line of sight met the atonement spot
+
+📖 The design centers attention on one place
+
+## 📦 Put The Mercy Seat Above Upon The Ark
+
+The mercy seat sat as a lid directly on top of the ark.
+
+Verse 21 repeats the instruction to place the testimony tablets inside first.
+
+That repetition is not an accident.
+
+It ties the golden throne above to the stone law hidden beneath it.
+
+Mercy is pictured sitting directly above the law, never replacing it.
+
+📦 The mercy seat sat as the ark's lid
+
+📜 The testimony tablets go inside first
+
+🔗 Gold throne sits above stone law
+
+📖 Mercy sits above the law, not against it
+
+## 📍 There I Will Meet With Thee
+
+God names this exact spot as his meeting point with Moses.
+
+Every other instruction about the tabernacle flows from this one promise.
+
+This single object becomes the designated place where heaven speaks to earth.
+
+That is why the whole structure later gets called the tent of meeting.
+
+📍 God names this His meeting point
+
+🗣️ Heaven and earth exchange words here
+
+⛺ Source of the name tent of meeting
+
+📖 Every other instruction flows from this promise
+
+## 🗣️ I Will Commune With Thee From Above The Mercy Seat
+
+**"Commune"** simply means to talk with or converse with someone.
+
+God promises ongoing conversation, not a single one time appearance.
+
+That conversation happens specifically from between the two cherubim, above the mercy seat.
+
+Every command Moses receives for Israel from this point on comes from that exact spot.
+
+🗣️ Commune means to talk with someone
+
+🔁 God promises ongoing conversation, not one visit
+
+📍 Speech comes from between the cherubim
+
+📖 Every future command traces back to this spot
 
 # Exodus 25:23-30
-
 # 🍞 The Table Of Shewbread
-
 ---
-
 ## 🪵 Thou Shalt Also Make A Table Of Shittim Wood
 
-Like the ark, the table was built from acacia wood and then overlaid with gold, but at roughly three feet by a foot and a half, it was sized like ordinary furniture, since its purpose was to display food, not house the covenant tablets.
+Like the ark, this table used shittim wood covered in gold.
 
-🪵 The table used the same shittim (acacia) wood and gold overlay as the ark
+At about three feet by a foot and a half, it was sized like ordinary furniture.
 
-📏 At about 3 feet by 1.5 feet, it was sized like an actual piece of furniture
+Its purpose was to display food, not to house the covenant tablets.
 
-🍽️ Its purpose was to display food, unlike the ark's purpose of housing the tablets
+Two objects, same materials, completely different jobs.
 
----
+🪵 Same wood and gold as the ark
 
-## 🎀 A Border Of An Hand Breadth Round About
+📏 About 3 feet by 1 foot 6 inches
 
-A **"hand breadth"** was a small unit of measure, about the width of a hand, roughly three to four inches. This decorative gold rim ran around the table's edge, likely both to finish it beautifully and to help keep items from sliding off during travel.
+🍽️ Built to display food, not tablets
 
-🎀 A hand breadth is a small unit of measure, about three to four inches
+📖 Same materials, two very different purposes
 
-✨ This gold rim finished the table's edge decoratively
+## 👑 Make Thereto A Crown Of Gold Round About
 
-🚚 It likely also helped keep items in place while the table was being carried
+Gold covered the whole table, just as it covered the ark.
 
----
+A **"crown"** here again means a raised molding, not a king's headpiece.
 
-## 🍶 Dishes... Spoons... Covers... Bowls, To Cover Withal
+This gold rim ran around the tabletop's upper edge.
 
-This list of gold vessels was for serving alongside the bread: dishes to hold it, spoons for incense, and bowls and covers for the drink offerings (wine) that accompanied the bread. Every piece of equipment needed for this ongoing meal was specified in advance, down to the smallest utensil.
+The same word and the same craftsmanship link the ark and the table together.
 
-🍶 These vessels served the bread and its accompanying wine offerings
+✨ Gold overlay matched the ark's treatment
 
-🥄 The "spoons" specifically held incense set alongside the bread
+👑 Crown means a raised rim, not a headpiece
 
-📋 Every utensil needed was specified in advance, down to the smallest piece
+📦 The rim ran around the top edge
 
----
+📖 Shared language links the ark and table
+
+## ✋ A Border Of An Hand Breadth Round About
+
+A **"hand breadth"** was a small unit of measure, about three or four inches.
+
+This was a second border, lower than the gold crown from the verse before.
+
+The border likely kept the vessels of bread and wine from sliding off during travel.
+
+A small design choice protected what sat on top of it.
+
+✋ Hand breadth means about three to four inches
+
+📏 A second, lower border than the crown
+
+🍞 It likely kept the vessels from sliding
+
+📖 Small details protected what mattered on top
+
+## 💍 Put The Rings In The Four Corners
+
+Four gold rings were attached to the table's four legs.
+
+These match the four rings already built into the ark's design.
+
+The whole tabernacle's furniture followed the same portable pattern.
+
+Nothing in this house of God was meant to stay fixed in one spot.
+
+💍 Four rings sat at the table's legs
+
+📦 This matches the ark's own rings
+
+🔁 One portable pattern across all the furniture
+
+📖 Nothing here was built to stay still
+
+## 📍 Over Against The Border Shall The Rings Be
+
+The rings were not placed just anywhere.
+
+They sat high up, close to the border.
+
+That border was the decorative rim described in verse 25.
+
+The placement was on purpose.
+
+Think about carrying a full tray of drinks.
+
+Hold it low and loose and everything slides.
+
+Grip it near the top edge and it stays flat.
+
+The poles slid through these rings and the table stayed level while men carried it.
+
+📍 The rings sat high, near the border
+
+⚖️ High placement kept the table level
+
+🍞 The bread stayed on it while it moved
+
+📖 God designed the carrying, not just the object
+
+## ✨ That The Table May Be Borne With Them
+
+The carrying poles for the table were shittim wood covered in gold.
+
+That matched the ark's own poles exactly.
+
+These poles slid through the rings from the verse before.
+
+The table was always ready to travel with the rest of the camp.
+
+🪵 Table poles matched the ark's poles
+
+✨ Both were shittim wood covered in gold
+
+💍 Poles slid through the rings already placed
+
+📖 The table stayed ready to travel too
+
+## 🍶 Dishes And Spoons And Covers And Bowls To Cover Withal
+
+This list of gold vessels served the bread and its accompanying wine offering.
+
+**"Dishes"** held the bread itself.
+
+**"Spoons"** held incense set alongside it.
+
+**"Covers"** and **"bowls"** handled the drink offering poured with the meal.
+
+Every utensil this table would ever need was specified before it was even built.
+
+🍶 Vessels served both bread and wine
+
+🥄 Spoons specifically carried incense
+
+📋 Every needed utensil was specified in advance
+
+📖 Nothing about this meal was left unplanned
 
 ## 🍞 Thou Shalt Set Upon The Table Shewbread Before Me Alway
 
-**"Shewbread"** literally means "bread of the presence" or "bread of display." Leviticus 24:5-9 later explains that twelve loaves, one for each tribe of Israel, sat on this table at all times and were replaced weekly, a constant, physical reminder that all twelve tribes stood continually in God's presence, even when their people were miles away going about ordinary life.
+**"Shewbread"** literally means bread of the presence, bread on constant display before God.
 
-🍞 Shewbread means "bread of the presence," bread constantly on display before God
+Leviticus 24 later explains that twelve loaves sat here, one for each tribe of Israel.
 
-🔢 Leviticus 24 explains twelve loaves represented the twelve tribes
+Those loaves were replaced weekly, never left to grow old or stale.
 
-⏳ The word "alway" means this bread was never absent, only ever replaced
+The word **"alway"** means this bread was never actually absent, only ever replaced.
+
+Twelve tribes stood continually in God's presence through this bread.
+
+That stayed true even when their people were far away living ordinary life.
+
+🍞 Shewbread means bread of God's presence
+
+🔢 Twelve loaves represented the twelve tribes
+
+🔁 Loaves were replaced weekly, never stale
+
+📖 Alway means never absent, only replaced
 
 # Exodus 25:31-40
-
 # 🕎 The Golden Candlestick
-
 ---
+## 🔨 Of Beaten Work Shall The Candlestick Be Made
 
-## 🔨 Thou Shalt Make A Candlestick Of Pure Gold: Of Beaten Work Shall The Candlestick Be Made
+The whole lampstand was hammered from one solid piece of gold.
 
-Like the cherubim, the entire lampstand, base, shaft, and all six branches together, was hammered from a single solid piece of gold rather than cast or welded together from parts. That level of craftsmanship demanded exceptional skill, and Exodus later credits Bezaleel, filled with the Spirit of God, as the craftsman able to execute it.
+That includes the base, the shaft, and all six branches together.
 
-🔨 The whole lampstand was hammered from one solid piece of gold, not assembled
+Nothing was cast in a mold or welded from separate parts.
 
-🎨 This required an extraordinary level of metalworking skill
+That level of craftsmanship demanded extraordinary skill.
 
-✝️ Bezaleel, described as filled with God's Spirit for the work, later builds it
+Exodus later names Bezaleel, filled with God's Spirit, as the craftsman able to do it.
 
----
+🔨 One solid piece, not assembled parts
 
-## 🌿 Six Branches Shall Come Out Of The Sides Of It; Three Branches... Out Of The One Side, And Three Branches... Out Of The Other Side
+🎨 This demanded extraordinary metalworking skill
 
-The design was one central shaft with three branches curving up from each side, for a total of seven lamps altogether once the main shaft's own lamp is counted. Seven is the number of completeness throughout Scripture, and later Jewish and Christian writers alike saw this seven-branched shape as a picture of complete, perfect light.
+✝️ Bezaleel later builds it, filled with God's Spirit
 
-🌿 Six side branches plus the central shaft made seven lamps total
+📖 Skill itself became part of the offering
 
-7️⃣ Seven is the number of completeness used throughout Scripture
+## 🌿 Six Branches Shall Come Out Of The Sides Of It
 
-💡 The shape became a lasting picture of complete, perfect light
+The design was one central shaft with three branches curving up from each side.
 
----
+That makes seven lamps total once the shaft's own lamp is counted.
 
-## 🌸 Bowls Made Like Unto Almonds, With A Knop And A Flower
+**"Seven"** is the number of completeness used throughout Scripture.
 
-A **"knop"** is an old word for an ornamental knob or bud shape, carved here to look like an almond blossom. The almond tree was the first tree to bloom each year in the region, so its blossom already symbolized new life and awakening; that same almond imagery reappears later in Numbers 17 when Aaron's rod miraculously buds, blossoms, and produces almonds overnight as proof of his priesthood.
+Later Jewish and Christian writers alike saw this shape as a picture of complete light.
 
-🌸 A knop is an ornamental bud shape, carved here like an almond blossom
+🌿 Three branches curved up from each side
 
-🌱 Almond trees bloomed first each year, symbolizing new life and awakening
+🪔 Seven lamps total, shaft included
 
-🪄 The same almond imagery reappears when Aaron's rod buds in Numbers 17
+✨ Seven is Scripture's number of completeness
 
----
+📖 The shape pictured complete, perfect light
 
-## 🔧 The Tongs Thereof, And The Snuffdishes Thereof, Shall Be Of Pure Gold
+## 🌸 Three Bowls Made Like Unto Almonds
 
-**"Snuffdishes"** were small trays used to catch the burnt wick trimmings when the lamps were tended, and **"tongs"** were the tool used to trim the wicks themselves. Even these purely maintenance tools, the least glamorous part of the whole design, were still required to be made of pure gold, not a cheaper metal.
+A **"knop"** is an old word for an ornamental bud shape.
 
-🔧 Snuffdishes caught the trimmed, burnt wick pieces from the lamps
+Each one was carved to look like an almond blossom.
 
-✂️ Tongs were the tool used to trim the wicks
+The almond tree bloomed first each year in that region, ahead of every other tree.
 
-🥇 Even these small maintenance tools had to be made of pure gold
+Its blossom already stood for new life and a fresh start.
 
----
+🌸 Knop means an ornamental bud shape
 
-## ⚖️ Of A Talent Of Pure Gold Shall He Make It, With All These Vessels
+🌱 Carved to look like an almond blossom
 
-A **"talent"** was the largest unit of weight in the ancient world, roughly seventy-five pounds. That means the lampstand and all of its accompanying gold tools together were hammered from a single, enormous mass of gold, an almost unimaginable amount of wealth poured into one piece of tabernacle furniture.
+📆 Almonds bloomed first each year there
 
-⚖️ A talent was roughly seventy-five pounds, the largest weight unit of the era
+📖 The shape pictured new life
 
-💰 The entire lampstand and its tools came from that one massive block of gold
+## 🔢 Four Bowls Made Like Unto Almonds
 
-😮 This represents an enormous concentration of wealth in a single object
+Each side branch carried three almond bowls, but the central shaft carried four.
 
----
+The extra bowl marked the central shaft as the piece the other six branches grew out from.
 
-## 📐 Look That Thou Make Them After Their Pattern, Which Was Shewed Thee In The Mount
+Numbers 17 later tells of Aaron's rod, which buds, blossoms, and produces almonds overnight as proof of his priesthood.
 
-The chapter closes exactly the way it opened, back at the pattern God showed Moses on the mountain in verse 9. Nothing in the tabernacle's furniture was left to human invention from beginning to end; every object, right down to a lamp's decorative knops, matched a design Moses had already been shown before he ever picked up a tool.
+The same almond image marks both the lampstand and Aaron's own authority.
 
-📐 This closing line echoes the same "pattern" language from verse 9
+🔢 Central shaft got four bowls, branches three
 
-🔁 The chapter is bookended by the same instruction: build exactly what was shown
+🌳 The extra bowl marked the main shaft
 
-🛠️ Nothing in this furniture list was left to human invention`;
+🪄 Aaron's rod later buds in Numbers 17
+
+📖 One almond image, two different proofs
+
+## 🔗 A Knop Under Two Branches Of The Same
+
+Verse 35 repeats the same phrase three times, once for each pair of branches.
+
+Each knop sat at the exact point where a pair of branches met the central shaft.
+
+That was not just decoration.
+
+It marked and strengthened every joint where the metal actually had to bear weight.
+
+🔁 The same phrase repeats three times
+
+🔗 A knop marked each joint point
+
+💪 Every joint also had to bear weight
+
+📖 Beauty and structure shared the same spot
+
+## ✨ All It Shall Be One Beaten Work Of Pure Gold
+
+Verse 36 states plainly what the last several verses have been showing all along.
+
+Shaft, branches, bowls, knops, and flowers were never separate pieces joined together.
+
+They were one single piece of gold from the very start.
+
+A design this unified left no seams for anyone to hide a shortcut in.
+
+🔗 Shaft, branches, and flowers all connect
+
+🚫 No seams to hide a shortcut in
+
+✨ Unity itself was part of the design
+
+📖 One piece, not several joined together
+
+## 🔥 Thou Shalt Make The Seven Lamps Thereof
+
+The **"lamps"** were small oil containers set on top of each branch, not the branches themselves.
+
+Each one held oil and a wick, lit fresh every evening by the priests.
+
+The lamps were set to shine **"over against it"**, meaning toward the table of shewbread across the room.
+
+Light from one piece of furniture fell directly onto the bread of another.
+
+🔥 Lamps were small oil containers on top
+
+🕯️ Priests lit them fresh each evening
+
+🍞 Their light aimed at the shewbread table
+
+📖 One object's light fell on another
+
+## ✂️ The Tongs Thereof And The Snuffdishes Thereof
+
+**"Snuffdishes"** were small trays that caught the burnt wick trimmings.
+
+**"Tongs"** were the tool used to trim the wicks themselves.
+
+These were maintenance tools, the least glamorous part of the whole design.
+
+They still had to be made of pure gold, not a cheaper metal.
+
+🧹 Snuffdishes caught the burnt wick pieces
+
+✂️ Tongs trimmed the wicks themselves
+
+🥇 Even cleanup tools were made of gold
+
+📖 Nothing here was allowed to be cheap
+
+## ⚖️ Of A Talent Of Pure Gold Shall He Make It
+
+A **"talent"** was the largest unit of weight in the ancient world.
+
+It weighed close to seventy five pounds.
+
+The lampstand and every one of its gold tools came from that single, massive block.
+
+That much gold represented an almost unimaginable amount of wealth in one object.
+
+⚖️ Talent means about seventy five pounds
+
+💰 One huge block supplied the whole lampstand
+
+😮 An enormous concentration of wealth
+
+📖 Wealth itself became an offering
+
+## 📐 Look That Thou Make Them After Their Pattern
+
+The chapter closes exactly the way it opened, back at the pattern from verse nine.
+
+Nothing in the tabernacle's furniture was left to human invention.
+
+Every object, down to a lamp's decorative knops, matched a design Moses had already been shown.
+
+He saw all of this before he ever picked up a single tool.
+
+🔁 The chapter ends where it began
+
+📐 Every detail matched a shown pattern
+
+🚫 Nothing was left to human invention
+
+📖 Moses built only what he was shown`.trim();
 
 export const EXODUS_TWENTY_FIVE_PERSONAL_SECTIONS = parseExodusTwentyFiveRawNotes(EXODUS_TWENTY_FIVE_RAW_NOTES);

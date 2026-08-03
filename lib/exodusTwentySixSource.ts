@@ -81,287 +81,682 @@ function parseExodusTwentySixRawNotes(rawText: string): ExodusTwentySixPersonalS
     });
   }
 
-  if (sections.length !== 6) {
-    throw new Error("Expected 6 Exodus 26 sections, received " + sections.length);
+  if (sections.length !== 7) {
+    throw new Error("Expected 7 Exodus 26 sections, received " + sections.length);
   }
 
   return sections;
 }
 
 const EXODUS_TWENTY_SIX_RAW_NOTES = `# Exodus 26:1-6
-
-# 🧵 The Linen Curtains
-
+# 🧵 The Inner Curtains
 ---
+## 🎨 With Cherubims Of Cunning Work Shalt Thou Make Them
 
-## 🎨 Ten Curtains Of Fine Twined Linen... With Cherubims Of Cunning Work Shalt Thou Make Them
+"Cunning work" means expert, artistic craftsmanship.
 
-**"Cunning work"** is an old phrase for highly skilled, artistic craftsmanship, not trickery or deceit. This first, innermost layer of the tabernacle had cherubim actually woven directly into the fabric itself, so the same guardian figures overshadowing the mercy seat in chapter 25 were also built into the walls and ceiling surrounding it, on every side.
+It does not mean trickery.
 
-🎨 "Cunning work" means expert, artistic craftsmanship, not trickery
+Ten curtains of fine linen made the tabernacle's inner layer.
 
-👼 Cherubim were woven directly into this innermost layer of fabric
+Cherubim were woven directly into the fabric itself.
 
-🏠 The same guardian imagery from the mercy seat now surrounds the whole space
+That is the same guardian figure watching over the mercy seat in chapter twenty five.
 
----
+Now guardians covered the whole room, not just the lid of the ark.
 
-## 📏 The Length Of One Curtain Shall Be Eight And Twenty Cubits, And The Breadth... Four Cubits
+🎨 Cunning work means skilled craftsmanship
 
-At roughly a foot and a half per cubit, each curtain measured about forty-two feet long and six feet wide. Ten of these curtains, sewn together in two groups of five, formed the entire inner ceiling and wall lining of the tabernacle, an enormous amount of skilled weaving for a people living in tents in the desert.
+👼 Cherubim were woven into the fabric
 
-📏 Each curtain measured roughly 42 feet long and 6 feet wide
+🏠 The same guardians now covered the room
 
-🧵 Ten curtains together formed the tabernacle's entire inner lining
+📖 God's presence was surrounded by guardians
 
-🏕️ This was an enormous weaving project for a nomadic desert nation
+## 📏 The Length Of One Curtain Shall Be Eight And Twenty Cubits
 
----
+A cubit measured about eighteen inches, close to a grown man's forearm.
 
-## 🔗 Fifty Taches Of Gold... Couple The Curtains Together... It Shall Be One Tabernacle
+Eight and twenty cubits comes to about forty two feet.
 
-**"Taches"** is an old word for clasps or hooks. Fifty golden clasps locked the two sets of five curtains into a single, seamless covering, and the text makes a point of saying the result "shall be one tabernacle," not two halves joined together. Unity, not just decoration, was the goal of this design.
+Four cubits comes to about six feet.
 
-🔗 Taches are clasps or hooks, here made of gold
+Each curtain stretched forty two feet long and six feet wide.
 
-🧩 Fifty gold clasps joined two sets of curtains into a single seamless whole
+Ten of these curtains together made an enormous amount of cloth.
 
-☝️ The text specifically emphasizes "one tabernacle," not two halves
+Every curtain matched the others in exact measure.
+
+Precision came first, before a single curtain was ever hung.
+
+📏 A cubit was about eighteen inches
+
+🧮 Eight and twenty cubits equals forty two feet
+
+🧵 Each curtain measured forty two by six feet
+
+📖 Exact measure came before anything was hung
+
+## 🔵 The Five Curtains Shall Be Coupled Together One To Another
+
+The ten curtains were sewn into two separate sets of five.
+
+Loops of blue thread ran along the edge of the outer curtain in each set.
+
+"Selvedge" is the finished edge of a woven cloth that will not fray.
+
+Fifty matching loops lined the edge of each set.
+
+Think of two rows of zipper teeth waiting to interlock.
+
+That is what these loops were built to do.
+
+Nothing about this joining was left to guesswork.
+
+🧵 Two sets of five curtains were sewn
+
+🔵 Blue loops lined the edge of each set
+
+🤐 Selvedge means a fray proof woven edge
+
+📖 Fifty loops on each side, ready to interlock
+
+## 🔗 Thou Shalt Make Fifty Taches Of Gold
+
+"Taches" is an old word for clasps or hooks.
+
+Fifty golden clasps locked the two halves of curtains into a single sheet.
+
+The text does not call the result two curtains joined together.
+
+It calls the result one tabernacle.
+
+God cared about unity, not just decoration.
+
+A tent built from many pieces was meant to function and look like one single house.
+
+🔗 Taches means clasps or hooks
+
+🥇 Fifty gold clasps joined the two halves
+
+☝️ The result is called one tabernacle
+
+📖 God designed unity, not just decoration
 
 # Exodus 26:7-14
-
 # 🐐 The Outer Coverings
-
 ---
+## 🐐 Curtains Of Goats' Hair To Be A Covering Upon The Tabernacle
 
-## 🐐 Curtains Of Goats' Hair... Eleven Curtains Shalt Thou Make
+Goats' hair was the standard material for ordinary desert tents.
 
-A second, plainer layer went directly over the beautiful linen curtains: coarse goats' hair, the standard material for ordinary desert tents. Notice there are eleven of these instead of ten, one more than the inner layer, and that extra curtain becomes important two verses later.
+This second layer went directly over the beautiful linen curtains underneath.
 
-🐐 Goats' hair was the standard, plain material used for ordinary desert tents
+Any traveler seeing the outside of this tent would see nothing special.
 
-🔢 There are eleven goat-hair curtains, one more than the ten linen curtains
+The glory was hidden one layer beneath a plain, common material.
 
-👀 That one extra curtain has a specific purpose coming up next
+Notice there are eleven curtains here, not ten like the inner layer.
 
----
+That extra curtain has a purpose that shows up two verses later.
+
+🐐 Goats hair was common desert tent material
+
+🎭 A plain outer layer hid the glory inside
+
+🔢 Eleven curtains, one more than the inner ten
+
+📖 The extra curtain has a purpose ahead
+
+## 📐 The Length Of One Curtain Shall Be Thirty Cubits
+
+Thirty cubits comes to about forty five feet long.
+
+Four cubits comes to about six feet wide.
+
+That makes this outer layer three feet longer than the linen curtains underneath.
+
+The extra length let the goat hair layer wrap further down the sides.
+
+A covering has to be bigger than what it covers, or it will not reach.
+
+📏 Thirty cubits equals about forty five feet
+
+📐 This layer ran three feet longer than linen
+
+🧥 Extra length let it wrap further down
+
+📖 A covering must exceed what it covers
 
 ## ➕ Double The Sixth Curtain In The Forefront Of The Tabernacle
 
-**"Forefront"** means the front, facing entrance. That extra eleventh curtain was folded double at the entrance, giving the doorway area extra thickness and coverage where the tent would be handled most and exposed to the weather most directly.
+"Forefront" means the front, facing entrance of the tabernacle.
 
-➕ "Forefront" simply means the front-facing entrance
+Six curtains were coupled on one side, five on the other, not an even split.
 
-🚪 The extra curtain was folded double specifically at the entrance
+The sixth curtain, the extra one, was folded double right at the entrance.
 
-🌧️ This gave the most-used, most-exposed area extra protection
+That doubled the thickness exactly where the tent would be touched and weathered most.
 
----
+The design put extra strength where it would actually be needed.
+
+🚪 Forefront means the front facing entrance
+
+⚖️ Six curtains on one side, five on other
+
+➕ The sixth curtain folded double at the entrance
+
+📖 Extra strength went where it was needed most
 
 ## 🥉 Fifty Taches Of Brass, And Put The Taches Into The Loops
 
-The clasps joining this second layer were brass, not gold. This matches a pattern already seen with the sanctuary's furniture: gold marks what's closest to God's presence, and brass marks the outer, more exposed layers, even down to the small clasps holding curtains together.
+This second layer used fifty loops and fifty clasps too, just like the first.
 
-🥉 These clasps were brass, not gold, unlike the inner linen layer's clasps
+But these clasps were brass, not gold.
 
-📉 Brass consistently marks the outer, more exposed layers of the tabernacle
+Chapter twenty five already showed gold on the furniture closest to God's presence.
 
-🔁 This is the same gold-to-brass gradient already seen in the furniture in chapter 25
+Brass now marks this outer, more exposed layer of the tent.
 
----
+The same materials keep repeating the same lesson, gold inside, brass outside.
 
-## 🐏 Rams' Skins Dyed Red... A Covering Above Of Badgers' Skins
+🥉 These clasps were brass, not gold
 
-Two more layers went on top of the goats' hair: red-dyed ram hide, then a tough, waterproof outer layer, likely the hide of a sea creature like a dugong, on top of everything. From the inside out, the tabernacle had four total layers, from cherubim-woven linen down to a plain, weatherproof hide roof that gave no hint at all of the glory hidden underneath.
+🔁 Gold marked the furniture nearest God
 
-🐏 Two more layers, dyed ram hide and a tough waterproof hide, went on top
+📉 Brass marked the outer, exposed layers
 
-🎭 The plain outer layer gave no hint of the beauty hidden inside
+📖 Materials themselves carried a lesson here
 
-✨ Four total layers ran from glorious linen inward to weatherproof hide outward
+## ✂️ The Half Curtain That Remaineth Shall Hang Over The Backside Of The Tabernacle
 
-# Exodus 26:15-25
+"Remnant" here just means the leftover portion.
 
+The goat hair layer measured more cloth than the linen layer beneath it.
+
+That extra cloth was not wasted or cut away.
+
+It hung down over the back and both sides of the structure instead.
+
+Every excess inch still had a purpose, covering wood that would otherwise show.
+
+✂️ Remnant means the leftover cloth
+
+📏 The outer layer had extra length built in
+
+🏠 That extra cloth hung over the sides
+
+📖 Nothing extra went to waste here
+
+## 🐏 Rams' Skins Dyed Red, And A Covering Above Of Badgers' Skins
+
+Two more layers went on top of everything already described.
+
+Ram hide dyed red came first.
+
+Then a tough, weatherproof hide, likely from a sea creature, went over that.
+
+From the inside out, the tabernacle now had four total layers.
+
+Cherubim woven linen sat closest to God, and a plain hide roof sat outermost.
+
+Nobody standing outside could guess what beauty was hidden under that plain roof.
+
+🐏 Ram hide dyed red came next
+
+🌊 A tough sea creature hide went on top
+
+🔢 Four total layers ran from linen to hide
+
+📖 Plain outside, glorious inside
+
+# Exodus 26:15-19
 # 🪵 The Standing Boards
-
 ---
-
 ## 🪵 Boards For The Tabernacle Of Shittim Wood Standing Up
 
-Underneath all those curtain layers stood the actual walls: solid, upright boards of shittim (acacia) wood, the same rot-resistant desert timber used for the ark and table in chapter 25. This was the structural skeleton the curtains were draped over, not a simple cloth tent held up by poles alone.
+Shittim wood is acacia, a hard, rot resistant wood that grows in the desert.
 
-🪵 Shittim (acacia) wood boards formed the tabernacle's actual structural walls
+That is the same wood already used for the ark and the table in chapter twenty five.
 
-🏗️ The curtains were draped over this wooden skeleton, not just poles
+Underneath all the curtain layers already described stood a real wooden frame.
 
-🔁 This is the same durable wood already used for the ark and table
+These boards were not laid flat like a floor.
 
----
+They stood upright, forming actual walls.
 
-## 📐 Ten Cubits Shall Be The Length Of A Board, And A Cubit And A Half The Breadth
+This was a built structure, not a simple tent held up by poles alone.
 
-At roughly a foot and a half per cubit, each board stood about fifteen feet tall and just over two feet wide. Twenty of these boards lined each long side, meaning the finished structure had real height and real walls, not a low, sagging tent.
+🪵 Shittim wood means acacia, hard and rot resistant
 
-📐 Each board stood about 15 feet tall and just over 2 feet wide
+🔁 The same wood as the ark and table
 
-🧱 Twenty boards lined each of the two long sides of the tabernacle
+🧱 Boards stood upright as real walls
 
-🏠 The result was a structure with genuine height, not a low, sagging tent
+📖 A built structure, not just a tent
 
----
+## 📐 Ten Cubits Shall Be The Length Of A Board
+
+Ten cubits comes to about fifteen feet tall.
+
+A cubit and a half comes to a little over two feet wide.
+
+Twenty of these boards lined each long side of the tabernacle.
+
+Fifteen feet of height meant this was a genuine building, not a low tent.
+
+A worshiper walking up to it would have to look up to see the top.
+
+📐 Ten cubits equals about fifteen feet tall
+
+🧍 Twenty boards lined each long side
+
+🏠 This was a real building, not a tent
+
+📖 Worshipers looked up to see the top
 
 ## 🔩 Two Tenons Shall There Be In One Board, Set In Order One Against Another
 
-**"Tenons"** are wooden projections carved into the bottom of each board, designed to fit precisely into matching sockets below, the same basic joinery principle still used in fine woodworking today. Every single board had to be shaped to fit its exact place, like puzzle pieces engineered thousands of years before modern tools existed.
+"Tenons" are wooden pegs carved into the bottom edge of each board.
 
-🔩 Tenons are wooden pegs carved to fit precisely into sockets below
+Each peg was built to fit into a matching socket below it.
 
-🧩 Every board was shaped like a puzzle piece to fit its exact spot
+That is the same basic joint still used in woodworking today.
 
-🛠️ This is the same basic joinery principle still used in woodworking today
+Every single board had to be shaped to fit its own exact spot.
 
----
+Thousands of years before power tools existed, this design still had to line up perfectly.
+
+🔩 Tenons means wooden pegs on the board's base
+
+🧩 Each peg fit one matching socket
+
+🛠️ The same joint is still used today
+
+📖 Precise fitting mattered even in the desert
 
 ## 🥈 Forty Sockets Of Silver Under The Twenty Boards
 
-Each board rested on two silver sockets, meaning the entire wooden frame of God's house literally stood on a foundation of silver. Exodus 30:11-16 later explains where this silver came from: a required "atonement money" collected from every Israelite counted in the census, so the tabernacle's very foundation was funded by money tied to redemption, not general taxation.
+Every board rested on two silver sockets.
 
-🥈 Every board rested on two silver sockets as its literal foundation
+That means the whole wooden frame of God's house stood on a foundation of silver.
 
-💰 Exodus 30 explains this silver came from required "atonement money"
+Exodus thirty later explains where this silver came from.
 
-🩸 The tabernacle's foundation was funded by redemption money, not ordinary taxes
+It was atonement money, a required payment collected from every man counted in a census.
+
+The tabernacle's foundation was funded by money tied to redemption, not by ordinary taxes.
+
+🥈 Every board stood on two silver sockets
+
+💰 Exodus thirty explains this silver as atonement money
+
+🩸 That money came from redemption, not ordinary taxes
+
+📖 God's house stood on a foundation of atonement
+
+# Exodus 26:20-25
+# 🧱 The North, West, And Corner Boards
+---
+## 🧭 There Shall Be Twenty Boards
+
+The north wall matched the south wall exactly.
+
+It used twenty boards and forty silver sockets, just like the south side.
+
+This was not a random design choice.
+
+A structure this size needed both long walls built to the same standard.
+
+Nothing about God's house was stronger on one side than the other.
+
+🧭 The north wall matched the south wall
+
+🥈 Same twenty boards, forty silver sockets
+
+⚖️ Both long walls used the same standard
+
+📖 God's house was never lopsided
+
+## 🔢 For The Sides Of The Tabernacle Westward Thou Shalt Make Six Boards
+
+The west wall closed off the back of the tabernacle.
+
+It was shorter than the long north and south walls.
+
+Six boards were enough to close this shorter wall.
+
+This wall stood nearest the ark itself, behind the veil.
+
+Smaller did not mean less important.
+
+🧭 The west wall closed the tabernacle's back
+
+📏 It was shorter than the two long walls
+
+🔢 Six boards were enough for this wall
+
+📖 Smaller did not mean less important
+
+## 📐 Two Boards Shalt Thou Make For The Corners Of The Tabernacle In The Two Sides
+
+Two extra boards reinforced each back corner.
+
+That is where the long north and south walls met the shorter west wall.
+
+Corners take the most stress in any wooden structure.
+
+God's design gave the weakest points of the frame extra support.
+
+📐 Two extra boards reinforced each corner
+
+🧭 Corners sit where two walls meet
+
+💪 Corners absorb the most structural stress
+
+📖 The weakest points got the most support
+
+## 💍 Coupled Together Above The Head Of It Unto One Ring
+
+This describes how the two corner boards locked together.
+
+They were joined at the bottom.
+
+They were joined again at the top, through a single ring.
+
+Two separate joints turned two boards into one unified corner post.
+
+A corner built from a single weak seam would have failed under real weight.
+
+🔗 The corner boards locked at two points
+
+⬇️ Joined at the bottom first
+
+⬆️ Joined again at the top, through one ring
+
+📖 Two joints made one strong corner post
+
+## 🔢 Eight Boards, And Their Sockets Of Silver, Sixteen Sockets
+
+The west wall's total came to eight boards.
+
+Six regular boards plus two corner boards made that total.
+
+Sixteen silver sockets held them in place, two per board.
+
+That is the exact same pattern used on every other wall.
+
+No matter which direction a wall faced, it stood on the same silver foundation.
+
+🔢 Eight total boards made the west wall
+
+🥈 Sixteen silver sockets, two per board
+
+🔁 The same pattern used on every wall
+
+📖 Every wall stood on the same silver foundation
 
 # Exodus 26:26-30
-
 # 🔗 The Connecting Bars
-
 ---
+## 🪵 Five For The Boards Of The One Side Of The Tabernacle
 
-## 🪵 Bars Of Shittim Wood; Five For The Boards Of The One Side
+Long horizontal bars, also cut from acacia wood, ran along the outside of the standing boards.
 
-Long horizontal bars, also of acacia wood, threaded through rings attached to the boards, running the length of each wall to lock the upright boards together side to side. Without these bars, each board would have stood alone; with them, the whole wall became one rigid, connected unit.
+Rings attached to the boards let each bar slide through and connect the whole wall.
 
-🪵 Horizontal bars threaded through rings to connect the boards side to side
+Five bars ran along each of the two long walls.
 
-🔗 Without these bars, each board would have stood alone and unstable
+Five more bars ran along the shorter west wall.
 
-🧱 Together they turned individual boards into one rigid wall
+Without these bars, every board would have stood alone and unstable.
 
----
+Together they turned separate boards into one solid wall.
+
+🪵 Horizontal bars connected the boards side to side
+
+💍 Rings let each bar slide through and connect
+
+🧱 Alone, each board would have been unstable
+
+📖 Together the boards became one solid wall
 
 ## 🎯 The Middle Bar In The Midst Of The Boards Shall Reach From End To End
 
-**"Midst"** simply means the middle. Unlike the other bars, which may have run in shorter connected sections, this one central bar appears to have run the entire length of each wall in a single piece, hidden from view inside the boards themselves, reinforcing the whole structure at its core.
+"Midst" simply means the middle.
 
-🎯 "Midst" simply means the middle
+The other bars may have run in shorter, connected sections.
 
-📏 This central bar ran the full length of the wall in one piece
+This one center bar ran the entire length of the wall in a single piece.
 
-👁️ It stayed hidden inside the boards, unseen but structurally essential
+It stayed hidden inside the boards, never visible from outside.
 
----
+An unseen piece still carried real structural weight.
 
-## ✨ Overlay The Boards With Gold... Overlay The Bars With Gold
+🎯 Midst simply means the middle
 
-Once again, even the hidden bars running inside the wooden frame were covered in gold, just like the unseen inner surface of the ark back in chapter 25. The standard for this house was never "gold where people will see it," but gold throughout, regardless of visibility.
+📏 This center bar ran the wall's full length
 
-✨ Even the hidden internal bars were covered in gold, not just visible surfaces
+👁️ It stayed hidden inside the boards
 
-🔁 This matches the ark's gold overlay on surfaces no one would ever see
+📖 An unseen piece still carried real weight
 
-🎯 The standard was gold throughout, not gold only where it would be seen
+## ✨ Overlay The Boards With Gold
 
----
+Even the bars running inside the wooden frame were covered in gold.
 
-## 📐 Rear Up The Tabernacle According To The Fashion Thereof Which Was Shewed Thee In The Mount
+Nobody outside the tabernacle would ever see these hidden bars.
 
-This is the third time this exact instruction repeats almost word for word, after verse 9 of chapter 25 and its own echo there. **"Fashion"** here simply means design or shape. By the third repetition, the point is unmistakable: absolutely nothing about this building's structure was left open to human creativity.
+Chapter twenty five already covered the ark the same way.
 
-📐 "Fashion" here simply means design or shape
+Gold went even on surfaces no one would ever see.
 
-🔁 This is the third near-identical repetition of the same instruction
+The standard was never gold only where people were watching.
 
-🛠️ The repetition makes clear nothing here was left to human creativity
+It was gold everywhere, seen or unseen.
+
+✨ Even hidden bars were covered in gold
+
+👁️ No one outside would ever see them
+
+🔁 This matches the ark's hidden gold surfaces
+
+📖 Gold covered everything, not just what showed
+
+## 📐 According To The Fashion Thereof Which Was Shewed Thee In The Mount
+
+"Fashion" here simply means design or shape.
+
+"Shewed" is an old spelling of showed.
+
+This exact instruction has now repeated since chapter twenty five.
+
+By this point the message is unmistakable.
+
+Nothing about this building's design was left to human creativity.
+
+Moses was building a copy of something he had already been shown.
+
+📐 Fashion means design or shape
+
+👀 Shewed is the old spelling of showed
+
+🔁 This instruction has repeated since chapter twenty five
+
+📖 Nothing here was left to human creativity
 
 # Exodus 26:31-35
-
-# 🚪 The Veil
-
+# 🚧 The Veil
 ---
+## 🎨 Thou Shalt Make A Vail Of Blue, And Purple, And Scarlet
 
-## 🎨 A Vail Of Blue, And Purple, And Scarlet, And Fine Twined Linen Of Cunning Work: With Cherubims Shall It Be Made
+"Vail" is the old spelling of veil.
 
-**"Vail"** is the old spelling of veil. This curtain used the exact same royal materials and cherubim imagery as the innermost linen layer over the whole tabernacle, marking it as the most sacred barrier inside the building, on the same level of craftsmanship as the walls surrounding the ark itself.
+This curtain used blue, purple, scarlet thread, and fine linen worked in cunning work.
 
-🎨 "Vail" is simply the old spelling of veil
+Those are the same colors and craftsmanship used on the tent's innermost layer.
 
-👑 It used the same royal colors and cherubim imagery as the inner tent lining
+This was not a plain room divider.
 
-🚧 This marked it as the most sacred barrier inside the entire structure
+It was built to the highest standard found anywhere in the tabernacle.
 
----
+🎨 Vail is the old spelling of veil
 
-## 🚧 The Vail Shall Divide Unto You Between The Holy Place And The Most Holy
+👑 Same royal colors as the inner tent layer
 
-This single sentence names the tabernacle's two inner rooms. The **"holy place"** was the outer room, where the table and candlestick from chapter 25 stood; the **"most holy"** (also called the Holy of Holies) was the innermost room, containing only the ark, entered by only one man, once a year.
+🏆 Same craftsmanship as the walls around the ark
 
-🚧 This verse names the tabernacle's two inner rooms directly
+📖 This was the highest standard in the building
 
-🍞 The "holy place" held the table and candlestick from chapter 25
+## 🏛️ Hang It Upon Four Pillars Of Shittim Wood Overlaid With Gold
 
-📦 The "most holy" held only the ark, entered by one man, once a year
+Four pillars held the veil in place.
 
----
+Each pillar was acacia wood covered in gold.
+
+Each one stood in a silver socket.
+
+Gold above and silver below matches the standing boards described earlier.
+
+Even the frame holding up a curtain followed the same careful pattern.
+
+🏛️ Four gold covered pillars held the veil
+
+🥈 Each pillar stood in a silver socket
+
+🔁 This matches the boards described earlier
+
+📖 Even a curtain frame followed the pattern
+
+## 🚪 The Vail Shall Divide Unto You Between The Holy Place And The Most Holy
+
+This one sentence names the tabernacle's two inner rooms.
+
+"Thither" is an old word meaning "into that place."
+
+The veil let the priest bring the ark into the most holy room.
+
+The holy place was the outer room, where the table and lampstand stood.
+
+The most holy was the innermost room, the Holy of Holies.
+
+Only one man could enter it, and only once a year.
+
+🚪 Thither means into that place
+
+🍞 The holy place held the table and lampstand
+
+📦 The most holy held only the ark
+
+📖 Only one man entered, once a year
 
 ## 📦 Put The Mercy Seat Upon The Ark Of The Testimony In The Most Holy Place
 
-This confirms exactly where the ark and its golden lid, described back in chapter 25, actually sat once the whole structure was assembled: behind this veil, in total isolation from everyone but the high priest on the Day of Atonement.
+This confirms exactly where the ark's golden lid would finally sit.
 
-📦 This confirms the ark's final resting place inside the completed structure
+Chapter twenty five already described building the ark and the mercy seat on top of it.
 
-🔒 It sat in total isolation, hidden by the veil from everyone else
+That piece of furniture now had its permanent home, behind this veil.
 
-📅 Only the high priest could pass through, and only once a year
+It sat in total isolation from everyone but the high priest.
 
----
+Even he could only approach it once a year, on the Day of Atonement.
 
-## ✂️ Compared To The Veil Torn At The Death Of Jesus
+📦 This confirms the ark's final resting place
 
-Matthew 27:51 records that at the moment Jesus died, "the veil of the temple was rent in twain from the top to the bottom," the later temple's version of this exact curtain. Hebrews 10:19-20 explains the meaning directly: that torn veil pictured a permanently opened way into God's presence, made possible through Christ's body, ending the need for a single yearly, single-man entrance.
+🔒 It sat behind the veil, in isolation
 
-✂️ Matthew 27:51 records this same kind of veil tearing at Jesus's death
+🗓️ Only the high priest could approach it
 
-🕊️ Hebrews 10 explains the tear as open access to God through Christ
+📖 That access came once a year
 
-🔓 It ended the need for a single yearly, single-priest entrance
+## 🧭 Set The Table Without The Vail, And The Candlestick Over Against The Table
+
+"Without the vail" means outside the veil, in the holy place.
+
+The table of showbread sat on the north side of that outer room.
+
+The golden lampstand sat across from it, on the south side.
+
+Every piece of furniture from chapter twenty five now had an exact, assigned position.
+
+Nothing in this house was placed by guesswork.
+
+🧭 Vail here means outside, in the holy place
+
+🍞 The table sat on the north side
+
+🕯️ The lampstand sat on the south side
+
+📖 Every piece had an exact, assigned place
+
+## ✂️ The Veil Of The Temple Was Rent In Twain
+
+Matthew twenty seven records the moment Jesus died.
+
+At that moment, the temple veil tore from top to bottom.
+
+That later temple veil descended directly from the curtain described in this chapter.
+
+Hebrews ten explains what that tear meant.
+
+It pictured a permanently open way into God's presence.
+
+Christ made that access possible.
+
+The single, yearly, single priest entrance this chapter describes was no longer needed.
+
+✂️ Matthew twenty seven records that veil tearing
+
+🕊️ Hebrews ten explains the tear as open access
+
+🔓 That single yearly entrance was no longer needed
+
+📖 Christ opened what this veil once sealed
 
 # Exodus 26:36-37
-
-# 🚪 The Door Of The Tent
-
+# 🪡 The Door Of The Tent
 ---
+## 🪡 An Hanging For The Door Of The Tent
 
-## 🪡 An Hanging For The Door Of The Tent... Wrought With Needlework
+"Wrought with needlework" describes embroidery.
 
-**"Wrought with needlework"** describes embroidery, but a simpler skill level than the "cunning work" used on the inner veil and linen ceiling. The entrance screen, the part every ordinary Israelite priest would actually see and pass through regularly, used the same rich colors as the veil but with less elaborate craftsmanship than the parts hidden deepest inside.
+That is a simpler skill level than the cunning work used deeper inside.
 
-🪡 "Wrought with needlework" means embroidered work
+This entrance screen used the same rich colors as the inner veil.
 
-📉 This was a simpler skill level than the "cunning work" used deeper inside
+Ordinary worshipers were the ones who actually saw this part of the building.
 
-🚪 The most publicly seen entrance used less elaborate craft than the hidden veil
+Yet it used less elaborate craft than the parts kept hidden from view.
 
----
+The most public part of the building was not the most costly part.
 
-## 🥉 Five Pillars Of Shittim Wood... Sockets Of Brass
+🪡 Wrought with needlework means embroidered work
 
-These entrance pillars stood on brass sockets, not the silver sockets holding up the tabernacle's side walls. Read together with chapter 25's gold furniture, this chapter's silver-footed walls, and now this brass-footed doorway, the entire structure follows one consistent rule from the first offering listed clear through to the final pillar: gold nearest God, silver in between, and brass at the outer edge where the general public would stand.
+📉 Simpler than the cunning work used deeper inside
 
-🥉 The entrance pillars stood on brass sockets, unlike the silver-footed walls
+👀 Ordinary worshipers actually saw this entrance
 
-📊 Gold, silver, and brass mark a consistent gradient from innermost to outermost
+📖 The most public part was not the costliest
 
-🎯 That same gradient was set all the way back in the offering list of chapter 25`;
+## 🥉 Thou Shalt Cast Five Sockets Of Brass For Them
+
+These entrance pillars stood on brass sockets, not silver like the tabernacle's side walls.
+
+Chapter twenty five put gold on the furniture nearest God.
+
+This chapter put silver under the walls in between.
+
+Now brass sits at the outer doorway, where the general public would stand.
+
+One consistent pattern runs from the first offering listed all the way to this final pillar.
+
+🥉 These pillars stood on brass, not silver
+
+🥇 Gold marked the furniture nearest God
+
+🥈 Silver marked the walls in between
+
+📖 Brass marked the outer edge, nearest the public`.trim();
 
 export const EXODUS_TWENTY_SIX_PERSONAL_SECTIONS = parseExodusTwentySixRawNotes(EXODUS_TWENTY_SIX_RAW_NOTES);

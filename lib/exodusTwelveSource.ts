@@ -89,341 +89,759 @@ function parseExodusTwelveRawNotes(rawText: string): ExodusTwelvePersonalSection
 }
 
 const EXODUS_TWELVE_RAW_NOTES = `# Exodus 12:1-6
-
-# 📅 A New Calendar, And Choosing The Lamb
-
+# 🗓️ A New Calendar And A Chosen Lamb
 ---
+## 🗓️ This Month Shall Be Unto You The Beginning Of Months
 
-## 📅 This Month Shall Be Unto You The Beginning Of Months
+God resets Israel's calendar starting here.
 
-God resets Israel's entire calendar, making this month, later called Abib or Nisan, the first month of their new religious year. This moment is so significant it marks time itself starting over for the nation.
+This month becomes the first month of their whole year.
 
-📅 God makes this month the official start of Israel's religious calendar
+Later this month gets a name, Abib, and still later it is called Nisan.
 
----
+Egypt no longer sets the rhythm of Israel's time.
 
-## 🐑 A Lamb For An House ... According To The Number Of The Souls
+The exodus itself becomes the new starting point for every year that follows.
 
-Each household selects one lamb, and if a family is too small to eat a whole lamb, they share with a neighboring household, ensuring the correct portion size for everyone present, souls meaning individual people.
+🗓️ This month becomes month one
+📛 Later called Abib, then Nisan
+🚫 Egypt no longer sets their calendar
+📖 The exodus becomes Israel's new starting point
 
-🐑 Families too small for a whole lamb share with neighboring households
+## 🐑 A Lamb For An House
 
----
+Each household selects and sets apart one lamb.
+
+The date is fixed, the tenth day of this new first month.
+
+This decision happens before anyone knows what will happen four days later.
+
+Israel is asked to trust and act before the full plan is explained.
+
+🐑 One lamb belongs to each house
+📆 Chosen on the tenth day
+❓ The full plan is not known yet
+📖 Trust comes before understanding here
+
+## 👥 According To The Number Of The Souls
+
+"Souls" here simply means people.
+
+A family too small to eat a whole lamb joins with the nearest household.
+
+The number of people eating decides how much lamb is needed.
+
+Nothing about this meal was designed to be wasted or left uneaten.
+
+👥 Souls means people, not spirits
+🏠 Small families joined a neighbor
+🍽️ The portion matched the eaters
+📖 Nothing here was meant to go to waste
 
 ## ✅ Without Blemish, A Male Of The First Year
 
-The lamb must be flawless and young, without blemish meaning no defects, disease, or injury. Only the best possible animal was acceptable for this sacrifice, nothing damaged or inferior.
+"Without blemish" means the animal must be completely flawless.
 
-✅ Without blemish means completely flawless, with no defects or injury
+No disease, no injury, and no visible defect were allowed.
 
----
+A male in its first year was still young and in its prime condition.
 
-## 📆 Keep It Up Until The Fourteenth Day ... Kill It In The Evening
+God receives the best available animal, never the leftover or the damaged one.
 
-The lamb is selected on the tenth day but kept and observed for four full days before being killed, ensuring it's genuinely healthy and unblemished, not simply grabbed at the last moment.
+✅ Without blemish means flawless
+🐑 A young male, first year
+🚫 No disease or injury allowed
+📖 God receives the best, not the leftover
 
-📆 Four days of observation ensures the lamb is genuinely healthy, not rushed
+## 📆 Kill It In The Evening
+
+The lamb is chosen on day ten but not killed until day fourteen.
+
+That gap gives four full days to watch the animal closely.
+
+A flaw missed at first glance would show up given enough time.
+
+The whole assembly kills their lambs together, in the evening, on the same day.
+
+📆 Four days between choosing and killing
+👀 Time reveals any hidden flaw
+🌇 All Israel kills lambs the same evening
+📖 One nation moves together on this night
 
 # Exodus 12:7-11
-
-# 🩸 Blood On The Doorposts
-
+# 🩸 Blood, Bread, And A Meal Eaten Standing
 ---
+## 🚪 The Two Side Posts And The Upper Door Post
 
-## 🩸 Strike It On The Two Side Posts And On The Upper Door Post
+The blood goes on the door frame itself, not inside the house.
 
-The lamb's blood is applied to the door frame itself, side posts and the upper door post, called the lintel, marking the entire entrance of the house with visible protection.
+"Side posts" are the two upright beams framing the doorway.
 
-🩸 The blood marks the entire door frame: both sides and the top
+The "upper door post" is the beam above them, later called the lintel.
 
----
+Together they mark the whole entrance with visible protection.
 
-## 🍞 Roast With Fire, And Unleavened Bread; And With Bitter Herbs
+🚪 Blood marks the door frame
+📏 Side posts are the two uprights
+🔝 Upper door post is the beam above
+📖 The whole entrance is marked
 
-Unleavened bread is bread made without yeast, quick to prepare since there's no time to wait for dough to rise. Bitter herbs symbolically recall the bitterness of Israel's slavery in Egypt, tasted as part of the meal itself.
+## 🍞 Roast With Fire, And Unleavened Bread, And With Bitter Herbs
 
-🍞 Unleavened bread is made without yeast, quick to prepare with no rising time
+"Unleavened bread" means bread made without yeast, so it never rises.
 
-😣 Bitter herbs symbolically recall the bitterness of slavery in Egypt
+There was no time that night to wait for dough to rise.
 
----
+"Bitter herbs" gave the meal a harsh, unpleasant taste on purpose.
 
-## 🔥 Eat Not Of It Raw, Nor Sodden At All With Water, But Roast With Fire
+That bitterness recalled the years Israel spent as slaves in Egypt.
 
-Sodden means boiled. The meat must specifically be roasted, not boiled, likely because roasting keeps the animal fully visible and whole, connecting to the completeness and wholeness required throughout this ritual.
+🍞 Unleavened bread has no yeast
+⏳ No time was left for rising
+🌿 Bitter herbs recall slavery's bitterness
+📖 The meal itself told the story
 
-🔥 Sodden means boiled, and only roasting, not boiling, is permitted here
+## 🔥 Nor Sodden At All With Water, But Roast With Fire
 
----
+"Sodden" is an old word for boiled.
 
-## 🥾 Your Loins Girded, Your Shoes On Your Feet ... Eat It In Haste
+Only roasting over fire was allowed, not boiling in water.
 
-Girded means tucked up and secured for quick movement. Israel eats this meal fully dressed and ready to travel immediately, not relaxed at a leisurely table, showing they're meant to expect sudden departure that very night.
+Roasting kept the animal whole and visible from head to leg.
 
-🥾 Girded means clothing tucked up and secured for immediate travel
+That wholeness matched the completeness required through the entire meal.
 
-⏳ The posture itself signals they should expect to leave suddenly, that same night
+🔥 Sodden means boiled
+🚫 Boiling was not allowed here
+👁️ Roasting kept the animal whole
+📖 Wholeness mattered through the whole meal
+
+## 🔥 Ye Shall Let Nothing Of It Remain Until The Morning
+
+Whatever meat was left over had to be burned before morning came.
+
+Nothing sacred about this meal could be treated as an ordinary leftover.
+
+There was also no time for leftovers, since Israel would leave that same night.
+
+The instruction matches the urgency running through the rest of this chapter.
+
+🔥 Leftovers had to be burned
+🚫 Nothing treated as ordinary food
+⏳ No time remained for leftovers anyway
+📖 Urgency shaped every detail of this night
+
+## 🥾 Your Loins Girded, Your Shoes On Your Feet
+
+"Girded" means clothing tucked up and secured for fast movement.
+
+Israel eats this meal fully dressed, sandals on, ready to walk out the door.
+
+Nobody eats this meal relaxed at a leisurely table.
+
+The posture itself says this family expects to leave within hours.
+
+🥾 Girded means clothes secured for travel
+👣 Shoes stay on through the meal
+🏃 The posture signals sudden departure
+📖 Readiness itself becomes part of worship
+
+## 🩸 It Is The LORD's Passover
+
+This is the first time the word "passover" appears in the Bible.
+
+The name describes exactly what is about to happen, the LORD passing over marked homes.
+
+Every earlier detail in this chapter, the lamb, the blood, the haste, builds toward this one name.
+
+The meal and the name explain each other.
+
+📛 Passover appears here for the first time
+🩸 The name describes God passing over homes
+🐑 Every earlier detail builds toward it
+📖 The meal and the name explain each other
 
 # Exodus 12:12-14
-
-# 💀 The Passover Promise
-
+# 💀 Judgment Announced, A Feast Promised
 ---
+## ⚡ Against All The Gods Of Egypt I Will Execute Judgment
 
-## 💀 Against All The Gods Of Egypt I Will Execute Judgment
+This plague is not aimed at Pharaoh alone.
 
-This final plague is described as a direct confrontation against Egypt's entire pantheon of gods, not merely Pharaoh personally, proving the LORD's supremacy over every deity Egypt worshiped.
+Egypt worshiped many gods, often tied to the Nile, the sun, and Pharaoh himself.
 
-💀 This plague directly confronts and judges Egypt's whole system of gods
+This judgment strikes at that entire system all at once.
 
----
+The LORD proves He outranks every god Egypt trusted.
+
+⚡ This plague targets Egypt's whole religion
+🌞 Egypt worshiped gods tied to sun and Nile
+👑 Even Pharaoh was treated as divine
+📖 The LORD outranks every god of Egypt
 
 ## 🩸 When I See The Blood, I Will Pass Over You
 
-This is where the word "passover" comes from directly, God passing over houses marked with the lamb's blood, sparing them from the judgment striking the rest of Egypt.
+The blood works as a "token," a visible sign marking a protected house.
 
-🩸 The word "passover" comes directly from God passing over marked houses
+God does not need reminding, the sign is for Israel's own assurance.
 
----
+Judgment moves through the land, but marked houses are spared entirely.
 
-## 📖 Ye Shall Keep It A Feast ... By An Ordinance For Ever
+Protection here depends on the blood, not on anything the family has earned.
 
-God establishes Passover as a permanent, ongoing yearly observance, ordinance meaning a binding, official command, not a single one-time event but a lasting tradition for every future generation.
+🩸 The blood is a visible token
+🛡️ Marked houses are fully spared
+🚫 Protection is not earned by merit
+📖 The sign, not the family, saves the house
 
-📖 Ordinance means a binding, official command meant to last permanently
+## 📖 Ye Shall Keep It A Feast By An Ordinance For Ever
+
+An "ordinance" is a binding, official command, not a suggestion.
+
+This night becomes a permanent yearly feast, not a single event.
+
+Every future generation of Israel is meant to keep this same feast.
+
+One night of deliverance turns into a lasting national memory.
+
+🕯️ Ordinance means a binding command
+🗓️ This becomes a yearly feast
+👪 Every future generation keeps it
+📖 One night becomes lasting memory
 
 # Exodus 12:15-20
-
-# 🍞 The Feast Of Unleavened Bread
-
+# 🍞 Seven Days Without Leaven
 ---
+## 🍞 Seven Days Shall Ye Eat Unleavened Bread
 
-## 🍞 Seven Days Shall Ye Eat Unleavened Bread ... Put Away Leaven Out Of Your Houses
+"Leaven" is yeast, or anything that makes dough rise.
 
-Leaven is yeast, or any agent causing bread to rise. For seven full days, Israel must remove all leaven completely from their homes, connecting to the hurried, unrisen bread they'll eat while fleeing Egypt.
+For seven full days, all leaven must be removed from every house.
 
-🍞 Leaven means yeast, or anything causing bread to rise
+This connects directly to the hurried, unrisen bread eaten while fleeing Egypt.
 
-⏳ This connects to the hurried departure, with no time for bread to rise
+A whole week keeps that hurried night in Israel's memory every year.
 
----
+🍞 Leaven means yeast or any riser
+🏠 All leaven leaves the house
+⏳ It recalls the night of hurried flight
+📖 A week keeps that memory alive yearly
 
 ## 🚫 That Soul Shall Be Cut Off From Israel
 
-This severe penalty means complete separation from the covenant community, showing just how seriously this command was meant to be taken, not treated as optional or symbolic only.
+"Cut off" describes complete separation from Israel's covenant community.
 
-🚫 "Cut off" means complete separation from Israel's covenant community
+Anyone who eats leavened bread during these seven days faces this penalty.
 
----
+The severity of this penalty shows the command was never meant as optional.
 
-## 🛐 An Holy Convocation ... No Manner Of Work Shall Be Done
+Belonging to Israel here is tied to obedience, not just birth.
 
-A holy convocation is an official, sacred gathering, similar to a modern religious holiday requiring rest from ordinary labor. Only food preparation is permitted as an exception on these specific first and last days.
+🚫 Cut off means complete separation
+🍞 The penalty targets eating leaven
+⚖️ This was never treated as optional
+📖 Belonging required obedience, not just birth
 
-🛐 A holy convocation is an official, sacred gathering with rest from normal work
+## 🛐 An Holy Convocation, No Manner Of Work Shall Be Done
+
+A "holy convocation" is an official, sacred gathering of the whole community.
+
+Both the first and the seventh day of the feast carry this status.
+
+Ordinary work stops on these two days, much like a modern holiday.
+
+Only preparing food is allowed as a specific exception.
+
+🛐 Convocation means an official sacred gathering
+📅 The first and seventh days both count
+🍽️ Food preparation is the one exception
+📖 Ordinary work stops on these two days
+
+## 📅 In This Selfsame Day Have I Brought Your Armies Out
+
+"Selfsame day" ties this feast to the exact date of the exodus itself.
+
+"Armies" here does not mean soldiers, it describes Israel organized like a marching nation.
+
+The feast is not just symbolic, it is anchored to a real calendar date.
+
+Keeping the feast means remembering a specific day, not a vague idea.
+
+📅 Selfsame day means this exact date
+🪖 Armies describes an organized, marching nation
+📌 The feast is anchored to a real date
+📖 Remembering here means remembering precisely
+
+## 🌍 Whether He Be A Stranger, Or Born In The Land
+
+This law applies equally to any foreigner living among Israel.
+
+A "stranger" here means someone dwelling among Israel, not a visitor passing through.
+
+The same rule and the same penalty apply no matter someone's birth.
+
+God's commands were never limited only to those born into the nation.
+
+🌍 The law applies to strangers too
+🏘️ Stranger here means someone living among Israel
+⚖️ Birth origin changes nothing here
+📖 God's law was never limited by birth
 
 # Exodus 12:21-24
-
 # 🌿 Moses Instructs The Elders
-
 ---
+## 👴 Draw Out And Take You A Lamb According To Your Families
+
+Moses now passes God's instructions from the start of this chapter down to the people.
+
+"Elders" were the recognized leaders representing each family and tribe.
+
+Each family unit takes responsibility for its own lamb.
+
+Leadership here means passing God's word on accurately, not adding to it.
+
+👴 Elders led each family and tribe
+🐑 Each family took its own lamb
+🗣️ Moses passed God's word accurately
+📖 Leadership means faithful transmission, not invention
 
 ## 🌿 Take A Bunch Of Hyssop, And Dip It In The Blood
 
-Hyssop was a small, bushy plant commonly used for sprinkling liquids in ancient rituals. It becomes the tool used to physically apply the lamb's blood onto each home's doorframe.
+"Hyssop" was a small, leafy plant common throughout the region.
 
-🌿 Hyssop was a small plant commonly used for sprinkling liquid in rituals
+Its cluster of stems made it useful for sprinkling liquid.
 
----
+The "bason" held the collected blood so the hyssop could be dipped in it.
 
-## 🚪 None Of You Shall Go Out At The Door Of His House Until The Morning
+This ordinary garden plant becomes the tool that applies the lamb's blood.
 
-Israel is commanded to stay fully inside, trusting completely in the blood's protection rather than trying to actively defend themselves during the night the plague strikes.
+🌿 Hyssop was a small leafy plant
+💧 Its stems worked well for sprinkling
+🥣 The bason held the collected blood
+📖 An ordinary plant applies the blood
 
-🚪 Staying inside required trusting the blood's protection, not self-defense
+## 🚪 None Of You Shall Go Out At The Door Of His House
 
----
+Israel must stay completely inside once the blood is applied.
+
+Nobody is told to stand guard or fight off danger themselves.
+
+Safety depends entirely on staying behind the marked door.
+
+Trusting the blood meant trusting it enough to do nothing else.
+
+🚪 Everyone stays inside that night
+🛡️ No one is told to defend the house
+🩸 Safety depends only on the blood
+📖 Trust here meant staying still
 
 ## 👹 Will Not Suffer The Destroyer To Come In
 
-The destroyer describes the agent of judgment carrying out this final plague. Suffer here means allow or permit, God actively preventing this destroyer from entering blood-marked homes.
+"Suffer" here is an old word meaning allow or permit.
 
-👹 The destroyer carries out the judgment; suffer means allow or permit
+"The destroyer" describes the agent carrying out this final plague.
+
+God actively blocks the destroyer from entering any blood marked home.
+
+Protection here is active, not simply the absence of danger.
+
+🚫 Suffer means allow or permit
+👹 The destroyer carries out the plague
+🩸 Blood marked homes are blocked from harm
+📖 Protection here is active, not passive
+
+## 📖 An Ordinance To Thee And To Thy Sons For Ever
+
+This instruction repeats the word "ordinance" already explained back in verse fourteen.
+
+The command now extends explicitly to future sons, meaning future generations.
+
+A single historical night becomes a command handed down family by family.
+
+Every generation inherits the same responsibility to remember and obey.
+
+📖 Ordinance repeats the promise from verse fourteen
+👨‍👦 Sons here means future generations
+🔁 One night becomes a lasting family command
+➡️ Every generation inherits this responsibility
 
 # Exodus 12:25-28
-
 # 👨‍👧 Teaching The Next Generation
-
 ---
+## 🗺️ When Ye Be Come To The Land Which The LORD Will Give You
 
-## ❓ When Your Children Shall Say Unto You, What Mean Ye By This Service?
+This command looks forward to a land Israel has not even reached yet.
 
-God builds a built-in teaching moment directly into this command, anticipating children's natural curiosity and ensuring the story gets explained and passed down accurately every single year.
+"This service" refers to the whole Passover ritual just described.
 
-❓ This command builds in a natural teaching moment for every generation
+God expects obedience to continue long after Egypt is far behind them.
 
----
+A command born in slavery is meant to outlast the escape itself.
 
-## 🙇 The People Bowed The Head And Worshipped
+🗺️ This looks ahead to the promised land
+🐑 Service means the whole Passover ritual
+⏳ Obedience is meant to outlast Egypt
+📖 A slavery era command outlives slavery
 
-Before anything has even happened yet, Israel responds to these instructions with genuine worship, trusting God's plan in advance rather than waiting to see the results first.
+## ❓ What Mean Ye By This Service?
 
-🙇 Israel worships in trusting advance, before the events even take place
+God builds a question directly into the command itself.
 
----
+He expects children to notice this yearly ritual and ask about it.
+
+That question becomes the doorway for parents to retell the whole story.
+
+The feast was designed to teach, not just to be performed.
+
+❓ Children are expected to ask
+👪 Parents answer with the whole story
+🗓️ This repeats every single year
+📖 The feast was built to teach
+
+## 🙇 It Is The Sacrifice Of The LORD's Passover
+
+Parents answer with the specific name and the specific reason behind it.
+
+The explanation names exactly what happened, God passing over Israel's houses in judgment.
+
+Before anything in this plan has even happened yet, the people respond in worship.
+
+Trusting God's plan in advance, not just after seeing results, is worship too.
+
+🗣️ Parents explain the exact reason
+🩸 God passed over Israel's houses
+🙇 Israel worships before the events happen
+📖 Trusting in advance is real worship
 
 ## ✅ The Children Of Israel Went Away, And Did As The LORD Had Commanded
 
-Complete, immediate obedience follows without recorded objection or delay, a notable contrast to some of Israel's later, more hesitant responses throughout the wilderness years ahead.
+Obedience here is immediate, with no recorded delay or objection.
 
-✅ Israel's obedience here is immediate and complete, without recorded hesitation
+Every instruction given through Moses and Aaron gets carried out exactly.
+
+This obedience stands in real contrast to Israel's later complaints in the wilderness.
+
+A nation that starts in full obedience will not always stay that way.
+
+✅ Obedience here is immediate
+🗣️ Every instruction is carried out exactly
+⚖️ This contrasts later wilderness complaints
+📖 Early obedience does not guarantee lasting obedience
 
 # Exodus 12:29-30
-
 # 🌙 Midnight Strikes
-
 ---
+## 🌙 At Midnight The LORD Smote All The Firstborn
 
-## 🌙 At Midnight The LORD Smote All The Firstborn ... From The Firstborn Of Pharaoh ... Unto The Firstborn Of The Captive That Was In The Dungeon
+This plague reaches every level of Egyptian society at the same hour.
 
-Exactly as warned back in chapter 11, this plague crosses every social boundary completely, from the ruling throne down to an imprisoned captive, showing total, universal reach.
+Pharaoh's own household is struck exactly like a prisoner's household in the dungeon.
 
-🌙 The plague crosses every social class, from the throne to the prison
+Wealth and power offer no protection at all from this judgment.
 
----
+The warning given back in chapter eleven arrives exactly as spoken.
+
+🌙 Midnight strikes every household at once
+👑 Pharaoh's house is not spared
+🔒 A prisoner's house is struck the same
+📖 The chapter eleven warning arrives exactly as spoken
 
 ## 😭 There Was Not A House Where There Was Not One Dead
 
-The devastation is described as absolutely universal across Egypt, no household escapes this loss, the full weight of the warning finally, completely fulfilled.
+This describes total, universal loss across the entire land of Egypt.
 
-😭 This plague reaches literally every single household across Egypt
+No family, rich or poor, escapes this single devastating night.
+
+The great cry mentioned here is the sound of a whole nation grieving at once.
+
+Only houses marked with the lamb's blood were exempt from this loss.
+
+😭 Loss reaches literally every house
+👑 Rich and poor both suffer it
+🩸 Only blood marked homes are spared
+📖 A whole nation cries out together
 
 # Exodus 12:31-36
-
-# 🚪 Pharaoh Finally Releases Israel
-
+# 🚪 Pharaoh Finally Lets Israel Go
 ---
-
 ## 🌙 He Called For Moses And Aaron By Night
 
-Pharaoh summons Moses and Aaron immediately, in the middle of the night, rather than waiting until morning, showing genuine, immediate urgency after this devastating loss.
+Pharaoh summons Moses and Aaron in the middle of the night, not the next morning.
 
-🌙 Pharaoh's immediate, nighttime summons shows real urgency after his loss
+That timing alone shows real, immediate urgency after this devastating loss.
 
----
+The man who once refused to even meet with Moses now sends for him directly.
+
+Grief accomplishes what nine earlier plagues could not.
+
+🌙 Pharaoh summons them at night
+⏳ The urgency is immediate
+👑 He now seeks Moses out directly
+📖 Grief succeeds where plagues alone had not
 
 ## 🙏 Bless Me Also
 
-Remarkably, even Pharaoh, after everything, asks for a blessing from Moses, a striking moment of humility from the same man who once mocked the LORD entirely back in chapter 5.
+Pharaoh, after everything, asks Moses for a blessing.
 
-🙏 Even Pharaoh asks for a blessing, a striking reversal from chapter 5
+This is the same ruler who once mocked the LORD by name back in chapter five.
 
----
+Total devastation has replaced his earlier defiance with sudden, desperate humility.
 
-## ⏳ The Egyptians Were Urgent Upon The People ... We Be All Dead Men
+Even the hardest heart in this story ends up asking for grace.
 
-Ordinary Egyptians actively push Israel to leave immediately, terrified further delay might bring even more disaster upon them, completely reversing their earlier resistance to Israel's departure.
+🙏 Pharaoh asks for a blessing
+😤 He once mocked the LORD entirely
+💔 Devastation replaces his defiance
+📖 Even Pharaoh ends up asking for grace
 
-⏳ Ordinary Egyptians now actively push for Israel's immediate departure
+## 😨 The Egyptians Were Urgent Upon The People
 
----
+Ordinary Egyptian citizens now push Israel to leave as fast as possible.
 
-## 💍 They Borrowed Of The Egyptians Jewels Of Silver, And Jewels Of Gold ... And They Spoiled The Egyptians
+Their fear is that any further delay could bring even more disaster on Egypt.
 
-This directly fulfills God's promise from chapters 3 and 11, Israel leaving Egypt with real wealth given willingly by the Egyptians themselves, completing that specific prophecy exactly as spoken.
+This completely reverses the resistance to Israel's departure seen throughout the earlier plagues.
 
-💍 This exactly fulfills the specific promise made back in chapters 3 and 11
+Fear succeeds in accomplishing what Pharaoh's own stubbornness could not stop.
+
+😨 Egyptians now fear more disaster
+🏃 They push Israel to leave fast
+🔁 This reverses their earlier resistance
+📖 Fear moves what stubbornness could not
+
+## 🍞 Their Kneadingtroughs Being Bound Up In Their Clothes
+
+A "kneadingtrough" is the container used for mixing bread dough.
+
+Israel leaves so quickly that dough goes with them still unfinished, wrapped in cloth.
+
+They carry these troughs on their own shoulders, ready to move immediately.
+
+Even this small household detail confirms just how sudden this departure really was.
+
+🍞 A kneadingtrough mixes bread dough
+👕 Dough traveled wrapped in cloth
+🎒 Troughs were carried on their shoulders
+📖 Even small details confirm the sudden exit
+
+## 💰 Jewels Of Silver, And Jewels Of Gold
+
+This fulfills a specific promise God made back in chapters three and eleven.
+
+Israel does not steal this wealth, the Egyptians hand it over willingly.
+
+"Spoiled" here means Israel left with real riches, not empty handed after years of slavery.
+
+A promise spoken years earlier lands exactly the way God said it would.
+
+📜 Fulfills a promise from chapters three and eleven
+🤲 Egyptians gave these gifts willingly
+💰 Spoiled means Israel left with real wealth
+📖 A years old promise lands exactly as spoken
 
 # Exodus 12:37-39
-
 # 🚶 The Journey Begins
-
 ---
+## 🔢 About Six Hundred Thousand On Foot That Were Men
 
-## 🚶 About Six Hundred Thousand On Foot That Were Men, Beside Children
+This number counts only adult men, not the whole population.
 
-This staggering number counts only adult men, meaning the total population including women and children was likely well over two million people, an enormous nation moving all at once.
+Once wives and children are added, the true total was likely well over two million people.
 
-🚶 Counting only men means the true total population was likely over two million
+"Rameses" and "Succoth" mark the starting point and the first stop of this journey.
 
----
+An entire nation moves out of Egypt at the same time.
+
+🔢 Six hundred thousand counts only men
+👨‍👩‍👧‍👦 The full total was likely over two million
+🗺️ Rameses to Succoth marks the first leg
+📖 A whole nation moves together at once
 
 ## 🌍 A Mixed Multitude Went Up Also With Them
 
-Not every person who left Egypt was ethnically Israelite. Some Egyptians and others joined this exodus too, shown mercy and welcomed into this massive, defining journey toward freedom.
+Not everyone who left Egypt that night was ethnically Israelite.
 
-🌍 Some non-Israelites joined the exodus too, welcomed into this journey
+Some Egyptians and other outsiders joined this journey toward freedom too.
 
----
+God's rescue that night reached beyond the twelve tribes alone.
 
-## 🍞 They Baked Unleavened Cakes ... Because They Were Thrust Out Of Egypt, And Could Not Tarry
+Mercy shown to Israel spilled over onto anyone willing to leave with them.
 
-Tarry means wait or delay. The bread stayed unleavened simply because there wasn't time to let it rise before their sudden, urgent departure, a real practical detail behind the ongoing yearly tradition.
+🌍 Not everyone leaving was Israelite
+🤝 Others joined the journey too
+🕊️ Rescue reached beyond the twelve tribes
+📖 Mercy spilled beyond Israel alone
 
-🍞 Tarry means wait or delay, explaining why there was no time for the bread to rise
+## ⏳ They Could Not Tarry
+
+"Tarry" means to wait or delay.
+
+There was no time left to let the bread dough rise before leaving.
+
+This detail explains a very practical reason behind the ongoing yearly tradition.
+
+A rushed departure becomes a permanent yearly reminder of that same rush.
+
+⏳ Tarry means wait or delay
+🍞 No time remained for the bread to rise
+📖 A practical detail became a lasting tradition
+➡️ The rush itself is remembered every year
 
 # Exodus 12:40-42
-
 # ⏳ Four Hundred And Thirty Years
-
 ---
+## 🏕️ The Sojourning Of The Children Of Israel
 
-## ⏳ The Sojourning Of The Children Of Israel ... Was Four Hundred And Thirty Years
+"Sojourning" means living somewhere as a temporary resident, not a permanent citizen.
 
-This gives the exact length of Israel's time connected to Egypt, from Abraham's original promise through generations of eventual slavery, a precise fulfillment of the timeline God gave Abraham back in Genesis 15.
+This number counts the whole span connected to Egypt, starting with Abraham's own promise.
 
-⏳ This exact number fulfills the timeline God gave Abraham back in Genesis 15
+It includes both the peaceful years and the later generations spent enslaved.
 
----
+This exact number fulfills the timeline God gave Abraham back in Genesis fifteen.
+
+🏕️ Sojourning means living as a temporary resident
+📆 Four hundred thirty years total
+📜 It fulfills Abraham's timeline from Genesis fifteen
+📖 A generations old promise lands on time
+
+## 🪖 All The Hosts Of The LORD Went Out
+
+"Hosts" describes Israel as an organized company, almost like an army in formation.
+
+The exact day matters as much as the number of years itself.
+
+Nothing about this departure happens vaguely or by rough guess.
+
+God keeps precise track of promises across four centuries.
+
+🪖 Hosts describes Israel as an organized company
+📅 The exact day is named specifically
+🎯 Nothing here happens by rough guess
+📖 God tracks His promises with precision
 
 ## 🌙 A Night To Be Much Observed Unto The LORD
 
-This specific night receives its own permanent, sacred significance, distinct from the broader Passover feast itself, meant to be remembered and honored by every future generation of Israel.
+This specific night receives its own lasting, sacred significance.
 
-🌙 This exact night receives lasting, sacred significance for future generations
+It stands next to the broader Passover feast described earlier in the chapter.
+
+Every future generation of Israel is meant to remember and honor this exact night.
+
+One night of deliverance becomes a permanent fixture on Israel's calendar.
+
+🌙 This night gets its own significance
+🗓️ It stands alongside the Passover feast
+👪 Future generations honor it too
+📖 One night becomes permanent on the calendar
 
 # Exodus 12:43-51
-
 # 📜 Who May Keep The Passover
-
 ---
-
 ## 🚫 There Shall No Stranger Eat Thereof
 
-A stranger here means someone with no covenant commitment to Israel's God, not simply a foreigner by ethnicity alone. Participation is tied to genuine covenant belonging, not nationality by itself.
+A "stranger" here means someone with no covenant commitment to Israel's God.
 
-🚫 This restriction is about covenant commitment, not ethnicity by itself
+This is not a rule about ethnicity or nationality by itself.
 
----
+Participation in Passover was always tied to genuine belonging, not ancestry alone.
+
+The next few verses explain exactly how an outsider could actually join in.
+
+🚫 Stranger means no covenant commitment
+🌍 This is not about ethnicity alone
+🤝 Belonging mattered more than ancestry
+📖 The next verses explain how to join
 
 ## ✂️ When Thou Hast Circumcised Him, Then Shall He Eat Thereof
 
-A purchased servant could fully participate once circumcised, the covenant sign first given to Abraham, showing genuine inclusion was possible and available for outsiders willing to join the covenant fully.
+A servant purchased for money could still fully join this meal.
 
-✂️ Circumcision, the covenant sign from Genesis 17, opened full participation to outsiders
+Circumcision, first given to Abraham in Genesis seventeen, was the sign of joining the covenant.
 
----
+Once circumcised, that servant was treated as a true participant, not an outsider.
+
+Real inclusion was always available to anyone willing to join the covenant fully.
+
+💰 A purchased servant could still join
+✂️ Circumcision was the covenant sign from Genesis seventeen
+🤝 A circumcised servant became a true participant
+📖 Inclusion was open to anyone willing to join
+
+## ⏳ A Foreigner And An Hired Servant Shall Not Eat Thereof
+
+This verse draws a clear line between two different kinds of outsiders.
+
+A "hired servant" worked temporarily and could leave at any time.
+
+Someone only passing through never joined the covenant the way a circumcised servant did.
+
+Lasting commitment, not simple proximity, decided who could share this meal.
+
+⏳ A hired servant worked temporarily
+🚶 Passing through was not the same as joining
+✂️ Commitment, shown through circumcision, made the difference
+📖 Belonging required commitment, not just proximity
 
 ## 🦴 Neither Shall Ye Break A Bone Thereof
 
-This specific, detailed instruction is later understood by New Testament writers as a foreshadowing detail connected to Jesus, whose bones also remained unbroken during His crucifixion.
+This instruction required keeping the lamb's body whole and intact.
 
-🦴 This detail is later connected by New Testament writers to Jesus at the crucifixion
+Eating happened inside one house, with nothing carried outside to share elsewhere.
 
----
+New Testament writers later connect this same detail directly to Jesus at His crucifixion.
 
-## ⚖️ One Law Shall Be To Him That Is Homeborn, And Unto The Stranger
+His bones stayed unbroken during the crucifixion, matching this ancient instruction exactly.
 
-Once someone joins the covenant fully, through circumcision, they receive exactly the same law and standing as someone born into Israel, no second-class status remains for genuine covenant members.
+🦴 The lamb's body stayed whole
+🏠 The meal stayed inside one house
+✝️ New Testament writers connect this to Jesus
+📖 His unbroken bones matched this ancient rule
 
-⚖️ Covenant members receive equal standing, regardless of birth origin
+## 🌍 Let All His Males Be Circumcised
 
----
+Any foreign stranger could fully join Israel's Passover under this specific condition.
 
-## ✅ The LORD Did Bring The Children Of Israel Out Of The Land Of Egypt By Their Armies
+Every male in that household had to be circumcised first, not just the head of the family.
 
-The chapter closes by confirming what four hundred years of promise and one devastating night of judgment finally accomplished, Israel's actual, complete departure from Egypt as an organized, whole nation.
+Once circumcised, that household was treated exactly like one born in the land.
 
-✅ This closing line confirms the complete fulfillment of centuries of promise`;
+The door to full belonging was genuinely open, not just symbolically offered.
+
+🌍 A foreign stranger could fully join
+👨‍👦 Every male in the house was included
+🤝 Circumcision meant equal standing
+📖 The door to belonging was genuinely open
+
+## ⚖️ One Law Shall Be To Him That Is Homeborn
+
+Once someone joined the covenant, one single law applied to everyone equally.
+
+"Homeborn" means someone born into Israel by birth.
+
+No second class status remained for a stranger who had genuinely joined.
+
+Equal law for every covenant member was written into Passover from the very start.
+
+⚖️ One law applied to everyone
+🏠 Homeborn means born into Israel
+🚫 No second class status remained
+📖 Equal law was built in from the start
+
+## 📜 The LORD Did Bring The Children Of Israel Out By Their Armies
+
+This final line confirms exactly what four hundred thirty years of promise finally accomplished.
+
+"By their armies" again describes Israel leaving as one organized, unified nation.
+
+One devastating night of judgment and one obedient meal changed Israel's entire future.
+
+The chapter that began with a new calendar ends with a new, free nation.
+
+📜 This closes centuries of promise
+🪖 Armies means one organized nation
+🌙 One night changed everything
+📖 A new calendar ends in a new nation
+`.trim();
 
 export const EXODUS_TWELVE_PERSONAL_SECTIONS = parseExodusTwelveRawNotes(EXODUS_TWELVE_RAW_NOTES);

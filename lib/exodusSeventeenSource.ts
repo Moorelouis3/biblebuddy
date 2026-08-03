@@ -89,159 +89,311 @@ function parseExodusSeventeenRawNotes(rawText: string): ExodusSeventeenPersonalS
 }
 
 const EXODUS_SEVENTEEN_RAW_NOTES = `# Exodus 17:1-3
-
 # 💧 No Water At Rephidim
-
 ---
+## 🧭 According To The Commandment Of The LORD
 
-## 🏕️ Pitched In Rephidim: And There Was No Water For The People To Drink
+This is not Israel choosing its own path through the wilderness.
 
-Pitched means camped. Israel arrives at a new location following God's own guidance, yet still faces a genuine, urgent survival crisis, no water available for the entire community.
+Every stop, including this one, follows a direct command from God.
 
-🏕️ Pitched means camped, and this crisis happens even while following God's own guidance
+The cloud and fire from earlier chapters lead each stage of travel.
 
----
+God brings His people to Rephidim on purpose, before their need is even visible.
 
-## 😠 The People Did Chide With Moses ... Wherefore Do Ye Tempt The LORD?
+🧭 Israel follows God's command, not their own path
+☁️ The cloud and fire guide each stop
+📍 Rephidim was God's chosen next step
+📖 God leads before the need is seen
 
-Chide means to quarrel or scold sharply. Moses reframes their complaint as something more serious, tempting God, meaning testing Him, questioning His care in a way that doubts His character rather than simply expressing need.
+## 🏕️ Pitched In Rephidim
+
+"Pitched" means camped, setting up tents for a temporary stay.
+
+Israel makes camp at Rephidim after following the cloud and fire the whole way.
+
+Yet there is no water anywhere for the whole camp to drink.
+
+This crisis lands right in the middle of obedience, not away from it.
+
+🏕️ Pitched means camped for a time
+🐑 Israel had been following God's own guidance
+💧 No water was anywhere in the camp
+📖 Crisis struck even inside obedience
+
+## 😠 Wherefore Do Ye Tempt The LORD
+
+"Chide" means to quarrel or scold sharply.
+
+"Tempt" here means to test, doubting whether God can be trusted.
+
+Moses reframes their complaint as something far more serious than thirst.
+
+Asking for water is not sin, but testing God's character is.
 
 😠 Chide means to quarrel or scold sharply
-
-⚖️ Moses distinguishes expressing real need from testing God's character itself
-
----
+❓ Tempt means to test or doubt
+⚖️ Moses names this as testing God's character
+📖 Real need differs from doubting God's care
 
 ## 🐄 To Kill Us And Our Children And Our Cattle With Thirst
 
-The people's fear here is entirely legitimate, real thirst threatens not just themselves but their children and livestock too, explaining the intensity and desperation behind their complaint.
+The people's fear here is genuine, not exaggerated for effect.
 
-🐄 The threat here is genuinely severe, covering people, children, and animals alike
+Real thirst threatens the whole camp, not just the adults complaining.
+
+Children and livestock stand under the same threat as everyone else.
+
+Desperation, not defiance, drives the intensity behind their words.
+
+🐄 The threat covers people, children, and cattle
+😨 This fear was genuine, not exaggerated
+👶 Children were as endangered as adults
+📖 Desperation drove the intensity of their complaint
 
 # Exodus 17:4-7
-
 # 🪨 Water From The Rock
-
 ---
-
 ## 😨 They Be Almost Ready To Stone Me
 
-Moses reports the situation's severity honestly to God, admitting real physical danger from his own people's growing anger, not exaggerating the crisis he's facing as a leader.
+Moses brings the real danger straight to God, without softening it.
 
-😨 Moses admits genuine physical danger from the people's escalating anger
+He is not just frustrated, his life is genuinely at risk.
 
----
+Leading God's people does not make Moses immune to their anger.
+
+Honest prayer includes naming fear exactly as it is.
+
+😨 Moses names a real physical danger
+🗣️ He brings the crisis straight to God
+👑 Leadership did not protect him from anger
+📖 Honest prayer names fear plainly
+
+## 🪄 Thy Rod, Wherewith Thou Smotest The River
+
+This is the same rod used to turn the river to blood in Exodus seven.
+
+The very tool of judgment on Egypt now becomes a tool of provision.
+
+God does not need a new instrument to meet a new need.
+
+One rod carries both plague and rescue in the same hand.
+
+🪄 The rod once turned the river to blood
+⚖️ Judgment on Egypt used this same rod
+💧 Now the rod provides water instead
+📖 One tool serves both plague and rescue
 
 ## 🪨 Thou Shalt Smite The Rock, And There Shall Come Water Out Of It
 
-God provides another miraculous provision, water flowing directly from solid rock, using the same rod that performed the plagues and parted the Red Sea, now providing life-sustaining water instead.
+God provides water through an entirely unexpected source, solid rock.
 
-🪨 The same rod from the plagues and Red Sea now provides water instead
+Moses obeys in full view of the elders, not in private.
 
----
+Public obedience lets the whole community witness God's provision firsthand.
 
-## 🏷️ Massah, And Meribah ... Because They Tempted The LORD
+The same power that parted the sea now splits open a rock.
 
-Massah means "testing" and Meribah means "quarreling" or "strife." Moses names this location permanently after Israel's specific failure here, a lasting geographic reminder of this moment of doubt.
+🪨 Water comes from solid rock itself
+👥 Moses obeys before the watching elders
+👀 The whole community witnesses this provision
+📖 The same power now opens a rock
 
-🏷️ Massah means testing; Meribah means quarreling or strife
+## 🏷️ Massah, And Meribah
 
-📍 This location's name permanently marks Israel's doubt at this moment
+"Massah" means testing.
 
----
+"Meribah" means quarreling or strife.
+
+Moses names this place permanently after Israel's failure here.
+
+The name becomes a lasting reminder for every future traveler.
+
+A place can carry the memory of a specific failure.
+
+🏷️ Massah means testing
+📛 Meribah means quarreling or strife
+📍 This name permanently marks Israel's doubt
+📖 A place can preserve a hard memory
 
 ## ❓ Is The LORD Among Us, Or Not?
 
-This question captures the real heart of Israel's complaint, not simply thirst itself, but genuine doubt about whether God's presence and care are actually real and active among them.
+This question is the real complaint underneath all the arguing about water.
 
-❓ This question reveals the deeper doubt underneath the surface complaint about thirst
+Israel is not only asking for a drink.
+
+They are questioning whether God is truly present among them.
+
+Thirst was the surface problem.
+
+Doubt was the deeper one.
+
+This same pattern of doubt returns again later in the wilderness.
+
+❓ This question reveals the real complaint
+💭 Doubt runs deeper than simple thirst
+🔁 The same doubt pattern returns later
+📖 Presence was the deeper question here
 
 # Exodus 17:8-10
-
 # ⚔️ Amalek Attacks
-
 ---
-
 ## ⚔️ Amalek, And Fought With Israel In Rephidim
 
-Amalek was a nomadic people descended from Esau's grandson, and this marks the beginning of a long, hostile relationship between Amalek and Israel that continues across many future books of the Old Testament.
+Amalek was a nomadic people descended from Esau's grandson.
 
-⚔️ Amalek descended from Esau's grandson, beginning a long hostile relationship with Israel
+This attack begins a hostile relationship lasting for many generations.
 
----
+Israel faces this threat right after the crisis over water.
 
-## 🗡️ Moses Said Unto Joshua, Choose Us Out Men, And Go Out, Fight With Amalek
+One trial follows immediately after another in the wilderness.
 
-This is Joshua's very first appearance in Scripture, introduced here as a military leader chosen personally by Moses, setting up his much larger role later as Moses' eventual successor.
+⚔️ Amalek descended from Esau's grandson
+🏜️ Amalek lived as a nomadic desert people
+🔁 This begins many generations of hostility
+📖 One trial follows quickly after another
 
-🗡️ This is Joshua's first appearance in Scripture, later becoming Moses' successor
+## 🗡️ Choose Us Out Men, And Go Out, Fight With Amalek
 
----
+This is Joshua's first appearance anywhere in Scripture.
+
+Moses hands him real responsibility before Joshua has proven anything.
+
+Joshua later becomes Moses' own successor leading Israel into Canaan.
+
+A famous leader's story often begins in a single small assignment.
+
+🗡️ Joshua's first appearance in all Scripture
+👑 Moses trusts him with real responsibility
+🧭 Joshua later succeeds Moses as leader
+📖 Great leadership often starts with one small task
 
 ## ⛰️ Moses, Aaron, And Hur Went Up To The Top Of The Hill
 
-Hur appears here for the first time too, joining Aaron in a supporting role. Moses positions himself visibly on the hilltop overlooking the actual battle happening below.
+Hur appears here for the very first time in the Bible.
 
-⛰️ Moses watches from the hilltop while Joshua leads the actual battle below
+He joins Aaron in a quiet, supporting role beside Moses.
+
+Moses positions himself where he can watch the entire battle below.
+
+Not every important person in Scripture gets a dramatic introduction.
+
+⛰️ Moses watches the battle from the hilltop
+🙋 Hur is introduced here for the first time
+🤝 Hur joins Aaron in a supporting role
+📖 Quiet roles still matter in Scripture
 
 # Exodus 17:11-13
-
 # ✋ Moses' Hands Held Up
-
 ---
+## ✋ When Moses Held Up His Hand, That Israel Prevailed
 
-## ✋ When Moses Held Up His Hand, That Israel Prevailed: And When He Let Down His Hand, Amalek Prevailed
+The battle's outcome ties directly to Moses' raised hands.
 
-The battle's outcome is directly tied to Moses' raised hands, likely holding the rod of God, visibly connecting Israel's military success to reliance on God's power rather than human strength alone.
+This is not about which army fights harder on the ground.
 
-✋ The battle's outcome ties directly to Moses' raised hands, not military skill alone
+Victory depends on continued reliance on God's power above the battle.
 
----
+Prayer and dependence shape the outcome as much as swords do.
 
-## 🪨 They Took A Stone, And Put It Under Him ... Aaron And Hur Stayed Up His Hands
+✋ Moses' raised hands decide the outcome
+⚔️ The battle is not won by skill alone
+🙏 Victory depends on continued reliance on God
+📖 Dependence shapes outcomes as much as swords
 
-When Moses' own strength fails from simple physical exhaustion, Aaron and Hur step in practically, seating him and physically supporting his arms, a vivid picture of community members helping sustain someone else's faithfulness.
+## 🤝 Aaron And Hur Stayed Up His Hands
 
-🪨 Aaron and Hur physically support Moses when his own strength gives out
+Moses' own strength eventually fails from simple exhaustion.
 
-🤝 This pictures how community support can help sustain someone else's faithfulness
+Aaron and Hur do not rebuke him for growing tired.
 
----
+They seat him on a stone and physically support his arms.
 
-## 🌅 His Hands Were Steady Until The Going Down Of The Sun
+Their help keeps the whole battle turning in Israel's favor.
 
-The support continues for the entire length of the battle, all day until sunset, ensuring the victory holds firm through consistent, sustained effort rather than a brief, temporary boost.
+🪨 They seat Moses on a stone to rest
+🤝 Aaron and Hur support his arms directly
+😓 Even Moses' own strength eventually gave out
+📖 Community support can sustain someone's faithfulness
 
-🌅 The support continues consistently through the whole day, not just briefly
+## 🌅 Until The Going Down Of The Sun
+
+The support continues for the entire length of the battle.
+
+This is not a brief moment of help.
+
+It lasts the whole day, all the way until sunset.
+
+Joshua defeats Amalek only once this steady support holds firm.
+
+Sustained faithfulness, not a quick effort, wins the day.
+
+🌅 The support lasts until sunset itself
+🏆 Joshua defeats Amalek because the support held
+⏳ Sustained effort mattered more than a quick boost
+📖 Faithfulness sustained over time wins the day
 
 # Exodus 17:14-16
-
-# 📜 A Memorial, And Jehovah-nissi
-
+# 📜 A Memorial, And Jehovahnissi
 ---
+## 📜 Write This For A Memorial In A Book
 
-## 📜 Write This For A Memorial In A Book, And Rehearse It In The Ears Of Joshua
+A "memorial" is a permanent written record meant to be remembered later.
 
-Rehearse means to repeat or recount aloud. God commands this victory be both written down permanently and spoken directly to Joshua, ensuring the lesson survives through both written record and personal teaching.
+God commands this victory be preserved in writing, not just in memory.
 
-📜 Rehearse means to repeat aloud, ensuring the lesson passes through both writing and speech
+Spoken memories fade or shift with each retelling over time.
 
----
+A written record protects the truth of what actually happened here.
 
-## 🏛️ Moses Built An Altar, And Called The Name Of It Jehovah-nissi
+📜 Memorial means a permanent written record
+✍️ God commands this victory be written down
+🗣️ Spoken memory alone can shift over time
+📖 Writing protects the truth for later readers
 
-Jehovah-nissi means "the LORD is my banner," a banner being a military flag rallying troops in battle. Moses commemorates this victory by naming God directly as the true source and rallying point of their success.
+## 👂 Rehearse It In The Ears Of Joshua
 
-🏛️ Jehovah-nissi means "the LORD is my banner"
+"Rehearse" means to repeat or recount aloud, not simply to practice.
 
-🚩 A banner was a military rallying flag, crediting God as the true source of victory
+God commands this lesson be spoken directly to Joshua by name.
 
----
+Joshua will lead Israel into battle again in future books.
+
+Writing and speaking together make sure the lesson truly survives.
+
+🗣️ Rehearse means to repeat something aloud
+👂 Joshua hears this lesson directly by name
+📚 Joshua will lead many future battles
+📖 Written and spoken lessons together last longer
+
+## 🏛️ Moses Built An Altar, And Called The Name Of It Jehovahnissi
+
+"Jehovahnissi" means "the LORD is my banner."
+
+A banner was a military flag used to rally troops in battle.
+
+Moses names God as the true source of this victory.
+
+The altar itself becomes a lasting marker of what God did here.
+
+🏛️ Jehovahnissi means the LORD is my banner
+🚩 A banner was a military rallying flag
+🙌 God receives credit for the victory
+📖 Altars mark what God has already done
 
 ## ⚔️ The LORD Will Have War With Amalek From Generation To Generation
 
-This declares an ongoing, long-term conflict extending far beyond this single battle, setting up Amalek's recurring role as an antagonist throughout many of Israel's future stories in later books.
+This declares a conflict that stretches far beyond a single afternoon.
 
-⚔️ This sets up Amalek's recurring hostile role throughout many future books of the Bible`;
+Amalek becomes a recurring enemy across many future books of the Bible.
+
+God takes personal responsibility for this ongoing conflict, not just Israel.
+
+Today's battle turns out to be only the very first one.
+
+⚔️ This declares conflict across many generations
+📚 Amalek recurs across many later books
+🛡️ God takes this conflict on Himself
+➡️ Today's battle was only the first one`.trim();
 
 export const EXODUS_SEVENTEEN_PERSONAL_SECTIONS = parseExodusSeventeenRawNotes(EXODUS_SEVENTEEN_RAW_NOTES);

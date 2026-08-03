@@ -2224,6 +2224,7 @@ function normalizeTrafficSourceLabel(sourceValue: unknown, referrerValue?: unkno
   if (combined.includes("facebook") || combined.includes("fbclid") || combined.includes("fb.") || /\bfb\b/.test(combined)) return "Facebook";
   if (combined.includes("instagram") || combined.includes("igshid") || /\big\b/.test(combined)) return "Instagram";
   if (combined.includes("threads")) return "Threads";
+  if (combined.includes("pinterest") || combined.includes("pin.it")) return "Pinterest";
   if (combined.includes("youtube") || combined.includes("youtu.be") || combined.includes("youtu")) return "YouTube";
   if (combined.includes("google") || combined.includes("gclid")) return "Google";
 
@@ -3215,6 +3216,7 @@ function normalizeJourneySource(value: unknown) {
   if (lower.includes("instagram")) return "Instagram";
   if (lower.includes("facebook") || lower.includes("fb.")) return "Facebook";
   if (lower.includes("threads")) return "Threads";
+  if (lower.includes("pinterest") || lower.includes("pin.it")) return "Pinterest";
   if (lower.includes("youtube") || lower.includes("youtu.be")) return "YouTube";
   if (lower.includes("google")) return "Google";
   if (lower.includes("tiktok")) return "TikTok";
@@ -3225,6 +3227,7 @@ function normalizeJourneySource(value: unknown) {
     if (host.includes("instagram")) return "Instagram";
     if (host.includes("facebook")) return "Facebook";
     if (host.includes("threads")) return "Threads";
+    if (host.includes("pinterest")) return "Pinterest";
     if (host.includes("youtube") || host.includes("youtu.be")) return "YouTube";
     if (host.includes("google")) return "Google";
     return host.split(".")[0]?.replace(/^\w/, (char) => char.toUpperCase()) || "Unknown";
