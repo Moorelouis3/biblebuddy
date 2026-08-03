@@ -7988,6 +7988,55 @@
           "at": "2026-08-03T15:01:17Z"
         }
       ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 13,
+      "startedAt": "2026-08-03T15:46:30Z",
+      "finishedAt": "2026-08-03T16:00:55Z",
+      "durationMinutes": 14,
+      "sections": 12,
+      "cards": 70,
+      "verses": 59,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (12 sections, paragraph bodies, three bullets per card, no .trim() on its raw notes constant) from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Leviticus 13 is the long, repetitive priestly diagnostic law for skin disease (tzaraat): the first depth-and-white-hair test, the seven day (and second seven day) quarantine watch, advanced unmistakable cases, the total-whiteness paradox (fully white is clean, any raw flesh is unclean), a healed boil or burn that turns bad, the scall on head or beard (marker shifts from white to yellow hair), freckled spots ruled clean outright, baldness declared harmless with a cross reference to Elisha in 2 Kings, the leper's mourning rites and life outside the camp (cross referenced to Miriam in Numbers 12, Uzziah in 2 Chronicles 26, and the ten lepers in Luke 17), and leprosy in a garment (mold or mildew) closing with its own wash/cut/burn process. Kept the original file's 12 section boundaries for verse coverage continuity while rewriting every card to the new format. Density about 1.19 cards per verse (59 verses, 70 cards), on the lower end of the target range on purpose since this chapter repeats one diagnostic test (depth, hair color, spreading) across roughly seven near-identical scenarios: matched Leviticus 11's benchmark density for this type of repetitive legal chapter rather than padding with restated procedure. Had to rework several titles that would have carried a literal KJV semicolon (banned punctuation) by shortening the lifted phrase to stop before the semicolon, and rewrote a couple of body lines that used the banned hedge word 'somewhat' (a literal KJV word in this chapter) and the forbidden stacked-clause connector 'rather than'. scripts/check_bible_note_style.py found 4 problems on first pass (one semicolon in a title, one banned filler word 'essentially' used twice, two bullets one word over the 8 word limit), fixed, second run clean. A manual section 13 eye check confirmed each card opens with one of the four moves, defines its key term, and closes on meaning rather than mechanics. Parser check passed exactly via getBibleReaderStudySections('Leviticus', 13) (12/12 sections, 70 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (LeviticusThirteenPersonalSection, parseLeviticusThirteenRawNotes, LEVITICUS_THIRTEEN_RAW_NOTES, LEVITICUS_THIRTEEN_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Leviticus 13 entry removed from the front of the list as part of this commit; next redo target is Leviticus 14.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-03T15:46:30Z"
+        },
+        {
+          "name": "target chapter determined: Leviticus 13 (style redo, first in remaining backlog)",
+          "at": "2026-08-03T15:46:52Z"
+        },
+        {
+          "name": "confirmed wiring already correct in lib/bibleReaderStudyNotes.ts",
+          "at": "2026-08-03T15:47:10Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Leviticus.json",
+          "at": "2026-08-03T15:48:05Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (lib/genesisThirtyOneSource.ts) read",
+          "at": "2026-08-03T15:48:40Z"
+        },
+        {
+          "name": "source file written: lib/leviticusThirteenSource.ts (12 sections, 70 cards)",
+          "at": "2026-08-03T15:59:00Z"
+        },
+        {
+          "name": "style checker clean on second pass (4 problems fixed: 1 semicolon, 1 banned filler used twice, 2 over-length bullets)",
+          "at": "2026-08-03T15:59:40Z"
+        },
+        {
+          "name": "parser check passed: 12/12 sections, 70 cards, verbatim",
+          "at": "2026-08-03T16:00:10Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-08-03T16:00:55Z"
+        }
+      ]
     }
   ]
 }

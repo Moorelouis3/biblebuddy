@@ -89,1083 +89,1289 @@ function parseLeviticusThirteenRawNotes(rawText: string): LeviticusThirteenPerso
 }
 
 const LEVITICUS_THIRTEEN_RAW_NOTES = `# Leviticus 13:1-3
-
-# 🔍 The Priest's First Look
-
+# 🔍 The Priest's First Examination
 ---
+## 🗣️ Spake Unto Moses And Aaron
 
-## 🗣️ The LORD Spake Unto Moses And Aaron
+This law is spoken to Moses and Aaron together.
 
-Like chapter 11, this law is addressed to both leaders together, not to Moses alone. What follows is one of the longest single laws in the whole book, spelling out exactly how a priest examines and rules on skin conditions.
+Most of Leviticus addresses Moses alone.
 
-🗣️ Addressed to both leaders together, same pattern as chapter 11
+Aaron already carries the job of judging clean and unclean.
 
-📏 One of the longest connected laws in all of Leviticus
+That duty was given to him back in chapter ten.
 
-👤 The priest's job here is diagnosis and ritual status, not medicine
+Naming him again here confirms this chapter belongs to that same ongoing role.
 
----
+🗣️ Addressed to both leaders together
+
+👤 Aaron already judges clean and unclean
+
+📜 That duty began back in chapter ten
+
+📖 This law continues a duty already given
 
 ## 🔍 A Rising, A Scab, Or Bright Spot
 
-These are three different starting points a skin problem could take: a rising (a swelling or bump), a scab (a rough, scaly patch), or a bright spot (a pale, shiny mark). The law doesn't assume one single disease. It builds a flexible test that can be applied no matter which of these three ways the problem first shows up.
+These are three different ways a skin problem could first appear.
 
-🔍 Three different visual starting points, not one fixed disease
+A rising is a swelling or bump.
 
-📖 A flexible test built to handle any of the three
+A scab is a rough scaly patch.
 
-🩹 Each Hebrew word describes a distinct kind of visible mark
+A bright spot is a pale shiny mark.
 
----
+The law does not assume only one disease.
+
+It builds one flexible test that can handle any of the three.
+
+🔍 Three different starting appearances, not one disease
+
+🩹 A scab means a rough scaly patch
+
+🎯 One test applies no matter which appears
+
+📖 A rising means a swelling or bump
 
 ## 🩺 Like The Plague Of Leprosy
 
-"Leprosy" here translates a Hebrew word, tzaraat, that covers a much wider range of skin conditions than what doctors today call leprosy (Hansen's disease). It could include rashes, fungal infections, psoriasis, or other visible skin changes. The King James translators didn't have a better English word available, so "leprosy" became the standard, even though it's broader than the modern medical term.
+"Leprosy" here translates a Hebrew word, tzaraat.
 
-🩺 Tzaraat covers many skin conditions, not one specific illness
+Tzaraat covers a much wider range of skin conditions than modern Hansen's disease.
 
-📖 "Leprosy" was the best available English word, not a perfect match
+It could include rashes, fungal infections, psoriasis, or other visible changes.
 
-🔬 Modern Hansen's disease is only one possible condition among several
+The King James translators did not have a closer English word available.
 
----
+"Leprosy" became the standard word even though it covers far more than one illness.
 
-## 👤 Brought Unto Aaron The Priest, Or Unto One Of His Sons The Priests
+🩺 Tzaraat covers many skin conditions
 
-No doctor or physical treatment appears anywhere in this chapter. The priest's entire job is to look, apply a fixed set of visual tests, and declare a person clean or unclean. This connects directly to Aaron's teaching charge from chapter 10:10-11, to "put difference between... unclean and clean."
+📜 Not the same as modern Hansen's disease
 
-👤 The priest diagnoses and rules; he does not treat or heal
+🔬 Rashes and fungal infections both qualify
 
-⚖️ A ritual and social judgment, not a medical procedure
-
-🔗 A direct continuation of Aaron's chapter 10:10 assignment
-
----
-
-## ⚪ When The Hair In The Plague Is Turned White
-
-This is the first of two key warning signs the priest looks for. Hair growing white inside the mark, rather than its normal color, signals that whatever is happening has reached down into the hair follicle itself, not just sitting on the surface.
-
-⚪ White hair growing inside the mark is warning sign number one
-
-📏 A sign that the problem reaches below the surface
-
-🔁 This exact marker gets reused throughout the rest of the chapter
-
----
-
-## 📏 The Plague In Sight Be Deeper Than The Skin Of His Flesh
-
-The second warning sign is how the mark looks compared to the surrounding skin: does it appear to sink down below the normal skin level, rather than sitting flat on top of it? Depth, more than color or size, is the test the priest is trained to look for again and again in this chapter.
-
-📏 A mark that looks sunken below the skin, not sitting on top
-
-🔁 Depth becomes the chapter's single most repeated diagnostic clue
-
-🩺 Together with white hair, these two signs settle a case fast
-
----
+📖 One English word covers a wider Hebrew idea
 
 ## ⚖️ Pronounce Him Unclean
 
-When both warning signs show up together right away, no waiting period is needed. The priest can rule immediately. This immediate-verdict pattern sets up a contrast with the very next section, where neither sign is present and the priest has to wait and watch instead.
+Two specific signs decide this first case.
 
-⚖️ Both signs present together means an instant ruling
+White hair growing inside the mark is the first sign.
 
-⏳ Sets up the "wait and see" cases explained next
+A mark that sinks below the normal skin level is the second.
 
-📖 The chapter's fastest possible verdict, used as a baseline
+Both signs appearing together let the priest rule right away.
+
+No doctor or medicine appears anywhere in this chapter.
+
+The priest only looks, tests, and declares a ritual status.
+
+⚪ White hair is the first warning sign
+
+📏 Depth below the skin is the second
+
+⚖️ Both signs together allow an instant ruling
+
+📖 The priest rules on status, not disease
 
 # Leviticus 13:4-8
-
-# ⏳ The Seven-Day Watch
-
+# ⏳ The Seven Day Watch
 ---
+## 🤔 The Hair Thereof Be Not Turned White
 
-## 🤔 If The Bright Spot Be White... Not Deeper... Hair Thereof Be Not Turned White
+Here neither warning sign from verse three shows up.
 
-Here neither of the two warning signs from verse 3 is present. The mark is pale, but not sunken, and the hair inside it hasn't changed color. This is the genuinely uncertain case the rest of the chapter's seven-day system exists to handle.
+The mark is pale but it does not sink below the skin.
 
-🤔 Neither warning sign from verse 3 shows up here
+The hair inside it has not changed color either.
 
-⏳ The genuinely uncertain case, not an obvious one
+This is the truly uncertain case the rest of the chapter exists to handle.
 
-📖 What the whole seven-day watch system was built to solve
+🤔 Neither earlier warning sign appears here
 
----
+📏 No depth and no hair color change
+
+⏳ A genuinely uncertain case, not an obvious one
+
+📖 This case is why the watch system exists
 
 ## 🔒 Shut Up Him That Hath The Plague Seven Days
 
-"Shut up" means confined or quarantined, kept apart from the rest of the camp for a set period. This isn't a punishment. It's an ancient, working version of a diagnostic observation period, buying time to see how the mark behaves before making a final call.
+"Shut up" means confined or set apart from the camp.
 
-🔒 "Shut up" means confined, kept apart from the camp
+This was not a punishment.
 
-⏳ A built-in waiting period, not a punishment
+It gave the priest time to watch how the mark behaved.
 
-🩺 An early form of watching a condition to see how it develops
+An early, working version of an observation period.
 
----
+Waiting let the evidence speak before any final ruling.
 
-## ⚖️ At A Stay, And The Plague Spread Not In The Skin
+🔒 Shut up means confined and set apart
 
-"At a stay" is an old way of saying unchanged, staying the same size and shape. Whether the mark spreads turns out to matter more than what it looked like on day one. An unchanged mark after a week is treated very differently from a growing one.
+⏳ Not a punishment but an observation period
 
-⚖️ "At a stay" means unchanged, staying the same
+🩺 Time to watch behavior before ruling
 
-📏 Spreading matters more than the mark's original appearance
+📖 Waiting let the evidence speak first
 
-🔁 The test now shifts from looks to behavior over time
+## 📏 At A Stay, And The Plague Spread Not In The Skin
 
----
+"At a stay" is an old way of saying unchanged.
 
-## 🔒 Then The Priest Shall Shut Him Up Seven Days More
+Whether the mark spreads matters more than how it first looked.
 
-If the case is still unclear after the first week, the law builds in a second week rather than forcing a premature decision either way. Patience, not speed, is built directly into the legal process here.
+An unchanged mark after a week gets treated very differently from a growing one.
 
-🔒 A second full week added when the first wasn't conclusive
+The test has shifted from appearance to behavior over time.
 
-⏳ The law refuses to force a premature decision
+⚖️ At a stay means unchanged
 
-📖 Patience is written directly into the legal process
+📏 Spreading matters more than first appearance
 
----
+🔁 The test now tracks behavior over time
 
-## 🌑 Somewhat Dark, And The Plague Spread Not... It Is But A Scab
+📖 Patience reveals what a first look cannot
 
-Darkening (fading toward the normal skin tone) combined with no spreading is read as a healing sign. The mark gets downgraded from a possible disease to an ordinary scab, something already resolving on its own.
+## 🔁 Shut Him Up Seven Days More
 
-🌑 Fading color plus no spreading reads as a healing sign
+If the case is still unclear after the first week, a second week gets added.
 
-🩹 Downgraded from possible disease to an ordinary scab
+The law refuses to force a decision before it is ready.
 
-📖 Two full weeks of watching finally pays off with an answer
+Patience is written directly into this legal process.
 
----
+Two weeks of watching cost far less than one wrong verdict.
 
-## 👕 He Shall Wash His Clothes, And Be Clean
+🔁 A second week added when unclear
 
-Washing the clothes is the final formal act that closes out an unclean period and marks the return to ordinary life. This same closing step appears again and again through the rest of the chapter every time someone is finally declared clean.
+⏳ The law refuses a premature decision
 
-👕 The formal closing act of an unclean period
+🩺 Patience built directly into the process
 
-🔁 This exact step repeats throughout the rest of the chapter
+📖 Two weeks protect against one wrong verdict
 
-📖 A visible, physical marker of the ritual status changing back
+## 👕 It Is But A Scab: And He Shall Wash His Clothes, And Be Clean
 
----
+A fading mark that has not spread gets read as a healing sign.
 
-## 🔁 If The Scab Spread Much Abroad In The Skin, After That He Hath Been Seen Of The Priest For His Cleansing
+It gets downgraded from a possible disease to an ordinary scab.
 
-Even a clean verdict wasn't necessarily the end of the story. If the same spot started spreading later, after already being cleared, the law required a fresh examination rather than letting the old verdict stand automatically.
+Washing the clothes closes out the unclean period.
 
-🔁 A clean ruling could still be revisited later if things changed
+This same closing act repeats through the rest of the chapter.
 
-👤 A fresh exam required, not just relying on the old verdict
+🌑 Fading with no spread reads as healing
 
-📖 The law tracked ongoing behavior, not a single moment in time
+🩹 Downgraded from disease to ordinary scab
 
----
+👕 Washing clothes closes the unclean period
 
-## ⚖️ The Scab Spreadeth In The Skin... Pronounce Him Unclean: It Is A Leprosy
+📖 This closing act repeats all chapter long
 
-New spreading after a clean verdict flips the diagnosis entirely. What looked like an ordinary healed scab is reclassified as leprosy after all, showing that every ruling in this chapter stayed open to correction based on new evidence.
+## 🔁 The Scab Spreadeth In The Skin
 
-⚖️ New spreading can overturn an earlier clean verdict
+Even a clean verdict was not the end of the story.
 
-🔄 Every ruling here stayed open to being revised
+If the same spot started spreading later, the law required a fresh exam.
 
-📖 Evidence over time outweighs any single earlier snapshot
+The old verdict did not just stand automatically.
+
+New spreading flips the case straight to unclean.
+
+Every ruling in this chapter stayed open to being revised.
+
+🔁 A clean ruling could still be revisited
+
+👤 A fresh exam required, not automatic trust
+
+⚖️ New spreading flips the case to unclean
+
+📖 Evidence over time outweighs one earlier snapshot
 
 # Leviticus 13:9-11
-
-# 👴 Old, Established Leprosy
-
+# 👴 Advanced, Unmistakable Leprosy
 ---
+## 🚶 Then He Shall Be Brought Unto The Priest
 
-## 🚶 The Plague Of Leprosy Is In A Man, Then He Shall Be Brought Unto The Priest
+This case has already moved past the uncertain early marks just described.
 
-This case moves past the uncertain, early-stage marks of verses 2-8 into something already advanced and unmistakable. The whole seven-day watching process built for ambiguous cases becomes unnecessary once a case is this far along.
+It is already advanced and unmistakable.
 
-🚶 A more advanced case than the uncertain ones just covered
+The whole seven day watching process built for unclear cases becomes unnecessary here.
 
-📖 Not every case needed the full seven-day process
+Not every case needed the same careful wait.
 
-🩺 The chapter now handles the opposite extreme: total certainty
+🚶 A far more advanced case than before
 
----
+🩺 This handles the opposite of uncertainty
+
+📖 Not every case needed the full wait
+
+➡️ Total certainty gets a different process
 
 ## ⚪ The Rising Be White In The Skin, And It Have Turned The Hair White
 
-Both markers from the very first test in verse 3 reappear here (white hair, a visible rising), confirming this is the same underlying diagnostic system, just applied to a case that's already gone further along than the borderline ones just described.
+Both markers from the very first test return here.
 
-⚪ The same white-hair marker from verse 3 shows up again
+White hair and a visible rising confirm the same diagnostic system.
 
-📖 One consistent diagnostic system reused across every case
+It is just applied to a case further along than the borderline ones already covered.
 
-🔁 The chapter builds by reapplying a small set of core signs
+One consistent test, reused again and again.
 
----
+⚪ The same white hair marker returns
 
-## 🩸 There Be Quick Raw Flesh In The Rising
+📏 Also the same visible rising sign
 
-"Quick" is an old English word for living (the same word behind the older phrase "the quick and the dead"). "Quick raw flesh" means visibly living, open, exposed tissue, not just discoloration. This is a much more obvious, unmistakable sign than anything in the previous ambiguous cases.
+🔁 One system reused across every case
 
-🩸 "Quick" is an old word for living, not fast-moving
+📖 Familiar signs confirm a familiar test
 
-👁️ Open, exposed living tissue, plainly visible on sight
+## 🩸 Quick Raw Flesh In The Rising
 
-📖 Unmistakable in a way the earlier borderline cases weren't
+"Quick" is an old word for living.
 
----
+It is the same word behind the older phrase the quick and the dead.
 
-## 🔓 It Is An Old Leprosy... And Shall Not Shut Him Up
+"Quick raw flesh" means visibly living, open, exposed tissue.
 
-When a case is already this advanced, there's nothing left to observe. The whole point of the seven-day quarantine was managing genuine uncertainty, and an obviously advanced case has no uncertainty left to resolve.
+That is a far more obvious sign than plain discoloration.
 
-🔓 No quarantine needed when nothing is left uncertain
+🩸 Quick is an old word for living
 
-⏳ The waiting period only ever existed to manage real doubt
+👁️ Open living tissue, plainly visible
 
-📖 Confirms the seven-day system was practical, not ritualistic filler
+🔎 Far more obvious than mere discoloration
 
----
+📖 A word easy to misread today
 
-## ⚖️ For He Is Unclean
+## ⚖️ Shall Not Shut Him Up: For He Is Unclean
 
-The confident, flat tone here (no "if," no conditions) stands out against the careful conditional language used through verses 4-8. Clear cases got clear, immediate rulings; unclear cases got the patient, staged process instead.
+When a case is already this advanced, there is nothing left to observe.
 
-⚖️ A flat, unconditional statement, unlike the careful "if" language before
+The whole point of the seven day wait was managing real uncertainty.
 
-🔁 The law matched its process to how much doubt actually existed
+An obviously advanced case has no uncertainty left to resolve.
 
-📖 Closes the chapter's first extended case study
+The flat, unconditional tone here stands out against the careful language used earlier.
+
+🔓 No quarantine needed when nothing is uncertain
+
+⏳ Waiting only ever served real doubt
+
+⚖️ A flat verdict, not a careful if
+
+📖 Clear cases got clear, immediate rulings
 
 # Leviticus 13:12-17
-
-# 🤍 The Strange Case Of Total Whiteness
-
+# 🤍 Total Whiteness, Ruled Clean
 ---
+## 🌍 From His Head Even To His Foot
 
-## 🌍 Break Out Abroad In The Skin... Cover All The Skin... From His Head Even To His Foot
+This case describes a mark that has spread across the whole body.
 
-This scenario pictures a case that has spread across a person's entire body, head to foot, wherever the priest looks. It sounds, at first read, like the worst possible outcome the chapter could describe.
+Head to foot, wherever the priest looks.
 
-🌍 A mark that has spread across the entire body
+It sounds at first like the worst possible outcome the chapter could describe.
 
-📖 Sounds like it should be the chapter's worst-case scenario
+That first impression turns out to be wrong.
 
-🔍 Sets up one of the chapter's most surprising verdicts
+🌍 Spread across the entire body
 
----
+😮 Sounds like the worst case scenario
+
+🔍 Sets up a surprising verdict
+
+➡️ First impressions here are misleading
 
 ## 👁️ Wheresoever The Priest Looketh
 
-This detail emphasizes just how thorough the inspection is: not a quick glance, but a full check over every visible part of the body before any verdict gets made. Total-body cases required total-body confirmation.
+This detail stresses just how thorough the inspection is.
 
-👁️ A full, systematic inspection, not a quick glance
+Not a quick glance, but a full check over every visible part of the body.
 
-📏 Total-body spread required total-body confirmation
+A total body case required total body confirmation before any verdict.
 
-🩺 Reinforces how seriously the priestly exam was carried out
+👁️ A full inspection, not a glance
 
----
+📏 Total spread required total confirmation
+
+🩺 Thoroughness mattered before any ruling
+
+📖 A careful look came before the verdict
 
 ## ⚪ It Is All Turned White: He Is Clean
 
-This is the chapter's biggest surprise. Full, uniform whiteness covering the whole body is declared clean, not unclean. The reasoning becomes clear a verse later: as long as no raw, open flesh is visible anywhere, there's nothing actively spreading or unhealed to worry about. A uniform, fully "turned" pattern reads completely differently than a partial, still-developing mark.
+This is the chapter's biggest surprise.
 
-⚪ Total whiteness is ruled clean, the opposite of what you'd expect
+Full, even whiteness covering the whole body is ruled clean, not unclean.
 
-🔑 No visible raw flesh means nothing is still actively active
+The reasoning becomes clear one verse later.
 
-📖 A uniform pattern reads differently than a partial, developing one
+As long as no raw, open flesh is visible, nothing is still active or spreading.
 
----
+⚪ Total whiteness is ruled clean
+
+🔑 No raw flesh means nothing is active
+
+😮 The opposite of what a reader expects
+
+📖 Uniform reads differently than a partial mark
 
 ## 🩸 But When Raw Flesh Appeareth In Him, He Shall Be Unclean
 
-The moment even one patch of open, raw flesh shows up, the verdict flips instantly. This single detail is the real key to understanding the whole strange passage: color was never actually the point, exposed living tissue was.
+The moment even one patch of open raw flesh shows up, the verdict flips.
 
-🩸 Even one raw patch reverses the clean verdict immediately
+This detail is the real key to the whole passage.
 
-🔑 Raw flesh, not white color, was the real deciding factor all along
+Color was never actually the point.
 
-⚖️ A single detail flips the entire ruling
+Exposed living tissue was.
 
----
+🩸 One raw patch reverses the verdict
+
+🔑 Raw flesh was the real test
+
+🎨 Color alone was never the point
+
+📖 Exposed tissue mattered more than color
 
 ## 🔑 For The Raw Flesh Is Unclean: It Is A Leprosy
 
-This line states plainly what the whole passage has been building toward: raw, exposed flesh is the constant, unifying test running underneath every single case in this chapter, whether on ordinary skin, a healed boil, a burn, or here on a fully whitened body.
+This line states plainly what the passage has been building toward.
 
-🔑 The chapter's real, unifying diagnostic principle stated plainly
+Raw exposed flesh is the constant test running under every case in the chapter.
 
-🔁 The same underlying test as every other case so far
+That holds true on ordinary skin, a healed boil, a burn, or here on a whitened body.
 
-📖 Explains why total whiteness and total uncleanness aren't the same
+🔑 One test unifies every case here
 
----
+🔁 True for skin, boils, burns, and this
 
-## 🔄 Or If The Raw Flesh Turn Again, And Be Changed Unto White
+➡️ The chapter explains itself through this line
 
-A case isn't locked in forever. If the exposed raw flesh itself heals over and turns white like the rest of the skin, the person returns to the priest for a fresh look rather than staying unclean by default.
+📖 Raw flesh is the constant, unifying test
 
-🔄 The status could still change again after an unclean ruling
+## 🔄 The Raw Flesh Turn Again, And Be Changed Unto White
 
-👤 A fresh examination required, not an automatic assumption
+A case was never locked in forever.
 
-📖 Confirms these rulings were reversible, not permanent labels
+If the raw flesh heals and turns white again, the status can still change.
 
----
+The person returns to the priest for a fresh look.
 
-## ⚪ The Plague Be Turned Into White; Then The Priest Shall Pronounce Him Clean
+Nothing here stayed unclean by default.
 
-The passage closes exactly where it began: uniform whiteness, no raw flesh anywhere, equals clean. The strange-sounding rule from verse 13 turns out to be completely consistent once raw exposed flesh is understood as the chapter's true test.
+🔄 Status could still change after ruling
 
-⚪ Ends on the same "all white equals clean" rule it opened with
+👤 A fresh exam required, not an assumption
 
-🔁 Fully consistent once raw flesh is understood as the real test
+🌱 Healing over reopens the case
 
-📖 A tidy close to the chapter's most counterintuitive passage
+📖 Nothing stayed unclean by default
+
+## ⚪ Then The Priest Shall Pronounce Him Clean
+
+The passage closes exactly where it began.
+
+Uniform whiteness with no raw flesh anywhere equals clean.
+
+The strange sounding rule from verse thirteen turns out to be fully consistent.
+
+Once raw exposed flesh is understood as the real test, nothing here is contradictory.
+
+⚪ Ends on the same rule it opened with
+
+🔁 Fully consistent once raw flesh is the test
+
+🧵 A tidy close to a strange passage
+
+📖 Consistency was there the whole time
 
 # Leviticus 13:18-23
-
-# 🩹 A Boil That Turns Bad
-
+# 🩹 A Healed Boil That Turns Bad
 ---
+## 🩹 Was A Boil, And Is Healed
 
-## 🩹 The Flesh Also, In Which... Was A Boil, And Is Healed
+A boil is a painful, inflamed lump on the skin, like an abscess.
 
-A "boil" is a painful, inflamed lump on the skin, like an abscess. This verse starts from an already-healed boil, not an active one, introducing a new starting scenario: what happens when something new shows up on old scar tissue.
+This verse starts from an already healed boil, not an active one.
 
-🩹 A boil is a painful, inflamed skin abscess
+That introduces a new scenario the chapter has not covered yet.
 
-🔙 This case starts from an already-healed wound, not a fresh one
+What happens when something new shows up on old scar tissue.
 
-📖 A new starting scenario the chapter hasn't covered yet
+🩹 A boil is a painful skin abscess
 
----
+🔙 This case starts from a healed wound
 
-## 👁️ A White Rising, Or A Bright Spot, White, And Somewhat Reddish, Be Shewed To The Priest
+🎯 Old scar tissue gets its own test
 
-"Shewed" is the old spelling of "showed." A new mark forming right at the site of an old, already-healed injury gets its own dedicated test, since scar tissue behaves differently from ordinary untouched skin.
+📖 A new scenario the chapter has not covered
 
-👁️ "Shewed" is simply the old spelling of "showed"
+## 👁️ It Be Shewed To The Priest
 
-🩹 Old scar tissue gets its own specific test, not a generic one
+"Shewed" is simply the old spelling of "showed."
 
-📖 A new mark at an old wound site raises its own questions
+A new mark forming right at the site of an old healed injury gets its own test.
 
----
+Scar tissue behaves differently from ordinary untouched skin.
+
+👁️ Shewed is the old spelling of showed
+
+🔍 Old wounds do not heal like new skin
+
+🩹 Scar tissue gets its own specific test
+
+📖 A new mark raises its own question
 
 ## 📏 In Sight Lower Than The Skin, And The Hair Thereof Be Turned White
 
-The identical two markers from verse 3 (depth and white hair) return here, just worded slightly differently ("lower than the skin" instead of "deeper than the skin"). It's the same underlying test, reapplied to this new scenario.
+The identical two markers from verse three return here.
 
-📏 The same depth-and-white-hair test from verse 3, reused
+Depth and white hair, just worded slightly differently as lower than the skin.
 
-🔁 Slightly different wording, but the identical underlying signs
+It is the same underlying test, reapplied to a new situation.
 
-📖 Confirms one consistent system runs through every case
+📏 The same depth and hair test returns
 
----
+🔁 Slightly different words, identical signs
+
+🎯 Familiar signs, unfamiliar starting point
+
+📖 One system reused for a new case
 
 ## 🔥 Broken Out Of The Boil
 
-This phrase gives a specific cause: not a brand-new, unrelated problem, but active disease resurfacing at the exact site of old damage. The wording distinguishes a fresh outbreak from something erupting out of an old wound.
+This phrase names a specific cause.
 
-🔥 Names the specific cause: disease resurfacing at an old wound
+Not a brand new unrelated problem, but active disease resurfacing at the exact site of old damage.
 
-📖 Distinguishes this case from a totally unrelated fresh mark
+The wording distinguishes a fresh outbreak from something erupting out of an old wound.
 
-🩹 The old boil's location is directly implicated
+🔥 Names disease resurfacing at an old wound
 
----
+🩹 The old boil site is directly implicated
 
-## 🔒 Then The Priest Shall Shut Him Up Seven Days
+🎯 Location matters as much as appearance
 
-The same quarantine-and-observe pattern from verses 4-5 gets reapplied here for the ambiguous version of this case. The chapter keeps reusing one small set of tools rather than inventing a new process for every new scenario.
+📖 Distinguishes this from a fresh new mark
 
-🔒 The same seven-day quarantine, reused for this new scenario
+## ✋ There Be No White Hairs Therein
 
-🔁 One toolkit, applied repeatedly rather than reinvented each time
+The safer profile mirrors the earlier "at a stay" language.
 
-⏳ Uncertainty still gets the same patient, staged response
+No depth, and hair that has not changed color.
 
----
+These are the visual cues the priest was trained to treat as reassuring.
 
-## 🌑 If It Spread Much Abroad In The Skin, Then The Priest Shall Pronounce Him Unclean: It Is A Plague
+A calm mark still earns a full week of watching before any final word.
 
-Spreading after the quarantine period flips the case to unclean, exactly the same pattern already seen with the ordinary scab back in verses 7-8. The law treats "spreading over time" as trustworthy evidence no single glance could provide.
+✋ No depth and no hair color change
 
-🌑 Spreading after quarantine means an unclean ruling, as before
+🩺 A trained, reassuring visual profile
 
-🔁 The same pattern already used for the ordinary scab case
+⏳ Still earns a week of watching
 
-📖 Behavior over time outweighs the mark's original appearance
+📖 Reassuring signs still get checked, not assumed
 
----
+## 👕 It Is A Burning Boil
 
-## ✋ It Be Not Lower Than The Skin, But Be Somewhat Dark
+"Burning boil" describes ordinary leftover scar inflammation from the original wound.
 
-The safer profile mirrors the earlier "at a stay" language: no depth, and a fading, darker color rather than a bright, angry tone. These are the visual cues the priest is trained to treat as reassuring.
+Not a new disease, just leftover healing from an old injury.
 
-✋ No depth, plus a darkening color, reads as a safer sign
+An unchanged, non spreading mark at an old boil site is simply what healed skin can look like.
 
-🔁 Mirrors the same "at a stay" reassurance from earlier verses
+🌑 Burning boil means leftover scar inflammation
 
-🩺 Trained visual cues, not guesswork
+🔙 Not a new disease, just healing residue
 
----
+🩺 Unchanged marks can just be healed skin
 
-## 🌑 It Is A Burning Boil; And The Priest Shall Pronounce Him Clean
-
-"Burning boil" describes ordinary leftover scar inflammation from the original healed wound, not a new disease. An unchanged, non-spreading mark at an old boil site is simply what healed skin sometimes looks like, nothing more.
-
-🌑 "Burning boil" means ordinary scar-tissue inflammation
-
-🔙 Not a new disease, just leftover healing from the original wound
-
-📖 Closes the boil scenario on a reassuring, everyday note
-
----
-
-## 🔁 The Same Two-Step Test, A Third Time
-
-By this point in the chapter, a clear pattern has emerged: whatever the starting scenario (ordinary skin, an advanced case, now a healed boil), the underlying test is always the same handful of signs — depth, hair color, and whether the mark spreads over time.
-
-🔁 Three different scenarios, one consistent underlying test
-
-📖 The law is a reusable diagnostic engine, not a random list
-
-🩺 Learning the test once means recognizing it everywhere
+📖 A reassuring, everyday close to this case
 
 # Leviticus 13:24-28
-
 # 🔥 A Burn That Turns Bad
-
 ---
-
 ## 🔥 A Hot Burning
 
-This introduces a third specific starting scenario, after ordinary skin and a healed boil: an actual burn wound from fire or heat. The chapter keeps working through every realistic way a mark could first appear on someone's body.
+This introduces a third specific starting scenario.
 
-🔥 A third starting scenario: an actual fire or heat burn
+After ordinary skin and a healed boil, now an actual burn wound from fire or heat.
 
-📖 The chapter systematically covers every realistic starting point
+The chapter keeps working through every realistic way a mark could first appear on the body.
 
-🩺 Burns get their own test, just like boils did
+🔥 A third starting scenario, an actual burn
 
----
+🩺 Burns get their own test, like boils did
 
-## 🩸 The Quick Flesh That Burneth Have A White Bright Spot, Somewhat Reddish, Or White
+🎯 Every injury type gets the same process
 
-"Quick" again means living, the same word used back in verse 10. Here it describes the healthy, living tissue right at the burn site where a new pale or reddish mark has appeared, distinct from the burn's dead or scarred tissue.
+📖 The chapter covers every realistic starting point
 
-🩸 "Quick" still means living, same as in verse 10
+## 🩸 The Quick Flesh That Burneth
 
-🔥 Refers to healthy tissue right at the burn site
+"Quick" again means living, the same word used back in verse ten.
 
-📖 A new mark forming on living tissue near the injury
+Here it describes the healthy living tissue right at the burn site.
 
----
+A new pale or reddish mark has appeared there.
 
-## 📏 It Be In Sight Deeper Than The Skin... Broken Out Of The Burning: Wherefore The Priest Shall Pronounce Him Unclean
+That mark is distinct from the burn's dead or scarred tissue.
 
-Once again, the same depth-and-white-hair combination from verse 3 delivers an immediate unclean verdict, this time framed as disease breaking out from the site of the burn injury, echoing the boil case just before it.
+🩸 Quick still means living tissue
 
-📏 The same depth-and-hair test delivers an immediate verdict
+🔥 Refers to healthy tissue at the burn site
 
-🔁 Echoes the "broken out of" language from the boil case
+🎯 Living tissue and scar tissue read differently
 
-⚖️ No waiting needed when both signs appear together
+📖 A new mark near the injury itself
 
----
+## 🔥 Broken Out Of The Burning
 
-## ✋ No White Hair In The Bright Spot... Somewhat Dark
+Once again the same depth and white hair test from verse three applies.
 
-The safer profile appears again: no white hair, and a darker, non-angry color. By now this exact description has become a familiar, recognizable pattern across several different scenarios in the chapter.
+This time it is framed as disease breaking out from the burn site.
 
-✋ The same reassuring profile seen in earlier cases
+The wording echoes broken out of the boil from the case just before it.
 
-🔁 A familiar, recognizable pattern by this point in the chapter
+No waiting is needed when both signs appear together.
 
-🩺 Consistency makes the law easier to actually apply in practice
+📏 The same depth and hair test returns
 
----
+🔁 Echoes the earlier boil language
 
-## 🔒 Then He Shall Shut Him Up Seven Days
+⚖️ Both signs together mean an instant verdict
 
-The seven-day observation window gets applied here too, for the fourth time in the chapter. The law never assumes it can read an uncertain case correctly on the first look.
+📖 One test, reused across every injury
 
-🔒 The seven-day window applied for the fourth time in the chapter
+## ✋ There Be No White Hair In The Bright Spot
 
-⏳ Never assumes a first look alone is enough for a hard case
+The safer profile shows up again here, no white hair and a duller color.
 
-🔁 Same tool, same patience, new scenario
+This exact description has become a familiar pattern by this point in the chapter.
 
----
+An uncertain case like this still earns the seven day watch, now for the fourth time.
 
-## 🌑 If It Be Spread Much Abroad In The Skin, Then The Priest Shall Pronounce Him Unclean
+The law never assumes a first look alone is enough for a hard case.
 
-Spreading after the waiting period settles the case, exactly as it has in every previous scenario. By now the reader should be able to predict this outcome before even reaching the verse.
+✋ The same reassuring profile as before
 
-🌑 Spreading after the wait settles it, as always
+🔁 A familiar pattern by this point
 
-🔁 A now-predictable pattern, repeated on purpose
+🔒 The fourth use of the seven day watch
 
-📖 The law's consistency is itself part of what makes it trustworthy
+📖 A first look alone was never enough
 
----
+## 🌱 It Is A Rising Of The Burning
 
-## 🌱 It Is A Rising Of The Burning... An Inflammation Of The Burning
+A mark that does not spread gets read as ordinary burn scar inflammation, not disease.
 
-A non-spreading, unchanged mark gets read as ordinary burn-scar inflammation rather than disease, the exact same logic used for the "burning boil" a few verses earlier. Two different injuries, boils and burns, end up following the identical reasoning.
+That is the exact same logic used for the burning boil a few verses earlier.
 
-🌱 Read as ordinary burn-scar inflammation, not disease
+Two different injuries, boils and burns, end up following one shared rule.
 
-🔁 The exact same logic as the earlier "burning boil" case
+🌱 Read as scar inflammation, not disease
 
-📖 Two different injuries, one shared underlying rule
+🔁 The same logic as the burning boil
+
+🩹 Two injuries, one shared rule
+
+📖 Consistency runs underneath every case here
 
 # Leviticus 13:29-37
-
 # 💇 The Scall: Head And Beard
-
 ---
+## 👫 A Plague Upon The Head Or The Beard
 
-## 👫 If A Man Or Woman Have A Plague Upon The Head Or The Beard
+This verse names women explicitly alongside men for the first time in this chapter's case list.
 
-This verse names women explicitly alongside men for the first time in the chapter's specific case list. The beard reference is naturally male-only, but the head condition applies to anyone, and the law makes a point of saying so.
+The beard case only applies to men.
 
-👫 Women are explicitly named alongside men here
+The head condition applies to anyone.
 
-🧔 The beard case is naturally male-specific; the head case isn't
+The law makes a point of saying so directly.
 
-📖 A new body region requiring its own separate rule
+👫 Women are named here too
 
----
+🧔 The beard case is naturally male only
 
-## 🟡 A Yellow Thin Hair; Then The Priest Shall Pronounce Him Unclean: It Is A Dry Scall
+🎯 A new body region gets its own rule
 
-"Scall" is an old word (from the Hebrew netek) for a scaly, itchy skin condition affecting the scalp or beard. Notice the marker itself changes here: it's yellow thin hair, not white hair like earlier in the chapter. That's because normal head and beard hair naturally comes in different colors than skin, so the diagnostic marker had to shift to match.
+📖 The head case applies to anyone
 
-🟡 "Scall" means a scaly, itchy scalp or beard condition
+## 🟡 It Is A Dry Scall
 
-🔄 The color marker shifts from white to yellow for this body region
+"Scall" is an old word for a scaly, itchy condition affecting the scalp or beard.
 
-🎯 A test carefully matched to how hair actually looks in this area
+Notice the marker itself changes here.
 
----
+It is yellow thin hair, not white hair like earlier in the chapter.
 
-## ⚫ There Is No Black Hair In It
+Normal head and beard hair naturally comes in different colors than skin.
 
-Black hair, the ordinary hair color assumed in this setting, showing up in the spot was read as reassuring. Its presence suggested normal, healthy hair growth rather than the sparse, discolored pattern tied to active disease.
+The test had to shift to match.
 
-⚫ Normal-colored hair present was read as a reassuring sign
+🟡 Scall means a scaly itchy condition
 
-🌱 Suggested healthy growth rather than active disease
+🔄 The color marker shifts to yellow here
 
-🔁 The same "normal color present equals safer" logic seen before
+🎯 Matched to how hair actually looks
 
----
+📖 The test adapts to the body part
 
-## 🔒 Then The Priest Shall Shut Up Him That Hath The Plague Of The Scall Seven Days
+## ⚫ That There Is No Black Hair In It
 
-Quarantine gets reapplied here for the fifth time in the chapter, now specifically for an uncertain head or beard case. The reader should recognize this pattern instantly by now.
+Black hair was the ordinary hair color expected in this setting.
 
-🔒 The fifth use of the seven-day quarantine in this chapter
+Its absence here does not settle the case either way.
 
-🔁 An instantly recognizable pattern by this point
+It simply means the priest still cannot tell, so the watch period begins.
 
-⏳ Uncertainty still earns patience, not a rushed guess
+Later in this chapter, black hair growing back becomes the actual proof of healing.
 
----
+⚫ Black hair was the expected normal color
+
+🤔 Its absence keeps the case open
+
+⏳ Uncertainty here still earns a full watch
+
+📖 Its return later becomes real proof
 
 ## ✂️ He Shall Be Shaven, But The Scall Shall He Not Shave
 
-This is a practical instruction: shave the surrounding hair so the priest can see the spot clearly, but leave the affected patch itself untouched. Shaving over the mark would erase the exact evidence (hair color and growth pattern) the priest needs to track.
+This is a practical instruction.
 
-✂️ Shave the surrounding area, but leave the mark itself alone
+Shave the surrounding hair so the priest can see the spot clearly.
 
-👁️ Keeps the exact evidence visible for tracking over time
+Leave the affected patch itself untouched.
 
-🔍 A practical exam technique, not an arbitrary rule
+Shaving over the mark would erase the exact hair growth pattern the priest needs to track.
 
----
+✂️ Shave around the mark, not over it
 
-## 🔒 The Priest Shall Shut Up Him That Hath The Scall Seven Days More
+👁️ Keeps the evidence visible for tracking
 
-Just as with the very first case back in verses 4-5, a second week gets added when the first week's check still isn't conclusive. The head-and-beard case follows the exact same two-week structure already used for ordinary skin.
+🔍 A practical exam method, not a random rule
 
-🔒 A second week added, mirroring the pattern from verses 4-5
+📖 Preserving evidence mattered more than appearance
 
-🔁 The scall case follows the same two-week structure as before
+## 🔒 Shall Shut Up Him That Hath The Scall Seven Days More
 
-📖 One process, applied consistently across different body regions
+Just as with the very first case earlier in this chapter, a second week gets added.
 
----
+This happens whenever the first week's check is still not conclusive.
 
-## 👕 The Priest Shall Pronounce Him Clean: And He Shall Wash His Clothes, And Be Clean
+The head and beard case follows the exact same two week structure already used for ordinary skin.
 
-An unchanged, non-spreading scall after the full two-week watch earns the same clean verdict and clothes-washing close used throughout the rest of the chapter.
+🔒 A second week added again here
 
-👕 The same clothes-washing close used throughout the chapter
+🔁 Mirrors the pattern from earlier in the chapter
 
-🔁 An unchanged, non-spreading mark reads as clean here too
+⏳ Patience stayed consistent, region to region
 
-📖 Consistency across every different body region covered so far
+📖 One process applied across every body region
 
----
+## 👕 Then The Priest Shall Pronounce Him Clean: And He Shall Wash His Clothes
+
+An unchanged, non spreading scall after the full two week watch earns a clean verdict.
+
+The same clothes washing close used throughout the rest of the chapter applies here too.
+
+Consistency runs across every different body region this chapter has covered so far.
+
+👕 The same clothes washing close as before
+
+🔁 An unchanged mark reads as clean again
+
+🩺 The scall case ends like the others
+
+📖 Consistency across every body region covered
 
 ## 🔁 If The Scall Spread Much In The Skin After His Cleansing
 
-Just like the ordinary scab in verses 7-8 and the boil and burn cases before it, an already-cleared scall can still resurface and spread later, triggering a fresh examination rather than an automatic pass.
+Just like the ordinary scab, and the boil and burn cases before it, an already cleared scall can resurface.
 
-🔁 The same "cleared, but it came back" pattern seen before
+Spreading later triggers a fresh examination.
 
-👤 A fresh exam required rather than trusting the old verdict
+No verdict here was automatically permanent.
 
-📖 No status in this chapter is treated as permanently locked in
+🔁 A cleared case can still resurface
 
----
+👤 A fresh exam required, not an assumption
 
-## 🚫 The Priest Shall Not Seek For Yellow Hair; He Is Unclean
+➡️ The law tracked ongoing behavior, not one moment
 
-Once visible spreading has already happened, the hair-color test becomes unnecessary. Spreading alone is now sufficient proof on its own; there's no need for a second confirming sign once the behavior has already answered the question.
+📖 No verdict here was permanently locked in
 
-🚫 Spreading alone is now enough proof, no second sign needed
+## 🚫 The Priest Shall Not Seek For Yellow Hair
 
-🔑 Behavior can outweigh and replace an earlier diagnostic marker
+Once visible spreading has already happened, the hair color test becomes unnecessary.
 
-📖 The law adapts its own standard of proof as evidence accumulates
+Spreading alone is now sufficient proof on its own.
 
----
+There is no need for a second confirming sign once behavior has already answered the question.
 
-## ⚫ If The Scall Be In His Sight At A Stay, And That There Is Black Hair Grown Up Therein; The Scall Is Healed
+🚫 Spreading alone is now enough proof
 
-Normal-colored hair actually regrowing inside the spot is treated as strong, durable proof of real healing, closing the case for good. Unlike some other rulings in this chapter that stayed open to being revisited, healthy regrowth here reads as decisive.
+🔑 Behavior can outweigh an earlier marker
 
-⚫ Regrowth of normal hair color reads as durable proof of healing
+➡️ One clear sign was enough here
 
-🔒 Treated as a decisive, closing verdict rather than a temporary one
+📖 The law adapts as evidence accumulates
 
-🌱 New growth, not just an absence of symptoms, settles this case
+## ⚫ Black Hair Grown Up Therein
+
+Normal colored hair actually regrowing inside the spot is treated as strong proof of real healing.
+
+This closes the case for good.
+
+Unlike some other rulings that stayed open to being revisited, healthy regrowth here reads as decisive.
+
+New growth, not just an absence of symptoms, settles this case.
+
+⚫ Regrowth of normal hair proves healing
+
+🔒 Treated as a decisive, closing verdict
+
+🌱 New growth settles the case for good
+
+📖 Growth mattered more than a symptom's absence
 
 # Leviticus 13:38-39
-
-# ⚪ Freckled Spots: Clean
-
+# ⚪ Freckled Spots, Clean
 ---
+## 👫 Even White Bright Spots
 
-## 👫 If A Man Also Or A Woman Have In The Skin Of Their Flesh Bright Spots
+Both men and women are addressed here, matching the pattern used for the scall.
 
-Both sexes are addressed again here, matching verse 29's pattern for the scall. This short passage introduces one more look-alike case, deliberately worded to sound similar to the disease markers described earlier in the chapter.
+The vocabulary in this verse deliberately echoes the dangerous marks described earlier in the chapter.
 
-👫 Both men and women addressed, matching verse 29's pattern
+Bright spots and white sound alarming if a reader stops before the very next verse.
 
-🎭 A case worded to sound like the earlier disease markers
+That alarm gets resolved immediately.
 
-📖 A short passage with an important reassurance to offer
+👫 Both men and women addressed here
 
----
+🎭 Language echoes the earlier serious cases
 
-## 🎭 Even White Bright Spots
+😟 Could sound alarming on its own
 
-The vocabulary here ("bright spots," "white") deliberately echoes the language used for genuinely dangerous marks earlier in the chapter. A reader who only knew the earlier verses might panic at this description before reaching the actual verdict.
+📖 The next verse resolves the worry
 
-🎭 Language that deliberately echoes the earlier, serious cases
+## 🔎 It Is A Freckled Spot That Groweth In The Skin
 
-😟 Could sound alarming without reading the next verse
+"Freckled spot" likely translates a Hebrew word for a harmless, common skin discoloration.
 
-📖 Sets up a reassuring contrast the very next verse resolves
+Something like an ordinary blotchy pigment change, not any kind of disease.
 
----
+This verse exists specifically to reassure people that not every pale mark is dangerous.
 
-## 🔎 Darkish White; It Is A Freckled Spot That Groweth In The Skin
+🔎 A freckled spot is likely harmless
 
-"Freckled spot" (Hebrew bohak) likely describes a harmless, common skin discoloration, something like ordinary blotchy pigment changes rather than any kind of disease. This verse exists specifically to reassure people that not every pale mark on the skin is dangerous.
+🎨 An ordinary pigment change, not disease
 
-🔎 "Bohak" likely means an ordinary, harmless pigment change
+✅ A verse written to head off worry
 
-✅ Exists specifically to head off unnecessary worry
-
-📖 Not every pale mark in this chapter is treated as disease
-
----
+📖 Not every pale mark is dangerous
 
 ## ⚡ He Is Clean
 
-No waiting period at all is required here, unlike almost every other borderline case in the chapter. A uniformly darkish-white, unchanging pattern was apparently recognizable enough on sight that the full seven-day process wasn't needed.
+No waiting period at all is required here, unlike almost every other borderline case.
 
-⚡ No seven-day wait required, unlike most borderline cases
+A uniform, unchanging pattern was recognizable enough on sight.
 
-👁️ Recognizable enough on sight to skip the observation period
+The full seven day process was not needed at all.
 
-📖 Proof the law distinguished true uncertainty from simple lookalikes
+This proves the law told the difference between real uncertainty and a simple lookalike.
+
+⚡ No seven day wait required here
+
+👁️ Recognizable enough on sight alone
+
+🔓 The full process was not needed
+
+📖 True uncertainty and lookalikes were told apart
 
 # Leviticus 13:40-44
-
-# 👨‍🦲 Baldness And The Bald-Head Sore
-
+# 👨‍🦲 Baldness And The Bald Head Sore
 ---
+## 👨‍🦲 He Is Bald, Yet Is He Clean
 
-## 👨‍🦲 The Man Whose Hair Is Fallen Off His Head, He Is Bald; Yet Is He Clean
+Ordinary hair loss at the back or crown of the head is declared harmless here.
 
-Ordinary hair loss at the back or crown of the head is explicitly declared harmless, not a disease of any kind. This reassurance appears right before the chapter takes on baldness-related skin marks, making clear the baldness itself was never the concern.
+Not a disease of any kind.
 
-👨‍🦲 Plain hair loss is explicitly declared harmless here
+This reassurance comes right before the chapter covers baldness related marks.
 
-✅ Not treated as disease under any circumstance
+Baldness itself was never the actual concern.
 
-📖 Sets up the real issue: not baldness, but marks within it
+Elsewhere in scripture, baldness gets treated the same ordinary way.
 
----
+In Second Kings, a group of children mock the prophet Elisha by calling him bald head.
 
-## 🧑 He That Hath His Hair Fallen Off From The Part Of His Head Toward His Face, He Is Forehead Bald: Yet Is He Clean
+That taunt only makes sense if baldness was seen as ordinary, not shameful.
 
-The law names both directions of natural hair loss: from the crown backward, and from the hairline forward. Covering both makes sure no ordinary pattern of aging or genetics ever gets mistaken for disease.
+👨‍🦲 Plain hair loss is explicitly harmless
 
-🧑 Names both crown baldness and receding-hairline baldness
+✅ Never treated as any kind of disease
 
-📖 Deliberately thorough, covering every ordinary balding pattern
+😄 Elisha's story shows baldness was ordinary
 
-✅ Neither pattern was ever treated as a health concern on its own
+📖 Not shameful, simply an unremarkable trait
 
----
+## 🧑 He Is Forehead Bald: Yet Is He Clean
 
-## 🩹 A White Reddish Sore; It Is A Leprosy Sprung Up In His Bald Head
+The law names both directions of natural hair loss.
 
-Baldness itself stays completely fine, but a genuinely new sore appearing within the already-bald area gets checked using the same core test used throughout the rest of the chapter. The bald skin isn't the problem; a new mark on it is.
+From the crown backward, and from the hairline forward.
 
-🩹 Baldness stays fine; a new sore within it gets checked
+Covering both makes sure no ordinary pattern of aging gets mistaken for disease.
 
-🔍 Uses the same core test as the rest of the chapter
+Genetics and age explain most of what a person sees in the mirror.
 
-📖 The location changed, but the underlying test didn't
+🧑 Names both crown and receding hairline
 
----
+✅ Neither pattern was ever a health concern
+
+🪞 Aging alone explains most hair loss
+
+📖 Deliberately thorough, covering ordinary patterns
+
+## 🩹 A White Reddish Sore
+
+Baldness itself stays completely fine under this law.
+
+A genuinely new sore appearing within the already bald area is different.
+
+That gets checked using the same core test used throughout the rest of the chapter.
+
+The bald skin was never the problem.
+
+A new mark on it is.
+
+🩹 Baldness stays fine on its own
+
+🆕 A new sore within it gets checked
+
+🔍 The same core test applies here
+
+📖 Location changed, but the test did not
 
 ## 🔁 As The Leprosy Appeareth In The Skin Of The Flesh
 
-This is an explicit cross-reference back to the original test from verses 2-3. Baldness doesn't get its own separate rulebook; it only gets its own starting condition, plugged into the same diagnostic system already established earlier.
+This is an explicit cross reference back to the original test from verses two and three.
 
-🔁 An explicit callback to the original test from verses 2-3
+Baldness does not get its own separate rulebook.
 
-📖 One system, reused rather than rebuilt for every new case
+It only gets its own starting condition.
 
-🎯 The starting condition changes; the underlying test doesn't
+That condition gets plugged into the same diagnostic system established earlier.
 
----
+🔁 A direct callback to the original test
 
-## ⚖️ He Is A Leprous Man, He Is Unclean: The Priest Shall Pronounce Him Utterly Unclean; His Plague Is In His Head
+🎯 The starting condition changes, not the test
 
-"Utterly unclean" is a stronger phrase than the plain "unclean" used elsewhere in the chapter. The text doesn't spell out exactly why the emphasis is stronger here, and it's worth being honest that the reason isn't explained, rather than guessing confidently at one.
+🧩 Every case fits one shared framework
 
-⚖️ "Utterly unclean" is stronger wording than used elsewhere
+📖 One system, reused for a new case
 
-📖 The text doesn't explain the reason for the added emphasis
+## ⚖️ He Is A Leprous Man, He Is Unclean
 
-🤔 Worth being honest about what the passage doesn't say
+This is the confident, flat verdict after the priest checks the sore against the earlier test.
 
----
+The rising is white and reddish, matching the pattern already established for ordinary skin.
 
-## 😄 An Ordinary, Unremarkable Trait
+No new test was invented for this final scenario.
 
-Baldness on its own being declared clean fits with how the rest of the Bible treats it elsewhere. In 2 Kings 2:23, children mock the prophet Elisha by calling him "bald head," a taunt that only makes sense if baldness was an ordinary, everyday trait, not something shameful or diseased in itself.
+⚖️ A flat verdict, matching the earlier test
 
-😄 Baldness elsewhere in Scripture is treated as ordinary, not shameful
+📏 White and reddish matches the known pattern
 
-📖 The taunt in 2 Kings 2:23 only makes sense if it was unremarkable
+🔁 No new test invented for this case
 
-✅ Confirms this chapter's own "yet is he clean" verdict
+📖 The chapter closes its main test here
+
+## 👑 The Priest Shall Pronounce Him Utterly Unclean
+
+"Utterly unclean" is a stronger phrase than the plain "unclean" used elsewhere.
+
+The text does not spell out exactly why the emphasis is stronger here.
+
+It is worth being honest about what the passage leaves unexplained.
+
+Guessing at a reason would go beyond what the text actually says.
+
+👑 Utterly is stronger than plain unclean
+
+🤔 Honesty about the gap matters here
+
+✅ Better than guessing beyond the text
+
+📖 The text never explains this added emphasis
 
 # Leviticus 13:45-46
-
 # 📢 Unclean, Unclean: Life Outside The Camp
-
 ---
-
 ## 👕 His Clothes Shall Be Rent
 
-"Rent" means torn. Tearing one's own clothes was a recognized mourning custom used elsewhere in Scripture for grief and loss, such as Jacob tearing his clothes over Joseph in Genesis 37:34, or Job tearing his robe after losing everything. The leper is required to visibly display the same signal of grief.
+"Rent" means torn, an old but simple word.
 
-👕 "Rent" means torn, an old but simple word
+Tearing one's own clothes was a recognized mourning custom in scripture.
 
-😢 A recognized mourning custom used elsewhere in the Bible
+Jacob tore his clothes over Joseph in Genesis thirty seven.
 
-🎭 The leper visibly displays grief rather than hiding the condition
+Job tore his robe after losing everything.
 
----
+The leper is required to visibly display that same signal of grief.
+
+👕 Rent simply means torn
+
+😢 A recognized mourning custom elsewhere in scripture
+
+📜 Jacob and Job both did this
+
+📖 The leper visibly displays the same grief
 
 ## 🧑‍🦲 His Head Bare
 
-Uncovering the hair was another recognized mourning gesture. Interestingly, priests were specifically forbidden from doing this exact thing while on active duty back in chapter 10:6. The very same physical signal means "mourning, keep your distance" outside the sanctuary, and "don't do this" while serving inside it.
+Uncovering the hair was another recognized mourning gesture.
 
-🧑‍🦲 Uncovering the hair, another standard mourning gesture
+Priests were specifically forbidden from doing this exact thing while on duty back in chapter ten.
 
-🔁 The opposite instruction was given to active priests in chapter 10:6
+The very same physical signal means mourning outside the sanctuary.
 
-📖 Context changes what the identical gesture is meant to signal
+Inside it, during active service, it was not allowed at all.
 
----
+🧑‍🦲 Uncovering hair, a standard mourning gesture
+
+🚫 Priests were forbidden this in chapter ten
+
+🔁 Same gesture, opposite meaning by setting
+
+📖 Context changes what a gesture signals
 
 ## 🤐 A Covering Upon His Upper Lip
 
-This likely means covering the lower part of the face, near the mouth. Similar imagery of covering the lips or face in grief or shame shows up elsewhere in Scripture, such as Ezekiel 24:17 and 22, and Micah 3:7. It communicated the person's condition to anyone approaching before a single word needed to be spoken.
+This likely means covering the lower part of the face, near the mouth.
 
-🤐 Likely a covering over the lower face, near the mouth
+Similar imagery of covering the lips in grief shows up elsewhere in scripture.
 
-📖 Similar imagery appears in Ezekiel 24 and Micah 3
+Ezekiel twenty four and Micah three both use this same picture.
 
-👁️ Signals the condition silently, before any words are exchanged
+It communicated the person's condition before a single word needed to be spoken.
 
----
+🤐 Likely a covering over the lower face
+
+📜 Similar imagery appears in Ezekiel and Micah
+
+👁️ Signaled the condition without speaking
+
+📖 A silent warning before any words
 
 ## 📢 Shall Cry, Unclean, Unclean
 
-The leper is required to self-announce their own status out loud, and the word is repeated twice for emphasis. This functioned as a built-in warning system, protecting the wider community from unknowingly making contact, not a humiliation ritual designed to shame the person.
+The leper is required to announce their own status out loud.
 
-📢 A required self-announcement, repeated twice for emphasis
+The word is repeated twice for emphasis.
 
-🛡️ A practical warning system, protecting others from contact
+This functioned as a warning system, protecting the community from unknowing contact.
 
-⚖️ Functional, not designed purely to humiliate
+It was not a ritual designed purely to shame the person.
 
----
+📢 A required self announcement, said twice
 
-## 🏕️ He Shall Dwell Alone; Without The Camp Shall His Habitation Be
+🛡️ A practical warning, not humiliation
 
-Full removal from community life lasted only as long as the symptoms did, never a fixed sentence handed down in advance. This exact law explains several real narrative scenes elsewhere in Scripture: Miriam cast outside the camp for seven days in Numbers 12:14-15, King Uzziah living in a separate house until his death after being struck with leprosy in 2 Chronicles 26:19-21, and the ten lepers keeping their distance while calling out to Jesus in Luke 17:12-13.
+👥 Protected others from unknowing contact
 
-🏕️ Removal lasted only as long as symptoms did, not a fixed term
+📖 A function, not a punishment
 
-📖 Explains Miriam's exile in Numbers 12 and Uzziah's isolation in 2 Chronicles 26
+## 🏕️ He Shall Dwell Alone
 
-✝️ Also explains why the ten lepers kept their distance in Luke 17
+Removal from community life lasted only as long as the symptoms did.
 
----
+It was never a fixed sentence handed down in advance.
+
+This exact law explains real scenes found elsewhere in scripture.
+
+Miriam was cast outside the camp for seven days in Numbers twelve.
+
+King Uzziah lived in a separate house until his death in Second Chronicles twenty six.
+
+The ten lepers kept their distance while calling out to Jesus in Luke seventeen.
+
+🏕️ Removal lasted only as long as symptoms
+
+📜 Explains Miriam's exile in Numbers twelve
+
+👑 Also explains Uzziah's isolation later in scripture
+
+📖 And the ten lepers calling out to Jesus
 
 ## 🔄 All The Days Wherein The Plague Shall Be In Him He Shall Be Defiled
 
-Unclean status here was tied strictly to active, present symptoms, never treated as a fixed identity. This detail matters directly for the next chapter, which lays out the full cleansing ritual for someone whose symptoms actually go away.
+Unclean status was tied strictly to active, present symptoms.
 
-🔄 Status tied strictly to active symptoms, not a fixed identity
+It was never treated as a fixed identity.
 
-📖 Always described as reversible, never permanent
+This detail matters directly for the next chapter.
 
-➡️ Sets up chapter 14's cleansing ritual for a recovered leper
+Chapter fourteen lays out the full cleansing ritual for someone whose symptoms actually go away.
+
+🔄 Tied strictly to active symptoms
+
+🚫 Never treated as a fixed identity
+
+➡️ Sets up chapter fourteen's cleansing ritual
+
+📖 Status here was always reversible
 
 # Leviticus 13:47-53
-
 # 👕 Leprosy In A Garment
-
 ---
-
 ## 👕 The Garment Also That The Plague Of Leprosy Is In
 
-The same Hebrew word used for the human skin condition now applies to fabric. This almost certainly describes mold, mildew, or a fungal growth staining cloth or leather, not a contagious human disease somehow spreading into an object.
+The same Hebrew word used for the human skin condition now applies to fabric.
 
-👕 The same word now applies to fabric, not skin
+This almost certainly describes mold, mildew, or a fungal growth staining cloth or leather.
 
-🍄 Most likely describes mold, mildew, or fungal staining
+Not a literal human disease somehow spreading into an object.
 
-📖 Not a literal human disease infecting an object
+👕 The same word now applies to fabric
 
----
+🍄 Most likely mold, mildew, or fungus
+
+🚫 Not a literal disease infecting cloth
+
+📖 One word, two very different subjects
 
 ## 🧵 Whether It Be A Woollen Garment, Or A Linen Garment
 
-Wool (from sheep) and linen (from flax) were the two main fabrics used in Israelite clothing at the time. Naming both covers essentially every common garment a person owned.
+Wool from sheep and linen from flax were the two main fabrics worn at this time.
 
-🧵 Wool and linen were the two primary Israelite fabrics
+Naming both covers nearly every common garment a person owned.
 
-👕 Naming both covers nearly all common clothing
+A thorough, all encompassing starting scope for this whole section.
 
-📖 A thorough, all-encompassing starting scope
+🧵 Wool and linen were the two main fabrics
 
----
+👕 Naming both covers nearly all clothing
+
+🎯 No common garment falls outside this rule
+
+📖 A deliberately thorough starting scope
 
 ## 🧶 The Warp, Or Woof
 
-These are basic weaving terms. The warp is the set of lengthwise threads stretched tight on a loom first; the woof (also called the weft) is the crosswise threads woven back and forth through the warp afterward. Together, the two terms simply mean "the entire garment, however it was constructed."
+These are basic weaving terms.
 
-🧶 Warp is the lengthwise threads set up first on a loom
+The warp is the set of lengthwise threads stretched on a loom first.
 
-🧵 Woof (weft) is the crosswise threads woven through them
+The woof, also called the weft, is the crosswise threads woven through the warp.
 
-📖 Together, the two words just mean "the whole garment"
+Together the two words simply mean the entire garment, however it was made.
 
----
+🧶 Warp is the lengthwise loom thread
+
+🧵 Woof is the crosswise woven thread
+
+🎯 No part of the weave is excluded
+
+📖 Together they mean the whole garment
 
 ## 🐐 Or In A Skin, Or In Any Thing Made Of Skin
 
-The rule extends beyond woven cloth to leather goods as well, covering essentially anything made from animal hide, not just fabric that was spun and woven.
+The rule extends beyond woven cloth to leather goods as well.
 
-🐐 Extends the rule to leather items, not just woven cloth
+Covering nearly anything made from animal hide.
 
-📖 Covers essentially any material made from animal hide
+Not just fabric that was spun and woven on a loom.
 
-🎯 A deliberately broad scope for this whole passage
+🐐 Extends to leather items too
 
----
+🎯 A deliberately broad scope for this law
 
-## 🟢 If The Plague Be Greenish Or Reddish In The Garment
+🧩 Woven cloth was never the only concern
 
-Unlike the human skin tests, which relied on depth and hair color, the fabric test relies on color alone. Greenish coloring suggests mold or mildew; reddish coloring suggests certain other fungal or bacterial staining.
+📖 Covers nearly any hide based material
 
-🟢 The fabric test relies on color, unlike the depth-based skin tests
+## 🎨 If The Plague Be Greenish Or Reddish In The Garment
 
-🍄 Greenish likely points to mold or mildew
+The human skin tests relied on depth and hair color.
 
-🔴 Reddish likely points to a different kind of staining
+The fabric test works differently.
 
----
+It relies on color alone.
 
-## 🔒 The Priest Shall Look Upon The Plague, And Shut Up It That Hath The Plague Seven Days
+Greenish coloring suggests mold or mildew.
 
-The identical seven-day observation pattern used throughout the chapter for people gets reapplied here, now to an object instead of a person. The chapter's core method stays constant even as its subject changes completely.
+Reddish coloring suggests a different kind of staining.
 
-🔒 The same seven-day pattern, now applied to an object
+🎨 The fabric test relies on color alone
 
-🔁 The method stays constant even as the subject changes
+🍄 Greenish likely points to mold
 
-📖 A final reuse of the chapter's central diagnostic tool
+🔴 Reddish points to a different stain
 
----
+📖 A simpler test for a different material
+
+## 🔒 Shut Up It That Hath The Plague Seven Days
+
+The same seven day observation pattern used throughout this chapter gets reapplied here.
+
+Now to an object instead of a person.
+
+The chapter's core method stays constant even as its subject changes completely.
+
+🔒 The same seven day pattern again
+
+🔁 Now applied to an object, not a person
+
+🎯 The test outlasts the change in subject
+
+📖 One method, used across every subject
 
 ## 🔥 The Plague Is A Fretting Leprosy
 
-"Fret" (or "fretting") is an old word meaning to eat away at or corrode something gradually. Modern English still keeps a faint trace of this in "fretting" over worry, but the meaning here is completely literal: an active, spreading, consuming stain.
+"Fret" or "fretting" is an old word meaning to eat away at something gradually.
 
-🔥 "Fret" means to eat away at or corrode gradually
+Modern English still keeps a faint trace of this in fretting over worry.
 
-📖 Modern "fretting" (worrying) is a faint echo of this older sense
+Here the meaning is completely literal, an active, spreading, consuming stain.
 
-🍄 Here it's completely literal: an active, spreading stain
+🔥 Fret means to eat away gradually
 
----
+🍄 Here the meaning is fully literal
 
-## 🔥 He Shall Burn That Garment... It Shall Be Burnt In The Fire
+🎯 An active stain, not a static one
 
-Burning, rather than simply discarding, ensures the contamination is fully and permanently destroyed rather than risked being reused, resold, or passed along to someone else unaware of the danger.
+📖 Modern fretting over worry is a faint echo
 
-🔥 Fire fully destroys the contamination, unlike simple discarding
+## 🔥 It Shall Be Burnt In The Fire
 
-⚠️ Prevents the item from being reused or passed along unaware
+Burning fully destroys the contamination.
 
-📖 A permanent solution to a spreading problem
+Simply discarding the item would not.
 
----
+It could still be reused, resold, or passed along to someone unaware of the danger.
 
-## ✋ If The Plague Be Not Spread In The Garment
+A permanent solution to a spreading problem.
 
-This closes the section on a note of possibility: not every marked garment was automatically doomed to burning. A non-spreading case opens the door to the gentler options explored in the final section of the chapter.
+🔥 Fire fully destroys the contamination
 
-✋ Not every marked garment was automatically destroyed
+⚠️ Prevents reuse by someone unaware
 
-🔓 Opens the door to gentler options explored next
+🚮 Discarding alone was not enough
 
-📖 A deliberate transition into the chapter's closing passage
+📖 A permanent answer to a spreading danger
 
 # Leviticus 13:54-59
-
 # 🧺 Washing, Watching, And The Law's Close
-
 ---
+## 🧺 Command That They Wash The Thing Wherein The Plague Is
 
-## 🧺 Then The Priest Shall Command That They Wash The Thing Wherein The Plague Is
+A middle option appears here for the first time in the fabric section.
 
-A middle option appears here for the first time in the fabric section: washing the item as an actual diagnostic test, checking whether the stain responds to washing, rather than jumping straight to a final ruling.
+Washing the item as an actual diagnostic test.
 
-🧺 Washing used here as a diagnostic test, not just cleaning
+Checking whether the stain responds to washing, not jumping straight to a final ruling.
 
-🔍 Checks how the stain responds before any final ruling
+🧺 Washing used here as a real test
 
-📖 A middle option between immediate clearance and destruction
+🔍 Checks how the stain responds first
 
----
+🎯 Testing came before judging
+
+📖 A middle option before any final ruling
 
 ## 🔒 He Shall Shut It Up Seven Days More
 
-The seven-day pattern reappears one final time, now specifically applied after the item has been washed, giving the stain time to reveal how it truly behaves once it's been tested.
+The seven day pattern reappears one final time in this chapter.
 
-🔒 The seven-day pattern's final appearance in the chapter
+Now specifically applied after the item has already been washed.
 
-⏳ Time given to see how the stain behaves after washing
+This gives the stain time to reveal how it truly behaves once tested.
 
-🔁 The chapter's central tool, used right up to its close
+🔒 The pattern's final appearance in the chapter
 
----
+⏳ Time given after the washing test
 
-## ⚖️ If The Plague Have Not Changed His Colour, And The Plague Be Not Spread; It Is Unclean
+🎯 A stain gets time to reveal itself
 
-This flips the usual rule. Elsewhere in the chapter, an unchanged, non-spreading mark usually meant clean, like the burning-boil scar earlier. But here, surviving an actual wash without fading is read as proof the stain has set in deep, not proof it's harmless.
+📖 The chapter's central tool used to its close
 
-⚖️ Reverses the usual "unchanged equals clean" pattern
+## ⚖️ It Is Unclean
 
-🧺 Surviving a real wash is treated as proof of deep staining
+This flips the usual rule found elsewhere in the chapter.
 
-📖 Context, not just the pattern itself, decides the meaning
+Elsewhere, an unchanged, non spreading mark usually meant clean.
 
----
+Here, surviving an actual wash without fading is read as proof the stain has set in deep.
+
+Context, not just the pattern itself, decides the meaning.
+
+⚖️ Reverses the usual unchanged equals clean rule
+
+🧺 Surviving a wash proves deep staining
+
+🔑 The same pattern can mean opposite things
+
+📖 Context decides the meaning here
 
 ## 🔥 It Is Fret Inward, Whether It Be Bare Within Or Without
 
-"Fret inward" means the stain has worked its way into the fabric's actual structure, not just sitting on the surface. This holds true regardless of which side of the material shows the visible mark.
+"Fret inward" means the stain has worked its way into the fabric's own structure.
 
-🔥 The stain has penetrated the fabric's structure itself
+Not just sitting on the surface.
 
-📖 True regardless of which side shows the visible mark
+This holds true regardless of which side of the material shows the visible mark.
 
-🔁 "Fret" carries the same corroding meaning as verse 51
+🔥 The stain has entered the structure itself
 
----
+🔁 Fret carries the same meaning as before
 
-## ✂️ If The Plague Be Somewhat Dark After The Washing Of It; Then He Shall Rend It Out Of The Garment
+🎯 Depth inside the fabric, not just on it
 
-Fading after a wash allows a more targeted fix: cutting out just the affected patch rather than destroying the entire garment. The law offers every reasonable chance to salvage what can be saved before requiring a complete loss.
+📖 True on either side of the material
 
-✂️ A targeted fix: cut out only the affected patch
+## ✂️ Then He Shall Rend It Out Of The Garment
 
-💡 Offers a real chance to save the rest of the garment
+Fading after a wash allows a more targeted fix.
 
-📖 Destruction is treated as a last resort, not a first response
+The priest can cut out just the affected patch.
 
----
+The rest of the garment does not have to be destroyed.
 
-## 🔥 If It Appear Still In The Garment... It Is A Spreading Plague: Thou Shalt Burn That Wherein The Plague Is
+The law offers every reasonable chance to save what can be saved.
 
-If the stain keeps reappearing even after the affected section has already been cut away, the whole item is finally condemned. Every reasonable step to save the garment has already been tried and failed by this point.
+✂️ A targeted fix, cutting only the patch
 
-🔥 Reappearance after cutting means the whole item is condemned
+💡 A real chance to save the rest
 
-📖 Every reasonable option has already been exhausted by now
+🎯 Saving something was always tried first
 
-⚖️ Destruction only follows repeated, confirmed failure to resolve
-
----
-
-## 👕 It Shall Be Washed The Second Time, And Shall Be Clean
-
-The successful outcome closes the process: once the affected section is removed and gone for good, a second full wash finally clears the remaining garment for normal use again.
-
-👕 The successful path: removal followed by a second wash
-
-✅ Fully restored to normal use once truly clear
-
-📖 Proof the process could end well, not only in destruction
-
----
+📖 Destruction was treated as a last resort
 
 ## 📜 This Is The Law Of The Plague Of Leprosy In A Garment Of Woollen Or Linen
 
-This closing line works like a title placed at the end, summarizing the whole garment section as one complete unit, the same pattern used to close chapter 11 back in verses 46-47. It also quietly sets up chapter 14's matching law for a house showing the same kind of plague.
+This closing line works like a title placed at the end of the section.
 
-📜 A closing summary title, matching chapter 11's ending pattern
+It summarizes the whole garment law as one complete unit.
 
-🏠 Quietly sets up chapter 14's parallel law for houses
+The same pattern was used to close chapter eleven back in its final verses.
 
-📖 One complete, self-contained unit of teaching now closed`;
+It also quietly sets up chapter fourteen's matching law for a house with the same kind of plague.
+
+📜 A closing summary placed at the end
+
+🔁 Matches how chapter eleven closed
+
+🏠 Sets up chapter fourteen's law for houses
+
+📖 One complete unit of teaching now closed`.trim();
 
 export const LEVITICUS_THIRTEEN_PERSONAL_SECTIONS = parseLeviticusThirteenRawNotes(LEVITICUS_THIRTEEN_RAW_NOTES);
