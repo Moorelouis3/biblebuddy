@@ -598,3 +598,16 @@ Next up: Leviticus 7
 ## 2026-08-03T09:57:46Z (hourly chapter notes run)
 Chapter: Leviticus 7 | Duration: 12 min | Sections: 8 | Cards: 46 | Status: pass
 Next up: Leviticus 8
+
+## 2026-08-03T10:51:54Z (recovered stranded work)
+Found this container's git HEAD detached 53 commits ahead of origin/main,
+holding already-finished but never-pushed work from prior runs (Exodus 1-40
+and Leviticus 1-7 style redos, plus unrelated already-committed email funnel
+product commits). Preserved it in a branch, merged into main, verified tsc
+clean, and pushed to origin/main as abb2049 before starting today's chapter,
+since it was at real risk of being lost when the container is reclaimed.
+Flagged to Marcus via MARCUS_HANDOFF.md.
+
+## 2026-08-03T11:04:29Z (hourly chapter notes run)
+Chapter: Leviticus 8 | Duration: 13 min | Sections: 9 | Cards: 63 | Status: pass
+Next up: Leviticus 9
