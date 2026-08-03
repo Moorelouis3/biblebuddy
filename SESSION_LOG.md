@@ -570,3 +570,7 @@ Next up: Exodus 40
 ## 2026-08-03T02:57:02Z (hourly chapter notes run)
 Chapter: Exodus 40 | Duration: 10 min | Sections: 9 | Cards: 38 | Status: pass
 Next up: Leviticus 1
+
+## 2026-08-03T03:54:11Z (hourly chapter notes run)
+Chapter: Leviticus 1 | Duration: 8 min | Sections: 5 | Cards: 24 | Status: pass
+Next up: Leviticus 2

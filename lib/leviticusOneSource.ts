@@ -89,359 +89,524 @@ function parseLeviticusOneRawNotes(rawText: string): LeviticusOnePersonalSection
 }
 
 const LEVITICUS_ONE_RAW_NOTES = `# Leviticus 1:1-2
-
-# 📖 The LORD Calls Moses From The Tent
-
+# 📖 God Speaks From The Finished Tent
 ---
+## 📣 The Lord Called Unto Moses
 
-## 📖 The Book Of Leviticus Begins
+Being called by name in scripture usually marks a significant moment.
 
-"Leviticus" gets its name from the Levites, the tribe entrusted with tabernacle service, though this specific book is really written for Aaron's priestly family within that tribe. In the Hebrew Bible its title is simply Vayikra, "And he called" - the book's literal opening word. This chapter picks up the exact moment Exodus 40 ended: the tabernacle is finished and God's glory has just filled it, and the whole rest of this book answers one question - how does a sinful people safely live near a holy God who has moved in next door?
+This exact word gives Leviticus its Hebrew name.
 
-📖 "Leviticus" comes from the Levites, though the book centers on Aaron's priestly family specifically
+"Vayikra" means "and he called."
 
-📜 Its Hebrew title, Vayikra, just means "And he called" - the book's opening word
+God is not shouting from a distance here.
 
-🏠 This continues directly from Exodus 40, where God's glory filled the finished tabernacle
+He speaks directly and personally to Moses, by name.
 
----
+That personal call opens the whole book.
 
-## 📣 The LORD Called Unto Moses, And Spake Unto Him Out Of The Tabernacle Of The Congregation
+📣 Being called by name marks importance
 
-Notice where the voice comes from now. Through most of Exodus, God spoke to Moses from the top of Mount Sinai, in thunder and fire. Now that the tabernacle is built and filled with His glory (Exodus 40:34-35), He speaks from inside the tent itself. The mountain isn't needed anymore - God's presence has moved down into the middle of the camp.
+📖 Vayikra means "and he called"
 
-⛰️ Earlier in Exodus, God spoke to Moses from Mount Sinai
+🗣️ God speaks directly and personally here
 
-🏠 Now He speaks from the newly finished tent, right in the middle of the camp
+➡️ This personal call opens the book
 
-✅ This is the very first thing God does once the tabernacle is complete: start talking from inside it
+## 🏠 Out Of The Tabernacle Of The Congregation
 
----
+Through most of Exodus, God spoke to Moses from Mount Sinai.
 
-## 🐄 If Any Man Of You Bring An Offering Unto The LORD
+That mountain shook with thunder, smoke, and fire.
 
-The Hebrew word behind "offering" (korban) comes from a root meaning "to draw near." An offering wasn't primarily a religious tax or a gift to appease an angry God - it was a structured way of drawing close to Him. That idea sets the tone for the entire book: approaching a holy God is possible, but it has to happen on His terms, not just however a person feels like showing up.
+Now the tabernacle stands finished in the middle of the camp.
 
-🤝 The Hebrew word for "offering" literally means something drawn near or brought close
+God's voice now comes from inside that tent instead.
 
-🎯 An offering wasn't a tax - it was a way of approaching God
+The mountain is no longer needed.
 
-📋 Leviticus spends its first chapters spelling out exactly how that approach has to work
+God's presence has moved down into the middle of His people.
 
----
+⛰️ God once spoke from Mount Sinai
 
-## 🐑 Of The Cattle, Even Of The Herd, And Of The Flock
+🏠 Now He speaks from the finished tent
 
-"Herd" means cattle - oxen, bulls, and cows. "Flock" means the smaller grazing animals, sheep and goats. Both terms describe ordinary livestock a farming family in ancient Israel would already own and raise, not some rare or imported animal. God's very first instruction in this new book is built around what an average Israelite family already had in their pen.
+🏕️ The tabernacle sits inside the camp
 
-🐂 "Herd" refers to cattle - oxen, bulls, and cows
+📖 God's presence moved down among His people
 
-🐐 "Flock" refers to sheep and goats
+## 🤝 If Any Man Of You Bring An Offering
 
-🏡 Both were common animals a family already owned, not something exotic to acquire
+The word "offering" here comes from a Hebrew word, korban.
+
+Korban comes from a root meaning "to draw near."
+
+An offering was never just a religious tax.
+
+It was a structured way of drawing close to God.
+
+Leviticus spends its opening chapters explaining exactly how that works.
+
+🤝 Offering comes from a word meaning "draw near"
+
+🚫 It was not a tax or a bribe
+
+🎯 It was a way to approach God
+
+📖 The rest of Leviticus explains how
+
+## 🐄 Of The Cattle, Even Of The Herd, And Of The Flock
+
+"Herd" means cattle, the oxen, bulls, and cows a family owned.
+
+"Flock" means the smaller animals, sheep and goats.
+
+Both were common animals any farming family already raised.
+
+God's first instruction was not about some rare, imported animal.
+
+It was built around what an ordinary Israelite already had in the pen.
+
+🐂 Herd means cattle, oxen, bulls, cows
+
+🐐 Flock means sheep and goats
+
+🏡 Both were animals a family already owned
+
+📖 God started with what people already had
 
 # Leviticus 1:3-5
-
 # 🔥 The Burnt Offering From The Herd
-
 ---
+## 🔥 A Burnt Sacrifice Of The Herd
 
-## 🔥 If His Offering Be A Burnt Sacrifice Of The Herd
+A "burnt sacrifice" is called an olah in Hebrew.
 
-A "burnt sacrifice" (olah in Hebrew) literally means "that which goes up" - the entire animal is turned to smoke and rises off the altar. Nothing is kept back and nothing is eaten by anyone. This is the first and most complete of several offering types Leviticus will describe (grain, peace, sin, and trespass offerings come later, each with a different purpose).
+Olah literally means "that which goes up."
 
-🔥 "Burnt sacrifice" (olah) means "that which goes up," describing the smoke rising from the altar
+The entire animal is turned to smoke on the altar.
 
-🚫 The entire animal is consumed - nothing is eaten by the priest or the offerer
+Nothing is kept back and nothing is eaten by anyone.
 
-📖 This is the first of five main offering types Leviticus will explain in its opening chapters
+This is the first and most complete offering Leviticus describes.
 
----
+Other offerings later in the book keep part of the animal back.
 
-## 🐂 Let Him Offer A Male Without Blemish
+🔥 Olah means "that which goes up"
 
-"Without blemish" means free of any physical defect - no injury, no disease, no missing part. The command to bring a male, unblemished animal meant giving God the best of the herd, not an animal that was sick, old, or already on its way to being culled. Centuries later, the prophet Malachi rebukes Israel for breaking this exact standard by offering blind and lame animals instead (Malachi 1:8).
+💨 The whole animal becomes smoke
 
-✅ "Without blemish" means the animal had no injury, disease, or physical defect
+🚫 Nothing is eaten by anyone
 
-🎁 The requirement forced worshippers to give their best, not a leftover animal
+📖 This is the most complete offering type
 
-📖 Malachi 1:8 later scolds Israel for offering blind and lame animals in violation of this same law
+## ✅ A Male Without Blemish
 
----
+"Without blemish" means free of any physical defect.
 
-## 🙋 He Shall Offer It Of His Own Voluntary Will
+No injury, no disease, no missing part was allowed.
 
-This offering was freely chosen, not commanded in response to a specific sin. That matters: Leviticus opens with worship that is willingly given, before it ever gets to the offerings later in the book that are required after someone has done something wrong (like the sin and trespass offerings in chapters 4-7). Willing worship comes first in this book, not obligation.
+This meant giving God the best animal, not a leftover one.
 
-🙋 This offering was optional - nothing forced the person to bring it
+Centuries later, the prophet Malachi rebukes Israel for breaking this same standard.
 
-📖 Later chapters add required offerings tied to specific sins (chapters 4-7)
+Malachi 1:8 describes people offering blind and lame animals instead.
 
-🎯 Leviticus opens with worship freely given, before it ever turns to worship required by guilt
+✅ Blemish means any physical defect
 
----
+🎁 Worshippers had to give their best
 
-## 🚪 At The Door Of The Tabernacle Of The Congregation Before The LORD
+🚫 No injury, disease, or missing part
 
-There's a fixed, specific location for this - the entrance to the tent, where the bronze altar had just been installed at the very end of Exodus (Exodus 40:29). A worshipper couldn't build a personal altar wherever felt convenient. "Before the LORD" adds that this whole act happened in God's direct presence, not privately or out of sight.
+📖 Malachi 1:8 rebukes this exact failure
 
-📍 The "door of the tabernacle" is where the bronze altar stood, set up at the end of Exodus 40
+## 🙋 Of His Own Voluntary Will
 
-🚫 Worship had one prescribed location - not wherever an individual chose
+This offering was freely chosen, not commanded because of a specific sin.
 
-👁️ "Before the LORD" means this happened openly, in His presence
+Leviticus opens with worship that is willingly given.
 
----
+Later chapters add offerings required after someone has done wrong.
 
-## ✋ He Shall Put His Hand Upon The Head Of The Burnt Offering
+Those required offerings come in chapters four through seven.
 
-Pressing a hand on the animal's head identified it as standing in for the person bringing it - a physical act linking the worshipper to the animal about to die in his place. "It shall be accepted for him to make atonement" - and "atonement" (kaphar) means to cover over sin and restore a broken relationship. This one small gesture carries the weight of the whole system: a costly life given in place of the one who deserved judgment.
+Willing worship comes first in this book, before any obligation.
 
-✋ Laying a hand on the animal's head identified it as standing in for the offerer
+🙋 This offering was optional, not required
 
-🔗 "Atonement" (kaphar) means covering sin and restoring the relationship it broke
+📜 Required offerings come later in the book
 
-💔 One life is given in the place of another - the offerer's, not the animal's own
+🎯 Leviticus opens with worship freely given
 
----
+➡️ Willing worship comes before obligation
 
-## 🔪 He Shall Kill The Bullock Before The LORD
+## ✋ Put His Hand Upon The Head Of The Burnt Offering
 
-It's easy to assume the priest did the killing, but the text says "he" - the offerer himself, continuing from the same subject as the previous verse. Worship here wasn't just handing over an animal and walking away; it required real, personal, costly participation. The priest's specific job doesn't start until the next phrase - handling the blood.
+Pressing a hand on the animal's head was not a casual gesture.
 
-🔪 The offerer personally killed the animal - not the priest
+It identified the animal as standing in for the person bringing it.
 
-💪 This required direct, costly participation, not just handing over livestock
+The text calls this act part of making atonement.
 
-🩸 The priest's job begins at the blood, not the slaughter
+"Atonement" means covering over sin and repairing a broken relationship.
 
----
+One life was given in the place of another.
 
-## 🩸 The Priests, Aaron's Sons, Shall Bring The Blood, And Sprinkle The Blood Round About Upon The Altar
+That single motion carried the weight of the whole offering system.
 
-Blood mattered because, as Leviticus states plainly later, "the life of the flesh is in the blood" (Leviticus 17:11). "Round about" means all four sides of the altar - a full, deliberate application, not a token splash. This is the one part of the whole process an ordinary Israelite could not do himself; it required a priest.
+✋ Laying on hands identified the offerer
 
-🩸 Blood represented the animal's life, given in the place of the offerer's own life
+🔗 Atonement means covering sin, restoring the relationship
 
-📐 "Round about" means all four sides of the altar - complete, not partial
+💔 One life given in place of another
 
-👤 This priestly step was the only part of the process an ordinary Israelite couldn't perform himself
+📖 This motion carried the offering's whole meaning
+
+## 🔪 He Shall Kill The Bullock Before The Lord
+
+It is easy to assume the priest did the killing here.
+
+The text says "he," continuing from the same person as the verse before.
+
+That means the offerer himself killed the animal, not the priest.
+
+Worship here was not just handing over an animal and walking away.
+
+It required real, personal, costly participation.
+
+The priest's specific job does not begin until the next step.
+
+🔪 The offerer killed the animal himself
+
+💪 This required direct, costly participation
+
+👤 Not the priest, but the worshipper
+
+➡️ The priest's job starts with the blood
+
+## 🩸 Sprinkle The Blood Round About Upon The Altar
+
+Leviticus later states plainly that "the life of the flesh is in the blood."
+
+That is why blood mattered so much here.
+
+"Round about" means all four sides of the altar.
+
+This was a full, deliberate application, not a token splash.
+
+It was the one part of this process an ordinary Israelite could not do himself.
+
+Only a priest could handle this step.
+
+🩸 Blood represented the life given up
+
+📐 Round about means all four sides
+
+👤 Only a priest could do this step
+
+📖 Blood carried the weight of atonement
 
 # Leviticus 1:6-9
-
 # 🪓 Skinned, Cut, And Laid In Order
-
 ---
+## 🪓 Flay The Burnt Offering, And Cut It Into His Pieces
 
-## 🪓 He Shall Flay The Burnt Offering, And Cut It Into His Pieces
+"Flay" means to skin the animal, removing the hide.
 
-"Flay" means to skin, removing the hide. The subject is still "he" - the offerer continues doing the hands-on work here, not the priest. A later law (Leviticus 7:8) actually gives the animal's hide to the officiating priest as his own personal portion, but that comes after this chapter.
+The subject is still "he," the offerer, not the priest.
 
-🔪 "Flay" means to skin, or remove the hide
+The offerer, not the priest, still does this cutting work.
 
-💪 The offerer, not the priest, still does this cutting work
+A later law gives the hide itself to the officiating priest.
 
-📖 Leviticus 7:8 later awards the hide to the priest as his own portion
+That reward comes only after this chapter, in Leviticus 7:8.
 
----
+🔪 Flay means to skin the animal
 
-## 🔥 The Sons Of Aaron The Priest Shall Put Fire Upon The Altar, And Lay The Wood In Order
+💪 The offerer still does this work
 
-Now the priest's job begins in earnest: managing the fire and stacking the wood carefully, not haphazardly. "In order" matters - a later chapter (Leviticus 6:12-13) will require this altar fire to be kept burning continually, day and night, without ever going out. Worship here was handled with deliberate, careful attention, not thrown together.
+🐄 The hide becomes the priest's portion later
 
-🔥 Managing the fire and stacking the wood correctly was specifically the priest's job
+📖 Leviticus 7:8 explains that reward
 
-📏 "In order" means careful, deliberate arrangement, not tossed on randomly
+## 🔥 Put Fire Upon The Altar, And Lay The Wood In Order
 
-📖 Leviticus 6:12-13 later requires this altar fire to burn continually, never going out
+Here the priest's job finally begins.
 
----
+Managing the fire and stacking the wood was specifically his task.
 
-## 🥩 The Priests...Shall Lay The Parts, The Head, And The Fat, In Order Upon The Wood
+"In order" means careful, deliberate arrangement, not tossed on randomly.
 
-The fat was considered the richest and best part of the animal. Later chapters (Leviticus 3:17 and 7:23) permanently forbid Israelites from ever eating the fat of an ox, sheep, or goat - it belonged to God alone. Arranging the parts "in order," rather than dumping them on, shows careful, reverent handling of what represented a whole life given up.
+A later chapter requires this altar fire to burn continually.
 
-🥇 Fat was considered the richest, most valuable part of the animal
+It was never allowed to go out, day or night.
 
-🚫 Leviticus 3:17 and 7:23 later ban Israelites from ever eating this fat - it belonged to God alone
+Worship here was handled with real attention, not thrown together.
 
-📐 Careful arrangement, piece by piece, reflected reverence for what was being offered
+🔥 Managing the fire was the priest's job
 
----
+📏 In order means careful arrangement
+
+🌙 The fire had to burn continually
+
+📖 Nothing here was thrown together
+
+## 🥩 Lay The Parts, The Head, And The Fat, In Order
+
+The fat was considered the richest part of the animal.
+
+Later chapters permanently forbid Israelites from ever eating this fat.
+
+Leviticus 3:17 and 7:23 both repeat that same ban.
+
+The fat belonged to God alone, not to any person.
+
+Arranging the parts carefully, piece by piece, showed real reverence.
+
+🥇 Fat was the richest part of the animal
+
+🚫 Israelites were forever banned from eating it
+
+🙏 Careful arrangement showed reverence
+
+📖 Leviticus 3:17 and 7:23 repeat this ban
 
 ## 💧 His Inwards And His Legs Shall He Wash In Water
 
-The internal organs and legs would naturally be dirty - the legs from walking on the ground, the inward parts from the animal's own digestion. Washing them before they went on the fire combined ordinary practical hygiene with a symbolic point: nothing unclean was allowed to touch God's altar, not even dirt that was nobody's fault.
+"Inwards" means the internal organs.
 
-💧 "Inwards" means internal organs; both they and the legs needed washing before burning
+Both the organs and the legs needed washing before the fire.
 
-🧼 Legs were dirty from walking on the ground, organs from the animal's own digestion
+Legs were dirty from walking, organs from the animal's own digestion.
 
-✨ Even ordinary dirt wasn't allowed near the altar - everything had to be clean first
+Washing combined ordinary hygiene with a symbolic point.
 
----
+Nothing unclean was allowed to touch God's altar.
 
-## ✅ The Priest Shall Burn All On The Altar
+Not even dirt that was nobody's fault.
 
-"All" is the key word. Nothing here is kept back for the priest or the offerer to eat, unlike the peace offering described later in chapter 3, where the worshipper actually shares a meal from part of the animal. The burnt offering gives up the entire animal with nothing held back - which is the whole point of this particular kind of sacrifice.
+💧 Inwards means the internal organs
 
-🔥 "Burn all" means the entire animal is consumed - no part is eaten by anyone
+🧼 Legs and organs both needed washing
 
-🍽️ Contrast: the peace offering in chapter 3 lets the worshipper eat part of the meal
+✨ Nothing unclean touched God's altar
 
-💯 Total, no-strings devotion is what makes the burnt offering different from the others
+📖 Even ordinary dirt had to be removed first
 
----
+## 🌬️ A Sweet Savour Unto The Lord
 
-## 🌬️ An Offering Made By Fire, Of A Sweet Savour Unto The LORD
+"Sweet savour" is picture language for a pleasing smell.
 
-"Sweet savour" is picture-language for a pleasing aroma - it describes acceptance, not literal need. God isn't hungry for smoke; the phrase means the offering, brought rightly and willingly, was received and approved. This exact idea of a pleasing offering gets picked up centuries later to describe Christ's own sacrifice in Ephesians 5:2.
+It describes acceptance, not literal hunger.
 
-🌬️ "Sweet savour" is figurative language meaning the offering was pleasing and accepted
+God was never hungry for smoke.
 
-🚫 This isn't about God needing or smelling food - it's about acceptance, not hunger
+The phrase means the offering, brought rightly, was received and approved.
 
-📖 Ephesians 5:2 later borrows this exact phrase to describe Christ's own sacrifice
+This same idea later describes Christ's own sacrifice.
+
+Ephesians 5:2 borrows this exact phrase for that purpose.
+
+🌬️ Sweet savour means a pleasing smell
+
+🚫 God was never hungry for smoke
+
+✅ It means the offering was accepted
+
+📖 Ephesians 5:2 reuses this exact phrase
 
 # Leviticus 1:10-13
-
 # 🐑 The Same Offering, From The Flock
-
 ---
+## 🐑 Of The Flocks, Namely, Of The Sheep, Or Of The Goats
 
-## 🐑 If His Offering Be Of The Flocks, Namely, Of The Sheep, Or Of The Goats
+This is the second, less costly tier of the burnt offering.
 
-This is the second, less costly tier of the burnt offering - for a family that didn't own cattle. Sheep and goats were smaller and cheaper than herd animals, which made the law accessible to people with fewer resources. The core requirement stays exactly the same: still a male, and still without blemish, no matter how much smaller or cheaper the animal was.
+It was meant for a family that did not own cattle.
 
-🐑 Sheep and goats were smaller and less expensive than cattle
+Sheep and goats were smaller and cheaper than herd animals.
 
-💰 This made the burnt offering achievable for families without herd animals
+That made this law reachable for people with fewer resources.
 
-✅ The requirements - male, without blemish - stayed identical regardless of the animal's cost
+The core requirement stayed exactly the same either way.
 
----
+Still a male, and still without blemish.
 
-## 🧭 He Shall Kill It On The Side Of The Altar Northward
+🐑 Sheep and goats cost less than cattle
 
-This is a new detail the herd instructions in verses 3-5 didn't include: an exact compass direction. The altar's north side becomes a recurring, specific location across Leviticus - several offering types later in the book (including certain sin offerings in chapters 4 and 6) are also slaughtered on this same north side.
+💰 This made the offering reachable for the poor
 
-🧭 This is the chapter's first exact compass direction given for a slaughter location
+✅ The requirements stayed exactly the same
 
-📍 The altar's north side becomes a standard, repeated location for several offering types later in Leviticus
+📖 A cheaper animal still had to be perfect
 
-📋 Specific locations mattered here, not just general instructions
+## 🧭 Kill It On The Side Of The Altar Northward
 
----
+This is a brand new detail, not mentioned for the herd offering earlier.
 
-## 🔁 He Shall Cut It Into His Pieces...The Priest Shall Lay Them In Order
+An exact compass direction is now given.
 
-This wording nearly repeats verses 6-8's instructions for the herd offering, almost word for word. That repetition isn't lazy writing - it's deliberate. Whether a worshipper brought an expensive ox or a much cheaper lamb, the process, the priest's careful attention, and God's acceptance were exactly the same.
+The altar's north side becomes a repeated location later in Leviticus.
 
-🔁 This phrasing closely duplicates the herd instructions already given in verses 6-8
+Several offering types, including certain sin offerings, are slaughtered there too.
 
-🎯 The repetition is intentional, not accidental
+Specific locations mattered here, not just general instructions.
 
-⚖️ A cheaper animal received the identical careful process as an expensive one
+🧭 This is the chapter's first compass direction
 
----
+📍 The north side becomes a repeated location
 
-## 🌬️ An Offering Made By Fire, Of A Sweet Savour Unto The LORD (Again)
+⚖️ Sin offerings later use this same spot
 
-This exact refrain already closed the herd offering back in verse 9, and it will close the bird offering too, at the very end of this chapter in verse 17. The identical wording, repeated for every tier, says something plainly: acceptance before God was never based on the price tag of what a person brought.
+📖 Precise locations mattered, not just general rules
 
-🔁 The identical phrase already appeared in verse 9, and will appear again in verse 17
+## 🔁 The Priest Shall Lay Them In Order On The Wood
 
-💰 Repeating it for every tier says acceptance wasn't measured by cost
+This wording nearly repeats the herd instructions from a few verses earlier.
 
-⚖️ A cheap offering and an expensive one both end this book's very first chapter fully accepted
+That repetition is not lazy writing.
 
----
+It is deliberate.
 
-## 🤝 The Same Ritual For The Poor Worshipper And The Rich Worshipper
+Whether a worshipper brought an expensive ox or a cheaper lamb, the process stayed the same.
 
-Standing back from the details: a family that could only afford a sheep received the identical ritual, the same priestly attention, and the same "sweet savour" acceptance as a family bringing a bull. That pattern goes even further in verses 14-17, where the offering becomes cheaper still - down to a single bird - and the acceptance stays exactly the same.
+The priest's careful attention did not change with the price tag.
 
-💰 The cost of the animal never changed how seriously or carefully the ritual was carried out
+🔁 This repeats the herd instructions closely
 
-🤝 A poor Israelite's offering was accepted on the same terms as a wealthy one's
+🎯 The repetition is deliberate, not lazy
 
-📖 Verses 14-17 push this pattern even further, down to the cheapest offering in the chapter
+⚖️ A cheap animal got the same careful process
+
+📖 Price never changed how carefully priests worked
+
+## ⚖️ It Is A Burnt Sacrifice, An Offering Made By Fire
+
+This exact refrain already closed the herd offering a few verses earlier.
+
+It will close the bird offering too, at the very end of this chapter.
+
+The identical wording, repeated for every tier, says something plainly.
+
+Acceptance before God was never based on the price tag of what a person brought.
+
+A poor worshipper's offering was received just as fully as a wealthy one's.
+
+🔁 This exact phrase closes every tier
+
+💰 Cost never decided how God received it
+
+🤝 Cheap and costly offerings were equal
+
+📖 Acceptance never depended on price
 
 # Leviticus 1:14-17
-
 # 🕊️ Even A Bird Was Enough
-
 ---
+## 🕊️ Turtledoves, Or Of Young Pigeons
 
-## 🕊️ If The Burnt Sacrifice...Be Of Fowls...Turtledoves, Or Young Pigeons
+This is the third and most affordable tier in the whole chapter.
 
-This is the third and most affordable tier in the chapter - for someone who couldn't manage even a sheep or a goat. Turtledoves and young pigeons were common, inexpensive birds throughout Israel. Centuries later, Luke 2:24 shows Mary and Joseph bringing exactly this offering at Jesus's dedication in the temple - a quiet detail confirming the family's poverty.
+It was for someone who could not manage even a sheep or a goat.
 
-🕊️ Birds were the least expensive option among the chapter's three tiers
+Turtledoves and young pigeons were common, inexpensive birds across Israel.
 
-💰 Turtledoves and young pigeons were common, low-cost birds in Israel
+Centuries later, Mary and Joseph bring exactly this offering at Jesus's dedication.
 
-📖 Luke 2:24 shows Mary and Joseph bringing this exact offering for Jesus - a sign of their poverty
+Luke 2:24 records that quiet detail confirming the family's poverty.
 
----
+🕊️ Birds were the cheapest option in the chapter
 
-## ✂️ The Priest Shall Bring It Unto The Altar, And Wring Off His Head
+💰 Turtledoves and pigeons cost very little
 
-For the first time in this chapter, the priest performs the actual killing himself, rather than the offerer. A bird's small size made this a task better suited to a trained priest's hands than to an ordinary worshipper. The priest's role expands here compared to the larger-animal instructions earlier in the chapter.
+👪 Mary and Joseph brought this exact offering
 
-✋ Unlike the ox or sheep, the priest personally kills the bird here, not the offerer
+📖 Luke 2:24 quietly reveals their poverty
 
-🐦 A bird's small size made this step better suited to a priest's practiced hands
+## ✋ Wring Off His Head, And Burn It On The Altar
 
-📈 The priest's involvement grows as the offering's size shrinks
+For the first time in this chapter, the priest does the actual killing.
 
----
+With the ox or the sheep, the offerer killed the animal himself.
 
-## 🩸 The Blood Thereof Shall Be Wrung Out At The Side Of The Altar
+A bird's small size made this task better suited to a priest's hands.
 
-Blood still matters, even for the cheapest offering in the chapter. The meaning behind atonement - a life given, blood applied to the altar - doesn't shrink just because the offering itself got smaller and cheaper. Every tier in this chapter, whether bull, sheep, or bird, points to the same underlying truth about a costly life given in exchange.
+The priest's role grows here compared to the earlier instructions.
 
-🩸 Even the least expensive offering still required blood applied to the altar
+Its size, not its worth, is what changed the process.
 
-📉 The offering's cost went down, but the meaning behind atonement never shrank
+✋ The priest kills the bird himself here
 
-🔁 Bull, sheep, or bird - every tier in this chapter points to the same truth
+🐦 A bird's size suited a priest's hands
 
----
+📈 The priest's role grows as the offering shrinks
 
-## 🍽️ He Shall Pluck Away His Crop With His Feathers, And Cast It...By The Place Of The Ashes
+📖 Size changed the process, not the worth
 
-A bird's "crop" is a digestive pouch near its throat, often holding undigested food and grit - it had to be removed since it wasn't fit to burn as an offering. The "place of the ashes" was a specific, set spot near the altar for this kind of waste, mentioned again later as part of the priest's regular duties in Leviticus 6:10-11.
+## 🍽️ Pluck Away His Crop With His Feathers
 
-🍽️ The "crop" is a bird's digestive pouch, holding waste that had to be removed
+A bird's "crop" is a digestive pouch near its throat.
 
-📍 The "place of the ashes" was a fixed, designated spot for altar refuse
+It often held undigested food and grit.
 
-📖 Leviticus 6:10-11 later describes this same ash-disposal spot as part of the priest's regular routine
+That pouch was not fit to burn as part of the offering.
 
----
+It had to be removed and cast beside the altar.
 
-## ✂️ He Shall Cleave It With The Wings Thereof, But Shall Not Divide It Asunder
+The "place of the ashes" was a fixed, set spot for this waste.
 
-"Cleave" here means to split or tear partway open - but not completely apart. Unlike the ox or sheep, which were fully cut into separate pieces, the small bird stayed mostly in one piece as it went on the fire. Even the smallest, cheapest offering in the chapter still received its own distinct, specific handling instructions - nothing was treated carelessly just because it was small.
+A later chapter mentions this same spot as part of the priest's regular duties.
 
-✂️ "Cleave" means to split or tear partly open, not to sever completely
+🍽️ Crop means a bird's digestive pouch
 
-🐦 Unlike the larger animals, the bird stayed mostly in one piece
+🗑️ It was not fit to burn
 
-📋 Even the cheapest offering received its own precise, specific instructions
+📍 The place of ashes was a fixed spot
 
----
+📖 Leviticus 6 mentions this same spot again
 
-## 🌬️ It Is A Burnt Sacrifice, An Offering Made By Fire, Of A Sweet Savour Unto The LORD
+## ✂️ Cleave It With The Wings Thereof, But Shall Not Divide It Asunder
 
-This same closing phrase now finishes all three offering types in the chapter - herd, flock, and bird. The identical ending each time makes the chapter's point impossible to miss: God's acceptance never scaled with what a worshipper could afford. Leviticus opens its very first chapter making that plain before it moves on to anything else.
+"Cleave" here means to split or tear partway open.
 
-🔁 This exact phrase now closes all three offering tiers in the chapter
+Not completely apart.
 
-⚖️ The identical ending confirms acceptance was never based on cost
+The ox and the sheep were fully cut into separate pieces.
 
-📖 Leviticus makes this point in its very first chapter, before covering anything else`;
+The small bird stayed mostly in one piece as it went on the fire.
+
+Even the cheapest offering in the chapter got its own precise instructions.
+
+Nothing here was treated carelessly just because it was small.
+
+✂️ Cleave means split partway, not severed
+
+🐦 The bird stayed mostly in one piece
+
+📋 Even the cheapest offering got exact instructions
+
+📖 Small did not mean careless
+
+## 🔁 It Is A Burnt Sacrifice, An Offering Made By Fire, Of A Sweet Savour Unto The Lord
+
+This same closing line now finishes all three offering types in the chapter.
+
+Herd, flock, and bird all end with the exact same words.
+
+That identical ending is impossible to miss.
+
+God's acceptance never scaled with what a worshipper could afford.
+
+Leviticus makes this point plain in its very first chapter.
+
+Everything else in the book builds on that same foundation.
+
+🔁 This same phrase closes all three tiers
+
+⚖️ Acceptance never scaled with the price
+
+📖 Leviticus opens on this exact point
+
+➡️ Everything after builds on this foundation`.trim();
 
 export const LEVITICUS_ONE_PERSONAL_SECTIONS = parseLeviticusOneRawNotes(LEVITICUS_ONE_RAW_NOTES);

@@ -7272,6 +7272,55 @@
           "at": "2026-08-03T02:59:51Z"
         }
       ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 1,
+      "startedAt": "2026-08-03T03:46:09Z",
+      "finishedAt": "2026-08-03T03:54:11Z",
+      "durationMinutes": 8,
+      "sections": 5,
+      "cards": 24,
+      "verses": 17,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. First chapter in the Leviticus redo backlog (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (paragraph bodies, three bullets per card, hyphens throughout) from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Leviticus 1 opens the book with God speaking from inside the newly finished tabernacle instead of from Mount Sinai, then lays out the burnt offering law across its three cost tiers: from the herd (bullock), from the flock (sheep or goat), and from birds (turtledoves or young pigeons) for those who could afford nothing more. Cards cover the meaning of korban (drawing near), the definition of olah (that which goes up, the whole animal consumed), the voluntary nature of this offering versus required offerings later in the book, the offerer laying his hand on the animal's head for atonement, the offerer (not the priest) doing the killing, the priest's blood and fire duties, the ban on eating the sacrificial fat (Leviticus 3:17, 7:23), the altar's north side detail, the shift to the priest killing the bird himself, the meaning of crop and cleave, and the repeated sweet savour refrain that closes all three tiers identically, landing on the chapter's real point: God's acceptance never scaled with what a worshipper could afford. Kept the original file's 5 section boundaries (1-2, 3-5, 6-9, 10-13, 14-17) for verse-coverage continuity while rewriting every card to the new format. Density about 1.41 cards/verse (17 verses, 24 cards). scripts/check_bible_note_style.py found 1 problem on first pass (one 9-word bullet), fixed, second run clean. A manual section 13 eye check confirmed all four opening moves were used appropriately, every card closes on meaning rather than mechanics, and no card restates the verse instead of teaching it. Parser check passed exactly via getBibleReaderStudySections('Leviticus', 1) (5/5 sections, 24 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range covering Leviticus 1-27, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (LeviticusOnePersonalSection, parseLeviticusOneRawNotes, LEVITICUS_ONE_RAW_NOTES, LEVITICUS_ONE_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Leviticus 1 entry removed from the front of the list as part of this commit; next redo target is Leviticus 2.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-03T03:46:09Z"
+        },
+        {
+          "name": "target chapter determined: Leviticus 1 (style redo, first in remaining backlog)",
+          "at": "2026-08-03T03:46:52Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Leviticus.json",
+          "at": "2026-08-03T03:46:52Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (lib/genesisThirtyOneSource.ts) read",
+          "at": "2026-08-03T03:46:52Z"
+        },
+        {
+          "name": "source file written (lib/leviticusOneSource.ts, 5 sections, 24 cards)",
+          "at": "2026-08-03T03:51:48Z"
+        },
+        {
+          "name": "style checker clean (after fixing one 9-word bullet)",
+          "at": "2026-08-03T03:51:56Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo (no changes needed, preserveExactPhraseBodies covers Leviticus 1-27)",
+          "at": "2026-08-03T03:51:59Z"
+        },
+        {
+          "name": "parser check passed (5 sections, 24 cards, 17 verses covered)",
+          "at": "2026-08-03T03:51:59Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-03T03:54:11Z"
+        }
+      ]
     }
   ]
 }
