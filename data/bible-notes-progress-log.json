@@ -8147,6 +8147,59 @@
           "at": "2026-08-03T18:00:33Z"
         }
       ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 16,
+      "startedAt": "2026-08-03T18:45:53Z",
+      "finishedAt": "2026-08-03T19:00:00Z",
+      "durationMinutes": 14,
+      "sections": 9,
+      "cards": 52,
+      "verses": 34,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (9 sections / 51 cards, paragraph bodies, three bullets per card) from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Leviticus 16 is the Day of Atonement chapter: the reason for the chapter's extreme caution (Nadab and Abihu's deaths in Leviticus 10), Aaron's plain linen instead of his usual jeweled robes, the two goats chosen by lot (one for the LORD as the sin offering, one as the scapegoat sent away alive), Aaron's own bullock killed first so he is clean before he can cleanse anyone else, the censer and incense cloud hiding the mercy seat from his direct view, sevenfold blood sprinklings on and before the mercy seat and on the altar's horns, atonement extended outward from the innermost sanctuary to the tabernacle to the courtyard altar, confession and transfer of the nation's sin onto the live goat's head before it is led into the wilderness, the repeated washing requirement for everyone who has contact with the day's offerings, the fixed calendar date (tenth day of the seventh month) and the command to afflict their souls, and the closing statute making this an every generation requirement for whoever holds the priesthood after Aaron. Kept the original file's 9 section boundaries for verse-coverage continuity while rewriting every card to the new format. Density about 1.53 cards/verse (34 verses, 52 cards). scripts/check_bible_note_style.py found 4 problems on first pass (one bullet one word over the 8 word limit, three cards where keycap number emoji 1⃣/2⃣/7⃣ were not recognized by the checker's regex, causing bullet undercounts, the same failure mode noted in prior Exodus 38 and Leviticus 15 runs), fixed by swapping to emoji the regex matches, second run clean. Parser check passed exactly via getBibleReaderStudySections('Leviticus', 16) (9/9 sections, 52 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range covering Leviticus 1-27, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (LeviticusSixteenPersonalSection, parseLeviticusSixteenRawNotes, LEVITICUS_SIXTEEN_RAW_NOTES, LEVITICUS_SIXTEEN_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Leviticus 16 entry removed from the front of the list as part of this commit; next redo target is Leviticus 17.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-03T18:46:25Z"
+        },
+        {
+          "name": "target chapter determined: Leviticus 16 (style redo, first in remaining backlog)",
+          "at": "2026-08-03T18:46:50Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Leviticus.json",
+          "at": "2026-08-03T18:47:20Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (lib/genesisThirtyOneSource.ts) read",
+          "at": "2026-08-03T18:48:30Z"
+        },
+        {
+          "name": "source file written (lib/leviticusSixteenSource.ts, 9 sections, 52 cards)",
+          "at": "2026-08-03T18:52:00Z"
+        },
+        {
+          "name": "style checker clean (after fixing one over-length bullet and three unrecognized keycap emoji)",
+          "at": "2026-08-03T18:53:30Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo (no changes needed)",
+          "at": "2026-08-03T18:53:52Z"
+        },
+        {
+          "name": "parser check passed (9 sections, 52 cards, 34 verses covered)",
+          "at": "2026-08-03T18:54:10Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-03T18:54:35Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, data/bible-notes-style-redo-remaining.json, SESSION_LOG.md)",
+          "at": "2026-08-03T18:58:30Z"
+        }
+      ]
     }
   ]
 }
