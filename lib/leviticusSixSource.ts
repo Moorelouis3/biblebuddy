@@ -89,563 +89,814 @@ function parseLeviticusSixRawNotes(rawText: string): LeviticusSixPersonalSection
 }
 
 const LEVITICUS_SIX_RAW_NOTES = `# Leviticus 6:1-7
+# 😤 Sinning Against A Neighbor Is Sinning Against God
+---
+## 😤 Commit A Trespass Against The LORD
 
-# 🤥 Stealing, Lying, And Making It Right
+Sinning against another person still counts as sinning against God.
+
+This law covers wrongs between neighbors, not violations at the altar.
+
+Chapter four already covered unintentional sins against the LORD directly.
+
+Verse two adds a second category, sins committed against people.
+
+😤 Neighbor wrongs still count as sin
+
+📜 Chapter four covered sins against God
+
+🤝 This adds sins against other people
+
+📖 Both wrongs answer to the same LORD
 
 ---
+## 📦 In That Which Was Delivered Him To Keep, Or In Fellowship
 
-## 🔗 And The LORD Spake Unto Moses, Saying
+"Delivered him to keep" means an item left in someone's care for safekeeping.
 
-This new instruction picks up right where chapter 5 left off. Chapter 5:14-19 introduced the trespass offering for mishandling holy things or breaking an unnamed rule. This section names specific, everyday wrongs the same offering also covers: lying to a neighbor, theft, and fraud.
+Think of trusting a neighbor with your suitcase before a trip.
 
-🔗 This continues chapter 5:14-19's trespass offering into new, specific cases
+"In fellowship" means money or goods pooled together for a shared venture.
 
-🤝 These new cases are wrongs between neighbors, not just against holy things
+Both situations here depend entirely on broken trust.
 
-📖 Leviticus keeps building one offering system case by case, not all at once
+📦 Delivered to keep means a safekeeping deposit
 
----
+🧳 Like trusting a neighbor with your suitcase
 
-## 🤥 Commit A Trespass Against The LORD, And Lie Unto His Neighbour
+🤝 Fellowship means a shared business venture
 
-This verse makes a bold claim: lying to another person counts as trespassing against the LORD himself. In Israel's covenant community, wronging a neighbor was never treated as a private matter that only involved the two people directly affected.
-
-🤥 Lying to a neighbor is here labeled a trespass against God
-
-🤝 Israel's community was bound together by covenant, not just proximity
-
-⚖️ Wrongs between people were never treated as purely private
+📖 Every case here depends on broken trust
 
 ---
+## 🥊 A Thing Taken Away By Violence
 
-## 🤝 In That Which Was Delivered Him To Keep, Or In Fellowship
+"Taken away by violence" means simple robbery, not a quiet trick.
 
-"Delivered him to keep" describes a deposit - something left in someone's care, like a modern safe-deposit box, with a clear expectation it would be returned untouched. "Fellowship" here points to a business partnership, like a shared investment where partners trusted each other with money or goods.
+This case does not involve any broken trust at all.
 
-🤝 "Delivered...to keep" means an item left in trusted safekeeping
+The victim never agreed to hand anything over.
 
-🤝 "Fellowship" here means a business partnership involving shared property
+Verse three moves on to quieter kinds of dishonesty instead.
 
-💰 Both situations rest entirely on trust between two people
+🥊 Violence means straightforward robbery
 
----
+🚫 No trust was ever broken here
 
-## 👊 Or In A Thing Taken Away By Violence
+👊 The victim never agreed to anything
 
-This covers straightforward robbery - taking something by force rather than through fraud or broken trust. Unlike the deposit and partnership cases just named, this one doesn't require any prior relationship at all; it's plain theft.
-
-👊 This case is outright robbery, taken by force
-
-🆕 No prior trust relationship is needed for this case to apply
-
-📋 It sits alongside fraud cases as an equally serious wrong
+📖 Robbery differs from the other cases
 
 ---
+## 🎭 Hath Deceived His Neighbour
 
-## 😈 Or Hath Deceived His Neighbour
+"Deceived" covers everyday cheating in a deal or a trade.
 
-This phrase is a catch-all, covering any other way one person might cheat or trick another that the earlier, more specific cases didn't already name. Leviticus doesn't try to list every possible scam; it closes the loop by including whatever else counts as deceit.
+This sin needs no violence and no formal trust arrangement at all.
 
-😈 This phrase catches any remaining kind of trickery or fraud
+A dishonest scale or a broken business promise both qualify here.
 
-📋 Leviticus doesn't attempt to name every possible scam individually
+The law reaches past obvious theft into ordinary dishonesty.
 
-🔒 The broad wording closes any loophole the specific cases might miss
+🎭 Deceived means cheating in a deal
 
----
+⚖️ No violence or trust arrangement is required
 
-## 🔍 Have Found That Which Was Lost, And Lieth Concerning It, And Sweareth Falsely
+🧮 A dishonest scale would qualify too
 
-This describes someone who stumbles onto lost property, then makes it worse in two escalating steps: first lying about having it, then backing up the lie with a false oath in God's name. What started as an honest opportunity to return something quietly becomes a much bigger sin.
-
-🔍 Finding lost property isn't the sin - lying about it is
-
-📈 The wrong escalates from a lie to a false oath sworn before God
-
-⚖️ A false oath treats God's name as a tool for covering up guilt
+📖 Ordinary dishonesty still counts as sin
 
 ---
+## 🔍 Have Found That Which Was Lost, And Lieth Concerning It
 
-## ↩️ He Shall Restore That Which He Took Violently Away
+This covers someone who finds lost property and quietly keeps it.
 
-No matter which of these situations applied - robbery, fraud, a broken deposit, or a lie about lost property - the very first requirement is the same: give it back. Ritual and forgiveness come later; making the victim whole comes first.
+Simply finding it was not yet the sin here.
 
-↩️ Every case listed above shares this same first requirement
+The sin begins the moment he lies about having it.
 
-🥇 Returning the property comes before any ritual or offering
+An honest finder was expected to return lost property.
 
-🤝 This puts the wronged neighbor's loss first, not just the guilty person's conscience
+🔍 Finding it was not the sin
+
+🤥 Lying about it made him guilty
+
+🙅 Honest finders returned lost property
+
+📖 A lie turned honesty into guilt
 
 ---
+## ⚠️ Sweareth Falsely
 
+A false oath added a second layer of guilt on top of the first.
+
+Courts in ancient Israel depended heavily on sworn testimony.
+
+Lying under oath attacked the whole system used to settle disputes.
+
+Exodus twenty already warned against this same danger.
+
+⚠️ A false oath doubled the guilt
+
+⚖️ Courts relied on sworn testimony
+
+🏛️ This attacked the whole justice system
+
+📖 Exodus twenty already warned against this
+
+---
+## 🔢 In Any Of All These That A Man Doeth, Sinning Therein
+
+Five very different wrongs just got listed in only two verses.
+
+A broken deposit, a failed partnership, robbery, deceit, and a lie about lost property.
+
+Every one of them ends with the exact same word, guilty.
+
+The specific wrong matters less than the fact that it was against another person.
+
+🔢 Five different wrongs share one chapter
+
+⚖️ Each one still counts as guilt
+
+🤝 Every case involves another person
+
+📖 The next verses explain what happens next
+
+---
+## 💰 He Shall Restore That Which He Took Violently Away
+
+Forgiveness in this law never skips the step of making things right.
+
+The guilty man had to give back exactly what he took.
+
+An offering alone was never enough to settle the matter.
+
+Restitution came first, and worship came only after it.
+
+💰 Restitution had to happen first
+
+🙏 An offering alone was not enough
+
+🤝 Making things right came before worship
+
+📖 God cared about the wronged neighbor too
+
+---
 ## ➕ Shall Add The Fifth Part More Thereto
 
-This repeats chapter 5:16's exact penalty: repay the full value, then add another 20% on top. Simple return wasn't enough - the added cost made sure the guilty person actually lost something by having done wrong, instead of breaking even once caught.
+Restitution alone was not the full penalty in this law.
 
-➕ This is the same 20% penalty chapter 5:16 already introduced
+"The fifth part more" means an extra twenty percent added on top.
 
-⚖️ Simple repayment alone wasn't considered sufficient
+Giving back exactly what was taken still counted as a form of theft.
 
-💸 The extra cost meant wrongdoing never simply broke even
+The extra amount made crime cost more than honesty ever would.
+
+➕ The fifth part means twenty percent extra
+
+💸 Giving back the exact amount was not enough
+
+⚠️ Crime had to cost more than honesty
+
+📖 God built a real deterrent into this law
 
 ---
-
 ## 📅 In The Day Of His Trespass Offering
 
-The restitution and the ritual offering weren't separated by time - both were expected to happen together, on the same day. Justice toward the wronged neighbor and worship toward God moved forward as one single event, not two unrelated steps handled whenever it was convenient.
+Restitution and the offering both happened on the very same day.
 
-📅 Repayment and the ritual offering happened on the same day
+Nothing here allowed a slow, dragged out repayment plan.
 
-🔗 This ties fixing the human wrong to worship, not two separate errands
+The wronged neighbor got paid back right away, not eventually.
 
-⏰ Nothing here allowed for delaying justice toward the neighbor
+Quick restitution mattered as much as the sacrifice itself.
 
----
+📅 Repayment and offering happened the same day
 
-## 🐏 A Ram Without Blemish...With Thy Estimation
+🚫 No slow payment plan was allowed
 
-The required animal is a ram, and its worth is set by "thy estimation" - the priest's official valuation, using the fixed "shekel of the sanctuary" standard chapter 5:15 already introduced. This matches the exact offering already required for mishandling holy things back in chapter 5:14-19, now applied to wrongs against a neighbor's property instead.
+⏱️ The neighbor was paid back quickly
 
-🐏 A ram is required, matching chapter 5:14-19's holy-things trespass offering
-
-⚖️ "Thy estimation" means the priest set the official value owed
-
-🔁 The same fixed offering now covers wrongs against people, not just holy things
+📖 Speed mattered as much as the sacrifice
 
 ---
+## ⚖️ With Thy Estimation
 
-## ✝️ The Priest Shall Make An Atonement For Him Before The LORD: And It Shall Be Forgiven Him
+"Estimation" means the priest set the ram's value in silver.
 
-The chapter closes with the same formula used repeatedly since chapter 4: whatever the specific wrong was, the outcome of confession, restitution, and offering together is complete forgiveness. Making things right with the neighbor and making things right with God are treated as one connected process, not two separate transactions.
+This was not a random price picked by the guilty man himself.
 
-✝️ This closing formula has repeated since chapter 4 for every offering type
+A priest guaranteed the offering met a fair, honest standard.
 
-🤝 Restitution to the neighbor and atonement before God are one process
+Chapter five already used this same system for a lamb or two birds.
 
-🎯 Forgiveness is the stated outcome, not left in doubt
+⚖️ Estimation means the priest set the value
+
+🐏 A ram without blemish was required here
+
+🙅 He could not set his own price
+
+📖 A priest kept the standard fair and honest
 
 # Leviticus 6:8-13
+# 🔥 The Fire That Must Never Go Out
+---
+## 🌙 The Burning Upon The Altar All Night Unto The Morning
 
-# 🔥 The Fire That Never Goes Out
+The burnt offering placed on the altar kept burning through the whole night.
+
+Nobody personally stood guard over it, but the fire itself never stopped.
+
+Chapter one already covered this offering being wholly burned.
+
+This verse adds a new detail, that its burning lasted all night long.
+
+🌙 The offering burned through the whole night
+
+🔥 The fire itself never stopped
+
+📜 Chapter one already covered this offering
+
+📖 A new detail, its burning overnight
 
 ---
+## 🔥 The Fire Of The Altar Shall Be Burning In It
 
-## 👔 Command Aaron And His Sons...This Is The Law Of The Burnt Offering
+This is the first mention of a fire meant to never go out.
 
-This marks a real shift in the book. Chapters 1-5 were written for the ordinary Israelite bringing an offering. Starting here, Leviticus turns to instructions written specifically for the priests - what Aaron and his sons must actually do once an offering reaches the altar.
+The idea returns and gets repeated three separate times in this section.
 
-👔 Chapters 1-5 addressed the offerer; this section addresses the priest
+A continual fire meant God was always ready to receive an offering.
 
-🔄 Same offerings as before, now shown from the priest's side of the altar
+Nobody ever had to relight it from nothing.
 
-📖 This "law of the burnt offering" pattern repeats for each offering type in this chapter
+🔥 A continual fire begins here
 
----
+🔁 This idea repeats three times
 
-## 🌙 Because Of The Burning Upon The Altar All Night Unto The Morning
+🙏 God was always ready for worship
 
-Unlike a quick cooking fire, the burnt offering was left to burn slowly through the entire night, not consumed and finished within the hour. This detail explains why the fire needed constant priestly attention rather than being lit and simply walked away from.
-
-🌙 The burnt offering burned slowly through the whole night
-
-⏰ It wasn't a quick fire, finished and forgotten within the hour
-
-👀 This is why the fire needed a priest watching over it constantly
+📖 Nobody ever relit it from nothing
 
 ---
+## 👕 His Linen Garment, And His Linen Breeches
 
-## 👖 The Priest Shall Put On His Linen Garment, And His Linen Breeches
+"Linen garment" means the plain white robe worn only for altar service.
 
-This is plain linen work clothing, not the elaborate, jeweled high priestly garments described back in Exodus 28. "Breeches" were undergarments specifically required for modesty during this physical, hands-in-the-ashes task, matching the same modesty rule Exodus 28:42 already set for priestly service.
+"Breeches" means an undergarment covering the priest from waist to thigh.
 
-👖 This plain linen differs from the ornate high priestly garments of Exodus 28
+Exodus twenty eight already introduced special linen clothing for priests.
 
-🩲 "Breeches" are undergarments, required here specifically for modesty
+This modest undergarment kept the priest covered while climbing near the altar.
 
-🔁 Exodus 28:42 already established this same modesty requirement for priests
+👕 Linen garment means the plain service robe
 
----
+🩲 Breeches covered the priest's waist and thigh
 
-## 🧹 Take Up The Ashes...And He Shall Put Them Beside The Altar
+📜 Exodus twenty eight introduced priestly linen
 
-Every morning began with this task: gathering the ashes left over from the night's burning and setting them beside the altar. This was the first order of business of each new day of tabernacle service, before anything else could happen.
-
-🧹 Gathering the ashes was the very first task of each new day
-
-📍 The ashes were first set beside the altar, not immediately carried away
-
-🔁 This happened every single morning without exception
+📖 Modesty mattered even during holy work
 
 ---
+## 🧹 Put Them Beside The Altar
 
-## 👕 Put Off His Garments, And Put On Other Garments
+Every morning the priest scooped up the ashes left from the night's fire.
 
-Before carrying the ashes outside the camp, the priest changed out of his ministry linens into different clothes. The garments worn while serving at the altar were treated as too holy to wear for the separate task of hauling ashes out to a disposal site.
+The ashes were not thrown out right away.
 
-👕 The priest changed clothes before the next task of carrying ashes out
+They were set down close to the altar first.
 
-✨ Ministry garments were kept too holy for the ash-disposal task
+This was only the first of two separate steps.
 
-🔀 Two different tasks required two visibly different sets of clothing
+🧹 The priest gathered the morning ashes
 
----
+📍 Ashes rested beside the altar first
 
-## 🚮 Carry Forth The Ashes Without The Camp Unto A Clean Place
+⏳ This step came before removal outside
 
-The ashes weren't simply dumped nearby. They were carried entirely outside the camp to a specific place still described as "clean" - meaning even leftover ash from a holy fire was handled with care and respect, not treated as ordinary trash.
-
-🚮 Ashes were carried all the way outside the camp, not left nearby
-
-✨ Even this leftover ash was still called a "clean place," not a trash heap
-
-🙏 Reverence extended even to what the fire left behind
+📖 One more step still remained
 
 ---
+## 👔 Put Off His Garments, And Put On Other Garments
 
-## 🔥 The Fire Upon The Altar Shall Be Burning In It; It Shall Not Be Put Out
+Before carrying ashes outside the camp, the priest changed clothes completely.
 
-This is the first explicit command that the altar fire must never be extinguished. From this point forward, keeping the flame alive became an ongoing priestly responsibility, not something restarted from scratch for each new offering.
+His holy service linen stayed inside, reserved only for altar work.
 
-🔥 This is the first direct command that the fire must never go out
+Plainer clothing handled the dirtier job of hauling ashes.
 
-🔄 The same flame stayed lit rather than being relit for every offering
+Even garments marked the difference between sacred duty and ordinary labor.
 
-📋 Keeping it burning became an ongoing priestly duty, not a one-time task
+👔 The priest changed clothes before this task
 
----
+✨ Holy linen stayed reserved for the altar
 
-## 🪵 Burn Wood On It Every Morning, And Lay The Burnt Offering In Order Upon It
+🧺 Plainer clothes handled the dirtier work
 
-Feeding the fire fresh wood and arranging that day's burnt offering "in order" - meaning properly and deliberately, not carelessly tossed on - was the priest's first daily duty at the altar, done before any other offering that day could be handled.
-
-🪵 Adding fresh wood each morning kept the continual fire going
-
-📐 "In order" means arranged deliberately, not thrown on carelessly
-
-🥇 This was the priest's first daily task at the altar
+📖 Clothing marked sacred duty from ordinary labor
 
 ---
+## 🏕️ Carry Forth The Ashes Without The Camp Unto A Clean Place
 
-## 🐑 He Shall Burn Thereon The Fat Of The Peace Offerings
+The ashes did not just get dumped anywhere nearby.
 
-The fat portions from peace offerings, described back in chapter 3, were burned on this same continual fire rather than on a separate one. One altar and one ongoing flame served every offering type brought throughout the day.
+They were carried outside the whole camp entirely.
 
-🐑 Peace offering fat, from chapter 3, burned on this identical fire
+Even then, the spot chosen still had to be clean.
 
-🔥 One continual flame served every offering type, not a separate fire each time
+Something used in worship still deserved careful, respectful treatment.
 
-🔗 This ties the peace offering directly into the burnt offering's fire system
+🏕️ Ashes left the entire camp
+
+🧼 The dump site still had to be clean
+
+🙏 Worship remains got respectful treatment
+
+📖 Even leftover ash carried real honor
 
 ---
+## 🌅 The Priest Shall Burn Wood On It Every Morning
 
-## 🔥 The Fire Shall Ever Be Burning Upon The Altar; It Shall Never Go Out
+Feeding the altar fire became a daily, unskippable duty.
 
-This command closes the section by repeating verse 12's point, word for word in meaning, for emphasis. A flame that never went out symbolized that access to God through sacrifice was never suspended, not even overnight, not even for a moment.
+No single day was ever left to chance.
 
-🔥 This repeats verse 12's command, underlining it with emphasis
+This habit ran in addition to the fire simply never going out.
 
-🕯️ A never-extinguished flame symbolized worship that never paused
+Faithfulness here meant showing up morning after morning without fail.
 
-⏳ Access to God through sacrifice was never treated as "closed for the night"
+🌅 Wood got added every single morning
+
+📆 No day was ever skipped
+
+🔥 This ran alongside the continual fire
+
+📖 Faithfulness meant daily, unglamorous work
+
+---
+## 🐑 Burn Thereon The Fat Of The Peace Offerings
+
+The peace offering's fat also burned on this exact same fire.
+
+Chapter three already explained why fat, not meat, went to God.
+
+One continual fire ended up serving more than just the burnt offering.
+
+Every kind of offering eventually passed through the same flame.
+
+🐑 Peace offering fat burned here too
+
+📜 Chapter three explained why fat was God's portion
+
+🔥 One fire served several offerings
+
+📖 Every offering passed through the same flame
+
+---
+## ♾️ The Fire Shall Ever Be Burning, It Shall Never Go Out
+
+This sentence closes the section by repeating its main point one final time.
+
+A fire that never stopped meant access to God never stopped either.
+
+Israel never had to wonder whether the altar was ready.
+
+Worship was always available, every single day, without exception.
+
+♾️ The fire never stopped, by design
+
+🚪 Access to God never stopped either
+
+📆 Worship was ready every single day
+
+📖 God's presence came with no closed hours
 
 # Leviticus 6:14-18
+# 🍞 The Grain Offering Becomes The Priests' Food
+---
+## 🤏 Take Of It His Handful
 
-# 🍞 What The Priests Eat
+Chapter two already explained this same handful, called the memorial.
+
+Only a small portion of the flour ever reached the altar fire.
+
+The rest stayed with the priests instead of burning up completely.
+
+This chapter now explains what happened to that larger remaining portion.
+
+🤏 A handful means the memorial portion
+
+📜 Chapter two already explained this
+
+🔥 Only a small part reached the fire
+
+📖 The rest becomes the topic here
 
 ---
+## 🌬️ A Sweet Savour, Even The Memorial Of It
 
-## ⚖️ This Is The Law Of The Meat Offering: The Sons Of Aaron Shall Offer It Before The LORD, Before The Altar
+"Sweet savour" describes a pleasing smell that showed God accepted the gift.
 
-"Meat offering" in the KJV means a grain offering, not animal meat - the same offering fully described back in chapter 2. This verse repeats "before" twice, stressing that the act happened both in God's presence and at the specific altar location, not as some vague, generic ritual.
+Chapter one already used this exact phrase for the burnt offering.
 
-⚖️ "Meat offering" in the KJV means grain offering, from chapter 2
+The grain offering earns the same language even though nothing here bleeds.
 
-🔁 "Before the LORD" and "before the altar" are repeated for emphasis
+Acceptance, not blood alone, is the real point of this phrase.
 
-📍 This grounds the ritual in one specific place, not a vague ceremony
+🌬️ Sweet savour means a pleasing, accepted smell
 
----
+📜 Chapter one already used this same phrase
 
-## ✋ Take Of It His Handful...Burn It Upon The Altar For A Sweet Savour, Even The Memorial
+🌾 Grain offerings earn this language too
 
-This "memorial" handful is the same symbolic portion chapter 2 already described - a small token amount burned to represent the whole gift being given to God, even though most of the flour never touches the fire at all.
-
-✋ "Memorial" repeats the same symbolic handful chapter 2 introduced
-
-🔥 Only a small portion is actually burned, standing in for the whole gift
-
-🔁 Leviticus reuses this term rather than inventing new language for it
+📖 Acceptance mattered more than the method
 
 ---
+## 🍽️ The Remainder Thereof Shall Aaron And His Sons Eat
 
-## 🍞 The Remainder Thereof Shall Aaron And His Sons Eat: With Unleavened Bread...In The Holy Place
+Whatever flour was not burned became food for the priests.
 
-After the memorial handful is burned, the leftover flour becomes food for the priests - but with two conditions: it must be baked without leaven, and it must be eaten in the holy place, not carried home to an ordinary house.
+This was not leftover scraps thrown away out of waste.
 
-🍞 The leftover flour, after the burned handful, became priestly food
+Priests owned no farmland of their own in Israel.
 
-🚫 It had to be baked without leaven, unlike ordinary daily bread
+Offerings like this one were their actual wages for serving.
 
-🏛️ It had to be eaten in the holy place, not taken home
+🍽️ Leftover flour became the priests' food
 
----
+🌾 Priests owned no farmland themselves
 
-## 🏛️ In The Court Of The Tabernacle Of The Congregation They Shall Eat It
+💰 Offerings worked as their real wages
 
-This narrows the location even further than "the holy place" alone - specifically the court, the outer enclosed area of the tabernacle grounds. Even something as ordinary as a priest's meal had a fixed, sacred location rather than being left to personal preference.
-
-🏛️ "The court" narrows the eating location even more precisely
-
-📐 Even a priest's meal happened in one fixed, designated place
-
-🔒 Nothing about this offering's leftovers was left to personal choice
+📖 God provided for those who served Him
 
 ---
+## 🥙 With Unleavened Bread Shall It Be Eaten In The Holy Place
 
+"Unleavened" means made without any yeast, so it never rises.
+
+Chapter two already explained why grain offerings always avoided leaven.
+
+This bread also could not be taken home for a private meal.
+
+It had to be eaten right there, inside the holy place itself.
+
+🥙 Unleavened means made without yeast
+
+📜 Chapter two already explained this rule
+
+🏛️ Eating happened inside the holy place
+
+📖 This food never left holy ground
+
+---
 ## 🚫 It Shall Not Be Baken With Leaven
 
-Leaven acts as a rising agent, and in several biblical contexts it pictures corruption or spreading sin. Chapter 2 already banned leaven from grain offerings burned on the altar; this verse confirms the same ban even applies to the portion the priests simply eat as food.
+"Baken" is an old word simply meaning baked.
 
-🚫 Leaven is a rising agent, often pictured elsewhere as spreading corruption
+Leaven often pictures something small that spreads and changes everything around it.
 
-🔁 Chapter 2 already banned leaven from the burned portion of grain offerings
+Exodus twelve already banned leaven from Israelite homes at Passover.
 
-🍞 This verse extends that same ban to the priests' eaten portion too
+This offering stayed free of it for that exact same reason.
+
+🚫 Baken means baked, an old spelling
+
+🍞 Leaven pictures something that spreads
+
+📜 Exodus twelve already banned it at Passover
+
+📖 This offering stayed free of it too
 
 ---
-
 ## 👑 It Is Most Holy, As Is The Sin Offering, And As The Trespass Offering
 
-"Most holy" was the highest category of sacredness in the tabernacle system. This verse groups the grain, sin, and trespass offerings together under that same top-level label, showing that "most holy" wasn't only for the biggest or costliest offerings.
+"Most holy" marked the very highest tier an offering could reach.
 
-👑 "Most holy" marked the highest level of sacredness in this system
+Only priests, not ordinary Israelites, were allowed anywhere near this food.
 
-🔗 Grain, sin, and trespass offerings all share this identical top category
+Three different offerings now share this exact same top ranking.
 
-💰 Holiness here wasn't measured by an offering's size or cost
+The category mattered as much as the specific ritual behind it.
 
----
+👑 Most holy marked the top tier
 
-## ♂️ All The Males Among The Children Of Aaron Shall Eat Of It
+🙅 Ordinary Israelites could not eat this
 
-Only male priests were permitted to eat this most-holy food - priests' wives and daughters were excluded from this specific portion, even though they were part of a priest's household in every other way.
+🔗 Three offerings now share this rank
 
-♂️ Eating this most-holy food was restricted to male priests only
-
-👪 Priests' wives and daughters were excluded from this specific food
-
-🔒 The restriction applied narrowly to this one category of offering
+📖 Category mattered as much as ritual
 
 ---
+## 👨 All The Males Among The Children Of Aaron Shall Eat Of It
 
-## 📜 It Shall Be A Statute For Ever In Your Generations
+Only male priests were permitted to eat this particular food.
 
-"For ever in your generations" means this rule wasn't temporary or tied to one specific moment in Israel's history - it was meant to continue being followed by every future generation of priests without exception.
+Peace offerings later in this book allow a much wider family circle.
 
-📜 "For ever in your generations" signals a rule with no expiration
+This narrower rule marks the grain offering as unusually holy.
 
-🔁 Every future generation of priests was expected to keep following it
+The strictest food always went to the smallest, most restricted group.
 
-🏛️ This wasn't a one-time instruction limited to Aaron's own lifetime
+👨 Only male priests could eat this
+
+👪 Peace offerings later allow a wider circle
+
+📈 A narrower rule signals higher holiness
+
+📖 The holiest food had the fewest eaters
 
 ---
+## ✋ Every One That Toucheth Them Shall Be Holy
 
-## ✨ Every One That Toucheth Them Shall Be Holy
+Holiness here worked like a contact that could spread through touch.
 
-Holiness here worked like something contagious by contact - touching this most-holy food transferred a kind of sacred status onto whatever or whoever touched it. This same principle will matter again later in the chapter with the sin offering's blood and vessels.
+Anything or anyone touching this food picked up that same holy status.
 
-✨ Holiness spread by direct contact, almost like something contagious
+This is the reverse of the uncleanness rules explained back in chapter five.
 
-🔗 Whatever touched this food took on that same sacred status
+There, touching something impure spread guilt outward instead.
 
-📖 This exact principle returns later in the chapter with the sin offering
+✋ Holiness could spread by simple touch
+
+🔄 This works opposite from uncleanness rules
+
+📜 Chapter five explained the impurity version
+
+📖 Holiness and impurity both spread by contact
 
 # Leviticus 6:19-23
+# 👑 The High Priest's Own Perpetual Offering
+---
+## 🕯️ In The Day When He Is Anointed
 
-# 🥞 The High Priest's Own Daily Offering
+Anointing marked the exact day a new high priest began his service.
+
+Exodus twenty nine already described this anointing ceremony in detail.
+
+This offering started immediately at that moment and never stopped afterward.
+
+A brand new duty began the same day as the honor itself.
+
+🕯️ Anointing began a new high priest's service
+
+📜 Exodus twenty nine already described this ceremony
+
+🔄 A new duty began that same day
+
+📖 Honor and duty arrived together
 
 ---
+## 📏 The Tenth Part Of An Ephah Of Fine Flour
 
-## 👑 This Is The Offering Of Aaron And Of His Sons, Which They Shall Offer...In The Day When He Is Anointed
+An "ephah" was a dry measure, close to a large basket of grain.
 
-This new offering belongs personally to the high priest, tied to his anointing day - the day he was formally set apart and consecrated into office. Unlike the offerings covered so far, this one isn't brought by ordinary Israelites at all; it's the priest's own required gift.
+A tenth of an ephah came out to a bit more than two quarts.
 
-👑 This offering is tied specifically to the high priest's own anointing day
+This exact same small amount already appeared back in chapter five.
 
-🆕 Every other offering so far came from ordinary Israelites, not the priest himself
+Even the high priest's own offering used a modest, familiar measure.
 
-🔁 Verse 22 later confirms this repeats for every high priest after Aaron
+📏 An ephah was a large dry measure
 
----
+🥣 A tenth was a bit over two quarts
 
-## ⚖️ The Tenth Part Of An Ephah Of Fine Flour
+📜 Chapter five used this same small amount
 
-This is the exact same measurement, one omer, that chapter 5:11 already used as the flour amount for Israel's very poorest sinner. Here, the same small measure becomes the high priest's own required daily offering - the highest office in Israel using the same modest amount set aside for the poor.
-
-⚖️ This is the same omer measure chapter 5:11 gave the poorest offerer
-
-👑 The high priest's own offering uses this identical modest amount
-
-🤝 Rank in Israel didn't come with an exemption from this small, humble measure
+📖 Even the high priest kept it modest
 
 ---
+## 🌓 Perpetual, Half Of It In The Morning, And Half Thereof At Night
 
-## 🌅 Perpetual, Half Of It In The Morning, And Half Thereof At Night
+"Perpetual" means this offering never stopped, day after day, for life.
 
-Splitting the offering into a morning half and an evening half matches the twice-daily rhythm of the continual burnt offering already established in Exodus 29:38-42. This offering bookended the priest's entire day of service, morning and night, without fail.
+Ordinary Israelites only brought a grain offering when they had a reason to.
 
-🌅 This morning-and-night split matches Exodus 29:38-42's continual burnt offering
+The high priest brought this one every single morning and every single evening.
 
-📆 It bookended the priest's whole day, every single day, without exception
+His position came with a duty nobody else in Israel carried.
 
-🔁 "Perpetual" means this never stopped happening, generation after generation
+🌓 Perpetual means an offering that never stopped
 
----
+🔁 Every morning and every evening, always
 
-## 🍳 In A Pan It Shall Be Made With Oil; And When It Is Baken, Thou Shalt Bring It In
+👤 Ordinary Israelites had no such daily duty
 
-Chapter 2 already described three cooking methods for grain offerings: oven, flat pan, and fryingpan. This offering specifically uses the flat pan method, mixed with oil before baking, then brought in to the altar once finished.
-
-🍳 This uses the flat-pan method, one of chapter 2's three cooking options
-
-🫒 The flour was mixed with oil before baking, not afterward
-
-📖 Chapter 2:5 is where this exact pan method was first described
+📖 The high priest's role carried extra weight
 
 ---
+## 🍳 In A Pan It Shall Be Made With Oil
 
-## 🌸 The Baken Pieces...Offer For A Sweet Savour Unto The LORD
+This offering was cooked in a shallow pan rather than left raw.
 
-"Sweet savour" is the same formula used across nearly every offering type in Leviticus so far - not a literal pleasant smell to God, but a way of saying the offering was fully accepted, done correctly, and welcomed.
+Chapter two already described several similar cooking methods for grain gifts.
 
-🌸 "Sweet savour" repeats the acceptance formula used across this whole book
+"Baken" simply means baked, once the oil and flour were mixed.
 
-✅ It signals the offering was done correctly and fully accepted
+Even a daily duty still required real preparation and effort.
 
-🔁 The exact same phrase already appeared for burnt, grain, and peace offerings
+🍳 Cooked in a shallow pan with oil
+
+📜 Chapter two described similar cooking methods
+
+🥘 Baken simply means baked
+
+📖 Daily duty still took real effort
 
 ---
+## 🔄 Anointed In His Stead
 
-## 🔥 Every Meat Offering For The Priest Shall Be Wholly Burnt: It Shall Not Be Eaten
+"In his stead" means whichever son took over as high priest next.
 
-This closes with a sharp contrast to verse 16. When an ordinary Israelite brought a grain offering, the priests ate the leftover portion as food. But when the priest brings this offering for himself, none of it is eaten by anyone - it's given completely to the fire.
+This duty was tied to the office, not to one single man.
 
-🔥 This contrasts directly with verse 16's priestly food from the people's offerings
+Numbers twenty later shows Eleazar stepping into this same role after Aaron dies.
 
-🚫 No one, not even the priest himself, ate any part of his own offering
+The office continued even after the person holding it changed.
 
-🎯 His personal offering was given entirely, with nothing kept back as food
+🔄 In his stead means the next successor
+
+👑 The duty belonged to the office
+
+📜 Numbers twenty shows Eleazar taking this role
+
+📖 Offices outlasted the men who held them
+
+---
+## 🔥 It Shall Be Wholly Burnt: It Shall Not Be Eaten
+
+Ordinary priests ate the remainder of a normal grain offering, back in verse sixteen.
+
+The high priest never got to eat his own personal offering at all.
+
+Every bit of it went entirely to the fire instead.
+
+The highest position in Israel came with the fewest personal benefits.
+
+🔥 Every bit of it burned completely
+
+🚫 The high priest never ate his own gift
+
+📜 Verse sixteen showed ordinary priests eating theirs
+
+📖 Higher rank meant fewer personal benefits
 
 # Leviticus 6:24-30
+# 🩸 The Sin Offering, Eaten Here Or Burned There
+---
+## 📍 In The Place Where The Burnt Offering Is Killed Shall The Sin Offering Be Killed
 
-# 🩸 Blood That Cannot Be Washed Away Lightly
+Both offerings died in the exact same spot beside the altar.
+
+Chapter one already located this spot on the altar's north side.
+
+Using one shared location kept the whole system simple and consistent.
+
+Location alone did not make one offering more holy than another.
+
+📍 Both offerings were killed at the same spot
+
+📜 Chapter one already named this north side location
+
+🔗 One location served multiple offering types
+
+📖 Consistency mattered throughout this whole system
 
 ---
+## 🍽️ The Priest That Offereth It For Sin Shall Eat It
 
-## 📍 In The Place Where The Burnt Offering Is Killed Shall The Sin Offering Be Killed...It Is Most Holy
+Unlike the burnt offering, this sacrifice was never sent entirely up in smoke.
 
-The sin offering, first described in chapter 4, is killed in the exact same spot as the burnt offering - not a separate location. This verse also confirms the sin offering shares the same "most holy" ranking already given to the grain and trespass offerings back in verse 17.
+The priest who performed the ritual got to eat part of it himself.
 
-📍 The sin offering is killed in the same location as the burnt offering
+Eating it here was not casual, it happened only in the holy place.
 
-👑 It shares the identical "most holy" category with the grain and trespass offerings
+This meal marked the final, official step of the atonement process.
 
-🔗 One shared location and ranking connects several offering types together
+🍽️ The officiating priest ate part of it
 
----
+🏛️ Eating happened only in the holy place
 
-## 🍽️ The Priest That Offereth It For Sin Shall Eat It: In The Holy Place...In The Court Of The Tabernacle
+🔥 Unlike the burnt offering, none was wasted
 
-Here's a sharp contrast worth noticing: the burnt offering (verses 8-13) is never eaten by anyone - it's wholly given to the fire. But this sin offering is eaten by the priest, in the same "holy place...court of the tabernacle" location already specified for the grain offering in verse 16.
-
-🍽️ Unlike the burnt offering, the sin offering is eaten by the priest
-
-🚫🔥 The burnt offering, by contrast, is never eaten by anyone at all
-
-📍 The eating location matches verse 16's grain offering location exactly
+📖 The meal marked atonement's final step
 
 ---
+## ✋ Whatsoever Shall Touch The Flesh Thereof Shall Be Holy
 
-## ✨ Whatsoever Shall Touch The Flesh Thereof Shall Be Holy
+This is the same contact holiness rule already explained for the grain offering.
 
-This repeats verse 18's same contact-holiness principle, now applied to the sin offering's meat instead of the grain offering. Holiness transferred by direct physical touch, treated as a real, almost physical property rather than just a symbolic idea.
+Anything touching this meat became holy simply through that contact.
 
-✨ This repeats verse 18's identical contact-holiness principle
+The rule shows up again here on purpose, not by accident.
 
-🔗 The same rule now applies to the sin offering instead of the grain offering
+God treated multiple kinds of offerings with this same careful pattern.
 
-🤲 Holiness is treated here as something real that spreads by touch
+✋ Touching this meat also spread holiness
 
----
+📜 The grain offering already showed this rule
 
-## 🩸 Sprinkled Of The Blood...Upon Any Garment, Thou Shalt Wash That...In The Holy Place
+🔁 The pattern repeats here on purpose
 
-If any of the sin offering's blood accidentally splashed onto a priest's clothing, that garment had to be washed - and specifically inside the holy place itself, not taken home or cleaned anywhere ordinary. Blood from this offering was never treated as something to simply wipe away casually.
-
-🩸 Blood-stained garments required washing, not casual wiping away
-
-🏛️ The washing itself had to happen inside the holy place
-
-⚠️ This shows how seriously this blood's holiness was treated, even by accident
+📖 God applied one consistent standard
 
 ---
+## 🩸 When There Is Sprinkled Of The Blood Thereof Upon Any Garment, Thou Shalt Wash
 
+Blood from this sacrifice carried real, physical holiness, not just symbolism.
+
+A stained garment could not simply be worn around afterward.
+
+Washing had to happen right there, inside the holy place itself.
+
+Careless handling of something sacred was never treated as a small matter.
+
+🩸 Blood on clothing had to be washed
+
+🏛️ Washing happened inside the holy place
+
+🚫 Stained garments could not be worn casually
+
+📖 Sacred blood demanded careful handling
+
+---
 ## 🏺 The Earthen Vessel Wherein It Is Sodden Shall Be Broken
 
-"Sodden" means boiled. Clay pots are porous, meaning they slowly soak up whatever is cooked in them. Because this meat was most holy, a clay pot that absorbed even a trace of it could never be trusted for ordinary use again - so it was simply broken and discarded.
+"Sodden" is an old word meaning boiled.
 
-🏺 "Sodden" is the old word for boiled
+Clay pots soaked up whatever meat had been boiled inside them.
 
-🧽 Clay is porous and absorbs whatever is cooked inside it
+No amount of washing could ever fully clean porous clay like that.
 
-💥 A pot that absorbed most-holy meat was broken rather than reused
+Breaking the pot was the only way to keep holiness from lingering in ordinary use.
 
----
+🏺 Sodden means boiled
 
-## 🍲 If It Be Sodden In A Brasen Pot, It Shall Be Both Scoured, And Rinsed In Water
+🚫 Clay could not be cleaned completely
 
-"Brasen" means made of brass or bronze. Unlike porous clay, a bronze pot's smooth surface doesn't absorb what's cooked in it, so it could be thoroughly scrubbed and rinsed clean instead of destroyed - the material itself determined whether it could be reused.
+🔨 Breaking the pot was the only safe option
 
-🍲 "Brasen" means made of brass or bronze
-
-🧼 Bronze doesn't absorb liquid the way clay does, so it could be cleaned
-
-🔁 The pot's material, not the food itself, decided if it could be reused
+📖 Holiness could not be casually reused
 
 ---
+## 🥘 If It Be Sodden In A Brasen Pot, It Shall Be Scoured, And Rinsed
 
-## ♂️ All The Males Among The Priests Shall Eat Thereof: It Is Most Holy
+"Brasen" means made of bronze, a much harder and smoother metal.
 
-This repeats verse 18's identical male-only restriction, now stated for the sin offering. Whether it was the grain offering or the sin offering, this most-holy food stayed limited to male priests specifically, not their whole households.
+Bronze did not soak up liquid the way porous clay did.
 
-♂️ This repeats verse 18's same male-only restriction
+Scouring and rinsing could fully clean a pot like this one.
 
-🔗 Both the grain offering and sin offering share this identical rule
+The material itself decided whether an item got destroyed or reused.
 
-👪 The restriction excluded the rest of a priest's household either way
+🥘 Brasen means bronze, a smooth hard metal
 
----
+💧 Bronze could be scoured and rinsed clean
 
-## 🔥 If Any Of The Blood Is Brought Into The Tabernacle...To Reconcile Withal...It Shall Be Burnt In The Fire
+🏺 Clay had to be broken instead
 
-This is an important exception to the "priest eats it" rule just given. Chapter 4:1-21 described a different kind of sin offering - for the high priest himself or the whole congregation - where the blood is carried inside the tent itself, not just applied to the outer altar. Whenever that happens, the meat is burned outside the camp instead of eaten by anyone.
-
-🔥 This is an exception to the eating rule stated earlier in this section
-
-📖 Chapter 4:1-21 covers exactly this case: blood carried inside the tent
-
-🚫 When that happens, the meat is burned outside camp, never eaten
+📖 Material decided reuse or destruction
 
 ---
+## 👨 All The Males Among The Priests Shall Eat Thereof
 
-## 📖 Two Kinds Of Priestly Law: Fire That Never Stops, Food That Feeds The Priests
+This same male only rule already appeared for the grain offering earlier in this chapter.
 
-Stepping back across the whole chapter: the burnt offering (verses 8-13) is wholly given to a fire that must never go out, while the grain and ordinary sin offerings (verses 14-18, 24-29) are partly burned and partly eaten by the priests as food. Even the disposal rules for cooking vessels - a broken clay pot versus a scoured bronze one - show that holiness in this system always had real, physical, practical consequences, not just symbolic ones.
+The sin offering now follows that identical restriction.
 
-📖 The chapter's three offering types split into "wholly burned" versus "partly eaten"
+Both offerings share the label "most holy" for the exact same reason.
 
-🍽️ Grain and ordinary sin offerings fed the priests; burnt offerings never did
+A consistent boundary protected every offering placed in that top category.
 
-🏺 Even cookware rules show holiness carried real, physical consequences`;
+👨 Only male priests could eat this
+
+📜 The grain offering already set this rule
+
+👑 Both offerings share the most holy label
+
+📖 One boundary protected the whole category
+
+---
+## 🔥 Brought Into The Tabernacle Of The Congregation To Reconcile Withal
+
+This verse names one important exception to everything just explained.
+
+Chapter four already covered sin offerings whose blood entered the tabernacle itself.
+
+Those specific offerings could never be eaten by any priest at all.
+
+Instead, every part of them had to be burned completely outside the camp.
+
+This exception connects directly to the Day of Atonement described later in chapter sixteen.
+
+🔥 One case broke the normal eating rule
+
+📜 Chapter four covered blood entering the tabernacle
+
+🚫 Those offerings could never be eaten
+
+📖 Chapter sixteen builds directly on this exception
+`.trim();
 
 export const LEVITICUS_SIX_PERSONAL_SECTIONS = parseLeviticusSixRawNotes(LEVITICUS_SIX_RAW_NOTES);

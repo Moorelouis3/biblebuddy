@@ -7573,6 +7573,63 @@
           "at": "2026-08-03T07:57:24Z"
         }
       ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 6,
+      "startedAt": "2026-08-03T08:46:18Z",
+      "finishedAt": "2026-08-03T09:00:03Z",
+      "durationMinutes": 14,
+      "sections": 5,
+      "cards": 42,
+      "verses": 30,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Sixth chapter in the Leviticus style redo backlog (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (Leviticus.json). Leviticus 6 covers the trespass offering for wrongs against a neighbor (restitution plus a fifth), the law of the burnt offering (the fire that must never go out), the law of the grain offering (priests' food, most holy), the high priest's own perpetual grain offering (wholly burnt, never eaten by him), and the law of the sin offering (eaten by the officiating priest unless its blood entered the tabernacle, in which case it is burned outside the camp, pointing ahead to Leviticus 16). Style checker clean on first real pass after two minor bullet word count fixes. Parser check passed (5 sections, 42 cards, verbatim render). tsc --noEmit clean. Wiring in lib/bibleReaderStudyNotes.ts already correct for this redo chapter, no changes needed (Leviticus 1-27 already in preserveExactPhraseBodies range).",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-03T08:47:43Z"
+        },
+        {
+          "name": "target chapter determined: Leviticus 6 (style redo, first in remaining list)",
+          "at": "2026-08-03T08:47:43Z"
+        },
+        {
+          "name": "KJV text fetched (Leviticus 6, 30 verses, from GitHub raw mirror)",
+          "at": "2026-08-03T08:48:00Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md)",
+          "at": "2026-08-03T08:48:06Z"
+        },
+        {
+          "name": "drafting note content for Leviticus 6 (planning card structure)",
+          "at": "2026-08-03T08:51:45Z"
+        },
+        {
+          "name": "source file written (lib/leviticusSixSource.ts, 42 cards, 5 sections)",
+          "at": "2026-08-03T08:55:21Z"
+        },
+        {
+          "name": "style checker clean (42 cards, 0 problems)",
+          "at": "2026-08-03T08:55:33Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo chapter (no changes needed, Leviticus 1-27 preserveExactPhraseBodies)",
+          "at": "2026-08-03T08:55:42Z"
+        },
+        {
+          "name": "parser check passed (5 sections, 42 cards, renders verbatim)",
+          "at": "2026-08-03T08:56:14Z"
+        },
+        {
+          "name": "tsc clean (npx tsc --noEmit -p ., exit 0)",
+          "at": "2026-08-03T08:58:21Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, redo-remaining.json popped)",
+          "at": "2026-08-03T09:01:07Z"
+        }
+      ]
     }
   ]
 }
