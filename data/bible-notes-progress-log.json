@@ -7862,6 +7862,59 @@
           "at": "2026-08-03T12:58:00Z"
         }
       ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 11,
+      "startedAt": "2026-08-03T13:46:00Z",
+      "finishedAt": "2026-08-03T14:01:00Z",
+      "durationMinutes": 15,
+      "sections": 12,
+      "cards": 46,
+      "verses": 47,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (10 sections, paragraph bodies with a leading positive-rule design, three bullet lines per card) from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Leviticus 11 is the dietary law chapter: the two-part land-animal test (cloven hoof plus chewing the cud), the four named exceptions that fail one half of the test (camel, coney, hare, swine) including a card on the swine ban's later role in the Maccabean persecution, the fins-and-scales water rule, the long forbidden-birds list (grouped by hunter vs scavenger vs night bird vs water bird, with a card on the raven later feeding Elijah despite being unclean here, and a card noting the bat is grouped by flight not biology), the flying-creeping-thing rule with its locust exception (tied to John the Baptist's diet), the carcase-contact rules and their escalation from touching to bearing to washing, the swarming ground creatures, how uncleanness spreads through vessels, water, and seed (with the porous-clay-pot-must-be-broken contrast and the fountain-or-pit exception), a clean species that dies on its own, the closing every-creeping-thing summary, and the chapter's theological hinge at verses 44 to 45 (be ye holy, for I am holy, tied back to the Exodus rescue) and its closing purpose statement in verse 47 (to make a difference between the unclean and the clean, calling back to Aaron's charge in chapter ten). Redesigned the section boundaries from the old file's 10 sections into 12 (splitting the old 29-38 and 41-45 blocks) to keep each section closer to the 3 to 9 verse range. Card density landed near 1 card per verse (46 cards across 47 verses) rather than the 1.2 to 2.0 range seen on narrative-heavier Leviticus chapters, because this chapter is unusually list-heavy (repeated formulaic animal names with little narrative variation) and docs/bible-study-note-style.md section 12 explicitly instructs writing a shorter note rather than a padded one when a list genuinely does not have more to teach. scripts/check_bible_note_style.py found 2 problems on first pass (one bullet at 10 words instead of under 8, one body line at 21 words), fixed both, second run clean. A manual section 13 eye check confirmed every title is a verbatim KJV phrase in title case, every body opens with one of the four approved moves, closes land on meaning rather than mechanics, and no hyphens, em dashes, semicolons, or contractions were used. Parser check passed exactly via getBibleReaderStudySections('Leviticus', 11) (12/12 sections, 46 cards, all 47 verses covered, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range covering Leviticus 1-27, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (LeviticusElevenPersonalSection, parseLeviticusElevenRawNotes, LEVITICUS_ELEVEN_RAW_NOTES, LEVITICUS_ELEVEN_PERSONAL_SECTIONS) were kept exactly as before. Also discovered and resolved a detached HEAD state at session start (the container's initial checkout had left git on a detached HEAD at the tip of origin/main after a large batch of prior redo commits); moved onto a proper local main branch tracking origin/main before making any changes, no data was at risk since origin/main and the detached HEAD already matched after a fresh fetch. data/bible-notes-style-redo-remaining.json Leviticus 11 entry removed from the front of the list as part of this commit; next redo target is Leviticus 12.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-03T13:46:30Z"
+        },
+        {
+          "name": "target chapter determined: Leviticus 11 (style redo, first in remaining backlog)",
+          "at": "2026-08-03T13:47:30Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Leviticus.json",
+          "at": "2026-08-03T13:48:00Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (lib/genesisThirtyOneSource.ts and lib/leviticusTenSource.ts) read",
+          "at": "2026-08-03T13:50:37Z"
+        },
+        {
+          "name": "source file written (lib/leviticusElevenSource.ts, 12 sections, 46 cards)",
+          "at": "2026-08-03T13:55:30Z"
+        },
+        {
+          "name": "style checker clean (after fixing one over-length bullet, one over-length body line)",
+          "at": "2026-08-03T13:57:20Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo (no changes needed)",
+          "at": "2026-08-03T13:57:30Z"
+        },
+        {
+          "name": "parser check passed (12 sections, 46 cards, 47 verses covered)",
+          "at": "2026-08-03T13:57:50Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-03T13:58:03Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-03T14:01:00Z"
+        }
+      ]
     }
   ]
 }
