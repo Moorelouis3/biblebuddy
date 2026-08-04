@@ -60,6 +60,7 @@ export const metadata: Metadata = {
   other: {
     "og:image:secure_url": socialPreviewImage,
     "twitter:image:alt": socialImageAlt,
+    "p:domain_verify": "56de80934d28272fd86fcc8176074f43",
   },
 };
 
