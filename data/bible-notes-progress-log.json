@@ -8746,6 +8746,55 @@
           "at": "2026-08-04T05:04:34Z"
         }
       ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 27,
+      "startedAt": "2026-08-04T05:46:36Z",
+      "finishedAt": "2026-08-04T06:01:31Z",
+      "durationMinutes": 15,
+      "sections": 15,
+      "cards": 42,
+      "verses": 34,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Twenty seventh and final chapter in the Leviticus redo backlog, regenerated to the new style spec, replacing the original pre-spec version (15 sections / 52 cards, paragraph bodies, three bullets per card, no .trim() on its raw notes constant). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Leviticus 27 is the vow and valuation law closing the book: singular vows dedicating a person to the LORD and the age/sex based silver estimation table (fifty shekels for a man, thirty for a woman, tapering down through the age brackets to as little as three shekels for a baby girl, explicitly framed as ancient labor economics rather than a ranking of human worth), the poverty exception letting the priest set a fair price face to face, vowing a clean animal fit for sacrifice with the good-for-bad swap ban and its doubling penalty, an unclean beast valued by the priest's eye instead of a fixed table, sanctifying a house or a field of inheritance (priced by homer of barley seed and by years remaining until Jubile), the field that is never redeemed becoming the priest's permanently as a field devoted, a purchased (non ancestral) field always returning to its original owner at Jubile since it was never permanently the buyer's to give, the sanctuary shekel and gerah conversion standard, the firstling that already belonged to God before any vow could touch it, the cherem devoted-thing category that allows no redemption at all (distinguished from the wartime destruction-ban use of the same word at Jericho, Ai, and Hormah), and the closing tithe law on land and flock with its distinctive no-inspection, no-redemption rule, ending on the verse that closes the entire book of Leviticus. Kept the original file's 15 section boundaries for verse-coverage continuity while rewriting every card and title from scratch, choosing contiguous exact-phrase titles lifted straight from the KJV verse per spec section 2 rather than the old file's invented topic labels or synthesis headings. Density about 1.24 cards per verse (34 verses, 42 cards), on the leaner end since this is a repetitive legal formula chapter and section 12 of the style spec warns against padding restated measurements. scripts/check_bible_note_style.py found 1 problem on first pass (a banned hedge word, 'fairly', in one bullet), fixed, second run clean. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key term in quotes, avoids restating the body in its bullets, and closes on meaning rather than mechanics, with no hyphens, em dashes, semicolons, contractions, or banned filler/hedge words anywhere in the file. Parser check passed exactly via getBibleReaderStudySections('Leviticus', 27) (15/15 sections, 42 cards, all 34 verses covered, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring was already correct for this redo chapter (Leviticus 1-27 already covered by preserveExactPhraseBodies, import and replaceStudySectionsForBookRange call already present), no changes needed. MILESTONE: this was the last entry in the Leviticus redo backlog and the last Leviticus chapter overall (chapter 27 of 27) \u2014 Leviticus is now fully regenerated to the new style spec end to end. Redo backlog entry popped; next redo target is Numbers 1, the first of 30 remaining backlog chapters.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-04T05:47:15Z"
+        },
+        {
+          "name": "target chapter determined: Leviticus 27 (style redo, last entry in remaining backlog)",
+          "at": "2026-08-04T05:47:15Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Leviticus.json",
+          "at": "2026-08-04T05:57:08Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (lib/genesisThirtyOneSource.ts) read",
+          "at": "2026-08-04T05:57:08Z"
+        },
+        {
+          "name": "source file written (lib/leviticusTwentySevenSource.ts, 15 sections, 42 cards)",
+          "at": "2026-08-04T05:57:08Z"
+        },
+        {
+          "name": "style checker clean (after fixing one banned hedge word)",
+          "at": "2026-08-04T05:57:08Z"
+        },
+        {
+          "name": "wiring confirmed correct for this redo chapter (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call all pre-existing)",
+          "at": "2026-08-04T05:57:49Z"
+        },
+        {
+          "name": "parser check passed via getBibleReaderStudySections('Leviticus', 27) (15/15 sections, 42 cards, text verbatim)",
+          "at": "2026-08-04T05:57:49Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean with zero errors",
+          "at": "2026-08-04T06:00:22Z"
+        }
+      ]
     }
   ]
 }
