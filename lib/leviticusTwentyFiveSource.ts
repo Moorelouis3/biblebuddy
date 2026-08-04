@@ -89,554 +89,1396 @@ function parseLeviticusTwentyFiveRawNotes(rawText: string): LeviticusTwentyFiveP
 }
 
 const LEVITICUS_TWENTY_FIVE_RAW_NOTES = `# Leviticus 25:1-7
-# 🌾 A Sabbath Year For The Land
+# 🌱 The Land Gets A Sabbath
 ---
-## 🏔️ In Mount Sinai
-Leviticus almost always says these laws came "from the tabernacle of the congregation," but this one specifically says Mount Sinai instead. That's likely because the whole sabbatical-year law was first given here, at the mountain, even though Israel would not need it until they were settled and farming in Canaan.
-🏔️ Named location instead of Leviticus's usual "tabernacle" phrase
-📜 Marks this law as part of the original Sinai giving
-🌾 Applies to a future settled life, not the current wilderness camp
----
-## 🗣️ Speak Unto The Children Of Israel, And Say Unto Them
-This relay formula - God tells Moses, Moses tells the people - appears constantly through Leviticus, underlining that Moses never invented any of these laws himself. He was only the messenger passing along exactly what he had been told.
-🗣️ A relay formula repeated constantly through Leviticus
-📜 Moses never invented these laws himself
-🔁 The same reminder already made about chapter 24's opening
----
-## 🌱 When Ye Come Into The Land Which I Give You
-This law could not be obeyed yet - Israel was still wandering in the wilderness with no fields or vineyards of their own. God is giving farming instructions decades before anyone could actually plant a single seed under them.
-🌱 A law for a future life, not the present wilderness camp
-⏳ Given decades before it could actually be followed
-🎯 Shows God planning ahead for Israel's settled future
----
-## 😴 Then Shall The Land Keep A Sabbath Unto The LORD
-The word "sabbath" usually describes a person resting one day in seven. Here it is applied to the ground itself - the soil gets its own rest cycle, owed to God the same way a person's weekly rest is.
-😴 Extends the sabbath idea from people to farmland itself
-🌾 The soil gets a rest cycle, not just human workers
-🙏 Framed as something owed "unto the LORD," not just good farming
----
-## 🍇 Six Years Thou Shalt Sow... Prune Thy Vineyard
-This describes ordinary, expected farm work - planting grain fields for six straight years and trimming back grapevines so they produce better fruit. Nothing unusual yet; it is the baseline before the interruption in verse 4.
-🌾 Sowing means planting seed in the fields
-🍇 Pruning means cutting back vines to improve the harvest
-🔁 Six years of totally normal, expected labor
----
-## 🛑 In The Seventh Year Shall Be A Sabbath Of Rest Unto The Land
-Every seventh year, all planting and pruning stopped completely across the whole land at once. This was not one farmer resting while a neighbor kept working - it was a nationwide, synchronized fallow year.
-🛑 All sowing and pruning stopped completely, everywhere
-🗓️ Every seventh year, without exception
-🇮🇱 A synchronized national fallow year, not an individual choice
----
-## 🔁 A Sabbath Of Rest Unto The Land, A Sabbath For The LORD
-Verse 4 uses the word "sabbath" twice in the same breath - once describing what the land experiences (rest), once describing who it is ultimately for (the LORD). The doubling is a deliberate emphasis, not accidental repetition.
-🔁 "Sabbath" appears twice in the same verse deliberately
-🌾 One use describes what happens: rest
-🙏 The other describes who it is really for: the LORD
----
-## 🌿 That Which Groweth Of Its Own Accord... Undressed
-Whatever sprouted up on its own from leftover seed, or grapes that grew on unpruned vines, could not be formally harvested and stored as a crop. "Undressed" means the vines were left untrimmed and wild that year.
-🌿 Volunteer plants could not be treated as a real harvest
-🍇 "Undressed" means the vines were left untrimmed
-🚫 No formal reaping or grape-gathering that year
----
-## 🍽️ The Sabbath Of The Land Shall Be Meat For You
-"Meat" here is the old word for food in general, not just animal flesh. Whatever grew wild during the rest year was not wasted - it stayed available to eat directly from the field as needed.
-🍽️ "Meat" means food in general, an old use of the word
-🌾 Wild growth still fed people, just not as stored stock
-🙌 Nothing about the land's rest wasted its produce
----
-## 🤝 For Thee, And For Thy Servant... Stranger That Sojourneth With Thee
-This list deliberately includes everyone living on the property - the landowner, hired workers, household servants, and even foreign residents just passing through. The rest year's free food applied equally to all of them.
-🤝 Covers landowner, servants, and foreign residents alike
-🌍 "Sojourneth" means living there temporarily, not a citizen
-⚖️ Free access to wild food applied to everyone, not just owners
----
-## 🐐 And For Thy Cattle, And For The Beast That Are In Thy Land
-Even livestock and wild animals were allowed to eat freely from whatever grew during the sabbatical year. The rest applied to the whole ecosystem, not just the human community.
-🐐 Domestic livestock could graze the wild growth freely
-🦌 Wild animals were included too
-🌍 The land's rest touched the entire ecosystem, not just people
+## In Mount Sinai
 
-# Leviticus 25:8-13
-# 📯 The Year Of Jubilee
----
-## 🔢 Seven Sabbaths Of Years, Seven Times Seven Years
-This counts sabbatical cycles the same way the weekly sabbath counts days - seven cycles of seven years each. Seven times seven equals forty-nine, marking off a bigger rhythm built on top of the smaller one from verses 1-7.
-🔢 Seven cycles of seven years, just like counting weeks
-🧮 Seven times seven equals forty-nine years
-🔁 A bigger rhythm layered on top of the sabbatical-year pattern
----
-## 📅 The Space Of The Seven Sabbaths Of Years Shall Be Unto Thee Forty And Nine Years
-This spells out the math plainly so there is no confusion - forty-nine full years pass before the next special year arrives. The following year, the fiftieth, is the one this whole section has been building toward.
-📅 Confirms forty-nine years is the length of the full cycle
-➡️ Sets up the fiftieth year as something new and different
-🔗 Directly follows the sabbatical pattern from verses 1-7
----
-## 📯 The Trumpet Of The Jubile... Day Of Atonement
-"Jubile" (jubilee) comes from a Hebrew word for a ram's horn trumpet, blown to announce the new fiftieth year. It was sounded specifically on the Day of Atonement, the year's most solemn day of national forgiveness, tying financial release to spiritual release.
-📯 "Jubile" comes from the word for a ram's-horn trumpet
-🗓️ Sounded on the tenth day of the seventh month
-🙏 Announced on the Day of Atonement, linking money and forgiveness
----
-## 🕊️ Hallow The Fiftieth Year, And Proclaim Liberty Throughout All The Land
-"Hallow" means to set apart as holy. "Proclaim liberty" became one of the most famous phrases from this chapter - it is even engraved on America's Liberty Bell - and here it means releasing people and property back to where they started.
-🕊️ "Hallow" means setting the year apart as holy
-🔔 "Proclaim liberty" is the phrase later engraved on the Liberty Bell
-🏡 Meant release of people and property, not political freedom broadly
----
-## 🏡 Ye Shall Return Every Man Unto His Possession... Unto His Family
-Every fiftieth year reset the map. Any land sold out of financial hardship went back to its original family, and anyone who had been separated from their household through debt was reunited with them.
-🏡 Land sold off in hard times returned to its original owners
-👪 People separated from family through debt were reunited
-🔁 A built-in reset every fifty years, not a one-time event
----
-## 🌾 Ye Shall Not Sow, Neither Reap... Nor Gather The Grapes... Undressed
-The Jubilee year repeated the exact same farming rest as the regular sabbatical year - no planting, no harvesting, fields left wild. Since the Jubilee followed right after the 49th year, itself already a sabbatical year, this meant two rest years back to back.
-🌾 Repeats the same no-farming rule from verses 4-5
-🔁 The 49th year was already a sabbatical year on its own
-2️⃣ Meant two fallow years in a row for the land
----
-## ✨ For It Is The Jubile; It Shall Be Holy Unto You
-Calling the year itself "holy" put it in the same category as sacred objects and holy days - set apart from ordinary time, not just an economic policy but something treated as sacred on the calendar.
-✨ Calls the year itself holy, not just a set of rules
-📅 Places it in the same category as other sacred times
-🎯 Frames economics as something spiritual, not separate from it
----
-## 🌱 Ye Shall Eat The Increase Thereof Out Of The Field
-Like the regular sabbatical year, people lived directly off whatever grew wild in the fields that year rather than off stored grain. This repeats the trust-God's-provision theme that verses 20-22 address head-on.
-🌱 Food came straight from the field, not storage
-🙏 Repeats the same trust-in-provision idea as the sabbatical year
-🔗 Sets up the direct question about food supply in verse 20
----
-## 🔁 In The Year Of This Jubile Ye Shall Return Every Man Unto His Possession
-This closing line repeats verse 10's promise almost word for word, making sure it is the section's clear takeaway before the chapter moves into the detailed pricing and redemption rules that follow.
-🔁 Repeats verse 10's promise almost exactly
-📌 Marks this idea as the section's central point
-➡️ Sets up the specific sale and redemption laws in verses 14 and after
+This law arrives from an unusual place.
 
-# Leviticus 25:14-17
-# ⚖️ Fair Pricing, Not Oppression
+Most of Leviticus records God speaking from the tabernacle, not the mountain.
+
+Here Moses receives the command at Mount Sinai itself, before Israel ever leaves it.
+
+That placement ties this law directly to the covenant given at Sinai.
+
+It is not an ordinary tabernacle rule.
+
+It stands alongside the Ten Commandments as core covenant law.
+
+⛰️ Given directly at Mount Sinai
+🕍 Most laws come from the tabernacle instead
+📜 This ties the law to the Sinai covenant
+📖 It stands with the Ten Commandments
+
+## When Ye Come Into The Land Which I Give You
+
+This command does not apply yet.
+
+Israel is still camped at Sinai, decades before entering Canaan.
+
+God is planning ahead for a land Israel does not yet possess.
+
+The sabbatical year could only start once families were settled on their own ground.
+
+Obedience here required patience and faith long before the law ever applied.
+
+🗺️ Israel has not entered Canaan yet
+⏳ God plans decades ahead of time
+🌾 The law waits for settled land
+📖 Faith often waits on a future promise
+
+## Then Shall The Land Keep A Sabbath Unto The LORD
+
+The word sabbath usually describes a day of rest for people.
+
+Here it applies to the ground itself.
+
+Just as the seventh day belongs to God, the seventh year of farming belongs to Him too.
+
+The land itself gets treated like a living member of the covenant.
+
+Even the soil needed a turn to stop and be still.
+
+🛌 Sabbath usually means rest for people
+🌍 Here the rest belongs to the land
+🔗 It echoes the seventh day of the week
+📖 Even the ground shared in the covenant
+
+## Six Years Thou Shalt Sow Thy Field, And Six Years Thou Shalt Prune Thy Vineyard
+
+Sowing means planting seed for grain crops.
+
+Pruning means cutting back vines so they grow better fruit.
+
+These two jobs cover the two main kinds of farming in ancient Israel, grain fields and vineyards.
+
+Six straight years of normal work sets up the contrast that follows.
+
+The rhythm mattered as much as the rest itself.
+
+🌾 Sowing means planting grain
+🍇 Pruning means trimming vines for fruit
+📊 These cover Israel's two main crops
+📖 Six years of work sets up the rest
+
+## In The Seventh Year Shall Be A Sabbath Of Rest Unto The Land
+
+This is the sabbatical year, sometimes called the shemitah.
+
+Every seventh year, normal farming simply stopped.
+
+No plowing, no planting, no pruning across the entire land at once.
+
+It was not one farmer resting on his own schedule.
+
+The whole nation kept the same year together.
+
+📅 Called the sabbatical year, or shemitah
+🛑 Farming across Israel stopped completely
+🤝 Everyone kept the same year at once
+📖 Rest here was a shared national act
+
+## Thou Shalt Neither Sow Thy Field, Nor Prune Thy Vineyard
+
+This repeats verse three's two jobs in the negative.
+
+Neither task was allowed during the seventh year.
+
+The repetition makes the command impossible to misunderstand.
+
+Farmers had to trust that stopping would not cause them to starve.
+
+🚫 Both farming jobs were forbidden
+🔁 Repeats verse three in reverse
+❓ Trust replaced a farmer's usual control
+📖 Obedience meant giving up certainty
+
+## That Which Groweth Of Its Own Accord Of Thy Harvest Thou Shalt Not Reap
+
+Some grain always sprouts on its own from scattered seed, even without planting.
+
+Normally a farmer would harvest that volunteer growth like any other crop.
+
+During the sabbatical year, even that easy harvest was off limits.
+
+The point was rest, not simply avoiding hard labor.
+
+🌱 Volunteer grain grows without planting
+🚜 Normally farmers would still harvest it
+🛑 Even easy harvesting was forbidden
+📖 The goal was real rest, not less work
+
+## Neither Gather The Grapes Of Thy Vine Undressed
+
+Undressed means a vine that has not been pruned or cared for that year.
+
+Grapes still grew on an undressed vine, just less than usual.
+
+The law forbids gathering those grapes for storage or sale.
+
+Anyone could eat straight from the vine, but no one could farm it as a business.
+
+✂️ Undressed means a vine left untended
+🍇 Grapes still grew, just fewer
+🚫 Gathering for storage or sale was banned
+📖 Eating was allowed, farming was not
+
+## For It Is A Year Of Rest Unto The Land
+
+This closing line explains the reason behind every rule so far.
+
+The land itself needed the same kind of rest people needed each week.
+
+Treating the ground this seriously was unusual in the ancient world.
+
+Most nearby cultures farmed their land every single year without exception.
+
+🌍 The land needed real rest too
+🌐 Most ancient nations farmed every year
+🕊️ Israel's God cared about the ground itself
+📖 This explains every rule before it
+
+## The Sabbath Of The Land Shall Be Meat For You
+
+Meat here is an old word for food in general, not just animal flesh.
+
+Whatever grew wild that year belonged to everyone equally.
+
+Servants, hired workers, and even foreigners living nearby could eat freely from the same fields.
+
+No one owned the harvest during this year, not even the landowner.
+
+🍞 Meat here means food, not flesh
+🤝 Everyone shared the same fields
+👥 Servants and strangers ate freely too
+📖 No one owned the harvest that year
+
+## And For Thy Cattle, And For The Beast That Are In Thy Land
+
+The sharing did not stop with people.
+
+Domestic animals and even wild animals could eat from the same untended fields.
+
+This detail shows how completely farmers had to let go of control.
+
+For one full year, the land belonged to God alone, and every creature on it shared the food.
+
+🐑 Domestic animals could eat too
+🦌 Even wild animals shared the fields
+🙌 Farmers gave up total control
+📖 The land belonged to God alone that year
+
+# Leviticus 25:8-12
+# 📯 The Year Of Jubile
 ---
-## 🤝 If Thou Sell Ought Unto Thy Neighbour... Not Oppress One Another
-This introduces a completely new topic - everyday buying and selling between neighbors - and immediately states the guiding rule before giving any specifics: whatever the price ends up being, it cannot be a way of taking advantage of someone.
-🤝 Shifts topic from land-return to everyday trade
-⚖️ States the guiding principle before any specific rule
-🚫 "Not oppress" means not taking advantage through a bad deal
+## Thou Shalt Number Seven Sabbaths Of Years
+
+A sabbath of years means one full seven year cycle, the pattern just described.
+
+This verse asks Israel to count seven of those cycles in a row.
+
+Counting years in groups of seven had already shaped the sabbatical year.
+
+Now that same rhythm expands to a much longer cycle.
+
+🔢 A sabbath of years means seven years
+📆 This counts seven of those cycles
+🔁 The same rhythm, now much longer
+📖 Israel had to track time carefully
+
+## Forty And Nine Years
+
+Seven groups of seven years equal forty nine years total.
+
+This is one of the few places the Bible shows its own math openly.
+
+Forty nine years was about two full lifetimes in the ancient world.
+
+Very few people would experience more than one jubile in their lifetime.
+
+🔢 Seven sevens equal forty nine years
+🧮 The Bible shows its math here
+⏳ About two lifetimes in that era
+📖 Most people saw only one jubile
+
+## Cause The Trumpet Of The Jubile To Sound
+
+Jubile comes from a Hebrew word for a ram's horn trumpet, the yobel.
+
+Sounding a trumpet was how Israel announced major public events.
+
+This blast announced something no other year had, a nationwide reset.
+
+The sound itself became the name for the whole fiftieth year.
+
+🐏 Jubile comes from a ram's horn trumpet
+📯 A trumpet announced major events
+🎉 This announced a nationwide reset
+📖 The sound gave the year its name
+
+## On The Tenth Day Of The Seventh Month, In The Day Of Atonement
+
+The tenth day of the seventh month is the Day of Atonement, described back in chapter sixteen.
+
+That was the one day each year the high priest entered the Most Holy Place.
+
+Starting the jubile on that exact day was not an accident.
+
+National freedom began on the same day national sin was covered.
+
+📅 This date is the Day of Atonement
+🙏 Chapter sixteen already explained that day
+🚪 The one day the high priest entered
+📖 Freedom began the same day sin was covered
+
+## Ye Shall Hallow The Fiftieth Year
+
+To hallow means to set something apart as holy.
+
+The fiftieth year itself became sacred, not just the trumpet blast that opened it.
+
+No other single year in Israel's calendar received this treatment.
+
+An entire year could carry the same weight as a holy day.
+
+✨ Hallow means set apart as holy
+📆 The whole fiftieth year became sacred
+🆕 No other year got this treatment
+📖 A year could carry holy weight
+
+## Proclaim Liberty Throughout All The Land Unto All The Inhabitants Thereof
+
+Liberty here means release, especially release from debt and servitude.
+
+This proclamation reached every single person living in the land, not just Israelites by birth.
+
+This exact phrase later appears on the Liberty Bell in the United States.
+
+Its origin is this one verse in Leviticus.
+
+🔔 Liberty means release from debt and servitude
+🌍 This reached everyone in the land
+🇺🇸 Later inscribed on the Liberty Bell
+📖 Freedom here traces back to this verse
+
+## Ye Shall Return Every Man Unto His Possession
+
+Possession here means the specific plot of family land assigned back in Joshua's day.
+
+Over fifty years, families could lose their land through debt or hardship.
+
+The jubile reversed all of that in a single year.
+
+Every family line returned to the ground originally given to their ancestors.
+
+🗺️ Possession means the family's assigned land
+📉 Debt could cost a family its land
+🔄 Jubile reversed all of that loss
+📖 Land returned to its original family
+
+## Ye Shall Return Every Man Unto His Family
+
+This second return is about people, not property.
+
+Anyone sold into servitude to pay off debt went home.
+
+Families scattered by fifty years of hardship reunited on the same day.
+
+No debt could permanently break up an Israelite family.
+
+👪 This return is about people
+⛓️ Servants sold for debt went home
+🔗 Scattered families reunited together
+📖 Debt could never permanently break a family
+
+## A Jubile Shall That Fiftieth Year Be Unto You
+
+This line restates the fiftieth year's name for emphasis.
+
+Jubile was not simply another sabbatical year like the ones every seventh year.
+
+It combined debt release, land return, and family reunion all at once.
+
+Nothing else in Israel's calendar carried that much reversal in a single year.
+
+📯 Restates the year's name for emphasis
+🆚 Bigger than an ordinary sabbatical year
+🔄 Debt release, land, and family together
+📖 One year carried total reversal
+
+## It Shall Be Holy Unto You: Ye Shall Eat The Increase Thereof Out Of The Field
+
+Like the sabbatical year, the jubile year also stopped normal farming.
+
+Families ate whatever grew wild, straight from the field.
+
+Two rest years back to back meant Israel needed real trust in God's provision.
+
+The forty ninth and fiftieth years likely ran together as one long stretch of rest.
+
+🌾 Farming stopped again, like the sabbatical year
+🍽️ Families ate whatever grew wild
+🙏 Two rest years required real trust
+📖 Provision, not farming, carried them through
+
+# Leviticus 25:13-17
+# ⚖️ Buying And Selling By The Jubile
 ---
-## 🤝 Buyest Ought Of Thy Neighbour's Hand
-This pictures ordinary, face-to-face local trade between people who knew each other - not large-scale commerce or trading with strangers from other nations, but the everyday buying and selling within one Israelite community.
-🤝 Pictures small-scale, local, face-to-face trade
-👥 Between people who actually knew each other
-🏘️ Not large commerce or trade with distant strangers
----
-## 🔢 According To The Number Of Years After The Jubile Thou Shalt Buy
-Because all land automatically returned to its original owner at the next Jubilee anyway, buying land was not really buying dirt forever - it was really buying however many harvests remained until that reset happened.
-🔢 Price was based on years remaining, not permanent ownership
-🌾 What was really being bought was future harvests
-🔗 Only makes sense because of the Jubilee return rule just given
----
-## 📈 According To The Multitude Of Years Thou Shalt Increase The Price
-More years left until the next Jubilee meant more total harvests still available, so the price went up. Fewer years left meant fewer harvests to buy, so the price came down - a built-in fairness formula instead of haggling.
-📈 More remaining years meant a higher price
-📉 Fewer remaining years meant a lower price
-🧮 A fixed formula, not open negotiation or guesswork
----
-## 🌾 For According To The Number Of The Years Of The Fruits Doth He Sell Unto Thee
-This restates the same principle plainly one more time, making sure it is unmistakable: the transaction was always priced as a sale of future crop yield, never as a permanent transfer of the land itself.
-🌾 Restates the fruit-years pricing idea for clarity
-🔁 Repetition signals how important this principle was
-🏡 Reinforces that land could never truly change hands forever
----
-## 🙏 Ye Shall Not Therefore Oppress One Another... Fear Thy God
-The section closes exactly how it opened, bookending the pricing rules with the same warning against exploiting a neighbor - and adds "fear thy God" as the real reason to follow a formula nobody could easily audit at the market stall.
-🙏 Bookends the section with the same warning from verse 14
-😨 "Fear thy God" means real reverence, not just being scared
-🔍 A rule enforced by conscience more than by any outside check
----
-## 🙌 For I Am The LORD Your God
-This short closing tag appears again and again throughout Leviticus, always at the end of a command. It roots obedience in who God is, not just in what is fair or profitable - the reason to keep the rule is relationship, not just economics.
-🙌 A recurring closing tag used throughout Leviticus
-🎯 Grounds the command in God's identity, not just fairness
-🔁 Same pattern used repeatedly across earlier chapters
+## In The Year Of This Jubile Ye Shall Return Every Man Unto His Possession
+
+This line repeats verse ten almost word for word.
+
+The repetition is deliberate, not careless writing.
+
+Everything that follows about buying and selling only makes sense next to this guarantee.
+
+No sale of land in Israel was ever truly permanent.
+
+🔁 Repeats verse ten on purpose
+📜 It anchors the rules that follow
+🚫 No land sale was ever permanent
+📖 The jubile guarantee shapes everything else here
+
+## If Thou Sell Ought Unto Thy Neighbour, Or Buyest Ought Of Thy Neighbour's Hand
+
+Ought here is an old word simply meaning anything.
+
+This law covers every land transaction between Israelites, buying and selling both.
+
+Because land always returned at the jubile, no sale was final.
+
+What Israel called selling land, a modern reader might call leasing it.
+
+📦 Ought is an old word for anything
+🤝 This covers both buying and selling
+🔁 No land sale was ever final
+📖 It worked more like a lease
+
+## Ye Shall Not Oppress One Another
+
+Oppress means to take unfair advantage of someone's weaker position.
+
+This warning sits right in the middle of a law about pricing land.
+
+It is easy to exploit someone who is desperate to sell.
+
+God's law steps in before that exploitation can even start.
+
+⚠️ Oppress means unfair advantage over someone
+💰 Placed right inside a pricing law
+😟 Desperate sellers are easy to exploit
+📖 The law blocks exploitation in advance
+
+## According To The Number Of Years After The Jubile Thou Shalt Buy
+
+Land was never priced by the ground itself.
+
+It was priced by how many harvests remained until the next jubile.
+
+Buying land close to a jubile meant paying for very few harvests.
+
+The land itself never truly changed hands at all.
+
+🌾 Land was priced by harvests, not acreage
+📆 Fewer years left meant a lower price
+🔄 Every sale pointed toward the jubile
+📖 The land itself never truly changed owners
+
+## According To The Multitude Of Years Thou Shalt Increase The Price Thereof
+
+Multitude here simply means a large number.
+
+More years remaining until the jubile meant more harvests for the buyer.
+
+More harvests meant a fair price was higher, not lower.
+
+The math protected the seller from being underpaid.
+
+🔢 Multitude means a large number
+🌾 More years meant more harvests ahead
+💰 More harvests meant a higher price
+📖 This protected the seller from being cheated
+
+## According To The Fewness Of Years Thou Shalt Diminish The Price Of It
+
+Fewness is the opposite of multitude, a small number of years.
+
+Diminish means to lower or reduce.
+
+Fewer years before the jubile meant fewer harvests for the buyer to collect.
+
+The price dropped to match exactly what the buyer was actually getting.
+
+📉 Fewness means a small number
+🔽 Diminish means to lower
+🌾 Fewer harvests meant a lower price
+📖 The price matched what was actually sold
+
+## For According To The Number Of The Years Of The Fruits Doth He Sell Unto Thee
+
+This closing line restates the whole principle one more time.
+
+A buyer was never purchasing land itself in Israel.
+
+A buyer was purchasing a set number of harvests, nothing more.
+
+That distinction kept every land sale honest on both sides.
+
+🔁 Restates the whole pricing principle
+🌾 Buyers purchased harvests, not land
+⚖️ This kept every sale honest
+📖 Both buyer and seller were protected
+
+## Ye Shall Not Therefore Oppress One Another, But Thou Shalt Fear Thy God
+
+This repeats verse fourteen's warning, now with a reason attached.
+
+Fearing God means taking His authority seriously enough to obey even when unseen.
+
+No court could catch every unfair land deal in a small village.
+
+God's own watching eye was the real enforcement behind this law.
+
+🔁 Repeats the warning from verse fourteen
+🙏 Fearing God means taking Him seriously
+👁️ No court could catch every bad deal
+📖 God's own watching eye enforced this law
 
 # Leviticus 25:18-22
-# 🌾 A Promise Of Provision
+# 🌾 Trusting God For The Sixth Year
 ---
-## 📜 Do My Statutes, And Keep My Judgments, And Do Them
-"Statutes" and "judgments" are two different words Leviticus regularly pairs together - statutes tend to mean fixed rules, judgments tend to mean case-by-case rulings. Together they cover the whole range of God's law, not just one type of command.
-📜 "Statutes" and "judgments" are two related legal terms
-⚖️ Statutes are fixed rules; judgments are case rulings
-🔗 Paired together to mean the whole body of God's law
----
-## 🏡 Ye Shall Dwell In The Land In Safety
-This ties obedience directly to physical security - not a vague spiritual blessing, but the concrete promise of actually being safe from invasion, famine, or disaster while living in the land God gave them.
-🏡 A concrete promise, not a vague spiritual reward
-🛡️ Specifically about safety from invasion, famine, or disaster
-🔗 Directly follows the pricing laws about trusting God's system
----
-## 🌾 The Land Shall Yield Her Fruit, And Ye Shall Eat Your Fill
-This answers, in advance, any worry that resting the land every seventh year would leave people hungry. Obedience to the sabbatical system was paired with a promise of full harvests, not scarcity.
-🌾 A direct promise the sabbatical system would not cause hunger
-🍽️ "Eat your fill" means genuine abundance, not rationing
-🔗 Answers the worry the next verse states out loud
----
-## ❓ What Shall We Eat The Seventh Year?
-The text openly voices the obvious human fear before answering it - if nobody is allowed to plant or harvest, what happens to the food supply? This is not a rhetorical throwaway line; it is the exact anxiety any farmer would have.
-❓ States the obvious fear plainly instead of ignoring it
-🌾 The real practical worry behind resting the land
-🎯 Sets up God's direct answer in the very next verse
----
-## 🎁 I Will Command My Blessing Upon You In The Sixth Year
-God's answer is a specific, supernatural promise - the sixth year's harvest would produce enough surplus to cover the seventh year's rest, and even stretch further depending on how the Jubilee cycle lined up.
-🎁 A specific promise of a bigger sixth-year harvest
-🙏 Framed as God's direct action, not a farming technique
-📆 Meant to cover the coming fallow year's food needs
----
-## 📦 It Shall Bring Forth Fruit For Three Years
-One good sixth-year harvest was promised to last through three years of eating - covering the sabbatical seventh year and stretching into the eighth, until new crops could finally be planted and grown.
-📦 One harvest stretched to feed three years of eating
-🔢 Covers the sabbatical year plus the time to grow new crops
-🙏 A promise of provision far beyond a normal single harvest
----
-## 📖 Three Years Of Provision, Especially Around A Jubilee
-A normal sabbatical year only needed to bridge one fallow year, but when the Jubilee's fiftieth year followed right after an already-fallow forty-ninth year, two rest years lined up back to back. Jewish teachers have long read this "three years" promise as addressing exactly that harder, doubled case.
-📖 Addresses the harder case of two fallow years in a row
-🗓️ Happens whenever the Jubilee follows a sabbatical year
-📚 Long read this way by later Jewish teachers and tradition
----
-## 🌱 Sow The Eighth Year, And Eat Yet Of Old Fruit Until The Ninth Year
-This spells out the timeline exactly - people would plant again in the eighth year, but would not have a fresh harvest ready until sometime in the ninth year, living on the sixth year's stored surplus the whole time between.
-🌱 Planting resumed in the eighth year
-⏳ New harvest was not ready until into the ninth year
-📦 The gap was bridged entirely by stored sixth-year grain
+## Ye Shall Do My Statutes, And Keep My Judgments, And Do Them
+
+Statutes and judgments together cover the whole range of God's law, not just this one chapter.
+
+Doing them meant actual obedience, not just agreement in principle.
+
+This verse works as a hinge between the land laws and what comes next.
+
+Obedience was always the condition attached to the promise that follows.
+
+📜 Statutes and judgments cover the whole law
+✅ Doing them meant real obedience
+🔗 This verse connects two big sections
+📖 A promise always followed obedience
+
+## Ye Shall Dwell In The Land In Safety
+
+Safety here does not only mean protection from enemy attack.
+
+It also means security from hunger and want.
+
+A people who obeyed these hard land laws could trust God for daily bread.
+
+Obedience and provision were tied directly together in this promise.
+
+🛡️ Safety means more than military protection
+🍞 It includes security from hunger too
+🙏 Obedience connected directly to provision
+📖 This promise covered daily life, not just war
+
+## The Land Shall Yield Her Fruit, And Ye Shall Eat Your Fill
+
+Yield means to produce or give up its harvest.
+
+Eating to the fill means having plenty, not just barely enough.
+
+This promise directly answers the fear a farmer would feel giving up a whole year of work.
+
+God promises abundance, not just survival, for those who trust Him with the land.
+
+🌾 Yield means to produce a harvest
+🍽️ Eating your fill means real abundance
+😨 It answers a farmer's natural fear
+📖 God promised plenty, not just survival
+
+## What Shall We Eat The Seventh Year
+
+This is the exact question any honest farmer would ask.
+
+The law does not pretend the sabbatical year was easy to trust.
+
+God addresses the fear directly instead of ignoring it.
+
+Scripture often gives voice to doubt before answering it.
+
+❓ The honest question every farmer would ask
+😟 The law admits this was hard to trust
+🗣️ God answers the fear directly
+📖 Scripture often voices doubt before answering it
+
+## I Will Command My Blessing Upon You In The Sixth Year
+
+The sixth year is the last normal farming year before the sabbatical rest.
+
+God promises a blessing specifically timed to that sixth year's harvest.
+
+This is not a vague promise of general goodness.
+
+It is a specific, timed answer to a specific, timed problem.
+
+📆 The sixth year comes right before the rest
+🌾 God times a blessing to that harvest
+🎯 A specific answer to a specific fear
+📖 God's promises often match the exact need
+
+## And It Shall Bring Forth Fruit For Three Years
+
+One sixth year harvest had to somehow cover three years of eating.
+
+That covers the sixth year itself, the seventh year of rest, and the eighth year of new planting.
+
+This kind of surplus was not normal farming, it was a direct miracle.
+
+God's provision here goes well beyond ordinary harvest math.
+
+🔢 One harvest had to cover three years
+📆 It spanned the sixth, seventh, and eighth years
+✨ This surplus was not normal farming
+📖 It required a direct miracle from God
+
+## Ye Shall Sow The Eighth Year, And Eat Yet Of Old Fruit
+
+Farming started again in the eighth year, right after the sabbatical rest ended.
+
+New crops from that planting would not be ready to harvest for months.
+
+Families lived on the old surplus from the sixth year the entire time.
+
+The timing gap itself became proof that God's earlier promise had come true.
+
+🌱 Farming resumed in the eighth year
+⏳ New crops took months to be ready
+🍞 Old surplus fed them in the meantime
+📖 The gap itself proved the promise true
+
+## Until Her Fruits Come In Ye Shall Eat Of The Old Store
+
+Old store means grain saved up from an earlier harvest.
+
+This closing line completes the timeline God laid out.
+
+The surplus lasted exactly as long as it needed to, not one day less.
+
+God's math, not the farmer's math, made the whole system work.
+
+🏚️ Old store means saved up grain
+📆 It completes God's full timeline
+⏱️ The surplus lasted exactly long enough
+📖 God's math made the whole system work
 
 # Leviticus 25:23-28
-# 🏞️ The Land Belongs To God
+# 🏡 The Land Belongs To God
 ---
-## 🚫 The Land Shall Not Be Sold For Ever
-This is the legal foundation underneath everything already said about pricing and return - no sale of land could ever be truly permanent, no matter what price changed hands or what any private deed might claim.
-🚫 No land sale could ever be truly permanent
-📜 The legal foundation behind the earlier pricing rules
-🔗 Explains why prices were based on years, not full ownership
----
-## 🙏 For The Land Is Mine
-God claims personal ownership of the ground itself, not just spiritual authority over Israel. Every Israelite family held their fields as a trust from God, never as something they owned outright forever.
-🙏 God claims literal ownership of the physical land
-🏡 Families held fields in trust, not outright forever
-🎯 The theological reason behind every rule in this chapter
----
-## 🏕️ For Ye Are Strangers And Sojourners With Me
-"Strangers and sojourners" describes someone living as a guest on land that belongs to someone else - here applied to all of Israel in relation to God. Even in their own promised land, they were guests, not ultimate owners.
-🏕️ Describes a guest living on someone else's land
-🌍 Applied to all of Israel, even in their own homeland
-🙏 Everyone answered to God as the true landowner
----
-## 💰 Ye Shall Grant A Redemption For The Land
-"Redemption" means buying something back. This required every land sale to include a built-in buyback option for the seller's family - selling land could never permanently cut off a family's right to reclaim it.
-💰 "Redemption" means the right to buy something back
-📜 Every land sale had to allow for a future buyback
-👪 Protected a family's long-term claim to their land
----
-## 🌍 In All The Land Of Your Possession
-The word "all" leaves no exceptions - this was not a rule some families could opt out of or negotiate away. Every single piece of tribal land in Israel carried this same permanent buyback right, whether the current owner liked it or not.
-🌍 "All" means no exceptions or opt-outs allowed
-📜 Applied uniformly across every tribal allotment
-🔒 Could not be negotiated away by buyer or seller
----
-## 👪 If Any Of His Kin Come To Redeem It, Then Shall He Redeem That Which His Brother Sold
-This introduces the "kinsman-redeemer" - a close relative with both the right and the responsibility to buy back family land or people from hardship. The same role and Hebrew idea shows up later as central to the story of Ruth and Boaz.
-👪 Introduces the kinsman-redeemer role and responsibility
-📖 The same concept later drives the whole book of Ruth
-🤝 A relative's duty, not just an option, when possible
----
-## 💪 If The Man Have None To Redeem It, And Himself Be Able To Redeem It
-If no relative was available or willing, the original seller could still buy back his own land later if his situation improved - the redemption right was not lost just because family help was not there.
-💪 The original owner could redeem it himself if he recovered
-🔓 Loss of family help did not cancel the redemption right
-⏳ Recovery could happen any time before the next Jubilee
----
-## 🧮 Let Him Count The Years Of The Sale Thereof, And Restore The Overplus
-"Overplus" means the leftover balance. Buying back land meant paying only for the years still remaining until Jubilee, refunding the buyer for years already used - the same fair, prorated pricing formula from verses 15-16.
-🧮 "Overplus" means the remaining balance owed
-💰 Buyback price was prorated to years left until Jubilee
-🔗 Reuses the exact pricing formula from verses 15-16
----
-## ⏳ If He Be Not Able To Restore It... Until The Year Of Jubile
-If a family truly could not afford to buy their land back at all, it was not lost forever - it simply stayed with the buyer until the next Jubilee, at which point it returned automatically with no payment required.
-⏳ Inability to pay did not mean losing the land permanently
-🔄 The land still returned automatically at the Jubilee
-💸 No payment was needed for this automatic reset
+## The Land Shall Not Be Sold For Ever
+
+For ever means permanently, with no possibility of return.
+
+Every land sale in Israel already had a built in expiration date, the next jubile.
+
+This verse states the reason behind that limit directly.
+
+Permanent ownership by any human family was never allowed in the first place.
+
+⏳ For ever means with no return
+📆 Every sale already had an expiration date
+🚫 Permanent human ownership was never allowed
+📖 This verse states the reason plainly
+
+## For The Land Is Mine
+
+This is the single sentence that explains every land law in this chapter.
+
+Israel never actually owned the ground beneath their feet.
+
+God owned it, and Israel held it as tenants, not landlords.
+
+Every jubile, every pricing rule, every redemption right flows from this one claim.
+
+🔑 The verse that explains the whole chapter
+🌍 God owned the land, not Israel
+🏠 Israel held it as tenants, not landlords
+📖 Every land rule flows from this claim
+
+## For Ye Are Strangers And Sojourners With Me
+
+Strangers and sojourners are words for people living somewhere that is not their permanent home.
+
+Israel is called this in relation to God, not in relation to Canaan.
+
+Even in their own promised land, Israel remained guests of God Himself.
+
+That identity kept the whole nation from treating the land as their own permanent property.
+
+🧳 Strangers and sojourners means temporary guests
+🙏 Israel were guests in relation to God
+🏡 True even inside their own promised land
+📖 This kept the land from becoming their own
+
+## And In All The Land Of Your Possession Ye Shall Grant A Redemption For The Land
+
+Redemption means buying something back, restoring it to its original owner.
+
+This verse makes redemption a right, not just a kind gesture.
+
+Every plot of land in Israel had to allow for this possibility.
+
+The whole system was built around the idea that loss could always be reversed.
+
+🔄 Redemption means buying something back
+✅ This made redemption a legal right
+🗺️ It applied to every plot of land
+📖 Loss could always be reversed
+
+## If Thy Brother Be Waxen Poor, And Hath Sold Away Some Of His Possession
+
+Waxen poor is an old way of saying someone has grown poor over time.
+
+This describes a slow slide into poverty, not a single sudden disaster.
+
+Selling land was usually a last resort, not a first choice.
+
+The law assumes real hardship stands behind most land sales.
+
+📉 Waxen poor means grown poor over time
+🐢 This describes a slow slide, not a shock
+🏚️ Selling land was usually a last resort
+📖 The law assumes real hardship behind it
+
+## If Any Of His Kin Come To Redeem It
+
+Kin means close relatives, especially within the extended family line.
+
+A relative could step in and buy the land back on the original owner's behalf.
+
+This role later gets a specific name, the kinsman redeemer, most famously in the book of Ruth.
+
+Family loyalty here had real legal teeth, not just good feelings.
+
+👪 Kin means close relatives
+💰 A relative could buy the land back
+🤝 Family loyalty carried real legal weight
+📖 Ruth later shows this same role in action
+
+## If The Man Have None To Redeem It, And Himself Be Able To Redeem It
+
+Sometimes no relative was available or willing to help.
+
+In that case, the original owner could still redeem his own land.
+
+This required him to have saved or earned enough money to buy it back himself.
+
+The law left more than one door open toward getting the land back.
+
+🚪 A second path when no relative helps
+💪 The owner could redeem it himself
+💰 This required enough saved money
+📖 More than one door led back home
+
+## Then Let Him Count The Years Of The Sale Thereof, And Restore The Overplus
+
+Overplus is an old word for the leftover amount, the extra.
+
+The buyer had already paid for a set number of harvests up front.
+
+If the owner redeemed the land early, he only owed for the years already used.
+
+The buyer had to hand back whatever payment covered the unused years.
+
+💰 Overplus means the leftover extra amount
+🌾 Buyers had paid for future harvests
+🔢 Early redemption meant paying only for years used
+📖 Fairness ran in both directions here
+
+## That He May Return Unto His Possession
+
+This is the goal behind every redemption rule in this section.
+
+Money and calculation were never the real point of these laws.
+
+The real point was always getting a family back onto its own land.
+
+Every formula in this chapter serves that one human purpose.
+
+🎯 The real goal behind every redemption rule
+💵 Money was never the actual point
+🏡 The point was a family's own land
+📖 Every formula serves this one purpose
+
+## It Shall Remain In The Hand Of Him That Hath Bought It Until The Year Of Jubile
+
+Not every family could scrape together enough money to redeem their land early.
+
+When that happened, the buyer kept using the land, not owning it forever.
+
+The jubile itself became the final, guaranteed backup plan.
+
+No family in Israel had to wait more than forty nine years for their land to return.
+
+💸 Some families could not redeem early
+🌾 The buyer kept using the land meanwhile
+📯 The jubile was the guaranteed backup
+📖 No family waited more than forty nine years
 
 # Leviticus 25:29-34
-# 🏘️ Houses, Villages, And The Levites' Exception
+# 🏘️ Houses In The City And Levite Land
 ---
-## 🏙️ If A Man Sell A Dwelling House In A Walled City
-This shifts from farmland to city houses, and treats them differently right away - a walled city marked a permanent, defended settlement, distinct legally from open farmland out in the country.
-🏙️ A completely different rule than farmland just covered
-🧱 Walled cities were fortified, permanent settlements
-📜 The change in setting signals a change in the law
----
-## ⏳ He May Redeem It Within A Whole Year After It Is Sold
-Unlike farmland, a house in a walled city only had a strict one-year window for the seller to buy it back - a much shorter deadline than the farmland rules, which allowed redemption anytime up until the Jubilee.
-⏳ Only a one-year window to redeem a city house
-📉 Far shorter than farmland's anytime-until-Jubilee rule
-🏙️ City property followed its own separate timeline
----
-## 🔒 If It Be Not Redeemed... Established For Ever... Shall Not Go Out In The Jubile
-Once that one year passed without buyback, the house became the new owner's permanent property - it would not return at the next Jubilee the way farmland always did. City houses could genuinely change hands forever.
-🔒 Missing the one-year window made the sale permanent
-🚫 Unlike farmland, it never returned at Jubilee
-🏙️ City houses could truly change ownership forever
----
-## 🌾 The Houses Of The Villages Which Have No Wall... Counted As The Fields Of The Country
-A house in an unwalled village was treated like farmland instead of a city house, because unwalled villages were tied closely to agricultural life rather than fortified urban life.
-🌾 Village houses followed farmland rules, not city rules
-🧱 The presence or absence of a wall decided which rule applied
-🏡 Reflects how closely villages were tied to farming life
----
-## 🔄 They May Be Redeemed, And They Shall Go Out In The Jubile
-Because village houses counted as farmland, they got farmland's full protections - redeemable anytime, and automatically returned at the next Jubilee even without a buyback ever happening.
-🔄 Got the same protections as regular farmland
-⏳ Redeemable at any time, not just within one year
-🎉 Automatically returned at Jubilee regardless
----
-## 🕎 The Cities Of The Levites... May The Levites Redeem At Any Time
-The Levites, the priestly tribe, received no full territory of their own inheritance - just scattered cities and surrounding pastureland. Because that was their only possession, they got a special right to redeem their houses at any time, not the one-year city limit.
-🕎 Levites had no full tribal land, only scattered cities
-📖 Their city-and-pasture system is detailed in Numbers 35
-⏳ Given anytime-redemption as a special protection
----
-## 🕎 Why The Levites Had No Full Land Inheritance
-Unlike the other twelve tribes, the Levites were told elsewhere that "the LORD" was their inheritance instead of farmland - their calling was priestly service, supported by the other tribes' offerings rather than their own crops.
-🕎 Told elsewhere that "the LORD" was their inheritance
-📖 Referenced in Numbers 18:20
-🙏 Supported by offerings instead of farming their own land
----
-## 🎉 The House That Was Sold... Shall Go Out In The Year Of Jubile
-Even inside a walled city, a Levite's house still returned automatically at the Jubilee - overriding the normal permanent-sale rule for city property, because Levite housing needed permanent protection.
-🎉 Levite houses always returned at Jubilee, even in cities
-🔓 Overrides the regular walled-city permanent-sale rule
-🛡️ Extra protection since Levites depended on it entirely
----
-## 🌾 The Field Of The Suburbs Of Their Cities May Not Be Sold
-"Suburbs" here means the open pastureland ringing each Levite city, used for grazing livestock. Unlike houses, this land could never be sold at all, under any circumstances - permanently protected common ground.
-🌾 "Suburbs" means pastureland surrounding each Levite city
-🚫 Could never be sold at all, not even temporarily
-🐑 Kept as permanent shared grazing ground
+## If A Man Sell A Dwelling House In A Walled City
+
+A walled city means a town protected by a defensive wall, unlike an open village.
+
+Houses inside these walls were treated differently from farmland outside them.
+
+This distinction is about to matter a great deal in the verses ahead.
+
+Not every kind of property followed the same jubile rule.
+
+🧱 A walled city has a defensive wall
+🏠 City houses followed different rules
+🌾 Different from farmland outside the walls
+📖 Not every property followed the same rule
+
+## He May Redeem It Within A Whole Year After It Is Sold
+
+The seller got a full year, not just a few days, to buy the house back.
+
+This gave a family real time to recover from a sudden money problem.
+
+A year was long enough to plan, save, or ask relatives for help.
+
+The clock started ticking the moment the sale happened.
+
+📆 A full year to buy the house back
+⏳ Real time to recover from hardship
+💰 Enough time to save or ask for help
+📖 The clock started at the sale itself
+
+## If It Be Not Redeemed Within The Space Of A Full Year
+
+Once that one year window closed, everything changed.
+
+This is the deadline that makes city houses different from farmland.
+
+Farmland always returned at the jubile no matter how much time passed.
+
+A city house did not get that same guarantee.
+
+⏰ The one year window had a hard deadline
+🏙️ This is what makes city houses different
+🌾 Farmland always had the jubile guarantee
+📖 A city house lacked that safety net
+
+## The House That Is In The Walled City Shall Be Established For Ever To Him That Bought It
+
+Established for ever means the sale became permanent, with no future jubile reversal.
+
+This is the one clear exception to the whole chapter's main rule.
+
+A missed year meant a missed chance, permanently, for that specific house.
+
+The exception applied narrowly, only to walled city houses, not to land in general.
+
+🔒 Established for ever means a permanent sale
+⚠️ The one real exception in this chapter
+⏰ A missed year became a missed chance
+📖 This exception applied narrowly, to houses only
+
+## The Houses Of The Villages Which Have No Wall Round About Them
+
+Small villages without walls sat close to the fields that surrounded them.
+
+A house in a place like that functioned more like farmland than city property.
+
+This law recognizes that difference instead of treating every house the same.
+
+Where a family lived changed which rules applied to their home.
+
+🏡 Villages without walls sat near open fields
+🌾 These houses functioned like farmland
+⚖️ The law treated them differently on purpose
+📖 Location changed which rule applied
+
+## They Shall Be Counted As The Fields Of The Country: They May Be Redeemed, And They Shall Go Out In The Jubile
+
+Counted as the fields means these village houses followed the farmland rule instead.
+
+They could be redeemed at any time, just like land.
+
+And if no one redeemed them, the jubile still returned them for free.
+
+Village families got the same protection that farmers received.
+
+🌾 Village houses followed the farmland rule
+💰 They could be redeemed at any time
+📯 The jubile still returned them for free
+📖 Village families got the same protection
+
+## The Levites May Redeem At Any Time
+
+The Levites were the priestly tribe, and they received no large farmland inheritance like the other tribes.
+
+Instead, God assigned them a set of small cities scattered across the whole land.
+
+Because those city houses were their only real inheritance, they needed extra protection.
+
+Levites could redeem their city houses at any time, without the one year deadline.
+
+👳 Levites were Israel's priestly tribe
+🏙️ Small cities were their only inheritance
+🔓 They could redeem at any time
+📖 Their homes needed extra protection
+
+## The City Of His Possession Shall Go Out In The Year Of Jubile
+
+Even if a Levite sold a house and the year deadline passed, the jubile still applied.
+
+This is a second exception layered on top of the first one.
+
+Walled city houses in general stayed sold forever after one year.
+
+Levite city houses never lost the jubile protection, no matter how much time passed.
+
+🔁 A second exception, just for Levites
+🏙️ Other city houses stayed sold forever
+👳 Levite houses kept jubile protection always
+📖 Their unique inheritance received unique safeguards
+
+## But The Field Of The Suburbs Of Their Cities May Not Be Sold
+
+Suburbs here means the open pastureland surrounding each Levite city, used for grazing animals.
+
+Unlike the houses themselves, this pastureland could not be sold at all.
+
+It is called their perpetual possession, land that belonged to them permanently.
+
+No sale ever happened here, so no redemption rule was even needed.
+
+🌿 Suburbs means Levite grazing pastureland
+🚫 This land could never be sold
+♾️ Called their perpetual possession
+📖 No sale meant no redemption was needed
 
 # Leviticus 25:35-38
-# 🤲 Caring For A Poor Brother
+# 🤝 Helping A Poor Brother
 ---
-## 🌙 Waxen Poor
-"Waxen" is an old form of "become" - the same word used for a waxing moon growing fuller. Here it describes someone whose poverty is a process, not just a fixed condition: he is gradually becoming poor.
-🌙 "Wax" is an old word meaning "become"
-📉 Same word used for a moon "waxing," or growing
-⏳ Describes an ongoing slide, not a fixed state
----
-## 📉 Fallen In Decay With Thee
-"Fallen in decay" pictures someone's situation actively crumbling - debts piling up, resources running out - happening right there in the community, not somewhere distant and easy to ignore.
-📉 Pictures an actively worsening situation
-🏘️ Happening right within the community, not far away
-👀 Hard for neighbors to honestly claim they did not notice
----
-## 🤲 Thou Shalt Relieve Him
-"Relieve" meant active, practical help, not just sympathy. The following verses spell out exactly what that looked like: interest-free loans of money and food, so a struggling neighbor could recover without sinking deeper into debt.
-🤲 "Relieve" means real, practical action, not just sympathy
-💰 Specified in the next verses as interest-free help
-🔗 Connects directly to the no-usury rules that follow
----
-## 🌍 Yea, Though He Be A Stranger, Or A Sojourner
-This obligation to help was not limited to full Israelites - it explicitly extended to foreign residents living among them too, widening the circle of who counted as "brother" for this specific command.
-🌍 The help requirement was not limited to native Israelites
-🤝 Foreign residents were explicitly included
-💬 Widens who counts as "brother" in this command
----
-## 🚫 Take Thou No Usury Of Him, Or Increase
-"Usury" means charging interest on a loan. "Increase" is a second, overlapping word for the same idea - charging someone more than what was lent. Both were forbidden when lending to a struggling fellow Israelite or resident.
-🚫 "Usury" means charging interest on a loan
-➕ "Increase" is a second word for the same practice
-🤝 Both were banned when helping someone in real need
----
-## 🍞 Nor Lend Him Thy Victuals For Increase
-The no-interest rule covered food loans too, not just money. "Victuals" means food supplies - even lending grain with a plan to collect back more grain than was given was against this law.
-🍞 "Victuals" means food supplies, not just cash
-🚫 The no-interest rule applied to food loans too
-⚖️ Closed a loophole of profiting off someone's hunger
----
-## 🙏 I Am The LORD Your God, Which Brought You Forth Out Of The Land Of Egypt
-The reason given for financial mercy is not practical economics - it is Israel's own history. They were once helpless slaves rescued for free, so lending to a struggling neighbor for personal profit would betray the very story that defined them.
-🙏 Grounds the command in Israel's own rescue story
-🇪🇬 They were once helpless, freed without earning it
-🎯 Profiting off a poor neighbor would betray that history
+## If Thy Brother Be Waxen Poor, And Fallen In Decay With Thee
+
+This repeats the phrase from verse twenty five, now applied to daily survival, not just land.
+
+Fallen in decay pictures someone slowly losing the ability to support himself.
+
+This is not a stranger's problem to ignore.
+
+The text calls this person brother, a member of the same covenant family.
+
+📉 Waxen poor means a slow decline
+🤝 Brother means a covenant family member
+😟 Fallen in decay pictures losing self support
+📖 This was never a stranger's problem to ignore
+
+## Then Thou Shalt Relieve Him
+
+Relieve means to actively step in and help, not just feel sympathy.
+
+This is a direct command, not a suggestion left to personal choice.
+
+Israelite law expected practical action toward a struggling neighbor.
+
+Feeling sorry for someone was never treated as enough on its own.
+
+🙌 Relieve means active, practical help
+📜 This is a command, not a suggestion
+❤️ Feeling sorry alone was not enough
+📖 Faith here required real action
+
+## Yea, Though He Be A Stranger, Or A Sojourner
+
+This command reaches beyond Israelites by birth.
+
+Strangers and sojourners were foreigners living among the people, often without land of their own.
+
+The same duty to relieve a struggling neighbor applied to them too.
+
+Israel's kindness was never meant to stop at its own bloodline.
+
+🌍 This reaches beyond Israelites by birth
+🧳 Strangers and sojourners were resident foreigners
+🤝 The same duty applied to them
+📖 Kindness was not limited to bloodline
+
+## Take Thou No Usury Of Him, Or Increase
+
+Usury means charging interest on a loan.
+
+Increase here means a similar extra charge, sometimes on goods instead of money.
+
+Both words are banned together, closing off two ways to profit from a poor neighbor's crisis.
+
+Lending to someone in real need was meant to be an act of mercy, not a business deal.
+
+💰 Usury means charging interest on a loan
+📈 Increase means a similar extra charge
+🚫 Both were banned toward a struggling brother
+📖 Lending here was mercy, not business
+
+## But Fear Thy God, That Thy Brother May Live With Thee
+
+This repeats the same reasoning already used for fair land pricing in verse seventeen.
+
+Fearing God again becomes the real enforcement behind an economic law.
+
+The stated goal is simple, that thy brother may live.
+
+Survival, not profit, was the entire purpose of lending in this system.
+
+🔁 Repeats verse seventeen's reasoning
+🙏 Fearing God enforced this law
+❤️ The goal was a brother's survival
+📖 Profit was never the purpose here
+
+## Thou Shalt Not Give Him Thy Money Upon Usury
+
+This restates the ban specifically for money loans.
+
+The repetition across two verses shows how seriously this rule was taken.
+
+Charging a struggling neighbor interest was treated as real oppression, not clever business.
+
+Ancient economies around Israel commonly allowed this kind of lending without restriction.
+
+💵 Restates the ban on money interest
+🔁 Two verses repeat this rule
+⚠️ Interest here counted as oppression
+📖 Neighboring nations allowed this freely
+
+## Nor Lend Him Thy Victuals For Increase
+
+Victuals means food supplies, especially grain kept in storage.
+
+This closes a loophole, charging extra grain back instead of extra money.
+
+Even food loans between neighbors had to be interest free.
+
+No form of profit was allowed off a brother's hardship, whether cash or grain.
+
+🌾 Victuals means stored food supplies
+🚫 Closes the loophole of charging extra grain
+🤝 Food loans also had to be interest free
+📖 No profit was allowed off a brother's need
 
 # Leviticus 25:39-46
-# ⛓️ Servants, Not Slaves, Among Your Own People
+# 👤 An Israelite Sold To You
 ---
-## 👤 If Thy Brother... Be Sold Unto Thee; Thou Shalt Not Compel Him To Serve As A Bondservant
-An Israelite could sell his own labor into debt-service if poverty left no other option, but the law immediately draws a hard line - he could never be treated as a "bondservant," meaning permanent, owned property.
-👤 Covers an Israelite selling his own labor to survive debt
-🚫 Explicitly forbidden to treat him as permanent property
-⚖️ A hard legal line drawn immediately, not left vague
----
-## 📖 Bondservant vs. The Ordinary Word For Servant
-The vocabulary here distinguishes a general word for "servant," used often and even for God's own people, from a stronger term implying full, permanent ownership. Verse 39 specifically forbids applying that stronger, ownership-implying term to a fellow Israelite.
-📖 Two different strength levels hide behind the English word "servant"
-🚫 The stronger, ownership-implying term is what is forbidden here
-🔍 A distinction easy to miss in English translation alone
----
-## 💼 As An Hired Servant
-A "hired servant" worked for wages under a set arrangement, expecting eventual payment and an end date - the model this whole relationship was supposed to follow instead of ownership.
-💼 Wage labor with an expected end date
-🚫 Explicitly not slavery or ownership
-🔗 The standard this new law measures the arrangement against
----
-## 🏕️ And As A Sojourner
-A "sojourner" lived somewhere temporarily without full permanent rights there - applying that word to an Israelite debt-servant reinforced that his situation, however hard, was temporary and would end.
-🏕️ Describes temporary residence, not permanent belonging
-⏳ Reinforces that the arrangement was never meant to be forever
-🔗 Paired with "hired servant" to describe the same limited status
----
-## 🎉 Serve Thee Unto The Year Of Jubile
-This debt-service arrangement had a guaranteed maximum length - it automatically ended at the next Jubilee, no matter how many years remained on any informal understanding between the two men.
-🎉 Automatically ended at the next Jubilee
-⏳ Guaranteed a maximum length, not indefinite service
-🔗 Ties personal freedom to the same cycle as land return
----
-## 🏡 Then Shall He Depart From Thee... Return Unto His Own Family, And Unto The Possession Of His Fathers
-Release at Jubilee was not just freedom from work - it fully restored what he had lost, reuniting him with his family and returning any ancestral land, undoing the poverty's damage completely.
-🏡 Full restoration, not just an end to labor
-👪 Reunited with family at the same time
-🔗 Ancestral land returned in the same reset, per verses 10-13
----
-## 🙏 For They Are My Servants, Which I Brought Forth Out Of The Land Of Egypt: They Shall Not Be Sold As Bondmen
-The reasoning here is theological, not economic - every Israelite already belonged to God as His own rescued people, so no human being had the right to permanently own another Israelite as property.
-🙏 Every Israelite already belonged to God, not to any master
-🇪🇬 Rooted in their shared rescue from Egyptian slavery
-🚫 No human had the right to permanently own a fellow Israelite
----
-## ⚔️ Thou Shalt Not Rule Over Him With Rigour; But Shalt Fear Thy God
-"Rigour" means harsh, cruel treatment. Even during the legitimate working relationship, cruelty was explicitly forbidden - and again, the reason given is reverence for God, not just concern about fairness.
-⚔️ "Rigour" means harsh or cruel treatment
-🚫 Forbidden even during a legitimate work arrangement
-😨 Grounded in fearing God, the same reasoning as verse 17
----
-## 🌍 Thy Bondmen, And Thy Bondmaids... Shall Be Of The Heathen That Are Round About You
-This draws an uncomfortable but important distinction: permanent, hereditary slavery, unlike the limited debt-service just described, was only permitted involving people from surrounding foreign nations, never among fellow Israelites.
-🌍 Permanent slavery was limited to foreign nations only
-🚫 Never permitted among fellow Israelites, as just stated
-📖 A real historical distinction worth naming honestly
----
-## 🌍 A Practice That Existed Across The Ancient World
-Slavery was not invented by this law - it existed throughout the ancient Near East already. What this chapter does is restrict who could be permanently enslaved and set firm limits on how anyone under Israel's authority had to be treated, especially fellow Israelites.
-🌍 Slavery already existed broadly across the ancient world
-📜 This law restricts and regulates rather than invents the practice
-🛡️ Firm protections applied especially to fellow Israelites
----
-## 👶 Of The Children Of The Strangers That Do Sojourn Among You... They Shall Be Your Possession
-This extended the same rule to children born in the land to foreign residents already living there - they too could become part of a permanent household in the same way, unlike a fellow Israelite ever could.
-👶 Applied even to children born locally to foreign residents
-🏠 Could become permanent household members, unlike Israelites
-🔗 Extends the distinction drawn in the verse before it
----
-## 📜 Ye Shall Take Them As An Inheritance For Your Children After You... For Ever
-Unlike an Israelite's temporary, Jubilee-limited service, this arrangement with foreign slaves could be passed down permanently across generations like any other inherited property.
-📜 Could be passed down across generations like property
-🚫 No Jubilee reset applied to this category
-🔗 The sharpest contrast yet with the Israelite rules above
----
-## 🤝 But Over Your Brethren The Children Of Israel, Ye Shall Not Rule One Over Another With Rigour
-The section ends by restating the core protection one final time, making sure the contrast just drawn does not get read backwards - fellow Israelites, whatever their circumstances, were never to be treated with cruelty.
-🤝 Restates the protection for fellow Israelites one final time
-⚠️ Makes sure the earlier contrast is not misread
-🔁 Repeats "rigour" from verse 43 to close the loop
+## If Thy Brother That Dwelleth By Thee Be Waxen Poor, And Be Sold Unto Thee
+
+This describes the most extreme form of poverty covered in this chapter.
+
+A person could sell their own labor when land and loans were no longer enough.
+
+Selling oneself was the last resort after every other option ran out.
+
+The law does not ignore this reality, it regulates it carefully.
+
+📉 The most extreme poverty in this chapter
+🙋 Someone could sell their own labor
+🏚️ This was always a last resort
+📖 The law regulates this reality carefully
+
+## Thou Shalt Not Compel Him To Serve As A Bondservant
+
+Bondservant here describes the harsher, more permanent kind of slavery common in nearby nations.
+
+This law forbids treating a fellow Israelite that way, no matter how desperate the sale.
+
+The word choice draws a sharp legal line between two very different situations.
+
+Even inside real hardship, an Israelite kept protections other nations denied their own poor.
+
+⛓️ Bondservant describes a harsher form of slavery
+🚫 An Israelite could never be treated this way
+📏 A sharp legal line separates the two
+📖 Protection remained even inside real hardship
+
+## But As An Hired Servant, And As A Sojourner, He Shall Be With Thee
+
+Hired servant and sojourner describe someone working for wages, not owned as property.
+
+This person kept his own legal standing the entire time.
+
+He worked under his employer's roof, but he was never that employer's possession.
+
+The relationship stayed closer to employment than to ownership.
+
+💼 Hired servant means paid labor, not property
+⚖️ He kept his own legal standing
+🏠 He worked there but was never owned
+📖 Closer to a job than to slavery
+
+## And Shall Serve Thee Unto The Year Of Jubile
+
+This service had a guaranteed end date built in from the very beginning.
+
+No matter how much money was involved, the jubile eventually canceled the whole arrangement.
+
+An Israelite could never be trapped in service without hope of an ending.
+
+The jubile made every one of these arrangements temporary by design.
+
+📆 A guaranteed end date from the start
+📯 The jubile eventually canceled every arrangement
+🔓 No one stayed trapped without hope
+📖 Every arrangement was temporary by design
+
+## Then Shall He Depart From Thee, Both He And His Children With Him
+
+Freedom here included the whole family, not the worker alone.
+
+Children born or included during the service years left together at the same moment.
+
+No family stayed split apart because of a debt one parent could not pay.
+
+The jubile restored households, not just individual workers.
+
+👪 Freedom included the whole family
+🚸 Children left together with the parent
+🔗 No family stayed split by debt
+📖 Households were restored, not just workers
+
+## And Shall Return Unto His Own Family, And Unto The Possession Of His Fathers Shall He Return
+
+This verse ties two threads from this chapter back together at once.
+
+Return unto his own family echoes the promise already made back in verse ten.
+
+Return unto the possession of his fathers echoes the same promise about land.
+
+Family and land were always meant to be restored together, not separately.
+
+🔗 Ties two threads from this chapter together
+👪 Echoes the promise about family
+🗺️ Echoes the promise about land
+📖 Family and land were restored as one
+
+## For They Are My Servants, Which I Brought Forth Out Of The Land Of Egypt
+
+This is the reason behind the whole bondservant law.
+
+Israel already belonged to God, rescued once already from real slavery in Egypt.
+
+A rescued people could not turn around and permanently enslave one another.
+
+Their own history became the argument against permanent bondage among themselves.
+
+🔑 The reason behind the whole law
+🇪🇬 Israel had already been rescued once
+🚫 They could not enslave each other again
+📖 Their own history argued against bondage
+
+## They Shall Not Be Sold As Bondmen
+
+This repeats the earlier ban one more time, using a different word for emphasis.
+
+Bondmen and bondservants describe the same harsher, more permanent kind of slavery.
+
+No Israelite could ever be sold into that category, under any circumstance.
+
+The repetition across this section shows how firm this line really was.
+
+🔁 Repeats the ban with a new word
+⛓️ Bondmen means permanent slavery, like bondservant
+🚫 No Israelite could ever be sold this way
+📖 Repetition shows how firm this line was
+
+## Thou Shalt Not Rule Over Him With Rigour
+
+Rigour means harsh, crushing treatment, more than firm management.
+
+An employer could still expect real work and real accountability.
+
+What the law forbids is cruelty, not ordinary discipline or structure.
+
+The line between firm and harsh mattered enough to name directly.
+
+😣 Rigour means harsh, crushing treatment
+✅ Real work and accountability were still expected
+🚫 Cruelty specifically was forbidden
+📖 The line between firm and harsh mattered
+
+## Both Thy Bondmen, And Thy Bondmaids, Which Thou Shalt Have, Shall Be Of The Heathen
+
+This verse draws a hard line most modern readers do not expect.
+
+Permanent, inherited slavery was allowed, but only involving foreign nations around Israel.
+
+This was not a moral endorsement, it reflected the common practice of the entire ancient world.
+
+The text restricts Israel's harshest option to outsiders, protecting their own covenant family from it.
+
+🌍 Permanent slavery involved only foreign nations
+⚠️ This reflected common ancient world practice
+🤝 It was never a moral endorsement
+📖 Only Israel's own family was protected from it
+
+## Of The Children Of The Strangers That Do Sojourn Among You
+
+This describes foreign families already living inside Israel's own borders.
+
+Unlike Israelite debtors, these foreign residents could be bought as permanent property.
+
+The law treats insiders and outsiders very differently throughout this whole chapter.
+
+Covenant membership, not simply geography, decided which protections a person received.
+
+🧳 Foreign families living inside Israel's borders
+📏 Treated differently from Israelite debtors
+🆚 Insiders and outsiders received different rules
+📖 Covenant membership decided real protection
+
+## Ye Shall Take Them As An Inheritance For Your Children After You
+
+Inheritance means property passed down permanently from parent to child.
+
+This status could be passed on for generations, unlike an Israelite's temporary service.
+
+That permanence is exactly what the jubile canceled for Israel's own people.
+
+The contrast between the two systems could not be drawn any sharper.
+
+🏛️ Inheritance means property passed down permanently
+🔁 This status carried on for generations
+📯 The jubile canceled this for Israelites
+📖 The contrast between systems was sharp
+
+## But Over Your Brethren The Children Of Israel, Ye Shall Not Rule One Over Another With Rigour
+
+This closing line returns to where the section started.
+
+Rigour, the same harsh treatment banned back in verse forty three, gets banned again here.
+
+The repetition draws a clear boundary line around the whole chapter's teaching.
+
+Harsh rule belonged nowhere inside Israel's own covenant family, ever.
+
+🔁 Returns to where the section started
+😣 Rigour is banned again, for emphasis
+📏 Draws a clear boundary for the whole law
+📖 Harsh rule had no place inside the family
 
 # Leviticus 25:47-55
-# 🕊️ Redeeming A Brother Sold To A Foreigner
+# 🔓 Redeeming A Brother From A Stranger
 ---
-## 💰 If A Sojourner Or Stranger Wax Rich By Thee, And Thy Brother... Wax Poor
-This flips the usual assumption - here a foreign resident living in Israel has become wealthy, while a native Israelite nearby has fallen into poverty, setting up a scenario the law had not yet directly addressed.
-💰 A foreign resident growing wealthy in Israel
-📉 An Israelite neighbor falling into poverty
-🔄 Reverses the more typical situation assumed elsewhere
----
-## 🤝 Sell Himself Unto The Stranger Or Sojourner By Thee
-In desperation, an Israelite could end up selling his own labor to that wealthier foreign resident - the exact situation the following verses make sure never becomes permanent slavery.
-🤝 An Israelite could sell his labor to a wealthy foreigner
-🎯 Sets up the redemption protections in the verses that follow
-⚖️ The law refuses to leave this case unaddressed
----
-## 🔄 To The Stock Of The Stranger's Family
-"Stock" here means lineage or extended family line, so the law covers not just being sold directly to the wealthy foreigner himself, but even to a member of his broader family line.
-🔄 "Stock" means family lineage, not inventory
-👪 Covers being sold to any relative in that family line
-🔗 Closes a possible loophole around the direct-sale wording
----
-## 🔓 After That He Is Sold He May Be Redeemed Again; One Of His Brethren May Redeem Him
-Even sold to a non-Israelite, the same redemption right from earlier in the chapter still applied - a relative could step in and buy his freedom back at any point, the debt-slavery was never treated as final.
-🔓 Redemption rights still applied, even sold to a foreigner
-👪 Any relative could step in to buy back his freedom
-🔗 Extends the same kinsman-redeemer idea from verse 25
----
-## 👨‍👩‍👦 Either His Uncle, Or His Uncle's Son... Or If He Be Able, He May Redeem Himself
-This spells out exactly who counted as a valid redeemer - uncles, cousins, or any close relative, plus the man himself if his own fortunes improved enough to buy his own freedom.
-👨‍👩‍👦 Names uncles and cousins as valid redeemers
-🌳 Also allows any other close relative to step in
-💪 Self-redemption remained an option too, as in verse 26
----
-## 🧮 He Shall Reckon With Him... According To The Time Of An Hired Servant Shall It Be With Him
-The buyback price was calculated the same fair way as everything else in this chapter - based on the years of service remaining, priced like paid labor rather than as a permanent human purchase.
-🧮 Price based on years of service remaining, not a flat sum
-💼 Calculated like hired labor, never like owned property
-🔗 The same prorated-years principle used throughout the chapter
----
-## 📈 If There Be Yet Many Years Behind... Give Again The Price Of His Redemption
-More years remaining until the Jubilee meant a higher buyback price, refunded from the original purchase amount - mirroring the exact math already used for land redemption in verse 27.
-📈 More remaining years meant a higher redemption price
-💰 Refunded proportionally from the original sale price
-🔗 Mirrors the land-redemption math from verse 27
----
-## 📉 If There Remain But Few Years Unto The Year Of Jubile... The Price Of His Redemption
-The same formula worked in reverse - close to the Jubilee, the buyback price dropped sharply, since freedom was coming soon anyway regardless of payment.
-📉 Fewer remaining years meant a much lower price
-⏳ Freedom was close either way as Jubilee approached
-⚖️ Kept the pricing consistently fair in both directions
----
-## 👀 As A Yearly Hired Servant Shall He Be With Him... Not Rule With Rigour Over Him In Thy Sight
-While still under this arrangement, an Israelite had to be treated as ordinary paid labor, not property - and "in thy sight" suggests the wider Israelite community was expected to actually watch for and call out mistreatment.
-👀 "In thy sight" implies public accountability, not just private trust
-💼 Treated as paid labor throughout, never as owned property
-🚫 "Rigour," meaning cruelty, repeats the same ban as verse 43
----
-## ⚖️ Not Treated As Foreign Chattel Slavery
-This whole passage makes sure an Israelite sold to a foreigner still got Israelite protections, not the harsher permanent-ownership rules just described for foreign slaves in verses 44-46. Nationality determined the rules, not just who currently held the contract.
-⚖️ Israelite protections followed the person, not just the buyer
-🚫 Kept him out of the harsher category from verses 44-46
-🔗 Directly answers a gap the previous section might have left open
----
-## 🎉 If He Be Not Redeemed In These Years, Then He Shall Go Out In The Year Of Jubile, Both He, And His Children With Him
-Just like the Israelite-to-Israelite arrangement earlier, this had a guaranteed end point even without any buyback ever happening - full freedom at the next Jubilee, for the man and his children both.
-🎉 Guaranteed freedom at Jubilee regardless of buyback
-👶 Included his children, not just himself
-🔗 Mirrors the same guarantee already given in verse 41
----
-## 🕊️ Between Redemption And Automatic Jubilee Release
-This section builds in two separate paths to freedom - a relative or the man himself could pay to redeem him early, or if neither happened, freedom still arrived automatically at the next Jubilee regardless.
-🕊️ Two separate paths to freedom, not just one
-💰 Early redemption through payment, if available
-🎉 Automatic release at Jubilee either way
----
-## 📜 A Law That Reached Beyond Israel's Own Borders Of Authority
-This is notable because it applied Israel's own protective law even to a transaction with someone outside Israel's community - the foreign buyer had to respect Israelite redemption rights he did not personally hold to under his own culture's norms.
-📜 Applied Israelite protections even in a cross-cultural sale
-🌍 Bound a foreign buyer to rules from outside his own culture
-🛡️ Protected an Israelite regardless of who purchased him
----
-## 🙏 For Unto Me The Children Of Israel Are Servants... I Am The LORD Your God
-The chapter's closing line restates its deepest reason one final time - every Israelite ultimately belongs to God alone, rescued from Egypt for that purpose, which is exactly why no human ownership over them could ever be treated as final.
-🙏 Restates the chapter's core theological reason one last time
-🇪🇬 Rooted again in the Exodus rescue, as in verses 38 and 42
-🔒 The reason no human ownership over an Israelite was ever final
-`;
+## If A Sojourner Or Stranger Wax Rich By Thee
+
+This scenario flips the usual picture in this chapter.
+
+Here a foreigner living in Israel grows wealthy while an Israelite grows poor.
+
+Wealth and poverty did not always follow the lines readers might expect.
+
+The law had to plan for this exact reversal too.
+
+🔄 This flips the usual picture in this chapter
+💰 A foreigner grows wealthy here
+📉 An Israelite grows poor beside him
+📖 The law planned for this reversal too
+
+## And Sell Himself Unto The Stranger, Or Sojourner By Thee
+
+An Israelite in deep poverty could end up working for a wealthy foreigner.
+
+This was the one scenario where an Israelite's own protections were most at risk.
+
+A foreign employer was not automatically bound by Israel's covenant rules toward brothers.
+
+The next several verses exist specifically to close that gap.
+
+🙋 An Israelite could work for a wealthy foreigner
+⚠️ Protections here were most at risk
+🌍 Foreign employers were outside covenant rules
+📖 The next verses close that exact gap
+
+## After That He Is Sold He May Be Redeemed Again
+
+Even in this risky situation, redemption remained fully available.
+
+No Israelite lost the right to be bought back, no matter who purchased them.
+
+This right applied even when the buyer was a foreigner outside Israel's covenant.
+
+The safety net followed the person, not just the situation.
+
+🔓 Redemption remained available here too
+🌍 It applied even with a foreign buyer
+🛡️ The right followed the person
+📖 No situation removed this safety net
+
+## One Of His Brethren May Redeem Him
+
+Brethren means his own relatives within the covenant community.
+
+Any relative could step forward and pay to bring him home.
+
+This puts real responsibility on an extended family, not just distant law.
+
+Israel's community was built to actively watch out for its most vulnerable members.
+
+👪 Brethren means his own relatives
+💰 Any relative could pay to redeem him
+🤝 This placed responsibility on the family
+📖 Community meant active care, not distance
+
+## Either His Uncle, Or His Uncle's Son, May Redeem Him
+
+The law names specific relatives instead of leaving the responsibility vague.
+
+An uncle or a cousin through the father's line both qualified to help.
+
+Naming exact relationships pushed the obligation past a vague, easy idea to ignore.
+
+Someone specific always had both the standing and the duty to act.
+
+🧔 Names specific relatives, not a vague group
+👴 An uncle or cousin both qualified
+📏 This pushed past an easy idea to ignore
+📖 Someone specific always had the duty to act
+
+## Or If He Be Able, He May Redeem Himself
+
+This adds one final option beyond family help.
+
+If the man himself earned or saved enough money, he could pay for his own freedom.
+
+Redemption never depended only on having generous relatives nearby.
+
+More than one path led back to freedom in this law.
+
+💪 A final option beyond family help
+💰 He could pay for his own freedom
+🚪 Redemption did not depend on relatives alone
+📖 More than one path led to freedom
+
+## He Shall Reckon With Him That Bought Him
+
+Reckon means to calculate the price honestly and openly together.
+
+Both buyer and the redeeming family sat down and did the math out loud.
+
+The final number always counted forward to the exact year of the next jubile.
+
+Every price in this whole chapter eventually points back to that same date.
+
+🧮 Reckon means calculating the price openly
+🤝 Buyer and family worked out the math together
+📆 The count ran to the next jubile
+📖 Every price pointed to that same date
+
+## According To The Time Of An Hired Servant Shall It Be With Him
+
+This ties the redemption price to the same standard used for a hired servant's wages.
+
+Nothing about this arrangement was ever meant to resemble permanent slavery.
+
+The price stayed fair and calculable, based on ordinary daily wage rates.
+
+The law kept using the language of employment, never of ownership.
+
+💼 Tied to a hired servant's wage standard
+🚫 Never meant to resemble permanent slavery
+🧮 The price stayed fair and calculable
+📖 The language stayed employment, not ownership
+
+## If There Be Yet Many Years Behind
+
+Many years behind means a large number of years still remain before the jubile.
+
+More remaining years meant more work still owed to the buyer.
+
+Naturally, that also meant a higher price to redeem him early.
+
+The same math worked exactly the way it did for land back in verse sixteen.
+
+📆 Many years behind means years still remaining
+🌾 More years owed meant more work
+💰 That meant a higher redemption price
+📖 The same math applied to land earlier
+
+## If There Remain But Few Years Unto The Year Of Jubile
+
+This covers the opposite situation, close to the jubile already.
+
+Fewer years remaining meant far less work still owed.
+
+The redemption price dropped to match, exactly as it did with land.
+
+Timing alone could make freedom either expensive or nearly free.
+
+📆 The opposite situation, close to jubile
+🌾 Fewer years owed meant less work
+💰 The price dropped to match
+📖 Timing alone changed the cost of freedom
+
+## And As A Yearly Hired Servant Shall He Be With Him
+
+This restates the wage standard one more time for clarity.
+
+Every year of remaining service got valued like a normal year of paid work.
+
+No hidden penalty or extra fee could be added on top.
+
+Fair, transparent pricing ran through this entire redemption system.
+
+🔁 Restates the wage standard again
+📅 Each year valued like normal paid work
+🚫 No hidden penalty could be added
+📖 Fair pricing ran through this system
+
+## The Other Shall Not Rule With Rigour Over Him In Thy Sight
+
+Rigour appears here for the third time in this chapter alone.
+
+This time God specifically warns Israel to watch a foreign employer's treatment of their brother.
+
+In thy sight means Israel had a real duty to notice and step in.
+
+Watching a brother suffer quietly was never treated as acceptable neutrality.
+
+😣 Rigour is banned here a third time
+👀 Israel had to watch out for their brother
+🚨 In thy sight means a duty to notice
+📖 Silent neutrality was never acceptable
+
+## And If He Be Not Redeemed In These Years, Then He Shall Go Out In The Year Of Jubile
+
+Just like every other arrangement in this chapter, the jubile was the final guarantee.
+
+No one could fall through every other safety net and still remain permanently bound.
+
+Family redemption, self redemption, and the jubile together left no real gap.
+
+The system was designed with more than one way out, on purpose.
+
+📯 The jubile was always the final guarantee
+🛡️ No one could fall through every net
+🔓 Multiple paths to freedom existed together
+📖 The system left no real gap, by design
+
+## For Unto Me The Children Of Israel Are Servants
+
+This closing line returns to the same truth that opened the bondservant law back in verse forty two.
+
+Israel belonged to God first, before any human employer or master.
+
+That single fact stands underneath every rule in this entire chapter, from farmland to family.
+
+Jubile, redemption, and rest all exist for one single reason.
+
+God alone owns His people, and God alone owns the land.
+
+🔁 Returns to the truth from verse forty two
+🙏 Israel belonged to God before any master
+🏛️ This truth underlies the whole chapter
+📖 God alone owns His people and His land
+`.trim();
 
 export const LEVITICUS_TWENTY_FIVE_PERSONAL_SECTIONS = parseLeviticusTwentyFiveRawNotes(
   LEVITICUS_TWENTY_FIVE_RAW_NOTES,

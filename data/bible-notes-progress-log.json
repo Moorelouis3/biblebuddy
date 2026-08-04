@@ -8624,6 +8624,59 @@
           "at": "2026-08-04T02:59:41Z"
         }
       ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 25,
+      "startedAt": "2026-08-04T03:46:19Z",
+      "finishedAt": "2026-08-04T04:01:29Z",
+      "durationMinutes": 15,
+      "sections": 9,
+      "cards": 90,
+      "verses": 55,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (9 sections, roughly 30 cards, paragraph bodies, three bullets per card, semicolons and hyphenated compounds) from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Leviticus 25 covers the sabbatical year (land rest every seventh year, produce shared freely with servant, stranger, and animal alike), the fiftieth year Jubile announced by trumpet on the Day of Atonement (debt release, land return, family reunion), land priced by harvests remaining until the next Jubile rather than by the ground itself, the sixth year triple blessing answering the seventh year food fear, the theological anchor 'for the land is mine,' kinsman redemption rights for land and city houses (the one year deadline that makes walled city houses the chapter's one real permanent sale exception, and the Levites' unlimited redemption right over their inheritance cities), the no usury command toward a poor brother grounded in the Exodus rescue, the sharp line between a protected, time limited Israelite bondservant freed at Jubile with his whole family and a foreign bondman under permanent, inheritable servitude reflecting common ancient world practice rather than a moral endorsement, and the closing case of an Israelite sold to a wealthy foreign resident still covered by every redemption right. Rebuilt the section boundaries as nine sections (1-7, 8-12, 13-17, 18-22, 23-28, 29-34, 35-38, 39-46, 47-55) rather than keeping the original file's boundaries, for full phrase card coverage. Density about 1.64 cards/verse (55 verses, 90 cards). scripts/check_bible_note_style.py found 4 problems on first pass (two cards with a last bullet not using the required emoji, two bullets one word over the 8 word limit), fixed, second run clean. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key term in plain language, and closes on meaning rather than mechanics, with no hyphens, em dashes, semicolons, contractions, or banned filler/hedge words. Parser check passed exactly via getBibleReaderStudySections('Leviticus', 25) (9/9 sections, 90 cards, all 55 verses covered, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (Leviticus 1-27 already covered by preserveExactPhraseBodies, import and replaceStudySectionsForBookRange call already present), so only the type/function/const names (LeviticusTwentyFivePersonalSection, parseLeviticusTwentyFiveRawNotes, LEVITICUS_TWENTY_FIVE_RAW_NOTES, LEVITICUS_TWENTY_FIVE_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Leviticus 25 entry removed from the front of the list as part of this commit; next redo target is Leviticus 26.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-04T03:46:19Z"
+        },
+        {
+          "name": "target chapter determined: Leviticus 25 (style redo, first in remaining backlog)",
+          "at": "2026-08-04T03:47:27Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Leviticus.json",
+          "at": "2026-08-04T03:47:27Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (lib/leviticusTwentyFourSource.ts) read",
+          "at": "2026-08-04T03:47:27Z"
+        },
+        {
+          "name": "source file written (lib/leviticusTwentyFiveSource.ts, 9 sections, 90 cards)",
+          "at": "2026-08-04T03:57:15Z"
+        },
+        {
+          "name": "style checker clean (after fixing two missing-emoji last bullets and two over-length bullets)",
+          "at": "2026-08-04T03:57:40Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo (no changes needed, Leviticus 1-27 already covered)",
+          "at": "2026-08-04T03:57:40Z"
+        },
+        {
+          "name": "parser check passed (9 sections, 90 cards, 55 verses covered)",
+          "at": "2026-08-04T03:57:52Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-04T03:59:47Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-04T04:01:29Z"
+        }
+      ]
     }
   ]
 }
