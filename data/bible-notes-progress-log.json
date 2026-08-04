@@ -8685,6 +8685,55 @@
           "at": "2026-08-04T04:02:24Z"
         }
       ]
+    },
+    {
+      "book": "Leviticus",
+      "chapter": 26,
+      "startedAt": "2026-08-04T04:46:41Z",
+      "finishedAt": "2026-08-04T05:01:53Z",
+      "durationMinutes": 15,
+      "sections": 13,
+      "cards": 95,
+      "verses": 46,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (13 sections / 103 cards, paragraph bodies, three bullets per card, no .trim() on its raw notes constant) from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Leviticus 26 is the great blessings-and-curses chapter closing the holiness code: the opening ban on idols and standing images, the blessing list (rain in due season versus Egypt's Nile, overlapping harvest and vintage, peace with no wild beasts or invading sword, God's own tabernacle presence among the people, the Exodus and the broken yoke), then the curse list escalating through four separate seven-times-more cycles as the key word contrary recurs (terror and disease, drought pictured as iron sky and brass earth, wild beasts, siege and famine down to cannibalism, destroyed high places and defiled idols, exile and the land finally getting its withheld sabbath rests, paranoia so total that a shaken leaf triggers flight), and finally the confession and restoration section where God, despite everything, commits to remembering the covenant with Abraham, Isaac, and Jacob (named in that deliberate reverse order) rather than abandoning Israel utterly. Kept the original file's 13 section boundaries for verse-coverage continuity while rewriting every card to the new format. Density about 2.07 cards per verse (46 verses, 95 cards), leaning toward the richer end because this chapter is unusually dense with short, distinct legal and poetic clauses (the escalating seven-times formula, the repeated contrary language, the many direct reversals of the earlier blessings) rather than long narrative sentences. scripts/check_bible_note_style.py found 38 problems on first pass (one banned hedge word 'quite', one card with a wrong last-bullet emoji ordering, thirty-six bullets one to two words over the eight-word limit), all fixed, second run clean. A manual section 13 eye check confirmed no repeated card first-lines across all 95 cards and no forbidden filler phrases. Parser check passed exactly via getBibleReaderStudySections('leviticus', 26) (13/13 sections, 95 cards, text rendering verbatim with blank lines between every body line and bullet). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range covering Leviticus 1-27, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (LeviticusTwentySixPersonalSection, parseLeviticusTwentySixRawNotes, LEVITICUS_TWENTY_SIX_RAW_NOTES, LEVITICUS_TWENTY_SIX_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Leviticus 26 entry removed from the front of the list as part of this commit; next redo target is Leviticus 27.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-04T04:46:41Z"
+        },
+        {
+          "name": "target chapter determined: Leviticus 26 (style redo, first in remaining backlog)",
+          "at": "2026-08-04T04:46:41Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Leviticus.json",
+          "at": "2026-08-04T04:47:41Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (lib/genesisThirtyOneSource.ts) read",
+          "at": "2026-08-04T04:53:49Z"
+        },
+        {
+          "name": "source file written (lib/leviticusTwentySixSource.ts, 13 sections, 95 cards)",
+          "at": "2026-08-04T04:58:30Z"
+        },
+        {
+          "name": "style checker clean (after fixing one banned hedge word, one last-bullet-emoji order issue, and thirty six over-length bullets)",
+          "at": "2026-08-04T05:00:30Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo (no changes needed, Leviticus 1-27 already covered)",
+          "at": "2026-08-04T05:00:40Z"
+        },
+        {
+          "name": "parser check passed (13 sections, 95 cards, 46 verses covered)",
+          "at": "2026-08-04T05:00:50Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-04T05:01:53Z"
+        }
+      ]
     }
   ]
 }

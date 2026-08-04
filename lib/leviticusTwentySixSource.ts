@@ -92,660 +92,1682 @@ const LEVITICUS_TWENTY_SIX_RAW_NOTES = `# Leviticus 26:1-2
 # 🚫 No Idols, Only The LORD
 ---
 ## 🗿 Ye Shall Make You No Idols Nor Graven Image
-An "idol" is a false god people worship instead of the real one. A "graven image" is a carved statue - the word "graven" means cut or carved into wood or stone. Both are banned before this chapter's list of blessings and curses even starts, because loyalty to God alone is the foundation everything else stands on.
-🗿 "Graven" means carved or cut into stone or wood
-🚫 Bans worshiping anything false, not just certain statues
-🏛️ Comes first because it is the foundation of everything after
----
-## 🪨 Neither Rear You Up A Standing Image... Image Of Stone
-A "standing image" was an upright stone pillar set up as a monument. Jacob himself set up stone pillars earlier in Genesis as simple markers and memorials - the problem is not the stone, it is Canaanite religion turning that same kind of pillar into an object people bowed down to and worshiped.
-🪨 A "standing image" is an upright stone pillar or marker
-📖 Jacob used similar pillars in Genesis just as memorials
-⚠️ The danger is worshiping the object, not building it
----
+
+"Idol" means a false god that people worship in place of the real one.
+
+"Graven" means cut or carved into stone or wood.
+
+Both are banned before any blessing or curse in this chapter even begins.
+
+Loyalty to God alone is the foundation everything else in the chapter stands on.
+
+🗿 Graven means carved into stone or wood
+
+🚫 Idols means false gods worshiped in God's place
+
+🏗️ Comes first as the chapter's foundation
+
+📖 Loyalty to God alone comes before everything else
+
+## 🪨 Neither Rear You Up A Standing Image
+
+A "standing image" was an upright stone pillar set up as a monument.
+
+Jacob himself set up stone pillars earlier in Genesis as memorials.
+
+The problem was never the stone itself.
+
+Canaanite religion turned that same kind of pillar into an object people worshiped.
+
+🪨 Standing image means an upright stone pillar
+
+📖 Jacob used similar pillars in Genesis as memorials
+
+⚠️ The stone itself was never the problem
+
+➡️ Worshiping the object was what God banned
+
 ## 🙏 Ye Shall Keep My Sabbaths, And Reverence My Sanctuary
-"Sabbaths" means the regular days and years of rest already commanded earlier in this book. "Reverence my sanctuary" means treat the tabernacle, God's dwelling place among them, with real respect instead of careless familiarity.
-🙏 "Sabbaths" refers to the rest days and years already commanded
-⛺ "Sanctuary" means the tabernacle, God's dwelling place
-🎯 Pairs right worship with right rest as one command
----
+
+"Sabbaths" means the regular days and years of rest already commanded earlier in this book.
+
+"Reverence" means treat with deep respect, not careless familiarity.
+
+"Sanctuary" means the tabernacle, the tent where God's presence dwelled among the people.
+
+This verse pairs right worship with right rest as one single command.
+
+🙏 Sabbaths means the commanded rest days and years
+
+⛺ Sanctuary means the tabernacle, God's dwelling place
+
+🎯 Reverence means deep respect, not careless familiarity
+
+📖 Right worship and right rest are paired here
+
 ## 🎙️ For I Am The LORD Your God
-This short phrase closes the opening command and will return again and again through this chapter, at the end of both blessing and curse. It is not decoration - it is the reason behind every rule that follows, whatever the rule turns out to be.
-🎙️ A recurring closing tag used throughout Leviticus
-🔁 Will return at key turning points through this whole chapter
-🎯 Grounds obedience in who God is, not just what is fair
+
+This short line closes the opening command.
+
+It will return again and again through the rest of this chapter.
+
+It marks both the worst curses and the final promise of mercy.
+
+The phrase is not decoration.
+
+It is the reason behind every single rule that follows.
+
+🎙️ A closing tag repeated throughout Leviticus
+
+🔁 Returns again at key turning points ahead
+
+🎯 Grounds obedience in who God is
+
+📖 Not decoration, but the reason for every rule
 
 # Leviticus 26:3-6
 # 🌧️ Rain, Harvest, And Peace
 ---
 ## 📜 If Ye Walk In My Statutes, And Keep My Commandments, And Do Them
-This verse uses three separate verbs on purpose - walk, keep, and do. It is not enough to know the law or even agree with it; the blessings that follow depend on actually living it out day to day.
-📜 Three separate verbs: walk, keep, and do
-🚶 "Walk" pictures ongoing daily practice, not a single choice
-✅ Knowing or agreeing with a law was never the same as doing it
----
+
+This verse uses three separate verbs on purpose.
+
+"Walk" pictures ongoing daily practice, not a single choice.
+
+"Keep" means guard and hold onto something carefully over time.
+
+"Do" means actually carrying it out, not just agreeing with it.
+
+Knowing the law or admiring it was never the same as living it.
+
+📜 Three separate verbs walk keep and do
+
+🚶 Walk pictures ongoing daily practice
+
+🤝 Keep means guarding something carefully over time
+
+📖 Knowing a law differs from living it
+
 ## 🌧️ I Will Give You Rain In Due Season
-Israel's farms depended entirely on rainfall at the right times, unlike Egypt, where the Nile River flooded predictably every year regardless of rain. A promise of rain "in due season" is a promise of the one resource Israelite farmers could never control or guarantee themselves.
-🌧️ Israel's farming depended on rain, not a reliable river
-🇪🇬 Unlike Egypt, whose Nile flooded on its own schedule
-🎯 A promise of the one thing farmers could not control themselves
----
-## 🌾 The Land Shall Yield Her Increase... Trees... Yield Their Fruit
-"Increase" means harvest or produce. This covers both grain fields and fruit orchards, promising success across every kind of farming the people depended on for food.
-🌾 "Increase" means harvest or crop yield
-🌳 Covers both grain fields and fruit trees together
-🍽️ A promise touching the whole food supply, not just one crop
----
-## 🌾 Your Threshing Shall Reach Unto The Vintage
-"Threshing" is separating grain from stalks after the spring harvest. "Vintage" is the grape harvest, which normally came later in the year. Promising threshing would still be going when grape season began means the grain harvest would be so large it overflowed its normal timeframe.
-🌾 "Threshing" means separating grain from the stalk
-🍇 "Vintage" is the grape harvest, later in the calendar
-⏳ Threshing overflowing into vintage signals overwhelming abundance
----
-## 🍇 The Vintage Shall Reach Unto The Sowing Time
-The same overlap repeats going the other direction - grape harvesting would still be underway when it was already time to plant next season's seed. The farming calendar itself would be too full of good harvests to keep its normal pace.
-🍇 Grape harvest overlapping into the next planting season
-🔁 Mirrors the same overlap idea from the verse just before
-📈 A calendar too full of abundance to move at its normal pace
----
+
+Israel's farms depended entirely on rainfall arriving at the right times.
+
+Egypt was different, since the Nile River flooded on its own predictable schedule.
+
+"Due season" means the exact right timing a farmer could never control.
+
+This promise covers the one resource Israelite farmers could never guarantee for themselves.
+
+🌧️ Israel's farming depended on rainfall, not a river
+
+🇪🇬 Egypt's Nile flooded on its own schedule
+
+⏳ Due season means the exact right timing
+
+📖 A promise covering what farmers could not control
+
+## 🌾 The Land Shall Yield Her Increase, And The Trees Shall Yield Their Fruit
+
+"Increase" means harvest or produce, the yield a field actually brings in.
+
+This promise covers grain fields and fruit orchards together in one line.
+
+Success is promised across every kind of farming the people depended on.
+
+Nothing about their food supply is left out of this blessing.
+
+🌾 Increase means harvest or crop yield
+
+🌳 Covers grain fields and fruit trees together
+
+🍽️ Touches the whole food supply at once
+
+📖 Nothing about their farming is left out
+
+## 🌾 Your Threshing Shall Reach Unto The Vintage, And The Vintage Unto The Sowing Time
+
+"Threshing" means separating grain from its stalks after the spring harvest.
+
+"Vintage" means the grape harvest, which normally came later in the year.
+
+This verse pictures one harvest overlapping into the next without a gap.
+
+Grain threshing would still be underway when grape season began.
+
+Grape gathering would still be underway when it was time to plant again.
+
+The farming calendar itself would be too full of abundance to keep its normal pace.
+
+🌾 Threshing means separating grain from the stalk
+
+🍇 Vintage means the fall grape harvest
+
+⏳ One harvest overlaps into the next
+
+📖 A calendar too full to slow down
+
 ## 🍞 Eat Your Bread To The Full, And Dwell In Your Land Safely
-This is the plain, human payoff behind all the farming language - genuine abundance at the table, not rationed scraps, plus the security to actually stay put and enjoy it without fear.
-🍞 "To the full" means real abundance, not rationing
-🏡 "Safely" adds security to go with the food supply
-🎯 The plain human payoff behind the farming promises above
----
+
+This is the plain human payoff behind all the farming language above.
+
+"To the full" means real abundance at the table, not rationed scraps.
+
+"Safely" adds security, the freedom to actually stay put without fear.
+
+Good food and a safe home are named together as one blessing.
+
+🍞 To the full means real abundance
+
+🏡 Safely adds security to the promise
+
+🎯 The human payoff behind the farming language
+
+📖 Food and safety named together as one gift
+
 ## ☮️ I Will Give Peace In The Land... None Shall Make You Afraid
-"Peace" here means more than the absence of war - it means a settled life where daily fear of attack simply is not part of how people live.
-☮️ "Peace" means a settled life, not just no active war
-😌 Daily fear of attack removed from ordinary life
-🏡 Sets up the specific fears named in the rest of the verse
----
+
+"Peace" here means more than just the absence of war.
+
+It means a settled life where fear of attack is not part of daily living.
+
+This sets up the specific fears the rest of the verse names one by one.
+
+Daily security like this could not be bought or built by human effort alone.
+
+☮️ Peace means a settled life, not war
+
+😌 Daily fear of attack removed entirely
+
+🏡 Sets up the specific fears named next
+
+📖 Security no human effort alone could build
+
 ## 🐺 I Will Rid Evil Beasts Out Of The Land
-Dangerous wild animals were a real, constant threat to both people and livestock in the ancient world, not a minor inconvenience. Removing them entirely was a serious, practical blessing, not a throwaway line.
-🐺 Wild predators were a genuine daily danger, not a small worry
+
+Dangerous wild animals were a constant real threat in the ancient world.
+
+They endangered both people and livestock, not just an occasional flock.
+
+Removing every one of them was a serious practical blessing, not filler.
+
+This promise protected daily life just as much as any harvest promise did.
+
+🐺 Wild predators were a genuine daily danger
+
 🐑 Protected both people and livestock together
-🎯 A real practical blessing, not filler alongside bigger promises
----
+
+🎯 A real practical blessing, not a small detail
+
+📖 Daily safety mattered as much as any harvest
+
 ## ⚔️ Neither Shall The Sword Go Through Your Land
-"The sword going through the land" is a way of describing invasion and war passing through Israel's territory. This closes the peace promise by naming the worst-case fear directly: no foreign army marching through, killing and destroying as it goes.
-⚔️ "The sword" pictures invasion and war moving through the land
-🎯 Names the worst-case fear directly instead of staying vague
-🏡 Completes the full picture of peace begun earlier in the verse
+
+"The sword going through the land" pictures invasion and war moving across Israel's territory.
+
+This closes the peace promise by naming the worst possible fear directly.
+
+No foreign army marching through, killing and destroying as it advanced.
+
+The whole picture of true peace is now complete.
+
+⚔️ The sword pictures invasion moving through the land
+
+🎯 Names the worst case fear directly
+
+🏡 Completes the full picture of peace
+
+📖 Peace here covers safety at every level
 
 # Leviticus 26:7-10
 # ⚔️ Victory And Abundance
 ---
 ## 🗡️ Ye Shall Chase Your Enemies, And They Shall Fall Before You By The Sword
-This moves from defense to offense - not just safety from attack, but active victory whenever conflict does come. Enemies would not just fail to win; they would be routed.
+
+This moves the promise from defense into offense.
+
+It is not just safety from attack, but active victory whenever conflict comes.
+
+Enemies would not simply fail to win.
+
+They would be routed and driven back completely.
+
 🗡️ Moves from staying safe to winning outright
+
 🏃 Enemies fleeing, not just failing to attack
-🎯 A promise of active victory, not passive protection
----
+
+🎯 A promise of active victory
+
+📖 Victory promised whenever conflict actually comes
+
 ## 🔢 Five Of You Shall Chase An Hundred
-Five soldiers driving off a hundred enemies is a ratio of one to twenty - already a lopsided, supernatural kind of victory far beyond normal battlefield odds.
-🔢 A ratio of one Israelite to twenty enemies
+
+Five soldiers driving off a hundred enemies is a ratio of one to twenty.
+
+That ratio alone is already far beyond normal battlefield odds.
+
+"An hundred" is simply the old spelling of one hundred.
+
+The chapter is about to make this ratio even more extreme in the very next line.
+
+🔢 A ratio of one to twenty
+
 💪 Already far beyond normal battlefield odds
-🎯 Sets up an even bigger ratio in the very next line
----
+
+📖 An hundred is the old spelling of hundred
+
+➡️ A bigger ratio comes in the next verse
+
 ## 🔢 An Hundred Of You Shall Put Ten Thousand To Flight
-The ratio jumps again - a hundred fighters routing ten thousand is one to a hundred, five times more lopsided than the previous verse's ratio. The math is not meant to add up normally; it pictures strength that multiplies far beyond ordinary numbers when God fights for His people.
-🔢 A ratio of one to a hundred, five times steeper than before
-🧮 The jump is deliberate, not a math error
-🙏 Pictures strength multiplying beyond ordinary numbers with God's help
----
+
+The ratio jumps again here, five times steeper than the verse before it.
+
+A hundred fighters routing ten thousand enemies is a ratio of one to a hundred.
+
+The math is not meant to add up in any normal military sense.
+
+It pictures strength multiplying far beyond ordinary numbers when God fights for His people.
+
+🔢 A ratio of one to a hundred
+
+🧮 Five times steeper than the verse before
+
+🙏 Strength multiplying beyond ordinary numbers
+
+📖 Pictures God fighting for His people directly
+
 ## 🙏 I Will Have Respect Unto You, And Make You Fruitful, And Multiply You
-"Have respect unto" means God will look on them with favor. "Fruitful" and "multiply" echo the very first blessing given to humanity back in Genesis 1, now promised specifically to this obedient nation.
-🙏 "Respect" here means favor, not politeness
-👪 "Fruitful" and "multiply" echo Genesis 1's first blessing
-🔗 Applies humanity's original blessing to this specific nation
----
+
+"Have respect unto" means God will look on His people with favor.
+
+"Fruitful" and "multiply" echo the very first blessing given to humanity in Genesis one.
+
+That same original blessing is now promised specifically to this obedient nation.
+
+This is not a new promise but an old one being applied again.
+
+🙏 Respect here means favor, not manners
+
+👪 Fruitful and multiply echo Genesis one
+
+🔗 Applies humanity's first blessing to this nation
+
+📖 An old promise applied again to obedient Israel
+
 ## 🤝 Establish My Covenant With You
-A covenant is a binding agreement with obligations on both sides. "Establish" means confirm and make firm, not create something brand new - this points back to the covenant already made with Abraham, now kept in force through Israel's obedience.
-🤝 A "covenant" is a binding agreement, not a casual promise
-✅ "Establish" means confirm, not start something new
-📖 Points back to the earlier covenant made with Abraham
----
+
+A "covenant" is a binding agreement with real obligations on both sides.
+
+"Establish" means confirm and make firm, not create something brand new.
+
+This points back to the covenant already made with Abraham generations earlier.
+
+Obedience here keeps that older covenant in force, it does not replace it.
+
+🤝 Covenant means a binding agreement, not a favor
+
+✅ Establish means confirm, not start something new
+
+📖 Points back to the covenant made with Abraham
+
+➡️ Obedience keeps an old covenant in force
+
 ## 📦 Ye Shall Eat Old Store, And Bring Forth The Old Because Of The New
-This pictures granaries so overflowing with grain that last year's surplus still has not been used up by the time this year's fresh harvest comes in - old stock has to be cleared out to make room for the new.
-📦 Granaries so full old grain remains unused a year later
-🌾 Old surplus has to be cleared to make room for the new
-🎯 A vivid image of abundance beyond what the last section named
+
+This pictures granaries so full that last year's surplus is still not used up.
+
+By the time this year's fresh harvest comes in, old grain still remains.
+
+Families would have to clear out old stock just to make room for the new.
+
+It is a vivid image of abundance beyond anything already promised in this chapter.
+
+📦 Granaries so full old grain remains unused
+
+🌾 Old surplus cleared to make room for new
+
+🎯 A vivid image of overflowing abundance
+
+📖 Beyond anything already promised earlier in the chapter
 
 # Leviticus 26:11-13
 # ⛺ God Will Dwell Among You
 ---
 ## ⛺ I Will Set My Tabernacle Among You
-The tabernacle was the portable tent-sanctuary where God's presence dwelled among Israel during the wilderness years. This promises not just distant blessing but God's own presence physically located in the camp.
-⛺ The tabernacle was God's portable dwelling place
-📍 Promises presence, not just blessing from a distance
-🎯 The most personal promise in the whole blessing list so far
----
+
+The tabernacle was the portable tent sanctuary where God's presence dwelled among Israel.
+
+This was not distant blessing sent from far away.
+
+It was God's own presence physically located inside the Israelite camp.
+
+No other promise in this chapter is more personal than this one.
+
+⛺ Tabernacle means God's portable dwelling place
+
+📍 Promises presence, not blessing from a distance
+
+🏕️ Located physically inside the Israelite camp
+
+📖 The most personal promise in this chapter
+
 ## 😌 My Soul Shall Not Abhor You
-"Abhor" means to hate with disgust, a strong word. This exact phrase will return later in the chapter describing the opposite outcome - so this promise is deliberately setting up a contrast the reader will feel by the time the curses arrive.
-😌 "Abhor" means to hate with disgust, a strong word
-🔗 The same exact phrase returns later, but reversed
-⚠️ Deliberately sets up the contrast waiting later in the chapter
----
+
+"Abhor" means to hate with real disgust, a very strong word.
+
+This exact phrase returns later in the chapter describing the opposite outcome.
+
+The contrast is placed here on purpose, ready to be felt later.
+
+Right now, at the start, the promise is full acceptance.
+
+😌 Abhor means to hate with disgust
+
+🔗 This exact phrase returns later, reversed
+
+⚠️ A deliberate contrast set up for later
+
+📖 The promise here is full acceptance
+
 ## 🚶 I Will Walk Among You
-This language echoes Genesis, where God walked in the garden with Adam and Eve before sin broke that closeness. The same kind of nearness is promised again here, this time through obedience instead of an unbroken beginning.
-🚶 Echoes God walking with Adam and Eve in Eden
-🔗 The same closeness offered again, through obedience this time
-🎯 A callback most readers would otherwise miss
----
+
+This language echoes Genesis, where God walked with Adam and Eve in the garden.
+
+Sin later broke that close and easy nearness between God and people.
+
+The same kind of closeness is promised again here.
+
+This time it comes through obedience, not through an unbroken beginning.
+
+🚶 Echoes God walking with Adam and Eve
+
+🌿 Sin had broken that early closeness
+
+🔗 The same nearness offered again here
+
+📖 This time it comes through obedience
+
 ## 🤝 Ye Shall Be My People
-"I will be your God, and you will be my people" is the core covenant formula repeated throughout the Old Testament. It is the simplest possible summary of the whole relationship this entire law code is meant to protect.
-🤝 The core covenant formula repeated across the Old Testament
+
+"I will be your God, and you will be my people" is a covenant formula.
+
+It repeats across the Old Testament again and again in later books.
+
+This is the simplest possible summary of the whole relationship this law protects.
+
+🤝 A covenant formula repeated across the Old Testament
+
 📖 Appears again and again in later books
-🎯 The simplest possible summary of the whole relationship
----
+
+🎯 The simplest summary of the whole relationship
+
+➡️ Everything else in this law serves this bond
+
 ## 🇪🇬 Which Brought You Forth Out Of The Land Of Egypt
-Every command in this chapter sits on top of this one historical fact - God had already rescued them once, for free, before ever asking anything of them. Obedience was always a response to rescue, not a way of earning it.
-🇪🇬 The historical fact every command in this chapter rests on
-🎁 Rescue came first, before any command was given
-🎯 Obedience was a response to rescue, not a way to earn it
----
+
+Every command in this chapter sits on top of this one historical fact.
+
+God had already rescued Israel once, for free, before asking anything of them.
+
+Obedience was always meant to be a response to rescue.
+
+It was never meant to be a way of earning that rescue.
+
+🇪🇬 The historical fact behind every command here
+
+🎁 Rescue came first, before any command
+
+🚫 Not a way of earning God's favor
+
+📖 Obedience was always a response, not a payment
+
 ## ⛓️ That Ye Should Not Be Their Bondmen
-"Bondmen" means slaves, people owned as property by someone else. This states plainly what they were rescued from - not just hardship in general, but literal forced slavery under Egypt.
-⛓️ "Bondmen" means people owned as property
-🇪🇬 States plainly what they were actually rescued from
-🎯 Not vague hardship, but literal slavery
----
+
+"Bondmen" means slaves, people owned outright as property by someone else.
+
+This states plainly what Israel had actually been rescued from.
+
+It was not vague hardship in general.
+
+It was literal forced slavery under a foreign empire.
+
+⛓️ Bondmen means people owned as property
+
+🇪🇬 States plainly what they were rescued from
+
+🚫 Not vague hardship but literal slavery
+
+📖 A specific, remembered rescue, not a metaphor
+
 ## 🔓 I Have Broken The Bands Of Your Yoke
-A "yoke" is the wooden crossbar laid across an animal's neck to force it to pull a load. Calling it "your yoke" pictures Israel itself as a beast of burden under Egypt, now set free from a bar that had been forcing them to labor.
-🔓 A "yoke" is the wooden crossbar used to force an animal to labor
-🐂 Pictures Israel itself as a burden-bearing animal under Egypt
-🎯 "Broken" means the forced labor itself has ended completely
----
+
+A "yoke" is the wooden crossbar laid across an animal's neck.
+
+It forced the animal to pull a heavy load against its will.
+
+Calling it "your yoke" pictures Israel as a burden bearing animal under Egypt.
+
+"Broken" means the forced labor has ended completely, not just eased.
+
+🔓 Yoke means the crossbar that forces labor
+
+🐂 Pictures Israel as a burden bearing animal
+
+🎯 Broken means the labor ended completely
+
+📖 Freedom here is total, not partial
+
 ## 🚶 Made You Go Upright
-Someone forced to labor under a yoke walks bent low under the weight. "Go upright" pictures the opposite - walking with head held high, in dignity, no longer bowed down by forced labor.
-🚶 A yoke-bearer walks bent low under the weight
-😔 Slavery is pictured here as a physically bowed-down posture
-🎯 "Upright" means restored dignity, not just physical freedom
+
+Someone forced to labor under a yoke walks bent low under the weight.
+
+"Go upright" pictures the opposite of that bent, burdened posture.
+
+It means walking with head held high, restored to real dignity.
+
+Freedom here is described as a change in how a person carries their body.
+
+🚶 A yoke bearer walks bent low
+
+😔 Slavery pictured as a bowed down posture
+
+🎯 Upright means restored dignity, not just release
+
+📖 Freedom shown through how the body moves
 
 # Leviticus 26:14-17
 # 😨 The Curses Begin
 ---
 ## 👂 But If Ye Will Not Hearken Unto Me
-"Hearken" means more than simply hearing - it means listening in a way that leads to obeying. This one word marks the sharp turn from blessing to curse for the rest of the chapter.
-👂 "Hearken" means listening in a way that leads to obedience
+
+"Hearken" means more than simply hearing words spoken out loud.
+
+It means listening in a way that leads to actually obeying.
+
+This one word marks the sharp turn from blessing into curse.
+
+The rest of the chapter builds on this turning point.
+
+👂 Hearken means listening that leads to obedience
+
 🔄 Marks the sharp turn from blessing to curse
-🎯 Simply hearing words was never the actual issue
----
+
+🎯 Simply hearing words was never the real issue
+
+📖 The chapter builds on this turning point
+
 ## 😤 If Ye Shall Despise My Statutes
-"Despise" means to look down on something as worthless, not just to disagree with it. This describes active contempt for God's law, not honest confusion or struggle to keep it.
-😤 "Despise" means treating something as worthless
+
+"Despise" means to treat something as worthless, not merely to disagree with it.
+
+"Statutes" means the fixed rules God had already given Israel.
+
+This describes active contempt, not honest confusion or a genuine struggle to obey.
+
+😤 Despise means treating something as worthless
+
+📜 Statutes means the fixed rules already given
+
 🚫 Describes active contempt, not honest struggle
-🎯 A much stronger word than simple disagreement
----
-## 😖 Your Soul Abhor My Judgments
-"Abhor" is the exact same strong word used earlier for what God's soul would not do toward them if they obeyed. Here it flips - now their own soul does the abhorring, aimed back at God's law instead of the other way around.
-😖 The same strong word ("abhor") used earlier, now reversed
-🔄 Their soul now abhors, instead of God's soul abhorring them
-🎯 A deliberate mirror image of verse 11's promise
----
-## 💔 Break My Covenant
-A covenant is a binding two-sided agreement. "Break" it means walking away from the obligations they had already agreed to, not simply falling short of a standard by accident.
-💔 A covenant is a two-sided binding agreement
-🚫 "Break" means walking away, not accidentally falling short
-🎯 The most serious possible description of the offense
----
-## 😱 I Will Appoint Over You Terror
-"Terror" here is a specific, appointed condition - constant fear and dread hanging over daily life, not just occasional bad luck. God names it directly as the first consequence.
-😱 "Terror" means constant dread hanging over daily life
-🎯 Named directly as the very first consequence listed
-📉 Not occasional bad luck, but an ongoing condition
----
-## 🤒 Consumption, And The Burning Ague
-"Consumption" is an old name for a wasting disease that slowly destroys the body, similar to what is now called tuberculosis. "Ague" is an old word for a recurring fever, complete with chills and shaking.
-🤒 "Consumption" is an old term for a wasting, body-destroying disease
-🌡️ "Ague" is an old word for a recurring fever with chills
-📖 Both were common, dreaded illnesses in the ancient world
----
-## 👁️ Consume The Eyes, And Cause Sorrow Of Heart
-These illnesses would visibly waste away the body, even affecting eyesight, while also crushing emotional strength. Physical sickness and mental despair are named together, as two sides of the same suffering.
-👁️ Physical sickness described as affecting even the eyes
-💔 "Sorrow of heart" names emotional despair alongside illness
-🎯 Body and mind suffering together, not separately
----
-## 🌾 Ye Shall Sow Your Seed In Vain, For Your Enemies Shall Eat It
-This directly reverses the earlier promise of overflowing harvests. Now the labor of planting still happens, but the harvest itself is stolen by enemies before the farmer ever benefits from it.
-🌾 A direct reversal of the earlier harvest blessing
-😔 Work still happens, but the reward is taken away
-🎯 Enemies eating the crop instead of the family who planted it
----
-## 😠 I Will Set My Face Against You
-God's face turning toward someone in blessing is a common Old Testament image, most familiar from the priestly blessing in Numbers 6. Here it flips completely - God's face is now actively set against them instead of shining on them.
-😠 God's face is normally pictured shining in blessing
-📖 Echoes the priestly blessing from Numbers 6, reversed
+
+📖 A far stronger word than simple disagreement
+
+## 😖 Or If Your Soul Abhor My Judgments
+
+"Judgments" means the specific case by case rulings God had given Israel.
+
+"Abhor" is the same strong word used later in this chapter.
+
+There it describes what God's soul will not do, if the people obey.
+
+Here the direction flips, since their own soul now does the abhorring.
+
+😖 Judgments means specific case by case rulings
+
+🔄 Abhor is the same word from verse eleven
+
+🪞 Here their own soul does the abhorring
+
+📖 A deliberate mirror of that earlier promise
+
+## 💔 But That Ye Break My Covenant
+
+A covenant is a binding agreement with real obligations on both sides.
+
+"Break" means walking away entirely from obligations already agreed to.
+
+It does not mean simply falling short of a standard by accident.
+
+This is the most serious possible description of the offense in this list.
+
+💔 Covenant means a binding two sided agreement
+
+🚫 Break means walking away, not accidentally failing
+
+🎯 The most serious description in this whole list
+
+📖 A deliberate departure, not an honest mistake
+
+## 😱 I Will Even Appoint Over You Terror
+
+"Terror" here is a specific, appointed condition, not just occasional bad luck.
+
+It means constant fear and dread hanging over daily life itself.
+
+God names it directly as the very first consequence on this list.
+
+😱 Terror means constant dread over daily life
+
+🎯 Named as the very first consequence listed
+
+📉 Not occasional bad luck but an ongoing state
+
+📖 God names the cost plainly, without softening it
+
+## 🤒 Consumption, And The Burning Ague, That Shall Consume The Eyes, And Cause Sorrow Of Heart
+
+"Consumption" is an old name for a wasting disease that slowly destroys the body.
+
+It is close to what is now called tuberculosis.
+
+"Ague" is an old word for a recurring fever, complete with chills and shaking.
+
+These illnesses would visibly waste the body, even affecting eyesight over time.
+
+Physical sickness and crushed emotional strength are named together in the very same breath.
+
+🤒 Consumption means a wasting, body destroying disease
+
+🌡️ Ague means a recurring fever with chills
+
+👁️ These illnesses were said to affect even eyesight
+
+📖 Body and mind suffering named together
+
+## 🌾 And Ye Shall Sow Your Seed In Vain, For Your Enemies Shall Eat It
+
+This directly reverses the earlier promise of overflowing harvests in verse five.
+
+The labor of planting would still happen exactly as before.
+
+This time the harvest itself gets stolen before the farmer benefits from it.
+
+Enemies eat the crop instead of the family who actually planted it.
+
+🌾 Reverses the harvest blessing from verse five
+
+😔 The work still happens, the reward is taken
+
+🎯 Enemies eat the crop instead of the farmer
+
+📖 A direct, deliberate undoing of an earlier promise
+
+## 😠 And I Will Set My Face Against You
+
+God's face turning toward someone in blessing is a common Old Testament image.
+
+The clearest example is the priestly blessing found later in Numbers six.
+
+Here that image flips completely, God's face now turns against His people instead.
+
+This is active opposition, not simply withdrawn favor.
+
+😠 God's face normally pictured shining in blessing
+
 🎯 Active opposition, not just withdrawn favor
----
-## 🗡️ Ye Shall Be Slain Before Your Enemies... Reign Over You
-Military defeat is followed by political domination - not just losing battles, but actually living under the control of the very nations they once feared or defeated in verse 8.
-🗡️ Military defeat leading into political domination
-🔄 A reversal of the victory promised earlier in the chapter
-🎯 Losing control over their own nation entirely
----
-## 🏃 Ye Shall Flee When None Pursueth
-This describes pure paranoia - running in fear even when no actual enemy is chasing them. Guilt and dread become so overwhelming that imagined danger feels just as real as an actual attack.
-🏃 Running in fear from a threat that is not actually there
-😰 Guilt and dread making imagined danger feel completely real
-🔗 This exact phrase returns again later in the chapter
+
+🔄 Here that image is reversed completely
+
+📖 Echoes the priestly blessing later in Numbers six
+
+## 🗡️ Ye Shall Be Slain Before Your Enemies, And They That Hate You Shall Reign Over You
+
+Military defeat here is followed immediately by political domination.
+
+This is not just losing individual battles here and there.
+
+It means actually living under the control of nations they once feared.
+
+Verse eight promised chasing enemies away, now that picture is reversed entirely.
+
+🗡️ Military defeat followed by political domination
+
+👑 Living under nations they once feared or beat
+
+🔄 A direct reversal of verse eight's victory
+
+📖 Losing control over their own nation entirely
+
+## 🏃 And Ye Shall Flee When None Pursueth You
+
+This describes pure paranoia, running in fear when no enemy is actually chasing.
+
+Guilt and constant dread can make imagined danger feel completely real.
+
+This exact phrase returns again later in the chapter, even more intense.
+
+🏃 Running from a threat that is not there
+
+😰 Guilt making imagined danger feel real
+
+🔗 This exact phrase returns later, worse
+
+📖 Fear itself becomes its own kind of curse
 
 # Leviticus 26:18-20
 # 🔢 Seven Times Over
 ---
-## 🔢 I Will Punish You Seven Times More For Your Sins
-"Seven times more" is a formula this chapter repeats four separate times as the curses escalate, each repetition marking a new, more severe level of discipline after the previous level still did not bring the people back.
-🔢 A repeated formula, appearing four times in this chapter
-📈 Each repetition marks an escalating, more severe level
-⏳ Discipline builds only after the previous level went unheeded
----
-## 💪 I Will Break The Pride Of Your Power
-"Pride of power" describes confidence in military strength and national ability to defend or provide for themselves. Breaking it means stripping away that self-reliant confidence entirely.
-💪 "Pride of power" means confidence in their own strength
-🚫 Describes stripping that self-confidence away completely
-🎯 Targets their sense of security in themselves, not just crops
----
-## ⛓️ I Will Make Your Heaven As Iron, And Your Earth As Brass
-This is drought pictured as vividly as possible - a sky like solid iron, through which no rain can ever fall, over ground like hardened brass, in which nothing can ever grow. Both farming essentials fail completely at once.
-⛓️ "Iron" heaven pictures a sky rain can never break through
-🥉 "Brass" earth pictures ground too hardened to grow anything
-🌾 Both essential farming conditions failing at the same time
----
-## 💪 Your Strength Shall Be Spent In Vain
-All the physical labor of farming would happen exactly as before, but produce nothing - effort without any result at all, echoing the "sow in vain" idea from the previous section.
-💪 Full effort put in, with nothing at all to show for it
-🔗 Echoes the "sow in vain" idea from the previous section
-🎯 Labor itself is not punished; its usefulness is removed
----
-## 🌾 Your Land Shall Not Yield Her Increase, Neither Shall The Trees... Yield Their Fruits
-This is a direct, word-for-word reversal of the blessing promised in verse 4 - the exact same language, now describing total agricultural failure instead of abundance.
-🌾 A direct reversal of the exact promise made in verse 4
-🔄 Same wording, opposite outcome
-🎯 Total failure across both fields and orchards together
+## 🔢 Then I Will Punish You Seven Times More For Your Sins
+
+"Seven times more" is a formula this chapter repeats four separate times.
+
+Each repetition marks a new, more severe level of discipline.
+
+Discipline escalates only after the previous level still goes unheeded.
+
+This is the first use of that formula in the whole chapter.
+
+🔢 A repeated formula, used four times total
+
+📈 Each repeat marks a more severe level
+
+⏳ Escalation comes only after being ignored
+
+📖 The first use of this formula
+
+## 💪 And I Will Break The Pride Of Your Power
+
+"Pride of power" describes confidence in military strength and national ability to defend itself.
+
+Breaking that pride means stripping away self reliant confidence entirely.
+
+This targets their sense of security in themselves, not just their crops or homes.
+
+💪 Pride of power means confidence in strength
+
+🚫 Breaking it strips that confidence away entirely
+
+🎯 Targets self reliance, not just crops
+
+📖 Self security was never meant to replace God
+
+## ⛓️ And I Will Make Your Heaven As Iron, And Your Earth As Brass
+
+This pictures drought as vividly as possible.
+
+The sky becomes like solid iron, through which no rain can ever fall.
+
+The ground becomes like hardened brass, in which nothing can ever grow.
+
+Both essential farming conditions fail completely at the very same time.
+
+⛓️ Iron heaven means a sky rain cannot break
+
+🥉 Brass earth means ground too hard for growth
+
+🌾 Both farming essentials fail at once
+
+📖 A drought pictured in the most vivid terms
+
+## 💪 And Your Strength Shall Be Spent In Vain
+
+All the physical labor of farming would still happen exactly as before.
+
+None of that effort would produce any result at all.
+
+This echoes the "sow in vain" idea from the previous section directly.
+
+Labor itself is not being punished here, only its usefulness is removed.
+
+💪 Full effort put in, nothing to show
+
+🔗 Echoes the sow in vain idea earlier
+
+🎯 Labor continues, its usefulness is removed
+
+📖 Working hard would no longer guarantee any result
+
+## 🌾 For Your Land Shall Not Yield Her Increase, Neither Shall The Trees Yield Their Fruits
+
+This is a direct reversal of the exact blessing promised back in verse four.
+
+It uses the very same wording, "yield her increase" and "yield their fruit."
+
+Now that same language describes total agricultural failure instead of overflowing abundance.
+
+🌾 A direct reversal of promise in verse four
+
+🔄 Same wording, opposite outcome entirely
+
+🎯 Total failure across fields and orchards together
+
+📖 The exact blessing now undone word for word
 
 # Leviticus 26:21-22
 # 🐺 Wild Beasts
 ---
-## ↔️ If Ye Walk Contrary Unto Me
-"Contrary" becomes this chapter's key word from here forward, used repeatedly to describe deliberate, ongoing resistance rather than a single mistake - walking in the opposite direction from where God is leading, on purpose.
-↔️ "Contrary" becomes a key repeated word from here forward
-🚶 Pictures deliberate resistance, not one accidental slip
-🔁 Will keep returning through the rest of the chapter
----
-## 🔢 I Will Bring Seven Times More Plagues Upon You
-The second use of the "seven times" escalation formula, now applied to "plagues" broadly - a general term covering any kind of disaster or affliction, not naming one specific type yet.
-🔢 The second use of the escalating "seven times" formula
-🌍 "Plagues" here is a broad term, not one specific disaster
-📈 Marks another step up from the previous level of discipline
----
+## ↔️ And If Ye Walk Contrary Unto Me
+
+"Contrary" becomes this chapter's key repeated word from this point forward.
+
+It pictures deliberate, ongoing resistance, not a single accidental mistake.
+
+It means walking in the opposite direction from where God is leading, on purpose.
+
+This word will keep returning through the rest of the chapter.
+
+↔️ Contrary becomes a key repeated word here
+
+🚶 Pictures deliberate resistance, not one slip
+
+🔁 Keeps returning through the rest of the chapter
+
+📖 Walking the opposite direction from God, on purpose
+
+## 🔢 Then I Will Bring Seven Times More Plagues Upon You
+
+This is the second use of the escalating "seven times" formula.
+
+Here it is applied to "plagues," a broad general term for disaster.
+
+It does not yet name one specific kind of affliction.
+
+This step marks another rise from the previous level of discipline.
+
+🔢 The second use of the seven times formula
+
+🌍 Plagues here is a broad general term
+
+📈 Marks another step up in discipline
+
+📖 Still general, not naming one specific disaster yet
+
 ## 🐺 I Will Also Send Wild Beasts Among You
-This directly reverses the earlier promise in verse 6 to remove dangerous wild animals from the land. What was once a protection becomes a threat instead.
-🐺 A direct reversal of the promise made in verse 6
-🔄 Protection removed and turned into an active danger
-🎯 Shows the same blessing named earlier, now undone
----
+
+This directly reverses the earlier promise in verse six to remove dangerous animals.
+
+What was once a promised protection now becomes an active threat instead.
+
+The same blessing named earlier in the chapter is shown here completely undone.
+
+🐺 A direct reversal of promise in verse six
+
+🔄 Protection removed and turned into a danger
+
+🎯 The same blessing now shown undone
+
+📖 Nothing promised earlier is safe from reversal here
+
 ## 👶 Which Shall Rob You Of Your Children, And Destroy Your Cattle
-The threat targets both a family's most precious relationships and their basic economic survival at the same time - children and livestock named together as what stands to be lost.
-👶 Targets both family and livelihood in the same breath
-🐄 Cattle represented a family's basic economic survival
-🎯 Two very different kinds of loss named side by side
----
-## 🛣️ Make You Few In Number; And Your High Ways Shall Be Desolate
-"High ways" means the main roads used for travel and trade. Empty, unused roads picture a land so devastated and depopulated that normal travel, trade, and even pilgrimage to the tabernacle simply stop happening.
-🛣️ "High ways" means the main roads used for travel and trade
-🚶 Empty roads picture a devastated, depopulated land
-🎯 Even ordinary travel and trade come to a stop
+
+This threat targets a family's most precious relationships and its basic livelihood together.
+
+Children represent the family's future and its deepest love.
+
+Cattle represent a family's practical, everyday economic survival.
+
+Both losses are named side by side in the very same breath.
+
+👶 Targets family and livelihood together
+
+🐄 Cattle represented a family's basic survival
+
+💔 Children represented the family's deepest love
+
+📖 Two very different losses named side by side
+
+## 🛣️ And Make You Few In Number, And Your High Ways Shall Be Desolate
+
+"High ways" means the main roads used for travel and trade at the time.
+
+Empty, unused roads picture a land devastated and emptied of people.
+
+Normal travel, trade, and even pilgrimage to the tabernacle would simply stop happening.
+
+🛣️ High ways means the main roads for travel
+
+🚶 Empty roads picture a devastated, empty land
+
+🎯 Even ordinary travel and trade would stop
+
+📖 A way of life grinding to a halt
 
 # Leviticus 26:23-26
 # 🗡️ Siege And Famine
 ---
-## 🔄 If Ye Will Not Be Reformed By Me By These Things
-"Reformed" means corrected or changed for the better. The question is whether the discipline itself is working as intended - producing a change of heart - or simply being endured without any real turning back.
-🔄 "Reformed" means corrected or genuinely changed
-❓ Asks whether the discipline is producing real change
-⏳ Sets up whether this cycle of escalation continues or not
----
+## 🔄 And If Ye Will Not Be Reformed By Me By These Things
+
+"Reformed" means corrected, genuinely changed for the better.
+
+This line asks a real question, is the discipline actually working.
+
+Or is it simply being endured without any true turning back.
+
+This sets up whether the escalation continues from here or finally stops.
+
+🔄 Reformed means genuinely corrected, not just punished
+
+❓ Asks whether the discipline is working
+
+⏳ Sets up whether escalation continues or stops
+
+📖 A real question, not a rhetorical one
+
 ## ↔️ Then Will I Also Walk Contrary Unto You
-The same word "contrary" used of the people earlier in the chapter is now turned back around and applied to God's own response - He mirrors their own defiance back at them rather than inventing a separate punishment.
-↔️ The same "contrary" language, now describing God's response
-🪞 Pictures God mirroring their own defiance back at them
-🎯 The punishment matches the shape of the original offense
----
-## 🔢 I... Will Punish You Yet Seven Times For Your Sins
-The third use of the "seven times" formula, confirming the escalation continues to climb with no sign yet of the people turning back.
-🔢 The third use of the repeated "seven times" formula
+
+The word "contrary" was used of the people earlier in this chapter.
+
+Here that same word is turned around and applied to God's own response.
+
+God is pictured mirroring their own defiance back at them.
+
+The punishment matches the shape of the original offense on purpose.
+
+↔️ Contrary now describes God's own response
+
+🪞 Pictures God mirroring their defiance back
+
+🎯 The punishment matches the offense's shape
+
+📖 Not random punishment but a deliberate mirror
+
+## 🔢 And I Will Punish You Yet Seven Times For Your Sins
+
+This is the third use of the "seven times" escalation formula.
+
+It confirms the punishment is still climbing with each stage.
+
+No sign yet appears of the people actually turning back.
+
+🔢 The third use of the seven times formula
+
 📈 Confirms the escalation is still climbing
-🎯 No turning back has happened yet at this stage
----
-## ⚔️ I Will Bring A Sword Upon You, That Shall Avenge The Quarrel Of My Covenant
-"Quarrel of my covenant" pictures the broken covenant almost like a legal lawsuit - the sword enforces the consequences the covenant itself had already warned about, like a judgment being carried out.
-⚔️ "Quarrel" pictures the broken covenant like a legal dispute
-📜 The sword enforces what the covenant already warned about
-🎯 Judgment being carried out, not random violence
----
-## 🏙️ When Ye Are Gathered Together Within Your Cities, I Will Send The Pestilence
-Fleeing to walled cities for safety during an invasion actually backfires here - crowding everyone together inside city walls made disease spread much faster than it would among scattered rural households.
-🏙️ Crowding into cities for safety instead speeds up disease
-🦠 "Pestilence" means a fast-spreading, deadly epidemic
-🎯 The very shelter meant to protect them makes things worse
----
-## 🤲 Ye Shall Be Delivered Into The Hand Of The Enemy
-"Delivered into the hand of" is a common Old Testament idiom for total defeat and being placed under someone else's total control, used often throughout Israel's later history of conquest.
-🤲 "Into the hand of" is a common Old Testament idiom
-🏳️ Pictures total defeat and complete loss of control
-📖 A phrase repeated often in Israel's later history
----
+
+🚫 No turning back has happened yet
+
+📖 Discipline keeps rising as long as ignored
+
+## ⚔️ And I Will Bring A Sword Upon You, That Shall Avenge The Quarrel Of My Covenant
+
+"Quarrel of my covenant" pictures the broken agreement almost like a legal dispute.
+
+The sword here enforces consequences the covenant itself had already warned about.
+
+This is judgment being carried out, not random or meaningless violence.
+
+⚔️ Quarrel pictures the covenant like a legal case
+
+📜 The sword enforces what was already warned
+
+🎯 Judgment carried out, not random violence
+
+📖 The punishment was written into the agreement itself
+
+## 🏙️ When Ye Are Gathered Together Within Your Cities, I Will Send The Pestilence, And Ye Shall Be Delivered Into The Hand Of The Enemy
+
+Fleeing to walled cities for safety actually backfires in this verse.
+
+Crowding everyone together inside city walls let disease spread far faster.
+
+"Pestilence" means a fast spreading, deadly epidemic sweeping through the population.
+
+"Delivered into the hand of the enemy" is an old idiom for total defeat.
+
+The very shelter meant to protect the people would make things worse instead.
+
+🏙️ Crowding into cities actually speeds up disease
+
+🦠 Pestilence means a fast spreading epidemic
+
+🤲 Delivered into the hand of means total defeat
+
+📖 The shelter meant to protect made things worse
+
 ## 🍞 When I Have Broken The Staff Of Your Bread
-"Staff" here means a support you lean on for strength, and "staff of bread" is an idiom for bread as life's basic support system. Breaking it means the most fundamental food supply itself gives way completely.
-🍞 "Staff" means something you lean on for support
-🥖 "Staff of bread" is an idiom for bread as basic life-support
-🎯 Describes total food-supply collapse, not minor shortage
----
+
+"Staff" here means a support someone leans on for strength.
+
+"Staff of bread" is an old idiom picturing bread as life's basic support.
+
+Breaking it means the most fundamental food supply itself gives way completely.
+
+🍞 Staff means a support leaned on for strength
+
+🥖 Staff of bread means bread as basic support
+
+🎯 Total food supply collapse, not a minor shortage
+
+📖 The most basic need itself is what fails
+
 ## 👩‍🍳 Ten Women Shall Bake Your Bread In One Oven
-Normally each household baked its own bread in its own oven. Ten families sharing a single oven pictures famine so severe that fuel and grain had both become too scarce for anyone to bake separately anymore.
-👩‍🍳 Normally, each household had and used its own oven
+
+Normally each household baked its own bread in its own oven at home.
+
+Ten families sharing a single oven pictures famine at its most severe.
+
+Fuel and grain had both become too scarce for anyone to bake separately.
+
+👩‍🍳 Normally each household used its own oven
+
 🔥 Ten households sharing one oven pictures extreme scarcity
-🌾 Both fuel and grain had become too scarce to use separately
----
-## ⚖️ Deliver You Your Bread Again By Weight
-Bread handed out "by weight" instead of freely available means strict rationing - small, carefully measured portions instead of the normal, generous supply a family could count on.
-⚖️ "By weight" means strict rationing, not free supply
-📏 Small, carefully measured portions instead of normal amounts
-🎯 A vivid picture of famine-level food scarcity
----
-## 😔 Ye Shall Eat, And Not Be Satisfied
-This directly reverses the earlier blessing of eating "to the full." Now food exists in some small amount, but never enough to actually feel fed or secure.
-😔 A direct reversal of the earlier "eat to the full" promise
-🍽️ Some food exists, but never enough to feel truly fed
-🔄 Same idea from verse 5, flipped into its opposite
+
+🌾 Fuel and grain both too scarce alone
+
+📖 A single image carrying the weight of famine
+
+## ⚖️ And They Shall Deliver You Your Bread Again By Weight
+
+Bread handed out "by weight" instead of freely available means strict rationing.
+
+Portions would be small and carefully measured instead of a normal, generous supply.
+
+A family could no longer simply count on having enough.
+
+⚖️ By weight means strict rationing
+
+📏 Small, carefully measured portions, not normal amounts
+
+🎯 A vivid picture of famine level scarcity
+
+📖 Enough food could no longer be assumed
+
+## 😔 And Ye Shall Eat, And Not Be Satisfied
+
+This directly reverses the earlier blessing of eating "to the full" in verse five.
+
+Some food would exist in a small amount, but never truly enough.
+
+The body could eat and still never actually feel fed or secure.
+
+😔 Reverses the eat to the full promise
+
+🍽️ Some food exists, never fully enough
+
+🔄 The same idea from verse five, flipped
+
+📖 Even eating would stop feeling like relief
 
 # Leviticus 26:27-31
 # 💀 The Horror Of Total Covenant Breach
 ---
 ## ↔️ And If Ye Will Not For All This Hearken Unto Me, But Walk Contrary Unto Me
-This is the fourth and final warning cycle, repeating the same "hearken... contrary" language used at each earlier turning point, before the chapter's most severe consequences are described.
-↔️ The fourth and final warning cycle in the chapter
-🔁 Repeats the same language from each earlier turning point
-⚠️ Sets up the most severe consequences yet to come
----
+
+This is the fourth and final warning cycle in this chapter.
+
+It repeats the same "hearken" and "contrary" language used at each earlier turning point.
+
+The chapter's most severe consequences are about to follow this line.
+
+↔️ The fourth and final warning cycle here
+
+🔁 Repeats language from each earlier turning point
+
+⚠️ Sets up the most severe consequences yet
+
+📖 The pattern has now run its full course
+
 ## 😡 Then I Will Walk Contrary Unto You Also In Fury
-"Fury" marks an intensified tone compared to the earlier uses of "contrary" - not simply matching their defiance anymore, but doing so with visible, burning anger.
-😡 "Fury" marks a sharper, more intense tone than before
-🔥 Not just matching defiance, but doing so in visible anger
-📈 The emotional intensity itself is escalating, not just the punishment
----
+
+"Fury" marks a sharper, more intense tone than the earlier uses of "contrary."
+
+This is no longer simply matching their defiance point for point.
+
+It now comes with visible, burning anger behind it.
+
+😡 Fury marks a sharper tone than before
+
+🔥 No longer just matching defiance evenly
+
+📈 The emotional intensity itself is escalating
+
+📖 Anger here is named, not hidden
+
 ## 🔢 I, Even I, Will Chastise You Seven Times For Your Sins
-The fourth and final use of the "seven times" formula, doubled for emphasis with "I, even I" - underlining that this final, worst level of discipline comes directly and personally from God, not by accident.
-🔢 The fourth and final use of the "seven times" formula
-🎯 "I, even I" doubles the emphasis on purpose
-😨 Marks this as the chapter's absolute worst level of discipline
----
-## 😱 Ye Shall Eat The Flesh Of Your Sons, And... Daughters
-This describes cannibalism during a prolonged siege, the single most horrifying result of total famine. Later Old Testament history records this exact horror actually happening during real sieges of Israelite cities, showing this warning was not exaggeration.
+
+This is the fourth and final use of the "seven times" formula.
+
+"I, even I" doubles the emphasis on purpose, underlining who is speaking.
+
+This final, worst level of discipline comes directly and personally from God.
+
+🔢 The fourth and final seven times formula
+
+🎯 I even I doubles the emphasis
+
+😨 Marks the chapter's absolute worst level
+
+📖 Discipline here is personal, not distant or automatic
+
+## 😱 And Ye Shall Eat The Flesh Of Your Sons, And The Flesh Of Your Daughters Shall Ye Eat
+
+This describes cannibalism during a prolonged siege, the worst possible result of famine.
+
+Later Old Testament history actually records this exact horror happening during real sieges.
+
+This warning was never exaggeration written only for effect.
+
+It is the single most extreme consequence named anywhere in this chapter.
+
 😱 Describes cannibalism during a prolonged siege
-📖 Later history records this exact horror actually happening
-🎯 The single most extreme consequence in the entire chapter
----
-## 🏔️ I Will Destroy Your High Places
-"High places" were hilltop or elevated worship sites, often used for idol worship even by people who claimed to also worship the true God. Destroying them removes every rival place of worship across the land.
-🏔️ "High places" were elevated, often idolatrous worship sites
-⚠️ Sometimes used even by people who claimed to worship God too
-🎯 Removes every rival place of worship across the whole land
----
-## 🪵 Cut Down Your Images
-"Images" here refers to carved wooden poles or figures used in idol worship, often associated with the goddess Asherah in Canaanite religion. Cutting them down destroys the physical objects of false worship completely.
-🪵 "Images" here means carved wooden idol poles or figures
-🕎 Often connected to Asherah worship in Canaanite religion
+
+📖 Later history records this horror actually happening
+
+🎯 The most extreme consequence in the chapter
+
+➡️ A warning meant to be taken seriously
+
+## 🏔️ And I Will Destroy Your High Places
+
+"High places" were hilltop or elevated worship sites used across the land.
+
+People sometimes used them for idol worship, even while claiming to worship the true God too.
+
+Destroying them removes every rival place of worship at once.
+
+🏔️ High places means elevated, often idolatrous worship sites
+
+⚠️ Sometimes used by people claiming to worship God
+
+🎯 Removes every rival worship site across the land
+
+📖 No competing loyalty is allowed to remain standing
+
+## 🪵 And Cut Down Your Images
+
+"Images" here means carved wooden poles or figures used in idol worship.
+
+These were often connected to the goddess Asherah in Canaanite religion.
+
+Cutting them down destroys the physical objects of false worship completely.
+
+🪵 Images means carved wooden idol poles
+
+🕎 Often connected to Asherah worship in Canaan
+
 🚫 Destroys the physical objects of false worship
----
-## 💀 Cast Your Carcases Upon The Carcases Of Your Idols
-This deliberately defiles the very idols the people had worshiped by piling human corpses on top of them - a graphic way of proving those idols had no real power to protect anyone, including their own worshipers.
-💀 Human corpses deliberately piled on top of destroyed idols
-⚠️ A graphic proof the idols had no real protective power
-🎯 Even their own worshipers could not be saved by them
----
-## 😖 My Soul Shall Abhor You
-This is the exact same word promised not to happen back in verse 11 - now stated as actually occurring. The chapter's earlier hopeful promise and this later warning are meant to be read side by side.
-😖 The exact reversal of the promise made in verse 11
-🔄 Same strong word, now describing the opposite outcome
-🎯 Meant to be read directly against that earlier promise
----
-## 🏚️ I Will Make Your Cities Waste, And Bring Your Sanctuaries Unto Desolation
-"Sanctuaries" here means local worship sites and shrines throughout the land, not just the one central tabernacle. Every place people gathered to worship, true or false, would be left in ruins.
-🏚️ "Sanctuaries" means local worship sites, not just the tabernacle
-🌍 Covers every worship location across the whole land
-💔 Total ruin, not just the destruction of one building
----
+
+📖 False worship removed down to its physical roots
+
+## 💀 And Cast Your Carcases Upon The Carcases Of Your Idols
+
+This deliberately defiles the very idols the people had once worshiped.
+
+Human corpses would be piled directly on top of destroyed idol statues.
+
+It is a graphic way of proving those idols had no real power at all.
+
+Even their own worshipers could not be saved by them in the end.
+
+💀 Corpses piled deliberately on top of idols
+
+⚠️ A graphic proof of the idols' powerlessness
+
+🎯 Not even their own worshipers could be saved
+
+📖 False gods exposed as unable to protect anyone
+
+## 🏚️ And I Will Make Your Cities Waste, And Bring Your Sanctuaries Unto Desolation
+
+"Sanctuaries" here means local worship sites and shrines scattered across the land.
+
+This is not limited to just the one central tabernacle.
+
+Every place people gathered to worship, true or false, would end up in ruins.
+
+🏚️ Sanctuaries means local worship sites, not just one
+
+🌍 Covers every worship location across the land
+
+💔 Total ruin, not the loss of one building
+
+📖 Nothing sacred was left standing here
+
 ## 👃 I Will Not Smell The Savour Of Your Sweet Odours
-Smelling the smoke of a sacrifice was the Old Testament's picture of God accepting and receiving an offering. Refusing to smell it means refusing to accept their worship at all - even sincere-looking sacrifices would no longer be received.
-👃 Smelling sacrifice-smoke pictured God accepting an offering
-🚫 Refusing to smell it means refusing their worship entirely
-🎯 Even outwardly proper sacrifices would not be accepted
+
+Smelling the smoke of a sacrifice pictured God accepting an offering in the Old Testament.
+
+Refusing to smell it means refusing to accept the worship being offered.
+
+Even outwardly proper sacrifices would no longer be received at all.
+
+👃 Smelling sacrifice smoke pictured God's acceptance
+
+🚫 Refusing to smell means refusing the worship
+
+🎯 Even proper sacrifices go unreceived here
+
+📖 Empty ritual cannot substitute for a real relationship
 
 # Leviticus 26:32-35
 # 🏜️ The Land Gets Its Rest
 ---
 ## 🏜️ I Will Bring The Land Into Desolation
-"Desolation" means left empty and ruined, uninhabited and unproductive. This zooms out from individual disasters to describe the entire land's condition after everything already listed has happened.
-🏜️ "Desolation" means left empty, ruined, and unproductive
-🌍 Zooms out to describe the whole land's final condition
-🎯 The summary result of everything listed earlier in the chapter
----
-## 😲 Your Enemies Which Dwell Therein Shall Be Astonished At It
-Even the foreign nations who conquer and move into the land will be shocked at how thoroughly devastated it has become - the destruction is severe enough to stun even the people who caused it.
-😲 Even the conquerors themselves react with shock
-🌍 The devastation is severe enough to stun outsiders too
-🎯 A detail that makes the desolation feel even more extreme
----
+
+"Desolation" means left empty and ruined, uninhabited and unproductive.
+
+This zooms out from individual disasters to the entire land's final condition.
+
+It is the summary result of everything already listed earlier in the chapter.
+
+🏜️ Desolation means left empty and unproductive
+
+🌍 Zooms out to the land's overall condition
+
+🎯 The summary of everything listed so far
+
+📖 One word covering the sum total of loss
+
+## 😲 And Your Enemies Which Dwell Therein Shall Be Astonished At It
+
+Even the foreign nations who conquer and move into the land will be shocked.
+
+The destruction would be severe enough to stun even the people who caused it.
+
+This small detail makes the desolation feel even more extreme by comparison.
+
+😲 Even the conquerors react with shock
+
+🌍 The devastation stuns outsiders too
+
+🎯 A detail that deepens the sense of ruin
+
+📖 Not even the winners come away untouched
+
 ## 🌍 I Will Scatter You Among The Heathen
-"Heathen" is an old word for foreign, non-Israelite nations. "Scatter" describes exile - not staying together as a captive group in one place, but being spread out and dispersed across many different foreign lands.
-🌍 "Heathen" is an old word for foreign, non-Israelite nations
-🔀 "Scatter" pictures exile spread across many places, not one
-📖 A direct, specific prediction of Israel's later exile
----
-## ⚔️ Will Draw Out A Sword After You
-Even scattered into exile, ongoing danger and violence would still follow them - exile does not mean the threats named earlier simply stop; it changes their location instead.
-⚔️ Danger continues to follow even into exile
-🌍 Exile changes location, but does not remove all threat
-🎯 The consequences reach even beyond the borders of Israel itself
----
-## 🏚️ Your Land Shall Be Desolate, And Your Cities Waste
-This repeats and confirms the desolation already described, now specifically tied to the scattering just mentioned - an empty land left behind while its people are exiled far away.
-🏚️ Repeats and confirms the desolation described earlier
-🔗 Now specifically tied to the scattering just described
-🏡 An empty homeland left behind while its people are exiled
----
+
+"Heathen" is an old word for foreign, non Israelite nations.
+
+"Scatter" describes exile, being spread across many different foreign lands at once.
+
+This is not staying together as one captive group in a single place.
+
+🌍 Heathen means foreign, non Israelite nations
+
+🔀 Scatter pictures exile spread across many places
+
+🚫 Not one captive group, but many scattered ones
+
+📖 A specific, named prediction of Israel's later exile
+
+## ⚔️ And Will Draw Out A Sword After You
+
+Even scattered into exile, ongoing danger would still follow the people.
+
+Exile does not mean the threats already named simply stop happening.
+
+It only means the danger changes location instead of disappearing.
+
+⚔️ Danger follows even into exile
+
+🌍 Exile changes location, not the threat itself
+
+🎯 Consequences reach beyond Israel's own borders
+
+📖 Safety was never found by simply leaving
+
+## 🏚️ And Your Land Shall Be Desolate, And Your Cities Waste
+
+This repeats and confirms the desolation already described earlier in the chapter.
+
+It is now specifically tied to the scattering described in the verse just before.
+
+An empty land is left behind while its people live exiled far away.
+
+🏚️ Repeats the desolation described earlier
+
+🔗 Tied now to the scattering just mentioned
+
+🏡 An empty homeland left behind
+
+📖 Exile and desolation form one whole loss
+
 ## 😴 Then Shall The Land Enjoy Her Sabbaths, As Long As It Lieth Desolate
-This directly recalls the sabbatical-year law from the previous chapter - the land finally gets the regular rest years it had been denied, once there is no one left in it to keep farming through them.
-😴 Directly recalls the sabbatical-year law from chapter 25
-🌾 The land finally receives the rest years it was denied
-🔗 Only possible once no one remains to keep farming it
----
-## 🌍 Ye Be In Your Enemies' Land; Even Then Shall The Land Rest
-While the people suffer in a foreign land far from home, the land they left behind experiences the very rest that obedience should have provided all along - a bittersweet detail, since the rest finally comes only through their absence.
-🌍 The people suffer abroad while their land rests at home
-😔 Bittersweet, since rest only comes through their absence
-🔗 Ties the people's exile directly to their land's healing
----
-## 📊 As Long As It Lieth Desolate It Shall Rest; Because It Did Not Rest In Your Sabbaths
-This draws a direct cause-and-effect line between the length of exile and however many sabbatical years had been ignored while they lived there. Later in the Old Testament, the seventy-year Babylonian exile is explicitly said to match exactly the number of sabbath years Israel had skipped.
-📊 Draws a direct link between exile length and skipped sabbaths
-📖 Later fulfilled exactly in the seventy-year Babylonian exile
-🎯 Shows this warning was not vague - it came true precisely
+
+This directly recalls the sabbatical year law given in the previous chapter.
+
+The land would finally receive the regular rest years it had been denied.
+
+That rest only becomes possible once no one remains to keep farming it.
+
+😴 Recalls the sabbatical law from chapter twenty five
+
+🌾 The land finally receives the rest denied
+
+🔗 Only possible once farming stops entirely
+
+📖 Even the ground had a debt to collect
+
+## 🌍 And Ye Be In Your Enemies' Land, Even Then Shall The Land Rest
+
+The people would suffer far from home in a foreign land.
+
+Meanwhile the land they left behind would finally experience the rest denied it.
+
+This detail is bittersweet, since rest only comes through the people's absence.
+
+🌍 People suffer abroad while their land rests
+
+😔 Bittersweet, since rest comes through absence
+
+🔗 Ties the people's exile to the land's healing
+
+📖 The land recovers precisely because they are gone
+
+## 📊 As Long As It Lieth Desolate It Shall Rest, Because It Did Not Rest In Your Sabbaths
+
+This draws a direct line between the length of exile and skipped rest years.
+
+Later in the Old Testament, the Babylonian exile lasted exactly seventy years.
+
+Scripture explicitly says that number matched the sabbath years Israel had ignored.
+
+This warning turned out to be precise, not vague or symbolic.
+
+📊 Links exile length to skipped sabbath years
+
+📖 Later fulfilled exactly in the seventy year exile
+
+🎯 Shows this warning came true precisely
+
+➡️ Numbers here were never just decoration
 
 # Leviticus 26:36-39
 # 🍃 Fear In The Land Of Enemies
 ---
 ## 😰 Upon Them That Are Left Alive Of You I Will Send A Faintness Into Their Hearts
-"Faintness" describes a crippling, constant anxiety - not ordinary fear that comes and goes, but a heavy dread that never fully lifts, affecting even the survivors who made it through everything already described.
-😰 "Faintness" means a crippling, ongoing anxiety
-💔 Not ordinary fear, but dread that never fully lifts
-🎯 Affects even the survivors who made it through the worst
----
+
+"Faintness" describes a crippling, constant anxiety, not fear that comes and goes.
+
+It is a heavy dread that never fully lifts from a person's mind.
+
+This affects even the survivors who made it through everything already described.
+
+😰 Faintness means a crippling, ongoing anxiety
+
+💔 Not ordinary fear, but dread that never lifts
+
+🎯 Affects even survivors of everything already described
+
+📖 Survival alone did not bring any real relief
+
 ## 🍃 The Sound Of A Shaken Leaf Shall Chase Them
-This pictures extreme, irrational paranoia - people so consumed by dread that even the small rustle of a leaf in the wind is enough to send them running in terror, as if it were an actual attacker.
-🍃 Even a rustling leaf is enough to trigger blind panic
-😨 Pictures paranoia completely disconnected from real danger
-🎯 One of the most vivid images in the entire chapter
----
-## 🏃 They Shall Flee, As Fleeing From A Sword; And They Shall Fall When None Pursueth
-This repeats the exact phrase used earlier in the chapter describing fleeing from imaginary threats - the same paranoia named before has now grown even more extreme among those left in exile.
-🏃 Repeats the exact phrase used earlier in verse 17
-🔗 Shows the same fear has grown even more extreme in exile
-😨 Panic and collapse with no real threat actually present
----
-## 💥 They Shall Fall One Upon Another, As It Were Before A Sword, When None Pursueth
-The panic becomes so widespread that people trample and collide with each other while fleeing a danger that does not exist - chaos caused entirely by fear itself, not by any actual enemy.
-💥 People trample each other fleeing an imaginary threat
-😱 Chaos caused entirely by fear, with no real enemy present
-🎯 Shows how deeply guilt and dread had taken hold
----
-## 🛡️ Ye Shall Have No Power To Stand Before Your Enemies
-Beyond the paranoia, real military weakness would remain too - even in situations calling for actual defense, there would be no strength left to hold any ground at all.
-🛡️ Describes genuine military weakness, not just fear
+
+This pictures extreme, irrational paranoia at its most vivid.
+
+People become so consumed by dread that a small rustling leaf triggers terror.
+
+They run as if it were an actual attacker chasing them.
+
+🍃 Even a rustling leaf triggers panic
+
+😨 Pictures paranoia disconnected from real danger
+
+🎯 One of the most vivid images here
+
+📖 Guilt can manufacture danger that is not real
+
+## 🏃 They Shall Flee, As Fleeing From A Sword, And They Shall Fall When None Pursueth
+
+This repeats the exact phrase already used earlier in verse seventeen.
+
+The same paranoia named before has now grown even more extreme in exile.
+
+Panic and collapse happen here with no real threat actually present.
+
+🏃 Repeats the exact phrase from verse seventeen
+
+🔗 Shows the same fear grown even more extreme
+
+😨 Collapse happens with no real threat present
+
+📖 Fear compounds the longer it goes unresolved
+
+## 💥 And They Shall Fall One Upon Another, As It Were Before A Sword, When None Pursueth
+
+The panic becomes so widespread that people trample into one another while fleeing.
+
+There is no actual enemy causing any of this chaos.
+
+It is caused entirely by fear itself, feeding on the fear around it.
+
+💥 People trample each other fleeing nothing real
+
+😱 Chaos caused entirely by fear itself
+
+🎯 Shows how deeply guilt and dread had spread
+
+📖 Fear became its own kind of enemy
+
+## 🛡️ And Ye Shall Have No Power To Stand Before Your Enemies
+
+Beyond the paranoia, real military weakness would remain just as true.
+
+Even in situations that genuinely called for defense, no strength would be left.
+
+Paranoia and actual defeat are named together in the very same breath.
+
+🛡️ Describes real weakness, not just fear
+
 ⚔️ Even real threats could no longer be resisted
+
 🎯 Paranoia and actual defeat named together
----
-## 🌍 Ye Shall Perish Among The Heathen, And The Land Of Your Enemies Shall Eat You Up
-"Eat you up" is an idiom picturing the foreign land itself as something that consumes and destroys those living in it - exile pictured not as a neutral relocation but as an actively hostile, devouring environment.
-🌍 "Eat you up" pictures the foreign land as actively hostile
-💀 Exile shown as devouring, not just a neutral relocation
-🎯 A vivid idiom, not a literal claim about the land itself
----
-## 📉 They That Are Left Of You Shall Pine Away In Their Iniquity
-"Pine away" is an old phrase meaning to waste away slowly, both physically and emotionally, over a long period of time rather than all at once. "Iniquity" means sin or guilt.
-📉 "Pine away" means wasting away slowly, not all at once
-⏳ Describes a long, gradual decline rather than sudden loss
-📖 "Iniquity" means sin or guilt weighing on them
----
-## 👪 Also In The Iniquities Of Their Fathers Shall They Pine Away With Them
-This is not about being punished for a parent's sin directly - it describes continuing in the very same patterns of sin passed down from earlier generations, so the consequences of those patterns keep compounding across time.
+
+📖 Both the mind and army had given out
+
+## 🌍 And Ye Shall Perish Among The Heathen, And The Land Of Your Enemies Shall Eat You Up
+
+"Eat you up" is an idiom picturing the foreign land itself as something hostile.
+
+It pictures a land that consumes and destroys the people living in it.
+
+This is not a literal claim about the land, but a vivid warning image.
+
+Exile here is pictured as an actively devouring place, not a neutral relocation.
+
+🌍 Eat you up pictures the land as hostile
+
+💀 Exile shown as devouring, not neutral
+
+🎯 A vivid idiom, not a literal claim
+
+📖 Even the ground would feel like an enemy
+
+## 📉 And They That Are Left Of You Shall Pine Away In Their Iniquity
+
+"Pine away" is an old phrase meaning to waste away slowly over time.
+
+This describes gradual physical and emotional decline, not sudden loss all at once.
+
+"Iniquity" means sin or guilt, the weight carried through that slow decline.
+
+📉 Pine away means wasting away slowly
+
+⏳ A long, gradual decline, not a sudden one
+
+📖 Iniquity means sin or guilt weighing on them
+
+➡️ Suffering here stretches out rather than ending quickly
+
+## 👪 And Also In The Iniquities Of Their Fathers Shall They Pine Away With Them
+
+This is not about being punished directly for a parent's own sin.
+
+It describes continuing in the very same patterns of sin passed down across generations.
+
+Consequences from those patterns keep compounding the longer they go unaddressed.
+
 👪 Not punishment for someone else's sin directly
-🔁 Describes continuing the same sin-patterns across generations
-📈 Consequences compound the longer a pattern repeats unaddressed
+
+🔁 Describes continuing the same sin patterns
+
+📈 Consequences compound the longer a pattern repeats
+
+📖 Old patterns left unaddressed keep collecting new weight
 
 # Leviticus 26:40-45
 # 🕊️ If They Confess: God Remembers His Covenant
 ---
 ## 🗣️ If They Shall Confess Their Iniquity, And The Iniquity Of Their Fathers
-"Confess" means to openly admit wrongdoing, not just feel bad privately. This marks the turning point of the whole chapter - the first condition given for the discipline finally ending.
-🗣️ "Confess" means openly admitting wrongdoing, not just regret
-🔄 Marks the chapter's turning point toward restoration
-👪 Includes owning up to generational patterns, not just personal sin
----
+
+"Confess" means openly admitting wrongdoing, not just feeling bad in private.
+
+"Iniquity" means sin or guilt, the weight of wrongdoing carried forward.
+
+This marks the turning point of the entire chapter.
+
+It is the first condition given for the long discipline finally ending.
+
+🗣️ Confess means openly admitting wrongdoing
+
+🔄 Marks the chapter's turning point
+
+👪 Includes owning generational patterns, not just personal sin
+
+📖 The first condition for the discipline to end
+
 ## ⚖️ With Their Trespass Which They Trespassed Against Me
-"Trespass" means a violation or offense against someone. Repeating the word twice in one phrase emphasizes taking full ownership of the wrong done, not just acknowledging that something bad happened in general.
-⚖️ "Trespass" means a violation or offense against someone
-🔁 Repeating the word emphasizes full ownership of the wrong
+
+"Trespass" means a violation or offense committed against someone else.
+
+The word is repeated twice in this one short phrase on purpose.
+
+That repetition emphasizes taking full ownership of the specific wrong done.
+
+It is specific responsibility, not a vague sense that something bad happened.
+
+⚖️ Trespass means a violation against someone
+
+🔁 Repeating the word emphasizes full ownership
+
 🎯 Specific responsibility, not vague acknowledgment
----
+
+📖 Confession names the exact wrong, not a feeling
+
 ## ↔️ That Also They Have Walked Contrary Unto Me
-This is the final use of "contrary" describing the people themselves, completing a pattern used repeatedly through the chapter - the word that described their defiance now becomes part of their own honest confession.
-↔️ The final use of "contrary" describing the people themselves
-🔁 Completes a pattern repeated throughout the whole chapter
-🗣️ The defiance-word becomes part of their honest confession
----
+
+This is the final use of "contrary" describing the people themselves in this chapter.
+
+The word has appeared repeatedly through the curses to describe their defiance.
+
+Here it becomes part of their own honest confession instead.
+
+↔️ The final use of contrary for the people
+
+🔁 Completes a pattern repeated through the chapter
+
+🗣️ Their defiance word becomes their own confession
+
+📖 The same word now spoken with humility
+
 ## 🪞 And That I Also Have Walked Contrary Unto Them
-God openly acknowledges mirroring their own defiance back at them throughout the punishment - naming the discipline plainly as matched to the offense, not random or excessive.
-🪞 God openly acknowledges mirroring their behavior back
-⚖️ Names the punishment as matched to the offense, not random
-🎯 Honesty about the shape of the discipline, not just its cause
----
+
+God openly acknowledges mirroring their own defiance back at them throughout.
+
+This names the discipline plainly as matched to the offense, not random.
+
+It is honesty about the shape of the punishment, not just its cause.
+
+🪞 God acknowledges mirroring their behavior
+
+⚖️ Names the punishment as matched, not random
+
+🎯 Honesty about the shape of the discipline
+
+📖 Even God's own actions are named plainly here
+
 ## 🌍 Have Brought Them Into The Land Of Their Enemies
-This restates the exile already described earlier, now specifically framed as the setting where genuine confession and change becomes possible - not the end of the story, but the turning point within it.
-🌍 Restates the exile already described earlier in the chapter
-🔄 Reframed here as the setting for possible change
-🎯 Not the end of the story, but a turning point within it
----
-## 💔 If Then Their Uncircumcised Hearts Be Humbled
-"Uncircumcised heart" is an idiom, not a literal physical description - it pictures a heart that has not been set apart for God, still resistant and unresponsive. "Humbled" means that resistance finally breaking down.
-💔 "Uncircumcised heart" is an idiom, not a literal description
-🚫 Pictures a heart still resistant, not set apart for God
-🎯 "Humbled" means that resistance finally breaking down
----
-## ✅ They Then Accept Of The Punishment Of Their Iniquity
-This describes owning the consequences as fair and deserved, rather than resenting them or blaming God - a genuine change in how they understand everything that has happened.
-✅ Accepting consequences as fair, not resented or blamed on God
-🔄 A genuine shift in how they understand what happened
-🎯 The internal change confession is meant to reflect
----
+
+This restates the exile already described earlier in the chapter.
+
+Here it gets reframed as the very setting where real change becomes possible.
+
+Exile is not the end of the story, but a turning point within it.
+
+🌍 Restates the exile described earlier
+
+🔄 Reframed here as the setting for change
+
+🎯 Not the ending, but a turning point
+
+📖 Even the hardest circumstance still had a purpose
+
+## 💔 If Then Their Uncircumcised Hearts Be Humbled, And They Accept Of The Punishment Of Their Iniquity
+
+"Uncircumcised heart" is an idiom, not a literal physical description.
+
+It pictures a heart that has not been set apart for God, still resistant.
+
+"Humbled" means that resistance finally breaking down and giving way.
+
+Accepting the punishment means owning it as fair, not resenting or blaming God for it.
+
+💔 Uncircumcised heart pictures ongoing resistance
+
+🚫 Not a literal description, but an idiom
+
+✅ Humbled means resistance finally breaking down
+
+📖 A real internal shift, not just outward words
+
 ## 📖 Then Will I Remember My Covenant With Jacob, And Also My Covenant With Isaac, And Also My Covenant With Abraham
-These three names are listed backwards from the usual order - normally Abraham comes first, then Isaac, then Jacob. Naming them in reverse here works backward through the generations, as if tracing the promise back to its very beginning.
-📖 Listed in reverse of the usual Abraham-Isaac-Jacob order
-🔙 Works backward through the generations to the promise's start
-🎯 A deliberate literary detail easy to miss in English
----
+
+These three names are listed backward from their usual order in scripture.
+
+Normally Abraham comes first, then Isaac, then Jacob follows last.
+
+Naming them in reverse here works backward through the generations on purpose.
+
+It traces the promise back to its very beginning, one name at a time.
+
+📖 Listed in reverse of the usual order
+
+🔙 Works backward through the generations
+
+🎯 Traces the promise to its beginning
+
+➡️ A small literary detail easy to miss
+
 ## 🌍 I Will Remember The Land
-"Remember" does not mean God had forgotten - it means God will act on a promise that had appeared inactive. The land itself, not just the people, is included in what gets restored.
-🌍 "Remember" means acting on a promise, not recalling a memory
-🔗 The land itself is included in what gets restored
-🎯 Ties the people's restoration to their homeland's restoration
----
+
+"Remember" does not mean God had simply forgotten something for a while.
+
+It means God will now act on a promise that had appeared inactive.
+
+The land itself, not only the people, is included in what gets restored.
+
+🌍 Remember means acting, not merely recalling
+
+🔗 The land itself is included in the restoration
+
+🎯 Ties the people's future to their homeland's future
+
+📖 God's promises reach even the ground itself
+
 ## 🏜️ The Land Also Shall Be Left Of Them, And Shall Enjoy Her Sabbaths, While She Lieth Desolate
-This restates the earlier point about the land's rest, now placed alongside the promise of eventual restoration - the desolation was never described as permanent, only as lasting exactly as long as it needed to.
-🏜️ Restates the earlier point about the land finally resting
-⏳ Placed here beside the promise of eventual restoration
-🎯 Desolation shown as temporary, not a permanent end
----
-## 😔 They Shall Accept Of The Punishment Of Their Iniquity: Because... They Despised My Judgments, And... Abhorred My Statutes
-This repeats the exact language used back in verse 15 to describe the original offense, now closing the loop by naming the same specific attitudes that started this entire cycle in the first place.
-😔 Repeats the exact language from the original offense in verse 15
-🔁 Closes the loop by naming the same root attitudes
-🎯 Ties the ending directly back to the chapter's beginning
----
-## 🙏 And Yet For All That, When They Be In The Land Of Their Enemies, I Will Not Cast Them Away
-Despite everything already described, God commits here to not fully abandoning them - even at their lowest point, complete rejection is explicitly ruled out.
-🙏 A firm commitment despite everything described so far
-🚫 Complete abandonment is explicitly ruled out
-🎯 Even at their lowest point, the relationship is not ended
----
-## 😌 Neither Will I Abhor Them, To Destroy Them Utterly
-This is the same strong word "abhor" used earlier for what God's soul would do toward them - but here it stops short of the worst possible outcome, total destruction, even after everything already described.
-😌 The same strong word "abhor" used earlier in the chapter
-🛑 Stops short of total destruction, even at this point
-🎯 Mercy stated even after the harshest consequences already given
----
+
+This restates the earlier point about the land finally resting.
+
+It is placed here right alongside the promise of eventual restoration.
+
+The desolation was never described as permanent in this chapter.
+
+It only lasts exactly as long as it needs to.
+
+🏜️ Restates the land finally resting
+
+⏳ Placed beside the promise of restoration
+
+🎯 Desolation shown as temporary, not permanent
+
+📖 Even judgment here has a built in ending
+
+## 🙏 And Yet For All That, When They Be In The Land Of Their Enemies, I Will Not Cast Them Away, Neither Will I Abhor Them, To Destroy Them Utterly
+
+Despite everything already described, God commits here to not fully abandoning His people.
+
+"Abhor" is the same strong word used earlier in the chapter for total rejection.
+
+Here it stops short of the worst possible outcome, complete destruction.
+
+Even at their lowest point, total rejection is explicitly ruled out.
+
+🙏 A firm commitment despite everything described
+
+😌 The same strong word abhor used earlier
+
+🛑 Stops short of total destruction
+
+📖 Mercy stated even after the harshest consequences
+
 ## 🤝 Neither Break My Covenant With Them: For I Am The LORD Their God
-Even after the people broke the covenant themselves back in verse 15, God commits to not doing the same - keeping the agreement is framed as who God is, not something conditional on the people's behavior first.
-🤝 The people broke the covenant first, back in verse 15
-🙏 God commits to not doing the same in return
-🎯 Faithfulness framed as who God is, not conditional on them
----
-## 📖 But I Will For Their Sakes Remember The Covenant Of Their Ancestors
-The reason given is not their good behavior, present or future - it is the ancestors' original covenant relationship, still honored even generations later regardless of how the current generation had acted.
-📖 The reason is the ancestors' covenant, not current good behavior
-👪 Honored across generations, regardless of present conduct
-🎯 Mercy rooted in an old promise, not a new achievement
----
-## 🇪🇬 Whom I Brought Forth Out Of The Land Of Egypt In The Sight Of The Heathen
-"In the sight of the heathen" means the Exodus was a public event other nations actually witnessed. God's own reputation among those watching nations was tied to keeping the promise made back then, adding another reason restoration was guaranteed.
-🇪🇬 The Exodus was a public event other nations witnessed
-👀 God's reputation among watching nations was on the line
-🎯 Adds another reason the promise of restoration held firm
----
+
+The people had already broken the covenant themselves back in verse fifteen.
+
+Here God commits to not responding the very same way.
+
+Keeping the agreement is framed as who God simply is.
+
+It is not something conditional on the people's behavior first.
+
+🤝 The people broke the covenant first
+
+🙏 God commits to not doing the same
+
+🎯 Faithfulness framed as who God is
+
+📖 Not conditional on their behavior alone
+
+## 📖 But I Will For Their Sakes Remember The Covenant Of Their Ancestors, Whom I Brought Forth Out Of The Land Of Egypt In The Sight Of The Heathen
+
+The reason given here is not their good behavior, past or future.
+
+It is the ancestors' original covenant relationship, honored across many generations.
+
+"In the sight of the heathen" means the Exodus was a public event other nations witnessed.
+
+God's own reputation among those watching nations was tied to keeping that old promise.
+
+📖 The reason is the ancestors' covenant, not merit
+
+👀 The Exodus was a public event nations saw
+
+🌍 God's reputation among nations was on the line
+
+➡️ Mercy rooted in an old promise, not merit
+
 ## 🙏 That I Might Be Their God: I Am The LORD
-The chapter's central relationship formula returns one final time, closing this section on the same note it opened on back in verse 12 - the whole point was always the relationship itself, not just rewards or punishments along the way.
-🙏 The chapter's central relationship formula returns once more
-🔁 Closes on the same note the chapter opened with in verse 12
-🎯 The relationship itself was always the actual point
+
+The chapter's central relationship formula returns here one final time.
+
+It closes this whole section on the same note it opened with in verse twelve.
+
+The entire point was always the relationship itself, not rewards or punishments alone.
+
+🙏 The relationship formula returns one final time
+
+🔁 Closes on the same note as verse twelve
+
+🎯 The relationship itself was always the point
+
+📖 Everything else in the chapter served this bond
 
 # Leviticus 26:46
 # 📜 The Statutes Given At Sinai
 ---
-## 📜 These Are The Statutes And Judgments And Laws
-Three separate legal terms are bundled together here - "statutes" for fixed rules, "judgments" for case-by-case rulings, and "laws" as the broadest general term - summarizing everything covered across this entire section of the book at once.
-📜 "Statutes" means fixed rules; "judgments" means case rulings
-⚖️ "Laws" is the broadest term, covering both together
-🎯 Summarizes everything given across this whole section at once
----
-## 🏔️ Which The LORD Made Between Him And The Children Of Israel In Mount Sinai By The Hand Of Moses
-This closing line functions like a signature, marking the formal end of the main law-giving section that began back near the start of Exodus. "By the hand of Moses" credits him only as the messenger, not the source, of everything just given.
-🏔️ Functions as a closing signature on this whole law section
-✍️ "By the hand of Moses" names him only as the messenger
-🎯 Marks the formal end of the main Sinai law-giving section
-`;
+## 📜 These Are The Statutes, And Judgments, And Laws
 
-export const LEVITICUS_TWENTY_SIX_PERSONAL_SECTIONS = parseLeviticusTwentySixRawNotes(
-  LEVITICUS_TWENTY_SIX_RAW_NOTES,
-);
+Three separate legal terms are bundled together in this one closing line.
+
+"Statutes" means fixed rules that do not change from case to case.
+
+"Judgments" means case by case rulings applied to specific situations.
+
+"Laws" is the broadest term here, covering both of the others together.
+
+📜 Statutes means fixed rules for every case
+
+⚖️ Judgments means rulings for specific situations
+
+🎯 Laws is the broadest term, covering both
+
+📖 One closing line summarizing this entire section
+
+## 🏔️ Which The LORD Made Between Him And The Children Of Israel In Mount Sinai By The Hand Of Moses
+
+This closing line works like a signature on a long legal document.
+
+It marks the formal end of this whole section of the book.
+
+"By the hand of Moses" credits him only as the messenger of these laws.
+
+Moses delivered them, but he was never their actual source.
+
+🏔️ Functions like a signature closing this section
+
+✍️ By the hand of Moses names the messenger
+
+🚫 Moses was never the source of the laws
+
+📖 A formal end to the whole Sinai section
+`.trim();
+
+export const LEVITICUS_TWENTY_SIX_PERSONAL_SECTIONS = parseLeviticusTwentySixRawNotes(LEVITICUS_TWENTY_SIX_RAW_NOTES);
