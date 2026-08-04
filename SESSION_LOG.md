@@ -695,3 +695,7 @@ Next up: Numbers 2
 ## 2026-08-04T07:56:26Z (hourly chapter notes run)
 Chapter: Numbers 2 | Duration: 10 min | Sections: 7 | Cards: 28 | Status: pass
 Next up: Numbers 3
+
+## 2026-08-04T09:00:58Z (hourly chapter notes run)
+Chapter: Numbers 3 | Duration: 14 min | Sections: 10 | Cards: 64 | Status: pass
+Next up: Numbers 4

@@ -8925,6 +8925,59 @@
           "at": "2026-08-04T07:57:02Z"
         }
       ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 3,
+      "startedAt": "2026-08-04T08:46:19Z",
+      "finishedAt": "2026-08-04T09:00:00Z",
+      "durationMinutes": 14,
+      "sections": 10,
+      "cards": 64,
+      "verses": 51,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (10 sections / dense paragraph bodies, only 3 bullets per card, no .trim() on its raw notes constant) from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (Numbers.json, chapter 3 parsed out, all 51 verses). Numbers 3 is the priesthood and Levite census chapter: Aaron's four sons and the Nadab/Abihu tragedy, the Levites formally given to Aaron as substitutes for Israel's firstborn, the three Levite clans (Gershon, Kohath, Merari) each numbered and assigned a camp direction and a specific tabernacle duty (fabric, furniture, or structural frame), Moses/Aaron/Aaron's sons guarding the east entrance, and the closing math redeeming the 273 firstborn sons who had no matching Levite, paid in shekels down to an exact, checkable total. Kept the original file's 10 section boundaries for verse-coverage continuity while rewriting every card to the new format: exact-phrase KJV titles, single-idea prose lines with a blank line between each, four opening moves, four emoji bullets ending in 📖 or ➡️, no hyphens/em dashes/semicolons/contractions. Given the genealogy and census heavy nature of this chapter, card density landed at about 1.25 cards/verse (51 verses, 64 cards) rather than the full 2x target, favoring real teaching (word definitions, family relationships, the substitution math) over padding thin name entries with a forced second card. `scripts/check_bible_note_style.py` found 30 problems on first pass (mostly bullets running 9 to 11 words over the 8 word cap, plus two body lines over 20 words), fixed every one individually, second run clean with zero problems. A manual section 13 eye check confirmed each card teaches something beyond the verse text, defines its key term, and closes on meaning rather than mechanics. Parser check passed exactly via getBibleReaderStudySections('Numbers', 3) (10/10 sections, 64 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range covering Numbers 1-30, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (NumbersThreePersonalSection, parseNumbersThreeRawNotes, NUMBERS_THREE_RAW_NOTES, NUMBERS_THREE_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Numbers 3 entry removed from the front of the list as part of this commit; next redo target is Numbers 4.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-04T08:46:19Z"
+        },
+        {
+          "name": "target chapter determined: Numbers 3 (style redo, first in remaining backlog)",
+          "at": "2026-08-04T08:46:19Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (lib/genesisThirtyOneSource.ts) read",
+          "at": "2026-08-04T08:47:17Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Numbers.json, chapter 3 parsed (51 verses)",
+          "at": "2026-08-04T08:47:17Z"
+        },
+        {
+          "name": "source file written (lib/numbersThreeSource.ts, 10 sections, 64 cards)",
+          "at": "2026-08-04T08:56:34Z"
+        },
+        {
+          "name": "style checker clean (after fixing 30 flagged issues: over length bullets, two over length body lines)",
+          "at": "2026-08-04T08:56:34Z"
+        },
+        {
+          "name": "wiring confirmed correct for this redo chapter (import, preserveExactPhraseBodies range 1-30, replaceStudySectionsForBookRange call all pre-existing)",
+          "at": "2026-08-04T08:58:39Z"
+        },
+        {
+          "name": "parser check passed via getBibleReaderStudySections('Numbers', 3) (10/10 sections, 64 cards, text verbatim)",
+          "at": "2026-08-04T08:56:34Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean with zero errors",
+          "at": "2026-08-04T08:56:56Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, style-redo-remaining.json, SESSION_LOG.md)",
+          "at": "2026-08-04T09:00:00Z"
+        }
+      ]
     }
   ]
 }
