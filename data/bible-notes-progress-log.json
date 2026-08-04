@@ -9145,6 +9145,59 @@
           "at": "2026-08-04T11:57:22Z"
         }
       ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 7,
+      "startedAt": "2026-08-04T12:46:50Z",
+      "finishedAt": "2026-08-04T13:00:00Z",
+      "durationMinutes": 13,
+      "sections": 11,
+      "cards": 39,
+      "verses": 89,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (11 sections / 40 cards, paragraph bodies, no blank line between body lines, no .trim() on its raw notes constant) from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Numbers 7 is the tabernacle dedication offering: the princes give six wagons and twelve oxen for the Levites, Moses distributing them by clan workload (Gershon's fabric loads get half of Merari's timber loads, Kohath gets none because the holiest furniture rode on shoulders, not wheels), then a twelve day sequence where each of the twelve tribal princes brings an identical offering (two silver vessels, a gold spoon of incense, and twenty animals) on his own day in the fixed marching order from Numbers 2, closing with the summed totals and God's voice finally speaking to Moses from between the cherubim over the ark. Kept the original file's 11 section boundaries for verse coverage continuity. Because eleven of the twelve princes' gifts are verbatim repeats of the same list (per spec section 12, chapters that resist teaching still get real notes but should not be filled with restated measurements), the template offering (Judah/Nahshon, the first prince) got a full 8 card breakdown explaining every object and its meaning once, and each of the remaining eleven princes got 1-3 cards focused on what does change each time: the prince's name meaning, his mother and birth order, his camp/marching group from Numbers 2, and running silver/gold totals at natural checkpoints, using the real KJV closing phrase 'This was the offering of...' as the card title each time rather than an invented topic label. Density about 0.44 cards/verse, intentionally lean per the spec's exception for chapters built on exact repetition, while still explaining every term (charger, shekel of the sanctuary, meat offering, burnt/sin/peace offering, Kohathites vs Gershonites vs Merarites, camp order) at least once in full. `scripts/check_bible_note_style.py` found 3 problems on first pass (two bullets over the 8 word limit, one card where a digit keycap emoji \"4\\u{FE0F}\\u{20E3}\" was not recognized by the checker's emoji regex, causing a bullet undercount), fixed by shortening the two bullets and swapping the keycap for 🔽, second run clean. A manual section 13 eye check also caught several invented topic-label card titles that were not literal KJV phrases (e.g. a made up 'Judah Goes First, Not Because Of Birth Order' and 'Eight Down, Four To Go') and retitled them to real lifted phrases from the verses ('Offered His Offering The First Day', 'This Was The Offering Of Abidan The Son Of Gideoni') per spec section 2's title rule. Parser check passed exactly via getBibleReaderStudySections('Numbers', 7) (11/11 sections, 39 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range covering Numbers 1-30, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (NumbersSevenPersonalSection, parseNumbersSevenRawNotes, NUMBERS_SEVEN_RAW_NOTES, NUMBERS_SEVEN_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Numbers 7 entry removed from the front of the list as part of this commit; next redo target is Numbers 8.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-04T12:46:50Z"
+        },
+        {
+          "name": "target chapter determined: Numbers 7 (style redo, first in remaining backlog)",
+          "at": "2026-08-04T12:47:11Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Numbers.json",
+          "at": "2026-08-04T12:48:20Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (lib/genesisThirtyOneSource.ts) read",
+          "at": "2026-08-04T12:49:00Z"
+        },
+        {
+          "name": "source file written (lib/numbersSevenSource.ts, 11 sections, 39 cards)",
+          "at": "2026-08-04T12:55:10Z"
+        },
+        {
+          "name": "style checker clean (after fixing two over-length bullets and one unrecognized digit-keycap emoji causing a bullet undercount)",
+          "at": "2026-08-04T12:55:20Z"
+        },
+        {
+          "name": "parser check passed (11 sections, 39 cards, 89 verses covered, text verbatim)",
+          "at": "2026-08-04T12:55:31Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo chapter (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call all pre-existing, no changes needed)",
+          "at": "2026-08-04T12:55:42Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-04T12:57:14Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-04T13:00:00Z"
+        }
+      ]
     }
   ]
 }
