@@ -699,3 +699,7 @@ Next up: Numbers 3
 ## 2026-08-04T09:00:58Z (hourly chapter notes run)
 Chapter: Numbers 3 | Duration: 14 min | Sections: 10 | Cards: 64 | Status: pass
 Next up: Numbers 4
+
+## 2026-08-04T10:02:49Z (hourly chapter notes run)
+Chapter: Numbers 4 | Duration: 17 min | Sections: 13 | Cards: 58 | Status: pass
+Next up: Numbers 5
