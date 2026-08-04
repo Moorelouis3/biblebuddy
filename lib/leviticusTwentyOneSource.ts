@@ -38,6 +38,7 @@ function parseLeviticusTwentyOneRawNotes(rawText: string): LeviticusTwentyOnePer
     const phrases: Array<[string, string]> = [];
     while (index < lines.length && !/^#\s+Leviticus\s+21:/i.test(lines[index].trim())) {
       const trimmed = lines[index].trim();
+
       const phraseMatch = trimmed.match(/^##\s+(.+)$/);
 
       if (!phraseMatch) {
@@ -92,241 +93,685 @@ const LEVITICUS_TWENTY_ONE_RAW_NOTES = `# Leviticus 21:1-4
 # 💀 Priests And The Dead
 ---
 ## 🕯️ Speak Unto The Priests The Sons Of Aaron
-This chapter shifts who God is talking to. Chapters 18-20 gave rules for all of Israel, but here God speaks straight to Aaron's priestly family alone. Priests carried extra responsibility because they worked directly with the holy things in the tabernacle, so they also carried extra rules.
-🕯️ Marks a shift from rules for all Israel to rules for priests only
-👨‍👩‍👧 "Sons of Aaron" means the priestly family line
-📜 More responsibility came with more specific rules
----
+
+God now speaks to one family within Israel, not the whole camp.
+
+Chapters eighteen through twenty gave rules for every Israelite in the camp.
+
+Here the target narrows to Aaron and his priestly sons.
+
+More access to holy things always meant more responsibility.
+
+🎯 Rules narrow to Aaron's family alone
+
+📜 Chapters eighteen to twenty covered everyone
+
+🕯️ Priests handled the holiest things
+
+📖 Closeness to God required more care
+
 ## 💀 There Shall None Be Defiled For The Dead Among His People
-Touching a dead body made a person ritually unclean for a period of time, a separate system from moral sin explained fully in Numbers 19. An unclean priest could not serve at the altar until he was purified, so this rule protected the tabernacle's ongoing operation - a priest unexpectedly out of service for days at a time was a real problem.
-💀 Touching a corpse caused ritual uncleanness, not moral guilt
-📖 The full purification process is laid out in Numbers 19
-⏳ An unclean priest couldn't serve until purified again
----
+
+"Defiled" here means made ritually unclean through contact with a dead body.
+
+Touching a corpse caused a temporary uncleanness, not a moral sin.
+
+Numbers nineteen lays out the entire purification process this triggers.
+
+An unclean priest could not serve at the altar until purified.
+
+This rule protected the tabernacle from losing a priest for days at a time.
+
+💀 Defiled means ritually unclean, not sinful
+
+⏳ Touching a corpse caused temporary uncleanness
+
+📚 Numbers nineteen explains the full process
+
+📖 The tabernacle needed priests ready always
+
 ## 👪 For His Mother, And For His Father, And For His Son, And For His Daughter, And For His Brother
-God lists exactly which deaths a priest is still allowed to mourn by becoming ritually unclean: parents, children, and brothers. This isn't heartlessness - it draws a clear line so priests know exactly which funerals they can attend without guessing.
-👪 Names the closest family: parents, children, brothers
-📏 A clear list removes guesswork about which funerals are allowed
-⚖️ Limits, not a ban on grieving family at all
----
-## 👰 And For His Sister A Virgin, That Is Nigh Unto Him, Which Hath Had No Husband; For Her May He Be Defiled
-An unmarried sister still living under her father's household counted as close family a priest could mourn for. Once a sister married, she belonged to her husband's family for matters like this, so this exception only covers a sister who hadn't yet left home.
+
+God gives priests an exact list of family they may still mourn.
+
+The list covers parents, children, and brothers by name.
+
+A named list removes any guessing about which funerals are allowed.
+
+This limits ritual uncleanness for priests.
+
+It does not ban grief itself.
+
+👪 Names parents, children, and brothers
+
+📏 A named list removes guesswork
+
+⚖️ Limits uncleanness, not grief itself
+
+📖 Priests could still mourn close family
+
+## 👰 For His Sister A Virgin, That Is Nigh Unto Him
+
+This exception applies only to an unmarried sister.
+
+"Nigh unto him" means she still lived in his household.
+
+Once a sister married, mourning duties shifted to her husband's family.
+
+The list narrows even further than it first sounds.
+
 👰 Applies only to an unmarried sister
-🏠 A married sister's mourning ties shifted to her husband's family
-📏 Narrows the family list even further than it first sounds
----
-## ⚖️ He Shall Not Defile Himself, Being A Chief Man Among His People, To Profane Himself
-"Chief man" points to the priest's public position of leadership and honor among the people. Becoming ritually unclean for anyone outside that short family list would treat his sacred role carelessly, which is what "profane" means here - to strip something set-apart down to something common.
-⚖️ "Chief man" points to the priest's public standing
-🔤 "Profane" means treating something holy as ordinary
-📏 The short family list exists to protect that public role
+
+🏠 Nigh unto him means still home
+
+💍 Marriage shifted her to another family
+
+📖 The list narrows further than expected
+
+## ⚖️ Being A Chief Man Among His People, To Profane Himself
+
+"Chief man" points to the priest's public position of honor.
+
+"Profane" means treating something set apart as common or ordinary.
+
+Mourning outside the short list above would treat that position carelessly.
+
+The narrow family list exists to protect the priest's public role.
+
+⚖️ Chief man means public standing
+
+🔤 Profane means treated as common
+
+🚫 Mourning outside the list was careless
+
+📖 The list protected the priest's role
 
 # Leviticus 21:5-6
 # 💇 No Pagan Mourning Marks
 ---
 ## 🪒 They Shall Not Make Baldness Upon Their Head
-Shaving the head bald was a common mourning ritual in the ancient Near East, a visible sign of grief worn on the body. Priests were told not to copy this practice, keeping their mourning customs different from the nations around them.
-🪒 Head-shaving was a widespread ancient mourning custom
-🚫 Priests were told not to adopt it
-🌍 Kept Israel's priests visibly different from neighboring practices
----
+
+Shaving the head bald was a common mourning ritual in this era.
+
+It served as a visible sign of grief worn on the body.
+
+Priests were told not to copy this practice at all.
+
+Their mourning customs needed to look different from surrounding nations.
+
+🪒 Head shaving was a common mourning ritual
+
+🚫 Priests could not adopt this practice
+
+🌍 It marked Israel's priests as different
+
+📖 Grief needed its own distinct look
+
 ## 🧔 Neither Shall They Shave Off The Corner Of Their Beard
-This exact command was already given to every Israelite back in Leviticus 19:27. Repeating it here for priests specifically shows that a rule meant for everyone still needed restating for the people held to the highest standard.
-🔗 The same rule already appears in Leviticus 19:27
-👥 First given to all Israel, now repeated for priests specifically
-📈 Priests were held to the same rule with less room for exceptions
----
+
+This same command already applies to every Israelite in Leviticus nineteen.
+
+Repeating it here for priests shows even a universal rule got restated.
+
+Priests were held to it with even less room for exceptions.
+
+Highest standards still needed the basic rules spelled out again.
+
+🔗 The same rule appears in Leviticus nineteen
+
+👥 First given to all, now repeated
+
+📈 Priests had less room for exceptions
+
+📖 Even leaders needed the basics restated
+
 ## 🩸 Nor Make Any Cuttings In Their Flesh
-Cutting the skin as an act of mourning or worship shows up elsewhere in the Bible tied to pagan religion - the prophets of Baal cut themselves while begging their god to answer in 1 Kings 18:28. Banning this practice separated Israel's worship and grief from rituals that treated pain as a way to get a god's attention.
-🩸 Ritual self-cutting was tied to pagan worship practices
-📖 1 Kings 18:28 shows Baal's prophets doing exactly this
-🚫 Israel's God didn't need to be begged through self-harm
----
+
+Cutting the skin during mourning shows up elsewhere tied to pagan worship.
+
+Baal's prophets cut themselves begging their god to answer in 1 Kings 18:28.
+
+Banning this practice separated Israel's grief from rituals built on self harm.
+
+Israel's God never needed to be begged through pain.
+
+🩸 Ritual cutting was tied to pagan worship
+
+👑 1 Kings 18:28 shows Baal's prophets cutting themselves
+
+🚫 Israel never begged God through self harm
+
+📖 Israel's worship did not need violence
+
 ## ✨ They Shall Be Holy Unto Their God, And Not Profane The Name Of Their God
-"Holy" means set apart for God's use, the opposite of "profane," which means common or ordinary. This line sums up the point of the mourning bans just given - priests' bodies and behavior needed to visibly match the set-apart role they held.
-✨ "Holy" means set apart, the opposite of "profane"
-🔗 Sums up the reason behind the mourning-custom bans
-👤 Their behavior needed to visibly match their role
----
-## 🔥 For The Offerings Of The LORD Made By Fire, And The Bread Of Their God, They Do Offer: Therefore They Shall Be Holy
-This gives the actual reason behind the holiness requirement - priests handled the offerings burned on the altar and the bread set before God, so their own condition couldn't be treated separately from the sacred things they touched every day.
-🔥 Names their daily job: handling fire offerings and holy bread
-🔗 Ties personal holiness directly to daily priestly duties
-📜 Explains the "why" behind the whole section
+
+"Holy" means set apart for God's use.
+
+"Profane" means common or ordinary, the opposite of holy.
+
+This line sums up the reasoning behind all the mourning bans just given.
+
+A priest's body and behavior needed to visibly match his set apart role.
+
+✨ Holy means set apart for God
+
+🔤 Profane means the opposite, common
+
+🔗 Sums up the mourning ban reasoning
+
+📖 Behavior needed to match the role
+
+## 🔥 For The Offerings Of The LORD Made By Fire, And The Bread Of Their God, They Do Offer
+
+This verse gives the actual reason behind the holiness requirement just stated.
+
+Priests handled the offerings burned on the altar every day.
+
+They also handled the bread set out before God continually.
+
+Their own condition could not be separated from the holy things they touched.
+
+🔥 Names their daily job at the altar
+
+🍞 They also handled the holy bread
+
+🔗 Ties personal holiness to daily duty
+
+📖 Explains the why behind the section
 
 # Leviticus 21:7-8
 # 💍 Who A Priest May Marry
 ---
 ## 🚫 They Shall Not Take A Wife That Is A Whore, Or Profane
-A priest could not marry a woman who worked as a prostitute or who was considered "profane" - someone whose reputation or past made her, in this culture's eyes, unsuited to stand beside a man whose job required constant ritual purity.
+
+A priest could not marry a woman who worked as a prostitute.
+
+He also could not marry a woman this culture considered profane.
+
+"Profane" here means her reputation made her seem common, not set apart.
+
+A priest's wife's status reflected on his fitness to serve at the altar.
+
 🚫 Bans marriage to a prostitute
-🔤 "Profane" again means not set apart, treated as common
-👰 A priest's wife's status affected his fitness to serve
----
+
+🔤 Profane means treated as common
+
+👰 A wife's status affected his fitness
+
+📖 Marriage reflected on priestly service
+
 ## 💔 Neither Shall They Take A Woman Put Away From Her Husband
-"Put away" means divorced. This specific ban applied to ordinary priests marrying a divorced woman - notably, the stricter high priest rule coming a few verses later goes even further, showing this law had different tiers depending on rank.
-💔 "Put away" means divorced
-📊 A tier system - ordinary priests have one standard here
-⬆️ The high priest's rule (coming in v13-14) is even stricter
----
+
+"Put away" means divorced.
+
+This ban applied to ordinary priests marrying a divorced woman.
+
+The stricter high priest rule coming later goes even further than this.
+
+This law had different tiers depending on a priest's rank.
+
+💔 Put away means divorced
+
+📊 Ordinary priests get one standard
+
+⬆️ The high priest's rule is stricter
+
+📖 Rank shaped which rules applied
+
 ## 🙏 For He Is Holy Unto His God
-This closes out the marriage restrictions with the same reasoning used throughout the chapter - a priest's holy status wasn't private. Even his marriage choice reflected on the sacred role he carried in front of the whole community.
-🙏 Repeats the chapter's core reasoning: holiness, not preference
-👀 A priest's choices were never purely private
-🔗 Same logic driving the mourning-custom rules earlier
----
-## 🍞 Thou Shalt Sanctify Him Therefore; For He Offereth The Bread Of Thy God
-This line switches direction - instead of telling the priest what to do, it tells the community to treat the priest as set apart, because of the sacred food-related duties he carries out on their behalf. Holiness here runs both ways: the priest keeps himself set apart, and the people are told to honor that status too.
-🔄 Switches from commanding the priest to commanding the people
-🍞 Ties back to his duty handling the holy bread
-🤝 Holiness runs in both directions, not one-sided
----
-## ✨ He Shall Be Holy Unto Thee: For I The LORD, Which Sanctify You, Am Holy
-The final reason given for all of this traces back past the priest and the people, straight to God's own holiness. Every rule in this section exists because it reflects who God is, not just what keeps a religious system running smoothly.
-✨ Traces the whole reasoning back to God's own character
-🔝 Not just practical rules - a reflection of who God is
-🔁 Echoes the "I am the LORD" refrain from chapters 19-20
+
+This closes the marriage restrictions with the chapter's core reasoning.
+
+A priest's holy status was never a private matter.
+
+Even his choice of wife reflected on the sacred role he carried.
+
+The whole community watched how he lived that role out.
+
+🙏 Repeats the chapter's core reasoning
+
+👀 A priest's choices were never private
+
+🔗 Same logic drives the mourning rules
+
+📖 His marriage reflected his sacred role
+
+## 🍞 Thou Shalt Sanctify Him Therefore
+
+This line switches direction from commanding the priest to commanding the people.
+
+The community is told to treat the priest as set apart.
+
+"Sanctify" means to set someone apart for God's own use.
+
+That honor was tied to duties the priest carried out for everyone.
+
+🔄 Switches to commanding the community instead
+
+🔤 Sanctify means set apart for God
+
+🤝 Honor flowed toward the priest here
+
+📖 The people had a role too
+
+## 🍞 For He Offereth The Bread Of Thy God: He Shall Be Holy Unto Thee
+
+The reason for that community honor was his daily bread duty.
+
+He alone presented the sacred bread before God on Israel's behalf.
+
+Holiness in this system ran in both directions, not one way only.
+
+The people had to treat him as set apart because of that duty.
+
+🍞 Ties back to his bread duties
+
+🙌 He served on Israel's behalf
+
+🤝 Holiness ran in both directions
+
+📖 His duty shaped how people treated him
+
+## ✨ For I The LORD, Which Sanctify You, Am Holy
+
+The final reason traces back past the priest and the people to God himself.
+
+Every rule in this section reflects who God actually is.
+
+It is not just a rule that keeps a system running smoothly.
+
+It points to something deeper than logistics.
+
+✨ Traces back to God's own character
+
+🔝 Reflects who God is, not convenience
+
+🔁 Echoes across the whole chapter
+
+📖 Points past logistics to God himself
 
 # Leviticus 21:9
 # 🔥 A Priest's Daughter Who Sins
 ---
 ## 👨‍👧 And The Daughter Of Any Priest, If She Profane Herself By Playing The Whore, She Profaneth Her Father
-In this culture, a family's honor and a father's public standing were closely tied to his household's behavior. A priest's daughter turning to prostitution wasn't treated as only her own failure - the text says it profanes, or drags down, her father's holy standing too, because his household was expected to visibly reflect his role.
-👨‍👧 Family honor and a father's standing were tightly linked
-📉 Her actions are described as dragging down his status too
-🏠 A priest's household was expected to reflect his sacred role
----
+
+Family honor and a father's public standing were tightly linked in this culture.
+
+A priest's daughter turning to prostitution was not treated as her failure alone.
+
+The text says her choice profanes, or drags down, her father's holy standing too.
+
+A priest's household was expected to visibly reflect his sacred role.
+
+👨‍👧 Family honor and standing were linked
+
+📉 Described as dragging down his status
+
+🏠 A household reflected the father's role
+
+📖 Priestly honor was a shared burden
+
 ## 🔥 She Shall Be Burnt With Fire
-Burning was one of the harshest penalties in this whole legal system, reserved for only a small handful of the worst offenses - the same penalty given for a man marrying both a wife and her mother in Leviticus 20:14. Applying it here shows just how seriously this offense within a priestly household was treated, precisely because of the higher standard that household was held to.
-🔥 One of the rarest, harshest penalties in the whole law
-🔗 The same penalty used in Leviticus 20:14
-📈 Reflects the higher standard placed on a priest's family
+
+Burning was one of the harshest penalties in this entire legal system.
+
+It was reserved for only a small handful of the worst offenses.
+
+Leviticus twenty gives this same penalty for a different serious offense.
+
+This shows how seriously a priestly household's conduct was treated here.
+
+🔥 One of the harshest penalties given
+
+📏 Reserved for a small handful of offenses
+
+🔗 The same penalty appears in Leviticus twenty
+
+📖 Reflects the higher standard on priests
 
 # Leviticus 21:10-12
-# 👑 The High Priest's Extra Restrictions
+# 👑 The High Priest's Extra Rules
 ---
 ## 👑 He That Is The High Priest Among His Brethren, Upon Whose Head The Anointing Oil Was Poured
-This section shifts one more time, from priests in general to the high priest specifically - the single man holding the top position, marked out by having oil poured over his head in the ordination ceremony described back in Exodus 29 and Leviticus 8. He carries every rule already given, plus a stricter set that follows here.
-👑 Narrows the focus to one man: the high priest
-🫗 The anointing-oil ceremony is described in Exodus 29 and Leviticus 8
-➕ He keeps all the earlier priestly rules, plus more
----
+
+This section narrows the focus from priests in general to one man.
+
+The high priest was the single man holding the top position.
+
+Oil poured over his head marked his ordination, described in Exodus twenty nine.
+
+He kept every earlier priestly rule, plus a stricter set that follows.
+
+👑 Narrows the focus to one man
+
+🫗 Anointing oil marked his ordination ceremony
+
+➕ He kept all the earlier rules too
+
+📖 Exodus twenty nine describes that ceremony
+
 ## 👔 Shall Not Uncover His Head, Nor Rend His Clothes
-Letting hair hang loose and tearing one's own clothing were normal signs of grief in this culture - Job tears his robe in Job 1:20, and other Old Testament figures do the same. The high priest was barred from even these ordinary mourning gestures, a stricter line than the rules given to regular priests just a few verses earlier.
-👔 Loose hair and torn clothes were normal mourning customs
-📖 Job 1:20 shows this exact custom in practice
-⬆️ Stricter than the rules given to ordinary priests
----
+
+Loose hair and torn clothing were normal signs of grief in this era.
+
+Job tears his own robe in mourning back in Job chapter one.
+
+The high priest was barred from even these ordinary mourning gestures.
+
+This was a stricter line than the rules given to regular priests.
+
+👔 Loose hair and torn clothes meant mourning
+
+⬆️ Stricter than rules for regular priests
+
+🚫 The high priest could not do either
+
+📖 Job chapter one shows this exact custom
+
 ## ⚰️ Neither Shall He Go In To Any Dead Body, Nor Defile Himself For His Father, Or For His Mother
-Ordinary priests were allowed to become unclean for their own parents back in verse 2 - the high priest cannot, not even for his own father or mother. His office required him to be ready for sanctuary duty at every moment, without exception, even during the most painful family loss.
-⬆️ Stricter than the ordinary-priest exception given in verse 2
-⚰️ No exception at all, not even for his own parents
-⏱️ His role required constant, uninterrupted readiness
----
+
+Ordinary priests could still become unclean for their own parents.
+
+The high priest could not, not even for his own father or mother.
+
+His office required constant readiness for sanctuary duty at every moment.
+
+Not even the most painful family loss changed that requirement.
+
+⬆️ Stricter than the ordinary priest exception
+
+⚰️ No exception, not even for parents
+
+⏱️ His role required constant readiness
+
+📖 Even grief could not interrupt his duty
+
 ## 🏛️ Neither Shall He Go Out Of The Sanctuary, Nor Profane The Sanctuary Of His God
-This likely means the high priest could not leave in the middle of his sacred duties to attend to mourning rites, even for close family. Walking away from his post, even for grief, is described here as profaning - treating carelessly - the sanctuary itself.
-🚪 Likely means not leaving mid-duty, even to mourn
-🔤 "Profane" again means treating something holy as careless
-🏛️ His presence at his post protected the sanctuary's holiness
----
+
+This likely means he could not leave his duties to attend mourning rites.
+
+That held true even for the funeral of his own close family.
+
+Walking away from his post, even to grieve, is called profaning the sanctuary.
+
+His constant presence at his post protected the sanctuary's own holiness.
+
+🚪 Likely means not leaving mid duty
+
+😢 Even his own family's funeral qualified
+
+🔤 Leaving his post is called profaning
+
+📖 His presence protected the sanctuary's holiness
+
 ## 👑 For The Crown Of The Anointing Oil Of His God Is Upon Him: I Am The LORD
-"Crown" here pictures the anointing oil as something like a permanent, invisible crown resting on the high priest, marking him as continuously set apart, not just during ceremonies. The stricter rules in this section all trace back to that one image - he wears his consecration at all times, so he lives by it at all times.
-👑 "Crown" pictures the anointing as a constant, invisible mark
-⏳ Not just for ceremonies - a continuous status
-🔗 Explains why his rules are stricter than other priests'
+
+"Crown" here pictures the anointing oil as a permanent, invisible mark on him.
+
+It set him apart continuously, not only during ceremonies.
+
+Every stricter rule in this section traces back to that one image.
+
+He wore his consecration at all times.
+
+He lived by that consecration at all times too.
+
+👑 Crown pictures a constant invisible mark
+
+⏳ Not just for ceremonies, a constant status
+
+🔗 Explains why his rules are stricter
+
+📖 He lived by his consecration always
 
 # Leviticus 21:13-15
 # 👰 The High Priest Must Marry A Virgin
 ---
 ## 👰 And He Shall Take A Wife In Her Virginity
-The high priest's marriage rules go further than the ones just given for ordinary priests. Where an ordinary priest could not marry certain categories of women, the high priest was required to marry a virgin specifically - the strictest version of this rule in the chapter.
-👰 A stricter version of the marriage rule from verse 7
-⬆️ Required, not just restricted from certain categories
-📏 The tightest standard given anywhere in this chapter
----
+
+The high priest's marriage rule goes further than the one just given.
+
+An ordinary priest could not marry certain categories of women.
+
+The high priest was required to marry a virgin specifically.
+
+This is the strictest version of the marriage rule in this chapter.
+
+👰 Stricter than the rule from verse seven
+
+⬆️ Required, not just restricted from categories
+
+📏 The tightest marriage standard in the chapter
+
+📖 His role demanded the highest standard
+
 ## 🚫 A Widow, Or A Divorced Woman, Or Profane, Or An Harlot, These Shall He Not Take
-Notice this list adds "widow" to the ban - a category ordinary priests were still allowed to marry back in verse 7. The high priest's unique national role, standing before God on behalf of the whole nation, came with the narrowest set of allowed marriages of anyone in Israel.
-➕ "Widow" is newly added here, not banned for ordinary priests
-👑 Tied to his unique role representing the whole nation
-📏 The narrowest marriage rule given to anyone in this law
----
+
+This list adds widow to the ban, a category ordinary priests could still marry.
+
+The high priest's role touched the whole nation, not just his own family.
+
+His marriage list became the narrowest given to anyone in Israel's law.
+
+Representing the whole nation before God came with the tightest limits.
+
+➕ Widow is newly added to the ban
+
+👑 Tied to his national representative role
+
+📏 The narrowest marriage rule in Israel
+
+📖 Representing everyone meant the tightest limits
+
 ## 🇮🇱 But He Shall Take A Virgin Of His Own People To Wife
-"Of his own people" means an Israelite woman, not a foreigner. This kept the high priest's household, and by extension the priestly line descending from him, clearly rooted within the covenant nation he represented before God.
-🇮🇱 "Of his own people" means an Israelite, not a foreigner
-👪 Kept his household clearly rooted in the covenant nation
-🔗 Protected the priestly line's identity going forward
----
+
+"Of his own people" means an Israelite woman, not a foreigner.
+
+This kept the high priest's household rooted inside the covenant nation.
+
+It also protected the priestly line descending from him going forward.
+
+His household needed to visibly represent the nation he served.
+
+🇮🇱 Of his own people means Israelite
+
+👪 Kept his household inside the nation
+
+🔗 Protected the priestly line going forward
+
+📖 His household represented the whole nation
+
 ## 👶 Neither Shall He Profane His Seed Among His People: For I The LORD Do Sanctify Him
-"His seed" means his children. This makes clear the marriage rule wasn't only about the high priest himself - his choice of wife directly affected whether his own children's status stayed set apart or became compromised, since priestly identity in Israel passed down through the family line.
-👶 "His seed" means his own children
-🔗 His marriage choice affected his children's status too
-📜 Priestly identity in Israel passed down by family line
+
+"Seed" here means his own children.
+
+This marriage rule was never only about the high priest himself.
+
+His choice of wife directly affected his own children's set apart status.
+
+Priestly identity in Israel passed down through the family line.
+
+👶 Seed means his own children
+
+🔗 His marriage affected his children too
+
+📜 Priestly identity passed through family lines
+
+📖 The rule protected an entire lineage
 
 # Leviticus 21:16-20
-# 🚫 Blemishes That Disqualify A Priest From Serving
+# 🚫 Blemishes That Bar A Priest From Serving
 ---
 ## 🍞 Let Him Not Approach To Offer The Bread Of His God
-This section lists physical conditions that disqualified a priest's descendant from serving at the altar. It's worth saying plainly up front: this isn't a judgment about a person's worth. It matches a pattern already set for sacrificial animals - offerings had to be "without blemish" (explained again in Leviticus 22:20-25), and this extended the same symbolic standard of wholeness to the person performing the offering.
-🍞 Lists physical conditions barring altar service, not personhood
-🐑 Mirrors the "without blemish" standard already required for animals
-🔗 See Leviticus 22:20-25 for the matching animal-offering rule
----
+
+This section lists physical conditions barring a priest's descendant from the altar.
+
+It is worth saying plainly that this was never a judgment of a man's worth.
+
+Offering animals already had to be without blemish, a standard explained again in Leviticus twenty two.
+
+This extended that same symbolic standard of wholeness to the person serving.
+
+Verse twenty two later confirms a barred priest was still fed from the offerings.
+
+Hebrews 7:26 later calls Jesus a high priest who is truly undefiled.
+
+That deeper wholeness is what this physical list could only ever picture.
+
+🍞 Lists conditions barring altar service
+
+❤️ Never a judgment of personal worth
+
+🐑 Mirrors the standard required for animals
+
+📖 Hebrews 7:26 points to Jesus's true wholeness
+
 ## 👁️ A Blind Man, Or A Lame, Or He That Hath A Flat Nose, Or Any Thing Superfluous
-This opens the list: blindness, an inability to walk normally, a damaged or missing nose, or an extra body part. Each condition listed here was visible and permanent, matching the "without blemish" standard just described.
+
+This opens the list with blindness and an inability to walk normally.
+
+"Flat nose" likely means a damaged or disfigured nose.
+
+"Superfluous" means an extra, unusual body part.
+
+Each condition named here was visible and permanent.
+
 👁️ Blindness and lameness open the list
-👃 "Flat nose" likely means a damaged or disfigured nose
-➕ "Superfluous" means an extra, unusual body part
----
+
+👃 Flat nose means a disfigured nose
+
+➕ Superfluous means an extra body part
+
+📖 Every condition here was visible
+
 ## 🦴 Or A Man That Is Brokenfooted, Or Brokenhanded
-This covers a permanently broken or malformed foot or hand, not a temporary injury like a healed fracture. The list is concerned with lasting physical conditions, not short-term recovery from an accident.
-🦴 Refers to a permanent condition, not a temporary injury
-⏳ A healed broken bone wasn't the concern here
-📋 Continues the visible-and-lasting pattern of the list
----
+
+This covers a permanently broken or malformed foot or hand.
+
+It does not cover a temporary injury like a healed fracture.
+
+The list cares about lasting conditions, not short term recovery.
+
+A healed broken bone was never the concern here.
+
+🦴 A permanent foot or hand condition
+
+⏳ Not a temporary or healed injury
+
+📋 Lasting conditions, not short term recovery
+
+📖 Continues the visible and lasting pattern
+
 ## 🩺 Or Crookbackt, Or A Dwarf, Or That Hath A Blemish In His Eye, Or Be Scurvy, Or Scabbed, Or Hath His Stones Broken
-This final cluster names a curved spine, short stature, an eye condition, ongoing skin disease, and a physical injury affecting reproduction. Piled together in one verse, this is the list's most detailed stretch, covering nearly every visible category the law could think to name.
-🩺 Covers spine curvature, short stature, and eye conditions
-🩹 "Scurvy" and "scabbed" point to ongoing skin conditions
-📋 The most detailed cluster in the whole list
----
-## 🌍 Why This Rule Doesn't Condemn Disability
-It helps to be direct about what this law is and isn't doing. It never says a priest with one of these conditions is less loved by God or less a part of Israel - verse 22 makes sure he's still fed from the holy offerings. The rule is narrowly about who could physically perform the specific altar ritual, tied to the ancient symbolic idea that the visible offering and the person presenting it matched in wholeness.
-❤️ Doesn't say these men were less loved or less part of Israel
-🍞 Verse 22 confirms he was still fed from the holy offerings
-🎯 Narrowly about altar service, not personal worth
----
-## ✝️ A Forward Look At A Perfect High Priest
-The New Testament book of Hebrews later describes Jesus as a high priest who is "holy, harmless, undefiled, separate from sinners" (Hebrews 7:26) - perfect in the deeper sense this whole blemish list was only ever a physical picture of. The Old Testament requirement for outward wholeness pointed toward something this law itself couldn't produce: complete inward wholeness in the one who mediates between God and people.
-✝️ Hebrews 7:26 describes Jesus as the truly "undefiled" high priest
-🖼️ The physical rule pictured a deeper wholeness this law couldn't create
-🔮 A forward-pointing pattern, not the final word
+
+This final cluster names a curved spine and unusually short stature.
+
+It also names an eye condition and an ongoing skin disease.
+
+It closes with a physical injury affecting reproduction.
+
+This is the most detailed stretch in the whole list.
+
+🩺 Names spine curvature and short stature
+
+👁️ Also names an eye condition
+
+🩹 Scurvy and scabbed mean ongoing skin disease
+
+📖 The most detailed cluster in the list
 
 # Leviticus 21:21-24
 # 🍞 Provided For, But Limited
 ---
+## 🚪 No Man That Hath A Blemish Of The Seed Of Aaron The Priest Shall Come Nigh To Offer The Offerings Of The LORD Made By Fire
+
+This verse restates the whole blemish list one final time as a single rule.
+
+It closes the list before moving on to what a barred priest could still do.
+
+He could not serve at the altar, but he was not cast out of the family.
+
+The next verses turn from what he could not do to what he still could.
+
+🚪 Restates the whole list as one rule
+
+📋 Closes out the disqualifying conditions
+
+👪 He stayed part of the priestly family
+
+📖 The chapter now turns to provision
+
 ## 🍞 He Shall Eat The Bread Of His God, Both Of The Most Holy, And Of The Holy
-A priest disqualified from altar service by one of these conditions still received his share of food from the offerings - both the "most holy" portions (like the shewbread and sin offering meat) and the regular "holy" portions. Exclusion from the altar never meant exclusion from provision or belonging to the priestly family.
-🍞 Still receives his full food portion from the offerings
-📊 Covers both the "most holy" and regular "holy" categories
-🤝 Being barred from the altar isn't the same as being cut off
----
+
+A priest barred from the altar still received his share of the holy food.
+
+This covered both the most holy portions and the regular holy portions.
+
+Exclusion from the altar never meant exclusion from provision or belonging.
+
+Being barred from one duty was not the same as being cut off.
+
+🍞 Still received his full food portion
+
+📊 Covers both most holy and holy food
+
+🤝 Altar exclusion was not total exclusion
+
+📖 Provision and belonging still remained his
+
 ## 🚪 Only He Shall Not Go In Unto The Vail, Nor Come Nigh Unto The Altar, Because He Hath A Blemish
-This defines exactly what he can't do: enter past the veil, into the areas nearest God's presence, or approach the altar itself to perform sacrifices. Everything else - eating the holy food, living among the priestly community - stayed open to him.
-🚪 Two specific limits: the veil area and the altar
-✅ Everything outside those two areas remained open to him
-📏 A narrow restriction, not a blanket exclusion
----
+
+This defines exactly what a blemished priest could not do.
+
+He could not enter past the veil, closest to God's presence.
+
+He also could not approach the altar to perform sacrifices himself.
+
+Everything else, eating the holy food and living among the priests, stayed open.
+
+🚪 Two specific limits, the veil and the altar
+
+✅ Everything else remained open to him
+
+📏 A narrow restriction, not a full ban
+
+📖 Only two duties were closed off
+
 ## ✨ That He Profane Not My Sanctuaries: For I The LORD Do Sanctify Them
-The reasoning returns one final time to the sanctuary's own holiness, not the man's worth. The restriction protects the set-apart status of the holy space itself, the same logic running through this entire chapter from the very first verse.
-✨ About protecting the sanctuary's holiness, not judging the man
-🔁 The same reasoning used throughout the whole chapter
+
+The reasoning returns one final time to the sanctuary's own holiness.
+
+This was never about ranking the man's personal worth.
+
+The restriction protects the set apart status of the holy space itself.
+
+This same reasoning has run through the entire chapter from the first verse.
+
+✨ Protects the sanctuary's holiness, not his worth
+
+🔁 The same reasoning used all chapter long
+
 📚 Brings the chapter's core theme full circle
----
+
+📖 God alone makes people and places holy
+
 ## 📜 And Moses Told It Unto Aaron, And To His Sons, And Unto All The Children Of Israel
-This closing line is easy to skim past, but it matters: even though this chapter's rules applied specifically to priests, Moses made sure the entire nation heard them too. Every Israelite depended on priests staying fit to mediate the offerings, so everyone needed to understand the standard their priests were held to.
-📜 A rule for priests, but announced to the whole nation
-🤝 Everyone depended on priests staying fit to serve
-👥 Closes the chapter the same way it opened - Moses relaying God's word
-`;
+
+This closing line is easy to skim past, but it matters.
+
+These rules applied specifically to priests, yet Moses told the whole nation.
+
+Every Israelite depended on priests staying fit to carry out the offerings.
+
+Everyone needed to understand the standard their priests were held to.
+
+📜 A rule for priests, announced to everyone
+
+🤝 Everyone depended on priests staying fit
+
+👥 Closes the chapter the way it opened
+
+📖 Moses relayed God's word to all
+`.trim();
 
 export const LEVITICUS_TWENTY_ONE_PERSONAL_SECTIONS = parseLeviticusTwentyOneRawNotes(LEVITICUS_TWENTY_ONE_RAW_NOTES);
