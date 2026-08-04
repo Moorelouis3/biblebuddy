@@ -9263,6 +9263,59 @@
           "at": "2026-08-04T14:02:18Z"
         }
       ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 9,
+      "startedAt": "2026-08-04T14:46:23Z",
+      "finishedAt": "2026-08-04T15:00:00Z",
+      "durationMinutes": 14,
+      "sections": 5,
+      "cards": 41,
+      "verses": 23,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec file from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (Numbers.json, chapter 9). Session started with git HEAD detached at the same commit as origin/main (the recurring detached-HEAD environment bug) -- fixed by checking out main and resetting to origin/main, no work lost since local HEAD already matched origin/main exactly. Numbers 9 covers the second annual Passover kept in the wilderness of Sinai a year after the Exodus (with a chronological note that this actually precedes the census in chapter 1), the group of men defiled by a corpse who could not keep it on the regular date and brought their problem to Moses and Aaron, God's answer creating a second, makeup Passover exactly one month later (later Jewish tradition's Pesach Sheni) with its own penalty for willful refusal and equal provision for a sojourning stranger, and the chapter's back half on the cloud over the tabernacle by day and fire by night that controlled the whole camp's schedule for the entire forty year wilderness journey, whether the wait was two days or a full year. Kept the original file's 5 section boundaries for verse-coverage continuity while rewriting every card title to an exact KJV phrase (the old file's titles included invented topic labels like 'Earlier Than It Looks' and 'A Full Circle Moment' which violate the spec's title rule) and every card body/bullets to the new format. Density about 1.78 cards per verse (23 verses, 41 cards). `scripts/check_bible_note_style.py` was clean on the first run, no problems found. A manual section 13 eye check confirmed every card teaches meaning rather than reciting the verse, no repeated first lines, no forced morals, and no duplicate card titles across the file. Parser check passed exactly via getBibleReaderStudySections('numbers', 9) (5/5 sections, 41 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range covering Numbers 1-30, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (NumbersNinePersonalSection, parseNumbersNineRawNotes, NUMBERS_NINE_RAW_NOTES, NUMBERS_NINE_PERSONAL_SECTIONS) were kept exactly as before, matching the old file's 5-section structure. data/bible-notes-style-redo-remaining.json Numbers 9 entry removed from the front of the list as part of this commit; next redo target is Numbers 10.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-04T14:47:09Z"
+        },
+        {
+          "name": "fixed detached HEAD (checked out main, reset to origin/main, no work lost)",
+          "at": "2026-08-04T14:46:57Z"
+        },
+        {
+          "name": "target chapter determined: Numbers 9 (style redo, first in remaining backlog)",
+          "at": "2026-08-04T14:47:12Z"
+        },
+        {
+          "name": "style spec, reference implementation, and KJV text (Numbers.json chapter 9) fetched/read",
+          "at": "2026-08-04T14:47:26Z"
+        },
+        {
+          "name": "source file written (lib/numbersNineSource.ts, 5 sections, 41 cards)",
+          "at": "2026-08-04T14:55:15Z"
+        },
+        {
+          "name": "style checker clean on first run",
+          "at": "2026-08-04T14:55:19Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo (no changes needed)",
+          "at": "2026-08-04T14:55:33Z"
+        },
+        {
+          "name": "parser check passed (5 sections, 41 cards, 23 verses covered)",
+          "at": "2026-08-04T14:55:53Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-04T14:57:36Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-04T14:58:30Z"
+        }
+      ]
     }
   ]
 }

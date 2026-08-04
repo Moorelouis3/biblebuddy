@@ -91,275 +91,785 @@ function parseNumbersNineRawNotes(rawText: string): NumbersNinePersonalSection[]
 const NUMBERS_NINE_RAW_NOTES = `# Numbers 9:1-5
 # 📅 Passover, One Year Later
 ---
-## 🏕️ Spoken In The Wilderness Of Sinai
-Israel has been camped at the base of Mount Sinai since Exodus 19, and they're still there right now. Every major event since then - the Ten Commandments, the tabernacle's construction, the priests' ordination, the Levites' assignment - all happened on this same stretch of ground, and this chapter still takes place before the nation marches anywhere.
-🏕️ Israel has been camped at Sinai since Exodus 19
-📖 Every major event since then happened on this same ground
-🔑 They're still here, not yet moving, as this chapter opens
----
-## ⏪ Earlier Than It Looks
-This date - the first month of the second year - actually comes before the census that opened chapter 1, which happened in the second month of that same year (Numbers 1:1). The book of Numbers groups material by topic, not strict time order, so it puts the census and the Levite instructions first and only circles back afterward to tell this slightly earlier Passover story.
-⏪ This event actually happened one month before Numbers 1's census
-📚 Numbers groups material by topic, not always by strict order
-🔑 A reminder that Bible books don't always tell events in sequence
----
+## 🏕️ In The Wilderness Of Sinai
+
+Israel is not in a new place here.
+
+They have been camped at the base of Mount Sinai since Exodus 19.
+
+Every major event so far happened on this same ground.
+
+The Ten Commandments, the tabernacle, and the ordination of the priests all happened right here.
+
+This chapter still takes place before the nation marches anywhere.
+
+🏕️ Camped at Sinai since Exodus 19
+
+🛠️ The tabernacle and the Law both given here
+
+🚶 Israel has not yet begun to move
+
+📖 The whole story happened on this ground
+
+## 📅 The First Month Of The Second Year
+
+This date sits earlier than it looks.
+
+The census that opens the book of Numbers happened in the second month of this same year.
+
+That means this Passover actually happened one month before the story in chapter one.
+
+Numbers often groups material by topic instead of by strict time order.
+
+The order on the page does not always match the order in real life.
+
+📅 One month before Numbers chapter one
+
+📚 Numbers groups by topic, not by order
+
+🔀 The census actually came after this event
+
+📖 Events are not always told in order
+
 ## 🎉 Let The Children Of Israel Also Keep The Passover
-"Also" signals a repeat command - Passover was already instituted once, back in Exodus 12, the night Israel left Egypt. Now, one year later, God tells them to do it again, turning a one-time rescue event into a yearly, repeating tradition.
-🎉 "Also" marks this as a repeat, not a brand-new command
-📖 First given in Exodus 12, the night of the escape from Egypt
-🔑 A one-time rescue becomes a yearly repeating observance
----
+
+The word also signals a repeat, not a brand new command.
+
+Passover was already given once, back in Exodus 12.
+
+That was the night Israel finally left Egypt.
+
+Now, one year later, God tells them to keep it again.
+
+A one time rescue is becoming a yearly feast.
+
+🎉 Also means this is a repeat
+
+🌙 First commanded in Exodus 12
+
+🏃 The night of the escape from Egypt
+
+📖 A one time rescue becomes a yearly feast
+
 ## 🕰️ At His Appointed Season
-"Appointed season" translates a Hebrew word (moed) meaning a fixed, scheduled time set by God himself, not a date the people could pick for convenience. The same word describes Israel's other yearly feasts later in the Law - these dates weren't suggestions.
-🕰️ "Appointed season" means a fixed date set by God, not by the people
-📅 The same word describes Israel's other yearly feasts
-🔑 Sacred timing, not a convenient or flexible date
----
-## 📆 The Fourteenth Day Of This Month, At Even
-"Even" is old English for evening, right around sunset. In this culture, a new day was counted as starting at evening, not at midnight or sunrise, so "the fourteenth day...at even" points to the specific twilight hour when the Passover lamb was to be killed and eaten - the exact same timing given back in Exodus 12:6.
-📆 "Even" means evening, around sunset
-🌙 Days were counted as starting at evening, not midnight
-🔑 The exact same timing first set in Exodus 12:6
----
-## 📜 All The Rites...All The Ceremonies Thereof
-"Rites" and "ceremonies" here are close in meaning, and the doubling is deliberate - it's the text's way of saying every single detail, not just the headline instruction to eat a lamb. Nothing about the original Passover - the blood, the herbs, the posture of eating it ready to travel - was allowed to be quietly dropped or simplified a year later.
-📜 Two similar words used together for full emphasis
-🚫 Nothing from the original instructions could be dropped
-🔑 "According to all" means every detail, not just the main idea
----
+
+Appointed season translates a Hebrew word, moed.
+
+Moed means a fixed date set by God himself.
+
+It is not a day the people could pick for convenience.
+
+The same word describes Israel's other yearly feasts later in the Law.
+
+These dates were never meant to be flexible.
+
+🕰️ Appointed season means a fixed date
+
+📜 The Hebrew word is moed
+
+📅 Also used for Israel's other yearly feasts
+
+📖 Sacred timing, not a convenient one
+
+## 🌇 The Fourteenth Day Of This Month, At Even
+
+Even is an old word for evening, close to sunset.
+
+In this culture a new day started at evening, not at midnight.
+
+So the fourteenth day at even points to one specific twilight hour.
+
+That is when the Passover lamb was killed and eaten.
+
+It is the exact same timing first given in Exodus 12:6.
+
+🌇 Even means evening, near sunset
+
+🌙 Days began at evening, not midnight
+
+🐑 The hour the lamb was killed and eaten
+
+📖 Matches the timing from Exodus 12:6
+
+## 📜 All The Rites Of It, And All The Ceremonies Thereof
+
+Rites and ceremonies mean nearly the same thing here.
+
+Repeating two similar words together was a way to add emphasis.
+
+The point is every single detail, not just the headline instruction.
+
+Nothing about the original Passover could be quietly dropped or simplified.
+
+The blood, the herbs, and the posture of eating ready to travel all still applied.
+
+📜 Rites and ceremonies are close in meaning
+
+🔁 Repeating them doubles the emphasis
+
+🚫 Nothing could be dropped or simplified
+
+📖 According to all means every detail
+
 ## 🗣️ Moses Spake Unto The Children Of Israel
-The command travels in a clear chain: God speaks to Moses, and only then does Moses pass it on to the people. This same relay pattern - never the people hearing directly, always through Moses - shows up constantly through Exodus, Leviticus, and Numbers, and it's part of why Moses is described elsewhere as uniquely close to God.
-🗣️ The command passes from God to Moses, then to the people
-🔁 The same relay pattern repeats constantly in these books
-🔑 Moses functions as the one authorized go-between
----
-## ✅ According To All That The LORD Commanded...So Did The Children Of Israel
-This exact obedience formula - command given, then confirmation it was carried out precisely - is the same language used again and again to close out the tabernacle's construction in Exodus 39-40 and the Levites' ordination in chapter 8. It's Scripture's way of certifying that nothing was skipped or altered.
-✅ The same formula used to close the tabernacle-building account
-📖 Matches the ordination language from Numbers 8
-🔑 A certification that nothing was skipped or changed
----
-## 🔄 A Full Circle Moment
-This is the first anniversary of the night Israel left Egypt. Keeping Passover again, in the wilderness, before they've even reached the promised land, ties their present situation - still travelers, still dependent on God - back to the night everything began, reminding them why they're out here at all.
-🔄 The first anniversary of the night Israel left Egypt
-🚶 Kept even mid-journey, before reaching the promised land
-🔑 A yearly reminder of why the journey started in the first place
+
+The command travels through a clear chain of people.
+
+God speaks to Moses first.
+
+Only after that does Moses pass the word to Israel.
+
+This same relay pattern repeats constantly through Exodus, Leviticus, and Numbers.
+
+Moses functions as the one authorized go between.
+
+🗣️ God speaks to Moses first
+
+🔁 Moses then passes it to the people
+
+📚 This pattern repeats across three books
+
+📖 Moses is the one authorized go between
+
+## ✅ According To All That The LORD Commanded Moses, So Did The Children Of Israel
+
+This is an exact obedience formula.
+
+A command is given, and then its completion is confirmed.
+
+The same wording closes the tabernacle building account in Exodus 39 and 40.
+
+It also matches the ordination language for the Levites from Numbers chapter 8.
+
+Scripture uses this formula to certify that nothing was skipped or changed.
+
+✅ Command given, then confirmed complete
+
+🏗️ Matches the tabernacle building account
+
+👐 Also matches the Levites ordination in Numbers 8
+
+📖 A certification that nothing was skipped
 
 # Numbers 9:6-8
 # ❓ A Problem Nobody Expected
 ---
 ## 💀 Defiled By The Dead Body Of A Man
-Touching a human corpse made a person ceremonially unclean under the Law - a separate category from moral sin, more like a temporary status that barred someone from sacred activity until it passed (the full cleansing ritual for this specific kind of defilement gets spelled out later, in Numbers 19). It's specifically a human body in view here, not an animal carcass, which followed different rules (Leviticus 11).
-💀 Touching a human corpse made someone ceremonially unclean
-⏳ A temporary status, not a moral judgment on the person
-🔑 Different rules applied to animal carcasses (Leviticus 11)
----
+
+Touching a human corpse made a person ceremonially unclean under the Law.
+
+That uncleanness is a separate category from moral sin.
+
+It works more like a temporary status than a permanent stain.
+
+It blocked someone from sacred activity until the status passed.
+
+Only a human body is in view here, not an animal carcass.
+
+💀 Touching a corpse caused uncleanness
+
+⏳ A temporary status, not a moral judgment
+
+🚪 It blocked sacred activity until it passed
+
+📖 Animal carcasses followed different rules in Leviticus
+
 ## 🚫 They Could Not Keep The Passover On That Day
-Ceremonial uncleanness barred a person from Passover entirely for as long as it lasted - not a minor inconvenience, but a real exclusion from one of Israel's most important yearly observances. These particular men had no idea this situation was even possible until it happened to them.
-🚫 Uncleanness meant total exclusion from Passover, not a minor delay
-😟 A real, unexpected problem for these specific men
-🔑 No existing law yet told them what to do about it
----
+
+Ceremonial uncleanness barred a person from Passover completely.
+
+This was not a minor inconvenience.
+
+It meant real exclusion from one of Israel's most important yearly feasts.
+
+These particular men had no idea this situation was even possible.
+
+It happened to them without warning.
+
+🚫 Uncleanness meant total exclusion
+
+😟 Not a minor inconvenience at all
+
+❓ No existing law covered their case yet
+
+📖 A real problem nobody saw coming
+
 ## 🙋 They Came Before Moses And Before Aaron
-The men bring their problem to both of Israel's top leaders together - Moses, the nation's leader, and Aaron, the high priest overseeing all things sacred. Bringing a ceremonial question to Aaron specifically, not just Moses, makes sense given that this is exactly the kind of purity question that fell under priestly authority.
-🙋 Brought to both Moses and Aaron together
-👑 Aaron's presence fits since this is a priestly, ceremonial question
-🔑 They went to the proper authorities rather than deciding on their own
----
-## 🗣️ Wherefore Are We Kept Back?
-Notice what these men are NOT saying - they're not looking for a loophole to skip a duty they didn't want. They genuinely want to participate and are upset that circumstances outside their control are stopping them. Their complaint is really a request for a way to obey, not an excuse to disobey.
-🗣️ Not an excuse to skip Passover, but a request to still keep it
-❤️ Genuine desire to worship despite being blocked
-🔑 A complaint that's really a request to obey, not avoid obeying
----
+
+The men bring their problem to both of Israel's top leaders together.
+
+Moses led the nation.
+
+Aaron served as high priest over all sacred matters.
+
+Bringing a ceremonial question to Aaron fits since purity questions fell under his authority.
+
+They went to the proper leaders instead of deciding on their own.
+
+🙋 Brought to both leaders together
+
+👑 Aaron oversaw sacred and ceremonial matters
+
+⚖️ A purity question fit his role
+
+📖 They sought proper authority, not a shortcut
+
+## 🗣️ Wherefore Are We Kept Back
+
+Notice what these men are not saying.
+
+They are not searching for a loophole to skip a duty they disliked.
+
+They genuinely want to take part in Passover.
+
+They are upset that circumstances outside their control are stopping them.
+
+Their complaint is really a request for a way to obey.
+
+❤️ A genuine desire to worship
+
+🚫 Not an excuse to avoid Passover
+
+🙏 Blocked by circumstance, not by choice
+
+📖 A request to obey, not an excuse
+
 ## 🤲 Stand Still, And I Will Hear What The LORD Will Command
-Rather than guessing or making up an answer on the spot, Moses pauses the whole situation and goes to ask God directly. This same pattern - a genuinely new legal question with no existing rule, resolved by Moses inquiring of God rather than deciding himself - happens again later with Zelophehad's daughters in Numbers 27.
-🤲 Moses doesn't guess - he goes to ask God directly
-⏸️ "Stand still" means wait, not "the answer is no"
-🔑 The same pattern repeats later in Numbers 27
+
+Moses does not guess or make up an answer on the spot.
+
+He pauses the whole situation.
+
+He goes to ask God directly.
+
+Stand still means wait, not that the answer is no.
+
+This same pattern repeats later with Zelophehad's daughters in Numbers 27.
+
+🤲 Moses asks God instead of guessing
+
+⏸️ Stand still means wait, not refuse
+
+🔁 The same pattern returns in Numbers 27
+
+📖 New questions still needed God's own answer
 
 # Numbers 9:9-14
 # 🗓️ The Second Passover
 ---
 ## 👨‍👩‍👧‍👦 Of You Or Of Your Posterity
-"Posterity" means descendants - children, grandchildren, and everyone born after. By phrasing the answer this way, God makes clear this new provision isn't a one-time exception for these particular defiled men; it becomes a permanent part of the Law for every future generation facing the same problem.
-👨‍👩‍👧‍👦 "Posterity" means future descendants, not just this generation
-📜 A permanent addition to the Law, not a one-time exception
-🔑 Future Israelites facing this exact problem are already covered
----
+
+Posterity means descendants, your children and grandchildren and all who come after.
+
+God phrases this answer to cover more than the men who just asked.
+
+This is not a one time exception for a few defiled men.
+
+It becomes a permanent part of the Law for every future generation.
+
+Anyone facing this same problem later is already covered.
+
+👨‍👩‍👧‍👦 Posterity means future descendants
+
+📜 Not just an answer for this generation
+
+♾️ A permanent addition to the Law
+
+📖 Future Israelites are already covered
+
 ## 💀 Unclean By Reason Of A Dead Body
-This restates the exact problem just raised in verses 6-7 - corpse defilement - confirming that the case brought to Moses is now officially covered by law, not just answered informally for one group of men.
-💀 Restates the same corpse-defilement problem from verses 6-7
-✅ Confirms their specific case is now covered by real law
-🔑 An informal question just became an official, lasting rule
----
+
+This restates the exact problem raised back in verses six and seven.
+
+Corpse defilement is the same issue those men brought to Moses.
+
+Naming it again confirms their case is now covered by real law.
+
+An informal question just became an official, lasting rule.
+
+💀 Restates the same problem from earlier
+
+✅ Their case is now covered by law
+
+📜 An informal question becomes official
+
+📖 A lasting rule, not a one time answer
+
 ## 🚶 Or Be In A Journey Afar Off
-A second, separate excuse gets added here that nobody had even asked about - being away on a long trip when Passover falls. God expands the provision beyond the exact question raised, covering a related problem before anyone has to ask about it separately.
-🚶 A second valid excuse, added even though nobody asked about it
-➕ God expands the provision beyond the original question
-🔑 Two distinct, separate reasons someone might miss the date
----
+
+A second excuse appears here that nobody had even asked about.
+
+Being away on a long trip when Passover falls is a real problem too.
+
+God expands the provision beyond the exact question that was raised.
+
+He covers a related problem before anyone has to ask about it separately.
+
+🚶 A second valid reason, unasked
+
+➕ God expands the provision himself
+
+🧭 Covers a problem before it is raised
+
+📖 Two distinct reasons someone might miss the date
+
 ## ✅ Yet He Shall Keep The Passover Unto The LORD
-The core provision: someone who missed the regular date for a valid reason doesn't simply lose the chance for the whole year. There's a real, legitimate makeup opportunity built into the Law itself.
-✅ Missing the date for a valid reason doesn't mean losing it entirely
-🔁 A real makeup opportunity, built directly into the Law
-🔑 God provides for the honest, unavoidable gap, not just the ideal case
----
+
+This is the heart of the whole provision.
+
+Missing the regular date for a valid reason does not mean losing the year entirely.
+
+There is a real, legitimate makeup chance built into the Law itself.
+
+God provides for the honest, unavoidable gap, not only the ideal case.
+
+✅ Missing the date does not mean losing it
+
+🔁 A real makeup chance, built into the Law
+
+🤲 God plans for honest, unavoidable gaps
+
+📖 Grace built directly into the rule itself
+
 ## 📆 The Fourteenth Day Of The Second Month
-The makeup date is exactly one month after the regular date, same day of the month, same evening timing. Jewish tradition later calls this exact provision "Pesach Sheni," the Second Passover, and it's still observed by some Jewish communities today.
-📆 Exactly one month after the regular Passover date
-🕯️ Later Jewish tradition calls this "Pesach Sheni," the Second Passover
-🔑 A tradition still recognized in some Jewish communities today
----
+
+The makeup date sits exactly one month after the regular Passover date.
+
+Same day of the month, same evening timing as before.
+
+Later Jewish tradition calls this exact provision Pesach Sheni, the Second Passover.
+
+Some Jewish communities still observe it today.
+
+📆 One month after the regular date
+
+🕯️ Called Pesach Sheni in later tradition
+
+🌍 Still observed by some communities today
+
+📖 A second chance, not a shortcut
+
 ## 🌿 Eat It With Unleavened Bread And Bitter Herbs
-Both elements callback directly to the original Passover meal in Exodus 12. The unleavened (flat, without yeast) bread recalled how fast Israel had to leave Egypt - no time to let dough rise. The bitter herbs recalled the bitterness of their years of slavery there.
-🌿 Both elements repeat the original meal from Exodus 12
-🍞 Unleavened bread recalled the rushed, no-time-to-rise departure
-🔑 Bitter herbs recalled the bitterness of slavery in Egypt
----
-## 🦴 Leave None Of It Unto The Morning, Nor Break Any Bone Of It
-This exact detail repeats Exodus 12:46 word for word - nothing about the makeup Passover was allowed to be a shortened or simplified version. Centuries later, John 19:36 points back to this very rule, connecting the unbroken Passover lamb to Jesus, whose bones also weren't broken at the crucifixion.
-🦴 Repeats Exodus 12:46's rule exactly, no shortcuts allowed
-✝️ John 19:36 later connects this rule to Jesus at the cross
-🔑 A small ritual detail carrying a much bigger meaning forward
----
+
+Both elements repeat the original Passover meal from Exodus 12.
+
+Unleavened bread has no yeast, so the dough never had time to rise.
+
+That recalled how fast Israel had to leave Egypt.
+
+Bitter herbs recalled the bitterness of their years as slaves there.
+
+🍞 Unleavened bread means bread without yeast
+
+🏃 It recalled the rushed departure from Egypt
+
+🌿 Bitter herbs recalled years of slavery
+
+📖 Even the makeup meal kept the same symbols
+
+## 🦴 Nor Break Any Bone Of It
+
+This detail repeats Exodus 12:46 almost word for word.
+
+Nothing about the makeup Passover was allowed to be a shortened version.
+
+Centuries later, John 19:36 points back to this exact rule.
+
+It connects the unbroken Passover lamb to Jesus, whose bones were not broken at the cross.
+
+🦴 Repeats Exodus 12:46's rule exactly
+
+🚫 No shortcuts allowed for the makeup meal
+
+✝️ John 19:36 later connects this to Jesus
+
+📖 A small ritual detail carrying forward
+
 ## 📋 According To All The Ordinances Of The Passover
-"Ordinances" simply means laws or rules. This closing line makes sure nobody assumes the makeup date is a lighter, easier version - every single requirement of the regular Passover still applies in full, one month late.
-📋 "Ordinances" means laws or established rules
-🚫 Not a lighter or easier version of the observance
-🔑 Every requirement still applies in full, just one month later
----
-## ⚠️ The Man That Is Clean...And Forbeareth To Keep The Passover
-"Forbeareth" is old English for refuses or holds back. This describes a completely different person than the ones in verses 6-8 - someone with no valid excuse at all who simply chooses not to bother.
-⚠️ "Forbeareth" means refuses or deliberately holds back
-🚷 A totally different case than the honestly-defiled men earlier
-🔑 No valid excuse - just a choice not to participate
----
+
+Ordinances simply means laws or established rules.
+
+This closing line makes sure nobody assumes the makeup date is a lighter version.
+
+Every single requirement of the regular Passover still applies in full.
+
+It just happens one month later than usual.
+
+📋 Ordinances means established laws
+
+🚫 Not a lighter or easier version
+
+✅ Every requirement still applies in full
+
+📖 Only the date moved, not the standard
+
+## ⚠️ Forbeareth To Keep The Passover
+
+Forbeareth is an old word for refuses or holds back on purpose.
+
+This describes a completely different person than the men in verses six through eight.
+
+Those men wanted to obey and had a real, unavoidable excuse.
+
+This person has no valid excuse at all and simply chooses not to take part.
+
+⚠️ Forbeareth means refuses on purpose
+
+🙅 A very different case than before
+
+🙏 Those men wanted to obey
+
+📖 This one simply chooses not to
+
 ## ✂️ That Soul Shall Be Cut Off From Among His People
-"Cut off" is a severe covenant idiom - being removed from the community and its promises, whether through death, exile, or God's own direct judgment; scholars debate the exact mechanism, but everyone agrees it marks total severance from Israel's covenant life. This penalty applies only to willful refusal, never to the innocent cases just described.
-✂️ "Cut off" means total severance from Israel's covenant community
-⚖️ The exact mechanism is debated, but the severity isn't
-🔑 This only applies to willful refusal, never an honest excuse
----
+
+Cut off is a severe covenant idiom.
+
+It means being removed from the community and its promises.
+
+That could happen through death, exile, or God's own direct judgment.
+
+Scholars debate the exact mechanism, but everyone agrees on the severity.
+
+This penalty only applies to willful refusal, never to an honest excuse.
+
+✂️ Cut off means total severance
+
+⚖️ The exact mechanism is debated
+
+😔 A serious, permanent kind of loss
+
+📖 Only for willful refusal, never honest excuse
+
 ## 🎒 That Man Shall Bear His Sin
-"Bear his sin" is another set idiom, meaning the person is held personally responsible for the consequences, with no one else to blame. The contrast with verses 6-8 is deliberate: those men brought their problem to God through Moses instead of just skipping quietly, and got a provision; this man simply refuses, and gets the opposite outcome.
-🎒 "Bear his sin" means personal responsibility, no one else to blame
-🔀 The exact opposite outcome of the men in verses 6-8
-🔑 The difference is bringing the problem to God versus ignoring it
----
+
+Bear his sin is another set idiom in the Law.
+
+It means the person carries full responsibility for the consequences.
+
+Nobody else can be blamed for his choice.
+
+This is the exact opposite outcome of the men in verses six through eight.
+
+Those men brought their problem to God instead of ignoring it, and received a provision.
+
+🎒 Bear his sin means full responsibility
+
+🙅 No one else to share the blame
+
+🔀 The opposite outcome of the honest men
+
+📖 Bringing a problem to God changes the outcome
+
 ## 🌍 If A Stranger Shall Sojourn Among You
-"Sojourn" means to live temporarily as a foreigner in someone else's land - not a citizen, but a long-term resident. "Stranger" here refers to a non-Israelite living within the camp or, later, within the land.
-🌍 "Sojourn" means living temporarily as a resident foreigner
-🧭 "Stranger" means a non-Israelite living among the people
-🔑 Not a citizen by birth, but present and living among Israel
----
-## 🤝 One Ordinance, Both For The Stranger, And For Him That Was Born In The Land
-This is a genuinely striking piece of ancient law: the exact same rule applies regardless of ethnic background. A foreign resident who wanted to keep the Passover was held to, and given, the identical standard as a native-born Israelite - no separate, lesser track.
-🤝 The same law applied to foreigners and native-born Israelites alike
-⚖️ No separate or lesser track based on ethnic background
-🔑 Striking equal treatment for its time, written directly into the Law
+
+Sojourn means to live temporarily as a foreigner in someone else's land.
+
+A sojourner is a long term resident, not a citizen by birth.
+
+Stranger here refers to a non Israelite living within the camp.
+
+Later in the Law it also covers someone living within the land itself.
+
+🌍 Sojourn means living as a resident foreigner
+
+🧭 Stranger means a non Israelite in the camp
+
+🏕️ A resident, not a citizen by birth
+
+📖 The Law still made room for outsiders
+
+## 🤝 Ye Shall Have One Ordinance
+
+This is a genuinely striking piece of ancient law.
+
+The exact same rule applies no matter someone's ethnic background.
+
+A foreign resident who wanted to keep Passover met the same standard as a native born Israelite.
+
+There was no separate, lesser track for outsiders.
+
+🤝 One law for foreigner and native alike
+
+⚖️ No separate or lesser track
+
+🌍 Equal treatment written directly into the Law
+
+📖 Striking fairness for its ancient time
 
 # Numbers 9:15-19
 # ☁️ The Cloud Covers The Tabernacle
 ---
 ## 🏗️ On The Day That The Tabernacle Was Reared Up
-"Reared up" means erected or set up for the first time - this points back to Exodus 40, the day Moses finished assembling the tabernacle exactly one month before this chapter's Passover (Exodus 40:17 dates it to the first day of that same first month).
-🏗️ "Reared up" means erected, set up for the first time
-📖 Points back to the tabernacle's assembly in Exodus 40
-🔑 That event happened just two weeks before this chapter's Passover
----
+
+Reared up means erected, set up for the first time.
+
+This points back to Exodus 40, when Moses finished assembling the tabernacle.
+
+Exodus 40:17 dates that day to the first day of this same first month.
+
+That means the tabernacle went up just two weeks before this chapter's Passover.
+
+🏗️ Reared up means erected or built
+
+📆 Points back to Exodus 40's assembly
+
+🗓️ Two weeks before this chapter's Passover
+
+📖 The timeline connects both events together
+
 ## 📜 The Tent Of The Testimony
-This is another name for the tabernacle, emphasizing what it held at its center - the stone tablets of the Ten Commandments, kept inside the ark. Calling it "the testimony" ties the whole structure back to the covenant law given at Sinai, not just a generic worship tent.
+
+This is another name for the tabernacle.
+
+It highlights what the tabernacle held at its center.
+
+The stone tablets of the Ten Commandments sat inside the ark there.
+
+Calling it the testimony ties the whole structure back to the covenant given at Sinai.
+
 📜 An alternate name for the tabernacle
-🪨 Named for the stone tablets of the Law kept inside it
-🔑 Ties the whole structure back to the covenant given at Sinai
----
+
+🪨 Named for the stone tablets inside it
+
+🤝 Ties the tent back to the covenant
+
+📖 A tent that witnesses to the Law
+
 ## 🌥️ The Cloud Covered The Tabernacle
-This same cloud already appeared back in Exodus 40:34-35, so thick with God's own presence that even Moses couldn't enter. Here in Numbers, the focus shifts from that one dramatic moment to how the cloud functioned every single day going forward, guiding the camp's daily life.
-🌥️ The same cloud first described in Exodus 40:34-35
-🚪 So thick with God's presence that even Moses couldn't enter then
-🔑 Numbers now shows how it functioned day by day, ongoing
----
-## 🔥 As It Were The Appearance Of Fire, Until The Morning
-At night, the same visible sign that looked like a cloud by day took on the appearance of fire, providing both a marker of God's presence and, practically, light for the camp in the darkness. Two forms, one continuous presence.
-🔥 The same sign appeared as fire at night instead of cloud
-💡 Practically useful too - light for the whole camp after dark
-🔑 Two visible forms, but one single, continuous presence
----
+
+This same cloud already appeared back in Exodus 40:34 and 35.
+
+It was so thick with God's presence that even Moses could not enter then.
+
+Here in Numbers the focus shifts to how the cloud worked every single day.
+
+It moves from one dramatic moment to an ongoing, daily pattern.
+
+🌥️ The same cloud from Exodus 40
+
+🚪 So thick even Moses could not enter
+
+📆 Now shown as a daily pattern
+
+📖 One presence, described two different ways
+
+## 🔥 As It Were The Appearance Of Fire
+
+At night the same visible sign changed its appearance.
+
+By day it looked like a cloud.
+
+By night it looked like fire.
+
+The fire also gave the whole camp real light after dark.
+
+🔥 Fire appeared at night instead of cloud
+
+💡 It gave practical light in the dark
+
+🌓 Two forms, one continuous presence
+
+📖 God's presence never actually left
+
 ## 🔁 So It Was Alway
-This wasn't a one-time spectacle that happened only on the tabernacle's opening day - it became the constant, ongoing pattern for the entire wilderness journey, which would eventually stretch on for forty years.
-🔁 Not a one-time event - this became the constant daily pattern
-⏳ Continued for the entire wilderness journey, all forty years
-🔑 Reliability, not a rare miracle Israel could no longer count on
----
-## 🚩 When The Cloud Was Taken Up...They Journeyed
-The cloud lifting off the tabernacle functioned as literal marching orders - there was no separate announcement, no council meeting to decide it was time to move. The visible sign itself was the command.
-🚩 The cloud lifting was the actual signal to start moving
-📢 No separate announcement needed - the sign itself was the order
-🔑 God's presence directly controlled the camp's schedule
----
-## ⛺ Where The Cloud Abode, There They Pitched Their Tents
-"Abode" means stayed or rested - the exact same root word used for God "dwelling" among his people elsewhere in the Law. Israel's campsite for the night wasn't chosen by scouting good ground or water - it was wherever the cloud itself came to rest.
-⛺ "Abode" means stayed or rested in one place
-💧 Campsites weren't chosen by scouting - only by where the cloud stopped
-🔑 The same root word used elsewhere for God "dwelling" with his people
----
-## 📢 At The Commandment Of The LORD They Journeyed, And...Pitched
-This phrase - "at the commandment of the LORD" - repeats constantly through the rest of this passage. The point is deliberate repetition: the cloud's movement wasn't weather or coincidence, it was God speaking through a visible sign instead of words.
-📢 A phrase repeated deliberately, several times, through this passage
-🌤️ The cloud's movement was God's speech, not random weather
-🔑 Repetition here is the text's way of underlining the point
----
-## ⏳ When The Cloud Tarried Long...They Kept The Charge Of The LORD, And Journeyed Not
-"Tarried" means lingered or stayed put. "Kept the charge" means they held their assigned post faithfully. The harder discipline here isn't obeying a command to move - it's staying obediently still, sometimes for a long stretch, with no idea how long the wait will last.
-⏳ "Tarried" means lingered, stayed in one place
-🛑 "Kept the charge" means faithfully holding their assigned post
-🔑 Waiting still, with no timeline given, is its own kind of obedience
+
+This was not a one time spectacle on the tabernacle's opening day.
+
+It became the constant pattern for the whole wilderness journey.
+
+That journey would eventually stretch on for forty years.
+
+🔁 Not a one time event
+
+⏳ The pattern lasted forty years
+
+🛡️ Reliable, not a rare miracle
+
+📖 Constant presence for the whole journey
+
+## 🚩 When The Cloud Was Taken Up From The Tabernacle
+
+The cloud lifting off the tabernacle worked as literal marching orders.
+
+There was no separate announcement.
+
+No council meeting decided it was time to move.
+
+The visible sign itself was the command.
+
+🚩 The lifting cloud was the signal
+
+📢 No separate announcement was needed
+
+⏰ The sign itself gave the order
+
+📖 God controlled the schedule directly
+
+## ⛺ There The Children Of Israel Pitched Their Tents
+
+Abode means stayed or rested in one place.
+
+It is the same root word used elsewhere for God dwelling among his people.
+
+Israel's campsite for the night was not chosen by scouting good ground or water.
+
+It was wherever the cloud itself came to rest.
+
+🛌 Abode means stayed or rested
+
+🤝 The same word describes God dwelling with people
+
+🗺️ Campsites were not chosen by scouting
+
+📖 The cloud alone decided where to stop
+
+## 📢 At The Commandment Of The LORD
+
+This phrase repeats constantly through the rest of the passage.
+
+That repetition is deliberate.
+
+The cloud's movement was never weather or coincidence.
+
+It was God speaking through a visible sign instead of words.
+
+📢 Repeated deliberately through this passage
+
+🌤️ The cloud's movement was not random
+
+🗣️ A visible sign instead of spoken words
+
+📖 Repetition here underlines the point
+
+## ⏳ When The Cloud Tarried Long Upon The Tabernacle
+
+Tarried means lingered or stayed put for a long while.
+
+Kept the charge means they held their assigned post faithfully.
+
+Obeying a command to move is not the hardest part here.
+
+Staying obediently still, with no idea how long the wait will last, is.
+
+⏳ Tarried means lingered in place
+
+🛑 Kept the charge means faithful waiting
+
+😤 Waiting is its own kind of obedience
+
+📖 No timeline given, yet they stayed faithful
 
 # Numbers 9:20-23
 # ⏱️ Two Days, Or A Month, Or A Year
 ---
 ## 🔢 Whether It Were Two Days, Or A Month, Or A Year
-The range given here is deliberately wide - from a couple of days to twelve full months - to make one point unmistakable: Israel had zero ability to predict or plan how long they'd stay anywhere. Every bit of scheduling power belonged to God alone.
-🔢 A deliberately wide range, from days to a full year
-📅 Israel had no way to predict or plan their own schedule
-🔑 All scheduling power belonged to God, not the people
----
+
+The range given here is deliberately wide.
+
+It runs from a couple of days all the way to twelve full months.
+
+The point is unmistakable, Israel had zero ability to predict how long they would stay anywhere.
+
+Every bit of scheduling power belonged to God alone.
+
+🔢 A deliberately wide range of time
+
+📅 No way to predict their own schedule
+
+🎲 Zero control over how long they stayed
+
+📖 All scheduling power belonged to God
+
 ## 🏕️ The Children Of Israel Abode In Their Tents, And Journeyed Not
-Restating the waiting scenario from verse 19, now stretched to its most extreme case - a cloud that might not move for an entire year. Living for that long without knowing when to expect movement tested patience far beyond a single long wait.
-🏕️ Restates the waiting scenario, now at its most extreme
-📆 A cloud that might stay put for an entire year
-🔑 Sustained patience, tested far beyond a single long wait
----
+
+This restates the waiting scenario from earlier in the chapter.
+
+Now it is stretched to its most extreme case.
+
+A cloud might not move for an entire year.
+
+Living that long without knowing when to expect movement tested real patience.
+
+🏕️ The same waiting, now at its most extreme
+
+📆 A cloud that might stay a full year
+
+😤 Real patience tested over time
+
+📖 Extended waiting is still active trust
+
 ## ⚡ When It Was Taken Up, They Journeyed
-The moment the cloud lifted - after two days or after a year, it made no difference - the response had to be immediate. No lingering to finish other business first, no delay for convenience.
-⚡ The response to the cloud lifting had to be immediate
-🚫 No lingering to finish other business, no delay for convenience
-🔑 The same instant obedience applied no matter how long the wait was
----
-## 🌙 Whether It Was By Day Or By Night That The Cloud Was Taken Up, They Journeyed
-Even a night departure - packing an entire camp of families, animals, and the tabernacle itself in the dark - didn't earn a delay until morning. Full readiness was expected at any hour, not just convenient daylight ones.
-🌙 Even a night departure required moving immediately, no waiting for daylight
-🌃 Packing an entire camp in darkness was still expected without delay
-🔑 Total readiness at any hour, not just the convenient ones
----
-## 📢 At The Commandment Of The LORD They Rested...And...Journeyed
-The chapter restates this phrase one final time, closing the passage the same way it built it - through repetition, not new information. By this point the reader has heard it enough times that the point can't be missed: nothing here was random.
-📢 The closing repetition of the same phrase used throughout
-🔁 Builds and closes the passage through repetition, not new content
-🔑 By now the reader can't miss the point: nothing was random
----
+
+The moment the cloud lifted, the response had to be immediate.
+
+It made no difference whether the wait had been two days or a year.
+
+There was no lingering to finish other business first.
+
+No delay was allowed just for convenience.
+
+⚡ The response had to be immediate
+
+⏱️ Two days or a year made no difference
+
+🚫 No lingering for other business
+
+📖 Instant obedience, every single time
+
+## 🌙 Whether It Was By Day Or By Night
+
+Even a night departure did not earn a delay until morning.
+
+That meant packing an entire camp of families, animals, and the tabernacle itself in the dark.
+
+Full readiness was expected at any hour.
+
+Not just the convenient daylight ones.
+
+🌙 Night departures still required instant obedience
+
+🌃 Packing a whole camp in darkness
+
+⏰ Full readiness at any hour
+
+📖 Convenience was never part of the deal
+
+## 📢 At The Commandment Of The LORD They Rested
+
+The chapter repeats this phrase one final time here.
+
+It closes the passage the same way it built it, through repetition.
+
+By this point the reader has heard the phrase enough times to not miss it.
+
+Nothing in this whole passage was left to chance.
+
+📢 The closing repetition of the same phrase
+
+🔁 Built and closed through repetition
+
+🎯 The point could not be missed by now
+
+📖 Nothing here was left to chance
+
 ## ✋ By The Hand Of Moses
-Even though the cloud communicated visibly and directly, without spoken words, Moses still functioned as the leader who translated that sign into actual, practical camp orders. The sign came from God; the logistics of moving hundreds of thousands of people still ran through Moses.
-✋ Moses still translated the visible sign into practical orders
-🗣️ The sign came from God; the logistics still ran through Moses
-🔑 Direct divine guidance didn't remove the need for human leadership
----
-## 🌱 A Whole Generation Living This Way
-Stack this chapter's timing details together and a bigger picture appears: for forty years, an entire nation lived without a calendar of their own making, waiting on a cloud to tell them when to stay and when to go. It's one of the clearest wilderness pictures in the whole Bible of daily, practical trust replacing the ordinary human need to plan ahead.
-🌱 Forty years lived without a self-made calendar or schedule
-☁️ Daily life ran entirely on watching the cloud, not planning ahead
-🔑 One of the Bible's clearest pictures of practical, moment-by-moment trust
-`;
+
+The cloud communicated visibly and directly, without spoken words.
+
+Moses still functioned as the leader who translated that sign into real orders.
+
+The sign came from God.
+
+The actual logistics of moving hundreds of thousands of people still ran through Moses.
+
+✋ Moses translated the sign into orders
+
+🗣️ The sign itself came from God
+
+🚶 Logistics for the whole camp ran through him
+
+📖 Divine guidance still needed human leadership
+`.trim();
 
 export const NUMBERS_NINE_PERSONAL_SECTIONS = parseNumbersNineRawNotes(NUMBERS_NINE_RAW_NOTES);
