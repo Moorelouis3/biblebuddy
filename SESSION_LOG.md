@@ -723,3 +723,7 @@ Next up: Numbers 9
 ## 2026-08-04T15:00:04Z (hourly chapter notes run)
 Chapter: Numbers 9 | Duration: 14 min | Sections: 5 | Cards: 41 | Status: pass
 Next up: Numbers 10
+
+## 2026-08-04T15:57:09Z (hourly chapter notes run)
+Chapter: Numbers 10 | Duration: 10 min | Sections: 10 | Cards: 42 | Status: pass
+Next up: Numbers 11

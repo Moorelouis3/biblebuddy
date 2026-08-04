@@ -9324,6 +9324,55 @@
           "at": "2026-08-04T15:00:49Z"
         }
       ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 10,
+      "startedAt": "2026-08-04T15:46:08Z",
+      "finishedAt": "2026-08-04T15:55:42Z",
+      "durationMinutes": 10,
+      "sections": 10,
+      "cards": 42,
+      "verses": 36,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec file from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (Numbers.json, chapter 10). Session started with git HEAD detached; a fresh git fetch confirmed origin/main had already moved to that exact commit (the recurring detached-HEAD environment case, this time fully benign, no work at risk), so local main was checked out and reset to match before starting. Numbers 10 covers the two silver trumpets law (whole piece hammered construction, alarm versus plain blow signal distinction, priests only sounding authority, war and festival uses, the memorial before your God theology), the cloud lifting off the tabernacle after nearly eleven months at Sinai and the march into the wilderness of Paran, the full marching order (Judah's division first, Gershon and Merari carrying the disassembled tabernacle ahead of the Kohathites so the tent could be rebuilt before the holy furniture arrived, Reuben's division, Ephraim's division reuniting Rachel's family line, Dan's division as rereward), Moses' appeal to Hobab to join as a wilderness guide, and the closing Rise up LORD / Return O LORD liturgy spoken each time the ark set out ahead of the camp. Kept the original file's 10 section boundaries for verse coverage continuity while rewriting every card title to an exact KJV phrase and every card body/bullets to the new format. Density about 1.17 cards per verse (36 verses, 42 cards). scripts/check_bible_note_style.py found 5 problems on first pass (a semicolon in a card title, two bullets over the 8 word limit, one card whose last bullet was not the required closing emoji), fixed, second run clean. A manual section 13 eye check confirmed every card teaches meaning rather than reciting the verse, no repeated first lines, no forced morals, no duplicate titles. Parser check passed exactly via getBibleReaderStudySections('Numbers', 10) (10/10 sections, 42 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range covering Numbers 1-30, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (NumbersTenPersonalSection, parseNumbersTenRawNotes, NUMBERS_TEN_RAW_NOTES, NUMBERS_TEN_PERSONAL_SECTIONS) were kept exactly as before, matching the old file's 10-section structure. data/bible-notes-style-redo-remaining.json Numbers 10 entry removed from the front of the list as part of this commit; next redo target is Numbers 11.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-04T15:48:23Z"
+        },
+        {
+          "name": "target chapter determined: Numbers 10 (style redo, first in remaining list)",
+          "at": "2026-08-04T15:48:23Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 10",
+          "at": "2026-08-04T15:53:36Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-08-04T15:53:36Z"
+        },
+        {
+          "name": "source file lib/numbersTenSource.ts written (42 cards, 10 sections)",
+          "at": "2026-08-04T15:53:36Z"
+        },
+        {
+          "name": "style checker clean on lib/numbersTenSource.ts",
+          "at": "2026-08-04T15:53:36Z"
+        },
+        {
+          "name": "wiring confirmed correct for Numbers 10 redo (no changes needed)",
+          "at": "2026-08-04T15:55:42Z"
+        },
+        {
+          "name": "parser check passed (10 sections, 42 cards)",
+          "at": "2026-08-04T15:55:42Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-04T15:55:42Z"
+        }
+      ]
     }
   ]
 }
