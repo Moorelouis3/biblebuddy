@@ -89,310 +89,756 @@ function parseNumbersSixRawNotes(rawText: string): NumbersSixPersonalSection[] {
 }
 
 const NUMBERS_SIX_RAW_NOTES = `# Numbers 6:1-4
-# 🍇 Taking The Nazarite Vow
+# 🍇 The Nazarite Vow Begins
 ---
-## 🙋 Either Man Or Woman
-This vow was open to any Israelite, not just priests or a special class of people. A man or a woman could choose it, and choosing it was completely voluntary, unlike the priesthood, which only ran in one family by birth. Samson and Samuel were set apart as Nazarites for their whole lives before they were even born (Judges 13, 1 Samuel 1) - the vow described here is different, an ordinary person choosing this path for a set stretch of time.
-🙋 Open to any Israelite, man or woman, no exceptions
-🎯 A voluntary choice, unlike the priesthood, which passed down by birth
-👶 Different from lifelong Nazarites like Samson, set apart before birth
----
-## 🗣️ Vow Of A Nazarite
-"Nazarite" comes from a Hebrew word meaning "one who is separated" or "set apart." A vow was a solemn spoken promise made directly to God - not a private wish, but a real commitment with real requirements attached once it was spoken out loud. This book returns to the subject of vows in general later, in Numbers 30.
-🗣️ "Nazarite" means "one who is separated" or "set apart"
-📢 A vow was a spoken, binding promise, not a private wish
-📖 Numbers 30, later in this book, covers vows more broadly
----
-## 🔑 To Separate Themselves Unto The Lord
-The word "separate" appears three times packed into these two verses. That kind of repetition is the text's way of underlining the vow's entire point: dedicating a stretch of time to God, not simply giving something up for its own sake. Everything that follows - the grapes, the hair, the avoiding of death - only makes sense as evidence of that one underlying purpose.
-🔑 "Separate" is repeated three times in just two verses
-🎯 The point was dedicating time to God, not just giving things up
-📋 Every rule that follows serves this one underlying purpose
----
+## 🍇 Vow A Vow Of A Nazarite
+
+A Nazarite was an ordinary Israelite who took on a special vow for a set time.
+
+"Nazarite" comes from a Hebrew word meaning to separate or set apart.
+
+Priests were born into their holy role.
+
+A Nazarite chose it instead.
+
+This vow let an ordinary person live as visibly set apart to God, for as long as they chose.
+
+🍇 Nazarite means one set apart
+
+📜 The vow lasted for a set time
+
+🙏 Priests were born into their role
+
+📖 A Nazarite chose it instead
+
+## 🙋 When Either Man Or Woman
+
+This vow was never limited to men.
+
+Numbers six states plainly that a woman could take it too.
+
+Most religious roles in Israel, like the priesthood, stayed limited to men from one family line.
+
+A Nazarite vow had no such limit.
+
+God did not save deep devotion for one class of people.
+
+🙋 Man or woman could take this vow
+
+🕎 Priesthood stayed limited to one family
+
+🔓 A Nazarite vow had no such limit
+
+📖 Devotion was not reserved for one group
+
 ## 🍷 Wine And Strong Drink
-"Strong drink" is an old term for a fermented beverage that wasn't made from grapes - beer-like drinks brewed from grain, or drinks made from dates or other fruit. Naming both wine and strong drink together closed any loophole: every kind of alcoholic beverage, not just wine specifically, was off-limits for the length of the vow.
-🍷 "Strong drink" means fermented drinks made from something other than grapes
-🚫 Naming both wine and strong drink closes any obvious loophole
-📋 The first of the vow's three major restrictions
----
-## 🍇 Vinegar...Nor Eat Moist Grapes, Or Dried
-The list keeps going past alcohol entirely: no vinegar made from wine, no vinegar from strong drink, no grape juice, not even fresh grapes or raisins (dried grapes). This makes clear the point was never just about avoiding drunkenness - it was about total abstinence from the grapevine itself, in any form, alcoholic or not.
-🍇 The ban covers non-alcoholic grape products too, like raisins
-🎯 Proves this was never really about avoiding drunkenness alone
-📋 Total abstinence from the vine, not moderate drinking
----
-## 🌿 From The Kernels Even To The Husk
-"Kernels" means the seeds inside the grape, and "husk" means the skin. Even these smallest, most overlooked parts of the plant were forbidden food for the length of the vow. The rule was written to leave no loophole anywhere - not the wine, not the juice, not even a stray seed.
-🌿 "Kernels" are the seeds, "husk" is the skin of the grape
-🔍 Even the smallest, most overlooked parts of the plant were banned
-🚫 A rule built to leave absolutely no loophole
----
-## 🎯 Why Grapes, Specifically
-Wine and grapes were a symbol of settled, prosperous life in Canaan - later in this same book, the spies bring back a single cluster of grapes so large it takes two men to carry it, as proof of the land's richness (Numbers 13:23). Giving up every trace of the vine was a visible way of setting aside comfort and ordinary pleasure for as long as the vow lasted, in the same spirit as the Rechabites' vow of simple living centuries later (Jeremiah 35).
-🍇 Grapes symbolized settled prosperity, as Numbers 13:23 later shows
-🎯 Giving them up meant visibly setting aside comfort for the vow's length
-📖 A similar vow of simple living shows up later with the Rechabites (Jeremiah 35)
+
+"Wine" here means the fermented drink made from grapes.
+
+"Strong drink" means any other fermented drink, made from grain or fruit.
+
+Together the two words cover every alcoholic drink available in that culture.
+
+The vow banned all of it, not just wine.
+
+The point was total abstinence, not moderation.
+
+🍷 Wine means fermented grape drink
+
+🍺 Strong drink means any other fermented drink
+
+🚫 Together they cover every alcoholic drink
+
+📖 The vow demanded total abstinence
+
+## 🔍 Vinegar Of Wine, Or Vinegar Of Strong Drink
+
+Vinegar made from wine could still carry some of its effect and its association with the drink.
+
+The law closes that loophole by name.
+
+A Nazarite could not use a byproduct of wine to get around the ban either.
+
+Every form the vine could take was off the table.
+
+🍇 Vinegar comes from wine gone sour
+
+🚫 The ban covered this byproduct too
+
+🔍 No loophole was left open
+
+📖 Every form of the vine was banned
+
+## 🍇 Nor Eat Moist Grapes, Or Dried
+
+The ban did not stop at drinks.
+
+A Nazarite could not eat fresh grapes off the vine.
+
+Dried grapes, what most people call raisins, were banned too.
+
+This vow touched the Nazarite's daily meals, not just special occasions.
+
+🍇 Fresh grapes off the vine were banned
+
+🍂 Raisins are dried grapes, banned too
+
+🍽️ The ban touched daily meals
+
+📖 This vow shaped everyday life, not one drink
+
+## 🌱 From The Kernels Even To The Husk
+
+"Kernels" means the seeds inside the grape.
+
+"Husk" means the skin on the outside.
+
+The law names both ends of the grape on purpose.
+
+Nothing that came from the vine was allowed, not even the smallest part.
+
+The vow asked for a complete break from the vine, not a partial one.
+
+🌱 Kernels means the grape's seeds
+
+🍇 Husk means the grape's skin
+
+🚫 Nothing from the vine was allowed
+
+📖 The vow asked for a complete break
 
 # Numbers 6:5-8
-# 💇 The Visible Signs Of The Vow
+# ✂️ Uncut Hair, Untouched By Death
 ---
-## 🪒 There Shall No Razor Come Upon His Head
-This is the second of the vow's three restrictions: no cutting the hair for as long as the vow lasted. Paired with the ban on grapes, it meant the Nazarite's whole daily life - what they ate and drank, and even how they looked - visibly marked out this stretch of time as different from ordinary life.
-🪒 The second of three total restrictions in the vow
-✂️ No cutting hair at all until the vow's time was finished
-👁️ Made the vow visible in daily life, not just a private choice
----
-## 💇 Let The Locks Of His Head Grow
-Growing hair became the walking, public sign of the vow - anyone who saw a Nazarite could tell, just by looking, that this person was under a vow to God. This actually set a Nazarite apart even from ordinary priests, who were required to keep their hair trimmed, not shaggy or unkempt (Ezekiel 44:20).
-💇 Long hair worked as a visible, public sign of the vow
-👁️ Anyone could tell at a glance that someone was under this vow
-📖 Priests, by contrast, had to keep their hair trimmed (Ezekiel 44:20)
----
-## ✨ He Shall Be Holy
-"Holy" here means set apart for God's use for this specific stretch of time - it isn't a claim about the person's personal moral perfection. This is a status tied directly to the vow itself, lasting exactly as long as the vow does, not a permanent trait the person now possesses.
-✨ "Holy" means set apart for God's use, not moral perfection
-⏳ A status tied to the vow's timeframe, not a permanent trait
-🔑 Echoed again at the end of this section, in verse 8
----
-## ☠️ He Shall Come At No Dead Body
-The third and final restriction: total avoidance of contact with a corpse. This connects directly back to the defilement law just covered in Numbers 5, and forward to the fuller version of this same rule that gets its own chapter later, Numbers 19.
-☠️ The third of the vow's three total restrictions
-🔗 Connects back to the defilement law just given in Numbers 5
-📖 The fullest version of this rule comes later, in Numbers 19
----
-## 👪 Not For His Father, Or For His Mother...When They Die
-This rule is strict even for the closest possible family - a Nazarite couldn't attend to or bury even a parent or sibling during the vow. That's actually stricter than the rule for ordinary priests, who were allowed to become unclean for close family (Leviticus 21:1-4). Only the High Priest was normally held to a no-exceptions standard like this, even for his own parents (Leviticus 21:10-11) - meaning a Nazarite's vow held them, temporarily, to the same bar as the High Priest.
-👪 Applies even to a Nazarite's own parents and siblings
-📖 Stricter than ordinary priests, who could attend close family (Leviticus 21:1-4)
-🔑 Temporarily holds a Nazarite to the same standard as the High Priest
----
-## 🔑 Because The Consecration Of His God Is Upon His Head
-"Consecration" means the dedication itself, pictured here almost like something physically resting on the Nazarite's head - fittingly, since the uncut hair is the one visible sign anyone could actually see. The reason given for staying away from death isn't squeamishness or fear - it's the vow itself, sitting there, unbroken.
-🔑 "Consecration" is pictured almost like a physical weight on the head
-💇 Fitting, since the uncut hair is the vow's one visible sign
-🎯 The reason given is the vow itself, not fear of death
----
-## 📜 All The Days Of His Separation
-A short summary line, repeating language used throughout this whole passage. It signals that verses 2 through 8 form one complete unit describing everything the vow requires, right before the chapter turns to a very different question: what happens if something breaks it.
-📜 Closes out one complete unit: everything the vow requires
-🔁 Repeats the "days of his separation" language used throughout
-➡️ Sets up the next section's question: what if it gets broken?
+## ✂️ There Shall No Razor Come Upon His Head
+
+A razor cutting hair was completely off limits for the whole vow.
+
+Uncut hair became the one visible sign anyone could see just by looking at the Nazarite.
+
+Priests wore special garments to mark their role.
+
+A Nazarite wore long, uncut hair instead.
+
+This vow was visible to everyone, every single day.
+
+✂️ No razor could touch his head
+
+👀 Uncut hair marked him publicly
+
+👕 Priests wore garments to mark their role
+
+📖 This vow was visible every day
+
+## 🌳 Let The Locks Of The Hair Of His Head Grow
+
+"Locks" simply means the hair itself, growing out freely.
+
+Think of a tree left unpruned on purpose.
+
+The growth itself becomes the evidence that time has passed under the vow.
+
+Every uncut inch of hair marked another day of devotion.
+
+The hair kept a visible record of the vow.
+
+🌳 Locks means the hair itself
+
+🌱 Left uncut on purpose
+
+📆 Growth marked time under the vow
+
+📖 The hair kept a visible record
+
+## ⚰️ He Shall Come At No Dead Body
+
+Touching or even being near a dead body made a person ceremonially unclean.
+
+A Nazarite had to avoid that contact completely for the whole vow.
+
+This same rule normally applied to the high priest alone.
+
+For the length of the vow, an ordinary person lived under a priest level rule.
+
+⚰️ Dead bodies caused ceremonial uncleanness
+
+🚫 A Nazarite avoided all contact
+
+👑 Normally only the high priest kept this rule
+
+📖 This raised an ordinary life to that standard
+
+## 👪 For His Father, Or For His Mother, For His Brother, Or For His Sister
+
+Ordinary priests were allowed to become unclean to bury their closest family.
+
+A Nazarite got no such exception.
+
+Not even a parent's funeral, or a sibling's, could be attended if it meant touching the body.
+
+The vow asked for a devotion that did not bend, even for grief.
+
+👪 Ordinary priests could bury close family
+
+🚫 A Nazarite had no such exception
+
+😢 Not even a parent's funeral was allowed
+
+📖 The vow did not bend, even for grief
+
+## 🙏 The Consecration Of His God Is Upon His Head
+
+"Consecration" means being set apart and dedicated to God completely.
+
+The text ties that consecration directly to the hair on his head.
+
+The uncut hair was not just a rule to follow.
+
+It was the actual sign of his consecration itself.
+
+The vow lived on his body, not just in his intentions.
+
+🙏 Consecration means dedicated fully to God
+
+💇 The hair itself carried that meaning
+
+✅ Not just a rule, but a sign
+
+📖 The vow lived on his body
+
+## ✨ All The Days Of His Separation He Is Holy Unto The Lord
+
+"Holy" means set apart for God's own use, different from everything ordinary around it.
+
+This status lasted only as long as the vow itself.
+
+It was not permanent, and it was not earned by birth.
+
+For a set season, this person's whole life belonged to God.
+
+✨ Holy means set apart for God
+
+⏳ This status lasted only the vow's length
+
+🚫 Not permanent, not earned by birth
+
+📖 His whole life belonged to God
 
 # Numbers 6:9-12
-# ⚰️ If Death Happens Suddenly
+# ⚱️ When The Vow Breaks By Accident
 ---
-## 💨 Die Very Suddenly By Him
-This describes an accident - someone unexpectedly dying right next to a Nazarite, with no warning and no intention involved on the Nazarite's part. The law doesn't require any fault or carelessness for the defilement to count. Simple physical closeness to a death breaks the vow's purity, no matter how it happened or whose fault it was.
-💨 Describes a sudden, unplanned death near the Nazarite
-🚫 No fault or intention needed for the defilement to count
-🔑 Simple closeness to death breaks the vow's purity either way
----
-## 🪒 He Hath Defiled The Head Of His Consecration
-"Head" stands in for the entire vow, since the growing hair is its visible sign. A sudden death nearby doesn't just cause a minor inconvenience - it actually invalidates the whole consecration built up to that point, hair and all.
-🪒 "Head" stands for the whole vow, not just the literal body part
-💥 A sudden death nearby invalidates the entire consecration so far
-🔑 Everything built up to that point is now undone
----
-## 📅 Shave His Head...On The Seventh Day
-The visible sign of the vow - the uncut hair - now has to come off, on the seventh day after the defilement. That seven-day period matches the standard purification time for anyone who touched a dead body, Nazarite or not, spelled out fully later in Numbers 19:11-12.
-📅 The uncut hair is shaved off, on day seven after the defilement
-📖 Matches the standard corpse-contact purification period (Numbers 19:11-12)
-🔑 The same timeline applied to any Israelite, not just a Nazarite
----
+## ⚡ If Any Man Die Very Suddenly By Him
+
+This law covers an accident, not a choice.
+
+Someone could die suddenly right next to a Nazarite with no warning at all.
+
+Simply being present at that moment was enough to defile him.
+
+The vow could break through no fault of his own.
+
+⚡ Sudden death could happen without warning
+
+🧍 Just being present was enough to defile
+
+🚫 This was not a choice he made
+
+📖 Not his fault, but still broken
+
+## 💇 He Hath Defiled The Head Of His Consecration
+
+The defilement lands specifically on his head, the same place the vow was visibly marked.
+
+All the growth of uncut hair up to that point no longer counted.
+
+The vow resets at the moment of contact.
+
+One accidental moment could undo months of visible devotion.
+
+💇 Defilement struck the very sign of the vow
+
+⏳ All that growth no longer counted
+
+🔄 The vow reset at that moment
+
+📖 One accident could undo months of devotion
+
+## ✂️ He Shall Shave His Head In The Day Of His Cleansing
+
+The Nazarite could not simply keep growing his hair after defilement.
+
+He had to shave his head completely and start over.
+
+Seven full days passed before that shaving actually happened.
+
+The reset was as visible as the vow itself had been.
+
+✂️ The head was shaved completely
+
+🔄 The vow started over from nothing
+
+📆 Seven days passed before the shaving
+
+📖 The reset was visible to everyone
+
 ## 🕊️ Two Turtles, Or Two Young Pigeons
-These birds were the standard low-cost offering option used throughout Israelite law, available to anyone who couldn't afford a lamb or a goat (Leviticus 5:7, 12:8). Requiring only birds here meant purification from this kind of accidental defilement was never out of reach for a poor Nazarite.
-🕊️ The standard low-cost offering option in Israelite law
-💰 Kept purification affordable, even for someone with little money
-📖 The same option appears elsewhere, like Leviticus 5:7 and 12:8
----
-## 🐦 One For A Sin Offering, And The Other For A Burnt Offering
-A sin offering dealt with the specific defilement itself, while a burnt offering, fully burned up on the altar, signaled complete rededication back to God. Bringing both together addressed both the immediate problem and the bigger picture of the broken vow at the same time.
-🐦 A sin offering addresses the specific defilement itself
-🔥 A burnt offering signals complete rededication back to God
-🔑 Together, both the problem and the bigger picture get addressed
----
-## ⚖️ For That He Sinned By The Dead
-Worth pausing on this word choice: the text actually calls this "sin," even though the death was a pure accident, nobody's fault, and completely outside the Nazarite's control. The law treats ritual defilement as something that genuinely needs atoning for, regardless of anyone's intentions.
-⚖️ The text calls accidental defilement "sin," despite no wrongdoing
-🎯 Ritual defilement needed atonement whether or not anyone was at fault
-🔑 Intention didn't change whether atonement was required
----
-## 🔄 Hallow His Head That Same Day
-Re-consecration happens immediately - the same day as the offering, not weeks later once the hair has regrown. The vow restarts formally right away, even though its visible sign will take time to fully return.
-🔄 Re-consecration happens the same day as the offering
-⏱️ The vow restarts formally at once, without waiting on the hair
-🔑 The visible sign lags behind, but the vow itself resumes immediately
----
+
+Turtledoves and young pigeons were the offering God allowed for people who could not afford a lamb.
+
+This same option shows up elsewhere in the law for the poor.
+
+The Nazarite vow was never only for the wealthy.
+
+Anyone could make this right, rich or poor.
+
+🕊️ Turtledoves and pigeons were the affordable option
+
+💰 This option existed for the poor elsewhere
+
+🙋 The vow was open to any income
+
+📖 Anyone could make this right, rich or poor
+
+## ⚖️ The Priest Shall Offer The One For A Sin Offering
+
+A "sin offering" dealt with the guilt of becoming unclean, even by accident.
+
+A "burnt offering" was completely consumed on the altar as a gift fully given to God.
+
+Together the two offerings covered both sides of what happened.
+
+One paid for the failure, the other renewed his full devotion.
+
+⚖️ Sin offering covered the guilt of defilement
+
+🔥 Burnt offering was fully given to God
+
+🤝 Together they covered both sides
+
+📖 One paid the debt, one renewed devotion
+
+## 🗑️ But The Days That Were Before Shall Be Lost
+
+None of the days already completed under the vow still counted.
+
+The word "lost" means exactly that, wiped away completely.
+
+A Nazarite six months into a vow who was defiled had to begin again at day one.
+
+The vow demanded an unbroken record, not a mostly kept one.
+
+🗑️ Earlier days no longer counted
+
+🔁 He restarted completely from day one
+
+⏳ Even months of progress were erased
+
+📖 The vow demanded an unbroken record
+
 ## 🐑 A Lamb Of The First Year For A Trespass Offering
-A third animal, more costly than the two birds, gets added here specifically because of the broken vow. The birds in verse 10 dealt with the physical impurity itself; this lamb deals with something different - the vow that got interrupted.
-🐑 A third, costlier animal, added specifically for the broken vow
-🕊️ Different purpose than the birds, which addressed the impurity itself
-🔑 This offering addresses the vow, not the defilement
----
-## ⏮️ The Days That Were Before Shall Be Lost
-The clock resets completely to zero. None of the time already spent under the vow counts anymore - if someone was well into a long vow when this happened, all of that time is gone, and the whole vow starts over from day one.
-⏮️ The vow's timeline resets completely to zero
-🔢 Time already spent under the vow no longer counts at all
-🔁 The entire vow period must be completed again from scratch
+
+A "trespass offering," sometimes called a guilt offering, covered a wrong done even without intending it.
+
+The Nazarite did not choose to be near that sudden death.
+
+The law still required this offering anyway.
+
+Some wrongs need to be made right even when nobody meant to cause them.
+
+🐑 Trespass offering covers unintended wrong
+
+🤷 He never chose to break the vow
+
+✅ The offering was still required
+
+📖 Some wrongs need repair even by accident
 
 # Numbers 6:13-17
-# 🐏 Completing The Vow
+# 🐑 The Day The Vow Is Finished
 ---
 ## 📜 This Is The Law Of The Nazarite
-Another "this is the law of ___" summary heading - the exact same structural pattern Numbers 5 just used to wrap up the law of jealousies. It signals a fresh, self-contained topic: what happens when the vow's time period runs its full course, with no defilement or interruption at all.
-📜 The same "law of ___" pattern used to close Numbers 5
-➡️ Marks a fresh topic: a vow completed the normal way, start to finish
-🔑 No defilement involved here - this is the standard happy ending
----
-## 🚪 He Shall Be Brought Unto The Door Of The Tabernacle
-Completing the vow required a formal, public ceremony at the tabernacle entrance - the same sacred location used throughout the rituals in the chapter before this one. It wasn't something wrapped up quietly at home.
-🚪 A formal, public ceremony, not something handled privately
-📖 The same sacred location used throughout Numbers 5's rituals
-🔑 Marks the vow's completion as an official, witnessed event
----
-## 🐑 One He Lamb...For A Burnt Offering
-"He lamb" is an old way of saying a male lamb. A burnt offering was fully burned up on the altar, holding back nothing - a symbol of complete dedication back to God. "Without blemish," repeated for all three animals here, meant the physically best animal available, never a flawed leftover.
-🐑 "He lamb" is old English for a male lamb
-🔥 Fully burned - a symbol of complete dedication to God
-✅ "Without blemish" meant the best animal available, no exceptions
----
-## 🐑 One Ewe Lamb...For A Sin Offering
-"Ewe" means a female lamb. A sin offering dealt with specific wrongdoing or impurity needing atonement - a distinct purpose from the burnt offering named right alongside it.
-🐑 "Ewe" is old English for a female lamb
-🎯 A sin offering addressed specific wrongdoing needing atonement
-🔀 A separate purpose from the burnt offering named just before it
----
-## 🐏 One Ram...For Peace Offerings
-A peace offering, sometimes called a fellowship offering, was partly burned on the altar and partly eaten in a shared meal. It celebrated a restored, healthy relationship - a fitting way to mark a vow that had just been successfully completed.
-🐏 Partly burned, partly eaten in a shared celebratory meal
-🤝 Celebrated a restored, healthy relationship
-🔑 A fitting close to a vow finished the normal way
----
-## 🍞 Unleavened Bread...Mingled With Oil
-"Unleavened" means made without yeast, the standard rule for grain offerings throughout Israelite worship, echoing the unleavened bread of Passover. Oil was mixed into the cakes and brushed onto the wafers - practically helpful for baking, and symbolically tied to blessing and consecration elsewhere in Scripture.
-🍞 "Unleavened" means made without yeast, like Passover bread
-🫒 Oil was mixed in and brushed on, both practical and symbolic
-📖 Oil elsewhere in Scripture often marks blessing or consecration
----
-## 🍷 Their Meat Offering, And Their Drink Offerings
-In KJV English, "meat offering" is an old term for a grain offering - it has nothing to do with meat or flesh at all, a common mix-up for a modern reader. Grain and drink (wine) offerings were the standard accompaniment to an animal sacrifice, never brought on their own.
-🍷 "Meat offering" in the KJV means a grain offering, not flesh
-📋 The standard accompaniment to an animal sacrifice
-🔑 Never brought by itself - always alongside the animal offerings
----
-## 📋 The Order: Sin Offering, Then Burnt Offering, Then Peace Offering
-The sequence itself carries meaning found throughout Israelite worship. Sin gets dealt with first, clearing the obstacle; then comes full dedication; only then comes the celebratory shared meal. Relationship with God gets repaired before it gets celebrated.
-📋 A set sequence: sin offering, then burnt offering, then peace offering
-🔧 Repair comes first, celebration comes only after
-🔑 A pattern repeated throughout Israelite worship, not unique to this vow
+
+This verse marks a clear turning point in the chapter.
+
+Everything before this described how to keep the vow, or how to recover from breaking it.
+
+Everything from here describes how to properly finish it.
+
+A vow like this needed a real ending, not just a quiet stop.
+
+📜 This marks the vow's turning point
+
+🔙 Earlier verses covered keeping the vow
+
+🔜 These verses cover finishing it
+
+📖 The vow needed a real ending
+
+## 🚪 He Shall Be Brought Unto The Door Of The Tabernacle Of The Congregation
+
+The door of the tabernacle was the entrance to God's dwelling place among Israel.
+
+Every major offering in this chapter happens at that same spot.
+
+Finishing the vow required an actual trip there, not a private decision at home.
+
+The vow began as a personal choice, but it had to end in God's presence.
+
+🚪 The door was the entrance to God's dwelling
+
+📍 Every major offering happened at this spot
+
+🚶 Finishing the vow required a real trip
+
+📖 A private vow ended in public presence
+
+## 🐑 Without Blemish
+
+"Without blemish" means the animal had no injury, disease, or defect at all.
+
+Only a physically perfect animal counted as a fit gift for God.
+
+The Nazarite brought three separate animals, one for each of three different offerings.
+
+Finishing the vow properly took full devotion, a payment for guilt, and a shared meal, all three together.
+
+🐑 Without blemish means physically perfect
+
+🔢 Three animals for three offerings
+
+🔥 Burnt, sin, and peace offerings together
+
+📖 Devotion, guilt, and peace all covered together
+
+## 🍞 A Basket Of Unleavened Bread
+
+"Unleavened" means bread made without any yeast, so it never rises.
+
+Yeast often stood as a picture of sin quietly spreading through something pure.
+
+This bread stayed plain and simple on purpose.
+
+Even the bread matched the purity the vow was meant to represent.
+
+🍞 Unleavened means made without yeast
+
+⚠️ Yeast often pictured sin spreading
+
+🌾 The bread stayed plain on purpose
+
+📖 Even the bread matched the vow's purity
+
+## 🌾 Their Meat Offering, And Their Drink Offerings
+
+A "meat offering" here does not mean meat at all, it means a grain offering of flour and oil.
+
+A "drink offering" was wine poured out beside the altar.
+
+Both accompanied the main animal sacrifices as a complete gift.
+
+The vow ended with a full table brought before God, not just one animal.
+
+🌾 Meat offering here means grain, not meat
+
+🍷 Drink offering means wine poured out
+
+🍽️ Both accompanied the animal sacrifices
+
+📖 A full gift, not just one offering
+
+## 🍽️ A Sacrifice Of Peace Offerings Unto The Lord
+
+A "peace offering" was unusual because part of the meat was eaten, not entirely burned.
+
+The worshiper, the priest, and God each received a share.
+
+Sharing a meal like this pictured restored fellowship.
+
+The vow ended with a shared table, not just a solemn sacrifice.
+
+🍖 Peace offering meat was partly eaten
+
+🤝 Worshiper, priest, and God each shared
+
+🍽️ The meal pictured restored fellowship
+
+📖 The vow ended at a shared table
 
 # Numbers 6:18-21
-# ✂️ The Final Steps
+# 💇 Cutting The Hair Free
 ---
-## ✂️ Shall Shave The Head Of His Separation
-Even when the vow finishes with no defilement at all, the hair still gets shaved off at the very end. The visible sign of the vow was only ever meant to be temporary, exactly like the vow itself.
-✂️ The hair comes off even after a vow completed without incident
-⏳ The sign was always meant to be temporary, like the vow
-🔑 Completion, not just interruption, ends with shaving
----
-## 🔥 Put It In The Fire...Of The Peace Offerings
-The shaved-off hair - the literal, physical evidence of months of consecration - is deliberately burned as part of the sacrifice itself. It's a vivid, physical way of giving the very sign of the vow back to God, rather than simply discarding it.
-🔥 The hair itself becomes part of the sacrifice, not discarded
-👁️ A vivid, physical way of giving the sign of the vow back to God
-🔑 The evidence of the vow is offered up, not thrown away
----
-## 🍖 The Sodden Shoulder Of The Ram
-"Sodden" is an old word for boiled. The priest hands the Nazarite a boiled shoulder of meat, along with bread, to hold personally right after the shaving is finished.
-🍖 "Sodden" is an old word meaning boiled
-🤲 The Nazarite personally holds this food right after shaving
-🔑 One more moment of direct, physical participation in the ritual
----
-## 🙌 Wave Them For A Wave Offering
-A wave offering involved a specific ceremonial motion - lifting the food toward God as a visible gesture before it changed hands. The Nazarite briefly holds the food themselves before the priest performs this motion, another moment of personal participation in their own ceremony.
-🙌 A specific ceremonial motion, lifting food toward God
-🤲 The Nazarite holds it briefly before the priest waves it
-🔑 One more way the Nazarite personally takes part, not a bystander
----
-## 🍽️ This Is Holy For The Priest
-The wave breast and heave shoulder, portions explained fully back in Leviticus 7:32-34, were the priest's standard cut from a peace offering - his payment, in effect, for officiating the ceremony.
-🍽️ The priest's standard share of any peace offering
-📖 Fully explained back in Leviticus 7:32-34
-💼 Functioned as the priest's payment for officiating
----
+## ✂️ Shave The Head Of His Separation At The Door Of The Tabernacle
+
+This is the same hair that had grown uncut for the entire length of the vow.
+
+It gets shaved off here, at the same doorway where the vow is being completed.
+
+The most visible sign of the vow disappears the moment the vow itself ends.
+
+The ending was as visible as the vow had been the whole time.
+
+✂️ The uncut hair is finally shaved
+
+🚪 This happens at the same doorway
+
+👀 The visible sign disappears at this moment
+
+📖 The ending was as visible as the vow
+
+## 🔥 Put It In The Fire Which Is Under The Sacrifice Of The Peace Offerings
+
+The shaved hair was not thrown away like ordinary waste.
+
+It was placed directly into the fire burning under the peace offering.
+
+The one physical sign of the vow became part of the sacrifice itself.
+
+Even the hair belonged to God in the end.
+
+🔥 The hair went into the sacrificial fire
+
+🚫 It was not treated as waste
+
+🎁 It became part of the offering itself
+
+📖 Even the hair belonged to God
+
+## ♨️ The Sodden Shoulder Of The Ram
+
+"Sodden" is an old word meaning boiled in water.
+
+This shoulder came from the ram offered as the peace offering.
+
+The priest set this specific boiled piece aside for a specific next step.
+
+Nothing about this closing ceremony was left vague or improvised.
+
+♨️ Sodden means boiled in water
+
+🐑 The shoulder came from the peace offering ram
+
+📋 The priest set it aside deliberately
+
+📖 Every step of the ceremony was exact
+
+## 🙌 Shall Wave Them For A Wave Offering Before The Lord
+
+A "wave offering" was lifted and moved before the altar as a gesture, not just set down.
+
+The priest physically placed the boiled shoulder and the bread in the Nazarite's own hands first.
+
+Then the priest waved it before the Lord together with him.
+
+He took part in his own closing ceremony with his own hands, not as a bystander.
+
+👐 Placed directly into his own hands
+
+🙌 Wave offering meant lifting it before the altar
+
+🤝 Priest and Nazarite moved it together
+
+📖 He took part with his own hands
+
+## 🍖 This Is Holy For The Priest, With The Wave Breast And Heave Shoulder
+
+Priests owned no land and grew no crops of their own.
+
+Portions like this breast and shoulder were part of how they were fed.
+
+This was not an extra bonus, it was their normal pay for serving at the tabernacle.
+
+God built the priest's income directly into the sacrifices themselves.
+
+🍖 Priests owned no land of their own
+
+🍽️ These portions were part of their food
+
+💰 This was their normal pay
+
+📖 God built their income into the offerings
+
 ## 🍷 The Nazarite May Drink Wine
-Only now, after every single step is finished, is the restriction from verse 3 finally lifted. This one line closes the loop the chapter opened at the very start - the unmistakable, official end of the vow.
-🍷 The original restriction from verse 3 is finally lifted here
-🔁 Closes the loop the chapter opened at its very beginning
-🔑 The clearest possible marker that the vow is truly over
----
-## 📜 Beside That That His Hand Shall Get
-A closing note: the offerings just listed were the required minimum, not a hard ceiling. A Nazarite who was able to give more was free to bring additional voluntary gifts on top of them.
-📜 The listed offerings were a minimum, not a maximum
-➕ A Nazarite could freely bring more, if they were able
-🔑 Generosity beyond the requirement was welcomed, never capped
+
+This is the exact thing that was forbidden all the way back at the start of the vow.
+
+The ban is now completely lifted.
+
+The vow has a clear beginning and a clear, celebrated end.
+
+Finishing a vow to God was worth marking, not just quietly returning to normal.
+
+🍷 Wine was banned at the start
+
+🔓 That ban is now fully lifted
+
+🏁 The vow has a clear finish line
+
+📖 Finishing a vow was worth marking
+
+## ➕ Beside That That His Hand Shall Get
+
+The offerings listed in this chapter were the minimum required.
+
+This last line makes room for a Nazarite to bring more, if he was able and willing.
+
+The law set a floor, not a ceiling.
+
+A vow made freely could also be finished with extra generosity, freely given.
+
+📏 The listed offerings were the minimum
+
+➕ A Nazarite could bring more
+
+🚫 The law set a floor, not a ceiling
+
+📖 A free vow could end in free generosity
 
 # Numbers 6:22-27
-# 🙌 The Priestly Blessing
+# 🙏 The Priestly Blessing
 ---
-## 🔀 A New Topic Begins
-The chapter shifts abruptly from the Nazarite vow to something completely different: a fixed blessing formula for the priests to speak over Israel. The two topics share one thread underneath - both describe how an ordinary Israelite related to God, one through voluntary extra devotion, the other through a blessing God gives freely to everyone.
-🔀 A sudden shift from the Nazarite vow to a blessing formula
-🔗 Both sections are about how Israelites related to God
-🎁 One is voluntary devotion, the other is a free gift to everyone
----
-## 🗣️ On This Wise Ye Shall Bless
-This isn't a suggested blessing or one example among several options - it's the exact, required wording God gives Aaron and his sons to use. Nothing about the wording was left up to a priest's personal creativity.
-🗣️ The exact, required wording, not a suggestion
-🚫 Not left up to any individual priest's personal creativity
-🔑 Given directly by God, through Moses, to Aaron's family
----
+## 📏 On This Wise Ye Shall Bless The Children Of Israel
+
+"On this wise" is an old way of saying in this exact way.
+
+God is not leaving Aaron to improvise his own words.
+
+He hands Aaron and his sons a specific blessing to say, word for word.
+
+This is the oldest fixed blessing in the entire Bible, still spoken today.
+
+📏 On this wise means in this exact way
+
+🗣️ God gave Aaron the exact words
+
+👨‍👦 Aaron's sons would use it too
+
+📖 The oldest fixed blessing in the Bible
+
 ## 🙏 The Lord Bless Thee
-The blessing is spoken to "thee," singular, even though a whole crowd of Israel stood listening at once. That wording made the blessing feel personally addressed to each individual, not just a general wish tossed out over a faceless group.
-🙏 Addressed to "thee," singular, despite a whole crowd listening
-👤 Made the blessing feel personal to each individual
-🔑 Not a vague wish over a faceless group
----
-## 🛡️ And Keep Thee
-"Keep" means guard or protect - the same word used elsewhere for a shepherd watching sheep or a soldier standing guard. This isn't only a wish for good things to happen; it's a promise of continued protection over time.
-🛡️ "Keep" means guard or protect, not just "look after"
-🐑 The same word used for a shepherd watching sheep
-🔑 A promise of ongoing protection, not a one-time wish
----
-## ☀️ Make His Face Shine Upon Thee
-A face "shining" toward someone is an old way of describing warm approval and closeness - the opposite of God "hiding His face," language used elsewhere in Scripture for judgment or distance (Deuteronomy 31:17). This line pictures a God who is warm, present, and favorable, not distant or withdrawn.
-☀️ "Face shining" is old language for warmth and closeness
-🌑 The opposite of God "hiding His face," a sign of judgment elsewhere
-🔑 Pictures a present, favorable God, not a distant one
----
+
+To "bless" means to ask God to actively bring good into someone's life.
+
+It is not a wish sent into empty air.
+
+It is a request aimed directly at the one being blessed.
+
+Everything else in this blessing explains what that good actually looks like.
+
+🙏 Bless means asking God for real good
+
+🎯 It is aimed at one person
+
+🚫 Not a vague wish
+
+📖 Everything after this explains the blessing
+
+## 🐑 And Keep Thee
+
+"Keep" means guard and protect, the same word used for a shepherd watching sheep.
+
+Blessing without protection would not be enough on its own.
+
+This line asks God to actively guard what He gives.
+
+God is asked to both give good and guard it.
+
+🐑 Keep means guard, like a shepherd
+
+🛡️ Protection matters as much as blessing
+
+🎁 God is asked to guard what He gives
+
+📖 Give and guard, together
+
+## 😊 The Lord Make His Face Shine Upon Thee
+
+This does not describe a literal light coming from God's face.
+
+A shining face is a normal way to describe someone who is pleased and delighted.
+
+Think of how a person's face lights up seeing someone they love.
+
+This line asks for God's genuine delight, not just His attention.
+
+😊 A shining face pictures delight
+
+🚫 Not a literal light
+
+❤️ Like a face lighting up for someone loved
+
+📖 This asks for God's genuine delight
+
 ## 🎁 And Be Gracious Unto Thee
-"Gracious" means showing kindness that isn't earned or owed - favor given freely, not paid out as a reward for good behavior. It's the same underlying idea behind the New Testament word "grace."
-🎁 "Gracious" means kindness that isn't earned
-🆓 Given freely, not as payment for good behavior
-📖 The same root idea behind the New Testament word "grace"
----
-## 😊 Lift Up His Countenance Upon Thee
-"Countenance" is an old word for someone's face or expression. God "lifting" His face toward someone pictures active, direct attention - like a person turning to look right at someone they care about, instead of glancing away.
-😊 "Countenance" is an old word for someone's face or expression
-👁️ Pictures active, direct attention, not a passing glance
-🔑 Like someone turning to look right at a person they care about
----
-## ☮️ And Give Thee Peace
-The Hebrew word behind "peace" here is "shalom," a far bigger idea than just the absence of fighting - it means wholeness, completeness, everything as it ought to be. This closing line asks for total well-being, not merely a truce.
-☮️ "Shalom" means wholeness and completeness, not just no conflict
-🔑 A bigger idea than simply the absence of fighting
-🎯 Asks for total well-being, not merely a truce
----
-## 🏷️ They Shall Put My Name Upon The Children Of Israel
-Speaking God's own name over the people, in this exact three-part formula, functioned like placing God's name and ownership directly onto them - similar to a mark of belonging. Israel is publicly identified, out loud, as God's own people.
-🏷️ Speaking God's name over Israel functioned like a mark of ownership
-👥 Publicly identifies Israel, out loud, as belonging to God
-🔑 The blessing itself becomes a statement of identity
----
-## ✅ And I Will Bless Them
-A crucial final clarification: the priests speak the words, but God Himself is the one who actually does the blessing. The priest delivers the message; God alone is its actual source.
-✅ The priests speak the words, but God does the actual blessing
-📬 The priest is only the messenger, never the source
-🔑 Closes the chapter by pointing all the credit back to God
-`;
+
+"Gracious" means receiving kindness that was never earned or deserved.
+
+It is different from fairness, which gives people only what they are owed.
+
+This line asks for more than a fair deal from God.
+
+It asks for kindness that goes beyond what anyone has earned.
+
+🎁 Gracious means undeserved kindness
+
+⚖️ Different from simple fairness
+
+➕ Asks for more than a fair deal
+
+📖 Kindness beyond what is earned
+
+## 🙂 The Lord Lift Up His Countenance Upon Thee
+
+"Countenance" means someone's face, especially the expression it carries.
+
+Lifting it up pictures God turning to look directly at a person, fully attentive.
+
+It is the opposite of God turning away or looking elsewhere.
+
+This line asks for God's full, direct attention, not a passing glance.
+
+🙂 Countenance means the face and its expression
+
+👀 Lifted up means turned fully toward someone
+
+🚫 The opposite of looking away
+
+📖 This asks for God's full attention
+
+## 🕊️ And Give Thee Peace
+
+The Hebrew word behind "peace" here is shalom.
+
+Shalom means far more than the absence of conflict.
+
+It means complete wholeness, everything in a person's life working the way it should.
+
+The blessing ends by asking for a whole, complete life, not just a quiet one.
+
+🕊️ Peace here is the Hebrew word shalom
+
+🧩 It means complete wholeness
+
+🚫 More than just the absence of conflict
+
+📖 A whole life, not just a quiet one
+
+## 🏷️ They Shall Put My Name Upon The Children Of Israel, And I Will Bless Them
+
+Aaron and his sons only speak the words.
+
+God is the one who actually attaches His own name to the people through them.
+
+The priests are not the source of the blessing.
+
+God promises to personally follow through on every word they say.
+
+🗣️ Priests only speak the words
+
+🏷️ God attaches His own name to the blessing
+
+🚫 Priests are not the source
+
+📖 God promises to follow through Himself
+`.trim();
 
 export const NUMBERS_SIX_PERSONAL_SECTIONS = parseNumbersSixRawNotes(NUMBERS_SIX_RAW_NOTES);
