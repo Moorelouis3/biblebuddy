@@ -326,14 +326,27 @@ export async function GET(request: Request) {
   if (!url || !anonKey || !serviceKey) return NextResponse.json({ error: "Server not configured." }, { status: 500 });
   if (!token) return NextResponse.json({ error: "Sign in required." }, { status: 401 });
 
-  const authClient = createClient(url, anonKey, {
-    auth: { autoRefreshToken: false, persistSession: false },
-    global: { headers: { Authorization: `Bearer ${token}` } },
-  });
-  const { data: ownerData } = await authClient.auth.getUser(token);
-  const ownerUser = ownerData.user;
-  if (ownerUser?.email !== "moorelouis3@gmail.com") return NextResponse.json({ error: "Owner analytics only." }, { status: 403 });
-  const ownerId = ownerUser.id;
+  // Service-to-service alt path for Life Buddy's Marcus (2026-08-04) - same
+  // shared secret as /api/stats/second-brain. No real Supabase user in this
+  // case - ownerId gets a sentinel that can't match any real row, NOT null,
+  // since guest/anonymous action rows also have user_id === null and
+  // `row.user_id !== ownerId` would wrongly exclude every one of them if
+  // ownerId were null too.
+  const serviceSecret = process.env.SECOND_BRAIN_STATS_SECRET;
+  const NO_OWNER_SENTINEL = "__service_no_owner__";
+  let ownerId: string = NO_OWNER_SENTINEL;
+  if (serviceSecret && token === serviceSecret) {
+    ownerId = NO_OWNER_SENTINEL;
+  } else {
+    const authClient = createClient(url, anonKey, {
+      auth: { autoRefreshToken: false, persistSession: false },
+      global: { headers: { Authorization: `Bearer ${token}` } },
+    });
+    const { data: ownerData } = await authClient.auth.getUser(token);
+    const ownerUser = ownerData.user;
+    if (ownerUser?.email !== "moorelouis3@gmail.com") return NextResponse.json({ error: "Owner analytics only." }, { status: 403 });
+    ownerId = ownerUser.id;
+  }
 
   const admin = createClient(url, serviceKey, { auth: { autoRefreshToken: false, persistSession: false } });
   const requestUrl = new URL(request.url);

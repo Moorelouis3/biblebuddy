@@ -86,11 +86,48 @@ export async function GET(request: NextRequest) {
     }
   }
 
+  // App-wide usage totals - real aggregates off profile_stats (one row per
+  // user, running totals kept up to date as users act - see
+  // CREATE_PROFILE_STATS_TABLE.sql), not sampled or estimated. Added for
+  // Life Buddy's Marcus, 2026-08-04: "he should know everything about
+  // Bible buddy and its stats" - the original version of this route only
+  // covered signups/revenue, not actual usage.
+  let totalUsers: number | null = null;
+  let totalChaptersCompleted: number | null = null;
+  let totalNotesCreated: number | null = null;
+  let totalDevotionalDaysCompleted: number | null = null;
+  let usersActiveToday: number | null = null;
+  let usersWithActiveStreak: number | null = null;
+  let usageError: string | null = null;
+  try {
+    const { data: rows, error } = await supabaseAdmin
+      .from("profile_stats")
+      .select("chapters_completed_count, notes_created_count, devotional_days_completed_count, current_streak, last_active_date");
+    if (error) throw error;
+    const all = rows ?? [];
+    const todayStr = new Date().toISOString().slice(0, 10);
+    totalUsers = all.length;
+    totalChaptersCompleted = all.reduce((sum, r) => sum + (r.chapters_completed_count || 0), 0);
+    totalNotesCreated = all.reduce((sum, r) => sum + (r.notes_created_count || 0), 0);
+    totalDevotionalDaysCompleted = all.reduce((sum, r) => sum + (r.devotional_days_completed_count || 0), 0);
+    usersActiveToday = all.filter((r) => r.last_active_date === todayStr).length;
+    usersWithActiveStreak = all.filter((r) => (r.current_streak || 0) > 0).length;
+  } catch (e) {
+    usageError = e instanceof Error ? e.message : String(e);
+  }
+
   return NextResponse.json({
     signups24h,
     signupsError,
     revenue24hUsd,
     revenueError,
+    totalUsers,
+    totalChaptersCompleted,
+    totalNotesCreated,
+    totalDevotionalDaysCompleted,
+    usersActiveToday,
+    usersWithActiveStreak,
+    usageError,
     generatedAt: new Date().toISOString(),
   });
 }

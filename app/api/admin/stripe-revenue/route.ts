@@ -280,10 +280,20 @@ async function loadAllSubscriptions() {
 async function requireOwner(req: NextRequest) {
   const authHeader = req.headers.get("authorization");
   const token = authHeader?.startsWith("Bearer ") ? authHeader.slice(7) : null;
+  if (!token) return false;
+
+  // Service-to-service alt path for Life Buddy's Marcus (2026-08-04, Louis:
+  // "everything on the analytics page... plus everything about each user")
+  // - same shared secret as /api/stats/second-brain, checked BEFORE the
+  // owner-session lookup so a valid secret never needs a real Supabase
+  // session. Exact-match only, and only when the secret is actually
+  // configured (an unset env var must never silently accept every token).
+  const serviceSecret = process.env.SECOND_BRAIN_STATS_SECRET;
+  if (serviceSecret && token === serviceSecret) return true;
+
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-
-  if (!token || !supabaseUrl || !supabaseAnonKey) return false;
+  if (!supabaseUrl || !supabaseAnonKey) return false;
 
   const supabase = createClient(supabaseUrl, supabaseAnonKey, {
     auth: { autoRefreshToken: false, persistSession: false },
