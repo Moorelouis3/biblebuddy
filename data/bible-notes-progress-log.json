@@ -8864,6 +8864,55 @@
           "at": "2026-08-04T07:00:45Z"
         }
       ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 2,
+      "startedAt": "2026-08-04T07:46:13Z",
+      "finishedAt": "2026-08-04T07:55:43Z",
+      "durationMinutes": 10,
+      "sections": 7,
+      "cards": 28,
+      "verses": 34,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (7 sections, 2-4 bullets per card, no .trim() on its raw notes constant) from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Numbers 2 lays out the camp formation: standard and ensign banners, the four directional divisions (Judah east, Reuben south, Ephraim west, Dan north) each with captain, tribal grouping, division total, and march rank, the tabernacle and Levites at the literal center, and the closing summary confirming the 603,550 total and the Levites' exclusion from the count. Kept the original file's 7 section boundaries for verse-coverage continuity while rewriting every card to the new format. Density is about 0.82 cards per verse (34 verses, 28 cards), deliberately on the leaner side because the chapter repeats the same four-part pattern (direction, captain, tribal family, total, rank) for each of the four camps, so later occurrences reference back to the first explanation (e.g. rank defined once in the Reuben section) instead of re-teaching it, per section 12's guidance not to pad repeated content. Also included a correct-the-misreading card clarifying that camp side did not predict each tribe's later territory in Canaan (Reuben settled east of the Jordan despite camping south), and callbacks to Jacob's crossed-hands blessing of Ephraim over Manasseh (Genesis 48). scripts/check_bible_note_style.py found 2 problems on first pass (two bullets one word over the 8 word limit), fixed, second run clean. A manual section 13 eye check confirmed all 28 titles are exact KJV phrases, no duplicate titles, and reworded several near-identical openings across the four parallel camp/family/total cards so they do not read as copy-pasted structure. Parser check passed exactly via getBibleReaderStudySections('Numbers', 2) (7/7 sections, 28 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range covering Numbers 1-30, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (NumbersTwoPersonalSection, parseNumbersTwoRawNotes, NUMBERS_TWO_RAW_NOTES, NUMBERS_TWO_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Numbers 2 entry removed from the front of the list as part of this commit; next redo target is Numbers 3.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-04T07:46:13Z"
+        },
+        {
+          "name": "target chapter determined: Numbers 2 (style redo, first entry in remaining backlog)",
+          "at": "2026-08-04T07:46:59Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Numbers.json",
+          "at": "2026-08-04T07:46:59Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (lib/genesisThirtyOneSource.ts) read",
+          "at": "2026-08-04T07:46:59Z"
+        },
+        {
+          "name": "source file written (lib/numbersTwoSource.ts, 7 sections, 28 cards)",
+          "at": "2026-08-04T07:51:00Z"
+        },
+        {
+          "name": "style checker clean (after fixing two over-length bullets)",
+          "at": "2026-08-04T07:53:19Z"
+        },
+        {
+          "name": "wiring confirmed correct for this redo chapter (import, preserveExactPhraseBodies range 1-30, replaceStudySectionsForBookRange call all pre-existing)",
+          "at": "2026-08-04T07:53:31Z"
+        },
+        {
+          "name": "parser check passed via getBibleReaderStudySections('Numbers', 2) (7/7 sections, 28 cards, text verbatim)",
+          "at": "2026-08-04T07:53:53Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean with zero errors",
+          "at": "2026-08-04T07:53:53Z"
+        }
+      ]
     }
   ]
 }
