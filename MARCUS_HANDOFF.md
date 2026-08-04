@@ -38,3 +38,25 @@ whoever owns the Claude Code Remote environment for this project) checking
 why the container was reused/stateful here instead of freshly cloned, and
 whether prior runs' "push to origin" step is being verified or just assumed
 to have succeeded.
+
+## Detached-HEAD/unpushed-commits bug recurred, 51 commits this time
+The exact problem already flagged above ("Bible Buddy sandbox lost 52 commits
+of finished work between runs") happened again on this 2026-08-04 ~12:47 UTC
+scheduled Numbers 7 run. The container started with git HEAD detached 51
+commits ahead of both local and origin/main, going back to at least the
+Leviticus 6 regen (2026-08-03) and including the "Merge stranded local work"
+recovery commit from the prior incident, an email-funnel/pricing commit, and
+roughly 30 chapters' worth of completed style-spec regens (Leviticus 6-27,
+all of Numbers 1-6). Every one of those runs' logs says the push succeeded.
+This run again fast-forwarded local main onto the detached commit, verified
+it was a clean ancestor of origin/main (not a diverged history needing a
+merge), and pushed successfully as 3a5311f, so nothing was lost this time
+either. But the root cause from the 2026-08-03 handoff is confirmed still
+open and still live: whatever mechanism is meant to keep this environment's
+main pointer synced with origin (or give this agent a fresh clone each run,
+as its own task instructions claim happens) is not working, and the "push
+succeeded" self-check every run performs is not actually catching it because
+the push command itself does succeed locally, it is just pushing to a
+detached-HEAD state that the next run's main branch never sees. Worth
+treating this as higher priority than "worth checking" now that it has
+recurred identically once already — two saves in a row is luck, not a fix.
