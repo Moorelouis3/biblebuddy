@@ -687,3 +687,7 @@ Next up: Leviticus 27
 ## 2026-08-04T06:01:31Z (hourly chapter notes run)
 Chapter: Leviticus 27 | Duration: 15 min | Sections: 15 | Cards: 42 | Status: pass
 Next up: Numbers 1
+
+## 2026-08-04T06:59:49Z (hourly chapter notes run)
+Chapter: Numbers 1 | Duration: 13 min | Sections: 8 | Cards: 34 | Status: pass
+Next up: Numbers 2

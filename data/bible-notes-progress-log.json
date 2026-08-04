@@ -8803,6 +8803,67 @@
           "at": "2026-08-04T06:03:14Z"
         }
       ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 1,
+      "startedAt": "2026-08-04T06:46:41Z",
+      "finishedAt": "2026-08-04T07:00:45Z",
+      "durationMinutes": 14.1,
+      "sections": 8,
+      "cards": 34,
+      "verses": 54,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. First chapter in the Numbers redo backlog, regenerated to the new style spec, replacing the original pre-spec version (9 sections / 51 cards, paragraph bodies, three bullets per card, no .trim() on its raw notes constant). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Numbers 1 opens the book with Israel still camped at Sinai one month after the tabernacle's completion: the command to number every man twenty and up able to go to war, the twelve tribal princes named one per tribe (including Nahshon of Judah, ancestor of David and Jesus), the census carried out exactly as commanded, the tribe by tribe military head counts for all twelve tribes (with forward callbacks to Numbers 26's later recount, where Simeon crashes to the smallest tribe and Manasseh overtakes Ephraim), the grand total of 603,550 fighting men confirming Exodus 12's earlier round estimate, and the closing section on the Levites being deliberately left out of the military count and assigned instead to carry, guard, and camp around the tabernacle. Restructured from the original file's 9 sections into 8 cleaner sections since the 12 nearly identical tribe-count verse pairs do not each need a separate section. Per style spec section 12 (chapters that resist teaching), gave one meaningful card per tribe total rather than padding out repeated census formula language, instead teaching from what the number reveals (Reuben's lost birthright, Judah becoming the largest tribe, Ephraim overtaking Manasseh matching Jacob's crossed-hands blessing, an uneven total for Gad as evidence of a real count) or where it points (Simeon's later collapse, Manasseh's later growth, Nahshon's place in the Messianic line). Density about 0.63 cards per verse (54 verses, 34 cards), on the lean end since this is a repetitive military census chapter, consistent with the style spec's warning against padding restated measurements. scripts/check_bible_note_style.py found 0 problems (clean on first run after fixing missing title emoji during drafting, before ever invoking the checker). A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key term in quotes, avoids restating the body in its bullets, and closes on meaning rather than mechanics, with no hyphens, em dashes, semicolons, contractions, or banned filler/hedge words anywhere in the file. Parser check passed exactly via getBibleReaderStudySections('numbers', 1) (8/8 sections, 34 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring was already correct for this redo chapter (Numbers 1-30 already covered by preserveExactPhraseBodies, import and replaceStudySectionsForBookRange call already present), no changes needed. Redo backlog entry popped; next redo target is Numbers 2.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-04T06:47:36Z"
+        },
+        {
+          "name": "target chapter determined: Numbers 1 (style redo, first entry in remaining backlog)",
+          "at": "2026-08-04T06:47:36Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Numbers.json",
+          "at": "2026-08-04T06:47:58Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and SKILL.md read, reference implementation (lib/genesisThirtyOneSource.ts) reviewed",
+          "at": "2026-08-04T06:53:48Z"
+        },
+        {
+          "name": "source file written (lib/numbersOneSource.ts, 8 sections, 34 cards)",
+          "at": "2026-08-04T06:55:40Z"
+        },
+        {
+          "name": "style checker clean",
+          "at": "2026-08-04T06:55:40Z"
+        },
+        {
+          "name": "wiring confirmed correct for this redo chapter (import, preserveExactPhraseBodies range 1-30, replaceStudySectionsForBookRange call all pre-existing)",
+          "at": "2026-08-04T06:55:40Z"
+        },
+        {
+          "name": "parser check passed via getBibleReaderStudySections('numbers', 1) (8/8 sections, 34 cards, text verbatim)",
+          "at": "2026-08-04T06:56:11Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean with zero errors",
+          "at": "2026-08-04T06:56:11Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-04T06:58:51Z"
+        },
+        {
+          "name": "committed (lib file + progress logs + session log + redo backlog)",
+          "at": "2026-08-04T07:00:30Z"
+        },
+        {
+          "name": "pushed to origin main, confirmed origin/main matches local HEAD",
+          "at": "2026-08-04T07:00:45Z"
+        }
+      ]
     }
   ]
 }
