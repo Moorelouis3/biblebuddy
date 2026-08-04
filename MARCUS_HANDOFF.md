@@ -60,3 +60,15 @@ the push command itself does succeed locally, it is just pushing to a
 detached-HEAD state that the next run's main branch never sees. Worth
 treating this as higher priority than "worth checking" now that it has
 recurred identically once already — two saves in a row is luck, not a fix.
+
+## Detached-HEAD bug recurred again, third time (Numbers 8 run, no data lost)
+Same environment issue as the two entries above happened again on this
+2026-08-04 ~13:47 UTC scheduled Numbers 8 run: git HEAD started detached.
+This time it was detached at the exact same commit as origin/main, not
+ahead of it, so nothing was at risk of being lost, unlike the two prior
+incidents. Fixed the same way (checked out main, fast forwarded, verified
+clean) before starting the chapter. Flagging only as a data point since
+this is now the third time in a row the container has not started on a
+normal attached main branch as the task instructions claim it should
+("a fresh clone every run"). The underlying mechanism is still unconfirmed
+and still worth someone checking directly, per the prior two entries.
