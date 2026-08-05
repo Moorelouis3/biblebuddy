@@ -787,3 +787,7 @@ Next up: Numbers 25
 ## 2026-08-05T13:54:30Z (hourly chapter notes run)
 Chapter: Numbers 25 | Duration: 8 min | Sections: 6 | Cards: 34 | Status: pass
 Next up: Numbers 26
+
+## 2026-08-05T14:58:59Z (hourly chapter notes run)
+Chapter: Numbers 26 | Duration: 13 min | Sections: 14 | Cards: 54 | Status: pass
+Next up: Numbers 27

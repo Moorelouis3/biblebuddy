@@ -10296,6 +10296,67 @@
           "at": "2026-08-05T13:56:00Z"
         }
       ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 26,
+      "startedAt": "2026-08-05T14:45:55Z",
+      "finishedAt": "2026-08-05T14:58:59Z",
+      "durationMinutes": 13,
+      "sections": 14,
+      "cards": 54,
+      "verses": 65,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (14 sections / 66 cards, three bullets per card, no blank lines between body lines) from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Numbers 26 is the second national census, taken on the plains of Moab right after the Baalpeor plague of chapter 25, with Eleazar (not Aaron, who already died in Numbers 20) leading it alongside Moses. Covered all twelve tribal counts with their clan lists, the callbacks to Korah's rebellion in Numbers 16 (verses 9-11 and again in the Levite section, 57-58), Zelophehad's five daughters and the inheritance question they set up for Numbers 27, the Judah line running through Pharez and Hezron toward King David, the Levites counted separately by a different standard (one month old, not twenty years, since they were never numbered for war), Moses and Aaron's own family named directly (Amram, Jochebed, Miriam), the land-by-lot inheritance law in verses 52-56, and the closing note that only Caleb and Joshua survive from the first census, fulfilling the Numbers 14 judgment almost 38 years later. Kept the original file's 14 section boundaries for verse-coverage continuity while rewriting every card and title from scratch to exact contiguous KJV phrase titles per spec section 2. Density about 0.83 cards/verse (65 verses, 54 cards), on the leaner end deliberately since this is a genealogy-and-census chapter, per spec section 12's guidance against padding restated names and measurements, leaning instead on what each number meant, why it was recorded, and where each name points forward in the story. `scripts/check_bible_note_style.py` found 4 problems on first pass (one 10-word bullet, one 9-word bullet, and two cards whose last bullet did not use \ud83d\udcd6/\u27a1\ufe0f), fixed all four, second pass caught one new repeated-emoji problem introduced by a fix, fixed that too, third run clean with zero problems. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key term or number in plain language, and closes on meaning rather than mechanics, with no hyphens, em dashes, semicolons, contractions, or banned filler/hedge words anywhere in the file, and no duplicate card titles (verified all 54 titles are exact contiguous substrings of their KJV verse, case aside). Parser check passed exactly via `getBibleReaderStudySections('numbers', 26)` (14/14 sections, 54 cards, 65 verses, text verbatim). `npx tsc --noEmit -p .` clean with zero errors. Wiring in `lib/bibleReaderStudyNotes.ts` was already correct for this redo chapter (import, preserveExactPhraseBodies range covering Numbers 1-30, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (NumbersTwentySixPersonalSection, parseNumbersTwentySixRawNotes, NUMBERS_TWENTY_SIX_RAW_NOTES, NUMBERS_TWENTY_SIX_PERSONAL_SECTIONS) were kept exactly as before. This run also found local `main` detached again (the recurring environment issue seen on many prior runs); re-fetched origin/main (096ee84, confirmed current, no stale ref) and ran `git checkout -B main 096ee84` to point local main at it directly, a clean state with no divergence and no work lost. data/bible-notes-style-redo-remaining.json Numbers 26 entry removed from the front of the list as part of this commit; next redo target is Numbers 27. Per CLAUDE.md's push-cadence policy (batch pushes to at most twice a day, together with the daily report), this chapter's commit was intentionally NOT pushed immediately, since today's morning report push already went out (8c52605, 2026-08-05 10:17 CEST) and the night report push has not yet occurred. It will go out with the next scheduled report push.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-05T14:45:55Z"
+        },
+        {
+          "name": "target chapter determined: Numbers 26 (style redo, first in remaining backlog)",
+          "at": "2026-08-05T14:46:00Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Numbers.json",
+          "at": "2026-08-05T14:46:30Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (lib/genesisThirtyOneSource.ts, lib/numbersTwentySixSource.ts existing wiring) read",
+          "at": "2026-08-05T14:49:00Z"
+        },
+        {
+          "name": "source file written (lib/numbersTwentySixSource.ts, 14 sections, 54 cards)",
+          "at": "2026-08-05T14:56:33Z"
+        },
+        {
+          "name": "style checker clean (after fixing 4 mechanical problems across 2 passes: 2 over-length bullets, 2 last-bullets missing \ud83d\udcd6/\u27a1\ufe0f, 1 repeated-emoji regression from a fix)",
+          "at": "2026-08-05T14:57:30Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call all pre-existing, no changes needed)",
+          "at": "2026-08-05T14:57:40Z"
+        },
+        {
+          "name": "parser check passed (14/14 sections, 54 cards, 65 verses, text verbatim)",
+          "at": "2026-08-05T14:58:20Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-08-05T14:58:59Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, redo-remaining.json popped, SESSION_LOG.md, usage-events.json checkpoint)",
+          "at": "2026-08-05T15:05:00Z"
+        },
+        {
+          "name": "detached HEAD recovered (re-fetched origin/main 096ee84, git checkout -B main 096ee84, no divergence, no work lost)",
+          "at": "2026-08-05T15:00:06Z"
+        },
+        {
+          "name": "committed all changed files, push withheld per CLAUDE.md push-cadence policy (batched with next scheduled report push)",
+          "at": "2026-08-05T15:06:00Z"
+        }
+      ]
     }
   ]
 }

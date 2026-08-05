@@ -109,6 +109,12 @@
       "type": "note",
       "chaptersCompletedSoFarTonight": 13,
       "detail": "Not a usage/rate limit. Numbers 13 run: git commit landed on a detached HEAD again (the recurring environment bug, now seen on at least three separate runs), because local main was 87 commits ahead / 50 behind a stale ref while origin/main had already moved on. Verified with git merge-base --is-ancestor that origin/main was a clean ancestor of the new detached commit, then ran git checkout -B main <commit> to point local main at it directly, a safe fast-forward with no discarded work. Also: per CLAUDE.md's push-cadence policy (added 2026-08-04, batch to at most twice a day with the daily report), this chapter's commit was intentionally left unpushed on local main rather than pushed immediately as the routine's own step 7 literally instructs, since CLAUDE.md is explicit that it overrides default/routine behavior and specifically calls out per-chapter pushes during these hourly runs as the exact problem it was written to stop. It will go out with the next scheduled morning or night report push."
+    },
+    {
+      "timestamp": "2026-08-05T14:58:59Z",
+      "type": "chapter_count_checkpoint",
+      "chaptersCompletedSoFarTonight": 26,
+      "detail": "Numbers 26 shipped this run via the raw.githubusercontent.com/aruljohn/Bible-kjv mirror, no usage limit, rate limit, or throttling encountered. 13 chapters shipped since the last checkpoint/note at 2026-08-05T01:58:00Z (Numbers 14-26, style redo backlog), each in its own separate hourly run. This run's own detached-HEAD recovery is noted in the progress log entry, not repeated here since it was a clean fetch-and-checkout with no divergence and no work lost, not a block. Per CLAUDE.md's push-cadence policy, this chapter's commit was left unpushed (today's morning report, 8c52605, already went out at 10:17 CEST; this chapter will ride the night report push)."
     }
   ]
 }
