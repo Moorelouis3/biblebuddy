@@ -92,195 +92,665 @@ const NUMBERS_TWELVE_RAW_NOTES = `# Numbers 12:1-3
 # 🗣️ Miriam And Aaron Challenge Moses
 ---
 ## 🗣️ Miriam And Aaron Spake Against Moses
-Miriam's name comes first in this sentence, even though Aaron was older and already served as high priest. That small detail suggests she was the one who started this complaint, with Aaron following her lead.
-This is the first time in the Bible either of them openly criticizes Moses. Miriam led Israel's worship after the Red Sea crossing (Exodus 15:20-21), and Aaron had shared real authority as high priest since Exodus 28, so this isn't an ordinary Israelite grumbling. It's a challenge from inside Moses' own family, from two people who already had real standing.
-🗣️ Miriam is named first, hinting she led this complaint
-👑 Both siblings already held real, established authority
-🔑 The first open criticism of Moses from his own family
----
+
+Miriam's name comes first in this sentence.
+
+Aaron was older and already served as high priest.
+
+Naming Miriam first suggests she started this complaint.
+
+This is the first time either sibling criticizes Moses openly.
+
+Miriam led Israel's singing after the Red Sea in Exodus 15.
+
+Aaron held real priestly authority since Exodus 28.
+
+This complaint comes from inside Moses' own family.
+
+Two people with real standing challenge their own brother.
+
+🗣️ Miriam is named first
+
+👑 Both siblings held real authority
+
+👪 The challenge comes from Moses' own family
+
+📖 Real standing did not excuse this complaint
+
 ## 🌍 The Ethiopian Woman Whom He Had Married
-"Ethiopian" translates the Hebrew word "Cushite," a reference to the region of Cush, roughly modern-day Sudan, south of Egypt. The detail is mentioned twice in a single verse, which is the text's way of making sure the reader notices it.
-It isn't fully clear whether this is a new wife or another way of describing Zipporah, the Midianite woman Moses already married back in Exodus 2:21. Either way, the marriage itself turns out to be the surface complaint, while verse 2 reveals what's really bothering Miriam and Aaron.
-🌍 "Ethiopian" means Cushite, from the region south of Egypt
-❓ Possibly a new wife, or another name for Zipporah
-🔑 Repeated twice in one verse, so it's meant to stand out
----
-## ❓ Hath The Lord Indeed Spoken Only By Moses?
-This is the real issue behind the complaint. Miriam and Aaron aren't actually upset about a marriage — they're questioning whether Moses has some special access to God that they don't share.
-The question sounds reasonable at first, since both of them really had received God's word before. But the rest of the chapter draws out a real difference between hearing from God sometimes and the unique relationship Moses has.
-❓ The marriage is a pretext — this is really about status
-🤔 Sounds reasonable, since both had heard from God before
-🔑 Sets up the contrast God draws out in verses 6-8
----
-## 🙋 Hath He Not Spoken Also By Us?
-This second question makes the claim explicit: Miriam and Aaron believe they deserve the very same standing as Moses, not just a share in hearing from God sometimes.
-Their claim isn't invented. Miriam is called a prophetess back in Exodus 15:20, and Aaron regularly relayed God's words as Moses' spokesman (Exodus 4:15-16). But it's still a wrong jump — from "we've heard from God too" to "we should be treated exactly the same as Moses."
-🙋 Makes the claim explicit: equal standing with Moses
-📖 Miriam was a real prophetess, named in Exodus 15:20
-🔑 A wrong jump from "we've heard God too" to "we're equal"
----
+
+"Ethiopian" translates the Hebrew word "Cushite."
+
+Cush sat south of Egypt, in what is now Sudan.
+
+The verse repeats this detail twice in one sentence.
+
+Repetition like this signals something worth noticing.
+
+Scholars are not fully certain who this woman was.
+
+She may be a new wife, or another name for Zipporah.
+
+Either way, the marriage is only the surface complaint.
+
+The real complaint comes out in the very next verse.
+
+🌍 Cushite means from the region of Cush
+
+🔁 The detail repeats twice on purpose
+
+❓ She may be Zipporah under another name
+
+➡️ The real complaint follows in verse two
+
+## ❓ Hath The Lord Spoken Only By Moses
+
+This question is not really about a marriage at all.
+
+Miriam and Aaron are asking about status, not about Moses' wife.
+
+They want to know if Moses has access to God that they lack.
+
+The question sounds fair on its surface.
+
+Both of them really had heard from God before.
+
+But hearing from God sometimes is not the same as Moses' unique place.
+
+The rest of the chapter draws that difference out clearly.
+
+❓ The marriage is a cover story
+
+👑 The real question is about status
+
+🤔 Both had heard from God before
+
+📖 Hearing is not leading
+
+## 🙋 Hath He Not Spoken Also By Us
+
+This second question makes the real claim plain.
+
+Miriam and Aaron believe they deserve Moses' exact standing.
+
+Not just a share in hearing from God, but full equality.
+
+Their claim is not invented from nothing.
+
+Miriam is called a prophetess in Exodus 15.
+
+Aaron regularly spoke for Moses as God directed in Exodus 4.
+
+Still, hearing from God does not make someone equal to Moses.
+
+That is the wrong turn this whole chapter corrects.
+
+🙋 Their real claim is equal standing
+
+📖 Miriam was a true prophetess
+
+🗣️ Aaron regularly spoke for Moses too
+
+➡️ Hearing from God does not equal Moses' place
+
 ## 👂 And The Lord Heard It
-This is the exact same phrase used back in Numbers 11:1, right before the fire broke out at Taberah over Israel's complaining about hardship.
-Repeating this phrase is a warning sign for an alert reader. Every time this book says the LORD "heard" a complaint, real consequences follow soon after.
-👂 The identical phrase already used for the complaint in 11:1
-🔥 That earlier complaint was followed immediately by judgment
-🔑 A quiet warning sign for what's about to happen here too
----
+
+This exact phrase already appeared in Numbers eleven.
+
+There the people complained about hardship near Taberah.
+
+Fire broke out immediately after that complaint.
+
+The same phrase returning here is a warning sign.
+
+This book uses this phrase right before judgment lands.
+
+A careful reader should feel the tension building right here.
+
+👂 The same phrase used in Numbers eleven
+
+🔥 That earlier complaint ended in fire
+
+⚠️ This phrase signals judgment is coming
+
+📖 God hears complaints before He answers them
+
 ## 🕊️ The Man Moses Was Very Meek
-"Meek" doesn't mean weak or timid. It means someone with real power and standing who chooses not to fight for his own honor.
-This verse is a side note from the narrator, not something Moses says about himself. It matters because Moses never once defends himself in this chapter — God defends him instead, which is exactly what meekness looks like in practice, not just in theory.
-🕊️ "Meek" means humble strength, not weakness
-📖 A narrator's side note, not Moses' own claim about himself
-🔑 Explains why Moses never argues back — God does it for him
+
+"Meek" does not mean weak or timid.
+
+It means someone with real power who chooses not to fight for his own honor.
+
+This verse is a side note from the narrator.
+
+Moses did not say this about himself.
+
+It matters because Moses never defends himself anywhere in this chapter.
+
+God defends him instead.
+
+That is what real meekness looks like in practice.
+
+🕊️ Meek means strength under control
+
+📖 A narrator's note, not Moses' own claim
+
+🛡️ God defends Moses instead of Moses defending himself
+
+➡️ Real meekness lets someone else respond
 
 # Numbers 12:4-9
 # ☁️ God Defends His Servant Moses
 ---
 ## ⚡ The Lord Spake Suddenly
-Most of the time in these books, Moses is the one who goes to God with a question or a problem. Here, God interrupts on His own, without being asked by anyone.
-The suddenness signals how seriously God takes this complaint. This isn't a routine check-in — it's an urgent, unscheduled response to what Miriam and Aaron just said about Moses.
-⚡ Unusual — normally Moses approaches God, not the reverse
-🚨 Signals real urgency, not a routine conversation
-🔑 God is responding immediately to what was just said
----
+
+Most of the time, Moses goes to God with a question.
+
+Here, God interrupts on His own.
+
+Nobody asked Him to step in.
+
+The word "suddenly" shows how seriously God takes this complaint.
+
+This is not a routine check in.
+
+It is an urgent response to what Miriam and Aaron just said.
+
+⚡ Normally Moses approaches God, not the reverse
+
+🚨 Suddenly signals real urgency
+
+🗣️ God answers an unasked complaint
+
+📖 God moves fast to defend His servant
+
 ## ⛺ Come Out Ye Three Unto The Tabernacle
-All three siblings are called out together, to the very same public meeting place where the seventy elders were just commissioned one chapter earlier, in Numbers 11:24.
-Calling everyone out where the camp can see makes this a public matter, not a private family conversation. Whatever God says next, the whole nation will witness it.
-⛺ The same public location as the elders' ceremony one chapter earlier
-👀 Makes this a public matter, not a private family talk
-🔑 The whole camp will witness whatever happens next
----
+
+All three siblings are called out together.
+
+This is the same public meeting place named one chapter earlier.
+
+Numbers eleven used it for commissioning seventy elders.
+
+Calling everyone out where the camp can see makes this public.
+
+This is not a private family conversation.
+
+Whatever God says next, the whole nation will witness it.
+
+⛺ The same place used for the elders
+
+👀 God makes this a public matter
+
+🙅 Not a private family talk
+
+📖 The whole camp will witness what happens next
+
 ## ☁️ The Lord Came Down In The Pillar Of The Cloud
-This is the same visible form of God's presence already seen at Sinai (Exodus 19, 24) and at the tabernacle's dedication (Exodus 40), and again just one chapter earlier with the seventy elders.
-Seeing this same cloud appear again reminds the reader that the God correcting Miriam and Aaron here is the same God who gave the law and who just filled the tabernacle with His glory.
-☁️ The same visible presence seen at Sinai and in Exodus 40
-🔁 Also just appeared with the seventy elders in Numbers 11
-🔑 Ties this rebuke back to God's established, recognizable presence
----
-## 🚪 Stood In The Door Of The Tabernacle, And Called Aaron And Miriam
-Standing in the doorway puts God at the boundary between the holy space inside and the people gathered outside — present and addressing them directly, not distant or abstract.
-Only Aaron and Miriam are specifically called forward here, not Moses. Moses is the subject of the conversation, but he isn't the one being summoned for correction.
-🚪 A position at the boundary, directly facing the people
-🗣️ Only Aaron and Miriam are called forward, not Moses
-🔑 Moses is being defended here, not corrected
----
+
+This is the same visible form of God's presence seen before.
+
+It appeared at Sinai in Exodus nineteen and twenty four.
+
+It filled the tabernacle in Exodus forty.
+
+It just appeared again with the seventy elders one chapter earlier.
+
+The same God who gave the law now corrects Miriam and Aaron.
+
+☁️ The same cloud seen at Sinai
+
+🏠 Also filled the tabernacle in Exodus forty
+
+🔁 Just appeared again with the seventy elders
+
+📖 The lawgiver is the one giving this rebuke
+
+## 🚪 Called Aaron And Miriam
+
+God stands in the doorway of the tabernacle.
+
+That spot sits at the border between the holy space and the people outside.
+
+Only Aaron and Miriam are called forward here.
+
+Moses is not called forward at all.
+
+Moses is the subject of this conversation, not the one being corrected.
+
+He is the one being defended.
+
+🚪 God stands at the boundary, facing the people
+
+🗣️ Only Aaron and Miriam step forward
+
+🙅 Moses is not summoned
+
+📖 Moses is being defended, not corrected
+
 ## 💭 If There Be A Prophet...In A Vision...In A Dream
-This describes the normal way God spoke to prophets in the Old Testament — indirectly, through pictures and scenes seen while awake or asleep, images that usually needed interpreting.
-God is about to draw a sharp contrast between this normal, indirect method and something far more direct that He uses only with Moses.
-💭 The normal, indirect way God usually spoke to prophets
-🖼️ Through pictures and scenes that need interpreting
-🔑 Sets up a deliberate contrast with Moses' own experience
----
+
+A vision or a dream was the normal way God spoke to a prophet.
+
+It came indirectly, through pictures seen while awake or asleep.
+
+Those images usually needed someone to interpret them.
+
+God is about to contrast this normal method with something used only for Moses.
+
+💭 The usual, indirect way God spoke to prophets
+
+🖼️ Pictures that needed interpreting
+
+🔀 Set up to contrast with Moses
+
+📖 Moses will get something completely different
+
+## 👑 My Servant Moses Is Not So
+
+"Servant" is a title of honor in the Old Testament.
+
+Abraham and David carry this same title elsewhere in scripture.
+
+It never means someone lowly or unimportant.
+
+Moses does not receive revelation the normal, indirect way.
+
+He gets something far more direct, described in the next verse.
+
+👑 Servant is a title of honor
+
+📖 Abraham and David share this title
+
+🚫 Not a term for someone lowly
+
+➡️ Moses gets something more direct next
+
 ## 🏠 Faithful In All Mine House
-"House" here means God's whole household — all of Israel — not a building. Moses is described as the trusted manager over that entire household.
-"Servant" is a title of honor in the Old Testament, used for major figures like Abraham and David, not a term for someone lowly. The New Testament book of Hebrews (3:2-5) later builds directly on this exact description to explain Moses' unique role.
-🏠 "House" means God's whole household, all of Israel
-👑 "Servant" is a title of honor, not a lowly position
-🔑 Hebrews 3:2-5 later builds directly on this description
----
+
+"House" here does not mean a building.
+
+It means God's whole household, all of Israel.
+
+Moses is the trusted manager over that entire household.
+
+Hebrews three later builds directly on this exact description.
+
+That New Testament passage explains Moses' unique role in Israel's story.
+
+🏠 House means all of Israel
+
+🔑 Moses manages God's whole household
+
+📖 Hebrews three builds on this verse
+
+➡️ Moses' role points forward in scripture
+
 ## 🗣️ Mouth To Mouth, Even Apparently, And Not In Dark Speeches
-This is the direct contrast with the vision-and-dream method just described. Instead of indirect pictures, God speaks to Moses plainly and clearly, like two people talking face to face.
-"Dark speeches" means riddles or obscure, symbolic language. Moses doesn't have to interpret puzzling images the way other prophets did — God simply tells him what He means.
-🗣️ Direct, plain speech, not visions or dreams
-🧩 "Dark speeches" means riddles or obscure symbols
-🔑 Moses gets a clarity no other prophet received
----
+
+This is the direct opposite of the vision and dream method.
+
+God speaks to Moses plainly, like two friends talking face to face.
+
+"Dark speeches" means riddles or hidden, symbolic language.
+
+Moses never has to interpret puzzling images the way other prophets did.
+
+God simply tells him what He means.
+
+🗣️ Direct speech, not visions or dreams
+
+🧩 Dark speeches means riddles
+
+👥 Like two friends talking plainly
+
+📖 No other prophet received this clarity
+
 ## 👁️ The Similitude Of The Lord Shall He Behold
-"Similitude" means a form or likeness. Moses is given a unique privilege here — seeing some visible form of God, not only hearing His voice like other prophets.
-This connects back to Exodus 33:11, which already described God speaking to Moses "face to face, as a man speaketh unto his friend." This verse confirms that earlier description was literal, not exaggeration.
-👁️ "Similitude" means a visible form or likeness
-🤝 Connects back to the "face to face" language in Exodus 33:11
-🔑 Confirms that earlier description was literal, not exaggerated
----
-## ❓ Wherefore Then Were Ye Not Afraid To Speak Against My Servant Moses?
-This is a rebuke phrased as a question, not a real request for an answer. "Afraid" here means the reverence and respect Miriam and Aaron should have shown but didn't.
-Given everything God just said about Moses' unique relationship with Him, speaking against Moses wasn't just rude between siblings — it was aimed at God's own chosen arrangement for leading Israel.
-❓ A rebuke phrased as a question, not a real question
-🙇 "Afraid" means reverence and respect, not literal fear
-🔑 Their real target was God's arrangement, not just Moses
----
-## 🔥 The Anger Of The Lord Was Kindled Against Them; And He Departed
-This exact phrase for God's anger already appeared twice in Numbers 11 (verses 1 and 10). By now, a reader should recognize it as a signal that consequences are coming.
-"He departed" means the visible cloud lifted and left. God's presence pulling back is itself an ominous sign, right before Miriam's leprosy is revealed in the very next verse.
-🔥 The same phrase for God's anger already used twice in Numbers 11
-☁️ "He departed" — the cloud lifting is itself an ominous sign
-🔑 Sets up the judgment revealed in the next verse
+
+"Similitude" means a visible form or likeness.
+
+Moses is given a rare privilege here.
+
+He sees some visible form of God, not only His voice.
+
+This connects back to Exodus thirty three.
+
+There God already spoke to Moses face to face, like a friend.
+
+This verse confirms that earlier description was literal.
+
+👁️ Similitude means a visible likeness
+
+🤝 Connects to Exodus thirty three
+
+✅ Confirms that language was literal
+
+📖 Moses saw more than any other prophet
+
+## ❓ Wherefore Then Were Ye Not Afraid To Speak Against My Servant Moses
+
+This is phrased as a question, but it is really a rebuke.
+
+"Afraid" here means reverence, not literal fear.
+
+Miriam and Aaron should have shown Moses that respect.
+
+They did not.
+
+Speaking against Moses was not just rude between siblings.
+
+It was aimed at God's own arrangement for leading Israel.
+
+❓ A rebuke dressed as a question
+
+🙇 Afraid means reverence here
+
+👪 More than sibling rudeness
+
+📖 Their real target was God's arrangement
+
+## 🔥 The Anger Of The Lord Was Kindled Against Them
+
+This same phrase for God's anger already appeared twice in Numbers eleven.
+
+A reader who caught that pattern should expect consequences now.
+
+Anger here does not mean an emotional outburst.
+
+It means a settled response to real wrongdoing.
+
+🔥 The same phrase used twice already
+
+⚠️ A signal that consequences are near
+
+⚖️ Not an outburst, but a just response
+
+📖 God's anger follows real wrongdoing
+
+## ☁️ He Departed
+
+The visible cloud lifts and leaves.
+
+God's presence pulling back is itself a warning.
+
+This happens right before Miriam's leprosy appears in the very next verse.
+
+Presence and judgment are tied together throughout this chapter.
+
+☁️ The cloud lifts and leaves
+
+⚠️ God's absence is itself a warning
+
+🤍 Miriam's leprosy follows immediately
+
+📖 Presence and judgment move together here
 
 # Numbers 12:10-13
 # 🤍 Miriam Struck With Leprosy
 ---
 ## ☁️ The Cloud Departed From Off The Tabernacle
-This connects directly to God's departure named in verse 9. As soon as His visible presence lifts, the consequence becomes visible too.
-The timing isn't a coincidence. The text places these two events back to back on purpose, so the reader sees cause and effect happening in real time.
-☁️ Directly follows God's departure named in verse 9
-⏱️ Cause and effect shown happening in real time
-🔑 Placed back to back on purpose, not by accident
----
+
+This connects directly to God's departure named in the verse before.
+
+As soon as His visible presence lifts, the consequence appears.
+
+The text places these two events back to back on purpose.
+
+The reader is meant to see cause and effect happening in real time.
+
+☁️ Directly follows God's departure in verse nine
+
+⏱️ Cause and effect shown together
+
+🎯 Placed back to back on purpose
+
+📖 The reader sees judgment unfold in real time
+
 ## 🤍 Miriam Became Leprous, White As Snow
-Biblical "leprosy" (Hebrew tzaraath) covers a range of skin conditions, not only the disease called leprosy today. Leviticus 13 treats it as making a person ritually unclean, requiring separation from the rest of the camp.
-Only Miriam is struck, even though both she and Aaron spoke against Moses. One likely reason is that she's named first back in verse 1 and seems to have led the complaint; Aaron's ongoing high priestly duties may also be part of why he's spared this particular visible judgment.
-🤍 Biblical leprosy covers various skin conditions, not just one disease
-🚫 Made a person ritually unclean under Leviticus 13's law
-🔑 Only Miriam is struck — likely because she led the complaint
----
+
+Biblical leprosy covers a range of skin conditions.
+
+It is not only the disease called leprosy today.
+
+Leviticus thirteen treats this condition as making a person ritually unclean.
+
+That uncleanness required separation from the rest of the camp.
+
+Only Miriam is struck.
+
+Aaron also spoke against Moses, but he is spared.
+
+She is named first back in verse one and likely led the complaint.
+
+🤍 Leprosy covered many skin conditions
+
+🚫 It made a person ritually unclean
+
+👪 Only Miriam is struck, not Aaron
+
+📖 She likely led the complaint in verse one
+
 ## 😨 Aaron Looked Upon Miriam
-This small detail captures Aaron's horror in real time — turning to see his own sister suddenly covered in a visible, unmistakable judgment.
-His reaction sets up exactly what he does next: an immediate, urgent appeal to Moses on Miriam's behalf.
-😨 Captures Aaron's real-time horror at what he sees
-🏃 Sets up his urgent appeal to Moses in the very next verse
-🔑 A brief but vivid narrative detail
----
+
+This small detail captures Aaron's horror in real time.
+
+He turns and sees his own sister suddenly covered in judgment.
+
+The moment is brief but vivid.
+
+It sets up his urgent appeal to Moses in the very next verse.
+
+😨 Captures Aaron's real time horror
+
+👀 He sees his sister's sudden judgment
+
+📝 A brief but vivid narrative detail
+
+➡️ It leads straight into his appeal
+
 ## 🙏 Alas, My Lord
-Aaron now calls Moses "my lord" — a striking reversal from a chapter that opened with him questioning whether Moses deserved any special standing at all.
-"We have done foolishly, and...sinned" is a full, direct confession with no excuses attached. Aaron admits the complaint itself was wrong, not just badly timed.
-🙏 A striking reversal from verse 2's challenge to Moses' status
-✅ A full confession, with no excuses attached
-🔑 Aaron now openly acknowledges Moses' authority
----
+
+Aaron now calls Moses "my lord."
+
+This chapter opened with Aaron questioning Moses' special standing.
+
+Now Aaron addresses him with total respect instead.
+
+That is a striking reversal in only a few verses.
+
+🙏 Aaron now calls Moses my lord
+
+🔄 A striking reversal from verse two
+
+👑 Aaron now openly honors Moses
+
+📖 Respect replaces the earlier challenge
+
+## 🙇 Lay Not The Sin Upon Us
+
+Aaron begs Moses not to hold this sin against them.
+
+"Beseech" means to plead urgently, not to simply ask.
+
+Aaron is not demanding fairness anymore.
+
+He is asking for mercy he knows he does not deserve.
+
+🙇 Aaron pleads, not demands
+
+🗣️ Beseech means to plead urgently
+
+🙏 He asks for mercy, not fairness
+
+📖 Guilt now speaks instead of pride
+
+## ✅ We Have Done Foolishly, And...Have Sinned
+
+This is a full confession with no excuses attached.
+
+Aaron admits the complaint itself was wrong.
+
+He does not blame the timing or the circumstances.
+
+He names it plainly as sin, not just a mistake.
+
+✅ A full confession, no excuses
+
+🚫 Not blamed on timing or circumstance
+
+⚖️ Named plainly as sin
+
+📖 Honesty follows quickly after judgment
+
 ## ⚰️ Let Her Not Be As One Dead
-This is a graphic, desperate image comparing Miriam's condition to a stillborn baby with decaying flesh. Aaron is describing just how severe and shocking her leprosy looks.
-The intensity of this plea shows real family love breaking through, right after Aaron's own confession of guilt a moment earlier.
-⚰️ A graphic comparison to a stillborn baby's decayed flesh
-😢 Shows how severe and shocking Miriam's condition looks
-🔑 Real family love breaking through after Aaron's confession
----
-## 🙏 Moses Cried Unto The Lord, Saying, Heal Her Now
-In Hebrew, Moses' prayer here is just five words — one of the shortest prayers in the entire Bible, but it says everything necessary.
-Moses immediately intercedes for the very sister who just attacked his authority, without a hint of revenge. This is the meekness named back in verse 3, shown in action instead of just described.
-🙏 One of the shortest prayers in the entire Bible
-🕊️ No revenge — Moses prays for the sister who wronged him
-🔑 Meekness from verse 3 shown in action, not just described
+
+Aaron compares Miriam's condition to a stillborn baby.
+
+That image describes decaying, ruined flesh.
+
+He is showing just how severe Miriam's leprosy looks.
+
+This desperate plea reveals real family love breaking through his own guilt.
+
+⚰️ Compared to a stillborn baby
+
+🤍 Shows how severe her condition looks
+
+😢 A desperate, graphic plea
+
+📖 Family love breaks through the guilt
+
+## 🙏 Heal Her Now, O God, I Beseech Thee
+
+In Hebrew, this prayer is only five words long.
+
+It is one of the shortest prayers in the whole Bible.
+
+Moses prays immediately for the sister who just attacked his authority.
+
+There is no hint of revenge in his response.
+
+This is the meekness named back in verse three, shown in action.
+
+🙏 One of the shortest prayers in scripture
+
+🕊️ No revenge in Moses' response
+
+❤️ He prays for the sister who wronged him
+
+📖 Meekness from verse three, shown in action
 
 # Numbers 12:14-16
 # ⛺ Seven Days Outside The Camp
 ---
 ## 😳 If Her Father Had But Spit In Her Face
-Spitting in someone's face was a recognized act of public shaming in this culture — the same image shows up again later in Deuteronomy 25:9. Even an earthly father doing this would require seven days of shame afterward.
-God's point is a "how much more" comparison: if a father's spit brings seven days of shame, then a rebuke coming directly from God certainly deserves at least that much.
-😳 A recognized act of public shaming in this culture
-📜 The same image appears again later in Deuteronomy 25:9
-🔑 A "how much more" comparison — God's rebuke is far greater
----
+
+Spitting in someone's face was a public act of shame in this culture.
+
+The same image appears again later in Deuteronomy twenty five.
+
+Even an earthly father's spit brought real, lasting shame.
+
+That shame lasted a full seven days.
+
+😳 A real public shame custom
+
+📜 The same image appears in Deuteronomy twenty five
+
+⏳ Shame lasted seven full days
+
+📖 Even a father's spit carried weight
+
+## ⚖️ Should She Not Be Ashamed Seven Days
+
+God makes a how much more argument here.
+
+A father's spit brings seven days of shame.
+
+A rebuke coming directly from God deserves at least that much.
+
+This is a common pattern in scripture, arguing from the lesser case to the greater one.
+
+⚖️ A how much more argument
+
+😳 A father's spit brings real shame
+
+👑 God's rebuke deserves even more
+
+📖 Scripture often argues small to great
+
 ## 🚫 Shut Out From The Camp Seven Days
-This matches the same seven-day quarantine period already required for skin diseases under Leviticus 13-14's law. Even Moses' own sister isn't given a special exception.
-The punishment follows the exact same pattern anyone else with this condition would face, showing the law applies evenly, even to the family of Israel's own leader.
-🚫 Matches the same seven-day quarantine law from Leviticus 13-14
-⚖️ No special exception, even for Moses' own sister
-🔑 Shows the law applying evenly, without favoritism
----
+
+This matches the same seven day quarantine already required for skin disease.
+
+Leviticus thirteen and fourteen set out that same law for anyone else.
+
+Even Moses' own sister receives no special exception.
+
+The law applies evenly, even to the family of Israel's own leader.
+
+🚫 Matches the quarantine law in Leviticus
+
+⚖️ No special exception for Miriam
+
+👪 Applies evenly to the leader's own family
+
+📖 God's law does not play favorites
+
 ## ⏳ The People Journeyed Not Till Miriam Was Brought In Again
-This is a striking detail: the entire nation, well over a million people, waits in place for seven full days because of one woman's punishment.
-It shows that even after her sin, Miriam is still honored and valued. The camp doesn't leave her behind or move on without her.
-⏳ The whole nation waits seven days for just one person
-❤️ Shows Miriam is still valued, despite her sin
-🔑 The camp doesn't move on without her
----
-## 🗺️ Removed From Hazeroth, And Pitched In The Wilderness Of Paran
-This short travel note closes the chapter and sets up what comes next. The wilderness of Paran is exactly where the twelve spies are sent into Canaan in Numbers 13.
-A family conflict over authority resolves, and the story immediately moves forward into the next major test facing Israel.
-🗺️ Paran is where the spy mission begins in Numbers 13
-➡️ The story moves straight into the next major test
-🔑 A short travel note doing real narrative work
-`;
+
+Well over a million people wait in place for seven full days.
+
+They wait because of the judgment on one single woman.
+
+Miriam is still honored, even with her sin.
+
+The camp does not leave her behind or move on without her.
+
+⏳ A whole nation waits seven days
+
+👤 All because of one person's judgment
+
+❤️ Miriam is still valued, despite her sin
+
+📖 The camp will not move on without her
+
+## 🐪 Removed From Hazeroth
+
+Hazeroth was the camp where this whole conflict took place.
+
+The people now leave that place behind completely.
+
+This short travel note marks the end of one chapter of conflict.
+
+It sets up the very next stage of Israel's journey.
+
+🐪 Hazeroth was the site of this conflict
+
+🚶 The camp moves on from here
+
+📍 One chapter of conflict ends
+
+➡️ The next stage of the journey begins
+
+## 🗺️ Pitched In The Wilderness Of Paran
+
+Paran is exactly where the next major test begins.
+
+Numbers thirteen sends twelve spies into Canaan from this very spot.
+
+A family conflict over authority resolves here.
+
+The story immediately moves forward into a much bigger test for the whole nation.
+
+🗺️ Paran hosts the next major event
+
+🕵️ Numbers thirteen sends spies from here
+
+🏁 One family conflict comes to an end
+
+📖 A bigger test for Israel begins next
+`.trim();
 
 export const NUMBERS_TWELVE_PERSONAL_SECTIONS = parseNumbersTwelveRawNotes(NUMBERS_TWELVE_RAW_NOTES);
