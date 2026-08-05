@@ -10711,6 +10711,59 @@
           "at": "2026-08-05T20:58:30Z"
         }
       ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 33,
+      "startedAt": "2026-08-05T21:48:35Z",
+      "finishedAt": "2026-08-05T22:03:47Z",
+      "durationMinutes": 15,
+      "sections": 10,
+      "cards": 36,
+      "verses": 56,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Third chapter of normal forward progress since the style-redo backlog emptied -- no existing lib file for Numbers 33, wrote from scratch to docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (56 verses). Numbers 33 is the wilderness itinerary: a formal, God-commanded list of every campsite from Rameses in Egypt to the plains of Moab, opening with the Passover departure and the judgment on Egypt's gods, running through the well-known early stops (Succoth, the sea crossing, Marah, Elim, Rephidim, Sinai), then Kibrothhattaavah and Hazeroth (callbacks to the quail plague of Numbers 11 and Miriam's leprosy in Numbers 12), then a stretch of about nineteen otherwise unattested camp names (18-36) covering the 38 wasted years after Kadeshbarnea, Aaron's commanded death at Mount Hor in the fortieth year, a one-verse callback to king Arad's attack from Numbers 21, the final camps toward Moab (Punon near the fiery serpent story, the mountains of Abarim before Nebo where Moses will later die, Abelshittim where Numbers 25's Baalpeor sin will happen), and the closing legal instructions to drive out Canaan's inhabitants, destroy their pictures/molten images/high places, divide the land by lot, and the pricks-and-thorns warning. This is the most repetitive, list-heavy chapter tackled so far in Numbers, more so than the offering-quantity chapters (28, 29) or the census/tribute chapters (26, 31, 32): verses 18-36 alone are nineteen verses of near-identical 'and they removed from X and pitched at Y' formula with almost no other biblical attestation. Per spec section 12's explicit guidance against padding restated content, that block got 4 lean cards (the pattern itself and why it exists, one card on a name with a meaning worth noting (Shapher), one forward-pointing callback (Eziongaber becoming Solomon's port in 1 Kings 9), and the Kadesh full-circle moment) rather than one thin card per camp name. The chapter's closing legal section (50-56) is real teaching content, not a repetitive list, so it got fuller treatment (7 cards over 7 verses). Overall density about 0.64 cards/verse (56 verses, 36 cards), deliberately on the leaner end and explained here rather than padded, consistent with how Numbers 28/29/31/32 handled their own repetitive stretches. Every card title is an exact contiguous KJV phrase per spec section 2. `scripts/check_bible_note_style.py` found 1 problem on first pass (the banned hedge word 'quite', which is part of the KJV wording of verse 52's 'quite pluck down all their high places'); fixed by splitting that one card into two at the word boundary right after 'quite' (one card for 'Destroy All Their Pictures, And Destroy All Their Molten Images', a second for 'Pluck Down All Their High Places'), both still exact contiguous KJV substrings, second run clean (36 cards, no problems). A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key term or number in plain language, and closes on meaning rather than mechanics, with no hyphens, em dashes, semicolons, contractions, or banned filler/hedge words anywhere in the file, and no duplicate card titles among all 36. Parser check passed exactly via `getBibleReaderStudySections('numbers', 33)` (10/10 sections, 36 cards, 56 verses, text verbatim). `npx tsc --noEmit -p .` clean with zero errors. Wired into `lib/bibleReaderStudyNotes.ts`: new import, `preserveExactPhraseBodies` range for Numbers extended from `<= 32` to `<= 33`, and a new `replaceStudySectionsForBookRange(\"numbers\", 33, 33, NUMBERS_THIRTY_THREE_PERSONAL_SECTIONS)` call added after the Numbers 32 call. This run started on a detached HEAD (the recurring pattern noted in several prior entries) with a shallow clone that made local `main` and HEAD look diverged with no merge base; running `git fetch --unshallow origin` resolved it and showed origin/main already matched HEAD exactly (0 ahead/0 behind), so local `main` was checked out directly against origin/main with no work lost. Per CLAUDE.md's mandatory push-cadence policy, this run's commit is being held back rather than pushed immediately: both of today's (2026-08-05) scheduled batch pushes already went out (the 10:17 CEST and 18:25 CEST daily report pushes, both tagged [deploy]), so this commit will ride with the next scheduled report push rather than triggering a speculative extra Vercel build. Next chapter: Numbers 34.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-05T21:48:35Z"
+        },
+        {
+          "name": "target chapter determined: Numbers 33 (redo backlog empty, normal forward progress, no existing lib file)",
+          "at": "2026-08-05T21:48:35Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Numbers.json (chapter 33, 56 verses)",
+          "at": "2026-08-05T21:48:35Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (lib/numbersThirtyTwoSource.ts) read",
+          "at": "2026-08-05T21:48:35Z"
+        },
+        {
+          "name": "source file written (lib/numbersThirtyThreeSource.ts, 10 sections, 36 cards)",
+          "at": "2026-08-05T21:59:57Z"
+        },
+        {
+          "name": "style checker clean (1 problem found and fixed: banned hedge word 'quite' from KJV verse 52 wording, resolved by splitting one card in two at the word boundary)",
+          "at": "2026-08-05T21:59:57Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 33, replaceStudySectionsForBookRange call added)",
+          "at": "2026-08-05T22:03:06Z"
+        },
+        {
+          "name": "parser check passed (10 sections, 36 cards, 56 verses, text verbatim)",
+          "at": "2026-08-05T22:03:06Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-08-05T22:03:06Z"
+        },
+        {
+          "name": "progress files logged (BIBLE_BUDDY_NOTES_PROGRESS.md, bible-notes-progress-log.json)",
+          "at": "2026-08-05T22:03:47Z"
+        }
+      ]
     }
   ]
 }
