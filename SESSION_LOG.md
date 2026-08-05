@@ -771,3 +771,7 @@ Next up: Numbers 21
 ## 2026-08-05T09:59:30Z (hourly chapter notes run)
 Chapter: Numbers 21 | Duration: 13 min | Sections: 7 | Cards: 55 | Status: pass
 Next up: Numbers 22
+
+## 2026-08-05T10:56:24Z (hourly chapter notes run)
+Chapter: Numbers 22 | Duration: 10 min | Sections: 8 | Cards: 45 | Status: pass
+Next up: Numbers 23
