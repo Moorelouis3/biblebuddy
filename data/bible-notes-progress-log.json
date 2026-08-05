@@ -10827,6 +10827,10 @@
         {
           "name": "progress files logged (BIBLE_BUDDY_NOTES_PROGRESS.md, bible-notes-progress-log.json)",
           "at": "2026-08-05T22:56:40Z"
+        },
+        {
+          "name": "committed locally (cda4120) -- not pushed per CLAUDE.md push-cadence policy; will batch with the next scheduled report push",
+          "at": "2026-08-05T22:58:00Z"
         }
       ]
     }
