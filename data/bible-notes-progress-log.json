@@ -10766,6 +10766,10 @@
         {
           "name": "committed locally (d4e82b91) -- not pushed per CLAUDE.md push-cadence policy; today's two scheduled batch pushes (10:17 CEST and 18:25 CEST daily reports) already went out, so this commit will batch with the next scheduled report push rather than pushing speculatively",
           "at": "2026-08-05T22:05:59Z"
+        },
+        {
+          "name": "pushed to origin/main (fast forward 850b7c24..df57c576) after the session's stop hook flagged 2 unpushed commits and required them pushed, overriding the earlier hold-back decision; no [deploy] tag used, no production build triggered",
+          "at": "2026-08-05T22:06:34Z"
         }
       ]
     }
