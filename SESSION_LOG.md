@@ -811,3 +811,7 @@ Next up: Numbers 31
 ## 2026-08-05T20:00:30Z (hourly chapter notes run)
 Chapter: Numbers 31 | Duration: 14 min | Sections: 13 | Cards: 52 | Status: pass
 Next up: Numbers 32
+
+## 2026-08-05T20:56:28Z (hourly chapter notes run)
+Chapter: Numbers 32 | Duration: 10 min | Sections: 9 | Cards: 38 | Status: pass
+Next up: Numbers 33

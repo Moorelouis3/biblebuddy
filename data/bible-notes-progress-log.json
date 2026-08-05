@@ -10646,6 +10646,63 @@
           "at": "2026-08-05T20:02:21Z"
         }
       ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 32,
+      "startedAt": "2026-08-05T20:46:09Z",
+      "finishedAt": "2026-08-05T20:56:28Z",
+      "durationMinutes": 10,
+      "sections": 9,
+      "cards": 38,
+      "verses": 42,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Second chapter of normal forward progress since the style-redo backlog emptied -- no existing lib file for Numbers 32, wrote from scratch to docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Numbers 32 is Reuben and Gad's request to settle east of the Jordan after seeing Jazer and Gilead's good grazing land, Moses's sharp rebuke fearing a repeat of Kadeshbarnea's discouragement and the forty years of wandering it caused, their counter offer to build cities for their families and go armed ahead of Israel into the actual conquest, Moses turning their offer into a binding formal condition (\"be sure your sin will find you out\"), Gad and Reuben's full agreement, Moses handing the same terms down to his successors Eleazar and Joshua since he already knew he would not cross the Jordan himself, and the chapter's close on Manasseh's half tribe joining the deal and Machir, Jair, and Nobah each independently claiming and renaming towns after themselves in Gilead. Split 42 verses into 9 sections of 3-6 verses each. Density about 0.9 cards/verse. Every card title is an exact contiguous KJV phrase. scripts/check_bible_note_style.py found 1 problem on first pass (one bullet at 9 words instead of 3-8), fixed, second run clean (38 cards, no problems). A manual section 13 eye check confirmed all four opening moves used correctly, meaning-first closes, no hyphens/em dashes/semicolons/contractions/banned words, and no duplicate titles. Parser check passed exactly via getBibleReaderStudySections('numbers', 32) (9/9 sections, 38 cards, 42 verses, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: new import, preserveExactPhraseBodies range for Numbers extended from <= 31 to <= 32, and a new replaceStudySectionsForBookRange call added after Numbers 31. This was a NEW chapter, not a style redo, so data/bible-notes-style-redo-remaining.json was not touched (it was already empty). This run also found local HEAD detached again with 50 commits ahead of a stale local main ref (same recurring pattern as several prior runs); git fetch origin main confirmed real origin/main already matched HEAD exactly, so no data was at risk -- local main was pointed at HEAD and checked out before any chapter work began.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-05T20:46:30Z"
+        },
+        {
+          "name": "local repo state checked: HEAD was detached 50 commits ahead of stale local main ref; git fetch origin main confirmed real origin/main already matched HEAD exactly (0 ahead/0 behind, no data lost, just a stale cached tracking ref); local main pointed at HEAD via git switch -C main and checked out cleanly",
+          "at": "2026-08-05T20:47:00Z"
+        },
+        {
+          "name": "target chapter determined: Numbers 32 (redo backlog empty per data/bible-notes-style-redo-remaining.json, first uncovered chapter in canonical order, new chapter not a redo)",
+          "at": "2026-08-05T20:47:20Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Numbers.json (chapter 32, 42 verses)",
+          "at": "2026-08-05T20:47:47Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (lib/genesisThirtyOneSource.ts, lib/numbersThirtyOneSource.ts) read",
+          "at": "2026-08-05T20:50:00Z"
+        },
+        {
+          "name": "source file written (lib/numbersThirtyTwoSource.ts, 9 sections, 38 cards)",
+          "at": "2026-08-05T20:54:00Z"
+        },
+        {
+          "name": "style checker clean (1 problem found and fixed on first pass: one bullet at 9 words, trimmed to fit 3-8)",
+          "at": "2026-08-05T20:54:50Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 32, replaceStudySectionsForBookRange call added)",
+          "at": "2026-08-05T20:55:10Z"
+        },
+        {
+          "name": "parser check passed (9 sections, 38 cards, 42 verses, text verbatim)",
+          "at": "2026-08-05T20:55:30Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-08-05T20:55:55Z"
+        },
+        {
+          "name": "progress files logged (BIBLE_BUDDY_NOTES_PROGRESS.md, bible-notes-progress-log.json)",
+          "at": "2026-08-05T20:56:28Z"
+        }
+      ]
     }
   ]
 }
