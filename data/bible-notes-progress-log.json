@@ -10227,6 +10227,59 @@
           "at": "2026-08-05T13:03:18Z"
         }
       ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 25,
+      "startedAt": "2026-08-05T13:46:33Z",
+      "finishedAt": "2026-08-05T13:54:30Z",
+      "durationMinutes": 8,
+      "sections": 6,
+      "cards": 34,
+      "verses": 18,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter, regenerating the original pre-spec version (6 sections / 25 cards, three bullets per card, hyphens throughout) from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Numbers 25 covers Israel joining themselves to Baalpeor with the Moabite women at Shittim, the LORD's command to execute the guilty leaders publicly, Phinehas killing Zimri (a Simeonite prince) and Cozbi (a Midianite prince's daughter) in the act and stopping the plague that had already killed 24,000, God's covenant of peace and everlasting priesthood given to Phinehas for his zeal (with the atonement-language pairing of a violent act with a priestly term), both guilty parties finally named and identified by their prominent families, and the closing command to target Midian specifically since Numbers 31:16 later reveals Balaam himself suggested the seduction plan. Kept the original file's 6 section boundaries for verse-coverage continuity while rewriting every card and title from scratch to exact KJV phrase titles per spec section 2, following lib/genesisThirtyOneSource.ts as the structural reference. Density about 1.9 cards/verse (18 verses, 34 cards). scripts/check_bible_note_style.py found 1 problem on first pass (one bullet over the 8 word limit), fixed, second run clean. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key term in plain language, and closes on meaning rather than mechanics, with no hyphens, em dashes, semicolons, contractions, or banned filler/hedge words anywhere in the file, and no duplicate card titles. Parser check passed exactly via getBibleReaderStudySections('numbers', 25) (6/6 sections, 34 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range covering Numbers 1-30, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (NumbersTwentyFivePersonalSection, parseNumbersTwentyFiveRawNotes, NUMBERS_TWENTY_FIVE_RAW_NOTES, NUMBERS_TWENTY_FIVE_PERSONAL_SECTIONS) were kept exactly as before. This run also found local main in a detached-HEAD state pointing at a stale commit again (same recurring issue noted in the Numbers 20/22/23/24 entries); git fetch confirmed origin/main already matched the detached HEAD exactly (no divergence, no work lost), and git checkout -B main origin/main restored a proper tracking branch before committing. Redo backlog entry popped; next redo target is Numbers 26. Per CLAUDE.md's push-cadence policy (added 2026-08-04 specifically to stop per-chapter pushes from each triggering a Vercel production build), this chapter's commit is being held back and will go out with the next scheduled batch push (morning/night report or explicit request from Louis), not pushed immediately.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-05T13:46:33Z"
+        },
+        {
+          "name": "target chapter determined: Numbers 25 (style redo, first in remaining backlog)",
+          "at": "2026-08-05T13:46:33Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Numbers.json",
+          "at": "2026-08-05T13:47:29Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (lib/genesisThirtyOneSource.ts) read",
+          "at": "2026-08-05T13:47:29Z"
+        },
+        {
+          "name": "source file written (lib/numbersTwentyFiveSource.ts overwritten, 6 sections, 34 cards)",
+          "at": "2026-08-05T13:51:00Z"
+        },
+        {
+          "name": "style checker clean (1 problem fixed on first pass, second run clean)",
+          "at": "2026-08-05T13:51:31Z"
+        },
+        {
+          "name": "wiring confirmed (already correct for redo chapter, no changes needed)",
+          "at": "2026-08-05T13:51:31Z"
+        },
+        {
+          "name": "parser check passed (6/6 sections, 34 cards, text verbatim)",
+          "at": "2026-08-05T13:52:20Z"
+        },
+        {
+          "name": "tsc clean (npx tsc --noEmit -p .)",
+          "at": "2026-08-05T13:52:54Z"
+        },
+        {
+          "name": "detached HEAD recovered: local main was stale, restored via git checkout -B main origin/main after confirming no divergence",
+          "at": "2026-08-05T13:53:45Z"
+        }
+      ]
     }
   ]
 }

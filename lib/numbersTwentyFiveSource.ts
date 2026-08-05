@@ -92,261 +92,696 @@ const NUMBERS_TWENTY_FIVE_RAW_NOTES = `# Numbers 25:1-3
 # 🐂 Israel Joins Baalpeor
 ---
 ## 🏕️ Israel Abode In Shittim
-Shittim was Israel's last camp before crossing the Jordan into Canaan, on the plains east of the river across from Jericho. The name means "acacia trees," the same tough desert wood used to build the tabernacle and the ark.
 
-This is the exact spot where Balaam had just failed three times to curse Israel in the last three chapters. What his oracles couldn't do from the outside, this chapter shows happening from the inside instead.
+"Abode" means the people were staying in one place, not passing through.
 
-🏕️ Shittim was Israel's final camp before entering Canaan
-🌳 The name means "acacia trees," the wood used in the tabernacle
-🔑 Right after Balaam's blessings fail, a different kind of attack begins
+Shittim sat on the plains of Moab, just across the Jordan from Jericho.
 
+This was Israel's last camp before entering the promised land.
+
+Balaam had just failed three times to curse Israel from this same region.
+
+What his curses could not do from outside, this chapter shows happening from within.
+
+🏕️ Abode means they stayed in place
+
+🗺️ Shittim sat near Jericho and the Jordan
+
+🔮 Balaam had just failed to curse them here
+
+📖 The threat now comes from inside the camp
+---
 ## 💔 Began To Commit Whoredom With The Daughters Of Moab
-This starts as literal sexual sin between Israelite men and Moabite women, but the Bible often uses this same word for spiritual unfaithfulness to God, and both meanings apply here at once.
 
-Numbers 31:16 later reveals this wasn't random — Balaam himself advised Balak to use Moabite and Midianite women to lure Israel into sin, since cursing them directly had failed.
+This does not mean a single isolated incident.
 
-💔 Literal sexual sin, but also a picture of unfaithfulness to God
-🎯 Numbers 31:16 later reveals this was Balaam's own plan
-🔑 What cursing couldn't do, seduction almost did
+"Whoredom" describes ongoing sexual sin that spread through the camp.
 
+The Bible often uses this same word for spiritual unfaithfulness to God.
+
+Both meanings are true here at the same time.
+
+Numbers thirty one later reveals Balaam himself suggested this exact plan to Balak.
+
+What cursing could not accomplish, seduction almost did.
+
+💔 Whoredom means ongoing sin, not one moment
+
+🪞 The word also pictures unfaithfulness to God
+
+🎯 Numbers thirty one names this as Balaam's plan
+
+📖 Seduction succeeded where cursing had failed
+---
 ## 🍽️ Called The People Unto The Sacrifices Of Their Gods
-The Moabite women didn't just tempt Israel sexually — they invited Israelite men to religious feasts built around Baal worship, meals eaten as part of pagan sacrifice rituals.
 
-🍽️ These were pagan religious feasts, not just ordinary meals
-🙏 Sexual sin and idol worship arrive together, not separately
-🔑 One invitation led straight into breaking the first commandment
+"Sacrifices" here means ritual meals offered to a foreign god.
 
+The Moabite women invited Israelite men to join these meals.
+
+Eating this kind of meal was itself an act of worship.
+
+The invitation was religious, not just social.
+
+Sin opened the door, but idolatry is what walked through it.
+
+🍽️ Sacrifices means meals offered in worship
+
+👋 Moabite women issued the invitation
+
+🙏 Eating the meal counted as worship
+
+📖 Sin led straight into idolatry
+---
 ## 🙇 Did Eat, And Bowed Down To Their Gods
-Eating meat offered to a false god and then physically bowing down to it was a complete act of worship, not an accident or a misunderstanding. Israelite men fully participated.
 
-🙇 Eating the sacrifice and bowing down were both acts of worship
-🚫 Direct violation of the very first of the Ten Commandments
-🔑 Not a slip — a real, physical act of worshiping another god
+Israelite men did not stumble into this by accident.
 
+Eating the sacrifice and bowing down were two separate acts.
+
+Both together formed a complete act of worship to a false god.
+
+This directly broke the first of the Ten Commandments.
+
+Nothing about it was hidden or confused.
+
+🍽️ Eating and bowing were both worship
+
+🚫 This broke the first commandment directly
+
+👥 Many Israelite men took part openly
+
+📖 The sin was clear, not accidental
+---
 ## ⚡ Israel Joined Himself Unto Baalpeor
-Baalpeor means "Baal of Peor," a local version of the Canaanite storm-and-fertility god Baal, worshiped at Mount Peor. "Joined himself" is covenant language, the same kind of word used for marriage — Israel is pictured as binding itself to this false god.
 
-⚡ Baalpeor was a local Baal god tied to the region of Peor
-💍 "Joined himself" uses marriage-covenant language
-🔑 A covenant people binding themselves to the wrong god
+"Baalpeor" means the god Baal as worshiped at the region of Peor.
 
+"Joined himself" is the same kind of language used for marriage.
+
+Israel is pictured here as binding itself to this false god.
+
+A people already bound to the LORD by covenant now bind themselves elsewhere.
+
+That divided loyalty is exactly what breaks the relationship.
+
+⚡ Baalpeor was Baal worshiped near Peor
+
+💍 Joined himself uses marriage covenant language
+
+🔗 Israel bound itself to a false god
+
+📖 Divided loyalty breaks a covenant
+---
 ## 🔥 The Anger Of The LORD Was Kindled Against Israel
-This sets up everything that follows in the chapter. God's anger here isn't a random outburst — it's the response of a covenant partner watching the people He rescued from Egypt hand themselves over to another god at the finish line before Canaan.
 
-🔥 God's anger responds to a broken covenant, not a random mood
-🚪 This happens right before Israel is set to enter the Promised Land
-🔑 Sets up the plague and everything else in this chapter
+God's anger here is not a random outburst.
 
+It is the response of a covenant partner watching His people turn away.
+
+This happens right before Israel is set to enter the promised land.
+
+"Kindled" pictures a fire being lit, not a sudden mood that quickly fades.
+
+This anger sets up everything that follows in the rest of the chapter.
+
+🔥 Kindled pictures a fire being lit
+
+💔 This is covenant anger, not a mood
+
+🚪 It happens right before entering Canaan
+
+📖 It sets up the rest of the chapter
 # Numbers 25:4-5
 # ⚖️ The Judges Are Ordered To Act
 ---
 ## 👑 Take All The Heads Of The People
-"Heads" here means the leaders and chiefs of Israel, the ones responsible for letting this happen under their watch — not a command to kill everyone in the whole nation.
 
-👑 "Heads" means the tribal leaders, not the whole population
-🧭 These are the ones responsible for guarding the people
-🔑 Leadership failure gets addressed at the leadership level first
+"Heads" here means the leaders and chiefs of Israel.
 
+This is not a command to punish the whole nation.
+
+These leaders were responsible for what happened under their watch.
+
+God addresses the failure at the leadership level first.
+
+Guilt starts with the people who were supposed to guard against it.
+
+👑 Heads means Israel's tribal leaders
+
+🧭 Not a command against the whole nation
+
+🛡️ Leaders were responsible for guarding the camp
+
+📖 Guilt starts at the leadership level
+---
 ## ☀️ Hang Them Up Before The LORD Against The Sun
-This means a public execution followed by public display of the bodies in open daylight — a serious ancient Near Eastern practice meant to visibly turn back a nation's guilt in the eyes of both God and the watching community.
 
-☀️ A public execution and display, not a private punishment
-👁️ Meant to be seen clearly by the whole community
-🔑 Public sin gets a public response
+This describes a public execution followed by public display of the bodies.
 
+It happened in open daylight, not hidden away.
+
+Ancient Near Eastern justice often used this to make guilt visible to everyone.
+
+The display was meant to be seen by the whole community.
+
+Public sin was answered with a public response.
+
+☀️ Against the sun means in open daylight
+
+👁️ The bodies were displayed publicly
+
+🏛️ This was ancient public justice
+
+📖 Public sin got a public response
+---
 ## 🌡️ That The Fierce Anger Of The LORD May Be Turned Away
-Executing the guilty leaders is presented as the way to stop the LORD's anger from spreading further across the whole camp — dealing directly with the source of the sin to protect everyone else.
 
-🌡️ Removing the guilty parties is meant to stop the anger from spreading
-🛡️ A protective move for the rest of the nation
-🔑 Justice here is also about limiting the damage
+Removing the guilty leaders is presented as the way to stop the anger from spreading.
 
+This is not only about punishing wrongdoing.
+
+It is also about protecting everyone else still in the camp.
+
+Leaving the sin unanswered would have put the whole nation at risk.
+
+Justice here doubles as protection for the community.
+
+🌡️ Removing guilt was meant to stop the anger
+
+🛡️ This protected the rest of the nation
+
+⚖️ Justice and protection worked together here
+
+📖 Unanswered sin would have spread further
+---
 ## 🗣️ Moses Said Unto The Judges Of Israel
-These are the same judges set up back in Exodus 18 and Numbers 11 — leaders appointed over groups of a thousand, a hundred, fifty, and ten, so Moses wouldn't have to handle every case alone.
 
-🗣️ These are the judges from the system set up in Exodus 18
-📋 Leaders over groups of a thousand down to ten
-🔑 Moses delegates instead of trying to act alone
+"The judges" refers to leaders Moses appointed back in Exodus eighteen.
 
+They were set over groups of a thousand, a hundred, fifty, and ten.
+
+This system let Moses delegate instead of judging every case himself.
+
+He calls on that same structure now, in a moment of crisis.
+
+The chain of leadership built earlier is what handles this emergency.
+
+🗣️ Judges were leaders from Exodus eighteen
+
+📋 They oversaw groups from a thousand to ten
+
+🤝 Moses delegated instead of acting alone
+
+📖 An earlier system now handles a crisis
+---
 ## ⚔️ Slay Ye Every One His Men That Were Joined Unto Baalpeor
-The order is decentralized on purpose — each judge is responsible for dealing with the guilty men from their own group, rather than one person trying to judge the whole nation at once.
 
-⚔️ Each judge handles the guilty men from his own group
-🧩 A decentralized response instead of one central trial
-🔑 Shared responsibility across all of Israel's leadership
+This order is spread across many leaders, not centralized in one person.
 
+Each judge is responsible only for the guilty men in his own group.
+
+No single person has to judge the whole nation alone.
+
+Responsibility for this crisis is shared across all of Israel's leadership.
+
+The structure keeps the response organized instead of chaotic.
+
+⚔️ Each judge handles his own group
+
+🧩 Responsibility is shared, not centralized
+
+👥 All of Israel's leadership takes part
+
+📖 Shared responsibility keeps justice organized
 # Numbers 25:6-9
 # 🗡️ Phinehas Stops The Plague
 ---
-## 😱 One Of The Children Of Israel... Brought Unto His Brethren A Midianitish Woman
-This man doesn't sin quietly — he brings a Midianite woman openly among his own people, in plain view, while judgment is already underway. It's a shocking act of defiance, not a hidden affair.
+## 😱 Brought Unto His Brethren A Midianitish Woman
 
-😱 An open, public act, not a secret sin
-🌍 A Midianite woman now, showing the problem reaches beyond Moab
-🔑 Defiance in the middle of a national crisis
+This man does not sin quietly.
 
+He brings a Midianite woman openly among his own people.
+
+This happens while judgment for the same sin is already underway.
+
+It is a bold act of defiance, not a hidden affair.
+
+The timing makes the act even more shocking.
+
+😱 An open act, not a secret one
+
+🌍 A Midianite woman, showing Moab was not alone
+
+🔥 Judgment was already underway when this happened
+
+📖 Defiance in the middle of a crisis
+---
 ## 👀 In The Sight Of Moses, And In The Sight Of All The Congregation
-The text repeats "in the sight of" to hammer home just how public this was — done directly in front of Moses and the entire assembled nation, not hidden from anyone.
 
-👀 Repeated twice for emphasis: everyone saw it happen
-🎭 Total disregard for both Moses and the whole community
-🔑 The boldness of the act is the point being made
+Repeating "in the sight of" twice stresses just how public this was.
 
+It happened directly in front of Moses.
+
+It also happened in front of the entire assembled nation.
+
+Nothing about this act was hidden from anyone.
+
+The boldness of the act is the point being made.
+
+👀 Repetition stresses total visibility
+
+🎭 Done in front of Moses himself
+
+🏛️ Done in front of the whole nation
+
+📖 Boldness itself was the message
+---
 ## 😢 Weeping Before The Door Of The Tabernacle Of The Congregation
-While this act of defiance is happening, the rest of Israel is gathered at the tabernacle entrance, mourning and pleading with God over the plague and the sin in the camp — the sharpest possible contrast.
 
-😢 The nation is mourning at the very same moment
-🏛️ Gathered specifically at the tabernacle's entrance
-🔑 One man's defiance right next to everyone else's grief
+This detail is not filler.
 
+While one man defies God openly, the rest of Israel is mourning.
+
+They are gathered specifically at the entrance to the tabernacle.
+
+They are pleading with God over the plague and the sin in the camp.
+
+One man's defiance sits right next to everyone else's grief.
+
+😢 The nation mourns at the same moment
+
+🏛️ They gather at the tabernacle entrance
+
+🙏 They plead with God over the plague
+
+📖 Defiance and grief sit side by side
+---
 ## 👨‍👦 Phinehas, The Son Of Eleazar, The Son Of Aaron The Priest
-This genealogy matters. Phinehas is Aaron's grandson through Eleazar — third in the priestly line — which is exactly why what he does next connects directly to a promise about the priesthood.
 
-👨‍👦 Aaron, then Eleazar, then Phinehas — three generations of priests
-📜 His family line explains the covenant given to him later in the chapter
-🔑 Priesthood and this specific act are linked from the start
+This genealogy places Phinehas three generations into the priestly line.
 
-## 🏃 He Rose Up... And Took A Javelin In His Hand
-Phinehas acts on his own initiative here — Moses hadn't given this specific order. His response is sudden and personal, not a command he was following in the moment.
+Aaron was his grandfather, and Eleazar was his father.
 
-🏃 A spontaneous action, not a direct order from Moses
-🔱 A javelin, a short throwing spear, not a ceremonial object
-🔑 Personal zeal driving an immediate decision
+This detail is not just background information.
 
+It explains why what happens next connects to a promise later in the chapter.
+
+His family line and his action are linked from the very start.
+
+👨‍👦 Three generations of priests are named
+
+📜 Aaron, then Eleazar, then Phinehas
+
+🔗 His line connects to a later promise
+
+📖 Priesthood and action are linked here
+---
+## 🔱 Took A Javelin In His Hand
+
+A javelin was a short throwing spear, a real weapon.
+
+Phinehas acts here on his own initiative.
+
+Moses had not given this specific order in the moment.
+
+His response is sudden and personal, not a command he was following.
+
+Personal zeal is driving an immediate decision.
+
+🔱 A javelin was a real throwing spear
+
+🏃 No direct order came from Moses
+
+⚡ The response was sudden and personal
+
+📖 Zeal drove an immediate decision
+---
 ## ⛺ He Went After The Man Of Israel Into The Tent
-"The tent" likely refers to a private tent where the couple had gone, possibly close to the tabernacle area itself given how publicly this whole scene played out.
 
-⛺ A private tent, separate from the public tabernacle courtyard
-🚶 Phinehas pursues them rather than confronting them where they stood
-🔑 The act itself was hidden, even though the offense was not
+"The tent" likely means a private tent, not the tabernacle courtyard.
 
-## 💥 Thrust Both Of Them Through... The Woman Through Her Belly
-This graphic detail isn't included for shock value alone — striking through the woman's body specifically ties the punishment directly to the act of sin itself, a detail ancient readers would have understood clearly.
+The couple had gone there, possibly near the tabernacle area itself.
 
-💥 A specific, graphic detail rather than a vague description
-🎯 Directly tied to the nature of the sin committed
-🔑 Swift, decisive justice carried out in a single motion
+Phinehas pursues them rather than confronting them in the open crowd.
 
+The act itself happened out of sight, even though the offense had not.
+
+He chooses to follow rather than to wait.
+
+⛺ The tent was likely a private space
+
+🚶 Phinehas pursued rather than waited
+
+🙈 The act was hidden, the offense was not
+
+📖 He chose to follow, not to wait
+---
+## 💥 The Woman Through Her Belly
+
+This graphic detail is not included for shock value alone.
+
+Striking through the woman's body ties the punishment to the sin itself.
+
+Ancient readers would have understood that connection clearly.
+
+The act is swift and decisive, carried out in a single motion.
+
+Nothing about the punishment is vague or symbolic only.
+
+💥 A specific detail, not a vague description
+
+🎯 Tied directly to the nature of the sin
+
+⚡ Carried out in one swift motion
+
+📖 Decisive justice, not delayed punishment
+---
 ## 🛑 So The Plague Was Stayed From The Children Of Israel
-The plague here is a direct act of God's judgment, likely a sudden and deadly illness spreading through the camp. Phinehas's action is what stops it from continuing to spread.
 
-🛑 A divine plague, not a natural illness alone
-✋ One decisive act stops it from spreading further
-🔑 The connection between sin and consequence is made explicit
+"Stayed" means stopped, not merely slowed down.
 
+The plague itself was a direct act of God's judgment on the camp.
+
+It was likely a sudden and deadly illness spreading through the people.
+
+Phinehas's action is what stops it from spreading any further.
+
+One decisive act ends a judgment that was already killing people.
+
+🛑 Stayed means stopped, not slowed
+
+⚡ The plague was a divine judgment
+
+✋ One act stopped it from spreading
+
+📖 Sin and consequence are linked directly
+---
 ## 🔢 Those That Died In The Plague Were Twenty And Four Thousand
-This is one of the largest single death tolls recorded in the book of Numbers — for comparison, about 3,000 died after the golden calf incident back in Exodus 32:28. The scale shows how seriously God treated this specific sin.
 
-🔢 24,000 dead — far more than the golden calf's 3,000
-📖 1 Corinthians 10:8 later references this event as a warning
-🔑 One of the most severe single judgments in the whole book
+Twenty four thousand is one of the largest death tolls in the book of Numbers.
 
+About three thousand people died after the golden calf in Exodus thirty two.
+
+This plague killed far more than that earlier judgment.
+
+The scale shows how seriously God treated this specific sin.
+
+First Corinthians later points back to this event as a warning.
+
+🔢 Twenty four thousand died in this plague
+
+📉 Far more than the golden calf's toll
+
+⚠️ The scale shows how serious this sin was
+
+📖 First Corinthians uses this as a warning
 # Numbers 25:10-13
 # 🕊️ The Covenant Of Peace
 ---
-## 🙌 Phinehas... Hath Turned My Wrath Away
-God speaks directly here, personally approving what Phinehas did. This is important — it turns what could look like uncontrolled violence into an action God Himself calls right and necessary.
+## 🙌 Hath Turned My Wrath Away From The Children Of Israel
 
-🙌 God personally credits Phinehas with stopping His wrath
-✅ Divine approval, not just human praise
-🔑 Confirms the act was justice, not vigilante violence
+God speaks directly here, personally crediting what Phinehas did.
 
-## 🔥 Zealous For My Sake Among Them
-"Zealous" describes an intense, protective devotion to God's honor — the same root word used for God's own "jealousy" later in this same verse. Phinehas cared about God's reputation more than his own safety.
+This is not a human guess about what pleased God.
 
-🔥 "Zealous" means an intense devotion to God's honor
-🪞 Uses the same root word as God's own jealousy
-🔑 Protecting God's name mattered more to him than personal risk
+It turns what could look like uncontrolled violence into something God calls right.
 
+God Himself confirms that the wrath has actually stopped.
+
+Divine approval settles any doubt about the act.
+
+🙌 God personally credits Phinehas here
+
+✅ This is divine approval, not a guess
+
+🛡️ It confirms the act was justice
+
+📖 God settles any doubt Himself
+---
+## 🔥 He Was Zealous For My Sake Among Them
+
+"Zealous" describes an intense, protective devotion to God's honor.
+
+The same root word describes God's own jealousy later in this same verse.
+
+Phinehas cared about God's reputation more than his own safety.
+
+This word choice links Phinehas's heart directly to God's own character.
+
+Protecting God's name mattered more to him than the risk he took.
+
+🔥 Zealous means intense devotion to God
+
+🪞 The same word describes God's jealousy
+
+🛡️ God's honor mattered more than safety
+
+📖 His heart mirrors God's own character
+---
 ## 💛 That I Consumed Not The Children Of Israel In My Jealousy
-God describes His own jealousy here — the same word used in Exodus 20:5 calling Him "a jealous God." This isn't insecurity; it's the reaction of a covenant partner refusing to share loyalty with a false god.
 
-💛 God's "jealousy" echoes Exodus 20:5's Ten Commandments language
-💍 Covenant jealousy, not petty human jealousy
-🔑 God's holiness makes divided loyalty impossible to ignore
+This jealousy does not mean insecurity.
 
+The same word describes God in Exodus twenty, calling Him a jealous God.
+
+It describes a covenant partner refusing to share loyalty with a false god.
+
+God's holiness makes divided loyalty something He cannot ignore.
+
+This jealousy is what nearly consumed the whole nation.
+
+💛 Jealousy here is not insecurity
+
+📜 Exodus twenty uses this same word
+
+💍 It is covenant loyalty, not pettiness
+
+📖 Divided loyalty cannot be ignored
+---
 ## 📜 I Give Unto Him My Covenant Of Peace
-This is a specific, named covenant — "peace" here means shalom, wholeness and right standing with God — given personally to Phinehas, distinct from the general priesthood already given to Aaron's family.
 
-📜 A specific covenant, not just a general blessing
-☮️ "Peace" here means shalom — wholeness, not just an absence of conflict
-🔑 A personal reward on top of the priesthood he already had
+"Peace" here translates the Hebrew word shalom.
 
+It means wholeness and right standing, not just the absence of conflict.
+
+This is a specific, named covenant given personally to Phinehas.
+
+It stands apart from the general priesthood already given to Aaron's family.
+
+A personal reward is added on top of what he already had.
+
+📜 A specific covenant, not a vague blessing
+
+☮️ Peace means shalom, real wholeness
+
+👑 Distinct from the general priesthood
+
+📖 A personal reward on top of his role
+---
 ## ♾️ His Seed After Him, Even The Covenant Of An Everlasting Priesthood
-This promise extends to Phinehas's descendants permanently. Zadok, the high priest during Solomon's reign, actually traces his line back to Phinehas — this promise plays out for centuries.
 
-♾️ A permanent promise, passed down through his descendants
-👑 Zadok, Solomon's high priest, later descends from this line
-🔑 One act of zeal shapes the priesthood for generations
+This promise reaches far beyond Phinehas himself.
 
-## ⚖️ Because He Was Zealous For His God, And Made An Atonement
-Calling Phinehas's action an "atonement" is unusual — that word normally describes a priest's ritual sacrifice, not a violent act. Here, his zeal itself is described as accomplishing what a sacrifice usually does: turning away God's wrath.
+It extends permanently to his descendants after him.
 
-⚖️ "Atonement" usually describes a ritual sacrifice, not an action like this
-🩸 His zeal functioned the way a sacrifice normally would
-🔑 An unusual pairing of violence and priestly atonement language
+Zadok, the high priest during Solomon's reign, later traces his line back to Phinehas.
 
+One act of zeal ends up shaping the priesthood for centuries.
+
+A single moment in this chapter echoes for generations.
+
+♾️ The promise passes to his descendants
+
+👑 Zadok later descends from this line
+
+🏛️ It shapes the priesthood for centuries
+
+📖 One moment echoes for generations
+---
+## ⚖️ He Was Zealous For His God, And Made An Atonement
+
+"Atonement" does not normally describe an act of violence.
+
+The word usually names a priest's ritual sacrifice instead.
+
+Here, Phinehas's zeal is described as accomplishing what a sacrifice usually does.
+
+It turns away God's wrath the same way a sacrifice would.
+
+This is an unusual pairing of action and priestly language.
+
+⚖️ Atonement usually names a ritual sacrifice
+
+🩸 His zeal functioned the same way
+
+🔥 It turned away God's wrath
+
+📖 An unusual pairing of action and ritual
 # Numbers 25:14-15
 # 📛 The Names Behind The Story
 ---
-## 🏷️ Zimri, The Son Of Salu
-The text finally names the Israelite man from verse 6, and it isn't a nobody — naming him this clearly, along with his father, marks him as someone whose identity mattered to the story, not an anonymous sinner.
+## 🏷️ Was Zimri, The Son Of Salu
 
-🏷️ Naming him marks this as a real, remembered event
-👤 Identified by his father Salu as well
-🔑 The Bible doesn't let this stay anonymous
+The text finally names the man from verse six.
 
+He is not left as a nameless sinner.
+
+Naming him, along with his father Salu, marks him as someone remembered.
+
+The Bible does not let this stay anonymous.
+
+A name attached to the story makes the account harder to dismiss.
+
+🏷️ The man is finally named here
+
+👤 His father Salu is named too
+
+📜 This marks a real remembered event
+
+📖 The Bible refuses to leave him anonymous
+---
 ## 👑 A Prince Of A Chief House Among The Simeonites
-Zimri wasn't a random Israelite — he was a leader, a "nasi," from a chief family in the tribe of Simeon, the same kind of tribal-prince title listed back in Numbers 1:16. A leader participating in this sin makes it far worse.
 
-👑 "Prince" was a formal tribal-leader title, listed in Numbers 1:16
-📉 Numbers 26's later census shows Simeon's tribe shrinks sharply after this
-🔑 Leadership involved in the sin, not just ordinary people
+"Prince" here was a formal title for a tribal leader.
 
-## 🏷️ Cozbi, The Daughter Of Zur
-The Midianite woman is also named and identified by her father, matching the same level of detail given to Zimri — this wasn't a random encounter between strangers, but between two people from prominent families on both sides.
+The same title appears for tribal leaders back in Numbers one.
 
-🏷️ Named just as specifically as Zimri
-👨‍👧 Identified through her father Zur
-🔑 High status on both sides of this event
+Zimri was not a random Israelite but a leader in the tribe of Simeon.
 
+A leader taking part in this sin makes the offense far worse.
+
+Numbers twenty six later shows Simeon's tribe shrinking sharply after this event.
+
+👑 Prince was a formal tribal title
+
+📋 The same title appears in Numbers one
+
+📉 Simeon's tribe shrinks in the next census
+
+📖 A leader's sin made this worse
+---
+## 🏷️ Was Cozbi, The Daughter Of Zur
+
+The Midianite woman is named just as specifically as Zimri.
+
+She is identified through her father, Zur.
+
+This was not a random encounter between two strangers.
+
+Both people involved came from prominent families on their own sides.
+
+Naming both of them shows how high this reached.
+
+🏷️ Cozbi is named just as specifically
+
+👨‍👧 She is identified through her father Zur
+
+👑 Both families held real status
+
+📖 This reached into leadership on both sides
+---
 ## 👑 He Was Head Over A People, And Of A Chief House In Midian
-Zur was a ranking Midianite leader, not just an ordinary family head. Numbers 31:8 later lists a king named Zur among five Midianite kings killed when Israel goes to war against Midian for this very incident.
 
-👑 Zur held real leadership rank among the Midianites
-⚔️ A king named Zur is later killed in Numbers 31:8
-🔑 This event reaches all the way to Midian's royal leadership
+Zur was a ranking Midianite leader, not just an ordinary family head.
 
+Numbers thirty one later lists a king named Zur among Midian's rulers.
+
+That king is killed when Israel goes to war over this very incident.
+
+This event reaches all the way up to Midian's royal leadership.
+
+What looked like one couple's sin involved rulers on both sides.
+
+👑 Zur held real rank in Midian
+
+⚔️ A king named Zur dies later on
+
+🌍 The war traces back to this event
+
+📖 Royal leadership was involved on both sides
 # Numbers 25:16-18
 # ⚔️ The Command Against Midian
 ---
 ## 🎯 Vex The Midianites, And Smite Them
-The target shifts specifically to Midian here, even though Moab was involved earlier in the chapter too. This command sets up the full military campaign against Midian that plays out later in Numbers 31.
 
-🎯 The focus narrows specifically onto Midian
-📖 Sets up the war against Midian described in Numbers 31
-🔑 Moab started it, but Midian gets named for the coming judgment
+The target shifts specifically to Midian here.
 
+Moab was the nation involved at the start of this chapter.
+
+This command sets up the full military campaign against Midian in Numbers thirty one.
+
+Midian is named for the coming judgment, not Moab.
+
+The story is not finished when this chapter ends.
+
+🎯 The focus narrows onto Midian here
+
+📖 Numbers thirty one carries out this command
+
+🔀 Moab started it, Midian is judged
+
+➡️ This chapter sets up a later war
+---
 ## 🕸️ For They Vex You With Their Wiles
-"Wiles" means deliberate, cunning schemes — not an accident or a misunderstanding, but a planned strategy. Numbers 31:16 later confirms this plan actually came from Balaam's own advice to Balak.
 
-🕸️ "Wiles" means a deliberate, cunning scheme
-🎯 Numbers 31:16 later confirms Balaam suggested this exact plan
-🔑 What looked like temptation was really a calculated attack
+"Wiles" means a deliberate, cunning scheme.
 
-## 😔 Wherewith They Have Beguiled You In The Matter Of Peor
-"Beguiled" means deceived or led astray. This phrase ties the whole chapter's events directly back to the place name Peor and the god Baalpeor introduced at the very start of the chapter.
+This was not a misunderstanding or an accident.
 
-😔 "Beguiled" means deceived or led astray
-🔗 Connects directly back to Baalpeor from verse 3
-🔑 The chapter closes by naming exactly what happened and why
+Numbers thirty one later confirms this plan came from Balaam's own advice to Balak.
 
+What looked like temptation was really a calculated attack.
+
+The seduction in this chapter had a strategist behind it.
+
+🕸️ Wiles means a deliberate scheme
+
+🎯 Numbers thirty one names Balaam's advice
+
+🧠 This was calculated, not accidental
+
+📖 A strategist stood behind the temptation
+---
+## 😔 Beguiled You In The Matter Of Peor
+
+"Beguiled" means deceived or led astray.
+
+This phrase ties the whole chapter back to the place named Peor.
+
+It also ties back to the god Baalpeor introduced at the start of the chapter.
+
+The chapter closes by naming exactly what happened and why.
+
+Nothing about the ending is left vague.
+
+😔 Beguiled means deceived or led astray
+
+🔗 This connects back to Peor and Baalpeor
+
+📜 The chapter closes by naming the cause
+
+📖 Nothing here is left unexplained
+---
 ## 👪 The Daughter Of A Prince Of Midian, Their Sister
-Calling Cozbi "their sister" stresses how deeply this scheme reached into Midian's own leadership — this wasn't a plan carried out by outsiders, but something connected to Midian's ruling families themselves.
 
-👪 "Their sister" stresses her close tie to Midian's leadership
-🏛️ Shows the plan reached into Midian's ruling families directly
-🔑 Confirms just how deliberate and high-level this scheme really was
-`;
+Calling Cozbi their sister stresses how deeply this reached into Midian's leadership.
+
+This was not carried out by outsiders with no standing.
+
+It was connected to Midian's ruling families themselves.
+
+The final verse confirms just how deliberate this scheme really was.
+
+The chapter ends by tying the sin directly to the people who planned it.
+
+👪 Their sister ties her to Midian's rulers
+
+🏛️ Midian's own leadership was involved
+
+🎯 This confirms the scheme was deliberate
+
+📖 The plan is tied to its planners
+`.trim();
 
 export const NUMBERS_TWENTY_FIVE_PERSONAL_SECTIONS = parseNumbersTwentyFiveRawNotes(NUMBERS_TWENTY_FIVE_RAW_NOTES);
