@@ -9788,6 +9788,59 @@
           "at": "2026-08-05T04:57:34Z"
         }
       ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 18,
+      "startedAt": "2026-08-05T06:46:00Z",
+      "finishedAt": "2026-08-05T06:56:30Z",
+      "durationMinutes": 11,
+      "sections": 6,
+      "cards": 51,
+      "verses": 32,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (6 sections / 51 cards, three bullets per card, no .trim() on its raw notes constant) from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Numbers 18 is God's direct answer, spoken straight to Aaron rather than through Moses, to the fear that closed chapter 17: the priestly and Levite charge system, bearing the iniquity of the sanctuary as carried responsibility rather than personal guilt, the two ranks of priests versus the wider tribe of Levi, the heave and wave offerings and the two tiers of holy versus most holy priestly food, firstfruits and firstling redemption (five shekels after the standardized sanctuary shekel, clean animals sacrificed rather than redeemed), the covenant of salt idiom later echoed for David's line, priests given God himself as their inheritance instead of land (echoed later in the Psalms), and the closing tithe-of-the-tithe chain running from ordinary Israelites to Levites to priests. Kept the original file's 6 section boundaries for verse-coverage continuity while rewriting every card and title to the new format. Density about 1.6 cards/verse (32 verses, 51 cards). scripts/check_bible_note_style.py was clean on the first pass, no fixes needed. Parser check passed exactly via getBibleReaderStudySections('Numbers', 18) (6/6 sections, 51 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range covering Numbers 1-30, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (NumbersEighteenPersonalSection, parseNumbersEighteenRawNotes, NUMBERS_EIGHTEEN_RAW_NOTES, NUMBERS_EIGHTEEN_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Numbers 18 entry removed from the front of the list as part of this commit; next redo target is Numbers 19. Per CLAUDE.md's push-cadence policy (commit locally every chapter, batch pushes to at most twice a day with the daily report), this chapter's commit was NOT pushed immediately; it will go out with the next scheduled morning or night report push. Note on step timestamps: this run captured real date -u anchors at start (npm install) and end (progress logging) but did not call date -u after every single intermediate milestone the way some earlier runs did; intermediate step timestamps below are placed in true chronological order within that real ~11 minute window rather than individually captured to the second.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-05T06:46:27Z"
+        },
+        {
+          "name": "target chapter determined: Numbers 18 (style redo, first in remaining backlog)",
+          "at": "2026-08-05T06:46:35Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Numbers.json",
+          "at": "2026-08-05T06:47:10Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (lib/numbersSeventeenSource.ts) read",
+          "at": "2026-08-05T06:49:00Z"
+        },
+        {
+          "name": "source file written (lib/numbersEighteenSource.ts, 6 sections, 51 cards)",
+          "at": "2026-08-05T06:53:40Z"
+        },
+        {
+          "name": "style checker clean on first pass, no fixes needed",
+          "at": "2026-08-05T06:53:55Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo (no changes needed)",
+          "at": "2026-08-05T06:54:10Z"
+        },
+        {
+          "name": "parser check passed (6/6 sections, 51 cards, 32 verses covered)",
+          "at": "2026-08-05T06:54:20Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-08-05T06:54:36Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, style-redo-remaining.json)",
+          "at": "2026-08-05T06:56:30Z"
+        }
+      ]
     }
   ]
 }
