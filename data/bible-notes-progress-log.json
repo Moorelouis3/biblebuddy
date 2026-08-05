@@ -9507,6 +9507,59 @@
           "at": "2026-08-05T01:00:52Z"
         }
       ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 13,
+      "startedAt": "2026-08-05T01:46:17Z",
+      "finishedAt": "2026-08-05T02:00:00Z",
+      "durationMinutes": 14,
+      "sections": 7,
+      "cards": 46,
+      "verses": 33,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (7 sections / 41 cards, three bullets per card, no .trim() on its raw notes constant) from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (Numbers.json, chapter 13, 33 verses). God's command to send twelve tribal rulers to scout Canaan, the full twelve-name roster including the seven minor names never mentioned again elsewhere in Scripture (the original file had skipped most of them), Caleb's forward-pointing Kenizzite detail and Oshea's renaming to Jehoshua (the LORD saves, becoming Joshua in English and Jesus through Greek), Moses' scouting checklist item by item, the journey the length of Canaan and the two-man cluster of grapes at Eshcol, the report's pivot word 'nevertheless' turning a true good report into an evil one, and Caleb's lone stand of faith against the other ten spies' fear. Kept the original file's 7 section boundaries for verse-coverage continuity while rewriting every card and title from scratch, and added dedicated cards for the seven minor tribal names and the missing tribe of Levi that the original file had skipped. Density about 1.39 cards/verse (33 verses, 46 cards). scripts/check_bible_note_style.py found 17 problems on first pass (16 over-length bullets, one last-bullet not ending in the required emoji, one body line over 20 words), fixed, second run clean; a repeated-emoji regression introduced while fixing the last-bullet issue was caught and fixed in the same pass. Parser check passed exactly (7/7 sections, 46 cards, text verbatim), npx tsc --noEmit -p . clean with zero errors. Wiring was already correct for this redo chapter, no changes needed. Redo backlog entry popped; next redo target is Numbers 14. Per CLAUDE.md's mandatory push-cadence policy (added 2026-08-04, batch pushes to at most twice a day with the daily report, do not push per chapter), this chapter's commit was made locally but NOT pushed to origin/main immediately -- it will go out with the next scheduled morning or night report push, which conflicts with this routine's own step 7 instruction to push every run. Following the more specific, more recent, and explicitly mandatory CLAUDE.md policy over the older routine prompt text.",
+      "steps": [
+        {
+          "name": "npm install done (fresh clone, no node_modules)",
+          "at": "2026-08-05T01:46:58Z"
+        },
+        {
+          "name": "target chapter determined: Numbers 13, redo mode (first entry in data/bible-notes-style-redo-remaining.json)",
+          "at": "2026-08-05T01:46:58Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 13 (33 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-08-05T01:47:10Z"
+        },
+        {
+          "name": "docs/bible-study-note-style.md read in full",
+          "at": "2026-08-05T01:49:00Z"
+        },
+        {
+          "name": "wrote lib/numbersThirteenSource.ts (7 sections, 46 cards) matching the new style spec",
+          "at": "2026-08-05T01:53:30Z"
+        },
+        {
+          "name": "scripts/check_bible_note_style.py run: 17 problems found, fixed (16 bullets trimmed, last-bullet emoji fixed, one body line split, one resulting duplicate-emoji regression fixed), second run clean",
+          "at": "2026-08-05T01:55:15Z"
+        },
+        {
+          "name": "wiring confirmed already correct for this redo chapter (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call all pre-existing)",
+          "at": "2026-08-05T01:55:20Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections('Numbers', 13) returned 7 sections, 46 cards, text verbatim",
+          "at": "2026-08-05T01:55:50Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, zero errors",
+          "at": "2026-08-05T01:56:50Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, redo-remaining.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-08-05T02:00:00Z"
+        }
+      ]
     }
   ]
 }
