@@ -10594,7 +10594,7 @@
       "book": "Numbers",
       "chapter": 31,
       "startedAt": "2026-08-05T19:46:31Z",
-      "finishedAt": "2026-08-05T20:00:30Z",
+      "finishedAt": "2026-08-05T20:02:21Z",
       "durationMinutes": 14,
       "sections": 13,
       "cards": 52,
@@ -10640,6 +10640,10 @@
         {
           "name": "progress files logged (BIBLE_BUDDY_NOTES_PROGRESS.md, bible-notes-progress-log.json)",
           "at": "2026-08-05T20:00:30Z"
+        },
+        {
+          "name": "committed locally (12e52ec) -- not pushed yet per CLAUDE.md push-cadence policy, will batch with next scheduled morning/night report push. Also found local main detached again on a stale ref (a18839f, an old pre-rewrite Genesis 50 commit not an ancestor of origin/main) -- confirmed HEAD already matched origin/main plus this commit, then pointed local main at HEAD via git checkout -B main HEAD, no work lost",
+          "at": "2026-08-05T20:02:21Z"
         }
       ]
     }
