@@ -727,3 +727,7 @@ Next up: Numbers 10
 ## 2026-08-04T15:57:09Z (hourly chapter notes run)
 Chapter: Numbers 10 | Duration: 10 min | Sections: 10 | Cards: 42 | Status: pass
 Next up: Numbers 11
+
+## 2026-08-05T00:03:00Z (hourly chapter notes run)
+Chapter: Numbers 11 | Duration: 15 min | Sections: 7 | Cards: 52 | Status: pass
+Next up: Numbers 12

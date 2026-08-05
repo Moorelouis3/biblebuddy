@@ -91,6 +91,18 @@
       "type": "chapter_count_checkpoint",
       "chaptersCompletedSoFarTonight": 16,
       "detail": "Leviticus 26 regenerated to the new style spec this run via the raw.githubusercontent.com/aruljohn/Bible-kjv mirror, no block, cooldown, or throttling encountered. 16 chapters shipped since the last checkpoint at 2026-08-03T12:58:00Z (Leviticus 11-26, style redo backlog), each in its own separate hourly run, with no usage limit or block hit anywhere in that span. Only Leviticus 27 remains in the Leviticus portion of the redo backlog before Numbers 1-30 begins."
+    },
+    {
+      "timestamp": "2026-08-05T00:01:38Z",
+      "type": "note",
+      "chaptersCompletedSoFarTonight": 12,
+      "detail": "Not a usage/rate limit. Mid Numbers 11 run, a git checkout to main failed because uncommitted changes would have been overwritten, but a chained git reset --hard command in the same shell call still executed against the current (detached) HEAD, discarding all uncommitted work for that chapter (source file, progress log edits, session log edits). No permanent loss: the full chapter content was still available from the run's own working record and was rewritten exactly, then re-verified with the style checker, parser check, and tsc a second time, all clean. Flagging this so the pattern is visible: chained shell commands should not assume an earlier command in the same call succeeded, and git status should be checked before any reset/checkout on a repo with uncommitted work, per the standing git safety rules."
+    },
+    {
+      "timestamp": "2026-08-05T00:02:08Z",
+      "type": "chapter_count_checkpoint",
+      "chaptersCompletedSoFarTonight": 12,
+      "detail": "Numbers 11 regenerated to the new style spec this run via the raw.githubusercontent.com/aruljohn/Bible-kjv mirror, no usage limit, rate limit, or throttling encountered (see the note event just above for a non-usage git incident this same run, recovered with no data lost). 12 chapters shipped since the last checkpoint at 2026-08-04T05:01:53Z (Leviticus 27, then Numbers 1-11, style redo backlog), each in its own separate hourly run."
     }
   ]
 }
