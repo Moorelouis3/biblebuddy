@@ -10716,8 +10716,8 @@
       "book": "Numbers",
       "chapter": 33,
       "startedAt": "2026-08-05T21:48:35Z",
-      "finishedAt": "2026-08-05T22:03:47Z",
-      "durationMinutes": 15,
+      "finishedAt": "2026-08-05T22:05:59Z",
+      "durationMinutes": 18,
       "sections": 10,
       "cards": 36,
       "verses": 56,
@@ -10762,6 +10762,10 @@
         {
           "name": "progress files logged (BIBLE_BUDDY_NOTES_PROGRESS.md, bible-notes-progress-log.json)",
           "at": "2026-08-05T22:03:47Z"
+        },
+        {
+          "name": "committed locally (d4e82b91) -- not pushed per CLAUDE.md push-cadence policy; today's two scheduled batch pushes (10:17 CEST and 18:25 CEST daily reports) already went out, so this commit will batch with the next scheduled report push rather than pushing speculatively",
+          "at": "2026-08-05T22:05:59Z"
         }
       ]
     }
