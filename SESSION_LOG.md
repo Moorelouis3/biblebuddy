@@ -767,3 +767,7 @@ Next up: Numbers 20
 ## 2026-08-05T08:58:00Z (hourly chapter notes run)
 Chapter: Numbers 20 | Duration: 12 min | Sections: 7 | Cards: 48 | Status: pass
 Next up: Numbers 21
+
+## 2026-08-05T09:59:30Z (hourly chapter notes run)
+Chapter: Numbers 21 | Duration: 13 min | Sections: 7 | Cards: 55 | Status: pass
+Next up: Numbers 22

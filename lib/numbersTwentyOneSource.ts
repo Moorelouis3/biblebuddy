@@ -89,373 +89,1053 @@ function parseNumbersTwentyOneRawNotes(rawText: string): NumbersTwentyOnePersona
 }
 
 const NUMBERS_TWENTY_ONE_RAW_NOTES = `# Numbers 21:1-3
-# ⚔️ King Arad Attacks, And Israel's Vow
+# ⚔️ King Arad Attacks And Israel's Vow
 ---
-## 🏜️ King Arad The Canaanite, Which Dwelt In The South
-"The south" here means the Negev, the dry region on the southern edge of Canaan where Kadesh sits. Arad was a real Canaanite city in that area, and its king strikes first, before Israel has done anything aggressive toward him.
-🏜️ "The south" means the Negev, the dry region near Kadesh
-👑 Arad was a real Canaanite city-king in that region
-🔑 This attack comes unprovoked, before Israel moves against anyone
-
 ## 🔎 Heard Tell That Israel Came By The Way Of The Spies
-This is the same general route the twelve spies used almost 38 years earlier in Numbers 13, when they scouted the land and brought back their fearful report. A new generation is retracing old ground, and old enemies are watching for them along the way.
-🔎 The same route the twelve spies once explored, in Numbers 13
-⏳ Nearly 38 years later, a new generation walks it
-🔑 Old enemies were still watching this border
+
+The word spies points back to a specific earlier trip.
+
+Numbers 13 sent twelve men to explore this same land.
+
+Almost forty years have passed since that mission failed.
+
+A new generation is now walking that same ground.
+
+Old enemies had never stopped watching this border.
+
+🔎 Spies recalls the mission in Numbers 13
+
+⏳ Almost forty years have passed since then
+
+🧭 A new generation walks the same ground
+
+📖 Old enemies never stopped watching this border
 
 ## ⛓️ Took Some Of Them Prisoners
-This is a genuine military setback for Israel, not a story where they win every fight. Losing people as captives raises the stakes immediately and explains why Israel responds with a vow instead of just marching on.
-⛓️ A real defeat, not another easy Israelite victory
-📉 Raises the stakes right at the start of the chapter
-🔑 Explains why Israel turns to prayer before fighting again
 
-## 🙏 Israel Vowed A Vow Unto The LORD
-A vow is a conditional promise made to God — "if you do this, I will do that." It's a serious, binding commitment, not a casual bargain, and it shows Israel turning to God first this time instead of complaining, a real change from their usual pattern.
-🙏 A vow is a binding, conditional promise made to God
-🔄 A real shift from Israel's usual pattern of complaining first
-🔑 Prayer, not grumbling, opens this military crisis
+This is a real defeat, not another easy victory.
+
+Arad captures some of Israel's own people.
+
+The wilderness journey has already been long and hard.
+
+Now it gets harder before anything improves.
+
+This loss is what drives Israel to pray next.
+
+⚔️ Arad wins the first exchange
+
+😟 Israel loses people as captives
+
+📉 A real setback, not an easy win
+
+📖 This loss drives Israel to pray next
+
+## 🙏 Israel Vowed A Vow Unto The Lord
+
+A vow means a binding promise made to God.
+
+A vow usually has two sides.
+
+If God does this, I will do that.
+
+This is not a casual bargain.
+
+It is a serious commitment.
+
+Israel turns to God first this time, before complaining.
+
+That is a real change from their usual pattern in this book.
+
+🙏 A vow is a binding promise to God
+
+🤝 A vow usually has two sides
+
+🔄 A change from their usual complaining first
+
+📖 Israel turns to God before the fight
 
 ## 🔥 Then I Will Utterly Destroy Their Cities
-"Utterly destroy" describes full, dedicated destruction — wiping out a city completely rather than looting it for profit, treating the victory as belonging to God rather than to Israel. This same total-destruction language shows up throughout the conquest narratives later in Joshua.
-🔥 "Utterly destroy" means total destruction, not looting for gain
-📖 The same language used again and again later in Joshua
-🔑 Frames the coming victory as belonging to God, not Israel
 
-## 👂 The LORD Hearkened To The Voice Of Israel
-"Hearkened" is an old word for listened and responded — God doesn't just hear the vow, he acts on it, handing the Canaanites over to Israel. The victory comes because God answers, not because Israel out-fights the enemy on their own.
-👂 "Hearkened" means listened and then acted
-✅ God directly answers the vow just made in verse 2
-🔑 Credit for the win goes to God's response, not Israel's strength
+Utterly destroy means totally dedicating the enemy's cities to God.
+
+Nothing gets kept back as loot or personal gain.
+
+The victory belongs to God, not to Israel's army.
+
+This same language returns again and again later in Joshua.
+
+Israel promises to give God the credit before the battle even starts.
+
+🔥 Utterly destroy means total dedication, not looting
+
+🏆 Victory is credited to God, not Israel
+
+📜 The same language returns often in Joshua
+
+📖 Credit is promised before the fight begins
+
+## 👂 The Lord Hearkened To The Voice Of Israel
+
+Hearkened is an old word for listened and then acted.
+
+God does not merely hear Israel's vow.
+
+He responds to it directly, handing the Canaanites over.
+
+The victory comes from God's response, not from Israel's own strength.
+
+👂 Hearkened means listened and then acted
+
+✅ God answers the vow from verse two
+
+💪 Victory rests on God's response, not strength
+
+📖 The win is credited to God
 
 ## 📛 He Called The Name Of The Place Hormah
-"Hormah" means "destruction," and this is not a new name — it's the very same place where Israel was crushed in a failed, unauthorized attack back in Numbers 14:45, right after the spies' bad report. The name that once marked their disgrace now marks their obedience instead.
-📛 "Hormah" means "destruction"
-🔁 The same place where Israel was defeated in Numbers 14:45
-🔑 A place of past shame becomes a place of present victory
+
+Hormah means destruction in Hebrew.
+
+This is not a new name given for the first time.
+
+Numbers 14:45 already used this exact name for a disaster.
+
+That earlier Hormah marked a defeat, after Israel attacked without permission.
+
+The same place name now marks a victory instead.
+
+📛 Hormah means destruction
+
+🔁 The same name appears in Numbers 14:45
+
+😔 That earlier moment was a defeat
+
+📖 Obedience turns old shame into victory
 
 # Numbers 21:4-9
 # 🐍 Fiery Serpents And The Bronze Serpent
 ---
 ## 🛣️ By The Way Of The Red Sea, To Compass The Land Of Edom
-Because Edom refused Israel passage through their land in Numbers 20:18-21, Israel now has to take the long way around, back down toward the Red Sea region before curving around Edom's border. This detour adds real time and hardship to an already exhausting journey.
-🛣️ A long detour, forced by Edom's earlier refusal in Numbers 20
-⏳ Adds real time and distance to an already hard journey
-🔑 Sets up the discouragement described in the rest of this verse
+
+Edom refused to let Israel pass through back in Numbers 20.
+
+That refusal forces a long detour now.
+
+Israel must travel back toward the Red Sea before curving around Edom's border.
+
+This route adds real distance to an already exhausting trip.
+
+The detour itself becomes the reason for what happens next.
+
+🛣️ Edom's earlier refusal forces this detour
+
+⏳ The route adds real time and distance
+
+🧭 Israel curves around Edom instead of through it
+
+📖 This hardship sets up the complaint ahead
 
 ## 😩 The Soul Of The People Was Much Discouraged Because Of The Way
-"Soul" here means the whole person, not just an inner feeling — the people are worn out completely, body and spirit together, by this extra detour. This kind of weariness has led straight to sin before, and it does again just one verse later.
-😩 "Soul" means the whole person, not just emotion
-🔁 The same kind of weariness has triggered sin before in this book
-🔑 Sets up the complaint that follows immediately
+
+Soul here does not mean just an inner feeling.
+
+It means the whole person, body and spirit together.
+
+The people are worn out completely, not just annoyed.
+
+This same kind of exhaustion has led straight to sin before in this book.
+
+It does again, one verse later.
+
+💤 Soul means the whole person, not one feeling
+
+😩 The people are worn out completely
+
+🔁 This exhaustion has caused sin before
+
+📖 It leads straight to a complaint again
 
 ## 🗣️ Spake Against God, And Against Moses
-This complaint aims at both God and Moses together — not just frustration with their leader, but open accusation against God himself. It repeats a pattern that shows up again and again across Exodus and Numbers whenever hardship hits.
-🗣️ Directed at both God and Moses, not just their human leader
-🔁 The same complaint pattern repeated throughout Exodus and Numbers
-🔑 Hardship keeps triggering the exact same accusation
+
+This complaint is not aimed only at Moses.
+
+It is aimed at God directly too.
+
+That makes it an accusation, not just frustration with a leader.
+
+This same pattern shows up again and again through Exodus and Numbers.
+
+Hardship keeps triggering the exact same accusation.
+
+🗣️ The complaint targets God, not only Moses
+
+⚠️ That makes it an accusation, not frustration
+
+🔁 The same pattern repeats through Exodus and Numbers
+
+📖 Hardship keeps producing the same accusation
 
 ## ⚰️ Wherefore Have Ye Brought Us Up Out Of Egypt To Die In The Wilderness
-This is the same bitter question Israel has asked before, treating God's rescue from slavery as if it were a trick meant to kill them instead. It ignores every provision God has already given — water, manna, victory over enemies — in favor of assuming the worst.
-⚰️ The same accusation Israel has voiced multiple times before
-🙈 Ignores every provision already given along the way
-🔑 Fear rewrites rescue as betrayal
+
+Israel treats their rescue from slavery as if it were a trick.
+
+They act as though God freed them only to kill them in the desert.
+
+This ignores every provision God has already given.
+
+Fear rewrites a rescue into a betrayal.
+
+⚰️ Israel accuses God of a cruel trick
+
+🙈 This ignores every provision God already gave
+
+😨 Fear reframes rescue as betrayal
+
+📖 The same accusation has been voiced before
 
 ## 🍞 Our Soul Loatheth This Light Bread
-"Light bread" is a contemptuous nickname for manna, the miracle food God has provided daily since Exodus 16. Calling it worthless isn't just a complaint about taste — it's rejecting God's provision itself as beneath them.
-🍞 "Light bread" is a scornful nickname for the manna
-🎁 Manna has been God's daily provision since Exodus 16
-🔑 Rejecting the food means rejecting the God who sent it
 
-## 🐍 The LORD Sent Fiery Serpents Among The People
-"Fiery" most likely describes the burning, inflamed bite of these venomous snakes, which were a real danger in this desert region. The judgment matches the complaint with a kind of bitter irony — they despised bread from heaven, so death now comes up from the ground.
-🐍 "Fiery" likely describes the burning venom of a real desert snake
-⚖️ The judgment mirrors the complaint: bread rejected, death from below
-🔑 Not a random punishment, but a pointed response to this specific sin
+Light bread is a scornful nickname for the manna.
+
+Manna has fed Israel every day since Exodus 16.
+
+Calling it worthless is not really a complaint about taste.
+
+It is a rejection of the God who sent it.
+
+🍞 Light bread is a scornful name for manna
+
+🎁 Manna has fed Israel since Exodus 16
+
+🚫 Rejecting the food rejects the giver
+
+📖 A complaint about bread is really about God
+
+## 🐍 The Lord Sent Fiery Serpents Among The People
+
+Fiery likely describes the burning bite of a venomous snake.
+
+These snakes were a real danger in this desert region.
+
+The judgment matches the complaint on purpose.
+
+Israel despised bread sent from above.
+
+Now death comes up from the ground instead.
+
+🐍 Fiery likely describes a burning venomous bite
+
+🏜️ These snakes were a real desert danger
+
+⚖️ The judgment mirrors the exact complaint
+
+📖 This is a pointed response, not random
 
 ## ☠️ Much People Of Israel Died
-This isn't exaggeration — the judgment is severe and the deaths are real. The chapter doesn't soften how serious this rebellion and its consequence actually were.
-☠️ A real, severe judgment, not exaggerated language
-📉 The text doesn't soften how serious this moment was
-🔑 Consequences here are as concrete as the sin that caused them
 
-## 😔 We Have Sinned, For We Have Spoken Against The LORD, And Against Thee
-This time the people's confession is quick and specific — they name exactly what they did wrong, rather than just complaining about the consequence. It's a genuine turn compared to some of their earlier half-hearted reactions.
-😔 A specific confession, naming the actual sin committed
-⏱️ Comes quickly, without long delay
-🔑 A more genuine turn than some earlier complaints in this book
+This is not exaggeration.
+
+The judgment is severe and the deaths are real.
+
+The text does not soften what happened here.
+
+Consequences in this chapter are as concrete as the sin that caused them.
+
+☠️ A real and severe judgment
+
+📉 The text does not soften the loss
+
+⚖️ Consequences match the seriousness of the sin
+
+📖 Scripture states hard truths plainly
+
+## 😔 We Have Sinned, For We Have Spoken Against The Lord, And Against Thee
+
+This confession comes quickly, without a long delay.
+
+The people name the exact sin they committed.
+
+They do not just complain about the punishment.
+
+Compared to earlier complaints in this book, this is a genuine turn.
+
+😔 The confession is specific, not vague
+
+⏱️ It comes quickly, without delay
+
+🔁 Earlier complaints were far less honest
+
+📖 This is real repentance, not just regret
 
 ## 🙏 Moses Prayed For The People
-Moses again steps in as the mediator between the people and God, just as he has throughout Exodus and Numbers. He doesn't say "you brought this on yourselves" — he simply prays on their behalf.
-🙏 Moses again acts as mediator, as he has throughout the journey
-🤝 No lecture first — just intercession on the people's behalf
-🔑 The same role Moses plays again and again for this nation
+
+Moses steps in again as the mediator between the people and God.
+
+He has done this same thing throughout Exodus and Numbers.
+
+He does not lecture them first.
+
+He simply prays on their behalf.
+
+🙏 Moses again acts as mediator
+
+🤝 No lecture is given first
+
+🔁 The same role Moses plays again and again
+
+📖 Intercession comes before anything else
 
 ## 🪄 Make Thee A Fiery Serpent, And Set It Upon A Pole
-God's remedy is strange on purpose — an image of the very thing that is killing them, lifted up where everyone can see it. Looking at a symbol of the judgment becomes, instead, the way out of it.
-🪄 An image of the exact thing causing the deaths
-👁️ Set up high, in plain view of the whole camp
-🔑 The cure is shaped like the curse, not separate from it
+
+God's remedy looks strange on purpose.
+
+It is shaped like the very thing that is killing them.
+
+That image is lifted up where the whole camp can see it.
+
+Looking at a symbol of the judgment becomes the way out of it.
+
+🪄 The image copies the very thing causing death
+
+👁️ It is lifted up in plain view
+
+🔑 The cure is shaped like the curse
+
+📖 Looking at judgment becomes the way to life
 
 ## 👁️ When He Looketh Upon It, Shall Live
-The healing doesn't come from any special ritual or effort — just looking at the bronze serpent in simple trust that God's promise is true. Centuries later, Jesus points back to this exact moment in John 3:14-15, comparing his own being "lifted up" on the cross to this pole, so that anyone who looks to him in faith can live.
-👁️ Healing comes through simple trust, not effort or ritual
-✝️ Jesus references this exact scene in John 3:14-15
-🔑 A physical looking-and-living, and a spiritual one it later points to
+
+Healing here does not come from any ritual or effort.
+
+It comes from simply looking at the bronze serpent in trust.
+
+Centuries later, Jesus points back to this exact moment in John 3:14 and 15.
+
+He compares his own being lifted up on the cross to this pole.
+
+Anyone who looks to him in faith can live.
+
+Israel once looked at bronze and lived the same way.
+
+👁️ Healing comes through simple trust, not effort
+
+✝️ Jesus later points back to this scene
+
+🔁 A healing that points ahead spiritually
+
+📖 Faith, not effort, is what saves
 
 ## 🐍 Moses Made A Serpent Of Brass
-Brass (bronze) was a durable, valuable metal, fitting for something meant to be seen clearly and preserved. Moses builds exactly what God described, no more and no less.
-🐍 Brass (bronze) was durable and easy to see clearly
-✅ Moses builds exactly what God commanded, nothing extra
-🔑 Obedience here is careful and precise
 
-## 🚫 The Serpent Later Named Nehushtan
-This bronze serpent is preserved for centuries — and eventually the people start burning incense to it as if it were a god itself. Centuries later, King Hezekiah has to destroy it, giving it the mocking name Nehushtan ("a mere piece of bronze") in 2 Kings 18:4. Even something God once used for healing can turn into an idol if people stop worshiping the God behind it.
-🚫 Later generations start worshiping the bronze object itself
-🔨 King Hezekiah destroys it centuries later, in 2 Kings 18:4
-🔑 A gift from God can still become an idol if misused
+Brass here means bronze, a durable metal.
+
+It was built to last and easy to see from a distance.
+
+Moses builds exactly what God described, nothing more and nothing less.
+
+This same bronze object survives for centuries afterward.
+
+Eventually people begin worshiping it instead of the God who used it.
+
+King Hezekiah later destroys it in 2 Kings 18:4.
+
+He calls it Nehushtan, a mere piece of bronze.
+
+Even something God once used for healing can become an idol.
+
+🐍 Brass means a durable, lasting bronze
+
+✅ Moses builds exactly what God commanded
+
+🔨 Hezekiah destroys it later in 2 Kings 18:4
+
+📖 A gift can still become an idol
 
 # Numbers 21:10-16
 # 🏕️ Wilderness Stations Toward Moab
 ---
 ## 🏕️ The Children Of Israel Set Forward, And Pitched In Oboth
-The text now moves into a travel log, naming each stop as Israel makes its way around Edom toward Moab. Oboth is simply the first named camp on this stretch of the journey.
-🏕️ Marks the start of a travel log naming each camp
-🗺️ Oboth is the first stop on this stretch
-🔑 A record of real movement, not a vague summary
+
+The text now shifts into a travel log.
+
+Each stop gets its own name as Israel moves toward Moab.
+
+Oboth is simply the first camp on this stretch.
+
+A record like this treats the journey as real, trackable history.
+
+🏕️ Marks the start of a travel log
+
+🗺️ Oboth is the first named stop here
+
+📜 Real movement, not a vague summary
+
+📖 Scripture treats this journey as real history
 
 ## 🌅 Ijeabarim, In The Wilderness Which Is Before Moab, Toward The Sunrising
-"Toward the sunrising" is a standard Hebrew way of saying "east," used often in the Old Testament to give direction. This places the camp on the eastern edge of Moab's wilderness, still outside Moab's actual territory.
-🌅 "Toward the sunrising" is a common biblical way of saying "east"
-🗺️ Places the camp just outside Moab's territory, on its eastern edge
-🔑 A precise geographic marker, not poetic decoration
+
+Toward the sunrising is an old way of saying east.
+
+The Old Testament uses this phrase often to give direction.
+
+This places the camp on the eastern edge of Moab's wilderness.
+
+Israel is still outside Moab's own territory at this point.
+
+🌅 Toward the sunrising means east
+
+🗺️ The camp sits on Moab's eastern edge
+
+🚷 Still outside Moab's actual territory
+
+📖 A precise marker, not poetic decoration
 
 ## 🏞️ The Valley Of Zared
-Crossing the valley of Zared marks a meaningful moment in Israel's timeline — Deuteronomy 2:14 later notes that 38 years passed between leaving Kadesh-barnea the first time and finally crossing this valley, the exact length of time it took for the unbelieving generation to die out in the wilderness.
-🏞️ A brook/valley crossed on the way around Edom and Moab
-⏳ Deuteronomy 2:14 ties this crossing to the full 38 years of wandering
-🔑 Marks the end of the judgment generation's time in the wilderness
 
-## 🗺️ On The Other Side Of Arnon...The Border Of Moab, Between Moab And The Amorites
-The Arnon river was a major natural boundary, separating Moab to the south from the Amorite kingdom to the north. Camping on the Amorite side already signals that Israel is bypassing Moab peacefully, just as God instructed, and about to deal with the Amorites instead.
-🗺️ The Arnon river marks the border between Moab and the Amorites
-🕊️ Confirms Israel is passing Moab by, not attacking it
-🔑 Sets up the coming conflict with the Amorites, not Moab
+Crossing this valley marks a meaningful moment in the story.
 
-## 📖 The Book Of The Wars Of The LORD
-This is a real reference to an ancient collection of victory songs and records that no longer survives — Scripture openly quotes an outside source here, the way a modern book might cite another historical text. It shows Israel already had a habit of writing down and singing about what God had done for them.
-📖 A now-lost ancient collection of war songs, quoted here by name
-📝 The Bible openly citing an outside historical source
-🔑 Israel already had a practice of recording God's victories in song
+Deuteronomy 2:14 later ties this crossing to thirty eight years of wandering.
 
-## 🏞️ The Stream Of The Brooks...Ar...The Border Of Moab
-More geographic detail confirming the exact path Israel is tracing along Moab's edge. These verses read almost like an itinerary, precise enough that later readers could trace the route on a map.
-🏞️ More precise detail tracing the path along Moab's border
-🗺️ Reads like an actual itinerary, not vague storytelling
-🔑 The Bible treats this journey as real, trackable history
+That is the exact length of time since Israel first left Kadesh Barnea.
 
-## 💧 Beer: That Is The Well Whereof The LORD Spake Unto Moses
-"Beer" simply means "well" in Hebrew — the place is named for the very thing that happens there. God had promised Moses water at this spot, and now the promise is kept.
-💧 "Beer" is the Hebrew word for "well"
-✅ Named for the exact promise God fulfills there
-🔑 A place named after God keeping his word
+It marks the end of the road for the generation God judged.
+
+🏞️ Zared is a valley crossed on this stretch
+
+⏳ Deuteronomy 2:14 ties it to thirty eight years
+
+📆 That matches the years since Kadesh Barnea
+
+📖 It marks the end of a judged generation
+
+## 🗺️ For Arnon Is The Border Of Moab, Between Moab And The Amorites
+
+The Arnon river was a major natural border in this region.
+
+It separated Moab to the south from the Amorite kingdom to the north.
+
+Camping on this side already signals something important.
+
+Israel is passing Moab peacefully, exactly as God instructed.
+
+The next chapters will deal with the Amorites instead.
+
+🗺️ The Arnon river divides Moab from the Amorites
+
+🕊️ Confirms Israel is passing Moab peacefully
+
+🧭 Sets up the coming meeting with the Amorites
+
+📖 Geography here signals what happens next
+
+## 📖 The Book Of The Wars Of The Lord
+
+This is a real reference to an old collection of victory songs.
+
+That book no longer survives today.
+
+Scripture is openly quoting an outside source here.
+
+Israel already had a habit of writing down what God had done for them.
+
+📖 A lost ancient collection of war songs
+
+📝 Scripture openly quotes an outside source
+
+🎼 Israel had a habit of recording victories
+
+➡️ A real book, not a poetic invention
+
+## 🏞️ The Stream Of The Brooks That Goeth Down To The Dwelling Of Ar
+
+This verse adds more precise geography along Moab's edge.
+
+These few verses read almost like an itinerary.
+
+A later reader could trace this exact route on a map.
+
+Small details like this show the journey really happened.
+
+🏞️ More precise detail along Moab's border
+
+🗺️ Reads like an actual itinerary
+
+📍 A route later readers could trace
+
+📖 Small details confirm real history
+
+## 💧 Beer: That Is The Well Whereof The Lord Spake Unto Moses
+
+Beer simply means well in Hebrew.
+
+The place is named for the very thing that happens there.
+
+God had already promised Moses water at this exact spot.
+
+Now that promise is finally kept.
+
+💧 Beer is the Hebrew word for well
+
+📛 The place is named for what happens there
+
+✅ God's earlier promise is now kept
+
+📖 A place named after a kept promise
 
 ## 🎁 Gather The People Together, And I Will Give Them Water
-This water is given freely, without any striking of a rock or any failure attached to it — a deliberate contrast to the disaster at Meribah just one chapter earlier in Numbers 20. Provision here comes without the leadership failure that marked the last water crisis.
-🎁 Water given freely, with no rock-striking involved this time
-⚖️ A clear contrast to the failure at Meribah in Numbers 20
-🔑 God's provision continues even after leaders stumble
+
+This water comes freely, with no rock striking involved.
+
+That is a deliberate contrast to what happened one chapter earlier.
+
+Numbers 20 ended in disaster when Moses struck the rock instead of speaking to it.
+
+God's provision continues here even after a leader had stumbled.
+
+🎁 Water given freely, with no striking this time
+
+⚖️ A clear contrast to Numbers 20's failure
+
+💧 Provision continues despite past failure
+
+📖 God keeps providing even after leaders stumble
 
 # Numbers 21:17-20
-# 🎵 The Song Of The Well
+# 🎶 The Song Of The Well
 ---
 ## 🎶 Then Israel Sang This Song, Spring Up, O Well
-This short poem is one of the few moments of genuine celebration in the book of Numbers, addressed directly to the well itself as if inviting it to respond. After so many chapters of complaint, this is a rare burst of praise.
-🎶 A rare moment of celebration instead of complaint
-🗣️ The song speaks directly to the well itself
-🔑 One of the few genuinely joyful moments in this book
+
+This short poem is a rare moment of real celebration in Numbers.
+
+The song speaks directly to the well, almost inviting it to respond.
+
+Most of this book is filled with complaint, not praise.
+
+After so many hard chapters, this is a genuine burst of joy.
+
+🎶 A rare moment of celebration in this book
+
+🗣️ The song speaks directly to the well
+
+😊 Most of Numbers is filled with complaint
+
+📖 A genuine burst of joy stands out
 
 ## ⛏️ The Princes Digged The Well, The Nobles Of The People Digged It
-Israel's leaders — princes and nobles — do the physical digging themselves rather than leaving it to servants. It's a picture of leadership working alongside the people instead of standing apart from them.
+
+Israel's own leaders do the digging themselves.
+
+They do not leave hard labor to servants alone.
+
+Princes and nobles work with their hands, alongside everyone else.
+
+This pictures leadership working with the people, not standing above them.
+
 ⛏️ Leaders do the physical digging themselves
-🤝 A picture of leadership working with the people, not above them
-🔑 Contrasts with the leadership failures earlier in this book
+
+🤝 They work alongside the people, not above
+
+👑 Princes and nobles share the labor
+
+📖 A picture of leadership serving, not commanding
 
 ## 👑 By The Direction Of The Lawgiver, With Their Staves
-"The lawgiver" is Moses, and "staves" are simply staffs or walking sticks used here as digging tools. Even something as basic as digging a well happens under Moses' guidance.
-👑 "The lawgiver" refers to Moses
-🪄 "Staves" are staffs, used here as improvised digging tools
-🔑 Even a simple task happens under organized leadership
+
+The lawgiver here means Moses.
+
+Staves means staffs, ordinary walking sticks used here as digging tools.
+
+Even something as simple as digging a well happens under organized guidance.
+
+Nothing in this camp happens by accident.
+
+👑 The lawgiver refers to Moses
+
+🪄 Staves means staffs, used as digging tools
+
+📋 Even a simple task happens under guidance
+
+📖 Order shapes even the small moments
 
 ## 🗺️ From The Wilderness They Went To Mattanah
-The travel log picks back up, naming the next stop after this celebration. Mattanah simply marks the next stage of the journey toward Moab's plains.
-🗺️ The travel log resumes after the song
-➡️ Mattanah is the next stop toward Moab
-🔑 Celebration doesn't pause the ongoing journey
 
-## 🏔️ From Nahaliel To Bamoth
-"Bamoth" means "high places," a name that quietly foreshadows the hilltop shrines Balak will later take Balaam to in the very next chapters, hoping to curse Israel from a high vantage point.
-🏔️ "Bamoth" means "high places"
-🔮 Foreshadows the high-place shrines used against Israel in Numbers 22-24
-🔑 A name that quietly sets up the next major conflict
+The travel log picks back up right after the song ends.
+
+Mattanah simply marks the next stop on the road.
+
+Names like this treat the journey as real, tracked history.
+
+The celebration in the previous verses does not pause the ongoing journey.
+
+🗺️ The travel log resumes after the song
+
+➡️ Mattanah marks the next stop
+
+📜 The journey continues as real history
+
+📖 Celebration does not pause the journey
+
+## 🏔️ And From Nahaliel To Bamoth
+
+Nahaliel is simply the next camp named on this stretch.
+
+Bamoth means high places, a name worth remembering.
+
+It quietly points ahead to the hilltop shrines used against Israel soon.
+
+The very next chapters put that name to a very different use.
+
+🗺️ Nahaliel marks another stop on the road
+
+🏔️ Bamoth means high places
+
+🔮 It foreshadows the next chapters' conflict
+
+📖 A name that returns with different intent
 
 ## 🏔️ To The Top Of Pisgah, Which Looketh Toward Jeshimon
-Pisgah becomes a significant location later — Moses himself will view the entire promised land from this same mountain range before he dies, in Deuteronomy 34. "Jeshimon" means "wasteland" or "desert," describing the desolate view from the top.
-🏔️ Pisgah is where Moses later views the promised land, in Deuteronomy 34
-🏜️ "Jeshimon" means "wasteland" or "desert"
-🔑 A location that will matter again at the very end of Moses' life
+
+Pisgah becomes an important location later in the story.
+
+Moses will view the entire promised land from this same mountain range in Deuteronomy 34.
+
+Jeshimon means wasteland or desert.
+
+That name describes the desolate view from the top.
+
+🏔️ Pisgah matters again later, in Deuteronomy 34
+
+👁️ Moses will view the promised land from here
+
+🏜️ Jeshimon means wasteland or desert
+
+📖 A location that returns at Moses' death
 
 # Numbers 21:21-25
 # ⚔️ Sihon Refuses, Israel Conquers The Amorites
 ---
 ## 👑 Israel Sent Messengers Unto Sihon King Of The Amorites
-Israel tries diplomacy first, exactly as they did with Edom back in Numbers 20 — sending messengers to request peaceful passage before any thought of battle. The pattern of asking first repeats here.
-👑 The same diplomatic approach used earlier with Edom
-🕊️ Peaceful passage requested before any thought of battle
-🔑 Israel doesn't default to war as a first option
 
-## 🛣️ We Will Go Along By The King's Highway
-The King's Highway was a real, well-known ancient trade route running north-south through this region — naming it specifically shows Israel wants to use one established road, not wander freely through Sihon's territory.
-🛣️ A real, named ancient trade route, not a vague path
-📍 Shows Israel's request is narrow and specific
-🔑 The same careful, limited request made to Edom in Numbers 20
+Israel tries diplomacy first, the same way they did with Edom in Numbers 20.
+
+Messengers go ahead to request peaceful passage.
+
+War is not the first option here.
+
+This pattern of asking before fighting repeats across these chapters.
+
+👑 The same diplomatic approach used with Edom
+
+🕊️ Peaceful passage is requested first
+
+🚫 War is not the default choice
+
+📖 Asking before fighting repeats here
+
+## 🛣️ We Will Go Along By The King's High Way
+
+The King's Highway was a real, well known trade route.
+
+It ran north to south through this whole region.
+
+Naming it shows Israel wants to use one established road only.
+
+This is a narrow, specific request, not a demand to wander freely.
+
+🛣️ A real, named ancient trade route
+
+📍 Shows a narrow, specific request
+
+🚶 Not a demand to wander freely
+
+📖 The same careful request made earlier to Edom
 
 ## 🚫 Sihon Would Not Suffer Israel To Pass Through His Border
-Like Edom before him, Sihon refuses. But unlike Edom — whose land God had specifically protected as Esau's inheritance — the Amorite territory carries no such protection, which is part of why this refusal ends so differently.
-🚫 A refusal that echoes Edom's answer in Numbers 20
-⚖️ Unlike Edom, Sihon's land carries no divine protection
-🔑 Sets up why this encounter, unlike Edom's, ends in battle
 
-## ⚔️ Sihon Gathered All His People Together...And Fought Against Israel Into The Wilderness
-Sihon doesn't just block the road — he mobilizes his entire army and attacks Israel directly at Jahaz, escalating the conflict himself. Israel is defending itself here, not launching an unprovoked invasion.
-⚔️ Sihon escalates first, mobilizing his whole army
-📍 The battle happens at Jahaz, a specific named location
-🔑 Israel responds to an attack rather than starting one
+Like Edom before him, Sihon refuses the request.
+
+But Edom's land carried a special protection.
+
+God had promised that land to Esau's own descendants.
+
+Sihon's territory carries no such protection.
+
+That difference explains why this refusal ends in battle.
+
+🚫 A refusal that echoes Edom's answer
+
+🛡️ Edom's land had God's special protection
+
+⚖️ Sihon's land carries no such protection
+
+📖 This difference explains why battle follows
+
+## ⚔️ Sihon Gathered All His People Together, And Fought Against Israel Into The Wilderness
+
+Sihon does not just block the road.
+
+He gathers his entire army and attacks Israel directly.
+
+The battle happens at a specific place, Jahaz.
+
+Israel is defending itself here, not starting an invasion.
+
+⚔️ Sihon mobilizes his whole army
+
+📍 The battle happens at Jahaz
+
+🛡️ Israel is defending, not invading
+
+📖 Sihon escalates the conflict himself
 
 ## 🗡️ Israel Smote Him With The Edge Of The Sword
-This is a common Hebrew idiom for total military defeat in close combat. Sihon's army is decisively beaten, ending the threat entirely.
-🗡️ A common idiom for total, decisive defeat
-✅ Ends the Amorite threat completely
-🔑 A clear, complete Israelite victory
+
+This phrase is a common way of describing total defeat in close combat.
+
+It does not describe one lucky strike.
+
+Sihon's whole army is decisively beaten.
+
+The Amorite threat ends completely in this one verse.
+
+🗡️ A common idiom for total defeat
+
+⚔️ Describes a whole army, not one blow
+
+✅ The Amorite threat ends completely
+
+📖 A clear, decisive victory
 
 ## 🗺️ Possessed His Land From Arnon Unto Jabbok
-This is Israel's first real territorial conquest and permanent possession east of the Jordan — land that two and a half tribes will later ask to settle in, in Numbers 32. The Arnon-to-Jabbok stretch becomes a lasting part of Israel's territory.
-🗺️ Israel's first lasting territorial conquest in this region
-🏡 This exact land is claimed for settlement later, in Numbers 32
-🔑 A turning point from wandering toward actually possessing land
+
+This is Israel's first lasting conquest east of the Jordan.
+
+The land stretches from the Arnon river to the Jabbok river.
+
+Two and a half tribes will later ask to settle in this exact land in Numbers 32.
+
+A wandering nation begins to actually possess territory here.
+
+🗺️ Israel's first lasting conquest east of the Jordan
+
+🏡 Claimed for settlement later in Numbers 32
+
+📍 Runs from the Arnon to the Jabbok
+
+📖 Wandering starts turning into possession
 
 ## 🛡️ The Border Of The Children Of Ammon Was Strong
-Israel stops at the Jabbok rather than pushing further east, because Ammon's territory — like Edom's and Moab's — was land God had specifically told Israel not to take, according to Deuteronomy 2:19. The stopping point isn't weakness; it's obedience.
-🛡️ Ammon's land, like Edom's, was protected by God's own instruction
+
+Israel stops at the Jabbok instead of pushing further east.
+
+Ammon's land, like Edom's, was territory God told Israel not to take.
+
+Deuteronomy 2:19 explains this instruction plainly.
+
+Stopping here is obedience, not weakness.
+
+🛡️ Ammon's land was also under God's protection
+
 📖 Explained further in Deuteronomy 2:19
-🔑 Israel stops here on purpose, not because they couldn't go further
+
+🚫 Israel could have pushed further but did not
+
+➡️ Stopping here is obedience, not weakness
 
 ## 🏙️ Israel Dwelt In Heshbon, And In All The Villages Thereof
-Heshbon becomes Sihon's former capital and now Israel's new base in this region, along with its surrounding villages. It's a real, settled possession, not just a passing military win.
-🏙️ Heshbon was Sihon's former capital city
-🏘️ Israel takes the surrounding villages too, not just the city
-🔑 A lasting settlement, not a brief raid
+
+Heshbon was Sihon's own capital city.
+
+Israel now takes the surrounding villages too, not the city alone.
+
+This is a real, settled possession.
+
+It is a lasting home, not just a passing military win.
+
+🏙️ Heshbon was Sihon's former capital
+
+🏘️ The surrounding villages are taken too
+
+🏡 A lasting settlement, not a brief raid
+
+📖 Conquest here becomes a real home
 
 # Numbers 21:26-32
 # 📜 The Taunt Song, And Jaazer
 ---
 ## 🏙️ Heshbon Was The City Of Sihon, Who Had Fought Against The Former King Of Moab
-This explains something important: Sihon had already conquered this land from Moab before Israel ever arrived. Israel is taking the land from Sihon, an Amorite conqueror, not directly from Moab — a detail that matters for Israel's later territorial claims.
-🏙️ Sihon had already taken this land from Moab, before Israel arrived
-⚖️ Israel takes it from Sihon, not directly from Moab
-🔑 A detail that matters for Israel's later territorial claims
+
+This explains something important about who owns this land.
+
+Sihon had already conquered it from Moab before Israel ever arrived.
+
+Israel takes this territory from Sihon, an Amorite king, not directly from Moab.
+
+That distinction matters later, when Israel's claim to this land gets challenged.
+
+🏙️ Sihon had already taken this land from Moab
+
+⚖️ Israel takes it from Sihon, not Moab
+
+📜 A detail that matters for later claims
+
+📖 History here explains a future argument
 
 ## 📜 They That Speak In Proverbs Say
-This introduces an old victory taunt-song, quoted here the same way the "book of the wars of the LORD" was quoted earlier in this chapter — Scripture again citing an existing outside poem to make its point.
-📜 Introduces an old taunt-song, quoted like an outside source
-🔁 The same kind of citation used earlier for the "wars of the LORD" book
-🔑 Ancient poetry preserved by being quoted inside Scripture
+
+This introduces an old victory song, quoted here by name.
+
+It works the same way an earlier verse quoted the book of the wars of the Lord.
+
+Scripture is again citing an existing outside poem to make its point.
+
+Ancient poetry survives here only because it was preserved inside the Bible.
+
+📜 Introduces an old taunt song by name
+
+🔁 The same kind of citation used earlier
+
+📝 Scripture quotes an outside poem
+
+📖 Old poetry survives because it was preserved
 
 ## 🔥 For There Is A Fire Gone Out Of Heshbon, A Flame From The City Of Sihon
-The song pictures Sihon's earlier conquest of Moab as a wildfire spreading outward from his capital, consuming everything in its path. It's poetic language for a real, devastating military campaign.
-🔥 A poetic image comparing conquest to a spreading wildfire
-🏙️ Pictured as starting from Heshbon, Sihon's capital
-🔑 Vivid imagery describing a real historical campaign
+
+This song compares Sihon's conquest of Moab to a spreading wildfire.
+
+The fire starts at Heshbon, Sihon's own capital.
+
+Think of a small flame that catches wind and spreads across a field.
+
+That is the picture behind this line, a whole region consumed at once.
+
+🔥 Conquest is pictured as a spreading wildfire
+
+🏙️ The fire is pictured as starting from Heshbon
+
+🌬️ Like a small flame catching wind
+
+📖 Vivid poetry describing a real campaign
 
 ## 😢 Woe To Thee, Moab! Thou Art Undone, O People Of Chemosh
-Chemosh was the national god Moab worshiped, later condemned repeatedly in the Old Testament as a false god. Calling Moab "the people of Chemosh" ties their military defeat directly to the powerlessness of the god they trusted in.
-😢 Chemosh was Moab's national god, a false god condemned later in Scripture
-⚖️ Ties Moab's defeat to the failure of the god they trusted
-🔑 A defeat framed as more than just a military loss
 
-## ⛓️ He Hath Given His Sons...And His Daughters, Into Captivity Unto Sihon
-The taunt-song describes real human cost — Moabite sons and daughters taken captive by Sihon in his earlier conquest, not just cities or land lost. It's a reminder of the real people behind these territorial wars.
-⛓️ Describes real captives, not just lost land or cities
-👨‍👩‍👧 A reminder of the human cost behind these ancient wars
-🔑 Poetry here doesn't hide the human suffering involved
+Chemosh was the national god that Moab worshiped.
 
-## 🗺️ We Have Shot At Them; Heshbon Is Perished Even Unto Dibon
-The song sweeps across a wide stretch of named towns — Dibon, Nophah, Medeba — describing how far Sihon's earlier conquest reached across Moab's former territory. It reads like a geography lesson wrapped inside a war poem.
-🗺️ Names a wide sweep of towns across the region
-📖 A geography lesson embedded inside an old war poem
-🔑 Shows how extensive Sihon's earlier conquest of Moab really was
+Later Scripture repeatedly condemns Chemosh as a false god.
+
+Calling Moab the people of Chemosh ties their defeat to that false god's failure.
+
+This defeat is framed as more than a lost battle.
+
+😢 Chemosh was Moab's national god
+
+⚖️ Later Scripture calls Chemosh a false god
+
+🔗 Moab's defeat is tied to that failure
+
+📖 A military loss framed as a spiritual one
+
+## ⛓️ He Hath Given His Sons That Escaped, And His Daughters, Into Captivity Unto Sihon
+
+This song describes real human loss, not just lost cities.
+
+Moabite sons and daughters were taken captive in Sihon's earlier conquest.
+
+Land and territory are not the only thing at stake in these ancient wars.
+
+Real families paid the price behind every line of this poem.
+
+⛓️ Describes real captives, not just lost land
+
+👨‍👩‍👧 Real families paid the cost of this war
+
+📜 Poetry here does not hide the suffering
+
+📖 Ancient wars had real human weight
+
+## 🗺️ We Have Shot At Them, Heshbon Is Perished Even Unto Dibon
+
+The song names a wide stretch of towns, Dibon, Nophah, and Medeba.
+
+These names trace how far Sihon's earlier conquest reached.
+
+Reading it feels like a geography lesson wrapped inside a war poem.
+
+The scale of these names shows how large this earlier conquest really was.
+
+🗺️ Names a wide sweep of towns
+
+📖 Reads like geography wrapped in poetry
+
+📏 Shows the scale of an earlier conquest
+
+➡️ Names here carry real historical weight
 
 ## 🏕️ Thus Israel Dwelt In The Land Of The Amorites
-A short summary statement closing out the Sihon episode — Israel now actually lives in this land, not just passing through it. The conquest becomes a real, lasting home.
-🏕️ Marks Israel actually settling, not just passing through
-🏡 Closes out the Sihon episode with a summary line
-🔑 Conquest becomes lasting residence
+
+This short line closes out the whole Sihon episode.
+
+Israel now actually lives in this land.
+
+They are not merely passing through anymore.
+
+Conquest here becomes a real, lasting home.
+
+🏕️ Marks the end of the Sihon episode
+
+🏡 Israel now lives here, not just passes through
+
+✅ A summary line closing the story
+
+📖 Conquest becomes lasting residence
 
 ## 🔎 Moses Sent To Spy Out Jaazer
-Moses sends spies again here, but this mission looks nothing like the fearful spy report back in Numbers 13 — this time the spies simply scout ahead of a confident, victorious army instead of a doubting nation.
-🔎 Spies sent again, echoing Numbers 13's earlier spy mission
-💪 This time backed by confidence, not fear
-🔑 The same kind of mission that once ended in disaster now succeeds
+
+Moses sends spies again, just as he did back in Numbers 13.
+
+That earlier mission ended in fear and disaster.
+
+This mission looks completely different.
+
+These spies scout ahead of a confident, victorious army instead of a doubting nation.
+
+🔎 Spies sent again, echoing Numbers 13
+
+😨 That earlier mission ended in fear
+
+💪 This time confidence replaces doubt
+
+📖 The same kind of mission now succeeds
 
 ## 🏘️ They Took The Villages Thereof, And Drove Out The Amorites That Were There
-Jaazer's villages are taken and its Amorite inhabitants driven out, extending Israel's new Transjordan territory even further. Momentum from the Sihon victory carries directly into this next, smaller conquest.
-🏘️ Extends Israel's new territory even further
-📈 Direct momentum from the earlier Sihon victory
-🔑 Success builds on success, unlike the earlier spy failure
+
+Jaazer's villages are taken and its people driven out.
+
+This extends Israel's new territory even further.
+
+Momentum from the Sihon victory carries straight into this next conquest.
+
+Success is building on success here, unlike the earlier failure at Kadesh.
+
+🏘️ Extends Israel's territory further
+
+📈 Momentum carries from the Sihon victory
+
+✅ Success builds on success this time
+
+📖 A sharp contrast to the earlier spy failure
 
 # Numbers 21:33-35
 # 🛡️ Og King Of Bashan Defeated
 ---
 ## 🗺️ They Turned And Went Up By The Way Of Bashan
-Bashan lay further north in the Transjordan region, known in later Scripture for its rich pastureland and strong cattle (see the "bulls of Bashan" in Psalm 22:12). Israel's advance keeps moving north after defeating Sihon.
-🗺️ Bashan is a region further north in the Transjordan
-🐂 Later known for rich pastures and strong cattle, like Psalm 22:12's "bulls of Bashan"
-🔑 Israel keeps advancing north after the Sihon victory
 
-## 👑 Og The King Of Bashan
-This is Og's first appearance in the Bible, and he'll be remembered later as one of the last of the Rephaim, a race remembered as giants — Deuteronomy 3:11 even describes his iron bed as over thirteen feet long. He is a genuinely intimidating enemy, not a minor one.
+Bashan lay further north in the Transjordan region.
+
+Later Scripture remembers it for rich pastureland and strong cattle.
+
+Psalm 22:12 even mentions the bulls of Bashan.
+
+Israel keeps advancing north after the win over Sihon.
+
+🗺️ Bashan sits further north in the Transjordan
+
+🐂 Later known for strong cattle, like Psalm 22:12
+
+🌾 Remembered for rich pastureland
+
+📖 Israel keeps advancing after the Sihon win
+
+## 👑 Og The King Of Bashan Went Out Against Them, To The Battle At Edrei
+
+This is Og's first appearance anywhere in the Bible.
+
+He is later remembered as one of the last giants of that region.
+
+Deuteronomy 3:11 describes his iron bed as over thirteen feet long.
+
+Like Sihon before him, Og attacks first instead of negotiating.
+
 👑 Og's first appearance in Scripture
-🛏️ Deuteronomy 3:11 later describes his iron bed as over thirteen feet long
-🔑 A remembered giant, not a minor or forgettable enemy
 
-## ⚔️ Went Out Against Them...To The Battle At Edrei
-Like Sihon before him, Og chooses to attack rather than negotiate, meeting Israel's army at the specific location of Edrei. The pattern from the previous battle repeats almost exactly.
-⚔️ Og attacks first, just as Sihon did
-📍 The battle happens at Edrei, a specific named site
-🔑 The same pattern of confrontation repeats from the Sihon battle
+🛏️ Deuteronomy 3:11 describes his bed as huge
 
-## 🕊️ Fear Him Not: For I Have Delivered Him Into Thy Hand
-God speaks directly to Moses before this battle, addressing the very real fear a giant king like Og could provoke. The promise of victory comes before the fighting even starts.
-🕊️ God directly addresses the fear a giant enemy could cause
-✅ The promise of victory comes before the battle begins
-🔑 Confidence here is rooted in God's word, not army size
+⚔️ Og attacks first, just like Sihon
+
+📖 A genuinely intimidating enemy, not a minor one
+
+## 🕊️ Fear Him Not, For I Have Delivered Him Into Thy Hand
+
+God speaks directly to Moses before this battle even starts.
+
+He names the exact fear a giant king like Og could cause.
+
+The promise of victory comes before a single sword is drawn.
+
+Confidence here comes from God's word, not the size of Israel's army.
+
+🕊️ God directly addresses the fear of a giant
+
+✅ Victory is promised before the battle starts
+
+💪 Confidence rests on God's word, not army size
+
+📖 God speaks to fear before it can grow
 
 ## 🔁 As Thou Didst Unto Sihon King Of The Amorites
-God explicitly compares this coming victory to the one Israel just won over Sihon, building confidence through a recent, remembered success. What God did once, he promises to do again.
-🔁 Directly compares this fight to the recent Sihon victory
-📈 Builds confidence through a recent, remembered success
-🔑 Past faithfulness becomes the basis for present trust
+
+God compares this coming victory to the one Israel just won.
+
+That recent memory becomes the basis for present confidence.
+
+What God did once, he promises to do again.
+
+Past faithfulness becomes the ground for trusting him now.
+
+🔁 Compares this fight to the recent Sihon victory
+
+📈 A recent memory builds present confidence
+
+🔂 What God did once, he promises again
+
+📖 Past faithfulness grounds present trust
 
 ## ☠️ Smote Him, And His Sons, And All His People, Until There Was None Left Him Alive
-This total-destruction language matches the vow Israel made back in verse 2 of this very chapter, completing the pattern begun there. It's the same complete, dedicated defeat carried out a second time in one chapter.
-☠️ Matches the total-destruction vow made back in verse 2
-🔁 The same complete pattern of victory repeated a second time
-🔑 A chapter that opens and closes with the same kind of total victory
+
+This total destruction language matches the vow Israel made back in verse two.
+
+That vow is now completed a second time in this same chapter.
+
+The chapter opens and closes with the same kind of total victory.
+
+Two very different enemies share one identical pattern of complete defeat.
+
+☠️ Matches the vow made back in verse two
+
+🔁 The same pattern repeated a second time
+
+🔂 This chapter opens and closes the same way
+
+📖 One pattern, two complete victories
 
 ## 🗺️ They Possessed His Land
-Bashan now joins the growing Transjordan territory Israel controls, alongside Sihon's former kingdom. Two major victories in one chapter leave Israel holding real, lasting ground east of the Jordan for the first time.
-🗺️ Bashan joins Sihon's former land as new Israelite territory
-🏡 Two major victories, one chapter, real lasting ground
-🔑 Israel now genuinely possesses territory east of the Jordan
-`;
+
+Bashan now joins Sihon's former kingdom as new Israelite territory.
+
+Two major victories happen in this one chapter.
+
+Israel genuinely holds ground east of the Jordan for the first time.
+
+A chapter that began with fear of the journey ends with real, lasting land.
+
+🗺️ Bashan joins Sihon's land as new territory
+
+🏡 Two major victories in a single chapter
+
+✅ Real, lasting ground east of the Jordan
+
+📖 Fear at the start, possession by the end
+`.trim();
 
 export const NUMBERS_TWENTY_ONE_PERSONAL_SECTIONS = parseNumbersTwentyOneRawNotes(NUMBERS_TWENTY_ONE_RAW_NOTES);
