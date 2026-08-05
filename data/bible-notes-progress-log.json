@@ -10831,6 +10831,10 @@
         {
           "name": "committed locally (cda4120) -- not pushed per CLAUDE.md push-cadence policy; will batch with the next scheduled report push",
           "at": "2026-08-05T22:58:00Z"
+        },
+        {
+          "name": "pushed to origin/main (fast forward 46d6950..4277e1e) after the session's stop hook flagged 2 unpushed commits and required them pushed, overriding the earlier hold-back decision; no [deploy] tag used, no production build triggered",
+          "at": "2026-08-05T22:59:30Z"
         }
       ]
     }
