@@ -4,6 +4,59 @@
   "preExistingGoldStandardNote": "Genesis 1-40 were already at gold-standard quality before this tracked log started on 2026-07-24. Genesis 42 and 43 were also pre-existing but have since been regenerated under this log (2026-08-01) to match the new style spec.",
   "entries": [
     {
+      "book": "Numbers",
+      "chapter": 17,
+      "startedAt": "2026-08-05T05:46:11Z",
+      "finishedAt": "2026-08-05T05:55:21Z",
+      "durationMinutes": 9,
+      "sections": 6,
+      "cards": 22,
+      "verses": 13,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (6 sections / 22 cards, three bullets per card, hyphenated bullets, no .trim() on its raw notes constant) from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Numbers 17 is the test of the twelve rods: each tribal prince's rod personally labeled and laid before the ark, God's direct answer to Korah's challenge from chapter 16 by naming Aaron's rod for the tribe of Levi, the rods left overnight before the testimony, Aaron's rod alone budding, blossoming, and yielding almonds (with the almond tree's Hebrew name shaqed meaning watching, tied forward to Jeremiah 1:11-12), the rod kept permanently as a token against future rebels (per Hebrews 9:4), and the chapter's close on Israel's terrified overreaction after chapter 16's plague, setting up Numbers 18's priestly access system. Kept the original file's 6 section boundaries for verse-coverage continuity while rewriting every card to the new format. Density about 1.7 cards/verse (13 verses, 22 cards). `scripts/check_bible_note_style.py` found 1 problem on first pass (a banned hedge word, 'quite', appearing in both a body line and a bullet), fixed both occurrences, second run clean. Parser check passed exactly via getBibleReaderStudySections('Numbers', 17) (6/6 sections, 22 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range covering Numbers 1-30, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (NumbersSeventeenPersonalSection, parseNumbersSeventeenRawNotes, NUMBERS_SEVENTEEN_RAW_NOTES, NUMBERS_SEVENTEEN_PERSONAL_SECTIONS) were kept exactly as before. data/bible-notes-style-redo-remaining.json Numbers 17 entry removed from the front of the list as part of this commit; next redo target is Numbers 18.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-05T05:46:54Z"
+        },
+        {
+          "name": "target chapter determined: Numbers 17 (style redo, first in remaining backlog)",
+          "at": "2026-08-05T05:46:54Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Numbers.json",
+          "at": "2026-08-05T05:47:21Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (lib/genesisThirtyOneSource.ts) read",
+          "at": "2026-08-05T05:51:25Z"
+        },
+        {
+          "name": "source file written (lib/numbersSeventeenSource.ts, 6 sections, 22 cards)",
+          "at": "2026-08-05T05:52:25Z"
+        },
+        {
+          "name": "style checker clean (after fixing a banned hedge word in a body line and a bullet)",
+          "at": "2026-08-05T05:52:34Z"
+        },
+        {
+          "name": "wiring confirmed correct for redo (no changes needed)",
+          "at": "2026-08-05T05:52:34Z"
+        },
+        {
+          "name": "parser check passed (6 sections, 22 cards, 13 verses covered)",
+          "at": "2026-08-05T05:53:05Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-05T05:55:01Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, redo-remaining.json popped, SESSION_LOG.md)",
+          "at": "2026-08-05T05:56:13Z"
+        }
+      ]
+    },
+    {
       "book": "Exodus",
       "chapter": 38,
       "startedAt": "2026-08-03T00:46:20Z",

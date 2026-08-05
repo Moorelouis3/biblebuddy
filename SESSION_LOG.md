@@ -751,3 +751,7 @@ Next up: Numbers 16
 ## 2026-08-05T04:57:34Z (hourly chapter notes run)
 Chapter: Numbers 16 | Duration: 11 min | Sections: 11 | Cards: 46 | Status: pass
 Next up: Numbers 17
+
+## 2026-08-05T05:56:13Z (hourly chapter notes run)
+Chapter: Numbers 17 | Duration: 9 min | Sections: 6 | Cards: 22 | Status: pass
+Next up: Numbers 18
