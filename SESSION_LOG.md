@@ -807,3 +807,7 @@ Next up: Numbers 30
 ## 2026-08-05T18:57:34Z (hourly chapter notes run)
 Chapter: Numbers 30 | Duration: 9 min | Sections: 7 | Cards: 23 | Status: pass
 Next up: Numbers 31
+
+## 2026-08-05T20:00:30Z (hourly chapter notes run)
+Chapter: Numbers 31 | Duration: 14 min | Sections: 13 | Cards: 52 | Status: pass
+Next up: Numbers 32

@@ -10589,6 +10589,59 @@
           "at": "2026-08-05T18:57:34Z"
         }
       ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 31,
+      "startedAt": "2026-08-05T19:46:31Z",
+      "finishedAt": "2026-08-05T20:00:30Z",
+      "durationMinutes": 14,
+      "sections": 13,
+      "cards": 52,
+      "verses": 54,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. First chapter of normal forward progress since the style-redo backlog emptied (data/bible-notes-style-redo-remaining.json was already empty at session start) -- no existing lib file for Numbers 31, wrote from scratch to docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Numbers 31 is the holy war against Midian, God's final task for Moses before his death (per Numbers 27:12-13): the twelve thousand man army led by Phinehas, the total defeat of Midian including the five kings (Zur being Cozbi's father from the Baalpeor plague of Numbers 25) and Balaam's death, Moses's fury that the women tied to that sin were spared, the harsh order regarding captives, the seven day purification law tied to Numbers 19, Eleazar's ordinance on purifying captured metal, the fifty-fifty plunder split with parallel priest/Levite tribute rates, the wealth totals, and the officers' voluntary atonement gift of gold. Split 54 verses into 13 sections of 2-7 verses, leaner through the repetitive tribute-math back half (32-47) per spec section 12, fuller through the narrative front half. Density about 0.96 cards/verse. Every card title is an exact contiguous KJV phrase; titles were trimmed before any semicolon present in the source verse (vv 27, 38, 39, 40, 47) so no banned punctuation entered the file. scripts/check_bible_note_style.py passed clean on the first run (52 cards, no problems). A manual section 13 eye check confirmed all four opening moves used correctly, meaning-first closes, no hyphens/em dashes/semicolons/contractions/banned words, and no duplicate titles. Parser check passed exactly via getBibleReaderStudySections('Numbers', 31) (13/13 sections, 52 cards, 54 verses, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: new import, preserveExactPhraseBodies range for Numbers extended from <= 30 to <= 31, and a new replaceStudySectionsForBookRange call added after Numbers 30. This was a NEW chapter, not a style redo, so data/bible-notes-style-redo-remaining.json was not touched.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-05T19:46:33Z"
+        },
+        {
+          "name": "target chapter determined: Numbers 31 (redo backlog empty, first uncovered chapter in canonical order, new chapter not a redo)",
+          "at": "2026-08-05T19:46:54Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Numbers.json",
+          "at": "2026-08-05T19:47:01Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (lib/genesisThirtyOneSource.ts) read",
+          "at": "2026-08-05T19:47:30Z"
+        },
+        {
+          "name": "source file written (lib/numbersThirtyOneSource.ts, 13 sections, 52 cards)",
+          "at": "2026-08-05T19:57:00Z"
+        },
+        {
+          "name": "style checker clean on first run",
+          "at": "2026-08-05T19:57:20Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 31, replaceStudySectionsForBookRange call added)",
+          "at": "2026-08-05T19:58:00Z"
+        },
+        {
+          "name": "parser check passed (13 sections, 52 cards, 54 verses, text verbatim)",
+          "at": "2026-08-05T19:59:00Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-08-05T19:59:51Z"
+        },
+        {
+          "name": "progress files logged (BIBLE_BUDDY_NOTES_PROGRESS.md, bible-notes-progress-log.json)",
+          "at": "2026-08-05T20:00:30Z"
+        }
+      ]
     }
   ]
 }
