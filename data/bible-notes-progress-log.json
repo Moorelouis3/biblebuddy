@@ -10772,6 +10772,63 @@
           "at": "2026-08-05T22:06:34Z"
         }
       ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 34,
+      "startedAt": "2026-08-05T22:45:45Z",
+      "finishedAt": "2026-08-05T22:56:40Z",
+      "durationMinutes": 11,
+      "sections": 7,
+      "cards": 22,
+      "verses": 29,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress chapter (redo backlog empty since Numbers 33) -- no existing lib file for Numbers 34, wrote from scratch to docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (29 verses). Numbers 34 is the formal boundary description of Canaan (south quarter from the wilderness of Zin and the salt sea, including a callback to Kadeshbarnea where the spies' unbelief in Numbers 13 cost the nation forty years; west border along the great sea; north border from mount Hor to the entrance of Hamath; east border down through the sea of Chinnereth, today's Sea of Galilee, to the Jordan), Moses' recap that only nine and a half tribes will divide this land since Reuben, Gad, and half of Manasseh already settled east of the Jordan in Numbers 32, and the closing roster of the twelve men appointed to divide it: Eleazar the priest and Joshua as the fixed leadership pair, then Caleb (the one familiar name, tied back to his faith as a spy in Numbers 13) and nine more tribal princes whose names appear nowhere else in scripture. This is a boundary-list and name-list chapter similar in shape to Numbers 33 and Numbers 7, so per spec section 12's guidance against padding restated content, the nine minor prince names in the closing section got 3 lean cards (the naming pattern itself, the Manasseh and Ephraim split worth explaining, and a closing summary) rather than one thin card per name, while the substantive boundary and inheritance verses got fuller 3-4 card treatment. Density about 0.76 cards/verse (29 verses, 22 cards), consistent with how Numbers 33 (0.64) and Numbers 7 (0.44) handled their own repetition-heavy stretches. Every card title is an exact contiguous KJV phrase per spec section 2. `scripts/check_bible_note_style.py` found 1 problem on first pass (the banned hedge word 'fairly'), fixed by rewording that body line, second run clean (22 cards, no problems). A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key term or place name in plain language, and closes on meaning rather than mechanics, with no hyphens, em dashes, semicolons, contractions, or banned filler/hedge words anywhere in the file, and no duplicate card titles among all 22. Parser check passed exactly via `getBibleReaderStudySections('numbers', 34)` (7/7 sections, 22 cards, 29 verses, text verbatim, no gaps or overlaps). `npx tsc --noEmit -p .` clean with zero errors. Wired into `lib/bibleReaderStudyNotes.ts`: new import, `preserveExactPhraseBodies` range for Numbers extended from `<= 33` to `<= 34`, and a new `replaceStudySectionsForBookRange(\"numbers\", 34, 34, NUMBERS_THIRTY_FOUR_PERSONAL_SECTIONS)` call added after the Numbers 33 call. This run hit the same recurring detached-HEAD / stale-local-ref issue noted in many prior entries (Numbers 8/10/12/13/14/33 among others): local HEAD looked far behind origin's last known ref, but `git fetch origin main` showed origin/main had actually already force-advanced to match local HEAD exactly (0 ahead/0 behind, no divergence, no work lost), so `git checkout -B main origin/main` restored a proper tracking branch before committing. Per CLAUDE.md's mandatory push-cadence policy, this run's commit is being held back rather than pushed immediately -- it will ride with the next scheduled report push (or go out sooner only if something else requires it) rather than triggering a speculative extra Vercel build. Next chapter: Numbers 35.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-05T22:45:45Z"
+        },
+        {
+          "name": "target chapter determined: Numbers 34 (redo backlog empty, normal forward progress, no existing lib file)",
+          "at": "2026-08-05T22:46:00Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Numbers.json (chapter 34, 29 verses)",
+          "at": "2026-08-05T22:47:15Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (lib/numbersThirtyThreeSource.ts) read",
+          "at": "2026-08-05T22:48:00Z"
+        },
+        {
+          "name": "source file written (lib/numbersThirtyFourSource.ts, 7 sections, 22 cards)",
+          "at": "2026-08-05T22:53:17Z"
+        },
+        {
+          "name": "style checker clean (1 problem found and fixed: banned hedge word 'fairly')",
+          "at": "2026-08-05T22:53:29Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 34, replaceStudySectionsForBookRange call added)",
+          "at": "2026-08-05T22:53:50Z"
+        },
+        {
+          "name": "parser check passed (7 sections, 22 cards, 29 verses, text verbatim)",
+          "at": "2026-08-05T22:54:14Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-08-05T22:54:14Z"
+        },
+        {
+          "name": "recovered stale local main ref (detached from origin) by fetching origin/main and confirming 0 ahead/0 behind, then checked out main tracking origin/main, no work lost",
+          "at": "2026-08-05T22:54:30Z"
+        },
+        {
+          "name": "progress files logged (BIBLE_BUDDY_NOTES_PROGRESS.md, bible-notes-progress-log.json)",
+          "at": "2026-08-05T22:56:40Z"
+        }
+      ]
     }
   ]
 }
