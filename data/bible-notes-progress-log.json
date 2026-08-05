@@ -10148,6 +10148,10 @@
         {
           "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, style-redo-remaining.json)",
           "at": "2026-08-05T11:55:27Z"
+        },
+        {
+          "name": "committed locally (6e5c1ff); push held back per CLAUDE.md push-cadence policy, will go out with next scheduled batch push",
+          "at": "2026-08-05T11:56:40Z"
         }
       ]
     }
