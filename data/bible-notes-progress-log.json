@@ -9564,6 +9564,59 @@
           "at": "2026-08-05T02:03:00Z"
         }
       ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 14,
+      "startedAt": "2026-08-05T02:46:20Z",
+      "finishedAt": "2026-08-05T02:56:32Z",
+      "durationMinutes": 10,
+      "sections": 9,
+      "cards": 61,
+      "verses": 45,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter, regenerating the original pre-spec version (9 sections / 61 cards, paragraph bodies, three bullets per card) from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The camp's despair and rebellion after the ten spies' evil report (loud public weeping, murmuring against Moses and Aaron, the plan to appoint a new captain back to Egypt), Moses and Aaron's intercessory posture and Caleb/Joshua's faith filled counter report (rent clothes, if the LORD delight in us, they are bread for us), the crowd's attempt to stone the two faithful spies interrupted by the glory of the LORD appearing, God's first proposed verdict (pestilence and disinheritance, the same offer to remake the nation through Moses alone already made once in Exodus 32), Moses' extended intercession quoting God's own self description from Exodus 34:6-7 back to Him, the pardon that still leaves the adult generation barred from the land while Caleb and Joshua are named exceptions for having another spirit and following the LORD fully, the sentence formalized with the wilderness generation's own despairing words in verse 2 turned back on them as the literal sentence, the forty years for forty scouting days correspondence and the children inheriting exactly what their parents feared losing, the ten spies dying immediately by plague while Caleb and Joshua live, and the closing presumptuous attack on Hormah that fails because the ark and Moses stay in camp, proving the difference between going with God and going without Him. Kept the original file's 9 section boundaries for verse coverage continuity while rewriting every card and title from scratch to exact KJV phrase titles per spec section 2. Density about 1.36 cards/verse (45 verses, 61 cards). scripts/check_bible_note_style.py found 2 problems on first pass (two bullets one and two words over the 8 word limit), fixed, second run clean. Parser check passed exactly via getBibleReaderStudySections('Numbers', 14) (9/9 sections, 61 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range covering Numbers 1-30, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (NumbersFourteenPersonalSection, parseNumbersFourteenRawNotes, NUMBERS_FOURTEEN_RAW_NOTES, NUMBERS_FOURTEEN_PERSONAL_SECTIONS) were kept exactly as before. Redo backlog entry popped; next redo target is Numbers 15. Per CLAUDE.md's mandatory push-cadence policy (commit locally every chapter, batch pushes to at most twice a day together with the daily report push), this chapter's commit was NOT pushed immediately; it will go out with the next scheduled report push or whenever Louis explicitly asks.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-05T02:46:20Z"
+        },
+        {
+          "name": "target chapter determined: Numbers 14 (style redo, first in remaining backlog)",
+          "at": "2026-08-05T02:46:46Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 14 (45 verses) from aruljohn/Bible-kjv GitHub raw mirror",
+          "at": "2026-08-05T02:47:20Z"
+        },
+        {
+          "name": "docs/bible-study-note-style.md and reference implementation (lib/genesisThirtyOneSource.ts) read in full",
+          "at": "2026-08-05T02:48:30Z"
+        },
+        {
+          "name": "wrote lib/numbersFourteenSource.ts (9 sections, 61 cards) matching the new style spec",
+          "at": "2026-08-05T02:53:00Z"
+        },
+        {
+          "name": "scripts/check_bible_note_style.py run: 2 problems found (two over length bullets), fixed, second run clean",
+          "at": "2026-08-05T02:54:00Z"
+        },
+        {
+          "name": "wiring confirmed already correct for this redo chapter (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call all pre-existing)",
+          "at": "2026-08-05T02:54:10Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections('Numbers', 14) returned 9 sections, 61 cards, text verbatim",
+          "at": "2026-08-05T02:55:10Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, zero errors",
+          "at": "2026-08-05T02:55:50Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, redo-remaining.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-08-05T02:56:32Z"
+        }
+      ]
     }
   ]
 }

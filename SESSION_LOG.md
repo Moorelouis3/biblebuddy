@@ -739,3 +739,7 @@ Next up: Numbers 13
 ## 2026-08-05T02:00:00Z (hourly chapter notes run)
 Chapter: Numbers 13 | Duration: 14 min | Sections: 7 | Cards: 46 | Status: pass
 Next up: Numbers 14
+
+## 2026-08-05T02:56:32Z (hourly chapter notes run)
+Chapter: Numbers 14 | Duration: 10 min | Sections: 9 | Cards: 61 | Status: pass
+Next up: Numbers 15
