@@ -799,3 +799,7 @@ Next up: Numbers 28
 ## 2026-08-05T16:54:53Z (hourly chapter notes run)
 Chapter: Numbers 28 | Duration: 9 min | Sections: 7 | Cards: 25 | Status: pass
 Next up: Numbers 29
+
+## 2026-08-05T17:55:05Z (hourly chapter notes run)
+Chapter: Numbers 29 | Duration: 9 min | Sections: 7 | Cards: 28 | Status: pass
+Next up: Numbers 30

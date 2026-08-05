@@ -81,458 +81,597 @@ function parseNumbersTwentyNineRawNotes(rawText: string): NumbersTwentyNinePerso
     });
   }
 
-  if (sections.length !== 11) {
-    throw new Error("Expected 11 Numbers 29 sections, received " + sections.length);
+  if (sections.length !== 7) {
+    throw new Error("Expected 7 Numbers 29 sections, received " + sections.length);
   }
 
   return sections;
 }
 
 const NUMBERS_TWENTY_NINE_RAW_NOTES = `# Numbers 29:1-6
-# 📯 Trumpets For The Seventh Month
+# 🎺 Trumpets For The Seventh Month
 ---
-## 🍂 In The Seventh Month, On The First Day Of The Month
-Israel counted its religious year starting with Nisan in the spring, the month of the Exodus, but the seventh month, later called Tishri, carried its own weight, almost like a "sabbath month" the way the seventh day of the week was already set apart.
-Nearly every major fall festival in Israel's whole calendar bunches up inside this one month: Trumpets on day one, the Day of Atonement on day ten, and the week-long Feast of Tabernacles from day fifteen through twenty-two.
+## 🍂 An Holy Convocation
 
-🍂 Tishri, the seventh month, falls in early autumn
+"Convocation" means a required sacred gathering, not a casual meeting.
 
-📆 Trumpets, Atonement, and Tabernacles all cluster into this single month
+This is the seventh month, called Tishri, arriving in early autumn.
 
-🔑 The number seven marking this month echoes the weekly Sabbath pattern
+Israel counted its year from Nisan in spring, the month of the Exodus.
 
-## 📯 Ye Shall Have An Holy Convocation...A Day Of Blowing The Trumpets
-This festival is built around a single sound: a blast from a ram's horn, called a shofar, not a metal instrument. In the ancient world, a blast like this announced that a king had arrived and everyone needed to pay attention.
-Later Jewish tradition renamed this day Rosh Hashanah, "head of the year," and treats the blast as a wake-up call to self-examination before the Day of Atonement ten days later.
+But Tishri carried its own weight, almost like a sabbath among months.
 
-📯 A ram's-horn blast (a shofar), not a metal trumpet
+Three major feasts cluster inside this single month.
 
-👑 The sound worked like an announcement that a king had arrived
+Trumpets on day one, Atonement on day ten, Tabernacles from day fifteen to twenty two.
 
-🔑 Later Judaism calls this day Rosh Hashanah, the start of the civil year
+🍂 Convocation means a required sacred gathering
+
+📆 Tishri opens Israel's autumn festival season
+
+🔟 Trumpets, Atonement, and Tabernacles fill this month
+
+📖 A whole month set apart for God
+
+## 🎺 A Day Of Blowing The Trumpets
+
+The trumpet here is a shofar, a ram's horn, not a metal instrument.
+
+In the ancient world, a horn blast like this announced a king's arrival.
+
+Everyone within earshot knew to stop and pay attention.
+
+Later Jewish tradition renamed this day Rosh Hashanah, meaning head of the year.
+
+That tradition treats the blast as a wake up call before repentance.
+
+🎺 A shofar is a ram's horn trumpet
+
+👑 The blast once announced a king's arrival
+
+🗓️ Later tradition calls this day Rosh Hashanah
+
+📖 The sound calls Israel to attention
 
 ## 🛑 Ye Shall Do No Servile Work
-"Servile work" means the ordinary paid or forced labor a hired servant would normally do all day, farming, trading, running a business. On this day, all of that stopped completely.
-This is the same rule used for every major festival day in Israel's calendar, so by this point in the year it was familiar and expected, not a surprise.
 
-🛑 "Servile work" means ordinary paid or forced labor
+"Servile work" means ordinary paid labor.
 
-🔁 The same rule already used for every major feast day
+It was the daily grind of a hired worker.
 
-🔑 A recognizable, expected pause, not a surprise
+On this day, all of that stopped completely.
 
-## 🐂 A Burnt Offering For A Sweet Savour...One Young Bullock, One Ram, And Seven Lambs
-This is actually a smaller offering than the routine monthly New Moon offering described back in Numbers 28:11, which called for two bullocks instead of one. A festival day didn't automatically mean a bigger sacrifice than an ordinary month.
-The reason becomes clear in verse 6: this day already has other offerings stacked underneath it, so the festival package itself can stay modest.
+This same rule already governed every festival day in Israel's calendar.
 
-🐂 One bullock here, smaller than the New Moon's two bullocks
+By now the command felt familiar, not surprising.
 
-📉 Festival days don't automatically mean bigger sacrifices
+🛑 Servile work means ordinary paid labor
 
-🔑 Verse 6 explains why: other offerings are already stacked underneath
+😴 All daily labor stopped for the day
 
-## 🌾 Their Meat Offering Shall Be Of Flour Mingled With Oil, Three Tenth Deals For A Bullock, And Two Tenth Deals For A Ram
-This is the same fixed ratio used throughout Numbers 28: more flour and oil for a bullock than a ram, and more for a ram than a lamb. The amount of grain offered always tracked the size of the animal it accompanied.
+🔁 The same rule covered every festival day
 
-🌾 The same fixed flour-to-animal ratio used all through Numbers 28
+📖 A familiar pause, not a surprise
 
-⚖️ Bigger animal, bigger grain portion
+## 🐂 One Young Bullock, One Ram, And Seven Lambs
 
-🔑 Nothing here is random, it's one consistent system
+This animal count is smaller than expected for a festival day.
 
-## 🐐 One Kid Of The Goats For A Sin Offering, To Make An Atonement For You
-Even on a joyful trumpet-blast celebration, a sin offering was still required. A burnt offering expressed devotion, but a sin offering specifically covered guilt the community may not have even realized it carried.
+Numbers 28:11 already required two bullocks for the routine monthly New Moon offering.
 
-🐐 A sin offering included even on a festival built around celebration
+Trumpets calls for only one bullock here.
 
-🙏 Burnt offerings express devotion; sin offerings deal with guilt
+Verse six explains why, other offerings already stack underneath this one.
 
-🔑 Joy and honesty about guilt sit side by side, just like in Numbers 28
+A festival day did not automatically mean a bigger sacrifice.
 
-## ➕ Beside The Burnt Offering Of The Month, And His Meat Offering, And The Daily Burnt Offering
-Trumpets always falls on the first day of the month, which means this day is a double celebration: it's the New Moon and the Feast of Trumpets on the very same day. Three separate layers of offering hit the altar at once: the twice-daily continual offering, the routine monthly New Moon offering, and now the Trumpets festival offering stacked on top of both.
-This is why the festival offering itself could stay small, it was never standing alone.
+🐂 One bullock here, fewer than New Moon's two
 
-➕ "Beside" means added on top of, not instead of
+📉 A festival day is not automatically bigger
 
-📚 Three layers of offering stack on this single day: daily, monthly, festival
+🧮 Verse six explains why the count looks small
 
-🔑 Explains why verse 2's animal count looks smaller than expected
+📖 Every number in this system carries a reason
 
-## 📏 According Unto Their Manner, For A Sweet Savour
-"After their manner" is legal shorthand. It means "using the standard ratios already spelled out earlier," so the text doesn't have to repeat every exact number all over again.
+## 🐐 To Make An Atonement For You
 
-📏 Shorthand for "using the ratios already established"
+Even a joyful trumpet blast day still required a sin offering.
 
-✂️ Saves the text from repeating the same numbers over and over
+A burnt offering expressed devotion to God.
 
-🔑 A phrase that will reappear constantly through the rest of the chapter
+A sin offering covered guilt the people may not have even noticed.
+
+Joy and honesty about guilt sit side by side here.
+
+🐐 A sin offering appears on a joyful day
+
+🙏 Burnt offerings express devotion to God
+
+😔 Sin offerings cover guilt people may not notice
+
+📖 Joy and honesty about sin travel together
+
+## ➕ According Unto Their Manner
+
+"According unto their manner" is legal shorthand.
+
+It means using the ratios already spelled out earlier.
+
+The phrase saves the text from repeating the same numbers.
+
+This day is also the New Moon.
+
+Trumpets always falls on day one of the month.
+
+Three layers of offering hit the altar at once here.
+
+The daily offering, the New Moon offering, and Trumpets itself.
+
+"Their drink offerings" means wine poured out beside the grain.
+
+✂️ After their manner means using the same ratios
+
+🌕 This day doubles as the New Moon too
+
+🍷 Drink offerings means wine poured with the grain
+
+📖 Three offerings stack on this single day
 
 # Numbers 29:7-11
-# 🕯️ The Day Of Atonement's Add-On Offering
+# 🕯️ Atonement's Extra Offering
 ---
 ## 📅 The Tenth Day Of This Seventh Month
-This fixed date is Yom Kippur, the Day of Atonement, the most solemn day on Israel's entire calendar. It falls exactly ten days after the trumpet blast of verse 1, giving the nation a short window to prepare.
 
-📅 A fixed date: the 10th day of the 7th month
+This fixed date is Yom Kippur, the Day of Atonement.
 
-🕯️ The most solemn day in Israel's whole calendar
+It is the most solemn day on Israel's entire calendar.
 
-🔑 Falls just ten days after the Trumpets of verse 1
+It falls exactly ten days after the trumpet blast of verse one.
+
+That gap gave the nation a short window to prepare.
+
+📅 A fixed date, the tenth day of Tishri
+
+🕯️ The most solemn day on Israel's calendar
+
+⏳ It falls ten days after Trumpets
+
+📖 A short window to prepare before this day
 
 ## 😔 Ye Shall Afflict Your Souls
-"Afflict your souls" is an old idiom for fasting and serious self-denial, not literal self-harm. It meant going without food and setting aside ordinary comforts for the day, so the whole nation could focus on repentance.
 
-😔 An idiom for fasting and self-denial, not physical harm
+"Afflict your souls" is an old idiom for fasting.
 
-🍽️ Israel went without food for the day
+It meant going without food for the whole day.
 
-🔑 A whole-nation pause built around repentance
+It also meant setting aside ordinary comforts and pleasures.
+
+The whole nation paused together to focus on repentance.
+
+😔 Afflict your souls is an idiom for fasting
+
+🍽️ Israel went without food for the entire day
+
+🙏 Ordinary comforts were set aside for the day
+
+📖 A whole nation paused together for repentance
 
 ## 🚫 Ye Shall Not Do Any Work Therein
-Every other festival day in this calendar bans "servile work," ordinary paid labor. This day goes further and bans "any work" at all, no exceptions. It's the strictest rest command in the whole chapter.
 
-🚫 Bans "any work," stricter wording than "servile work" elsewhere
+Every other festival day in this calendar bans servile work.
 
-🔒 The strictest rest command in this entire chapter
+That means ordinary paid or forced labor only.
 
-🔑 Matches how seriously Israel treated this one day
+This day goes further and bans any work at all.
 
-## 🐂 A Burnt Offering...One Young Bullock, One Ram, Seven Lambs...Without Blemish
-Like Trumpets before it, the animal package here stays modest, just one bullock. The real weight of this day wasn't in the size of this calendar sacrifice, it was in the elaborate, separate Day of Atonement ceremony described back in Leviticus 16.
+No exceptions were allowed on the Day of Atonement.
 
-🐂 A modest package again, just one bullock
+It stands as the strictest rest command in the whole chapter.
 
-📖 The day's real weight sits in Leviticus 16, not in this list
+🚫 This day bans any work at all
 
-🔑 "Without blemish" still applies, same standard as every other offering
+🔒 No exceptions were allowed on this one day
 
-## ⚖️ Their Meat Offering...After The Manner
-Same fixed ratio, same shorthand phrase already explained in verse 6. Grain and oil scale to match the bullock, ram, and lambs exactly the way they do everywhere else in this chapter.
+⚖️ Every other feast day only bans servile work
 
-⚖️ The same grain-to-animal ratio used all through the chapter
+📖 The strictest rest command in the whole chapter
 
-🔁 "After the manner" again, this time for the Atonement offerings
+## 🐐 Beside The Sin Offering Of Atonement
 
-🔑 Consistency itself is part of the design
+This calendar goat is an addition, not a replacement.
 
-## 🐐 One Kid Of The Goats For A Sin Offering, Beside The Sin Offering Of Atonement
-This line points back to the huge, separate ceremony in Leviticus 16, where the high priest offered a bull and two goats, one killed and one sent out into the wilderness as the "scapegoat," to cover the sins of the entire nation for the year. This calendar goat in Numbers 29 is an addition on top of that whole ceremony, not a replacement for it.
+Leviticus 16 describes the real Day of Atonement ceremony.
 
-🐐 Points back to the full Leviticus 16 Day of Atonement ceremony
+There the high priest offered a bull and two goats.
 
-🐏 That ceremony included the famous "scapegoat," sent away into the wilderness
+One goat was killed and one was sent into the wilderness.
 
-🔑 This is an add-on offering, not the main event of the day
+That second goat became known as the scapegoat.
+
+It carried the sins of the whole nation away for the year.
+
+🐐 This offering adds to a bigger ceremony
+
+🐏 One goat was sent away as the scapegoat
+
+🙏 It carried the nation's sin for the year
+
+📖 Leviticus 16 holds the fuller Atonement story
 
 # Numbers 29:12-16
-# 🌿 Tabernacles Begins: The Biggest Day Of Sacrifice
+# 🌿 Tabernacles Begins
 ---
-## 🌿 In The Fifteenth Day...Ye Shall Keep A Feast Unto The LORD Seven Days
-This is the Feast of Tabernacles, also called Sukkot or the Feast of Booths. Leviticus 23:42-43 explains the name: Israel built and lived in temporary leaf-and-branch shelters for the week, remembering how their ancestors lived in similarly fragile shelters during the wilderness wandering after the Exodus.
-It doubled as a fall harvest festival too, sometimes called the Feast of Ingathering, celebrated once the year's grain and fruit had all been gathered in.
+## 🌿 Ye Shall Keep A Feast Unto The LORD Seven Days
+
+This is the Feast of Tabernacles, also called Sukkot.
+
+Leviticus 23 explains why Israel kept this feast.
+
+Israel built and lived in temporary leaf shelters for the week.
+
+That remembered how their ancestors lived during the wilderness years.
+
+It doubled as a harvest festival too.
+
+Farmers called it the Feast of Ingathering once crops were gathered in.
 
 🌿 Also called Sukkot, the Feast of Booths
 
-🏕️ Israel lived in temporary leaf shelters for the week, per Leviticus 23:42-43
+🏕️ Israel lived in leaf shelters for the week
 
-🔑 Also a harvest festival, celebrating the year's gathered crops
+🌾 It doubled as a fall harvest festival
 
-## 🐂 Thirteen Young Bullocks, Two Rams, And Fourteen Lambs Of The First Year Without Blemish
-Thirteen bullocks in a single day is the largest animal count anywhere in this whole sacrificial calendar, bigger than Trumpets, bigger than Atonement, even bigger than the New Moon. Tabernacles closes out the religious year, and the offering size matches its importance as the last and longest festival before winter.
+📖 One week honored both wilderness and harvest
 
-🐂 The single largest bullock count in the entire calendar
+## 🐂 Thirteen Young Bullocks, Two Rams, And Fourteen Lambs
 
-📈 Marks Tabernacles as the year's biggest, longest festival
+Thirteen bullocks in a single day is the largest count in this whole calendar.
 
-🔑 The size of the offering again tracks the size of the occasion
+It is bigger than Trumpets, bigger than Atonement, bigger than the New Moon.
 
-## 📉 A Countdown Begins: Thirteen Bullocks Today, Twelve Tomorrow
-Something worth watching for across the rest of this chapter: the bullock count drops by exactly one every day of this seven-day feast, thirteen, twelve, eleven, all the way down to seven on the final day. Everything else, the two rams and fourteen lambs, stays fixed the whole week.
-Much later Jewish tradition (recorded in the Talmud, tractate Sukkah) reads real meaning into that math: thirteen down to seven adds up to seventy bullocks total across the week, a number tied to the seventy nations listed back in Genesis 10, read as Israel interceding on behalf of the whole world during this feast.
+Tabernacles closes out the religious year as its longest festival.
 
-📉 Bullocks drop by one each day: 13, 12, 11, 10, 9, 8, 7
+This number also opens a countdown that runs the rest of the chapter.
 
-🔢 Total across the week: seventy bullocks
+Watch the bullock count drop by one every day this week.
 
-🔑 Later tradition links seventy to the seventy nations of Genesis 10
+🐂 The largest single day bullock count yet
 
-## 🌾 Their Meat Offering...Three Tenth Deals For Every Bullock Of The Thirteen Bullocks, Two Tenth Deals To Each Ram
-With thirteen bullocks and two rams to account for, this is the most flour and oil measured out for any single day in the whole calendar, still following the exact same per-animal ratio used everywhere else in Numbers 28-29.
+📈 Bigger than Trumpets, Atonement, or the New Moon
 
-🌾 The largest single-day grain total in the whole calendar
+📉 A countdown begins that runs all week
 
-⚖️ Same per-animal ratio as every other offering
+📖 Tabernacles closes the year as its biggest festival
 
-🔑 A big feast just means the same formula run at a bigger scale
+## 📏 A Several Tenth Deal To Each Lamb
 
-## 📖 A Several Tenth Deal To Each Lamb Of The Fourteen Lambs
-"Several" is an old word for "a separate, individual" portion, not "many." Each of the fourteen lambs got its own measured tenth-deal of flour, counted out one at a time rather than dumped in as one large batch.
+"Several" is an old word for a separate portion.
 
-📖 "Several" means "one separate portion each," an old usage
+It does not mean many, the way it can today.
 
-🐑 Fourteen individual portions, one per lamb
+Each of the fourteen lambs got its own measured tenth deal of flour.
 
-🔑 Precision mattered even at the largest scale of the year
+The grain was counted out one lamb at a time.
 
-## 🐐 One Kid Of The Goats For A Sin Offering; Beside The Continual Burnt Offering
-Even at the year's largest, most joyful festival, a sin offering still closes out the list. The pattern holds one more time: celebration never replaced the ongoing need to deal honestly with guilt.
+Precision mattered even at the largest scale of the year.
 
-🐐 A sin offering closes the day, same as every major feast
+🔍 Several means a separate portion, not many
 
-🎉 Even the biggest celebration of the year includes this
+🐑 Each lamb got its own measured tenth deal
 
-🔑 A repeated reminder, not a one-time lesson
+⚖️ Each animal's grain was measured separately
 
-# Numbers 29:17-19
-# 🐂 Day Two: The Countdown Continues
+📖 Precision mattered even at the year's largest offering
+
+## 🔥 Beside The Continual Burnt Offering
+
+This sin offering closes verse sixteen.
+
+It sits on top of the offering that never stops.
+
+The continual burnt offering ran morning and evening every day of the year.
+
+Even the biggest festival never paused that underlying daily rhythm.
+
+Celebration never replaced the steady, ongoing offering underneath it.
+
+🔥 The continual offering ran every morning and evening
+
+🐐 A sin offering still stacks on top
+
+🎉 Even festival days did not pause this rhythm
+
+📖 Celebration never replaced the ongoing daily offering
+
+# Numbers 29:17-25
+# 📉 Days Two Through Four
 ---
-## 🐂 On The Second Day, Twelve Young Bullocks, Two Rams, Fourteen Lambs
-The countdown from verse 13 continues right on schedule: one fewer bullock than yesterday. The rams and lambs stay exactly the same, two rams and fourteen lambs, every single day of the feast. Only the bullock count moves.
+## 🐂 Twelve Young Bullocks, Two Rams, Fourteen Lambs
+
+Day two drops the bullock count by exactly one.
+
+Yesterday's offering called for thirteen bullocks.
+
+Today calls for twelve instead.
+
+The rams and lambs stay fixed at two and fourteen.
+
+Only the bullock number moves from day to day.
 
 🐂 Twelve bullocks, one fewer than day one
 
-🐑 Rams and lambs stay fixed at two and fourteen all week
+🐑 Rams and lambs stay fixed all week
 
-🔑 Only the bullock number changes day to day
+📉 Only the bullock count changes daily
 
-## ⚖️ Their Meat Offering And Their Drink Offerings...Shall Be According To Their Number, After The Manner
-Rather than re-listing every exact measurement again, the text just says "after the manner," meaning "use the same ratios already spelled out for day one." It's a shortcut, not a gap.
+📖 A steady countdown running under the feast
 
-⚖️ Shorthand for "use the ratios already given"
+## ✂️ According To Their Number, After The Manner
 
-✂️ Saves rewriting the same numbers seven times over
+"After the manner" points back to the ratios given for day one.
 
-🔑 The same shortcut phrase used throughout Numbers 28 too
+It means using those same fixed ratios again.
 
-## 🐐 One Goat For A Sin Offering; Beside The Continual Burnt Offering
-Same closing pattern as every day so far: a sin offering, stacked on top of the twice-daily continual offering that never stops running underneath the whole festival week.
+The text does not need to repeat every number a second time.
 
-🐐 The same sin-offering close as every day this week
+This same shorthand phrase will return on every remaining day of the feast.
 
-🔥 The daily continual offering keeps running underneath it all
+✂️ After the manner means using day one's ratios
 
-🔑 A pattern repeated on purpose, not by accident
+🔁 It saves the text from repeating every number
 
-# Numbers 29:20-22
-# 🐂 Day Three: Eleven Bullocks
----
-## 🐂 On The Third Day Eleven Bullocks, Two Rams, Fourteen Lambs Of The First Year Without Blemish
-The countdown drops to eleven. By now the pattern is unmistakable: one fewer bullock than the day before, everything else identical.
+📏 This phrase returns again on each remaining day
+
+📖 Only the totals change, not the formula
+
+## 🐂 Eleven Bullocks, Two Rams, Fourteen Lambs
+
+Day three drops the count to eleven.
+
+The pattern is now unmistakable.
+
+One fewer bullock than the day before, every single day.
+
+Rams and lambs have not changed since day one.
 
 🐂 Eleven bullocks, continuing the countdown
 
-🔁 Identical ram and lamb counts for the third day running
+🔁 The pattern is now fully established
 
-🔑 The pattern is now fully established
+🐑 Rams and lambs still have not changed
 
-## ⚖️ According To Their Number, After The Manner
-The same shorthand phrase carries the reader through day after day without repeating the full measurement list. Once a reader recognizes it, the rest of the chapter reads much faster.
+📖 One fewer bullock, day after day
 
-⚖️ The same shorthand seen on day two
+## 🐂 Ten Bullocks, Two Rams, And Fourteen Lambs
 
-📖 Lets the text move quickly through repeated days
+Day four brings the count down to ten.
 
-🔑 Recognizing it makes the whole chapter easier to follow
+Thirteen down to seven marks the whole week's countdown.
 
-## 🐐 One Goat For A Sin Offering; Beside The Continual Burnt Offering, And His Meat Offering, And Their Drink Offerings
-Day three closes exactly like days one and two, a sin offering on top of the never-stopping continual offering.
+Ten sits exactly at its midpoint.
 
-🐐 The same closing formula, third day in a row
+Three more days of the countdown remain after this one.
 
-🔥 The continual offering never pauses
+🐂 Ten bullocks, the countdown's exact midpoint
 
-🔑 Consistency is the whole point of this calendar
+📊 Halfway through the seven day feast
 
-# Numbers 29:23-25
-# 🐂 Day Four: The Middle Of The Week
+⏳ Three more days of counting down remain
+
+📖 The pattern holds steady through the middle
+
+# Numbers 29:26-34
+# 🔥 Countdown To Seven
 ---
-## 🐂 And On The Fourth Day Ten Bullocks, Two Rams, And Fourteen Lambs Of The First Year Without Blemish
-Ten bullocks marks the midpoint of the seven-day countdown, thirteen down to seven, with day four sitting right in the middle at ten.
+## 🐂 Nine Bullocks, Two Rams, And Fourteen Lambs
 
-🐂 Ten bullocks, the countdown's midpoint
+Day five continues the steady drop.
 
-📊 Halfway through the seven-day feast
+Nine bullocks are called for today.
 
-🔑 Three more days of the countdown remain
+Only two days remain in the feast after this one.
 
-## ⚖️ Their Meat Offering And Their Drink Offerings...According To Their Number, After The Manner
-The fourth repetition of the same shorthand, still pointing back to the same fixed ratios first spelled out for day one's thirteen bullocks.
-
-⚖️ Fourth appearance of the same shorthand phrase
-
-🔁 Still points back to day one's original ratios
-
-🔑 The formula never changes, only the totals do
-
-## 🐐 One Kid Of The Goats For A Sin Offering; Beside The Continual Burnt Offering
-The sin offering closes day four exactly as it has every day this week, a steady rhythm underneath the shrinking bullock count.
-
-🐐 Same sin-offering close, day four
-
-🎯 A steady rhythm despite the shrinking numbers above it
-
-🔑 The constants matter as much as what's changing
-
-# Numbers 29:26-28
-# 🐂 Day Five: Nine Bullocks
----
-## 🐂 And On The Fifth Day Nine Bullocks, Two Rams, And Fourteen Lambs Of The First Year Without Spot
-Nine bullocks continues the steady one-per-day drop. Only two days remain after this one.
+The countdown has not broken its pattern once.
 
 🐂 Nine bullocks, day five of the countdown
 
-⏳ Two days left in the feast
+⏳ Two days remain in the feast
 
-🔑 The pattern holds without exception
+🔁 The pattern has not broken once
 
-## ⚖️ According To Their Number, After The Manner
-The same shorthand carries through a fifth time, letting the text move through the week's repeating structure without restating every measurement.
+📖 Steady repetition is the point, not filler
 
-⚖️ Fifth use of the same shorthand phrase
+## 🐂 Eight Bullocks, Two Rams, And Fourteen Lambs
 
-📏 Still the same ratios from day one
+Day six brings the count to eight.
 
-🔑 Repetition is the chapter's own built-in memory aid
+Only one day remains after this one.
 
-## 🐐 One Goat For A Sin Offering; Beside The Continual Burnt Offering, And His Meat Offering, And His Drink Offering
-Day five closes the same way every day has, a sin offering layered on the never-ending daily offering.
+The number seven is coming next.
 
-🐐 Same closing formula, day five
+Every other part of the offering stays exactly the same.
 
-🔥 The continual offering still hasn't paused once all week
+🐂 Eight bullocks, one step from the final number
 
-🔑 Five days in, the rhythm hasn't broken once
+⏳ Only one day remains after this one
 
-# Numbers 29:29-31
-# 🐂 Day Six: One Day Left
----
-## 🐂 And On The Sixth Day Eight Bullocks, Two Rams, And Fourteen Lambs Of The First Year Without Blemish
-Eight bullocks, one more day of the countdown to go before it reaches its final number, seven.
+🔢 Seven is the number coming up next
 
-🐂 Eight bullocks, the countdown's second-to-last step
+📖 The finish line of the countdown is near
 
-⏳ Only one day of the feast remains after this
+## 🐂 And On The Seventh Day Seven Bullocks
 
-🔑 The number seven is coming up next
+Seven bullocks closes the countdown that began at thirteen.
 
-## ⚖️ Their Meat Offering And Their Drink Offerings For The Bullocks...According To Their Number, After The Manner
-The sixth appearance of the same shorthand phrase, still resting on the exact ratios given back in verse 14.
+Add up every day's bullocks across the whole week.
 
-⚖️ Sixth use of the shorthand phrase
+Thirteen, twelve, eleven, ten, nine, eight, seven.
 
-🔁 Unchanged since verse 14
+That list totals exactly seventy.
 
-🔑 By now a reader can predict this line before reading it
+Later Jewish tradition ties seventy to the seventy nations of Genesis chapter ten.
 
-## 🐐 One Goat For A Sin Offering; Beside The Continual Burnt Offering, His Meat Offering, And His Drink Offering
-Day six closes exactly like every day before it. Only one more day of this rhythm remains.
+That tradition comes from a later Jewish writing called the Talmud.
 
-🐐 The same sin offering, sixth day running
-
-🔚 One day of the pattern left
-
-🔑 The finish line is now in sight
-
-# Numbers 29:32-34
-# 🎉 Day Seven: The Countdown Completes
----
-## 🐂 And On The Seventh Day Seven Bullocks, Two Rams, And Fourteen Lambs Of The First Year Without Blemish
-Seven bullocks closes the countdown that began at thirteen on day one. Add up every day's bullocks, thirteen, twelve, eleven, ten, nine, eight, seven, and the total comes to exactly seventy across the week.
+It reads this feast as Israel praying for the whole world.
 
 🐂 Seven bullocks, the countdown's final number
 
-➕ 13+12+11+10+9+8+7 = seventy total across the week
+➕ Thirteen down to seven totals seventy
 
-🔑 A tidy, deliberate finish, not a coincidence
+🌍 Later tradition ties seventy to Genesis's seventy nations
 
-## 🌿 The Seventh Day Of A Seven-Day Feast In The Seventh Month
-This day stacks the number seven three different ways at once: the seventh day, of a seven-day feast, inside the seventh month. In a culture where seven already meant completeness (six days of work plus a seventh day of rest), this triple-seven closing day marked Tabernacles as the true completion of Israel's entire religious year.
+📖 A tidy, deliberate finish, not a coincidence
 
-🌿 Seven, times seven, times seven, all in one day
+## 🔥 His Meat Offering, And His Drink Offering
 
-✅ Seven already meant "complete" throughout Israel's calendar
+This same closing trio appears on day five, six, and seven.
 
-🔑 Tabernacles closes the religious year on its most complete-feeling day
+A sin offering, the continual burnt offering, and its drink offering.
 
-## ⚖️ According To Their Number, After The Manner...One Goat For A Sin Offering
-The final day of the countdown closes exactly like all six before it, same ratios, same sin offering, same continual offering running underneath. The consistency itself is the last lesson of the week.
+None of these three ever changed across the whole week.
 
-⚖️ The same shorthand and sin offering one final time
+Only the bullock count above them ever moved.
 
-🔁 Total consistency across all seven days
+Consistency itself carried a lesson about God's unchanging character.
 
-🔑 A whole week built on one unchanging foundation
+🔥 The same closing trio repeats every day
+
+🐐 A sin offering sits inside all seven days
+
+🍷 Drink offerings never varied across the week
+
+📖 Only the bullock count above ever changed
 
 # Numbers 29:35-38
-# 🕯️ The Eighth Day: A Quiet Close
+# 🕯️ The Eighth Day
 ---
-## 🕯️ On The Eighth Day Ye Shall Have A Solemn Assembly
-Every other festival day in this chapter used the phrase "holy convocation." This day uses different wording, translated "solemn assembly," from a Hebrew word that means something closer to "held back" or "detained," as if the people were being asked not to leave just yet.
-Later Jewish tradition named this extra day Shemini Atzeret, "the eighth day of holding back," treated as its own separate, quieter holiday tacked onto the end of the bigger Tabernacles week.
+## 🕯️ A Solemn Assembly
 
-🕯️ Different wording than "holy convocation," used everywhere else
+Every other festival day in this chapter used the phrase holy convocation.
 
-✋ Carries the sense of being "held back," not wanting to let go
+This closing day uses different wording, translated solemn assembly.
 
-🔑 Later Judaism names it Shemini Atzeret, its own separate holy day
+The Hebrew word behind it means something closer to held back.
+
+It carries the sense of the people not being allowed to leave yet.
+
+Later Jewish tradition named this day Shemini Atzeret, the eighth day of holding back.
+
+Centuries later, John 7:37 is set during this very feast.
+
+Jesus stood up and offered living water to anyone thirsty.
+
+🕯️ Solemn assembly replaces holy convocation here
+
+✋ The Hebrew sense is being held back
+
+🗓️ Later tradition names this day Shemini Atzeret
+
+📖 John 7:37 sets Jesus at this very feast
 
 ## 🛑 Ye Shall Do No Servile Work Therein
-The same labor-stopping rule used throughout the chapter closes out even this final, quieter day. The rest requirement never eased up, even after a full week of festival activity.
 
-🛑 The same servile-work rule, one last time
+The same labor rule used all chapter closes out even this quiet day.
 
-😮‍💨 Rest didn't ease up even after a long festival week
+It bans only servile work, the ordinary paid labor of a hired worker.
 
-🔑 The calendar's basic rules hold steady to the very end
+That is a lighter rule than Atonement's ban on any work at all.
 
-## 🐂 One Bullock, One Ram, Seven Lambs Of The First Year Without Blemish
-After a week that peaked at thirteen bullocks, the offering suddenly drops back down to just one, the smallest package in the whole two-chapter calendar, matching the modest size used for Trumpets back in verse 2. After the grandest week of the year, the calendar closes quietly instead of with one more large celebration.
+Rest still mattered even after a long festival week.
 
-🐂 Drops to one bullock, the smallest count in the whole calendar
+🛑 The same servile work rule closes the calendar
 
-📉 A striking contrast to day one's thirteen bullocks
+⚖️ Lighter than Atonement's ban on any work
 
-🔑 The year's biggest festival ends on its smallest note
+😮 Rest still mattered after a long festival week
 
-## 📜 That Great Day Of The Feast
-Centuries later, John 7:37 describes Jesus standing up "on the last day, that great day of the feast" during this very festival, and crying out that anyone thirsty should come to Him for living water. Many readers connect that moment to this eighth day specifically, the quiet, climactic close of Tabernacles that this chapter describes.
+📖 Basic rules held firm to the very end
 
-📜 A New Testament echo, John 7:37, set during this same feast
+## 🐂 One Bullock, One Ram, Seven Lambs
 
-💧 Jesus offers "living water" on the feast's climactic day
+After a week that peaked at thirteen bullocks, the offering drops back to one.
 
-🔑 Tabernacles' themes of harvest and God's presence carry into the New Testament
+This is the smallest package in the whole two chapter calendar.
+
+It matches the modest size used for Trumpets back in verse two.
+
+The year's biggest festival closes quietly instead of with one more large offering.
+
+🐂 Drops to one, the smallest count of all
+
+📉 A striking contrast to day one's thirteen
+
+🎺 It matches the modest size of Trumpets
+
+📖 The biggest festival ends on the smallest note
 
 # Numbers 29:39-40
-# 📜 Vows, Freewill Gifts, And What Moses Passed On
+# 📜 Vows, Freewill Gifts, And Moses' Report
 ---
-## 📜 These Things Ye Shall Do Unto The LORD In Your Set Feasts, Beside Your Vows, And Your Freewill Offerings
-Everything listed across Numbers 28-29, the daily, weekly, monthly, and yearly offerings, was the required minimum, not the ceiling. "Vows" were promises made to God, often during a crisis or a prayer for help, paid once the need had passed. "Freewill offerings" were extra gifts nobody required, given simply out of gratitude.
+## 🎁 Beside Your Vows, And Your Freewill Offerings
 
-📜 Everything in chapters 28-29 was the required floor, not the limit
+Everything listed across chapters twenty eight and twenty nine was a required floor.
 
-🙏 Vows: promises made to God, paid once answered
+It was never meant as a ceiling on what Israel could give.
 
-🎁 Freewill offerings: extra gifts nobody required
+A vow was a promise made to God, often during a crisis.
+
+It was paid once the crisis had passed.
+
+A freewill offering was an extra gift nobody required.
+
+It was given simply out of gratitude.
+
+📜 The two chapters together set the floor
+
+🙏 A vow is a promise paid once answered
+
+🎁 A freewill offering is extra, given freely
+
+📖 Required offerings were the minimum, never the limit
 
 ## 🍽️ Your Peace Offerings
-A peace offering was a shared meal built around a sacrifice: portions burned for God, portions given to the priests, and the rest eaten by the person who brought it, together with family and friends. Unlike a sin offering, which dealt with guilt, a peace offering celebrated an already-good relationship with God.
 
-🍽️ A shared meal offering, not just smoke on an altar
+A peace offering was a shared meal built around a sacrifice.
 
-🤝 Portions went to God, the priest, and the offerer's own table
+Part of the animal was burned for God.
 
-🔑 Celebrated a relationship already at peace, not a debt owed
+Part went to the priests.
 
-## ✅ And Moses Told The Children Of Israel According To All That The LORD Commanded Moses
-This closing line matches the opening line of chapter 28, where Moses was first told to "command the children of Israel" with this exact calendar. The two chapters bookend each other: God gives the command, and Moses faithfully passes on every detail, without editing or shortening it.
+The rest was eaten by the family who brought it.
 
-📖 Bookends the opening command back in Numbers 28:1-2
+A sin offering dealt with guilt.
 
-✅ Confirms Moses passed the whole calendar on faithfully
+A peace offering celebrated a relationship already at peace with God.
 
-🔑 Nothing in this long list got left out or simplified along the way
+🍽️ A peace offering was a shared meal
+
+🔥 Part burned for God, part for the priest
+
+👪 The rest was eaten by the offerer's family
+
+📖 It celebrated peace already made with God
+
+## ✅ According To All That The LORD Commanded Moses
+
+This closing line matches the opening line of Numbers chapter twenty eight.
+
+There Moses was first told to command Israel with this exact calendar.
+
+The two chapters bookend each other from start to finish.
+
+God gave the command, and Moses passed on every detail faithfully.
+
+Nothing in this long calendar was left out or shortened along the way.
+
+✅ This bookends chapter twenty eight's opening line
+
+📋 God commanded, and Moses passed it on fully
+
+🔁 Nothing here got shortened or left out
+
+📖 A faithful messenger for a very long list
 `.trim();
 
 export const NUMBERS_TWENTY_NINE_PERSONAL_SECTIONS = parseNumbersTwentyNineRawNotes(NUMBERS_TWENTY_NINE_RAW_NOTES);
