@@ -9617,6 +9617,59 @@
           "at": "2026-08-05T02:56:32Z"
         }
       ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 15,
+      "startedAt": "2026-08-05T03:47:02Z",
+      "finishedAt": "2026-08-05T03:57:26Z",
+      "durationMinutes": 10,
+      "sections": 9,
+      "cards": 51,
+      "verses": 41,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter, regenerating the original pre-spec version (9 sections / 55 cards, three bullets per card, no `.trim()` on its raw notes constant, inter-card `---` separators) from scratch to match `docs/bible-study-note-style.md`. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The graduated grain and drink offering scale for lamb, ram, and bullock, the one law for native Israelite and sojourning foreigner repeated three separate times across the chapter (general worship, personal forgiveness, and the heave offering), the heave offering of the first of the dough (later known as challah) paralleling the threshingfloor firstfruits pattern, the sharp legal distinction between the whole camp's unwitting mistake and one person's unwitting mistake versus deliberate presumptuous sin that gets no forgiveness clause at all, the real case of the man caught gathering sticks on the Sabbath that settles the missing method for carrying out the already existing death penalty, and the closing tassels law (tzitzit, the costly tekhelet blue dye linking ordinary clothing to the tabernacle, and the idiom of going a whoring after one's own heart and eyes as unfaithfulness rather than literal sin). Kept the original file's 9 section boundaries for verse coverage continuity while rewriting every card and title from scratch to exact KJV phrase titles per spec section 2, following `lib/genesisThirtyOneSource.ts` as the structural reference (no `---` separators between cards within a section, only after the section title line, which differs from how the old pre-spec file and some earlier redo chapters were formatted). Density about 1.24 cards/verse (41 verses, 51 cards). `scripts/check_bible_note_style.py` was clean on the first run, no problems found. Parser check passed exactly via `getBibleReaderStudySections('Numbers', 15)` (9/9 sections, 51 cards, text verbatim). `npx tsc --noEmit -p .` clean with zero errors. Wiring in `lib/bibleReaderStudyNotes.ts` was already correct for this redo chapter (import, preserveExactPhraseBodies range covering Numbers 1-30, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (NumbersFifteenPersonalSection, parseNumbersFifteenRawNotes, NUMBERS_FIFTEEN_RAW_NOTES, NUMBERS_FIFTEEN_PERSONAL_SECTIONS) were kept exactly as before. Redo backlog entry popped; next redo target is Numbers 16.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-05T03:47:02Z"
+        },
+        {
+          "name": "target chapter determined: Numbers 15 (style redo, first in remaining backlog)",
+          "at": "2026-08-05T03:47:02Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Numbers.json",
+          "at": "2026-08-05T03:47:02Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (lib/genesisThirtyOneSource.ts) read",
+          "at": "2026-08-05T03:47:02Z"
+        },
+        {
+          "name": "source file written: lib/numbersFifteenSource.ts (9 sections, 51 cards)",
+          "at": "2026-08-05T03:54:07Z"
+        },
+        {
+          "name": "scripts/check_bible_note_style.py run: clean on first pass, no problems found",
+          "at": "2026-08-05T03:54:07Z"
+        },
+        {
+          "name": "wiring confirmed already correct for this redo chapter (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call all pre-existing)",
+          "at": "2026-08-05T03:54:07Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections('Numbers', 15) returned 9 sections, 51 cards, text verbatim",
+          "at": "2026-08-05T03:54:07Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, zero errors",
+          "at": "2026-08-05T03:56:22Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, redo-remaining.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-08-05T03:57:26Z"
+        }
+      ]
     }
   ]
 }
