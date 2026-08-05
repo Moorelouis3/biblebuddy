@@ -89,314 +89,471 @@ function parseNumbersThirtyRawNotes(rawText: string): NumbersThirtyPersonalSecti
 }
 
 const NUMBERS_THIRTY_RAW_NOTES = `# Numbers 30:1-2
-# 📜 The Law Of Vows Begins
+# 📜 Moses Delivers The Law Of Vows
 ---
-## 🗣️ Moses Spake Unto The Heads Of The Tribes
-The last two chapters ended with a quick mention of vows and freewill offerings tucked in among the festival calendar (Numbers 29:39). This chapter stops to explain, in full, exactly how a vow works and who has the authority to confirm or cancel one.
-It's given to the heads of the tribes first, the family and clan leaders, because this is a law that plays out inside individual households, not something the priests would enforce at the altar.
+## 🏛️ The Heads Of The Tribes
 
-📜 Follows directly from the vow mentioned back in 29:39
+"Heads of the tribes" means the leaders of Israel's twelve family lines.
 
-🏘️ Addressed to tribal and family leaders first, not the whole camp
+Earlier laws in this book were announced to the whole camp or handed to the priests.
 
-🔑 A household law, not an altar law
+This one goes straight to those household leaders instead.
+
+A vow was a private promise inside a family, not a sacrifice at the altar.
+
+The men responsible for enforcing it were the ones who heard it first.
+
+🏛️ Tribal heads means family and clan leaders
+
+📜 Earlier laws addressed the whole camp
+
+🏠 This law is aimed at households
+
+📖 Household leaders heard this law first
 
 ## ✅ This Is The Thing Which The LORD Hath Commanded
-This short line is a formula used across the Law to mark the start of a new, distinct set of instructions. It tells the reader this isn't Moses' personal advice about promises, it's a direct command from God.
 
-✅ A standard opening formula for a new law section
+This exact sentence works like a stamp used across the Law.
 
-📖 Signals this is God's command, not Moses' own idea
+It marks the start of a new, separate set of instructions.
 
-🔑 Prepares the reader for a fully new topic
+Numbers 29 ended with nearly the same words in reverse order.
 
-## 🗣️ If A Man Vow A Vow Unto The LORD, Or Swear An Oath To Bind His Soul With A Bond
-The Hebrew behind this verse actually uses two different words. A "vow" usually meant promising to *do* something for God, like bringing an offering. A "bond" (sometimes translated oath) usually meant promising to *not* do something, like giving up food or wine for a set time.
+That link ties the vow law directly to the chapter just before it.
 
-🗣️ A "vow" often promised to do something
+This is God's command, not Moses' own personal opinion.
 
-🚫 A "bond" often promised to give something up
+✅ A formula marking a new law section
 
-🔑 Both kinds of promise are covered by this one law
+🔗 Ties directly back to Numbers 29's ending
 
-## ⚖️ He Shall Not Break His Word, He Shall Do According To All That Proceedeth Out Of His Mouth
-Whatever a man said out loud to God, he was required to actually carry out. In this culture, a spoken vow carried the same weight as a signed contract does today, there was no "I didn't really mean it."
+📋 Marks God's command, not Moses' opinion
 
-⚖️ Spoken words were treated like a signed contract
+📖 Two chapters meant to be read together
 
-🙅 No excuse for a grown man to back out later
+## 🗣️ Swear An Oath To Bind His Soul With A Bond
 
-🔑 This baseline rule is what the rest of the chapter adjusts for others
+The Hebrew behind this verse actually uses two separate words.
+
+A vow usually meant promising to do something for God.
+
+A bond, sometimes translated oath, usually meant promising to give something up.
+
+Fasting, or avoiding wine, are both examples of a bond.
+
+Both kinds of promise carried the same binding weight before the LORD.
+
+🗣️ A vow usually promised to do something
+
+🚫 A bond usually meant giving something up
+
+🍷 Fasting or avoiding wine counted as a bond
+
+📖 Both kinds of promise bound a person fully
+
+## ⚖️ He Shall Not Break His Word
+
+Whatever a man said out loud to God, he had to carry out.
+
+In this culture, a spoken vow carried the same weight as a signed contract today.
+
+Think of promising something in front of witnesses at a wedding.
+
+Walking it back afterward was never treated as a small thing.
+
+There was no room here for a grown man to say he did not mean it.
+
+⚖️ Spoken words worked like a signed contract
+
+🤝 Culture treated a vow as a public promise
+
+🙅 No excuse to say he changed his mind
+
+📖 A spoken vow could not be walked back
 
 # Numbers 30:3-5
 # 👧 A Daughter's Vow, Weighed By Her Father
 ---
-## 🏠 A Woman Also Vow A Vow...Being In Her Father's House In Her Youth
-"In her father's house, in her youth" is the key phrase here: it means an unmarried young woman still living under her father's authority, not every woman in general. The rules in the next few verses only apply to this specific situation.
+## 🏠 Being In Her Father's House In Her Youth
 
-🏠 "Father's house" means still unmarried, living under him
+"In her father's house, in her youth" means an unmarried young woman still living under her father's authority.
 
-👧 "In her youth" marks her as young and not yet independent
+It does not describe every woman in Israel.
 
-🔑 This law covers one specific case, not all women
+The next few verses apply only to this one case.
 
-## ✋ If A Woman Also Vow A Vow Unto The LORD
-The word "also" matters. It ties straight back to verse 2 and says a woman has exactly the same standing as a man to make a real, binding vow directly to God. What's different isn't her ability to make the vow, it's who gets to confirm it.
+A married woman, a widow, and a divorced woman each get a separate rule later.
 
-✋ Women could make the same kind of binding vow as men
+This verse simply narrows who the following law covers.
 
-🔗 "Also" deliberately links back to the man's rule in verse 2
+🏠 The phrase means an unmarried young woman
 
-🔑 The difference here is about confirmation, not spiritual standing
+👧 She still lives under her father's authority
 
-## 🤐 Her Father Hear Her Vow...And Shall Hold His Peace At Her: Then All Her Vows Shall Stand
-"Hold his peace" is an old idiom for staying completely silent. In this legal system, silence wasn't neutral, it counted as full approval. If the father said nothing when he found out, the vow became permanently binding.
+🎯 This law covers one narrow case
 
-🤐 An idiom for staying silent
+📖 Other women get their own rules later
 
-✅ Silence legally counted as agreement
+## 🤐 Her Father Shall Hold His Peace At Her
 
-🔑 This same idiom returns for husbands later in the chapter
+"Hold his peace" is an old idiom for staying completely silent.
 
-## 📌 Then All Her Vows Shall Stand, And Every Bond Wherewith She Hath Bound Her Soul Shall Stand
-Once approved, either by silence or by not objecting, her vow locked in exactly like the man's vow in verse 2. Approval didn't create a weaker version of a vow, it created the same fully binding one.
+In this legal system, silence was never treated as neutral.
 
-📌 An approved vow was just as binding as a man's
+If the father said nothing after he learned of the vow, it became fully binding.
 
-🔒 No "soft" version of a confirmed vow existed
+This same idiom returns later in the chapter for husbands.
 
-🔑 Approval makes it permanent, not provisional
+Watch for it again once marriage enters the picture.
 
-## 🚫 If Her Father Disallow Her In The Day That He Heareth; Not Any Of Her Vows...Shall Stand
-"Disallow" means to reject or cancel. But there's a time limit hidden in this phrase, "in the day that he heareth," the father had to act as soon as he found out, not months later after staying quiet.
+🤐 Hold his peace means staying silent
 
-🚫 "Disallow" means to reject or cancel the vow
+✅ Silence counted as full legal agreement
 
-⏰ He had to object as soon as he heard, not later
+🔁 The same idiom returns later for husbands
 
-🔑 A time limit that matters again later in the chapter
+📖 Saying nothing was never a neutral choice
 
-## 🙏 And The LORD Shall Forgive Her, Because Her Father Disallowed Her
-This is the striking part. Even though the vow gets cancelled, the text is careful to say God forgives her, not that she sinned. The decision was taken out of her hands by someone else's authority, so she isn't held guilty for a promise she no longer controls.
+## ⏰ If Her Father Disallow Her In The Day That He Heareth
 
-🙏 God forgives her rather than blaming her
+"Disallow" means to reject or cancel a vow outright.
 
-🤲 The outcome wasn't fully in her control
+A hidden time limit sits inside this verse.
 
-🔑 This isn't about punishing her, it's about family authority over the decision
+"In the day that he heareth" means the father had to act right away.
 
-# Numbers 30:6-8
-# 💍 A Vow She Brings Into Marriage
----
-## 💍 If She Had At All An Husband, When She Vowed, Or Uttered Ought Out Of Her Lips
-This covers a new situation: a woman made a vow while she was still unmarried, then got married before finishing it. Marriage transfers the authority to confirm or cancel that older vow from her father over to her new husband.
+Waiting weeks or months to object was never an option.
 
-💍 A vow made before marriage, still unfulfilled at the wedding
+This same day rule returns later in the chapter for husbands.
 
-🔁 Authority over it transfers from father to husband
+🚫 Disallow means to reject or cancel
 
-🔑 The vow itself doesn't disappear just because she married
+⏰ He had to object the same day
 
-## 📝 Or Uttered Ought Out Of Her Lips, Wherewith She Bound Her Soul
-"Ought" is an old word simply meaning "anything." This widens the rule beyond formal vows to cover any spoken promise she bound herself to, even something said casually rather than as a formal ceremony.
+🙅 Waiting months to object was not allowed
 
-📝 "Ought" is an old word for "anything"
-
-🗣️ Covers any spoken promise, not just formal vows
-
-🔑 The law closes a loophole around informal promises
-
-## 🤐 And Her Husband Heard It, And Held His Peace At Her In The Day That He Heard It: Then Her Vows Shall Stand
-The exact same silence-equals-approval rule from the father now applies to the husband. And the same time limit is repeated too, "in the day that he heard it," he has to respond right when he learns of it.
-
-🤐 The same silence-as-approval rule, now for husbands
-
-⏰ Same same-day time limit as verse 5
-
-🔑 The law repeats itself deliberately, not by accident
-
-## 🚫 If Her Husband Disallowed Her On The Day That He Heard It...Of None Effect: And The LORD Shall Forgive Her
-"Of none effect" is legal language for "cancelled, with no power at all." It's the marriage version of "disallow" from the father's case, same idea, same forgiveness promise attached at the end.
-
-🚫 "Of none effect" means fully cancelled, no power left
-
-🔁 The marriage version of the father's "disallow" rule
-
-🔑 The forgiveness promise carries over into marriage too
-
-## 👨‍👩‍👧 He Shall Make Her Vow...Of None Effect
-Notice the text says the husband makes it void, not that it simply fades away. The cancelling is an active legal act on his part, something he has to actually do and be responsible for, not a default that just happens.
-
-👨‍👩‍👧 Cancelling a vow was an active decision, not a default
-
-📋 The husband bears responsibility for that choice
-
-🔑 This detail sets up the warning coming in verse 15
+📖 The same time limit returns for husbands
 
 ## 🙏 And The LORD Shall Forgive Her
-This is the second time in the chapter this exact forgiveness line appears, once for a daughter, now for a wife. The repetition itself is the point: whoever holds authority over the decision, God does not hold the woman guilty for it.
 
-🙏 The second appearance of this exact forgiveness formula
+This is the striking part of the whole verse.
 
-🔁 Same principle, now applied inside marriage
+The vow gets cancelled, yet the text never says she sinned.
 
-🔑 The repetition is deliberate, not filler
+The decision was taken out of her hands by someone else's authority.
+
+God does not hold her guilty for a promise she no longer controls.
+
+This exact line of forgiveness will return two more times in this chapter.
+
+🙏 God forgives her instead of blaming her
+
+🤲 The decision was never fully in her control
+
+🔁 This forgiveness line returns twice more
+
+📖 Authority over the vow does not equal guilt
+
+# Numbers 30:6-8
+# 💍 A Vow She Carries Into Marriage
+---
+## 💍 If She Had At All An Husband, When She Vowed
+
+This verse covers a new situation entirely.
+
+A woman made a vow before her wedding day.
+
+She then married before she had finished keeping it.
+
+Marriage transfers the authority to confirm or cancel that vow from her father to her husband.
+
+The vow itself does not disappear just because a wedding happened.
+
+💍 A vow made before she was married
+
+🔁 Authority shifts from her father to her husband
+
+🚫 A wedding does not erase an old vow
+
+📖 One promise, now under new authority
+
+## 📝 Or Uttered Ought Out Of Her Lips
+
+"Ought" is an old word simply meaning anything.
+
+This widens the law beyond formal, ceremonial vows.
+
+Even something said casually could still bind her soul.
+
+The law closes any loophole around an informal promise.
+
+A promise did not need a ritual to count.
+
+📝 Ought is an old word for anything
+
+🗣️ The law covers casual promises too
+
+🔓 No loophole for an informal vow
+
+📖 A promise never needed a ceremony to count
+
+## 🤐 Held His Peace At Her In The Day That He Heard It
+
+The exact same silence rule from her father now applies to her husband.
+
+The same time limit is repeated as well.
+
+He had to respond the moment he learned of the vow.
+
+Marriage changed who held the authority, not the underlying rule itself.
+
+🤐 The father's silence rule now covers husbands
+
+⏰ He had to respond the same day
+
+🔁 Marriage changes the authority, not the rule
+
+📖 The same law, carried into a new home
+
+## 🚫 Of None Effect
+
+"Of none effect" is legal language for cancelled, with no power left.
+
+It is the marriage version of "disallow" from the father's case.
+
+The same forgiveness promise gets attached at the end of this verse too.
+
+A husband cancelling a vow did not make his wife guilty of anything.
+
+🚫 Of none effect means fully cancelled
+
+🔁 The marriage version of disallow
+
+🙏 The same forgiveness promise applies here
+
+📖 Cancelling a vow never equals guilt
 
 # Numbers 30:9
-# 🕊️ A Widow Or Divorced Woman Answers To No One
+# 🕊️ A Widow Answers To No One
 ---
-## 🕊️ Every Vow...Of A Widow, And Of Her That Is Divorced, Wherewith They Have Bound Their Souls, Shall Stand Against Her
-A widow has no living husband, and a divorced woman is no longer under a husband's authority. With no father or husband positioned to confirm or cancel her vow, it simply stands, permanently, with no one able to overturn it.
+## 🕊️ Every Vow Of A Widow, And Of Her That Is Divorced
 
-🕊️ No husband and no father means no one left to cancel it
+A widow has no living husband.
 
-🔒 Her vow is automatically permanent, with no override
+A divorced woman is no longer under a husband's authority.
 
-🔑 The shortest verse in the chapter, but a complete legal category
+Neither one has a father or husband left to confirm or cancel a vow.
+
+With no one left to weigh in, the vow simply stands on its own.
+
+🕊️ A widow has no living husband
+
+🚪 A divorced woman answers to no husband
+
+🔒 No one is left to cancel her vow
+
+📖 Her vow stands permanently on its own
 
 ## ⚖️ Shall Stand Against Her
-This single detail reveals what this whole chapter is really about. It was never about doubting a woman's word or judgment, it was about who managed a household's shared resources and commitments. Step outside that household structure entirely, and full authority over her own vows returns automatically, same as any man's.
 
-⚖️ The rule was about household authority, not personal trustworthiness
+This one detail reveals what this whole chapter is actually about.
 
-👤 A widow or divorced woman has the same standing as a man here
+It was never about doubting a woman's word or judgment.
 
-🔑 Removes any doubt about why the earlier verses worked the way they did
+It was about who managed a household's shared resources and commitments.
+
+Step outside that household structure, and full authority over her own vow returns.
+
+That authority matches exactly what a man already held from verse two.
+
+⚖️ The law was about household authority
+
+🙅 Never about doubting a woman's judgment
+
+👤 Outside a household, full authority returns
+
+📖 Her standing matches a man's from verse two
 
 # Numbers 30:10-12
-# 🏡 A Vow Made Inside The Marriage
+# 🏡 A New Vow Made Inside Marriage
 ---
-## 🏡 And If She Vowed In Her Husband's House, Or Bound Her Soul By A Bond With An Oath
-This is a different case than verses 6-8. There, she brought an existing vow into the marriage. Here, she makes a brand new vow after the wedding, while already living under her husband's authority the whole time.
+## 🏡 If She Vowed In Her Husband's House
 
-🏡 A new vow made after the wedding, not carried in from before
+This is a different situation than verses six through eight.
 
-🆚 A separate legal case from verses 6-8
+There, she brought an existing vow into the marriage with her.
 
-🔑 The law spells out each situation on its own, even when the outcome is the same
+Here, she makes a brand new vow after the wedding already happened.
 
-## 📝 Or Bound Her Soul By A Bond With An Oath
-The chapter repeats both words, vow and bond, one more time here. That's the same "do something" versus "give something up" distinction from verse 2, showing this married-life case still covers both kinds of promise.
+She was living under her husband's authority the entire time.
 
-📝 Both "vow" and "bond" appear again, just like verse 2
+The law spells out each case on its own, even when the outcome matches.
 
-🔁 Confirms both promise types apply inside marriage too
+🏡 A brand new vow made after the wedding
 
-🔑 Nothing about being married narrows which vows count
+🆚 A separate case from verses six through eight
 
-## 🤐 Her Husband Heard It, And Held His Peace At Her, And Disallowed Her Not: Then All Her Vows Shall Stand
-Silence-as-approval appears a third time, once for the father, once for a pre-marriage vow, and now for a vow made inside the marriage. Each situation gets its own explicit statement even though the underlying rule never changes.
+📋 Each situation gets spelled out on its own
 
-🤐 The third appearance of the silence-as-approval rule
+📖 Same outcome, different starting point
 
-📖 Each case is spelled out on its own, not left to assumption
+## 🔁 Disallowed Her Not
 
-🔑 Legal precision, not needless repetition
+This phrase uses a double negative on purpose.
 
-## 🔁 And Disallowed Her Not
-This phrase uses a double negative on purpose, "disallowed her not," to state plainly that the husband definitely did not object. Ancient legal language often stacked words like this to remove any possible ambiguity about which way the decision went.
+"Disallowed her not" states plainly that the husband did not object.
 
-🔁 A double negative used for total clarity
+Ancient legal language often stacked words like this for total clarity.
+
+The wording leaves no room to argue he secretly disapproved.
+
+🔁 A double negative used on purpose
 
 📜 A common style in ancient legal wording
 
-🔑 Leaves zero room to argue he secretly objected
+🚫 Leaves no room for a hidden objection
 
-## ❌ If Her Husband Hath Utterly Made Them Void
-"Utterly" means completely, with nothing left standing. There's no partial cancellation here, a husband either lets the whole vow stand or voids the whole thing, not a piece of it.
+📖 Clarity mattered more than short phrasing
 
-❌ "Utterly" means completely voided, no partial option
+## ❌ Utterly Made Them Void
 
-⚖️ No middle ground between fully standing and fully cancelled
+"Utterly" means completely, with nothing left standing.
 
-🔑 A clean, all-or-nothing rule
+There is no partial cancellation available in this law.
 
-## 🙏 Her Husband Hath Made Them Void; And The LORD Shall Forgive Her
-The forgiveness formula appears a third and final time, covering every situation this chapter lists: an unmarried daughter, a wife who brought in an old vow, and a wife who made a brand new one. In every case, the woman is never described as guilty for a decision made over her head.
+A husband either let the whole vow stand or voided all of it.
 
-🙏 The third and final appearance of this forgiveness formula
+Splitting a vow into pieces was never an option.
 
-📊 Covers all three of the chapter's main scenarios
+❌ Utterly means completely voided
 
-🔑 A pattern too consistent to be accidental
+⚖️ No partial cancellation was allowed
+
+🚫 A vow could not be split apart
+
+📖 All or nothing, with nothing in between
 
 # Numbers 30:13-15
 # ⚖️ The Husband's Window To Decide
 ---
-## 😔 Every Vow, And Every Binding Oath To Afflict The Soul
-"Afflict the soul" is the same idiom used back in Numbers 29:7 for the Day of Atonement, an old phrase for fasting and serious self-denial. This confirms that many of the vows and bonds this chapter has in mind were commitments to give something up, not just promises to bring an offering.
+## 😔 Every Binding Oath To Afflict The Soul
 
-😔 The same fasting idiom used for the Day of Atonement in 29:7
+"Afflict the soul" is the same idiom used for the Day of Atonement.
 
-🍽️ Confirms many of these vows involved giving something up
+Numbers 29:7 already used this exact phrase for fasting.
 
-🔑 Links this chapter back to the festival calendar just before it
+Many of the vows in this chapter were promises to give something up.
 
-## ⚖️ Her Husband May Establish It, Or Her Husband May Make It Void
-This verse sums up the husband's whole role in one line before the chapter moves to timing. He has exactly two options, confirm it or cancel it, nothing in between, and no one else gets to make the call for him.
+Fasting or another form of self denial were common examples.
 
-⚖️ Only two options: establish it or void it
+This detail links the vow law directly back to the festival calendar before it.
 
-👤 The decision belongs to the husband alone
+😔 Afflict the soul is the fasting idiom
 
-🔑 A summary line before the chapter turns to timing
+🔗 Numbers 29:7 already used this phrase
 
-## 📅 If Her Husband Altogether Hold His Peace At Her From Day To Day
-"From day to day" means ongoing silence over multiple days, not just staying quiet for one single moment. Extended silence locks in approval for good, closing off any chance to raise an objection much later.
+🍽️ Many vows involved giving something up
 
-📅 "Day to day" means silence stretched over time, not a single instant
+📖 This detail ties back to the festival calendar
 
-🔒 Extended silence locks in approval permanently
+## ⚖️ Establish It, Or Make It Void
 
-🔑 Closes any loophole to object after the fact
+This verse sums up the husband's whole role in one line.
 
-## ✅ Then He Establisheth All Her Vows...Because He Held His Peace At Her In The Day That He Heard Them
-This makes explicit what was only implied back in verses 5 and 7: a prompt response is required. Waiting isn't a neutral, safe choice, it's treated exactly the same as saying yes out loud.
+He has exactly two options available to him.
 
-✅ Makes the "respond promptly" rule explicit for the first time
+He can establish the vow, or he can void it.
 
-🗣️ Silence is treated exactly like a spoken yes
+Nothing in between exists, and no one else makes this call for him.
 
-🔑 There's no such thing as a truly neutral non-answer here
+⚖️ Only two options exist here
 
-## 🔄 But If He Shall Any Ways Make Them Void After That He Hath Heard Them
-This is the sharpest turn in the whole chapter. A husband can't sit on his hands for a while and then suddenly decide to cancel a vow he already, in effect, approved of by staying silent. Trying to void it late doesn't work the way it would have on day one.
+✅ He can establish the vow
 
-🔄 A late attempt to cancel doesn't work like an early one
+❌ Or he can void it completely
 
-⏳ Waiting has already counted as approval by this point
+📖 No one else can make this decision
 
-🔑 The window for objecting has already closed
+## 📅 From Day To Day
+
+"Day to day" means the silence stretched over time, not just one moment.
+
+This was not a single quiet pause.
+
+Extended silence across many days locked in approval for good.
+
+It closed off any chance to raise an objection much later.
+
+📅 Day to day means silence over time
+
+🔒 Extended silence locked in approval for good
+
+🚪 It closed the door on a late objection
+
+📖 Waiting too long meant losing the chance
 
 ## ⚠️ Then He Shall Bear Her Iniquity
-If a husband tries to cancel a vow after the window has passed, the guilt of the broken vow transfers to him instead of her. Delaying a decision and then reversing it doesn't protect him, it makes him legally and morally responsible in her place.
 
-⚠️ The guilt for the broken vow shifts to the husband
+A husband could not stay silent for days and then suddenly object.
 
-🙅 Procrastinating doesn't shield him from responsibility
+Trying to void a vow late did not work like objecting on day one.
 
-🔑 The chapter's clearest warning against putting off a hard decision
+If he tried anyway, the guilt of the broken vow shifted to him.
+
+Delaying a decision did not protect him from responsibility.
+
+It made him legally responsible in his wife's place instead.
+
+⚠️ Guilt shifted to the husband instead
+
+🙅 Delaying did not protect him
+
+🔄 A late objection carried no weight
+
+📖 He became responsible in his wife's place
 
 # Numbers 30:16
 # 📖 The Statutes Moses Passed On
 ---
-## 📖 These Are The Statutes, Which The LORD Commanded Moses, Between A Man And His Wife, Between The Father And His Daughter
-This closing line mirrors how Numbers 29 ended, God gives the command, and Moses faithfully passes on every detail without softening or editing it. It also names the chapter's two relationships plainly: husband-and-wife, and father-and-daughter.
+## 📚 These Are The Statutes, Which The LORD Commanded Moses
 
-📖 Bookends the chapter the same way Numbers 29 closed itself
+This closing line mirrors how Numbers 29 ended.
 
-✅ Confirms Moses passed the law on exactly as given
+God gave the command, and Moses passed on every detail faithfully.
 
-🔑 Names the two relationships this whole chapter has covered
+Chapters 29 and 30 now bookend each other from start to finish.
+
+Nothing in either chapter was softened or left out along the way.
+
+📚 Mirrors how Numbers 29 closed
+
+🔁 God commanded, Moses passed it on fully
+
+🧩 Two chapters bookend each other
+
+📖 Nothing here was softened or left out
 
 ## 👤 Being Yet In Her Youth In Her Father's House
-Notice what this closing verse does not mention: a married man's own vow, or an adult unmarried woman with no father at all. Those cases were already answered earlier, verse 2 for the man, verse 9 for a widow or divorced woman, so this summary only needs to name the two situations where someone else's approval was required.
 
-👤 Doesn't repeat the cases already fully settled earlier
+Notice what this closing verse leaves out entirely.
 
-🧩 Verse 2 and verse 9 already cover the missing cases
+A married man's own vow is not mentioned again here.
 
-🔑 A tight, deliberate summary, not an incomplete one
+An adult unmarried woman with no father is not mentioned either.
+
+Verse two already answered the man's case.
+
+Verse nine already answered the widow's case.
+
+This summary only needed to name the two cases where someone else's approval mattered.
+
+👤 The verse leaves two cases unmentioned
+
+✅ Verse two already covered the man's case
+
+🕊️ Verse nine already covered the widow's case
+
+📖 A tight summary, not an incomplete one
 `.trim();
 
 export const NUMBERS_THIRTY_PERSONAL_SECTIONS = parseNumbersThirtyRawNotes(NUMBERS_THIRTY_RAW_NOTES);

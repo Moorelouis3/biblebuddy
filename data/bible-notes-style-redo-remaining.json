@@ -3,10 +3,5 @@
   "styleSpecPath": "docs/bible-study-note-style.md",
   "referenceImplementation": "lib/genesisThirtyOneSource.ts",
   "styleCheckerScript": "python3 scripts/check_bible_note_style.py lib/<file>Source.ts -- run this before finishing every chapter and fix everything it reports (it exits 0 clean, 1 if problems found). It catches the mechanical rules (line length, exactly 4 bullets, banned words/punctuation, repeated emoji, duplicate titles) but cannot judge whether a note actually teaches something instead of reciting the verse -- still apply the full checklist in docs/bible-study-note-style.md section 13 by eye too.",
-  "remaining": [
-    {
-      "book": "Numbers",
-      "chapter": 30
-    }
-  ]
+  "remaining": []
 }

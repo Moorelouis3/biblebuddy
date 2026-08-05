@@ -10532,6 +10532,63 @@
           "at": "2026-08-05T17:59:30Z"
         }
       ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 30,
+      "startedAt": "2026-08-05T18:48:55Z",
+      "finishedAt": "2026-08-05T18:57:34Z",
+      "durationMinutes": 9,
+      "sections": 7,
+      "cards": 23,
+      "verses": 16,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog chapter (data/bible-notes-style-redo-remaining.json), regenerating the original pre-spec version (7 sections / 30 cards, three bullets per card, single-paragraph bodies with no blank lines) from scratch to match docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Numbers 30 is the law of vows: a man's word is fully binding, an unmarried daughter's vow can be confirmed or cancelled by her father on the day he hears it (silence counts as approval), the same rule carries over to a husband once she marries, a widow or divorced woman answers to no one and her vow stands automatically, a new vow made inside marriage follows the same silence-as-approval and same-day rules, and a husband who waits and then tries to void a vow late bears the guilt himself. Kept the same 7 section boundaries as the original file (Numbers 30:1-2, 3-5, 6-8, 9, 10-12, 13-15, 16) since they already track the chapter's natural legal cases, and wrote 23 cards total. Also noticed this run's HEAD was detached with 50 unpushed local commits (Numbers 11 through 29) while the cached origin/main ref looked stale at Genesis 50; a git fetch confirmed the real origin/main already matched HEAD exactly (0 ahead/0 behind), so no data was actually lost, but pointed the local main branch at HEAD and checked it out properly (not detached) before continuing, since an in-session detached-HEAD git push is a silent no-op. scripts/check_bible_note_style.py found 1 problem on first pass (banned filler word 'positioned'), fixed; a further eye pass against the section 13 checklist also caught one banned 'rather than' hedge and one soft 'while' clause the checker does not catch mechanically, both fixed. Second checker run clean (23 cards, no problems). Parser check passed exactly (7/7 sections, 23 cards, 16 verses, no throw). npx tsc --noEmit clean with zero errors. Wiring in lib/bibleReaderStudyNotes.ts was already correct for this redo chapter (import, preserveExactPhraseBodies range covering Numbers 1-30, replaceStudySectionsForBookRange call all pre-existing), so only the type/function/const names (NumbersThirtyPersonalSection, parseNumbersThirtyRawNotes, NUMBERS_THIRTY_RAW_NOTES, NUMBERS_THIRTY_PERSONAL_SECTIONS) were kept exactly as before. Redo backlog entry popped; backlog is now empty, so the next scheduled run falls back to normal forward-progress logic (first chapter in canonical order with no existing wired-in file).",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-05T18:48:55Z"
+        },
+        {
+          "name": "target chapter determined: Numbers 30 (style redo, first entry in remaining backlog)",
+          "at": "2026-08-05T18:48:55Z"
+        },
+        {
+          "name": "KJV text fetched for Numbers 30 (16 verses, GitHub raw mirror)",
+          "at": "2026-08-05T18:49:06Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md)",
+          "at": "2026-08-05T18:49:14Z"
+        },
+        {
+          "name": "drafted note content for all 7 sections / 23 phrase cards",
+          "at": "2026-08-05T18:53:01Z"
+        },
+        {
+          "name": "source file written for Numbers 30 (7 sections, 23 phrase cards)",
+          "at": "2026-08-05T18:54:01Z"
+        },
+        {
+          "name": "style checker clean on first fix (1 banned word caught and corrected)",
+          "at": "2026-08-05T18:54:01Z"
+        },
+        {
+          "name": "wiring confirmed unchanged (Numbers 1-30 range already wired for redo chapters)",
+          "at": "2026-08-05T18:54:01Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections(Numbers,30) returns 7 sections, 23 phrase cards, no throw",
+          "at": "2026-08-05T18:54:29Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-05T18:56:21Z"
+        },
+        {
+          "name": "eye-checked against section 13 checklist, fixed one banned-hedge word and one soft while-clause found post-checker",
+          "at": "2026-08-05T18:57:34Z"
+        }
+      ]
     }
   ]
 }
