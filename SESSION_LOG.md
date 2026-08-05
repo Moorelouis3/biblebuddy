@@ -823,3 +823,7 @@ Next up: Numbers 34
 ## 2026-08-05T22:56:40Z (hourly chapter notes run)
 Chapter: Numbers 34 | Duration: 11 min | Sections: 7 | Cards: 22 | Status: pass
 Next up: Numbers 35
+
+## 2026-08-05T23:56:58Z (hourly chapter notes run)
+Chapter: Numbers 35 | Duration: 11 min | Sections: 8 | Cards: 34 | Status: pass
+Next up: Numbers 36

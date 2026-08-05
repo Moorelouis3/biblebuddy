@@ -10837,6 +10837,59 @@
           "at": "2026-08-05T22:59:30Z"
         }
       ]
+    },
+    {
+      "book": "Numbers",
+      "chapter": 35,
+      "startedAt": "2026-08-05T23:45:51Z",
+      "finishedAt": "2026-08-05T23:56:58Z",
+      "durationMinutes": 11,
+      "sections": 8,
+      "cards": 34,
+      "verses": 34,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress chapter (redo backlog empty) -- no existing lib file for Numbers 35, wrote from scratch to docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (34 verses). Numbers 35 covers the forty eight Levite cities and their measured suburbs (a cubit as roughly a forearm's length, the thousand and two thousand cubit boundary lines), the six cities of refuge carved out of those forty eight for the manslayer, protection extended to the stranger and sojourner as well as native Israelites, the legal definitions distinguishing murder (an iron, stone, or wood weapon used with hatred or an ambush) from a true accident (a sudden act without enmity, no target, no motive), the congregation's role judging between slayer and avenger, the protection tied to staying inside the refuge city's border until the reigning high priest's death, the two witness requirement, the ban on any ransom buying freedom for a murderer or an early release for a manslayer, and the closing theological point that unpunished blood defiles the land God dwells in. This is a law chapter per spec section 4/12 guidance, broken into one law cluster per card rather than a whole block compressed into one paragraph. Density landed at 34 cards for 34 verses (1.0 cards/verse), in the same range as recent Numbers law and list chapters (34 was 0.76, 32 was 0.9). Every card title is an exact contiguous or lightly trimmed KJV phrase per spec section 2. `scripts/check_bible_note_style.py` found 2 problems on first pass (banned hedge word 'fairly' in one bullet, one bullet at 9 words instead of the 3-8 range), both fixed by rewording, second run clean (34 cards, no problems). A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key term in plain language, and closes on meaning rather than mechanics, with no hyphens, em dashes, semicolons, contractions, or banned filler/hedge words anywhere in the file, and no duplicate card titles among all 34. Parser check passed exactly via `getBibleReaderStudySections('Numbers', 35)` (8/8 sections, 34 cards, 34 verses, text verbatim, no gaps or overlaps). `npx tsc --noEmit -p .` clean with zero errors. Wired into `lib/bibleReaderStudyNotes.ts`: new import, `preserveExactPhraseBodies` range for Numbers extended from `<= 34` to `<= 35`, and a new `replaceStudySectionsForBookRange(\"numbers\", 35, 35, NUMBERS_THIRTY_FIVE_PERSONAL_SECTIONS)` call added after the Numbers 34 call. Per CLAUDE.md's mandatory push-cadence policy, this run's commit is being held back rather than pushed immediately -- it will ride with the next scheduled report push rather than triggering a speculative extra Vercel build. Next chapter: Numbers 36.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-05T23:45:51Z"
+        },
+        {
+          "name": "target chapter determined: Numbers 35 (redo backlog empty, normal forward progress, no existing lib file)",
+          "at": "2026-08-05T23:45:51Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Numbers.json (chapter 35, 34 verses)",
+          "at": "2026-08-05T23:45:51Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (lib/numbersThirtyFourSource.ts) read",
+          "at": "2026-08-05T23:45:51Z"
+        },
+        {
+          "name": "source file written (lib/numbersThirtyFiveSource.ts, 8 sections, 34 cards)",
+          "at": "2026-08-05T23:56:14Z"
+        },
+        {
+          "name": "style checker clean (2 problems found and fixed: banned hedge word 'fairly', one bullet over 8 words)",
+          "at": "2026-08-05T23:56:14Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 35, replaceStudySectionsForBookRange call added)",
+          "at": "2026-08-05T23:56:34Z"
+        },
+        {
+          "name": "parser check passed (8 sections, 34 cards, 34 verses, text verbatim)",
+          "at": "2026-08-05T23:56:34Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-08-05T23:56:34Z"
+        },
+        {
+          "name": "progress files logged (BIBLE_BUDDY_NOTES_PROGRESS.md, bible-notes-progress-log.json)",
+          "at": "2026-08-05T23:56:58Z"
+        }
+      ]
     }
   ]
 }
