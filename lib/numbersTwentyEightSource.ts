@@ -81,345 +81,501 @@ function parseNumbersTwentyEightRawNotes(rawText: string): NumbersTwentyEightPer
     });
   }
 
-  if (sections.length !== 6) {
-    throw new Error("Expected 6 Numbers 28 sections, received " + sections.length);
+  if (sections.length !== 7) {
+    throw new Error("Expected 7 Numbers 28 sections, received " + sections.length);
   }
 
   return sections;
 }
 
 const NUMBERS_TWENTY_EIGHT_RAW_NOTES = `# Numbers 28:1-2
-# 📅 A Calendar Of Offerings, In Their Due Season
+# 📅 A Command For Every Offering, In Its Season
 ---
 ## 📢 Command The Children Of Israel
-Everything that follows in this chapter is a direct order, not friendly advice. Moses is told to relay it word for word to the whole nation, so nobody could later claim they simply didn't know the schedule.
 
-📢 A direct command, not a suggestion
+This law was not offered as a suggestion.
 
-👥 Addressed to every Israelite, not just the priests
+God tells Moses to relay it word for word to the whole nation.
 
-🔑 Ignorance of this calendar was never going to be an excuse
+Every Israelite heard the same command, not just the priests.
+
+Nobody could later claim they simply did not know the schedule.
+
+📢 A direct command, not advice
+
+👥 Given to the whole nation
+
+🕍 Not limited to the priests
+
+➡️ No one could claim ignorance
 
 ## 🍞 My Offering, And My Bread For My Sacrifices Made By Fire
-God calls these offerings His own "bread," even though He has no physical need to eat. This is picture-language borrowed from ordinary meals shared between people who trust each other. Offering food regularly to God pictured Israel staying in an ongoing relationship with Him, the way sharing a table did between people in this culture.
 
-🍞 "Bread" is a figure of speech, not a literal need
+"Bread" here means food, used as a picture, not a literal need.
 
-🤝 Regular meals pictured an ongoing relationship, ancient Near Eastern style
+God does not need to eat.
 
-🔑 The chapter is really about staying in rhythm with God, not just feeding an altar
+Sharing a meal was how people in this culture sealed a close relationship.
+
+Calling these offerings His bread pictured Israel staying close to God.
+
+That picture runs through the rest of the chapter.
+
+🍞 Bread means food, not literal
+
+🤝 Meals sealed close relationships then
+
+❤️ Israel pictured closeness with God
+
+📖 This picture repeats all chapter
 
 ## 👃 A Sweet Savour Unto Me
-"Savour" is an old word for smell or aroma. Calling a burnt offering's smoke a "sweet savour" doesn't mean God enjoys smoke the way a person enjoys a scent. It's the Bible's way of saying the offering was accepted and pleasing, done the right way, for the right reason.
 
-👃 "Savour" is an old word for smell
+"Savour" is an old word for smell.
 
-✅ Marks an offering as accepted, not just performed
+Calling the offering's smoke a sweet savour does not mean God enjoys smoke.
 
-🔑 This phrase repeats through the whole chapter every time a new offering type is described
+It means the offering was accepted.
 
-## 📆 Ye Shall Observe To Offer Unto Me In Their Due Season
-"Due season" means a fixed, appointed time, not whenever it happens to be convenient. This one line sets up the whole chapter: a fixed rhythm of daily, weekly, monthly, and yearly offerings that never changes based on people's moods or schedules.
+It was done the right way, for the right reason.
 
-📆 Introduces a set, repeating religious calendar
+This exact phrase repeats every time a new offering appears.
 
-🔁 Daily, weekly, monthly, and yearly patterns are about to be listed, in that order
+👃 Savour is an old smell word
 
-🔑 Worship here runs on God's schedule, not personal convenience
+✅ Marks an offering as accepted
+
+🔥 Not about God enjoying smoke
+
+📖 The phrase repeats all chapter
+
+## 📆 In Their Due Season
+
+"Due season" means a fixed, appointed time.
+
+It does not mean whenever it happens to be convenient.
+
+This phrase sets up the whole chapter.
+
+A daily, weekly, monthly, and yearly rhythm is about to be listed, in that order.
+
+Worship here runs on God's calendar, not on personal convenience.
+
+📆 Due season means a fixed time
+
+🔁 Not whenever is convenient
+
+📅 Sets up the whole chapter's rhythm
+
+📖 God sets the calendar, not people
 
 # Numbers 28:3-8
 # 🌅 The Daily Offering That Never Stops
 ---
-## 🔥 This Is The Offering Made By Fire Which Ye Shall Offer Unto The LORD
-This introduces what's often called the "continual" or "daily" offering, the base-level sacrifice repeated every single day of the year, no matter what else is happening in Israel's life.
+## 🔥 This Is The Offering Made By Fire
 
-🔥 The most basic, repeating sacrifice in Israel's whole system
+This introduces the continual offering, the most basic sacrifice in Israel's system.
 
-📅 Offered every day, with no exceptions
+"Continual" means it never stopped, offered every single day of the year.
 
-🔑 This same law first appears back in Exodus 29:38-42, given at Sinai
+No feast, no crisis, no change of season ever paused it.
 
-## 🐑 Two Lambs Of The First Year Without Spot, Day By Day
-"First year" means young, healthy animals in their prime, not old or weak ones. "Without spot" means no visible defect, blemish, or injury. Israel wasn't allowed to hand God its leftover or damaged animals.
+This same law first appears back in Exodus 29:38, given at Mount Sinai.
 
-🐑 Young, healthy lambs only
+🔥 Continual means it never stopped
 
-🚫 "Without spot" rules out any visible defect
+📅 Offered every day, no exceptions
 
-🔑 God consistently gets Israel's best, not its leftovers
+🏔️ First given back at Mount Sinai
 
-## 🌅 The One Lamb Shalt Thou Offer In The Morning, And The Other Lamb...At Even
-Splitting the offering across morning and evening bookends every single day with worship. Israel's daily rhythm literally opened and closed with a sacrifice, the same pattern repeated every day for centuries.
+📖 Exodus 29:38 records the same law
 
-🌅 One lamb offered at sunrise
+## 🐑 Two Lambs Of The First Year Without Spot
 
-🌇 One lamb offered at sunset
+"First year" means young, healthy animals still in their prime.
 
-🔑 Worship bookends the entire day, every day
+"Without spot" means no visible defect, blemish, or injury.
 
-## 🌾 A Tenth Part Of An Ephah Of Flour...Mingled With The Fourth Part Of An Hin Of Beaten Oil
-An ephah was a dry measure, somewhere around three gallons by modern estimate. A tenth of one, called an "issaron" in Hebrew, was the standard small unit used for grain offerings. A hin was a liquid measure, roughly a gallon and a half, so a fourth of a hin was a modest amount of oil mixed into the flour.
+Israel could not hand God its leftover or damaged animals.
 
-🌾 Ephah = a dry measure, roughly three gallons
+Every sacrifice in this chapter has to meet this same standard.
 
-🫙 Hin = a liquid measure, roughly a gallon and a half
+🐑 First year means young and healthy
 
-🔑 These exact units repeat throughout the chapter for every offering type
+🚫 Without spot means no defect
+
+💎 God received Israel's best animals
+
+📖 Every offering meets this standard
+
+## 🌾 A Tenth Part Of An Ephah Of Flour
+
+An ephah was a dry measure, close to three gallons in modern terms.
+
+A tenth of an ephah was the standard small unit used for grain offerings.
+
+A hin was a liquid measure, close to a gallon and a half.
+
+These same units repeat for every offering type in the chapter.
+
+🌾 Ephah is a dry measure
+
+🫙 Hin is a liquid measure
+
+📏 Both units repeat all chapter
+
+📖 Grain and oil measured this way
 
 ## 🫒 Beaten Oil
-"Beaten" oil was made by crushing olives by hand in a mortar rather than pressing them in a heavy olive press. It produced a purer, higher-grade oil than the ordinary press method, so this detail is a quiet way of saying only the best oil qualified.
 
-🫒 Made by hand-crushing olives, not pressing them
+"Beaten" oil was made by crushing olives by hand instead of pressing them.
 
-⭐ A higher grade than ordinary press oil
+Hand crushing produced a purer, better grade of oil than the ordinary press method.
 
-🔑 Another small sign that God receives Israel's best, not its ordinary stock
+This detail quietly says only the best oil qualified for God's offering.
 
-## 📜 It Is A Continual Burnt Offering, Which Was Ordained In Mount Sinai
-This isn't a new law. It's Moses reminding Israel of a command already given back at Sinai in Exodus 29:38-42, decades earlier. By the time of Numbers 28, Israel is camped on the plains of Moab about to enter Canaan, and this old law is being restated so the daily rhythm continues in the new land too.
+Small details like this show up throughout the chapter.
 
-📜 A callback to Exodus 29:38-42, not a brand-new law
+🫒 Beaten means crushed by hand
 
-🗺️ Restated as Israel prepares to enter Canaan
+⭐ A higher grade than pressed oil
 
-🔑 The point being made: this daily rhythm was never meant to stop
+💎 Only the best oil qualified
 
-## 🍷 The Drink Offering Thereof...Strong Wine...Poured Unto The LORD
-A drink offering was wine poured out at the altar, not wine anyone drank. Pouring it out completely, with nothing held back or saved, made the gift final and total rather than partial.
+📖 Small details carry this same point
 
-🍷 Wine poured out completely, not consumed by anyone
+## 🍷 The Drink Offering...Strong Wine Poured Unto The LORD
 
-🚫 Nothing kept back or saved
+A drink offering was wine poured out at the altar.
 
-🔑 A visual picture of total, no-strings-attached giving
+It was not wine anyone drank.
 
-## 🥖 As The Meat Offering Of The Morning...Of A Sweet Savour Unto The LORD
-In the King James Bible, "meat" is an old general word for food, not specifically animal flesh. The "meat offering" here is really a grain offering, the flour-and-oil mixture from verse 5, paired with the evening lamb the same way it was paired with the morning lamb.
+Pouring it out completely, with nothing saved back, made the gift whole.
 
-🥖 "Meat offering" is old English for a grain offering, not meat
+The wine was gone the moment it was given, not shared or stored.
 
-🔁 The evening sacrifice repeats the same grain-and-oil pattern as the morning
+🍷 Wine poured out, not shared
 
-🔑 Every sacrifice in this chapter combines an animal, grain, and wine together
+🚫 Nothing was kept back or saved
+
+🎁 The gift became whole and final
+
+📖 Giving here left nothing behind
+
+## 🏔️ Ordained In Mount Sinai
+
+This law was not new when Moses repeated it here.
+
+It had already been given decades earlier, back at Mount Sinai.
+
+By Numbers 28, Israel is camped on the plains of Moab, ready to enter Canaan.
+
+This old law was restated so the same daily rhythm would continue in the new land.
+
+🏔️ Not a new law here
+
+📜 First given decades earlier at Sinai
+
+🗺️ Israel now nears the promised land
+
+📖 The daily rhythm was never meant to stop
 
 # Numbers 28:9-10
 # 🗓️ Doubling Up For The Sabbath
 ---
-## ✖️ Two Lambs...And Two Tenth Deals Of Flour...Mingled With Oil, And The Drink Offering Thereof
-On the Sabbath, Israel didn't replace the daily offering, it doubled it. Two lambs instead of one, with double the grain and oil to match, marked the day as more significant without changing the basic pattern.
+## ✖️ Two Lambs...And Two Tenth Deals Of Flour
 
-✖️ Every quantity from the daily offering is doubled
+On the Sabbath, Israel did not replace the daily offering.
 
-🗓️ Sets the Sabbath apart as a heightened day
+It doubled it instead.
 
-🔑 Same ingredients as the daily offering, just twice as much
+Two lambs instead of one, with double the grain and oil to match.
 
-## ➕ This Is The Burnt Offering Of Every Sabbath, Beside The Continual Burnt Offering
-"Beside" here means "in addition to," not "instead of." The Sabbath offering was stacked on top of the regular daily offering, not a substitute for it, so on a Sabbath, Israel's altar was actually busier, not quieter.
+Doubling marked the day as more significant without changing the pattern itself.
 
-➕ "Beside" means added on top of, not swapped in
+✖️ Every amount doubled that day
 
-🔥 The daily offering still happened even on the Sabbath
+🗓️ Marks the Sabbath as special
 
-🔑 A pattern that repeats for every special day in the rest of the chapter
+🔁 Same pattern, just twice as much
+
+📖 More is offered, not something different
+
+## ➕ Beside The Continual Burnt Offering
+
+"Beside" here means added on top of, not instead of.
+
+The Sabbath offering did not replace the daily offering.
+
+It stacked directly on top of it.
+
+On the Sabbath, Israel's altar was actually busier, not quieter.
+
+This word beside repeats for every special day named in the rest of the chapter.
+
+➕ Beside means added, not swapped in
+
+🔥 The daily offering still happened
+
+📈 The Sabbath altar grew busier
+
+📖 This word repeats all chapter
 
 # Numbers 28:11-15
 # 🌙 Marking Every New Month
 ---
-## 🌙 In The Beginnings Of Your Months Ye Shall Offer A Burnt Offering Unto The LORD
-Israel's calendar was based on the moon, so a new month began at each new moon. This monthly marker gave the nation a regular, built-in rhythm for pausing to worship roughly every 29 or 30 days, on top of the weekly Sabbath.
+## 🌙 In The Beginnings Of Your Months
 
-🌙 Israel's months were tracked by the lunar cycle
+Israel's calendar followed the moon.
 
-📆 A worship rhythm layered on top of the weekly Sabbath
+A new month began at each new moon.
 
-🔑 Later Jewish tradition calls this day Rosh Chodesh, "head of the month"
+This gave the nation a regular worship rhythm, every twenty nine or thirty days.
 
-## 🐂 Two Young Bullocks, And One Ram, Seven Lambs Of The First Year Without Spot
-This is a noticeably bigger offering than the Sabbath's two lambs, now bullocks and a ram join the lineup. The size of an offering tracked the size of the occasion: bigger day, bigger sacrifice.
+It came on top of the weekly Sabbath, not instead of it.
 
-🐂 Two young bulls plus a ram now join the lambs
+Later Jewish tradition calls this day Rosh Chodesh, meaning head of the month.
 
-📈 A clearly larger offering than the weekly Sabbath's
+🌙 Israel's months followed the moon
 
-🔑 This exact combination becomes the standard "special occasion" package for the rest of the chapter
+📆 A worship rhythm on top of Sabbath
 
-## ⚖️ Three Tenth Deals Of Flour...For One Bullock; And Two Tenth Deals...For One Ram; And A Several Tenth Deal...For One Lamb
-The grain offering scaled with the size of the animal, more flour for a bull than a ram, and more for a ram than a lamb. "Several" here is an old word meaning "a separate, individual" portion for each animal, not "many."
+🕎 Later called Rosh Chodesh in Jewish tradition
 
-⚖️ Grain amounts scale to match each animal's size
+📖 Head of the month is what it means
 
-📖 "Several" means "one separate portion each," an old usage
+## 🐂 Two Young Bullocks, And One Ram, Seven Lambs
 
-🔑 Nothing here is random, every quantity follows a fixed ratio
+This offering is noticeably bigger than the Sabbath's two lambs.
 
-## 🍷 Half An Hin Of Wine Unto A Bullock, And The Third Part Of An Hin Unto A Ram, And A Fourth Part Of An Hin Unto A Lamb
-The wine poured out scaled the same way as the flour, more for the larger animals. This same three-tier ratio, half, a third, and a fourth of a hin, becomes the standard formula reused for every large offering later in the chapter.
+Bullocks and a ram now join the lineup.
 
-🍷 Wine amounts scale in the same three tiers as the grain
+The size of an offering tracked the size of the occasion.
 
-🔁 This exact ratio repeats at every major feast later in the chapter
+This same combination becomes the standard package reused for the rest of the chapter.
 
-🔑 A consistent system, not a one-time set of numbers
+🐂 Bulls and a ram join now
 
-## 🐐 One Kid Of The Goats For A Sin Offering, Beside The Continual Burnt Offering
-This is the chapter's first sin offering, a different kind of sacrifice than everything before it. A burnt offering expressed devotion and worship; a sin offering specifically dealt with guilt and covered unintentional wrongdoing the community may not even have realized it committed.
+📈 A bigger offering than the Sabbath
 
-🐐 The chapter's first sin offering, a new offering type
+📦 Marks a bigger occasion overall
 
-🙏 Burnt offerings express devotion; sin offerings deal with guilt
+📖 This package repeats through the chapter
 
-🔑 Even a joyful new-month celebration includes a reminder that sin still needs covering
+## ⚖️ A Several Tenth Deal
 
-# Numbers 28:16-25
-# 🐑 Passover And The Days Of Unleavened Bread
+"Several" here is an old word meaning a separate, individual portion.
+
+It does not mean "many," the way the word is used today.
+
+Each animal in the offering got its own separate portion of flour.
+
+The grain amount scaled with the size of the animal, more for a bull than a lamb.
+
+⚖️ Several meant separate, not many
+
+🌾 Each animal got its own portion
+
+📏 More flour for bigger animals
+
+📖 A fixed ratio runs the chapter
+
+## 🐐 One Kid Of The Goats For A Sin Offering
+
+This is the chapter's first sin offering, a different kind of sacrifice.
+
+A burnt offering expressed devotion and worship.
+
+A sin offering specifically covered guilt, even guilt the people did not realize they carried.
+
+Even a joyful new month included a reminder that sin still needed covering.
+
+🐐 The chapter's first sin offering
+
+🙏 Burnt offerings express devotion and worship
+
+⚖️ Sin offerings cover hidden guilt
+
+📖 Joy and guilt sit side by side
+
+# Numbers 28:16-19
+# 🐑 Passover And The Feast Begins
 ---
-## 📅 In The Fourteenth Day Of The First Month Is The Passover Of The LORD
-Passover always fell on the same fixed date, the fourteenth day of Israel's first month, called Abib or Nisan. This is the anniversary of the night God struck Egypt's firstborn but passed over Israelite homes marked with lamb's blood, described back in Exodus 12.
+## 📅 The Fourteenth Day...Is The Passover Of The LORD
 
-📅 A fixed yearly date, the 14th of the first month
+Passover always fell on the same fixed date, the fourteenth day of the first month.
 
-🩸 Marks the anniversary of Exodus 12's original Passover night
+That month was called Abib, later known as Nisan.
 
-🔑 Israel is told to keep re-living this event every single year
+The date marks the night God struck Egypt's firstborn.
 
-## 🍞 In The Fifteenth Day Of This Month Is The Feast: Seven Days Shall Unleavened Bread Be Eaten
-Passover itself was a single night, but it was immediately followed by a separate seven-day festival, the Feast of Unleavened Bread. During this week, no leaven (yeast) was allowed in any bread, recalling how Israel left Egypt in such a hurry there was no time to let bread rise.
+Israelite homes marked with lamb's blood were passed over that night.
 
-🍞 A separate 7-day feast starting the day after Passover
+Israel was told to relive this event every single year.
 
-🚫 No yeast/leaven allowed anywhere during the week
+📅 A fixed date every year
 
-🔑 Recalls the rushed, no-time-to-wait exit from Egypt in Exodus 12:34
+🩸 Marks the night of the Exodus
 
-## 📯 In The First Day Shall Be An Holy Convocation
-A "holy convocation" was a required, sacred gathering of the whole community, not an optional worship service. Missing it wasn't treated as a personal choice, it was a break from a national, commanded assembly.
+🏠 Israelite homes were passed over
 
-📯 A required sacred assembly, not an optional service
+📖 Israel relived this every year
 
-👥 The whole community was expected to gather
+## 🍞 Seven Days Shall Unleavened Bread Be Eaten
 
-🔑 The first and seventh days of this feast are both treated this way
+Passover itself was a single night.
 
-## 🛑 Ye Shall Do No Manner Of Servile Work Therein
-"Servile work" meant the kind of paid or forced labor a servant would normally do, ordinary farm work, business, and trade. On this day, that kind of labor stopped completely across the whole nation.
+It was followed right away by a separate seven day festival.
 
-🛑 "Servile work" means ordinary paid or forced labor
+During that week, no leaven, meaning yeast, was allowed in any bread.
 
-🚜 Farm work, trade, and business all paused
+This recalled how Israel left Egypt in such a hurry there was no time for bread to rise.
 
-🔑 This day functioned like an extra Sabbath inside the festival week
+🍞 A separate feast follows Passover
 
-## 🔁 Two Young Bullocks, And One Ram, And Seven Lambs Of The First Year: They Shall Be Unto You Without Blemish
-This is the exact same animal count used for the New Moon offering back in verse 11: two bulls, one ram, seven lambs. Israel used one standard "special occasion" package and applied it to every major appointed time, rather than inventing a new formula for each one.
+🚫 No yeast allowed all week
 
-🔁 The identical animal count as the New Moon offering in verse 11
+🏃 Recalls Israel's rushed exit from Egypt
 
-📦 One reusable "big occasion" package, not a new formula each time
+📖 Bread had no time to rise
 
-🔑 Recognizing the repeated pattern makes the whole chapter far easier to follow
+## 📯 An Holy Convocation
 
-## 📏 Their Meat Offering Shall Be Of Flour Mingled With Oil: Three Tenth Deals...For A Bullock, And Two Tenth Deals For A Ram
-The grain measurements here match the same three-tier ratio explained back in verses 12-14. The text keeps repeating the exact numbers on purpose, because every appointed feast was expected to follow the identical standard, with no shortcuts.
+A holy convocation was a required, sacred gathering of the whole community.
 
-📏 The same three-tier ratio as the New Moon offering
+It was not an optional worship service.
 
-🔂 Deliberately repeated, not accidentally duplicated
+Missing it was not treated as a personal choice.
 
-🔑 Consistency itself was part of the point, no feast got a discount
+It was a break from a national, commanded assembly.
 
-## 🐐 One Goat For A Sin Offering, To Make An Atonement For You
-Even during Israel's most joyful national festival, a sin offering was still required. "Atonement" means covering over guilt so a right relationship with God could continue. Joy and the need for forgiveness weren't treated as opposites here.
+📯 A required sacred gathering
 
-🐐 A sin offering included even during a celebration
+👥 The whole community had to attend
 
-🕊️ "Atonement" means covering guilt, restoring relationship
+🚫 Not an optional service
 
-🔑 Celebration and repentance sit side by side in Israel's worship
+📖 Missing it broke a national command
 
-## ➕ Ye Shall Offer These Beside The Burnt Offering In The Morning, Which Is For A Continual Burnt Offering
-Even during a major seven-day festival, the ordinary daily morning-and-evening offering from earlier in the chapter never paused. Every special offering was always additional, stacked on top of the baseline rhythm, never a replacement for it.
+## 🛑 No Manner Of Servile Work
 
-➕ The daily offering continues underneath the festival offerings
+"Servile work" meant the paid or forced labor a servant would normally do.
 
-🔁 The same "addition, not replacement" pattern as the Sabbath
+That included ordinary farm work, trade, and business.
 
-🔑 Israel's worship rhythm never actually stopped, even during the biggest weeks of the year
+On this day, that kind of labor stopped completely across the whole nation.
 
-## 🔁 After This Manner Ye Shall Offer Daily, Throughout The Seven Days...Beside The Continual Burnt Offering, And His Drink Offering
-This whole bundle of sacrifices, bulls, ram, lambs, grain, wine, and sin offering, wasn't a one-time event on day one. It repeated in full every single day for all seven days of the festival, on top of the twice-daily continual offering.
+This day functioned like an extra Sabbath inside the festival week.
 
-🔁 The full offering bundle repeats every day for 7 days
+🛑 Servile work means ordinary labor
 
-📅 Not a single event, but a week-long daily pattern
+🌾 Farm work and trade both paused
 
-🔑 Passover week meant seven full days of heightened worship, not one
+🇮🇱 The whole nation stopped together
 
-## 📯 On The Seventh Day Ye Shall Have An Holy Convocation; Ye Shall Do No Servile Work
-The festival closes exactly the way it opened, with another required sacred assembly and a full stop on ordinary labor. Bookending the week with matching holy days framed the whole seven days as one continuous sacred unit.
+📖 It worked like an extra Sabbath
 
-📯 A matching holy convocation closes the week
+# Numbers 28:20-25
+# 🔥 A Week Of Daily Worship
+---
+## 🕊️ To Make An Atonement For You
 
-🛑 The same no-servile-work rule as day one
+"Atonement" means covering over guilt so a right relationship with God can continue.
 
-🔑 The bookend structure marks the whole week as a single sacred unit, not just its first day
+This word appears here for the first time in the chapter.
+
+Even during Israel's most joyful national festival, this covering was still required.
+
+Joy and the need for forgiveness were never treated as opposites.
+
+🕊️ Atonement means covering guilt
+
+🎉 Required even during a festival
+
+🤝 Restores a right relationship with God
+
+📖 Joy and forgiveness are not opposites
+
+## 🔁 After This Manner Ye Shall Offer Daily, Throughout The Seven Days
+
+This whole bundle of sacrifices was not a one time event on day one.
+
+Bulls, a ram, lambs, grain, wine, and a sin offering repeated in full every day.
+
+It happened for all seven days of the festival.
+
+The twice daily continual offering kept running underneath it the entire time.
+
+🔁 The full bundle repeats daily
+
+📅 Seven days, not just one
+
+🔥 The continual offering runs underneath
+
+➡️ A week of heightened worship, not a day
+
+## 📯 On The Seventh Day Ye Shall Have An Holy Convocation
+
+The festival closes exactly the way it opened.
+
+Another required sacred assembly marks this final day.
+
+Ordinary labor stops completely, just like on day one.
+
+Matching holy days on both ends frame the whole week as one sacred unit.
+
+📯 Closes the same way it opened
+
+🛑 Labor stops again, like day one
+
+🔗 Bookends frame the whole week
+
+➡️ One sacred unit, not scattered days
 
 # Numbers 28:26-31
 # 🌾 The Feast Of Firstfruits
 ---
-## 🌾 Also In The Day Of The Firstfruits, When Ye Bring A New Meat Offering Unto The LORD, After Your Weeks Be Out
-This is the Feast of Firstfruits, later called the Feast of Weeks, and centuries later, Pentecost in the New Testament. "After your weeks be out" points back to Leviticus 23:15-16, which commands counting seven full weeks, forty-nine days, starting from an earlier firstfruits offering, then celebrating on the fiftieth day.
+## 🌾 The Day Of The Firstfruits, After Your Weeks Be Out
 
-🌾 Also called the Feast of Weeks, later Pentecost
+This is the Feast of Firstfruits, also called the Feast of Weeks.
 
-🔢 Counted 49 days (7 weeks) from an earlier firstfruits offering, per Leviticus 23:15-16
+Centuries later, the New Testament calls this same day Pentecost.
 
-🔑 Marked the grain harvest reaching completion
+"After your weeks be out" points to a count of forty nine days from an earlier firstfruits offering.
 
-## 📯 Ye Shall Have An Holy Convocation; Ye Shall Do No Servile Work
-The same required assembly and work-stoppage rule from the Passover week applies here too. By this point in the chapter, this exact phrase has appeared several times, showing how consistently Israel's calendar treated its major feast days.
+Leviticus 23:15 commands that count, seven full weeks.
 
-📯 The same holy-convocation rule seen earlier in the chapter
+The day marked the grain harvest reaching its completion.
 
-🔁 Consistent treatment across every major feast day
+🌾 Also called the Feast of Weeks
 
-🔑 A reader could now predict this phrase before reading it
+✝️ Later known as Pentecost
 
-## 🔁 Ye Shall Offer...Two Young Bullocks, One Ram, Seven Lambs Of The First Year
-Once again, this is the identical standard "big occasion" package first seen at the New Moon offering and repeated at Passover: two bulls, one ram, seven lambs. Three completely different holidays, spread across the whole year, all use the exact same animal count.
+🔢 Counted forty nine days from firstfruits
 
-🔁 The third appearance of the same fixed animal count
+📖 Marked the grain harvest complete
 
-📦 New Moon, Passover, and now Firstfruits all match exactly
+## 🚫 They Shall Be Unto You Without Blemish
 
-🔑 One standard package used everywhere, easy to recognize once you spot it
+The chapter closes by repeating its opening theme.
 
-## 📏 Their Meat Offering Of Flour Mingled With Oil...And Their Drink Offerings
-The grain and wine amounts follow the same three-tier scaling used every other time in this chapter. By now, the pattern is fully established: whichever feast it is, the ratio between bullock, ram, and lamb portions never changes.
+Every special offering was added on top of the daily rhythm.
 
-📏 Same three-tier grain-and-wine ratio as every prior feast
+It was never a replacement for it.
 
-🔂 A fixed system rather than case-by-case decisions
+Every animal offered all year had to be without blemish.
 
-🔑 Repetition itself teaches that God's worship system doesn't play favorites between feasts
+That same requirement was first named back in verse three.
 
-## 🐐 One Kid Of The Goats, To Make An Atonement For You
-A sin offering closes out this feast too, just like the New Moon and Passover offerings before it. No matter how joyful or agriculturally focused a festival was, Israel's calendar never let the people forget that guilt still needed to be dealt with honestly.
+The whole chapter rests on that same unmoving daily foundation.
 
-🐐 A sin offering included at every major feast in this chapter
+🚫 Without blemish required all year
 
-🕊️ Joy and honesty about guilt are treated as compatible, not opposites
+🔁 Special offerings, never a replacement
 
-🔑 A repeated reminder rather than a one-time lesson
+🏛️ The daily rhythm holds it together
 
-## ➕ Ye Shall Offer Them Beside The Continual Burnt Offering...They Shall Be Unto You Without Blemish
-The chapter's closing line repeats its opening theme one last time: every special offering is added on top of the daily rhythm, never a replacement for it, and every animal offered all year long has to be without blemish. The whole chapter's structure, daily, weekly, monthly, yearly, rests on that same unchanging foundation.
-
-➕ The chapter closes by repeating its own "addition, not replacement" rule
-
-🚫 "Without blemish" bookends the chapter, first mentioned in verse 3
-
-🔑 Every layer of Israel's calendar rests on the same unmoving daily foundation
+📖 One steady foundation the whole chapter
 `.trim();
 
 export const NUMBERS_TWENTY_EIGHT_PERSONAL_SECTIONS = parseNumbersTwentyEightRawNotes(NUMBERS_TWENTY_EIGHT_RAW_NOTES);
