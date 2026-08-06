@@ -891,3 +891,7 @@ Next up: Deuteronomy 15
 ## 2026-08-06T15:54:21Z (hourly chapter notes run)
 Chapter: Deuteronomy 15 | Duration: 10 min | Sections: 5 | Cards: 40 | Status: pass
 Next up: Deuteronomy 16
+
+## 2026-08-06T16:56:05Z (hourly chapter notes run)
+Chapter: Deuteronomy 16 | Duration: 9 min | Sections: 5 | Cards: 44 | Status: pass
+Next up: Deuteronomy 17

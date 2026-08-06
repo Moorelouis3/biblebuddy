@@ -11886,6 +11886,59 @@
           "at": "2026-08-06T15:58:00Z"
         }
       ]
+    },
+    {
+      "book": "Deuteronomy",
+      "chapter": 16,
+      "startedAt": "2026-08-06T16:46:36Z",
+      "finishedAt": "2026-08-06T16:56:05Z",
+      "durationMinutes": 9,
+      "sections": 5,
+      "cards": 44,
+      "verses": 22,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog empty), written directly to docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Deuteronomy 16 covers the three annual pilgrimage feasts and closes with a justice code: Passover reinstructed with its shift from Exodus 12's at-home doorpost sacrifice to one centralized chosen place, the seven day Unleavened Bread festival and its bread of affliction, the Feast of Weeks (Shavuot/Pentecost) counted 49 days from the start of barley harvest with its freewill offering scaled to that year's blessing, the Feast of Tabernacles (Sukkot) closing the farming year with booths recalling the wilderness years, the repeated command to rejoice and the repeated inclusive guest list (Levite, stranger, fatherless, widow) attached to every feast, the requirement that all males appear before the LORD three times a year and never empty handed, the local judges and officers law with its warning against wresting judgment, respecting persons, or taking a bribe ('a gift doth blind the eyes of the wise, and pervert the words of the righteous'), and the closing ban on planting a grove (Asherah pole) or setting up a worship image near the altar, named as something the LORD literally hates. Chunked into 5 sections following the chapter's own topic breaks (Passover, Weeks, Tabernacles/pilgrimage summary, judges, groves/images) rather than reusing an old file's section boundaries since this is a new chapter with no prior wiring. Density exactly 2.0 cards/verse (22 verses, 44 cards). scripts/check_bible_note_style.py found 5 problems on first pass (1 banned hedge word 'fairly' used twice, 4 bullets over the 8 word limit), fixed, second run clean. A manual section 13 eye check confirmed every card opens with one of the four approved moves (mostly define-the-word and correct-the-misreading), defines its key term in quotes, and closes on meaning rather than mechanics, with no hyphens, em dashes, semicolons, or contractions anywhere in the file, and no duplicate card titles. Parser check passed exactly via getBibleReaderStudySections('deuteronomy', 16) (5/5 sections, 44 cards, 22 verses, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added after the Deuteronomy 15 import, preserveExactPhraseBodies Deuteronomy range extended from 1-15 to 1-16, replaceStudySectionsForBookRange call added directly after the Deuteronomy 15 call. Container started this run in the recurring detached HEAD state (same known bug documented since 2026-08-03); git fetch confirmed origin/main matched local HEAD exactly (925fc4c, no divergence, just a stale local ref), so main was reattached locally with git branch -f main HEAD && git checkout main before any new work began.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-06T16:46:36Z"
+        },
+        {
+          "name": "environment issue found and fixed: container started with HEAD detached (recurring known bug); git fetch origin main confirmed origin/main already matched local HEAD exactly (925fc4c, no real divergence, just a stale cached ref); reattached with git branch -f main HEAD && git checkout main",
+          "at": "2026-08-06T16:47:10Z"
+        },
+        {
+          "name": "target chapter determined: Deuteronomy 16 (new chapter, forward progress, redo backlog empty)",
+          "at": "2026-08-06T16:47:15Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com/aruljohn/Bible-kjv mirror",
+          "at": "2026-08-06T16:48:05Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md) plus reference implementation lib/genesisThirtyOneSource.ts and most recent chapter lib/deuteronomyFifteenSource.ts",
+          "at": "2026-08-06T16:50:30Z"
+        },
+        {
+          "name": "source file written (lib/deuteronomySixteenSource.ts, 44 cards / 5 sections)",
+          "at": "2026-08-06T16:54:30Z"
+        },
+        {
+          "name": "style checker clean (python3 scripts/check_bible_note_style.py) after fixing 5 problems on first pass (1 banned hedge word 'fairly', 4 over-length bullets)",
+          "at": "2026-08-06T16:55:20Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended 1-15 to 1-16, replaceStudySectionsForBookRange call added after Deuteronomy 15)",
+          "at": "2026-08-06T16:55:35Z"
+        },
+        {
+          "name": "parser check passed (5/5 sections, 44 cards, text verbatim)",
+          "at": "2026-08-06T16:55:50Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-08-06T16:56:05Z"
+        }
+      ]
     }
   ]
 }
