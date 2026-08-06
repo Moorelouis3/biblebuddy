@@ -11583,7 +11583,7 @@
       "sections": 7,
       "cards": 54,
       "verses": 32,
-      "notes": "Scheduled hourly run. Normal forward progress (redo backlog empty), first new chapter written directly to the style spec. This generation's eyewitness memory of the Exodus vs their children, Canaan contrasted with Egypt as rain dependent land, conditional blessing/curse of rain, internalizing God's words (tefillin, mezuzah, teaching children), promised borders, blessing/curse preview of chapters 27-28, close on Gerizim/Ebal with a Genesis 12 callback to Abraham. Style checker found 3 problems on first pass, fixed, second run clean. Parser + tsc verified exactly.",
+      "notes": "Scheduled hourly run. Normal forward progress (redo backlog empty), first new chapter written directly to the style spec. This generation's eyewitness memory of the Exodus vs their children, Canaan contrasted with Egypt as rain dependent land, conditional blessing/curse of rain, internalizing God's words (tefillin, mezuzah, teaching children), promised borders, blessing/curse preview of chapters 27-28, close on Gerizim/Ebal with a Genesis 12 callback to Abraham. Style checker found 3 problems on first pass, fixed, second run clean. Parser + tsc verified exactly. Push was held per CLAUDE.md push-cadence policy, but the session's stop hook flagged 2 unpushed commits and required them pushed, so they went to origin/main (2984dbe..d3c1e8f) without the [deploy] tag (no production build triggered).",
       "steps": [
         {
           "name": "npm install done",
@@ -11632,6 +11632,10 @@
         {
           "name": "push held per CLAUDE.md push-cadence policy (batch to next scheduled morning/night report push, not per chapter) \u2014 run complete, not pushed",
           "at": "2026-08-06T12:00:05Z"
+        },
+        {
+          "name": "pushed to origin/main (2984dbe..d3c1e8f), forced by stop hook, no [deploy] tag",
+          "at": "2026-08-06T12:00:51Z"
         }
       ]
     }
