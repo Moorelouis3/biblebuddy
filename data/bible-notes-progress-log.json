@@ -11573,6 +11573,59 @@
           "at": "2026-08-06T11:00:30Z"
         }
       ]
+    },
+    {
+      "book": "Deuteronomy",
+      "chapter": 11,
+      "startedAt": "2026-08-06T11:46:30Z",
+      "finishedAt": "2026-08-06T11:59:05Z",
+      "durationMinutes": 12.6,
+      "sections": 7,
+      "cards": 54,
+      "verses": 32,
+      "notes": "Scheduled hourly run. Normal forward progress (redo backlog empty), first new chapter written directly to the style spec. This generation's eyewitness memory of the Exodus vs their children, Canaan contrasted with Egypt as rain dependent land, conditional blessing/curse of rain, internalizing God's words (tefillin, mezuzah, teaching children), promised borders, blessing/curse preview of chapters 27-28, close on Gerizim/Ebal with a Genesis 12 callback to Abraham. Style checker found 3 problems on first pass, fixed, second run clean. Parser + tsc verified exactly.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-06T11:47:12Z"
+        },
+        {
+          "name": "target chapter determined: Deuteronomy 11 (new chapter, forward progress)",
+          "at": "2026-08-06T11:47:36Z"
+        },
+        {
+          "name": "KJV text fetched for Deuteronomy 11 (32 verses)",
+          "at": "2026-08-06T11:47:45Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and skill pipeline read in full",
+          "at": "2026-08-06T11:53:47Z"
+        },
+        {
+          "name": "wrote lib/deuteronomyElevenSource.ts (7 sections, 54 cards)",
+          "at": "2026-08-06T11:55:21Z"
+        },
+        {
+          "name": "style checker clean on lib/deuteronomyElevenSource.ts",
+          "at": "2026-08-06T11:55:44Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange)",
+          "at": "2026-08-06T11:55:58Z"
+        },
+        {
+          "name": "parser check passed (7 sections, 54 cards, TOTAL matches)",
+          "at": "2026-08-06T11:56:21Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, zero errors",
+          "at": "2026-08-06T11:58:12Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-08-06T11:59:05Z"
+        }
+      ]
     }
   ]
 }
