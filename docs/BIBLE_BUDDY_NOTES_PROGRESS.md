@@ -300,3 +300,9 @@ every time a chapter is finished — this markdown file and that JSON log should
 - No `➡️` transition lines (dropped from the original skill spec per user
   feedback on 2026-07-24) — cards end after the emoji bullets.
 - Reference implementation: `lib/genesisFortyOneSource.ts`.
+
+## 2026-08-06 addendum
+
+| Date | Chapter | Cards | Notes |
+|------|---------|-------|-------|
+| 2026-08-06 | Deuteronomy 9 | 27 cards / 9 sections | Scheduled hourly run, written to `docs/bible-study-note-style.md`. Moses corrects the assumption that the land is a reward for righteousness, then retells the golden calf crisis firsthand (two forty day fasts, breaking the tables, grinding the calf to dust) and closes with his intercessory prayer. Style checker clean, parser + tsc verified exactly, all 27 card titles spot checked as exact KJV substrings. |
