@@ -11508,6 +11508,59 @@
           "at": "2026-08-06T09:59:00Z"
         }
       ]
+    },
+    {
+      "book": "Deuteronomy",
+      "chapter": 10,
+      "startedAt": "2026-08-06T10:47:56Z",
+      "finishedAt": "2026-08-06T10:57:34Z",
+      "durationMinutes": 10,
+      "sections": 7,
+      "cards": 46,
+      "verses": 22,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Tenth chapter of normal forward progress in Deuteronomy (redo backlog still empty). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (22 verses). Deuteronomy 10 opens with Moses recounting the second set of stone tables and the temporary wooden ark he built to hold them (distinct from the gold covered Ark of the Covenant Bezaleel built later per Exodus 37), then a parenthetical aside recapping Aaron's death at Mosera and Levi's separation as the priestly tribe with no land inheritance, then the close of the second forty day intercession and the command to resume the journey. The chapter's center is the summary command 'what doth the LORD thy God require of thee' broken into its five parts (fear, walk in his ways, love him, serve with all heart and soul, keep the commandments), followed by the theological turn that God already owns the heaven of heavens and the whole earth, so choosing Israel was never about need but delight and love. The chapter closes on circumcising the heart, loving the stranger because Israel was itself a stranger in Egypt, and the growth from seventy persons who went into Egypt to a nation like the stars of heaven. Chunked into 7 sections (1-5, 6-9, 10-11, 12-13, 14-15, 16-19, 20-22). Density about 2.09 cards/verse (22 verses, 46 cards), the highest density yet in Deuteronomy. Every card title is an exact contiguous KJV phrase per spec section 2. `scripts/check_bible_note_style.py` found 1 problem on first pass (one bullet at 9 words instead of the 3-8 word limit), fixed, second run clean (46 cards, no problems). A manual section 13 eye check confirmed every card opens with one of the four approved moves (defining hew, shittim, cleave, stiffnecked, raiment, threescore and ten; correcting the assumption that Moses's wooden ark was the same as the gold covered Ark of the Covenant; identifying vague references like 'the assembly' and 'their seed after them'; and stating flat points like God's prior ownership of everything), closes on meaning rather than mechanics, and that no card title or body/bullet line repeats anywhere in the file. Parser check passed exactly via `getBibleReaderStudySections('deuteronomy', 10)` (7/7 sections, 46 cards, 22 verses, text verbatim). `npx tsc --noEmit -p .` clean with zero errors. Wired into `lib/bibleReaderStudyNotes.ts`: new import, `preserveExactPhraseBodies` range for Deuteronomy extended from `<= 9` to `<= 10`, and a new `replaceStudySectionsForBookRange(\"deuteronomy\", 10, 10, DEUTERONOMY_TEN_PERSONAL_SECTIONS)` call added after the Deuteronomy 9 call. Next chapter: Deuteronomy 11. Per CLAUDE.md's mandatory push-cadence policy, this chapter's commit is being made locally but not pushed immediately (a report push with [deploy] already went out earlier today per git log); it will go out with the next scheduled morning/night report push batch.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-06T10:47:29Z"
+        },
+        {
+          "name": "target chapter determined: Deuteronomy 10 (normal forward progress, redo backlog empty)",
+          "at": "2026-08-06T10:47:56Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Deuteronomy.json (22 verses)",
+          "at": "2026-08-06T10:48:20Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full; reference implementation lib/deuteronomyNineSource.ts and wiring pattern in lib/bibleReaderStudyNotes.ts reviewed",
+          "at": "2026-08-06T10:49:30Z"
+        },
+        {
+          "name": "source file written: lib/deuteronomyTenSource.ts (7 sections, 46 cards)",
+          "at": "2026-08-06T10:53:00Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, fixed one 9-word bullet)",
+          "at": "2026-08-06T10:53:40Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended through chapter 10)",
+          "at": "2026-08-06T10:54:10Z"
+        },
+        {
+          "name": "parser check passed (7/7 sections, 46 cards, 22 verses, text verbatim)",
+          "at": "2026-08-06T10:54:45Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean",
+          "at": "2026-08-06T10:55:10Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-08-06T10:57:34Z"
+        }
+      ]
     }
   ]
 }

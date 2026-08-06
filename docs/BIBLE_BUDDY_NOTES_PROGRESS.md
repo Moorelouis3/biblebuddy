@@ -267,13 +267,13 @@ every time a chapter is finished — this markdown file and that JSON log should
 - **EXODUS IS COMPLETE — all 40 chapters at gold standard.**
 - **LEVITICUS IS COMPLETE — all 27 chapters at gold standard.**
 - **NUMBERS IS COMPLETE — all 36 chapters at gold standard.**
-- Done under this log: 131 chapters (Genesis 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50; Exodus 1-40; Leviticus 1-27; Numbers 1-36; Deuteronomy 1-8)
+- Done under this log: 133 chapters (Genesis 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50; Exodus 1-40; Leviticus 1-27; Numbers 1-36; Deuteronomy 1-10)
 - Done before this log (pre-existing, written by Louis by hand): 30 chapters (Genesis 1-30)
-- Total done: 161 / 1,189 (13.5%)
+- Total done: 163 / 1,189 (13.7%)
 - Style-redo backlog (chapters already written but needing regeneration to `docs/bible-study-note-style.md`): **0 chapters left — backlog is empty as of Numbers 30.**
-- Remaining: 1,028
+- Remaining: 1,026
 - **Style redo complete for Genesis-Numbers**: Genesis 31 through 50, all of Exodus (1-40), all of Leviticus (1-27), and all of Numbers (1-30) are now regenerated to the new, stricter style spec (`docs/bible-study-note-style.md`). `data/bible-notes-style-redo-remaining.json` is now empty. The automated hourly agent now resumes normal forward progress starting at Numbers 31.
-- Currently on: **Deuteronomy 8 done.** Next chapter: Deuteronomy 9 (still on the older bulk deuteronomyOneToThirteenPersonalNotes file, needs its own dedicated per-chapter file).
+- Currently on: **Deuteronomy 10 done.** Next chapter: Deuteronomy 11.
 - Running under /loop (dynamic self-pacing) starting 2026-07-25 ~13:53 UTC
 - Formalized 2026-07-26 as the "Bible Note Writer Agent" reporting to Bible Buddy → Marcus (second-brain), per Louis's governance directive. Every chapter completion now also appends a `SESSION_LOG.md` block containing "hourly chapter notes run" so Marcus's watcher (`bibleBuddyWatch.js`) can see live activity, not just this log.
 - Genesis 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, and Exodus 1-29 were regenerated to the current style spec on 2026-08-01/02
@@ -306,3 +306,4 @@ every time a chapter is finished — this markdown file and that JSON log should
 | Date | Chapter | Cards | Notes |
 |------|---------|-------|-------|
 | 2026-08-06 | Deuteronomy 9 | 27 cards / 9 sections | Scheduled hourly run, written to `docs/bible-study-note-style.md`. Moses corrects the assumption that the land is a reward for righteousness, then retells the golden calf crisis firsthand (two forty day fasts, breaking the tables, grinding the calf to dust) and closes with his intercessory prayer. Style checker clean, parser + tsc verified exactly, all 27 card titles spot checked as exact KJV substrings. |
+| 2026-08-06 | Deuteronomy 10 | 46 cards / 7 sections | Scheduled hourly run, written to `docs/bible-study-note-style.md`. Second set of tablets and the temporary wooden ark, the parenthetical aside on Aaron's death and Levi's separation as the priestly tribe, the second forty day stay, the "what doth the LORD require of thee" summary command broken into its parts (fear, walk, love, serve with heart and soul), God's ownership of the heavens as the reason Israel's election was grace not need, the command to circumcise the heart and love the stranger grounded in Israel's own slavery in Egypt, and the close on cleaving to God and the growth from seventy persons to a nation like the stars. Style checker clean on first pass except one 9 word bullet (fixed), parser check passed exactly (7/7 sections, 46 cards, 22 verses, text verbatim), `npx tsc --noEmit -p .` clean. Density about 2.09 cards/verse, the highest yet in Deuteronomy. |
