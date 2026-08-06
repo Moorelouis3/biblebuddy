@@ -827,3 +827,7 @@ Next up: Numbers 35
 ## 2026-08-05T23:56:58Z (hourly chapter notes run)
 Chapter: Numbers 35 | Duration: 11 min | Sections: 8 | Cards: 34 | Status: pass
 Next up: Numbers 36
+
+## 2026-08-06T00:55:37Z (hourly chapter notes run)
+Chapter: Numbers 36 | Duration: 9 min | Sections: 3 | Cards: 18 | Status: pass
+Next up: Deuteronomy 1
