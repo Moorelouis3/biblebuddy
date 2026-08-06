@@ -11638,6 +11638,59 @@
           "at": "2026-08-06T12:00:51Z"
         }
       ]
+    },
+    {
+      "book": "Deuteronomy",
+      "chapter": 12,
+      "startedAt": "2026-08-06T12:46:31Z",
+      "finishedAt": "2026-08-06T12:58:00Z",
+      "durationMinutes": 12,
+      "sections": 8,
+      "cards": 43,
+      "verses": 32,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (style redo backlog empty), written directly to docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (32 verses). Deuteronomy 12 is the law of the one central sanctuary: the command to utterly destroy every Canaanite high place, pillar, and Asherah grove before anything else, the place the LORD would later choose to put his name there (fulfilled generations later in Jerusalem), the wilderness's flexible \"every man right in his own eyes\" worship contrasted with the settled centralized worship to come, the new permission to eat ordinary meat like wild game anywhere once one central altar made bringing every meal there impractical, the fixed blood prohibition repeated with its reason (the blood is the life), tithes and vows still restricted to the sanctuary unlike ordinary food, the practical accommodation for families whose territory later grew too far from the sanctuary, and the closing warning against curiosity toward Canaanite worship (naming child sacrifice to gods like Molech directly) and the \"not add thereto, nor diminish\" closed canon warning that echoes forward to Revelation 22. Chunked into 8 sections (1-4, 5-7, 8-12, 13-16, 17-19, 20-25, 26-28, 29-32). scripts/check_bible_note_style.py found 1 problem on first pass (one 21 word body line), fixed, second run clean (43 cards, 0 problems). Parser check passed exactly via getBibleReaderStudySections('Deuteronomy', 12) (8/8 sections, 43 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: new import added after the Deuteronomy 11 import, preserveExactPhraseBodies Deuteronomy range extended from 1-11 to 1-12, and a new replaceStudySectionsForBookRange(\"deuteronomy\", 12, 12, DEUTERONOMY_TWELVE_PERSONAL_SECTIONS) call added right after the Deuteronomy 11 call. Density about 1.34 cards/verse (32 verses, 43 cards), on the lighter end for this chapter since it is dense repeated legal instruction rather than narrative, consistent with the style spec's section 12 guidance for chapters that resist teaching. Next chapter: Deuteronomy 13.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-06T12:47:04Z"
+        },
+        {
+          "name": "target chapter determined: Deuteronomy 12 (new chapter, normal forward progress, redo backlog empty)",
+          "at": "2026-08-06T12:47:29Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Deuteronomy.json",
+          "at": "2026-08-06T12:47:49Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md), skill pipeline (SKILL.md), and reference implementation (lib/genesisThirtyOneSource.ts) read",
+          "at": "2026-08-06T12:47:49Z"
+        },
+        {
+          "name": "source file written (lib/deuteronomyTwelveSource.ts, 8 sections, 43 cards)",
+          "at": "2026-08-06T12:54:12Z"
+        },
+        {
+          "name": "style checker clean (after fixing one 21 word body line)",
+          "at": "2026-08-06T12:54:18Z"
+        },
+        {
+          "name": "wired into reader (import, preserveExactPhraseBodies range extended to 12, replaceStudySectionsForBookRange call added)",
+          "at": "2026-08-06T12:54:36Z"
+        },
+        {
+          "name": "parser check passed (8 sections, 43 cards, 32 verses, text verbatim)",
+          "at": "2026-08-06T12:54:36Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-06T12:56:10Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-08-06T12:58:00Z"
+        }
+      ]
     }
   ]
 }
