@@ -11746,6 +11746,10 @@
         {
           "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
           "at": "2026-08-06T13:57:20Z"
+        },
+        {
+          "name": "committed locally (e2001f4); push held per CLAUDE.md push-cadence policy (batch to next scheduled morning/night report push, not per chapter) — run complete, not pushed",
+          "at": "2026-08-06T13:58:57Z"
         }
       ]
     }
