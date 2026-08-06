@@ -11559,6 +11559,14 @@
         {
           "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
           "at": "2026-08-06T10:57:34Z"
+        },
+        {
+          "name": "committed locally (e4a60ae)",
+          "at": "2026-08-06T10:58:30Z"
+        },
+        {
+          "name": "push deferred per CLAUDE.md push-cadence policy (a report push with [deploy] already went out earlier today per git log; this commit batches with the next scheduled morning/night report push)",
+          "at": "2026-08-06T10:58:30Z"
         }
       ]
     }
