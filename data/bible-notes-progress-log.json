@@ -12183,6 +12183,51 @@
           "at": "2026-08-06T20:58:59Z"
         }
       ]
+    },
+    {
+      "book": "Deuteronomy",
+      "chapter": 21,
+      "startedAt": "2026-08-06T21:45:46Z",
+      "finishedAt": "2026-08-06T21:56:30Z",
+      "durationMinutes": 11,
+      "sections": 5,
+      "cards": 43,
+      "verses": 23,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog empty), written directly to docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (23 verses). The unsolved murder ritual (nearest city's elders take an unworked heifer to an unplowed valley, break its neck as a substitute for the unknown killer, wash their hands over it, and swear their innocence before the Levite priests, atoning for blood guilt on the land itself), the captive woman a soldier wishes to marry (a full month to shave her head, pare her nails, and mourn her parents before marriage, plus a real protection against ever being sold if the marriage fails), the inheritance law barring a father from giving the double portion to a favored wife's son over the actual firstborn of the less loved wife, the stubborn and rebellious son brought before the town elders and stoned by the whole community rather than judged privately by an angry parent, and the requirement to bury a hanged criminal's body before nightfall so the land is not defiled (with the 'accursed of God' language Paul later quotes in Galatians about Jesus). Chunked into 5 sections (1-9, 10-14, 15-17, 18-21, 22-23). scripts/check_bible_note_style.py was clean on the first pass, no problems found. Parser check passed exactly via getBibleReaderStudySections('Deuteronomy', 21) (5/5 sections, 43 cards, 23 verses, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added after the Deuteronomy 20 import, preserveExactPhraseBodies Deuteronomy range extended from 1-20 to 1-21, replaceStudySectionsForBookRange call added directly after the Deuteronomy 20 call. Density about 1.9 cards/verse (23 verses, 43 cards). Next chapter: Deuteronomy 22. Per CLAUDE.md's push-cadence policy the push would normally be held for the next scheduled report, but per this session's precedent (see MARCUS_HANDOFF.md) the stop hook (~/.claude/stop-hook-git-check.sh) hard-blocks ending the turn with any unpushed commit, so this chapter's commit was pushed immediately without the [deploy] tag, meaning it does not trigger a Vercel production build by itself.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-06T21:45:46Z"
+        },
+        {
+          "name": "target chapter determined: Deuteronomy 21 (new chapter, forward progress, redo list empty)",
+          "at": "2026-08-06T21:46:38Z"
+        },
+        {
+          "name": "KJV text fetched for Deuteronomy 21 (23 verses) from raw.githubusercontent.com, and docs/bible-study-note-style.md read in full",
+          "at": "2026-08-06T21:51:45Z"
+        },
+        {
+          "name": "source file lib/deuteronomyTwentyOneSource.ts written (5 sections, 43 cards), style checker clean on first pass",
+          "at": "2026-08-06T21:53:00Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 21, replaceStudySectionsForBookRange call)",
+          "at": "2026-08-06T21:53:15Z"
+        },
+        {
+          "name": "parser check passed exactly (5/5 sections, 43 cards, 23 verses covered 1-23 no gaps)",
+          "at": "2026-08-06T21:53:27Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean with zero errors",
+          "at": "2026-08-06T21:55:02Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-06T21:56:30Z"
+        }
+      ]
     }
   ]
 }
