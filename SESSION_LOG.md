@@ -847,3 +847,7 @@ Next up: Deuteronomy 4
 ## 2026-08-06T05:01:24Z (hourly chapter notes run)
 Chapter: Deuteronomy 4 | Duration: 15 min | Sections: 8 | Cards: 66 | Status: pass
 Next up: Deuteronomy 5
+
+## 2026-08-06T05:57:59Z (hourly chapter notes run)
+Chapter: Deuteronomy 5 | Duration: 12 min | Sections: 6 | Cards: 43 | Status: pass
+Next up: Deuteronomy 6

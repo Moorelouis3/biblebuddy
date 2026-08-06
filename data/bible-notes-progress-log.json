@@ -11187,6 +11187,75 @@
           "at": "2026-08-06T05:04:30Z"
         }
       ]
+    },
+    {
+      "book": "Deuteronomy",
+      "chapter": 5,
+      "startedAt": "2026-08-06T05:45:30Z",
+      "finishedAt": "2026-08-06T05:57:59Z",
+      "durationMinutes": 12,
+      "sections": 6,
+      "cards": 43,
+      "verses": 33,
+      "notes": "Fifth chapter of normal forward progress in Deuteronomy (redo backlog still empty). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (33 verses). Deuteronomy 5 is Moses' full restatement of the Ten Commandments to the generation that did not stand at Horeb themselves: the covenant renewal opening that stresses this generation's own living stake in it (not just their fathers'), Moses recalling his own role as mediator because the people were too afraid of the fire to approach the mountain, the ten commandments repeated in full (no other gods, no graven images with the same three part heaven/earth/waters list from chapter four, the name in vain, the sabbath with its distinct Deuteronomy justification tied to the Egypt slavery memory rather than to creation as in Exodus 20:11, honoring parents as the first commandment with a promise attached, and the closing five against killing, adultery, stealing, false witness, and coveting), the formal close of the direct giving with the two stone tables, and the people's own request through their tribal elders for Moses to become a permanent mediator after hearing God's voice and living to tell it, closing with God's approval of that request, His wistful wish for a lasting heart of obedience, and Moses being set apart to receive the rest of the law that begins unfolding in chapter six. Chunked into 6 sections (1-5, 6-10, 11-15, 16-21, 22-27, 28-33). Density about 1.30 cards/verse (33 verses, 43 cards). Every card title is an exact contiguous KJV phrase per spec section 2. scripts/check_bible_note_style.py was clean on the first pass, zero problems found (43 cards). A manual section 13 eye check caught two 'while' stacked clauses the mechanical checker does not catch (spec section 3, not enforced by the script) in the verse 5 mediator card and the verse 10 mercy card, split each into two separate lines, then re-ran the checker (still clean, still 43 cards) and the parser/tsc checks again to confirm nothing broke. Confirmed no card title or body/bullet line repeats anywhere in the file, and that the sabbath's Deuteronomy reason (freedom from Egypt) is explicitly distinguished from Exodus 20:11's creation reason rather than silently merging the two. Parser check passed exactly via getBibleReaderStudySections('deuteronomy', 5) (6/6 sections, 43 cards, 33 verses, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: new import, preserveExactPhraseBodies range for Deuteronomy extended from <= 4 to <= 5, and a new replaceStudySectionsForBookRange(\"deuteronomy\", 5, 5, DEUTERONOMY_FIVE_PERSONAL_SECTIONS) call added after the Deuteronomy 4 call. Next chapter: Deuteronomy 6.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-06T05:46:38Z"
+        },
+        {
+          "name": "target chapter determined: Deuteronomy 5 (redo backlog empty, normal forward progress, Deuteronomy 1-4 already have dedicated files)",
+          "at": "2026-08-06T05:46:38Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Deuteronomy.json chapter 5 (33 verses)",
+          "at": "2026-08-06T05:48:00Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-08-06T05:49:00Z"
+        },
+        {
+          "name": "source file written (lib/deuteronomyFiveSource.ts, 6 sections, 43 cards)",
+          "at": "2026-08-06T05:53:00Z"
+        },
+        {
+          "name": "style checker clean (first pass, zero problems, 43 cards)",
+          "at": "2026-08-06T05:53:30Z"
+        },
+        {
+          "name": "wired into reader (import, preserveExactPhraseBodies range extended to chapter 5, replaceStudySectionsForBookRange call added)",
+          "at": "2026-08-06T05:54:00Z"
+        },
+        {
+          "name": "parser check passed (6/6 sections, 43 cards, 33 verses, text verbatim)",
+          "at": "2026-08-06T05:54:30Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean (first pass)",
+          "at": "2026-08-06T05:55:30Z"
+        },
+        {
+          "name": "manual section 13 eye check found two 'while' stacked clauses (verse 5 and verse 10 cards), fixed both",
+          "at": "2026-08-06T05:56:30Z"
+        },
+        {
+          "name": "style checker re-run clean after fix (43 cards)",
+          "at": "2026-08-06T05:56:53Z"
+        },
+        {
+          "name": "parser check re-run passed after fix (6/6 sections, 43 cards, 33 verses)",
+          "at": "2026-08-06T05:57:10Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean after fix",
+          "at": "2026-08-06T05:57:27Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-06T05:57:59Z"
+        }
+      ]
     }
   ]
 }
