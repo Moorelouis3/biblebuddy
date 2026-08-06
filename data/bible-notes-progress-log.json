@@ -11270,7 +11270,7 @@
       "sections": 6,
       "cards": 37,
       "verses": 25,
-      "notes": "New chapter, normal forward progress after Deuteronomy 5. The Shema chapter (Hear O Israel). Wrote to docs/bible-study-note-style.md spec from scratch, style checker clean, parser verified, tsc clean.",
+      "notes": "New chapter, normal forward progress after Deuteronomy 5. The Shema chapter (Hear O Israel). Wrote to docs/bible-study-note-style.md spec from scratch, style checker clean, parser verified, tsc clean. Committed locally (5525121) but not pushed, per CLAUDE.md push-cadence policy (batch to at most twice a day); will go out with the next scheduled report push or stop-hook push, matching the pattern in every recent Deuteronomy chapter entry. Also fixed a recurring stale local-main-ref issue (local main was frozen at Genesis 50 commit a18839f while origin/main and this session's work chain were far ahead) by confirming origin/main matched the commit right before this one and repointing local main with git branch -f, same as prior chapter runs.",
       "steps": [
         {
           "name": "npm_install_done",
@@ -11307,6 +11307,10 @@
         {
           "name": "tsc_clean",
           "at": "2026-08-06T06:57:20Z"
+        },
+        {
+          "name": "committed_5525121_push_withheld_per_claude_md_cadence_policy",
+          "at": "2026-08-06T06:59:00Z"
         }
       ]
     }
