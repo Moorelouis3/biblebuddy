@@ -11750,6 +11750,10 @@
         {
           "name": "committed locally (e2001f4); push held per CLAUDE.md push-cadence policy (batch to next scheduled morning/night report push, not per chapter) — run complete, not pushed",
           "at": "2026-08-06T13:58:57Z"
+        },
+        {
+          "name": "pushed to origin/main (325e11c..bccd5ce), forced by the session's stop hook (stop-hook-git-check.sh) which flagged 2 unpushed commits and required them pushed; no [deploy] tag on either commit, so no production build was triggered",
+          "at": "2026-08-06T13:59:34Z"
         }
       ]
     }
