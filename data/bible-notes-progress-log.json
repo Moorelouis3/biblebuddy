@@ -10943,6 +10943,59 @@
           "at": "2026-08-06T00:55:37Z"
         }
       ]
+    },
+    {
+      "book": "Deuteronomy",
+      "chapter": 1,
+      "startedAt": "2026-08-06T01:45:55Z",
+      "finishedAt": "2026-08-06T01:59:08Z",
+      "durationMinutes": 13,
+      "sections": 8,
+      "cards": 63,
+      "verses": 46,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog (data/bible-notes-style-redo-remaining.json) was empty, and Numbers 1-36 is now fully complete per the progress log's last entry, so this was normal forward progress: first chapter in canonical order (Genesis 1 - Revelation 22) with no existing dedicated per-chapter lib file. Deuteronomy 1 opens the whole book, Moses' farewell speech to the generation that will actually enter Canaan: the superscription dating the speech to the fortieth year right after Israel's recent victories over Sihon and Og, God's command to leave Horeb after nearly a year camped there with the full sweep of promised territory named out to the Euphrates, Moses recalling (in his own words for the first time) his decision to appoint tribal judges and captains over thousands/hundreds/fifties/tens first told in Exodus 18, the charge to those judges to judge without partiality since the judgment is God's, the journey to Kadeshbarnea and the spies' genuinely good report framed here as originating from the people's own request (which sits alongside, not against, Numbers 13's account of God's formal command), the camp's rebellion and the wild 'the LORD hated us' accusation, God's oath barring that whole generation except Caleb (and Joshua, named separately), Moses naming his own exclusion and tying it to the people's rebellion here while a later chapter names his own specific failure at Meribah, and the chapter's close on the presumptuous, unauthorized attack that gets routed at Hormah, the empty weeping God would not hear, and the long unnamed stretch of years abiding at Kadesh that Deuteronomy otherwise skips over. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (Deuteronomy.json, chapter 1, 46 verses). Read docs/bible-study-note-style.md in full and used lib/genesisThirtyOneSource.ts as the structural and voice reference (no --- separators between cards within a section, only after the section title line). Chunked into 8 sections (1-5, 6-8, 9-15, 16-18, 19-25, 26-33, 34-40, 41-46) with 63 phrase cards, about 1.37 cards per verse. `scripts/check_bible_note_style.py` found 5 problems on first pass (a banned hedge word 'fairly' inside a card body/bullet, and 4 cards with only 2 body lines instead of the 3-line floor), fixed all, second run found 1 more (the same hedge word surviving inside a section title, 'The Charge To Judge Fairly', which the checker scans along with card bodies), fixed by renaming the section title, third run clean. A manual section 13 eye check also caught and rewrote two card openings that were too close to the spec's banned 'This verse describes' pattern ('This describes God acting as a warrior' and 'This describes the people arming themselves') into direct Move 4 statements instead, and confirmed no duplicate body or bullet lines anywhere in the file via a full-file line-frequency scan. Parser check passed exactly via `getBibleReaderStudySections('deuteronomy', 1)` (8/8 sections, 63 cards, 46 verses, text verbatim). `npx tsc --noEmit -p .` clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: new import added near the other numbers*Source imports, preserveExactPhraseBodies extended with a new deuteronomy chapter 1 to chapter 1 clause (to be widened incrementally as more Deuteronomy chapters get dedicated files, matching how the Numbers range grew), and a new replaceStudySectionsForBookRange('deuteronomy', 1, 1, ...) call added directly after the existing Numbers 36 call so it overrides the old bulk DEUTERONOMY_1_13_PERSONAL_SECTIONS content for this one chapter. This is the first Deuteronomy chapter to get a dedicated per-chapter file; chapters 2-34 still run on the older bulk deuteronomyOneToThirteen/FourteenToTwentyNine/ThirtyToThirtyFour files and are next in canonical order after this one.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-06T01:45:55Z"
+        },
+        {
+          "name": "target chapter determined (Deuteronomy 1, forward progress, redo backlog empty)",
+          "at": "2026-08-06T01:47:36Z"
+        },
+        {
+          "name": "KJV text fetched (Deuteronomy 1, 46 verses, raw.githubusercontent.com/aruljohn/Bible-kjv)",
+          "at": "2026-08-06T01:47:36Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md)",
+          "at": "2026-08-06T01:47:36Z"
+        },
+        {
+          "name": "source file written (lib/deuteronomyOneSource.ts, 8 sections, 63 cards)",
+          "at": "2026-08-06T01:56:01Z"
+        },
+        {
+          "name": "style checker clean on third pass (python3 scripts/check_bible_note_style.py, fixed hedge word + 4 thin bodies + 1 hedge word in section title)",
+          "at": "2026-08-06T01:56:01Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies extended to deuteronomy 1, replaceStudySectionsForBookRange call added)",
+          "at": "2026-08-06T01:58:42Z"
+        },
+        {
+          "name": "parser check passed (8 sections, 63 cards, 46 verses covered, text verbatim)",
+          "at": "2026-08-06T01:58:42Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-08-06T01:58:42Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-08-06T01:59:08Z"
+        }
+      ]
     }
   ]
 }

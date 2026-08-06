@@ -831,3 +831,7 @@ Next up: Numbers 36
 ## 2026-08-06T00:55:37Z (hourly chapter notes run)
 Chapter: Numbers 36 | Duration: 9 min | Sections: 3 | Cards: 18 | Status: pass
 Next up: Deuteronomy 1
+
+## 2026-08-06T01:59:08Z (hourly chapter notes run)
+Chapter: Deuteronomy 1 | Duration: 13 min | Sections: 8 | Cards: 63 | Status: pass
+Next up: Deuteronomy 2
