@@ -12232,6 +12232,59 @@
           "at": "2026-08-06T21:58:21Z"
         }
       ]
+    },
+    {
+      "book": "Deuteronomy",
+      "chapter": 22,
+      "startedAt": "2026-08-06T22:45:56Z",
+      "finishedAt": "2026-08-06T22:56:00Z",
+      "durationMinutes": 10,
+      "sections": 8,
+      "cards": 51,
+      "verses": 30,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog empty), written directly to docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (30 verses). A grab bag of community and holiness laws: the duty to actively return a neighbor's strayed animal or lost property rather than looking away, the prohibition on wearing the other sex's clothing (with the likely link to pagan ritual cross dressing explained), the bird's nest mercy law that shares its long life promise with the fifth commandment, the roof battlement safety law treating a preventable fall as real bloodguilt, four forbidden mixture laws (mixed vineyard seed, ox and ass yoked together, wool and linen woven together, and the required tassels on a garment's corners), the long false accusation of unchastity case with its bloodstained token evidence, hundred shekel fine, and lifelong no divorce protection for the wife, the stoning penalty when the accusation proves true, the adultery and betrothed virgin assault laws contrasting the city (assumed consent) with the field (assumed force, explicitly compared to murder), and the closing laws on an unbetrothed virgin's fifty shekel case and the prohibition on marrying a father's wife. Chunked into 8 sections (1-4, 5, 6-8, 9-12, 13-19, 20-21, 22-27, 28-30). scripts/check_bible_note_style.py was clean on the first pass, no problems found. Parser check passed exactly via getBibleReaderStudySections('Deuteronomy', 22) (8/8 sections, 51 cards, 30 verses, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added after the Deuteronomy 21 import, preserveExactPhraseBodies Deuteronomy range extended from 1-21 to 1-22, replaceStudySectionsForBookRange call added directly after the Deuteronomy 21 call. Density 1.7 cards/verse (30 verses, 51 cards). Next chapter: Deuteronomy 23.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-06T22:46:37Z"
+        },
+        {
+          "name": "target chapter determined: Deuteronomy 22 (new chapter, forward progress, redo list empty)",
+          "at": "2026-08-06T22:46:37Z"
+        },
+        {
+          "name": "KJV text fetched for Deuteronomy 22 (30 verses) from raw.githubusercontent.com",
+          "at": "2026-08-06T22:46:52Z"
+        },
+        {
+          "name": "docs/bible-study-note-style.md and lib/genesisThirtyOneSource.ts (reference implementation) read in full",
+          "at": "2026-08-06T22:47:30Z"
+        },
+        {
+          "name": "source file lib/deuteronomyTwentyTwoSource.ts written (8 sections, 51 cards)",
+          "at": "2026-08-06T22:50:30Z"
+        },
+        {
+          "name": "style checker clean on first pass (python3 scripts/check_bible_note_style.py)",
+          "at": "2026-08-06T22:50:45Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 22, replaceStudySectionsForBookRange call)",
+          "at": "2026-08-06T22:51:20Z"
+        },
+        {
+          "name": "parser check passed exactly (8/8 sections, 51 cards, 30 verses covered 1-30 no gaps)",
+          "at": "2026-08-06T22:52:05Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean with zero errors",
+          "at": "2026-08-06T22:53:10Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-06T22:56:00Z"
+        }
+      ]
     }
   ]
 }
