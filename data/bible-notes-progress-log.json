@@ -12295,7 +12295,7 @@
       "sections": 8,
       "cards": 44,
       "verses": 25,
-      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog empty). Assembly exclusion laws (eunuch, bastard, Ammon/Moab barred forever vs Edom/Egypt allowed after three generations), war camp holiness laws, runaway foreign servant protection, ban on cult prostitution, no-usury-to-a-brother lending law, binding weight of a spoken vow, and the closing neighbor's field law. Style checker clean on first pass, parser check passed exactly (8/8 sections, 44 cards, 25 verses, text verbatim), tsc --noEmit clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended 1-22 to 1-23, replaceStudySectionsForBookRange call added after Deuteronomy 22). Density about 1.76 cards/verse.",
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog empty). Assembly exclusion laws (eunuch, bastard, Ammon/Moab barred forever vs Edom/Egypt allowed after three generations), war camp holiness laws, runaway foreign servant protection, ban on cult prostitution, no-usury-to-a-brother lending law, binding weight of a spoken vow, and the closing neighbor's field law. Style checker clean on first pass, parser check passed exactly (8/8 sections, 44 cards, 25 verses, text verbatim), tsc --noEmit clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended 1-22 to 1-23, replaceStudySectionsForBookRange call added after Deuteronomy 22). Density about 1.76 cards/verse. Per CLAUDE.md's push-cadence policy the push was initially held, but this session's stop hook forced it before the turn could end (see steps array); pushed without the [deploy] tag so no Vercel build fired. Root cause already tracked in MARCUS_HANDOFF.md, not duplicated here.",
       "steps": [
         {
           "name": "npm_install_done",
@@ -12344,6 +12344,10 @@
         {
           "name": "push_held_per_CLAUDE_md_cadence_policy",
           "at": "2026-08-06T23:57:19Z"
+        },
+        {
+          "name": "stop-hook-forced push: this session's stop hook (~/.claude/stop-hook-git-check.sh) hard-blocked ending the turn with 2 unpushed commits, so the planned CLAUDE.md batching (hold the push for the next scheduled report) was not possible here; pushed 7742c2e..33237c5 without the [deploy] tag so it does not trigger a Vercel build. Root cause already flagged to Marcus in MARCUS_HANDOFF.md ('Correction: root cause of per-chapter pushes is a stop hook, not rule non-compliance'), not re-logged here to avoid duplication.",
+          "at": "2026-08-06T23:58:41Z"
         }
       ]
     }
