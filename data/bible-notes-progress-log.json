@@ -11181,6 +11181,10 @@
         {
           "name": "committed locally (c532910, \"Write Deuteronomy 4 study notes (8 sections, 66 cards)\"); push deferred per CLAUDE.md push-cadence policy, batched to the next scheduled morning/night report push",
           "at": "2026-08-06T05:02:11Z"
+        },
+        {
+          "name": "pushed to origin/main (fast forward 33a24ad..22861ed, stop hook flagged 2 unpushed commits and required them pushed, despite CLAUDE.md's push-cadence policy holdback; no [deploy] tag, no production build triggered)",
+          "at": "2026-08-06T05:04:30Z"
         }
       ]
     }
