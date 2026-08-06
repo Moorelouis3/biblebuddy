@@ -101,3 +101,21 @@ pushing immediately. Worth Louis confirming whether the instruction itself
 needs to be stronger/clearer for the scheduled agent to actually follow it,
 since a plainly written mandatory rule has been silently ignored for at least
 two days of hourly runs.
+
+## Correction: root cause of per-chapter pushes is a stop hook, not rule non-compliance
+Correcting the entry right above this one from the same run. After committing
+Deuteronomy 15 locally and deliberately holding the push, this session's own
+stop hook (`~/.claude/stop-hook-git-check.sh`) blocked the turn from ending
+with "There are 3 unpushed commit(s) on branch main. Please push these
+changes to the remote repository," exit code 2, no way to decline. That hook
+hard-fails any stop while `origin/<branch>..HEAD` is non-empty, with no
+awareness of the CLAUDE.md batching policy. That is almost certainly why
+every prior hourly run has pushed per chapter despite the mandatory rule:
+the agent is not choosing to ignore the policy, the environment will not let
+the session end otherwise. This run pushed (ae2d41d) once blocked, but left
+off the `[deploy]` tag so it should not trigger a Vercel build by itself.
+The real fix has to happen outside this project's CLAUDE.md: either the stop
+hook needs an exception for this kind of intentionally-held batch, or the
+push-cadence policy needs to be dropped as unworkable under this hook. Worth
+Louis deciding which, since as written the two instructions structurally
+cannot both be satisfied by an hourly single-chapter-per-session agent.

@@ -11880,6 +11880,10 @@
         {
           "name": "push deferred per CLAUDE.md mandatory push-cadence rule (batch to at most twice daily; local main is 2 commits ahead of origin/main, held for next scheduled report push or Louis's explicit ask)",
           "at": "2026-08-06T15:56:10Z"
+        },
+        {
+          "name": "stop-hook-forced push correction: this session's stop hook (~/.claude/stop-hook-git-check.sh) hard-blocks ending the turn while any commits are unpushed, so the planned CLAUDE.md batching (hold the push) was not actually possible in this environment; pushed ae2d41d without the [deploy] tag so it does not trigger a Vercel build, then pushed as origin/main 6d13aa3..ae2d41d",
+          "at": "2026-08-06T15:58:00Z"
         }
       ]
     }
