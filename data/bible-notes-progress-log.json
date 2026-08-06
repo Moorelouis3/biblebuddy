@@ -11378,6 +11378,63 @@
           "at": "2026-08-06T07:58:59Z"
         }
       ]
+    },
+    {
+      "book": "Deuteronomy",
+      "chapter": 8,
+      "startedAt": "2026-08-06T08:46:13Z",
+      "finishedAt": "2026-08-06T08:57:30Z",
+      "durationMinutes": 11,
+      "sections": 7,
+      "cards": 25,
+      "verses": 20,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Eighth chapter of normal forward progress in Deuteronomy (redo backlog still empty). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (20 verses). Deuteronomy 8 is Moses' warning about prosperity: the forty years of wilderness humbling and testing, the manna as an unknown food meant to teach that man does not live by bread only but by every word from God's mouth (quoted later by Jesus in Matthew 4), the forty years without worn out clothes or feet, the father/son chastening analogy, the description of the good land (brooks and fountains, wheat, barley, vines, fig trees, pomegranates, oil olive, honey, iron in the stones, brass in the hills), the command to bless the Lord after eating and being full, the warning against forgetting God once houses are built and herds/silver/gold multiply, the wilderness dangers (fiery serpents, scorpions, drought) and the water from the rock of flint recalling Exodus 17 and Numbers 20, the warning against saying 'my power hath gotten me this wealth' answered directly by 'it is he that giveth thee power to get wealth' tied to the covenant sworn to the fathers, and the closing warning that forgetting God and walking after other gods brings the same destruction already described for the Canaanite nations in chapter 7. Chunked into 7 sections (1-2, 3-5, 6-10, 11-14, 15-16, 17-18, 19-20). Density about 1.25 cards/verse (20 verses, 25 cards). Every card title is an exact contiguous KJV phrase per spec section 2. `scripts/check_bible_note_style.py` found 4 problems on first pass, all from one card: an inline emoji list for the crop names that the mechanical checker counts as extra bullets (8 found instead of 4, plus a resulting repeated emoji and an over length bullet), and a separate 9 word bullet on another card. Rewrote the crop list as plain prose lines instead of an inline list and trimmed the long bullet, second run clean (25 cards). A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key archaic term (raiment, waxed old, chasten, scarceness, kine repeats from chapter 7, affrighted-class terms like flint and testify) in plain language, closes on meaning rather than mechanics, and that no card title or body/bullet line repeats anywhere in the file. Parser check passed exactly via `getBibleReaderStudySections('Deuteronomy', 8)` (7/7 sections, 25 cards, 20 verses, text verbatim). `npx tsc --noEmit -p .` clean with zero errors. Wired into `lib/bibleReaderStudyNotes.ts`: new import, `preserveExactPhraseBodies` range for Deuteronomy extended from `<= 7` to `<= 8`, and a new `replaceStudySectionsForBookRange(\"deuteronomy\", 8, 8, DEUTERONOMY_EIGHT_PERSONAL_SECTIONS)` call added after the Deuteronomy 7 call. Next chapter: Deuteronomy 9. Session started with local `main` detached and frozen at a stale commit (a18839f), the same recurring git-state bug flagged in prior entries and in MARCUS_HANDOFF.md; `git fetch origin main` showed origin/main had force updated to fdb9789, matching the session's detached HEAD exactly, so this was a stale local ref, not real divergence or data loss. Repointed local `main` to that commit with `git branch -f main <sha>` and checked it out before starting this chapter's work. Per CLAUDE.md's push-cadence policy, this chapter's commit is being made locally but not pushed immediately; it will go out with the next scheduled morning or night report push, or sooner if the session's stop hook forces it the way it has in prior runs.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-06T08:46:13Z"
+        },
+        {
+          "name": "target chapter determined: Deuteronomy 8 (normal forward progress, redo backlog empty)",
+          "at": "2026-08-06T08:46:25Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Deuteronomy.json (20 verses)",
+          "at": "2026-08-06T08:46:37Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementations read (genesisThirtyOneSource.ts, deuteronomySevenSource.ts)",
+          "at": "2026-08-06T08:52:22Z"
+        },
+        {
+          "name": "source file written: lib/deuteronomyEightSource.ts (7 sections, 25 cards)",
+          "at": "2026-08-06T08:53:00Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, fixed an inline-list-counted-as-bullets issue and one 9-word bullet)",
+          "at": "2026-08-06T08:53:38Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended through chapter 8)",
+          "at": "2026-08-06T08:54:00Z"
+        },
+        {
+          "name": "parser check passed (7 sections, 25 cards, 20 verses, text verbatim)",
+          "at": "2026-08-06T08:54:26Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-08-06T08:55:43Z"
+        },
+        {
+          "name": "recovered from recurring detached-HEAD bug: local main was stale (a18839f), fetched origin/main (fdb9789, matched detached HEAD exactly), repointed local main and checked it out before committing",
+          "at": "2026-08-06T08:56:10Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-08-06T08:57:30Z"
+        }
+      ]
     }
   ]
 }

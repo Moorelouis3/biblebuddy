@@ -859,3 +859,7 @@ Next up: Deuteronomy 7
 ## 2026-08-06T07:55:55Z (hourly chapter notes run)
 Chapter: Deuteronomy 7 | Duration: 9.5 min | Sections: 8 | Cards: 36 | Status: pass
 Next up: Deuteronomy 8
+
+## 2026-08-06T08:57:30Z (hourly chapter notes run)
+Chapter: Deuteronomy 8 | Duration: 11 min | Sections: 7 | Cards: 25 | Status: pass
+Next up: Deuteronomy 9
