@@ -12285,6 +12285,55 @@
           "at": "2026-08-06T22:56:00Z"
         }
       ]
+    },
+    {
+      "book": "Deuteronomy",
+      "chapter": 23,
+      "startedAt": "2026-08-06T23:45:56Z",
+      "finishedAt": "2026-08-06T23:55:55Z",
+      "durationMinutes": 10,
+      "sections": 8,
+      "cards": 44,
+      "verses": 25,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog empty). Assembly exclusion laws (eunuch, bastard, Ammon/Moab barred forever vs Edom/Egypt allowed after three generations), war camp holiness laws, runaway foreign servant protection, ban on cult prostitution, no-usury-to-a-brother lending law, binding weight of a spoken vow, and the closing neighbor's field law. Style checker clean on first pass, parser check passed exactly (8/8 sections, 44 cards, 25 verses, text verbatim), tsc --noEmit clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended 1-22 to 1-23, replaceStudySectionsForBookRange call added after Deuteronomy 22). Density about 1.76 cards/verse.",
+      "steps": [
+        {
+          "name": "npm_install_done",
+          "at": "2026-08-06T23:45:56Z"
+        },
+        {
+          "name": "target_chapter_determined:Deuteronomy_23:new",
+          "at": "2026-08-06T23:46:44Z"
+        },
+        {
+          "name": "kjv_text_fetched:Deuteronomy_23",
+          "at": "2026-08-06T23:47:12Z"
+        },
+        {
+          "name": "style_spec_read",
+          "at": "2026-08-06T23:48:30Z"
+        },
+        {
+          "name": "source_file_written:lib/deuteronomyTwentyThreeSource.ts",
+          "at": "2026-08-06T23:52:55Z"
+        },
+        {
+          "name": "style_checker_clean",
+          "at": "2026-08-06T23:52:55Z"
+        },
+        {
+          "name": "wired_into_reader:lib/bibleReaderStudyNotes.ts",
+          "at": "2026-08-06T23:54:54Z"
+        },
+        {
+          "name": "parser_check_passed:8_sections_44_cards",
+          "at": "2026-08-06T23:54:54Z"
+        },
+        {
+          "name": "tsc_noemit_clean",
+          "at": "2026-08-06T23:54:54Z"
+        }
+      ]
     }
   ]
 }
