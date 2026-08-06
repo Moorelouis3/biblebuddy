@@ -11766,7 +11766,7 @@
       "sections": 7,
       "cards": 39,
       "verses": 29,
-      "notes": "Scheduled hourly Bible Note Writer Agent run. Redo backlog empty, normal forward progress after Deuteronomy 13. Food law chapter (clean/unclean land animals, fish, birds, carrion, kid in milk) plus the annual and triennial tithe laws. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Density sits at about 1.3 cards per verse rather than the usual 2 per verse target, deliberately, per docs/bible-study-note-style.md section 12: the unclean bird list (vv11-18, 8 verses, 6 cards) and the land animal list (vv4-8) are the kind of repetitive named list that chapter resists teaching per name, so cards there teach the underlying pattern (the hoof and cud test, predator/scavenger birds being unclean, after his kind covering close relatives) rather than one card per animal name. Density is much closer to 2 per verse in the richer sections (the peculiar people opening, the tithe law). check_bible_note_style.py found one problem on first pass, a semicolon in a card title lifted directly from the KJV verse punctuation, fixed by swapping it for a comma, second run clean. Parser and tsc both verified.",
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Redo backlog empty, normal forward progress after Deuteronomy 13. Food law chapter (clean/unclean land animals, fish, birds, carrion, kid in milk) plus the annual and triennial tithe laws. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Density sits at about 1.3 cards per verse rather than the usual 2 per verse target, deliberately, per docs/bible-study-note-style.md section 12: the unclean bird list (vv11-18, 8 verses, 6 cards) and the land animal list (vv4-8) are the kind of repetitive named list that chapter resists teaching per name, so cards there teach the underlying pattern (the hoof and cud test, predator/scavenger birds being unclean, after his kind covering close relatives) rather than one card per animal name. Density is much closer to 2 per verse in the richer sections (the peculiar people opening, the tithe law). check_bible_note_style.py found one problem on first pass, a semicolon in a card title lifted directly from the KJV verse punctuation, fixed by swapping it for a comma, second run clean. Parser and tsc both verified. Also hit the recurring detached-HEAD/stale-main environment bug documented in MARCUS_HANDOFF.md since 2026-08-03: container started this run with HEAD detached and local main frozen at an old commit. Fetching origin/main fresh showed origin was actually already current through the previous chapter (d272fc1), so nothing was lost, just this container's cached ref was stale. Pushed with git push origin HEAD:main (clean fast forward), then reattached local main to HEAD so the container is not left in a detached state for the next run.",
       "steps": [
         {
           "name": "npm install done",
@@ -11803,6 +11803,18 @@
         {
           "name": "tsc --noEmit clean",
           "at": "2026-08-06T14:57:15Z"
+        },
+        {
+          "name": "committed (0d2ecb9)",
+          "at": "2026-08-06T14:58:41Z"
+        },
+        {
+          "name": "environment issue found and fixed: container started with HEAD detached from a stale local main ref (known recurring bug per MARCUS_HANDOFF.md/DAILY_REPORT.md since 2026-08-03); git fetch origin main revealed origin/main was actually already at d272fc1 (this container's cached ref was just stale, not really behind); pushed with git push origin HEAD:main (clean fast forward d272fc1..0d2ecb9), then git branch -f main HEAD && git checkout main to leave the container attached to main instead of detached",
+          "at": "2026-08-06T15:00:30Z"
+        },
+        {
+          "name": "pushed (fast forward d272fc1..0d2ecb9, confirmed origin/main == local main == HEAD)",
+          "at": "2026-08-06T15:00:11Z"
         }
       ]
     }

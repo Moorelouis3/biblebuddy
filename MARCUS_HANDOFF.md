@@ -72,3 +72,16 @@ this is now the third time in a row the container has not started on a
 normal attached main branch as the task instructions claim it should
 ("a fresh clone every run"). The underlying mechanism is still unconfirmed
 and still worth someone checking directly, per the prior two entries.
+
+## Detached-HEAD bug recurred again, Deuteronomy 14 run, no data lost
+Same environment issue as the entries above, on the 2026-08-06 ~14:46 UTC
+scheduled Deuteronomy 14 run. Container started with git HEAD detached and
+local `main` frozen at a stale commit (`a18839f`, 2026-08-01). This time
+`git fetch origin main` showed origin/main had actually already moved on to
+`d272fc1` (this container's cached remote ref was just stale, not really
+behind), so only this run's own new commit needed to land. Pushed with
+`git push origin HEAD:main` (clean fast forward), then reattached local
+`main` to `HEAD` before finishing. Nothing lost this time, but this is now
+at least the sixth recorded occurrence since 2026-08-03, and the root cause
+is still unconfirmed per every prior entry above. Flagging again since none
+of the earlier entries in this file appear to have been cleared yet either.
