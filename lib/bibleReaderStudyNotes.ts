@@ -160,6 +160,7 @@ import { DEUTERONOMY_THREE_PERSONAL_SECTIONS } from "./deuteronomyThreeSource";
 import { DEUTERONOMY_FOUR_PERSONAL_SECTIONS } from "./deuteronomyFourSource";
 import { DEUTERONOMY_FIVE_PERSONAL_SECTIONS } from "./deuteronomyFiveSource";
 import { DEUTERONOMY_SIX_PERSONAL_SECTIONS } from "./deuteronomySixSource";
+import { DEUTERONOMY_SEVEN_PERSONAL_SECTIONS } from "./deuteronomySevenSource";
 import { EXODUS_2_10_PERSONAL_SECTIONS } from "./exodusTwoToTenPersonalNotes";
 import { EXODUS_11_20_PERSONAL_SECTIONS } from "./exodusElevenToTwentyPersonalNotes";
 import { EXODUS_21_30_PERSONAL_SECTIONS } from "./exodusTwentyOneToThirtyPersonalNotes";
@@ -538,7 +539,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "exodus" && section.chapter >= 1 && section.chapter <= 40) ||
     (normalizeBook(book) === "leviticus" && section.chapter >= 1 && section.chapter <= 27) ||
     (normalizeBook(book) === "numbers" && section.chapter >= 1 && section.chapter <= 36) ||
-    (normalizeBook(book) === "deuteronomy" && section.chapter >= 1 && section.chapter <= 6);
+    (normalizeBook(book) === "deuteronomy" && section.chapter >= 1 && section.chapter <= 7);
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -9156,6 +9157,12 @@ replaceStudySectionsForBookRange(
   6,
   6,
   DEUTERONOMY_SIX_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "deuteronomy",
+  7,
+  7,
+  DEUTERONOMY_SEVEN_PERSONAL_SECTIONS,
 );
 
 for (const section of BIBLE_READER_STUDY_SECTIONS) {

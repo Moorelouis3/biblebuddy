@@ -115,6 +115,12 @@
       "type": "chapter_count_checkpoint",
       "chaptersCompletedSoFarTonight": 26,
       "detail": "Numbers 26 shipped this run via the raw.githubusercontent.com/aruljohn/Bible-kjv mirror, no usage limit, rate limit, or throttling encountered. 13 chapters shipped since the last checkpoint/note at 2026-08-05T01:58:00Z (Numbers 14-26, style redo backlog), each in its own separate hourly run. This run's own detached-HEAD recovery is noted in the progress log entry, not repeated here since it was a clean fetch-and-checkout with no divergence and no work lost, not a block. CORRECTION: the commit was initially held back per CLAUDE.md's push-cadence policy, but the session's stop hook flagged the unpushed commit and required it pushed, so it went out to origin/main (fast forward 096ee84..4176e0f) without the [deploy] tag (no production build triggered)."
+    },
+    {
+      "timestamp": "2026-08-06T07:55:55Z",
+      "type": "chapter_count_checkpoint",
+      "chaptersCompletedSoFarTonight": 17,
+      "detail": "Deuteronomy 7 shipped this run via the raw.githubusercontent.com/aruljohn/Bible-kjv mirror, no usage limit, rate limit, or throttling encountered. 17 chapters shipped since the last checkpoint at 2026-08-05T14:58:59Z (Numbers 27-36 completing Numbers, then Deuteronomy 1-7), each in its own separate hourly run, with no usage limit or block hit anywhere in that span."
     }
   ]
 }

@@ -11313,6 +11313,59 @@
           "at": "2026-08-06T06:59:00Z"
         }
       ]
+    },
+    {
+      "book": "Deuteronomy",
+      "chapter": 7,
+      "startedAt": "2026-08-06T07:46:27Z",
+      "finishedAt": "2026-08-06T07:55:55Z",
+      "durationMinutes": 9.5,
+      "sections": 8,
+      "cards": 36,
+      "verses": 26,
+      "notes": "New chapter (not a style redo). Law/exhortation chapter, second person address. Cast the seven nations, no marriages, no idols, chosen people, blessings of obedience, do not be afraid, the hornet, burn the idols. Card ratio 1.38x verses.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-06T07:46:27Z"
+        },
+        {
+          "name": "target chapter determined: Deuteronomy 7 (redo-remaining empty, forward progress after Deuteronomy 6)",
+          "at": "2026-08-06T07:46:40Z"
+        },
+        {
+          "name": "KJV text fetched for Deuteronomy 7 (26 verses, raw.githubusercontent.com aruljohn/Bible-kjv)",
+          "at": "2026-08-06T07:47:30Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md) and reference implementations reviewed (genesisThirtyOneSource.ts, deuteronomySixSource.ts)",
+          "at": "2026-08-06T07:52:15Z"
+        },
+        {
+          "name": "source file written: lib/deuteronomySevenSource.ts (8 sections, 36 cards)",
+          "at": "2026-08-06T07:53:30Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, one bullet word count fix applied)",
+          "at": "2026-08-06T07:54:10Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, replaceStudySectionsForBookRange, preserveExactPhraseBodies extended through chapter 7)",
+          "at": "2026-08-06T07:54:40Z"
+        },
+        {
+          "name": "parser check passed (8 sections, 36 cards, verbatim render confirmed)",
+          "at": "2026-08-06T07:55:10Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-08-06T07:55:34Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-06T07:55:55Z"
+        }
+      ]
     }
   ]
 }
