@@ -11695,6 +11695,59 @@
           "at": "2026-08-06T13:00:26Z"
         }
       ]
+    },
+    {
+      "book": "Deuteronomy",
+      "chapter": 13,
+      "startedAt": "2026-08-06T13:46:40Z",
+      "finishedAt": "2026-08-06T13:57:20Z",
+      "durationMinutes": 11,
+      "sections": 6,
+      "cards": 35,
+      "verses": 18,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (style redo backlog empty), written directly to docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (18 verses). Deuteronomy 13 covers the three tests of loyalty to God over persuasive human authority: a prophet or dreamer whose sign or wonder genuinely comes true but who calls Israel after other gods (the miracle itself is not the test, since God allows it on purpose to prove where love actually lies), the same call coming instead from the closest possible people (a full brother, a beloved wife, a soul friend) with no pity and no concealment allowed, the accuser's own hand required first in the execution before the whole community joins in, and a whole city investigated carefully (enquire, search, ask diligently) before it can be judged and, if guilty, destroyed utterly with the plunder burned rather than kept and left as a permanent, unrebuilt heap. The chapter closes on one standard for all three cases: doing what is right in the LORD's eyes, not what a sign, a loved one, or a crowd says. Chunked into 6 sections (1-3, 4-5, 6-8, 9-11, 12-14, 15-18). scripts/check_bible_note_style.py found 1 problem on first pass (one card's last bullet not ending in 📖/➡️), fixed, second run clean (35 cards, 0 problems). Parser check passed exactly via getBibleReaderStudySections('deuteronomy', 13) (6/6 sections, 35 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: new import added after the Deuteronomy 12 import, preserveExactPhraseBodies Deuteronomy range extended from 1-12 to 1-13, and a new replaceStudySectionsForBookRange(\"deuteronomy\", 13, 13, DEUTERONOMY_THIRTEEN_PERSONAL_SECTIONS) call added right after the Deuteronomy 12 call. Density about 1.94 cards/verse (18 verses, 35 cards). Per CLAUDE.md's push-cadence policy, the commit for this chapter is held locally and not proactively pushed — batched to the next scheduled morning/night report push, unless the session's stop hook forces an interim push as it has on recent runs (in which case it will land without a [deploy] tag, triggering no production build). Next chapter: Deuteronomy 14.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-06T13:47:09Z"
+        },
+        {
+          "name": "target chapter determined: Deuteronomy 13 (new chapter, normal forward progress, redo backlog empty)",
+          "at": "2026-08-06T13:47:09Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Deuteronomy.json",
+          "at": "2026-08-06T13:47:09Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md), skill pipeline (SKILL.md), and reference implementation (lib/genesisThirtyOneSource.ts, lib/deuteronomyTwelveSource.ts) read",
+          "at": "2026-08-06T13:47:09Z"
+        },
+        {
+          "name": "source file written (lib/deuteronomyThirteenSource.ts, 6 sections, 35 cards)",
+          "at": "2026-08-06T13:53:02Z"
+        },
+        {
+          "name": "style checker clean (after fixing one card's last bullet emoji)",
+          "at": "2026-08-06T13:53:02Z"
+        },
+        {
+          "name": "wired into reader (import, preserveExactPhraseBodies range extended to 13, replaceStudySectionsForBookRange call added)",
+          "at": "2026-08-06T13:53:43Z"
+        },
+        {
+          "name": "parser check passed (6 sections, 35 cards, 18 verses, text verbatim)",
+          "at": "2026-08-06T13:53:43Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-06T13:53:43Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-08-06T13:57:20Z"
+        }
+      ]
     }
   ]
 }
