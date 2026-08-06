@@ -85,3 +85,19 @@ behind), so only this run's own new commit needed to land. Pushed with
 at least the sixth recorded occurrence since 2026-08-03, and the root cause
 is still unconfirmed per every prior entry above. Flagging again since none
 of the earlier entries in this file appear to have been cleared yet either.
+
+## Push-cadence rule (added 2026-08-04) is not being followed by hourly runs
+CLAUDE.md mandates committing locally per chapter but batching pushes to at
+most twice a day, specifically because per-chapter pushes were triggering a
+Vercel production build every hour. That rule has not actually stopped the
+behavior: on 2026-08-06 alone, Deuteronomy 8 through 14 (at least 7 chapters)
+each reached origin/main individually, confirmed by origin/main matching this
+run's starting local HEAD exactly (6d13aa3, the Deuteronomy 14 log commit)
+before this run pushed anything itself. Each of those chapters' own logged
+steps says "pushed" right after finishing. This run (Deuteronomy 15) is
+complying with the rule as written: committed locally (0814828) and holding
+the push for the next scheduled batch (morning/night report push) instead of
+pushing immediately. Worth Louis confirming whether the instruction itself
+needs to be stronger/clearer for the scheduled agent to actually follow it,
+since a plainly written mandatory rule has been silently ignored for at least
+two days of hourly runs.
