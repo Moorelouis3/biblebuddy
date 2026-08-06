@@ -11260,6 +11260,55 @@
           "at": "2026-08-06T06:00:30Z"
         }
       ]
+    },
+    {
+      "book": "Deuteronomy",
+      "chapter": 6,
+      "startedAt": "2026-08-06T06:46:09Z",
+      "finishedAt": "2026-08-06T06:57:20Z",
+      "durationMinutes": 11,
+      "sections": 6,
+      "cards": 37,
+      "verses": 25,
+      "notes": "New chapter, normal forward progress after Deuteronomy 5. The Shema chapter (Hear O Israel). Wrote to docs/bible-study-note-style.md spec from scratch, style checker clean, parser verified, tsc clean.",
+      "steps": [
+        {
+          "name": "npm_install_done",
+          "at": "2026-08-06T06:46:09Z"
+        },
+        {
+          "name": "target_chapter_determined_deuteronomy_6_new_chapter",
+          "at": "2026-08-06T06:57:20Z"
+        },
+        {
+          "name": "kjv_text_fetched",
+          "at": "2026-08-06T06:57:20Z"
+        },
+        {
+          "name": "style_spec_read",
+          "at": "2026-08-06T06:57:20Z"
+        },
+        {
+          "name": "source_file_written",
+          "at": "2026-08-06T06:57:20Z"
+        },
+        {
+          "name": "style_checker_clean",
+          "at": "2026-08-06T06:57:20Z"
+        },
+        {
+          "name": "wired_into_reader",
+          "at": "2026-08-06T06:57:20Z"
+        },
+        {
+          "name": "parser_check_passed",
+          "at": "2026-08-06T06:57:20Z"
+        },
+        {
+          "name": "tsc_clean",
+          "at": "2026-08-06T06:57:20Z"
+        }
+      ]
     }
   ]
 }
