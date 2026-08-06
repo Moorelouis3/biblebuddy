@@ -92,13 +92,24 @@ export async function GET(request: NextRequest) {
   // Life Buddy's Marcus, 2026-08-04: "he should know everything about
   // Bible buddy and its stats" - the original version of this route only
   // covered signups/revenue, not actual usage.
+  //
+  // BUG FIXED 2026-08-06: totalUsers was profile_stats.length - only rows
+  // for users who've done SOME tracked action, not every real account.
+  // Louis caught this live: Marcus reported "1,000 total users" when the
+  // real number is close to 5,000 - fake-sounding data undermines trust
+  // in everything else this route reports. profile_stats.length is now
+  // profileTrackedUsers (still real, just a narrower real number); real
+  // totalUsers comes from Supabase auth.users, same source/logic
+  // app/api/admin/total-users/route.ts already uses correctly.
   let totalUsers: number | null = null;
+  let profileTrackedUsers: number | null = null;
   let totalChaptersCompleted: number | null = null;
   let totalNotesCreated: number | null = null;
   let totalDevotionalDaysCompleted: number | null = null;
   let usersActiveToday: number | null = null;
   let usersWithActiveStreak: number | null = null;
   let usageError: string | null = null;
+  let totalUsersError: string | null = null;
   try {
     const { data: rows, error } = await supabaseAdmin
       .from("profile_stats")
@@ -106,7 +117,7 @@ export async function GET(request: NextRequest) {
     if (error) throw error;
     const all = rows ?? [];
     const todayStr = new Date().toISOString().slice(0, 10);
-    totalUsers = all.length;
+    profileTrackedUsers = all.length;
     totalChaptersCompleted = all.reduce((sum, r) => sum + (r.chapters_completed_count || 0), 0);
     totalNotesCreated = all.reduce((sum, r) => sum + (r.notes_created_count || 0), 0);
     totalDevotionalDaysCompleted = all.reduce((sum, r) => sum + (r.devotional_days_completed_count || 0), 0);
@@ -116,12 +127,36 @@ export async function GET(request: NextRequest) {
     usageError = e instanceof Error ? e.message : String(e);
   }
 
+  try {
+    let count = 0;
+    let page = 1;
+    const perPage = 1000;
+    let hasMore = true;
+    while (hasMore) {
+      const response = await fetch(
+        `${supabaseUrl}/auth/v1/admin/users?page=${page}&per_page=${perPage}`,
+        { headers: { apiKey: serviceKey, Authorization: `Bearer ${serviceKey}` } }
+      );
+      if (!response.ok) throw new Error(`auth users fetch failed: ${response.status}`);
+      const json = await response.json();
+      const users = Array.isArray(json.users) ? json.users : [];
+      count += users.length;
+      hasMore = users.length === perPage;
+      page++;
+    }
+    totalUsers = count;
+  } catch (e) {
+    totalUsersError = e instanceof Error ? e.message : String(e);
+  }
+
   return NextResponse.json({
     signups24h,
     signupsError,
     revenue24hUsd,
     revenueError,
     totalUsers,
+    totalUsersError,
+    profileTrackedUsers,
     totalChaptersCompleted,
     totalNotesCreated,
     totalDevotionalDaysCompleted,
