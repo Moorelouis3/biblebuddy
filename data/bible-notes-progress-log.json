@@ -11000,6 +11000,63 @@
           "at": "2026-08-06T02:01:18Z"
         }
       ]
+    },
+    {
+      "book": "Deuteronomy",
+      "chapter": 2,
+      "startedAt": "2026-08-06T02:46:02Z",
+      "finishedAt": "2026-08-06T02:58:03Z",
+      "durationMinutes": 12,
+      "sections": 5,
+      "cards": 46,
+      "verses": 37,
+      "notes": "Second chapter of normal forward progress in Deuteronomy. Boundary/genealogy heavy chapter (Emims, Horims, Zamzummims, Avims, Caphtorims) alongside the Edom/Moab/Ammon peace narrative and the Sihon battle. Density 1.24 cards/verse. Style checker clean first pass. Parser and tsc verified.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-06T02:46:02Z"
+        },
+        {
+          "name": "target chapter determined: Deuteronomy 2 (redo backlog empty, normal forward progress)",
+          "at": "2026-08-06T02:46:54Z"
+        },
+        {
+          "name": "KJV text fetched",
+          "at": "2026-08-06T02:46:54Z"
+        },
+        {
+          "name": "style spec read",
+          "at": "2026-08-06T02:47:30Z"
+        },
+        {
+          "name": "source file written",
+          "at": "2026-08-06T02:54:00Z"
+        },
+        {
+          "name": "style checker clean",
+          "at": "2026-08-06T02:54:30Z"
+        },
+        {
+          "name": "wired into reader",
+          "at": "2026-08-06T02:55:11Z"
+        },
+        {
+          "name": "parser check passed",
+          "at": "2026-08-06T02:55:43Z"
+        },
+        {
+          "name": "tsc clean",
+          "at": "2026-08-06T02:55:43Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-06T02:58:03Z"
+        },
+        {
+          "name": "committed locally (push deferred per CLAUDE.md push-cadence policy, batched to morning/night report pushes)",
+          "at": "2026-08-06T02:59:00Z"
+        }
+      ]
     }
   ]
 }

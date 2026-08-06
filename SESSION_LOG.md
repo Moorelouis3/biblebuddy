@@ -835,3 +835,7 @@ Next up: Deuteronomy 1
 ## 2026-08-06T01:59:08Z (hourly chapter notes run)
 Chapter: Deuteronomy 1 | Duration: 13 min | Sections: 8 | Cards: 63 | Status: pass
 Next up: Deuteronomy 2
+
+## 2026-08-06T02:58:03Z (hourly chapter notes run)
+Chapter: Deuteronomy 2 | Duration: 12 min | Sections: 5 | Cards: 46 | Status: pass
+Next up: Deuteronomy 3
