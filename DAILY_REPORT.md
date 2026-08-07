@@ -1,41 +1,42 @@
-# Daily Report - 2026-08-07T08:18:57Z
+# Daily Report - 2026-08-07T16:19:01Z
 
 ## Latest Conversations
-Since the last report (2026-08-06T16:30:00Z / 18:30 CEST):
+Since the last report (2026-08-07T08:18:57Z / 10:18 CEST):
 
-1. **Forward progress continued straight through the rest of Deuteronomy's midsection.** Chapters 16 through 31 (16 chapters) were written this window, one per hour, each passing the style checker, parser check, and `tsc --noEmit` before being committed. Next up is Deuteronomy 32. Deuteronomy 28 was the longest chapter logged so far under this style spec (68 verses, 84 cards, 28-minute run).
-2. **The stop-hook-vs-push-cadence conflict (flagged in the last report) kept recurring exactly as described**, chapter after chapter: each run tried to hold its commit for the twice-daily batch per CLAUDE.md, and each time the session's stop hook forced an immediate push anyway (none carried `[deploy]`, so no extra Vercel builds fired). This is now a well-established pattern, not a one-off — every chapter in this window shows the same hold-then-forced-push sequence in its progress-log entry.
-3. **Detached-HEAD-at-container-start recurred multiple more times** (Deuteronomy 28, 29, 31 all mention it) but was benign every time — the detached tip was always an exact fast-forward of origin/main, no work at risk. Each run fixed it with `git checkout -B main origin/main` (or equivalent) before starting.
-4. All 35 commits since the last report are automated (chapter-notes or progress-log commits) — no Louis-authored commits in this window.
-5. This report's own run found the container in the same benign detached-HEAD state on start; fixed it the same way (`git checkout -B main origin/main`) before writing this file. No work was at risk — HEAD matched origin/main exactly.
+1. **Deuteronomy finished.** Chapters 32, 33, and 34 were written this window — Deuteronomy 32 (Song of Moses, 13 sections, 115 cards, the largest chapter logged so far) and 33-34 closing out the book with Moses' blessing and death on Nebo. The full Pentateuch (Genesis-Deuteronomy) is now redone to the new style spec.
+2. **Moved into Joshua.** Chapters 1-4 written (22, 34, 30, and 47 cards respectively). Joshua 1 required a one-off judgment call: past Deuteronomy, several books (Joshua, and apparently Judges) already have old-style grouped multi-chapter note files wired in instead of the single-chapter files this pipeline normally builds, so the routine's "does a file already exist" fallback rule breaks down. The run resolved it enough to keep moving (wrote a real Joshua 1 file, added an override wiring call) but flagged the larger question — whether Joshua 2-24 and other affected books should go into the style-redo backlog — as still open (see Unanswered Questions).
+3. **The deploy-cadence rule was rewritten and appears to have fixed the stop-hook conflict** flagged in the last several reports. `CLAUDE.md` now gates Vercel builds on the `[deploy]` tag rather than push frequency, explicitly acknowledging per-chapter pushes are unavoidable under the stop hook. No forced-push-vs-cadence conflict is logged in any commit this window — first clean window in a while.
+4. **`MARCUS_HANDOFF.md` cleared.** The seven entries carried for multiple reports (07-31 prompt-injection suspicion, 08-03 stranded-commits incident, detached-HEAD recurrences, push-cadence non-compliance) are gone — Life Buddy picked them up as designed. One new entry has since been added (the Joshua grouped-files question from item 2).
+5. **A Level 2 upgrade agent run was blocked** (2026-08-07T12:31 UTC): it reported `docs/LEVEL2_UPGRADE_AGENT.md` missing, even though that file was actually added ~70 minutes earlier by Louis directly (commit `713a48b7`, 11:19 CEST) — looks like a stale checkout in that run's container, not a real missing file. Separately, that run also hit a real block: network egress to `life-buddy-production.up.railway.app` (the Level 2 queue) is denied by policy from this environment, so the queue couldn't be checked either way.
+6. This report's own run started in a detached-HEAD state again, but it was a harmless shallow-clone artifact (local `origin/main` ref was stale) — an unshallow fetch confirmed HEAD and the true `origin/main` were identical (`c5131b1c`). Fixed with `git checkout -B main origin/main` before writing this file; no work was at risk.
 
 ## Unanswered Questions
-Carried forward from `MARCUS_HANDOFF.md`, still unresolved: the suspected prompt-injection attempt against the Bible Note Writer Agent during the 2026-07-31 13:46 UTC Numbers 29 run. That entry is now 7 days old and still sitting in `MARCUS_HANDOFF.md` unchanged.
+1. **Joshua 2-24 / Judges old-style grouped-file question, still open** (raised this window, see Latest Conversations #2): should these be added to the style-redo backlog for full one-file-per-chapter regeneration, or handled differently? Until decided, the hourly routine will keep needing a one-off judgment call each time it hits a chapter in one of these old grouped files.
+2. Whether Louis wants the Level 2 upgrade agent's network access to `life-buddy-production.up.railway.app` fixed at the policy level, given it's now confirmed blocked (see Latest Conversations #5) rather than just a missing-doc issue.
 
 ## Missed Things
-1. **Live security exposure, still open (14th consecutive report):** `app/api/email-funnel/backfill-30days/route.ts` still has no authorization check of any kind — confirmed again this run by reading the file directly. It's a public POST endpoint that pulls up to 5,000 recent signups and emails them via the Systeme.io API. Anyone who finds the URL can trigger it.
-2. **`MARCUS_HANDOFF.md` is still not clearing.** It still holds the same seven entries as the last report (07-31 prompt-injection suspicion, 08-03 stranded-52-commits incident, two 08-04 detached-HEAD recurrences, 08-06 detached-HEAD recurrence, push-cadence non-compliance, and its stop-hook correction). Nothing has been removed.
-3. **The stop-hook vs. push-cadence conflict is now confirmed as an ongoing, not one-time, pattern** — it recurred on essentially every chapter in this window (16, 18, 20, 21, 23, 24, 25, 29, 30, 31 all explicitly log the forced push). Still unresolved; still needs Louis to pick a fix (exempt the batch from the hook, or drop the batching policy).
-4. Root `bible-notes-progress.json` (repo root) remains stale — frozen at 85 entries / Genesis 50 + Exodus 35, last touched 2026-07-27. The canonical, current source is `data/bible-notes-progress-log.json`.
+1. **Live security exposure, still open (unfixed for many consecutive reports):** `app/api/email-funnel/backfill-30days/route.ts` still has no authorization check of any kind — confirmed again this run by reading the file directly. It's a public POST endpoint that pulls up to 5,000 recent signups and emails them via the Systeme.io API. Anyone who finds the URL can trigger it.
+2. Root `bible-notes-progress.json` (repo root, 85 entries, frozen at Genesis 50 + Exodus 35 since 2026-07-27) remains stale and unreconciled. The canonical, current source is `data/bible-notes-progress-log.json` (263 entries, current through Joshua 4) — this has been flagged in prior reports too.
 
 ## Dropped Activities
-The **profile_stats upsert audit**, mentioned as "running as a spawned background task" in the 2026-07-31 (night, part 3) session log entry, still has not been mentioned again in any session log entry or handoff since. No result, no follow-up, no closure.
+The **profile_stats upsert audit**, mentioned as "running as a spawned background task" in the 2026-07-31 (night, part 3) session log entry, still has not been mentioned again in any session log entry or handoff since — now a week with no result, no follow-up, no closure.
 
 ## Unfinished Jobs
-- Louis to decide how to resolve the stop-hook vs. push-cadence-policy conflict (see Latest Conversations #2 / Missed Things #3): either exempt this project's batched pushes from the hook, or drop the twice-daily batching policy as unworkable under it.
-- Restore an authorization check on `app/api/email-funnel/backfill-30days/route.ts` — unfixed for a 14th report cycle. See Missed Things.
-- Get Louis to confirm whether he sent the 2026-07-31 13:46 UTC instruction referenced in `MARCUS_HANDOFF.md`, and check why that file isn't clearing despite holding seven unresolved entries.
+- Decide the Joshua/Judges grouped-file redo question (see Unanswered Questions #1) so the hourly routine stops needing manual judgment calls.
+- Restore an authorization check on `app/api/email-funnel/backfill-30days/route.ts` (see Missed Things #1) — still unfixed.
+- Reconcile or retire the stale root `bible-notes-progress.json` in favor of `data/bible-notes-progress-log.json`.
 - Follow up on the dropped profile_stats upsert audit (see Dropped Activities) — find out if it ever finished or needs re-running.
-- Reconcile or retire the stale root `bible-notes-progress.json`.
-- Louis to test the install banner on a real iPhone and confirm the Android real-device flow (open since 2026-07-31 night sessions, still no update).
+- Louis to test the install banner on a real iPhone and confirm the Android real-device flow (open since 2026-07-31 night sessions, still no update since).
+- Decide whether to fix network access to the Level 2 upgrade queue host from this environment (see Unanswered Questions #2).
 
 ## Current Jobs / Current Build
-Chapter-notes pipeline is actively running hourly, on genuine forward progress into Deuteronomy (style-redo backlog has been empty since 2026-08-06 morning, confirmed empty again this run via `data/bible-notes-style-redo-remaining.json`).
+Chapter-notes pipeline is actively running hourly, on genuine forward progress — the style-redo backlog (`data/bible-notes-style-redo-remaining.json`) is empty, confirmed again this run.
 
-Per `data/bible-notes-progress-log.json` (canonical, current source):
-- Genesis 50/50, Exodus 40/40, Leviticus 27/27, Numbers 36/36, Deuteronomy 31/34 — next up Deuteronomy 32.
-- Total chapters with notes: 184 / 1,189 (~15.5%).
+Per `data/bible-notes-progress-log.json` (canonical, current source — 263 logged entries):
+- **Genesis 50/50, Exodus 40/40, Leviticus 27/27, Numbers 36/36, Deuteronomy 34/34 — full Pentateuch complete.**
+- **Joshua 4/24** — next up Joshua 5.
+- Total chapters with real notes so far: 191 / 1,189 (~16.1%).
 
-Per root `bible-notes-progress.json` (stale, do not use): 85 entries logged, stuck at Genesis 50/50 + Exodus 35/40 (pre-redo snapshot, last updated 2026-07-27).
+Per root `bible-notes-progress.json` (stale, do not use): still stuck at Genesis 50/50 + Exodus 35/40, last updated 2026-07-27 (see Missed Things #2).
 
-**Deploy note:** the last `[deploy]`-tagged commit was `925fc4c` (2026-08-06 18:30 CEST, last night's report push). Everything since — Deuteronomy 16 through 31 and their progress-log entries (35 commits) — is already on `origin/main` but has not yet reached a production build. This report's push carries `[deploy]` and will publish that backlog.
+**Deploy note:** the last `[deploy]`-tagged commit was `e38898d` (2026-08-07 10:18 CEST, this morning's report push). Everything since — Deuteronomy 32-34 and Joshua 1-4 (18 commits) — is already on `origin/main` but has not yet reached a production build. This report's push carries `[deploy]` and will publish that backlog.
