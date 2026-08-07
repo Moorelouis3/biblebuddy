@@ -1018,3 +1018,7 @@ Next up: Joshua 11
 ## 2026-08-07T22:56:14Z (hourly chapter notes run)
 Chapter: Joshua 11 | Duration: 10 min | Sections: 5 | Cards: 39 | Status: pass
 Next up: Joshua 12
+
+## 2026-08-08T00:09:30Z (hourly chapter notes run)
+Chapter: Joshua 12 | Duration: 23 min | Sections: 5 | Cards: 35 | Status: pass
+Next up: Joshua 13
