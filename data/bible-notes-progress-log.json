@@ -13489,6 +13489,59 @@
           "at": "2026-08-07T19:54:43Z"
         }
       ]
+    },
+    {
+      "book": "Joshua",
+      "chapter": 9,
+      "startedAt": "2026-08-07T20:47:59Z",
+      "finishedAt": "2026-08-07T20:58:46Z",
+      "durationMinutes": 10.8,
+      "sections": 6,
+      "cards": 38,
+      "verses": 27,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog empty). Joshua 9 follows Joshua 8, no existing wired-in lib file for this chapter, clean new-chapter build. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (27 verses). Chunked into 6 sections (1-2, 3-6, 7-13, 14-15, 16-21, 22-27): the kings of Canaan uniting against Israel after Jericho and Ai, Gibeon's elaborate deception (staged old sacks, patched wineskins, clouted shoes, dry moldy bread) built to fake a long journey since Israel's law only permitted treaties with distant nations, the archaic words wilily and clouted defined, the Gibeonites citing real recent history (Sihon and Og) to make their false distance claim convincing, Israel eating the Gibeonites' provisions and sealing a league without asking counsel at the mouth of the LORD, the deception discovered after only three days, the four-city Gibeonite alliance, the congregation's murmuring against the princes, the princes' refusal to break an oath sworn by the LORD's name even though it rested on a lie (forward pointer to Saul later breaking this oath in 2 Samuel 21), the compromise sentence of hewers of wood and drawers of water tied to the sanctuary, Joshua's confrontation and the curse (linked to Genesis 9), the Gibeonites' honest admission that fear drove the plan, and the closing 'even unto this day' editorial note. Density about 1.4 cards/verse (27 verses, 38 cards). scripts/check_bible_note_style.py found 4 problems on first pass (four bullets over the 8 word limit), fixed, second run clean. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key term in plain language, and closes on meaning rather than mechanics, with no hyphens, em dashes, semicolons, or contractions anywhere in the file, no banned filler/hedge words, and no duplicate card titles. Parser check passed exactly via getBibleReaderStudySections('joshua', 9) (6/6 sections, 38 cards, 27 verses, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring: added the import, extended the joshua clause in preserveExactPhraseBodies to chapter 9, and added a new replaceStudySectionsForBookRange(\"joshua\", 9, 9, ...) call directly after the Joshua 8 call. Next up: Joshua 10.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-07T20:47:59Z"
+        },
+        {
+          "name": "target chapter determined: Joshua 9 (new chapter, forward progress; redo-remaining empty; confirmed via ls lib/ that Joshua 1-8 have dedicated files but 9 does not)",
+          "at": "2026-08-07T20:48:26Z"
+        },
+        {
+          "name": "KJV text fetched for Joshua 9 (27 verses, raw.githubusercontent.com aruljohn/Bible-kjv)",
+          "at": "2026-08-07T20:48:26Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md) and reference implementation reviewed (lib/joshuaEightSource.ts)",
+          "at": "2026-08-07T20:49:00Z"
+        },
+        {
+          "name": "source file written: lib/joshuaNineSource.ts (6 sections, 38 cards)",
+          "at": "2026-08-07T20:56:00Z"
+        },
+        {
+          "name": "style checker clean after fixing 4 over-length bullets",
+          "at": "2026-08-07T20:56:40Z"
+        },
+        {
+          "name": "parser check passed: 6 sections, 38 cards, 27 verses, text verbatim confirmed",
+          "at": "2026-08-07T20:57:10Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies extended to chapter 9, replaceStudySectionsForBookRange call added)",
+          "at": "2026-08-07T20:57:30Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-08-07T20:58:10Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-07T20:58:46Z"
+        }
+      ]
     }
   ]
 }
