@@ -12806,8 +12806,8 @@
       "book": "Deuteronomy",
       "chapter": 31,
       "startedAt": "2026-08-07T07:46:57Z",
-      "finishedAt": "2026-08-07T07:57:06Z",
-      "durationMinutes": 10.2,
+      "finishedAt": "2026-08-07T07:57:41Z",
+      "durationMinutes": 10.7,
       "sections": 8,
       "cards": 46,
       "verses": 30,
@@ -12852,6 +12852,14 @@
         {
           "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
           "at": "2026-08-07T07:56:49Z"
+        },
+        {
+          "name": "committed locally (9f8b3f4), detached HEAD repointed to local main (stale ref, same recurring bug as prior entries, no data loss, origin/main confirmed ancestor)",
+          "at": "2026-08-07T07:57:41Z"
+        },
+        {
+          "name": "push held per CLAUDE.md push-cadence policy (batch to twice daily with report push, not per chapter) -- did not push to origin",
+          "at": "2026-08-07T07:57:41Z"
         }
       ]
     }
