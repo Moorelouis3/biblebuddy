@@ -12608,6 +12608,72 @@
           "at": "2026-08-07T03:58:20Z"
         }
       ]
+    },
+    {
+      "book": "Deuteronomy",
+      "chapter": 28,
+      "startedAt": "2026-08-07T04:46:46Z",
+      "finishedAt": "2026-08-07T05:15:00Z",
+      "durationMinutes": 28,
+      "sections": 13,
+      "cards": 84,
+      "verses": 68,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog empty). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (68 verses, the longest chapter written under this log so far). The blessings for obedience mirrored word for word into curses for disobedience (verses 3-6 vs 15-19), the escalating curse list covering disease, drought, defeat, futility curses on house/vineyard/marriage matching known ancient Near Eastern treaty language, a fierce foreign invader, siege cannibalism striking even the most sheltered people, the reversal of the stars-of-heaven promise to Abraham, and the chapter closing on exile, psychological torment, and a reversal of the Exodus itself back into slavery in Egypt. Chunked into 13 sections (1-6, 7-10, 11-14, 15-19, 20-24, 25-29, 30-35, 36-42, 43-48, 49-52, 53-57, 58-63, 64-68). Style checker found 10 problems on first pass (bullets over the 8 word limit), fixed, second run clean. Also caught and fixed two rather than stacked-clause constructions by eye per section 13 of the style spec. Parser check passed exactly (13/13 sections, 84 cards, 68 verses, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies range extended from 27 to 28 for Deuteronomy, replaceStudySectionsForBookRange call added after chapter 27. Local HEAD was detached at container start (the recurring benign case); fixed with git checkout -B main origin/main, no work lost.",
+      "mode": "new",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-07T04:47:20Z"
+        },
+        {
+          "name": "target chapter determined: Deuteronomy 28 (forward progress, redo-remaining empty)",
+          "at": "2026-08-07T04:48:00Z"
+        },
+        {
+          "name": "fixed benign detached HEAD (git checkout -B main origin/main, no work lost)",
+          "at": "2026-08-07T04:48:30Z"
+        },
+        {
+          "name": "KJV text fetched (Deuteronomy 28, 68 verses, raw.githubusercontent.com mirror)",
+          "at": "2026-08-07T04:49:00Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md)",
+          "at": "2026-08-07T04:50:00Z"
+        },
+        {
+          "name": "source file written (lib/deuteronomyTwentyEightSource.ts, 13 sections, 84 cards)",
+          "at": "2026-08-07T05:04:11Z"
+        },
+        {
+          "name": "style checker: 10 problems found, fixed",
+          "at": "2026-08-07T05:06:00Z"
+        },
+        {
+          "name": "style checker clean on second pass",
+          "at": "2026-08-07T05:06:30Z"
+        },
+        {
+          "name": "manual section-13 checklist pass: found and fixed 2 rather-than stacked clauses not caught by checker",
+          "at": "2026-08-07T05:08:00Z"
+        },
+        {
+          "name": "wired into reader (import added, preserveExactPhraseBodies extended to 28, replaceStudySectionsForBookRange added)",
+          "at": "2026-08-07T05:09:00Z"
+        },
+        {
+          "name": "parser check passed (13/13 sections, 84 cards, 68 verses, text verbatim)",
+          "at": "2026-08-07T05:09:30Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-08-07T05:12:00Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-08-07T05:15:00Z"
+        }
+      ]
     }
   ]
 }
