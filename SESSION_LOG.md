@@ -1002,3 +1002,7 @@ Next up: Joshua 7
 ## 2026-08-07T18:57:34Z (hourly chapter notes run)
 Chapter: Joshua 7 | Duration: 10 min | Sections: 7 | Cards: 51 | Status: pass
 Next up: Joshua 8
+
+## 2026-08-07T19:55:15Z (hourly chapter notes run)
+Chapter: Joshua 8 | Duration: 8 min | Sections: 7 | Cards: 49 | Status: pass
+Next up: Joshua 9

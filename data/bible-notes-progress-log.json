@@ -13440,6 +13440,55 @@
           "at": "2026-08-07T18:57:34Z"
         }
       ]
+    },
+    {
+      "book": "Joshua",
+      "chapter": 8,
+      "startedAt": "2026-08-07T19:46:52Z",
+      "finishedAt": "2026-08-07T19:55:15Z",
+      "durationMinutes": 8.4,
+      "sections": 7,
+      "cards": 49,
+      "verses": 35,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog empty, first chapter after Joshua 1-7). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Joshua 8 is Israel's second attempt on Ai after chapter 7's defeat: God's reassurance and the new permission to keep Ai's spoil (directly answering Achan's failure), the ambush of thirty thousand men plus a second five thousand, the fake retreat down the same road as the real chapter 7 defeat, the king of Ai's overconfidence and wist not, the spear signal echoing Moses and Amalek, the total destruction and the twelve thousand slain, the note that Ai's name itself likely means heap of ruins (the judgment made the city's name literally true), the king's body hanged and taken down before nightfall per the law, and the closing altar and covenant reading on Mount Ebal and Gerizim before the whole camp including women, children, and strangers. Style checker found 5 bullet word count problems on first pass, all fixed (four bullets trimmed to 3-8 words), second run clean. Parser check passed exactly via getBibleReaderStudySections('Joshua', 8): 7/7 sections, 49 cards, all 35 verses covered, text verbatim. npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies range extended from chapter 7 to chapter 8 for Joshua, replaceStudySectionsForBookRange('joshua', 8, 8, ...) call added after the chapter 7 call.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-07T19:46:52Z"
+        },
+        {
+          "name": "target chapter determined: Joshua 8 (normal forward progress, redo backlog empty)",
+          "at": "2026-08-07T19:46:52Z"
+        },
+        {
+          "name": "KJV text fetched (Joshua 8, 35 verses)",
+          "at": "2026-08-07T19:50:40Z"
+        },
+        {
+          "name": "style spec and reference implementation read",
+          "at": "2026-08-07T19:50:40Z"
+        },
+        {
+          "name": "source file written (lib/joshuaEightSource.ts, 49 cards / 7 sections)",
+          "at": "2026-08-07T19:50:40Z"
+        },
+        {
+          "name": "style checker clean (after fixing 5 bullet word count problems)",
+          "at": "2026-08-07T19:55:15Z"
+        },
+        {
+          "name": "wired into reader (lib/bibleReaderStudyNotes.ts: import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange)",
+          "at": "2026-08-07T19:55:15Z"
+        },
+        {
+          "name": "parser check passed (7/7 sections, 49 cards, 35 verses)",
+          "at": "2026-08-07T19:54:43Z"
+        },
+        {
+          "name": "tsc clean",
+          "at": "2026-08-07T19:54:43Z"
+        }
+      ]
     }
   ]
 }
