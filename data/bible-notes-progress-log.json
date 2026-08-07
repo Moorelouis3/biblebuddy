@@ -12866,6 +12866,59 @@
           "at": "2026-08-07T07:59:04Z"
         }
       ]
+    },
+    {
+      "book": "Deuteronomy",
+      "chapter": 32,
+      "startedAt": "2026-08-07T08:46:14Z",
+      "finishedAt": "2026-08-07T09:01:52Z",
+      "durationMinutes": 15.6,
+      "sections": 13,
+      "cards": 115,
+      "verses": 52,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog empty), written directly to docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The Song of Moses: the courtroom summons to heaven and earth, the doctrine-as-rain parallelism, the Rock title introduced for God, the nations divided according to Israel, the eagle/apple-of-the-eye providence imagery, Jeshurun waxing fat and forsaking God, the escalating judgment imagery (fire, arrows, beasts, serpents), the deliberate restraint reasoning (fear of the enemy misreading the victory), the poison-of-Sodom imagery for the enemy nations, vengeance belonging to God alone, the climactic I-am-he declaration of sole divinity, Moses delivering the finished song to all Israel with Joshua (Hoshea) beside him, and the closing narrative sending Moses up Mount Nebo to view but not enter the land, tied back to the Meribah-Kadesh incident. Highest density chapter yet in this book given the poetry, about 2.21 cards/verse (52 verses, 115 cards). scripts/check_bible_note_style.py found 2 problems on first pass (one banned hedge word, one 22-word body line), fixed, second run clean. Parser check passed exactly via getBibleReaderStudySections('Deuteronomy', 32) (13/13 sections, 115 cards, 52 verses, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies Deuteronomy range extended from 1-31 to 1-32, replaceStudySectionsForBookRange call added after Deuteronomy 31.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-07T08:46:14Z"
+        },
+        {
+          "name": "target chapter determined: Deuteronomy 32 (forward progress, redo backlog empty, confirmed no wired file for 32-34)",
+          "at": "2026-08-07T08:47:40Z"
+        },
+        {
+          "name": "KJV text fetched (raw.githubusercontent.com/aruljohn/Bible-kjv)",
+          "at": "2026-08-07T08:48:35Z"
+        },
+        {
+          "name": "style spec + skill read",
+          "at": "2026-08-07T08:49:20Z"
+        },
+        {
+          "name": "source file written: lib/deuteronomyThirtyTwoSource.ts",
+          "at": "2026-08-07T08:57:10Z"
+        },
+        {
+          "name": "style checker clean (115 cards, 0 problems after fixing 2)",
+          "at": "2026-08-07T08:58:20Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts",
+          "at": "2026-08-07T08:59:40Z"
+        },
+        {
+          "name": "parser check passed (13/13 sections, 115 cards, 52 verses)",
+          "at": "2026-08-07T09:00:10Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-08-07T09:01:31Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-07T09:01:52Z"
+        }
+      ]
     }
   ]
 }
