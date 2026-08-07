@@ -994,3 +994,7 @@ Next up: Joshua 5
 ## 2026-08-07T16:56:45Z (hourly chapter notes run)
 Chapter: Joshua 5 | Duration: 11 min | Sections: 6 | Cards: 30 | Status: pass
 Next up: Joshua 6
+
+## 2026-08-07T17:58:00Z (hourly chapter notes run)
+Chapter: Joshua 6 | Duration: 12 min | Sections: 8 | Cards: 32 | Status: pass
+Next up: Joshua 7

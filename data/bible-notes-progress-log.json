@@ -13330,6 +13330,63 @@
           "at": "2026-08-07T16:58:30Z"
         }
       ]
+    },
+    {
+      "book": "Joshua",
+      "chapter": 6,
+      "startedAt": "2026-08-07T17:46:32Z",
+      "finishedAt": "2026-08-07T17:58:00Z",
+      "durationMinutes": 12,
+      "sections": 8,
+      "cards": 32,
+      "verses": 27,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog data/bible-notes-style-redo-remaining.json was empty). Joshua 6 follows Joshua 5, no existing wired-in lib file for this chapter, clean new-chapter build. Session started on a detached HEAD again (the recurring benign environment issue also seen on Joshua 3/5 and many earlier chapters); fetched origin/main, confirmed local HEAD already matched it exactly (no divergence, no work at risk), then restored a proper tracking branch with git checkout -B main origin/main. Fetched real KJV text from the raw.githubusercontent.com aruljohn/Bible-kjv mirror (27 verses). Chunked into 8 sections (1-5, 6-9, 10-11, 12-14, 15-19, 20-21, 22-25, 26-27): the siege plan God gives Joshua (Jericho sealed shut, the promise of the city and its king and mighty men given in advance, the six-day single-circuit march, the seven priests with rams' horn trumpets explained as shofars, and the forward-announced seventh-day plan), the marching order Joshua relays to the priests and armed men (armed guard first, ark-bearing priests blowing trumpets next, rereward last), the total silence command and the first day's anticlimactic return to camp, the six identical days including Joshua's repeated early rising, the seventh day's seven circuits and the herem (accursed thing) law explained as devoted-to-destruction rather than ordinary plunder, the Rahab exception publicly repeated from chapter two, the warning against taking the accursed thing that sets up Achan in chapter seven, and the silver/gold/brass/iron set apart for the LORD's treasury instead, the wall's actual collapse and total conquest explicitly echoing the promise language from verse five, Rahab's rescue and temporary placement outside the camp with a forward pointer to her place in Matthew's genealogy of Jesus, the city burned with fire, and the closing curse on whoever rebuilds Jericho (foundation and gates, both sons named) with a forward pointer to its literal fulfillment against Hiel of Bethel in 1 Kings 16:34, and Joshua's fame spreading through the whole country as promised back in chapter three. Density about 1.19 cards per verse (27 verses, 32 cards), reflecting real teaching content in every verse cluster rather than padding a genealogy or list. scripts/check_bible_note_style.py was clean on the first run, no problems found. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key term in plain language, and closes on meaning rather than mechanics, with no hyphens, em dashes, semicolons, or contractions anywhere in the file, and no duplicate card titles. Parser check passed exactly via a tsx script importing JOSHUA_SIX_PERSONAL_SECTIONS (8/8 sections, 32 cards, 27 verses of exact, non-overlapping, gap-free coverage). npx tsc --noEmit -p . clean with zero errors. Wiring: added the import, extended the joshua clause in preserveExactPhraseBodies to chapter 6, and added a new replaceStudySectionsForBookRange(\"joshua\", 6, 6, ...) call directly after the Joshua 5 call. Next up: Joshua 7.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-07T17:46:58Z"
+        },
+        {
+          "name": "target chapter determined: Joshua 6 (new chapter, forward progress; redo-remaining empty; confirmed via wiring grep that Joshua 1-5 have dedicated files but 6 does not)",
+          "at": "2026-08-07T17:47:00Z"
+        },
+        {
+          "name": "git detached HEAD fixed: fetched origin/main, confirmed no divergence, restored tracking branch via git checkout -B main origin/main",
+          "at": "2026-08-07T17:47:10Z"
+        },
+        {
+          "name": "KJV text fetched for Joshua 6 (27 verses, raw.githubusercontent.com aruljohn/Bible-kjv)",
+          "at": "2026-08-07T17:47:24Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md) and reference implementations reviewed (lib/genesisThirtyOneSource.ts, lib/joshuaFiveSource.ts) plus checker script rules read",
+          "at": "2026-08-07T17:50:30Z"
+        },
+        {
+          "name": "source file written: lib/joshuaSixSource.ts (8 sections, 32 cards)",
+          "at": "2026-08-07T17:52:00Z"
+        },
+        {
+          "name": "style checker clean on first pass, no problems found",
+          "at": "2026-08-07T17:52:20Z"
+        },
+        {
+          "name": "parser check passed via tsx script: 8 sections, 32 cards, 27 verses, exact non-overlapping coverage confirmed",
+          "at": "2026-08-07T17:53:10Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies extended to chapter 6, replaceStudySectionsForBookRange call added)",
+          "at": "2026-08-07T17:54:20Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-08-07T17:55:10Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-07T17:58:00Z"
+        }
+      ]
     }
   ]
 }
