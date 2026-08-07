@@ -13391,6 +13391,55 @@
           "at": "2026-08-07T17:59:30Z"
         }
       ]
+    },
+    {
+      "book": "Joshua",
+      "chapter": 7,
+      "startedAt": "2026-08-07T18:47:09Z",
+      "finishedAt": "2026-08-07T18:57:34Z",
+      "durationMinutes": 10.4,
+      "sections": 7,
+      "cards": 51,
+      "verses": 26,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog empty). Achan's trespass and full genealogy revealed up front, defeat at Ai, Joshua's day-long lament before the ark, the Lord's rebuke, the tribe-family-household-man lot search, Achan's confession and the buried Babylonish garment/silver/gold, and the execution and memorial heap in the valley of Achor. Style checker clean after fixing 7 problems, parser check exact, tsc clean.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-07T18:47:09Z"
+        },
+        {
+          "name": "target chapter determined: Joshua 7 (normal forward progress, redo backlog empty)",
+          "at": "2026-08-07T18:47:09Z"
+        },
+        {
+          "name": "KJV text fetched (Joshua 7, 26 verses)",
+          "at": "2026-08-07T18:53:37Z"
+        },
+        {
+          "name": "style spec read",
+          "at": "2026-08-07T18:53:37Z"
+        },
+        {
+          "name": "source file written (lib/joshuaSevenSource.ts, 51 cards / 7 sections)",
+          "at": "2026-08-07T18:53:37Z"
+        },
+        {
+          "name": "style checker clean (after fixing 7 problems)",
+          "at": "2026-08-07T18:57:34Z"
+        },
+        {
+          "name": "wired into reader (lib/bibleReaderStudyNotes.ts: import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange)",
+          "at": "2026-08-07T18:57:34Z"
+        },
+        {
+          "name": "parser check passed (7/7 sections, 51 cards, 26 verses)",
+          "at": "2026-08-07T18:57:34Z"
+        },
+        {
+          "name": "tsc clean",
+          "at": "2026-08-07T18:57:34Z"
+        }
+      ]
     }
   ]
 }
