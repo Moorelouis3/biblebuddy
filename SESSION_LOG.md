@@ -951,3 +951,7 @@ Next up: Deuteronomy 30
 ## 2026-08-07T06:56:23Z (hourly chapter notes run)
 Chapter: Deuteronomy 30 | Duration: 10 min | Sections: 6 | Cards: 40 | Status: pass
 Next up: Deuteronomy 31
+
+## 2026-08-07T07:57:06Z (hourly chapter notes run)
+Chapter: Deuteronomy 31 | Duration: 10 min | Sections: 8 | Cards: 46 | Status: pass
+Next up: Deuteronomy 32

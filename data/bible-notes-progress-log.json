@@ -12801,6 +12801,59 @@
           "at": "2026-08-07T06:59:00Z"
         }
       ]
+    },
+    {
+      "book": "Deuteronomy",
+      "chapter": 31,
+      "startedAt": "2026-08-07T07:46:57Z",
+      "finishedAt": "2026-08-07T07:57:06Z",
+      "durationMinutes": 10.2,
+      "sections": 8,
+      "cards": 46,
+      "verses": 30,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress chapter (redo backlog empty). Moses' farewell: hands leadership to Joshua, commands the septennial public reading of the law, God foretells Israel's future unfaithfulness at the tabernacle, the Song of Moses commanded as a witness, and the law placed beside the ark.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-07T07:46:57Z"
+        },
+        {
+          "name": "target chapter determined: Deuteronomy 31 (forward progress, redo backlog empty)",
+          "at": "2026-08-07T07:46:57Z"
+        },
+        {
+          "name": "KJV text fetched (raw.githubusercontent.com/aruljohn/Bible-kjv)",
+          "at": "2026-08-07T07:51:38Z"
+        },
+        {
+          "name": "style spec + skill read",
+          "at": "2026-08-07T07:51:38Z"
+        },
+        {
+          "name": "source file written: lib/deuteronomyThirtyOneSource.ts",
+          "at": "2026-08-07T07:55:21Z"
+        },
+        {
+          "name": "style checker clean (46 cards, 0 problems after fixes)",
+          "at": "2026-08-07T07:55:21Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts",
+          "at": "2026-08-07T07:55:21Z"
+        },
+        {
+          "name": "parser check passed (8/8 sections, 46 cards, 30 verses)",
+          "at": "2026-08-07T07:55:21Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-07T07:55:21Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-08-07T07:56:49Z"
+        }
+      ]
     }
   ]
 }
