@@ -163,6 +163,29 @@ import { DEUTERONOMY_SIX_PERSONAL_SECTIONS } from "./deuteronomySixSource";
 import { DEUTERONOMY_SEVEN_PERSONAL_SECTIONS } from "./deuteronomySevenSource";
 import { DEUTERONOMY_EIGHT_PERSONAL_SECTIONS } from "./deuteronomyEightSource";
 import { DEUTERONOMY_NINE_PERSONAL_SECTIONS } from "./deuteronomyNineSource";
+import { DEUTERONOMY_TEN_PERSONAL_SECTIONS } from "./deuteronomyTenSource";
+import { DEUTERONOMY_ELEVEN_PERSONAL_SECTIONS } from "./deuteronomyElevenSource";
+import { DEUTERONOMY_TWELVE_PERSONAL_SECTIONS } from "./deuteronomyTwelveSource";
+import { DEUTERONOMY_THIRTEEN_PERSONAL_SECTIONS } from "./deuteronomyThirteenSource";
+import { DEUTERONOMY_FOURTEEN_PERSONAL_SECTIONS } from "./deuteronomyFourteenSource";
+import { DEUTERONOMY_FIFTEEN_PERSONAL_SECTIONS } from "./deuteronomyFifteenSource";
+import { DEUTERONOMY_SIXTEEN_PERSONAL_SECTIONS } from "./deuteronomySixteenSource";
+import { DEUTERONOMY_SEVENTEEN_PERSONAL_SECTIONS } from "./deuteronomySeventeenSource";
+import { DEUTERONOMY_EIGHTEEN_PERSONAL_SECTIONS } from "./deuteronomyEighteenSource";
+import { DEUTERONOMY_NINETEEN_PERSONAL_SECTIONS } from "./deuteronomyNineteenSource";
+import { DEUTERONOMY_TWENTY_PERSONAL_SECTIONS } from "./deuteronomyTwentySource";
+import { DEUTERONOMY_TWENTY_ONE_PERSONAL_SECTIONS } from "./deuteronomyTwentyOneSource";
+import { DEUTERONOMY_TWENTY_TWO_PERSONAL_SECTIONS } from "./deuteronomyTwentyTwoSource";
+import { DEUTERONOMY_TWENTY_THREE_PERSONAL_SECTIONS } from "./deuteronomyTwentyThreeSource";
+import { DEUTERONOMY_TWENTY_FOUR_PERSONAL_SECTIONS } from "./deuteronomyTwentyFourSource";
+import { DEUTERONOMY_TWENTY_FIVE_PERSONAL_SECTIONS } from "./deuteronomyTwentyFiveSource";
+import { DEUTERONOMY_TWENTY_SIX_PERSONAL_SECTIONS } from "./deuteronomyTwentySixSource";
+import { DEUTERONOMY_TWENTY_SEVEN_PERSONAL_SECTIONS } from "./deuteronomyTwentySevenSource";
+import { DEUTERONOMY_TWENTY_EIGHT_PERSONAL_SECTIONS } from "./deuteronomyTwentyEightSource";
+import { DEUTERONOMY_TWENTY_NINE_PERSONAL_SECTIONS } from "./deuteronomyTwentyNineSource";
+import { DEUTERONOMY_THIRTY_PERSONAL_SECTIONS } from "./deuteronomyThirtySource";
+import { DEUTERONOMY_THIRTY_ONE_PERSONAL_SECTIONS } from "./deuteronomyThirtyOneSource";
+import { DEUTERONOMY_THIRTY_TWO_PERSONAL_SECTIONS } from "./deuteronomyThirtyTwoSource";
 import { EXODUS_2_10_PERSONAL_SECTIONS } from "./exodusTwoToTenPersonalNotes";
 import { EXODUS_11_20_PERSONAL_SECTIONS } from "./exodusElevenToTwentyPersonalNotes";
 import { EXODUS_21_30_PERSONAL_SECTIONS } from "./exodusTwentyOneToThirtyPersonalNotes";
@@ -541,7 +564,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "exodus" && section.chapter >= 1 && section.chapter <= 40) ||
     (normalizeBook(book) === "leviticus" && section.chapter >= 1 && section.chapter <= 27) ||
     (normalizeBook(book) === "numbers" && section.chapter >= 1 && section.chapter <= 36) ||
-    (normalizeBook(book) === "deuteronomy" && section.chapter >= 1 && section.chapter <= 9);
+    (normalizeBook(book) === "deuteronomy" && section.chapter >= 1 && section.chapter <= 32);
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -9177,6 +9200,144 @@ replaceStudySectionsForBookRange(
   9,
   9,
   DEUTERONOMY_NINE_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "deuteronomy",
+  10,
+  10,
+  DEUTERONOMY_TEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "deuteronomy",
+  11,
+  11,
+  DEUTERONOMY_ELEVEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "deuteronomy",
+  12,
+  12,
+  DEUTERONOMY_TWELVE_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "deuteronomy",
+  13,
+  13,
+  DEUTERONOMY_THIRTEEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "deuteronomy",
+  14,
+  14,
+  DEUTERONOMY_FOURTEEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "deuteronomy",
+  15,
+  15,
+  DEUTERONOMY_FIFTEEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "deuteronomy",
+  16,
+  16,
+  DEUTERONOMY_SIXTEEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "deuteronomy",
+  17,
+  17,
+  DEUTERONOMY_SEVENTEEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "deuteronomy",
+  18,
+  18,
+  DEUTERONOMY_EIGHTEEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "deuteronomy",
+  19,
+  19,
+  DEUTERONOMY_NINETEEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "deuteronomy",
+  20,
+  20,
+  DEUTERONOMY_TWENTY_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "deuteronomy",
+  21,
+  21,
+  DEUTERONOMY_TWENTY_ONE_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "deuteronomy",
+  22,
+  22,
+  DEUTERONOMY_TWENTY_TWO_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "deuteronomy",
+  23,
+  23,
+  DEUTERONOMY_TWENTY_THREE_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "deuteronomy",
+  24,
+  24,
+  DEUTERONOMY_TWENTY_FOUR_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "deuteronomy",
+  25,
+  25,
+  DEUTERONOMY_TWENTY_FIVE_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "deuteronomy",
+  26,
+  26,
+  DEUTERONOMY_TWENTY_SIX_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "deuteronomy",
+  27,
+  27,
+  DEUTERONOMY_TWENTY_SEVEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "deuteronomy",
+  28,
+  28,
+  DEUTERONOMY_TWENTY_EIGHT_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "deuteronomy",
+  29,
+  29,
+  DEUTERONOMY_TWENTY_NINE_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "deuteronomy",
+  30,
+  30,
+  DEUTERONOMY_THIRTY_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "deuteronomy",
+  31,
+  31,
+  DEUTERONOMY_THIRTY_ONE_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "deuteronomy",
+  32,
+  32,
+  DEUTERONOMY_THIRTY_TWO_PERSONAL_SECTIONS,
 );
 
 for (const section of BIBLE_READER_STUDY_SECTIONS) {

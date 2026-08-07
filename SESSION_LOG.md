@@ -867,3 +867,95 @@ Next up: Deuteronomy 9
 ## 2026-08-06T09:55:50Z (hourly chapter notes run)
 Chapter: Deuteronomy 9 | Duration: 9 min | Sections: 9 | Cards: 27 | Status: pass
 Next up: Deuteronomy 10
+
+## 2026-08-06T10:57:34Z (hourly chapter notes run)
+Chapter: Deuteronomy 10 | Duration: 10 min | Sections: 7 | Cards: 46 | Status: pass
+Next up: Deuteronomy 11
+
+## 2026-08-06T11:59:05Z (hourly chapter notes run)
+Chapter: Deuteronomy 11 | Duration: 12.6 min | Sections: 7 | Cards: 54 | Status: pass
+Next up: Deuteronomy 12
+
+## 2026-08-06T12:58:08Z (hourly chapter notes run)
+Chapter: Deuteronomy 12 | Duration: 12 min | Sections: 8 | Cards: 43 | Status: pass
+Next up: Deuteronomy 13
+
+## 2026-08-06T13:57:20Z (hourly chapter notes run)
+Chapter: Deuteronomy 13 | Duration: 11 min | Sections: 6 | Cards: 35 | Status: pass
+Next up: Deuteronomy 14
+
+## 2026-08-06T14:57:24Z (hourly chapter notes run)
+Chapter: Deuteronomy 14 | Duration: 11 min | Sections: 7 | Cards: 39 | Status: pass
+Next up: Deuteronomy 15
+
+## 2026-08-06T15:54:21Z (hourly chapter notes run)
+Chapter: Deuteronomy 15 | Duration: 10 min | Sections: 5 | Cards: 40 | Status: pass
+Next up: Deuteronomy 16
+
+## 2026-08-06T16:56:05Z (hourly chapter notes run)
+Chapter: Deuteronomy 16 | Duration: 9 min | Sections: 5 | Cards: 44 | Status: pass
+Next up: Deuteronomy 17
+
+## 2026-08-06T17:56:00Z (hourly chapter notes run)
+Chapter: Deuteronomy 17 | Duration: 10 min | Sections: 5 | Cards: 34 | Status: pass
+Next up: Deuteronomy 18
+
+## 2026-08-06T18:56:00Z (hourly chapter notes run)
+Chapter: Deuteronomy 18 | Duration: 11 min | Sections: 5 | Cards: 37 | Status: pass
+Next up: Deuteronomy 19
+
+## 2026-08-06T19:58:00Z (hourly chapter notes run)
+Chapter: Deuteronomy 19 | Duration: 12 min | Sections: 5 | Cards: 43 | Status: pass
+Next up: Deuteronomy 20
+
+## 2026-08-06T20:56:17Z (hourly chapter notes run)
+Chapter: Deuteronomy 20 | Duration: 9 min | Sections: 5 | Cards: 36 | Status: pass
+Next up: Deuteronomy 21
+
+## 2026-08-06T21:56:30Z (hourly chapter notes run)
+Chapter: Deuteronomy 21 | Duration: 11 min | Sections: 5 | Cards: 43 | Status: pass
+Next up: Deuteronomy 22
+
+## 2026-08-06T22:56:00Z (hourly chapter notes run)
+Chapter: Deuteronomy 22 | Duration: 10 min | Sections: 8 | Cards: 51 | Status: pass
+Next up: Deuteronomy 23
+
+## 2026-08-06T23:55:55Z (hourly chapter notes run)
+Chapter: Deuteronomy 23 | Duration: 10 min | Sections: 8 | Cards: 44 | Status: pass
+Next up: Deuteronomy 24
+
+## 2026-08-07T00:58:26Z (hourly chapter notes run)
+Chapter: Deuteronomy 24 | Duration: 12 min | Sections: 7 | Cards: 48 | Status: pass
+Next up: Deuteronomy 25
+
+## 2026-08-07T01:58:00Z (hourly chapter notes run)
+Chapter: Deuteronomy 25 | Duration: 10 min | Sections: 6 | Cards: 32 | Status: pass
+Next up: Deuteronomy 26
+
+## 2026-08-07T02:59:00Z (hourly chapter notes run)
+Chapter: Deuteronomy 26 | Duration: 11 min | Sections: 4 | Cards: 34 | Status: pass
+Next up: Deuteronomy 27
+
+## 2026-08-07T03:56:00Z (hourly chapter notes run)
+Chapter: Deuteronomy 27 | Duration: 9 min | Sections: 7 | Cards: 34 | Status: pass
+Next up: Deuteronomy 28
+
+## 2026-08-07T05:15:00Z (hourly chapter notes run)
+Chapter: Deuteronomy 28 | Duration: 28 min | Sections: 13 | Cards: 84 | Status: pass
+Next up: Deuteronomy 29
+
+## 2026-08-07T05:56:56Z (hourly chapter notes run)
+Chapter: Deuteronomy 29 | Duration: 10 min | Sections: 9 | Cards: 40 | Status: pass
+Next up: Deuteronomy 30
+
+## 2026-08-07T06:56:23Z (hourly chapter notes run)
+Chapter: Deuteronomy 30 | Duration: 10 min | Sections: 6 | Cards: 40 | Status: pass
+Next up: Deuteronomy 31
+
+## 2026-08-07T07:57:06Z (hourly chapter notes run)
+Chapter: Deuteronomy 31 | Duration: 10 min | Sections: 8 | Cards: 46 | Status: pass
+Next up: Deuteronomy 32
+
+## 2026-08-07T09:01:52Z (hourly chapter notes run)
+Chapter: Deuteronomy 32 | Duration: 16 min | Sections: 13 | Cards: 115 | Status: pass
+Next up: Deuteronomy 33

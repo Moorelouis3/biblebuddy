@@ -72,3 +72,50 @@ this is now the third time in a row the container has not started on a
 normal attached main branch as the task instructions claim it should
 ("a fresh clone every run"). The underlying mechanism is still unconfirmed
 and still worth someone checking directly, per the prior two entries.
+
+## Detached-HEAD bug recurred again, Deuteronomy 14 run, no data lost
+Same environment issue as the entries above, on the 2026-08-06 ~14:46 UTC
+scheduled Deuteronomy 14 run. Container started with git HEAD detached and
+local `main` frozen at a stale commit (`a18839f`, 2026-08-01). This time
+`git fetch origin main` showed origin/main had actually already moved on to
+`d272fc1` (this container's cached remote ref was just stale, not really
+behind), so only this run's own new commit needed to land. Pushed with
+`git push origin HEAD:main` (clean fast forward), then reattached local
+`main` to `HEAD` before finishing. Nothing lost this time, but this is now
+at least the sixth recorded occurrence since 2026-08-03, and the root cause
+is still unconfirmed per every prior entry above. Flagging again since none
+of the earlier entries in this file appear to have been cleared yet either.
+
+## Push-cadence rule (added 2026-08-04) is not being followed by hourly runs
+CLAUDE.md mandates committing locally per chapter but batching pushes to at
+most twice a day, specifically because per-chapter pushes were triggering a
+Vercel production build every hour. That rule has not actually stopped the
+behavior: on 2026-08-06 alone, Deuteronomy 8 through 14 (at least 7 chapters)
+each reached origin/main individually, confirmed by origin/main matching this
+run's starting local HEAD exactly (6d13aa3, the Deuteronomy 14 log commit)
+before this run pushed anything itself. Each of those chapters' own logged
+steps says "pushed" right after finishing. This run (Deuteronomy 15) is
+complying with the rule as written: committed locally (0814828) and holding
+the push for the next scheduled batch (morning/night report push) instead of
+pushing immediately. Worth Louis confirming whether the instruction itself
+needs to be stronger/clearer for the scheduled agent to actually follow it,
+since a plainly written mandatory rule has been silently ignored for at least
+two days of hourly runs.
+
+## Correction: root cause of per-chapter pushes is a stop hook, not rule non-compliance
+Correcting the entry right above this one from the same run. After committing
+Deuteronomy 15 locally and deliberately holding the push, this session's own
+stop hook (`~/.claude/stop-hook-git-check.sh`) blocked the turn from ending
+with "There are 3 unpushed commit(s) on branch main. Please push these
+changes to the remote repository," exit code 2, no way to decline. That hook
+hard-fails any stop while `origin/<branch>..HEAD` is non-empty, with no
+awareness of the CLAUDE.md batching policy. That is almost certainly why
+every prior hourly run has pushed per chapter despite the mandatory rule:
+the agent is not choosing to ignore the policy, the environment will not let
+the session end otherwise. This run pushed (ae2d41d) once blocked, but left
+off the `[deploy]` tag so it should not trigger a Vercel build by itself.
+The real fix has to happen outside this project's CLAUDE.md: either the stop
+hook needs an exception for this kind of intentionally-held batch, or the
+push-cadence policy needs to be dropped as unworkable under this hook. Worth
+Louis deciding which, since as written the two instructions structurally
+cannot both be satisfied by an hourly single-chapter-per-session agent.
