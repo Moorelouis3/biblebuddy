@@ -982,3 +982,7 @@ Next up: Joshua 2
 ## 2026-08-07T14:01:30Z (hourly chapter notes run)
 Chapter: Joshua 2 | Duration: 10 min | Sections: 8 | Cards: 34 | Status: pass
 Next up: Joshua 3
+
+## 2026-08-07T14:56:33Z (hourly chapter notes run)
+Chapter: Joshua 3 | Duration: 10 min | Sections: 4 | Cards: 30 | Status: pass
+Next up: Joshua 4

@@ -13151,6 +13151,67 @@
           "at": "2026-08-07T14:01:30Z"
         }
       ]
+    },
+    {
+      "book": "Joshua",
+      "chapter": 3,
+      "startedAt": "2026-08-07T14:46:04Z",
+      "finishedAt": "2026-08-07T14:56:33Z",
+      "durationMinutes": 10,
+      "sections": 4,
+      "cards": 30,
+      "verses": 17,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog data/bible-notes-style-redo-remaining.json was empty). Joshua 3 follows Joshua 2, no existing wired-in lib file for this chapter, clean new-chapter build. Note: local git main branch ref was stale (87 commits behind, unrelated history from origin's force-pushed main) at session start; reset local main to origin/main before starting work, no data lost since origin already contained all newer work. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (17 verses). Chunked into 4 sections (1-4, 5-8, 9-13, 14-17): Israel breaking camp at Shittim and moving to the Jordan's edge behind the ark, Joshua sanctifying the people and instructing the priests to lead into the river, Joshua's speech naming the seven nations and the living God among them plus the twelve men chosen, and the actual crossing on dry ground with the flooded river held back near Adam and Zaretan. Density about 1.8 cards per verse. scripts/check_bible_note_style.py flagged a banned hedge word (roughly), a banned filler word (positioned), and several cards whose last bullet was not \ud83d\udcd6/\u27a1\ufe0f on the first pass; fixed all by rewording and reordering bullets, second run clean. Did a manual pass against the section 13 checklist afterward and rewrote a few recap style openers (Joshua Rose Early, Lodged There Before They Passed Over, Priests Bearing The Ark) and a couple of cards that ended on a logistics note instead of meaning (Ark Of The Covenant, Priests The Levites, Wonders Among You), then reverified checker/parser/tsc all still clean. Parser check passed exactly via getBibleReaderStudySections('joshua', 3) (4/4 sections, 30 cards, 17 verses, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring: added the import, extended the joshua clause in preserveExactPhraseBodies to chapter 3, and added a new replaceStudySectionsForBookRange(\"joshua\", 3, 3, ...) call directly after the Joshua 2 call. Next up: Joshua 4.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-07T14:47:17Z"
+        },
+        {
+          "name": "git main branch stale ref reset to origin/main (recovery, not part of normal pipeline)",
+          "at": "2026-08-07T14:47:00Z"
+        },
+        {
+          "name": "target chapter determined: Joshua 3 (new chapter, forward progress; redo-remaining empty)",
+          "at": "2026-08-07T14:47:17Z"
+        },
+        {
+          "name": "KJV text fetched for Joshua 3 (17 verses, raw.githubusercontent.com aruljohn/Bible-kjv)",
+          "at": "2026-08-07T14:47:47Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md) and reference implementations (lib/genesisThirtyOneSource.ts, lib/joshuaTwoSource.ts) reviewed",
+          "at": "2026-08-07T14:48:41Z"
+        },
+        {
+          "name": "source file written: lib/joshuaThreeSource.ts (4 sections, 30 cards)",
+          "at": "2026-08-07T14:52:09Z"
+        },
+        {
+          "name": "style checker clean after fixing banned words and last-bullet-emoji issues",
+          "at": "2026-08-07T14:52:09Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies extended to chapter 3, replaceStudySectionsForBookRange call added)",
+          "at": "2026-08-07T14:52:26Z"
+        },
+        {
+          "name": "parser check passed: 4 sections, 30 cards, verbatim render confirmed",
+          "at": "2026-08-07T14:52:46Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-08-07T14:54:14Z"
+        },
+        {
+          "name": "manual section-13 checklist pass, reworded weak openers/closers, reverified checker/parser/tsc clean",
+          "at": "2026-08-07T14:56:33Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-07T14:56:33Z"
+        }
+      ]
     }
   ]
 }
