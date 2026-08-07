@@ -12538,6 +12538,56 @@
           "at": "2026-08-07T03:00:30Z"
         }
       ]
+    },
+    {
+      "book": "Deuteronomy",
+      "chapter": 27,
+      "startedAt": "2026-08-07T03:46:45Z",
+      "finishedAt": "2026-08-07T03:56:00Z",
+      "durationMinutes": 9,
+      "sections": 7,
+      "cards": 34,
+      "verses": 26,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog empty). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (26 verses). The plaster-and-stone monument commanded before entering Canaan, the unhewn-stone altar built on Mount Ebal itself with its whole burnt and peace offerings, the covenant declaration that this day Israel formally becomes the LORD's people, the tribes split six and six between Gerizim (blessing) and Ebal (cursing) along old family lines going back to Genesis (Reuben's disgrace, the concubine-born tribes), and the twelve spoken curses covering idolatry, contempt for parents, boundary theft, exploiting the blind, injustice toward the stranger/fatherless/widow, family sexual sins, secret murder, and paid killing, closing on the catchall curse for not confirming the whole law, with a forward pointer to Deuteronomy 28 where the matching blessings finally appear. Style checker clean on first pass (34 cards). Parser check passed exactly (7/7 sections, 34 cards, 26 verses, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies range extended from 26 to 27 for Deuteronomy, replaceStudySectionsForBookRange call added after chapter 26.",
+      "mode": "new",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-07T03:47:10Z"
+        },
+        {
+          "name": "target chapter determined: Deuteronomy 27 (forward progress, redo-remaining empty)",
+          "at": "2026-08-07T03:47:10Z"
+        },
+        {
+          "name": "KJV text fetched (Deuteronomy 27, 26 verses, raw.githubusercontent.com mirror)",
+          "at": "2026-08-07T03:47:10Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md)",
+          "at": "2026-08-07T03:47:10Z"
+        },
+        {
+          "name": "source file written (lib/deuteronomyTwentySevenSource.ts, 7 sections, 34 cards)",
+          "at": "2026-08-07T03:55:46Z"
+        },
+        {
+          "name": "style checker clean (first pass, no problems found)",
+          "at": "2026-08-07T03:55:46Z"
+        },
+        {
+          "name": "wired into reader (import added, preserveExactPhraseBodies extended to 27, replaceStudySectionsForBookRange added)",
+          "at": "2026-08-07T03:55:46Z"
+        },
+        {
+          "name": "parser check passed (7/7 sections, 34 cards, text verbatim)",
+          "at": "2026-08-07T03:55:46Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-08-07T03:56:00Z"
+        }
+      ]
     }
   ]
 }
