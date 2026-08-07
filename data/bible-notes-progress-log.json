@@ -12748,6 +12748,55 @@
           "at": "2026-08-07T05:59:00Z"
         }
       ]
+    },
+    {
+      "book": "Deuteronomy",
+      "chapter": 30,
+      "startedAt": "2026-08-07T06:46:38Z",
+      "finishedAt": "2026-08-07T06:56:23Z",
+      "durationMinutes": 10,
+      "sections": 6,
+      "cards": 40,
+      "verses": 20,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (style redo backlog empty as of this run, confirmed data/bible-notes-style-redo-remaining.json has an empty remaining array). Determined the next chapter by scanning lib/ for missing dedicated per-chapter source files across Genesis through Deuteronomy in canonical order: Genesis, Exodus, Leviticus, and Numbers are fully covered by individual files (Genesis 7's apparent gap is actually served by an inline approved-markdown block, not a missing chapter), and Deuteronomy 1-29 all have dedicated files, but Deuteronomy 30-34 were still served only by the old bulk-range file deuteronomyThirtyToThirtyFourPersonalNotes.ts, so Deuteronomy 30 is the correct next target, continuing directly from last run's Deuteronomy 29. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Deuteronomy 30 covers the promise of restoration after exile if Israel returns to the LORD (the blessing and curse called to mind, God gathering Israel from the outmost parts of heaven, the LORD circumcising Israel's heart), the reversal of the curses onto Israel's enemies once obedience returns, the famous \"not in heaven, neither is it beyond the sea\" passage on the commandment's nearness (later quoted in Romans 10), and the closing choice between life and death, blessing and cursing, ending on \"therefore choose life.\" Built 6 sections covering all 20 verses at exactly 2 cards per verse (40 cards). `scripts/check_bible_note_style.py` was clean on the first run, no problems found. Parser check passed exactly via `getBibleReaderStudySections('deuteronomy', 30)` (6/6 sections, 40 cards, 20 verses, text verbatim). `npx tsc --noEmit -p .` clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts following the same pattern as Deuteronomy 29: added the import, extended the preserveExactPhraseBodies range from <= 29 to <= 30, and added a replaceStudySectionsForBookRange(\"deuteronomy\", 30, 30, ...) call after the chapter 29 call. Next forward-progress target is Deuteronomy 31.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-07T06:46:38Z"
+        },
+        {
+          "name": "target chapter determined: Deuteronomy 30 (normal forward progress, redo backlog empty)",
+          "at": "2026-08-07T06:46:38Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Deuteronomy.json",
+          "at": "2026-08-07T06:46:38Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (lib/deuteronomyTwentyNineSource.ts) read",
+          "at": "2026-08-07T06:46:38Z"
+        },
+        {
+          "name": "source file written (lib/deuteronomyThirtySource.ts, 6 sections, 40 cards)",
+          "at": "2026-08-07T06:55:58Z"
+        },
+        {
+          "name": "style checker clean (no problems found on first pass)",
+          "at": "2026-08-07T06:55:58Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 30, replaceStudySectionsForBookRange call added)",
+          "at": "2026-08-07T06:55:58Z"
+        },
+        {
+          "name": "parser check passed (6 sections, 40 cards, 20 verses covered)",
+          "at": "2026-08-07T06:55:58Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-07T06:56:23Z"
+        }
+      ]
     }
   ]
 }
