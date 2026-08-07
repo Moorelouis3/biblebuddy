@@ -12415,6 +12415,59 @@
           "at": "2026-08-07T00:59:45Z"
         }
       ]
+    },
+    {
+      "book": "Deuteronomy",
+      "chapter": 25,
+      "startedAt": "2026-08-07T01:47:36Z",
+      "finishedAt": "2026-08-07T01:58:00Z",
+      "durationMinutes": 10,
+      "sections": 6,
+      "cards": 32,
+      "verses": 19,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog empty). The judicial forty stripes cap with a forward callback to Paul's own forty stripes save one in 2 Corinthians 11:24, the single-verse ox-muzzling law explained through the ancient threshing floor and Paul's double New Testament quotation of it (1 Corinthians 9:9, 1 Timothy 5:18), the full levirate marriage custom (the duty, the legal refusal option, the public gate hearing, the shoe and spit shaming ceremony) with a forward callback to Boaz and Ruth performing this same duty willingly, the harsh hand-severing penalty for a wife's improper intervention in a men's fight, the honest weights and measures law tied to the same days-lengthened-in-the-land promise attached to honoring parents, and the closing command to remember and one day blot out Amalek, tracing the feud back to Exodus 17 and forward to Saul's assignment in 1 Samuel 15. Style checker found 1 problem on first pass (a banned hedge word, fairly, in a bullet), fixed, second run clean. Parser check passed exactly (6/6 sections, 32 cards, 19 verses, text verbatim), npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended 1-24 to 1-25, replaceStudySectionsForBookRange call added after Deuteronomy 24). Density about 1.68 cards/verse. Session started with local HEAD detached at the exact commit origin/main was already at (recurring benign environment case), fixed via git fetch + git checkout -B main origin/main, no work lost.",
+      "steps": [
+        {
+          "name": "npm_install_done",
+          "at": "2026-08-07T01:46:25Z"
+        },
+        {
+          "name": "target_chapter_determined:Deuteronomy_25:new",
+          "at": "2026-08-07T01:47:36Z"
+        },
+        {
+          "name": "kjv_text_fetched:Deuteronomy_25",
+          "at": "2026-08-07T01:47:44Z"
+        },
+        {
+          "name": "style_spec_read",
+          "at": "2026-08-07T01:48:11Z"
+        },
+        {
+          "name": "source_file_written:lib/deuteronomyTwentyFiveSource.ts",
+          "at": "2026-08-07T01:53:52Z"
+        },
+        {
+          "name": "style_checker_clean",
+          "at": "2026-08-07T01:54:10Z"
+        },
+        {
+          "name": "wired_into_reader:lib/bibleReaderStudyNotes.ts",
+          "at": "2026-08-07T01:54:50Z"
+        },
+        {
+          "name": "parser_check_passed:6_sections_32_cards",
+          "at": "2026-08-07T01:54:58Z"
+        },
+        {
+          "name": "tsc_noemit_clean",
+          "at": "2026-08-07T01:56:21Z"
+        },
+        {
+          "name": "detached_head_recovered:git_checkout_-B_main_origin/main",
+          "at": "2026-08-07T01:57:03Z"
+        }
+      ]
     }
   ]
 }
