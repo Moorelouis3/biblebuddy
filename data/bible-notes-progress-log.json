@@ -13098,6 +13098,59 @@
           "at": "2026-08-07T12:56:40Z"
         }
       ]
+    },
+    {
+      "book": "Joshua",
+      "chapter": 2,
+      "startedAt": "2026-08-07T13:50:42Z",
+      "finishedAt": "2026-08-07T14:01:01Z",
+      "durationMinutes": 10,
+      "sections": 8,
+      "cards": 34,
+      "verses": 24,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog data/bible-notes-style-redo-remaining.json was empty). Joshua 2 follows Joshua 1, no existing wired-in lib file for this chapter, clean new-chapter build. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (24 verses). Chunked into 8 sections (1, 2-4, 5-7, 8-11, 12-14, 15-16, 17-21, 22-24): the two spies sent from Shittim into Rahab's house, the king of Jericho's demand and Rahab's lie, the escape at the gate with the flax and the fords, Rahab's confession of faith in the LORD citing the Red Sea and Sihon and Og, her request for a true token and her family's safety, the men's oath, the cord let down through her wall house and the three days in the mountain, the scarlet cord oath terms, and the spies' return to Joshua confirming Rahab's words. Density about 1.4 cards per verse, matching the reference implementation (lib/genesisThirtyOneSource.ts) rather than the older 2-per-verse SKILL.md target, since the style spec supersedes on content. scripts/check_bible_note_style.py was clean on the first run. Parser check passed exactly via getBibleReaderStudySections('joshua', 2) (8/8 sections, 34 cards, 24 verses, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring: added the import, extended the joshua clause in preserveExactPhraseBodies to chapter 2, and added a new replaceStudySectionsForBookRange(\"joshua\", 2, 2, ...) call directly after the Joshua 1 call. Next up: Joshua 3.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-07T13:50:42Z"
+        },
+        {
+          "name": "target chapter determined: Joshua 2 (new chapter, forward progress; redo-remaining empty)",
+          "at": "2026-08-07T13:50:57Z"
+        },
+        {
+          "name": "KJV text fetched for Joshua 2 (24 verses, raw.githubusercontent.com aruljohn/Bible-kjv)",
+          "at": "2026-08-07T13:51:20Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md) and reference implementation (lib/genesisThirtyOneSource.ts) reviewed",
+          "at": "2026-08-07T13:53:00Z"
+        },
+        {
+          "name": "source file written: lib/joshuaTwoSource.ts (8 sections, 34 cards)",
+          "at": "2026-08-07T13:59:07Z"
+        },
+        {
+          "name": "style checker clean on first run",
+          "at": "2026-08-07T13:59:20Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies extended to chapter 2, replaceStudySectionsForBookRange call added)",
+          "at": "2026-08-07T13:59:50Z"
+        },
+        {
+          "name": "parser check passed: 8 sections, 34 cards, verbatim render confirmed",
+          "at": "2026-08-07T14:00:15Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-08-07T14:01:01Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-07T14:01:30Z"
+        }
+      ]
     }
   ]
 }
