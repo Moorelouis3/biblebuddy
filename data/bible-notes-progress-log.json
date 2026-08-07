@@ -13041,6 +13041,63 @@
           "at": "2026-08-07T10:56:00Z"
         }
       ]
+    },
+    {
+      "book": "Joshua",
+      "chapter": 1,
+      "startedAt": "2026-08-07T12:48:15Z",
+      "finishedAt": "2026-08-07T12:56:40Z",
+      "durationMinutes": 8,
+      "sections": 6,
+      "cards": 22,
+      "verses": 18,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog data/bible-notes-style-redo-remaining.json was empty). Joshua 1 is the first chapter of a new book, immediately following the completion of Deuteronomy (1-34). No existing wired-in lib file for this book/chapter, so this is a clean new-chapter build, not a redo. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (18 verses). Chunked into 6 sections (1-2, 3-5, 6-9, 10-11, 12-15, 16-18): the handoff from Moses to Joshua (explaining the servant of the LORD title, Joshua's background as one of the twelve spies, and the minister role), the land promise and its Euphrates/wilderness/Lebanon borders, the triple be strong and courageous charge tied to meditating on the law day and night, Joshua's order to the officers to prepare victuals, the reminder to the Reubenites/Gadites/half tribe of Manasseh of their obligation to cross armed before returning east of the Jordan, and the people's pledge of obedience including the wartime death penalty for rebellion. Density about 1.2 cards per verse, matching the reference implementation (lib/genesisThirtyOneSource.ts) rather than the older 2-per-verse SKILL.md target, since the style spec supersedes on content. scripts/check_bible_note_style.py found 1 problem on first pass (banned hedge word 'fairly' in one body line and its matching bullet), fixed to 'evenly'/dropped, second run clean. Parser check passed exactly via getBibleReaderStudySections('Joshua', 1) (6/6 sections, 22 cards, 18 verses, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring: added the import, added a new joshua clause to preserveExactPhraseBodies (chapter 1 only, following the same incremental-range pattern used for every other book), and added a new replaceStudySectionsForBookRange(\"joshua\", 1, 1, ...) call directly after the last Deuteronomy call. Next up: Joshua 2.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-07T12:48:15Z"
+        },
+        {
+          "name": "target chapter determined: Joshua 1 (new chapter, forward progress; redo-remaining empty)",
+          "at": "2026-08-07T12:48:15Z"
+        },
+        {
+          "name": "KJV text fetched for Joshua 1 (18 verses, raw.githubusercontent.com aruljohn/Bible-kjv)",
+          "at": "2026-08-07T12:48:29Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md)",
+          "at": "2026-08-07T12:48:29Z"
+        },
+        {
+          "name": "wiring pattern confirmed via genesisThirtyOneSource.ts reference + bibleReaderStudyNotes.ts inspection; began drafting Joshua 1 notes",
+          "at": "2026-08-07T12:49:14Z"
+        },
+        {
+          "name": "source file written: lib/joshuaOneSource.ts (6 sections, 22 cards)",
+          "at": "2026-08-07T12:53:53Z"
+        },
+        {
+          "name": "style checker clean (fixed 1 banned hedge word: fairly)",
+          "at": "2026-08-07T12:54:28Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, replaceStudySectionsForBookRange)",
+          "at": "2026-08-07T12:55:07Z"
+        },
+        {
+          "name": "parser check passed: 6 sections, 22 cards, verbatim render confirmed",
+          "at": "2026-08-07T12:55:07Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-08-07T12:56:24Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-07T12:56:40Z"
+        }
+      ]
     }
   ]
 }
