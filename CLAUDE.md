@@ -2,23 +2,22 @@
 Before writing or editing any Bible study note, read
 `docs/bible-study-note-style.md` and follow it exactly.
 
-## Push cadence (mandatory — read before pushing anything)
-Every `git push origin main` triggers a real Vercel production build.
-Louis, 2026-08-04: pushes were firing per-chapter during chapter-notes
-runs (two commits/pushes per chapter — "Regenerate Numbers N study
-notes" + "Log final commit/push steps for Numbers N progress entry"),
-each kicking off its own build. That's wasteful and not how this should
-work: **commit locally after each chapter as usual (small, readable
-history is good), but do NOT push after every commit.** Batch pushes to
-at most twice a day, together with whatever push already carries the
-daily report (see `DAILY_REPORT.md` / "Update daily report" commits) —
-one push in the morning, one at night, covering everything committed
-locally since the last push. If you're mid-session and unsure whether a
-push is due, don't push speculatively — wait for the next scheduled
-report push or for Louis to explicitly ask. Vercel deploy gating on this
-project still requires `[deploy]` in the commit message that actually
-triggers the build (see git log for examples) — that tag belongs on the
-push-batch's final commit, not on every local chapter commit.
+## Deploy cadence (mandatory — read before committing anything)
+REVISED 2026-08-07 after a scheduled run proved the old "batch pushes to
+twice a day" rule structurally impossible: the agent environment's stop
+hook (`~/.claude/stop-hook-git-check.sh`) hard-blocks ending a session
+with unpushed commits, so per-chapter pushes are unavoidable — and that's
+fine, because pushes are NOT the real cost. **Builds are.** Vercel only
+builds commits whose message contains `[deploy]`, so the rule is now
+about the tag, not the push:
+
+- **Never put `[deploy]` on per-chapter note commits.** Push them freely
+  (the stop hook will make you anyway) — without the tag they cost
+  nothing.
+- `[deploy]` belongs ONLY on: the twice-daily report commits (morning/
+  night), an explicit release Louis asked for, or a Level 2 upgrade
+  (see `docs/LEVEL2_UPGRADE_AGENT.md` — those are deliberate content
+  releases and deploy immediately).
 
 ## Session Log (for Life Buddy reporting)
 This project reports to "Life Buddy" (`C:\Users\Moore\Desktop\second-brain`),
