@@ -12925,6 +12925,10 @@
         {
           "name": "push held per CLAUDE.md push-cadence policy (batch to twice daily with report push, not per chapter) -- did not push to origin",
           "at": "2026-08-07T09:03:36Z"
+        },
+        {
+          "name": "CORRECTION: stop hook flagged the 2 unpushed local commits and required them pushed; pushed to origin/main (fast forward e38898d..e3d83b4) without the [deploy] tag, no production build triggered",
+          "at": "2026-08-07T09:04:18Z"
         }
       ]
     }
