@@ -12350,6 +12350,59 @@
           "at": "2026-08-06T23:58:41Z"
         }
       ]
+    },
+    {
+      "book": "Deuteronomy",
+      "chapter": 24,
+      "startedAt": "2026-08-07T00:46:09Z",
+      "finishedAt": "2026-08-07T00:58:26Z",
+      "durationMinutes": 12,
+      "sections": 7,
+      "cards": 48,
+      "verses": 22,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog empty). The divorce and remarriage law (bill of divorcement as protection for the wife, the actual prohibition on remarrying a former wife after a second marriage, abomination/land defilement framing, Matthew 19 callback), the newly married man's one year war exemption, the millstone pledge ban tied to daily bread, the manstealing/human trafficking death penalty distinguished from ordinary theft, the leprosy law's callback to Miriam's Numbers 12 punishment as recent memory, the dignity-in-lending laws (no entering the debtor's house, daily returned cloak pledge, a widow denied even that pledge), fair same-day wages tied to the worker's cry reaching God, individual courtroom responsibility (fathers/children not executed for each other), and the closing gleaning laws for grain, olives, and grapes bookended by the same Egypt-slavery reasoning from two verses earlier. Style checker found 1 problem on first pass (a 9 word bullet), fixed, second run clean. Parser check passed exactly (7/7 sections, 48 cards, 22 verses, text verbatim), npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended 1-23 to 1-24, replaceStudySectionsForBookRange call added after Deuteronomy 23). Density about 2.18 cards/verse. Per CLAUDE.md's push-cadence policy, this chapter's commit is being held locally and will go out with the next scheduled report push rather than pushed immediately.",
+      "steps": [
+        {
+          "name": "npm_install_done",
+          "at": "2026-08-07T00:46:09Z"
+        },
+        {
+          "name": "target_chapter_determined:Deuteronomy_24:new",
+          "at": "2026-08-07T00:46:58Z"
+        },
+        {
+          "name": "kjv_text_fetched:Deuteronomy_24",
+          "at": "2026-08-07T00:46:58Z"
+        },
+        {
+          "name": "style_spec_read",
+          "at": "2026-08-07T00:46:58Z"
+        },
+        {
+          "name": "source_file_written:lib/deuteronomyTwentyFourSource.ts",
+          "at": "2026-08-07T00:54:12Z"
+        },
+        {
+          "name": "style_checker_clean",
+          "at": "2026-08-07T00:54:12Z"
+        },
+        {
+          "name": "wired_into_reader:lib/bibleReaderStudyNotes.ts",
+          "at": "2026-08-07T00:54:44Z"
+        },
+        {
+          "name": "parser_check_passed:7_sections_48_cards",
+          "at": "2026-08-07T00:54:44Z"
+        },
+        {
+          "name": "tsc_noemit_clean",
+          "at": "2026-08-07T00:56:21Z"
+        },
+        {
+          "name": "progress_files_logged:progress-log.json,BIBLE_BUDDY_NOTES_PROGRESS.md",
+          "at": "2026-08-07T00:58:26Z"
+        }
+      ]
     }
   ]
 }

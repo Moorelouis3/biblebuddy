@@ -923,3 +923,7 @@ Next up: Deuteronomy 23
 ## 2026-08-06T23:55:55Z (hourly chapter notes run)
 Chapter: Deuteronomy 23 | Duration: 10 min | Sections: 8 | Cards: 44 | Status: pass
 Next up: Deuteronomy 24
+
+## 2026-08-07T00:58:26Z (hourly chapter notes run)
+Chapter: Deuteronomy 24 | Duration: 12 min | Sections: 7 | Cards: 48 | Status: pass
+Next up: Deuteronomy 25
