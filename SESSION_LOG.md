@@ -943,3 +943,7 @@ Next up: Deuteronomy 28
 ## 2026-08-07T05:15:00Z (hourly chapter notes run)
 Chapter: Deuteronomy 28 | Duration: 28 min | Sections: 13 | Cards: 84 | Status: pass
 Next up: Deuteronomy 29
+
+## 2026-08-07T05:56:56Z (hourly chapter notes run)
+Chapter: Deuteronomy 29 | Duration: 10 min | Sections: 9 | Cards: 40 | Status: pass
+Next up: Deuteronomy 30
