@@ -12480,6 +12480,60 @@
           "at": "2026-08-07T01:59:27Z"
         }
       ]
+    },
+    {
+      "book": "Deuteronomy",
+      "chapter": 26,
+      "startedAt": "2026-08-07T02:48:25Z",
+      "finishedAt": "2026-08-07T02:59:00Z",
+      "durationMinutes": 11,
+      "sections": 4,
+      "cards": 34,
+      "verses": 19,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog empty). Firstfruits basket ritual, the spoken historical confession (wandering Aramean, Egypt sojourn, exodus formula), triennial tithe declaration, and the closing mutual covenant avouchment. Style checker clean first pass. Parser and tsc clean.",
+      "mode": "new",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-07T02:48:38Z"
+        },
+        {
+          "name": "target chapter determined: Deuteronomy 26 (forward progress, redo-remaining empty)",
+          "at": "2026-08-07T02:48:38Z"
+        },
+        {
+          "name": "KJV text fetched for Deuteronomy 26 (19 verses)",
+          "at": "2026-08-07T02:49:05Z"
+        },
+        {
+          "name": "style spec read in full",
+          "at": "2026-08-07T02:49:10Z"
+        },
+        {
+          "name": "source file written: lib/deuteronomyTwentySixSource.ts",
+          "at": "2026-08-07T02:54:53Z"
+        },
+        {
+          "name": "style checker clean: 34 cards, 0 problems",
+          "at": "2026-08-07T02:54:57Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange)",
+          "at": "2026-08-07T02:55:11Z"
+        },
+        {
+          "name": "parser check passed: 4 sections, 34 cards, verbatim",
+          "at": "2026-08-07T02:55:39Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, exit 0",
+          "at": "2026-08-07T02:57:58Z"
+        },
+        {
+          "name": "logged progress files (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-08-07T02:59:00Z"
+        }
+      ]
     }
   ]
 }
