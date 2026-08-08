@@ -14251,6 +14251,59 @@
           "at": "2026-08-08T09:57:25Z"
         }
       ]
+    },
+    {
+      "book": "Joshua",
+      "chapter": 23,
+      "startedAt": "2026-08-08T10:46:07Z",
+      "finishedAt": "2026-08-08T10:56:00Z",
+      "durationMinutes": 10,
+      "sections": 6,
+      "cards": 29,
+      "verses": 16,
+      "notes": "New chapter, forward progress (redo backlog empty). Joshua's farewell address to Israel's elders, heads, judges, and officers. Appeal to what the people witnessed of the LORD fighting for them, the land already divided by lot with remaining nations still to be driven out, the charge to keep the book of the law of Moses, the ban on naming or bowing to foreign gods paired with the marriage level cleave command to the LORD, the one-man-chases-a-thousand hyperbole, the ironic reversal of cleave describing wrongful intermarriage with remaining nations, the stacked snares/traps/scourges/thorns warning imagery, and the closing symmetry between every good promise already kept and the certainty that the same God will bring the warned judgment if the covenant is broken. Density about 1.81 cards/verse (16 verses, 29 cards). scripts/check_bible_note_style.py found 4 problems on first pass (an inline list inflating one card's bullet count to 8, two over length bullets), fixed, second run clean. Manual section 13 eye check split comma splice lines and removed a banned rather than stacked clause. Parser check passed exactly (6/6 sections, 29 cards, 16 verses, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies joshua range extended from 1-22 to 1-23, replaceStudySectionsForBookRange call added after Joshua 22. Next forward-progress target is Joshua 24.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-08T10:47:00Z"
+        },
+        {
+          "name": "target chapter determined: Joshua 23 (forward progress, redo backlog empty, Joshua 1-22 all wired)",
+          "at": "2026-08-08T10:47:04Z"
+        },
+        {
+          "name": "KJV text fetched: Joshua 23 (16 verses, raw.githubusercontent.com/aruljohn/Bible-kjv mirror)",
+          "at": "2026-08-08T10:48:00Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md, in full)",
+          "at": "2026-08-08T10:49:00Z"
+        },
+        {
+          "name": "source file written: lib/joshuaTwentyThreeSource.ts (6 sections, 29 cards)",
+          "at": "2026-08-08T10:52:00Z"
+        },
+        {
+          "name": "style checker clean (4 problems on first pass, fixed, second run clean)",
+          "at": "2026-08-08T10:53:30Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 23, replaceStudySectionsForBookRange call added)",
+          "at": "2026-08-08T10:53:45Z"
+        },
+        {
+          "name": "parser check passed: 6/6 sections, 29 cards, 16 verses, text verbatim",
+          "at": "2026-08-08T10:54:10Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-08T10:54:53Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-08T10:56:00Z"
+        }
+      ]
     }
   ]
 }
