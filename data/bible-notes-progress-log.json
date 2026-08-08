@@ -14304,6 +14304,67 @@
           "at": "2026-08-08T10:56:00Z"
         }
       ]
+    },
+    {
+      "book": "Joshua",
+      "chapter": 24,
+      "startedAt": "2026-08-08T11:46:07Z",
+      "finishedAt": "2026-08-08T12:10:00Z",
+      "durationMinutes": 24,
+      "sections": 12,
+      "cards": 52,
+      "verses": 33,
+      "notes": "Milestone: Joshua complete (all 24 chapters). New chapter, forward progress. Final covenant renewal at Shechem, choose you this day, Joshua and Eleazar burials, Joseph bones fulfilled. Style checker clean, parser + tsc verified exactly.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-08T11:46:52Z"
+        },
+        {
+          "name": "target chapter determined: Joshua 24 (redo backlog empty, normal forward progress)",
+          "at": "2026-08-08T11:47:10Z"
+        },
+        {
+          "name": "KJV text fetched (Joshua 24, 33 verses)",
+          "at": "2026-08-08T11:48:41Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md)",
+          "at": "2026-08-08T11:49:30Z"
+        },
+        {
+          "name": "source file written (lib/joshuaTwentyFourSource.ts, 12 sections)",
+          "at": "2026-08-08T11:58:00Z"
+        },
+        {
+          "name": "style checker clean (52 cards, 0 problems)",
+          "at": "2026-08-08T12:00:30Z"
+        },
+        {
+          "name": "wired into reader (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange)",
+          "at": "2026-08-08T12:01:30Z"
+        },
+        {
+          "name": "parser check passed (12/12 sections, 52 cards, 33 verses verbatim)",
+          "at": "2026-08-08T12:02:00Z"
+        },
+        {
+          "name": "tsc clean",
+          "at": "2026-08-08T12:03:00Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-08-08T12:08:00Z"
+        },
+        {
+          "name": "committed",
+          "at": "2026-08-08T11:58:30Z"
+        },
+        {
+          "name": "pushed",
+          "at": "2026-08-08T11:59:00Z"
+        }
+      ]
     }
   ]
 }

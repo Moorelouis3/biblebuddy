@@ -1069,3 +1069,7 @@ Next up: Joshua 23
 ## 2026-08-08T10:56:00Z (hourly chapter notes run)
 Chapter: Joshua 23 | Duration: 10 min | Sections: 6 | Cards: 29 | Status: pass
 Next up: Joshua 24
+
+## 2026-08-08T12:10:00Z (hourly chapter notes run)
+Chapter: Joshua 24 | Duration: 24 min | Sections: 12 | Cards: 52 | Status: pass
+Next up: Judges 1
