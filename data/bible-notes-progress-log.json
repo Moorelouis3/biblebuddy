@@ -14198,6 +14198,59 @@
           "at": "2026-08-08T09:00:34Z"
         }
       ]
+    },
+    {
+      "book": "Joshua",
+      "chapter": 22,
+      "startedAt": "2026-08-08T09:46:55Z",
+      "finishedAt": "2026-08-08T09:57:25Z",
+      "durationMinutes": 10,
+      "sections": 8,
+      "cards": 37,
+      "verses": 34,
+      "notes": "New chapter, forward progress (redo backlog empty). The altar-on-the-Jordan narrative: the eastern tribes sent home after years of fighting for land not their own, the memorial altar that sparked a near civil war, Phinehas's delegation, and the resolution where the altar is named Ed (witness). Density leaner (about 1.09 cards/verse) since much of the chapter repeats the same three tribal names verse after verse; teaching concentrated on corporate guilt, memorial witnesses, and tribal identity instead of padded restatement.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-08T09:46:55Z"
+        },
+        {
+          "name": "target chapter determined: Joshua 22 (new chapter, forward progress, redo list empty)",
+          "at": "2026-08-08T09:46:55Z"
+        },
+        {
+          "name": "KJV text fetched (Joshua 22, 34 verses, raw.githubusercontent.com aruljohn/Bible-kjv)",
+          "at": "2026-08-08T09:52:19Z"
+        },
+        {
+          "name": "style spec and SKILL.md read in full, reference implementation (joshuaTwentyOneSource.ts) read",
+          "at": "2026-08-08T09:52:19Z"
+        },
+        {
+          "name": "source file lib/joshuaTwentyTwoSource.ts written (8 sections, 37 cards)",
+          "at": "2026-08-08T09:52:19Z"
+        },
+        {
+          "name": "style checker clean (10 mechanical problems found and fixed across three passes, incl. two stray 'while' stacked clauses caught in manual sweep)",
+          "at": "2026-08-08T09:54:08Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 22, replaceStudySectionsForBookRange call added)",
+          "at": "2026-08-08T09:54:39Z"
+        },
+        {
+          "name": "parser check passed (8 sections, 37 cards, matches design)",
+          "at": "2026-08-08T09:54:39Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-08T09:54:39Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-08-08T09:57:25Z"
+        }
+      ]
     }
   ]
 }

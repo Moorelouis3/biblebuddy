@@ -1061,3 +1061,7 @@ Next up: Joshua 21
 ## 2026-08-08T09:00:34Z (hourly chapter notes run)
 Chapter: Joshua 21 | Duration: 14 min | Sections: 8 | Cards: 45 | Status: pass
 Next up: Joshua 22
+
+## 2026-08-08T09:57:25Z (hourly chapter notes run)
+Chapter: Joshua 22 | Duration: 10 min | Sections: 8 | Cards: 37 | Status: pass
+Next up: Joshua 23
