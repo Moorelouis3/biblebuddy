@@ -287,14 +287,30 @@ function browserHasSupabaseAuthCookie() {
   });
 }
 
+// supabase-js serializes getSession()/refreshSession() across tabs with an
+// exclusive Web Lock keyed on the auth storage key. If a backgrounded or
+// discarded tab dies mid-refresh, that lock can be left held forever,
+// permanently hanging getSession() in every other tab (including brand new
+// ones) until the browser restarts. withTimeout keeps a stuck lock in one
+// tab from freezing the whole app shell on this one instead of resolving.
+function withTimeout<T>(promise: Promise<T>, ms: number, label: string): Promise<T> {
+  return new Promise((resolve, reject) => {
+    const timer = window.setTimeout(() => reject(new Error(`${label} timed out after ${ms}ms`)), ms);
+    promise.then(
+      (value) => { window.clearTimeout(timer); resolve(value); },
+      (error) => { window.clearTimeout(timer); reject(error); },
+    );
+  });
+}
+
 async function getSessionWithRefreshGrace() {
-  const { data } = await supabase.auth.getSession();
+  const { data } = await withTimeout(supabase.auth.getSession(), 8000, "supabase.auth.getSession()");
   if (data.session || !browserHasSupabaseAuthCookie()) {
     return data.session;
   }
 
   await new Promise((resolve) => window.setTimeout(resolve, 400));
-  const { data: retryData } = await supabase.auth.getSession();
+  const { data: retryData } = await withTimeout(supabase.auth.getSession(), 8000, "supabase.auth.getSession() retry");
   return retryData.session;
 }
 
