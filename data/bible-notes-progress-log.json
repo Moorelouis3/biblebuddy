@@ -13721,6 +13721,59 @@
           "at": "2026-08-08T00:09:30Z"
         }
       ]
+    },
+    {
+      "book": "Joshua",
+      "chapter": 13,
+      "startedAt": "2026-08-08T00:46:22Z",
+      "finishedAt": "2026-08-08T00:56:59Z",
+      "durationMinutes": 10.6,
+      "sections": 5,
+      "cards": 41,
+      "verses": 33,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog in data/bible-notes-style-redo-remaining.json is empty; confirmed no existing joshuaThirteenSource.ts before starting). Session started on a detached HEAD with a stale cached origin/main ref (a18839f) that looked like an unrelated, diverged history from local HEAD (git merge-base found no common ancestor). A fresh git fetch origin main showed this was only a stale cache from container init: real origin/main matched local HEAD exactly at 1e797fc. git checkout main && git reset --hard origin/main restored a normal tracking branch with zero data at risk. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (33 verses). Joshua 13 opens the land-division half of the book: God's admission that very much land remains unconquered despite chapters 1-12 (Philistines, Geshur, Sihor, Gebal/Byblos, Baalgad under Hermon) and the command to divide it by faith before it is fully won, the recap of the Transjordan grant Moses already made to Reuben, Gad, and half Manasseh (Sihon and Og recapped, the Geshurites/Maachathites left undriven until this day, Levi's no-land inheritance stated twice bracketing the chapter), and the detailed city-by-city boundary lists for each of the three tribes with real teaching pulled from the place names (Bamothbaal tied to Balak taking Balaam to curse Israel in Numbers 22, the five dukes of Sihon cross-referenced to the Midianite kings killed alongside Balaam in Numbers 31, Rabbah as Ammon's capital, Mahanaim's double history with Jacob's angels and David's flight from Absalom, Chinnereth's harp-shaped namesake for the future Sea of Galilee, Machir as father of Gilead, and the towns of Jair pointing forward to the later judge of the same name). Chunked into 5 sections (1-7, 8-14, 15-23, 24-28, 29-33). Density about 1.24 cards/verse (33 verses, 41 cards), in the same range as Joshua 12's boundary/list genre. scripts/check_bible_note_style.py was clean on the first pass, zero problems. A manual section 13 eye check confirmed every card title is an exact lifted KJV phrase, every card opens with one of the four approved moves, closes on meaning, uses exactly four bullets each note ending on \ud83d\udcd6, and has no hyphens, em dashes, semicolons, or contractions anywhere in the file. One factual slip was caught and fixed while drafting (a card originally said Israel expelled the Geshurites/Maachathites when verse 13 says the opposite). Parser check passed exactly via getBibleReaderStudySections('joshua', 13) (5/5 sections, 41 cards, 33 verses, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies joshua range extended from chapters 1-12 to 1-13, replaceStudySectionsForBookRange(\"joshua\", 13, 13, ...) call added directly after the Joshua 12 call. Next forward-progress target is Joshua 14.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-08T00:46:43Z"
+        },
+        {
+          "name": "target chapter determined: Joshua 13 (redo backlog empty, normal forward progress)",
+          "at": "2026-08-08T00:47:10Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Joshua.json (33 verses)",
+          "at": "2026-08-08T00:47:40Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (lib/joshuaTwelveSource.ts) read",
+          "at": "2026-08-08T00:48:30Z"
+        },
+        {
+          "name": "source file lib/joshuaThirteenSource.ts written (5 sections, 41 cards)",
+          "at": "2026-08-08T00:55:10Z"
+        },
+        {
+          "name": "style checker clean on first pass (scripts/check_bible_note_style.py)",
+          "at": "2026-08-08T00:55:20Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range 1-13, replaceStudySectionsForBookRange call)",
+          "at": "2026-08-08T00:55:55Z"
+        },
+        {
+          "name": "parser check passed exactly (5/5 sections, 41 cards, 33 verses, text verbatim)",
+          "at": "2026-08-08T00:56:05Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, zero errors",
+          "at": "2026-08-08T00:56:30Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-08-08T00:56:59Z"
+        }
+      ]
     }
   ]
 }
