@@ -1041,3 +1041,7 @@ Next up: Joshua 16
 ## 2026-08-08T03:51:43Z (hourly chapter notes run)
 Chapter: Joshua 16 | Duration: 5 min | Sections: 3 | Cards: 18 | Status: pass
 Next up: Joshua 17
+
+## 2026-08-08T04:57:10Z (hourly chapter notes run)
+Chapter: Joshua 17 | Duration: 11 min | Sections: 6 | Cards: 32 | Status: pass
+Next up: Joshua 18
