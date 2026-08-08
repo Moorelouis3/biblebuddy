@@ -1022,3 +1022,6 @@ Next up: Joshua 12
 ## 2026-08-08T00:09:30Z (hourly chapter notes run)
 Chapter: Joshua 12 | Duration: 23 min | Sections: 5 | Cards: 35 | Status: pass
 Next up: Joshua 13
+
+## 2026-08-08 (level2 upgrade run)
+Run BLOCKED: could not reach https://life-buddy-production.up.railway.app/api/bible-level2/queue — outbound HTTPS to this host is denied by the agent environment's egress proxy (403 on CONNECT tunnel, confirmed via /root/.ccr/__agentproxy/status: "gateway answered 403 to CONNECT (policy denial or upstream failure)"). Did not touch the queue, did not commit/push, did not call /complete. Needs environment network policy fix (allow life-buddy-production.up.railway.app) before this agent can run.
