@@ -14658,6 +14658,67 @@
           "at": "2026-08-08T16:59:06Z"
         }
       ]
+    },
+    {
+      "book": "Judges",
+      "chapter": 6,
+      "startedAt": "2026-08-08T17:46:00Z",
+      "finishedAt": "2026-08-08T17:57:47Z",
+      "durationMinutes": 11.8,
+      "sections": 8,
+      "cards": 54,
+      "verses": 40,
+      "notes": "Scheduled hourly run, normal forward progress (new chapter, redo backlog empty, Judges 1-5 complete). Gideon's story opens: seven year Midian/Amalek/children-of-the-east camel raider oppression, the unnamed prophet's rebuke, the angel of the LORD finding Gideon threshing wheat in a winepress out of fear, his honest doubt and self assessment as the least in the weakest family in Manasseh, the fire from the rock sign and altar Jehovahshalom, Gideon tearing down his father's altar of Baal by night, Joash's defense turning the mob's logic back on Baal (earning the name Jerubbaal), the muster of four tribes at the trumpet call, and the two part fleece test closing the chapter. Chunked into 8 sections (1-6, 7-10, 11-16, 17-24, 25-27, 28-32, 33-35, 36-40). Density 1.35 cards/verse (40 verses, 54 cards). scripts/check_bible_note_style.py was clean on the first pass, zero problems. Parser check passed exactly via getBibleReaderStudySections('judges', 6) (8/8 sections, 54 cards, 40 verses, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies judges range extended from 1-5 to 1-6, replaceStudySectionsForBookRange('judges', 6, 6, JUDGES_SIX_PERSONAL_SECTIONS) call added directly after the Judges 5 call. Session also recovered 8 unpushed commits (Judges 1-5) sitting on a detached local HEAD from a prior run, fast forwarded local main to match, and confirmed the push was already in sync with origin. Next forward-progress target is Judges 7.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-08T17:46:00Z"
+        },
+        {
+          "name": "recovered detached HEAD, fast forwarded local main to a07d529, confirmed already in sync with origin/main",
+          "at": "2026-08-08T17:46:30Z"
+        },
+        {
+          "name": "target chapter determined: Judges 6 (new chapter, forward progress after Judges 5, redo backlog empty)",
+          "at": "2026-08-08T17:46:45Z"
+        },
+        {
+          "name": "KJV text fetched for Judges 6 (40 verses, GitHub raw JSON mirror)",
+          "at": "2026-08-08T17:47:00Z"
+        },
+        {
+          "name": "style spec and skill read (docs/bible-study-note-style.md, .claude/skills/bible-notes/SKILL.md, reference file lib/genesisThirtyOneSource.ts)",
+          "at": "2026-08-08T17:47:14Z"
+        },
+        {
+          "name": "source file written: lib/judgesSixSource.ts (8 sections, 54 cards)",
+          "at": "2026-08-08T17:53:00Z"
+        },
+        {
+          "name": "style checker clean on first pass (54 cards, 8 sections, zero problems)",
+          "at": "2026-08-08T17:53:30Z"
+        },
+        {
+          "name": "parser check passed on standalone module (8 sections, 54 cards, matches design)",
+          "at": "2026-08-08T17:53:45Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call)",
+          "at": "2026-08-08T17:54:15Z"
+        },
+        {
+          "name": "parser check passed via getBibleReaderStudySections('judges', 6) (8/8 sections, 54 cards, text verbatim)",
+          "at": "2026-08-08T17:55:00Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean with zero errors",
+          "at": "2026-08-08T17:56:34Z"
+        },
+        {
+          "name": "progress files logged: data/bible-notes-progress-log.json and docs/BIBLE_BUDDY_NOTES_PROGRESS.md",
+          "at": "2026-08-08T17:57:47Z"
+        }
+      ]
     }
   ]
 }
