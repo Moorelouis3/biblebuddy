@@ -14719,6 +14719,59 @@
           "at": "2026-08-08T17:57:47Z"
         }
       ]
+    },
+    {
+      "book": "Judges",
+      "chapter": 7,
+      "startedAt": "2026-08-08T18:46:24Z",
+      "finishedAt": "2026-08-08T18:55:20Z",
+      "durationMinutes": 8.9,
+      "sections": 6,
+      "cards": 29,
+      "verses": 25,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog confirmed empty, Judges 1-6 complete), no existing wired-in file for this chapter, clean new-chapter build. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (25 verses). Judges 7 covers Gideon's water test narrowing his army from thirty two thousand down to three hundred men chosen by how they drank, his night reconnaissance into the Midianite camp where he overhears a soldier's barley bread dream interpreted as his own coming victory, the trumpets-pitchers-and-torches ambush plan at the start of the middle watch, the LORD turning Midian's swords against each other in the panic and dark, and the closing pursuit where Ephraim seizes the Jordan fords and captures the two Midianite princes Oreb and Zeeb. Chunked into 6 sections (1-3, 4-8, 9-15, 16-18, 19-22, 23-25). Density 1.16 cards/verse (25 verses, 29 cards). scripts/check_bible_note_style.py found 6 problems on first pass (one banned filler word 'positioned', an inline component list miscounted as bullets on one card, a repeated emoji and wrong final emoji violation on that same card, and one other card ending on a bullet that was not book or arrow), fixed by rewriting the pitchers/torches card as plain prose instead of an inline list and swapping two closing bullet emoji, second run clean. Parser check passed exactly via getBibleReaderStudySections('judges', 7) (6/6 sections, 29 cards, 25 verses, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies judges range extended from chapters 1-6 to 1-7, replaceStudySectionsForBookRange('judges', 7, 7, JUDGES_SEVEN_PERSONAL_SECTIONS) call added directly after the Judges 6 call. Next forward-progress target is Judges 8.",
+      "steps": [
+        {
+          "name": "npm_install_done",
+          "at": "2026-08-08T18:46:24Z"
+        },
+        {
+          "name": "target_chapter_determined_judges_7_new_chapter",
+          "at": "2026-08-08T18:47:10Z"
+        },
+        {
+          "name": "kjv_text_fetched",
+          "at": "2026-08-08T18:47:45Z"
+        },
+        {
+          "name": "style_spec_read",
+          "at": "2026-08-08T18:48:20Z"
+        },
+        {
+          "name": "source_file_written",
+          "at": "2026-08-08T18:52:40Z"
+        },
+        {
+          "name": "style_checker_clean",
+          "at": "2026-08-08T18:53:15Z"
+        },
+        {
+          "name": "wired_into_reader",
+          "at": "2026-08-08T18:53:40Z"
+        },
+        {
+          "name": "parser_check_passed",
+          "at": "2026-08-08T18:53:55Z"
+        },
+        {
+          "name": "tsc_clean",
+          "at": "2026-08-08T18:54:17Z"
+        },
+        {
+          "name": "progress_files_logged",
+          "at": "2026-08-08T18:55:20Z"
+        }
+      ]
     }
   ]
 }
