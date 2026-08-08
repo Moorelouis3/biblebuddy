@@ -14609,6 +14609,55 @@
           "at": "2026-08-08T15:56:00Z"
         }
       ]
+    },
+    {
+      "book": "Judges",
+      "chapter": 5,
+      "startedAt": "2026-08-08T16:47:00Z",
+      "finishedAt": "2026-08-08T16:59:06Z",
+      "durationMinutes": 12.1,
+      "sections": 9,
+      "cards": 63,
+      "verses": 31,
+      "notes": "Scheduled hourly run, normal forward progress (new chapter, redo backlog empty, Judges 1-4 complete). The Song of Deborah and Barak: Deborah and Barak credited together, the theophany recalling Sinai, life under oppression before Deborah (Shamgar's ox goad, unoccupied highways, no shields or spears against Sisera's iron chariots), the tribal roll call praising Ephraim/Benjamin/Machir/Zebulun/Issachar for showing up and naming Reuben/Gilead/Dan/Asher for staying home, Zebulun and Naphtali risking their lives, the battle at Taanach/Megiddo where the stars/storm and the flooding Kishon river defeated Sisera's chariots, the curse on Meroz for not helping, Jael's hospitality and killing of Sisera with a tent peg earning her the highest praise in the song, the dramatic irony of Sisera's mother waiting at the window, and the closing formula of forty years' rest. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (31 verses). Chunked into 9 sections (1-5, 6-8, 9-11, 12-15, 16-18, 19-23, 24-27, 28-30, 31). Density about 2.03 cards/verse (31 verses, 63 cards). `scripts/check_bible_note_style.py` found 4 problems on first pass (two cards ending on a non-\ud83d\udcd6/\u27a1\ufe0f bullet, two bullets over the 8 word limit), fixed, second run clean. Parser check passed exactly via `getBibleReaderStudySections('judges', 5)` (9/9 sections, 63 cards, 31 verses, text rendered verbatim). `npx tsc --noEmit -p .` clean with zero errors. Wired into `lib/bibleReaderStudyNotes.ts`: import added, `preserveExactPhraseBodies` judges range extended from chapters 1-4 to 1-5, `replaceStudySectionsForBookRange(\"judges\", 5, 5, JUDGES_FIVE_PERSONAL_SECTIONS)` call added directly after the Judges 4 call. Next forward-progress target is Judges 6.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-08T16:46:35Z"
+        },
+        {
+          "name": "target chapter determined: Judges 5 (new chapter, forward progress after Judges 4, redo backlog empty)",
+          "at": "2026-08-08T16:47:00Z"
+        },
+        {
+          "name": "KJV text fetched for Judges 5 (31 verses, GitHub raw JSON mirror)",
+          "at": "2026-08-08T16:48:30Z"
+        },
+        {
+          "name": "style spec and skill read (docs/bible-study-note-style.md, .claude/skills/bible-notes/SKILL.md, reference files)",
+          "at": "2026-08-08T16:54:56Z"
+        },
+        {
+          "name": "source file written: lib/judgesFiveSource.ts (9 sections, 63 cards)",
+          "at": "2026-08-08T16:55:30Z"
+        },
+        {
+          "name": "style checker clean (63 cards, 9 sections, fixed 4 flagged issues)",
+          "at": "2026-08-08T16:57:15Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call)",
+          "at": "2026-08-08T16:58:00Z"
+        },
+        {
+          "name": "parser check passed (9 sections, 63 cards, matches design)",
+          "at": "2026-08-08T16:58:45Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-08T16:59:06Z"
+        }
+      ]
     }
   ]
 }

@@ -1092,3 +1092,7 @@ Next up: Judges 4
 ## 2026-08-08T15:54:57Z (hourly chapter notes run)
 Chapter: Judges 4 | Duration: 7 min | Sections: 9 | Cards: 41 | Status: pass
 Next up: Judges 5
+
+## 2026-08-08T16:59:06Z (hourly chapter notes run)
+Chapter: Judges 5 | Duration: 12 min | Sections: 9 | Cards: 63 | Status: pass
+Next up: Judges 6
