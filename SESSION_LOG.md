@@ -1112,3 +1112,7 @@ Next up: Judges 9
 ## 2026-08-08T21:00:02Z (hourly chapter notes run)
 Chapter: Judges 9 | Duration: 13 min | Sections: 13 | Cards: 66 | Status: pass
 Next up: Judges 10
+
+## 2026-08-08T21:56:52Z (hourly chapter notes run)
+Chapter: Judges 10 | Duration: 10 min | Sections: 5 | Cards: 39 | Status: pass
+Next up: Judges 11
