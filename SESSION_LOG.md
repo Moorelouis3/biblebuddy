@@ -1029,3 +1029,7 @@ Run BLOCKED: could not reach https://life-buddy-production.up.railway.app/api/bi
 ## 2026-08-08T00:56:59Z (hourly chapter notes run)
 Chapter: Joshua 13 | Duration: 11 min | Sections: 5 | Cards: 41 | Status: pass
 Next up: Joshua 14
+
+## 2026-08-08T01:55:36Z (hourly chapter notes run)
+Chapter: Joshua 14 | Duration: 10 min | Sections: 4 | Cards: 24 | Status: pass
+Next up: Joshua 15

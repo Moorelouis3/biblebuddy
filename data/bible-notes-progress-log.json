@@ -13774,6 +13774,59 @@
           "at": "2026-08-08T00:56:59Z"
         }
       ]
+    },
+    {
+      "book": "Joshua",
+      "chapter": 14,
+      "startedAt": "2026-08-08T01:46:03Z",
+      "finishedAt": "2026-08-08T01:55:36Z",
+      "durationMinutes": 9.55,
+      "sections": 4,
+      "cards": 24,
+      "verses": 15,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog in data/bible-notes-style-redo-remaining.json is empty; confirmed no existing lib/joshuaFourteenSource.ts before starting). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (15 verses). Joshua 14 opens the land-division narrative proper: Eleazar the priest and Joshua dividing the nine and a half remaining tribal portions by lot, the recap of why Levi received no territory (cities and pastureland instead, pointing forward to Joshua 21), and then Caleb's personal story, an eighty five year old man reminding Joshua of Moses' forty five year old oath from Kadeshbarnea, asking by faith for the Anakim stronghold of Hebron rather than easy ground, and receiving it. Chunked into 4 sections (1-5, 6-9, 10-12, 13-15). Density 1.6 cards/verse (15 verses, 24 cards). scripts/check_bible_note_style.py was clean on the first pass. A manual section 13 eye check caught five card openings leaning on a weak 'This is/This phrase/This closing line' pattern close to the spec's forbidden fillers; rewrote each to open with one of the four approved moves (mostly Move 1, define the word/phrase) before saving. Parser check passed exactly via getBibleReaderStudySections('joshua', 14) (4/4 sections, 24 cards, 15 verses, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors, both before and after the wording fixes. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies joshua range extended from chapters 1-13 to 1-14, replaceStudySectionsForBookRange(\"joshua\", 14, 14, ...) call added directly after the Joshua 13 call. Next forward-progress target is Joshua 15.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-08T01:46:39Z"
+        },
+        {
+          "name": "target chapter determined: Joshua 14 (new chapter, forward progress)",
+          "at": "2026-08-08T01:46:51Z"
+        },
+        {
+          "name": "KJV text fetched (Joshua 14, 15 verses)",
+          "at": "2026-08-08T01:47:30Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-08-08T01:50:54Z"
+        },
+        {
+          "name": "source file lib/joshuaFourteenSource.ts written (4 sections, 24 cards)",
+          "at": "2026-08-08T01:50:54Z"
+        },
+        {
+          "name": "style checker clean on first pass",
+          "at": "2026-08-08T01:50:54Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange)",
+          "at": "2026-08-08T01:53:17Z"
+        },
+        {
+          "name": "parser check passed: 4 sections, 24 cards",
+          "at": "2026-08-08T01:53:17Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean",
+          "at": "2026-08-08T01:53:17Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-08-08T01:55:50Z"
+        }
+      ]
     }
   ]
 }
