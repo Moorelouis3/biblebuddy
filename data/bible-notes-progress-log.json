@@ -4,6 +4,29 @@
   "preExistingGoldStandardNote": "Genesis 1-40 were already at gold-standard quality before this tracked log started on 2026-07-24. Genesis 42 and 43 were also pre-existing but have since been regenerated under this log (2026-08-01) to match the new style spec.",
   "entries": [
     {
+      "book": "Judges",
+      "chapter": 3,
+      "startedAt": "2026-08-08T14:46:19Z",
+      "finishedAt": "2026-08-08T14:53:57Z",
+      "durationMinutes": 8,
+      "sections": 7,
+      "cards": 42,
+      "verses": 31,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog in data/bible-notes-style-redo-remaining.json confirmed empty), no existing dedicated wired-in file for this chapter (only the old batch judgesOneToFifteenPersonalNotes.ts covered it generically), clean new-chapter build per docs/bible-study-note-style.md. Session started with git HEAD detached at the exact commit origin/main was already at (the recurring detached-HEAD environment bug seen in many prior runs), fixed with git checkout -B main origin/main, no work lost. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (31 verses). Judges 3 covers the list of nations left to test Israel (Philistine five lords, Sidonians, Hivites near Lebanon) and the intermarriage that led straight to idolatry, Othniel as Israel's first judge defeating Chushanrishathaim king of Mesopotamia after an eight year bondage, Eglon of Moab's eighteen year oppression built on a three nation coalition and the ironic occupation of cursed Jericho (the city of palm trees), Ehud's lefthanded assassination plot exploiting a guard blind spot and Eglon's own size and pride, the escape covered by the servants' embarrassed delay outside the locked summer parlour, the trumpet call and blocked Jordan fords that turned one assassination into a total military victory and eighty years of rest, and the one verse coda on Shamgar defeating six hundred Philistines with a farming ox goad. Chunked into 7 sections (1-6, 7-11, 12-14, 15-19, 20-23, 24-30, 31) matching the chapter's natural scene breaks across three separate judge accounts. Density about 1.35 cards/verse (31 verses, 42 cards), in the normal recent range. scripts/check_bible_note_style.py found 3 problems on first pass (a banned hedge word 'roughly', two bullets one word over the 8 word limit), fixed, second run clean. A manual section 13 eye check also caught and reworded one opening line sitting too close to the spec's banned 'This describes' phrasing, confirmed no duplicate or near-duplicate opening lines across the section's 42 cards. Parser check passed exactly via getBibleReaderStudySections('judges', 3) (7/7 sections, 42 cards, 31 verses, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies judges range extended from chapters 1-2 to 1-3, replaceStudySectionsForBookRange(\"judges\", 3, 3, JUDGES_THREE_PERSONAL_SECTIONS) call added directly after the Judges 2 call. Next forward-progress target is Judges 4.",
+      "steps": [
+        { "name": "npm install done", "at": "2026-08-08T14:46:19Z" },
+        { "name": "target chapter determined: Judges 3 (normal forward progress, redo backlog empty)", "at": "2026-08-08T14:46:19Z" },
+        { "name": "KJV text fetched (Judges 3, 31 verses, aruljohn mirror)", "at": "2026-08-08T14:46:19Z" },
+        { "name": "style spec (docs/bible-study-note-style.md) read in full", "at": "2026-08-08T14:46:19Z" },
+        { "name": "source file written: lib/judgesThreeSource.ts", "at": "2026-08-08T14:52:05Z" },
+        { "name": "style checker clean (scripts/check_bible_note_style.py, 2 fix passes)", "at": "2026-08-08T14:52:05Z" },
+        { "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, replaceStudySectionsForBookRange)", "at": "2026-08-08T14:52:05Z" },
+        { "name": "parser check passed (7/7 sections, 42 cards, text verbatim)", "at": "2026-08-08T14:52:05Z" },
+        { "name": "tsc --noEmit clean, zero errors", "at": "2026-08-08T14:52:05Z" },
+        { "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)", "at": "2026-08-08T14:54:09Z" }
+      ]
+    },
+    {
       "book": "Numbers",
       "chapter": 17,
       "startedAt": "2026-08-05T05:46:11Z",
