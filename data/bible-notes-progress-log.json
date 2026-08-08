@@ -14829,6 +14829,67 @@
           "at": "2026-08-08T19:59:56Z"
         }
       ]
+    },
+    {
+      "book": "Judges",
+      "chapter": 9,
+      "startedAt": "2026-08-08T20:47:22Z",
+      "finishedAt": "2026-08-08T21:00:02Z",
+      "durationMinutes": 12.7,
+      "sections": 13,
+      "cards": 66,
+      "verses": 57,
+      "notes": "Scheduled hourly run, normal forward progress (new chapter, redo backlog empty, Judges 1-8 complete). Abimelech's murder of his seventy brothers, Jotham's fable of the trees and his curse, God's spirit of discord, Gaal's challenge, the battle at the gate, the destruction of Shechem and its tower, and Abimelech's death at Thebez by a woman's millstone, closing on the narrator naming both as God's repayment of the seventy murders. Style checker found 10 problems (semicolons in titles, a filler word, an over-length bullet, an over-length body line, two wrong closing-bullet emoji), fixed, second run clean. Manual eye check also reworded four lazy 'This shows' lines. Parser + tsc verified exactly.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-08T20:47:22Z"
+        },
+        {
+          "name": "target chapter determined: Judges 9 (new chapter, forward progress after Judges 8, redo backlog empty)",
+          "at": "2026-08-08T20:48:00Z"
+        },
+        {
+          "name": "KJV text fetched for Judges 9 (57 verses, GitHub raw JSON mirror)",
+          "at": "2026-08-08T20:48:30Z"
+        },
+        {
+          "name": "style spec and skill read (docs/bible-study-note-style.md, .claude/skills/bible-notes/SKILL.md, reference file lib/judgesEightSource.ts)",
+          "at": "2026-08-08T20:49:30Z"
+        },
+        {
+          "name": "recovered detached HEAD, checked out and fast forwarded local main to origin/main (7ac21dc), no work lost",
+          "at": "2026-08-08T20:49:00Z"
+        },
+        {
+          "name": "source file written: lib/judgesNineSource.ts (13 sections, 66 cards)",
+          "at": "2026-08-08T20:56:00Z"
+        },
+        {
+          "name": "style checker found 10 problems, fixed, second run clean",
+          "at": "2026-08-08T20:57:30Z"
+        },
+        {
+          "name": "manual section 13 eye check, reworded 4 'This shows' lines",
+          "at": "2026-08-08T20:58:00Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call)",
+          "at": "2026-08-08T20:58:30Z"
+        },
+        {
+          "name": "parser check passed via getBibleReaderStudySections('judges', 9) (13/13 sections, 66 cards, 57 verses, text verbatim)",
+          "at": "2026-08-08T20:59:00Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean with zero errors",
+          "at": "2026-08-08T20:59:40Z"
+        },
+        {
+          "name": "progress files logged: data/bible-notes-progress-log.json and docs/BIBLE_BUDDY_NOTES_PROGRESS.md",
+          "at": "2026-08-08T21:00:02Z"
+        }
+      ]
     }
   ]
 }
