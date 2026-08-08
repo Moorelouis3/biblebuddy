@@ -1076,3 +1076,7 @@ Next up: Judges 1
 
 ## 2026-08-08T12:25:34Z (level2 upgrade run)
 Run BLOCKED (recurring): could not reach https://life-buddy-production.up.railway.app/api/bible-level2/queue — same 403 policy denial on the CONNECT tunnel as the earlier run today (see entry above, ~00:09-00:56Z). This is the second block today with no fix in between. Did not touch the queue, did not commit/push, did not call /complete. Escalated to MARCUS_HANDOFF.md this time since it recurred.
+
+## 2026-08-08T13:02:14Z (hourly chapter notes run)
+Chapter: Judges 1 | Duration: 15 min | Sections: 6 | Cards: 48 | Status: pass
+Next up: Judges 2
