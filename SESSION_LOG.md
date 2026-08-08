@@ -1073,3 +1073,6 @@ Next up: Joshua 24
 ## 2026-08-08T12:10:00Z (hourly chapter notes run)
 Chapter: Joshua 24 | Duration: 24 min | Sections: 12 | Cards: 52 | Status: pass
 Next up: Judges 1
+
+## 2026-08-08T12:25:34Z (level2 upgrade run)
+Run BLOCKED (recurring): could not reach https://life-buddy-production.up.railway.app/api/bible-level2/queue — same 403 policy denial on the CONNECT tunnel as the earlier run today (see entry above, ~00:09-00:56Z). This is the second block today with no fix in between. Did not touch the queue, did not commit/push, did not call /complete. Escalated to MARCUS_HANDOFF.md this time since it recurred.

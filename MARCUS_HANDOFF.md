@@ -26,3 +26,15 @@ regeneration (like the Genesis/Exodus/Numbers/Deuteronomy redo backlog
 already did), or handled some other way? Until that's decided, the routine
 will keep needing this same one-off judgment call every time it reaches a
 chapter in one of these old grouped files.
+
+## Level 2 upgrade agent recurring network block
+The scheduled Level 2 Bible-notes upgrade run (`docs/LEVEL2_UPGRADE_AGENT.md`)
+cannot reach its queue endpoint, `https://life-buddy-production.up.railway.app/api/bible-level2/queue`.
+The agent environment's egress proxy returns 403 on the CONNECT tunnel to
+`life-buddy-production.up.railway.app` — an organization network policy
+denial, not a transient failure. This has now happened on two separate
+scheduled runs today (2026-08-08, roughly 00:09-00:56Z and again 12:25Z)
+with nothing fixed in between. Until `life-buddy-production.up.railway.app`
+is added to the agent environment's egress allowlist, this agent can never
+pull Louis's Level 2 notes or report completion — it will keep blocking on
+every run. Needs an environment/network-policy fix, not a code fix.
