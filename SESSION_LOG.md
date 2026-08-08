@@ -1053,3 +1053,7 @@ Next up: Joshua 19
 ## 2026-08-08T07:00:45Z (hourly chapter notes run)
 Chapter: Joshua 19 | Duration: 14 min | Sections: 7 | Cards: 45 | Status: pass
 Next up: Joshua 20
+
+## 2026-08-08T07:54:22Z (hourly chapter notes run)
+Chapter: Joshua 20 | Duration: 53 min | Sections: 4 | Cards: 21 | Status: pass
+Next up: Joshua 21
