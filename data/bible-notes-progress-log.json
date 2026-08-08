@@ -23,7 +23,9 @@
         { "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, replaceStudySectionsForBookRange)", "at": "2026-08-08T14:52:05Z" },
         { "name": "parser check passed (7/7 sections, 42 cards, text verbatim)", "at": "2026-08-08T14:52:05Z" },
         { "name": "tsc --noEmit clean, zero errors", "at": "2026-08-08T14:52:05Z" },
-        { "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)", "at": "2026-08-08T14:54:09Z" }
+        { "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)", "at": "2026-08-08T14:54:09Z" },
+        { "name": "committed (887be94)", "at": "2026-08-08T14:54:23Z" },
+        { "name": "pushed to origin/main, verified cf03a14..887be94 fast forward", "at": "2026-08-08T14:54:32Z" }
       ]
     },
     {
