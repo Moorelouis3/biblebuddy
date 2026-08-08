@@ -1033,3 +1033,7 @@ Next up: Joshua 14
 ## 2026-08-08T01:55:36Z (hourly chapter notes run)
 Chapter: Joshua 14 | Duration: 10 min | Sections: 4 | Cards: 24 | Status: pass
 Next up: Joshua 15
+
+## 2026-08-08T02:53:47Z (hourly chapter notes run)
+Chapter: Joshua 15 | Duration: 8 min | Sections: 8 | Cards: 48 | Status: pass
+Next up: Joshua 16
