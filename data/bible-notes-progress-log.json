@@ -14426,6 +14426,63 @@
           "at": "2026-08-08T13:02:14Z"
         }
       ]
+    },
+    {
+      "book": "Judges",
+      "chapter": 2,
+      "startedAt": "2026-08-08T13:47:20Z",
+      "finishedAt": "2026-08-08T14:02:30Z",
+      "durationMinutes": 15,
+      "sections": 5,
+      "cards": 31,
+      "verses": 23,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog confirmed empty), no existing wired-in file for this chapter, clean new-chapter build. Session started on a stale local main behind a detached HEAD; git fetch confirmed origin/main already had Judges 1 pushed by the previous run, resolved with git merge --ff-only origin/main, no work lost. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (23 verses). Judges 2 is the second, theological introduction to the book: the angel of the LORD's rebuke at Bochim recounting the covenant and naming Israel's failure to break down Canaanite altars, the resumptive repetition of Joshua's death and burial already told at the end of the book of Joshua, the generational hinge where an eyewitness generation that personally saw God's works gives way to one that only heard about them, Israel's turn to Baalim and Ashtaroth directly caused by the unremoved neighboring nations from chapter one, and the naming of the Judges cycle itself (raised up, delivered, drifted back after the judge's death, each generation more corrupt than the last), closing on God's decision to stop driving out the remaining nations so they could serve as an ongoing test of Israel's faithfulness rather than pure punishment. Chunked into 5 sections (1-5, 6-10, 11-15, 16-19, 20-23). Density about 1.35 cards/verse (23 verses, 31 cards), close to Judges 1's actual density, appropriate for a chapter that is more theological reflection than narrative action. scripts/check_bible_note_style.py was clean on the first pass, 31 cards, zero problems. Parser check passed exactly via getBibleReaderStudySections('judges', 2) (5/5 sections, 31 cards, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies judges range extended from chapter 1 only to chapters 1-2, replaceStudySectionsForBookRange(\"judges\", 2, 2, ...) call added directly after the Judges 1 call. Next forward-progress target is Judges 3.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-08T13:48:20Z"
+        },
+        {
+          "name": "target chapter determined: Judges 2 (redo backlog empty, normal forward progress)",
+          "at": "2026-08-08T13:48:42Z"
+        },
+        {
+          "name": "git stale local main recovered (fetch confirmed match with origin/main, merge --ff-only)",
+          "at": "2026-08-08T13:48:45Z"
+        },
+        {
+          "name": "KJV text fetched (Judges 2, 23 verses)",
+          "at": "2026-08-08T13:48:55Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md, plus reference implementations lib/judgesOneSource.ts and lib/genesisThirtyOneSource.ts)",
+          "at": "2026-08-08T13:50:00Z"
+        },
+        {
+          "name": "source file written (lib/judgesTwoSource.ts, 5 sections, 31 cards)",
+          "at": "2026-08-08T13:57:00Z"
+        },
+        {
+          "name": "style checker clean on first pass (31 cards, 0 problems)",
+          "at": "2026-08-08T13:57:20Z"
+        },
+        {
+          "name": "wired into reader (import, preserveExactPhraseBodies range extended to 1-2, replaceStudySectionsForBookRange)",
+          "at": "2026-08-08T13:58:00Z"
+        },
+        {
+          "name": "parser check passed via getBibleReaderStudySections (5/5 sections, 31 cards, 23 verses verbatim)",
+          "at": "2026-08-08T13:58:30Z"
+        },
+        {
+          "name": "tsc clean",
+          "at": "2026-08-08T14:01:28Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-08-08T14:02:30Z"
+        }
+      ]
     }
   ]
 }
