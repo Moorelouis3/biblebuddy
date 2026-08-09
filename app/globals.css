@@ -4567,6 +4567,14 @@ html[data-bb-skin]:not([data-bb-skin="none"]) .bb-public-landing .bb-hero-gold,
   color: #7BAFD4 !important;
 }
 
+/* Brand-blue accent text on the public landing page. Must out-specify the
+   catch-all above that forces #111827 on every span/heading. */
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-public-landing .bb-brand-blue,
+.bb-public-landing .bb-brand-blue {
+  color: #0f63ff !important;
+  -webkit-text-fill-color: #0f63ff !important;
+}
+
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-force-black,
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-force-black *,
 .bb-force-black,

@@ -1911,13 +1911,13 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
         </header>
 
         <section className="pt-8 text-center sm:pt-12">
-          <h1 className="bb-serif mx-auto max-w-[640px] text-[clamp(2.1rem,5.4vw,3.4rem)] font-black leading-[1.04] tracking-[-0.03em]">
-            Finally <span className="text-[#0f63ff]">Understand God&apos;s Word.</span>
+          <h1 className="mx-auto max-w-[640px] text-[clamp(2.1rem,5.4vw,3.4rem)] font-black leading-[1.08] tracking-[-0.02em]">
+            Finally <span className="bb-brand-blue">Understand God&apos;s Word.</span>
           </h1>
           <p className="mx-auto mt-5 max-w-[560px] text-[1.02rem] font-black leading-7 sm:text-lg">
             Most Bible apps help you read the Bible.
             <br />
-            Bible Buddy helps you <span className="text-[#0f63ff] underline decoration-2 underline-offset-4">understand</span> it.
+            Bible Buddy helps you <span className="bb-brand-blue underline decoration-2 underline-offset-4">understand</span> it.
           </p>
           <p className="mx-auto mt-4 max-w-[520px] text-[0.98rem] font-semibold leading-7 text-[#40516b]">
             Verse-by-verse explanations in plain English, guided audio, and simple study tools to help you truly understand Scripture.
@@ -1957,7 +1957,7 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
             <Link
               href="/signup"
               onClick={() => onStartJourney("video_hero")}
-              className="inline-flex items-center justify-center gap-3 rounded-2xl bg-[#0f63ff] px-8 py-4 text-base font-black text-white shadow-[0_24px_60px_rgba(15,99,255,0.25)] transition hover:-translate-y-0.5"
+              className="bb-public-button inline-flex items-center justify-center gap-3 rounded-2xl bg-[#0f63ff] px-8 py-4 text-base font-black text-white shadow-[0_24px_60px_rgba(15,99,255,0.25)] transition hover:-translate-y-0.5"
             >
               Create Your Free Account
               <LandingLineIcon name="arrow" light />
@@ -1999,7 +1999,7 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
             <Link
               href="/signup"
               onClick={() => onStartJourney("bottom_cta")}
-              className="inline-flex items-center justify-center gap-3 rounded-2xl bg-[#0f63ff] px-8 py-4 text-base font-black text-white shadow-[0_24px_60px_rgba(15,99,255,0.25)] transition hover:-translate-y-0.5"
+              className="bb-public-button inline-flex items-center justify-center gap-3 rounded-2xl bg-[#0f63ff] px-8 py-4 text-base font-black text-white shadow-[0_24px_60px_rgba(15,99,255,0.25)] transition hover:-translate-y-0.5"
             >
               Create Your Free Account
               <LandingLineIcon name="arrow" light />
