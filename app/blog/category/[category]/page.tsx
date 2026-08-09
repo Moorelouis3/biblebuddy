@@ -29,6 +29,12 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
     alternates: {
       canonical: `/blog/category/${category.slug}`,
     },
+    openGraph: {
+      title: `${category.name} | Bible Buddy Blog`,
+      description: category.description,
+      url: `/blog/category/${category.slug}`,
+      type: "website",
+    },
   };
 }
 

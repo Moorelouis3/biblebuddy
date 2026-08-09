@@ -1,5 +1,8 @@
 import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
 import Image from "next/image";
+import { buildBlogArticleMetadata } from "@/lib/blogContent";
+
+export const metadata = buildBlogArticleMetadata("moses");
 
 export default function MosesCharacterStudyPage() {
   return (

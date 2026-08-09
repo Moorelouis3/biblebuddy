@@ -1,15 +1,10 @@
-import type { Metadata } from "next";
 import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
 import Image from "next/image";
+import { buildBlogArticleMetadata } from "@/lib/blogContent";
 
-export const metadata: Metadata = {
-  title: "Who Is Jezebel in the Bible? The Queen Who Led Israel Into Idolatry | Bible Buddy",
-  description:
-    "Jezebel was the queen who led Israel into Baal worship, hunted God's prophets, and defied God to the end. Her story is a warning about influence and compromise.",
-  alternates: {
-    canonical: "/blog/who-is-jezebel",
-  },
-};
+export const metadata = buildBlogArticleMetadata("who-is-jezebel", {
+  title: "Who Is Jezebel in the Bible? The Queen Who Led Israel Into Idolatry",
+});
 
 function VerseQuote({ text, reference }: { text: string; reference: string }) {
   return (

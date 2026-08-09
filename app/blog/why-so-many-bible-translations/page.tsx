@@ -1,5 +1,8 @@
 import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
 import Image from "next/image";
+import { buildBlogArticleMetadata } from "@/lib/blogContent";
+
+export const metadata = buildBlogArticleMetadata("why-so-many-bible-translations");
 
 export default function WhySoManyBibleTranslationsPage() {
   return (

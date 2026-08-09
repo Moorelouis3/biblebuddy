@@ -1,5 +1,8 @@
 import Image from "next/image";
 import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
+import { buildBlogArticleMetadata } from "@/lib/blogContent";
+
+export const metadata = buildBlogArticleMetadata("what-is-hell");
 
 export default function WhatIsHell() {
   return (

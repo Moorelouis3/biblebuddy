@@ -1,5 +1,8 @@
 import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
 import Image from "next/image";
+import { buildBlogArticleMetadata } from "@/lib/blogContent";
+
+export const metadata = buildBlogArticleMetadata("what-is-the-bible");
 
 export default function WhatIsTheBiblePage() {
   return (

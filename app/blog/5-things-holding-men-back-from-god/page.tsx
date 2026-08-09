@@ -1,5 +1,8 @@
 import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
 import Image from "next/image";
+import { buildBlogArticleMetadata } from "@/lib/blogContent";
+
+export const metadata = buildBlogArticleMetadata("5-things-holding-men-back-from-god");
 
 export default function FiveThingsHoldingMenBackFromGodPage() {
   return (

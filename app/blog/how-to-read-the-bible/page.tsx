@@ -1,5 +1,8 @@
 import Image from "next/image";
 import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
+import { buildBlogArticleMetadata } from "@/lib/blogContent";
+
+export const metadata = buildBlogArticleMetadata("how-to-read-the-bible");
 
 export default function HowToReadTheBible() {
   return (

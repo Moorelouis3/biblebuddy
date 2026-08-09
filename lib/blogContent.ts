@@ -75,7 +75,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     slug: "who-is-jezebel",
     title: "Who Is Jezebel? The Queen Who Led Israel Into Idol Worship",
     description:
-      "Jezebel was the queen who led Israel into Baal worship, hunted God's prophets, and defied God to the end. Her story is a warning about influence and compromise.",
+      "Jezebel was the queen who led Israel into Baal worship, hunted God's prophets, and defied God to the end. A warning about influence and compromise.",
     category: "Character Studies",
     categorySlug: "character-studies",
     canonicalPath: "/blog/who-is-jezebel",
@@ -91,7 +91,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     slug: "what-does-the-bible-say-about-anxiety",
     title: "What Does the Bible Say About Anxiety?",
     description:
-      "What the Bible actually says about anxiety and worry: what Jesus taught, God's alternative to anxious thoughts, and practical ways to fight anxiety with Scripture.",
+      "What the Bible says about anxiety: what Jesus taught about worry, the top anxiety verses, and honest answers to the questions Christians actually ask.",
     category: "Christian Foundations",
     categorySlug: "christian-foundations",
     canonicalPath: "/blog/what-does-the-bible-say-about-anxiety",
@@ -297,6 +297,42 @@ export const BLOG_ARTICLES: BlogArticle[] = [
 
 export function getBlogArticle(slug: string) {
   return BLOG_ARTICLES.find((article) => article.slug === slug) || null;
+}
+
+// Single source of truth for per-post SEO tags. Every /blog/<slug> page
+// exports `metadata = buildBlogArticleMetadata("<slug>")` so titles,
+// descriptions, canonicals, and share cards can never drift back to the
+// generic site-wide defaults. Overrides are for pages whose on-page title
+// is intentionally richer than the listing title.
+export function buildBlogArticleMetadata(
+  slug: string,
+  overrides?: { title?: string; description?: string },
+) {
+  const article = getBlogArticle(slug);
+  if (!article) return { title: "Blog Article | Bible Buddy" };
+
+  const title = overrides?.title ?? article.title;
+  const description = overrides?.description ?? article.description;
+  const url = `/blog/${article.slug}`;
+
+  return {
+    title: `${title} | Bible Buddy`,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      title,
+      description,
+      url,
+      type: "article" as const,
+      images: [{ url: article.image, alt: title }],
+    },
+    twitter: {
+      card: "summary_large_image" as const,
+      title,
+      description,
+      images: [article.image],
+    },
+  };
 }
 
 export function getBlogCategory(slug: string) {

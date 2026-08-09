@@ -2,6 +2,9 @@
 import React from "react";
 import Image from "next/image";
 import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
+import { buildBlogArticleMetadata } from "@/lib/blogContent";
+
+export const metadata = buildBlogArticleMetadata("why-bible-study-is-hard");
 
 
 export default function WhyBibleStudyIsHardPage() {

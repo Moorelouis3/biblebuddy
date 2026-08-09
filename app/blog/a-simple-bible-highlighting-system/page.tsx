@@ -1,6 +1,9 @@
 import React from "react";
 import Image from "next/image";
 import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
+import { buildBlogArticleMetadata } from "@/lib/blogContent";
+
+export const metadata = buildBlogArticleMetadata("a-simple-bible-highlighting-system");
 
 export default function Page() {
   return (

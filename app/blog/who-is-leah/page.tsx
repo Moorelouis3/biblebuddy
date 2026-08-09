@@ -1,15 +1,10 @@
-import type { Metadata } from "next";
 import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
 import Image from "next/image";
+import { buildBlogArticleMetadata } from "@/lib/blogContent";
 
-export const metadata: Metadata = {
-  title: "Who Is Leah in the Bible? The Wife Her Husband Didn't Want | Bible Buddy",
-  description:
-    "Leah was the unloved wife of Jacob - but God saw her. Her story in Genesis 29 is for everyone who has ever felt overlooked, second-best, or unwanted.",
-  alternates: {
-    canonical: "/blog/who-is-leah",
-  },
-};
+export const metadata = buildBlogArticleMetadata("who-is-leah", {
+  title: "Who Is Leah in the Bible? The Wife Her Husband Didn't Want",
+});
 
 function VerseQuote({ text, reference }: { text: string; reference: string }) {
   return (

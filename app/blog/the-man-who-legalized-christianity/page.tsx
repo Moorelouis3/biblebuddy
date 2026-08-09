@@ -1,5 +1,8 @@
 import Image from "next/image";
 import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
+import { buildBlogArticleMetadata } from "@/lib/blogContent";
+
+export const metadata = buildBlogArticleMetadata("the-man-who-legalized-christianity");
 
 export default function TheManWhoLegalizedChristianity() {
   return (

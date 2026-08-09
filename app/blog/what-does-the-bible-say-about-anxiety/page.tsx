@@ -1,16 +1,11 @@
-import type { Metadata } from "next";
 import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
 import Image from "next/image";
 import Link from "next/link";
+import { buildBlogArticleMetadata } from "@/lib/blogContent";
 
-export const metadata: Metadata = {
-  title: "What Does the Bible Say About Anxiety? A Complete Guide for Christians | Bible Buddy",
-  description:
-    "What the Bible says about anxiety: what Jesus taught about worry, the top 5 anxiety verses, and honest answers to the questions Christians actually ask.",
-  alternates: {
-    canonical: "/blog/what-does-the-bible-say-about-anxiety",
-  },
-};
+export const metadata = buildBlogArticleMetadata("what-does-the-bible-say-about-anxiety", {
+  title: "What Does the Bible Say About Anxiety? A Complete Guide for Christians",
+});
 
 function VerseQuote({ text, reference }: { text: string; reference: string }) {
   return (
