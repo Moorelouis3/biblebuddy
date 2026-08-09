@@ -1159,3 +1159,7 @@ Next up: Judges 19
 ## 2026-08-09T07:02:40Z (hourly chapter notes run)
 Chapter: Judges 19 | Duration: 15 min | Sections: 6 | Cards: 55 | Status: pass
 Next up: Judges 20
+
+## 2026-08-09T08:00:00Z (hourly chapter notes run)
+Chapter: Judges 20 | Duration: 14 min | Sections: 9 | Cards: 47 | Status: pass
+Next up: Judges 21
