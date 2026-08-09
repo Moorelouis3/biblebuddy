@@ -1916,7 +1916,7 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
         <section className="mt-10 text-center">
           <h2 className="text-xl font-black sm:text-2xl">Ready to start understanding the Bible?</h2>
           <p className="mt-2 text-sm font-semibold text-[#40516b] sm:text-base">
-            Join Christians who are growing in their faith every day.
+            Join over 5,000 Christians who are growing in their faith every day.
           </p>
           <div className="mt-5">
             <Link
