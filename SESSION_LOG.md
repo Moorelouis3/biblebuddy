@@ -1124,3 +1124,10 @@ Next up: Judges 12
 ## 2026-08-08T23:54:36Z (hourly chapter notes run)
 Chapter: Judges 12 | Duration: 8 min | Sections: 6 | Cards: 24 | Status: pass
 Next up: Judges 13
+
+## 2026-08-09T00:24Z (level2 upgrade run)
+Status: BLOCKED — network egress policy denies this session access to
+life-buddy-production.up.railway.app (403 from proxy / EGRESS_BLOCKED via
+WebFetch). Could not reach the queue endpoint at all, so no chapter could
+be checked or shipped. No files changed. Needs Louis or an admin to allow
+this host for the environment.
