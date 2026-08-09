@@ -2337,7 +2337,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   // Treat iframe-embedded pages the same as bare pages (no shell/nav)
   const isPublicProfilePage = Boolean(pathname?.startsWith("/profile/"));
-  const isBarePage = HIDDEN_ROUTES.includes(pathname ?? "/") || isEmbedded || isPublicProfilePage;
+  // Blog pages carry their own landing-style top menu (BlogTopNav), so the
+  // app shell header stays out of the way there.
+  const isBlogPage = Boolean(pathname === "/blog" || pathname?.startsWith("/blog/"));
+  const isBarePage = HIDDEN_ROUTES.includes(pathname ?? "/") || isEmbedded || isPublicProfilePage || isBlogPage;
 
   useEffect(() => {
     function handleDashboardStoreState(event: Event) {
