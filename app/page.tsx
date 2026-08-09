@@ -1931,7 +1931,7 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
               preload="metadata"
               playsInline
               src="/landing-video.mp4"
-              poster="/landing-video-poster.jpg"
+              poster="/landing-video-poster.jpg?v=2"
               onError={() => setVideoAvailable(false)}
               onPlay={() => trackVideoMilestone("video_played", "video-play", {})}
               onTimeUpdate={handleVideoTimeUpdate}
@@ -1967,7 +1967,7 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
         </section>
 
         <section id="faq" className="mt-14">
-          <h2 className="text-xl font-black sm:text-2xl">Frequently Asked Questions</h2>
+          <h2 className="text-center text-xl font-black sm:text-2xl">Frequently Asked Questions</h2>
           <div className="mt-4 space-y-3">
             {faqs.map((item) => (
               <details key={item.q} className="group rounded-2xl border border-[#dce7f5] bg-white px-5 py-4 shadow-[0_10px_30px_rgba(7,22,47,0.04)]">
