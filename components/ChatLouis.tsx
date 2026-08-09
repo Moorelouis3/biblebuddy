@@ -2563,7 +2563,7 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
 
   function formatInboxMessage(row: LouisInboxMessageRow) {
     const actionLine =
-      row.action_label && row.action_href ? `\n\n?? ${row.action_label}: ${row.action_href}` : "";
+      row.action_label && row.action_href ? `\n\n👉 ${row.action_label}: ${row.action_href}` : "";
     const titleLine = row.title ? `${row.title}\n\n` : "";
     return `${titleLine}${row.content}${actionLine}`.trim();
   }
@@ -2904,7 +2904,7 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
     if (pathname === "/dashboard" && (!hasLouisHistory || louisJourneyStage === "new_user") && !primaryDevotional) {
       setDailyFlowType("new_user");
       return [
-        `Hey ${name} ??`,
+        `Hey ${name} 👋`,
         "Welcome to Bible Buddy",
         "Today is your first day",
         "Let’s start your streak",
@@ -2932,7 +2932,7 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
     if ((daysSinceLastActive ?? 0) >= 3) {
       setDailyFlowType("fell_off");
       return [
-        `Welcome back ${name} ??`,
+        `Welcome back ${name} 👋`,
         `You have not been here in ${daysSinceLastActive} days`,
         "But that is okay",
         "Today is a new start",
@@ -2946,7 +2946,7 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
 
     setDailyFlowType("active");
     return [
-      `Good to see you ${name} ??`,
+      `Good to see you ${name} 😊`,
       getDailyStreakMotivation(currentStreak),
       ...target.summaryLines,
       target.whyLine,

@@ -7633,19 +7633,19 @@ export default function DashboardJourneyExperience({
   function renderBibleYearDeepNotesUpgradeModal() {
     const upgradeFeatures = [
       {
-        icon: "??",
+        icon: "🎧",
         iconClass: "bg-[#ddecff] text-[#2f6bcf]",
         title: "Listen with the app closed",
         description: "Keep your daily audio lesson playing while your phone is locked or while you use other apps.",
       },
       {
-        icon: "??",
+        icon: "📖",
         iconClass: "bg-[#eadcff] text-[#6d3fd1]",
         title: "Full Study Notes",
         description: "Unlock every section, key phrase, and explanation for each day.",
       },
       {
-        icon: "??",
+        icon: "🎮",
         iconClass: "bg-[#fff1cf] text-[#a66b00]",
         title: "All Trivia Games",
         description: "Play the full daily trivia experience without getting stopped by the free plan.",
@@ -8616,29 +8616,29 @@ export default function DashboardJourneyExperience({
 
     const dayFourDisplay: Record<string, { heading: string; teachingTitle: string; list?: string[] }> = {
       "Genesis 8:1-3": {
-        heading: "?? The Waters Recede",
-        teachingTitle: "?? God Turns Toward Rescue",
-        list: ["?? God remembered Noah", "?? wind passes over the earth", "?? waters begin to subside", "? 150 days reach their turning point", "?? restoration begins"],
+        heading: "🌊 The Waters Recede",
+        teachingTitle: "📌 God Turns Toward Rescue",
+        list: ["📌 God remembered Noah", "💨 wind passes over the earth", "🌊 waters begin to subside", "⏳ 150 days reach their turning point", "🌱 restoration begins"],
       },
       "Genesis 8:4-5": {
-        heading: "??? The Ark Rests On Ararat",
-        teachingTitle: "?? The Drifting Finally Stops",
-        list: ["?? the ark comes to rest", "?? the timing is exact", "??? Ararat is a mountain region", "?? the waters keep lowering", "? Noah still must wait"],
+        heading: "🏔️ The Ark Rests On Ararat",
+        teachingTitle: "📌 The Drifting Finally Stops",
+        list: ["⚓ the ark comes to rest", "📅 the timing is exact", "🏔️ Ararat is a mountain region", "🌊 the waters keep lowering", "⏳ Noah still must wait"],
       },
       "Genesis 8:6-14": {
-        heading: "??? The Raven And The Dove",
-        teachingTitle: "?? Small Signs Of Life Return",
-        list: ["?? Noah opens the window", "?? the raven goes out", "??? the dove tests the earth", "?? the olive leaf appears", "? Noah keeps waiting"],
+        heading: "🕊️ The Raven And The Dove",
+        teachingTitle: "📌 Small Signs Of Life Return",
+        list: ["🪟 Noah opens the window", "🐦 the raven goes out", "🕊️ the dove tests the earth", "🌿 the olive leaf appears", "⏳ Noah keeps waiting"],
       },
       "Genesis 8:15-19": {
-        heading: "?? Leaving The Ark",
-        teachingTitle: "?? God Finally Says Go Forth",
-        list: ["??? God speaks again", "?? Noah is told to leave", "?? Noah's family steps out", "?? the creatures are released", "?? life begins again"],
+        heading: "🚶 Leaving The Ark",
+        teachingTitle: "📌 God Finally Says Go Forth",
+        list: ["🗣️ God speaks again", "🚶 Noah is told to leave", "👨‍👩‍👦 Noah's family steps out", "🐾 the creatures are released", "🌱 life begins again"],
       },
       "Genesis 8:20-22": {
-        heading: "?? Noah's Sacrifice",
-        teachingTitle: "?? Noah Worships Before Anything Else",
-        list: ["?? Noah builds an altar", "?? clean animals are offered", "?? burnt offerings rise to God", "?? seedtime and harvest continue", "?? day and night shall not cease"],
+        heading: "🔥 Noah's Sacrifice",
+        teachingTitle: "📌 Noah Worships Before Anything Else",
+        list: ["🛐 Noah builds an altar", "🐑 clean animals are offered", "🔥 burnt offerings rise to God", "🌾 seedtime and harvest continue", "🌗 day and night shall not cease"],
       },
       "Genesis 9:1-7": {
         heading: "🙌 God Blesses Noah",
@@ -11228,7 +11228,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   </p>
                 </div>
                 <div className="grid h-16 w-16 shrink-0 place-items-center rounded-full bg-[var(--bb-accent,#2f7fe8)] text-2xl text-[var(--bb-button-text,#ffffff)] shadow-[0_0_24px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_48%,transparent)]" aria-hidden="true">
-                  {triviaCardComplete ? "?" : "??"}
+                  {triviaCardComplete ? "✅" : "🎯"}
                 </div>
               </div>
               <div className="mt-4 grid gap-2">
@@ -14603,7 +14603,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     const dayFourVerseBreakdownNotes: Record<string, VerseBreakdownNote> = {
       "Genesis 8:1-3": {
         title: "The Waters Recede",
-        icon: "??",
+        icon: "🌊",
         paragraphs: [
           "God remembered Noah, which means He turned toward Noah with faithful action.",
           "The wind passes over the earth and the waters begin to subside.",
@@ -14612,7 +14612,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       },
       "Genesis 8:4-5": {
         title: "The Ark Rests On Ararat",
-        icon: "???",
+        icon: "🏔️",
         paragraphs: [
           "The ark finally comes to rest after months of drifting.",
           "Moses records the exact timing to show God's precise control over the flood.",
@@ -14621,7 +14621,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       },
       "Genesis 8:6-14": {
         title: "The Raven And The Dove",
-        icon: "???",
+        icon: "🕊️",
         paragraphs: [
           "Noah sends out the raven and the dove to test whether the earth is ready again.",
           "The olive leaf becomes the first clear sign that vegetation and life are returning.",
@@ -14630,7 +14630,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       },
       "Genesis 8:15-19": {
         title: "Leaving The Ark",
-        icon: "??",
+        icon: "🚶",
         paragraphs: [
           "God finally speaks and tells Noah it is time to leave the ark.",
           "Noah, his family, and every living creature step into a renewed world together.",
@@ -14639,7 +14639,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       },
       "Genesis 8:20-22": {
         title: "Noah's Sacrifice",
-        icon: "??",
+        icon: "🔥",
         paragraphs: [
           "Noah's first recorded action after leaving the ark is worship.",
           "He builds an altar and offers burnt offerings from the clean animals and birds.",
