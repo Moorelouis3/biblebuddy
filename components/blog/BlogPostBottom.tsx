@@ -42,31 +42,17 @@ export default function BlogPostBottom({ articleSlug, postSlug }: BlogPostBottom
   const endCtaHref = `/signup?src=blog&promo=end-cta&post=${encodeURIComponent(postSlug)}`;
 
   return (
-    <>
-      <section className="my-8 rounded-[28px] border border-[#b7ccff] bg-[#eaf2ff] p-6 text-center shadow-[0_18px_48px_rgba(0,86,253,0.10)]">
-        <p className="text-xs font-black uppercase tracking-[0.2em] text-[#0056fd]">
-          Keep studying with Bible Buddy
-        </p>
-        <h2 className="mt-3 text-2xl font-black leading-tight text-slate-950">
-          Keep learning after this article.
-        </h2>
-        <p className="mx-auto mt-3 max-w-xl text-sm font-semibold leading-6 text-slate-600">
-          Start Bible in One Year, listen to guided lessons, and use study notes to understand Scripture one day at a time.
-        </p>
-      </section>
-
-      <div className="mt-10 text-center">
-        <Link
-          href={endCtaHref}
-          onClick={() =>
-            trackBlogPromoEvent({ eventType: "click", promo: "end-cta", postSlug, slotIndex: 99 })
-          }
-          className="inline-flex w-full items-center justify-center rounded-2xl bg-[#0056fd] px-8 py-4 text-base font-black uppercase tracking-wide text-white shadow-[0_24px_60px_rgba(0,86,253,0.25)] transition hover:-translate-y-0.5 sm:w-auto sm:min-w-[340px]"
-        >
-          Create Your Free Account
-        </Link>
-        <p className="mt-3 text-sm font-bold text-[#40516b]">It&apos;s free. It&apos;s easy. It&apos;s for you. 🤍</p>
-      </div>
-    </>
+    <div className="mt-10 text-center">
+      <Link
+        href={endCtaHref}
+        onClick={() =>
+          trackBlogPromoEvent({ eventType: "click", promo: "end-cta", postSlug, slotIndex: 99 })
+        }
+        className="inline-flex w-full items-center justify-center rounded-2xl bg-[#0056fd] px-8 py-4 text-base font-black uppercase tracking-wide text-white shadow-[0_24px_60px_rgba(0,86,253,0.25)] transition hover:-translate-y-0.5 sm:w-auto sm:min-w-[340px]"
+      >
+        Create Your Free Account
+      </Link>
+      <p className="mt-3 text-sm font-bold text-[#40516b]">It&apos;s free. It&apos;s easy. It&apos;s for you. 🤍</p>
+    </div>
   );
 }

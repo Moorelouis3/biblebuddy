@@ -54,7 +54,7 @@ Each verse gets its own H3. Quote the verse, then break it down in 3 to 5 senten
 Recap the 2 or 3 most important takeaways. End with hope and one clear next action.
 
 ### 9. Join Bible Buddy CTA
-Standard block at the end of every post. Invite the reader to join Bible Buddy to keep growing: devotionals, the community, the reading streak. One button or link to sign up. Warm, direct, no pressure.
+Standard block at the end of every post. Invite the reader to join Bible Buddy to keep growing: devotionals, the community, the reading streak. Warm, direct, no pressure. The section's text ends with "There is room for you." followed by "Sign up by clicking the button below." — do NOT put a signup button or any closing line inside the article itself. The page template renders the single Create Your Free Account button (with "It's free. It's easy. It's for you.") as the very last element, and nothing comes after it.
 
 ## SEO checklist for every post
 

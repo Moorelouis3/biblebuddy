@@ -926,18 +926,8 @@ export default function WhatDoesTheBibleSayAboutAnxietyPage() {
               Thousands of Christians are already reading this way, one day at a time. There is room
               for you.
             </p>
+            <p>Sign up by clicking the button below. 👇</p>
           </div>
-          <div className="mt-7">
-            <Link
-              href="/signup"
-              className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#0056fd] px-8 py-4 text-base font-black text-white shadow-[0_24px_60px_rgba(0,86,253,0.25)] transition hover:-translate-y-0.5"
-            >
-              👉 Create your free account
-            </Link>
-          </div>
-          <p className="mt-6 text-lg leading-8 text-slate-700">
-            May the peace that passeth all understanding guard your heart and mind tonight. 🙏
-          </p>
         </section>
     </BlogPostShell>
   );
