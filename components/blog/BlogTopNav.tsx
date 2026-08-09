@@ -16,10 +16,10 @@ export default function BlogTopNav() {
         />
         <span className="text-lg font-black tracking-tight">Bible Buddy</span>
       </Link>
-      <nav className="flex items-center gap-4 text-sm font-black text-[#07162f] sm:gap-7">
+      <nav className="flex items-center gap-4 whitespace-nowrap text-sm font-black text-[#07162f] sm:gap-7">
         <a href="/#about" className="transition hover:text-[#0056fd]">About</a>
         <Link href="/blog" className="transition hover:text-[#0056fd]">Blog</Link>
-        <Link href="/signup" className="transition hover:text-[#0056fd]">Sign Up</Link>
+        <Link href="/signup" className="transition hover:text-[#0056fd]">Sign&nbsp;Up</Link>
         <Link href="/login" className="transition hover:text-[#0056fd]">Login</Link>
       </nav>
     </header>
