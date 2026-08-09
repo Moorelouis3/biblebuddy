@@ -56,6 +56,62 @@ Recap the 2 or 3 most important takeaways. End with hope and one clear next acti
 ### 9. Join Bible Buddy CTA
 Standard block at the end of every post. Invite the reader to join Bible Buddy to keep growing: devotionals, the community, the reading streak. Warm, direct, no pressure. The section's text ends with "There is room for you." followed by "Sign up by clicking the button below." — do NOT put a signup button or any closing line inside the article itself. The page template renders the single Create Your Free Account button (with "It's free. It's easy. It's for you.") as the very last element, and nothing comes after it.
 
+## Character Study Variant
+
+Use this structure instead of the standard one when the post is about a
+person in Scripture (Moses, Leah, Jezebel, Paul) or a person behind a
+holiday (St. Patrick, St. Valentine). A story does not fit the topic
+teaching shape, so the middle sections change. Everything else stays the
+same: the voice rules, the formatting rules, the length rules, and the
+SEO checklist all still apply exactly as written above.
+
+### 1. Title
+SEO friendly, built on how people actually search for the person. Example:
+"Who Was Leah in the Bible? The Story of the Unloved Wife."
+
+### 2. Intro (5 to 6 short paragraphs, 300 to 400 words)
+Same rules as the standard intro, with one difference: meet the reader
+inside a feeling this person's story speaks to, not the person's résumé.
+Leah opens on being overlooked. Jezebel opens on the influence around you.
+The reader should recognize themselves before they meet the character.
+
+### 3. Who They Were (200 to 300 words)
+Short context so a beginner is not lost. When they lived, who they were
+connected to, and exactly where their story is found in Scripture. Plain
+language, no lecture. This section replaces "Why This Matters for Your
+Faith."
+
+### 4. The Story (1,200 to 1,800 words)
+The main body. Break it into 4 to 7 H3 sections that tell the story in
+order. Ground every section in the actual text, not in tradition or
+legend, and say so plainly when a famous detail is not in the Bible. On
+the page, do not label this section "The Story." Give it a natural header
+like "The Life of Moses" or "Leah's Story."
+
+### 5. Lessons From Their Life (400 to 600 words)
+3 to 5 lessons, each its own H3. State the lesson as the takeaway for the
+reader today, then explain it in 2 to 4 short lines tied back to what just
+happened in the story. This section replaces "Practical Tips."
+
+### 6. Key Verses From [Their] Story (500 to 800 words)
+Same rules as the standard verse section: each verse gets its own H3, the
+quote, then 3 to 5 sentences opening it up. Pull verses from their story,
+not generic verses about the theme.
+
+### 7. Frequently Asked Questions (500 to 700 words)
+8 to 10 questions as H3s, phrased exactly how people search for this
+person. Examples: "Was Jezebel a real person?" "Why did God bless Leah?"
+"Did St. Patrick really drive the snakes out of Ireland?" Answer honestly
+in 3 to 5 sentences, including when the honest answer is that the popular
+story is a legend.
+
+### 8. Conclusion (150 to 250 words)
+Same as standard. Recap the 2 or 3 lessons that matter most and end with
+hope and one clear next action.
+
+### 9. Join Bible Buddy CTA
+Same as standard, word for word.
+
 ## SEO checklist for every post
 
 - Main keyword in title, first 100 words, and at least 2 H2 headings.
