@@ -1,10 +1,74 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { ReactNode } from "react";
+import { Children, isValidElement, type ReactNode } from "react";
 import BlogPostingSchema from "@/components/BlogPostingSchema";
 import BlogPostBreaker from "@/components/blog/BlogPostBreaker";
 import BlogPostBottom from "@/components/blog/BlogPostBottom";
+import PromoSlot from "@/components/blog/PromoSlot";
 import { getArticleEngagementKey, getBlogArticle } from "@/lib/blogContent";
+
+// Words inside a rendered node, counting text children and the text prop
+// that VerseQuote-style components take. Used to space promo slots.
+function countWords(node: unknown): number {
+  if (node == null || typeof node === "boolean" || typeof node === "number") return 0;
+  if (typeof node === "string") return node.split(/\s+/).filter((w) => /[A-Za-z]/.test(w)).length;
+  if (Array.isArray(node)) return node.reduce((sum: number, child) => sum + countWords(child), 0);
+  if (isValidElement(node)) {
+    const props = node.props as { children?: ReactNode; text?: unknown };
+    return countWords(props.children) + (typeof props.text === "string" ? countWords(props.text) : 0);
+  }
+  return 0;
+}
+
+function textContent(node: unknown): string {
+  if (node == null || typeof node === "boolean" || typeof node === "number") return "";
+  if (typeof node === "string") return node;
+  if (Array.isArray(node)) return node.map(textContent).join(" ");
+  if (isValidElement(node)) {
+    const props = node.props as { children?: ReactNode };
+    return textContent(props.children);
+  }
+  return "";
+}
+
+// Weave PromoSlots into the article body: one after roughly every 1,000
+// words, plus one right before the FAQ section. Never inserts after the
+// final content block (so nothing stacks against the end CTA), and stops
+// entirely once the FAQ starts.
+function withPromoSlots(children: ReactNode, postSlug: string): ReactNode[] {
+  const nodes = Children.toArray(children);
+  const out: ReactNode[] = [];
+  let wordsSincePromo = 0;
+  let slotIndex = 1; // slot 0 renders right after the share breaker
+  let faqReached = false;
+
+  nodes.forEach((node, i) => {
+    const isFaqSection = !faqReached && /frequently asked questions/i.test(textContent(node));
+
+    if (isFaqSection) {
+      const previous = out[out.length - 1];
+      const previousIsPromo = isValidElement(previous) && previous.type === PromoSlot;
+      if (!previousIsPromo) {
+        out.push(<PromoSlot key="promo-before-faq" postSlug={postSlug} slotIndex={slotIndex++} />);
+      }
+      faqReached = true;
+      out.push(node);
+      return;
+    }
+
+    out.push(node);
+    if (faqReached) return;
+
+    wordsSincePromo += countWords(node);
+    const isLastNode = i === nodes.length - 1;
+    if (wordsSincePromo >= 1000 && !isLastNode) {
+      out.push(<PromoSlot key={`promo-${i}`} postSlug={postSlug} slotIndex={slotIndex++} />);
+      wordsSincePromo = 0;
+    }
+  });
+
+  return out;
+}
 
 type BlogPostShellProps = {
   slug: string;
@@ -60,7 +124,9 @@ export default function BlogPostShell({ slug, title, intro, children }: BlogPost
 
         <BlogPostBreaker articleSlug={engagementKey} path={path} title={article.title} />
 
-        {children}
+        <PromoSlot postSlug={article.slug} slotIndex={0} />
+
+        {withPromoSlots(children, article.slug)}
       </article>
 
       <BlogPostBottom articleSlug={engagementKey} />
