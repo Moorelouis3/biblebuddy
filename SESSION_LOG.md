@@ -1217,3 +1217,7 @@ Next up: 1 Samuel 3
 ## 2026-08-09T16:58:44Z (hourly chapter notes run)
 Chapter: 1 Samuel 3 | Duration: 12 min | Sections: 5 | Cards: 31 | Status: pass
 Next up: 1 Samuel 4
+
+## 2026-08-09T17:57:30Z (hourly chapter notes run)
+Chapter: 1 Samuel 4 | Duration: 10 min | Sections: 5 | Cards: 41 | Status: pass
+Next up: 1 Samuel 5
