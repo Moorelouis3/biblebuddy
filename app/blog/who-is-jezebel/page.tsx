@@ -1,5 +1,6 @@
 import Link from "next/link";
 import BlogPostShell from "@/components/blog/BlogPostShell";
+import BlogVideoEmbed from "@/components/blog/BlogVideoEmbed";
 import { buildBlogArticleMetadata } from "@/lib/blogContent";
 
 export const metadata = buildBlogArticleMetadata("who-is-jezebel", {
@@ -56,6 +57,14 @@ export default function WhoIsJezebelPage() {
         </>
       }
     >
+      <BlogVideoEmbed
+        videoId="0CQsZIW7zNw"
+        title="The Story of Jezebel: The Most Evil Queen In The Bible"
+        description="A short Bible study on Jezebel, the queen who led Israel into Baal worship, hunted God's prophets, and defied God to the end."
+        uploadDate="2026-07-01"
+        caption="Prefer to watch? Here is Jezebel's story in 2 minutes. 🎬"
+      />
+
       <section className="mt-14">
         <h2 className="text-3xl font-black tracking-tight text-slate-950">🕰️ Who Jezebel Was</h2>
         <div className="mt-6 space-y-5 text-lg leading-8 text-slate-700">
