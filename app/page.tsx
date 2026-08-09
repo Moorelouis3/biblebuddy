@@ -1836,226 +1836,155 @@ function LandingThemeStyles() {
 }
 
 function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: string) => void }) {
-  const features = [
+  // The founder video ships separately from this layout (Louis is editing
+  // it) - until /landing-video.mp4 actually exists in public/, the player
+  // would render as a dead black box for real visitors. onError hides the
+  // whole section, so this page is safe to deploy before the video lands.
+  const [videoAvailable, setVideoAvailable] = useState(true);
+  const faqs = [
     {
-      icon: "headphones",
-      title: "Audio Lessons",
-      copy: "Listen while driving, working, walking, or cleaning.",
-      color: "#0f63ff",
-      bg: "#edf4ff",
+      q: "Who is Bible Buddy for?",
+      a: "Everyday Christians who want to actually understand the Bible - not scholars. Whether you've never read it before or you've tried and felt lost, Bible Buddy walks you through Scripture with plain-English explanations.",
     },
     {
-      icon: "book",
-      title: "Understand Scripture",
-      copy: "Simple explanations directly inside every verse.",
-      color: "#16a36b",
-      bg: "#ecfbf3",
+      q: "Is Bible Buddy really free?",
+      a: "Yes. Creating an account is free and you can study every day without paying anything. There's an optional Pro upgrade (one payment, yours for life) that unlocks everything, but you don't need it to start.",
     },
     {
-      icon: "calendar",
-      title: "Stay Consistent",
-      copy: "Follow a daily Bible plan and build your streak.",
-      color: "#d98a00",
-      bg: "#fff6df",
+      q: "What Bible translation do you use?",
+      a: "The King James Version (KJV). The old language is beautiful but can be hard - that's exactly why every chapter comes with study notes that explain difficult words and phrases in plain English.",
     },
     {
-      icon: "check",
-      title: "Finish the Bible",
-      copy: "Finally understand Genesis through Revelation.",
-      color: "#7257f5",
-      bg: "#f2efff",
-    },
-  ];
-
-  const studyFeatureCards = [
-    {
-      icon: "📖",
-      title: "Verse-by-Verse Commentary",
-      copy: "Clear explanations placed directly beside the verses you are reading.",
-      iconBg: "#eef4ff",
+      q: "How are the lessons different?",
+      a: "Most apps give you the text and leave you alone with it. Bible Buddy puts the explanation right inside the reading: verse-by-verse commentary, guided audio you can listen to anywhere, historical context, and quizzes that make it stick.",
     },
     {
-      icon: "🎧",
-      title: "Guided Audio Scripture",
-      copy: "Listen to Scripture with explanations that help the passage make sense.",
-      iconBg: "#eef8ff",
+      q: "Do I need to download anything?",
+      a: "No. Bible Buddy runs in your browser on any phone or computer. You can add it to your home screen in two taps and it works like a native app - iPhone and Android store apps are coming after beta.",
     },
     {
-      icon: "📅",
-      title: "Bible in One Year",
-      copy: "Follow a simple daily plan from Genesis to Revelation.",
-      iconBg: "#f7f1ff",
-    },
-    {
-      icon: "🌱",
-      title: "Daily Devotionals",
-      copy: "Grow through focused devotional plans built around real biblical themes.",
-      iconBg: "#eefbf3",
-    },
-    {
-      icon: "🧠",
-      title: "Bible Trivia",
-      copy: "Test what you learned with hundreds of Bible questions.",
-      iconBg: "#fff6e6",
-    },
-    {
-      icon: "🔍",
-      title: "Difficult Words Explained",
-      copy: "Understand old language, unfamiliar phrases, people, places, and customs.",
-      iconBg: "#f3f6fb",
-    },
-    {
-      icon: "🗺️",
-      title: "Historical Context",
-      copy: "See where events happened, what life was like, and why the details matter.",
-      iconBg: "#eef7f8",
-    },
-    {
-      icon: "🔥",
-      title: "Progress and Streaks",
-      copy: "Track your Bible progress and build a consistent study habit.",
-      iconBg: "#fff1ee",
+      q: "Can beginners use Bible Buddy?",
+      a: "Beginners are exactly who it's built for. Start with the Bible in One Year plan - about 20 minutes a day, read or listen, with every chapter explained as you go.",
     },
   ];
 
   return (
-    <div className="bb-public-landing min-h-screen bg-[#f7fbff] text-[#07162f]">
+    <div className="bb-public-landing min-h-screen bg-white text-[#07162f]">
       <LegalPageThemeReset />
       <LandingThemeStyles />
 
-      <main className="mx-auto max-w-[1400px] px-5 py-3 sm:px-8 lg:px-10">
-        <header className="flex items-center justify-between gap-3 py-1 sm:gap-5 sm:py-2">
+      <main className="mx-auto max-w-[860px] px-5 pb-10 sm:px-8">
+        <header className="flex items-center justify-between gap-3 py-4">
           <BibleBuddyMark />
-          <nav className="hidden items-center gap-8 text-sm font-black text-[#07162f] md:flex">
-            <Link href="/blog" className="transition hover:text-[#0f63ff]">Blog</Link>
+          <nav className="flex items-center gap-5 text-sm font-black text-[#07162f] sm:gap-7">
+            <a href="#about" className="transition hover:text-[#0f63ff]">About</a>
+            <a href="#faq" className="transition hover:text-[#0f63ff]">FAQ</a>
+            <Link href="/login" className="transition hover:text-[#0f63ff]">Login</Link>
           </nav>
-          <div className="flex items-center gap-2 sm:gap-3">
-            <Link href="/blog" className="rounded-xl px-2 py-2 text-sm font-black text-[#07162f] transition hover:bg-white md:hidden">
-              Blog
-            </Link>
-            <Link href="/login" className="rounded-xl px-2 py-2 text-sm font-black text-[#07162f] transition hover:bg-white sm:rounded-2xl sm:px-4 sm:py-3">
-              Login
-            </Link>
-          </div>
         </header>
 
-        <section className="grid items-center gap-2 pb-0 pt-0 lg:grid-cols-[0.78fr_1.22fr] lg:gap-3 lg:pb-0">
-          <div className="mx-auto max-w-[560px] text-center lg:mx-0 lg:text-left">
-            <h1 className="bb-serif text-[clamp(1.55rem,2.45vw,2.75rem)] font-black leading-[0.97] tracking-[-0.03em] text-[#07162f]">
-              Most Bible Apps help you read the Bible.
-              <span className="mt-4 block text-[#0f63ff]">
-                Bible Buddy helps you <span className="italic">understand</span> the Bible.
-              </span>
-            </h1>
-            <p className="mx-auto mt-3 max-w-[540px] text-[0.98rem] font-semibold leading-7 text-[#40516b] lg:mx-0">
-              Stop feeling lost when you read the Bible. Learn with simple explanations, guided audio, and lessons designed for everyday Christians.
-            </p>
-            <div className="mt-3">
-              <Link
-                href="/signup"
-                onClick={() => onStartJourney("minimal_hero")}
-                className="inline-flex w-full items-center justify-center gap-3 rounded-2xl bg-[#0f63ff] px-7 py-4 text-base font-black text-white shadow-[0_24px_60px_rgba(15,99,255,0.25)] transition hover:-translate-y-0.5 sm:w-auto sm:min-w-[310px]"
-              >
-                Create Free Account
-                <LandingLineIcon name="arrow" light />
-              </Link>
-              <div className="mt-3 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm font-bold text-[#627086] lg:justify-start">
-                <span className="inline-flex items-center gap-2"><LandingLineIcon name="check" small color="#16a36b" /> No Credit Card Required</span>
-              </div>
-            </div>
-          </div>
+        <section className="pt-8 text-center sm:pt-12">
+          <h1 className="bb-serif mx-auto max-w-[640px] text-[clamp(2.1rem,5.4vw,3.4rem)] font-black leading-[1.04] tracking-[-0.03em]">
+            Finally <span className="text-[#0f63ff]">Understand God&apos;s Word.</span>
+          </h1>
+          <p className="mx-auto mt-5 max-w-[560px] text-[1.02rem] font-black leading-7 sm:text-lg">
+            Most Bible apps help you read the Bible.
+            <br />
+            Bible Buddy helps you <span className="text-[#0f63ff] underline decoration-2 underline-offset-4">understand</span> it.
+          </p>
+          <p className="mx-auto mt-4 max-w-[520px] text-[0.98rem] font-semibold leading-7 text-[#40516b]">
+            Verse-by-verse explanations in plain English, guided audio, and simple study tools to help you truly understand Scripture.
+          </p>
+        </section>
 
-          <div className="relative mx-auto h-[360px] w-full max-w-[460px] sm:h-[430px] sm:max-w-[560px] lg:h-[620px] lg:max-w-[880px] xl:h-[700px] xl:max-w-[980px]" aria-label="Bible Buddy app preview">
-            <Image
-              src="/newheroimage.png"
-              alt="Bible Buddy app screens"
-              fill
-              priority
-              sizes="(max-width: 640px) 460px, (max-width: 1024px) 560px, (max-width: 1280px) 880px, 980px"
-              className="object-contain"
-            />
+        {videoAvailable && (
+          <section className="mt-8">
+            <video
+              controls
+              preload="metadata"
+              playsInline
+              src="/landing-video.mp4"
+              poster="/landing-video-poster.jpg"
+              onError={() => setVideoAvailable(false)}
+              className="aspect-video w-full rounded-[22px] bg-[#0b1220] shadow-[0_30px_80px_rgba(7,22,47,0.18)]"
+            >
+              Your browser does not support video playback.
+            </video>
+          </section>
+        )}
+
+        <section className="mt-10 text-center">
+          <h2 className="text-xl font-black sm:text-2xl">Ready to start understanding the Bible?</h2>
+          <p className="mt-2 text-sm font-semibold text-[#40516b] sm:text-base">
+            Join Christians who are growing in their faith every day.
+          </p>
+          <div className="mt-5">
+            <Link
+              href="/signup"
+              onClick={() => onStartJourney("video_hero")}
+              className="inline-flex items-center justify-center gap-3 rounded-2xl bg-[#0f63ff] px-8 py-4 text-base font-black text-white shadow-[0_24px_60px_rgba(15,99,255,0.25)] transition hover:-translate-y-0.5"
+            >
+              Create Your Free Account
+              <LandingLineIcon name="arrow" light />
+            </Link>
+            <p className="mt-3 text-xs font-bold text-[#6d7789]">No credit card required.</p>
           </div>
         </section>
 
-        <section className="py-0">
-          <h2 className="mx-auto max-w-3xl text-center text-[clamp(1.9rem,3.2vw,2.8rem)] font-black leading-tight tracking-[-0.02em] text-[#07162f]">
-            Everything you need to understand Scripture.
-          </h2>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {features.map((feature) => (
-              <article key={feature.title} className="rounded-[30px] border border-[#dce7f5] bg-white p-7 text-center shadow-[0_24px_70px_rgba(7,22,47,0.06)]">
-                <div className="mx-auto grid h-16 w-16 place-items-center rounded-full" style={{ backgroundColor: feature.bg }}>
-                  <LandingLineIcon name={feature.icon} color={feature.color} large />
-                </div>
-                <h3 className="mt-6 text-xl font-black text-[#07162f]">{feature.title}</h3>
-                <p className="mx-auto mt-3 max-w-[230px] text-sm font-semibold leading-6 text-[#526075]">{feature.copy}</p>
-              </article>
+        <section id="faq" className="mt-14">
+          <h2 className="text-xl font-black sm:text-2xl">Frequently Asked Questions</h2>
+          <div className="mt-4 space-y-3">
+            {faqs.map((item) => (
+              <details key={item.q} className="group rounded-2xl border border-[#dce7f5] bg-white px-5 py-4 shadow-[0_10px_30px_rgba(7,22,47,0.04)]">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-3 text-[0.95rem] font-black text-[#07162f] [&::-webkit-details-marker]:hidden">
+                  {item.q}
+                  <span className="shrink-0 text-[#6d7789] transition group-open:rotate-180">
+                    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
+                  </span>
+                </summary>
+                <p className="mt-3 text-sm font-semibold leading-6 text-[#40516b]">{item.a}</p>
+              </details>
             ))}
           </div>
         </section>
 
-        <section className="grid items-center gap-1 py-0 sm:gap-2 lg:grid-cols-[0.98fr_1.02fr] lg:gap-3 lg:py-0">
-          <div className="order-2 relative mx-auto h-[320px] w-full max-w-[320px] self-center sm:h-[380px] sm:max-w-[380px] lg:order-1 lg:h-[560px] lg:max-w-[560px] xl:h-[620px] xl:max-w-[620px]">
-            <Image
-              src="/newmiddleimage.png"
-              alt="Bible Buddy study notes preview"
-              fill
-              sizes="(max-width: 640px) 320px, (max-width: 1024px) 380px, (max-width: 1280px) 560px, 620px"
-              className="object-contain"
-            />
-          </div>
-          <div className="order-1 mx-auto flex w-full max-w-[760px] flex-col justify-center lg:order-2 lg:mx-0">
-            <div className="mx-auto max-w-[720px] text-center">
-              <h2 className="text-[clamp(1.8rem,2.6vw,2.75rem)] font-black leading-[1.06] tracking-[-0.03em] text-[#07162f]">
-                Study the Bible without feeling overwhelmed.
-              </h2>
-              <p className="mt-3 text-sm font-semibold leading-7 text-[#526075] sm:text-[1rem]">
-                Everything you need to understand Scripture, stay consistent, and keep growing.
-              </p>
-            </div>
-            <div className="mt-5 grid gap-3 text-left sm:grid-cols-2">
-              {studyFeatureCards.map((item) => (
-                <article
-                  key={item.title}
-                  className="rounded-[22px] border border-[#dce7f5] bg-white p-4 shadow-[0_18px_40px_rgba(7,22,47,0.05)]"
-                >
-                  <div className="flex items-center gap-4">
-                    <div
-                      className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[16px] text-[1.5rem] leading-none shadow-[0_10px_24px_rgba(15,23,42,0.05)]"
-                      style={{ backgroundColor: item.iconBg }}
-                    >
-                      {item.icon}
-                    </div>
-                    <h3 className="text-[0.98rem] font-black leading-snug text-[#07162f] sm:text-[1.02rem]">
-                      {item.title}
-                    </h3>
-                  </div>
-                  <p className="mt-3 pl-16 text-[0.9rem] font-semibold leading-6 text-[#526075]">
-                    {item.copy}
-                  </p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="about" className="mx-auto max-w-3xl py-8 text-center sm:py-10">
+        <section id="about" className="mt-14 rounded-[24px] border border-[#dce7f5] bg-[#f7fbff] p-6 text-center sm:p-8">
           <p className="text-sm font-semibold leading-7 text-[#40516b] sm:text-base">
-            Currently in Beta &bull; Bible Buddy is a free web app built by one person with one mission: helping people understand God&apos;s Word. New features are added every week. iPhone and Android apps are coming after Beta.
+            Bible Buddy is currently in beta &bull; a free web app built by one person with one mission: helping people understand God&apos;s Word. New features are added every week. iPhone and Android apps are coming after beta.
           </p>
-          <p className="mt-3 text-xs font-semibold leading-6 text-[#6d7789] sm:text-sm">
-            No download required. Create your free account and start studying today.
-          </p>
+          <p className="mt-3 text-sm font-black text-[#07162f]">&mdash; Louis, founder of Bible Buddy</p>
         </section>
 
-        <footer className="border-t border-[#dce7f5] py-8">
-          <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+        <section className="mt-14 text-center">
+          <h2 className="text-2xl font-black sm:text-3xl">Ready to Understand God&apos;s Word?</h2>
+          <p className="mt-2 text-sm font-semibold text-[#40516b] sm:text-base">
+            Create your free account and start your Bible study journey today.
+          </p>
+          <div className="mt-5">
+            <Link
+              href="/signup"
+              onClick={() => onStartJourney("bottom_cta")}
+              className="inline-flex items-center justify-center gap-3 rounded-2xl bg-[#0f63ff] px-8 py-4 text-base font-black text-white shadow-[0_24px_60px_rgba(15,99,255,0.25)] transition hover:-translate-y-0.5"
+            >
+              Create Your Free Account
+              <LandingLineIcon name="arrow" light />
+            </Link>
+            <p className="mt-3 text-xs font-bold text-[#6d7789]">No credit card required.</p>
+          </div>
+        </section>
+
+        <footer className="mt-14 border-t border-[#dce7f5] pt-7">
+          <div className="flex flex-col items-center gap-5 sm:flex-row sm:justify-between">
             <BibleBuddyMark small />
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-bold text-[#526075]">
+            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm font-bold text-[#526075]">
+              <a href="#about" className="transition hover:text-[#0f63ff]">About</a>
+              <a href="#faq" className="transition hover:text-[#0f63ff]">FAQ</a>
+              <Link href="/blog" className="transition hover:text-[#0f63ff]">Blog</Link>
+              <Link href="/contact" className="transition hover:text-[#0f63ff]">Contact</Link>
               <Link href="/privacy" className="transition hover:text-[#0f63ff]">Privacy</Link>
               <Link href="/terms" className="transition hover:text-[#0f63ff]">Terms</Link>
-              <Link href="/contact" className="transition hover:text-[#0f63ff]">Contact</Link>
             </div>
+            <p className="text-xs font-bold text-[#6d7789]">&copy; 2026 Bible Buddy</p>
           </div>
         </footer>
       </main>
