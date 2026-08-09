@@ -8,6 +8,9 @@ export type BlogArticle = {
   // ISO date (YYYY-MM-DD) the post went live; drives sitemap lastModified
   // and article schema. New posts must set this to their real publish day.
   publishedAt: string;
+  // Set only when a post gets a real content overhaul after publishing;
+  // becomes dateModified in the article schema.
+  updatedAt?: string;
   readTime: string;
   image: string;
   // When present, the blog-group-post cron auto-shares this article into
@@ -101,6 +104,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     categorySlug: "christian-foundations",
     canonicalPath: "/blog/what-does-the-bible-say-about-anxiety",
     publishedAt: "2026-08-03",
+    updatedAt: "2026-08-09",
     readTime: "7 min read",
     image: "/anxietyarticlebanner.jpg",
     groupPost: {

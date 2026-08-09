@@ -1,12 +1,14 @@
 import Image from "next/image";
 import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
 import { buildBlogArticleMetadata } from "@/lib/blogContent";
+import BlogPostingSchema from "@/components/BlogPostingSchema";
 
 export const metadata = buildBlogArticleMetadata("what-is-heaven");
 
 export default function WhatIsHeaven() {
   return (
     <BibleStudyHubArticleLayout>
+      <BlogPostingSchema slug="what-is-heaven" />
       <div className="mb-8">
         <Image
           src="/Whatisheaven.png"

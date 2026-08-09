@@ -1,12 +1,14 @@
 import Image from "next/image";
 import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
 import { buildBlogArticleMetadata } from "@/lib/blogContent";
+import BlogPostingSchema from "@/components/BlogPostingSchema";
 
 export const metadata = buildBlogArticleMetadata("st-patrick");
 
 export default function StPatrickPage() {
   return (
     <BibleStudyHubArticleLayout>
+      <BlogPostingSchema slug="st-patrick" />
       <div className="w-full mb-6">
         <Image
           src="/Irelandbanner.png"

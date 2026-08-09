@@ -1,12 +1,14 @@
 import Image from "next/image";
 import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
 import { buildBlogArticleMetadata } from "@/lib/blogContent";
+import BlogPostingSchema from "@/components/BlogPostingSchema";
 
 export const metadata = buildBlogArticleMetadata("st-valentine");
 
 export default function StValentinePage() {
   return (
     <BibleStudyHubArticleLayout>
+      <BlogPostingSchema slug="st-valentine" />
       <div className="w-full mb-6">
         <Image
           src="/Valentinebanner.png"

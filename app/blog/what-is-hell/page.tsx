@@ -1,12 +1,14 @@
 import Image from "next/image";
 import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
 import { buildBlogArticleMetadata } from "@/lib/blogContent";
+import BlogPostingSchema from "@/components/BlogPostingSchema";
 
 export const metadata = buildBlogArticleMetadata("what-is-hell");
 
 export default function WhatIsHell() {
   return (
     <BibleStudyHubArticleLayout>
+      <BlogPostingSchema slug="what-is-hell" />
       <div className="mb-8">
         <Image
           src="/Whatishell.png"

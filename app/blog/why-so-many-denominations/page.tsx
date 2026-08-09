@@ -1,12 +1,14 @@
 import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
 import Image from "next/image";
 import { buildBlogArticleMetadata } from "@/lib/blogContent";
+import BlogPostingSchema from "@/components/BlogPostingSchema";
 
 export const metadata = buildBlogArticleMetadata("why-so-many-denominations");
 
 export default function WhySoManyDenominations() {
   return (
     <BibleStudyHubArticleLayout>
+      <BlogPostingSchema slug="why-so-many-denominations" />
       <article className="max-w-2xl mx-auto px-4 py-10">
         <div className="mb-8">
           <Image

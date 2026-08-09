@@ -1,12 +1,14 @@
 import Image from "next/image";
 import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
 import { buildBlogArticleMetadata } from "@/lib/blogContent";
+import BlogPostingSchema from "@/components/BlogPostingSchema";
 
 export const metadata = buildBlogArticleMetadata("salt-and-light");
 
 export default function SaltAndLight() {
   return (
     <BibleStudyHubArticleLayout>
+      <BlogPostingSchema slug="salt-and-light" />
       <div className="mb-8">
         <Image
           src="/Saltearthbanner.png"

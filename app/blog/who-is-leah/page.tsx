@@ -1,6 +1,7 @@
 import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
 import Image from "next/image";
 import { buildBlogArticleMetadata } from "@/lib/blogContent";
+import BlogPostingSchema from "@/components/BlogPostingSchema";
 
 export const metadata = buildBlogArticleMetadata("who-is-leah", {
   title: "Who Is Leah in the Bible? The Wife Her Husband Didn't Want",
@@ -20,6 +21,7 @@ function VerseQuote({ text, reference }: { text: string; reference: string }) {
 export default function WhoIsLeahPage() {
   return (
     <BibleStudyHubArticleLayout>
+      <BlogPostingSchema slug="who-is-leah" />
       <article className="mx-auto max-w-3xl px-4 py-10">
         <div className="mb-8">
           <Image

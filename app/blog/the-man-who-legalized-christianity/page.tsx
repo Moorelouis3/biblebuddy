@@ -1,12 +1,14 @@
 import Image from "next/image";
 import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
 import { buildBlogArticleMetadata } from "@/lib/blogContent";
+import BlogPostingSchema from "@/components/BlogPostingSchema";
 
 export const metadata = buildBlogArticleMetadata("the-man-who-legalized-christianity");
 
 export default function TheManWhoLegalizedChristianity() {
   return (
     <BibleStudyHubArticleLayout>
+      <BlogPostingSchema slug="the-man-who-legalized-christianity" />
       <div className="mb-8">
         <Image
           src="/Legalized.png"

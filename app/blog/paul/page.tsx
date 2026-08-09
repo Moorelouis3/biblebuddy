@@ -1,12 +1,14 @@
 import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
 import Image from "next/image";
 import { buildBlogArticleMetadata } from "@/lib/blogContent";
+import BlogPostingSchema from "@/components/BlogPostingSchema";
 
 export const metadata = buildBlogArticleMetadata("paul");
 
 export default function PaulCharacterStudyPage() {
   return (
     <BibleStudyHubArticleLayout>
+      <BlogPostingSchema slug="paul" />
       <article className="max-w-2xl mx-auto px-4 py-10">
         <div className="mb-8">
           <Image

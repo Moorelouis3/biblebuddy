@@ -3,6 +3,7 @@ import React from "react";
 import Image from "next/image";
 import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
 import { buildBlogArticleMetadata } from "@/lib/blogContent";
+import BlogPostingSchema from "@/components/BlogPostingSchema";
 
 export const metadata = buildBlogArticleMetadata("why-bible-study-is-hard");
 
@@ -10,6 +11,7 @@ export const metadata = buildBlogArticleMetadata("why-bible-study-is-hard");
 export default function WhyBibleStudyIsHardPage() {
   return (
     <BibleStudyHubArticleLayout>
+      <BlogPostingSchema slug="why-bible-study-is-hard" />
       <article className="max-w-2xl mx-auto px-4 py-10">
         <div className="mb-8">
           <Image

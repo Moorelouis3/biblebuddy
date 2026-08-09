@@ -1,12 +1,14 @@
 import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
 import Image from "next/image";
 import { buildBlogArticleMetadata } from "@/lib/blogContent";
+import BlogPostingSchema from "@/components/BlogPostingSchema";
 
 export const metadata = buildBlogArticleMetadata("5-things-holding-men-back-from-god");
 
 export default function FiveThingsHoldingMenBackFromGodPage() {
   return (
     <BibleStudyHubArticleLayout>
+      <BlogPostingSchema slug="5-things-holding-men-back-from-god" />
       <article className="mx-auto max-w-3xl px-4 py-10">
         <div className="mb-8">
           <Image

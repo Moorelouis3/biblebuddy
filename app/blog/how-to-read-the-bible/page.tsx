@@ -1,12 +1,14 @@
 import Image from "next/image";
 import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
 import { buildBlogArticleMetadata } from "@/lib/blogContent";
+import BlogPostingSchema from "@/components/BlogPostingSchema";
 
 export const metadata = buildBlogArticleMetadata("how-to-read-the-bible");
 
 export default function HowToReadTheBible() {
   return (
     <BibleStudyHubArticleLayout>
+      <BlogPostingSchema slug="how-to-read-the-bible" />
       <div className="mb-8">
         <Image
           src="/Biblereadingbanner.png"
