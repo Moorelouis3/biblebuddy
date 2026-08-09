@@ -113,7 +113,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     legacyPath: "/bible-study-hub/christian-foundations/what-does-the-bible-say-about-anxiety",
     publishedAt: "2026-08-03",
     updatedAt: "2026-08-09",
-    readTime: "7 min read",
+    readTime: "22 min read",
     image: "/anxietyarticlebanner.jpg",
     groupPost: {
       title: "What Does the Bible Say About Anxiety? 📖",
