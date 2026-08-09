@@ -558,11 +558,11 @@ function parseVideoEmbed(url: string): { platform: VideoPlatform; embedUrl: stri
   return { platform: "unknown", embedUrl: null, portrait: false };
 }
 const VIDEO_META: Record<VideoPlatform, { icon: string; label: string }> = {
-  youtube:       { icon: "??", label: "YouTube" },
-  youtube_short: { icon: "??", label: "YouTube Shorts" },
-  tiktok:        { icon: "??", label: "TikTok" },
-  instagram:     { icon: "??", label: "Instagram Reel" },
-  unknown:       { icon: "??", label: "Video" },
+  youtube:       { icon: "▶️", label: "YouTube" },
+  youtube_short: { icon: "📱", label: "YouTube Shorts" },
+  tiktok:        { icon: "🎵", label: "TikTok" },
+  instagram:     { icon: "📸", label: "Instagram Reel" },
+  unknown:       { icon: "🔗", label: "Video" },
 };
 
 function isUploadedVideo(url: string): boolean {
@@ -585,13 +585,13 @@ interface HubCategory {
 type TabKey = "home" | "general" | "bible_studies" | "updates" | "prayer" | "qa" | "members";
 
 const TABS: { key: TabKey; label: string }[] = [
-  { key: "home",          label: "?? Home" },
-  { key: "general",       label: "?? General" },
-  { key: "bible_studies", label: "?? Bible Studies" },
-  { key: "updates",       label: "?? Updates" },
-  { key: "prayer",        label: "?? Prayer" },
-  { key: "qa",            label: "? Q&A" },
-  { key: "members",       label: "?? Buddies" },
+  { key: "home",          label: "🏠 Home" },
+  { key: "general",       label: "💬 General" },
+  { key: "bible_studies", label: "📖 Bible Studies" },
+  { key: "updates",       label: "📣 Updates" },
+  { key: "prayer",        label: "🙏 Prayer" },
+  { key: "qa",            label: "❓ Q&A" },
+  { key: "members",       label: "🤝 Buddies" },
 ];
 
 function getGroupPostCategory(activeTab: string): string {
@@ -646,7 +646,28 @@ function parseBibleBuddyTvSharePath(linkUrl: string | null | undefined) {
 }
 
 function isBibleBuddyTvSharePost(post: Pick<Post, "link_url" | "title">) {
-  return Boolean(parseBibleBuddyTvSharePath(post.link_url) && (post.title || "").toLowerCase().includes("??"));
+  // TV shares are titled "📺 <show> — <label>: <episode>" by
+  // app/api/biblebuddy-tv/share-to-group. The emoji here had been mangled to
+  // "??", so this never matched and TV shares fell through to the generic
+  // link card.
+  return Boolean(parseBibleBuddyTvSharePath(post.link_url) && (post.title || "").includes("📺"));
+}
+
+// Blog article shares (posted by the blog-group-post cron) carry an absolute
+// mybiblebuddy.net URL. Returns the internal path so they can render as a real
+// in-app button: the generic link card below labels them "Video" and opens them
+// with target="_blank", which does not reliably open from the installed app.
+function parseBlogArticlePath(linkUrl: string | null | undefined) {
+  if (!linkUrl) return null;
+
+  try {
+    const parsed = new URL(linkUrl, "https://www.mybiblebuddy.net");
+    if (!/(^|\.)mybiblebuddy\.net$/i.test(parsed.hostname)) return null;
+    if (!/^\/blog\/[^/?#]+/.test(parsed.pathname)) return null;
+    return parsed.pathname;
+  } catch {
+    return null;
+  }
 }
 
 function parseScrambledSharePath(linkUrl: string | null | undefined) {
@@ -2977,9 +2998,9 @@ export default function GroupChatPage() {
   }
 
   function getTopBuddyMedal(rank: number) {
-    if (rank === 1) return { label: "1", icon: "??", classes: "bg-[#fff4bd] text-[#8a5a00] border-[#f4d067]" };
-    if (rank === 2) return { label: "2", icon: "??", classes: "bg-[#eef2f7] text-[#536174] border-[#cbd5e1]" };
-    if (rank === 3) return { label: "3", icon: "??", classes: "bg-[#ffe2ca] text-[#8b4a1f] border-[#f4b27c]" };
+    if (rank === 1) return { label: "1", icon: "🥇", classes: "bg-[#fff4bd] text-[#8a5a00] border-[#f4d067]" };
+    if (rank === 2) return { label: "2", icon: "🥈", classes: "bg-[#eef2f7] text-[#536174] border-[#cbd5e1]" };
+    if (rank === 3) return { label: "3", icon: "🥉", classes: "bg-[#ffe2ca] text-[#8b4a1f] border-[#f4b27c]" };
     return { label: String(rank), icon: null, classes: "bg-[#eef7ed] text-[#4a7c57] border-[#cfe7d2]" };
   }
 
@@ -4186,7 +4207,7 @@ export default function GroupChatPage() {
       resetPostComposer();
       setShowPostComposerModal(false);
       triggerPostSuccess();
-      triggerToast("Posted to the group! ??");
+      triggerToast("Posted to the group! 🎉");
       void logActionToMasterActions(userId, "group_message_sent", group?.name || "Group");
     }
     setSubmitting(false);
@@ -6026,10 +6047,10 @@ export default function GroupChatPage() {
 
                                   <div className="space-y-1.5 pt-1">
                                     {[
-                                      "?? Main focus: Luke 4:1-30",
-                                      "?? Includes detailed notes and verse explanation",
-                                      "?? Trivia questions and reflection prompts each week",
-                                      "?? Built for shared discussion and group study",
+                                      "🎯 Main focus: Luke 4:1-30",
+                                      "📖 Includes detailed notes and verse explanation",
+                                      "❓ Trivia questions and reflection prompts each week",
+                                      "🤝 Built for shared discussion and group study",
                                     ].map((item) => (
                                       <p key={item} className="text-sm text-gray-700 leading-relaxed">{item}</p>
                                     ))}
@@ -6066,10 +6087,10 @@ export default function GroupChatPage() {
 
                                   <div className="space-y-1.5 pt-1">
                                     {[
-                                      "?? Main focus: Genesis 37-50",
-                                      "?? Includes detailed notes and verse explanation",
-                                      "?? Trivia questions and reflection prompts each week",
-                                      "?? Built for shared discussion and group study",
+                                      "🎯 Main focus: Genesis 37-50",
+                                      "📖 Includes detailed notes and verse explanation",
+                                      "❓ Trivia questions and reflection prompts each week",
+                                      "🤝 Built for shared discussion and group study",
                                     ].map((item) => (
                                       <p key={item} className="text-sm text-gray-700 leading-relaxed">{item}</p>
                                     ))}
@@ -6082,10 +6103,10 @@ export default function GroupChatPage() {
                                   </p>
                                   <div className="space-y-1.5 pt-1">
                                     {[
-                                      "?? Weekly Bible study",
-                                      "?? Detailed study notes",
-                                      "?? Trivia and reflection prompts",
-                                      "?? Shared group discussion",
+                                      "📅 Weekly Bible study",
+                                      "📖 Detailed study notes",
+                                      "❓ Trivia and reflection prompts",
+                                      "🤝 Shared group discussion",
                                     ].map((item) => (
                                       <p key={item} className="text-sm text-gray-700 leading-relaxed">{item}</p>
                                     ))}
@@ -6199,7 +6220,7 @@ export default function GroupChatPage() {
                                 done > 0 ? <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-50 text-blue-600 flex-shrink-0">{done}/{SERIES_WEEK_TOTAL_SECTIONS}</span>
                                 : <span className="text-xs text-gray-400 flex-shrink-0">Not started</span>
                               ) : (
-                                <span className="text-xs text-gray-400 flex-shrink-0">??</span>
+                                <span className="text-xs text-gray-400 flex-shrink-0">🔒</span>
                               )}
                             </div>
                             {isPreviewSeries ? (
@@ -6227,7 +6248,7 @@ export default function GroupChatPage() {
                               >
                                 {wn === 1 && sd
                                   ? `Starting Soon · ${formatCountdown(getWeekUnlockTimestamp(sd, 1), nowTs)}`
-                                  : `?? ${weekLabel} Locked`}
+                                  : `🔒 ${weekLabel} Locked`}
                               </button>
                             )}
                           </div>
@@ -7659,6 +7680,7 @@ export default function GroupChatPage() {
           const isScrambledSharePost = isScrambledScoreShare(post);
           const isScrambledPromo = isScrambledPromoPost(post);
           const isBibleBuddyTvShare = isBibleBuddyTvSharePost(post);
+          const blogArticlePath = parseBlogArticlePath(post.link_url);
           const triviaSet = weeklyTriviaByPostId[post.id];
           const questionSet = weeklyQuestionByPostId[post.id];
           return (
@@ -7812,7 +7834,16 @@ export default function GroupChatPage() {
                 />
               </div>
             )}
-              {post.link_url && !isScrambledSharePost && !isScrambledPromo && !isBibleBuddyTvShare && (() => {
+              {blogArticlePath && (
+                <Link
+                  href={blogArticlePath}
+                  onClick={(event) => event.stopPropagation()}
+                  className="mt-3 flex w-full items-center justify-center gap-2 rounded-full bg-[#0056fd] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#003bb0]"
+                >
+                  📖 Read the full post
+                </Link>
+              )}
+              {post.link_url && !blogArticlePath && !isScrambledSharePost && !isScrambledPromo && !isBibleBuddyTvShare && (() => {
               const parsed = parseVideoEmbed(post.link_url);
               if (parsed.embedUrl) {
                 if (!parsed.portrait) {
@@ -8103,7 +8134,7 @@ export default function GroupChatPage() {
                     Get real-time Bible Buddy notifications when someone likes your post, replies, or sends something important.
                   </p>
                 </div>
-                <div className="text-xl flex-shrink-0">??</div>
+                <div className="text-xl flex-shrink-0">🔔</div>
               </div>
               <div className="mt-3 flex items-center gap-3">
                 <button
@@ -8138,7 +8169,7 @@ export default function GroupChatPage() {
                     Save it to your home screen so you can continue studying the Bible with one tap on the Bible Buddy icon.
                   </p>
                 </div>
-                <div className="text-xl flex-shrink-0">??</div>
+                <div className="text-xl flex-shrink-0">📲</div>
               </div>
 
               {isIosDevice ? (
@@ -8215,7 +8246,7 @@ export default function GroupChatPage() {
                     <span className="text-xs px-2.5 py-1 rounded-full font-medium bg-[#f5e3d0] text-[#9a5b1f]">No daily credit wall</span>
                   </div>
                 </div>
-                <div className="text-xl flex-shrink-0">??</div>
+                <div className="text-xl flex-shrink-0">⭐</div>
               </div>
               <div className="mt-3 flex items-center gap-3">
                 <Link
