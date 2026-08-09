@@ -3,6 +3,7 @@ import "./globals.css";
 
 import AppShell from "@/components/AppShell";
 import { SmokeDeleteEffect } from "@/components/SmokeDeleteEffect";
+import TrafficSourceCapture from "@/components/TrafficSourceCapture";
 import { PostSuccessEffect } from "@/components/PostSuccessEffect";
 import { AppToast } from "@/components/AppToast";
 import { PointsPop } from "@/components/PointsPop";
@@ -185,6 +186,7 @@ export default function RootLayout({
             </GlobalAudioPlayerProvider>
           </div>
         </div>
+        <TrafficSourceCapture />
         <SmokeDeleteEffect />
         <PostSuccessEffect />
         <AppToast />

@@ -30,7 +30,7 @@ function getSignupLandingSessionId() {
 }
 
 function isMissingSignupAttributionColumn(error: { message?: string } | null | undefined) {
-  return /signup_source|signup_source_detail|signup_referrer_url|signup_landing_session_id|signup_utm_source|signup_utm_medium|signup_utm_campaign|signup_source_recorded_at|schema cache|column/i.test(
+  return /signup_source|signup_source_detail|signup_referrer_url|signup_landing_session_id|signup_utm_source|signup_utm_medium|signup_utm_campaign|signup_source_recorded_at|signup_first_touch_source|signup_first_touch_referrer|schema cache|column/i.test(
     error?.message || "",
   );
 }
@@ -54,6 +54,11 @@ async function saveSignupAttributionToProfile(userId: string, username: string, 
     signup_utm_medium: attribution.utmMedium,
     signup_utm_campaign: attribution.utmCampaign,
     signup_source_recorded_at: nowIso,
+    // First touch: the channel that originally found them, kept alongside
+    // signup_source (last touch). Pinterest -> blog post -> promo click gives
+    // signup_source "Blog" and signup_first_touch_source "Pinterest".
+    signup_first_touch_source: attribution.firstTouchSource,
+    signup_first_touch_referrer: attribution.firstTouchReferrer,
   };
 
   let { error } = await supabase.from("profile_stats").upsert(fullPayload, { onConflict: "user_id" });
