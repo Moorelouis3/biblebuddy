@@ -1151,3 +1151,7 @@ Next up: Judges 17
 ## 2026-08-09T04:56:00Z (hourly chapter notes run)
 Chapter: Judges 17 | Duration: 9 min | Sections: 4 | Cards: 28 | Status: pass
 Next up: Judges 18
+
+## 2026-08-09T05:57:52Z (hourly chapter notes run)
+Chapter: Judges 18 | Duration: 11 min | Sections: 6 | Cards: 52 | Status: pass
+Next up: Judges 19
