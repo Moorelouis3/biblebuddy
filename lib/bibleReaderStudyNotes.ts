@@ -235,6 +235,7 @@ import { JUDGES_TWENTY_PERSONAL_SECTIONS } from "./judgesTwentySource";
 import { JUDGES_TWENTY_ONE_PERSONAL_SECTIONS } from "./judgesTwentyOneSource";
 import { RUTH_ONE_PERSONAL_SECTIONS } from "./ruthOneSource";
 import { RUTH_TWO_PERSONAL_SECTIONS } from "./ruthTwoSource";
+import { RUTH_THREE_PERSONAL_SECTIONS } from "./ruthThreeSource";
 import { EXODUS_2_10_PERSONAL_SECTIONS } from "./exodusTwoToTenPersonalNotes";
 import { EXODUS_11_20_PERSONAL_SECTIONS } from "./exodusElevenToTwentyPersonalNotes";
 import { EXODUS_21_30_PERSONAL_SECTIONS } from "./exodusTwentyOneToThirtyPersonalNotes";
@@ -616,7 +617,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "deuteronomy" && section.chapter >= 1 && section.chapter <= 34) ||
     (normalizeBook(book) === "joshua" && section.chapter >= 1 && section.chapter <= 24) ||
     (normalizeBook(book) === "judges" && section.chapter >= 1 && section.chapter <= 21) ||
-    (normalizeBook(book) === "ruth" && section.chapter >= 1 && section.chapter <= 2);
+    (normalizeBook(book) === "ruth" && section.chapter >= 1 && section.chapter <= 3);
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -744,6 +745,10 @@ function applyPersonalRuthOneStudySections() {
 
 function applyPersonalRuthTwoStudySections() {
   replaceStudySectionsForBookRange("ruth", 2, 2, RUTH_TWO_PERSONAL_SECTIONS);
+}
+
+function applyPersonalRuthThreeStudySections() {
+  replaceStudySectionsForBookRange("ruth", 3, 3, RUTH_THREE_PERSONAL_SECTIONS);
 }
 
 function applyPersonalDeuteronomyThirtyThroughThirtyFourStudySections() {
@@ -8071,6 +8076,7 @@ applyPersonalJudgesTwentyOneStudySections();
 applyPersonalRuthOneThroughFourStudySections();
 applyPersonalRuthOneStudySections();
 applyPersonalRuthTwoStudySections();
+applyPersonalRuthThreeStudySections();
 applyPersonalDeuteronomyThirtyThroughThirtyFourStudySections();
 applyPersonalJoshuaOneThroughElevenStudySections();
 applyPersonalJoshuaTwelveThroughNineteenStudySections();

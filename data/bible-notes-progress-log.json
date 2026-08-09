@@ -15688,6 +15688,63 @@
           "at": "2026-08-09T10:57:14Z"
         }
       ]
+    },
+    {
+      "book": "Ruth",
+      "chapter": 3,
+      "startedAt": "2026-08-09T11:45:49Z",
+      "finishedAt": "2026-08-09T11:55:56Z",
+      "durationMinutes": 10,
+      "sections": 5,
+      "cards": 30,
+      "verses": 18,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog confirmed empty. Normal forward progress: next canonical-order chapter after Ruth 2, which still had no dedicated wired-in file (only the old bulk ruthOneToFourPersonalNotes.ts placeholder). Session started with local main in a detached HEAD state 49 commits behind a stale local ref; git checkout main plus git pull origin main fast forwarded it cleanly to origin's real tip with no data loss. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (18 verses). Ruth 3 is the threshing floor proposal: Naomi's plan to seek \"rest\" (a permanent home) for Ruth, the winnowing and threshingfloor customs explaining exactly where and why Boaz would be that night, the washing/anointing/change of raiment marking Ruth's step out of mourning, the \"uncover his feet\" custom explained plainly as a legal request for protection rather than anything indecent, Ruth's midnight approach and Boaz's startled waking, Ruth's bold \"spread thy skirt over thine handmaid\" request (echoing Boaz's own \"wings\" blessing from chapter two) naming him directly as a near kinsman, Boaz's blessing in response praising her loyalty as greater than her first act of loyalty to Naomi, the complication of a nearer kinsman with the first legal right of redemption, Boaz's solemn \"as the LORD liveth\" oath to resolve it, the careful predawn departure to protect Ruth's reputation, the six measures of barley sent home as visible proof the night ended well, and the close with Naomi's \"go not empty\" reply directly answering her own \"brought me home again empty\" words from chapter one, plus her confident instruction to sit still and wait on Boaz. Chunked into 5 sections (1-5, 6-9, 10-13, 14-15, 16-18). Density about 1.67 cards/verse (18 verses, 30 cards). scripts/check_bible_note_style.py was clean with zero problems on the first pass. A manual section 13 eye check confirmed every card opens with one of the four approved moves, closes on meaning rather than mechanics, uses exactly four bullets each ending on the book emoji with no repeated emoji within a card, and has no hyphens, em dashes, semicolons, contractions, or banned stacked-clause connectors (\"while\", \"rather than\", \"even though\") anywhere in the file (only possessives), with all 30 card titles exact KJV substrings and no duplicates. Parser check passed exactly via getBibleReaderStudySections('ruth', 3) (5/5 sections, 30 cards, 18 verses of exact, non-overlapping, gap-free coverage, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies extended from ruth chapters 1-2 to 1 through 3, new applyPersonalRuthThreeStudySections() function added calling replaceStudySectionsForBookRange(\"ruth\", 3, 3, RUTH_THREE_PERSONAL_SECTIONS), invoked directly after the existing applyPersonalRuthTwoStudySections() call so this dedicated file correctly overrides the old bulk placeholder for chapter 3 only, leaving Ruth 4 on the old placeholder for now. Next forward-progress target is Ruth 4.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-09T11:46:22Z"
+        },
+        {
+          "name": "recovered detached HEAD via git checkout main + git pull origin main, fast forward, no data lost",
+          "at": "2026-08-09T11:47:05Z"
+        },
+        {
+          "name": "target chapter determined: Ruth 3 (redo backlog empty, normal forward progress after Ruth 2)",
+          "at": "2026-08-09T11:47:20Z"
+        },
+        {
+          "name": "KJV text fetched (Ruth 3, 18 verses, aruljohn mirror)",
+          "at": "2026-08-09T11:48:35Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and skill pipeline read in full",
+          "at": "2026-08-09T11:49:40Z"
+        },
+        {
+          "name": "source file written: lib/ruthThreeSource.ts",
+          "at": "2026-08-09T11:52:10Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, clean on first pass)",
+          "at": "2026-08-09T11:52:40Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, applyPersonalRuthThreeStudySections)",
+          "at": "2026-08-09T11:53:15Z"
+        },
+        {
+          "name": "parser check passed (5/5 sections, 30 cards, text verbatim)",
+          "at": "2026-08-09T11:53:45Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-08-09T11:54:20Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-08-09T11:55:56Z"
+        }
+      ]
     }
   ]
 }

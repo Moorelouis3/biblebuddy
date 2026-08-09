@@ -1175,3 +1175,7 @@ Next up: Ruth 2
 ## 2026-08-09T10:56:21Z (hourly chapter notes run)
 Chapter: Ruth 2 | Duration: 9 min | Sections: 7 | Cards: 33 | Status: pass
 Next up: Ruth 3
+
+## 2026-08-09T11:55:56Z (hourly chapter notes run)
+Chapter: Ruth 3 | Duration: 10 min | Sections: 5 | Cards: 30 | Status: pass
+Next up: Ruth 4
