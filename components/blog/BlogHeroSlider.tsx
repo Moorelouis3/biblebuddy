@@ -43,13 +43,14 @@ export default function BlogHeroSlider({ articles, intervalMs = 5000 }: BlogHero
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      <div className="relative aspect-[16/9] w-full sm:aspect-[21/9]">
+      <div className="relative aspect-[3/2] w-full">
         {articles.map((article, index) => (
           <Link
             key={article.slug}
             href={`/blog/${article.slug}`}
             aria-hidden={index !== activeIndex}
             tabIndex={index === activeIndex ? 0 : -1}
+            aria-label={article.title}
             className={`absolute inset-0 transition-opacity duration-700 ${
               index === activeIndex ? "opacity-100" : "pointer-events-none opacity-0"
             }`}
@@ -62,12 +63,6 @@ export default function BlogHeroSlider({ articles, intervalMs = 5000 }: BlogHero
               className="object-cover"
               sizes="100vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
-            <div className="absolute inset-x-0 bottom-0 p-6 sm:p-10">
-              <h2 className="max-w-2xl text-2xl font-black leading-tight text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.4)] sm:text-4xl">
-                {article.title}
-              </h2>
-            </div>
           </Link>
         ))}
       </div>
