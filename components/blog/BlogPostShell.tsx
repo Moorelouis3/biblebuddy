@@ -129,7 +129,7 @@ export default function BlogPostShell({ slug, title, intro, children }: BlogPost
         {withPromoSlots(children, article.slug)}
       </article>
 
-      <BlogPostBottom articleSlug={engagementKey} />
+      <BlogPostBottom articleSlug={engagementKey} postSlug={article.slug} />
     </div>
   );
 }

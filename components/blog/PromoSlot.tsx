@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { trackBlogPromoEvent } from "@/lib/blogViewTracking";
+import { useSupabaseUser } from "@/lib/useSupabaseUser";
 
 // The rotation pool. Add new banners here when they land in public/promos/.
 const PROMO_BANNERS = [
@@ -42,6 +43,7 @@ type PromoSlotProps = {
 // the post and the exact banner that converted. Logs an impression the
 // first time it scrolls into view and a click event on tap.
 export default function PromoSlot({ postSlug, slotIndex = 0 }: PromoSlotProps) {
+  const { loading: authLoading, userId } = useSupabaseUser();
   const file = pickPromoBanner(postSlug, slotIndex);
   const promoName = file.replace(/\.[a-z]+$/, "");
   const href = `/signup?src=blog&promo=${encodeURIComponent(promoName)}&post=${encodeURIComponent(postSlug)}`;
@@ -50,6 +52,9 @@ export default function PromoSlot({ postSlug, slotIndex = 0 }: PromoSlotProps) {
   const impressionSent = useRef(false);
 
   useEffect(() => {
+    // Only count impressions from confirmed logged-out readers — members
+    // never see promos, and the loading window should not log anything.
+    if (authLoading || userId) return;
     const el = containerRef.current;
     if (!el || impressionSent.current) return;
 
@@ -74,7 +79,10 @@ export default function PromoSlot({ postSlug, slotIndex = 0 }: PromoSlotProps) {
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [promoName, postSlug, slotIndex]);
+  }, [authLoading, userId, promoName, postSlug, slotIndex]);
+
+  // Members never see signup promos.
+  if (userId) return null;
 
   return (
     <Link
