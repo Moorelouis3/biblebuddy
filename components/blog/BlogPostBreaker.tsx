@@ -86,42 +86,32 @@ export default function BlogPostBreaker({ articleSlug, path, title }: BlogPostBr
   ];
 
   return (
-    <div className="my-8 border-y border-[#E7EEFF] py-5">
-      <BlogArticleEngagementBar articleSlug={articleSlug} />
+    <div className="my-8 border-y border-[#E7EEFF] py-4">
+      <div className="flex items-center gap-3">
+        <div className="min-w-0 flex-1 [&>div]:mb-0">
+          <BlogArticleEngagementBar articleSlug={articleSlug} />
+        </div>
 
-      <div className="mt-4 rounded-[24px] border border-[#DCE8FF] bg-white p-4 shadow-[0_18px_50px_rgba(15,23,42,0.08)] sm:p-5">
         <button
           type="button"
           onClick={() => setIsShareOpen((open) => !open)}
           aria-expanded={isShareOpen}
           aria-controls="blog-share-panel-content"
-          className="flex w-full items-center gap-4 text-left"
+          className="flex shrink-0 items-center gap-2 rounded-full bg-[#0056fd] px-5 py-3 text-sm font-black text-white shadow-[0_10px_28px_rgba(0,86,253,0.22)] transition hover:-translate-y-0.5 hover:bg-[#0049d8]"
         >
-          <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#0056fd] text-white shadow-[0_14px_28px_rgba(0,86,253,0.24)]">
-            <svg aria-hidden="true" viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="18" cy="5" r="3" />
-              <circle cx="6" cy="12" r="3" />
-              <circle cx="18" cy="19" r="3" />
-              <path d="m8.6 10.7 6.8-4.4M8.6 13.3l6.8 4.4" />
-            </svg>
-          </span>
-
-          <span className="min-w-0 flex-1">
-            <span className="block text-[10px] font-black uppercase tracking-[0.22em] text-[#0056fd]">Share this article</span>
-            <span className="mt-1 block text-base font-black leading-tight text-slate-950 sm:text-lg">
-              Help others discover God&apos;s Word.
-            </span>
-          </span>
-
-          <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#EEF5FF] text-[#0056fd] transition ${isShareOpen ? "rotate-180" : ""}`}>
-            <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
-              <path d="m6 9 6 6 6-6" />
-            </svg>
-          </span>
+          <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="18" cy="5" r="3" />
+            <circle cx="6" cy="12" r="3" />
+            <circle cx="18" cy="19" r="3" />
+            <path d="m8.6 10.7 6.8-4.4M8.6 13.3l6.8 4.4" />
+          </svg>
+          Share
         </button>
+      </div>
 
+      <div>
         {isShareOpen && (
-          <div id="blog-share-panel-content" className="mt-5 border-t border-[#E7EEFF] pt-5">
+          <div id="blog-share-panel-content" className="mt-4 rounded-[24px] border border-[#DCE8FF] bg-white p-4 shadow-[0_18px_50px_rgba(15,23,42,0.08)] sm:p-5">
             <p className="text-sm font-semibold leading-6 text-slate-500 sm:text-base">
               Share this article by text, copy the link, or send it through your favorite apps.
             </p>

@@ -108,7 +108,7 @@ function withPromoSlots(children: ReactNode, postSlug: string): ReactNode[] {
   const nodes = Children.toArray(children);
   const out: ReactNode[] = [];
   let wordsSincePromo = 0;
-  let slotIndex = 1; // slot 0 renders right after the share breaker
+  let slotIndex = 0;
   let faqReached = false;
 
   nodes.forEach((node, i) => {
@@ -216,8 +216,6 @@ export default function BlogPostShell({ slug, title, intro, children }: BlogPost
         {intro}
 
         <BlogPostBreaker articleSlug={engagementKey} path={path} title={article.title} />
-
-        <PromoSlot postSlug={article.slug} slotIndex={0} />
 
         {withPromoSlots(anchoredChildren, article.slug)}
 
