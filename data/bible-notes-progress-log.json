@@ -15851,6 +15851,59 @@
           "at": "2026-08-09T14:00:04Z"
         }
       ]
+    },
+    {
+      "book": "Genesis",
+      "chapter": 7,
+      "startedAt": "2026-08-09T14:45:45Z",
+      "finishedAt": "2026-08-09T15:00:01Z",
+      "durationMinutes": 14,
+      "sections": 4,
+      "cards": 41,
+      "verses": 24,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog confirmed empty. Overlooked-gap fix, out of the normal forward-progress sequence: rather than trusting the progress log's own \"next chapter\" trail (which pointed at 1 Samuel 2), checked lib/bibleReaderStudyNotes.ts directly and found Genesis 7 had no dedicated lib/genesisSevenSource.ts file at all, unlike every other Genesis chapter (1-6 and 8-50 all have one). Genesis 7 only ever rendered through a legacy applyApprovedGenesisSevenReaderSections() function pulling a handful of phrase cards out of an old BIBLE_YEAR_DAY_THREE_DEEP_NOTES markdown blob, never a real spec-compliant file, so it had been miscounted as pre-existing gold standard alongside genuine Genesis 1-30. Treated this as the true first canonical-order gap. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (24 verses). Genesis 7 covers Noah entering the ark: clean/unclean sevens versus twos and the link to Genesis 8's sacrifice, the seven day countdown and forty days and nights of rain, Noah's age and the eight souls family list (1 Peter 3:20 callback), the exact calendar date given for the flood's start, the fountains of the great deep and windows of heaven as ancient Hebrew cosmology echoing Genesis 1, Shem/Ham/Japheth named individually ahead of Genesis 10's table of nations, the LORD shutting Noah in as the chapter's theological hinge, the honest global versus regional flood language debate handled as an allowed hedge, the fifteen cubit measurement converted into a concrete modern picture, and the closing \"Noah only remained alive\" line landing on salvation by being in the ark rather than personal merit. Chunked into 4 sections (1-5, 6-10, 11-16, 17-24). Density about 1.71 cards/verse. scripts/check_bible_note_style.py was clean on the first pass (41 cards, no problems). A manual section 13 eye check caught and fixed a first-draft mistake: most card titles had been written without their required leading emoji (only the very first card had one), all 39 missing emoji added before the checker ran. It also caught five card openings using the forbidden \"This phrase explains/describes\" pattern from the skill's Part 5 forbidden list, rewritten into approved opening moves. Parser check passed exactly via getBibleReaderStudySections('genesis', 7) (4/4 sections, 41 cards, 24 verses, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for GENESIS_SEVEN_PERSONAL_SECTIONS, preserveExactPhraseBodies already covered Genesis 1-50 so no change needed there, replaceStudySectionsForBookRange(\"genesis\", 7, 7, GENESIS_SEVEN_PERSONAL_SECTIONS) added right after the Genesis 6 call and after the legacy applyApprovedGenesisSevenReaderSections() call so it correctly overrides the old markdown-parsed content. This completes real, spec-compliant coverage for all of Genesis 1-50. Forward-progress resumes at 1 Samuel 2 next run.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-09T14:45:45Z"
+        },
+        {
+          "name": "target chapter determined: Genesis 7 (redo backlog empty; found overlooked gap ahead of the logged 1 Samuel 2 trail)",
+          "at": "2026-08-09T14:47:12Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-08-09T14:47:12Z"
+        },
+        {
+          "name": "KJV text fetched (Genesis 7, 24 verses, raw.githubusercontent.com/aruljohn/Bible-kjv)",
+          "at": "2026-08-09T14:47:12Z"
+        },
+        {
+          "name": "source file lib/genesisSevenSource.ts written (41 cards / 4 sections)",
+          "at": "2026-08-09T14:54:46Z"
+        },
+        {
+          "name": "style checker clean (python3 scripts/check_bible_note_style.py, first pass, 0 problems, after fixing missing title emoji and forbidden opening patterns)",
+          "at": "2026-08-09T14:54:46Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import + replaceStudySectionsForBookRange)",
+          "at": "2026-08-09T14:57:22Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections('genesis', 7): 4/4 sections, 41 cards, text verbatim)",
+          "at": "2026-08-09T14:57:22Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-08-09T14:57:22Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-08-09T15:00:01Z"
+        }
+      ]
     }
   ]
 }
